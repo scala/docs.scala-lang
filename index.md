@@ -4,6 +4,12 @@ title: Working on a place to put Scala documentation...
 ---
 Figuring it out with Github Pages and Jekyll.
 
+Site url: {{ site.url }}
+
+Base url: {{ baseurl }}
+
+Page url: {{ page.url }}
+
 Woohoo!
 
 # Test! #
