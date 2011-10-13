@@ -8,7 +8,6 @@
             <li class="active"><a href="#overview">Empty</a></li>
            <li><a href="#grid-system">Empty</a></li>
             <li><a href="#layouts">Empty</a></li>
-            <li><a href="#typography">Type</a></li>
           </ul>
         </div>
       </div>
