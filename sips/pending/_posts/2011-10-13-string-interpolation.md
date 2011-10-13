@@ -1,7 +1,7 @@
 ---
 layout: default
 type: sip
-title: String Interpolation
+title: SIP-11 String Interpolation
 ---
 ### Martin Odersky ###
 

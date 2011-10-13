@@ -1,7 +1,7 @@
 ---
 layout: default
 type: sip
-title: Uncluttering Scala’s syntax for control structures.
+title: SIP-12 Uncluttering Scala’s syntax for control structures.
 ---
 
 __Motivation__: The more Scala code I write the more I get tripped up by the need to write conditions in  if-then-else expressions and other control constructs in parentheses. I normally would not advocate syntax changes at this level, except that this has been the single syntax decision that feels worse for me the longer I use it.
