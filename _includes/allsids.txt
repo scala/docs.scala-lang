@@ -1,0 +1,7 @@
+<h3>Pending SIPs</h3>
+<ul class="post-list">
+  {% for post in site.categories.pending %}
+    <li><a href="{{ post.url }}">{{ post.title }}</a> <span class="date">( {{ post.date | date: "%b %Y" }} )</span></li>
+  {% endfor %}      
+</ul>
+
