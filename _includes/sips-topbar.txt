@@ -5,9 +5,9 @@
         <div class="container">
           <a class="brand" href="{{ site.baseurl }}/sips/index.html"><img src="{{ site.baseurl }}/images/scala-logo.png"> Improvement Process</a>
           <ul class="nav">
-           <li><a href="{{ site.url }}/sips/sip-submission.html">Submitting a new SIP</a></li>
-           <li><a href="{{ site.url }}/sips/sip-list.html">SIP List</a></li>
-           <li><a href="{{ site.url }}/sips/sip-tutorial.html">Writing a SIP Tutorial</a></li>
+           <li><a href="{{ site.baseurl }}/sips/sip-submission.html">Submitting a new SIP</a></li>
+           <li><a href="{{ site.baseurl }}/sips/sip-list.html">SIP List</a></li>
+           <li><a href="{{ site.baseurl }}/sips/sip-tutorial.html">Writing a SIP Tutorial</a></li>
           </ul>
         </div>
       </div>
