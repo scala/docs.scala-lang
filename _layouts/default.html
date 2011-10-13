@@ -54,7 +54,7 @@
       {% if page.title %}<h1>{{ page.title }}</h1>{% endif %}
         <div class="span12">
           {{ content }}
-	  {% if page.type == 'sip' %}{% include disqus.txt %}{% endif %}
+	  {% if page.disqus == true %}#DISQUS!!#{% include disqus.txt %}{% endif %}
 	</div>
 	{% if page.type == 'sip' %}
 	<div class="span4">

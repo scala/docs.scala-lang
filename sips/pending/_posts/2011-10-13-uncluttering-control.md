@@ -1,6 +1,7 @@
 ---
 layout: default
 type: sip
+disqus: true
 title: SIP-12 Uncluttering Scala’s syntax for control structures.
 ---
 
