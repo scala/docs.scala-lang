@@ -9,5 +9,4 @@ title: Scala Improvement Process
 
 This is the landing page for the Scala Improvement Process.
 
-This is the site.url variable: {{ site.url }}
 
