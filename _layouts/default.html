@@ -52,12 +52,12 @@
       <div class="row">
       <h1>{{ site.title }}</h1>
       {% if page.title %}<h1>{{ page.title }}</h1>{% endif %}
-        <div class="span12">
+        <div class="span10">
           {{ content }}
-	  {% if page.disqus == true %}#DISQUS!!#{% include disqus.txt %}{% endif %}
+	  {% if page.disqus == true %}{% include disqus.txt %}{% endif %}
 	</div>
 	{% if page.type == 'sip' %}
-	<div class="span4">
+	<div class="span6">
           {% include allsids.txt %}
 	</div>
 	{% endif %}
