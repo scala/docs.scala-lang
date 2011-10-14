@@ -3,7 +3,7 @@
     <div class="topbar" >
       <div class="topbar-inner">
         <div class="container">
-          <a class="brand" href="{{ site.baseurl }}/index.html"><img src="{{ site.baseurl }}/images/scala-logo.png"> Documentation</a>
+          <a class="brand" href="{{ site.baseurl }}/index.html"><img src="{{ site.baseurl }}/resources/images/scala-logo.png"> Documentation</a>
           <ul class="nav">
             <li class="active"><a href="#overview">Empty</a></li>
            <li><a href="#grid-system">Empty</a></li>

@@ -1,6 +1,7 @@
 ---
 layout: default
 type: sip
+disqus: true
 title: SIP-13 - Implicit classes
 ---
 
