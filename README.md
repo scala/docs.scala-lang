@@ -14,7 +14,7 @@ OSX users might need to update RubyGems:
 
 ## Building & Viewing ##
 
-cd into the `scala-docs` directory, and build by:
+cd into the `scala.github.com` directory, and build by:
 
     jekyll --server
 

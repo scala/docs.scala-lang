@@ -1,7 +1,7 @@
 ---
 layout: default
 title: A Scala Tutorial for Java Programmers
-toc: true
+type: overview
 ---
 
 By Michel Schinz and Philipp Haller
