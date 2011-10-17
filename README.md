@@ -16,9 +16,9 @@ OSX users might need to update RubyGems:
 
 cd into the `scala-docs` directory, and build by:
 
-    jekyll --server --base-url '/scala-docs'
+    jekyll --server
 
-The generated site is available at `http://localhost:4000/scala-docs/`
+The generated site is available at `http://localhost:4000`
 
 
 
