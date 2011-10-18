@@ -1,6 +1,5 @@
 ---
-layout: default
-type: sip
+layout: sip
 title: SID-3 - New Collection classes
 ---
 

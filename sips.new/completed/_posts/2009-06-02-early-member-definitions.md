@@ -1,6 +1,5 @@
 ---
-layout: default
-type: sid
+layout: sip
 title: SID-4 - Early Member Definitions
 ---
 

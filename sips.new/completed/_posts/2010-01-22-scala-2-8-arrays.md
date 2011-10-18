@@ -1,6 +1,5 @@
 ---
-layout: default
-type: sip
+layout: sip
 title: SID-7 - Scala 2.8 Arrays
 ---
 

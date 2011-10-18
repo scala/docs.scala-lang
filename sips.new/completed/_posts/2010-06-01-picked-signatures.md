@@ -1,6 +1,5 @@
 ---
-layout: default
-type: sip
+layout: sip
 title: SID-10 - Storage of pickled Scala signatures in class files
 ---
 

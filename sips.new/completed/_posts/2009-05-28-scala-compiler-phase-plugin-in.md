@@ -1,6 +1,5 @@
 ---
-layout: default
-type: sip
+layout: sip
 title: SID-2 Scala Compiler Phase and Plug-In Initialization for Scala 2.8
 ---
 

@@ -1,6 +1,5 @@
 ---
-layout: default
-type: sip
+layout: sip
 title: SIP Submission Process
 ---
 

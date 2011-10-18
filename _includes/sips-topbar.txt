@@ -3,11 +3,11 @@
     <div class="topbar" >
       <div class="topbar-inner">
         <div class="container">
-          <a class="brand" href="{{ site.baseurl }}/sips/index.html"><img src="{{ site.baseurl }}/resources/images/scala-logo.png"> Improvement Process</a>
+          <a class="brand" href="{{ site.baseurl }}/sips.new/index.html"><img src="{{ site.baseurl }}/resources/images/scala-logo.png"> Improvement Process</a>
           <ul class="nav">
-           <li><a href="{{ site.baseurl }}/sips/sip-submission.html">Submitting a new SIP</a></li>
-           <li><a href="{{ site.baseurl }}/sips/sip-list.html">SIP List</a></li>
-           <li><a href="{{ site.baseurl }}/sips/sip-tutorial.html">How to Write a SIP</a></li>
+           <li><a href="{{ site.baseurl }}/sips.new/sip-submission.html">Submitting a new SIP</a></li>
+           <li><a href="{{ site.baseurl }}/sips.new/sip-list.html">SIP List</a></li>
+           <li><a href="{{ site.baseurl }}/sips.new/sip-tutorial.html">How to Write a SIP</a></li>
           </ul>
         </div>
       </div>

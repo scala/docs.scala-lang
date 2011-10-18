@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: front-page
 title: Scala Documentation
 ---
 
@@ -9,5 +9,5 @@ Documentation will be added here as we acquire and organize old and new document
 
 ## SIPs ##
 
-Check out the [SIP documents](sips/index.html)
+Check out the [SIP documents](sips.new/index.html)
 
