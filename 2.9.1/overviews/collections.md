@@ -297,7 +297,156 @@ The `foreach` method is meant to traverse all elements of the collection, and ap
 |  `xs filter p`	    |The collection consisting of those elements of xs that satisfy the predicate `p`.|
 |  `xs withFilter p`	    |A non-strict filter of this collection. Subsequent calls to `map`, `flatMap`, `foreach`, and `withFilter` will only apply to those elements of `xs` for which the condition `p` is true.|
 |  `xs filterNot p`	    |The collection consisting of those elements of `xs` that do not satisfy the predicate `p`.|
-|  **Subdivisions:**      |						     |
+|  **Subdivisions:**        |						     |
+|  `xs splitAt n`	    |Split `xs` at a position, giving the pair of collections `(xs take n, xs drop n)`.|
+|  `xs span p`	    	    |Split `xs` according to a predicate, giving the pair of collections `(xs takeWhile p, xs.dropWhile p)`.|
+|  `xs partition p`	    |Split `xs` into a pair of two collections; one with elements that satisfy the predicate `p`, the other with elements that do not, giving the pair of collections `(xs filter p, xs.filterNot p)`|
+|  `xs groupBy f`	    |Partition `xs` into a map of collections according to a discriminator function `f`.|
+|  **Element Conditions:**  |						     |
+|  `xs forall p`	    |A boolean indicating whether the predicate `p` holds for all elements of `xs`.|
+|  `xs exists p`	    |A boolean indicating whether the predicate `p` holds for some element in `xs`.|
+|  `xs count p`	    	    |The number of elements in `xs` that satisfy the predicate `p`.|
+|  **Folds:** 		    |						     |
+|  `(z /: xs)(op)`	    |Apply binary operation `op` between successive elements of `xs`, going left to right and starting with `z`.|
+|  `(xs :\ z)(op)`	    |Apply binary operation `op` between successive elements of `xs`, going right to left and starting with `z`.|
+|  `xs.foldLeft(z)(op)`	    |Same as `(z /: xs)(op)`.|
+|  `xs.foldRight(z)(op)`    |Same as `(xs :\ z)(op)`.|
+|  `xs reduceLeft op`	    |Apply binary operation `op` between successive elements of non-empty collection `xs`, going left to right.|
+|  `xs reduceRight op`	    |Apply binary operation `op` between successive elements of non-empty collection `xs`, going right to left.|
+|  **Specific Folds:**      |						     |
+|  `xs.sum`	    	    |The sum of the numeric element values of collection `xs`.|
+|  `xs.product`	    	    |The product of the numeric element values of collection `xs`.|
+|  `xs.min`	    	    |The minimum of the ordered element values of collection `xs`.|
+|  `xs.max`	    	    |The maximum of the ordered element values of collection `xs`.|
+|  **Strings:**             |						     |
+|  `xs addString (b, start, sep, end)`|Adds a string to `StringBuilder` `b` that shows all elements of `xs` between separators `sep` enclosed in strings `start` and `end`. `start`, `sep`, `end` are all optional.|
+|  `xs mkString (start, sep, end)`|Converts the collection to a string that shows all elements of `xs` between separators `sep` enclosed in strings `start` and `end`. `start`, `sep`, `end` are all optional.|
+|  `xs.stringPrefix`	    |The collection name at the beginning of the string returned from `xs.toString`.|
+|  **Views:**               |						     |
+|  `xs.view`	    	    |Produces a view over `xs`.|
+|  `xs view (from, to)`     |Produces a view that represents the elements in some index range of `xs`.|
+
+## Trait Iterable ##
+
+The next trait from the top in the collections hierarchy is `Iterable`. All methods in this trait are defined in terms of an an abstract method, `iterator`, which yields the collection's elements one by one. The `foreach` method from trait `Traversable` is implemented in `Iterable` in terms of `iterator`. Here is the actual implementation:
+
+    def foreach[U](f: Elem => U): Unit = {
+      val it = iterator
+      while (it.hasNext) f(it.next())
+    } 
+
+Quite a few subclasses of `Iterable` override this standard implementation of foreach in `Iterable`, because they can provide a more efficient implementation. Remember that `foreach` is the basis of the implementation of all operations in `Traversable`, so its performance matters.
+
+Two more methods exist in `Iterable` that return iterators: `grouped` and `sliding`. These iterators, however, do not return single elements but whole subsequences of elements of the original collection. The maximal size of these subsequences is given as an argument to these methods. The `grouped` method returns its elements in "chunked" increments, where `sliding` yields a sliding "window" over the elements. The difference between the two should become clear by looking at the following REPL interaction:
+
+    scala> val xs = List(1, 2, 3, 4, 5)
+    xs: List[Int] = List(1, 2, 3, 4, 5)
+    scala> val git = xs grouped 3
+    git: Iterator[List[Int]] = non-empty iterator
+    scala> git.next()
+    res3: List[Int] = List(1, 2, 3)
+    scala> git.next()
+    res4: List[Int] = List(4, 5)
+    scala> val sit = xs sliding 3
+    sit: Iterator[List[Int]] = non-empty iterator
+    scala> sit.next()
+    res5: List[Int] = List(1, 2, 3)
+    scala> sit.next()
+    res6: List[Int] = List(2, 3, 4)
+    scala> sit.next()
+    res7: List[Int] = List(3, 4, 5)
+
+Trait `Iterable` also adds some other methods to `Traversable` that can be implemented efficiently only if an iterator is available. They are summarized in the following table.
+
+### Operations in Class Iterable ###
+
+| WHAT IT IS  	  	    | WHAT IT DOES				     |
+| ------       	       	    | ------					     |
+|  **Abstract Method:**     |						     |
+|  `xs.iterator`	    |An `iterator` that yields every element in `xs`, in the same order as `foreach` traverses elements.|
+|  **Other Iterators:**     |						     |
+|  `xs grouped size`   	    |An iterator that yields fixed-sized "chunks" of this collection.|
+|  `xs sliding size`   	    |An iterator that yields a sliding fixed-sized window of elements in this collection.|
+|  **Subcollections:** 	    |						     |
+|  `xs takeRight n`	    |A collection consisting of the last `n` elements of `xs` (or, some arbitrary `n` elements, if no order is defined).|
+|  `xs dropRight n`	    |The rest of the collection except `xs takeRight n`.|
+|  **Zippers:** 	    |						     |
+|  `xs zip ys`	    	    |An iterable of pairs of corresponding elements from `xs` and `ys`.|
+|  `xs zipAll (ys, x, y)`   |An iterable of pairs of corresponding elements from `xs` and `ys`, where the shorter sequence is extended to match the longer one by appending elements `x` or `y`.|
+|  `xs.zipWithIndex`	    |An iterable of pairs of elements from `xs` with their indices.|
+|  **Comparison:** 	    |						     |
+|  `xs sameElements ys`	    |A test whether `xs` and `ys` contain the same elements in the same order|
+
+In the inheritance hierarchy below Iterable you find three traits: [Seq](http://www.scala-lang.org/docu/files/collections-api/collections_5.html), [Set](http://www.scala-lang.org/docu/files/collections-api/collections_7.html), and [Map](http://www.scala-lang.org/docu/files/collections-api/collections_10.html). A common aspect of these three traits is that they all implement the [PartialFunction](http://www.scala-lang.org/api/current/scala/PartialFunction.html) trait with its `apply` and `isDefinedAt` methods. However, the way each trait implements [PartialFunction](http://www.scala-lang.org/api/current/scala/PartialFunction.html) differs.
+
+For sequences, `apply` is positional indexing, where elements are always numbered from `0`. That is, `Seq(1, 2, 3)(1)` gives `2`. For sets, `apply` is a membership test. For instance, `Set('a', 'b', 'c')('b')` gives `true` whereas `Set()('a')` gives `false`. Finally for maps, `apply` is a selection. For instance, `Map('a' -> 1, 'b' -> 10, 'c' -> 100)('b')` gives `10`.
+
+In the following, we will explain each of the three kinds of collections in more detail.
+
+## The sequence traits Seq, IndexedSeq, and LinearSeq ##
+
+The [Seq](http://www.scala-lang.org/api/current/scala/collection/Seq.html) trait represents sequences. A sequence is a kind of iterable that has a `length` and whose elements have fixed index positions, starting from `0`.
+
+The operations on sequences, summarized in the table below, fall into the following categories:
+
+* **Indexing and length** operations `apply`, `isDefinedAt`, `length`, `indices`, and `lengthCompare`. For a `Seq`, the `apply` operation means indexing; hence a sequence of type `Seq[T]` is a partial function that takes an `Int` argument (an index) and which yields a sequence element of type `T`. In other words `Seq[T]` extends `PartialFunction[Int, T]`. The elements of a sequence are indexed from zero up to the `length` of the sequence minus one. The `length` method on sequences is an alias of the `size` method of general collections. The `lengthCompare` method allows you to compare the lengths of two sequences even if one of the sequences has infinite length.
+* **Index search operations** `indexOf`, `lastIndexOf`, `indexofSlice`, `lastIndexOfSlice`, `indexWhere`, `lastIndexWhere`, `segmentLength`, `prefixLength`, which return the index of an element equal to a given value or matching some predicate.
+* **Addition operations** `+:`, `:+`, `padTo`, which return new sequences obtained by adding elements at the front or the end of a sequence.
+* **Update operations** `updated`, `patch`, which return a new sequence obtained by replacing some elements of the original sequence.
+* **Sorting operations** `sorted`, `sortWith`, `sortBy`, which sort sequence elements according to various criteria.
+* **Reversal operations** `reverse`, `reverseIterator`, `reverseMap`, which yield or process sequence elements in reverse order.
+* **Comparisons** `startsWith`, `endsWith`, `contains`, `containsSlice`, `corresponds`, which relate two sequences or search an element in a sequence.
+* **Multiset** operations `intersect`, `diff`, `union`, `distinct`, which perform set-like operations on the elements of two sequences or remove duplicates.
+
+If a sequence is mutable, it offers in addition a side-effecting `update` method, which lets sequence elements be updated. As always in Scala, syntax like `seq(idx) = elem` is just a shorthand for `seq.update(idx, elem)`, so `update` gives convenient assignment syntax for free. Note the difference between `update` and `updated`. `update` changes a sequence element in place, and is only available for mutable sequences. `updated` is available for all sequences and always returns a new sequence instead of modifying the original.
+
+### Operations in Class Seq ###
+
+| WHAT IT IS  	  	    | WHAT IT DOES				     |
+| ------       	       	    | ------					     |
+|  **Indexing and Length:** |						     |
+|  `xs(i)`    	  	    |(or, written out, `xs apply i`). The element of `xs` at index `i`.|
+|  `xs isDefinedAt i`	    |Tests whether `i` is contained in `xs.indices`.|
+|  `xs.length`	    	    |The length of the sequence (same as `size`).|
+|  `xs.lengthCompare ys`    |Returns `-1` if `xs` is shorter than `ys`, `+1` if it is longer, and `0` is they have the same length. Works even if one if the sequences is infinite.|
+|  `xs.indices`	     	    |The index range of `xs`, extending from `0` to `xs.length - 1`.|
+|  **Index Search:**        |						     |
+|  `xs indexOf x`   	    |The index of the first element in `xs` equal to `x` (several variants exist).|
+|  `xs lastIndexOf x`       |The index of the last element in `xs` equal to `x` (several variants exist).|
+|  `xs indexOfSlice ys`     |The first index of `xs` such that successive elements starting from that index form the sequence `ys`.|
+|  `xs lastIndexOfSlice ys` |The last index of `xs` such that successive elements starting from that index form the sequence `ys`.|
+|  `xs indexWhere p`   	    |The index of the first element in xs that satisfies `p` (several variants exist).|
+|  `xs segmentLength (p, i)`|The length of the longest uninterrupted segment of elements in `xs`, starting with `xs(i)`, that all satisfy the predicate `p`.|
+|  `xs prefixLength p` 	    |The length of the longest prefix of elements in `xs` that all satisfy the predicate `p`.|
+|  **Additions:** 	    |						     |
+|  `x +: xs` 	    	    |A new sequence that consists of `x` prepended to `xs`.|
+|  `xs :+ x` 	    	    |A new sequence that consists of `x` appended to `xs`.|
+|  `xs padTo (len, x)` 	    |The sequence resulting from appending the value `x` to `xs` until length `len` is reached.|
+|  **Updates:** 	    |						     |
+|  `xs patch (i, ys, r)`    |The sequence resulting from replacing `r` elements of `xs` starting with `i` by the patch `ys`.|
+|  `xs updated (i, x)`      |A copy of `xs` with the element at index `i` replaced by `x`.|
+|  `xs(i) = x`	    	    |(or, written out, `xs.update(i, x)`, only available for `mutable.Seq`s). Changes the element of `xs` at index `i` to `y`.|
+|  **Sorting:** 	    |						     |
+|  `xs.sorted`	            |A new sequence obtained by sorting the elements of `xs` using the standard ordering of the element type of `xs`.|
+|  `xs sortWith lt`	    |A new sequence obtained by sorting the elements of `xs` using `lt` as comparison operation.|
+|  `xs sortBy f`	    |A new sequence obtained by sorting the elements of `xs`. Comparison between two elements proceeds by mapping the function `f` over both and comparing the results.|
+|  **Reversals:** 	    |						     |
+|  `xs.reverse`	            |A sequence with the elements of `xs` in reverse order.|
+|  `xs.reverseIterator`	    |An iterator yielding all the elements of `xs` in reverse order.|
+|  `xs reverseMap f`	    |A sequence obtained by mapping `f` over the elements of `xs` in reverse order.|
+|  **Comparisons:** 	    |						     |
+|  `xs startsWith ys`	    |Tests whether `xs` starts with sequence `ys` (several variants exist).|
+|  `xs endsWith ys`	    |Tests whether `xs` ends with sequence `ys` (several variants exist).|
+|  `xs contains x`	    |Tests whether `xs` has an element equal to `x`.|
+|  `xs containsSlice ys`    |Tests whether `xs` has a contiguous subsequence equal to `ys`.|
+|  `(xs corresponds ys)(p)` |Tests whether corresponding elements of `xs` and `ys` satisfy the binary predicate `p`.|
+|  **Multiset Operations:** |						     |
+|  `xs intersect ys`	    |The multi-set intersection of sequences `xs` and `ys` that preserves the order of elements in `xs`.|
+|  `xs diff ys`	    	    |The multi-set difference of sequences `xs` and `ys` that preserves the order of elements in `xs`.|
+|  `xs union ys`	    |Multiset union; same as `xs ++ ys`.|
+|  `xs.distinct`	    |A subsequence of `xs` that contains no duplicated element.|
+
+Trait [Seq](http://www.scala-lang.org/api/current/scala/collection/Seq.html) has two subtraits [LinearSeq](http://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html), and [IndexedSeq](http://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html). These do not add any new operations, but each offers different performance characteristics: A linear sequence has efficient `head` and `tail` operations, whereas an indexed sequence has efficient `apply`, `length`, and (if mutable) `update` operations. Frequently used linear sequences are `scala.collection.immutable.List` and `scala.collection.immutable.Stream`. Frequently used indexed sequences are `scala.Array` and `scala.collection.mutable.ArrayBuffer`. The `Vector` class provides an interesting compromise between indexed and linear access. It has both effectively constant time indexing overhead and constant time linear access overhead. Because of this, vectors are a good foundation for mixed access patterns where both indexed and linear accesses are used. You'll learn more on vectors [later](#vectors).
 
 
 
