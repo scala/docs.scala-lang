@@ -38,7 +38,7 @@
 		<p>Read language improvement proposals, participate in discussions surrounding submitted proposals, or submit your own improvement proposal.</p>
 
 		<h3>Guides and Overviews <span class="label success">Some Available</span></h3>
-		<p>Some guides, such as Martin Odersky's Collection's are already available. Others are currently being converted to markdown markup for inclusion here.</p>
+		<p>Some guides, such as Martin Odersky's Collections Overview are already available. Others are currently being converted to markdown markup for inclusion here.</p>
 		
 		<h3>Tutorials <span class="label success">Some Available</span></h3>
 		<p>Some tutorials, such as the <em>Scala for Java Programmers</em> guide is already available. Others are currently being converted to markdown markup for inclusion here.</p>
