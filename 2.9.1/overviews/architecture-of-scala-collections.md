@@ -758,7 +758,7 @@ storing the three strings "abc", "abd", "al", "all", "xy" would look
 like this:
 
 A sample patricia tree:
-<img src="http://www.scala-lang.org/docu/files/collections-api/patricia.png" width="550">
+<img src="{{ site.baseurl }}/resources/images/patricia.png" width="550">
 
 To find the node corresponding to the string "abc" in this trie,
 simply follow the subtree labeled "a", proceed from there to the
