@@ -11,14 +11,14 @@ Before submitting a SIP, it is a good to float your proposal on [scala-debate](h
 
 The process to submit is simple:
 
-* Fork the [scala/sips github project](http://github.com/jsuereth/sips)
-* Create a new SIP file in the `pending/_posts/`.  Check the [Writing a SIP Tutorial](sip-tutorial.html)
+* Fork the Scala documentation repository, [scala/scala.github.com](http://github.com/scala.github.com).
+* Create a new SIP file in the `sips/pending/_posts/`.  Check the [Writing a SIP Tutorial](sip-tutorial.html)
   * Make sure the new file follows the format:  `YYYY-MM-dd-{title}.md`.  Use the proposal date for `YYYY-MM-dd`.
   * Use the [Markdown Syntax](http://daringfireball.net/projects/markdown/syntax) to write your SIP.
-  * Use the `run-server.sh` script locally to ensure your SIP looks correct in the website.
+  * Follow the instructions in the [README](https://github.com/scala/scala.github.com/blob/gh-pages/README.md) to build your SIP locally so you can ensure that it looks correct on the website.
 * Create a link to your SIP in the "pending sips" section of `index.md`
 * Commit your changes to your forked repository
-* Create a new [pull request](https://github.com/jsuereth/sips/pull/new/gh-pages).  This will notify the Scala SIP team.
+* Create a new [pull request](https://github.com/scala/scala.github.com/pull/new/gh-pages).  This will notify the Scala SIP team.
 
 ## What will happen next ##
 

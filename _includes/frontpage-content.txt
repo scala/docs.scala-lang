@@ -32,7 +32,10 @@
       <div class="span8">
 
         <h2>We're growing...</h2>
-        <p>We're working on porting much of Scala's useful documentation to this documentation repository. So hang on, more content is soon forthcoming.<p>
+        <p>We're working on porting much of Scala's useful documentation to this documentation repository. So hang on, content is soon forthcoming.<p>
+
+		<h3><a href="{{ site.baseurl }}/sips">Scala Improvement Process</a> <span class="label success">Available</span></h3>
+		<p>Read language improvement proposals, participate in discussions surrounding submitted proposals, or submit your own improvement proposal.</p>
 
 		<h3>Guides and Overviews <span class="label success">Some Available</span></h3>
 		<p>Some guides, such as Martin Odersky's Collection's are already available. Others are currently being converted to markdown markup for inclusion here.</p>
