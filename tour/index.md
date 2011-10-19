@@ -15,14 +15,14 @@ Furthermore, Scala's notion of pattern matching naturally extends to the process
 
 ## Scala is statically typed ##
 Scala is equipped with an expressive type system that enforces statically that abstractions are used in a safe and coherent manner. In particular, the type system supports:
-* generic classes
-* variance annotations
-* upper and lower type bounds,
-* inner classes and abstract types as object members
-* compound types
+* [generic classes](generic-classes.html)
+* [variance annotations](variances.html)
+* [upper](upper-type-bounds.html) and [lower](lower-type-bouunds.html) type bounds,
+* [inner classes](inner-classes.html) and [abstract types](abstract-types.html) as object members
+* [compound types](compound-types.html)
 * explicitly typed self references
 * views
-* polymorphic methods
+* [polymorphic methods](polymorphic-methods.html)
 
 A local type inference mechanism takes care that the user is not required to annotate the program with redundant type information. In combination, these features provide a powerful basis for the safe reuse of programming abstractions and for the type-safe extension of software.
 
