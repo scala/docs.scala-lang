@@ -1,5 +1,5 @@
 ---
-layout: sip
+layout: sip-landing
 title: SIP Submission Process
 ---
 

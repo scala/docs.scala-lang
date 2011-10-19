@@ -19,7 +19,7 @@
 	<li>
 		<img class="slide_thumb" alt="Thumbnail" src="{{ site.baseurl }}/resources/images/slide3.jpg" />
 		<p class="slide_title"><strong>Glossary</strong></p>
-		<p class="slide_content">Lost on some terminology? Check the glossary, direct from the book, <em>Programming in Scala</em>.</p>
+		<p class="slide_content">Lost on some terminology? Check the glossary, direct from the book, <em>Programming in Scala</em>. </p>
 		<p class="slide_button"><a href="#">Go there</a></p>
 	</li>
 </ul>
@@ -30,10 +30,32 @@
     <div class="row">
 
       <div class="span8">
-"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+
+        <h2>We're growing...</h2>
+        <p>We're working on porting much of Scala's useful documentation to this documentation repository. So hang on, more content is soon forthcoming.<p>
+
+		<h3>Guides and Overviews <span class="label success">Some Available</span></h3>
+		<p>Some guides, such as Martin Odersky's Collection's are already available. Others are currently being converted to markdown markup for inclusion here.</p>
+		
+		<h3>Tutorials <span class="label success">Some Available</span></h3>
+		<p>Some tutorials, such as the <em>Scala for Java Programmers</em> guide is already available. Others are currently being converted to markdown markup for inclusion here.</p>
+		
+		<h3>Glossary <span class="label warning">Pending Permission</span></h3>
+		<p>Pending permission from Artima Inc., we'd like to include the glossary from <em>Programming in Scala</em> here, for quick and easy reference.</p>				
+		
+		<h3>Cheatsheets <span class="label important">In Progress</span></h3>
+		<p>We're working on a section of the site devoted to cheatsheets. Contributed cheatsheets more than welcome!</p>
+		
+		<h3>Scala Style Guide <span class="label important">In Progress</span></h3>
+		<p>Daniel Spiewak and David Copland's <em>Scala Style Guide</em> will soon be ported here, thanks to Simon Ochsenreither's conversion to markdown.</p>		
+
+		<h3>Language Specification <span class="label notice">Just an Idea</span></h3>
+		<p>It would be nice to have an HTML version of the language specification, right? This is just an idea for now...</p>				
+		
       </div>
       <div class="span8">
-"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+		<h1>Contributions Welcomed!</h1>
+		This site was designed so it would be easy for core committers and the community alike to build documentation. We'd love help of any kind-- from detailed articles or overviews of Scala's language features, to help converting documents to markdown. If you'd like to help us, contact <a href="http://people.epfl.ch/heather.miller">Heather</a>.</p>
       </div>
     
     </div>

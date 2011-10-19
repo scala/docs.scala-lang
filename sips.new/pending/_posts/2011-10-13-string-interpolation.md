@@ -1,9 +1,11 @@
+
 ---
 layout: sip
 disqus: true
 title: SIP-11 String Interpolation
 ---
-### Martin Odersky ###
+
+**Martin Odersky **
 
 ## Motivation ##
 

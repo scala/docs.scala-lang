@@ -1,5 +1,5 @@
 ---
-layout: sip
+layout: sip-landing
 title: Scala Improvement Process
 ---
 
