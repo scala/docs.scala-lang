@@ -36,4 +36,11 @@ The committee will decide for each SIP whether it should be accepted, rejected, 
 
 ## Who is on the SIP committee ##
 
-TBD
+Right Now:
+
+* Martin Odersky
+* Paul Philips
+* Josh Suereth
+* Adriaan Moors
+
+We will ask new members to join from time to time.   The committee decides collectively, but Martin reserves the final say if there is a disagreement.
