@@ -8,19 +8,19 @@
 		<img class="slide_thumb" alt="Thumbnail" src="{{ site.baseurl }}/resources/images/slide1.jpg" />
 		<p class="slide_title"><strong>Overviews and Guides</strong></p>
 		<p class="slide_content">Collections, Actors, Swing, and more.</p>
-		<p class="slide_button"><a href="{{ site.baseurl}}/2.9.1/overviews">Go there</a></p>
+		<p class="slide_button"><a href="{{ site.baseurl}}/overviews">Go there</a></p>
 	</li>
 	<li>
 		<img class="slide_thumb" alt="Thumbnail" src="{{ site.baseurl }}/resources/images/slide2.jpg" />
 		<p class="slide_title"><strong>Tutorials</strong></p>
 		<p class="slide_content">Coming from Java? Python? Ruby? Tutorials which help the transition from language XYZ to Scala.</p>
-		<p class="slide_button"><a href="{{ site.baseurl}}/2.9.1/tutorials">Go there</a></p>
+		<p class="slide_button"><a href="{{ site.baseurl}}/tutorials">Go there</a></p>
 	</li>
 	<li>
 		<img class="slide_thumb" alt="Thumbnail" src="{{ site.baseurl }}/resources/images/slide3.jpg" />
 		<p class="slide_title"><strong>Glossary</strong></p>
 		<p class="slide_content">Lost on some terminology? Check the glossary, direct from the book, <em>Programming in Scala</em>. </p>
-		<p class="slide_button"><a href="{{ site.baseurl}}/2.9.1/glossary">Go there</a></p>
+		<p class="slide_button"><a href="{{ site.baseurl}}/glossary">Go there</a></p>
 	</li>
 </ul>
 </header>
@@ -37,19 +37,19 @@
 		<h3><a href="{{ site.baseurl }}/sips">Scala Improvement Process</a> <span class="label success">Available</span></h3>
 		<p>Read language improvement proposals, participate in discussions surrounding submitted proposals, or submit your own improvement proposal.</p>
 
-		<h3><a href="{{ site.baseurl }}/2.9.1/overviews">Guides and Overviews</a> <span class="label success">Some Available</span></h3>
+		<h3><a href="{{ site.baseurl }}/overviews">Guides and Overviews</a> <span class="label success">Some Available</span></h3>
 		<p>Some guides, such as Martin Odersky's Collections Overview are already available. Others are currently being converted to markdown markup for inclusion here.</p>
 		
-		<h3><a href="{{ site.baseurl }}/2.9.1/tutorials">Tutorials</a> <span class="label success">Some Available</span></h3>
+		<h3><a href="{{ site.baseurl }}/tutorials">Tutorials</a> <span class="label success">Some Available</span></h3>
 		<p>Some tutorials, such as the <em>Scala for Java Programmers</em> guide is already available. Others are currently being converted to markdown markup for inclusion here.</p>
 		
-		<h3><a href="{{ site.baseurl }}/2.9.1/glossary">Glossary</a> <span class="label warning">Pending Permission</span></h3>
+		<h3><a href="{{ site.baseurl }}/glossary">Glossary</a> <span class="label warning">Pending Permission</span></h3>
 		<p>Pending permission from Artima Inc., we'd like to include the glossary from <em>Programming in Scala</em> here, for quick and easy reference.</p>				
 		
-		<h3>Cheatsheets <span class="label important">In Progress</span></h3>
+		<h3><a href="{{ site.baseurl }}/cheatsheets">Cheatsheets</a> <span class="label important">In Progress</span></h3>
 		<p>We're working on a section of the site devoted to cheatsheets. Contributed cheatsheets more than welcome!</p>
 		
-		<h3>Scala Style Guide <span class="label important">In Progress</span></h3>
+		<h3><a href="{{ site.baseurl }}/style">Scala Style Guide</a> <span class="label important">In Progress</span></h3>
 		<p>Daniel Spiewak and David Copland's <em>Scala Style Guide</em> will soon be ported here, thanks to Simon Ochsenreither's conversion to markdown.</p>		
 
 		<h3>Language Specification <span class="label notice">Just an Idea</span></h3>

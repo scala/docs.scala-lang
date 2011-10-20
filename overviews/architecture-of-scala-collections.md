@@ -7,13 +7,13 @@ title: The Architecture of Scala Collections
 
 These pages describe the architecture of the Scala collections
 framework in detail. Compared to
-[the Scala 2.8 Collections API](http://scala.github.com/2.9.1/overviews/collections.html) you
+[the Scala 2.8 Collections API](http://scala.github.com/overviews/collections.html) you
 will find out more about the internal workings of the framework. You
 will also learn how this architecture helps you define your own
 collections in a few lines of code, while reusing the overwhelming
 part of collection functionality from the framework.
 
-[The Scala 2.8 Collections API](http://scala.github.com/2.9.1/overviews/collections.html)
+[The Scala 2.8 Collections API](http://scala.github.com/overviews/collections.html)
 contains a large number of collection
 operations, which exist uniformly on many different collection
 implementations. Implementing every collection operation anew for
