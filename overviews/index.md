@@ -7,11 +7,15 @@ title: Guides and Overviews
   <h1>Core <small>The essentials...</small></h1>
 </div>
 
-* [Collections]({{ site.baseurl }}/overviews/collections) <span class="label success">Available in Part</span>
-* [Architecture of Scala's Collections Library]({{ site.baseurl }}/overviews/architecture-of-scala-collections.html) <span class="label success">Available</span>
-* [Actors]({{ site.baseurl }}/overviews/actors.html) <span class="label success">Available</span>
+{% for post in site.categories.core %}
+* [{{ post.title }}]({{ site.baseurl }}{{ post.url }}) {% if post.label %}<span class="label {{ post.label-color }}">{{ post.label-text }}</span>{% endif %}
+{% if post.parent-dir %}
+  <ul>
+  {% for page in site.categories.core %}
+    <li>+1</li>
+  {% endfor %}
+  </ul>
+{% endif %}
+{% endfor %}      
 * Swing <span class="label important">In Progress</span>
-
-
-
 

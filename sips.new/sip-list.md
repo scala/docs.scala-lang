@@ -3,6 +3,13 @@ layout: sip-landing
 title: List of SIPs
 ---
 
+### Pending SIPs ###
+<ul class="post-list">
+  {% for post in site.categories.pending %}
+    <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a> <span class="date">( {{ post.date | date: "%b %Y" }} )</span></li>
+  {% endfor %}      
+</ul>
+
 ### Completed SIPs ###
 <ul class="post-list">
   {% for post in site.categories.completed %}

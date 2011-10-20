@@ -94,18 +94,21 @@
 
         .bottom ul {
                 margin: 0 0 18px 25px;
+                list-style: square;
         }
 
         .bottom ul li {
                 color: #404040;
                 font-size: 18px;
                 line-height: 24px;
+                margin: 0px;
          }
 
         .bottom ul li p {
                 color: #404040;
                 font-size: 18px;
                 line-height: 24px;
+                margin: 0px;
          }
 
         .bottom ul li a {
