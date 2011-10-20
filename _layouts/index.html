@@ -1,0 +1,27 @@
+---
+layout: default
+---
+
+{% include index-header.txt %}    
+{% include topbar.txt %}
+
+<header class="scrollingmenu">
+  <h2>{{ page.title }}</h2>
+</header>
+
+<div class="bottom">
+  <div class="container">
+    <div class="row">
+
+      <div class="span8">			
+        {{ content }}
+      </div>
+      <div class="span8">
+        Right sidebar.
+      </div>
+    
+    </div>
+  </div>
+</div>
+
+{% include frontpage-footer.txt %}    
