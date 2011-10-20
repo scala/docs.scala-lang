@@ -6,13 +6,15 @@ title: The Architecture of Scala Collections
 **Martin Odersky and Lex Spoon**
 
 These pages describe the architecture of the Scala collections
-framework in detail. Compared to the Scala 2.8 Collections API you
+framework in detail. Compared to
+[the Scala 2.8 Collections API](http://scala.github.com/overviews/collections.html) you
 will find out more about the internal workings of the framework. You
 will also learn how this architecture helps you define your own
 collections in a few lines of code, while reusing the overwhelming
 part of collection functionality from the framework.
 
-The Scala 2.8 Collections API contains a large number of collection
+[The Scala 2.8 Collections API](http://scala.github.com/overviews/collections.html)
+contains a large number of collection
 operations, which exist uniformly on many different collection
 implementations. Implementing every collection operation anew for
 every collection type would lead to an enormous amount of code, most
@@ -30,7 +32,7 @@ templates and other classes and traits that constitute the "building
 blocks" of the framework, as well as the construction principles they
 support.
 
-## Builders
+## Builders ##
 
 An outline of the `Builder` class:
 
@@ -80,9 +82,9 @@ of `buf` is computed, which yields the array buffer `buf` itself. This
 array buffer is then mapped with `_.toArray` to an array. So the end
 result is that `bldr` is a builder for arrays.
 
-## Factoring out common operations
+## Factoring out common operations ##
 
-Implementation of `filter` in `TraversableLike`:
+### Outline of class TraversableLike ###
 
     package scala.collection
   
@@ -134,8 +136,8 @@ collection implementation trait.
 
 Taking `filter` as an example, this operation is defined once for all
 collection classes in the trait `TraversableLike`. An outline of the
-relevant code is shown in the above outline of class
-`TraversableLike`. The trait declares two abstract methods, `newBuilder`
+relevant code is shown in the above [outline of class
+`TraversableLike`](#outline_of_class_traversablelike). The trait declares two abstract methods, `newBuilder`
 and `foreach`, which are implemented in concrete collection classes. The
 `filter` operation is implemented in the same way for all collections
 using these methods. It first constructs a new builder for the
@@ -152,7 +154,7 @@ instance, if `f` is a function from `String` to `Int`, and `xs` is a
 if `ys` is an `Array[String]`, then `ys map f` should give an
 `Array[Int]`. The problem is how to achieve that without duplicating
 the definition of the `map` method in lists and arrays. The
-`newBuilder`/`foreach` framework shown in class `TraversableLike` is
+`newBuilder`/`foreach` framework shown in [class `TraversableLike`](#outline_of_class_traversablelike) is
 not sufficient for this because it only allows creation of new
 instances of the same collection *type* whereas `map` needs an
 instance of the same collection *type constructor*, but possibly with
@@ -230,8 +232,9 @@ Implementation of `map` in `TraversableLike`:
     }
 
 The listing above shows trait `TraversableLike`'s implementation of
-`map`. It's quite similar to the implementation of `filter` shown in class
-`TraversableLike`. The principal difference is that where `filter` used
+`map`. It's quite similar to the implementation of `filter` shown in [class
+`TraversableLike`](#outline_of_class_traversablelike).
+The principal difference is that where `filter` used
 the `newBuilder` method, which is abstract in class `TraversableLike`, `map`
 uses a *builder factory* that's passed as an additional implicit
 parameter of type `CanBuildFrom`.
@@ -290,14 +293,14 @@ resolution to resolve constraints on the types of `map`, and virtual
 dispatch to pick the best dynamic type that corresponds to these
 constraints.
 
-## Integrating new collections
+## Integrating new collections ##
 
 What needs to be done if you want to integrate a new collection class,
 so that it can profit from all predefined operations at the right
 types? On the next few pages you'll be walked through two examples
 that do this.
 
-### Integrating sequences
+### Integrating sequences ###
 
 RNA Bases:
 
@@ -335,7 +338,7 @@ two-bit values in an integer. The idea, then, is to construct a
 specialized subclass of `Seq[Base]`, which uses this packed
 representation.
 
-RNA strands class, first version: 
+#### First version of RNA strands class ####
 
     import collection.IndexedSeqLike
     import collection.mutable.{Builder, ArrayBuffer}
@@ -374,7 +377,7 @@ RNA strands class, first version:
       def apply(bases: Base*) = fromSeq(bases)
     }
 
-The RNA strands class listing above presents the first version of this
+The [RNA strands class listing](#first_version_of_rna_strands_class) above presents the first version of this
 class. It will be refined later. The class `RNA1` has a constructor that
 takes an array of `Int`s as its first argument. This array contains the
 packed RNA data, with sixteen bases in each element, except for the
@@ -385,8 +388,8 @@ argument, `length`, specifies the total number of bases on the array
 defines two abstract methods, `length` and `apply`. These need to be
 implemented in concrete subclasses. Class `RNA1` implements `length`
 automatically by defining a parametric field of the same name. It
-implements the indexing method `apply` with the code given in class
-`RNA1`. Essentially, `apply` first extracts an integer value from the
+implements the indexing method `apply` with the code given in [class
+`RNA1`](#first_version_of_rna_strands_class). Essentially, `apply` first extracts an integer value from the
 `groups` array, then extracts the correct two-bit number from that
 integer using right shift (`>>`) and mask (`&`). The private constants `S`,
 `N`, and `M` come from the `RNA1` companion object. `S` specifies the size of
@@ -429,7 +432,7 @@ creation schemes in action:
     scala> val rna1 = RNA1(A, U, G, G, T)
     rna1: RNA1 = RNA1(A, U, G, G, T)
 
-## Adapting the result type of `RNA` methods
+## Adapting the result type of RNA methods ##
 
 Here are some more interactions with the `RNA1` abstraction:
 
@@ -446,14 +449,14 @@ The first two results are as expected, but the last result of taking
 the first three elements of `rna1` might not be. In fact, you see a
 `IndexedSeq[Base]` as static result type and a `Vector` as the dynamic
 type of the result value. You might have expected to see an `RNA1` value
-instead. But this is not possible because all that was done in class
-`RNA1` was making `RNA1` extend `IndexedSeq`. Class `IndexedSeq`, on the other
+instead. But this is not possible because all that was done in [class
+`RNA1`](#first_version_of_rna_strands_class) was making `RNA1` extend `IndexedSeq`. Class `IndexedSeq`, on the other
 hand, has a `take` method that returns an `IndexedSeq`, and that's
 implemented in terms of `IndexedSeq`'s default implementation,
 `Vector`. So that's what you were seeing on the last line of the
 previous interaction.
 
-RNA strands class, second version:
+### Second version of RNA strands class ###
 
     final class RNA2 private (
       val groups: Array[Int],
@@ -525,13 +528,13 @@ method `newBuilder` with result type `Builder[Base, RNA2]` needed to be
 defined, but a method `newBuilder` with result type
 `Builder[Base,IndexedSeq[Base]]` was found. The latter does not override
 the former. The first method, whose result type is `Builder[Base, RNA2]`, is an abstract method that got instantiated at this type in
-class `RNA2` by passing the `RNA2` type parameter to `IndexedSeqLike`. The
+[class `RNA2`](#second_version_of_rna_strands_class) by passing the `RNA2` type parameter to `IndexedSeqLike`. The
 second method, of result type `Builder[Base,IndexedSeq[Base]]`, is
 what's provided by the inherited `IndexedSeq` class. In other words, the
 `RNA2` class is invalid without a definition of `newBuilder` with the
 first result type.
 
-With the refined implementation of the `RNA2` class, methods like `take`,
+With the refined implementation of the [`RNA2` class](#second_version_of_rna_strands_class), methods like `take`,
 `drop`, or `filter` work now as expected:
 
     scala> val rna2 = RNA2(A, U, G, G, T)
@@ -543,7 +546,7 @@ With the refined implementation of the `RNA2` class, methods like `take`,
     scala> rna2 filter (U !=)
     res6: RNA2 = RNA2(A, G, G, T)
 
-## Dealing with map and friends
+## Dealing with map and friends ##
 
 However, there is another class of methods in collections that are not
 dealt with yet. These methods do not always return the collection type
@@ -588,7 +591,7 @@ yield a general sequence, but it cannot yield another RNA strand.
       Vector(A, U, G, G, T, missing, data)
 
 This is what you'd expect in the ideal case. But this is not what the
-`RNA2` class provides. In fact, if you ran the first two examples above
+[`RNA2` class](#second_version_of_rna_strands_class) provides. In fact, if you ran the first two examples above
 with instances of this class you would obtain:
 
     scala> val rna2 = RNA2(A, U, G, G, T)
@@ -626,7 +629,7 @@ collection classes. In essence, an implicit value of type
 of type `From`, to build with elements of type `Elem` a collection of type
 `To`."
 
-RNA strands class, final version:
+### Final version of RNA strands class ###
 
     final class RNA private (val groups: Array[Int], val length: Int) 
       extends IndexedSeq[Base] with IndexedSeqLike[Base, RNA] {
@@ -657,7 +660,7 @@ RNA strands class, final version:
       }
     }
 
-RNA companion object--final version:
+### Final version of RNA companion object ###
 
     object RNA {
     
@@ -696,8 +699,9 @@ of `CanBuildFrom` in the companion object of the RNA class. That
 instance should have type `CanBuildFrom[RNA, Base, RNA]`. Hence, this
 instance states that, given an RNA strand and a new element type `Base`,
 you can build another collection which is again an RNA strand. The two
-listings above on class `RNA` and its companion object show the
-details. Compared to class `RNA2` there are two important
+listings above on [class `RNA`](#final_version_of_rna_strands_class) and
+[its companion object](#final_version_of_rna_companion_object) show the
+details. Compared to [class `RNA2`](#second_version_of_rna_strands_class) there are two important
 differences. First, the `newBuilder` implementation has moved from the
 RNA class to its companion object. The `newBuilder` method in class `RNA`
 simply forwards to this definition. Second, there is now an implicit
@@ -713,14 +717,14 @@ is a final class, so any receiver of static type `RNA` also has `RNA` as
 its dynamic type. That's why `apply(from)` also simply calls `newBuilder`,
 ignoring its argument.
 
-That is it. The final `RNA` class implements all collection methods at
+That is it. The final [`RNA` class](#final_version_of_rna_strands_class) implements all collection methods at
 their natural types. Its implementation requires a little bit of
 protocol. In essence, you need to know where to put the `newBuilder`
 factories and the `canBuildFrom` implicits. On the plus side, with
 relatively little code you get a large number of methods automatically
 defined. Also, if you don't intend to do bulk operations like `take`,
 `drop`, `map`, or `++` on your collection you can choose to not go the extra
-length and stop at the implementation shown in for class `RNA1`.
+length and stop at the implementation shown in for [class `RNA1`](#first_version_of_rna_strands_class).
 
 The discussion so far centered on the minimal amount of definitions
 needed to define new sequences with methods that obey certain
@@ -741,7 +745,7 @@ immediately applies the given function to all bases contained in
 it. So the effort for array selection and bit unpacking is much
 reduced.
 
-## Integrating new sets and maps
+## Integrating new sets and maps ##
 
 As a second example you'll learn how to integrate a new kind of map
 into the collection framework. The idea is to implement a mutable map
@@ -754,7 +758,7 @@ storing the three strings "abc", "abd", "al", "all", "xy" would look
 like this:
 
 A sample patricia tree:
-<img src="http://www.scala-lang.org/docu/files/collections-api/patricia.png" width="550">
+<img src="{{ site.baseurl }}/resources/images/patricia.png" width="550">
 
 To find the node corresponding to the string "abc" in this trie,
 simply follow the subtree labeled "a", proceed from there to the
@@ -973,7 +977,7 @@ map `res0` and produces pairs of strings. The result of the `map` is a
 the `canBuildFrom` implicit in `PrefixMap` the result would just have been
 a general mutable map, not a prefix map.
 
-## Summary
+## Summary ##
 
 To summarize, if you want to fully integrate a new collection class
 into the framework you need to pay attention to the following points:
@@ -991,7 +995,7 @@ build new kinds of collections. Because of Scala's rich support for
 abstraction, each new collection type can have a large number of
 methods without having to reimplement them all over again.
 
-### Acknowledgement
+### Acknowledgement ###
 
 These pages contain material adapted from the 2nd edition of
 [Programming in Scala](http://www.artima.com/shop/programming_in_scala) by
