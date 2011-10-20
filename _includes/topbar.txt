@@ -16,9 +16,9 @@
                       </ul>
                 </li>
 
-                <li><a href="#">Guides</a></li>
-                <li><a href="#">Tutorials</a></li>
-                <li><a href="#">Glossary</a></li>
+                <li><a href="{{ site.baseurl }}/2.9.1/overviews">Guides</a></li>
+                <li><a href="{{ site.baseurl }}/2.9.1/tutorials">Tutorials</a></li>
+                <li><a href="{{ site.baseurl }}/2.9.1/glossary">Glossary</a></li>
                 <li><a href="#">Cheatsheets</a></li>
           </ul>
           <form action="">
