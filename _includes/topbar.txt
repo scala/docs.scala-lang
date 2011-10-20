@@ -16,14 +16,17 @@
                       </ul>
                 </li>
 
-                <li><a href="#">Guides</a></li>
-                <li><a href="#">Tutorials</a></li>
-                <li><a href="#">Glossary</a></li>
-                <li><a href="#">Cheatsheets</a></li>
+                <li><a href="{{ site.baseurl }}/2.9.1/overviews">Guides</a></li>
+                <li><a href="{{ site.baseurl }}/2.9.1/tutorials">Tutorials</a></li>
+                <li><a href="{{ site.baseurl }}/2.9.1/glossary">Glossary</a></li>
+                <li><a href="{{ site.baseurl }}/2.9.1/cheatsheets">Cheatsheets</a></li>
+                <li><a href="{{ site.baseurl }}/2.9.1/style">Style Guide</a></li>
           </ul>
+<!-- commented until search functionality integrated
           <form action="">
             <input type="text" placeholder="Search" />
           </form>
+-->
            </li>
           </ul>
         </div>
