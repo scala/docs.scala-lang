@@ -9,13 +9,14 @@ title: Guides and Overviews
 
 {% for post in site.categories.core %}
 * [{{ post.title }}]({{ site.baseurl }}{{ post.url }}) {% if post.label %}<span class="label {{ post.label-color }}">{{ post.label-text }}</span>{% endif %}
-{% if post.parent-dir %}
+{% if post.partof %}
   <ul>
-  {% for page in site.categories.core %}
-    <li>+1</li>
+  {% for pg in site.pages %}
+    {% if pg.partof == post.partof %}
+    <li><a href="{{ pg.url }}">{{pg.title}}</a></li>
+    {% endif %}
   {% endfor %}
   </ul>
 {% endif %}
-{% endfor %}      
+{% endfor %} 
 * Swing <span class="label important">In Progress</span>
-
