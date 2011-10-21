@@ -1,5 +1,6 @@
 ---
-layout: overview
+layout: tutorial
+tutorial: scala-tour
 title: Automatic Type-Dependent Closure Construction
 ---
 
