@@ -1,5 +1,5 @@
 ---
-layout: overview
+layout: tutorial
 title: Abstract Types
 tutorial: scala-tour
 ---
