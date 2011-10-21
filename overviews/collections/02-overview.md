@@ -4,7 +4,7 @@ title: Mutable and Immutable Collections
 disqus: true
 label-color: success
 label-text: Available in Part
-category: collections
+partof: collections
 ---
 
 Scala collections systematically distinguish between mutable and

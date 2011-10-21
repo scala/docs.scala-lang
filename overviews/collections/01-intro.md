@@ -4,7 +4,7 @@ title: Introduction
 disqus: true
 label-color: success
 label-text: Available in Part
-category: collections
+partof: collections
 ---
 
 **Martin Odersky, and Lex Spoon**
