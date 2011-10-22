@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-tutorial: scala-tour
 title: Automatic Type-Dependent Closure Construction
+tutorial: scala-tour
 ---
 
 Scala allows parameterless function names as parameters of methods. When such a method is called, the actual parameters for parameterless function names are not evaluated and a nullary function is passed instead which encapsulates the computation of the corresponding parameter (so-called *call-by-name* evalutation).

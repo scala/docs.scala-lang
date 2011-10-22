@@ -8,12 +8,12 @@ title: Guides and Overviews
 </div>
 
 {% for post in site.categories.core %}
-* [{{ post.title }}]({{ site.baseurl }}{{ post.url }}) {% if post.label %}<span class="label {{ post.label-color }}">{{ post.label-text }}</span>{% endif %}
+* [{{ post.title }}]({{ site.baseurl }}{{ post.url }}) <span class="label {{ post.label-color }}">{{ post.label-text }}</span>
 {% if post.partof %}
   <ul>
   {% for pg in site.pages %}
     {% if pg.partof == post.partof %}
-    <li><a href="{{ pg.url }}">{{pg.title}}</a></li>
+    <li><a href="{{ pg.url }}">{{ pg.title }}</a></li>
     {% endif %}
   {% endfor %}
   </ul>

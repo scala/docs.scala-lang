@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-tutorial: scala-tour
 title: Pattern Matching
+tutorial: scala-tour
 ---
 
 Scala has a built-in general pattern matching mechanism. It allows to match on any sort of data with a first-match policy. 
