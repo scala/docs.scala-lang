@@ -1,5 +1,5 @@
 ---
-layout: index
+layout: guides-index
 title: Guides and Overviews
 ---
 
