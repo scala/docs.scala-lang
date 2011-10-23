@@ -3,23 +3,21 @@ layout: index
 title: Tutorials
 ---
 
-<div class="span7">
+<div class="span8">
 
 	<div class="box">
-	  <p><strong>Holy guacamole! This is a warning!</strong> Best check yo self, you’re not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+      <h2>New to Scala?</h2>
+      <h3>Tutorials geared for people coming...</h3>
+	  <ul>
+		<li><a href="{{ site.baseurl }}/tutorials/scala-for-java-programmers.html">...from Java</a> <span class="label success">Available</span></li>
+		<li><a href="#">...from Ruby</a> <span class="label warning">In Progress</span></li>
+		<li><a href="#">...from Python</a> <span class="label warning">In Progress</span></li>		
+ 	  </ul>
 	</div>
-
-  <div class="page-header-index">
-    <h1>Scala...</h1>
-  </div>
-
-  <ul>
-    <li><a href="{{ site.baseurl }}/tutorials/scala-for-java-programmers.html">...From Java</a></li>
-  </ul>
-  
+	
 </div>
 
-<div class="span9">
+<div class="span8">
   <div class="page-header-index">
     <h1>A Tour of Scala <br /></h1><p class="under">Bite-size pieces of the essentials...</p>
   </div>
