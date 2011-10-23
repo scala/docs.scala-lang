@@ -3,7 +3,7 @@ layout: tutorial
 title: Regular Expression Patterns
 
 tutorial: scala-tour
-no: 22
+num: 22
 ---
 
 ## Right-ignoring sequence patterns ##

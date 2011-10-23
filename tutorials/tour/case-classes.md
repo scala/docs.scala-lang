@@ -3,7 +3,7 @@ layout: tutorial
 title: Case Classes
 
 tutorial: scala-tour
-no: 5
+num: 5
 ---
 
 Scala supports the notion of _case classes_. Case classes are regular classes which export their constructor parameters and which provide a recursive decomposition mechanism via [pattern matching](pattern-matching.html).

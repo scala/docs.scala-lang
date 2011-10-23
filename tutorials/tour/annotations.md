@@ -2,9 +2,8 @@
 layout: tutorial
 title: Annotations
 
-category: scala-tour
 tutorial: scala-tour
-no: 3
+num: 3
 ---
 
 Annotations associate meta-information with definitions.

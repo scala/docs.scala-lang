@@ -3,7 +3,7 @@ layout: tutorial
 title: Operators
 
 tutorial: scala-tour
-no: 17
+num: 17
 ---
 
 Any method which takes a single parameter can be used as an *infix operator* in Scala. Here is the definition of class `MyBool` which defines three methods `and`, `or`, and `negate`.

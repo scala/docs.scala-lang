@@ -3,7 +3,7 @@ layout: tutorial
 title: Traits
 
 tutorial: scala-tour
-no: 24
+num: 24
 ---
 
 Similar to interfaces in Java, traits are used to define object types by specifying the signature of the supported methods. Unlike Java, Scala allows traits to be partially implemented; i.e. it is possible to define default implementations for some methods. In contrast to classes, traits may not have constructor parameters.
