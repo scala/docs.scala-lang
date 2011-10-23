@@ -1,7 +1,9 @@
 ---
 layout: tutorial
 title: Views
+
 tutorial: scala-tour
+no: 32
 ---
 
 [Implicit parameters](implicit-parameters.html) and methods can also define implicit conversions called _views_. A view from type `S` to type `T` is defined by an implicit value which has function type `S => T`, or by a method convertible to a value of that type.

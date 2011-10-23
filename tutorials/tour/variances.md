@@ -1,7 +1,9 @@
 ---
 layout: tutorial
 title: Variances
+
 tutorial: scala-tour
+no: 31
 ---
 
 Scala supports variance annotations of type parameters of [generic classes](generic-classes.html). In contrast to Java 5 (aka. [JDK 1.5](http://java.sun.com/j2se/1.5/)), variance annotations may be added when a class abstraction is defined, whereas in Java 5, variance annotations are given by clients when a class abstraction is used.

@@ -1,7 +1,9 @@
 ---
 layout: tutorial
 title: Regular Expression Patterns
+
 tutorial: scala-tour
+no: 22
 ---
 
 ## Right-ignoring sequence patterns ##

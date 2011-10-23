@@ -1,7 +1,9 @@
 ---
 layout: tutorial
 title: Anonymous Function Syntax
+
 tutorial: scala-tour
+no: 14
 ---
 
 Scala provides a relatively lightweight syntax for defining anonymous functions. The following expression creates a successor function for integers:

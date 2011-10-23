@@ -1,7 +1,9 @@
 ---
 layout: tutorial
 title: Currying
+
 tutorial: scala-tour
+no: 15
 ---
 
 Methods may define multiple parameter lists. When a method is called with a fewer number of parameter lists, then this will yield a function taking the missing parameter lists as its arguments.
