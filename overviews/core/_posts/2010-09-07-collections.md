@@ -361,7 +361,7 @@ Two more methods exist in `Iterable` that return iterators: `grouped` and `slidi
 
 Trait `Iterable` also adds some other methods to `Traversable` that can be implemented efficiently only if an iterator is available. They are summarized in the following table.
 
-### Operations in Class Iterable ###
+### Operations in Trait Iterable ###
 
 | WHAT IT IS  	  	    | WHAT IT DOES				     |
 | ------       	       	    | ------					     |

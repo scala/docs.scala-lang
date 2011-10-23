@@ -184,7 +184,7 @@
    	    }
 
         .box ul li {
-          list-style-image: url({{ site.baseurl }}/resources/images/right-arrow.png);
+          list-style-image: url({{ site.baseurl }}/resources/images/check-mark.png);
  	    }
 
         .box ul li {

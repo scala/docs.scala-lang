@@ -1,10 +1,11 @@
 ---
-layout: overview
+layout: overview-large
 title: Mutable and Immutable Collections
+
 disqus: true
-label-color: success
-label-text: Available in Part
+
 partof: collections
+num: 2
 ---
 
 Scala collections systematically distinguish between mutable and

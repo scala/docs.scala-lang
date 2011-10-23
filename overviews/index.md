@@ -8,15 +8,28 @@ title: Guides and Overviews
 </div>
 
 {% for post in site.categories.core %}
-* [{{ post.title }}]({{ site.baseurl }}{{ post.url }}) <span class="label {{ post.label-color }}">{{ post.label-text }}</span>
 {% if post.partof %}
-  <ul>
+* {{ post.title }} <span class="label {{ post.label-color }}">{{ post.label-text }}</span>
   {% for pg in site.pages %}
-    {% if pg.partof == post.partof %}
-    <li><a href="{{ pg.url }}">{{ pg.title }}</a></li>
+    {% if pg.partof == post.partof and pg.outof %}
+      {% assign totalPages = pg.outof %}  
     {% endif %}
   {% endfor %}
+
+  {% if totalPages %}
+  <ul>
+  {% for i in (1..totalPages) %}
+    {% for pg in site.pages %}
+      {% if pg.partof == post.partof and pg.num and pg.num == i%}
+        <li><a href="{{ pg.url }}">{{ pg.title }}</a></li>
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
   </ul>
+  {% else %} **ERROR**. Couldn't find the total number of pages in this set of tutorial articles. Have you declared the `outof` tag in your YAML front matter?
+  {% endif %}
+{% else %}
+* [{{ post.title }}]({{ site.baseurl }}{{ post.url }}) <span class="label {{ post.label-color }}">{{ post.label-text }}</span>
 {% endif %}
 {% endfor %} 
 * Swing <span class="label important">In Progress</span>

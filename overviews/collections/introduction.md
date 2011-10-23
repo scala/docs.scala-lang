@@ -1,10 +1,12 @@
 ---
-layout: overview
+layout: overview-large
 title: Introduction
+
 disqus: true
-label-color: success
-label-text: Available in Part
+
 partof: collections
+num: 1
+outof: 7
 ---
 
 **Martin Odersky, and Lex Spoon**

@@ -86,6 +86,10 @@
                 color: #404040;
 		text-shadow: 0 1px 2px rgba(255,255,255,.5);
 	}
+	
+	.bottom h3 .label {
+		text-shadow: 0 0 0 rgba(255,255,255,.5);
+	}
 
 
    </style>
