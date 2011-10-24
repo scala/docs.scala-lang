@@ -10,8 +10,8 @@ title: Tutorials
       <h3>Tutorials geared for people coming...</h3>
 	  <ul>
 		<li><a href="{{ site.baseurl }}/tutorials/scala-for-java-programmers.html">...from Java</a> <span class="label success">Available</span></li>
-		<li><a href="#">...from Ruby</a> <span class="label warning">In Progress</span></li>
-		<li><a href="#">...from Python</a> <span class="label warning">In Progress</span></li>		
+		<li><a href="#">...from Ruby</a> <span class="label important">In Progress</span></li>
+		<li><a href="#">...from Python</a> <span class="label important">In Progress</span></li>		
  	  </ul>
 	</div>
 	

@@ -49,8 +49,8 @@
 		<h3><a href="{{ site.baseurl }}/cheatsheets">Cheatsheets</a> <span class="label important">In Progress</span></h3>
 		<p>We're working on a section of the site devoted to cheatsheets. Contributed cheatsheets more than welcome!</p>
 		
-		<h3><a href="{{ site.baseurl }}/style">Scala Style Guide</a> <span class="label important">In Progress</span></h3>
-		<p>Daniel Spiewak and David Copland's <em>Scala Style Guide</em> will soon be ported here, thanks to Simon Ochsenreither's conversion to markdown.</p>		
+		<h3><a href="{{ site.baseurl }}/style">Scala Style Guide</a> <span class="label success">Available</span></h3>
+		<p>Daniel Spiewak and David Copland's <em>Scala Style Guide</em> is now available. Thanks to them for putting together such an excellent style guide, and thanks to Simon Ochsenreither for converting it to markdown!</p>		
 
 		<h3>Language Specification <span class="label notice">Just an Idea</span></h3>
 		<p>It would be nice to have an HTML version of the language specification, right? This is just an idea for now...</p>				
