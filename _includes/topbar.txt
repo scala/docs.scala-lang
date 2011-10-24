@@ -22,11 +22,9 @@
                 <li><a href="{{ site.baseurl }}/cheatsheets">Cheatsheets</a></li>
                 <li><a href="{{ site.baseurl }}/style">Style Guide</a></li>
           </ul>
-<!-- commented until search functionality integrated
-          <form action="">
-            <input type="text" placeholder="Search" />
+          <form method="get" id="searchform" action="{{ site.baseurl }}/search.html">
+            <input type="text" placeholder="Search"  class="field" name="q" id="q"/>
           </form>
--->
            </li>
           </ul>
         </div>
