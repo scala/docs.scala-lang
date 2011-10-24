@@ -53,25 +53,24 @@
     <script type="text/javascript">
       jQuery(document).ready(function($) {
  
-      	      $(".scroll").click(function(event){		
-		      event.preventDefault();
-		      $('html,body').animate({scrollTop:$(this.hash).offset().top}, 500);
-                      $('html,body').animate({scrollTop:$(this.hash).offset().top-=50}, 500);
-                      $(this.hash).effect("highlight", {color: "#FFCC85"}, 3000);
-	      });
+            $(".scroll").click(function(event){		
+              event.preventDefault();
+              $('html,body').animate({scrollTop:$(this.hash).offset().top}, 500);
+              $('html,body').animate({scrollTop:$(this.hash).offset().top-=50}, 500);
+              $(this.hash).effect("highlight", {color: "#FFCC85"}, 3000);
+            });
       });
     </script>
 
     <script type="text/javascript">
-      function goToSubsection() 
-        {
+      $(window).ready(function goToSubsection() {
           if (window.location.hash) 
           {
-		      $('html,body').animate({scrollTop:$(window.location.hash).offset().top}, 500);
-                      $('html,body').animate({scrollTop:$(window.location.hash).offset().top-=50}, 500);
-                      $(window.location.hash).effect("highlight", {color: "#FFCC85"}, 3000);            
+              $('html,body').animate({scrollTop:$(window.location.hash).offset().top}, 500);
+              $('html,body').animate({scrollTop:$(window.location.hash).offset().top-=50}, 500);
+              $(window.location.hash).effect("highlight", {color: "#FFCC85"}, 3000);            
           }
-        }
+        });
     </script>
 
     <style type="text/css">
@@ -120,4 +119,4 @@
     </style>
 
 </head>
-  <body onload="goToSubsection(); styleCode()">
+  <body onload="styleCode()">
