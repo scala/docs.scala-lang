@@ -2,6 +2,7 @@
 layout: cheatsheet
 title: Scalacheat
 by: Brendan O'Connor
+about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheatsheet aims to be a quick reference of Scala syntactic constructions.
 ---
 
 ###### Contributed by {{ page.by }}
@@ -44,10 +45,33 @@ by: Brendan O'Connor
 |  `xs(2)`                                                                                                 |  paren indexing. ([slides](http://www.slideshare.net/Odersky/fosdem-2009-1013261/27)) |
 |  `1 :: List(2,3)`                                                                                        |  cons. |
 |  `1 to 5` _same as_ `1 until 6` <br> `1 to 10 by 2`                                                      |  range sugar. |
-|  `()` _(emptu parens)_                                                                                   |  sole member of the Unit type (like C/Java void). |
+|  `()` _(empty parens)_                                                                                   |  sole member of the Unit type (like C/Java void). |
 |  <h2 id="control_constructs">control constructs</h2>                                                     |                 |
 |  `if (check) happy else sad`                                                                             |  conditional. |
 |  `if (check) happy` _same as_ <br> `if (check) happy else ()`                                            |  conditional sugar. |
 |  `while (x < 5) { println(x); x += 1}`                                                                   |  while loop. |
 |  `do { println(x); x += 1} while (x < 5)`                                                                |  do while loop. |
-
+|  `import scala.util.control.Breaks._`<br>`breakable {`<br>`    for (x <- xs) {`<br>`        if (Math.random < 0.1) break`<br>`    }`<br>`}`|  break. ([slides](http://www.slideshare.net/Odersky/fosdem-2009-1013261/21)) |
+|  `for (x <- xs if x%2 == 0) yield x*10` _same as_ <br>`xs.filter(_%2 == 0).map(_*10)`                    |  for comprehension: filter/map |
+|  `for ((x,y) <- xs zip ys) yield x*y` _same as_ <br>`(xs zip ys) map { case (x,y) => x*y }`              |  for comprehension: destructuring bind |
+|  `for (x <- xs; y <- ys) yield x*y` _same as_ <br>`xs flatMap {x => ys map {y => x*y}}`                  |  for comprehension: cross product |
+|  `for (x <- xs; y <- ys) {`<br>    `println("%d/%d = %.1f".format(x,y, x*y))`<br>`}`                     |  for comprehension: imperative-ish<br>[sprintf-style](http://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax) |
+|  <h2 id="pattern_matching">pattern matching</h2>                                                         |                 |
+|  <span class="label success">Good</span> `(xs zip ys) map { case (x,y) => x*y }`<br> <span class="label important">Bad</span> `(xs zip ys) map( (x,y) => x*y )` |  use case in function args for pattern matching. |
+|  <h2 id="object_orientation">object orientation</h2>                                                     |                 |
+|  `class C(x: R)` _same as_ <br>`class C(private val x: R)`<br>`var c = new C(4)`                         |  constructor params - private |
+|  `class C(val x: R)`<br>`var c = new C(4)`<br>`c.x`                                                      |  constructor params - public |
+|  `class C(var x: R) {`<br>`assert(x > 0, "positive please")`<br>`var y = x`<br>`val readonly = 5`<br>`private var secret = 1`<br>`def this = this(42)`<br>`}`|<br>constructor is class body<br>declare a public member<br>declare a gettable but not settable member<br>declare a private member<br>alternative constructor|
+|  `new{ ... }`                                                                                            |  anonymous class |
+|  `abstract class D { ... }`                                                                              |  define an abstract class. (non-createable) |
+|  `class C extends D { ... }`                                                                             |  define an inherited class. |
+|  `class D(var x: R)`<br>`class C(x: R) extends D(x)`                                                     |  inheritance and constructor params. (wishlist: automatically pass-up params by default)
+|  `object O extends D { ... }`                                                                            |  define a singleton. (module-like) |
+|  `trait T { ... }`<br>`class C extends T { ... }`<br>`class C extends D with T { ... }`                  |  traits.<br>interfaces-with-implementation. no constructor params. [mixin-able]({{ site.baseurl }}/tutorials/tour/mixin-class-composition.html).
+|  `trait T1; trait T2`<br>`class C extends T1 with T2`<br>`class C extends D with T1 with T2`             |  multiple traits. |
+|  `class C extends D { override def f = ...}`	                                                           |  must declare method overrides. |
+|  `new java.io.File("f")`                   	                                                           |  create object. |
+|  <span class="label important">Bad</span> `new List[Int]`<br> <span class="label success">Good</span> `List(1,2,3)` |  type error: abstract type<br>instead, convention: callable factory shadowing the type |
+|  `classOf[String]`                                                                                       |  class literal. |
+|  `x.isInstanceOf[String]`                                                                                |  type check (runtime) |
+|  `x.asInstanceOf[String]`                                                                                |  type cast (runtime) |
