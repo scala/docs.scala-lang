@@ -34,3 +34,19 @@ by: Brendan O'Connor
 |  <h2 id="packages">packages</h2>                                                                         |                 |
 |  `import scala.collection._`                                                                             |  wildcard import. |
 |  `import scala.collection.Vector` <br> `import scala.collection.{Vector, Sequence}`                      |  selective import. |
+|  `import scala.collection.{Vector => Vec28}`                                                             |  renaming import. |
+|  `package pkg` _at start of file_ <br> `package pkg { ... }`                                             |  declare a package. |
+|  <h2 id="data_structures">data structures</h2>                                                           |                 |
+|  `(1,2,3)`                                                                                               |  tuple literal. (`Tuple3`) |
+|  `var (x,y,z) = (1,2,3)`                                                                                 |  destructuring bind: tuple unpacking via pattern matching. |
+|  <span class="label important">Bad</span>`var x,y,z = (1,2,3)`                                           |  hidden error: each assigned to the entire tuple. |
+|  `var xs = List(1,2,3)`                                                                                  |  list (immutable). |
+|  `xs(2)`                                                                                                 |  paren indexing. ([slides](http://www.slideshare.net/Odersky/fosdem-2009-1013261/27)) |
+|  `1 :: List(2,3)`                                                                                        |  cons. |
+|  `1 to 5` _same as_ `1 until 6` <br> `1 to 10 by 2`                                                      |  range sugar. |
+|  `()` _(emptu parens)_                                                                                   |  sole member of the Unit type (like C/Java void). |
+|  <h2 id="control_constructs">control constructs</h2>                                                     |                 |
+|  `if (check) happy else sad`                                                                             |  conditional. |
+|  `if (check) happy` _same as_ <br> `if (check) happy else ()`                                            |  conditional sugar. |
+|  `while (x < 5) { println(x); x += 1}`                                                                   |  while loop. |
+|  `do { println(x); x += 1} while (x < 5)`                                                                |  do while loop. |
