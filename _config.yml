@@ -1,2 +1,15 @@
+title: "Scala Documentation"
+description: "Documentation for the Scala programming language- Tutorials, Overviews, Cheatsheets, and more."
+keywords: 
+- Scala
+- Documentation
+- Tutorial
+- Scala Programming Language
+- Reference
+- Cheatsheet
+- Article
+- Document
+- Guide
 pygments: true
 permalink: /:categories/:title.html
+
