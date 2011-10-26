@@ -60,7 +60,6 @@
               event.preventDefault();
               $('html,body').animate({scrollTop:$(this.hash).offset().top}, 500);
               $('html,body').animate({scrollTop:$(this.hash).offset().top-=50}, 500);
-              $(this.hash).effect("highlight", {color: "#FFCC85"}, 3000);
             });
       });
     </script>
@@ -312,6 +311,14 @@
            width: inherit;
        }
 
+       div#scroller h6 {
+           padding-left: 14px;	
+       }
+
+       p#about {
+      	 margin-top: -8px;
+         padding-left: 14px;
+       }
 
    </style>
 

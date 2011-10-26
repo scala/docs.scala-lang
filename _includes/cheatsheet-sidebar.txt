@@ -10,5 +10,10 @@
         {% endif %}
       {% endfor %}
     </ul>
+    {% for pg in site.pages %}
+      {% if pg.about %}   
+        </br><h6>About</h6><p id="about">{{ pg.about }}</p>
+      {% endif %}
+    {% endfor %}
   </div>
 </div>
