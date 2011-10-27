@@ -2,6 +2,8 @@
 layout: tutorial
 title: Introduction
 
+disqus: true
+
 tutorial: scala-tour
 num: 1
 ---

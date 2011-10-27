@@ -2,6 +2,8 @@
 layout: tutorial
 title: Implicit Parameters
 
+disqus: true
+
 tutorial: scala-tour
 num: 10
 ---

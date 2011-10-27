@@ -2,6 +2,8 @@
 layout: tutorial
 title: XML Processing
 
+disqus: true
+
 tutorial: scala-tour
 num: 33
 ---

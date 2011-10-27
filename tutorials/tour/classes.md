@@ -2,6 +2,8 @@
 layout: tutorial
 title: Classes
 
+disqus: true
+
 tutorial: scala-tour
 num: 4
 ---

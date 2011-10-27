@@ -2,6 +2,8 @@
 layout: tutorial
 title: Compound Types
 
+disqus: true
+
 tutorial: scala-tour
 num: 6
 ---

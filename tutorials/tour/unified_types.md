@@ -2,6 +2,8 @@
 layout: tutorial
 title: Unified Types
 
+disqus: true
+
 tutorial: scala-tour
 num: 30
 ---

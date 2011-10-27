@@ -2,6 +2,8 @@
 layout: tutorial
 title: Variances
 
+disqus: true
+
 tutorial: scala-tour
 num: 31
 ---

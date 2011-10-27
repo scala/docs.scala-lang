@@ -2,6 +2,8 @@
 layout: tutorial
 title: Upper Type Bounds
 
+disqus: true
+
 tutorial: scala-tour
 num: 25
 ---

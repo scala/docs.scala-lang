@@ -2,6 +2,8 @@
 layout: tutorial
 title: Explicitly Typed Self References
 
+disqus: true
+
 tutorial: scala-tour
 num: 27
 ---

@@ -2,6 +2,8 @@
 layout: tutorial
 title: Nested Functions
 
+disqus: true
+
 tutorial: scala-tour
 num: 13
 ---

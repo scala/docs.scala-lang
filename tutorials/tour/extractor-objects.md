@@ -2,6 +2,8 @@
 layout: tutorial
 title: Extractor Objects
 
+disqus: true
+
 tutorial: scala-tour
 num: 8
 ---

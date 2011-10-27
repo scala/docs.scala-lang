@@ -2,6 +2,8 @@
 layout: tutorial
 title: Traits
 
+disqus: true
+
 tutorial: scala-tour
 num: 24
 ---

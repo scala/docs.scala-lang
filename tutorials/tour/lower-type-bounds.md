@@ -2,6 +2,8 @@
 layout: tutorial
 title: Lower Type Bounds
 
+disqus: true
+
 tutorial: scala-tour
 num: 26
 ---

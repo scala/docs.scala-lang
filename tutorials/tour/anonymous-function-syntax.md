@@ -2,6 +2,8 @@
 layout: tutorial
 title: Anonymous Function Syntax
 
+disqus: true
+
 tutorial: scala-tour
 num: 14
 ---

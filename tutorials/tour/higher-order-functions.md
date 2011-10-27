@@ -2,6 +2,8 @@
 layout: tutorial
 title: Higher-order Functions
 
+disqus: true
+
 tutorial: scala-tour
 num: 18
 ---

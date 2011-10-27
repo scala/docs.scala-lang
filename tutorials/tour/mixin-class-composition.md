@@ -2,6 +2,8 @@
 layout: tutorial
 title: Mixin Class Composition
 
+disqus: true
+
 tutorial: scala-tour
 num: 12
 ---

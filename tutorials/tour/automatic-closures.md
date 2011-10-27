@@ -2,6 +2,8 @@
 layout: tutorial
 title: Automatic Type-Dependent Closure Construction
 
+disqus: true
+
 tutorial: scala-tour
 num: 16
 ---

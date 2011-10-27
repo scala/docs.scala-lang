@@ -2,6 +2,8 @@
 layout: tutorial
 title: Regular Expression Patterns
 
+disqus: true
+
 tutorial: scala-tour
 num: 22
 ---

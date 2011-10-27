@@ -2,6 +2,8 @@
 layout: tutorial
 title: Generic Classes
 
+disqus: true
+
 tutorial: scala-tour
 num: 9
 ---

@@ -2,6 +2,8 @@
 layout: tutorial
 title: Inner Classes
 
+disqus: true
+
 tutorial: scala-tour
 num: 11
 ---

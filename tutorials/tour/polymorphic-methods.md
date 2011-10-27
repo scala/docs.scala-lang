@@ -2,6 +2,8 @@
 layout: tutorial
 title: Polymorphic Methods
 
+disqus: true
+
 tutorial: scala-tour
 num: 21
 ---

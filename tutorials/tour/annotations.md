@@ -2,6 +2,8 @@
 layout: tutorial
 title: Annotations
 
+disqus: true
+
 tutorial: scala-tour
 num: 3
 ---

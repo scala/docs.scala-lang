@@ -2,6 +2,8 @@
 layout: tutorial
 title: Pattern Matching
 
+disqus: true
+
 tutorial: scala-tour
 num: 20
 ---

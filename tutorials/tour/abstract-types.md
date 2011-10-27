@@ -2,6 +2,8 @@
 layout: tutorial
 title: Abstract Types
 
+disqus: true
+
 tutorial: scala-tour
 num: 2
 outof: 33

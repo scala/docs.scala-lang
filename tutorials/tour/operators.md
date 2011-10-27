@@ -2,6 +2,8 @@
 layout: tutorial
 title: Operators
 
+disqus: true
+
 tutorial: scala-tour
 num: 17
 ---

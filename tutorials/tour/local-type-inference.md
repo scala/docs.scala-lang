@@ -2,6 +2,8 @@
 layout: tutorial
 title: Local Type Inference
 
+disqus: true
+
 tutorial: scala-tour
 num: 29
 ---

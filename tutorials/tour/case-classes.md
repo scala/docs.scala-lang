@@ -2,6 +2,8 @@
 layout: tutorial
 title: Case Classes
 
+disqus: true
+
 tutorial: scala-tour
 num: 5
 ---
