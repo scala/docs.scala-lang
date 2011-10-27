@@ -6,7 +6,6 @@ disqus: true
 
 partof: collections
 num: 1
-outof: 7
 ---
 
 **Martin Odersky, and Lex Spoon**
