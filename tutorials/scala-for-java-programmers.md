@@ -1,6 +1,8 @@
 ---
 layout: overview
 title: A Scala Tutorial for Java Programmers
+
+disqus: true
 ---
 
 By Michel Schinz and Philipp Haller
