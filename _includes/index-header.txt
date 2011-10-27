@@ -174,7 +174,8 @@
                 color:#ffffff;
                 background-color:#b12c67;
                 background-repeat:repeat-x;background-image:-khtml-gradient(linear, left top, left bottom, from(#b12c67), to(#340a06));
-                background-image:-moz-linear-gradient(top, #b12c67, #eedc94);background-image:-ms-linear-gradient(top, #b12c67, #340a06);
+                background-image:-moz-linear-gradient(top, #b12c67, #340a06);
+                background-image:-ms-linear-gradient(top, #b12c67, #340a06);
                 background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0%, #b12c67), color-stop(100%, #340a06));
                 background-image:-webkit-linear-gradient(top, #b12c67, #340a06);
                 background-image:-o-linear-gradient(top, #b12c67, #340a06);
@@ -228,7 +229,6 @@
         }
 
         .page-header-index{margin-bottom:17px;border-bottom:1px solid #808080;-webkit-box-shadow:0 1px 0 rgba(255, 255, 255, 0.5);-moz-box-shadow:0 1px 0 rgba(255, 255, 255, 0.5);box-shadow:0 1px 0 rgba(255, 255, 255, 0.5);}
-
 
    </style>
 
