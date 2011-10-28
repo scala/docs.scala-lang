@@ -39,8 +39,8 @@ of asterisks falls under the \_third\_ column, not the second, as is
 customary in Java.
 
 See the
-[AuthorDocs](http://lampsvn.epfl.ch/trac/scala/wiki/Scaladoc/AuthorDocs)
-at the EPFL Scala wiki for more technical info on formatting Scaladoc
+[AuthorDocs](https://wiki.scala-lang.org/display/SW/Writing+Documentation)
+on the Scala wiki for more technical info on formatting Scaladoc
 
 ## General Style
 
