@@ -49,7 +49,7 @@ constructor arguments and extensions.:
 All class/object/trait members should be declared interleaved with
 newlines. The only exceptions to this rule are `var` and `val`. These
 may be declared without the intervening newline, but only if none of the
-fields have scaladoc and if all of the fields have simple (max of 20-ish
+fields have ScalaDoc and if all of the fields have simple (max of 20-ish
 chars, one line) definitions:
 
     class Foo {
@@ -127,7 +127,7 @@ Generally speaking, you should choose whichever style is more readable
 on a case-by-case basis. For example, your method declaration may be
 very long, while the expression body may be quite short. In such a case,
 it may be more readable to put the expression on the next line rather
-than making the declaration line unreadably long.
+than making the declaration line too long.
 
 When the body of a method cannot be concisely expressed in a single line
 or is of a non-functional nature (some mutable state, local or
@@ -180,7 +180,7 @@ There are three main reasons you should do this:
 
     When using implicit parameters, and you use the `implicit` keyword,
     it applies to the entire parameter list. Thus, if you want only some
-    parameters to be impicit, you must use multiple parameter lists.
+    parameters to be implicit, you must use multiple parameter lists.
 
 3.  For type inference
 
