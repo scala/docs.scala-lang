@@ -55,10 +55,15 @@
 		<h3>Language Specification <span class="label notice">Just an Idea</span></h3>
 		<p>It would be nice to have an HTML version of the language specification, right? This is just an idea for now...</p>				
 		
+		<p>&nbsp;</p><p>&nbsp;</p>
+		
       </div>
       <div class="span8">
 		<h1>Contributions Welcomed!</h1>
 		This site was designed so it would be easy for core committers and the community alike to build documentation. We'd love help of any kind-- from detailed articles or overviews of Scala's language features, to help converting documents to markdown. If you'd like to help us, contact <a href="http://people.epfl.ch/heather.miller">Heather</a>.</p>
+		
+		<div id="recentcomments" class="dsq-widget"><h2 class="dsq-widget-title">Recent Comments</h2><script type="text/javascript" src="http://scalasip.disqus.com/recent_comments_widget.js?num_items=5&hide_avatars=0&avatar_size=32&excerpt_length=200"></script></div>
+		
       </div>
     
     </div>
