@@ -9,7 +9,7 @@ title: Contributing
 
 [docs.scala-lang.org](http://docs.scala-lang.org) was intended to make it easier for the Scala team and the community at large to easily collect, organize, and "make public" many different types of documentation while making it easy for users to find, interact, and help us improve that documentation. 
 
-This website is an open-source repository of official Scala documentation, hosted on [github](https://github.com/scala/scala.github.com), and always ready for contributions.
+This website is an open-source repository of official Scala documentation, hosted on [github](https://github.com/scala/scala.github.com), that is always ready for contributions.
 
 ### A Need for Better Documentation
 
@@ -33,9 +33,9 @@ There are currently 3 different _types_ of documentation supported in this repos
 
 ### Implementation
 
-This documentation repository is open-source, available on [github](https://github.com/scala/scala.github.com), and contribution-ready. 
+This documentation repository is open-source, it lives in [github repository](https://github.com/scala/scala.github.com), and is always contribution-ready. 
 
-It's statically generated from [Markdown](http://en.wikipedia.org/wiki/Markdown) source using [Jekyll](https://github.com/mojombo/jekyll), and hosted on [GitHub Pages](http://pages.github.com/). This workflow was chosen so as to make it as easy as possible for core commiters and the community alike to produce HTML documentation, and as easy as possible to publish it in a central location.
+It's statically generated from [Markdown](http://en.wikipedia.org/wiki/Markdown) source using [Jekyll](https://github.com/mojombo/jekyll), and hosted on [GitHub Pages](http://pages.github.com/). This workflow was chosen so as to make it as easy as possible for core committers and the community alike to produce HTML documentation, and as easy as possible to publish it in a central location.
 
 ## Submitting Docs
 
@@ -52,7 +52,7 @@ For one to contribute a document, one must simply fork the [repo](https://github
 	
 	One can contribute code by indenting it 4 spaces, or in-line by putting backticks around it like so, `def foo`
 	
-Everything else is automatically generated for you, such as tables of contents, styling, or disqus comments (if specified).
+Everything else is automatically generated for you; tables of contents, and most index pages. And of course, the styling is already taken care of for you.
 
 ### Criteria for Docs to be Accepted
 
@@ -62,7 +62,7 @@ The goal of this documentation repository is to be tighter and more organized th
 - **be polished** it must be thorough, complete, correct, organized, and "article-like" (personal programming notes don't quite fit.)
 - **be maintained** if the document might require revisions from time to time, it should come with an owner
 
-If you have something you're thinking about contributing, or writing in order to contribute-- we'd probably love to consider it! Please don't hesitate to contact [Heather](http://people.epfl.ch) with any questions, concerns, clarifications, etc.
+If you have something you're thinking about contributing, or that you're thinking about writing in order to contribute-- we'd love to consider it! Please don't hesitate to contact [Heather](http://people.epfl.ch) with any questions, concerns, clarifications, etc.
 
 ## Document Templates
 
@@ -72,7 +72,7 @@ If you have something you're thinking about contributing, or writing in order to
 
 ### Guides/Overviews
 
-A guide or an overview that can be logically placed on **one** page must be placed in the directory `overviews/RELEVANT-CATEGORY/_posts` with the file name in the format `YYYY-MM-dd-{title}.md`, and header: 
+A guide or an overview that can be logically placed on **one** page must be placed in the directory `overviews/RELEVANT-CATEGORY/_posts` with the file name in the format `YYYY-MM-dd-title-separarted-by-dashes.md`, and header: 
 
     ---
     layout: overview
@@ -83,7 +83,7 @@ The rest of the document should, of course, be written in [Markdown](http://en.w
 
 At the moment, `RELEVANT-CATEGORY` corresponds to only a single category, "core," because we are currently focusing on building up documentation of core libraries. However, expect more categories here in the future.
 
-If your document consists of **multiple** pages, like the [Collections]({{ site.baseurl }}/overviews/collections/index.html) overview, an ordering must be specified and a name must be assigned to the collection of pages. For example, the following header might be used for a document in the collections overview: 
+If your document consists of **multiple** pages, like the [Collections]({{ site.baseurl }}/overviews/collections/index.html) overview, an ordering must be specified, by numbering documents in their logical order with `num`, and a name must be assigned to the collection of pages using `partof`. For example, the following header might be used for a document in the collections overview: 
 
     ---
     layout: overview-large
@@ -93,7 +93,7 @@ If your document consists of **multiple** pages, like the [Collections]({{ site.
     num: 10
     ---
 
-At least one document must contain a tag in the header that indicates the total number of documents in the large overview. Putting it on the last page in the overview is often best:
+A **single** document in the collection must contain a tag in the header, `outof`, that indicates the total number of documents in the large overview. Putting it on the last page in the overview is often best:
 
     ---
     layout: overview-large
@@ -110,7 +110,7 @@ Index pages, such as [http://docs.scala-lang.org/overviews/index.html](http://do
 
 ### Tutorials
 
-At the moment, a tutorial that can be logically placed on **one** page must be placed in the directory `tutorials/` with the file name in the format `{title-separated-by-dashes}.md`. For the moment, single-page tutorials use the same layout as single-page overviews:
+At the moment, a tutorial that can be logically placed on **one** page must be placed in the directory `tutorials/` with the file name in the format `title-separated-by-dashes.md`. For the moment, single-page tutorials use the same layout as single-page overviews:
 
     ---
     layout: overview
