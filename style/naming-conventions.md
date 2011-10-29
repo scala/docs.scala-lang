@@ -166,10 +166,10 @@ any danger of mistakenly typing `name _` instead of `name_`. With heavy
 use of Scala's type inference, such a mistake could potentially lead to
 a very confusing error.
 
-Note that the Java getter/setter paradigm was often used to work aroun a
+Note that the Java getter/setter paradigm was often used to work around a
 lack of first class support for Properties and bindings. In Scala, there
 are libraries that support properties and bindings. The convention is to
-use an immutable refrence to a property class that contains its own
+use an immutable reference to a property class that contains its own
 getter and setter. For example:
 
     class Company {
@@ -299,7 +299,7 @@ single letter, for clarity:
 
     class HigherOrderMap[Key[_], Value[_]] { ... }
 
-The single letter form is (sometimes) acceptble for fundamental concepts
+The single letter form is (sometimes) acceptable for fundamental concepts
 used throughout a codebase, such as `F[_]` for Functor and `M[_]` for
 Monad.
 
