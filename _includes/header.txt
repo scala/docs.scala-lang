@@ -116,6 +116,10 @@
            width: inherit;
        }
 
+       input, textarea, select, .uneditable-input {
+	       width: 165px;
+	   }
+
     </style>
 
 </head>

@@ -22,6 +22,7 @@
                 <li><a href="{{ site.baseurl }}/glossary">Glossary</a></li>
                 <li><a href="{{ site.baseurl }}/cheatsheets">Cheatsheets</a></li>
                 <li><a href="{{ site.baseurl }}/style">Style Guide</a></li>
+                <li><a href="{{ site.baseurl }}/contributing.html">Contributing</a></li>
           </ul>
           <form method="get" id="searchform" action="{{ site.baseurl }}/search.html">
             <input type="text" placeholder="Search"  class="field" name="q" id="q"/>

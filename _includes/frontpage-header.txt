@@ -130,6 +130,11 @@
 	    width: 0;
 	}
 	
+	/* every page should need this */
+	input, textarea, select, .uneditable-input {
+	       width: 165px;
+	}
+	
    </style>
 
 </head>

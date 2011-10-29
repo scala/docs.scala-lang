@@ -230,6 +230,10 @@
 
         .page-header-index{margin-bottom:17px;border-bottom:1px solid #808080;-webkit-box-shadow:0 1px 0 rgba(255, 255, 255, 0.5);-moz-box-shadow:0 1px 0 rgba(255, 255, 255, 0.5);box-shadow:0 1px 0 rgba(255, 255, 255, 0.5);}
 
+       input, textarea, select, .uneditable-input {
+	       width: 165px;
+	   }
+
    </style>
 
 </head>

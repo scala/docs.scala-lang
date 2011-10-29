@@ -1,3 +1,4 @@
+<div id="wrapper">
 
 <header class="scrollingmenu">
 <!--<h2>Here is some type of meaningful headline.</h2>-->
@@ -60,7 +61,9 @@
       </div>
       <div class="span8">
 		<h1>Contributions Welcomed!</h1>
-		This site was designed so it would be easy for core committers and the community alike to build documentation. We'd love help of any kind-- from detailed articles or overviews of Scala's language features, to help converting documents to markdown. If you'd like to help us, contact <a href="http://people.epfl.ch/heather.miller">Heather</a>.</p>
+		This site was designed so it would be easy for core committers and the community alike to build documentation. We'd love help of any kind-- from detailed articles or overviews of Scala's language features, to help converting documents to markdown. 
+		
+		<p><b>If you'd like to help us, please see the <a href="{{ site.baseurl }}/contributing.html">Contributing</a> section of the site, and feel free to contact <a href="http://people.epfl.ch/heather.miller">Heather</a>.</b></p>
 		
 		<div id="recentcomments" class="dsq-widget"><h2 class="dsq-widget-title">Recent Comments</h2><script type="text/javascript" src="http://scalasip.disqus.com/recent_comments_widget.js?num_items=5&hide_avatars=0&avatar_size=32&excerpt_length=200"></script></div>
 		
@@ -70,4 +73,4 @@
   </div>
 </div>
 
-
+</div>
