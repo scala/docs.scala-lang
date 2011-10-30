@@ -17,12 +17,26 @@
                       </ul>
                 </li>
 
-                <li><a href="{{ site.baseurl }}/overviews">Guides</a></li>
-                <li><a href="{{ site.baseurl }}/tutorials">Tutorials</a></li>
-                <li><a href="{{ site.baseurl }}/glossary">Glossary</a></li>
-                <li><a href="{{ site.baseurl }}/cheatsheets">Cheatsheets</a></li>
-                <li><a href="{{ site.baseurl }}/style">Style Guide</a></li>
-                <li><a href="{{ site.baseurl }}/contributing.html">Contributing</a></li>
+                <li class="menu">
+                      <a href="#" class="menu">Learn</a>
+                      <ul class="menu-dropdown">
+                        <li><a href="{{ site.baseurl }}/overviews">Guides & Overviews</a></li>
+                        <li><a href="{{ site.baseurl }}/tutorials">Tutorials</a></li>
+                        <li><a href="{{ site.baseurl }}/style">Scala Style Guide</a></li>
+                      </ul>
+                </li>
+
+                <li class="menu">
+                      <a href="#" class="menu">Quickref</a>
+                      <ul class="menu-dropdown">
+                        <li><a href="{{ site.baseurl }}/glossary">Glossary</a></li>
+                        <li><a href="{{ site.baseurl }}/cheatsheets">Cheatsheets</a></li>
+                      </ul>
+                </li>
+
+                <li><a href="{{ site.baseurl }}/contribute.html">Contribute</a></li>
+                <li><a href="{{ site.baseurl }}/sips">SIPs</a></li>
+                <li><a href="http://wiki.scala-lang.org">Wiki</a></li>
           </ul>
           <form method="get" id="searchform" action="{{ site.baseurl }}/search.html">
             <input type="text" placeholder="Search"  class="field" name="q" id="q"/>

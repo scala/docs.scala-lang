@@ -1,6 +1,6 @@
 ---
-layout: contributing
-title: Contributing
+layout: contribute
+title: Contribute
 ---
 
 ###### Heather Miller

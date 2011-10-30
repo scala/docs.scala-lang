@@ -2,7 +2,7 @@
 layout: default
 ---
 
-{% include cheatsheet-header.txt %}
+{% include contributing-header.txt %}
 
 <div class="wrapper">
   {% include topbar.txt %}
@@ -15,12 +15,12 @@ layout: default
     <div class="container">
       <div class="row">
 
-        <div class="span3">
-          {% include cheatsheet-sidebar.txt %}
-        </div>
-    
-        <div class="span13">
+        <div class="span11">
           {{ content }}
+        </div>
+
+        <div class="span5">
+          {% include contributing-toc.txt %}
         </div>
     
       </div>
@@ -29,4 +29,5 @@ layout: default
   </div>
   <div class="push"></div>
 </div>
+
 {% include footer.txt %}    

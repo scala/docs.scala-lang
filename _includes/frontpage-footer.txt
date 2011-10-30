@@ -1,28 +1,36 @@
-<script type="text/javascript" charset="utf-8">
-  var is_ssl = ("https:" == document.location.protocol);
-  var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
-  document.write(unescape("%3Cscript src='" + asset_host + "javascripts/feedback-v2.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-
-<script type="text/javascript" charset="utf-8">
-  var feedback_widget_options = {};
-
-  feedback_widget_options.display = "overlay";  
-  feedback_widget_options.company = "scaladocs";
-  feedback_widget_options.placement = "left";
-  feedback_widget_options.color = "#404040";
-  feedback_widget_options.style = "idea";
-  
-  
-  
-  
-  
-  
-  
-
-  var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
-</script>
-
+	<div class="footer">
+		<div class="container">
+			<ul>
+				<li><h5>API</h5></li>
+				<li><a href="http://www.scala-lang.org/api/current/">Current</a></li>
+				<li><a href="http://www.scala-lang.org/archives/downloads/distrib/files/nightly/docs/library/index.html">Nightly</a></li>
+			</ul>
+			<ul>
+				<li><h5>Learn</h5></li>
+				<li><a href="{{ site.baseurl }}/overviews">Guides & Overviews</a></li>
+				<li><a href="{{ site.baseurl }}/tutorials">Tutorials</a></li>
+				<li><a href="{{ site.baseurl }}/style">Scala Style Guide</a></li>				
+			</ul>
+			<ul>
+				<li><h5>Quickref</h5></li>
+				<li><a href="{{ site.baseurl }}/glossary">Glossary</a></li>
+				<li><a href="{{ site.baseurl }}/cheatsheets">Cheatsheets</a></li>
+			</ul>
+			<ul>
+				<li><h5>Contribute</h5></li>
+				<li><a href="http://github.com/scala/scala.github.com">Source Code</a></li>
+				<li><a href="{{ site.baseurl }}/contribute.html">Contributors Guide</a></li>
+			</ul>
+			<ul>
+				<li><h5>Other Resources</h5></li>
+				<li><a href="http://wiki.scala-lang.org">Wiki</a></li>
+				<li><a href="{{ site.baseurl }}/sips">Scala Improvement Process</a></li>				
+			</ul>						
+		</div>
+		<div class="container copyright">
+     		<p>Copyright &copy; 2011 EPFL. All rights reserved.</p>
+    	</div>
+	</div>
   </body>
 </html>
 
