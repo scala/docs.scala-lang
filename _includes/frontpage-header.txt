@@ -31,6 +31,18 @@
     <script type="text/javascript" src="{{ site.baseurl }}/resources/javascript/jquery.accordionza.js"></script>
     <script src="{{ site.baseurl }}/resources/javascript/frontpage.js" type="text/javascript" ></script>
 
+    <script type="text/javascript">
+
+      $(document).ready(function() {
+		
+		var offset = $(".push").height() + $(".scrollingmenu").height() + 36;
+		if ( offset + $('.bottom').height() < $(window).height() ) {
+			var height = $(window).height() - offset;
+		   	$('.bottom').css("height", height);			
+		}
+		
+      });
+    </script>
 
     <style type="text/css">
       html {
