@@ -2,24 +2,25 @@
 layout: default
 ---
 {% include header.txt %}
-{% include topbar.txt %}
+<div class="wrapper">
+  {% include topbar.txt %}
 
-<div class="container">
-  <div class="row">
+  <div class="container">
+    <div class="row">
     
-    {% if page.title %}<h1>{{ page.title }}</h1>{% else %}<h1>{{ site.title }}</h1>{% endif %}    
+      {% if page.title %}<h1>{{ page.title }}</h1>{% else %}<h1>{{ site.title }}</h1>{% endif %}    
     
-    <div class="span10">
-      {{ content }}
-      {% if page.disqus == true %}{% include disqus.txt %}{% endif %}
-    </div>
+      <div class="span10">
+        {{ content }}
+        {% if page.disqus == true %}{% include disqus.txt %}{% endif %}
+      </div>
     
-    <div class="span6">
-      {% include tutorial-toc.txt %}
-    </div>
-    
+      <div class="span6">
+        {% include tutorial-toc.txt %}
+      </div>
 	
+    </div>
   </div>
+  <div class="push"></div>
 </div>
-
 {% include footer.txt %}    
