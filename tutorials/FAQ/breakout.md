@@ -1,10 +1,10 @@
 ---
-layout: tutorial
+layout: overview-large
 title: What is breakOut, and how does it work?
 
 disqus: true
 
-tutorial: FAQ
+partof: FAQ
 num: 5
 ---
 You might have encountered some code like the one below, and wonder what is

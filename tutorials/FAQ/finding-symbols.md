@@ -1,10 +1,10 @@
 ---
-layout: tutorial
+layout: overview-large
 title: Finding Symbols
 
 disqus: true
 
-tutorial: FAQ
+partof: FAQ
 num: 1
 outof: 5
 ---

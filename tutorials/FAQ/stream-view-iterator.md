@@ -1,10 +1,10 @@
 ---
-layout: tutorial
+layout: overview-large
 title: What is the difference between view, stream and iterator?
 
 disqus: true
 
-tutorial: FAQ
+partof: FAQ
 num: 4
 ---
 First, they are all _non-strict_. That has a particular mathematical meaning

@@ -1,10 +1,10 @@
 ---
-layout: tutorial
+layout: overview-large
 title: What does "strict", "non-strict" and "lazy" mean?
 
 disqus: true
 
-tutorial: FAQ
+partof: FAQ
 num: 3
 ---
 

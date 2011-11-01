@@ -19,16 +19,16 @@ title: Tutorials
 	    <h1>FAQ <br /></h1><p class="under">Frequently Asked Questions (and their answers!)</p>
 	</div>
 	{% for pg in site.pages %}
-	  {% if pg.tutorial == "FAQ" and pg.outof %}
-	   {% assign totalPages = pg.outof %}  
+	  {% if pg.partof == "FAQ" and pg.outof %}
+	   {% assign totalPagesFAQ = pg.outof %}  
 	  {% endif %}
 	{% endfor %}
 
-	{% if totalPages %}
+	{% if totalPagesFAQ %}
 	  <ul>
-	  {% for i in (1..totalPages) %}
+	  {% for i in (1..totalPagesFAQ) %}
 	    {% for pg in site.pages %}
-	      {% if pg.tutorial == "FAQ" and pg.num and pg.num == i %}
+	      {% if pg.partof == "FAQ" and pg.num and pg.num == i %}
 	        <li class="FAQ"><a href="{{ pg.url }}">{{ pg.title }}</a></li> 
 	      {% endif %}
 	    {% endfor %}
@@ -45,13 +45,13 @@ title: Tutorials
   </div>
   {% for pg in site.pages %}
     {% if pg.tutorial == "scala-tour" and pg.outof %}
-      {% assign totalPages = pg.outof %}  
+      {% assign totalPagesTour = pg.outof %}  
     {% endif %}
   {% endfor %}
 
-  {% if totalPages %}
+  {% if totalPagesTour %}
     <ul>
-    {% for i in (1..totalPages) %}
+    {% for i in (1..totalPagesTour) %}
       {% for pg in site.pages %}
         {% if pg.tutorial == "scala-tour" and pg.num and pg.num == i %}
           <li class="tour-of-scala"><a href="{{ pg.url }}">{{ pg.title }}</a></li> 

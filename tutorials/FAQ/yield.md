@@ -1,10 +1,10 @@
 ---
-layout: tutorial
+layout: overview-large
 title: How does yield work?
 
 disqus: true
 
-tutorial: FAQ
+partof: FAQ
 num: 2
 ---
 Though there's a `yield` in other languages such as Python and Ruby, Scala's
