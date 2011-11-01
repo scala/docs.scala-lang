@@ -15,6 +15,28 @@ title: Tutorials
  	  </ul>
 	</div>
 	
+	<div class="page-header-index">
+	    <h1>FAQ <br /></h1><p class="under">Frequently Asked Questions (and their answers!)</p>
+	</div>
+	{% for pg in site.pages %}
+	  {% if pg.tutorial == "FAQ" and pg.outof %}
+	   {% assign totalPages = pg.outof %}  
+	  {% endif %}
+	{% endfor %}
+
+	{% if totalPages %}
+	  <ul>
+	  {% for i in (1..totalPages) %}
+	    {% for pg in site.pages %}
+	      {% if pg.tutorial == "FAQ" and pg.num and pg.num == i %}
+	        <li class="FAQ"><a href="{{ pg.url }}">{{ pg.title }}</a></li> 
+	      {% endif %}
+	    {% endfor %}
+	  {% endfor %}
+	  </ul>
+	{% else %} **ERROR**. Couldn't find the total number of pages in this set of tutorial articles. Have you declared the `outof` tag in your YAML front matter?
+	{% endif %}	
+	
 </div>
 
 <div class="span8">
@@ -41,27 +63,4 @@ title: Tutorials
   {% endif %}
 </div>
 
-<div class="span8">
-  <div class="page-header-index">
-    <h1>FAQ <br /></h1><p class="under">Frequently Asked Questions (and their answers!)</p>
-  </div>
-  {% for pg in site.pages %}
-    {% if pg.tutorial == "FAQ" and pg.outof %}
-      {% assign totalPages = pg.outof %}  
-    {% endif %}
-  {% endfor %}
-
-  {% if totalPages %}
-    <ul>
-    {% for i in (1..totalPages) %}
-      {% for pg in site.pages %}
-        {% if pg.tutorial == "FAQ" and pg.num and pg.num == i %}
-          <li class="FAQ"><a href="{{ pg.url }}">{{ pg.title }}</a></li> 
-        {% endif %}
-      {% endfor %}
-    {% endfor %}
-    </ul>
-  {% else %} **ERROR**. Couldn't find the total number of pages in this set of tutorial articles. Have you declared the `outof` tag in your YAML front matter?
-  {% endif %}
-</div>
 
