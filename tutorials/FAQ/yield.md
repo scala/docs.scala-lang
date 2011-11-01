@@ -14,19 +14,19 @@ of for comprehensions -- a generalization of Ruby and Python's list-comprehensio
 Scala's "for comprehensions" are equivalent to Haskell's "do" notation, and it
 is nothing more than a syntactic sugar for composition of multiple monadic
 operations. As this statement will most likely not help anyone who needs help,
-let's try again... :-)
+let's try again...
 
 Translating for-comprehensions
 ------------------------------
 
-Scala's "for comprehensions" is syntactic sugar for composition of multiple
-operations with map, flatMap and filter. Or foreach. Scala actually translates
+Scala's "for comprehensions" are syntactic sugar for composition of multiple
+operations with `map`, `flatMap` and `filter`. Or `foreach`. Scala actually translates
 a for-expression into calls to those methods, so any class providing them, or a
 subset of them, can be used with for comprehensions.
 
 First, let's talk about the translations. There are very simple rules:
 
-1) This
+#### Example 1
 
     for(x <- c1; y <- c2; z <-c3) {...}
 
@@ -34,7 +34,7 @@ is translated into
 
     c1.foreach(x => c2.foreach(y => c3.foreach(z => {...})))
 
-2) This
+#### Example 2
 
     for(x <- c1; y <- c2; z <- c3) yield {...}
 
@@ -42,7 +42,7 @@ is translated into
 
     c1.flatMap(x => c2.flatMap(y => c3.map(z => {...})))
 
-3) This
+#### Example 3
 
     for(x <- c; if cond) yield {...}
 
@@ -57,7 +57,7 @@ or, on Scala 2.8, into
 with a fallback into the former if method `withFilter` is not available but
 `filter` is. Please see the edit below for more information on this.
 
-4) This
+#### Example 4
 
     for(x <- c; y = ...) yield {...}
 
@@ -71,8 +71,8 @@ look, indeed, better. Once you start composing them, though, you can easily get
 lost in parenthesis and nesting levels. When that happens, for comprehensions
 are usually much clearer.
 
-I'll show one simple example, and intentionally ommit any explanation. You can
-decide which syntax was easier to understand.
+I'll show one simple example, and intentionally omit any explanation. You can
+decide which syntax is easier to understand.
 
     l.flatMap(sl => sl.filter(el => el > 0).map(el => el.toString.length))
 
@@ -85,7 +85,7 @@ or
     } yield el.toString.length
 
 
-About `withFilter`, and strictness
+About withFilter, and strictness
 ----------------------------------
 
 
