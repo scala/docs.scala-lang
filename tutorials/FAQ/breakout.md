@@ -22,7 +22,7 @@ Note that it has two parameters. The first is your function and the second is
 an implicit. If you do not provide that implicit, Scala will choose the most
 _specific_ one available. 
 
-**About `breakOut`**
+### About breakOut
 
 So, what's the purpose of `breakOut`? Consider the example given at the
 beginning , You take a list of strings, transform each string into a tuple
@@ -68,7 +68,7 @@ So `CanBuildFrom` is contra-variant on its first type parameter. Because
 
 Since such a builder exists, Scala can use it to produce the desired output.
 
-**About Builders**
+### About Builders
 
 A lot of methods from Scala's collections library consists of taking the
 original collection, processing it somehow (in the case of `map`, transforming
@@ -91,7 +91,7 @@ best builder possible. For example, if I were to write `Map('a' ->
 The magic of producing the best possible `Builder` from the known types of the
 expression is performed through this `CanBuildFrom` implicit.
 
-**About `CanBuildFrom`**
+### About CanBuildFrom
 
 To better explain what's going on, I'll give an example where the collection
 being mapped is a `Map` instead of a `List`. I'll go back to `List` later. For
@@ -181,7 +181,7 @@ Scala will choose the most specific implicit available. In the first case, it
 was the first `CanBuildFrom`. In the second case, as the first did not match,
 it chose the second `CanBuildFrom`.
 
-**Back to the first example**
+### Back to the first example
 
 Let's see the first example, `List`'s and `map`'s definition (again) to
 see how the types are inferred:
