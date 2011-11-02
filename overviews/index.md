@@ -32,4 +32,4 @@ title: Guides and Overviews
 * [{{ post.title }}]({{ site.baseurl }}{{ post.url }}) <span class="label {{ post.label-color }}">{{ post.label-text }}</span>
 {% endif %}
 {% endfor %} 
-* Swing <span class="label important">In Progress</span>
+* Swing <span class="label important">In&nbsp;Progress</span>
