@@ -86,3 +86,7 @@
 	    clear: both;
 	    padding: 10px 0 20px;
 	}
+	
+	.label {
+		white-space: nowrap;
+	}
