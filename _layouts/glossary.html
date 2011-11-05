@@ -1,0 +1,34 @@
+---
+layout: default
+---
+
+{% include glossary-header.txt %}
+
+<div class="wrapper">
+  {% include topbar.txt %}
+
+  <header class="scrollingmenu">
+    <h1>{{ page.title }}</h1>
+  </header>
+
+  <div class="bottom">
+    <div class="container">
+      <div class="row">
+
+        <div class="span3">
+          {% include glossary-sidebar.txt %}
+        </div>
+    
+        <div class="span13">
+          <div id="glossary">
+	        {{ content }}
+	      </div>
+        </div>
+    
+      </div>
+	
+    </div>
+  </div>
+  <div class="push"></div>
+</div>
+{% include footer.txt %}    
