@@ -3,9 +3,6 @@ layout: glossary
 title: Glossary
 pinsurl: 
 ---
-
-###### Glossary from the definitive book on Scala, [Programming in Scala](http://www.artima.com/shop/programming_in_scala). 
-
 <div class="filterbar">
   <span class="title">Look up a term</span>
   <input class="field" id="filter" type="text" />
