@@ -78,7 +78,7 @@ To _define_ something in a Scala program is to give it a name and an implementat
 * #### direct subclass
 A class is a _direct subclass_ of its direct superclass.
 
-* #### direct subclass
+* #### direct superclass
 The class from which a class or trait is immediately derived, the nearest class above it in its inheritance hierarchy. If a class `Parent` is mentioned in a class `Child`’s optional extends clause, then `Parent` is the direct superclass of `Child`. If a trait is mentioned in `Child`’s extends clause, the trait’s direct superclass is the `Child`’s direct superclass. If `Child` has no extends clause, then `AnyRef` is the direct superclass of `Child`. If a class’s direct superclass takes type parameters, for example class `Child` extends `Parent[String]`, the direct superclass of `Child` is still `Parent`, not `Parent[String]`. On the other hand, `Parent[String]` would be the direct supertype of `Child`. See [supertype](#supertype) for more discussion of the distinction between class and type.
 
 * #### equality
