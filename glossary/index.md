@@ -1,7 +1,6 @@
 ---
 layout: glossary
 title: Glossary
-pinsurl: 
 ---
 <div class="filterbar">
   <span class="title">Look up a term</span>
@@ -277,7 +276,7 @@ A file containing top level definitions and statements, which can be run directl
 The value being matched on in a `match` expression. For example, in “`s match { case _ => }`”, the selector is `s`.
 
 * #### self type
-A _self type_ of a trait is the assumed type of `this`, the receiver, to be used within the trait. Any concrete class that mixes in the trait must ensure that its type conforms to the trait’s self type. The most common use of self types is for dividing a large class into several traits (as described in Chapter 29 of [Programming in Scala]({{ page.pinsurl }})).
+A _self type_ of a trait is the assumed type of `this`, the receiver, to be used within the trait. Any concrete class that mixes in the trait must ensure that its type conforms to the trait’s self type. The most common use of self types is for dividing a large class into several traits (as described in Chapter 29 of [Programming in Scala](http://www.artima.com/shop/programming_in_scala).
 
 * #### semi-structured data
 XML data is semi-structured. It is more structured than a flat binary file or text file, but it does not have the full structure of a programming language’s data structures.
