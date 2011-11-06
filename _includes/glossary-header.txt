@@ -85,16 +85,6 @@
 	                  count++;
 	              }
 	
-		          // Fix window height. Have to better organize this...
-				  var offset = $(".push").height() + $(".scrollingmenu").height() + 36;
-				  if ( offset + $('#glossary').height() < $(window).height() ) {
-					  var height = $(window).height()-offset;
-				   	  $('.bottom').css("height", height);			
-				  }
-				  else {
-				   	$('.bottom').css("height", $('#glossary').height());
-				  }
-	
 	          });
 
 	          // Update the count
@@ -125,16 +115,6 @@
 			  $("#glossary ul li").each(function(){
       	    	$(this).show();
 			  });
-			
-	          // Fix window height. Have to better organize this...
-			  var offset = $(".push").height() + $(".scrollingmenu").height() + 36;
-			  if ( offset + $('#glossary').height() < $(window).height() ) {
-				  var height = $(window).height()-offset;
-			   	  $('.bottom').css("height", height);			
-			  }
-			  else {
-			   	$('.bottom').css("height", $('#glossary').height());
-			  }		
 			
               $('html,body').animate({scrollTop:$('li '+this.hash).offset().top}, 500);
               $('html,body').animate({scrollTop:$('li '+this.hash).offset().top-=50}, 500);
