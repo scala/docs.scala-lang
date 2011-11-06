@@ -182,7 +182,7 @@
         }
 
         .bottom ul li {
-                margin-bottom: 12px;
+                margin-bottom: 6px;
          }
 
 	    .bottom ul li p {
@@ -232,7 +232,7 @@
        div#toc ul a {
            display: block;
            list-style: none;
-           line-height: 8px;
+           line-height: 13px;
            font-size: 13px;
            color: #0069D6;
            font-weight: bold;
