@@ -1,11 +1,7 @@
 ---
 layout: glossary
 title: Glossary
-pinsurl: 
 ---
-
-###### Glossary from the definitive book on Scala, [Programming in Scala](http://www.artima.com/shop/programming_in_scala). 
-
 <div class="filterbar">
   <span class="title">Look up a term</span>
   <input class="field" id="filter" type="text" />
@@ -81,7 +77,7 @@ To _define_ something in a Scala program is to give it a name and an implementat
 * #### direct subclass
 A class is a _direct subclass_ of its direct superclass.
 
-* #### direct subclass
+* #### direct superclass
 The class from which a class or trait is immediately derived, the nearest class above it in its inheritance hierarchy. If a class `Parent` is mentioned in a class `Child`’s optional extends clause, then `Parent` is the direct superclass of `Child`. If a trait is mentioned in `Child`’s extends clause, the trait’s direct superclass is the `Child`’s direct superclass. If `Child` has no extends clause, then `AnyRef` is the direct superclass of `Child`. If a class’s direct superclass takes type parameters, for example class `Child` extends `Parent[String]`, the direct superclass of `Child` is still `Parent`, not `Parent[String]`. On the other hand, `Parent[String]` would be the direct supertype of `Child`. See [supertype](#supertype) for more discussion of the distinction between class and type.
 
 * #### equality
@@ -280,7 +276,7 @@ A file containing top level definitions and statements, which can be run directl
 The value being matched on in a `match` expression. For example, in “`s match { case _ => }`”, the selector is `s`.
 
 * #### self type
-A _self type_ of a trait is the assumed type of `this`, the receiver, to be used within the trait. Any concrete class that mixes in the trait must ensure that its type conforms to the trait’s self type. The most common use of self types is for dividing a large class into several traits (as described in Chapter 29 of [Programming in Scala]({{ page.pinsurl }})).
+A _self type_ of a trait is the assumed type of `this`, the receiver, to be used within the trait. Any concrete class that mixes in the trait must ensure that its type conforms to the trait’s self type. The most common use of self types is for dividing a large class into several traits (as described in Chapter 29 of [Programming in Scala](http://www.artima.com/shop/programming_in_scala).
 
 * #### semi-structured data
 XML data is semi-structured. It is more structured than a flat binary file or text file, but it does not have the full structure of a programming language’s data structures.

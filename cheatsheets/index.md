@@ -36,6 +36,7 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |  `import scala.collection._`                                                                             |  wildcard import. |
 |  `import scala.collection.Vector` <br> `import scala.collection.{Vector, Sequence}`                      |  selective import. |
 |  `import scala.collection.{Vector => Vec28}`                                                             |  renaming import. |
+|  `import java.util.{Date => _, _}`                                                                       |  import all from java.util except Date. |
 |  `package pkg` _at start of file_ <br> `package pkg { ... }`                                             |  declare a package. |
 |  <h2 id="data_structures">data structures</h2>                                                           |                 |
 |  `(1,2,3)`                                                                                               |  tuple literal. (`Tuple3`) |
