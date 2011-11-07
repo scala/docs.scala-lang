@@ -42,7 +42,7 @@
 		<h3><a href="{{ site.baseurl }}/tutorials">Tutorials</a> <span class="label success">Some Available</span></h3>
 		<p>Some tutorials, such as the <em>Scala for Java Programmers</em> guide is already available. Others are currently being converted to markdown markup for inclusion here.</p>
 		
-		<h3><a href="{{ site.baseurl }}/glossary">Glossary</a> <span class="label warning">Pending Permission</span></h3>
+		<h3><a href="{{ site.baseurl }}/glossary">Glossary</a> <span class="label success">Available</span></h3>
 		<p>Pending permission from Artima Inc., we'd like to include the glossary from <em>Programming in Scala</em> here, for quick and easy reference.</p>				
 		
 		<h3><a href="{{ site.baseurl }}/cheatsheets">Cheatsheets</a> <span class="label success">Available</span></h3>
