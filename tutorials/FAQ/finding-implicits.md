@@ -38,15 +38,13 @@ of methods, so why doesn't Scala complain about ambiguity when, say, calling
 Overflow][4], but stating the problem in more general terms.  The example was
 copied from there, because it is referred to in the answer.
 
-Types of Implicits
-==================
+## Types of Implicits
 
 Implicits in Scala refers to either a value that can be passed "automatically",
 so to speak, or a conversion from one type to another that is made
 automatically.
 
-Implicit Conversion
--------------------
+### Implicit Conversion
 
 Speaking very briefly about the latter type, if one calls a method `m` on an
 object `o` of a class `C`, and that class does not support method `m`, then
@@ -59,8 +57,7 @@ support `m`. A simple example would be the method `map` on `String`:
 an implicit conversion from `String` to `StringOps` available (see `implicit
 def augmentString` on `Predef`).
 
-Implicit Parameters
--------------------
+### Implicit Parameters
 
 The other kind of implicit is the implicit _parameter_. These are passed to
 method calls like any other parameter, but the compiler tries to fill them in
@@ -73,8 +70,7 @@ method declaration:
 
     def foo[T](t: T)(implicit integral: Integral[T]) {println(integral)}
 
-View Bounds
------------
+### View Bounds
 
 There's one situation where an implicit is both an implicit conversion and an
 implicit parameter. For example:
@@ -98,8 +94,7 @@ syntactic sugar, `getIndex` can be defined like this:
 This syntactic sugar is described as a _view bound_, akin to an _upper bound_
 (`CC <: Seq[Int]`) or a _lower bound_ (`T >: Null`).
 
-Context Bounds
---------------
+### Context Bounds
 
 Another common pattern in implicit parameters is the _type class pattern_. This
 pattern enables the provision of common interfaces to classes which did not
@@ -136,8 +131,7 @@ implicit `Ordering`. To create a method `reverseSort`, one could write:
 Because `Ordering[T]` was implicitly passed to `reverseSort`, it can then pass
 it implicitly to `sorted`.
 
-Where do Implicits Come From?
-=============================
+## Where do Implicits Come From?
 
 When the compiler sees the need for an implicit, either because you are calling
 a method which does not exist on the object's class, or because you are calling
@@ -169,22 +163,19 @@ specification or test cases, please report so I can fix.
 
 Let's give examples for them.
 
-Implicits Defined in Current Scope
-----------------------------------
+### Implicits Defined in Current Scope
 
     implicit val n: Int = 5
     def add(x: Int)(implicit y: Int) = x + y
     add(5) // takes n from the current scope
 
-Explicit Imports
-----------------
+### Explicit Imports
 
     import scala.collection.JavaConversions.mapAsScalaMap
     def env = System.getenv() // Java map
     val term = env("TERM")    // implicit conversion from Java Map to Scala Map
     
-Wildcard Imports
-----------------
+### Wildcard Imports
 
     def sum[T : Integral](list: List[T]): T = {
         val integral = implicitly[Integral[T]]
@@ -192,8 +183,7 @@ Wildcard Imports
         list.foldLeft(integral.zero)(_ + _)
     }
 
-Same Scope in Other Files
--------------------------
+### Same Scope in Other Files
 
 **Edit**: It seems this does not have a different precedence. If you have some
 example that demonstrates a precedence distinction, please make a comment.
@@ -203,8 +193,7 @@ This is like the first example, but assuming the implicit definition is in a
 different file than its usage. See also how [package objects][2] might be used
 in to bring in implicits.
 
-Companion Objects of a Type
----------------------------
+### Companion Objects of a Type
 
 There are two object companions of note here. First, the object companion of
 the "source" type is looked into. For instance, inside the object `Option`
@@ -246,8 +235,7 @@ Note that companion objects of super classes are also looked into. For example:
 This is how Scala found the implicit `Numeric[Int]` and `Numeric[Long]` in your
 question, by the way, as they are found inside `Numeric`, not `Integral`.
     
-Implicit scope of an argument's type
-------------------------------------
+### Implicit scope of an argument's type
 
 If you have a method with an argument type `A`, then the implicit scope of type
 `A` will also be considered. By "implicit scope" I mean that all these rules
@@ -271,8 +259,7 @@ conversions of that parameter, but of the whole expression. For example:
 
 **This available only since Scala 2.9.1.**
 
-Implicit scope of type arguments
---------------------------------
+### Implicit scope of type arguments
 
 This is required to make the type class pattern really work. Consider
 `Ordering`, for instance... it comes with some implicits in its companion
@@ -309,8 +296,7 @@ doesn't make much sense. The implicit looked for above is `Ordering[A]`, where
 
 **This available only since Scala 2.8.0.**
 
-Outer Objects for Nested Types
-------------------------------
+### Outer Objects for Nested Types
 
 I haven't actually seen examples of this. I'd be grateful if someone could
 share one. The principle is simple:
@@ -325,8 +311,7 @@ share one. The principle is simple:
     val b = new a.B(3)
     val s: String = b  // s == "B: 3"
 
-Other Dimensions
-----------------
+### Other Dimensions
 
 I'm pretty sure this was a joke, but this answer might not be up-to-date. So
 don't take this question as being the final arbiter of what is happening, and
