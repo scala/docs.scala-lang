@@ -228,3 +228,7 @@ So,
 That means `breakOut` must, necessarily, return a type or subtype of
 `CanBuildFrom[List[String], (Int, String), Map[Int, String]]`.
 
+This answer was originally submitted in response to [this question on Stack Overflow][1].
+
+  [1]: http://stackoverflow.com/q/1715681/53013
+
