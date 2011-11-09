@@ -37,6 +37,8 @@ This documentation repository is open-source, it lives in [github repository](ht
 
 It's statically generated from [Markdown](http://en.wikipedia.org/wiki/Markdown) source using [Jekyll](https://github.com/mojombo/jekyll), and hosted on [GitHub Pages](http://pages.github.com/). This workflow was chosen so as to make it as easy as possible for core committers and the community alike to produce HTML documentation, and as easy as possible to publish it in a central location.
 
+The markdown syntax being used supports [Maruku](http://maruku.rubyforge.org/maruku.html) extensions, and has automatic syntax highlight, without need of any tags.
+
 ## Submitting Docs
 
 For one to contribute a document, one must simply fork the [repo](https://github.com/scala/scala.github.com), write their article in Markdown (example below), and submit a pull request. That's it. Likely after some edits and discussion, your document will be made live on [docs.scala-lang.org](http://docs.scala-lang.org).

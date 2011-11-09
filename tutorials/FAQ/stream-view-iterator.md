@@ -40,3 +40,7 @@ Because of the penalties incurred by views, one should usually `force` it after
 applying the transformations, or keep it as a view if only few elements are
 expected to ever be fetched, compared to the total size of the view.
 
+This answer was originally submitted in response to [this question on Stack Overflow][1].
+
+  [1]: http://stackoverflow.com/q/5159000/53013
+

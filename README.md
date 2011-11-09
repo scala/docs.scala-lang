@@ -32,6 +32,9 @@ cd into the `scala.github.com` directory, and build by:
 
 The generated site is available at `http://localhost:4000`
 
+## Markdown ##
+
+The markdown used in this site uses [Maruku](http://maruku.rubyforge.org/maruku.html) extensions.
 
 ## License ##
 

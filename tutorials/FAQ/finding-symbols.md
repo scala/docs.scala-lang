@@ -6,7 +6,7 @@ disqus: true
 
 partof: FAQ
 num: 1
-outof: 5
+outof: 7
 ---
 Let's divide the operators, for the purpose of teaching, into **four categories**:
 
@@ -185,6 +185,7 @@ And, of course, there's various combinations that can appear in code:
           // which calls the "+" method on the first parameter passing the
           // second parameter as argument.
 
+This answer was originally submitted in response to [this question on Stack Overflow][7].
 
   [1]: http://www.scala-lang.org/sites/default/files/linuxsoft_archives/docu/files/ScalaReference.pdf
   [2]: http://www.scala-lang.org/api/current/index.html
@@ -192,4 +193,5 @@ And, of course, there's various combinations that can appear in code:
   [4]: http://www.scala-lang.org/api/current/index.html#scala.Predef$
   [5]: http://www.scala-lang.org/api/current/scala/Predef$$ArrowAssoc.html
   [6]: http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.List
+  [7]: http://stackoverflow.com/q/7888944/53013
 
