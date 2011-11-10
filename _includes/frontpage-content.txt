@@ -43,7 +43,7 @@
 		<p>Some tutorials, such as the <em>Scala for Java Programmers</em> guide is already available. Others are currently being converted to markdown markup for inclusion here.</p>
 		
 		<h3><a href="{{ site.baseurl }}/glossary">Glossary</a> <span class="label success">Available</span></h3>
-		<p>Pending permission from Artima Inc., we'd like to include the glossary from <em>Programming in Scala</em> here, for quick and easy reference.</p>				
+		<p>With permission from Artima Inc., we reproduce the glossary from <em>Programming in Scala</em> here, for easy reference.</p>				
 		
 		<h3><a href="{{ site.baseurl }}/cheatsheets">Cheatsheets</a> <span class="label success">Available</span></h3>
 		<p>We've currently got one cheatsheet, thanks to Brendan O'Connor, and are looking for more to include!</p>
