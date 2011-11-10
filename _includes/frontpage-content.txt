@@ -49,7 +49,7 @@
 		<p>We've currently got one cheatsheet, thanks to Brendan O'Connor, and are looking for more to include!</p>
 		
 		<h3><a href="{{ site.baseurl }}/style">Scala Style Guide</a> <span class="label success">Available</span></h3>
-		<p>Daniel Spiewak and David Copland's <em>Scala Style Guide</em> is now available. Thanks to them for putting together such an excellent style guide, and thanks to Simon Ochsenreither for converting it to markdown!</p>		
+		<p>Daniel Spiewak and David Copeland's <em>Scala Style Guide</em> is now available. Thanks to them for putting together such an excellent style guide, and thanks to Simon Ochsenreither for converting it to markdown!</p>		
 
 		<h3>Language Specification <span class="label notice">Just an Idea</span></h3>
 		<p>It would be nice to have an HTML version of the language specification, right? This is just an idea for now...</p>				
