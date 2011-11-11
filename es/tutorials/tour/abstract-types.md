@@ -9,17 +9,17 @@ num: 2
 outof: 33
 ---
 
-In Scala, classes are parameterized with values (the constructor parameters) and with types (if classes are [generic](generic-classes.html)). For reasons of regularity, it is not only possible to have values as object members; types along with values are members of objects. Furthermore, both forms of members can be concrete and abstract.
-Here is an example which defines both a deferred value definition and an abstract type definition as members of [class](traits.html) `Buffer`.
+En Scala, las cases son parametrizadas con valores (los parámetros de construcción) y con tipos (si las clases son [genéricas](generic-classes.html)). Por razones de consistencia, no es posible tener solo valores como miembros de objetos; tanto los tipos como los valores son miembros de objetos. Además, ambas formas de miembros pueden ser concretos y abstractos.
+A continuación un ejemplo el cual define de forma conjunta una asignación de valor diferida y un tipo abstracto como miembros de la [clase](traits.html) `Buffer`.
  
     trait Buffer {
       type T
       val element: T
     }
  
-*Abstract types* are types whose identity is not precisely known. In the example above, we only know that each object of class `Buffer` has a type member `T`, but the definition of class `Buffer` does not reveal to what concrete type the member type `T` corresponds. Like value definitions, we can override type definitions in subclasses. This allows us to reveal more information about an abstract type by tightening the type bound (which describes possible concrete instantiations of the abstract type).
+Los *tipos abstractos* son tipos los cuales su identidad no es precisamente conocida. En el ejemplo anterior, lo único que sabemos es que cada objeto de la clase `Buffer` tiene un miembro de tipo `T`, pero la definición de la clase `Buffer` no revela qué tipo concreto se corresponde con el tipo `T`. Tal como las definiciones de valores, es posible sobrescribir las definiciones de tipos en subclases. Esto permite revelar más información acerca de un tipo abstracto al acotar el tipo ligado (el cual describe las posibles instancias concretas del tipo abstracto).
 
-In the following program we derive a class `SeqBuffer` which allows us to store only sequences in the buffer by stating that type `T` has to be a subtype of `Seq[U]` for a new abstract type `U`:
+En el siguiente programa derivamos la clase `SeqBuffer` la cual nos permite almacenar solamente sequencias en el buffer al estipular que el tipo `T` tiene que ser un subtipo de `Seq[U]` para un nuevo tipo abstracto `U`:
  
     abstract class SeqBuffer extends Buffer {
       type U
@@ -27,7 +27,7 @@ In the following program we derive a class `SeqBuffer` which allows us to store 
       def length = element.length
     }
  
-Traits or [classes](classes.html) with abstract type members are often used in combination with anonymous class instantiations. To illustrate this, we now look at a program which deals with a sequence buffer that refers to a list of integers:
+Traits o [clases](classes.html) con miembros de tipos abstractos son generalmente usados en combinación con instancias de clases anónimas. Para ilustrar este concepto veremos un programa el cual trata con un buffer de sequencia que se remite a una lista de enteros.
  
     abstract class IntSeqBuffer extends SeqBuffer {
       type U = Int
@@ -44,9 +44,9 @@ Traits or [classes](classes.html) with abstract type members are often used in c
       println("content = " + buf.element)
     }
  
-The return type of method `newIntSeqBuf` refers to a specialization of trait `Buffer` in which type `U` is now equivalent to `Int`. We have a similar type alias in the anonymous class instantiation within the body of method `newIntSeqBuf`. Here we create a new instance of `IntSeqBuffer` in which type `T` refers to List[Int].
+El tipo retornado por el método `newIntSeqBuf` está ligado a la especialización del trait `Buffer` en el cual el tipo `U` es ahora equivalente a `Int`. Existe un tipo alias similar en la instancia de la clase anónima dentro del cuerpo del método `newIntSeqBuf`. En ese lugar se crea una nueva instancia de `IntSeqBuffer` en la cual el tipo `T` está ligado a List[Int].
 
-Please note that it is often possible to turn abstract type members into type parameters of classes and vice versa. Here is a version of the code above which only uses type parameters:
+Es necesario notar que generalmente es posible transformar un tipo abstracto en un tipo paramétrico de una clase y viceversa. A continuación se muestra una versión del código anterior el cual solo usa tipos paramétricos.
  
     abstract class Buffer[+T] {
       val element: T
@@ -64,5 +64,4 @@ Please note that it is often possible to turn abstract type members into type pa
       println("content = " + buf.element)
     }
  
-Note that we have to use [variance annotations](variances.html) here; otherwise we would not be able to hide the concrete sequence implementation type of the object returned from method `newIntSeqBuf`.  Furthermore, there are cases where it is not possible to replace abstract types with type parameters.
-
+Nótese que es debido usar [variance annotations](variances.html) aquí; de otra manera no sería posible ocultar el tipo implementado por la secuencia concreta del objeto retornado por `newIntSeqBuf`. Además, existen casos en los cuales no es posible remplazar tipos abstractos con tipos parametrizados.
