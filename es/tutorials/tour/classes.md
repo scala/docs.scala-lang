@@ -7,9 +7,8 @@ disqus: true
 tutorial: scala-tour
 num: 4
 ---
-
-Classes in Scala are static templates that can be instantiated into many objects at runtime.
-Here is a class definition which defines a class `Point`:
+En Scala, las clases son plantillas estáticas que pueden ser instanciadas por muchos objetos en tiempo de ejecución.
+Aquí se presenta una clase la cual define la clase `Point`:
 
     class Point(xc: Int, yc: Int) {
       var x: Int = xc
@@ -21,11 +20,11 @@ Here is a class definition which defines a class `Point`:
       override def toString(): String = "(" + x + ", " + y + ")";
     }
 
-The class defines two variables `x` and `y` and two methods: `move` and `toString`. `move` takes two integer arguments but does not return a value (the implicit return type `Unit` corresponds to `void` in Java-like languages). `toString`, on the other hand, does not take any parameters but returns a `String` value. Since `toString` overrides the pre-defined `toString` method, it has to be tagged with the `override` flag.
+Esta clase define dos variables `x` e `y`, y dos métodos: `move` y `toString`. El método `move` recibe dos argumentos de tipo entero, pero no retorna ningún valor (implicitamente se retorna el tipo `Unit`, el cual se corresponde a `void` en lenguajes tipo Java). `toString`, por otro lado, no recibe ningún parámetro pero retorna un valor tipo `String`. Ya que `toString` sobreescribe el método `toString` predefinido en una superclase, tiene que ser anotado con `override`.
 
-Classes in Scala are parameterized with constructor arguments. The code above defines two constructor arguments, `xc` and `yc`; they are both visible in the whole body of the class. In our example they are used to initialize the variables `x` and `y`.
+Las clases en Scala son parametrizadas con argumentos constructores (inicializadores). En el código anterior se definen dos argumentos contructores, `xc` y `yc`; ambos son visibles en toda la clase. En nuestro ejemplo son utilizzados para inicializar las variables `x` e `y`.
 
-Classes are instantiated with the new primitive, as the following example will show:
+Para instanciar una clase es necesario usar la primitiva new, como se muestra en el siguiente ejemplo:
 
     object Classes {
       def main(args: Array[String]) {
@@ -36,9 +35,9 @@ Classes are instantiated with the new primitive, as the following example will s
       }
     }
 
-The program defines an executable application Classes in form of a top-level singleton object with a `main` method. The `main` method creates a new `Point` and stores it in value `pt`. _Note that values defined with the `val` construct are different from variables defined with the `var` construct (see class `Point` above) in that they do not allow updates; i.e. the value is constant._
+El programa define una aplicación ejecutable a través del método `main` del objeto singleton Classes. El método `main` crea un nuevo `Point` y lo almacena en `pt`. _Note que valores definidos con la signatura `val` son distintos de los definidos con `var` (véase la clase `Point` arriba) ya que los primeros (`val`) no permiten reasignaciones; es decir, que el valor es una constante._
 
-Here is the output of the program:
+Aquí se muestra la salida del programa:
 
     (1, 2)
     (11, 12)
