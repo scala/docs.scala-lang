@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Compound Types
+title: Tipos Compuestos
 
 disqus: true
 
@@ -8,9 +8,9 @@ tutorial: scala-tour
 num: 6
 ---
 
-Sometimes it is necessary to express that the type of an object is a subtype of several other types. In Scala this can be expressed with the help of *compound types*, which are intersections of object types.
+Algunas veces es necesario expresar que el tipo de un objeto es un subtipo de varios otros tipos. En Scala esto puede ser expresado con la ayuda de *tipos compuestos*, los cuales pueden entenderse como la intersección de otros tipos.
 
-Suppose we have two traits `Cloneable` and `Resetable`:
+Suponga que tenemos dos traits `Cloneable` y `Resetable`:
 
     trait Cloneable extends java.lang.Cloneable {
       override def clone(): Cloneable = { super.clone(); this }
@@ -19,7 +19,7 @@ Suppose we have two traits `Cloneable` and `Resetable`:
       def reset: Unit
     }
 
-Now suppose we want to write a function `cloneAndReset` which takes an object, clones it and resets the original object:
+Ahora suponga que queremos escribir una función `cloneAndReset` la cual recibe un objeto, lo clona y resetea el objeto original:
 
     def cloneAndReset(obj: ?): Cloneable = {
       val cloned = obj.clone()
@@ -27,15 +27,14 @@ Now suppose we want to write a function `cloneAndReset` which takes an object, c
       cloned
     }
 
-The question arises what the type of the parameter `obj` is. If it's `Cloneable` then the object can be `clone`d, but not `reset`; if it's `Resetable` we can `reset` it, but there is no `clone` operation. To avoid type casts in such a situation, we can specify the type of `obj` to be both `Cloneable` and `Resetable`. This compound type is written like this in Scala: `Cloneable with Resetable`.
-
-Here's the updated function:
+La pregunta que surge es cuál es el tipo del parámetro `obj`. Si este fuera `Cloneable` entonces el objeto puede ser clonado mediante el método `clone`, pero no puede usarse el método `reset`; Si fuera `Resetable` podríamos resetearlo mediante el método `reset`, pero no sería posible clonarlo. Para evitar casteos (refundiciones) de tipos en situaciones como la descripta, podemos especificar que el tipo del objeto `obj` sea tanto `Clonable` como `Resetable`. En tal caso estaríamos creando un tipo compuesto; de la siguiente manera:
 
     def cloneAndReset(obj: Cloneable with Resetable): Cloneable = {
       //...
     }
 
-Compound types can consist of several object types and they may have a single refinement which can be used to narrow the signature of existing object members.
-The general form is: `A with B with C ... { refinement }`
+Los tipos compuestos pueden crearse a partir de varios tipos de objeto y pueden tener un refinamiento el cual puede ser usado para acotar la signatura los miembros del objeto existente.
 
-An example for the use of refinements is given on the page about [abstract types](abstract-types.html). 
+La forma general es: `A with B with C ... { refinamiento }`
+
+Un ejemplo del uso de los refinamientos se muestra en la página sobre [tipos abstractos](abstract-types.html).
