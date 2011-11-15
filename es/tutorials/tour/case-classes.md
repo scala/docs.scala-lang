@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Case Classes
+title: Clases Case
 
 disqus: true
 

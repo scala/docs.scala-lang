@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Anonymous Function Syntax
+title: Sintaxis de funciones anónimas
 
 disqus: true
 
@@ -8,31 +8,31 @@ tutorial: scala-tour
 num: 14
 ---
 
-Scala provides a relatively lightweight syntax for defining anonymous functions. The following expression creates a successor function for integers:
+Scala provee una sintaxis relativamente livana para definir funciones anónimas. La siguiente expresión crea una función incrementadora para números enteros:
 
     (x: Int) => x + 1
 
-This is a shorthand for the following anonymous class definition:
+El código anterior es una forma compacta para la definición de la siguiente clase anónima:
 
     new Function1[Int, Int] {
       def apply(x: Int): Int = x + 1
     }
 
-It is also possible to define functions with multiple parameters:
+También es posible definir funciones con múltiples parámetros:
 
     (x: Int, y: Int) => "(" + x + ", " + y + ")"
 
-or with no parameter:
+o sin parámetros: 
 
     () => { System.getProperty("user.dir") }
 
-There is also a very lightweight way to write function types. Here are the types of the three functions defined above:
+Esiste también una forma simple para escribir los tipos de las funciones. A continuación se muestran los tipos de las tre funciones escritas anteriormente:
 
     Int => Int
     (Int, Int) => String
     () => String
 
-This syntax is a shorthand for the following types:
+La sintaxis anterior es la forma sintética de escribir los siguientes tipos:
 
     Function1[Int, Int]
     Function2[Int, Int, String]

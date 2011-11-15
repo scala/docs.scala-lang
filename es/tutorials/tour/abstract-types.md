@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Abstract Types
+title: Tipos Abstractos
 
 disqus: true
 

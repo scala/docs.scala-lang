@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Classes
+title: Clases
 
 disqus: true
 
