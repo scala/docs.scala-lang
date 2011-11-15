@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Generic Classes
+title: Clases genéricas
 
 disqus: true
 
@@ -8,8 +8,9 @@ tutorial: scala-tour
 num: 9
 ---
 
-Like in Java 5 (aka. [JDK 1.5](http://java.sun.com/j2se/1.5/)), Scala has built-in support for classes parameterized with types. Such generic classes are particularly useful for the development of collection classes.
-Here is an example which demonstrates this:
+Tal como en Java 5 ([JDK 1.5](http://java.sun.com/j2se/1.5/)), Scala provee soporte nativo para parametrizar clases con tipos. Eso es llamado clases genéricas y son especialmente importantes para el desarrollo de clases tipo colección.
+
+A continuación se muestra un ejemplo:
 
     class Stack[T] {
       var elems: List[T] = Nil
@@ -18,9 +19,9 @@ Here is an example which demonstrates this:
       def pop() { elems = elems.tail }
     }
 
-Class `Stack` models imperative (mutable) stacks of an arbitrary element type `T`. The type parameters enforces that only legal elements (that are of type `T`) are pushed onto the stack. Similarly, with type parameters we can express that method `top` will only yield elements of the given type.
+La clase `Stack` modela una pila mutable que contiene elementos de un tipo arbitrario `T` (se dice, "una pila de elementos `T`). Los parámetros de tipos nos aseguran que solo elementos legales (o sea, del tipo `T`) sean insertados en la pila (apilados). De forma similar, con los parámetros de tipo podemos expresar que el método `top` solo devolverá elementos de un tipo dado (en este caso `T`).
 
-Here are some usage examples:
+Aquí se muestra un ejemplo del uso de dicha pila:
 
     object GenericsTest extends Application {
       val stack = new Stack[Int]
@@ -31,9 +32,9 @@ Here are some usage examples:
       println(stack.top)
     }
 
-The output of this program will be:
+La salida del programa sería:
 
     97
     1
 
-_Note: subtyping of generic types is *invariant*. This means that if we have a stack of characters of type `Stack[Char]` then it cannot be used as an integer stack of type `Stack[Int]`. This would be unsound because it would enable us to enter true integers into the character stack. To conclude, `Stack[T]` is only a subtype of `Stack[S]` if and only if `S = T`. Since this can be quite restrictive, Scala offers a [type parameter annotation mechanism](variances.html) to control the subtyping behavior of generic types._
+_Nota: los subtipos de tipos genéricos es *invariante*. Esto significa que si tenemos una pila de caracteres del tipo `Stack[Char]`, esta no puede ser usada como una pila de enteros tipo `Stack[Int]`. Esto no sería razonable ya que nos permitiría introducir elementos enteros en la pila de caracteres. Para concluir, `Stack[T]` es solamente un subtipo de `Stack[S]` si y solo si `S = T`. Ya que esto puede llegar a ser bastante restrictivo, Scala ofrece un [mecanismo de anotación de parámetros de tipo](variances.html) para controlar el comportamiento de subtipos de tipos genéricos._
