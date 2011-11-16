@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Operators
+title: Operadores
 
 disqus: true
 
@@ -8,7 +8,7 @@ tutorial: scala-tour
 num: 17
 ---
 
-Any method which takes a single parameter can be used as an *infix operator* in Scala. Here is the definition of class `MyBool` which defines three methods `and`, `or`, and `negate`.
+En Scala, cualquier método el cual reciba un solo parámetro puede ser usado como un *operador de infijo (infix)*. Aquí se muestra la definición de la clase `MyBool`, la cual define tres métodos `and`, `or`, y `negate`.
 
     class MyBool(x: Boolean) {
       def and(that: MyBool): MyBool = if (x) that else this
@@ -16,14 +16,14 @@ Any method which takes a single parameter can be used as an *infix operator* in 
       def negate: MyBool = new MyBool(!x)
     }
 
-It is now possible to use `and` and `or` as infix operators:
+Ahora es posible utilizar `and` y `or` como operadores de infijo:
 
-    def not(x: MyBool) = x negate; // semicolon required here
+    def not(x: MyBool) = x negate; // punto y coma necesario aquí
     def xor(x: MyBool, y: MyBool) = (x or y) and not(x and y)
 
-As the first line of this code shows, it is also possible to use nullary methods as postfix operators. The second line defines an xor function using the and and or methods as well as the new `not` function. In this example the use of _infix operators_ helps to make the definition of `xor` more readable.
+Como muestra la primera linea del código anterior, es también posible utilizar métodos nularios (que no reciban parámetros) como operadores de postfijo. La segunda linea define la función `xor` utilizando los métodos `and`y `or` como también la función `not`. En este ejemplo el uso de los _operadores de postfijo_ ayuda a crear una definición del método `xor` más fácil de leer.
 
-Here is the corresponding code in a more traditional object-oriented programming language syntax:
+Para demostrar esto se muestra el código correspondiente a las funciones anteriores pero escritas en una notación orientada a objetos más tradicional:
 
-    def not(x: MyBool) = x.negate; // semicolon required here
+    def not(x: MyBool) = x.negate; // punto y coma necesario aquí
     def xor(x: MyBool, y: MyBool) = x.or(y).and(x.and(y).negate)
