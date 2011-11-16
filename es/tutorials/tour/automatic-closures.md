@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Automatic Type-Dependent Closure Construction
+title: Construcción de closures automáticas
 
 disqus: true
 
@@ -8,9 +8,9 @@ tutorial: scala-tour
 num: 16
 ---
 
-Scala allows parameterless function names as parameters of methods. When such a method is called, the actual parameters for parameterless function names are not evaluated and a nullary function is passed instead which encapsulates the computation of the corresponding parameter (so-called *call-by-name* evalutation).
+Scala permite pasar a un método como parámetro funciones que no reciban parámetros. Cuando un método así es invocado, los parámetros reales de la función enviada sin parámetros no son evaluados y una función "nularia" (de aridad creo, 0-aria, o sin parámetros) es pasada en su llugar la cual encapsula el comportamiento del parámetro correspondiente (comunmente conocido como "llamada por nombre").
 
-The following code demonstrates this mechanism:
+Para aclarar un poco esto aquí se muestra un ejemplo:
 
     object TargetTest1 extends Application {
       def whileLoop(cond: => Boolean)(body: => Unit): Unit =
@@ -25,11 +25,11 @@ The following code demonstrates this mechanism:
       }
     }
 
-The function whileLoop takes two parameters `cond` and `body`. When the function is applied, the actual parameters do not get evaluated. But whenever the formal parameters are used in the body of `whileLoop`, the implicitly created nullary functions will be evaluated instead. Thus, our method `whileLoop` implements a Java-like while-loop with a recursive implementation scheme.
+La función `whileLoop` recibe dos parámetros `cond` y `body`. Cuando la función es llamada, los parámetros reales no son evaluados en ese momento. Pero cuando los parámetros son utilizados en el cuerpo de la función `whileLoop`, las funciones nularias creadas implicitamente serán evaluadas en su lugar. Así, nuestro método `whileLoop` implementa un bucle tipo Java mediante una implementación recursiva.
 
-We can combine the use of [infix/postfix operators](operators.html) with this mechanism to create more complex statements (with a nice syntax).
+Es posible combinar el uso de [operadores de infijo y postfijo (infix/postfix)](operators.html) con este mecanismo para crear declaraciones más complejas (con una sintaxis agrdadable).
 
-Here is the implementation of a loop-unless statement:
+Aquí mostramos la implementación de una declaración tipo repetir-a-menos-que (repetir el bucle a no ser que se cumpla X condición):
 
     object TargetTest2 extends Application {
       def loop(body: => Unit): LoopUnlessCond =
@@ -46,9 +46,10 @@ Here is the implementation of a loop-unless statement:
         i -= 1
       } unless (i == 0)
     }
-The `loop` function just accepts a body of a loop and returns an instance of class `LoopUnlessCond` (which encapsulates this body object). Note that the body didn't get evaluated yet. Class `LoopUnlessCond` has a method `unless` which we can use as a *infix operator*. This way, we achieve a quite natural syntax for our new loop: `loop { < stats > } unless ( < cond > )`.
 
-Here's the output when `TargetTest2` gets executed:
+La función `loop` solo acepta el cuerpo de un bucle y retorna una instancia de la clase `LoopUnlessCond` (la cual encapsula el cuerpo del objeto). Es importante notar que en este punto el cuerpo del bucle no ha sido evaluado aun. La clase `LoopUnlessCond` tiene un método `unless` el cual puede ser usado como un *operador de infijo (infix)*. De esta manera podemos lograr una sintaxis muy natural para nuestro nuevo bucle `repetir { <estas declaraciones> a_menos_que ( <condición>)`.
+
+A continuación se expone el resultado de la ejecución de `TargetTest2`:
 
     i = 10
     i = 9
@@ -60,4 +61,3 @@ Here's the output when `TargetTest2` gets executed:
     i = 3
     i = 2
     i = 1
-
