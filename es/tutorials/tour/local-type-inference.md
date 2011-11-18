@@ -1,50 +1,52 @@
 ---
 layout: tutorial
-title: Local Type Inference
+title: Inferencia de tipos Local
 
 disqus: true
 
 tutorial: scala-tour
 num: 29
 ---
+
 Scala has a built-in type inference mechanism which allows the programmer to omit certain type annotations. It is, for instance, often not necessary in Scala to specify the type of a variable, since the compiler can deduce the type from the initialization expression of the variable. Also return types of methods can often be omitted since they corresponds to the type of the body, which gets inferred by the compiler.
 
-Here is an example:
+Scala tiene incorporado un mecanismo de inferencia de tipos el cual permite al programador omitir ciertos tipos de anotaciones. Por ejemplo, generalmente no es necesario especificar el tipo de una variable, ya que el compilador puede deducir el tipo mediante la expresión de inicialización de la variable. También puede generalmente omitirse los tipos de retorno de métodos ya que se corresponden con el tipo del cuerpo, que es inferido por el compilador. 
+
+Aquí hay un ejemplo:
 
     object InferenceTest1 extends Application {
-      val x = 1 + 2 * 3         // the type of x is Int
-      val y = x.toString()      // the type of y is String
-      def succ(x: Int) = x + 1  // method succ returns Int values
+      val x = 1 + 2 * 3         // el tipo de  x es Int
+      val y = x.toString()      // el tipo de y es String
+      def succ(x: Int) = x + 1  // el método succ retorna valores Int
     }
-
-For recursive methods, the compiler is not able to infer a result type. Here is a program which will fail the compiler for this reason:
+    
+Para métodos recursivos, el compilador no es capaz de inferir el tipo resultado. A continuación mostramos un programa el cual falla por esa razón:
 
     object InferenceTest2 {
       def fac(n: Int) = if (n == 0) 1 else n * fac(n - 1)
     }
 
-It is also not compulsory to specify type parameters when [polymorphic methods](polymorphic-methods.html) are called or [generic classes](generic-classes.html) are instantiated. The Scala compiler will infer such missing type parameters from the context and from the types of the actual method/constructor parameters.
+Tampoco es obligatorio especificar el tipo de los parámetros cuando se trate de [métodos polimórficos](polymorphic-methods.html) o sean instanciadas [clases genéricas](generic-classes.html). El compilador de Scala inferirá esos tipos de parámetros faltantes mediante el contexto y de los tipos de los parámetros reales del método/constructor.
 
-Here is an example which illustrates this:
+Aquí se muestra un ejemplo que ilustra esto:
 
     case class MyPair[A, B](x: A, y: B);
     object InferenceTest3 extends Application {
       def id[T](x: T) = x
-      val p = new MyPair(1, "scala") // type: MyPair[Int, String]
-      val q = id(1)                  // type: Int
+      val p = new MyPair(1, "scala") // tipo: MyPair[Int, String]
+      val q = id(1)                  // tipo: Int
     }
 
-The last two lines of this program are equivalent to the following code where all inferred types are made explicit:
+Las últimas dos lineas de este programa son equivalentes al siguiente código, donde todos los tipos inferidos son especificados explicitamente:
 
     val x: MyPair[Int, String] = new MyPair[Int, String](1, "scala")
     val y: Int = id[Int](1)
 
-In some situations it can be quite dangerous to rely on Scala's type inference mechanism as the following program shows:
+En algunas situaciones puede ser bastante peligroso confira en el mecanismo de inferencia de tipos de Scala, como se ilustra en el siguiente ejemplo:
 
     object InferenceTest4 {
       var obj = null
       obj = new Object()
     }
 
-This program does not compile because the type inferred for variable `obj` is `Null`. Since the only value of that type is `null`, it is impossible to make this variable refer to another value.
-
+Este programa no compila porque el tipo inferido para la variable `obj` es `Null`. Ya que el único valor de ese tipo es `null`, es imposible hacer que esta variable refiera a otro valor.
