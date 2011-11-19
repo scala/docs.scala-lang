@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Pattern Matching
+title: Reconocimiento de patrones
 
 disqus: true
 
@@ -8,8 +8,12 @@ tutorial: scala-tour
 num: 20
 ---
 
+_Nota de traducción: Es dificil encontrar en nuestro idioma una palabra que se relacione directamente con el significado de `match` en inglés. Podemos entender a `match` como "coincidir" o "concordar" con algo. En algunos lugares se utiliza la palabra `machear`, aunque esta no existe en nuestro idioma con el sentido que se le da en este texto, sino que se utiliza como traducción de `match`._
+
 Scala has a built-in general pattern matching mechanism. It allows to match on any sort of data with a first-match policy. 
 Here is a small example which shows how to match against an integer value:
+
+Scala tiene incorporado un mecanismo general de reconocimiento de patrones. Este permite identificar cualquier tipo de datos una política primero-encontrado. Aquí se muestra un pequeño ejemplo el cual muestra cómo coincidir un valor entero:
 
     object MatchTest1 extends Application {
       def matchTest(x: Int): String = x match {
@@ -20,9 +24,9 @@ Here is a small example which shows how to match against an integer value:
       println(matchTest(3))
     }
 
-The block with the `case` statements defines a function which maps integers to strings. The `match` keyword provides a convenient way of applying a function (like the pattern matching function above) to an object.
+El bloque con las sentencias `case` define una función la cual mapea enteros a cadenas de caracteres (strings). La palabra reservada `match` provee una manera conveniente de aplicar una función (como la función anterior) a un objeto.
 
-Here is a second example which matches a value against patterns of different types:
+Aquí se muestra un ejemplo el cual machea un valor contra un patrón de diferentes tipos:
 
     object MatchTest2 extends Application {
       def matchTest(x: Any): Any = x match {
@@ -33,7 +37,6 @@ Here is a second example which matches a value against patterns of different typ
       println(matchTest("two"))
     }
 
-The first `case` matches if `x` refers to the integer value `1`. The second `case` matches if `x` is equal to the string `"two"`. The third case consists of a typed pattern; it matches against any integer and binds the selector value `x` to the variable `y` of type integer.
+El primer `case` coincide si `x` se refiere a un valor entero `1`. El segundo `case` coincide si `x` es igual al string `"two"`. El tersero consiste en un patron tipado (se provee un tipo); se produce una coincidencia contra cualquier entero que se provea y además se liga la variable `y` al valor pasado `x` de tipo entero.
 
-Scala's pattern matching statement is most useful for matching on algebraic types expressed via [case classes](case-classes.html).
-Scala also allows the definition of patterns independently of case classes, using unapply methods in [extractor objects](extractor-objects.html).
+El reconocimiento de patrones en Scala es más útil para hacer coincidir tipos algebráicos expresados mediante [clases case](case-classes.html). Scala también permite la definición de patrones independientemente de las clases case, a través del método `unapply` de [objetos extractores](extractor-objects.html).
