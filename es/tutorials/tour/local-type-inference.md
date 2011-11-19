@@ -8,8 +8,6 @@ tutorial: scala-tour
 num: 29
 ---
 
-Scala has a built-in type inference mechanism which allows the programmer to omit certain type annotations. It is, for instance, often not necessary in Scala to specify the type of a variable, since the compiler can deduce the type from the initialization expression of the variable. Also return types of methods can often be omitted since they corresponds to the type of the body, which gets inferred by the compiler.
-
 Scala tiene incorporado un mecanismo de inferencia de tipos el cual permite al programador omitir ciertos tipos de anotaciones. Por ejemplo, generalmente no es necesario especificar el tipo de una variable, ya que el compilador puede deducir el tipo mediante la expresión de inicialización de la variable. También puede generalmente omitirse los tipos de retorno de métodos ya que se corresponden con el tipo del cuerpo, que es inferido por el compilador. 
 
 Aquí hay un ejemplo:
