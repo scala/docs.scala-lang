@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Nested Functions
+title: Funciones Anidadas
 
 disqus: true
 
@@ -8,7 +8,7 @@ tutorial: scala-tour
 num: 13
 ---
 
-In Scala it is possible to nest function definitions. The following object provides a `filter` function for extracting values from a list of integers that are below a threshold value:
+En scala es posible anidar definiciones de funciones. El siguiente objeto provee una función `filter` para extraer valores de una lista de enteros que están por debajo de un determinado valor:
 
     object FilterTest extends Application {
       def filter(xs: List[Int], threshold: Int) = {
@@ -21,8 +21,8 @@ In Scala it is possible to nest function definitions. The following object provi
       println(filter(List(1, 9, 2, 8, 3, 7, 4), 5))
     }
 
-_Note: the nested function `process` refers to variable `threshold` defined in the outer scope as a parameter value of `filter`._
+_Nota: la función anidada `process` utiliza la variable `threshold` definida en el ámbito externo como un parámetro de `filter`._
 
-The output of this program is:
+La salida del programa es:
 
     List(1,2,3,4)
