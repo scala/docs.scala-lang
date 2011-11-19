@@ -8,9 +8,11 @@ tutorial: scala-tour
 num: 15
 ---
 
-Methods may define multiple parameter lists. When a method is called with a fewer number of parameter lists, then this will yield a function taking the missing parameter lists as its arguments.
+_Nota de traducción: Currying es una técnica de programación funcional nombrada en honor al matemático y lógico. Es por eso que no se intentará hacer ninguna traducción sobre el término Currying. Entiendase este como una acción, técnica base de PF. Como una nota al paso ,el lenguaje de programación Haskell debe su nombre a este eximio matemático._
 
-Here is an example:
+Métodos pueden definir múltiples listas de parámetros. Cuando un método es invocado con un número menor de listas de parámetros, en su lugar se devolverá una función que toma las listas faltantes como sus argumentos.
+
+Aquí se muestra un ejemplo:
 
     object CurryTest extends Application {
     
@@ -26,9 +28,9 @@ Here is an example:
       println(filter(nums, modN(3)))
     }
 
-_Note: method `modN` is partially applied in the two `filter` calls; i.e. only its first argument is actually applied. The `termmodN(2)` yields a function of type `Int => Boolean` and is thus a possible candidate for the second argument of function `filter`._
+_Nota: el método `modN` está parcialmente aplicado en las dos llamadas a `filter`; esto significa que solo su primer argumento es realmente aplicado. El término `modN(2)` devuelve una función de tipo `Int => Boolean` y es por eso un posible candidato para el segundo argumento de la función `filter`_
 
-Here's the output of the program above:
+Aquí se muestra la salida del programa anterior:
 
     List(2,4,6,8)
     List(3,6)
