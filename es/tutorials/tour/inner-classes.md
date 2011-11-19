@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Inner Classes
+title: Clases Internas
 
 disqus: true
 
@@ -8,7 +8,7 @@ tutorial: scala-tour
 num: 11
 ---
 
-In Scala it is possible to let classes have other classes as members. Opposed to Java-like languages where such inner classes are members of the enclosing class, in Scala such inner classes are bound to the outer object. To illustrate the difference, we quickly sketch the implementation of a graph datatype:
+En Scala es posible que las clases tengan como miembro otras clases. A diferencia de lenguajes tipo Java donde ese tipo de clases internas son miembros de las clases que las envuelven, en Scala esas clases internas están ligadas al objeto externo. Para ilustrar esta diferencia, vamos a mostrar rápidamente una implementación del tipo grafo:
  
     class Graph {
       class Node {
@@ -26,9 +26,9 @@ In Scala it is possible to let classes have other classes as members. Opposed to
         res
       }
     }
- 
-In our program, graphs are represented by a list of nodes. Nodes are objects of inner class `Node`. Each node has a list of neighbours, which get stored in the list `connectedNodes`. Now we can set up a graph with some nodes and connect the nodes incrementally:
- 
+
+En nuestro programa, los grafos son representados mediante una lista de nodos. Estos nodos son objetos de la clase interna `Node`. Cada nodo tiene una lista de vecinos que se almacena en la lista `connectedNodes`. Ahora podemos crear un grafo con algunos nodos y conectarlos incrementalmente:
+
     object GraphTest extends Application {
       val g = new Graph
       val n1 = g.newNode
@@ -38,7 +38,7 @@ In our program, graphs are represented by a list of nodes. Nodes are objects of 
       n3.connectTo(n1)
     }
  
-We now enrich the following example with types to state explicitly what the type of the various defined entities is:
+Ahora vamos a completar el ejemplo con información relacionada al tipado para definir explicitamente de qué tipo son las entidades anteriormente definidas:
  
     object GraphTest extends Application {
       val g: Graph = new Graph
@@ -48,9 +48,10 @@ We now enrich the following example with types to state explicitly what the type
       n1.connectTo(n2)
       n3.connectTo(n1)
     }
- 
-This code clearly shows that a node type is prefixed with its outer instance (which is object g in our example). If we now have two graphs, the type system of Scala does not allow us to mix nodes defined within one graph with the nodes of another graph, since the nodes of the other graph have a different type.
-Here is an illegal program:
+
+El código anterior muestra que al tipo del nodo le es prefijado con la instancia superior (que en nuestro ejemplo es `g`). Si ahora tenemos dos grafos, el sistema de tipado de Scala no nos permite mezclar nodos definidos en un grafo con nodos definidos en otro, ya que los nodos del otro grafo tienen un tipo diferente.
+
+Aquí está el programa ilegal:
  
     object IllegalGraphTest extends Application {
       val g: Graph = new Graph
@@ -59,14 +60,14 @@ Here is an illegal program:
       n1.connectTo(n2)      // legal
       val h: Graph = new Graph
       val n3: h.Node = h.newNode
-      n1.connectTo(n3)      // illegal!
+      n1.connectTo(n3)      // ilegal!
     }
  
-Please note that in Java the last line in the previous example program would have been correct. For nodes of both graphs, Java would assign the same type `Graph.Node`; i.e. `Node` is prefixed with class `Graph`. In Scala such a type can be expressed as well, it is written `Graph#Node`. If we want to be able to connect nodes of different graphs, we have to change the definition of our initial graph implementation in the following way:
+Por favor note que en Java la última linea del ejemplo anterior hubiese sido correcta. Para los nodos de ambos grafos, Java asignaría el mismo tipo `Graph.Node`; es decir, `Node` es prefijado con la clase `Graph`. En Scala un tipo similar también puede ser definido, pero es escrito `Graph#Node`. Si queremos que sea posible conectar nodos de distintos grafos, es necesario modificar la implementación inicial del grafo de la siguiente manera:
  
     class Graph {
       class Node {
-        var connectedNodes: List[Graph#Node] = Nil
+        var connectedNodes: List[Graph#Node] = Nil   // Graph#Node en lugar de Node
         def connectTo(node: Graph#Node) {
           if (connectedNodes.find(node.equals).isEmpty) {
             connectedNodes = node :: connectedNodes
@@ -80,5 +81,5 @@ Please note that in Java the last line in the previous example program would hav
         res
       }
     }
- 
-> Please note that this program doesn't allow us to attach a node to two different graphs. If we want to remove this restriction as well, we have to change the type of variable nodes and the return type of method `newNode` to `Graph#Node`.
+
+> Por favor note que este programa no nos permite relacionar un nodo con dos grafos diferentes. Si también quisiéramos eliminar esta restricción, sería necesario cambiar el tipo de la variable `nodes` y el tipo retornado por el método `newNode` a `Graph#Node`.
