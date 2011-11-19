@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Higher-order Functions
+title: Funciones de orden superior
 
 disqus: true
 
@@ -8,13 +8,13 @@ tutorial: scala-tour
 num: 18
 ---
 
-Scala allows the definition of higher-order functions. These are functions that _take other functions as parameters_, or whose _result is a function_. Here is a function `apply` which takes another function `f` and a value `v` and applies function `f` to `v`:
+Scala permite la definición de funciones de orden superior. Estas funciones son las que _toman otras funciones como parámetros_, o las cuales _el resultado es una función_. Aquí mostramos una función `apply` la cual toma otra función `f` y un valor `v` como parámetros y aplica la función `f` a `v`:
 
     def apply(f: Int => String, v: Int) = f(v)
 
-_Note: methods are automatically coerced to functions if the context requires this._
+_Nota: los métodos son automáticamente tomados como funciones si el contexto lo requiere._
 
-Here is another example:
+Otro ejemplo:
  
     class Decorator(left: String, right: String) {
       def layout[A](x: A) = left + x.toString() + right
@@ -26,8 +26,8 @@ Here is another example:
       println(apply(decorator.layout, 7))
     }
  
-Execution yields the output:
+La ejecución da como valor el siguiente resultado:
 
     [7]
 
-In this example, the method `decorator.layout` is coerced automatically to a value of type `Int => String` as required by method `apply`. Please note that method `decorator.layout` is a _polymorphic method_ (i.e. it abstracts over some of its signature types) and the Scala compiler has to instantiate its method type first appropriately.
+En este ejemplo, el método `decorator.layout` es coaccionado automáticamente a un valor del tipo `Int => String` como es requerido por el método `apply`. Por favor note que el método `decorator.layout` es un _método polimórfico_ (esto es, se abstrae de algunos de los sus tipos) y el compilador de Scala primero tiene que instanciar correctamente el tipo del método.
