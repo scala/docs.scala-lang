@@ -1,14 +1,15 @@
 ---
 layout: tutorial
-title: Mixin Class Composition
+title: Composición de clases mixin
 
 disqus: true
 
 tutorial: scala-tour
 num: 12
 ---
+_Nota de traducción: La palabra `mixin` puede ser traducida como mezcla, dando título a esta sección de: Composición de clases Mezcla, pero es preferible utilizar la notación original_
 
-As opposed to languages that only support _single inheritance_, Scala has a more general notion of class reuse. Scala makes it possible to reuse the _new member definitions of a class_ (i.e. the delta in relationship to the superclass) in the definition of a new class. This is expressed as a _mixin-class composition_. Consider the following abstraction for iterators.
+En diferencia de lenguajes que solo soportan _herencia simple_, Scala tiene una notación más general de la reutilización de clases. Scala hace posible reutilizar la _nueva definición de miembros de una clase_ (es decir, el delta en relación a la superclase) en la definición de una nueva clase. Esto es expresado como una _composición de clases mixin_. Considere la siguiente abstracción para iteradores.
  
     abstract class AbsIterator {
       type T
@@ -16,13 +17,13 @@ As opposed to languages that only support _single inheritance_, Scala has a more
       def next: T
     }
  
-Next, consider a mixin class which extends `AbsIterator` with a method `foreach` which applies a given function to every element returned by the iterator. To define a class that can be used as a mixin we use the keyword `trait`.
+A continuación, considere una clase mezcla la cual extiende `AbsIterator` con un método `foreach` el cual aplica una función dada a cada elemento retornado por el iterador. Para definir una clase que puede usarse como una clase mezcla usamos la palabra clave `trait`.
  
     trait RichIterator extends AbsIterator {
       def foreach(f: T => Unit) { while (hasNext) f(next) }
     }
  
-Here is a concrete iterator class, which returns successive characters of a given string:
+Aquí se muestra una clase iterador concreta, la cual retorna caracteres sucesivos de una cadena de caracteres dada:
  
     class StringIterator(s: String) extends AbsIterator {
       type T = Char
@@ -31,7 +32,7 @@ Here is a concrete iterator class, which returns successive characters of a give
       def next = { val ch = s charAt i; i += 1; ch }
     }
  
-We would like to combine the functionality of `StringIterator` and `RichIterator` into a single class. With single inheritance and interfaces alone this is impossible, as both classes contain member impementations with code. Scala comes to help with its _mixin-class composition_. It allows the programmers to reuse the delta of a class definition, i.e., all new definitions that are not inherited. This mechanism makes it possible to combine `StringIterator` with `RichIterator`, as is done in the following test program which prints a column of all the characters of a given string.
+Nos gustaría combinar la funcionalidad de `StringIterator` y `RichIterator` en una sola clase. Solo con herencia simple e interfaces esto es imposible, ya que ambas clases contienen implementaciones para sus miembros. Scala nos ayuda con sus _compisiciones de clases mezcladas_. Permite a los programadores reutilizar el delta de la definición de una clase, esto es, todas las nuevas definiciones que no son heredadas. Este mecanismo hace posible combinar `StringIterator` con `RichIterator`, como es hecho en el siguiente programa, el cual imprime una columna de todos los caracteres de una cadena de caracteres dada.
  
     object StringIteratorTest {
       def main(args: Array[String]) {
@@ -41,4 +42,4 @@ We would like to combine the functionality of `StringIterator` and `RichIterator
       }
     }
  
-The `Iter` class in function `main` is constructed from a mixin composition of the parents `StringIterator` and `RichIterator` with the keyword `with`. The first parent is called the _superclass_ of `Iter`, whereas the second (and every other, if present) parent is called a _mixin_.
+La clase `Iter` en la función `main` es construida de una composición mixin de los padres `StringIterator` y `RichIterator` con la palabra clave `with`. El primera padre es llamado la _superclase_ de `Iter`, mientras el segundo padre (y cualquier otro que exista) es llamada un _mixin_.
