@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Unified Types
+title: Tipos Unificados
 
 disqus: true
 
@@ -8,34 +8,34 @@ tutorial: scala-tour
 num: 30
 ---
 
-In contrast to Java, all values in Scala are objects (including numerical values and functions). Since Scala is class-based, all values are instances of a class. The diagram below illustrates the class hierarchy.
+A diferencia de Java, todos los valores en Scala son objetos (incluyendo valores numéricos y funciones). Dado que Scala está basado en clases, todos los valores son instancias de una clase. El diagrama siguiente ilustra esta jerarquía de clases:
 
-![Scala Type Hierarchy](/resources/images/classhierarchy.img_assist_custom.png)
+![Jerarquía de Tipos de Scala](/resources/images/classhierarchy.img_assist_custom.png)
 
-## Scala Class Hierarchy ##
+## Jerarquía de clases en Scala ##
 
-The superclass of all classes scala.Any has two direct subclasses scala.AnyVal and scala.AnyRef representing two different class worlds: value classes and reference classes. All value classes are predefined; they correspond to the primitive types of Java-like languages. All other classes define reference types. User-defined classes define reference types by default; i.e. they always (indirectly) subclass scala.AnyRef. Every user-defined class in Scala implicitly extends the trait scala.ScalaObject. Classes from the infrastructure on which Scala is running (e.g. the Java runtime environment) do not extend scala.ScalaObject. If Scala is used in the context of a Java runtime environment, then scala.AnyRef corresponds to java.lang.Object.
-Please note that the diagram above also shows implicit conversions called views between the value classs.
-Here is an example that demonstrates that both numbers, characters, boolean values, and functions are objects just like every other object:
- 
+La superclase de todas las clases, `scala.Any`, tiene dos subclases directas, `scala.AnyVal` y `scala.AnyRef` que representan dos mundos de clases muy distintos: clases para valores y clases para referencias. Todas las clases para valores están predefinidas; se corresponden con los tipos primitivos de los lenguajes tipo Java. Todas las otras clases definen tipos referenciables. Las clases definidas por el usuario son definidas como tipos referenciables por defecto, es decir, siempre (indirectamente) extienden de `scala.AnyRef`. Toda clase definida por usuario en Scala extiende implicitamente el trait `scala.ScalaObject`. Clases pertenecientes a la infraestructura en la cual Scala esté corriendo (ejemplo, el ambiente de ejecución de Java) no extienden de `scala.ScalaObject`. Si Scala es usado en el contexto de un ambiente de ejecución de Java, entonces `scala.AnyRef` corresponde a `java.lang.Object`.
+Por favor note que el diagrama superior también muestra conversiones implícitas llamadas viestas entre las clases para valores.
+Aquí se muestra un ejemplo que demuestra que tanto valores numéricos, de caracteres, buleanos y funciones son objetos, tal como cualquier otro objeto:
+
     object UnifiedTypes {
       def main(args: Array[String]) {
         val set = new scala.collection.mutable.HashSet[Any]
-        set += "This is a string"  // add a string
-        set += 732                 // add a number
-        set += 'c'                 // add a character
-        set += true                // add a boolean value
-        set += main _              // add the main function
+        set += "This is a string"  // suma un String
+        set += 732                 // suma un número
+        set += 'c'                 // suma un caracter
+        set += true                // suma un valor booleano
+        set += main _              // suma la función main
         val iter: Iterator[Any] = set.elements
         while (iter.hasNext) {
           println(iter.next.toString())
         }
       }
     }
- 
-The program declares an application UnifiedTypes in form of a top-level singleton object with a main method. Themain method defines a local variable set which refers to an instance of class `HashSet[Any]`. The program adds various elements to this set. The elements have to conform to the declared set element type Any. In the end, string representations of all elements are printed out.
 
-Here is the output of the program:
+El programa declara una aplicación `UnifiedTypes` en forma de un objeto singleton de primer nive con un método `main`. El método main define una variable local `set` (un conjunto), la cual se refiere a una instancia de la clase `HashSet[Any]`. El programa suma varios elementos a este conjunto. Los elementos tienen que cumplir con el tipo declarado para los elementos por el conjunto, que es `Any`. En el final, una representación en texto (cadena de caracteres, o string) es impresa en pantalla.
+
+Aquí se muestra la salida del programa:
 
     c
     true
