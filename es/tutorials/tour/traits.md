@@ -8,15 +8,15 @@ tutorial: scala-tour
 num: 24
 ---
 
-Similar to interfaces in Java, traits are used to define object types by specifying the signature of the supported methods. Unlike Java, Scala allows traits to be partially implemented; i.e. it is possible to define default implementations for some methods. In contrast to classes, traits may not have constructor parameters.
-Here is an example:
+De forma similar a las interfaces de Java, los traits son usados para definir tipos de objetos al especificar el comportamiento mediante los métodos provistos. A diferencia de Java, Scala permite a los traits ser parcialmente implementados, esto es, es posible definir implementaciones por defecto para algunos métodos. En contraste con las clases, los traits no pueden tener parámetros de constructor. 
+A continuación se muestra un ejemplo:
  
     trait Similarity {
       def isSimilar(x: Any): Boolean
       def isNotSimilar(x: Any): Boolean = !isSimilar(x)
     }
  
-This trait consists of two methods `isSimilar` and `isNotSimilar`. While `isSimilar` does not provide a concrete method implementation (it is abstract in the terminology of Java), method `isNotSimilar` defines a concrete implementation. Consequently, classes that integrate this trait only have to provide a concrete implementation for `isSimilar`. The behavior for `isNotSimilar` gets inherited directly from the trait. Traits are typically integrated into a [class](classes.html) (or other traits) with a [mixin class composition](mixin-class-composition.html):
+Este trait consiste de dos métodos `isSimilar` y `isNotSimilar`. Mientras `isSimilar` no provee una implementación concreta del método (es abstracto en la terminología Java), el método `isNotSimilar` define una implementación concreta. Consecuentemente, las clases que integren este trait solo tienen que proveer una implementación concreta para `isSimilar`. El comportamiento de `isNotSimilar` es directamente herdado del trait. Los traits tipicamente son integrados a una clase (u otros traits) mediante una [mixin - composición de clases](mixin-class-composition.html):
  
     class Point(xc: Int, yc: Int) extends Similarity {
       var x: Int = xc
@@ -34,7 +34,7 @@ This trait consists of two methods `isSimilar` and `isNotSimilar`. While `isSimi
       println(p1.isNotSimilar(2))
     }
  
-Here is the output of the program:
+Esta es la salida del programa:
 
     false
     true
