@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Implicit Parameters
+title: Parámetros implícitos
 
 disqus: true
 
@@ -8,13 +8,13 @@ tutorial: scala-tour
 num: 10
 ---
 
-A method with _implicit parameters_ can be applied to arguments just like a normal method. In this case the implicit label has no effect. However, if such a method misses arguments for its implicit parameters, such arguments will be automatically provided.
+Un método con _parámetros implícitos_ puede ser aplicado a argumentos tal como un método normal. En este caso la etiqueta `implicit` no tiene efecto. De todas maneras, si a un método le faltan argumentos para sus parámetros implícitos, tales argumentos serán automáticamente provistos.
 
-The actual arguments that are eligible to be passed to an implicit parameter fall into two categories:
-* First, eligible are all identifiers x that can be accessed at the point of the method call without a prefix and that denote an implicit definition or an implicit parameter.
-* Second, eligible are also all members of companion modules of the implicit parameter's type that are labeled implicit.
+Los argumentos reales que son elegibles para ser pasados a un parámetro implícito están contenidos en dos categorías:
+* Primero, son elegibles todos los identificadores x que puedan ser accedidos en el momento de la llamda al método sin ningún prefijo y que denotan una definición implícita o un parámetro implícito.
+* Segundo, además son elegibles todos los miembros de modulos `companion` (ver objetos companion) del tipo de parámetro implicito que tienen la etiqueta `implicit`.
 
-In the following example we define a method `sum` which computes the sum of a list of elements using the monoid's add and unit operations. Please note that implicit values can not be top-level, they have to be members of a template.
+En el siguiente ejemplo definimos un método `sum` el cual computa la suma de una lista de elementos usando las operaciones `add` y `unit` de `Monoid`. Note que los valores implícitos no pueden ser de nivel superior (top-level), deben ser miembros de una plantilla.
  
     abstract class SemiGroup[A] {
       def add(x: A, y: A): A
@@ -40,7 +40,7 @@ In the following example we define a method `sum` which computes the sum of a li
     }
   
  
-Here is the output of the Scala program:
+Esta es la salida del programa:
 
     6
     abc
