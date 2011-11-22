@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Lower Type Bounds
+title: Limites de tipos inferior
 
 disqus: true
 
@@ -8,9 +8,9 @@ tutorial: scala-tour
 num: 26
 ---
 
-While [upper type bounds](upper-type-bounds.html) limit a type to a subtype of another type, *lower type bounds* declare a type to be a supertype of another type. The term `T >: A` expresses that the type parameter `T` or the abstract type `T` refer to a supertype of type `A`.
+Mientras que los [límites de tipo superior](upper-type-bounds.html) limitan el tipo de un subtipo de otro tipo, los *límites de tipos inferior* declaran que un tipo sea un supertipo de otro tipo. El término `T >: A` expresa que el parámetro de tipo `T` o el tipo abstracto `T` se refiera a un supertipo del tipo `A`
 
-Here is an example where this is useful:
+Aquí se muestra un ejemplo donde esto es de utilidad:
 
     case class ListNode[T](h: T, t: ListNode[T]) {
       def head: T = h
@@ -19,13 +19,13 @@ Here is an example where this is useful:
         ListNode(elem, this)
     }
 
-The program above implements a linked list with a prepend operation. Unfortunately, this type is invariant in the type parameter of class `ListNode`; i.e. type `ListNode[String]` is not a subtype of type `List[Object]`. With the help of [variance annotations](variances.html) we can express such a subtype semantics:
+El programa mostrado implementa una lista enlazada con una operación `prepend` (agregar al principio). Desafortunadamente este tipo es invariante en el parámetro de tipo de la clase `ListNode`; esto es, el tipo `ListNode[String]` no es un subtipo de `ListNode[Object]`. Con la ayuda de [anotaciones de varianza](variances.html) es posible expresar tal semantica de subtipos:
 
-    case class ListNode[+T](h: T, t: ListNode[T]) { ... }
+    case class ListNode[+T](h: T, t: ListNode[T]) { ... } // No compila
 
-Unfortunately, this program does not compile, because a covariance annotation is only possible if the type variable is used only in covariant positions. Since type variable `T` appears as a parameter type of method `prepend`, this rule is broken. With the help of a *lower type bound*, though, we can implement a prepend method where `T` only appears in covariant positions.
+Desafortunadamente, este programa no compila porque una anotación covariante es solo posible si el tipo de la variable es usado solo en posiciones covariantes. Ya que la variable de tipo `T` aparece como un parámetro de tipo en el método `prepend`, esta regla se rompe. Con la ayuda de un *límite de tipo inferior*, sin embargo, podemos implementar un método `prepend` donde `T` solo aparezca en posiciones covariantes.
 
-Here is the corresponding code:
+Este es el código correspondiente:
 
     case class ListNode[+T](h: T, t: ListNode[T]) {
       def head: T = h
@@ -34,9 +34,9 @@ Here is the corresponding code:
         ListNode(elem, this)
     }
 
-_Note:_ the new `prepend` method has a slightly less restrictive type. It allows, for instance, to prepend an object of a supertype to an existing list. The resulting list will be a list of this supertype.
+_Nota: el nuevo método `prepend` tiene un tipo un poco menos restrictivo. Esto permite, por ejemplo, agregar un objeto de un supertipo a una lista ya creada. La lista resultante será una lista de este supertipo._
 
-Here is some code which illustrates this:
+Este código ilustra el concepto:
 
     object LowerBoundTest extends Application {
       val empty: ListNode[Null] = ListNode(null, null)
