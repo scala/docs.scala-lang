@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Extractor Objects
+title: Objetos Extractores
 
 disqus: true
 
@@ -8,7 +8,7 @@ tutorial: scala-tour
 num: 8
 ---
 
-In Scala, patterns can be defined independently of case classes. To this end, a method named unapply is defined to yield a so-called extractor. For instance, the following code defines an extractor object Twice.
+En Scala pueden ser definidos patrones independientemente de las clases Caso. Para este fin exite un método llamado `unapply` que proveera el ya dicho extractor. Por ejemplo, en el código siguiente se define el objeto extractor `Twice`
 
     object Twice {
       def apply(x: Int): Int = x * 2
@@ -17,19 +17,20 @@ In Scala, patterns can be defined independently of case classes. To this end, a 
     
     object TwiceTest extends Application {
       val x = Twice(21)
-      x match { case Twice(n) => Console.println(n) } // prints 21
+      x match { case Twice(n) => Console.println(n) } // imprime 21
     }
-There are two syntactic conventions at work here:
 
-The pattern `case Twice(n)` will cause an invocation of `Twice.unapply`, which is used to match any even number; the return value of the `unapply` signals whether the argument has matched or not, and any sub-values that can be used for further matching. Here, the sub-value is `z/2`
+Hay dos convenciones sintácticas que entran en juego aquí:
 
-The `apply` method is not necessary for pattern matching.  It is only used to mimick a constructor. `val x = Twice(21)` expands to `val x = Twice.apply(21)`.
+El patrón `case Twice(n)` causará la invocación del método `Twice.unapply`, el cual es usado para reconocer cualquier número par; el valor de retorno de `unapply` indica si el argumento produjo una coincidencia o no, y cualquier otro sub valor que pueda ser usado para un siguiente reconocimiento. Aquí, el sub-valor es `z/2`.
 
-The return type of an `unapply` should be chosen as follows:
-* If it is just a test, return a `Boolean`. For instance `case even()`
-* If it returns a single sub-value of type T, return an `Option[T]`
-* If you want to return several sub-values `T1,...,Tn`, group them in an optional tuple `Option[(T1,...,Tn)]`.
+El método `apply` no es necesario para reconocimiento de patrones. Solamente es usado para proveer un constructor. `val x = Twice(21)` se puede expandir como `val x = Twice.apply(21)`.
 
-Sometimes, the number of sub-values is fixed and we would like to return a sequence. For this reason, you can also define patterns through `unapplySeq`. The last sub-value type `Tn` has to be `Seq[S]`. This mechanism is used for instance in pattern `case List(x1, ..., xn)`.
+El tipo de retorno de un método `unapply` debería ser elegido de la siguiente manera:
+* Si es solamente una comprobación, retornar un `Boolean`. Por ejemplo, `case esPar()`
+* Si retorna un único sub valor del tipo T, retornar un `Option[T]`
+* Si quiere retornar varios sub valores `T1,...,Tn`, es necesario agruparlos en una tupla de valores opcionales `Option[(T1,...,Tn)]`.
 
-Extractors can make code more maintainable. For details, read the paper ["Matching Objects with Patterns"](http://lamp.epfl.ch/~emir/written/MatchingObjectsWithPatterns-TR.pdf) (see section 4) by Emir, Odersky and Williams (January 2007).
+Algunas veces, el número de sub valores es fijo y nos gustaría retornar una secuencia. Por esta razón, siempre es posible definir patrones a través de `unapplySeq`. El último sub valor de tipo `Tn` tiene que ser `Seq[S]`. Este mecanismo es usado por ejemplo en el patrón `case List(x1, ..., xn)`.
+
+Los objetos extractores pueden hacer el código más mantenible. Para más detalles lea el paper ["Matching Objects with Patterns (Reconociendo objetos con patrones)"](http://lamp.epfl.ch/~emir/written/MatchingObjectsWithPatterns-TR.pdf) (ver sección 4) por Emir, Odersky y Williams (Enero de 2007).
