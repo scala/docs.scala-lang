@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Upper Type Bounds
+title: Límite de tipado superior
 
 disqus: true
 
@@ -8,8 +8,8 @@ tutorial: scala-tour
 num: 25
 ---
 
-In Scala, [type parameters](generic-classes.html) and [abstract types](abstract-types.html) may be constrained by a type bound. Such type bounds limit the concrete values of the type variables and possibly reveal more information about the members of such types. An _upper type bound_ `T <: A` declares that type variable `T` refers to a subtype of type `A`.
-Here is an example which relies on an upper type bound for the implementation of the polymorphic method `findSimilar`:
+En Scala, los [parámetros de tipo](generic-classes.html) y los [tipos abstractos](abstract-types.html) pueden ser restringidos por un límite de tipado. Tales límites de tipado limitan los valores concretos de las variables de tipo y posiblemente revelan más información acerca de los miembros de tales tipos. Un _límite de tipado superior_ `T <: A` declara que la variable de tipo `T` es un subtipo del tipo `A`.
+Aquí se muestra un ejemplo el cual se basa en un límite de tipado superior para la implementación del método polimórfico `findSimilar`:
 
     trait Similar {
       def isSimilar(x: Any): Boolean
@@ -27,7 +27,6 @@ Here is an example which relies on an upper type bound for the implementation of
       val list: List[MyInt] = List(MyInt(1), MyInt(2), MyInt(3))
       println(findSimilar[MyInt](MyInt(4), list))
       println(findSimilar[MyInt](MyInt(2), list))
-    }
+    } 
 
-Without the upper type bound annotation it would not be possible to call method `isSimilar` in method `findSimilar`.
-The usage of lower type bounds is discussed [here](lower-type-bounds.html). 
+Sin la anotación del límite de tipado superior no sería posible llamar al método `isSimilar` en el método `findSimilar`. El uso de los límites de tipado inferiores se discute [aquí](lower-type-bounds.html).

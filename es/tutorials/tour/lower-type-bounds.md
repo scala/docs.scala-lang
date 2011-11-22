@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Limites de tipos inferior
+title: Límite de tipado inferior
 
 disqus: true
 
@@ -8,7 +8,7 @@ tutorial: scala-tour
 num: 26
 ---
 
-Mientras que los [límites de tipo superior](upper-type-bounds.html) limitan el tipo de un subtipo de otro tipo, los *límites de tipos inferior* declaran que un tipo sea un supertipo de otro tipo. El término `T >: A` expresa que el parámetro de tipo `T` o el tipo abstracto `T` se refiera a un supertipo del tipo `A`
+Mientras que los [límites de tipado superior](upper-type-bounds.html) limitan el tipo de un subtipo de otro tipo, los *límites de tipado inferior* declaran que un tipo sea un supertipo de otro tipo. El término `T >: A` expresa que el parámetro de tipo `T` o el tipo abstracto `T` se refiera a un supertipo del tipo `A`
 
 Aquí se muestra un ejemplo donde esto es de utilidad:
 
@@ -23,7 +23,7 @@ El programa mostrado implementa una lista enlazada con una operación `prepend` 
 
     case class ListNode[+T](h: T, t: ListNode[T]) { ... } // No compila
 
-Desafortunadamente, este programa no compila porque una anotación covariante es solo posible si el tipo de la variable es usado solo en posiciones covariantes. Ya que la variable de tipo `T` aparece como un parámetro de tipo en el método `prepend`, esta regla se rompe. Con la ayuda de un *límite de tipo inferior*, sin embargo, podemos implementar un método `prepend` donde `T` solo aparezca en posiciones covariantes.
+Desafortunadamente, este programa no compila porque una anotación covariante es solo posible si el tipo de la variable es usado solo en posiciones covariantes. Ya que la variable de tipo `T` aparece como un parámetro de tipo en el método `prepend`, esta regla se rompe. Con la ayuda de un *límite de tipado inferior*, sin embargo, podemos implementar un método `prepend` donde `T` solo aparezca en posiciones covariantes.
 
 Este es el código correspondiente:
 

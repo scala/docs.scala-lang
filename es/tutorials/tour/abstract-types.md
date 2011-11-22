@@ -9,8 +9,8 @@ num: 2
 outof: 33
 ---
 
-En Scala, las cases son parametrizadas con valores (los parámetros de construcción) y con tipos (si las clases son [genéricas](generic-classes.html)). Por razones de consistencia, no es posible tener solo valores como miembros de objetos; tanto los tipos como los valores son miembros de objetos. Además, ambas formas de miembros pueden ser concretos y abstractos.
-A continuación un ejemplo el cual define de forma conjunta una asignación de valor diferida y un tipo abstracto como miembros de la [clase](traits.html) `Buffer`.
+En Scala, las cases son parametrizadas con valores (los parámetros de construcción) y con tipos (si las clases son [genéricas](generic-classes.html)). Por razones de consistencia, no es posible tener solo valores como miembros de objetos; tanto los tipos como los valores son miembros de objetos. Además, ambos tipos de miembros pueden ser concretos y abstractos.
+A continuación un ejemplo el cual define de forma conjunta una asignación de valor tardía y un tipo abstracto como miembros del [trait](traits.html) `Buffer`.
  
     trait Buffer {
       type T
