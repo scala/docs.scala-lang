@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Regular Expression Patterns
+title: Patrones basados en expresiones regulares
 
 disqus: true
 
@@ -8,14 +8,13 @@ tutorial: scala-tour
 num: 22
 ---
 
-## Right-ignoring sequence patterns ##
+## Patrones de secuencias que ignoran a la derecha ##
 
-Right-ignoring patterns are a useful feature to decompose any data which is either a subtype of Seq[A] or a case class with an iterated formal parameter, like for instance
+Los patrones de secuencias que ignoran a la derecha son una característica útil para separar cualquier dato que sea tanto un subtipo de `Seq[A]` o una clase case con un parámetro iterador formal, como por ejemplo
 
     Elem(prefix:String, label:String, attrs:MetaData, scp:NamespaceBinding, children:Node*)
 
-In those cases, Scala allows patterns having a wildcard-star `_*` in the rightmost position to stand for arbitrary long sequences.
-The following example demostrate a pattern match which matches a prefix of a sequence and binds the rest to the variable `rest`.
+En esos casos, Scala permite a los patrones que utilicen el cómodin `_*` en la posición más a la derecha que tomen lugar para secuencias arbitrariamente largas. El siguiente ejemplo demuestra un reconocimiento de patrones el cual identifica un prefijo de una secuencia y liga el resto a la variable `rest`.
 
     object RegExpTest1 extends Application {
       def containsScala(x: String): Boolean = {
@@ -30,9 +29,11 @@ The following example demostrate a pattern match which matches a prefix of a seq
       }
     }
 
-In contrast to previous Scala version, it is no longer allowed to have arbitrary regular expressions, for the reasons described below.
-General `RegExp` patterns temporarily retracted from Scala
 
-Since we discovered a problem in correctness, this feature is temporarily retracted from the Scala language. If there is request from the user community, we might reactivate it in an improved form.
+A diferencia de versiones previas de Scala, ya no está permitido tener expresiones regulares arbitrarias, por las siguientes razones.
 
-According to our opinion regular expressions patterns were not so useful for XML processing as we estimated. In real life XML processing applications, XPath seems a far better option. When we discovered that our translation or regular expressions patterns has some bugs for esoteric patterns which are unusual yet hard to exclude, we chose it would be time to simplify the language.
+###Patrones generales de expresiones regulares (`RegExp`) temporariamente retirados de Scala###
+
+Desde que descubrimos un problema en la precisión, esta característica está temporariamente retirada del lenguaje. Si existiese una petición de parte de la comunidad de usuarios, podríamos llegar a reactivarla de una forma mejorada.
+
+De acuerdo a nuestra opinión los patrones basados en expresiones regulares no resultaron útiles para el procesamiento de XML. En la vida real, las aplicaciones que procesan XML, XPath parece una opción mucho mejor. Cuando descubrimos que nuestra traducción de los patrones para expresiones regulares tenía algunos errores para patrones raros y poco usados, aunque difícil de excluir, decidimos que sería tiempo de simplificar el lenguaje.
