@@ -1,12 +1,12 @@
 ---
 layout: overview-large
-title: Finding Symbols
+title: How do I find what some symbol means or does?
 
 disqus: true
 
 partof: FAQ
 num: 1
-outof: 7
+outof: 8
 ---
 Let's divide the operators, for the purpose of teaching, into **four categories**:
 
