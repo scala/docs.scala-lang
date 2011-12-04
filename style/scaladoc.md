@@ -104,14 +104,14 @@ notation:
       *
       * ==Overview==
       * The main class to use is [[my.package.complex.Complex]], as so
-      * {{{
+      * {{ "{{{" }}
       * scala> val complex = Complex(4,3)
       * complex: my.package.complex.Complex = 4 + 3i
       * }}}
       *
       * If you include [[my.package.complex.ComplexConversions]], you can 
       * convert numbers more directly
-      * {{{
+      * {{ "{{{" }}
       * scala> import my.package.complex.ComplexConversions._
       * scala> val complex = 4 + 3.i
       * complex: my.package.complex.Complex = 4 + 3i
@@ -181,7 +181,7 @@ ScalaDoc:
 
     /** Implicits conversions and helpers for [[mypackage.Complex]] instances.
       *
-      * {{{
+      * {{ "{{{" }}
       * import ComplexImplicits._
       * val c:Complex = 4 + 3.i
       * }}} 
