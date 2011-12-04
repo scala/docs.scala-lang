@@ -45,10 +45,10 @@ as_ belonging in that hierarchy through implicit conversion to wrapper classes.
 The legend for these graphs can be found after them.
 
 Graph for immutable hierarchy:
-![Immutable collection hierarchy][6]
+<img src="http://i.stack.imgur.com/2fjoA.png" width="600px" />
 
 Graph for mutable hierarchy:
-![Mutable collection hierarchy][7]
+<a href="http://i.stack.imgur.com/Dsptl.png"><img src="http://i.stack.imgur.com/Dsptl.png" width="600px" /></a>
 
 Legend:
 
