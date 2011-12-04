@@ -4,7 +4,7 @@ This repository contains the source for the Scala documentation website, as well
 
 ## Dependencies ##
 
-Jekyll is required. Follow the install instructions at the Jekyll [wiki](https://github.com/mojombo/jekyll/wiki/Install). In most cases, you can install via RubyJems: 
+Jekyll is required. Follow the install instructions at the Jekyll [wiki](https://github.com/mojombo/jekyll/wiki/Install). In most cases, you can install via RubyGems: 
 
     gem install jekyll
 
