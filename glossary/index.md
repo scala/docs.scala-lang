@@ -99,10 +99,13 @@ A _filter expression_ is the boolean expression following an `if` in a [for expr
 Scala supports _first-class functions_, which means you can express functions in function literal syntax, i.e., `(x: Int) => x + 1`, and that functions can be represented by objects, which are called [function values](#function_value).
 
 * #### for comprehension
-Another name for [for expression](#for_expression).
+A _for comprehension_ is a type of [for expression](#for_expression) that creates a new collection.  For each iteration of the `for` comprehension, the [yield](#yield) clause defines an element of the new collection.  For example, `for (i <- (0 until 2); j <- (2 until 4)) yield (i, j)` returns the collection `Vector((0,2), (0,3), (1,2), (1,3))`.
 
 * #### for expression
-An expression similar to a set comprehension in mathematics but for creating a collection.  A `for` expression combines a series of [generators](#generator), [filters](#filter), and variable bindings combined with a single [yield] statement.  All `for` expressions can be translated into some combination of `foreach`, `map`, `flatMap`, and `filter`. Also known as [for comprehension], monad comprehension (Haskell), and LINQ (C#).
+A _for expression_ is either a [for loop](#for_loop), which iterates over one or more collections, or a [for comprehension](#for_comprehension), which builds a new collection from the elements of one or more collections.  A `for` expression is built up of [generators](#generator), [filters](#filter), variable definitions, and (in the case of [for comprehensions](#for_comprehension)) a [yield](#yield) clause.
+
+* #### for loop
+A _for loop_ is a type of [for expression](#for_expression) that loops over one or more collections.  Since `for` loops return unit, they usually produce side-effects.  For example, `for (i <- 0 until 100) println(i)` prints the numbers 0 through 99.
 
 * #### free variable
 A _free variable_ of an expression is a variable that’s used inside the expression but not defined inside the expression. For instance, in the function literal expression `(x: Int) => (x, y)`, both variables `x` and `y` are used, but only `y` is a free variable, because it is not defined inside the expression.
@@ -130,6 +133,9 @@ A class that takes type parameters. For example, because `scala.List` takes a ty
 
 * #### generic trait
 A trait that takes type parameters. For example, because trait `scala.collection.Set` takes a type parameter, it is a generic trait.
+
+* #### guard
+See [filter](#filter).
 
 * #### helper function
 A function whose purpose is to provide a service to one or more other functions nearby. Helper functions are often implemented as local functions.
@@ -378,7 +384,7 @@ A named entity that refers to an object. A variable is either a `val` or a `var`
 A type parameter of a class or trait can be marked with a _variance_ annotation, either [covariant](#covariant) (+) or [contravariant](#contravariant) (-). Such variance annotations indicate how subtyping works for a generic class or trait. For example, the generic class `List` is covariant in its type parameter, and thus `List[String]` is a subtype of `List[Any]`. By default, _i.e._, absent a `+` or `-` annotation, type parameters are [nonvariant](#nonvariant).
 
 * #### yield
-An expression can _yield_ a result. The `yield` keyword designates the result of a [for expression](#for_expression).
+An expression can _yield_ a result. The `yield` keyword designates the result of a [for comprehension](#for_comprehension).
 
 
 
