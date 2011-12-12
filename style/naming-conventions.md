@@ -36,7 +36,7 @@ development.:
     }
 
     object inc {
-      def apply(x: Int) : Int = x + 1
+      def apply(x: Int): Int = x + 1
     }
 
 In *all* other cases, objects should be named according to the class
@@ -270,22 +270,22 @@ all-uppercase style):
 
     // Right
     class Map[Key,Value] {
-      def get(key:Key):Value
-      def put(key:Key,value:Value):Unit
+      def get(key:Key): Value
+      def put(key:Key,value:Value): Unit
     }
 
     // Wrong; don't use all-caps
     class Map[KEY,VALUE] {
-      def get(key:KEY):VALUE
-      def put(key:KEY,value:VALUE):Unit
+      def get(key:KEY): VALUE
+      def put(key:KEY,value:VALUE): Unit
     }
 
 If the scope of the type parameter is small enough, a mnemonic can be
 used in place of a longer, descriptive name:
 
     class Map[K,V] {
-      def get(key:K):V
-      def put(key:K,value:V):Unit
+      def get(key:K): V
+      def put(key:K,value:V): Unit
     }
 
 ### Higher-Kinds and Parameterized Type parameters
