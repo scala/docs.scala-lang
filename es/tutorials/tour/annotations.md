@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Annotations
+title: Anotaciones
 
 disqus: true
 
@@ -8,33 +8,33 @@ tutorial: scala-tour
 num: 3
 ---
 
-Annotations associate meta-information with definitions.
+Las anotaciones sirven para asociar meta-información con definiciones.
 
-A simple annotation clause has the form `@C` or `@C(a1, .., an)`. Here, `C` is a constructor of a class `C`, which must conform to the class `scala.Annotation`. All given constructor arguments `a1, .., an` must be constant expressions (i.e., expressions on numeral literals, strings, class literals, Java enumerations and one-dimensional arrays of them).
+Una anotación simple tiene la forma `@C` o `@C(a1, .., an)`. Aquí, `C` es un constructor de la clase `C`, que debe extender de la clase `scala.Annotation`. Todos los argumentos de construcción dados `a1, .., an` deben ser expresiones constantes (es decir, expresiones de números literales, strings, clases, enumeraciones de Java y arrays de una dimensión de estos valores).
 
-An annotation clause applies to the first definition or declaration following it. More than one annotation clause may precede a definition and declaration. The order in which these clauses are given does not matter.
+Una anotación se aplica a la primer definición o declaración que la sigue. Más de una anotación puede preceder una definición o declaración. El orden en que es dado estas anotaciones no importa.
 
-The meaning of annotation clauses is _implementation-dependent_. On the Java platform, the following Scala annotations have a standard meaning.
+El significado de las anotaciones _depende de la implementación_. En la plataforma de Java, las siguientes anotaciones de Scala tienen un significado estandar.
 
 |           Scala           |           Java           |
 |           ------          |          ------          |
-|  [`scala.SerialVersionUID`](http://www.scala-lang.org/api/2.9.1/scala/SerialVersionUID.html)   |  [`serialVersionUID`](http://java.sun.com/j2se/1.5.0/docs/api/java/io/Serializable.html#navbar_bottom) (field)  |
+|  [`scala.SerialVersionUID`](http://www.scala-lang.org/api/2.9.1/scala/SerialVersionUID.html)   |  [`serialVersionUID`](http://java.sun.com/j2se/1.5.0/docs/api/java/io/Serializable.html#navbar_bottom) (campo, variable)  |
 |  [`scala.cloneable`](http://www.scala-lang.org/api/2.9.1/scala/cloneable.html)   |  [`java.lang.Cloneable`](http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Cloneable.html) |
 |  [`scala.deprecated`](http://www.scala-lang.org/api/2.9.1/scala/deprecated.html)   |  [`java.lang.Deprecated`](http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Deprecated.html) |
-|  [`scala.inline`](http://www.scala-lang.org/api/2.9.1/scala/inline.html) (since 2.6.0)  |  no equivalent |
-|  [`scala.native`](http://www.scala-lang.org/api/2.9.1/scala/native.html) (since 2.6.0)  |  [`native`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (keyword) |
+|  [`scala.inline`](http://www.scala-lang.org/api/2.9.1/scala/inline.html) (desde 2.6.0)  |  sin equivalente |
+|  [`scala.native`](http://www.scala-lang.org/api/2.9.1/scala/native.html) (desde 2.6.0)  |  [`native`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (palabra clave) |
 |  [`scala.remote`](http://www.scala-lang.org/api/2.9.1/scala/remote.html) |  [`java.rmi.Remote`](http://java.sun.com/j2se/1.5.0/docs/api/java/rmi/Remote.html) |
 |  [`scala.serializable`](http://www.scala-lang.org/api/2.9.1/index.html#scala.annotation.serializable) |  [`java.io.Serializable`](http://java.sun.com/j2se/1.5.0/docs/api/java/io/Serializable.html) |
-|  [`scala.throws`](http://www.scala-lang.org/api/2.9.1/scala/throws.html) |  [`throws`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (keyword) |
-|  [`scala.transient`](http://www.scala-lang.org/api/2.9.1/scala/transient.html) |  [`transient`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (keyword) |
-|  [`scala.unchecked`](http://www.scala-lang.org/api/2.9.1/scala/unchecked.html) (since 2.4.0) |  no equivalent |
-|  [`scala.volatile`](http://www.scala-lang.org/api/2.9.1/scala/volatile.html) |  [`volatile`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (keyword) |
+|  [`scala.throws`](http://www.scala-lang.org/api/2.9.1/scala/throws.html) |  [`throws`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (palabra clave) |
+|  [`scala.transient`](http://www.scala-lang.org/api/2.9.1/scala/transient.html) |  [`transient`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (palabra clave) |
+|  [`scala.unchecked`](http://www.scala-lang.org/api/2.9.1/scala/unchecked.html) (desde 2.4.0) |  sin equivalente |
+|  [`scala.volatile`](http://www.scala-lang.org/api/2.9.1/scala/volatile.html) |  [`volatile`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (palabra clave) |
 |  [`scala.reflect.BeanProperty`](http://www.scala-lang.org/api/2.9.1/scala/reflect/BeanProperty.html) |  [`Design pattern`](http://java.sun.com/docs/books/tutorial/javabeans/properties/properties.html) |
 
-In the following example we add the `throws` annotation to the definition of the method `read` in order to catch the thrown exception in the Java main program.
+En el siguiente ejemplo agregamos la anotación `throws` a la definición del método `read` de manera de capturar la excepción lanzada en el programa principal de Java.
 
-> A Java compiler checks that a program contains handlers for [checked exceptions](http://java.sun.com/docs/books/jls/third_edition/html/exceptions.html) by analyzing which checked exceptions can result from execution of a method or constructor. For each checked exception which is a possible result, the **throws** clause for the method or constructor _must_ mention the class of that exception or one of the superclasses of the class of that exception.
-> Since Scala has no checked exceptions, Scala methods _must_ be annotated with one or more `throws` annotations such that Java code can catch exceptions thrown by a Scala method.
+> El compilador de Java comprueba que un programa contenga manejadores para [excepciones comprobadas](http://java.sun.com/docs/books/jls/third_edition/html/exceptions.html) al analizar cuales de esas excepciones comprobadas pueden llegar a lanzarse en la ejecución de un método o un constructor. Por cada excepción comprobada que sea un posible resultado, la cláusula **throws** debe para ese método o constructor debe ser mencionada en la clase de esa excepción o una de las superclases.
+> Ya que Scala no tiene excepciones comprobadas, los métodos en Scala deben ser anotados con una o más anotaciones `throws` para que el código Java pueda capturar las excepciones lanzadas por un método de Scala.
 
     package examples
     import java.io._
@@ -44,7 +44,7 @@ In the following example we add the `throws` annotation to the definition of the
       def read() = in.read()
     }
 
-The following Java program prints out the contents of the file whose name is passed as the first argument to the `main` method.
+El siguiente programa de Java imprime en consola los contenidos del archivo cuyo nombre es pasado como primer argumento al método `main`.
 
     package test;
     import examples.Reader;  // Scala class !!
@@ -62,7 +62,7 @@ The following Java program prints out the contents of the file whose name is pas
         }
     }
 
-Commenting out the `throws` annotation in the class Reader produces the following error message when compiling the Java main program:
+Si comentamos la anotación `throws` en la clase `Reader` se produce el siguiente error cuando se intenta compilar el programa principal de Java:
 
     Main.java:11: exception java.io.IOException is never thrown in body of
     corresponding try statement
@@ -70,61 +70,56 @@ Commenting out the `throws` annotation in the class Reader produces the followin
               ^
     1 error
 
-### Java Annotations ###
+### Anotaciones en Java ###
 
-**Note:** Make sure you use the `-target:jvm-1.5` option with Java annotations.
+**Nota:** Asegurate de usar la opción `-target:jvm-1.5` con anotaciones de Java.
 
-Java 1.5 introduced user-defined metadata in the form of [annotations](http://java.sun.com/j2se/1.5.0/docs/guide/language/annotations.html). A key feature of annotations is that they rely on specifying name-value pairs to initialize their elements. For instance, if we need an annotation to track the source of some class we might define it as
+Java 1.5 introdujo metadata definida por el usuario en la forma de [anotaciones](http://java.sun.com/j2se/1.5.0/docs/guide/language/annotations.html). Una característica fundamental de las anotaciones es que se basan en pares nombre-valor específicos para inicializar sus elementos. Por ejemplo, si necesitamos una anotación para rastrear el código de alguna clase debemos definirlo así:
 
     @interface Source {
       public String URL();
       public String mail();
     }
 
-And then apply it as follows
+Y después utilizarlo de la siguiente manera
 
     @Source(URL = "http://coders.com/",
             mail = "support@coders.com")
     public class MyClass extends HisClass ...
 
-An annotation application in Scala looks like a constructor invocation, for instantiating a Java annotation one has to use named arguments:
+Una anotación en Scala aparenta como una invocación a un constructor. Para instanciar una anotación de Java es necesario usar los argumentos nombrados:
 
     @Source(URL = "http://coders.com/",
             mail = "support@coders.com")
     class MyScalaClass ...
 
-This syntax is quite tedious if the annotation contains only one element (without default value) so, by convention, if the name is specified as `value` it can be applied in Java using a constructor-like syntax:
+Esta sintaxis es bastante tediosa si la anotación contiene solo un elemento (sin un valor por defecto) por lo tanto, por convención, si el nombre es especificado como `value` puede ser utilizado en Java usando una sintaxis similar a la de los constructores:
 
     @interface SourceURL {
         public String value();
         public String mail() default "";
     }
 
-And then apply it as follows
+Y podemos aplicarlo así:
 
     @SourceURL("http://coders.com/")
     public class MyClass extends HisClass ...
 
-In this case, Scala provides the same possibility
+En este caso, Scala provee la misma posibilidad:
 
     @SourceURL("http://coders.com/")
     class MyScalaClass ...
 
-The `mail` element was specified with a default value so we need not explicitly provide a value for it. However, if we need to do it we can not mix-and-match the two styles in Java:
+El elemento `mail` fue especificado con un valor por defecto (mediante la cláusula `default`) por lo tanto no necesitamos proveer explicitamente un valor para este. De todas maneras, si necesitamos pasarle un valor no podemos mezclar los dos estilos en Java:
 
     @SourceURL(value = "http://coders.com/",
                mail = "support@coders.com")
     public class MyClass extends HisClass ...
 
-Scala provides more flexibility in this respect
+Scala provee más flexibilidad en este caso:
 
     @SourceURL("http://coders.com/",
                mail = "support@coders.com")
         class MyScalaClass ...
 
-This extended syntax is consistent with .NET's annotations and can accomodate their full capabilites.
-
-
-
-
-
+Esta sintaxis extendida es consistente con las anotaciones de .NET y pueden obtenerse las capacidades máximas de estas.
