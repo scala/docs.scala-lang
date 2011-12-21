@@ -78,3 +78,4 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |  `classOf[String]`                                                                                       |  class literal. |
 |  `x.isInstanceOf[String]`                                                                                |  type check (runtime) |
 |  `x.asInstanceOf[String]`                                                                                |  type cast (runtime) |
+|  `x : String`                                                                                            |  ascription (compile time) |
