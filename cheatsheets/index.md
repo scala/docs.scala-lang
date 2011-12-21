@@ -9,10 +9,23 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 
 |                                                                                                          |                 |
 | ------                                                                                                   | ------          |
-|  <h2 id="variables">variables</h2>                                                                       |                 |
-|  `var x = 5`                                                                                             |  variable       |
-|  <span class="label success">Good</span> `val x = 5`<br> <span class="label important">Bad</span> `x=6`  |  constant       |
-|  `var x: Double = 5`                                                                                     |  explicit type  |
+|  <h2 id="declarations">declarations</h2>                                                                       |                 |
+|  `var x = 5`<br>`x = 6`                                                                                             |  mutable variable, value can be changed later       |
+|  <span class="label success">Good</span> `val x = 5`<br> <span class="label important">Bad</span> `x=6`  |  immutable, cannot be changed       |
+|  `var x: Double = 5`                                                                                     |  explicit type. if not provided, compiler will pick one (more later) |
+|  `var x: Double = 5;val y = 42`                                                                                     |  semicolons are optional if a statement is the last one in a line |
+|  `var x = {5}`<br>`var x = {1+2}`             |  results of expressions can be assigned, too  |
+|  `def x:String = return "hello world"`                 | method declaration                      |
+|  `def x(foo:String):String = return foo+"hello world"`                 | method declaration with simple parameter                      |
+|  `def x(foo:String, bar:String):String = return foo+"hello world"+bar`                 | method declaration with two parameters                      |
+|  `def x:String = {val x = 1;return "hello world"+1}`                 | multiple statements need {} around the code                      |
+| `def x = "hello world"`|return keyword and return type declaration are optional. default return value = last value in code block
+|  `def x {print("hello world")}`                 | method without "=" means the method has no return type/return type is void (this is a lie to keep things simple, more later)  | 
+| `def x = {def y = 7;y}` | nested declarations are possible|
+| `class Foo`| class declaration - nested declaration also possible|
+| `class Foo(var x:String, val y:Int)`| class declaration with 2 public fields, one mutable, one immutable. constructor is automatically generated. only new Foo("1",2) is possible|
+| `class Foo {var x = 5;val y = 6}`|class like above, but with default constructor, only new Foo() is possible|
+| `class Foo {def x = 5}`|class with default constructor and one method|
 |  <h2 id="functions">functions</h2>                                                                       |                 |
 |  <span class="label success">Good</span> `def f(x: Int) = { x*x }`<br> <span class="label important">Bad</span> `def f(x: Int)   { x*x }` |  define function <br> hidden error: without = it's a Unit-returning procedure; causes havoc |
 |  <span class="label success">Good</span> `def f(x: Any) = println(x)`<br> <span class="label important">Bad</span> `def f(x) = println(x)` |  define function <br> syntax error: need types for every arg. |
