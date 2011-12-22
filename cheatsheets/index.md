@@ -2,7 +2,7 @@
 layout: cheatsheet
 title: Scalacheat
 by: (initial version: Brendan O'Connor) HamsterofDea
-about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheatsheet aims to be a quick reference of Scala syntactic constructions. Licensed by Brendan O'Connor under a CC-BY-SA 3.0 license.
+about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheatsheet aims to be a quick reference of Scala syntactic constructions. Licensed by Brendan O'Connor under a CC-BY-SA 3.0 license. Pimped by HamsterofDeath who doesn't care about the license and just wants to help scala to spread :)
 ---
 
 ###### Contributed by {{ page.by }}
@@ -25,13 +25,17 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 | `class Foo(var x:String, val y:Int)`| class declaration with 2 public fields, one mutable, one immutable. constructor is automatically generated. only new Foo("1",2) is possible|
 | `class Foo {var x = 5;val y = 6}`|class like above, but with default constructor, only new Foo() is possible|
 | `class Foo {def x = 5}`|class with default constructor and one method|
+|  <h2 id="declarations2">Not so basic declarations</h2>                                                                       |                 |
 | `val x = {class y(val z: String); new y("hello").z}`<br><span class="label important">Bad</span>`val foo = new y("does not work outside the block above")`| everything can be nested in anything, but everything can only be accessed in its scope|
-|  <h2 id="typeinference">Declaring functions</h2>                                                                       |                 |
+| `lazy val x = expensiveOperation()`|the expensive operation is executed once as soon as the value of x is needed, not before|
+| `def method(a:String = "hello", b:String = "world") = a+" "+b`|method will default values|
+| `method("goodbye")`|call to method above, unspecificed parameters will get default values. returns "goodbye world"|
+| `method(b = "friend")`|call to method above, explicitly passes a string to b. a defaults to "hello". returns "hello friend"|
+|  <h2 id="functiondeclaration">Declaring functions</h2>                                                                       |                 |
 | `(i:Int) => i+1`|creates a function.| 
 | `var func = (i:Int) => i+1`|creates a function and stores it in a variable|
 | `func(5)`|executing the function above|
 | `def func = (i:Int) => i+1`|creates a function each time the method is called and returns that function, not i+1|
-| `lazy val x = expensiveOperation()`|the expensive operation is executed once as soon as the value of x is needed, not before|
 |  <h2 id="typeinference">Return types and type inference</h2>                                                                       |                 |
 |  `val x = "hello"`|the compiler always picks the most specific type possible, in this case java.lang.String|
 |  `val x:Serializable = "hello"`|you can always specify a more general one|
@@ -46,7 +50,7 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`def method(i:Int) = t.toString;val func = method _`|appending an "_" converts any method into a function|
 |`takesFunction(method)`|is also possible, the compiler does the conversion for you in obvious cases|
 |  <h2 id="collections">Scala Collections</h2>                                                                       |                 |
-|`Set(1,2,3), Buffer(1,2,3), ArrayBuffer(1,2,3), ListBuffer(1,2,3), List(1,2,3), Array(1,2,3),Vector(1,2,3), Map(1 -> "a", 2 -> "b")`|simple collection creations. scala has mutable and immutable collections.|
+|`1 to 3, Set(1,2,3), Buffer(1,2,3), ArrayBuffer(1,2,3), ListBuffer(1,2,3), List(1,2,3), Array(1,2,3),Vector(1,2,3), Map(1 -> "a", 2 -> "b")`|simple collection creations. scala has mutable and immutable collections.|
 |`mutableColl += elem`|add element to a collection|
 |`mutableColl -= elem`|remove element|
 |`mutableColl ++= elems`|add elements|
@@ -62,6 +66,7 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`coll :+ elem`|create new collection that has all elements of coll and elem at the end|
 |`elem +: coll`|create new collection that has all elements of coll and elem at the beginning|
 |`immutableColl += elem`<br>`immutableColl -= elem`<br>`immutableColl ++= elems`<br>`immutableColl --= elems`<br>`elem +=: immutableColl`<br>`immutableColl :+= elem|same as the operations without "=", but works only if "immutableColl is a var, not a val. the created collection is assigned to "immutableColl".|
+|method name rules:<br>"+" means add<br>"-" means remove<br>"++" or "--" mean many elements, not just one<br>"=" means modifiy mutable collection or assign new immutable collection to var<br>":" goes on the side of the collection<br>if method contains ":" it is and ordered add, either at the beginning or the end of the collection|
 |`def isEven(i:Int= if (i%2==0) true else false`<br>`val evenNumbers:List[Int] = List(1,2,3,4).filter(isEven)`|scala collections are a major epic win. they have ~100 methods which operate on the data of a collection and there is *absolutely nothing* you cannot do with them.|
 |`val evenNumbers:List[Int] = List(1,2,3,4).filter((i:Int)=> i%2==0)`|same as above, just shorter|
 |`val evenNumbers = List(1,2,3,4).filter(i => i%2==0)`|same as above, just shorter. you can skip the () if there is only one parameter|
