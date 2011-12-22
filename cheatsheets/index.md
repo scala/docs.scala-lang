@@ -51,6 +51,7 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`takesFunction(method)`|is also possible, the compiler does the conversion for you in obvious cases|
 |  <h2 id="collections">Scala Collections</h2>                                                                       |                 |
 |`1 to 3, Set(1,2,3), Buffer(1,2,3), ArrayBuffer(1,2,3), ListBuffer(1,2,3), List(1,2,3), Array(1,2,3),Vector(1,2,3), Map(1 -> "a", 2 -> "b")`|simple collection creations. scala has mutable and immutable collections.|
+|prepend, append, union, remove, insertAll... for every cryptic add/remove operation, there is also a well named one that is totally obvious and easy to understand :)|
 |scary but concise operators, need some practice to get them right:<br>+,++,++=,++:=-,--,--=,:+,:++,:=+,+=:,:++=,++:=, ++=:|method name rules:<br>"+" means add<br>"-" means remove<br>"++" or "--" mean add/remove many elements, not just one<br>"=" means modify mutable collection xor assign new immutable collection to var. in the reassign case, "=" is appended to the actual method name, just like "int i=0;i+=1" in java. <br>":" goes on the side of the target collection and is always the first or last character of a method name. if a method end with :=, the method actually ends with : and = means it's a reassignment<br>if method contains ":" it is an add to an ordered collection, either at the beginning or the end of the collection|
 |`mutableColl += elem`|add element to a collection|
 |`mutableColl -= elem`|remove element|
@@ -66,7 +67,6 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`coll :+ elem`|create new collection that has all elements of coll and elem at the end|
 |`elem +: coll`|create new collection that has all elements of coll and elem at the beginning|
 |`immutableColl += elem`<br>`immutableColl -= elem`<br>`immutableColl ++= elems`<br>`immutableColl --= elems`<br>`elem +=: immutableColl`<br>`immutableColl :+= elem`|same as the operations without "=", but works only if "immutableColl is a var, not a val. the created collection is assigned to "immutableColl".|
-|prepend, append, union, remove, insertAll... for every cryptic add/remove operation, there is also a well named one that is totally obvious and easy to understand :)|
 |`def isEven(i:Int= if (i%2==0) true else false`<br>`val evenNumbers:List[Int] = List(1,2,3,4).filter(isEven)`|scala collections are a major epic win. they have ~100 methods which operate on the data of a collection and there is *absolutely nothing* you cannot do with them.|
 |`val evenNumbers:List[Int] = List(1,2,3,4).filter((i:Int)=> i%2==0)`|same as above, just shorter|
 |`val evenNumbers = List(1,2,3,4).filter(i => i%2==0)`|same as above, just shorter. you can skip the () if there is only one parameter|
