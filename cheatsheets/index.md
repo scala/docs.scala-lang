@@ -1,15 +1,15 @@
 ---
 layout: cheatsheet
 title: Scalacheat
-by: Brendan O'Connor
+by: (initial version: Brendan O'Connor) HamsterofDea
 about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheatsheet aims to be a quick reference of Scala syntactic constructions. Licensed by Brendan O'Connor under a CC-BY-SA 3.0 license.
 ---
 
 ###### Contributed by {{ page.by }}
 
-|                                                                                                          |                 |
+|note: "this is a lie" means i gave a simplified explanation and left out details which will be covered later                                                                                                          |                 |
 | ------                                                                                                   | ------          |
-|  <h2 id="declarations">declarations</h2>                                                                       |                 |
+|  <h2 id="declarations">Basic declarations</h2>                                                                       |                 |
 |  `var x = 5`<br>`x = 6`                                                                                             |  mutable variable, value can be changed later       |
 |  <span class="label success">Good</span> `val x = 5`<br> <span class="label important">Bad</span> `x=6`  |  immutable, cannot be changed       |
 |  `var x: Double = 5`                                                                                     |  explicit type. if not provided, compiler will pick one (more later) |
@@ -19,13 +19,53 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |  `def x(foo:String):String = return foo+"hello world"`                 | method declaration with simple parameter                      |
 |  `def x(foo:String, bar:String):String = return foo+"hello world"+bar`                 | method declaration with two parameters                      |
 |  `def x:String = {val x = 1;return "hello world"+1}`                 | multiple statements need {} around the code                      |
-| `def x = "hello world"`|return keyword and return type declaration are optional. default return value = last value in code block
-|  `def x {print("hello world")}`                 | method without "=" means the method has no return type/return type is void (this is a lie to keep things simple, more later)  | 
+| `def x = "hello world"`|return keyword and return type declaration are optional, but if a method contains return, the return type *must* be specified explicitly. default return value = last value in code block. 
 | `def x = {def y = 7;y}` | nested declarations are possible|
 | `class Foo`| class declaration - nested declaration also possible|
 | `class Foo(var x:String, val y:Int)`| class declaration with 2 public fields, one mutable, one immutable. constructor is automatically generated. only new Foo("1",2) is possible|
 | `class Foo {var x = 5;val y = 6}`|class like above, but with default constructor, only new Foo() is possible|
 | `class Foo {def x = 5}`|class with default constructor and one method|
+| `val x = {class y(val z: String); new y("hello").z}`<br><span class="label important">Bad</span>`val foo = new y("does not work outside the block above")`| everything can be nested in anything, but everything can only be accessed in its scope|
+|  <h2 id="typeinference">Declaring functions</h2>                                                                       |                 |
+| `(i:Int) => i+1`|creates a function.| 
+| `var func = (i:Int) => i+1`|creates a function and stores it in a variable|
+| `func(5)`|executing the function above|
+| `def func = (i:Int) => i+1`|creates a function each time the method is called and returns that function, not i+1|
+| `lazy val x = expensiveOperation()`|the expensive operation is executed once as soon as the value of x is needed, not before|
+|  <h2 id="typeinference">Return types and type inference</h2>                                                                       |                 |
+|  `val x = "hello"`|the compiler always picks the most specific type possible, in this case java.lang.String|
+|  `val x:Serializable = "hello"`|you can always specify a more general one|
+|  `def x {print("hello world")}`                 | method without "=" means the method has no return type/return type is void (this is a lie)  | 
+|  `def x:Unit = {...}`<br>`def x() {...}`|leaving out the "=" at a method declaration is the same as specifying "Unit"|
+| `val blocks = {{{{5}}}}`|every block has a return type that is passed back to the next outer block|
+| `val block = if (a) foo else bar`|almost everything is an expression and thus, has a return type. this includes if-else-structures|
+|`def x = if (System.currentTimeMillis() % 2 == 0) Integer.valueOf(1) else java.lang.Double.valueOf(2)`|here, the compiler picks the most specific supertype of both Integer and Double which is java.lang.Number (this is a lie)|
+|`def x(i:Int):Int = if (i==0) 1 else i*x(i-1)`|recursive methods need an explicit return type. fail.|
+|`val func:(Int) => String = (i:Int) => i.toString`|just so you know the syntax of a type of a function :)|
+|`def takesFunction(f:(Int) => String) = f(5)`| method that takes the function above as a parameter and calls it. compiler figures out the return type "string" for you.|
+|`def method(i:Int) = t.toString;val func = method _`|appending an "_" converts any method into a function|
+|`takesFunction(method)`|is also possible, the compiler does the conversion for you in obvious cases|
+|  <h2 id="collections">Scala Collections</h2>                                                                       |                 |
+|`Set(1,2,3), Buffer(1,2,3), ArrayBuffer(1,2,3), ListBuffer(1,2,3), List(1,2,3), Array(1,2,3),Vector(1,2,3), Map(1 -> "a", 2 -> "b")`|simple collection creations. scala has mutable and immutable collections.|
+|`mutableColl += elem`|add element to a collection|
+|`mutableColl -= elem`|remove element|
+|`mutableColl ++= elems`|add elements|
+|`mutableColl --= elems`|remove elements|
+|`elem +=: mutableColl`|adds element at the beginning of a collection|
+|`mutableColl :+= elem`|adds element at the end of a collection|
+|`mutableColl(0)`|read access by index|
+|`mutableColl(0) = 1`|write access by index|
+|`coll + elem`|create new collection that has all elements of coll and elem|
+|`coll - elem`|create new collection that has all elements of coll except elem|
+|`coll ++ elems`|create new collection that has all elements of coll and elems|
+|`coll -- elems`|create new collection that has all elements of coll except elems|
+|`coll :+ elem`|create new collection that has all elements of coll and elem at the end|
+|`elem +: coll`|create new collection that has all elements of coll and elem at the beginning|
+|`immutableColl += elem`<br>`immutableColl -= elem`<br>`immutableColl ++= elems`<br>`immutableColl --= elems`<br>`elem +=: immutableColl`<br>`immutableColl :+= elem|same as the operations without "=", but works only if "immutableColl is a var, not a val. the created collection is assigned to "immutableColl".|
+|`def isEven(i:Int= if (i%2==0) true else false`<br>`val evenNumbers:List[Int] = List(1,2,3,4).filter(isEven)`|scala collections are a major epic win. they have ~100 methods which operate on the data of a collection and there is *absolutely nothing* you cannot do with them.|
+|`val evenNumbers:List[Int] = List(1,2,3,4).filter((i:Int)=> i%2==0)`|same as above, just shorter|
+|`val evenNumbers = List(1,2,3,4).filter(i => i%2==0)`|same as above, just shorter. you can skip the () if there is only one parameter|
+|`val evenNumbers = List(1,2,3,4).filter(_ % 2 == 0)`|same as above, just shorter. you can skip part before "=>" if you use a parameter only once and replace the parameter usage by "_"|
 |  <h2 id="functions">functions</h2>                                                                       |                 |
 |  <span class="label success">Good</span> `def f(x: Int) = { x*x }`<br> <span class="label important">Bad</span> `def f(x: Int)   { x*x }` |  define function <br> hidden error: without = it's a Unit-returning procedure; causes havoc |
 |  <span class="label success">Good</span> `def f(x: Any) = println(x)`<br> <span class="label important">Bad</span> `def f(x) = println(x)` |  define function <br> syntax error: need types for every arg. |
@@ -85,7 +125,7 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |  `object O extends D { ... }`                                                                            |  define a singleton. (module-like) |
 |  `trait T { ... }`<br>`class C extends T { ... }`<br>`class C extends D with T { ... }`                  |  traits.<br>interfaces-with-implementation. no constructor params. [mixin-able]({{ site.baseurl }}/tutorials/tour/mixin-class-composition.html).
 |  `trait T1; trait T2`<br>`class C extends T1 with T2`<br>`class C extends D with T1 with T2`             |  multiple traits. |
-|  `class C extends D { override def f = ...}`	                                                           |  must declare method overrides. |
+|  `class C extends D { override def f = ...}`                                                             |  must declare method overrides. |
 |  `new java.io.File("f")`                   	                                                           |  create object. |
 |  <span class="label important">Bad</span> `new List[Int]`<br> <span class="label success">Good</span> `List(1,2,3)` |  type error: abstract type<br>instead, convention: callable factory shadowing the type |
 |  `classOf[String]`                                                                                       |  class literal. |
