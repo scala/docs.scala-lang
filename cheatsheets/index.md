@@ -36,6 +36,11 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 | `var func = (i:Int) => i+1`|creates a function and stores it in a variable|
 | `func(5)`|executing the function above|
 | `def func = (i:Int) => i+1`|creates a function each time the method is called and returns that function, not i+1|
+|`val func:(Int) => String = (i:Int) => i.toString`|just so you know the syntax of a type of a function :)|
+|`def takesFunction(f:(Int) => String) = f(5)`| method that takes the function above as a parameter and calls it. compiler figures out the return type "string" for you.|
+|`def method(i:Int) = t.toString;val func = method _`|appending an "_" converts any method into a function|
+|`takesFunction(method)`|is also possible, the compiler does the conversion for you in obvious cases|
+|`def method(param: => String)`|"=>" means that when the method is called, the parameter is wrapped in a function which is executed when accessed. the string is evaluated every time when needed (see Iterator.continually), but not before. the value is not cached, but you can pass a lazy val to make it cached.|
 |  <h2 id="typeinference">Return types and type inference</h2>                                                                       |                 |
 |  `val x = "hello"`|the compiler always picks the most specific type possible, in this case java.lang.String|
 |  `val x:Serializable = "hello"`|you can always specify a more general one|
@@ -45,10 +50,6 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 | `val block = if (a) foo else bar`|almost everything is an expression and thus, has a return type. this includes if-else-structures|
 |`def x = if (System.currentTimeMillis() % 2 == 0) Integer.valueOf(1) else java.lang.Double.valueOf(2)`|here, the compiler picks the most specific supertype of both Integer and Double which is java.lang.Number (this is a lie)|
 |`def x(i:Int):Int = if (i==0) 1 else i*x(i-1)`|recursive methods need an explicit return type. fail.|
-|`val func:(Int) => String = (i:Int) => i.toString`|just so you know the syntax of a type of a function :)|
-|`def takesFunction(f:(Int) => String) = f(5)`| method that takes the function above as a parameter and calls it. compiler figures out the return type "string" for you.|
-|`def method(i:Int) = t.toString;val func = method _`|appending an "_" converts any method into a function|
-|`takesFunction(method)`|is also possible, the compiler does the conversion for you in obvious cases|
 |  <h2 id="collections">Scala Collections</h2>                                                                       |                 |
 |`1 to 3, Set(1,2,3), Buffer(1,2,3), ArrayBuffer(1,2,3), ListBuffer(1,2,3), List(1,2,3), Array(1,2,3),Vector(1,2,3), Map(1 -> "a", 2 -> "b")`|simple collection creations. scala has mutable and immutable collections.|
 |prepend, append, union, remove, insertAll... |the usual methods every collection framework offers|
