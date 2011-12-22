@@ -31,6 +31,7 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 | `def method(a:String = "hello", b:String = "world") = a+" "+b`|method will default values|
 | `method("goodbye")`|call to method above, unspecificed parameters will get default values. returns "goodbye world"|
 | `method(b = "friend")`|call to method above, explicitly passes a string to b. a defaults to "hello". returns "hello friend"|
+|`def method(param: => String)`|"=>" means that when the method is called, the parameter is wrapped in a function which is executed when accessed. the string is evaluated every time when needed (see Iterator.continually), but not before. the value is not cached, but you can pass a lazy val to make it cached.|
 |  <h2 id="functiondeclaration">Declaring functions</h2>                                                                       |                 |
 | `(i:Int) => i+1`|creates a function.| 
 | `var func = (i:Int) => i+1`|creates a function and stores it in a variable|
@@ -40,7 +41,6 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`def takesFunction(f:(Int) => String) = f(5)`| method that takes the function above as a parameter and calls it. compiler figures out the return type "string" for you.|
 |`def method(i:Int) = t.toString;val func = method _`|appending an "_" converts any method into a function|
 |`takesFunction(method)`|is also possible, the compiler does the conversion for you in obvious cases|
-|`def method(param: => String)`|"=>" means that when the method is called, the parameter is wrapped in a function which is executed when accessed. the string is evaluated every time when needed (see Iterator.continually), but not before. the value is not cached, but you can pass a lazy val to make it cached.|
 |  <h2 id="typeinference">Return types and type inference</h2>                                                                       |                 |
 |  `val x = "hello"`|the compiler always picks the most specific type possible, in this case java.lang.String|
 |  `val x:Serializable = "hello"`|you can always specify a more general one|
