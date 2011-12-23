@@ -92,6 +92,24 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`"comma separated numbers: " + List(1, 2, 3, 4, 5).fold("0")(_ + ", " + _)`|finally, you won't have to fiddle around with the last "," anymore!|
 |in java this would all look like:<br>`Acc acc = ?;`<br>` for (T t: coll) {if (acc==null) {acc = t;} else {acc = doStuff(acc,t);}}`|this is boilerplate code you can avoid *every single time!*. write only what (doStuff) should happen, not "what and how" (boilerplate code + doStuff).|
 |where else could you save boilerplate? think about it!<br>try-catch-finally
+| <h2 id="generics">Generics</h2>|
+| `def foo[BAR](bar:BAR):BAR = bar`|simple type parameter, can be anything|
+| `def foo[BAR <: java.lang.Number](bar: BAR) = bar.doubleValue() + 5`|upper bound, BAR must be a java.lang.Number or a subclass of it|
+| `def foo[BAR >: java.lang.Number](bar: BAR) = bar`|lower bound, type must be java.lang.Number or a superclass of it, but not a subclass of java.lang.Number. note that you can still pass a double, but the type parameter and therefore the return type will be java.lang.Number. the bound applies to the type parameter itself, not the type of the parameter that is passed to the function|
+|`val strings:List[String] = List("hello","generics")`<br>`val objects:List[java.lang.Object] = strings`|in scala, type parameters of collections are covariant. this means they "inherit" the inhertance relations of their type parameters. in java, have to do an ugly cast:<br>`List<Integer> ints = new ArrayList<Integer>()`;<br>`List<Number> numbers = ((List<Number)((Object)Integer)`|
+|`class InVariant[A]`|class having an invariant type parameter, meaning `val InVariant[SuperClass] = inVariantWithAnyOther` does not compile|
+|`class CoVariant[+A]`|class having a covariant type parameter, meaning `val CoVariant[SuperClass] = coVariantWithSubClass` compiles|
+|`class CoVariant[-A]`|class having a contravariant type parameter, meaning `val CoVariant[SubClass] = coVariantWithSuperclass` compiles|
+|where does "-Type" make sense? take a look at functions:<br>`val func:(String) => java.lang.Number`|the return type is +, the parameter is -, so the function can be replaced by one declared like<br>`val func2:(java.lang.Object) => java.lang.Integer`<br>Think about it. a function that can take any object can also take a string. a function that returns an integer automatically returns a number, so the second one can replace the first one in every possible case.|
+|`def foo[A, B[A]] (nested: B[A])`|nested type parameters are possible. nested must be of a type that has a type parameter. for example, you could pass a List[Int]|
+|`def foo[A, B, C <: B[A]](nested: C))`|same as above, using an alias for B[A] named C|
+|`def foo[C <: Traversable[_]] (nested: C) = nested.head`|if there is no need to access the inner type explicitly, it can be replaced by an _. in this example, the compiler infers that the return type must be whatever _ is, so the actual return type depends on the call site.|
+|`foo(List(5))`|call to the method above, returns an Int|
+|`def foo[A: Manifest] {val classAtRuntime = manifest[A].erasure; println(classAtRuntime);}`|Adding ":Manifest" will make the compiler add magic so you can get the type parameter at runtime via `manifest[TYPEPARAM]`|
+|`foo[String]`|call to method above, prints "class java.lang.String"|
+
+not yet pimped part of the cheat sheet:
+
 |  <h2 id="functions">functions</h2>                                                                       |                 |
 |  <span class="label success">Good</span> `def f(x: Int) = { x*x }`<br> <span class="label important">Bad</span> `def f(x: Int)   { x*x }` |  define function <br> hidden error: without = it's a Unit-returning procedure; causes havoc |
 |  <span class="label success">Good</span> `def f(x: Any) = println(x)`<br> <span class="label important">Bad</span> `def f(x) = println(x)` |  define function <br> syntax error: need types for every arg. |
