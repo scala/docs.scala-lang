@@ -36,7 +36,7 @@ You can assign an object to a variable. Afterwards, the variable will refer to t
 Extra constructors defined inside the curly braces of the class definition, which look like method definitions named this, but with no result type.
 
 * #### block
-One or more expressions and declarations surrounded by curly braces. When the block evaluates, all of its expressions and declarations are processed in order, and then the block returns the value of the last expression as its own value. Blocks are commonly used as the bodies of functions, `for` expressions, `while` loops, and any other place where you want to group a number of statements together. More formally, a block is an encapsulation construct for which you can only see side effects and a result value. The curly braces in which you define a class or object do not, therefore, form a block, because fields and methods (which are defined inside those curly braces) are visible from the out- side. Such curly braces form a template.
+One or more expressions and declarations surrounded by curly braces. When the block evaluates, all of its expressions and declarations are processed in order, and then the block returns the value of the last expression as its own value. Blocks are commonly used as the bodies of functions, [for expressions](#for_expression), `while` loops, and any other place where you want to group a number of statements together. More formally, a block is an encapsulation construct for which you can only see side effects and a result value. The curly braces in which you define a class or object do not, therefore, form a block, because fields and methods (which are defined inside those curly braces) are visible from the out- side. Such curly braces form a template.
 
 * #### bound variable
 A bound variable of an expression is a variable that’s both used and defined inside the expression. For instance, in the function literal expression `(x: Int) => (x, y)`, both variables `x` and `y` are used, but only `x` is bound, because it is defined in the expression as an `Int` and the sole argument to the function described by the expression.
@@ -90,16 +90,22 @@ An existential type includes references to type variables that are unknown. For 
 Any bit of Scala code that yields a result. You can also say that an expression _evaluates_ to a result or _results_ in a value.
 
 * #### filter
-An `if` followed by a boolean expression in a `for` expression. In `for(i <- 1 to 10; if i % 2 == 0)`, the filter is “`if i % 2 == 0`”. The value to the right of the `if` is the [filter expression](#filter_expression).
+An `if` followed by a boolean expression in a [for expression](#for_expression). In `for(i <- 1 to 10; if i % 2 == 0)`, the filter is “`if i % 2 == 0`”. The value to the right of the `if` is the [filter expression](#filter_expression).  Also known as a guard.
 
 * #### filter expression
-A _filter expression_ is the boolean expression following an `if` in a `for` expression. In `for( i <- 1 to 10 ; if i % 2 == 0)`,the filter expression is “`i % 2 == 0`”.
+A _filter expression_ is the boolean expression following an `if` in a [for expression](#for_expression). In `for( i <- 1 to 10 ; if i % 2 == 0)`,the filter expression is “`i % 2 == 0`”.
 
 * #### first-class function
 Scala supports _first-class functions_, which means you can express functions in function literal syntax, i.e., `(x: Int) => x + 1`, and that functions can be represented by objects, which are called [function values](#function_value).
 
 * #### for comprehension
-Another name for `for` _expression_.
+A _for comprehension_ is a type of [for expression](#for_expression) that creates a new collection.  For each iteration of the `for` comprehension, the [yield](#yield) clause defines an element of the new collection.  For example, `for (i <- (0 until 2); j <- (2 until 4)) yield (i, j)` returns the collection `Vector((0,2), (0,3), (1,2), (1,3))`.
+
+* #### for expression
+A _for expression_ is either a [for loop](#for_loop), which iterates over one or more collections, or a [for comprehension](#for_comprehension), which builds a new collection from the elements of one or more collections.  A `for` expression is built up of [generators](#generator), [filters](#filter), variable definitions, and (in the case of [for comprehensions](#for_comprehension)) a [yield](#yield) clause.
+
+* #### for loop
+A _for loop_ is a type of [for expression](#for_expression) that loops over one or more collections.  Since `for` loops return unit, they usually produce side-effects.  For example, `for (i <- 0 until 100) println(i)` prints the numbers 0 through 99.
 
 * #### free variable
 A _free variable_ of an expression is a variable that’s used inside the expression but not defined inside the expression. For instance, in the function literal expression `(x: Int) => (x, y)`, both variables `x` and `y` are used, but only `y` is a free variable, because it is not defined inside the expression.
@@ -117,16 +123,19 @@ A function object that can be invoked just like any other function. A function v
 The _functional style_ of programming emphasizes functions and evaluation results and deemphasizes the order in which operations occur. The style is characterized by passing function values into looping methods, immutable data, methods with no side effects. It is the dominant paradigm of languages such as Haskell and Erlang, and contrasts with the [imperative style](#imperative_style).
 
 * #### generator
-A generator defines a named val and assigns to it a series of values in a for expression. For example, in `for(i <- 1 to 10)`, the generator is “`i <- 1 to 10`”. The value to the right of the `<-` is the [generator expression](#generator_expression).
+A generator defines a named val and assigns to it a series of values in a [for expression](#for_expression). For example, in `for(i <- 1 to 10)`, the generator is “`i <- 1 to 10`”. The value to the right of the `<-` is the [generator expression](#generator_expression).
 
 * #### generator expression
-A generator expression generates a series of values in a for expression. For example, in `for(i <- 1 to 10)`, the generator expression is “`1 to 10`”.
+A generator expression generates a series of values in a [for expression](#for_expression). For example, in `for(i <- 1 to 10)`, the generator expression is “`1 to 10`”.
 
 * #### generic class
 A class that takes type parameters. For example, because `scala.List` takes a type parameter, `scala.List` is a generic class.
 
 * #### generic trait
 A trait that takes type parameters. For example, because trait `scala.collection.Set` takes a type parameter, it is a generic trait.
+
+* #### guard
+See [filter](#filter).
 
 * #### helper function
 A function whose purpose is to provide a service to one or more other functions nearby. Helper functions are often implemented as local functions.
@@ -375,7 +384,7 @@ A named entity that refers to an object. A variable is either a `val` or a `var`
 A type parameter of a class or trait can be marked with a _variance_ annotation, either [covariant](#covariant) (+) or [contravariant](#contravariant) (-). Such variance annotations indicate how subtyping works for a generic class or trait. For example, the generic class `List` is covariant in its type parameter, and thus `List[String]` is a subtype of `List[Any]`. By default, _i.e._, absent a `+` or `-` annotation, type parameters are [nonvariant](#nonvariant).
 
 * #### yield
-An expression can _yield_ a result. The `yield` keyword designates the result of a `for` expression.
+An expression can _yield_ a result. The `yield` keyword designates the result of a [for comprehension](#for_comprehension).
 
 
 
