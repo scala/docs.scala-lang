@@ -132,7 +132,7 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`case "hello" => {...}`|gets executed if x equals "hello". is tested via equals
 |`case s:String => {...}`|gets executed if x is any string. s then exists in the code block as a val.
 |`case i:Int if i < 10 => {...}`|gets executed if x is any Int < 10. i then exists in the code block as a val.
-|`case 11 | 12 | 13 => {...}`|matches on more than one value|
+|`case 11 *pipe* 12 *pipe* 13 => {...}`|matches on more than one value. how to escape the pipe character in here?|
 |`case _ => `|default case, always matches|
 |`}`| these were just the boring cases :)|
 |`x match {`|scala can also match on values *inside* x|
