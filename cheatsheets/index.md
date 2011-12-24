@@ -127,6 +127,12 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`class Foo;object Foo`|this is possible. the object Foo is then called a companion object.|
 |`object Foo {def apply(i:Int) = new Foo(i+1)}`|you can use methods in the object Foo as factory methods to keep the actual constructor nice and clean|
 |`def apply[A](x: A): Option[A] = if (x == null) None else Some(x)`|this is what happens when you call Some(x)|
+|<h2 id="Tuples">Tuples</h2>|
+|`val x:(Int, Int) = (1,2)`|Sometimes, you want to group things together and pass them around as one object, but creating a class for that would be overkill|
+|`x._1`|access the first element of a tuple|
+|`def takesTuple(p:(Int, String) {...}`|method accepting a tuple|
+|`takesTuple(5,"hello)`|(5, "hello") could be 2 parameters or a tuple. the compiler is smart enough to figure out you meant the tuple one because it looks at the type signature of "takesTuple".|
+|`takesTuple((5,"hello))`|same as above, but explicitly creating the tuple|
 |<h2 id="pattermatching">Pattern matching</h2>|
 |`x match {`|scala has a very powerful switch|
 |`case "hello" => {...}`|gets executed if x equals "hello". is tested via equals
@@ -137,7 +143,7 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`}`| these were just the boring cases :)|
 |`x match {`|scala can also match on values *inside* x|
 |`case Some(e) => {...}`|matches of x is a Some. e then exists as a val inside the following code block|
-|`case List(_, _, 3, y, z) if z == 5 => {...}`|matches if x is a list of size 5 which has a 5 at index 3 and if the fifth element is 5. the fourth element of the list then exists as "y" inside the code block, the last one does as "z".|
+|`case List(_, _, 3, y, z) if z == 5 => {...}`|matches if x is a list of size 5 which has a 3 at index 3 and if the fifth element is 5. the fourth element of the list then exists as "y" inside the code block, the last one does as "z".|
 |`}`|how the hell did that work? see below|
 |<h2 id="unapply">Destructuring</h2>|
 |`object Foo { def unapply(i: Int) = if (i%2==2) Some("even") else None`|we need the reverse of an apply method - unapply.|
@@ -148,6 +154,8 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |one more thing:<br> `unapplySeq(foo:Foo):Option[Seq[Bar]]`|like unapply, but offers special features for matching on sequences|
 |`val List(a,b@_*) = List("hello","scala","world")`|a = "hello", b = List("scala", "world")|
 |`val List(a,_*) = List("hello","scala","world")`|sams as above, but discards the last 2 elements, b does not exist|
+
+
 |not yet pimped part of the cheat sheet:||
 |  <h2 id="functions">functions</h2>                                                                       |                 |
 |  <span class="label success">Good</span> `def f(x: Int) = { x*x }`<br> <span class="label important">Bad</span> `def f(x: Int)   { x*x }` |  define function <br> hidden error: without = it's a Unit-returning procedure; causes havoc |
