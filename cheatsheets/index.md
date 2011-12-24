@@ -26,7 +26,6 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 | `class Foo(var x:String, val y:Int)`| class declaration with 2 public fields, one mutable, one immutable. constructor is automatically generated. only new Foo("1",2) is possible|
 | `class Foo {var x = 5;val y = 6}`|class like above, but with default constructor, only new Foo() is possible|
 | `class Foo {def x = 5}`|class with default constructor and one method|
-
 |  <h2 id="declarations2">Not so basic declarations</h2>                                                                       |                 |
 | `val x = {class y(val z: String); new y("hello").z}`<br><span class="label important">Bad</span>`val foo = new y("does not work outside the block above")`| everything can be nested in anything, but everything can only be accessed in its scope|
 | `lazy val x = expensiveOperation()`|the expensive operation is executed once as soon as the value of x is needed, not before|
