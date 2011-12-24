@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Explicitly Typed Self References
+title: Autorefrencias explicitamente tipadas
 
 disqus: true
 
@@ -8,91 +8,92 @@ tutorial: scala-tour
 num: 27
 ---
 
-When developing extensible software it is sometimes handy to declare the type of the value `this` explicitly. To motivate this, we will derive a small extensible representation of a graph data structure in Scala.
+Cuando se está construyendo software extensible, algunas veces resulta útil declarar el tipo de la variable `this` explicitamente. Para motivar esto, realizaremos una pequeña representación de una estructura de datos Grafo, en Scala.
 
-Here is a definition describing graphs:
+Aquí hay una definición que sirve para describir un grafo:
 
-    abstract class Graph {
-      type Edge
-      type Node <: NodeIntf
-      abstract class NodeIntf {
-        def connectWith(node: Node): Edge
+    abstract class Grafo {
+      type Vertice
+      type Nodo <: NodoIntf
+      abstract class NodoIntf {
+        def conectarCon(nodo: Nodo): Vertice
       }
-      def nodes: List[Node]
-      def edges: List[Edge]
-      def addNode: Node
+      def nodos: List[Nodo]
+      def vertices: List[Vertice]
+      def agregarNodo: Nodo
     }
 
-Graphs consist of a list of nodes and edges where both the node and the edge type are left abstract. The use of [abstract types](abstract-types.html) allows implementations of trait Graph to provide their own concrete classes for nodes and edges. Furthermore, there is a method `addNode` for adding new nodes to a graph. Nodes are connected using `methodconnectWith`.
+Los grafos consisten de una lista de nodos y vértices (o aristas en alguna bibliografía) donde tanto el tipo nodo, como el vértice fueron declarados abstractos. El uso de [tipos abstractos](abstract-types.html) permite las implementaciones del trait `Grafo` proveer sus propias clases concretas para nodos y vértices. Además, existe un método `agregarNodo` para agregar nuevos nodos al grafo. Los nodos se conectan entre sí utilizando el método `conectarCon`.
 
-A possible implementation of class `Graph` is given in the next program:
+Una posible implementación de la clase `Grafo`es dada en el siguiente programa:
 
-    abstract class DirectedGraph extends Graph {
-      type Edge <: EdgeImpl
-      class EdgeImpl(origin: Node, dest: Node) {
-        def from = origin
-        def to = dest
+    abstract class GrafoDirigido extends Grafo {
+      type Vertice <: VerticeImpl
+      class VerticeImpl(origen: Nodo, dest: Nodo) {
+        def desde = origen
+        def hasta = dest
       }
-      class NodeImpl extends NodeIntf {
-        def connectWith(node: Node): Edge = {
-          val edge = newEdge(this, node)
-          edges = edge :: edges
-          edge
+      class NodoImpl extends NodoIntf {
+        def conectarCon(nodo: Nodo): Vertice = {
+          val vertice = nuevoVertice(this, nodo)
+          vertices = vertice :: vertices
+          vertice
         }
       }
-      protected def newNode: Node
-      protected def newEdge(from: Node, to: Node): Edge
-      var nodes: List[Node] = Nil
-      var edges: List[Edge] = Nil
-      def addNode: Node = {
-        val node = newNode
-        nodes = node :: nodes
-        node
+      protected def nuevoNodo: Nodo
+      protected def nuevoVertice(desde: Nodo, hasta: Nodo): Vertice
+      var nodos: List[Nodo] = Nil
+      var vertices: List[Vertice] = Nil
+      def agregarNodo: Nodo = {
+        val nodo = nuevoNodo
+        nodos = nodo :: nodos
+        nodo
       }
     }
 
-Class `DirectedGraph` specializes the `Graph` class by providing a partial implementation. The implementation is only partial, because we would like to be able to extend `DirectedGraph` further. Therefore this class leaves all implementation details open and thus both the edge and the node type are left abstract. Nevertheless, class `DirectedGraph` reveals some additional details about the implementation of the edge type by tightening the bound to class `EdgeImpl`. Furthermore, we have some preliminary implementations of edges and nodes represented by the classes `EdgeImpl` and `NodeImpl`. Since it is necessary to create new node and edge objects within our partial graph implementation, we also have to add the factory methods `newNode` and `newEdge`. The methods `addNode` and `connectWith` are both defined in terms of these factory methods. A closer look at the implementation of method `connectWith` reveals that for creating an edge, we have to pass the self reference `this` to the factory method `newEdge`. But this is assigned the type `NodeImpl`, so it's not compatible with type `Node` which is required by the corresponding factory method. As a consequence, the program above is not well-formed and the Scala compiler will issue an error message.
+La clase `GrafoDirigido` especializa la clase `Grafo` al proveer una implementación parcial. La implementación es solamente parcial, porque queremos que sea posible extender `GrafoDirigido` aun más. Por lo tanto, esta clase deja todos los detalles de implementación abiertos y así tanto los tipos vértice como nodo son abstractos.  De todas maneras, la clase `GrafoDirigido` revela algunos detalles adicionales sobre la implementación del tipo vértice al acotar el límite a la clase `VerticeImpl`. Además, tenemos algunas implementaciones preliminares de vértices y nodos representados por las clases `VerticeImpl` y `NodoImpl`. Ya que es necesario crear nuevos objetos nodo y vértice con nuestra implementación parcial del grafo, también debimos agregar los métodos constructores `nuevoNodo` y `nuevoVertice`. Los métodos `agregarNodo` y `conectarCon` están ambos definidos en términos de estos métodos constructores. Una mirada más cercana a la implementación del método `conectarCon` revela que para crear un vértice es necesario pasar la auto-referencia `this` al método constructor `newEdge`. Pero a `this` en ese contexto le es asignado el tipo `NodoImpl`, por lo tanto no es compatible con el tipo `Nodo` el cual es requerido por el correspondiente método constructor. Como consecuencia, el programa superior no está bien definido y compilador mostrará un mensaje de error.
 
-In Scala it is possible to tie a class to another type (which will be implemented in future) by giving self reference thisthe other type explicitly. We can use this mechanism for fixing our code above. The explicit self type is specified within the body of the class `DirectedGraph`.
+En Scala es posible atar a una clase otro tipo (que será implementado en el futuro) al darle su propia auto-referencia `this` el otro tipo explicitamente. Podemos usar este mecanismo para arreglar nuestro código de arriba. El tipo the `this` explícito es especificado dentro del cuerpo de la clase `GrafoDirigido`.
 
-Here is the fixed program:
+Este es el progama arreglado:
 
-    abstract class DirectedGraph extends Graph {
+    abstract class GrafoDirigido extends Grafo {
       ...
-      class NodeImpl extends NodeIntf {
-        self: Node =>
-        def connectWith(node: Node): Edge = {
-          val edge = newEdge(this, node)  // now legal
-          edges = edge :: edges
-          edge
+      class NodoImpl extends NodoIntf {
+        self: Nodo =>
+        def conectarCon(nodo: Nodo): Vertice = {
+          val vertice = nuevoVertice(this, nodo) // ahora legal
+          vertices = vertice :: vertices
+          vertice
         }
       }
       ...
     }
 
-In this new definition of class `NodeImpl`, `this` has type `Node`. Since type `Node` is abstract and we therefore don't know yet if `NodeImpl` is really a subtype of `Node`, the type system of Scala will not allow us to instantiate this class. But nevertheless, we state with the explicit type annotation of this that at some point, (a subclass of) `NodeImpl` has to denote a subtype of type `Node` in order to be instantiatable.
+En esta nueva definición de la clase `NodoImpl`, `this` tiene el tipo `Nodo`. Ya que `Nodo` es abstracta y por lo tanto todavía no sabemos si `NodoImpl` es realmente un subtipo de `Nodo`, el sistema de tipado de Scala no permitirá instanciar esta clase. Pero de todas maneras, estipulamos con esta anotación explicita de tipo que que en algún momento en el tiempo , una subclase de `NodeImpl` tiene que denotar un subtipo del tipo `Nodo` de forma de ser instanciable.
 
-Here is a concrete specialization of `DirectedGraph` where all abstract class members are turned into concrete ones:
+Aquí presentamos una especialización concreta de `GrafoDirigido` donde todos los miembros abstractos son definidos:
 
-    class ConcreteDirectedGraph extends DirectedGraph {
-      type Edge = EdgeImpl
-      type Node = NodeImpl
-      protected def newNode: Node = new NodeImpl
-      protected def newEdge(f: Node, t: Node): Edge =
-        new EdgeImpl(f, t)
+    class GrafoDirigidoConcreto extends GrafoDirigido {
+      type Vertice = VerticeImpl
+      type Nodo = NodoImpl
+      protected def nuevoNodo: Nodo = new NodoImpl
+      protected def nuevoVertice(d: Nodo, h: Node): Vertice =
+        new VerticeImpl(d, h)
     }
 
-Please note that in this class, we can instantiate `NodeImpl` because now we know that `NodeImpl` denotes a subtype of type `Node` (which is simply an alias for `NodeImpl`).
 
-Here is a usage example of class `ConcreteDirectedGraph`:
+Por favor nótese que en esta clase nos es posible instanciar `NodoImpl` porque ahora sabemos que `NodoImpl` denota a un subtipo de `Nodo` (que es simplemente un alias para `NodoImpl`).
+
+Aquí hay un ejemplo de uso de la clase `GrafoDirigidoConcreto`:
 
     object GraphTest extends Application {
-      val g: Graph = new ConcreteDirectedGraph
-      val n1 = g.addNode
-      val n2 = g.addNode
-      val n3 = g.addNode
-      n1.connectWith(n2)
-      n2.connectWith(n3)
-      n1.connectWith(n3)
+      val g: Grafo = new GrafoDirigidoConcreto
+      val n1 = g.agregarNodo
+      val n2 = g.agregarNodo
+      val n3 = g.agregarNodo
+      n1.conectarCon(n2)
+      n2.conectarCon(n3)
+      n1.conectarCon(n3)
     }
 
