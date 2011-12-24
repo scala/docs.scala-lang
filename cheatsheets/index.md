@@ -138,10 +138,17 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`x match {`|scala can also match on values *inside* x|
 |`case Some(e) => {...}`|matches of x is a Some. e then exists as a val inside the following code block|
 |`case List(_, _, 3, y, z) if z == 5 => {...}`|matches if x is a list of size 5 which has a 5 at index 3 and if the fifth element is 5. the fourth element of the list then exists as "y" inside the code block, the last one does as "z".|
-|`}`|how the hell did that work?|
-
-|not yet pimped part of the cheat sheet:|
-
+|`}`|how the hell did that work? see below|
+|<h2 id="unapply">Destructuring</h2>|
+|`object Foo { def unapply(i: Int) = if (i%2==2) Some("even") else None`|we need the reverse of an apply method - unapply.|
+|`val Foo(infoString) = 42`|here, 42 is passed to unapply. if the result is an option, it's value is now stored in "infoString"|
+|`42 match {case Foo(infoText) => {...}}`|if some is returned, the match is considered positive and the options value is bound to a val|
+|`42 match {case Foo("even") => {...}}`|or it is tested for equality against a given value or instance|
+|`41 match {case Digits(a,b) if (a == 4) => {...}}`|if the returned option contains a tuple instead of a single value, the expected happens: we now can access all the tuples fields|
+|one more thing:<br> `unapplySeq(foo:Foo):Option[Seq[Bar]]`|like unapply, but offers special features for matching on sequences|
+|`val List(a,b@_*) = List("hello","scala","world")`|a = "hello", b = List("scala", "world")|
+|`val List(a,_*) = List("hello","scala","world")`|sams as above, but discards the last 2 elements, b does not exist|
+|not yet pimped part of the cheat sheet:||
 |  <h2 id="functions">functions</h2>                                                                       |                 |
 |  <span class="label success">Good</span> `def f(x: Int) = { x*x }`<br> <span class="label important">Bad</span> `def f(x: Int)   { x*x }` |  define function <br> hidden error: without = it's a Unit-returning procedure; causes havoc |
 |  <span class="label success">Good</span> `def f(x: Any) = println(x)`<br> <span class="label important">Bad</span> `def f(x) = println(x)` |  define function <br> syntax error: need types for every arg. |
