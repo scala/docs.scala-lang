@@ -44,6 +44,7 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`def method(i:Int) = t.toString;val func = method _`|appending an "_" converts any method into a function|
 |`takesFunction(method)`|is also possible, the compiler does the conversion for you in obvious cases|
 |`def method(s:String)(s2:String) = s+" "+s2`<br>`val intermediate:(String)=>String = method("hello")`<br>`intermediate("world")`|parameter lists revisited: the intermediate, "incomplete method calls" are functions. the result of the last call is "hello world"|
+|`func(5)`<br>`func.apply(5)`|what you are actually calling is the apply-method of a function instance, but you don't have to explicitly write that. if no method name is given, the compiler assumed you want to call "apply"|
 |  <h2 id="typeinference">Return types and type inference</h2>                                                                       |                 |
 |  `val x = "hello"`|the compiler always picks the most specific type possible, in this case java.lang.String|
 |  `val x:Serializable = "hello"`|you can always specify a more general one|
@@ -114,9 +115,18 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`val modified = neverReturnsNull.map(notNullInHere => doStuffAndReturnNewResult(notNullInHere)`|you can use options like collections. the conversion/mapping function is applied to the contained value if there is one.|
 |example:<br>`val maybeString:Option[String] = ....`<br>`val mayBeNumber:Option[Int] = maybeString.map(Integer.parseInt)`|this is perfectly safe (let's assume that the string can be parsed, we ignore exceptions here). if there was a string, there now is a number. if there was an empty option, we still have that empty option. (all empty options are actually the same instance)|
 |`val emptyOption:Option[Foo] = None`|None is our empty option singleton. by type system magic, it is a subclass of any option and can therefore replace any option.|
-|`val filledOption:Option[Foo] = Some(new Foo)`|Some(x) creates an option around x. you can of course drive everyone insane by putting null into a Some.|
+|`val filledOption:Option[Foo] = Some(new Foo)`|Some(x) creates an option around x. if you pass null, None is returned|
 |`val unsafelyAccessed = option.get`|the compiler does not force you to check if an option is filled|
 |`val safelyAccessed = option.getOrElse(bar)`|gets the content of the option or "bar" if the option is empty|
+|`val firstNonEmptyOption = option.orElse(option2).orElse(option3)`|no need for if-else|
+<h2 id="objects">Objects</h2>
+|`object Foo {val bar = "hello"}`|declared as a class, but "simply exists", similar to "static" in java. however, it is a real singleton so it can be passed around as an object.|
+|`Foo.bar`|field access and method callswork like "Foo" is a val pointing at the object instance. or in java terms "just like static stuff"|
+|`object Foo {def apply(s:String) = Integer.parseInt(s)}`|the apply-shortcut works everywhere, Foo("5") becomes Foo.apply("5"). remember Some(x)? it was the same here.
+|`class Foo;object Foo`|this is possible. the object Foo is then called a companion object.|
+|`object Foo {def apply(i:Int) = new Foo(i+1)}`|you can use methods in the object Foo as factory methods to keep the actual constructor nice and clean|
+|`def apply[A](x: A): Option[A] = if (x == null) None else Some(x)`|this is what happens when you call Some(x)|
+
 not yet pimped part of the cheat sheet:
 
 |  <h2 id="functions">functions</h2>                                                                       |                 |
