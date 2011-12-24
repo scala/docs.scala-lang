@@ -109,7 +109,8 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`foo(List(5))`|call to the method above, returns an Int|
 |`def foo[A: Manifest] {val classAtRuntime = manifest[A].erasure; println(classAtRuntime);}`|Adding ":Manifest" will make the compiler add magic so you can get the type parameter at runtime via `manifest[TYPEPARAM]`|
 |`foo[String]`|call to method above, prints "class java.lang.String"|
-|<hr id="option">Option aka "Avoid NullPointerExceptions with type safety"</h2>
+|`def foo[A <: Bar with Serializable with Foobar]`|A must be a subtype of Bar, implement Serializable and also Foobar at the same time|
+|<h2 id="option">Option aka "Avoid NullPointerExceptions with type safety"</h2>
 |`def neverReturnsNull:Option[Foo] = ....`|in scala, you can use the type system to tell the caller of a method whether or not "null" is a valid return or parameter value. the way scala offers is "Option". you can follow a simple convention: if a parameter or return type can be null, wrap it in an Option instead.|
 |`if (neverReturnsNull.isEmpty) fail(); else success(neverReturnsNull.get);`|this forces the caller to check for null explicitly.|
 |`val modified = neverReturnsNull.map(notNullInHere => doStuffAndReturnNewResult(notNullInHere)`|you can use options like collections. the conversion/mapping function is applied to the contained value if there is one.|
@@ -119,15 +120,27 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`val unsafelyAccessed = option.get`|the compiler does not force you to check if an option is filled|
 |`val safelyAccessed = option.getOrElse(bar)`|gets the content of the option or "bar" if the option is empty|
 |`val firstNonEmptyOption = option.orElse(option2).orElse(option3)`|no need for if-else|
-<h2 id="objects">Objects</h2>
-|`object Foo {val bar = "hello"}`|declared as a class, but "simply exists", similar to "static" in java. however, it is a real singleton so it can be passed around as an object.|
+|<h2 id="objects">Objects</h2>|
+|`object Foo {val bar = "hello"}`|declared like a class, but "simply exists", similar to "static" in java. however, it is a real singleton so it can be passed around as an object.|
 |`Foo.bar`|field access and method callswork like "Foo" is a val pointing at the object instance. or in java terms "just like static stuff"|
 |`object Foo {def apply(s:String) = Integer.parseInt(s)}`|the apply-shortcut works everywhere, Foo("5") becomes Foo.apply("5"). remember Some(x)? it was the same here.
 |`class Foo;object Foo`|this is possible. the object Foo is then called a companion object.|
 |`object Foo {def apply(i:Int) = new Foo(i+1)}`|you can use methods in the object Foo as factory methods to keep the actual constructor nice and clean|
 |`def apply[A](x: A): Option[A] = if (x == null) None else Some(x)`|this is what happens when you call Some(x)|
+|<h2 id="pattermatching">Pattern matching</h2>|
+|`x match {`|scala has a very powerful switch|
+|`case "hello" => {...}`|gets executed if x equals "hello". is tested via equals
+|`case s:String => {...}`|gets executed if x is any string. s then exists in the code block as a val.
+|`case i:Int if i < 10 => {...}`|gets executed if x is any Int < 10. i then exists in the code block as a val.
+|`case 11|12|13 => {...}`|matches on more than one value|
+|`case _ => `|default case, always matches|
+|`}`| these were just the boring cases :)|
+|`x match {`|scala can also match on values *inside* x|
+|`case Some(e) => {...}`|matches of x is a Some. e then exists as a val inside the following code block|
+|`case List(_, _, 3, y, z) if z == 5 => {...}`|matches if x is a list of size 5 which has a 5 at index 3 and if the fifth element is 5. the fourth element of the list then exists as "y" inside the code block, the last one does as "z".|
+|`}`|how the hell did that work?|
 
-not yet pimped part of the cheat sheet:
+|not yet pimped part of the cheat sheet:|
 
 |  <h2 id="functions">functions</h2>                                                                       |                 |
 |  <span class="label success">Good</span> `def f(x: Int) = { x*x }`<br> <span class="label important">Bad</span> `def f(x: Int)   { x*x }` |  define function <br> hidden error: without = it's a Unit-returning procedure; causes havoc |
