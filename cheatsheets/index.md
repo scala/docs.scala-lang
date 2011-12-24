@@ -43,7 +43,7 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`def takesFunction(f:(Int) => String) = f(5)`| method that takes the function above as a parameter and calls it. compiler figures out the return type "string" for you.|
 |`def method(i:Int) = t.toString;val func = method _`|appending an "_" converts any method into a function|
 |`takesFunction(method)`|is also possible, the compiler does the conversion for you in obvious cases|
-|`def method(s:String)(s2:String) = s+" "+s2)`<br>`val intermediate:(String)=>String = method("hello")`<br>`intermediate("world")`|parameter lists revisited: the intermediate, "incomplete method calls" are functions. the result of the last call is "hello world"|
+|`def method(s:String)(s2:String) = s+" "+s2`<br>`val intermediate:(String)=>String = method("hello")`<br>`intermediate("world")`|parameter lists revisited: the intermediate, "incomplete method calls" are functions. the result of the last call is "hello world"|
 |  <h2 id="typeinference">Return types and type inference</h2>                                                                       |                 |
 |  `val x = "hello"`|the compiler always picks the most specific type possible, in this case java.lang.String|
 |  `val x:Serializable = "hello"`|you can always specify a more general one|
@@ -56,7 +56,7 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |  <h2 id="collections">Scala Collections</h2>                                                                       |                 |
 |`1 to 3, Set(1,2,3), Buffer(1,2,3), ArrayBuffer(1,2,3), ListBuffer(1,2,3), List(1,2,3), Array(1,2,3),Vector(1,2,3), Map(1 -> "a", 2 -> "b")`|simple collection creations. scala has mutable and immutable collections.|
 |prepend, append, union, remove, insertAll... |the usual methods every collection framework offers are present in scala as well|
-|if you like to use operators instead, there are some scary but concise ones. you'll need some practice to get them right:<br>+,++,++=,++:=-,--,--=,:+,:++,:=+,+=:,:++=,++:=, ++=:|method name rules:<br>"+" means add<br>"-" means remove<br>"++" or "--" mean add/remove many elements, not just one<br>"=" means modify mutable collection xor assign new immutable collection to var. in the reassign case, "=" is appended to the actual method name, just like "int i=0;i+=1" in java. <br>":" goes on the side of the target collection and is always the first or last character of a method name. if a method end with :=, the method actually ends with : and = means it's a reassignment<br>if method contains ":" it is an add to an ordered collection, either at the beginning or the end of the collection|
+|if you like to use operators instead, there are some scary but concise ones. you'll need some practice to get them right:<br>+,++,++=,++:=-,--,--=,:+,:++,:=+,+=:,:++=,++:=, ++=:|method name rules:<br>"+" means add<br>"-" means remove<br>"++" or "--" mean add/remove many elements, not just one<br>"=" means modify mutable collection or (never both) assign new immutable collection to var. in the reassign case, "=" is appended to the actual method name, just like "int i=0;i+=1" in java. <br>":" goes on the side of the target collection and is always the first or last character of a method name. if a method end with :=, the method actually ends with : and = means it's a reassignment<br>if method contains ":" it is an add to an ordered collection, either at the beginning or the end of the collection|
 |`mutableColl += elem`|add element to a collection|
 |`mutableColl -= elem`|remove element|
 |`mutableColl ++= elems`|add elements|
@@ -72,6 +72,7 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`elem +: coll`|create new collection that has all elements of coll and elem at the beginning|
 |`immutableColl += elem`<br>`immutableColl -= elem`<br>`immutableColl ++= elems`<br>`immutableColl --= elems`<br>`elem +=: immutableColl`<br>`immutableColl :+= elem`|same as the operations without "=", but works only if "immutableColl is a var, not a val. the created collection is assigned to "immutableColl".|
 |`def isEven(i:Int= if (i%2==0) true else false`<br>`val evenNumbers:List[Int] = List(1,2,3,4).filter(isEven)`|scala collections are a major epic win. they have ~100 methods which operate on the data of a collection and there is *absolutely nothing* you cannot do with them.|
+|`hashmap.getOrElseUpdate(key, methodThatCreatesTheValueInCaseItDoesNotExist)`|admit it, you wanted to do this in java for at least a decade|
 |`val evenNumbers:List[Int] = List(1,2,3,4).filter((i:Int)=> i%2==0)`|same as above, just shorter|
 |`val evenNumbers = List(1,2,3,4).filter(i => i%2==0)`|same as above, just shorter. you can skip the () if there is only one parameter. you can also skip the type of the parameter(s) because it can be inferred from the usage|
 |`val evenNumbers = List(1,2,3,4).filter(_ % 2 == 0)`|same as above, just shorter. you can skip part before "=>" if you use a parameter only once and replace the parameter usage by "_"|
@@ -89,7 +90,7 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`List(1,2,3,4,5).reduce(_ + _)`|same as above, using "_" for the first and second parameter|
 |`List(1,2,3,4,5).fold(0)((sumSoFar,element) => sumSoFar+element)`|same as above, but fold uses an explicit start value|
 |`List(1,2,3,4,5).fold(0)(_ + _)`|same as the fold above, just shorter|
-|`"comma separated numbers: " + List(1, 2, 3, 4, 5).fold("0")(_ + ", " + _)`|finally, you won't have to fiddle around with the last "," anymore!|
+|`"comma separated numbers: " + List(1, 2, 3, 4, 5).fold("")(_ + ", " + _)`|finally, you won't have to fiddle around with the last "," anymore!|
 |in java this would all look like:<br>`Acc acc = ?;`<br>` for (T t: coll) {if (acc==null) {acc = t;} else {acc = doStuff(acc,t);}}`|this is boilerplate code you can avoid *every single time!*. write only what (doStuff) should happen, not "what and how" (boilerplate code + doStuff).|
 |where else could you save boilerplate? think about it!<br>try-catch-finally
 | <h2 id="generics">Generics</h2>|
@@ -99,7 +100,7 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`val strings:List[String] = List("hello","generics")`<br>`val objects:List[java.lang.Object] = strings`|in scala, type parameters of collections are covariant. this means they "inherit" the inhertance relations of their type parameters. in java, have to do an ugly cast:<br>`List<Integer> ints = new ArrayList<Integer>()`;<br>`List<Number> numbers = ((List<Number)((Object)Integer)`|
 |`class InVariant[A]`|class having an invariant type parameter, meaning `val InVariant[SuperClass] = inVariantWithAnyOther` does not compile|
 |`class CoVariant[+A]`|class having a covariant type parameter, meaning `val CoVariant[SuperClass] = coVariantWithSubClass` compiles|
-|`class CoVariant[-A]`|class having a contravariant type parameter, meaning `val CoVariant[SubClass] = coVariantWithSuperclass` compiles|
+|`class ContraVariant[-A]`|class having a contravariant type parameter, meaning `val ContraVariant[SubClass] = contraVariantWithSuperclass` compiles|
 |where does "-Type" make sense? take a look at functions:<br>`val func:(String) => java.lang.Number`|the return type is +, the parameter is -, so the function can be replaced by one declared like<br>`val func2:(java.lang.Object) => java.lang.Integer`<br>Think about it. a function that can take any object can also take a string. a function that returns an integer automatically returns a number, so the second one can replace the first one in every possible case.|
 |`def foo[A, B[A]] (nested: B[A])`|nested type parameters are possible. nested must be of a type that has a type parameter. for example, you could pass a List[Int]|
 |`def foo[A, B, C <: B[A]](nested: C))`|same as above, using an alias for B[A] named C|
@@ -107,7 +108,15 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`foo(List(5))`|call to the method above, returns an Int|
 |`def foo[A: Manifest] {val classAtRuntime = manifest[A].erasure; println(classAtRuntime);}`|Adding ":Manifest" will make the compiler add magic so you can get the type parameter at runtime via `manifest[TYPEPARAM]`|
 |`foo[String]`|call to method above, prints "class java.lang.String"|
-
+|<hr id="option">Option aka "Avoid NullPointerExceptions with type safety"</h2>
+|`def neverReturnsNull:Option[Foo] = ....`|in scala, you can use the type system to tell the caller of a method whether or not "null" is a valid return or parameter value. the way scala offers is "Option". you can follow a simple convention: if a parameter or return type can be null, wrap it in an Option instead.|
+|`if (neverReturnsNull.isEmpty) fail(); else success(neverReturnsNull.get);`|this forces the caller to check for null explicitly.|
+|`val modified = neverReturnsNull.map(notNullInHere => doStuffAndReturnNewResult(notNullInHere)`|you can use options like collections. the conversion/mapping function is applied to the contained value if there is one.|
+|example:<br>`val maybeString:Option[String] = ....`<br>`val mayBeNumber:Option[Int] = maybeString.map(Integer.parseInt)`|this is perfectly safe (let's assume that the string can be parsed, we ignore exceptions here). if there was a string, there now is a number. if there was an empty option, we still have that empty option. (all empty options are actually the same instance)|
+|`val emptyOption:Option[Foo] = None`|None is our empty option singleton. by type system magic, it is a subclass of any option and can therefore replace any option.|
+|`val filledOption:Option[Foo] = Some(new Foo)`|Some(x) creates an option around x. you can of course drive everyone insane by putting null into a Some.|
+|`val unsafelyAccessed = option.get`|the compiler does not force you to check if an option is filled|
+|`val safelyAccessed = option.getOrElse(bar)`|gets the content of the option or "bar" if the option is empty|
 not yet pimped part of the cheat sheet:
 
 |  <h2 id="functions">functions</h2>                                                                       |                 |
