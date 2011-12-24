@@ -20,11 +20,13 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |  `def x(foo:String, bar:String):String = return foo+"hello world"+bar`                 | method declaration with two parameters                      |
 |  `def x:String = {val x = 1;return "hello world"+1}`                 | multiple statements need {} around the code                      |
 | `def x = "hello world"`|return keyword and return type declaration are optional, but if a method contains return, the return type *must* be specified explicitly. default return value = last value in code block. 
-| `def x = {def y = 7;y}` | nested declarations are possible|
+|`def iAcceptVarArgs(i:Int,s:String,d:Double*) = {...}`|method accepting varargs|
+|`def x = {def y = 7;y}` | nested declarations are possible|
 | `class Foo`| class declaration - nested declaration also possible|
 | `class Foo(var x:String, val y:Int)`| class declaration with 2 public fields, one mutable, one immutable. constructor is automatically generated. only new Foo("1",2) is possible|
 | `class Foo {var x = 5;val y = 6}`|class like above, but with default constructor, only new Foo() is possible|
 | `class Foo {def x = 5}`|class with default constructor and one method|
+
 |  <h2 id="declarations2">Not so basic declarations</h2>                                                                       |                 |
 | `val x = {class y(val z: String); new y("hello").z}`<br><span class="label important">Bad</span>`val foo = new y("does not work outside the block above")`| everything can be nested in anything, but everything can only be accessed in its scope|
 | `lazy val x = expensiveOperation()`|the expensive operation is executed once as soon as the value of x is needed, not before|
@@ -56,6 +58,8 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`def x(i:Int):Int = if (i==0) 1 else i*x(i-1)`|recursive methods need an explicit return type. fail.|
 |  <h2 id="collections">Scala Collections</h2>                                                                       |                 |
 |`1 to 3, Set(1,2,3), Buffer(1,2,3), ArrayBuffer(1,2,3), ListBuffer(1,2,3), List(1,2,3), Array(1,2,3),Vector(1,2,3), Map(1 -> "a", 2 -> "b")`|simple collection creations. scala has mutable and immutable collections.|
+|`1 :: 2 :: 3 :: Nil`|In addition to that, Lists have an alternative syntax|
+|`1 #:: 2 #:: 3 #:: Stream.empty`|Streams also save an alternative syntax|
 |prepend, append, union, remove, insertAll... |the usual methods every collection framework offers are present in scala as well|
 |if you like to use operators instead, there are some scary but concise ones. you'll need some practice to get them right:<br>+,++,++=,++:=-,--,--=,:+,:++,:=+,+=:,:++=,++:=, ++=:|method name rules:<br>"+" means add<br>"-" means remove<br>"++" or "--" mean add/remove many elements, not just one<br>"=" means modify mutable collection or (never both) assign new immutable collection to var. in the reassign case, "=" is appended to the actual method name, just like "int i=0;i+=1" in java. <br>":" goes on the side of the target collection and is always the first or last character of a method name. if a method end with :=, the method actually ends with : and = means it's a reassignment<br>if method contains ":" it is an add to an ordered collection, either at the beginning or the end of the collection|
 |`mutableColl += elem`|add element to a collection|
@@ -153,8 +157,8 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`41 match {case Digits(a,b) if (a == 4) => {...}}`|if the returned option contains a tuple instead of a single value, the expected happens: we now can access all the tuples fields|
 |one more thing:<br> `unapplySeq(foo:Foo):Option[Seq[Bar]]`|like unapply, but offers special features for matching on sequences|
 |`val List(a,b@_*) = List("hello","scala","world")`|a = "hello", b = List("scala", "world")|
+|`val a::tl = List("hello", "scala", "world"`|same as above using alternative list syntax|
 |`val List(a,_*) = List("hello","scala","world")`|sams as above, but discards the last 2 elements, b does not exist|
-
 
 |not yet pimped part of the cheat sheet:||
 |  <h2 id="functions">functions</h2>                                                                       |                 |
