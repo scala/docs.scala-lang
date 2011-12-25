@@ -63,6 +63,7 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`takesFunction(method)`|is also possible, the compiler does the conversion for you in obvious cases|
 |`def method(s:String)(s2:String) = s+" "+s2`<br>`val intermediate:(String)=>String = method("hello")`<br>`intermediate("world")`|parameter lists revisited: the intermediate, "incomplete method calls" are functions. the result of the last call is "hello world"|
 |`func(5)`<br>`func.apply(5)`|what you are actually calling is the apply-method of a function instance, but you don't have to explicitly write that. if no method name is given, the compiler assumed you want to call "apply"|
+|`def createFunction = (i:Int) => i+1`<br>`createFunction(5)`|if you have read the syntax section above, you can figure out what happens here. first, createFunction is called without () and without a parameter. then, 5 is applied to the apply method of the *result* of createfunction|
 |  <h2 id="typeinference">Return types and type inference</h2>                                                                       |                 |
 |  `val x = "hello"`|the compiler always picks the most specific type possible, in this case java.lang.String|
 |  `val x:Serializable = "hello"`|you can always specify a more general one|
