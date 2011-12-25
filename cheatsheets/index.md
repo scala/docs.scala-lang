@@ -168,7 +168,10 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`override int hashcode = {....}`<br>`override int equals(other:Object) = {....}`|you can override a method of the class the trait extends. you can selectively replace or extend implementations of existing methods by adding traits. this way, you can say "these 5 classes should use *this* implementation of method foo" instead of manually overriding the method in each class|
 |`override boolean add(t:T) = {println(t +" is about to be added to the collection");super.add(t)}`|this is useful for stuff like logging. you can also use this to add features to specific classes. for example, there is a MultiMap-trait in scala which can be attached to maps having sets as values. it adds a addBinding- and removeBinding-methods that are based on the original put/remove-methods and handle the details| 
 |`}`|these traits are called mixins. a class can have more than one mixin, and they can also override each other. from inside the trait, "super" refers to whatever they extend.|
-|`new Foo with BarTrait with SomeOtherTrait`|create a new instance of foo having 2 traits.|
+|`new Foo extends FirstTrait with BarTrait with SomeOtherTrait`|create a new instance of foo implementing 3 traits. the first one is extended, the next n are "withed".|
+|`class Foo extends BarTrait`|declaring a class which implements Bar directly|
+|`class Foo extends BarTrait with Serializable`|first extends, then with|
+|`class A extends B with C with D with E`|inside E, super refers to D. inside D, super refers to C, and so on. keep this in mind when overriding the same method with different traits which all call they supers.|
 |not yet pimped part of the cheat sheet:||
 |  <h2 id="functions">functions</h2>                                                                       |                 |
 |  <span class="label success">Good</span> `def f(x: Int) = { x*x }`<br> <span class="label important">Bad</span> `def f(x: Int)   { x*x }` |  define function <br> hidden error: without = it's a Unit-returning procedure; causes havoc |
