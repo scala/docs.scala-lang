@@ -26,6 +26,12 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 | `class Foo(var x:String, val y:Int)`| class declaration with 2 public fields, one mutable, one immutable. constructor is automatically generated. only new Foo("1",2) is possible|
 | `class Foo {`<br>`var x = 5`<br>`val y = 6`<br>`}`|class like above, but with default constructor, only new Foo() is possible|
 | `class Foo {def x = 5}`|class with default constructor and one method|
+|<h2 id="syntax details">Syntax details</h2>|
+|just a few things that didn't fit anywhere else||
+|`instance.bar`|bar can be a reading field access or a parameterless method call. scala doesn't make a difference. this means you can easily switch between def and val without the need for a refactoring|
+|`instance.bar()`|for method calls, you can add (). by convention, methods without () don't change any states and just return a calculated value. methods with () are called for they effects, for example changing a value, printing something on the console and so on|
+|`instance bar`|you can skip the "." if it is obvious to the compiler what you mean. humans and the compiler usually agree if there is an instance on the left and a method of that instance on the right. this is useful for DSLs|
+|`println {"hello world"}`|if a method has one parameter, you can also pass a block instead of using (). also useful for DSLs|
 |  <h2 id="declarations2">Not so basic declarations</h2>                                                                       |                 |
 | `val x = {`<br>`class y(val z: String)`<br>`new y("hello").z`<br>`}`<br><span class="label important">Bad</span>`val foo = new y("does not work outside the block above")`| everything can be nested in anything, but everything can only be accessed in its scope|
 | `lazy val x = expensiveOperation()`|the expensive operation is executed once as soon as the value of x is needed, not before|
@@ -35,6 +41,17 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`def method(param: => String)`|"=>" means that when the method is called, the parameter is wrapped in a function which is executed when accessed. the string is evaluated every time when needed (see Iterator.continually), but not before. the value is not cached, but you can pass a lazy val to make it cached.|
 |`def method(s:String)(i:Int)`|method with multiple parameter lists|
 |`val intermediate = method("hello")`<br>`intermediate(5)`|why? because you can apply one parameter list at once and the next ones later and pass "the incomplete call" around. in java, you would use a builder for this.|
+|  <h2 id="object_orientation">Declarations related to OO</h2>                                                     |                 |
+|  `class C(x: R)` _same as_ <br>`class C(private val x: R)`<br>`var c = new C(4)`                         |  constructor params - automatically turn into private fields if used after construction. if not, the compiler doesn't generate fields for the params|
+|  `class C(val x: R)`<br>`var c = new C(4)`<br>`c.x`                                                      |  constructor params - exposed as public fields |
+|  `class C(var x: R) {`<br>`assert(x > 0, "positive please")`<br>`var y = x`<br>`val readonly = 5`<br>`private var secret = 1`<br>`def this = this(42)`<br>`}`|<br>constructor is class body<br>declare a public member<br>declare a gettable but not settable member<br>declare a private member<br>alternative constructor. all alternative constructors must call the main constructor from the class declaration|
+|  `new{ ... }`                                                                                            |  anonymous class. more later.|
+|  `abstract class D { ... }`                                                                              |  define an abstract class. (non-createable) |
+|  `class C extends D { ... }`                                                                             |  define an inherited class. |
+|  `class D(var x: R)`<br>`class C(x: R) extends D(x)`                                                     |  inheritance and constructor params)
+|  `classOf[String]`                                                                                       |  class literal. |
+|  `x.isInstanceOf[String]`                                                                                |  type check (runtime) |
+|  `x.asInstanceOf[String]`                                                                                |  type cast (runtime) |
 |  <h2 id="functiondeclaration">Declaring functions</h2>                                                                       |                 |
 | `(i:Int) => i+1`|creates a function.| 
 | `var func = (i:Int) => i+1`|creates a function and stores it in a variable|
@@ -136,6 +153,7 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`def takesTuple(p:(Int, String) {...}`|method accepting a tuple|
 |`takesTuple(5,"hello)`|(5, "hello") could be 2 parameters or a tuple. the compiler is smart enough to figure out you meant the tuple one because it looks at the type signature of "takesTuple".|
 |`takesTuple((5,"hello))`|same as above, but explicitly creating the tuple|
+|`coll zip coll2`|creates a single collection which contains tuples which contain values from coll and coll2, matching by index. for example `List(1,2) zip (List("a","b")` becomes `List((1,"a"),(2,"b"))`
 |<h2 id="pattermatching">Pattern matching</h2>|
 |`x match {`|scala has a very powerful switch|
 |`case "hello" => {...}`|gets executed if x equals "hello". is tested via equals
@@ -172,69 +190,33 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`class Foo extends BarTrait`|declaring a class which implements Bar directly|
 |`class Foo extends BarTrait with Serializable`|first extends, then with|
 |`class A extends B with C with D with E`|inside E, super refers to D. inside D, super refers to C, and so on. keep this in mind when overriding the same method with different traits which call they supers.|
-|not yet pimped part of the cheat sheet:||
-|  <h2 id="functions">functions</h2>                                                                       |                 |
-|  <span class="label success">Good</span> `def f(x: Int) = { x*x }`<br> <span class="label important">Bad</span> `def f(x: Int)   { x*x }` |  define function <br> hidden error: without = it's a Unit-returning procedure; causes havoc |
-|  <span class="label success">Good</span> `def f(x: Any) = println(x)`<br> <span class="label important">Bad</span> `def f(x) = println(x)` |  define function <br> syntax error: need types for every arg. |
-|  `type R = Double`                                                                                       |  type alias     |
-|  `def f(x: R)` vs.<br> `def f(x: => R)`                                                                  |  call-by-value <br> call-by-name (lazy parameters) |
-|  `(x:R) => x*x`                                                                                          |  anonymous function  |
-|  `(1 to 5).map(_*2)` vs.<br> `(1 to 5).reduceLeft( _+_ )`                                                |  anonymous function: underscore is positionally matched arg. |
-|  `(1 to 5).map( x => x*x )`                                                                              |  anonymous function: to use an arg twice, have to name it. |
-|  <span class="label success">Good</span> `(1 to 5).map(2*)`<br> <span class="label important">Bad</span> `(1 to 5).map(*2)` |  anonymous function: bound infix method. Use `2*_` for sanity's sake instead. |
-|  `(1 to 5).map { val x=_*2; println(x); x }`                                                             |  anonymous function: block style returns last expression. |
-|  `(1 to 5) filter {_%2 == 0} map {_*2}`                                                                  |  anonymous functions: pipeline style. (or parens too). |
-|  `def compose(g:R=>R, h:R=>R) = (x:R) => g(h(x))` <br> `val f = compose({_*2}, {_-1})`                   |  anonymous functions: to pass in multiple blocks, need outer parens. |
-|  `val zscore = (mean:R, sd:R) => (x:R) => (x-mean)/sd`                                                   |  currying, obvious syntax. |
-|  `def zscore(mean:R, sd:R) = (x:R) => (x-mean)/sd`                                                       |  currying, obvious syntax |
-|  `def zscore(mean:R, sd:R)(x:R) = (x-mean)/sd`                                                           |  currying, sugar syntax. but then: |
-|  `val normer = zscore(7, 0.4)_`                                                                          |  need trailing underscore to get the partial, only for the sugar version. |
-|  `def mapmake[T](g:T=>T)(seq: List[T]) = seq.map(g)`                                                     |  generic type. |
-|  `5.+(3); 5 + 3` <br> `(1 to 5) map (_*2)`                                                               |  infix sugar. |
-|  `def sum(args: Int*) = args.reduceLeft(_+_)`                                                            |  varargs. |
 |  <h2 id="packages">packages</h2>                                                                         |                 |
 |  `import scala.collection._`                                                                             |  wildcard import. |
 |  `import scala.collection.Vector` <br> `import scala.collection.{Vector, Sequence}`                      |  selective import. |
 |  `import scala.collection.{Vector => Vec28}`                                                             |  renaming import. |
 |  `import java.util.{Date => _, _}`                                                                       |  import all from java.util except Date. |
 |  `package pkg` _at start of file_ <br> `package pkg { ... }`                                             |  declare a package. |
-|  <h2 id="data_structures">data structures</h2>                                                           |                 |
-|  `(1,2,3)`                                                                                               |  tuple literal. (`Tuple3`) |
-|  `var (x,y,z) = (1,2,3)`                                                                                 |  destructuring bind: tuple unpacking via pattern matching. |
-|  <span class="label important">Bad</span>`var x,y,z = (1,2,3)`                                           |  hidden error: each assigned to the entire tuple. |
-|  `var xs = List(1,2,3)`                                                                                  |  list (immutable). |
-|  `xs(2)`                                                                                                 |  paren indexing. ([slides](http://www.slideshare.net/Odersky/fosdem-2009-1013261/27)) |
-|  `1 :: List(2,3)`                                                                                        |  cons. |
-|  `1 to 5` _same as_ `1 until 6` <br> `1 to 10 by 2`                                                      |  range sugar. |
-|  `()` _(empty parens)_                                                                                   |  sole member of the Unit type (like C/Java void). |
 |  <h2 id="control_constructs">control constructs</h2>                                                     |                 |
 |  `if (check) happy else sad`                                                                             |  conditional. |
 |  `if (check) happy` _same as_ <br> `if (check) happy else ()`                                            |  conditional sugar. |
 |  `while (x < 5) { println(x); x += 1}`                                                                   |  while loop. |
 |  `do { println(x); x += 1} while (x < 5)`                                                                |  do while loop. |
 |  `import scala.util.control.Breaks._`<br>`breakable {`<br>`    for (x <- xs) {`<br>`        if (Math.random < 0.1) break`<br>`    }`<br>`}`|  break. ([slides](http://www.slideshare.net/Odersky/fosdem-2009-1013261/21)) |
-|  `for (x <- xs if x%2 == 0) yield x*10` _same as_ <br>`xs.filter(_%2 == 0).map(_*10)`                    |  for comprehension: filter/map |
-|  `for ((x,y) <- xs zip ys) yield x*y` _same as_ <br>`(xs zip ys) map { case (x,y) => x*y }`              |  for comprehension: destructuring bind |
-|  `for (x <- xs; y <- ys) yield x*y` _same as_ <br>`xs flatMap {x => ys map {y => x*y}}`                  |  for comprehension: cross product |
-|  `for (x <- xs; y <- ys) {`<br>    `println("%d/%d = %.1f".format(x,y, x*y))`<br>`}`                     |  for comprehension: imperative-ish<br>[sprintf-style](http://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax) |
-|  <h2 id="pattern_matching">pattern matching</h2>                                                         |                 |
-|  <span class="label success">Good</span> `(xs zip ys) map { case (x,y) => x*y }`<br> <span class="label important">Bad</span> `(xs zip ys) map( (x,y) => x*y )` |  use case in function args for pattern matching. |
-|  <span class="label important">Bad</span><br>`val v42 = 42`<br>`Some(3) match {`<br>`  case Some(v42) => println("42")`<br>`    case _ => println("Not 42")`<br>`}` |  "v42" is interpreted as a name matching any Int value, and "42" is printed.
-|  <span class="label success">Good</span><br>`val v42 = 42`<br>`Some(3) match {`<br>``    case Some(`v42`) => println("42")``<br>`case _ => println("Not 42")`<br>`}`  |  "\`v42\`" with backticks is interpreted as the read-only variable v42, and "Not 42" is printed.
-|  <h2 id="object_orientation">object orientation</h2>                                                     |                 |
-|  `class C(x: R)` _same as_ <br>`class C(private val x: R)`<br>`var c = new C(4)`                         |  constructor params - private |
-|  `class C(val x: R)`<br>`var c = new C(4)`<br>`c.x`                                                      |  constructor params - public |
-|  `class C(var x: R) {`<br>`assert(x > 0, "positive please")`<br>`var y = x`<br>`val readonly = 5`<br>`private var secret = 1`<br>`def this = this(42)`<br>`}`|<br>constructor is class body<br>declare a public member<br>declare a gettable but not settable member<br>declare a private member<br>alternative constructor|
-|  `new{ ... }`                                                                                            |  anonymous class |
-|  `abstract class D { ... }`                                                                              |  define an abstract class. (non-createable) |
-|  `class C extends D { ... }`                                                                             |  define an inherited class. |
-|  `class D(var x: R)`<br>`class C(x: R) extends D(x)`                                                     |  inheritance and constructor params. (wishlist: automatically pass-up params by default)
-|  `object O extends D { ... }`                                                                            |  define a singleton. (module-like) |
-|  `trait T { ... }`<br>`class C extends T { ... }`<br>`class C extends D with T { ... }`                  |  traits.<br>interfaces-with-implementation. no constructor params. [mixin-able]({{ site.baseurl }}/tutorials/tour/mixin-class-composition.html).
-|  `trait T1; trait T2`<br>`class C extends T1 with T2`<br>`class C extends D with T1 with T2`             |  multiple traits. |
-|  `class C extends D { override def f = ...}`                                                             |  must declare method overrides. |
-|  `new java.io.File("f")`                   	                                                           |  create object. |
-|  <span class="label important">Bad</span> `new List[Int]`<br> <span class="label success">Good</span> `List(1,2,3)` |  type error: abstract type<br>instead, convention: callable factory shadowing the type |
-|  `classOf[String]`                                                                                       |  class literal. |
-|  `x.isInstanceOf[String]`                                                                                |  type check (runtime) |
-|  `x.asInstanceOf[String]`                                                                                |  type cast (runtime) |
+|  `for (i <- 1 to 10 {doStuffWith(i)}`|most basic "for loop". actually it's not a loop but the compiler turns it into `1 to 10 foreach {i => *block content*}. and it is not called for loop, but for comprehension. it's a higher level construct - loops are low level.|
+|  `for (i <- 1 to 10 if i % 2 == 0) {}`|conditions are possible|
+|  `for (i <- 1 to 10;i2 <- 10 to 10) {println(i+i2)}`|no need for nested fors|
+|  `val evenNumbers = for (i <- 1 to 10) yield (i*2)`|yield means "the loop should return that". in this case, you get all even numbers from 2 to 20|
+|  `for (x <- xs if x%2 == 0) yield x*10` _same as_ <br>`xs.filter(_%2 == 0).map(_*10)`                    |  what you write, and what the compiler does |
+|  `for ((x,y) <- xs zip ys) yield x*y`              |  pattern matching works in here |
+|<h2 id="implicit conversions">Implicits</h2>|
+|`implicit`|mystic keyword. can be attached to vals, vars, defs and objects and method parameters|
+|`def parseInt(s:String) = Integer.parseInt(s)`|simple string -> int method|
+|`implicit def parseInt(s:String) = Integer.parseInt(s)`|implicit string -> int method. it still can be used as a normal method, but it has one special feature|
+|`val i:Int = "42"`|if there is an implicit method in scope which can convert a "wrong" type (string 42) into a "correct" one, the compiler automatically uses it. the code becomes `val i = parseInt("42")`|
+|`implicit def attachMethod(i:Int) = new {def tenTimes = i*10}`|another implicit conversion from "Int" to an anonymous class having a method "tenTimes"|
+|using several implicit conversions attaching methods in a chain, combined with scala's .-inference, you can create code that looks like a text that acually makes sense to a human. for a great example, take a look at ScalaTest|
+|`val i:Int = 42`<br>`println(i.tenTimes)`|if there is an implicit method which can convert a type not having a method into one having that method - the compiler uses that conversion to make your code valid. this is a common pattern to attach methods to objects| 
+|`abstract class GenericAddition[T] {def add(t:T,t2:T):T}`<br>`implicit object IntAddition extends GenericAddition[Int] {def add(t:Int, t2:Int) = t+t2}`|an implicit object|
+|`def addTwoThings[T](t:T, t2:T)(implicit logicToUse:GenericAddition[T]) = logicToUse.add(t,t2)`|method using a second implicit parameter list|
+|`addTwoThings(1,2)(IntAddition)`|call to method above. so far, no magic involved.|
+|`addTwoThings(1,2)`|if a matching implicit object is in scope, it will automatically be used. you don't have to pass it yourself. it's a nice feature to separate the "what" from "how" and let the compiler pick the "how"-logic automatically.|
