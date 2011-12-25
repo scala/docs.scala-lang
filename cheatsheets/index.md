@@ -18,16 +18,16 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |  `def x:String = return "hello world"`                 | method declaration                      |
 |  `def x(foo:String):String = return foo+"hello world"`                 | method declaration with simple parameter                      |
 |  `def x(foo:String, bar:String):String = return foo+"hello world"+bar`                 | method declaration with two parameters                      |
-|  `def x:String = {val x = 1;return "hello world"+1}`                 | multiple statements need {} around the code                      |
+|  `def x:String = {`<br>`val x = 1`<br>`return "hello world"+1`<br>`}`                 | multiple statements need {} around the code                      |
 | `def x = "hello world"`|return keyword and return type declaration are optional, but if a method contains return, the return type *must* be specified explicitly. default return value = last value in code block. 
 |`def iAcceptVarArgs(i:Int,s:String,d:Double*) = {...}`|method accepting varargs|
 |`def x = {def y = 7;y}` | nested declarations are possible|
 | `class Foo`| class declaration - nested declaration also possible|
 | `class Foo(var x:String, val y:Int)`| class declaration with 2 public fields, one mutable, one immutable. constructor is automatically generated. only new Foo("1",2) is possible|
-| `class Foo {var x = 5;val y = 6}`|class like above, but with default constructor, only new Foo() is possible|
+| `class Foo {`<br>`var x = 5`<br>`val y = 6`<br>`}`|class like above, but with default constructor, only new Foo() is possible|
 | `class Foo {def x = 5}`|class with default constructor and one method|
 |  <h2 id="declarations2">Not so basic declarations</h2>                                                                       |                 |
-| `val x = {class y(val z: String); new y("hello").z}`<br><span class="label important">Bad</span>`val foo = new y("does not work outside the block above")`| everything can be nested in anything, but everything can only be accessed in its scope|
+| `val x = {`<br>`class y(val z: String)`<br>`new y("hello").z`<br>`}`<br><span class="label important">Bad</span>`val foo = new y("does not work outside the block above")`| everything can be nested in anything, but everything can only be accessed in its scope|
 | `lazy val x = expensiveOperation()`|the expensive operation is executed once as soon as the value of x is needed, not before|
 | `def method(a:String = "hello", b:String = "world") = a+" "+b`|method will default values|
 | `method("goodbye")`|call to method above, unspecificed parameters will get default values. returns "goodbye world"|
@@ -53,7 +53,7 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |  `def x:Unit = {...}`<br>`def x() {...}`|leaving out the "=" at a method declaration is the same as specifying "Unit"|
 | `val blocks = {{{{5}}}}`|every block has a return type that is passed back to the next outer block|
 | `val block = if (a) foo else bar`|almost everything is an expression and thus, has a return type. this includes if-else-structures|
-|`def x = if (System.currentTimeMillis() % 2 == 0) Integer.valueOf(1) else java.lang.Double.valueOf(2)`|here, the compiler picks the most specific supertype of both Integer and Double which is java.lang.Number (this is a lie)|
+|`def x = {`<br>`if (System.currentTimeMillis() % 2 == 0) Integer.valueOf(1) else java.lang.Double.valueOf(2)`<br>`}`|here, the compiler picks the most specific supertype of both Integer and Double which is java.lang.Number (this is a lie)|
 |`def x(i:Int):Int = if (i==0) 1 else i*x(i-1)`|recursive methods need an explicit return type. fail.|
 |  <h2 id="collections">Scala Collections</h2>                                                                       |                 |
 |`1 to 3, Set(1,2,3), Buffer(1,2,3), ArrayBuffer(1,2,3), ListBuffer(1,2,3), List(1,2,3), Array(1,2,3),Vector(1,2,3), Map(1 -> "a", 2 -> "b")`|simple collection creations. scala has mutable and immutable collections.|
@@ -166,12 +166,12 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`}`| but that's not all!|
 |`trait Plugin extends java.lang.Object {`|a trait can "extend" any existing class or trait. the difference to the trait Foo above is that our Plugin here is restricted to classes which it extends. in this case java.lang.Object. why might such a thing be useful?|
 |`override int hashcode = {....}`<br>`override int equals(other:Object) = {....}`|you can override a method of the class the trait extends. you can selectively replace or extend implementations of existing methods by adding traits. this way, you can say "these 5 classes should use *this* implementation of method foo" instead of manually overriding the method in each class|
-|`override boolean add(t:T) = {println(t +" is about to be added to the collection");super.add(t)}`|this is useful for stuff like logging. you can also use this to add features to specific classes. for example, there is a MultiMap-trait in scala which can be attached to maps having sets as values. it adds a addBinding- and removeBinding-methods that are based on the original put/remove-methods and handle the details| 
+|`override boolean add(t:T) = {`<br>`println(t +" is about to be added to the collection")`<br>`super.add(t)`<br>`}`|this is useful for stuff like logging. you can also use this to add features to specific classes. for example, there is a MultiMap-trait in scala which can be attached to maps having sets as values. it adds a addBinding- and removeBinding-methods that are based on the original put/remove-methods and handle the details| 
 |`}`|these traits are called mixins. a class can have more than one mixin, and they can also override each other. from inside the trait, "super" refers to whatever they extend.|
 |`new Foo extends FirstTrait with BarTrait with SomeOtherTrait`|create a new instance of foo implementing 3 traits. the first one is extended, the next n are "withed".|
 |`class Foo extends BarTrait`|declaring a class which implements Bar directly|
 |`class Foo extends BarTrait with Serializable`|first extends, then with|
-|`class A extends B with C with D with E`|inside E, super refers to D. inside D, super refers to C, and so on. keep this in mind when overriding the same method with different traits which all call they supers.|
+|`class A extends B with C with D with E`|inside E, super refers to D. inside D, super refers to C, and so on. keep this in mind when overriding the same method with different traits which call they supers.|
 |not yet pimped part of the cheat sheet:||
 |  <h2 id="functions">functions</h2>                                                                       |                 |
 |  <span class="label success">Good</span> `def f(x: Int) = { x*x }`<br> <span class="label important">Bad</span> `def f(x: Int)   { x*x }` |  define function <br> hidden error: without = it's a Unit-returning procedure; causes havoc |
