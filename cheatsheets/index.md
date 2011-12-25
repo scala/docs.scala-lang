@@ -52,6 +52,7 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |  `classOf[String]`                                                                                       |  class literal. |
 |  `x.isInstanceOf[String]`                                                                                |  type check (runtime) |
 |  `x.asInstanceOf[String]`                                                                                |  type cast (runtime) |
+|`case class Foo; case object Bar`|the keyword "case" makes the compiler generate equals & hashcode methods for that class. also, constructor params are always public readonly fields|
 |  <h2 id="functiondeclaration">Declaring functions</h2>                                                                       |                 |
 | `(i:Int) => i+1`|creates a function.| 
 | `var func = (i:Int) => i+1`|creates a function and stores it in a variable|
@@ -177,6 +178,7 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`val List(a,b@_*) = List("hello","scala","world")`|a = "hello", b = List("scala", "world")|
 |`val a::tl = List("hello", "scala", "world"`|same as above using alternative list syntax|
 |`val List(a,_*) = List("hello","scala","world")`|sams as above, but discards the last 2 elements, b does not exist|
+|Note: for case classes, an unapply method is automatically generated|
 |<h2 id="traits">Traits</h2>|
 |`trait Foo {`|Like a java interface, but more powerful. you can:|
 |`def getBar():Bar`|define abstract methods like in a java interface|
@@ -228,3 +230,8 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`class X {type Y <: Foo}`|types can be clared in classes and traits and overridden in subclasses. upper and lower bounds apply here, too.|
 |`type X = {type U = Foo}`|types can be nested. this is useful for things that are too big to explain here, but i can tease you a bit: you can declare a type that "is an int but with an attached subtype". at runtime, everything is still an int, but at compile time, userids, inches, the number of hairs - everything would have a different type and you would get compile errors if you tried to mix them. for strings, you could tag them with an "is resource key", "is already resolved" or "is already html-escaped"-type to avoid doubly resolved or escaped strings. for details, see http://etorreborre.blogspot.com/2011/11/practical-uses-for-unboxed-tagged-types.html
 |`this.type`|this refers to the type "this" has. this is pretty useless as long as you are inside "this". but if you use it as a return type, it get's updated once you use a subclass. simple use case: `def cloneOfMe:this.type`. you'll want a subclass to return it's own type, not the parent type.|
+|<h2 id="freeeeeeedom">For java programmers: Lifted restrictions / Important differences</h2>|
+|If you are coming from java, you might have gotten used to several restrictions and might not even try to do it in scala because you expect it not to work. here is what does work in scala, but not in java|
+|`a == b`|this is a null safe call to equals. if you want a check by reference, use "eq" instead of "=="|
+|`var x = 0`<br>`1 to 10 foreach {i => {println("changing x from inside another class");x += i;}`|in java, you cannot access local variables from anonymous classes unless they are final. in scala, you can.|
+|`class Foo {def x = "a"}`<br>`class Bar extends Foo {override val x = "b"}`|parameterless methods can be overridden by readonly fields|
