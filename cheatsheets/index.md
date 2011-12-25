@@ -22,10 +22,6 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 | `def x = "hello world"`|return keyword and return type declaration are optional, but if a method contains return, the return type *must* be specified explicitly. default return value = last value in code block. 
 |`def iAcceptVarArgs(i:Int,s:String,d:Double*) = {...}`|method accepting varargs|
 |`def x = {def y = 7;y}` | nested declarations are possible|
-| `class Foo`| class declaration - nested declaration also possible|
-| `class Foo(var x:String, val y:Int)`| class declaration with 2 public fields, one mutable, one immutable. constructor is automatically generated. only new Foo("1",2) is possible|
-| `class Foo {`<br>`var x = 5`<br>`val y = 6`<br>`}`|class like above, but with default constructor, only new Foo() is possible|
-| `class Foo {def x = 5}`|class with default constructor and one method|
 |<h2 id="syntax details">Syntax details</h2>|
 |just a few things that didn't fit anywhere else||
 |`instance.bar`|bar can be a reading field access or a parameterless method call. scala doesn't make a difference. this means you can easily switch between def and val without the need for a refactoring|
@@ -42,10 +38,14 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`def method(s:String)(i:Int)`|method with multiple parameter lists|
 |`val intermediate = method("hello")`<br>`intermediate(5)`|why? because you can apply one parameter list at once and the next ones later and pass "the incomplete call" around. in java, you would use a builder for this.|
 |  <h2 id="object_orientation">Declarations related to OO</h2>                                                     |                 |
+| `class Foo`| class declaration - nested declaration also possible|
+| `class Foo(var x:String, val y:Int)`| class declaration with 2 public fields, one mutable, one immutable. constructor is automatically generated. only new Foo("1",2) is possible|
+| `class Foo {`<br>`var x = 5`<br>`val y = 6`<br>`}`|class like above, but with default constructor, only new Foo() is possible|
+| `class Foo {def x = 5}`|class with default constructor and one method|
 |  `class C(x: R)` _same as_ <br>`class C(private val x: R)`<br>`var c = new C(4)`                         |  constructor params - automatically turn into private fields if used after construction. if not, the compiler doesn't generate fields for the params|
 |  `class C(val x: R)`<br>`var c = new C(4)`<br>`c.x`                                                      |  constructor params - exposed as public fields |
-|  `class C(var x: R) {`<br>`assert(x > 0, "positive please")`<br>`var y = x`<br>`val readonly = 5`<br>`private var secret = 1`<br>`def this = this(42)`<br>`}`|<br>constructor is class body<br>declare a public member<br>declare a gettable but not settable member<br>declare a private member<br>alternative constructor. all alternative constructors must call the main constructor from the class declaration|
-|  `new{ ... }`                                                                                            |  anonymous class. more later.|
+|  `class C(var x: R) {`<br>`assert(x > 0, "positive please") //class body = constructor`<br>`var y = x // public field`<br>`val readonly = 5 // readonly field`<br>`private var secret = 1 // private field`<br>`def this = this(42) // alternative constructor`<br>`}`|simple example covering the common use cases. note: all alternative constructors must call the main constructor declared at the class declaration. this is it is impossible to forget to initialize a field by constructor overloading.|
+|  `new{ ... }`                                                                                            |  anonymous class. more later (see implicits)|
 |  `abstract class D { ... }`                                                                              |  define an abstract class. (non-createable) |
 |  `class C extends D { ... }`                                                                             |  define an inherited class. |
 |  `class D(var x: R)`<br>`class C(x: R) extends D(x)`                                                     |  inheritance and constructor params)
@@ -213,10 +213,16 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`def parseInt(s:String) = Integer.parseInt(s)`|simple string -> int method|
 |`implicit def parseInt(s:String) = Integer.parseInt(s)`|implicit string -> int method. it still can be used as a normal method, but it has one special feature|
 |`val i:Int = "42"`|if there is an implicit method in scope which can convert a "wrong" type (string 42) into a "correct" one, the compiler automatically uses it. the code becomes `val i = parseInt("42")`|
-|`implicit def attachMethod(i:Int) = new {def tenTimes = i*10}`|another implicit conversion from "Int" to an anonymous class having a method "tenTimes"|
+|`implicit def attachMethod(i:Int) = new {def tenTimes = i*10}`|another implicit conversion from "Int" to an anonymous class having a method "tenTimes". the returnes class doesn't need a name.|
 |using several implicit conversions attaching methods in a chain, combined with scala's .-inference, you can create code that looks like a text that acually makes sense to a human. for a great example, take a look at ScalaTest|
 |`val i:Int = 42`<br>`println(i.tenTimes)`|if there is an implicit method which can convert a type not having a method into one having that method - the compiler uses that conversion to make your code valid. this is a common pattern to attach methods to objects| 
 |`abstract class GenericAddition[T] {def add(t:T,t2:T):T}`<br>`implicit object IntAddition extends GenericAddition[Int] {def add(t:Int, t2:Int) = t+t2}`|an implicit object|
 |`def addTwoThings[T](t:T, t2:T)(implicit logicToUse:GenericAddition[T]) = logicToUse.add(t,t2)`|method using a second implicit parameter list|
 |`addTwoThings(1,2)(IntAddition)`|call to method above. so far, no magic involved.|
 |`addTwoThings(1,2)`|if a matching implicit object is in scope, it will automatically be used. you don't have to pass it yourself. it's a nice feature to separate the "what" from "how" and let the compiler pick the "how"-logic automatically.|
+|<h2 id="types">Abstract types</h2>|
+|`type Str = String`|simple alias. Str and String are equal for the compiler|
+|`type Complex[A] = (String,String,String,A)`|if you are too lazy to write a complex type expression because a part of the expression is constant, use this. "Complex" is called a type contructor, and A is its parameter. you can declare something as Complex[Int] and it is considered equal to any Tuple having the type (String, String, String, Int)|
+|`type StructualType = {def x:String;val y:Int}`|this is a structural type. is allows type safe duck-typing. if you declare a method that accepts "StructuralType", is accepts all objects that have a method x:String and a field y:Int. at runtime, reflection is used for this, but you cannot mess it up at compile time like in dynamically types languages.| 
+|`class X {type Y <: Foo}`|types can be clared in classes and traits and overridden in subclasses. upper and lower bounds apply here, too.|
+|`type X = {type U = Foo}`|types can be nested. this is useful for things that are too big to explain here, but i can tease you a bit: you can declare a type that "is an int but with an attached subtype". at runtime, everything is still an int, but at compile time, userids, inches, the number of hairs - everything would have a different type and you would get compile errors if you tried to mix them. for strings, you could tag them with an "is resource key", "is already resolved" or "is already html-escaped"-type to avoid doubly resolved or escaped strings. for details, see http://etorreborre.blogspot.com/2011/11/practical-uses-for-unboxed-tagged-types.html
