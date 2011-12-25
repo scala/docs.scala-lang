@@ -96,7 +96,7 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`List(1,2,3,4,5).fold(0)(_ + _)`|same as the fold above, just shorter|
 |`"comma separated numbers: " + List(1, 2, 3, 4, 5).fold("")(_ + ", " + _)`|finally, you won't have to fiddle around with the last "," anymore!|
 |in java this would all look like:<br>`Acc acc = ?;`<br>` for (T t: coll) {if (acc==null) {acc = t;} else {acc = doStuff(acc,t);}}`|this is boilerplate code you can avoid *every single time!*. write only what (doStuff) should happen, not "what and how" (boilerplate code + doStuff).|
-|where else could you save boilerplate? think about it!<br>try-catch-finally
+|where else could you save boilerplate? think about it!<br>try-catch-finally. define your error handling once, and just inject your logic there. no need to copy & paste your try-catch blocks anywhere
 | <h2 id="generics">Generics</h2>|
 | `def foo[BAR](bar:BAR):BAR = bar`|simple type parameter, can be anything|
 | `def foo[BAR <: java.lang.Number](bar: BAR) = bar.doubleValue() + 5`|upper bound, BAR must be a java.lang.Number or a subclass of it|
@@ -158,7 +158,17 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`val List(a,b@_*) = List("hello","scala","world")`|a = "hello", b = List("scala", "world")|
 |`val a::tl = List("hello", "scala", "world"`|same as above using alternative list syntax|
 |`val List(a,_*) = List("hello","scala","world")`|sams as above, but discards the last 2 elements, b does not exist|
-
+|<h2 id="traits">Traits</h2>|
+|`trait Foo {`|Like a java interface, but more powerful. you can:|
+|`def getBar():Bar`|define abstract methods like in a java interface|
+|`def predefinedMethod(s:String) = "hello world"`|add non-abstract methods as well. a good example is the Ordered-trait. is expects you to implement a compare-method and delivers 4 other methods (<, >, <=, >=) which already come with an implementation based on compare|
+|`val someVal = "someString"`|traits can also contain fields|
+|`}`| but that's not all!|
+|`trait Plugin extends java.lang.Object {`|a trait can "extend" any existing class or trait. the difference to the trait Foo above is that our Plugin here is restricted to classes which it extends. in this case java.lang.Object. why might such a thing be useful?|
+|`override int hashcode = {....}`<br>`override int equals(other:Object) = {....}`|you can override a method of the class the trait extends. you can selectively replace or extend implementations of existing methods by adding traits. this way, you can say "these 5 classes should use *this* implementation of method foo" instead of manually overriding the method in each class|
+|`override boolean add(t:T) = {println(t +" is about to be added to the collection");super.add(t)}`|this is useful for stuff like logging. you can also use this to add features to specific classes. for example, there is a MultiMap-trait in scala which can be attached to maps having sets as values. it adds a addBinding- and removeBinding-methods that are based on the original put/remove-methods and handle the details| 
+|`}`|these traits are called mixins. a class can have more than one mixin, and they can also override each other. from inside the trait, "super" refers to whatever they extend.|
+|`new Foo with BarTrait with SomeOtherTrait`|create a new instance of foo having 2 traits.|
 |not yet pimped part of the cheat sheet:||
 |  <h2 id="functions">functions</h2>                                                                       |                 |
 |  <span class="label success">Good</span> `def f(x: Int) = { x*x }`<br> <span class="label important">Bad</span> `def f(x: Int)   { x*x }` |  define function <br> hidden error: without = it's a Unit-returning procedure; causes havoc |
