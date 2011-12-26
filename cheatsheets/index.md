@@ -233,5 +233,6 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |<h2 id="freeeeeeedom">For java programmers: Lifted restrictions / Important differences</h2>|
 |If you are coming from java, you might have gotten used to several restrictions and might not even try to do it in scala because you expect it not to work. here is what does work in scala, but not in java|
 |`a == b`|this is a null safe call to equals. if you want a check by reference, use "eq" instead of "=="|
-|`var x = 0`<br>`1 to 10 foreach {i => {println("changing x from inside another class");x += i;}`|in java, you cannot access local variables from anonymous classes unless they are final. in scala, you can.|
+|`var x = 0`<br>`1 to 10 foreach {i => {`<br>`println("changing x from inside another class")`<br>`x += i`<br>`}`|in java, you cannot access local variables from anonymous classes unless they are final. in scala, you can.|
 |`class Foo {def x = "a"}`<br>`class Bar extends Foo {override val x = "b"}`|parameterless methods can be overridden by readonly fields|
+|`def allExceptionsAreEqual = throw new CheckedException`|in scala, you don't need to declare checked exceptions in your method signature. by default, the compiler handles them just like runtimeexceptions. the common case is that a caller doesn't care about exceptions and just lets them propagate up to the top level where they are logged and handled.|
