@@ -48,9 +48,11 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |  `class C(val x: R)`<br>`var c = new C(4)`<br>`c.x`                                                      |  constructor params - exposed as public fields |
 |  `class C(var x: R) {`<br>`assert(x > 0, "positive please") //class body = constructor`<br>`var y = x // public field`<br>`val readonly = 5 // readonly field`<br>`private var secret = 1 // private field`<br>`def this = this(42) // alternative constructor`<br>`}`|simple example covering the common use cases. note: all alternative constructors must call the main constructor declared at the class declaration. this is it is impossible to forget to initialize a field by constructor overloading.|
 |  `new{ ... }`                                                                                            |  anonymous class. more later (see implicits)|
-|  `abstract class D { ... }`                                                                              |  define an abstract class. (non-createable) |
+|`new Foo {...}`|anonymous subclass of Foo. Foo might be a class or a trait|
+|  `abstract class D { ... }`                                                                              |  define an abstract class. (non-createable, you have to create a subclass) |
 |  `class C extends D { ... }`                                                                             |  define an inherited class. |
 |  `class D(var x: R)`<br>`class C(x: R) extends D(x)`                                                     |  inheritance and constructor params)
+|`abstract class Foo {def bar:String}`|skipping the body of a method or value of a val makes the method/val abstract. no need for an "abstract" keyword. overriding an abstract def or val doesn not require an "override" keyword. overriding a non abstract def or val does.|
 |  `classOf[String]`                                                                                       |  class literal. |
 |  `x.isInstanceOf[String]`                                                                                |  type check (runtime) |
 |  `x.asInstanceOf[String]`                                                                                |  type cast (runtime) |
