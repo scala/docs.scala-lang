@@ -22,6 +22,8 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 | `def x = "hello world"`|return keyword and return type declaration are optional, but if a method contains return, the return type *must* be specified explicitly. default return value = last value in code block. 
 |`def iAcceptVarArgs(i:Int,s:String,d:Double*) = {...}`|method accepting varargs|
 |`def x = {def y = 7;y}` | nested declarations are possible|
+|<h2 id="primitive types">Primitive types</h2>|
+|`Byte, Char, Boolean, Double, Float, Long, Int, Short`|Primitive types. These are automatically boxed or unboxed, no need to use their java.lang.Number-counterparts anywhere. I use java.lang.Integer and friends in this sheet to be friendly to java devs and because i use their type hierarchy for examples.|
 |<h2 id="syntax details">Syntax details</h2>|
 |just a few things that didn't fit anywhere else||
 |`instance.bar`|bar can be a reading field access or a parameterless method call. scala doesn't make a difference. this means you can easily switch between def and val without the need for a refactoring|
@@ -79,7 +81,7 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`1 :: 2 :: 3 :: Nil`|In addition to that, Lists have an alternative syntax|
 |`1 #:: 2 #:: 3 #:: Stream.empty`|Streams also save an alternative syntax|
 |prepend, append, union, remove, insertAll... |the usual methods every collection framework offers are present in scala as well|
-|if you like to use operators instead, there are some scary but concise ones. you'll need some practice to get them right:<br>+,++,++=,++:=-,--,--=,:+,:++,:=+,+=:,:++=,++:=, ++=:|method name rules:<br>"+" means add<br>"-" means remove<br>"++" or "--" mean add/remove many elements, not just one<br>"=" means modify mutable collection or (never both) assign new immutable collection to var. in the reassign case, "=" is appended to the actual method name, just like "int i=0;i+=1" in java. <br>":" goes on the side of the target collection and is always the first or last character of a method name. if a method end with :=, the method actually ends with : and = means it's a reassignment<br>if method contains ":" it is an add to an ordered collection, either at the beginning or the end of the collection|
+|if you like to use operators instead, there are some scary but concise ones. you'll need some practice to get them right:<br>+,++,++=,++:=-,--,--=,:+,:++,:=+,+=:,:++=,++:=, ++=:|method name rules:<br>"+" means add<br>"-" means remove<br>"++" or "--" mean add/remove many elements, not just one<br>"=" either means modify mutable collection or assign new immutable collection to var. in the reassign case, "=" is appended to the actual method name, just like "int i=0;i+=1" in java. <br>":" goes on the side of the target collection and is always the first or last character of a method name. if a method end with :=, the method actually ends with : and = means it's a reassignment<br>if method contains ":" it is an add to an ordered collection, either at the beginning or the end of the collection|
 |`mutableColl += elem`|add element to a collection|
 |`mutableColl -= elem`|remove element|
 |`mutableColl ++= elems`|add elements|
@@ -167,6 +169,7 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`x match {`|scala can also match on values *inside* x|
 |`case Some(e) => {...}`|matches of x is a Some. e then exists as a val inside the following code block|
 |`case List(_, _, 3, y, z) if z == 5 => {...}`|matches if x is a list of size 5 which has a 3 at index 3 and if the fifth element is 5. the fourth element of the list then exists as "y" inside the code block, the last one does as "z".|
+|`case _ :: _ :: 3 :: y :: z :: Nil if z == 5 => {...}`|same as above. note: the compiler will refuse to compile matches if they are obviously nonsense. for example x must not be something that cannot be a list for this case to compile. try `5 match {case List(5) => ...}`|
 |`}`|how the hell did that work? see below|
 |<h2 id="unapply">Destructuring</h2>|
 |`object Foo { def unapply(i: Int) = if (i%2==2) Some("even") else None`|we need the reverse of an apply method - unapply.|
@@ -236,3 +239,4 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`var x = 0`<br>`1 to 10 foreach {i => {`<br>`println("changing x from inside another class")`<br>`x += i`<br>`}`|in java, you cannot access local variables from anonymous classes unless they are final. in scala, you can.|
 |`class Foo {def x = "a"}`<br>`class Bar extends Foo {override val x = "b"}`|parameterless methods can be overridden by readonly fields|
 |`def allExceptionsAreEqual = throw new CheckedException`|in scala, you don't need to declare checked exceptions in your method signature. by default, the compiler handles them just like runtimeexceptions. the common case is that a caller doesn't care about exceptions and just lets them propagate up to the top level where they are logged and handled.|
+|`List[Int]`|primitives are possible as generic types. no need to use java.lang.Integer|
