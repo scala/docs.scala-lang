@@ -7,7 +7,7 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 
 ###### Contributed by {{ page.by }}
 
-
+||
 | ------                                                                                                   | ------          |
 |  <h2 id="declarations">Basic declarations</h2>                                                                       |                 |
 |  `var x = 5`<br>`x = 6`                                                                                             |  mutable variable, value can be changed later       |
