@@ -126,22 +126,23 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 | `def foo[BAR](bar:BAR):BAR = bar`|simple type parameter, can be anything|
 | `def foo[BAR <: java.lang.Number](bar: BAR) = bar.doubleValue() + 5`|upper bound, BAR must be a java.lang.Number or a subclass of it|
 | `def foo[BAR >: java.lang.Number](bar: BAR) = bar`|lower bound, type must be java.lang.Number or a superclass of it, but not a subclass of java.lang.Number. note that you can still pass a double, but the type parameter and therefore the return type will be java.lang.Number. the bound applies to the type parameter itself, not the type of the parameter that is passed to the function|
-|`val strings:List[String] = List("hello","generics")`<br>`val objects:List[java.lang.Object] = strings`|in scala, type parameters of collections are covariant. this means they "inherit" the inhertance relations of their type parameters. in java, have to do an ugly cast:<br>`List<Integer> ints = new ArrayList<Integer>()`;<br>`List<Number> numbers = ((List<Number)((Object)Integer)`|
-|`class InVariant[A]`|class having an invariant type parameter, meaning `val InVariant[SuperClass] = inVariantWithAnyOther` does not compile|
+|`val strings:List[String] = List("hello","generics")`<br>`val objects:List[java.lang.Object] = strings`|in scala, type parameters of collections are covariant. this means they "inherit" the inhertance relations of their type parameters. in java, have to do an ugly cast:<br>`List<Integer> ints = new ArrayList<Integer>()`;<br>`List<Number> numbers = ((List<Number)((Object)ints)`|
+|`class InVariant[A]`|class having an invariant type parameter, meaning `val InVariant[AnyClass] = inVariantWithAnyOther` does not compile|
 |`class CoVariant[+A]`|class having a covariant type parameter, meaning `val CoVariant[SuperClass] = coVariantWithSubClass` compiles|
 |`class ContraVariant[-A]`|class having a contravariant type parameter, meaning `val ContraVariant[SubClass] = contraVariantWithSuperclass` compiles|
 |where does "-Type" make sense? take a look at functions:<br>`val func:(String) => java.lang.Number`|the return type is +, the parameter is -, so the function can be replaced by one declared like<br>`val func2:(java.lang.Object) => java.lang.Integer`<br>Think about it. a function that can take any object can also take a string. a function that returns an integer automatically returns a number, so the second one can replace the first one in every possible case.|
 |`def foo[A, B[A]] (nested: B[A])`|nested type parameters are possible. nested must be of a type that has a type parameter. for example, you could pass a List[Int]|
 |`def foo[A, B, C <: B[A]](nested: C))`|same as above, using an alias for B[A] named C|
 |`def foo[C <: Traversable[_]] (nested: C) = nested.head`|if there is no need to access the inner type explicitly, it can be replaced by an _. in this example, the compiler infers that the return type must be whatever _ is, so the actual return type depends on the call site.|
-|`foo(List(5))`|call to the method above, returns an Int|
-|`def foo[A: Manifest] {val classAtRuntime = manifest[A].erasure; println(classAtRuntime);}`|Adding ":Manifest" will make the compiler add magic so you can get the type parameter at runtime via `manifest[TYPEPARAM]`|
+|`foo(List(5))`|call to the method above, returns an Int. the compiler can infer type parameters in many cases. sometimes you have to help it:|
+|`call[String,Int,BigInt,Long](....)`|example call to a method with 4 type parameters|
+|`def foo[A: Manifest] {`<br>&nbsp;&nbsp;`val classAtRuntime = manifest[A].erasure; `<br>&nbsp;&nbsp;`println(classAtRuntime);`<br>`}`|Adding ":Manifest" will make the compiler add magic so you can get the type parameter at runtime via `manifest[TYPEPARAM]`|
 |`foo[String]`|call to method above, prints "class java.lang.String"|
 |`def foo[A <: Bar with Serializable with Foobar]`|A must be a subtype of Bar, implement Serializable and also Foobar at the same time|
 |<h2 id="option">Option aka "Avoid NullPointerExceptions with type safety"</h2>
 |`def neverReturnsNull:Option[Foo] = ....`|in scala, you can use the type system to tell the caller of a method whether or not "null" is a valid return or parameter value. the way scala offers is "Option". you can follow a simple convention: if a parameter or return type can be null, wrap it in an Option instead.|
-|`if (neverReturnsNull.isEmpty) fail(); else success(neverReturnsNull.get);`|this forces the caller to check for null explicitly.|
-|`val modified = neverReturnsNull.map(notNullInHere => doStuffAndReturnNewResult(notNullInHere)`|you can use options like collections. the conversion/mapping function is applied to the contained value if there is one.|
+|`if (neverReturnsNull.isEmpty) fail(); else success(neverReturnsNull.get);`|this forces the caller to at least be aware of the fact that he/she should check for null explicitly.|
+|`val modified = neverReturnsNull.map(notNullInHere => doStuffAndReturnNewResult(notNullInHere)`|you can use options like collections. the conversion/mapping function is applied to the contained value if there is one. there is also a toList-method to convert any option into an empty or a one element list.|
 |example:<br>`val maybeString:Option[String] = ....`<br>`val mayBeNumber:Option[Int] = maybeString.map(Integer.parseInt)`|this is perfectly safe (let's assume that the string can be parsed, we ignore exceptions here). if there was a string, there now is a number. if there was an empty option, we still have that empty option. (all empty options are actually the same instance)|
 |`val emptyOption:Option[Foo] = None`|None is our empty option singleton. by type system magic, it is a subclass of any option and can therefore replace any option.|
 |`val filledOption:Option[Foo] = Some(new Foo)`|Some(x) creates an option around x. if you pass null, None is returned|
@@ -150,7 +151,7 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`val firstNonEmptyOption = option.orElse(option2).orElse(option3)`|no need for if-else|
 |<h2 id="objects">Objects</h2>|
 |`object Foo {val bar = "hello"}`|declared like a class, but "simply exists", similar to "static" in java. however, it is a real singleton so it can be passed around as an object.|
-|`Foo.bar`|field access and method callswork like "Foo" is a val pointing at the object instance. or in java terms "just like static stuff"|
+|`Foo.bar`|field access and method calls work like "Foo" is a val pointing at the object instance. or in java terms "just like static stuff"|
 |`object Foo {def apply(s:String) = Integer.parseInt(s)}`|the apply-shortcut works everywhere, Foo("5") becomes Foo.apply("5"). remember Some(x)? it was the same here.
 |`class Foo;object Foo`|this is possible. the object Foo is then called a companion object.|
 |`object Foo {def apply(i:Int) = new Foo(i+1)}`|you can use methods in the object Foo as factory methods to keep the actual constructor nice and clean|
@@ -161,26 +162,26 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`def takesTuple(p:(Int, String) {...}`|method accepting a tuple|
 |`takesTuple(5,"hello)`|(5, "hello") could be 2 parameters or a tuple. the compiler is smart enough to figure out you meant the tuple one because it looks at the type signature of "takesTuple".|
 |`takesTuple((5,"hello))`|same as above, but explicitly creating the tuple|
-|`coll zip coll2`|creates a single collection which contains tuples which contain values from coll and coll2, matching by index. for example `List(1,2) zip (List("a","b")` becomes `List((1,"a"),(2,"b"))`
+|`coll zip coll2`|creates a single collection which contains tuples which contain values from coll and coll2, matching by index. for example `List(1,2) zip List("a","b")` becomes `List((1,"a"),(2,"b"))`
 |<h2 id="pattermatching">Pattern matching</h2>|
 |`x match {`|scala has a very powerful switch|
-|`case "hello" => {...}`|gets executed if x equals "hello". is tested via equals
-|`case s:String => {...}`|gets executed if x is any string. s then exists in the code block as a val.
-|`case i:Int if i < 10 => {...}`|gets executed if x is any Int < 10. i then exists in the code block as a val.
-|`case 11 *pipe* 12 *pipe* 13 => {...}`|matches on more than one value. how to escape the pipe character in here?|
-|`case _ => `|default case, always matches|
+|&nbsp;`case "hello" => {...}`|gets executed if x equals "hello". is tested via equals
+|&nbsp;`case s:String => {...}`|gets executed if x is any string. s then exists in the code block as a val.
+|&nbsp;`case i:Int if i < 10 => {...}`|gets executed if x is any Int < 10. i then exists in the code block as a val.
+|&nbsp;`case 11 *pipe* 12 *pipe* 13 => {...}`|matches on more than one value. how to escape the pipe character in here?|
+|&nbsp;`case _ => `|default case, always matches|
 |`}`| these were just the boring cases :)|
 |`x match {`|scala can also match on values *inside* x|
-|`case Some(e) => {...}`|matches of x is a Some. e then exists as a val inside the following code block|
-|`case List(_, _, 3, y, z) if z == 5 => {...}`|matches if x is a list of size 5 which has a 3 at index 3 and if the fifth element is 5. the fourth element of the list then exists as "y" inside the code block, the last one does as "z".|
-|`case _ :: _ :: 3 :: y :: z :: Nil if z == 5 => {...}`|same as above. note: the compiler will refuse to compile matches if they are obviously nonsense. for example x must not be something that cannot be a list for this case to compile. try `5 match {case List(5) => ...}`|
+|&nbsp;`case Some(e) => {...}`|matches if x is a Some. e then exists as a val inside the following code block|
+|&nbsp;`case List(_, _, 3, y, z) if z == 5 => {...}`|matches if x is a list of size 5 which has a 3 at index 3 and if the fifth element is 5. the fourth element of the list then exists as "y" inside the code block, the last one does as "z".|
+|&nbsp;`case _ :: _ :: 3 :: y :: z :: Nil if z == 5 => {...}`|same as above. note: the compiler will refuse to compile matches if they are obviously nonsense. for example x must not be something that cannot be a list for this case to compile. try `5 match {case List(5) => ...}`|
 |`}`|how the hell did that work? see below|
 |<h2 id="unapply">Destructuring</h2>|
 |`object Foo { def unapply(i: Int) = if (i%2==2) Some("even") else None`|we need the reverse of an apply method - unapply.|
 |`val Foo(infoString) = 42`|here, 42 is passed to unapply. if the result is an option, it's value is now stored in "infoString"|
 |`42 match {case Foo(infoText) => {...}}`|if some is returned, the match is considered positive and the options value is bound to a val|
 |`42 match {case Foo("even") => {...}}`|or it is tested for equality against a given value or instance|
-|`41 match {case Digits(a,b) if (a == 4) => {...}}`|if the returned option contains a tuple instead of a single value, the expected happens: we now can access all the tuples fields|
+|`41 match {case Digits(a,b) if (a == 4) => {...}}`|if the returned option contains a tuple instead of a single value, the expected happens: we now can access all the tuples fields. (i made up the Digit-object)|
 |one more thing:<br> `unapplySeq(foo:Foo):Option[Seq[Bar]]`|like unapply, but offers special features for matching on sequences|
 |`val List(a,b@_*) = List("hello","scala","world")`|a = "hello", b = List("scala", "world")|
 |`val a::tl = List("hello", "scala", "world"`|same as above using alternative list syntax|
@@ -188,13 +189,13 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |Note: for case classes, an unapply method is automatically generated|
 |<h2 id="traits">Traits</h2>|
 |`trait Foo {`|Like a java interface, but more powerful. you can:|
-|`def getBar():Bar`|define abstract methods like in a java interface|
-|`def predefinedMethod(s:String) = "hello world"`|add non-abstract methods as well. a good example is the Ordered-trait. is expects you to implement a compare-method and delivers 4 other methods (<, >, <=, >=) which already come with an implementation based on compare|
-|`val someVal = "someString"`|traits can also contain fields|
+|&nbsp;&nbsp;`def getBar():Bar`|define abstract methods like in a java interface|
+|&nbsp;&nbsp;`def predefinedMethod(s:String) = "hello world" + s`|add non-abstract methods as well. a good example is the Ordered-trait. is expects you to implement a compare-method and delivers 4 other methods (<, >, <=, >=) which already come with an implementation based on compare|
+|&nbsp;&nbsp;`val someVal = "someString"`|traits can also contain fields|
 |`}`| but that's not all!|
 |`trait Plugin extends java.lang.Object {`|a trait can "extend" any existing class or trait. the difference to the trait Foo above is that our Plugin here is restricted to classes which it extends. in this case java.lang.Object. why might such a thing be useful?|
-|`override int hashcode = {....}`<br>`override int equals(other:Object) = {....}`|you can override a method of the class the trait extends. you can selectively replace or extend implementations of existing methods by adding traits. this way, you can say "these 5 classes should use *this* implementation of method foo" instead of manually overriding the method in each class|
-|`override boolean add(t:T) = {`<br>`println(t +" is about to be added to the collection")`<br>`super.add(t)`<br>`}`|this is useful for stuff like logging. you can also use this to add features to specific classes. for example, there is a MultiMap-trait in scala which can be attached to maps having sets as values. it adds a addBinding- and removeBinding-methods that are based on the original put/remove-methods and handle the details| 
+|&nbsp;&nbsp;`override int hashcode = {....}`<br>`override int equals(other:Object) = {....}`|you can override a method of the class the trait extends. you can selectively replace or extend implementations of existing methods by adding traits. this way, you can say "these 5 classes should use *this* implementation of method foo" instead of manually overriding the method in each class|
+|&nbsp;&nbsp;`override boolean add(t:T) = {`<br>`println(t +" is about to be added to the collection")`<br>`super.add(t)`<br>`}`|this is useful for stuff like logging. you can also use this to add features to specific classes. for example, there is a MultiMap-trait in scala which can be attached to maps having sets as values. it adds addBinding- and removeBinding-methods that are based on the original put/remove-methods and handle the details| 
 |`}`|these traits are called mixins. a class can have more than one mixin, and they can also override each other. from inside the trait, "super" refers to whatever they extend.|
 |`new Foo extends FirstTrait with BarTrait with SomeOtherTrait`|create a new instance of foo implementing 3 traits. the first one is extended, the next n are "withed".|
 |`class Foo extends BarTrait`|declaring a class which implements Bar directly|
@@ -211,10 +212,10 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |  `if (check) happy` _same as_ <br> `if (check) happy else ()`                                            |  conditional sugar. |
 |  `while (x < 5) { println(x); x += 1}`                                                                   |  while loop. |
 |  `do { println(x); x += 1} while (x < 5)`                                                                |  do while loop. |
-|  `import scala.util.control.Breaks._`<br>`breakable {`<br>`    for (x <- xs) {`<br>`        if (Math.random < 0.1) break`<br>`    }`<br>`}`|  break. ([slides](http://www.slideshare.net/Odersky/fosdem-2009-1013261/21)) |
-|  `for (i <- 1 to 10 {doStuffWith(i)}`|most basic "for loop". actually it's not a loop but the compiler turns it into `1 to 10 foreach {i => *block content*}. and it is not called for loop, but for comprehension. it's a higher level construct - loops are low level.|
+|  `import scala.util.control.Breaks._`<br>`breakable {`<br>&nbsp;&nbsp;`    for (x <- xs) {`<br>&nbsp;&nbsp;&nbsp;&nbsp;`        if (Math.random < 0.1) break`<br>&nbsp;&nbsp;`    }`<br>`}`|  break. ([slides](http://www.slideshare.net/Odersky/fosdem-2009-1013261/21)) |
+|  `for (i <- 1 to 10 {doStuffWith(i)}`|most basic "for loop". actually it's not a loop but the compiler turns it into `1 to 10 foreach {i => *block content*}. and it is not called for loop, but "for comprehension". it's a higher level construct - loops are low level.|
 |  `for (i <- 1 to 10 if i % 2 == 0) {}`|conditions are possible|
-|  `for (i <- 1 to 10;i2 <- 10 to 10) {println(i+i2)}`|no need for nested fors|
+|  `for (i <- 1 to 10;i2 <- 1 to 10) {println(i+i2)}`|no need for nested fors|
 |  `val evenNumbers = for (i <- 1 to 10) yield (i*2)`|yield means "the loop should return that". in this case, you get all even numbers from 2 to 20|
 |  `for (x <- xs if x%2 == 0) yield x*10` _same as_ <br>`xs.filter(_%2 == 0).map(_*10)`                    |  what you write, and what the compiler does |
 |  `for ((x,y) <- xs zip ys) yield x*y`              |  pattern matching works in here |
