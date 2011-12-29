@@ -1,7 +1,7 @@
 ---
 layout: cheatsheet
 title: Scalacheat
-by: (initial version: Brendan O'Connor) HamsterofDea
+by: (initial version: Brendan O'Connor) HamsterofDeath
 about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheatsheet aims to be a quick reference of Scala syntactic constructions. Licensed by Brendan O'Connor under a CC-BY-SA 3.0 license. Pimped by HamsterofDeath who doesn't care about the license and just wants to help scala to spread :)
 ---
 
@@ -18,7 +18,7 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |  `def x:String = return "hello world"`                 | method declaration                      |
 |  `def x(foo:String):String = return foo+"hello world"`                 | method declaration with simple parameter                      |
 |  `def x(foo:String, bar:String):String = return foo+"hello world"+bar`                 | method declaration with two parameters                      |
-|  `def x:String = {`<br>`val x = 1`<br>`return "hello world"+1`<br>`}`                 | multiple statements need {} around the code                      |
+|  `def x:String = {`<br>&nbsp;&nbsp;`val x = 1`<br>&nbsp;&nbsp;`return "hello world"+1`<br>`}`                 | multiple statements need {} around the code                      |
 | `def x = "hello world"`|return keyword and return type declaration are optional, but if a method contains return, the return type *must* be specified explicitly. default return value = last value in code block. 
 |`def iAcceptVarArgs(i:Int,s:String,d:Double*) = {...}`|method accepting varargs|
 |`def x = {def y = 7;y}` | nested declarations are possible|
@@ -27,31 +27,33 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |<h2 id="syntax details">Syntax details</h2>|
 |just a few things that didn't fit anywhere else||
 |`instance.bar`|bar can be a reading field access or a parameterless method call. scala doesn't make a difference. this means you can easily switch between def and val without the need for a refactoring|
-|`instance.bar()`|for method calls, you can add (). by convention, methods without () don't change any states and just return a calculated value. methods with () are called for they effects, for example changing a value, printing something on the console and so on|
+|`instance.bar()`|for method calls, you can add (). by convention, methods without () don't change any states and just return a calculated value. methods with () are called for their effects - for example changing a value, printing something on the console and so on|
 |`instance bar`|you can skip the "." if it is obvious to the compiler what you mean. humans and the compiler usually agree if there is an instance on the left and a method of that instance on the right. this is useful for DSLs|
 |`println {"hello world"}`|if a method has one parameter, you can also pass a block instead of using (). also useful for DSLs|
 |  <h2 id="declarations2">Not so basic declarations</h2>                                                                       |                 |
-| `val x = {`<br>`class y(val z: String)`<br>`new y("hello").z`<br>`}`<br><span class="label important">Bad</span>`val foo = new y("does not work outside the block above")`| everything can be nested in anything, but everything can only be accessed in its scope|
-| `lazy val x = expensiveOperation()`|the expensive operation is executed once as soon as the value of x is needed, not before|
-| `def method(a:String = "hello", b:String = "world") = a+" "+b`|method will default values|
+| `val x = {`<br>&nbsp;&nbsp;`class y(val z: String)`<br>&nbsp;&nbsp;`new y("hello").z`<br>`}`<br><span class="label important">Bad</span>`val foo = new y("does not work outside the block above")`| everything can be nested in anything, but everything can only be accessed in its scope|
+| `lazy val x = expensiveOperation()`|the expensive operation is executed once as soon as the value of x is needed, not before. from then on, the calculated value is returned. the access is threadsafe.|
+| `def method(a:String = "hello", b:String = "world") = a+" "+b`|a method with default parameters|
 | `method("goodbye")`|call to method above, unspecificed parameters will get default values. returns "goodbye world"|
 | `method(b = "friend")`|call to method above, explicitly passes a string to b. a defaults to "hello". returns "hello friend"|
-|`def method(param: => String)`|"=>" means that when the method is called, the parameter is wrapped in a function which is executed when accessed. the string is evaluated every time when needed (see Iterator.continually), but not before. the value is not cached, but you can pass a lazy val to make it cached.|
+|`def method(param: => String)`|"=>" means that when "method" is called, the parameter is wrapped in a parameterless function which is executed inside the method body when the parameter is accessed. the parameter is evaluated every time when needed (see Iterator.continually). the value is not cached. if you want it to be cached, pass something that returns the value of a lazy val.|
+|`def makeString = method {"hello "+"world" + System.nanoTime}`|example call to method above|
 |`def method(s:String)(i:Int)`|method with multiple parameter lists|
 |`val intermediate = method("hello")`<br>`intermediate(5)`|why? because you can apply one parameter list at once and the next ones later and pass "the incomplete call" around. in java, you would use a builder for this.|
 |  <h2 id="object_orientation">Declarations related to OO</h2>                                                     |                 |
 | `class Foo`| class declaration - nested declaration also possible|
 | `class Foo(var x:String, val y:Int)`| class declaration with 2 public fields, one mutable, one immutable. constructor is automatically generated. only new Foo("1",2) is possible|
-| `class Foo {`<br>`var x = 5`<br>`val y = 6`<br>`}`|class like above, but with default constructor, only new Foo() is possible|
+| `class Foo {`<br>&nbsp;&nbsp;`var x = 5`<br>&nbsp;&nbsp;`val y = 6`<br>`}`|class like above, but with default constructor, only new Foo() is possible|
 | `class Foo {def x = 5}`|class with default constructor and one method|
-|  `class C(x: R)` _same as_ <br>`class C(private val x: R)`<br>`var c = new C(4)`                         |  constructor params - automatically turn into private fields if used after construction. if not, the compiler doesn't generate fields for the params|
-|  `class C(val x: R)`<br>`var c = new C(4)`<br>`c.x`                                                      |  constructor params - exposed as public fields |
-|  `class C(var x: R) {`<br>`assert(x > 0, "positive please") //class body = constructor`<br>`var y = x // public field`<br>`val readonly = 5 // readonly field`<br>`private var secret = 1 // private field`<br>`def this = this(42) // alternative constructor`<br>`}`|simple example covering the common use cases. note: all alternative constructors must call the main constructor declared at the class declaration. this is it is impossible to forget to initialize a field by constructor overloading.|
-|  `new{ ... }`                                                                                            |  anonymous class. more later (see implicits)|
+|  `class C(x: R)` <br>`var c = new C(4)`                         |  constructor params - automatically turn into private fields if they used after construction, for example in public methods. if not, the compiler doesn't generate fields for the params|
+|`class C(private val x: R)`|like above, but private field forced|
+|  `class C(val x: R)`<br>`var c = new C(4)`<br>`c.x`                                                      |  constructor params - exposed as public fields (forced)|
+|  `class C(var x: R) {`<br>&nbsp;&nbsp;`assert(x > 0, "positive please") //class body = constructor`<br>&nbsp;&nbsp;`var y = x // public field`<br>&nbsp;&nbsp;`val readonly = 5 // readonly field`<br>&nbsp;&nbsp;`private var secret = 1 // private field`<br>&nbsp;&nbsp;`def this = this(42) // alternative constructor`<br>`}`|simple example covering the common use cases. note: all alternative constructors must call the main constructor declared at the class declaration. this might sound restrictive, but it will prevent forgotten initializations|
+|  `new{ ... }`                                                                                            |  anonymous class. you can still call methods you add to an anonymous class (see structural types). this is impossible in java.|
 |`new Foo {...}`|anonymous subclass of Foo. Foo might be a class or a trait|
 |  `abstract class D { ... }`                                                                              |  define an abstract class. (non-createable, you have to create a subclass) |
 |  `class C extends D { ... }`                                                                             |  define an inherited class. |
-|  `class D(var x: R)`<br>`class C(x: R) extends D(x)`                                                     |  inheritance and constructor params)
+|  `class D(var x: R)`<br>`class C(x: R) extends D(x)`                                                     |  inheritance and constructor params
 |`abstract class Foo {def bar:String}`|skipping the body of a method or value of a val makes the method/val abstract. no need for an "abstract" keyword. overriding an abstract def or val doesn not require an "override" keyword. overriding a non abstract def or val does.|
 |  `classOf[String]`                                                                                       |  class literal. |
 |  `x.isInstanceOf[String]`                                                                                |  type check (runtime) |
@@ -63,16 +65,16 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 | `func(5)`|executing the function above|
 | `def func = (i:Int) => i+1`|creates a function each time the method is called and returns that function, not i+1|
 |`val func:(Int) => String = (i:Int) => i.toString`|just so you know the syntax of a type of a function :)|
-|`def takesFunction(f:(Int) => String) = f(5)`| method that takes the function above as a parameter and calls it. compiler figures out the return type "string" for you.|
-|`def method(i:Int) = t.toString;val func = method _`|appending an "_" converts any method into a function|
+|`def takesFunction(f:(Int) => String) = f(5)`| a method that takes the function above as a parameter and calls it. the compiler figures out the return type "string" for you.|
+|`def method(i:Int) = t.toString;val func = method _`|appending an "_" converts any method into a function by creating a function with the same parameter and return types which internally calls the method|
 |`takesFunction(method)`|is also possible, the compiler does the conversion for you in obvious cases|
 |`def method(s:String)(s2:String) = s+" "+s2`<br>`val intermediate:(String)=>String = method("hello")`<br>`intermediate("world")`|parameter lists revisited: the intermediate, "incomplete method calls" are functions. the result of the last call is "hello world"|
-|`func(5)`<br>`func.apply(5)`|what you are actually calling is the apply-method of a function instance, but you don't have to explicitly write that. if no method name is given, the compiler assumed you want to call "apply"|
+|`func(5)`<br>`func.apply(5)`|what you are actually calling is the apply-method of a function instance, but you don't have to explicitly write that. if no method name is given, the compiler assumes you want to call "apply"|
 |`def createFunction = (i:Int) => i+1`<br>`createFunction(5)`|if you have read the syntax section above, you can figure out what happens here. first, createFunction is called without () and without a parameter. then, 5 is applied to the apply method of the *result* of createfunction|
 |  <h2 id="typeinference">Return types and type inference</h2>                                                                       |                 |
 |  `val x = "hello"`|the compiler always picks the most specific type possible, in this case java.lang.String|
 |  `val x:Serializable = "hello"`|you can always specify a more general one|
-|  `def x {print("hello world")}`                 | method without "=" means the method has no return type/return type is void (this is a lie)  | 
+|  `def x {print("hello world")}`                 | no "=" means the method's return type is Unit, meaning "executable block of code". that Unit is either passed around via being wrapped in a function and executed later, or it is executed immediately in which case the return type is void. you cannot do both at the same time.| 
 |  `def x:Unit = {...}`<br>`def x() {...}`|leaving out the "=" at a method declaration is the same as specifying "Unit"|
 | `val blocks = {{{{5}}}}`|every block has a return type that is passed back to the next outer block|
 | `val block = if (a) foo else bar`|almost everything is an expression and thus, has a return type. this includes if-else-structures|
@@ -83,7 +85,7 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`1 :: 2 :: 3 :: Nil`|In addition to that, Lists have an alternative syntax|
 |`1 #:: 2 #:: 3 #:: Stream.empty`|Streams also save an alternative syntax|
 |prepend, append, union, remove, insertAll... |the usual methods every collection framework offers are present in scala as well|
-|if you like to use operators instead, there are some scary but concise ones. you'll need some practice to get them right:<br>+,++,++=,++:=-,--,--=,:+,:++,:=+,+=:,:++=,++:=, ++=:|method name rules:<br>"+" means add<br>"-" means remove<br>"++" or "--" mean add/remove many elements, not just one<br>"=" either means modify mutable collection or assign new immutable collection to var. in the reassign case, "=" is appended to the actual method name, just like "int i=0;i+=1" in java. <br>":" goes on the side of the target collection and is always the first or last character of a method name. if a method end with :=, the method actually ends with : and = means it's a reassignment<br>if method contains ":" it is an add to an ordered collection, either at the beginning or the end of the collection|
+|if you like to use operators instead, there are some scary but concise ones. you'll need some practice to get them right:<br>+,++,++=,++:=-,--,--=,:+,:++,:=+,+=:,:++=,++:=, ++=:|method name rules:<br>"+" means add<br>"-" means remove<br>"++" or "--" mean add/remove many elements, not just one<br>"=" either means "modify mutable collection" or "assign new immutable collection to the var". in the reassign case, "=" is appended to the actual method name, just like "int i=0;i+=1" in java. <br>if a method contains ":" it is an add to an ordered collection, either at the beginning or the end of the collection<br>":" goes on the side of the target collection and is always the first or last character of a method name. if a method ends with :=, the method actually ends with : and = means it's a reassignment|
 |`mutableColl += elem`|add element to a collection|
 |`mutableColl -= elem`|remove element|
 |`mutableColl ++= elems`|add elements|
@@ -99,7 +101,6 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`elem +: coll`|create new collection that has all elements of coll and elem at the beginning|
 |`immutableColl += elem`<br>`immutableColl -= elem`<br>`immutableColl ++= elems`<br>`immutableColl --= elems`<br>`elem +=: immutableColl`<br>`immutableColl :+= elem`|same as the operations without "=", but works only if "immutableColl is a var, not a val. the created collection is assigned to "immutableColl".|
 |`def isEven(i:Int= if (i%2==0) true else false`<br>`val evenNumbers:List[Int] = List(1,2,3,4).filter(isEven)`|scala collections are a major epic win. they have ~100 methods which operate on the data of a collection and there is *absolutely nothing* you cannot do with them.|
-|`hashmap.getOrElseUpdate(key, methodThatCreatesTheValueInCaseItDoesNotExist)`|admit it, you wanted to do this in java for at least a decade|
 |`val evenNumbers:List[Int] = List(1,2,3,4).filter((i:Int)=> i%2==0)`|same as above, just shorter|
 |`val evenNumbers = List(1,2,3,4).filter(i => i%2==0)`|same as above, just shorter. you can skip the () if there is only one parameter. you can also skip the type of the parameter(s) because it can be inferred from the usage|
 |`val evenNumbers = List(1,2,3,4).filter(_ % 2 == 0)`|same as above, just shorter. you can skip part before "=>" if you use a parameter only once and replace the parameter usage by "_"|
@@ -111,6 +112,7 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`Iterator.continually(randomNumber)`|collections and iterators can also be created from functions and methods|
 |`Iterator.continually(randomNumber).take(100).max`|highest of 100 random numbers. again: there are methods for everything you can possibly imagine. many are taking functions so the flexibility is epic :)|
 |`Iterator.continually(randomThings).take(100).maxBy(comparisonFunction)`|highest of 100 random things. as above, but can be used for anything.|
+|`hashmap.getOrElseUpdate(key, methodThatCreatesTheValueInCaseItDoesNotExist)`|admit it, you wanted to do this in java for at least a decade|
 | <h2 id="fold">The power of collections and functions</h2>|
 | using closures, it is possible to avoid repetitions of boilerplate - instead you pass a function to a method that hides the boilerplate. apart from filter and map, two other epic wins are reduce and fold.|
 |`List(1,2,3,4,5).reduce((i,i2) => i+i2)`|result: ((((1+2)+3)+4)+5). in human speech, it takes 2 elements and merges them into one. imagine the collection turning from 1,2,3,4,5 into 3,3,4,5. then repeat:6,4,5 -> 10,5 -> 15|
