@@ -28,6 +28,7 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |`instance.bar()`|for method calls, you can add (). by convention, methods without () don't change any states and just return a calculated value. methods with () are called for their effects - for example changing a value, printing something on the console and so on|
 |`instance bar`|you can skip the "." if it is obvious to the compiler what you mean. humans and the compiler usually agree if there is an instance on the left and a method of that instance on the right. this is useful for DSLs|
 |`println {"hello world"}`|if a method has one parameter, you can also pass a block instead of using (). also useful for DSLs|
+|``def `def` = 5``|method named "def". you can escape names in scala using backticks|
 |  <h2 id="declarations2">Not so basic declarations</h2>                                                                       |                 |
 | `val x = {`<br>&nbsp;&nbsp;`class y(val z: String)`<br>&nbsp;&nbsp;`new y("hello").z`<br>`}`<br><span class="label important">Bad</span>`val foo = new y("does not work outside the block above")`| everything can be nested in anything, but everything can only be accessed in its scope|
 | `lazy val x = expensiveOperation()`|the expensive operation is executed once as soon as the value of x is needed, not before. from then on, the calculated value is returned. the access is threadsafe.|
@@ -169,8 +170,11 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |&nbsp;`case 11 *pipe* 12 *pipe* 13 => {...}`|matches on more than one value. how to escape the pipe character in here?|
 |&nbsp;`case _ => `|default case, always matches|
 |`}`| these were just the boring cases :)|
+|`val matchOnMe = ...`|needed for next match
 |`x match {`|scala can also match on values *inside* x|
 |&nbsp;`case Some(e) => {...}`|matches if x is a Some. e then exists as a val inside the following code block|
+|&nbsp;``case Some(`matchOnMe`) => {...}``|does not store the value into a local val "matchOnMe", but extracts the value of some and checks if it is equal to matchOnMe|
+|&nbsp;`case Some(matchOnMe) => {...}`|name shadowing.|
 |&nbsp;`case List(_, _, 3, y, z) if z == 5 => {...}`|matches if x is a list of size 5 which has a 3 at index 3 and if the fifth element is 5. the fourth element of the list then exists as "y" inside the code block, the last one does as "z".|
 |&nbsp;`case _ :: _ :: 3 :: y :: z :: Nil if z == 5 => {...}`|same as above. note: the compiler will refuse to compile matches if they are obviously nonsense. for example x must not be something that cannot be a list for this case to compile. try `5 match {case List(5) => ...}`|
 |`}`|how the hell did that work? see below|
