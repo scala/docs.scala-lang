@@ -7,7 +7,7 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 
 ###### Contributed by {{ page.by }}
 
-|note: "this is a lie" means i gave a simplified explanation and left out details which will be covered later                                                                                                          |                 |
+
 | ------                                                                                                   | ------          |
 |  <h2 id="declarations">Basic declarations</h2>                                                                       |                 |
 |  `var x = 5`<br>`x = 6`                                                                                             |  mutable variable, value can be changed later       |
@@ -78,7 +78,7 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |  `def x:Unit = {...}`<br>`def x() {...}`|leaving out the "=" at a method declaration is the same as specifying "Unit"|
 | `val blocks = {{{{5}}}}`|every block has a return type that is passed back to the next outer block|
 | `val block = if (a) foo else bar`|almost everything is an expression and thus, has a return type. this includes if-else-structures|
-|`def x = {`<br>`if (System.currentTimeMillis() % 2 == 0) Integer.valueOf(1) else java.lang.Double.valueOf(2)`<br>`}`|here, the compiler picks the most specific supertype of both Integer and Double which is java.lang.Number (this is a lie)|
+|`def x = {`<br>&nbsp;&nbsp;`if (System.currentTimeMillis() % 2 == 0) Integer.valueOf(1) else java.lang.Double.valueOf(2)`<br>`}`|here, the compiler picks the most specific supertype of both Integer and Double which is approximately java.lang.Number. in fact, it is java.lang.Number + Comparable, since Number doesn't implement Comparable, but both Double and Integer do. in general, you might end up with a more specific type than you expected, but that should never turn into a problem. |
 |`def x(i:Int):Int = if (i==0) 1 else i*x(i-1)`|recursive methods need an explicit return type. fail.|
 |  <h2 id="collections">Scala Collections</h2>                                                                       |                 |
 |`1 to 3, Set(1,2,3), Buffer(1,2,3), ArrayBuffer(1,2,3), ListBuffer(1,2,3), List(1,2,3), Array(1,2,3),Vector(1,2,3), Map(1 -> "a", 2 -> "b")`|simple collection creations. scala has mutable and immutable collections.|
