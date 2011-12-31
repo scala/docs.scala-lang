@@ -60,6 +60,7 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |  <h2 id="pattern_matching">pattern matching</h2>                                                         |                 |
 |  <span class="label success">Good</span> `(xs zip ys) map { case (x,y) => x*y }`<br> <span class="label important">Bad</span> `(xs zip ys) map( (x,y) => x*y )` |  use case in function args for pattern matching. |
 |  <span class="label important">Bad</span><br>`val v42 = 42`<br>`Some(3) match {`<br>`  case Some(v42) => println("42")`<br>`    case _ => println("Not 42")`<br>`}` |  "v42" is interpreted as a name matching any Int value, and "42" is printed.
+|  <span class="label important">Good</span><br>`val V42 = 42`<br>`Some(3) match {`<br>`  case Some(V42) => println("42")`<br>`    case _ => println("Not 42")`<br>`}` |  "V42" is interpreted as a read only variable V42 because it starts with uppercase, and "Not 42" is printed.
 |  <span class="label success">Good</span><br>`val v42 = 42`<br>`Some(3) match {`<br>``    case Some(`v42`) => println("42")``<br>`case _ => println("Not 42")`<br>`}`  |  "\`v42\`" with backticks is interpreted as the read-only variable v42, and "Not 42" is printed.
 |  <h2 id="object_orientation">object orientation</h2>                                                     |                 |
 |  `class C(x: R)` _same as_ <br>`class C(private val x: R)`<br>`var c = new C(4)`                         |  constructor params - private |
