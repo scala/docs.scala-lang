@@ -16,7 +16,7 @@
           <li><a href="{{ pg.url }}">{{ pg.title }}</a></li>
         {% endif %}   
         {% if pg.partof == page.partof and pg.num and page.num and page.num == pg.num and pg.num == i %}
-          <li><div id="toc"></div></li>
+          <div id="toc"></div>
         {% endif %}
       {% endfor %}
     {% endfor %}
