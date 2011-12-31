@@ -5,7 +5,7 @@ by: (initial version: Brendan O'Connor) HamsterofDeath
 about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheatsheet aims to be a quick reference of Scala syntactic constructions. Licensed by Brendan O'Connor under a CC-BY-SA 3.0 license. Enriched a lot by HamsterofDeath who wants to help scala spread :)
 ---
 
-
+||
 | ------                                                                                                   | ------          |
 |  <h2 id="declarations">Basic declarations</h2>                                                                       |                 |
 |  `var x = 5`<br>`x = 6`                                                                                             |  mutable variable, value can be changed later       |
