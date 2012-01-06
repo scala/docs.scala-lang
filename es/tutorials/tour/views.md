@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Views
+title: Vistas
 
 disqus: true
 
@@ -8,19 +8,19 @@ tutorial: scala-tour
 num: 32
 ---
 
-[Implicit parameters](implicit-parameters.html) and methods can also define implicit conversions called _views_. A view from type `S` to type `T` is defined by an implicit value which has function type `S => T`, or by a method convertible to a value of that type.
+[Parámetros implícitos](implicit-parameters.html) y métodos también pueden definir conversiones implícitas llamadas _vistas_. Una vista de tipo `S` a `T` es definida por un valor implícito que tiene una función del tipo `S => T`, o por un método convertible a un valor de tal tipo.
 
-Views are applied in two situations:
-* If an expression `e` is of type `T`, and `T` does not conform to the expression's expected type `pt`.
-* In a selection `e.m` with `e` of type `T`, if the selector `m` does not denote a member of `T`.
+Las vistas son aplicadas en dos situaciones:
+* Si una expresión `e` es de tipo `T`, y `T` no se ajusta al tipo esperado de la expresión `pt`.
+* En una selección `e.m` con `e` de tipo `T`, si el selector `m` no es un miembro de `T`.
 
-In the first case, a view `v` is searched which is applicable to `e` and whose result type conforms to `pt`. In the second case, a view `v` is searched which is applicable to `e` and whose result contains a member named `m`.
+En el primer caso, una vista `v` es buscada la cual sea aplicable a `e` y cuyo tipo resultado se ajusta a `pt`. En el segundo caso, una vista `v` es buscada para la cual sea aplicable a `e` y cuyor resultado contenga un miembro llamado `m`.
 
-The following operation on the two lists xs and ys of type `List[Int]` is legal:
+La siguiente operación entre las dos listas `xs` y `ys` de tipo `List[Int]` es legal:
 
     xs <= ys
 
-assuming the implicit methods `list2ordered` and `int2ordered` defined below are in scope:
+asumiendo que los métodos implícitos `list2ordered` e `int2ordered` definidos abajo estén en el alcance de la operación:
 
     implicit def list2ordered[A](x: List[A])
         (implicit elem2ordered: a => Ordered[A]): Ordered[List[A]] =
@@ -28,14 +28,16 @@ assuming the implicit methods `list2ordered` and `int2ordered` defined below are
     
     implicit def int2ordered(x: Int): Ordered[Int] = 
       new Ordered[Int] { /* .. */ }
-  
-The `list2ordered` function can also be expressed with the use of a _view bound_ for a type parameter:
+
+La función `list2ordered` puede ser también expresada con el uso de un _límite de vista_ por un parámetro de tipo:
 
     implicit def list2ordered[A <% Ordered[A]](x: List[A]): Ordered[List[A]] = ...
-  
-The Scala compiler then generates code equivalent to the definition of `list2ordered` given above.
+
+El compilador de Scala que genera después genera el código equivalente a la definición de `list2ordered` vista anteriormente.
 
 The implicitly imported object `scala.Predef` declares several predefined types (e.g. `Pair`) and methods (e.g. `error`) but also several views. The following example gives an idea of the predefined view `charWrapper`:
+
+El objeto `scala.Predef` importado implicitamente declara varios tipos predefinidos (ej. `Pair`) and métodos (ej. `error`) pero también varias vistas. El siguiente ejemplo muestra una idea de la vista predefinida `charWrapper`:
 
     final class RichChar(c: Char) {
       def isDigit: Boolean = Character.isDigit(c)
