@@ -147,7 +147,7 @@ knowledge. It has been complemented since then with feedback and updates.
 The implicits available under number 1 below has precedence over the ones under
 number 2. Other than that, if there are several eligible arguments which match
 the implicit parameter’s type, a most specific one will be chosen using the rules
-of static overloading resolution (see Scala Specification §6.26.3).
+of static overloading resolution (see [Scala Specification][5] §6.26.3).
 
 1. First look in current scope
     * Implicits defined in current scope
@@ -292,7 +292,7 @@ implicits are found inside companion objects to the type parameters of
 parameter. Previously, I said that Scala looked inside type parameters, which
 doesn't make much sense. The implicit looked for above is `Ordering[A]`, where
 `A` is an actual type, not type parameter: it is a _type argument_ to
-`Ordering`. See section 7.2 of the Scala specification.
+`Ordering`. See section 7.2 of the [Scala Specification][5].
 
 **This available only since Scala 2.8.0.**
 
@@ -331,4 +331,5 @@ This question and answer were originally submitted on [Stack Overflow][3].
   [2]: http://lampsvn.epfl.ch/trac/scala/ticket/4427
   [3]: http://stackoverflow.com/q/5598085/53013
   [4]: http://stackoverflow.com/questions/5512397/passing-scala-math-integral-as-implicit-parameter
+  [5]: www.scala-lang.org/docu/files/ScalaReference.pdf
 
