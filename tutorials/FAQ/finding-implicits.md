@@ -144,22 +144,22 @@ implicits was taken from an excellent [presentation][1] about implicits by Josh
 Suereth, which I heartily recommend to anyone wanting to improve their Scala
 knowledge. It has been complemented since then with feedback and updates.
 
-The following list is intended to be presented in precedence order, but that is
-often difficult to test, and, in some cases, different cases do not have
-precedence over each other. If you you find errors below, based on the
-specification or test cases, please report so I can fix.
+The implicits available under number 1 below has precedence over the ones under
+number 2. Other than that, if there are several eligible arguments which match
+the implicit parameter’s type, a most specific one will be chosen using the rules
+of static overloading resolution (see Scala Specification §6.26.3).
 
 1. First look in current scope
-    1. Implicits defined in current scope
-    2. Explicit imports
-    3. wildcard imports
-    4. <strike>Same scope in other files</strike>
+    * Implicits defined in current scope
+    * Explicit imports
+    * wildcard imports
+    * <strike>Same scope in other files</strike>
 2. Now look at associated types in
-    1. Companion objects of a type
-    2. Implicit scope of an argument's type **(2.9.1)**
-    3. Implicit scope of type arguments **(2.8.0)**
-    4. Outer objects for nested types
-    5. Other dimensions
+    * Companion objects of a type
+    * Implicit scope of an argument's type **(2.9.1)**
+    * Implicit scope of type arguments **(2.8.0)**
+    * Outer objects for nested types
+    * Other dimensions
 
 Let's give examples for them.
 
