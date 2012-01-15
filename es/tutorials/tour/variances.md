@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Variances
+title: Varianzas
 
 disqus: true
 
@@ -8,9 +8,11 @@ tutorial: scala-tour
 num: 31
 ---
 
-Scala supports variance annotations of type parameters of [generic classes](generic-classes.html). In contrast to Java 5 (aka. [JDK 1.5](http://java.sun.com/j2se/1.5/)), variance annotations may be added when a class abstraction is defined, whereas in Java 5, variance annotations are given by clients when a class abstraction is used.
+Scala soporta anotaciones de varianza para parámetros de tipo para [clases genéricas.](generic-classes.html). A diferencia de Java 5 (es decir: [JDK 1.5](http://java.sun.com/j2se/1.5/)), las anotaciones de varianza pueden ser agregadas cuando una abstracción de clase es definidia, mientras que en Java 5, las anotaciones de varianza son dadas por los clientes cuando una albstracción de clase es usada.
 
 In the page about generic classes an example for a mutable stack was given. We explained that the type defined by the class `Stack[T]` is subject to invariant subtyping regarding the type parameter. This can restrict the reuse of the class abstraction. We now derive a functional (i.e. immutable) implementation for stacks which does not have this restriction. Please note that this is an advanced example which combines the use of [polymorphic methods](polymorphic-methods.html), [lower type bounds](lower-type-bounds.html), and covariant type parameter annotations in a non-trivial fashion. Furthermore we make use of [inner classes](inner-classes.html) to chain the stack elements without explicit links.
+
+En el artículo sobre clases genéricas dimos un ejemplo de una pila mutable. Explicamos que el tipo definido por la clase `Stack[T]` es objeto de subtipos invariantes con respecto al parámetro de tipo. Esto puede restringir el reuso de la abstracción (la clase). Ahora derivaremos una implementación funcional (es decir, inmutable) para pilas que no tienen esta restricción. Nótese que este es un ejemplo avanzado que combina el uso de [métodos polimórficos](polymorphic-methods.html), [límites de tipado inferiores](lower-type-bounds.html), y anotaciones de parámetros de tipo covariante de una forma no trivial. Además hacemos uso de [clases internas](inner-classes.html) para encadenar los elementos de la pila sin enlaces explícitos.
 
     class Stack[+A] {
       def push[B >: A](elem: B): Stack[B] = new Stack[B] {
@@ -31,6 +33,6 @@ In the page about generic classes an example for a mutable stack was given. We e
       Console.println(s)
     }
 
-The annotation `+T` declares type `T` to be used only in covariant positions. Similarly, `-T` would declare `T` to be used only in contravariant positions. For covariant type parameters we get a covariant subtype relationship regarding this type parameter. For our example this means `Stack[T]` is a subtype of `Stack[S]` if `T` is a subtype of `S`. The opposite holds for type parameters that are tagged with a `-`.
+La anotación `+T` declara que el tipo `T` sea utilizado solamente en posiciones covariantes. De forma similar, `-T` declara que `T` sea usado en posiciones contravariantes. Para parámetros de tipo covariantes obtenemos una relación de subtipo covariante con respecto al parámetro de tipo. Para nuestro ejemplo, esto significa que `Stack[T]` es un subtipo de `Stack[S]` si `T` es un subtipo de `S`. Lo contrario se cumple para parámetros de tipo que son etiquetados con un signo `-`.
 
-For the stack example we would have to use the covariant type parameter `T` in a contravariant position for being able to define method `push`. Since we want covariant subtyping for stacks, we use a trick and abstract over the parameter type of method `push`. We get a polymorphic method in which we use the element type `T` as a lower bound of `push`'s type variable. This has the effect of bringing the variance of `T` in sync with its declaration as a covariant type parameter. Now stacks are covariant, but our solution allows that e.g. it's possible to push a string on an integer stack. The result will be a stack of type `Stack[Any]`; so only if the result is used in a context where we expect an integer stack, we actually detect the error. Otherwise we just get a stack with a more general element type.
+Para el ejemplo de la pila deberíamos haber usado el parámetro de tipo covariante `T` en una posición contravariante para que nos sea posible definir el método `push`. Ya que deseamos que existan subtipos covariantes para las pilas, utilizamos un truco y utilizamos un parámetro de tipo abstracto en el método `push`. De esta forma obtenemos un método polimórfico en el cual utilizamos el tipo del elemento `T` como límite inferior de la variable de tipo de `push`. Esto tiene el efecto de sincronizar la varianza de `T` con su declaración como un parámetro de tipo covariante. Ahora las pilas son covariantes, y nuestra solución permite por ejemplo apilar un String en una pila de enteros (Int). El resultado será una pila de tipo `Stack[Any]`; por lo tantosolo si el resultado es utilizado en un contexto donde se esperan pilas de enteros se detectará un error. De otra forma, simplemente se obtiene una pila con un tipo más general.
