@@ -2,6 +2,16 @@
 
 This repository contains the source for the Scala documentation website, as well as the source for "Scala Improvement Process" (SIP) documents. 
 
+## Contributing ##
+
+Please have a look at [http://docs.scala-lang.org/contribute.html](http://docs.scala-lang.org/contribute.html) before making a contribution. 
+This document gives an overview of the type of documentation contained within the Scala Documentation repository, as well as both the structure of 
+the repository and the different types of documents it contains. 
+
+Small changes, or corrected typos will generally be pulled in right away. Large changes, like the addition of new documents, or the rewriting of 
+existing documents will be thoroughly reviewed-- please keep in mind that, generally, new documents must be very well-polished, complete, and maintained 
+in order to be accepted.
+
 ## Dependencies ##
 
 ### Unix ###
