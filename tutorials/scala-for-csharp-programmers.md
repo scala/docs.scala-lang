@@ -15,15 +15,318 @@ code, and play nicely with the brave new world of concurrency; its
 object-oriented aspects keep it familiar and convenient when creating 
 business objects or other stateful models.
 
+## The same concepts
+
+Scala shares many features and concepts with C#, as well as introducing
+many that are new.  In fact, some of the capabilities that people talk
+about a lot in Scala introductions or Java-to-Scala guides are very
+familiar to C# programmers.  For example, as a C# programmer, you don't
+need to be gently walked through the idea of function types -- you've
+been using delegates and lambdas for years.
+
+However, some Scala features and behaviours are quite different from C#,
+and even those which are common usually have different syntax or work
+in slightly different ways.  So let's start out by covering some Scala
+basics from a C# programmer's point of view.
+
+### Classes
+
+The basic concept of classes is the same in Scala as in C#.  A class
+bundles up a bunch of state (member fields) and hides it behind an
+interface (member methods).  The syntax for declaring classes is just
+like C#:
+
+    class Widget {
+    }
+
+### Fields
+
+The syntax for declaring fields is like this:
+
+    class Widget {
+      val serialNumber = 123
+      private var usageCount = 0
+    }
+
+You can probably figure out what's going on here, but let's just note
+a few differences from C#:
+
+* Fields are public by default, rather than private by default.
+* You don't need to put a semicolon after a field declaration.  You can
+  write semicolons if you want (or if your muscle memory makes you),
+  but if you don't, Scala will figure it out for you.
+* Scala automatically figures out the type of the field from its initial
+  value, just like the C# `var` keyword.  (Don't be fooled by the appearance
+  of the second field though -- the Scala `var` keyword doesn't mean the
+  same thing as the C# `var` keyword.)
+
+Now, why is one of these fields introduced as `val` and the other as
+`var`?  In C#, fields are mutable by default.  That is, by default,
+any code that can access a field can modify it.  You can specify *readonly*
+to make a field immutable, so that it can't be changed once the object
+has been constructed.
+
+Scala doesn't have a default setting for mutability.  You have to engage
+brain, and decide whether each field is mutable or immutable.  `val` means
+a field is immutable (readonly in C#) and `var` means it's mutable
+(a normal field in C#).
+
+So the class above is equivalent to the C#:
+
+    class Widget {
+      public readonly int serialNumber = 123;
+      private int usageCount = 0;
+    }
+
+Notice that C# makes you write extra code to make things immutable,
+and Scala doesn't.  This may seem like a small thing, but it's
+going to be a really important theme.
+
+### Methods
+
+The syntax for declaring methods is like this:
+
+    class Widget {
+      def reticulate(winding: Int): String = "some value"
+    }
+
+This is a more dramatic departure from C# so let's pick it apart.
+
+The `def` keyword means we're declaring a method rather than a field.
+There isn't a direct equivalent to this in C#, which figures out whether
+something is a method or a field from context.  As with fields,
+methods are public by default.
+
+The method name is reassuringly language-independent.
+
+Method arguments go in brackets after the method name, just as in C#.
+However, the way Scala specifies the argument types is different from C#.
+In C# you would write `int winding`; in Scala you write `winding: Int`.
+
+This is a general principle: in Scala, when you want to specify the
+type of something, you write the type after the something, separated
+by a colon.  (Whereas in C# you write the type before the something,
+separated by a space.)
+
+You can see the same principle in action for the return type of the
+function. `reticulate` returns a `String`.
+
+Finally, the body of the method has been placed after an equals sign, 
+rather than inside braces. (Braces are only necessary when the method 
+body consists of multiple expressions/statements.) What's more, 
+the body of the method is an expression -- that
+is, something with a value -- rather than a set of statements amongst which
+is a `return`.  I'll come back to this when we look at a more realistic
+example, but for the time being, let's focus on the trivial example and
+translate it into C# syntax:
+
+    class Widget {
+      public string Reticulate(int winding) {
+        return "some value";
+      }
+    }
+
+### Classes and Structs
+
+In C#, when you define a type, you can decide whether to make it a
+reference type (a class) or a value type (a struct).  Scala doesn't
+allow you to create custom value types.  It has only classes, not
+structs.  This restriction comes from Scala targeting the Java
+Virtual Machine.  Unlike .NET, the JVM doesn't really have the concept
+of value types.  Scala tries to disguise this as best it can, but the
+lack of custom value types is one place where the implementation
+leaks through.  Fortunately, Scala makes it easy to define immutable
+reference types, which are nearly as good.
+
+### Base Types
+
+Scala's base types are pretty much the same as C#'s, except that they
+are named with initial capitals, e.g. `Int` instead of `int`. (In fact 
+every type in Scala starts with an uppercase letter.) There are
+no unsigned variants, and booleans are called `Boolean` instead of `bool`.
+
+Scala's name for `void` is `Unit`, but unlike `void`, `Unit` is a real type.
+We'll see why this is important in a moment.
+
+### Function Types
+
+In C#, you can have variables that refer to functions instead of data.
+These variables have delegate types, such as *Predicate<T>` or
+`Func<T, TResult>` or `KeyEventHandler` or `Action<T1, T2>`.
+
+Scala has the same concept, but the function types are built into the
+language, rather than being library types.  Function types are
+spelled `(T1, T2, ...) => TR`.  For example, a predicate of integers 
+would be type `(Int) => Boolean`. If there is only one input type, 
+the parens can be left out like this: `Int => Boolean`.
+
+Effectively, Scala gets rid of all those weird custom delegate types
+like `Predicate<T>` and `Comparer<T>` and has a single family of
+function types like the C# `Func<...>` family.
+
+What if you want to refer to a method that doesn't have a return value?
+In C#, you can't write `Func<T, void>` because void isn't a valid
+type; you have to write `Action<T>` instead.  But Scala doesn't have
+different families of delegate types, it just has the built-in
+function types.  Fortunately, in Scala, `Unit` is a real type, so you
+can write `(Int) => Unit` for a function which takes an integer
+and doesn't return a useful value.  This means you can pass `void` methods
+interchangeably with non-`void` methods, which is a Good Thing.
+
+### Implementing Methods
+
+I showed a method above, but only to illustrate the declaration syntax.
+Let's take a look at a slightly more substantial method.
+
+    def power4(x: Int): Int = {
+      var square = x * x  // usually wouldn't write this - see below
+      square * square
+    }
+
+This looks pretty similar to C#, except that:
+
+* We're allowed to leave out semicolons, as mentioned above.
+* We don't need a return statement.  The method body consists of
+  an expression, square * square, with some preliminary bits
+  to define the components of the expression.
+  The return value of the method is the value of the expression.
+
+In order to make this method look like C#, I used the `var` keyword
+to declare the local variable `square`.  But as with fields, the
+Scala `var` keyword doesn't work quite the same as the C# `var` keyword:
+
+In C#, `var` means "work out the type of the variable from the
+right hand side".  But Scala does that automatically -- you don't
+need to ask for it.  In Scala, `var` means "allow me to change this
+variable (or field) after initialisation".  As with fields, you can
+also use `val` to mean 'don't allow me to change this variable
+after initialisation.'  And in fact since we don't need to change
+`square` after initialisation, we'd be better off using val:
+
+    def power4(x: Int): Int = {
+      val square = x * x  // val not var
+      square * square
+    }
+
+Incidentally, if you do ever want to explicitly indicate the type
+of a variable, you can do it the same way as with function arguments:
+
+    def power4(x: Int): Int = {
+      val square : Int = x * x
+      square * square
+    }
+
+Notice that you still need `val` or `var`.  Telling Scala the type
+of the variable is independent of deciding whether the variable should
+be mutable or immutable.
+
+### Tuples
+
+Everybody hates out parameters.  We all know that code like this just 
+isn't nice:
+
+    Widget widget;
+    if (widgetDictionary.TryGetValue(widgetKey, out widget))
+    {
+      widget.ReticulateSplines();
+    }
+
+And once you start composing higher-level functions into the mix, it gets 
+positively nasty. Suppose I want to make a HTTP request.  Well, that's 
+going to produce two outputs in itself, the success code and the response 
+data. But now suppose I want to time it. Writing the timing code isn't a 
+problem, but now I have *three* outputs, and to paraphrase *Was Not Was*, 
+I feel worse than Jamie Zawinski.
+
+You can get around this in specific situations by creating custom types 
+like `DictionaryLookupResult` or `TimedHttpRequestResult`, but eventually 
+the terrible allure wears off, and you just want it to work.
+
+Enter tuples. A tuple is just a small number of values -- a single value, 
+a pair of values, a triplet of values, that sort of thing. You can tell 
+that tuples were named by mathematicians because the name only makes sense 
+when you look at the cases you hardly ever use (quadruple, quintuple, 
+sextuple, etc.). Using tuples, our timed HTTP request might look like this:
+
+    public Tuple<bool, Stream, TimeSpan> Time(Func<Tuple<bool, Stream>> action)
+    {
+      StartTimer();
+      var result = action();
+      TimeSpan howLong = StopTimer();
+      return Tuple.Create(result.First, result.Second, howLong);
+    }
+    
+    var result = Time(() => MakeRequest(uri));
+    var succeeded = result.First;
+    var response = result.Second;
+    var howLong = result.Third.
+    Console.WriteLine("it took " + howLong);
+
+The reason this keeps getting verbose on us is that C# doesn’t provide any 
+syntatical support for tuples. To C#, a `Tuple<>` is just another generic 
+type. To us, the readers, a `Tuple<>` is just another generic type with 
+particularly unhelpful member names.
+
+Really, what we're really trying to articulate by returning a `Tuple<>` is, 
+"this method has several outputs." So what do we want to do with those 
+outputs?  We want to access them, for example to stash them in variables, 
+without having to construct and pick apart the tuple one value at a time. 
+That means the language has to provide some kind of syntax-level support 
+for tuples, instead of treating them like every other class the compiler 
+doesn’t know about.
+
+Many functional languages have exactly this kind of syntactical support, 
+and Scala is no exception.  Here’s how the above pseudo-C# looks in Scala:
+
+    def time(action: => (Boolean, Stream)): (Boolean, Stream, TimeSpan) = {
+      startTimer()
+      val (succeeded, response) = action
+      (succeeded, response, stopTimer())
+    }
+    
+    val (succeeded, response, timeTaken) = time(makeRequest)
+    Console.WriteLine("it took " + timeTaken)
+
+Notice the multiple variables on the left hand side of the time call? 
+Notice the `(Boolean, Stream, TimeSpan)` return type of the time method? 
+That return value is effectively a tuple type, but instead of having to 
+capture the returned tuple in a `Tuple<>` variable and extract its various 
+bits by hand, we are getting the Scala compiler to (in the time function) 
+compose the tuple implicitly for us, without us having to write the 
+constructor call, and (in the calling code) unpick the tuple into 
+meaningful, named variables for us without us having to explicitly copy 
+the values one by one and by name.
+
+(By the way, a proper implementation of the `time()` method wouldn’t be 
+restricted to `(Boolean, Stream)` results: we’d be looking to write a 
+method that could time anything. I’ve skipped that because it would 
+distract from the point at hand.)
+
+How would this play with the dictionary example?
+
+    val (found, widget) = widgetDictionary.getValue(key)
+    if (found)
+      widget.reticulateSplines()
+
+We don’t actually save any lines of code, what with having to now capture 
+the “found” value into a variable and test it separately; and it’s not as 
+if the original C# version was horribly unreadable anyway. So maybe this is 
+a matter of taste, but I find this a lot easier to read and to write: all 
+the outputs are on the left of the equals sign where they belong, instead 
+of being spread between the assignment result and the parameter list, and 
+we don’t have that odd Widget declaration at the top.
+
+## New and different concepts
+
 Scala's primary platform is the Java virtual machine, and some of the 
 interest in Scala comes from Java programmers' interest in features such 
 as type inference, comprehensions and lambdas, with which C# programmers 
 are already familiar. So what's left that might be of interest 
 specifically to C# programmers?
 
-## Mixins and Traits
+### Mixins and Traits
 
-### Motivation
+#### Motivation
 
 Interfaces in C# and Java play a dual role. 
 First, they are a set of capabilities that an implementer has to, well, 
@@ -53,7 +356,7 @@ into the interface because then every implementer of `IEnumerable` would
 have to implement them -- and they'd end up writing the same boilerplate, 
 just now in all the zillions of `IEnumerable` classes instead of their clients.
 
-### The C# and Scala Solutions
+#### The C# and Scala Solutions
 
 We could resolve this tension if we had a way for interfaces to contain 
 implementation: for example, if `IEnumerable` required the implementer 
@@ -99,7 +402,7 @@ and ordered:
       def >=(that: Any): Boolean = !(this < that)
     }
 
-Orderable objects need to extend `Ord`, but only need to implement the 
+Orderable objects can extend `Ord`, but only need to implement the 
 method `<`. They then get the other operators for free, implemented 
 automatically by Ord in terms of `<`.
 
@@ -109,7 +412,10 @@ automatically by Ord in terms of `<`.
     
     // can now write: myDate >= yourDate
 
-### Scala Traits vs. C# Extension Methods
+A similar trait, called `Ordered` already exists in Scala, so there is no
+need to actually define my trait.
+
+#### Scala Traits vs. C# Extension Methods
 
 Okay, so Scala has a different way of packaging standard implementations 
 from C#'s extension methods. It's different, but why is it interesting? 
@@ -195,7 +501,7 @@ Fortunately, you can work around this in Scala using so-called implicit
 conversions. They enable Scala programmers to enrich existing types with new
 functionality.
 
-## Singletons
+### Singletons
 
 In C#, if you want to create a singleton object, you have to create a class, 
 then stop evildoers creating their own instances of that class, then create 
@@ -260,7 +566,7 @@ appropriate implementations of the `ifThenElse` method.
 And fans of Giuseppe Peano should definitely check out the hypothetical 
 implementation of `Int`...
 
-## Pass by Name
+### Pass by Name
 
 > You're only on chapter 3 and you're already reduced to writing about 
 > *calling conventions*?  You suck!  Do another post about chimney sweeps 
@@ -271,7 +577,7 @@ Pass by name, especially in conjunction with some other rather
 theoretical-sounding Scala features, is your gateway to the wonderful 
 world of language extensibility.
 
-### What is Passing By Name?
+#### What is Passing By Name?
 
 First, let's talk about what we mean by *calling convention*. A calling 
 convention describes how stuff gets passed to a method by its caller. 
@@ -303,7 +609,7 @@ anything to the argument, the argument gets evaluated and the "anything"
 is done to that.  Crucially, evaluation happens every time the argument 
 gets mentioned, and only when the argument gets mentioned.
 
-### Not Just Another Calling Convention
+#### Not Just Another Calling Convention
 
 Why does this matter? It matters because there are functions you can't 
 implement using pass by value or pass by reference, but you can implement 
@@ -386,7 +692,7 @@ specifically when the called method requests the value of the parameter by
 mentioning its name. This might sound weird and academic, but it's the key 
 to being able to define your own control constructs.
 
-### Using Pass By Name in Scala
+#### Using Pass By Name in Scala
 
 Let's see the custom while implementation again, this time with Scala 
 *pass by name* parameters:
@@ -557,119 +863,13 @@ creating nice syntax for your own control constructs.  We'll shortly see
 how this works together with other Scala features to give you even more 
 flexibility in defining your construct's syntax.
 
-## Multiple Return Values (Tuples)
-
-Everybody hates out parameters.  We all know that code like this just 
-isn't nice:
-
-    Widget widget;
-    if (widgetDictionary.TryGetValue(widgetKey, out widget))
-    {
-      widget.ReticulateSplines();
-    }
-
-And once you start composing higher-level functions into the mix, it gets 
-positively nasty. Suppose I want to make a HTTP request.  Well, that's 
-going to produce two outputs in itself, the success code and the response 
-data. But now suppose I want to time it. Writing the timing code isn't a 
-problem, but now I have *three* outputs, and to paraphrase *Was Not Was*, 
-I feel worse than Jamie Zawinski.
-
-You can get around this in specific situations by creating custom types 
-like `DictionaryLookupResult` or `TimedHttpRequestResult`, but eventually 
-the terrible allure wears off, and you just want it to work.
-
-Enter tuples. A tuple is just a small number of values -- a single value, 
-a pair of values, a triplet of values, that sort of thing. You can tell 
-that tuples were named by mathematicians because the name only makes sense 
-when you look at the cases you hardly ever use (quadruple, quintuple, 
-sextuple, etc.). If C# had tuples, our timed HTTP request might look a bit 
-better:
-
-    public Tuple<bool, Stream, TimeSpan> Time(Func<Tuple<bool, Stream>> action)
-    {
-      StartTimer();
-      var result = action();
-      TimeSpan howLong = StopTimer();
-      return new Tuple<bool, Stream, TimeSpan>(result.First, result.Second, howLong);
-    }
-    
-    var result = Time(() => MakeRequest(uri));
-    var succeeded = result.First;
-    var response = result.Second;
-    var howLong = result.Third.
-    Console.WriteLine("it took " + howLong);
-
-What's that you say?  Not better?
-
-The reason this keeps getting verbose on us is that C# doesn’t provide any 
-syntatical support for tuples. To C#, a `Tuple<>` is just another generic 
-type. To us, the readers, a `Tuple<>` is just another generic type with 
-particularly unhelpful member names.
-
-Really, what we're really trying to articulate by returning a `Tuple<>` is, 
-"this method has several outputs." So what do we want to do with those 
-outputs?  We want to access them, for example to stash them in variables, 
-without having to construct and pick apart the tuple one value at a time. 
-That means the language has to provide some kind of syntax-level support 
-for tuples, instead of treating them like every other class the compiler 
-doesn’t know about.
-
-Many functional languages have exactly this kind of syntactical support, 
-and Scala is no exception.  Here’s how the above pseudo-C# looks in Scala:
-
-    def time(action: => (Boolean, Stream)): (Boolean, Stream, TimeSpan) = {
-      startTimer()
-      val (succeeded, response) = action
-      (succeeded, response, stopTimer())
-    }
-    
-    val (succeeded, response, timeTaken) = time(makeRequest)
-    Console.WriteLine("it took " + timeTaken)
-
-Notice the multiple variables on the left hand side of the time call? 
-Notice the `(Boolean, Stream, TimeSpan)` return type of the time method? 
-That return value is effectively a tuple type, but instead of having to 
-capture the returned tuple in a `Tuple<>` variable and extract its various 
-bits by hand, we are getting the Scala compiler to (in the time function) 
-compose the tuple implicitly for us, without us having to write the 
-constructor call, and (in the calling code) unpick the tuple into 
-meaningful, named variables for us without us having to explicitly copy 
-the values one by one and by name.
-
-(By the way, a proper implementation of the `time()` method wouldn’t be 
-restricted to `(Boolean, Stream)` results: we’d be looking to write a 
-method that could time anything. I’ve skipped that because it would 
-distract from the point at hand.)
-
-How would this play with the dictionary example?
-
-    val (found, widget) = widgetDictionary.GetValue(key)
-    if (found) {
-      widget.ReticulateSplines()
-    }
-
-We don’t actually save any lines of code, what with having to now capture 
-the “found” value into a variable and test it separately; and it’s not as 
-if the original C# version was horribly unreadable anyway. So maybe this is 
-a matter of taste, but I find this a lot easier to read and to write: all 
-the outputs are on the left of the equals sign where they belong, instead 
-of being spread between the assignment result and the parameter list, and 
-we don’t have that odd Widget declaration at the top.
-
-Encouragingly enough, .NET 4.0 will include a `Tuple` class, I believe 
-precisely in order to support functional and other languages that use the 
-multiple return value idiom. Unfortunately, C# 4.0 still isn’t getting 
-syntactical support for them, so we’re stuck with out parameters or 
-special result types for now.
-
-## Implicits
+### Implicits
 
 Scala implicits offer some features which will be familiar to the C# 
 programmer, but are much more general in nature and go far beyond what can 
 be done in C#.
 
-### Enriching types in C# and Scala
+#### Enriching types in C# and Scala
 
 Scala, like C#, is statically typed: a class’ methods are compiled into the 
 class definition and are not open for renegotiation. You cannot, as you 
@@ -694,12 +894,12 @@ a method parameter, your class will wrap `Foo` and enrich it with
 additional methods. Let’s see this in action as we try to add a method to 
 the `Double` type:
 
-class RicherDouble(d : Double) { 
-  def toThe(exp: Double): Double = System.Math.Pow(d, exp)
-}
+    class RicherDouble(d : Double) { 
+      def toThe(exp: Double): Double = System.Math.Pow(d, exp)
+    }
 
 (We call the class `RicherDouble` because Scala already has a `RichDouble` 
-class defined which providing further methods to `Double`.)
+class defined which provides further methods to `Double`.)
 
 Notice that `toThe` is an instance method, and that `RicherDouble` takes a 
 `Double` as a constructor parameter. This seems pretty grim, because we’d 
@@ -760,7 +960,7 @@ C#, but using a different syntax. In related news, Lisp uses a different
 kind of bracket: film at eleven. Why should we be interested in Scala 
 implicits if they’re just another take on extension methods?
 
-### Implicit Parameters
+#### Implicit Parameters
 
 What we saw above was an implicit method – a method which, like a C# 
 implicit conversion operator, the compiler is allowed to insert a call to 
@@ -916,7 +1116,7 @@ the two `List[String]`s into one. Once again, we have not had to pass
 it for us. We can use the exact same calling code to concatenate lists and 
 strings.
 
-### Why Should I Care?
+#### Why Should I Care?
 
 Isn’t this pointless? At the call site, I have access to 
 `stringConcatenator` and `listStringConcatenator`. I can easily pass them 
@@ -945,7 +1145,7 @@ to Scala’s ability to support internal DSLs. By setting up appropriate
 implicits, you can write code that reads much more naturally than if you 
 had to pepper it with function objects or callbacks.
 
-### Conclusion
+#### Conclusion
 
 Scala’s `implicit` keyword goes beyond C#’s equivalent.  As in C#, it is 
 used for implicit conversions; unlike C#, this is the idiomatic way to add 
@@ -958,7 +1158,7 @@ extending classes, then implicit parameters are a way of extending methods,
 creating simple, reliable shorthands for complex generic methods, and 
 making up another piece of the Scala DSL jigsaw.
 
-### Method Call Syntax
+#### Method Call Syntax
 
 C#, like most object-oriented programming languages, is pretty strict about 
 how you call methods: you use the dot notation, unless the method is a 
