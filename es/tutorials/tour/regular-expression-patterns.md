@@ -4,8 +4,9 @@ title: Patrones basados en expresiones regulares
 
 disqus: true
 
-tutorial: scala-tour-es
+tutorial: scala-tour
 num: 22
+language: es
 ---
 
 ## Patrones de secuencias que ignoran a la derecha ##

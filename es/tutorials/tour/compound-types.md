@@ -4,8 +4,9 @@ title: Tipos Compuestos
 
 disqus: true
 
-tutorial: scala-tour-es
+tutorial: scala-tour
 num: 6
+language: es
 ---
 
 Algunas veces es necesario expresar que el tipo de un objeto es un subtipo de varios otros tipos. En Scala esto puede ser expresado con la ayuda de *tipos compuestos*, los cuales pueden entenderse como la intersección de otros tipos.

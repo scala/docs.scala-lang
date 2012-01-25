@@ -4,8 +4,9 @@ title: Construcción de closures automáticas
 
 disqus: true
 
-tutorial: scala-tour-es
+tutorial: scala-tour
 num: 16
+language: es
 ---
 
 Scala permite pasar a un método como parámetro funciones que no reciban parámetros. Cuando un método así es invocado, los parámetros reales de la función enviada sin parámetros no son evaluados y una función "nularia" (de aridad creo, 0-aria, o sin parámetros) es pasada en su llugar la cual encapsula el comportamiento del parámetro correspondiente (comunmente conocido como "llamada por nombre").

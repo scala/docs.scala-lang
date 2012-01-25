@@ -4,8 +4,9 @@ title: Autorefrencias explicitamente tipadas
 
 disqus: true
 
-tutorial: scala-tour-es
+tutorial: scala-tour
 num: 27
+language: es
 ---
 
 Cuando se está construyendo software extensible, algunas veces resulta útil declarar el tipo de la variable `this` explicitamente. Para motivar esto, realizaremos una pequeña representación de una estructura de datos Grafo, en Scala.

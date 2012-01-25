@@ -4,8 +4,9 @@ title: Funciones de orden superior
 
 disqus: true
 
-tutorial: scala-tour-es
+tutorial: scala-tour
 num: 18
+language: es
 ---
 
 Scala permite la definición de funciones de orden superior. Estas funciones son las que _toman otras funciones como parámetros_, o las cuales _el resultado es una función_. Aquí mostramos una función `apply` la cual toma otra función `f` y un valor `v` como parámetros y aplica la función `f` a `v`:

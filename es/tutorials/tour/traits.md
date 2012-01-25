@@ -4,8 +4,9 @@ title: Traits
 
 disqus: true
 
-tutorial: scala-tour-es
+tutorial: scala-tour
 num: 24
+language: es
 ---
 
 _Nota de traducción: La palabra `trait` en inglés puede traducirse literalmente como `rasgo` o `caracteristica`. Preferimos la designación oringial trait por ser una característica muy natural de Scala._

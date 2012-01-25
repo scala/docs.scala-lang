@@ -4,8 +4,9 @@ title: Objetos Extractores
 
 disqus: true
 
-tutorial: scala-tour-es
+tutorial: scala-tour
 num: 8
+language: es
 ---
 
 En Scala pueden ser definidos patrones independientemente de las clases Caso. Para este fin exite un método llamado `unapply` que proveera el ya dicho extractor. Por ejemplo, en el código siguiente se define el objeto extractor `Twice`

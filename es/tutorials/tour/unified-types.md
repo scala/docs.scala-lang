@@ -4,8 +4,9 @@ title: Tipos Unificados
 
 disqus: true
 
-tutorial: scala-tour-es
+tutorial: scala-tour
 num: 30
+language: es
 ---
 
 A diferencia de Java, todos los valores en Scala son objetos (incluyendo valores numéricos y funciones). Dado que Scala está basado en clases, todos los valores son instancias de una clase. El diagrama siguiente ilustra esta jerarquía de clases:
