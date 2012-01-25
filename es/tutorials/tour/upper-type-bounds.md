@@ -4,7 +4,7 @@ title: Límite de tipado superior
 
 disqus: true
 
-tutorial: scala-tour
+tutorial: scala-tour-es
 num: 25
 ---
 

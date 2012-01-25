@@ -4,7 +4,7 @@ title: Parámetros implícitos
 
 disqus: true
 
-tutorial: scala-tour
+tutorial: scala-tour-es
 num: 10
 ---
 

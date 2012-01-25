@@ -4,7 +4,7 @@ title: Clases Case
 
 disqus: true
 
-tutorial: scala-tour
+tutorial: scala-tour-es
 num: 5
 ---
 

@@ -4,7 +4,7 @@ title: Procesamiento de documentos XML
 
 disqus: true
 
-tutorial: scala-tour
+tutorial: scala-tour-es
 num: 33
 ---
 

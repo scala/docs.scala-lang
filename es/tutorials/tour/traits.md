@@ -4,7 +4,7 @@ title: Traits
 
 disqus: true
 
-tutorial: scala-tour
+tutorial: scala-tour-es
 num: 24
 ---
 

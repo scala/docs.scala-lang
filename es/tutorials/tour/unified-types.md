@@ -4,7 +4,7 @@ title: Tipos Unificados
 
 disqus: true
 
-tutorial: scala-tour
+tutorial: scala-tour-es
 num: 30
 ---
 

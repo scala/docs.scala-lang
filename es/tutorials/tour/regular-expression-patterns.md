@@ -4,7 +4,7 @@ title: Patrones basados en expresiones regulares
 
 disqus: true
 
-tutorial: scala-tour
+tutorial: scala-tour-es
 num: 22
 ---
 

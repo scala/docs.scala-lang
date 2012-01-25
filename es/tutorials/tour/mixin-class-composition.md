@@ -4,7 +4,7 @@ title: Composición de clases mixin
 
 disqus: true
 
-tutorial: scala-tour
+tutorial: scala-tour-es
 num: 12
 ---
 _Nota de traducción: La palabra `mixin` puede ser traducida como mezcla, dando título a esta sección de: Composición de clases Mezcla, pero es preferible utilizar la notación original_

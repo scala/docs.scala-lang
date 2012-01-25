@@ -4,7 +4,7 @@ title: Sequencias por Comprensión
 
 disqus: true
 
-tutorial: scala-tour
+tutorial: scala-tour-es
 num: 7
 ---
 

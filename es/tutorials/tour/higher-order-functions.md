@@ -4,7 +4,7 @@ title: Funciones de orden superior
 
 disqus: true
 
-tutorial: scala-tour
+tutorial: scala-tour-es
 num: 18
 ---
 

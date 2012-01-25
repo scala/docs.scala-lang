@@ -4,7 +4,7 @@ title: Tipos Abstractos
 
 disqus: true
 
-tutorial: scala-tour
+tutorial: scala-tour-es
 num: 2
 outof: 33
 ---

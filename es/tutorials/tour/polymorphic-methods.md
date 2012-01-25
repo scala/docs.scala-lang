@@ -4,7 +4,7 @@ title: Métodos polimórficos
 
 disqus: true
 
-tutorial: scala-tour
+tutorial: scala-tour-es
 num: 21
 ---
 

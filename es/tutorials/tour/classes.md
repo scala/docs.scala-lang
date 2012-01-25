@@ -4,7 +4,7 @@ title: Clases
 
 disqus: true
 
-tutorial: scala-tour
+tutorial: scala-tour-es
 num: 4
 ---
 En Scala, las clases son plantillas estáticas que pueden ser instanciadas por muchos objetos en tiempo de ejecución.
