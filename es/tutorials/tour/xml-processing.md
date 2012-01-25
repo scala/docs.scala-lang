@@ -8,8 +8,6 @@ tutorial: scala-tour
 num: 33
 ---
 
-Scala can be used to easily create, parse, and process XML documents. XML data can be represented in Scala either by using a generic data representation, or with a data-specific data representation. The latter approach is supported by the *data-binding* tool `schema2src`.
-
 Scala ha sido usado para crear, parsear y procesar de forma fácil documentos XML. Datos XML pueden ser representados en Scala tanto usando una representación genérica, o con una representación específica. Este último es soportado por la herramienta de *data-binding* `schema2src`.
 
 ### Representación en ejecución ###
