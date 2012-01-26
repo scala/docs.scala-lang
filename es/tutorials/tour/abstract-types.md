@@ -7,6 +7,7 @@ disqus: true
 tutorial: scala-tour
 num: 2
 outof: 33
+language: es
 ---
 
 En Scala, las cases son parametrizadas con valores (los parámetros de construcción) y con tipos (si las clases son [genéricas](generic-classes.html)). Por razones de consistencia, no es posible tener solo valores como miembros de objetos; tanto los tipos como los valores son miembros de objetos. Además, ambos tipos de miembros pueden ser concretos y abstractos.

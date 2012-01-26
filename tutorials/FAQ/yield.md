@@ -20,9 +20,9 @@ Translating for-comprehensions
 ------------------------------
 
 Scala's "for comprehensions" are syntactic sugar for composition of multiple
-operations with `map`, `flatMap` and `filter`. Or `foreach`. Scala actually translates
-a for-expression into calls to those methods, so any class providing them, or a
-subset of them, can be used with for comprehensions.
+operations with `foreach`, `map`, `flatMap`, `filter` or `withFilter`. 
+Scala actually translates a for-expression into calls to those methods, 
+so any class providing them, or a subset of them, can be used with for comprehensions.
 
 First, let's talk about the translations. There are very simple rules:
 
@@ -46,16 +46,16 @@ is translated into
 
     for(x <- c; if cond) yield {...}
 
-is translated on Scala 2.7 into
-
-    c.filter(x => cond).map(x => {...})
-
-or, on Scala 2.8, into
+is translated into
 
     c.withFilter(x => cond).map(x => {...})
 
-with a fallback into the former if method `withFilter` is not available but
-`filter` is. Please see the edit below for more information on this.
+with a fallback into
+
+    c.filter(x => cond).map(x => {...})
+
+if method `withFilter` is not available but `filter` is. 
+The next chapter has more information on this.
 
 #### Example 4
 
@@ -87,7 +87,6 @@ or
 
 About withFilter, and strictness
 ----------------------------------
-
 
 Scala 2.8 introduced a method called `withFilter`, whose main difference is
 that, instead of returning a new, filtered, collection, it filters on-demand.
@@ -154,3 +153,6 @@ This produces the result most people expect, without changing how `filter`
 behaves. As a side note, `Range` was changed from non-strict to strict between
 Scala 2.7 and Scala 2.8.
 
+This answer was originally submitted in response to [this question on Stack Overflow][1].
+
+  [1]: http://stackoverflow.com/questions/1052476/can-someone-explain-scalas-yield/1052510#1052510

@@ -6,6 +6,7 @@ disqus: true
 
 tutorial: scala-tour
 num: 22
+language: es
 ---
 
 ## Patrones de secuencias que ignoran a la derecha ##

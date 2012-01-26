@@ -6,6 +6,7 @@ disqus: true
 
 tutorial: scala-tour
 num: 3
+language: es
 ---
 
 Las anotaciones sirven para asociar meta-información con definiciones.

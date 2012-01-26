@@ -6,6 +6,7 @@ disqus: true
 
 tutorial: scala-tour
 num: 7
+language: es
 ---
 
 Scala cuenta con una notación ligera para expresar *sequencias por comprensión* (*sequence comprehensions*). Las comprensiones tienen la forma `for (enumeradores) yield e`, donde `enumeradores` se refiere a una lista de enumeradores separados por el símbolo punto y coma (;). Un *enumerador* puede ser tanto un generador el cual introduce nuevas variables, o un filtro. La comprensión evalúa el cuerpo `e` por cada paso (o ciclo) generado por los enumeradores y retorna una secuencia de estos valores.

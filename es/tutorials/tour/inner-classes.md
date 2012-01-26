@@ -6,6 +6,7 @@ disqus: true
 
 tutorial: scala-tour
 num: 11
+language: es
 ---
 
 En Scala es posible que las clases tengan como miembro otras clases. A diferencia de lenguajes tipo Java donde ese tipo de clases internas son miembros de las clases que las envuelven, en Scala esas clases internas están ligadas al objeto externo. Para ilustrar esta diferencia, vamos a mostrar rápidamente una implementación del tipo grafo:

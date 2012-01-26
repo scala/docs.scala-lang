@@ -4,10 +4,7 @@ disqus: true
 title: SIP-12 Uncluttering Scala’s syntax for control structures.
 ---
 
-__Martin Odersky__
-
-__first submitted 13 October 2011__
-
+**By: Martin Odersky**
 
 ## Motivation ##
 

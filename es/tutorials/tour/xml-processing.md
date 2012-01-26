@@ -6,6 +6,7 @@ disqus: true
 
 tutorial: scala-tour
 num: 33
+language: es
 ---
 
 Scala ha sido usado para crear, parsear y procesar de forma fácil documentos XML. Datos XML pueden ser representados en Scala tanto usando una representación genérica, o con una representación específica. Este último es soportado por la herramienta de *data-binding* `schema2src`.

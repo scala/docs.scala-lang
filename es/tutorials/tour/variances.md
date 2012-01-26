@@ -6,6 +6,7 @@ disqus: true
 
 tutorial: scala-tour
 num: 31
+language: es
 ---
 
 Scala soporta anotaciones de varianza para parámetros de tipo para [clases genéricas.](generic-classes.html). A diferencia de Java 5 (es decir: [JDK 1.5](http://java.sun.com/j2se/1.5/)), las anotaciones de varianza pueden ser agregadas cuando una abstracción de clase es definidia, mientras que en Java 5, las anotaciones de varianza son dadas por los clientes cuando una albstracción de clase es usada.

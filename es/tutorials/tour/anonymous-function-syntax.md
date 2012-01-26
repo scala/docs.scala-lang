@@ -6,6 +6,7 @@ disqus: true
 
 tutorial: scala-tour
 num: 14
+language: es
 ---
 
 Scala provee una sintaxis relativamente livana para definir funciones anónimas. La siguiente expresión crea una función incrementadora para números enteros:

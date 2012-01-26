@@ -45,7 +45,9 @@ title: Tutorials
   </div>
   {% for pg in site.pages %}
     {% if pg.tutorial == "scala-tour" and pg.outof %}
-      {% assign totalPagesTour = pg.outof %}  
+      {% unless pg.language %}
+        {% assign totalPagesTour = pg.outof %}  
+      {% endunless %}
     {% endif %}
   {% endfor %}
 
@@ -54,7 +56,9 @@ title: Tutorials
     {% for i in (1..totalPagesTour) %}
       {% for pg in site.pages %}
         {% if pg.tutorial == "scala-tour" and pg.num and pg.num == i %}
-          <li class="tour-of-scala"><a href="{{ pg.url }}">{{ pg.title }}</a></li> 
+          {% unless pg.language %}
+            <li class="tour-of-scala"><a href="{{ pg.url }}">{{ pg.title }}</a></li> 
+          {% endunless %}
         {% endif %}
       {% endfor %}
     {% endfor %}

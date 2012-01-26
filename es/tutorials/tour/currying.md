@@ -6,6 +6,7 @@ disqus: true
 
 tutorial: scala-tour
 num: 15
+language: es
 ---
 
 _Nota de traducción: Currying es una técnica de programación funcional nombrada en honor al matemático y lógico Haskell Curry. Es por eso que no se intentará hacer ninguna traducción sobre el término Currying. Entiendase este como una acción, técnica base de PF. Como una nota al paso, el lenguaje de programación Haskell debe su nombre a este eximio matemático._

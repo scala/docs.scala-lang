@@ -27,7 +27,7 @@ If you're interested in contributing to the Scala project in general, I argue th
 
 There are currently 3 different _types_ of documentation supported in this repository. 
 
-- **Guides/Overviews**: Definitive guides/overviews of specific language features. Often long, detailed documents, often produced by members of the Scala team. An example is the excellent [Collections]({{ site.baseurl }}/overviews/collections/index.html) overview.
+- **Guides/Overviews**: Definitive guides/overviews of specific language features. Often long, detailed documents, often produced by members of the Scala team. An example is the excellent [Collections]({{ site.baseurl }}/overviews/collections/introduction.html) overview.
 - **Tutorials**: Bite-size, example-rich, and concise articles meant to get a developer up to speed quickly. 
 - **Cheatsheets**: Quick reference of Scala syntax and behaviors.
 
@@ -36,6 +36,8 @@ There are currently 3 different _types_ of documentation supported in this repos
 This documentation repository is open-source, it lives in [github repository](https://github.com/scala/scala.github.com), and is always contribution-ready. 
 
 It's statically generated from [Markdown](http://en.wikipedia.org/wiki/Markdown) source using [Jekyll](https://github.com/mojombo/jekyll), and hosted on [GitHub Pages](http://pages.github.com/). This workflow was chosen so as to make it as easy as possible for core committers and the community alike to produce HTML documentation, and as easy as possible to publish it in a central location.
+
+The markdown syntax being used supports [Maruku](http://maruku.rubyforge.org/maruku.html) extensions, and has automatic syntax highlighting, without the need for any tags.
 
 ## Submitting Docs
 

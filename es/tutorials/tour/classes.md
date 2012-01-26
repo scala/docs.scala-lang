@@ -6,6 +6,7 @@ disqus: true
 
 tutorial: scala-tour
 num: 4
+language: es
 ---
 En Scala, las clases son plantillas estáticas que pueden ser instanciadas por muchos objetos en tiempo de ejecución.
 Aquí se presenta una clase la cual define la clase `Point`:

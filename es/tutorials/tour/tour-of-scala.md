@@ -6,6 +6,7 @@ disqus: true
 
 tutorial: scala-tour
 num: 1
+language: es
 ---
 
 Scala es un moderno lenguaje de programación multi-paradigma diseñado para expresar patrones de programación comunes de una forma concisa, elegante, y de tipado seguro. Integra facilmente características de lenguajes orientados a objetos y funcionales.

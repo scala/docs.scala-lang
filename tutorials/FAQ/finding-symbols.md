@@ -1,12 +1,12 @@
 ---
 layout: overview-large
-title: Finding Symbols
+title: How do I find what some symbol means or does?
 
 disqus: true
 
 partof: FAQ
 num: 1
-outof: 5
+outof: 8
 ---
 Let's divide the operators, for the purpose of teaching, into **four categories**:
 
@@ -36,8 +36,8 @@ So, let's see them.
 Keywords/reserved symbols
 -------------------------
 
-There are some symbols in Scala that are special. Two of them are considered
-proper keywords, while others are just "reserved". They are:
+There are a few symbols in Scala that are special and cannot be defined or used used as method names. 
+Two of them are considered proper keywords, while others are just "reserved". They are:
 
     // Keywords
     <-  // Used on for-comprehensions, to separate pattern from generator
@@ -65,11 +65,11 @@ These are all _part of the language_, and, as such, can be found in any text
 that properly describe the language, such as [Scala Specification][1](PDF)
 itself.
 
-The last one, the underscore, deserve a special description, because it is so
-widely used, and has so many different meanings. Here's a sample:
+The last one, the underscore, deserve a special description, because it is 
+widely used, and has different meanings depending on the context. Here's a sample:
 
     import scala._    // Wild card -- all of Scala is imported
-    import scala.{ Predef => _, _ } // Exception, everything except Predef
+    import scala.{ Predef => _, _ } // Exclusion, everything except Predef
     def f[M[_]]       // Higher kinded type parameter
     def f(m: M[_])    // Existential type
     _ + _             // Anonymous function placeholder parameter
@@ -80,34 +80,30 @@ widely used, and has so many different meanings. Here's a sample:
     f(xs: _*)         // Sequence xs is passed as multiple parameters to f(ys: T*)
     case Seq(xs @ _*) // Identifier xs is bound to the whole matched sequence
 
-I probably forgot some other meaning, though.
-
 Automatically imported methods
 ------------------------------
 
-So, if you did not find the symbol you are looking for in the list above, then
+If you did not find the symbol you are looking for in the list above, then
 it must be a method, or part of one. But, often, you'll see some symbol and the
 documentation for the class will not have that method. When this happens,
 either you are looking at a composition of one or more methods with something
 else, or the method has been imported into scope, or is available through an
 imported implicit conversion.
 
-These _can still be found_ on [ScalaDoc][2]: you just have to know where to
-look for them. Or, failing that, look at the [index][3] (presently broken on
-2.9.1, but available on nightly).
+These can also be found in ScalaDoc's [index][2].
 
 Every Scala code has three automatic imports:
 
     // Not necessarily in this order
-    import _root_.java.lang._      // _root_ denotes an absolute path
-    import _root_.scala._
-    import _root_.scala.Predef._
+    import java.lang._
+    import scala._
+    import scala.Predef._
 
 The first two only make classes and singleton objects available. The third one
-contains all implicit conversions and imported methods, since [`Predef`][4] is
+contains all implicit conversions and imported methods, since [`Predef`][3] is
 an object itself.
 
-Looking inside `Predef` quickly show some symbols:
+Looking inside `Predef` quickly shows some symbols:
 
     class <:<
     class =:=
@@ -120,18 +116,18 @@ object of type that is receiving the method. For example:
 
     "a" -> 1  // Look for an implicit from String, AnyRef, Any or type parameter
 
-In the above case, `->` is defined in the class [`ArrowAssoc`][5] through the
+In the above case, `->` is defined in the class [`ArrowAssoc`][4] through the
 method `any2ArrowAssoc` that takes an object of type `A`, where `A` is an
 unbounded type parameter to the same method.
 
 Common methods
 --------------
 
-So, many symbols are simply methods on a class. For instance, if you do
+Many symbols are simply methods on a class. For instance, if you do
 
     List(1, 2) ++ List(3, 4)
 
-You'll find the method `++` right on the ScalaDoc for [List][6]. However,
+You'll find the method `++` right on the ScalaDoc for [List][5]. However,
 there's one convention that you must be aware when searching for methods.
 Methods ending in colon (`:`) bind _to the right_ instead of the left. In other
 words, while the above method call is equivalent to:
@@ -185,11 +181,11 @@ And, of course, there's various combinations that can appear in code:
           // which calls the "+" method on the first parameter passing the
           // second parameter as argument.
 
+This answer was originally submitted in response to [this question on Stack Overflow][6].
 
   [1]: http://www.scala-lang.org/sites/default/files/linuxsoft_archives/docu/files/ScalaReference.pdf
-  [2]: http://www.scala-lang.org/api/current/index.html
-  [3]: http://www.scala-lang.org/archives/downloads/distrib/files/nightly/docs/library/index.html#index.index-_
-  [4]: http://www.scala-lang.org/api/current/index.html#scala.Predef$
-  [5]: http://www.scala-lang.org/api/current/scala/Predef$$ArrowAssoc.html
-  [6]: http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.List
-
+  [2]: http://www.scala-lang.org/archives/downloads/distrib/files/nightly/docs/library/index.html#index.index-_
+  [3]: http://www.scala-lang.org/api/current/index.html#scala.Predef$
+  [4]: http://www.scala-lang.org/api/current/scala/Predef$$ArrowAssoc.html
+  [5]: http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.List
+  [6]: http://stackoverflow.com/q/7888944/53013

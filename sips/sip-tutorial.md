@@ -22,7 +22,7 @@ First, create a new SIP file in the `pending/_posts` directory.  Make sure the n
 
 Use the [Markdown Syntax](http://daringfireball.net/projects/markdown/syntax) to write your SIP.
 
-See the source for this document (`sip-tutorial.md`) for how to do sytnax highlighting.
+See the [source](https://github.com/scala/scala.github.com/blob/gh-pages/sips/sip-tutorial.md) for this document (`sip-tutorial.md`) for how to do sytnax highlighting.
 
 {% highlight scala %}
 class Foo
@@ -33,4 +33,4 @@ class Foo
 
 Testing changes requires installing [Jekyll](https://github.com/mojombo/jekyll/wiki/Install).
 
-Use the `jekyll --server` command to start up a local server.  You can then view your changes at [http://localhost:4000](http://localhost:4000).
+Use the `jekyll --server` command to start up a local server.  You can then view your changes at [http://localhost:4000/sips](http://localhost:4000/sips).

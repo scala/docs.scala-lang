@@ -6,6 +6,7 @@ disqus: true
 
 tutorial: scala-tour
 num: 32
+language: es
 ---
 
 [Parámetros implícitos](implicit-parameters.html) y métodos también pueden definir conversiones implícitas llamadas _vistas_. Una vista de tipo `S` a `T` es definida por un valor implícito que tiene una función del tipo `S => T`, o por un método convertible a un valor de tal tipo.
