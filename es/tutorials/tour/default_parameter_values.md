@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Default Parameter values
+title: Valores de parámetros por defecto
 
 disqus: true
 
@@ -8,9 +8,9 @@ tutorial: scala-tour
 num: 34
 ---
 
-Scala provides the ability to give parameters default values that can be used to allow a caller to omit those parameters.
+Scala tiene la capacidad de de dar a los parámetros valores por defecto que pueden ser usados para permitir a quien invoca el método o función que omita dichos parámetros.
 
-In Java, one tends to see a lot of overloaded methods that only serve to provide default values for certain parameters of a large method.  This is especially true with constructors:
+En Java, uno tiende a ver muchos métodos sobrecargados que solamente sirven para proveer valores por defecto para ciertos parámetros de un método largo. En especial se ve este comportamiento en contstructores:
 
     public class HashMap<K,V> {
       public HashMap(Map<? extends K,? extends V> m);
@@ -23,9 +23,9 @@ In Java, one tends to see a lot of overloaded methods that only serve to provide
       public HashMap(int initialCapacity, float loadFactor);
     }
 
-There's really only two constructors here; one that takes another map, and one that takes a capacity and load factor.  The third and fourth constructors are there to allow users of <code>HashMap</code> to create instances with the probably-good-for-most-cases defaults of both load factor and capacity.
+Existen realmente dos constructores aquí; uno que toma otro mapa y uno que toma una capacidad y un factor de carga. El tercer y cuarto constructores están ahí para premitir a los usuarios de la clase <code>HashMap</code> crear instancias con el valor por defecto que probablemente sea el mejor para ambos, el factor de carga y la capacidad.
 
-More problematic is that the values used for defaults are in both the Javadoc *and* the code.  Keeping this up to date is easily forgotten.  A typical pattern around this would be to add public constants whose values will show up in the Javadoc:
+Más problemático es que los valores usados para ser por defecto están tanto en la documentación (Javadoc) y en el código. Mantener esto actualizado es fácil de olvidar. Un típico patrón utilizado para no cometer estos errores es agregar constantes públicas cuyo valor será mostrado en el Javadoc:
 
     public class HashMap<K,V> {
       public static final int DEFAULT_CAPACITY = 16;
@@ -41,25 +41,24 @@ More problematic is that the values used for defaults are in both the Javadoc *a
       public HashMap(int initialCapacity, float loadFactor);
     }
 
-While this keeps us from repeating ourselves, it's less than expressive.  
+Mientras esto evita repetirnos una y otra vez, es menos que expresivo.
 
-Scala adds direct support for this:
+Scala cuenta con soporte directo para esto:
 
     class HashMap[K,V](initialCapacity:Int = 16, loadFactor:Float = 0.75) {
     }
 
-    // Uses the defaults
+    // Usa los parametros por defecto
     val m1 = new HashMap[String,Int]
 
     // initialCapacity 20, default loadFactor
     val m2= new HashMap[String,Int](20)
 
-    // overriding both
+    // sobreescribe ambos
     val m3 = new HashMap[String,Int](20,0.8)
 
-    // override only the loadFactory via
-    // named arguments
+    // sobreescribe solamente loadFactor
+    // mediante parametros nombrados
     val m4 = new HashMap[String,Int](loadFactor = 0.8)
 
-Note how we can take advantage of *any* default value by using [named parameters](/tutorials/tour/named_parameters.html).
-
+Nótese cómo podemos sacar ventaja de cualquier valor por defecto al utilizar [parámetros nombrados](/tutorials/tour/named_parameters.html).

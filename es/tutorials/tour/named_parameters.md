@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Named Parameters
+title: Parámetros nombrados
 
 disqus: true
 
@@ -8,28 +8,26 @@ tutorial: scala-tour
 num: 35
 ---
 
-When calling methods and functions, you can use the name of the variables expliclty in the call, like so:
+En la invocación de métodos y funciones se puede usar el nombre de las variables explícitamente en la llamada, de la siguiente manera:
 
-      def printName(first:String, last:String) = {
-        println(first + " " + last)
+      def imprimirNombre(nombre:String, apellido:String) = {
+        println(nombre + " " + apellido)
       }
 
-      printName("John","Smith")
-      // Prints "John Smith"
-      printName(first = "John",last = "Smith")
-      // Prints "John Smith"
-      printName(last = "Smith",first = "John")
-      // Prints "John Smith"
+      imprimirNombre("John","Smith")
+      // Imprime "John Smith"
+      imprimirNombre(first = "John",last = "Smith")
+      // Imprime "John Smith"
+      imprimirNombre(last = "Smith",first = "John")
+      // Imprime "John Smith"
 
-Note that once you are using parameter names in your calls, the order doesn't matter, so long as all parameters are named.  This
-feature works well with [default parameter values](/tutorials/tour/default_parameter_values.html):
+Note que una vez que se utilizan parámetros nombrados en la llamada, el orden no importa, mientras todos los parámetros sean nombrados. Esta característica funciona bien en conjunción con [valores de parámetros por defecto](/tutorials/tour/default_parameter_values.html):
 
-      def printName(first:String = "John", last:String = "Smith") = {
-        println(first + " " + last)
+      def imprimirNombre(nombre:String = "John", apellido:String = "Smith") = {
+        println(nombre + " " + apellido)
       }
 
-      printName(last = "Jones")
-      // Prints "John Jones"
+      printName(apellido = "Jones")
+      // Imprime "John Jones"
 
-Since you can place the parameters in any order you like, you can use the default value for parameters that come first in the
-parameter list.
+Ya que es posible colocar los parámetros en cualquier orden que te guste, puedes usar el valor por defecto para parámetros que aparecen primero en la lista de parámetros.
