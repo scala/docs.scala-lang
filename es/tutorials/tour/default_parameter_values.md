@@ -6,6 +6,7 @@ disqus: true
 
 tutorial: scala-tour
 num: 34
+language: es
 ---
 
 Scala tiene la capacidad de de dar a los parámetros valores por defecto que pueden ser usados para permitir a quien invoca el método o función que omita dichos parámetros.

@@ -6,6 +6,7 @@ disqus: true
 
 tutorial: scala-tour
 num: 35
+language: es
 ---
 
 En la invocación de métodos y funciones se puede usar el nombre de las variables explícitamente en la llamada, de la siguiente manera:
