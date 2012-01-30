@@ -1,6 +1,6 @@
 ---
 layout: sip
-title: SIP: Inline Classes
+title: SIP-15 - Inline Classes
 ---
 
 
