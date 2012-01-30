@@ -11,7 +11,7 @@ Before submitting a SIP, it is a good to float your proposal on [scala-debate](h
 
 The process to submit is simple:
 
-* Fork the Scala documentation repository, [scala/scala.github.com](http://github.com/scala.github.com).
+* Fork the Scala documentation repository, [http://github.com/scala/scala.github.com](http://github.com/scala/scala.github.com).
 * Create a new SIP file in the `sips/pending/_posts/`.  Check the [Writing a SIP Tutorial](sip-tutorial.html)
   * Make sure the new file follows the format:  `YYYY-MM-dd-{title}.md`.  Use the proposal date for `YYYY-MM-dd`.
   * Use the [Markdown Syntax](http://daringfireball.net/projects/markdown/syntax) to write your SIP.
