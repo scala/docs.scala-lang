@@ -8,6 +8,11 @@ disqus: true
 Por Michel Schinz y Philipp Haller
 Traducción y arreglos Santiago Basulto
 
+Comentarios:
+   * No es necesario un archivo por clase
+   * Forma de utilizar funcional con interfaces en Java
+   * Comparación de funciones anónimas con clases anónimas
+
 ## Introducción
 
 Este documento provee una rápida introducción al lenguae Scala como también a su compilador. Está pensado para personas que ya poseen cierta experiencia en programación y quieren una vista rápida de lo que pueden hacer con Scala. Se asume como un conocimiento básico de programación orientada a objetos, especialmente en Java.
@@ -30,51 +35,29 @@ El lector astuto notará que el método `main` no es declarado como `static`. Es
 
 ### Compilando el ejemplo
 
-To compile the example, we use `scalac`, the Scala compiler. `scalac`
-works like most compilers: it takes a source file as argument, maybe
-some options, and produces one or several object files. The object
-files it produces are standard Java class files.
+Para compilar el ejemplo utilizaremos `scalac`, el compilador de Scala. `scalac` funciona como la mayoría de los compiladores. Toma un archivo fuente como argumento, algunas opciones y produce uno o varios archivos objeto. Los archivos objeto que produce son archivos class de Java estandar.
 
-If we save the above program in a file called
-`HelloWorld.scala`, we can compile it by issuing the following
-command (the greater-than sign `>` represents the shell prompt
-and should not be typed):
+Si guardamos el programa anterior en un archivo llamado `HolaMundo.scala`, podemos compilarlo ejecutando el siguiente comando (el símbolo mayor `>` representa el prompt del shell y no debe ser tipeado):
 
-    > scalac HelloWorld.scala
+    > scalac HolaMundo.scala
 
-This will generate a few class files in the current directory. One of
-them will be called `HelloWorld.class`, and contains a class
-which can be directly executed using the `scala` command, as the
-following section shows.
+Esto generará algunos archivos class en el directorio actual. Uno de ellos se llamará `HolaMundo.class` y contiene una clase que puede ser directamente ejecutada utilizando el comando `scala`, como mostramos en la siguiente sección.
 
-### Running the example
+### Ejecutando el ejemplo
 
-Once compiled, a Scala program can be run using the `scala` command.
-Its usage is very similar to the `java` command used to run Java
-programs, and accepts the same options. The above example can be
-executed using the following command, which produces the expected
-output:
+Una vez compilado, un programa Scala puede ser ejecutado utilizando el comando `scala`. Su uso es muy similar al comando `java` utilizado para ejecutar programas Java, y acepta las mismas opciones. El ejemplo de arriba puede ser ejecutado utilizando el siguiente comando, que produce la salida esperada:
 
-    > scala -classpath . HelloWorld
+    > scala -classpath . HolaMundo
 
-    Hello, world!
+    Hola, mundo!
 
-## Interaction with Java
+## Interacción con Java
 
-One of Scala's strengths is that it makes it very easy to interact
-with Java code. All classes from the `java.lang` package are
-imported by default, while others need to be imported explicitly.
+Una de las fortalezas de Scala es que hace muy fácil interactuar con código Java. Todas las clases del paquete `java.lang` son importadas por defecto, mientras otras necesitan ser importadas explicitamente.
 
-Let's look at an example that demonstrates this.  We want to obtain
-and format the current date according to the conventions used in a
-specific country, say France. (Other regions such as the
-French-speaking part of Switzerland use the same conventions.)
+Veamos un ejemplo que demuestra esto. Queremos obtener y formatear la fecha actual de acuerdo a convenciones utilizadas en un país específico, por ejemplo Francia.
 
-Java's class libraries define powerful utility classes, such as
-`Date` and `DateFormat`. Since Scala interoperates
-seemlessly with Java, there is no need to implement equivalent
-classes in the Scala class library--we can simply import the classes
-of the corresponding Java packages:
+Las librerías de clases de Java definen clases de utilería poderosas, como `Date` y `DateFormat`. Ya que Scala interacciona fácilmente con Java, no es necesario implementar estas clases equivalentes en las librerías de Scala --podemos simplemente importar las clases de los correspondientes paquetes de Java:
 
     import java.util.{Date, Locale}
     import java.text.DateFormat
@@ -82,259 +65,153 @@ of the corresponding Java packages:
 
     object FrenchDate {
       def main(args: Array[String]) {
-        val now = new Date
+        val ahora = new Date
         val df = getDateInstance(LONG, Locale.FRANCE)
-        println(df format now)
+        println(df format ahora)
       }
     }
 
-Scala's import statement looks very similar to Java's equivalent,
-however, it is more powerful. Multiple classes can be imported from
-the same package by enclosing them in curly braces as on the first
-line. Another difference is that when importing all the names of a
-package or class, one uses the underscore character (`_`) instead
-of the asterisk (`*`). That's because the asterisk is a valid
-Scala identifier (e.g. method name), as we will see later.
+Las declaraciones de importación de Scala lucen muy similares a las de Java, sin embargo, las primeras son bastante más poderosas. Múltiples clases pueden ser importadas desde el mismo paquete al encerrarlas en llaves como se muestra en la primer linea. Otra diferencia es que podemos importar todos los nombres de un paquete o clase, utilizando el caracter guión bajo (`_`) en vez del asterisco (`*`). Eso es porque el asterisco es un identificador válido en Scala (quiere decir que por ejemplo podemos nombrar a un método `*`), como veremos más adelante.
 
-The import statement on the third line therefore imports all members
-of the `DateFormat` class. This makes the static method
-`getDateInstance` and the static field `LONG` directly
-visible.
+La declaración `import` en la tercer linea por lo tanto importa todos los miembros de la clase `DateFormat`. Esto hace que el método estático `getDateInstance` y el campo estático `LONG` sean directamente visibles.
 
-Inside the `main` method we first create an instance of Java's
-`Date` class which by default contains the current date. Next, we
-define a date format using the static `getDateInstance` method
-that we imported previously. Finally, we print the current date
-formatted according to the localized `DateFormat` instance. This
-last line shows an interesting property of Scala's syntax. Methods
-taking one argument can be used with an infix syntax. That is, the
-expression
+Dentro del método `main` primero creamos una instancia de la clase `Date` la cual por defecto contiene la fecha actual. A continuación definimos un formateador de fechas utilizando el método estático `getDateInstance` que importamos previamente. Finalmente, imprimimos la fecha actual formateada de acuerdo a la instancia de `DateFormat` que fue "localizada". Esta última linea muestra una propiedad interesante de la sintaxis de Scala. Los métodos que toman un solo argumento pueden ser usados con una sintaxis de infijo Es decir, la expresión
 
-    df format now
+    df format ahora
+    
+es solamente otra manera más corta de escribir la expresión:
 
-is just another, slightly less verbose way of writing the expression
+    df.format(ahora)
 
-    df.format(now)
+Esto parece tener como un detalle sintáctico menor, pero tiene importantes consecuencias, una de ellas la exploraremos en la próxima sección.
 
-This might seem like a minor syntactic detail, but it has important
-consequences, one of which will be explored in the next section.
+Para concluir esta sección sobre la interacción con Java, es importante notar que es también posible heredar de clases Java e implementar interfaces Java directamente en Scala.
 
-To conclude this section about integration with Java, it should be
-noted that it is also possible to inherit from Java classes and
-implement Java interfaces directly in Scala.
+## Todo es un objeto
 
-## Everything is an Object
-
-Scala is a pure object-oriented language in the sense that
-*everything* is an object, including numbers or functions. It
-differs from Java in that respect, since Java distinguishes
-primitive types (such as `boolean` and `int`) from reference
-types, and does not enable one to manipulate functions as values.
+Scala es un lenguaje puramente orientado a objetos en el sentido de que *todo* es un objeto, incluyendo números o funciones. Difiere de Java en este aspecto, ya que Java distingue tipos primitivos (como `boolean` e `int`) de tipos referencialbes, y no nos permite manipular las funciones como valores.
 
 ### Numbers are objects
 
-Since numbers are objects, they also have methods. And in fact, an
-arithmetic expression like the following:
+Ya que los números son objetos, estos también tienen métodos. De hecho, una expresión aritmética como la siguiente:
 
     1 + 2 * 3 / x
 
-consists exclusively of method calls, because it is equivalent to the
-following expression, as we saw in the previous section:
+Consiste exclusivamente de llamadas a métodos, porque es equivalente a la siguiente expresión, como vimos en la sección anterior:
 
     (1).+(((2).*(3))./(x))
 
-This also means that `+`, `*`, etc. are valid identifiers
-in Scala.
+Esto también indica que `+`, `*`, etc son identificadores válidos en Scala.
 
-The parentheses around the numbers in the second version are necessary
-because Scala's lexer uses a longest match rule for tokens.
-Therefore, it would break the following expression:
+Los paréntesis alrededor de los números en la segunda versión son necesarios porque el analizador léxico de Scala usa la regla de "mayor coincidencia". Por lo tanto partiría la siguiente expresión:
 
     1.+(2)
 
-into the tokens `1.`, `+`, and `2`.  The reason that
-this tokenization is chosen is because `1.` is a longer valid
-match than `1`.  The token `1.` is interpreted as the
-literal `1.0`, making it a `Double` rather than an
-`Int`.  Writing the expression as:
+En estas partes: `1.`, `+`, y `2`. La razón que esta regla es elegida es porque `1.` es una coincidencia válida y es mayor que `1`, haciendo a este un `Double` en vez de un `Int`. Al escribir la expresión así:
 
     (1).+(2)
 
-prevents `1` from being interpreted as a `Double`.
+previene que el `1` sea tomado como un `Double`.
 
-### Functions are objects
+### Las funciones son objetos
 
-Perhaps more surprising for the Java programmer, functions are also
-objects in Scala. It is therefore possible to pass functions as
-arguments, to store them in variables, and to return them from other
-functions. This ability to manipulate functions as values is one of
-the cornerstone of a very interesting programming paradigm called
-*functional programming*.
+Tal vez suene más sorprendente para los programadores Java, las funciones en Scala también son objetos. Por lo tanto es posible pasar funciones como argumentos, almacenarlas en variables, y retornarlas desde otras funciones. Esta habilidad de manipular funciones como valores es una de las valores fundamentales de un paradigma de programación muy interesante llamado *programación funcional*.
 
-As a very simple example of why it can be useful to use functions as
-values, let's consider a timer function whose aim is to perform some
-action every second. How do we pass it the action to perform? Quite
-logically, as a function. This very simple kind of function passing
-should be familiar to many programmers: it is often used in
-user-interface code, to register call-back functions which get called
-when some event occurs.
+Como un ejemplo muy simple de por qué puede ser útil usar funciones como valores consideremos una función *temporizador* (o timer, en inglés) cuyo propósito es realizar alguna acción cada un segundo. ¿Cómo pasamos al temporizador la acción a realizar? Bastante lógico, como una función. Este simple concepto de pasar funciones debería ser familiar para muchos programadores: es generalmente utilizado en código relacionado con Interfaces gráficas de usuario (GUIs) para registrar "retrollamadas" (call-back en inglés) que son invocadas cuando un evento ocurre.
 
-In the following program, the timer function is called
-`oncePerSecond`, and it gets a call-back function as argument.
-The type of this function is written `() => Unit` and is the type
-of all functions which take no arguments and return nothing (the type
-`Unit` is similar to `void` in C/C++). The main function of
-this program simply calls this timer function with a call-back which
-prints a sentence on the terminal. In other words, this program
-endlessly prints the sentence "time flies like an arrow" every
-second.
+En el siguiente programa, la función del temporizador se llama `unaVezPorSegundo` y recibe una función call-back como argumento. El tipo de esta función es escrito de la siguiente manera: `() => Unit` y es el tipo de todas las funciones que no toman argumentos ni retornan valores (el tipo `Unit` es similar a `void` en Java/C/C++). La función principal de este programa simplemente invoca esta función temporizador con una call-back que imprime una sentencia en la terminal. En otras palabras, este programa imprime interminablemente la sentencia "El tiemplo vuela como una flecha" cada segundo.
 
-    object Timer {
-      def oncePerSecond(callback: () => Unit) {
+    object Temporizador {
+      def unaVezPorSegundo(callback: () => Unit) {
         while (true) { callback(); Thread sleep 1000 }
       }
-      def timeFlies() {
-        println("time flies like an arrow...")
+      def tiempoVuela() {
+        println("El tiemplo vuela como una flecha...")
       }
       def main(args: Array[String]) {
-        oncePerSecond(timeFlies)
+        unaVezPorSegundo(tiempoVuela)
       }
     }
-
+    
+_Nota: si nunca tuviste experiencias previas con programación funcional te recomiendo que te tomes unos segundos para analizar cuando se utilizan paréntesis y cuando no en los lugares donde aparece *callback*. Por ejemplo, dentro de la declaración de `unaVezPorSegundo` no aparece, ya que se trata de la función como un "valor", a diferencia de cómo aparece dentro del método, ya que en ese caso se la está invocando (por eso los paréntesis)._
 Note that in order to print the string, we used the predefined method
 `println` instead of using the one from `System.out`.
 
-#### Anonymous functions
+#### Funciones anónimas
 
-While this program is easy to understand, it can be refined a bit.
-First of all, notice that the function `timeFlies` is only
-defined in order to be passed later to the `oncePerSecond`
-function. Having to name that function, which is only used once, might
-seem unnecessary, and it would in fact be nice to be able to construct
-this function just as it is passed to `oncePerSecond`. This is
-possible in Scala using *anonymous functions*, which are exactly
-that: functions without a name. The revised version of our timer
-program using an anonymous function instead of *timeFlies* looks
-like that:
+El programa anterior es fácil de entender, pero puede ser refinado aún más. Primero que nada es interesante notar que la función `tiempoVuela` está definida solamente para ser pasada posteriormente a la función `unaVezPorSegundo`. Tener que nombrar esa función, que es utilizada solamente una vez parece un poco innecesario y sería bueno poder construirla justo cuando sea pasada a `unaVezPorSegundo`. Esto es posible en Scala utilizando *funciones anónimas*, que son exactamente eso: funciones sin nombre. La versión revisada de nuestro temporizador utilizando una función anónima luce así:
 
-    object TimerAnonymous {
-      def oncePerSecond(callback: () => Unit) {
+    object TemporizadorAnonimo {
+      def unaVezPorSegundo(callback: () => Unit) {
         while (true) { callback(); Thread sleep 1000 }
       }
       def main(args: Array[String]) {
-        oncePerSecond(() =>
-          println("time flies like an arrow..."))
+        unaVezPorSegundo(
+            () => println("El tiemplo vuela como una flecha...")
+        )
       }
     }
 
-The presence of an anonymous function in this example is revealed by
-the right arrow `=>` which separates the function's argument
-list from its body. In this example, the argument list is empty, as
-witnessed by the empty pair of parenthesis on the left of the arrow.
-The body of the function is the same as the one of `timeFlies`
-above.
+La presencia de una función anónima en este ejemplo es revelada por la flecha a la derecha `=>` que separa los argumentos de la función del cuerpo de esta. En este ejemplo, la lista de argumentos está vacía, como se ve por el par de paréntesis vacíos a la izquierda de la flecha. El cuerpo de la función es el mismo que en `tiempoVuela` del programa anterior.
 
-## Classes
+## Clases
 
-As we have seen above, Scala is an object-oriented language, and as
-such it has a concept of class. (For the sake of completeness,
-  it should be noted that some object-oriented languages do not have
-  the concept of class, but Scala is not one of them.)
-Classes in Scala are declared using a syntax which is close to
-Java's syntax. One important difference is that classes in Scala can
-have parameters. This is illustrated in the following definition of
-complex numbers.
+Como hemos visto anteriormente, Scala es un lenguaje orientado a objetos, y como tal tiene el concepto de Clase (en realidad existen lenguajes orientados a objetos que no cuentan con el concepto de clases, pero Scala no es uno de ellos). Las clases en Scala son declaradas utilizando una sintaxis que es cercana a la de Java. Una diferencia importante es que las clases en Scala pueden tener parámetros. Ilustramos esto en el siguiente ejemplo, la definición de un número complejo:
 
-    class Complex(real: Double, imaginary: Double) {
+    class Complejo(real: Double, imaginaria: Double) {
       def re() = real
-      def im() = imaginary
+      def im() = imaginaria
     }
 
-This complex class takes two arguments, which are the real and
-imaginary part of the complex. These arguments must be passed when
-creating an instance of class `Complex`, as follows: `new
-  Complex(1.5, 2.3)`. The class contains two methods, called `re`
-and `im`, which give access to these two parts.
+Esta clase compleja toma dos argumentos, que son las partes real e imaginarias de un número complejo. Estos argumentos deben ser pasados cuando se crea una instancia de la clase `Complejo`, de la siguiente manera:
 
-It should be noted that the return type of these two methods is not
-given explicitly. It will be inferred automatically by the compiler,
-which looks at the right-hand side of these methods and deduces that
-both return a value of type `Double`.
+    new Complejo(1.5, 2.3)
+    
+La clase contiene dos métodos llamados `re` e `im`, que proveen acceso a las dos partes del número.
 
-The compiler is not always able to infer types like it does here, and
-there is unfortunately no simple rule to know exactly when it will be,
-and when not. In practice, this is usually not a problem since the
-compiler complains when it is not able to infer a type which was not
-given explicitly. As a simple rule, beginner Scala programmers should
-try to omit type declarations which seem to be easy to deduce from the
-context, and see if the compiler agrees. After some time, the
-programmer should get a good feeling about when to omit types, and
-when to specify them explicitly.
+Debe notarse que el tipo de retorno de estos dos métodos no está expresado explicitamente. Será inferido automáticamente por el compilador, que primero mira la parte derecha de estos métodos y puede deducir que ambos retornan un valor de tipo `Double`.
 
-### Methods without arguments
+El compilador no es siempre capaz de inferir los tipos como lo hace aquí, y desafortunadamente no existe una regla simple para saber cuándo será y cuándo no. En la práctica, esto generalmente no es un problema ya que el compilador se queja cuando no es capaz de inferir un tipo que no fue explicitamente fijado. Como regla simple, los programadores de Scala novatos deberían tratar de omitir las declaraciones de tipos que parecen ser simples de deducir del contexto y ver si el compilador no lanza errores. Después de algún tiempo, el programador debería tener una buena idea de cuando omitir tipos y cuando explicitarlos.
 
-A small problem of the methods `re` and `im` is that, in
-order to call them, one has to put an empty pair of parenthesis after
-their name, as the following example shows:
+### Métodos sin argumentos
 
-    object ComplexNumbers {
+Un pequeño problema de los métodos `re` e `im` es que para poder llamarlos es necesario agregar un par de paréntesis vacíos después de sus nombres, como muestra el siguiente ejemplo:
+
+    object NumerosComplejos {
       def main(args: Array[String]) {
-        val c = new Complex(1.2, 3.4)
-        println("imaginary part: " + c.im())
+        val c = new Complejo(1.2, 3.4)
+        println("Parte imaginaria: " + c.im())
       }
     }
 
-It would be nicer to be able to access the real and imaginary parts
-like if they were fields, without putting the empty pair of
-parenthesis. This is perfectly doable in Scala, simply by defining
-them as methods *without arguments*. Such methods differ from
-methods with zero arguments in that they don't have parenthesis after
-their name, neither in their definition nor in their use. Our
-`Complex` class can be rewritten as follows:
+Sería mejor poder acceder las partes imaginarias y reales como si fueran campos, sin poner los paréntesis vacíos. Esto es perfectamente realizable en Scala, simplemente al definirlos como *métodos sin argumentos*. Tales métodos difieren de los métodos con cero o más argumentos en que no tienen paréntesis después de su nombre, tanto en la definición como en el uso. Nuestra clase `Complejo` puede ser reescrita así:
 
-    class Complex(real: Double, imaginary: Double) {
+    class Complejo(real: Double, imaginaria: Double) {
       def re = real
-      def im = imaginary
+      def im = imaginaria
     }
 
 
-### Inheritance and overriding
+### Herencia y sobreescritura
 
-All classes in Scala inherit from a super-class. When no super-class
-is specified, as in the `Complex` example of previous section,
-`scala.AnyRef` is implicitly used.
+Todas las clases en Scala heredan de una superclase. Cuando ninguna superclase es especificada, como es el caso de `Complejo` se utiliza implicitamente `scala.AnyRef`.
 
-It is possible to override methods inherited from a super-class in
-Scala. It is however mandatory to explicitly specify that a method
-overrides another one using the `override` modifier, in order to
-avoid accidental overriding. As an example, our `Complex` class
-can be augmented with a redefinition of the `toString` method
-inherited from `Object`.
+Es posible sobreescribir métodos heredados de una superclase en Scala. Aunque es necesario explicitar específicamente que un método sobreescribe otro utilizando el modificador `override`, de manera de evitar sobreescrituras accidentales. Como ejemplo, nuestra clasee `Complejo` puede ser aumentada con la redefinición del método `toString` heredado de `Object`.
 
-    class Complex(real: Double, imaginary: Double) {
+    class Complejo(real: Double, imaginaria: Double) {
       def re = real
-      def im = imaginary
-      override def toString() =
+      def im = imaginaria
+      override def toString() = 
         "" + re + (if (im < 0) "" else "+") + im + "i"
     }
 
+## Clases Case y Reconocimiento de patrones
 
-## Case Classes and Pattern Matching
+Un tipo de estructura de datos uqe aparece seguido en programas es el Árbol. Por ejemplo, los intérpretes y compiladores usualmente representan los programas internamente como árboles; los documentos XML son árboles; y muchos otros tipos de contenedores están basados en árboles, como el árbol roji-negro (red-black tree).
 
-A kind of data structure that often appears in programs is the tree.
-For example, interpreters and compilers usually represent programs
-internally as trees; XML documents are trees; and several kinds of
-containers are based on trees, like red-black trees.
+Ahora examinaremos cómo estos árboles son representados y manipulados en Scala mediante un pequeño programa que oficie de calculadora. El objetivo de este programa es manipular expresiones aritméticas simples compuestas de sumas de enteros y variables. Dos ejemplos de estas expresiones pueden ser: `1+2` y `(x+x)+(7+y)`.
 
-We will now examine how such trees are represented and manipulated in
-Scala through a small calculator program. The aim of this program is
-to manipulate very simple arithmetic expressions composed of sums,
-integer constants and variables. Two examples of such expressions are
-`1+2` and `(x+x)+(7+y)`.
-
-We first have to decide on a representation for such expressions. The
-most natural one is the tree, where nodes are operations (here, the
-addition) and leaves are values (here constants or variables).
+Primero tenemos que decidir una representación para tales expresiones. La más natural es un árbol, donde los nodos son las operaciones (la adición en este caso) y las hojas son valores (constantes o variables).
 
 In Java, such a tree would be represented using an abstract
 super-class for the trees, and one concrete sub-class per node or
@@ -343,116 +220,66 @@ data-type for the same purpose. Scala provides the concept of
 *case classes* which is somewhat in between the two. Here is how
 they can be used to define the type of the trees for our example:
 
-    abstract class Tree
-    case class Sum(l: Tree, r: Tree) extends Tree
-    case class Var(n: String) extends Tree
-    case class Const(v: Int) extends Tree
+En Java, un árbol así sería representado utilizando una superclase abstracta para los árboles, y una subclase concreta por nodo u hoja. En un lenguaje de programación funcional uno utilizaría un tipo de dato algebráico para el mismo propósito. Scala provee el concepto de *clases case* que está en el medio de los dos conceptos anteriores. Aquí mostramos como pueden ser usadas para definir el tipo de los árboles en nuestro ejemplo:
 
-The fact that classes `Sum`, `Var` and `Const` are
-declared as case classes means that they differ from standard classes
-in several respects:
+    abstract class Arbol
+    case class Sum(l: Arbol, r: Arbol) extends Arbol
+    case class Var(n: String) extends Arbol
+    case class Const(v: Int) extends Arbol
 
-- the `new` keyword is not mandatory to create instances of
-  these classes (i.e., one can write `Const(5)` instead of
-  `new Const(5)`),
-- getter functions are automatically defined for the constructor
-  parameters (i.e., it is possible to get the value of the `v`
-  constructor parameter of some instance `c` of class
-  `Const` just by writing `c.v`),
-- default definitions for methods `equals` and
-  `hashCode` are provided, which work on the *structure* of
-  the instances and not on their identity,
-- a default definition for method `toString` is provided, and
-  prints the value in a "source form" (e.g., the tree for expression
-  `x+1` prints as `Sum(Var(x),Const(1))`),
-- instances of these classes can be decomposed through
-  *pattern matching* as we will see below.
+El hecho de que las clases `Sum`, `Var` y `Const` sean declaradas como clases case significa que dififieren de las clases normales en varios aspectos:
 
-Now that we have defined the data-type to represent our arithmetic
-expressions, we can start defining operations to manipulate them. We
-will start with a function to evaluate an expression in some
-*environment*. The aim of the environment is to give values to
-variables. For example, the expression `x+1` evaluated in an
-environment which associates the value `5` to variable `x`, written
-`{ x -> 5 }`, gives `6` as result.
+- no es obligatorio utilizar la palabra clave `new` para crear
+  instancias de estas clases (es decir, se puede escribir `Const(5)`
+  en lugar de `new Const(5)`),
+- se crea automáticamente un "getter" (un método para obtener el valor)
+  para los parámetros utilizados en el constructor (por ejemplo es posible
+  obtener el valor de `v` de una instancia `c` de la clase `Const` de la 
+  siguiente manera: `c.v`),
+- se proveen definiciones por defecto de los métodos `equals` y `hashCode`,
+  que trabajan sobre la estructura de las instancias y no sobre su identidad,
+- se crea una definición por defecto del método `toString` que 
+  imprime el valor de una forma "tipo código) (ej: la expresión
+  del árbol `x+1` se imprimiría `Sum(Var(x),Const(1))`),
+- las instancias de estas clases pueden ser descompuestas
+  mediante *reconocimiento de patrones* (pattern matching)
+  como veremos más abajo.
 
-We therefore have to find a way to represent environments. We could of
-course use some associative data-structure like a hash table, but we
-can also directly use functions! An environment is really nothing more
-than a function which associates a value to a (variable) name. The
-environment `{ x -> 5 }` given above can simply be written as
-follows in Scala:
+Ahora que hemos definido el tipo de datos para representar nuestra expresión aritmética podemos empezar definiendo operaciones para manipularlas. Empezaremos con una función para evaluar una expresión en un *entorno*. El objetivo del entorno es darle valores a las variables. Por ejemplo, la expresión `x+1` evaluada en un entorno que asocia el valor `5` a la variable `x`, escrito `{ x -> 5 }`, da como resultado `6`.
+
+Por lo tanto tenemos que encontrar una manera de representar entornos. Podríamos por supuesto utilizar alguna estructura de datos asociativa como una tabla hash, pero podemos directamente utilizar funciones! Un entorno realmente no es nada más que una función la cual asocia valores a variables. El entorno `{ x -> 5 }` mostrado anteriormente puede ser fácilmente escrito de la siguiente manera en Scala:
 
     { case "x" => 5 }
 
-This notation defines a function which, when given the string
-`"x"` as argument, returns the integer `5`, and fails with an
-exception otherwise.
+Esta notación define una función la cual, dado un string `"x"` como argumento retorna el entero `5`, y falla con una excepción si no fuera así.
 
-Before writing the evaluation function, let us give a name to the type
-of the environments. We could of course always use the type
-`String => Int` for environments, but it simplifies the program
-if we introduce a name for this type, and makes future changes easier.
-This is accomplished in Scala with the following notation:
+Antes de escribir la función evaluadora, démosle un nombre al tipo de los entornos. Podríamos por supuesto simplemente utilizar `String => Int` para los entornos, pero simplifica el programa introducir un nombre para este tipo, y hace que los futuros cambios sean más fáciles. Esto lo realizamos de la siguiente manera:
 
-    type Environment = String => Int
+    type Entorno = String => Int
 
-From then on, the type `Environment` can be used as an alias of
-the type of functions from `String` to `Int`.
+De ahora en más, el tipo `Entorno` puede ser usado como un alias del tipo de funciones definidas de `String` a `Int`.
 
-We can now give the definition of the evaluation function.
-Conceptually, it is very simple: the value of a sum of two expressions
-is simply the sum of the value of these expressions; the value of a
-variable is obtained directly from the environment; and the value of a
-constant is the constant itself. Expressing this in Scala is not more
-difficult:
+Ahora podemos dar la definición de la función evaluadora. Conceptualmente, es muy sencillo: el valor de una suma de dos expresiones es simplemente la suma de los valores de estas expresiones; el valor de una variable es obtenido directamente del entorno; y eel valor de una constante es la constante en sí misma. Expresar esto en Scala no resulta para nada difícil:
 
-    def eval(t: Tree, env: Environment): Int = t match {
-      case Sum(l, r) => eval(l, env) + eval(r, env)
-      case Var(n)    => env(n)
+    def eval(a: Arbol, ent: Entorno): Int = a match {
+      case Sum(i, d) => eval(i, ent) + eval(d, env)
+      case Var(n)    => ent(n)
       case Const(v)  => v
     }
 
-This evaluation function works by performing *pattern matching*
-on the tree `t`. Intuitively, the meaning of the above definition
-should be clear:
+Esta función evaluadora función realizando un *reconocimiento de patrones* (pattern matching) en el árbol `a`. Intuitivamente, el significado de la definición de arriba debería estar claro:
 
-1. it first checks if the tree `t` is a `Sum`, and if it
-   is, it binds the left sub-tree to a new variable called `l` and
-   the right sub-tree to a variable called `r`, and then proceeds
-   with the evaluation of the expression following the arrow; this
-   expression can (and does) make use of the variables bound by the
-   pattern appearing on the left of the arrow, i.e., `l` and
-   `r`,
-2. if the first check does not succeed, that is, if the tree is not
-   a `Sum`, it goes on and checks if `t` is a `Var`; if
-   it is, it binds the name contained in the `Var` node to a
-   variable `n` and proceeds with the right-hand expression,
-3. if the second check also fails, that is if `t` is neither a
-   `Sum` nor a `Var`, it checks if it is a `Const`, and
-   if it is, it binds the value contained in the `Const` node to a
-   variable `v` and proceeds with the right-hand side,
-4. finally, if all checks fail, an exception is raised to signal
-   the failure of the pattern matching expression; this could happen
-   here only if more sub-classes of `Tree` were declared.
+1. Primero comprueba si el árbol `t`es una `Sum`, y si lo es, asocia el sub-arbol izquierdo a una nueva variable llamada `i` y el sub-arbol derecho a la variable `r`, y después procede con la evaluación de la expresión que sigue a la flecha (`=>`); esta expresión puede (y hace) uso de las variables asociadas por el patrón que aparece del lado izquierdo de la flecha.
+2. si la primer comprobación (la de `Sum`) no prospera, es decir que el árbol no es una `Sum`, sigue de largo y comprueba si `a` es un `Var`; si lo es, asocia el nombre contenido en el nodo `Var` a la variable `n` y procede con la parte derecha de la expresión.
+3. si la segunda comprobación también falla, resulta que `a` no es un `Sum` ni un `Var`, por lo tanto comprueba que sea un `Const`, y si lo es, asocia el valor contenido en el nodo `Const` a la variable `v`y procede con el lado derecho.
+4. finalmente, si todos las comprobaciones fallan, una excepción es lanzada para dar cuenta el fallo de la expresión; esto puede pasar solo si existen más subclases de `Arbol`.
 
-We see that the basic idea of pattern matching is to attempt to match
-a value to a series of patterns, and as soon as a pattern matches,
-extract and name various parts of the value, to finally evaluate some
-code which typically makes use of these named parts.
+Hemos visto que la idea básica del reconocimiento de patrones es intentar coincidir un valor con una serie de patrones, y tan pronto como un patrón coincida, extraer y nombrar las varias partes del valor para finalmente evaluar algo de código que tipicamente hace uso de esas partes nombradas.
 
-A seasoned object-oriented programmer might wonder why we did not
-define `eval` as a *method* of class `Tree` and its
-subclasses. We could have done it actually, since Scala allows method
-definitions in case classes just like in normal classes. Deciding
-whether to use pattern matching or methods is therefore a matter of
-taste, but it also has important implications on extensibility:
+Un programador con experiencia en orientación a objetos puede preguntarse por qué no definimos `eval` como un método de la clase `Arbol` y sus subclases. En realidad podríamos haberlo hecho, ya que Scala permite la definición de métodos en clases case tal como en clases normales. Por lo tanto decidir en usar reconocimiento de patrones o métodos es una cuestión de gustos, pero también tiene grandes implicancias en cuanto a la extensibilidad:
 
-- when using methods, it is easy to add a new kind of node as this
-  can be done just by defining a sub-class of `Tree` for it; on
-  the other hand, adding a new operation to manipulate the tree is
-  tedious, as it requires modifications to all sub-classes of
-  `Tree`,
+- cuando usamos métodos, es fácil añadir un nuevo tipo de nodo ya que esto puede ser realizado simplemente al definir una nueva subclase de `Arbol`; por otro lado, añadir una nueva operación para manipular el árbol es tedioso, ya que requiere la modificación en todas las subclases.
+
 - when using pattern matching, the situation is reversed: adding a
   new kind of node requires the modification of all functions which do
   pattern matching on the tree, to take the new node into account; on
