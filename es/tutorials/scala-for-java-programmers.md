@@ -280,71 +280,52 @@ Un programador con experiencia en orientación a objetos puede preguntarse por q
 
 - cuando usamos métodos, es fácil añadir un nuevo tipo de nodo ya que esto puede ser realizado simplemente al definir una nueva subclase de `Arbol`; por otro lado, añadir una nueva operación para manipular el árbol es tedioso, ya que requiere la modificación en todas las subclases.
 
-- when using pattern matching, the situation is reversed: adding a
-  new kind of node requires the modification of all functions which do
-  pattern matching on the tree, to take the new node into account; on
-  the other hand, adding a new operation is easy, by just defining it
-  as an independent function.
+- cuando utilizamos reconocimiento de patrones esta situación es inversa: agregar un nuevo tipo de nodo requiere la modificación de todas las funciones que hacen reconocimiento de patrones sobre el árbol, para tomar en cuenta un nuevo nodo; pero por otro lado agregar una nueva operación fácil, solamente definiendolo como una función independiente.
 
 To explore pattern matching further, let us define another operation
 on arithmetic expressions: symbolic derivation. The reader might
 remember the following rules regarding this operation:
 
-1. the derivative of a sum is the sum of the derivatives,
-2. the derivative of some variable `v` is one if `v` is the
-   variable relative to which the derivation takes place, and zero
-   otherwise,
-3. the derivative of a constant is zero.
+Para explorar un poco más esto de pattern matching definamos otra operación aritmética: derivación simbólica. El lector recordará las siguientes reglas sobre esta operación:
+
+1. la derivada de una suma es la suma de las derivadas,
+2. la derivada de una variable `v` es uno (1) si `v` es la variable relativa a la cual la derivada toma lugar, y cero (0)de otra manera,
+3. la derivada de una constante es cero (0).
 
 These rules can be translated almost literally into Scala code, to
 obtain the following definition:
 
-    def derive(t: Tree, v: String): Tree = t match {
-      case Sum(l, r) => Sum(derive(l, v), derive(r, v))
+Estas reglas pueden ser traducidas casi literalmente en código Sclaa, para obtener la siguiente definición.
+
+    def derivada(a: Arbol, v: String): Arbol = a match {
+      case Sum(l, r) => Sum(derivada(l, v), derivada(r, v))
       case Var(n) if (v == n) => Const(1)
       case _ => Const(0)
     }
 
-This function introduces two new concepts related to pattern matching.
-First of all, the `case` expression for variables has a
-*guard*, an expression following the `if` keyword. This
-guard prevents pattern matching from succeeding unless its expression
-is true. Here it is used to make sure that we return the constant `1`
-only if the name of the variable being derived is the same as the
-derivation variable `v`. The second new feature of pattern
-matching used here is the *wildcard*, written `_`, which is
-a pattern matching any value, without giving it a name.
+Esta función introduce dos nuevos conceptos relacionados al pattern matching. Primero que nada la expresión `case` para variables tienen una *guarda*, una expresión siguiendo la palabra clave `if`. Esta guarda previene que el patrón concuerde al menos que la expresión sea verdadera. Aquí es usada para asegurarse que retornamos la constante 1 solo si el nombre de la variable siendo derivada es el mismo que la variable derivada `v`. El segundo concepto nuevo usado aquí es el *comodín*, escrito con el guión bajo `_`, que coincide con cualquier valor que aparezca, sin darle un nombre.
 
-We did not explore the whole power of pattern matching yet, but we
-will stop here in order to keep this document short. We still want to
-see how the two functions above perform on a real example. For that
-purpose, let's write a simple `main` function which performs
-several operations on the expression `(x+x)+(7+y)`: it first computes
-its value in the environment `{ x -> 5, y -> 7 }`, then
-computes its derivative relative to `x` and then `y`.
+No hemos explorado el completo poder del pattern matching aún, pero nos detendremos aquí para mantener este documento corto. Todavía nos queda pendiente ver cómo funcionan las dos funciones de arriba en un ejemplo real. Para ese propósito, escribamos una función main simple que realice algunas operaciones sobre la expresión `(x+x)+(7+y)`: primero computa su valor en el entorno `{ x -> 5, y -> 7 }` y después computa su derivada con respecto a `x` y después a `y`.
 
     def main(args: Array[String]) {
-      val exp: Tree = Sum(Sum(Var("x"),Var("x")),Sum(Const(7),Var("y")))
-      val env: Environment = { case "x" => 5 case "y" => 7 }
-      println("Expression: " + exp)
-      println("Evaluation with x=5, y=7: " + eval(exp, env))
-      println("Derivative relative to x:\n " + derive(exp, "x"))
-      println("Derivative relative to y:\n " + derive(exp, "y"))
+      val exp: Arbol = Sum(Sum(Var("x"),Var("x")),Sum(Const(7),Var("y")))
+      val ent: Entonrno = { case "x" => 5 case "y" => 7 }
+      println("Expresión: " + exp)
+      println("Evaluación con x=5, y=7: " + eval(exp, ent))
+      println("Derivada con respecto a x:\n " + derivada(exp, "x"))
+      println("Derivada con respecto a y:\n " + derivada(exp, "y"))
     }
 
-Executing this program, we get the expected output:
+Al ejecutar este programa obtenemos el siguiente resultado:
 
-    Expression: Sum(Sum(Var(x),Var(x)),Sum(Const(7),Var(y)))
-    Evaluation with x=5, y=7: 24
-    Derivative relative to x:
+    Expresión: Sum(Sum(Var(x),Var(x)),Sum(Const(7),Var(y)))
+    Evaluación con x=5, y=7: 24
+    Derivada con respecto a x:
      Sum(Sum(Const(1),Const(1)),Sum(Const(0),Const(0)))
-    Derivative relative to y:
+    Derivada con respecto a y:
      Sum(Sum(Const(0),Const(0)),Sum(Const(0),Const(1)))
 
-By examining the output, we see that the result of the derivative
-should be simplified before being presented to the user. Defining a
-basic simplification function using pattern matching is an interesting
-(but surprisingly tricky) problem, left as an exercise for the reader.
+Al examinar la salida vemos que el resultado de la derivada debería ser simplificado antes de ser presentado al usuario. Definir una función de simplificación básica utilizando reconocimiento de patrones es un problema interesante (y, por no decir complejo, que necesita una solución astuta), lo dejamos para un ejercicio para el lector.
 
 ## Traits
 
