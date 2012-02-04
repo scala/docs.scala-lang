@@ -329,29 +329,15 @@ Al examinar la salida vemos que el resultado de la derivada debería ser simplif
 
 ## Traits
 
-Apart from inheriting code from a super-class, a Scala class can also
-import code from one or several *traits*.
+_Nota: La palabra Trait(/treɪt/, pronunciado Treit) puede ser traducida literalmente como "Rasgo". De todas maneras decido utilizar la notación original por ser un concepto muy arraigado a Scala_
 
-Maybe the easiest way for a Java programmer to understand what traits
-are is to view them as interfaces which can also contain code. In
-Scala, when a class inherits from a trait, it implements that trait's
-interface, and inherits all the code contained in the trait.
+Aparte de poder heredar código de una super clase, una clase en Scala puede también importar código de uno o varios *traits*.
 
-To see the usefulness of traits, let's look at a classical example:
-ordered objects. It is often useful to be able to compare objects of a
-given class among themselves, for example to sort them. In Java,
-objects which are comparable implement the `Comparable`
-interface. In Scala, we can do a bit better than in Java by defining
-our equivalent of `Comparable` as a trait, which we will call
-`Ord`.
+Tal vez la forma más fácil para un programador Java de entender qué son los traits es verlos como interfaces que también pueden contener código. En Scala, cuando una clase hereda de un trait, implementa la interface de ese trait, y hereda todo el código contenido en el trait.
 
-When comparing objects, six different predicates can be useful:
-smaller, smaller or equal, equal, not equal, greater or equal, and
-greater. However, defining all of them is fastidious, especially since
-four out of these six can be expressed using the remaining two. That
-is, given the equal and smaller predicates (for example), one can
-express the other ones. In Scala, all these observations can be
-nicely captured by the following trait declaration:
+Para ver la utilidad de los traits, veamos un ejemplo clásico: objetos ordenados. Generalemente es útil tener la posibilidad de comparar objetos de una clase dada entre ellos, por ejemplo, para ordenarlos. En Java, los objetos que son comparables implementan la interfaz `Comparable`. En Scala, podemos hacer algo un poco mejor que en Java al definir un trait equivalente `Comparable` que invocará a `Ord`.
+
+Cuando comparamos objetos podemos utilizar seis predicados distintos: menor, menor o igual, igual, distinto, mayor o igual y mayor. De todas maneras, definir todos estos es fastidioso, especialmente que cuatro de estos pueden ser expresados en base a los otros dos. Esto es, dados los predicados "igual" y "menor" (por ejemplo), uno puede expresar los otros. En Scala, todas estas observaciones pueden ser fácilmente capturadas mediante la siguiente declaración de un Trait:
 
     trait Ord {
       def < (that: Any): Boolean
@@ -360,16 +346,9 @@ nicely captured by the following trait declaration:
       def >=(that: Any): Boolean = !(this < that)
     }
 
-This definition both creates a new type called `Ord`, which
-plays the same role as Java's `Comparable` interface, and
-default implementations of three predicates in terms of a fourth,
-abstract one. The predicates for equality and inequality do not appear
-here since they are by default present in all objects.
+Esta definición crea un nuevo tipo llamado `Ord` el cual juega el mismo rol que la interfaz `Comparable`, como también provee implementaciones de tres predicados en términos de un cuarto, abstracto. Los predicados para igualidad y su inverso (distinto, no igual) no aparecen aquí ya que por defecto están presenten en todos los objetos.
 
-The type `Any` which is used above is the type which is a
-super-type of all other types in Scala. It can be seen as a more
-general version of Java's `Object` type, since it is also a
-super-type of basic types like `Int`, `Float`, etc.
+El tipo `Any` el cual es usado arriba es el supertipo de todos los otros tipos en Scala. Puede ser visto como una versión más general del tipo `Object` en Java, ya que `Any` también es supertipo de `Int`, `Float`, etc. cosa que no se cumple en Java (`int` por ejemplo es un tipo primitivo).
 
 To make objects of a class comparable, it is therefore sufficient to
 define the predicates which test equality and inferiority, and mix in
@@ -379,128 +358,78 @@ dates are composed of a day, a month and a year, which we will all
 represent as integers. We therefore start the definition of the
 `Date` class as follows:
 
-    class Date(y: Int, m: Int, d: Int) extends Ord {
-      def year = y
-      def month = m
-      def day = d
-      override def toString(): String = year + "-" + month + "-" + day
+Para hacer a un objeto de la clase comparable es suficiente definir los predicados que comprueban la igualdad y la inferioridad y mezclar la clase `Ord` de arriba. Como un ejemplo, definamos una clase `Fecha` que representa fechas en el calendario gregoriano.
 
-The important part here is the `extends Ord` declaration which
-follows the class name and parameters. It declares that the
-`Date` class inherits from the `Ord` trait.
+    class Fecha(d: Int, m: Int, a: Int) extends Ord {
+      def anno = a
+      def mes = m
+      def dia = d
+      override def toString(): String = anno + "-" + mes + "-" + dia
 
-Then, we redefine the `equals` method, inherited from
-`Object`, so that it correctly compares dates by comparing their
-individual fields. The default implementation of `equals` is not
-usable, because as in Java it compares objects physically. We arrive
-at the following definition:
+La parte importante aquí es la declaración `extends Ord` la cual sigue al nombre de la clase y los parámetros. Declara que la clase `Fecha` hereda del trait `Ord`.
+
+Después redefinimos el método `equals`, heredado de `Object`, para comparar correctamente fechas mediante sus campos individuales. La implementación por defecto de `equals` no es utilizable, porque como en Java, compara los objetos fisicamente. Por lo tanto llegamos a esto:
 
     override def equals(that: Any): Boolean =
-      that.isInstanceOf[Date] && {
-        val o = that.asInstanceOf[Date]
-        o.day == day && o.month == month && o.year == year
+      that.isInstanceOf[Fecha] && {
+        val o = that.asInstanceOf[Fecha]
+        o.dia== dia && o.mes == mes && o.anno== anno
       }
 
-This method makes use of the predefined methods `isInstanceOf`
-and `asInstanceOf`. The first one, `isInstanceOf`,
-corresponds to Java's `instanceof` operator, and returns true
-if and only if the object on which it is applied is an instance of the
-given type. The second one, `asInstanceOf`, corresponds to
-Java's cast operator: if the object is an instance of the given type,
-it is viewed as such, otherwise a `ClassCastException` is
-thrown.
+Este método utiliza el método predefinido `isInstanceOf` ("es instancia de") y `asInstanceOf` ("como instancia de"). El primero `isInstanceOf` se corresponde con el operador java `instanceOf` y retorna `true` si y solo si el objeto en el cual es aplicado es una instancia del tipo dado. El segundo, `asInstanceOf`, corresponde al operador de casteo en Java: si el objeto es una instancia de un tipo dado, esta es vista como tal, de otra manera se lanza una excepción `ClassCastException`.
 
-Finally, the last method to define is the predicate which tests for
-inferiority, as follows. It makes use of another predefined method,
-`error`, which throws an exception with the given error message.
+Finalmente el último método para definir es el predicado que comprueba la inferioridad. Este hace uso de otro método predefinido, `error` que lanza una escepción con el mensaje de error provisto.
 
     def <(that: Any): Boolean = {
-      if (!that.isInstanceOf[Date])
-        error("cannot compare " + that + " and a Date")
+        if (!that.isInstanceOf[Fecha])
+          error("no se puede comparar" + that + " y una fecha")
 
-      val o = that.asInstanceOf[Date]
-      (year < o.year) ||
-      (year == o.year && (month < o.month ||
-                         (month == o.month && day < o.day)))
+      val o = that.asInstanceOf[Fecha]
+      (anno < o.anno) ||
+      (anno== o.anno && (mes < o.mes ||
+                         (mes == o.mes && dia < o.dia)))
     }
 
-This completes the definition of the `Date` class. Instances of
-this class can be seen either as dates or as comparable objects.
-Moreover, they all define the six comparison predicates mentioned
-above: `equals` and `<` because they appear directly in
-the definition of the `Date` class, and the others because they
-are inherited from the `Ord` trait.
+Esto completa la definición de la clase `Fecha`. Las instancias de esta clase pueden ser vistas tanto como fechas o como objetos comparables. Además, todas ellas definen los seis predicados de comparación mencionados arriba: `equals` y `<` porque aparecen directamente en la definición de la clase `Fecha` y los otros porque son heredados del trait `Ord`.
 
-Traits are useful in other situations than the one shown here, of
-course, but discussing their applications in length is outside the
-scope of this document.
+Los traits son útiles en muchas otras más situaciones que las aquí mostrada, pero discutir sus aplicaciones está fuera del alcance de este documento.
 
-## Genericity
+## Tipos Genéricos
 
-The last characteristic of Scala we will explore in this tutorial is
-genericity. Java programmers should be well aware of the problems
-posed by the lack of genericity in their language, a shortcoming which
-is addressed in Java 1.5.
+_Nota: El diseñador de los tipos genéricos en Java fue nada más ni nada menos que Martin Odersky, el diseñador de Scala._
 
-Genericity is the ability to write code parametrized by types. For
-example, a programmer writing a library for linked lists faces the
-problem of deciding which type to give to the elements of the list.
-Since this list is meant to be used in many different contexts, it is
-not possible to decide that the type of the elements has to be, say,
-`Int`. This would be completely arbitrary and overly
-restrictive.
+La última característica de Scala que exploraremos en este tutorial es la de los tipos genéricos. Los programadores de Java deben estar bien al tanto de los problemas que genera la falta de genéricos en su lenguaje, lo cual es solucionado en Java 1.5.
 
-Java programmers resort to using `Object`, which is the
-super-type of all objects. This solution is however far from being
-ideal, since it doesn't work for basic types (`int`,
-`long`, `float`, etc.) and it implies that a lot of
-dynamic type casts have to be inserted by the programmer.
+Los tipos genéricos proveen al programador la habilidad de escribir código parametrizado por tipos. Por ejemplo, escribir una librería para listas enlazadas se enfrenta al problema de decidir qué tipo darle a los elementos de la lista. Ya que esta lista está pensada para ser usada en diferentes contextos, no es posible decidir que el tipo de elementos sea, digamos, `Int`. Esto sería completamente arbitrario y muy restrictivo.
 
-Scala makes it possible to define generic classes (and methods) to
-solve this problem. Let us examine this with an example of the
-simplest container class possible: a reference, which can either be
-empty or point to an object of some type.
+Los programadores Java cuentan como último recurso con `Object`, que es el supertipo de todos los objetos. Esta solución de todas maneras está lejos de ser ideal, ya que no funciona con tipos primitivos (`int`, `long`, `float`, etc.) e implica que el programador tenga que realizar muchos casteos de tipos en su programa. 
 
-    class Reference[T] {
-      private var contents: T = _
-      def set(value: T) { contents = value }
-      def get: T = contents
+Scala hace posible definir clases genéricas (y métodos) para resolver este problema. Examinemos esto con un ejemplo del contenedor más simple posible: una referencia, que puede estar tanto vacía como apuntar a un objeto de algún tipo.
+
+    class Referencia[T] {
+      private var contenido: T = _
+      def set(valor: T) { contenido = valor }
+      def get: T = contenido
     }
 
-The class `Reference` is parametrized by a type, called `T`,
-which is the type of its element. This type is used in the body of the
-class as the type of the `contents` variable, the argument of
-the `set` method, and the return type of the `get` method.
+La clase `Referencia` es parametrizada por un tipo llamado `T`, que es el tipo de sus elementos. Este tipo es usado en el cuerpo de la clase como el tipo de la variable `contenido`, el argumento del método `set` y el tipo de retorno del método `get`.
 
-The above code sample introduces variables in Scala, which should not
-require further explanations. It is however interesting to see that
-the initial value given to that variable is `_`, which represents
-a default value. This default value is 0 for numeric types,
-`false` for the `Boolean` type, `()` for the `Unit`
-type and `null` for all object types.
+El ejemplo anterior introduce a las variables en Scala, que no deberían requerir mayor explicación. Es interesante notar que el valor inicial dado a la variable `contenido` es `_`, que representa un valor por defecto. Este valor por defecto es 0 para tipos numéricos, `false` para tipos `Boolean`, `()` para el tipo `Unit` y `null` para el resto de los objetos.
 
-To use this `Reference` class, one needs to specify which type to use
-for the type parameter `T`, that is the type of the element
-contained by the cell. For example, to create and use a cell holding
-an integer, one could write the following:
+Para utilizar esta clase `Referencia`, uno necesita especificar qué tipo utilizar por el parámetro `T`, es decir, el tipo del elemento contenido por la referencia. Por ejemplo, para crear y utilizar una referencia que contenga un entero, podríamos escribir lo siguiente:
 
-    object IntegerReference {
+    object ReferenciaEntero {
       def main(args: Array[String]) {
-        val cell = new Reference[Int]
-        cell.set(13)
-        println("Reference contains the half of " + (cell.get * 2))
+        val ref = new Referencia[Int]
+        ref.set(13)
+        println("La referncia tiene la mitad de " + (ref.get * 2))
       }
     }
 
-As can be seen in that example, it is not necessary to cast the value
-returned by the `get` method before using it as an integer. It
-is also not possible to store anything but an integer in that
-particular cell, since it was declared as holding an integer.
+Como puede verse en el ejemplo, no es necesario castear el valor retornado por el método `get` antes de usarlo como un entero. Tampoco es posible almacenar otra cosa que no sea un entero en esa referencia en particular, ya que fue declarada como contenedora de un entero.
 
-## Conclusion
+## Conclusión
 
-This document gave a quick overview of the Scala language and
-presented some basic examples. The interested reader can go on, for example, by
-reading the document *Scala By Example*, which
-contains much more advanced examples, and consult the *Scala
-  Language Specification* when needed.
+Scala es un lenguaje tremendamente poderoso que ha sabido heredar las mejores cosas de cada uno de los lenguajes más exitosos que se han conocido. Java no es la excepción, y comparte muchas cosas con este. La diferencia que vemos es que para cada uno de los conceptos de Java, Scala los aumenta, refina y mejora. Poder aprender todas las características de Scala nos equipa con más y mejores herramientas a la hora de escribir nuestros programas.
+Si bien la programación funcional no ha sido una característica de Java, el progamador experimentado puede notar la falta de soporte de este paradigma en múltiples ocasiones. El solo pensar en el código necesario para proveer a un `JButton` con el código que debe ejecutar al ser presionado nos muestra lo necesario que sería contar con herramientas funcionales. Recomendamos entonces tratar de ir incorporando estas características, por más que sea difícil para el programador Java al estar tan acostumbrado al paradigma imperativo de este lenguaje.
+Este documento dio una rápida introducción al lenguaje Scala y presento algunos ejemplos básicos. El lector interesado puede seguir, por ejemplo, leyendo el *Tutorial de Scala* que figura en el sitio de documentación, o *Scala by Example* (en inglés). También puede consultar la especificación del lenguaje cuando lo desee.
