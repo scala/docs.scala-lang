@@ -91,7 +91,7 @@ Para concluir esta sección sobre la interacción con Java, es importante notar 
 
 Scala es un lenguaje puramente orientado a objetos en el sentido de que *todo* es un objeto, incluyendo números o funciones. Difiere de Java en este aspecto, ya que Java distingue tipos primitivos (como `boolean` e `int`) de tipos referencialbes, y no nos permite manipular las funciones como valores.
 
-### Numbers are objects
+### Los números son objetos
 
 Ya que los números son objetos, estos también tienen métodos. De hecho, una expresión aritmética como la siguiente:
 
@@ -212,13 +212,6 @@ Un tipo de estructura de datos uqe aparece seguido en programas es el Árbol. Po
 Ahora examinaremos cómo estos árboles son representados y manipulados en Scala mediante un pequeño programa que oficie de calculadora. El objetivo de este programa es manipular expresiones aritméticas simples compuestas de sumas de enteros y variables. Dos ejemplos de estas expresiones pueden ser: `1+2` y `(x+x)+(7+y)`.
 
 Primero tenemos que decidir una representación para tales expresiones. La más natural es un árbol, donde los nodos son las operaciones (la adición en este caso) y las hojas son valores (constantes o variables).
-
-In Java, such a tree would be represented using an abstract
-super-class for the trees, and one concrete sub-class per node or
-leaf. In a functional programming language, one would use an algebraic
-data-type for the same purpose. Scala provides the concept of
-*case classes* which is somewhat in between the two. Here is how
-they can be used to define the type of the trees for our example:
 
 En Java, un árbol así sería representado utilizando una superclase abstracta para los árboles, y una subclase concreta por nodo u hoja. En un lenguaje de programación funcional uno utilizaría un tipo de dato algebráico para el mismo propósito. Scala provee el concepto de *clases case* que está en el medio de los dos conceptos anteriores. Aquí mostramos como pueden ser usadas para definir el tipo de los árboles en nuestro ejemplo:
 
@@ -350,14 +343,6 @@ Esta definición crea un nuevo tipo llamado `Ord` el cual juega el mismo rol que
 
 El tipo `Any` el cual es usado arriba es el supertipo de todos los otros tipos en Scala. Puede ser visto como una versión más general del tipo `Object` en Java, ya que `Any` también es supertipo de `Int`, `Float`, etc. cosa que no se cumple en Java (`int` por ejemplo es un tipo primitivo).
 
-To make objects of a class comparable, it is therefore sufficient to
-define the predicates which test equality and inferiority, and mix in
-the `Ord` class above. As an example, let's define a
-`Date` class representing dates in the Gregorian calendar. Such
-dates are composed of a day, a month and a year, which we will all
-represent as integers. We therefore start the definition of the
-`Date` class as follows:
-
 Para hacer a un objeto de la clase comparable es suficiente definir los predicados que comprueban la igualdad y la inferioridad y mezclar la clase `Ord` de arriba. Como un ejemplo, definamos una clase `Fecha` que representa fechas en el calendario gregoriano.
 
     class Fecha(d: Int, m: Int, a: Int) extends Ord {
@@ -432,4 +417,5 @@ Como puede verse en el ejemplo, no es necesario castear el valor retornado por e
 
 Scala es un lenguaje tremendamente poderoso que ha sabido heredar las mejores cosas de cada uno de los lenguajes más exitosos que se han conocido. Java no es la excepción, y comparte muchas cosas con este. La diferencia que vemos es que para cada uno de los conceptos de Java, Scala los aumenta, refina y mejora. Poder aprender todas las características de Scala nos equipa con más y mejores herramientas a la hora de escribir nuestros programas.
 Si bien la programación funcional no ha sido una característica de Java, el progamador experimentado puede notar la falta de soporte de este paradigma en múltiples ocasiones. El solo pensar en el código necesario para proveer a un `JButton` con el código que debe ejecutar al ser presionado nos muestra lo necesario que sería contar con herramientas funcionales. Recomendamos entonces tratar de ir incorporando estas características, por más que sea difícil para el programador Java al estar tan acostumbrado al paradigma imperativo de este lenguaje.
+
 Este documento dio una rápida introducción al lenguaje Scala y presento algunos ejemplos básicos. El lector interesado puede seguir, por ejemplo, leyendo el *Tutorial de Scala* que figura en el sitio de documentación, o *Scala by Example* (en inglés). También puede consultar la especificación del lenguaje cuando lo desee.
