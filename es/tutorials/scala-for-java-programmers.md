@@ -1,17 +1,14 @@
 ---
 layout: overview
 title: Tutorial de Scala para programadores Java
+overview: scala-for-java-programmers
 
 disqus: true
+language: es
 ---
 
-Por Michel Schinz y Philipp Haller
-Traducción y arreglos Santiago Basulto
-
-Comentarios:
-   * No es necesario un archivo por clase
-   * Forma de utilizar funcional con interfaces en Java
-   * Comparación de funciones anónimas con clases anónimas
+Por Michel Schinz y Philipp Haller. 
+Traducción y arreglos Santiago Basulto.
 
 ## Introducción
 
