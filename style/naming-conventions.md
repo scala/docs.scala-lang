@@ -197,7 +197,11 @@ and when it is not.
 Methods which act as accessors of any sort (either encapsulating a field
 or a logical property) should be declared *without* parentheses except
 if they have side effects. While Ruby and Lift use a `!` to indicate
-this, the usage of parens is preferred [\#dsl\_note]\_.
+this, the usage of parens is preferred (please note that fluid APIs and 
+internal domain-specific languages have a tendency to break the 
+guidelines given below for the sake of syntax. Such exceptions should 
+not be considered a violation so much as a time when these rules do not 
+apply. In a DSL, syntax should be paramount over convention).
 
 Further, the callsite should follow the declaration; if declared with
 parentheses, call with parentheses. While there is temptation to save a
