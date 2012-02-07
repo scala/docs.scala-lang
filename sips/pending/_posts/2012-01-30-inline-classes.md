@@ -1,6 +1,6 @@
 ---
 layout: sip
-title: SIP-15 - Inline Classes
+title: SIP-15 - Value Classes
 ---
 
 
