@@ -1,12 +1,6 @@
       <div id="scroller-anchor">
         <div id="scroller">
           <p class="contents">Contents</p>
-          <ul>
-          {% for p in site.pages %}
-            {% if p.tutorial == page.tutorial and p.language == page.language %}
-              <li><a href="{{ p.url }}">{{p.title}}</a></li>
-            {% endif %}
-          {% endfor %}
-          </li>   
+          {% include tutorial-tour-list.txt %}
 	    </div>
       </div>
