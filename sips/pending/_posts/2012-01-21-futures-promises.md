@@ -313,6 +313,79 @@ not then the partial function argument is applied to the `Throwable`
 which failed the original future. If it maps the `Throwable` to some
 value, then the new future is successfully completed with that value.
 
+The `recoverWith` combinator creates a new future which holds the
+same result as the original future if it completed successfully.
+Otherwise, the partial function is applied to the `Throwable` which
+failed the original future. If it maps the `Throwable` to some future,
+then this future is completed with the result of that future.
+Its relation to `recover` is similar to that of `flatMap` to `map`.
+
+Combinator `fallbackTo` creates a new future which holds the result
+of this future if it was completed successfully, or otherwise the
+successful result of the argument future. In the event that both this
+future and the argument future fail, the new future is completed with
+the exception from this future, as in the following example which
+tries to print US dollar value, but prints the Swiss franc value in
+the case it fails to obtain the dollar value:
+
+    val usdQuote = future {
+	  connection.getCurrentValue(USD)
+	} map {
+	  usd => "Value: " + usd + "$"
+	}
+	val chfQuote = future {
+	  connection.getCurrentValue(CHF)
+	} map {
+	  chf => "Value: " + chf + "CHF"
+	}
+	
+	val anyQuote = usdQuote fallbackTo chfQuote
+	
+	anyQuote onSuccess { println(_) }
+
+The `either` combinator creates a new future which either holds
+the result of this future or the argument future, whichever completes
+first, irregardless of success or failure. Here is an example in which
+the quote which is returned first gets printed:
+
+    val usdQuote = future {
+	  connection.getCurrentValue(USD)
+	} map {
+	  usd => "Value: " + usd + "$"
+	}
+	val chfQuote = future {
+	  connection.getCurrentValue(CHF)
+	} map {
+	  chf => "Value: " + chf + "CHF"
+	}
+	
+	val anyQuote = usdQuote either chfQuote
+	
+	anyQuote onSuccess { println(_) }
+
+The `andThen` combinator is used purely for side-effecting purposes.
+It returns a new future with exactly the same result as the current
+future, irregardless of whether the current future failed or not.
+Once the current future is completed with the result, the closure
+corresponding to the `andThen` is invoked and then the new future is
+completed with the same result as this future. This ensures that
+multiple `andThen` calls are ordered, as in the following example
+which stores the recent posts from a social network to a mutable set
+and then renders all the posts to the screen:
+
+	val allposts = mutable.Set[String]()
+	
+    future {
+	  session.getRecentPosts
+	} andThen {
+	  posts => allposts ++= posts
+	} andThen {
+	  posts =>
+	  clearAll()
+	  for (post <- allposts) render(post)
+	}
+
+
 ### Projections
 
 To enable for-comprehensions on a result returned as an exception,
