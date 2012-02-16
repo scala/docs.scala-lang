@@ -158,6 +158,35 @@ Second, `try-catch` blocks also expect a `PartialFunction`
 value. That means that if there are generic partial function exception
 handlers present in the application then they will be compatible with the `onFailure` method.
 
+In conclusion, the semantics of callbacks are as follows:
+
+1. Registering an `onComplete` callback on the future
+ensures that the corresponding closure is invoked after
+the future is completed.
+
+2. Registering an `onSuccess` or `onFailure` callback has the same
+semantics, with the difference that the closure is only called
+if the future is completed successfully or fails, respectively.
+
+3. Registering a callback on the future which is already completed
+will result in the callback being executed eventually (as implied by
+1.). Furthermore, the callback may even be executed synchronously on
+the same thread.
+
+4. In the event that multiple callbacks are registered on the future,
+the order in which they are executed is not defined. In fact, the
+callbacks may be executed concurrently with one another.
+However, a particular `Future` implementation may have a well-defined
+order.
+
+5. In the event that some of the callbacks throw an exception, the
+other callbacks are executed irregardlessly.
+
+6. In the event that some of the callbacks never complete (e.g. the
+callback contains an infinite loop), the other callbacks may not be
+executed at all.
+
+
 <!--
 The `onTimeout` method registers callbacks triggered when the future fails with a `FutureTimeoutException`. This case can also be handled by the `onFailure` method if the partial function is defined for that exception type.
 -->
