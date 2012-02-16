@@ -158,6 +158,38 @@ Second, `try-catch` blocks also expect a `PartialFunction`
 value. That means that if there are generic partial function exception
 handlers present in the application then they will be compatible with the `onFailure` method.
 
+In conclusion, the semantics of callbacks are as follows:
+
+1. Registering an `onComplete` callback on the future
+ensures that the corresponding closure is invoked after
+the future is completed.
+
+2. Registering an `onSuccess` or `onFailure` callback has the same
+semantics, with the difference that the closure is only called
+if the future is completed successfully or fails, respectively.
+
+3. Registering a callback on the future which is already completed
+will result in the callback being executed eventually (as implied by
+1.). Furthermore, the callback may even be executed synchronously on
+the same thread.
+
+4. In the event that multiple callbacks are registered on the future,
+the order in which they are executed is not defined. In fact, the
+callbacks may be executed concurrently with one another.
+However, a particular `Future` implementation may have a well-defined
+order.
+
+5. In the event that some of the callbacks throw an exception, the
+other callbacks are executed irregardlessly.
+
+6. In the event that some of the callbacks never complete (e.g. the
+callback contains an infinite loop), the other callbacks may not be
+executed at all.
+
+7. Once executed, the callbacks are removed from the future object,
+thus being eligible for GC.
+
+
 <!--
 The `onTimeout` method registers callbacks triggered when the future fails with a `FutureTimeoutException`. This case can also be handled by the `onFailure` method if the partial function is defined for that exception type.
 -->
@@ -283,6 +315,83 @@ result as the original future if it completed successfully. If it did
 not then the partial function argument is applied to the `Throwable`
 which failed the original future. If it maps the `Throwable` to some
 value, then the new future is successfully completed with that value.
+
+The `recoverWith` combinator creates a new future which holds the
+same result as the original future if it completed successfully.
+Otherwise, the partial function is applied to the `Throwable` which
+failed the original future. If it maps the `Throwable` to some future,
+then this future is completed with the result of that future.
+Its relation to `recover` is similar to that of `flatMap` to `map`.
+
+Combinator `fallbackTo` creates a new future which holds the result
+of this future if it was completed successfully, or otherwise the
+successful result of the argument future. In the event that both this
+future and the argument future fail, the new future is completed with
+the exception from this future, as in the following example which
+tries to print US dollar value, but prints the Swiss franc value in
+the case it fails to obtain the dollar value:
+
+    val usdQuote = future {
+	  connection.getCurrentValue(USD)
+	} map {
+	  usd => "Value: " + usd + "$"
+	}
+	val chfQuote = future {
+	  connection.getCurrentValue(CHF)
+	} map {
+	  chf => "Value: " + chf + "CHF"
+	}
+	
+	val anyQuote = usdQuote fallbackTo chfQuote
+	
+	anyQuote onSuccess { println(_) }
+
+The `either` combinator creates a new future which either holds
+the result of this future or the argument future, whichever completes
+first, irregardless of success or failure. Here is an example in which
+the quote which is returned first gets printed:
+
+    val usdQuote = future {
+	  connection.getCurrentValue(USD)
+	} map {
+	  usd => "Value: " + usd + "$"
+	}
+	val chfQuote = future {
+	  connection.getCurrentValue(CHF)
+	} map {
+	  chf => "Value: " + chf + "CHF"
+	}
+	
+	val anyQuote = usdQuote either chfQuote
+	
+	anyQuote onSuccess { println(_) }
+
+The `andThen` combinator is used purely for side-effecting purposes.
+It returns a new future with exactly the same result as the current
+future, irregardless of whether the current future failed or not.
+Once the current future is completed with the result, the closure
+corresponding to the `andThen` is invoked and then the new future is
+completed with the same result as this future. This ensures that
+multiple `andThen` calls are ordered, as in the following example
+which stores the recent posts from a social network to a mutable set
+and then renders all the posts to the screen:
+
+	val allposts = mutable.Set[String]()
+	
+    future {
+	  session.getRecentPosts
+	} andThen {
+	  posts => allposts ++= posts
+	} andThen {
+	  posts =>
+	  clearAll()
+	  for (post <- allposts) render(post)
+	}
+
+In summary, the combinators on futures are purely functional.
+Every combinator returns a new future which is related to the
+future it was derived from.
+
 
 ### Projections
 
