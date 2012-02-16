@@ -186,6 +186,9 @@ other callbacks are executed irregardlessly.
 callback contains an infinite loop), the other callbacks may not be
 executed at all.
 
+7. Once executed, the callbacks are removed from the future object,
+thus being eligible for GC.
+
 
 <!--
 The `onTimeout` method registers callbacks triggered when the future fails with a `FutureTimeoutException`. This case can also be handled by the `onFailure` method if the partial function is defined for that exception type.
@@ -384,6 +387,10 @@ and then renders all the posts to the screen:
 	  clearAll()
 	  for (post <- allposts) render(post)
 	}
+
+In summary, the combinators on futures are purely functional.
+Every combinator returns a new future which is related to the
+future it was derived from.
 
 
 ### Projections
