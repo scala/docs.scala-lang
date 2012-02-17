@@ -10,13 +10,100 @@ num: 1
 
 **Aleksandar Prokopec**
 
-Motivation
+INTRODUCTION - this will be in this file, rest of the sections go into
+separate files (the order below may have to change)
 
-Goals
+Motivation
+- why parallel collections
 
 Few examples
+- few simple usage examples
 
 Semantics
+- out-of-order and concurrent execution
+- side-effects
+
+
+PARALLEL COLLECTIONS AVAILABLE IN THE STDLIB
+their short descriptions and relations to standard collections
+operation complexity table
+
+ParArray - Array
+
+ParVector - Vector
+
+mutable.ParHashMap - mutable.HashMap
+
+mutable.ParHashSet - mutable.HashSet
+
+immutable.ParHashMap - immutable.HashMap
+
+immutable.ParHashSet - immutable.HashSet
+
+ParRange - Range
+
+ParCtrie - Ctrie
+
+
+PARALLEL COLLECTION CONVERSIONS
+how to use .par and .seq, and what it really does
+note that the parallel collections and their counterparts are
+converted in constant time, and mutable ones are backed by the same data,
+but other collections require copying
+conversion between collection types (to* methods)
+
+
+CTRIE AND PARCTRIE
+intended use - show a few examples
+what are snapshots
+how do iterators work
+how does size work
+how do parallel operations and concurrent modifications work in ParCtrie
+
+
+HIERARCHY
+parallel collections hierarchy
+relationship to Gen* traits
+couple of diagrams/pictures
+how to write code that may either be parallel or sequential
+
+
+CREATING CUSTOM PARALLEL COLLECTIONS
+simple case - without combiners
+advanced - write a combiner as well
+fully integrating with the collections hierarchy - add companion, mix
+in templates, etc.
+writing concurrent combiners - overriding canBeShared
+iterators which don't use size to decide when to stop splitting -
+overriding shouldSplitFurther
+methods that call remaining - overriding isRemainingCheap
+strict and nonstrict splitters - overriding isStrictSplitterCollection
+
+
+CONFIGURING EXECUTION CONTEXTS AND TASKSUPPORTS
+how to set a new execution context
+how to set the preferred parallelism level
+serialization won't keep the execution context!
+
+
+MEASURING PERFORMANCE
+jit, gc and friends - the importance of using the
+scala.testing.Benchmark trait for microbenchmarks
+a couple of examples
+tips and tricks - server mode, use cond card mark, etc.
+
+
+MISC
+using break within the parallel loop
+list of methods currently not parallelized
+
+
+
+
+
+
+
+old below:
 
 
 

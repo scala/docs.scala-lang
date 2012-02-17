@@ -162,16 +162,17 @@ In conclusion, the semantics of callbacks are as follows:
 
 1. Registering an `onComplete` callback on the future
 ensures that the corresponding closure is invoked after
-the future is completed.
+the future is completed, eventually.
 
 2. Registering an `onSuccess` or `onFailure` callback has the same
-semantics, with the difference that the closure is only called
+semantics as `onComplete`, with the difference that the closure is only called
 if the future is completed successfully or fails, respectively.
 
 3. Registering a callback on the future which is already completed
 will result in the callback being executed eventually (as implied by
-1.). Furthermore, the callback may even be executed synchronously on
-the same thread.
+1). Furthermore, the callback may even be executed synchronously on
+the same thread that registered the callback if this does not cancel
+progress of that thread.
 
 4. In the event that multiple callbacks are registered on the future,
 the order in which they are executed is not defined. In fact, the
@@ -184,7 +185,8 @@ other callbacks are executed irregardlessly.
 
 6. In the event that some of the callbacks never complete (e.g. the
 callback contains an infinite loop), the other callbacks may not be
-executed at all.
+executed at all. In these cases, a potentially blocking callback must
+use the `blocking` construct (see below).
 
 7. Once executed, the callbacks are removed from the future object,
 thus being eligible for GC.
