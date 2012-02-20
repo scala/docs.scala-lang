@@ -40,7 +40,7 @@ Immutable vectors are represented with 32-way trees, so splitters are split by a
 Parallel vector is a parallel counterpart of the sequential [Vector](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Vector.html), so conversion between the two takes constant time.
 
 
-## ParRange
+## Parallel Range
 
 A [ParRange](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/immutable/ParRange.html) is an ordered sequence of elements equally spaced apart. A parallel range is created in a similar way as the sequential [Range](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Range.html):
 
@@ -52,12 +52,12 @@ A [ParRange](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collec
 Just as sequential ranges have no builder, parallel ranges have no combiners. Mapping the elements of a parallel range produces a parallel vector. Sequential ranges and parallel ranges can be converted efficiently one from another using the `seq` and `par` methods.
 
 
+## Parallel Hash Tables
+
+Parallel hash tables store their elements in an underlying array and place them in the position determined by the hash code of the respective element. Parallel mutable hash sets ([mutable.ParHashSet](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/mutable/ParHashSet.html))) and parallel mutable hash maps ([mutable.ParHashMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/mutable/ParHashMap.html))) are based on hash tables.
 
 
 
-mutable.ParHashMap - mutable.HashMap
-
-mutable.ParHashSet - mutable.HashSet
 
 immutable.ParHashMap - immutable.HashMap
 
