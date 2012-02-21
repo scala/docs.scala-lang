@@ -56,16 +56,72 @@ Just as sequential ranges have no builder, parallel ranges have no combiners. Ma
 
 Parallel hash tables store their elements in an underlying array and place them in the position determined by the hash code of the respective element. Parallel mutable hash sets ([mutable.ParHashSet](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/mutable/ParHashSet.html))) and parallel mutable hash maps ([mutable.ParHashMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/mutable/ParHashMap.html))) are based on hash tables.
 
-    scala> 
+    scala> val phs = scala.collection.parallel.mutable.ParHashSet(1 until 2000: _*)
+    phs: scala.collection.parallel.mutable.ParHashSet[Int] = ParHashSet(18, 327, 736, 1045, 773, 1082,...
+	scala> phs map (x => x * x)
+    res0: scala.collection.parallel.mutable.ParHashSet[Int] = ParHashSet(2181529, 2446096, 99225, 2585664,...
 
-Sequential hash maps and hash sets can be converted to their parallel variants using the `par` method. Parallel hash tables internally require a size map which tracks the number of elements in different chunks of the hash table. What this means is that the first time that a sequential hash table is converted into a parallel hash table, the table is traversed and the size map is created - for this reason, the first call to `par` take time linear in the size of the hash table. Further modifications to the hash table maintain the state of the size map, so subsequent conversions using `par` and `seq` have constant complexity. Maintenance of the size map can be turned on and off using the `useSizeMap` method of the hash table.
+Parallel hash table combiners sort elements into buckets according to their hashcode prefix. They are combined by simply concatenating these buckets together. Once the final hash table is to be constructed (i.e. combiner `result` method is called), the underlying array is allocated and the elements from different buckets are copied in parallel to different contiguous segments of the hash table array.
 
-
-immutable.ParHashMap - immutable.HashMap
-
-immutable.ParHashSet - immutable.HashSet
-
-ParCtrie - Ctrie
+Sequential hash maps and hash sets can be converted to their parallel variants using the `par` method. Parallel hash tables internally require a size map which tracks the number of elements in different chunks of the hash table. What this means is that the first time that a sequential hash table is converted into a parallel hash table, the table is traversed and the size map is created - for this reason, the first call to `par` take time linear in the size of the hash table. Further modifications to the hash table maintain the state of the size map, so subsequent conversions using `par` and `seq` have constant complexity. Maintenance of the size map can be turned on and off using the `useSizeMap` method of the hash table. Importantly, modifications in the sequential hash table are visible in the parallel hash table, and vice versa.
 
 
-operation complexity table
+## Parallel Hash Tries
+
+Parallel hash tries are a parallel counterpart of the immutable hash tries, which are used to represent immutable sets and maps efficiently. They are supported by classes [immutable.ParHashSet](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/immutable/ParHashSet.html) and [immutable.ParHashMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/immutable/ParHashMap.html).
+
+    scala> val phs = scala.collection.parallel.immutable.ParHashSet(1 until 1000: _*)
+    phs: scala.collection.parallel.immutable.ParHashSet[Int] = ParSet(645, 892, 69, 809, 629, 365, 138, 760, 101, 479,...
+	scala> phs map { x => x * x } sum
+    res0: Int = 332833500
+
+Similar to parallel hash tables, parallel hash trie combiners presort the elements into buckets and construct the resulting hash trie in parallel by assigning different buckets to different processors which construct the subtries independently.
+
+Parallel hash tries can be converted back and forth to sequential hash tries by using the `seq` and `par` method in constant time.
+
+
+## Parallel Ctries
+
+A [mutable.Ctrie](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/Ctrie.html) is a concurrent thread-safe map, whereas a [mutable.ParCtrie](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/mutable/ParCtrie.html) is its parallel counterpart. While most concurrent data structures do not guarantee consistent traversal if the the data structure is modified during traversal, Ctries guarantee that updates are only visible in the next iteration. This means that you can mutate the concurrent trie while traversing it, like in the following example which outputs square roots of number from 1 to 99:
+
+    scala> val numbers = scala.collection.parallel.mutable.ParCtrie((1 until 100) zip (1 until 100): _*) map { case (k, v) => (k.toDouble, v.toDouble) }
+    numbers: scala.collection.parallel.mutable.ParCtrie[Double,Double] = ParCtrie(0.0 -> 0.0, 42.0 -> 42.0, 70.0 -> 70.0, 2.0 -> 2.0,...
+    scala> while (numbers.nonEmpty) {
+         |   numbers foreach { case (num, sqrt) =>
+		 |     val nsqrt = 0.5 * (sqrt + num / sqrt)
+		 |     numbers(num) = nsqrt
+		 |     if (math.abs(nsqrt - sqrt) < 0.01) { 
+		 |       println(num, nsqrt)
+		 |		 numbers.remove(num)
+		 |	   }
+		 |   }
+		 | }
+	(1.0,1.0)
+    (2.0,1.4142156862745097)
+    (7.0,2.64576704419029)
+    (4.0,2.0000000929222947)
+	...
+
+
+Combiners are implemented as Ctries under the hood - since this is a concurrent data structure, only one combiner is constructed for the entire transformer method invocation and shared by all the processors.
+
+As with all parallel mutable collections, Ctries and parallel Ctries obtained by calling `seq` or `par` methods are backed by the same store, so modifications in one are visible in the other. Conversions happen in constant time.
+
+
+
+
+
+TODO operation complexity table
+
+
+
+
+
+
+
+
+
+
+
+
+
