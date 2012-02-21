@@ -56,7 +56,9 @@ Just as sequential ranges have no builder, parallel ranges have no combiners. Ma
 
 Parallel hash tables store their elements in an underlying array and place them in the position determined by the hash code of the respective element. Parallel mutable hash sets ([mutable.ParHashSet](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/mutable/ParHashSet.html))) and parallel mutable hash maps ([mutable.ParHashMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/mutable/ParHashMap.html))) are based on hash tables.
 
+    scala> 
 
+Sequential hash maps and hash sets can be converted to their parallel variants using the `par` method. Parallel hash tables internally require a size map which tracks the number of elements in different chunks of the hash table. What this means is that the first time that a sequential hash table is converted into a parallel hash table, the table is traversed and the size map is created - for this reason, the first call to `par` take time linear in the size of the hash table. Further modifications to the hash table maintain the state of the size map, so subsequent conversions using `par` and `seq` have constant complexity. Maintenance of the size map can be turned on and off using the `useSizeMap` method of the hash table.
 
 
 immutable.ParHashMap - immutable.HashMap
