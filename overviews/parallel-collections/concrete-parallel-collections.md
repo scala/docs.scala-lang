@@ -108,10 +108,26 @@ Combiners are implemented as Ctries under the hood - since this is a concurrent 
 As with all parallel mutable collections, Ctries and parallel Ctries obtained by calling `seq` or `par` methods are backed by the same store, so modifications in one are visible in the other. Conversions happen in constant time.
 
 
+## Performance characteristics
 
+Performance characteristics of sequence types:
 
+|               | head | tail | apply | update| prepend | append | insert |
+| --------      | ---- | ---- | ----  | ----  | ----    | ----   | ----   |
+| `ParArray`    | C    | L    | C     | C     |  L      | L      |  L     |
+| `ParVector`   | eC   | eC   | eC    | eC    |  eC     | eC     |  -     |
+| `ParRange`    | C    | C    | C     | -     |  -      | -      |  -     |
 
-TODO operation complexity table
+Performance characteristics of set and map types:
+
+|                          | lookup | add  | remove |
+| --------                 | ----   | ---- | ----   |
+| **immutable**            |        |      |        |
+| `ParHashSet`/`ParHashMap`| eC     | eC   | eC     |
+| **mutable**              |        |      |        |
+| `ParHashSet`/`ParHashMap`| C      | C    | C      |
+| `ParCtrie`               | eC     | eC   | eC     |
+
 
 
 
