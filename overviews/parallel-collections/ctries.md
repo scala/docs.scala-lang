@@ -1,6 +1,6 @@
 ---
 layout: overview-large
-title: Parallel Collection Conversions
+title: Concurrent Tries
 
 disqus: true
 
@@ -10,8 +10,6 @@ num: 2
 
 **Aleksandar Prokopec**
 
-
-## Concurrent Tries
 
 Most concurrent data structures do not guarantee consistent
 traversal if the the data structure is modified during traversal.
@@ -28,6 +26,9 @@ The following example computes the square roots of a set of numbers. Each iterat
 iteratively updates the square root value. Numbers whose square roots converged
 are removed from the map.
 
+	
+    val length = 50000
+	
 	// prepare the list
     val entries = (1 until length) map { num => Entry(num.toDouble) }
     val results = ParCtrie()
@@ -45,7 +46,9 @@ are removed from the map.
 
 Another example is the breadth-first search algorithm, which iteratively expands the nodefront
 until either it finds some path to the target or there are no more nodes to expand.
-
+	
+	val length = 1000
+	
 	// define the Node type
     type Node = (Int, Int);
     type Parent = (Int, Int);
@@ -66,7 +69,7 @@ until either it finds some path to the target or there are no more nodes to expa
     val open = ParCtrie[Node, Parent]()
     val closed = ParCtrie[Node, Parent]()
     
-	// add a couple of starting positions
+    // add a couple of starting positions
     open((0, 0)) = null
     open((length - 1, length - 1)) = null
     open((0, length - 1)) = null
