@@ -23,6 +23,13 @@ Semantics
 - out-of-order and concurrent execution
 - side-effects
 
+Basic concepts
+- how does this parallelization actually work
+- splitting work, combining work
+- accessor methods
+- transformer methods (and their reliance on combiners)
+- difference between mutable and immutable parallel collections
+
 
 PARALLEL COLLECTIONS AVAILABLE IN THE STDLIB
 their short descriptions and relations to standard collections
@@ -66,6 +73,18 @@ parallel collections hierarchy
 relationship to Gen* traits
 couple of diagrams/pictures
 how to write code that may either be parallel or sequential
+
+
+SPLITTERS
+what is a splitter
+what is a precise splitter
+additional methods
+splitter hierarchy
+
+
+COMBINERS
+what is a combiner
+how a combiner can be implemented
 
 
 CREATING CUSTOM PARALLEL COLLECTIONS
