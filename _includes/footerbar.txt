@@ -30,7 +30,7 @@
 	</div>
 	<div class="container copyright">
  		<p>
-			Copyright &copy; 2011 EPFL. All rights reserved.
+			Copyright &copy; 2011-2012 EPFL. All rights reserved.
 			<a href="https://github.com/scala/scala.github.com/commits/gh-pages.atom"><img align="right" height="20px" width="20px" src="{{ site.baseurl }}/resources/images/rss.png" alt="RSS feed of updates to the github repo hosting this site"></a>
 		</p>		
 	</div>
