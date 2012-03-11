@@ -45,7 +45,8 @@ Performance characteristics of set and map types:
 | **mutable**        |        |      |       |               |
 | `HashSet`/`HashMap`| eC     | eC   | eC    | L             |
 | `WeakHashMap`      | eC     | eC   | eC    | L             |
-| `BitSet`           | C      | aC   | C     | eC<sup>1</sup>|    
+| `BitSet`           | C      | aC   | C     | eC<sup>1</sup>|
+| `TreeSet`          | Log    | Log  | Log   | Log           |
 
 Footnote: <sup>1</sup> Assuming bits are densely packed.
 
