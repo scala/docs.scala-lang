@@ -31,7 +31,7 @@ are removed from the map.
 	
 	// prepare the list
     val entries = (1 until length) map { num => Entry(num.toDouble) }
-    val results = ParCtrie()
+    val results = ParConcurrentTrieMap()
     for (e <- entries) results += ((e.num, e))
     
 	// compute square roots
@@ -66,8 +66,8 @@ until either it finds some path to the target or there are no more nodes to expa
     
     // open list - the nodefront
     // closed list - nodes already processed
-    val open = ParCtrie[Node, Parent]()
-    val closed = ParCtrie[Node, Parent]()
+    val open = ParConcurrentTrieMap[Node, Parent]()
+    val closed = ParConcurrentTrieMap[Node, Parent]()
     
     // add a couple of starting positions
     open((0, 0)) = null
