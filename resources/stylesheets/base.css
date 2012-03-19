@@ -90,3 +90,6 @@
 	.label {
 		white-space: nowrap;
 	}
+
+	h2 code { font-size: 18px; }
+	h3 code { font-size: 16px; }

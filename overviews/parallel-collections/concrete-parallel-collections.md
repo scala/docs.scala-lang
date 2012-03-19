@@ -82,10 +82,10 @@ Parallel hash tries can be converted back and forth to sequential hash tries by 
 
 ## Parallel Ctries
 
-A [mutable.Ctrie](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/Ctrie.html) is a concurrent thread-safe map, whereas a [mutable.ParCtrie](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/mutable/ParCtrie.html) is its parallel counterpart. While most concurrent data structures do not guarantee consistent traversal if the the data structure is modified during traversal, Ctries guarantee that updates are only visible in the next iteration. This means that you can mutate the concurrent trie while traversing it, like in the following example which outputs square roots of number from 1 to 99:
+A [mutable.ConcurrentTrieMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/ConcurrentTrieMap.html) is a concurrent thread-safe map, whereas a [mutable.ParConcurrentTrieMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/mutable/ParConcurrentTrieMap.html) is its parallel counterpart. While most concurrent data structures do not guarantee consistent traversal if the the data structure is modified during traversal, Ctries guarantee that updates are only visible in the next iteration. This means that you can mutate the concurrent trie while traversing it, like in the following example which outputs square roots of number from 1 to 99:
 
-    scala> val numbers = scala.collection.parallel.mutable.ParCtrie((1 until 100) zip (1 until 100): _*) map { case (k, v) => (k.toDouble, v.toDouble) }
-    numbers: scala.collection.parallel.mutable.ParCtrie[Double,Double] = ParCtrie(0.0 -> 0.0, 42.0 -> 42.0, 70.0 -> 70.0, 2.0 -> 2.0,...
+    scala> val numbers = scala.collection.parallel.mutable.ParConcurrentTrieMap((1 until 100) zip (1 until 100): _*) map { case (k, v) => (k.toDouble, v.toDouble) }
+    numbers: scala.collection.parallel.mutable.ParConcurrentTrieMap[Double,Double] = ParCtrie(0.0 -> 0.0, 42.0 -> 42.0, 70.0 -> 70.0, 2.0 -> 2.0,...
     scala> while (numbers.nonEmpty) {
          |   numbers foreach { case (num, sqrt) =>
 		 |     val nsqrt = 0.5 * (sqrt + num / sqrt)

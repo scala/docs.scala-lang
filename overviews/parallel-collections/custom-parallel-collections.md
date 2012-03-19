@@ -210,17 +210,56 @@ Inside the companion object we provide an implicit evidence for the `CanBuildFro
 		cb ++= elems
 		cb.result
 	  }
-   }
+    }
 
 
 
 ## Further customizations
 
-writing concurrent combiners - overriding canBeShared
-iterators which don't use size to decide when to stop splitting -
-overriding shouldSplitFurther
-methods that call remaining - overriding isRemainingCheap
-strict and nonstrict splitters - overriding isStrictSplitterCollection
+Implementing a concurrent collections is not always straightforward.
+Combiners in particular often require a lot of thought. In most collections described
+so far combiner use a two-step evaluation. In the first step the elements
+are added to the combiners by different processors and the combiners are merged
+together. In the second step, after all the elements are available, the resulting
+collection is constructed.
+
+Another approach to combiners is to construct the resulting collection as the elements.
+This requires the collection to be thread-safe - a combiner must allow
+concurrent element insertion. In this case one combiner is shared by all the processors.
+
+To parallelize a concurrent collection, its combiners must override the method `canBeShared`
+to return `true`. This will ensure that only one combiner is created when a parallel operation
+is invoked. Next, the `+=` method must be thread-safe. Finally, method `combine` still returns
+the current combiner if the current combiner and the argument combiner are the same, and is
+free to throw an exception otherwise.
+
+Splitters are divided into smaller splitters to achieve better load balancing.
+By default information returned by the `remaining` method is used to decide when to stop
+dividing the splitter. For some collections calling the `remaining` method may be costly and
+some other means should be used to decide when to divide the splitter. In this case, one
+should override the `shouldSplitFurther` method in the splitter.
+
+The default implementation divides the splitter if the number of remaining elements is greater than
+the collection size divided by eight times the parallelism level.
+
+    def shouldSplitFurther[S](coll: ParIterable[S], parallelismLevel: Int) =
+	  remaining > thresholdFromSize(coll.size, parallelismLevel)
+
+Equivalently, a splitter can hold a counter on how many times it was split and implement `shouldSplitFurther`
+by returning `true` if the split count is greater than `3 + log(parallelismLevel)`. This avoids having
+to call `remaining`.
+
+Furthermore, if calling `remaining` is not a cheap operation for a particular collection (i.e.
+it requires evaluating the number of elements in the collection), then the method `isRemainingCheap`
+in splitters should be overridden to return `false`.
+
+Finally, if the `remaining` method in splitters is extremely cumbersome to implement, you can override the method
+`isStrictSplitterCollection` in its collection to return `false`. Such collections will fail to execute some methods
+which rely on splitters being strict, i.e. returning a correct value in the `remaining` method. Importantly,
+this does not effect methods used in for-comprehensions.
+
+
+
 
 
 
