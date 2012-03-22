@@ -68,7 +68,6 @@ next cycle as far as possible.
 The `scala.testing.Benchmark` trait is predefined in the Scala standard library and is designed with
 above in mind. Here is an example of benchmarking a map operation on a concurrent trie:
 
-
     import collection.parallel.mutable.ParCtrie
 	import collection.parallel.ForkJoinTaskSupport
 	
@@ -109,6 +108,153 @@ Running times obtained by setting the `par` to `1`, `2`, `4` and `8` on a quad-c
 We can see above that the running time is higher during the initial runs, but is reduced after the
 code gets optimized. Further, we can see that the benefit of hyperthreading is not high in this example,
 as going from `4` to `8` threads results only in a minor performance improvement.
+
+
+## How big should a collection be to go parallel?
+
+This is a question commonly asked. The answer is somewhat involved.
+
+The size of the collection at which the parallelization pays of really
+depends on many factors. Some of them, but not all, include:
+- Machine architecture. Different CPU types have different
+  performance and scalability characteristics. Orthogonal to that,
+  whether the machine is multicore or has multiple processors
+  communicating via motherboard.
+- JVM vendor and version. Different VMs apply different
+  optimizations to the code at runtime. They implement different memory
+  management and synchronization techniques. Some do not support
+  `ForkJoinPool`, reverting to `ThreadPoolExecutor`s, resulting in
+  more overhead.
+- Per-element workload. A function or a predicate for a parallel
+  operation determines how big is the per-element workload. The
+  smaller the workload, the higher the number of elements needed to
+  gain speedups when running in parallel.
+- Specific collection. For example, `ParArray` and
+  `ParCtrie` have splitters that traverse the collection at
+  different speeds, meaning there is more per-element work in just the
+  traversal itself.
+- Specific operation. For example, `ParVector` is a lot slower for
+  transformer methods (like `filter`) than it is for accessor methods (like `foreach`)
+- Side-effects. When modifying memory areas concurrently or using
+  synchronization within the body of `foreach`, `map`, etc.,
+  contention can occur.
+- Memory management. When allocating a lot of objects a garbage
+  collection cycle can be triggered. Depending on how the references
+  to new objects are passed around, the GC cycle can take more or less time.
+
+Even in separation, it is not easy to reason about things above and
+give a precise answer to what the collection size should be. To
+roughly illustrate what the size should be, we give an example of
+a cheap sideeffect-free parallel vector reduce (in this case, sum)
+operation performance on an i7 quad-core processor (not using
+hyperthreading) on JDK7:
+
+    import collection.parallel.immutable.ParVector
+    
+    object Reduce extends testing.Benchmark {
+      val length = sys.props("length").toInt
+      val par = sys.props("par").toInt
+      val parvector = ParVector((0 until length): _*)
+      
+      parvector.tasksupport = new collection.parallel.ForkJoinTaskSupport(new scala.concurrent.forkjoin.ForkJoinPool(par))
+      
+      def run = {
+        parvector reduce {
+          (a, b) => a + b
+        }
+      }
+    }
+    
+    
+    object ReduceSeq extends testing.Benchmark {
+      val length = sys.props("length").toInt
+      val vector = collection.immutable.Vector((0 until length): _*)
+      
+      def run = {
+        vector reduce {
+          (a, b) => a + b
+        }
+      }
+    }
+
+We first run the benchmark with `250000` elements and obtain the
+following results, for `1`, `2` and `4` threads:
+
+    java -server -cp .:../../build/pack/lib/scala-library.jar -Dpar=1 -Dlength=250000 Reduce 10 10
+    Reduce$    54    24    18    18    18    19    19    18    19    19
+    java -server -cp .:../../build/pack/lib/scala-library.jar -Dpar=2 -Dlength=250000 Reduce 10 10
+    Reduce$    60    19    17    13    13    13    13    14    12    13
+    java -server -cp .:../../build/pack/lib/scala-library.jar -Dpar=4 -Dlength=250000 Reduce 10 10
+    Reduce$    62    17    15    14    13    11    11    11    11    9
+
+We then decrease the number of elements down to `120000` and use `4`
+threads to compare the time to that of a sequential vector reduce:
+
+    java -server -cp .:../../build/pack/lib/scala-library.jar -Dpar=4 -Dlength=120000 Reduce 10 10
+    Reduce$    54    10    8    8    8    7    8    7    6    5
+    java -server -cp .:../../build/pack/lib/scala-library.jar -Dlength=120000 ReduceSeq 10 10
+    ReduceSeq$    31    7    8    8    7    7    7    8    7    8
+
+`120000` elements seems to be the around the threshold in this case.
+
+As another example, we take the  `mutable.ParHashMap` and the `map`
+method (a transformer method) and run the following benchmark in the same environment:
+
+    import collection.parallel.mutable.ParHashMap
+    
+    object Map extends testing.Benchmark {
+      val length = sys.props("length").toInt
+      val par = sys.props("par").toInt
+      val phm = ParHashMap((0 until length) zip (0 until length): _*)
+      
+      phm.tasksupport = new collection.parallel.ForkJoinTaskSupport(new scala.concurrent.forkjoin.ForkJoinPool(par))
+      
+      def run = {
+        phm map {
+          kv => kv
+        }
+      }
+    }
+    
+    
+    object MapSeq extends testing.Benchmark {
+      val length = sys.props("length").toInt
+      val hm = collection.mutable.HashMap((0 until length) zip (0 until length): _*)
+      
+      def run = {
+        hm map {
+          kv => kv
+        }
+      }
+    }
+
+For `120000` elements we get the following times when ranging the
+number of threads from `1` to `4`:
+
+    java -server -cp .:../../build/pack/lib/scala-library.jar -Dpar=1 -Dlength=120000 Map 10 10    
+    Map$    187    108    97    96    96    95    95    95    96    95
+    java -server -cp .:../../build/pack/lib/scala-library.jar -Dpar=2 -Dlength=120000 Map 10 10
+    Map$    138    68    57    56    57    56    56    55    54    55
+    java -server -cp .:../../build/pack/lib/scala-library.jar -Dpar=4 -Dlength=120000 Map 10 10
+    Map$    124    54    42    40    38    41    40    40    39    39
+
+Now, if we reduce the number of elements to `15000` and compare that
+to the sequential hashmap:
+
+    java -server -cp .:../../build/pack/lib/scala-library.jar -Dpar=1 -Dlength=15000 Map 10 10
+    Map$    41    13    10    10    10    9    9    9    10    9
+    java -server -cp .:../../build/pack/lib/scala-library.jar -Dpar=2 -Dlength=15000 Map 10 10
+    Map$    48    15    9    8    7    7    6    7    8    6
+    java -server -cp .:../../build/pack/lib/scala-library.jar -Dlength=15000 MapSeq 10 10
+    MapSeq$    39    9    9    9    8    9    9    9    9    9
+
+For this collection and this operation it makes sense
+to go parallel when there are below `15000` elements (in general,
+it is feasible to parallelize hashmaps and hashsets with fewer
+elements than would be required for arrays or vectors).
+
+
+
 
 
 ## References
