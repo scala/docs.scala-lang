@@ -38,13 +38,13 @@ support.
 
 An outline of the `Builder` class:
 
-    package scala.collection.generic
-  
+    package scala.collection.mutable
+    
     class Builder[-Elem, +To] {
       def +=(elem: Elem): this.type
       def result(): To
-      def clear()
-      def mapResult(f: To => NewTo): Builder[Elem, NewTo] = ...
+      def clear(): Unit
+      def mapResult[NewTo](f: To => NewTo): Builder[Elem, NewTo] = ...
     }
 
 Almost all collection operations are implemented in terms of
