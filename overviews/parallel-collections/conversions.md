@@ -5,16 +5,13 @@ title: Parallel Collection Conversions
 disqus: true
 
 partof: parallel-collections
-num: 2
+num: 3
 ---
-
-**Aleksandar Prokopec**
-
 
 ## Converting between sequential and parallel collections
 
 Every sequential collection can be converted to its parallel variant
-using the `par` method. Certain sequential collection have their
+using the `par` method. Certain sequential collections have their
 direct parallel counterparts. For these collections the conversion is
 efficient - it occurs in constant time, since both the sequential and
 the parallel collection have the same data-structural representation
@@ -37,12 +34,12 @@ visible in its parallel counterpart if they share the underlying data-structure.
 | `HashMap`     | `ParHashMap`   |
 | `HashSet`     | `ParHashSet`   |
 
-Other collections, such as lists, queues or streams, are inherently
-sequential in the sense that the elements must be accessed in
-one after the other. These collections are converted to their parallel
-variants by copying the elements into a similar parallel collection.
-For example, a functional list is converted into a standard immutable
-parallel sequence, which is a parallel vector.
+Other collections, such as lists, queues or streams, are inherently sequential
+in the sense that the elements must be accessed one after the other. These
+collections are converted to their parallel variants by copying the elements
+into a similar parallel collection. For example, a functional list is
+converted into a standard immutable parallel sequence, which is a parallel
+vector.
 
 Every parallel collection can be converted to its sequential variant
 using the `seq` method. Converting a parallel collection to a

@@ -5,13 +5,8 @@ title: Configuring Parallel Collections
 disqus: true
 
 partof: parallel-collections
-num: 2
+num: 7
 ---
-
-**Aleksandar Prokopec**
-
-
-
 
 ## Task support
 
