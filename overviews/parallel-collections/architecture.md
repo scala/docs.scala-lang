@@ -10,11 +10,11 @@ num: 5
 
 Like the normal, sequential collections library, Scala's parallel collections
 library contains a large number of collection operations which exist uniformly
-on many different parallel collection implementations. And like the normal,
-sequential collections library, Scala's parallel collections library seeks to
-prevent code duplication by likewise implementing most operations in terms of
-parallel collection "templates" which need only be defined once and can be
-flexibly inherited by many different parallel collection implementations.
+on many different parallel collection implementations. And like the sequential
+collections library, Scala's parallel collections library seeks to prevent
+code duplication by likewise implementing most operations in terms of parallel
+collection "templates" which need only be defined once and can be flexibly
+inherited by many different parallel collection implementations.
 
 The benefits of this approach are greatly eased **maintenance** and
 **extensibility**. In the case of maintenance-- by having a single
@@ -42,7 +42,13 @@ parallel collection. What's more, as a type of `Iterator`, a `Splitter` can be
 `split` further into additional `Splitter`s which each traverse over disjoint
 subsets of elements of the whole parallel collection. Typically, this `split`
 operation is repeated recursively until the size of the split partitions is
-sufficiently small.
+sufficiently small. Note, that implementing "splitting" in terms of
+`Iterator`s induces significantly less overhead than by than _actually_
+splitting the collection.
+
+
+
+
 
 ### Combiners
 
