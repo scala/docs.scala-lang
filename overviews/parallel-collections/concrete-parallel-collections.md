@@ -90,7 +90,6 @@ A [mutable.ConcurrentTrieMap](http://www.scala-lang.org/api/{{ site.scala-versio
 
     scala> val numbers = scala.collection.parallel.mutable.ParConcurrentTrieMap((1 until 100) zip (1 until 100): _*) map { case (k, v) => (k.toDouble, v.toDouble) }
     numbers: scala.collection.parallel.mutable.ParConcurrentTrieMap[Double,Double] = ParCtrie(0.0 -> 0.0, 42.0 -> 42.0, 70.0 -> 70.0, 2.0 -> 2.0,...
-    
     scala> while (numbers.nonEmpty) {
          |   numbers foreach { case (num, sqrt) =>
 		 |     val nsqrt = 0.5 * (sqrt + num / sqrt)
