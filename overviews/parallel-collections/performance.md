@@ -112,6 +112,7 @@ This is a question commonly asked. The answer is somewhat involved.
 
 The size of the collection at which the parallelization pays of really
 depends on many factors. Some of them, but not all, include:
+
 - Machine architecture. Different CPU types have different
   performance and scalability characteristics. Orthogonal to that,
   whether the machine is multicore or has multiple processors

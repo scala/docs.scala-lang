@@ -14,8 +14,10 @@ A [ParArray](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collec
 
     scala> val pa = scala.collection.parallel.mutable.ParArray.tabulate(1000)(x => 2 * x + 1)
     pa: scala.collection.parallel.mutable.ParArray[Int] = ParArray(1, 3, 5, 7, 9, 11, 13,...
+    
     scala> pa reduce (_ + _)
     res0: Int = 1000000
+    
     scala> pa map (x => (x - 1) / 2)
     res1: scala.collection.parallel.mutable.ParArray[Int] = ParArray(0, 1, 2, 3, 4, 5, 6, 7,...
 
@@ -30,6 +32,7 @@ A [ParVector](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/colle
 
     scala> val pv = scala.collection.parallel.immutable.ParVector.tabulate(1000)(x => x)
     pv: scala.collection.parallel.immutable.ParVector[Int] = ParVector(0, 1, 2, 3, 4, 5, 6, 7, 8, 9,...
+    
     scala> pv filter (_ % 2 == 0)
     res0: scala.collection.parallel.immutable.ParVector[Int] = ParVector(0, 2, 4, 6, 8, 10, 12, 14, 16, 18,...
 
@@ -44,6 +47,7 @@ A [ParRange](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collec
 
     scala> 1 to 3 par
     res0: scala.collection.parallel.immutable.ParRange = ParRange(1, 2, 3)
+    
     scala> 15 to 5 by -2 par
     res1: scala.collection.parallel.immutable.ParRange = ParRange(15, 13, 11, 9, 7, 5)
 
@@ -56,7 +60,8 @@ Parallel hash tables store their elements in an underlying array and place them 
 
     scala> val phs = scala.collection.parallel.mutable.ParHashSet(1 until 2000: _*)
     phs: scala.collection.parallel.mutable.ParHashSet[Int] = ParHashSet(18, 327, 736, 1045, 773, 1082,...
-	scala> phs map (x => x * x)
+	
+    scala> phs map (x => x * x)
     res0: scala.collection.parallel.mutable.ParHashSet[Int] = ParHashSet(2181529, 2446096, 99225, 2585664,...
 
 Parallel hash table combiners sort elements into buckets according to their hashcode prefix. They are combined by simply concatenating these buckets together. Once the final hash table is to be constructed (i.e. combiner `result` method is called), the underlying array is allocated and the elements from different buckets are copied in parallel to different contiguous segments of the hash table array.
@@ -70,7 +75,8 @@ Parallel hash tries are a parallel counterpart of the immutable hash tries, whic
 
     scala> val phs = scala.collection.parallel.immutable.ParHashSet(1 until 1000: _*)
     phs: scala.collection.parallel.immutable.ParHashSet[Int] = ParSet(645, 892, 69, 809, 629, 365, 138, 760, 101, 479,...
-	scala> phs map { x => x * x } sum
+	
+    scala> phs map { x => x * x } sum
     res0: Int = 332833500
 
 Similar to parallel hash tables, parallel hash trie combiners presort the elements into buckets and construct the resulting hash trie in parallel by assigning different buckets to different processors which construct the subtries independently.
@@ -84,6 +90,7 @@ A [mutable.ConcurrentTrieMap](http://www.scala-lang.org/api/{{ site.scala-versio
 
     scala> val numbers = scala.collection.parallel.mutable.ParConcurrentTrieMap((1 until 100) zip (1 until 100): _*) map { case (k, v) => (k.toDouble, v.toDouble) }
     numbers: scala.collection.parallel.mutable.ParConcurrentTrieMap[Double,Double] = ParCtrie(0.0 -> 0.0, 42.0 -> 42.0, 70.0 -> 70.0, 2.0 -> 2.0,...
+    
     scala> while (numbers.nonEmpty) {
          |   numbers foreach { case (num, sqrt) =>
 		 |     val nsqrt = 0.5 * (sqrt + num / sqrt)
