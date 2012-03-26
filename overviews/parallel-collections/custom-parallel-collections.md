@@ -5,11 +5,8 @@ title: Creating Custom Parallel Collections
 disqus: true
 
 partof: parallel-collections
-num: 2
+num: 6
 ---
-
-**Aleksandar Prokopec**
-
 
 ## Parallel collections without combiners
 

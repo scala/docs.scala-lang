@@ -8,8 +8,6 @@ partof: parallel-collections
 num: 2
 ---
 
-**Aleksandar Prokopec**
-
 ## Parallel Array
 
 A [ParArray](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/mutable/ParArray.html) sequence holds an linear, contiguous array of elements. This means that the elements can be accessed and updated efficiently through modifying the underlying array. Traversing the elements is also very efficient for this reason. Parallel arrays are like arrays in the sense that their size is constant.

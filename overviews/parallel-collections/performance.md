@@ -5,13 +5,9 @@ title: Measuring Performance
 disqus: true
 
 partof: parallel-collections
-num: 1
+num: 8
+outof: 8
 ---
-
-**Aleksandar Prokopec**
-
-
-
 
 ## Performance on the JVM
 

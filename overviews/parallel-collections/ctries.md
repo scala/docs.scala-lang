@@ -5,11 +5,8 @@ title: Concurrent Tries
 disqus: true
 
 partof: parallel-collections
-num: 2
+num: 4
 ---
-
-**Aleksandar Prokopec**
-
 
 Most concurrent data structures do not guarantee consistent
 traversal if the the data structure is modified during traversal.
