@@ -11,17 +11,17 @@ num: 3
 ## Converting between sequential and parallel collections
 
 Every sequential collection can be converted to its parallel variant
-using the `par` method. Certain sequential collections have their
-direct parallel counterparts. For these collections the conversion is
-efficient - it occurs in constant time, since both the sequential and
+using the `par` method. Certain sequential collections have a
+direct parallel counterpart. For these collections the conversion is
+efficient-- it occurs in constant time, since both the sequential and
 the parallel collection have the same data-structural representation
-(one exception are mutable hash maps and hash sets which are slightly
+(one exception is mutable hash maps and hash sets which are slightly
 more expensive to convert the first time `par` is called, but
 subsequent invocations of `par` take constant time). It should be
 noted that for mutable collections, changes in the sequential collection are
 visible in its parallel counterpart if they share the underlying data-structure.
 
-| sequential    | parallel       |
+| Sequential    | Parallel       |
 | ------------- | -------------- |
 | **mutable**   |                |
 | `Array`       | `ParArray`     |
@@ -43,9 +43,9 @@ vector.
 
 Every parallel collection can be converted to its sequential variant
 using the `seq` method. Converting a parallel collection to a
-sequential collection is always efficient - it takes constant
+sequential collection is always efficient-- it takes constant
 time. Calling `seq` on a mutable parallel collection yields a
-sequential collection which is backed by the same store - updates to
+sequential collection which is backed by the same store-- updates to
 one collection will be visible in the other one.
 
 
@@ -61,7 +61,7 @@ into a `ParX` collection.
 
 Here is a summary of all conversion methods:
 
-| method         | return type    |
+| Method         | Return Type    |
 | -------------- | -------------- |
 | `toArray`      | `Array`        |
 | `toList`       | `List`         |

@@ -10,7 +10,12 @@ num: 2
 
 ## Parallel Array
 
-A [ParArray](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/mutable/ParArray.html) sequence holds an linear, contiguous array of elements. This means that the elements can be accessed and updated efficiently through modifying the underlying array. Traversing the elements is also very efficient for this reason. Parallel arrays are like arrays in the sense that their size is constant.
+A [ParArray](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/mutable/ParArray.html) 
+sequence holds a linear,
+contiguous array of elements. This means that the elements can be accessed and
+updated efficiently by modifying the underlying array. Traversing the
+elements is also very efficient for this reason. Parallel arrays are like
+arrays in the sense that their size is constant.
 
     scala> val pa = scala.collection.parallel.mutable.ParArray.tabulate(1000)(x => 2 * x + 1)
     pa: scala.collection.parallel.mutable.ParArray[Int] = ParArray(1, 3, 5, 7, 9, 11, 13,...
@@ -21,14 +26,31 @@ A [ParArray](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collec
     scala> pa map (x => (x - 1) / 2)
     res1: scala.collection.parallel.mutable.ParArray[Int] = ParArray(0, 1, 2, 3, 4, 5, 6, 7,...
 
-Internally, splitting a parallel array splitter amounts to creating two new splitters with their iteration indices updated. Combiners are slightly more involved. Since for most transformer methods (e.g. `flatMap`, `filter`, `takeWhile`, etc.) we don't know the number of elements (and hence, the array size) in advance, each combiner is essentially a variant of an array buffer with an amortized constant time `+=` operation. Different processors add elements to separate parallel array combiners, which are then combined by chaining their internal arrays. The underlying array is only allocated and filled in parallel after the total number of elements becomes known. For this reason, transformer methods are slightly more expensive than accessor methods. Also, note that the final array allocation proceeds sequentially on the JVM, so this can prove to be a sequential bottleneck if the mapping operation itself is very cheap.
+Internally, splitting a parallel array splitter amounts to creating two new
+splitters with their iteration indices updated. Combiners are slightly more
+involved. Since for most transformer methods (e.g. `flatMap`, `filter`,
+`takeWhile`, etc.) we don't know the number of elements (and hence, the array
+size) in advance, each combiner is essentially a variant of an array buffer
+with an amortized constant time `+=` operation. Different processors add
+elements to separate parallel array combiners, which are then combined by
+chaining their internal arrays. The underlying array is only allocated and
+filled in parallel after the total number of elements becomes known. For this
+reason, transformer methods are slightly more expensive than accessor methods.
+Also, note that the final array allocation proceeds sequentially on the JVM,
+so this can prove to be a sequential bottleneck if the mapping operation
+itself is very cheap.
 
-By calling the `seq` method parallel arrays are converted to `ArraySeq` collections, which are their sequential counterparts. This conversion is efficient, and the `ArraySeq` is backed by the same underlying array as the parallel array it was obtained from.
+By calling the `seq` method, parallel arrays are converted to `ArraySeq`
+collections, which are their sequential counterparts. This conversion is
+efficient, and the `ArraySeq` is backed by the same underlying array as the
+parallel array it was obtained from.
 
 
 ## Parallel Vector
 
-A [ParVector](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/immutable/ParVector.html) is an immutable sequence with a low-constant factor logarithmic access and update time.
+A [ParVector](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/immutable/ParVector.html) 
+is an immutable sequence with a low-constant factor logarithmic access and 
+update time.
 
     scala> val pv = scala.collection.parallel.immutable.ParVector.tabulate(1000)(x => x)
     pv: scala.collection.parallel.immutable.ParVector[Int] = ParVector(0, 1, 2, 3, 4, 5, 6, 7, 8, 9,...
@@ -36,14 +58,25 @@ A [ParVector](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/colle
     scala> pv filter (_ % 2 == 0)
     res0: scala.collection.parallel.immutable.ParVector[Int] = ParVector(0, 2, 4, 6, 8, 10, 12, 14, 16, 18,...
 
-Immutable vectors are represented with 32-way trees, so splitters are split by assigning subtrees to each splitter. Combiners currently keep a vector of elements and are combined by lazily copying the elements. For this reason, transformer methods are less scalable than those of a parallel array. Once the vector concatenation operation becomes available in a future Scala release, combiners will be combined using concatenation and transformer methods will become much more efficient.
+Immutable vectors are represented by 32-way trees, so splitters are split by
+assigning subtrees to each splitter. Combiners currently keep a vector of
+elements and are combined by lazily copying the elements. For this reason,
+transformer methods are less scalable than those of a parallel array. Once the
+vector concatenation operation becomes available in a future Scala release,
+combiners will be combined using concatenation and transformer methods will
+become much more efficient.
 
-Parallel vector is a parallel counterpart of the sequential [Vector](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Vector.html), so conversion between the two takes constant time.
+Parallel vector is a parallel counterpart of the sequential 
+[Vector](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Vector.html), 
+so conversion between the two takes constant time.
 
 
 ## Parallel Range
 
-A [ParRange](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/immutable/ParRange.html) is an ordered sequence of elements equally spaced apart. A parallel range is created in a similar way as the sequential [Range](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Range.html):
+A [ParRange](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/immutable/ParRange.html) 
+is an ordered sequence of elements equally spaced apart. A parallel range is 
+created in a similar way as the sequential 
+[Range](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Range.html):
 
     scala> 1 to 3 par
     res0: scala.collection.parallel.immutable.ParRange = ParRange(1, 2, 3)
@@ -51,12 +84,21 @@ A [ParRange](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collec
     scala> 15 to 5 by -2 par
     res1: scala.collection.parallel.immutable.ParRange = ParRange(15, 13, 11, 9, 7, 5)
 
-Just as sequential ranges have no builder, parallel ranges have no combiners. Mapping the elements of a parallel range produces a parallel vector. Sequential ranges and parallel ranges can be converted efficiently one from another using the `seq` and `par` methods.
+Just as sequential ranges have no builder, parallel ranges have no combiners.
+Mapping the elements of a parallel range produces a parallel vector.
+Sequential ranges and parallel ranges can be converted efficiently one from
+another using the `seq` and `par` methods.
 
 
 ## Parallel Hash Tables
 
-Parallel hash tables store their elements in an underlying array and place them in the position determined by the hash code of the respective element. Parallel mutable hash sets ([mutable.ParHashSet](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/mutable/ParHashSet.html))) and parallel mutable hash maps ([mutable.ParHashMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/mutable/ParHashMap.html))) are based on hash tables.
+Parallel hash tables store their elements in an underlying array and place
+them in the position determined by the hash code of the respective element.
+Parallel mutable hash sets (
+[mutable.ParHashSet](http://www.scala-lang.org/api/{{ site.scala-version}}/scala/collection/parallel/mutable/ParHashSet.html)) 
+and parallel mutable hash maps 
+([mutable.ParHashMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/mutable/ParHashMap.html)) 
+are based on hash tables.
 
     scala> val phs = scala.collection.parallel.mutable.ParHashSet(1 until 2000: _*)
     phs: scala.collection.parallel.mutable.ParHashSet[Int] = ParHashSet(18, 327, 736, 1045, 773, 1082,...
@@ -64,14 +106,35 @@ Parallel hash tables store their elements in an underlying array and place them 
     scala> phs map (x => x * x)
     res0: scala.collection.parallel.mutable.ParHashSet[Int] = ParHashSet(2181529, 2446096, 99225, 2585664,...
 
-Parallel hash table combiners sort elements into buckets according to their hashcode prefix. They are combined by simply concatenating these buckets together. Once the final hash table is to be constructed (i.e. combiner `result` method is called), the underlying array is allocated and the elements from different buckets are copied in parallel to different contiguous segments of the hash table array.
+Parallel hash table combiners sort elements into buckets according to their
+hashcode prefix. They are combined by simply concatenating these buckets
+together. Once the final hash table is to be constructed (i.e. combiner
+`result` method is called), the underlying array is allocated and the elements
+from different buckets are copied in parallel to different contiguous segments
+of the hash table array.
 
-Sequential hash maps and hash sets can be converted to their parallel variants using the `par` method. Parallel hash tables internally require a size map which tracks the number of elements in different chunks of the hash table. What this means is that the first time that a sequential hash table is converted into a parallel hash table, the table is traversed and the size map is created - for this reason, the first call to `par` take time linear in the size of the hash table. Further modifications to the hash table maintain the state of the size map, so subsequent conversions using `par` and `seq` have constant complexity. Maintenance of the size map can be turned on and off using the `useSizeMap` method of the hash table. Importantly, modifications in the sequential hash table are visible in the parallel hash table, and vice versa.
+Sequential hash maps and hash sets can be converted to their parallel variants
+using the `par` method. Parallel hash tables internally require a size map
+which tracks the number of elements in different chunks of the hash table.
+What this means is that the first time that a sequential hash table is
+converted into a parallel hash table, the table is traversed and the size map
+is created - for this reason, the first call to `par` takes time linear in the
+size of the hash table. Further modifications to the hash table maintain the
+state of the size map, so subsequent conversions using `par` and `seq` have
+constant complexity. Maintenance of the size map can be turned on and off
+using the `useSizeMap` method of the hash table. Importantly, modifications in
+the sequential hash table are visible in the parallel hash table, and vice
+versa.
 
 
 ## Parallel Hash Tries
 
-Parallel hash tries are a parallel counterpart of the immutable hash tries, which are used to represent immutable sets and maps efficiently. They are supported by classes [immutable.ParHashSet](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/immutable/ParHashSet.html) and [immutable.ParHashMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/immutable/ParHashMap.html).
+Parallel hash tries are a parallel counterpart of the immutable hash tries,
+which are used to represent immutable sets and maps efficiently. They are
+supported by classes 
+[immutable.ParHashSet](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/immutable/ParHashSet.html) 
+and
+[immutable.ParHashMap](http://www.scala-lang.org/api/{{ site.scala-version}}/scala/collection/parallel/immutable/ParHashMap.html).
 
     scala> val phs = scala.collection.parallel.immutable.ParHashSet(1 until 1000: _*)
     phs: scala.collection.parallel.immutable.ParHashSet[Int] = ParSet(645, 892, 69, 809, 629, 365, 138, 760, 101, 479,...
@@ -79,17 +142,29 @@ Parallel hash tries are a parallel counterpart of the immutable hash tries, whic
     scala> phs map { x => x * x } sum
     res0: Int = 332833500
 
-Similar to parallel hash tables, parallel hash trie combiners presort the elements into buckets and construct the resulting hash trie in parallel by assigning different buckets to different processors which construct the subtries independently.
+Similar to parallel hash tables, parallel hash trie combiners pre-sort the
+elements into buckets and construct the resulting hash trie in parallel by
+assigning different buckets to different processors, which construct the
+subtries independently.
 
-Parallel hash tries can be converted back and forth to sequential hash tries by using the `seq` and `par` method in constant time.
+Parallel hash tries can be converted back and forth to sequential hash tries
+by using the `seq` and `par` method in constant time.
 
 
 ## Parallel Ctries
 
-A [mutable.ConcurrentTrieMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/ConcurrentTrieMap.html) is a concurrent thread-safe map, whereas a [mutable.ParConcurrentTrieMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/mutable/ParConcurrentTrieMap.html) is its parallel counterpart. While most concurrent data structures do not guarantee consistent traversal if the the data structure is modified during traversal, Ctries guarantee that updates are only visible in the next iteration. This means that you can mutate the concurrent trie while traversing it, like in the following example which outputs square roots of number from 1 to 99:
+A [mutable.ConcurrentTrieMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/ConcurrentTrieMap.html) 
+is a concurrent thread-safe map, whereas a 
+[mutable.ParConcurrentTrieMap](http://www.scala-lang.org/api/{{ site.scala-version}}/scala/collection/parallel/mutable/ParConcurrentTrieMap.html) 
+is its parallel counterpart. While most concurrent data structures do not guarantee
+consistent traversal if the the data structure is modified during traversal,
+Ctries guarantee that updates are only visible in the next iteration. This
+means that you can mutate the concurrent trie while traversing it, like in the
+following example which outputs square roots of number from 1 to 99:
 
     scala> val numbers = scala.collection.parallel.mutable.ParConcurrentTrieMap((1 until 100) zip (1 until 100): _*) map { case (k, v) => (k.toDouble, v.toDouble) }
     numbers: scala.collection.parallel.mutable.ParConcurrentTrieMap[Double,Double] = ParCtrie(0.0 -> 0.0, 42.0 -> 42.0, 70.0 -> 70.0, 2.0 -> 2.0,...
+    
     scala> while (numbers.nonEmpty) {
          |   numbers foreach { case (num, sqrt) =>
 		 |     val nsqrt = 0.5 * (sqrt + num / sqrt)
@@ -107,9 +182,14 @@ A [mutable.ConcurrentTrieMap](http://www.scala-lang.org/api/{{ site.scala-versio
 	...
 
 
-Combiners are implemented as Ctries under the hood - since this is a concurrent data structure, only one combiner is constructed for the entire transformer method invocation and shared by all the processors.
+Combiners are implemented as Ctries under the hood - since this is a
+concurrent data structure, only one combiner is constructed for the entire
+transformer method invocation and shared by all the processors.
 
-As with all parallel mutable collections, Ctries and parallel Ctries obtained by calling `seq` or `par` methods are backed by the same store, so modifications in one are visible in the other. Conversions happen in constant time.
+As with all parallel mutable collections, Ctries and parallel Ctries obtained
+by calling `seq` or `par` methods are backed by the same store, so
+modifications in one are visible in the other. Conversions happen in constant
+time.
 
 
 ## Performance characteristics

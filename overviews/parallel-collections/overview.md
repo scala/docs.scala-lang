@@ -74,7 +74,11 @@ executed in parallel.
 _Note:_ Some of the following examples operate on small collections, which
 isn't recommended. They're provided as examples for illustrative purposes
 only. As a general heuristic, speed-ups tend to be noticeable when the size of
-the collection is large, typically several thousand elements.
+the collection is large, typically several thousand elements. (For more
+information on the relationship between the size of a parallel collection and
+performance, please see the 
+[appropriate subsection]({{ site.baseurl}}/overviews/parallel-collections/performance.html#how_big_should_a_collection_be_to_go_parallel) of the [performance]({{ site.baseurl }}/overviews/parallel-collections/performance.html) 
+section of this guide.)
 
 #### map
 
@@ -119,8 +123,8 @@ performed in parallel. Conceptually, Scala's parallel collections framework
 parallelizes an operation on a parallel collection by recursively "splitting"
 a given collection, applying an operation on each partition of the collection
 in parallel, and re-"combining" all of the results that were completed in
-parallel. In general, there is no guarantee on which order results are re-
-combined-- they're combined in the order that they're completed.
+parallel. In general, there is no guarantee on which order _adjacent_ results are 
+re-combined-- they're combined in the order that they're completed.
 
 These concurrent, and "out-of-order" semantics of parallel collections lead to
 the following two implications:
@@ -133,7 +137,7 @@ the following two implications:
 Given the _concurrent_ execution semantics of the parallel collections
 framework, operations performed on a collection which cause side-effects
 should generally be avoided, in order to maintain determinism. A simple
-example is by using a transformer method, like `foreach` to increment a var
+example is by using a transformer method, like `foreach` to increment a `var`
 declared outside of the closure which is passed to `foreach`.
 
     scala> var sum = 0
@@ -158,8 +162,8 @@ declared outside of the closure which is passed to `foreach`.
     res03: Int = 468520    
     
 Here, we can see that each time `sum` is reinitialized to 0, and `foreach` is
-called again on `list`, `sum` holds a different value. The source of this non-
-determinism is a _data race_-- concurrent reads/writes to the same mutable
+called again on `list`, `sum` holds a different value. The source of this 
+non-determinism is a _data race_-- concurrent reads/writes to the same mutable
 variable.
 
 In the above example, it's possible for two threads to read the _same_ value
@@ -172,15 +176,23 @@ overwrite (and thus, loss) of a valuable result, as illustrated below:
     ThreadA: increment sum by 760, write sum = 760     value in sum: 760
     ThreadB: increment sum by 12, write sum = 12       value in sum: 12
 
+The above example illustrates a scenario where two threads read the same
+value, `0`, before one or the other can sum `0` with an element from their
+partition of the parallel collection. In this case, `ThreadA` reads `0` and
+sums it with its element, `0+760`, and in the case of `ThreadB`, sums `0` with
+its element, `0+12`. After computing their respective sums, they each write
+their computed value in `sum`. Since `ThreadA` beats `ThreadB`, it writes
+first, only for the value in `sum` to be overwritten shortly after by
+`ThreadB`, in effect completely overwriting (and thus losing) the value `760`.
 
 ### Non-Associative Operations
 
-Given this _"out-of-order"_ semantics, one must be careful to perform only
+Given this _"out-of-order"_ semantics,  also must be careful to perform only
 associative operations in order to avoid non-determinism. That is, given a
-parallel collection, `pcoll`, one should be sure that when invoking a higher-
-order function on `pcoll`, such as `pcoll.reduce(func)`, the order in which
-`func` is applied to the elements of `pcoll` can be arbitrary. A simple, but
-obvious example is a non-associative operation such as subtraction:
+parallel collection, `pcoll`, one should be sure that when invoking a 
+higher-order function on `pcoll`, such as `pcoll.reduce(func)`, the order in 
+which `func` is applied to the elements of `pcoll` can be arbitrary. A simple, 
+but obvious example is a non-associative operation such as subtraction:
 
     scala> val list = (1 to 1000).toList.par
     list: scala.collection.parallel.immutable.ParSeq[Int] = ParVector(1, 2, 3,…
@@ -195,21 +207,23 @@ obvious example is a non-associative operation such as subtraction:
     res03: Int = -331818
     
 In the above example, we take a `ParVector[Int]`, invoke `reduce`, and pass to
-it `_-_`, which simply takes two unnamed elements, and subtracts the second
-from the first. Due to the fact that the parallel collections framework spawns
+it `_-_`, which simply takes two unnamed elements, and subtracts the first
+from the second. Due to the fact that the parallel collections framework spawns
 threads which, in effect, independently perform `reduce(_-_)` on different
 sections of the collection, the result of two runs of `reduce(_-_)` on the
 same collection will not be the same.
 
-_Note:_ Often, it is thought that, like non-associative operations, non-
-commutative operations passed to a higher-order function on a parallel
+_Note:_ Often, it is thought that, like non-associative operations,  non-commutative 
+operations passed to a higher-order function on a parallel
 collection likewise result in non-deterministic behavior. This is not the
 case. The _"out of order"_ semantics of parallel collections only means that
-the operation will be executed out of order (that is, non-sequentially, in
-time), it does not mean that the result will be re-"_combined_" out of order--
-on the contrary, results will generally always be reassembled _in order_. A
-simple example is string concatenation-- an associative, but non-commutative
-operation:
+the operation will be executed out of order (in a _temporal_ sense. That is,
+non-sequentially, in time), it does not mean that the result will be
+re-"*combined*" out of order (in a _spatial_ sense)-- on the contrary, results
+will generally always be reassembled _in order_ (_i.e._ a parallel collection
+broken into partitions A, B, C, in that order, will be reassembled once again
+in the order A, B, C. Not some other arbitrary order). A simple example is
+string concatenation-- an associative, but non-commutative operation:
 
     scala> val strings = List("abc","def","ghi","jk","lmnop","qrs","tuv","wx","yz").par
     strings: scala.collection.parallel.immutable.ParSeq[java.lang.String] = ParVector(abc, def, ghi, jk, lmnop, qrs, tuv, wx, yz) 
@@ -221,8 +235,3 @@ For more on how parallel collections split and combine operations on different
 parallel collection types, see the [Architecture]({{ site.baseurl }}/overviews
 /parallel-collections/architecture.html) section of this guide. 
 
-## Mutable & Immutable Parallel Collections
-difference between mutable and immutable parallel collections
-
-## Helpful Hints
-* Lists, and avoiding copying. 
