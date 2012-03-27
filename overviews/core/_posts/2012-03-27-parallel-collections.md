@@ -1,8 +1,8 @@
 ---
 layout: overview
-title: Scala's Collections Library
+title: Scala's Parallel Collections Library
 disqus: true
 label-color: success
 label-text: Available
-partof: collections
+partof: parallel-collections
 ---
