@@ -111,9 +111,41 @@ after the letter "K".
     scala> lastNames.filter(_.head >= 'J')
     res0: scala.collection.parallel.immutable.ParSeq[String] = ParVector(Smith, Jones, Jackson, Rodin)
 
-## Basic Usage
+## Creating a Parallel Collection
 
-sdfjdhg
+Parallel collections are meant to be used in exactly the same way as
+sequential collections-- the only noteworthy difference is how to _obtain_ a
+parallel collection.
+
+Generally, one has two choices for creating a parallel collection:
+
+First, by using the `new` keyword and a proper import statement: 
+
+    import scala.collection.parallel.mutable.ParArray
+    val pv = new ParVector[Int]
+
+Second, by _converting_ from a sequential collection:
+
+    val pv = Vector(1,2,3,4,5,6,7,8,9).par
+
+What's important to expand upon here are these conversion methods-- sequential
+collections can be converted to parallel collections by invoking the
+sequential collection's `par` method, and likewise, parallel collections can
+be converted to sequential collections by invoking the parallel collection's
+`seq` method.
+
+_Of Note:_ Collections that are inherently sequential (in the sense that the
+elements must be accessed one after the other), like lists, queues, and
+streams, are converted to their parallel counterparts by copying the elements
+into a similar parallel collection. An example is `List`-- it's converted into
+a standard immutable parallel sequence, which is a `ParVector`. Of course, the
+copying required for these collection types introduces an overhead not
+incurred by any other collection types, like `Array`, `Vector`, `HashMap`, etc.
+
+For more information on conversions on parallel collections, see the
+[conversions]({{ site.baseurl }}/overviews/parallel-collections/converesions.html) 
+and [concrete parallel collection classes]({{ site.baseurl }}/overviews/parallel-collections/concrete-parallel-collections.html) 
+sections of thise guide.
 
 ## Semantics
 

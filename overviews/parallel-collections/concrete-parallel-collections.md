@@ -26,19 +26,20 @@ arrays in the sense that their size is constant.
     scala> pa map (x => (x - 1) / 2)
     res1: scala.collection.parallel.mutable.ParArray[Int] = ParArray(0, 1, 2, 3, 4, 5, 6, 7,...
 
-Internally, splitting a parallel array splitter amounts to creating two new
-splitters with their iteration indices updated. Combiners are slightly more
-involved. Since for most transformer methods (e.g. `flatMap`, `filter`,
-`takeWhile`, etc.) we don't know the number of elements (and hence, the array
-size) in advance, each combiner is essentially a variant of an array buffer
-with an amortized constant time `+=` operation. Different processors add
-elements to separate parallel array combiners, which are then combined by
-chaining their internal arrays. The underlying array is only allocated and
-filled in parallel after the total number of elements becomes known. For this
-reason, transformer methods are slightly more expensive than accessor methods.
-Also, note that the final array allocation proceeds sequentially on the JVM,
-so this can prove to be a sequential bottleneck if the mapping operation
-itself is very cheap.
+Internally, splitting a parallel array 
+[splitter]({{ site.baseurl }}/overviews/parallel-collections/architecture.html#core_abstractions) 
+amounts to creating two new splitters with their iteration indices updated. 
+[Combiners]({{ site.baseurl }}/overviews/parallel-collections/architecture.html#core_abstractions) 
+are slightly more involved.Since for most transformer methods (e.g. `flatMap`, `filter`, `takeWhile`,
+etc.) we don't know the number of elements (and hence, the array size) in
+advance, each combiner is essentially a variant of an array buffer with an
+amortized constant time `+=` operation. Different processors add elements to
+separate parallel array combiners, which are then combined by chaining their
+internal arrays. The underlying array is only allocated and filled in parallel
+after the total number of elements becomes known. For this reason, transformer
+methods are slightly more expensive than accessor methods. Also, note that the
+final array allocation proceeds sequentially on the JVM, so this can prove to
+be a sequential bottleneck if the mapping operation itself is very cheap.
 
 By calling the `seq` method, parallel arrays are converted to `ArraySeq`
 collections, which are their sequential counterparts. This conversion is
@@ -58,8 +59,11 @@ update time.
     scala> pv filter (_ % 2 == 0)
     res0: scala.collection.parallel.immutable.ParVector[Int] = ParVector(0, 2, 4, 6, 8, 10, 12, 14, 16, 18,...
 
-Immutable vectors are represented by 32-way trees, so splitters are split by
-assigning subtrees to each splitter. Combiners currently keep a vector of
+Immutable vectors are represented by 32-way trees, so 
+[splitter]({{ site.baseurl }}/overviews/parallel-collections/architecture.html#core_abstractions)s 
+are split byassigning subtrees to each splitter. 
+[Combiners]({{ site.baseurl }}/overviews/parallel-collections/architecture.html#core_abstractions) 
+currently keep a vector of
 elements and are combined by lazily copying the elements. For this reason,
 transformer methods are less scalable than those of a parallel array. Once the
 vector concatenation operation becomes available in a future Scala release,
@@ -84,7 +88,8 @@ created in a similar way as the sequential
     scala> 15 to 5 by -2 par
     res1: scala.collection.parallel.immutable.ParRange = ParRange(15, 13, 11, 9, 7, 5)
 
-Just as sequential ranges have no builders, parallel ranges have no combiners.
+Just as sequential ranges have no builders, parallel ranges have no 
+[combiner]({{ site.baseurl }}/overviews/parallel-collections/architecture.html#core_abstractions)s.
 Mapping the elements of a parallel range produces a parallel vector.
 Sequential ranges and parallel ranges can be converted efficiently one from
 another using the `seq` and `par` methods.
@@ -94,8 +99,8 @@ another using the `seq` and `par` methods.
 
 Parallel hash tables store their elements in an underlying array and place
 them in the position determined by the hash code of the respective element.
-Parallel mutable hash sets (
-[mutable.ParHashSet](http://www.scala-lang.org/api/{{ site.scala-version}}/scala/collection/parallel/mutable/ParHashSet.html)) 
+Parallel mutable hash sets 
+([mutable.ParHashSet](http://www.scala-lang.org/api/{{ site.scala-version}}/scala/collection/parallel/mutable/ParHashSet.html)) 
 and parallel mutable hash maps 
 ([mutable.ParHashMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/mutable/ParHashMap.html)) 
 are based on hash tables.
@@ -142,7 +147,9 @@ and
     scala> phs map { x => x * x } sum
     res0: Int = 332833500
 
-Similar to parallel hash tables, parallel hash trie combiners pre-sort the
+Similar to parallel hash tables, parallel hash trie 
+[combiners]({{ site.baseurl }}/overviews/parallel-collections/architecture.html#core_abstractions) 
+pre-sort the
 elements into buckets and construct the resulting hash trie in parallel by
 assigning different buckets to different processors, which construct the
 subtries independently.
@@ -182,7 +189,8 @@ following example which outputs square roots of number from 1 to 99:
 	...
 
 
-Combiners are implemented as `TrieMap`s under the hood - since this is a
+[Combiners]({{ site.baseurl }}/overviews/parallel-collections/architecture.html#core_abstractions) 
+are implemented as `TrieMap`s under the hood-- since this is a
 concurrent data structure, only one combiner is constructed for the entire
 transformer method invocation and shared by all the processors.
 
@@ -212,6 +220,40 @@ Performance characteristics of set and map types:
 | `ParHashSet`/`ParHashMap`| C      | C    | C      |
 | `ParTrieMap`             | eC     | eC   | eC     |
 
+
+### Key
+
+The entries in the above two tables are explained as follows:
+
+|     |                                           |
+| --- | ----                                      |
+| **C**   | The operation takes (fast) constant time. |
+| **eC**  | The operation takes effectively constant time, but this might depend on some assumptions such as maximum length of a vector or distribution of hash keys.|
+| **aC**  | The operation takes amortized constant time. Some invocations of the operation might take longer, but if many operations are performed on average only constant time per operation is taken. |
+| **Log** | The operation takes time proportional to the logarithm of the collection size. |
+| **L**   | The operation is linear, that is it takes time proportional to the collection size. |
+| **-**   | The operation is not supported. |
+
+The first table treats sequence types--both immutable and mutable--with the following operations:
+
+|     |                                                     |
+| --- | ----                                                |
+| **head**   | Selecting the first element of the sequence. |
+| **tail**   | Producing a new sequence that consists of all elements except the first one. |
+| **apply**  | Indexing. |
+| **update** | Functional update (with `updated`) for immutable sequences, side-effecting update (with `update` for mutable sequences. |
+| **prepend**| Adding an element to the front of the sequence. For immutable sequences, this produces a new sequence. For mutable sequences it modified the existing sequence. |
+| **append** | Adding an element and the end of the sequence. For immutable sequences, this produces a new sequence. For mutable sequences it modified the existing sequence. |
+| **insert** | Inserting an element at an arbitrary position in the sequence. This is only supported directly for mutable sequences. |
+
+The second table treats mutable and immutable sets and maps with the following operations:
+
+|     |                                                     |
+| --- | ----                                                |
+| **lookup** | Testing whether an element is contained in set, or selecting a value associated with a key. |
+| **add**    | Adding a new element to a set or key/value pair to a map. |
+| **remove** | Removing an element from a set or a key from a map. |
+| **min**    | The smallest element of the set, or the smallest key of a map. |
 
 
 
