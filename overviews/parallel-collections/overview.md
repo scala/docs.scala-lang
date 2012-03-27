@@ -56,7 +56,7 @@ from Scala's (sequential) collection library, including:
 * `immutable.ParHashMap`
 * `immutable.ParHashSet`
 * `ParRange`
-* `ParCtrie` (`Ctrie`s are new in 2.10)
+* `ParTrieMap` (`collection.concurrent.TrieMap`s are new in 2.10)
 
 In addition to a common architecture, Scala's parallel collections library
 additionally shares _extensibility_ with the sequential collections library.
@@ -111,6 +111,9 @@ after the letter "K".
     scala> lastNames.filter(_.head >= 'J')
     res0: scala.collection.parallel.immutable.ParSeq[String] = ParVector(Smith, Jones, Jackson, Rodin)
 
+## Basic Usage
+
+sdfjdhg
 
 ## Semantics
 
@@ -123,8 +126,7 @@ performed in parallel. Conceptually, Scala's parallel collections framework
 parallelizes an operation on a parallel collection by recursively "splitting"
 a given collection, applying an operation on each partition of the collection
 in parallel, and re-"combining" all of the results that were completed in
-parallel. In general, there is no guarantee on which order _adjacent_ results are 
-re-combined-- they're combined in the order that they're completed.
+parallel. 
 
 These concurrent, and "out-of-order" semantics of parallel collections lead to
 the following two implications:
@@ -137,7 +139,7 @@ the following two implications:
 Given the _concurrent_ execution semantics of the parallel collections
 framework, operations performed on a collection which cause side-effects
 should generally be avoided, in order to maintain determinism. A simple
-example is by using a transformer method, like `foreach` to increment a `var`
+example is by using an accessor method, like `foreach` to increment a `var`
 declared outside of the closure which is passed to `foreach`.
 
     scala> var sum = 0
@@ -213,23 +215,25 @@ threads which, in effect, independently perform `reduce(_-_)` on different
 sections of the collection, the result of two runs of `reduce(_-_)` on the
 same collection will not be the same.
 
-_Note:_ Often, it is thought that, like non-associative operations,  non-commutative 
+_Note:_ Often, it is thought that, like non-associative operations,  non-commutative  
 operations passed to a higher-order function on a parallel
 collection likewise result in non-deterministic behavior. This is not the
-case. The _"out of order"_ semantics of parallel collections only means that
-the operation will be executed out of order (in a _temporal_ sense. That is,
-non-sequentially, in time), it does not mean that the result will be
-re-"*combined*" out of order (in a _spatial_ sense)-- on the contrary, results
-will generally always be reassembled _in order_ (_i.e._ a parallel collection
-broken into partitions A, B, C, in that order, will be reassembled once again
-in the order A, B, C. Not some other arbitrary order). A simple example is
-string concatenation-- an associative, but non-commutative operation:
+case, a simple example is string concatenation-- an associative, but non-
+commutative operation:
 
     scala> val strings = List("abc","def","ghi","jk","lmnop","qrs","tuv","wx","yz").par
     strings: scala.collection.parallel.immutable.ParSeq[java.lang.String] = ParVector(abc, def, ghi, jk, lmnop, qrs, tuv, wx, yz) 
     
     scala> val alphabet = strings.reduce(_++_)
     alphabet: java.lang.String = abcdefghijklmnopqrstuvwxyz
+
+The _"out of order"_ semantics of parallel collections only means that
+the operation will be executed out of order (in a _temporal_ sense. That is,
+non-sequentially), it does not mean that the result will be
+re-"*combined*" out of order (in a _spatial_ sense). On the contrary, results
+will generally always be reassembled _in order_-- that is, a parallel collection
+broken into partitions A, B, C, in that order, will be reassembled once again
+in the order A, B, C. Not some other arbitrary order like B, C, A.
 
 For more on how parallel collections split and combine operations on different
 parallel collection types, see the [Architecture]({{ site.baseurl }}/overviews
