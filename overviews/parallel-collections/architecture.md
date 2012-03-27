@@ -86,8 +86,8 @@ regular collections framework's corresponding traits, as shown below.
 
 [<img src="{{ site.baseurl }}/resources/images/parallel-collections-hierarchy.png" width="550">]({{ site.baseurl }}/resources/images/parallel-collections-hierarchy.png)
 
-<center><b>Hierarchy of Scala's Collections and Parallel Collections Libraries<b></center>
-
+<center><b>Hierarchy of Scala's Collections and Parallel Collections Libraries</b></center>
+<br/>
 
 The goal is of course to integrate parallel collections as tightly as possible
 with sequential collections, so as to allow for straightforward substitution
