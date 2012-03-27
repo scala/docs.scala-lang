@@ -48,6 +48,13 @@ represent them, so that they could be passed to a method with a generic type
 parameter. This induces extra allocations and is slower, also producing
 additional garbage on the heap.
 
+Where parallel performance is concerned, one common issue is memory
+contention, as the programmer does not have explicit control about where the
+objects are allocated.
+In fact, due to GC effects, contention can occur at a later stage in
+the application lifetime after objects get moved around in memory.
+Such effects need to be taken into consideration when writing a benchmark.
+
 
 ## Microbenchmarking example
 
