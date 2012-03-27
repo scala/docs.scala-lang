@@ -27,7 +27,7 @@ visible in its parallel counterpart if they share the underlying data-structure.
 | `Array`       | `ParArray`     |
 | `HashMap`     | `ParHashMap`   |
 | `HashSet`     | `ParHashSet`   |
-| `Ctrie`       | `ParCtrie`     |
+| `TrieMap`     | `ParTrieMap`   |
 | **immutable** |                |
 | `Vector`      | `ParVector`    |
 | `Range`       | `ParRange`     |

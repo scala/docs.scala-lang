@@ -84,7 +84,7 @@ created in a similar way as the sequential
     scala> 15 to 5 by -2 par
     res1: scala.collection.parallel.immutable.ParRange = ParRange(15, 13, 11, 9, 7, 5)
 
-Just as sequential ranges have no builder, parallel ranges have no combiners.
+Just as sequential ranges have no builders, parallel ranges have no combiners.
 Mapping the elements of a parallel range produces a parallel vector.
 Sequential ranges and parallel ranges can be converted efficiently one from
 another using the `seq` and `par` methods.
@@ -151,19 +151,19 @@ Parallel hash tries can be converted back and forth to sequential hash tries
 by using the `seq` and `par` method in constant time.
 
 
-## Parallel Ctries
+## Parallel Concurrent Tries
 
-A [mutable.ConcurrentTrieMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/ConcurrentTrieMap.html) 
+A [concurrent.TrieMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/concurrent/TrieMap.html) 
 is a concurrent thread-safe map, whereas a 
-[mutable.ParConcurrentTrieMap](http://www.scala-lang.org/api/{{ site.scala-version}}/scala/collection/parallel/mutable/ParConcurrentTrieMap.html) 
+[mutable.ParTrieMap](http://www.scala-lang.org/api/{{ site.scala-version}}/scala/collection/parallel/mutable/ParTrieMap.html) 
 is its parallel counterpart. While most concurrent data structures do not guarantee
 consistent traversal if the the data structure is modified during traversal,
 Ctries guarantee that updates are only visible in the next iteration. This
 means that you can mutate the concurrent trie while traversing it, like in the
 following example which outputs square roots of number from 1 to 99:
 
-    scala> val numbers = scala.collection.parallel.mutable.ParConcurrentTrieMap((1 until 100) zip (1 until 100): _*) map { case (k, v) => (k.toDouble, v.toDouble) }
-    numbers: scala.collection.parallel.mutable.ParConcurrentTrieMap[Double,Double] = ParCtrie(0.0 -> 0.0, 42.0 -> 42.0, 70.0 -> 70.0, 2.0 -> 2.0,...
+    scala> val numbers = scala.collection.parallel.mutable.ParTrieMap((1 until 100) zip (1 until 100): _*) map { case (k, v) => (k.toDouble, v.toDouble) }
+    numbers: scala.collection.parallel.mutable.ParTrieMap[Double,Double] = ParTrieMap(0.0 -> 0.0, 42.0 -> 42.0, 70.0 -> 70.0, 2.0 -> 2.0,...
     
     scala> while (numbers.nonEmpty) {
          |   numbers foreach { case (num, sqrt) =>
@@ -182,11 +182,11 @@ following example which outputs square roots of number from 1 to 99:
 	...
 
 
-Combiners are implemented as Ctries under the hood - since this is a
+Combiners are implemented as `TrieMap`s under the hood - since this is a
 concurrent data structure, only one combiner is constructed for the entire
 transformer method invocation and shared by all the processors.
 
-As with all parallel mutable collections, Ctries and parallel Ctries obtained
+As with all parallel mutable collections, `TrieMap`s and parallel `ParTrieMap`s obtained
 by calling `seq` or `par` methods are backed by the same store, so
 modifications in one are visible in the other. Conversions happen in constant
 time.
@@ -210,7 +210,7 @@ Performance characteristics of set and map types:
 | `ParHashSet`/`ParHashMap`| eC     | eC   | eC     |
 | **mutable**              |        |      |        |
 | `ParHashSet`/`ParHashMap`| C      | C    | C      |
-| `ParCtrie`               | eC     | eC   | eC     |
+| `ParTrieMap`             | eC     | eC   | eC     |
 
 
 

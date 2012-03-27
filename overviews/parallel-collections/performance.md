@@ -64,18 +64,18 @@ next cycle as far as possible.
 The `scala.testing.Benchmark` trait is predefined in the Scala standard library and is designed with
 above in mind. Here is an example of benchmarking a map operation on a concurrent trie:
 
-    import collection.parallel.mutable.ParCtrie
+    import collection.parallel.mutable.ParTrieMap
 	import collection.parallel.ForkJoinTaskSupport
 	
     object Map extends testing.Benchmark {
       val length = sys.props("length").toInt
       val par = sys.props("par").toInt
-      val parctrie = ParCtrie((0 until length) zip (0 until length): _*)
+      val partrie = ParTrieMap((0 until length) zip (0 until length): _*)
       
-      parctrie.tasksupport = new ForkJoinTaskSupport(new scala.concurrent.forkjoin.ForkJoinPool(par))
+      partrie.tasksupport = new ForkJoinTaskSupport(new scala.concurrent.forkjoin.ForkJoinPool(par))
       
       def run = {
-        parctrie map {
+        partrie map {
           kv => kv
         }
       }
@@ -127,7 +127,7 @@ depends on many factors. Some of them, but not all, include:
   smaller the workload, the higher the number of elements needed to
   gain speedups when running in parallel.
 - Specific collection. For example, `ParArray` and
-  `ParCtrie` have splitters that traverse the collection at
+  `ParTrieMap` have splitters that traverse the collection at
   different speeds, meaning there is more per-element work in just the
   traversal itself.
 - Specific operation. For example, `ParVector` is a lot slower for
@@ -161,8 +161,7 @@ hyperthreading) on JDK7:
         }
       }
     }
-    
-    
+   
     object ReduceSeq extends testing.Benchmark {
       val length = sys.props("length").toInt
       val vector = collection.immutable.Vector((0 until length): _*)
@@ -212,8 +211,7 @@ method (a transformer method) and run the following benchmark in the same enviro
         }
       }
     }
-    
-    
+   
     object MapSeq extends testing.Benchmark {
       val length = sys.props("length").toInt
       val hm = collection.mutable.HashMap((0 until length) zip (0 until length): _*)

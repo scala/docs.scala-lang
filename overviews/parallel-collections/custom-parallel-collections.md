@@ -98,7 +98,7 @@ since it does not require `psplit`.
 
 Thus, we obtain a parallel string class. The only downside is that calling transformer methods
 such as `filter` will not produce a parallel string, but a parallel vector instead, which
-may be suboptimal - producing a string again after filtering may be costly.
+may be suboptimal - producing a string again from the vector after filtering may be costly.
 
 
 ## Parallel collections with combiners
@@ -173,6 +173,46 @@ represenation of strings this is the best we can do - we have to live with this 
     }
 
 
+## How do I implement my combiner in general?
+
+There are no predefined recipes-- it depends on the data-structure at
+hand, and usually requires a bit of ingenuity on the implementer's
+part. However there are a few approaches usually taken:
+
+1. Concatenation and merge. Some data-structures have efficient
+implementations (usually logarithmic) of these operations.
+If the collection at hand is backed by such a data-structure,
+its combiner can be the collection itself. Finger trees,
+ropes and various heaps are particularly suitable for such an approach.
+
+2. Two-phase evaluation. An approach taken in parallel arrays and
+parallel hash tables, it assumes the elements can be efficiently
+partially sorted into concatenable buckets from which the final
+data-structure can be constructed in parallel. In the first phase
+different procesors populate these buckets independently and
+concatenate the buckets together. In the second phase, the data
+structure is allocated and different processors populate different
+parts of the datastructure in parallel using elements from disjoint
+buckets.
+Care must be taken that different processors never modify the same
+part of the datastructure, otherwise subtle concurrency errors may occur.
+This approach is easily applicable to random access sequences, as we
+have shown in the previous section.
+
+3. A concurrent data-structure. While the last two approaches actually
+do not require any synchronization primitives in the data-structure
+itself, they assume that it can be constructed concurrently in a way
+such that two different processors never modify the same memory
+location. There exists a large number of concurrent data-structures
+that can be modified safely by multiple processors-- concurrent skip lists,
+concurrent hash tables, split-ordered lists, concurrent avl trees, to
+name a few.
+An important consideration in this case is that the concurrent
+data-structure has a horizontally scalable insertion method.
+For concurrent parallel collections the combiner can be the collection
+itself, and a single combiner instance is shared between all the
+processors performing a parallel operation.
+
 
 ## Integration with the collections framework
 
@@ -213,7 +253,7 @@ Inside the companion object we provide an implicit evidence for the `CanBuildFro
 
 ## Further customizations
 
-Implementing a concurrent collections is not always straightforward.
+Implementing a parallel collection is not always straightforward.
 Combiners in particular often require a lot of thought. In most collections described
 so far combiner use a two-step evaluation. In the first step the elements
 are added to the combiners by different processors and the combiners are merged
