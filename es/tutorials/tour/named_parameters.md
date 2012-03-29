@@ -22,7 +22,7 @@ En la invocación de métodos y funciones se puede usar el nombre de las variabl
       imprimirNombre(last = "Smith",first = "John")
       // Imprime "John Smith"
 
-Note que una vez que se utilizan parámetros nombrados en la llamada, el orden no importa, mientras todos los parámetros sean nombrados. Esta característica funciona bien en conjunción con [valores de parámetros por defecto](/tutorials/tour/default_parameter_values.html):
+Note que una vez que se utilizan parámetros nombrados en la llamada, el orden no importa, mientras todos los parámetros sean nombrados. Esta característica funciona bien en conjunción con [valores de parámetros por defecto]({{ site.baseurl }}/tutorials/tour/default_parameter_values.html):
 
       def imprimirNombre(nombre:String = "John", apellido:String = "Smith") = {
         println(nombre + " " + apellido)

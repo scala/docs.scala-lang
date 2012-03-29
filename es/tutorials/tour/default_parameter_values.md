@@ -62,4 +62,4 @@ Scala cuenta con soporte directo para esto:
     // mediante parametros nombrados
     val m4 = new HashMap[String,Int](loadFactor = 0.8)
 
-Nótese cómo podemos sacar ventaja de cualquier valor por defecto al utilizar [parámetros nombrados](/tutorials/tour/named_parameters.html).
+Nótese cómo podemos sacar ventaja de cualquier valor por defecto al utilizar [parámetros nombrados]({{ site.baseurl }}/tutorials/tour/named_parameters.html).
