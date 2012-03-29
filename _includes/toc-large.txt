@@ -12,10 +12,10 @@
   <ul>
     {% for i in (1..totalPages) %}
       {% for pg in site.pages %}
-        {% if pg.partof == page.partof and pg.num and pg.num == i %}
+        {% if pg.partof == page.partof and pg.num and pg.num == i and page.language == pg.language %}
           <li><a href="{{ pg.url }}">{{ pg.title }}</a></li>
         {% endif %}   
-        {% if pg.partof == page.partof and pg.num and page.num and page.num == pg.num and pg.num == i %}
+        {% if pg.partof == page.partof and pg.num and page.num and page.num == pg.num and pg.num == i and page.language == pg.language %}
           <div id="toc"></div>
         {% endif %}
       {% endfor %}
