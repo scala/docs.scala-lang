@@ -48,7 +48,7 @@ If a sequence is mutable, it offers in addition a side-effecting `update` method
 |  **Updates:** 	    |						     |
 |  `xs patch (i, ys, r)`    |The sequence resulting from replacing `r` elements of `xs` starting with `i` by the patch `ys`.|
 |  `xs updated (i, x)`      |A copy of `xs` with the element at index `i` replaced by `x`.|
-|  `xs(i) = x`	    	    |(or, written out, `xs.update(i, x)`, only available for `mutable.Seq`s). Changes the element of `xs` at index `i` to `y`.|
+|  `xs(i) = x`	    	    |(or, written out, `xs.update(i, x)`, only available for `mutable.Seq`s). Changes the element of `xs` at index `i` to `x`.|
 |  **Sorting:** 	    |						     |
 |  `xs.sorted`	            |A new sequence obtained by sorting the elements of `xs` using the standard ordering of the element type of `xs`.|
 |  `xs sortWith lt`	    |A new sequence obtained by sorting the elements of `xs` using `lt` as comparison operation.|
