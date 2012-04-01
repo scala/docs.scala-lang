@@ -7,6 +7,7 @@ disqus: true
 partof: parallel-collections
 num: 8
 outof: 8
+languages: [ja]
 ---
 
 ## Performance on the JVM

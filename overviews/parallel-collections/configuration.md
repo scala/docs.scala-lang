@@ -6,6 +6,7 @@ disqus: true
 
 partof: parallel-collections
 num: 7
+languages: [ja]
 ---
 
 ## Task support

@@ -6,6 +6,7 @@ disqus: true
 
 partof: parallel-collections
 num: 3
+languages: [ja]
 ---
 
 ## Converting between sequential and parallel collections

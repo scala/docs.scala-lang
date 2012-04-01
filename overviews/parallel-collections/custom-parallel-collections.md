@@ -6,6 +6,7 @@ disqus: true
 
 partof: parallel-collections
 num: 6
+languages: [ja]
 ---
 
 ## Parallel collections without combiners
