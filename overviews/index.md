@@ -20,7 +20,7 @@ title: Guides and Overviews
   <ul>
   {% for i in (1..totalPages) %}
     {% for pg in site.pages %}
-      {% if pg.partof == post.partof and pg.num and pg.num == i%}
+      {% if pg.partof == post.partof and pg.num and pg.num == i and pg.language == nil %}
         <li><a href="{{ pg.url }}">{{ pg.title }}</a></li>
       {% endif %}
     {% endfor %}
