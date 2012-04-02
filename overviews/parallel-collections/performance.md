@@ -263,7 +263,7 @@ to the sequential hashmap:
     MapSeq$    39    9    9    9    8    9    9    9    9    9
 
 For this collection and this operation it makes sense
-to go parallel when there are below `15000` elements (in general,
+to go parallel when there are above `15000` elements (in general,
 it is feasible to parallelize hashmaps and hashsets with fewer
 elements than would be required for arrays or vectors).
 
