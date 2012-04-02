@@ -6,6 +6,7 @@ disqus: true
 
 partof: parallel-collections
 num: 1
+languages: [ja]
 ---
 
 **Aleksandar Prokopec, Heather Miller**
