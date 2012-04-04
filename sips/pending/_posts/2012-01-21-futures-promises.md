@@ -51,9 +51,13 @@ method which starts an asynchronous computation and returns a
 future holding the result of that computation.
 The result becomes available once the future completes.
 
+    val f: Future[Double] = future {
+      math.sqrt(2.0)
+    }
+
 Alternatively, an asynchronous computation that creates a future can be created
-with the `apply` method on the `Future` companion object. This method takes
-an implicit parameter of type `ExecutionContext`. An execution context is
+in the same way with the `apply` method on the `Future` companion object.
+This method takes an implicit parameter of type `ExecutionContext`. An execution context is
 an abstraction responsible for executing asynchronous tasks. To use
 the `Future.apply` an `ExecutionContext` must be available in scope. By
 default this is the `defaultExecutionContext` in the `ExecutionContext` companion object.
