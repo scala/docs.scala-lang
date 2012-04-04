@@ -31,6 +31,7 @@ combinators such as `flatMap`, `foreach`, and `filter` for composing
 futures in a non-blocking way. For cases where blocking is absolutely
 necessary, futures can be blocked on (although it is discouraged).
 
+<heather>
 The futures and promises API builds upon the notion of an
 `ExecutionContext`, an execution environment designed to manage
 resources such as thread pools between parallel frameworks and
@@ -49,6 +50,9 @@ The simplest way to create a future object is to invoke the `future`
 method which starts an asynchronous computation and returns a
 future holding the result of that computation.
 The result becomes available once the future completes.
+
+<alex>
+Code for the new way to do it (Future.apply) + how to obtain appropriate execution contexts.
 
 Here is an example. Let's assume that we want to use the API of some
 popular social network to obtain a list of friends for a given user.
@@ -73,6 +77,10 @@ initialized, so the future will hold a `NullPointerException` instead of the val
     val f: Future[List[Friend]] = future {
       session.getFriends
     }
+
+### `Try` vs. `Either`
+<heather>
+Use the motivation for try, add a few explanations.
 
 ### Callbacks
 
@@ -120,7 +128,7 @@ callback is used (which takes a partial function):
       case posts => for (post <- posts) render(post)
     }
 
-To handle failed results, the `onFailure` callback is used:
+To handle failed results, the `onFailure` method is used to register a callback:
 
     val f: Future[List[String]] = future {
       session.getRecentPosts
@@ -132,7 +140,7 @@ To handle failed results, the `onFailure` callback is used:
       case posts => for (post <- posts) render(post)
     }
 
-The `onFailure` callback is only executed if the future fails, that
+The `onFailure` method is only executed if the future fails, that
 is, if it contains an exception. The `onComplete`, `onSuccess`, and
 `onFailure` methods return the receiver (the future), which allows
 registering multiple callbacks by chaining invocations.
@@ -160,11 +168,11 @@ handlers present in the application then they will be compatible with the `onFai
 
 In conclusion, the semantics of callbacks are as follows:
 
-1. Registering an `onComplete` callback on the future
+1. Registering a callback using `onComplete` on the future
 ensures that the corresponding closure is invoked after
 the future is completed, eventually.
 
-2. Registering an `onSuccess` or `onFailure` callback has the same
+2. Registering a callback using `onSuccess` or `onFailure` has the same
 semantics as `onComplete`, with the difference that the closure is only called
 if the future is completed successfully or fails, respectively.
 
@@ -287,6 +295,11 @@ Here is an example of `flatMap` usage within for-comprehensions:
 The `filter` combinator creates a new future which contains the value
 of the original future only if it satisfies some predicate. Otherwise,
 the new future is failed with a `NoSuchElementException`.
+
+<phaller>
+withFilter
+collect
+mapTo
 
 It is important to note that calling the `foreach` combinator does not
 block. Instead, the function for the `foreach` gets asynchronously
@@ -436,11 +449,10 @@ Invoking the `future` construct uses a global execution context to start an asyn
     }
 -->
 
-### Extending Futures
-
-Support for extending the Futures API with additional utility methods is planned. This will allow external frameworks to provide more specialized utilities.
-
 ## Blocking
+
+<alex>
+update this section
 
 As mentioned earlier, blocking on a future is strongly discouraged --
 for the sake of performance and for the prevention of deadlocks --
@@ -540,6 +552,10 @@ future. That is, a promise can be used to successfully complete a
 future with a value (by "completing" the promise) using the `success`
 method. Conversely, a promise can also be used to complete a future
 with an exception, by failing the promise, using the `failure` method.
+
+<heather>
+on creating promises
+completeWith
 
 A promise `p` completes the future returned by `p.future`. This future
 is specific to the promise `p`. Depending on the implementation, it
@@ -661,6 +677,9 @@ for library writers
 
 
 ## Utilities
+
+<vojin>
+will update
 
 To simplify the handling of time units, Akka's `Duration`
 type should be added to the `scala.util` package.
