@@ -682,7 +682,7 @@ Abstract `Duration` contains methods that allow :
 4. Minimum and maximum between `this` duration and the one supplied in the argument (`min`, `max`).
 5. Check if the duration is finite (`finite_?`).
 
-`Duration` instances can be instantiated in the following ways:
+`Duration` can be instantiated in the following ways:
 
 1. Implicitly from types `Int` and `Long`. For example `val d = 100 millis`.
 2. By passing a `Long` length and a `java.util.concurrent.TimeUnit`. 
@@ -705,9 +705,6 @@ Examples:
     // pattern matching
     val Duration(length, unit) = 5 millis
 
-<!--
-The `Duration` class also provides adequate Java API for above mentioned operator methods.
--->
 
 ## References
 1. [The Task-Based Asychronous Pattern, Stephen Toub, Microsoft, April 2011][1]
