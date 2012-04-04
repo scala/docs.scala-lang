@@ -11,5 +11,5 @@ This SIP is an embedded google document. If you have trouble with this embedded 
 
 <iframe 
   src="https://docs.google.com/document/d/10TQKgMiJTbVtkdRG53wsLYwWM2MkhtmdV25-NZvLLMA/edit?hl=en_US"
-  style="width:720px;height:800px;"></iframe>
+  style="width:720px;height:800px;"> </iframe>
 

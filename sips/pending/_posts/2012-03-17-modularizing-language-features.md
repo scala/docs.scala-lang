@@ -13,4 +13,4 @@ To see or contribute to the discussion on this topic, please see the [thread](ht
 
 <iframe 
   src="https://docs.google.com/document/d/1nlkvpoIRkx7at1qJEZafJwthZ3GeIklTFhqmXMvTX9Q/edit"
-  style="width:720px;height:800px;"></iframe>
+  style="width:720px;height:800px;"> </iframe>
