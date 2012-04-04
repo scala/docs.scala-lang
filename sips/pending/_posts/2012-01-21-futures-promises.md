@@ -41,7 +41,8 @@ promises are created through such `ExecutionContext`s. For example, this makes i
 ## Futures
 
 A future is an abstraction which represents a value which may become
-available at some point. A `Future` object either holds a result of a
+available at some point after the future object was created.
+A `Future` object either holds a result of a
 computation or an exception in the case that the computation failed. 
 An important property of a future is that it is in effect immutable-- 
 it can never be written to or failed by the holder of the `Future` object. 
