@@ -4,7 +4,7 @@ disqus: true
 title: SIP-12 Uncluttering Scala’s syntax for control structures.
 
 vote-status: postponed
-vote-text: +This SIP is in Postponed status currently, with the current action for 2.10. (1) Deprecate "then" in identifiers to reserve for future keyword status. (2) Deprecate problematic "while() do" syntax.  ("do" loops in while loops require braces).
+vote-text: This SIP is in Postponed status currently, with the current action for 2.10. (1) Deprecate "then" in identifiers to reserve for future keyword status. (2) Deprecate problematic "while() do" syntax.  ("do" loops in while loops require braces).
 ---
 
 **By: Martin Odersky**
