@@ -689,18 +689,20 @@ Abstract `Duration` contains methods that allow :
 For example `val d = Duration(100, MILLISECONDS)`.
 3. By parsing a string that represent a time period. For example `val d = Duration("1.2 µs")`.
  
+Duration also provides `unapply` methods so it can be used in pattern matching constructs.
 Examples:
 
     import scala.concurrent.util.Duration
+    import scala.concurrent.util.duration._
     import java.util.concurrent.TimeUnit._
  
+    // instantiation
     val d1 = Duration(100, MILLISECONDS) // from Long and TimeUnit
     val d2 = Duration(100, "millis") // from Long and String
     val d3 = 100 millis // implicitly from Long, Int or Double
     val d4 = Duration("1.2 µs") // from String
 
-Duration also provides `unapply` methods so it can be used in pattern matching constructs as follows:
-
+    // pattern matching
     val Duration(length, unit) = 5 millis
 
 <!--
