@@ -5,20 +5,18 @@ layout: default
 {% include sips-topbar.txt %}
 
 <div class="container">
-  <div class="row">
-    
-    {% if page.title %}<h1>{{ page.title }}</h1>{% else %}<h1>{{ site.title }}</h1>{% endif %}    
-    
-    <div class="span10">
+  <div class="row">    
+
+    <div class="span12">
+      {% if page.title %}<h1>{{ page.title }}</h1>{% else %}<h1>{{ site.title }}</h1>{% endif %}    
       {{ content }}
       {% if page.disqus == true %}{% include disqus.txt %}{% endif %}
     </div>
     
-    <div class="span6">
+    <div class="span4">
       {% include toc.txt %}
     </div>
-    
-	
+  
   </div>
 </div>
 

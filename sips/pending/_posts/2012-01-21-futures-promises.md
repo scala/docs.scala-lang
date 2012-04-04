@@ -2,6 +2,9 @@
 layout: sip
 disqus: true
 title: SIP-14 - Futures and Promises
+
+vote-status: accepted
+vote-text: This SIP is in Accepted status currently.
 ---
 
 **By: Philipp Haller, Aleksandar Prokopec, Heather Miller, Viktor Klang, Roland Kuhn, and Vojin Jovanovic**
