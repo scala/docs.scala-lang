@@ -4,7 +4,7 @@ disqus: true
 title: SIP-19 Implicit Source Locations
 
 vote-status: not accepted
-vote-text: This is in Not Accepted status. We expect this to be easily implemented using macro’s without going through a full SIP.
+vote-text: This is in Not Accepted status. We expect this to be easily implemented using macros without going through a full SIP.
 ---
 
 **Philipp Haller**
