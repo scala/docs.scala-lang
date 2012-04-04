@@ -682,30 +682,29 @@ Abstract `Duration` contains methods that allow :
 4. Minimum and maximum between `this` duration and the one supplied in the argument (`min`, `max`).
 5. Check if the duration is finite (`finite_?`).
 
-`Duration` instances can be instantiated in the following ways:
+`Duration` can be instantiated in the following ways:
 
 1. Implicitly from types `Int` and `Long`. For example `val d = 100 millis`.
 2. By passing a `Long` length and a `java.util.concurrent.TimeUnit`. 
 For example `val d = Duration(100, MILLISECONDS)`.
 3. By parsing a string that represent a time period. For example `val d = Duration("1.2 µs")`.
  
+Duration also provides `unapply` methods so it can be used in pattern matching constructs.
 Examples:
 
     import scala.concurrent.util.Duration
+    import scala.concurrent.util.duration._
     import java.util.concurrent.TimeUnit._
  
+    // instantiation
     val d1 = Duration(100, MILLISECONDS) // from Long and TimeUnit
     val d2 = Duration(100, "millis") // from Long and String
     val d3 = 100 millis // implicitly from Long, Int or Double
     val d4 = Duration("1.2 µs") // from String
 
-Duration also provides `unapply` methods so it can be used in pattern matching constructs as follows:
-
+    // pattern matching
     val Duration(length, unit) = 5 millis
 
-<!--
-The `Duration` class also provides adequate Java API for above mentioned operator methods.
--->
 
 ## References
 1. [The Task-Based Asychronous Pattern, Stephen Toub, Microsoft, April 2011][1]
