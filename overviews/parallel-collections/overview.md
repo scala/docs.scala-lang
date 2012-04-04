@@ -122,7 +122,7 @@ Generally, one has two choices for creating a parallel collection:
 
 First, by using the `new` keyword and a proper import statement: 
 
-    import scala.collection.parallel.mutable.ParArray
+    import scala.collection.parallel.immutable.ParVector
     val pv = new ParVector[Int]
 
 Second, by _converting_ from a sequential collection:
