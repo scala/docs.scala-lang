@@ -58,11 +58,7 @@ First, if there is already an implicit argument of type `SourceLocation`, this a
 
 ## Implementation ##
 
-An implementation of this proposal can be found at:
+An implementation of this proposal can be found at: [https://github.com/phaller/scala/tree/topic/source-location](https://github.com/phaller/scala/tree/topic/source-location)
 
-    https://github.com/phaller/scala/tree/topic/source-location
-
-An extension of this proposal is also part of Scala-Virtualized. The extension adds a subtrait `SourceContext` which in addition provides access to information, such as variable names in the context of a method invocation. More information can be found at:
-
-    https://github.com/TiarkRompf/scala-virtualized/wiki/SourceLocation-and-SourceContext
+An extension of this proposal is also part of Scala-Virtualized. The extension adds a subtrait `SourceContext` which in addition provides access to information, such as variable names in the context of a method invocation. More information can be found at: [https://github.com/TiarkRompf/scala-virtualized/wiki/SourceLocation-and-SourceContext](https://github.com/TiarkRompf/scala-virtualized/wiki/SourceLocation-and-SourceContext)
 
