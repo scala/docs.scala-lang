@@ -51,8 +51,16 @@ method which starts an asynchronous computation and returns a
 future holding the result of that computation.
 The result becomes available once the future completes.
 
-<alex>
-Code for the new way to do it (Future.apply) + how to obtain appropriate execution contexts.
+Alternatively, an asynchronous computation that creates a future can be created
+with the `apply` method on the `Future` companion object. This method takes
+an implicit parameter of type `ExecutionContext`. An execution context is
+an abstraction responsible for executing asynchronous tasks. To use
+the `Future.apply` an `ExecutionContext` must be available in scope. By
+default this is the `defaultExecutionContext` in the `ExecutionContext` companion object.
+In addition to the default execution context, clients can create their own
+execution contexts from Java `Executor`s and `ExecutorService`s using the
+`fromExecutor` and `fromExecutorService` methods in the `ExecutionContext`
+companion object.
 
 Here is an example. Let's assume that we want to use the API of some
 popular social network to obtain a list of friends for a given user.
@@ -451,9 +459,6 @@ Invoking the `future` construct uses a global execution context to start an asyn
 
 ## Blocking
 
-<alex>
-update this section
-
 As mentioned earlier, blocking on a future is strongly discouraged --
 for the sake of performance and for the prevention of deadlocks --
 in favour of using callbacks and combinators on futures. However,
@@ -485,15 +490,23 @@ projection-- blocking on it results in a `NoSuchElementException`
 being thrown if the original future is completed successfully.
 
 The `Future` trait implements the `Awaitable` trait with a single
-method `await()`. The `await()` method contains code which can
+method `result()`. The `result()` method contains code which can
 potentially result in a long running computation, block on some
 external condition or which may not complete the computation at all. The
-`await()` method cannot be called directly by the clients, it can
+`result()` method cannot be called directly by the clients, it can
 only be called by the execution context implementation itself. To block
 on the future to obtain its result, the `blocking` method must be used.
 
     val f = future { 1 }
     val one: Int = blocking(f, 0 ns)
+
+Alternatively, clients can use the `Await` object to achieve the same effect:
+
+    val one: Int = Await.result(f, 0 ns)
+
+Method `ready` on the `Await` object returns the `Awaitable` itself after it becomes ready:
+
+    val f: Future[Int] = Await.ready(f, 0 ns)
 
 To allow clients to call 3rd party code which is potentially blocking
 and avoid implementing the `Awaitable` trait, the same
