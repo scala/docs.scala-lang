@@ -16,3 +16,4 @@ scala-version: 2.9.1
 pygments: true
 permalink: /:categories/:title.html
 
+#markdown: rdiscount

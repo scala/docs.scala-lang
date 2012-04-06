@@ -30,9 +30,19 @@ The SIP will get a unique number. It should be discussed on the scala-sips maili
 
 Before a SIP can be accepted, it also needs a full implementation that can be evaluated in practice. That implementation can be done before the SIP is submitted, or else concurrently with the discussion period.
 
-## What happens last ##
+## What is the provisonal voting status? ##
 
-The committee will decide for each SIP whether it should be accepted, rejected, or kept under discussion for further improvements. Accepted SIPs will be rolled into an upcoming Scala release.  Rejected SIPs will be left in the SIP repository under the "rejected sips" section.
+When a release is drawing near, the SIP committee will hold on provisonal vote on pending SIPs.  This vote places sips in one of the current status:
+
+* `Accepted` - The SIP will be included in the next release, pending an acceptable implementation.
+* `Deferred - Next Meeting` - The committee has concerned that need to be addressed in the SIP before inclusion in the Release. If the concerns are handled before the next release, the SIP will be re-evaluated.
+* `Delay - Next Release` - The SIP comittee has larger concerns with the state of the SIP and would prefer to wait until the next Scala release to consider inclusion.
+* `Not Accepted` - The SIP comittee feels the SIP is not needed for the Scala language and turns down the proposal, with an explanation of why.
+
+## What happens for a Scala major release? ##
+
+Before a Scala release, the committee will make a final decision for each SIP whether it should be accepted, rejected, or delayed for the next release. Accepted SIPs will be rolled into an upcoming Scala release and placed in the accepted folder.  Rejected SIPs will be left in the SIP repository under the "rejected sips" section.  Delayed SIPs will remain pending.
+ 
 
 ## Who is on the SIP committee ##
 

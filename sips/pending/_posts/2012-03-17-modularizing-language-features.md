@@ -1,6 +1,9 @@
 ---
 layout: sip
 title: SIP-18 - Modularizing Language Features
+
+vote-status: accepted
+vote-text: This is in Accept status, pending implementation. Let the record show Paul is against it.
 ---
 
 
@@ -10,4 +13,4 @@ To see or contribute to the discussion on this topic, please see the [thread](ht
 
 <iframe 
   src="https://docs.google.com/document/d/1nlkvpoIRkx7at1qJEZafJwthZ3GeIklTFhqmXMvTX9Q/edit"
-  style="width:800px;height:600px;"></iframe>
+  style="width:720px;height:800px;"> </iframe>

@@ -2,6 +2,9 @@
 layout: sip
 disqus: true
 title: SIP-13 - Implicit classes
+
+vote-status: accepted
+vote-text: This SIP is in Accepted status currently.  Barring a completed implementation.
 ---
 
 **By: Josh Suereth**

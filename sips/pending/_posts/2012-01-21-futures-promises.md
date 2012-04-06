@@ -2,6 +2,9 @@
 layout: sip
 disqus: true
 title: SIP-14 - Futures and Promises
+
+vote-status: accepted
+vote-text: This SIP is in Accepted status currently.
 ---
 
 **By: Philipp Haller, Aleksandar Prokopec, Heather Miller, Viktor Klang, Roland Kuhn, and Vojin Jovanovic**
@@ -659,46 +662,52 @@ for clients
 for library writers
 -->
 
-
 ## Utilities
 
-To simplify the handling of time units, Akka's `Duration`
-type should be added to the `scala.util` package.
+To simplify handling of time in concurrent applications `scala.concurrent`
+ will introduce a `Duration` abstraction. Duration is not supposed be yet another
+ general time abstraction. It is meant to be used with concurrency libraries and
+ will reside in `scala.concurrent.util` package.
 
-`Duration` is a base class representing a time interval. An instance
-can either be a `FiniteDuration` that contains a length and a
-`TimeUnit`, or an infinite duration (`Duration.Inf` or
-`Duration.MinusInf`). `Duration` contains methods that allow:
+`Duration` is the base class representing length of time. It can be either finite or infinite.
+ Finite duration is represented with `FiniteDuration` class which is constructed from `Long` length and
+ `java.util.concurrent.TimeUnit`. Infinite durations, also extended from `Duration`,
+ exist in only two instances , `Duration.Inf` and `Duration.MinusInf`. Library also
+ provides several `Duration` subclasses for implicit conversion purposes and those should
+ not be used.
 
-1. Conversion to different time units (`toNanos`, `toMicros`, `toMillis`, `toSeconds`, `toMinutes`, `toHours`, `toDays` and `toUnit(unit: TimeUnit)`).
+Abstract `Duration` contains methods that allow :
+
+1. Conversion to different time units (`toNanos`, `toMicros`, `toMillis`, 
+`toSeconds`, `toMinutes`, `toHours`, `toDays` and `toUnit(unit: TimeUnit)`).
 2. Comparison of durations (`<`, `<=`, `>` and `>=`).
 3. Arithmetic operations (`+`, `-`, `*`, `/` and `unary_-`).
-4. Minimum and maximum between this duration and the one supplied in the argument (`min`, `max`).
+4. Minimum and maximum between `this` duration and the one supplied in the argument (`min`, `max`).
 5. Check if the duration is finite (`finite_?`).
 
-Instances of `Duration` should be created using factory methods in the companion object. `Duration` instances can be instantiated in the following ways:
+`Duration` can be instantiated in the following ways:
 
 1. Implicitly from types `Int` and `Long`. For example `val d = 100 millis`.
-2. By passing a length and a `java.util.concurrent.TimeUnit`. For example `val d = Duration(100, MILLISECONDS)`.
-3. By parsing strings that represent a time period. For example `val d = Duration("1.2 µs")`.
-
+2. By passing a `Long` length and a `java.util.concurrent.TimeUnit`. 
+For example `val d = Duration(100, MILLISECONDS)`.
+3. By parsing a string that represent a time period. For example `val d = Duration("1.2 µs")`.
+ 
+Duration also provides `unapply` methods so it can be used in pattern matching constructs.
 Examples:
 
-    import scala.util.Duration
+    import scala.concurrent.util.Duration
+    import scala.concurrent.util.duration._
     import java.util.concurrent.TimeUnit._
  
+    // instantiation
     val d1 = Duration(100, MILLISECONDS) // from Long and TimeUnit
     val d2 = Duration(100, "millis") // from Long and String
     val d3 = 100 millis // implicitly from Long, Int or Double
     val d4 = Duration("1.2 µs") // from String
 
-Duration also provides `unapply` methods so it can be pattern matched against and constructed as follows:
-
+    // pattern matching
     val Duration(length, unit) = 5 millis
 
-<!--
-The `Duration` class also provides adequate Java API for above mentioned operator methods.
--->
 
 ## References
 1. [The Task-Based Asychronous Pattern, Stephen Toub, Microsoft, April 2011][1]
