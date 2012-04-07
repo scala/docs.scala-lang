@@ -165,14 +165,9 @@ En el ejemplo anterior, es posible para dos hilos leer el _mismo_ valor de `sum`
 
 Este ejemplo ilustra un escenario donde dos hilos leen el mismo valor, `0`, antes que el otro pueda sumar su parte de la ejecución sobre la colección paralela. En este caso el `HiloA` lee `0` y le suma el valor de su cómputo, `0+760`, y en el caso del `HiloB`, le suma al valor leido `0` su resultado, quedando `0+12`. Después de computar sus respectivas sumas, ambos escriben el valor en `sum`. Ya que el `HiloA` llega a escribir antes que el `HiloB` (por nada en particular, solamente coincidencia que en este caso llegue primero el `HiloA`), su valor se pierde, porque seguidamente llega a escribir el `HiloB` y borra el valor previamente guardado. Esto se llama _condición de carrera_ porque el valor termina resultando una cuestión de suerte, o aleatoria, de quién llega antes o después a escribir el valor final.
 
-### Non-Associative Operations
+### Operaciones no asociativas
 
-Given this _"out-of-order"_ semantics,  also must be careful to perform only
-associative operations in order to avoid non-determinism. That is, given a
-parallel collection, `pcoll`, one should be sure that when invoking a 
-higher-order function on `pcoll`, such as `pcoll.reduce(func)`, the order in 
-which `func` is applied to the elements of `pcoll` can be arbitrary. A simple, 
-but obvious example is a non-associative operation such as subtraction:
+Dado este funcionamiento "fuera de orden", también se debe ser cuidadoso de realizar solo operaciones asociativas para evitar comportamientos no esperados. Es decir, dada una colección paralelizada `par_col`, uno debe saber que cuando invoca una función de orden superior sobre `par_col`, tal como `par_col.reduce(func)`, el orden en que la función `func` es invocada sobre los elementos de `par_col` puede ser arbitrario (de hecho, es el caso más probable). Un ejemplo simple y pero no tan obvio de una operación no asociativa es es una substracción:
 
     scala> val list = (1 to 1000).toList.par
     list: scala.collection.parallel.immutable.ParSeq[Int] = ParVector(1, 2, 3,…
@@ -185,35 +180,18 @@ but obvious example is a non-associative operation such as subtraction:
     
     scala> list.reduce(_-_)
     res03: Int = -331818
-    
-In the above example, we take a `ParVector[Int]`, invoke `reduce`, and pass to
-it `_-_`, which simply takes two unnamed elements, and subtracts the first
-from the second. Due to the fact that the parallel collections framework spawns
-threads which, in effect, independently perform `reduce(_-_)` on different
-sections of the collection, the result of two runs of `reduce(_-_)` on the
-same collection will not be the same.
 
-_Note:_ Often, it is thought that, like non-associative operations,  non-commutative  
-operations passed to a higher-order function on a parallel
-collection likewise result in non-deterministic behavior. This is not the
-case, a simple example is string concatenation-- an associative, but non-
-commutative operation:
+En el ejemplo anterior invocamos reduce sobre un `ParVector[Int]` pasándole `_-_`. Lo que hace esto es simplemente tomar dos elementos y resta el primero al segundo. Dado que el framework de colecciones paralelizadas crea varios hilos que realizan `reduce(_-_)` independientemente en varias secciones de la colección, el resultado de correr dos veces el método `reduce(_-_)` en la misma colección puede no ser el mismo.
+
+_Nota:_ Generalmente se piensa que, al igual que las operaciones no asociativas, las operaciones no conmutativas pasadas a un función de orden superior también generan resultados extraños (no deterministas). En realidad esto no es así, un simple ejemplo es la concatenación de Strings (cadenas de caracteres). -- una operación asociativa, pero no conmutativa:
 
     scala> val strings = List("abc","def","ghi","jk","lmnop","qrs","tuv","wx","yz").par
     strings: scala.collection.parallel.immutable.ParSeq[java.lang.String] = ParVector(abc, def, ghi, jk, lmnop, qrs, tuv, wx, yz) 
     
-    scala> val alphabet = strings.reduce(_++_)
-    alphabet: java.lang.String = abcdefghijklmnopqrstuvwxyz
+    scala> val alfabeto = strings.reduce(_++_)
+    alfabeto: java.lang.String = abcdefghijklmnopqrstuvwxyz
 
-The _"out of order"_ semantics of parallel collections only means that
-the operation will be executed out of order (in a _temporal_ sense. That is,
-non-sequentially), it does not mean that the result will be
-re-"*combined*" out of order (in a _spatial_ sense). On the contrary, results
-will generally always be reassembled _in order_-- that is, a parallel collection
-broken into partitions A, B, C, in that order, will be reassembled once again
-in the order A, B, C. Not some other arbitrary order like B, C, A.
+Lo que implica el "fuera de orden" en las colecciones paralelizadas es solamente que la operación será ejecutada fuera de orden (en un sentido _temporal_, es decir no secuencial, no significa que el resultado va a ser re-"*combinado*" fuera de orden (en un sentido de _espacio_). Al contrario, en general los resultados siempre serán reensamblados en roden, es decir una colección paralelizada que se divide en las siguientes particiones A, B, C, en ese orden, será reensamblada nuevamente en el orden A, B, C. No en otro orden arbitrario como B, C, A.
 
-For more on how parallel collections split and combine operations on different
-parallel collection types, see the [Architecture]({{ site.baseurl }}/overviews
-/parallel-collections/architecture.html) section of this guide. 
-
+Para más información de cómo se dividen y se combinan los diferentes tipos de colecciones paralelizadas véase el artículo sobre [Arquitectura]({{ site.baseurl }}/es/overviews
+/parallel-collections/architecture.html) de esta misma serie.
