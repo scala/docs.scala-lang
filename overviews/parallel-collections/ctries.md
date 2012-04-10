@@ -6,7 +6,6 @@ disqus: true
 
 partof: parallel-collections
 num: 4
-languages: [ja]
 ---
 
 Most concurrent data structures do not guarantee consistent

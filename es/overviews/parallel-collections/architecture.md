@@ -6,7 +6,7 @@ disqus: true
 
 partof: parallel-collections
 num: 5
-languages: [ja]
+language: es
 ---
 
 Like the normal, sequential collections library, Scala's parallel collections

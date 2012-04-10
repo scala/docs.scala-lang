@@ -6,7 +6,7 @@ disqus: true
 
 partof: parallel-collections
 num: 1
-languages: [ja]
+language: es
 ---
 
 **Autores originales: Aleksandar Prokopec, Heather Miller**

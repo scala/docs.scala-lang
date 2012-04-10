@@ -6,7 +6,6 @@ disqus: true
 
 partof: parallel-collections
 num: 2
-languages: [ja]
 ---
 
 ## Parallel Array
