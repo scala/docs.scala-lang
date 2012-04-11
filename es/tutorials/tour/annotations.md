@@ -30,7 +30,7 @@ El significado de las anotaciones _depende de la implementación_. En la platafo
 |  [`scala.transient`](http://www.scala-lang.org/api/2.9.1/scala/transient.html) |  [`transient`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (palabra clave) |
 |  [`scala.unchecked`](http://www.scala-lang.org/api/2.9.1/scala/unchecked.html) (desde 2.4.0) |  sin equivalente |
 |  [`scala.volatile`](http://www.scala-lang.org/api/2.9.1/scala/volatile.html) |  [`volatile`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (palabra clave) |
-|  [`scala.reflect.BeanProperty`](http://www.scala-lang.org/api/2.9.1/scala/reflect/BeanProperty.html) |  [`Design pattern`](http://http://docs.oracle.com/javase/tutorial/javabeans/writing/properties.html) |
+|  [`scala.reflect.BeanProperty`](http://www.scala-lang.org/api/2.9.1/scala/reflect/BeanProperty.html) |  [`Design pattern`](http://docs.oracle.com/javase/tutorial/javabeans/writing/properties.html) |
 
 En el siguiente ejemplo agregamos la anotación `throws` a la definición del método `read` de manera de capturar la excepción lanzada en el programa principal de Java.
 
