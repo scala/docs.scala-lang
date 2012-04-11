@@ -34,7 +34,7 @@ Traits or [classes](classes.html) with abstract type members are often used in c
       type U = Int
     }
     
-    object AbstractTypeTest1 extends Application {
+    object AbstractTypeTest1 extends App {
       def newIntSeqBuf(elem1: Int, elem2: Int): IntSeqBuffer =
         new IntSeqBuffer {
              type T = List[U]
@@ -45,7 +45,7 @@ Traits or [classes](classes.html) with abstract type members are often used in c
       println("content = " + buf.element)
     }
  
-The return type of method `newIntSeqBuf` refers to a specialization of trait `Buffer` in which type `U` is now equivalent to `Int`. We have a similar type alias in the anonymous class instantiation within the body of method `newIntSeqBuf`. Here we create a new instance of `IntSeqBuffer` in which type `T` refers to List[Int].
+The return type of method `newIntSeqBuf` refers to a specialization of trait `Buffer` in which type `U` is now equivalent to `Int`. We have a similar type alias in the anonymous class instantiation within the body of method `newIntSeqBuf`. Here we create a new instance of `IntSeqBuffer` in which type `T` refers to `List[Int]`.
 
 Please note that it is often possible to turn abstract type members into type parameters of classes and vice versa. Here is a version of the code above which only uses type parameters:
  
@@ -55,7 +55,7 @@ Please note that it is often possible to turn abstract type members into type pa
     abstract class SeqBuffer[U, +T <: Seq[U]] extends Buffer[T] {
       def length = element.length
     }
-    object AbstractTypeTest2 extends Application {
+    object AbstractTypeTest2 extends App {
       def newIntSeqBuf(e1: Int, e2: Int): SeqBuffer[Int, Seq[Int]] =
         new SeqBuffer[Int, List[Int]] {
           val element = List(e1, e2)

@@ -15,7 +15,7 @@ Métodos pueden definir múltiples listas de parámetros. Cuando un método es i
 
 Aquí se muestra un ejemplo:
 
-    object CurryTest extends Application {
+    object CurryTest extends App {
     
       def filter(xs: List[Int], p: Int => Boolean): List[Int] =
         if (xs.isEmpty) xs

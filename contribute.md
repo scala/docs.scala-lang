@@ -50,7 +50,7 @@ For one to contribute a document, one must simply fork the [repo](https://github
     
     ## An h2 Header in Markdown
 
-    And a paragraph, with a [link](http://www.scala-lang.org.
+    And a paragraph, with a [link](http://www.scala-lang.org).
 	
 	One can contribute code by indenting it 4 spaces, or in-line by putting backticks around it like so, `def foo`
 	

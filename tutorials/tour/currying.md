@@ -12,7 +12,7 @@ Methods may define multiple parameter lists. When a method is called with a fewe
 
 Here is an example:
 
-    object CurryTest extends Application {
+    object CurryTest extends App {
     
       def filter(xs: List[Int], p: Int => Boolean): List[Int] =
         if (xs.isEmpty) xs
