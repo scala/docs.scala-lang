@@ -34,7 +34,7 @@ Traits o [clases](classes.html) con miembros de tipos abstractos son generalment
       type U = Int
     }
     
-    object AbstractTypeTest1 extends Application {
+    object AbstractTypeTest1 extends App {
       def newIntSeqBuf(elem1: Int, elem2: Int): IntSeqBuffer =
         new IntSeqBuffer {
              type T = List[U]
@@ -45,7 +45,7 @@ Traits o [clases](classes.html) con miembros de tipos abstractos son generalment
       println("content = " + buf.element)
     }
  
-El tipo retornado por el método `newIntSeqBuf` está ligado a la especialización del trait `Buffer` en el cual el tipo `U` es ahora equivalente a `Int`. Existe un tipo alias similar en la instancia de la clase anónima dentro del cuerpo del método `newIntSeqBuf`. En ese lugar se crea una nueva instancia de `IntSeqBuffer` en la cual el tipo `T` está ligado a List[Int].
+El tipo retornado por el método `newIntSeqBuf` está ligado a la especialización del trait `Buffer` en el cual el tipo `U` es ahora equivalente a `Int`. Existe un tipo alias similar en la instancia de la clase anónima dentro del cuerpo del método `newIntSeqBuf`. En ese lugar se crea una nueva instancia de `IntSeqBuffer` en la cual el tipo `T` está ligado a `List[Int]`.
 
 Es necesario notar que generalmente es posible transformar un tipo abstracto en un tipo paramétrico de una clase y viceversa. A continuación se muestra una versión del código anterior el cual solo usa tipos paramétricos.
  
@@ -55,7 +55,7 @@ Es necesario notar que generalmente es posible transformar un tipo abstracto en 
     abstract class SeqBuffer[U, +T <: Seq[U]] extends Buffer[T] {
       def length = element.length
     }
-    object AbstractTypeTest2 extends Application {
+    object AbstractTypeTest2 extends App {
       def newIntSeqBuf(e1: Int, e2: Int): SeqBuffer[Int, Seq[Int]] =
         new SeqBuffer[Int, List[Int]] {
           val element = List(e1, e2)
