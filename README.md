@@ -41,6 +41,11 @@ cd into the `scala.github.com` directory, and build by:
 
 The generated site is available at `http://localhost:4000`
 
+If you get `incompatible encoding` errors when generating the site under Windows, then ensure that the
+console in which you are running jekyll can work with UTF-8 characters. As described in the blog
+[Solving UTF problem with Jekyll on Windows](http://joseoncode.com/2011/11/27/solving-utf-problem-with-jekyll-on-windows/)
+you have to execute `chcp 65001`. This command is best added to the `jekyll.bat`-script.
+
 ## Markdown ##
 
 The markdown used in this site uses [Maruku](http://maruku.rubyforge.org/maruku.html) extensions.
