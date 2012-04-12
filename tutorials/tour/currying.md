@@ -26,7 +26,7 @@ Here is an example:
       println(filter(nums, modN(3)))
     }
 
-_Note: method `modN` is partially applied in the two `filter` calls; i.e. only its first argument is actually applied. The `termmodN(2)` yields a function of type `Int => Boolean` and is thus a possible candidate for the second argument of function `filter`._
+_Note: method `modN` is partially applied in the two `filter` calls; i.e. only its first argument is actually applied. The term `modN(2)` yields a function of type `Int => Boolean` and is thus a possible candidate for the second argument of function `filter`._
 
 Here's the output of the program above:
 

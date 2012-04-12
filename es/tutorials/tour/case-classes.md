@@ -27,7 +27,7 @@ Aquí un ejemplo:
 Los parámetros constructores de las clases Case son tratados como valores públicos y pueden ser accedidos directamente.
 
     val x = Var("x")
-    Console.println(x.name)
+    println(x.name)
 
 Para cada una de las clases Case el compilador de Scala genera el método `equals` el cual implementa la igualdad estructural y un método `toString`. Por ejemplo:
 

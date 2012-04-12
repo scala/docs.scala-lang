@@ -10,14 +10,14 @@ num: 5
 
 Scala supports the notion of _case classes_. Case classes are regular classes which export their constructor parameters and which provide a recursive decomposition mechanism via [pattern matching](pattern-matching.html).
 
-Here is an example for a class hierarchy which consists of an abstract super class Term and three concrete case classes `Var`, `Fun`, and `App`.
+Here is an example for a class hierarchy which consists of an abstract super class `Term` and three concrete case classes `Var`, `Fun`, and `App`.
 
     abstract class Term
     case class Var(name: String) extends Term
     case class Fun(arg: String, body: Term) extends Term
     case class App(f: Term, v: Term) extends Term
 
-This class hierarchy can be used to represent terms of the [untyped lambda calculus](http://www.ezresult.com/article/Lambda_calculus). To facilitate the construction of case class instances, Scala does not require that the new primitive is used. One can simply use the class name as a function.
+This class hierarchy can be used to represent terms of the [untyped lambda calculus](http://www.ezresult.com/article/Lambda_calculus). To facilitate the construction of case class instances, Scala does not require that the `new` primitive is used. One can simply use the class name as a function.
 
 Here is an example:
 
@@ -26,9 +26,9 @@ Here is an example:
 The constructor parameters of case classes are treated as public values and can be accessed directly.
 
     val x = Var("x")
-    Console.println(x.name)
+    println(x.name)
 
-For every case class the Scala compiler generates equals method which implements structural equality and a `toString` method. For instance:
+For every case class the Scala compiler generates an `equals` method which implements structural equality and a `toString` method. For instance:
 
     val x1 = Var("x")
     val x2 = Var("x")
