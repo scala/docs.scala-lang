@@ -22,7 +22,7 @@ Furthermore, Scala's notion of pattern matching naturally extends to the [proces
 Scala is equipped with an expressive type system that enforces statically that abstractions are used in a safe and coherent manner. In particular, the type system supports:
 * [generic classes](generic-classes.html)
 * [variance annotations](variances.html)
-* [upper](upper-type-bounds.html) and [lower](lower-type-bouunds.html) type bounds,
+* [upper](upper-type-bounds.html) and [lower](lower-type-bounds.html) type bounds,
 * [inner classes](inner-classes.html) and [abstract types](abstract-types.html) as object members
 * [compound types](compound-types.html)
 * [explicitly typed self references](explicitly-typed-self-references.html)
@@ -38,8 +38,8 @@ In practice, the development of domain-specific applications often requires doma
 * [closures are constructed automatically depending on the expected type](automatic-closures.html) (target typing).
 
 A joint use of both features facilitates the definition of new statements without extending the syntax and without using macro-like meta-programming facilities.
-Scala interoperates with Java and .NET
 
+Scala interoperates with Java and .NET.
 Scala is designed to interoperate well with the popular Java 2 Runtime Environment (JRE). In particular, the interaction with the mainstream object-oriented Java programming language is as smooth as possible. Scala has the same compilation model (separate compilation, dynamic class loading) like Java and allows access to thousands of existing high-quality libraries. Support for the .NET Framework (CLR) is also available.
 
 Please continue to the next page to read more.
