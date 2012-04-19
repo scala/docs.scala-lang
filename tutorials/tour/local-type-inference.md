@@ -11,7 +11,7 @@ Scala has a built-in type inference mechanism which allows the programmer to omi
 
 Here is an example:
 
-    object InferenceTest1 extends Application {
+    object InferenceTest1 extends App {
       val x = 1 + 2 * 3         // the type of x is Int
       val y = x.toString()      // the type of y is String
       def succ(x: Int) = x + 1  // method succ returns Int values
@@ -28,15 +28,15 @@ It is also not compulsory to specify type parameters when [polymorphic methods](
 Here is an example which illustrates this:
 
     case class MyPair[A, B](x: A, y: B);
-    object InferenceTest3 extends Application {
+    object InferenceTest3 extends App {
       def id[T](x: T) = x
-      val p = new MyPair(1, "scala") // type: MyPair[Int, String]
-      val q = id(1)                  // type: Int
+      val p = MyPair(1, "scala") // type: MyPair[Int, String]
+      val q = id(1)              // type: Int
     }
 
 The last two lines of this program are equivalent to the following code where all inferred types are made explicit:
 
-    val x: MyPair[Int, String] = new MyPair[Int, String](1, "scala")
+    val x: MyPair[Int, String] = MyPair[Int, String](1, "scala")
     val y: Int = id[Int](1)
 
 In some situations it can be quite dangerous to rely on Scala's type inference mechanism as the following program shows:

@@ -12,7 +12,7 @@ Scala offers a lightweight notation for expressing *sequence comprehensions*. Co
 
 Here is an example:
  
-    object ComprehensionTest1 extends Application {
+    object ComprehensionTest1 extends App {
       def even(from: Int, to: Int): List[Int] =
         for (i <- List.range(from, to) if i % 2 == 0) yield i
       Console.println(even(0, 20))
@@ -26,10 +26,10 @@ The program yields the following output:
 
 Here is a more complicated example which computes all pairs of numbers between `0` and `n-1` whose sum is equal to a given value `v`:
  
-    object ComprehensionTest2 extends Application {
+    object ComprehensionTest2 extends App {
       def foo(n: Int, v: Int) =
         for (i <- 0 until n;
-             j <- i + 1 until n if i + j == v) yield
+             j <- i until n if i + j == v) yield
           Pair(i, j);
       foo(20, 32) foreach {
         case (i, j) =>
@@ -44,13 +44,14 @@ Here's the output of the program:
     (13, 19)
     (14, 18)
     (15, 17)
+    (16, 16)
 
 There is also a special form of sequence comprehension which returns `Unit`. Here the bindings that are created from the list of generators and filters are used to perform side-effects. The programmer has to omit the keyword `yield` to make use of such a sequence comprehension.
 Here's a program which is equivalent to the previous one but uses the special for comprehension returning `Unit`:
  
-    object ComprehensionTest3 extends Application {
+    object ComprehensionTest3 extends App {
       for (i <- Iterator.range(0, 20);
-           j <- Iterator.range(i + 1, 20) if i + j == 32)
+           j <- Iterator.range(i, 20) if i + j == 32)
         println("(" + i + ", " + j + ")")
     }
 

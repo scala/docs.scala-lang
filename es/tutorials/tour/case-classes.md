@@ -36,13 +36,15 @@ Para cada una de las clases Case el compilador de Scala genera el método `equal
     val y1 = Var("y")
     println("" + x1 + " == " + x2 + " => " + (x1 == x2))
     println("" + x1 + " == " + y1 + " => " + (x1 == y1))
-    imprime
+
+imprime
+
     Var(x) == Var(x) => true
     Var(x) == Var(y) => false
 
 Solo tiene sentido definir una clase Case si el reconocimiento de patrones es usado para descomponer la estructura de los datos de la clase. El siguiente objeto define define una linda función que imprime en pantalla nuestra representación del cálculo lambda:
 
-    object TermTest extends Application {
+    object TermTest extends scala.App {
       def printTerm(term: Term) {
         term match {
           case Var(n) =>
@@ -51,7 +53,7 @@ Solo tiene sentido definir una clase Case si el reconocimiento de patrones es us
             print("^" + x + ".")
             printTerm(b)
           case App(f, v) =>
-            Console.print("(")
+            print("(")
             printTerm(f)
             print(" ")
             printTerm(v)
@@ -70,6 +72,6 @@ Solo tiene sentido definir una clase Case si el reconocimiento de patrones es us
       println(isIdentityFun(t))
     }
 
-En nuestro ejemplo, la función `print` es expresada como una sentencia basada en reconocimiento de patrones, la cual comienza con la palabra reservada `match` y consiste en secuencias de sentencias tipo `case PatronBuscado => Código que se ejecuta`.
+En nuestro ejemplo, la función `printTerm` es expresada como una sentencia basada en reconocimiento de patrones, la cual comienza con la palabra reservada `match` y consiste en secuencias de sentencias tipo `case PatronBuscado => Código que se ejecuta`.
 
 El programa de arriba también define una función `isIdentityFun` la cual comprueba si un término dado se corresponde con una función identidad simple. Ese ejemplo utiliza patrones y guardas más avanzados (obsrvese la guarda `if x==y`). Tras reconocer un patrón con un valor dado, la guarda (definida después de la palabra clave `if`) es evaluada. Si retorna `true` (verdadero), el reconocimiento es exitoso; de no ser así, falla y se intenta con el siguiente patrón.

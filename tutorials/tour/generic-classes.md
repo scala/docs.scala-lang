@@ -22,7 +22,7 @@ Class `Stack` models imperative (mutable) stacks of an arbitrary element type `T
 
 Here are some usage examples:
 
-    object GenericsTest extends Application {
+    object GenericsTest extends App {
       val stack = new Stack[Int]
       stack.push(1)
       stack.push('a')
