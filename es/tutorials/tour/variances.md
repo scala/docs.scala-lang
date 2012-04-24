@@ -9,7 +9,7 @@ num: 31
 language: es
 ---
 
-Scala soporta anotaciones de varianza para parámetros de tipo para [clases genéricas.](generic-classes.html). A diferencia de Java 5 (es decir: [JDK 1.5](http://java.sun.com/j2se/1.5/)), las anotaciones de varianza pueden ser agregadas cuando una abstracción de clase es definidia, mientras que en Java 5, las anotaciones de varianza son dadas por los clientes cuando una albstracción de clase es usada.
+Scala soporta anotaciones de varianza para parámetros de tipo para [clases genéricas](generic-classes.html). A diferencia de Java 5 (es decir: [JDK 1.5](http://java.sun.com/j2se/1.5/)), las anotaciones de varianza pueden ser agregadas cuando una abstracción de clase es definidia, mientras que en Java 5, las anotaciones de varianza son dadas por los clientes cuando una albstracción de clase es usada.
 
 In the page about generic classes an example for a mutable stack was given. We explained that the type defined by the class `Stack[T]` is subject to invariant subtyping regarding the type parameter. This can restrict the reuse of the class abstraction. We now derive a functional (i.e. immutable) implementation for stacks which does not have this restriction. Please note that this is an advanced example which combines the use of [polymorphic methods](polymorphic-methods.html), [lower type bounds](lower-type-bounds.html), and covariant type parameter annotations in a non-trivial fashion. Furthermore we make use of [inner classes](inner-classes.html) to chain the stack elements without explicit links.
 
@@ -22,16 +22,16 @@ En el artículo sobre clases genéricas dimos un ejemplo de una pila mutable. Ex
         override def toString() = elem.toString() + " " +
                                   Stack.this.toString()
       }
-      def top: A = error("no element on stack")
-      def pop: Stack[A] = error("no element on stack")
+      def top: A = sys.error("no element on stack")
+      def pop: Stack[A] = sys.error("no element on stack")
       override def toString() = ""
     }
     
-    object VariancesTest extends Application {
+    object VariancesTest extends App {
       var s: Stack[Any] = new Stack().push("hello");
       s = s.push(new Object())
       s = s.push(7)
-      Console.println(s)
+      println(s)
     }
 
 La anotación `+T` declara que el tipo `T` sea utilizado solamente en posiciones covariantes. De forma similar, `-T` declara que `T` sea usado en posiciones contravariantes. Para parámetros de tipo covariantes obtenemos una relación de subtipo covariante con respecto al parámetro de tipo. Para nuestro ejemplo, esto significa que `Stack[T]` es un subtipo de `Stack[S]` si `T` es un subtipo de `S`. Lo contrario se cumple para parámetros de tipo que son etiquetados con un signo `-`.

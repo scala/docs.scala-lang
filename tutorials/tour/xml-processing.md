@@ -27,7 +27,7 @@ Consider the following XML document:
 
 This document can be created by the following Scala program:
 
-    object XMLTest1 extends Application {
+    object XMLTest1 extends App {
       val page = 
       <html>
         <head>
@@ -43,7 +43,7 @@ This document can be created by the following Scala program:
 
 It is possible to mix Scala expressions and XML:
 
-    object XMLTest2 extends Application {
+    object XMLTest2 extends App {
       import scala.xml._
       val df = java.text.DateFormat.getDateInstance()
       val dateString = df.format(new java.util.Date())

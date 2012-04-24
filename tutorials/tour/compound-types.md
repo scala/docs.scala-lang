@@ -13,7 +13,9 @@ Sometimes it is necessary to express that the type of an object is a subtype of 
 Suppose we have two traits `Cloneable` and `Resetable`:
 
     trait Cloneable extends java.lang.Cloneable {
-      override def clone(): Cloneable = { super.clone(); this }
+      override def clone(): Cloneable = { 
+        super.clone().asInstanceOf[Cloneable]
+      }
     }
     trait Resetable {
       def reset: Unit

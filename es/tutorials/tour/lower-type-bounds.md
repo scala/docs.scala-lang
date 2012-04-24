@@ -39,7 +39,7 @@ _Nota: el nuevo método `prepend` tiene un tipo un poco menos restrictivo. Esto 
 
 Este código ilustra el concepto:
 
-    object LowerBoundTest extends Application {
+    object LowerBoundTest extends App {
       val empty: ListNode[Null] = ListNode(null, null)
       val strList: ListNode[String] = empty.prepend("hello")
                                            .prepend("world")

@@ -38,7 +38,7 @@ _Note:_ the new `prepend` method has a slightly less restrictive type. It allows
 
 Here is some code which illustrates this:
 
-    object LowerBoundTest extends Application {
+    object LowerBoundTest extends App {
       val empty: ListNode[Null] = ListNode(null, null)
       val strList: ListNode[String] = empty.prepend("hello")
                                            .prepend("world")

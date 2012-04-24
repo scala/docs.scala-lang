@@ -16,7 +16,7 @@ En Scala pueden ser definidos patrones independientemente de las clases Caso. Pa
       def unapply(z: Int): Option[Int] = if (z%2 == 0) Some(z/2) else None
     }
     
-    object TwiceTest extends Application {
+    object TwiceTest extends App {
       val x = Twice(21)
       x match { case Twice(n) => Console.println(n) } // imprime 21
     }

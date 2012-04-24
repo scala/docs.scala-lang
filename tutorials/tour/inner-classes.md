@@ -29,7 +29,7 @@ In Scala it is possible to let classes have other classes as members. Opposed to
  
 In our program, graphs are represented by a list of nodes. Nodes are objects of inner class `Node`. Each node has a list of neighbours, which get stored in the list `connectedNodes`. Now we can set up a graph with some nodes and connect the nodes incrementally:
  
-    object GraphTest extends Application {
+    object GraphTest extends App {
       val g = new Graph
       val n1 = g.newNode
       val n2 = g.newNode
@@ -38,9 +38,9 @@ In our program, graphs are represented by a list of nodes. Nodes are objects of 
       n3.connectTo(n1)
     }
  
-We now enrich the following example with types to state explicitly what the type of the various defined entities is:
+We now enrich the above example with types to state explicitly what the type of the various defined entities is:
  
-    object GraphTest extends Application {
+    object GraphTest extends App {
       val g: Graph = new Graph
       val n1: g.Node = g.newNode
       val n2: g.Node = g.newNode
@@ -49,10 +49,10 @@ We now enrich the following example with types to state explicitly what the type
       n3.connectTo(n1)
     }
  
-This code clearly shows that a node type is prefixed with its outer instance (which is object g in our example). If we now have two graphs, the type system of Scala does not allow us to mix nodes defined within one graph with the nodes of another graph, since the nodes of the other graph have a different type.
+This code clearly shows that a node type is prefixed with its outer instance (which is object `g` in our example). If we now have two graphs, the type system of Scala does not allow us to mix nodes defined within one graph with the nodes of another graph, since the nodes of the other graph have a different type.
 Here is an illegal program:
  
-    object IllegalGraphTest extends Application {
+    object IllegalGraphTest extends App {
       val g: Graph = new Graph
       val n1: g.Node = g.newNode
       val n2: g.Node = g.newNode
@@ -81,4 +81,4 @@ Please note that in Java the last line in the previous example program would hav
       }
     }
  
-> Please note that this program doesn't allow us to attach a node to two different graphs. If we want to remove this restriction as well, we have to change the type of variable nodes and the return type of method `newNode` to `Graph#Node`.
+> Please note that this program doesn't allow us to attach a node to two different graphs. If we want to remove this restriction as well, we have to change the type of variable nodes to `Graph#Node`.

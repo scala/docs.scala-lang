@@ -12,7 +12,7 @@ Scala allows parameterless function names as parameters of methods. When such a 
 
 The following code demonstrates this mechanism:
 
-    object TargetTest1 extends Application {
+    object TargetTest1 extends App {
       def whileLoop(cond: => Boolean)(body: => Unit): Unit =
         if (cond) {
           body
@@ -25,13 +25,13 @@ The following code demonstrates this mechanism:
       }
     }
 
-The function whileLoop takes two parameters `cond` and `body`. When the function is applied, the actual parameters do not get evaluated. But whenever the formal parameters are used in the body of `whileLoop`, the implicitly created nullary functions will be evaluated instead. Thus, our method `whileLoop` implements a Java-like while-loop with a recursive implementation scheme.
+The function `whileLoop` takes two parameters `cond` and `body`. When the function is applied, the actual parameters do not get evaluated. But whenever the formal parameters are used in the body of `whileLoop`, the implicitly created nullary functions will be evaluated instead. Thus, our method `whileLoop` implements a Java-like while-loop with a recursive implementation scheme.
 
 We can combine the use of [infix/postfix operators](operators.html) with this mechanism to create more complex statements (with a nice syntax).
 
 Here is the implementation of a loop-unless statement:
 
-    object TargetTest2 extends Application {
+    object TargetTest2 extends App {
       def loop(body: => Unit): LoopUnlessCond =
         new LoopUnlessCond(body)
       protected class LoopUnlessCond(body: => Unit) {

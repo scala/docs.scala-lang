@@ -35,13 +35,15 @@ For every case class the Scala compiler generates an `equals` method which imple
     val y1 = Var("y")
     println("" + x1 + " == " + x2 + " => " + (x1 == x2))
     println("" + x1 + " == " + y1 + " => " + (x1 == y1))
-    will print
+
+will print
+
     Var(x) == Var(x) => true
     Var(x) == Var(y) => false
 
 It makes only sense to define case classes if pattern matching is used to decompose data structures. The following object defines a pretty printer function for our lambda calculus representation:
 
-    object TermTest extends Application {
+    object TermTest extends scala.App {
       def printTerm(term: Term) {
         term match {
           case Var(n) =>
@@ -50,7 +52,7 @@ It makes only sense to define case classes if pattern matching is used to decomp
             print("^" + x + ".")
             printTerm(b)
           case App(f, v) =>
-            Console.print("(")
+            print("(")
             printTerm(f)
             print(" ")
             printTerm(v)
@@ -69,5 +71,5 @@ It makes only sense to define case classes if pattern matching is used to decomp
       println(isIdentityFun(t))
     }
 
-In our example, the function `print` is expressed as a pattern matching statement starting with the `match` keyword and consisting of sequences of `case Pattern => Body` clauses.
+In our example, the function `printTerm` is expressed as a pattern matching statement starting with the `match` keyword and consisting of sequences of `case Pattern => Body` clauses.
 The program above also defines a function `isIdentityFun` which checks if a given term corresponds to a simple identity function. This example uses deep patterns and guards. After matching a pattern with a given value, the guard (defined after the keyword `if`) is evaluated. If it returns `true`, the match succeeds; otherwise, it fails and the next pattern will be tried.
