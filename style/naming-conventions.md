@@ -194,9 +194,11 @@ Thus, it is actually quite important that proper guidelines be observed
 regarding when it is appropriate to declare a method without parentheses
 and when it is not.
 
-Methods which act as accessors of any sort (either encapsulating a field
-or a logical property) should be declared *without* parentheses except
-if they have side effects. While Ruby and Lift use a `!` to indicate
+Arity-0 methods, e.g such that act as accessors of any sort (either
+encapsulating a field or a logical property), should be declared
+*without* parentheses if and only if they are referentially tranparent,
+i.e. if calls to such methods could be replaced with their value (stored
+after once called). While Ruby and Lift use a `!` to indicate
 this, the usage of parens is preferred (please note that fluid APIs and 
 internal domain-specific languages have a tendency to break the 
 guidelines given below for the sake of syntax. Such exceptions should 
