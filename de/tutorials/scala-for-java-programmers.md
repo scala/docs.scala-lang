@@ -48,36 +48,33 @@ deklariert wurde. Der Grund dafür ist, dass statische Mitglieder (Attribute ode
 nicht existieren. Statt statische Mitglieder zu definieren deklariert ein Scala Programmierer diese
 Mitglieder in Singleton Objekten.
 
-### Compiling the example
+### Das Beispiel kompilieren
 
-To compile the example, we use `scalac`, the Scala compiler. `scalac`
-works like most compilers: it takes a source file as argument, maybe
-some options, and produces one or several object files. The object
-files it produces are standard Java class files.
+Um das obige Beispiel zu kompilieren, verwenden wir `scalac`, den Scala-Compiler. `scalac` arbeitet
+wie die meisten anderen Compiler auch: er akzeptiert Quelltext-Dateien als Parameter, einige weitere
+Optionen, und übersetzt den Quelltext in Java-Bytecode. Dieser Bytecode wird in ein oder mehrere
+Java-konforme Class-Dateien (mit der Endung `.class`) geschrieben.
 
-If we save the above program in a file called
-`HelloWorld.scala`, we can compile it by issuing the following
-command (the greater-than sign `>` represents the shell prompt
-and should not be typed):
+Wenn wir obigen Quelltext in eine Datei namens `HalloWelt.scala` schreiben, können wir diese mit dem
+folgenden Befehl kompilieren (das größer als Zeichen `>` repräsentiert die Eingabeaufforderung und
+sollte nicht mit geschrieben werden):
 
-    > scalac HelloWorld.scala
+    > scalac HalloWelt.scala
 
-This will generate a few class files in the current directory. One of
-them will be called `HelloWorld.class`, and contains a class
-which can be directly executed using the `scala` command, as the
-following section shows.
+Damit werden ein paar Class-Dateien in das aktuelle Verzeichnis geschrieben. Eine davon heißt
+`HalloWelt.class` und enthält die Klasse, die direkt mit dem Befehl `scala` ausgeführt werden kann,
+was in den folgenden Abschnitten erklärt wird.
 
-### Running the example
+### Das Beispiel ausführen
 
-Once compiled, a Scala program can be run using the `scala` command.
-Its usage is very similar to the `java` command used to run Java
-programs, and accepts the same options. The above example can be
-executed using the following command, which produces the expected
-output:
+Sobald kompiliert, kann ein Scala Programm mit dem Befehl `scala` ausgeführt werden. Die Anwendung
+ist dem Befehl `java`, mit dem man Java Programme ausführt, sehr ähnlich und akzeptiert die selben
+Optionen. Das obige Beispiel können wir demnach mit folgendem Befehl ausführen, was das erwartete
+Resultat ausgibt:
 
-    > scala -classpath . HelloWorld
+    > scala -classpath . HalloWelt
 
-    Hello, world!
+    Hallo, Welt!
 
 ## Interaction with Java
 
