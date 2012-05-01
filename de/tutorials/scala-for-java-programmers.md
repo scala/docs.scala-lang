@@ -34,22 +34,19 @@ Die Struktur des Programmes sollte Java Anwendern bekannt vorkommen: es besteht 
 namens `main`, welche die Kommandozeilenparameter als Feld (Array) von Zeichenketten (String)
 übergeben bekommt. Der Körper dieser Methode besteht aus einem einzelnen Aufruf der vordefinierten
 Methode `println`, die die freundliche Begrüßung als Parameter übergeben bekommt. Weiterhin hat die
-`main`-Methode keinen Rückgabewert, sie ist also eine Prozedur. Daher ist es auch nicht notwendig,
+Methode `main` keinen Rückgabewert, sie ist also eine Prozedur. Daher ist es auch nicht notwendig,
 einen Rückgabetyp zu deklarieren.
 
-What is less familiar to Java programmers is the `object`
-declaration containing the `main` method. Such a declaration
-introduces what is commonly known as a *singleton object*, that
-is a class with a single instance. The declaration above thus declares
-both a class called `HelloWorld` and an instance of that class,
-also called `HelloWorld`. This instance is created on demand,
-the first time it is used.
+Was Java Programmierern allerdings weniger bekannt sein sollte, ist die Deklaration `object`, welche
+die Methode `main` enthält. Eine solche Deklaration stellt dar, was gemeinhin als *Singleton Objekt*
+(Einzelstück) bekannt ist, also eine Klasse mit nur einer Instanz. Im Beispiel oben werden also mit
+dem Schlüsselwort `object` sowohl eine Klasse namens `HalloWelt` als auch die dazugehörige,
+gleichnamige Instanz deklariert. Diese Instanz wird erst bei ihrer erstmaligen Verwendung erstellt.
 
-The astute reader might have noticed that the `main` method is
-not declared as `static` here. This is because static members
-(methods or fields) do not exist in Scala. Rather than defining static
-members, the Scala programmer declares these members in singleton
-objects.
+Dem aufmerksamen Leser wird vielleicht aufgefallen sein, dass die Methode `main` nicht als `static`
+deklariert wurde. Der Grund dafür ist, dass statische Mitglieder (Attribute oder Methoden) in Scala
+nicht existieren. Statt statische Mitglieder zu definieren deklariert ein Scala Programmierer diese
+Mitglieder in Singleton Objekten.
 
 ### Compiling the example
 
