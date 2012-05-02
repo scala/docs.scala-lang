@@ -13,7 +13,7 @@ Scala cuenta con una notación ligera para expresar *sequencias por comprensión
 
 Aquí hay un ejemplo:
  
-    object ComprehensionTest1 extends Application {
+    object ComprehensionTest1 extends App {
       def pares(desde: Int, hasta: Int): List[Int] =
         for (i <- List.range(desde, hasta) if i % 2 == 0) yield i
       Console.println(pares(0, 20))
@@ -27,10 +27,10 @@ El programa produce los siguientes valores
 
 Aquí se muestra un ejemplo más complicado que computa todos los pares de números entre `0` y `n-1` cuya suma es igual a un número dado `v`: 
 
-    object ComprehensionTest2 extends Application {
+    object ComprehensionTest2 extends App {
       def foo(n: Int, v: Int) =
         for (i <- 0 until n;
-             j <- i + 1 until n if i + j == v) yield
+             j <- i until n if i + j == v) yield
           Pair(i, j);
       foo(20, 32) foreach {
         case (i, j) =>
@@ -45,12 +45,13 @@ Esta es la salida del programa:
     (13, 19)
     (14, 18)
     (15, 17)
+    (16, 16)
 
 Existe también una forma especial de comprensión de secuencias la cual retorna `Unit`. En este caso las variables que son creadas por la lista de generadores y filtros son usados para realizar tareas con efectos colaterales (modificaciones de algún tipo). El programador tiene que omitir la palabra reservada `yield` para usar una comprensión de este tipo.
  
-    object ComprehensionTest3 extends Application {
+    object ComprehensionTest3 extends App {
       for (i <- Iterator.range(0, 20);
-           j <- Iterator.range(i + 1, 20) if i + j == 32)
+           j <- Iterator.range(i, 20) if i + j == 32)
         println("(" + i + ", " + j + ")")
     }
 

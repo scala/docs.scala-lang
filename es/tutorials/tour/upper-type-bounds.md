@@ -20,7 +20,7 @@ Aquí se muestra un ejemplo el cual se basa en un límite de tipado superior par
         m.isInstanceOf[MyInt] &&
         m.asInstanceOf[MyInt].x == x
     }
-    object UpperBoundTest extends Application {
+    object UpperBoundTest extends App {
       def findSimilar[T <: Similar](e: T, xs: List[T]): Boolean =
         if (xs.isEmpty) false
         else if (e.isSimilar(xs.head)) true

@@ -13,7 +13,7 @@ Scala permite pasar a un método como parámetro funciones que no reciban parám
 
 Para aclarar un poco esto aquí se muestra un ejemplo:
 
-    object TargetTest1 extends Application {
+    object TargetTest1 extends App {
       def whileLoop(cond: => Boolean)(body: => Unit): Unit =
         if (cond) {
           body
@@ -32,7 +32,7 @@ Es posible combinar el uso de [operadores de infijo y postfijo (infix/postfix)](
 
 Aquí mostramos la implementación de una declaración tipo repetir-a-menos-que (repetir el bucle a no ser que se cumpla X condición):
 
-    object TargetTest2 extends Application {
+    object TargetTest2 extends App {
       def loop(body: => Unit): LoopUnlessCond =
         new LoopUnlessCond(body)
       protected class LoopUnlessCond(body: => Unit) {

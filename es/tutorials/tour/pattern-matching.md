@@ -16,7 +16,7 @@ Here is a small example which shows how to match against an integer value:
 
 Scala tiene incorporado un mecanismo general de reconocimiento de patrones. Este permite identificar cualquier tipo de datos una política primero-encontrado. Aquí se muestra un pequeño ejemplo el cual muestra cómo coincidir un valor entero:
 
-    object MatchTest1 extends Application {
+    object MatchTest1 extends App {
       def matchTest(x: Int): String = x match {
         case 1 => "one"
         case 2 => "two"
@@ -29,7 +29,7 @@ El bloque con las sentencias `case` define una función la cual mapea enteros a 
 
 Aquí se muestra un ejemplo el cual machea un valor contra un patrón de diferentes tipos:
 
-    object MatchTest2 extends Application {
+    object MatchTest2 extends App {
       def matchTest(x: Any): Any = x match {
         case 1 => "one"
         case "two" => 2

@@ -13,7 +13,7 @@ Scala tiene incorporado un mecanismo de inferencia de tipos el cual permite al p
 
 Aquí hay un ejemplo:
 
-    object InferenceTest1 extends Application {
+    object InferenceTest1 extends App {
       val x = 1 + 2 * 3         // el tipo de  x es Int
       val y = x.toString()      // el tipo de y es String
       def succ(x: Int) = x + 1  // el método succ retorna valores Int
@@ -30,15 +30,15 @@ Tampoco es obligatorio especificar el tipo de los parámetros cuando se trate de
 Aquí se muestra un ejemplo que ilustra esto:
 
     case class MyPair[A, B](x: A, y: B);
-    object InferenceTest3 extends Application {
+    object InferenceTest3 extends App {
       def id[T](x: T) = x
-      val p = new MyPair(1, "scala") // tipo: MyPair[Int, String]
-      val q = id(1)                  // tipo: Int
+      val p = MyPair(1, "scala") // tipo: MyPair[Int, String]
+      val q = id(1)              // tipo: Int
     }
 
 Las últimas dos lineas de este programa son equivalentes al siguiente código, donde todos los tipos inferidos son especificados explicitamente:
 
-    val x: MyPair[Int, String] = new MyPair[Int, String](1, "scala")
+    val x: MyPair[Int, String] = MyPair[Int, String](1, "scala")
     val y: Int = id[Int](1)
 
 En algunas situaciones puede ser bastante peligroso confira en el mecanismo de inferencia de tipos de Scala, como se ilustra en el siguiente ejemplo:

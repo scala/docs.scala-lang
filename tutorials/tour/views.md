@@ -8,13 +8,14 @@ tutorial: scala-tour
 num: 32
 ---
 
-[Implicit parameters](implicit-parameters.html) and methods can also define implicit conversions called _views_. A view from type `S` to type `T` is defined by an implicit value which has function type `S => T`, or by a method convertible to a value of that type.
+[Implicit parameters](implicit-parameters.html) and methods can also define implicit conversions called _views_. A view from type `S` to type `T` is defined by an implicit value which has function type `S => T`, or by an implicit method convertible to a value of that type.
 
 Views are applied in two situations:
-* If an expression `e` is of type `T`, and `T` does not conform to the expression's expected type `pt`.
+* If an expression `e` is of type `S`, and `S` does not conform to the expression's expected type `T`.
 * In a selection `e.m` with `e` of type `T`, if the selector `m` does not denote a member of `T`.
 
-In the first case, a view `v` is searched which is applicable to `e` and whose result type conforms to `pt`. In the second case, a view `v` is searched which is applicable to `e` and whose result contains a member named `m`.
+In the first case, a view `v` is searched which is applicable to `e` and whose result type conforms to `T`. 
+In the second case, a view `v` is searched which is applicable to `e` and whose result contains a member named `m`.
 
 The following operation on the two lists xs and ys of type `List[Int]` is legal:
 
@@ -35,7 +36,7 @@ The `list2ordered` function can also be expressed with the use of a _view bound_
   
 The Scala compiler then generates code equivalent to the definition of `list2ordered` given above.
 
-The implicitly imported object `scala.Predef` declares several predefined types (e.g. `Pair`) and methods (e.g. `error`) but also several views. The following example gives an idea of the predefined view `charWrapper`:
+The implicitly imported object `scala.Predef` declares several predefined types (e.g. `Pair`) and methods (e.g. `assert`) but also several views. The following example gives an idea of the predefined view `charWrapper`:
 
     final class RichChar(c: Char) {
       def isDigit: Boolean = Character.isDigit(c)

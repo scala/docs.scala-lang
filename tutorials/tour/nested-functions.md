@@ -10,7 +10,7 @@ num: 13
 
 In Scala it is possible to nest function definitions. The following object provides a `filter` function for extracting values from a list of integers that are below a threshold value:
 
-    object FilterTest extends Application {
+    object FilterTest extends App {
       def filter(xs: List[Int], threshold: Int) = {
         def process(ys: List[Int]): List[Int] =
           if (ys.isEmpty) ys
