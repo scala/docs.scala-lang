@@ -20,9 +20,9 @@ insbesondere Java, werden vorausgesetzt.
 
 ## Das erste Beispiel
 
-Als erstes werden wir das wohlbekannte *Hallo, Welt!*-Programm implementieren. Obwohl es sehr
+Als erstes folgt eine Implementierung des wohlbekannten *Hallo, Welt!*-Programmes. Obwohl es sehr
 einfach ist, eignet es sich sehr gut, Scala's Funktionsweise zu demonstrieren, ohne dass man viel
-über die Sprache wissen muss. So sieht es aus:
+über die Sprache wissen muss.
 
     object HalloWelt {
       def main(args: Array[String]) {
@@ -50,12 +50,12 @@ Mitglieder in Singleton Objekten.
 
 ### Das Beispiel kompilieren
 
-Um das obige Beispiel zu kompilieren, verwenden wir `scalac`, den Scala-Compiler. `scalac` arbeitet
-wie die meisten anderen Compiler auch: er akzeptiert Quelltext-Dateien als Parameter, einige weitere
-Optionen, und übersetzt den Quelltext in Java-Bytecode. Dieser Bytecode wird in ein oder mehrere
+Um das obige Beispiel zu kompilieren, wird `scalac`, der Scala-Compiler verwendet. `scalac` arbeitet
+wie die meisten anderen Compiler auch: er akzeptiert Quellcode-Dateien als Parameter, einige weitere
+Optionen, und übersetzt den Quellcode in Java-Bytecode. Dieser Bytecode wird in ein oder mehrere
 Java-konforme Class-Dateien (mit der Endung `.class`) geschrieben.
 
-Wenn wir obigen Quelltext in eine Datei namens `HalloWelt.scala` schreiben, können wir diese mit dem
+Schreibt man den obigen Quellcode in eine Datei namens `HalloWelt.scala`, kann man diese mit dem
 folgenden Befehl kompilieren (das größer als Zeichen `>` repräsentiert die Eingabeaufforderung und
 sollte nicht mit geschrieben werden):
 
@@ -68,30 +68,29 @@ was in den folgenden Abschnitten erklärt wird.
 ### Das Beispiel ausführen
 
 Sobald kompiliert, kann ein Scala Programm mit dem Befehl `scala` ausgeführt werden. Die Anwendung
-ist dem Befehl `java`, mit dem man Java Programme ausführt, sehr ähnlich und akzeptiert die selben
-Optionen. Das obige Beispiel können wir demnach mit folgendem Befehl ausführen, was das erwartete
+ist dem Befehl `java`, mit dem man Java Programme ausführt, nachempfunden und akzeptiert die selben
+Optionen. Das obige Beispiel kann demnach mit folgendem Befehl ausgeführt werden, was das erwartete
 Resultat ausgibt:
 
     > scala -classpath . HalloWelt
 
     Hallo, Welt!
 
-## Interaction with Java
+## Interaktion mit Java
 
-One of Scala's strengths is that it makes it very easy to interact
-with Java code. All classes from the `java.lang` package are
-imported by default, while others need to be imported explicitly.
+Eine Stärke der Sprache Scala ist, dass man mit ihr sehr leicht mit Java interagieren kann. Alle
+Klassen des Paketes `java.lang` werden automatisch importiert, während andere explizit importiert
+werden müssen.
 
-Let's look at an example that demonstrates this.  We want to obtain
-and format the current date according to the conventions used in a
-specific country, say France. (Other regions such as the
-French-speaking part of Switzerland use the same conventions.)
+Als nächstes folgt ein Beispiel, was diese Interoperabilität demonstriert. Ziel ist es, das aktuelle
+Datum zu erhalten und gemäß den Konventionen eines gewissen Landes zu formatieren, zum Beispiel
+Frankreich (andere Regionen, wie der französisch-sprachige Teil der Schweiz verwenden dieselben
+Konventionen).
 
-Java's class libraries define powerful utility classes, such as
-`Date` and `DateFormat`. Since Scala interoperates
-seemlessly with Java, there is no need to implement equivalent
-classes in the Scala class library--we can simply import the classes
-of the corresponding Java packages:
+Javas Klassen-Bibliothek enthält viele nützliche Klassen, beispielsweise `Date` und `DateFormat`.
+Dank Scala's Fähigkeit, nahtlos mit Java zu interoperieren, besteht keine Notwendigkeit, äquivalente
+Klassen in der Scala Klassen-Bibliothek zu implementieren--man kann einfach die entsprechenden
+Klassen der Java-Pakete importieren:
 
     import java.util.{Date, Locale}
     import java.text.DateFormat
@@ -105,121 +104,104 @@ of the corresponding Java packages:
       }
     }
 
-Scala's import statement looks very similar to Java's equivalent,
-however, it is more powerful. Multiple classes can be imported from
-the same package by enclosing them in curly braces as on the first
-line. Another difference is that when importing all the names of a
-package or class, one uses the underscore character (`_`) instead
-of the asterisk (`*`). That's because the asterisk is a valid
-Scala identifier (e.g. method name), as we will see later.
+Scala's Import-Anweisung ähnelt sehr der aus Java, obwohl sie viel mächtiger ist. Mehrere Klassen
+des gleichen Paketes können gleichzeitig importiert werden, indem sie, wie in der ersten Zeile, in
+geschweifte Klammern geschrieben werden. Ein weiterer Unterschied ist, dass, wenn man alle
+Mitglieder eines Paketes importieren will, einen Unterstrich (`_`) anstelle des Asterisk (`*`)
+verwendet. Das liegt daran, dass der Asterisk ein gültiger Bezeichner in Scala ist, beispielsweise
+als Name für Methoden, wie später gezeigt wird. Die Import-Anweisung der dritten Zeile importiert
+demnach alle Mitglieder der Klasse `DateFormat`, inklusive der statischen Methode `getDateInstance`
+und des statischen Feldes `LONG`.
 
-The import statement on the third line therefore imports all members
-of the `DateFormat` class. This makes the static method
-`getDateInstance` and the static field `LONG` directly
-visible.
-
-Inside the `main` method we first create an instance of Java's
-`Date` class which by default contains the current date. Next, we
-define a date format using the static `getDateInstance` method
-that we imported previously. Finally, we print the current date
-formatted according to the localized `DateFormat` instance. This
-last line shows an interesting property of Scala's syntax. Methods
-taking one argument can be used with an infix syntax. That is, the
-expression
+Innerhalb der Methode `main` wird zuerst eine Instanz der Java-Klasse `Date` erzeugt, welche, per
+Default, das aktuelle Datum enthält. Als nächstes wird mithilfe der statischen Methode
+`getDateInstance` eine Instanz der Klasse `DateFormat` erstellt. Schließlich wird das aktuelle Datum
+gemäß der Regeln der lokalisierten `DateFormat`-Instanz formatiert ausgegeben. Außerdem
+veranschaulicht die letzte Zeile eine interessante Fähigkeit Scala's Syntax: Methoden, die nur einen
+Parameter haben, können in der Infix-Syntax notiert werden. Dies bedeutet, dass der Ausdruck
 
     df format now
 
-is just another, slightly less verbose way of writing the expression
+eine andere, weniger verbose Variante des folgenden Ausdruckes ist:
 
     df.format(now)
 
-This might seem like a minor syntactic detail, but it has important
-consequences, one of which will be explored in the next section.
+Es scheint nur ein nebensächliches, syntaktisches Detail zu sein, hat jedoch bedeutende
+Konsequenzen, was im nächsten Abschnitt gezeigt wird. Um diesen Abschnitt abzuschließen, soll
+bemerkt werden, dass es außerdem direkt in Scala möglich ist, von Java-Klassen zu erben
+Java-Schnittstellen zu implementieren.
 
-To conclude this section about integration with Java, it should be
-noted that it is also possible to inherit from Java classes and
-implement Java interfaces directly in Scala.
+## Alles ist ein Objekt
 
-## Everything is an Object
+Scala ist eine pur Objekt-orientierte Sprache, in dem Sinne dass *alles* ein Objekt ist, Zahlen und
+Funktionen eingeschlossen. Der Unterschied zu Java ist, dass Java zwischen primitiven Typen, wie
+`boolean` und `int`, und den Referenz-Typen unterscheidet und es nicht erlaubt ist, Funktionen wie
+Werte zu behandeln.
 
-Scala is a pure object-oriented language in the sense that
-*everything* is an object, including numbers or functions. It
-differs from Java in that respect, since Java distinguishes
-primitive types (such as `boolean` and `int`) from reference
-types, and does not enable one to manipulate functions as values.
+### Zahlen sind Objekte
 
-### Numbers are objects
-
-Since numbers are objects, they also have methods. And in fact, an
-arithmetic expression like the following:
+Zahlen sind Objekte und haben daher Methoden. Tatsächlich besteht ein arithmetischer Ausdruck wie
+der folgende:
 
     1 + 2 * 3 / x
 
-consists exclusively of method calls, because it is equivalent to the
-following expression, as we saw in the previous section:
+exklusiv aus Methoden-Aufrufen, da es äquivalent zu folgendem Ausdruck ist, wie in vorhergehenden
+Abschnitt gezeigt wurde:
 
     (1).+(((2).*(3))./(x))
 
-This also means that `+`, `*`, etc. are valid identifiers
-in Scala.
+Dies bedeutet außerdem, dass `+`, `*`, etc. in Scala gültige Bezeichner sind.
 
-The parentheses around the numbers in the second version are necessary
-because Scala's lexer uses a longest match rule for tokens.
-Therefore, it would break the following expression:
+Die Zahlen umschließenden Klammern der zweiten Variante sind notwendig, weil Scala's lexikalischer
+Scanner eine Regel zur längsten Übereinstimmung der Token verwendet. Daher würde der folgende
+Ausdruck:
 
     1.+(2)
 
-into the tokens `1.`, `+`, and `2`.  The reason that
-this tokenization is chosen is because `1.` is a longer valid
-match than `1`.  The token `1.` is interpreted as the
-literal `1.0`, making it a `Double` rather than an
-`Int`.  Writing the expression as:
+in die Token `1.`, `+`, und `2` zerlegt werden. Der Grund für diese Zerlegung ist, dass `1.` ein
+längere, gültige Übereinstimmung ist, als `1`. Daher wird das Token `1.` als das Literal `1.0`
+interpretiert, also als Gleitkomma- statt als Ganzzahl. Den Ausdruck als
 
     (1).+(2)
 
-prevents `1` from being interpreted as a `Double`.
+zu schreiben, verhindert also, dass `1` als Gleitkommazahl interpretiert wird.
 
-### Functions are objects
+### Funktionen sind Objekte
 
-Perhaps more surprising for the Java programmer, functions are also
-objects in Scala. It is therefore possible to pass functions as
-arguments, to store them in variables, and to return them from other
-functions. This ability to manipulate functions as values is one of
-the cornerstone of a very interesting programming paradigm called
-*functional programming*.
+Vermutlich überraschender für Java Programmierer ist, dass auch Funktionen in Scala Objekte sind.
+Daher ist es auch möglich, Funktionen als Parameter zu übergeben, als Werte zu speichern, und von
+anderen Funktionen zurück geben zu lassen. Diese Fähigkeit, Funktionen wie Werte zu behandeln, ist
+einer der Grundsteine eines sehr interessanten Programmier-Paradigmas, der *funktionalen
+Programmierung*.
 
-As a very simple example of why it can be useful to use functions as
-values, let's consider a timer function whose aim is to perform some
-action every second. How do we pass it the action to perform? Quite
-logically, as a function. This very simple kind of function passing
-should be familiar to many programmers: it is often used in
-user-interface code, to register call-back functions which get called
-when some event occurs.
+Ein sehr einfaches Beispiel, warum es nützlich sein kann, Funktionen wie Werte zu behandeln, ist
+eine Timer-Funktion, deren Ziel es ist, eine gewisse Aktion pro Sekunde durchzuführen. Wie übergibt
+man die durchzuführende Aktion? Offensichtlich als Funktion. Diese einfache Art der Übergabe einer
+Funktion sollte den meisten Programmieren bekannt vorkommen: dieses Prinzip wird häufig bei
+Benutzerschnittstellen für Rückruf-Funktionen (call-back) verwendet, die ausgeführt werden, wenn ein
+bestimmtes Ereignis eintritt.
 
-In the following program, the timer function is called
-`oncePerSecond`, and it gets a call-back function as argument.
-The type of this function is written `() => Unit` and is the type
-of all functions which take no arguments and return nothing (the type
-`Unit` is similar to `void` in C/C++). The main function of
-this program simply calls this timer function with a call-back which
-prints a sentence on the terminal. In other words, this program
-endlessly prints the sentence "time flies like an arrow" every
-second.
+Im folgenden Programm akzeptiert die Timer-Funktion `oncePerSecond` eine Rückruf-Funktion als
+Parameter. Der Typ wird `() => Unit` geschrieben und ist der Typ aller Funktionen, die keine
+Parameter haben und nichts zurück geben (der Typ `Unit` ist das Äquivalent zu `void` in C/C++ und
+Java). Die Methode `main` des Programmes ruft die Timer-Funktion mit der Rückruf-Funktion auf, die
+einen Satz ausgibt. In anderen Worten: das Programm gibt endlos den Satz "Die Zeit vergeht wie im
+Flug." einmal pro Sekunde aus.
 
     object Timer {
       def oncePerSecond(callback: () => Unit) {
         while (true) { callback(); Thread sleep 1000 }
       }
       def timeFlies() {
-        println("time flies like an arrow...")
+        println("Die Zeit vergeht wie im Flug.")
       }
       def main(args: Array[String]) {
         oncePerSecond(timeFlies)
       }
     }
 
-Note that in order to print the string, we used the predefined method
-`println` instead of using the one from `System.out`.
+Zu bemerken ist, dass um die Zeichenkette auszugeben, die in Scala vordefinierte Methode `println`
+statt der äquivalenten Methode in `System.out` verwendet wird.
 
 #### Anonymous functions
 
