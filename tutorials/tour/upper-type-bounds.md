@@ -19,7 +19,7 @@ Here is an example which relies on an upper type bound for the implementation of
         m.isInstanceOf[MyInt] &&
         m.asInstanceOf[MyInt].x == x
     }
-    object UpperBoundTest extends Application {
+    object UpperBoundTest extends App {
       def findSimilar[T <: Similar](e: T, xs: List[T]): Boolean =
         if (xs.isEmpty) false
         else if (e.isSimilar(xs.head)) true

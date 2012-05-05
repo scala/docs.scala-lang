@@ -14,7 +14,9 @@ Algunas veces es necesario expresar que el tipo de un objeto es un subtipo de va
 Suponga que tenemos dos traits `Cloneable` y `Resetable`:
 
     trait Cloneable extends java.lang.Cloneable {
-      override def clone(): Cloneable = { super.clone(); this }
+      override def clone(): Cloneable = {
+        super.clone().asInstanceOf[Cloneable]
+      }
     }
     trait Resetable {
       def reset: Unit

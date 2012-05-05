@@ -24,7 +24,7 @@ La clase `Stack` modela una pila mutable que contiene elementos de un tipo arbit
 
 Aquí se muestra un ejemplo del uso de dicha pila:
 
-    object GenericsTest extends Application {
+    object GenericsTest extends App {
       val stack = new Stack[Int]
       stack.push(1)
       stack.push('a')

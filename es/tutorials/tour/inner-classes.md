@@ -30,7 +30,7 @@ En Scala es posible que las clases tengan como miembro otras clases. A diferenci
 
 En nuestro programa, los grafos son representados mediante una lista de nodos. Estos nodos son objetos de la clase interna `Node`. Cada nodo tiene una lista de vecinos que se almacena en la lista `connectedNodes`. Ahora podemos crear un grafo con algunos nodos y conectarlos incrementalmente:
 
-    object GraphTest extends Application {
+    object GraphTest extends App {
       val g = new Graph
       val n1 = g.newNode
       val n2 = g.newNode
@@ -41,7 +41,7 @@ En nuestro programa, los grafos son representados mediante una lista de nodos. E
  
 Ahora vamos a completar el ejemplo con información relacionada al tipado para definir explicitamente de qué tipo son las entidades anteriormente definidas:
  
-    object GraphTest extends Application {
+    object GraphTest extends App {
       val g: Graph = new Graph
       val n1: g.Node = g.newNode
       val n2: g.Node = g.newNode
@@ -54,7 +54,7 @@ El código anterior muestra que al tipo del nodo le es prefijado con la instanci
 
 Aquí está el programa ilegal:
  
-    object IllegalGraphTest extends Application {
+    object IllegalGraphTest extends App {
       val g: Graph = new Graph
       val n1: g.Node = g.newNode
       val n2: g.Node = g.newNode
@@ -83,4 +83,4 @@ Por favor note que en Java la última linea del ejemplo anterior hubiese sido co
       }
     }
 
-> Por favor note que este programa no nos permite relacionar un nodo con dos grafos diferentes. Si también quisiéramos eliminar esta restricción, sería necesario cambiar el tipo de la variable `nodes` y el tipo retornado por el método `newNode` a `Graph#Node`.
+> Por favor note que este programa no nos permite relacionar un nodo con dos grafos diferentes. Si también quisiéramos eliminar esta restricción, sería necesario cambiar el tipo de la variable `nodes` a `Graph#Node`.

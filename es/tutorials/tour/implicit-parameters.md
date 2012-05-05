@@ -23,7 +23,7 @@ En el siguiente ejemplo definimos un método `sum` el cual computa la suma de un
     abstract class Monoid[A] extends SemiGroup[A] {
       def unit: A
     }
-    object ImplicitTest extends Application {
+    object ImplicitTest extends App {
       implicit object StringMonoid extends Monoid[String] {
         def add(x: String, y: String): String = x concat y
         def unit: String = ""
@@ -39,8 +39,7 @@ En el siguiente ejemplo definimos un método `sum` el cual computa la suma de un
       println(sum(List(1, 2, 3)))
       println(sum(List("a", "b", "c")))
     }
-  
- 
+
 Esta es la salida del programa:
 
     6

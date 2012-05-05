@@ -19,27 +19,25 @@ La superclase de todas las clases, `scala.Any`, tiene dos subclases directas, `s
 Por favor note que el diagrama superior también muestra conversiones implícitas llamadas viestas entre las clases para valores.
 Aquí se muestra un ejemplo que demuestra que tanto valores numéricos, de caracteres, buleanos y funciones son objetos, tal como cualquier otro objeto:
 
-    object UnifiedTypes {
-      def main(args: Array[String]) {
-        val set = new scala.collection.mutable.HashSet[Any]
-        set += "This is a string"  // suma un String
-        set += 732                 // suma un número
-        set += 'c'                 // suma un caracter
-        set += true                // suma un valor booleano
-        set += main _              // suma la función main
-        val iter: Iterator[Any] = set.elements
-        while (iter.hasNext) {
-          println(iter.next.toString())
-        }
+    object UnifiedTypes extends App {
+      val set = new scala.collection.mutable.LinkedHashSet[Any]
+      set += "This is a string"  // suma un String
+      set += 732                 // suma un número
+      set += 'c'                 // suma un caracter
+      set += true                // suma un valor booleano
+      set += main _              // suma la función main
+      val iter: Iterator[Any] = set.iterator
+      while (iter.hasNext) {
+        println(iter.next.toString())
       }
     }
 
-El programa declara una aplicación `UnifiedTypes` en forma de un objeto singleton de primer nive con un método `main`. El método main define una variable local `set` (un conjunto), la cual se refiere a una instancia de la clase `HashSet[Any]`. El programa suma varios elementos a este conjunto. Los elementos tienen que cumplir con el tipo declarado para los elementos por el conjunto, que es `Any`. En el final, una representación en texto (cadena de caracteres, o string) es impresa en pantalla.
+El programa declara una aplicación `UnifiedTypes` en forma de un objeto singleton de primer nive con un método `main`. El aplicación define una variable local `set` (un conjunto), la cual se refiere a una instancia de la clase `LinkedHashSet[Any]`. El programa suma varios elementos a este conjunto. Los elementos tienen que cumplir con el tipo declarado para los elementos por el conjunto, que es `Any`. En el final, una representación en texto (cadena de caracteres, o string) es impresa en pantalla.
 
 Aquí se muestra la salida del programa:
 
+    This is a string
+    732
     c
     true
     <function>
-    732
-    This is a string

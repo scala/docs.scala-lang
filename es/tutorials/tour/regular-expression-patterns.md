@@ -17,7 +17,7 @@ Los patrones de secuencias que ignoran a la derecha son una característica úti
 
 En esos casos, Scala permite a los patrones que utilicen el cómodin `_*` en la posición más a la derecha que tomen lugar para secuencias arbitrariamente largas. El siguiente ejemplo demuestra un reconocimiento de patrones el cual identifica un prefijo de una secuencia y liga el resto a la variable `rest`.
 
-    object RegExpTest1 extends Application {
+    object RegExpTest1 extends App {
       def containsScala(x: String): Boolean = {
         val z: Seq[Char] = x
         z match {

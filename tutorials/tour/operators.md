@@ -21,7 +21,7 @@ It is now possible to use `and` and `or` as infix operators:
     def not(x: MyBool) = x negate; // semicolon required here
     def xor(x: MyBool, y: MyBool) = (x or y) and not(x and y)
 
-As the first line of this code shows, it is also possible to use nullary methods as postfix operators. The second line defines an xor function using the and and or methods as well as the new `not` function. In this example the use of _infix operators_ helps to make the definition of `xor` more readable.
+As the first line of this code shows, it is also possible to use nullary methods as postfix operators. The second line defines an `xor` function using the `and` and `or` methods as well as the new `not` function. In this example the use of _infix operators_ helps to make the definition of `xor` more readable.
 
 Here is the corresponding code in a more traditional object-oriented programming language syntax:
 

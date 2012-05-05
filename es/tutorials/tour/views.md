@@ -9,13 +9,14 @@ num: 32
 language: es
 ---
 
-[Parámetros implícitos](implicit-parameters.html) y métodos también pueden definir conversiones implícitas llamadas _vistas_. Una vista de tipo `S` a `T` es definida por un valor implícito que tiene una función del tipo `S => T`, o por un método convertible a un valor de tal tipo.
+[Parámetros implícitos](implicit-parameters.html) y métodos también pueden definir conversiones implícitas llamadas _vistas_. Una vista de tipo `S` a `T` es definida por un valor implícito que tiene una función del tipo `S => T`, o por un método implícito convertible a un valor de tal tipo.
 
 Las vistas son aplicadas en dos situaciones:
-* Si una expresión `e` es de tipo `T`, y `T` no se ajusta al tipo esperado de la expresión `pt`.
+* Si una expresión `e` es de tipo `S`, y `S` no se ajusta al tipo esperado de la expresión `T`.
 * En una selección `e.m` con `e` de tipo `T`, si el selector `m` no es un miembro de `T`.
 
-En el primer caso, una vista `v` es buscada la cual sea aplicable a `e` y cuyo tipo resultado se ajusta a `pt`. En el segundo caso, una vista `v` es buscada para la cual sea aplicable a `e` y cuyor resultado contenga un miembro llamado `m`.
+En el primer caso, una vista `v` es buscada la cual sea aplicable a `e` y cuyo tipo resultado se ajusta a `T`. 
+En el segundo caso, una vista `v` es buscada para la cual sea aplicable a `e` y cuyor resultado contenga un miembro llamado `m`.
 
 La siguiente operación entre las dos listas `xs` y `ys` de tipo `List[Int]` es legal:
 
@@ -36,7 +37,7 @@ La función `list2ordered` puede ser también expresada con el uso de un _límit
 
 El compilador de Scala que genera después genera el código equivalente a la definición de `list2ordered` vista anteriormente.
 
-El objeto `scala.Predef` importado implicitamente declara varios tipos predefinidos (ej. `Pair`) and métodos (ej. `error`) pero también varias vistas. El siguiente ejemplo muestra una idea de la vista predefinida `charWrapper`:
+El objeto `scala.Predef` importado implicitamente declara varios tipos predefinidos (ej. `Pair`) and métodos (ej. `assert`) pero también varias vistas. El siguiente ejemplo muestra una idea de la vista predefinida `charWrapper`:
 
     final class RichChar(c: Char) {
       def isDigit: Boolean = Character.isDigit(c)

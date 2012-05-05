@@ -15,7 +15,7 @@ In Scala, patterns can be defined independently of case classes. To this end, a 
       def unapply(z: Int): Option[Int] = if (z%2 == 0) Some(z/2) else None
     }
     
-    object TwiceTest extends Application {
+    object TwiceTest extends App {
       val x = Twice(21)
       x match { case Twice(n) => Console.println(n) } // prints 21
     }
