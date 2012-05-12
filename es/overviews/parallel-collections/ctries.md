@@ -1,6 +1,6 @@
 ---
 layout: overview-large
-title: Concurrent Tries
+title: Tries Concurrentes
 
 disqus: true
 
@@ -9,24 +9,24 @@ num: 4
 language: es
 ---
 
-Most concurrent data structures do not guarantee consistent
-traversal if the the data structure is modified during traversal.
-This is, in fact, the case with most mutable collections, too.
-Concurrent tries are special in the sense that they allow you to modify
-the trie being traversed itself. The modifications are only visible in the
-subsequent traversal. This holds both for sequential concurrent tries and their
-parallel counterparts. The only difference between the two is that the
-former traverses its elements sequentially, whereas the latter does so in
-parallel.
+La mayoría de las estructuras de datos no garantizan un recorrido consistente
+si la estructura es modificada durante el recorrido de la misma. De hecho,
+esto también sucede en la mayor parte de las colecciones mutables. Los "tries"
+concurrentes presentan una característica especial, permitiendo la modificación
+de los mismos mientras están siendo recorridos. Las modificaciones solo son visibles
+en los recorridos posteriores a las mismas. Ésto aplica tanto a los "tries" secuenciales 
+como a los paralelos. La única diferencia entre ambos es que el primero de ellos
+recorre todos los elementos de la estructura de manera secuencial mientras que 
+el segundo lo hace en paralelo.
 
-This is a nice property that allows you to write some algorithms more
-easily. Typically, these are algorithms that process a dataset of elements
-iteratively, in which different elements need a different number of
-iterations to be processed.
+Esta propiedad nos permite escribir determinados algoritmos de un modo mucho más
+sencillo. Por lo general, son algoritmos que procesan un conjunto de elementos de manera
+iterativa y diferentes elementos necesitan distinto número de iteraciones para ser
+procesados.
 
-The following example computes the square roots of a set of numbers. Each iteration
-iteratively updates the square root value. Numbers whose square roots converged
-are removed from the map.
+El siguiente ejemplo calcula la raíz cuadrada de un conjunto de números. Cada iteración
+actualiza, de manera iterativa, el valor de la raíz cuadrada. Aquellos números cuyas 
+raíces convergen son eliminados del mapa.
 
     case class Entry(num: Double) {
       var sqrt = num
@@ -49,25 +49,23 @@ are removed from the map.
       }
     }
 
-Note that in the above Babylonian method square root computation
-(\[[3][3]\]) some numbers may converge much faster than the others. For
-this reason, we want to remove them from `results` so that only those
-elements that need to be worked on are traversed.
+Fíjese que en el anterior método de cálculo de la raíz cuadrada (método Babylonian)
+(\[[3][3]\]) algunos números pueden converger mucho más rápidamente que otros. Por esta razón,
+queremos eliminar dichos números de la variable `results` de manera que solo aquellos
+elementos sobre los que realmente necesitamos trabajar son recorridos.
 
-Another example is the breadth-first search algorithm, which iteratively expands the nodefront
-until either it finds some path to the target or there are no more
-nodes to expand. We define a node on a 2D map as a tuple of
-`Int`s. We define the `map` as a 2D array of booleans which denote is
-the respective slot occupied or not. We then declare 2 concurrent trie
-maps-- `open` which contains all the nodes which have to be
-expanded (the nodefront), and `closed` which contains all the nodes which have already
-been expanded. We want to start the search from the corners of the map and
-find a path to the center of the map-- we initialize the `open` map
-with appropriate nodes. Then we iteratively expand all the nodes in
-the `open` map in parallel until there are no more nodes to expand.
-Each time a node is expanded, it is removed from the `open` map and
-placed in the `closed` map.
-Once done, we output the path from the target to the initial node.
+Otro ejemplo es el algoritmo de búsqueda en anchura, el cual iterativamente expande el "nodo cabecera"
+hasta que encuentra un camino hacia el objetivo o no existen más nodos a expandir. Definamos
+un nodo en mapa 2D como una tupla de enteros (`Int`s). Definamos un `map` como un array de 
+booleanos de dos dimensiones el cual determina si un determinado slot está ocupado o no. Posteriormente,
+declaramos dos "concurrent tries maps" -- `open` contiene todos los nodos que deben ser expandidos 
+("nodos cabecera") mientras que `close` continene todos los nodos que ya han sido expandidos. Comenzamos
+la búsqueda desde las esquinas del mapa en busca de un camino hasta el centro del mismo -- 
+e inicializamos el mapa `open` con los nodos apropiados. Iterativamamente, y en paralelo, 
+expandimos todos los nodos presentes en el mapa `open` hasta que agotamos todos los elementos
+que necesitan ser expandidos. Cada vez que un nodo es expandido, se elimina del mapa `open` y se
+añade en el mapa `closed`. Una vez finalizado el proceso, se muestra el camino desde el nodo 
+destino hasta el nodo inicial.
 	
 	val length = 1000
 	
@@ -123,39 +121,41 @@ Once done, we output the path from the target to the initial node.
     println()
 
 
-The concurrent tries also support a linearizable, lock-free, constant
-time `snapshot` operation. This operation creates a new concurrent
-trie with all the elements at a specific point in time, thus in effect
-capturing the state of the trie at a specific point.
-The `snapshot` operation merely creates
-a new root for the concurrent trie. Subsequent updates lazily rebuild the part of
-the concurrent trie relevant to the update and leave the rest of the concurrent trie
-intact. First of all, this means that the snapshot operation by itself is not expensive
-since it does not copy the elements. Second, since the copy-on-write optimization copies
-only parts of the concurrent trie, subsequent modifications scale horizontally.
-The `readOnlySnapshot` method is slightly more efficient than the
-`snapshot` method, but returns a read-only map which cannot be
-modified. Concurrent tries also support a linearizable, constant-time
-`clear` operation based on the snapshot mechanism.
-To learn more about how concurrent tries and snapshots work, see \[[1][1]\] and \[[2][2]\].
+Los "tries" concurrentes también soportan una operación atómica, no bloqueante y de 
+tiempo constante conocida como `snapshot`. Esta operación genera un nuevo `trie`
+concurrente en el que se incluyen todos los elementos es un instante determinado de 
+tiempo, lo que en efecto captura el estado del "trie" en un punto específico. 
+Esta operación simplemente crea una nueva raíz para el "trie" concurrente. Posteriores 
+actualizaciones reconstruyen, de manera perezosa, la parte del "trie" concurrente que se
+ha visto afectada por la actualización, manteniendo intacto el resto de la estructura.
+En primer lugar, esto implica que la propia operación de `snapshot` no es costosa en si misma
+puesto que no necesita copiar los elementos. En segundo lugar, dado que la optimización
+"copy-and-write" solo copia determinadas partes del "trie" concurrente, las sucesivas
+actualizaciones escalan horizontalmente. El método  `readOnlySnapshot` es ligeramente
+más efeciente que el método `snapshot`, pero retorna un mapa en modo solo lectura que no
+puede ser modificado. Este tipo de estructura de datos soporta una operación atómica y en tiempo 
+constante llamada `clear` la cual está basada en el anterior mecanismo de `snapshot`.
 
-The iterators for concurrent tries are based on snapshots. Before the iterator
-object gets created, a snapshot of the concurrent trie is taken, so the iterator
-only traverses the elements in the trie at the time at which the snapshot was created.
-Naturally, the iterators use the read-only snapshot.
+Si desea conocer en más detalle cómo funcionan los "tries" concurrentes y el mecanismo de
+snapshot diríjase a \[[1][1]\] y \[[2][2]\].
 
-The `size` operation is also based on the snapshot. A straightforward implementation, the `size`
-call would just create an iterator (i.e. a snapshot) and traverse the elements to count them.
-Every call to `size` would thus require time linear in the number of elements. However, concurrent
-tries have been optimized to cache sizes of their different parts, thus reducing the complexity
-of the `size` method to amortized logarithmic time. In effect, this means that after calling
-`size` once, subsequent calls to `size` will require a minimum amount of work, typically recomputing
-the size only for those branches of the trie which have been modified since the last `size` call.
-Additionally, size computation for parallel concurrent tries is performed in parallel.
+Los iteradores para los "tries" concurrentes están basados en snapshots. Anteriormente a la creación
+del iterador se obtiene un snapshot del "trie" concurrente, de modo que el iterador solo recorrerá
+los elementos presentes en el "trie" en el momento de creación del snapshot. Naturalmente,
+estos iteradores utilizan un snapshot de solo lectura.
 
+La operación `size` también está basada en el mecanismo de snapshot. En una sencilla implementación,
+la llamada al método `size` simplemente crearía un iterador (i.e., un snapshot) y recorrería los
+elementos presentes en el mismo realizando la cuenta. Cada una de las llamadas a `size` requeriría
+tiempo lineal en relación al número de elementos. Sin embargo, los "tries" concurrentes han sido
+optimizados para cachear los tamaños de sus diferentes partes, reduciendo por tanto la complejidad
+del método a un tiempo logarítmico amortizado. En realidad, esto significa que tras la primera
+llamada al método `size`, las sucesivas llamadas requerirán un esfuerzo mínimo, típicamente recalcular
+el tamaño para aquellas ramas del "trie" que hayan sido modificadas desde la última llamada al método
+`size`. Adicionalmente, el cálculo del tamaño para los "tries" concurrentes y paralelos se lleva a cabo
+en paralelo.
 
-
-## References
+## Referencias
 
 1. [Cache-Aware Lock-Free Concurrent Hash Tries][1]
 2. [Concurrent Tries with Efficient Non-Blocking Snapshots][2]
