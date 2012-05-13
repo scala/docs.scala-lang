@@ -203,78 +203,65 @@ Flug." einmal pro Sekunde aus.
 Zu bemerken ist, dass um die Zeichenkette auszugeben, die in Scala vordefinierte Methode `println`
 statt der äquivalenten Methode in `System.out` verwendet wird.
 
-#### Anonymous functions
+#### Anonyme Funktionen
 
-While this program is easy to understand, it can be refined a bit.
-First of all, notice that the function `timeFlies` is only
-defined in order to be passed later to the `oncePerSecond`
-function. Having to name that function, which is only used once, might
-seem unnecessary, and it would in fact be nice to be able to construct
-this function just as it is passed to `oncePerSecond`. This is
-possible in Scala using *anonymous functions*, which are exactly
-that: functions without a name. The revised version of our timer
-program using an anonymous function instead of *timeFlies* looks
-like that:
+Während das obige Programm schon leicht zu verstehen ist, kann es noch modifiziert werden. Als
+erstes ist zu bemerken, dass die Funktion `timeFlies` nur definiert wurde, um der Funktion
+`oncePerSecond` als Parameter übergeben zu werden. Dieser nur einmal verwendeten Funktion einen
+Namen zu geben, scheint unnötig und es wäre angenehmer, sie direkt mit der Übergabe zu erstellen.
+Das ist in Scala mit *anonymen Funktionen* möglich, die genau das darstellen: eine Funktion ohne
+Namen. Die überarbeitete Version des obigen Timer-Programmes verwendet eine anonyme Funktion anstatt
+der Funktion `timeFlies`:
 
     object TimerAnonymous {
       def oncePerSecond(callback: () => Unit) {
         while (true) { callback(); Thread sleep 1000 }
       }
       def main(args: Array[String]) {
-        oncePerSecond(() =>
-          println("time flies like an arrow..."))
+        oncePerSecond(() => println("Die Zeit vergeht wie im Flug."))
       }
     }
 
-The presence of an anonymous function in this example is revealed by
-the right arrow `=>` which separates the function's argument
-list from its body. In this example, the argument list is empty, as
-witnessed by the empty pair of parenthesis on the left of the arrow.
-The body of the function is the same as the one of `timeFlies`
-above.
+Die anonyme Funktion erkennt man an dem Rechtspfeil `=>`, der die Parameter vom Körper der Funktion
+trennt. In diesem Beispiel ist die Liste der Parameter leer, wie man an den leeren Klammern erkennen
+kann. Der Körper der Funktion ist derselbe, wie bei der `timeFlies` Funktion des vorangegangenen
+Beispiels.
 
-## Classes
+## Klassen
 
-As we have seen above, Scala is an object-oriented language, and as
-such it has a concept of class. (For the sake of completeness,
-  it should be noted that some object-oriented languages do not have
-  the concept of class, but Scala is not one of them.)
-Classes in Scala are declared using a syntax which is close to
-Java's syntax. One important difference is that classes in Scala can
-have parameters. This is illustrated in the following definition of
-complex numbers.
+Wie oben zu sehen war, ist Scala eine Objekt-orientierte Sprache, und als solche enthält sie das
+Konzept von Klassen (der Vollständigkeit halber soll bemerkt sein, dass nicht alle
+Objekt-orientierte Sprachen das Konzept von Klassen unterstützen, aber Scala ist keine von denen).
+Klassen in Scala werden mit einer ähnlichen Syntax wie Java deklariert. Ein wichtiger Unterschied
+ist, dass Scala's Klassen Argumente haben. Dies wird mit der folgenden Definition von komplexen
+Zahlen veranschaulicht:
 
     class Complex(real: Double, imaginary: Double) {
       def re() = real
       def im() = imaginary
     }
 
-This complex class takes two arguments, which are the real and
-imaginary part of the complex. These arguments must be passed when
-creating an instance of class `Complex`, as follows: `new
-  Complex(1.5, 2.3)`. The class contains two methods, called `re`
-and `im`, which give access to these two parts.
+Diese Klasse akzeptiert zwei Argumente, den realen und den imaginären Teil der komplexen Zahl. Sie
+müssen beim kreieren einer Instanz der Klasse übergeben werden:
 
-It should be noted that the return type of these two methods is not
-given explicitly. It will be inferred automatically by the compiler,
-which looks at the right-hand side of these methods and deduces that
-both return a value of type `Double`.
+    val c = new Complex(1.5, 2.3)
 
-The compiler is not always able to infer types like it does here, and
-there is unfortunately no simple rule to know exactly when it will be,
-and when not. In practice, this is usually not a problem since the
-compiler complains when it is not able to infer a type which was not
-given explicitly. As a simple rule, beginner Scala programmers should
-try to omit type declarations which seem to be easy to deduce from the
-context, and see if the compiler agrees. After some time, the
-programmer should get a good feeling about when to omit types, and
-when to specify them explicitly.
+Weiterhin enthält die Klasse zwei Methoden, `re` und `im`, welche als Zugriffsfunktionen (Getter)
+dienen. Außerdem soll bemerkt sein, dass der Rückgabewert dieser Methoden nicht explizit deklariert
+ist. Der Compiler schlussfolgert automatisch, indem er ihn aus dem rechten Teil der Methoden
+ableitet, dass der Rückgabewert vom Typ `Double` ist.
 
-### Methods without arguments
+Der Compiler ist nicht immer fähig, auf den Rückgabewert zu schließen, und es gibt leider keine
+einfache Regel, um zu wissen, dies vorauszusagen. In der Praxis ist das üblicherweise kein Problem,
+da der Compiler sich beschwert, wenn es ihm nicht möglich ist. Als einfache Regel sollten
+Scala-Anfänger versuchen, Typ-Deklarationen, die leicht vom Kontext abzuleiten sind, wegzulassen, um
+zu sehen, ob der Compiler zustimmt. Nach einer gewissen Zeit, bekommt man ein Gefühl dafür, wann man
+auf diese Deklarationen verzichten kann und wann man sie explizit angeben sollte.
 
-A small problem of the methods `re` and `im` is that, in
-order to call them, one has to put an empty pair of parenthesis after
-their name, as the following example shows:
+### Methoden ohne Argumente
+
+Ein Problem der obigen Methoden `re` und `im` ist, dass man, um sie zu verwenden, ein Paar leerer
+Klammern hinter ihren Namen anhängen muss:
 
     object ComplexNumbers {
       def main(args: Array[String]) {
@@ -283,32 +270,26 @@ their name, as the following example shows:
       }
     }
 
-It would be nicer to be able to access the real and imaginary parts
-like if they were fields, without putting the empty pair of
-parenthesis. This is perfectly doable in Scala, simply by defining
-them as methods *without arguments*. Such methods differ from
-methods with zero arguments in that they don't have parenthesis after
-their name, neither in their definition nor in their use. Our
-`Complex` class can be rewritten as follows:
+Besser wäre jedoch, wenn man den realen und imaginären Teil so abrufen könnte, als wären sie Felder,
+also ohne das leere Klammerpaar. Mit Scala ist das möglich, indem Methoden *ohne Argumente*
+definiert werden. Solche Methoden haben keine Klammern nach ihrem Namen, weder bei ihrer Definition
+noch bei ihrer Verwendung. Die Klasse für komplexe Zahlen kann demnach folgendermaßen umgeschrieben
+werden:
 
     class Complex(real: Double, imaginary: Double) {
       def re = real
       def im = imaginary
     }
 
+### Vererbung und Überschreiben
 
-### Inheritance and overriding
+Alle Klassen in Scala erben von einer Oberklasse. Wird keine Oberklasse spezifiziert, wie bei der
+Klasse `Complex` des vorhergehenden Abschnittes, wird implizit `scala.AnyRef` verwendet.
 
-All classes in Scala inherit from a super-class. When no super-class
-is specified, as in the `Complex` example of previous section,
-`scala.AnyRef` is implicitly used.
-
-It is possible to override methods inherited from a super-class in
-Scala. It is however mandatory to explicitly specify that a method
-overrides another one using the `override` modifier, in order to
-avoid accidental overriding. As an example, our `Complex` class
-can be augmented with a redefinition of the `toString` method
-inherited from `Object`.
+Es ist möglich, von einer Oberklasse vererbte Methoden zu überschreiben. Dabei muss jedoch explizit
+das Schlüsselwort `override` angegeben werden, um versehentliche Überschreibungen zu vermeiden. Als
+Beispiel soll eine Erweiterung der Klasse `Complex` dienen, die die Methode `toString` neu
+definiert:
 
     class Complex(real: Double, imaginary: Double) {
       def re = real
@@ -317,94 +298,76 @@ inherited from `Object`.
         "" + re + (if (im < 0) "" else "+") + im + "i"
     }
 
+## Container-Klassen und Musterabgleich
 
-## Case Classes and Pattern Matching
+Eine Datenstruktur, die häufig in Programmen vorkommt ist der Baum, beispielsweise repräsentieren
+Interpreter und Compiler Programme intern häufig als Bäume, XML-Dokumente sind Bäume und einige
+Container basieren auf Bäumen, wie Rot-Schwarz-Bäume.
 
-A kind of data structure that often appears in programs is the tree.
-For example, interpreters and compilers usually represent programs
-internally as trees; XML documents are trees; and several kinds of
-containers are based on trees, like red-black trees.
+Als nächstes wird anhand eines kleinen Programmes für Berechnungen gezeigt, wie solche Bäume in
+Scala repräsentiert und manipuliert werden können. Das Ziel dieses Programmes ist, einfache
+arithmetische Ausdrücke zu manipulieren, die aus Summen, Ganzzahlen und Variablen bestehen.
+Beispiele solcher Ausdrücke sind: `1 + 2` und `(x+x) + (7+y)`.
 
-We will now examine how such trees are represented and manipulated in
-Scala through a small calculator program. The aim of this program is
-to manipulate very simple arithmetic expressions composed of sums,
-integer constants and variables. Two examples of such expressions are
-`1+2` and `(x+x)+(7+y)`.
+Dafür muss zuerst eine Repräsentation für die Ausdrücke gewählt werden. Die natürlichste ist ein
+Baum, dessen Knoten Operationen (Additionen) und dessen Blätter Werte (Konstanten und Variablen)
+darstellen.
 
-We first have to decide on a representation for such expressions. The
-most natural one is the tree, where nodes are operations (here, the
-addition) and leaves are values (here constants or variables).
-
-In Java, such a tree would be represented using an abstract
-super-class for the trees, and one concrete sub-class per node or
-leaf. In a functional programming language, one would use an algebraic
-data-type for the same purpose. Scala provides the concept of
-*case classes* which is somewhat in between the two. Here is how
-they can be used to define the type of the trees for our example:
+In Java würde man solche Bäume am ehesten mithilfe einer abstrakten Oberklasse für den Baum und
+konkreten Implementierungen für Knoten und Blätter repräsentieren. In einer funktionalen Sprache
+würde man algebraische Datentypen mit dem gleichen Ziel verwenden. Scala unterstützt das Konzept
+einer Container-Klasse (case class), die einen gewissen Mittelweg dazwischen darstellen. Der
+folgenden Quelltext veranschaulicht deren Anwendung:
 
     abstract class Tree
     case class Sum(l: Tree, r: Tree) extends Tree
     case class Var(n: String) extends Tree
     case class Const(v: Int) extends Tree
 
-The fact that classes `Sum`, `Var` and `Const` are
-declared as case classes means that they differ from standard classes
-in several respects:
+Die Tatsache, dass die Klassen `Sum`, `Var` und `Const` als Container-Klassen deklariert sind,
+bedeutet, dass sie sich in einigen Gesichtspunkten von normalen Klassen unterscheiden:
 
-- the `new` keyword is not mandatory to create instances of
-  these classes (i.e., one can write `Const(5)` instead of
-  `new Const(5)`),
-- getter functions are automatically defined for the constructor
-  parameters (i.e., it is possible to get the value of the `v`
-  constructor parameter of some instance `c` of class
-  `Const` just by writing `c.v`),
-- default definitions for methods `equals` and
-  `hashCode` are provided, which work on the *structure* of
-  the instances and not on their identity,
-- a default definition for method `toString` is provided, and
-  prints the value in a "source form" (e.g., the tree for expression
-  `x+1` prints as `Sum(Var(x),Const(1))`),
-- instances of these classes can be decomposed through
-  *pattern matching* as we will see below.
+- das Schlüsselwort `new` ist nicht mehr notwendig, um Instanzen dieser Klassen zu erzeugen (man
+  kann also `Const(5)` statt `new Const(5)` schreiben)
+- Zugriffsfunktionen werden automatisch anhand der Parameter des Konstruktors erstellt (man kann
+  den Wert `v` einer Instanz `c` der Klasse `Const` erhalten, indem man `c.v` schreibt)
+- der Compiler fügt Container-Klassen automatisch Implementierungen der Methoden `equals` und
+  `hashCode` hinzu, die auf der *Struktur* der Klassen basieren, nicht deren Identität
+- außerdem wird eine `toString` Methode bereitgestellt, die einen Wert in Form der Quelle darstellt
+  (der String-Wert des Baum-Ausdruckes `x+1` ist `Sum(Var(x),Const(1))`)
+- Instanzen dieser Klassen können mithilfe von Musterabgleich zerlegt werden, wie weiter unten zu
+  sehen ist
 
-Now that we have defined the data-type to represent our arithmetic
-expressions, we can start defining operations to manipulate them. We
-will start with a function to evaluate an expression in some
-*environment*. The aim of the environment is to give values to
-variables. For example, the expression `x+1` evaluated in an
-environment which associates the value `5` to variable `x`, written
-`{ x -> 5 }`, gives `6` as result.
+Da jetzt bekannt ist, wie die Datenstruktur der arithmetischen Ausdrücke repräsentiert wird, können
+jetzt Operationen definiert werden, um diese zu manipulieren. Der Beginn dessen soll eine Funktion
+darstellen, die Ausdrücke in einer bestimmten *Umgebung* auswertet. Das Ziel einer Umgebung ist es,
+Variablen Werte zuzuweisen. Beispielsweise wird der Ausdruck `x+1` in der Umgebung, die der Variable
+`x` den Wert `5` zuweist, geschrieben als `{ x -> 5 }`, mit dem Resultat `6` ausgewertet.
 
-We therefore have to find a way to represent environments. We could of
-course use some associative data-structure like a hash table, but we
-can also directly use functions! An environment is really nothing more
-than a function which associates a value to a (variable) name. The
-environment `{ x -> 5 }` given above can simply be written as
-follows in Scala:
+Demnach muss ein Weg gefunden werden, solche Umgebungen auszudrücken. Dabei könnte man sich für eine
+assoziative Datenstruktur entscheiden, wie eine Hash-Tabelle, man könnte jedoch auch direkt eine
+Funktion verwenden. Eine Umgebung ist nicht mehr als eine Funktion, die Werte mit Variablen
+assoziiert. Die obige Umgebung `{ x -> 5 }` wird in Scala folgendermaßen notiert:
 
     { case "x" => 5 }
 
-This notation defines a function which, when given the string
-`"x"` as argument, returns the integer `5`, and fails with an
-exception otherwise.
+Diese Schreibweise definiert eine Funktion, welche bei dem String `"x"` als Argument die Ganzzahl
+`5` zurückgibt, und in anderen Fällen mit einer Ausnahme fehlschlägt.
 
-Before writing the evaluation function, let us give a name to the type
-of the environments. We could of course always use the type
-`String => Int` for environments, but it simplifies the program
-if we introduce a name for this type, and makes future changes easier.
-This is accomplished in Scala with the following notation:
+Vor dem Schreiben der Funktionen zum Auswerten ist es sinnvoll, für die Umgebungen einen eigenen Typ
+zu definieren. Man könnte zwar immer `String => Int` verwenden, es wäre jedoch besser einen
+dedizierten Namen dafür zu verwenden, der das Programmieren damit einfacher macht. Dies wird in
+Scala mit der folgenden Schreibweise erreicht:
 
     type Environment = String => Int
 
-From then on, the type `Environment` can be used as an alias of
-the type of functions from `String` to `Int`.
+Von hier an wird `Environment` als Alias für den Typ von Funktionen von `String` nach `Int`
+verwendet.
 
-We can now give the definition of the evaluation function.
-Conceptually, it is very simple: the value of a sum of two expressions
-is simply the sum of the value of these expressions; the value of a
-variable is obtained directly from the environment; and the value of a
-constant is the constant itself. Expressing this in Scala is not more
-difficult:
+Nun ist alles für die Definition der Funktion zur Auswertung vorbereitet. Konzeptionell ist die
+Definition sehr einfach: der Wert der Summe zweier Ausdrücke ist die Summe der Werte der
+einzelnen Ausdrücke, der Wert einer Variable wird direkt der Umgebung entnommen und der Wert einer
+Konstante ist die Konstante selbst. Dies in Scala auszudrücken ist nicht viel komplizierter:
 
     def eval(t: Tree, env: Environment): Int = t match {
       case Sum(l, r) => eval(l, env) + eval(r, env)
@@ -412,64 +375,52 @@ difficult:
       case Const(v)  => v
     }
 
-This evaluation function works by performing *pattern matching*
-on the tree `t`. Intuitively, the meaning of the above definition
-should be clear:
+Diese Funktion zum Auswerten von arithmetischen Ausdrücken nutzt *Musterabgleich* (pattern
+matching) anhand des Baumes `t`. Intuitiv sollte die Bedeutung der einzelnen Fälle klar sein:
 
-1. it first checks if the tree `t` is a `Sum`, and if it
-   is, it binds the left sub-tree to a new variable called `l` and
-   the right sub-tree to a variable called `r`, and then proceeds
-   with the evaluation of the expression following the arrow; this
-   expression can (and does) make use of the variables bound by the
-   pattern appearing on the left of the arrow, i.e., `l` and
-   `r`,
-2. if the first check does not succeed, that is, if the tree is not
-   a `Sum`, it goes on and checks if `t` is a `Var`; if
-   it is, it binds the name contained in the `Var` node to a
-   variable `n` and proceeds with the right-hand expression,
-3. if the second check also fails, that is if `t` is neither a
-   `Sum` nor a `Var`, it checks if it is a `Const`, and
-   if it is, it binds the value contained in the `Const` node to a
-   variable `v` and proceeds with the right-hand side,
-4. finally, if all checks fail, an exception is raised to signal
-   the failure of the pattern matching expression; this could happen
-   here only if more sub-classes of `Tree` were declared.
+1.  Als erstes wird überprüft, ob `t` eine Instanz der Klasse `Sum` ist. Falls dem so ist, wird der
+linke Teilbaum der Variablen `l` und der rechte Teilbaum der Variablen `r` zugewiesen. Daraufhin
+wird der Ausdruck auf der rechten Seite des Pfeiles ausgewertet, der die auf der linken Seite
+gebundenen Variablen `l` und `r` verwendet.
 
-We see that the basic idea of pattern matching is to attempt to match
-a value to a series of patterns, and as soon as a pattern matches,
-extract and name various parts of the value, to finally evaluate some
-code which typically makes use of these named parts.
+2.  Sollte die erste Überprüfung fehlschlagen, also `t` ist keine `Sum`, wird der nächste Fall
+abgehandelt und überprüft, ob `t` eine `Var` ist. Ist dies der Fall, wird analog zum ersten Fall der
+Wert an `n` gebunden und der Ausdruck rechts vom Pfeil ausgewertet.
 
-A seasoned object-oriented programmer might wonder why we did not
-define `eval` as a *method* of class `Tree` and its
-subclasses. We could have done it actually, since Scala allows method
-definitions in case classes just like in normal classes. Deciding
-whether to use pattern matching or methods is therefore a matter of
-taste, but it also has important implications on extensibility:
+3.  Schlägt auch die zweite Überprüfung fehl, also `t` ist weder `Sum` noch `Val`, wird überprüft,
+ob es eine Instanz des Typs `Const` ist. Analog wird bei einem Erfolg wie bei den beiden
+vorangegangenen Fällen verfahren.
 
-- when using methods, it is easy to add a new kind of node as this
-  can be done just by defining a sub-class of `Tree` for it; on
-  the other hand, adding a new operation to manipulate the tree is
-  tedious, as it requires modifications to all sub-classes of
-  `Tree`,
-- when using pattern matching, the situation is reversed: adding a
-  new kind of node requires the modification of all functions which do
-  pattern matching on the tree, to take the new node into account; on
-  the other hand, adding a new operation is easy, by just defining it
-  as an independent function.
+4.  Schließlich, sollten alle Überprüfungen fehlschlagen, wird eine Ausnahme ausgelöst, die
+signalisiert, dass die Musterabgleich nicht erfolgreich war. Dies wird unweigerlich geschehen,
+sollten neue Baum-Unterklassen erstellt werden.
 
-To explore pattern matching further, let us define another operation
-on arithmetic expressions: symbolic derivation. The reader might
-remember the following rules regarding this operation:
+Die prinzipielle Idee eines Musterabgleich ist, einen Wert anhand einer Reihe von Mustern
+abzugleichen und, sobald ein Treffer erzielt wird, Werte zu extrahieren, mit denen darauf
+weitergearbeitet werden kann.
 
-1. the derivative of a sum is the sum of the derivatives,
-2. the derivative of some variable `v` is one if `v` is the
-   variable relative to which the derivation takes place, and zero
-   otherwise,
-3. the derivative of a constant is zero.
+Erfahrene Objekt-orientierte Programmierer werden sich fragen, warum `eval` nicht als Methode der
+Klasse `Tree` oder dessen Unterklassen definiert wurde. Dies wäre möglich, da Container-Klassen
+Methoden definieren können wie normale Klassen auch. Die Entscheidung, einen Musterabgleich oder
+Methoden zu verwenden, ist Geschmackssache, hat jedoch wichtige Auswirkungen auf die
+Erweiterbarkeit:
 
-These rules can be translated almost literally into Scala code, to
-obtain the following definition:
+-   einerseits ist es mit Methoden einfach, neue Arten von Knoten als Unterklassen von `Tree`
+    hinzuzufügen, andererseits ist die Ergänzung einer neuen Operation zur Manipulation des Baumes
+    mühsam, da sie die Modifikation aller Unterklassen von `Tree` notwendig macht
+
+-   nutzt man einen Musterabgleich kehrt sich die Situation um: eine neue Art von Knoten erfordert
+    die Modifikation aller Funktionen die einen Musterabgleich am Baum vollführen, wogegen eine neue
+    Operation leicht hinzuzufügen ist, indem einfach eine unabhängige Funktion dafür definiert wird
+
+Einen weiteren Einblick in Musterabgleiche verschafft eine weitere Operation mit arithmetischen
+Ausdrücken: partielle Ableitungen. Dafür gelten zur Zeit folgende Regeln:
+
+1.  die Ableitung einer Summe ist die Summe der Ableitungen
+2.  die Ableitung einer Variablen ist eins, wenn sie die abzuleitende Variable ist, ansonsten null
+3.  die Ableitung einer Konstanten ist null
+
+Diese Regeln können fast wörtlich in Scala übersetzt werden:
 
     def derive(t: Tree, v: String): Tree = t match {
       case Sum(l, r) => Sum(derive(l, v), derive(r, v))
@@ -477,72 +428,64 @@ obtain the following definition:
       case _ => Const(0)
     }
 
-This function introduces two new concepts related to pattern matching.
-First of all, the `case` expression for variables has a
-*guard*, an expression following the `if` keyword. This
-guard prevents pattern matching from succeeding unless its expression
-is true. Here it is used to make sure that we return the constant `1`
-only if the name of the variable being derived is the same as the
-derivation variable `v`. The second new feature of pattern
-matching used here is the *wildcard*, written `_`, which is
-a pattern matching any value, without giving it a name.
+Diese Funktion führt zwei neue, mit dem Musterabgleich zusammenhängende Konzepte ein. Der zweite,
+sich auf eine Variable beziehende Fall hat eine *Sperre* (guard), einen Ausdruck, der dem
+Schlüsselwort `if` folgt. Diese Sperre verhindert eine Übereinstimmung, wenn der Ausdruck falsch
+ist. In diesem Fall wird sie genutzt, die Konstante `1` nur zurückzugeben, wenn die Variable die
+abzuleitende ist. Die zweite Neuerung ist der *Platzhalter* `_`, der mit allem übereinstimmt, ohne
+einen Namen dafür zu verwenden.
 
-We did not explore the whole power of pattern matching yet, but we
-will stop here in order to keep this document short. We still want to
-see how the two functions above perform on a real example. For that
-purpose, let's write a simple `main` function which performs
-several operations on the expression `(x+x)+(7+y)`: it first computes
-its value in the environment `{ x -> 5, y -> 7 }`, then
-computes its derivative relative to `x` and then `y`.
+Die volle Funktionalität von Musterabgleichen wurde mit diesen Beispielen nicht demonstriert,
+doch soll dies fürs Erste genügen. Eine Vorführung der beiden Funktionen an realen Beispielen steht
+immer noch aus. Zu diesem Zweck soll eine `main` Methode dienen, die den Ausdruck `(x+x)+(7+y)` als
+Beispiel verwendet: zuerst wird der Wert in der Umgebung `{ x -> 5, y -> 7 }` und darauf die
+beiden partiellen Ableitungen.
 
     def main(args: Array[String]) {
       val exp: Tree = Sum(Sum(Var("x"),Var("x")),Sum(Const(7),Var("y")))
-      val env: Environment = { case "x" => 5 case "y" => 7 }
-      println("Expression: " + exp)
-      println("Evaluation with x=5, y=7: " + eval(exp, env))
-      println("Derivative relative to x:\n " + derive(exp, "x"))
-      println("Derivative relative to y:\n " + derive(exp, "y"))
+      val env: Environment = {
+        case "x" => 5
+        case "y" => 7
+      }
+      println("Ausdruck: " + exp)
+      println("Auswertung mit x=5, y=7: " + eval(exp, env))
+      println("Ableitung von x:\n " + derive(exp, "x"))
+      println("Ableitung von y:\n " + derive(exp, "y"))
     }
 
-Executing this program, we get the expected output:
+Führt man das Programm aus, erhält man folgende Ausgabe:
 
-    Expression: Sum(Sum(Var(x),Var(x)),Sum(Const(7),Var(y)))
-    Evaluation with x=5, y=7: 24
-    Derivative relative to x:
+    Ausdruck: Sum(Sum(Var(x),Var(x)),Sum(Const(7),Var(y)))
+    Auswertung mit x=5, y=7: 24
+    Ableitung von x:
      Sum(Sum(Const(1),Const(1)),Sum(Const(0),Const(0)))
-    Derivative relative to y:
+    Ableitung von y:
      Sum(Sum(Const(0),Const(0)),Sum(Const(0),Const(1)))
 
-By examining the output, we see that the result of the derivative
-should be simplified before being presented to the user. Defining a
-basic simplification function using pattern matching is an interesting
-(but surprisingly tricky) problem, left as an exercise for the reader.
+Beim Anblick dieser Ausgabe ist offensichtlich, dass man die Ergebnisse der Ableitungen noch
+vereinfachen sollte. Eine solche Funktion zum Vereinfachen von Ausdrücken, die Musterabgleiche nutzt
+ist ein interessantes, aber gar nicht so einfaches Problem, was als Übung implementiert werden kann.
 
 ## Traits
 
-Apart from inheriting code from a super-class, a Scala class can also
-import code from one or several *traits*.
+Neben dem Vererben von Oberklassen ist es in Scala auch möglich von mehreren, sogenannten *Traits*
+zu erben. Der beste Weg für einen Java-Programmierer einen Trait zu verstehen, ist sich eine
+Schnittstelle vorzustellen, die Implementierungen enthält. Wenn in Scala eine Klasse von einem Trait
+erbt, implementiert sie dessen Schnittstelle und erbt dessen Implementierungen.
 
-Maybe the easiest way for a Java programmer to understand what traits
-are is to view them as interfaces which can also contain code. In
-Scala, when a class inherits from a trait, it implements that trait's
-interface, and inherits all the code contained in the trait.
-
-To see the usefulness of traits, let's look at a classical example:
-ordered objects. It is often useful to be able to compare objects of a
-given class among themselves, for example to sort them. In Java,
-objects which are comparable implement the `Comparable`
-interface. In Scala, we can do a bit better than in Java by defining
-our equivalent of `Comparable` as a trait, which we will call
+Um die Nützlichkeit von Traits zu demonstrieren, werden wir ein klassisches Beispiel implementieren:
+Objekte mit einer natürlichen Ordnung oder Rangfolge. Es ist häufig hilfreich, Instanzen einer
+Klasse untereinander vergleichen zu können, um sie beispielsweise sortieren zu können. In Java
+müssen solche Objekte die Schnittstelle `Comparable` implementieren. In Scala kann dies mit einer
+äquivalenten, aber besseren Variante von `Comparable` als Trait bewerkstelligt werden, genannt
 `Ord`.
 
-When comparing objects, six different predicates can be useful:
-smaller, smaller or equal, equal, not equal, greater or equal, and
-greater. However, defining all of them is fastidious, especially since
-four out of these six can be expressed using the remaining two. That
-is, given the equal and smaller predicates (for example), one can
-express the other ones. In Scala, all these observations can be
-nicely captured by the following trait declaration:
+Wenn Objekte verglichen werden, sind sechs verschiedene Aussagen sinnvoll: kleiner, kleiner gleich,
+gleich, ungleich, größer, und größer gleich. Allerdings ist es umständlich, immer alle sechs
+Methoden dafür zu implementieren, vor allem in Anbetracht der Tatsache, dass vier dieser sechs durch
+die verbliebenen zwei ausgedrückt werden können. Sind beispielsweise die Aussagen für gleich und
+kleiner gegeben, kann man die anderen damit ausdrücken. In Scala können diese Beobachtungen mit
+dem folgenden Trait zusammengefasst werden:
 
     trait Ord {
       def < (that: Any): Boolean
@@ -551,106 +494,91 @@ nicely captured by the following trait declaration:
       def >=(that: Any): Boolean = !(this < that)
     }
 
-This definition both creates a new type called `Ord`, which
-plays the same role as Java's `Comparable` interface, and
-default implementations of three predicates in terms of a fourth,
-abstract one. The predicates for equality and inequality do not appear
-here since they are by default present in all objects.
+Diese Definition erzeugt sowohl einen neuen Typ namens `Ord`, welcher dieselbe Rolle wie Javas
+Schnittstelle `Comparable` darstellt, und drei vorgegebenen Funktionen, die auf einer vierten,
+abstrakten basieren. Die Funktionen für Gleichheit und Ungleichheit erscheinen hier nicht, da sie
+bereits in allen Objekten von Scala vorhanden sind.
 
-The type `Any` which is used above is the type which is a
-super-type of all other types in Scala. It can be seen as a more
-general version of Java's `Object` type, since it is also a
-super-type of basic types like `Int`, `Float`, etc.
+Der Typ `Any`, welcher oben verwendet wurde, stellt den Ober-Typ aller Typen in Scala dar. Er kann
+als noch allgemeinere Version von Javas `Object` angesehen werden, da er außerdem Ober-Typ der
+Basis-Typen wie `Int` und `Float` ist.
 
-To make objects of a class comparable, it is therefore sufficient to
-define the predicates which test equality and inferiority, and mix in
-the `Ord` class above. As an example, let's define a
-`Date` class representing dates in the Gregorian calendar. Such
-dates are composed of a day, a month and a year, which we will all
-represent as integers. We therefore start the definition of the
-`Date` class as follows:
+Um Objekte einer Klasse vergleichen zu können, ist es also hinreichend, Gleichheit und die
+kleiner-gleich-Beziehung zu implementieren, und dieses Verhalten gewissermaßen mit der eigentlichen
+Klasse zu vermengen (mix in). Als Beispiel soll eine Klasse für Datumsangaben dienen, die Daten
+eines gregorianischen Kalenders repräsentiert. Solche Daten bestehen aus Tag, Monat und Jahr, welche
+durch Ganzzahlen dargestellt werden:
 
     class Date(y: Int, m: Int, d: Int) extends Ord {
-      def year = y
+      def year  = y
       def month = m
-      def day = d
-      override def toString(): String = year + "-" + month + "-" + day
+      def day   = d
+      override def toString = year + "-" + month + "-" + day
 
-The important part here is the `extends Ord` declaration which
-follows the class name and parameters. It declares that the
-`Date` class inherits from the `Ord` trait.
+Der wichtige Teil dieser Definition ist die `extends Ord` Deklaration, welche dem Namen der Klasse
+und den Parametern folgt. Er sagt aus, dass `Date` vom Trait `Ord` erbt.
 
-Then, we redefine the `equals` method, inherited from
-`Object`, so that it correctly compares dates by comparing their
-individual fields. The default implementation of `equals` is not
-usable, because as in Java it compares objects physically. We arrive
-at the following definition:
+Nun folgt eine Re-Implementierung der Methode `equals`, die von `Object` geerbt wird, so dass die
+Daten korrekt nach ihren Feldern verglichen werden. Die vorgegebene Implementierung von `equals` ist
+dafür nicht nützlich, da in Java Objekte physisch, also nach deren Adresse im Speicher verglichen
+werden. Daher verwenden wir folgende Definition:
 
-    override def equals(that: Any): Boolean =
-      that.isInstanceOf[Date] && {
+      override def equals(that: Any): Boolean =
+        that.isInstanceOf[Date] && {
+          val o = that.asInstanceOf[Date]
+          o.day == day && o.month == month && o.year == year
+        }
+
+Diese Methode verwendet die vordefinierte Methoden `isInstanceOf` und `asInstanceOf`. Erstere
+entspricht Javas `instanceof`-Operator und gibt `true` zurück, genau wenn das zu testende Objekt
+eine Instanz des angegebenen Typs ist. Letztere entspricht Javas Operator für Typ-Umwandlungen (cast
+operator): ist das Objekt eine Instanz des angegebenen Typs, kann es als solcher angesehen und
+gehandhabt werden, ansonsten wird eine `ClassCastException` ausgelöst.
+
+Schließlich kann die letzte Methode definiert werden, die für `Ord` notwendig ist und die
+kleiner-als-Beziehung implementiert. Diese nutzt eine andere, vordefinierte Methode, namens `error`,
+des Paketes `sys`, welche eine `RuntimeException` mit der angegebenen Nachricht auslöst.
+
+      def <(that: Any): Boolean = {
+        if (!that.isInstanceOf[Date])
+          sys.error("cannot compare " + that + " and a Date")
+
         val o = that.asInstanceOf[Date]
-        o.day == day && o.month == month && o.year == year
+        (year < o.year) ||
+        (year == o.year && (month < o.month ||
+                           (month == o.month && day < o.day)))
       }
-
-This method makes use of the predefined methods `isInstanceOf`
-and `asInstanceOf`. The first one, `isInstanceOf`,
-corresponds to Java's `instanceof` operator, and returns true
-if and only if the object on which it is applied is an instance of the
-given type. The second one, `asInstanceOf`, corresponds to
-Java's cast operator: if the object is an instance of the given type,
-it is viewed as such, otherwise a `ClassCastException` is
-thrown.
-
-Finally, the last method to define is the predicate which tests for
-inferiority, as follows. It makes use of another predefined method,
-`error`, which throws an exception with the given error message.
-
-    def <(that: Any): Boolean = {
-      if (!that.isInstanceOf[Date])
-        error("cannot compare " + that + " and a Date")
-
-      val o = that.asInstanceOf[Date]
-      (year < o.year) ||
-      (year == o.year && (month < o.month ||
-                         (month == o.month && day < o.day)))
     }
 
-This completes the definition of the `Date` class. Instances of
-this class can be seen either as dates or as comparable objects.
-Moreover, they all define the six comparison predicates mentioned
-above: `equals` and `<` because they appear directly in
-the definition of the `Date` class, and the others because they
-are inherited from the `Ord` trait.
+Diese Methode vervollständigt die Definition der `Date`-Klasse. Instanzen dieser Klasse stellen
+sowohl Daten als auch vergleichbare Objekte dar. Vielmehr implementiert diese Klasse alle sechs
+Methoden, die für das Vergleichen von Objekten notwendig sind: `equals` und `<`, die direkt in der
+Definition von `Date` vorkommen, sowie die anderen, in dem Trait `Ord` definierten Methoden.
 
-Traits are useful in other situations than the one shown here, of
-course, but discussing their applications in length is outside the
-scope of this document.
+Traits sind nützlich in Situationen wie der obigen, deren vollen Funktionsumfang hier zu zeigen,
+würde allerdings den Rahmen dieses Dokumentes sprengen.
 
-## Genericity
+## Generische Programmierung
 
-The last characteristic of Scala we will explore in this tutorial is
-genericity. Java programmers should be well aware of the problems
-posed by the lack of genericity in their language, a shortcoming which
-is addressed in Java 1.5.
+Eine weitere Charakteristik Scalas, die in dieser Anleitung vorgestellt wird, behandelt das Konzept
+der generischen Programmierung. Java-Programmierer, die die Sprache noch vor der Version 1.5 kennen,
+sollten mit den Problemen vertraut sein, die auftreten, wenn generische Programmierung nicht
+unterstützt wird.
 
-Genericity is the ability to write code parametrized by types. For
-example, a programmer writing a library for linked lists faces the
-problem of deciding which type to give to the elements of the list.
-Since this list is meant to be used in many different contexts, it is
-not possible to decide that the type of the elements has to be, say,
-`Int`. This would be completely arbitrary and overly
-restrictive.
+Generische Programmierung bedeutet, Quellcode nach Typen zu parametrisieren. Beispielsweise stellt
+sich die Frage für einen Programmierer bei der Implementierung einer Bibliothek für verkettete
+Listen, welcher Typ für die Elemente verwendet werden soll. Da diese Liste in verschiedenen
+Zusammenhängen verwendet werden soll, ist es nicht möglich, einen spezifischen Typ, wie `Int`, zu
+verwenden. Diese willkürliche Wahl wäre sehr einschränkend.
 
-Java programmers resort to using `Object`, which is the
-super-type of all objects. This solution is however far from being
-ideal, since it doesn't work for basic types (`int`,
-`long`, `float`, etc.) and it implies that a lot of
-dynamic type casts have to be inserted by the programmer.
+Aufgrund dieser Probleme griff man in Java vor der Einführung der generischen Programmierung zu dem
+Mittel, `Object`, den Ober-Typ aller Typen, als Element-Typ zu verwenden. Diese Lösung ist
+allerdings auch weit entfernt von Eleganz, da sie sowohl ungeeignet für die Basis-Typen, wie `int`
+oder `float`, ist als auch viele Typ-Umwandlungen für den nutzenden Programmierer bedeutet.
 
-Scala makes it possible to define generic classes (and methods) to
-solve this problem. Let us examine this with an example of the
-simplest container class possible: a reference, which can either be
-empty or point to an object of some type.
+Scala ermöglicht es, generische Klassen und Methoden zu definieren, um diesen Problemen aus dem Weg
+zu gehen. Für die Demonstration soll ein einfacher, generischer Container als Referenz-Typ dienen,
+der leer sein kann, oder auf ein Objekt des generischen Typs zeigt:
 
     class Reference[T] {
       private var contents: T = _
@@ -658,22 +586,17 @@ empty or point to an object of some type.
       def get: T = contents
     }
 
-The class `Reference` is parametrized by a type, called `T`,
-which is the type of its element. This type is used in the body of the
-class as the type of the `contents` variable, the argument of
-the `set` method, and the return type of the `get` method.
+Die Klasse `Reference` ist anhand des Types `T` parametrisiert, der den Element-Typ repräsentiert.
+Dieser Typ wird im Körper der Klasse genutzt, wie bei dem Feld `contents`. Dessen Argument wird
+durch die Methode `get` abgefragt und mit der Methode `set` verändert.
 
-The above code sample introduces variables in Scala, which should not
-require further explanations. It is however interesting to see that
-the initial value given to that variable is `_`, which represents
-a default value. This default value is 0 for numeric types,
-`false` for the `Boolean` type, `()` for the `Unit`
-type and `null` for all object types.
+Der obige Quellcode führt Variablen in Scala ein, welche keiner weiteren Erklärung erfordern
+sollten. Schon interessanter ist der initiale Wert dieser Variablen, der mit `_` gekennzeichnet
+wurde. Dieser Standardwert ist für numerische Typen `0`, `false` für Wahrheitswerte, `()` für den
+Typ `Unit` und `null` für alle anderen Typen.
 
-To use this `Reference` class, one needs to specify which type to use
-for the type parameter `T`, that is the type of the element
-contained by the cell. For example, to create and use a cell holding
-an integer, one could write the following:
+Um diese Referenz-Klasse zu verwenden, muss der generische Typ bei der Erzeugung einer Instanz
+angegeben werden. Für einen Ganzzahl-Container soll folgendes Beispiel dienen:
 
     object IntegerReference {
       def main(args: Array[String]) {
@@ -683,15 +606,15 @@ an integer, one could write the following:
       }
     }
 
-As can be seen in that example, it is not necessary to cast the value
-returned by the `get` method before using it as an integer. It
-is also not possible to store anything but an integer in that
-particular cell, since it was declared as holding an integer.
+Wie in dem Beispiel zu sehen ist, muss der Wert, der von der Methode `get` zurückgegeben wird, nicht
+umgewandelt werden, wenn er als Ganzzahl verwendet werden soll. Es wäre außerdem nicht möglich, ein
+Wert, der keine Ganzzahl ist, in einem solchen Container zu speichern, da er speziell und
+ausschließlich für Ganzzahlen erzeugt worden ist.
 
-## Conclusion
+## Zusammenfassung
 
-This document gave a quick overview of the Scala language and
-presented some basic examples. The interested reader can go on, for example, by
-reading the document *Scala By Example*, which
-contains much more advanced examples, and consult the *Scala
-  Language Specification* when needed.
+Dieses Dokument hat einen kurzen Überblick über die Sprache Scala gegeben und dazu einige einfache
+Beispiele verwendet. Interessierte Leser können beispielsweise mit dem Dokument *Scala by Example*
+fortfahren, welches fortgeschrittenere Beispiele enthält, und die *Scala Language Specification*
+konsultieren, sofern nötig.
+
