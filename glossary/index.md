@@ -165,7 +165,7 @@ _Invariant_ is used in two ways. It can mean a property that always holds true w
 You can _invoke_ a method, function, or closure _on_ arguments, meaning its body will be executed with the specified arguments.
 
 * #### JVM
-The _JVM_ is the Java Virtual Machine, or [runtime}(#runtime), that hosts a running Scala program.
+The _JVM_ is the Java Virtual Machine, or [runtime](#runtime), that hosts a running Scala program.
 
 * #### literal
 `1`, "`One`", and `(x: Int) => x + 1` are examples of _literals_. A literal is a shorthand way to describe an object, where the shorthand exactly mirrors the structure of the created object.
