@@ -61,5 +61,5 @@ Scala adds direct support for this:
     // named arguments
     val m4 = new HashMap[String,Int](loadFactor = 0.8)
 
-Note how we can take advantage of *any* default value by using [named parameters]({{ site.baseurl }}/tutorials/tour/named_parameters.html).
+Note how we can take advantage of *any* default value by using [named parameters]({{ site.baseurl }}/tutorials/tour/named-parameters.html).
 
