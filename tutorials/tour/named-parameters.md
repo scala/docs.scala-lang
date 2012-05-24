@@ -22,7 +22,7 @@ When calling methods and functions, you can use the name of the variables explic
       // Prints "John Smith"
 
 Note that once you are using parameter names in your calls, the order doesn't matter, so long as all parameters are named.  This
-feature works well with [default parameter values]({{ site.baseurl }}/tutorials/tour/default_parameter_values.html):
+feature works well with [default parameter values]({{ site.baseurl }}/tutorials/tour/default-parameter-values.html):
 
       def printName(first:String = "John", last:String = "Smith") = {
         println(first + " " + last)
