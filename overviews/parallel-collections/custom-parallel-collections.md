@@ -205,13 +205,13 @@ ropes and various heaps are particularly suitable for such an approach.
 parallel hash tables, it assumes the elements can be efficiently
 partially sorted into concatenable buckets from which the final
 data-structure can be constructed in parallel. In the first phase
-different procesors populate these buckets independently and
+different processors populate these buckets independently and
 concatenate the buckets together. In the second phase, the data
 structure is allocated and different processors populate different
-parts of the datastructure in parallel using elements from disjoint
+parts of the data structure in parallel using elements from disjoint
 buckets.
 Care must be taken that different processors never modify the same
-part of the datastructure, otherwise subtle concurrency errors may occur.
+part of the data structure, otherwise subtle concurrency errors may occur.
 This approach is easily applicable to random access sequences, as we
 have shown in the previous section.
 

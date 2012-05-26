@@ -13,7 +13,7 @@ num: 1
 ## Motivation
 
 Amidst the shift in recent years by processor manufacturers from single to
-multi-core architectures, academia and industry alike have conceeded that
+multi-core architectures, academia and industry alike have conceded that
 _Popular Parallel Programming_ remains a formidable challenge.
 
 Parallel collections were included in the Scala standard library in an effort
@@ -145,7 +145,7 @@ incurred by any other collection types, like `Array`, `Vector`, `HashMap`, etc.
 For more information on conversions on parallel collections, see the
 [conversions]({{ site.baseurl }}/overviews/parallel-collections/converesions.html) 
 and [concrete parallel collection classes]({{ site.baseurl }}/overviews/parallel-collections/concrete-parallel-collections.html) 
-sections of thise guide.
+sections of this guide.
 
 ## Semantics
 
@@ -247,7 +247,7 @@ threads which, in effect, independently perform `reduce(_-_)` on different
 sections of the collection, the result of two runs of `reduce(_-_)` on the
 same collection will not be the same.
 
-_Note:_ Often, it is thought that, like non-associative operations,  non-commutative  
+_Note:_ Often, it is thought that, like non-associative operations,  non-commutative 
 operations passed to a higher-order function on a parallel
 collection likewise result in non-deterministic behavior. This is not the
 case, a simple example is string concatenation-- an associative, but non-

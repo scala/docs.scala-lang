@@ -61,7 +61,7 @@ update time.
 
 Immutable vectors are represented by 32-way trees, so 
 [splitter]({{ site.baseurl }}/overviews/parallel-collections/architecture.html#core_abstractions)s 
-are split byassigning subtrees to each splitter. 
+are split by assigning subtrees to each splitter. 
 [Combiners]({{ site.baseurl }}/overviews/parallel-collections/architecture.html#core_abstractions) 
 currently keep a vector of
 elements and are combined by lazily copying the elements. For this reason,
