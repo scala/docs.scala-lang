@@ -97,7 +97,7 @@ mutator and accessor methods (respectively). Instead, the following
 conventions are used:
 
 -   For accessors of properties, the name of the method should be the
-    name of the property
+    name of the property.
 -   In some instances, it is acceptable to prepend "\`is\`" on a boolean
     accessor (e.g. `isEmpty`). This should only be the case when no
     corresponding mutator is provided. Please note that the
@@ -111,21 +111,21 @@ conventions are used:
     mirrors assignment. Note that this is not just a convention but a
     requirement of the language.
 
-    class Foo {
-    
-      def bar = ...
-    
-      def bar_=(bar: Bar) {
-        ...
-      }
+        class Foo {
+        
+          def bar = ...
+        
+          def bar_=(bar: Bar) {
+            ...
+          }
+        
+          def isBaz = ...
+        }
 
-      def isBaz = ...
-    }
-
-    val foo = new Foo
-    foo.bar             // accessor
-    foo.bar = bar2      // mutator
-    foo.isBaz           // boolean property
+        val foo = new Foo
+        foo.bar             // accessor
+        foo.bar = bar2      // mutator
+        foo.isBaz           // boolean property
 
 
 Quite unfortunately, these conventions fall afoul of the Java convention
@@ -173,8 +173,7 @@ use an immutable reference to a property class that contains its own
 getter and setter. For example:
 
     class Company {
-      val string : Property[String] = 
-            Property("Initial Value")
+      val string: Property[String] = Property("Initial Value")
 
 ### Parentheses
 
@@ -273,23 +272,23 @@ should be used, following the class naming conventions (as opposed to an
 all-uppercase style):
 
     // Right
-    class Map[Key,Value] {
-      def get(key:Key): Value
-      def put(key:Key,value:Value): Unit
+    class Map[Key, Value] {
+      def get(key: Key): Value
+      def put(key: Key, value: Value): Unit
     }
 
     // Wrong; don't use all-caps
-    class Map[KEY,VALUE] {
-      def get(key:KEY): VALUE
-      def put(key:KEY,value:VALUE): Unit
+    class Map[KEY, VALUE] {
+      def get(key: KEY): VALUE
+      def put(key: KEY, value: VALUE): Unit
     }
 
 If the scope of the type parameter is small enough, a mnemonic can be
 used in place of a longer, descriptive name:
 
-    class Map[K,V] {
-      def get(key:K): V
-      def put(key:K,value:V): Unit
+    class Map[K, V] {
+      def get(key: K): V
+      def put(key: K, value: V): Unit
     }
 
 ### Higher-Kinds and Parameterized Type parameters
