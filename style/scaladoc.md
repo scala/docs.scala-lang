@@ -40,7 +40,7 @@ customary in Java.
 
 See the
 [AuthorDocs](https://wiki.scala-lang.org/display/SW/Writing+Documentation)
-on the Scala wiki for more technical info on formatting ScalaDoc
+on the Scala wiki for more technical info on formatting ScalaDoc.
 
 ## General Style
 
@@ -99,8 +99,8 @@ that package. Be sure to reference classes using the square-bracket
 notation:
 
     package my.package
-    /** Provides classes for dealing with complex numbers.  Also provides implicits for
-      * converting to and from `Int`.
+    /** Provides classes for dealing with complex numbers.  Also provides
+      * implicits for converting to and from `Int`.
       *
       * ==Overview==
       * The main class to use is [[my.package.complex.Complex]], as so
@@ -143,7 +143,7 @@ the `@constructor` syntax:
       * @param name the person's name
       * @param age the person's age in years 
       */
-    class Person(name:String, age:Int) {
+    class Person(name: String, age: Int) {
     }
 
 Depending on the complexity of your class, provide an example of common
@@ -165,7 +165,8 @@ sure to indicate the actual method names:
         * @param name their name
         * @param age the age of the person to create 
         */
-      def apply(name:String,age:Int) = {}
+      def apply(name: String, age: Int) = {}
+
       /** Create a person with a given name and birthdate
         *
         * @param name their name
@@ -173,7 +174,7 @@ sure to indicate the actual method names:
         * @return a new Person instance with the age determined by the 
         *         birthdate and current date. 
         */
-      def apply(name:String,birthDate:java.util.Date) = {}
+      def apply(name: String, birthDate: java.util.Date) = {}
     }
 
 If your object holds implicit conversions, provide an example in the
@@ -183,7 +184,7 @@ ScalaDoc:
       *
       * {{ "{{{" }}
       * import ComplexImplicits._
-      * val c:Complex = 4 + 3.i
+      * val c: Complex = 4 + 3.i
       * }}} 
       */
     object ComplexImplicits {}
