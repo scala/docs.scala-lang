@@ -39,6 +39,8 @@ Remember the following guidelines:
     Otherwise, use curly braces for clarity (even though they are not
     *required* by the parser).
 
+<!-- necessary to separate the following example from the above bullet list --> 
+
     val news = if (foo)
       goodNews()
     else
