@@ -130,8 +130,8 @@ Or you can leave out the ordering argument but give an element type or the empty
 
 If you create new sets from a tree-set (for instance by concatenation or filtering) they will keep the same ordering as the original set. For instance,
 
-scala> res2 + ("one", "two", "three", "four")
-res3: scala.collection.immutable.TreeSet[String] = TreeSet(four, one, three, two)
+    scala> res2 + ("one", "two", "three", "four")
+    res3: scala.collection.immutable.TreeSet[String] = TreeSet(four, one, three, two)
 
 Sorted sets also support ranges of elements. For instance, the `range` method returns all elements from a starting element up to, but excluding, and end element. Or, the `from` method returns all elements greater or equal than a starting element in the set's ordering. The result of calls to both methods is again a sorted set. Examples:
 
