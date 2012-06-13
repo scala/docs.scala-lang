@@ -18,7 +18,7 @@ Performance characteristics of sequence types:
 | `List`        | C    | C    | L     | L     |  C      | L      |  -     |
 | `Stream`      | C    | C    | L     | L     |  C      | L      |  -     |
 | `Vector`      | eC   | eC   | eC    | eC    |  eC     | eC     |  -     |
-| `Stack`       | C    | C    | L     | L     |  C      | C      |  -     |
+| `Stack`       | C    | C    | L     | L     |  C      | L      |  -     |
 | `Queue`       | aC   | aC   | L     | L     |  L      | C      |  -     |
 | `Range`       | C    | C    | C     | -     |  -      | -      |  -     |
 | `String`      | C    | L    | C     | L     |  L      | L      |  -     |
