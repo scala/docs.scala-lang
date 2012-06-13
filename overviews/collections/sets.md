@@ -103,7 +103,7 @@ Comparing the two interactions shows an important principle. You often can repla
 
 Mutable sets also provide add and remove as variants of `+=` and `-=`. The difference is that `add` and `remove` return a Boolean result indicating whether the operation had an effect on the set.
 
-The current default implementation of a mutable set uses a hashtable to store the set's elements. The default implementation of an immutable set uses a representation that adapts to the number of elements of the set. An empty set is represented by just a singleton object. Sets of sizes up to four are represented by a single object that stores all elements as fields. Beyond that size, immutable sets are implemented as [hash tries](#hash-tries).
+The current default implementation of a mutable set uses a hashtable to store the set's elements. The default implementation of an immutable set uses a representation that adapts to the number of elements of the set. An empty set is represented by just a singleton object. Sets of sizes up to four are represented by a single object that stores all elements as fields. Beyond that size, immutable sets are implemented as [hash tries]({{ site.baseurl }}/overviews/collections/concrete-immutable-collection-classes.html#hash_tries).
 
 A consequence of these representation choices is that, for sets of small sizes (say up to 4), immutable sets are usually more compact and also more efficient than mutable sets. So, if you expect the size of a set to be small, try making it immutable.
 
