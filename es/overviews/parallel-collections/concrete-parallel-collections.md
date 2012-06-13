@@ -1,6 +1,6 @@
 ---
 layout: overview-large
-title: Concrete Parallel Collection Classes
+title: Clases Concretas de las Colecciones Paralelas
 
 disqus: true
 
@@ -9,14 +9,9 @@ num: 2
 language: es
 ---
 
-## Parallel Array
+## Array Paralelo
 
-A [ParArray](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/mutable/ParArray.html) 
-sequence holds a linear,
-contiguous array of elements. This means that the elements can be accessed and
-updated efficiently by modifying the underlying array. Traversing the
-elements is also very efficient for this reason. Parallel arrays are like
-arrays in the sense that their size is constant.
+Una secuencia [ParArray](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/mutable/ParArray.html) contiene un conjunto de elementos contiguos lineales. Esto significa que los elementos pueden ser accedidos y actualizados (modificados) eficientemente al modificar la estructura subyacente (un array). El iterar sobre sus elementos es también muy eficiente por esta misma razón. Los Arrays Paralelos son como arrays en el sentido de que su tamaño es constante.
 
     scala> val pa = scala.collection.parallel.mutable.ParArray.tabulate(1000)(x => 2 * x + 1)
     pa: scala.collection.parallel.mutable.ParArray[Int] = ParArray(1, 3, 5, 7, 9, 11, 13,...
@@ -27,32 +22,14 @@ arrays in the sense that their size is constant.
     scala> pa map (x => (x - 1) / 2)
     res1: scala.collection.parallel.mutable.ParArray[Int] = ParArray(0, 1, 2, 3, 4, 5, 6, 7,...
 
-Internally, splitting a parallel array 
-[splitter]({{ site.baseurl }}/overviews/parallel-collections/architecture.html#core_abstractions) 
-amounts to creating two new splitters with their iteration indices updated. 
-[Combiners]({{ site.baseurl }}/overviews/parallel-collections/architecture.html#core_abstractions) 
-are slightly more involved.Since for most transformer methods (e.g. `flatMap`, `filter`, `takeWhile`,
-etc.) we don't know the number of elements (and hence, the array size) in
-advance, each combiner is essentially a variant of an array buffer with an
-amortized constant time `+=` operation. Different processors add elements to
-separate parallel array combiners, which are then combined by chaining their
-internal arrays. The underlying array is only allocated and filled in parallel
-after the total number of elements becomes known. For this reason, transformer
-methods are slightly more expensive than accessor methods. Also, note that the
-final array allocation proceeds sequentially on the JVM, so this can prove to
-be a sequential bottleneck if the mapping operation itself is very cheap.
+Internamente, para partir el array para que sea procesado de forma paralela se utilizan [splitters]({{ site.baseurl }}/es/overviews/parallel-collections/architecture.html#core_abstractions) (o "partidores"). El Splitter parte y crea dos nuevos splitters con sus índices actualizados. A continuación son utilizados los [combiners]({{ site.baseurl }}/es/overviews/parallel-collections/architecture.html#core_abstractions) (o "combinadores"), que necesitan un poco más de trabajo. Ya que en la mayoría de los métodos transformadores (ej: `flatMap`, `filter`, `takeWhile`, etc.) previamente no es sabido la cantidad de elementos (y por ende, el tamaño del array), cada combiner es esencialmente una variante de un array buffer con un tiempo constante de la operación `+=`. Diferentes procesadores añaden elementos a combiners de arrays separados, que después son combinados al encadenar sus arrays internos. El array subyacente se crea en memoria y se rellenan sus elementos después que el número total de elementos es conocido. Por esta razón, los métodos transformadores son un poco más caros que los métodos de acceso. También, nótese que la asignación de memoria final procede secuencialmente en la JVM, lo que representa un cuello de botella si la operación de mapeo (el método transformador aplicado) es en sí económico (en términos de procesamiento).
 
-By calling the `seq` method, parallel arrays are converted to `ArraySeq`
-collections, which are their sequential counterparts. This conversion is
-efficient, and the `ArraySeq` is backed by the same underlying array as the
-parallel array it was obtained from.
+Al invocar el método `seq`, los arrays paralelos son convertidos al tipo de colección `ArraySeq`, que vendría a ser la contraparte secuencial del `ParArray`. Esta conversión es eficiente, y el `ArraySeq` utiliza a bajo nivel el mismo array que había sido obtenido por el array paralelo.
 
 
-## Parallel Vector
+## Vector Paralelo
 
-A [ParVector](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/immutable/ParVector.html) 
-is an immutable sequence with a low-constant factor logarithmic access and 
-update time.
+Un [ParVector](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/immutable/ParVector.html) es una secuencia inmutable con un tiempo de acceso y modificación logarítimico bajo a constante.
 
     scala> val pv = scala.collection.parallel.immutable.ParVector.tabulate(1000)(x => x)
     pv: scala.collection.parallel.immutable.ParVector[Int] = ParVector(0, 1, 2, 3, 4, 5, 6, 7, 8, 9,...
@@ -60,28 +37,13 @@ update time.
     scala> pv filter (_ % 2 == 0)
     res0: scala.collection.parallel.immutable.ParVector[Int] = ParVector(0, 2, 4, 6, 8, 10, 12, 14, 16, 18,...
 
-Immutable vectors are represented by 32-way trees, so 
-[splitter]({{ site.baseurl }}/overviews/parallel-collections/architecture.html#core_abstractions)s 
-are split byassigning subtrees to each splitter. 
-[Combiners]({{ site.baseurl }}/overviews/parallel-collections/architecture.html#core_abstractions) 
-currently keep a vector of
-elements and are combined by lazily copying the elements. For this reason,
-transformer methods are less scalable than those of a parallel array. Once the
-vector concatenation operation becomes available in a future Scala release,
-combiners will be combined using concatenation and transformer methods will
-become much more efficient.
+Los vectores inmutables son representados por árboles, por lo que los splitters dividen pasándose subárboles entre ellos. Los combiners concurrentemente mantienen un vector de elementos y son combinados al copiar dichos elementos de forma "retardada". Es por esta razón que los métodos tranformadores son menos escalables que sus contrapartes en arrays paralelos. Una vez que las operaciones de concatenación de vectores estén disponibles en una versión futura de Scala, los combiners podrán usar dichas características y hacer más eficientes los métodos transformadores.
 
-Parallel vector is a parallel counterpart of the sequential 
-[Vector](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Vector.html), 
-so conversion between the two takes constant time.
+Un vector paralelo es la contraparte paralela de un [Vector](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Vector.html) secuencial, por lo tanto la conversión entre estas dos estructuras se efectúa en tiempo constante.
 
+## Rango (Range) Paralelo
 
-## Parallel Range
-
-A [ParRange](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/immutable/ParRange.html) 
-is an ordered sequence of elements equally spaced apart. A parallel range is 
-created in a similar way as the sequential 
-[Range](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Range.html):
+Un [ParRange](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/immutable/ParRange.html) es una secuencia ordenada separada por intervalos iguales (ej: 1, 2, 3 o 1, 3, 5, 7). Un rango paralelo es creado de forma similar al [Rango](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Range.html) secuencial:
 
     scala> 1 to 3 par
     res0: scala.collection.parallel.immutable.ParRange = ParRange(1, 2, 3)
@@ -89,121 +51,75 @@ created in a similar way as the sequential
     scala> 15 to 5 by -2 par
     res1: scala.collection.parallel.immutable.ParRange = ParRange(15, 13, 11, 9, 7, 5)
 
-Just as sequential ranges have no builders, parallel ranges have no 
-[combiner]({{ site.baseurl }}/overviews/parallel-collections/architecture.html#core_abstractions)s.
-Mapping the elements of a parallel range produces a parallel vector.
-Sequential ranges and parallel ranges can be converted efficiently one from
-another using the `seq` and `par` methods.
+Tal como los rangos secuenciales no tienen constructores, los rangos paralelos no tienen [combiner]({{ site.baseurl }}/overviews/parallel-collections/architecture.html#core_abstractions)s. Mapear elementos de un rango paralelo produce un vector paralelo. Los rangos secuenciales y paralelos pueden ser convertidos de uno a otro utilizando los métodos `seq` y `par`.
+
+    scala> (1 to 5 par) map ((x) => x * 2)
+    res2: scala.collection.parallel.immutable.ParSeq[Int] = ParVector(2, 4, 6, 8, 10)
 
 
-## Parallel Hash Tables
+## Tablas Hash Paralelas
 
-Parallel hash tables store their elements in an underlying array and place
-them in the position determined by the hash code of the respective element.
-Parallel mutable hash sets 
-([mutable.ParHashSet](http://www.scala-lang.org/api/{{ site.scala-version}}/scala/collection/parallel/mutable/ParHashSet.html)) 
-and parallel mutable hash maps 
-([mutable.ParHashMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/mutable/ParHashMap.html)) 
-are based on hash tables.
+Las tablas hash paralelas almacenan sus elementos en un array subyacente y los almacenan en una posición determinada por el código hash del elemento respectivo. Las versiones mutables de los hash sets paralelos ([mutable.ParHashSet](http://www.scala-lang.org/api/{{ site.scala-version}}/scala/collection/parallel/mutable/ParHashSet.html)) y los hash maps paraleos ([mutable.ParHashMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/mutable/ParHashMap.html)) están basados en tablas hash.
 
     scala> val phs = scala.collection.parallel.mutable.ParHashSet(1 until 2000: _*)
     phs: scala.collection.parallel.mutable.ParHashSet[Int] = ParHashSet(18, 327, 736, 1045, 773, 1082,...
-	
+    
     scala> phs map (x => x * x)
     res0: scala.collection.parallel.mutable.ParHashSet[Int] = ParHashSet(2181529, 2446096, 99225, 2585664,...
 
-Parallel hash table combiners sort elements into buckets according to their
-hashcode prefix. They are combined by simply concatenating these buckets
-together. Once the final hash table is to be constructed (i.e. combiner
-`result` method is called), the underlying array is allocated and the elements
-from different buckets are copied in parallel to different contiguous segments
-of the hash table array.
+Los combiners de las tablas hash ordenan los elementos en posiciones de acuerdo a su código hash. Se combinan simplemente concatenando las estructuras que contienen dichos elementos. Una vez que la tabla hash final es construida (es decir, se invoca el método `result` del combiner), el array subyacente es rellenado y los elementos de las diferentes estructuras previas son copiados en paralelo a diferentes segmentos continuos del array de la tabla hash.
 
-Sequential hash maps and hash sets can be converted to their parallel variants
-using the `par` method. Parallel hash tables internally require a size map
-which tracks the number of elements in different chunks of the hash table.
-What this means is that the first time that a sequential hash table is
-converted into a parallel hash table, the table is traversed and the size map
-is created - for this reason, the first call to `par` takes time linear in the
-size of the hash table. Further modifications to the hash table maintain the
-state of the size map, so subsequent conversions using `par` and `seq` have
-constant complexity. Maintenance of the size map can be turned on and off
-using the `useSizeMap` method of the hash table. Importantly, modifications in
-the sequential hash table are visible in the parallel hash table, and vice
-versa.
+Los "Mapas Hash" (Hash Maps) y los "Conjuntos Hash" (Hash Sets) secuenciales pueden ser convertidos a sus variantes paralelas usando el método `par`. Las tablas hash paralelas internamente necesitan de un mapa de tamaño que mantiene un registro del número de elementos en cada pedazo de la hash table. Lo que esto significa es que la primera vez que una tabla hash secuencial es convertida a una tabla hash paralela, la tabla es recorrida y el mapa de tamaño es creado - es por esta razón que la primera llamada a `par` requiere un tiempo lineal con respecto al tamaño total de la tabla. Cualquier otra modificación que le siga mantienen el estado del mapa de tamaño, por lo que conversiones sucesivas entre `par` y `seq` tienen una complejidad constante. El mantenimiento del tamaño del mapa puede ser habilitado y deshabilitado utilizando el método `useSizeMap` de la tabla hash. Es importante notar que las modificaciones en la tabla hash secuencial son visibles en la tabla hash paralela, y viceversa.
 
+## Hash Tries Paralelos
 
-## Parallel Hash Tries
-
-Parallel hash tries are a parallel counterpart of the immutable hash tries,
-which are used to represent immutable sets and maps efficiently. They are
-supported by classes 
-[immutable.ParHashSet](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/immutable/ParHashSet.html) 
-and
+Los Hash Tries paralelos son la contraparte paralela de los hash tries inmutables, que son usados para representar conjuntos y mapas inmutables de forma eficiente. Las clases involucradas son: [immutable.ParHashSet](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/immutable/ParHashSet.html) 
+y
 [immutable.ParHashMap](http://www.scala-lang.org/api/{{ site.scala-version}}/scala/collection/parallel/immutable/ParHashMap.html).
 
     scala> val phs = scala.collection.parallel.immutable.ParHashSet(1 until 1000: _*)
     phs: scala.collection.parallel.immutable.ParHashSet[Int] = ParSet(645, 892, 69, 809, 629, 365, 138, 760, 101, 479,...
-	
+    
     scala> phs map { x => x * x } sum
     res0: Int = 332833500
 
-Similar to parallel hash tables, parallel hash trie 
-[combiners]({{ site.baseurl }}/overviews/parallel-collections/architecture.html#core_abstractions) 
-pre-sort the
-elements into buckets and construct the resulting hash trie in parallel by
-assigning different buckets to different processors, which construct the
-subtries independently.
+De forma similar a las tablas hash paralelas, los [combiners]({{ site.baseurl }}/overviews/parallel-collections/architecture.html#core_abstractions) de los hash tries paralelos pre-ordenan los elementos en posiciones y construyen el hash trie resultante en paralelo al asignarle distintos grupos de posiciones a diferentes procesadores, los cuales contruyen los sub-tries independientemente.
 
-Parallel hash tries can be converted back and forth to sequential hash tries
-by using the `seq` and `par` method in constant time.
+Los hash tries paralelos pueden ser convertidos hacia y desde hash tries secuenciales por medio de los métodos `seq` y `par`.
 
 
-## Parallel Concurrent Tries
+## Tries Paralelos Concurrentes
 
-A [concurrent.TrieMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/concurrent/TrieMap.html) 
-is a concurrent thread-safe map, whereas a 
-[mutable.ParTrieMap](http://www.scala-lang.org/api/{{ site.scala-version}}/scala/collection/parallel/mutable/ParTrieMap.html) 
-is its parallel counterpart. While most concurrent data structures do not guarantee
-consistent traversal if the the data structure is modified during traversal,
-Ctries guarantee that updates are only visible in the next iteration. This
-means that you can mutate the concurrent trie while traversing it, like in the
-following example which outputs square roots of number from 1 to 99:
+Un [concurrent.TrieMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/concurrent/TrieMap.html) es un mapa thread-safe (seguro ante la utilización de múltiples hilos concurrentes) mientras que [mutable.ParTrieMap](http://www.scala-lang.org/api/{{ site.scala-version}}/scala/collection/parallel/mutable/ParTrieMap.html) es su contraparte paralela. Si bien la mayoría de las estructuras de datos no garantizan una iteración consistente si la estructura es modificada en medio de dicha iteración, los tries concurrentes garantizan que las actualizaciones sean solamente visibles en la próxima iteración. Esto significa que es posible mutar el trie concurrente mientras se está iterando sobre este, como en el siguiente ejemplo, que computa e imprime las raíces cuadradas de los números entre 1 y 99:
 
     scala> val numbers = scala.collection.parallel.mutable.ParTrieMap((1 until 100) zip (1 until 100): _*) map { case (k, v) => (k.toDouble, v.toDouble) }
     numbers: scala.collection.parallel.mutable.ParTrieMap[Double,Double] = ParTrieMap(0.0 -> 0.0, 42.0 -> 42.0, 70.0 -> 70.0, 2.0 -> 2.0,...
     
     scala> while (numbers.nonEmpty) {
          |   numbers foreach { case (num, sqrt) =>
-		 |     val nsqrt = 0.5 * (sqrt + num / sqrt)
-		 |     numbers(num) = nsqrt
-		 |     if (math.abs(nsqrt - sqrt) < 0.01) { 
-		 |       println(num, nsqrt)
-		 |		 numbers.remove(num)
-		 |	   }
-		 |   }
-		 | }
-	(1.0,1.0)
+         |     val nsqrt = 0.5 * (sqrt + num / sqrt)
+         |     numbers(num) = nsqrt
+         |     if (math.abs(nsqrt - sqrt) < 0.01) { 
+         |       println(num, nsqrt)
+         |       numbers.remove(num)
+         |     }
+         |   }
+         | }
+    (1.0,1.0)
     (2.0,1.4142156862745097)
     (7.0,2.64576704419029)
     (4.0,2.0000000929222947)
-	...
+    ...
 
 
-[Combiners]({{ site.baseurl }}/overviews/parallel-collections/architecture.html#core_abstractions) 
-are implemented as `TrieMap`s under the hood-- since this is a
-concurrent data structure, only one combiner is constructed for the entire
-transformer method invocation and shared by all the processors.
+Para ofrecer más detalles de lo que sucede bajo la superficie, los [Combiners]({{ site.baseurl }}/overviews/parallel-collections/architecture.html#core_abstractions) son implementados como `TrieMap`s --ya que esta es una estructura de datos concurrente, solo un combiner es construido para todo la invocación al método transformador y compartido por todos los procesadores.
 
-As with all parallel mutable collections, `TrieMap`s and parallel `ParTrieMap`s obtained
-by calling `seq` or `par` methods are backed by the same store, so
-modifications in one are visible in the other. Conversions happen in constant
-time.
+Al igual que todas las colecciones paralelas mutables, `TrieMap`s y la versión paralela, `ParTrieMap`s obtenidas mediante los métodos `seq` o `par` subyacentemente comparten la misma estructura de almacenamiento, por lo tanto modificaciones en una es visible en la otra.
 
 
-## Performance characteristics
+## Características de desmpeño (performance)
 
-Performance characteristics of sequence types:
+Performance de los tipo secuencia:
 
 |               | head | tail | apply | update| prepend | append | insert |
 | --------      | ---- | ---- | ----  | ----  | ----    | ----   | ----   |
@@ -211,51 +127,49 @@ Performance characteristics of sequence types:
 | `ParVector`   | eC   | eC   | eC    | eC    |  eC     | eC     |  -     |
 | `ParRange`    | C    | C    | C     | -     |  -      | -      |  -     |
 
-Performance characteristics of set and map types:
+Performance para los sets y maps:
 
 |                          | lookup | add  | remove |
 | --------                 | ----   | ---- | ----   |
-| **immutable**            |        |      |        |
+| **inmutables**           |        |      |        |
 | `ParHashSet`/`ParHashMap`| eC     | eC   | eC     |
-| **mutable**              |        |      |        |
+| **mutables**             |        |      |        |
 | `ParHashSet`/`ParHashMap`| C      | C    | C      |
 | `ParTrieMap`             | eC     | eC   | eC     |
 
 
-### Key
-
-The entries in the above two tables are explained as follows:
+Los valores en las tablas de arriba se explican de la siguiente manera:
 
 |     |                                           |
 | --- | ----                                      |
-| **C**   | The operation takes (fast) constant time. |
-| **eC**  | The operation takes effectively constant time, but this might depend on some assumptions such as maximum length of a vector or distribution of hash keys.|
-| **aC**  | The operation takes amortized constant time. Some invocations of the operation might take longer, but if many operations are performed on average only constant time per operation is taken. |
-| **Log** | The operation takes time proportional to the logarithm of the collection size. |
-| **L**   | The operation is linear, that is it takes time proportional to the collection size. |
-| **-**   | The operation is not supported. |
+| **C**   | La operación toma un tiempo constante (rápido) |
+| **eC**  | La opración toma tiempo efectivamente constante, pero esto puede depender de algunas suposiciones como el tamaño máximo de un vector o la distribución de las claves hash. |
+| **aC**  | La operación requiere un tiempo constante amortizado. Algunas invocaciones de la operación pueden tomar un poco más de tiempo, pero si en promedio muchas operaciones son realizadas solo es requerido tiempo constante. |
+| **Log** | La operación requiere de un tiempo proporcional al logaritmo del tamaño de la colección. |
+| **L**   | La operación es linea, es decir que requiere tiempo proporcional al tamaño de la colección. |
+| **-**   | La operación no es soportada. |
 
-The first table treats sequence types--both immutable and mutable--with the following operations:
-
-|     |                                                     |
-| --- | ----                                                |
-| **head**   | Selecting the first element of the sequence. |
-| **tail**   | Producing a new sequence that consists of all elements except the first one. |
-| **apply**  | Indexing. |
-| **update** | Functional update (with `updated`) for immutable sequences, side-effecting update (with `update` for mutable sequences. |
-| **prepend**| Adding an element to the front of the sequence. For immutable sequences, this produces a new sequence. For mutable sequences it modified the existing sequence. |
-| **append** | Adding an element and the end of the sequence. For immutable sequences, this produces a new sequence. For mutable sequences it modified the existing sequence. |
-| **insert** | Inserting an element at an arbitrary position in the sequence. This is only supported directly for mutable sequences. |
-
-The second table treats mutable and immutable sets and maps with the following operations:
+La primer tabla considera tipos secuencia --ambos mutables e inmutables-- con las siguientes operaciones:
 
 |     |                                                     |
 | --- | ----                                                |
-| **lookup** | Testing whether an element is contained in set, or selecting a value associated with a key. |
-| **add**    | Adding a new element to a set or key/value pair to a map. |
+| **head**   | Seleccionar el primer elemento de la secuencia. |
+| **tail**   | Produce una nueva secuencia que contiene todos los elementos menos el primero. |
+| **apply**  | Indexación. Seleccionar un elemento por posición. |
+| **update** | Actualización funcional (con `updated`) para secuencias inmutables, actualización real con efectos laterales para secuencias mutables. |
+| **prepend**| Añadir un elemento al principio de la colección. Para secuencias inmutables, esto produce una nueva secuencia. Para secuencias mutables, modifica la secuencia existente. |
+| **append** | Añadir un elemento al final de la secuencia. Para secuencias inmutables, produce una nueva secuencia. Para secuencias mutables modifica la secuencia existente. |
+| **insert** | Inserta un elemento a una posición arbitraria. Solamente es posible en secuencias mutables. |
+
+La segunda tabla trata sets y maps, tanto mutables como inmutables, con las siguientes operaciones:
+
+|     |                                                     |
+| --- | ----                                                |
+| **lookup** | Comprueba si un elemento es contenido en un set, o selecciona un valor asociado con una clave en un map. |
+| **add**    | Añade un nuevo elemento a un set o un par clave/valor a un map. |
 | **remove** | Removing an element from a set or a key from a map. |
-| **min**    | The smallest element of the set, or the smallest key of a map. |
-
+| **remove** | Elimina un elemento de un set o una clave de un map. |
+| **min**    | El menor elemento de un set o la menor clave de un mapa. |
 
 
 
