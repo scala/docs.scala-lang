@@ -35,20 +35,20 @@ Performance characteristics of sequence types:
 
 Performance characteristics of set and map types:
 
-|                    | lookup | add | remove | min           |
-| --------           | ----   | ---- | ----  | ----          |
-| **immutable**      |        |      |       |               |
-| `HashSet`/`HashMap`| eC     | eC   | eC    | L             |
-| `TreeSet`/`TreeMap`| Log    | Log  | Log   | Log           |
-| `BitSet`           | C      | L    | L     | eC<sup>1</sup>|
-| `ListMap`          | L      | L    | L     | L             |
-| **mutable**        |        |      |       |               |
-| `HashSet`/`HashMap`| eC     | eC   | eC    | L             |
-| `WeakHashMap`      | eC     | eC   | eC    | L             |
-| `BitSet`           | C      | aC   | C     | eC<sup>1</sup>|
-| `TreeSet`          | Log    | Log  | Log   | Log           |
+|                    | lookup | add | remove | min                           |
+| --------           | ----   | ---- | ----  | ----                          |
+| **immutable**      |        |      |       |                               |
+| `HashSet`/`HashMap`| eC     | eC   | eC    | L                             |
+| `TreeSet`/`TreeMap`| Log    | Log  | Log   | Log                           |
+| `BitSet`           | C      | L    | L     | eC[<sup>[1]</sup>](#bitsPack) |
+| `ListMap`          | L      | L    | L     | L                             |
+| **mutable**        |        |      |       |                               |
+| `HashSet`/`HashMap`| eC     | eC   | eC    | L                             |
+| `WeakHashMap`      | eC     | eC   | eC    | L                             |
+| `BitSet`           | C      | aC   | C     | eC[<sup>[1]</sup>](#bitsPack) |
+| `TreeSet`          | Log    | Log  | Log   | Log                           |
 
-Footnote: <sup>1</sup> Assuming bits are densely packed.
+<p><a id="bitsPack"><sup>[1]</sup></a>: Assuming bits are densely packed.</p>
 
 The entries in these two tables are explained as follows:
 
