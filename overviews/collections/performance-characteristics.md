@@ -12,26 +12,29 @@ The previous explanations have made it clear that different collection types hav
 
 Performance characteristics of sequence types:
 
-|               | head | tail | apply | update| prepend | append | insert |
-| --------      | ---- | ---- | ----  | ----  | ----    | ----   | ----   |
-| **immutable** |      |      |       |       |         |        |        |
-| `List`        | C    | C    | L     | L     |  C      | L      |  -     |
-| `Stream`      | C    | C    | L     | L     |  C      | L      |  -     |
-| `Vector`      | eC   | eC   | eC    | eC    |  eC     | eC     |  -     |
-| `Stack`       | C    | C    | L     | L     |  C      | L      |  -     |
-| `Queue`       | aC   | aC   | L     | L     |  L      | C      |  -     |
-| `Range`       | C    | C    | C     | -     |  -      | -      |  -     |
-| `String`      | C    | L    | C     | L     |  L      | L      |  -     |
-| **mutable**   |      |      |       |       |         |        |        |
-| `ArrayBuffer` | C    | L    | C     | C     |  L      | aC     |  L     |
-| `ListBuffer`  | C    | L    | L     | L     |  C      | C      |  L     |
-|`StringBuilder`| C    | L    | C     | C     |  L      | aC     |  L     |
-| `MutableList` | C    | L    | L     | L     |  C      | C      |  L     |
-| `Queue`       | C    | L    | L     | L     |  C      | C      |  L     |
-| `ArraySeq`    | C    | L    | C     | C     |  -      | -      |  -     |
-| `Stack`       | C    | L    | L     | L     |  C      | L      |  L     |
-| `ArrayStack`  | C    | L    | C     | C     |  aC     | L      |  L     |
-| `Array`       | C    | L    | C     | C     |  -      | -      |  -     |
+|               | head | tail | apply | update| prepend                    | append                         | insert |
+| --------      | ---- | ---- | ----  | ----  | ----                       | ----                           | ----   |
+| **immutable** |      |      |       |       |                            |                                |        |
+| `List`        | C    | C    | L     | L     |  C                         | L                              |  -     |
+| `Stream`      | C    | C    | L     | L     |  C                         | L                              |  -     |
+| `Vector`      | eC   | eC   | eC    | eC    |  eC                        | eC                             |  -     |
+| `Stack`       | C    | C    | L     | L     |  C[<sup>[1]</sup>](#stack) | L                              |  -     |
+| `Queue`       | aC   | aC   | L     | L     |  L                         | C[<sup>[2]</sup>](#queue)      |  -     |
+| `Range`       | C    | C    | C     | -     |  -                         | -                              |  -     |
+| `String`      | C    | L    | C     | L     |  L                         | L                              |  -     |
+| **mutable**   |      |      |       |       |                            |                                |        |
+| `ArrayBuffer` | C    | L    | C     | C     |  L                         | aC                             |  L     |
+| `ListBuffer`  | C    | L    | L     | L     |  C                         | C                              |  L     |
+|`StringBuilder`| C    | L    | C     | C     |  L                         | aC                             |  L     |
+| `MutableList` | C    | L    | L     | L     |  C                         | C                              |  L     |
+| `Queue`       | C    | L    | L     | L     |  C                         | C                              |  L     |
+| `ArraySeq`    | C    | L    | C     | C     |  -                         | -                              |  -     |
+| `Stack`       | C    | L    | L     | L     |  C                         | L                              |  L     |
+| `ArrayStack`  | C    | L    | C     | C     |  aC                        | L                              |  L     |
+| `Array`       | C    | L    | C     | C     |  -                         | -                              |  -     |
+
+<p><a id="stack"><sup>[1]</sup></a>: Using 'push' instead of '+:'.</p>
+<p><a id="queue"><sup>[2]</sup></a>: Using 'enqueue' instead of ':+'.</p>
 
 Performance characteristics of set and map types:
 
@@ -40,15 +43,15 @@ Performance characteristics of set and map types:
 | **immutable**      |        |      |       |                               |
 | `HashSet`/`HashMap`| eC     | eC   | eC    | L                             |
 | `TreeSet`/`TreeMap`| Log    | Log  | Log   | Log                           |
-| `BitSet`           | C      | L    | L     | eC[<sup>[1]</sup>](#bitsPack) |
+| `BitSet`           | C      | L    | L     | eC[<sup>[3]</sup>](#bitsPack) |
 | `ListMap`          | L      | L    | L     | L                             |
 | **mutable**        |        |      |       |                               |
 | `HashSet`/`HashMap`| eC     | eC   | eC    | L                             |
 | `WeakHashMap`      | eC     | eC   | eC    | L                             |
-| `BitSet`           | C      | aC   | C     | eC[<sup>[1]</sup>](#bitsPack) |
+| `BitSet`           | C      | aC   | C     | eC[<sup>[3]</sup>](#bitsPack) |
 | `TreeSet`          | Log    | Log  | Log   | Log                           |
 
-<p><a id="bitsPack"><sup>[1]</sup></a>: Assuming bits are densely packed.</p>
+<p><a id="bitsPack"><sup>[3]</sup></a>: Assuming bits are densely packed.</p>
 
 The entries in these two tables are explained as follows:
 
