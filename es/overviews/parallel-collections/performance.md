@@ -1,6 +1,6 @@
 ---
 layout: overview-large
-title: Measuring Performance
+title: Midiendo el rendimiento
 
 disqus: true
 
@@ -12,72 +12,69 @@ language: es
 
 ## Performance on the JVM
 
-The performance model on the JVM is sometimes convoluted in commentaries about
-it, and as a result is not well understood. For various reasons, some code may
-not be as performant or as scalable as expected. Here, we provide a few
-examples.
+Algunas veces el modelo de rendimiento de la JVM se complica debido a comentarios
+sobre el mismo, y como resultado de los mismos, se tienen concepciones equívocas del mismo.
+Por diferentes motivos, determinado código podría ofrecer un rendimiento o escalabilidad 
+inferior a la esperada. A continuación ofrecemos algunos ejemplos.
 
-One of the reasons is that the compilation process for a JVM application is
-not the same as that of a statically compiled language (see \[[2][2]\]). The
-Java and Scala compilers convert source code into JVM bytecode and do very
-little optimization. On most modern JVMs, once the program bytecode is run, it
-is converted into machine code for the computer architecture on which it is
-being run. This is called the just-in-time compilation. The level of code
-optimization is, however, low with just-in-time compilation, since it has to
-be fast. To avoid recompiling, the so called HotSpot compiler only optimizes
-parts of the code which are executed frequently. What this means for the
-benchmark writer is that a program might have different  performance each time
-it is run. Executing the same piece of code (e.g. a method) multiple times in
-the same JVM instance might give very different performance results depending
-on whether the particular code was optimized in between the runs.
-Additionally, measuring the execution time of some piece of code may include
-the time during which the JIT compiler itself was performing the optimization,
-thus giving inconsistent results.
+Uno de los principales motivos es que el proceso de compilación de una aplicación que se
+ejecuta sobre la JVM no es el mismo que el de un lenguaje compilado de manera estática
+(véase \[[2][2]\]). Los compiladores de Java y Scala traducen el código fuente en *bytecode* y 
+el conjunto de optimizaciones que llevan a cabo es muy reducido. En la mayoría de las JVM 
+modernas, una vez el bytecode es ejecutado, se convierte en código máquina dependiente de la
+arquitectura de la máquina subyacente. Este proceso es conocido como compilación "just-int-time".
+Sin embargo, el nivel de optimización del código es muy bajo puesto que dicho proceso deber ser 
+lo más rápido posible. Con el objetivo de evitar el proceso de recompilación, el llamado
+compilador HotSpot optimiza únicamente aquellas partes del código que son ejecutadas de manera
+frecuente. Esto supone que los desarrolladores de "benchmarks" deberán ser conscientes que los
+programas podrían presentar rendimientos dispares en diferentes ejecuciones. Múltiples ejecuciones 
+de un mismo fragmento de código (por ejemplo un método) podrían ofrecer rendimientos dispares en función de
+si se ha llevado a cabo un proceso de optimización del código entre dichas ejecuciones. Adicionalmente,
+la medición de los tiempos de ejecución de un fragmento de código podría incluir el tiempo en el que
+el propio compilador JIT lleva a cabo el proceso de optimizacion, falseando los resultados.
 
-Another hidden execution that takes part on the JVM is the automatic memory
-management. Every once in a while, the execution of the program is stopped and
-a garbage collector is run. If the program being benchmarked allocates any
-heap memory at all (and most JVM programs do), the garbage collector will have
-to run, thus possibly distorting the measurement. To amortize the garbage
-collection effects, the measured program should run many times to trigger many
-garbage collections.
+Otro elemento "oculto" que forma parte de la JVM es la gestión automática de la memoria. De vez en cuando,
+la ejecución de un programa es detenida para que el recolector de basura entre en funcionamiento. Si el 
+programa que estamos analizando realiza alguna reserva de memoria (algo que la mayoría de programas hacen),
+el recolector de basura podría entrar en acción, posiblemente distorsionando los resultados. Con el objetivo
+de disminuir los efectos de la recolección de basura, el programa bajo estudio deberá ser ejecutado en
+múltiples ocasiones para disparar numerosas recolecciones de basura.
 
-One common cause of a performance deterioration is also boxing and unboxing
-that happens implicitly when passing a primitive type as an argument to a
-generic method. At runtime, primitive types are converted to objects which
-represent them, so that they could be passed to a method with a generic type
-parameter. This induces extra allocations and is slower, also producing
-additional garbage on the heap.
+Una causa muy común que afecta de manera notable al rendimiento son las conversiones implícitas que se 
+llevan a cabo cuando se pasa un tipo primitivo a un método que espera un argumento genérico. En tiempo
+de ejecución, los tipos primitivos con convertidos en los objetos que los representan, de manera que puedan
+ser pasados como argumentos en los métodos que presentan parámetros genéricos. Este proceso implica un conjunto
+extra de reservas de memoria y es más lento, ocasionando nueva basura en el heap.
 
-Where parallel performance is concerned, one common issue is memory
-contention, as the programmer does not have explicit control about where the
-objects are allocated.
-In fact, due to GC effects, contention can occur at a later stage in
-the application lifetime after objects get moved around in memory.
-Such effects need to be taken into consideration when writing a benchmark.
+Cuando nos referimos al rendimiento en colecciones paralelas la contención de la memoria es un problema muy
+común, dado que el desarrollador no dispone de un control explícito sobre la asignación de los objetos. 
+De hecho, debido a los efectos ocasionados por la recolección de basura, la contención puede producirse en
+un estado posterior del ciclo de vida de la aplicación, una vez los objetos hayan ido circulando por la
+memoria. Estos efectos deberán ser tenidos en cuenta en el momento en que se esté desarrollando un benchmark.
 
+## Ejemplo de microbenchmarking
 
-## Microbenchmarking example
+Numerosos enfoques permiten evitar los anteriores efectos durante el periodo de medición. 
+En primer lugar, el microbenchmark debe ser ejecutado el número de veces necesario que 
+permita asegurar que el compilador just-in-time ha compilado a código máquina y que 
+ha optimizado el código resultante. Esto es lo que comunmente se conoce como fase de 
+calentamiento.
 
-There are several approaches to avoid the above effects during measurement.
-First of all, the target microbenchmark must be executed enough times to make
-sure that the just-in-time compiler compiled it to machine code and that it
-was optimized. This is known as the warm-up phase.
+El microbenchmark debe ser ejecutado en una instancia independiente de la máquina virtual
+con el objetivo de reducir la cantidad de ruido proveniente de la recolección de basura
+de los objetos alocados por el propio benchmark o de compilaciones just-in-time que no
+están relacionadas con el proceso que estamos midiendo.
 
-The microbenchmark itself should be run in a separate JVM instance to reduce
-noise coming from garbage collection of the objects allocated by different
-parts of the program or unrelated just-in-time compilation.
+Deberá ser ejecutado utilizando la versión servidora de la máquina virtual, la cual lleva a
+cabo un conjunto de optimizaciones mucho más agresivas.
 
-It should be run using the server version of the HotSpot JVM, which does more
-aggressive optimizations.
+Finalmente, con el objetivo de reducir la posibilidad de que una recolección de basura ocurra
+durante la ejecución del benchmark, idealmente, debería producirse un ciclo de recolección de basura antes
+de la ejecución del benchmark, retrasando el siguiente ciclo tanto como sea posible.
 
-Finally, to reduce the chance of a garbage collection occurring in the middle
-of the benchmark, ideally a garbage collection cycle should occur prior to the
-run of the benchmark, postponing the next cycle as far as possible.
-
-The `scala.testing.Benchmark` trait is predefined in the Scala standard
-library and is designed with above in mind. Here is an example of benchmarking
-a map operation on a concurrent trie:
+El trait `scala.testing.Benchmark` se predefine en la librería estándar de Scala y ha sido diseñado con 
+el punto anterior en mente. A continuación se muestra un ejemplo del benchmarking de un operación map
+sobre un "trie" concurrente:
 
     import collection.parallel.mutable.ParTrieMap
 	import collection.parallel.ForkJoinTaskSupport
@@ -96,76 +93,82 @@ a map operation on a concurrent trie:
       }
     }
 
-The `run` method embodies the microbenchmark code which will be run
-repetitively and whose running time will be measured. The object `Map` above
-extends the `scala.testing.Benchmark` trait and parses system specified
-parameters `par` for the parallelism level and `length` for the number of
-elements in the trie.
+El método `run` encapsula el código del microbenchmark que será ejecutado de
+manera repetitiva y cuyos tiempos de ejecución serán medidos. El anterior objeto `Map` extiende
+el trait `scala.testing.Benchmark` y parsea los parámetros `par` (nivel de paralelismo) y 
+`length` (número de elementos en el trie). Ambos parámetros son especificados a través de
+propiedades del sistema.
 
-After compiling the program above, run it like this:
+Tras compilar el programa anterior, podríamos ejecutarlo tal y como se muestra a continuación:
 
     java -server -cp .:../../build/pack/lib/scala-library.jar -Dpar=1 -Dlength=300000 Map 10
 
-The `server` flag specifies that the server VM should be used. The `cp`
-specifies the classpath and includes classfiles in the current directory and
-the scala library jar. Arguments `-Dpar` and `-Dlength` are the parallelism
-level and the number of elements. Finally, `10` means that the benchmark
-should be run that many times within the same JVM.
+El flag `server` indica que la máquina virtual debe ser utiliada en modo servidor. `cp` especifica
+el classpath e incluye todos los archivos __.class__ en el directorio actual así como el jar de
+la librería de Scala. Los argumentos `-Dpar` y `-Dlength` representan el nivel de paralelismo y
+el número de elementos respectivamente. Por último, `10` indica el número de veces que el benchmark
+debería ser ejecutado en una misma máquina virtual.
 
-Running times obtained by setting the `par` to `1`, `2`, `4` and `8` on a
-quad-core i7 with hyperthreading:
+Los tiempos de ejecución obtenidos estableciendo `par` a los valores `1`, `2`, `4` y `8` sobre un 
+procesador quad-core i7 con hyperthreading habilitado son los siguientes:
 
     Map$	126	57	56	57	54	54	54	53	53	53
     Map$	90	99	28	28	26	26	26	26	26	26
     Map$	201	17	17	16	15	15	16	14	18	15
     Map$	182	12	13	17	16	14	14	12	12	12
 
-We can see above that the running time is higher during the initial runs, but
-is reduced after the code gets optimized. Further, we can see that the benefit
-of hyperthreading is not high in this example, as going from `4` to `8`
-threads results only in a minor performance improvement.
+Podemos observar en la tabla anterior que el tiempo de ejecución es mayor durante las
+ejecuciones iniciales, reduciéndose a medida que el código va siendo optimizado. Además,
+podemos ver que el beneficio del hyperthreading no es demasiado alto en este ejemplo
+concreto, puesto que el incremento de `4` a `8` hilos produce un incremento mínimo en
+el rendimiento.
 
+## ¿Cómo de grande debe ser una colección para utilizar la versión paralela?
 
-## How big should a collection be to go parallel?
+Esta es pregunta muy común y la respuesta es algo complicada.
 
-This is a question commonly asked. The answer is somewhat involved.
+El tamaño de la colección a partir de la cual la paralelización merece la pena
+depende de numerosos factores. Algunos de ellos, aunque no todos, son:
 
-The size of the collection at which the parallelization pays of really
-depends on many factors. Some of them, but not all, include:
+- Arquitectura de la máquina. Diferentes tipos de CPU ofrecen diferente características
+  de rendimiento y escalabilidad. Por ejemplo, si la máquina es multicore o presenta 
+  múltiples procesadores comunicados mediante la placa base.
 
-- Machine architecture. Different CPU types have different
-  performance and scalability characteristics. Orthogonal to that,
-  whether the machine is multicore or has multiple processors
-  communicating via motherboard.
-- JVM vendor and version. Different VMs apply different
-  optimizations to the code at runtime. They implement different memory
-  management and synchronization techniques. Some do not support
-  `ForkJoinPool`, reverting to `ThreadPoolExecutor`s, resulting in
-  more overhead.
-- Per-element workload. A function or a predicate for a parallel
-  operation determines how big is the per-element workload. The
-  smaller the workload, the higher the number of elements needed to
-  gain speedups when running in parallel.
-- Specific collection. For example, `ParArray` and
-  `ParTrieMap` have splitters that traverse the collection at
-  different speeds, meaning there is more per-element work in just the
-  traversal itself.
-- Specific operation. For example, `ParVector` is a lot slower for
-  transformer methods (like `filter`) than it is for accessor methods (like `foreach`)
-- Side-effects. When modifying memory areas concurrently or using
-  synchronization within the body of `foreach`, `map`, etc.,
-  contention can occur.
-- Memory management. When allocating a lot of objects a garbage
-  collection cycle can be triggered. Depending on how the references
-  to new objects are passed around, the GC cycle can take more or less time.
+- Versión y proveedor de la JVM. Diferentes máquinas virtuales llevan a cabo
+  diferentes optimizaciones sobre el código en tiempo de ejecución. Implementan
+  diferente gestion de memoria y técnicas de sincronización. Algunas de ellas no
+  soportan el `ForkJoinPool`, volviendo a `ThreadPoolExecutor`, lo cual provoca
+  una sobrecarga mucho mayor.
 
-Even in separation, it is not easy to reason about things above and
-give a precise answer to what the collection size should be. To
-roughly illustrate what the size should be, we give an example of
-a cheap side-effect-free parallel vector reduce (in this case, sum)
-operation performance on an i7 quad-core processor (not using
-hyperthreading) on JDK7:
+- Carga de trabajo por elemento. Una función o un predicado para una colección
+  paralela determina cómo de grande es la carga de trabajo por elemento. Cuanto
+  menor sea la carga de trabajo, mayor será el número de elementos requeridos para
+  obtener acelaraciones cuando se está ejecutando en paralelo.
 
+- Uso de colecciones específicas. Por ejemplo, `ParArray` y
+  `ParTrieMap` tienen "splitters" que recorren la colección a diferentes
+  velocidades, lo cual implica que existe más trabajo por elemento en el
+  propio recorrido.
+
+- Operación específica. Por ejemplo, `ParVector` es mucho más lenta para los métodos
+  de transformación (cómo `filter`) que para métodos de acceso (como `foreach`).
+
+- Efectos colaterales. Cuando se modifica un area de memoria de manera concurrente o
+  se utiliza la sincronización en el cuerpo de un `foreach`, `map`, etc se puede
+  producir contención.
+
+- Gestión de memoria. Cuando se reserva espacio para muchos objectos es posible
+  que se dispare un ciclo de recolección de basura. Dependiendo de cómo se 
+  distribuyan las referencias de los objetos el ciclo de recolección puede llevar
+  más o menos tiempo.
+
+Incluso de manera independiente, no es sencillo razonar sobre el conjunto de situaciones
+anteriores y determinar una respuesta precisa sobre cuál debería ser el tamaño de la
+colección. Para ilustrar de manera aproximada cuál debería ser el valor de dicho tamaño,
+a continuación, se presenta un ejemplo de una sencilla operación de reducción, __sum__ en este caso,
+libre de efectos colaterales sobre un vector en un procesador i7 quad-core (hyperthreading
+deshabilitado) sobre JDK7
+  
     import collection.parallel.immutable.ParVector
     
     object Reduce extends testing.Benchmark {
@@ -193,8 +196,7 @@ hyperthreading) on JDK7:
       }
     }
 
-We first run the benchmark with `250000` elements and obtain the
-following results, for `1`, `2` and `4` threads:
+La primera ejecución del benchmark utiliza `250000` elementos y obtiene los siguientes resultados para `1`, `2` y `4` hilos:
 
     java -server -cp .:../../build/pack/lib/scala-library.jar -Dpar=1 -Dlength=250000 Reduce 10 10
     Reduce$    54    24    18    18    18    19    19    18    19    19
@@ -203,18 +205,18 @@ following results, for `1`, `2` and `4` threads:
     java -server -cp .:../../build/pack/lib/scala-library.jar -Dpar=4 -Dlength=250000 Reduce 10 10
     Reduce$    62    17    15    14    13    11    11    11    11    9
 
-We then decrease the number of elements down to `120000` and use `4`
-threads to compare the time to that of a sequential vector reduce:
+Posteriormente se decrementa en número de elementos hasta `120000` y se utilizan `4` hilos para comparar
+el tiempo con la operación de reducción sobre un vector secuencial:
 
     java -server -cp .:../../build/pack/lib/scala-library.jar -Dpar=4 -Dlength=120000 Reduce 10 10
     Reduce$    54    10    8    8    8    7    8    7    6    5
     java -server -cp .:../../build/pack/lib/scala-library.jar -Dlength=120000 ReduceSeq 10 10
     ReduceSeq$    31    7    8    8    7    7    7    8    7    8
 
-`120000` elements seems to be the around the threshold in this case.
+En este caso, `120000` elementos parece estar en torno al umbral.
 
-As another example, we take the  `mutable.ParHashMap` and the `map`
-method (a transformer method) and run the following benchmark in the same environment:
+En un ejemplo diferente, utilizamos `mutable.ParHashMap` y el método `map` (un método de transformación)
+y ejecutamos el siguiente benchmark en el mismo entorno:
 
     import collection.parallel.mutable.ParHashMap
     
@@ -243,8 +245,7 @@ method (a transformer method) and run the following benchmark in the same enviro
       }
     }
 
-For `120000` elements we get the following times when ranging the
-number of threads from `1` to `4`:
+Para `120000` elementos obtenemos los siguientes tiempos cuando el número de hilos oscila de `1` a `4`:
 
     java -server -cp .:../../build/pack/lib/scala-library.jar -Dpar=1 -Dlength=120000 Map 10 10    
     Map$    187    108    97    96    96    95    95    95    96    95
@@ -253,8 +254,7 @@ number of threads from `1` to `4`:
     java -server -cp .:../../build/pack/lib/scala-library.jar -Dpar=4 -Dlength=120000 Map 10 10
     Map$    124    54    42    40    38    41    40    40    39    39
 
-Now, if we reduce the number of elements to `15000` and compare that
-to the sequential hashmap:
+Ahora, si reducimos el número de elementos a `15000` y comparamos con el hashmap secuencial:
 
     java -server -cp .:../../build/pack/lib/scala-library.jar -Dpar=1 -Dlength=15000 Map 10 10
     Map$    41    13    10    10    10    9    9    9    10    9
@@ -263,22 +263,14 @@ to the sequential hashmap:
     java -server -cp .:../../build/pack/lib/scala-library.jar -Dlength=15000 MapSeq 10 10
     MapSeq$    39    9    9    9    8    9    9    9    9    9
 
-For this collection and this operation it makes sense
-to go parallel when there are above `15000` elements (in general,
-it is feasible to parallelize hashmaps and hashsets with fewer
-elements than would be required for arrays or vectors).
+Para esta colección y esta operacion tiene sentido utilizar la versión paralela cuando existen más
+de `15000` elementos (en general, es factible paralelizar hashmaps y hashsets con menos elementos de
+los que serían requeridos por arrays o vectores).
 
-
-
-
-
-## References
+## Referencias
 
 1. [Anatomy of a flawed microbenchmark, Brian Goetz][1]
 2. [Dynamic compilation and performance measurement, Brian Goetz][2]
 
   [1]: http://www.ibm.com/developerworks/java/library/j-jtp02225/index.html "flawed-benchmark"
   [2]: http://www.ibm.com/developerworks/library/j-jtp12214/ "dynamic-compilation"
-
-
-
