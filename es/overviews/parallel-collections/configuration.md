@@ -1,6 +1,6 @@
 ---
 layout: overview-large
-title: Configuring Parallel Collections
+title: Configurando las colecciones paralelas
 
 disqus: true
 
@@ -9,29 +9,28 @@ num: 7
 language: es
 ---
 
-## Task support
+## "Task support"
 
-Parallel collections are modular in the way operations are scheduled. Each
-parallel collection is parametrized with a task support object which is
-responsible for scheduling and load-balancing tasks to processors.
+Las colecciones paralelas son modulares respecto al modo en que las operaciones 
+son planificadas. Cada colección paralela es planificada con un objeto "task support"
+el cual es responsable de la planificación y el balanceo de las tareas a los
+distintos procesadores.
 
-The task support object internally keeps a reference to a thread pool
-implementation and decides how and when tasks are split into smaller tasks. To
-learn more about the internals of how exactly this is done, see the tech
-report \[[1][1]\].
+El objeto "task support" mantiene internamente un referencia a un pool de hilos y decide
+cómo y cuando las tareas son divididas en tareas más pequeñas. Para conocer más en detalle
+cómo funciona internamente diríjase al informe técnico \[[1][1]\].
 
-There are currently a few task support implementations available for parallel
-collections. The `ForkJoinTaskSupport` uses a fork-join pool internally and is
-used by default on JVM 1.6 or greater. The less efficient
-`ThreadPoolTaskSupport` is a fallback for JVM 1.5 and JVMs that do not support
-the fork join pools. The `ExecutionContextTaskSupport` uses the default
-execution context implementation found in `scala.concurrent`, and it reuses
-the thread pool used in `scala.concurrent` (this is either a fork join pool or
-a thread pool executor, depending on the JVM version). The execution context
-task support is set to each parallel collection by default, so parallel
-collections reuse the same fork-join pool as the future API.
+En la actualidad las colecciones paralelas disponen de unas cuantas implementaciones de 
+"task support". El `ForkJoinTaskSupport` utiliza internamente un fork-join pool y es utilizado
+por defecto en JVM 1.6 o superiores. `ThreadPoolTaskSupport`, menos eficiente, es utilizado como
+mecanismo de reserva para JVM 1.5 y máquinas virtuales que no soporten los fork join pools. El
+`ExecutionContextTaskSupport` utiliza el contexto de ejecución por defecto que viene definido
+en `scala.concurrent`, y reutiliza el thread pool utilizado en dicho paquete (podrá ser un fork
+join pool o un thread pool executor dependiendo de la versión de la JVM). El "task support" basado
+en el contexto de ejecución es establecido en cada una de las colecciones paralelas por defecto, de modo
+que dichas colecciones reutilizan el mismo fork-join pool del mismo modo que el API de las "futures".
 
-Here is a way to change the task support of a parallel collection:
+A continuación se muestra cómo se puede modificar el objeto "task support" de una colección paralela:
 
     scala> import scala.collection.parallel._
     import scala.collection.parallel._
@@ -45,9 +44,8 @@ Here is a way to change the task support of a parallel collection:
     scala> pc map { _ + 1 }
     res0: scala.collection.parallel.mutable.ParArray[Int] = ParArray(2, 3, 4)
 
-The above sets the parallel collection to use a fork-join pool with
-parallelism level 2. To set the parallel collection to use a thread pool
-executor:
+El fragmento de código anterior determina que la colección paralela utilice un fork-join pool con un nivel 2 de
+paralelismo. Para indicar que la colección utilice un thread pool executor tendremos que hacerlo del siguiente modo:
 
     scala> pc.tasksupport = new ThreadPoolTaskSupport()
     pc.tasksupport: scala.collection.parallel.TaskSupport = scala.collection.parallel.ThreadPoolTaskSupport@1d914a39
@@ -55,12 +53,13 @@ executor:
     scala> pc map { _ + 1 }
     res1: scala.collection.parallel.mutable.ParArray[Int] = ParArray(2, 3, 4)
 
-When a parallel collection is serialized, the task support field is omitted
-from serialization. When deserializing a parallel collection, the task support
-field is set to the default value-- the execution context task support.
+Cuando una colección paralela es serializada, el atributo que almacena la referencia
+al objeto "task support" es omitido en el proceso de serialización. Cuando una colección
+paralela es deserializada, dicho atributo toma el valor por defecto -- el objeto "task support"
+basado en el contexto de ejecución.
 
-To implement a custom task support, extend the `TaskSupport` trait and
-implement the following methods:
+Para llevar a cabo una implementación personalizada de un nuevo objeto "task support" necesitamos
+extender del trait `TaskSupport` e implementar los siguientes métodos:
 
     def execute[R, Tp](task: Task[R, Tp]): () => R
     
@@ -68,14 +67,14 @@ implement the following methods:
     
     def parallelismLevel: Int
 
-The `execute` method schedules a task asynchronously and returns a future to
-wait on the result of the computation. The `executeAndWait` method does the
-same, but only returns when the task is completed. The `parallelismLevel`
-simply returns the targeted number of cores that the task support uses to
-schedule tasks.
+El método `execute` planifica una tarea asíncrona y retorna una "future" sobre la que
+esperar el resultado de la computación. El método `executeAndWait` lleva a cabo el mismo
+trabajo, pero retorna única y exclusivamente una vez la tarea haya finalizado. `parallelismLevel`
+simplemente retorna el número de núcleos que el objeto "task support" utiliza para planificar
+las diferentes tareas.
 
 
-## References
+## Referencias
 
 1. [On a Generic Parallel Collection Framework, June 2011][1]
 
