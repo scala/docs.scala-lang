@@ -1,7 +1,6 @@
 ---
 layout: overview-large
-title: Parallel Collection Conversions
-
+title: Conversiones en colecciones paralelas
 disqus: true
 
 partof: parallel-collections
@@ -9,60 +8,58 @@ num: 3
 language: es
 ---
 
-## Converting between sequential and parallel collections
+## Conversiones entre colecciones secuenciales y paralelas
 
-Every sequential collection can be converted to its parallel variant
-using the `par` method. Certain sequential collections have a
-direct parallel counterpart. For these collections the conversion is
-efficient-- it occurs in constant time, since both the sequential and
-the parallel collection have the same data-structural representation
-(one exception is mutable hash maps and hash sets which are slightly
-more expensive to convert the first time `par` is called, but
-subsequent invocations of `par` take constant time). It should be
-noted that for mutable collections, changes in the sequential collection are
-visible in its parallel counterpart if they share the underlying data-structure.
+Cada una de las colecciones secuenciales puede convertirse es su versión
+paralela mediante la utilización del método `par`. Determinadas colecciones
+secuenciales disponen de una versión homóloga paralela. Para estas colecciones el
+proceso de conversión es eficiente -- ocurre en tiempo constante dado que ambas
+versiones utilizan la misma estructura de datos interna. Una excepción al caso
+anterior es el caso de los hash maps y hash sets mutables, donde el proceso de
+conversión es un poco más costoso la primera vez que el método `par` es llamado,
+aunque las posteriores invocaciones de dicho método ofrecerán un tiempo de ejecución
+constante. Nótese que en el caso de las colecciones mutables, los cambios en la 
+colección secuencial son visibles en su homóloga paralela en el caso de que compartan
+la estructura de datos subyacente.
 
-| Sequential    | Parallel       |
+| Secuencial    | Paralelo       |
 | ------------- | -------------- |
 | **mutable**   |                |
 | `Array`       | `ParArray`     |
 | `HashMap`     | `ParHashMap`   |
 | `HashSet`     | `ParHashSet`   |
 | `TrieMap`     | `ParTrieMap`   |
-| **immutable** |                |
+| **inmutable** |                |
 | `Vector`      | `ParVector`    |
 | `Range`       | `ParRange`     |
 | `HashMap`     | `ParHashMap`   |
 | `HashSet`     | `ParHashSet`   |
 
-Other collections, such as lists, queues or streams, are inherently sequential
-in the sense that the elements must be accessed one after the other. These
-collections are converted to their parallel variants by copying the elements
-into a similar parallel collection. For example, a functional list is
-converted into a standard immutable parallel sequence, which is a parallel
-vector.
+Otro tipo de colecciones, como las listas, colas o `streams`, son inherentemente
+secuenciales en el sentido de que los elementos deben ser accedidos uno tras otro.
+La versión paralela de estas estructuras se obtiene mediante la copia de los elementos
+en una colección paralela. Por ejemplo, una lista funcional es convertida en una 
+secuencia paralela inmutable; un vector paralelo.
 
-Every parallel collection can be converted to its sequential variant
-using the `seq` method. Converting a parallel collection to a
-sequential collection is always efficient-- it takes constant
-time. Calling `seq` on a mutable parallel collection yields a
-sequential collection which is backed by the same store-- updates to
-one collection will be visible in the other one.
+Cada colección paralela puede ser convertida a su variante secuencial mediante el uso
+del método `seq`. La conversión de una colección paralela a su homóloga secuencial es
+siempre un proceso eficiente -- tiempo constante. La invocación del método `seq` sobre
+una colección paralela mutable retorna una colección secuencial cuya representación interna
+es la misma que la de la versión paralela, por lo que posibles actualizaciones en una de las
+colecciones serán visibles en la otra.
 
+## Conversiones entre diferentes tipo de colecciones
 
-## Converting between different collection types
+Ortogonal a la conversión entre colecciones secuenciales y paralelas, las colecciones 
+pueden convertirse entre diferentes tipos. Por ejemplo, la llamada al método `toSeq` 
+convierte un conjunto secuencial en una secuencia secuencial, mientras que si invocamos
+dicho método sobre un conjunto paralelo obtendremos una secuencia paralela. La regla
+general is que si existe una versión paralela de `X`, el método `toX` convierte la colección
+en una colección `ParX`
 
-Orthogonal to converting between sequential and parallel collections,
-collections can be converted between different collection types. For
-example, while calling `toSeq` converts a sequential set to a
-sequential sequence, calling `toSeq` on a parallel set converts it to
-a parallel sequence. The general rule is that if there is a
-parallel version of `X`, then the `toX` method converts the collection
-into a `ParX` collection.
+A continuación se muestra un resumen de todos los métodos de conversión:
 
-Here is a summary of all conversion methods:
-
-| Method         | Return Type    |
+| método     	 | Tipo de Retorno|
 | -------------- | -------------- |
 | `toArray`      | `Array`        |
 | `toList`       | `List`         |
