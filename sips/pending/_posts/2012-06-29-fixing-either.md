@@ -109,10 +109,13 @@ becomes
 Note that `.e` must be appended to the value the `for` comprehension then
 `yield`s, in order to obtain the corresponding `Either` value.
 
-Regarding the second example of odd behaviour, involving `if`, this was
-traced to the fact that the `filter` method (of `LeftProjection` and
-`RightProjection`) returns an `Option` instead of the respective
-projection.
+Regarding the second example of odd behaviour, involving `if`, this
+was traced to the fact that the `filter` method (of `LeftProjection`
+and `RightProjection`) returns an `Option` instead of an `Either`,
+thus allowing `None` to be returned when the predicate is `false`. A
+`Left` (`Right`) could not be returned in the case of a
+`RightProjection` (`LeftProjection`) since no value is available to go
+into it.
 
 The first solution considered was to introduce a third subtype,
 equivalent to `Option`'s `None`, but this was later rejected on the
