@@ -107,44 +107,81 @@ becomes
     }
 
 Note that `.e` must be appended to the value the for-comprehension then
-yields, in order to obtain the corresponding value of `Either`.
+yields, in order to obtain the corresponding `Either` value.
 
-Regarding the second example of odd behaviour, involving if, this was
+Regarding the second example of odd behaviour, involving `if`, this was
 traced to the fact that the filter method (of `LeftProjection` and
 `RightProjection`) returns an `Option` instead of the respective
 projection.
 
-Considering that an `Either` must be (by definition) either a `Left`
-or a `Right` (and not empty), it is proposed that `LeftProj` and
-`RightProj` should not have a `filter` (or `withFilter`) method at
-all.
+The first solution considered was to introduce a third subtype,
+equivalent to `Option`'s `None`, but this was later rejected on the
+grounds that only two subtypes may exist - *either* `Left` or `Right`.
 
-Note that this means that
+The second solution considered was to do away with `filter`
+altogether, given that there must be *some* result (either `Left` or
+`Right`). However, this would prevent the general use of `if` and
+pattern-matching in `for` comprehensions involving (projections of)
+`Either`.
 
+Therefore, a third solution has been investigated, whereby `LeftProj`
+(`RightProj`) has a `withFilter` method that returns a `LeftProj`
+containing a `Right` (`RightProj` containing a `Left`) if the
+predicate is `false`, and where the contents of that `Right` (`Left`)
+is obtained using an implicit conversion passed to the `withFilter`
+method in a second parameter list:
+
+    def withFilter[BB >: B](p: A => Boolean)
+                           (implicit aToB: Right.Convert => BB): LeftProj[A, BB] = {
+      val e2: Either[A, BB] = e match {
+        case Left(a) => if (p(a)) Left(a) else Right(aToB(Right.Convert(a)))
+        case Right(b) => Right(b)
+      }
+      LeftProj(e2)
+    }
+
+This solution therefore requires that an implicit conversion such as
+the following be provided whenever the method is used, as is the case
+when `if` or pattern-matching features in a `for` comprehension:
+
+    implicit def f(convert: Right.Convert) = convert.any.toString
+
+Note that `Convert` is a simple case class which serves to ensure that
+the implicit conversion is properly targetted.
+
+This third solution has been demonstrated to work well, and is the one
+proposed here.
 
 ## Part 2: Simplifying use in for-comprehensions by *adding* right-biased capability ##
 
-Returning an `Either` means that definitions in `for` comprehensions
-are not supported, since `Either` does not have a `map` method (as
-pointed out in this [bug report][report]). Instead, it is proposed
-that `map` should return a `Left-/RightProjection`, which does have the
-requisite method.
+It is proposed that the various methods required for supporting `for`
+comprehensions be added to `Either` itself, and that only the value
+contained in `Right` instances be passed to the functions passed to
+those methods.
 
-Since `yield` would then also produce a `Left-/RightProjection`, `.e`
-will need to be appended in order to obtain the `Either`.
+This would simplify the vast majority of use cases, and be in keeping
+with the existing convention of using `for` comprehensions involving
+the `RightProjection`:
 
-## Part 2: filter should be removed (outright) ##
+    trait Eg {
+      def f(a: Int): Either[String, Int]
+    
+      def unbiased_usage(a: Int) = {
+        val rp = for {
+          b <- f(a).rp
+        } yield b
+        rp.e
+      }
+    
+      def rightBiased_usaged(a: Int) = for {
+        b <- f(a)
+      } yield b
+    }
 
-Filtering is not appropriate here, since an empty result is not
-appropriate - either it's a `LeftProjection` or it's a
-`RightProjection`.
-
-If the value in the, say, `Right` instance is to be subject to a
-condition, then it should first be lifted into a `scala.Option`, using
-an `R => Option[R]` (for use with `map`) or an `Option` inside a
-`RightProjection`, using an `R => RightProjection[L, Option[R]]` (for
-use with `flatMap`), so as to retain the ability to deal with a
-`Left` result.
+Finally, note that Part 2 does not render Part 1 redundant; although
+`Either` would now have its own `map` method, this would only be
+appropriate in `for` comprehensions involving the `RightProjection`,
+but not the `LeftProjection`.
 
   [enhance]: http://robsscala.blogspot.co.uk/2012/04/validation-without-scalaz.html
   [fix]:
