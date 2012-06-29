@@ -185,7 +185,7 @@ but not the `LeftProjection`.
 
 ## Trial version ##
 
-A trial verson of `Either` incorporating the proposed enhancements,
+A trial verson of `Either` incorporating the proposed fixes,
 and complete with test suites, is maintained [here][project].
 
   [enhance]: http://robsscala.blogspot.co.uk/2012/04/validation-without-scalaz.html
