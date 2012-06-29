@@ -8,11 +8,11 @@ title: SIP-20 Fixing Either
 
 This proposal is the sole initiative of the author, based on his
 attempts, [first][enhance] to understand why `scala.Either` is not
-more widely used, and to enhance it, [and then][fix] to try to fix
-it. It is also being made in the light of two mailing-list debates
-which have taken place - one about [right-biasing Either][debate1],
-which was inconclusive, and a subsequent one about [fixing
-Either][debate2].
+more widely used, and to enhance it, and then ([here][fix] and
+[here][vs]) to try to fix it. It is also being made in the light of
+two mailing-list debates which have taken place - one (initiated by
+Jason Zaugg) about [right-biasing Either][debate1], which was
+inconclusive, and a subsequent one about [fixing Either][debate2].
 
 ## Motivation ##
 
@@ -21,11 +21,11 @@ eschewed in favour of alternatives:
 
 1. `for` comprehensions involving `Either` behave oddly.
 
-2. The alternatives are simpler to use, by virtue of their being 'biased'
-   towards one of their possible result types. In the case of
+2. The alternatives are simpler to use, by virtue of their being
+   'biased' towards one of their possible result types. In the case of
    `Either`, it is necessary to specify which of the two types (`Left`
-   or `Right`) should have its value passed to `foreach`, `map` or
-   `flatMap`.
+   or `Right`) should have its value passed to the function passed to
+   `foreach`, `map` or `flatMap`.
 
 3. The alternative may offer 'added value', such as `scalaz.Validation`'s
    ability to accumulate failures.
@@ -45,7 +45,7 @@ definitions are not supported (as first reported [here][report]),
       c = b + 1
     } ... // do something with c
 
-and secondly (as reported [here][fix]), `if` cannot be used together
+and secondly (as mentioned [here][fix]), `if` cannot be used together
 with multiple generators and `yield`:
 
     for {
@@ -59,12 +59,12 @@ with multiple generators and `yield`:
     } yield c
 
 The lack of support for definitions was traced to the fact that the
-`map` method of LeftProjection and RightProjection returns an
+`map` method of `LeftProjection` and `RightProjection` returns an
 `Either`, which does not have a `foreach`, or `map` method itself.
 
 The proposed solution is the one proposed [here][fix], whereby the
-`map` method of `LeftProjection` returns another `LeftProjection`, and
-that of `RightProjection` returns another `RightProjection`.
+`map` method of `LeftProjection` (`RightProjection`) returns another
+`LeftProjection` (`RightProjection`).
 
 Also, and as a conseqence, the respective `flatMap` methods must be
 changed by substituting the respective projection in place of
@@ -106,7 +106,7 @@ becomes
       case Right(b) => LeftProj(Right(b))
     }
 
-Note that `.e` must be appended to the value the for-comprehension then
+Note that `.e` must be appended to the value the `for` comprehension then
 yields, in order to obtain the corresponding `Either` value.
 
 Regarding the second example of odd behaviour, involving `if`, this was
@@ -126,10 +126,10 @@ pattern-matching in `for` comprehensions involving (projections of)
 
 Therefore, a third solution has been investigated, whereby `LeftProj`
 (`RightProj`) has a `withFilter` method that returns a `LeftProj`
-containing a `Right` (`RightProj` containing a `Left`) if the
-predicate is `false`, and where the contents of that `Right` (`Left`)
-is obtained using an implicit conversion passed to the `withFilter`
-method in a second parameter list:
+(`RightProj`) containing a `Right` (`Left`) if the predicate is
+`false`, and where the contents of that `Right` (`Left`) is obtained
+using an implicit conversion passed to the `withFilter` method in a
+second parameter list:
 
     def withFilter[BB >: B](p: A => Boolean)
                            (implicit aToB: Right.Convert => BB): LeftProj[A, BB] = {
@@ -147,9 +147,9 @@ when `if` or pattern-matching features in a `for` comprehension:
     implicit def f(convert: Right.Convert) = convert.any.toString
 
 Note that `Convert` is a simple case class which serves to ensure that
-the implicit conversion is properly targetted.
+the implicit conversion is properly targeted.
 
-This third solution has been demonstrated to work well, and is the one
+This third solution has been [demonstrated][project] to work well, and is the one
 proposed here.
 
 ## Part 2: Simplifying use in for-comprehensions by *adding* right-biased capability ##
@@ -183,11 +183,19 @@ Finally, note that Part 2 does not render Part 1 redundant; although
 appropriate in `for` comprehensions involving the `RightProjection`,
 but not the `LeftProjection`.
 
+## Trial version ##
+
+A trial verson of `Either` incorporating the proposed enhancements,
+and complete with test suites, is maintained [here][project].
+
   [enhance]: http://robsscala.blogspot.co.uk/2012/04/validation-without-scalaz.html
   [fix]:
   http://robsscala.blogspot.co.uk/2012/05/fixing-scalaeither-leftrightmap-returns.html
+  [vs]:
+  http://robsscala.blogspot.co.uk/2012/06/fixing-scalaeither-unbiased-vs-biased.html
   [debate1]:
   https://groups.google.com/group/scala-debate/browse_thread/thread/2bac2fe8aa6124ad?hl=en
   [debate2]:
   https://groups.google.com/forum/?fromgroups#!topic/scala-debate/XlN-oqbslS0
   [report]: https://issues.scala-lang.org/browse/SI-5793
+  [project]: https://github.com/robcd/scala-either-proj-map-returns-proj/tree/add_right-bias_2-10_withFilter
