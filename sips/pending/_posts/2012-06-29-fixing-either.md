@@ -107,10 +107,10 @@ becomes
     }
 
 Note that `.e` must be appended to the value the `for` comprehension then
-yields, in order to obtain the corresponding `Either` value.
+`yield`s, in order to obtain the corresponding `Either` value.
 
 Regarding the second example of odd behaviour, involving `if`, this was
-traced to the fact that the filter method (of `LeftProjection` and
+traced to the fact that the `filter` method (of `LeftProjection` and
 `RightProjection`) returns an `Option` instead of the respective
 projection.
 
