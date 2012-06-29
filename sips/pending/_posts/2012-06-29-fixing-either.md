@@ -6,13 +6,13 @@ title: SIP-20 Fixing Either
 
 **By: Rob Dickens**
 
-This proposal is the sole initiative of the author, based on his
-attempts, [first][enhance] to understand why `scala.Either` is not
-more widely used, and to enhance it, and then ([here][fix] and
-[here][vs]) to try to fix it. It is also being made in the light of
-two mailing-list debates which have taken place - one (initiated by
-Jason Zaugg) about [right-biasing Either][debate1], which was
-inconclusive, and a subsequent one about [fixing Either][debate2].
+This proposal is based on the author's attempts, [first][enhance] to
+understand why `scala.Either` is not more widely used, and to enhance
+it, and then ([here][fix] and [here][vs]) to try to fix it. It owes
+much to two mailing-list debates which have taken
+place - one (initiated by Jason Zaugg) about [right-biasing
+Either][debate1], which was inconclusive, and a subsequent one about
+[fixing Either][debate2].
 
 ## Motivation ##
 
