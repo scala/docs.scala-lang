@@ -149,7 +149,7 @@ when `if` or pattern-matching features in a `for` comprehension:
 Note that `Convert` is a simple case class which serves to ensure that
 the implicit conversion is properly targeted.
 
-This third solution has been [demonstrated][project] to work well, and is the one
+This third solution has been [shown][project] to work well, and is the one
 proposed here.
 
 ## Part 2: Simplifying use in for-comprehensions by *adding* right-biased capability ##
