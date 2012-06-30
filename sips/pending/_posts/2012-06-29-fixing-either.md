@@ -191,6 +191,15 @@ but not the `LeftProjection`.
 A trial verson of `Either` incorporating the proposed fixes,
 and complete with test suites, is maintained [here][project].
 
+## Migration strategy ##
+
+As mentioned in Part 1, `LeftProjection`, `RightProjection`, and
+therefore also `Either`'s `left` and `right` methods, should be deprecated,
+as has been done in the trial version.
+
+All other changes involve adding new methods to `Either`, which is
+unlikely to break existing code.
+
   [enhance]: http://robsscala.blogspot.co.uk/2012/04/validation-without-scalaz.html
   [fix]:
   http://robsscala.blogspot.co.uk/2012/05/fixing-scalaeither-leftrightmap-returns.html
