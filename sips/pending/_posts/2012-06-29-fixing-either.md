@@ -143,16 +143,34 @@ second parameter list:
       LeftProj(e2)
     }
 
+Note that `aToB` has the type, `Right.Convert => BB`, rather than `A =>
+BB`, as might have been expected. This deserves the following explanation:
+
+* `A => BB` only permits `for` comprehensions that do not feature definitions
+* `Tuple2[...] => BB` is required if there is 1 definition
+* `Tuple3[...] => BB` is required if there are 2 definitions, and so on
+* the tuple comprises one field for each definition, plus a further one (the first) for `a`
+* `Any` is a suitable catch-all, that must be placed in a suitable
+  container, in order that implicit look-ups should be properly targeted
+* `Right.Convert` is such a container (for an `a` or tuple that is a
+  'convert' to the right, and must therefore be converted to a `BB`
+  by an implicit conversion)
+
 This solution therefore requires that an implicit conversion such as
 the following be provided whenever the method is used, as is the case
 when `if` or pattern-matching features in a `for` comprehension:
 
     implicit def f(convert: Right.Convert) = convert.any.toString
 
-Note that `Convert` is a simple case class which serves to ensure that
-the implicit conversion is properly targeted.
+Here, `any` is an `a` or tuple that is a convert to the right, and `BB` is `String`.
 
-This third solution has been [shown][project] to work well, and is the one
+Although this solution has been [shown][project] to work well,
+it has been objected to on the grounds that [`Either` strictly requires
+additional support][filterObjection] in order that it may have a filter.
+
+However, considering that that necessary support is apparently
+unlikely to be added to the Scala library, together with the
+implications of not providing a filter, this third solution is the one
 proposed here.
 
 ## Part 2: Simplifying use in for-comprehensions by *adding* right-biased capability ##
@@ -211,3 +229,4 @@ unlikely to break existing code.
   https://groups.google.com/forum/?fromgroups#!topic/scala-debate/XlN-oqbslS0
   [report]: https://issues.scala-lang.org/browse/SI-5793
   [project]: https://github.com/robcd/scala-either-proj-map-returns-proj/tree/add_right-bias_2-10_withFilter
+  [filterObjection]: https://groups.google.com/d/msg/scala-debate/XlN-oqbslS0/C-K0GjvbfowJ
