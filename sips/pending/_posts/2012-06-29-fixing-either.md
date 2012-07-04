@@ -112,7 +112,7 @@ Note that `.e` must be appended to the value the `for` comprehension then
 Regarding the second example of odd behaviour, involving `if`, this
 was traced to the fact that the `filter` method (of `LeftProjection`
 and `RightProjection`) returns an `Option` instead of an `Either`,
-thus allowing `None` to be returned when the predicate is `false`. A
+thus allowing `None` to be returned when the predicate is false. A
 `Left` (`Right`) could not be returned in the case of a
 `RightProjection` (`LeftProjection`) since no value is available to go
 into it.
@@ -130,12 +130,12 @@ pattern-matching in `for` comprehensions involving (projections of)
 Therefore, a third solution has been investigated, whereby `LeftProj`
 (`RightProj`) has a `withFilter` method that returns a `LeftProj`
 (`RightProj`) containing a `Right` (`Left`) if the predicate is
-`false`, and where the contents of that `Right` (`Left`) is obtained
+false, and where the contents of that `Right` (`Left`) is obtained
 using an implicit conversion passed to the `withFilter` method in a
 second parameter list:
 
     def withFilter[BB >: B](p: A => Boolean)
-                           (implicit aToB: Right.Convert => BB): LeftProj[A, BB] = {
+                           (implicit aToB: Right.Convert[A] => BB): LeftProj[A, BB] = {
       val e2: Either[A, BB] = e match {
         case Left(a) => if (p(a)) Left(a) else Right(aToB(Right.Convert(a)))
         case Right(b) => Right(b)
@@ -143,26 +143,46 @@ second parameter list:
       LeftProj(e2)
     }
 
-Note that `aToB` has the type, `Right.Convert => BB`, rather than `A =>
-BB`, as might have been expected. This deserves the following explanation:
+Note that `aToB` has the type, `Right.Convert[A] => BB`, rather than
+`A => BB`, since we're obliged to wrap the `a` in something whose type
+is specific to this type of conversion--from a value in a `Left` to
+a value that can go into a `Right`--in order that a targeted implicit
+conversion may be supplied. `Convert` is a simple case class,
 
-* `A => BB` only permits `for` comprehensions that do not feature definitions
-* `Tuple2[...] => BB` is required if there is 1 definition
-* `Tuple3[...] => BB` is required if there are 2 definitions, and so on
-* the tuple comprises one field for each definition, plus a further one (the first) for `a`
-* `Any` is a suitable catch-all, that must be placed in a suitable
-  container, in order that implicit look-ups should be properly targeted
-* `Right.Convert` is such a container (for an `a` or tuple that is a
-  'convert' to the right, and must therefore be converted to a `BB`
-  by an implicit conversion)
+    case class Convert[+A](a: A)
 
-This solution therefore requires that an implicit conversion such as
-the following be provided whenever the method is used, as is the case
-when `if` or pattern-matching features in a `for` comprehension:
+with a `Left` counterpart for use in conversions going the other
+way.
 
-    implicit def f(convert: Right.Convert) = convert.any.toString
+It should be noted that `a` is sometimes a tuple:
 
-Here, `any` is an `a` or tuple that is a convert to the right, and `BB` is `String`.
+* in `for` comprehensions involving an `if` referring to a definition,
+  the compiler demands that an implicit conversion from a `Tuple2[A, X]`
+  be provided, where `X` is the type of the definition, instead of a
+  conversion from an `A`
+
+* if there are two definitions, this will be a `Tuple3[A, X, Y]`, where
+  `Y` is the type of the second definition, and so on
+
+* at runtime, if the expression following `if` is false, `withFilter`
+  is called as though the type of the `LeftProj` were
+  `LeftProj[TupleN[A, ...], BB]` (instead of `LeftProj[A, BB]`).
+
+For example, given the following `for` comprehension,
+
+    val either: Either[String, Int] = Right(1)
+    val res = for {
+      a <- either.rp
+      b = a + 1
+      if b > 0
+    } yield b
+    assert(res.e == Right(2))
+
+the compiler would demand a conversion such as the following,
+
+    implicit def g(convert: Left.Convert[(Int, Int)]) = convert.b.toString
+
+so that `res.e` would be `Left("(1,2)")` if `b > 0` were false.
 
 Although this solution has been [shown][project] to work well,
 it has been objected to on the grounds that [`Either` strictly requires
