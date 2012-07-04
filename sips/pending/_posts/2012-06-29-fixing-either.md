@@ -182,7 +182,9 @@ the compiler would demand a conversion such as the following,
 
     implicit def g(convert: Left.Convert[(Int, Int)]) = convert.b.toString
 
-so that `res.e` would be `Left("(1,2)")` if `b > 0` were false.
+so that `res.e` would be `Left("(1,2)")` if `b > 0` were false. Note
+that `g` may be given a type parameter, in case multiple conversions
+would otherwise be needed, and a single, common, implementation would suffice.
 
 Although this solution has been [shown][project] to work well,
 it has been objected to on the grounds that [`Either` strictly requires
