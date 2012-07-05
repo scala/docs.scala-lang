@@ -121,6 +121,11 @@ Once done, we output the path from the target to the initial node.
     }
     println()
 
+There is a Game of Life example on GitHub which uses Ctries to
+selectively simulate only those parts of the Game of Life automaton which
+are currently active \[[4][4]\].
+It also includes a Swing-based visualization of the Game of Life simulation,
+in which you can observe how tweaking the parameters affects performance.
 
 The concurrent tries also support a linearizable, lock-free, constant
 time `snapshot` operation. This operation creates a new concurrent
@@ -154,12 +159,15 @@ Additionally, size computation for parallel concurrent tries is performed in par
 
 
 
+
 ## References
 
 1. [Cache-Aware Lock-Free Concurrent Hash Tries][1]
 2. [Concurrent Tries with Efficient Non-Blocking Snapshots][2]
 3. [Methods of computing square roots][3]
+4. [Game of Life simulation][4]
 
   [1]: http://infoscience.epfl.ch/record/166908/files/ctries-techreport.pdf "Ctries-techreport"
   [2]: http://lampwww.epfl.ch/~prokopec/ctries-snapshot.pdf "Ctries-snapshot"
   [3]: http://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Babylonian_method "babylonian-method"
+  [4]: https://github.com/axel22/ScalaDays2012-TrieMap "game-of-life-ctries"
