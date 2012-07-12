@@ -168,7 +168,7 @@ You can _invoke_ a method, function, or closure _on_ arguments, meaning its body
 The _JVM_ is the Java Virtual Machine, or [runtime](#runtime), that hosts a running Scala program.
 
 * #### literal
-`1`, "`One`", and `(x: Int) => x + 1` are examples of _literals_. A literal is a shorthand way to describe an object, where the shorthand exactly mirrors the structure of the created object.
+`1`, `"One"`, and `(x: Int) => x + 1` are examples of _literals_. A literal is a shorthand way to describe an object, where the shorthand exactly mirrors the structure of the created object.
 
 * #### local function
 A _local function_ is a `def` defined inside a block. To contrast, a `def` defined as a member of a class, trait, or singleton object is called a [method](#method).
