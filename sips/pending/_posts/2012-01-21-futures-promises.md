@@ -97,7 +97,7 @@ of type `Left[Throwable]` otherwise. The `onComplete` method is
 parametric in the return type of the callback, but it discards the
 result of the callback.
 
-Coming back to our social network example, lets assume we want to
+Coming back to our social network example, let's assume we want to
 fetch a list of our own recent posts and render them to the screen.
 We do so by calling the method `getRecentPosts` which returns a `List[String]`:
 
@@ -188,7 +188,7 @@ However, a particular `Future` implementation may have a well-defined
 order.
 
 5. In the event that some of the callbacks throw an exception, the
-other callbacks are executed irregardlessly.
+other callbacks are executed regardlessly.
 
 6. In the event that some of the callbacks never complete (e.g. the
 callback contains an infinite loop), the other callbacks may not be
