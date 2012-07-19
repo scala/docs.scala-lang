@@ -57,6 +57,8 @@ about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheat
 |  `for ((x,y) <- xs zip ys) yield x*y` _same as_ <br>`(xs zip ys) map { case (x,y) => x*y }`              |  for comprehension: destructuring bind |
 |  `for (x <- xs; y <- ys) yield x*y` _same as_ <br>`xs flatMap {x => ys map {y => x*y}}`                  |  for comprehension: cross product |
 |  `for (x <- xs; y <- ys) {`<br>    `println("%d/%d = %.1f".format(x,y, x*y))`<br>`}`                     |  for comprehension: imperative-ish<br>[sprintf-style](http://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax) |
+|  `for (i <- 1 to 5) {`<br>    `println(i)`<br>`}`                                                        |  for comprehension: iterate including the upper bound |
+|  `for (i <- 1 until 5) {`<br>    `println(i)`<br>`}`                                                     |  for comprehension: iterate omitting the upper bound |
 |  <h2 id="pattern_matching">pattern matching</h2>                                                         |                 |
 |  <span class="label success">Good</span> `(xs zip ys) map { case (x,y) => x*y }`<br> <span class="label important">Bad</span> `(xs zip ys) map( (x,y) => x*y )` |  use case in function args for pattern matching. |
 |  <span class="label important">Bad</span><br>`val v42 = 42`<br>`Some(3) match {`<br>`  case Some(v42) => println("42")`<br>`    case _ => println("Not 42")`<br>`}` |  "v42" is interpreted as a name matching any Int value, and "42" is printed. |
