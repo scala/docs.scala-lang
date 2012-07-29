@@ -143,7 +143,7 @@ copying required for these collection types introduces an overhead not
 incurred by any other collection types, like `Array`, `Vector`, `HashMap`, etc.
 
 For more information on conversions on parallel collections, see the
-[conversions]({{ site.baseurl }}/overviews/parallel-collections/converesions.html) 
+[conversions]({{ site.baseurl }}/overviews/parallel-collections/conversions.html) 
 and [concrete parallel collection classes]({{ site.baseurl }}/overviews/parallel-collections/concrete-parallel-collections.html) 
 sections of thise guide.
 
