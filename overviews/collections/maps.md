@@ -104,7 +104,7 @@ Note that the second argument to `getOrElseUpdate` is "by-name", so the computat
 
 ### Synchronized Sets and Maps ###
 
-To get a thread-safe mutable map, you can mix the `SynchronizedMap` trait trait into whatever particular map implementation you desire. For example, you can mix `SynchronizedMap` into `HashMap`, as shown in the code below. This example begins with an import of two traits, `Map` and `SynchronizedMap`, and one class, `HashMap`, from package `scala.collection.mutable`. The rest of the example is the definition of singleton object `MapMaker`, which declares one method, `makeMap`. The `makeMap` method declares its result type to be a mutable map of string keys to string values.
+To get a thread-safe mutable map, you can mix the `SynchronizedMap` trait into whatever particular map implementation you desire. For example, you can mix `SynchronizedMap` into `HashMap`, as shown in the code below. This example begins with an import of two traits, `Map` and `SynchronizedMap`, and one class, `HashMap`, from package `scala.collection.mutable`. The rest of the example is the definition of singleton object `MapMaker`, which declares one method, `makeMap`. The `makeMap` method declares its result type to be a mutable map of string keys to string values.
 
       import scala.collection.mutable.{Map,
           SynchronizedMap, HashMap}
