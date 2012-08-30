@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+layout: contribute
 title: Contribute
 ---
 
