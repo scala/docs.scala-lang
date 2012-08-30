@@ -18,9 +18,9 @@ The Scala community is made up of a diverse set of individuals and
 backgrounds. Everyone can make a contribution to Scala. Disagreement is no
 excuse for poor behavior. Also, many users coming to Scala might have
 different background than others. Not knowing a particular domain is not just
-cause for rude behavior. On the flip side, if someone is suggesting concepts
+cause for rude behavior. If someone is suggesting concepts
 that go beyond your basic understanding, patiently asking for more information
-is the right way to go. In all interactions, treat each other with respect.
+is the right way to go. Treat each other with respect in all interactions.
 
 A few examples for clarification.
 
@@ -76,14 +76,14 @@ personal attacks, abusive language or snide comments, then the following
 actions will be taken:
 
 1. **Issued a warning** On the first offense, one of the Scala moderators will issue a warning about the unacceptable behavior.
-2. **Put under moderation** On the second offense, a user may be placed under moderation.  This is a limited time deal.  If behavior improves, a user can leave moderated status.   If behavior degrades, it can lead to #3.
+2. **Put under moderation** On the second offense, a user may be placed under moderation.  This will continue for a maximum of three months.  If behavior improves, a user can leave moderated status.   If behavior degrades, it can lead to #3.
 3. **Removal from community** If a user has already been placed under moderation and returned, or has not learned to be respectful and courteous to others, it will constitute a removal from the Scala community, including all forums the Scala moderators are responsible for.
 
 ## The Mailing Lists
 
 The Scala mailing lists are split into several sub-lists:
 - **scala-user** This is a mailing list for beginners/users of scala. No question is a dumb question on Scala user. No a priori knowledge of math, functional programing, java, or other topics should be assumed on this list. Any question can and should receive a courteous and insightful answer.
-- **scala-debate** This is the ‘anthing goes’ list. You can bring up any issue, any topic, even heated ones. While professional courtesy and respect must be maintained, this is where discussion on controversial topics can occur, or “what-if” type questions.
+- **scala-debate** This is the ‘anthing goes’ list. You can bring up any issue, any loosely scala-related topic. While professional courtesy and respect must be maintained, this is where discussion on controversial topics can occur, or “what-if” type questions.
 - **scala-internals** This is the list relating to compiler/library development. If you’re into the actually day-to-day nuts and bolts of jenkins, pull requests and compiler bugs, this is the place to hang out. New implementations are discussed here, after being proposed to the general public.
 - **scala-language** This list is for questions relating to the language itself and its specification. This includes deep topics like “Why do implicits work this way” or “What does Foo extends Any mean?”
 - **scala-sips** This list is for collaboration and feedback regarding actively developed new features for Scala.   A SIP includes both the proposal process, as well as the implemenetation and integration into scala core.   If you want to see what’s coming down the pipe and you’d like to be involved, this is the mailing list for you.
