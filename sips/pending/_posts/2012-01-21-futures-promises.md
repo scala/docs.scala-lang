@@ -97,7 +97,7 @@ of type `Left[Throwable]` otherwise. The `onComplete` method is
 parametric in the return type of the callback, but it discards the
 result of the callback.
 
-Coming back to our social network example, lets assume we want to
+Coming back to our social network example, let's assume we want to
 fetch a list of our own recent posts and render them to the screen.
 We do so by calling the method `getRecentPosts` which returns a `List[String]`:
 
@@ -131,14 +131,18 @@ To handle failed results, the `onFailure` callback is used:
     
     f onFailure {
       case t => render("An error has occured: " + t.getMessage)
-    } onSuccess {
+    }
+    f onSuccess {
       case posts => for (post <- posts) render(post)
     }
 
 The `onFailure` callback is only executed if the future fails, that
 is, if it contains an exception. The `onComplete`, `onSuccess`, and
-`onFailure` methods return the receiver (the future), which allows
-registering multiple callbacks by chaining invocations.
+`onFailure` methods have result type `Unit`, which means invocations
+of these methods cannot be chained. This is an intentional design
+decision which was made to avoid suggesting that chained
+invocations may imply an ordering on the execution of the registered
+callbacks (callbacks registered on the same future are unordered).
 
 Since partial functions have the `isDefinedAt` method, the
 `onFailure` method only triggers the callback if it is defined for a
@@ -184,7 +188,7 @@ However, a particular `Future` implementation may have a well-defined
 order.
 
 5. In the event that some of the callbacks throw an exception, the
-other callbacks are executed irregardlessly.
+other callbacks are executed regardlessly.
 
 6. In the event that some of the callbacks never complete (e.g. the
 callback contains an infinite loop), the other callbacks may not be
