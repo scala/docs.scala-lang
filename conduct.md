@@ -7,7 +7,8 @@ This Code of Conduct covers our behaviour as members of the Scala Community,
 in any forum, mailing list, wiki, web site, IRC channel, hackathon, public
 meeting or private correspondence.  Scala moderators  are appointed by EPFL /
 Typesafe to maintain the health of the community and will arbitrate in any
-dispute over the conduct of a member of the community.
+dispute over the conduct of a member of the community.  This should not be 
+interpreted like a legal document.
 
 The code of conduct consists of a few simple rules:
 
@@ -20,6 +21,24 @@ different background than others. Not knowing a particular domain is not just
 cause for rude behavior. On the flip side, if someone is suggesting concepts
 that go beyond your basic understanding, patiently asking for more information
 is the right way to go. In all interactions, treat each other with respect.
+
+A few examples for clarification.
+
+Abusive language, such as:
+
+> F*** you
+
+is never welcome.  The same goes for personal attacks like the following:
+
+> It's obvious you're a troll.
+
+Snide comments, like the following:
+
+> You really haven't comprehended anything I'm saying.
+
+are generally unhelpful.  What you could have said:
+  
+> I think perhaps my point was unclear.  Let's rehash:
 
 ## (2) Be Courteous
 
@@ -36,7 +55,7 @@ is the right way to go. In all interactions, treat each other with respect.
 Strive to improve in all things. Strive to better Scala, and improve
 understanding. Improve your own teaching styles. Change the way we think about
 code design. Scala is a gateway into a new world of software design, and we’re
-constantly learning new things and opening new avenues. Leave your mind open
+constantly learning new things and opening new avenues. Keep an open mind
 to try new things, and strive to improve what we already know.
 
 ## (4) Be Thorough
@@ -45,14 +64,14 @@ No matter what it is, responding to a question, fixing a bug, writing a
 proposal, make sure the contribution is thorough. Don’t leave things half
 written or half done. While the evolution of Scala is a continual process,
 incomplete work is often of negative benefit. At the same time, contributors
-will come and go, as with any open source community. If you need to drop
-something, take measures to ensure someone else is willing to pick it up, or
-notify the other maintainers.
+will come and go, as with any open source community. If a contributor needs 
+to drop something, take measures to ensure someone else is willing to pick 
+it up, or notify the other maintainers.
 
 
 ## Violating the Code
 
-If certain unruly individuals refuse to abide by the Code of Conduct, via
+If a community member refuses to abide by the Code of Conduct, via
 personal attacks, abusive language or snide comments, then the following
 actions will be taken:
 
