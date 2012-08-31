@@ -3,12 +3,15 @@ layout: page
 title: The Scala Code of Conduct
 ---
 
-This Code of Conduct covers our behaviour as members of the Scala Community,
-in any forum, mailing list, wiki, web site, IRC channel, hackathon, public
-meeting or private correspondence.  Scala moderators  are appointed by EPFL /
+This Code of Conduct covers our behaviour as contributors/comitters of the 
+Scala Team, as well as those participating in any Scala moderated forum, 
+mailing list, wiki, web site, IRC channel, hackathon, public meeting or 
+private correspondence.  Scala moderators  are appointed by EPFL /
 Typesafe to maintain the health of the community and will arbitrate in any
-dispute over the conduct of a member of the community.  This should not be 
-interpreted like a legal document.
+dispute over the conduct of a member of the community.  
+
+Note: This should not be interpreted like a legal document.  It's a statement
+of intent, and a guideline for collaboration.
 
 The code of conduct consists of a few simple rules:
 
