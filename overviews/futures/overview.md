@@ -41,8 +41,7 @@ environment to resize itself if necessary to guarantee progress.
 A `Future` is an object holding a value which may become available at some point.
 This value is usually the result of some other computation.
 Since this computation may fail with an exception, the `Future`
-either holds a result of the computation or an exception in case
-the computation failed.
+may also hold an exception in case the computation throws one.
 Whenever a `Future` gets either a value or an exception, we say
 that the `Future` is **completed**.
 When a `Future` is completed with a value, we say that the future
@@ -53,23 +52,23 @@ When a `Future` is completed with an exception, we say that the
 A `Future` has an important property that it may only be assigned
 once.
 Once a `Future` object is given a value or an exception, it becomes
-in effect immutable-- it can never be overwritten with a new value.
+in effect immutable-- it can never be overwritten.
 
 The simplest way to create a future object is to invoke the `future`
 method which starts an asynchronous computation and returns a
 future holding the result of that computation.
 The result becomes available once the future completes.
 
-Note that `Future` is a type which denotes future objects, whereas
+Note that `Future[T]` is a type which denotes future objects, whereas
 `future` is a method which creates and schedules an asynchronous
 computation, and then returns a future object which will be completed
 with the result of that computation.
 
 This is best shown through an example.
-Let's assume that we want to use the hypothetical API of some
+Let's assume that we want to use a hypothetical API of some
 popular social network to obtain a list of friends for a given user.
-We will open a new session used to send requests and then send
-the request to obtain a list of friends of a particular user:
+We will open a new session and then send
+a request to obtain a list of friends of a particular user:
 
     import scala.concurrent._
     import ExecutionContext.Implicits.global
@@ -100,7 +99,7 @@ responds.
 
 An unsuccessful attempt may result in an exception. In
 the following example, the `session` value is incorrectly
-initialized, so the computation in the `future` block will yield a `NullPointerException`.
+initialized, so the computation in the `future` block will throw a `NullPointerException`.
 This future `f` is then failed with this exception instead of being completed successfully:
 	
     val session = null
@@ -110,12 +109,12 @@ This future `f` is then failed with this exception instead of being completed su
 
 The line `import ExecutionContext.Implicits.global` above imports
 the default global execution context.
-Execution contexts execute tasks submitted to them asynchronously.
-You can think of execution contexts as thread pools.
+Execution contexts execute tasks submitted to them, and
+you can think of execution contexts as thread pools.
 They are essential for the `future` method because
 they handle how and when the asynchronous computation is executed.
-You can define your own execution contexts and use them with `future`
-as will be shown later, but for now it is sufficient to know that
+You can define your own execution contexts and use them with `future`,
+but for now it is sufficient to know that
 you can import the default execution context as shown above.
 
 Our example was based on a hypothetical social network API where
@@ -174,7 +173,7 @@ value is a `Throwable`.
 
 Coming back to our social network example, let's assume we want to
 fetch a list of our own recent posts and render them to the screen.
-We do so by calling a hypothetical method `getRecentPosts` which returns
+We do so by calling a method `getRecentPosts` which returns
 a `List[String]`-- a list of recent textual posts:
 
     val f: Future[List[String]] = future {
@@ -250,7 +249,7 @@ of the keyword to the screen:
 The `onComplete`, `onSuccess`, and
 `onFailure` methods have result type `Unit`, which means invocations
 of these methods cannot be chained. Note that this design is intentional,
-to prevent suggesting that chained
+to avoid suggesting that chained
 invocations may imply an ordering on the execution of the registered
 callbacks (callbacks registered on the same future are unordered).
 
@@ -330,8 +329,8 @@ thus being eligible for GC.
 
 The callback mechanism we have shown is sufficient to chain future
 results with subsequent computations.
-However, it is sometimes inconvenient as it may become bulky.
-We show this through an example. Assume we have an API for
+However, it is sometimes inconvenient and results in bulky code.
+We show this with an example. Assume we have an API for
 interfacing with a currency trading service. Suppose we want to buy US
 dollars, but only when it's profitable. We first show how this could
 be done using callbacks:
@@ -379,8 +378,8 @@ more straightforward composition. One of the basic combinators
 is `map`, which, given a future and a mapping function for the value of
 the future, produces a new future that is completed with the
 mapped value once the original future is successfully completed.
-You can reason about `map`ping futures as you reason about `map`ping
-collections.
+You can reason about `map`ping futures in the same way you reason
+about `map`ping collections.
 
 Let's rewrite the previous example using the `map` combinator:
 
@@ -400,7 +399,7 @@ Let's rewrite the previous example using the `map` combinator:
 By using `map` on `rateQuote` we have eliminated one `onSuccess` callback and,
 more importantly, the nesting.
 If we now decide to sell some other currency, it suffices to use
-`map` on `purchase`.
+`map` on `purchase` again.
 
 But what happens if `isProfitable` returns `false`, hence causing
 an exception to be thrown?
@@ -410,7 +409,7 @@ Furthermore, imagine that the connection was broken and that
 In that case we'd have no value to map, so the `purchase` would
 automatically be failed with the same exception as `rateQuote`.
 
-More formally, if the original future is
+In conclusion, if the original future is
 completed successfully then the returned future is completed with a
 mapped value from the original future. If the mapping function throws
 an exception the future is completed with that exception. If the
@@ -457,18 +456,19 @@ The for-comprehension above is translated into:
     }
 
 which is a bit harder to grasp than the for-comprehension, but
-we analyze to better understand the `flatMap` operation.
+we analyze it to better understand the `flatMap` operation.
 The `flatMap` operation maps its own value into some other future.
 Once this different future is completed, the resulting future
 is completed with its value.
-In our example, `flatMap` used the value of the `usdQuote` future
+In our example, `flatMap` uses the value of the `usdQuote` future
 to map the value of the `chfQuote` into a third future which
 sends a request to buy a certain amount of Swiss francs.
-Only once this third future completes is the resulting future completed.
+The resulting future `purchase` is completed only once this third
+future returned from `map` completes.
 
 This can be mind-boggling, but fortunately the `flatMap` operation
 is seldom used outside for-comprehensions, which are easier to
-understand.
+use and understand.
 
 The `filter` combinator creates a new future which contains the value
 of the original future only if it satisfies some predicate. Otherwise,
@@ -715,7 +715,7 @@ in which future the computation failed.
 
 ## Promises
 
-So far we have only considered `Future` objects created through
+So far we have only considered `Future` objects created by
 asynchronous computations started using the `future` method.
 However, futures can also be created using *promises*.
 
@@ -733,7 +733,7 @@ may be the case that `p.future eq p`.
 
 Consider the following producer-consumer example, in which one computation
 produces a value and hands it off to another computation which consumes
-that value. This passing of the value is done through a future.
+that value. This passing of the value is done using a promise.
 
     import scala.concurrent.{ future, promise }
     import scala.concurrent.ExecutionContext.Implicits.global
