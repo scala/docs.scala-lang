@@ -1,8 +1,6 @@
 ---
 layout: overview
 title: The Architecture of Scala Collections
-label-color: success
-label-text: Available
 ---
 
 **Martin Odersky and Lex Spoon**

@@ -3,7 +3,7 @@ layout: overview
 title: String Interpolation
 disqus: true
 label-color: success
-label-text: Available
+label-text: New in 2.10
 ---
 
 ## Introduction
@@ -22,7 +22,7 @@ was introduced by [SIP-13](http://docs.scala-lang.org/sips/pending/string-interp
 
 Scala provides three string interpolation methods out of the box:  `s`, `f` and `raw`.
 
-**The `s` string interpolator**
+### The `s` String Interpolator
 
 Prepending `s` to any string literal allows the usage of variables directly in the string. You've already seen an example here:
 
@@ -39,7 +39,7 @@ String interpolators can also take arbitrary expressions.  For example:
 will print the string `1 + 1 = 2`.  Any arbitrary expression can be embedded in `${}`.
 
 
-**The `f` interpolator**
+### The `f` Interpolator
 
 Prepending `f` to any string literal allows the creation of simple formatted strings, similar to `printf` in other languages.  When using the `f`
 interpolator, all variable references should be followed by a `printf`-style format string, like `%d`.   Let's look at an example:
@@ -65,7 +65,7 @@ The `f` interpolator makes use of the string format utilities available from Jav
 definition a formatter of `%s` (`String`) is assumed.
 
 
-**The `raw` interpolator**
+### The `raw` Interpolator
 
 The raw interpolator is similar to the `s` interpolator except that it performs no escaping of literals within the string.  Here's an example processed string:
 
@@ -112,7 +112,7 @@ When the compiler encounters the literal `json"{ name: $name, id: $id }"` it rew
 
 The implicit class is then used to rewrite it to the following:
 
-   new JsonHelper(new StringContext("{ name:", ",id: ", "}")).json(name, id)
+    new JsonHelper(new StringContext("{ name:", ",id: ", "}")).json(name, id)
 
 So, the `json` method has access to the raw pieces of strings and each expression as a value.   A simple (buggy) implementation of this method could be:
 
