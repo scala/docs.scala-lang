@@ -6,6 +6,8 @@ label-color: success
 label-text: New in 2.10
 ---
 
+**Josh Suereth**
+
 ## Introduction
 
 Starting in Scala 2.10.0, Scala offers a new mechanism to create strings from your data:  String Interpolation.
