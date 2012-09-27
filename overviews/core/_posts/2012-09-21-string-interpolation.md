@@ -48,8 +48,8 @@ interpolator, all variable references should be followed by a `printf`-style for
     val name = "James"
     println(f"$name%s is $height%2.2f meters tall")  // James is 1.90 meters tall
 
-The `f` interpolator is typesafe.  If you try to pass a format string that only works for integers but pass a double, the compiler will issue a
-warning.  For example:
+The `f` interpolator is typesafe.  If you try to pass a format string that only works for integers but pass a double, the compiler will issue an
+error.  For example:
 
     val height: Double = 1.9d
     
@@ -61,28 +61,41 @@ warning.  For example:
                   ^
 
 The `f` interpolator makes use of the string format utilities available from Java.   The formats allowed after the `%` character are outlined in the 
-[Formatter javadoc](http://docs.oracle.com/javase/1.5.0/docs/api/java/util/Formatter.html#detail).   If there is no `%` character after a variable
+[Formatter javadoc](http://docs.oracle.com/javase/1.6.0/docs/api/java/util/Formatter.html#detail).   If there is no `%` character after a variable
 definition a formatter of `%s` (`String`) is assumed.
 
 
 **The `raw` interpolator**
 
-The raw interpolator is similar to the `s` interpolator except that it performs no escaping of literals within the string.  This means:
+The raw interpolator is similar to the `s` interpolator except that it performs no escaping of literals within the string.  Here's an example processed string:
 
-    s"\n" != raw"\n"
+    scala> s"a\nb"
+    res0: String = 
+    a
+    b
+
+Here the `s` string interpolator replaced the characters `\n` with a return character.   The `raw` interpolator will not do that.
+
+    scala> raw"a\nb"
+    res1: String = a\nb
 
 The raw interpolator is useful when you want to avoid having expressions like `\n` turn into a return character.
+
+
+In addition to the three default string interpolators, users can define their own.
 
 ## Advanced Usage
 
 In Scala, all processed string literals are simple code transformations.   Anytime the compiler encounters a string literal of the form:
 
-    $id"string content"
+    id"string content"
 
-it transforms it into a method call against [StringContext](http://www.scala-lang.org/archives/downloads/distrib/files/nightly/docs/library/index.html#scala.StringContext).
+it transforms it into a method call (`id`) on an instance of [StringContext](http://www.scala-lang.org/archives/downloads/distrib/files/nightly/docs/library/index.html#scala.StringContext).
 This method can also be available on implicit scope.   To define our own string interpolation, we simply need to create an implicit class that adds a new method
 to `StringContext`.  Here's an example:
 
+    // Note: We extends AnyVal to prevent runtime instantiation.  See 
+    // value class guide for more info.
     implicit class JsonHelper(val sc: StringContext) extends AnyVal {
       def json(args: Any*): JSONObject = sys.error("TODO - IMPLEMENT")
     }
