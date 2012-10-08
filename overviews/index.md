@@ -12,7 +12,7 @@ title: Guides and Overviews
 * {{ post.title }} <span class="label {{ post.label-color }}">{{ post.label-text }}</span>
   {% for pg in site.pages %}
     {% if pg.partof == post.partof and pg.outof %}
-      {% assign totalPages = pg.outof %}  
+      {% assign totalPages = pg.outof %}
     {% endif %}
   {% endfor %}
 
@@ -29,7 +29,10 @@ title: Guides and Overviews
   {% else %} **ERROR**. Couldn't find the total number of pages in this set of tutorial articles. Have you declared the `outof` tag in your YAML front matter?
   {% endif %}
 {% else %}
+  {% if post.hidden == true %}
+  {% else %}
 * [{{ post.title }}]({{ site.baseurl }}{{ post.url }}) <span class="label {{ post.label-color }}">{{ post.label-text }}</span>
+  {% endif %}
 {% endif %}
 {% endfor %} 
 <!--* Swing <span class="label important">In Progress</span>-->
