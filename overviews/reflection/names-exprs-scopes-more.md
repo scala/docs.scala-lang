@@ -5,7 +5,29 @@ title: Names, Exprs, Scopes, and More
 partof: reflection
 num: 5
 ---
+===Names===
+Names are separated into two distinct namespaces for terms and types. For example it is possible to have
+a class named `C` and an object named `C` declared in the same lexical scope.
 
+Therefore the Scala reflection API models names using strongly-typed objects rather than strings:
+[[scala.reflect.api.Names#TermName]] and [[scala.reflect.api.Names#TypeName]].
+
+A Name wraps a string as the name for either a type ([[TypeName]]) of a term ([[TermName]]).
+Two names are equal, if the wrapped string are equal and they are either both `TypeName` or both `TermName`.
+The same string can co-exist as a `TypeName` and a `TermName`, but they would not be equal.
+Names are interned. That is, for two names `name1` and `name2`, `name1 == name2` implies `name1 eq name2`.
+Name instances also can perform mangling and unmangling of symbolic names.
+
+
+
+An alternative notation makes use of implicit conversions from `String` to `TermName` and `TypeName`:
+`typeOf[List[_]].member("map": TermName)`. Note that there's no implicit conversion from `String` to `Name`,
+because it would be unclear whether such a conversion should produce a term name or a type name.
+
+Finally some names that bear special meaning for the compiler are defined in [[scala.reflect.api.StandardNames]].
+For example, `WILDCARD` represents `_` and `CONSTRUCTOR` represents the standard JVM name for constructors, `<init>`.
+Prefer using such constants instead of spelling the names out explicitly.
+===Annotations===
 ### Annotation Example
  
 Entry points to the annotation API are [[scala.reflect.api.Symbols#Symbol.annotations]] (for definition annotations) and [[scala.reflect.api.Types#AnnotatedType]] (for type annotations).
@@ -38,3 +60,4 @@ To get annotations attached to a type, simply pattern match that type against [[
       println(d.annotations)                           // List(J(x = 2, y = 2))
       println(d.annotations(0).javaArgs)               // Map(x -> 2, y -> 2)
     }
+
