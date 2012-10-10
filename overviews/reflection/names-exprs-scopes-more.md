@@ -61,3 +61,43 @@ To get annotations attached to a type, simply pattern match that type against [[
       println(d.annotations(0).javaArgs)               // Map(x -> 2, y -> 2)
     }
 
+===Positions===
+For interactive IDE's there are also range positions and transparent positions. A range position indicates a `start` and an `end`
+in addition to its point. Range positions need to be non-overlapping and a tree node's range position must contain
+the positions of all its children. Transparent positions were added to work around the invariants if the code
+structure requires it. Non-transparent positions 
+
+Trees with RangePositions need to satisfy the following invariants.
+ - INV1: A tree with an offset position never contains a child
+       with a range position
+ - INV2: If the child of a tree with a range position also has a range position,
+       then the child's range is contained in the parent's range.
+ - INV3: Opaque range positions of children of the same node are non-overlapping
+       (this means their overlap is at most a single point).
+
+The following tests are useful on positions:
+ `pos.isDefined`     true if position is not a NoPosition,
+ `pos.isRange`       true if position is a range,
+ `pos.isOpaqueRange` true if position is an opaque range,
+
+There are also convenience methods, such as
+ `pos.startOrPoint`,
+ `pos.endOrPoint`,
+ `pos.pointOrElse(default)`.
+These are less strict about the kind of position on which they can be applied.
+
+The following conversion methods are often used:
+ `pos.focus`           converts a range position to an offset position, keeping its point;
+                       returns all other positions unchanged,
+ `pos.makeTransparent` converts an opaque range position into a transparent one.
+                       returns all other positions unchanged.
+==== Known issues ====
+As it currently stands, positions cannot be created by a programmer - they only get emitted by the compiler
+and can only be reused in compile-time macro universes.
+
+Also positions are neither pickled (i.e. saved for runtime reflection using standard means of scalac) nor
+reified (i.e. saved for runtime reflection using the [[Universe#reify]] macro).
+
+This API is considered to be a candidate for redesign. It is quite probable that in future releases of the reflection API
+positions will undergo a dramatic rehash.
+
