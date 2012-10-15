@@ -166,3 +166,55 @@ However there's much more to Scala reflection, with examples on other documentat
   - [[scala.reflect.api.Printers How to inspect internal structure of reflection artifacts?]]
   - [[scala.reflect.api.Importers How to move reflection artifacts from one universe to another?]]
   - [[scala.reflect.macros.package How to use compile-time reflection in macros?]]
+
+
+<!--  *
+ * See [[scala.reflect.api.package the overview page]] for a description of universes and infomation on getting started with Scala reflection API.
+ * This page lists the most important layers of the cake, and describes paculiarities of cake APIs.
+ *
+ * The reflection library is structured according to the 'cake pattern'. The main layer
+ * resides in package [[scala.reflect.api]] and defines an interface to the following main types: -->
+
+<!-- Taken from Universe.reify
+    * == Further info and implementation details ==
+   *
+   * `reify` is implemented as a macro, which given an expression, generates a tree that when compiled and executed produces the original tree.
+   *
+   *  For instance in `reify{ x + 1 }` the macro `reify` receives the abstract syntax tree of `x + 1` as its argument, which is
+   *
+   *  {{{
+   *    Apply(Select(Ident("x"), "+"), List(Literal(Constant(1))))
+   *  }}}
+   *
+   *  and returns a tree, which produces the tree above, when compiled and executed. So in other terms, the refiy call expands to something like
+   *
+   *  {{{
+   *      val $u: u.type = u // where u is a reference to the Universe that calls the reify
+   *      $u.Expr[Int]($u.Apply($u.Select($u.Ident($u.newFreeVar("x", <Int>, x), "+"), List($u.Literal($u.Constant(1))))))
+   *  }}}
+   *
+   *  ------
+   *
+   *  Reification performs expression splicing (when processing Expr.splice)
+   *  and type splicing (for every type T that has a TypeTag[T] implicit in scope):
+   *
+   *  {{{
+   *    val two = mirror.reify(2)                         // Literal(Constant(2))
+   *    val four = mirror.reify(two.splice + two.splice)  // Apply(Select(two.tree, newTermName("$plus")), List(two.tree))
+   *
+   *    def macroImpl[T](c: Context) = {
+   *      ...
+   *      // T here is just a type parameter, so the tree produced by reify won't be of much use in a macro expansion
+   *      // however, if T were annotated with c.WeakTypeTag (which would declare an implicit parameter for macroImpl)
+   *      // then reification would substitute T with the TypeTree that was used in a TypeApply of this particular macro invocation
+   *      val factory = c.reify{ new Queryable[T] }
+   *      ...
+   *    }
+   *  }}}
+   *
+   *  The transformation looks mostly straightforward, but it has its tricky parts:
+   *    - Reifier retains symbols and types defined outside the reified tree, however
+   *      locally defined entities get erased and replaced with their original trees
+   *    - Free variables are detected and wrapped in symbols of the type `FreeTermSymbol` or `FreeTypeSymbol`
+   *    - Mutable variables that are accessed from a local function are wrapped in refs
+ -->
