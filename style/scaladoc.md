@@ -160,14 +160,14 @@ sure to indicate the actual method names:
 
     /** Factory for [[mypackage.Person]] instances. */
     object Person {
-      /** Create a person with a given name and age.
+      /** Creates a person with a given name and age.
         *
         * @param name their name
         * @param age the age of the person to create 
         */
       def apply(name: String, age: Int) = {}
 
-      /** Create a person with a given name and birthdate
+      /** Creates a person with a given name and birthdate
         *
         * @param name their name
         * @param birthDate the person's birthdate
@@ -180,7 +180,7 @@ sure to indicate the actual method names:
 If your object holds implicit conversions, provide an example in the
 ScalaDoc:
 
-    /** Implicits conversions and helpers for [[mypackage.Complex]] instances.
+    /** Implicit conversions and helpers for [[mypackage.Complex]] instances.
       *
       * {{ "{{{" }}
       * import ComplexImplicits._
@@ -202,6 +202,6 @@ sentence should be a summary of what the method does. Subsequent
 sentences explain in further detail. Document each parameter as well as
 each type parameter (with `@tparam`). For curried functions, consider
 providing more detailed examples regarding the expected or idiomatic
-usage. For implicit parameters, take special to care to explain where
+usage. For implicit parameters, take special care to explain where
 these parameters will come from and if the user needs to do any extra
 work to make sure the parameters will be available.
