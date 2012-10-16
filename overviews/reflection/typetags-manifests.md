@@ -128,3 +128,6 @@ There are however a few caveats:
  has been created to track the implementation of this feature.
 
 
+***********
+Also mention how to get a java class from a type tag
+***********
