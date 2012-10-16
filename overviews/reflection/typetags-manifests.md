@@ -13,3 +13,4 @@ num: 5
 ### WeakTypeTags
 
 ## Manifests
+(Also mention how to get a java class from a type tag)
