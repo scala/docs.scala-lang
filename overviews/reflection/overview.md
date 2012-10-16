@@ -7,14 +7,10 @@ num: 1
 outof: 6
 ---
 
-## Scala Reflection
+Coming soon!
 
-And what it provides over Java reflection.
+## Scala Reflection
 
 ## Macros
 
-Relation between Scala Reflection and macros
-
 ## Environment (subsection title TBD)
-
-Some high-level picture of how to think about reflection- which inevitably involves universes and mirrors.

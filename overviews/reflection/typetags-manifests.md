@@ -6,6 +6,8 @@ partof: reflection
 num: 5
 ---
 
+Coming soon!
+
 ## Tags
 
 ### TypeTags
@@ -13,4 +15,3 @@ num: 5
 ### WeakTypeTags
 
 ## Manifests
-(Also mention how to get a java class from a type tag)
