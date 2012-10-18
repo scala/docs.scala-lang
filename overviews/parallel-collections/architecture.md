@@ -27,7 +27,7 @@ extend-- new collection classes can simply inherit most of their operations.
 ## Core Abstractions
 
 The aforementioned "template" traits implement most parallel operations in
-terms of two core abstractions-- `Splitter`s and `Combiner`s. 
+terms of two core abstractions-- `Splitter`s and `Combiner`s.
 
 ### Splitters
 
@@ -52,7 +52,7 @@ subsets of elements of the whole parallel collection. And similar to normal
 In general, collections are partitioned using `Splitter`s into subsets of
 roughly the same size. In cases where more arbitrarily-sized partions are
 required, in particular on parallel sequences, a `PreciseSplitter` is used,
-which inherits `Splitter` and additionally implements a precise split method, 
+which inherits `Splitter` and additionally implements a precise split method,
 `psplit`.
 
 ### Combiners
@@ -92,7 +92,7 @@ regular collections framework's corresponding traits, as shown below.
 
 The goal is of course to integrate parallel collections as tightly as possible
 with sequential collections, so as to allow for straightforward substitution
-of sequential and parallel collections. 
+of sequential and parallel collections.
 
 In order to be able to have a reference to a collection which may be either
 sequential or parallel (such that it's possible to "toggle" between a parallel

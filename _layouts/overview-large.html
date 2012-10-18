@@ -6,9 +6,10 @@ layout: default
 
 <div class="container">
   <div class="row">
-    
+
+    {% if page.partof %}<div class="span10"><h3 id="guide-title">{{ page.partof | replace: '-',' ' }}</h3></div>{% endif %}
     <div class="span10">{% if page.title %}<h1>{{ page.title }}</h1>{% else %}<h1>{{ site.title }}</h1>{% endif %}</div>
-    
+
     {% for pg in site.pages %}
       {% if pg.partof == page.partof and pg.languages %}
         {% assign languages = pg.languages %}
@@ -24,9 +25,9 @@ layout: default
 
     <div class="span6">
       {% if languages %}
-        <a href="{{ site.baseurl }}{{ rootTutorialURL }}"><img src="{{ site.baseurl }}/resources/images/language/en.png" title="Language: en"/></a> 
+        <a href="{{ site.baseurl }}{{ rootTutorialURL }}"><img src="{{ site.baseurl }}/resources/images/language/en.png" title="Language: en"/></a>
         {% for l in languages %}
-          <a href="{{ site.baseurl }}/{{ l }}{{ rootTutorialURL }}"><img src="{{ site.baseurl }}/resources/images/language/{{ l }}.png" title="Language: {{ l }}"/></a> 
+          <a href="{{ site.baseurl }}/{{ l }}{{ rootTutorialURL }}"><img src="{{ site.baseurl }}/resources/images/language/{{ l }}.png" title="Language: {{ l }}"/></a>
         {% endfor %}
       {% endif %}
     </div>
@@ -35,13 +36,13 @@ layout: default
       {{ content }}
       {% if page.disqus == true %}{% include disqus.txt %}{% endif %}
     </div>
-    
+
     <div class="span6">
       {% include toc-large.txt %}
     </div>
-    
-	
+
+
   </div>
 </div>
 
-{% include footer.txt %}    
+{% include footer.txt %}
