@@ -7,10 +7,6 @@ num: 1
 outof: 6
 ---
 
-Coming soon!
+This document is in progress and will be ready in a few days.
 
-## Scala Reflection
-
-## Macros
-
-## Environment (subsection title TBD)
+In the meanwhile, to get an overview of reflection please follow our slides at [http://scalamacros.org/talks/2012-04-28-MetaprogrammingInScala210.pdf](http://scalamacros.org/talks/2012-04-28-MetaprogrammingInScala210.pdf).
