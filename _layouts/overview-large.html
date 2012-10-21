@@ -7,7 +7,7 @@ layout: default
 <div class="container">
   <div class="row">
 
-    {% if page.partof %}<div class="span10"><h3 id="guide-title">{{ page.partof | replace: '-',' ' }}</h3></div>{% endif %}
+    {% if page.partof %}<div class="span10"><div id="guide-title">{{ page.partof | replace: '-',' ' }}</div></div>{% endif %}
     <div class="span10">{% if page.title %}<h1>{{ page.title }}</h1>{% else %}<h1>{{ site.title }}</h1>{% endif %}</div>
 
     {% for pg in site.pages %}
