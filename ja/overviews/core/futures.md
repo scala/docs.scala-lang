@@ -89,7 +89,7 @@ Future オブジェクトを返すメソッドだということだ。
 
 上の `import ExecutionContext.Implicits.global`
 という一文はデフォルトのグローバルな実行コンテキスト (execution context) をインポートする。
-実行コンテキストは渡されたタスクを実行し、スレッドプールのようなもとだと考えていい。
+実行コンテキストは渡されたタスクを実行し、スレッドプールのようなものだと考えていい。
 これらは、非同期計算がいつどのように実行されるかを取り扱うため、`future` メソッドに欠かせないものだ。
 独自の実行コンテキストを定義して `future`
 とともに使うことができるが、今のところは上記のようにデフォルトの実行コンテキストをインポートできるということが分かれば十分だ。
@@ -644,7 +644,7 @@ Promise は潜在的な値である `Try[T]` (失敗した結果の `Failure[Thr
 `success` 同様に、既に完了した Promise に対して `failure` や `complete` を呼び出すと
 `IllegalStateException` が投げられる。
 
-これまでに説明した Promise の演算とモナディックで副作用を持たたい演算を用いて合成した Future
+これまでに説明した Promise の演算とモナディックで副作用を持たない演算を用いて合成した Future
 を使って書いたプログラムの便利な特性としてそれらが決定的 (deterministic) であることが挙げられる。
 ここで決定的とは、プログラムで例外が投げられなければ、並列プログラムの実行スケジュールのいかんに関わらずプログラムの結果
 (Future から観測される値) は常に同じものとなるという意味だ。
@@ -678,7 +678,7 @@ Promise を失敗させた `Throwable` が `Error`、`InterruptedException`、�
 Promise、Future の `onComplete` メソッド、そして `future`
 構文を使うことで前述の関数型合成に用いられるコンビネータの全てを実装することができる。
 例えば、2つの Future `f` と `g` を受け取って、(最初に成功した) `f` か `g`
-のどちらかを返す `first` という新たしいコンビネータを実装したいとする。
+のどちらかを返す `first` という新しいコンビネータを実装したいとする。
 以下のように書くことができる:
 
     def first[T](f: Future[T], g: Future[T]): Future[T] = {
@@ -732,7 +732,7 @@ for library writers
 `Duration` は以下の方法で作成することができる:
 
 1. `Int` もしくは `Long` 型からの暗黙の変換する。例: `val d = 100 millis`。
-2. `Long` の長さと `java.util.concurrent.TimeUnit` と渡す。例: `val d = Duration(100, MILLISECONDS)`。 
+2. `Long` の長さと `java.util.concurrent.TimeUnit` を渡す。例: `val d = Duration(100, MILLISECONDS)`。 
 3. 時間の長さを表す文字列をパースする。例: `val d = Duration("1.2 µs")`。
 
 `Duration` は `unapply` メソッドも提供するため、パータンマッチング構文の中から使うこともできる。以下に具体例をみる:
