@@ -585,7 +585,7 @@ Future がリードオンリーのまだ存在しない値に対するプレー�
 Promise の `p` は `p.future` によって返される Future を完了させる。
 この Future は Promise `p` に特定のものだ。実装によっては `p.future eq p` の場合もある。
 
-1つの計算は値を生産し、もう 1つの計算がそれを消費する Producer-Consumer の具体例を使って説明しよう。
+ある計算が値を生産し、別の計算がそれを消費する Producer-Consumer の具体例を使って説明しよう。
 この値の受け渡しは Promise を使って実現している。
 
     import scala.concurrent.{ future, promise }
