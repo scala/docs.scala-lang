@@ -142,3 +142,34 @@ All operations on iterators are summarized below.
 |  **Strings:**             |						         |
 |  `it addString (b, start, sep, end)`| Adds a string to `StringBuilder` `b` which shows all elements returned by `it` between separators `sep` enclosed in strings `start` and `end`. `start`, `sep`, `end` are all optional. |
 |  `it mkString (start, sep, end)` | Converts the collection to a string which shows all elements returned by `it` between separators `sep` enclosed in strings `start` and `end`. `start`, `sep`, `end` are all optional. |
+
+### Buffered iterators
+
+Sometimes you want an iterator that can "look ahead", so that you can inspect the next element to be returned without advancing past that element. Consider for instance, the task to skip leading empty strings from an iterator that returns a sequence of strings. You might be tempted to write the following
+
+
+    def skipEmptyWordsNOT(it: Iterator[String]) =
+      while (it.next().isEmpty) {}
+  
+But looking at this code more closely, it's clear that this is wrong: The code will indeed skip leading empty strings, but it will also advance `it` past the first non-empty string!
+
+The solution to this problem is to use a buffered iterator. Class [BufferedIterator](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/BufferedIterator.html) is a subclass of [Iterator](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterator.html), which provides one extra method, `head`. Calling `head` on a buffered iterator will return its first element but will not advance the iterator. Using a buffered iterator, skipping empty words can be written as follows.
+
+    def skipEmptyWords(it: BufferedIterator[String]) =
+      while (it.head.isEmpty) { it.next() }
+
+Every iterator can be converted to a buffered iterator by calling its `buffered` method. Here's an example:
+
+    scala> val it = Iterator(1, 2, 3, 4)
+    it: Iterator[Int] = non-empty iterator
+    scala> val bit = it.buffered
+    bit: java.lang.Object with scala.collection.
+      BufferedIterator[Int] = non-empty iterator
+    scala> bit.head
+    res10: Int = 1
+    scala> bit.next()
+    res11: Int = 1
+    scala> bit.next()
+    res11: Int = 2
+
+Note that calling `head` on the buffered iterator `bit` does not advance it. Therefore, the subsequent call `bit.next()` returns the same value as `bit.head`.
