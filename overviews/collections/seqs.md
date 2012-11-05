@@ -70,3 +70,31 @@ If a sequence is mutable, it offers in addition a side-effecting `update` method
 |  `xs.distinct`	    |A subsequence of `xs` that contains no duplicated element.|
 
 Trait [Seq](http://www.scala-lang.org/api/current/scala/collection/Seq.html) has two subtraits [LinearSeq](http://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html), and [IndexedSeq](http://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html). These do not add any new operations, but each offers different performance characteristics: A linear sequence has efficient `head` and `tail` operations, whereas an indexed sequence has efficient `apply`, `length`, and (if mutable) `update` operations. Frequently used linear sequences are `scala.collection.immutable.List` and `scala.collection.immutable.Stream`. Frequently used indexed sequences are `scala.Array` and `scala.collection.mutable.ArrayBuffer`. The `Vector` class provides an interesting compromise between indexed and linear access. It has both effectively constant time indexing overhead and constant time linear access overhead. Because of this, vectors are a good foundation for mixed access patterns where both indexed and linear accesses are used. You'll learn more on vectors [later](#vectors).
+
+### Buffers ###
+
+An important sub-category of mutable sequences is `Buffer`s. They allow not only updates of existing elements but also element insertions, element removals, and efficient additions of new elements at the end of the buffer. The principal new methods supported by a buffer are `+=` and `++=` for element addition at the end, `+=:` and `++=:` for addition at the front, `insert` and `insertAll` for element insertions, as well as `remove` and `-=` for element removal. These operations are summarized in the following table.
+
+Two often used implementations of buffers are `ListBuffer` and `ArrayBuffer`.  As the name implies, a `ListBuffer` is backed by a `List`, and supports efficient conversion of its elements to a `List`, whereas an `ArrayBuffer` is backed by an array, and can be quickly converted into one.
+
+#### Operations in Class Buffer ####
+
+| WHAT IT IS               | WHAT IT DOES|
+| ------                   | ------                                                           |
+|  **Additions:**          |                                                                  |
+|  `buf += x`              |Appends element `x` to buffer, and returns `buf` itself as result.|
+|  `buf += (x, y, z)`      |Appends given elements to buffer.|
+|  `buf ++= xs`            |Appends all elements in `xs` to buffer.|
+|  `x +=: buf`             |Prepends element `x` to buffer.|
+|  `xs ++=: buf`           |Prepends all elements in `xs` to buffer.|
+|  `buf insert (i, x)`     |Inserts element `x` at index `i` in buffer.|
+|  `buf insertAll (i, xs)` |Inserts all elements in `xs` at index `i` in buffer.|
+|  **Removals:**           |                                                                  |
+|  `buf -= x`              |Removes element `x` from buffer.|
+|  `buf remove i`          |Removes element at index `i` from buffer.|
+|  `buf remove (i, n)`     |Removes `n` elements starting at index `i` from buffer.|
+|  `buf trimStart n`       |Removes first `n` elements from buffer.|
+|  `buf trimEnd n`         |Removes last `n` elements from buffer.|
+|  `buf.clear()`           |Removes all elements from buffer.|
+|  **Cloning:**            |                                                                  |
+|  `buf.clone`             |A new buffer with the same elements as `buf`.|
