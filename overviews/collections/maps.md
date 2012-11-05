@@ -29,6 +29,11 @@ The fundamental operations on maps are similar to those on sets. They are summar
 |  `ms contains k`  	    |Tests whether `ms` contains a mapping for key `k`.|
 |  `ms isDefinedAt k`  	    |Same as `contains`.                             |    
 | **Additions and Updates:**|						     |
+|  `ms + (k -> v)`          |The map containing all mappings of `ms` as well as the mapping `k -> v` from key `k` to value `v`.|
+|  `ms + (k -> v, l -> w)`  |The map containing all mappings of `ms` as well as the given key/value pairs.|
+|  `ms ++ kvs`              |The map containing all mappings of `ms` as well as all key/value pairs of `kvs`.|
+|  `ms updated (k, v)`      |Same as `ms + (k -> v)`.|
+| **Removals:**             |						     |
 |  `ms - k`  	            |The map containing all mappings of `ms` except for any mapping of key `k`.|  
 |  `ms - (k, 1, m)`  	    |The map containing all mappings of `ms` except for any mapping with the given keys.|    
 |  `ms -- ks`  	            |The map containing all mappings of `ms` except for any mapping with a key in `ks`.|    
