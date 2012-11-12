@@ -48,8 +48,8 @@ For example
 |  **Binary Operations:**   |						     |
 |  `xs & ys`  	            |The set intersection of `xs` and `ys`.          |
 |  `xs intersect ys`        |Same as `xs & ys`.                              |
-|  `xs | ys`  	            |The set union of `xs` and `ys`.                 |
-|  `xs union ys`  	    |Same as `xs | ys`.                              |
+|  <code>xs &#124; ys</code>  	            |The set union of `xs` and `ys`.                 |
+|  `xs union ys`  	    |Same as <code>xs &#124; ys</code>.                              |
 |  `xs &~ ys`  	            |The set difference of `xs` and `ys`.            |
 |  `xs diff ys`  	    |Same as `xs &~ ys`.                             |
 
