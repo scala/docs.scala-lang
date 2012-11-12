@@ -1,6 +1,8 @@
 ---
 layout: overview
 title: The Scala Actors Migration Guide
+label-color: success
+label-text: New in 2.10
 ---
 
 **Vojin Jovanovic and Philipp Haller**
