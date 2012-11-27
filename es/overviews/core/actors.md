@@ -4,6 +4,7 @@ title: The Scala Actors API
 label-color: success
 label-text: Available
 language: es
+overview: actors
 ---
 
 **Philipp Haller and Stephen Tu**
