@@ -1,6 +1,7 @@
 ---
 layout: overview
 title: The Architecture of Scala Collections
+overview: architecture-of-scala-collections
 ---
 
 **Martin Odersky and Lex Spoon**
