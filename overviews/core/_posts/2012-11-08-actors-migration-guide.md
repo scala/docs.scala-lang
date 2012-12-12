@@ -65,8 +65,8 @@ reshape their system so it starts all the actors right after their instantiation
 ## Migration Overview
 
 ### Migration Kit
-In Scala 2.10.0 tactors reside inside the [Scala distribution](http://www.scala-lang.org/downloads) as a separate jar ( *scala-actors.jar* ), and
-the their interface is deprecated. The distribution also includes Akka actors in the *akka-actor.jar*.
+In Scala 2.10.0 actors reside inside the [Scala distribution](http://www.scala-lang.org/downloads) as a separate jar ( *scala-actors.jar* ), and 
+the their interface is deprecated. The distribution also includes Akka actors in the *akka-actor.jar*. 
 The AMK resides both in the Scala actors and in the *akka-actor.jar*. Future major releases of Scala will not contain Scala actors and the AMK.
 
 To start the migration user needs to add the *scala-actors.jar* and the *scala-actors-migration.jar* to the build of their projects.
@@ -306,7 +306,7 @@ examples are shown below.
 should be moved to the `preStart` method.
 
         def act() {
-          // some code
+          // initialization code here
           loop {
             react { ... }
           }
@@ -315,7 +315,7 @@ should be moved to the `preStart` method.
    should be replaced with
 
         override def preStart() {
-          // some code
+          // initialization code here
         }
 
         def act() {
