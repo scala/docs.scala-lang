@@ -39,11 +39,11 @@
     if ( $.support.transition ) {
       transitionEnd = "TransitionEnd"
       if ( $.browser.webkit ) {
-      	transitionEnd = "webkitTransitionEnd"
+        transitionEnd = "webkitTransitionEnd"
       } else if ( $.browser.mozilla ) {
-      	transitionEnd = "transitionend"
+        transitionEnd = "transitionend"
       } else if ( $.browser.opera ) {
-      	transitionEnd = "oTransitionEnd"
+        transitionEnd = "oTransitionEnd"
       }
     }
 
@@ -84,8 +84,8 @@
           .prependTo(document.body)
 
         pos = $.extend({}, this.$element.offset(), {
-          width: this.$element[0].offsetWidth
-        , height: this.$element[0].offsetHeight
+          width: this.$element[0].getBBox().width
+        , height: this.$element[0].getBBox().height
         })
 
         actualWidth = $tip[0].offsetWidth
@@ -98,7 +98,7 @@
             tp = {top: pos.top + pos.height + this.options.offset, left: pos.left + pos.width / 2 - actualWidth / 2}
             break
           case 'above':
-            tp = {top: pos.top - actualHeight - this.options.offset, left: pos.left + pos.width / 2 - actualWidth / 2}
+            tp = {top: pos.top - actualHeight - this.options.offset, left: pos.left + pos.width / 2 - actualWidth / 2 }
             break
           case 'left':
             tp = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth - this.options.offset}
