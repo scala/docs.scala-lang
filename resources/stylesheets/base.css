@@ -7,7 +7,7 @@
 		height: 100%;
 		padding-bottom: 20px;
 	}
-	
+
 	/* every page should need this */
 	input, textarea, select, .uneditable-input {
 	       width: 165px;
@@ -15,29 +15,29 @@
 
 	* {
 		margin: 0;
-	}	
-	
+	}
+
 	.push {
 		height: 199px; /* .push must be the same height as .footer */
 		clear: both;
-	}	
+	}
 
 	.footer {
 		padding-top: 15px;
-		clear: both;		
-	    background: url(../resources/images/footerbg.jpg) repeat-x #8d8d8d; 	 	 		
+		clear: both;
+	    background: url(../resources/images/footerbg.jpg) repeat-x #8d8d8d;
 		border-top: solid 1px #676767;
 		width: 100%;
 		color: rgba(255, 255, 255, 0.7);
-	    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);		
-	}	
-	
+	    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+	}
+
 	.wrapper {
 		min-height: 100%;
 		height: auto !important;
 		height: 100%;
 		margin: 0 auto -199px; /* the bottom margin is the negative value of the footer's height */
-	}	
+	}
 
 	.footer ul {
 	    float: left;
@@ -86,10 +86,93 @@
 	    clear: both;
 	    padding: 10px 0 20px;
 	}
-	
-	.label {
-		white-space: nowrap;
-	}
 
-	h2 code { font-size: 18px; }
-	h3 code { font-size: 16px; }
+/*Coursera stuff*/
+
+  .label {
+    white-space: nowrap;
+  }
+
+  h2 code { font-size: 18px; }
+  h3 code { font-size: 16px; }
+
+  .axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: steelblue;
+}
+
+.x.axis path {
+  display: none;
+}
+
+div#pop-up {
+  display: none;
+  position:absolute;
+  font-size: 11px;
+  text-align: center;
+  color: white;
+  background: rgba(0,0,0,0.5);
+  padding: 3px 8px;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+
+}
+
+div#pop-up-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  bottom: 0;
+  left: 50%;
+  margin-left: -5px;
+  margin-bottom: -5px;
+  border-top-color: rgba(0,0,0,0.5);
+  border-width: 5px 5px 0;
+}
+
+.jvectormap-label {
+    position: absolute;
+    display: none;
+    border: solid 1px #CDCDCD;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background: #292929;
+    color: white;
+    font-family: sans-serif, Verdana;
+    font-size: smaller;
+    padding: 3px;
+}
+
+.jvectormap-zoomin, .jvectormap-zoomout {
+    position: absolute;
+    left: 10px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background: #292929;
+    padding: 3px;
+    color: white;
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+    line-height: 10px;
+    text-align: center;
+}
+
+.jvectormap-zoomin {
+    top: 10px;
+}
+
+.jvectormap-zoomout {
+    top: 30px;
+}
