@@ -12,7 +12,7 @@ outof: 3
 
 **Eugene Burmako**
 
-Type macros are a pre-release feature included in so-called macro paradise, a dedicated branch in the official Scala repository. To learn more about macro paradise, check out [my talk](http://scalamacros.org/news/2012/12/18/macro-paradise.html).
+Type macros are a pre-release feature included in so-called macro paradise, a dedicated branch in the official Scala repository. To learn more about macro paradise, check out [my talk](http://scalamacros.org/news/2012/12/18/macro-paradise.html). To get a nightly build of macro paradise, follow the instructions at [scalamacros.org](http://scalamacros.org/download.html).
 
 ## Intuition
 
