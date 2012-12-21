@@ -12,7 +12,7 @@ outof: 3
 
 **Eugene Burmako**
 
-Quasiquotes are a pre-release feature included in so-called macro paradise, a dedicated branch in the official Scala repository. To learn more about macro paradise, check out [my talk](http://scalamacros.org/news/2012/12/18/macro-paradise.html).
+Type macros are a pre-release feature included in so-called macro paradise, a dedicated branch in the official Scala repository. To learn more about macro paradise, check out [my talk](http://scalamacros.org/news/2012/12/18/macro-paradise.html).
 
 ## Intuition
 
