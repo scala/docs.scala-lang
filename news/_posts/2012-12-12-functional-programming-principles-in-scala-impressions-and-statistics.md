@@ -52,7 +52,7 @@ This leads to the question&mdash; what is the educational profile of the student
 
 <div style="text-align: center;"><h6>Participants' Highest Degrees</h6><div id="degrees">&nbsp;</div></div>
 
-We also collected information from respondents about their prior experience with other programming languages and paradigms, and perhaps not surprisingly, we sfound that most people considered themselves Java experts, while few considered themselves experienced in any form of functional programming.
+We also collected information from respondents about their prior experience with other programming languages and paradigms, and perhaps not surprisingly, we found that most people considered themselves Java experts, while few considered themselves experienced in any form of functional programming.
 
 <div style="text-align: center;"><h6>Participants' Experience With Other Languages/Paradigms</h6><div id="languages-percentages">&nbsp;</div></div>
 
@@ -68,7 +68,7 @@ We also wanted to know in what type of scenario people would like to apply what 
 
 <div style="text-align: center;"><h6>Where do you plan to apply what you've learned in this course?</h6><div id="where-apply">&nbsp;</div></div>
 
-Another question that we couldn't wait to hear the answer to was whether you, the participants, think that the course was worth the time you invested in it. We were delighted to find that a vast majority of students rated the course as being well worth their time!
+Another question that we couldn't wait to hear the answer to was whether course participants thought that the course was worth the time they invested in it. We were delighted to find that a vast majority of students rated the course as being well worth their time!
 
 <div style="text-align: center;"><h6>Was the course worth the time you spent?</h6><div id="worthit">&nbsp;</div></div>
 
