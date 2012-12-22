@@ -6,7 +6,7 @@ disqus: true
 
 partof: macros
 num: 1
-outof: 3
+outof: 4
 ---
 
 **Eugene Burmako**
@@ -213,7 +213,11 @@ This scenario is covered in the previous section. In short, compile macros and t
 
 ### Using macros with Maven or SBT
 
-The walkthrough in this guide uses the simplest possible command-line compilation, but macros also work with build tools such as Maven and SBT. The separate compilation restriction requires that macros must be placed in a separate SBT project or Maven submodule, but other than that everything should work smoothly. Same story goes for the IDEs. Both in Scala IDE and in Intellij IDEA macros are known to work fine, given they are moved to a separate project.
+The walkthrough in this guide uses the simplest possible command-line compilation, but macros also work with build tools such as Maven and SBT. The separate compilation restriction requires that macros must be placed in a separate SBT project or Maven submodule, but other than that everything should work smoothly. Check out [https://github.com/scalamacros/sbt-example](https://github.com/scalamacros/sbt-example) or [https://github.com/scalamacros/maven-example](https://github.com/scalamacros/maven-example) for additional information.
+
+### Using macros with Scala IDE or Intellij IDEA
+
+Both in Scala IDE and in Intellij IDEA macros are known to work fine, given they are moved to a separate project.
 
 ### Debugging macros
 
