@@ -87,6 +87,9 @@ Unlike regular string interpolators, quasiquotes support multiple flavors of spl
     scala> val q"foo(...$argss1)" = q"foo(...$argss)"
     argss1: List[List[reflect.runtime.universe.Tree]] = List(List(2), List(3))
 
+Unfortunately current implementation of quasiquotes is affected by [SI-6858](https://issues.scala-lang.org/browse/SI-6858), which renders triple-dot splices unusable.
+We're doing our best to fix this issue as soon as possible.
+
 ## Tips and tricks
 
 ### Liftable
