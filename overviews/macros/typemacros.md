@@ -31,14 +31,14 @@ The full source code of the `H2Db` type macro is provided [at Github](https://gi
     type H2Db(url: String) = macro impl
 
     def impl(c: Context)(url: c.Expr[String]): c.Tree = {
-      val name = c.enclosingClass.name + "_Generated"
+      val name = c.fresh(c.enclosingImpl.name).toTypeName
       val clazz = ClassDef(..., Template(..., generateCode()))
       c.introduceTopLevel(clazz)
       Apply(Ident(name), List(Literal(Constant(c.eval(url)))))
     }
 
     object Db extends H2Db("coffees")
-    // equivalent to: object Db extends Db_Generated("coffees")
+    // equivalent to: object Db extends Db$1("coffees")
 
 Instead of generating a synthetic class and expanding into a reference to it, a type macro can transform its host instead by returning a `Template` tree. Inside scalac both class and object definitions are internally represented as thin wrappers over `Template` trees, so by expanding into a template, type macro has a possibility to rewrite the entire body of the affected class or object. You can see a full-fledged example of this technique in the talk linked above.
 
