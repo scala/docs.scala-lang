@@ -38,7 +38,7 @@ In particular, 57% of all respondents to the survey rated the overall course as 
 
 Another point which might be particularly interesting is the fact that the difficulty rating appears to be independent of whether people have a background in Computer Science/Software Engineering or not. One might guess that this could mean that learning Scala is not much more difficult without a formal educational background in Computer Science.
 
-<div style="text-align: center;"><h6>Perceived Difficulty Relative to Educational Background</h6><div id="difficulty-to-field">&nbsp;</div></div>
+<div style="text-align: center;"><h6>Perceived Difficulty Relative to Educational Background</h6><div id="difficulty-to-field">&nbsp;</div><span style="font-size: 10px;"><i><b>Scale:</b> 1 - Too Easy, 2 - Easy, 3 - Just Right, 4 - Challenging, 5 - Too Difficult</i></span><p>&nbsp;</p></div>
 
 While a majority of the students in the course have degrees in Computer Science/Software Engineering, it was nonetheless interesting to discover how many students from fields as varied as Life Sciences and Fine Arts have participated in the course! Here's what it looks like:
 
@@ -46,7 +46,7 @@ While a majority of the students in the course have degrees in Computer Science/
 
 However, we were still interested to see how the formal education of participants influenced their assessment of the perceived difficulty. It turns out that, of those who have or have pursued university degrees&mdash; Bachelors or Masters degrees, there was almost no difference in perceived difficulty. The only marked differences appeared to the far left and the far right of the spectrum.
 
-<div style="text-align: center;"><h6>Perceived Difficulty Relative to Level of Education</h6><div id="difficulty-to-education">&nbsp;</div></div>
+<div style="text-align: center;"><h6>Perceived Difficulty Relative to Level of Education</h6><div id="difficulty-to-education">&nbsp;</div><span style="font-size: 10px;"><i><b>Scale:</b> 1 - Too Easy, 2 - Easy, 3 - Just Right, 4 - Challenging, 5 - Too Difficult</i></span><p>&nbsp;</p></div>
 
 This leads to the question&mdash; what is the educational profile of the students taking the course? The answer is somewhat surprising. It turns out that most students taking the course have already completed a master's degree!
 
@@ -58,7 +58,7 @@ We also collected information from respondents about their prior experience with
 
 However, in comparing people who considered themselves "experts" or "fluent" across a few paradigms, we found that C/C++ experts considered the course marginally less challenging than did Java experts. And, not surprisingly, experts in functional programming considered the course not to be particularly difficult.
 
-<div style="text-align: center;"><h6>Participants' Experience With Other Languages/Paradigms</h6><div id="difficulty-to-expertise">&nbsp;</div></div>
+<div style="text-align: center;"><h6>Perceived Difficulty of Expert Participants in Other Languages/Paradigms</h6><div id="difficulty-to-expertise">&nbsp;</div><span style="font-size: 10px;"><i><b>Scale:</b> 1 - Too Easy, 2 - Easy, 3 - Just Right, 4 - Challenging, 5 - Too Difficult</i></span><p>&nbsp;</p></div>
 
 One of the most interesting questions for us running the course was: why were you interested in taking the course in the first place? Here is the answer:
 
