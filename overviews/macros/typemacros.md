@@ -5,14 +5,14 @@ title: Type Macros
 disqus: true
 
 partof: macros
-num: 2
-outof: 3
+num: 3
+outof: 4
 ---
 <span class="label warning" style="float: right;">MACRO PARADISE</span>
 
 **Eugene Burmako**
 
-Type macros are a pre-release feature included in so-called macro paradise, a dedicated branch in the official Scala repository. To learn more about macro paradise, check out [my talk](http://scalamacros.org/news/2012/12/18/macro-paradise.html). To get a nightly build of macro paradise, follow the instructions at [scalamacros.org](http://scalamacros.org/download.html).
+Type macros are a pre-release feature included in so-called macro paradise, an experimental branch in the official Scala repository. Follow the instructions at the ["Macro Paradise"](/overviews/macros/paradise.html) page to download and use our nightly builds.
 
 ## Intuition
 
