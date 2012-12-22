@@ -31,7 +31,7 @@ The full source code of the `H2Db` type macro is provided [at Github](https://gi
     type H2Db(url: String) = macro impl
 
     def impl(c: Context)(url: c.Expr[String]): c.Tree = {
-      val name = c.fresh(c.enclosingImpl.name).toTypeName
+      val name = c.freshName(c.enclosingImpl.name).toTypeName
       val clazz = ClassDef(..., Template(..., generateCode()))
       c.introduceTopLevel(clazz)
       Apply(Ident(name), List(Literal(Constant(c.eval(url)))))
