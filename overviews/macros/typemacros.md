@@ -33,8 +33,9 @@ The full source code of the `H2Db` type macro is provided [at Github](https://gi
     def impl(c: Context)(url: c.Expr[String]): c.Tree = {
       val name = c.freshName(c.enclosingImpl.name).toTypeName
       val clazz = ClassDef(..., Template(..., generateCode()))
-      c.introduceTopLevel(clazz)
-      Apply(Ident(name), List(Literal(Constant(c.eval(url)))))
+      c.introduceTopLevel(c.enclosingPackage.pid.toString, clazz)
+      val classRef = Select(c.enclosingPackage.pid, name)
+      Apply(classRef, List(Literal(Constant(c.eval(url)))))
     }
 
     object Db extends H2Db("coffees")
