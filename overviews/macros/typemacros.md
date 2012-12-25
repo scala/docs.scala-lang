@@ -26,7 +26,7 @@ Just as def macros make the compiler execute custom functions when it sees invoc
     Db.Coffees.update(brazilian.copy(price = 10))
     println(Db.Coffees.all)
 
-The full source code of the `H2Db` type macro is provided [at Github](https://github.com/scalamacros/kepler/tree/paradise/macros/test/files/run/macro-typemacros-fourth-proto), and this guide covers its most important aspects. First the macro generates the statically typed database wrapper by connecting to a database at compile-time (tree generation is explained in [the reflection overview](http://docs.scala-lang.org/overviews/reflection/overview.html)). Then it uses the <span class="label success">NEW</span> `c.introduceTopLevel` API to insert the generated wrapper into the list of top-level definitions maintained by the compiler. Finally, the macro returns an `Apply` node, which represents a super constructor call to the generated class. <span class="label warning">NOTE</span> that type macros are supposed to expand into `c.Tree`, unlike def macros, which expand into `c.Expr[T]`. That's because `Expr`s represent terms, while type macros expand into types.
+The full source code of the `H2Db` type macro is provided [at Github](https://github.com/xeno-by/typemacros-h2db), and this guide covers its most important aspects. First the macro generates the statically typed database wrapper by connecting to a database at compile-time (tree generation is explained in [the reflection overview](http://docs.scala-lang.org/overviews/reflection/overview.html)). Then it uses the <span class="label success">NEW</span> `c.introduceTopLevel` API to insert the generated wrapper into the list of top-level definitions maintained by the compiler. Finally, the macro returns an `Apply` node, which represents a super constructor call to the generated class. <span class="label warning">NOTE</span> that type macros are supposed to expand into `c.Tree`, unlike def macros, which expand into `c.Expr[T]`. That's because `Expr`s represent terms, while type macros expand into types.
 
     type H2Db(url: String) = macro impl
 
@@ -41,7 +41,7 @@ The full source code of the `H2Db` type macro is provided [at Github](https://gi
     object Db extends H2Db("coffees")
     // equivalent to: object Db extends Db$1("coffees")
 
-Instead of generating a synthetic class and expanding into a reference to it, a type macro can transform its host instead by returning a `Template` tree. Inside scalac both class and object definitions are internally represented as thin wrappers over `Template` trees, so by expanding into a template, type macro has a possibility to rewrite the entire body of the affected class or object. You can see a full-fledged example of this technique in the talk linked above.
+Instead of generating a synthetic class and expanding into a reference to it, a type macro can transform its host instead by returning a `Template` tree. Inside scalac both class and object definitions are internally represented as thin wrappers over `Template` trees, so by expanding into a template, type macro has a possibility to rewrite the entire body of the affected class or object. You can see a full-fledged example of this technique [at Github](https://github.com/xeno-by/typemacros-lifter).
 
     type H2Db(url: String) = macro impl
 
