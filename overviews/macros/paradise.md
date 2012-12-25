@@ -16,6 +16,6 @@ Macro paradise is an alias of the experimental `paradise/macros` branch in the o
 
 We have set up a nightly build which publishes snapshot artifacts to Sonatype. Consult [https://github.com/scalamacros/sbt-example-paradise](https://github.com/scalamacros/sbt-example-paradise) for an end-to-end example of using our nightlies in SBT, but in a nutshell playing with macro paradise is as easy as adding these three lines to your build:
 
-    scalaVersion := "2.10.1-SNAPSHOT"
+    scalaVersion := "2.11.0-SNAPSHOT"
     scalaOrganization := "org.scala-lang.macro-paradise"
     resolvers += Resolver.sonatypeRepo("snapshots")
