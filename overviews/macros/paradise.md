@@ -19,3 +19,5 @@ We have set up a nightly build which publishes snapshot artifacts to Sonatype. C
     scalaVersion := "2.11.0-SNAPSHOT"
     scalaOrganization := "org.scala-lang.macro-paradise"
     resolvers += Resolver.sonatypeRepo("snapshots")
+
+Scaladocs corresponding to paradise nightlies can be found at [our Jenkins server](https://scala-webapps.epfl.ch/jenkins/view/misc/job/macro-paradise-nightly-main/ws/dists/latest/doc/scala-devel-docs/api/index.html). For example, here's the new API for working with top-level definitions: [scala.reflect.macros.Synthetics](https://scala-webapps.epfl.ch/jenkins/view/misc/job/macro-paradise-nightly-main/ws/dists/latest/doc/scala-devel-docs/api/index.html#scala.reflect.macros.Synthetics).

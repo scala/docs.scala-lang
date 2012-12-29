@@ -26,7 +26,7 @@ Just as def macros make the compiler execute custom functions when it sees invoc
     Db.Coffees.update(brazilian.copy(price = 10))
     println(Db.Coffees.all)
 
-The full source code of the `H2Db` type macro is provided [at Github](https://github.com/xeno-by/typemacros-h2db), and this guide covers its most important aspects. First the macro generates the statically typed database wrapper by connecting to a database at compile-time (tree generation is explained in [the reflection overview](http://docs.scala-lang.org/overviews/reflection/overview.html)). Then it uses the <span class="label success">NEW</span> `c.introduceTopLevel` API to insert the generated wrapper into the list of top-level definitions maintained by the compiler. Finally, the macro returns an `Apply` node, which represents a super constructor call to the generated class. <span class="label warning">NOTE</span> that type macros are supposed to expand into `c.Tree`, unlike def macros, which expand into `c.Expr[T]`. That's because `Expr`s represent terms, while type macros expand into types.
+The full source code of the `H2Db` type macro is provided [at Github](https://github.com/xeno-by/typemacros-h2db), and this guide covers its most important aspects. First the macro generates the statically typed database wrapper by connecting to a database at compile-time (tree generation is explained in [the reflection overview](http://docs.scala-lang.org/overviews/reflection/overview.html)). Then it uses the <span class="label success">NEW</span> `c.introduceTopLevel` API ([Scaladoc](https://scala-webapps.epfl.ch/jenkins/view/misc/job/macro-paradise-nightly-main/ws/dists/latest/doc/scala-devel-docs/api/index.html#scala.reflect.macros.Synthetics)) to insert the generated wrapper into the list of top-level definitions maintained by the compiler. Finally, the macro returns an `Apply` node, which represents a super constructor call to the generated class. <span class="label warning">NOTE</span> that type macros are supposed to expand into `c.Tree`, unlike def macros, which expand into `c.Expr[T]`. That's because `Expr`s represent terms, while type macros expand into types.
 
     type H2Db(url: String) = macro impl
 
@@ -71,7 +71,7 @@ Type macros represent a hybrid between def macros and type members. On the one h
 | Can be inherited               | Yes        | Yes         | Yes          |
 | Can override and be overridden | Yes        | Yes         | Yes          |
 
-In Scala programs type macros can appear in one of five possible roles: type role, applied type role, parent type role, new role and annotation role. Depending on the role in which a macro is used (can be inspected with the <span class="label success">NEW</span> `c.macroRole` API), its list of allowed expansions is different.
+In Scala programs type macros can appear in one of five possible roles: type role, applied type role, parent type role, new role and annotation role. Depending on the role in which a macro is used, which can be inspected with the <span class="label success">NEW</span> `c.macroRole` API ([Scaladoc](https://scala-webapps.epfl.ch/jenkins/view/misc/job/macro-paradise-nightly-main/ws/dists/latest/doc/scala-devel-docs/api/index.html#scala.reflect.macros.Enclosures)), its list of allowed expansions is different.
 
 | Role         | Example                                         | Class | Non-class? | Apply? | Template? |
 |--------------|-------------------------------------------------|-------|------------|--------|-----------|
