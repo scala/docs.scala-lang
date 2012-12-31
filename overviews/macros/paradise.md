@@ -20,4 +20,9 @@ We have set up a nightly build which publishes snapshot artifacts to Sonatype. C
     scalaOrganization := "org.scala-lang.macro-paradise"
     resolvers += Resolver.sonatypeRepo("snapshots")
 
+Currently SBT has some problems with updating custom `scala-compiler.jar` to new snapshot versions. The symptoms are as follows. The first time
+you compile a project that uses macro paradise, everything works fine. But in a few days when you do `sbt update`, SBT fetches new nightly
+builds for `scala-library.jar` and `scala-reflect.jar`, but not for `scala-compiler.jar`. We're investigating this unfortunate issue, but
+in the meanwhile you can join the discussion and check out a workaround [at the mailing list](https://groups.google.com/forum/?fromgroups=#!topic/simple-build-tool/UalhhX4lKmw/discussion).
+
 Scaladocs corresponding to paradise nightlies can be found at [our Jenkins server](https://scala-webapps.epfl.ch/jenkins/view/misc/job/macro-paradise-nightly-main/ws/dists/latest/doc/scala-devel-docs/api/index.html). For example, here's the new API for working with top-level definitions: [scala.reflect.macros.Synthetics](https://scala-webapps.epfl.ch/jenkins/view/misc/job/macro-paradise-nightly-main/ws/dists/latest/doc/scala-devel-docs/api/index.html#scala.reflect.macros.Synthetics).
