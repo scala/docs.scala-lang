@@ -8,7 +8,7 @@ partof: macros
 num: 2
 outof: 4
 ---
-<span class="label warning" style="float: right;">MACRO PARADISE</span>
+<span class="label important" style="float: right;">MACRO PARADISE</span>
 
 **Eugene Burmako**
 

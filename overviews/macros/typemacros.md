@@ -8,7 +8,7 @@ partof: macros
 num: 3
 outof: 4
 ---
-<span class="label warning" style="float: right;">MACRO PARADISE</span>
+<a href="/overviews/macros/paradise.html"><span class="label important" style="float: right;">MACRO PARADISE</span></a>
 
 **Eugene Burmako**
 
