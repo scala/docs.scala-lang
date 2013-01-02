@@ -1,9 +1,9 @@
 ---
 layout: overview
-title: Macros
+title: Reflection
 disqus: true
-partof: macros
-overview: macros
+partof: reflection
+overview: reflection
 label-color: warning
 label-text: Experimental
 ---
