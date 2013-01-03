@@ -303,6 +303,10 @@ execution of a macro.
                   test
                   ^
 
+Note that at the moment reporting facilities don't support multiple warnings or errors per position as described in
+[SI-6910](https://issues.scala-lang.org/browse/SI-6910). This means that only the first error or warning per position
+will be reported, and the others will be lost (also errors trump warnings at the same position, even if those are reported earlier).
+
 ### Writing bigger macros
 
 When the code of a macro implementation grows big enough to warrant modularization beyond the body of the implementation method, it becomes apparent that one needs to carry around the context parameter, because most things of interest are path-dependent on the context.
