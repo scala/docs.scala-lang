@@ -67,7 +67,7 @@ Quasiquotes are implemented as a part of the `scala.reflect.api.Universe` cake, 
 | `q`          | Term trees | `q"future{ $body }"` | `case q"future{ $body }"` =>  |
 | `tq`         | Type trees | `tq"Future[$t]"`     | `case tq"Future[$t]"` =>      |
 
-Unlike regular string interpolators, quasiquotes support multiple flavors of splices in order to distinguish between inserting/extracting single trees, lists of trees and lists of lists of trees. Mismatching cardinalities of splicees and splice operators results in a type error.
+Unlike regular string interpolators, quasiquotes support multiple flavors of splices in order to distinguish between inserting/extracting single trees, lists of trees and lists of lists of trees. Mismatching cardinalities of splicees and splice operators results in a compile-time error.
 
     scala> val name = TypeName("C")
     name: reflect.runtime.universe.TypeName = C
@@ -86,9 +86,6 @@ Unlike regular string interpolators, quasiquotes support multiple flavors of spl
 
     scala> val q"foo(...$argss1)" = q"foo(...$argss)"
     argss1: List[List[reflect.runtime.universe.Tree]] = List(List(2), List(3))
-
-Unfortunately current implementation of quasiquotes is affected by [SI-6858](https://issues.scala-lang.org/browse/SI-6858), which renders triple-dot splices unusable.
-We're doing our best to fix this issue as soon as possible.
 
 ## Tips and tricks
 
