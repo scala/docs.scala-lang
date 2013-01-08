@@ -1,6 +1,6 @@
 ---
 layout: overview
-title: The Scala Actors API
+title: API de actores en Scala
 label-color: success
 label-text: Available
 language: es

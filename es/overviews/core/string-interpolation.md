@@ -4,11 +4,13 @@ title: Interpolación de cadenas
 disqus: true
 label-color: success
 label-text: New in 2.10
+language: es
 overview: string-interpolation
 ---
 
 **Josh Suereth**
-** Traducción e interpretación: Miguel Ángel Pastor Olivar
+
+**Traducción e interpretación: Miguel Ángel Pastor Olivar**
 
 ## Introducción
 
@@ -20,7 +22,7 @@ Este nuevo mecanismo permite a los usuarios incluir referencias a variables de m
 
 En el ejemplo anterior, el literal `s"Hello, $name"` es una cadena "procesada". Esto significa que el compilador debe realizar un trabajo adicional durante el tratamiento de dicha cadena. Una cadena "procesada" se denota mediante un conjunto de caracteres que preceden al símbolo `"`. La interpolación de cadenas ha sido introducida por (http://docs.scala-lang.org/sips/pending/string-interpolation.html), el cual contiene todos los detalles de implementación.
 
-## Usage
+## Uso
 
 Scala ofrece tres métodos de interpolación de manera nativa:  `s`, `f` and `raw`.
 
