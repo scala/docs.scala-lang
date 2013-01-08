@@ -87,9 +87,9 @@ We'd like to close with some fun, and partially surprising, information on the d
 <div style="text-align: center;"><h6>Absolute Number of Participants Per Country</h6><div id="map-population" style="width: 700px; height: 350px;">&nbsp;</div></div>
 <p>&nbsp;</p><p>&nbsp;</p>
 
-Here's that graph again, relating that population of students with the population density of the respective country:
+Here's that graph again, relating that population of students who enrolled in the course with the population  of the respective country:
 
-<div style="text-align: center;"><h6>Number of Participants Per Country Relative to Population Density</h6><div id="map-density" style="width: 700px; height: 350px;">&nbsp;</div></div>
+<div style="text-align: center;"><h6>Number of Participants Per Country Relative to Countries' Population</h6><div id="map-density" style="width: 700px; height: 350px;">&nbsp;</div></div>
 <p>&nbsp;</p><p>&nbsp;</p>
 
 ## Get the data and explore it with Scala!
