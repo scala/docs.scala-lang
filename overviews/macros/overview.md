@@ -214,7 +214,9 @@ This scenario is covered in the previous section. In short, compile macros and t
 
 ### Using macros with Maven or SBT
 
-The walkthrough in this guide uses the simplest possible command-line compilation, but macros also work with build tools such as Maven and SBT. The separate compilation restriction requires that macros must be placed in a separate SBT project or Maven submodule, but other than that everything should work smoothly. Check out [https://github.com/scalamacros/sbt-example](https://github.com/scalamacros/sbt-example) or [https://github.com/scalamacros/maven-example](https://github.com/scalamacros/maven-example) for additional information.
+The walkthrough in this guide uses the simplest possible command-line compilation, but macros also work with build tools such as Maven and SBT. Check out [https://github.com/scalamacros/sbt-example](https://github.com/scalamacros/sbt-example) or [https://github.com/scalamacros/maven-example](https://github.com/scalamacros/maven-example) for end-to-end examples, but in a nutshell you only need to know two things:
+* Macros needs scala-reflect.jar in library dependencies.
+* The separate compilation restriction requires macros to be placed in a separate project.
 
 ### Using macros with Scala IDE or Intellij IDEA
 
