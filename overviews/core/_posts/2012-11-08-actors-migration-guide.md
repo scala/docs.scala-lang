@@ -578,4 +578,4 @@ All of the code snippets presented in this document can be found in the [Actors 
 
 This document and the Actor Migration Kit were designed and implemented by: [Vojin Jovanovic](http://people.epfl.ch/vojin.jovanovic) and [Philipp Haller](http://lampwww.epfl.ch/~phaller/)
 
-If you find any issues or rough edges please report them at the [Scala Bugtracker](https://scala.github.com/actors-migration/issues).
+If you find any issues or rough edges please report them at the [Scala Bugtracker](https://github.com/scala/actors-migration/issues).
