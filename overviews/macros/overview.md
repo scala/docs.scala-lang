@@ -136,7 +136,7 @@ Note the call to `reify`, which provides a shortcut for creating ASTs.
 
     val evals = ListBuffer[ValDef]()
     def precompute(value: Tree, tpe: Type): Ident = {
-      val freshName = newTermName(c.freshName("eval$"))
+      val freshName = newTermName(c.fresh("eval$"))
       evals += ValDef(Modifiers(), freshName, TypeTree(tpe), value)
       Ident(freshName)
     }
@@ -167,7 +167,7 @@ To follow the example, create an empty directory and copy the code to a new file
 
         val evals = ListBuffer[ValDef]()
         def precompute(value: Tree, tpe: Type): Ident = {
-          val freshName = newTermName(c.freshName("eval$"))
+          val freshName = newTermName(c.fresh("eval$"))
           evals += ValDef(Modifiers(), freshName, TypeTree(tpe), value)
           Ident(freshName)
         }
