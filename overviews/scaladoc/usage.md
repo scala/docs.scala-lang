@@ -1,9 +1,9 @@
 ---
 layout: overview-large
-title: Basics, User-facing Scaladoc
+title: Usage
 
 partof: scaladoc
-num: 2
+num: 3
 outof: 3
 ---
 
