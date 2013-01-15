@@ -24,11 +24,13 @@ have been persisted, so that they can be read from the classfile containing
 the annotated declarations. A custom annotation type can be made persistent by
 inheriting from `scala.annotation.StaticAnnotation` or
 `scala.annotation.ClassfileAnnotation`. As a result, instances of the
-annotation type are stored either as special attributes in the corresponding
-classfile (`StaticAnnotation`) or as a Java annotation
-(`ClassfileAnnotation`). Note that subclassing just
+annotation type are stored as special attributes in the corresponding
+classfile. Note that subclassing just
 `scala.annotation.Annotation` is not enough to have the corresponding metadata
-persisted for runtime reflection.
+persisted for runtime reflection. Moreover, subclassing
+`scala.annotation.ClassfileAnnotation` does not make your annotation visible
+as a Java annotation at runtime; that requires writing the annotation class
+in Java.
 
 The API distinguishes between two kinds of annotations:
 
