@@ -4,6 +4,6 @@ title: Reflection
 disqus: true
 partof: reflection
 overview: reflection
-label-color: warning
+label-color: important
 label-text: Experimental
 ---
