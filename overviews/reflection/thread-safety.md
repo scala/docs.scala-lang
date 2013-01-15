@@ -9,7 +9,7 @@ num: 6
 outof: 6
 ---
 
-<span class="label warning" style="float: right;">EXPERIMENTAL</span>
+<span class="label important" style="float: right;">EXPERIMENTAL</span>
 
 **Eugene Burmako**
 
