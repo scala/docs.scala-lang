@@ -31,7 +31,8 @@ ask a macro to help it with type inference?
 
 Macro bundles provide a solution to these problems by allowing macro implementations to be declared in traits, which extend
 `scala.reflect.macros.Macro`. This base trait predefines the `c: Context` variable, relieving macro implementations from having
-to declare it in their signatures, which simplifies modularization.
+to declare it in their signatures, which simplifies modularization. Later on `Macro` could come with preloaded callback methods
+such as, for example, `onInfer`.
 
     trait Macro {
       val c: Context
