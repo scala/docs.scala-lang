@@ -6,7 +6,7 @@ disqus: true
 
 partof: macros
 num: 5
-outof: 5
+outof: 6
 ---
 <a href="/overviews/macros/paradise.html"><span class="label important" style="float: right;">MACRO PARADISE</span></a>
 
