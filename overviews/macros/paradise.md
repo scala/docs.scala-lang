@@ -6,7 +6,7 @@ disqus: true
 
 partof: macros
 num: 2
-outof: 5
+outof: 6
 ---
 <span class="label important" style="float: right;">MACRO PARADISE</span>
 
