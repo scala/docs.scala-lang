@@ -63,7 +63,7 @@ of a macro def, typechecks it as a reference to a static method and then uses th
 Now compilation of macro defs is extensible. Instead of using a hardcoded implementation to look up macro impls,
 the macro engine performs an implicit search of a `MacroCompiler` in scope and then invokes its `resolveMacroImpl` method,
 passing it the `DefDef` of a macro def and expecting a reference to a static method in return. Of course, `resolveMacroImpl`
-should itself be a macro, namely [an untyped one](/overviews/macros/untypedmacros.md), for this to work.
+should itself be a macro, namely [an untyped one](/overviews/macros/untypedmacros.html), for this to work.
 
     trait MacroCompiler {
       def resolveMacroImpl(macroDef: _): _ = macro ???
