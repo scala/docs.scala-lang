@@ -123,13 +123,13 @@ It's customary to import `c.universe._`, because it includes a lot of routinely 
 First of all, the macro needs to parse the provided format string.
 Macros run during the compile-time, so they operate on trees, not on values.
 This means that the format parameter of the `printf` macro will be a compile-time literal, not an object of type `java.lang.String`.
-This also means that the code below won't work for `printf(get_format(), ...)`, because in that case `format` won't be a string literal, but rather an AST that represents addition of two string literals. Adjusting the macro to work for arbitrary expressions is left as an exercise for the reader.
+This also means that the code below won't work for `printf(get_format(), ...)`, because in that case `format` won't be a string literal, but rather an AST that represents a function application. Adjusting the macro to work for arbitrary expressions is left as an exercise for the reader.
 
     val Literal(Constant(s_format: String)) = format.tree
 
 Typical macros (and this macro is not an exception) need to create ASTs (abstract syntax trees) which represent Scala code.
 To learn more about generation of Scala code, take a look at [the overview of reflection](http://docs.scala-lang.org/overviews/reflection/overview.html). Along with creating ASTs the code provided below also manipulates types.
-Note how we get a hold of Scala types that correspond to `Int and String`.
+Note how we get a hold of Scala types that correspond to `Int` and `String`.
 Reflection overview linked above covers type manipulations in detail.
 The final step of code generation combines all the generated code into a `Block`.
 Note the call to `reify`, which provides a shortcut for creating ASTs.
