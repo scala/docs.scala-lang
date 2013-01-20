@@ -40,7 +40,8 @@ defined isomorphisms, declare implicit parameters of type `Iso`, which then get 
     tp : (Int, String, Boolean)
     tp == (23, "foo", true)
 
-As we can see, the isomorphism between a case class and a tuple is trivial. The compiler already generates the necessary methods,
+As we can see, the isomorphism between a case class and a tuple is trivial (actually, shapeless uses Iso's to convert between case
+classes and HLists, but for simplicity let's use tuples). The compiler already generates the necessary methods,
 and we just have to make use of them. Unfortunately in Scala 2.10.0 it's impossible to simplify this even further - for every case class
 you have manually define an implicit `Iso` instance.
 
