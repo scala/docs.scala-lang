@@ -6,7 +6,7 @@ disqus: true
 
 partof: macros
 num: 1
-outof: 6
+outof: 7
 ---
 <span class="label warning" style="float: right;">EXPERIMENTAL</span>
 
