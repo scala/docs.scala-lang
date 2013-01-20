@@ -16,7 +16,8 @@ Inference-driving macros are pre-release features included in so-called macro pa
 
 WARNING! This is the most experimental of all the experimental features in paradise. Not only the details of the API are unclear,
 but I'm not sure whether the current approach is the right one, unlike, for example, in type macros, where things look very solid.
-Your feedback is even more welcome than ever. Hint: if you scroll down, you can leave comments directly on this page.
+Your feedback is even more welcome than ever. If you scroll down, you can leave comments directly on this page. You could also participate
+in the [discussion at scala-internals](http://groups.google.com/group/scala-internals/browse_thread/thread/ad309e68d645b775).
 
 ## A motivating example
 
