@@ -234,8 +234,7 @@ Future 内の値が利用可能となることを必要とするため、Future 
 
 <li><code>onSuccess</code> や <code>onFailure</code> コールバックを登録することは <code>onComplete</code> と同じ意味論を持つ。ただし、クロージャがそれぞれ成功したか失敗した場合のみに呼ばれるという違いがある。</li>
 
-<li>既に完了した Future にコールバックを登録することは (1 により) コールバックが eventually に実行されることとなる。
-さらに、このコールバックはそれを登録したスレッドの進行をキャンセルしなければ、同じスレッドで同期的に実行される可能性がある。</li>
+<li>既に完了した Future にコールバックを登録することは (1 により) コールバックが eventually に実行されることとなる。</li>
 
 <li>Future に複数のコールバックが登録された場合は、それらが実行される順序は定義されない。それどころか、コールバックは並行に実行される可能性がある。しかし、<code>ExecutionContext</code> の実装によっては明確に定義された順序となる可能性もある。</li>
 
@@ -421,25 +420,6 @@ Future は同じ `Throwable` とともに失敗する。
     
     anyQuote onSuccess { println(_) }
 
-`either` コンビネータはこの Futuere もしくは引数として渡された Future
-の結果を持つ新たな Future を作成する。これは結果が成功か失敗したかに関わらず先に完了した方の値が採用される。
-以下は先に返ってきた為替レートを表示する具体例だ:
-
-    val usdQuote = future {
-      connection.getCurrentValue(USD)
-    } map {
-      usd => "値: " + usd + " USD"
-    }
-    val chfQuote = future {
-      connection.getCurrentValue(CHF)
-    } map {
-      chf => "値: " + chf + "CHF"
-    }
-    
-    val anyQuote = usdQuote either chfQuote
-    
-    anyQuote onSuccess { println(_) }
-
 `andThen` コンビネータは副作用の目的のためだけに用いられる。
 これは、成功したか失敗したかに関わらず現在の Future と全く同一の結果を返す新たな Future を作成する。
 現在の Future が完了すると、`andThen` に渡されたクロージャが呼び出され、新たな Future
@@ -569,6 +549,8 @@ Future が失敗した場合は、呼び出し元には Future が失敗した�
 この場合は、処理されなかった例外は `ExecutionException` に保持される。
 これらの例外は非同期計算を実行するスレッド内で再び投げられる。
 この理由は、通常クライアント側で処理されないクリティカルもしくは制御フロー関連の例外が伝搬することを回避し、同時に Future の計算が失敗したことをクライアントに通知するためだ。
+
+より正確な意味論の説明は [`NonFatal`](http://www.scala-lang.org/api/current/index.html#scala.util.control.NonFatal$) を参照。
 
 ## Promise
 
@@ -725,7 +707,7 @@ for library writers
 2. 時間の比較 (`<`、`<=`、`>`、および `>=`)。
 3. 算術演算 (`+`、`-`、`*`、`/`、および `unary_-`)。
 4. この時間 `this` と引数として渡された時間の間の最小値と最大値 (`min`、`max`)。
-5. 時間が有限かの検査 (`finite_?`)。
+5. 時間が有限かの検査 (`isFinite`)。
 
 `Duration` は以下の方法で作成することができる:
 
@@ -735,7 +717,6 @@ for library writers
 
 `Duration` は `unapply` メソッドも提供するため、パータンマッチング構文の中から使うこともできる。以下に具体例をみる:
 
-    import scala.concurrent.Duration
     import scala.concurrent.duration._
     import java.util.concurrent.TimeUnit._
  
