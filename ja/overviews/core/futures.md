@@ -421,25 +421,6 @@ Future は同じ `Throwable` とともに失敗する。
     
     anyQuote onSuccess { println(_) }
 
-`either` コンビネータはこの Futuere もしくは引数として渡された Future
-の結果を持つ新たな Future を作成する。これは結果が成功か失敗したかに関わらず先に完了した方の値が採用される。
-以下は先に返ってきた為替レートを表示する具体例だ:
-
-    val usdQuote = future {
-      connection.getCurrentValue(USD)
-    } map {
-      usd => "値: " + usd + " USD"
-    }
-    val chfQuote = future {
-      connection.getCurrentValue(CHF)
-    } map {
-      chf => "値: " + chf + "CHF"
-    }
-    
-    val anyQuote = usdQuote either chfQuote
-    
-    anyQuote onSuccess { println(_) }
-
 `andThen` コンビネータは副作用の目的のためだけに用いられる。
 これは、成功したか失敗したかに関わらず現在の Future と全く同一の結果を返す新たな Future を作成する。
 現在の Future が完了すると、`andThen` に渡されたクロージャが呼び出され、新たな Future
