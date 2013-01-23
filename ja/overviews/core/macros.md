@@ -1,10 +1,9 @@
 ---
 layout: overview
-title: Macros
-disqus: true
 partof: macros
 overview: macros
-languages: [ja]
+language: ja
 label-color: important
 label-text: Experimental
+title: マクロ
 ---
