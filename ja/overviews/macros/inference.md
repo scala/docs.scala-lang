@@ -1,36 +1,33 @@
 ---
 layout: overview-large
-title: Inference-Driving Macros
+language: ja
 
 disqus: true
 
 partof: macros
 num: 7
 outof: 7
-languages: [ja]
+title: 型推論補助マクロ
 ---
 <span class="label important" style="float: right;">MACRO PARADISE</span>
 
-**Eugene Burmako**
+**Eugene Burmako 著**<br>
+**Eugene Yokota 訳**
 
-Inference-driving macros are pre-release features included in so-called macro paradise, an experimental branch in the official Scala repository. Follow the instructions at the ["Macro Paradise"](/overviews/macros/paradise.html) page to download and use our nightly builds.
+型推論補助マクロ (inference-driving macro) はマクロパラダイスと呼ばれているオフィシャル Scala リポジトリ内の実験的なブランチに含まれるリリース前の機能だ。[マクロパラダイス](/ja/overviews/macros/paradise.html)ページの説明にしたがってナイトリービルドをダウンロードしてほしい。
 
-WARNING! This is the most experimental of all the experimental features in paradise. Not only the details of the API are unclear,
-but I'm not sure whether the current approach is the right one, unlike, for example, in type macros, where things look very solid.
-Your feedback is even more welcome than ever. If you scroll down, you can leave comments directly on this page. You could also participate
-in the [discussion at scala-internals](http://groups.google.com/group/scala-internals/browse_thread/thread/ad309e68d645b775).
+注意! これはパラダイスの実験的機能の中でも最も実験的なものだ。型マクロのような完成に近づいているものと違って、この機能は API の詳細が定まっていないだけでなく、現行の方法が正しいものであるかも確信できていない。フィードバックをこれまでになく必要としている。この[原版](/overviews/macros/inference.html)のコメント欄に直接コメントするか、[scala-internals での議論](http://groups.google.com/group/scala-internals/browse_thread/thread/ad309e68d645b775)に参加してほしい。
 
-## A motivating example
+## 動機となった具体例
 
-The use case, which gave birth to inference-driving macros, is provided by Miles Sabin and his [shapeless](https://github.com/milessabin/shapeless) library. Miles has defined the `Iso` trait, which represents isomorphisms between types.
+型推論補助マクロが生まれるキッカケとなったユースケースは、Miles Sabin 氏と氏が作った [shapeless](https://github.com/milessabin/shapeless) ライブラリにより提供された。Miles は 型間の同型射 (isomorphism) を表す `Iso` トレイトを定義した。
 
     trait Iso[T, U] {
       def to(t : T) : U
       def from(u : U) : T
     }
 
-Currently instances of `Iso` are defined manually and then published as implicit values. Methods, which want to make use of
-defined isomorphisms, declare implicit parameters of type `Iso`, which then get filled in during implicit search.
+現在は `Iso` のインスタンスは手動で定義され、暗黙の値として公開される。定義された同型射を利用したいメソッドは `Iso` 型の暗黙のパラメータを宣言して、そこに implicit 検索時に値が渡される。
 
     def foo[C](c: C)(implicit iso: Iso[C, L]): L = iso.from(c)
 
@@ -41,25 +38,17 @@ defined isomorphisms, declare implicit parameters of type `Iso`, which then get 
     tp : (Int, String, Boolean)
     tp == (23, "foo", true)
 
-As we can see, the isomorphism between a case class and a tuple is trivial (actually, shapeless uses Iso's to convert between case
-classes and HLists, but for simplicity let's use tuples). The compiler already generates the necessary methods,
-and we just have to make use of them. Unfortunately in Scala 2.10.0 it's impossible to simplify this even further - for every case class
-you have manually define an implicit `Iso` instance.
+見ての通り、ケースクラスとタプル間の同型射は簡単に書くことができる (実際には shapeless は Iso を用いてケースクラスと HList 間を変換するが、話を簡潔にするためにここではタプルを使う)。コンパイラは必要なメソッドを既に生成しているため、それを利用するだけでいい。残念ながら Scala 2.10.0 ではこれより単純化することは不可能で、全てのケースクラスに対して手動で implicit の `Iso` インスタンスを定義する必要がある。
 
-Macros have proven to be quite the boilerplate scrapers, but unfortunately they can't help here in their 2.10.0 form. The problem
-is not just in [SI-5923](https://issues.scala-lang.org/browse/SI-5923), which has already been fixed in master for a few weeks
-(note to self: backport this fix to 2.10.1).
+これまでマクロはボイラープレイトを撤去するのに役立つをことを示してきたが、2.10.0 の形のままではここでは役に立たない。問題は master では数週間まえに修正されている [SI-5923](https://issues.scala-lang.org/browse/SI-5923) だけではない。
 
-The real showstopper is the fact that when typechecking applications of methods like `foo`, scalac has to infer the type argument `L`,
-which it has no clue about (and that's no wonder, since this is domain-specific knowledge). As a result, even if you define an implicit
-macro, which synthesizes `Iso[C, L]`, scalac will helpfully infer `L` as `Nothing` before expanding the macro and then everything crumbles.
+真の問題は `foo` のようなメソッドの適用を型検査する際に、scalac は何も知らない型引数 `L` を推論する必要があることだ (これはドメインに特化した知識なのでコンパイラのせいではない)。結果として、`Iso[C, L]` を合成する暗黙のマクロを定義したとしても、scalac はマクロを展開する前に `L` を `Nothing` と推論して全てが崩れてしまう。
 
-## Internals of type inference
+## 型推論の内部構造
 
-From what I learned about this over a few days, type inference in Scala is performed by the following two methods
-in `scala/tools/nsc/typechecker/Infer.scala`: [`inferExprInstance`](https://github.com/scalamacros/kepler/blob/d7b59f452f5fa35df48a5e0385f579c98ebf3555/src/compiler/scala/tools/nsc/typechecker/Infer.scala#L1123) and
-[`inferMethodInstance`](https://github.com/scalamacros/kepler/blob/d7b59f452f5fa35df48a5e0385f579c98ebf3555/src/compiler/scala/tools/nsc/typechecker/Infer.scala#L1173).
-So far I have nothing to say here other than showing `-Yinfer-debug` logs of various code snippets, which involve type inference.
+この数日で分かったのは Scala の型推論は `scala/tools/nsc/typechecker/Infer.scala` 内の [`inferExprInstance`](https://github.com/scalamacros/kepler/blob/d7b59f452f5fa35df48a5e0385f579c98ebf3555/src/compiler/scala/tools/nsc/typechecker/Infer.scala#L1123) と
+[`inferMethodInstance`](https://github.com/scalamacros/kepler/blob/d7b59f452f5fa35df48a5e0385f579c98ebf3555/src/compiler/scala/tools/nsc/typechecker/Infer.scala#L1173) という 2つのメソッドで行われているということだ。
+今の所、型推論を使った様々なコードに対して `-Yinfer-debug` のログを表示させてみる以外、特に書くことは無い。
 
     def foo[T1](x: T1) = ???
     foo(2)
@@ -145,13 +134,11 @@ So far I have nothing to say here other than showing `-Yinfer-debug` logs of var
     [solve types] solving for T4 in ?T4
     [infer method] solving for T4 in (implicit xs: C.this.Qwe[T4])Nothing based on (C.this.Qwe[Nothing])Nothing (solved: T4=Nothing)
 
-## Proposed solution
+## 提案
 
-Using the infrastructure provided by [macro bundles](/overviews/macros/bundles.html) (in principle, we could achieve exactly the same
-thing using the traditional way of defining macro implementations, but that's not important here), we introduce the `onInfer` callback,
-which macros can define to be called by the compiler from `inferExprInstance` and `inferMethodInstance`. The callback takes a single
-parameter of type `c.TypeInferenceContext`, which encapsulates the arguments of `inferXXX` methods and provides methods to infer
-unknown type parameters.
+[マクロバンドル](/ja/overviews/macros/bundles.html)で提供されるインフラを使って、`onInfer` というコールバックを導入する。
+このコールバックが定義されていれば、コンパイラによって `inferExprInstance` と `inferMethodInstance` から呼び出される。
+これは、`inferXXX` メソッドへの引数をカプセル化し未知の型パラメータの型推論を実行するメソッドを提供する `c.TypeInferenceContext` 型のパラメータを 1つ受け取る。
 
     trait Macro {
       val c: Context
@@ -178,8 +165,8 @@ unknown type parameters.
       def inferDefault(): Unit
     }
 
-With this infrastructure in place, we can write the `materializeIso` macro, which obviates the need for manual declaration of implicits.
-The full source code is available in [paradise/macros](https://github.com/scalamacros/kepler/blob/paradise/macros/test/files/run/macro-programmable-type-inference/Impls_Macros_1.scala), here's the relevant excerpt:
+このインフラがあれば、`materializeIso` マクロを書いて手動で implicit を宣言する手間を省くことができる。
+完全なソースコードは [paradise/macros](https://github.com/scalamacros/kepler/blob/paradise/macros/test/files/run/macro-programmable-type-inference/Impls_Macros_1.scala) より入手できるが、以下に主な部分を抜粋する:
 
     override def onInfer(tic: c.TypeInferenceContext): Unit = {
       val C = tic.unknowns(0)
