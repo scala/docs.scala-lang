@@ -1,8 +1,6 @@
 {% for pg in site.pages %}
-  {% if pg.tutorial == "scala-tour" and pg.outof %}
-    {% unless pg.language %}
-      {% assign totalPagesTour = pg.outof %}
-    {% endunless %}
+  {% if pg.tutorial == "scala-tour" and pg.outof and pg.language == page.language %}
+    {% assign totalPagesTour = pg.outof %}
   {% endif %}
 {% endfor %}
 
@@ -10,10 +8,8 @@
   <ul>
   {% for i in (1..totalPagesTour) %}
     {% for pg in site.pages %}
-      {% if pg.tutorial == "scala-tour" and pg.num and pg.num == i %}
-        {% unless pg.language %}
-          <li class="tour-of-scala"><a href="{{ pg.url }}">{{ pg.title }}</a></li>
-        {% endunless %}
+      {% if pg.tutorial == "scala-tour" and pg.num and pg.num == i and pg.language == page.language %}
+        <li class="tour-of-scala"><a href="{{ pg.url }}">{{ pg.title }}</a></li>
       {% endif %}
     {% endfor %}
   {% endfor %}
