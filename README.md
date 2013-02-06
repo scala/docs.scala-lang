@@ -50,7 +50,7 @@ you have to execute `chcp 65001`. This command is best added to the `jekyll.bat`
 
 The markdown used in this site uses [Maruku](http://maruku.rubyforge.org/maruku.html) extensions.
 
-### Markdwn Editor for OSX ###
+### Markdown Editor for OSX ###
 
 There exists a free markdown editor for OSX called [Mou](http://mouapp.com/). It's quite convenient to work with, and it generates the translated Markdown in real-time alongside of your editor window, as can be seen here:
 
