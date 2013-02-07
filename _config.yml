@@ -11,7 +11,7 @@ keywords:
 - Document
 - Guide
 
-scala-version: 2.9.1
+scala-version: 2.10.0
 
 pygments: true
 permalink: /:categories/:title.html
