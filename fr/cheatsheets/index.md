@@ -30,7 +30,7 @@ about: Grâce à  <a href="http://brenocon.com/">Brendan O'Connor</a>, cette ant
 |  `def zscore(mean:R, sd:R)(x:R) = (x-mean)/sd`                                                           |  curryfication, sucre syntaxique. mais alors : |
 |  `val normer = zscore(7, 0.4)_`                                                                          |  il faut traiter l'underscore dans la fonction partielle, mais ceci uniquement pour la version avec le sucre syntaxique. |
 |  `def mapmake[T](g:T=>T)(seq: List[T]) = seq.map(g)`                                                     |  type générique. |
-|  `5.+(3); 5 + 3` <br> `(1 to 5) map (_*2)`                                                               |  infix sugar. |
+|  `5.+(3); 5 + 3` <br> `(1 to 5) map (_*2)`                                                               |  sucre syntaxique pour opérateurs infixés. |
 |  `def sum(args: Int*) = args.reduceLeft(_+_)`                                                            |  arguments variadiques. |
 |  <h2 id="packages">paquetages</h2>                                                                       |                 |
 |  `import scala.collection._`                                                                             |  import global. |
@@ -46,7 +46,7 @@ about: Grâce à  <a href="http://brenocon.com/">Brendan O'Connor</a>, cette ant
 |  `xs(2)`                                                                                                 |  indexe un élément par le biais des parenthèses. ([transparents](http://www.slideshare.net/Odersky/fosdem-2009-1013261/27)) |
 |  `1 :: List(2,3)`                                                                                        |  créé une liste par le biais de l'opérateur "cons".|
 |  `1 to 5` _est équivalent à_ `1 until 6` <br> `1 to 10 by 2`                                             |  sucre syntaxique pour les plages de valeurs. |
-|  `()` _(parenthèses vides)_                                                                              |  membre seul de type Unit  (à l'instar de void en C/Java). |
+|  `()` _(parenthèses vides)_                                                                              |  l'unique membre de type Unit  (à l'instar de void en C/Java). |
 |  <h2 id="control_constructs">structures de constrôle</h2>                                                |                 |
 |  `if (check) happy else sad`                                                                             |  test conditionnel. |
 |  `if (check) happy` _est équivalent à_ <br> `if (check) happy else ()`                                   |  sucre syntaxique pour un test conditionnel. |
