@@ -518,14 +518,15 @@ In Akka, watching the already dead actor will result in sending the `Terminated`
 ### Step 5 - Moving to the Akka Back-end
 
 At this point user code is ready to operate on Akka actors. Now we can switch the actors library from Scala to
-Akka actors. In order to do this configure the build to exclude the `scala-actors.jar` and the `scala-actors-migration.jar`
- and add the *akka-actor.jar*. The AMK is built to work only with Akka actors version 2.1 which are included in the [Scala distribution](http://www.scala-lang.org/downloads)
+Akka actors. To do this configure the build to exclude the `scala-actors.jar` and the `scala-actors-migration.jar`,
+ and to include *akka-actor.jar* and *typesafe-config.jar*. The AMK is built to work only with Akka actors version 2.1 which are included in the [Scala distribution](http://www.scala-lang.org/downloads)
   and can be configured by these [instructions](http://doc.akka.io/docs/akka/2.1.0/intro/getting-started.html#Using_a_build_tool). 
 
 After this change the compilation will fail due to different package names and slight differences in the API. We will have to change each imported actor
 from scala to Akka. Following is the non-exhaustive list of package names that need to be changed:
 
     scala.actors._ -> akka.actor._
+    scala.actors.migration.ActWithStash -> akka.actor.ActorDSL._
     scala.actors.migration.pattern.ask -> akka.pattern.ask
     scala.actors.migration.Timeout -> akka.util.Timeout
 
