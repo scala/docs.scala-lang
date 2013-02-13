@@ -1,8 +1,8 @@
 ---
 layout: cheatsheet
-title: Antisèche pour Scala
+title: Memento Scala
 by: Brendan O'Connor
-about: Grâce à  <a href="http://brenocon.com/">Brendan O'Connor</a>, cette antisèche vise à être un guide de référence rapide pour les constructions syntaxiques en Scala. Licencié par Brendan O'Connor sous licence CC-BY-SA 3.0.
+about: Grâce à  <a href="http://brenocon.com/">Brendan O'Connor</a>, ce memento vise à être un guide de référence rapide pour les constructions syntaxiques en Scala. Licencié par Brendan O'Connor sous licence CC-BY-SA 3.0.
 ---
 
 ###### Contribué par {{ page.by }}
