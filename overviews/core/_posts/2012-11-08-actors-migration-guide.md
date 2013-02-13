@@ -9,7 +9,7 @@ label-text: New in 2.10
 
 ## Introduction
 
-Starting with Scala 2.10.1, the Scala
+Starting with Scala 2.11.0, the Scala
 [Actors](http://docs.scala-lang.org/overviews/core/actors.html)
 library is deprecated. Already in Scala 2.10.0 the default actor library is
 [Akka](http://akka.io).
