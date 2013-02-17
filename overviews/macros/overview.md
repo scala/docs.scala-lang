@@ -74,7 +74,7 @@ or with `-language:experimental.macros` (providing a compiler switch) on per-com
 
 ### Generic macros
 
-Macro definitions and macro implementations may both be generic. If a macro implementation has type parameters, actual type arguments must be given explicitly in the macro definition’s body. Type parameters in an implementation may come with `TypeTag` context bounds. In that case the corresponding type tags describing the actual type arguments instantiated at the application site will be passed along when the macro is expanded.
+Macro definitions and macro implementations may both be generic. If a macro implementation has type parameters, actual type arguments must be given explicitly in the macro definition’s body. Type parameters in an implementation may come with `WeakTypeTag` context bounds. In that case the corresponding type tags describing the actual type arguments instantiated at the application site will be passed along when the macro is expanded.
 
 The following code snippet declares a macro definition `Queryable.map` that references a macro implementation `QImpl.map`:
 
@@ -83,7 +83,7 @@ The following code snippet declares a macro definition `Queryable.map` that refe
     }
 
     object QImpl {
-     def map[T: c.TypeTag, U: c.TypeTag]
+     def map[T: c.WeakTypeTag, U: c.WeakTypeTag]
             (c: Context)
             (p: c.Expr[T => U]): c.Expr[Queryable[U]] = ...
     }
@@ -95,7 +95,7 @@ Now consider a value `q` of type `Queryable[String]` and a macro call
 The call is expanded to the following reflective macro invocation
 
     QImpl.map(c)(<[ s => s.length ]>)
-       (implicitly[TypeTag[String]], implicitly[TypeTag[Int]])
+       (implicitly[WeakTypeTag[String]], implicitly[WeakTypeTag[Int]])
 
 ## A complete example
 
