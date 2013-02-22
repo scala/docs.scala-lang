@@ -7,6 +7,7 @@ disqus: true
 partof: reflection
 num: 5
 outof: 6
+languages: [ja]
 ---
 
 As with other JVM languages, Scala’s types are erased at compile time. This

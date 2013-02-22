@@ -82,6 +82,11 @@ actions will be taken:
 2. **Put under moderation** On the second offense, a user may be placed under moderation.  This will continue for a maximum of three months.  If behavior improves, a user can leave moderated status.   If behavior degrades, it can lead to #3.
 3. **Removal from community** If a user has already been placed under moderation and returned, or has not learned to be respectful and courteous to others, it will constitute a removal from the Scala community, including all forums the Scala moderators are responsible for.
 
+
+## No Job postings
+
+The scala forums will *no longer* allow job listings to be posted to the mailing list.  While we're all *very* glad to see more and more Scala jobs, we'd prefer if these listing were kept in more appropriate forums.
+
 ## The Mailing Lists
 
 The Scala mailing lists are split into several sub-lists:
