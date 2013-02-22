@@ -1,10 +1,9 @@
 ---
 layout: overview
-title: Reflection
-disqus: true
 partof: reflection
 overview: reflection
-languages: [ja]
+language: ja
 label-color: important
 label-text: Experimental
+title: リフレクション
 ---
