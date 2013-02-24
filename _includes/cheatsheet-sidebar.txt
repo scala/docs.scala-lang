@@ -1,19 +1,36 @@
+{% for pg in site.pages %}
+  {% if pg.layout == 'cheatsheet' and pg.title == page.title and pg.languages %}
+    {% assign languages = pg.languages %}
+  {% endif %}
+{% endfor %}
+
+{% if page.language %}
+  {% capture intermediate %}{{ page.url | remove_first: page.language }}{% endcapture %}
+  {% capture rootTutorialURL %}{{ intermediate | remove_first: '/' }}{% endcapture %}
+{% else %}
+  {% assign rootTutorialURL = page.url %}
+{% endif %}
+
 <div id="scroller-anchor">
   <div id="scroller">
+    {% if languages %}
+      <a href="{{ site.baseurl }}{{ rootTutorialURL }}"><img src="{{ site.baseurl }}/resources/images/language/en.png" title="Language: en" style="margin-left: 14px;"/></a>
+      {% for l in languages %}
+        <a href="{{ site.baseurl }}/{{ l }}{{ rootTutorialURL }}"><img src="{{ site.baseurl }}/resources/images/language/{{ l }}.png" title="Language: {{ l }}"/></a>
+      {% endfor %}
+    {% endif %}
     <p class="contents">Contents</p>
     <div id="toc"></div>
     <p class="contents">Other Cheatsheets</p>
     <ul>
       {% for pg in site.pages %}
-        {% if pg.layout == 'cheatsheet' and pg.title != page.title %}   
+        {% if pg.layout == 'cheatsheet' and pg.title != page.title %}
           <li><a href="{{ pg.url }}">{{ pg.title }}</a></li>
         {% endif %}
       {% endfor %}
     </ul>
-    {% for pg in site.pages %}
-      {% if pg.about %}   
-        </br><h6>About</h6><p id="about">{{ pg.about }}</p>
-      {% endif %}
-    {% endfor %}
+    {% if page.about %}
+      </br><h6>About</h6><p id="about">{{ page.about }}</p>
+    {% endif %}
   </div>
 </div>
