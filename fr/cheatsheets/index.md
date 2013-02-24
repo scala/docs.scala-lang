@@ -1,6 +1,7 @@
 ---
 layout: cheatsheet
-title: Memento Scala
+istranslation: true
+title: Scalacheat
 by: Brendan O'Connor
 about: Grâce à  <a href="http://brenocon.com/">Brendan O'Connor</a>, ce memento vise à être un guide de référence rapide pour les constructions syntaxiques en Scala. Licencié par Brendan O'Connor sous licence CC-BY-SA 3.0.
 language: fr
