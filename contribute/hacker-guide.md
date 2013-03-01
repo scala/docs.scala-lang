@@ -10,12 +10,15 @@ to a nightly and, ultimately, to a production release of Scala incorporating you
 influence a programming language of your choice is amazing, and I'm excited to demonstrate that it's easier
 than one might think.
 
+### The running example ###
+
 I like string interpolation a lot. Doing debug prints with interpolators introduced in Scala 2.10.0
 is so enjoyable that I often wonder how we ever lived without that feature. However there's an annoying issue
 which I occasionally stumble upon: the formatting string interpolator `f` [does not support](https://issues.scala-lang.org/browse/SI-6725)
 new line tokens `%n`. I could go the mailing list, ask to fix this bug and then indefinitely
 wait for the fix. Or I could instead patch Scala myself and get the fix in a subsequent release (nightly builds get produced, well, every
-night, minor releases are pumped every few months and major releases happen once a year). Let's get to work!
+night, minor releases are pumped every few months and major releases happen once a year). The latter option sounds cool, so let's see
+how it works!
 
 ### 1. Connect ###
 
@@ -47,7 +50,7 @@ list of people (Github usernames and real-life names) and their specialties:
     documentation: @heathermiller (Heather Miller)
     cps: @TiarkRompf (Tiark Rompf)
 
-Martin is the one who submitted the string interpolation proposal and implemented this language features for Scala 2.10.0.
+Martin is the one who submitted the string interpolation proposal and implemented this language feature for Scala 2.10.0.
 (TODO: how to choose a mailing list)
 Therefore now I'm going to [the scala-user mailing list](http://groups.google.com/group/scala-user) and will post a topic
 about my issue. Note that I put Martin in the cc list of the email. If I didn't do that, he would probably miss it in a bunch
@@ -57,19 +60,19 @@ of emails, which get posted to scala-user every day.
 
 ![Response from Martin](/contribute/02-post.png)
 
-Now when I have an approval of the feature's author, it makes sense to start doing something.
+Now when I have the approval of the feature's author, I'll get to work!
 
 ### 2. Set up ###
 
-Hacking Scala begins with creating a branch for your work item. In our workflow we use [Git](http://git-scm.com/)
-and [GitHub](http://github.com/). This section of the guide provides a short walkthrough on how to use them.
-If you are new to Git, it might make sense to familiarize with it first. We recommend the [Git Pro](http://git-scm.com/book/en/)
+Hacking Scala begins with creating a branch for your work item. To develop Scala we use [Git](http://git-scm.com/)
+and [GitHub](http://github.com/). This section of the guide provides a short walkthrough, but if you are new to Git,
+it probably makes sense to familiarize with Git first. We recommend the [Git Pro](http://git-scm.com/book/en/)
 online book.
 
 ### Fork ###
 
 Log into [GitHub](http://github.com/), go to [https://github.com/scala/scala](https://github.com/scala/scala) and click the `Fork`
-button at the top of the page. This will create your own copy of our repository that will serve as a scratchpad for your experiments.
+button at the top of the page. This will create your own copy of our repository that will serve as a scratchpad for your hackings.
 If you're new to Git, don't be afraid of messing it up - there is no way you can corrupt our repository.
 
 ![Fork scala/scala](/contribute/03-fork.png)
@@ -113,13 +116,13 @@ The next step after cloning your fork is setting up your machine to build Scala.
 [https://github.com/scala/scala/blob/master/README.rst](https://github.com/scala/scala/blob/master/README.rst), but here's the summary:
 
 * It is recommended to use Java `1.6` (not `1.7` or `1.8`, because they might cause occasional glitches).
-* The build tool we use is `ant`.
-* The build script runs the `pull-binary-libs.sh` script to download bootstrap libs. This requires `bash` and `curl`.
-* The majority of our team works on Linux and OS X.
+* The build tool is `ant`.
+* The build runs the `pull-binary-libs.sh` script to download bootstrap libs. This requires `bash` and `curl`.
+* The majority of our team works on Linux and OS X, so these operating systems are guaranteed to work.
 * Windows is supported, but it might have issues. Please report to [the issue tracker](https://issues.scala-lang.org/) if you encounter them.
 
-In a nutshell, build Scala is as easy as running `ant` in the root of your clone. Be prepared to wait for a while - a full rebuild
-takes 7+ minutes depending on your machine. Incremental builds are usually within 30-90 seconds range (again, your mileage might vary
+In a nutshell, building Scala is as easy as running `ant` in the root of your clone. Be prepared to wait for a while - a full rebuild
+takes 8+ minutes depending on your machine. Incremental builds are usually within 30-120 seconds range (again, your mileage might vary
 with your hardware).
 
     16:50 ~/Projects/scala (ticket/6725)$ ant
@@ -149,7 +152,7 @@ with your hardware).
 
 ### IDE ###
 
-There's no single editor of choice to work with Scala sources, as there are trade-offs imposed by each available option.
+There's no single editor of choice for working with Scala sources, as there are trade-offs associated with each available tool.
 
 Both Eclipse and Intellij IDEA have Scala plugins, which are known to work with our codebase. Here are
 [instructions for Eclipse](https://github.com/scala/scala/blob/master/src/eclipse/README.md) and
@@ -158,7 +161,7 @@ navigation, refactoring and error reporting functionality as well as integrated 
 of occasional sluggishness.
 
 On the other hand, lightweight editors such as Emacs, Sublime or jEdit provide unparalleled scriptability and performance, while
-lacking semantic services and debugging. To address this shortcoming, one can integrate with ENSIME,
+lacking semantic services and debugging. To address this shortcoming, they can integrate with ENSIME,
 a helper program, which hosts a resident Scala compiler providing some of the features implemented in traditional IDEs. However despite
 having significantly matured over the last year, its support for our particular codebase is still far from being great.
 
@@ -168,12 +171,13 @@ Therefore it's hard to recommend a particular tool here, and your choice should 
 ### 3. Hack ###
 
 When hacking on your topic of choice, you'll be modifying Scala, compiling it and testing it on relevant input files.
-Typically you would want to first make sure that your changes work on a few small example and afterwards verify that nothing break
-by running the comprehensive test suite.
+Typically you would want to first make sure that your changes work on a small example and afterwards verify that nothing break
+by running a comprehensive test suite.
 
 I'm going to start by creating a `sandbox` directory (this particular name doesn't bear any special meaning - it's just a tribute to
-my first days in Scala team), which will hold a single test file and its compilation results. First I make sure that the bug is indeed
-reproducible by throwing together a simple test and feeding it into the Scala distribution assembled by ant in `build/pack/bin`.
+my first days in Scala team), which will hold a single test file and its compilation results. First I make sure that
+[the bug](https://issues.scala-lang.org/browse/SI-6725) is indeed reproducible by throwing together a simple test and feeding it
+into the Scala distribution assembled by ant in `build/pack/bin`.
 
     17:25 ~/Projects/scala (ticket/6725)$ mkdir sandbox
     17:26 ~/Projects/scala (ticket/6725)$ cd sandbox
@@ -186,7 +190,7 @@ reproducible by throwing together a simple test and feeding it into the Scala di
     }
     17:27 ~/Projects/scala/sandbox (ticket/6725)$ ../build/pack/bin/scalac Test.scala
     17:28 ~/Projects/scala/sandbox (ticket/6725)$ ../build/pack/bin/scala Test
-    1%n1
+    1%n1 // %n should've been replaced by a newline here
 
 ### Implement ###
 
@@ -198,17 +202,17 @@ Here are also some tips & tricks that have proven useful in Scala development:
   try doing `ant clean build`. Due to the way how Scala compiles traits, if a trait changes, then it's sometimes not enough to recompile
   just that trait, but it might also be necessary to recompile its users. Ant is not smart enough to do that, which might lead to
   very strange errors. Full rebuilds fix the problem. Fortunately that's rarely necessary, because full rebuilds take significant time.
-* Even on solid state drives packaging Scala distribution (i.e. creating jars from class files) is a non-trivial task. There are quite a few
-  people in our team, who do `ant quick.comp` instead of `ant` and then create custom scripts to launch Scala from `build/quick/classes`.
+* Even on solid state drives packaging Scala distribution (i.e. creating jars from class files) is a non-trivial task. To save time here,
+  some people in our team do `ant quick.comp` instead of `ant` and then create custom scripts to launch Scala from `build/quick/classes`.
 * Don't underestimate the power of `print`. When starting with Scala, I spent a lot of time in the debugger trying to figure out how
   things work. However later I found out that print-based debugging is often more effective than jumping around. While it might be obvious
-  to some, I'd like to explicitly mention that it's useful to print stack traces to understand the flow of execution.
+  to some, I'd like to explicitly mention that it's also useful to print stack traces to understand the flow of execution.
 
-Docs. Right, the docs. The documentation about internal workings of the compiler is scarce, and a lot of knowledge gets passed
-exclusively as a folklore. However the situation is steadily improving. Here are the resources that might help:
+Docs. Right, the docs. The documentation about internal workings of the compiler is scarce, and most of the knowledge is passed around
+in the form of folklore. However the situation is steadily improving. Here are the resources that might help:
 
 * [Compiler internals videos by Martin Odersky](TODO) are quite dated, but still very useful. In this three-video
-  series Martin explains inner working of the part of the compiler, which has recently become Scala reflection API.
+  series Martin explains inner workings of the part of the compiler, which has recently become Scala reflection API.
 * [Reflection and Compilers by Martin Odersky](http://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2012/Reflection-and-Compilers), a talk
   at Lang.NEXT 2012 in which Martin elaborates on the design of scalac and the reflection API.
 * [Reflection documentation](http://docs.scala-lang.org/overviews/reflection/overview.html) describes fundamental data structures that
@@ -262,7 +266,7 @@ After I applied the fix and running `ant`, my simple test case in `sandbox/Test.
     18:51 ~/Projects/scala/sandbox (ticket/6725)$ ../build/pack/bin/scalac Test.scala
     18:51 ~/Projects/scala/sandbox (ticket/6725)$ ../build/pack/bin/scala Test
     1
-    1
+    1 // no longer getting the %n here - it got transformed into a newline
 
 ### Verify ###
 
@@ -293,13 +297,13 @@ The [Git Basics](http://git-scm.com/book/en/Git-Basics) chapter in the Git onlin
 There are two things you should know here:
 
 1) Commit messages are frequently the only way to communicate with the authors of the code written a few years ago. Therefore, we give them
-big importance. Be creative and eloquent - the more context your provide about the change you've introduced, the bigger the probability that
-some future maintainer will understand you right. Consult [the pull request policy](https://github.com/scala/scala/wiki/Pull-Request-Policy)
+big importance. Be creative and eloquent - the more context your provide for the change you've introduced, the bigger the probability that
+some future maintainer will get you right. Consult [the pull request policy](https://github.com/scala/scala/wiki/Pull-Request-Policy)
 for more information about the desired style of your commits.
 
 2) Clean history is also important. Therefore we won't accept pull requests for bug fixes that have more than one commit.
 For features, it is okay to have several commits, but all tests need to pass after every single commit. To clean up your commit structure,
-you want to [rewrite history](http://git-scm.com/book/en/Git-Branching-Rebasing) using `git rebase` so your commits are against
+you want to [rewrite history](http://git-scm.com/book/en/Git-Branching-Rebasing) using `git rebase` so that your commits are against
 the latest revision of `master`.
 
 Once you are satisfied with your work, synced with `master` and cleaned up your commits you are ready to submit a patch to the central Scala repository. Before proceeding make sure you have pushed all of your local changes to your fork on Github.
