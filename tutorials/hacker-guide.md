@@ -5,6 +5,12 @@ title: Scala hacker guide
 
 **Eugene Burmako**
 
+PREVIEW VERSION, MEANT TO LIVE ELSEWHERE
+
+PLEASE DO NOT REPOST/TWEET THIS GUIDE
+
+SO THAT WE DON'T HAVE TO UPDATE BROKEN LINKS LATER
+
 This guide is intended to help you get from an idea of fixing a bug or implementing a new feature
 to a nightly and, ultimately, to a production release of Scala incorporating your idea. Being able to
 influence a programming language of your choice is amazing, and I'm excited to demonstrate that it's easier
