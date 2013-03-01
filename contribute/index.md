@@ -2,8 +2,66 @@
 layout: page
 title: Contribute
 ---
+# Contributing to the Scala project
 
-- This page should contain the introduction as mentioned in the Scala Doc team google document
+The Scala programming langauge is an open source project with a very
+diverse community, where people from all over the world contribute their work,
+with everyone benefitting from friendly help and advice, and
+kindly helping others in return. So why not join the Scala community and help
+everyone make things better?
+
+The following are typical questions you might ask when first contributing to Scala.
+If you have other questions not addressed here, feel free to ask on the [scala-internals mailing list](http://groups.google.com/group/scala-internals).
+
+<br/>
+
+### I found something that doesn't work as expected. How to file a bug report?
+
+[The reporting bugs page](bug-reporting-guide.html) describes the steps to take when you find something that doesn't work
+as expected. Filing in a good bug report increases the chances the ticket is fixed quickly.
+
+<br/>
+
+### Why contribute a patch to Scala?
+
+Just to name a few common reasons:
+ - contributing a patch is the best way to make sure your desired changes will be available in the next Scala version
+ - Scala is written in Scala, so going through the source code and patching it will improve your Scala-fu
+ - last but not least, you will make it into the [Scala Contribuitor Hall of Fame](scala-fame.html).
+
+<br/>
+
+### I'd like to start hacking the Scala project, how to find something to work on?
+
+Depending on your skillset, you may want to contribute documentation and/or code. Documentation has always been very
+appreciated work in the Scala community, as most code contributions tend to be quite scarce in explanations of how
+things work and how everyone else is supposed to use them. To contribute documentation, have a look at the
+[documentation page](documentation.html).
+
+The main Scala project consists of the standard Scala library, the Scala reflection and macros library,
+the Scala compiler and the Scaladoc tool. This means there's plenty to choose from when deciding what to work on.
+Typically the scaladoc tool provides a low entry point for new committers, so it is a good first step into contributing.
+
+On the Scala bug tracker you will find many bugs that are [marked as good starting points to contributing ("community" bugs)](https://issues.scala-lang.org/secure/IssueNavigator.jspa?requestId=12111) or [that are not currently assigned](https://issues.scala-lang.org/secure/IssueNavigator.jspa?requestId=12112) and that you could pick up. Once you decided on a ticket to look at, see the next step on how to proceed further.
+
+<br/>
+
+### I have this idea that I'd like to add to Scala, how do I start?
+
+The first step to making a change is to discuss it with the community at large, to make sure everyone agrees on the idea
+and on the implementation plan. Starting point ("community") bugs are usually uncontroversial, so you can jump right
+ahead to hacking the scala source tree and filing a pull request. For larger changes it is best to announce the change
+on the [scala-internals](http://groups.google.com/group/scala-internals) mailing list and get developer feedback. For really complex changes, a [Scala Improvement Process (SIP)](http://docs.scala-lang.org/sips/) document might be required, but the first step is always to discuss it on the mailing list.
+
+Contributions, big or small, simple or complex, controversial or undisputed, need to materialize as patches against
+the Scala project source tree. The [hacker guide](hacker-guide.html) will explain how to materialize your idea into a full-fledged pull request against the Scala code base.
+
+<br/>
+
+<!--
+
+To be moved to hacker-guide.md:
+
 - Subpages or subsections for contributing for each project (i.e. how to find tickets/features to work on)
 - Building and contributing code (contributor's workflow)
   - link to a proper git etiquette page
@@ -12,23 +70,15 @@ title: Contribute
   - compiler page (links to compiler-related docs i.e. reflection/macros/compiler-plugin guides, links to compiler internal videos, and useful info from wiki) (or should this go on docs.scala-lang?)
 - Link to how to make a bug report
 
-The Scala programming langauge is an open source project from École
-Polytechnique Fédérale de Lausanne (EPFL) in Switzerland. The source of the
-compiler and libraries is hosted on [github](http://github.com/scala/scala).
-
-Some aspects of the language are easier to contribute to than others-- the
-compiler, for example, is arguably the most difficult part of the Scala
-project to successfully submit patches to.
+The source code is hosted on [github](http://github.com/scala/scala).
 
 If you're interested in joining our community and contributing to the project,
-start simple-- often Scaladoc (Scala's javadoc-like tool, Example: [Scala
+start simple- often Scaladoc (Scala's javadoc-like tool, Example: [Scala
 Standard Library API](www.scala-lang.org/api/current/index.html#package)) is
 the best place to get started.
 
 
 ## Overview of the Scala Ecosystem
-
-TODO: I feel this section belongs somewhere else and should be linked here.
 
 [Scala Project](http://scala-lang.org)
 
@@ -42,7 +92,6 @@ TODO: I feel this section belongs somewhere else and should be linked here.
     | scaladoc      |    |  SBT      |
     | documentation |    |  ....     |
     |_______________|    |___________|
-    
 
 
 ## Basic Workflow
@@ -82,7 +131,7 @@ If you want to become a contributor but you don't know what to work on, here are
 
 ## Process
 
-"gitting stuff done" document. 
+"gitting stuff done" document.
 
 Where to ask questions. How-tos to mailing list, discussion pertaining to a
 specific ticket on the issue tracker.
@@ -97,18 +146,18 @@ TODO: Heather
 
 The files below are recordings of code walk-through sessions by Martin Odersky about the Scala compiler internals. Some of the information is somewhat outdated, but the clips are still a good introduction to some parts of the compiler architecture.
 
- - [Scala Internals 2008-10-29 (Symbols 1)](http://www.scala-lang.org/sites/default/files/martin_ordersky_scala_internals_2008-10-29.avi) 
-   
+ - [Scala Internals 2008-10-29 (Symbols 1)](http://www.scala-lang.org/sites/default/files/martin_ordersky_scala_internals_2008-10-29.avi)
+
    Handling of Symbols in the Scala compiler: some details on the symtab subdir, Symbols, Definitions, StdNames, Types (Lazy Types).
-   
- - [Scala Internals 2008-11-05 (Symbols 2)](http://www.scala-lang.org/sites/default/files/martin_ordersky_scala_internals_2008-11-05.avi) 
-   
+
+ - [Scala Internals 2008-11-05 (Symbols 2)](http://www.scala-lang.org/sites/default/files/martin_ordersky_scala_internals_2008-11-05.avi)
+
    Handling of Symbols part deux: more information on Symbols, Flags, Definitions.
-   
- - [Scala Internals 2009-03-04 (Types)](http://www.scala-lang.org/sites/default/files/martin_ordersky_scala_internals_2009-03-04.avi) 
- 
+
+ - [Scala Internals 2009-03-04 (Types)](http://www.scala-lang.org/sites/default/files/martin_ordersky_scala_internals_2009-03-04.avi)
+
    A detailed explanation about how types are represented and manipulated within the Scala compiler: data structures, manipulations of types, coding conventions (audio is not perfect, but intelligible).
- 
+
 ## FAQ
 
 ### OSX
@@ -117,3 +166,4 @@ The files below are recordings of code walk-through sessions by Martin Odersky a
 
 ### Windows
 
+-->
