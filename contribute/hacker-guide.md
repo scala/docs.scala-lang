@@ -136,8 +136,6 @@ with your hardware).
          [exec] Resolving [943cd5c8802b2a3a64a010efb86ec19bac142e40/lib/ant/ant-contrib.jar]
 
     ...
-    ...
-    ...
 
     pack.bin:
         [mkdir] Created dir: /Users/xeno_by/Projects/scala/build/pack/bin
@@ -188,6 +186,7 @@ reproducible by throwing together a simple test and feeding it into the Scala di
     }
     17:27 ~/Projects/scala/sandbox (ticket/6725)$ ../build/pack/bin/scalac Test.scala
     17:28 ~/Projects/scala/sandbox (ticket/6725)$ ../build/pack/bin/scala Test
+    1%n1
 
 ### Implement ###
 
@@ -219,5 +218,118 @@ exclusively as a folklore. However the situation is steadily improving. Here are
 * [scala-internals](http://groups.google.com/group/scala-internals), a mailing list which hosts discussions about the core
   internal design and implementation of the Scala system.
 
+### Interlude ###
+
+To fix [the bug I'm interested in](https://issues.scala-lang.org/browse/SI-6725) I've tracked the `StringContext.f` interpolator
+down to a macro implemented in `MacroImplementations.scala`. There I noticed that the interpolator only processes conversions,
+but not tokens like `%n`. Looks like an easy fix.
+
+    18:44 ~/Projects/scala/sandbox (ticket/6725)$ git diff
+    diff --git a/src/compiler/scala/tools/reflect/MacroImplementations.scala b/src/compiler/scala/tools/
+    index 002a3fce82..4e8f02084d 100644
+    --- a/src/compiler/scala/tools/reflect/MacroImplementations.scala
+    +++ b/src/compiler/scala/tools/reflect/MacroImplementations.scala
+    @@ -117,7 +117,8 @@ abstract class MacroImplementations {
+           if (!strIsEmpty) {
+             val len = str.length
+             while (idx < len) {
+    -          if (str(idx) == '%') {
+    +          def notPercentN = str(idx) != '%' || (idx + 1 < len && str(idx + 1) != 'n')
+    +          if (str(idx) == '%' && notPercentN) {
+                 bldr append (str substring (start, idx)) append "%%"
+                 start = idx + 1
+               }
+
+After I applied the fix and running `ant`, my simple test case in `sandbox/Test.scala` started working!
+
+    18:51 ~/Projects/scala/sandbox (ticket/6725)$ cd ..
+    18:51 ~/Projects/scala (ticket/6725)$ ant
+    Buildfile: /Users/xeno_by/Projects/scala/build.xml
+
+    ...
+
+    quick.comp:
+    [scalacfork] Compiling 1 file to /Users/xeno_by/Projects/scala/build/quick/classes/compiler
+    [propertyfile] Updating property file: /Users/xeno_by/Projects/scala/build/quick/classes/compiler/compiler.properties
+    [stopwatch] [quick.comp.timer: 6.588 sec]
+
+    ...
+
+    BUILD SUCCESSFUL
+    Total time: 18 seconds
+
+    18:51 ~/Projects/scala (ticket/6725)$ cd sandbox
+    18:51 ~/Projects/scala/sandbox (ticket/6725)$ ../build/pack/bin/scalac Test.scala
+    18:51 ~/Projects/scala/sandbox (ticket/6725)$ ../build/pack/bin/scala Test
+    1
+    1
+
 ### Verify ###
 
+Now to make sure that my fix doesn't break anything I need to run the test suite using the `partest` tool we wrote to test Scala.
+Read up [the partest guide](/contribute/partest-guide.html) to learn the details about partest, but in a nutshell you can either
+run `ant test` to go through the entire test suite (30+ minutes) or use wildcards to limit the tests to something manageable:
+
+    18:52 ~/Projects/scala/sandbox (ticket/6725)$ cd ../test
+    18:56 ~/Projects/scala/test (ticket/6725)$ partest files/run/*interpol*
+    Testing individual files
+    testing: [...]/files/run/interpolationArgs.scala                      [  OK  ]
+    testing: [...]/files/run/interpolationMultiline1.scala                [  OK  ]
+    testing: [...]/files/run/interpolationMultiline2.scala                [  OK  ]
+    testing: [...]/files/run/sm-interpolator.scala                        [  OK  ]
+    testing: [...]/files/run/interpolation.scala                          [  OK  ]
+    testing: [...]/files/run/stringinterpolation_macro-run.scala          [  OK  ]
+    All of 6 tests were successful (elapsed time: 00:00:08)
+
+### 4. Publish ###
+
+After development is finished, it's time to publish the code and submit your patch for discussion and potential inclusion into Scala.
+In a nutshell this involves: 1) making sure that your code and commit messages are of high quality, 2) clicking a few buttons in the
+Github interface, 3) assigning one or more reviewers which will look through your pull request. Now all that in more details.
+
+### Commit ###
+
+The [Git Basics](http://git-scm.com/book/en/Git-Basics) chapter in the Git online book covers most of the basic workflow during this stage.
+There are two things you should know here:
+
+1) Commit messages are frequently the only way to communicate with the authors of the code written a few years ago. Therefore, we give them
+big importance. Be creative and eloquent - the more context your provide about the change you've introduced, the bigger the probability that
+some future maintainer will understand you right. Consult [the pull request policy](https://github.com/scala/scala/wiki/Pull-Request-Policy)
+for more information about the desired style of your commits.
+
+2) Clean history is also important. Therefore we won't accept pull requests for bug fixes that have more than one commit.
+For features, it is okay to have several commits, but all tests need to pass after every single commit. To clean up your commit structure,
+you want to [rewrite history](http://git-scm.com/book/en/Git-Branching-Rebasing) using `git rebase` so your commits are against
+the latest revision of `master`.
+
+Once you are satisfied with your work, synced with `master` and cleaned up your commits you are ready to submit a patch to the central Scala repository. Before proceeding make sure you have pushed all of your local changes to your fork on Github.
+
+    19:22 ~/Projects/scala/test (ticket/6725)$ git add ../src/compiler/scala/tools/reflect/MacroImplementations.scala
+    19:22 ~/Projects/scala/test (ticket/6725)$ git commit
+    [ticket/6725 3c3098693b] SI-6725 `f` interpolator now supports %n tokens
+     1 file changed, 2 insertions(+), 1 deletion(-)
+    19:34 ~/Projects/scala/test (ticket/6725)$ git push origin ticket/6725
+    Username for 'https://github.com': xeno-by
+    Password for 'https://xeno-by@github.com':
+    Counting objects: 15, done.
+    Delta compression using up to 8 threads.
+    Compressing objects: 100% (8/8), done.
+    Writing objects: 100% (8/8), 1.00 KiB, done.
+    Total 8 (delta 5), reused 0 (delta 0)
+    To https://github.com/xeno-by/scala
+     * [new branch]            ticket/6725 -> ticket/6725
+
+### Submit ###
+
+This part is very easy and enjoyable. Navigate to your branch in Github (for me it was `https://github.com/xeno-by/scala/tree/ticket/6725`)
+and click the pull request button to submit your patch as a pull request to Scala. If you've never submitted patches to Scala, you will
+need to sign the contributor license agreement, which [can be done online](http://typesafe.com/contribute/cla/scala) within a few minutes.
+
+![Submit a pull request](/contribute/04-submit.png)
+
+### Discuss ###
+
+After the pull request has been submitted, you need to pick a reviewer (probably, the person you've contacted in the beginning of your
+workflow) and be ready to elaborate and adjust your patch if necessary. I picked Martin, because we had such a nice chat on the mailing list:
+
+![Assign the reviewer](/contribute/05-review.png)
