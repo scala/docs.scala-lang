@@ -31,24 +31,7 @@ about things you want to implement. People proficient is certain areas of Scala 
 by simply posting a message. But the most efficient way to connect is to cc your message to one of the go-to persons in your area. Here's the
 list of people (Github usernames and real-life names) and their specialties:
 
-    library: @phaller (Philipp Haller), @axel22 (Aleksandar Prokopec -- concurrent & collection)
-    specialisation: @axel22 (Aleksander Prokopec), @vladureche (Vlad Ureche), @dragos (Iulian Dragos)
-    named / default args, annotations, plugins: @lrytz (Lukas Rytz)
-    macros, reflection, manifests, type tags: @xeno-by (Eugene Burmako), @cvogt (Christopher Vogt)
-    type checker, inference: @odersky (Martin Odersky), @adriaanm (Adriaan Moors)
-    language specification, string interpolation, value classes: @odersky (Martin Odersky)
-    new pattern matcher, implicit search: @adriaanm (Adriaan Moors)
-    partest, Continuations Plugin: @phaller (Philipp Haller)
-    error handling, lazy vals: @hubertp (Hubert Plociniczak)
-    backend: @magarciaEPFL (Miguel Garcia), @gkossakowski (Grzegorz Kossakowski), @dragos (Iulian Dragos)
-    repl, compiler performance: @paulp (Paul Phillips)
-    swing: @ingoem (Ingo Maier)
-    scaladoc: @vladureche (Vlad Ureche)
-    optimizer: @vladureche (Vlad Ureche), @magarciaEPFL (Miguel Garcia)
-    build: @jsuereth (Josh Suereth)
-    random compiler bugs: @lrytz, @adriaanm, @hubertp
-    documentation: @heathermiller (Heather Miller)
-    cps: @TiarkRompf (Tiark Rompf)
+{% include maintainers.html %}
 
 Martin is the one who submitted the string interpolation proposal and implemented this language feature for Scala 2.10.0.
 (TODO: how to choose a mailing list)
@@ -56,9 +39,9 @@ Therefore now I'm going to [the scala-user mailing list](http://groups.google.co
 about my issue. Note that I put Martin in the cc list of the email. If I didn't do that, he would probably miss it in a bunch
 of emails, which get posted to scala-user every day.
 
-![Posting to scala-user](/contribute/01-post.png)
-
-![Response from Martin](/contribute/02-post.png)
+<center><img src="{{ site.baseurl }}/resources/img/01-post.png" alt="Posting to scala-user" /></center>
+<br/>
+<center><img src="{{ site.baseurl }}/resources/img/02-post.png" alt="Response from Martin" /></center>
 
 Now when I have the approval of the feature's author, I'll get to work!
 
@@ -75,7 +58,7 @@ Log into [GitHub](http://github.com/), go to [https://github.com/scala/scala](ht
 button at the top of the page. This will create your own copy of our repository that will serve as a scratchpad for your hackings.
 If you're new to Git, don't be afraid of messing it up - there is no way you can corrupt our repository.
 
-![Fork scala/scala](/contribute/03-fork.png)
+<center><img src="{{ site.baseurl }}/resources/img/03-fork.png" alt="Fork scala/scala" /></center>
 
 ### Clone ###
 
@@ -329,11 +312,12 @@ This part is very easy and enjoyable. Navigate to your branch in Github (for me 
 and click the pull request button to submit your patch as a pull request to Scala. If you've never submitted patches to Scala, you will
 need to sign the contributor license agreement, which [can be done online](http://typesafe.com/contribute/cla/scala) within a few minutes.
 
-![Submit a pull request](/contribute/04-submit.png)
+<center><img src="{{ site.baseurl }}/resources/img/04-submit.png" alt="Submit a pull request" /></center>
 
 ### Discuss ###
 
 After the pull request has been submitted, you need to pick a reviewer (probably, the person you've contacted in the beginning of your
 workflow) and be ready to elaborate and adjust your patch if necessary. I picked Martin, because we had such a nice chat on the mailing list:
 
-![Assign the reviewer](/contribute/05-review.png)
+<center><img src="{{ site.baseurl }}/resources/img/05-review.png" alt="SAssign the reviewer" /></center>
+
