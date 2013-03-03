@@ -9,7 +9,7 @@ This guide is intended to help you get from an idea of fixing a bug or implement
 
 This guide covers the entire process, from the conception of your idea or bugfix to the point where it is merged into Scala. Throughout, we will use a running example of an idea or bugfix one might wish to contribute.
 
-### The running example ###
+## The Running Example
 
 Let's say that you particularly enjoy the new string interpolation language feature introduced in Scala 2.10.0, and you use it quite heavily.
 
@@ -21,7 +21,7 @@ One approach would be to go the mailing list, request that the bug be fixed, and
 
 **_Of note_**: There are several types of releases/builds. Nightly builds are produced every night at a fixed time. Minor releases happen once every few months. Major releases typically happen once per year.
 
-### 1. Connect ###
+## 1. Connect
 
 Sometimes it's appealing to hack alone and not to have to interact with others out of fear, or out of comfort. However, in the context a big project such as Scala,
 this might not be the very best idea. There are people in the Scala community who have spent years accumulating knowledge about Scala libraries and internals. They might provide
@@ -46,26 +46,27 @@ in this example, we post to the [the scala-user mailing list](http://groups.goog
 
 Now that we have the approval of the feature's author, we can get to work!
 
-### 2. Set up ###
+## 2. Set up
 
 Hacking Scala begins with creating a branch for your work item. To develop Scala we use [Git](http://git-scm.com/)
 and [GitHub](http://github.com/). This section of the guide provides a short walkthrough, but if you are new to Git,
-it probably makes sense to familiarize with Git first. We recommend the [Git Pro](http://git-scm.com/book/en/)
+it probably makes sense to familiarize yourself with Git first. We recommend the [Git Pro](http://git-scm.com/book/en/)
 online book.
 
-### Fork ###
+### Fork
 
 Log into [GitHub](http://github.com/), go to [https://github.com/scala/scala](https://github.com/scala/scala) and click the `Fork`
-button at the top of the page. This will create your own copy of our repository that will serve as a scratchpad for your hackings.
-If you're new to Git, don't be afraid of messing it up - there is no way you can corrupt our repository.
+button in the top right corner of the page. This will create your own copy of our repository that will serve as a scratchpad for your work.
+
+If you're new to Git, don't be afraid of messing up-- there is no way you can corrupt our repository.
 
 <center><img src="{{ site.baseurl }}/resources/img/03-fork.png" alt="Fork scala/scala" /></center>
 
-### Clone ###
+### Clone
 
 If everything went okay, you will be redirected to your own fork at `https://github.com/username/scala`, where `username`
 is your github user name. You might find it helpful to read [http://help.github.com/fork-a-repo/](http://help.github.com/fork-a-repo/),
-which covers some of the things that will follow below. Then clone your repository by running something like the following on the command line:
+which covers some of the things that will follow below. Then, _clone_ your repository (_i.e._ pull a copy from github to your local machine) by running the following on the command line:
 
     16:35 ~/Projects$ git clone https://github.com/xeno-by/scala
     Cloning into 'scala'...
@@ -76,25 +77,25 @@ which covers some of the things that will follow below. Then clone your reposito
     Resolving deltas: 100% (182155/182155), done.
 
 This will create a local directory called `scala`, which contains a clone of your own copy of our repository. The changes that you make
-in this directory can be propagated back to your copy and, ultimately, pushed into Scala.
+in this directory can be propagated back to your copy hosted on github and, ultimately, pushed into Scala when your patch is ready.
 
-### Branch ###
+### Branch
 
 Before you start making changes, always create your own branch. Never work on the `master` branch. Think of a name that describes
-the changes you plan on doing. Use a prefix that describes the nature of your change. There are essentially two kinds of changes:
+the changes you plan on making. Use a prefix that describes the nature of your change. There are essentially two kinds of changes:
 bug fixes and new features.
 
 * For bug fixes, use `issue/NNNN` for bug NNNN from the [Scala issue tracker](https://issues.scala-lang.org/).
-* For new feature use `topic/XXX` for feature XXX. Use feature names that make sense in the context of the whole Scala project and not just to you personally. For example, if you work on diagrams in Scaladoc, use `topic/scaladoc-diagrams` instead of just `topic/diagrams`.
+* For new feature use `topic/XXX` for feature XXX. Use feature names that make sense in the context of the whole Scala project and not just to you personally. For example, if you work on diagrams in Scaladoc, use `topic/scaladoc-diagrams` instead of just `topic/diagrams` would be a good branch name.
 
-Since I'm going to fix an existing bug [SI-6725](https://issues.scala-lang.org/browse/SI-6725), I'll create a branch named `ticket/6725`.
+Since in our example, we're going to fix an existing bug [SI-6725](https://issues.scala-lang.org/browse/SI-6725), we'll create a branch named `ticket/6725`.
 
     16:39 ~/Projects/scala (master)$ git checkout -b ticket/6725
     Switched to a new branch 'ticket/6725'
 
 If you are new to Git and branching, read the [Branching Chapter](http://git-scm.com/book/en/Git-Branching) in the Git Pro book.
 
-### Build ###
+### Build
 
 The next step after cloning your fork is setting up your machine to build Scala. The definitive guide on building Scala is located at
 [https://github.com/scala/scala/blob/master/README.rst](https://github.com/scala/scala/blob/master/README.rst), but here's the summary:
@@ -103,10 +104,10 @@ The next step after cloning your fork is setting up your machine to build Scala.
 * The build tool is `ant`.
 * The build runs the `pull-binary-libs.sh` script to download bootstrap libs. This requires `bash` and `curl`.
 * The majority of our team works on Linux and OS X, so these operating systems are guaranteed to work.
-* Windows is supported, but it might have issues. Please report to [the issue tracker](https://issues.scala-lang.org/) if you encounter them.
+* Windows is supported, but it might have issues. Please report to [the issue tracker](https://issues.scala-lang.org/) if you encounter any.
 
-In a nutshell, building Scala is as easy as running `ant` in the root of your clone. Be prepared to wait for a while - a full rebuild
-takes 8+ minutes depending on your machine. Incremental builds are usually within 30-120 seconds range (again, your mileage might vary
+Building Scala is as easy as running `ant` in the root of your cloned repository. Be prepared to wait for a while-- a full "clean" build
+takes 8+ minutes depending on your machine (and up to 30 minutes on older machines with less memory). Incremental builds are usually within 30-120 seconds range (again, your mileage might vary
 with your hardware).
 
     16:50 ~/Projects/scala (ticket/6725)$ ant
@@ -134,34 +135,30 @@ with your hardware).
     BUILD SUCCESSFUL
     Total time: 9 minutes 41 seconds
 
-### IDE ###
+### IDE
 
 There's no single editor of choice for working with Scala sources, as there are trade-offs associated with each available tool.
 
-Both Eclipse and Intellij IDEA have Scala plugins, which are known to work with our codebase. Here are
+Both Eclipse and IntelliJ IDEA have Scala plugins, which are known to work with our codebase. Here are
 [instructions for Eclipse](https://github.com/scala/scala/blob/master/src/eclipse/README.md) and
 [instructions for Intellij](https://github.com/scala/scala/blob/master/src/intellij/README). Both of those Scala plugins provide
-navigation, refactoring and error reporting functionality as well as integrated debugging. Unfortunately this comes at a cost
-of occasional sluggishness.
+navigation, refactoring and error reporting functionality as well as integrated debugging.
 
-On the other hand, lightweight editors such as Emacs, Sublime or jEdit provide unparalleled scriptability and performance, while
+There also exist lighter-weight editors such as Emacs, Sublime or jEdit which provide unparalleled are faster and much less memory/compute-intensive to run, while
 lacking semantic services and debugging. To address this shortcoming, they can integrate with ENSIME,
 a helper program, which hosts a resident Scala compiler providing some of the features implemented in traditional IDEs. However despite
-having significantly matured over the last year, its support for our particular codebase is still far from being great.
+having significantly matured over the last year, support for our particular code base is still being improved, and is not as mature as for Eclipse and IntelliJ.
 
-We know of both novices and experienced Scala hackers who've been effective with using both IDEs and lightweight editors.
-Therefore it's hard to recommend a particular tool here, and your choice should boil down to your personal preferences.
+Due to the immense variability in personal preference between IDE/editor experience, it's difficult to recommend a particular tool, and your choice should boil down to your personal preferences.
 
-### 3. Hack ###
+## 3. Hack
 
 When hacking on your topic of choice, you'll be modifying Scala, compiling it and testing it on relevant input files.
 Typically you would want to first make sure that your changes work on a small example and afterwards verify that nothing break
 by running a comprehensive test suite.
 
-I'm going to start by creating a `sandbox` directory (this particular name doesn't bear any special meaning - it's just a tribute to
-my first days in Scala team), which will hold a single test file and its compilation results. First I make sure that
-[the bug](https://issues.scala-lang.org/browse/SI-6725) is indeed reproducible by throwing together a simple test and feeding it
-into the Scala distribution assembled by ant in `build/pack/bin`.
+We'll start by creating a `sandbox` directory (this particular name doesn't bear any special meaning), which will hold a single test file and its compilation results. First, let's make sure that
+[the bug](https://issues.scala-lang.org/browse/SI-6725) is indeed reproducible by putting together a simple test and compiling and running it with the Scala compiler that we built using `ant`. The Scala compiler that we just built is located in `build/pack/bin`.
 
     17:25 ~/Projects/scala (ticket/6725)$ mkdir sandbox
     17:26 ~/Projects/scala (ticket/6725)$ cd sandbox
@@ -176,35 +173,52 @@ into the Scala distribution assembled by ant in `build/pack/bin`.
     17:28 ~/Projects/scala/sandbox (ticket/6725)$ ../build/pack/bin/scala Test
     1%n1 // %n should've been replaced by a newline here
 
-### Implement ###
+### Implement
 
-There's not much to be said about this step, which is bread & butter software development.
+Now, implement your bugfix or new feature!
 
 Here are also some tips & tricks that have proven useful in Scala development:
 
-* If after introducing changes or updating your clone, you're getting `AbstractMethodError` or other linkage exceptions,
+* If after introducing changes or updating your clone, you get `AbstractMethodError` or other linkage exceptions,
   try doing `ant clean build`. Due to the way how Scala compiles traits, if a trait changes, then it's sometimes not enough to recompile
-  just that trait, but it might also be necessary to recompile its users. Ant is not smart enough to do that, which might lead to
-  very strange errors. Full rebuilds fix the problem. Fortunately that's rarely necessary, because full rebuilds take significant time.
+  just that trait, but it might also be necessary to recompile its users. The `ant` tool is not smart enough to do that, which might lead to
+  very strange errors. Full rebuilds fix the problem. Fortunately that's rarely necessary, because full rebuilds take a lot of time-- the same 8-30 minutes as mentioned above.
 * Even on solid state drives packaging Scala distribution (i.e. creating jars from class files) is a non-trivial task. To save time here,
   some people in our team do `ant quick.comp` instead of `ant` and then create custom scripts to launch Scala from `build/quick/classes`.
 * Don't underestimate the power of `print`. When starting with Scala, I spent a lot of time in the debugger trying to figure out how
   things work. However later I found out that print-based debugging is often more effective than jumping around. While it might be obvious
   to some, I'd like to explicitly mention that it's also useful to print stack traces to understand the flow of execution.
 
-Docs. Right, the docs. The documentation about internal workings of the compiler is scarce, and most of the knowledge is passed around
-in the form of folklore. However the situation is steadily improving. Here are the resources that might help:
+### Documentation
+
+There are several areas that one could contribute to-- there is the Scala library, the Scala compiler, and other tools such as Scaladoc. Each area has varying amounts of documentation.
+
+##### The Scala Library
+
+Contributing to the Scala standard library is about the same as working on one of your own libraries. Beyond the Scala collections hierarchy, there are no complex internals or architectures to have to worry about. Just make sure that you code in a "don't-repeat-yourself" (DRY) style, obeying the "boy scout principle" (i.e. make sure you've left something cleaner than you found it.)
+
+If documentation is necessary for some trait/class/object/method/etc in the Scala standard library, typically maintainers will include inline comments describing their design decisions or rationale for implementing things the way they have, if it is not straightforward.
+
+If you intend on contributing to Scala collections, please make sure you're familiar with the design of the Scala collections library. It can be easy to put an implementation in the wrong location if you are unfamiliar with the collections architecture. There is an excellent and very detailed guide covering [the Architecture of Scala Collections](http://docs.scala-lang.org/overviews/core/architecture-of-scala-collections.html), as well as a larger more general [Scala collections Guide](http://docs.scala-lang.org/overviews/core/collections.html) covering the sequential portion of collections. For parallel collections, there also exists a detailed [Scala Parallel Collections Guide](http://docs.scala-lang.org/overviews/core/parallel-collections.html). (TODO double check these links!)
+
+##### The Scala Compiler
+
+Documentation about the internal workings of the Scala compiler is scarce, and most of the knowledge is passed around by email (scala-internals mailing list), ticket, or word of mouth. However the situation is steadily improving. Here are the resources that might help:
 
 * [Compiler internals videos by Martin Odersky](TODO) are quite dated, but still very useful. In this three-video
-  series Martin explains inner workings of the part of the compiler, which has recently become Scala reflection API.
+  series Martin explains the general architecture of the compiler, and the basics of the front-end, which has recently become Scala reflection API.
+* [Reflection documentation](http://docs.scala-lang.org/overviews/reflection/overview.html) describes fundamental data structures (like `Tree`s, `Symbol`s, and `Types`) that
+  are used to represent Scala programs and operations defined on then. Since much of the compiler has been factored out and made accessible via the Reflection API, all of the fundamentals needed for reflection are the same for the compiler.
 * [Reflection and Compilers by Martin Odersky](http://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2012/Reflection-and-Compilers), a talk
-  at Lang.NEXT 2012 in which Martin elaborates on the design of scalac and the reflection API.
-* [Reflection documentation](http://docs.scala-lang.org/overviews/reflection/overview.html) describes fundamental data structures that
-  are used to represent Scala programs and operations defined on then.
+  at Lang.NEXT 2012 in which Martin elaborates on the design of scalac and the architecture of the reflection API.
 * [Scala compiler corner](http://lampwww.epfl.ch/~magarcia/ScalaCompilerCornerReloaded/) contains extensive documentation about
-  most of the post-typer phases in the Scala compiler.
+  most of the post-typer phases (i.e. the backend) in the Scala compiler.
 * [scala-internals](http://groups.google.com/group/scala-internals), a mailing list which hosts discussions about the core
   internal design and implementation of the Scala system.
+
+##### Other Projects
+
+Tools like Scaladoc also welcome contributions. Unfortunately these smaller projects have less developer documentation. In these cases, the best thing to do is to directly explore the code base (which often contains documentation as inline comments) or to write to the appropriate maintainers for pointers.
 
 ### Interlude ###
 
