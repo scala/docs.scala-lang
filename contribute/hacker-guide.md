@@ -5,45 +5,46 @@ title: Scala hacker guide
 
 **Eugene Burmako**
 
-This guide is intended to help you get from an idea of fixing a bug or implementing a new feature
-to a nightly and, ultimately, to a production release of Scala incorporating your idea. Being able to
-influence a programming language of your choice is amazing, and I'm excited to demonstrate that it's easier
-than one might think.
+This guide is intended to help you get from an idea of fixing a bug or implementing a new feature into a nightly Scala build, and, ultimately, to a production release of Scala incorporating your idea.
+
+This guide covers the entire process, from the conception of your idea or bugfix to the point where it is merged into Scala. Throughout, we will use a running example of an idea or bugfix one might wish to contribute.
 
 ### The running example ###
 
-I like string interpolation a lot. Doing debug prints with interpolators introduced in Scala 2.10.0
-is so enjoyable that I often wonder how we ever lived without that feature. However there's an annoying issue
-which I occasionally stumble upon: the formatting string interpolator `f` [does not support](https://issues.scala-lang.org/browse/SI-6725)
-new line tokens `%n`. I could go the mailing list, ask to fix this bug and then indefinitely
-wait for the fix. Or I could instead patch Scala myself and get the fix in a subsequent release (nightly builds get produced, well, every
-night, minor releases are pumped every few months and major releases happen once a year). The latter option sounds cool, so let's see
-how it works!
+Let's say that you particularly enjoy the new string interpolation language feature introduced in Scala 2.10.0, and you use it quite heavily.
+
+Though, there's an annoying issue
+which you occasionally stumble upon: the formatting string interpolator `f` [does not support](https://issues.scala-lang.org/browse/SI-6725)
+new line tokens `%n`.
+
+One approach would be to go the mailing list, request that the bug be fixed, and then to wait indefinitely for the fix arrive. Another approach would be to instead patch Scala oneself, and to submit the fix to the Scala repository in hopes that it might make it into a subsequent release.
+
+**_Of note_**: There are several types of releases/builds. Nightly builds are produced every night at a fixed time. Minor releases happen once every few months. Major releases typically happen once per year.
 
 ### 1. Connect ###
 
-Sometimes it's appealing to hack alone and not to have to interact with humans, but in the context of such a big project like Scala
-this might not be the very best idea. Our community has people who spent years accumulating knowledge about Scala. They might provide
-unique insights and, what's even better, direct assistance in their areas.
+Sometimes it's appealing to hack alone and not to have to interact with others out of fear, or out of comfort. However, in the context a big project such as Scala,
+this might not be the very best idea. There are people in the Scala community who have spent years accumulating knowledge about Scala libraries and internals. They might provide
+unique insights and, what's even better, direct assistance in their areas, so it is not only advantageous, but recommended to communicate with the community about your new patch.
 
-Typically bug fixes and especially new features beging with posting to one of [our mailing lists](TODO) to find out how people feel
+Typically bug fixes new features start out as an idea or an experiment posted on one of our mailing lists [our mailing lists]({{ site.baseurl }}/community/index.html#mailing_lists) to find out how people feel
 about things you want to implement. People proficient is certain areas of Scala usually monitor mailing lists, so you'll often get some help
-by simply posting a message. But the most efficient way to connect is to cc your message to one of the go-to persons in your area. Here's the
-list of people (Github usernames and real-life names) and their specialties:
+by simply posting a message. But the most efficient way to connect is to cc your message to one of the people responsible for maintaining the aspect of Scala which you wish to contribute to.
+
+This is the list of language features/libraries along with their maintainers's full names and github usernames:
 
 {% include maintainers.html %}
 
-Martin is the one who submitted the string interpolation proposal and implemented this language feature for Scala 2.10.0.
-(TODO: how to choose a mailing list)
-Therefore now I'm going to [the scala-user mailing list](http://groups.google.com/group/scala-user) and will post a topic
-about my issue. Note that I put Martin in the cc list of the email. If I didn't do that, he would probably miss it in a bunch
-of emails, which get posted to scala-user every day.
+Since Martin is the person who submitted the string interpolation Scala Improvement Proposal and implemented this language feature for Scala 2.10.0, he might be interested in learning of new bugfixes to that feature.
+
+As alluded to earlier, one must also choose an appropriate mailing list. Typically, one would use the scala-internals mailing list, as it is devoted to discussions about the core internal design and implementation of the Scala system. However, since this issue has been discussed previously on the scala-user mailing list,
+in this example, we post to the [the scala-user mailing list](http://groups.google.com/group/scala-user)about our issue.
 
 <center><img src="{{ site.baseurl }}/resources/img/01-post.png" alt="Posting to scala-user" /></center>
 <br/>
 <center><img src="{{ site.baseurl }}/resources/img/02-post.png" alt="Response from Martin" /></center>
 
-Now when I have the approval of the feature's author, I'll get to work!
+Now that we have the approval of the feature's author, we can get to work!
 
 ### 2. Set up ###
 
