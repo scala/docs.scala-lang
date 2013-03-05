@@ -182,7 +182,7 @@ Here are also some tips & tricks that have proven useful in Scala development:
 * If after introducing changes or updating your clone, you get `AbstractMethodError` or other linkage exceptions,
   try doing `ant clean build`. Due to the way how Scala compiles traits, if a trait changes, then it's sometimes not enough to recompile
   just that trait, but it might also be necessary to recompile its users. The `ant` tool is not smart enough to do that, which might lead to
-  very strange errors. Full rebuilds fix the problem. Fortunately that's rarely necessary, because full rebuilds take a lot of time-- the same 8-30 minutes as mentioned above.
+  very strange errors. Full-rebuilds fix the problem. Fortunately that's rarely necessary, because full-rebuilds take a lot of time-- the same 8-30 minutes as mentioned above.
 * Even on solid state drives packaging Scala distribution (i.e. creating jars from class files) is a non-trivial task. To save time here,
   some people in our team do `ant quick.comp` instead of `ant` and then create custom scripts to launch Scala from `build/quick/classes`.
 * Don't underestimate the power of `print`. When starting with Scala, I spent a lot of time in the debugger trying to figure out how
@@ -220,10 +220,10 @@ Documentation about the internal workings of the Scala compiler is scarce, and m
 
 Tools like Scaladoc also welcome contributions. Unfortunately these smaller projects have less developer documentation. In these cases, the best thing to do is to directly explore the code base (which often contains documentation as inline comments) or to write to the appropriate maintainers for pointers.
 
-### Interlude ###
+### Interlude
 
-To fix [the bug I'm interested in](https://issues.scala-lang.org/browse/SI-6725) I've tracked the `StringContext.f` interpolator
-down to a macro implemented in `MacroImplementations.scala`. There I noticed that the interpolator only processes conversions,
+To fix [the bug we're interested in](https://issues.scala-lang.org/browse/SI-6725). Let's say we've tracked the `StringContext.f` interpolator
+down to a macro implemented in `MacroImplementations.scala`, and there we notice that the interpolator only processes conversions,
 but not tokens like `%n`. Looks like an easy fix.
 
     18:44 ~/Projects/scala/sandbox (ticket/6725)$ git diff
@@ -242,7 +242,7 @@ but not tokens like `%n`. Looks like an easy fix.
                  start = idx + 1
                }
 
-After I applied the fix and running `ant`, my simple test case in `sandbox/Test.scala` started working!
+After applying the fix and running `ant`, our simple test case in `sandbox/Test.scala` started working!
 
     18:51 ~/Projects/scala/sandbox (ticket/6725)$ cd ..
     18:51 ~/Projects/scala (ticket/6725)$ ant
@@ -266,7 +266,7 @@ After I applied the fix and running `ant`, my simple test case in `sandbox/Test.
     1
     1 // no longer getting the %n here - it got transformed into a newline
 
-### Verify ###
+### Verify
 
 Now to make sure that my fix doesn't break anything I need to run the test suite using the `partest` tool we wrote to test Scala.
 Read up [the partest guide](/contribute/partest-guide.html) to learn the details about partest, but in a nutshell you can either
@@ -283,26 +283,25 @@ run `ant test` to go through the entire test suite (30+ minutes) or use wildcard
     testing: [...]/files/run/stringinterpolation_macro-run.scala          [  OK  ]
     All of 6 tests were successful (elapsed time: 00:00:08)
 
-### 4. Publish ###
+## 4. Publish
 
 After development is finished, it's time to publish the code and submit your patch for discussion and potential inclusion into Scala.
-In a nutshell this involves: 1) making sure that your code and commit messages are of high quality, 2) clicking a few buttons in the
-Github interface, 3) assigning one or more reviewers which will look through your pull request. Now all that in more details.
+In a nutshell, this involves: 
 
-### Commit ###
+  1. making sure that your code and commit messages are of high quality, 
+  2. clicking a few buttons in the Github interface,
+  3. assigning one or more reviewers which will look through your pull request.
+  
+ Let's go into each of these points in more detail.
+
+### Commit
 
 The [Git Basics](http://git-scm.com/book/en/Git-Basics) chapter in the Git online book covers most of the basic workflow during this stage.
 There are two things you should know here:
 
-1) Commit messages are frequently the only way to communicate with the authors of the code written a few years ago. Therefore, we give them
-big importance. Be creative and eloquent - the more context your provide for the change you've introduced, the bigger the probability that
-some future maintainer will get you right. Consult [the pull request policy](https://github.com/scala/scala/wiki/Pull-Request-Policy)
-for more information about the desired style of your commits.
+  1. Commit messages are often the only way to understand the intentions of authors of code written a few years ago. Thus, writing a quality is of utmost importance. The more context you provide for the change you've introduced, the larger the chance that some future maintainer understand your intentions. Consult [the pull request policy](https://github.com/scala/scala/wiki/Pull-Request-Policy) for more information about the desired style of your commits.
 
-2) Clean history is also important. Therefore we won't accept pull requests for bug fixes that have more than one commit.
-For features, it is okay to have several commits, but all tests need to pass after every single commit. To clean up your commit structure,
-you want to [rewrite history](http://git-scm.com/book/en/Git-Branching-Rebasing) using `git rebase` so that your commits are against
-the latest revision of `master`.
+  2. Keeping Scala's git history clean is also important. Therefore we won't accept pull requests for bug fixes that have more than one commit. For features, it is okay to have several commits, but all tests need to pass after every single commit. To clean up your commit structure, you want to [rewrite history](http://git-scm.com/book/en/Git-Branching-Rebasing) using `git rebase` so that your commits are against the latest revision of `master`.
 
 Once you are satisfied with your work, synced with `master` and cleaned up your commits you are ready to submit a patch to the central Scala repository. Before proceeding make sure you have pushed all of your local changes to your fork on Github.
 
@@ -321,18 +320,18 @@ Once you are satisfied with your work, synced with `master` and cleaned up your 
     To https://github.com/xeno-by/scala
      * [new branch]            ticket/6725 -> ticket/6725
 
-### Submit ###
+### Submit
 
-This part is very easy and enjoyable. Navigate to your branch in Github (for me it was `https://github.com/xeno-by/scala/tree/ticket/6725`)
+Now, we must simply submit our proposed patch. Navigate to your branch in Github (for me it was `https://github.com/xeno-by/scala/tree/ticket/6725`)
 and click the pull request button to submit your patch as a pull request to Scala. If you've never submitted patches to Scala, you will
 need to sign the contributor license agreement, which [can be done online](http://typesafe.com/contribute/cla/scala) within a few minutes.
 
 <center><img src="{{ site.baseurl }}/resources/img/04-submit.png" alt="Submit a pull request" /></center>
 
-### Discuss ###
+### Discuss
 
-After the pull request has been submitted, you need to pick a reviewer (probably, the person you've contacted in the beginning of your
-workflow) and be ready to elaborate and adjust your patch if necessary. I picked Martin, because we had such a nice chat on the mailing list:
+After the pull request has been submitted, you need to pick a reviewer (usually the person you've contacted in the beginning of your
+workflow) and be ready to elaborate and adjust your patch if necessary. In this example, we picked Martin, because we had such a nice chat on the mailing list:
 
 <center><img src="{{ site.baseurl }}/resources/img/05-review.png" alt="SAssign the reviewer" /></center>
 
