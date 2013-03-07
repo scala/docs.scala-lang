@@ -10,7 +10,7 @@ The Scala project tracker is located at:
 > [http://issues.scala-lang.org](http://issues.scala-lang.org)
 
 
-<!--
+{% comment %}
 WHAT THIS PAGE SHOULD TALK ABOUT:
  - tracker
  - what's a bug and what's not a bug?
@@ -52,4 +52,4 @@ WHAT THIS PAGE SHOULD TALK ABOUT:
           - the commands to trigger the bug
           - the expected output
           - the actual output
- -->
+{% endcomment %}
