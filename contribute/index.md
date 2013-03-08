@@ -44,7 +44,8 @@ Typically the scaladoc tool provides a low entry point for new committers, so it
 
 On the Scala bug tracker you will find many bugs that are [marked as good starting points to contributing ("community" bugs)](https://issues.scala-lang.org/secure/IssueNavigator.jspa?requestId=12111) or [that are not currently assigned](https://issues.scala-lang.org/secure/IssueNavigator.jspa?requestId=12112) and that you could pick up. Once you decided on a ticket to look at, see the next step on how to proceed further.
 
-<div id="communitytickets"></div>
+{% comment %} Keep the space in the <div>! Jekyll/Marulu limitation {% endcomment %}
+<div id="communitytickets"> </div>
 
 <br/>
 
