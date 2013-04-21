@@ -235,7 +235,7 @@ Scala コードの生成については[リフレクションの概要](http://d
 マクロのデバッグ、すなわちマクロ展開を駆動している論理のデバッグは比較的容易だ。マクロはコンパイラ内で展開されるため、デバッガ内でコンパイラを実行するだけでいい。そのためには、以下を実行する必要がある: 
 
 <ol>
-<li>デバッグ設定のクラスパスに Scala home の lib ディレクトリ内の全て (!) のライブラリを追加する。(これは、<code>scala-library.jar</code>、<code>scala-reflect.jar</code>、<code>scala-compiler.jar</code>、そして <code>forkjoin.jar</code> の jar ファイルを含む。</li>
+<li>デバッグ設定のクラスパスに Scala home の lib ディレクトリ内の全て (!) のライブラリを追加する。(これは、<code>scala-library.jar</code>、<code>scala-reflect.jar</code>、そして <code>scala-compiler.jar</code> の jar ファイルを含む。</li>
 <li><code>scala.tools.nsc.Main</code> をエントリーポイントに設定する。</li>
 <li>コンパイラのコマンドラインの引数を <code>-cp &lt;マクロのクラスへのパス&gt; Test.scala</code></li> に設定する。ただし、<code>Test.scala</code> は展開されるマクロの呼び出しを含むテストファイルとする。
 </ol>
