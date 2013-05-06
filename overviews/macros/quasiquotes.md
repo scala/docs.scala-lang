@@ -11,7 +11,7 @@ languages: [ja]
 ---
 <a href="/overviews/macros/paradise.html"><span class="label important" style="float: right;">MACRO PARADISE</span></a>
 
-**Eugene Burmako**
+**Eugene Burmako, Denys Shabalin**
 
 Quasiquotes are a pre-release feature included in so-called macro paradise, an experimental branch in the official Scala repository. Follow the instructions at the ["Macro Paradise"](/overviews/macros/paradise.html) page to download and use our nightly builds.
 
