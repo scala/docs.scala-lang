@@ -1,0 +1,904 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>文字列の補間 - Scala Documentation</title>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="icon" type="image/png" href="/resources/favicon.ico">
+
+    <!-- prettify js and CSS -->
+    <link rel="stylesheet" href="/resources/stylesheets/prettify.css" type="text/css" />
+    <script src="/resources/javascript/prettify/prettify.js" type="text/javascript" ></script>
+
+
+    <!-- jquery js -->
+    <script src="/resources/javascript/jquery.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/effects.core.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/effects.highlight.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/moveScroller.js" type="text/javascript" ></script>
+
+    <!-- Bootstrap JS and CSS -->
+    <link rel="stylesheet" href="/resources/stylesheets/bootstrap.css" type="text/css" />
+	  <script src="/resources/javascript/bootstrap-dropdown.js" type="text/javascript" ></script>
+	  <script src="/resources/javascript/bootstrap-dropdown-app.js" type="text/javascript" ></script>
+
+    <!-- Base stylesheet for all pages -->
+    <link rel="stylesheet" href="/resources/stylesheets/base.css" type="text/css" />
+
+    <!-- table of contents js -->
+    <script src="/resources/javascript/toc.js" type="text/javascript" ></script>
+
+    <!-- google analytics -->
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-574683-5']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+
+    <!-- prettyprint js to prepend generated pre/code tags -->
+    <script type="text/javascript">
+      function styleCode()
+        {
+          if (typeof disableStyleCode != "undefined")
+          {
+              return;
+          }
+          var a = false;
+          $("pre code").parent().each(function()
+          {
+              if (!$(this).hasClass("prettyprint"))
+              {
+                  $(this).addClass("prettyprint lang-scala linenums");
+                  a = true
+              }
+          });
+          if (a) { prettyPrint() }
+      }
+    </script>
+
+    <script type="text/javascript">
+      jQuery(document).ready(function($) {
+
+            $(".scroll").click(function(event){
+              event.preventDefault();
+              $('html,body').animate({scrollTop:$(this.hash).offset().top}, 500);
+              $('html,body').animate({scrollTop:$(this.hash).offset().top-=50}, 500);
+              $(this.hash).effect("highlight", {color: "#FFCC85"}, 3000);
+            });
+      });
+    </script>
+
+    <script type="text/javascript">
+      $(window).ready(function goToSubsection() {
+          if (window.location.hash)
+          {
+              $('html,body').animate({scrollTop:$(window.location.hash).offset().top}, 500);
+              $('html,body').animate({scrollTop:$(window.location.hash).offset().top-=50}, 500);
+              $(window.location.hash).effect("highlight", {color: "#FFCC85"}, 3000);
+          }
+        });
+    </script>
+
+    <style type="text/css">
+
+       p.contents {
+           margin-left: 15px;
+           font-weight: bold;
+           font-size: 16px;
+       }
+
+       div#toc ul {
+           list-style: none;
+       }
+
+       div#toc ul a {
+           display: block;
+           list-style: none;
+           line-height: 22px;
+           font-weight: bold;
+           width: 100%;
+       }
+
+      div#toc ul li ul {
+           list-style: disc;
+      }
+
+      div#toc ul li ul a {
+           line-height: 18px;
+           font-weight: normal;
+      }
+
+      div#toc ul li ul li ul {
+           list-style: square;
+      }
+       div#toc ul li ul li ul a {
+       }
+
+       div#scroller-anchor {
+           width: inherit;
+       }
+
+       div#scroller {
+           width: inherit;
+       }
+
+       div#guide-title {
+        text-transform: capitalize;
+        font-size: 16px;
+        padding-bottom: 6px;
+        color: #BFBFBF;
+        text-transform: uppercase;
+        font-weight: bold;
+       }
+
+       input, textarea, select, .uneditable-input {
+	       width: 165px;
+	     }
+
+    </style>
+
+</head>
+  <body onload="styleCode()">
+
+    <!-- Topbar
+    ================================================== -->
+<div class="topbar">
+    <div class="topbar-inner">
+        <div class="container">
+            <a class="brand" href="/index.html"><img src="/resources/images/scala-logo.png"> Documentation</a>
+            <ul class="nav">
+
+                <li class="menu">
+                      <a href="#" class="menu">API</a>
+                      <ul class="menu-dropdown">
+                        <li><a href="http://www.scala-lang.org/api/current/">Current</a></li>
+                        <li><a href="http://www.scala-lang.org/archives/downloads/distrib/files/nightly/docs/library/index.html">Nightly</a></li>
+                        <!--<li class="divider"></li>
+                        <li><a href="#">Previous Versions</a></li>
+                        -->
+                      </ul>
+                </li>
+
+                <li class="menu">
+                      <a href="#" class="menu">Learn</a>
+                      <ul class="menu-dropdown">
+                        <li><a href="/overviews">Guides & Overviews</a></li>
+                        <li><a href="/tutorials">Tutorials</a></li>
+                        <li><a href="/style">Scala Style Guide</a></li>
+                      </ul>
+                </li>
+
+                <li class="menu">
+                      <a href="#" class="menu">Quickref</a>
+                      <ul class="menu-dropdown">
+                        <li><a href="/glossary">Glossary</a></li>
+                        <li><a href="/cheatsheets">Cheatsheets</a></li>
+                      </ul>
+                </li>
+
+                <li><a href="/contribute.html">Contribute</a></li>
+                <li><a href="/sips">SIPs</a></li>
+                <li><a href="http://wiki.scala-lang.org">Wiki</a></li>
+          </ul>
+          <form method="get" id="searchform" action="/search.html">
+            <input type="text" placeholder="Search"  class="field" name="q" id="q"/>
+          </form>
+           </li>
+          </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    
+    <div class="span10"><h1>文字列の補間</h1></div>
+
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+
+    
+      
+      
+    
+
+    <div class="span6">
+      
+        <a href="/overviews/core/string-interpolation.html"><img src="/resources/images/language/en.png" title="Language: en"/></a> 
+        
+          <a href="/es/overviews/core/string-interpolation.html"><img src="/resources/images/language/es.png" title="Language: es"/></a> 
+        
+          <a href="/ja/overviews/core/string-interpolation.html"><img src="/resources/images/language/ja.png" title="Language: ja"/></a> 
+        
+      
+    </div>
+
+    <div class="span10">
+      <p><strong>Josh Suereth 著</strong><br /> <strong>Eugene Yokota 訳</strong></p>
+
+<h2 id='id36'>はじめに</h2>
+
+<p>Scala 2.10.0 より、Scala は文字列の補間 (string interpolation) というデータから文字列を作成する機構を提供する。 文字列の補間を使ってユーザは<b>加工文字列リテラル</b> (processed string literal) 内に直接変数の参照を埋め込むことができる。具体例で説明しよう:</p>
+
+<pre><code>val name = &quot;James&quot;
+println(s&quot;Hello, $name&quot;)  // Hello, James</code></pre>
+
+<p>上の例において、リテラル <code>s&quot;Hello, $name&quot;</code> は加工文字列リテラルだ。これはコンパイラがこのリテラルに対して何らかの追加処理を実行するということだ。加工文字リテラルは <code>&quot;</code> の前にいくつかの文字を書くことで表記される。文字列の補間は <a href='http://docs.scala-lang.org/sips/pending/string-interpolation.html'>SIP-13</a> によって導入され、実装の詳細もそこに書かれている。</p>
+
+<h2 id='id37'>用例</h2>
+
+<p>Scala は <code>s</code>、<code>f</code>、そして <code>raw</code> という 3つの補間子 (interpolator) をあらかじめ提供する。</p>
+
+<h3 id='_'><code>s</code> 補間子</h3>
+
+<p>文字列リテラルの先頭に <code>s</code> を追加することで文字列の中で直接変数が使えるようになる。先ほどの例で既にみた機能だ:</p>
+
+<pre><code>val name = &quot;James&quot;
+println(s&quot;Hello, $name&quot;)  // Hello, James</code></pre>
+
+<p>この例では、 <code>s</code> で加工される文字列の中に <code>$name</code> が入れ子になっている。<code>s</code> 補間子は <code>name</code> 変数の値をこの位置に挿入しなければいけないと知っているため、結果として <code>Hello, James</code> という文字列となる。<code>s</code> 補間子を使って、スコープ内にあるどの名前でも文字列の中に埋め込むことができる。</p>
+
+<p>文字列の補間は任意の式を受け取る事もできる。具体例でみると</p>
+
+<pre><code>println(s&quot;1 + 1 = ${1 + 1}&quot;)</code></pre>
+
+<p>は文字列 <code>1 + 1 = 2</code> と表示する。<code>${}</code> を使って任意の式を埋め込むことができる。</p>
+
+<h3 id='_'><code>f</code> 補間子</h3>
+
+<p>文字列リテラルの先頭に <code>f</code> を追加することで、他の言語での <code>printf</code> のような簡単な書式付き文字列を作ることができる。<code>f</code> 補間子を使った場合は、全ての変数参照は <code>%d</code> のように <code>printf</code> 形式の書式を指定する必要がある。具体例で説明しよう:</p>
+
+<pre><code>val height = 1.9d
+val name = &quot;James&quot;
+println(f&quot;$name%s is $height%2.2f meters tall&quot;)  // James is 1.90 meters tall</code></pre>
+
+<p><code>f</code> 補間子は型安全だ。整数のみで動作する書式に <code>Double</code> を渡すとコンパイラはエラーを表示する。例えば:</p>
+
+<pre><code>val height: Double = 1.9d
+
+scala&gt; f&quot;$height%4d&quot;
+&lt;console&gt;:9: error: type mismatch;
+ found   : Double
+ required: Int
+           f&quot;$height%4d&quot;
+              ^</code></pre>
+
+<p><code>f</code> 補間子は Java にある文字列の書式付き出力ユーティリティを利用している。<code>%</code> 文字の後に書くことが許されている書式は <a href='http://docs.oracle.com/javase/jp/1.5.0/api/java/util/Formatter.html#detail'>Formatter の javadoc</a> に説明されている。変数の後に <code>%</code> 文字が無い場合は、<code>%s</code> 書式 (<code>String</code>) だと仮定される。</p>
+
+<h3 id='_'><code>raw</code> 補間子</h3>
+
+<p><code>raw</code> 補間子は <code>s</code> 補間子に似ているが、違いは文字列リテラル内でエスケープを実行しないことだ。以下の加工文字列をみてみよう:</p>
+
+<pre><code>scala&gt; s&quot;a\nb&quot;
+res0: String = 
+a
+b</code></pre>
+
+<p>ここで、<code>s</code> 補間子は <code>\n</code> を改行文字に置換した。<code>raw</code> 補間子はそれを行わない。</p>
+
+<pre><code>scala&gt; raw&quot;a\nb&quot;
+res1: String = a\nb</code></pre>
+
+<p><code>raw</code> 補間子は <code>\n</code> のような式が改行になることを回避したい場合に便利だ。</p>
+
+<p>3つのデフォルトの補間子の他にユーザは独自の補間子を定義することもできる。</p>
+
+<h2 id='id38'>カスタム補間子</h2>
+
+<p>Scala では、全ての加工文字列リテラルは簡単なコード変換だ。コンパイラが以下のような形式の文字列リテラルを見つけると</p>
+
+<pre><code>id&quot;string content&quot;</code></pre>
+
+<p>これは <a href='http://www.scala-lang.org/archives/downloads/distrib/files/nightly/docs/library/index.html#scala.StringContext'><code>StringContext</code></a> のインスタンスへのメソッドの呼び出し (<code>id</code>) へと変換される。このメソッドは implicit スコープ内で提供することもできる。独自の文字列の補間を定義するには、<code>StringContext</code> に新しいメソッドを追加する implicit クラスを作るだけでいい。以下に具体例で説明する:</p>
+
+<pre><code>// 注意: 実行時のインスタンス化を避けるために AnyVal を継承する。
+// これに関しては値クラスのガイドを参照。
+implicit class JsonHelper(val sc: StringContext) extends AnyVal {
+  def json(args: Any*): JSONObject = sys.error(&quot;TODO - IMPLEMENT&quot;)
+}
+
+def giveMeSomeJson(x: JSONObject): Unit = ...
+
+giveMeSomeJson(json&quot;{ name: $name, id: $id }&quot;)</code></pre>
+
+<p>この例では、文字列の補間を使って JSON リテラル構文に挑戦している。この構文を使うには implicit クラスの <code>JsonHelper</code> がスコープにある必要があり、また <code>json</code> メソッドを実装する必要がある。注意して欲しいのは書式文字列リテラルが文字列ではなく、<code>JSONObject</code> を返す点だ。</p>
+
+<p>コンパイラが <code>json&quot;{ name: $name, id: $id }&quot;</code> を見つけると、以下の式に書き換える:</p>
+
+<pre><code>new StringContext(&quot;{ name:&quot;, &quot;,id: &quot;, &quot;}&quot;).json(name, id)</code></pre>
+
+<p>さらに、implicit クラスは以下のように書き換える:</p>
+
+<pre><code>new JsonHelper(new StringContext(&quot;{ name:&quot;, &quot;,id: &quot;, &quot;}&quot;)).json(name, id)</code></pre>
+
+<p>そのため、<code>json</code> メソッドは生の String 部分と渡される式の値をみることができる。シンプルな (だけどバギーな) 実装を以下に示す:</p>
+
+<pre><code>implicit class JsonHelper(val sc: StringContext) extends AnyVal {
+  def json(args: Any*): JSONObject = {
+    val strings = sc.parts.iterator
+    val expressions = args.iterator
+    var buf = new StringBuffer(strings.next)
+    while(strings.hasNext) {
+      buf append expressions.next
+      buf append strings.next
+    }
+    parseJson(buf)
+  }
+}</code></pre>
+
+<p>加工文字列の文字列部分は <code>StringContext</code> の <code>parts</code> メンバーとして提供される。 式の値は <code>json</code> メソッドに <code>args</code> パラメータとして渡される。<code>json</code> メソッドは、それを受け取って大きな文字列を生成した後 JSON へとパースする。より洗練された実装は文字列を生成せずに生の文字列と式の値から直接 JSON を構築するだろう。</p>
+
+<h2 id='id39'>制約</h2>
+
+<p>文字列の補間は現在パターンマッチング文の中では動作しない。この機能は Scala 2.11 リリースを予定している。</p>
+      <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  
+    var disqus_shortname = 'scalajp'; // required: replace example with your forum shortname
+  
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </div>
+    
+    <div class="span6">
+      <div id="scroller-anchor">
+  <div id="scroller">
+    <p class="contents">Contents</p>
+    <div id="toc"></div>    
+              
+  </div>
+</div>
+
+    </div>
+    
+	
+  </div>
+</div>
+
+<div class="footer">
+	<div class="container">
+		<ul>
+			<li><h5>API</h5></li>
+			<li><a href="http://www.scala-lang.org/api/current/">Current</a></li>
+			<li><a href="http://www.scala-lang.org/archives/downloads/distrib/files/nightly/docs/library/index.html">Nightly</a></li>
+		</ul>
+		<ul>
+			<li><h5>Learn</h5></li>
+			<li><a href="/overviews">Guides & Overviews</a></li>
+			<li><a href="/tutorials">Tutorials</a></li>
+			<li><a href="/style">Scala Style Guide</a></li>				
+		</ul>
+		<ul>
+			<li><h5>Quickref</h5></li>
+			<li><a href="/glossary">Glossary</a></li>
+			<li><a href="/cheatsheets">Cheatsheets</a></li>
+		</ul>
+		<ul>
+			<li><h5>Contribute</h5></li>
+			<li><a href="http://github.com/scala/scala.github.com">Source Code</a></li>
+			<li><a href="/contribute.html">Contributors Guide</a></li>
+			<li><a href="http://getsatisfaction.com/scaladocs">Suggestions</a></li>			
+		</ul>
+		<ul>
+			<li><h5>Other Resources</h5></li>
+			<li><a href="http://wiki.scala-lang.org">Wiki</a></li>
+			<li><a href="/sips">Scala Improvement Process</a></li>				
+		</ul>						
+	</div>
+	<div class="container copyright">
+ 		<p>
+			Copyright &copy; 2011-2013 EPFL. All rights reserved.
+			<a href="https://github.com/scala/scala.github.com/commits/gh-pages.atom"><img align="right" height="20px" width="20px" src="/resources/images/rss.png" alt="RSS feed of updates to the github repo hosting this site"></a>
+		</p>		
+	</div>
+</div>
+
+
+<script type="text/javascript">
+  $('#toc').toc({exclude: 'h1, h5, h6', context: '', autoId: true, numerate: false});
+</script>
+
+<script type="text/javascript">
+  $(function() {
+    moveScroller();
+  });
+</script>
+
+  </body>
+</html>
+
+    

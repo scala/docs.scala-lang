@@ -3,7 +3,7 @@
 <html>
   <head>
 
-    <title>Search - Scala Documentation</title>
+    <title>Running the Test Suite - Scala Documentation</title>
     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
@@ -15,9 +15,9 @@
 
     <!-- jquery js -->
     <script src="/resources/javascript/jquery.js" type="text/javascript" ></script>
-
-    <!-- Search CSS -->
-    <link rel="stylesheet" href="/resources/stylesheets/search.css" type="text/css" />
+    <script src="/resources/javascript/effects.core.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/effects.highlight.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/moveScroller.js" type="text/javascript" ></script>
 
     <!-- Bootstrap JS and CSS -->
     <link rel="stylesheet" href="/resources/stylesheets/bootstrap.css" type="text/css" />
@@ -26,6 +26,14 @@
 
     <!-- Base stylesheet for all pages -->
     <link rel="stylesheet" href="/resources/stylesheets/base.css" type="text/css" />
+
+    <!-- You may want to change the paths below, according to your own CSS and JavaScript setup -->
+    <script type="text/javascript" src="/resources/javascript/jquery.easing.js"></script>
+    <script type="text/javascript" src="/resources/javascript/jquery.accordionza.js"></script>
+    <script src="/resources/javascript/frontpage.js" type="text/javascript" ></script>
+
+    <!-- table of contents js -->
+    <script src="/resources/javascript/toc.js" type="text/javascript" ></script>
 
     <!-- google analytics -->
 	<script type="text/javascript">
@@ -44,7 +52,7 @@
 
 
     <!-- prettyprint js to prepend generated pre/code tags -->
-    <script type="text/javascript">
+   <script type="text/javascript">
       function styleCode() 
         {
           if (typeof disableStyleCode != "undefined") 
@@ -63,24 +71,22 @@
           if (a) { prettyPrint() } 
       }
     </script>
-	
-    <script type="text/javascript">
 
-      $(document).ready(function() {
-		
-		var offset = $(".push").height() + $(".scrollingmenu").height() + 36;
-		if ( offset + $('.bottom').height() < $(window).height() ) {
-			var height = $(window).height() - offset;
-		   	$('.bottom').css("height", height);			
-		}
-		
+    <script type="text/javascript">
+      jQuery(document).ready(function($) {
+
+            $(".scroll").click(function(event){		
+              event.preventDefault();
+              $('html,body').animate({scrollTop:$(this.hash).offset().top}, 500);
+              $('html,body').animate({scrollTop:$(this.hash).offset().top-=50}, 500);
+              $(this.hash).effect("highlight", {color: "#FFCC85"}, 3000);
+            });
       });
-    </script>	
+    </script>
 
 
     <style type="text/css">
-
-      body {
+      html, body {
 	     padding-top: 36px; 
 	     height: 100%;
 	     background:url(/resources/images/bg-short.jpg) no-repeat top center #310808; 	 	 
@@ -88,6 +94,10 @@
 		     -moz-box-shadow: inset 0 10px 50px rgba(0,0,0,.6);
 		/*          box-shadow: inset 0 10px 30px rgba(0,0,0,.3);*/
 	  }
+
+      input, textarea, select, .uneditable-input {
+	       width: 165px;
+	   }
 		
 	  .scrollingmenu {
 		  width: 940px;
@@ -96,19 +106,21 @@
 		  height: 70px;
 		  zoom: 1;		
 	}
-	.scrollingmenu h2 {
+	.scrollingmenu h1 {
       padding-bottom: 30px;
 	  color: #ffffff;
 	  font-size: 42px;
 	  line-height: 1;
 	  text-shadow: 0 1px 2px rgba(0,0,0,.5);
 	}
-	
+    .container {
+	   min-height: 100%;
+    }
     .bottom {
-	   background-color: #bcbcbc;
+	   min-height: 100%;
+	   background-color: #ffffff;
 	   padding-top: 20px;
 	   border-top: 1px solid #8e397d;
-	   height: 1150px;
 	}
 	.bottom h1,h2,h3 {
 		text-shadow: 0 1px 2px rgba(255,255,255,.5);
@@ -131,140 +143,77 @@
 		margin-top: -25px;
 	}
 
-        .bottom ul {
-                margin: -4px 0 4px 25px;
+        .bottom ul.thanks {
+                margin: 10px 0 4px 25px;
                 list-style: square;
         }
 
-        .bottom ul li {
+        .bottom ul.thanks li {
                 color: #404040;
-                font-size: 18px;
-                line-height: 24px;
-                margin: 0px;
-         }
-
-       .bottom ul li.tour-of-scala {
                 font-size: 16px;
                 line-height: 22px;
-         }
-
-        .bottom ul li p {
-                color: #404040;
-                text-shadow: 0 1px 0 rgba(255, 255,255,.5);
-                font-size: 18px;
-                line-height: 24px;
                 margin: 0px;
          }
 
-        .bottom ul li a {
-                color: #404040;
-            	text-shadow: 0 1px 0 rgba(255, 255,255,.5);
-         }
+        .page-header-index{margin-bottom:17px;border-bottom:1px solid #808080;-webkit-box-shadow:0 1px 0 rgba(255, 255, 255, 0.5);-moz-box-shadow:0 1px 0 rgba(255, 255, 255, 0.5);box-shadow:0 1px 0 rgba(255, 255, 255, 0.5);}
 
-        .bottom ul li a:hover {
-                color: #00408C;
-         }
+       p.contents {
+           font-weight: bold;
+           font-size: 16px;
+       }
 
-        .bottom ul li ul li {
-                font-size: 14px;
-                line-height: 18px;
-	        text-shadow: 0 1px 0 rgba(255, 255,255,.5);
-         }
+       div#toc ul {
+           list-style: none;
+       }
 
-        .bottom ul li ul li a {
-                color: #606060;
-         }
+       div#toc ul a {
+           display: block;
+           list-style: none;
+           line-height: 22px;
+           font-weight: bold;
+           width: 100%;
+       }
 
-        .bottom ul li ul li ul {
-                margin-top: 3px;
-         }
+      div#toc ul li ul {
+           list-style: disc;
+      }
 
-        .bottom ul li ul li ul li {
-                font-size: 12px;
-                line-height: 16px;
-	        text-shadow: 0 1px 0 rgba(255, 255,255,.5);
-         }
+      div#toc ul li ul a {
+           line-height: 18px;
+           font-weight: normal;
+      }
 
-        .bottom ul li ul li ul li a {
-                color: #707070;
-         }
+      div#toc ul li ul li ul {
+           list-style: square;
+      }
+       div#toc ul li ul li ul a {
+       }
 
-        .box {
-                position:relative;
-                padding:7px 15px;
-                margin-bottom:18px;
-                color:#ffffff;
-                background-color:#b12c67;
-                background-repeat:repeat-x;background-image:-khtml-gradient(linear, left top, left bottom, from(#b12c67), to(#340a06));
-                background-image:-moz-linear-gradient(top, #b12c67, #340a06);
-                background-image:-ms-linear-gradient(top, #b12c67, #340a06);
-                background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0%, #b12c67), color-stop(100%, #340a06));
-                background-image:-webkit-linear-gradient(top, #b12c67, #340a06);
-                background-image:-o-linear-gradient(top, #b12c67, #340a06);
-                background-image:linear-gradient(top, #b12c67, #340a06);
-                filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#b12c67', endColorstr='#eedc94', GradientType=0);
-                text-shadow:0 -1px 0 rgba(0, 0, 0, 0.25);
-                border-color:#340a06 #340a06 #340a06;
-                border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-                text-shadow:0 1px 0 rgba(0, 0, 0, 0.5);
-                border-width:1px;border-style:solid;-webkit-border-radius:4px;
-                -moz-border-radius:4px;border-radius:4px;-webkit-box-shadow:inset 0 1px 0 rgba(255, 255, 255, 0.25);
-                -moz-box-shadow:inset 0 1px 0 rgba(255, 255, 255, 0.25);
-                box-shadow:inset 0 1px 0 rgba(255, 255, 255, 0.25);
-	    }
-	
-	    .box h2 {
-		  padding-bottom: 8px;
-		  color: #ffffff;
-		  font-size: 36px;
-		  line-height: 1;
-		  text-shadow: 0 1px 2px rgba(0,0,0,.5);		
-   	    }
- 
-	    .box h3 {
-		  padding-bottom: 8px;
-		  color: #ffffff;
-		  font-size: 24px;
-		  line-height: 1;
-		  text-shadow: 0 1px 2px rgba(0,0,0,.5);		
-   	    }
+       div#scroller-anchor {
+           width: inherit;
+       }
 
-        .box ul li {
-          list-style-image: url(/resources/images/check-mark.png);
- 	    }
+       div#scroller {
+           width: inherit;
+       }
 
-        .box ul li {
-          color: #cccccc;
-          font-weight: bold;
-          font-size: 26px;
-          line-height: 36px;
-          text-shadow: 0 1px 2px rgba(0,0,0,.5);		
-          margin: 0 0 0 150px;		  	
-        }
+       p#about {
+      	 margin-top: -8px;
+         padding-left: 14px;
+       }
 
-        .box ul li a {
-          color: #cccccc;
-        }
+       ul {
+	     margin-left: 15px;
+       }
 
-        .box ul li a:hover {
-          color: #aaaaaa;
-        }
-
-        .page-header-index{
-			margin-bottom:17px;
-			border-bottom:1px solid #808080;
-			-webkit-box-shadow:0 1px 0 rgba(255, 255, 255, 0.5);
-			-moz-box-shadow:0 1px 0 rgba(255, 255, 255, 0.5);
-			box-shadow:0 1px 0 rgba(255, 255, 255, 0.5);
-		}
 
    </style>
 
 </head>
   <body>
-    
 
-<div class="wrapper"> 
+
+<div class="wrapper">
       <!-- Topbar
     ================================================== -->
 <div class="topbar">
@@ -315,49 +264,118 @@
 </div>
 
   <header class="scrollingmenu">
-    <h2>Search</h2>
+    <h1>Running the Test Suite</h1>
   </header>
 
   <div class="bottom">
     <div class="container">
       <div class="row">
-        <div id="cse" style="width: 100%;">Loading</div>
-<script src="//www.google.com/jsapi" type="text/javascript"></script>
-<script type="text/javascript"> 
-  function parseQueryFromUrl () {
-    var queryParamName = "q";
-    var search = window.location.search.substr(1);
-    var parts = search.split('&');
-    for (var i = 0; i < parts.length; i++) {
-      var keyvaluepair = parts[i].split('=');
-      if (decodeURIComponent(keyvaluepair[0]) == queryParamName) {
-        return decodeURIComponent(keyvaluepair[1].replace(/\+/g, ' '));
-      }
-    }
-    return '';
-  }
 
-  google.load('search', '1', {language : 'en', style : google.loader.themes.MINIMALIST});
-  google.setOnLoadCallback(function() {
-    var customSearchControl = new google.search.CustomSearchControl('002953043216032053080:3minh3hs7wa');
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchResultsOnly(); 
-    customSearchControl.draw('cse', options);
-    var queryFromUrl = parseQueryFromUrl();
-    if (queryFromUrl) {
-      customSearchControl.execute(queryFromUrl);
-    }
-  }, true);
-</script>
- 
+        <div class="span11">
+          <p>Partest is a custom parallel testing tool that we use to run the test suite for the Scala compiler and library. Go the scala project folder from your local checkout and run it via <code>ant</code> or standalone as follows.</p>
+
+<h2 id='using_ant'>Using ant</h2>
+
+<p>The test suite can be run by using ant from the command line:</p>
+
+<pre><code>$ ant test.suite</code></pre>
+
+<h2 id='standalone'>Standalone</h2>
+
+<p>There are launch scripts <code>partest</code> and <code>partest.bat</code> in the <code>test</code> folder of the scala project. To have partest run failing tests only and print details about test failures to the console, you can use</p>
+
+<pre><code>./test/partest --show-diff --show-log --failed</code></pre>
+
+<p>You can get a summary of the usage by running partest without arguments.</p>
+
+<ul>
+<li>
+<p>Most commonly you want to invoke partest with an option that tells it which part of the tests to run. For example <code>--all</code>, <code>--pos</code>, <code>--neg</code> or <code>--run</code>.</p>
+</li>
+
+<li>
+<p>You can test individual files by specifying individual test files (<code>.scala</code> files) as options. Several files can be tested if they are from the same category, e.g., <code>pos</code>.</p>
+</li>
+
+<li>
+<p>You can enable output of log and diff using the <code>-show-log</code> and <code>-show-diff</code> options.</p>
+</li>
+
+<li>
+<p>If you get into real trouble, and want to find out what partest does, you can run it with option <code>--verbose</code>. This info is useful as part of bug reports.</p>
+</li>
+
+<li>
+<p>Set custom path from where to load classes: <code>-classpath &lt;path&gt;</code> and <code>-buildpath &lt;path&gt;</code>.</p>
+</li>
+
+<li>
+<p>You can use the <code>SCALAC_OPTS</code> environment variable to pass command line options to the compiler.</p>
+</li>
+
+<li>
+<p>You can use the <code>JAVA_OPTS</code> environment variable to pass command line options to the runner (e.g., for <code>run/jvm</code> tests).</p>
+</li>
+
+<li>
+<p>The launch scripts run partest as follows:</p>
+
+<pre><code>scala -cp &lt;path to partest classes&gt; scala.tools.partest.nest.NestRunner &lt;options&gt;</code></pre>
+
+<p>Partest classes from a <code>quick</code> build, e.g., can be found in <code>./build/quick/classes/partest/</code>.</p>
+
+<p>Partest will tell you where it loads compiler/library classes from by adding the <code>partest.debug</code> property:</p>
+
+<pre><code>scala -Dpartest.debug=true -cp &lt;path to partest classes&gt; scala.tools.partest.nest.NestRunner &lt;options&gt;</code></pre>
+</li>
+</ul>
+
+<h2 id='scalacheck_tests'>ScalaCheck tests</h2>
+
+<p>Tests that depend on <a href='https://github.com/rickynils/scalacheck'>ScalaCheck</a> can be added under folder <code>./test/files/scalacheck</code>. A sample test:</p>
+
+<pre><code>import org.scalacheck._
+import Prop._
+
+object Test {
+	val prop_ConcatLists = property{ (l1: ListInt, l2: ListInt) =&gt;
+		l1.size + l2.size == (l1 ::: l2).size 
+	}
+
+	val tests = List((&quot;prop_ConcatLists&quot;, prop_ConcatLists))
+}</code></pre>
+
+<h2 id='troubleshooting'>Troubleshooting</h2>
+
+<h3 id='windows'>Windows</h3>
+
+<p>Some tests might fail because line endings in the <code>.check</code> files and the produced results do not match. In that case, set either</p>
+
+<pre><code>git config core.autocrlf false </code></pre>
+
+<p>or</p>
+
+<pre><code>git config core.autocrlf input </code></pre>
+        </div>
+
+        <div class="span5">
+          <div id="scroller-anchor">
+  <div id="scroller">
+    <p class="contents">Contents</p>
+    <div id="toc"></div>
+  </div>
+</div>
+
+        </div>
+    
       </div>
+	
     </div>
   </div>
   <div class="push"></div>
 </div>
 
-  <div class="footer">
+<div class="footer">
 	<div class="container">
 		<ul>
 			<li><h5>API</h5></li>
@@ -396,6 +414,17 @@
 </div>
 
 
+<script type="text/javascript">
+  $('#toc').toc({exclude: 'h1, h5, h6', context: '', autoId: true, numerate: false});
+</script>
+
+<script type="text/javascript">
+  $(function() {
+    moveScroller();
+  });
+</script>
+
   </body>
 </html>
 
+    

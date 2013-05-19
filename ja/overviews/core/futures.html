@@ -1,0 +1,1296 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>Future と Promise - Scala Documentation</title>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="icon" type="image/png" href="/resources/favicon.ico">
+
+    <!-- prettify js and CSS -->
+    <link rel="stylesheet" href="/resources/stylesheets/prettify.css" type="text/css" />
+    <script src="/resources/javascript/prettify/prettify.js" type="text/javascript" ></script>
+
+
+    <!-- jquery js -->
+    <script src="/resources/javascript/jquery.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/effects.core.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/effects.highlight.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/moveScroller.js" type="text/javascript" ></script>
+
+    <!-- Bootstrap JS and CSS -->
+    <link rel="stylesheet" href="/resources/stylesheets/bootstrap.css" type="text/css" />
+	  <script src="/resources/javascript/bootstrap-dropdown.js" type="text/javascript" ></script>
+	  <script src="/resources/javascript/bootstrap-dropdown-app.js" type="text/javascript" ></script>
+
+    <!-- Base stylesheet for all pages -->
+    <link rel="stylesheet" href="/resources/stylesheets/base.css" type="text/css" />
+
+    <!-- table of contents js -->
+    <script src="/resources/javascript/toc.js" type="text/javascript" ></script>
+
+    <!-- google analytics -->
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-574683-5']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+
+    <!-- prettyprint js to prepend generated pre/code tags -->
+    <script type="text/javascript">
+      function styleCode()
+        {
+          if (typeof disableStyleCode != "undefined")
+          {
+              return;
+          }
+          var a = false;
+          $("pre code").parent().each(function()
+          {
+              if (!$(this).hasClass("prettyprint"))
+              {
+                  $(this).addClass("prettyprint lang-scala linenums");
+                  a = true
+              }
+          });
+          if (a) { prettyPrint() }
+      }
+    </script>
+
+    <script type="text/javascript">
+      jQuery(document).ready(function($) {
+
+            $(".scroll").click(function(event){
+              event.preventDefault();
+              $('html,body').animate({scrollTop:$(this.hash).offset().top}, 500);
+              $('html,body').animate({scrollTop:$(this.hash).offset().top-=50}, 500);
+              $(this.hash).effect("highlight", {color: "#FFCC85"}, 3000);
+            });
+      });
+    </script>
+
+    <script type="text/javascript">
+      $(window).ready(function goToSubsection() {
+          if (window.location.hash)
+          {
+              $('html,body').animate({scrollTop:$(window.location.hash).offset().top}, 500);
+              $('html,body').animate({scrollTop:$(window.location.hash).offset().top-=50}, 500);
+              $(window.location.hash).effect("highlight", {color: "#FFCC85"}, 3000);
+          }
+        });
+    </script>
+
+    <style type="text/css">
+
+       p.contents {
+           margin-left: 15px;
+           font-weight: bold;
+           font-size: 16px;
+       }
+
+       div#toc ul {
+           list-style: none;
+       }
+
+       div#toc ul a {
+           display: block;
+           list-style: none;
+           line-height: 22px;
+           font-weight: bold;
+           width: 100%;
+       }
+
+      div#toc ul li ul {
+           list-style: disc;
+      }
+
+      div#toc ul li ul a {
+           line-height: 18px;
+           font-weight: normal;
+      }
+
+      div#toc ul li ul li ul {
+           list-style: square;
+      }
+       div#toc ul li ul li ul a {
+       }
+
+       div#scroller-anchor {
+           width: inherit;
+       }
+
+       div#scroller {
+           width: inherit;
+       }
+
+       div#guide-title {
+        text-transform: capitalize;
+        font-size: 16px;
+        padding-bottom: 6px;
+        color: #BFBFBF;
+        text-transform: uppercase;
+        font-weight: bold;
+       }
+
+       input, textarea, select, .uneditable-input {
+	       width: 165px;
+	     }
+
+    </style>
+
+</head>
+  <body onload="styleCode()">
+
+    <!-- Topbar
+    ================================================== -->
+<div class="topbar">
+    <div class="topbar-inner">
+        <div class="container">
+            <a class="brand" href="/index.html"><img src="/resources/images/scala-logo.png"> Documentation</a>
+            <ul class="nav">
+
+                <li class="menu">
+                      <a href="#" class="menu">API</a>
+                      <ul class="menu-dropdown">
+                        <li><a href="http://www.scala-lang.org/api/current/">Current</a></li>
+                        <li><a href="http://www.scala-lang.org/archives/downloads/distrib/files/nightly/docs/library/index.html">Nightly</a></li>
+                        <!--<li class="divider"></li>
+                        <li><a href="#">Previous Versions</a></li>
+                        -->
+                      </ul>
+                </li>
+
+                <li class="menu">
+                      <a href="#" class="menu">Learn</a>
+                      <ul class="menu-dropdown">
+                        <li><a href="/overviews">Guides & Overviews</a></li>
+                        <li><a href="/tutorials">Tutorials</a></li>
+                        <li><a href="/style">Scala Style Guide</a></li>
+                      </ul>
+                </li>
+
+                <li class="menu">
+                      <a href="#" class="menu">Quickref</a>
+                      <ul class="menu-dropdown">
+                        <li><a href="/glossary">Glossary</a></li>
+                        <li><a href="/cheatsheets">Cheatsheets</a></li>
+                      </ul>
+                </li>
+
+                <li><a href="/contribute.html">Contribute</a></li>
+                <li><a href="/sips">SIPs</a></li>
+                <li><a href="http://wiki.scala-lang.org">Wiki</a></li>
+          </ul>
+          <form method="get" id="searchform" action="/search.html">
+            <input type="text" placeholder="Search"  class="field" name="q" id="q"/>
+          </form>
+           </li>
+          </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    
+    <div class="span10"><h1>Future と Promise</h1></div>
+
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+
+    
+      
+      
+    
+
+    <div class="span6">
+      
+        <a href="/overviews/core/futures.html"><img src="/resources/images/language/en.png" title="Language: en"/></a> 
+        
+          <a href="/ja/overviews/core/futures.html"><img src="/resources/images/language/ja.png" title="Language: ja"/></a> 
+        
+      
+    </div>
+
+    <div class="span10">
+      <p><strong>Philipp Haller, Aleksandar Prokopec, Heather Miller, Viktor Klang, Roland Kuhn, Vojin Jovanovic 著</strong><br /> <strong>Eugene Yokota 訳</strong></p>
+
+<h2 id='id30'>概要</h2>
+
+<p><strong>Future</strong> は並列に実行される複数の演算を取り扱うのに便利な方法を提供する。それは効率的でノンブロッキングな方法だ。 大まかな考え方はシンプルなもので、<code>Future</code> はまだ存在しない計算結果に対するプレースホルダのようなものだ。 一般的に、<code>Future</code> の結果は並行に計算され後で集計することができる。 このように並行なタスクを合成することで、より速く、非同期で、ノンブロッキングな並列コードとなることが多い。</p>
+
+<p>デフォルトでは、Future も Promise もノンブロッキングであり、典型的なブロッキング演算の代わりにコールバックを使う。 コールバックの使用を概念的にも構文的にも単純化するために、Scala は Future をノンブロッキングに合成する <code>flatMap</code>、<code>foreach</code>、<code>filter</code> といったコンビネータを提供する。 ブロックすることは可能で、(推奨されないが) 絶対に必要だという場面においては Future をブロックすることもできる。</p>
+<!--
+The futures and promises API builds upon the notion of an
+`ExecutionContext`, an execution environment designed to manage
+resources such as thread pools between parallel frameworks and
+libraries (detailed in an accompanying SIP, forthcoming). Futures and
+promises are created through such `ExecutionContext`s. For example, this makes it possible, 
+in the case of an application which requires blocking futures, for an underlying execution 
+environment to resize itself if necessary to guarantee progress.
+-->
+<h2 id='future'>Future</h2>
+
+<p><code>Future</code> は、ある時点において利用可能となる可能性のある値を保持するオブジェクトだ。 この値は、なんらかの計算結果であることが多い。 その計算が例外とともに失敗する可能性があるため、<code>Future</code> は計算が例外を投げる場合を想定して例外を保持することもできる。 ある <code>Future</code> が値もしくは例外を持つとき、<code>Future</code> は<strong>完了</strong>したという。 <code>Future</code> が値とともに完了した場合、<code>Future</code> はその値とともに<strong>成功</strong>したという。 <code>Future</code> が例外とともに完了した場合、<code>Future</code> はその例外とともに<strong>失敗</strong>したという。</p>
+
+<p><code>Future</code> には 1回だけ代入することができるという重要な特性がある。 一度 Future オブジェクトが値もしくは例外を持つと、実質不変となり、それが上書きされることは絶対に無い。</p>
+
+<p>Future オブジェクトを作る最も簡単な方法は、非同期の計算を始めてその結果を持つ <code>Future</code> を返す <code>future</code> メソッドを呼び出すことだ。 計算結果は <code>Future</code> が完了すると利用可能になる。</p>
+
+<p>ここで注意して欲しいのは <code>Future[T]</code> は Future オブジェクトの型であり、 <code>future</code> はなんらかの非同期な計算を作成しスケジュールして、その計算結果とともに完了する Future オブジェクトを返すメソッドだということだ。</p>
+
+<p>具体例で説明しよう。 ある人気ソーシャルネットワークの API を想定して、与えられたユーザの友達のリストを取得できるものとする。 まず新しいセッションを開いて、ある特定のユーザの友達リストを申請する:</p>
+
+<pre><code>import scala.concurrent._
+import ExecutionContext.Implicits.global
+
+val session = socialNetwork.createSessionFor(&quot;user&quot;, credentials)
+val f: Future[List[Friend]] = future {
+  session.getFriends()
+}</code></pre>
+
+<p>上の例では、まず <code>scala.concurrent</code> パッケージの内容をインポートすることで <code>Future</code> 型と <code>future</code> が見えるようにしている。 2つ目のインポートは追って説明する。</p>
+
+<p>次に、仮想の <code>createSessionFor</code> メソッドを呼んでサーバにリクエストを送るセッション変数を初期化している。</p>
+
+<p>ユーザの友達リストを取得するには、ネットワークごしにリクエストを送信する必要があり、それは長い時間がかかる可能性がある。 これは <code>getFriends</code> メソッドで例示されている。 応答が返ってくるまでの間に CPU を有効に使うには、プログラムの残りをブロックするべきではない。 つまり、この計算は非同期にスケジュールされるべきだ。 ここで使われている <code>future</code> メソッドはまさにそれを行い、与えれたブロックを並行に実行する。 この場合は、リクエストを送信し応答を待ち続ける。</p>
+
+<p>サーバが応答すると Future <code>f</code> 内において友達リストが利用可能となる。</p>
+
+<p>試みが失敗すると、例外が発生するかもしれない。 以下の例では、<code>session</code> 変数の初期化が不正なため、<code>future</code> ブロック内の計算が <code>NullPointerException</code> を投げる。この Future <code>f</code> は、この例外とともに失敗する:</p>
+
+<pre><code>val session = null
+val f: Future[List[Friend]] = future {
+  session.getFriends
+}</code></pre>
+
+<p>上の <code>import ExecutionContext.Implicits.global</code> という一文はデフォルトのグローバルな実行コンテキスト (execution context) をインポートする。 実行コンテキストは渡されたタスクを実行し、スレッドプールのようなものだと考えていい。 これらは、非同期計算がいつどのように実行されるかを取り扱うため、<code>future</code> メソッドに欠かせないものだ。 独自の実行コンテキストを定義して <code>future</code> とともに使うことができるが、今のところは上記のようにデフォルトの実行コンテキストをインポートできるということが分かれば十分だ。</p>
+
+<p>この例ではネットワークリごしにクエストを送信して応答を待つという仮想のソーシャルネットワーク API を考えてみた。 すぐに試してみることができる非同期の計算の例も考えてみよう。 テキストファイルがあったとして、その中である特定のキーワードが最初に出てきた位置を知りたいとする。 この計算はファイルの内容をディスクから読み込むのにブロッキングする可能性があるため、他の計算と並行実行するのは理にかなっている。</p>
+
+<pre><code>val firstOccurence: Future[Int] = future {
+  val source = scala.io.Source.fromFile(&quot;myText.txt&quot;)
+  source.toSeq.indexOfSlice(&quot;myKeyword&quot;)
+}</code></pre>
+
+<h3 id='id31'>コールバック</h3>
+
+<p>これで非同期な計算を始めて新しい Future オブジェクトを作る方法は分かったけども、計算結果が利用可能となったときにそれを使って何かをする方法をまだみていない。 多くの場合、計算の副作用だけじゃなくて、その結果に興味がある。</p>
+
+<p>Future の実装の多くは、Future の結果を知りたくなったクライアントは Future が完了するまで自分の計算をブロックすることを強要する。そうしてやっと Future の計算結果を得られた後に自分の計算を続行できるようになる。 後でみるように、この方式も Scala の Future API で可能となっているが、性能という観点から見ると Future にコールバックを登録することで完全にノンブロッキングで行う方が好ましいと言える。 このコールバックは Future が完了すると非同期に呼び出される。 コールバックの登録時に Future が既に完了している場合は、コールバックは非同期に実行されるか、もしくは同じスレッドで逐次的に実行される。</p>
+
+<p>コールバックを登録する最も汎用的な方法は、<code>Try[T] =&gt; U</code> 型の関数を受け取る <code>onComplete</code> メソッドを使うことだ。 このコールバックは、Future が成功すれば <code>Success[T]</code> 型の値に適用され、失敗すれば <code>Failure[T]</code> 型の値に適用される。</p>
+
+<p>この <code>Try[T]</code> は、それが何らか型の値を潜在的に保持するモナドだという意味において <code>Option[T]</code> や <code>Either[T, S]</code> に似ている。 しかし、これは値か Throwable なオブジェクトを保持することに特化して設計されている。 <code>Option[T]</code> が値 (つまり <code>Some[T]</code>) を持つか、何も持たない (つまり <code>None</code>) のに対して、<code>Try[T]</code> は値を持つ場合は <code>Success[T]</code> で、それ以外の場合は <code>Failure[T]</code> で必ず例外を持つ。 <code>Failure[T]</code> は、何故値が無いのかを説明できるため、<code>None</code> よりも多くの情報を持つ。 同様に <code>Try[T]</code> を <code>Either[Throwable, T]</code>、つまり左値を <code>Throwable</code> に固定した特殊形だと考えることもできる。</p>
+
+<p>ソーシャルネットワークの例に戻って、最近の自分の投稿した文のリストを取得して画面に表示したいとする。 これは <code>List[String]</code> を返す <code>getRecentPosts</code> メソッドを呼ぶことで行われ、戻り値には最近の文のリストが入っている:</p>
+
+<pre><code>val f: Future[List[String]] = future {
+  session.getRecentPosts
+}
+
+f onComplete {
+  case Success(posts) =&gt; for (post &lt;- posts) println(post)
+  case Failure(t) =&gt; println(&quot;エラーが発生した: &quot; + t.getMessage)
+}</code></pre>
+
+<p><code>onComplete</code> メソッドは、Future 計算の失敗と成功の両方の結果を扱えるため、汎用性が高い。 成功した結果のみ扱う場合は、(部分関数を受け取る) <code>onSuccess</code> コールバックを使う:</p>
+
+<pre><code>val f: Future[List[String]] = future {
+  session.getRecentPosts
+}
+
+f onSuccess {
+  case posts =&gt; for (post &lt;- posts) println(post)
+}</code></pre>
+
+<p>失敗した結果のみ扱う場合は、<code>onFailure</code> コールバックを使う:</p>
+
+<pre><code>val f: Future[List[String]] = future {
+  session.getRecentPosts
+}
+
+f onFailure {
+  case t =&gt; println(&quot;エラーが発生した: &quot; + t.getMessage)
+}
+
+f onSuccess {
+  case posts =&gt; for (post &lt;- posts) println(post)
+}</code></pre>
+
+<p><code>onFalure</code> コールバックは Future が失敗した場合、つまりそれが例外を保持する場合のみ実行される。</p>
+
+<p>部分関数は <code>isDefinedAt</code> メソッドを持つため、<code>onFailure</code> メソッドはコールバックが特定の <code>Throwable</code> に対して定義されている場合のみ発火される。 以下の例では、登録された <code>onFailure</code> コールバックは発火されない:</p>
+
+<pre><code>val f = future {
+  2 / 0
+}
+
+f onFailure {
+  case npe: NullPointerException =&gt;
+    println(&quot;これが表示されているとしたらビックリ。&quot;)
+}</code></pre>
+
+<p>キーワードの初出の位置を検索する例に戻ると、キーワードの位置を画面に表示したいかもしれない:</p>
+
+<pre><code>val firstOccurence: Future[Int] = future {
+  val source = scala.io.Source.fromFile(&quot;myText.txt&quot;)
+  source.toSeq.indexOfSlice(&quot;myKeyword&quot;)
+}
+
+firstOccurence onSuccess {
+  case idx =&gt; println(&quot;キーワードの初出位置: &quot; + idx)
+}
+
+firstOccurence onFailure {
+  case t =&gt; println(&quot;ファイルの処理に失敗した: &quot; + t.getMessage)
+}</code></pre>
+
+<p><code>onComplete</code>、<code>onSuccess</code>、および <code>onFailure</code> メソッドは全て <code>Unit</code> 型を返すため、これらの呼び出しを連鎖させることができない。 これは意図的な設計で、連鎖された呼び出しが登録されたコールバックの実行の順序を暗示しないようにしている (同じ Future に登録されたコールバックは順不同に発火される)。</p>
+
+<p>ここで、コールバックが実際のところ<strong>いつ</strong>呼ばれるのかに関して説明する必要がある。 Future 内の値が利用可能となることを必要とするため、Future が完了した後でのみ呼び出されることができる。 しかし、Future を完了したスレッドかコールバックを作成したスレッドのいずれかにより呼び出されるという保証は無い。 かわりに、コールバックは Future オブジェクトが完了した後のいつかに何らかスレッドにより実行される。 これをコールバックが実行されるのは <strong>eventually</strong> だという。</p>
+
+<p>さらに、コールバックが実行される順序は、たとえ同じアプリケーションを複数回実行した間だけでも決定してない。 実際、コールバックは逐次的に呼び出されるとは限らず、一度に並行実行されるかもしれない。 そのため、以下の例における変数 <code>totalA</code> は計算されたテキスト内の正しい小文字と大文字の <code>a</code> の合計数を持たない場合がある。</p>
+
+<pre><code>@volatile var totalA = 0
+
+val text = future {
+  &quot;na&quot; * 16 + &quot;BATMAN!!!&quot;
+}
+
+text onSuccess {
+  case txt =&gt; totalA += txt.count(_ == &#39;a&#39;)
+}
+
+text onSuccess {
+  case txt =&gt; totalA += txt.count(_ == &#39;A&#39;)
+}</code></pre>
+
+<p>2つのコールバックが順次に実行された場合は、変数 <code>totalA</code> は期待される値 <code>18</code> を持つ。 しかし、これらは並行して実行される可能性もあるため、その場合は <code>totalA</code> は <code>+=</code> が atomic な演算ではないため、 (つまり、読み込みと書き込みというステップから構成されており、それが他の読み込みと書き込みの間に挟まって実行される可能性がある) <code>16</code> または <code>2</code> という値になってしまう可能性もある。</p>
+
+<p>万全を期して、以下にコールバックの意味論を列挙する:</p>
+<!-- keep this html --><ol>
+<li>Future に <code>onComplete</code> コールバックを登録することで、対応するクロージャが Future が完了した後に eventually に実行されることが保証される。</li>
+
+<li><code>onSuccess</code> や <code>onFailure</code> コールバックを登録することは <code>onComplete</code> と同じ意味論を持つ。ただし、クロージャがそれぞれ成功したか失敗した場合のみに呼ばれるという違いがある。</li>
+
+<li>既に完了した Future にコールバックを登録することは (1 により) コールバックが eventually に実行されることとなる。</li>
+
+<li>Future に複数のコールバックが登録された場合は、それらが実行される順序は定義されない。それどころか、コールバックは並行に実行される可能性がある。しかし、<code>ExecutionContext</code> の実装によっては明確に定義された順序となる可能性もある。</li>
+
+<li>例外を投げるコールバックがあったとしても、他のコールバックは実行される。</li>
+
+<li>完了しないコールバックがあった場合 (つまりコールバックに無限ループがあった場合)他のコールバックは実行されない可能性がある。そのような場合はブロックする可能性のあるコールバックは <code>blocking</code> 構文を使うべきだ (以下参照)。</li>
+
+<li>コールバックの実行後はそれは Future オブジェクトから削除され、GC 対象となる。</li>
+</ol>
+<h3 id='_for_'>関数型合成と for 内包表記</h3>
+
+<p>上でみたコールバック機構により Future の結果を後続の計算に連鎖することが可能となった。 しかし、場合によっては不便だったり、コードが肥大化することもある。 具体例で説明しよう。 為替トレードサービスの API があって、米ドルを有利な場合のみ買いたいとする。 まずコールバックを使ってこれを実現してみよう:</p>
+
+<pre><code>val rateQuote = future {
+  connection.getCurrentValue(USD)
+}
+
+rateQuote onSuccess { case quote =&gt;
+  val purchase = future {
+    if (isProfitable(quote)) connection.buy(amount, quote)
+    else throw new Exception(&quot;有益ではない&quot;)
+  }
+  
+  purchase onSuccess {
+    case _ =&gt; println(amount + &quot; USD を購入した&quot;)
+  }
+}</code></pre>
+
+<p>まずは現在の為替相場を取得する <code>rateQuote</code> という <code>Future</code> を作る。 この値がサーバから取得できて Future が成功した場合は、計算は <code>onSuccess</code> コールバックに進み、ここで買うかどうかの決断をすることができる。 ここでもう 1つの Future である <code>purchase</code> を作って、有利な場合のみ買う決定をしてリクエストを送信する。 最後に、<code>purchase</code> が完了すると、通知メッセージを標準出力に表示する。</p>
+
+<p>これは動作するが、2つの理由により不便だ。 第一に、<code>onSuccess</code> を使わなくてはいけなくて、2つ目の Future である <code>purchase</code> をその中に入れ子にする必要があることだ。 例えば <code>purchase</code> が完了した後に別の貨幣を売却したいとする。 それはまた <code>onSuccess</code> の中でこのパターンを繰り返すことになり、インデントしすぎで理解しづらく肥大化したコードとなる。</p>
+
+<p>第二に、<code>purchase</code> は他のコードのスコープ外にあり、<code>onSuccess</code> コールバック内においてのみ操作することができる。 そのため、アプリケーションの他の部分は <code>purchase</code> を見ることができず、他の貨幣を売るために別の <code>onSuccess</code> コールバックを登録することもできない。</p>
+
+<p>これらの 2つの理由から Future はより自然な合成を行うコンビネータを提供する。 基本的なコンビネータの 1つが <code>map</code> で、これは与えられた Future とその値に対する投射関数から、元の Future が成功した場合に投射した値とともに完了する新しい Future を生成する。 Future の投射はコレクションの投射と同様に考えることができる。</p>
+
+<p>上の例を <code>map</code> コンビネータを使って書き換えてみよう:</p>
+
+<pre><code>val rateQuote = future {
+  connection.getCurrentValue(USD)
+}
+
+val purchase = rateQuote map { quote =&gt; 
+  if (isProfitable(quote)) connection.buy(amount, quote)
+  else throw new Exception(&quot;有益ではない&quot;)
+}
+
+purchase onSuccess {
+  case _ =&gt; println(amount + &quot; USD を購入した&quot;)
+}</code></pre>
+
+<p><code>rateQuote</code> に対して <code>map</code> を使うことで <code>onSuccess</code> コールバックを一切使わないようになった。 それと、より重要なのが入れ子が無くなったことだ。 ここで他の貨幣を売却したいと思えば、<code>purchase</code> に再び <code>map</code> するだけでいい。</p>
+
+<p>しかし、<code>isProfitable</code> が <code>false</code> を返して、例外が投げられた場合はどうなるだろう? その場合は <code>purchase</code> は例外とともに失敗する。 さらに、コネクションが壊れて <code>getCurrentValue</code> が例外を投げて <code>rateQuote</code> が失敗した場合を想像してほしい。 その場合は、投射する値が無いため <code>purchase</code> は自動的に <code>rateQuote</code> と同じ例外とともに失敗する。</p>
+
+<p>結果として、もし元の Future が成功した場合は、返される Future は元の Future の値を投射したものとともに完了する。 もし投射関数が例外を投げた場合は Future はその例外とともに完了する。 もし元の Future が例外とともに失敗した場合は、返される Future も同じ例外を持つ。 この例外を伝搬させる意味論は他のコンビネータにおいても同様だ。</p>
+
+<p>Future の設計指針の 1つは for 内包表記から利用できるようにすることだった。 このため、Future は <code>flatMap</code>、<code>filter</code> そして <code>foreach</code> コンビネータを持つ。 <code>flatMap</code> メソッドは値を新しい Future <code>g</code> に投射する関数を受け取り、<code>g</code> が完了したときに完了する新たな Future を返す。</p>
+
+<p>米ドルをスイス・フラン (CHF) と交換したいとする。 両方の貨幣の為替レートを取得して、両者の値に応じて購入を決定する必要がある。 以下に for 内包表記を使った <code>flatMap</code> と <code>withFilter</code> の例をみてみよう:</p>
+
+<pre><code>val usdQuote = future { connection.getCurrentValue(USD) }
+val chfQuote = future { connection.getCurrentValue(CHF) }
+
+val purchase = for {
+  usd &lt;- usdQuote
+  chf &lt;- chfQuote
+  if isProfitable(usd, chf)
+} yield connection.buy(amount, chf)
+
+purchase onSuccess {
+  case _ =&gt; println(amount + &quot; CHF を購入した&quot;)
+}</code></pre>
+
+<p>この <code>purchase</code> は <code>usdQuote</code> と <code>chfQuote</code> が完了した場合のみ完了する。 これら 2つの Future の値に依存するため、それよりも早く自分の計算を始めることができない。</p>
+
+<p>上の for 内包表記は以下のように翻訳される:</p>
+
+<pre><code>val purchase = usdQuote flatMap {
+  usd =&gt;
+  chfQuote
+    .withFilter(chf =&gt; isProfitable(usd, chf))
+    .map(chf =&gt; connection.buy(amount, chf))
+}</code></pre>
+
+<p>これは for 内包表記に比べて分かりづらいが、<code>flatMap</code> 演算をより良く理解するために解析してみよう。 <code>flatMap</code> 演算は自身の値を別の Future へと投射する。 この別の Future が完了すると、戻り値の Future もその値とともに完了する。 上記の例では、<code>flatMap</code> は <code>usdQuote</code> Future の値を用いて <code>chfQuote</code> の値をある特定の値のスイス・フランを購入するリクエストを送信する 3つ目の Future に投射している。 結果の Future である <code>purchase</code> は、この 3つ目の Future が <code>map</code> から帰ってきた後にのみ完了する。</p>
+
+<p>これは難解だが、幸いな事に <code>flatMap</code> 演算は使いやすく、また分かりやすい for 内包表記以外の場合はあまり使われない。</p>
+
+<p><code>filter</code> コンビネータは、元の Future の値が条件関数を満たした場合のみその値を持つ新たな Future を作成する。 それ以外の場合は新しい Future は <code>NoSuchElementException</code> とともに失敗する。 Future に関しては、<code>filter</code> の呼び出しは <code>withFilter</code> の呼び出しと全く同様の効果がある。</p>
+
+<p><code>collect</code> と <code>filter</code> コンビネータの関係はコレクション API におけるこれらのメソッドの関係に似ている。</p>
+
+<p><code>foreach</code> コンビネータで注意しなければいけないのは値が利用可能となった場合に走査するのにブロックしないということだ。 かわりに、<code>foreach</code> のための関数は Future が成功した場合のみ非同期に実行される。 そのため、<code>foreach</code> は <code>onSuccess</code> コールバックと全く同じ意味を持つ。</p>
+
+<p><code>Future</code> トレイトは概念的に (計算結果と例外という) 2つの型の値を保持することができるため、例外処理のためのコンビネータが必要となる。</p>
+
+<p><code>rateQuote</code> に基いて何らかの額を買うとする。 <code>connection.buy</code> メソッドは <code>amount</code> と期待する <code>quote</code> を受け取る。 これは買われた額を返す。 <code>quote</code> に変更があった場合は、何も買わずに <code>QuoteChangedException</code> を投げる。 例外の代わりに <code>0</code> を持つ Future を作りたければ <code>recover</code> コンビネータを用いる:</p>
+
+<pre><code>val purchase: Future[Int] = rateQuote map {
+  quote =&gt; connection.buy(amount, quote)
+} recover {
+  case QuoteChangedException() =&gt; 0
+}</code></pre>
+
+<p><code>recover</code> コンビネータは元の Future が成功した場合は同一の結果を持つ新たな Future を作成する。成功しなかった場合は、元の Future を失敗させた <code>Throwable</code> に渡された部分関数が適用される。 もしそれが <code>Throwable</code> を何らかの値に投射すれば、新しい Future はその値とともに成功する。 もしその <code>Throwable</code> に関して部分関数が定義されていなければ、結果となる Future は同じ <code>Throwable</code> とともに失敗する。</p>
+
+<p><code>rocoverWith</code> コンビネータは元の Future が成功した場合は同一の結果を持つ新たな Future を作成する。成功しなかった場合は、元の Future を失敗させた <code>Throwable</code> に渡された部分関数が適用される。 もしそれが <code>Throwable</code> を何らかの Future に投射すれば、新しい Future はその Future とともに成功する。 <code>recover</code> に対する関係は <code>flatMap</code> と <code>map</code> の関係に似ている。</p>
+
+<p><code>fallbackTo</code> コンビネータは元の Future が成功した場合は同一の結果を持ち、成功しなかった場合は引数として渡された Future の成功した値を持つ新たな Future を作成する。 この Future と引数の Future が両方失敗した場合は、新しい Future はこの Future の例外とともに失敗する。 以下に米ドルの値を表示することを試みて、米ドルの取得に失敗した場合はスイス・フランの値を表示する具体例をみてみよう:</p>
+
+<pre><code>val usdQuote = future {
+  connection.getCurrentValue(USD)
+} map {
+  usd =&gt; &quot;値: &quot; + usd + &quot; USD&quot;
+}
+val chfQuote = future {
+  connection.getCurrentValue(CHF)
+} map {
+  chf =&gt; &quot;値: &quot; + chf + &quot;CHF&quot;
+}
+
+val anyQuote = usdQuote fallbackTo chfQuote
+
+anyQuote onSuccess { println(_) }</code></pre>
+
+<p><code>andThen</code> コンビネータは副作用の目的のためだけに用いられる。 これは、成功したか失敗したかに関わらず現在の Future と全く同一の結果を返す新たな Future を作成する。 現在の Future が完了すると、<code>andThen</code> に渡されたクロージャが呼び出され、新たな Future はこの Future と同じ結果とともに完了する。 これは複数の <code>andThen</code> 呼び出しが順序付けられていることを保証する。 ソーシャルネットワークからの最近の投稿文を可変セットに保存して、全ての投稿文を画面に表示する以下の具体例をみてみよう:</p>
+
+<pre><code>val allposts = mutable.Set[String]()
+
+future {
+  session.getRecentPosts
+} andThen {
+  posts =&gt; allposts ++= posts
+} andThen {
+  posts =&gt;
+  clearAll()
+  for (post &lt;- allposts) render(post)
+}</code></pre>
+
+<p>まとめると、Future に対する全てのコンビネータは元の Future に関連する新たな Future を返すため、純粋関数型だといえる。</p>
+
+<h3 id='id32'>投射</h3>
+
+<p>例外として返ってきた結果に対して for 内包表記が使えるように Future は投射を持つ。 元の Future が失敗した場合は、<code>failed</code> 投射は <code>Throwable</code> 型の値を持つ Future を返す。 もし元の Future が成功した場合は、<code>failed</code> 投射は <code>NoSuchElementException</code> とともに失敗する。以下は例外を画面に表示する具体例だ:</p>
+
+<pre><code>val f = future {
+  2 / 0
+}
+for (exc &lt;- f.failed) println(exc)</code></pre>
+
+<p>以下の例は画面に何も表示しない:</p>
+
+<pre><code>val f = future {
+  4 / 2
+}
+for (exc &lt;- f.failed) println(exc)</code></pre>
+<!--
+There is another projection called `timedout` which is specific to the
+`FutureTimeoutException`. It works in exactly the same way as the
+`failed` projection, but is triggered only for this exception type. In
+all other cases, it fails with a `NoSuchElementException`.
+--><!--
+TODO: the `failed` projection can be extended to be parametric in
+the throwable types it matches.
+--><!--
+Invoking the `future` construct uses a global execution context to start an asynchronous computation. In the case the client desires to use a custom execution context to start an asynchronous computation:
+
+    val f = customExecutionContext future {
+      4 / 2
+    }
+-->
+<h3 id='future_'>Future の拡張</h3>
+
+<p>Future API にユーティリティメソッドを追加して拡張できるようにすることを予定している。 これによって、外部フレームワークはより特化した使い方を提供できるようになる。</p>
+
+<h2 id='id33'>ブロッキング</h2>
+
+<p>前述のとおり、性能とデッドロックの回避という理由から Future をブロックしないことを強く推奨する。 コールバックとコンビネータを使うことが Future の結果を利用するのに適した方法だ。 しかし、状況によってはブロックすることが必要となるため、Future API と Promise API においてサポートされている。</p>
+
+<p>前にみた為替取引の例だと、アプリケーションの最後に全ての Future が完了することを保証するためにブロックする必要がある。 Future の結果に対してブロックする方法を以下に具体例で説明しよう:</p>
+
+<pre><code>import scala.concurrent._
+import scala.concurrent.duration._
+
+def main(args: Array[String]) {
+  val rateQuote = future {
+    connection.getCurrentValue(USD)
+  }
+  
+  val purchase = rateQuote map { quote =&gt;
+    if (isProfitable(quote)) connection.buy(amount, quote)
+    else throw new Exception(&quot;有益ではない&quot;)
+  }
+  
+  Await.result(purchase, 0 nanos)
+}</code></pre>
+
+<p>Future が失敗した場合は、呼び出し元には Future が失敗した例外が送られてくる。 これは <code>failed</code> 投射を含むため、元の Future が成功した場合は <code>NoSuchElementException</code> が投げられることとなる。</p>
+
+<p>代わりに、<code>Await.ready</code> を呼ぶことで Future が完了するまで待機するがその結果を取得しないことができる。 同様に、このメソッドを呼んだ時に Future が失敗したとしても例外は投げられない。</p>
+
+<p><code>Future</code> トレイトは <code>ready()</code> と <code>result()</code> というメソッドを持つ <code>Awaitable</code> トレイトを実装する。 これらのメソッドはクライアントからは直接呼ばれず、実行コンテキストからのみ呼ばれる。</p>
+
+<p><code>Awaitable</code> トレイトを実装することなくブロックする可能性のある第三者のコードを呼び出すために、以下のように <code>blocking</code> 構文を使うことができる:</p>
+
+<pre><code>blocking {
+  potentiallyBlockingCall()
+}</code></pre>
+
+<p>ブロックされたコードは例外を投げるかもしれない。その場合は、呼び出し元に例外が送られる。</p>
+
+<h2 id='id34'>例外処理</h2>
+
+<p>非同期の計算が処理されない例外を投げた場合、その計算が行われた Future は失敗する。 失敗した Future は計算値のかわりに <code>Throwable</code> のインスタンスを格納する。 <code>Future</code> は、<code>Throwable</code> に適用することができる <code>PartialFunction</code> を受け取る <code>onFailure</code> コールバックメソッドを提供する。 以下の特別な例外に対しては異なる処理が行われる:</p>
+
+<ol>
+<li>
+<p><code>scala.runtime.NonLocalReturnControl[_]</code>。この例外は戻り値に関連する値を保持する。 典型的にはメソッド本文内の <code>return</code> 構文はこの例外を用いた <code>throw</code> へと翻訳される。 この例外を保持するかわりに、関連する値が Future もしくは Promise に保存される。</p>
+</li>
+
+<li>
+<p><code>ExecutionException</code>。<code>InterruptedException</code>、<code>Error</code>、もしくは <code>scala.util.control.ControlThrowable</code> が処理されないことで計算が失敗した場合に格納される。 この場合は、処理されなかった例外は <code>ExecutionException</code> に保持される。 これらの例外は非同期計算を実行するスレッド内で再び投げられる。 この理由は、通常クライアント側で処理されないクリティカルもしくは制御フロー関連の例外が伝搬することを回避し、同時に Future の計算が失敗したことをクライアントに通知するためだ。</p>
+</li>
+</ol>
+
+<p>より正確な意味論の説明は <a href='http://www.scala-lang.org/api/current/index.html#scala.util.control.NonFatal$'><code>NonFatal</code></a> を参照。</p>
+
+<h2 id='promise'>Promise</h2>
+
+<p>これまでの所、<code>future</code> メソッドを用いた非同期計算により作成される <code>Future</code> オブジェクトのみをみてきた。 しかし、Future は <strong>Promise</strong> を用いて作成することもできる。</p>
+
+<p>Future がリードオンリーのまだ存在しない値に対するプレースホルダ・オブジェクトの一種だと定義されるのに対して、Promise は書き込み可能で、1度だけ代入できるコンテナで Future を完了させるものだと考えることができる。 つまり、Promise は <code>success</code> メソッドを用いて (約束を「完了させる」ことで) Future を値とともに成功させることができる。 逆に、Promise は <code>failure</code> メソッドを用いて Future を例外とともに失敗させることもできる。</p>
+
+<p>Promise の <code>p</code> は <code>p.future</code> によって返される Future を完了させる。 この Future は Promise <code>p</code> に特定のものだ。実装によっては <code>p.future eq p</code> の場合もある。</p>
+
+<p>ある計算が値を生産し、別の計算がそれを消費する Producer-Consumer の具体例を使って説明しよう。 この値の受け渡しは Promise を使って実現している。</p>
+
+<pre><code>import scala.concurrent.{ future, promise }
+import scala.concurrent.ExecutionContext.Implicits.global
+
+val p = promise[T]
+val f = p.future
+
+val producer = future {
+  val r = produceSomething()
+  p success r
+  continueDoingSomethingUnrelated()
+}
+
+val consumer = future {
+  startDoingSomething()
+  f onSuccess {
+    case r =&gt; doSomethingWithResult()
+  }
+}</code></pre>
+
+<p>ここでは、まず Promise を作って、その <code>future</code> メソッドを用いて完了される <code>Future</code> を取得する。 まず何らかの計算が実行され、<code>r</code> という結果となり、これを用いて Future <code>f</code> を完了させ、<code>p</code> という約束を果たす。 ここで注意してほしいのは、<code>consumer</code> は <code>producer</code> が <code>continueDoingSomethingUnrelated()</code> を実行し終えてタスクが完了する前に結果を取得できることだ。</p>
+
+<p>前述の通り、Promise は 1度だけ代入できるという意味論を持つ。 そのため、完了させるのも 1回だけだ。 既に完了 (もしくは失敗した) Promise に対して <code>success</code> を呼び出すと <code>IllegalStateException</code> が投げられる。</p>
+
+<p>以下は Promise を失敗させる具体例だ。</p>
+
+<pre><code>val p = promise[T]
+val f = p.future
+
+val producer = future {
+  val r = someComputation
+  if (isInvalid(r))
+    p failure (new IllegalStateException)
+  else {
+    val q = doSomeMoreComputation(r)
+    p success q
+  }
+}</code></pre>
+
+<p>ここでは <code>producer</code> は中間結果 <code>r</code> を計算して、それが妥当であるか検証する。 不正であれば、Promise <code>p</code> を例外を用いて完了させることで Promise を失敗させる。 それ以外の場合は、<code>producer</code> は計算を続行して Promise <code>p</code> を妥当な結果用いて完了させることで、Future <code>f</code> を完了させる。</p>
+
+<p>Promise は潜在的な値である <code>Try[T]</code> (失敗した結果の <code>Failure[Throwable]</code> もしくは成功した結果の <code>Success[T]</code>) を受け取る <code>complete</code> メソッドを使って完了させることもできる。</p>
+
+<p><code>success</code> 同様に、既に完了した Promise に対して <code>failure</code> や <code>complete</code> を呼び出すと <code>IllegalStateException</code> が投げられる。</p>
+
+<p>これまでに説明した Promise の演算とモナディックで副作用を持たない演算を用いて合成した Future を使って書いたプログラムの便利な特性としてそれらが決定的 (deterministic) であることが挙げられる。 ここで決定的とは、プログラムで例外が投げられなければ、並列プログラムの実行スケジュールのいかんに関わらずプログラムの結果 (Future から観測される値) は常に同じものとなるという意味だ。</p>
+
+<p>場合によってはクライアントは Promise が既に完了していないときにのみ完了させたいこともある (例えば、複数の HTTP がそれぞれ別の Future から実行されていて、クライアントは最初の戻ってきた HTTP レスポンスにのみ興味がある場合で、これは最初に Promise を完了させる Future に対応する)。 これらの理由のため、Promise には <code>tryComplete</code>、<code>trySuccess</code>、および <code>tryFailure</code> というメソッドがある。 クライアントはこれらのメソッドを使った場合はプログラムの結果は決定的でなくなり実行スケジュールに依存することに注意するべきだ。</p>
+
+<p><code>completeWith</code> メソッドは別の Future を用いて Promise を完了させる。 渡された Future が完了すると、その Promise も Future の値とともに完了する。 以下のプログラムは <code>1</code> と表示する:</p>
+
+<pre><code>val f = future { 1 }
+val p = promise[Int]
+
+p completeWith f
+
+p.future onSuccess {
+  case x =&gt; println(x)
+}</code></pre>
+
+<p>Promise を例外とともに失敗させる場合は、<code>Throwable</code> の 3つのサブタイプが特殊扱いされる。 Promise を失敗させた <code>Throwable</code> が <code>scala.runtime.NonLocalReturnControl</code> の場合は、Promise は関連する値によって完了させる。 Promise を失敗させた <code>Throwable</code> が <code>Error</code>、<code>InterruptedException</code>、もしくは <code>scala.util.control.ControlThrowable</code> の場合は、<code>Throwable</code> は新たな <code>ExecutionException</code> の理由としてラッピングされ Promise が失敗させられる。</p>
+
+<p>Promise、Future の <code>onComplete</code> メソッド、そして <code>future</code> 構文を使うことで前述の関数型合成に用いられるコンビネータの全てを実装することができる。 例えば、2つの Future <code>f</code> と <code>g</code> を受け取って、(最初に成功した) <code>f</code> か <code>g</code> のどちらかを返す <code>first</code> という新しいコンビネータを実装したいとする。 以下のように書くことができる:</p>
+
+<pre><code>def first[T](f: Future[T], g: Future[T]): Future[T] = {
+  val p = promise[T]
+
+  f onSuccess {
+    case x =&gt; p.tryComplete(x)
+  }
+
+  g onSuccess {
+    case x =&gt; p.tryComplete(x)
+  }
+
+  p.future
+}</code></pre>
+<!--
+## Migration p
+
+scala.actor.Futures?
+for clients
+
+
+## Implementing custom futures and promises p
+for library writers
+-->
+<h2 id='id35'>ユーティリティ</h2>
+
+<p>並列アプリケーション内における時間の扱いを単純化するために　<code>scala.concurrent</code> は <code>Duration</code> という抽象体を導入する。 <code>Duration</code> は既に他にもある一般的な時間の抽象化を目的としていない。 並列ライブラリとともに使うことを目的とするため、<code>scala.concurrent</code> パッケージ内に置かれている。</p>
+
+<p><code>Duration</code> は時の長さを表す基底クラスで、それは有限でも無限でもありうる。 有限の時間は <code>FiniteDuration</code> クラスによって表され <code>Long</code> の長さと <code>java.util.concurrent.TimeUnit</code> によって構成される。 無限時間も <code>Duration</code> を継承し、これは <code>Duration.Inf</code> と <code>Duration.MinusInf</code> という 2つのインスタンスのみが存在する。 このライブラリは暗黙の変換のためのいくつかの <code>Duration</code> のサブクラスを提供するが、これらは使用されるべきではない。</p>
+
+<p>抽象クラスの <code>Duration</code> は以下のメソッドを定義する:</p>
+
+<ol>
+<li>時間の単位の変換 (<code>toNanos</code>、<code>toMicros</code>、<code>toMillis</code>、 <code>toSeconds</code>、<code>toMinutes</code>、<code>toHours</code>、<code>toDays</code>、及び <code>toUnit(unit: TimeUnit)</code>)。 2. 時間の比較 (<code>&lt;</code>、<code>&lt;=</code>、<code>&gt;</code>、および <code>&gt;=</code>)。</li>
+
+<li>算術演算 (<code>+</code>、<code>-</code>、<code>*</code>、<code>/</code>、および <code>unary_-</code>)。</li>
+
+<li>この時間 <code>this</code> と引数として渡された時間の間の最小値と最大値 (<code>min</code>、<code>max</code>)。</li>
+
+<li>時間が有限かの検査 (<code>isFinite</code>)。</li>
+</ol>
+
+<p><code>Duration</code> は以下の方法で作成することができる:</p>
+
+<ol>
+<li><code>Int</code> もしくは <code>Long</code> 型からの暗黙の変換する。例: <code>val d = 100 millis</code>。</li>
+
+<li><code>Long</code> の長さと <code>java.util.concurrent.TimeUnit</code> を渡す。例: <code>val d = Duration(100, MILLISECONDS)</code>。</li>
+
+<li>時間の長さを表す文字列をパースする。例: <code>val d = Duration(&quot;1.2 µs&quot;)</code>。</li>
+</ol>
+
+<p><code>Duration</code> は <code>unapply</code> メソッドも提供するため、パータンマッチング構文の中から使うこともできる。以下に具体例をみる:</p>
+
+<pre><code>import scala.concurrent.duration._
+import java.util.concurrent.TimeUnit._
+
+// 作成
+val d1 = Duration(100, MILLISECONDS) // from Long and TimeUnit
+val d2 = Duration(100, &quot;millis&quot;) // from Long and String
+val d3 = 100 millis // implicitly from Long, Int or Double
+val d4 = Duration(&quot;1.2 µs&quot;) // from String
+
+// パターンマッチング
+val Duration(length, unit) = 5 millis</code></pre>
+      
+    </div>
+    
+    <div class="span6">
+      <div id="scroller-anchor">
+  <div id="scroller">
+    <p class="contents">Contents</p>
+    <div id="toc"></div>    
+              
+  </div>
+</div>
+
+    </div>
+    
+	
+  </div>
+</div>
+
+<div class="footer">
+	<div class="container">
+		<ul>
+			<li><h5>API</h5></li>
+			<li><a href="http://www.scala-lang.org/api/current/">Current</a></li>
+			<li><a href="http://www.scala-lang.org/archives/downloads/distrib/files/nightly/docs/library/index.html">Nightly</a></li>
+		</ul>
+		<ul>
+			<li><h5>Learn</h5></li>
+			<li><a href="/overviews">Guides & Overviews</a></li>
+			<li><a href="/tutorials">Tutorials</a></li>
+			<li><a href="/style">Scala Style Guide</a></li>				
+		</ul>
+		<ul>
+			<li><h5>Quickref</h5></li>
+			<li><a href="/glossary">Glossary</a></li>
+			<li><a href="/cheatsheets">Cheatsheets</a></li>
+		</ul>
+		<ul>
+			<li><h5>Contribute</h5></li>
+			<li><a href="http://github.com/scala/scala.github.com">Source Code</a></li>
+			<li><a href="/contribute.html">Contributors Guide</a></li>
+			<li><a href="http://getsatisfaction.com/scaladocs">Suggestions</a></li>			
+		</ul>
+		<ul>
+			<li><h5>Other Resources</h5></li>
+			<li><a href="http://wiki.scala-lang.org">Wiki</a></li>
+			<li><a href="/sips">Scala Improvement Process</a></li>				
+		</ul>						
+	</div>
+	<div class="container copyright">
+ 		<p>
+			Copyright &copy; 2011-2013 EPFL. All rights reserved.
+			<a href="https://github.com/scala/scala.github.com/commits/gh-pages.atom"><img align="right" height="20px" width="20px" src="/resources/images/rss.png" alt="RSS feed of updates to the github repo hosting this site"></a>
+		</p>		
+	</div>
+</div>
+
+
+<script type="text/javascript">
+  $('#toc').toc({exclude: 'h1, h5, h6', context: '', autoId: true, numerate: false});
+</script>
+
+<script type="text/javascript">
+  $(function() {
+    moveScroller();
+  });
+</script>
+
+  </body>
+</html>
+
+    

@@ -1,0 +1,757 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>SIP-14 - Futures and Promises - Scala Documentation</title>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="icon" type="image/png" href="/resources/favicon.ico">
+
+    <!-- prettify js and CSS -->
+    <link rel="stylesheet" href="/resources/stylesheets/prettify.css" type="text/css" />
+    <script src="/resources/javascript/prettify/prettify.js" type="text/javascript" ></script>
+
+
+    <!-- jquery js -->
+    <script src="/resources/javascript/jquery.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/effects.core.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/effects.highlight.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/moveScroller.js" type="text/javascript" ></script>
+
+    <!-- Bootstrap JS and CSS -->
+    <link rel="stylesheet" href="/resources/stylesheets/bootstrap.css" type="text/css" />
+	  <script src="/resources/javascript/bootstrap-dropdown.js" type="text/javascript" ></script>
+	  <script src="/resources/javascript/bootstrap-dropdown-app.js" type="text/javascript" ></script>
+
+    <!-- Base stylesheet for all pages -->
+    <link rel="stylesheet" href="/resources/stylesheets/base.css" type="text/css" />
+
+    <!-- table of contents js -->
+    <script src="/resources/javascript/toc.js" type="text/javascript" ></script>
+
+    <!-- google analytics -->
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-574683-5']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+
+    <!-- prettyprint js to prepend generated pre/code tags -->
+    <script type="text/javascript">
+      function styleCode()
+        {
+          if (typeof disableStyleCode != "undefined")
+          {
+              return;
+          }
+          var a = false;
+          $("pre code").parent().each(function()
+          {
+              if (!$(this).hasClass("prettyprint"))
+              {
+                  $(this).addClass("prettyprint lang-scala linenums");
+                  a = true
+              }
+          });
+          if (a) { prettyPrint() }
+      }
+    </script>
+
+    <script type="text/javascript">
+      jQuery(document).ready(function($) {
+
+            $(".scroll").click(function(event){
+              event.preventDefault();
+              $('html,body').animate({scrollTop:$(this.hash).offset().top}, 500);
+              $('html,body').animate({scrollTop:$(this.hash).offset().top-=50}, 500);
+              $(this.hash).effect("highlight", {color: "#FFCC85"}, 3000);
+            });
+      });
+    </script>
+
+    <script type="text/javascript">
+      $(window).ready(function goToSubsection() {
+          if (window.location.hash)
+          {
+              $('html,body').animate({scrollTop:$(window.location.hash).offset().top}, 500);
+              $('html,body').animate({scrollTop:$(window.location.hash).offset().top-=50}, 500);
+              $(window.location.hash).effect("highlight", {color: "#FFCC85"}, 3000);
+          }
+        });
+    </script>
+
+    <style type="text/css">
+
+       p.contents {
+           margin-left: 15px;
+           font-weight: bold;
+           font-size: 16px;
+       }
+
+       div#toc ul {
+           list-style: none;
+       }
+
+       div#toc ul a {
+           display: block;
+           list-style: none;
+           line-height: 22px;
+           font-weight: bold;
+           width: 100%;
+       }
+
+      div#toc ul li ul {
+           list-style: disc;
+      }
+
+      div#toc ul li ul a {
+           line-height: 18px;
+           font-weight: normal;
+      }
+
+      div#toc ul li ul li ul {
+           list-style: square;
+      }
+       div#toc ul li ul li ul a {
+       }
+
+       div#scroller-anchor {
+           width: inherit;
+       }
+
+       div#scroller {
+           width: inherit;
+       }
+
+       div#guide-title {
+        text-transform: capitalize;
+        font-size: 16px;
+        padding-bottom: 6px;
+        color: #BFBFBF;
+        text-transform: uppercase;
+        font-weight: bold;
+       }
+
+       input, textarea, select, .uneditable-input {
+	       width: 165px;
+	     }
+
+    </style>
+
+</head>
+  <body onload="styleCode()">
+    
+    <!-- Topbar
+    ================================================== -->
+    <div class="topbar" >
+      <div class="topbar-inner">
+        <div class="container">
+          <a class="brand" href="/sips/index.html"><img src="/resources/images/scala-logo.png"> Improvement Process</a>
+          <ul class="nav">
+           <li><a href="/sips/sip-submission.html">Submitting a new SIP</a></li>
+           <li><a href="/sips/sip-list.html">SIP List</a></li>
+           <li><a href="/sips/sip-tutorial.html">Tutorial: Writing a SIP</a></li>
+           <li><a href="https://groups.google.com/forum/#!forum/scala-sips">Mailing List</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+<div class="container">
+  <div class="row">    
+
+    <div class="span12">
+      <h1>SIP-14 - Futures and Promises</h1>    
+      <p><strong>By: Philipp Haller, Aleksandar Prokopec, Heather Miller, Viktor Klang, Roland Kuhn, and Vojin Jovanovic</strong></p>
+
+<p>This SIP is part of two SIPs, which together constitute a redesign of <code>scala.concurrent</code> into a unified substrate for a variety of parallel frameworks. This proposal focuses on futures and promises.</p>
+
+<h2 id='introduction'>Introduction</h2>
+
+<p>Futures provide a nice way to reason about performing many operations in parallel&#8211; in an efficient and non-blocking way. The idea is simple, a <code>Future</code> is a sort of placeholder object that you can create for a result that doesn&#8217;t yet exist. Generally, the result of the <code>Future</code> is computed concurrently and can be later collected. Composing concurrent tasks in this way tends to result in faster, asynchronous, non-blocking parallel code.</p>
+
+<p>This is particularly evident due to the fact that within the Scala ecosystem alone, several frameworks aiming to provide a full-featured implementation of futures and promises have arisen, including the futures available in the Scala Actors package [<a href='http://www.scala-lang.org/api/current/scala/actors/Futures$.html' title='SActorsFutures'>4</a>], Akka [<a href='http://akka.io/docs/akka/2.0-M2/scala/futures.html' title='AkkaFutures'>3</a>], Finagle [<a href='http://twitter.github.com/scala_school/finagle.html' title='Finagle'>2</a>], and Scalaz [<a href='http://code.google.com/p/scalaz/' title='Scalaz'>5</a>].</p>
+
+<p>The redesign of <code>scala.concurrent</code> provides a new Futures and Promises API, meant to act as a common foundation for multiple parallel frameworks and libraries to utilize both within Scala&#8217;s standard library, and externally.</p>
+
+<p>By default, futures and promises are non-blocking, making use of callbacks instead of typical blocking operations. In an effort to facilitate, and make use of callbacks on a higher-level, we provide combinators such as <code>flatMap</code>, <code>foreach</code>, and <code>filter</code> for composing futures in a non-blocking way. For cases where blocking is absolutely necessary, futures can be blocked on (although it is discouraged).</p>
+
+<p>The futures and promises API builds upon the notion of an <code>ExecutionContext</code>, an execution environment designed to manage resources such as thread pools between parallel frameworks and libraries (detailed in an accompanying SIP, forthcoming). Futures and promises are created through such <code>ExecutionContext</code>s. For example, this makes it possible, in the case of an application which requires blocking futures, for an underlying execution environment to resize itself if necessary to guarantee progress.</p>
+
+<h2 id='futures'>Futures</h2>
+
+<p>A future is an abstraction which represents a value which may become available at some point. A <code>Future</code> object either holds a result of a computation or an exception in the case that the computation failed. An important property of a future is that it is in effect immutable&#8211; it can never be written to or failed by the holder of the <code>Future</code> object.</p>
+
+<p>The simplest way to create a future object is to invoke the <code>future</code> method which starts an asynchronous computation and returns a future holding the result of that computation. The result becomes available once the future completes.</p>
+
+<p>Here is an example. Let&#8217;s assume that we want to use the API of some popular social network to obtain a list of friends for a given user. After opening a new session we want to create an asynchronous request to the server for this list:</p>
+
+<pre><code>import scala.concurrent.future
+
+val session = socialNetwork.createSessionFor(&quot;user&quot;, credentials)
+val f: Future[List[Friend]] = future {
+  session.getFriends
+}</code></pre>
+
+<p>The list of friends becomes available in the future <code>f</code> once the server responds.</p>
+
+<p>An unsuccessful attempt may result in an exception. In the following example, the <code>session</code> value is incorrectly initialized, so the future will hold a <code>NullPointerException</code> instead of the value:</p>
+
+<pre><code>val session = null
+val f: Future[List[Friend]] = future {
+  session.getFriends
+}</code></pre>
+
+<h3 id='callbacks'>Callbacks</h3>
+
+<p>We are generally interested in the result value of the computation. To obtain the future&#8217;s result, a client of the future would have to block until the future is completed. Although this is allowed by the <code>Future</code> API as we will show later in this document, a better way to do it is in a completely non-blocking way, by registering a callback on the future. This callback is called asynchronously once the future is completed. If the future has already been completed when registering the callback, then the callback may either be executed asynchronously, or sequentially on the same thread.</p>
+
+<p>The most general form of registering a callback is by using the <code>onComplete</code> method, which takes a callback function of type <code>Either[Throwable, T] =&gt; U</code>. The callback is applied to the value of type <code>Right[T]</code> if the future completes successfully, or to a value of type <code>Left[Throwable]</code> otherwise. The <code>onComplete</code> method is parametric in the return type of the callback, but it discards the result of the callback.</p>
+
+<p>Coming back to our social network example, let&#8217;s assume we want to fetch a list of our own recent posts and render them to the screen. We do so by calling the method <code>getRecentPosts</code> which returns a <code>List[String]</code>:</p>
+
+<pre><code>val f: Future[List[String]] = future {
+  session.getRecentPosts
+}
+
+f onComplete {
+  case Right(posts) =&gt; for (post &lt;- posts) render(post)
+  case Left(t)  =&gt; render(&quot;An error has occured: &quot; + t.getMessage)
+}</code></pre>
+
+<p>The <code>onComplete</code> method is general in the sense that it allows the client to handle the result of both failed and successful future computations. To handle only successful results, the <code>onSuccess</code> callback is used (which takes a partial function):</p>
+
+<pre><code>val f: Future[List[String]] = future {
+  session.getRecentPosts
+}
+
+f onSuccess {
+  case posts =&gt; for (post &lt;- posts) render(post)
+}</code></pre>
+
+<p>To handle failed results, the <code>onFailure</code> callback is used:</p>
+
+<pre><code>val f: Future[List[String]] = future {
+  session.getRecentPosts
+}
+
+f onFailure {
+  case t =&gt; render(&quot;An error has occured: &quot; + t.getMessage)
+}
+f onSuccess {
+  case posts =&gt; for (post &lt;- posts) render(post)
+}</code></pre>
+
+<p>The <code>onFailure</code> callback is only executed if the future fails, that is, if it contains an exception. The <code>onComplete</code>, <code>onSuccess</code>, and <code>onFailure</code> methods have result type <code>Unit</code>, which means invocations of these methods cannot be chained. This is an intentional design decision which was made to avoid suggesting that chained invocations may imply an ordering on the execution of the registered callbacks (callbacks registered on the same future are unordered).</p>
+
+<p>Since partial functions have the <code>isDefinedAt</code> method, the <code>onFailure</code> method only triggers the callback if it is defined for a particular <code>Throwable</code>. In the following example the registered callback is never triggered:</p>
+
+<pre><code>val f = future {
+  2 / 0
+}
+
+f onFailure {
+  case npe: NullPointerException =&gt;
+    println(&quot;I&#39;d be amazed if this printed out.&quot;)
+}</code></pre>
+
+<p>Having a regular function callback as an argument to <code>onFailure</code> would require including the default case in every failure callback, which is cumbersome&#8211; omitting the default case would lead to <code>MatchError</code>s later.</p>
+
+<p>Second, <code>try-catch</code> blocks also expect a <code>PartialFunction</code> value. That means that if there are generic partial function exception handlers present in the application then they will be compatible with the <code>onFailure</code> method.</p>
+
+<p>In conclusion, the semantics of callbacks are as follows:</p>
+
+<ol>
+<li>
+<p>Registering an <code>onComplete</code> callback on the future ensures that the corresponding closure is invoked after the future is completed, eventually.</p>
+</li>
+
+<li>
+<p>Registering an <code>onSuccess</code> or <code>onFailure</code> callback has the same semantics as <code>onComplete</code>, with the difference that the closure is only called if the future is completed successfully or fails, respectively.</p>
+</li>
+
+<li>
+<p>Registering a callback on the future which is already completed will result in the callback being executed eventually (as implied by 1). Furthermore, the callback may even be executed synchronously on the same thread that registered the callback if this does not cancel progress of that thread.</p>
+</li>
+
+<li>
+<p>In the event that multiple callbacks are registered on the future, the order in which they are executed is not defined. In fact, the callbacks may be executed concurrently with one another. However, a particular <code>Future</code> implementation may have a well-defined order.</p>
+</li>
+
+<li>
+<p>In the event that some of the callbacks throw an exception, the other callbacks are executed regardlessly.</p>
+</li>
+
+<li>
+<p>In the event that some of the callbacks never complete (e.g. the callback contains an infinite loop), the other callbacks may not be executed at all. In these cases, a potentially blocking callback must use the <code>blocking</code> construct (see below).</p>
+</li>
+
+<li>
+<p>Once executed, the callbacks are removed from the future object, thus being eligible for GC.</p>
+</li>
+</ol>
+<!--
+The `onTimeout` method registers callbacks triggered when the future fails with a `FutureTimeoutException`. This case can also be handled by the `onFailure` method if the partial function is defined for that exception type.
+--><!--
+Note that all three latter on-callback methods can be expressed in terms of the `onComplete` method. As such they are by default implemented in the `scala.concurrent.Future` trait. Future implementations extending this trait must implement the `onComplete` method, but may choose to also override the other on-callback methods for performance reasons.
+-->
+<h3 id='functional_composition_and_forcomprehensions'>Functional Composition and For-Comprehensions</h3>
+
+<p>The examples we have shown so far lend themselves naturally to the functional composition of futures. Assume we have an API for interfacing with a currency trading service. Suppose we want to buy US dollars, but only when it&#8217;s profitable. We first show how this could be done using callbacks:</p>
+
+<pre><code>val rateQuote = future {
+  connection.getCurrentValue(USD)
+}
+
+rateQuote onSuccess { case quote =&gt;
+  val purchase = future {
+    if (isProfitable(quote)) connection.buy(amount, quote)
+    else throw new Exception(&quot;not profitable&quot;)
+  }
+  
+  purchase onSuccess {
+    case _ =&gt; println(&quot;Purchased &quot; + amount + &quot; USD&quot;)
+  }
+}</code></pre>
+
+<p>We start by creating a future which fetches the current exchange rate. After it&#8217;s successfully obtained from the server, we create another future which makes a decision to buy only if it&#8217;s profitable to do so, and then sends a requests.</p>
+
+<p>This works, but is inconvenient for two reasons. First, we have to use <code>onSuccess</code>, and we have to nest the second <code>purchase</code> future within it. Second, the <code>purchase</code> future is not in the scope of the rest of the code.</p>
+
+<p>For these two reasons, futures provide combinators which allow a more straightforward composition. One of the basic combinators is <code>map</code>, which, given a future and a mapping function for the value of the future, produces a new future that is completed with the mapped value once the original future is successfully completed. Let&#8217;s rewrite the previous example using the <code>map</code> combinator:</p>
+
+<pre><code>val rateQuote = future {
+  connection.getCurrentValue(USD)
+}
+
+val purchase = rateQuote map {
+  quote =&gt; if (isProfitable(quote)) connection.buy(amount, quote)
+           else throw new Exception(&quot;not profitable&quot;)
+}
+
+purchase onSuccess {
+  case _ =&gt; println(&quot;Purchased &quot; + amount + &quot; USD&quot;)
+}</code></pre>
+
+<p>The semantics of <code>map</code> is as follows. If the original future is completed successfully then the returned future is completed with a mapped value from the original future. If the mapping function throws an exception the future is completed with that exception. If the original future fails with an exception then the returned future also contains the same exception. This exception propagating semantics is present in the rest of the combinators, as well.</p>
+
+<p>To enable for-comprehensions, futures also have the <code>flatMap</code>, <code>filter</code> and <code>foreach</code> combinators. The <code>flatMap</code> method takes a function that maps the value to a new future <code>g</code>, and then returns a future which is completed once <code>g</code> is completed.</p>
+
+<p>Lets assume that we want to exchange US dollars for Swiss francs (CHF). We have to fetch quotes for both currencies, and then decide on buying based on both quotes. Here is an example of <code>flatMap</code> usage within for-comprehensions:</p>
+
+<pre><code>val usdQuote = future { connection.getCurrentValue(USD) }
+val chfQuote = future { connection.getCurrentValue(CHF) }
+
+val purchase = for {
+  usd &lt;- usdQuote
+  chf &lt;- chfQuote
+  if isProfitable(usd, chf)
+} yield connection.buy(amount, chf)
+
+purchase onSuccess {
+  case _ =&gt; println(&quot;Purchased &quot; + amount + &quot; CHF&quot;)
+}</code></pre>
+
+<p>The <code>filter</code> combinator creates a new future which contains the value of the original future only if it satisfies some predicate. Otherwise, the new future is failed with a <code>NoSuchElementException</code>.</p>
+
+<p>It is important to note that calling the <code>foreach</code> combinator does not block. Instead, the function for the <code>foreach</code> gets asynchronously executed only if the future is completed successfully. This means that the <code>foreach</code> has exactly the same semantics as the <code>onSuccess</code> callback.</p>
+
+<p>Since the <code>Future</code> trait can conceptually contain two types of values (computation results and exceptions), there exists a need for combinators which handle exceptions.</p>
+
+<p>Let&#8217;s assume that based on the <code>rateQuote</code> we decide to buy a certain amount. The <code>connection.buy</code> method takes an <code>amount</code> to buy and the expected <code>quote</code>. It returns the amount bought. If the <code>quote</code> has changed in the meanwhile, it will throw a <code>QuoteChangedException</code> and it will not buy anything. If we want our future to contain <code>0</code> instead of the exception, we use the <code>recover</code> combinator:</p>
+
+<pre><code>val purchase: Future[Int] = rateQuote map {
+  quote =&gt; connection.buy(amount, quote)
+} recover {
+  case quoteExc: QuoteChangedException =&gt; 0
+}</code></pre>
+
+<p>The <code>recover</code> combinator creates a new future which holds the same result as the original future if it completed successfully. If it did not then the partial function argument is applied to the <code>Throwable</code> which failed the original future. If it maps the <code>Throwable</code> to some value, then the new future is successfully completed with that value.</p>
+
+<p>The <code>recoverWith</code> combinator creates a new future which holds the same result as the original future if it completed successfully. Otherwise, the partial function is applied to the <code>Throwable</code> which failed the original future. If it maps the <code>Throwable</code> to some future, then this future is completed with the result of that future. Its relation to <code>recover</code> is similar to that of <code>flatMap</code> to <code>map</code>.</p>
+
+<p>Combinator <code>fallbackTo</code> creates a new future which holds the result of this future if it was completed successfully, or otherwise the successful result of the argument future. In the event that both this future and the argument future fail, the new future is completed with the exception from this future, as in the following example which tries to print US dollar value, but prints the Swiss franc value in the case it fails to obtain the dollar value:</p>
+
+<pre><code>val usdQuote = future {
+  connection.getCurrentValue(USD)
+} map {
+  usd =&gt; &quot;Value: &quot; + usd + &quot;$&quot;
+}
+val chfQuote = future {
+  connection.getCurrentValue(CHF)
+} map {
+  chf =&gt; &quot;Value: &quot; + chf + &quot;CHF&quot;
+}
+
+val anyQuote = usdQuote fallbackTo chfQuote
+
+anyQuote onSuccess { println(_) }</code></pre>
+
+<p>The <code>either</code> combinator creates a new future which either holds the result of this future or the argument future, whichever completes first, irregardless of success or failure. Here is an example in which the quote which is returned first gets printed:</p>
+
+<pre><code>val usdQuote = future {
+  connection.getCurrentValue(USD)
+} map {
+  usd =&gt; &quot;Value: &quot; + usd + &quot;$&quot;
+}
+val chfQuote = future {
+  connection.getCurrentValue(CHF)
+} map {
+  chf =&gt; &quot;Value: &quot; + chf + &quot;CHF&quot;
+}
+
+val anyQuote = usdQuote either chfQuote
+
+anyQuote onSuccess { println(_) }</code></pre>
+
+<p>The <code>andThen</code> combinator is used purely for side-effecting purposes. It returns a new future with exactly the same result as the current future, irregardless of whether the current future failed or not. Once the current future is completed with the result, the closure corresponding to the <code>andThen</code> is invoked and then the new future is completed with the same result as this future. This ensures that multiple <code>andThen</code> calls are ordered, as in the following example which stores the recent posts from a social network to a mutable set and then renders all the posts to the screen:</p>
+
+<pre><code>val allposts = mutable.Set[String]()
+
+future {
+  session.getRecentPosts
+} andThen {
+  posts =&gt; allposts ++= posts
+} andThen {
+  posts =&gt;
+  clearAll()
+  for (post &lt;- allposts) render(post)
+}</code></pre>
+
+<p>In summary, the combinators on futures are purely functional. Every combinator returns a new future which is related to the future it was derived from.</p>
+
+<h3 id='projections'>Projections</h3>
+
+<p>To enable for-comprehensions on a result returned as an exception, futures also have projections. If the original future fails, the <code>failed</code> projection returns a future containing a value of type <code>Throwable</code>. If the original future succeeds, the <code>failed</code> projection fails with a <code>NoSuchElementException</code>. The following is an example which prints the exception to the screen:</p>
+
+<pre><code>val f = future {
+  2 / 0
+}
+for (exc &lt;- f.failed) println(exc)</code></pre>
+
+<p>The following example does not print anything to the screen:</p>
+
+<pre><code>val f = future {
+  4 / 2
+}
+for (exc &lt;- f.failed) println(exc)</code></pre>
+<!--
+There is another projection called `timedout` which is specific to the
+`FutureTimeoutException`. It works in exactly the same way as the
+`failed` projection, but is triggered only for this exception type. In
+all other cases, it fails with a `NoSuchElementException`.
+--><!--
+TODO: the `failed` projection can be extended to be parametric in
+the throwable types it matches.
+--><!--
+Invoking the `future` construct uses a global execution context to start an asynchronous computation. In the case the client desires to use a custom execution context to start an asynchronous computation:
+
+    val f = customExecutionContext future {
+      4 / 2
+    }
+-->
+<h3 id='extending_futures'>Extending Futures</h3>
+
+<p>Support for extending the Futures API with additional utility methods is planned. This will allow external frameworks to provide more specialized utilities.</p>
+
+<h2 id='blocking'>Blocking</h2>
+
+<p>As mentioned earlier, blocking on a future is strongly discouraged &#8211; for the sake of performance and for the prevention of deadlocks &#8211; in favour of using callbacks and combinators on futures. However, blocking may be necessary in certain situations and is supported by the Futures API.</p>
+
+<p>In the currency trading example above, one place to block is at the end of the application to make sure that all of the futures have been completed. Here is an example of how to block on the result of a future:</p>
+
+<pre><code>import scala.concurrent._
+
+def main(args: Array[String]) {
+  val rateQuote = future {
+    connection.getCurrentValue(USD)
+  }
+  
+  val purchase = rateQuote map {
+    quote =&gt; if (isProfitable(quote)) connection.buy(amount, quote)
+             else throw new Exception(&quot;not profitable&quot;)
+  }
+  
+  blocking(purchase, 0 ns)
+}</code></pre>
+
+<p>In the case that the future fails, the caller is forwarded the exception that the future is failed with. This includes the <code>failed</code> projection&#8211; blocking on it results in a <code>NoSuchElementException</code> being thrown if the original future is completed successfully.</p>
+
+<p>The <code>Future</code> trait implements the <code>Awaitable</code> trait with a single method <code>await()</code>. The <code>await()</code> method contains code which can potentially result in a long running computation, block on some external condition or which may not complete the computation at all. The <code>await()</code> method cannot be called directly by the clients, it can only be called by the execution context implementation itself. To block on the future to obtain its result, the <code>blocking</code> method must be used.</p>
+
+<pre><code>val f = future { 1 }
+val one: Int = blocking(f, 0 ns)</code></pre>
+
+<p>To allow clients to call 3rd party code which is potentially blocking and avoid implementing the <code>Awaitable</code> trait, the same <code>blocking</code> primitive can also be used in the following form:</p>
+
+<pre><code>blocking {
+  potentiallyBlockingCall()
+}</code></pre>
+
+<p>The blocking code may also throw an exception. In this case, the exception is forwarded to the caller.</p>
+
+<h2 id='exceptions'>Exceptions</h2>
+
+<p>When asynchronous computations throw unhandled exceptions, futures associated with those computations fail. Failed futures store an instance of <code>Throwable</code> instead of the result value. <code>Future</code>s provide the <code>onFailure</code> callback method, which accepts a <code>PartialFunction</code> to be applied to a <code>Throwable</code>. The following special exceptions are treated differently:</p>
+
+<ol>
+<li><code>TimeoutException</code> - stored when the computation is not completed before some timeout (typically managed by an external scheduler).</li>
+</ol>
+<!--
+This exception has a reference to the original future
+which was timed out (if any).
+-->
+<ol>
+<li>
+<p><code>scala.runtime.NonLocalReturnControl[_]</code> - this exception holds a value associated with the return. Typically, <code>return</code> constructs in method bodies are translated to <code>throw</code>s with this exception. Instead of keeping this exception, the associated value is stored into the future or a promise.</p>
+</li>
+
+<li>
+<p><code>ExecutionException</code> - stored when the computation fails due to an unhandled <code>InterruptedException</code>, <code>Error</code> or a <code>scala.util.control.ControlThrowable</code>. In this case the <code>ExecutionException</code> has the unhandled exception as its cause. These exceptions are rethrown in the thread executing the failed asynchronous computation. The rationale behind this is to prevent propagation of critical and control-flow related exceptions normally not handled by the client code and at the same time inform the client in which future the computation failed.</p>
+</li>
+</ol>
+
+<h2 id='promises'>Promises</h2>
+
+<p>While futures are defined as a type of read-only placeholder object created for a result which doesn&#8217;t yet exist, a promise can be thought of as a writeable, single-assignment container, which completes a future. That is, a promise can be used to successfully complete a future with a value (by &#8220;completing&#8221; the promise) using the <code>success</code> method. Conversely, a promise can also be used to complete a future with an exception, by failing the promise, using the <code>failure</code> method.</p>
+
+<p>A promise <code>p</code> completes the future returned by <code>p.future</code>. This future is specific to the promise <code>p</code>. Depending on the implementation, it may be the case that <code>p.future == p</code>.</p>
+
+<p>Consider the following producer-consumer example:</p>
+
+<pre><code>import scala.concurrent.{ future, promise }
+
+val p = promise[T]
+val f = p.future
+
+val producer = future {
+  val r = produceSomething()
+  p success r
+  continueDoingSomethingUnrelated()
+}
+
+val consumer = future {
+  startDoingSomething()
+  f onSuccess {
+    case r =&gt; doSomethingWithResult()
+  }
+}</code></pre>
+
+<p>Here, we create a promise and use its <code>future</code> method to obtain the <code>Future</code> that it completes. Then, we begin two asynchronous computations. The first does some computation, resulting in a value <code>r</code>, which is then used to complete the future <code>f</code>, by fulfilling <code>p</code>. The second does some computation, and then reads the result <code>r</code> of the completed future <code>f</code>. Note that the <code>consumer</code> can obtain the result before the <code>producer</code> task is finished executing the <code>continueDoingSomethingUnrelated()</code> method.</p>
+
+<p>As mentioned before, promises have single-assignment semantics. As such, they can be completed only once. Calling <code>success</code> on a promise that has already been completed (or failed) will throw an <code>IllegalStateException</code>.</p>
+
+<p>The following example shows how to fail a promise.</p>
+
+<pre><code>val p = promise[T]
+val f = p.future
+
+val producer = future {
+  val r = someComputation
+  if (isInvalid(r))
+    p failure (new IllegalStateException)
+  else {
+    val q = doSomeMoreComputation(r)
+    p success q
+  }
+}</code></pre>
+
+<p>Here, the <code>producer</code> computes an intermediate result <code>r</code>, and checks whether it&#8217;s valid. In the case that it&#8217;s invalid, it fails the promise by completing the promise <code>p</code> with an exception. In this case, the associated future <code>f</code> is failed. Otherwise, the <code>producer</code> continues its computation, and finally completes the future <code>f</code> with a valid result, by completing promise <code>p</code>.</p>
+
+<p>Promises can also be completed with a <code>complete</code> method which takes either a failed result of type <code>Left[Throwable]</code> or a successful result of type <code>Right[T]</code>.</p>
+
+<p>Analogous to <code>success</code>, calling <code>failure</code> and <code>complete</code> on a promise that has already been completed will throw an <code>IllegalStateException</code>.</p>
+
+<p>One nice property of programs written using promises with operations described so far and futures which are composed through monadic operations without side-effects is that these programs are deterministic. Deterministic here means that, given that no exception is thrown in the program, the result of the program (values observed in the futures) will always be the same, irregardless of the execution schedule of the parallel program.</p>
+
+<p>In some cases the client may want to complete the promise only if it has not been completed yet (e.g., there are several HTTP requests being executed from several different futures and the client is interested only in the first HTTP response - corresponding to the first future to complete the promise). For these reasons methods <code>tryComplete</code>, <code>trySuccess</code> and <code>tryFailure</code> exist on future. The client should be aware that using these methods results in programs which are not deterministic, but depend on the execution schedule.</p>
+
+<p>The method <code>completeWith</code> completes the promise with another future. After the future is completed, the promise gets completed with the result of that future as well. The following program prints <code>1</code>:</p>
+
+<pre><code>val f = future { 1 }
+val p = promise[Int]
+
+p completeWith f
+
+p.future onSuccess {
+  case x =&gt; println(x)
+}</code></pre>
+
+<p>When failing a promise with an exception, three subtypes of <code>Throwable</code>s are handled specially. If the <code>Throwable</code> used to break the promise is a <code>scala.runtime.NonLocalReturnControl</code>, then the promise is completed with the corresponding value. If the <code>Throwable</code> used to break the promise is an instance of <code>Error</code>, <code>InterruptedException</code>, or <code>scala.util.control.ControlThrowable</code>, the <code>Throwable</code> is wrapped as the cause of a new <code>ExecutionException</code> which, in turn, is failing the promise.</p>
+<!--
+## Migration p
+
+scala.actor.Futures?
+for clients
+
+
+## Implementing custom futures and promises p
+for library writers
+-->
+<h2 id='utilities'>Utilities</h2>
+
+<p>To simplify handling of time in concurrent applications <code>scala.concurrent</code> will introduce a <code>Duration</code> abstraction. Duration is not supposed be yet another general time abstraction. It is meant to be used with concurrency libraries and will reside in <code>scala.concurrent.util</code> package.</p>
+
+<p><code>Duration</code> is the base class representing length of time. It can be either finite or infinite. Finite duration is represented with <code>FiniteDuration</code> class which is constructed from <code>Long</code> length and <code>java.util.concurrent.TimeUnit</code>. Infinite durations, also extended from <code>Duration</code>, exist in only two instances , <code>Duration.Inf</code> and <code>Duration.MinusInf</code>. Library also provides several <code>Duration</code> subclasses for implicit conversion purposes and those should not be used.</p>
+
+<p>Abstract <code>Duration</code> contains methods that allow :</p>
+
+<ol>
+<li>Conversion to different time units (<code>toNanos</code>, <code>toMicros</code>, <code>toMillis</code>, <code>toSeconds</code>, <code>toMinutes</code>, <code>toHours</code>, <code>toDays</code> and <code>toUnit(unit: TimeUnit)</code>).</li>
+
+<li>Comparison of durations (<code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code> and <code>&gt;=</code>).</li>
+
+<li>Arithmetic operations (<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code> and <code>unary_-</code>).</li>
+
+<li>Minimum and maximum between <code>this</code> duration and the one supplied in the argument (<code>min</code>, <code>max</code>).</li>
+
+<li>Check if the duration is finite (<code>finite_?</code>).</li>
+</ol>
+
+<p><code>Duration</code> can be instantiated in the following ways:</p>
+
+<ol>
+<li>Implicitly from types <code>Int</code> and <code>Long</code>. For example <code>val d = 100 millis</code>.</li>
+
+<li>By passing a <code>Long</code> length and a <code>java.util.concurrent.TimeUnit</code>. For example <code>val d = Duration(100, MILLISECONDS)</code>.</li>
+
+<li>By parsing a string that represent a time period. For example <code>val d = Duration(&quot;1.2 µs&quot;)</code>.</li>
+</ol>
+
+<p>Duration also provides <code>unapply</code> methods so it can be used in pattern matching constructs. Examples:</p>
+
+<pre><code>import scala.concurrent.util.Duration
+import scala.concurrent.util.duration._
+import java.util.concurrent.TimeUnit._
+
+// instantiation
+val d1 = Duration(100, MILLISECONDS) // from Long and TimeUnit
+val d2 = Duration(100, &quot;millis&quot;) // from Long and String
+val d3 = 100 millis // implicitly from Long, Int or Double
+val d4 = Duration(&quot;1.2 µs&quot;) // from String
+
+// pattern matching
+val Duration(length, unit) = 5 millis</code></pre>
+
+<h2 id='references'>References</h2>
+
+<ol>
+<li><a href='http://www.microsoft.com/download/en/details.aspx?id=19957' title='NETAsync'>The Task-Based Asychronous Pattern, Stephen Toub, Microsoft, April 2011</a></li>
+
+<li><a href='http://twitter.github.com/scala_school/finagle.html' title='Finagle'>Finagle Documentation</a></li>
+
+<li><a href='http://akka.io/docs/akka/2.0-M2/scala/futures.html' title='AkkaFutures'>Akka Documentation: Futures</a></li>
+
+<li><a href='http://www.scala-lang.org/api/current/scala/actors/Futures$.html' title='SActorsFutures'>Scala Actors Futures</a></li>
+
+<li><a href='http://code.google.com/p/scalaz/' title='Scalaz'>Scalaz Futures</a></li>
+</ol>
+
+<h2 id='appendix_a_api_traits'>Appendix A: API Traits</h2>
+
+<p>An implementation is available at <a href='https://github.com/phaller/scala/tree/execution-context/src/library/scala/concurrent'>http://github.com/phaller/scala</a>. (Reasonably stable implementation, though possibility of flux.)</p>
+      <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  
+    var disqus_shortname = 'scalasip'; // required: replace example with your forum shortname
+  
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </div>
+    
+    <div class="span4">
+      <div id="scroller-anchor">
+  <div id="scroller">
+    <p class="contents">Contents</p>
+    <div id="toc"></div>    
+              
+        
+          <p class="contents">SIP Committee Decision</p>
+          <div class="alert-message success" style="margin-left: 15px;">
+            <strong style="font-size: 15px;">Accepted</strong>
+            <p>This SIP is in Accepted status currently.</p>
+          </div>  
+                        
+              
+  </div>
+</div>
+
+    </div>
+  
+  </div>
+</div>
+
+<div class="footer">
+	<div class="container">
+		<ul>
+			<li><h5>API</h5></li>
+			<li><a href="http://www.scala-lang.org/api/current/">Current</a></li>
+			<li><a href="http://www.scala-lang.org/archives/downloads/distrib/files/nightly/docs/library/index.html">Nightly</a></li>
+		</ul>
+		<ul>
+			<li><h5>Learn</h5></li>
+			<li><a href="/overviews">Guides & Overviews</a></li>
+			<li><a href="/tutorials">Tutorials</a></li>
+			<li><a href="/style">Scala Style Guide</a></li>				
+		</ul>
+		<ul>
+			<li><h5>Quickref</h5></li>
+			<li><a href="/glossary">Glossary</a></li>
+			<li><a href="/cheatsheets">Cheatsheets</a></li>
+		</ul>
+		<ul>
+			<li><h5>Contribute</h5></li>
+			<li><a href="http://github.com/scala/scala.github.com">Source Code</a></li>
+			<li><a href="/contribute.html">Contributors Guide</a></li>
+			<li><a href="http://getsatisfaction.com/scaladocs">Suggestions</a></li>			
+		</ul>
+		<ul>
+			<li><h5>Other Resources</h5></li>
+			<li><a href="http://wiki.scala-lang.org">Wiki</a></li>
+			<li><a href="/sips">Scala Improvement Process</a></li>				
+		</ul>						
+	</div>
+	<div class="container copyright">
+ 		<p>
+			Copyright &copy; 2011-2013 EPFL. All rights reserved.
+			<a href="https://github.com/scala/scala.github.com/commits/gh-pages.atom"><img align="right" height="20px" width="20px" src="/resources/images/rss.png" alt="RSS feed of updates to the github repo hosting this site"></a>
+		</p>		
+	</div>
+</div>
+
+
+<script type="text/javascript">
+  $('#toc').toc({exclude: 'h1, h5, h6', context: '', autoId: true, numerate: false});
+</script>
+
+<script type="text/javascript">
+  $(function() {
+    moveScroller();
+  });
+</script>
+
+  </body>
+</html>
+
+    

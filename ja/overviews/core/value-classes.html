@@ -1,0 +1,1005 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>値クラスと汎用トレイト - Scala Documentation</title>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="icon" type="image/png" href="/resources/favicon.ico">
+
+    <!-- prettify js and CSS -->
+    <link rel="stylesheet" href="/resources/stylesheets/prettify.css" type="text/css" />
+    <script src="/resources/javascript/prettify/prettify.js" type="text/javascript" ></script>
+
+
+    <!-- jquery js -->
+    <script src="/resources/javascript/jquery.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/effects.core.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/effects.highlight.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/moveScroller.js" type="text/javascript" ></script>
+
+    <!-- Bootstrap JS and CSS -->
+    <link rel="stylesheet" href="/resources/stylesheets/bootstrap.css" type="text/css" />
+	  <script src="/resources/javascript/bootstrap-dropdown.js" type="text/javascript" ></script>
+	  <script src="/resources/javascript/bootstrap-dropdown-app.js" type="text/javascript" ></script>
+
+    <!-- Base stylesheet for all pages -->
+    <link rel="stylesheet" href="/resources/stylesheets/base.css" type="text/css" />
+
+    <!-- table of contents js -->
+    <script src="/resources/javascript/toc.js" type="text/javascript" ></script>
+
+    <!-- google analytics -->
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-574683-5']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+
+    <!-- prettyprint js to prepend generated pre/code tags -->
+    <script type="text/javascript">
+      function styleCode()
+        {
+          if (typeof disableStyleCode != "undefined")
+          {
+              return;
+          }
+          var a = false;
+          $("pre code").parent().each(function()
+          {
+              if (!$(this).hasClass("prettyprint"))
+              {
+                  $(this).addClass("prettyprint lang-scala linenums");
+                  a = true
+              }
+          });
+          if (a) { prettyPrint() }
+      }
+    </script>
+
+    <script type="text/javascript">
+      jQuery(document).ready(function($) {
+
+            $(".scroll").click(function(event){
+              event.preventDefault();
+              $('html,body').animate({scrollTop:$(this.hash).offset().top}, 500);
+              $('html,body').animate({scrollTop:$(this.hash).offset().top-=50}, 500);
+              $(this.hash).effect("highlight", {color: "#FFCC85"}, 3000);
+            });
+      });
+    </script>
+
+    <script type="text/javascript">
+      $(window).ready(function goToSubsection() {
+          if (window.location.hash)
+          {
+              $('html,body').animate({scrollTop:$(window.location.hash).offset().top}, 500);
+              $('html,body').animate({scrollTop:$(window.location.hash).offset().top-=50}, 500);
+              $(window.location.hash).effect("highlight", {color: "#FFCC85"}, 3000);
+          }
+        });
+    </script>
+
+    <style type="text/css">
+
+       p.contents {
+           margin-left: 15px;
+           font-weight: bold;
+           font-size: 16px;
+       }
+
+       div#toc ul {
+           list-style: none;
+       }
+
+       div#toc ul a {
+           display: block;
+           list-style: none;
+           line-height: 22px;
+           font-weight: bold;
+           width: 100%;
+       }
+
+      div#toc ul li ul {
+           list-style: disc;
+      }
+
+      div#toc ul li ul a {
+           line-height: 18px;
+           font-weight: normal;
+      }
+
+      div#toc ul li ul li ul {
+           list-style: square;
+      }
+       div#toc ul li ul li ul a {
+       }
+
+       div#scroller-anchor {
+           width: inherit;
+       }
+
+       div#scroller {
+           width: inherit;
+       }
+
+       div#guide-title {
+        text-transform: capitalize;
+        font-size: 16px;
+        padding-bottom: 6px;
+        color: #BFBFBF;
+        text-transform: uppercase;
+        font-weight: bold;
+       }
+
+       input, textarea, select, .uneditable-input {
+	       width: 165px;
+	     }
+
+    </style>
+
+</head>
+  <body onload="styleCode()">
+
+    <!-- Topbar
+    ================================================== -->
+<div class="topbar">
+    <div class="topbar-inner">
+        <div class="container">
+            <a class="brand" href="/index.html"><img src="/resources/images/scala-logo.png"> Documentation</a>
+            <ul class="nav">
+
+                <li class="menu">
+                      <a href="#" class="menu">API</a>
+                      <ul class="menu-dropdown">
+                        <li><a href="http://www.scala-lang.org/api/current/">Current</a></li>
+                        <li><a href="http://www.scala-lang.org/archives/downloads/distrib/files/nightly/docs/library/index.html">Nightly</a></li>
+                        <!--<li class="divider"></li>
+                        <li><a href="#">Previous Versions</a></li>
+                        -->
+                      </ul>
+                </li>
+
+                <li class="menu">
+                      <a href="#" class="menu">Learn</a>
+                      <ul class="menu-dropdown">
+                        <li><a href="/overviews">Guides & Overviews</a></li>
+                        <li><a href="/tutorials">Tutorials</a></li>
+                        <li><a href="/style">Scala Style Guide</a></li>
+                      </ul>
+                </li>
+
+                <li class="menu">
+                      <a href="#" class="menu">Quickref</a>
+                      <ul class="menu-dropdown">
+                        <li><a href="/glossary">Glossary</a></li>
+                        <li><a href="/cheatsheets">Cheatsheets</a></li>
+                      </ul>
+                </li>
+
+                <li><a href="/contribute.html">Contribute</a></li>
+                <li><a href="/sips">SIPs</a></li>
+                <li><a href="http://wiki.scala-lang.org">Wiki</a></li>
+          </ul>
+          <form method="get" id="searchform" action="/search.html">
+            <input type="text" placeholder="Search"  class="field" name="q" id="q"/>
+          </form>
+           </li>
+          </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    
+    <div class="span10"><h1>値クラスと汎用トレイト</h1></div>
+
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+
+    
+      
+      
+    
+
+    <div class="span6">
+      
+        <a href="/overviews/core/value-classes.html"><img src="/resources/images/language/en.png" title="Language: en"/></a> 
+        
+          <a href="/ja/overviews/core/value-classes.html"><img src="/resources/images/language/ja.png" title="Language: ja"/></a> 
+        
+      
+    </div>
+
+    <div class="span10">
+      <p><strong>Mark Harrah 著</strong><br /> <strong>Eugene Yokota 訳</strong></p>
+
+<h2 id='id40'>はじめに</h2>
+
+<p><strong>値クラス</strong> (value class) は実行時のオブジェクトの割り当てを回避するための Scala の新しい機構だ。 これは新たに定義付けされる <code>AnyVal</code> のサブクラスによって実現される。 これは <a href='http://docs.scala-lang.org/sips/pending/value-classes.html'>SIP-15</a> にて提案された。 以下に最小限の値クラスの定義を示す:</p>
+
+<pre><code>class Wrapper(val underlying: Int) extends AnyVal</code></pre>
+
+<p>これはただ1つの、public な <code>val</code> パラメータを持ち、これが内部での実行時のデータ構造となる。 コンパイル時の型は <code>Wrapper</code> だが、実行時のデータ構造は <code>Int</code> だ。 値クラスは <code>def</code> を定義することができるが、<code>val</code>、<code>var</code>、または入れ子の <code>trait</code>、<code>class</code>、<code>object</code> は許されない:</p>
+
+<pre><code>class Wrapper(val underlying: Int) extends AnyVal {
+  def foo: Wrapper = new Wrapper(underlying * 19)
+}</code></pre>
+
+<p>値クラスは<b>汎用トレイト</b> (universal trait) のみを拡張することができる。また、他のクラスは値クラスを拡張することはできない。 汎用トレイトは <code>Any</code> を拡張するトレイトで、メンバとして <code>def</code> のみを持ち、初期化を一切行わない。 汎用トレイトによって値クラスはメソッドの基本的な継承ができるようになるが、これは<b>メモリ割り当てのオーバーヘッドを伴うようにもなる</b>。具体例で説明しよう:</p>
+
+<pre><code>trait Printable extends Any {
+  def print(): Unit = println(this)
+}
+class Wrapper(val underlying: Int) extends AnyVal with Printable
+
+val w = new Wrapper(3)
+w.print() // Wrapper のインスタンスをここでインスタンス化する必要がある</code></pre>
+
+<p>以下の項で用例、メモリ割り当てが発生するかしないかの詳細、および値クラスの制約を具体例を使ってみていきたい。</p>
+
+<h2 id='id41'>拡張メソッド</h2>
+
+<p>値クラスの使い方の1つに implicit クラス (<a href='http://docs.scala-lang.org/sips/pending/implicit-classes.html'>SIP-13</a>) と組み合わせてメモリ割り当てを必要としない拡張メソッドとして使うというものがある。implicit クラスは拡張メソッドを定義するより便利な構文を提供する一方、値クラスは実行時のオーバーヘッドを無くすことができる。この良い例が標準ライブラリの <code>RichInt</code> クラスだ。これは値クラスであるため、<code>RichInt</code> のメソッドを使うのに <code>RichInt</code> のインスタンスを作る必要はない。</p>
+
+<p><code>RichInt</code> から抜粋した以下のコードは、それが <code>Int</code> を拡張して <code>3.toHexString</code> という式が書けるようにしていることを示す:</p>
+
+<pre><code>class RichInt(val self: Int) extends AnyVal {
+  def toHexString: String = java.lang.Integer.toHexString(self)
+}</code></pre>
+
+<p>実行時には、この <code>3.toHexString</code> という式は、新しくインスタンス化されるオブジェクトへのメソッド呼び出しではなく、静的なオブジェクトへのメソッド呼び出しと同様のコード (<code>RichInt$.MODULE$.extension$toHexString(3)</code>) へと最適化される。</p>
+
+<h2 id='id42'>正当性</h2>
+
+<p>値クラスのもう1つの使い方として、実行時のメモリ割り当て無しにデータ型同様の型安全性を得るというものがある。 例えば、距離を表すデータ型はこのようなコードになるかもしれない:</p>
+
+<pre><code>class Meter(val value: Double) extends AnyVal {
+  def +(m: Meter): Meter = new Meter(value + m.value)
+}</code></pre>
+
+<p>以下のような 2つの距離を加算するコード</p>
+
+<pre><code>val x = new Meter(3.4)
+val y = new Meter(4.3)
+val z = x + y</code></pre>
+
+<p>は実際には <code>Meter</code> インスタンスを割り当てず、組み込みの <code>Double</code> 型のみが実行時に使われる。</p>
+
+<p>注意: 実際には、case class や拡張メソッドを用いてよりきれいな構文を提供することができる。</p>
+
+<h2 id='id43'>メモリ割り当てが必要になるとき</h2>
+
+<p>JVM は値クラスをサポートしないため、Scala は場合によっては値クラスをインスタンス化する必要がある。 完全な詳細は <a href='http://docs.scala-lang.org/sips/pending/value-classes.html'>SIP-15</a> を参照してほしい。</p>
+
+<h3 id='id44'>メモリ割り当ての概要</h3>
+
+<p>以下の状況において値クラスのインスタンスはインスタンス化される:</p>
+<!-- keep this html --><ol>
+<li>値クラスが別の型として扱われるとき。</li>
+<li>値クラスが配列に代入されるとき。</li>
+<li>パターンマッチングなどにおいて、実行時の型検査を行うとき。</li>
+</ol>
+<h3 id='id45'>メモリ割り当ての詳細</h3>
+
+<p>値クラスの値が、汎用トレイトを含む別の型として扱われるとき、値クラスのインスタンスの実体がインスタンス化される必要がある。 具体例としては、以下の <code>Meter</code> 値クラスをみてほしい:</p>
+
+<pre><code>trait Distance extends Any
+case class Meter(val value: Double) extends AnyVal with Distance</code></pre>
+
+<p><code>Distance</code> 型の値を受け取るメソッドは実体の <code>Meter</code> インスタンスが必要となる。 以下の例では <code>Meter</code> クラスはインスタンス化される:</p>
+
+<pre><code>def add(a: Distance, b: Distance): Distance = ...
+add(Meter(3.4), Meter(4.3))</code></pre>
+
+<p><code>add</code> のシグネチャが以下のようであれば</p>
+
+<pre><code>def add(a: Meter, b: Meter): Meter = ...</code></pre>
+
+<p>メモリ割り当ては必要無い。 値クラスが型引数として使われる場合もこのルールがあてはまる。 例えば、<code>identify</code> を呼び出すだけでも <code>Meter</code> インスタンスの実体が作成されることが必要となる:</p>
+
+<pre><code>def identity[T](t: T): T = t
+identity(Meter(5.0))</code></pre>
+
+<p>メモリ割り当てが必要となるもう1つの状況は、配列への代入だ。たとえその値クラスの配列だったとしてもだ。具体例で説明する:</p>
+
+<pre><code>val m = Meter(5.0)
+val array = Array[Meter](m)</code></pre>
+
+<p>この配列は、内部表現の <code>Double</code> だけではなく <code>Meter</code> の実体を格納する。</p>
+
+<p>最後に、パターンマッチングや <code>asInstaneOf</code> のような型検査は値クラスのインスタンスの実体を必要とする:</p>
+
+<pre><code>case class P(val i: Int) extends AnyVal
+
+val p = new P(3)
+p match { // new P instantiated here
+  case P(3) =&gt; println(&quot;Matched 3&quot;)
+  case P(x) =&gt; println(&quot;Not 3&quot;)
+}</code></pre>
+
+<h2 id='id46'>制約</h2>
+
+<p>JVM が値クラスという概念をサポートしていないこともあり、値クラスには現在いくつかの制約がある。 値クラスの実装とその制約の詳細に関しては <a href='http://docs.scala-lang.org/sips/pending/value-classes.html'>SIP-15</a> を参照。</p>
+
+<h3 id='id47'>制約の概要</h3>
+
+<p>値クラスは …</p>
+<!-- keep this html --><ol>
+<li> … ただ1つの public で値クラス以外の型の <code>val</code> パラメータを持つプライマリコンストラクタのみを持つことができる。</li>
+<li> … specialized な型パラメータを持つことができない。</li>
+<li> … 入れ子のローカルクラス、トレイト、やオブジェクトを持つことがでない。</li>
+<li> … <code>equals</code> や <code>hashCode</code> メソッドを定義することができない。</li>
+<li> … トップレベルクラスか静的にアクセス可能なオブジェクトのメンバである必要がある。</li>
+<li> … <code>def</code> のみをメンバとして持つことができる。特に、<code>lazy val</code>、<code>var</code>、<code>val</code> をメンバとして持つことができない。</li>
+<li> … 他のクラスによって拡張されることができない。</li>
+</ol>
+<h3 id='id48'>制約の具体例</h3>
+
+<p>この項ではメモリ割り当ての項で取り扱わなかった制約の具体例を色々みていく。</p>
+
+<p>コンストラクタのパラメータを複数持つことができない:</p>
+
+<pre><code>class Complex(val real: Double, val imag: Double) extends AnyVal</code></pre>
+
+<p>Scala コンパイラは以下のエラーメッセージを生成する:</p>
+
+<pre><code>Complex.scala:1: error: value class needs to have exactly one public val parameter
+class Complex(val real: Double, val imag: Double) extends AnyVal
+      ^</code></pre>
+
+<p>コンストラクタのパラメータは <code>val</code> である必要があるため、名前渡しのパラメータは使うことができない:</p>
+
+<pre><code>NoByName.scala:1: error: `val&#39; parameters may not be call-by-name
+class NoByName(val x: =&gt; Int) extends AnyVal
+                      ^</code></pre>
+
+<p>Scala はコンストラクタのパラメータとして <code>lazy val</code> を許さないため、それも使うことができない。 複数のコンストラクタを持つことができない:</p>
+
+<pre><code>class Secondary(val x: Int) extends AnyVal {
+  def this(y: Double) = this(y.toInt)
+}
+
+Secondary.scala:2: error: value class may not have secondary constructors
+  def this(y: Double) = this(y.toInt)
+      ^</code></pre>
+
+<p>値クラスは <code>lazy val</code> や <code>val</code> のメンバ、入れ子の <code>class</code>、<code>trait</code>、や <code>object</code> を持つことができない:</p>
+
+<pre><code>class NoLazyMember(val evaluate: () =&gt; Double) extends AnyVal {
+  val member: Int = 3
+  lazy val x: Double = evaluate()
+  object NestedObject
+  class NestedClass
+}
+
+Invalid.scala:2: error: this statement is not allowed in value class: private[this] val member: Int = 3
+  val member: Int = 3
+      ^
+Invalid.scala:3: error: this statement is not allowed in value class: lazy private[this] var x: Double = NoLazyMember.this.evaluate.apply()
+  lazy val x: Double = evaluate()
+           ^
+Invalid.scala:4: error: value class may not have nested module definitions
+  object NestedObject
+         ^
+Invalid.scala:5: error: value class may not have nested class definitions
+  class NestedClass
+        ^</code></pre>
+
+<p>以下のとおり、ローカルクラス、トレイト、オブジェクトも許されないことに注意:</p>
+
+<pre><code>class NoLocalTemplates(val x: Int) extends AnyVal {
+  def aMethod = {
+    class Local
+    ...
+  }
+}</code></pre>
+
+<p>現在の実装の制約のため、値クラスを入れ子とすることができない:</p>
+
+<pre><code>class Outer(val inner: Inner) extends AnyVal
+class Inner(val value: Int) extends AnyVal
+
+Nested.scala:1: error: value class may not wrap another user-defined value class
+class Outer(val inner: Inner) extends AnyVal
+                ^</code></pre>
+
+<p>また、構造的部分型はメソッドのパラメータや戻り型に値クラスを取ることができない:</p>
+
+<pre><code>class Value(val x: Int) extends AnyVal
+object Usage {
+  def anyValue(v: { def value: Value }): Value =
+    v.value
+}
+
+Struct.scala:3: error: Result type in structural refinement may not refer to a user-defined value class
+  def anyValue(v: { def value: Value }): Value =
+                               ^</code></pre>
+
+<p>値クラスは非汎用トレイトを拡張することができない。また、値クラスを拡張することもできない。</p>
+
+<pre><code>trait NotUniversal
+class Value(val x: Int) extends AnyVal with notUniversal
+class Extend(x: Int) extends Value(x)
+
+Extend.scala:2: error: illegal inheritance; superclass AnyVal
+ is not a subclass of the superclass Object
+ of the mixin trait NotUniversal
+class Value(val x: Int) extends AnyVal with NotUniversal
+                                            ^
+Extend.scala:3: error: illegal inheritance from final class Value
+class Extend(x: Int) extends Value(x)
+                             ^</code></pre>
+
+<p>2つ目のエラーメッセージは、明示的には値クラスに <code>final</code> 修飾子が指定されなくても、それが暗に指定されていることを示している。</p>
+
+<p>値クラスが 1つのパラメータしかサポートしないことによって生じるもう1つの制約は、値クラスがトップレベルであるか、静的にアクセス可能なオブジェクトのメンバである必要がある。 これは、入れ子になった値クラスはそれを内包するクラスへの参照を2つ目のパラメータとして受け取る必要があるからだ。 そのため、これは許されない:</p>
+
+<pre><code>class Outer {
+  class Inner(val x: Int) extends AnyVal
+}
+
+Outer.scala:2: error: value class may not be a member of another class
+class Inner(val x: Int) extends AnyVal
+      ^</code></pre>
+
+<p>しかし、これは内包するオブジェクトがトップレベルであるため許される:</p>
+
+<pre><code>object Outer {
+  class Inner(val x: Int) extends AnyVal
+}</code></pre>
+      
+    </div>
+    
+    <div class="span6">
+      <div id="scroller-anchor">
+  <div id="scroller">
+    <p class="contents">Contents</p>
+    <div id="toc"></div>    
+              
+  </div>
+</div>
+
+    </div>
+    
+	
+  </div>
+</div>
+
+<div class="footer">
+	<div class="container">
+		<ul>
+			<li><h5>API</h5></li>
+			<li><a href="http://www.scala-lang.org/api/current/">Current</a></li>
+			<li><a href="http://www.scala-lang.org/archives/downloads/distrib/files/nightly/docs/library/index.html">Nightly</a></li>
+		</ul>
+		<ul>
+			<li><h5>Learn</h5></li>
+			<li><a href="/overviews">Guides & Overviews</a></li>
+			<li><a href="/tutorials">Tutorials</a></li>
+			<li><a href="/style">Scala Style Guide</a></li>				
+		</ul>
+		<ul>
+			<li><h5>Quickref</h5></li>
+			<li><a href="/glossary">Glossary</a></li>
+			<li><a href="/cheatsheets">Cheatsheets</a></li>
+		</ul>
+		<ul>
+			<li><h5>Contribute</h5></li>
+			<li><a href="http://github.com/scala/scala.github.com">Source Code</a></li>
+			<li><a href="/contribute.html">Contributors Guide</a></li>
+			<li><a href="http://getsatisfaction.com/scaladocs">Suggestions</a></li>			
+		</ul>
+		<ul>
+			<li><h5>Other Resources</h5></li>
+			<li><a href="http://wiki.scala-lang.org">Wiki</a></li>
+			<li><a href="/sips">Scala Improvement Process</a></li>				
+		</ul>						
+	</div>
+	<div class="container copyright">
+ 		<p>
+			Copyright &copy; 2011-2013 EPFL. All rights reserved.
+			<a href="https://github.com/scala/scala.github.com/commits/gh-pages.atom"><img align="right" height="20px" width="20px" src="/resources/images/rss.png" alt="RSS feed of updates to the github repo hosting this site"></a>
+		</p>		
+	</div>
+</div>
+
+
+<script type="text/javascript">
+  $('#toc').toc({exclude: 'h1, h5, h6', context: '', autoId: true, numerate: false});
+</script>
+
+<script type="text/javascript">
+  $(function() {
+    moveScroller();
+  });
+</script>
+
+  </body>
+</html>
+
+    

@@ -1,0 +1,401 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>SIP Submission Process - Scala Documentation</title>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="icon" type="image/png" href="/resources/favicon.ico">
+
+    <!-- prettify js and CSS -->
+    <link rel="stylesheet" href="/resources/stylesheets/prettify.css" type="text/css" />
+    <script src="/resources/javascript/prettify/prettify.js" type="text/javascript" ></script>
+
+
+    <!-- jquery js -->
+    <script src="/resources/javascript/jquery.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/effects.core.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/effects.highlight.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/moveScroller.js" type="text/javascript" ></script>
+
+    <!-- Bootstrap JS and CSS -->
+    <link rel="stylesheet" href="/resources/stylesheets/bootstrap.css" type="text/css" />
+	  <script src="/resources/javascript/bootstrap-dropdown.js" type="text/javascript" ></script>
+	  <script src="/resources/javascript/bootstrap-dropdown-app.js" type="text/javascript" ></script>
+
+    <!-- Base stylesheet for all pages -->
+    <link rel="stylesheet" href="/resources/stylesheets/base.css" type="text/css" />
+
+    <!-- table of contents js -->
+    <script src="/resources/javascript/toc.js" type="text/javascript" ></script>
+
+    <!-- google analytics -->
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-574683-5']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+
+    <!-- prettyprint js to prepend generated pre/code tags -->
+    <script type="text/javascript">
+      function styleCode()
+        {
+          if (typeof disableStyleCode != "undefined")
+          {
+              return;
+          }
+          var a = false;
+          $("pre code").parent().each(function()
+          {
+              if (!$(this).hasClass("prettyprint"))
+              {
+                  $(this).addClass("prettyprint lang-scala linenums");
+                  a = true
+              }
+          });
+          if (a) { prettyPrint() }
+      }
+    </script>
+
+    <script type="text/javascript">
+      jQuery(document).ready(function($) {
+
+            $(".scroll").click(function(event){
+              event.preventDefault();
+              $('html,body').animate({scrollTop:$(this.hash).offset().top}, 500);
+              $('html,body').animate({scrollTop:$(this.hash).offset().top-=50}, 500);
+              $(this.hash).effect("highlight", {color: "#FFCC85"}, 3000);
+            });
+      });
+    </script>
+
+    <script type="text/javascript">
+      $(window).ready(function goToSubsection() {
+          if (window.location.hash)
+          {
+              $('html,body').animate({scrollTop:$(window.location.hash).offset().top}, 500);
+              $('html,body').animate({scrollTop:$(window.location.hash).offset().top-=50}, 500);
+              $(window.location.hash).effect("highlight", {color: "#FFCC85"}, 3000);
+          }
+        });
+    </script>
+
+    <style type="text/css">
+
+       p.contents {
+           margin-left: 15px;
+           font-weight: bold;
+           font-size: 16px;
+       }
+
+       div#toc ul {
+           list-style: none;
+       }
+
+       div#toc ul a {
+           display: block;
+           list-style: none;
+           line-height: 22px;
+           font-weight: bold;
+           width: 100%;
+       }
+
+      div#toc ul li ul {
+           list-style: disc;
+      }
+
+      div#toc ul li ul a {
+           line-height: 18px;
+           font-weight: normal;
+      }
+
+      div#toc ul li ul li ul {
+           list-style: square;
+      }
+       div#toc ul li ul li ul a {
+       }
+
+       div#scroller-anchor {
+           width: inherit;
+       }
+
+       div#scroller {
+           width: inherit;
+       }
+
+       div#guide-title {
+        text-transform: capitalize;
+        font-size: 16px;
+        padding-bottom: 6px;
+        color: #BFBFBF;
+        text-transform: uppercase;
+        font-weight: bold;
+       }
+
+       input, textarea, select, .uneditable-input {
+	       width: 165px;
+	     }
+
+    </style>
+
+</head>
+  <body onload="styleCode()">
+    
+    <!-- Topbar
+    ================================================== -->
+    <div class="topbar" >
+      <div class="topbar-inner">
+        <div class="container">
+          <a class="brand" href="/sips/index.html"><img src="/resources/images/scala-logo.png"> Improvement Process</a>
+          <ul class="nav">
+           <li><a href="/sips/sip-submission.html">Submitting a new SIP</a></li>
+           <li><a href="/sips/sip-list.html">SIP List</a></li>
+           <li><a href="/sips/sip-tutorial.html">Tutorial: Writing a SIP</a></li>
+           <li><a href="https://groups.google.com/forum/#!forum/scala-sips">Mailing List</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+    
+      <h1>SIP Submission Process</h1>    
+    
+      <div class="span10">
+        <h2 id='how_do_i_get_started'>How do I get started?</h2>
+
+<p>Before submitting a SIP, it is a good to float your proposal on <a href='https://groups.google.com/forum/#!forum/scala-debate'>scala-debate</a>. Be specific and already draw up a document that contains all relevant details. Often, public discussions help to refine a proposal to a point where it can become a SIP.</p>
+
+<h2 id='how_do_i_submit'>How do I submit?</h2>
+
+<p>The process to submit is simple:</p>
+
+<ul>
+<li>
+<p>Fork the Scala documentation repository, <a href='http://github.com/scala/scala.github.com'>http://github.com/scala/scala.github.com</a>.</p>
+</li>
+
+<li>
+<p>Create a new SIP file in the <code>sips/pending/_posts/</code>. Check the <a href='sip-tutorial.html'>Writing a SIP Tutorial</a></p>
+
+<ul>
+<li>Make sure the new file follows the format: <code>YYYY-MM-dd-{title}.md</code>. Use the proposal date for <code>YYYY-MM-dd</code>.</li>
+
+<li>Use the <a href='http://daringfireball.net/projects/markdown/syntax'>Markdown Syntax</a> to write your SIP.</li>
+
+<li>Follow the instructions in the <a href='https://github.com/scala/scala.github.com/blob/gh-pages/README.md'>README</a> to build your SIP locally so you can ensure that it looks correct on the website.</li>
+</ul>
+</li>
+
+<li>
+<p>Create a link to your SIP in the &#8220;pending sips&#8221; section of <code>index.md</code></p>
+</li>
+
+<li>
+<p>Commit your changes to your forked repository</p>
+</li>
+
+<li>
+<p>Create a new <a href='https://github.com/scala/scala.github.com/pull/new/gh-pages'>pull request</a>. This will notify the Scala SIP team.</p>
+</li>
+</ul>
+
+<h2 id='what_will_happen_next'>What will happen next</h2>
+
+<p>The SIP committee will have a look at your proposal. If it is looks promising, it will be made into a SIP. At that point, you&#8217;ll have to sign a CLA (contributor license agreement) which says that you are OK with the text of the proposal and the implementation being used in the Scala project.</p>
+
+<h2 id='what_will_happen_afterwards'>What will happen afterwards</h2>
+
+<p>The SIP will get a unique number. It should be discussed on the scala-sips mailing list. In these mails, every mail that is specific to a SIP ### should be prefixed with [SIP-###]. Typically, a SIP under discussion will have a member of the committee as sheperd, to help move it forward.</p>
+
+<p>Before a SIP can be accepted, it also needs a full implementation that can be evaluated in practice. That implementation can be done before the SIP is submitted, or else concurrently with the discussion period.</p>
+
+<h2 id='what_is_the_provisonal_voting_status'>What is the provisonal voting status?</h2>
+
+<p>When a release is drawing near, the SIP committee will hold on provisonal vote on pending SIPs. This vote places sips in one of the current status:</p>
+
+<ul>
+<li><code>Accepted</code> - The SIP will be included in the next release, pending an acceptable implementation.</li>
+
+<li><code>Deferred - Next Meeting</code> - The committee has concerned that need to be addressed in the SIP before inclusion in the Release. If the concerns are handled before the next release, the SIP will be re-evaluated.</li>
+
+<li><code>Delay - Next Release</code> - The SIP comittee has larger concerns with the state of the SIP and would prefer to wait until the next Scala release to consider inclusion.</li>
+
+<li><code>Not Accepted</code> - The SIP comittee feels the SIP is not needed for the Scala language and turns down the proposal, with an explanation of why.</li>
+</ul>
+
+<h2 id='what_happens_for_a_scala_major_release'>What happens for a Scala major release?</h2>
+
+<p>Before a Scala release, the committee will make a final decision for each SIP whether it should be accepted, rejected, or delayed for the next release. Accepted SIPs will be rolled into an upcoming Scala release and placed in the accepted folder. Rejected SIPs will be left in the SIP repository under the &#8220;rejected sips&#8221; section. Delayed SIPs will remain pending.</p>
+
+<h2 id='who_is_on_the_sip_committee'>Who is on the SIP committee</h2>
+
+<p>Right Now:</p>
+
+<ul>
+<li>Martin Odersky</li>
+
+<li>Paul Philips</li>
+
+<li>Josh Suereth</li>
+
+<li>Adriaan Moors</li>
+</ul>
+
+<p>We will ask new members to join from time to time. The committee decides collectively, but Martin reserves the final say if there is a disagreement.</p>
+        
+      </div>
+    
+      <div class="span6">
+        <h3>Pending SIPs</h3>
+<ul class="post-list">
+  
+    <li><a href="/sips/pending/source-locations.html">SIP-19 Implicit Source Locations</a> <span class="date">( Mar 2012 )</span>
+    
+      
+        <span class="label danger">Not Accepted</span>
+      
+    
+    </li>
+  
+    <li><a href="/sips/pending/modularizing-language-features.html">SIP-18 - Modularizing Language Features</a> <span class="date">( Mar 2012 )</span>
+    
+      
+      <span class="label success">Accepted</span>
+      
+    
+    </li>
+  
+    <li><a href="/sips/pending/type-dynamic.html">SIP-17 - Type Dynamic</a> <span class="date">( Mar 2012 )</span>
+    
+      
+      <span class="label success">Accepted</span>
+      
+    
+    </li>
+  
+    <li><a href="/sips/pending/self-cleaning-macros.html">SIP-16 - Self-cleaning Macros</a> <span class="date">( Mar 2012 )</span>
+    
+      
+        <span class="label warning">Postponed</span>
+      
+    
+    </li>
+  
+    <li><a href="/sips/pending/value-classes.html">SIP-15 - Value Classes</a> <span class="date">( Jan 2012 )</span>
+    
+      
+      <span class="label success">Accepted</span>
+      
+    
+    </li>
+  
+    <li><a href="/sips/pending/futures-promises.html">SIP-14 - Futures and Promises</a> <span class="date">( Jan 2012 )</span>
+    
+      
+      <span class="label success">Accepted</span>
+      
+    
+    </li>
+  
+    <li><a href="/sips/pending/uncluttering-control.html">SIP-12 Uncluttering Scala’s syntax for control structures.</a> <span class="date">( Oct 2011 )</span>
+    
+      
+        <span class="label warning">Postponed</span>
+      
+    
+    </li>
+  
+    <li><a href="/sips/pending/string-interpolation.html">SIP-11 - String Interpolation</a> <span class="date">( Oct 2011 )</span>
+    
+      
+      <span class="label success">Accepted</span>
+      
+    
+    </li>
+  
+    <li><a href="/sips/pending/implicit-classes.html">SIP-13 - Implicit classes</a> <span class="date">( Oct 2011 )</span>
+    
+      
+      <span class="label success">Accepted</span>
+      
+    
+    </li>
+        
+</ul>
+
+
+      </div>
+    
+	
+    </div>
+  </div>
+  <div class="push"></div>
+</div>
+
+<div class="footer">
+	<div class="container">
+		<ul>
+			<li><h5>API</h5></li>
+			<li><a href="http://www.scala-lang.org/api/current/">Current</a></li>
+			<li><a href="http://www.scala-lang.org/archives/downloads/distrib/files/nightly/docs/library/index.html">Nightly</a></li>
+		</ul>
+		<ul>
+			<li><h5>Learn</h5></li>
+			<li><a href="/overviews">Guides & Overviews</a></li>
+			<li><a href="/tutorials">Tutorials</a></li>
+			<li><a href="/style">Scala Style Guide</a></li>				
+		</ul>
+		<ul>
+			<li><h5>Quickref</h5></li>
+			<li><a href="/glossary">Glossary</a></li>
+			<li><a href="/cheatsheets">Cheatsheets</a></li>
+		</ul>
+		<ul>
+			<li><h5>Contribute</h5></li>
+			<li><a href="http://github.com/scala/scala.github.com">Source Code</a></li>
+			<li><a href="/contribute.html">Contributors Guide</a></li>
+			<li><a href="http://getsatisfaction.com/scaladocs">Suggestions</a></li>			
+		</ul>
+		<ul>
+			<li><h5>Other Resources</h5></li>
+			<li><a href="http://wiki.scala-lang.org">Wiki</a></li>
+			<li><a href="/sips">Scala Improvement Process</a></li>				
+		</ul>						
+	</div>
+	<div class="container copyright">
+ 		<p>
+			Copyright &copy; 2011-2013 EPFL. All rights reserved.
+			<a href="https://github.com/scala/scala.github.com/commits/gh-pages.atom"><img align="right" height="20px" width="20px" src="/resources/images/rss.png" alt="RSS feed of updates to the github repo hosting this site"></a>
+		</p>		
+	</div>
+</div>
+
+
+<script type="text/javascript">
+  $('#toc').toc({exclude: 'h1, h5, h6', context: '', autoId: true, numerate: false});
+</script>
+
+<script type="text/javascript">
+  $(function() {
+    moveScroller();
+  });
+</script>
+
+  </body>
+</html>
+
+    

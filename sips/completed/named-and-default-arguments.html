@@ -1,0 +1,456 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>SID-1 Named and Default Arguments - Scala Documentation</title>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="icon" type="image/png" href="/resources/favicon.ico">
+
+    <!-- prettify js and CSS -->
+    <link rel="stylesheet" href="/resources/stylesheets/prettify.css" type="text/css" />
+    <script src="/resources/javascript/prettify/prettify.js" type="text/javascript" ></script>
+
+
+    <!-- jquery js -->
+    <script src="/resources/javascript/jquery.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/effects.core.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/effects.highlight.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/moveScroller.js" type="text/javascript" ></script>
+
+    <!-- Bootstrap JS and CSS -->
+    <link rel="stylesheet" href="/resources/stylesheets/bootstrap.css" type="text/css" />
+	  <script src="/resources/javascript/bootstrap-dropdown.js" type="text/javascript" ></script>
+	  <script src="/resources/javascript/bootstrap-dropdown-app.js" type="text/javascript" ></script>
+
+    <!-- Base stylesheet for all pages -->
+    <link rel="stylesheet" href="/resources/stylesheets/base.css" type="text/css" />
+
+    <!-- table of contents js -->
+    <script src="/resources/javascript/toc.js" type="text/javascript" ></script>
+
+    <!-- google analytics -->
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-574683-5']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+
+    <!-- prettyprint js to prepend generated pre/code tags -->
+    <script type="text/javascript">
+      function styleCode()
+        {
+          if (typeof disableStyleCode != "undefined")
+          {
+              return;
+          }
+          var a = false;
+          $("pre code").parent().each(function()
+          {
+              if (!$(this).hasClass("prettyprint"))
+              {
+                  $(this).addClass("prettyprint lang-scala linenums");
+                  a = true
+              }
+          });
+          if (a) { prettyPrint() }
+      }
+    </script>
+
+    <script type="text/javascript">
+      jQuery(document).ready(function($) {
+
+            $(".scroll").click(function(event){
+              event.preventDefault();
+              $('html,body').animate({scrollTop:$(this.hash).offset().top}, 500);
+              $('html,body').animate({scrollTop:$(this.hash).offset().top-=50}, 500);
+              $(this.hash).effect("highlight", {color: "#FFCC85"}, 3000);
+            });
+      });
+    </script>
+
+    <script type="text/javascript">
+      $(window).ready(function goToSubsection() {
+          if (window.location.hash)
+          {
+              $('html,body').animate({scrollTop:$(window.location.hash).offset().top}, 500);
+              $('html,body').animate({scrollTop:$(window.location.hash).offset().top-=50}, 500);
+              $(window.location.hash).effect("highlight", {color: "#FFCC85"}, 3000);
+          }
+        });
+    </script>
+
+    <style type="text/css">
+
+       p.contents {
+           margin-left: 15px;
+           font-weight: bold;
+           font-size: 16px;
+       }
+
+       div#toc ul {
+           list-style: none;
+       }
+
+       div#toc ul a {
+           display: block;
+           list-style: none;
+           line-height: 22px;
+           font-weight: bold;
+           width: 100%;
+       }
+
+      div#toc ul li ul {
+           list-style: disc;
+      }
+
+      div#toc ul li ul a {
+           line-height: 18px;
+           font-weight: normal;
+      }
+
+      div#toc ul li ul li ul {
+           list-style: square;
+      }
+       div#toc ul li ul li ul a {
+       }
+
+       div#scroller-anchor {
+           width: inherit;
+       }
+
+       div#scroller {
+           width: inherit;
+       }
+
+       div#guide-title {
+        text-transform: capitalize;
+        font-size: 16px;
+        padding-bottom: 6px;
+        color: #BFBFBF;
+        text-transform: uppercase;
+        font-weight: bold;
+       }
+
+       input, textarea, select, .uneditable-input {
+	       width: 165px;
+	     }
+
+    </style>
+
+</head>
+  <body onload="styleCode()">
+    
+    <!-- Topbar
+    ================================================== -->
+    <div class="topbar" >
+      <div class="topbar-inner">
+        <div class="container">
+          <a class="brand" href="/sips/index.html"><img src="/resources/images/scala-logo.png"> Improvement Process</a>
+          <ul class="nav">
+           <li><a href="/sips/sip-submission.html">Submitting a new SIP</a></li>
+           <li><a href="/sips/sip-list.html">SIP List</a></li>
+           <li><a href="/sips/sip-tutorial.html">Tutorial: Writing a SIP</a></li>
+           <li><a href="https://groups.google.com/forum/#!forum/scala-sips">Mailing List</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+<div class="container">
+  <div class="row">    
+
+    <div class="span12">
+      <h1>SID-1 Named and Default Arguments</h1>    
+      <p><strong>Lukas Rytz</strong></p>
+
+<h2 id='introduction'>Introduction</h2>
+
+<p>Methods taking multiple parameters of the same type are a source of mistakes which cannot be detected during compile time: exchanging two arguments of the same type does not yield an error, but can produce unexpected results. This problem can be avoided elegantly by using named arguments. Furthermore, named arguments improve the readability of method calls with a large number of arguments.</p>
+
+<p>The second language feature discussed in this document, default arguments, in general does not depend on having named arguments. But combining the two features actually improves their usefulness, for instance it avoids the requirement of putting the parameters with defaults to the end of the parameter list of a method. For that reason, the two features are introduced together.</p>
+
+<h2 id='named_arguments'>Named Arguments</h2>
+
+<p>In Scala 2.8, method arguments can be speciﬁed in <em>named style</em> using the same syntax as variable assignments:</p>
+
+<pre><code>def f[T](a: Int, b: T)
+f(b = getT(), a = getInt())</code></pre>
+
+<p>The argument expressions are evaluated in call-site order, so in the above example <code>getT()</code> is executed before <code>getInt()</code>f. Mixing named and positional arguments is allowed as long as the positional part forms a preﬁx of the argument list:</p>
+
+<pre><code>f(0, b = &quot;1&quot;)     // valid
+f(b = &quot;1&quot;, a = 0) // valid
+// f(b = &quot;1&quot;, 0)  // invalid, a positional after named argument
+// f(0, a = 1)    // invalid, parameter ’a’ specified twice</code></pre>
+
+<p>If an argument expression has the form <code>&quot;x = expr&quot;</code> and <code>x</code> is not a parameter name of the method, the argument is treated as an assignment expression to some variable <code>x</code>, i.e. the argument type is Unit. So the following example will continue to work as expected:</p>
+
+<pre><code>def twice(op: =&gt; Unit) = { op; op }
+var x = 1
+twice(x = x + 1)</code></pre>
+
+<p>It is an error if the expression <code>”x = expr”</code> can be interpreted as both a named argument (parameter name <code>x</code>) and an assignment (variable <code>x</code> in scope). If the expression is surrounded by an additonal set of parenthesis or braces, it is never treated as a named argument. Also, if the application argument is a block expression (as in <code>f{ arg }</code>), <code>arg</code> is never treated as a named argument.</p>
+
+<pre><code>def twice(op: =&gt; Unit) = { op; op }
+var op = 1
+// twice(op = op + 1) // error: reference to ‘op’ is ambiguous
+twice((op = op + 1))  // assignment, not a named argument
+twice({op = op + 1})  // assignment
+twice{ op = op + 1 }  // assignment</code></pre>
+
+<h3 id='integration_with_other_features'>Integration with other features</h3>
+
+<p>The following list shows how named arguments interfere with other language features of Scala:</p>
+
+<p><strong>By-Name Parameters</strong> continue to work as expected when using named arguments. The expression is only (and repeatedly) evaluated when the body of the method accesses the parameter.</p>
+
+<p><strong>Repeated Parameters</strong> When an application uses named arguments, the repeated parameter has to be speciﬁed exactly once. Using the same parameter name multiple times is disallowed.</p>
+
+<p><strong>Functional values</strong> A functional value in Scala is an instance of a class which implements a method called apply. One can use the parameter names of that apply method for a named application. For functional values whose static type is scala.FunctionN, the parameter names of that apply method can be used.</p>
+
+<pre><code>val f1 = new { def apply(x: Int) = x + 1 }
+val f2 = (x: Int) =&gt; x + 1 // instance of Function1[Int, Int]
+f1(x = 2)    // OK
+// f2(x = 2) // &quot;error: not found: value x&quot;
+f2(v1 = 2)   // OK, ’v1’ is the parameter name in Function1</code></pre>
+
+<p><strong>Overriding</strong> When a method is overridden (or an abstract method is implemented) in a subclass, the parameter names don’t have to be the same as in the superclass. For type-checking an application which uses named arguments, the static type of the method determines which names have to be used.</p>
+
+<pre><code>trait A           { def f(a: Int): Int }
+class B extends A { def f(x: Int) = x }
+val a: A = new B
+a.f(a = 1) // OK</code></pre>
+
+<p><strong>Overloading Resolution</strong> When a method application refers to an overloaded method, ﬁrst the set of applicable alternatives is determined and then the most speciﬁc alternative is chosen (see <span>1</span>, Chapter 6.25.3).</p>
+
+<p>The presence of named argument inﬂuences the set of applicable alternatives, the argument types have to be matched against the corresponding parameter types based on the names. In the following example, the second alternative is applicable:</p>
+
+<pre><code>def f() // #1
+def f(a: Int, b: String) // #2
+f(b = &quot;someString&quot;, a = 1) // using #2</code></pre>
+
+<p>If multiple alternatives are applicable, the most speciﬁc one is determined. This process is independent of the argument names used in a speciﬁc application and only looks at the method signature (for a detailed description, see <span>1</span>, Chapter 6.25.3).</p>
+
+<p>In the following example, both alternatives are applicable, but none of them is more speciﬁc than the other because the argument types are compared based on their position, not on the argument name:</p>
+
+<pre><code>def f(a: Int, b: String)   // #1
+def f(b: Object, a: Int)   // #2
+f(a = 1, b = &quot;someString&quot;) // &quot;error: ambiguous reference to
+                           // overloaded definition&quot;</code></pre>
+
+<p><strong>Anonymous functions</strong> The placeholder syntax syntax for creating anonymous functions is extended to work with named arguments.</p>
+
+<pre><code>def f(x: Int, y: String)
+val g1: Int =&gt; Int = f(y = &quot;someString&quot;, x = _)
+val g2 = f(y = &quot;someString&quot;, x = _: Int)</code></pre>
+
+<h2 id='default_arguments'>Default Arguments</h2>
+
+<p>A method parameter with a default argument has the form <code>”p: T = expr”</code>, where <code>expr</code> is evaluated every time a method application uses the default argument. To use a default argument, the corresponding parameter has to be omitted in the method application.</p>
+
+<pre><code>def f(a: Int, b: String = &quot;defaultString&quot;, c: Int = 5)
+f(1)
+f(1, &quot;otherString&quot;)
+f(1, c = 10) // c needs to be specified as named argument</code></pre>
+
+<p>For every parameter with a default argument, a synthetic method which computes the default expression is generated. When a method application uses default arguments, the missing parameters are added to the argument list as calls to the corresponding synthetic methods.</p>
+
+<pre><code>def f(a: Int = 1, b: String)
+// generates a method: def f$default$1 = 1
+f(b = &quot;3&quot;)
+// transformed to: f(b = &quot;3&quot;, a = f$default$1)</code></pre>
+
+<p>A default argument may be an arbitrary expression. Since the scope of a parameter extends over all subsequent parameter lists (and the method body), default expressions can depend on parameters of preceding parameter lists (but not on other parameters in the same parameter list). Note that when using a default value which depends on earlier parameters, the actual arguments are used, not the default arguments.</p>
+
+<pre><code>def f(a: Int = 0)(b: Int = a + 1) = b // OK
+// def f(a: Int = 0, b: Int = a + 1) // &quot;error: not found: value a&quot;
+f(10)() // returns 11 (not 1)</code></pre>
+
+<p>A special expected type is used for type-checking the default argument <code>expr</code> of a method parameter <code>”x: T = expr”</code>: it is obtained by replacing all occurrences of type parameters of the method (type parameters of the class for constructors) with the undeﬁned type. This allows specifying default arguments for polymorphic methods and classes:</p>
+
+<pre><code>def f[T](a: T = 1) = a
+f()    // returns 1: Int
+f(&quot;s&quot;) // returns &quot;s&quot;: String
+def g[T](a: T = 1, b: T = &quot;2&quot;) = b
+g(a = &quot;1&quot;)  // OK, returns &quot;2&quot;: String
+g(b = 2)    // OK, returns 2: Int
+g()         // OK, returns &quot;2&quot;: Any
+// g[Int]() // &quot;error: type mismatch; found: String, required: Int&quot;
+class A[T](a: T = &quot;defaultString&quot;)
+new A()  // creates an instance of A[String]
+new A(1) // creates an instance of A[Int]</code></pre>
+
+<h3 id='integration_with_other_features'>Integration with other features</h3>
+
+<p>The following list shows how default arguments interfere with other language features of Scala:</p>
+
+<p><strong>By-Name Parameters</strong> Default arguments on by-name parameters work as expected. If an application does not specify a by-name parameter with a default argument, the default expression is evaluated every time the method body refers to that parameter.</p>
+
+<p><strong>Repeated Parameters</strong> It is not allowed to specify any default arguments in a parameter section which ends in a repeated parameter.</p>
+
+<p><strong>Overriding</strong> When a method with default arguments is overridden or implemented in a subclass, all defaults are inherited and available in the subclass. The subclass can also override default arguments and add new ones to parameters which don’t have a default in the superclass.</p>
+
+<p>During type-checking, the static type is used to determine whether a parameter has a default value or not. At run-time, since the usage of a default is translated to a method call, the default value is determined by the dynamic type of the receiver object.</p>
+
+<pre><code>trait A { def f(a: Int = 1, b: Int): (Int, Int) }
+// B: inherit &amp; add a default
+class B extends A { def f(a: Int,     b: Int = 2) = (a, b) }
+// C: override a default
+class C extends A { def f(a: Int = 3, b: Int    ) = (a, b) }
+val a1: A = new B
+val a2: A = new C
+// a1.f()   // &quot;error: unspecified parameter: value b&quot;
+a2.f(b = 2) // returns (3, 2)</code></pre>
+
+<p><strong>Overloading</strong> If there are multiple overloaded alternatives of a method, at most one is allowed to specify default arguments.</p>
+
+<p><strong>Overloading Resolution</strong> In a method application expression, when multiple overloaded alternatives are applicable, the alternative which use default arguments is never selected.</p>
+
+<pre><code>def f(a: Object)             // #1
+def f(a: String, b: Int = 1) // #2
+f(&quot;str&quot;) // both are applicable, #1 is selected</code></pre>
+
+<p><strong>Case Classes</strong> For every case class, a method named <code>”copy”</code> is now generated which allows to easily create modiﬁed copies of the class’s instances. The copy method takes the same type and value parameters as the primary constructor of the case class, and every parameter defaults to the corresponding constructor parameter.</p>
+
+<pre><code>case class A[T](a: T, b: Int) {
+// def copy[T’](a’: T’ = a, b’: Int = b): A[T’] =
+// new A[T’](a’, b’)
+}
+val a1: A[Int] = A(1, 2)
+val a2: A[String] = a1.copy(a = &quot;someString&quot;)</code></pre>
+
+<p>The copy method is only added to a case class if no member named <code>”copy”</code> already exists in the class or in one of its parents. This implies that when a case class extends another case class, there will only be one copy method, namely the one from the lowest case class in the hierarchy.</p>
+
+<p><strong>Implicit Parameters</strong> It is allowed to specify default arguments on implicit parameters. These defaults are used in case no implicit value matching the parameter type can be found.</p>
+
+<pre><code>def f(implicit a: String = &quot;value&quot;, y: Int = 0) = a +&quot;: &quot;+ y
+implicit val s = &quot;size&quot;
+println(f)              // prints &quot;size: 0&quot;</code></pre>
+
+<h2 id='implementation'>Implementation</h2>
+
+<h3 id='named_arguments'>Named arguments</h3>
+
+<p>When using named arguments, the argument order does not have to match the parameter order of the method definition. To evaluate the argument expressions in call-site order, the method application is transformed to a block in the following way:</p>
+
+<pre><code>class A {
+  def f(a: Int, b: Int)(c: Int)
+}
+(new A).f(b = getB(), a = getA())(c = getC())
+// transformed to
+// {
+//   val qual$1 = new A()
+//   val x$1 = getB()
+//   val x$2 = getA()
+//   val x$3 = getC()
+//   qual$1.f(x$2, x$1)(x$3)
+// }</code></pre>
+
+<h3 id='default_arguments'>Default arguments</h3>
+
+<p>For every default argument expression the compiler generates a method computing that expression. These methods have deterministic names composed of the method name, the string <code>”$default$”</code> and a number indicating the parameter position. Each method is parametrized by the type parameters of the original method and by the value parameter sections preceding the corresponding parameter:</p>
+
+<pre><code>def f[T](a: Int = 1)(b: T = a + 1)(c: T = b)
+// generates:
+// def f$default$1[T]: Int = 1
+// def f$default$2[T](a: Int): Int = a + 1
+// def f$default$3[T](a: Int)(b: T): T = b</code></pre>
+
+<p>For constructor defaults, these methods are added to the companion object of the class (which is created if it does not exist). For other methods, the default methods are generated at the same location as the original method. Method calls which use default arguments are transformed into a block of the same form as described above for named arguments:</p>
+
+<pre><code>f()(&quot;str&quot;)()
+// transformed to:
+// {
+//   val x$1 = f$default$1
+//   val x$2 = &quot;str&quot;
+//   val x$3 = f$default$3(x$1)(x$2)
+//   f(x$1)(x$2)(x$3)
+// }</code></pre>
+
+<h2 id='references'>References</h2>
+
+<ol>
+<li>Odersky, M. <em>The Scala Language Speciﬁcation, Version 2.7</em>. Available online at <a href='http://www.scala-lang.org/docu/ﬁles/ScalaReference.pdf'>http://www.scala-lang.org/docu/ﬁles/ScalaReference.pdf</a></li>
+</ol>
+      
+    </div>
+    
+    <div class="span4">
+      <div id="scroller-anchor">
+  <div id="scroller">
+    <p class="contents">Contents</p>
+    <div id="toc"></div>    
+              
+  </div>
+</div>
+
+    </div>
+  
+  </div>
+</div>
+
+<div class="footer">
+	<div class="container">
+		<ul>
+			<li><h5>API</h5></li>
+			<li><a href="http://www.scala-lang.org/api/current/">Current</a></li>
+			<li><a href="http://www.scala-lang.org/archives/downloads/distrib/files/nightly/docs/library/index.html">Nightly</a></li>
+		</ul>
+		<ul>
+			<li><h5>Learn</h5></li>
+			<li><a href="/overviews">Guides & Overviews</a></li>
+			<li><a href="/tutorials">Tutorials</a></li>
+			<li><a href="/style">Scala Style Guide</a></li>				
+		</ul>
+		<ul>
+			<li><h5>Quickref</h5></li>
+			<li><a href="/glossary">Glossary</a></li>
+			<li><a href="/cheatsheets">Cheatsheets</a></li>
+		</ul>
+		<ul>
+			<li><h5>Contribute</h5></li>
+			<li><a href="http://github.com/scala/scala.github.com">Source Code</a></li>
+			<li><a href="/contribute.html">Contributors Guide</a></li>
+			<li><a href="http://getsatisfaction.com/scaladocs">Suggestions</a></li>			
+		</ul>
+		<ul>
+			<li><h5>Other Resources</h5></li>
+			<li><a href="http://wiki.scala-lang.org">Wiki</a></li>
+			<li><a href="/sips">Scala Improvement Process</a></li>				
+		</ul>						
+	</div>
+	<div class="container copyright">
+ 		<p>
+			Copyright &copy; 2011-2013 EPFL. All rights reserved.
+			<a href="https://github.com/scala/scala.github.com/commits/gh-pages.atom"><img align="right" height="20px" width="20px" src="/resources/images/rss.png" alt="RSS feed of updates to the github repo hosting this site"></a>
+		</p>		
+	</div>
+</div>
+
+
+<script type="text/javascript">
+  $('#toc').toc({exclude: 'h1, h5, h6', context: '', autoId: true, numerate: false});
+</script>
+
+<script type="text/javascript">
+  $(function() {
+    moveScroller();
+  });
+</script>
+
+  </body>
+</html>
+
+    
