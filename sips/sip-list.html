@@ -1,0 +1,346 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>List of SIPs - Scala Documentation</title>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="icon" type="image/png" href="/resources/favicon.ico">
+
+    <!-- prettify js and CSS -->
+    <link rel="stylesheet" href="/resources/stylesheets/prettify.css" type="text/css" />
+    <script src="/resources/javascript/prettify/prettify.js" type="text/javascript" ></script>
+
+
+    <!-- jquery js -->
+    <script src="/resources/javascript/jquery.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/effects.core.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/effects.highlight.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/moveScroller.js" type="text/javascript" ></script>
+
+    <!-- Bootstrap JS and CSS -->
+    <link rel="stylesheet" href="/resources/stylesheets/bootstrap.css" type="text/css" />
+	  <script src="/resources/javascript/bootstrap-dropdown.js" type="text/javascript" ></script>
+	  <script src="/resources/javascript/bootstrap-dropdown-app.js" type="text/javascript" ></script>
+
+    <!-- Base stylesheet for all pages -->
+    <link rel="stylesheet" href="/resources/stylesheets/base.css" type="text/css" />
+
+    <!-- table of contents js -->
+    <script src="/resources/javascript/toc.js" type="text/javascript" ></script>
+
+    <!-- google analytics -->
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-574683-5']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+
+    <!-- prettyprint js to prepend generated pre/code tags -->
+    <script type="text/javascript">
+      function styleCode()
+        {
+          if (typeof disableStyleCode != "undefined")
+          {
+              return;
+          }
+          var a = false;
+          $("pre code").parent().each(function()
+          {
+              if (!$(this).hasClass("prettyprint"))
+              {
+                  $(this).addClass("prettyprint lang-scala linenums");
+                  a = true
+              }
+          });
+          if (a) { prettyPrint() }
+      }
+    </script>
+
+    <script type="text/javascript">
+      jQuery(document).ready(function($) {
+
+            $(".scroll").click(function(event){
+              event.preventDefault();
+              $('html,body').animate({scrollTop:$(this.hash).offset().top}, 500);
+              $('html,body').animate({scrollTop:$(this.hash).offset().top-=50}, 500);
+              $(this.hash).effect("highlight", {color: "#FFCC85"}, 3000);
+            });
+      });
+    </script>
+
+    <script type="text/javascript">
+      $(window).ready(function goToSubsection() {
+          if (window.location.hash)
+          {
+              $('html,body').animate({scrollTop:$(window.location.hash).offset().top}, 500);
+              $('html,body').animate({scrollTop:$(window.location.hash).offset().top-=50}, 500);
+              $(window.location.hash).effect("highlight", {color: "#FFCC85"}, 3000);
+          }
+        });
+    </script>
+
+    <style type="text/css">
+
+       p.contents {
+           margin-left: 15px;
+           font-weight: bold;
+           font-size: 16px;
+       }
+
+       div#toc ul {
+           list-style: none;
+       }
+
+       div#toc ul a {
+           display: block;
+           list-style: none;
+           line-height: 22px;
+           font-weight: bold;
+           width: 100%;
+       }
+
+      div#toc ul li ul {
+           list-style: disc;
+      }
+
+      div#toc ul li ul a {
+           line-height: 18px;
+           font-weight: normal;
+      }
+
+      div#toc ul li ul li ul {
+           list-style: square;
+      }
+       div#toc ul li ul li ul a {
+       }
+
+       div#scroller-anchor {
+           width: inherit;
+       }
+
+       div#scroller {
+           width: inherit;
+       }
+
+       div#guide-title {
+        text-transform: capitalize;
+        font-size: 16px;
+        padding-bottom: 6px;
+        color: #BFBFBF;
+        text-transform: uppercase;
+        font-weight: bold;
+       }
+
+       input, textarea, select, .uneditable-input {
+	       width: 165px;
+	     }
+
+    </style>
+
+</head>
+  <body onload="styleCode()">
+    
+    <!-- Topbar
+    ================================================== -->
+    <div class="topbar" >
+      <div class="topbar-inner">
+        <div class="container">
+          <a class="brand" href="/sips/index.html"><img src="/resources/images/scala-logo.png"> Improvement Process</a>
+          <ul class="nav">
+           <li><a href="/sips/sip-submission.html">Submitting a new SIP</a></li>
+           <li><a href="/sips/sip-list.html">SIP List</a></li>
+           <li><a href="/sips/sip-tutorial.html">Tutorial: Writing a SIP</a></li>
+           <li><a href="https://groups.google.com/forum/#!forum/scala-sips">Mailing List</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+    
+      <h1>List of SIPs</h1>    
+    
+      <div class="span10">
+        <h3 id='completed_sips'>Completed SIPs</h3>
+<ul class='post-list'>
+  
+    <li><a href='/sips/completed/new-collection-classes.html'>SID-3 - New Collection classes</a> <span class='date'>( Jul 2010 )</span></li>
+  
+    <li><a href='/sips/completed/picked-signatures.html'>SID-10 - Storage of pickled Scala signatures in class files</a> <span class='date'>( Jun 2010 )</span></li>
+  
+    <li><a href='/sips/completed/scala-specialization.html'>SID-9 - Scala Specialization</a> <span class='date'>( May 2010 )</span></li>
+  
+    <li><a href='/sips/completed/internals-of-scala-annotations.html'>SID-5 - Internals of Scala Annotations</a> <span class='date'>( Jan 2010 )</span></li>
+  
+    <li><a href='/sips/completed/scala-2-8-arrays.html'>SID-7 - Scala 2.8 Arrays</a> <span class='date'>( Jan 2010 )</span></li>
+  
+    <li><a href='/sips/completed/named-and-default-arguments.html'>SID-1 Named and Default Arguments</a> <span class='date'>( Jan 2010 )</span></li>
+  
+    <li><a href='/sips/completed/scala-swing-overview.html'>SID-8 - Scala Swing Overview</a> <span class='date'>( Nov 2009 )</span></li>
+  
+    <li><a href='/sips/completed/early-member-definitions.html'>SID-4 - Early Member Definitions</a> <span class='date'>( Jun 2009 )</span></li>
+  
+    <li><a href='/sips/completed/scala-compiler-phase-plugin-in.html'>SID-2 Scala Compiler Phase and Plug-In Initialization for Scala 2.8</a> <span class='date'>( May 2009 )</span></li>
+        
+</ul>
+<h3 id='rejected_sips'>Rejected SIPs</h3>
+<ul class='post-list'>
+        
+</ul>
+        
+      </div>
+    
+      <div class="span6">
+        <h3>Pending SIPs</h3>
+<ul class="post-list">
+  
+    <li><a href="/sips/pending/source-locations.html">SIP-19 Implicit Source Locations</a> <span class="date">( Mar 2012 )</span>
+    
+      
+        <span class="label danger">Not Accepted</span>
+      
+    
+    </li>
+  
+    <li><a href="/sips/pending/modularizing-language-features.html">SIP-18 - Modularizing Language Features</a> <span class="date">( Mar 2012 )</span>
+    
+      
+      <span class="label success">Accepted</span>
+      
+    
+    </li>
+  
+    <li><a href="/sips/pending/type-dynamic.html">SIP-17 - Type Dynamic</a> <span class="date">( Mar 2012 )</span>
+    
+      
+      <span class="label success">Accepted</span>
+      
+    
+    </li>
+  
+    <li><a href="/sips/pending/self-cleaning-macros.html">SIP-16 - Self-cleaning Macros</a> <span class="date">( Mar 2012 )</span>
+    
+      
+        <span class="label warning">Postponed</span>
+      
+    
+    </li>
+  
+    <li><a href="/sips/pending/value-classes.html">SIP-15 - Value Classes</a> <span class="date">( Jan 2012 )</span>
+    
+      
+      <span class="label success">Accepted</span>
+      
+    
+    </li>
+  
+    <li><a href="/sips/pending/futures-promises.html">SIP-14 - Futures and Promises</a> <span class="date">( Jan 2012 )</span>
+    
+      
+      <span class="label success">Accepted</span>
+      
+    
+    </li>
+  
+    <li><a href="/sips/pending/uncluttering-control.html">SIP-12 Uncluttering Scala’s syntax for control structures.</a> <span class="date">( Oct 2011 )</span>
+    
+      
+        <span class="label warning">Postponed</span>
+      
+    
+    </li>
+  
+    <li><a href="/sips/pending/string-interpolation.html">SIP-11 - String Interpolation</a> <span class="date">( Oct 2011 )</span>
+    
+      
+      <span class="label success">Accepted</span>
+      
+    
+    </li>
+  
+    <li><a href="/sips/pending/implicit-classes.html">SIP-13 - Implicit classes</a> <span class="date">( Oct 2011 )</span>
+    
+      
+      <span class="label success">Accepted</span>
+      
+    
+    </li>
+        
+</ul>
+
+
+      </div>
+    
+	
+    </div>
+  </div>
+  <div class="push"></div>
+</div>
+
+<div class="footer">
+	<div class="container">
+		<ul>
+			<li><h5>API</h5></li>
+			<li><a href="http://www.scala-lang.org/api/current/">Current</a></li>
+			<li><a href="http://www.scala-lang.org/archives/downloads/distrib/files/nightly/docs/library/index.html">Nightly</a></li>
+		</ul>
+		<ul>
+			<li><h5>Learn</h5></li>
+			<li><a href="/overviews">Guides & Overviews</a></li>
+			<li><a href="/tutorials">Tutorials</a></li>
+			<li><a href="/style">Scala Style Guide</a></li>				
+		</ul>
+		<ul>
+			<li><h5>Quickref</h5></li>
+			<li><a href="/glossary">Glossary</a></li>
+			<li><a href="/cheatsheets">Cheatsheets</a></li>
+		</ul>
+		<ul>
+			<li><h5>Contribute</h5></li>
+			<li><a href="http://github.com/scala/scala.github.com">Source Code</a></li>
+			<li><a href="/contribute.html">Contributors Guide</a></li>
+			<li><a href="http://getsatisfaction.com/scaladocs">Suggestions</a></li>			
+		</ul>
+		<ul>
+			<li><h5>Other Resources</h5></li>
+			<li><a href="http://wiki.scala-lang.org">Wiki</a></li>
+			<li><a href="/sips">Scala Improvement Process</a></li>				
+		</ul>						
+	</div>
+	<div class="container copyright">
+ 		<p>
+			Copyright &copy; 2011-2013 EPFL. All rights reserved.
+			<a href="https://github.com/scala/scala.github.com/commits/gh-pages.atom"><img align="right" height="20px" width="20px" src="/resources/images/rss.png" alt="RSS feed of updates to the github repo hosting this site"></a>
+		</p>		
+	</div>
+</div>
+
+
+<script type="text/javascript">
+  $('#toc').toc({exclude: 'h1, h5, h6', context: '', autoId: true, numerate: false});
+</script>
+
+<script type="text/javascript">
+  $(function() {
+    moveScroller();
+  });
+</script>
+
+  </body>
+</html>
+
+    

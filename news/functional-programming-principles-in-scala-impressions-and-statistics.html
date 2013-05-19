@@ -1,0 +1,397 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>Functional Programming Principles in Scala: Impressions and Statistics - Scala Documentation</title>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="icon" type="image/png" href="/resources/favicon.ico">
+
+    <!-- prettify js and CSS -->
+    <link rel="stylesheet" href="/resources/stylesheets/prettify.css" type="text/css" />
+    <script src="/resources/javascript/prettify/prettify.js" type="text/javascript" ></script>
+
+
+    <!-- jquery js -->
+    <script src="/resources/javascript/jquery.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/effects.core.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/effects.highlight.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/moveScroller.js" type="text/javascript" ></script>
+
+    <!-- Bootstrap JS and CSS -->
+    <link rel="stylesheet" href="/resources/stylesheets/bootstrap.css" type="text/css" />
+    <script src="/resources/javascript/bootstrap-dropdown.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/bootstrap-dropdown-app.js" type="text/javascript" ></script>
+
+    <!-- Base stylesheet for all pages -->
+    <link rel="stylesheet" href="/resources/stylesheets/base.css" type="text/css" />
+
+    <!-- table of contents js -->
+    <script src="/resources/javascript/toc.js" type="text/javascript" ></script>
+
+    <!-- google fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Bitter:400,400italic' rel='stylesheet' type='text/css'>
+
+    <!-- google analytics -->
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-574683-5']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
+
+    <!-- prettyprint js to prepend generated pre/code tags -->
+    <script type="text/javascript">
+      function styleCode()
+        {
+          if (typeof disableStyleCode != "undefined")
+          {
+              return;
+          }
+          var a = false;
+          $("pre code").parent().each(function()
+          {
+              if (!$(this).hasClass("prettyprint"))
+              {
+                  $(this).addClass("prettyprint lang-scala linenums");
+                  a = true
+              }
+          });
+          if (a) { prettyPrint() }
+      }
+    </script>
+
+    <script type="text/javascript">
+      jQuery(document).ready(function($) {
+
+            $(".scroll").click(function(event){
+              event.preventDefault();
+              $('html,body').animate({scrollTop:$(this.hash).offset().top}, 500);
+              $('html,body').animate({scrollTop:$(this.hash).offset().top-=50}, 500);
+              $(this.hash).effect("highlight", {color: "#FFCC85"}, 3000);
+            });
+      });
+    </script>
+
+    <script type="text/javascript">
+      $(window).ready(function goToSubsection() {
+          if (window.location.hash)
+          {
+              $('html,body').animate({scrollTop:$(window.location.hash).offset().top}, 500);
+              $('html,body').animate({scrollTop:$(window.location.hash).offset().top-=50}, 500);
+              $(window.location.hash).effect("highlight", {color: "#FFCC85"}, 3000);
+          }
+        });
+    </script>
+
+    <style type="text/css">
+
+       p {
+        font-size: 14px;
+        line-height: 22px;
+       }
+
+       .summary {
+        font-size: 16px;
+        font-family: Bitter;
+        font-style: italic;
+        margin-bottom: 20px;
+        line-height: 24px;
+       }
+
+       .authors {
+        font-size: 20px;
+        font-family: Bitter;
+        font-style: italic;
+        margin-bottom: 15px;
+        margin-top: 20px;
+        line-height: 24px;
+       }
+
+       p.contents {
+           margin-left: 15px;
+           font-weight: bold;
+           font-size: 16px;
+       }
+
+       div#toc ul {
+           list-style: none;
+       }
+
+       div#toc ul a {
+           display: block;
+           list-style: none;
+           line-height: 22px;
+           font-weight: bold;
+           width: 100%;
+       }
+
+      div#toc ul li ul {
+           list-style: disc;
+      }
+
+      div#toc ul li ul a {
+           line-height: 18px;
+           font-weight: normal;
+      }
+
+      div#toc ul li ul li ul {
+           list-style: square;
+      }
+       div#toc ul li ul li ul a {
+       }
+
+       div#scroller-anchor {
+           width: inherit;
+       }
+
+       div#scroller {
+           width: inherit;
+       }
+
+       div#guide-title {
+        text-transform: capitalize;
+        font-size: 16px;
+        padding-bottom: 6px;
+        color: #BFBFBF;
+        text-transform: uppercase;
+        font-weight: bold;
+       }
+
+       input, textarea, select, .uneditable-input {
+         width: 165px;
+       }
+
+    </style>
+
+</head>
+  <body onload="styleCode()">
+
+    <!-- Topbar
+    ================================================== -->
+<div class="topbar">
+    <div class="topbar-inner">
+        <div class="container">
+            <a class="brand" href="/index.html"><img src="/resources/images/scala-logo.png"> Documentation</a>
+            <ul class="nav">
+
+                <li class="menu">
+                      <a href="#" class="menu">API</a>
+                      <ul class="menu-dropdown">
+                        <li><a href="http://www.scala-lang.org/api/current/">Current</a></li>
+                        <li><a href="http://www.scala-lang.org/archives/downloads/distrib/files/nightly/docs/library/index.html">Nightly</a></li>
+                        <!--<li class="divider"></li>
+                        <li><a href="#">Previous Versions</a></li>
+                        -->
+                      </ul>
+                </li>
+
+                <li class="menu">
+                      <a href="#" class="menu">Learn</a>
+                      <ul class="menu-dropdown">
+                        <li><a href="/overviews">Guides & Overviews</a></li>
+                        <li><a href="/tutorials">Tutorials</a></li>
+                        <li><a href="/style">Scala Style Guide</a></li>
+                      </ul>
+                </li>
+
+                <li class="menu">
+                      <a href="#" class="menu">Quickref</a>
+                      <ul class="menu-dropdown">
+                        <li><a href="/glossary">Glossary</a></li>
+                        <li><a href="/cheatsheets">Cheatsheets</a></li>
+                      </ul>
+                </li>
+
+                <li><a href="/contribute.html">Contribute</a></li>
+                <li><a href="/sips">SIPs</a></li>
+                <li><a href="http://wiki.scala-lang.org">Wiki</a></li>
+          </ul>
+          <form method="get" id="searchform" action="/search.html">
+            <input type="text" placeholder="Search"  class="field" name="q" id="q"/>
+          </form>
+           </li>
+          </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+  <div class="row">
+
+    <div class="span12"><h1>Functional Programming Principles in Scala: Impressions and Statistics</h1></div>
+
+    <div class="span12">
+      <div class='authors'>By Heather Miller and Martin Odersky</div><div class='summary'>
+  In this post, we discuss our experience giving the popular MOOC Functional Programming Principles in Scala, and provide some insight into who our course participants were, how, overall, students performed in the course, and how students felt about the course. We visualize a lot of these statistics in a number of interactive plots, and we go on to publicly release <a href='http://github.com/heathermiller/progfun-stats'>the data and the code</a> to generate these plots within a fun Scala-based project aimed at allowing you to manipulate these statistics with functional programming in Scala, to generate HTML/Javascript for easily visualizing and sharing them. We encourage you to share what you find with us&mdash; we'll share a number of your plots in a follow-up post!
+</div>
+<p><a href='https://www.coursera.org/course/progfun'><em>Functional Programming Principles in Scala</em></a> is a <a href='http://en.wikipedia.org/wiki/Massive_open_online_course'>MOOC</a> given by <a href='http://lamp.epfl.ch'>our research group</a> at <a href='http://www.epfl.ch'>EPFL</a>, whose first edition was recently completed on <a href='http://www.coursera.org'>Coursera</a>. The certificates of completion for those who passed the course have been released, and in looking back as the dust settles&#8212; it was a great experience to have done a class like that which greatly exceeded our expectations in more than one dimension.</p>
+
+<p>We had more than 50,000 registered students&#8212; an unfathomably large number in the context of traditional teaching. While large, that number doesn&#8217;t tell the whole story; as is typical for a MOOC, a statistical majority of those students participate no further beyond watching a couple of videos to find out what the course is about. Of the 50,000, about 21,000 students participated in the interactive in-video quizzes that are part of the lectures, and a remarkable 18,000 unique students attempted at least one programming assignment. A whopping 9,593 students successfully completed the course and earned a certificate of completion&#8212; that&#8217;s an incredible 20% of students, which blows the average 10% rate of completion for MOOCs out of the water.</p>
+
+<h2 id='a_novel_course_format'>A Novel Course Format</h2>
+
+<p>Beyond entertaining record numbers of markedly motivated and enthusiastic students, the course also introduced a few novelties, in particular with regard to how students interacted with it.</p>
+
+<p>The course was run as a series of short online videos, 5-7 of which were released each week, each around 8-12 minutes, complete with transcriptions (and thus crowd-sourced translations into other languages), as well as controls for speeding up or slowing down the playback of the video. Within each video were interactive quizzes, not-for-credit, which required the student to participate realtime in the lecture.</p>
+
+<p>Simultaneously with this online part of the course, we ran a live course at EPFL for 2nd year undergraduate students in Computer Science. The EPFL students followed the online lectures and quizzes just like any other participant registered on Coursera. In addition, we organized interactive sessions were students at EPFL could answer questions and review the course material. To satisfy the requirements of their degree, those students also had to take written exams which accounted for a majority of their final grade on their EPFL academic record.</p>
+
+<p>The lectures were complemented by weekly or bi-weekly assignments, all of which were programming exercises. How this course handled these programming assignments was quite unique in relation to other similar MOOCs. Students were able to submit their assignments via the command-line, which would be compiled remotely, and graded automatically by subjecting the students&#8217; solutions to a number of test cases, and also analyzing it with a custom style checker that enforced that solutions were written in a functional style. Students were encouraged to write their own test suites for each assignment in an effort to ensure that all possible test cases were covered. Students were able re-submit as often as they liked without penalty, until the deadline by which each assignment had to be handed in. Upon each submission, students would receive feedback about how their code fared our automated test suite, including hints about which of our tests failed and cost them points, or which aspects of style needed to be improved (also a score deduction). This format resulted in a markedly different trend in how students seemed to navigate course material, how they seemed to learn, and certainly how they scored. What&#8217;s particularly interesting is the strong tendency of students to continue improving their submission. That is, upon receiving the rather immediate feedback from our grading suite, students tended to re-submit until they received perfect scores&#8212; as is evidenced by the below overall score distribution for the course (the maximum score is 80 points). Incredibly, of all possible scores, the highest concentration of any one score was that of perfect score of 80/80.</p>
+
+<p>A certificate was given to students who earned at least 60% of all available points, and a certificate with distinction was given to those who obtained 80% or more. That amounts to 1,894 students who received a normal certificate, and a whopping 7,699 certificates with distinction. Of those, 3,939 were perfect scores.</p>
+<p>&nbsp;</p><div style='text-align: center;'><h6>Breakdown of Final Scores</h6><div id='grades-breakdown'>&nbsp;</div></div>
+<h2 id='statistics'>Statistics</h2>
+
+<p>Those of you reading this who were enrolled in the course might recall that, several weeks ago, we asked that you complete a survey, describing yourself, and your experience in the course. What programming languages/paradigms are you most comfortable with? Did you find the assignments too challenging? About 7,492 students responded to our survey. In addition to the survey, we also have statistics on many aspects of the course from the Coursera site&#8212; an amount of data that one can only acquire when running a massive online course such as this.</p>
+
+<p>For example, as mentioned above, a success rate of 20% is quite high for an online course. One might suspect that it was because the course was very easy, but in our previous experience that&#8217;s not the case. In fact, the online course is a direct adaptation of a 2nd year course that was given at EPFL for a number of years and that has a reputation of being rather tough. If anything, the material in the online course was a bit more compressed than in the previous on-campus class.</p>
+
+<p>In particular, 57% of all respondents to the survey rated the overall course as being 3, &#8220;Just Right&#8221;, on a scale from 1 to 5, with 1 being &#8220;Too Easy&#8221; and 5 being &#8220;Too Difficult. With regard to programming assignments specifically, 40% rated the assignments as being 3, &#8220;Just Right&#8221;, while 46% rated assignments as being 4 &#8220;Challenging&#8221;.</p>
+
+<p>Another point which might be particularly interesting is the fact that the difficulty rating appears to be independent of whether people have a background in Computer Science/Software Engineering or not. One might guess that this could mean that learning Scala is not much more difficult without a formal educational background in Computer Science.</p>
+<div style='text-align: center;'><h6>Perceived Difficulty Relative to Educational Background</h6><div id='difficulty-to-field'>&nbsp;</div><span style='font-size: 10px;'><i><b>Scale:</b> 1 - Too Easy, 2 - Easy, 3 - Just Right, 4 - Challenging, 5 - Too Difficult</i></span><p>&nbsp;</p></div>
+<p>While a majority of the students in the course have degrees in Computer Science/Software Engineering, it was nonetheless interesting to discover how many students from fields as varied as Life Sciences and Fine Arts have participated in the course! Here&#8217;s what it looks like:</p>
+<div style='text-align: center;'><h6>Participants' Fields of Study</h6><div id='fields-of-study'>&nbsp;</div></div>
+<p>However, we were still interested to see how the formal education of participants influenced their assessment of the perceived difficulty. It turns out that, of those who have or have pursued university degrees&#8212; Bachelors or Masters degrees, there was almost no difference in perceived difficulty. The only marked differences appeared to the far left and the far right of the spectrum.</p>
+<div style='text-align: center;'><h6>Perceived Difficulty Relative to Level of Education</h6><div id='difficulty-to-education'>&nbsp;</div><span style='font-size: 10px;'><i><b>Scale:</b> 1 - Too Easy, 2 - Easy, 3 - Just Right, 4 - Challenging, 5 - Too Difficult</i></span><p>&nbsp;</p></div>
+<p>This leads to the question&#8212; what is the educational profile of the students taking the course? The answer is somewhat surprising. It turns out that most students taking the course have already completed a master&#8217;s degree!</p>
+<div style='text-align: center;'><h6>Participants' Highest Degrees</h6><div id='degrees'>&nbsp;</div></div>
+<p>We also collected information from respondents about their prior experience with other programming languages and paradigms, and perhaps not surprisingly, we found that most people considered themselves Java experts, while few considered themselves experienced in any form of functional programming.</p>
+<div style='text-align: center;'><h6>Participants' Experience With Other Languages/Paradigms</h6><div id='languages-percentages'>&nbsp;</div></div>
+<p>However, in comparing people who considered themselves &#8220;experts&#8221; or &#8220;fluent&#8221; across a few paradigms, we found that C/C++ experts considered the course marginally less challenging than did Java experts. And, not surprisingly, experts in functional programming considered the course not to be particularly difficult.</p>
+<div style='text-align: center;'><h6>Perceived Difficulty of Expert Participants in Other Languages/Paradigms</h6><div id='difficulty-to-expertise'>&nbsp;</div><span style='font-size: 10px;'><i><b>Scale:</b> 1 - Too Easy, 2 - Easy, 3 - Just Right, 4 - Challenging, 5 - Too Difficult</i></span><p>&nbsp;</p></div>
+<p>One of the most interesting questions for us running the course was: why were you interested in taking the course in the first place? Here is the answer:</p>
+<div style='text-align: center;'><h6>What interested you in the Functional Programming Principles in Scala course?</h6><div id='what-interested-you'>&nbsp;</div></div>
+<p>We also wanted to know in what type of scenario people would like to apply what they&#8217;ve learned in the course. Here&#8217;s what we found:</p>
+<div style='text-align: center;'><h6>Where do you plan to apply what you've learned in this course?</h6><div id='where-apply'>&nbsp;</div></div>
+<p>Another question that we couldn&#8217;t wait to hear the answer to was whether course participants thought that the course was worth the time they invested in it. We were delighted to find that a vast majority of students rated the course as being well worth their time!</p>
+<div style='text-align: center;'><h6>Was the course worth the time you spent?</h6><div id='worthit'>&nbsp;</div></div>
+<p>Furthermore, we found a similar trend of students interested in taking our tentative follow-up MOOC!</p>
+<div style='text-align: center;'><h6>Would you be interested in taking a follow-up course?</h6><div id='followup'>&nbsp;</div></div>
+<p>We also collected numbers about the used programming tools. First, we were interested in the editor (or IDE) of choice that participants use in their professional lives or in hobby projects. In a second step, we wanted to compare this to the editor that participants used (primarily) for completing the exercises of the course. Here are the results:</p>
+<div style='text-align: center;'><h6>Which editor do you normally use, and which editor did you use for the course?</h6><div id='editors'>&nbsp;</div></div>
+<p>The collected numbers are markedly different. In no small part this is due to the fact that the <a href='http://scala-ide.org'>Scala IDE for Eclipse</a> introduced a new <a href='https://github.com/scala-ide/scala-worksheet/wiki/Getting-Started'>worksheet</a> component used throughout the lectures.</p>
+
+<p>We&#8217;d like to close with some fun, and partially surprising, information on the demographics of those who took the course and completed our survey. Here is a world map showing the number of participants per country&#8212; darker colors indicate a larger number of students per-country:</p>
+<div style='text-align: center;'><h6>Absolute Number of Participants Per Country</h6><div id='map-population' style='width: 700px; height: 350px;'>&nbsp;</div></div><p>&nbsp;</p>
+<p>Here&#8217;s that graph again, relating that population of students who enrolled in the course with the population of the respective country:</p>
+<div style='text-align: center;'><h6>Number of Participants Per Country Relative to Countries' Population</h6><div id='map-density' style='width: 700px; height: 350px;'>&nbsp;</div></div><p>&nbsp;</p>
+<h2 id='get_the_data_and_explore_it_with_scala'>Get the data and explore it with Scala!</h2>
+
+<p>For those of you who want to have a little bit of fun with the numbers, we&#8217;ve made all of the data publicly available, and we&#8217;ve made a small Scala project out of it. In particular, we put the code that we used to produce the above plots on <a href='http://www.github.com/heathermiller/progfun-stats'>github (progfun-stats)</a>.</p>
+
+<p>For those of you who have taken the course and are itching for some fun additional exercises in functional programming, one of our suggestions is to tinker with and extend this project! You&#8217;ll find the code examples for generating most of these plots available in this post, in the above repository.</p>
+
+<p>Given sufficient interest, we&#8217;re planning on posting a follow-up blog article with interesting observations and plots that you have produced. So, tinker away! Feel free to post links to your graphs in the comments below.</p>
+
+<h2 id='closing_thoughts'>Closing Thoughts</h2>
+
+<p>Overall, it was an intense 7 weeks for us as well as the course students. Organizing a MOOC is no small matter. We could count on the help the EPFL team, with Lukas Rytz, Nada Amin, Vojin Jovanovic and Manohar Jonnalagedda who designed and implemented the grading infrastructure, prepared the setup instructions, designed the homeworks, and edited the videos and quizzes; Tao Lee, who did most of the video cutting and editing, Tobias Schlatter, who worked tirelessly answering questions on the discussion boards, Pedro Pinto, who designed the recording equipment setup, and Nastaran Fatemi Odersky who did content editing. Many people at Typesafe also helped, in particular the IDE team around Iulian Dragos and Mirco Dotta who implemented the worksheet software and Josh Suereth who helped with SBT.</p>
+
+<p>Hard as the work of preparing and running the course was, the amount of positive feedback we got made it worth for us many times over. We believe this medium has a lot of potential and, so far, we are only scratching the surface.</p>
+      <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  
+    var disqus_shortname = 'scalasip'; // required: replace example with your forum shortname
+  
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </div>
+
+  </div>
+</div>
+
+<div class="footer">
+	<div class="container">
+		<ul>
+			<li><h5>API</h5></li>
+			<li><a href="http://www.scala-lang.org/api/current/">Current</a></li>
+			<li><a href="http://www.scala-lang.org/archives/downloads/distrib/files/nightly/docs/library/index.html">Nightly</a></li>
+		</ul>
+		<ul>
+			<li><h5>Learn</h5></li>
+			<li><a href="/overviews">Guides & Overviews</a></li>
+			<li><a href="/tutorials">Tutorials</a></li>
+			<li><a href="/style">Scala Style Guide</a></li>				
+		</ul>
+		<ul>
+			<li><h5>Quickref</h5></li>
+			<li><a href="/glossary">Glossary</a></li>
+			<li><a href="/cheatsheets">Cheatsheets</a></li>
+		</ul>
+		<ul>
+			<li><h5>Contribute</h5></li>
+			<li><a href="http://github.com/scala/scala.github.com">Source Code</a></li>
+			<li><a href="/contribute.html">Contributors Guide</a></li>
+			<li><a href="http://getsatisfaction.com/scaladocs">Suggestions</a></li>			
+		</ul>
+		<ul>
+			<li><h5>Other Resources</h5></li>
+			<li><a href="http://wiki.scala-lang.org">Wiki</a></li>
+			<li><a href="/sips">Scala Improvement Process</a></li>				
+		</ul>						
+	</div>
+	<div class="container copyright">
+ 		<p>
+			Copyright &copy; 2011-2013 EPFL. All rights reserved.
+			<a href="https://github.com/scala/scala.github.com/commits/gh-pages.atom"><img align="right" height="20px" width="20px" src="/resources/images/rss.png" alt="RSS feed of updates to the github repo hosting this site"></a>
+		</p>		
+	</div>
+</div>
+
+
+<script type="text/javascript">
+  $('#toc').toc({exclude: 'h1, h5, h6', context: '', autoId: true, numerate: false});
+</script>
+
+<script type="text/javascript">
+  $(function() {
+    moveScroller();
+  });
+</script>
+
+  </body>
+</html>
+
+
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="../resources/javascript/bootstrap-twipsy.js"></script>
+
+<script src="../resources/javascript/coursera/bargraphs.js"></script>
+<script src="../resources/javascript/coursera/grades-breakdown.js"></script>
+
+<script src="../resources/javascript/coursera/jquery-jvectormap-1.1.1.min.js"></script>
+<script src="../resources/javascript/coursera/worldmap.js"></script>
+<script src="../resources/dat/worldmap-counts.js"></script>
+<script src="../resources/dat/worldmap-density-count.js"></script>
+<script src="../resources/dat/worldmap-density-pop.js"></script>
+<script src="../resources/dat/worldmap-density.js"></script>
+<script src="../resources/javascript/coursera/worldmap-density.js"></script>
+<script src="../resources/javascript/coursera/worldmap-population.js"></script>
+
+<script src="../resources/javascript/coursera/raphael.js"></script>
+<script src="../resources/javascript/coursera/g.raphael.js"></script>
+<script src="../resources/javascript/coursera/g.pie.js"></script>
+
+<script src="../resources/javascript/coursera/where-apply.js"></script>
+<script src="../resources/javascript/coursera/what-interested-you.js"></script>

@@ -1,0 +1,348 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>Scala Documentation - Scala Documentation</title>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="icon" type="image/png" href="/resources/favicon.ico">
+
+    <!-- prettify js and CSS -->
+    <link rel="stylesheet" href="/resources/stylesheets/prettify.css" type="text/css" />
+    <script src="/resources/javascript/prettify/prettify.js" type="text/javascript" ></script>
+
+    <!-- jquery js -->
+    <script src="/resources/javascript/jquery.js" type="text/javascript" ></script>
+
+    <!-- Bootstrap JS and CSS -->
+    <link rel="stylesheet" href="/resources/stylesheets/bootstrap.css" type="text/css" />
+	<script src="/resources/javascript/bootstrap-dropdown.js" type="text/javascript" ></script>
+	<script src="/resources/javascript/bootstrap-dropdown-app.js" type="text/javascript" ></script>	
+
+    <!-- Base stylesheet for all pages -->
+    <link rel="stylesheet" href="/resources/stylesheets/base.css" type="text/css" />
+
+    <!-- You may want to change the paths below, according to your own CSS and JavaScript setup -->
+    <link rel="stylesheet" type="text/css" href="/resources/stylesheets/frontpage.css" />
+    <script type="text/javascript" src="/resources/javascript/jquery.easing.js"></script>
+    <script type="text/javascript" src="/resources/javascript/jquery.accordionza.js"></script>
+    <script src="/resources/javascript/frontpage.js" type="text/javascript" ></script>
+
+    <!-- google analytics -->
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-574683-5']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+
+
+    <script type="text/javascript">
+
+      $(document).ready(function() {
+		
+		var offset = $(".push").height() + $(".scrollingmenu").height() + 36;
+		if ( offset + $('.bottom').height() < $(window).height() ) {
+			var height = $(window).height() - offset;
+		   	$('.bottom').css("height", height);			
+		}
+		
+      });
+    </script>
+
+    <style type="text/css">
+      html {
+		background-color: #bcbcbc;
+      }
+
+      body {
+	     padding-top: 36px; 
+	     height: 100%;	
+	     background:url(/resources/images/bg.jpg) no-repeat top center #310808; 	 	 
+		  -webkit-box-shadow: inset 0 10px 50px rgba(0,0,0,.6);
+		     -moz-box-shadow: inset 0 10px 50px rgba(0,0,0,.6);
+		/*          box-shadow: inset 0 10px 30px rgba(0,0,0,.3);*/
+	  }
+	  .scrollingmenu {
+		  width: 940px;
+		  margin-left: auto;
+		  margin-right: auto;
+		  height: 280px;
+		  zoom: 1;		
+	}
+	.scrollingmenu h2 {
+      padding-bottom: 30px;
+	  color: #ffffff;
+	  font-size: 42px;
+	  line-height: 1;
+	  text-shadow: 0 1px 2px rgba(0,0,0,.5);
+	}
+	.bottom {
+		background-color: #bcbcbc;
+		padding-top: 20px;
+		border-top: 1px solid #8e397d;
+	}
+	.bottom h1,h2,h3 {
+		text-shadow: 0 1px 2px rgba(255,255,255,.5);
+	}
+	.bottom h1,h2,h3 a {
+                color: #404040;
+		text-shadow: 0 1px 2px rgba(255,255,255,.5);
+	}
+	
+	.bottom h3 .label {
+		text-shadow: 0 0 0 rgba(255,255,255,.5);
+	}
+
+	ul.dsq-widget-item {
+	    list-style:none;
+	}
+	
+	li.dsq-widget-item a {
+	     color: #48a2ff;		
+	}
+		
+	li.dsq-widget-item {
+	     background: rgba(0,0,0,.7); /* Old browsers */
+	     background: -moz-linear-gradient(top, rgba(0,0,0,.7) 1%, rgba(0,0,0,.7) 100%); /* FF3.6+ */
+	     background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,rgba(0,0,0,.7)), color-stop(100%,rgba(0,0,0,.7))); /* Chrome,Safari4+ */
+	     background: -webkit-linear-gradient(top, rgba(0,0,0,.7) 1%,rgba(0,0,0,.7) 100%); /* Chrome10+,Safari5.1+ */
+	     background: -o-linear-gradient(top, rgba(0,0,0,.7) 1%,rgba(0,0,0,.7) 100%); /* Opera11.10+ */
+	     background: -ms-linear-gradient(top, rgba(0,0,0,.7) 1%,rgba(0,0,0,.7) 100%); /* IE10+ */
+	     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7F000000', endColorstr='#7F000000',GradientType=0 ); /* IE6-9 */
+	     background: linear-gradient(top, rgba(0,0,0,.7) 1%,rgba(0,0,0,.7) 100%); /* W3C */
+	     box-shadow: 1px -1px 2px #bbc6c8;
+	     -webkit-box-shadow: 1px -1px 2px #bbc6c8;
+	     -moz-box-shadow: 1px -1px 2px #bbc6c8;
+	     border-radius:7px;
+	     -moz-border-radius:7px;
+	     -webkit-border-radius:7px;
+	     padding:0 10px 10px 10px;
+	     color: #bcbcbc;
+	     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+	}
+
+	li.dsq-widget-item:before {
+	    content: "";
+	    position: relative;
+	    top: -12px;
+	    border-width: 0 12px 12px;
+	    border-style: solid;
+	    border-color: rgba(0,0,0,.7) transparent;
+	    display: block;
+	    width: 0;
+	}
+	
+
+   </style>
+
+</head>
+  <body>
+    
+
+<div class="wrapper">
+      <!-- Topbar
+    ================================================== -->
+<div class="topbar">
+    <div class="topbar-inner">
+        <div class="container">
+            <a class="brand" href="/index.html"><img src="/resources/images/scala-logo.png"> Documentation</a>
+            <ul class="nav">
+
+                <li class="menu">
+                      <a href="#" class="menu">API</a>
+                      <ul class="menu-dropdown">
+                        <li><a href="http://www.scala-lang.org/api/current/">Current</a></li>
+                        <li><a href="http://www.scala-lang.org/archives/downloads/distrib/files/nightly/docs/library/index.html">Nightly</a></li>
+                        <!--<li class="divider"></li>
+                        <li><a href="#">Previous Versions</a></li>
+                        -->
+                      </ul>
+                </li>
+
+                <li class="menu">
+                      <a href="#" class="menu">Learn</a>
+                      <ul class="menu-dropdown">
+                        <li><a href="/overviews">Guides & Overviews</a></li>
+                        <li><a href="/tutorials">Tutorials</a></li>
+                        <li><a href="/style">Scala Style Guide</a></li>
+                      </ul>
+                </li>
+
+                <li class="menu">
+                      <a href="#" class="menu">Quickref</a>
+                      <ul class="menu-dropdown">
+                        <li><a href="/glossary">Glossary</a></li>
+                        <li><a href="/cheatsheets">Cheatsheets</a></li>
+                      </ul>
+                </li>
+
+                <li><a href="/contribute.html">Contribute</a></li>
+                <li><a href="/sips">SIPs</a></li>
+                <li><a href="http://wiki.scala-lang.org">Wiki</a></li>
+          </ul>
+          <form method="get" id="searchform" action="/search.html">
+            <input type="text" placeholder="Search"  class="field" name="q" id="q"/>
+          </form>
+           </li>
+          </ul>
+        </div>
+    </div>
+</div>
+
+  <header class="scrollingmenu">
+<!--<h2>Here is some type of meaningful headline.</h2>-->
+<h2>Community-driven documentation for Scala.</h2>
+
+<ul id="accordion2">
+	<li>
+		<img class="slide_thumb" alt="Thumbnail" src="/resources/images/slide1.jpg" />
+		<p class="slide_title"><strong>Overviews and Guides</strong></p>
+		<p class="slide_content">Collections, Actors, Swing, and more.</p>
+		<p class="slide_button"><a href="/overviews">Go there</a></p>
+	</li>
+	<li>
+		<img class="slide_thumb" alt="Thumbnail" src="/resources/images/slide2.jpg" />
+		<p class="slide_title"><strong>Tutorials</strong></p>
+		<p class="slide_content">Coming from Java? Python? Ruby? Tutorials which help the transition from language XYZ to Scala.</p>
+		<p class="slide_button"><a href="/tutorials">Go there</a></p>
+	</li>
+	<li>
+		<img class="slide_thumb" alt="Thumbnail" src="/resources/images/slide3.jpg" />
+		<p class="slide_title"><strong>Glossary</strong></p>
+		<p class="slide_content">Lost on some terminology? Check the glossary, direct from the book, <em>Programming in Scala</em>. </p>
+		<p class="slide_button"><a href="/glossary">Go there</a></p>
+	</li>
+</ul>
+</header>
+
+<div class="bottom">
+  <div class="container">
+    <div class="row">
+
+      <div class="span8">
+
+        <h2>We’re growing…</h2>
+        <p>We’re working on porting much of Scala’s useful documentation to this documentation repository. So hang on, content is soon forthcoming.<p>
+
+		<h3><a href="/sips">Scala Improvement Process</a> <span class="label success">Available</span></h3>
+		<p>Read language improvement proposals, participate in discussions surrounding submitted proposals, or submit your own improvement proposal.</p>
+
+		<h3><a href="/overviews">Guides and Overviews</a> <span class="label success">Some Available</span></h3>
+		<p>Some guides, such as Martin Odersky’s Collections Overview are already available. Others are currently being converted to markdown markup for inclusion here.</p>
+		
+		<h3><a href="/tutorials">Tutorials</a> <span class="label success">Some Available</span></h3>
+		<p>Some tutorials, such as the <em>Scala for Java Programmers</em> guide is already available. Others are currently being converted to markdown markup for inclusion here.</p>
+		
+		<h3><a href="/glossary">Glossary</a> <span class="label success">Available</span></h3>
+		<p>With permission from Artima Inc., we reproduce the glossary from <em>Programming in Scala</em> here, for easy reference.</p>				
+		
+		<h3><a href="/cheatsheets">Cheatsheets</a> <span class="label success">Available</span></h3>
+		<p>We've currently got one cheatsheet, thanks to Brendan O’Connor, and are looking for more to include!</p>
+		
+		<h3><a href="/style">Scala Style Guide</a> <span class="label success">Available</span></h3>
+		<p>Daniel Spiewak and David Copeland’s <em>Scala Style Guide</em> is now available. Thanks to them for putting together such an excellent style guide, and thanks to Simon Ochsenreither for converting it to markdown!</p>		
+
+		<h3>Language Specification <span class="label notice">Just an Idea</span></h3>
+		<p>It would be nice to have an HTML version of the language specification, right? This is just an idea for now…</p>				
+		
+		<p>&nbsp;</p><p>&nbsp;</p>
+		
+      </div>
+      <div class="span8">
+		<h1>Contributions Welcomed!</h1>
+                This site was designed so it would be easy for core committers and the community alike to build documentation. We’d love help of any kind&nbsp;– from detailed articles or overviews of Scala’s language features, to help converting documents to markdown. 
+		<p>&nbsp;</p>
+		<p><b>If you’d like to help us, please see the <a href="/contribute.html">Contribute</a> section of the site, and feel free to contact <a href="http://people.epfl.ch/heather.miller">Heather</a>.</b></p>
+		
+		<div id="recentcomments" class="dsq-widget"><h2 class="dsq-widget-title">Recent Comments</h2><script type="text/javascript" src="http://scalasip.disqus.com/recent_comments_widget.js?num_items=5&hide_avatars=0&avatar_size=32&excerpt_length=200"></script></div>
+		
+
+		<script type="text/javascript" charset="utf-8">
+		  var is_ssl = ("https:" == document.location.protocol);
+		  var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
+		  document.write(unescape("%3Cscript src='" + asset_host + "javascripts/feedback-v2.js' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+
+		<script type="text/javascript" charset="utf-8">
+		  var feedback_widget_options = {};
+
+		  feedback_widget_options.display = "overlay";  
+		  feedback_widget_options.company = "scaladocs";
+		  feedback_widget_options.placement = "left";
+		  feedback_widget_options.color = "#404040";
+		  feedback_widget_options.style = "idea";
+
+
+
+
+
+
+
+
+		  var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
+		</script>
+		
+      </div>
+    
+    </div>
+  </div>
+</div>
+    
+
+  <div class="push"></div>
+</div>
+
+
+  <div class="footer">
+	<div class="container">
+		<ul>
+			<li><h5>API</h5></li>
+			<li><a href="http://www.scala-lang.org/api/current/">Current</a></li>
+			<li><a href="http://www.scala-lang.org/archives/downloads/distrib/files/nightly/docs/library/index.html">Nightly</a></li>
+		</ul>
+		<ul>
+			<li><h5>Learn</h5></li>
+			<li><a href="/overviews">Guides & Overviews</a></li>
+			<li><a href="/tutorials">Tutorials</a></li>
+			<li><a href="/style">Scala Style Guide</a></li>				
+		</ul>
+		<ul>
+			<li><h5>Quickref</h5></li>
+			<li><a href="/glossary">Glossary</a></li>
+			<li><a href="/cheatsheets">Cheatsheets</a></li>
+		</ul>
+		<ul>
+			<li><h5>Contribute</h5></li>
+			<li><a href="http://github.com/scala/scala.github.com">Source Code</a></li>
+			<li><a href="/contribute.html">Contributors Guide</a></li>
+			<li><a href="http://getsatisfaction.com/scaladocs">Suggestions</a></li>			
+		</ul>
+		<ul>
+			<li><h5>Other Resources</h5></li>
+			<li><a href="http://wiki.scala-lang.org">Wiki</a></li>
+			<li><a href="/sips">Scala Improvement Process</a></li>				
+		</ul>						
+	</div>
+	<div class="container copyright">
+ 		<p>
+			Copyright &copy; 2011-2013 EPFL. All rights reserved.
+			<a href="https://github.com/scala/scala.github.com/commits/gh-pages.atom"><img align="right" height="20px" width="20px" src="/resources/images/rss.png" alt="RSS feed of updates to the github repo hosting this site"></a>
+		</p>		
+	</div>
+</div>
+
+
+  </body>
+</html>
+
+    

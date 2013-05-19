@@ -1,0 +1,1016 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>Value Classes and Universal Traits - Scala Documentation</title>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="icon" type="image/png" href="/resources/favicon.ico">
+
+    <!-- prettify js and CSS -->
+    <link rel="stylesheet" href="/resources/stylesheets/prettify.css" type="text/css" />
+    <script src="/resources/javascript/prettify/prettify.js" type="text/javascript" ></script>
+
+
+    <!-- jquery js -->
+    <script src="/resources/javascript/jquery.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/effects.core.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/effects.highlight.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/moveScroller.js" type="text/javascript" ></script>
+
+    <!-- Bootstrap JS and CSS -->
+    <link rel="stylesheet" href="/resources/stylesheets/bootstrap.css" type="text/css" />
+	  <script src="/resources/javascript/bootstrap-dropdown.js" type="text/javascript" ></script>
+	  <script src="/resources/javascript/bootstrap-dropdown-app.js" type="text/javascript" ></script>
+
+    <!-- Base stylesheet for all pages -->
+    <link rel="stylesheet" href="/resources/stylesheets/base.css" type="text/css" />
+
+    <!-- table of contents js -->
+    <script src="/resources/javascript/toc.js" type="text/javascript" ></script>
+
+    <!-- google analytics -->
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-574683-5']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+
+    <!-- prettyprint js to prepend generated pre/code tags -->
+    <script type="text/javascript">
+      function styleCode()
+        {
+          if (typeof disableStyleCode != "undefined")
+          {
+              return;
+          }
+          var a = false;
+          $("pre code").parent().each(function()
+          {
+              if (!$(this).hasClass("prettyprint"))
+              {
+                  $(this).addClass("prettyprint lang-scala linenums");
+                  a = true
+              }
+          });
+          if (a) { prettyPrint() }
+      }
+    </script>
+
+    <script type="text/javascript">
+      jQuery(document).ready(function($) {
+
+            $(".scroll").click(function(event){
+              event.preventDefault();
+              $('html,body').animate({scrollTop:$(this.hash).offset().top}, 500);
+              $('html,body').animate({scrollTop:$(this.hash).offset().top-=50}, 500);
+              $(this.hash).effect("highlight", {color: "#FFCC85"}, 3000);
+            });
+      });
+    </script>
+
+    <script type="text/javascript">
+      $(window).ready(function goToSubsection() {
+          if (window.location.hash)
+          {
+              $('html,body').animate({scrollTop:$(window.location.hash).offset().top}, 500);
+              $('html,body').animate({scrollTop:$(window.location.hash).offset().top-=50}, 500);
+              $(window.location.hash).effect("highlight", {color: "#FFCC85"}, 3000);
+          }
+        });
+    </script>
+
+    <style type="text/css">
+
+       p.contents {
+           margin-left: 15px;
+           font-weight: bold;
+           font-size: 16px;
+       }
+
+       div#toc ul {
+           list-style: none;
+       }
+
+       div#toc ul a {
+           display: block;
+           list-style: none;
+           line-height: 22px;
+           font-weight: bold;
+           width: 100%;
+       }
+
+      div#toc ul li ul {
+           list-style: disc;
+      }
+
+      div#toc ul li ul a {
+           line-height: 18px;
+           font-weight: normal;
+      }
+
+      div#toc ul li ul li ul {
+           list-style: square;
+      }
+       div#toc ul li ul li ul a {
+       }
+
+       div#scroller-anchor {
+           width: inherit;
+       }
+
+       div#scroller {
+           width: inherit;
+       }
+
+       div#guide-title {
+        text-transform: capitalize;
+        font-size: 16px;
+        padding-bottom: 6px;
+        color: #BFBFBF;
+        text-transform: uppercase;
+        font-weight: bold;
+       }
+
+       input, textarea, select, .uneditable-input {
+	       width: 165px;
+	     }
+
+    </style>
+
+</head>
+  <body onload="styleCode()">
+
+    <!-- Topbar
+    ================================================== -->
+<div class="topbar">
+    <div class="topbar-inner">
+        <div class="container">
+            <a class="brand" href="/index.html"><img src="/resources/images/scala-logo.png"> Documentation</a>
+            <ul class="nav">
+
+                <li class="menu">
+                      <a href="#" class="menu">API</a>
+                      <ul class="menu-dropdown">
+                        <li><a href="http://www.scala-lang.org/api/current/">Current</a></li>
+                        <li><a href="http://www.scala-lang.org/archives/downloads/distrib/files/nightly/docs/library/index.html">Nightly</a></li>
+                        <!--<li class="divider"></li>
+                        <li><a href="#">Previous Versions</a></li>
+                        -->
+                      </ul>
+                </li>
+
+                <li class="menu">
+                      <a href="#" class="menu">Learn</a>
+                      <ul class="menu-dropdown">
+                        <li><a href="/overviews">Guides & Overviews</a></li>
+                        <li><a href="/tutorials">Tutorials</a></li>
+                        <li><a href="/style">Scala Style Guide</a></li>
+                      </ul>
+                </li>
+
+                <li class="menu">
+                      <a href="#" class="menu">Quickref</a>
+                      <ul class="menu-dropdown">
+                        <li><a href="/glossary">Glossary</a></li>
+                        <li><a href="/cheatsheets">Cheatsheets</a></li>
+                      </ul>
+                </li>
+
+                <li><a href="/contribute.html">Contribute</a></li>
+                <li><a href="/sips">SIPs</a></li>
+                <li><a href="http://wiki.scala-lang.org">Wiki</a></li>
+          </ul>
+          <form method="get" id="searchform" action="/search.html">
+            <input type="text" placeholder="Search"  class="field" name="q" id="q"/>
+          </form>
+           </li>
+          </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    
+    <div class="span10"><h1>Value Classes and Universal Traits</h1></div>
+
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+
+    
+      
+    
+
+    <div class="span6">
+      
+        <a href="/overviews/core/value-classes.html"><img src="/resources/images/language/en.png" title="Language: en"/></a> 
+        
+          <a href="/ja/overviews/core/value-classes.html"><img src="/resources/images/language/ja.png" title="Language: ja"/></a> 
+        
+      
+    </div>
+
+    <div class="span10">
+      <p><strong>Mark Harrah</strong></p>
+
+<h2 id='introduction'>Introduction</h2>
+
+<p>Value classes are a new mechanism in Scala to avoid allocating runtime objects. This is accomplished through the definition of new <code>AnyVal</code> subclasses. They were proposed in <a href='http://docs.scala-lang.org/sips/pending/value-classes.html'>SIP-15</a>. The following shows a very minimal value class definition:</p>
+
+<pre><code>class Wrapper(val underlying: Int) extends AnyVal</code></pre>
+
+<p>It has a single, public <code>val</code> parameter that is the underlying runtime representation. The type at compile time is <code>Wrapper</code>, but at runtime, the representation is an <code>Int</code>. A value class can define <code>def</code>s, but no <code>val</code>s, <code>var</code>s, or nested <code>traits</code>s, <code>class</code>es or <code>object</code>s:</p>
+
+<pre><code>class Wrapper(val underlying: Int) extends AnyVal {
+  def foo: Wrapper = new Wrapper(underlying * 19)
+}</code></pre>
+
+<p>A value class can only extend <em>universal traits</em> and cannot be extended itself. A <em>universal trait</em> is a trait that extends <code>Any</code>, only has <code>def</code>s as members, and does no initialization. Universal traits allow basic inheritance of methods for value classes, but they <em>incur the overhead of allocation</em>. For example,</p>
+
+<pre><code>trait Printable extends Any {
+  def print(): Unit = println(this)
+}
+class Wrapper(val underlying: Int) extends AnyVal with Printable
+
+val w = new Wrapper(3)
+w.print() // actually requires instantiating a Wrapper instance</code></pre>
+
+<p>The remaining sections of this documentation show use cases, details on when allocations do and do not occur, and concrete examples of limitations of value classes.</p>
+
+<h2 id='extension_methods'>Extension methods</h2>
+
+<p>One use case for value classes is to combine them with implicit classes (<a href='http://docs.scala-lang.org/sips/pending/implicit-classes.html'>SIP-13</a>) for allocation-free extension methods. Using an implicit class provides a more convenient syntax for defining extension methods, while value classes remove the runtime overhead. A good example is the <code>RichInt</code> class in the standard library. <code>RichInt</code> extends the <code>Int</code> type with several methods. Because it is a value class, an instance of <code>RichInt</code> doesn&#8217;t need to be created when using <code>RichInt</code> methods.</p>
+
+<p>The following fragment of <code>RichInt</code> shows how it extends <code>Int</code> to allow the expression <code>3.toHexString</code>:</p>
+
+<pre><code>class RichInt(val self: Int) extends AnyVal {
+  def toHexString: String = java.lang.Integer.toHexString(self)
+}</code></pre>
+
+<p>At runtime, this expression <code>3.toHexString</code> is optimised to the equivalent of a method call on a static object (<code>RichInt$.MODULE$.extension$toHexString(3)</code>), rather than a method call on a newly instantiated object.</p>
+
+<h2 id='correctness'>Correctness</h2>
+
+<p>Another use case for value classes is to get the type safety of a data type without the runtime allocation overhead. For example, a fragment of a data type that represents a distance might look like:</p>
+
+<pre><code>class Meter(val value: Double) extends AnyVal {
+  def +(m: Meter): Meter = new Meter(value + m.value)
+}</code></pre>
+
+<p>Code that adds two distances, such as</p>
+
+<pre><code>val x = new Meter(3.4)
+val y = new Meter(4.3)
+val z = x + y</code></pre>
+
+<p>will not actually allocate any <code>Meter</code> instances, but will only use primitive doubles at runtime.</p>
+
+<p><em>Note: You can use case classes and/or extension methods for cleaner syntax in practice.</em></p>
+
+<h2 id='when_allocation_is_necessary'>When Allocation Is Necessary</h2>
+
+<p>Because the JVM does not support value classes, Scala sometimes needs to actually instantiate a value class. Full details may be found in <a href='http://docs.scala-lang.org/sips/pending/value-classes.html'>SIP-15</a>.</p>
+
+<h3 id='allocation_summary'>Allocation Summary</h3>
+
+<p>A value class is actually instantiated when:</p>
+
+<ol>
+<li>a value class is treated as another type.</li>
+
+<li>a value class is assigned to an array.</li>
+
+<li>doing runtime type tests, such as pattern matching.</li>
+</ol>
+
+<h3 id='allocation_details'>Allocation Details</h3>
+
+<p>Whenever a value class is treated as another type, including a universal trait, an instance of the actual value class must be instantiated. As an example, consider the <code>Meter</code> value class:</p>
+
+<pre><code>trait Distance extends Any
+case class Meter(val value: Double) extends AnyVal with Distance</code></pre>
+
+<p>A method that accepts a value of type <code>Distance</code> will require an actual <code>Meter</code> instance. In the following example, the <code>Meter</code> classes are actually instantiated:</p>
+
+<pre><code>def add(a: Distance, b: Distance): Distance = ...
+add(Meter(3.4), Meter(4.3))</code></pre>
+
+<p>If the signature of <code>add</code> were instead:</p>
+
+<pre><code>def add(a: Meter, b: Meter): Meter = ...</code></pre>
+
+<p>then allocations would not be necessary. Another instance of this rule is when a value class is used as a type argument. For example, the actual Meter instance must be created for even a call to identity:</p>
+
+<pre><code>def identity[T](t: T): T = t
+identity(Meter(5.0))</code></pre>
+
+<p>Another situation where an allocation is necessary is when assigning to an array, even if it is an array of that value class. For example,</p>
+
+<pre><code>val m = Meter(5.0)
+val array = Array[Meter](m)</code></pre>
+
+<p>The array here contains actual <code>Meter</code> instances and not just the underlying double primitives.</p>
+
+<p>Lastly, type tests such as those done in pattern matching or <code>asInstanceOf</code> require actual value class instances:</p>
+
+<pre><code>case class P(val i: Int) extends AnyVal
+
+val p = new P(3)
+p match { // new P instantiated here
+  case P(3) =&gt; println(&quot;Matched 3&quot;)
+  case P(x) =&gt; println(&quot;Not 3&quot;)
+}</code></pre>
+
+<h2 id='limitations'>Limitations</h2>
+
+<p>Value classes currently have several limitations, in part because the JVM does not natively support the concept of value classes. Full details on the implementation of value classes and their limitations may be found in <a href='http://docs.scala-lang.org/sips/pending/value-classes.html'>SIP-15</a>.</p>
+
+<h3 id='summary_of_limitations'>Summary of Limitations</h3>
+
+<p>A value class &#8230;</p>
+
+<ol>
+<li>&#8230; must have only a primary constructor with exactly one public, val parameter whose type is not a value class.</li>
+
+<li>&#8230; may not have specialized type parameters.</li>
+
+<li>&#8230; may not have nested or local classes, traits, or objects</li>
+
+<li>&#8230; may not define a equals or hashCode method.</li>
+
+<li>&#8230; must be a top-level class or a member of a statically accessible object</li>
+
+<li>&#8230; can only have defs as members. In particular, it cannot have lazy vals, vars, or vals as members.</li>
+
+<li>&#8230; cannot be extended by another class.</li>
+</ol>
+
+<h3 id='examples_of_limitations'>Examples of Limitations</h3>
+
+<p>This section provides many concrete consequences of these limitations not already described in the necessary allocations section.</p>
+
+<p>Multiple constructor parameters are not allowed:</p>
+
+<pre><code>class Complex(val real: Double, val imag: Double) extends AnyVal</code></pre>
+
+<p>and the Scala compiler will generate the following error message:</p>
+
+<pre><code>Complex.scala:1: error: value class needs to have exactly one public val parameter
+class Complex(val real: Double, val imag: Double) extends AnyVal
+      ^</code></pre>
+
+<p>Because the constructor parameter must be a <code>val</code>, it cannot be a by-name parameter:</p>
+
+<pre><code>NoByName.scala:1: error: `val&#39; parameters may not be call-by-name
+class NoByName(val x: =&gt; Int) extends AnyVal
+                      ^</code></pre>
+
+<p>Scala doesn&#8217;t allow lazy val constructor parameters, so that isn&#8217;t allowed either. Multiple constructors are not allowed:</p>
+
+<pre><code>class Secondary(val x: Int) extends AnyVal {
+  def this(y: Double) = this(y.toInt)
+}
+
+Secondary.scala:2: error: value class may not have secondary constructors
+  def this(y: Double) = this(y.toInt)
+      ^</code></pre>
+
+<p>A value class cannot have lazy vals or vals as members and cannot have nested classes, traits, or objects:</p>
+
+<pre><code>class NoLazyMember(val evaluate: () =&gt; Double) extends AnyVal {
+  val member: Int = 3
+  lazy val x: Double = evaluate()
+  object NestedObject
+  class NestedClass
+}
+
+Invalid.scala:2: error: this statement is not allowed in value class: private[this] val member: Int = 3
+  val member: Int = 3
+      ^
+Invalid.scala:3: error: this statement is not allowed in value class: lazy private[this] var x: Double = NoLazyMember.this.evaluate.apply()
+  lazy val x: Double = evaluate()
+           ^
+Invalid.scala:4: error: value class may not have nested module definitions
+  object NestedObject
+         ^
+Invalid.scala:5: error: value class may not have nested class definitions
+  class NestedClass
+        ^</code></pre>
+
+<p>Note that local classes, traits, and objects are not allowed either, as in the following:</p>
+
+<pre><code>class NoLocalTemplates(val x: Int) extends AnyVal {
+  def aMethod = {
+    class Local
+    ...
+  }
+}</code></pre>
+
+<p>A current implementation restriction is that value classes cannot be nested:</p>
+
+<pre><code>class Outer(val inner: Inner) extends AnyVal
+class Inner(val value: Int) extends AnyVal
+
+Nested.scala:1: error: value class may not wrap another user-defined value class
+class Outer(val inner: Inner) extends AnyVal
+                ^</code></pre>
+
+<p>Additionally, structural types cannot use value classes in method parameter or return types:</p>
+
+<pre><code>class Value(val x: Int) extends AnyVal
+object Usage {
+  def anyValue(v: { def value: Value }): Value =
+    v.value
+}
+
+Struct.scala:3: error: Result type in structural refinement may not refer to a user-defined value class
+  def anyValue(v: { def value: Value }): Value =
+                               ^</code></pre>
+
+<p>A value class may not extend a non-universal trait and a value class may not itself be extended:</p>
+
+<pre><code>trait NotUniversal
+class Value(val x: Int) extends AnyVal with notUniversal
+class Extend(x: Int) extends Value(x)
+
+Extend.scala:2: error: illegal inheritance; superclass AnyVal
+ is not a subclass of the superclass Object
+ of the mixin trait NotUniversal
+class Value(val x: Int) extends AnyVal with NotUniversal
+                                            ^
+Extend.scala:3: error: illegal inheritance from final class Value
+class Extend(x: Int) extends Value(x)
+                             ^</code></pre>
+
+<p>The second error messages shows that although the <code>final</code> modifier is not explicitly specified for a value class, it is assumed.</p>
+
+<p>Another limitation that is a result of supporting only one parameter to a class is that a value class must be top-level or a member of a statically accessible object. This is because a nested value class would require a second parameter that references the enclosing class. So, this is not allowed:</p>
+
+<pre><code>class Outer {
+  class Inner(val x: Int) extends AnyVal
+}
+
+Outer.scala:2: error: value class may not be a member of another class
+class Inner(val x: Int) extends AnyVal
+      ^</code></pre>
+
+<p>but this is allowed because the enclosing object is top-level:</p>
+
+<pre><code>object Outer {
+  class Inner(val x: Int) extends AnyVal
+}</code></pre>
+      
+    </div>
+    
+    <div class="span6">
+      <div id="scroller-anchor">
+  <div id="scroller">
+    <p class="contents">Contents</p>
+    <div id="toc"></div>    
+              
+  </div>
+</div>
+
+    </div>
+    
+	
+  </div>
+</div>
+
+<div class="footer">
+	<div class="container">
+		<ul>
+			<li><h5>API</h5></li>
+			<li><a href="http://www.scala-lang.org/api/current/">Current</a></li>
+			<li><a href="http://www.scala-lang.org/archives/downloads/distrib/files/nightly/docs/library/index.html">Nightly</a></li>
+		</ul>
+		<ul>
+			<li><h5>Learn</h5></li>
+			<li><a href="/overviews">Guides & Overviews</a></li>
+			<li><a href="/tutorials">Tutorials</a></li>
+			<li><a href="/style">Scala Style Guide</a></li>				
+		</ul>
+		<ul>
+			<li><h5>Quickref</h5></li>
+			<li><a href="/glossary">Glossary</a></li>
+			<li><a href="/cheatsheets">Cheatsheets</a></li>
+		</ul>
+		<ul>
+			<li><h5>Contribute</h5></li>
+			<li><a href="http://github.com/scala/scala.github.com">Source Code</a></li>
+			<li><a href="/contribute.html">Contributors Guide</a></li>
+			<li><a href="http://getsatisfaction.com/scaladocs">Suggestions</a></li>			
+		</ul>
+		<ul>
+			<li><h5>Other Resources</h5></li>
+			<li><a href="http://wiki.scala-lang.org">Wiki</a></li>
+			<li><a href="/sips">Scala Improvement Process</a></li>				
+		</ul>						
+	</div>
+	<div class="container copyright">
+ 		<p>
+			Copyright &copy; 2011-2013 EPFL. All rights reserved.
+			<a href="https://github.com/scala/scala.github.com/commits/gh-pages.atom"><img align="right" height="20px" width="20px" src="/resources/images/rss.png" alt="RSS feed of updates to the github repo hosting this site"></a>
+		</p>		
+	</div>
+</div>
+
+
+<script type="text/javascript">
+  $('#toc').toc({exclude: 'h1, h5, h6', context: '', autoId: true, numerate: false});
+</script>
+
+<script type="text/javascript">
+  $(function() {
+    moveScroller();
+  });
+</script>
+
+  </body>
+</html>
+
+    

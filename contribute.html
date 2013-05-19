@@ -1,0 +1,507 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>Contribute - Scala Documentation</title>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="icon" type="image/png" href="/resources/favicon.ico">
+
+    <!-- prettify js and CSS -->
+    <link rel="stylesheet" href="/resources/stylesheets/prettify.css" type="text/css" />
+    <script src="/resources/javascript/prettify/prettify.js" type="text/javascript" ></script>
+
+    <!-- jquery js -->
+    <script src="/resources/javascript/jquery.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/effects.core.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/effects.highlight.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/moveScroller.js" type="text/javascript" ></script>
+
+    <!-- Bootstrap JS and CSS -->
+    <link rel="stylesheet" href="/resources/stylesheets/bootstrap.css" type="text/css" />
+	<script src="/resources/javascript/bootstrap-dropdown.js" type="text/javascript" ></script>
+	<script src="/resources/javascript/bootstrap-dropdown-app.js" type="text/javascript" ></script>	
+
+    <!-- Base stylesheet for all pages -->
+    <link rel="stylesheet" href="/resources/stylesheets/base.css" type="text/css" />
+
+    <!-- You may want to change the paths below, according to your own CSS and JavaScript setup -->
+    <script type="text/javascript" src="/resources/javascript/jquery.easing.js"></script>
+    <script type="text/javascript" src="/resources/javascript/jquery.accordionza.js"></script>
+    <script src="/resources/javascript/frontpage.js" type="text/javascript" ></script>
+
+    <!-- table of contents js -->
+    <script src="/resources/javascript/toc.js" type="text/javascript" ></script>
+
+    <!-- google analytics -->
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-574683-5']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+
+
+    <!-- prettyprint js to prepend generated pre/code tags -->
+   <script type="text/javascript">
+      function styleCode() 
+        {
+          if (typeof disableStyleCode != "undefined") 
+          {
+              return;
+          }
+          var a = false;
+          $("pre code").parent().each(function() 
+          {
+              if (!$(this).hasClass("prettyprint")) 
+              {
+                  $(this).addClass("prettyprint lang-scala linenums");
+                  a = true
+              }
+          });
+          if (a) { prettyPrint() } 
+      }
+    </script>
+
+    <script type="text/javascript">
+      jQuery(document).ready(function($) {
+
+            $(".scroll").click(function(event){		
+              event.preventDefault();
+              $('html,body').animate({scrollTop:$(this.hash).offset().top}, 500);
+              $('html,body').animate({scrollTop:$(this.hash).offset().top-=50}, 500);
+              $(this.hash).effect("highlight", {color: "#FFCC85"}, 3000);
+            });
+      });
+    </script>
+
+
+    <style type="text/css">
+      html, body {
+	     padding-top: 36px; 
+	     height: 100%;
+	     background:url(/resources/images/bg-short.jpg) no-repeat top center #310808; 	 	 
+		  -webkit-box-shadow: inset 0 10px 50px rgba(0,0,0,.6);
+		     -moz-box-shadow: inset 0 10px 50px rgba(0,0,0,.6);
+		/*          box-shadow: inset 0 10px 30px rgba(0,0,0,.3);*/
+	  }
+
+      input, textarea, select, .uneditable-input {
+	       width: 165px;
+	   }
+		
+	  .scrollingmenu {
+		  width: 940px;
+		  margin-left: auto;
+		  margin-right: auto;
+		  height: 70px;
+		  zoom: 1;		
+	}
+	.scrollingmenu h1 {
+      padding-bottom: 30px;
+	  color: #ffffff;
+	  font-size: 42px;
+	  line-height: 1;
+	  text-shadow: 0 1px 2px rgba(0,0,0,.5);
+	}
+    .container {
+	   min-height: 100%;
+    }
+    .bottom {
+	   min-height: 100%;
+	   background-color: #ffffff;
+	   padding-top: 20px;
+	   border-top: 1px solid #8e397d;
+	}
+	.bottom h1,h2,h3 {
+		text-shadow: 0 1px 2px rgba(255,255,255,.5);
+	}
+	.bottom h1,h2,h3 a {
+                color: #404040;
+		text-shadow: 0 1px 2px rgba(255,255,255,.5);
+	}
+
+	.bottom small {
+                color: #808080;
+		text-shadow: 0 1px 1px rgba(255,255,255,.5);
+	}
+
+	.bottom p.under {
+                color: #808080;
+		text-shadow: 0 1px 1px rgba(255,255,255,.5);
+		font-size: 18px;
+		line-height: 36px;
+		margin-top: -25px;
+	}
+
+        .bottom ul.thanks {
+                margin: 10px 0 4px 25px;
+                list-style: square;
+        }
+
+        .bottom ul.thanks li {
+                color: #404040;
+                font-size: 16px;
+                line-height: 22px;
+                margin: 0px;
+         }
+
+        .page-header-index{margin-bottom:17px;border-bottom:1px solid #808080;-webkit-box-shadow:0 1px 0 rgba(255, 255, 255, 0.5);-moz-box-shadow:0 1px 0 rgba(255, 255, 255, 0.5);box-shadow:0 1px 0 rgba(255, 255, 255, 0.5);}
+
+       p.contents {
+           font-weight: bold;
+           font-size: 16px;
+       }
+
+       div#toc ul {
+           list-style: none;
+       }
+
+       div#toc ul a {
+           display: block;
+           list-style: none;
+           line-height: 22px;
+           font-weight: bold;
+           width: 100%;
+       }
+
+      div#toc ul li ul {
+           list-style: disc;
+      }
+
+      div#toc ul li ul a {
+           line-height: 18px;
+           font-weight: normal;
+      }
+
+      div#toc ul li ul li ul {
+           list-style: square;
+      }
+       div#toc ul li ul li ul a {
+       }
+
+       div#scroller-anchor {
+           width: inherit;
+       }
+
+       div#scroller {
+           width: inherit;
+       }
+
+       p#about {
+      	 margin-top: -8px;
+         padding-left: 14px;
+       }
+
+       ul {
+	     margin-left: 15px;
+       }
+
+
+   </style>
+
+</head>
+  <body>
+
+
+<div class="wrapper">
+      <!-- Topbar
+    ================================================== -->
+<div class="topbar">
+    <div class="topbar-inner">
+        <div class="container">
+            <a class="brand" href="/index.html"><img src="/resources/images/scala-logo.png"> Documentation</a>
+            <ul class="nav">
+
+                <li class="menu">
+                      <a href="#" class="menu">API</a>
+                      <ul class="menu-dropdown">
+                        <li><a href="http://www.scala-lang.org/api/current/">Current</a></li>
+                        <li><a href="http://www.scala-lang.org/archives/downloads/distrib/files/nightly/docs/library/index.html">Nightly</a></li>
+                        <!--<li class="divider"></li>
+                        <li><a href="#">Previous Versions</a></li>
+                        -->
+                      </ul>
+                </li>
+
+                <li class="menu">
+                      <a href="#" class="menu">Learn</a>
+                      <ul class="menu-dropdown">
+                        <li><a href="/overviews">Guides & Overviews</a></li>
+                        <li><a href="/tutorials">Tutorials</a></li>
+                        <li><a href="/style">Scala Style Guide</a></li>
+                      </ul>
+                </li>
+
+                <li class="menu">
+                      <a href="#" class="menu">Quickref</a>
+                      <ul class="menu-dropdown">
+                        <li><a href="/glossary">Glossary</a></li>
+                        <li><a href="/cheatsheets">Cheatsheets</a></li>
+                      </ul>
+                </li>
+
+                <li><a href="/contribute.html">Contribute</a></li>
+                <li><a href="/sips">SIPs</a></li>
+                <li><a href="http://wiki.scala-lang.org">Wiki</a></li>
+          </ul>
+          <form method="get" id="searchform" action="/search.html">
+            <input type="text" placeholder="Search"  class="field" name="q" id="q"/>
+          </form>
+           </li>
+          </ul>
+        </div>
+    </div>
+</div>
+
+  <header class="scrollingmenu">
+    <h1>Contribute</h1>
+  </header>
+
+  <div class="bottom">
+    <div class="container">
+      <div class="row">
+
+        <div class="span11">
+          <h6 id='heather_miller'>Heather Miller</h6>
+
+<h2 id='a_place_to_build_documentation_together'>A Place to Build Documentation Together</h2>
+
+<p><a href='http://docs.scala-lang.org'>docs.scala-lang.org</a> was intended to make it easier for the Scala team and the community at large to easily collect, organize, and &#8220;make public&#8221; many different types of documentation while making it easy for users to find, interact, and help us improve that documentation.</p>
+
+<p>This website is an open-source repository of official Scala documentation, hosted on <a href='https://github.com/scala/scala.github.com'>github</a>, that is always ready for contributions.</p>
+
+<h3 id='a_need_for_better_documentation'>A Need for Better Documentation</h3>
+
+<p>The availability, depth, and quality of documentation <a href='http://www.google.com/moderator/#1/e=945de&amp;t=945de.40'>is considered by many to be huge issue</a>.</p>
+
+<p>As Scala continues to mature, it continues to attract more and more interested newcomers and potential adopters who are well accustomed to easy-to-find, abundant, quality documentation (found in other languages, like Java). For many, the learning curve becomes unnecessarily steep, and <a href='http://groups.google.com/group/scala-user/browse_thread/thread/29996782cb8428cd/5ade8462ba30b177'>people sometimes get frustrated</a>.</p>
+
+<p>If we want Scala to be accessible to more programmers, clear, easy-to-find documentation is essential.</p>
+
+<p>If you&#8217;re interested in contributing to the Scala project in general, I argue that one of the most meaningful ways that you can, is to help us improve this transfer of information- let&#8217;s make it easier and faster for people to <em>get</em> core concepts, and to answer their own questions so they can progress to <em>Scala-proficient</em> quickly. Each line that you contribute has the potential to affect the entire Scala community as a whole&#8211; current, and future.</p>
+
+<h2 id='about_docsscalalangorg'>About docs.scala-lang.org</h2>
+
+<h3 id='content'>Content</h3>
+
+<p>There are currently 3 different <em>types</em> of documentation supported in this repository.</p>
+
+<ul>
+<li><strong>Guides/Overviews</strong>: Definitive guides/overviews of specific language features. Often long, detailed documents, often produced by members of the Scala team. An example is the excellent <a href='/overviews/collections/introduction.html'>Collections</a> overview.</li>
+
+<li><strong>Tutorials</strong>: Bite-size, example-rich, and concise articles meant to get a developer up to speed quickly.</li>
+
+<li><strong>Cheatsheets</strong>: Quick reference of Scala syntax and behaviors.</li>
+</ul>
+
+<h3 id='implementation'>Implementation</h3>
+
+<p>This documentation repository is open-source, it lives in <a href='https://github.com/scala/scala.github.com'>github repository</a>, and is always contribution-ready.</p>
+
+<p>It&#8217;s statically generated from <a href='http://en.wikipedia.org/wiki/Markdown'>Markdown</a> source using <a href='https://github.com/mojombo/jekyll'>Jekyll</a>, and hosted on <a href='http://pages.github.com/'>GitHub Pages</a>. This workflow was chosen so as to make it as easy as possible for core committers and the community alike to produce HTML documentation, and as easy as possible to publish it in a central location.</p>
+
+<p>The markdown syntax being used supports <a href='http://maruku.rubyforge.org/maruku.html'>Maruku</a> extensions, and has automatic syntax highlighting, without the need for any tags.</p>
+
+<h2 id='submitting_docs'>Submitting Docs</h2>
+
+<p>For one to contribute a document, one must simply fork the <a href='https://github.com/scala/scala.github.com'>repo</a>, write their article in Markdown (example below), and submit a pull request. That&#8217;s it. Likely after some edits and discussion, your document will be made live on <a href='http://docs.scala-lang.org'>docs.scala-lang.org</a>.</p>
+
+<pre><code>---
+layout: overview
+title: My Awesome Title
+---
+
+## An h2 Header in Markdown
+
+And a paragraph, with a [link](http://www.scala-lang.org).
+
+One can contribute code by indenting it 4 spaces, or in-line by putting backticks around it like so, `def foo`</code></pre>
+
+<p>Everything else is automatically generated for you; tables of contents, and most index pages. And of course, the styling is already taken care of for you.</p>
+
+<h3 id='criteria_for_docs_to_be_accepted'>Criteria for Docs to be Accepted</h3>
+
+<p>The goal of this documentation repository is to be tighter and more organized than other community-driven documentation platforms, like wikis. As such, any document pulled in for inclusion on <a href='http://docs.scala-lang.org'>http://docs.scala-lang.org</a> must:</p>
+
+<ul>
+<li><strong>&#8220;fit in&#8221;</strong> to the repository ( <em>i.e.,</em> it should not be a complete duplicate of another article),</li>
+
+<li><strong>be polished</strong> it must be thorough, complete, correct, organized, and &#8220;article-like&#8221; (personal programming notes don&#8217;t quite fit.)</li>
+
+<li><strong>be maintained</strong> if the document might require revisions from time to time, it should come with an owner</li>
+</ul>
+
+<p>If you have something you&#8217;re thinking about contributing, or that you&#8217;re thinking about writing in order to contribute&#8211; we&#8217;d love to consider it! Please don&#8217;t hesitate to contact <a href='http://people.epfl.ch'>Heather</a> with any questions, concerns, clarifications, etc.</p>
+
+<h2 id='document_templates'>Document Templates</h2>
+<div class='alert-message info'>
+  <p><strong>Note:</strong> These templates will soon change slightly as a result of necessary refactoring.</p>
+</div>
+<h3 id='guidesoverviews'>Guides/Overviews</h3>
+
+<p>A guide or an overview that can be logically placed on <strong>one</strong> page must be placed in the directory <code>overviews/RELEVANT-CATEGORY/_posts</code> with the file name in the format <code>YYYY-MM-dd-title-separarted-by-dashes.md</code>, and header:</p>
+
+<pre><code>---
+layout: overview
+title: YOUR TITLE
+---</code></pre>
+
+<p>The rest of the document should, of course, be written in <a href='http://en.wikipedia.org/wiki/Markdown'>Markdown</a>.</p>
+
+<p>At the moment, <code>RELEVANT-CATEGORY</code> corresponds to only a single category, &#8220;core,&#8221; because we are currently focusing on building up documentation of core libraries. However, expect more categories here in the future.</p>
+
+<p>If your document consists of <strong>multiple</strong> pages, like the <a href='/overviews/collections/index.html'>Collections</a> overview, an ordering must be specified, by numbering documents in their logical order with <code>num</code>, and a name must be assigned to the collection of pages using <code>partof</code>. For example, the following header might be used for a document in the collections overview:</p>
+
+<pre><code>---
+layout: overview-large
+title: YOUR TITLE
+
+partof: collections
+num: 10
+---</code></pre>
+
+<p>A <strong>single</strong> document in the collection must contain a tag in the header, <code>outof</code>, that indicates the total number of documents in the large overview. Putting it on the last page in the overview is often best:</p>
+
+<pre><code>---
+layout: overview-large
+title: YOUR TITLE
+
+partof: collections
+num: 15
+outof: 15
+---</code></pre>
+
+<p>Any overview document may also include comments. To include comments, just add the tag <code>disqus: true</code> to your header.</p>
+
+<p>Index pages, such as <a href='http://docs.scala-lang.org/overviews/index.html'>http://docs.scala-lang.org/overviews/index.html</a> are automatically generated, assuming documents are properly placed under the correct <code>RELEVANT-CATEGORY</code>. So, simply drop your document into the correct folder, and you&#8217;re done.</p>
+
+<h3 id='tutorials'>Tutorials</h3>
+
+<p>At the moment, a tutorial that can be logically placed on <strong>one</strong> page must be placed in the directory <code>tutorials/</code> with the file name in the format <code>title-separated-by-dashes.md</code>. For the moment, single-page tutorials use the same layout as single-page overviews:</p>
+
+<pre><code>---
+layout: overview
+title: YOUR TITLE
+---</code></pre>
+
+<p>If you have a <strong>multiple-page</strong> tutorial, like in the case of multiple-page overviews, you must both specify an ordering for your document, and a name must be assigned to the collection of tutorial pages. For example, the following header is used for the <a href='/tutorials'>Tour of Scala</a> series of tutorial articles:</p>
+
+<pre><code>---
+layout: tutorial
+title: YOUR TITLE
+
+tutorial: scala-tour
+num: 4
+---</code></pre>
+
+<p>Any tutorial document may also include comments. To include comments, just add the tag <code>disqus: true</code> to your header.</p>
+
+<p>At the moment, only indexes for multiple-page tutorials are automatically generated.</p>
+
+<h3 id='cheatsheets'>Cheatsheets</h3>
+
+<p>For now, cheatsheets are assumed to be in the form of tables. To contribute a cheatsheet, one must simply produce their cheatsheet as a Markdown table, with the following header:</p>
+
+<pre><code>---
+layout: cheatsheet
+title: YOUR TITLE
+by: YOUR NAME
+about: SOME TEXT ABOUT THE CHEAT SHEET.
+---</code></pre>
+        </div>
+
+        <div class="span5">
+          <div id="scroller-anchor">
+  <div id="scroller">
+    <p class="contents">Contents</p>
+    <div id="toc"></div>
+    <div class="page-header-index">
+  <h1>Thank you</h1><p class="under">It helps many</p>
+</div>
+
+This site and the documentation it contains is the result of a tremendous amount of work by a large number of people over time, from the first Scala team members, to today’s newcomers. In an effort to only scratch the surface, we list some of those whose help was invaluable in the realization of this iteration of the Scala Documentation repository. 
+
+<ul class="thanks">
+  <li><a href="http://suereth.blogspot.com">Josh Suereth</a></li>
+  <li><a href="http://www.naildrivin5.com">Dave Copeland</a></li>
+  <li><a href="http://www.codecommit.com">Daniel Spiewak</a></li>
+  <li>Simon Ochsenreither</li>
+  <li><a href="http://brenocon.com/">Brendan O’Connor</a></li>
+  <li><a href="http://yuvimasory.com">Yuvi Masory</a></li>
+<ul>
+
+  </div>
+</div>
+
+        </div>
+    
+      </div>
+	
+    </div>
+  </div>
+  <div class="push"></div>
+</div>
+
+<div class="footer">
+	<div class="container">
+		<ul>
+			<li><h5>API</h5></li>
+			<li><a href="http://www.scala-lang.org/api/current/">Current</a></li>
+			<li><a href="http://www.scala-lang.org/archives/downloads/distrib/files/nightly/docs/library/index.html">Nightly</a></li>
+		</ul>
+		<ul>
+			<li><h5>Learn</h5></li>
+			<li><a href="/overviews">Guides & Overviews</a></li>
+			<li><a href="/tutorials">Tutorials</a></li>
+			<li><a href="/style">Scala Style Guide</a></li>				
+		</ul>
+		<ul>
+			<li><h5>Quickref</h5></li>
+			<li><a href="/glossary">Glossary</a></li>
+			<li><a href="/cheatsheets">Cheatsheets</a></li>
+		</ul>
+		<ul>
+			<li><h5>Contribute</h5></li>
+			<li><a href="http://github.com/scala/scala.github.com">Source Code</a></li>
+			<li><a href="/contribute.html">Contributors Guide</a></li>
+			<li><a href="http://getsatisfaction.com/scaladocs">Suggestions</a></li>			
+		</ul>
+		<ul>
+			<li><h5>Other Resources</h5></li>
+			<li><a href="http://wiki.scala-lang.org">Wiki</a></li>
+			<li><a href="/sips">Scala Improvement Process</a></li>				
+		</ul>						
+	</div>
+	<div class="container copyright">
+ 		<p>
+			Copyright &copy; 2011-2013 EPFL. All rights reserved.
+			<a href="https://github.com/scala/scala.github.com/commits/gh-pages.atom"><img align="right" height="20px" width="20px" src="/resources/images/rss.png" alt="RSS feed of updates to the github repo hosting this site"></a>
+		</p>		
+	</div>
+</div>
+
+
+<script type="text/javascript">
+  $('#toc').toc({exclude: 'h1, h5, h6', context: '', autoId: true, numerate: false});
+</script>
+
+<script type="text/javascript">
+  $(function() {
+    moveScroller();
+  });
+</script>
+
+  </body>
+</html>
+
+    

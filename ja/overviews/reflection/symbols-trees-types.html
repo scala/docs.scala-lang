@@ -1,0 +1,5472 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>Reflection - シンボル、構文木、型 - Scala Documentation</title>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="icon" type="image/png" href="/resources/favicon.ico">
+
+    <!-- prettify js and CSS -->
+    <link rel="stylesheet" href="/resources/stylesheets/prettify.css" type="text/css" />
+    <script src="/resources/javascript/prettify/prettify.js" type="text/javascript" ></script>
+
+
+    <!-- jquery js -->
+    <script src="/resources/javascript/jquery.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/effects.core.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/effects.highlight.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/moveScroller.js" type="text/javascript" ></script>
+
+    <!-- Bootstrap JS and CSS -->
+    <link rel="stylesheet" href="/resources/stylesheets/bootstrap.css" type="text/css" />
+	  <script src="/resources/javascript/bootstrap-dropdown.js" type="text/javascript" ></script>
+	  <script src="/resources/javascript/bootstrap-dropdown-app.js" type="text/javascript" ></script>
+
+    <!-- Base stylesheet for all pages -->
+    <link rel="stylesheet" href="/resources/stylesheets/base.css" type="text/css" />
+
+    <!-- table of contents js -->
+    <script src="/resources/javascript/toc.js" type="text/javascript" ></script>
+
+    <!-- google analytics -->
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-574683-5']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+
+    <!-- prettyprint js to prepend generated pre/code tags -->
+    <script type="text/javascript">
+      function styleCode()
+        {
+          if (typeof disableStyleCode != "undefined")
+          {
+              return;
+          }
+          var a = false;
+          $("pre code").parent().each(function()
+          {
+              if (!$(this).hasClass("prettyprint"))
+              {
+                  $(this).addClass("prettyprint lang-scala linenums");
+                  a = true
+              }
+          });
+          if (a) { prettyPrint() }
+      }
+    </script>
+
+    <script type="text/javascript">
+      jQuery(document).ready(function($) {
+
+            $(".scroll").click(function(event){
+              event.preventDefault();
+              $('html,body').animate({scrollTop:$(this.hash).offset().top}, 500);
+              $('html,body').animate({scrollTop:$(this.hash).offset().top-=50}, 500);
+              $(this.hash).effect("highlight", {color: "#FFCC85"}, 3000);
+            });
+      });
+    </script>
+
+    <script type="text/javascript">
+      $(window).ready(function goToSubsection() {
+          if (window.location.hash)
+          {
+              $('html,body').animate({scrollTop:$(window.location.hash).offset().top}, 500);
+              $('html,body').animate({scrollTop:$(window.location.hash).offset().top-=50}, 500);
+              $(window.location.hash).effect("highlight", {color: "#FFCC85"}, 3000);
+          }
+        });
+    </script>
+
+    <style type="text/css">
+
+       p.contents {
+           margin-left: 15px;
+           font-weight: bold;
+           font-size: 16px;
+       }
+
+       div#toc ul {
+           list-style: none;
+       }
+
+       div#toc ul a {
+           display: block;
+           list-style: none;
+           line-height: 22px;
+           font-weight: bold;
+           width: 100%;
+       }
+
+      div#toc ul li ul {
+           list-style: disc;
+      }
+
+      div#toc ul li ul a {
+           line-height: 18px;
+           font-weight: normal;
+      }
+
+      div#toc ul li ul li ul {
+           list-style: square;
+      }
+       div#toc ul li ul li ul a {
+       }
+
+       div#scroller-anchor {
+           width: inherit;
+       }
+
+       div#scroller {
+           width: inherit;
+       }
+
+       div#guide-title {
+        text-transform: capitalize;
+        font-size: 16px;
+        padding-bottom: 6px;
+        color: #BFBFBF;
+        text-transform: uppercase;
+        font-weight: bold;
+       }
+
+       input, textarea, select, .uneditable-input {
+	       width: 165px;
+	     }
+
+    </style>
+
+</head>
+  <body onload="styleCode()">
+
+    <!-- Topbar
+    ================================================== -->
+<div class="topbar">
+    <div class="topbar-inner">
+        <div class="container">
+            <a class="brand" href="/index.html"><img src="/resources/images/scala-logo.png"> Documentation</a>
+            <ul class="nav">
+
+                <li class="menu">
+                      <a href="#" class="menu">API</a>
+                      <ul class="menu-dropdown">
+                        <li><a href="http://www.scala-lang.org/api/current/">Current</a></li>
+                        <li><a href="http://www.scala-lang.org/archives/downloads/distrib/files/nightly/docs/library/index.html">Nightly</a></li>
+                        <!--<li class="divider"></li>
+                        <li><a href="#">Previous Versions</a></li>
+                        -->
+                      </ul>
+                </li>
+
+                <li class="menu">
+                      <a href="#" class="menu">Learn</a>
+                      <ul class="menu-dropdown">
+                        <li><a href="/overviews">Guides & Overviews</a></li>
+                        <li><a href="/tutorials">Tutorials</a></li>
+                        <li><a href="/style">Scala Style Guide</a></li>
+                      </ul>
+                </li>
+
+                <li class="menu">
+                      <a href="#" class="menu">Quickref</a>
+                      <ul class="menu-dropdown">
+                        <li><a href="/glossary">Glossary</a></li>
+                        <li><a href="/cheatsheets">Cheatsheets</a></li>
+                      </ul>
+                </li>
+
+                <li><a href="/contribute.html">Contribute</a></li>
+                <li><a href="/sips">SIPs</a></li>
+                <li><a href="http://wiki.scala-lang.org">Wiki</a></li>
+          </ul>
+          <form method="get" id="searchform" action="/search.html">
+            <input type="text" placeholder="Search"  class="field" name="q" id="q"/>
+          </form>
+           </li>
+          </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+  <div class="row">
+
+    <div class="span10"><div id="guide-title">reflection</div></div>
+    <div class="span10"><h1>シンボル、構文木、型</h1></div>
+
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+
+    
+      
+      
+    
+
+    <div class="span6">
+      
+        <a href="/overviews/reflection/symbols-trees-types.html"><img src="/resources/images/language/en.png" title="Language: en"/></a>
+        
+          <a href="/ja/overviews/reflection/symbols-trees-types.html"><img src="/resources/images/language/ja.png" title="Language: ja"/></a>
+        
+      
+    </div>
+
+    <div class="span10">
+      <span class='label important' style='float: right;'>EXPERIMENTAL</span>
+<h2 id='id127'>シンボル</h2>
+
+<p><strong>シンボル</strong> (symbol) は名前 (name) とその名前が参照するクラスやメソッドのような実体 (entity) の間のバインディングを作るのに用いられる。Scala において定義され名前を付けられるものは全て関連付けられたシンボルを持つ。</p>
+
+<p>シンボルは実体 (<code>class</code>、<code>object</code>、<code>trait</code> など) もしくはメンバ (<code>val</code>、<code>var</code>、<code>def</code> など) の宣言に関する全ての情報を格納するため、実行時リフレクションとコンパイル時リフレクション (マクロ) の両方において中心的な役割を果たす抽象体だ。</p>
+
+<p>全てのシンボルにある基本的な <code>name</code> メソッドをはじめ、より複雑で込み入った概念である <code>ClassSymbol</code> に定義される <code>baseClasses</code> を取得するメソッドなど、シンボルは幅広い情報を提供する。 もう一つの一般的なシンボルの利用方法としてはメンバのシグネチャのインスペクトや、 クラスの型パラメータの取得、メソッドのパラメータ型の取得、フィールドの型の取得などが挙げられる。</p>
+
+<h3 id='id128'>シンボルのオーナーの階層</h3>
+
+<p>シンボルは階層化されている。 例えば、メソッドのパラメータを表すシンボルはそのメソッドのシンボルに<strong>所有</strong>されており、 メソッドのシンボルはそれを内包するクラス、トレイト、もしくはオブジェクトに<strong>所有</strong>されており、 クラスはそれを含むパッケージに<strong>所有</strong>されいてるという具合だ。</p>
+
+<p>例えばトップレベルのパッケージのようなトップレベルの実体であるためにシンボルにオーナーが無い場合は、 <code>NoSymbol</code> という特殊なシングルトン・オブジェクトのオーナーが用いられる。 シンボルが無いことを表す <code>NoSymbol</code> は空を表わしたり、デフォルトの値として API の中で多用されている。 <code>NoSymbol</code> の <code>owner</code> にアクセスすると例外が発生する。 <a href='http://www.scala-lang.org/api/2.10.0/scala/reflect/api/Symbols$SymbolApi.html'><code>Symbol</code></a> 型によって提供される一般インターフェイスに関しては API doc を参照してほしい。</p>
+
+<h3 id='_'>型シンボル (<code>TypeSymbol</code>)</h3>
+
+<p>型シンボル (<code>TypeSymbol</code>) は型、クラス、トレイトの宣言そして、型パラメータを表す。 より特定の <code>ClassSymbol</code> には当てはまらないメンバとして <code>isAbstractType</code>、 <code>isContravariant</code>、<code>isCovariant</code> といったメソッドを持つ。</p>
+
+<ul>
+<li><code>ClassSymbol</code>: クラスやトレイトの宣言に格納される全ての情報へのアクセスを提供する。具体的には、<code>name</code>、修飾子 (<code>isFinal</code>、 <code>isPrivate</code>、 <code>isProtected</code>、 <code>isAbstractClass</code> など)、 <code>baseClasses</code>、 <code>typeParams</code> など。</li>
+</ul>
+
+<h3 id='_'>項シンボル (<code>TermSymbol</code>)</h3>
+
+<p>項シンボル (<code>TermSymbol</code>) は <code>val</code>、<code>var</code>、<code>def</code>、そしてオブジェクトの宣言、パッケージや値のパラメータを表す。</p>
+
+<ul>
+<li>メソッド・シンボル (<code>MethodSymbol</code>) は <code>def</code> の宣言を表す (<code>TermSymbol</code> のサブクラスだ)。メソッドが(基本)コンストラクタであるか、可変長引数をサポートするかなどの問い合わせを行うことができる。</li>
+
+<li>モジュール・シンボル (<code>ModuleSymbol</code>) はオブジェクトの宣言を表す。<code>moduleClass</code> メンバを用いてオブジェクトに暗黙的に関連付けられているクラスを照会することができる。逆の照会も可能だ。モジュール・クラスから <code>selfType.termSymbol</code> によって関連付けられるモジュール・シンボルを得られる。</li>
+</ul>
+
+<h3 id='id129'>シンボル変換</h3>
+
+<p>状況によっては汎用の <code>Symbol</code> 型を返すメソッドを使う場面があるかもしれない。 その場合、汎用の <code>Symbol</code> 型をより特定の特殊化されたシンボル型へと変換することができる。 例えば <code>MethodSymbol</code> のインターフェイスを使いたいといった状況に合わせて、<code>asMethod</code> や <code>asClass</code> のようなシンボル変換を用いると特殊化した <code>Symbol</code> のサブタイプに変換することができる。</p>
+
+<p>具体例を用いて説明しよう。</p>
+
+<pre><code>scala&gt; import reflect.runtime.universe._
+import reflect.runtime.universe._
+
+scala&gt; class C[T] { def test[U](x: T)(y: U): Int = ??? }
+defined class C
+
+scala&gt; val testMember = typeOf[C[Int]].member(newTermName(&quot;test&quot;))
+testMember: reflect.runtime.universe.Symbol = method test</code></pre>
+
+<p>この場合、<code>member</code> は期待される <code>MethodSymbol</code> ではなく <code>Symbol</code> のインスタンスを返す。 このため、<code>asMethod</code> を使って <code>MethodSymbol</code> が返されたことを保証する必要がある。</p>
+
+<pre><code>scala&gt; testMember.asMethod
+res0: reflect.runtime.universe.MethodSymbol = method test</code></pre>
+
+<h3 id='id130'>自由シンボル</h3>
+
+<p>2つのシンボル型 <code>FreeTermSymbol</code> と <code>FreeTypeSymbol</code> は入手可能な情報が不完全であるという特殊なステータスを持つシンボルだ。 これらのシンボルはレイフィケーションの過程において生成される (詳しくは構文木のレイフィケーションの節を参照)。 レイフィケーションがシンボルを特定できない場合 (例えば、ローカルクラスを参照しているため、あるシンボルが対応するクラスファイルから見つけることができない場合) 元の名前とオーナー、そして元の型シグネチャに似た代理シグネチャを持った合成のダミーシンボルへとレイファイする。このシンボルは自由型 (free type) と呼ばれる。 あるシンボルが自由型かどうかは <code>sym.isFreeType</code> を呼ぶことで確かめることができる。 また、<code>tree.freeTypes</code> を呼ぶことで特定の構文木とその部分木から参照されている全ての自由型のリストを取得することができる。 最後に、<code>-Xlog-free-types</code> を用いることでレイフィケーションが自由型を生成したときに警告を得ることができる。</p>
+
+<h2 id='id131'>型</h2>
+
+<p>名前が示すとおり、<code>Type</code> のインスタンスは対応するシンボルの型情報を表す。 これは、直接宣言もしくは継承されたメンバ (メソッド、フィールド、型エイリアス、抽象型、内部クラス、トレイトなど)、 基底型、型消去などを含む。他にも、型は型の適合性 (conformance) や等価性 (equivalence) を検査することができる。</p>
+
+<h3 id='id132'>型のインスタンス化</h3>
+
+<p>一般的には以下の 3通りの方法で <code>Type</code> を得ることができる。</p>
+
+<ol>
+<li><code>Universe</code> にミックスインされている <code>scala.reflect.api.TypeTags</code> の <code>typeOf</code> メソッド経由。(最も簡単で、一般的な方法)</li>
+
+<li><code>Int</code>、<code>Boolean</code>、<code>Any</code>、や <code>Unit</code> のような標準型はユニバースからアクセス可能だ。</li>
+
+<li><code>scala.reflect.api.Types</code> の <code>typeRef</code> や <code>polyType</code> といったメソッドを使った手動のインスタンス化。(非推奨)</li>
+</ol>
+
+<h4 id='_'><code>typeOf</code> を用いた型のインスタンス化</h4>
+
+<p>多くの場合、型をインスタンス化するのには <code>scala.reflect.api.TypeTags#typeOf</code> メソッドを使うことができる。 これは型引数を受け取り、その引数を表す <code>Type</code> のインスタンスを返す。 具体例で説明すると、</p>
+
+<pre><code>scala&gt; import scala.reflect.runtime.universe._
+import scala.reflect.runtime.universe._
+
+scala&gt; typeOf[List[Int]]
+res0: reflect.runtime.universe.Type = scala.List[Int]</code></pre>
+
+<p>この例では、型コンストラクタ <code>List</code> に型引数 <code>Int</code> が適用された <a href='http://www.scala-lang.org/api/2.10.0/scala/reflect/api/Types$TypeRef.html'><code>scala.reflect.api.Types$TypeRef</code></a> が返っている。</p>
+
+<p>しかし、この方法はインスタンス化しようとしている型を手動で指定する必要があることに注意してほしい。 もし任意のインスタンスに対応する <code>Type</code> のインスタンスを取得しようとしてる場合はどうすればいいだろう？ 型パラメータに context bound を付けたメソッドを定義すればいいだけだ。これは特殊な <code>TypeTag</code> を生成し、そこから任意のインスタンスに対する型を取得することができる:</p>
+
+<pre><code>scala&gt; def getType[T: TypeTag](obj: T) = typeOf[T]
+getType: [T](obj: T)(implicit evidence$1: reflect.runtime.universe.TypeTag[T])reflect.runtime.universe.Type
+
+scala&gt; getType(List(1,2,3))
+res1: reflect.runtime.universe.Type = List[Int]
+
+scala&gt; class Animal; class Cat extends Animal
+defined class Animal
+defined class Cat
+
+scala&gt; val a = new Animal
+a: Animal = Animal@21c17f5a
+
+scala&gt; getType(a)
+res2: reflect.runtime.universe.Type = Animal
+
+scala&gt; val c = new Cat
+c: Cat = Cat@2302d72d
+
+scala&gt; getType(c)
+res3: reflect.runtime.universe.Type = Cat</code></pre>
+
+<p><strong>注意</strong>: <code>typeOf</code> メソッドは、型パラメータを受け取る型 (例えば、<code>A</code> が型パラメータであるとき <code>typeOf[List[A]]</code>) では動作しない。 その場合は、代わりに <code>scala.reflect.api.TypeTags#weakTypeOf</code> を使うことができる。 これに関する詳細はこのガイドの <a href='/ja/overviews/reflection/typetags-manifests.html'>TypeTags</a> に関する節を参照。</p>
+
+<h4 id='id133'>標準型</h4>
+
+<p><code>Int</code>、<code>Boolean</code>、<code>Any</code>、や <code>Unit</code> のような標準型はユニバースの <code>definitions</code> メンバからアクセス可能だ。 具体的には、</p>
+
+<pre><code>scala&gt; import scala.reflect.runtime.universe
+import scala.reflect.runtime.universe
+
+scala&gt; val intTpe = universe.definitions.IntTpe
+intTpe: reflect.runtime.universe.Type = Int</code></pre>
+
+<p>標準型のリストは <a href='http://www.scala-lang.org/api/current/index.html#scala.reflect.api.StandardDefinitions$StandardTypes'><code>scala.reflect.api.StandardDefinitions</code></a> 内の <code>StandardTypes</code> トレイトにて定義されている。</p>
+
+<h3 id='id134'>型の一般的な演算</h3>
+
+<p>型の典型的な用例としては型の適合性の検査や、メンバの問い合わせがある。 型に対する演算を 3つに大別すると以下のようになる:</p>
+<ol>
+<li>2つの型の間のサブタイプ関係の検査。</li>
+<li>2つの型の間の等価性の検査。</li>
+<li>渡された型の特定のメンバや内部型の問い合わせ。</li>
+</ol>
+<h4 id='id135'>サブタイプ関係</h4>
+
+<p>2つの <code>Type</code> インスタンスがあるとき、<code>&lt;:&lt;</code> を用いて簡単に一方がもう片方のサブタイプであるかを調べることができる。 (後で説明する例外的な場合においては、<code>weak_&lt;:&lt;</code> を使う)</p>
+
+<pre><code>scala&gt; import scala.reflect.runtime.universe._
+import scala-lang.reflect.runtime.universe._
+
+scala&gt; class A; class B extends A
+defined class A
+defined class B
+
+scala&gt; typeOf[A] &lt;:&lt; typeOf[B]
+res0: Boolean = false
+
+scala&gt; typeOf[B] &lt;:&lt; typeOf[A]
+res1: Boolean = true</code></pre>
+
+<p><code>weak_&lt;:&lt;</code> メソッドは、2つの型の間の<strong>弱い適合性</strong> (weak conformance) をチェックするのに使われることに注意。 これは典型的には数値型を取り扱う際に重要となる。</p>
+
+<p>Scala の数値型は以下の順序付けに従っている (Scala 言語仕様 3.5.3 節):</p>
+
+<blockquote>
+<p>Scala はいくつかの状況では、より一般的な適合性関係を用います。 もし <code>S &lt;: T</code> であるか、あるいは、<code>S</code> と <code>T</code> 両方がプリミティブな数値型で、次の順序中で <code>S</code> が <code>T</code> の前にあるなら、型 <code>S</code> は型 <code>T</code> に弱く適合するといい、<code>S &lt;:w T</code> と書きます。</p>
+</blockquote>
+<table><thead><tr><th>弱適合性関係</th></tr></thead><tbody><tr><td style='text-align: left;'><code>Byte</code> <code>&lt;:w</code> <code>Short</code></td>
+</tr><tr><td style='text-align: left;'><code>Short</code> <code>&lt;:w</code> <code>Int</code></td>
+</tr><tr><td style='text-align: left;'><code>Char</code> <code>&lt;:w</code> <code>Int</code></td>
+</tr><tr><td style='text-align: left;'><code>Int</code> <code>&lt;:w</code> <code>Long</code></td>
+</tr><tr><td style='text-align: left;'><code>Long</code> <code>&lt;:w</code> <code>Float</code></td>
+</tr><tr><td style='text-align: left;'><code>Float</code> <code>&lt;:w</code> <code>Double</code></td>
+</tr></tbody></table>
+<p>例えば、以下の if-式の型は弱い適合性によって決定されている。</p>
+
+<pre><code>scala&gt; if (true) 1 else 1d
+res2: Double = 1.0</code></pre>
+
+<p>上記の if-式では結果の型は 2つの型の<strong>弱い最小の上限境界</strong> (weak least upper bound、つまり弱い適合性上で最小の上限境界) だと定義されている。</p>
+
+<p><code>Int</code> と <code>Double</code> の間では (上記の仕様により) <code>Double</code> が弱い適合性上での最小の上限境界だと定義されいるため、 <code>Double</code> が例の if-式の型だと推論される。</p>
+
+<p><code>weak_&lt;:&lt;</code> メソッドは弱い適合性をチェックすることに注意してほしい。 (それに対して、<code>&lt;:&lt;</code> は仕様 3.5.3 節の弱い適合性を考慮しない適合性を検査する) そのため、数値型 <code>Int</code> と <code>Double</code> の適合性関係を正しくインスペクトできる:</p>
+
+<pre><code>scala&gt; typeOf[Int] weak_&lt;:&lt; typeOf[Double]
+res3: Boolean = true
+
+scala&gt; typeOf[Double] weak_&lt;:&lt; typeOf[Int]
+res4: Boolean = false</code></pre>
+
+<p><code>&lt;:&lt;</code> を使った場合は <code>Int</code> と <code>Double</code> は互いに不適合であると間違った結果となる:</p>
+
+<pre><code>scala&gt; typeOf[Int] &lt;:&lt; typeOf[Double]
+res5: Boolean = false
+
+scala&gt; typeOf[Double] &lt;:&lt; typeOf[Int]
+res6: Boolean = false</code></pre>
+
+<h4 id='id136'>型の等価性</h4>
+
+<p>型の適合性同様に 2つの型の等価性を簡単に検査することができる。 2つの任意の型が与えられたとき、<code>=:=</code> メソッドを使うことでそれらが全く同一のコンパイル時型を表記しているかを調べることができる。</p>
+
+<pre><code>scala&gt; import scala.reflect.runtime.universe._
+import scala.reflect.runtime.universe._
+
+scala&gt; def getType[T: TypeTag](obj: T) = typeOf[T]
+getType: [T](obj: T)(implicit evidence$1: reflect.runtime.universe.TypeTag[T])reflect.runtime.universe.Type
+
+scala&gt; class A
+defined class A
+
+scala&gt; val a1 = new A; val a2 = new A
+a1: A = A@cddb2e7
+a2: A = A@2f0c624a
+
+scala&gt; getType(a1) =:= getType(a2)
+res0: Boolean = true</code></pre>
+
+<p>両方のインスタンスの型情報が寸分違わず一致している必要があることに注意してほしい。 例えば、以下のコードにおいて異なる型引数を取る 2つの <code>List</code> のインスタンスがある。</p>
+
+<pre><code>scala&gt; getType(List(1,2,3)) =:= getType(List(1.0, 2.0, 3.0))
+res1: Boolean = false
+
+scala&gt; getType(List(1,2,3)) =:= getType(List(9,8,7))
+res2: Boolean = true</code></pre>
+
+<p>また、型の等価性を検査するためには<strong>常に</strong> <code>=:=</code> を使う必要があることに注意してほしい。 つまり、型エイリアスをチェックすることができない <code>==</code> は絶対に使ってはいけないということだ:</p>
+
+<pre><code>scala&gt; type Histogram = List[Int]
+defined type alias Histogram
+
+scala&gt; typeOf[Histogram] =:= getType(List(4,5,6))
+res3: Boolean = true
+
+scala&gt; typeOf[Histogram] == getType(List(4,5,6))
+res4: Boolean = false</code></pre>
+
+<p>見てのとおり、<code>==</code> は <code>Histogram</code> と <code>List[Int]</code> が異なる型であると間違った結果を出している。</p>
+
+<h4 id='id137'>型に対するメンバと宣言の照会</h4>
+
+<p>ある <code>Type</code> があるとき、特定のメンバや宣言を<strong>照会</strong> (query) することができる。 <code>Type</code> の<strong>メンバ</strong> (member) には全てのフィールド、メソッド、型エイリアス、抽象型、内部クラス/オブジェクト/トレイトなどが含まれる。 <code>Type</code> の<strong>宣言</strong> (declaration) にはその <code>Type</code> が表すクラス/オブジェクト/トレイト内で宣言された (継承されなかった) メンバのみが含まれる。</p>
+
+<p>ある特定のメンバや宣言の <code>Symbol</code> を取得するにはその型に関連する定義のリストを提供する <code>members</code> か <code>declarations</code> メソッドを使うだけでいい。単一のシンボルのみを返す <code>meber</code> と <code>declaration</code> というメソッドもある。以下に 4つのメソッド全てのシグネチャを示す:</p>
+
+<pre><code>/** The member with given name, either directly declared or inherited, an
+  * OverloadedSymbol if several exist, NoSymbol if none exist. */
+def member(name: Universe.Name): Universe.Symbol
+
+/** The defined or declared members with name name in this type; an
+  * OverloadedSymbol if several exist, NoSymbol if none exist. */
+def declaration(name: Universe.Name): Universe.Symbol
+
+/** A Scope containing all members of this type
+  * (directly declared or inherited). */
+def members: Universe.MemberScope // MemberScope is a type of
+                                  // Traversable, use higher-order
+                                  // functions such as map,
+                                  // filter, foreach to query!
+
+/** A Scope containing the members declared directly on this type. */
+def declarations: Universe.MemberScope // MemberScope is a type of
+                                       // Traversable, use higher-order
+                                       // functions such as map,
+                                       // filter, foreach to query!</code></pre>
+
+<p>例えば、<code>List</code> の <code>map</code> メソッドを照会するには以下のようにする。</p>
+
+<pre><code>scala&gt; import scala.reflect.runtime.universe._
+import scala.reflect.runtime.universe._
+
+scala&gt; typeOf[List[_]].member(&quot;map&quot;: TermName)
+res0: reflect.runtime.universe.Symbol = method map</code></pre>
+
+<p>メソッドを照会するために <code>member</code> メソッドに <code>TermName</code> を渡していることに注意してほしい。 ここで、<code>List</code> の自分型である <code>Self</code> のような型メンバを照会する場合は <code>TypeName</code> を渡す:</p>
+
+<pre><code>scala&gt; typeOf[List[_]].member(&quot;Self&quot;: TypeName)
+res1: reflect.runtime.universe.Symbol = type Self</code></pre>
+
+<p>型の全てのメンバや宣言を面白い方法で照会することもできる。 <code>members</code> メソッドを使って、渡された型の全ての継承もしくは宣言されたメンバを表す <code>Symbol</code> の <code>Traversable</code> を取得することができる (<code>MemberScopeApi</code> は <code>Traversable</code> を継承する)。 これにより、<code>foreach</code>、<code>filter</code>、<code>map</code> などの馴染み深いコレクションに対する高階関数を使って型のメンバを探検することができる。 例えば、<code>List</code> のメンバのうち private なものだけを表示したいとする:</p>
+
+<pre><code>scala&gt; typeOf[List[Int]].members.filter(_.isPrivate).foreach(println _)
+method super$sameElements
+method occCounts
+class CombinationsItr
+class PermutationsItr
+method sequential
+method iterateUntilEmpty</code></pre>
+
+<h2 id='id138'>構文木</h2>
+
+<p><strong>構文木</strong> (<code>Tree</code>) は、プログラムを表す Scala の抽象構文の基盤となっている。 これらは抽象構文木 (abstract syntax tree) とも呼ばれ、一般に AST と略される。</p>
+
+<p>Scala リフレクションで、構文木を生成または利用する API には以下のようなものがある:</p>
+
+<ol>
+<li>Scala アノテーションは引数に構文木を用い、<code>Annotation.scalaArgs</code> として公開されている。(詳細はこのガイドの<a href='/ja/overviews/reflection/names-exprs-scopes-more.html'>アノテーション</a>の節を参照)</li>
+
+<li>任意の式を受け取りその AST を返す <code>reify</code> という特殊なメソッド。</li>
+
+<li>マクロを用いたコンパイル時リフレクション (詳細は<a href='/ja/overview/macros/overview.html'>マクロ</a>参照) とツールボックスを用いた実行時リフレクションは両方とも構文木を用いてプログラムを表現する。</li>
+</ol>
+
+<p>ここで注意してほしいのは構文木は <code>pos</code> (<code>Position</code>)、 <code>symbol</code> (<code>Symbol</code>)、 と型検査の際に代入される <code>tpe</code> (<code>Type</code>) という 3つのフィールドの他は不変 (immutable) であることだ。</p>
+
+<h3 id='id139'>構文木の種類</h3>
+
+<p>構文木は以下の 3つのカテゴリーに大別することができる:</p>
+
+<ol>
+<li><strong><code>TermTree</code> のサブクラス</strong>は項を表す。例えば、メソッドの呼び出しは <code>Apply</code> ノードで表され、オブジェクトのインスタンス化は <code>New</code> ノードで行われる。</li>
+
+<li><strong><code>TypTree</code> のサブクラス</strong>はプログラムのソースコード中に現れる型を表す。例えば、<code>List[Int]</code> は <code>AppliedTypeTree</code> へとパースされる。<strong>注意</strong>: <code>TypTree</code> は綴り間違いではないし、概念的に <code>TypeTree</code> とは異なるものだ。(例えば型推論などによって) コンパイラが <code>Type</code> を構築する場合にプログラムの AST に統合できるように <code>TypeTree</code> にラッピングされる。</li>
+
+<li><strong><code>SymTree</code> のサブクラス</strong>は定義を導入または参照する。新しい定義の導入の具体例としてはクラスやトレイトの定義を表す <code>ClassDef</code> や、フィールドやパラメータ定義を表す <code>ValDef</code> が挙げられる。既存の定義に対する参照の例としてはローカル変数やメソッドなど現行のスコープ内にある既存の定義を参照する <code>Ident</code> を挙げることができる。</li>
+</ol>
+
+<p>上記のカテゴリー以外の構文木を目にすることがあるとすれば、それは典型的には合成的なものか短命な構築物だ。 例えば、各マッチケースをラッピングする <code>CaseDef</code> は項でも型でもなく、シンボルも持たない。</p>
+
+<h3 id='id140'>構文木をインスペクトする</h3>
+
+<p>Scala リフレクションは、ユニバース経由で構文木を視覚化する方法をいくつか提供する。渡された構文木があるとき、</p>
+
+<ul>
+<li><code>show</code> もしくは <code>toString</code> メソッドを使って構文木が表す擬似 Scala コードを表示することができる。</li>
+
+<li><code>showRaw</code> メソッドを使ってタイプチェッカが用いる生の構文木の内部構造を見ることができる。</li>
+</ul>
+
+<p>具体例を使って説明しよう:</p>
+
+<pre><code>scala&gt; import scala.reflect.runtime.universe._
+import scala.reflect.runtime.universe._
+
+scala&gt; val tree = Apply(Select(Ident(newTermName(&quot;x&quot;)), newTermName(&quot;$plus&quot;)), List(Literal(Constant(2))))
+tree: reflect.runtime.universe.Apply = x.$plus(2)</code></pre>
+
+<p><code>show</code> メソッド (もしくは同等の <code>toString</code>) を使ってこの構文木が何を表しているかを見てみよう。</p>
+
+<pre><code>scala&gt; show(tree)
+res0: String = x.$plus(2)</code></pre>
+
+<p>見てのとおり、<code>tree</code> は <code>2</code> を項 <code>x</code> に加算する。</p>
+
+<p>逆の方向に行くこともできる。ある Scala の式が与えられたとき、そこから構文木を取得した後で <code>showRaw</code> メソッドを用いてコンパイラやタイプチェッカが使っている生の構文木の内部構造を見ることができる。 例えば、以下の式があるとする:</p>
+
+<pre><code>scala&gt; import scala.reflect.runtime.universe._
+import scala.reflect.runtime.universe._
+
+scala&gt; val expr = reify { class Flower { def name = &quot;Rose&quot; } }
+expr: reflect.runtime.universe.Expr[Unit] = ...</code></pre>
+
+<p>ここで、<code>reify</code> は Scala 式を受け取り <code>Tree</code> と <code>TypeTag</code> をラッピングする <code>Expr</code> を返す。 (<code>Expr</code> の詳細に関してはこのガイドの<a href='/ja/overviews/reflection/names-exprs-scopes-more.html'>式</a>の節を参照) <code>expr</code> が保持する構文木は以下のように取得できる:</p>
+
+<pre><code>scala&gt; val tree = expr.tree
+tree: reflect.runtime.universe.Tree =
+{
+  class Flower extends AnyRef {
+    def &lt;init&gt;() = {
+      super.&lt;init&gt;();
+      ()
+    };
+    def name = &quot;Rose&quot;
+  };
+  ()
+}</code></pre>
+
+<p>生の構文木の内部構造をインスペクトするには以下のように行う:</p>
+
+<pre><code>scala&gt; showRaw(tree)
+res1: String = Block(List(ClassDef(Modifiers(), newTypeName(&quot;Flower&quot;), List(), Template(List(Ident(newTypeName(&quot;AnyRef&quot;))), emptyValDef, List(DefDef(Modifiers(), nme.CONSTRUCTOR, List(), List(List()), TypeTree(), Block(List(Apply(Select(Super(This(tpnme.EMPTY), tpnme.EMPTY), nme.CONSTRUCTOR), List())), Literal(Constant(())))), DefDef(Modifiers(), newTermName(&quot;name&quot;), List(), List(), TypeTree(), Literal(Constant(&quot;Rose&quot;))))))), Literal(Constant(())))</code></pre>
+
+<h3 id='id141'>構文木の走査</h3>
+
+<p>構文木の内部構造が分かった所で、よくある次のステップは情報を抽出することだ。 これは構文木を<strong>走査</strong>することで行われ、以下の 2通りの方法がある:</p>
+<ul>
+<li>パターンマッチングを用いた走査</li>
+<li><code>Traverser</code> のサブクラスを用いた走査</li>
+</ul>
+<h4 id='id142'>パターンマッチングを用いた走査</h4>
+
+<p>パターンマッチングを用いた走査は最も簡単で一般的な構文木の走査方法だ。 典型的にはある構文木の単一のノードの状態を知りたい場合にパターンマッチングを用いた走査を行う。 例えば、以下の構文木に1つだけある <code>Apply</code> ノードから関数と引数を取得したいとする。</p>
+
+<pre><code>scala&gt; import scala.reflect.runtime.universe._
+import scala.reflect.runtime.universe._
+
+scala&gt; val tree = Apply(Select(Ident(newTermName(&quot;x&quot;)), newTermName(&quot;$plus&quot;)), List(Literal(Constant(2))))
+tree: reflect.runtime.universe.Apply = x.$plus(2)</code></pre>
+
+<p><code>tree</code> に対してマッチをかけてやるだけでよく、<code>Apply</code> ケースの場合には <code>Apply</code> の関数と引数を返す:</p>
+
+<pre><code>scala&gt; val (fun, arg) = tree match {
+     |     case Apply(fn, a :: Nil) =&gt; (fn, a)
+     | }
+fun: reflect.runtime.universe.Tree = x.$plus
+arg: reflect.runtime.universe.Tree = 2</code></pre>
+
+<p>パターンマッチを左辺項に移すことで上記と同じことをより簡潔に実現できる:</p>
+
+<pre><code>scala&gt; val Apply(fun, arg :: Nil) = tree
+fun: reflect.runtime.universe.Tree = x.$plus
+arg: reflect.runtime.universe.Tree = 2</code></pre>
+
+<p>ノードは他のノード内に任意の深さで入れ子になることができるため、<code>Tree</code> は普通かなり複雑となることに注意してほしい。これを示す簡単な例として、上記の構文木に 2つ目の <code>Apply</code> を加えて既にある和に <code>3</code> を加算する:</p>
+
+<pre><code>scala&gt; val tree = Apply(Select(Apply(Select(Ident(newTermName(&quot;x&quot;)), newTermName(&quot;$plus&quot;)), List(Literal(Constant(2)))), newTermName(&quot;$plus&quot;)), List(Literal(Constant(3))))
+tree: reflect.runtime.universe.Apply = x.$plus(2).$plus(3)</code></pre>
+
+<p>これに上記と同じパターンマッチを適用すると外側の <code>Apply</code> ノードが得られ、それは上で見た <code>x.$plus(2)</code> を表す構文木を関数部分として格納する:</p>
+
+<pre><code>scala&gt; val Apply(fun, arg :: Nil) = tree
+fun: reflect.runtime.universe.Tree = x.$plus(2).$plus
+arg: reflect.runtime.universe.Tree = 3
+
+scala&gt; showRaw(fun)
+res3: String = Select(Apply(Select(Ident(newTermName(&quot;x&quot;)), newTermName(&quot;$plus&quot;)), List(Literal(Constant(2)))), newTermName(&quot;$plus&quot;))</code></pre>
+
+<p>特定のノードで止まることなく構文木全体を走査したり、特定の型のノードを収集してインスペクトするなどより複雑なタスクを行うためには <code>Traverser</code> を用いた走査の方が適しているかもしれない。</p>
+
+<h4 id='_'><code>Traverser</code> のサブクラスを用いた走査</h4>
+
+<p>初めから終わりまで構文木全体を走査する必要がある場合は、パターンマッチ中に現れうる全ての型に対する処理をする必要があるためパターンマッチングを用いた走査は適さない。 そのため、そのような場合は <code>Traverser</code> クラスを用いる。</p>
+
+<p><code>Traevrser</code> は幅優先探索を用いて渡された構文木の全てのノードを訪れることを保証する。</p>
+
+<p><code>Traverser</code> を使うには、<code>Traverser</code> を継承して <code>traverse</code> メソッドをオーバーライドする。 こうすることで必要なケースだけを処理するカスタムロジックを提供する。 例えば <code>x.$plus(2).$plus(3)</code> の構文木があるとき、全ての <code>Apply</code> ノードを収集したいとする:</p>
+
+<pre><code>scala&gt; import scala.reflect.runtime.universe._
+import scala.reflect.runtime.universe._
+
+scala&gt; val tree = Apply(Select(Apply(Select(Ident(newTermName(&quot;x&quot;)), newTermName(&quot;$plus&quot;)), List(Literal(Constant(2)))), newTermName(&quot;$plus&quot;)), List(Literal(Constant(3))))
+tree: reflect.runtime.universe.Apply = x.$plus(2).$plus(3)
+
+scala&gt; object traverser extends Traverser {
+     |   var applies = List[Apply]()
+     |   override def traverse(tree: Tree): Unit = tree match {
+     |     case app @ Apply(fun, args) =&gt;
+     |       applies = app :: applies
+     |       super.traverse(fun)
+     |       super.traverseTrees(args)
+     |     case _ =&gt; super.traverse(tree)
+     |   }
+     | }
+defined module traverser</code></pre>
+
+<p>上のコードは渡された構文木のうち <code>Apply</code> ノードだけを探してリストを構築している。</p>
+
+<p>これはスーパークラス <code>Traverser</code> で既に幅優先探索として実装されている <code>traverse</code> メソッドをサブクラス <code>traverser</code> のオーバーライドされた <code>traverse</code> メソッドが特別なケースを<strong>追加</strong>するという形で実現されている。 この特別なケースは <code>Apply(fun, args)</code> というパターンにマッチするノードのみに効用がある。 (<code>fun</code> は <code>Tree</code> で表される関数、<code>args</code> は <code>Tree</code> のリストで表される引数のリストとなる)</p>
+
+<p>ある構文木がこのパターンにマッチすると (つまり、<code>Apply</code> ノードがあるとき)、 <code>List[Apply]</code> である <code>applies</code> に追加して、走査を続行する。</p>
+
+<p>マッチした場合の処理で <code>Apply</code> にラッピングされた関数 <code>fun</code> に対して <code>super.traverse</code> そして引数のリスト <code>args</code> に対しては <code>super.traverseTrees</code> (<code>super.traverse</code> とほぼ同じものだが、単一の <code>Tree</code> の代わりに <code>List[Tree]</code> を受け取る) を呼び出していることに注意してほしい。 両方の呼び出しとも目的は簡単で、<code>fun</code> の中にも <code>Apply</code> パターンがあるか分からないため部分木に対してもデフォルトの <code>Traverser</code> の <code>traverse</code> メソッドが確かに呼ばれるようにしている。 スーパークラスである <code>Traverser</code> は全ての入れ子になっている部分木に対して <code>this.traverse</code> を呼び出すため、<code>Apply</code> パターンを含む部分木もカスタムの <code>traverse</code> メソッドを呼び出すことが保証されている。</p>
+
+<p><code>traverse</code> を開始して、その結果の <code>Apply</code> の <code>List</code> を表示するには以下のように行う:</p>
+
+<pre><code>scala&gt; traverser.traverse(tree)
+
+scala&gt; traverser.applies
+res0: List[reflect.runtime.universe.Apply] = List(x.$plus(2), x.$plus(2).$plus(3))</code></pre>
+
+<h3 id='id143'>構文木の構築</h3>
+
+<p>実行時リフレクションを行う際に、構文木を手動で構築する必要は無い。 しかし、ツールボックスを用いて実行時コンパイルする場合やマクロを用いてコンパイル時リフレクションを行う場合はプログラムを表現する媒体として構文木が使われる。 そのような場合、構文木を構築する 3通りの方法がある:</p>
+
+<ol>
+<li><code>reify</code> メソッドを用いる (可能な限りこれを使うことを推奨する)</li>
+
+<li>ツールボックスの <code>parse</code> メソッドを用いる 3. 手動で構築する (非推奨)</li>
+</ol>
+
+<h4 id='_'><code>reify</code> を用いた構文木の構築</h4>
+
+<p><code>reify</code> メソッドは Scala 式を引数として受け取り、その引数を <code>Tree</code> として表現したものを結果として返す。</p>
+
+<p>Scala リフレクションでは、<code>reify</code> メソッドを用いた構文木の構築が推奨される方法だ。その理由を具体例を用いて説明しよう:</p>
+
+<pre><code>scala&gt; import scala.reflect.runtime.universe._
+import scala.reflect.runtime.universe._
+
+scala&gt; { val tree = reify(println(2)).tree; showRaw(tree) }
+res0: String = Apply(Select(Select(This(newTypeName(&quot;scala&quot;)), newTermName(&quot;Predef&quot;)), newTermName(&quot;println&quot;)), List(Literal(Constant(2))))</code></pre>
+
+<p>ここで、単に <code>println(2)</code> という呼び出しを <code>reify</code> している。 つまり、<code>println(2)</code> という式をそれに対応する構文木の表現に変換している。そして、生の構文木の内部構造を出力している。 <code>println</code> メソッドが <code>scala.Predef.println</code> に変換されたことに注目してほしい。 このような変換は <code>reify</code> の結果がどこで用いられても意味が変わらないことを保証する。 例えば、この <code>println(2)</code> というコードが独自の <code>println</code> を定義するブロックに挿入されたとしてもこのコードの振る舞いには影響しない。</p>
+
+<p>このような構文木の構築は、識別子のバインディングを保持するため<strong>健全</strong> (hygenic) であるといわれる。</p>
+
+<h5 id='id144'>構文木のスプライシング</h5>
+
+<p><code>reify</code> を使うことで複数の小さい構文木から 1つの構文木へと合成することもできる。これは <code>Expr.splice</code> (スプライス、「継ぎ足す」という意味) を用いて行われる。</p>
+
+<p><strong>注意</strong>: <code>Expr</code> は <code>reify</code> の戻り値の型だ。<strong>型付けされた</strong> (typed) 構文木、<code>TypeTag</code> そして <code>splice</code> などのレイフィケーションに関連するいくつかのメソッドを含む簡単なラッパーだと思ってもらえばいい。 <code>Expr</code> に関する詳細は<a href='/ja/overviews/reflection/annotations-names-scopes.html'>このガイドの関連項目</a>を参照。</p>
+
+<p>例えば、<code>splice</code> を用いて <code>println(2)</code> を表す構文木を構築してみよう:</p>
+
+<pre><code>scala&gt; val x = reify(2)
+x: reflect.runtime.universe.Expr[Int(2)] = Expr[Int(2)](2)
+
+scala&gt; reify(println(x.splice))
+res1: reflect.runtime.universe.Expr[Unit] = Expr[Unit](scala.this.Predef.println(2))</code></pre>
+
+<p>ここで <code>2</code> と <code>println</code> をそれぞれ別に <code>reify</code> して、一方を他方の中に <code>splice</code> している。</p>
+
+<p>しかし、<code>reify</code> の引数は妥当で型付け可能な Scala のコードであることが要求されることに注意してほしい。 <code>println</code> の引数の代わりに、<code>println</code> そのものを抽象化しようとした場合は失敗することを以下に示す:</p>
+
+<pre><code>scala&gt; val fn = reify(println)
+fn: reflect.runtime.universe.Expr[Unit] = Expr[Unit](scala.this.Predef.println())
+
+scala&gt; reify(fn.splice(2))
+&lt;console&gt;:12: error: Unit does not take parameters
+            reify(fn.splice(2))
+                            ^</code></pre>
+
+<p>見てのとおり、呼び出された関数の名前だけを捕捉したかったわけだが、コンパイラは引数無しの <code>println</code> という呼び出しをレイファイしたかったのだと決めてかかっている。</p>
+
+<p>このようなユースケースは現在 <code>reify</code> を用いては表現することはできない。</p>
+
+<h4 id='__'>ツールボックスの <code>parse</code> を用いた構文木の構築</h4>
+
+<p><strong>ツールボックス</strong> (<code>Toolbox</code>) を使って構文木の型検査、コンパイル、および実行を行うことができる。 ツールボックスはまた、文字列を構文木へとパースすることができる。</p>
+
+<p><strong>注意</strong>: ツールボックスの仕様は <code>scala-compiler.jar</code> にクラスパスが通っていることを必要とする。</p>
+
+<p><code>parse</code> メソッドを使った場合に、前述の <code>println</code> の例がどうなるかみてみよう:</p>
+
+<pre><code>scala&gt; import scala.reflect.runtime.universe._
+import scala.reflect.runtime.universe._
+
+scala&gt; import scala.tools.reflect.ToolBox
+import scala.tools.reflect.ToolBox
+
+scala&gt; val tb = runtimeMirror(getClass.getClassLoader).mkToolBox()
+tb: scala.tools.reflect.ToolBox[reflect.runtime.universe.type] = scala.tools.reflect.ToolBoxFactory$ToolBoxImpl@7bc979dd
+
+scala&gt; showRaw(tb.parse(&quot;println(2)&quot;))
+res2: String = Apply(Ident(newTermName(&quot;println&quot;)), List(Literal(Constant(2))))</code></pre>
+
+<p><code>reify</code> と違って、ツールボックスは型付けの要求を必要としないことに注目してほしい。 この柔軟性の引き換えに堅牢性が犠牲になっている。どういう事かと言うと、<code>reify</code> と違ってこの <code>parse</code> は <code>println</code> が標準の <code>println</code> メソッドにバインドされていることが反映されていない。</p>
+
+<p><strong>注意</strong>: マクロを使っている場合は、<code>ToolBox.parse</code> を使うべきではない。マクロコンテキストに既に <code>parse</code> メソッドが組み込まれているからだ。具体例を使って説明しよう:</p>
+
+<pre><code>scala&gt; import language.experimental.macros
+import language.experimental.macros
+
+scala&gt; def impl(c: scala.reflect.macros.Context) = c.Expr[Unit](c.parse(&quot;println(2)&quot;))
+impl: (c: scala.reflect.macros.Context)c.Expr[Unit]
+
+scala&gt; def test = macro impl
+test: Unit
+
+scala&gt; test
+2</code></pre>
+
+<h5 id='id145'>ツールボックスを用いた型検査</h5>
+
+<p>前に少し触れたが、ツールボックス (<code>ToolBox</code>) は文字列から構文木を構築する以外にも使い道があって、構文木の型検査、コンパイル、および実行を行うことができる。</p>
+
+<p>プログラムの大まかな構造を保持する他に、構文木はプログラムの意味論に関する重要な情報を <code>symbol</code> (定義を導入または参照する構文木に割り当てられたシンボル) や <code>tpe</code> (構文木の型) という形で保持する。デフォルトでは、これらのフィールドは空だが、型検査をすることで充足される。</p>
+
+<p>実行時リフレクションのフレームワークを利用する場合、型検査は <code>ToolBox.typeCheck</code> によって実装される。 コンパイル時にマクロを利用する場合は <code>Context.typeCheck</code> メソッドを使う。</p>
+
+<pre><code>scala&gt; import scala.reflect.runtime.universe._
+import scala.reflect.runtime.universe._
+
+scala&gt; val tree = reify { &quot;test&quot;.length }.tree
+tree: reflect.runtime.universe.Tree = &quot;test&quot;.length()
+
+scala&gt; import scala.tools.reflect.ToolBox
+import scala.tools.reflect.ToolBox
+
+scala&gt; val tb = runtimeMirror(getClass.getClassLoader).mkToolBox()
+tb: scala.tools.reflect.ToolBox[reflect.runtime.universe.type] = ...
+
+scala&gt; val ttree = tb.typeCheck(tree)
+ttree: tb.u.Tree = &quot;test&quot;.length()
+
+scala&gt; ttree.tpe
+res5: tb.u.Type = Int
+
+scala&gt; ttree.symbol
+res6: tb.u.Symbol = method length</code></pre>
+
+<p>上の例では、<code>&quot;test&quot;.length</code> という呼び出しを表現する構文木を構築して、<code>ToolBox</code> <code>tb</code> の <code>typeCheck</code> メソッドを用いて構文木を型検査している。 見てのとおり、<code>ttree</code> は正しい型 <code>Int</code> を取得して、<code>Symbol</code> も正しく設定されている。</p>
+
+<h4 id='id146'>手動の構文木の構築</h4>
+
+<p>もし全てが失敗した場合は、手動で構文木を構築することもできる。これは最も低レベルな構文木を構築する方法で、他の方法がうまくいかなかった場合のみ挑むべき方法だ。 <code>parse</code> に比べてより柔軟な方法を提供するが、その柔軟性は過度の冗長さと脆弱さによって実現されている。</p>
+
+<p><code>println(2)</code> を使った例題を手動で構築すると、こうなる:</p>
+
+<pre><code>scala&gt; Apply(Ident(newTermName(&quot;println&quot;)), List(Literal(Constant(2))))
+res0: reflect.runtime.universe.Apply = println(2)</code></pre>
+
+<p>このテクニックの典型的なユースケースは単独では意味を成さない動的に構築された部分木を組み合わせて構文木を作る必要がある場合だ。 そのような場合、引数が型付けられていることを必要とする <code>reify</code> はおそらく不適切だろう。 構文木は個々の部分木では Scala ソースとして表現することができない式以下のレベルから組み立てられることがよくあるため、<code>parse</code> でもうまくいかないだろう。</p>
+      <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  
+    var disqus_shortname = 'scalajp'; // required: replace example with your forum shortname
+  
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </div>
+
+    <div class="span6">
+      <div id="scroller-anchor">
+  <div id="scroller">
+    <p class="contents">Contents</p>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  <ul>
+    
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+        
+          <li><a href="/ja/overviews/reflection/overview.html">概要</a></li>
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+    
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+        
+          <li><a href="/ja/overviews/reflection/environment-universes-mirrors.html">環境、ユニバース、ミラー</a></li>
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+    
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+        
+          <li><a href="/ja/overviews/reflection/symbols-trees-types.html">シンボル、構文木、型</a></li>
+           
+        
+          <div id="toc"></div>
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+    
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+        
+          <li><a href="/ja/overviews/reflection/annotations-names-scopes.html">アノテーション、名前、スコープ、その他</a></li>
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+    
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+        
+          <li><a href="/ja/overviews/reflection/typetags-manifests.html">型タグとマニフェスト</a></li>
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+    
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+        
+          <li><a href="/ja/overviews/reflection/thread-safety.html">スレッドセーフティ</a></li>
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+           
+        
+      
+    
+  </ul>
+
+
+  </div>
+</div>
+    </div>
+
+
+  </div>
+</div>
+
+<div class="footer">
+	<div class="container">
+		<ul>
+			<li><h5>API</h5></li>
+			<li><a href="http://www.scala-lang.org/api/current/">Current</a></li>
+			<li><a href="http://www.scala-lang.org/archives/downloads/distrib/files/nightly/docs/library/index.html">Nightly</a></li>
+		</ul>
+		<ul>
+			<li><h5>Learn</h5></li>
+			<li><a href="/overviews">Guides & Overviews</a></li>
+			<li><a href="/tutorials">Tutorials</a></li>
+			<li><a href="/style">Scala Style Guide</a></li>				
+		</ul>
+		<ul>
+			<li><h5>Quickref</h5></li>
+			<li><a href="/glossary">Glossary</a></li>
+			<li><a href="/cheatsheets">Cheatsheets</a></li>
+		</ul>
+		<ul>
+			<li><h5>Contribute</h5></li>
+			<li><a href="http://github.com/scala/scala.github.com">Source Code</a></li>
+			<li><a href="/contribute.html">Contributors Guide</a></li>
+			<li><a href="http://getsatisfaction.com/scaladocs">Suggestions</a></li>			
+		</ul>
+		<ul>
+			<li><h5>Other Resources</h5></li>
+			<li><a href="http://wiki.scala-lang.org">Wiki</a></li>
+			<li><a href="/sips">Scala Improvement Process</a></li>				
+		</ul>						
+	</div>
+	<div class="container copyright">
+ 		<p>
+			Copyright &copy; 2011-2013 EPFL. All rights reserved.
+			<a href="https://github.com/scala/scala.github.com/commits/gh-pages.atom"><img align="right" height="20px" width="20px" src="/resources/images/rss.png" alt="RSS feed of updates to the github repo hosting this site"></a>
+		</p>		
+	</div>
+</div>
+
+
+<script type="text/javascript">
+  $('#toc').toc({exclude: 'h1, h5, h6', context: '', autoId: true, numerate: false});
+</script>
+
+<script type="text/javascript">
+  $(function() {
+    moveScroller();
+  });
+</script>
+
+  </body>
+</html>
+
+

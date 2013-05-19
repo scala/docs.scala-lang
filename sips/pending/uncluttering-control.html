@@ -1,0 +1,411 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>SIP-12 Uncluttering Scala’s syntax for control structures. - Scala Documentation</title>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="icon" type="image/png" href="/resources/favicon.ico">
+
+    <!-- prettify js and CSS -->
+    <link rel="stylesheet" href="/resources/stylesheets/prettify.css" type="text/css" />
+    <script src="/resources/javascript/prettify/prettify.js" type="text/javascript" ></script>
+
+
+    <!-- jquery js -->
+    <script src="/resources/javascript/jquery.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/effects.core.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/effects.highlight.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/moveScroller.js" type="text/javascript" ></script>
+
+    <!-- Bootstrap JS and CSS -->
+    <link rel="stylesheet" href="/resources/stylesheets/bootstrap.css" type="text/css" />
+	  <script src="/resources/javascript/bootstrap-dropdown.js" type="text/javascript" ></script>
+	  <script src="/resources/javascript/bootstrap-dropdown-app.js" type="text/javascript" ></script>
+
+    <!-- Base stylesheet for all pages -->
+    <link rel="stylesheet" href="/resources/stylesheets/base.css" type="text/css" />
+
+    <!-- table of contents js -->
+    <script src="/resources/javascript/toc.js" type="text/javascript" ></script>
+
+    <!-- google analytics -->
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-574683-5']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+
+    <!-- prettyprint js to prepend generated pre/code tags -->
+    <script type="text/javascript">
+      function styleCode()
+        {
+          if (typeof disableStyleCode != "undefined")
+          {
+              return;
+          }
+          var a = false;
+          $("pre code").parent().each(function()
+          {
+              if (!$(this).hasClass("prettyprint"))
+              {
+                  $(this).addClass("prettyprint lang-scala linenums");
+                  a = true
+              }
+          });
+          if (a) { prettyPrint() }
+      }
+    </script>
+
+    <script type="text/javascript">
+      jQuery(document).ready(function($) {
+
+            $(".scroll").click(function(event){
+              event.preventDefault();
+              $('html,body').animate({scrollTop:$(this.hash).offset().top}, 500);
+              $('html,body').animate({scrollTop:$(this.hash).offset().top-=50}, 500);
+              $(this.hash).effect("highlight", {color: "#FFCC85"}, 3000);
+            });
+      });
+    </script>
+
+    <script type="text/javascript">
+      $(window).ready(function goToSubsection() {
+          if (window.location.hash)
+          {
+              $('html,body').animate({scrollTop:$(window.location.hash).offset().top}, 500);
+              $('html,body').animate({scrollTop:$(window.location.hash).offset().top-=50}, 500);
+              $(window.location.hash).effect("highlight", {color: "#FFCC85"}, 3000);
+          }
+        });
+    </script>
+
+    <style type="text/css">
+
+       p.contents {
+           margin-left: 15px;
+           font-weight: bold;
+           font-size: 16px;
+       }
+
+       div#toc ul {
+           list-style: none;
+       }
+
+       div#toc ul a {
+           display: block;
+           list-style: none;
+           line-height: 22px;
+           font-weight: bold;
+           width: 100%;
+       }
+
+      div#toc ul li ul {
+           list-style: disc;
+      }
+
+      div#toc ul li ul a {
+           line-height: 18px;
+           font-weight: normal;
+      }
+
+      div#toc ul li ul li ul {
+           list-style: square;
+      }
+       div#toc ul li ul li ul a {
+       }
+
+       div#scroller-anchor {
+           width: inherit;
+       }
+
+       div#scroller {
+           width: inherit;
+       }
+
+       div#guide-title {
+        text-transform: capitalize;
+        font-size: 16px;
+        padding-bottom: 6px;
+        color: #BFBFBF;
+        text-transform: uppercase;
+        font-weight: bold;
+       }
+
+       input, textarea, select, .uneditable-input {
+	       width: 165px;
+	     }
+
+    </style>
+
+</head>
+  <body onload="styleCode()">
+    
+    <!-- Topbar
+    ================================================== -->
+    <div class="topbar" >
+      <div class="topbar-inner">
+        <div class="container">
+          <a class="brand" href="/sips/index.html"><img src="/resources/images/scala-logo.png"> Improvement Process</a>
+          <ul class="nav">
+           <li><a href="/sips/sip-submission.html">Submitting a new SIP</a></li>
+           <li><a href="/sips/sip-list.html">SIP List</a></li>
+           <li><a href="/sips/sip-tutorial.html">Tutorial: Writing a SIP</a></li>
+           <li><a href="https://groups.google.com/forum/#!forum/scala-sips">Mailing List</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+<div class="container">
+  <div class="row">    
+
+    <div class="span12">
+      <h1>SIP-12 Uncluttering Scala’s syntax for control structures.</h1>    
+      <p><strong>By: Martin Odersky</strong></p>
+
+<h2 id='motivation'>Motivation</h2>
+
+<p>The more Scala code I write the more I get tripped up by the need to write conditions in if-then-else expressions and other control constructs in parentheses. I normally would not advocate syntax changes at this level, except that this has been the single syntax decision that feels worse for me the longer I use it.</p>
+
+<h2 id='part_1_if'>Part 1: if</h2>
+
+<p>Having to write parentheses is an unfortunate inheritance from C via Java. It makes code more cluttered than it could be. In C/C++/Java this was no big deal, but because Scala is much cleaner syntactically than these languages it starts to stick out like a sore thumb. This in particular because only one form of <code>if</code> comes with parentheses; if you use an if as a filter in a for expression or as a guard in a pattern, no parentheses are required.</p>
+
+<p>So, here is the proposal (for Scala 2.10):</p>
+
+<ol>
+<li>
+<p>Introduce a new keyword, <code>then</code>.</p>
+</li>
+
+<li>
+<p>Allow the following alternative syntax form:</p>
+
+<pre><code>if expression then expression [else expression]</code></pre>
+</li>
+
+<li>
+<p>At some point in the future (there’s no rush) we could deprecate the form</p>
+
+<pre><code>if (expression) expression else expression</code></pre>
+
+<p>and then remove it.</p>
+</li>
+</ol>
+
+<p>Once we have dealt with if, we should do the same thing with while, do-while and for.</p>
+
+<h2 id='part_2_dowhile'>Part 2: do-while</h2>
+
+<p>do-while is easy. Simply do the following:</p>
+
+<ol>
+<li>
+<p>Allow</p>
+
+<pre><code>do expression while expression</code></pre>
+
+<p>as syntax (i.e. drop the required parentheses around the condition).</p>
+</li>
+</ol>
+
+<p>While loops and for loops are more tricky.</p>
+
+<h2 id='part_3_while'>Part 3: while</h2>
+
+<p>For while loops:</p>
+
+<ol>
+<li>
+<p>Allow</p>
+
+<pre><code> while expression do expression</code></pre>
+
+<p>as syntax.We then have to deal with an ambiguity: What should we do with</p>
+
+<pre><code> while (expression1) do expression2 while (expression3)</code></pre>
+
+<p>? I.e. a <code>do-while</code> loop inside an old-style <code>while</code> loop? Here’s a possible migration strategy.</p>
+</li>
+
+<li>
+<p>In Scala 2.10: Introduce</p>
+
+<pre><code>while expression1 do expression2    </code></pre>
+
+<p>where <code>expression1</code> is not allowed to have parentheses at the outermost level (there’s no need to have them anyway). Also, emit a deprecation warning if the compiler comes across a do-while nested directly in an old-style while:</p>
+
+<pre><code>while (expression1) do expression2 while expression3</code></pre>
+
+<p>To write a <code>do-while</code> inside a <code>while</code> loop you will need braces, like this:</p>
+
+<pre><code>while (expression1) { do expression2 while epression3 }</code></pre>
+</li>
+
+<li>
+<p>In Scala 2.11: Disallow</p>
+
+<pre><code>while (expression1) do expression2 while expression3</code></pre>
+</li>
+
+<li>
+<p>In Scala 2.12: Drop the restriction introduced in 2.10. Conditions in a <code>while-do</code> can now be arbitrary expressions including with parentheses at the outside.</p>
+</li>
+</ol>
+
+<h2 id='part_4_for'>Part 4: for</h2>
+
+<p>For-loops and for expressions can be handled similarly:</p>
+
+<ol>
+<li>
+<p>Allow</p>
+
+<pre><code>for enumerators yield expression</code></pre>
+
+<p>as syntax. Enumerators are treated as if they were in braces, i.e. newlines can separate generators without the need for additional semicolons.</p>
+</li>
+
+<li>
+<p>Allow</p>
+
+<pre><code>for enumerators do expression</code></pre>
+
+<p>as syntax. Treat <code>do-while</code> ambiguities as in the case for <code>while</code>.</p>
+</li>
+
+<li>
+<p>At some point in the future: deprecate, and then drop the syntax</p>
+
+<pre><code>for (enumerators) expression
+for {enumerators} expression
+for (enumerators) yield expression
+for {enumerators} yield expression</code></pre>
+</li>
+</ol>
+
+<h2 id='examples'>Examples</h2>
+
+<p>Here are some examples of expressions enabled by the changes.</p>
+
+<pre><code>if x &lt; y then x else y
+
+while x &gt;= y do x /= 2
+
+for x &lt;- 1 to 10; y &lt;- 1 to 10 do println(x * y)
+
+for
+  x &lt;- 0 until N
+  y &lt;- 0 until N
+  if isPrime(x + y)
+yield (x, y)</code></pre>
+
+<h2 id='discussion'>Discussion</h2>
+
+<p>The new syntax removes more cases than it introduces. It also removes several hard to remember and non-orthogonal rules where you need parentheses, where you can have braces, and what the difference is. It thus makes the language simpler, more regular, and more pleasant to use. Some tricky situations with migration can be dealt with; and should apply anyway only in rare cases.</p>
+      <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  
+    var disqus_shortname = 'scalasip'; // required: replace example with your forum shortname
+  
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </div>
+    
+    <div class="span4">
+      <div id="scroller-anchor">
+  <div id="scroller">
+    <p class="contents">Contents</p>
+    <div id="toc"></div>    
+              
+        
+          <p class="contents">SIP Committee Decision</p>
+          <div class="alert-message warning" style="margin-left: 15px;">
+            <strong style="font-size: 15px;">Postponed To A Future Release</strong>
+            <p style="padding-top: 10px">This SIP is in Postponed status currently, with the current action for 2.10. (1) Deprecate "then" in identifiers to reserve for future keyword status. (2) Deprecate problematic "while() do" syntax.  ("do" loops in while loops require braces).</p>
+          </div>  
+                        
+              
+  </div>
+</div>
+
+    </div>
+  
+  </div>
+</div>
+
+<div class="footer">
+	<div class="container">
+		<ul>
+			<li><h5>API</h5></li>
+			<li><a href="http://www.scala-lang.org/api/current/">Current</a></li>
+			<li><a href="http://www.scala-lang.org/archives/downloads/distrib/files/nightly/docs/library/index.html">Nightly</a></li>
+		</ul>
+		<ul>
+			<li><h5>Learn</h5></li>
+			<li><a href="/overviews">Guides & Overviews</a></li>
+			<li><a href="/tutorials">Tutorials</a></li>
+			<li><a href="/style">Scala Style Guide</a></li>				
+		</ul>
+		<ul>
+			<li><h5>Quickref</h5></li>
+			<li><a href="/glossary">Glossary</a></li>
+			<li><a href="/cheatsheets">Cheatsheets</a></li>
+		</ul>
+		<ul>
+			<li><h5>Contribute</h5></li>
+			<li><a href="http://github.com/scala/scala.github.com">Source Code</a></li>
+			<li><a href="/contribute.html">Contributors Guide</a></li>
+			<li><a href="http://getsatisfaction.com/scaladocs">Suggestions</a></li>			
+		</ul>
+		<ul>
+			<li><h5>Other Resources</h5></li>
+			<li><a href="http://wiki.scala-lang.org">Wiki</a></li>
+			<li><a href="/sips">Scala Improvement Process</a></li>				
+		</ul>						
+	</div>
+	<div class="container copyright">
+ 		<p>
+			Copyright &copy; 2011-2013 EPFL. All rights reserved.
+			<a href="https://github.com/scala/scala.github.com/commits/gh-pages.atom"><img align="right" height="20px" width="20px" src="/resources/images/rss.png" alt="RSS feed of updates to the github repo hosting this site"></a>
+		</p>		
+	</div>
+</div>
+
+
+<script type="text/javascript">
+  $('#toc').toc({exclude: 'h1, h5, h6', context: '', autoId: true, numerate: false});
+</script>
+
+<script type="text/javascript">
+  $(function() {
+    moveScroller();
+  });
+</script>
+
+  </body>
+</html>
+
+    

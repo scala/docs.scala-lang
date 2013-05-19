@@ -1,0 +1,1201 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>Tutorial de Scala para programadores Java - Scala Documentation</title>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="icon" type="image/png" href="/resources/favicon.ico">
+
+    <!-- prettify js and CSS -->
+    <link rel="stylesheet" href="/resources/stylesheets/prettify.css" type="text/css" />
+    <script src="/resources/javascript/prettify/prettify.js" type="text/javascript" ></script>
+
+
+    <!-- jquery js -->
+    <script src="/resources/javascript/jquery.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/effects.core.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/effects.highlight.js" type="text/javascript" ></script>
+    <script src="/resources/javascript/moveScroller.js" type="text/javascript" ></script>
+
+    <!-- Bootstrap JS and CSS -->
+    <link rel="stylesheet" href="/resources/stylesheets/bootstrap.css" type="text/css" />
+	  <script src="/resources/javascript/bootstrap-dropdown.js" type="text/javascript" ></script>
+	  <script src="/resources/javascript/bootstrap-dropdown-app.js" type="text/javascript" ></script>
+
+    <!-- Base stylesheet for all pages -->
+    <link rel="stylesheet" href="/resources/stylesheets/base.css" type="text/css" />
+
+    <!-- table of contents js -->
+    <script src="/resources/javascript/toc.js" type="text/javascript" ></script>
+
+    <!-- google analytics -->
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-574683-5']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+
+    <!-- prettyprint js to prepend generated pre/code tags -->
+    <script type="text/javascript">
+      function styleCode()
+        {
+          if (typeof disableStyleCode != "undefined")
+          {
+              return;
+          }
+          var a = false;
+          $("pre code").parent().each(function()
+          {
+              if (!$(this).hasClass("prettyprint"))
+              {
+                  $(this).addClass("prettyprint lang-scala linenums");
+                  a = true
+              }
+          });
+          if (a) { prettyPrint() }
+      }
+    </script>
+
+    <script type="text/javascript">
+      jQuery(document).ready(function($) {
+
+            $(".scroll").click(function(event){
+              event.preventDefault();
+              $('html,body').animate({scrollTop:$(this.hash).offset().top}, 500);
+              $('html,body').animate({scrollTop:$(this.hash).offset().top-=50}, 500);
+              $(this.hash).effect("highlight", {color: "#FFCC85"}, 3000);
+            });
+      });
+    </script>
+
+    <script type="text/javascript">
+      $(window).ready(function goToSubsection() {
+          if (window.location.hash)
+          {
+              $('html,body').animate({scrollTop:$(window.location.hash).offset().top}, 500);
+              $('html,body').animate({scrollTop:$(window.location.hash).offset().top-=50}, 500);
+              $(window.location.hash).effect("highlight", {color: "#FFCC85"}, 3000);
+          }
+        });
+    </script>
+
+    <style type="text/css">
+
+       p.contents {
+           margin-left: 15px;
+           font-weight: bold;
+           font-size: 16px;
+       }
+
+       div#toc ul {
+           list-style: none;
+       }
+
+       div#toc ul a {
+           display: block;
+           list-style: none;
+           line-height: 22px;
+           font-weight: bold;
+           width: 100%;
+       }
+
+      div#toc ul li ul {
+           list-style: disc;
+      }
+
+      div#toc ul li ul a {
+           line-height: 18px;
+           font-weight: normal;
+      }
+
+      div#toc ul li ul li ul {
+           list-style: square;
+      }
+       div#toc ul li ul li ul a {
+       }
+
+       div#scroller-anchor {
+           width: inherit;
+       }
+
+       div#scroller {
+           width: inherit;
+       }
+
+       div#guide-title {
+        text-transform: capitalize;
+        font-size: 16px;
+        padding-bottom: 6px;
+        color: #BFBFBF;
+        text-transform: uppercase;
+        font-weight: bold;
+       }
+
+       input, textarea, select, .uneditable-input {
+	       width: 165px;
+	     }
+
+    </style>
+
+</head>
+  <body onload="styleCode()">
+
+    <!-- Topbar
+    ================================================== -->
+<div class="topbar">
+    <div class="topbar-inner">
+        <div class="container">
+            <a class="brand" href="/index.html"><img src="/resources/images/scala-logo.png"> Documentation</a>
+            <ul class="nav">
+
+                <li class="menu">
+                      <a href="#" class="menu">API</a>
+                      <ul class="menu-dropdown">
+                        <li><a href="http://www.scala-lang.org/api/current/">Current</a></li>
+                        <li><a href="http://www.scala-lang.org/archives/downloads/distrib/files/nightly/docs/library/index.html">Nightly</a></li>
+                        <!--<li class="divider"></li>
+                        <li><a href="#">Previous Versions</a></li>
+                        -->
+                      </ul>
+                </li>
+
+                <li class="menu">
+                      <a href="#" class="menu">Learn</a>
+                      <ul class="menu-dropdown">
+                        <li><a href="/overviews">Guides & Overviews</a></li>
+                        <li><a href="/tutorials">Tutorials</a></li>
+                        <li><a href="/style">Scala Style Guide</a></li>
+                      </ul>
+                </li>
+
+                <li class="menu">
+                      <a href="#" class="menu">Quickref</a>
+                      <ul class="menu-dropdown">
+                        <li><a href="/glossary">Glossary</a></li>
+                        <li><a href="/cheatsheets">Cheatsheets</a></li>
+                      </ul>
+                </li>
+
+                <li><a href="/contribute.html">Contribute</a></li>
+                <li><a href="/sips">SIPs</a></li>
+                <li><a href="http://wiki.scala-lang.org">Wiki</a></li>
+          </ul>
+          <form method="get" id="searchform" action="/search.html">
+            <input type="text" placeholder="Search"  class="field" name="q" id="q"/>
+          </form>
+           </li>
+          </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    
+    <div class="span10"><h1>Tutorial de Scala para programadores Java</h1></div>
+
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+
+    
+      
+      
+    
+
+    <div class="span6">
+      
+        <a href="/tutorials/scala-for-java-programmers.html"><img src="/resources/images/language/en.png" title="Language: en"/></a> 
+        
+          <a href="/es/tutorials/scala-for-java-programmers.html"><img src="/resources/images/language/es.png" title="Language: es"/></a> 
+        
+          <a href="/ko/tutorials/scala-for-java-programmers.html"><img src="/resources/images/language/ko.png" title="Language: ko"/></a> 
+        
+          <a href="/de/tutorials/scala-for-java-programmers.html"><img src="/resources/images/language/de.png" title="Language: de"/></a> 
+        
+      
+    </div>
+
+    <div class="span10">
+      <p>Por Michel Schinz y Philipp Haller. Traducción y arreglos Santiago Basulto.</p>
+
+<h2 id='introduccin'>Introducción</h2>
+
+<p>Este documento provee una rápida introducción al lenguae Scala como también a su compilador. Está pensado para personas que ya poseen cierta experiencia en programación y quieren una vista rápida de lo que pueden hacer con Scala. Se asume como un conocimiento básico de programación orientada a objetos, especialmente en Java.</p>
+
+<h2 id='un_primer_ejemplo'>Un primer ejemplo</h2>
+
+<p>Como primer ejemplo, usaremos el programa <em>Hola mundo</em> estandar. No es muy fascinante, pero de esta manera resulta fácil demostrar el uso de herramientas de Scala sin saber demasiado acerca del lenguaje. Veamos como luce:</p>
+
+<pre><code>object HolaMundo {
+  def main(args: Array[String]) {
+    println(&quot;Hola, mundo!&quot;)
+  }
+}</code></pre>
+
+<p>La estructura de este programa debería ser familiar para programadores Java: consiste de un método llamado <code>main</code> que toma los argumentos de la linea de comando (un array de objetos String) como parámetro; el cuerpo de este método consiste en una sola llamada al método predefinido <code>println</code> con el saludo amistoso como argumento. El método <code>main</code> no retorna un valor (se puede entender como un procedimiento). Por lo tanto, no es necesario que se declare un tipo retorno.</p>
+
+<p>Lo que es menos familiar a los programadores Java es la declaración de <code>object</code> que contiene al método <code>main</code>. Esa declaración introduce lo que es comunmente conocido como <em>objeto singleton</em>, que es una clase con una sola instancia. Por lo tanto, dicha construcción declara tanto una clase llamada <code>HolaMundo</code> como una instancia de esa clase también llamada <code>HolaMundo</code>. Esta instancia es creada bajo demanda, es decir, la primera vez que es utilizada.</p>
+
+<p>El lector astuto notará que el método <code>main</code> no es declarado como <code>static</code>. Esto es así porque los miembros estáticos (métodos o campos) no existen en Scala. En vez de definir miembros estáticos, el programador de Scala declara estos miembros en un objeto singleton.</p>
+
+<h3 id='compilando_el_ejemplo'>Compilando el ejemplo</h3>
+
+<p>Para compilar el ejemplo utilizaremos <code>scalac</code>, el compilador de Scala. <code>scalac</code> funciona como la mayoría de los compiladores. Toma un archivo fuente como argumento, algunas opciones y produce uno o varios archivos objeto. Los archivos objeto que produce son archivos class de Java estandar.</p>
+
+<p>Si guardamos el programa anterior en un archivo llamado <code>HolaMundo.scala</code>, podemos compilarlo ejecutando el siguiente comando (el símbolo mayor <code>&gt;</code> representa el prompt del shell y no debe ser tipeado):</p>
+
+<pre><code>&gt; scalac HolaMundo.scala</code></pre>
+
+<p>Esto generará algunos archivos class en el directorio actual. Uno de ellos se llamará <code>HolaMundo.class</code> y contiene una clase que puede ser directamente ejecutada utilizando el comando <code>scala</code>, como mostramos en la siguiente sección.</p>
+
+<h3 id='ejecutando_el_ejemplo'>Ejecutando el ejemplo</h3>
+
+<p>Una vez compilado, un programa Scala puede ser ejecutado utilizando el comando <code>scala</code>. Su uso es muy similar al comando <code>java</code> utilizado para ejecutar programas Java, y acepta las mismas opciones. El ejemplo de arriba puede ser ejecutado utilizando el siguiente comando, que produce la salida esperada:</p>
+
+<pre><code>&gt; scala -classpath . HolaMundo
+
+Hola, mundo!</code></pre>
+
+<h2 id='interaccin_con_java'>Interacción con Java</h2>
+
+<p>Una de las fortalezas de Scala es que hace muy fácil interactuar con código Java. Todas las clases del paquete <code>java.lang</code> son importadas por defecto, mientras otras necesitan ser importadas explicitamente.</p>
+
+<p>Veamos un ejemplo que demuestra esto. Queremos obtener y formatear la fecha actual de acuerdo a convenciones utilizadas en un país específico, por ejemplo Francia.</p>
+
+<p>Las librerías de clases de Java definen clases de utilería poderosas, como <code>Date</code> y <code>DateFormat</code>. Ya que Scala interacciona fácilmente con Java, no es necesario implementar estas clases equivalentes en las librerías de Scala &#8211;podemos simplemente importar las clases de los correspondientes paquetes de Java:</p>
+
+<pre><code>import java.util.{Date, Locale}
+import java.text.DateFormat
+import java.text.DateFormat._
+
+object FrenchDate {
+  def main(args: Array[String]) {
+    val ahora = new Date
+    val df = getDateInstance(LONG, Locale.FRANCE)
+    println(df format ahora)
+  }
+}</code></pre>
+
+<p>Las declaraciones de importación de Scala lucen muy similares a las de Java, sin embargo, las primeras son bastante más poderosas. Múltiples clases pueden ser importadas desde el mismo paquete al encerrarlas en llaves como se muestra en la primer linea. Otra diferencia es que podemos importar todos los nombres de un paquete o clase, utilizando el caracter guión bajo (<code>_</code>) en vez del asterisco (<code>*</code>). Eso es porque el asterisco es un identificador válido en Scala (quiere decir que por ejemplo podemos nombrar a un método <code>*</code>), como veremos más adelante.</p>
+
+<p>La declaración <code>import</code> en la tercer linea por lo tanto importa todos los miembros de la clase <code>DateFormat</code>. Esto hace que el método estático <code>getDateInstance</code> y el campo estático <code>LONG</code> sean directamente visibles.</p>
+
+<p>Dentro del método <code>main</code> primero creamos una instancia de la clase <code>Date</code> la cual por defecto contiene la fecha actual. A continuación definimos un formateador de fechas utilizando el método estático <code>getDateInstance</code> que importamos previamente. Finalmente, imprimimos la fecha actual formateada de acuerdo a la instancia de <code>DateFormat</code> que fue &#8220;localizada&#8221;. Esta última linea muestra una propiedad interesante de la sintaxis de Scala. Los métodos que toman un solo argumento pueden ser usados con una sintaxis de infijo Es decir, la expresión</p>
+
+<pre><code>df format ahora</code></pre>
+
+<p>es solamente otra manera más corta de escribir la expresión:</p>
+
+<pre><code>df.format(ahora)</code></pre>
+
+<p>Esto parece tener como un detalle sintáctico menor, pero tiene importantes consecuencias, una de ellas la exploraremos en la próxima sección.</p>
+
+<p>Para concluir esta sección sobre la interacción con Java, es importante notar que es también posible heredar de clases Java e implementar interfaces Java directamente en Scala.</p>
+
+<h2 id='todo_es_un_objeto'>Todo es un objeto</h2>
+
+<p>Scala es un lenguaje puramente orientado a objetos en el sentido de que <em>todo</em> es un objeto, incluyendo números o funciones. Difiere de Java en este aspecto, ya que Java distingue tipos primitivos (como <code>boolean</code> e <code>int</code>) de tipos referencialbes, y no nos permite manipular las funciones como valores.</p>
+
+<h3 id='los_nmeros_son_objetos'>Los números son objetos</h3>
+
+<p>Ya que los números son objetos, estos también tienen métodos. De hecho, una expresión aritmética como la siguiente:</p>
+
+<pre><code>1 + 2 * 3 / x</code></pre>
+
+<p>Consiste exclusivamente de llamadas a métodos, porque es equivalente a la siguiente expresión, como vimos en la sección anterior:</p>
+
+<pre><code>(1).+(((2).*(3))./(x))</code></pre>
+
+<p>Esto también indica que <code>+</code>, <code>*</code>, etc son identificadores válidos en Scala.</p>
+
+<p>Los paréntesis alrededor de los números en la segunda versión son necesarios porque el analizador léxico de Scala usa la regla de &#8220;mayor coincidencia&#8221;. Por lo tanto partiría la siguiente expresión:</p>
+
+<pre><code>1.+(2)</code></pre>
+
+<p>En estas partes: <code>1.</code>, <code>+</code>, y <code>2</code>. La razón que esta regla es elegida es porque <code>1.</code> es una coincidencia válida y es mayor que <code>1</code>, haciendo a este un <code>Double</code> en vez de un <code>Int</code>. Al escribir la expresión así:</p>
+
+<pre><code>(1).+(2)</code></pre>
+
+<p>previene que el <code>1</code> sea tomado como un <code>Double</code>.</p>
+
+<h3 id='las_funciones_son_objetos'>Las funciones son objetos</h3>
+
+<p>Tal vez suene más sorprendente para los programadores Java, las funciones en Scala también son objetos. Por lo tanto es posible pasar funciones como argumentos, almacenarlas en variables, y retornarlas desde otras funciones. Esta habilidad de manipular funciones como valores es una de las valores fundamentales de un paradigma de programación muy interesante llamado <em>programación funcional</em>.</p>
+
+<p>Como un ejemplo muy simple de por qué puede ser útil usar funciones como valores consideremos una función <em>temporizador</em> (o timer, en inglés) cuyo propósito es realizar alguna acción cada un segundo. ¿Cómo pasamos al temporizador la acción a realizar? Bastante lógico, como una función. Este simple concepto de pasar funciones debería ser familiar para muchos programadores: es generalmente utilizado en código relacionado con Interfaces gráficas de usuario (GUIs) para registrar &#8220;retrollamadas&#8221; (call-back en inglés) que son invocadas cuando un evento ocurre.</p>
+
+<p>En el siguiente programa, la función del temporizador se llama <code>unaVezPorSegundo</code> y recibe una función call-back como argumento. El tipo de esta función es escrito de la siguiente manera: <code>() =&gt; Unit</code> y es el tipo de todas las funciones que no toman argumentos ni retornan valores (el tipo <code>Unit</code> es similar a <code>void</code> en Java/C/C++). La función principal de este programa simplemente invoca esta función temporizador con una call-back que imprime una sentencia en la terminal. En otras palabras, este programa imprime interminablemente la sentencia &#8220;El tiemplo vuela como una flecha&#8221; cada segundo.</p>
+
+<pre><code>object Temporizador {
+  def unaVezPorSegundo(callback: () =&gt; Unit) {
+    while (true) { callback(); Thread sleep 1000 }
+  }
+  def tiempoVuela() {
+    println(&quot;El tiemplo vuela como una flecha...&quot;)
+  }
+  def main(args: Array[String]) {
+    unaVezPorSegundo(tiempoVuela)
+  }
+}</code></pre>
+
+<p><em>Nota: si nunca tuviste experiencias previas con programación funcional te recomiendo que te tomes unos segundos para analizar cuando se utilizan paréntesis y cuando no en los lugares donde aparece <em>callback</em>. Por ejemplo, dentro de la declaración de <code>unaVezPorSegundo</code> no aparece, ya que se trata de la función como un &#8220;valor&#8221;, a diferencia de cómo aparece dentro del método, ya que en ese caso se la está invocando (por eso los paréntesis).</em> Note that in order to print the string, we used the predefined method <code>println</code> instead of using the one from <code>System.out</code>.</p>
+
+<h4 id='funciones_annimas'>Funciones anónimas</h4>
+
+<p>El programa anterior es fácil de entender, pero puede ser refinado aún más. Primero que nada es interesante notar que la función <code>tiempoVuela</code> está definida solamente para ser pasada posteriormente a la función <code>unaVezPorSegundo</code>. Tener que nombrar esa función, que es utilizada solamente una vez parece un poco innecesario y sería bueno poder construirla justo cuando sea pasada a <code>unaVezPorSegundo</code>. Esto es posible en Scala utilizando <em>funciones anónimas</em>, que son exactamente eso: funciones sin nombre. La versión revisada de nuestro temporizador utilizando una función anónima luce así:</p>
+
+<pre><code>object TemporizadorAnonimo {
+  def unaVezPorSegundo(callback: () =&gt; Unit) {
+    while (true) { callback(); Thread sleep 1000 }
+  }
+  def main(args: Array[String]) {
+    unaVezPorSegundo(
+        () =&gt; println(&quot;El tiemplo vuela como una flecha...&quot;)
+    )
+  }
+}</code></pre>
+
+<p>La presencia de una función anónima en este ejemplo es revelada por la flecha a la derecha <code>=&gt;</code> que separa los argumentos de la función del cuerpo de esta. En este ejemplo, la lista de argumentos está vacía, como se ve por el par de paréntesis vacíos a la izquierda de la flecha. El cuerpo de la función es el mismo que en <code>tiempoVuela</code> del programa anterior.</p>
+
+<h2 id='clases'>Clases</h2>
+
+<p>Como hemos visto anteriormente, Scala es un lenguaje orientado a objetos, y como tal tiene el concepto de Clase (en realidad existen lenguajes orientados a objetos que no cuentan con el concepto de clases, pero Scala no es uno de ellos). Las clases en Scala son declaradas utilizando una sintaxis que es cercana a la de Java. Una diferencia importante es que las clases en Scala pueden tener parámetros. Ilustramos esto en el siguiente ejemplo, la definición de un número complejo:</p>
+
+<pre><code>class Complejo(real: Double, imaginaria: Double) {
+  def re() = real
+  def im() = imaginaria
+}</code></pre>
+
+<p>Esta clase compleja toma dos argumentos, que son las partes real e imaginarias de un número complejo. Estos argumentos deben ser pasados cuando se crea una instancia de la clase <code>Complejo</code>, de la siguiente manera:</p>
+
+<pre><code>new Complejo(1.5, 2.3)</code></pre>
+
+<p>La clase contiene dos métodos llamados <code>re</code> e <code>im</code>, que proveen acceso a las dos partes del número.</p>
+
+<p>Debe notarse que el tipo de retorno de estos dos métodos no está expresado explicitamente. Será inferido automáticamente por el compilador, que primero mira la parte derecha de estos métodos y puede deducir que ambos retornan un valor de tipo <code>Double</code>.</p>
+
+<p>El compilador no es siempre capaz de inferir los tipos como lo hace aquí, y desafortunadamente no existe una regla simple para saber cuándo será y cuándo no. En la práctica, esto generalmente no es un problema ya que el compilador se queja cuando no es capaz de inferir un tipo que no fue explicitamente fijado. Como regla simple, los programadores de Scala novatos deberían tratar de omitir las declaraciones de tipos que parecen ser simples de deducir del contexto y ver si el compilador no lanza errores. Después de algún tiempo, el programador debería tener una buena idea de cuando omitir tipos y cuando explicitarlos.</p>
+
+<h3 id='mtodos_sin_argumentos'>Métodos sin argumentos</h3>
+
+<p>Un pequeño problema de los métodos <code>re</code> e <code>im</code> es que para poder llamarlos es necesario agregar un par de paréntesis vacíos después de sus nombres, como muestra el siguiente ejemplo:</p>
+
+<pre><code>object NumerosComplejos {
+  def main(args: Array[String]) {
+    val c = new Complejo(1.2, 3.4)
+    println(&quot;Parte imaginaria: &quot; + c.im())
+  }
+}</code></pre>
+
+<p>Sería mejor poder acceder las partes imaginarias y reales como si fueran campos, sin poner los paréntesis vacíos. Esto es perfectamente realizable en Scala, simplemente al definirlos como <em>métodos sin argumentos</em>. Tales métodos difieren de los métodos con cero o más argumentos en que no tienen paréntesis después de su nombre, tanto en la definición como en el uso. Nuestra clase <code>Complejo</code> puede ser reescrita así:</p>
+
+<pre><code>class Complejo(real: Double, imaginaria: Double) {
+  def re = real
+  def im = imaginaria
+}</code></pre>
+
+<h3 id='herencia_y_sobreescritura'>Herencia y sobreescritura</h3>
+
+<p>Todas las clases en Scala heredan de una superclase. Cuando ninguna superclase es especificada, como es el caso de <code>Complejo</code> se utiliza implicitamente <code>scala.AnyRef</code>.</p>
+
+<p>Es posible sobreescribir métodos heredados de una superclase en Scala. Aunque es necesario explicitar específicamente que un método sobreescribe otro utilizando el modificador <code>override</code>, de manera de evitar sobreescrituras accidentales. Como ejemplo, nuestra clasee <code>Complejo</code> puede ser aumentada con la redefinición del método <code>toString</code> heredado de <code>Object</code>.</p>
+
+<pre><code>class Complejo(real: Double, imaginaria: Double) {
+  def re = real
+  def im = imaginaria
+  override def toString() = 
+    &quot;&quot; + re + (if (im &lt; 0) &quot;&quot; else &quot;+&quot;) + im + &quot;i&quot;
+}</code></pre>
+
+<h2 id='clases_case_y_reconocimiento_de_patrones'>Clases Case y Reconocimiento de patrones</h2>
+
+<p>Un tipo de estructura de datos uqe aparece seguido en programas es el Árbol. Por ejemplo, los intérpretes y compiladores usualmente representan los programas internamente como árboles; los documentos XML son árboles; y muchos otros tipos de contenedores están basados en árboles, como el árbol roji-negro (red-black tree).</p>
+
+<p>Ahora examinaremos cómo estos árboles son representados y manipulados en Scala mediante un pequeño programa que oficie de calculadora. El objetivo de este programa es manipular expresiones aritméticas simples compuestas de sumas de enteros y variables. Dos ejemplos de estas expresiones pueden ser: <code>1+2</code> y <code>(x+x)+(7+y)</code>.</p>
+
+<p>Primero tenemos que decidir una representación para tales expresiones. La más natural es un árbol, donde los nodos son las operaciones (la adición en este caso) y las hojas son valores (constantes o variables).</p>
+
+<p>En Java, un árbol así sería representado utilizando una superclase abstracta para los árboles, y una subclase concreta por nodo u hoja. En un lenguaje de programación funcional uno utilizaría un tipo de dato algebráico para el mismo propósito. Scala provee el concepto de <em>clases case</em> que está en el medio de los dos conceptos anteriores. Aquí mostramos como pueden ser usadas para definir el tipo de los árboles en nuestro ejemplo:</p>
+
+<pre><code>abstract class Arbol
+case class Sum(l: Arbol, r: Arbol) extends Arbol
+case class Var(n: String) extends Arbol
+case class Const(v: Int) extends Arbol</code></pre>
+
+<p>El hecho de que las clases <code>Sum</code>, <code>Var</code> y <code>Const</code> sean declaradas como clases case significa que dififieren de las clases normales en varios aspectos:</p>
+
+<ul>
+<li>no es obligatorio utilizar la palabra clave <code>new</code> para crear instancias de estas clases (es decir, se puede escribir <code>Const(5)</code> en lugar de <code>new Const(5)</code>),</li>
+
+<li>se crea automáticamente un &#8220;getter&#8221; (un método para obtener el valor) para los parámetros utilizados en el constructor (por ejemplo es posible obtener el valor de <code>v</code> de una instancia <code>c</code> de la clase <code>Const</code> de la siguiente manera: <code>c.v</code>),</li>
+
+<li>se proveen definiciones por defecto de los métodos <code>equals</code> y <code>hashCode</code>, que trabajan sobre la estructura de las instancias y no sobre su identidad,</li>
+
+<li>se crea una definición por defecto del método <code>toString</code> que imprime el valor de una forma &#8220;tipo código) (ej: la expresión del árbol <code>x+1</code> se imprimiría <code>Sum(Var(x),Const(1))</code>),</li>
+
+<li>las instancias de estas clases pueden ser descompuestas mediante <em>reconocimiento de patrones</em> (pattern matching) como veremos más abajo.</li>
+</ul>
+
+<p>Ahora que hemos definido el tipo de datos para representar nuestra expresión aritmética podemos empezar definiendo operaciones para manipularlas. Empezaremos con una función para evaluar una expresión en un <em>entorno</em>. El objetivo del entorno es darle valores a las variables. Por ejemplo, la expresión <code>x+1</code> evaluada en un entorno que asocia el valor <code>5</code> a la variable <code>x</code>, escrito <code>{ x -&gt; 5 }</code>, da como resultado <code>6</code>.</p>
+
+<p>Por lo tanto tenemos que encontrar una manera de representar entornos. Podríamos por supuesto utilizar alguna estructura de datos asociativa como una tabla hash, pero podemos directamente utilizar funciones! Un entorno realmente no es nada más que una función la cual asocia valores a variables. El entorno <code>{ x -&gt; 5 }</code> mostrado anteriormente puede ser fácilmente escrito de la siguiente manera en Scala:</p>
+
+<pre><code>{ case &quot;x&quot; =&gt; 5 }</code></pre>
+
+<p>Esta notación define una función la cual, dado un string <code>&quot;x&quot;</code> como argumento retorna el entero <code>5</code>, y falla con una excepción si no fuera así.</p>
+
+<p>Antes de escribir la función evaluadora, démosle un nombre al tipo de los entornos. Podríamos por supuesto simplemente utilizar <code>String =&gt; Int</code> para los entornos, pero simplifica el programa introducir un nombre para este tipo, y hace que los futuros cambios sean más fáciles. Esto lo realizamos de la siguiente manera:</p>
+
+<pre><code>type Entorno = String =&gt; Int</code></pre>
+
+<p>De ahora en más, el tipo <code>Entorno</code> puede ser usado como un alias del tipo de funciones definidas de <code>String</code> a <code>Int</code>.</p>
+
+<p>Ahora podemos dar la definición de la función evaluadora. Conceptualmente, es muy sencillo: el valor de una suma de dos expresiones es simplemente la suma de los valores de estas expresiones; el valor de una variable es obtenido directamente del entorno; y eel valor de una constante es la constante en sí misma. Expresar esto en Scala no resulta para nada difícil:</p>
+
+<pre><code>def eval(a: Arbol, ent: Entorno): Int = a match {
+  case Sum(i, d) =&gt; eval(i, ent) + eval(d, env)
+  case Var(n)    =&gt; ent(n)
+  case Const(v)  =&gt; v
+}</code></pre>
+
+<p>Esta función evaluadora función realizando un <em>reconocimiento de patrones</em> (pattern matching) en el árbol <code>a</code>. Intuitivamente, el significado de la definición de arriba debería estar claro:</p>
+
+<ol>
+<li>Primero comprueba si el árbol <code>t</code>es una <code>Sum</code>, y si lo es, asocia el sub-arbol izquierdo a una nueva variable llamada <code>i</code> y el sub-arbol derecho a la variable <code>r</code>, y después procede con la evaluación de la expresión que sigue a la flecha (<code>=&gt;</code>); esta expresión puede (y hace) uso de las variables asociadas por el patrón que aparece del lado izquierdo de la flecha.</li>
+
+<li>si la primer comprobación (la de <code>Sum</code>) no prospera, es decir que el árbol no es una <code>Sum</code>, sigue de largo y comprueba si <code>a</code> es un <code>Var</code>; si lo es, asocia el nombre contenido en el nodo <code>Var</code> a la variable <code>n</code> y procede con la parte derecha de la expresión.</li>
+
+<li>si la segunda comprobación también falla, resulta que <code>a</code> no es un <code>Sum</code> ni un <code>Var</code>, por lo tanto comprueba que sea un <code>Const</code>, y si lo es, asocia el valor contenido en el nodo <code>Const</code> a la variable <code>v</code>y procede con el lado derecho.</li>
+
+<li>finalmente, si todos las comprobaciones fallan, una excepción es lanzada para dar cuenta el fallo de la expresión; esto puede pasar solo si existen más subclases de <code>Arbol</code>.</li>
+</ol>
+
+<p>Hemos visto que la idea básica del reconocimiento de patrones es intentar coincidir un valor con una serie de patrones, y tan pronto como un patrón coincida, extraer y nombrar las varias partes del valor para finalmente evaluar algo de código que tipicamente hace uso de esas partes nombradas.</p>
+
+<p>Un programador con experiencia en orientación a objetos puede preguntarse por qué no definimos <code>eval</code> como un método de la clase <code>Arbol</code> y sus subclases. En realidad podríamos haberlo hecho, ya que Scala permite la definición de métodos en clases case tal como en clases normales. Por lo tanto decidir en usar reconocimiento de patrones o métodos es una cuestión de gustos, pero también tiene grandes implicancias en cuanto a la extensibilidad:</p>
+
+<ul>
+<li>
+<p>cuando usamos métodos, es fácil añadir un nuevo tipo de nodo ya que esto puede ser realizado simplemente al definir una nueva subclase de <code>Arbol</code>; por otro lado, añadir una nueva operación para manipular el árbol es tedioso, ya que requiere la modificación en todas las subclases.</p>
+</li>
+
+<li>
+<p>cuando utilizamos reconocimiento de patrones esta situación es inversa: agregar un nuevo tipo de nodo requiere la modificación de todas las funciones que hacen reconocimiento de patrones sobre el árbol, para tomar en cuenta un nuevo nodo; pero por otro lado agregar una nueva operación fácil, solamente definiendolo como una función independiente.</p>
+</li>
+</ul>
+
+<p>To explore pattern matching further, let us define another operation on arithmetic expressions: symbolic derivation. The reader might remember the following rules regarding this operation:</p>
+
+<p>Para explorar un poco más esto de pattern matching definamos otra operación aritmética: derivación simbólica. El lector recordará las siguientes reglas sobre esta operación:</p>
+
+<ol>
+<li>la derivada de una suma es la suma de las derivadas,</li>
+
+<li>la derivada de una variable <code>v</code> es uno (1) si <code>v</code> es la variable relativa a la cual la derivada toma lugar, y cero (0)de otra manera,</li>
+
+<li>la derivada de una constante es cero (0).</li>
+</ol>
+
+<p>These rules can be translated almost literally into Scala code, to obtain the following definition:</p>
+
+<p>Estas reglas pueden ser traducidas casi literalmente en código Sclaa, para obtener la siguiente definición.</p>
+
+<pre><code>def derivada(a: Arbol, v: String): Arbol = a match {
+  case Sum(l, r) =&gt; Sum(derivada(l, v), derivada(r, v))
+  case Var(n) if (v == n) =&gt; Const(1)
+  case _ =&gt; Const(0)
+}</code></pre>
+
+<p>Esta función introduce dos nuevos conceptos relacionados al pattern matching. Primero que nada la expresión <code>case</code> para variables tienen una <em>guarda</em>, una expresión siguiendo la palabra clave <code>if</code>. Esta guarda previene que el patrón concuerde al menos que la expresión sea verdadera. Aquí es usada para asegurarse que retornamos la constante 1 solo si el nombre de la variable siendo derivada es el mismo que la variable derivada <code>v</code>. El segundo concepto nuevo usado aquí es el <em>comodín</em>, escrito con el guión bajo <code>_</code>, que coincide con cualquier valor que aparezca, sin darle un nombre.</p>
+
+<p>No hemos explorado el completo poder del pattern matching aún, pero nos detendremos aquí para mantener este documento corto. Todavía nos queda pendiente ver cómo funcionan las dos funciones de arriba en un ejemplo real. Para ese propósito, escribamos una función main simple que realice algunas operaciones sobre la expresión <code>(x+x)+(7+y)</code>: primero computa su valor en el entorno <code>{ x -&gt; 5, y -&gt; 7 }</code> y después computa su derivada con respecto a <code>x</code> y después a <code>y</code>.</p>
+
+<pre><code>def main(args: Array[String]) {
+  val exp: Arbol = Sum(Sum(Var(&quot;x&quot;),Var(&quot;x&quot;)),Sum(Const(7),Var(&quot;y&quot;)))
+  val ent: Entonrno = { case &quot;x&quot; =&gt; 5 case &quot;y&quot; =&gt; 7 }
+  println(&quot;Expresión: &quot; + exp)
+  println(&quot;Evaluación con x=5, y=7: &quot; + eval(exp, ent))
+  println(&quot;Derivada con respecto a x:\n &quot; + derivada(exp, &quot;x&quot;))
+  println(&quot;Derivada con respecto a y:\n &quot; + derivada(exp, &quot;y&quot;))
+}</code></pre>
+
+<p>Al ejecutar este programa obtenemos el siguiente resultado:</p>
+
+<pre><code>Expresión: Sum(Sum(Var(x),Var(x)),Sum(Const(7),Var(y)))
+Evaluación con x=5, y=7: 24
+Derivada con respecto a x:
+ Sum(Sum(Const(1),Const(1)),Sum(Const(0),Const(0)))
+Derivada con respecto a y:
+ Sum(Sum(Const(0),Const(0)),Sum(Const(0),Const(1)))</code></pre>
+
+<p>Al examinar la salida vemos que el resultado de la derivada debería ser simplificado antes de ser presentado al usuario. Definir una función de simplificación básica utilizando reconocimiento de patrones es un problema interesante (y, por no decir complejo, que necesita una solución astuta), lo dejamos para un ejercicio para el lector.</p>
+
+<h2 id='traits'>Traits</h2>
+
+<p><em>Nota: La palabra Trait(/treɪt/, pronunciado Treit) puede ser traducida literalmente como &#8220;Rasgo&#8221;. De todas maneras decido utilizar la notación original por ser un concepto muy arraigado a Scala</em></p>
+
+<p>Aparte de poder heredar código de una super clase, una clase en Scala puede también importar código de uno o varios <em>traits</em>.</p>
+
+<p>Tal vez la forma más fácil para un programador Java de entender qué son los traits es verlos como interfaces que también pueden contener código. En Scala, cuando una clase hereda de un trait, implementa la interface de ese trait, y hereda todo el código contenido en el trait.</p>
+
+<p>Para ver la utilidad de los traits, veamos un ejemplo clásico: objetos ordenados. Generalemente es útil tener la posibilidad de comparar objetos de una clase dada entre ellos, por ejemplo, para ordenarlos. En Java, los objetos que son comparables implementan la interfaz <code>Comparable</code>. En Scala, podemos hacer algo un poco mejor que en Java al definir un trait equivalente <code>Comparable</code> que invocará a <code>Ord</code>.</p>
+
+<p>Cuando comparamos objetos podemos utilizar seis predicados distintos: menor, menor o igual, igual, distinto, mayor o igual y mayor. De todas maneras, definir todos estos es fastidioso, especialmente que cuatro de estos pueden ser expresados en base a los otros dos. Esto es, dados los predicados &#8220;igual&#8221; y &#8220;menor&#8221; (por ejemplo), uno puede expresar los otros. En Scala, todas estas observaciones pueden ser fácilmente capturadas mediante la siguiente declaración de un Trait:</p>
+
+<pre><code>trait Ord {
+  def &lt; (that: Any): Boolean
+  def &lt;=(that: Any): Boolean =  (this &lt; that) || (this == that)
+  def &gt; (that: Any): Boolean = !(this &lt;= that)
+  def &gt;=(that: Any): Boolean = !(this &lt; that)
+}</code></pre>
+
+<p>Esta definición crea un nuevo tipo llamado <code>Ord</code> el cual juega el mismo rol que la interfaz <code>Comparable</code>, como también provee implementaciones de tres predicados en términos de un cuarto, abstracto. Los predicados para igualidad y su inverso (distinto, no igual) no aparecen aquí ya que por defecto están presenten en todos los objetos.</p>
+
+<p>El tipo <code>Any</code> el cual es usado arriba es el supertipo de todos los otros tipos en Scala. Puede ser visto como una versión más general del tipo <code>Object</code> en Java, ya que <code>Any</code> también es supertipo de <code>Int</code>, <code>Float</code>, etc. cosa que no se cumple en Java (<code>int</code> por ejemplo es un tipo primitivo).</p>
+
+<p>Para hacer a un objeto de la clase comparable es suficiente definir los predicados que comprueban la igualdad y la inferioridad y mezclar la clase <code>Ord</code> de arriba. Como un ejemplo, definamos una clase <code>Fecha</code> que representa fechas en el calendario gregoriano.</p>
+
+<pre><code>class Fecha(d: Int, m: Int, a: Int) extends Ord {
+  def anno = a
+  def mes = m
+  def dia = d
+  override def toString(): String = anno + &quot;-&quot; + mes + &quot;-&quot; + dia</code></pre>
+
+<p>La parte importante aquí es la declaración <code>extends Ord</code> la cual sigue al nombre de la clase y los parámetros. Declara que la clase <code>Fecha</code> hereda del trait <code>Ord</code>.</p>
+
+<p>Después redefinimos el método <code>equals</code>, heredado de <code>Object</code>, para comparar correctamente fechas mediante sus campos individuales. La implementación por defecto de <code>equals</code> no es utilizable, porque como en Java, compara los objetos fisicamente. Por lo tanto llegamos a esto:</p>
+
+<pre><code>override def equals(that: Any): Boolean =
+  that.isInstanceOf[Fecha] &amp;&amp; {
+    val o = that.asInstanceOf[Fecha]
+    o.dia== dia &amp;&amp; o.mes == mes &amp;&amp; o.anno== anno
+  }</code></pre>
+
+<p>Este método utiliza el método predefinido <code>isInstanceOf</code> (&#8220;es instancia de&#8221;) y <code>asInstanceOf</code> (&#8220;como instancia de&#8221;). El primero <code>isInstanceOf</code> se corresponde con el operador java <code>instanceOf</code> y retorna <code>true</code> si y solo si el objeto en el cual es aplicado es una instancia del tipo dado. El segundo, <code>asInstanceOf</code>, corresponde al operador de casteo en Java: si el objeto es una instancia de un tipo dado, esta es vista como tal, de otra manera se lanza una excepción <code>ClassCastException</code>.</p>
+
+<p>Finalmente el último método para definir es el predicado que comprueba la inferioridad. Este hace uso de otro método predefinido, <code>error</code> que lanza una escepción con el mensaje de error provisto.</p>
+
+<pre><code>def &lt;(that: Any): Boolean = {
+    if (!that.isInstanceOf[Fecha])
+      error(&quot;no se puede comparar&quot; + that + &quot; y una fecha&quot;)
+
+  val o = that.asInstanceOf[Fecha]
+  (anno &lt; o.anno) ||
+  (anno== o.anno &amp;&amp; (mes &lt; o.mes ||
+                     (mes == o.mes &amp;&amp; dia &lt; o.dia)))
+}</code></pre>
+
+<p>Esto completa la definición de la clase <code>Fecha</code>. Las instancias de esta clase pueden ser vistas tanto como fechas o como objetos comparables. Además, todas ellas definen los seis predicados de comparación mencionados arriba: <code>equals</code> y <code>&lt;</code> porque aparecen directamente en la definición de la clase <code>Fecha</code> y los otros porque son heredados del trait <code>Ord</code>.</p>
+
+<p>Los traits son útiles en muchas otras más situaciones que las aquí mostrada, pero discutir sus aplicaciones está fuera del alcance de este documento.</p>
+
+<h2 id='tipos_genricos'>Tipos Genéricos</h2>
+
+<p><em>Nota: El diseñador de los tipos genéricos en Java fue nada más ni nada menos que Martin Odersky, el diseñador de Scala.</em></p>
+
+<p>La última característica de Scala que exploraremos en este tutorial es la de los tipos genéricos. Los programadores de Java deben estar bien al tanto de los problemas que genera la falta de genéricos en su lenguaje, lo cual es solucionado en Java 1.5.</p>
+
+<p>Los tipos genéricos proveen al programador la habilidad de escribir código parametrizado por tipos. Por ejemplo, escribir una librería para listas enlazadas se enfrenta al problema de decidir qué tipo darle a los elementos de la lista. Ya que esta lista está pensada para ser usada en diferentes contextos, no es posible decidir que el tipo de elementos sea, digamos, <code>Int</code>. Esto sería completamente arbitrario y muy restrictivo.</p>
+
+<p>Los programadores Java cuentan como último recurso con <code>Object</code>, que es el supertipo de todos los objetos. Esta solución de todas maneras está lejos de ser ideal, ya que no funciona con tipos primitivos (<code>int</code>, <code>long</code>, <code>float</code>, etc.) e implica que el programador tenga que realizar muchos casteos de tipos en su programa.</p>
+
+<p>Scala hace posible definir clases genéricas (y métodos) para resolver este problema. Examinemos esto con un ejemplo del contenedor más simple posible: una referencia, que puede estar tanto vacía como apuntar a un objeto de algún tipo.</p>
+
+<pre><code>class Referencia[T] {
+  private var contenido: T = _
+  def set(valor: T) { contenido = valor }
+  def get: T = contenido
+}</code></pre>
+
+<p>La clase <code>Referencia</code> es parametrizada por un tipo llamado <code>T</code>, que es el tipo de sus elementos. Este tipo es usado en el cuerpo de la clase como el tipo de la variable <code>contenido</code>, el argumento del método <code>set</code> y el tipo de retorno del método <code>get</code>.</p>
+
+<p>El ejemplo anterior introduce a las variables en Scala, que no deberían requerir mayor explicación. Es interesante notar que el valor inicial dado a la variable <code>contenido</code> es <code>_</code>, que representa un valor por defecto. Este valor por defecto es 0 para tipos numéricos, <code>false</code> para tipos <code>Boolean</code>, <code>()</code> para el tipo <code>Unit</code> y <code>null</code> para el resto de los objetos.</p>
+
+<p>Para utilizar esta clase <code>Referencia</code>, uno necesita especificar qué tipo utilizar por el parámetro <code>T</code>, es decir, el tipo del elemento contenido por la referencia. Por ejemplo, para crear y utilizar una referencia que contenga un entero, podríamos escribir lo siguiente:</p>
+
+<pre><code>object ReferenciaEntero {
+  def main(args: Array[String]) {
+    val ref = new Referencia[Int]
+    ref.set(13)
+    println(&quot;La referncia tiene la mitad de &quot; + (ref.get * 2))
+  }
+}</code></pre>
+
+<p>Como puede verse en el ejemplo, no es necesario castear el valor retornado por el método <code>get</code> antes de usarlo como un entero. Tampoco es posible almacenar otra cosa que no sea un entero en esa referencia en particular, ya que fue declarada como contenedora de un entero.</p>
+
+<h2 id='conclusin'>Conclusión</h2>
+
+<p>Scala es un lenguaje tremendamente poderoso que ha sabido heredar las mejores cosas de cada uno de los lenguajes más exitosos que se han conocido. Java no es la excepción, y comparte muchas cosas con este. La diferencia que vemos es que para cada uno de los conceptos de Java, Scala los aumenta, refina y mejora. Poder aprender todas las características de Scala nos equipa con más y mejores herramientas a la hora de escribir nuestros programas. Si bien la programación funcional no ha sido una característica de Java, el progamador experimentado puede notar la falta de soporte de este paradigma en múltiples ocasiones. El solo pensar en el código necesario para proveer a un <code>JButton</code> con el código que debe ejecutar al ser presionado nos muestra lo necesario que sería contar con herramientas funcionales. Recomendamos entonces tratar de ir incorporando estas características, por más que sea difícil para el programador Java al estar tan acostumbrado al paradigma imperativo de este lenguaje.</p>
+
+<p>Este documento dio una rápida introducción al lenguaje Scala y presento algunos ejemplos básicos. El lector interesado puede seguir, por ejemplo, leyendo el <em>Tutorial de Scala</em> que figura en el sitio de documentación, o <em>Scala by Example</em> (en inglés). También puede consultar la especificación del lenguaje cuando lo desee.</p>
+      <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  
+    var disqus_shortname = 'scalasip'; // required: replace example with your forum shortname
+  
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </div>
+    
+    <div class="span6">
+      <div id="scroller-anchor">
+  <div id="scroller">
+    <p class="contents">Contents</p>
+    <div id="toc"></div>    
+              
+  </div>
+</div>
+
+    </div>
+    
+	
+  </div>
+</div>
+
+<div class="footer">
+	<div class="container">
+		<ul>
+			<li><h5>API</h5></li>
+			<li><a href="http://www.scala-lang.org/api/current/">Current</a></li>
+			<li><a href="http://www.scala-lang.org/archives/downloads/distrib/files/nightly/docs/library/index.html">Nightly</a></li>
+		</ul>
+		<ul>
+			<li><h5>Learn</h5></li>
+			<li><a href="/overviews">Guides & Overviews</a></li>
+			<li><a href="/tutorials">Tutorials</a></li>
+			<li><a href="/style">Scala Style Guide</a></li>				
+		</ul>
+		<ul>
+			<li><h5>Quickref</h5></li>
+			<li><a href="/glossary">Glossary</a></li>
+			<li><a href="/cheatsheets">Cheatsheets</a></li>
+		</ul>
+		<ul>
+			<li><h5>Contribute</h5></li>
+			<li><a href="http://github.com/scala/scala.github.com">Source Code</a></li>
+			<li><a href="/contribute.html">Contributors Guide</a></li>
+			<li><a href="http://getsatisfaction.com/scaladocs">Suggestions</a></li>			
+		</ul>
+		<ul>
+			<li><h5>Other Resources</h5></li>
+			<li><a href="http://wiki.scala-lang.org">Wiki</a></li>
+			<li><a href="/sips">Scala Improvement Process</a></li>				
+		</ul>						
+	</div>
+	<div class="container copyright">
+ 		<p>
+			Copyright &copy; 2011-2013 EPFL. All rights reserved.
+			<a href="https://github.com/scala/scala.github.com/commits/gh-pages.atom"><img align="right" height="20px" width="20px" src="/resources/images/rss.png" alt="RSS feed of updates to the github repo hosting this site"></a>
+		</p>		
+	</div>
+</div>
+
+
+<script type="text/javascript">
+  $('#toc').toc({exclude: 'h1, h5, h6', context: '', autoId: true, numerate: false});
+</script>
+
+<script type="text/javascript">
+  $(function() {
+    moveScroller();
+  });
+</script>
+
+  </body>
+</html>
+
+    
