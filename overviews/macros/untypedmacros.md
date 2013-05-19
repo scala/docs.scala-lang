@@ -17,7 +17,7 @@ Untyped macros are a pre-release feature included in so-called macro paradise, a
 
 ## Intuition
 
-Being statically typed is great, but sometimes that is too much of a burden. Take for example, the latest experiments of Alois Cochard with
+Being statically typed is great, but sometimes that is too much of a burden. Take for example, the latest experiment of Alois Cochard with
 implementing enums using type macros - the so called [Enum Paradise](https://github.com/aloiscochard/enum-paradise). Here's how Alois has
 to write his type macro, which synthesizes an enumeration module from a lightweight spec:
 
