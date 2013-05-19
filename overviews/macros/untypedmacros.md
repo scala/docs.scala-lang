@@ -49,6 +49,10 @@ The cease-typechecking underscore can be used in exactly three places in Scala p
 2) as a vararg parameter type in a macro, 3) as a return type of a macro. Usages outside macros or as parts of complex types won't work.
 The former will lead to a compile error, the latter, as in e.g. `List[_]`, will produce existential types as usual.
 
+Note that untyped macros enable extractor macros: [SI-5903](https://issues.scala-lang.org/browse/SI-5903). In 2.10.x, it is possible
+to declare `unapply` or `unapplySeq` as macros, but usability of such macros is extremely limited as described in the discussion
+of the linked JIRA issue. Untyped macros make the full power of textual abstraction available in pattern matching.
+
 If a macro has one or more untyped parameters, then when typing its expansions, the typechecker will do nothing to its arguments
 and will pass them to the macro untyped. Even if some of the parameters do have type annotations, they will currently be ignored. This
 is something we plan on improving: [SI-6971](https://issues.scala-lang.org/browse/SI-6971). Since arguments aren't typechecked, you
