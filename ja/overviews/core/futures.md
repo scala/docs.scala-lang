@@ -395,7 +395,7 @@ Future に関しては、`filter` の呼び出しは `withFilter` の呼び出�
 もしその `Throwable` に関して部分関数が定義されていなければ、結果となる
 Future は同じ `Throwable` とともに失敗する。
 
-`rocoverWith` コンビネータは元の Future が成功した場合は同一の結果を持つ新たな Future
+`recoverWith` コンビネータは元の Future が成功した場合は同一の結果を持つ新たな Future
 を作成する。成功しなかった場合は、元の Future を失敗させた `Throwable`
 に渡された部分関数が適用される。
 もしそれが `Throwable` を何らかの Future に投射すれば、新しい Future はその Future とともに成功する。
