@@ -15,11 +15,6 @@ languages: [ja]
 
 Inference-driving macros are pre-release features included in so-called macro paradise, an experimental branch in the official Scala repository. Follow the instructions at the ["Macro Paradise"](/overviews/macros/paradise.html) page to download and use our nightly builds.
 
-WARNING! This is the most experimental of all the experimental features in paradise. Not only the details of the API are unclear,
-but I'm not sure whether the current approach is the right one, unlike, for example, in type macros, where things look very solid.
-Your feedback is even more welcome than ever. If you scroll down, you can leave comments directly on this page. You could also participate
-in the [discussion at scala-internals](http://groups.google.com/group/scala-internals/browse_thread/thread/ad309e68d645b775).
-
 ## A motivating example
 
 The use case, which gave birth to inference-driving macros, is provided by Miles Sabin and his [shapeless](https://github.com/milessabin/shapeless) library. Miles has defined the `Iso` trait, which represents isomorphisms between types.
@@ -46,15 +41,29 @@ classes and HLists, but for simplicity let's use tuples). The compiler already g
 and we just have to make use of them. Unfortunately in Scala 2.10.0 it's impossible to simplify this even further - for every case class
 you have manually define an implicit `Iso` instance.
 
-Macros have proven to be quite the boilerplate scrapers, but unfortunately they can't help here in their 2.10.0 form. The problem
-is not just in [SI-5923](https://issues.scala-lang.org/browse/SI-5923), which has already been fixed in master for a few weeks
-(note to self: backport this fix to 2.10.1).
-
 The real showstopper is the fact that when typechecking applications of methods like `foo`, scalac has to infer the type argument `L`,
 which it has no clue about (and that's no wonder, since this is domain-specific knowledge). As a result, even if you define an implicit
 macro, which synthesizes `Iso[C, L]`, scalac will helpfully infer `L` as `Nothing` before expanding the macro and then everything crumbles.
 
-## Internals of type inference
+## The proposed solution
+
+As demonstrated by [https://github.com/scala/scala/pull/2499](https://github.com/scala/scala/pull/2499), the solution to the outlined
+problem is extremely simple and elegant. <span class="label success">NEW</span>
+
+In 2.10 we don't allow macro applications to expand until all their type arguments are inferred. However we don't have to do that.
+The typechecker can infer as much as it possibly can (e.g. in the running example `C` will be inferred to `Foo` and
+`L` will remain uninferred) and then stop. After that we expand the macro and then proceed with type inference using the type of the
+expansion to help the typechecker with previously undetermined type arguments.
+
+An illustration of this technique in action can be found in our [files/run/t5923c](https://github.com/scalamacros/kepler/tree/7b890f71ecd0d28c1a1b81b7abfe8e0c11bfeb71/test/files/run/t5923c) tests.
+Note how simple everything is. The `materializeIso` implicit macro just takes its first type argument and uses it to produce an expansion.
+We don't need to make sense of the second type argument (which isn't inferred yet), we don't need to interact with type inference -
+everything happens automatically.
+
+Please note that there is [a funny caveat](https://github.com/scalamacros/kepler/blob/7b890f71ecd0d28c1a1b81b7abfe8e0c11bfeb71/test/files/run/t5923a/Macros_1.scala)
+with Nothings that we plan to address later.
+
+## Internals of type inference (deprecated)
 
 From what I learned about this over a few days, type inference in Scala is performed by the following two methods
 in `scala/tools/nsc/typechecker/Infer.scala`: [`inferExprInstance`](https://github.com/scalamacros/kepler/blob/d7b59f452f5fa35df48a5e0385f579c98ebf3555/src/compiler/scala/tools/nsc/typechecker/Infer.scala#L1123) and
@@ -145,7 +154,10 @@ So far I have nothing to say here other than showing `-Yinfer-debug` logs of var
     [solve types] solving for T4 in ?T4
     [infer method] solving for T4 in (implicit xs: C.this.Qwe[T4])Nothing based on (C.this.Qwe[Nothing])Nothing (solved: T4=Nothing)
 
-## Proposed solution
+## Previously proposed solution (deprecated)
+
+It turns out that it's unnecessary to introduce a low-level hack in the type inference mechanism.
+As outlined above, there is a much more elegant and powerful solution <span class="label success">NEW</span>.
 
 Using the infrastructure provided by [macro bundles](/overviews/macros/bundles.html) (in principle, we could achieve exactly the same
 thing using the traditional way of defining macro implementations, but that's not important here), we introduce the `onInfer` callback,
