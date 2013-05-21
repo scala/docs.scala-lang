@@ -55,7 +55,10 @@ and then select a method from it, providing type arguments if necessary.
       def poly[T] = macro Impl.poly[T]
     }
 
-## Macro compilers
+## Macro compilers (deprecated)
+
+It turns out that the flexibility provided by externalizing the strategy of macro compilation hasn't really been useful.
+Therefore I'm removing this functionality from macro paradise <span class="label success">NEW</span>.
 
 When I was implementing macro bundles, it became apparent that the mechanism which links macro definitions with macro implementations
 is too rigid. This mechanism simply used hardcoded logic in `scala/tools/nsc/typechecker/Macros.scala`, which takes the right-hand side
