@@ -42,7 +42,7 @@ Here are the first few elements of the Fibonacci sequence starting with two ones
     scala> val fibs = fibFrom(1, 1).take(7)
     fibs: scala.collection.immutable.Stream[Int] = Stream(1, ?)
     scala> fibs.toList
-    res9: List[Int] = List(1, 1, 2, 3, 5, 8, 11)
+    res9: List[Int] = List(1, 1, 2, 3, 5, 8, 13)
 
 ## Vectors
 
