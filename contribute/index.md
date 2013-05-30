@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Get Involved
+title: Contribute
 ---
 # Contributing to the Scala project
 
