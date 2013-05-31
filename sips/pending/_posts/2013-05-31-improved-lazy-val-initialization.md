@@ -55,7 +55,7 @@ Assume there are two objects A and B with lazy vals `a0` and `a1`, and `b`, resp
       lazy val b = A.a1
     }
 
-The initialization block of `a0` above refers to `b` in B, and the initialization of `B.b` refers to `A.a1`. While a circular dependency exists between these two objects, there is actually no circular dependency between specific lazy vals `a0`, `a1` and `b`.
+The initialization block of `a0` above refers to `b` in B, and the initialization of `B.b` refers to `A.a1`. While a circular dependency exists between these two objects, there is actually no circular dependency **between specific lazy vals** `a0`, `a1` and `b`.
 
 In the current lazy vals implementation there exists a possibility of a deadlock if thread Ta attempts to initialize `A.a0` and thread Tb attempts to initialize `B.b`. Assume now that both Ta and Tb start the synchronized blocks simultaneously - a deadlock can occur due to each thread trying to grab a lock of the other object and not releasing their own until the initialization completes.
 
@@ -120,6 +120,21 @@ The thread that fulfills the condition that the lazy val initializer block suspe
 
 This SIP does not attempt to solve this issue - lazy val initialization semantics assume that the `self` object monitor is available or can be made available throughout the lazy val initialization.
 
+Finally, note that the current lazy val initialization implementation is robust against the following scenario in which the initialization block starts an asynchronous computation that attempts to indefinitely grab the monitor of the current object.
+
+    class A { self =>
+      lazy val x: Int = {
+        (new Thread() {
+          override def run() = self.synchronized { while (true) {} }
+        }).start()
+        1
+      }
+    }
+
+In the current implementation the monitor is held throughout the lazy val initialization and released once the initialization block completes.
+This SIP proposes releasing the monitor during the initialization block execution, so the code above could stall indefinitely.
+
+
 ### Circular dependencies with other synchronization constructs ###
 
 Consider the declaration of the following lazy val:
@@ -133,7 +148,7 @@ Consider the declaration of the following lazy val:
       1
     }
 
-In this code, the lazy val initialization block suspends until a condition is fulfilled. This condition can only be fulfilled by reading the value of lazy val `x` - another thread that is supposed to complete this condition cannot do so. Thus, a circular dependency is formed, and the lazy val cannot be initialized. Similar problems can arise with Scala singleton object initialization [1] when creating threads from the singleton object constructor and waiting for their completion, and with static initializer blocks in Java \[[2][2]\] \[[3][3]\].
+In this code, the lazy val initialization block suspends until a condition is fulfilled. This condition can only be fulfilled by reading the value of lazy val `x` - another thread that is supposed to complete this condition cannot do so. Thus, a circular dependency is formed, and the lazy val cannot be initialized. Similar problems can arise with Scala singleton object initialization \[[3][3]\] when creating threads from the singleton object constructor and waiting for their completion, and with static initializer blocks in Java \[[4][4]\] \[[5][5]\].
 
 Note that this problem can also happen if two separate threads try to initialize two singleton objects that refer to each other, which is somewhat more severe. The rule of the thumb for programmers should be - singleton objects should not refer to each other during initialization.
 
