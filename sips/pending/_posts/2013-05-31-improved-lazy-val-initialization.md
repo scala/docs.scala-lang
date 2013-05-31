@@ -5,7 +5,8 @@ title: SIP-20 - Improved Lazy Vals Initialization
 
 ---
 
-**By: Aleksandar Prokopec, Miguel Garcia, Jason Zaugg, Hubert Plociniczak, Martin Odersky**
+**By: Aleksandar Prokopec, Miguel Garcia, Jason Zaugg, Hubert Plociniczak, Viktor Klang, Martin Odersky**
+
 
 ## Abstract ##
 
