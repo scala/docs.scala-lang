@@ -3,8 +3,6 @@ layout: sip
 disqus: true
 title: SIP-20 - Improved Lazy Vals Initialization
 
-vote-status: deferred
-vote-text: This SIP is in Deferred status currently. The decision will be made at the next SIP committee meeting.
 ---
 
 **By: Aleksandar Prokopec, Miguel Garcia, Jason Zaugg, Hubert Plociniczak, Martin Odersky**
