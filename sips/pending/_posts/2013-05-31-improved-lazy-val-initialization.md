@@ -5,7 +5,8 @@ title: SIP-20 - Improved Lazy Vals Initialization
 
 ---
 
-**By: Aleksandar Prokopec, Miguel Garcia, Jason Zaugg, Hubert Plociniczak, Martin Odersky**
+**By: Aleksandar Prokopec, Miguel Garcia, Jason Zaugg, Hubert Plociniczak, Viktor Klang, Martin Odersky**
+
 
 ## Abstract ##
 
@@ -30,7 +31,7 @@ Here is an example of an manually written implementation equivalent to what the 
       var value_0: Int = _
       private def value_lzycompute(): Int = {
         this.synchronized {
-          if (bitmap_0) {
+          if (!bitmap_0) {
             value_0 = 0
             bitmap_0 = true
           }
