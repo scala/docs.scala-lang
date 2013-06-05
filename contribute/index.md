@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: page-full-width
 title: Contribute
 ---
 # Contributing to the Scala project
