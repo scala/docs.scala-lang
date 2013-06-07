@@ -1,10 +1,9 @@
 ---
 layout: page
 title: Scala hacker guide
+by: Eugene Burmako
 ---
-
-**Eugene Burmako**
-
+<br>
 This guide is intended to help you get from an idea of fixing a bug or implementing a new feature into a nightly Scala build, and, ultimately, to a production release of Scala incorporating your idea.
 
 This guide covers the entire process, from the conception of your idea or bugfix to the point where it is merged into Scala. Throughout, we will use a running example of an idea or bugfix one might wish to contribute.

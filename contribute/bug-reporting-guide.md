@@ -3,8 +3,6 @@ layout: page
 title: Bug Reporting
 ---
 
-# Reporting Bugs to the Scala Project
-
 The Scala project tracker is located at [http://issues.scala-lang.org](http://issues.scala-lang.org). Before you submit a bug make sure that it is certainly a bug by following instructions in *Is it a Bug?*.
 
 ## Is it a Bug?
