@@ -22,7 +22,7 @@ put each constructor argument on its own line, indented **four** spaces:
         astrologicalSign: String,
         shoeSize: Int,
         favoriteColor: java.awt.Color) {
-      def firstMethod = ...
+      def firstMethod: Foo = ...
     }
 
 If a class/object/trait extends anything, the same general rule applies,
@@ -56,9 +56,9 @@ chars, one line) definitions:
       val bar = 42
       val baz = "Daniel"
 
-      def doSomething() { ... }
+      def doSomething(): Unit = { ... }
 
-      def add(x: Int, y: Int) = x + y
+      def add(x: Int, y: Int): Int = x + y
     }
 
 Fields should *precede* methods in a scope. The only exception is if the
@@ -76,18 +76,35 @@ Methods should be declared according to the following pattern:
 
     def foo(bar: Baz): Bin = expr
 
-The only exceptions to this rule are methods which return `Unit`. Such
-methods should use Scala's syntactic sugar to avoid accidentally
-confusing return types:
-
-    def foo(bar: Baz) {       // return type is Unit
-      expr
-    }
-
 Methods with default parameter values should be declared in an analogous
 fashion, with a space on either side of the equals sign:
 
-    def foo(x: Int = 6, y: Int = 7) = expr
+    def foo(x: Int = 6, y: Int = 7): Int = x + y
+
+You should specify a return type for all public members.
+Consider it documentation checked by the compiler.
+It also helps in preserving binary compatibility in the face of changing type inference (changes to the method implementation may propagate to the return type if it is inferred).
+
+Local methods or private methods may omit their return type.
+
+Avoid the procedure syntax, as it tends to be confusing for very little gain in brevity (dropping the `=`):
+
+    // don't do this
+    def foo(bar: Baz) {
+      expr
+    }
+
+    // write this instead (for a public method):
+    def foo(bar: Baz): Unit = {
+      expr
+    }
+
+    // when the method is not part of the public interface,
+    // you may drop the return type:
+    private def foo(bar: Baz) = {
+      expr
+    }
+
 
 #### Modifiers
 
@@ -113,13 +130,13 @@ applicable):
 When a method body comprises a single expression which is less than 30
 (or so) characters, it should be given on a single line with the method:
 
-    def add(a: Int, b: Int) = a + b
+    def add(a: Int, b: Int): Int = a + b
 
 When the method body is a single expression *longer* than 30 (or so)
 characters but still shorter than 70 (or so) characters, it should be
 given on the following line, indented two spaces:
 
-    def sum(ls: List[String]) =
+    def sum(ls: List[String]): Int =
       (ls map { _.toInt }).foldLeft(0) { _ + _ }
 
 The distinction between these two cases is somewhat artificial.
@@ -133,7 +150,7 @@ When the body of a method cannot be concisely expressed in a single line
 or is of a non-functional nature (some mutable state, local or
 otherwise), the body must be enclosed in braces:
 
-    def sum(ls: List[String]) = {
+    def sum(ls: List[String]): Int = {
       val ints = ls map { _.toInt }
       ints.foldLeft(0) { _ + _ }
     }
@@ -171,7 +188,7 @@ There are three main reasons you should do this:
     Multiple parameter lists allow you to create your own "control
     structures":
 
-        def unless(exp: Boolean)(code: => Unit) = if (!exp) code
+        def unless(exp: Boolean)(code: => Unit): Unit = if (!exp) code
         unless(x < 5) { 
           println("x was not less than five")
         }
@@ -204,7 +221,7 @@ put them all on one line, put one each per line):
 
     protected def forResource(resourceInfo: Any)
                              (f: (JsonNode) => Any) 
-                             (implicit urlCreator: URLCreator, configurer: OAuthConfiguration) = {
+                             (implicit urlCreator: URLCreator, configurer: OAuthConfiguration): Any = {
       ...
     }
 
@@ -219,7 +236,7 @@ For example, this is the `foldl` function in SML:
 
 In Scala, the preferred style is the exact inverse:
 
-    def foldLeft[A, B](ls: List[A])(init: B)(f: (B, A) => B) = ...
+    def foldLeft[A, B](ls: List[A])(init: B)(f: (B, A) => B): B = ...
 
 By placing the function parameter *last*, we have enabled invocation
 syntax like the following:
