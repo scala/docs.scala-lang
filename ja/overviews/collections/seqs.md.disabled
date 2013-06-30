@@ -69,7 +69,7 @@ Scala の他の構文の例にならって、`seq(idx) = elem` は `seq.update(i
 |  **集合演算:**             |                                                |
 |  `xs intersect ys`        |列 `xs` と `ys` の積集合で、`xs` における要素の順序を保ったもの。|
 |  `xs diff ys`             |列 `xs` と `ys` の差集合で、`xs` における要素の順序を保ったもの。|
-|  `xs union ys`            |和集合; `xs ++ ys` に同じ。                       |
+|  `xs union ys`            |和集合; `xs ++ ys` に同じ|
 |  `xs.distinct`            |`xs` の部分列で要素の重複を一切含まないもの。         |
 
 [`Seq`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Seq.html) トレイトには [`LinearSeq`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/IndexedSeq.html) と [`IndexedSeq`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/IndexedSeq.html)

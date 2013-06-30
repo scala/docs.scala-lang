@@ -17,7 +17,7 @@ language: ja
 
 
     val fruit = Set("apple", "orange", "peach", "banana")
-    fruit: scala.collection.immutable.Set[java.lang.String] = 
+    fruit: scala.collection.immutable.Set[java.lang.String] =
     Set(apple, orange, peach, banana)
     scala> fruit("peach")
     res0: Boolean = true
@@ -48,11 +48,11 @@ language: ja
 |  `xs.empty`  	            |`xs` と同じクラスの空集合。|
 |  **集合演算:**   |						     |
 |  `xs & ys`  	            |`xs` と `ys` の積集合。|
-|  `xs intersect ys`        |`xs & ys` に同じ。                             |
+|  `xs intersect ys`        |`xs & ys` に同じ|
 |  `xs | ys`  	            |`xs` と `ys` の和集合。|
-|  `xs union ys`  	        |`xs | ys` に同じ。                             |
+|  `xs union ys`  	        |`xs | ys` に同じ|
 |  `xs &~ ys`  	            |`xs` と `ys` の差集合。|
-|  `xs diff ys`  	        |`xs &~ ys` に同じ。                            |
+|  `xs diff ys`  	        |`xs &~ ys` に同じ|
 
 可変集合は、この表にまとめてあるとおり、加算、減算、更新演算などの新たなメソッドを追加する。
 

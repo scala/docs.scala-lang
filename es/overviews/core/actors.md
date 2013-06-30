@@ -25,7 +25,7 @@ El comportamiento de un `Reactor` se define mediante la implementación de su m�
 
 El trait `Reactor` tiene un parámetro de tipo `Msg` el cual determina el tipo de mensajes que un actor es capaz de recibir.
 
-La invocación del método `!` de un `Reactor` envía un mensaje al receptor. La operación de envío de un mensaje mediante el operador `!` es asíncrona por lo que el actor que envía el mensaje no se bloquea esperando a que el mensaje sea recibido sino que su ejecución continua de manera inmediata. Por ejemplo, `a ! msg` envia `msg` a `a`. Todos los actores disponen de un *buzón* encargado de regular los mensajes entrantes hasta que son procesados. 
+La invocación del método `!` de un `Reactor` envía un mensaje al receptor. La operación de envío de un mensaje mediante el operador `!` es asíncrona por lo que el actor que envía el mensaje no se bloquea esperando a que el mensaje sea recibido sino que su ejecución continua de manera inmediata. Por ejemplo, `a ! msg` envia `msg` a `a`. Todos los actores disponen de un *buzón* encargado de regular los mensajes entrantes hasta que son procesados.
 
 El trait `Reactor` trait también define el método `forward`. Este método es heredado de `OutputChannel` y tiene el mismo efecto que el método `!`. Aquellos traits que hereden de `Reactor`, en particular el trait `ReplyActor`, sobreescriben este método para habilitar lo que comunmente se conocen como *"implicit reply destinations"* (ver a continuación)
 
@@ -63,7 +63,7 @@ El miembro `exceptionHandler` permite llevar a cabo la definición de un manejad
 Este manejador de excepciones (`exceptionHandler`) retorna una función parcial que se utiliza para gestionar excepciones que no hayan sido tratadas de ninguna otra manera. Siempre que una excepción se propague fuera del método `act` de un `Reactor` el manejador anterior será aplicado a dicha excepción, permitiendo al actor ejecutar código de limpieza antes de que se termine. Nótese que la visibilidad de `exceptionHandler` es `protected`.
 
 El manejo de excepciones mediante el uso de `exceptionHandler` encaja a la perfección con las estructuras de control utilizadas para programas con el método `react`. Siempre que una excepción es manejada por la función parcial retornada por `excepctionHandler`, la ejecución continua con la "closure" actual:
- 
+
     loop {
       react {
         case Msg(data) =>
@@ -78,14 +78,14 @@ Assumiendo que `Reactor` sobreescribe el atributo `exceptionHandler`, tras el la
 
 El trait `ReplyReactor` extiende `Reactor[Any]` y sobrescribe y/o añade los siguientes métodos:
 
-- El método `!` es sobrescrito para obtener una referencia al actor 
-  actual (el emisor). Junto al mensaje actual, la referencia a dicho 
-  emisor es enviada al buzón del actor receptor. Este último dispone de 
+- El método `!` es sobrescrito para obtener una referencia al actor
+  actual (el emisor). Junto al mensaje actual, la referencia a dicho
+  emisor es enviada al buzón del actor receptor. Este último dispone de
   acceso al emisor del mensaje mediante el uso del método `sender` (véase más abajo).
 
 - El método `forward` es sobrescrito para obtener una referencia al emisor
   del mensaje que actualmente está siendo procesado. Junto con el mensaje
-  actual, esta referencia es enviada como el emisor del mensaje actual. 
+  actual, esta referencia es enviada como el emisor del mensaje actual.
   Como consuencia de este hecho, `forward` nos permite reenviar mensajes
   en nombre de actores diferentes al actual.
 
@@ -112,7 +112,7 @@ El trait `ReplyReactor` extiende `Reactor[Any]` y sobrescribe y/o añade los sig
   `Future`. Esta última puede ser utilizada para recuperar la respuesta del receptor una
   vez se encuentre disponible; asimismo puede ser utilizada para comprobar si la respuesta
   está disponible sin la necesidad de bloquear el emisor. Existen dos versiones sobrecargadas.
-  La versión que acepta dos parámetros recibe un argumento adicional de tipo 
+  La versión que acepta dos parámetros recibe un argumento adicional de tipo
   `PartialFuntion[Any, A]`. Esta función parcial es utilizada para realizar el post-procesado de
   la respuesta del receptor. Básicamente, `!!` retorna un "future" que aplicará la anterior
   función parcial a la repuesta (una vez recibida). El resultado del "future" es el resultado
@@ -120,7 +120,7 @@ El trait `ReplyReactor` extiende `Reactor[Any]` y sobrescribe y/o añade los sig
 
 - El método (añadido) `reactWithin` permite llevar a cabo la recepción de mensajes en un periodo
   determinado de tiempo. En comparación con el método `react`, recibe un parámetro adicional,
-  `msec`, el cual representa el periodo de tiempo, expresado en milisegundos, hasta que el patrón `TIMEOUT` 
+  `msec`, el cual representa el periodo de tiempo, expresado en milisegundos, hasta que el patrón `TIMEOUT`
   es satisfecho (`TIMEOUT` es un "case object" presente en el paquete `scala.actors`). Ejemplo:
 
     reactWithin(2000) {
@@ -155,14 +155,11 @@ El trait `Actor` extiende de `ReplyReactor` añadiendo y/o sobrescribiendo los s
 
 - El método (añadido) `receive` se comporta del mismo modo que `react`, con la excepción
   de que puede retornar un resultado. Este hecho se ve reflejado en la definición del tipo,
-  que es polimórfico en el tipo del resultado:
-
-    def receive[R](f: PartialFunction[Any, R]): R
-
+  que es polimórfico en el tipo del resultado: `def receive[R](f: PartialFunction[Any, R]): R`.
   Sin embargo, la utilización de `receive` hace que el uso del actor
   sea más pesado, puesto que el hilo subyacente es bloqueado mientras
   el actor está esperando por la respuesta. El hilo bloqueado no está
-  disponible para ejecutar otros actores hasta que la invocación del 
+  disponible para ejecutar otros actores hasta que la invocación del
   método `receive` haya retornado.
 
 - El método (añadido) `link` permite a un actor enlazarse y desenlazarse de otro
@@ -181,7 +178,7 @@ El trait `Actor` extiende de `ReplyReactor` añadiendo y/o sobrescribiendo los s
 
 #### Terminación y estados de ejecución
 
-Cuando la ejecución de un actor finaliza, el motivo de dicha terminación puede ser 
+Cuando la ejecución de un actor finaliza, el motivo de dicha terminación puede ser
 establecida de manera explícita mediante la invocación de la siguiente variante
 del método `exit`:
 
@@ -202,11 +199,11 @@ mensaje mediante la utilización del método `receiveWithin` se encuentra en el 
 
 El trait `Reactor` define una serie de estructuras de control que simplifican el mecanismo
 de programación con la función sin retorno `react`. Normalmente, una invocación al método
-`react` no retorna nunca. Si el actor necesita ejecutar código a continuación de la invocación 
+`react` no retorna nunca. Si el actor necesita ejecutar código a continuación de la invocación
 anterior, tendrá que pasar, de manera explícita, dicho código al método `react` o utilizar
 algunas de las estructuras que encapsulan este comportamiento.
 
-La estructura de control más basica es `andThen`. Permite registrar una `closure` que será 
+La estructura de control más basica es `andThen`. Permite registrar una `closure` que será
 ejecutada una vez el actor haya terminado la ejecución de todo lo demas.
 
     actor {
@@ -224,10 +221,10 @@ del mensaje `hello`. Aunque la invocación del método `react` no retorna,
 podemos utilizar `andThen` para registrar el código encargado de imprimir
 el saludo a continuación de la ejecución del actor.
 
-Nótese que existe una *atribución de tipo* a continuación de la invocación 
+Nótese que existe una *atribución de tipo* a continuación de la invocación
 de `react` (`:Unit`). Básicamente, nos permite tratar el resultado de
 `react` como si fuese de tipo `Unit`, lo cual es legal, puesto que el resultado
-de una expresión siempre se puede eliminar. Es necesario llevar a cabo esta operación 
+de una expresión siempre se puede eliminar. Es necesario llevar a cabo esta operación
 dado que `andThen` no puede ser un miembro del tipo `Unit`, que es el tipo del resultado
 retornado por `react`. Tratando el tipo de resultado retornado por `react` como
 `Unit` permite llevar a cabo la aplicación de una conversión implícita la cual
@@ -245,7 +242,7 @@ la ejecución continua con la siguiente iteración del bucle actual.
 condición `c` tome el valor `true`. La invocación de `react` en el cuerpo
 del bucle ocasiona el mismo efecto que en el caso de `loop`.
 
-- `continue`. Continua con la ejecución de la closure actual. La invocación 
+- `continue`. Continua con la ejecución de la closure actual. La invocación
 de `continue` en el cuerpo de un `loop`o `loopWhile` ocasionará que el actor
 termine la iteración en curso y continue con la siguiente. Si la iteración en
 curso ha sido registrada utilizando `andThen`, la ejecución continua con la
@@ -254,7 +251,7 @@ segunda "closure" pasada como segundo argumento a `andThen`.
 Las estructuras de control pueden ser utilizadas en cualquier parte del cuerpo
 del método `act` y en los cuerpos de los métodos que, transitivamente, son
 llamados por `act`. Aquellos actores creados utilizando la sintáxis `actor { ... }`
-pueden importar las estructuras de control desde el objeto `Actor`. 
+pueden importar las estructuras de control desde el objeto `Actor`.
 
 #### Futures
 
@@ -268,7 +265,7 @@ future *aplicando* dicha future. Por ejemplo, el envío de un mensaje mediante
 `val fut = a !! msg` permite al emisor esperar por el resultado del future
 del siguiente modo: `val res = fut()`.
 
-Adicionalmente, utilizando el método `isSet`, un `Future` puede ser consultado 
+Adicionalmente, utilizando el método `isSet`, un `Future` puede ser consultado
 de manera no bloqueante para comprobar si el resultado está disponible.
 
 Un mensaje "send-with-future" no es el único modo de obtener una referencia a
@@ -286,7 +283,7 @@ recepción de mensajes como `receive`, etc. Además, es posible utilizar las ope
 basadas en eventos `react`y `reactWithin`. Esto permite a un actor esperar por el
 resultado de un future sin la necesidad de bloquear el hilo subyacente.
 
-Las operaciones de recepción basadas en actores están disponibles a través del 
+Las operaciones de recepción basadas en actores están disponibles a través del
 atributo `inputChannel` del future. Dado un future de tipo `Future[T]`, el tipo
 de `inputChannel` es `InputChannel[T]`. Por ejemplo:
 
@@ -305,28 +302,28 @@ jerarquía de canales se divide en `OutputChannel` e `InputChannel`.
 Los `OutputChannel` pueden ser utilizados para enviar mensajes. Un
 `OutputChannel` `out` soporta las siguientes operaciones:
 
-- `out ! msg`. Envía el mensaje `msg` a `out` de manera asíncrona. Cuando `msg` 
-  es enviado directamente a un actor se incluye un referencia al actor emisor 
+- `out ! msg`. Envía el mensaje `msg` a `out` de manera asíncrona. Cuando `msg`
+  es enviado directamente a un actor se incluye un referencia al actor emisor
   del mensaje.
 
-- `out forward msg`. Reenvía el mensaje `msg` a `out` de manera asíncrona. 
+- `out forward msg`. Reenvía el mensaje `msg` a `out` de manera asíncrona.
   El actor emisor se determina en el caso en el que `msg` es reenviado a
   un actor.
 
 - `out.receiver`. Retorna el único actor que está recibiendo mensajes que están
   siendo enviados al canal `out`.
 
-- `out.send(msg, from)`. Envía el mensaje `msg` a `out` de manera asíncrona, 
+- `out.send(msg, from)`. Envía el mensaje `msg` a `out` de manera asíncrona,
   proporcionando a `from` como el emisor del mensaje.
 
 Nótese que el trait `OutputChannel` tiene un parámetro de tipo que especifica el
-tipo de los mensajes que pueden ser enviados al canal (utilizando `!`, `forward`, 
+tipo de los mensajes que pueden ser enviados al canal (utilizando `!`, `forward`,
 y `send`). Este parámetro de tipo es contra-variante:
 
     trait OutputChannel[-Msg]
 
 Los actores pueden recibir mensajes de un `InputChannel`. Del mismo modo que
-`OutputChannel`, el trait `InputChannel` presenta un parámetro de tipo que 
+`OutputChannel`, el trait `InputChannel` presenta un parámetro de tipo que
 especifica el tipo de mensajes que pueden ser recibidos por el canal. En este caso,
 el parámetro de tipo es covariante:
 
@@ -376,7 +373,7 @@ El siguiente ejemplo muestra la compartición mediante publicación en ámbitos:
 La ejecución de este ejemplo imprime la cadena "5" en la consola. Nótese que el
 actor `child` únicamente tiene acceso a `out`, que es un `OutputChannel[String]`.
 La referencia al canal, la cual puede ser utilizada para llevar a cabo la recepción
-de mensajes, se encuentra oculta. Sin embargo, se deben tomar precauciones y 
+de mensajes, se encuentra oculta. Sin embargo, se deben tomar precauciones y
 asegurarse que el canal de salida es inicializado con un canal concreto antes de que
 `child` le envíe ningún mensaje. En el ejemplo que nos ocupa, esto es llevado a cabo
 mediante el mensaje "go". Cuando se está recibiendo de `channel` utilizando el método
@@ -403,14 +400,14 @@ El siguiente fragmento de código muestra un sencillo ejemplo de aplicación:
     }
 
 La "case class" `ReplyTo` es un tipo de mensajes que utilizamos para distribuir
-una referencia a un `OutputChannel[String]`. Cuando el actor `child` recibe un 
+una referencia a un `OutputChannel[String]`. Cuando el actor `child` recibe un
 mensaje de tipo `ReplyTo` éste envía una cadena a su canal de salida. El segundo
 actor recibe en el canal del mismo modo que anteriormente.
 
 ## Planificadores
 
 Un `Reactor`(o una instancia de uno de sus subtipos) es ejecutado utilizando un
-*planificador*. El trait `Reactor` incluye el miembro `scheduler` el cual retorna el 
+*planificador*. El trait `Reactor` incluye el miembro `scheduler` el cual retorna el
 planificador utilizado para ejecutar sus instancias:
 
     def scheduler: IScheduler
@@ -424,8 +421,8 @@ en muchas ocasiones.
 Los planificadores por defecto utilizados para ejecutar instancias de `Reactor` y
 `Actor` detectan cuando los actores han finalizado su ejecución. En el momento que esto
 ocurre, el planificador se termina a si mismo (terminando con cualquier hilo que estuviera
-en uso por parte del planificador). Sin embargo, algunos planificadores como el 
-`SingleThreadedScheduler` (definido en el paquete `scheduler`) necesita ser terminado de 
+en uso por parte del planificador). Sin embargo, algunos planificadores como el
+`SingleThreadedScheduler` (definido en el paquete `scheduler`) necesita ser terminado de
 manera explícita mediante la invocación de su método `shutdown`).
 
 La manera más sencilla de crear un planificador personalizado consisten en extender la clase
@@ -438,7 +435,7 @@ la ejecución del argumento por nombre `fun`.
 
 ## Actores remotos
 
-Esta sección describe el API de los actores remotos. Su principal interfaz es el objecto 
+Esta sección describe el API de los actores remotos. Su principal interfaz es el objecto
 [`RemoteActor`](http://www.scala-lang.org/api/2.9.1/scala/actors/remote/RemoteActor$.html) definido
 en el paquete `scala.actors.remote`. Este objeto facilita el conjunto de métodos necesarios para crear
 y establecer conexiones a instancias de actores remotos. En los fragmentos de código que se muestran a
@@ -452,7 +449,7 @@ de importaciones utilizadas es la siguiente:
 
 ### Iniciando actores remotos
 
-Un actore remot es identificado de manera unívoca por un 
+Un actore remot es identificado de manera unívoca por un
 [`Symbol`](http://www.scala-lang.org/api/2.9.1/scala/Symbol.html). Este símbolo es único para la instancia
 de la máquina virual en la que se está ejecutando un actor. Un actor remoto identificado con el nombre
 `myActor` puede ser creado del siguiente modo.
@@ -473,7 +470,7 @@ no sería suficiente.
 
 ### Connecting to remote actors
 
-Establecer la conexión con un actor remoto es un proceso simple. Para obtener una referencia remota 
+Establecer la conexión con un actor remoto es un proceso simple. Para obtener una referencia remota
 a un actor remoto que está ejecutándose en la máquina `myMachine` en el puerto 8000 con el nombre
 `'anActor`, tendremos que utilizar `select`del siguiente modo:
 

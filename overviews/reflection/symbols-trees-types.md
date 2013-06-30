@@ -113,7 +113,7 @@ As its name suggests, instances of `Type` represent information about the type
 of a corresponding symbol. This includes its members (methods, fields, type
 aliases, abstract types, nested classes, traits, etc.) either declared
 directly or inherited, its base types, its erasure and so on. Types also
-provide operations to test for type conformance or equivalence.`
+provide operations to test for type conformance or equivalence.
 
 ### Instantiating Types
 
