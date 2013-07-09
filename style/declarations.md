@@ -85,26 +85,23 @@ You should specify a return type for all public members.
 Consider it documentation checked by the compiler.
 It also helps in preserving binary compatibility in the face of changing type inference (changes to the method implementation may propagate to the return type if it is inferred).
 
-Local methods or private methods may omit their return type.
+Local methods or private methods may omit their return type:
 
-Avoid the procedure syntax, as it tends to be confusing for very little gain in brevity (dropping the `=`):
+    private def foo(x: Int = 6, y: Int = 7) = x + y
+
+#### Procedure Syntax
+
+Avoid the procedure syntax, as it tends to be confusing for very little gain in brevity.
 
     // don't do this
-    def foo(bar: Baz) {
-      expr
+    def printBar(bar: Baz) {
+      println(bar)
     }
 
-    // write this instead (for a public method):
-    def foo(bar: Baz): Unit = {
-      expr
+    // write this instead
+    def printBar(bar: Bar): Unit = {
+      println(bar)
     }
-
-    // when the method is not part of the public interface,
-    // you may drop the return type:
-    private def foo(bar: Baz) = {
-      expr
-    }
-
 
 #### Modifiers
 
