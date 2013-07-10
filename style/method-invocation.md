@@ -77,7 +77,7 @@ most common acceptable case for this syntax is as the last operation in
 a chain of infix method calls:
 
     // acceptable and idiomatic
-    names map { _.toUpperCase } filter { _.length > 5 } toStream
+    names map (_.toUpperCase) filter (_.length > 5) toStream
 
 In this case, suffix notation must be used with the `toStream` function,
 otherwise a separate value assignment would have been required. However,
@@ -120,7 +120,7 @@ as `mkString` -or methods which take functions as parameters - such as
 `foreach`:
 
     // right!
-    names foreach { n => println(n) }
+    names foreach (n => println(n))
     names mkString ","
     optStr getOrElse "<empty>"
 
