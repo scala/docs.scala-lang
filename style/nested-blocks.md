@@ -25,7 +25,7 @@ demonstrated above.
 ## Parentheses
 
 In the rare cases when parenthetical blocks wrap across lines, the
-opening and closing parentheses should be unspaced and gnerally kept on the same
+opening and closing parentheses should be unspaced and generally kept on the same
 lines as their content (Lisp-style):
 
     (this + is a very ++ long *
@@ -39,5 +39,5 @@ to start lines with operators, which many prefer:
     || thirdCondition
     )
     
-An trailing parenthesis on the following line is acceptable in this case, for 
+A trailing parenthesis on the following line is acceptable in this case, for 
 aesthetic reasons.
