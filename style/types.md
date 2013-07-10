@@ -136,3 +136,8 @@ When declaring structural types inline, each member should be separated
 by a semi-colon and a single space, the opening brace should be
 *followed* by a space while the closing brace should be *preceded* by a
 space (as demonstrated in both examples above).
+
+Structural types are implemented with reflection at runtime, and are 
+inherently less performant than nominal types.  Developers should 
+prefer the use of nominal types, unless structural types provide a 
+clear benefit.
