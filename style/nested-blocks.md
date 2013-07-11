@@ -32,7 +32,7 @@ lines as their content (Lisp-style):
       expression)
 
 Parentheses also serve to disable semicolon inference, and so allow the developer 
-to start lines with operators, which many prefer:
+to start lines with operators, which some prefer:
      
     (  someCondition
     || someOtherCondition
