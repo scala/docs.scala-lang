@@ -62,7 +62,7 @@ Mutable maps support in addition the operations summarized in the following tabl
 |  `ms ++= kvs`             |Adds all mappings in `kvs` to `ms` as a side effect and returns `ms` itself.|
 |  `ms put (k, v)`          |Adds mapping from key `k` to value `v` to `ms` and returns any value previously associated with `k` as an option.|
 |  `ms getOrElseUpdate (k, d)`|If key `k` is defined in map `ms`, return its associated value. Otherwise, update `ms` with the mapping `k -> d` and return `d`.|
-|  **Additions and Updates:**|						     |
+|  **Removals:**|						     |
 |  `ms -= k`                |Removes mapping with key `k` from ms as a side effect and returns `ms` itself.|
 |  `ms -= (k, l, m)`        |Removes mappings with the given keys from `ms` as a side effect and returns `ms` itself.|
 |  `ms --= ks`              |Removes all keys in `ks` from `ms` as a side effect and returns `ms` itself.|
