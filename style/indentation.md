@@ -33,8 +33,7 @@ There are times when a single expression reaches a length where it
 becomes unreadable to keep it confined to a single line (usually that
 length is anywhere above 80 characters). In such cases, the *preferred*
 approach is to simply split the expression up into multiple expressions
-by assigning intermediate results to values or by using the [pipeline
-operator](http://paste.pocoo.org/show/134013/). However, this is not
+by assigning intermediate results to values. However, this is not
 always a practical solution.
 
 When it is absolutely necessary to wrap an expression across more than
