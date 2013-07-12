@@ -93,6 +93,10 @@ the Scala project source tree. The [hacker guide](hacker-guide.html) will explai
 
 <br/>
 
+## Community Tickets
+
+<div id="communitytickets"> </div>
+
 <!--
 
 To be moved to hacker-guide.md:
