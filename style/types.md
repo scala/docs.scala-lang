@@ -8,16 +8,24 @@ num: 4
 
 ## Inference
 
-Use type inference as much as possible. You should almost never annotate
-the type of a `val` field as their type will be immediately evident in
+Use type inference where possible, but put clarity first, and favour 
+explicitness in public APIs.
+
+You should almost never annotate the type of a private field or a local 
+variable, as their type will usually be immediately evident in
 their value:
 
-    val name = "Daniel"
+    private val name = "Daniel"
 
-However, type inference has a way of coming back to haunt you when used
-on non-trivial methods which are part of the public interface. Just for
-the sake of safety, you should annotate all public methods in your
-class.
+However, you may wish to still display the type where the assigned value has a 
+complex or non-obvious form. 
+  
+All public methods should have explicit type annotations.  Type inference may 
+break encapsulation in these cases, because it depends on internal method
+and class details.  Without an explicit type, a change to the internals 
+of a method or val could alter the public API of the class without warning,
+potentially breaking client code.  Explicit type annotations can also help 
+to improve compile times.
 
 ### Function Values
 
@@ -25,7 +33,7 @@ Function values support a special case of type inference which is worth
 calling out on its own:
 
     val ls: List[String] = ...
-    ls map { str => str.toInt }
+    ls map (str => str.toInt)
 
 In cases where Scala already knows the type of the function value we are
 declaring, there is no need to annotate the parameters (in this case,
@@ -128,3 +136,8 @@ When declaring structural types inline, each member should be separated
 by a semi-colon and a single space, the opening brace should be
 *followed* by a space while the closing brace should be *preceded* by a
 space (as demonstrated in both examples above).
+
+Structural types are implemented with reflection at runtime, and are 
+inherently less performant than nominal types.  Developers should 
+prefer the use of nominal types, unless structural types provide a 
+clear benefit.
