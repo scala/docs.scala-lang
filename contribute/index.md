@@ -91,12 +91,6 @@ on the [scala-internals](http://groups.google.com/group/scala-internals) mailing
 Contributions, big or small, simple or complex, controversial or undisputed, need to materialize as patches against
 the Scala project source tree. The [hacker guide](hacker-guide.html) will explain how to materialize your idea into a full-fledged pull request against the Scala code base.
 
-<br/>
-
-## Community Tickets
-
-<div id="communitytickets"> </div>
-
 <!--
 
 To be moved to hacker-guide.md:
