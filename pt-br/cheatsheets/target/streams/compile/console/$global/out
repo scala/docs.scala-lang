@@ -1,0 +1,11 @@
+[0m[[0mdebug[0m] [0mStarting sandboxed run...[0m
+[0m[[0mdebug[0m] [0mWaiting for threads to exit or System.exit to be called.[0m
+[0m[[0mdebug[0m] [0mWaiting for thread run-main to exit[0m
+[0m[[0minfo[0m] [0mStarting scala interpreter...[0m
+[0m[[0mdebug[0m] [0m  Boot classpath: /usr/java/jdk1.7.0_25/jre/lib/resources.jar:/usr/java/jdk1.7.0_25/jre/lib/rt.jar:/usr/java/jdk1.7.0_25/jre/lib/sunrsasign.jar:/usr/java/jdk1.7.0_25/jre/lib/jsse.jar:/usr/java/jdk1.7.0_25/jre/lib/jce.jar:/usr/java/jdk1.7.0_25/jre/lib/charsets.jar:/usr/java/jdk1.7.0_25/jre/lib/jfr.jar:/usr/java/jdk1.7.0_25/jre/classes:/home/reginaldo/.sbt/boot/scala-2.9.2/lib/scala-library.jar[0m
+[0m[[0mdebug[0m] [0m  Classpath: /home/reginaldo/workspace-projetos/scala-docs/pt-br/cheatsheets/target/scala-2.9.2/classes:/home/reginaldo/.sbt/boot/scala-2.9.2/lib/scala-compiler.jar:/home/reginaldo/.sbt/boot/scala-2.9.2/lib/jansi.jar:/home/reginaldo/.sbt/boot/scala-2.9.2/lib/jline.jar[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0mdebug[0m] [0m	Thread run-main exited.[0m
+[0m[[0mdebug[0m] [0mInterrupting remaining threads (should be all daemons).[0m
+[0m[[0mdebug[0m] [0mSandboxed run complete..[0m
+[0m[[0mdebug[0m] [0mExited with code 0[0m
