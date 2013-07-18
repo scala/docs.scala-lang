@@ -3,6 +3,12 @@ layout: page
 title: Contribute
 ---
 
+The Scala programming language is an open source project with a very
+diverse community, where people from all over the world contribute their work,
+with everyone benefitting from friendly help and advice, and
+kindly helping others in return. So why not join the Scala community and help
+everyone make things better?
+
 ## How to help?
 
 ### Reporting bugs
