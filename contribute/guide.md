@@ -27,31 +27,16 @@ everyone make things better?
 
   <div class="row">
     <div class="span4 doc-block">
-      <h3><a href="http://docs.scala-lang.org/sips/sip-submission.html">Write a SIP</a></h3>
-      <p>Write a proposal for extending/improving Scala.</p>
+      <h3><a href="{{ site.baseurl }}/contribute/community-tickets.html">Community issues</a></h3>
+      <p>Get cracking on some easy to approach issues.</p>
     </div>
     <div class="span4 doc-block">
       <h3><a href="{{ site.baseurl }}/contribute/hacker-guide.html">Hacker's guide</a></h3>
       <p>Learn to write good code and improve your chances of contributing to the Scala galaxy.</p>
     </div>
     <div class="span4 doc-block">
-      <h3><a href="https://issues.scala-lang.org/secure/IssueNavigator.jspa?requestId=12111">Community issues</a></h3>
-      <p>Get cracking on some easy to approach issues.</p>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="span4 doc-block">
-      <h3><a href="https://issues.scala-lang.org/secure/IssueNavigator.jspa?requestId=12112">Unassigned issues</a></h3>
-      <p>Get serious with some more complex issues.</p>
-    </div>
-    <div class="span4 doc-block">
       <h3><a href="{{ site.baseurl }}/contribute/scala-fame.html">Hall of Fame</a></h3>
       <p>Track your rockstar status in the community.</p>
-    </div>
-    <div class="span4 doc-block">
-      <h3><a href="{{ site.baseurl }}/contribute/partest-guide.html">Test your contributions</a></h3>
-      <p>Learn how to run the Scala test suite.</p>
     </div>
   </div>
 </div>
