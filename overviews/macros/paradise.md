@@ -15,7 +15,7 @@ languages: [ja]
 
 ## Macro paradise for 2.11.x
 
-Macro paradise is an alias of the experimental `paradise/macros` branch in the official Scala repository, designed to facilitate rapid development of macros without compromising the stability of Scala. To learn more about this branch, check out [my talk](http://scalamacros.org/news/2012/12/18/macro-paradise.html).
+Macro paradise is an alias of the experimental `paradise/macros211` branch in the official Scala repository, designed to facilitate rapid development of macros without compromising the stability of Scala. To learn more about this branch, check out [my talk](http://scalamacros.org/news/2012/12/18/macro-paradise.html).
 
 We have set up a nightly build which publishes snapshot artifacts to Sonatype. Consult [https://github.com/scalamacros/sbt-example-paradise](https://github.com/scalamacros/sbt-example-paradise) for an end-to-end example of using our nightlies in SBT, but in a nutshell playing with macro paradise is as easy as adding these three lines to your build (granted you've already [set up SBT](/overviews/macros/overview.html#using_macros_with_maven_or_sbt) to use macros):
 
@@ -28,7 +28,7 @@ you compile a project that uses macro paradise, everything works fine. But in a 
 builds for `scala-library.jar` and `scala-reflect.jar`, but not for `scala-compiler.jar`. The solution is to use `sbt reboot full`, which
 re-downloads SBT itself and the underlying scalac instance. We're investigating this unfortunate issue, but in the meanwhile you can join the discussion of this matter [at the mailing list](https://groups.google.com/forum/?fromgroups=#!topic/simple-build-tool/UalhhX4lKmw/discussion).
 
-Scaladocs corresponding to paradise nightlies can be found at [our Jenkins server](https://scala-webapps.epfl.ch/jenkins/view/misc/job/macro-paradise-nightly-main/ws/dists/latest/doc/scala-devel-docs/api/index.html). For example, here's the new API for working with top-level definitions: [scala.reflect.macros.Synthetics](https://scala-webapps.epfl.ch/jenkins/view/misc/job/macro-paradise-nightly-main/ws/dists/latest/doc/scala-devel-docs/api/index.html#scala.reflect.macros.Synthetics).
+Scaladocs corresponding to paradise nightlies can be found at [our Jenkins server](https://scala-webapps.epfl.ch/jenkins/view/misc/job/macro-paradise211-nightly-main/ws/dists/latest/doc/scala-devel-docs/api/index.html). For example, here's the new API for working with top-level definitions: [scala.reflect.macros.Synthetics](https://scala-webapps.epfl.ch/jenkins/view/misc/job/macro-paradise211-nightly-main/ws/dists/latest/doc/scala-devel-docs/api/index.html#scala.reflect.macros.Synthetics).
 
 ## Macro paradise for 2.10.x
 
