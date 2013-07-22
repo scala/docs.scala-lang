@@ -52,7 +52,7 @@ The former will lead to a compile error, the latter, as in e.g. `List[_]`, will 
 Note that untyped macros enable extractor macros: [SI-5903](https://issues.scala-lang.org/browse/SI-5903). In 2.10.x, it is possible
 to declare `unapply` or `unapplySeq` as macros, but usability of such macros is extremely limited as described in the discussion
 of the linked JIRA issue. Untyped macros make the full power of textual abstraction available in pattern matching. The
-[test/files/run/macro-expand-unapply-c](https://github.com/scalamacros/kepler/tree/paradise/macros/test/files/run/macro-expand-unapply-c)
+[test/files/run/macro-expand-unapply-c](https://github.com/scalamacros/kepler/tree/paradise/macros211/test/files/run/macro-expand-unapply-c)
 unit test provides details on this matter.
 
 If a macro has one or more untyped parameters, then when typing its expansions, the typechecker will do nothing to its arguments
