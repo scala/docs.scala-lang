@@ -3,7 +3,7 @@ layout: cheatsheet
 istranslation: true
 title: Scalacheat
 by: Reginaldo Russinholi
-about: Agradecimentos a  <a href="http://russinholi.blogspot.com/">Reginaldo Russinholi</a>, este 'cheatsheet' se destina a ser uma referência rápida às construções sintáticas de Scala. Licenciado por Reginaldo Russinholi sobre a licença CC-BY-SA 3.0.
+about: Agradecimentos a  <a href="http://brenocon.com/">Brendan O'Connor</a>, este 'cheatsheet' se destina a ser uma referência rápida às construções sintáticas de Scala. Licenciado por Brendan O'Connor sobre a licença CC-BY-SA 3.0.
 language: pt-br
 ---
 
