@@ -31,6 +31,6 @@ class Foo
 
 ## Testing changes ##
 
-Testing changes requires installing [Jekyll](https://github.com/mojombo/jekyll/wiki/Install).
+Testing changes requires installing [Jekyll](http://jekyllrb.com/docs/installation/).
 
-Use the `jekyll --server` command to start up a local server.  You can then view your changes at [http://localhost:4000/sips](http://localhost:4000/sips).
+Use the `jekyll server` command to start up a local server.  You can then view your changes at [http://localhost:4000/sips](http://localhost:4000/sips).
