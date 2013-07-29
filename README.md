@@ -13,7 +13,7 @@ in order to be accepted.
 
 ## Dependencies ##
 
-Jekyll is required. Follow the install instructions at the Jekyll [documentation site](http://jekyllrb.com/docs/installation/).
+Jekyll is required. Follow the install instructions at the Jekyll [documentation site](http://jekyllrb.com/docs/installation/).  Since this site is hosted on github pages, make sure you have [whatever version of Jekyll that github is running](https://help.github.com/articles/using-jekyll-with-pages#troubleshooting). As of the writing of this README, that is version >= 1.0.x.
 
 ## Building & Viewing ##
 
