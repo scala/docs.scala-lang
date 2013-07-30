@@ -2,7 +2,6 @@
 layout: page-full-width
 title: Scala Contribuitor Hall of Fame
 ---
-# Scala Hall of Fame
 
 A big thank you to everyone who contributed to:
  - [the Scala library and compiler](https://github.com/scala/scala/contributors)
