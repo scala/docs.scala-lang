@@ -221,8 +221,8 @@ Tools like Scaladoc also welcome contributions. Unfortunately these smaller proj
 
 ### Interlude
 
-To fix [the bug we're interested in](https://issues.scala-lang.org/browse/SI-6725). Let's say we've tracked the `StringContext.f` interpolator
-down to a macro implemented in `MacroImplementations.scala`, and there we notice that the interpolator only processes conversions,
+To fix [the bug we're interested in](https://issues.scala-lang.org/browse/SI-6725) we've tracked the `StringContext.f` interpolator
+down to a macro implemented in `MacroImplementations.scala` There we notice that the interpolator only processes conversions,
 but not tokens like `%n`. Looks like an easy fix.
 
     18:44 ~/Projects/scala/sandbox (ticket/6725)$ git diff
@@ -264,6 +264,17 @@ After applying the fix and running `ant`, our simple test case in `sandbox/Test.
     18:51 ~/Projects/scala/sandbox (ticket/6725)$ ../build/pack/bin/scala Test
     1
     1 // no longer getting the %n here - it got transformed into a newline
+
+### Test
+
+To guard your change against accidental breakage in the future, it is important to add tests.
+I have already written one test earlier, so that's a good start but not enough! Apart from obvious usages of our new functionality, we need to cover corner-cases as well.
+
+Adding tests to the test suite is as easy as moving them to the appropriate directory:
+
+* Code which should compile successfully, but doesn't need to be executed, needs to go into the [“pos” directory](https://github.com/scala/scala/tree/master/test/files/pos)
+* Code which should not compile needs to go into the [“neg” directory](https://github.com/scala/scala/tree/master/test/files/neg)
+* Code which should compile and get executed by the test suite needs to go into the [“run” directory](https://github.com/scala/scala/tree/master/test/files/run)
 
 ### Verify
 
@@ -326,10 +337,15 @@ need to sign the contributor license agreement, which [can be done online](http:
 
 <center><img src="{{ site.baseurl }}/resources/img/04-submit.png" alt="Submit a pull request" /></center>
 
-### Discuss
+### Review
 
 After the pull request has been submitted, you need to pick a reviewer (usually the person you've contacted in the beginning of your
 workflow) and be ready to elaborate and adjust your patch if necessary. In this example, we picked Martin, because we had such a nice chat on the mailing list:
 
 <center><img src="{{ site.baseurl }}/resources/img/05-review.png" alt="SAssign the reviewer" /></center>
 
+## Merge
+
+After your reviewer is happy with your code (usually signalled by a LGTM — “Looks good to me”), your job is done.
+Note that there can be a gap between a successful review and the merge, because not every reviewer has merge rights. In that case, someone else from the team will pick up your pull request and merge it.
+So don't be confused if your reviewer says “LGTM”, but your code doesn't get merged immediately.
