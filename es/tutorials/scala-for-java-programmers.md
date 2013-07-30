@@ -12,29 +12,29 @@ Traducción y arreglos Santiago Basulto.
 
 ## Introducción
 
-Este documento provee una rápida introducción al lenguae Scala como también a su compilador. Está pensado para personas que ya poseen cierta experiencia en programación y quieren una vista rápida de lo que pueden hacer con Scala. Se asume como un conocimiento básico de programación orientada a objetos, especialmente en Java.
+Este documento provee una rápida introducción al lenguaje Scala como también a su compilador. Está pensado para personas que ya poseen cierta experiencia en programación y quieren una vista rápida de lo que pueden hacer con Scala. Se asume como un conocimiento básico de programación orientada a objetos, especialmente en Java.
 
 ## Un primer ejemplo
 
-Como primer ejemplo, usaremos el programa *Hola mundo* estandar. No es muy fascinante, pero de esta manera resulta fácil demostrar el uso de herramientas de Scala sin saber demasiado acerca del lenguaje. Veamos como luce:
+Como primer ejemplo, usaremos el programa *Hola mundo* estándar. No es muy fascinante, pero de esta manera resulta fácil demostrar el uso de herramientas de Scala sin saber demasiado acerca del lenguaje. Veamos como luce:
 
     object HolaMundo {
       def main(args: Array[String]) {
-        println("Hola, mundo!")
+        println("¡Hola, mundo!")
       }
     }
 
-La estructura de este programa debería ser familiar para programadores Java: consiste de un método llamado `main` que toma los argumentos de la linea de comando (un array de objetos String) como parámetro; el cuerpo de este método consiste en una sola llamada al método predefinido `println` con el saludo amistoso como argumento. El método `main` no retorna un valor (se puede entender como un procedimiento). Por lo tanto, no es necesario que se declare un tipo retorno.
+La estructura de este programa debería ser familiar para programadores Java: consiste de un método llamado `main` que toma los argumentos de la línea de comando (un array de objetos String) como parámetro; el cuerpo de este método consiste en una sola llamada al método predefinido `println` con el saludo amistoso como argumento. El método `main` no retorna un valor (se puede entender como un procedimiento). Por lo tanto, no es necesario que se declare un tipo retorno.
 
-Lo que es menos familiar a los programadores Java es la declaración de `object` que contiene al método `main`. Esa declaración introduce lo que es comunmente conocido como *objeto singleton*, que es una clase con una sola instancia. Por lo tanto, dicha construcción declara tanto una clase llamada `HolaMundo` como una instancia de esa clase también llamada `HolaMundo`. Esta instancia es creada bajo demanda, es decir, la primera vez que es utilizada.
+Lo que es menos familiar a los programadores Java es la declaración de `object` que contiene al método `main`. Esa declaración introduce lo que es comúnmente conocido como *objeto singleton*, que es una clase con una sola instancia. Por lo tanto, dicha construcción declara tanto una clase llamada `HolaMundo` como una instancia de esa clase también llamada `HolaMundo`. Esta instancia es creada bajo demanda, es decir, la primera vez que es utilizada.
 
 El lector astuto notará que el método `main` no es declarado como `static`. Esto es así porque los miembros estáticos (métodos o campos) no existen en Scala. En vez de definir miembros estáticos, el programador de Scala declara estos miembros en un objeto singleton.
 
 ### Compilando el ejemplo
 
-Para compilar el ejemplo utilizaremos `scalac`, el compilador de Scala. `scalac` funciona como la mayoría de los compiladores. Toma un archivo fuente como argumento, algunas opciones y produce uno o varios archivos objeto. Los archivos objeto que produce son archivos class de Java estandar.
+Para compilar el ejemplo utilizaremos `scalac`, el compilador de Scala. `scalac` funciona como la mayoría de los compiladores. Toma un archivo fuente como argumento, algunas opciones y produce uno o varios archivos objeto. Los archivos objeto que produce son archivos class de Java estándar.
 
-Si guardamos el programa anterior en un archivo llamado `HolaMundo.scala`, podemos compilarlo ejecutando el siguiente comando (el símbolo mayor `>` representa el prompt del shell y no debe ser tipeado):
+Si guardamos el programa anterior en un archivo llamado `HolaMundo.scala`, podemos compilarlo ejecutando el siguiente comando (el símbolo mayor `>` representa el prompt del shell y no debe ser escrita):
 
     > scalac HolaMundo.scala
 
@@ -46,11 +46,11 @@ Una vez compilado, un programa Scala puede ser ejecutado utilizando el comando `
 
     > scala -classpath . HolaMundo
 
-    Hola, mundo!
+    ¡Hola, mundo!
 
 ## Interacción con Java
 
-Una de las fortalezas de Scala es que hace muy fácil interactuar con código Java. Todas las clases del paquete `java.lang` son importadas por defecto, mientras otras necesitan ser importadas explicitamente.
+Una de las fortalezas de Scala es que hace muy fácil interactuar con código Java. Todas las clases del paquete `java.lang` son importadas por defecto, mientras otras necesitan ser importadas explícitamente.
 
 Veamos un ejemplo que demuestra esto. Queremos obtener y formatear la fecha actual de acuerdo a convenciones utilizadas en un país específico, por ejemplo Francia.
 
@@ -68,11 +68,11 @@ Las librerías de clases de Java definen clases de utilería poderosas, como `Da
       }
     }
 
-Las declaraciones de importación de Scala lucen muy similares a las de Java, sin embargo, las primeras son bastante más poderosas. Múltiples clases pueden ser importadas desde el mismo paquete al encerrarlas en llaves como se muestra en la primer linea. Otra diferencia es que podemos importar todos los nombres de un paquete o clase, utilizando el caracter guión bajo (`_`) en vez del asterisco (`*`). Eso es porque el asterisco es un identificador válido en Scala (quiere decir que por ejemplo podemos nombrar a un método `*`), como veremos más adelante.
+Las declaraciones de importación de Scala lucen muy similares a las de Java, sin embargo, las primeras son bastante más poderosas. Múltiples clases pueden ser importadas desde el mismo paquete al encerrarlas en llaves como se muestra en la primer línea. Otra diferencia es que podemos importar todos los nombres de un paquete o clase, utilizando el carácter guión bajo (`_`) en vez del asterisco (`*`). Eso es porque el asterisco es un identificador válido en Scala (quiere decir que por ejemplo podemos nombrar a un método `*`), como veremos más adelante.
 
-La declaración `import` en la tercer linea por lo tanto importa todos los miembros de la clase `DateFormat`. Esto hace que el método estático `getDateInstance` y el campo estático `LONG` sean directamente visibles.
+La declaración `import` en la tercer línea por lo tanto importa todos los miembros de la clase `DateFormat`. Esto hace que el método estático `getDateInstance` y el campo estático `LONG` sean directamente visibles.
 
-Dentro del método `main` primero creamos una instancia de la clase `Date` la cual por defecto contiene la fecha actual. A continuación definimos un formateador de fechas utilizando el método estático `getDateInstance` que importamos previamente. Finalmente, imprimimos la fecha actual formateada de acuerdo a la instancia de `DateFormat` que fue "localizada". Esta última linea muestra una propiedad interesante de la sintaxis de Scala. Los métodos que toman un solo argumento pueden ser usados con una sintaxis de infijo Es decir, la expresión
+Dentro del método `main` primero creamos una instancia de la clase `Date` la cual por defecto contiene la fecha actual. A continuación definimos un formateador de fechas utilizando el método estático `getDateInstance` que importamos previamente. Finalmente, imprimimos la fecha actual formateada de acuerdo a la instancia de `DateFormat` que fue "localizada". Esta última línea muestra una propiedad interesante de la sintaxis de Scala. Los métodos que toman un solo argumento pueden ser usados con una sintaxis de infijo Es decir, la expresión
 
     df format ahora
     
@@ -86,7 +86,7 @@ Para concluir esta sección sobre la interacción con Java, es importante notar 
 
 ## Todo es un objeto
 
-Scala es un lenguaje puramente orientado a objetos en el sentido de que *todo* es un objeto, incluyendo números o funciones. Difiere de Java en este aspecto, ya que Java distingue tipos primitivos (como `boolean` e `int`) de tipos referencialbes, y no nos permite manipular las funciones como valores.
+Scala es un lenguaje puramente orientado a objetos en el sentido de que *todo* es un objeto, incluyendo números o funciones. Difiere de Java en este aspecto, ya que Java distingue tipos primitivos (como `boolean` e `int`) de tipos referenciales, y no nos permite manipular las funciones como valores.
 
 ### Los números son objetos
 
@@ -98,7 +98,7 @@ Consiste exclusivamente de llamadas a métodos, porque es equivalente a la sigui
 
     (1).+(((2).*(3))./(x))
 
-Esto también indica que `+`, `*`, etc son identificadores válidos en Scala.
+Esto también indica que `+`, `*`, etc. son identificadores válidos en Scala.
 
 Los paréntesis alrededor de los números en la segunda versión son necesarios porque el analizador léxico de Scala usa la regla de "mayor coincidencia". Por lo tanto partiría la siguiente expresión:
 
@@ -116,14 +116,14 @@ Tal vez suene más sorprendente para los programadores Java, las funciones en Sc
 
 Como un ejemplo muy simple de por qué puede ser útil usar funciones como valores consideremos una función *temporizador* (o timer, en inglés) cuyo propósito es realizar alguna acción cada un segundo. ¿Cómo pasamos al temporizador la acción a realizar? Bastante lógico, como una función. Este simple concepto de pasar funciones debería ser familiar para muchos programadores: es generalmente utilizado en código relacionado con Interfaces gráficas de usuario (GUIs) para registrar "retrollamadas" (call-back en inglés) que son invocadas cuando un evento ocurre.
 
-En el siguiente programa, la función del temporizador se llama `unaVezPorSegundo` y recibe una función call-back como argumento. El tipo de esta función es escrito de la siguiente manera: `() => Unit` y es el tipo de todas las funciones que no toman argumentos ni retornan valores (el tipo `Unit` es similar a `void` en Java/C/C++). La función principal de este programa simplemente invoca esta función temporizador con una call-back que imprime una sentencia en la terminal. En otras palabras, este programa imprime interminablemente la sentencia "El tiemplo vuela como una flecha" cada segundo.
+En el siguiente programa, la función del temporizador se llama `unaVezPorSegundo` y recibe una función call-back como argumento. El tipo de esta función es escrito de la siguiente manera: `() => Unit` y es el tipo de todas las funciones que no toman argumentos ni retornan valores (el tipo `Unit` es similar a `void` en Java/C/C++). La función principal de este programa simplemente invoca esta función temporizador con una call-back que imprime una sentencia en la terminal. En otras palabras, este programa imprime interminablemente la sentencia "El tiempo vuela como una flecha" cada segundo.
 
     object Temporizador {
       def unaVezPorSegundo(callback: () => Unit) {
         while (true) { callback(); Thread sleep 1000 }
       }
       def tiempoVuela() {
-        println("El tiemplo vuela como una flecha...")
+        println("El tiempo vuela como una flecha...")
       }
       def main(args: Array[String]) {
         unaVezPorSegundo(tiempoVuela)
@@ -144,7 +144,7 @@ El programa anterior es fácil de entender, pero puede ser refinado aún más. P
       }
       def main(args: Array[String]) {
         unaVezPorSegundo(
-            () => println("El tiemplo vuela como una flecha...")
+            () => println("El tiempo vuela como una flecha...")
         )
       }
     }
@@ -166,9 +166,9 @@ Esta clase compleja toma dos argumentos, que son las partes real e imaginarias d
     
 La clase contiene dos métodos llamados `re` e `im`, que proveen acceso a las dos partes del número.
 
-Debe notarse que el tipo de retorno de estos dos métodos no está expresado explicitamente. Será inferido automáticamente por el compilador, que primero mira la parte derecha de estos métodos y puede deducir que ambos retornan un valor de tipo `Double`.
+Debe notarse que el tipo de retorno de estos dos métodos no está expresado explícitamente. Será inferido automáticamente por el compilador, que primero mira la parte derecha de estos métodos y puede deducir que ambos retornan un valor de tipo `Double`.
 
-El compilador no es siempre capaz de inferir los tipos como lo hace aquí, y desafortunadamente no existe una regla simple para saber cuándo será y cuándo no. En la práctica, esto generalmente no es un problema ya que el compilador se queja cuando no es capaz de inferir un tipo que no fue explicitamente fijado. Como regla simple, los programadores de Scala novatos deberían tratar de omitir las declaraciones de tipos que parecen ser simples de deducir del contexto y ver si el compilador no lanza errores. Después de algún tiempo, el programador debería tener una buena idea de cuando omitir tipos y cuando explicitarlos.
+El compilador no es siempre capaz de inferir los tipos como lo hace aquí, y desafortunadamente no existe una regla simple para saber cuándo será y cuándo no. En la práctica, esto generalmente no es un problema ya que el compilador se queja cuando no es capaz de inferir un tipo que no fue explícitamente fijado. Como regla simple, los programadores de Scala novatos deberían tratar de omitir las declaraciones de tipos que parecen ser simples de deducir del contexto y ver si el compilador no lanza errores. Después de algún tiempo, el programador debería tener una buena idea de cuando omitir tipos y cuando explicitarlos.
 
 ### Métodos sin argumentos
 
@@ -191,9 +191,9 @@ Sería mejor poder acceder las partes imaginarias y reales como si fueran campos
 
 ### Herencia y sobreescritura
 
-Todas las clases en Scala heredan de una superclase. Cuando ninguna superclase es especificada, como es el caso de `Complejo` se utiliza implicitamente `scala.AnyRef`.
+Todas las clases en Scala heredan de una superclase. Cuando ninguna superclase es especificada, como es el caso de `Complejo` se utiliza implícitamente `scala.AnyRef`.
 
-Es posible sobreescribir métodos heredados de una superclase en Scala. Aunque es necesario explicitar específicamente que un método sobreescribe otro utilizando el modificador `override`, de manera de evitar sobreescrituras accidentales. Como ejemplo, nuestra clasee `Complejo` puede ser aumentada con la redefinición del método `toString` heredado de `Object`.
+Es posible sobreescribir métodos heredados de una superclase en Scala. Aunque es necesario explicitar específicamente que un método sobreescribe otro utilizando el modificador `override`, de manera de evitar sobreescrituras accidentales. Como ejemplo, nuestra clase `Complejo` puede ser aumentada con la redefinición del método `toString` heredado de `Object`.
 
     class Complejo(real: Double, imaginaria: Double) {
       def re = real
@@ -204,13 +204,13 @@ Es posible sobreescribir métodos heredados de una superclase en Scala. Aunque e
 
 ## Clases Case y Reconocimiento de patrones
 
-Un tipo de estructura de datos uqe aparece seguido en programas es el Árbol. Por ejemplo, los intérpretes y compiladores usualmente representan los programas internamente como árboles; los documentos XML son árboles; y muchos otros tipos de contenedores están basados en árboles, como el árbol roji-negro (red-black tree).
+Un tipo de estructura de datos que aparece seguido en programas es el Árbol. Por ejemplo, los intérpretes y compiladores usualmente representan los programas internamente como árboles; los documentos XML son árboles; y muchos otros tipos de contenedores están basados en árboles, como los árboles rojo y negro.
 
 Ahora examinaremos cómo estos árboles son representados y manipulados en Scala mediante un pequeño programa que oficie de calculadora. El objetivo de este programa es manipular expresiones aritméticas simples compuestas de sumas de enteros y variables. Dos ejemplos de estas expresiones pueden ser: `1+2` y `(x+x)+(7+y)`.
 
 Primero tenemos que decidir una representación para tales expresiones. La más natural es un árbol, donde los nodos son las operaciones (la adición en este caso) y las hojas son valores (constantes o variables).
 
-En Java, un árbol así sería representado utilizando una superclase abstracta para los árboles, y una subclase concreta por nodo u hoja. En un lenguaje de programación funcional uno utilizaría un tipo de dato algebráico para el mismo propósito. Scala provee el concepto de *clases case* que está en el medio de los dos conceptos anteriores. Aquí mostramos como pueden ser usadas para definir el tipo de los árboles en nuestro ejemplo:
+En Java, un árbol así sería representado utilizando una superclase abstracta para los árboles, y una subclase concreta por nodo u hoja. En un lenguaje de programación funcional uno utilizaría un tipo de dato algebraico para el mismo propósito. Scala provee el concepto de *clases case* que está en el medio de los dos conceptos anteriores. Aquí mostramos como pueden ser usadas para definir el tipo de los árboles en nuestro ejemplo:
 
     abstract class Arbol
     case class Sum(l: Arbol, r: Arbol) extends Arbol
@@ -249,7 +249,7 @@ Antes de escribir la función evaluadora, démosle un nombre al tipo de los ento
 
 De ahora en más, el tipo `Entorno` puede ser usado como un alias del tipo de funciones definidas de `String` a `Int`.
 
-Ahora podemos dar la definición de la función evaluadora. Conceptualmente, es muy sencillo: el valor de una suma de dos expresiones es simplemente la suma de los valores de estas expresiones; el valor de una variable es obtenido directamente del entorno; y eel valor de una constante es la constante en sí misma. Expresar esto en Scala no resulta para nada difícil:
+Ahora podemos dar la definición de la función evaluadora. Conceptualmente, es muy sencillo: el valor de una suma de dos expresiones es simplemente la suma de los valores de estas expresiones; el valor de una variable es obtenido directamente del entorno; y el valor de una constante es la constante en sí misma. Expresar esto en Scala no resulta para nada difícil:
 
     def eval(a: Arbol, ent: Entorno): Int = a match {
       case Sum(i, d) => eval(i, ent) + eval(d, env)
@@ -264,7 +264,7 @@ Esta función evaluadora función realizando un *reconocimiento de patrones* (pa
 3. si la segunda comprobación también falla, resulta que `a` no es un `Sum` ni un `Var`, por lo tanto comprueba que sea un `Const`, y si lo es, asocia el valor contenido en el nodo `Const` a la variable `v`y procede con el lado derecho.
 4. finalmente, si todos las comprobaciones fallan, una excepción es lanzada para dar cuenta el fallo de la expresión; esto puede pasar solo si existen más subclases de `Arbol`.
 
-Hemos visto que la idea básica del reconocimiento de patrones es intentar coincidir un valor con una serie de patrones, y tan pronto como un patrón coincida, extraer y nombrar las varias partes del valor para finalmente evaluar algo de código que tipicamente hace uso de esas partes nombradas.
+Hemos visto que la idea básica del reconocimiento de patrones es intentar coincidir un valor con una serie de patrones, y tan pronto como un patrón coincida, extraer y nombrar las varias partes del valor para finalmente evaluar algo de código que típicamente hace uso de esas partes nombradas.
 
 Un programador con experiencia en orientación a objetos puede preguntarse por qué no definimos `eval` como un método de la clase `Arbol` y sus subclases. En realidad podríamos haberlo hecho, ya que Scala permite la definición de métodos en clases case tal como en clases normales. Por lo tanto decidir en usar reconocimiento de patrones o métodos es una cuestión de gustos, pero también tiene grandes implicancias en cuanto a la extensibilidad:
 
@@ -272,18 +272,11 @@ Un programador con experiencia en orientación a objetos puede preguntarse por q
 
 - cuando utilizamos reconocimiento de patrones esta situación es inversa: agregar un nuevo tipo de nodo requiere la modificación de todas las funciones que hacen reconocimiento de patrones sobre el árbol, para tomar en cuenta un nuevo nodo; pero por otro lado agregar una nueva operación fácil, solamente definiendolo como una función independiente.
 
-To explore pattern matching further, let us define another operation
-on arithmetic expressions: symbolic derivation. The reader might
-remember the following rules regarding this operation:
-
 Para explorar un poco más esto de pattern matching definamos otra operación aritmética: derivación simbólica. El lector recordará las siguientes reglas sobre esta operación:
 
 1. la derivada de una suma es la suma de las derivadas,
 2. la derivada de una variable `v` es uno (1) si `v` es la variable relativa a la cual la derivada toma lugar, y cero (0)de otra manera,
 3. la derivada de una constante es cero (0).
-
-These rules can be translated almost literally into Scala code, to
-obtain the following definition:
 
 Estas reglas pueden ser traducidas casi literalmente en código Sclaa, para obtener la siguiente definición.
 
@@ -325,7 +318,7 @@ Aparte de poder heredar código de una super clase, una clase en Scala puede tam
 
 Tal vez la forma más fácil para un programador Java de entender qué son los traits es verlos como interfaces que también pueden contener código. En Scala, cuando una clase hereda de un trait, implementa la interface de ese trait, y hereda todo el código contenido en el trait.
 
-Para ver la utilidad de los traits, veamos un ejemplo clásico: objetos ordenados. Generalemente es útil tener la posibilidad de comparar objetos de una clase dada entre ellos, por ejemplo, para ordenarlos. En Java, los objetos que son comparables implementan la interfaz `Comparable`. En Scala, podemos hacer algo un poco mejor que en Java al definir un trait equivalente `Comparable` que invocará a `Ord`.
+Para ver la utilidad de los traits, veamos un ejemplo clásico: objetos ordenados. Generalmente es útil tener la posibilidad de comparar objetos de una clase dada entre ellos, por ejemplo, para ordenarlos. En Java, los objetos que son comparables implementan la interfaz `Comparable`. En Scala, podemos hacer algo un poco mejor que en Java al definir un trait equivalente `Comparable` que invocará a `Ord`.
 
 Cuando comparamos objetos podemos utilizar seis predicados distintos: menor, menor o igual, igual, distinto, mayor o igual y mayor. De todas maneras, definir todos estos es fastidioso, especialmente que cuatro de estos pueden ser expresados en base a los otros dos. Esto es, dados los predicados "igual" y "menor" (por ejemplo), uno puede expresar los otros. En Scala, todas estas observaciones pueden ser fácilmente capturadas mediante la siguiente declaración de un Trait:
 
@@ -350,7 +343,7 @@ Para hacer a un objeto de la clase comparable es suficiente definir los predicad
 
 La parte importante aquí es la declaración `extends Ord` la cual sigue al nombre de la clase y los parámetros. Declara que la clase `Fecha` hereda del trait `Ord`.
 
-Después redefinimos el método `equals`, heredado de `Object`, para comparar correctamente fechas mediante sus campos individuales. La implementación por defecto de `equals` no es utilizable, porque como en Java, compara los objetos fisicamente. Por lo tanto llegamos a esto:
+Después redefinimos el método `equals`, heredado de `Object`, para comparar correctamente fechas mediante sus campos individuales. La implementación por defecto de `equals` no es utilizable, porque como en Java, compara los objetos físicamente. Por lo tanto llegamos a esto:
 
     override def equals(that: Any): Boolean =
       that.isInstanceOf[Fecha] && {
@@ -360,7 +353,7 @@ Después redefinimos el método `equals`, heredado de `Object`, para comparar co
 
 Este método utiliza el método predefinido `isInstanceOf` ("es instancia de") y `asInstanceOf` ("como instancia de"). El primero `isInstanceOf` se corresponde con el operador java `instanceOf` y retorna `true` si y solo si el objeto en el cual es aplicado es una instancia del tipo dado. El segundo, `asInstanceOf`, corresponde al operador de casteo en Java: si el objeto es una instancia de un tipo dado, esta es vista como tal, de otra manera se lanza una excepción `ClassCastException`.
 
-Finalmente el último método para definir es el predicado que comprueba la inferioridad. Este hace uso de otro método predefinido, `error` que lanza una escepción con el mensaje de error provisto.
+Finalmente el último método para definir es el predicado que comprueba la inferioridad. Este hace uso de otro método predefinido, `error` que lanza una excepción con el mensaje de error provisto.
 
     def <(that: Any): Boolean = {
         if (!that.isInstanceOf[Fecha])
@@ -413,6 +406,6 @@ Como puede verse en el ejemplo, no es necesario castear el valor retornado por e
 ## Conclusión
 
 Scala es un lenguaje tremendamente poderoso que ha sabido heredar las mejores cosas de cada uno de los lenguajes más exitosos que se han conocido. Java no es la excepción, y comparte muchas cosas con este. La diferencia que vemos es que para cada uno de los conceptos de Java, Scala los aumenta, refina y mejora. Poder aprender todas las características de Scala nos equipa con más y mejores herramientas a la hora de escribir nuestros programas.
-Si bien la programación funcional no ha sido una característica de Java, el progamador experimentado puede notar la falta de soporte de este paradigma en múltiples ocasiones. El solo pensar en el código necesario para proveer a un `JButton` con el código que debe ejecutar al ser presionado nos muestra lo necesario que sería contar con herramientas funcionales. Recomendamos entonces tratar de ir incorporando estas características, por más que sea difícil para el programador Java al estar tan acostumbrado al paradigma imperativo de este lenguaje.
+Si bien la programación funcional no ha sido una característica de Java, el programador experimentado puede notar la falta de soporte de este paradigma en múltiples ocasiones. El solo pensar en el código necesario para proveer a un `JButton` con el código que debe ejecutar al ser presionado nos muestra lo necesario que sería contar con herramientas funcionales. Recomendamos entonces tratar de ir incorporando estas características, por más que sea difícil para el programador Java al estar tan acostumbrado al paradigma imperativo de este lenguaje.
 
 Este documento dio una rápida introducción al lenguaje Scala y presento algunos ejemplos básicos. El lector interesado puede seguir, por ejemplo, leyendo el *Tutorial de Scala* que figura en el sitio de documentación, o *Scala by Example* (en inglés). También puede consultar la especificación del lenguaje cuando lo desee.
