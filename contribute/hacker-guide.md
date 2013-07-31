@@ -26,11 +26,11 @@ Sometimes it's appealing to hack alone and not to have to interact with others o
 this might not be the very best idea. There are people in the Scala community who have spent years accumulating knowledge about Scala libraries and internals. They might provide
 unique insights and, what's even better, direct assistance in their areas, so it is not only advantageous, but recommended to communicate with the community about your new patch.
 
-Typically bug fixes new features start out as an idea or an experiment posted on one of our mailing lists [our mailing lists]({{ site.baseurl }}/community/index.html#mailing_lists) to find out how people feel
-about things you want to implement. People proficient is certain areas of Scala usually monitor mailing lists, so you'll often get some help
+Typically bug fixes and new features start out as an idea or an experiment posted on one of our mailing lists [our mailing lists]({{ site.baseurl }}/community/index.html#mailing_lists) to find out how people feel
+about things you want to implement. People proficient in certain areas of Scala usually monitor mailing lists, so you'll often get some help
 by simply posting a message. But the most efficient way to connect is to cc your message to one of the people responsible for maintaining the aspect of Scala which you wish to contribute to.
 
-This is the list of language features/libraries along with their maintainers's full names and github usernames:
+This is the list of language features/libraries along with their maintainers's full names and GitHub usernames:
 
 {% include maintainers.html %}
 
@@ -65,7 +65,7 @@ If you're new to Git, don't be afraid of messing up-- there is no way you can co
 
 If everything went okay, you will be redirected to your own fork at `https://github.com/username/scala`, where `username`
 is your github user name. You might find it helpful to read [http://help.github.com/fork-a-repo/](http://help.github.com/fork-a-repo/),
-which covers some of the things that will follow below. Then, _clone_ your repository (_i.e._ pull a copy from github to your local machine) by running the following on the command line:
+which covers some of the things that will follow below. Then, _clone_ your repository (_i.e._ pull a copy from GitHub to your local machine) by running the following on the command line:
 
     16:35 ~/Projects$ git clone https://github.com/xeno-by/scala
     Cloning into 'scala'...
@@ -76,7 +76,7 @@ which covers some of the things that will follow below. Then, _clone_ your repos
     Resolving deltas: 100% (182155/182155), done.
 
 This will create a local directory called `scala`, which contains a clone of your own copy of our repository. The changes that you make
-in this directory can be propagated back to your copy hosted on github and, ultimately, pushed into Scala when your patch is ready.
+in this directory can be propagated back to your copy hosted on GitHub and, ultimately, pushed into Scala when your patch is ready.
 
 ### Branch
 
@@ -299,10 +299,10 @@ After development is finished, it's time to publish the code and submit your pat
 In a nutshell, this involves:
 
 1. making sure that your code and commit messages are of high quality,
-2. clicking a few buttons in the Github interface,
-3. assigning one or more reviewers which will look through your pull request.
+2. clicking a few buttons in the GitHub interface,
+3. assigning one or more reviewers who will look through your pull request.
 
- Let's go into each of these points in more detail.
+Let's go into each of these points in more detail.
 
 ### Commit
 
@@ -312,7 +312,7 @@ There are two things you should know here:
 1. Commit messages are often the only way to understand the intentions of authors of code written a few years ago. Thus, writing a quality is of utmost importance. The more context you provide for the change you've introduced, the larger the chance that some future maintainer understand your intentions. Consult [the pull request policy](https://github.com/scala/scala/wiki/Pull-Request-Policy) for more information about the desired style of your commits.
 2. Keeping Scala's git history clean is also important. Therefore we won't accept pull requests for bug fixes that have more than one commit. For features, it is okay to have several commits, but all tests need to pass after every single commit. To clean up your commit structure, you want to [rewrite history](http://git-scm.com/book/en/Git-Branching-Rebasing) using `git rebase` so that your commits are against the latest revision of `master`.
 
-Once you are satisfied with your work, synced with `master` and cleaned up your commits you are ready to submit a patch to the central Scala repository. Before proceeding make sure you have pushed all of your local changes to your fork on Github.
+Once you are satisfied with your work, synced with `master` and cleaned up your commits you are ready to submit a patch to the central Scala repository. Before proceeding make sure you have pushed all of your local changes to your fork on GitHub.
 
     19:22 ~/Projects/scala/test (ticket/6725)$ git add ../src/compiler/scala/tools/reflect/MacroImplementations.scala
     19:22 ~/Projects/scala/test (ticket/6725)$ git commit
@@ -331,7 +331,7 @@ Once you are satisfied with your work, synced with `master` and cleaned up your 
 
 ### Submit
 
-Now, we must simply submit our proposed patch. Navigate to your branch in Github (for me it was `https://github.com/xeno-by/scala/tree/ticket/6725`)
+Now, we must simply submit our proposed patch. Navigate to your branch in GitHub (for me it was `https://github.com/xeno-by/scala/tree/ticket/6725`)
 and click the pull request button to submit your patch as a pull request to Scala. If you've never submitted patches to Scala, you will
 need to sign the contributor license agreement, which [can be done online](http://typesafe.com/contribute/cla/scala) within a few minutes.
 
