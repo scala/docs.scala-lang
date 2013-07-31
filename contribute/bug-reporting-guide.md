@@ -45,7 +45,7 @@ If you have a code snippet that is resulting in bytecode which you believe is be
 
 * Keep in mind that the behavior you are witnessing could be intended. Good formal resources for verifying whether or not the language behavior is intended is either in the [Scala Improvement Proposal Documents](http://docs.scala-lang.org/sips/sip-list.html) or in the [Scala Language Specification](http://www.scala-lang.org/docu/files/ScalaReference.pdf). If in doubt, you may always ask on the [scala-internals mailing list](https://groups.google.com/forum/?fromgroups#!forum/scala-internals) or [stackoveflow](http://stackoverflow.com/questions/tagged/scala).
 
-In general, if you find yourself stuck on any of these steps, asking on one of following Scala mailing lists can be helpful:
+In general, if you find yourself stuck on any of these steps, asking on one of the following Scala mailing lists can be helpful:
 
  - For unexpected behavior use [scala-language](https://groups.google.com/forum/?fromgroups#!forum/scala-language), or [scala-user](https://groups.google.com/forum/?fromgroups#!forum/scala-user) mailing lists.
  - For compiler bugs use the [scala-internals](https://groups.google.com/forum/?fromgroups#!forum/scala-internals) mailing list.

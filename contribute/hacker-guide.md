@@ -37,7 +37,7 @@ This is the list of language features/libraries along with their maintainers's f
 Since Martin is the person who submitted the string interpolation Scala Improvement Proposal and implemented this language feature for Scala 2.10.0, he might be interested in learning of new bugfixes to that feature.
 
 As alluded to earlier, one must also choose an appropriate mailing list. Typically, one would use the scala-internals mailing list, as it is devoted to discussions about the core internal design and implementation of the Scala system. However, since this issue has been discussed previously on the scala-user mailing list,
-in this example, we post to the [the scala-user mailing list](http://groups.google.com/group/scala-user)about our issue.
+in this example, we post to the [the scala-user mailing list](http://groups.google.com/group/scala-user) about our issue.
 
 <center><img src="{{ site.baseurl }}/resources/img/01-post.png" alt="Posting to scala-user" /></center>
 <br/>
@@ -143,7 +143,7 @@ Both Eclipse and IntelliJ IDEA have Scala plugins, which are known to work with 
 [instructions for Intellij](https://github.com/scala/scala/blob/master/src/intellij/README). Both of those Scala plugins provide
 navigation, refactoring and error reporting functionality as well as integrated debugging.
 
-There also exist lighter-weight editors such as Emacs, Sublime or jEdit which provide unparalleled are faster and much less memory/compute-intensive to run, while
+There also exist lighter-weight editors such as Emacs, Sublime or jEdit which are faster and much less memory/compute-intensive to run, while
 lacking semantic services and debugging. To address this shortcoming, they can integrate with ENSIME,
 a helper program, which hosts a resident Scala compiler providing some of the features implemented in traditional IDEs. However despite
 having significantly matured over the last year, support for our particular code base is still being improved, and is not as mature as for Eclipse and IntelliJ.
@@ -194,11 +194,11 @@ There are several areas that one could contribute to-- there is the Scala librar
 
 ##### The Scala Library
 
-Contributing to the Scala standard library is about the same as working on one of your own libraries. Beyond the Scala collections hierarchy, there are no complex internals or architectures to have to worry about. Just make sure that you code in a "don't-repeat-yourself" (DRY) style, obeying the "boy scout principle" (i.e. make sure you've left something cleaner than you found it.)
+Contributing to the Scala standard library is about the same as working on one of your own libraries. Beyond the Scala collections hierarchy, there are no complex internals or architectures to have to worry about. Just make sure that you code in a "don't-repeat-yourself" (DRY) style, obeying the "boy scout principle" (i.e. make sure you've left something cleaner than you found it).
 
 If documentation is necessary for some trait/class/object/method/etc in the Scala standard library, typically maintainers will include inline comments describing their design decisions or rationale for implementing things the way they have, if it is not straightforward.
 
-If you intend on contributing to Scala collections, please make sure you're familiar with the design of the Scala collections library. It can be easy to put an implementation in the wrong location if you are unfamiliar with the collections architecture. There is an excellent and very detailed guide covering [the Architecture of Scala Collections](http://docs.scala-lang.org/overviews/core/architecture-of-scala-collections.html), as well as a larger more general [Scala collections Guide](http://docs.scala-lang.org/overviews/core/collections.html) covering the sequential portion of collections. For parallel collections, there also exists a detailed [Scala Parallel Collections Guide](http://docs.scala-lang.org/overviews/core/parallel-collections.html). (TODO double check these links!)
+If you intend on contributing to Scala collections, please make sure you're familiar with the design of the Scala collections library. It can be easy to put an implementation in the wrong location if you are unfamiliar with the collections architecture. There is an excellent and very detailed guide covering [the Architecture of Scala Collections](http://docs.scala-lang.org/overviews/core/architecture-of-scala-collections.html), as well as a larger more general [Scala collections Guide](http://docs.scala-lang.org/overviews/collections/introduction.html) covering the sequential portion of collections. For parallel collections, there also exists a detailed [Scala Parallel Collections Guide](http://docs.scala-lang.org/overviews/parallel-collections/overview.html).
 
 ##### The Scala Compiler
 
@@ -272,9 +272,9 @@ I have already written one test earlier, so that's a good start but not enough! 
 
 Adding tests to the test suite is as easy as moving them to the appropriate directory:
 
-* Code which should compile successfully, but doesn't need to be executed, needs to go into the [“pos” directory](https://github.com/scala/scala/tree/master/test/files/pos)
-* Code which should not compile needs to go into the [“neg” directory](https://github.com/scala/scala/tree/master/test/files/neg)
-* Code which should compile and get executed by the test suite needs to go into the [“run” directory](https://github.com/scala/scala/tree/master/test/files/run)
+* Code which should compile successfully, but doesn't need to be executed, needs to go into the [“pos” directory](https://github.com/scala/scala/tree/master/test/files/pos).
+* Code which should not compile needs to go into the [“neg” directory](https://github.com/scala/scala/tree/master/test/files/neg).
+* Code which should compile and get executed by the test suite needs to go into the [“run” directory](https://github.com/scala/scala/tree/master/test/files/run).
 
 ### Verify
 
