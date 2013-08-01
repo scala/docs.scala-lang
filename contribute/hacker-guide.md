@@ -39,9 +39,8 @@ Since Martin is the person who submitted the string interpolation Scala Improvem
 As alluded to earlier, one must also choose an appropriate mailing list. Typically, one would use the scala-internals mailing list, as it is devoted to discussions about the core internal design and implementation of the Scala system. However, since this issue has been discussed previously on the scala-user mailing list,
 in this example, we post to the [the scala-user mailing list](http://groups.google.com/group/scala-user) about our issue.
 
-<center><img src="{{ site.baseurl }}/resources/img/01-post.png" alt="Posting to scala-user" /></center>
-<br/>
-<center><img src="{{ site.baseurl }}/resources/img/02-post.png" alt="Response from Martin" /></center>
+<img src="{{ site.baseurl }}/resources/img/01-post.png" alt="Posting to scala-user" class="centerclear" />
+<img src="{{ site.baseurl }}/resources/img/02-post.png" alt="Response from Martin" class="centerclear" />
 
 Now that we have the approval of the feature's author, we can get to work!
 
@@ -59,7 +58,7 @@ button in the top right corner of the page. This will create your own copy of ou
 
 If you're new to Git, don't be afraid of messing up-- there is no way you can corrupt our repository.
 
-<center><img src="{{ site.baseurl }}/resources/img/03-fork.png" alt="Fork scala/scala" /></center>
+<img src="{{ site.baseurl }}/resources/img/03-fork.png" alt="Fork scala/scala" class="centerclear" />
 
 ### Clone
 
@@ -335,14 +334,14 @@ Now, we must simply submit our proposed patch. Navigate to your branch in GitHub
 and click the pull request button to submit your patch as a pull request to Scala. If you've never submitted patches to Scala, you will
 need to sign the contributor license agreement, which [can be done online](http://typesafe.com/contribute/cla/scala) within a few minutes.
 
-<center><img src="{{ site.baseurl }}/resources/img/04-submit.png" alt="Submit a pull request" /></center>
+<img src="{{ site.baseurl }}/resources/img/04-submit.png" alt="Submit a pull request" class="centerclear" />
 
 ### Review
 
 After the pull request has been submitted, you need to pick a reviewer (usually the person you've contacted in the beginning of your
 workflow) and be ready to elaborate and adjust your patch if necessary. In this example, we picked Martin, because we had such a nice chat on the mailing list:
 
-<center><img src="{{ site.baseurl }}/resources/img/05-review.png" alt="SAssign the reviewer" /></center>
+<img src="{{ site.baseurl }}/resources/img/05-review.png" alt="SAssign the reviewer" class="centerclear" />
 
 ## Merge
 
