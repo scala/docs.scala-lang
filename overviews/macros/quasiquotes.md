@@ -5,23 +5,21 @@ title: Quasiquotes
 disqus: true
 
 partof: macros
-num: 4
-outof: 7
-languages: [ja]
+num: 5
+outof: 8
 ---
-<a href="/overviews/macros/paradise.html"><span class="label important" style="float: right;">MACRO PARADISE</span></a>
+<span class="label warning" style="float: right;">EXPERIMENTAL</span>
 
-**Denys Shabalin, Eugene Burmako**
+**Eugene Burmako**
 
-Quasiquotes are a pre-release feature included in so-called macro paradise, an experimental branch in the official Scala repository. Follow the instructions at the ["Macro Paradise"](/overviews/macros/paradise.html) page to download and use our nightly builds.
-
-As of late, quasiquotes are also available to production users of Scala 2.10.x <span class="label success">NEW</span>. Follow the instructions at <a href="/overviews/macros/paradise.html#macro_paradise_for_210x">the macro paradise page</a> for more information.
+Quasiquotes are shipped with recent milestone builds of Scala 2.11, starting from 2.11.0-M4. They are also available in Scala 2.10 with the macro paradise plugin. Follow the instructions at the ["Macro Paradise"](/overviews/macros/paradise.html) page to download and use our compiler plugin.
 
 ## Intuition
 
-Consider the `Lifter` [type macro](/overviews/macros/typemacros.html), which takes a template of a class or an object and duplicates all the methods in the template with their asynchronous counterparts wrapped in `future`.
+Consider an `async` [macro annotation](/overviews/macros/annotations.html), which takes a class or an object and duplicates their methods with asynchronous counterparts wrapped in `future`.
 
-    class D extends Lifter {
+    @async
+    class D {
       def x = 2
       // def asyncX = future { 2 }
     }
@@ -32,7 +30,7 @@ Consider the `Lifter` [type macro](/overviews/macros/typemacros.html), which tak
       case Failure(_) => println("failed")
     }
 
-An implementation of such macro might look as the code at the snippet below. This routine - acquire, destructure, wrap in generated code, restructure again - is quite familiar to macro writers.
+An implementation of such a macro might look as the code at the snippet below. This routine - acquire, destructure, wrap in generated code, restructure again - is quite familiar to macro writers.
 
     case ClassDef(_, _, _, Template(_, _, defs)) =>
       val defs1 = defs collect {
@@ -63,12 +61,14 @@ At the moment quasiquotes suffer from [SI-6842](https://issues.scala-lang.org/br
 
 ## Details
 
-Quasiquotes are implemented as a part of the `scala.reflect.api.Universe` cake, which means that it is enough to do `import c.universe._` to use quasiquotes in macros. Exposed API provides `q` and `tq` [string interpolators](/overviews/core/string-interpolation.html) (corresponding to term and type quasiquotes), which support both construction and deconstruction, i.e. can be used both in normal code and on the left-hand side of a pattern case.
+Quasiquotes are implemented as a part of the `scala.reflect.api.Universe` cake, which means that it is enough to do `import c.universe._` to use quasiquotes in macros. Exposed API provides `q`, `tq`, `cq` and `pq` [string interpolators](/overviews/core/string-interpolation.html) (corresponding to term and type quasiquotes), which support both construction and deconstruction, i.e. can be used both in normal code and on the left-hand side of a pattern case.
 
-| Interpolator | Works with | Construction         | Deconstruction                |
-|--------------|------------|----------------------|-------------------------------|
-| `q`          | Term trees | `q"future{ $body }"` | `case q"future{ $body }"` =>  |
-| `tq`         | Type trees | `tq"Future[$t]"`     | `case tq"Future[$t]"` =>      |
+| Flavor | Works with | Construction          | Deconstruction                |
+|--------|------------|-----------------------|-------------------------------|
+| `q`    | Term trees | `q"future{ $body }"`  | `case q"future{ $body }" =>`  |
+| `tq`   | Type trees | `tq"Future[$t]"`      | `case tq"Future[$t]" =>`      |
+| `cq`   | Cases      | `cq"x => x"`          | `case cq"$pat => ${_}" =>`    |
+| `pq`   | Patterns   | `pq"xs @ (hd :: tl)"` | `case pq"$id @ ${_}" =>`      |
 
 Unlike regular string interpolators, quasiquotes support multiple flavors of splices in order to distinguish between inserting/extracting single trees, lists of trees and lists of lists of trees. Mismatching cardinalities of splicees and splice operators results in a compile-time error.
 
@@ -94,7 +94,7 @@ Unlike regular string interpolators, quasiquotes support multiple flavors of spl
 
 ### Liftable
 
-To simplify splicing of non-trees, quasiquotes provide the `Liftable` type class, which defines how values are transformed into trees when spliced in. We provide instances of `Liftable` for primitives and strings, which wrap those in `Literal(Constant(...))`. You might want to define your own instances for simple case classes and lists (also see [SI-6839](https://issues.scala-lang.org/browse/SI-6839)).
+To simplify splicing of non-trees, quasiquotes provide the `Liftable` type class, which defines how values are transformed into trees when spliced in. We provide instances of `Liftable` for primitives and strings, which wrap those in `Literal(Constant(...))`. You might want to define your own instances for simple case classes and lists.
 
     trait Liftable[T] {
       def apply(universe: api.Universe, value: T): universe.Tree
