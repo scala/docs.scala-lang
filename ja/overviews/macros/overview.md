@@ -6,26 +6,13 @@ disqus: true
 
 partof: macros
 num: 1
-outof: 7
+outof: 1
 title: def マクロ
 ---
 <span class="label warning" style="float: right;">EXPERIMENTAL</span>
 
 **Eugene Burmako 著**<br>
 **Eugene Yokota 訳**
-
-## 動機
-
-コンパイル時におけるメタプログラミングは、それによって可能となるプログラミング技法があるため貴重なツールだ。具体的には:
-
-<ul>
-<li>言語の仮想化 (もとのプログラミング言語の意味論をオーバロードもしくはオーバーライドすることでより深く組み込まれた DSL を可能とする)</li>
-<li>プログラムのレイフィケーション (reification; プログラムが自身をインスペクトするための方法を提供する) </li>
-<li>自己最適化 (レイフィケーションに基づきドメインに特化した最適化を自己適用する)</li>
-<li>アルゴリズム的プログラム構築 (プログラミング言語で提供されている抽象化のみでは書くのが煩わしいコードの生成)</li>
-</ul>
-
-この概要では Scala のマクロシステムを説明する。この仕組を使ってプログラマはマクロ def (コンパイル時にコンパイラによって自動的に読み込まれ実行される関数) を書くことができる。これにより、Scala におけるコンパイル時メタプログラミングという概念が実現される。
 
 ## 直感
 
@@ -232,7 +219,7 @@ Scala コードの生成については[リフレクションの概要](http://d
 
 ### マクロのデバッグ
 
-マクロのデバッグ、すなわちマクロ展開を駆動している論理のデバッグは比較的容易だ。マクロはコンパイラ内で展開されるため、デバッガ内でコンパイラを実行するだけでいい。そのためには、以下を実行する必要がある: 
+マクロのデバッグ、すなわちマクロ展開を駆動している論理のデバッグは比較的容易だ。マクロはコンパイラ内で展開されるため、デバッガ内でコンパイラを実行するだけでいい。そのためには、以下を実行する必要がある:
 
 <ol>
 <li>デバッグ設定のクラスパスに Scala home の lib ディレクトリ内の全て (!) のライブラリを追加する。(これは、<code>scala-library.jar</code>、<code>scala-reflect.jar</code>、そして <code>scala-compiler.jar</code> の jar ファイルを含む。</li>
@@ -374,9 +361,3 @@ Scala コードの生成については[リフレクションの概要](http://d
          | c.Expr(helper.generate)
          | }
     impl: (c: scala.reflect.macros.Context)c.Expr[Unit]
-
-## 他の例
-
-Scala マクロは、既に何人ものアーリーアダプターがいる。コミュニティが積極的に関わってくれたお陰で僕らは素早くプロトタイプを行なうことができたし、結果としてお手本として使えるコードがいくつかできた。最新の状況に関しては [http://scalamacros.org/news/2012/11/05/status-update.html](http://scalamacros.org/news/2012/11/05/status-update.html) を参照してほしい。
-
-Adam Warski 氏による Scala マクロのチュートリアルも推薦したい: [http://www.warski.org/blog/2012/12/starting-with-scala-macros-a-short-tutorial](http://www.warski.org/blog/2012/12/starting-with-scala-macros-a-short-tutorial)。これはデバッグ表示用のマクロを具体例としたステップ・バイ・ステップガイドで SBT プロジェクトのセットアップや、`reify` と `splice` の用例、そして手動での AST の組み立てなどを解説している。

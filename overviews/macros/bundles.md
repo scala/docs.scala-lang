@@ -5,19 +5,18 @@ title: Macro Bundles
 disqus: true
 
 partof: macros
-num: 6
-outof: 7
-languages: [ja]
+num: 3
+outof: 8
 ---
-<span class="label important" style="float: right;">MACRO PARADISE</span>
+<span class="label warning" style="float: right;">EXPERIMENTAL</span>
 
 **Eugene Burmako**
 
-Macro bundles and macro compilers are pre-release features included in so-called macro paradise, an experimental branch in the official Scala repository. Follow the instructions at the ["Macro Paradise"](/overviews/macros/paradise.html) page to download and use our nightly builds.
+Macro bundles are shipped with the recent milestone builds of Scala 2.11, starting from 2.11.0-M4. They are not available in Scala 2.10.x or in macro paradise. Follow the instructions at [http://www.scala-lang.org/download/](http://www.scala-lang.org/download/) to download and use the latest milestone of 2.11.
 
 ## Macro bundles
 
-Currently, in Scala 2.10.0, macro implementations are represented with functions. Once the compiler sees an application of a macro definition,
+Currently, in Scala 2.10.x, macro implementations are represented with functions. Once the compiler sees an application of a macro definition,
 it calls the macro implementation - as simple as that. However practice shows that just functions are often not enough due to the
 following reasons:
 
@@ -25,10 +24,6 @@ following reasons:
 traits outside macro implementations, turning implementations into trivial wrappers, which just instantiate and call helpers.
 
 2. Moreover, since macro parameters are path-dependent on the macro context, [special incantations](/overviews/macros/overview.html#writing_bigger_macros) are required to wire implementations and helpers together.
-
-3. As macros evolved it [became apparent](https://twitter.com/milessabin/status/281379835773857792) that there should exist different
-interfaces of communication between the compiler and macros. At the moment compiler can only expand macros, but what if it wanted to
-ask a macro to help it with type inference?
 
 Macro bundles provide a solution to these problems by allowing macro implementations to be declared in traits, which extend
 `scala.reflect.macros.Macro`. This base trait predefines the `c: Context` variable, relieving macro implementations from having
@@ -54,25 +49,3 @@ and then select a method from it, providing type arguments if necessary.
       def mono = macro Impl.mono
       def poly[T] = macro Impl.poly[T]
     }
-
-## Macro compilers (deprecated)
-
-It turns out that the flexibility provided by externalizing the strategy of macro compilation hasn't really been useful.
-Therefore I'm removing this functionality from macro paradise <span class="label success">NEW</span>.
-
-When I was implementing macro bundles, it became apparent that the mechanism which links macro definitions with macro implementations
-is too rigid. This mechanism simply used hardcoded logic in `scala/tools/nsc/typechecker/Macros.scala`, which takes the right-hand side
-of a macro def, typechecks it as a reference to a static method and then uses that method as a corresponding macro implementation.
-
-Now compilation of macro defs is extensible. Instead of using a hardcoded implementation to look up macro impls,
-the macro engine performs an implicit search of a `MacroCompiler` in scope and then invokes its `resolveMacroImpl` method,
-passing it the `DefDef` of a macro def and expecting a reference to a static method in return. Of course, `resolveMacroImpl`
-should itself be a macro, namely [an untyped one](/overviews/macros/untypedmacros.html), for this to work.
-
-    trait MacroCompiler {
-      def resolveMacroImpl(macroDef: _): _ = macro ???
-    }
-
-Default instance of the type class, `Predef.DefaultMacroCompiler`, implements formerly hardcoded typechecking logic.
-Alternative implementations could, for instance, provide lightweight syntax for macro defs, generating macro impls
-on-the-fly using `c.introduceTopLevel`.
