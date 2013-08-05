@@ -6,7 +6,7 @@ disqus: true
 
 partof: macros
 num: 7
-outof: 8
+outof: 11
 ---
 <span class="label success" style="float: right;">NEW</span>
 
