@@ -5,23 +5,16 @@ title: Def Macros
 disqus: true
 
 partof: macros
-num: 1
-outof: 7
+num: 2
+outof: 8
 languages: [ja]
 ---
 <span class="label warning" style="float: right;">EXPERIMENTAL</span>
 
 **Eugene Burmako**
 
-## Motivation
-
-Compile-time metaprogramming has been recognized as a valuable tool for enabling such programming techniques as:
-* Language virtualization (overloading/overriding semantics of the original programming language to enable deep embedding of DSLs),
-* Program reification (providing programs with means to inspect their own code),
-* Self-optimization (self-application of domain-specific optimizations based on program reification),
-* Algorithmic program construction (generation of code that is tedious to write with the abstractions supported by a programming language).
-
-In this overview we introduce a macro system for Scala. This facility allows programmers to write macro defs: functions that are transparently loaded by the compiler and executed during compilation. This realizes the notion of compile-time metaprogramming for Scala.
+Def macros are shipped as an experimental feature of Scala since version 2.10.0, including the latest 2.10.2 and the upcoming 2.11.0.
+A subset of def macros, pending a thorough specification, is tentatively scheduled to become stable in 2.12.
 
 ## Intuition
 
@@ -361,10 +354,3 @@ An alternative approach is to pass the identity of the context in an explicit ty
          | c.Expr(helper.generate)
          | }
     impl: (c: scala.reflect.macros.Context)c.Expr[Unit]
-
-## More examples
-
-Scala macros have quite a few early adopters. Thanks to active community involvement, we have been able to rapidly prototype,
-and now there's some code that can be used as a reference. Read more about the state of the art at [http://scalamacros.org/news/2012/11/05/status-update.html](http://scalamacros.org/news/2012/11/05/status-update.html).
-
-We also recommend a short tutorial on Scala macros written by Adam Warski: [http://www.warski.org/blog/2012/12/starting-with-scala-macros-a-short-tutorial](http://www.warski.org/blog/2012/12/starting-with-scala-macros-a-short-tutorial). It provides a step-by-step guide through writing a debug printing macro with explanations covering setup of an SBT project, usage of `reify` and `splice` and manually assembly of ASTs.

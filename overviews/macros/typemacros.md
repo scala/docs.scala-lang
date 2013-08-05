@@ -3,17 +3,15 @@ layout: overview-large
 title: Type Macros
 
 disqus: true
-
-partof: macros
-num: 3
-outof: 7
-languages: [ja]
 ---
-<a href="/overviews/macros/paradise.html"><span class="label important" style="float: right;">MACRO PARADISE</span></a>
+<span class="label important" style="float: right;">OBSOLETE</span>
 
 **Eugene Burmako**
 
-Type macros are a pre-release feature included in so-called macro paradise, an experimental branch in the official Scala repository. Follow the instructions at the ["Macro Paradise"](/overviews/macros/paradise.html) page to download and use our nightly builds.
+Type macros used to be available in previous versions of ["Macro Paradise"](/overviews/macros/paradise.html),
+but are not supported anymore in macro paradise 2.0.
+Visit [the paradise 2.0 announcement](http://scalamacros.org/news/2013/08/05/macro-paradise-2.0.0-snapshot.html)
+for an explanation and suggested migration strategy.
 
 ## Intuition
 
