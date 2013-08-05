@@ -3,6 +3,10 @@ layout: overview-large
 title: Inference-Driving Macros
 
 disqus: true
+
+partof: macros
+num: 10
+outof: 11
 ---
 <span class="label important" style="float: right;">EXPERIMENTAL</span>
 
