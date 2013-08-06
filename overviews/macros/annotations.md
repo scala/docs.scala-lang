@@ -87,7 +87,7 @@ at a later point in the future).
 |-----------------------------------------------------------|-----------------------------------------------------------------|
 | `@identity class C`                                       | `(<empty>, List(class C))`                                      |
 | `@identity class D; object D`                             | `(<empty>, List(class D, object D))`                            |
-| `class E; @identity object E`                             | `(<empty>, List(object E))`s                                    |
+| `class E; @identity object E`                             | `(<empty>, List(object E))`                                    |
 | `def twice[@identity T]`<br/>`(@identity x: Int) = x * 2` | `(type T, List(def twice))`<br/>`(val x: Int, List(def twice))` |
 
 In the spirit of Scala macros, macro annotations are as untyped as possible to stay flexible and
