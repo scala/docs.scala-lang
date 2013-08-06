@@ -28,8 +28,7 @@ so that I can refine it appropriately. If something doesn't work, let me know <a
 Macro annotations bring textual abstraction to the level of definitions. Annotating any top-level or nested definition with something
 that Scala recognizes as a macro will let it expand, possibly into multiple members. Unlike in the previous versions of macro paradise,
 macro annotations in 2.0 are done right in the sense that they: 1) apply not just to classes and objects, but to arbitrary definitions,
-2) allow to introduce static members (i.e. expansions of classes can affect companions).
-This opens a number of new possibilities in code generation land, including customizable case classes and better enums.
+2) allow expansions of classes can affect companions. This opens a number of new possibilities in code generation land.
 
 In this walkthrough we will write a silly, but very useful macro that does nothing except for logging the annottees.
 As a first step, we define an annotation that inherits `StaticAnnotation` and defines a `macroTransform` macro.
