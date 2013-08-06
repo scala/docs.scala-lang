@@ -28,7 +28,8 @@ so that I can refine it appropriately. If something doesn't work, let me know <a
 Macro annotations bring textual abstraction to the level of definitions. Annotating any top-level or nested definition with something
 that Scala recognizes as a macro will let it expand, possibly into multiple members. Unlike in the previous versions of macro paradise,
 macro annotations in 2.0 are done right in the sense that they: 1) apply not just to classes and objects, but to arbitrary definitions,
-2) allow expansions of classes can affect companions. This opens a number of new possibilities in code generation land.
+2) allow expansions of classes to modify or even create companion objects.
+This opens a number of new possibilities in code generation land.
 
 In this walkthrough we will write a silly, but very useful macro that does nothing except for logging the annottees.
 As a first step, we define an annotation that inherits `StaticAnnotation` and defines a `macroTransform` macro.
@@ -47,7 +48,7 @@ for the lack of better notion in Scala) and produce one or several results (a si
 results have to be wrapped in a `Block` for the lack of better notion in the reflection API).
 
 At this point you might be wondering. A single annottee and a single result is understandable, but what is the many-to-many
-mapping supposed to mean? There are four rules guiding the process:
+mapping supposed to mean? There are several rules guiding the process:
 
 1. If a class is annotated and it has a companion, then both are passed into the macro. (But not vice versa - if an object
    is annotated and it has a companion class, only the object itself is expanded).
@@ -55,8 +56,11 @@ mapping supposed to mean? There are four rules guiding the process:
    then the owner and then its companion as specified by the previous rule.
 1. Annottees can expand into whatever number of trees of any flavor, and the compiler will then transparently
    replace the input trees of the macro with its output trees.
-1. Except for top-level expansions that must retain the number of annottees, their flavors and their names.
-   (Otherwise it wouldn't be able to provide a deterministic expansion scheme).
+1. If a class expands into both a class and a module having the same name, they become companions.
+   This way it is possible to generate a companion object for a class even if that companion was not declared explicitly.
+1. Top-level expansions must retain the number of annottees, their flavors and their names, with the only exception
+   that a class might expand into a same-named class plus a same-named module, in which case they automatically become
+   companions as per previous rule.
 
 Here's a possible implementation of the `identity` annotation macro. The logic is a bit complicated, because it needs to
 take into account the cases when `@identity` is applied to a value or type parameter. Excuse us for a low-tech solution,
