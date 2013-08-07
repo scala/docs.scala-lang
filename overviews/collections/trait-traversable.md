@@ -13,7 +13,7 @@ At the top of the collection hierarchy is trait `Traversable`. Its only abstract
 
     def foreach[U](f: Elem => U) 
 
-Collection classes that implement `Traversable` just need to define this method; all other methods can be inherited from `Traverable`.
+Collection classes that implement `Traversable` just need to define this method; all other methods can be inherited from `Traversable`.
 
 The `foreach` method is meant to traverse all elements of the collection, and apply the given operation, f, to each element. The type of the operation is `Elem => U`, where `Elem` is the type of the collection's elements and `U` is an arbitrary result type. The invocation of `f` is done for its side effect only; in fact any function result of f is discarded by `foreach`.
 
