@@ -3,10 +3,6 @@ layout: overview-large
 title: Untyped Macros
 
 disqus: true
-
-partof: macros
-num: 11
-outof: 11
 ---
 <span class="label important" style="float: right;">OBSOLETE</span>
 

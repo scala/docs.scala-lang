@@ -5,8 +5,8 @@ title: Use Cases
 disqus: true
 
 partof: macros
-num: 1
-outof: 11
+num: 2
+outof: 9
 ---
 
 <span class="label warning" style="float: right;">EXPERIMENTAL</span>
