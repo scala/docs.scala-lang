@@ -19,7 +19,7 @@ Jekyll is required. Follow the install instructions at the Jekyll [documentation
 
 cd into the `scala.github.com` directory, and build by:
 
-    jekyll server
+    jekyll serve
 
 The generated site is available at `http://localhost:4000`
 
