@@ -5,8 +5,8 @@ title: Macro Annotations
 disqus: true
 
 partof: macros
-num: 6
-outof: 11
+num: 7
+outof: 9
 ---
 <span class="label important" style="float: right;">MACRO PARADISE</span>
 
