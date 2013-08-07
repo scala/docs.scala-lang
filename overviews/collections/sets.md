@@ -104,7 +104,7 @@ Comparing the two interactions shows an important principle. You often can repla
 
 Mutable sets also provide add and remove as variants of `+=` and `-=`. The difference is that `add` and `remove` return a Boolean result indicating whether the operation had an effect on the set.
 
-The current default implementation of a mutable set uses a hashtable to store the set's elements. The default implementation of an immutable set uses a representation that adapts to the number of elements of the set. An empty set is represented by just a singleton object. Sets of sizes up to four are represented by a single object that stores all elements as fields. Beyond that size, immutable sets are implemented as [hash tries](#hash-tries).
+The current default implementation of a mutable set uses a hashtable to store the set's elements. The default implementation of an immutable set uses a representation that adapts to the number of elements of the set. An empty set is represented by just a singleton object. Sets of sizes up to four are represented by a single object that stores all elements as fields. Beyond that size, immutable sets are implemented as [hash tries](concrete-immutable-collection-classes.html#hash_tries).
 
 A consequence of these representation choices is that, for sets of small sizes (say up to 4), immutable sets are usually more compact and also more efficient than mutable sets. So, if you expect the size of a set to be small, try making it immutable.
 
@@ -131,8 +131,8 @@ Or you can leave out the ordering argument but give an element type or the empty
 
 If you create new sets from a tree-set (for instance by concatenation or filtering) they will keep the same ordering as the original set. For instance,
 
-scala> res2 + ("one", "two", "three", "four")
-res3: scala.collection.immutable.TreeSet[String] = TreeSet(four, one, three, two)
+    scala> res2 + ("one", "two", "three", "four")
+    res3: scala.collection.immutable.TreeSet[String] = TreeSet(four, one, three, two)
 
 Sorted sets also support ranges of elements. For instance, the `range` method returns all elements from a starting element up to, but excluding, and end element. Or, the `from` method returns all elements greater or equal than a starting element in the set's ordering. The result of calls to both methods is again a sorted set. Examples:
 
