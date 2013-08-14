@@ -12,38 +12,14 @@ languages: [ja]
 
 **Heather Miller, Eugene Burmako, Philipp Haller**
 
-*Reflection* is the ability of a program to inspect, and possibly even modify
-itself at runtime. It has a long history across object-oriented, functional,
-and logic programming paradigms, with each paradigm evolving its own,
-sometimes markedly different, *status quo* for reflection. While more
-functional programming languages like Lisp/Scheme have focused primarily on
-reification to enable tasks like dynamic interpretation, object-oriented
-programming languages like Java have focused primarily on runtime reflection to
-enable tasks like the inspection and/or invocation of class members at runtime.
+*Reflection* is the ability of a program to inspect, and possibly even modify itself. It has a long history across object-oriented, functional, and logic programming paradigms. While some languages are built around reflection as a guiding principle, many languages progressively evolve their reflection abilities over time.
 
-Three principal use cases of reflection across languages and paradigms are:
+Reflection involves the ability to **reify** (ie. make explicit) otherwise-implicit elements of a program. These elements can be either static program elements like classes, methods, or expressions, or dynamic elements like the current continuation or execution events such as method invocations and field accesses. One usually distinguishes between compile-time and runtime reflection depending on when the reflection process is performed. **Compile-time reflection** is a powerful way to develop program transformers and generators, while **runtime reflection** is typically used to adapt the language semantics or to support very late binding between software components.
 
-1. **Runtime Reflection**. The ability to inspect and invoke runtime types and their members.
-2. **Compile-time Reflection**. The ability to access and manipulate abstract syntax trees at compile time.
-3. **Reification**. The generation of abstract syntax trees at runtime in the case of (1), or at compile time in the case of (2).
+Until 2.10, Scala has not had any reflection capabilities of its own. Instead, one could use part of the Java reflection API, namely that dealing with providing the ability to dynamically inspect classes and objects and access their members. However, many Scala-specific elements are unrecoverable under standalone Java reflection, which only exposes Java elements (no functions, no traits) and types (no existential, higher-kinded, path-dependent and abstract types). In addition, Java reflection is also unable to recover runtime type info of Java types that are generic at compile-time; a restriction that carried through to runtime reflection on generic types in Scala.
 
-Until 2.10, Scala has not had any reflection capabilities of its own. Instead,
-one could use Java reflection which provided a very limited subset of runtime
-reflection capabilities from point (1) above. However, many Scala-specific types are
-simply unrecoverable under standalone Java reflection; including info about
-runtime existential, higher-kinded, path-dependent and abstract types. In
-addition to these Scala-specific types, Java reflection is also unable to
-recover runtime type info of Java types that are generic at compile-time; a
-restriction that carried through to runtime reflection on generic types in
-Scala.
+In Scala 2.10, a new reflection library was introduced not only to address the shortcomings of Java’s runtime reflection on Scala-specific and generic types, but to also add a more powerful toolkit of general reflective capabilities to Scala. Along with full-featured runtime reflection for Scala types and generics, Scala 2.10 also ships with compile-time reflection capabilities, in the form of [macros]({{site.baseurl }}/overviews/macros/overview.html), as well as the ability to reify Scala expressions into abstract syntax trees.
 
-In Scala 2.10, a new reflection library was introduced not only to address the shortcomings
-of Java's runtime reflection on Scala-specific and generic types, but to also
-add a more powerful toolbox of general reflective capabilities to Scala. Along
-with full-featured runtime reflection for Scala types and generics (1), Scala 2.10 also
-ships with compile-time reflection capabilities, in the form of
-[macros]({{site.baseurl }}/overviews/macros/overview.html) (2), as well as the
-ability to *reify* Scala expressions into abstract syntax trees (3).
 
 ## Runtime Reflection
 
