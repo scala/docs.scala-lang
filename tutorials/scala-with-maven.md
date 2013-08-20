@@ -153,7 +153,7 @@ By default the jar created by the Scala Maven Plugin doesn't include a `Main-Cla
         </build>
     </project>
 
-After adding this, `mvn package` will also create `[artifactId]-[version]-jar-with-dependencies.jar` under `target`.
+After adding this, `mvn package` will also create `[artifactId]-[version]-jar-with-dependencies.jar` under `target`. *Note: this will also copy the Scala library into your Jar. This is normal. Be careful that your dependencies use the same version of Scala, or you will quickly end up with a massive Jar.*
 
 ### Useful commands
 - `mvn dependency:copy-dependencies`: copy all libraries and dependencies to the `target/dependency` folder
@@ -161,17 +161,37 @@ After adding this, `mvn package` will also create `[artifactId]-[version]-jar-wi
 - `mvn package`: compile, run tests, and create jar
 
 ### Integration with Eclipse
-There are instructions at the [Scala Maven Plugin FAQs][23], but I took the lazy route with manually linking the source folder and dependencies. It's working fine for me, but you may want to invest more time into the "official" approach if you're working on a medium-large project.
+There are instructions at the [Scala Maven Plugin FAQs][23], but I thought I'd expand a bit. The [maven-eclipse-plugin][33] is a core plugin (all plugins prefixed with "maven" are, and are available by default) to generate Eclipse configuration files. However, this plugin does not know about our new Scala source files. We'll be using the [build-helper-maven-plugin][34] to add new source folders:
 
-1. Install the [Scala IDE for Eclipse][24]
-2. Open the Scala perspective and create a new Scala project
-3. (Save the project in the default location/your workspace --- not in your project folder, especially if you're using a VCS)
-4. Hit "Next"
-5. Click "Link additional source" and find your project `src` folder. In the dialog, you'll have to name this linked source folder something else, such as `src-repo` (I couldn't figure out how to delete the default source folder, but maybe you can)
-6. Under "Libraries", click "Add external JARs..." and add junit, scalatest, and specs2, plus any dependencies you added
-7. Click "Finish"
+    ...
+    <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <executions>
+            <execution>
+                <id>add-source</id>
+                <phase>generate-sources</phase>
+                <goals>
+                    <goal>add-source</goal>
+                </goals>
+                <configuration>
+                    <sources>
+                        <source>src/main/scala</source>
+                    </sources>
+                </configuration>
+            </execution>
+        </executions>
+    </plugin>
+    ...
 
-You won't be able to run from Eclipse without classes/objects that extend [`scala.App`][25]. However, [this is only good for debugging purposes][26]. In the mean time I've just been packaging and running the jar each time.
+After adding that to your `pom.xml`:
+
+1. Run `mvn eclipse:eclipse` - this generates the Eclipse project files (which are already ignored by our archetype's `.gitignore`)
+2. Run `mvn -Dv=eclipse.workspace="path/to/your/eclipse/workspace" eclipse:configure-workspace` - this adds an `M2_REPO` classpath variable to Eclipse
+3. Run `mvn package` to ensure you have all the dependencies in your local Maven repo
+4. In Eclipse, under "File" choose "Import..." and find your project folder
+
+In Eclipse, you can only run classes/objects that extend [`scala.App`][25]. However, [this is only good for debugging purposes][26]. In the mean time I've just been packaging and running the jar each time. If you find a better way, feel free to [contribute][32]!
 
 ## Adding Dependencies
 The first thing I do is look for "Maven" in the project page. For example, Google's [Guava] page includes [Maven Central links][28]. As you can see in the previous link, The Central Repository conveniently includes the snippet you have to add to your `pom.xml` on the left sidebar.
@@ -219,3 +239,6 @@ I'm not going to explain all of Maven in this tutorial (though I hope to add mor
 [29]: https://github.com/scopt/scopt
 [30]: http://search.maven.org/#search%7Cga%7C1%7Cscopt
 [31]: http://mvnrepository.com
+[32]: http://docs.scala-lang.org/contribute.html
+[33]: http://maven.apache.org/plugins/maven-eclipse-plugin/
+[34]: http://mojo.codehaus.org/build-helper-maven-plugin/
