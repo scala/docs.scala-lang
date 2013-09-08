@@ -64,7 +64,7 @@ title: def マクロ
 
 ### 多相的なマクロ
 
-マクロ定義とマクロ実装の両方ともジェネリックにすることができる。もしマクロ実装に型パラメータがあれば、マクロ定義の本文において実際の型引数が明示的に渡される必要がある。実装内での型パラメータは context bounds の `TypeTag`　と共に宣言することができる。その場合、適用サイトでの実際の型引数を記述した型タグがマクロの展開時に一緒に渡される。
+マクロ定義とマクロ実装の両方ともジェネリックにすることができる。もしマクロ実装に型パラメータがあれば、マクロ定義の本文において実際の型引数が明示的に渡される必要がある。実装内での型パラメータは context bounds の `WeakTypeTag`　と共に宣言することができる。その場合、適用サイトでの実際の型引数を記述した型タグがマクロの展開時に一緒に渡される。
 
 以下のコードはマクロ実装 `QImpl.map` を参照するマクロ定義 `Queryable.map` を宣言する:
 
@@ -73,7 +73,7 @@ title: def マクロ
     }
 
     object QImpl {
-      def map[T: c.TypeTag, U: c.TypeTag]
+      def map[T: c.WeakTypeTag, U: c.WeakTypeTag]
              (c: Context)
              (p: c.Expr[T => U]): c.Expr[Queryable[U]] = ...
     }
@@ -85,7 +85,7 @@ title: def マクロ
 を考える。この呼び出しは以下の reflective なマクロ呼び出しに展開される。
 
     QImpl.map(c)(<[ s => s.length ]>)
-       (implicitly[TypeTag[String]], implicitly[TypeTag[Int]])
+       (implicitly[WeakTypeTag[String]], implicitly[WeakTypeTag[Int]])
 
 ## 完全な具体例
 
