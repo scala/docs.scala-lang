@@ -224,6 +224,7 @@ Scala コードの生成については[リフレクションの概要](http://d
 <ol>
 <li>デバッグ設定のクラスパスに Scala home の lib ディレクトリ内の全て (!) のライブラリを追加する。(これは、<code>scala-library.jar</code>、<code>scala-reflect.jar</code>、そして <code>scala-compiler.jar</code> の jar ファイルを含む。</li>
 <li><code>scala.tools.nsc.Main</code> をエントリーポイントに設定する。</li>
+<li>JVM のシステムプロパティに <code>-Dscala.usejavacp=true</code> を渡す (とても重要!)</li>
 <li>コンパイラのコマンドラインの引数を <code>-cp &lt;マクロのクラスへのパス&gt; Test.scala</code></li> に設定する。ただし、<code>Test.scala</code> は展開されるマクロの呼び出しを含むテストファイルとする。
 </ol>
 
