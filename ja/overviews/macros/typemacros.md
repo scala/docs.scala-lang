@@ -4,9 +4,6 @@ language: ja
 
 disqus: true
 
-partof: macros
-num: 3
-outof: 7
 title: 型マクロ
 ---
 <a href="/ja/overviews/macros/paradise.html"><span class="label important" style="float: right;">MACRO PARADISE</span></a>

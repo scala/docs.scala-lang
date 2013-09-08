@@ -1,13 +1,13 @@
 ---
 layout: overview-large
-title: Use Cases
 
+language: ja
 disqus: true
 
 partof: macros
 num: 2
 outof: 9
-languages: [ja]
+title: ユースケース
 ---
 
 <span class="label warning" style="float: right;">EXPERIMENTAL</span>

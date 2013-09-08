@@ -1,13 +1,13 @@
 ---
 layout: overview-large
-title: Macro Annotations
 
+language: ja
 disqus: true
 
 partof: macros
 num: 7
 outof: 9
-languages: [ja]
+title: マクロアノテーション
 ---
 <span class="label important" style="float: right;">MACRO PARADISE</span>
 

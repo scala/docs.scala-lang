@@ -5,8 +5,8 @@ language: ja
 disqus: true
 
 partof: macros
-num: 6
-outof: 7
+num: 4
+outof: 9
 title: マクロバンドル
 ---
 <span class="label important" style="float: right;">MACRO PARADISE</span>

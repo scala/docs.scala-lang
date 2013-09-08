@@ -5,8 +5,8 @@ language: ja
 disqus: true
 
 partof: macros
-num: 1
-outof: 1
+num: 3
+outof: 9
 title: def マクロ
 ---
 <span class="label warning" style="float: right;">EXPERIMENTAL</span>

@@ -4,9 +4,6 @@ language: ja
 
 disqus: true
 
-partof: macros
-num: 7
-outof: 7
 title: 型推論補助マクロ
 ---
 <span class="label important" style="float: right;">MACRO PARADISE</span>
