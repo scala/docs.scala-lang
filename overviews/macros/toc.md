@@ -7,6 +7,7 @@ disqus: true
 partof: macros
 num: 1
 outof: 9
+languages: [ja]
 ---
 
 1. [Use Cases](/overviews/macros/usecases.html)
