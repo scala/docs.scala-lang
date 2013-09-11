@@ -14,13 +14,14 @@ title: 準クォート
 **Eugene Burmako 著**<br>
 **Eugene Yokota 訳**
 
-準クォート (quasiquote) はマクロパラダイスと呼ばれているオフィシャル Scala リポジトリ内の実験的なブランチに含まれるリリース前の機能だ。[マクロパラダイス](/ja/overviews/macros/paradise.html)ページの説明にしたがってナイトリービルドをダウンロードしてほしい。
+準クォート (quasiquote) は 2.11.0-M4 以降の Scala 2.11 のマイルストーン版から含まれる機能だ。Scala 2.10 からもマクロパラダイスプラグインを使うことによって利用可能だ。詳細は[マクロパラダイス](/ja/overviews/macros/paradise.html)ページの説明にしたがってコンパイラプラグインをダウンロードしてほしい。
 
 ## 直観
 
-あるクラスかオブジェクトのテンプレートを受け取り、テンプレート内の全てのメソッドを複製して `future` にラッピングされた非同期版を定義する `Lifter` [型マクロ](/ja/overviews/macros/typemacros.html)を考える。
+例として、あるクラスかオブジェクトを受け取り、その全てのメソッドを `future` でラッピングした非同期版の複製を作る `async` という[マクロアノテーション](/ja/overviews/macros/annotations.html)を考える。
 
-    class D extends Lifter {
+    @async
+    class D {
       def x = 2
       // def asyncX = future { 2 }
     }
@@ -62,7 +63,7 @@ title: 準クォート
 
 ## 詳細
 
-準クォートは `scala.reflect.api.Universe` cake の一部として実装されているため、マクロから準クォートを使うには `import c.universe._` とするだけでいい。公開されている API は `q` と `tq` [文字列補間子](/ja/overviews/core/string-interpolation.html)を提供し (値と型の準クォートに対応する)、構築と分解の両方をサポートする。つまり、普通のコードとパターンケースの左辺値において使うことができる。
+準クォートは `scala.reflect.api.Universe` cake の一部として実装されているため、マクロから準クォートを使うには `import c.universe._` とするだけでいい。公開されている API は `q`、`tq`、`cq`、そして `pq` [文字列補間子](/ja/overviews/core/string-interpolation.html)を提供し (値と型の準クォートに対応する)、構築と分解の両方をサポートする。つまり、普通のコードとパターンケースの左辺値において使うことができる。
 
 <table>
 <thead>
@@ -71,6 +72,8 @@ title: 準クォート
 <tbody>
 <tr><td><code>q</code></td><td>値構文木</td><td><code>q"future{ $body }"</code></td><td><code>case q"future{ $body }" =&gt;</code></td></tr>
 <tr><td><code>tq</code></td><td>型構文木</td><td><code>tq"Future[$t]"</code></td><td><code>case tq"Future[$t]" =&gt;</code></td></tr>
+<tr><td><code>cq</code></td><td>ケース</td><td><code>cq"x =&gt; x"</code></td><td><code>case cq"$pat =&gt; ${_}" =&gt;</code></td></tr>
+<tr><td><code>pq</code></td><td>パターン</td><td><code>pq"xs @ (hd :: tl)"</code></td><td><code>case pq"$id @ ${_}" =&gt;</code></td></tr>
 </tbody>
 </table>
 
@@ -98,7 +101,7 @@ title: 準クォート
 
 ### Liftable
 
-非構文木のスプライシングを簡易化するために、準クォートは `Lifttable` 型クラスを提供して、値がスプライスされたときにどのように構文木に変換されるかを定義する。プリミティブ型と文字列を `Literal(Constant(...))` にラッピングする `Liftable` インスタンスは提供されている。簡単なケースクラスやリストのための独自のインスタンスを定義することをお勧めする (また、[SI-6839](https://issues.scala-lang.org/browse/SI-6839) を参照のこと)。
+非構文木のスプライシングを簡易化するために、準クォートは `Lifttable` 型クラスを提供して、値がスプライスされたときにどのように構文木に変換されるかを定義する。プリミティブ型と文字列を `Literal(Constant(...))` にラッピングする `Liftable` インスタンスは提供されている。簡単なケースクラスやリストのための独自のインスタンスを定義することをお勧めする。
 
     trait Liftable[T] {
       def apply(universe: api.Universe, value: T): universe.Tree

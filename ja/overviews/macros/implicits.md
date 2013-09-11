@@ -11,43 +11,35 @@ title: implicit マクロ
 ---
 <span class="label warning" style="float: right;">EXPERIMENTAL</span>
 
-**Eugene Burmako**
+**Eugene Burmako 著**<br>
+**Eugene Yokota 訳**
 
-Implicit macros are shipped as an experimental feature of Scala since version 2.10.0, including the upcoming 2.11.0,
-but require a critical bugfix in 2.10.2 to become fully operations.
-An extension to implicit macros, called fundep materialization, is in the works
-targetting both [macro paradise](/overviews/macros/paradise.html) and Scala 2.11.0-M5.
+implicit マクロは Scala 2.10.0 以降にある実験的機能だが、クリティカルなバグ修正があったため 2.10.2 以降で完全に動作するようになった。2.11.0 にも載る予定だ。
+implicit マクロをさらに拡張した関数従属性の具現化という機能が現在作られており、これは[マクロパラダイス](/overviews/macros/paradise.html)と Scala 2.11.0-M5 を予定している。
 
-## Implicit macros
+## implicit マクロ
 
-### Type classes
+### 型クラス
 
-The example below defines the `Showable` type class, which abstracts over a prettyprinting strategy.
-The accompanying `show` method takes two parameters: an explicit one, the target, and an implicit one,
-which carries the instance of `Showable`.
+以下の例ではデータの表示を抽象化する `Showable` という型クラスを定義する。
+`show` メソッドは、明示的なパラメータとしてターゲット、そして暗黙のパラメータとして `Showable` のインスタンスという 2つのパラメータを受け取る:
 
     trait Showable[T] { def show(x: T): String }
     def show[T](x: T)(implicit s: Showable[T]) = s.show(x)
 
-After being declared like that, `show` can be called with only the target provided, and `scalac`
-will try to infer the corresponding type class instance from the scope of the call site based
-on the type of the target. If there is a matching implicit value in scope, it will be inferred
-and compilation will succeed, otherwise a compilation error will occur.
+このように宣言された後、`show` はターゲットのみを渡すことで呼び出すことができる。
+もう一つのパラメータは `scalac` が call site のスコープ内からターゲットの型に対応する型クラスのインスタンスを導き出そうとする。もしスコープ内にマッチする暗黙の値があれば、それが推論されコンパイルは成功する。見つからなければ、コンパイルエラーが発生する。
 
     implicit object IntShowable { def show(x: Int) = x.toString }
     show(42) // "42"
     show("42") // compilation error
 
-### Proliferation of boilerplate
+### 蔓延するボイラープレート
 
-One of the well-known problems with type classes, in general and in particular in Scala,
-is that instance definitions for similar types are frequently very similar, which leads to
-proliferation of boilerplate code.
+特に Scala における型クラスにおいてよく知られている問題の一つとして似た型のインスタンス定義が往々にして非常に似通ったものになりやすく、ボイラープレートコードの蔓延につながることが挙げられる。
 
-For example, for a lot of objects prettyprinting means printing the name of their class
-and the names and values of the fields. Even though this and similar recipes are very concise,
-in practice it is often impossible to implement them concisely, so the programmer is forced
-to repeat himself over and over again.
+例えば、多くのオブジェクトの場合において整形表示はクラス名を表示した後フィールドを表示するという形になる。
+これは簡潔な方法だが、実際にやってみると簡潔に実装することが大変難しく、繰り返し似たコードを書くはめになる。
 
     class C(x: Int)
     implicit def cShowable = new Showable[C] {
@@ -59,34 +51,23 @@ to repeat himself over and over again.
       def show(d: D) = "D(" + d.x + ")"
     }
 
-This very use case can be implemented with runtime reflection,
-but oftentimes reflection is either too imprecise because of erasure or
-too slow because of the overhead it imposes.
+このユースケースに限ると実行時リフレクションを用いて実装することができるが、リフレクションは往々にして型消去のために不正確すぎるか、オーバーヘッドのために遅すぎることが多い。
 
-There also exist generic programming approaches based on type-level programming, for example,
-[the `TypeClass` type class technique](http://typelevel.org/blog/2013/06/24/deriving-instances-1.html) introduced by Lars Hupel,
-but they also suffer a performance hit in comparison with manually written type class instances.
+Lars Hupel 氏が紹介した [`TypeClass` 型クラステクニック](http://typelevel.org/blog/2013/06/24/deriving-instances-1.html)のような型レベルプログラミングに基づいたジェネリックプログラミングという方法もあるが、やはりこれも手書きの型クラスのインスタンスに比べると性能が劣化するのが現状だ。
 
-### Implicit materializers
+### implicit の具現化
 
-With implicit macros it becomes possible to eliminate the boilerplate by completely removing
-the need to manually define type class instances, without sacrificing performance.
+implicit マクロを用いることで、型クラスのインスタンスを手書きで定義する必要を無くし、性能を落とさずにボイラプレートを一切無くすことができる。
 
     trait Showable[T] { def show(x: T): String }
     object Showable {
       implicit def materializeShowable[T]: Showable[T] = macro ...
     }
 
-Instead of writing multiple instance definitions, the programmer defines a single `materializeShowable` macro
-in the companion object of the `Showable` type class. Members of a companion object belong to implicit scope
-of an associated type class, which means that in cases when the programmer does not provide an explicit instance of `Showable`,
-the materializer will be called. Upon being invoked, the materializer can acquire a representation of `T` and
-generate the appropriate instance of the `Showable` type class.
+複数のインスタンス定義を書く代わりに、プログラマは、`Showable` 型クラスのコンパニオンオブジェクト内に `materializeShowable` マクロを一度だけ定義する。これにより `Showable` のインスタンスが明示的に提供されなければ materializer が呼び出される。呼び出された materializer は `T` の型情報を取得して、適切な `Showable` 型クラスのインスタンスを生成する。
 
-A nice thing about implicit macros is that they seamlessly meld into the pre-existing infrastructure of implicit search.
-Such standard features of Scala implicits as multi-parametricity and overlapping instances are available to
-implicit macros without any special effort from the programmer. For example, it is possible to define a non-macro
-prettyprinter for lists of prettyprintable elements and have it transparently integrated with the macro-based materializer.
+implicit マクロの長所は、それが既存の implicit 検索のインフラに自然と溶け込むことだ。
+Scala implicit の標準機能である複数のパラメータや重複したインスタンスなどもプログラマ側は特に何もせずに implicit マクロから使うことができる。例えば、整形表示可能な要素を持つリストのためのマクロを使わない整形表示を実装して、それをマクロベースの具現化に統合させるといったことも可能だ。
 
     implicit def listShowable[T](implicit s: Showable[T]) =
       new Showable[List[T]] {
@@ -95,17 +76,15 @@ prettyprinter for lists of prettyprintable elements and have it transparently in
     }
     show(List(42)) // prints: List(42)
 
-In this case, the required instance `Showable[Int]` would be generated by the materializing macro defined above.
-Thus, by making macros implicit, they can be used to automate the materializtion of type class instances,
-while at the same time seamlessly integrating with non-macro implicits.
+この場合、必須のインスタンスである `Showable[Int]` は先に定義した具現化マクロによって生成される。つまり、マクロを implicit にすることで型クラスインスタンスの具現化を自動化すると同時にマクロを使わない implicit もシームレスに統合することができる。
 
-## Fundep materialization
+<a name="fundep_materialization">&nbsp;</a>
 
-### Problem statement
+## 関数従属性の具現化
 
-The use case, which gave birth to fundep materializers, was provided by Miles Sabin and his [shapeless](https://github.com/milessabin/shapeless) library. In the old version of shapeless, before 2.0.0, Miles has defined the `Iso` trait,
-which represents isomorphisms between types. `Iso` can be used to map cases classes to tuples and vice versa
-(actually, shapeless used Iso's to convert between case classes and HLists, but for simplicity let's use tuples).
+### 動機となった具体例
+
+関数従属性 (functional dependency; fundep) の具現化が生まれるキッカケとなったのは Miles Sabin さんと氏の [shapeless](https://github.com/milessabin/shapeless) ライブラリだ。2.0.0 以前のバージョンの shapeless において Miles は型間の同型射 (isomorphism) を表す `Iso` トレイトを定義していた。例えば `Iso` を使ってケースクラスとタプル間を投射することができる (実際には shapeless は `Iso` を用いてケースクラスと HList の変換を行うが、話を簡略化するためにここではタプルを用いる)。
 
     trait Iso[T, U] {
       def to(t: T) : U
@@ -119,26 +98,19 @@ which represents isomorphisms between types. `Iso` can be used to map cases clas
     tp: (Int, String, Boolean)
     tp == (23, "foo", true)
 
-If we try to write an implicit materializer for `Iso`, we will run into a wall.
-When typechecking applications of methods like `foo`, scalac has to infer the type argument `L`,
-which it has no clue about (and that's no wonder, since this is domain-specific knowledge). As a result, when we define an implicit
-macro, which synthesizes `Iso[C, L]`, scalac will helpfully infer `L` as `Nothing` before expanding the macro and then everything will crumble.
+ここで我々は `Iso` のための implicit materializer を書こうとしたが、壁にあたってしまった。
+`conv` のような関数の適用を型検査するときに scala は型引数の `L` を推論しなければいけないが、お手上げ状態になってしまう (ドメインに特化した知識なので仕方がない)。
+結果として、`Iso[C, L]` を合成する implicit マクロを定義しても、scalac はマクロ展開時に `L` を `Nothing` だと推論してしまい、全てが崩れてしまう。
 
-### Proposed solution
+### 提案
 
-As demonstrated by [https://github.com/scala/scala/pull/2499](https://github.com/scala/scala/pull/2499), the solution to the outlined
-problem is extremely simple and elegant. <span class="label success">NEW</span> It is currently being implemented
-both for [macro paradise](/overviews/macros/paradise.html) and Scala 2.11.0-M5.
+[https://github.com/scala/scala/pull/2499](https://github.com/scala/scala/pull/2499) が示すとおり、上記の問題の解法は非常にシンプルでエレガントなものだ。<span class="label success">NEW</span> 現在これは [マクロパラダイス](/ja/overviews/macros/paradise.html) と Scala 2.11.0-M5 の両方で実装されている。 
 
-In 2.10 we don't allow macro applications to expand until all their type arguments are inferred. However we don't have to do that.
-The typechecker can infer as much as it possibly can (e.g. in the running example `C` will be inferred to `Foo` and
-`L` will remain uninferred) and then stop. After that we expand the macro and then proceed with type inference using the type of the
-expansion to help the typechecker with previously undetermined type arguments.
+Scala 2.10 においてはマクロの適用は全ての型引数が推論されるまでは展開されない。しかし、そうする必要は特に無い。
+タイプチェッカはできる所まで推論して (この例の場合、`C` は `Foo` と推論され、`L` は未定となる) そこで一旦停止する。その後マクロを展開して、展開された型を補助にタイプチェッカは再び以前未定だった型引数の型検査を続行する。
 
-An illustration of this technique in action can be found in our [files/run/t5923c](https://github.com/scalamacros/kepler/tree/7b890f71ecd0d28c1a1b81b7abfe8e0c11bfeb71/test/files/run/t5923c) tests.
-Note how simple everything is. The `materializeIso` implicit macro just takes its first type argument and uses it to produce an expansion.
-We don't need to make sense of the second type argument (which isn't inferred yet), we don't need to interact with type inference -
-everything happens automatically.
+このテクニックを具体例で例示したものとして [files/run/t5923c](https://github.com/scalamacros/kepler/tree/7b890f71ecd0d28c1a1b81b7abfe8e0c11bfeb71/test/files/run/t5923c) テストがある。
+全てがすごくシンプルになっていることに注意してほしい。implicit マクロの `materializeIso` は最初の型引数だけを使って展開コードを生成する。
+型推論は自動的に行われるので、(推論することができなかった) 2つ目の型引数のことは分からなくてもいい。
 
-Please note that there is [a funny caveat](https://github.com/scalamacros/kepler/blob/7b890f71ecd0d28c1a1b81b7abfe8e0c11bfeb71/test/files/run/t5923a/Macros_1.scala)
-with Nothings that we plan to address later.
+ただし、`Nothing` に関してはまだ[おかしい制限](https://github.com/scalamacros/kepler/blob/7b890f71ecd0d28c1a1b81b7abfe8e0c11bfeb71/test/files/run/t5923a/Macros_1.scala)があるので注意する必要がある。

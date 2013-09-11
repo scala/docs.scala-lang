@@ -11,30 +11,32 @@ title: マクロアノテーション
 ---
 <span class="label important" style="float: right;">MACRO PARADISE</span>
 
-**Eugene Burmako**
+**Eugene Burmako 著**<br>
+**Eugene Yokota 訳**
 
-Macro annotations are only available in Scala 2.10 with the macro paradise plugin.
-Their inclusion in Scala 2.11 is possible, but our roadmap in this regard is still unclear.
-Follow the instructions at the ["Macro Paradise"](/overviews/macros/paradise.html) page to download and use our compiler plugin.
+マクロアノテーションは現在マクロパラダイスプラグインを使った Scala 2.10 からのみ利用可能だ。
+Scala 2.11 にこの機能が含まれる可能性はあるが、この件に関してのロードマップははっきりしてない。
+[マクロパラダイス](/ja/overviews/macros/paradise.html)ページの説明にしたがってコンパイラプラグインをダウンロードしてほしい。
 
-## Call for feedback
+## コメント募集中
 
-This implementation of macro annotations is experimental (hence the snapshot suffix in the current `2.0.0-SNAPSHOT` version
-of macro-paradise) and exists to provide a preview and initiate a discussion that will culminate in submitting
-a Scala improvement proposal for Scala 2.11 or 2.12. Please check whether it handles your code generation needs,
-so that I can refine it appropriately. If something doesn't work, let me know <a href="https://twitter.com/#!/xeno_by">on Twitter</a>.
+マクロアノテーションの現行の実装は実験的なものであり (それ故、現行のマクロパラダイスのバージョンも `2.0.0-SNAPSHOT` というスナップショット扱いされている)、今後の Scala 2.11 もしくは 2.12 への Scala improvement proposal を提出する上でのプレビューそして「たたき台」としての役割を果たすことを目的としている。
+コード生成のニーズを満たすことができるか是非試してみて、何かうまくいかない点があれば <a href="https://twitter.com/#!/xeno_by">Twitter</a> で著者に報告してほしい。
 
-## Walkthrough
+## 一巡り
 
-Macro annotations bring textual abstraction to the level of definitions. Annotating any top-level or nested definition with something
-that Scala recognizes as a macro will let it expand, possibly into multiple members. Unlike in the previous versions of macro paradise,
-macro annotations in 2.0 are done right in the sense that they: 1) apply not just to classes and objects, but to arbitrary definitions,
-2) allow expansions of classes to modify or even create companion objects.
-This opens a number of new possibilities in code generation land.
+マクロアノテーションは定義レベルでテキスト抽象化を実現する。Scala がマクロだと認識可能な定義であればトップレベルでも入れ子の定義でも、このアノテーションを付けることで (1つまたは複数の) メンバに展開させることができる。マクロパラダイスの以前のバージョンと比較して、2.0 のマクロパラダイスは以下の点を改善した:
 
-In this walkthrough we will write a silly, but very useful macro that does nothing except for logging the annottees.
-As a first step, we define an annotation that inherits `StaticAnnotation` and defines a `macroTransform` macro.
-(Note the triple question mark body of the macro. Did you know that you can do that starting from 2.10.2?)
+<ol>
+<li>クラスやオブジェクトだけではなく任意の定義に適用できるようになった。</li>
+<li>クラスを展開してコンパニオンオブジェクトを変更もしくは新規に生成できるようになった。</li>
+</ol>
+
+これでコード生成に関して様々な可能性が広がったと言える。
+
+この項では、役に立たないけども例としては便利な、注釈対象をログに書き込むこと以外は何もしないマクロを書いてみよう。
+最初のステップは、`StaticAnnotation` を継承して、`macroTransform` マクロを定義する。
+(この本文の `???` は 2.10.2 以降から使えるものだ。)
 
     import scala.reflect.macros.Context
     import scala.language.experimental.macros
@@ -44,30 +46,21 @@ As a first step, we define an annotation that inherits `StaticAnnotation` and de
       def macroTransform(annottees: Any*) = macro ???
     }
 
-The `macroTransform` macro is supposed to take a list of untyped annottees (in the signature their type is represented as `Any`
-for the lack of better notion in Scala) and produce one or several results (a single result can be returned as is, multiple
-results have to be wrapped in a `Block` for the lack of better notion in the reflection API).
+`macroTransform` マクロは型指定の無い (untyped) 注釈対象を受け取り (Scala には他に記法が無いためこのシグネチャの型は `Any` となる)、単数もしくは複数の結果を生成する (単数の結果はそのまま返せるが、複数の結果の場合はリフレクション API に他に良い記法が無いため `Block` にラッピングして返す)。
 
-At this point you might be wondering. A single annottee and a single result is understandable, but what is the many-to-many
-mapping supposed to mean? There are several rules guiding the process:
+この時点で、一つの注釈対象に対して単一の結果は分かるが、複数対複数のマッピングがどのようになるのか疑問に思っている方もいるだろう。この過程はルールによって決定される:
 
-1. If a class is annotated and it has a companion, then both are passed into the macro. (But not vice versa - if an object
-   is annotated and it has a companion class, only the object itself is expanded).
-1. If a parameter of a class, method or type member is annotated, then it expands its owner. First comes the annottee,
-   then the owner and then its companion as specified by the previous rule.
-1. Annottees can expand into whatever number of trees of any flavor, and the compiler will then transparently
-   replace the input trees of the macro with its output trees.
-1. If a class expands into both a class and a module having the same name, they become companions.
-   This way it is possible to generate a companion object for a class even if that companion was not declared explicitly.
-1. Top-level expansions must retain the number of annottees, their flavors and their names, with the only exception
-   that a class might expand into a same-named class plus a same-named module, in which case they automatically become
-   companions as per previous rule.
+<ol>
+<li>あるクラスが注釈され、それにコンパニオンがある場合は、両者ともマクロに渡される。　(しかし、逆は真ではない。もしオブジェクトが注釈され、それにコンパニオンクラスがあってもオブジェクトのみが展開される)</li>
+<li>あるクラス、メソッド、もしくは型のパラメータが注釈される場合は、そのオーナーも展開される。まずは注釈対象、次にオーナー、そして上記のルールに従ってコンパニオンが渡される。</li>
+<li>注釈対象は任意の数および種類の構文木に展開することができ、コンパイラはマクロの構文木を結果の構文木に透過的に置換する。</li>
+<li>あるクラスが同じ名前を持つクラスとオブジェクトに展開する場合は、それらはコンパニオンとなる。これにより、コンパニオンが明示的に宣言されていないクラスにもコンパニオンオブジェクトを生成することができるようになる。</li>
+<li>トップレベルでの展開は注釈対象の数を、種類、および名前を保持しなくてはいけない。唯一の例外はクラスがクラスと同名のオブジェクトに展開できることだ。その場合は、上記のルールによってそれらは自動的にコンパニオンとなる。</li>
+</ol>
 
-Here's a possible implementation of the `identity` annotation macro. The logic is a bit complicated, because it needs to
-take into account the cases when `@identity` is applied to a value or type parameter. Excuse us for a low-tech solution,
-but we haven't encapsulated this boilerplate in a helper, because compiler plugins cannot easily change the standard library.
-(By the way, this boilerplate can be abstracted away by a suitable annotation macro, and we'll probably provide such a macro
-at a later point in the future).
+以下に、`identity` アノテーションマクロの実装例を示す。
+`@identity` が値か型パラメータに適用された場合のことも考慮に入れる必要があるため、ロジックは少し複雑になっている。コンパイラプラグイン側からは容易に標準ライブラリを変更できないため、このボイラープレートをヘルパー内でカプセル化できなかったため、解法がローテクになっていることは許してほしい。
+(ちなみに、このボイラープレートそのものも適切なアノテーションマクロによって抽象化できるはずなので、将来的にはそのようなマクロが提供できるかもしれない。)
 
     object identityMacro {
       def impl(c: Context)(annottees: c.Expr[Any]*): c.Expr[Any] = {
@@ -84,15 +77,32 @@ at a later point in the future).
       }
     }
 
-| Example code                                              | Printout                                                        |
-|-----------------------------------------------------------|-----------------------------------------------------------------|
-| `@identity class C`                                       | `(<empty>, List(class C))`                                      |
-| `@identity class D; object D`                             | `(<empty>, List(class D, object D))`                            |
-| `class E; @identity object E`                             | `(<empty>, List(object E))`                                    |
-| `def twice[@identity T]`<br/>`(@identity x: Int) = x * 2` | `(type T, List(def twice))`<br/>`(val x: Int, List(def twice))` |
 
-In the spirit of Scala macros, macro annotations are as untyped as possible to stay flexible and
-as typed as possible to remain useful. On the one hand, macro annottees are untyped, so that we can change their signatures (e.g. lists
-of class members). But on the other hand, the thing about all flavors of Scala macros is integration with the typechecker, and
-macro annotations are not an exceptions. During expansion we can have all the type information that's possible to have
-(e.g. we can reflect against the surrounding program or perform type checks / implicit lookups in the enclosing context).
+<table>
+<thead>
+<tr><th>コード例</th><th>表示</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>@identity class C</code></td>
+  <td><code>(&lt;empty&gt;, List(class C))</code></td>
+</tr>
+<tr>
+  <td><code>@identity class D; object D</code></td>
+  <td><code>(&lt;empty&gt;, List(class D, object D))</code></td>
+</tr>
+<tr>
+  <td><code>class E; @identity object E</code></td>
+  <td><code>(&lt;empty&gt;, List(object E))</code></td>
+</tr>
+<tr>
+  <td><code>def twice[@identity T]<br/>
+(@identity x: Int) = x * 2</code></td>
+  <td><code>(type T, List(def twice))<br/>
+(val x: Int, List(def twice))</code></td>
+</tr>
+</tbody>
+</table>
+
+Scala マクロの精神に則り、マクロアノテーションは柔軟性のために可能な限り型指定を無くし (untyped; マクロ展開前に型検査を必須としないこと)、利便性のために可能な限り型付けた (typed; マクロ展開前に利用可能な型情報を取得すること)。注釈対象は型指定が無いため、後付けでシグネチャ (例えばクラスメンバのリストなど) を変更できる。しかし、Scala マクロを書くということはタイプチェッカと統合するということであり、マクロアノテーションもそれは同じだ。そのため、マクロ展開時には全ての型情報を得ることができる
+(例えば、包囲するプログラムに対してリフレクションを使ったり、現行スコープ内から型検査を行ったり、implicit の検索を行うことができる)。

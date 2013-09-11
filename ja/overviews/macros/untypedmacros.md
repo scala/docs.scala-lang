@@ -6,12 +6,13 @@ disqus: true
 
 title: 型指定の無いマクロ
 ---
-<a href="/overviews/macros/paradise.html"><span class="label important" style="float: right;">MACRO PARADISE</span></a>
+<span class="label important" style="float: right;">OBSOLETE</span>
 
 **Eugene Burmako 著**<br>
 **Eugene Yokota 訳**
 
-型指定の無いマクロ (untyped macro) はマクロパラダイスと呼ばれているオフィシャル Scala リポジトリ内の実験的なブランチに含まれるリリース前の機能だ。[マクロパラダイス](/ja/overviews/macros/paradise.html)ページの説明にしたがってナイトリービルドをダウンロードしてほしい。
+型指定の無いマクロ (untyped macro) は[マクロパラダイス](/ja/overviews/macros/paradise.html)の以前のバージョンから利用可能だったが、マクロパラダイス 2.0 ではサポートされなくなった。
+[the paradise 2.0 announcement](http://scalamacros.org/news/2013/08/05/macro-paradise-2.0.0-snapshot.html) に説明と移行のための戦略が書かれている。
 
 ## 直観
 
