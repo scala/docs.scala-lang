@@ -5,8 +5,8 @@ language: ja
 disqus: true
 
 partof: macros
-num: 1
-outof: 1
+num: 3
+outof: 9
 title: def マクロ
 ---
 <span class="label warning" style="float: right;">EXPERIMENTAL</span>
@@ -14,7 +14,10 @@ title: def マクロ
 **Eugene Burmako 著**<br>
 **Eugene Yokota 訳**
 
-## 直感
+def マクロは Scala のバージョン 2.10.0 より追加された実験的機能で、最新の 2.10.2 や次期の 2.11.0 にも含まれる。
+def マクロ機能の一部が、徹底した仕様が書かれることを条件に 2.12 によって安定化することが仮予定されている。
+
+## 直観
 
 以下がマクロ定義のプロトタイプだ:
 
@@ -64,7 +67,7 @@ title: def マクロ
 
 ### 多相的なマクロ
 
-マクロ定義とマクロ実装の両方ともジェネリックにすることができる。もしマクロ実装に型パラメータがあれば、マクロ定義の本文において実際の型引数が明示的に渡される必要がある。実装内での型パラメータは context bounds の `TypeTag`　と共に宣言することができる。その場合、適用サイトでの実際の型引数を記述した型タグがマクロの展開時に一緒に渡される。
+マクロ定義とマクロ実装の両方ともジェネリックにすることができる。もしマクロ実装に型パラメータがあれば、マクロ定義の本文において実際の型引数が明示的に渡される必要がある。実装内での型パラメータは context bounds の `WeakTypeTag`　と共に宣言することができる。その場合、適用サイトでの実際の型引数を記述した型タグがマクロの展開時に一緒に渡される。
 
 以下のコードはマクロ実装 `QImpl.map` を参照するマクロ定義 `Queryable.map` を宣言する:
 
@@ -73,7 +76,7 @@ title: def マクロ
     }
 
     object QImpl {
-      def map[T: c.TypeTag, U: c.TypeTag]
+      def map[T: c.WeakTypeTag, U: c.WeakTypeTag]
              (c: Context)
              (p: c.Expr[T => U]): c.Expr[Queryable[U]] = ...
     }
@@ -85,7 +88,7 @@ title: def マクロ
 を考える。この呼び出しは以下の reflective なマクロ呼び出しに展開される。
 
     QImpl.map(c)(<[ s => s.length ]>)
-       (implicitly[TypeTag[String]], implicitly[TypeTag[Int]])
+       (implicitly[WeakTypeTag[String]], implicitly[WeakTypeTag[Int]])
 
 ## 完全な具体例
 
@@ -113,7 +116,7 @@ title: def マクロ
 まずマクロは渡された書式文字列をパースする必要がある。
 マクロはコンパイル時に実行されるため、値ではなく構文木に対してはたらく。
 そのため、`printf` マクロの書式文字列のパラメータは `java.lang.String` 型のオブジェクトではなくコンパイル時リテラルとなる。
-また、`printf(get_format(), ...)`　だと `format` は文字列リテラルではなく関数の適用を表す AST であるため、以下のコードでは動作しない。任意の式に対して動作するようにマクロを修正するのは読者への練習問題とする。
+また、`printf(get_format(), ...)`　だと `format` は文字列リテラルではなく関数の適用を表す AST であるため、以下のコードでは動作しない。
 
     val Literal(Constant(s_format: String)) = format.tree
 
@@ -224,6 +227,7 @@ Scala コードの生成については[リフレクションの概要](http://d
 <ol>
 <li>デバッグ設定のクラスパスに Scala home の lib ディレクトリ内の全て (!) のライブラリを追加する。(これは、<code>scala-library.jar</code>、<code>scala-reflect.jar</code>、そして <code>scala-compiler.jar</code> の jar ファイルを含む。</li>
 <li><code>scala.tools.nsc.Main</code> をエントリーポイントに設定する。</li>
+<li>JVM のシステムプロパティに <code>-Dscala.usejavacp=true</code> を渡す (とても重要!)</li>
 <li>コンパイラのコマンドラインの引数を <code>-cp &lt;マクロのクラスへのパス&gt; Test.scala</code></li> に設定する。ただし、<code>Test.scala</code> は展開されるマクロの呼び出しを含むテストファイルとする。
 </ol>
 
