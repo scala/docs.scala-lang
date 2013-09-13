@@ -157,7 +157,7 @@ first in first out) だ。
 
 赤黒木は、ノードが「赤」か「黒」に色付けされている平衡二分木の一種だ。他の平衡二分木と同様に演算は木のサイズのログ時間内に確実に完了する。
 
-Scala は内部で赤黒木を使った不変集合と不変セットの実装を提供する。[`TreeSet`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/TreeSet.html) と [`TreeMap`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/TreeMap.html) クラスがそれだ。
+Scala は内部で赤黒木を使った不変集合と不変マップの実装を提供する。[`TreeSet`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/TreeSet.html) と [`TreeMap`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/TreeMap.html) クラスがそれだ。
 
     scala> scala.collection.immutable.TreeSet.empty[Int]
     res11: scala.collection.immutable.TreeSet[Int] = TreeSet()
