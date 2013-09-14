@@ -23,4 +23,4 @@ languages: [ja]
 | [Quasiquotes](/overviews/macros/quasiquotes.html)                                 | No                 | Yes                                                                                       | Yes          |
 | [Type macros](/overviews/macros/typemacros.html)                                  | No                 | [Discontinued](http://scalamacros.org/news/2013/08/05/macro-paradise-2.0.0-snapshot.html) | No           |
 | [Untyped macros](/overviews/macros/untypedmacros.html)                            | No                 | [Discontinued](http://scalamacros.org/news/2013/08/05/macro-paradise-2.0.0-snapshot.html) | No           |
-| [Macro annotations](/overviews/macros/annotations.html)                           | No                 | Yes                                                                                       | Maybe        |
+| [Macro annotations](/overviews/macros/annotations.html)                           | No                 | Yes                                                                                       | No           |
