@@ -33,7 +33,9 @@ will try to infer the corresponding type class instance from the scope of the ca
 on the type of the target. If there is a matching implicit value in scope, it will be inferred
 and compilation will succeed, otherwise a compilation error will occur.
 
-    implicit object IntShowable { def show(x: Int) = x.toString }
+    implicit object IntShowable extends Showable[Int] {
+      def show(x: Int) = x.toString
+    }
     show(42) // "42"
     show("42") // compilation error
 
