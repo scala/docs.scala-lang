@@ -187,7 +187,7 @@ There are instructions at the [Scala Maven Plugin FAQs][23], but I thought I'd e
 After adding that to your `pom.xml`:
 
 1. Run `mvn eclipse:eclipse` - this generates the Eclipse project files (which are already ignored by our archetype's `.gitignore`)
-2. Run `mvn -Dv=eclipse.workspace="path/to/your/eclipse/workspace" eclipse:configure-workspace` - this adds an `M2_REPO` classpath variable to Eclipse
+2. Run `mvn -Declipse.workspace="path/to/your/eclipse/workspace" eclipse:configure-workspace` - this adds an `M2_REPO` classpath variable to Eclipse
 3. Run `mvn package` to ensure you have all the dependencies in your local Maven repo
 4. In Eclipse, under "File" choose "Import..." and find your project folder
 
