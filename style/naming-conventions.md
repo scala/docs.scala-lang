@@ -257,6 +257,14 @@ letter lower-case:
     def myMethod = ...
     var myVariable
 
+If the member is final, immutable and it belongs to a package or an object, it may be considered a constant (similar to java's `static final` members) in which case the capitalization is like this:
+
+    object Container {
+        val Constant = 42
+    }
+
+Another example: `Pi` on `scala.math` package 
+
 ## Type Parameters (generics)
 
 For simple type parameters, a single upper-case letter (from the English
