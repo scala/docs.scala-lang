@@ -5,8 +5,8 @@ title: Implicit Macros
 disqus: true
 
 partof: macros
-num: 5
-outof: 9
+num: 6
+outof: 10
 languages: [ja]
 ---
 <span class="label warning" style="float: right;">EXPERIMENTAL</span>

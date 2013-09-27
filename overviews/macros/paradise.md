@@ -5,8 +5,8 @@ title: Macro Paradise
 disqus: true
 
 partof: macros
-num: 8
-outof: 9
+num: 9
+outof: 10
 languages: [ja]
 ---
 <span class="label success" style="float: right;">NEW</span>
