@@ -6,11 +6,12 @@ disqus: true
 
 partof: macros
 num: 1
-outof: 9
+outof: 10
 languages: [ja]
 ---
 
 1. [Use Cases](/overviews/macros/usecases.html)
+1. [Blackbox Vs Whitebox](/overviews/macros/blackbox-whitebox.html)
 1. [Def Macros](/overviews/macros/overview.html)
 1. [Macro Bundles](/overviews/macros/bundles.html)
 1. [Implicit Macros](/overviews/macros/implicits.html)
