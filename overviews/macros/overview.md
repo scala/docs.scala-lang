@@ -5,8 +5,8 @@ title: Def Macros
 disqus: true
 
 partof: macros
-num: 3
-outof: 9
+num: 4
+outof: 10
 languages: [ja]
 ---
 <span class="label warning" style="float: right;">EXPERIMENTAL</span>

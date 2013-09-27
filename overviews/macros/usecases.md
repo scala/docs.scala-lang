@@ -6,7 +6,7 @@ disqus: true
 
 partof: macros
 num: 2
-outof: 9
+outof: 10
 languages: [ja]
 ---
 
