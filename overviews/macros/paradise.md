@@ -37,4 +37,4 @@ to use macros):
     addCompilerPlugin("org.scala-lang.plugins" % "macro-paradise" % "2.0.0-SNAPSHOT" cross CrossVersion.full)
 
 Sources of macro paradise are available at [https://github.com/scalamacros/paradise](https://github.com/scalamacros/paradise).
-There are branches that support the latest stable 2.10.2, the upcoming 2.10.3, the upcoming 2.11.0 and Scala virtualized.
+There are branches that support the latest stable 2.10.3, the upcoming 2.10.4, the upcoming 2.11.0 and Scala virtualized.
