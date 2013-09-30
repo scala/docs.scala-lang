@@ -36,5 +36,15 @@ to use macros):
     resolvers += Resolver.sonatypeRepo("snapshots")
     addCompilerPlugin("org.scala-lang.plugins" % "macro-paradise" % "2.0.0-SNAPSHOT" cross CrossVersion.full)
 
+To use macro paradise in Maven follow the instructions provided at Stack Overflow on the page ["Enabling the macro-paradise Scala compiler plugin in Maven projects"](http://stackoverflow.com/questions/19086241/enabling-the-macro-paradise-scala-compiler-plugin-in-maven-projects) (also make sure to add the dependency on the Sonatype snapshots repository and `scala-reflect.jar`).
+
+    <compilerPlugins>
+      <compilerPlugin>
+        <groupId>org.scala-lang.plugins</groupId>
+        <artifactId>macro-paradise_2.10.3</artifactId>
+        <version>2.0.0-SNAPSHOT</version>
+      </compilerPlugin>
+    </compilerPlugins>
+
 Sources of macro paradise are available at [https://github.com/scalamacros/paradise](https://github.com/scalamacros/paradise).
 There are branches that support the latest stable 2.10.3, the upcoming 2.10.4, the upcoming 2.11.0 and Scala virtualized.
