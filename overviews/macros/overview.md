@@ -13,7 +13,7 @@ languages: [ja]
 
 **Eugene Burmako**
 
-Def macros are shipped as an experimental feature of Scala since version 2.10.0, including the latest 2.10.2 and the upcoming 2.11.0.
+Def macros are shipped as an experimental feature of Scala since version 2.10.0, including the latest 2.10.3 and the upcoming 2.11.0.
 A subset of def macros, pending a thorough specification, is tentatively scheduled to become stable in 2.12.
 
 ## Intuition
