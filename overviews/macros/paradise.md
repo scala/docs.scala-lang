@@ -13,10 +13,10 @@ languages: [ja]
 
 **Eugene Burmako**
 
-Macro paradise is a plugin to the 2.10.x series of Scala compilers,
+Macro paradise is a plugin for several versions of Scala compilers.
 It is designed to reliably work with production releases of <code>scalac</code>,
 making latest macro developments available way before they end up in future versions Scala.
-Refer to the roadmap for [the list of supported features](/overviews/macros/roadmap.html).
+Refer to the roadmap for [the list of supported features and versions](/overviews/macros/roadmap.html).
 
     ~/210x $ scalac -Xplugin:macro-paradise_*.jar -Xshow-phases
         phase name  id  description
@@ -47,4 +47,4 @@ To use macro paradise in Maven follow the instructions provided at Stack Overflo
     </compilerPlugins>
 
 Sources of macro paradise are available at [https://github.com/scalamacros/paradise](https://github.com/scalamacros/paradise).
-There are branches that support the latest stable 2.10.3, the upcoming 2.10.4, the upcoming 2.11.0 and Scala virtualized.
+There are branches that support the latest stable 2.10.3, the upcoming 2.11.0 and Scala virtualized.
