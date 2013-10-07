@@ -248,10 +248,13 @@ advanced feature in Scala, to be used only by those most well-versed in
 its pitfalls. Without care, excessive use of symbolic method names can
 easily transform even the simplest code into symbolic soup.
 
-## Values, Variable and Methods
+## Constants, Values, Variable and Methods
 
-Method, Value and variable names should be in camelCase with the first
-letter lower-case:
+Constant names should be in upper camel case:
+
+    val MyConstant = ...
+
+Method, Value and variable names should be in lower camel case:
 
     val myValue = ...
     def myMethod = ...
