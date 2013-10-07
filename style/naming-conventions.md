@@ -260,6 +260,14 @@ Method, Value and variable names should be in lower camel case:
     def myMethod = ...
     var myVariable
 
+If the member is final, immutable and it belongs to a package or an object, it may be considered a constant (similar to Java's `static final` members) in which case the capitalization is like this:
+
+    object Container {
+        val Constant = 42
+    }
+
+Another example: `Pi` in `scala.math` package
+
 ## Type Parameters (generics)
 
 For simple type parameters, a single upper-case letter (from the English
