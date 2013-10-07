@@ -112,13 +112,13 @@ conventions are used:
     requirement of the language.
 
         class Foo {
-        
+
           def bar = ...
-        
+
           def bar_=(bar: Bar) {
             ...
           }
-        
+
           def isBaz = ...
         }
 
@@ -134,11 +134,11 @@ according to the property they represent. For example:
 
     public class Company {
         private String name;
-    
+
         public String getName() {
             return name;
         }
-    
+
         public void setName(String name) {
             this.name = name;
         }
@@ -151,9 +151,9 @@ rather simple encoding:
 
     class Company {
       private var _name: String = _
-    
+
       def name = _name
-    
+
       def name_=(name: String) {
         _name = name
       }
@@ -196,10 +196,10 @@ and when it is not.
 Methods which act as accessors of any sort (either encapsulating a field
 or a logical property) should be declared *without* parentheses except
 if they have side effects. While Ruby and Lift use a `!` to indicate
-this, the usage of parens is preferred (please note that fluid APIs and 
-internal domain-specific languages have a tendency to break the 
-guidelines given below for the sake of syntax. Such exceptions should 
-not be considered a violation so much as a time when these rules do not 
+this, the usage of parens is preferred (please note that fluid APIs and
+internal domain-specific languages have a tendency to break the
+guidelines given below for the sake of syntax. Such exceptions should
+not be considered a violation so much as a time when these rules do not
 apply. In a DSL, syntax should be paramount over convention).
 
 Further, the callsite should follow the declaration; if declared with
@@ -250,23 +250,21 @@ easily transform even the simplest code into symbolic soup.
 
 ## Constants, Values, Variable and Methods
 
-Constant names should be in upper camel case:
+Constant names should be in upper camel case. That is, if the member is
+final, immutable and it belongs to a package object or an object,
+it may be considered a constant (similar to Java's `static final` members):
 
-    val MyConstant = ...
+    object Container {
+        val MyConstant = ...
+    }
+
+The value: `Pi` in `scala.math` package is another example of such a constant.
 
 Method, Value and variable names should be in lower camel case:
 
     val myValue = ...
     def myMethod = ...
     var myVariable
-
-If the member is final, immutable and it belongs to a package or an object, it may be considered a constant (similar to Java's `static final` members) in which case the capitalization is like this:
-
-    object Container {
-        val Constant = 42
-    }
-
-Another example: `Pi` in `scala.math` package
 
 ## Type Parameters (generics)
 
