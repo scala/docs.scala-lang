@@ -16,6 +16,6 @@ languages: [es]
 1. [Paquetes de Macros](/overviews/macros/bundles.html)
 1. [Macros implícitos](/overviews/macros/implicits.html)
 1. [Quasiquotes](/overviews/macros/quasiquotes.html)
-1. [Anotaciones Macro](/overviews/macros/annotations.html)
+1. [Anotaciones de Macro](/overviews/macros/annotations.html)
 1. [Macro Paradise](/overviews/macros/paradise.html)
 1. [Plan de trabajo](/overviews/macros/roadmap.html)
