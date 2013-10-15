@@ -12,7 +12,7 @@ outof: 10
 
 **Eugene Burmako**
 
-Separation of macros into blackbox ones and whitebox ones is implemented in the recent milestone builds of Scala 2.11, starting from 2.11.0-M6. It is not implemented in Scala 2.10.x or in macro paradise. Follow the instructions at [http://www.scala-lang.org/download/](http://www.scala-lang.org/download/) to download and use the latest milestone of 2.11.
+Separation of macros into blackbox ones and whitebox ones is implemented in the recent milestone builds of Scala 2.11, starting from 2.11.0-M7. It is not implemented in Scala 2.10.x or in macro paradise. Follow the instructions at [http://www.scala-lang.org/download/](http://www.scala-lang.org/download/) to download and use the latest milestone of 2.11.
 
 ## Why macros work?
 
