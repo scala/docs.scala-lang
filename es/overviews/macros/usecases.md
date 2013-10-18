@@ -1,13 +1,12 @@
 ---
 layout: overview-large
-title: Casos de Uso
 
+language: es
 disqus: true
 
 partof: macros
 num: 2
-outof: 10
-languages: [es]
+title: Casos de Uso
 ---
 
 <span class="label warning" style="float: right;">EXPERIMENTAL</span>
