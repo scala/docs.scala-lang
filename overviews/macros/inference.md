@@ -3,6 +3,7 @@ layout: overview-large
 title: Inference-Driving Macros
 
 disqus: true
+languages: [ja]
 ---
 <span class="label important" style="float: right;">EXPERIMENTAL</span>
 

@@ -5,8 +5,9 @@ title: Macro Bundles
 disqus: true
 
 partof: macros
-num: 4
-outof: 9
+num: 5
+outof: 10
+languages: [ja]
 ---
 <span class="label warning" style="float: right;">EXPERIMENTAL</span>
 
@@ -26,21 +27,25 @@ traits outside macro implementations, turning implementations into trivial wrapp
 2. Moreover, since macro parameters are path-dependent on the macro context, [special incantations](/overviews/macros/overview.html#writing_bigger_macros) are required to wire implementations and helpers together.
 
 Macro bundles provide a solution to these problems by allowing macro implementations to be declared in traits, which extend
-`scala.reflect.macros.Macro`. This base trait predefines the `c: Context` variable, relieving macro implementations from having
-to declare it in their signatures, which simplifies modularization. Later on `Macro` could come with preloaded callback methods
-such as, for example, `onInfer`.
+`scala.reflect.macros.BlackboxMacro` or `scala.reflect.macros.WhiteboxMacro`. These base traits predefine `val c: BlackboxContext`
+and `val c: WhiteboxContext` correspondingly, relieving macro implementations from having to declare the context in their signatures,
+which simplifies modularization.
 
-    trait Macro {
-      val c: Context
+    trait BlackboxMacro {
+      val c: BlackboxContext
+    }
+
+    trait WhiteboxMacro {
+      val c: WhiteboxContext
     }
 
 Referencing macro implementations defined in bundles works in the same way as with impls defined in objects. You specify a bundle name
 and then select a method from it, providing type arguments if necessary.
 
     import scala.reflect.macros.Context
-    import scala.reflect.macros.Macro
+    import scala.reflect.macros.BlackboxMacro
 
-    trait Impl extends Macro {
+    trait Impl extends BlackboxMacro {
       def mono = c.literalUnit
       def poly[T: c.WeakTypeTag] = c.literal(c.weakTypeOf[T].toString)
     }

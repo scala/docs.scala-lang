@@ -5,8 +5,9 @@ title: Implicit Macros
 disqus: true
 
 partof: macros
-num: 5
-outof: 9
+num: 6
+outof: 10
+languages: [ja]
 ---
 <span class="label warning" style="float: right;">EXPERIMENTAL</span>
 
@@ -33,7 +34,9 @@ will try to infer the corresponding type class instance from the scope of the ca
 on the type of the target. If there is a matching implicit value in scope, it will be inferred
 and compilation will succeed, otherwise a compilation error will occur.
 
-    implicit object IntShowable { def show(x: Int) = x.toString }
+    implicit object IntShowable extends Showable[Int] {
+      def show(x: Int) = x.toString
+    }
     show(42) // "42"
     show("42") // compilation error
 
@@ -119,7 +122,7 @@ which represents isomorphisms between types. `Iso` can be used to map cases clas
     tp == (23, "foo", true)
 
 If we try to write an implicit materializer for `Iso`, we will run into a wall.
-When typechecking applications of methods like `foo`, scalac has to infer the type argument `L`,
+When typechecking applications of methods like `conv`, scalac has to infer the type argument `L`,
 which it has no clue about (and that's no wonder, since this is domain-specific knowledge). As a result, when we define an implicit
 macro, which synthesizes `Iso[C, L]`, scalac will helpfully infer `L` as `Nothing` before expanding the macro and then everything will crumble.
 

@@ -5,15 +5,16 @@ title: Macro Annotations
 disqus: true
 
 partof: macros
-num: 7
-outof: 9
+num: 8
+outof: 10
+languages: [ja]
 ---
 <span class="label important" style="float: right;">MACRO PARADISE</span>
 
 **Eugene Burmako**
 
 Macro annotations are only available in Scala 2.10 with the macro paradise plugin.
-Their inclusion in Scala 2.11 is possible, but our roadmap in this regard is still unclear.
+Their inclusion in Scala 2.11 is not planned, but it will possibly happen in Scala 2.12.
 Follow the instructions at the ["Macro Paradise"](/overviews/macros/paradise.html) page to download and use our compiler plugin.
 
 ## Call for feedback
