@@ -46,7 +46,7 @@ Performance characteristics of set and map types:
 | **mutable**        |        |      |       |               |
 | `HashSet`/`HashMap`| O(1)<sup>hash dep.</sup>     | O(1)<sup>hash dep.</sup>   | O(1)<sup>hash dep.</sup>    | O(n)          |
 | `WeakHashMap`      | O(1)<sup>hash dep.</sup>     | O(1)<sup>hash dep.</sup>   | O(1)<sup>hash dep.</sup>    | O(n)          |
-| `BitSet`           | O(1)   | O(1)<sup>2</sup> | O(1)<sup>2</sup>  | O(1)<sup>1</sup>|
+| `BitSet`           | O(1)   | O(1)<sup>2</sup> | O(1)  | O(1)<sup>1</sup>|
 | `TreeSet`          | O(log n)    | O(log n)  | O(log n)   | O(log n)      |
 
 ####Footnotes:
