@@ -16,51 +16,42 @@ Performance characteristics of sequence types:
 |               | head | tail | apply | update| prepend | append | insert |
 | --------      | ---- | ---- | ----  | ----  | ----    | ----   | ----   |
 | **immutable** |      |      |       |       |         |        |        |
-| `List`        | C    | C    | L     | L     |  C      | L      |  -     |
-| `Stream`      | C    | C    | L     | L     |  C      | L      |  -     |
-| `Vector`      | eC   | eC   | eC    | eC    |  eC     | eC     |  -     |
-| `Stack`       | C    | C    | L     | L     |  C      | C      |  L     |
-| `Queue`       | aC   | aC   | L     | L     |  L      | C      |  -     |
-| `Range`       | C    | C    | C     | -     |  -      | -      |  -     |
-| `String`      | C    | L    | C     | L     |  L      | L      |  -     |
+| `List`        | O(1) | O(1) | O(n)  | O(n)  |  O(1)   | O(n)   |  N/A   |
+| `Stream`      | O(1) | O(1) | O(n)  | O(n)  |  O(1)   | O(n)   |  N/A   |
+| `Vector`      | O(1)<sup>hash dep.</sup>| O(1)<sup>hash dep.</sup>| O(1)<sup>hash dep.</sup> | O(1)<sup>hash dep.</sup> |  O(1)<sup>hash dep.</sup>  | O(1)<sup>hash dep.</sup>  |  N/A   |
+| `Stack`       | O(1) | O(1) | O(n)  | O(n)  |  O(1)   | O(1)   |  O(n)  |
+| `Queue`       | O(1)<sup>amortized</sup>| O(1)<sup>amortized</sup>| O(n)  | O(n)  |  O(n)   | O(1)   |  N/A   |
+| `Range`       | O(1) | O(1) | O(1)  | N/A   |  N/A    | N/A    |  N/A   |
+| `String`      | O(1) | O(n) | O(1)  | O(n)  |  O(n)   | O(n)   |  N/A   |
 | **mutable**   |      |      |       |       |         |        |        |
-| `ArrayBuffer` | C    | L    | C     | C     |  L      | aC     |  L     |
-| `ListBuffer`  | C    | L    | L     | L     |  C      | C      |  L     |
-|`StringBuilder`| C    | L    | C     | C     |  L      | aC     |  L     |
-| `MutableList` | C    | L    | L     | L     |  C      | C      |  L     |
-| `Queue`       | C    | L    | L     | L     |  C      | C      |  L     |
-| `ArraySeq`    | C    | L    | C     | C     |  -      | -      |  -     |
-| `Stack`       | C    | L    | L     | L     |  C      | L      |  L     |
-| `ArrayStack`  | C    | L    | C     | C     |  aC     | L      |  L     |
-| `Array`       | C    | L    | C     | C     |  -      | -      |  -     |
+| `ArrayBuffer` | O(1) | O(n) | O(1)  | O(1)  |  O(n)   | O(1)<sup>amortized</sup>  |  O(n)  |
+| `ListBuffer`  | O(1) | O(n) | O(n)  | O(n)  |  O(1)   | O(1)   |  O(n)  |
+|`StringBuilder`| O(1) | O(n) | O(1)  | O(1)  |  O(n)   | O(1)<sup>amortized</sup>  |  O(n)  |
+| `MutableList` | O(1) | O(n) | O(n)  | O(n)  |  O(1)   | O(1)   |  O(n)  |
+| `Queue`       | O(1) | O(n) | O(n)  | O(n)  |  O(1)   | O(1)   |  O(n)  |
+| `ArraySeq`    | O(1) | O(n) | O(1)  | O(1)  |  N/A    | N/A    |  N/A   |
+| `Stack`       | O(1) | O(n) | O(n)  | O(n)  |  O(1)   | O(n)   |  O(n)  |
+| `ArrayStack`  | O(1) | O(n) | O(1)  | O(1)  |  O(1)<sup>amortized</sup> | O(n)   |  O(n)  |
+| `Array`       | O(1) | O(n) | O(1)  | O(1)  |  N/A    | N/A    |  N/A   |
 
 Performance characteristics of set and map types:
 
 |                    | lookup | add | remove | min           |
 | --------           | ----   | ---- | ----  | ----          |
 | **immutable**      |        |      |       |               |
-| `HashSet`/`HashMap`| eC     | eC   | eC    | L             |
-| `TreeSet`/`TreeMap`| Log    | Log  | Log   | Log           |
-| `BitSet`           | C      | L    | L     | eC<sup>1</sup>|
-| `ListMap`          | L      | L    | L     | L             |
+| `HashSet`/`HashMap`| O(1)<sup>hash dep.</sup>     | O(1)<sup>hash dep.</sup>   | O(1)<sup>hash dep.</sup>    | O(n)          |
+| `TreeSet`/`TreeMap`| O(log n)    | O(log n)  | O(log n)   | O(log n)      |
+| `BitSet`           | O(1)   | O(n) | O(n)  | O(1)<sup>hash dep.</sup>|
+| `ListMap`          | O(n)   | O(n) | O(n)  | O(n)          |
 | **mutable**        |        |      |       |               |
-| `HashSet`/`HashMap`| eC     | eC   | eC    | L             |
-| `WeakHashMap`      | eC     | eC   | eC    | L             |
-| `BitSet`           | C      | aC   | C     | eC<sup>1</sup>|
-| `TreeSet`          | Log    | Log  | Log   | Log           |
+| `HashSet`/`HashMap`| O(1)<sup>hash dep.</sup>     | O(1)<sup>hash dep.</sup>   | O(1)<sup>hash dep.</sup>    | O(n)          |
+| `WeakHashMap`      | O(1)<sup>hash dep.</sup>     | O(1)<sup>hash dep.</sup>   | O(1)<sup>hash dep.</sup>    | O(n)          |
+| `BitSet`           | O(1)   | aO(1)| O(1)<sup>2</sup>  | O(1)<sup>1</sup>|
+| `TreeSet`          | O(log n)    | O(log n)  | O(log n)   | O(log n)      |
 
-Footnote: <sup>1</sup> Assuming bits are densely packed.
-
-The entries in these two tables are explained as follows:
-
-|     |                                           |
-| --- | ----                                      |
-| **C**   | The operation takes (fast) constant time. |
-| **eC**  | The operation takes effectively constant time, but this might depend on some assumptions such as maximum length of a vector or distribution of hash keys.|
-| **aC**  | The operation takes amortized constant time. Some invocations of the operation might take longer, but if many operations are performed on average only constant time per operation is taken. |
-| **Log** | The operation takes time proportional to the logarithm of the collection size. |
-| **L**   | The operation is linear, that is it takes time proportional to the collection size. |
-| **-**   | The operation is not supported. |
+Footnotes:
+<sup>1</sup> Assuming bits are densely packed.
+<sup>2</sup> The operation takes amortized constant time. Some invocations of the operation might take longer, but if many operations are performed on average only constant time per operation is taken.
 
 The first table treats sequence types--both immutable and mutable--with the following operations:
 
