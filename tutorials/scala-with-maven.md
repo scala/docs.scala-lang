@@ -117,7 +117,7 @@ By default the jar created by the Scala Maven Plugin doesn't include a `Main-Cla
         <properties>
             ...
         </properties>
-        
+
         <dependencies>
             ...
         </dependencies>
@@ -177,6 +177,18 @@ There are instructions at the [Scala Maven Plugin FAQs][23], but I thought I'd e
                 <configuration>
                     <sources>
                         <source>src/main/scala</source>
+                    </sources>
+                </configuration>
+            </execution>
+            <execution>
+                <id>add-test-source</id>
+                <phase>generate-sources</phase>
+                <goals>
+                    <goal>add-test-source</goal>
+                </goals>
+                <configuration>
+                    <sources>
+                        <source>src/test/scala</source>
                     </sources>
                 </configuration>
             </execution>
