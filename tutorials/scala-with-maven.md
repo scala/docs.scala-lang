@@ -201,9 +201,27 @@ After adding that to your `pom.xml`:
 1. Run `mvn eclipse:eclipse` - this generates the Eclipse project files (which are already ignored by our archetype's `.gitignore`)
 2. Run `mvn -Declipse.workspace="path/to/your/eclipse/workspace" eclipse:configure-workspace` - this adds an `M2_REPO` classpath variable to Eclipse
 3. Run `mvn package` to ensure you have all the dependencies in your local Maven repo
-4. In Eclipse, under "File" choose "Import..." and find your project folder
 
-In Eclipse, you can only run classes/objects that extend [`scala.App`][25]. However, [this is only good for debugging purposes][26]. In the mean time I've just been packaging and running the jar each time. If you find a better way, feel free to [contribute][32]!
+Unfortunately, the integration isn't perfect. Firstly, open up the generated `.classpath` file (it will be hidden by default as it's a dotfile, but it should be in your project root directory; where you ran `mvn eclipse:eclipse`). You should see something like this near the top.
+
+    <classpathentry kind="src" path="src/test/scala" output="target/test-classes" including="**/*.java"/>
+    <classpathentry kind="src" path="src/main/scala" including="**/*.java"/>
+
+Change the `*.java` to `*.scala` (or duplicate the lines and change them to `*.scala` if you also have Java sources).
+
+Secondly, open the `.project` eclipse file (again, in the same folder). Change `<buildSpec>` and `<natures>` to look like this. Now Eclipse knows to use the Scala editor and it won't think that everything is a syntax error.
+
+    <buildSpec>
+      <buildCommand>
+        <name>org.scala-ide.sdt.core.scalabuilder</name>
+      </buildCommand>
+    </buildSpec>
+    <natures>
+      <nature>org.scala-ide.sdt.core.scalanature</nature>
+      <nature>org.eclipse.jdt.core.javanature</nature>
+    </natures>
+
+Finally, in Eclipse, under "File" choose "Import..." and find your project.
 
 ## Adding Dependencies
 The first thing I do is look for "Maven" in the project page. For example, Google's [Guava] page includes [Maven Central links][28]. As you can see in the previous link, The Central Repository conveniently includes the snippet you have to add to your `pom.xml` on the left sidebar.
