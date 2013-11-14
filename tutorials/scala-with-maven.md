@@ -160,7 +160,7 @@ After adding this, `mvn package` will also create `[artifactId]-[version]-jar-wi
 - `mvn clean`
 - `mvn package`: compile, run tests, and create jar
 
-### Integration with Eclipse
+### Integration with Eclipse ([Scala IDE][35])
 There are instructions at the [Scala Maven Plugin FAQs][23], but I thought I'd expand a bit. The [maven-eclipse-plugin][33] is a core plugin (all plugins prefixed with "maven" are, and are available by default) to generate Eclipse configuration files. However, this plugin does not know about our new Scala source files. We'll be using the [build-helper-maven-plugin][34] to add new source folders:
 
     ...
@@ -272,3 +272,4 @@ I'm not going to explain all of Maven in this tutorial (though I hope to add mor
 [32]: http://docs.scala-lang.org/contribute.html
 [33]: http://maven.apache.org/plugins/maven-eclipse-plugin/
 [34]: http://mojo.codehaus.org/build-helper-maven-plugin/
+[35]: http://scala-ide.org
