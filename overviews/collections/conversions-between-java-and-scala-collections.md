@@ -44,7 +44,7 @@ Internally, these conversion work by setting up a "wrapper" object that forwards
 The are some other common Scala collections than can also be converted to Java types, but which to not have a corresponding conversion in the other sense. These are:
 
     Seq           =>    java.util.List 
-    mutable.Seq   =>    java.utl.List
+    mutable.Seq   =>    java.util.List
     Set           =>    java.util.Set 
     Map           =>    java.util.Map 
 
