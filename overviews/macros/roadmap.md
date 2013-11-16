@@ -16,7 +16,7 @@ languages: [ja]
 
 | Feature                                                                           | Scala 2.10         | [Macro Paradise](/overviews/macros/paradise.html)                                         | Scala 2.11   |
 |-----------------------------------------------------------------------------------|--------------------|-------------------------------------------------------------------------------------------|--------------|
-| [Blackbox/whitebox separation](/overviews/macros/blackbox-whitebox.html)          | No                 | No                                                                                        | No           |
+| [Blackbox/whitebox separation](/overviews/macros/blackbox-whitebox.html)          | No                 | No                                                                                        | Yes          |
 | [Def macros](/overviews/macros/overview.html)                                     | Yes                | Yes                                                                                       | Yes          |
 | [Macro bundles](/overviews/macros/bundles.html)                                   | No                 | No                                                                                        | Yes          |
 | [Implicit macros](/overviews/macros/implicits.html)                               | Yes (since 2.10.2) | Yes                                                                                       | Yes          |
