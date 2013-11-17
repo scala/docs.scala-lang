@@ -15,6 +15,12 @@ languages: [ja]
 
 Quasiquotes are shipped with recent milestone builds of Scala 2.11, starting from 2.11.0-M4. They are also available in Scala 2.10 with the macro paradise plugin. Follow the instructions at the ["Macro Paradise"](/overviews/macros/paradise.html) page to download and use our compiler plugin.
 
+Note that both in 2.10.x and in 2.11, quasiquotes don't bring transitive dependencies on macro paradise,
+which means that you can write macros using quasiquotes from macro paradise for 2.10.x, and people will be able
+to use them with vanilla 2.10.x.
+Neither your code that uses quasiquotes from macro paradise, nor the users of such code will need to have macro paradise
+on their classpath at runtime.
+
 ## Intuition
 
 Consider an `async` [macro annotation](/overviews/macros/annotations.html), which takes a class or an object and duplicates their methods with asynchronous counterparts wrapped in `future`.

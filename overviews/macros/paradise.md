@@ -28,10 +28,14 @@ Refer to the roadmap for [the list of supported features and versions](/overview
              typer   5  the meat and potatoes: type the trees in paradise
                     ...
 
+Some features in macro paradise bring a compile-time dependency on the macro paradise plugin,
+some features do not, however none of those features need macro paradise at runtime.
+Proceed to the [the feature list](/overviews/macros/roadmap.html) document for more information.
+
 Consult [https://github.com/scalamacros/sbt-example-paradise](https://github.com/scalamacros/sbt-example-paradise)
-for an end-to-end example, but in a nutshell working with macro paradise is as easy as adding these two lines
+for an end-to-end example, but in a nutshell working with macro paradise is as easy as adding the following two lines
 to your build (granted you’ve already [set up SBT](/overviews/macros/overview.html#using_macros_with_maven_or_sbt)
-to use macros):
+to use macros).
 
     resolvers += Resolver.sonatypeRepo("snapshots")
     addCompilerPlugin("org.scala-lang.plugins" % "macro-paradise" % "2.0.0-SNAPSHOT" cross CrossVersion.full)
@@ -41,10 +45,10 @@ To use macro paradise in Maven follow the instructions provided at Stack Overflo
     <compilerPlugins>
       <compilerPlugin>
         <groupId>org.scala-lang.plugins</groupId>
-        <artifactId>macro-paradise_2.10.3</artifactId>
+        <artifactId>macro-paradise_<YOUR.SCALA.VERSION></artifactId>
         <version>2.0.0-SNAPSHOT</version>
       </compilerPlugin>
     </compilerPlugins>
 
 Sources of macro paradise are available at [https://github.com/scalamacros/paradise](https://github.com/scalamacros/paradise).
-There are branches that support the latest stable 2.10.3, the upcoming 2.11.0 and Scala virtualized.
+There are branches that support several stable releases of 2.10.x, snapshots of 2.10 and 2.11, as well as Scala virtualized.

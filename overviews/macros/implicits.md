@@ -14,9 +14,16 @@ languages: [ja]
 **Eugene Burmako**
 
 Implicit macros are shipped as an experimental feature of Scala since version 2.10.0, including the upcoming 2.11.0,
-but require a critical bugfix in 2.10.2 to become fully operations.
-An extension to implicit macros, called fundep materialization, is in the works
-targetting both [macro paradise](/overviews/macros/paradise.html) and Scala 2.11.0-M5.
+but require a critical bugfix in 2.10.2 to become fully operational. Implicit macros do not need macro paradise to work,
+neither in 2.10.x, nor in 2.11.
+
+An extension to implicit macros,
+called fundep materialization, is unavailable in 2.10.x, but has been implemented both in
+[macro paradise](/overviews/macros/paradise.html) and Scala 2.11.0-M5.
+Note that in 2.10.x, expansion of fundep materializer macros requires macro paradise,
+which means that your users will have to add macro paradise to their builds in order to use your fundep materializers.
+However, after fundep materializers expand, the resulting code will no longer have any references to macro paradise
+and won't require its presence at compile-time or at runtime.
 
 ## Implicit macros
 
