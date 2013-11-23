@@ -6,7 +6,7 @@ disqus: true
 
 partof: FAQ
 num: 1
-outof: 8
+outof: 9
 ---
 Let's divide the operators, for the purpose of teaching, into **four categories**:
 
@@ -36,7 +36,7 @@ So, let's see them.
 Keywords/reserved symbols
 -------------------------
 
-There are a few symbols in Scala that are special and cannot be defined or used used as method names. 
+There are a few symbols in Scala that are special and cannot be defined or used used as method names.
 Two of them are considered proper keywords, while others are just "reserved". They are:
 
     // Keywords
@@ -65,7 +65,7 @@ These are all _part of the language_, and, as such, can be found in any text
 that properly describe the language, such as [Scala Specification][1](PDF)
 itself.
 
-The last one, the underscore, deserve a special description, because it is 
+The last one, the underscore, deserve a special description, because it is
 widely used, and has different meanings depending on the context. Here's a sample:
 
     import scala._    // Wild card -- all of Scala is imported
