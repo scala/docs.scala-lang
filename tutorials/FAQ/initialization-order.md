@@ -11,31 +11,29 @@ num: 9
 ## Example
 To understand the problem, let's pick the following concrete example.
 
-```scala
-abstract class A {
-  val x1: String
-  val x2: String = "mom"
-  
-  println("A: " + x1 + ", " + x2)
-}
-class B extends A {
-  val x1: String = "hello"
-    
-  println("B: " + x1 + ", " + x2)
-}
-class C extends B {
-  override val x2: String = "dad"
-  
-  println("C: " + x1 + ", " + x2)
-}
-```
+    abstract class A {
+      val x1: String
+      val x2: String = "mom"
+
+      println("A: " + x1 + ", " + x2)
+    }
+    class B extends A {
+      val x1: String = "hello"
+
+      println("B: " + x1 + ", " + x2)
+    }
+    class C extends B {
+      override val x2: String = "dad"
+
+      println("C: " + x1 + ", " + x2)
+    }
+
 Let's observe the initialization order through the Scala REPL:
-```
-scala> new C 
-A: null, null
-B: hello, null
-C: hello, dad
-```
+
+    scala> new C
+    A: null, null
+    B: hello, null
+    C: hello, dad
 
 Only when we get to the constructor of `C` are both `x1` and `x2` initialized. Therefore, constructors of `A` and `B` risk running into `NullPointerException`s.
 
@@ -56,15 +54,14 @@ There is a compiler flag which can be useful for identifying this situation:
 It is inadvisable to use this flag outside of testing.  It adds significantly to the code size by putting a wrapper around all potentially uninitialized field accesses: the wrapper will throw an exception rather than allow a null (or 0/false in the case of primitive types) to silently appear.  Note also that this adds a *runtime* check: it can only tell you anything about code paths which you exercise with it in place.
 
 Using it on the opening example:
-```bash
-% scalac -Xcheckinit a.scala
-% scala -e 'new C'
-scala.UninitializedFieldError: Uninitialized field: a.scala: 13
-	at C.x2(a.scala:13)
-	at A.<init>(a.scala:5)
-	at B.<init>(a.scala:7)
-	at C.<init>(a.scala:12)
-```
+
+    % scalac -Xcheckinit a.scala
+    % scala -e 'new C'
+    scala.UninitializedFieldError: Uninitialized field: a.scala: 13
+    	at C.x2(a.scala:13)
+    	at A.<init>(a.scala:5)
+    	at B.<init>(a.scala:7)
+    	at C.<init>(a.scala:12)
 
 ### Solutions ###
 
@@ -72,28 +69,26 @@ Approaches for avoiding null values include:
 
 #### Use lazy vals ####
 
-```scala
-abstract class A {
-  val x1: String
-  lazy val x2: String = "mom"
-  
-  println("A: " + x1 + ", " + x2)
-}
-class B extends A {
-  lazy val x1: String = "hello"
-    
-  println("B: " + x1 + ", " + x2)
-}
-class C extends B {
-  override lazy val x2: String = "dad"
-  
-  println("C: " + x1 + ", " + x2)
-}
-// scala> new C 
-// A: hello, dad
-// B: hello, dad
-// C: hello, dad
-```
+    abstract class A {
+      val x1: String
+      lazy val x2: String = "mom"
+
+      println("A: " + x1 + ", " + x2)
+    }
+    class B extends A {
+      lazy val x1: String = "hello"
+
+      println("B: " + x1 + ", " + x2)
+    }
+    class C extends B {
+      override lazy val x2: String = "dad"
+
+      println("C: " + x1 + ", " + x2)
+    }
+    // scala> new C
+    // A: hello, dad
+    // B: hello, dad
+    // C: hello, dad
 
 Usually the best answer.  Unfortunately you cannot declare an abstract lazy val.  If that is what you're after, your options include:
 
@@ -106,66 +101,63 @@ An exception during initialization of a lazy val will cause the right hand side 
 Note that using multiple lazy vals creates a new risk: cycles among lazy vals can result in a stack overflow on first access.
 
 #### Use early definitions  ####
-```scala
-abstract class A {
-  val x1: String
-  val x2: String = "mom"
-  
-  println("A: " + x1 + ", " + x2)
-}
-class B extends {
-  val x1: String = "hello"
-} with A {    
-  println("B: " + x1 + ", " + x2)
-}
-class C extends {
-  override val x2: String = "dad"
-} with B {  
-  println("C: " + x1 + ", " + x2)
-}
-// scala> new C 
-// A: hello, dad
-// B: hello, dad
-// C: hello, dad
-```
+    abstract class A {
+      val x1: String
+      val x2: String = "mom"
+
+      println("A: " + x1 + ", " + x2)
+    }
+    class B extends {
+      val x1: String = "hello"
+    } with A {
+      println("B: " + x1 + ", " + x2)
+    }
+    class C extends {
+      override val x2: String = "dad"
+    } with B {
+      println("C: " + x1 + ", " + x2)
+    }
+    // scala> new C
+    // A: hello, dad
+    // B: hello, dad
+    // C: hello, dad
 
 Early definitions are a bit unwieldy, there are limitations as to what can appear and what can be referenced in an early definitions block, and they don't compose as well as lazy vals: but if a lazy val is undesirable, they present another option.  They are specified in SLS 5.1.6.
 
 #### Use constant value definitions ####
-```scala
-abstract class A {
-  val x1: String
-  val x2: String = "mom"
+    abstract class A {
+      val x1: String
+      val x2: String = "mom"
 
-  println("A: " + x1 + ", " + x2)
-}
-class B extends A {
-  val x1: String = "hello"
-  final val x3 = "goodbye"
+      println("A: " + x1 + ", " + x2)
+    }
+    class B extends A {
+      val x1: String = "hello"
+      final val x3 = "goodbye"
 
-  println("B: " + x1 + ", " + x2)
-}
-class C extends B {
-  override val x2: String = "dad"
+      println("B: " + x1 + ", " + x2)
+    }
+    class C extends B {
+      override val x2: String = "dad"
 
-  println("C: " + x1 + ", " + x2)
-}
-abstract class D {
-  val c: C
-  val x3 = c.x3   // no exceptions!
-  println("D: " + c + " but " + x3)
-}
-class E extends D {
-  val c = new C
-  println(s"E: ${c.x1}, ${c.x2}, and $x3...")
-}
-//scala> new E
-//D: null but goodbye
-//A: null, null
-//B: hello, null
-//C: hello, dad
-//E: hello, dad, and goodbye...
-```
+      println("C: " + x1 + ", " + x2)
+    }
+    abstract class D {
+      val c: C
+      val x3 = c.x3   // no exceptions!
+      println("D: " + c + " but " + x3)
+    }
+    class E extends D {
+      val c = new C
+      println(s"E: ${c.x1}, ${c.x2}, and $x3...")
+    }
+    //scala> new E
+    //D: null but goodbye
+    //A: null, null
+    //B: hello, null
+    //C: hello, dad
+    //E: hello, dad, and goodbye...
+
 Sometimes all you need from an interface is a compile-time constant.
 
 Constant values are stricter than strict and earlier than early definitions and have even more limitations,
