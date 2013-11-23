@@ -7,7 +7,10 @@ disqus: true
 partof: FAQ
 num: 9
 ---
-Consider the following.
+
+## Example
+To understand the problem, let's pick the following concrete example.
+
 ```scala
 abstract class A {
   val x1: String
@@ -25,12 +28,18 @@ class C extends B {
   
   println("C: " + x1 + ", " + x2)
 }
-// scala> new C 
-// A: null, null
-// B: hello, null
-// C: hello, dad
+```
+Let's observe the initialization order through the Scala REPL:
+```
+scala> new C 
+A: null, null
+B: hello, null
+C: hello, dad
 ```
 
+Only when we get to the constructor of `C` are both `x1` and `x2` initialized. Therefore, constructors of `A` and `B` risk running into `NullPointerException`s.
+
+## Explanation
 A 'strict' or 'eager' val is one which is not marked lazy.
 
 In the absence of "early definitions" (see below), initialization of strict vals is done in the following order.
