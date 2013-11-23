@@ -104,7 +104,7 @@ Scala implicit の標準機能である複数のパラメータや重複した�
 
 ### 提案
 
-[https://github.com/scala/scala/pull/2499](https://github.com/scala/scala/pull/2499) が示すとおり、上記の問題の解法は非常にシンプルでエレガントなものだ。<span class="label success">NEW</span> 現在これは [マクロパラダイス](/ja/overviews/macros/paradise.html) と Scala 2.11.0-M5 の両方で実装されている。 
+[https://github.com/scala/scala/pull/2499](https://github.com/scala/scala/pull/2499) が示すとおり、上記の問題の解法は非常にシンプルでエレガントなものだ。
 
 Scala 2.10 においてはマクロの適用は全ての型引数が推論されるまでは展開されない。しかし、そうする必要は特に無い。
 タイプチェッカはできる所まで推論して (この例の場合、`C` は `Foo` と推論され、`L` は未定となる) そこで一旦停止する。その後マクロを展開して、展開された型を補助にタイプチェッカは再び以前未定だった型引数の型検査を続行する。
