@@ -57,9 +57,11 @@ scala.UninitializedFieldError: Uninitialized field: a.scala: 13
 	at C.<init>(a.scala:12)
 ```
 
+### Solutions ###
+
 Approaches for avoiding null values include:
 
-#### Use lazy vals. ####
+#### Use lazy vals ####
 
 ```scala
 abstract class A {
@@ -94,7 +96,7 @@ An exception during initialization of a lazy val will cause the right hand side 
 
 Note that using multiple lazy vals creates a new risk: cycles among lazy vals can result in a stack overflow on first access.
 
-#### Use early definitions.  ####
+#### Use early definitions  ####
 ```scala
 abstract class A {
   val x1: String
@@ -120,7 +122,7 @@ class C extends {
 
 Early definitions are a bit unwieldy, there are limitations as to what can appear and what can be referenced in an early definitions block, and they don't compose as well as lazy vals: but if a lazy val is undesirable, they present another option.  They are specified in SLS 5.1.6.
 
-#### Use constant value definitions.  ####
+#### Use constant value definitions ####
 ```scala
 abstract class A {
   val x1: String
