@@ -47,7 +47,7 @@ Here's an example:
     HI
     HI
 
-For an implicit class to work, its name must be in scope and unambiuous, like any other implicit
+For an implicit class to work, its name must be in scope and unambiguous, like any other implicit
 value or conversion.
 
 
