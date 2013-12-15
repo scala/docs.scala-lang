@@ -18,7 +18,7 @@ It is designed to reliably work with production releases of <code>scalac</code>,
 making latest macro developments available way before they end up in future versions Scala.
 Refer to the roadmap for [the list of supported features and versions](/overviews/macros/roadmap.html).
 
-    ~/210x $ scalac -Xplugin:macro-paradise_*.jar -Xshow-phases
+    ~/210x $ scalac -Xplugin:paradise_*.jar -Xshow-phases
         phase name  id  description
         ----------  --  -----------
             parser   1  parse source into ASTs, perform simple desugaring
@@ -37,16 +37,16 @@ for an end-to-end example, but in a nutshell working with macro paradise is as e
 to your build (granted you’ve already [set up SBT](/overviews/macros/overview.html#using_macros_with_maven_or_sbt)
 to use macros).
 
-    resolvers += Resolver.sonatypeRepo("snapshots")
-    addCompilerPlugin("org.scala-lang.plugins" % "macro-paradise" % "2.0.0-SNAPSHOT" cross CrossVersion.full)
+    resolvers += Resolver.sonatypeRepo("releases")
+    addCompilerPlugin("org.scalamacros" % "paradise" % "2.0.0-M1" cross CrossVersion.full)
 
 To use macro paradise in Maven follow the instructions provided at Stack Overflow on the page ["Enabling the macro-paradise Scala compiler plugin in Maven projects"](http://stackoverflow.com/questions/19086241/enabling-the-macro-paradise-scala-compiler-plugin-in-maven-projects) (also make sure to add the dependency on the Sonatype snapshots repository and `scala-reflect.jar`).
 
     <compilerPlugins>
       <compilerPlugin>
-        <groupId>org.scala-lang.plugins</groupId>
-        <artifactId>macro-paradise_<YOUR.SCALA.VERSION></artifactId>
-        <version>2.0.0-SNAPSHOT</version>
+        <groupId>org.scalamacros</groupId>
+        <artifactId>paradise_<YOUR.SCALA.VERSION></artifactId>
+        <version>2.0.0-M1</version>
       </compilerPlugin>
     </compilerPlugins>
 
