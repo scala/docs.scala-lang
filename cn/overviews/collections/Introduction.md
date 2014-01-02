@@ -35,4 +35,3 @@ languages: [cn]
 
 本文档从一个用户的角度出发，提供了一个关于Scala集合类的 API的深入讨论。它将带你体验它定义的所有的基础类和方法。
 
-更多详细内容参考官网：http://docs.scala-lang.org/overviews/collections/introduction.html
