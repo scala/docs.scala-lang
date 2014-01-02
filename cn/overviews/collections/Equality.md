@@ -30,5 +30,3 @@ languages: [cn]
     ArrayBuffer(2, 2, 3) 
 
 在这个例子中，由于从第二行到最后一行的数组散列码xs已经发生了改变，最后一行的选择操作将很有可能失败。因此，基于散列码的查找函数将会查找另一个位置，而不是xs所存储的位置。
-
-更多详细内容参考官网：http://docs.scala-lang.org/overviews/collections/equality.html
