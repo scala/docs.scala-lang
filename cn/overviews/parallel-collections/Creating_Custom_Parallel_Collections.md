@@ -190,4 +190,3 @@ ParString类还没有完成。虽然我们已经实现了一个自定义的组�
 
 最后，若果在splitter中的remaining方法实现起来极其麻烦，你可以重写容器中的isStrictSplitterCollection方法，并返回false。虽然这些容器将不能够执行一些严格依赖splitter的方法，比如，在remaining方法中返回一个正确的值。重点是，这并不影响 for-comprehension 中使用的方法。
 
-更多详细内容参考官网：http://docs.scala-lang.org/overviews/parallel-collections/custom-parallel-collections.html
