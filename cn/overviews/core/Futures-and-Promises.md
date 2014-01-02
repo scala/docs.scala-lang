@@ -501,5 +501,4 @@ Duration也提供了unapply方法，因此可以i被用于模式匹配中，例�
     
     // pattern matching
     val Duration(length, unit) = 5 millis
-    
-更多详细内容参考官网：http://docs.scala-lang.org/overviews/core/futures.html
+
