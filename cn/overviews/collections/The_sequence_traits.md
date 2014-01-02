@@ -105,4 +105,3 @@ ListBuffer和ArrayBuffer是常用的buffer实现 。顾名思义，ListBuffer依
 | **克隆：**	 |            |
 | buf.clone | 与buf具有相同元素的新buffer。 |
 
-更多详细内容参考官网：http://docs.scala-lang.org/overviews/collections/seqs.html
