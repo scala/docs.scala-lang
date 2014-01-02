@@ -60,4 +60,3 @@ Scala集合的层次和并行集合库
 
 1. [On a Generic Parallel Collection Framework, Aleksandar Prokopec, Phil Bawgell, Tiark Rompf, Martin Odersky, June 2011](http://infoscience.epfl.ch/record/165523/files/techrep.pdf)
 
-更多详细内容参考官网：http://docs.scala-lang.org/overviews/parallel-collections/architecture.html
