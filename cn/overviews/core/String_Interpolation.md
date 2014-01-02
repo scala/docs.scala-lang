@@ -1,4 +1,4 @@
-﻿---
+---
 layout: overview-large
 title: 字符串插值
 
@@ -119,5 +119,3 @@ f 插值器利用了java中的字符串数据格式。这种以%开头的格式�
 ## 限制
 
 字符串插值目前对模式匹配语句不适用。此特性将在2.11版本中生效。
-
-更多详细内容参考官网：http://docs.scala-lang.org/overviews/core/string-interpolation.html
