@@ -109,4 +109,3 @@ size操作也基于快照。一种直接的实现方式是，size调用仅仅生
 [计算平方根的方法][3](http://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Babylonian_method)  
 [人生游戏模拟程序][4](https://github.com/axel22/ScalaDays2012-TrieMap)（译注：类似大富翁的棋盘游戏）  
 
-更多详细内容参考官网：http://docs.scala-lang.org/overviews/parallel-collections/ctries.html
