@@ -530,5 +530,3 @@ prefix map的伴生对象：
 ### 致谢
 
 这些页面的素材改编自，由Odersky，Spoon和Venners编写的[Scala编程](http://www.artima.com/shop/programming_in_scala)第2版 。感谢Artima 对于出版的大力支持。 
-
-更多详细内容参考官网：http://docs.scala-lang.org/overviews/core/architecture-of-scala-collections.html
