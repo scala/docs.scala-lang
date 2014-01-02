@@ -168,4 +168,3 @@ Concurrent Map可以同时被多个线程访问。除了[Map](http://www.scala-l
     scala> bits
     res51: scala.collection.mutable.BitSet = BitSet(1, 3)
 
-更多详细内容参考官网：http://docs.scala-lang.org/overviews/collections/concrete-mutable-collection-classes.html
