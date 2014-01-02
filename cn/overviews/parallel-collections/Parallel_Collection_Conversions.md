@@ -49,4 +49,4 @@ language: cn
 |toSeq | ParSeq |
 |toSet | ParSet |
 |toMap | ParMap |
-更多详细内容参考官网：http://docs.scala-lang.org/overviews/parallel-collections/conversions.html
+
