@@ -289,4 +289,3 @@ scheduler用于执行一个Reactor实例（或子类型的一个实例）。Reac
     val future = myRemoteActor !! "What is the last digit of PI?"
 记住：select方法是惰性的，它不实际初始化任何网络连接。仅当必要时（例如，调用!时），它会单纯地创建一个新的，准备好初始化新网络连接的AbstractActor实例。 
 
-更多详细内容参考官网：http://docs.scala-lang.org/overviews/core/actors.html
