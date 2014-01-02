@@ -145,5 +145,3 @@ language: cn
 |add | 新增一个元素到集合(set)或者键/值匹配映射。|
 |remove|从集合(set)或者关键映射中移除元素。|
 |min|集合(set)中最小的元素，或者关联数组(map)中的最小的键(key)。|
-
-更多详细内容参考官网：http://docs.scala-lang.org/overviews/parallel-collections/concrete-parallel-collections.html
