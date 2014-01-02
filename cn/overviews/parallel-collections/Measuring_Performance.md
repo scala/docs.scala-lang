@@ -179,4 +179,3 @@ collection的大小所对应的实际并发消耗取决于很多因素。部分�
 1. [Anatomy of a flawed microbenchmark，Brian Goetz](http://www.ibm.com/developerworks/java/library/j-jtp02225/index.html)
 2. [Dynamic compilation and performance measurement, Brian Goetz](http://www.ibm.com/developerworks/library/j-jtp12214/)
 
-更多详细内容参考官网：http://docs.scala-lang.org/overviews/parallel-collections/performance.html
