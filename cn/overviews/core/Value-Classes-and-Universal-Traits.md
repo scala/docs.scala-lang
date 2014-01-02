@@ -251,4 +251,3 @@ value class不能将惰性val或val作为成员，也不能有嵌套类、trait�
       class Inner(val x: Int) extends AnyVal
     }
 
-更多详细内容参考官网：http://docs.scala-lang.org/overviews/core/value-classes.html
