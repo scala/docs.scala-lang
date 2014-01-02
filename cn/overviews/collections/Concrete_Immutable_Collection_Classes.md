@@ -186,4 +186,3 @@ BitSet操作的运行时间是非常快的。查找测试仅仅需要固定时�
     scala> map(2)
     res30: String = "two"
 
-更多详细内容参考官网：http://docs.scala-lang.org/overviews/collections/concrete-immutable-collection-classes.html
