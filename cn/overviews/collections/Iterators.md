@@ -173,5 +173,3 @@ Scala为Traversable, Iterable和Seq类中的迭代器提供了许多类似的方
     res11: Int = 2
 
 注意，调用`BufferedIterator bit`的head方法不会令它步进。因此接下来的`bit.next()`返回的元素跟`bit.head`相同。
-
-更多详细内容参考官网：http://docs.scala-lang.org/overviews/collections/iterators.html
