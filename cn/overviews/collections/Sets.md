@@ -147,4 +147,3 @@ languages: [cn]
 
 因此当位集合包含的元素值都比较小时，它比其他的集合类型更紧凑。位集合的另一个优点是它的contains方法（成员测试）、+=运算（添加元素）、-=运算（删除元素）都非常的高效。  
 
-更多详细内容参考官网：http://docs.scala-lang.org/overviews/collections/sets.html
