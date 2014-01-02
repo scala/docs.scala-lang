@@ -43,5 +43,3 @@ scala.collection.jcl包被移除了。这个包试图在Scala中模拟某些Java
 Scala 2.8通过JavaConversions对象提供了自动的在Java和Scala容器类型间转换的机制，这一机制替代了老的jcl包。
 各种投影操作被泛化整理成了视图。从实际情况来看，投影的用处并不大，因此受影响的代码应该不多。
 所以，如果你的代码用了jcl包或者投影（projections），你将不得不进行一些小的修改。
-
-更多详细内容参考官网：http://docs.scala-lang.org/overviews/collections/migrating-from-scala-27.html
