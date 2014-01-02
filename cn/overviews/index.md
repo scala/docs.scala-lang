@@ -4,11 +4,11 @@ language: cn
 title: 目录
 ---
 ##[Thanks](Thanks.md)
-##[The Scala Actors Migration Guide NEW IN 2.10](The-Scala-Actors-Migration-Guide.md)  
-##[Value Classes and Universal Traits NEW IN 2.10](Value-Classes-and-Universal-Traits.md)  
-##[String Interpolation NEW IN 2.10](String_Interpolation.md)  
-##[Implicit Classes AVAILABLE](Implicit-Classes.md)  
-##[Futures and Promises NEW IN 2.10](Futures-and-Promises.md)  
+##[The Scala Actors Migration Guide NEW IN 2.10](/core/The-Scala-Actors-Migration-Guide.md)  
+##[Value Classes and Universal Traits NEW IN 2.10](/core/Value-Classes-and-Universal-Traits.md)  
+##[String Interpolation NEW IN 2.10](/core/String_Interpolation.md)  
+##[Implicit Classes AVAILABLE](/core/Implicit-Classes.md)  
+##[Futures and Promises NEW IN 2.10](/core/Futures-and-Promises.md)  
 ## Scala’s Parallel Collections Library  
 - [Overview](/parallel-collections/overview.md)
 - [Concrete Parallel Collection Classes](/parallel-collections/Concrete_Parallel_Collection_Classes.md)
@@ -18,8 +18,8 @@ title: 目录
 - [Creating Custom Parallel Collections](/parallel-collections/Creating_Custom_Parallel_Collections.md)
 - [Configuring Parallel Collections](/parallel-collections/Configuring_Parallel_Collections.md)
 - [Measuring Performance](/parallel-collections/Measuring_Performance.md)
-##[The Architecture of Scala Collections](The_Architecture_of_Scala_Collections.md)  
-##[The Scala Actors API](The_Scala_Actors_API.md)  
+##[The Architecture of Scala Collections](/core/The_Architecture_of_Scala_Collections.md)  
+##[The Scala Actors API](/core/The_Scala_Actors_API.md)  
 ## Scala’s Collections Library  
 - [Introduction](Introduction.md)
 - [Mutable and Immutable Collections](Mutable_and_Immutable_Collections.md)
