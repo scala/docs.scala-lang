@@ -56,4 +56,3 @@ import之后，就可以在Scala容器和与之对应的Java容器之间进行�
     java.lang.UnsupportedOperationException
             at java.util.AbstractList.add(AbstractList.java:131)
         
-更多详细内容参考官网：http://docs.scala-lang.org/overviews/collections/conversions-between-java-and-scala-collections.html
