@@ -25,5 +25,3 @@ languages: [cn]
     s: Seq[Char] = WrappedString(h, e, l, l, o)
 
 这些操作依赖于两种隐式转换。第一种，低优先级转换映射一个String到WrappedString,它是`immutable.IndexedSeq`的子类。在上述代码中这种转换应用在一个string转换为一个Seq。另一种，高优先级转换映射一个string到StringOps 对象，从而在immutable 序列到strings上增加了所有的方法。在上面的例子里，这种隐式转换插入在reverse，map,drop和slice的方法调用中。
-
-更多详细内容参考官网：http://docs.scala-lang.org/overviews/collections/strings.html
