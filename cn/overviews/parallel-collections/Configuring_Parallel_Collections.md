@@ -56,4 +56,3 @@ execute方法异步调度任务并且返回等待计算结果的未来状态。e
 
 1. [On a Generic Parallel Collection Framework, June 2011](http://infoscience.epfl.ch/record/165523/files/techrep.pdf)
 
-更多详细内容参考官网：http://docs.scala-lang.org/overviews/parallel-collections/configuration.html
