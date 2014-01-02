@@ -84,4 +84,3 @@ languages: [cn]
 |remove | 移除一个集合中的一个元素或者移除一个映射中一个键。 |  
 |min | 集合中的最小元素，或者映射中的最小键。 |  
 
-更多详细内容参考官网：http://docs.scala-lang.org/overviews/collections/performance-characteristics.html
