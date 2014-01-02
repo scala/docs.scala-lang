@@ -81,5 +81,3 @@ Scala 2.10引入了一种叫做隐式类的新特性。隐式类指的是用impl
     implicit class x(y: Int) // 错误！
     
     implicit case class Baz(x: Int) // 错误！
-
-更多详细内容参考官网：http://docs.scala-lang.org/overviews/core/implicit-classes.html
