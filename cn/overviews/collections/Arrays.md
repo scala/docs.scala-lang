@@ -116,4 +116,3 @@ evenElems方法返回一个新数组，该数组包含了参数向量xs的所有
 
 总结，泛型数组创建需要类声明。所以每当创建一个类型参数T的数组，你还需要提供一个T的隐式类声明。最简单的方法是声明类型参数与ClassManifest的上下文绑定，如 `[T: ClassManifest]`。 
 
-更多详细内容参考官网：http://docs.scala-lang.org/overviews/collections/arrays.html
