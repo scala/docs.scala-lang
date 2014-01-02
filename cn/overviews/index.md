@@ -10,7 +10,7 @@ title: 目录
 ##[Implicit Classes AVAILABLE](core/Implicit-Classes.md)  
 ##[Futures and Promises NEW IN 2.10](core/Futures-and-Promises.md)  
 ## Scala’s Parallel Collections Library  
-- [Overview](parallel-collections/overview.md)  
+- [Overview](parallel-collections/Overview.md)  
 - [Concrete Parallel Collection Classes](parallel-collections/Concrete_Parallel_Collection_Classes.md)  
 - [Parallel Collection Conversions](parallel-collections/Parallel_Collection_Conversions.md)  
 - [Concurrent Tries](parallel-collections/Concurrent_Tries.md)  
@@ -18,9 +18,12 @@ title: 目录
 - [Creating Custom Parallel Collections](parallel-collections/Creating_Custom_Parallel_Collections.md)  
 - [Configuring Parallel Collections](parallel-collections/Configuring_Parallel_Collections.md)  
 - [Measuring Performance](parallel-collections/Measuring_Performance.md)  
+
 ##[The Architecture of Scala Collections](core/The_Architecture_of_Scala_Collections.md)  
 ##[The Scala Actors API](core/The_Scala_Actors_API.md)    
+
 ## Scala’s Collections Library  
+
 - [Introduction](collections/Introduction.md)  
 - [Mutable and Immutable Collections](collections/Mutable_and_Immutable_Collections.md)  
 - [Trait Traversable](collections/Trait_Traversable.md)  
