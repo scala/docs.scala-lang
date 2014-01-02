@@ -92,4 +92,4 @@ Traversable类提供了所有集合支持的API，同时，对于特殊类型也
 
 大多数类在集合树中存在这于三种变体：root, mutable 和immutable。唯一的例外是缓冲区特征，它仅在于mutable集合。  
 
-下面我们将一个个的回顾这些类，更多详细内容参考官网：http://docs.scala-lang.org/overviews/collections/overview.html
+下面我们将一个个的回顾这些类。
