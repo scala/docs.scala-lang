@@ -166,4 +166,3 @@ makeMap方法返回的可变映射混入了 SynchronizedMap trait，因此可以
       
 最后，如有使用同步容器（synchronized collection）的需求，还可以考虑使用`java.util.concurrent`中提供的并发容器（concurrent collections）。
 
-更多详细内容参考官网：http://docs.scala-lang.org/overviews/collections/maps.html。
