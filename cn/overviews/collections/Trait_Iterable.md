@@ -65,4 +65,3 @@ Iterable有两个方法返回迭代器：grouped和sliding。然而，这些迭�
 
 接下来，我们将详细的介绍三种类型的容器（collection）。
 
-更多详细内容参考官网：http://docs.scala-lang.org/overviews/collections/trait-iterable.html
