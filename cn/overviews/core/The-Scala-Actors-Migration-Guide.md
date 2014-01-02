@@ -465,4 +465,3 @@ Akka actor 组织在[Actor systems](http://doc.akka.io/docs/akka/2.1.0/general/a
 
 如果你发现任何问题或不完善的地方，请把它们报告给 [Scala Bugtracker](https://github.com/scala/actors-migration/issues)。
 
-更多详细内容参考官网：http://docs.scala-lang.org/overviews/core/actors-migration-guide.html
