@@ -57,4 +57,3 @@ range，用于生成步长为step的整型序列，并且iterate，将某个函�
 | S.range(start, end, step) | 生成以start为起始元素、step为步长、最大值不超过end的递增序列（左闭右开）。 |
 | S.iterate(x, n)(f) | 生成一个长度为n的序列，其元素值分别为x、f(x)、f(f(x))、…… |
 
-更详细内容参考官网：http://docs.scala-lang.org/overviews/collections/creating-collections-from-scratch.html
