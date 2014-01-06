@@ -48,8 +48,11 @@ Now that we have the approval of the feature's author, we can get to work!
 
 Hacking Scala begins with creating a branch for your work item. To develop Scala we use [Git](http://git-scm.com/)
 and [GitHub](http://github.com/). This section of the guide provides a short walkthrough, but if you are new to Git,
-it probably makes sense to familiarize yourself with Git first. We recommend the [Git Pro](http://git-scm.com/book/en/)
-online book.
+it probably makes sense to familiarize yourself with Git first. We recommend
+
+* the [Git Pro](http://git-scm.com/book/en/) online book.
+* the help page on [Forking a Git Repository](https://help.github.com/articles/fork-a-repo).
+* this great training tool [LearnGitBranching](http://pcottle.github.io/learnGitBranching/). One hour hands-on training helps more than 1000 hours reading. 
 
 ### Fork
 
