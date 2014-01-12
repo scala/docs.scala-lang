@@ -9,7 +9,7 @@ tutorial: scala-tour
 num: 1
 ---
 
-Scala是一门现代的多范式编程语言，致力于以简洁，优雅并且类型安全的方式表达通用的编程模式。它平缓地融合了面向对象和函数式语言的特性。
+Scala是一门现代的多范式编程语言，致力于以简洁，优雅并且类型安全的方式表达通用的编程模式。它平滑地融合了面向对象和函数式语言的特性。
 
 ## Scala 是面向对象的 ##
 Scala是一门纯面向对象语言，因为[一切值都是对象](unified-types.html)。对象的类型和行为通过[Class](classes.html)和[Trait](traits.html)描述。类可以通过子类和一个灵活的[基于混合类的组合](mixin-class-composition.html)(mixin-based composition)机制被继承，作为多重继承的简单替代方案。
@@ -27,7 +27,7 @@ Scala配备了一套富有表现力的类型系统，静态地强制是抽象得
 * 类型[上限](upper-type-bounds.html)和[下限](lower-type-bounds.html)
 * [内部类](inner-classes.html)和[抽象类型](abstract-types.html)作为对象成员
 * [复合类型](compound-types.html)
-* [声明类型的自身引用](explicitly-typed-self-references.html)
+* [显式类型的自身引用](explicitly-typed-self-references.html)
 * [视图](views.html)
 * [多态方法](polymorphic-methods.html)
 
@@ -44,6 +44,6 @@ Scala配备了一套富有表现力的类型系统，静态地强制是抽象得
 
 Scala可与Java与.NET平台互操作。 
 
-Scala被设计与当下流行的Java2运行环境(JRE)有着良好的互操作性。特别是，Scala可与主流的面向对象的Java编程语言及其平滑地交互。Scala的编译模型与Java类似（分离编译，动态类加载），并可以访问成千上万现存的高质量类库。也同样可能支持.NET框架（CLR）。
+Scala被设计与当下流行的Java2运行环境(JRE)有着良好的互操作性。特别是，Scala可与主流的面向对象的Java编程语言及其平滑地交互。Scala的编译模型与Java类似（分离编译，动态类加载），并可以访问成千上万现存的高质量类库。也支持.NET框架（CLR）。
 
 请至下一页继续阅读
