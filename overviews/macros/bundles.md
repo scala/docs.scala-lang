@@ -13,7 +13,7 @@ languages: [ja]
 
 **Eugene Burmako**
 
-Macro bundles are shipped with the recent milestone builds of Scala 2.11, starting from 2.11.0-M4. They are not available in Scala 2.10.x or in macro paradise. Follow the instructions at [http://www.scala-lang.org/download/](http://www.scala-lang.org/download/) to download and use the latest milestone of 2.11.
+Macro bundles are shipped with the recent milestone builds of Scala 2.11, starting from 2.11.0-M4 (however, in 2.11.0-M8, the syntax underwent some changes, so this documentation isn't applicable to earlier milestone builds of 2.11). Macro bundles are not available in Scala 2.10.x or in macro paradise. Follow the instructions at [http://www.scala-lang.org/download/](http://www.scala-lang.org/download/) to download and use the latest milestone of 2.11.
 
 ## Macro bundles
 
@@ -26,26 +26,15 @@ traits outside macro implementations, turning implementations into trivial wrapp
 
 2. Moreover, since macro parameters are path-dependent on the macro context, [special incantations](/overviews/macros/overview.html#writing_bigger_macros) are required to wire implementations and helpers together.
 
-Macro bundles provide a solution to these problems by allowing macro implementations to be declared in traits, which extend
-`scala.reflect.macros.BlackboxMacro` or `scala.reflect.macros.WhiteboxMacro`. These base traits predefine `val c: BlackboxContext`
-and `val c: WhiteboxContext` correspondingly, relieving macro implementations from having to declare the context in their signatures,
-which simplifies modularization.
+Macro bundles provide a solution to these problems by allowing macro implementations to be declared in classes that take
+`c: BlackboxContext` or `c: WhiteboxContext` as their constructor parameters, relieving macro implementations from having
+to declare the context in their signatures, which simplifies modularization. Referencing macro implementations defined in bundles
+works in the same way as with impls defined in objects. You specify a bundle name and then select a method from it,
+providing type arguments if necessary.
 
-    trait BlackboxMacro {
-      val c: BlackboxContext
-    }
+    import scala.reflect.macros.blackbox.Context
 
-    trait WhiteboxMacro {
-      val c: WhiteboxContext
-    }
-
-Referencing macro implementations defined in bundles works in the same way as with impls defined in objects. You specify a bundle name
-and then select a method from it, providing type arguments if necessary.
-
-    import scala.reflect.macros.Context
-    import scala.reflect.macros.BlackboxMacro
-
-    trait Impl extends BlackboxMacro {
+    class Impl(val c: Context) {
       def mono = c.literalUnit
       def poly[T: c.WeakTypeTag] = c.literal(c.weakTypeOf[T].toString)
     }
