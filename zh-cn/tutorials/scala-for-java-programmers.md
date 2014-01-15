@@ -354,31 +354,15 @@ Scala中，当一个类继承一个特性时，它实现这个特新的接口，
 当然，特性在其他场景中比这里展示的更加有用，但是深入讨论它们的应用超出了本文的范围。
 
 
-## 泛型（Genericity）
+## 泛型
 
-The last characteristic of Scala we will explore in this tutorial is
-genericity. Java programmers should be well aware of the problems
-posed by the lack of genericity in their language, a shortcoming which
-is addressed in Java 1.5.
+本指南要探讨的最后一个Scala的特性是*范型(Genericity)*。Java程序员应该能最为清楚他们的语言中因缺少范型所造成的问题，直到Java 1.5这一缺陷才被完善。
 
-Genericity is the ability to write code parametrized by types. For
-example, a programmer writing a library for linked lists faces the
-problem of deciding which type to give to the elements of the list.
-Since this list is meant to be used in many different contexts, it is
-not possible to decide that the type of the elements has to be, say,
-`Int`. This would be completely arbitrary and overly
-restrictive.
+范型是指能够代码中允许以类型作为参数的能力。例如，一个程序员写一个链表的库，会面临一个难题，他需要决定赋予这个链表的元素哪一种类型。因为这个链表打算用于许多不同的上下文中，不可能确定元素必须属于的类型，假设`Int`。这将是完全随意的的而且过于限制的。
 
-Java programmers resort to using `Object`, which is the
-super-type of all objects. This solution is however far from being
-ideal, since it doesn't work for basic types (`int`,
-`long`, `float`, etc.) and it implies that a lot of
-dynamic type casts have to be inserted by the programmer.
+Java程序员往往借助于`Object`，它是所有对象的父类型。然而这种解决方案远不理想，因为对于基本类型（`int`，`long`，`float`等）是无效的，而且意味着程序员必须插入大量的动态类型转换。
 
-Scala makes it possible to define generic classes (and methods) to
-solve this problem. Let us examine this with an example of the
-simplest container class possible: a reference, which can either be
-empty or point to an object of some type.
+Scala能够通过定义范型类（和方法）来解决这个问题。让我们用一个尽可能简单的容器类的例子来测试：一个引用，可以为空或者执行某种类型的一个对象。
 
     class Reference[T] {
       private var contents: T = _
@@ -386,22 +370,11 @@ empty or point to an object of some type.
       def get: T = contents
     }
 
-The class `Reference` is parametrized by a type, called `T`,
-which is the type of its element. This type is used in the body of the
-class as the type of the `contents` variable, the argument of
-the `set` method, and the return type of the `get` method.
+这个`Reference`类以一个类型为参数，称之为`T`,即元素的类型。这个类型在这个类的主体中用作变量`content`的类型，`set`方法的参数以及`get`函数的返回类型。
 
-The above code sample introduces variables in Scala, which should not
-require further explanations. It is however interesting to see that
-the initial value given to that variable is `_`, which represents
-a default value. This default value is 0 for numeric types,
-`false` for the `Boolean` type, `()` for the `Unit`
-type and `null` for all object types.
+上面的代码实例引进了Scala的变量，不需要进一步解释了。然而有趣的是看到赋予那个变量的初始值是`_`，表示一个默认值。这个默认值对于数值类型为0，对于`Boolean`类型为`false`，对于`Unit`为`()`,而对于所有对象类型表示`null`。
 
-To use this `Reference` class, one needs to specify which type to use
-for the type parameter `T`, that is the type of the element
-contained by the cell. For example, to create and use a cell holding
-an integer, one could write the following:
+为了使用这个`Reference`类，需要指定这个类型参数`T`使用哪个类型，也就是单元中容纳元素的类型。例如，为了创建和使用一个容纳一个整数的单元，我们可以像下面这样写：
 
     object IntegerReference {
       def main(args: Array[String]) {
@@ -411,10 +384,8 @@ an integer, one could write the following:
       }
     }
 
-As can be seen in that example, it is not necessary to cast the value
-returned by the `get` method before using it as an integer. It
-is also not possible to store anything but an integer in that
-particular cell, since it was declared as holding an integer.
+正如这个例子中所看到的，`get`方法返回的值用作整数前，不需要转换。同样在这个特别单元中也不可能存储除了整数外的任何东西，因为它已经被声明容纳一个整数。
+　
 
 ## Conclusion
 
