@@ -8,55 +8,10 @@ multilingual-overview: true
 languages: [es, ko, de, zh-cn]
 ---
 
-By Michel Schinz and Philipp Haller
-
-## Introduction
-
-This document gives a quick introduction to the Scala language and
-compiler. It is intended for people who already have some programming
-experience and want an overview of what they can do with Scala. A
-basic knowledge of object-oriented programming, especially in Java, is
-assumed.
-
 作者：Michel Schinz and Philipp Haller 译者：[陈浩](http://haoch.me)
 
 ## 介绍
 本文档是Scala语言及其编译器的一个快速介绍。其目标读者是已经有一定编程经验并且希望大概知道Scala可用来做什么。本文默认读者已具备面向对象尤其是Java的基础知识。
-
-## A First Example
-
-As a first example, we will use the standard *Hello world* program. It
-is not very fascinating but makes it easy to demonstrate the use of
-the Scala tools without knowing too much about the language. Here is
-how it looks:
-
-    object HelloWorld {
-      def main(args: Array[String]) {
-        println("Hello, world!")
-      }
-    }
-
-The structure of this program should be familiar to Java programmers:
-it consists of one method called `main` which takes the command
-line arguments, an array of strings, as parameter; the body of this
-method consists of a single call to the predefined method `println`
-with the friendly greeting as argument. The `main` method does not
-return a value (it is a procedure method). Therefore, it is not necessary
-to declare a return type.
-
-What is less familiar to Java programmers is the `object`
-declaration containing the `main` method. Such a declaration
-introduces what is commonly known as a *singleton object*, that
-is a class with a single instance. The declaration above thus declares
-both a class called `HelloWorld` and an instance of that class,
-also called `HelloWorld`. This instance is created on demand,
-the first time it is used.
-
-The astute reader might have noticed that the `main` method is
-not declared as `static` here. This is because static members
-(methods or fields) do not exist in Scala. Rather than defining static
-members, the Scala programmer declares these members in singleton
-objects.
 
 ### 第一个示例
 作为第一个例子，我们将使用*Hello World*程序。也许它并不吸引人，但是可以很容易在无需对这门语言太多了解的情况下展示Scala工具的用法。具体内容如下：
@@ -73,25 +28,6 @@ objects.
 
 机敏的读者也许注意到这里`main`方法没有声明为`static`。因为Scala中不存在静态成员（方法或者字段）。对于静态成员，Scala程序员会在单例对象中定义。
 
-### Compiling the example
-
-To compile the example, we use `scalac`, the Scala compiler. `scalac`
-works like most compilers: it takes a source file as argument, maybe
-some options, and produces one or several object files. The object
-files it produces are standard Java class files.
-
-If we save the above program in a file called
-`HelloWorld.scala`, we can compile it by issuing the following
-command (the greater-than sign `>` represents the shell prompt
-and should not be typed):
-
-    > scalac HelloWorld.scala
-
-This will generate a few class files in the current directory. One of
-them will be called `HelloWorld.class`, and contains a class
-which can be directly executed using the `scala` command, as the
-following section shows.
-
 ### 编译示例 ###
 我们利用`scalac`，即Scala编译器，来编译这个例子。`scalac`工作原理与大多数编译器类似：它以一个源文件作为参数，可能带有一些选项，然后生成一个活着多个对象文件。这些生成的对象文件是标准的Java class文件。
 
@@ -101,18 +37,6 @@ following section shows.
 
 当前目录中会生成一些class文件。其中有一个名为`HelloWorld.class`，它包含了能够直接使用`scala`命令执行的类，正如下一段中将讲述。
 
-### Running the example
-
-Once compiled, a Scala program can be run using the `scala` command.
-Its usage is very similar to the `java` command used to run Java
-programs, and accepts the same options. The above example can be
-executed using the following command, which produces the expected
-output:
-
-    > scala -classpath . HelloWorld
-
-    Hello, world!
-
 ### 运行示例
 
 一旦编译，Scala程序就可以通过`scala`命令运行。
@@ -121,70 +45,6 @@ output:
     > scala -classpath . HelloWorld
 
     Hello, world!
-
-## Interaction with Java
-
-One of Scala's strengths is that it makes it very easy to interact
-with Java code. All classes from the `java.lang` package are
-imported by default, while others need to be imported explicitly.
-
-Let's look at an example that demonstrates this.  We want to obtain
-and format the current date according to the conventions used in a
-specific country, say France. (Other regions such as the
-French-speaking part of Switzerland use the same conventions.)
-
-Java's class libraries define powerful utility classes, such as
-`Date` and `DateFormat`. Since Scala interoperates
-seemlessly with Java, there is no need to implement equivalent
-classes in the Scala class library--we can simply import the classes
-of the corresponding Java packages:
-
-    import java.util.{Date, Locale}
-    import java.text.DateFormat
-    import java.text.DateFormat._
-
-    object FrenchDate {
-      def main(args: Array[String]) {
-        val now = new Date
-        val df = getDateInstance(LONG, Locale.FRANCE)
-        println(df format now)
-      }
-    }
-
-Scala's import statement looks very similar to Java's equivalent,
-however, it is more powerful. Multiple classes can be imported from
-the same package by enclosing them in curly braces as on the first
-line. Another difference is that when importing all the names of a
-package or class, one uses the underscore character (`_`) instead
-of the asterisk (`*`). That's because the asterisk is a valid
-Scala identifier (e.g. method name), as we will see later.
-
-The import statement on the third line therefore imports all members
-of the `DateFormat` class. This makes the static method
-`getDateInstance` and the static field `LONG` directly
-visible.
-
-Inside the `main` method we first create an instance of Java's
-`Date` class which by default contains the current date. Next, we
-define a date format using the static `getDateInstance` method
-that we imported previously. Finally, we print the current date
-formatted according to the localized `DateFormat` instance. This
-last line shows an interesting property of Scala's syntax. Methods
-taking one argument can be used with an infix syntax. That is, the
-expression
-
-    df format now
-
-is just another, slightly less verbose way of writing the expression
-
-    df.format(now)
-
-This might seem like a minor syntactic detail, but it has important
-consequences, one of which will be explored in the next section.
-
-To conclude this section about integration with Java, it should be
-noted that it is also possible to inherit from Java classes and
-implement Java interfaces directly in Scala.
 
 ## 与Java交互
 
@@ -223,47 +83,8 @@ Scala的引入声明与Java的看起来非常相似。然而，它更加强大�
 
 结束关于Java交互的这一节之前，值得注意的是在Scala中也可能直接继承Java类和实现Java接口。
 
-## Everything is an Object
-
-Scala is a pure object-oriented language in the sense that
-*everything* is an object, including numbers or functions. It
-differs from Java in that respect, since Java distinguishes
-primitive types (such as `boolean` and `int`) from reference
-types, and does not enable one to manipulate functions as values.
-
 ## 一切都是对象
 Scala是一个纯粹的面向对象语言，因为一起都是对象，包括数字或者函数。它和Java有所不同，Java区分原始类型（例如`boolean`和`int`）和引用类型，而且不能够将函数当为值来操作。
-
-### Numbers are objects
-
-Since numbers are objects, they also have methods. And in fact, an
-arithmetic expression like the following:
-
-    1 + 2 * 3 / x
-
-consists exclusively of method calls, because it is equivalent to the
-following expression, as we saw in the previous section:
-
-    (1).+(((2).*(3))./(x))
-
-This also means that `+`, `*`, etc. are valid identifiers
-in Scala.
-
-The parentheses around the numbers in the second version are necessary
-because Scala's lexer uses a longest match rule for tokens.
-Therefore, it would break the following expression:
-
-    1.+(2)
-
-into the tokens `1.`, `+`, and `2`.  The reason that
-this tokenization is chosen is because `1.` is a longer valid
-match than `1`.  The token `1.` is interpreted as the
-literal `1.0`, making it a `Double` rather than an
-`Int`.  Writing the expression as:
-
-    (1).+(2)
-
-prevents `1` from being interpreted as a `Double`.
 
 ## 数字是对象
 
@@ -287,51 +108,9 @@ prevents `1` from being interpreted as a `Double`.
 
 可避免`1`被解析成`Double`。
 
-### Functions are objects
-
-Perhaps more surprising for the Java programmer, functions are also
-objects in Scala. It is therefore possible to pass functions as
-arguments, to store them in variables, and to return them from other
-functions. This ability to manipulate functions as values is one of
-the cornerstone of a very interesting programming paradigm called
-*functional programming*.
-
-As a very simple example of why it can be useful to use functions as
-values, let's consider a timer function whose aim is to perform some
-action every second. How do we pass it the action to perform? Quite
-logically, as a function. This very simple kind of function passing
-should be familiar to many programmers: it is often used in
-user-interface code, to register call-back functions which get called
-when some event occurs.
-
-In the following program, the timer function is called
-`oncePerSecond`, and it gets a call-back function as argument.
-The type of this function is written `() => Unit` and is the type
-of all functions which take no arguments and return nothing (the type
-`Unit` is similar to `void` in C/C++). The main function of
-this program simply calls this timer function with a call-back which
-prints a sentence on the terminal. In other words, this program
-endlessly prints the sentence "time flies like an arrow" every
-second.
-
-    object Timer {
-      def oncePerSecond(callback: () => Unit) {
-        while (true) { callback(); Thread sleep 1000 }
-      }
-      def timeFlies() {
-        println("time flies like an arrow...")
-      }
-      def main(args: Array[String]) {
-        oncePerSecond(timeFlies)
-      }
-    }
-
-Note that in order to print the string, we used the predefined method
-`println` instead of using the one from `System.out`.
-
 ### 函数是对象
 
-对于Java程序员，更意外的是Scala中函数也是对象。以至于将函数作为参数传递，以变量存储，以及从其他其他函数中返回成为了可能。这种将函数当作值操作的能力是一个非常有趣的被称之为`函数式编程`的编程范式的基础之一。
+对于Java程序员，更意外的是Scala中函数也是对象。以至于将函数作为参数传递，以变量存储，以及从其他其他函数中返回成为了可能。这种将函数当作值操作的能力是一个非常有趣的被称之为`函数式编程(functional programming)`的编程范式的基础之一。
 
 我们以一个非常简单的用于在每秒执行某个行为的定时器函数为例，来说明为什么将函数作为值使用是非常有用 的。我们如何传递给它这个行为以执行呢 ？非常合乎逻辑的是作为一个函数。这种非常简单的函数传递对于许多程序员而言应该很熟悉：经常被用于用户接口代码，用于注册回调函数，当某些事件发生时被调用。
 
@@ -351,36 +130,6 @@ Note that in order to print the string, we used the predefined method
 
 注意为了打印这个字符串，我们使用了预定义的方法`println`而非`System.out`中的那个。
 
-#### Anonymous functions
-
-While this program is easy to understand, it can be refined a bit.
-First of all, notice that the function `timeFlies` is only
-defined in order to be passed later to the `oncePerSecond`
-function. Having to name that function, which is only used once, might
-seem unnecessary, and it would in fact be nice to be able to construct
-this function just as it is passed to `oncePerSecond`. This is
-possible in Scala using *anonymous functions*, which are exactly
-that: functions without a name. The revised version of our timer
-program using an anonymous function instead of *timeFlies* looks
-like that:
-
-    object TimerAnonymous {
-      def oncePerSecond(callback: () => Unit) {
-        while (true) { callback(); Thread sleep 1000 }
-      }
-      def main(args: Array[String]) {
-        oncePerSecond(() =>
-          println("time flies like an arrow..."))
-      }
-    }
-
-The presence of an anonymous function in this example is revealed by
-the right arrow `=>` which separates the function's argument
-list from its body. In this example, the argument list is empty, as
-witnessed by the empty pair of parenthesis on the left of the arrow.
-The body of the function is the same as the one of `timeFlies`
-above.
-
 #### 匿名函数
 
 虽然这个程序非常易于理解，但依然可略微优化一下。
@@ -398,43 +147,6 @@ above.
 
 该例中匿名函数是通过右箭头`=>`声明的，将函数的参数列表与主体分离。在这个例子中，由箭头左侧那对空的圆括号可见，参数列表为空。函数的主体与上述`timeFlies`相同。
 
-## Classes
-
-As we have seen above, Scala is an object-oriented language, and as
-such it has a concept of class. (For the sake of completeness,
-  it should be noted that some object-oriented languages do not have
-  the concept of class, but Scala is not one of them.)
-Classes in Scala are declared using a syntax which is close to
-Java's syntax. One important difference is that classes in Scala can
-have parameters. This is illustrated in the following definition of
-complex numbers.
-
-    class Complex(real: Double, imaginary: Double) {
-      def re() = real
-      def im() = imaginary
-    }
-
-This complex class takes two arguments, which are the real and
-imaginary part of the complex. These arguments must be passed when
-creating an instance of class `Complex`, as follows: `new
-  Complex(1.5, 2.3)`. The class contains two methods, called `re`
-and `im`, which give access to these two parts.
-
-It should be noted that the return type of these two methods is not
-given explicitly. It will be inferred automatically by the compiler,
-which looks at the right-hand side of these methods and deduces that
-both return a value of type `Double`.
-
-The compiler is not always able to infer types like it does here, and
-there is unfortunately no simple rule to know exactly when it will be,
-and when not. In practice, this is usually not a problem since the
-compiler complains when it is not able to infer a type which was not
-given explicitly. As a simple rule, beginner Scala programmers should
-try to omit type declarations which seem to be easy to deduce from the
-context, and see if the compiler agrees. After some time, the
-programmer should get a good feeling about when to omit types, and
-when to specify them explicitly.
-
 ## 类
 
 如我们上述所见，Scala是一个面向对象语言，同样它有类的概念。（为了完整性，应该注意到有些面向对象语言没有类的概念，但Scala不是其中之一）
@@ -450,32 +162,6 @@ Scala中的类采用近似Java语法的方式声明。一个重要的不同在�
 应该注意到这两个方法的返回类型没有显式给出。编译器会自动推测，它会看这些方法的右侧并推测出都返回一个`Doube`类型的值。
 
 编译器并不是总能够像这样推测出类型，而且不幸的是也没有简单的规则可以准确的知道什么时候能，什么时候不能。事实上，这通常并不是问题，因为当不能推测出没有显式指定的类型时，编译器会发出警告。作为一个简单的规则，Scala的初学者应该尝试省略似乎易于从上下文中推断出来的类型声明，并且看是否编译器认可。一段时间后，这个程序员应该会对何时省略类型何时显式指定类型有一个好的体会。
-
-### Methods without arguments
-
-A small problem of the methods `re` and `im` is that, in
-order to call them, one has to put an empty pair of parenthesis after
-their name, as the following example shows:
-
-    object ComplexNumbers {
-      def main(args: Array[String]) {
-        val c = new Complex(1.2, 3.4)
-        println("imaginary part: " + c.im())
-      }
-    }
-
-It would be nicer to be able to access the real and imaginary parts
-like if they were fields, without putting the empty pair of
-parenthesis. This is perfectly doable in Scala, simply by defining
-them as methods *without arguments*. Such methods differ from
-methods with zero arguments in that they don't have parenthesis after
-their name, neither in their definition nor in their use. Our
-`Complex` class can be rewritten as follows:
-
-    class Complex(real: Double, imaginary: Double) {
-      def re = real
-      def im = imaginary
-    }
 
 ### 无参方法
 
@@ -494,27 +180,6 @@ their name, neither in their definition nor in their use. Our
       def re = real
       def im = imaginary
     }
-
-### Inheritance and overriding
-
-All classes in Scala inherit from a super-class. When no super-class
-is specified, as in the `Complex` example of previous section,
-`scala.AnyRef` is implicitly used.
-
-It is possible to override methods inherited from a super-class in
-Scala. It is however mandatory to explicitly specify that a method
-overrides another one using the `override` modifier, in order to
-avoid accidental overriding. As an example, our `Complex` class
-can be augmented with a redefinition of the `toString` method
-inherited from `Object`.
-
-    class Complex(real: Double, imaginary: Double) {
-      def re = real
-      def im = imaginary
-      override def toString() =
-        "" + re + (if (im < 0) "" else "+") + im + "i"
-    }
-
 
 ### 继承和重载
 
@@ -604,37 +269,9 @@ Java中，这样一个树会用一个树的抽象父类，和节点或者叶子�
       case _ => Const(0)
     }
 
-这个函数介绍了模式匹配的两个新的概念。首先，变量的`case`表达式有一个*防护（guard）*，紧随`if`关键字后的表达式。
+这个函数介绍了模式匹配的两个新的概念。首先，变量的`case`表达式有一层*保护（guard）*，即`if`关键字之后的那个表达式。这层保护可阻止成功地模式匹配，除非这个表达式为真。我们这里是用来确保只有被求导的变量名与派生变量`v`相同的情况下，才返回常数`1`。这里用到的第二个模式匹配的新特性是*通配符(wildcard)*，写作`_`，这个模式可以匹配任何值，不需要指定名称。
 
-
-
-
-
-## Case Classes and Pattern Matching
-
-    def derive(t: Tree, v: String): Tree = t match {
-      case Sum(l, r) => Sum(derive(l, v), derive(r, v))
-      case Var(n) if (v == n) => Const(1)
-      case _ => Const(0)
-    }
-
-This function introduces two new concepts related to pattern matching.
-First of all, the `case` expression for variables has a
-*guard*, an expression following the `if` keyword. This
-guard prevents pattern matching from succeeding unless its expression
-is true. Here it is used to make sure that we return the constant `1`
-only if the name of the variable being derived is the same as the
-derivation variable `v`. The second new feature of pattern
-matching used here is the *wildcard*, written `_`, which is
-a pattern matching any value, without giving it a name.
-
-We did not explore the whole power of pattern matching yet, but we
-will stop here in order to keep this document short. We still want to
-see how the two functions above perform on a real example. For that
-purpose, let's write a simple `main` function which performs
-several operations on the expression `(x+x)+(7+y)`: it first computes
-its value in the environment `{ x -> 5, y -> 7 }`, then
-computes its derivative relative to `x` and then `y`.
+虽然我们还没有探索完模式匹配的所有功能，但是为了控制篇幅，我们就此浅尝则止。我们依然想了解一下以上两个函数在实例中表现如何。为了这个目的，让我们写一个简单的`main`函数，根据表达式`(x+x)+(7+y)`执行这几步操作：首先计算它在`{ x -> 5, y -> 7 }`的环境下的值，然后分别计算对`x`和`y`的导数。
 
     def main(args: Array[String]) {
       val exp: Tree = Sum(Sum(Var("x"),Var("x")),Sum(Const(7),Var("y")))
@@ -645,7 +282,7 @@ computes its derivative relative to `x` and then `y`.
       println("Derivative relative to y:\n " + derive(exp, "y"))
     }
 
-Executing this program, we get the expected output:
+执行这个程序，我们得到这些期望的输出：
 
     Expression: Sum(Sum(Var(x),Var(x)),Sum(Const(7),Var(y)))
     Evaluation with x=5, y=7: 24
@@ -654,62 +291,33 @@ Executing this program, we get the expected output:
     Derivative relative to y:
      Sum(Sum(Const(0),Const(0)),Sum(Const(0),Const(1)))
 
-By examining the output, we see that the result of the derivative
-should be simplified before being presented to the user. Defining a
-basic simplification function using pattern matching is an interesting
-(but surprisingly tricky) problem, left as an exercise for the reader.
+通过测试这个输出，我们看到导数结果应该在呈现给用户之前简化一下。
+使用模式匹配定义一个基本的简化函数是个有趣的（但是极其微妙的）的问题，
+留给读者作为练习。
 
-## Traits
+## 特性（Traits）
 
-Apart from inheriting code from a super-class, a Scala class can also
-import code from one or several *traits*.
+除了从父类继承代码，Scala类也能够从一个或者多个*特性（traits）*
 
-Maybe the easiest way for a Java programmer to understand what traits
-are is to view them as interfaces which can also contain code. In
-Scala, when a class inherits from a trait, it implements that trait's
-interface, and inherits all the code contained in the trait.
+也许对于Java程序员而言，理解*特性*是什么最简单的方式是将它们看作也能包含代码的接口。
+Scala中，当一个类继承一个特性时，它实现这个特新的接口，同时继承这个特新包含的所有代码。
 
-To see the usefulness of traits, let's look at a classical example:
-ordered objects. It is often useful to be able to compare objects of a
-given class among themselves, for example to sort them. In Java,
-objects which are comparable implement the `Comparable`
-interface. In Scala, we can do a bit better than in Java by defining
-our equivalent of `Comparable` as a trait, which we will call
-`Ord`.
+为了展示特性的有用之处，我们看一个经典的例子：有序对象。能够在给定类的对象之间进行比较是通常是很有用的，比如对他们进行排序。Java中，可比较的对象继承接口`Comparable`。Scala中，我们能够比Java中做得稍微好点，将等价的`Comparable`定义为特性，称为`Ord`。
 
-When comparing objects, six different predicates can be useful:
-smaller, smaller or equal, equal, not equal, greater or equal, and
-greater. However, defining all of them is fastidious, especially since
-four out of these six can be expressed using the remaining two. That
-is, given the equal and smaller predicates (for example), one can
-express the other ones. In Scala, all these observations can be
-nicely captured by the following trait declaration:
+比较对象的时候，六个不同的谓语是可用的：小于，小于或等于，等于，不等于，大于或等于，以及大于。然而，将它们全部定义一遍属于下策，特别是这六个中的四个可以用剩下的两个来表示。也就是给出等于和小于（比如），其他的都可以表示。Scala中，所有这些观察结果均可以通过以下trait的声明涵盖：
 
     trait Ord {
       def < (that: Any): Boolean
       def <=(that: Any): Boolean =  (this < that) || (this == that)
       def > (that: Any): Boolean = !(this <= that)
       def >=(that: Any): Boolean = !(this < that)
-    }
+    }	
 
-This definition both creates a new type called `Ord`, which
-plays the same role as Java's `Comparable` interface, and
-default implementations of three predicates in terms of a fourth,
-abstract one. The predicates for equality and inequality do not appear
-here since they are by default present in all objects.
+抽象来讲，这个定义创建了一个叫`Ord`的新类型，担任与Java的`Comparable`相同的角色，同时根据第四个默认定义了其他三个谓语。等于和不等于的谓语这里并没出现，因为他们默认包含在所有对象中。
 
-The type `Any` which is used above is the type which is a
-super-type of all other types in Scala. It can be seen as a more
-general version of Java's `Object` type, since it is also a
-super-type of basic types like `Int`, `Float`, etc.
+上面用到的类型`Any`是Scala中所有其他类型的父类型。可看作Java的`Object`类型更一般化的版本，因为它也是基础类型比如`Int`，`Float`等的父类型。
 
-To make objects of a class comparable, it is therefore sufficient to
-define the predicates which test equality and inferiority, and mix in
-the `Ord` class above. As an example, let's define a
-`Date` class representing dates in the Gregorian calendar. Such
-dates are composed of a day, a month and a year, which we will all
-represent as integers. We therefore start the definition of the
-`Date` class as follows:
+为了使得一个类的对象可比的，定义检测等于和不等于的谓语，然后和上述`Ord`类混合就可以充分满足。作为一个例子，我们定义一个`Date`类表示格列高利历（阳历）。这样的日期由日，月和年组成，我们都用整数表示。因此我们如下定义这个`Date`类：
 
     class Date(y: Int, m: Int, d: Int) extends Ord {
       def year = y
@@ -717,15 +325,9 @@ represent as integers. We therefore start the definition of the
       def day = d
       override def toString(): String = year + "-" + month + "-" + day
 
-The important part here is the `extends Ord` declaration which
-follows the class name and parameters. It declares that the
-`Date` class inherits from the `Ord` trait.
+这里重要部分是类名和参数之后`extends Ord`的声明，它声明`Date`类继承至`Ord`特性。
 
-Then, we redefine the `equals` method, inherited from
-`Object`, so that it correctly compares dates by comparing their
-individual fields. The default implementation of `equals` is not
-usable, because as in Java it compares objects physically. We arrive
-at the following definition:
+接下来，我们重新定义继承至`Object`的`equals`方法，以便可以通过比较各个字段来正确地比较日期。`equals`的默认实现是不可用的，因为Java中它比较对象本省。我们的定义是：
 
     override def equals(that: Any): Boolean =
       that.isInstanceOf[Date] && {
@@ -733,18 +335,9 @@ at the following definition:
         o.day == day && o.month == month && o.year == year
       }
 
-This method makes use of the predefined methods `isInstanceOf`
-and `asInstanceOf`. The first one, `isInstanceOf`,
-corresponds to Java's `instanceof` operator, and returns true
-if and only if the object on which it is applied is an instance of the
-given type. The second one, `asInstanceOf`, corresponds to
-Java's cast operator: if the object is an instance of the given type,
-it is viewed as such, otherwise a `ClassCastException` is
-thrown.
+这个方法利用了预定义的`isInstanceOf`和`asInstanceOf`方法。第一个，`isInstanceOf`，对应Java的`instanceOf`操作，并在当且仅当它所应用的对象是给出类型的实例才返回真。第二个，`asInstanceOf`，对应Java的转换操作：如果对象是给出类型的实例，则当作这个类型看待，否则抛出`ClassCastException`。
 
-Finally, the last method to define is the predicate which tests for
-inferiority, as follows. It makes use of another predefined method,
-`error`, which throws an exception with the given error message.
+最后，要定义的最后一个方法是检测小于的谓语，如下。用到了另一个预定义的方法`error`，它抛出给定错误消息的异常。
 
     def <(that: Any): Boolean = {
       if (!that.isInstanceOf[Date])
@@ -756,18 +349,12 @@ inferiority, as follows. It makes use of another predefined method,
                          (month == o.month && day < o.day)))
     }
 
-This completes the definition of the `Date` class. Instances of
-this class can be seen either as dates or as comparable objects.
-Moreover, they all define the six comparison predicates mentioned
-above: `equals` and `<` because they appear directly in
-the definition of the `Date` class, and the others because they
-are inherited from the `Ord` trait.
+这也完成了对`Date`类的定义。这个类的实例可被视为日期或者可比较对象。此外，它们定义了上面提到的离歌比较谓语：`equals`和`<`，因为他们直接出现在`Date`类和其他的的定义中，因为他们都继承至`Ord`特性。
 
-Traits are useful in other situations than the one shown here, of
-course, but discussing their applications in length is outside the
-scope of this document.
+当然，特性在其他场景中比这里展示的更加有用，但是深入讨论它们的应用超出了本文的范围。
 
-## Genericity
+
+## 泛型（Genericity）
 
 The last characteristic of Scala we will explore in this tutorial is
 genericity. Java programmers should be well aware of the problems
