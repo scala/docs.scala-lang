@@ -1,6 +1,6 @@
 ---
 layout: overview
-title: A Scala Tutorial for Java Programmers
+title: Java程序员的Scala指南
 overview: scala-for-java-programmers
 
 disqus: true
@@ -11,9 +11,11 @@ languages: [es, ko, de, zh-cn]
 作者：Michel Schinz and Philipp Haller 译者：[陈浩](http://haoch.me)
 
 ## 介绍
+
 本文档是Scala语言及其编译器的一个快速介绍。其目标读者是已经有一定编程经验并且希望大概知道Scala可用来做什么。本文默认读者已具备面向对象尤其是Java的基础知识。
 
 ### 第一个示例
+
 作为第一个例子，我们将使用*Hello World*程序。也许它并不吸引人，但是可以很容易在无需对这门语言太多了解的情况下展示Scala工具的用法。具体内容如下：
 
     object HelloWorld {
@@ -28,7 +30,8 @@ languages: [es, ko, de, zh-cn]
 
 机敏的读者也许注意到这里`main`方法没有声明为`static`。因为Scala中不存在静态成员（方法或者字段）。对于静态成员，Scala程序员会在单例对象中定义。
 
-### 编译示例 ###
+### 编译示例
+
 我们利用`scalac`，即Scala编译器，来编译这个例子。`scalac`工作原理与大多数编译器类似：它以一个源文件作为参数，可能带有一些选项，然后生成一个活着多个对象文件。这些生成的对象文件是标准的Java class文件。
 
 如果我们将上述程序保存至一个叫`HelloWorld.scala`的文件中，我们便能通过输入以下命令编译它（这个较大的符号`>`表示命令行提示，无需输入）：
@@ -84,6 +87,7 @@ Scala的引入声明与Java的看起来非常相似。然而，它更加强大�
 结束关于Java交互的这一节之前，值得注意的是在Scala中也可能直接继承Java类和实现Java接口。
 
 ## 一切都是对象
+
 Scala是一个纯粹的面向对象语言，因为一起都是对象，包括数字或者函数。它和Java有所不同，Java区分原始类型（例如`boolean`和`int`）和引用类型，而且不能够将函数当为值来操作。
 
 ## 数字是对象
@@ -295,9 +299,9 @@ Java中，这样一个树会用一个树的抽象父类，和节点或者叶子�
 使用模式匹配定义一个基本的简化函数是个有趣的（但是极其微妙的）的问题，
 留给读者作为练习。
 
-## 特性（Traits）
+## 特性
 
-除了从父类继承代码，Scala类也能够从一个或者多个*特性（traits）*
+除了从父类继承代码，Scala类也能够从一个或者多个*特性（Traits）*
 
 也许对于Java程序员而言，理解*特性*是什么最简单的方式是将它们看作也能包含代码的接口。
 Scala中，当一个类继承一个特性时，它实现这个特新的接口，同时继承这个特新包含的所有代码。
@@ -385,12 +389,7 @@ Scala能够通过定义范型类（和方法）来解决这个问题。让我们
     }
 
 正如这个例子中所看到的，`get`方法返回的值用作整数前，不需要转换。同样在这个特别单元中也不可能存储除了整数外的任何东西，因为它已经被声明容纳一个整数。
-　
 
-## Conclusion
+## 总结
 
-This document gave a quick overview of the Scala language and
-presented some basic examples. The interested reader can go on, for example, by
-reading the document *Scala By Example*, which
-contains much more advanced examples, and consult the *Scala
-  Language Specification* when needed.
+本文档提供了对Scala语言的一个快速的概述，并介绍了一些基本示例。感兴趣的读者可以继续，对于实例，请阅读文档 *Scala实例（Scala By Example）*，包含更多更高级的例子，如有需要，可参考 *Scala语言规范（Scala Language Specification）* 。
