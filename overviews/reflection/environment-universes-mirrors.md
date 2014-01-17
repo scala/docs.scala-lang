@@ -138,7 +138,7 @@ A `FieldMirror` is used for getting/setting instance fields (like methods, Scala
     scala> fmY.get
     res2: Any = 4
 
-A `ClassMirror` is used for creating invoker mirrors for constructors. Entry points: for static classes `val cm1 = m.reflectClass(<class symbol>)`, for inner classes `val mm2 = im.reflectClass(<module symbol>)`. Example:
+A `ClassMirror` is used for creating invoker mirrors for constructors. Entry points: for static classes `val cm1 = m.reflectClass(<class symbol>)`, for inner classes `val mm2 = im.reflectClass(<class symbol>)`. Example:
 
     scala> case class C(x: Int)
     defined class C
