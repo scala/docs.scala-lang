@@ -307,18 +307,18 @@ RNA Bases:
 
     abstract class Base
     case object A extends Base
-    case object T extends Base
-    case object G extends Base
     case object U extends Base
+    case object G extends Base
+    case object C extends Base
   
     object Base {
-      val fromInt: Int => Base = Array(A, T, G, U)
-      val toInt: Base => Int = Map(A -> 0, T -> 1, G -> 2, U -> 3)
+      val fromInt: Int => Base = Array(A, U, G, C)
+      val toInt: Base => Int = Map(A -> 0, U -> 1, G -> 2, C -> 3)
     }
 
 Say you want to create a new sequence type for RNA strands, which are
-sequences of bases A (adenine), T (thymine), G (guanine), and U
-(uracil). The definitions for bases are easily set up as shown in the
+sequences of bases A (adenine), U (uracil), G (guanine), and C
+(cytosine). The definitions for bases are easily set up as shown in the
 listing of RNA bases above.
 
 Every base is defined as a case object that inherits from a common
@@ -424,14 +424,14 @@ in the `RNA1` object. It takes a variable number of `Base` arguments and
 simply forwards them as a sequence to `fromSeq`. Here are the two
 creation schemes in action:
 
-    scala> val xs = List(A, G, T, A)
-    xs: List[Product with Base] = List(A, G, T, A)
+    scala> val xs = List(A, G, U, A)
+    xs: List[Product with Base] = List(A, G, U, A)
   
     scala> RNA1.fromSeq(xs)
-    res1: RNA1 = RNA1(A, G, T, A)
+    res1: RNA1 = RNA1(A, G, U, A)
   
-    scala> val rna1 = RNA1(A, U, G, G, T)
-    rna1: RNA1 = RNA1(A, U, G, G, T)
+    scala> val rna1 = RNA1(A, U, G, G, C)
+    rna1: RNA1 = RNA1(A, U, G, G, C)
 
 ## Adapting the result type of RNA methods ##
 
@@ -441,7 +441,7 @@ Here are some more interactions with the `RNA1` abstraction:
     res2: Int = 5
   
     scala> rna1.last
-    res3: Base = T
+    res3: Base = C
   
     scala> rna1.take(3)
     res4: IndexedSeq[Base] = Vector(A, U, G)
@@ -538,14 +538,14 @@ first result type.
 With the refined implementation of the [`RNA2` class](#second_version_of_rna_strands_class), methods like `take`,
 `drop`, or `filter` work now as expected:
 
-    scala> val rna2 = RNA2(A, U, G, G, T)
-    rna2: RNA2 = RNA2(A, U, G, G, T)
+    scala> val rna2 = RNA2(A, U, G, G, C)
+    rna2: RNA2 = RNA2(A, U, G, G, C)
   
     scala> rna2 take 3
     res5: RNA2 = RNA2(A, U, G)
   
     scala> rna2 filter (U !=)
-    res6: RNA2 = RNA2(A, G, G, T)
+    res6: RNA2 = RNA2(A, G, G, C)
 
 ## Dealing with map and friends ##
 
@@ -566,17 +566,17 @@ a result of different type as its arguments--appending a list of
 methods be adapted to RNA strands? Ideally we'd expect that mapping
 bases to bases over an RNA strand would yield again an RNA strand:
 
-    scala> val rna = RNA(A, U, G, G, T)
-    rna: RNA = RNA(A, U, G, G, T)
+    scala> val rna = RNA(A, U, G, G, C)
+    rna: RNA = RNA(A, U, G, G, C)
   
-    scala> rna map { case A => T case b => b }
-    res7: RNA = RNA(T, U, G, G, T)
+    scala> rna map { case A => U case b => b }
+    res7: RNA = RNA(U, U, G, G, C)
 
 Likewise, appending two RNA strands with `++` should yield again
 another RNA strand:
 
     scala> rna ++ rna
-    res8: RNA = RNA(A, U, G, G, T, A, U, G, G, T)
+    res8: RNA = RNA(A, U, G, G, C, A, U, G, G, C)
 
 On the other hand, mapping bases to some other type over an RNA strand
 cannot yield another RNA strand because the new elements have the
@@ -585,24 +585,24 @@ appending elements that are not of type `Base` to an RNA strand can
 yield a general sequence, but it cannot yield another RNA strand.
 
     scala> rna map Base.toInt
-    res2: IndexedSeq[Int] = Vector(0, 3, 2, 2, 1)
+    res2: IndexedSeq[Int] = Vector(0, 1, 2, 2, 3)
   
     scala> rna ++ List("missing", "data")
     res3: IndexedSeq[java.lang.Object] = 
-      Vector(A, U, G, G, T, missing, data)
+      Vector(A, U, G, G, C, missing, data)
 
 This is what you'd expect in the ideal case. But this is not what the
 [`RNA2` class](#second_version_of_rna_strands_class) provides. In fact, if you ran the first two examples above
 with instances of this class you would obtain:
 
-    scala> val rna2 = RNA2(A, U, G, G, T)
-    rna2: RNA2 = RNA2(A, U, G, G, T)
+    scala> val rna2 = RNA2(A, U, G, G, C)
+    rna2: RNA2 = RNA2(A, U, G, G, C)
   
-    scala> rna2 map { case A => T case b => b }
-    res0: IndexedSeq[Base] = Vector(T, U, G, G, T)
+    scala> rna2 map { case A => U case b => b }
+    res0: IndexedSeq[Base] = Vector(U, U, G, G, C)
   
     scala> rna2 ++ rna2
-    res1: IndexedSeq[Base] = Vector(A, U, G, G, T, A, U, G, G, T)
+    res1: IndexedSeq[Base] = Vector(A, U, G, G, C, A, U, G, G, C)
 
 So the result of `map` and `++` is never an RNA strand, even if the
 element type of the generated collection is a `Base`. To see how to do
