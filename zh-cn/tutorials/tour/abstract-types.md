@@ -1,26 +1,27 @@
 ---
 layout: tutorial
 title: Abstract Types
+languages:[en,es,"zh-cn"]
 
 disqus: true
 
 tutorial: scala-tour
 num: 2
 outof: 35
-languages: [zh-cn]
 ---
 
-In Scala, classes are parameterized with values (the constructor parameters) and with types (if classes are [generic](generic-classes.html)). For reasons of regularity, it is not only possible to have values as object members; types along with values are members of objects. Furthermore, both forms of members can be concrete and abstract.
-Here is an example which defines both a deferred value definition and an abstract type definition as members of [class](traits.html) `Buffer`.
+Scala中，类可以按值（构造器参数）和按类型（如果类是[范型](generic-classes.html)）传递参数。为了整齐的缘故，不仅仅可以把值作为对象成员，与值一起的类型也是对象的成员。此外，两种形式的成员都可以被具体化和抽象化。
+这里有一个例子，同时将一个后面值的定义和一个抽象类型的定义作为`Buffer`[类](traits.html)的成员。
  
     trait Buffer {
       type T
       val element: T
     }
  
-*Abstract types* are types whose identity is not precisely known. In the example above, we only know that each object of class `Buffer` has a type member `T`, but the definition of class `Buffer` does not reveal to what concrete type the member type `T` corresponds. Like value definitions, we can override type definitions in subclasses. This allows us to reveal more information about an abstract type by tightening the type bound (which describes possible concrete instantiations of the abstract type).
 
-In the following program we derive a class `SeqBuffer` which allows us to store only sequences in the buffer by stating that type `T` has to be a subtype of `Seq[U]` for a new abstract type `U`:
+*抽象类型*是指定义不是明确已知的类型。在上述例子中，我们只能知道`Buffer`类的每个对象都有一个类型成员`T`，但是`Buffer`类的定义不需要透露成员类型`T`对应的具体类型。就像值的定义一样，我们能够在子类中重载类型定义。这允许我们通过绑定类型范围（即描述抽象类型可能的具体实例）透露关于抽象类型的更多信息
+
+在下面的程序中，我们派生出一个`SeqBuffer`类，通过声明对于新的抽象类型`U`类型`T`必须是`Seq[U]`的子类型，允许我们只能在缓存中存储序列：
  
     abstract class SeqBuffer extends Buffer {
       type U
@@ -28,7 +29,7 @@ In the following program we derive a class `SeqBuffer` which allows us to store 
       def length = element.length
     }
  
-Traits or [classes](classes.html) with abstract type members are often used in combination with anonymous class instantiations. To illustrate this, we now look at a program which deals with a sequence buffer that refers to a list of integers:
+拥有抽象类型成员的特性或者[类](classes.html)通常被用在与匿名类实例的组合中。为了说明这一点，我们现在看一个处理指向整数列表的序列缓存的程序，
  
     abstract class IntSeqBuffer extends SeqBuffer {
       type U = Int
@@ -44,10 +45,10 @@ Traits or [classes](classes.html) with abstract type members are often used in c
       println("length = " + buf.length)
       println("content = " + buf.element)
     }
- 
-The return type of method `newIntSeqBuf` refers to a specialization of trait `Buffer` in which type `U` is now equivalent to `Int`. We have a similar type alias in the anonymous class instantiation within the body of method `newIntSeqBuf`. Here we create a new instance of `IntSeqBuffer` in which type `T` refers to `List[Int]`.
 
-Please note that it is often possible to turn abstract type members into type parameters of classes and vice versa. Here is a version of the code above which only uses type parameters:
+方法`newIntSeqBuf`的返回类型引用一个特殊的`Buffer`，其中类型`U`现在等价于`Int`。我们在方法`newIntSeqBuf`的主体中匿名类实例里面有一个类似的类型别名。这里我们创建`IntSeqBuffer`的一个实例，其中类型`T`引用`List[Int]`。
+
+请注意经常可以将抽象类型成员转化为类的类型参数，反之亦然。这里是上述代码的一个只使用类型参数的版本：
  
     abstract class Buffer[+T] {
       val element: T
@@ -64,6 +65,7 @@ Please note that it is often possible to turn abstract type members into type pa
       println("length = " + buf.length)
       println("content = " + buf.element)
     }
- 
-Note that we have to use [variance annotations](variances.html) here; otherwise we would not be able to hide the concrete sequence implementation type of the object returned from method `newIntSeqBuf`.  Furthermore, there are cases where it is not possible to replace abstract types with type parameters.
 
+注意我们这里必须使用[型变注释](variances.html)；否则我们不能隐藏方法`newIntSeqBuf`的返回对象的具体序列实现类型。此外，也有不能将抽象类型替换为类型参数的情况。
+
+<a href="http://haoch.me" alt="译：陈浩"/>
