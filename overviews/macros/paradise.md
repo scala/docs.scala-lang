@@ -38,7 +38,7 @@ to your build (granted you’ve already [set up SBT](/overviews/macros/overview.
 to use macros).
 
     resolvers += Resolver.sonatypeRepo("releases")
-    addCompilerPlugin("org.scalamacros" % "paradise" % "2.0.0-M2" cross CrossVersion.full)
+    addCompilerPlugin("org.scalamacros" % "paradise" % "2.0.0-M3" cross CrossVersion.full)
 
 To use macro paradise in Maven follow the instructions provided at Stack Overflow on the page ["Enabling the macro-paradise Scala compiler plugin in Maven projects"](http://stackoverflow.com/questions/19086241/enabling-the-macro-paradise-scala-compiler-plugin-in-maven-projects) (also make sure to add the dependency on the Sonatype snapshots repository and `scala-reflect.jar`).
 
