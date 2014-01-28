@@ -67,7 +67,7 @@ The `foreach` method is meant to traverse all elements of the collection, and ap
 |  `xs.headOption`	    |The first element of `xs` in an option value, or None if `xs` is empty.|
 |  `xs.last`	    	    |The last element of the collection (or, some element, if no order is defined).|
 |  `xs.lastOption`	    |The last element of `xs` in an option value, or None if `xs` is empty.|
-|  `xs find p`	    	    |An option containing the first element in `xs` that satisfies `p`, or `None` is no element qualifies.|
+|  `xs find p`	    	    |An option containing the first element in `xs` that satisfies `p`, or `None` if no element qualifies.|
 |  **Subcollections:**      |						     |
 |  `xs.tail`	    	    |The rest of the collection except `xs.head`.    |
 |  `xs.init`	    	    |The rest of the collection except `xs.last`.    |
