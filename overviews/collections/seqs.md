@@ -14,7 +14,7 @@ The [Seq](http://www.scala-lang.org/api/current/scala/collection/Seq.html) trait
 The operations on sequences, summarized in the table below, fall into the following categories:
 
 * **Indexing and length** operations `apply`, `isDefinedAt`, `length`, `indices`, and `lengthCompare`. For a `Seq`, the `apply` operation means indexing; hence a sequence of type `Seq[T]` is a partial function that takes an `Int` argument (an index) and which yields a sequence element of type `T`. In other words `Seq[T]` extends `PartialFunction[Int, T]`. The elements of a sequence are indexed from zero up to the `length` of the sequence minus one. The `length` method on sequences is an alias of the `size` method of general collections. The `lengthCompare` method allows you to compare the lengths of two sequences even if one of the sequences has infinite length.
-* **Index search operations** `indexOf`, `lastIndexOf`, `indexofSlice`, `lastIndexOfSlice`, `indexWhere`, `lastIndexWhere`, `segmentLength`, `prefixLength`, which return the index of an element equal to a given value or matching some predicate.
+* **Index search operations** `indexOf`, `lastIndexOf`, `indexOfSlice`, `lastIndexOfSlice`, `indexWhere`, `lastIndexWhere`, `segmentLength`, `prefixLength`, which return the index of an element equal to a given value or matching some predicate.
 * **Addition operations** `+:`, `:+`, `padTo`, which return new sequences obtained by adding elements at the front or the end of a sequence.
 * **Update operations** `updated`, `patch`, which return a new sequence obtained by replacing some elements of the original sequence.
 * **Sorting operations** `sorted`, `sortWith`, `sortBy`, which sort sequence elements according to various criteria.
