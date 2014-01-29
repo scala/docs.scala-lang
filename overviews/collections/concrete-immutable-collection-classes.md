@@ -98,7 +98,7 @@ Here are some simple operations performed on a stack:
     scala> hasOne.pop
     res19: scala.collection.immutable.Stack[Int] = Stack()
 
-Immutable stacks are used rarely in Scala programs because their functionality is subsumed by lists: A `push` on an immutable stack is the same as a `::` on a list and a `pop` on a stack is the same a `tail` on a list.
+Immutable stacks are used rarely in Scala programs because their functionality is subsumed by lists: A `push` on an immutable stack is the same as a `::` on a list and a `pop` on a stack is the same as a `tail` on a list.
 
 ## Immutable Queues
 
@@ -150,11 +150,11 @@ Ranges are represented in constant space, because they can be defined by just th
 
 Hash tries are a standard way to implement immutable sets and maps efficiently. They are supported by class [immutable.HashMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/HashMap.html). Their representation is similar to vectors in that they are also trees where every node has 32 elements or 32 subtrees. But the selection of these keys is now done based on hash code. For instance, to find a given key in a map, one first takes the hash code of the key. Then, the lowest 5 bits of the hash code are used to select the first subtree, followed by the next 5 bits and so on. The selection stops once all elements stored in a node have hash codes that differ from each other in the bits that are selected up to this level.
 
-Hash tries strike a nice balance between reasonably fast lookups and reasonably efficient functional insertions (`+`) and deletions (`-`). That's why they underly Scala's default implementations of immutable maps and sets. In fact, Scala has a further optimization for immutable sets and maps that contain less than five elements. Sets and maps with one to four elements are stored as single objects that just contain the elements (or key/value pairs in the case of a map) as fields. The empty immutable set and the empty immutable map is in each case a single object - there's no need to duplicate storage for those because and empty immutable set or map will always stay empty.
+Hash tries strike a nice balance between reasonably fast lookups and reasonably efficient functional insertions (`+`) and deletions (`-`). That's why they underly Scala's default implementations of immutable maps and sets. In fact, Scala has a further optimization for immutable sets and maps that contain less than five elements. Sets and maps with one to four elements are stored as single objects that just contain the elements (or key/value pairs in the case of a map) as fields. The empty immutable set and the empty immutable map is in each case a single object - there's no need to duplicate storage for those because an empty immutable set or map will always stay empty.
 
 ## Red-Black Trees
 
-Red-black trees are a form of balanced binary trees where some nodes are designated "red" and others designated "black." Like any balanced binary tree, operations on them reliably complete in time logarithmic to the size of the tree.
+Red-black trees are a form of balanced binary tree where some nodes are designated "red" and others designated "black." Like any balanced binary tree, operations on them reliably complete in time logarithmic to the size of the tree.
 
 Scala provides implementations of immutable sets and maps that use a red-black tree internally. Access them under the names [TreeSet](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/TreeSet.html) and [TreeMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/TreeMap.html).
 
@@ -164,7 +164,7 @@ Scala provides implementations of immutable sets and maps that use a red-black t
     scala> res11 + 1 + 3 + 3
     res12: scala.collection.immutable.TreeSet[Int] = TreeSet(1, 3)
 
-Red black trees are the standard implementation of `SortedSet` in Scala, because they provide an efficient iterator that returns all elements in sorted order.
+Red-black trees are the standard implementation of `SortedSet` in Scala, because they provide an efficient iterator that returns all elements in sorted order.
 
 ## Immutable BitSets
 
@@ -185,7 +185,7 @@ Operations on bit sets are very fast. Testing for inclusion takes constant time.
 
 ## List Maps
 
-A [ListMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/ListMap.html) represents a map as a linked list of key-value pairs. In general, operations on a list map might have to iterate through the entire list. Thus, operations on a list map take time linear in the size of the map. In fact there is little usage for list maps in Scala because standard immutable maps are almost always faster. The only possible difference is if the map is for some reason constructed in such a way that the first elements in the list are selected much more often than the other elements.
+A [ListMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/ListMap.html) represents a map as a linked list of key-value pairs. In general, operations on a list map might have to iterate through the entire list. Thus, operations on a list map take time linear in the size of the map. In fact there is little usage for list maps in Scala because standard immutable maps are almost always faster. The only possible exception to this is if the map is for some reason constructed in such a way that the first elements in the list are selected much more often than the other elements.
 
     scala> val map = scala.collection.immutable.ListMap(1->"one", 2->"two")
     map: scala.collection.immutable.ListMap[Int,java.lang.String] = 
