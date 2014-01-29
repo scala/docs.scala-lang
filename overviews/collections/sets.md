@@ -13,12 +13,11 @@ languages: [ja]
 
 * **Tests** `contains`, `apply`, `subsetOf`. The `contains` method asks whether a set contains a given element. The `apply` method for a set is the same as `contains`, so `set(elem)` is the same as `set contains elem`. That means sets can also be used as test functions that return true for the elements they contain. 
 
-For example
+For example:
 
 
-    val fruit = Set("apple", "orange", "peach", "banana")
-    fruit: scala.collection.immutable.Set[java.lang.String] = 
-    Set(apple, orange, peach, banana)
+    scala> val fruit = Set("apple", "orange", "peach", "banana")
+    fruit: scala.collection.immutable.Set[java.lang.String] = Set(apple, orange, peach, banana)
     scala> fruit("peach")
     res0: Boolean = true
     scala> fruit("potato")
