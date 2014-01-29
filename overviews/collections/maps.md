@@ -74,7 +74,7 @@ Mutable maps support in addition the operations summarized in the following tabl
 |  **Cloning:**             |						     |
 |  `ms.clone`               |Returns a new mutable map with the same mappings as `ms`.|
 
-The addition and removal operations for maps mirror those for sets. As is the for sets, mutable maps also support the non-destructive addition operations `+`, `-`, and `updated`, but they are used less frequently because they involve a copying of the mutable map. Instead, a mutable map `m` is usually updated "in place", using the two variants `m(key) = value` or `m += (key -> value)`. There are is also the variant `m put (key, value)`, which returns an `Option` value that contains the value previously associated with `key`, or `None` if the `key` did not exist in the map before.
+The addition and removal operations for maps mirror those for sets. Like sets, mutable maps also support the non-destructive addition operations `+`, `-`, and `updated`, but they are used less frequently because they involve a copying of the mutable map. Instead, a mutable map `m` is usually updated "in place", using the two variants `m(key) = value` or `m += (key -> value)`. There is also the variant `m put (key, value)`, which returns an `Option` value that contains the value previously associated with `key`, or `None` if the `key` did not exist in the map before.
 
 The `getOrElseUpdate` is useful for accessing maps that act as caches. Say you have an expensive computation triggered by invoking a function `f`:
 
@@ -85,7 +85,7 @@ The `getOrElseUpdate` is useful for accessing maps that act as caches. Say you h
 
 Assume further that `f` has no side-effects, so invoking it again with the same argument will always yield the same result. In that case you could save time by storing previously computed bindings of argument and results of `f` in a map and only computing the result of `f` if a result of an argument was not found there. One could say the map is a _cache_ for the computations of the function `f`.
 
-    val cache = collection.mutable.Map[String, String]()
+    scala> val cache = collection.mutable.Map[String, String]()
     cache: scala.collection.mutable.Map[String,String] = Map()
 
 You can now create a more efficient caching version of the `f` function:
