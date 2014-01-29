@@ -133,7 +133,7 @@ If you create new sets from a tree-set (for instance by concatenation or filteri
     scala> res2 + ("one", "two", "three", "four")
     res3: scala.collection.immutable.TreeSet[String] = TreeSet(four, one, three, two)
 
-Sorted sets also support ranges of elements. For instance, the `range` method returns all elements from a starting element up to, but excluding, and end element. Or, the `from` method returns all elements greater or equal than a starting element in the set's ordering. The result of calls to both methods is again a sorted set. Examples:
+Sorted sets also support ranges of elements. For instance, the `range` method returns all elements from a starting element up to, but excluding, an end element. Or, the `from` method returns all elements greater or equal than a starting element in the set's ordering. The result of calls to both methods is again a sorted set. Examples:
 
     scala> res3 range ("one", "two")
     res4: scala.collection.immutable.TreeSet[String] = TreeSet(one, three)
