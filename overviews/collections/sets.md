@@ -13,12 +13,11 @@ languages: [ja]
 
 * **Tests** `contains`, `apply`, `subsetOf`. The `contains` method asks whether a set contains a given element. The `apply` method for a set is the same as `contains`, so `set(elem)` is the same as `set contains elem`. That means sets can also be used as test functions that return true for the elements they contain. 
 
-For example
+For example:
 
 
-    val fruit = Set("apple", "orange", "peach", "banana")
-    fruit: scala.collection.immutable.Set[java.lang.String] = 
-    Set(apple, orange, peach, banana)
+    scala> val fruit = Set("apple", "orange", "peach", "banana")
+    fruit: scala.collection.immutable.Set[java.lang.String] = Set(apple, orange, peach, banana)
     scala> fruit("peach")
     res0: Boolean = true
     scala> fruit("potato")
@@ -134,7 +133,7 @@ If you create new sets from a tree-set (for instance by concatenation or filteri
     scala> res2 + ("one", "two", "three", "four")
     res3: scala.collection.immutable.TreeSet[String] = TreeSet(four, one, three, two)
 
-Sorted sets also support ranges of elements. For instance, the `range` method returns all elements from a starting element up to, but excluding, and end element. Or, the `from` method returns all elements greater or equal than a starting element in the set's ordering. The result of calls to both methods is again a sorted set. Examples:
+Sorted sets also support ranges of elements. For instance, the `range` method returns all elements from a starting element up to, but excluding, an end element. Or, the `from` method returns all elements greater or equal than a starting element in the set's ordering. The result of calls to both methods is again a sorted set. Examples:
 
     scala> res3 range ("one", "two")
     res4: scala.collection.immutable.TreeSet[String] = TreeSet(one, three)
