@@ -2,7 +2,7 @@
 ---
 layout: sip
 disqus: true
-title: SIP-23 Backticks in String Interpolation
+title: SIP-24 Backticks in String Interpolation
 ---
 
 **Kevin Wright**
