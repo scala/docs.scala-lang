@@ -44,7 +44,7 @@ and string-literal form, denoted by backticks:
 String-literal form is of special interest for interpolation, as it allows domain-specific identifiers that are particularly
 suited to areas such as code generation, quasiquoting and markup languages.
 
-To use such identifiers, it becomes necessary to use backticks within full-form interpolation. e.g:
+To use such identifiers, it becomes necessary to redundantly nest backticks within full-form interpolation. e.g:
 
     s"implicit def hlistTupler${arity}[${`A..N`}] : Aux[${`A::N`}, ${`(A..N)`}] = ..."
 
@@ -72,14 +72,19 @@ Allow backtick-denoted identifiers when using short-form string interpolation, a
 
 Permitting any characters within the two delimiting backticks, as per the language specification.
 
+This (non-enhanced) proposal doesn't break any compatibility, as the `$\`` construct is currently an error within interpolated strings.
+
 ## Enhanced proposal ##
 
-Allow backtick-denoted identifiers in string interpolation, *without requiring the `$` prefix*. Owing to backward-compatibility, this could only occur at a major version:
+Allow backtick-denoted identifiers in string interpolation, *without requiring the `$` prefix*:
 
     s"implicit def hlistTupler`arity`[`A..N`] : Aux[`A::N`, `(A..N)`] = ..."
     s"I am `qual`body"
 
 As is the norm with escape characters, doubling the backtick would allow it to appear as a literal character in the resuling string.
+
+This is a **breaking change**, most likely to impact users of quasiquotes, where any existing uses would need to be escaped by doubling.  Owing to backward-compatibility, this could normally only occur at a major version, though quasiquotes are fortunately still experimental.
+
 
 ## Syntax changes ##
 
@@ -92,6 +97,21 @@ The escaping syntax within processed strings (for the non-enhanced proposal) nee
     escape   ::= ‘$$’ 
               |  ‘$’ letter { letter | digit } 
               |  ‘$’ ‘`’ stringLit ‘`’
+              |  ‘$’BlockExpr
+    alphaid  ::=  upper idrest
+              |  varid
+
+and for the enhanced proposal:
+
+    SimpleExpr1  ::= … | processedStringLiteral
+    processedStringLiteral
+             ::= alphaid‘"’ {printableChar \ (‘"’ | ‘$’ | ‘`’) | escape} ‘"’ 
+              |  alphaid ‘"""’ {[‘"’] [‘"’] char \ (‘"’ | ‘$’ | ‘`’) | escape} {‘"’} ‘"""’
+    escape   ::= ‘$$’ 
+              |  ‘``’
+              |  ‘$’ letter { letter | digit } 
+              |  ‘$’ ‘`’ stringLit ‘`’
+              |  ‘`’ stringLit ‘`’
               |  ‘$’BlockExpr
     alphaid  ::=  upper idrest
               |  varid
