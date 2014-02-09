@@ -72,7 +72,7 @@ Allow backtick-denoted identifiers when using short-form string interpolation, a
 
 Permitting any characters within the two delimiting backticks, as per the language specification.
 
-This (non-enhanced) proposal doesn't break any compatibility, as the `$\`` construct is currently an error within interpolated strings.
+This (non-enhanced) proposal doesn't break any compatibility, as the `` $` `` construct is currently an error within interpolated strings.
 
 ## Enhanced proposal ##
 
