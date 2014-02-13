@@ -15,8 +15,7 @@ title: スレッドセーフティ
 残念ながら Scala 2.10.0 でリリースされた現行の状態ではリフレクションはスレッドセーフではない。
 [SI-6240](https://issues.scala-lang.org/browse/SI-6240) が報告されているので、それを使って進捗を追跡したり、技術的な詳細を照会することができるが、ここに現状で分かっていることをまとめてみたい。
 
-<span class="label success">NEW</span>
-<p>Thread safety issues have been fixed in Scala 2.11.0-RC1, but we are going to keep this document available for now, since the problem still remains in the Scala 2.10.x series, and we currently don't have concrete plans on when the fix is going to be backported.</p>
+<p><span class="label success">NEW</span>Thread safety issues have been fixed in Scala 2.11.0-RC1, but we are going to keep this document available for now, since the problem still remains in the Scala 2.10.x series, and we currently don't have concrete plans on when the fix is going to be backported.</p>
 
 現在の所、リフレクション関連では 2通りの競合状態があることが分かっている。第一はリフレクションの初期化
 (`scala.reflect.runtime.universe` が最初にアクセルされるときに呼ばれるコード)
