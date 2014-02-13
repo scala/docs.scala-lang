@@ -5,8 +5,7 @@ title: Use Cases
 disqus: true
 
 partof: macros
-num: 2
-outof: 11
+num: 1
 languages: [ja]
 ---
 

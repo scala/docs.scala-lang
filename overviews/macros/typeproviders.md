@@ -5,8 +5,7 @@ title: Type Providers
 disqus: true
 
 partof: macros
-num: 7
-outof: 11
+num: 6
 languages: [ja]
 ---
 <span class="label warning" style="float: right;">EXPERIMENTAL</span>
