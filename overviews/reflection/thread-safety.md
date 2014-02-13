@@ -18,7 +18,8 @@ Unfortunately, in its current state released in Scala 2.10.0, reflection is not 
 There's a JIRA issue [SI-6240](https://issues.scala-lang.org/browse/SI-6240), which can be used to track our progress
 and to look up technical details, and here's a concise summary of the state of the art.
 
-<span class="label success">NEW</span> Thread safety issues have been fixed in Scala 2.11.0-RC1, but we are going to keep this document available for now, since the problem still remains in the Scala 2.10.x series, and we currently don't have concrete plans on when the fix is going to be backported.
+<span class="label success">NEW</span>
+<p>Thread safety issues have been fixed in Scala 2.11.0-RC1, but we are going to keep this document available for now, since the problem still remains in the Scala 2.10.x series, and we currently don't have concrete plans on when the fix is going to be backported.</p>
 
 Currently we know about two kinds of races associated with reflection. First of all, reflection initialization (the code that is called
 when `scala.reflect.runtime.universe` is accessed for the first time) cannot be safely called from multiple threads. Secondly, symbol
