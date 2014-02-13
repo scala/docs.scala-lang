@@ -5,8 +5,7 @@ language: ja
 disqus: true
 
 partof: macros
-num: 4
-outof: 9
+num: 3
 title: マクロバンドル
 ---
 <span class="label warning" style="float: right;">EXPERIMENTAL</span>
