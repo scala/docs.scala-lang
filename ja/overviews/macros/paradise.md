@@ -5,8 +5,7 @@ language: ja
 disqus: true
 
 partof: macros
-num: 8
-outof: 9
+num: 7
 title: マクロパラダイス
 ---
 <span class="label success" style="float: right;">NEW</span>

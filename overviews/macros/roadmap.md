@@ -5,8 +5,7 @@ title: Roadmap
 disqus: true
 
 partof: macros
-num: 11
-outof: 11
+num: 10
 languages: [ja]
 ---
 

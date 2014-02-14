@@ -5,8 +5,7 @@ language: ja
 disqus: true
 
 partof: macros
-num: 9
-outof: 9
+num: 8
 title: ロードマップ
 ---
 

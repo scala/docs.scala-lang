@@ -5,8 +5,7 @@ title: Macro Bundles
 disqus: true
 
 partof: macros
-num: 5
-outof: 11
+num: 4
 languages: [ja]
 ---
 <span class="label warning" style="float: right;">EXPERIMENTAL</span>
