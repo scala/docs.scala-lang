@@ -135,7 +135,3 @@ So, the `json` method has access to the raw pieces of strings and each expressio
 
 Each of the string portions of the processed string are exposed in the `StringContext`'s `parts` member.  Each of the expression values is passed into the `json` method's `args` parameter.   The `json` method takes this and generates a big string which it then parses into JSON.   A more sophisticated implementation could avoid having to generate this string and simply construct the JSON directly from the raw strings and expression values.
 
-## Limitations
-
-String interpolation currently does not work within pattern matching statements.  This feature is targeted for Scala 2.11 release.
-
