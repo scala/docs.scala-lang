@@ -112,7 +112,7 @@ while at the same time seamlessly integrating with non-macro implicits.
 ### Problem statement
 
 The use case, which gave birth to fundep materializers, was provided by Miles Sabin and his [shapeless](https://github.com/milessabin/shapeless) library. In the old version of shapeless, before 2.0.0, Miles has defined the `Iso` trait,
-which represents isomorphisms between types. `Iso` can be used to map cases classes to tuples and vice versa
+which represents isomorphisms between types. `Iso` can be used to map case classes to tuples and vice versa
 (actually, shapeless used Iso's to convert between case classes and HLists, but for simplicity let's use tuples).
 
     trait Iso[T, U] {
