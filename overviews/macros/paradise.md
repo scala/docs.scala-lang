@@ -5,7 +5,7 @@ title: Macro Paradise
 disqus: true
 
 partof: macros
-num: 9
+num: 10
 languages: [ja]
 ---
 <span class="label success" style="float: right;">NEW</span>
@@ -15,7 +15,9 @@ languages: [ja]
 Macro paradise is a plugin for several versions of Scala compilers.
 It is designed to reliably work with production releases of <code>scalac</code>,
 making latest macro developments available way before they end up in future versions Scala.
-Refer to the roadmap for [the list of supported features and versions](/overviews/macros/roadmap.html).
+Refer to the roadmap for [the list of supported features and versions](/overviews/macros/roadmap.html)
+and visit [the paradise announcement](http://scalamacros.org/news/2013/08/07/roadmap-for-macro-paradise.html)
+to learn more about our support guarantees.
 
     ~/210x $ scalac -Xplugin:paradise_*.jar -Xshow-phases
         phase name  id  description

@@ -5,7 +5,7 @@ title: Type Providers
 disqus: true
 
 partof: macros
-num: 6
+num: 7
 languages: [ja]
 ---
 <span class="label warning" style="float: right;">EXPERIMENTAL</span>
@@ -83,6 +83,8 @@ This approach to type providers is quite neat, because it can be used with produ
 it has performance problems caused by the fact that Scala emits reflective calls when compiling accesses to members
 of structural types. There are several strategies of dealing with that, but this margin is too narrow to contain them
 so I refer you to an amazing blog series by Travis Brown for details: [post 1](http://meta.plasm.us/posts/2013/06/19/macro-supported-dsls-for-schema-bindings/), [post 2](http://meta.plasm.us/posts/2013/07/11/fake-type-providers-part-2/), [post 3](http://meta.plasm.us/posts/2013/07/12/vampire-methods-for-structural-types/).
+
+Please note that fake type providers must be [whitebox](/overviews/macros/blackbox-whitebox.html), otherwise they will not work.
 
 ### Real type providers
 

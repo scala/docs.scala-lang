@@ -140,12 +140,11 @@ problem is extremely simple and elegant.
 In 2.10 we don't allow macro applications to expand until all their type arguments are inferred. However we don't have to do that.
 The typechecker can infer as much as it possibly can (e.g. in the running example `C` will be inferred to `Foo` and
 `L` will remain uninferred) and then stop. After that we expand the macro and then proceed with type inference using the type of the
-expansion to help the typechecker with previously undetermined type arguments.
+expansion to help the typechecker with previously undetermined type arguments. This is how it's implemented in Scala 2.11.0.
 
-An illustration of this technique in action can be found in our [files/run/t5923c](https://github.com/scalamacros/kepler/tree/7b890f71ecd0d28c1a1b81b7abfe8e0c11bfeb71/test/files/run/t5923c) tests.
+An illustration of this technique in action can be found in our [files/run/t5923c](https://github.com/scala/scala/tree/7b890f71ecd0d28c1a1b81b7abfe8e0c11bfeb71/test/files/run/t5923c) tests.
 Note how simple everything is. The `materializeIso` implicit macro just takes its first type argument and uses it to produce an expansion.
 We don't need to make sense of the second type argument (which isn't inferred yet), we don't need to interact with type inference -
 everything happens automatically.
 
-Please note that there is [a funny caveat](https://github.com/scalamacros/kepler/blob/7b890f71ecd0d28c1a1b81b7abfe8e0c11bfeb71/test/files/run/t5923a/Macros_1.scala)
-with Nothings that we plan to address later.
+Please note that there is [a funny caveat](https://github.com/scala/scala/blob/7b890f71ecd0d28c1a1b81b7abfe8e0c11bfeb71/test/files/run/t5923a/Macros_1.scala) with Nothings that we plan to address later. Also note that fundep materializers must be [whitebox](/overviews/macros/blackbox-whitebox.html), otherwise they will not work.
