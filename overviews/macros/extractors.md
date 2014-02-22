@@ -86,3 +86,5 @@ Follow our test cases at [run/t5903a](https://github.com/scala/scala/tree/00624a
 [run/t5903c](https://github.com/scala/scala/tree/00624a39ed84c3fd245dd9df7454d4cec4399e13/test/files/run/t5903c),
 [run/t5903d](https://github.com/scala/scala/tree/00624a39ed84c3fd245dd9df7454d4cec4399e13/test/files/run/t5903d) to see implementations
 of this and other use cases for extractor macros.
+
+Please note that extractor macros must be [whitebox](/overviews/macros/blackbox-whitebox.html), otherwise they will not work.
