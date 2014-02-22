@@ -5,7 +5,7 @@ title: Quasiquotes
 disqus: true
 
 partof: macros
-num: 7
+num: 8
 languages: [ja]
 ---
 <span class="label warning" style="float: right;">EXPERIMENTAL</span>
