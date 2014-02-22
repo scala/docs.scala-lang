@@ -13,6 +13,9 @@ languages: [ja]
 
 **Eugene Burmako**
 
+Scala team is currently busy with the release of Scala 2.11.0-final, and at the moment we don't have concrete plans for Scala 2.12.
+Consequently, roadmaps for Scala 2.12 and Paradise 2.12 don't exist yet. We will update this page once the information becomes available.
+
 | Feature                                                                           | Scala 2.10         | [Paradise 2.10](/overviews/macros/paradise.html)                                         | [Paradise 2.11](/overviews/macros/paradise.html)                                          | Scala 2.11      |
 |-----------------------------------------------------------------------------------|--------------------|------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------|-----------------|
 | [Blackbox/whitebox separation](/overviews/macros/blackbox-whitebox.html)          | No                 | No  <sup>1</sup>                                                                         | Yes <sup>1</sup>                                                                          | Yes             |
