@@ -5,7 +5,7 @@ title: Named Parameters
 disqus: true
 
 tutorial: scala-tour
-num: 35
+num: 32
 ---
 
 When calling methods and functions, you can use the name of the variables expliclty in the call, like so:

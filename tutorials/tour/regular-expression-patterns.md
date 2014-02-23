@@ -5,7 +5,7 @@ title: Regular Expression Patterns
 disqus: true
 
 tutorial: scala-tour
-num: 22
+num: 13
 ---
 
 ## Right-ignoring sequence patterns ##

@@ -5,7 +5,7 @@ title: Generic Classes
 disqus: true
 
 tutorial: scala-tour
-num: 9
+num: 15
 ---
 
 Like in Java 5 (aka. [JDK 1.5](http://java.sun.com/j2se/1.5/)), Scala has built-in support for classes parameterized with types. Such generic classes are particularly useful for the development of collection classes.

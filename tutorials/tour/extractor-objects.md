@@ -5,7 +5,7 @@ title: Extractor Objects
 disqus: true
 
 tutorial: scala-tour
-num: 8
+num: 30
 ---
 
 In Scala, patterns can be defined independently of case classes. To this end, a method named unapply is defined to yield a so-called extractor. For instance, the following code defines an extractor object Twice.

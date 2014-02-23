@@ -5,7 +5,7 @@ title: Abstract Types
 disqus: true
 
 tutorial: scala-tour
-num: 2
+num: 20
 outof: 35
 languages: [es]
 ---

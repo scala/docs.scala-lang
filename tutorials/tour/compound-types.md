@@ -5,7 +5,7 @@ title: Compound Types
 disqus: true
 
 tutorial: scala-tour
-num: 6
+num: 21
 ---
 
 Sometimes it is necessary to express that the type of an object is a subtype of several other types. In Scala this can be expressed with the help of *compound types*, which are intersections of object types.

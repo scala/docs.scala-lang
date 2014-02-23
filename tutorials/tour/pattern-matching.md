@@ -5,7 +5,7 @@ title: Pattern Matching
 disqus: true
 
 tutorial: scala-tour
-num: 20
+num: 11
 ---
 
 Scala has a built-in general pattern matching mechanism. It allows to match on any sort of data with a first-match policy. 

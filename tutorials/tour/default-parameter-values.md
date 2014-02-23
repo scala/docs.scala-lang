@@ -5,7 +5,7 @@ title: Default Parameter values
 disqus: true
 
 tutorial: scala-tour
-num: 34
+num: 31
 ---
 
 Scala provides the ability to give parameters default values that can be used to allow a caller to omit those parameters.
