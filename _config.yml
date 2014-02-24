@@ -17,4 +17,7 @@ pygments: true
 permalink: /:categories/:title.html
 baseurl:
 
+exclude:
+- renumber.rb
+
 # markdown: rdiscount
