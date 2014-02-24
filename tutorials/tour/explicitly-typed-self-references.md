@@ -5,7 +5,7 @@ title: Explicitly Typed Self References
 disqus: true
 
 tutorial: scala-tour
-num: 22
+num: 23
 ---
 
 When developing extensible software it is sometimes handy to declare the type of the value `this` explicitly. To motivate this, we will derive a small extensible representation of a graph data structure in Scala.

@@ -5,7 +5,7 @@ title: Local Type Inference
 disqus: true
 
 tutorial: scala-tour
-num: 26
+num: 27
 ---
 Scala has a built-in type inference mechanism which allows the programmer to omit certain type annotations. It is, for instance, often not necessary in Scala to specify the type of a variable, since the compiler can deduce the type from the initialization expression of the variable. Also return types of methods can often be omitted since they corresponds to the type of the body, which gets inferred by the compiler.
 

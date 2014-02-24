@@ -5,7 +5,7 @@ title: Annotations
 disqus: true
 
 tutorial: scala-tour
-num: 29
+num: 30
 ---
 
 Annotations associate meta-information with definitions.

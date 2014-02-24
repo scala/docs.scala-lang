@@ -5,7 +5,7 @@ title: Implicit Parameters
 disqus: true
 
 tutorial: scala-tour
-num: 23
+num: 24
 ---
 
 A method with _implicit parameters_ can be applied to arguments just like a normal method. In this case the implicit label has no effect. However, if such a method misses arguments for its implicit parameters, such arguments will be automatically provided.

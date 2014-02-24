@@ -5,7 +5,7 @@ title: Inner Classes
 disqus: true
 
 tutorial: scala-tour
-num: 19
+num: 20
 ---
 
 In Scala it is possible to let classes have other classes as members. Opposed to Java-like languages where such inner classes are members of the enclosing class, in Scala such inner classes are bound to the outer object. To illustrate the difference, we quickly sketch the implementation of a graph datatype:
