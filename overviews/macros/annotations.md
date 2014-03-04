@@ -6,7 +6,7 @@ disqus: true
 
 partof: macros
 num: 9
-outof: 11
+outof: 12
 languages: [ja]
 ---
 <span class="label important" style="float: right;">MACRO PARADISE</span>

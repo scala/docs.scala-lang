@@ -6,7 +6,7 @@ disqus: true
 
 partof: reflection
 num: 6
-outof: 6
+outof: 7
 languages: [ja]
 ---
 
