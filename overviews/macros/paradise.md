@@ -47,7 +47,7 @@ To use macro paradise in Maven follow the instructions provided at Stack Overflo
       <compilerPlugin>
         <groupId>org.scalamacros</groupId>
         <artifactId>paradise_<YOUR.SCALA.VERSION></artifactId>
-        <version>2.0.0-M2</version>
+        <version>2.0.0-M3</version>
       </compilerPlugin>
     </compilerPlugins>
 
