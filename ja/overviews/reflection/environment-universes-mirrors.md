@@ -119,8 +119,6 @@ invoker ミラーを作成することができる。
     res0: Any = 2
 
     scala> fmX.set(3)
-    scala.ScalaReflectionException: cannot set an immutable field x
-    ...
 
     scala> val fieldY = ru.typeOf[C].declaration(ru.newTermName("y")).asTerm.accessed.asTerm
     fieldY: reflect.runtime.universe.TermSymbol = variable y
