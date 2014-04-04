@@ -12,7 +12,7 @@ languages: [ja]
 
 **Eugene Burmako**
 
-Type providers aren't implemented as a dedicated macro flavor, but can rather built on top of the functionality
+Type providers aren't implemented as a dedicated macro flavor, but are rather built on top of the functionality
 that Scala macros already provide.
 
 There are two strategies of emulating type providers: one based on structural types (referred to as "anonymous type providers")
