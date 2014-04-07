@@ -25,6 +25,9 @@ which means that both authors and users of public type providers will have to ad
 However, after macro annotations expand, the resulting code will no longer have any references to macro paradise
 and won't require its presence at compile-time or at runtime.
 
+Recently we've given a talk about macro-based type providers in Scala, summarizing the state of the art and providing
+concrete examples. Slides and accompanying code can be found at [https://github.com/travisbrown/type-provider-examples](https://github.com/travisbrown/type-provider-examples).
+
 ## Type providers
 
 Type providers are a strongly-typed type-bridging mechanism, which enables information-rich programming in F# 3.0.
