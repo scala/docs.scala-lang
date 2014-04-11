@@ -414,7 +414,7 @@ Bad error messages, ETA-expansion can fail, unusable default parameters **(pleas
 ## Similar guides
 
 [http://scalatips.tumblr.com/](http://scalatips.tumblr.com/)
-
+[http://scalapuzzlers.com/](http://scalapuzzlers.com/)
 
 <a name="template"></a>
 ## Template
