@@ -44,7 +44,7 @@ Be aware of the order or use lazy vals or defs.
       private[this] val answer = 42
       println(answer)
     }
-    new Vals // prints 0
+    new Vals // prints 42
 
 **Example 1 solution 2 - use a def or lazy val:**
 
@@ -52,7 +52,7 @@ Be aware of the order or use lazy vals or defs.
       println(answer)
       private[this] def answer = 42
     }
-    new Vals // prints 0
+    new Vals // prints 42
 
 **Example 2:**
 
