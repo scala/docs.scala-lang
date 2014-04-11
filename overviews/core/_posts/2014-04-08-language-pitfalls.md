@@ -97,7 +97,7 @@ Some collections methods return Iterator. If you are not aware of this, it can l
 
 **Reason:** An Iterator is cheap. It does not force any significant computation or memory overhead onto the user, who can always call `.toStream` if memoization is needed or `.toSeq` for strict materialization.
 
-**Symptons:** Unexpected return values or behavior.
+**Symptoms:** Unexpected return values or behavior.
 
 **Suggested solution or workaround:** Convert Iterator to Stream, Seq or something else, if you need more than an iterator offers
 
