@@ -52,5 +52,5 @@ To use macro paradise in Maven follow the instructions provided at Stack Overflo
     </compilerPlugins>
 
 Sources of macro paradise are available at [https://github.com/scalamacros/paradise](https://github.com/scalamacros/paradise).
-There are branches that support the latest 2.10.x release, the latest 2.11.0 release candidate,
+There are branches that support the latest 2.10.x release, the latest 2.11.x release,
 snapshots of 2.10.x and 2.11.x, as well as Scala virtualized.
