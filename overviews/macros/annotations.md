@@ -13,21 +13,14 @@ languages: [ja]
 
 **Eugene Burmako**
 
-Macro annotations are only available in Scala 2.10 with the macro paradise plugin.
-Their inclusion in Scala 2.11 is not planned, but it will possibly happen in Scala 2.12.
+Macro annotations are only available in Scala 2.10.x and 2.11.x with the macro paradise plugin.
+Their inclusion in official Scala might happen in Scala 2.12, but there is no certainty about it yet.
 Follow the instructions at the ["Macro Paradise"](/overviews/macros/paradise.html) page to download and use our compiler plugin.
 
 Note that macro paradise is needed both to compile and to expand macro annotations,
 which means that your users will have to also add macro paradise to their builds in order to use your macro annotations.
 However, after macro annotations expand, the resulting code will no longer have any references to macro paradise
 and won't require its presence at compile-time or at runtime.
-
-## Call for feedback
-
-This implementation of macro annotations is experimental (hence the snapshot suffix in the current `2.0.0-SNAPSHOT` version
-of macro-paradise) and exists to provide a preview and initiate a discussion that will culminate in submitting
-a Scala improvement proposal for Scala 2.11 or 2.12. Please check whether it handles your code generation needs,
-so that I can refine it appropriately. If something doesn't work, let me know <a href="https://twitter.com/#!/xeno_by">on Twitter</a>.
 
 ## Walkthrough
 
