@@ -5,47 +5,10 @@ title: Introduction
 disqus: true
 
 partof: quasiquotes
-num: 1
-outof: 12
+num: 2
+outof: 13
 ---
 **Denys Shabalin** <span class="label warning" style="float: right;">EXPERIMENTAL</span>
-
-## Before you start {:#before-you-start}
-
-Before you start reading this guide it's recommended to start a Scala REPL with one extra line:
-
-    scala> val universe = reflect.runtime.universe; import universe._
-
-REPL is the best place to explore quasiquotes and this guide will use it extensively to demonstrate handling of trees. All of the examples will assume that import.
-
-Additionally some examples that use `ToolBox` API might need a few more lines to get things rolling:
-
-    scala> import reflect.runtime.currentMirror
-    scala> import tools.reflect.ToolBox
-    scala> val toolbox = currentMirror.mkToolBox()
-
-Another tool you might want to be aware of is new and shiny `showCode` pretty printer (contributed by [@VladimirNik](https://github.com/VladimirNik)):
-
-    scala> val C = q"class C"
-    C: universe.ClassDef =
-    class C extends scala.AnyRef {
-      def <init>() = {
-        super.<init>();
-        ()
-      }
-    }
-
-    scala> println(showCode(C))
-    class C
-
-Default pretty printer shows you contents of the tree in imaginary low-level Scala-like notation. `showCode` on the other hand will do its best to reconstruct actual source code equivalent to the given tree in proper Scala syntax.
-
-On the other side of spectrum there is also a `showRaw` pretty printer that shows direct internal organization of the tree:
-
-    scala> println(showRaw(q"class C"))
-    ClassDef(Modifiers(), TypeName("C"), List(), Template(List(Select(Ident(scala), TypeName("AnyRef"))), noSelfType, List(DefDef(Modifiers(), termNames.CONSTRUCTOR, List(), List(List()), TypeTree(), Block(List(pendingSuperCall), Literal(Constant(())))))))
-
-## Basics {:#basics}
 
 Quasiquotes are a neat notation that lets you manipulate Scala syntax trees with ease:
 

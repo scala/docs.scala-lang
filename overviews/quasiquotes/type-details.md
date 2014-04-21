@@ -5,8 +5,8 @@ title: Type details
 disqus: true
 
 partof: quasiquotes
-num: 8 
-outof: 12
+num: 9 
+outof: 13
 ---
 **Denys Shabalin** <span class="label warning" style="float: right;">EXPERIMENTAL</span>
 

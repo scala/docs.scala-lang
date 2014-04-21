@@ -5,8 +5,8 @@ title: Definition and import details
 disqus: true
 
 partof: quasiquotes
-num: 10
-outof: 12
+num: 11
+outof: 13
 ---
 **Denys Shabalin** <span class="label warning" style="float: right;">EXPERIMENTAL</span>
 

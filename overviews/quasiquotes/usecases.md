@@ -5,8 +5,8 @@ title: Use cases
 disqus: true
 
 partof: quasiquotes
-num: 5
-outof: 12
+num: 6
+outof: 13
 ---
 **Denys Shabalin** <span class="label warning" style="float: right;">EXPERIMENTAL</span>
 

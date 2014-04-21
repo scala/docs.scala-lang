@@ -5,8 +5,8 @@ title: Terminology summary
 disqus: true
 
 partof: quasiquotes
-num: 11
-outof: 12
+num: 12
+outof: 13
 ---
 <span class="label warning" style="float: right;">EXPERIMENTAL</span>
 

@@ -5,8 +5,8 @@ title: Syntax summary
 disqus: true
 
 partof: quasiquotes
-num: 6
-outof: 12
+num: 7
+outof: 13
 ---
 **Denys Shabalin** <span class="label warning" style="float: right;">EXPERIMENTAL</span>
 
