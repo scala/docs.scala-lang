@@ -88,7 +88,7 @@ Similarly patterns and expressions are not equivalent either:
     scala> println(pq"List(a, b)" equalsStructure q"List(a, b)")
     false
 
-So it's extremely important to use the right interpotor for the job to construct a valid syntax tree.
+So it's extremely important to use the right interpolator for the job to construct a valid syntax tree.
 
 Additionally there are two auxilary interpolators that let you work with minor areas of scala syntax:
 
