@@ -41,4 +41,4 @@ language: ko
     true
     <function>
     
-    윤창석, 이한욱 옮김
+윤창석, 이한욱 옮김

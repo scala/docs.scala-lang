@@ -30,7 +30,7 @@ language: ko
       cloned
     }
 
-여기에서 파라미터 `obj`의 타입이 무엇인가 하는 의문을 가질 수 있다. 만약 타입이 `Clonable`이라면 이 객체는 복제될(`Clone`d) 수 있지만 리셋될(`reset`) 수는 없다. 반면 타입이 `Resetable`이라면 이 객체를 리셋할(`reset`) 수는 있지만 `clone` 기능을 사용할 수는 없다. 이러한 상황에서 타입 캐스팅을 피하기 위해 두개의 타입 `Clonable`과 `Resetable` 모두를 지정해 줄 수 있다. 스칼라의 이러한 합성타입은 다음과 같이 쓰인다. : Clonable with Resetable`
+여기에서 파라미터 `obj`의 타입이 무엇인가 하는 의문을 가질 수 있다. 만약 타입이 `Clonable`이라면 이 객체는 복제될(`Cloned`) 수 있지만 리셋될(`reset`) 수는 없다. 반면 타입이 `Resetable`이라면 이 객체를 리셋할(`reset`) 수는 있지만 `clone` 기능을 사용할 수는 없다. 이러한 상황에서 타입 캐스팅을 피하기 위해 두개의 타입 `Clonable`과 `Resetable` 모두를 지정해 줄 수 있다. 스칼라의 이러한 합성타입은 다음과 같이 쓰인다. : `Clonable with Resetable`
 
 위의 함수를 다시 작성하면 다음과 같다.
 

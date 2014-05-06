@@ -9,32 +9,34 @@ num: 14
 language: ko
 ---
 
-Scala provides a relatively lightweight syntax for defining anonymous functions. The following expression creates a successor function for integers:
+스칼라를 사용하면 비교적 간결한 구문을 통해 익명 함수를 정의할 수 있다. 다음 표현식은 정수의 지정 함수를 만들어준다.
 
     (x: Int) => x + 1
 
-This is a shorthand for the following anonymous class definition:
+이는 다음의 익명 클래스 정의를 축약한 표현이다.
 
     new Function1[Int, Int] {
       def apply(x: Int): Int = x + 1
     }
 
-It is also possible to define functions with multiple parameters:
+마찬가지로 여러 파라미터의 함수를 정의하거나:
 
     (x: Int, y: Int) => "(" + x + ", " + y + ")"
 
-or with no parameter:
+파라미터가 없는 함수를 정의할 수도 있다:
 
     () => { System.getProperty("user.dir") }
 
-There is also a very lightweight way to write function types. Here are the types of the three functions defined above:
+매우 간결하게 함수 타입을 작성하는 방법도 있다. 다음은 위에서 정의한 세 함수의 타입이다.
 
     Int => Int
     (Int, Int) => String
     () => String
 
-This syntax is a shorthand for the following types:
+이 구문은 다음 타입을 축약한 표현이다.
 
     Function1[Int, Int]
     Function2[Int, Int, String]
     Function0[String]
+
+윤창석, 이한욱 옮김

@@ -6,7 +6,6 @@ disqus: true
 
 tutorial: scala-tour
 num: 1
-outof: 35
 language: ko
 ---
 

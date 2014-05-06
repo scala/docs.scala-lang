@@ -28,7 +28,7 @@ language: ko
 |  [`scala.serializable`](http://www.scala-lang.org/api/2.9.1/index.html#scala.annotation.serializable) |  [`java.io.Serializable`](http://java.sun.com/j2se/1.5.0/docs/api/java/io/Serializable.html) |
 |  [`scala.throws`](http://www.scala-lang.org/api/2.9.1/scala/throws.html) |  [`throws`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (키워드) |
 |  [`scala.transient`](http://www.scala-lang.org/api/2.9.1/scala/transient.html) |  [`transient`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (키워드) |
-|  [`scala.unchecked`](http://www.scala-lang.org/api/2.9.1/scala/unchecked.html) (2.4.0 부터) |  no equivalent |
+|  [`scala.unchecked`](http://www.scala-lang.org/api/2.9.1/scala/unchecked.html) (2.4.0 부터) |  해당 없음 |
 |  [`scala.volatile`](http://www.scala-lang.org/api/2.9.1/scala/volatile.html) |  [`volatile`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (키워드) |
 |  [`scala.reflect.BeanProperty`](http://www.scala-lang.org/api/2.9.1/scala/reflect/BeanProperty.html) |  [`디자인 패턴`](http://docs.oracle.com/javase/tutorial/javabeans/writing/properties.html) |
 
