@@ -51,6 +51,18 @@ readability and will make it much easier to understand at a glance the
 most basic operation of any given method. Resist the urge to omit
 parentheses simply to save two characters!
 
+## Constructors
+
+Constructors should be treated using the same rules as methods. That is,
+constructors with no parameters should be invoked using:
+
+    new MyClass
+    
+And not:
+
+    new MyClass()
+    
+
 ### Suffix Notation
 
 Scala allows methods of arity-0 to be invoked using suffix notation:
