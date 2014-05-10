@@ -5,7 +5,7 @@ title: Extractor Macros
 disqus: true
 
 partof: macros
-num: 6
+num: 7
 ---
 <span class="label warning" style="float: right;">EXPERIMENTAL</span>
 
