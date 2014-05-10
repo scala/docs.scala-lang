@@ -5,7 +5,7 @@ title: Changes in Scala 2.11
 disqus: true
 
 partof: macros
-num: 12
+num: 13
 ---
 
 <span class="label warning" style="float: right;">EXPERIMENTAL</span>
