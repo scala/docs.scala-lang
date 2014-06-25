@@ -26,7 +26,7 @@ Sometimes it's appealing to hack alone and not to have to interact with others o
 this might not be the very best idea. There are people in the Scala community who have spent years accumulating knowledge about Scala libraries and internals. They might provide
 unique insights and, what's even better, direct assistance in their areas, so it is not only advantageous, but recommended to communicate with the community about your new patch.
 
-Typically bug fixes and new features start out as an idea or an experiment posted on one of our mailing lists [our mailing lists]({{ site.baseurl }}/community/index.html#mailing_lists) to find out how people feel
+Typically bug fixes and new features start out as an idea or an experiment posted on one of [our mailing lists]({{ site.baseurl }}/community/index.html#mailing_lists) to find out how people feel
 about things you want to implement. People proficient in certain areas of Scala usually monitor mailing lists, so you'll often get some help
 by simply posting a message. But the most efficient way to connect is to cc your message to one of the people responsible for maintaining the aspect of Scala which you wish to contribute to.
 
@@ -67,7 +67,7 @@ If you're new to Git, don't be afraid of messing up-- there is no way you can co
 
 If everything went okay, you will be redirected to your own fork at `https://github.com/username/scala`, where `username`
 is your github user name. You might find it helpful to read [http://help.github.com/fork-a-repo/](http://help.github.com/fork-a-repo/),
-which covers some of the things that will follow below. Then, _clone_ your repository (_i.e._ pull a copy from GitHub to your local machine) by running the following on the command line:
+which covers some of the things that will follow below. Then, _clone_ your repository (i.e. pull a copy from GitHub to your local machine) by running the following on the command line:
 
     16:35 ~/Projects$ git clone https://github.com/xeno-by/scala
     Cloning into 'scala'...
@@ -86,7 +86,7 @@ Before you start making changes, always create your own branch. Never work on th
 the changes you plan on making. Use a prefix that describes the nature of your change. There are essentially two kinds of changes:
 bug fixes and new features.
 
-* For bug fixes, use `issue/NNNN` for bug NNNN from the [Scala issue tracker](https://issues.scala-lang.org/).
+* For bug fixes, use `issue/NNNN` or `ticket/NNNN` for bug NNNN from the [Scala issue tracker](https://issues.scala-lang.org/).
 * For new feature use `topic/XXX` for feature XXX. Use feature names that make sense in the context of the whole Scala project and not just to you personally. For example, if you work on diagrams in Scaladoc, use `topic/scaladoc-diagrams` instead of just `topic/diagrams` would be a good branch name.
 
 Since in our example, we're going to fix an existing bug [SI-6725](https://issues.scala-lang.org/browse/SI-6725), we'll create a branch named `ticket/6725`.
@@ -98,8 +98,7 @@ If you are new to Git and branching, read the [Branching Chapter](http://git-scm
 
 ### Build
 
-The next step after cloning your fork is setting up your machine to build Scala. The definitive guide on building Scala is located at
-[https://github.com/scala/scala/blob/master/README.rst](https://github.com/scala/scala/blob/master/README.rst), but here's the summary:
+The next step after cloning your fork is setting up your machine to build Scala.
 
 * It is recommended to use Java `1.6` (not `1.7` or `1.8`, because they might cause occasional glitches).
 * The build tool is `ant`.
@@ -140,10 +139,8 @@ with your hardware).
 
 There's no single editor of choice for working with Scala sources, as there are trade-offs associated with each available tool.
 
-Both Eclipse and IntelliJ IDEA have Scala plugins, which are known to work with our codebase. Here are
-[instructions for Eclipse](https://github.com/scala/scala/blob/master/src/eclipse/README.md) and
-[instructions for Intellij](https://github.com/scala/scala/blob/master/src/intellij/README). Both of those Scala plugins provide
-navigation, refactoring and error reporting functionality as well as integrated debugging.
+Both Eclipse and IntelliJ IDEA have Scala plugins, which are known to work with our codebase.
+Both of those Scala plugins provide navigation, refactoring and error reporting functionality as well as integrated debugging.
 
 There also exist lighter-weight editors such as Emacs, Sublime or jEdit which are faster and much less memory/compute-intensive to run, while
 lacking semantic services and debugging. To address this shortcoming, they can integrate with ENSIME,
@@ -185,10 +182,33 @@ Here are also some tips & tricks that have proven useful in Scala development:
   just that trait, but it might also be necessary to recompile its users. The `ant` tool is not smart enough to do that, which might lead to
   very strange errors. Full-rebuilds fix the problem. Fortunately that's rarely necessary, because full-rebuilds take a lot of time-- the same 8-30 minutes as mentioned above.
 * Even on solid state drives packaging Scala distribution (i.e. creating jars from class files) is a non-trivial task. To save time here,
-  some people in our team do `ant quick.comp` instead of `ant` and then create custom scripts to launch Scala from `build/quick/classes`.
+  some people in our team do `ant quick.comp` instead of `ant` and then create custom scripts ([here](https://github.com/adriaanm/binfu/blob/master/scafu.sh) are some examples to get you strarted) to launch Scala from `build/quick/classes`.
 * Don't underestimate the power of `print`. When starting with Scala, I spent a lot of time in the debugger trying to figure out how
   things work. However later I found out that print-based debugging is often more effective than jumping around. While it might be obvious
-  to some, I'd like to explicitly mention that it's also useful to print stack traces to understand the flow of execution.
+  to some, I'd like to explicitly mention that it's also useful to print stack traces to understand the flow of execution. When working with `Trees`, you might want to use `showRaw` to get the `AST` representation.
+* You can publish your newly-built scala version locally to use it from sbt. Here's how:
+
+         $ ant publish-local-opt -Dmaven.version.suffix="-test"
+         $ sbt
+         [info] Set current project to test (in build file:/Users/georgii/workspace/test/)
+         > set resolvers += Resolver.mavenLocal
+         [info] Defining *:resolvers
+         [info] The new value will be used by *:externalResolvers
+         [info] Reapplying settings...
+         [info] Set current project to test (in build file:/Users/georgii/workspace/test/)
+         > ++2.12.0-test
+         [info] Setting version to 2.12.0-test
+         [info] Set current project to test (in build file:/Users/georgii/workspace/test/)
+         > console
+         [info] Starting scala interpreter...
+         [info]
+         Welcome to Scala version 2.12.0-20140623-155543-8bdacad317 (Java HotSpot(TM) 64-Bit Server VM, Java 1.7.0_51).
+         Type in expressions to have them evaluated.
+         Type :help for more information.
+
+         scala>
+
+* Adding a macro to the `Predef` is a pretty involved task. For the reason of bootstrapping, you cannot just throw a macro into it. There is a more involved process here. You might want to follow the way `StringContext.f` itself is added. In short, you need to define your macro under `src/compiler/scala/tools/reflect/` and provide no implementation in `Predef` (`def fn = macro ???`). Now you want to set up the wiring. Add the name of your macro to `src/reflect/scala/reflect/internal/StdNames.scala`, add the needed links to it to `src/reflect/scala/reflect/internal/Definitions.scala`, and finally specify the bindings in `src/compiler/scala/tools/reflect/FastTrack.scala`. If that explanation does not sound very clear, [here's](https://github.com/folone/scala/commit/59536ea833ca16c985339727baed5d70e577b0fe) an example of adding a macro.
 
 ### Documentation
 
@@ -196,7 +216,7 @@ There are several areas that one could contribute to-- there is the Scala librar
 
 ##### The Scala Library
 
-Contributing to the Scala standard library is about the same as working on one of your own libraries. Beyond the Scala collections hierarchy, there are no complex internals or architectures to have to worry about. Just make sure that you code in a "don't-repeat-yourself" (DRY) style, obeying the "boy scout principle" (i.e. make sure you've left something cleaner than you found it).
+Contributing to the Scala standard library is about the same as working on one of your own libraries. Beyond the Scala collections hierarchy, there are no complex internals or architectures to have to worry about. Just make sure that you code in a "don't-repeat-yourself" (DRY) style, obeying the "boy scout principle" (i.e. make sure you've left the code cleaner than you found it).
 
 If documentation is necessary for some trait/class/object/method/etc in the Scala standard library, typically maintainers will include inline comments describing their design decisions or rationale for implementing things the way they have, if it is not straightforward.
 
@@ -206,7 +226,7 @@ If you intend on contributing to Scala collections, please make sure you're fami
 
 Documentation about the internal workings of the Scala compiler is scarce, and most of the knowledge is passed around by email (scala-internals mailing list), ticket, or word of mouth. However the situation is steadily improving. Here are the resources that might help:
 
-* [Compiler internals videos by Martin Odersky](TODO) are quite dated, but still very useful. In this three-video
+* [Compiler internals videos by Martin Odersky](http://www.scala-lang.org/old/node/598.html) are quite dated, but still very useful. In this three-video
   series Martin explains the general architecture of the compiler, and the basics of the front-end, which has recently become Scala reflection API.
 * [Reflection documentation](http://docs.scala-lang.org/overviews/reflection/overview.html) describes fundamental data structures (like `Tree`s, `Symbol`s, and `Types`) that
   are used to represent Scala programs and operations defined on then. Since much of the compiler has been factored out and made accessible via the Reflection API, all of the fundamentals needed for reflection are the same for the compiler.
@@ -274,9 +294,56 @@ I have already written one test earlier, so that's a good start but not enough! 
 
 Adding tests to the test suite is as easy as moving them to the appropriate directory:
 
-* Code which should compile successfully, but doesn't need to be executed, needs to go into the [“pos” directory](https://github.com/scala/scala/tree/master/test/files/pos).
-* Code which should not compile needs to go into the [“neg” directory](https://github.com/scala/scala/tree/master/test/files/neg).
-* Code which should compile and get executed by the test suite needs to go into the [“run” directory](https://github.com/scala/scala/tree/master/test/files/run).
+* Code which should compile successfully, but doesn't need to be executed, needs to go into the [“pos” directory](https://github.com/scala/scala/tree/2.12.x/test/files/pos).
+* Code which should not compile needs to go into the [“neg” directory](https://github.com/scala/scala/tree/2.12.x/test/files/neg).
+* Code which should compile and get executed by the test suite needs to go into the [“run” directory](https://github.com/scala/scala/tree/2.12.x/test/files/run) and have a corresponding `.check` file with the expected output. You will get test failures if the content of a `.check` file is different from what the test produces while running. If the change in the output is an expected product of your work, you might not want to change the `.check` file by hand. To make partest change the `.check` file, run it with a `--update-check` flag, like so `./test/partest --update-check path/to/test.scala`. For more information on partest, please refer to its [documentation](http://docs.scala-lang.org/tutorials/partest-guide.html).
+* Everything that can be unit-tested should go to ["junit" directory](https://github.com/scala/scala/tree/2.12.x/test/junit)
+* Property-based tests go to the ["scalacheck" directory](https://github.com/scala/scala/tree/2.12.x/test/files/scalacheck)
+
+Here are some more testing tips:
+
+* If you have several tests, and want a tool for only running tests that conform to some regular expression, you can use `partest-ack` in the `tools` directory: `./tools/partest-ack "dottype"`
+* If your tests fail with an like:
+
+        test.bc:
+           [echo] Checking backward binary compatibility for scala-library (against 2.11.0)
+           [mima] Found 2 binary incompatibiities
+           [mima] ================================
+           [mima]  * synthetic method
+           [mima]    scala$package$Class$method(java.lang.String)Unit in trait
+           [mima]    scala.package.Class does not have a correspondent in old version
+           [mima]  * synthetic method
+           [mima]    scala$package$AnotherClass$anotherMethod(java.lang.String)Unit in trait
+           [mima]    scala.package.AnotherClass does not have a correspondent in old version
+           [mima] Generated filter config definition
+           [mima] ==================================
+           [mima]
+           [mima]     filter {
+           [mima]         problems=[
+           [mima]             {
+           [mima]                 matchName="scala.package.Class$method"
+           [mima]                 problemName=MissingMethodProblem
+           [mima]             },
+           [mima]             {
+           [mima]                 matchName="scala.package.AnotherClass$anotherMethod"
+           [mima]                 problemName=MissingMethodProblem
+           [mima]             }
+           [mima]         ]
+           [mima]     }
+           [mima]
+
+         BUILD FAILED
+         /localhome/jenkins/c/workspace/pr-scala-test/scala/build.xml:1530: The following error occurred while executing this line:
+         /localhome/jenkins/c/workspace/pr-scala-test/scala/build-ant-macros.xml:791: The following error occurred while executing this line:
+         /localhome/jenkins/c/workspace/pr-scala-test/scala/build-ant-macros.xml:773: Java returned: 2
+
+         Total time: 6 minutes 46 seconds
+         Build step 'Execute shell' marked build as failure
+         Archiving artifacts
+         Notifying upstream projects of job completion
+         Finished: FAILURE
+
+This means your change is backward or forward binary incompatible with the specified version (the check is performed by the [migration manager](https://github.com/typesafehub/migration-manager)). The error message is actually saying what you need to add to `bincompat-backward.whitelist.conf` or `bincompat-forward.whitelist.conf` to make the error go away. If you are getting this on an internal/experimental api, it should be safe to add suggested sections to the config. Otherwise, you might want to target a newer version of scala for this change.
 
 ### Verify
 
