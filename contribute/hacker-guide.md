@@ -208,7 +208,7 @@ Here are also some tips & tricks that have proven useful in Scala development:
 
          scala>
 
-* Adding a macro to the `Predef` is a pretty involved task. For the reason of bootstrapping, you cannot just throw a macro into it. There is a more involved process here. You might want to follow the way `StringContext.f` itself is added. In short, you need to define your macro under `src/compiler/scala/tools/reflect/` and provide no implementation in `Predef` (`def fn = macro ???`). Now you want to set up the wiring. Add the name of your macro to `src/reflect/scala/reflect/internal/StdNames.scala`, add the needed links to it to `src/reflect/scala/reflect/internal/Definitions.scala`, and finally specify the bindings in `src/compiler/scala/tools/reflect/FastTrack.scala`. If that explanation does not sound very clear, [here's](https://github.com/folone/scala/commit/59536ea833ca16c985339727baed5d70e577b0fe) an example of adding a macro.
+* Adding a macro to the `Predef` object is a pretty involved task. Due to bootstrapping, you cannot just throw a macro into it. For this reason, the process is more involved. You might want to follow the way `StringContext.f` itself is added. In short, you need to define your macro under `src/compiler/scala/tools/reflect/` and provide no implementation in `Predef` (`def fn = macro ???`). Now you have to set up the wiring. Add the name of your macro to `src/reflect/scala/reflect/internal/StdNames.scala`, add the needed links to it to `src/reflect/scala/reflect/internal/Definitions.scala`, and finally specify the bindings in `src/compiler/scala/tools/reflect/FastTrack.scala`. [Here's](https://github.com/folone/scala/commit/59536ea833ca16c985339727baed5d70e577b0fe) an example of adding a macro.
 
 ### Documentation
 
@@ -303,7 +303,7 @@ Adding tests to the test suite is as easy as moving them to the appropriate dire
 Here are some more testing tips:
 
 * If you have several tests, and want a tool for only running tests that conform to some regular expression, you can use `partest-ack` in the `tools` directory: `./tools/partest-ack "dottype"`
-* If your tests fail with an like:
+* If your tests fail in the following way:
 
         test.bc:
            [echo] Checking backward binary compatibility for scala-library (against 2.11.0)
