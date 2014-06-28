@@ -12,7 +12,7 @@ num: 13
 
 **Eugene Burmako**
 
-This document lists all major changes to reflection and macros during the development cycle of Scala 2.11.0. First, we provide summaries of the most important fixes and newly introduced features, and then, later in the document, we explain how these changes are going to affect compatibility with Scala 2.10.x, and how it is possible to make your reflection-based code work in both 2.10.x and 2.11.0.
+This document lists all major changes to reflection and macros during the development cycle of Scala 2.11.0. First, we provide summaries of the most important fixes and newly introduced features, and then, later in the document, we explain how these changes are going to affect compatibility with Scala 2.10.x, and how it's possible to make your reflection-based code work in both 2.10.x and 2.11.0.
 
 ### Quasiquotes
 
