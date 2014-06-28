@@ -1,3 +1,5 @@
+markdown: kramdown
+
 title: "Scala Documentation"
 description: "Documentation for the Scala programming language- Tutorials, Overviews, Cheatsheets, and more."
 keywords:
