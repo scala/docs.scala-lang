@@ -12,6 +12,9 @@ languages: [ja]
 
 **Eugene Burmako**
 
+<p style="text-align:right"><i>'I have always imagined that paradise will be a kind of library.'<br/>
+―Jorge Luis Borges, "Poem of the Gifts"</i></p>
+
 Macro paradise is a plugin for several versions of Scala compilers.
 It is designed to reliably work with production releases of <code>scalac</code>,
 making latest macro developments available way before they end up in future versions Scala.
