@@ -5,7 +5,7 @@ title: Anonymous Function Syntax
 disqus: true
 
 tutorial: scala-tour
-num: 14
+num: 6
 ---
 
 Scala provides a relatively lightweight syntax for defining anonymous functions. The following expression creates a successor function for integers:

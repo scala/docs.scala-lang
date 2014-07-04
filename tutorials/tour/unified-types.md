@@ -5,7 +5,7 @@ title: Unified Types
 disqus: true
 
 tutorial: scala-tour
-num: 30
+num: 2
 ---
 
 In contrast to Java, all values in Scala are objects (including numerical values and functions). Since Scala is class-based, all values are instances of a class. The diagram below illustrates the class hierarchy.
