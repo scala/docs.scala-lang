@@ -132,6 +132,7 @@
           $('html,body').animate({scrollTop:$('li '+this.hash).offset().top}, 500);
           $('html,body').animate({scrollTop:$('li '+this.hash).offset().top-=50}, 500);
           $('li '+this.hash+',li '+this.hash+'+ p').effect("highlight", {color: "#FFCC85"}, 3000);
+          window.location.hash = this.hash;
         });
       });
     </script>
