@@ -126,16 +126,13 @@
     <script type="text/javascript">
       jQuery(document).ready(function($) {
  
-            $("#glossary a").click(function(event){		
-              event.preventDefault();
-			  $("#glossary ul li").each(function(){
-      	    	$(this).show();
-			  });
-			
-              $('html,body').animate({scrollTop:$('li '+this.hash).offset().top}, 500);
-              $('html,body').animate({scrollTop:$('li '+this.hash).offset().top-=50}, 500);
-              $('li '+this.hash+',li '+this.hash+'+ p').effect("highlight", {color: "#FFCC85"}, 3000);
-            });
+        // Set scroll animation for glossary term links within page
+        $("#glossary a[href^='#']").click(function(event) {
+          event.preventDefault();
+          $('html,body').animate({scrollTop:$('li '+this.hash).offset().top}, 500);
+          $('html,body').animate({scrollTop:$('li '+this.hash).offset().top-=50}, 500);
+          $('li '+this.hash+',li '+this.hash+'+ p').effect("highlight", {color: "#FFCC85"}, 3000);
+        });
       });
     </script>
 
