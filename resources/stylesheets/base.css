@@ -87,6 +87,12 @@
 	    padding: 10px 0 20px;
 	}
 
+	blockquote p {
+	    font-size: 13px;
+	    font-weight: normal;
+	    font-style: italic;
+	}
+
 /*Coursera stuff*/
 
   .label {
