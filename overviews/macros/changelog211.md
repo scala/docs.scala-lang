@@ -107,7 +107,7 @@ Quasiquotes is the single most impressive upgrade for reflection and macros in S
 
 30) **Other deprecations**. Some of you have -Xfatal-warnings turned on in your builds, so any deprecation might fail compilation. This guide has covered all controversial deprecations, and the rest can be fixed by straightforwardly following deprecation messages.
 
-31) **Removal of resetAllAttrs**. resetAllAttrs is a very dangerous API and shouldn't have been exposed in the first place. That's why we have removed it without going through a deprecation cycle. There is however a publicly available replacement called `resetLocalAttrs` that should be sufficient in almost all cases, and we recommend using it instead.
+31) **Removal of resetAllAttrs**. resetAllAttrs is a very dangerous API and shouldn't have been exposed in the first place. That's why we have removed it without going through a deprecation cycle. There is however a publicly available replacement called `resetLocalAttrs` that should be sufficient in almost all cases, and we recommend using it instead. In an exceptional case when `resetLocalAttrs` doesn't cut it, go for [https://github.com/scalamacros/resetallattrs](https://github.com/scalamacros/resetallattrs).
 
 32) **Removal of isLocal**. `Symbol.isLocal` wasn't doing what is was advertising, and there was no way to fix it. Therefore we have removed it without any deprecation warnings and are recommending using `Symbol.isPrivateThis` and/or `Symbol.isProtectedThis` instead.
 
