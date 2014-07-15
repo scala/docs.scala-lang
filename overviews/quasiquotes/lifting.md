@@ -15,7 +15,7 @@ Lifting is and extensible way to unquote custom data types in quasiquotes. Its p
     scala> val two = 1 + 1
     two: Int = 2
 
-    scala> val four = "$two + $two"
+    scala> val four = q"$two + $two"
     four: universe.Tree = 2.$plus(2)
 
 This code runs successfully because `Int` is considered to be `Liftable` by default. `Liftable` type is just a trait with a single absract method that defines a mapping of given type to tree:
