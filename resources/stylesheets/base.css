@@ -182,3 +182,14 @@ div#pop-up-arrow {
 .jvectormap-zoomout {
     top: 30px;
 }
+.h2 {
+  font-size: 24px;
+  line-height: 36px;
+  color: #404040;
+  font-weight: bold;
+  display: block;
+  -webkit-margin-before: 0.83em;
+  -webkit-margin-after: 0.83em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+}
