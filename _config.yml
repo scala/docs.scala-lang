@@ -13,7 +13,7 @@ keywords:
 
 scala-version: 2.10.0
 
-pygments: true
+highlighter: pygments
 permalink: /:categories/:title.html
 
 # markdown: rdiscount
