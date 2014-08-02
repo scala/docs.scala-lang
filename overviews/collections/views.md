@@ -104,7 +104,7 @@ Assume now you want to negate elements at positions 3 through five of the array 
     scala> arr
     res4: Array[Int] = Array(0, 1, 2, -3, -4, -5, 6, 7, 8, 9)
 
-What happened here is that negate changed all elements of `subarr`, which were a slice of the elements of `arr`. Again, you see that views help in keeping things modular. The code above nicely separated the question of what index range to apply a method to from the question what method to apply.
+What happened here is that negate changed all elements of `subarr`, which was originally a slice of the array `arr`. Again, you see that views help in keeping things modular. The code above nicely separated the question of what index range to apply a method to from the question what method to apply.
 
 After having seen all these nifty uses of views you might wonder why have strict collections at all? One reason is that performance comparisons do not always favor lazy over strict collections. For smaller collection sizes the added overhead of forming and applying closures in views is often greater than the gain from avoiding the intermediary data structures. A probably more important reason is that evaluation in views can be very confusing if the delayed operations have side effects.
 
