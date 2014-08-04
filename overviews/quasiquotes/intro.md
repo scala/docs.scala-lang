@@ -44,7 +44,7 @@ Similarly one can structurally deconstruct a tree using unquoting in pattern mat
 
 ## Interpolators {:#interpolators}
 
-Scala is the language with rich syntax that differs greatly depending on the syntactical context:
+Scala is a language with rich syntax that differs greatly depending on the syntactical context:
 
     scala> val x = q"""
              val x: List[Int] = List(1, 2) match {
