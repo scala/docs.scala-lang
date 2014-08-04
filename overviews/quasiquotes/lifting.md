@@ -10,7 +10,7 @@ outof: 13
 ---
 **Denys Shabalin** <span class="label warning" style="float: right;">EXPERIMENTAL</span>
 
-Lifting is and extensible way to unquote custom data types in quasiquotes. Its primary use-case is support unquoting of [literal](/overviews/quasiquotes/expression-details.html#literal) values and a number of reflection primitives as trees:
+Lifting is an extensible way to unquote custom data types in quasiquotes. Its primary use-case is support unquoting of [literal](/overviews/quasiquotes/expression-details.html#literal) values and a number of reflection primitives as trees:
 
     scala> val two = 1 + 1
     two: Int = 2
