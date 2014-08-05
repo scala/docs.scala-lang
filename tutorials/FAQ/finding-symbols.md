@@ -183,8 +183,8 @@ And, of course, there's various combinations that can appear in code:
 
 This answer was originally submitted in response to [this question on Stack Overflow][6].
 
-  [1]: http://www.scala-lang.org/sites/default/files/linuxsoft_archives/docu/files/ScalaReference.pdf
-  [2]: http://www.scala-lang.org/archives/downloads/distrib/files/nightly/docs/library/index.html#index.index-_
+  [1]: http://scala-lang.org/files/archive/spec/2.11/
+  [2]: http://www.scala-lang.org/api/current/index.html#index.index-_
   [3]: http://www.scala-lang.org/api/current/index.html#scala.Predef$
   [4]: http://www.scala-lang.org/api/current/scala/Predef$$ArrowAssoc.html
   [5]: http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.List

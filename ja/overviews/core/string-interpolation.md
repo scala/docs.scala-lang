@@ -85,7 +85,7 @@ Scala では、全ての加工文字列リテラルは簡単なコード変換�
 
     id"string content"
 
-これは [`StringContext`](http://www.scala-lang.org/archives/downloads/distrib/files/nightly/docs/library/index.html#scala.StringContext) のインスタンスへのメソッドの呼び出し (`id`) へと変換される。このメソッドは implicit スコープ内で提供することもできる。独自の文字列の補間を定義するには、`StringContext` に新しいメソッドを追加する implicit クラスを作るだけでいい。以下に具体例で説明する:
+これは [`StringContext`](http://www.scala-lang.org/api/current/index.html#scala.StringContext) のインスタンスへのメソッドの呼び出し (`id`) へと変換される。このメソッドは implicit スコープ内で提供することもできる。独自の文字列の補間を定義するには、`StringContext` に新しいメソッドを追加する implicit クラスを作るだけでいい。以下に具体例で説明する:
 
     // 注意: 実行時のインスタンス化を避けるために AnyVal を継承する。
     // これに関しては値クラスのガイドを参照。
