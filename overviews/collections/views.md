@@ -11,7 +11,7 @@ languages: [ja]
 
 Collections have quite a few methods that construct new collections. Examples are `map`, `filter` or `++`. We call such methods transformers because they take at least one collection as their receiver object and produce another collection as their result.
 
-There are two principal ways to implement transformers. One is _strict_, that is a new collection with all its is elements is constructed as a result of the transformer. The other is non-strict or _lazy_, that is one constructs only a proxy for the result collection, and its elements get constructed only as one demands them.
+There are two principal ways to implement transformers. One is _strict_, that is a new collection with all its elements is constructed as a result of the transformer. The other is non-strict or _lazy_, that is one constructs only a proxy for the result collection, and its elements get constructed only as one demands them.
 
 As an example of a non-strict transformer consider the following implementation of a lazy map operation:
 
