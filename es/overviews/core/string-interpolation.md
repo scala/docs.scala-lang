@@ -86,7 +86,7 @@ En Scala, todas las cadenas "procesadas" son simples transformaciones de código
 
     id"string content"
 
-la transforma en la llamada a un método (`id`) sobre una instancia de [StringContext](http://www.scala-lang.org/archives/downloads/distrib/files/nightly/docs/library/index.html#scala.StringContext). Este método también puede estar disponible en un ámbito implícito. Para definiir nuestra propia cadena de interpolación simplemente necesitamos crear una clase implícita que añada un nuevo método a la clase `StringContext`. A continuación se muestra un ejemplo:
+la transforma en la llamada a un método (`id`) sobre una instancia de [StringContext](http://www.scala-lang.org/api/current/index.html#scala.StringContext). Este método también puede estar disponible en un ámbito implícito. Para definiir nuestra propia cadena de interpolación simplemente necesitamos crear una clase implícita que añada un nuevo método a la clase `StringContext`. A continuación se muestra un ejemplo:
 
     // Note: We extends AnyVal to prevent runtime instantiation.  See 
     // value class guide for more info.
