@@ -10,7 +10,7 @@ outof: 13
 ---
 **Denys Shabalin** <span class="label warning" style="float: right;">EXPERIMENTAL</span>
 
-## AST manipulation in macros and compiler plugins {:#ast-manipulation}
+## AST manipulation in macros and compiler plugins
 
 Quasiquotes were designed primary as tool for ast manipulation in macros. Common workflow is to deconstruct arguments with quasiquotes patterns and construct rewritten result with another quasiquote:
 

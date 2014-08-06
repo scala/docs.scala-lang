@@ -40,7 +40,7 @@ One can also combine lifting and unquote splicing:
 
 In this case each element of the list will be lifted separately and the result will be spliced right in.
 
-## Bring your own {:#bring-your-own}
+## Bring your own
 
 To define tree representation for your own data type just provide an implicit instance of `Liftable` for it:
 
@@ -65,7 +65,7 @@ into a case class constructor call. In this example there two important points t
 1. Here we only defined `Liftable` for runtime reflection. It won't be found if you try to
    use it from a macro due to the fact that each universe contains its own `Liftable` which is not
    compatible with the others. This problem is caused by path-dependant nature of current reflection
-   api. (see [sharing liftable implementation between universes](#reusing-impl))
+   api. (see [sharing liftable implementation between universes](#reusing-liftable-implementation-between-universes))
 
 2. Due to lack of [hygiene](/overviews/quasiquotes/hygiene.html), reference to point companion
    has to be fully qualified to ensure correctness in of this tree in every possible context. Another
@@ -76,7 +76,7 @@ into a case class constructor call. In this example there two important points t
          q"$PointSym(${p.x}, ${p.y})"
        }
 
-## Standard Liftables {:#standard}
+## Standard Liftables
 
  Type                           | Value                 | Representation
 --------------------------------|-----------------------|---------------
@@ -110,7 +110,7 @@ into a case class constructor call. In this example there two important points t
 
  (‡) `s.` is shorthand for scala, `s.c.i.` for `scala.collection.immutable`, `s.u.` for `scala.util.`
 
-## Reusing Liftable implementation between universes {:#reusing-impl}
+## Reusing Liftable implementation between universes
 
 Due to path dependent nature of current reflection API it isn't trivial to share the same Liftable definition between both macro and runtime universes. A possible way to do this is to define Liftable implementations in a trait and instantiate it for each universe separately:
 

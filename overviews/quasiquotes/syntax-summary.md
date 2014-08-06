@@ -10,7 +10,7 @@ outof: 13
 ---
 **Denys Shabalin** <span class="label warning" style="float: right;">EXPERIMENTAL</span>
 
-## Expressions {:#exprs}
+## Expressions
 
 
                          | Quasiquote                                                       | Type
@@ -46,26 +46,26 @@ outof: 13
 
 [101]: /overviews/quasiquotes/expression-details.html#empty
 [102]: /overviews/quasiquotes/expression-details.html#literal
-[103]: /overviews/quasiquotes/expression-details.html#ref
-[104]: /overviews/quasiquotes/expression-details.html#super-this
-[105]: /overviews/quasiquotes/expression-details.html#application
-[106]: /overviews/quasiquotes/expression-details.html#assign-update
+[103]: /overviews/quasiquotes/expression-details.html#identifier-and-selection
+[104]: /overviews/quasiquotes/expression-details.html#super-and-this
+[105]: /overviews/quasiquotes/expression-details.html#application-and-type-application
+[106]: /overviews/quasiquotes/expression-details.html#assign-and-update
 [107]: /overviews/quasiquotes/expression-details.html#return
 [108]: /overviews/quasiquotes/expression-details.html#throw
 [109]: /overviews/quasiquotes/expression-details.html#ascription
-[110]: /overviews/quasiquotes/expression-details.html#annotated
+[110]: /overviews/quasiquotes/expression-details.html#annotation
 [111]: /overviews/quasiquotes/expression-details.html#tuple
 [112]: /overviews/quasiquotes/expression-details.html#block
 [113]: /overviews/quasiquotes/expression-details.html#if
-[114]: /overviews/quasiquotes/expression-details.html#match
+[114]: /overviews/quasiquotes/expression-details.html#pattern-match
 [115]: /overviews/quasiquotes/expression-details.html#try
 [116]: /overviews/quasiquotes/expression-details.html#function
 [117]: /overviews/quasiquotes/expression-details.html#partial-function
-[118]: /overviews/quasiquotes/expression-details.html#while
-[119]: /overviews/quasiquotes/expression-details.html#for
+[118]: /overviews/quasiquotes/expression-details.html#while-and-do-while-loops
+[119]: /overviews/quasiquotes/expression-details.html#for-and-for-yield-loops
 [120]: /overviews/quasiquotes/expression-details.html#new
 
-## Types {:#types}
+## Types
 
                              | Quasiquote                            | Type
 -----------------------------|---------------------------------------|---------------------
@@ -83,18 +83,18 @@ outof: 13
  [Tuple Type][209]           | `tq"(..$tpts)"`                       | Tree
  [Function Type][210]        | `tq"(..$tpts) => $tpt"`               | Tree
 
-[201]: /overviews/quasiquotes/type-details.html#empty
-[202]: /overviews/quasiquotes/type-details.html#ident
-[203]: /overviews/quasiquotes/type-details.html#singleton
-[204]: /overviews/quasiquotes/type-details.html#projection
-[205]: /overviews/quasiquotes/type-details.html#applied
-[206]: /overviews/quasiquotes/type-details.html#annotated
-[207]: /overviews/quasiquotes/type-details.html#compound
-[208]: /overviews/quasiquotes/type-details.html#existential
-[209]: /overviews/quasiquotes/type-details.html#tuple
-[210]: /overviews/quasiquotes/type-details.html#function
+[201]: /overviews/quasiquotes/type-details.html#empty-type
+[202]: /overviews/quasiquotes/type-details.html#type-identifier
+[203]: /overviews/quasiquotes/type-details.html#singleton-type
+[204]: /overviews/quasiquotes/type-details.html#type-projection
+[205]: /overviews/quasiquotes/type-details.html#applied-type
+[206]: /overviews/quasiquotes/type-details.html#annotated-type
+[207]: /overviews/quasiquotes/type-details.html#compound-type
+[208]: /overviews/quasiquotes/type-details.html#existential-type
+[209]: /overviews/quasiquotes/type-details.html#tuple-type
+[210]: /overviews/quasiquotes/type-details.html#function-type
 
-## Patterns {:#pats}
+## Patterns
 
                             | Quasiquote             | Type
 ----------------------------|------------------------|-------------------
@@ -107,15 +107,15 @@ outof: 13
  [Tuple Pattern][307]       | `pq"(..$pats)"`        | Apply, UnApply
  XML Pattern                | Not natively supported | Tree
 
-[301]: /overviews/quasiquotes/pattern-details.html#wildcard
-[302]: /overviews/quasiquotes/pattern-details.html#literal
-[303]: /overviews/quasiquotes/pattern-details.html#binding
-[304]: /overviews/quasiquotes/pattern-details.html#extractor
-[305]: /overviews/quasiquotes/pattern-details.html#type
-[306]: /overviews/quasiquotes/pattern-details.html#alternative
-[307]: /overviews/quasiquotes/pattern-details.html#tuple
+[301]: /overviews/quasiquotes/pattern-details.html#wildcard-pattern
+[302]: /overviews/quasiquotes/pattern-details.html#literal-pattern
+[303]: /overviews/quasiquotes/pattern-details.html#binding-pattern
+[304]: /overviews/quasiquotes/pattern-details.html#extractor-pattern
+[305]: /overviews/quasiquotes/pattern-details.html#type-pattern
+[306]: /overviews/quasiquotes/pattern-details.html#alternative-pattern
+[307]: /overviews/quasiquotes/pattern-details.html#tuple-pattern
 
-## Definitions {:#defns}
+## Definitions
 
                               | Quasiquote                                                                                                                  | Type
 ------------------------------|-----------------------------------------------------------------------------------------------------------------------------|-----------
@@ -132,18 +132,18 @@ outof: 13
  [Package][409]               | `q"package $ref { ..$topstats }"`                                                                                           | PackageDef
  [Package Object][410]        | `q"package object $tname extends { ..$earlydefns } with ..$parents { $self => ..$stats }"`                                  | PackageDef
 
-[401]: /overviews/quasiquotes/definition-details.html#val-var
-[402]: /overviews/quasiquotes/definition-details.html#pattern
-[403]: /overviews/quasiquotes/definition-details.html#method
-[404]: /overviews/quasiquotes/definition-details.html#ctor
-[405]: /overviews/quasiquotes/definition-details.html#type
-[406]: /overviews/quasiquotes/definition-details.html#class
-[407]: /overviews/quasiquotes/definition-details.html#trait
-[408]: /overviews/quasiquotes/definition-details.html#object
-[409]: /overviews/quasiquotes/definition-details.html#package
-[410]: /overviews/quasiquotes/definition-details.html#package-object
+[401]: /overviews/quasiquotes/definition-details.html#val-and-var-definitions
+[402]: /overviews/quasiquotes/definition-details.html#pattern-definitions
+[403]: /overviews/quasiquotes/definition-details.html#method-definition
+[404]: /overviews/quasiquotes/definition-details.html#secondary-constructor-definition
+[405]: /overviews/quasiquotes/definition-details.html#type-definition
+[406]: /overviews/quasiquotes/definition-details.html#class-definition
+[407]: /overviews/quasiquotes/definition-details.html#trait-definition
+[408]: /overviews/quasiquotes/definition-details.html#object-definition
+[409]: /overviews/quasiquotes/definition-details.html#package-definition
+[410]: /overviews/quasiquotes/definition-details.html#package-object-definition
 
-## Auxiliary {:#aux}
+## Auxiliary
 
                                     | Quasiquote                  | Type
 ------------------------------------|-----------------------------|--------
@@ -155,26 +155,26 @@ outof: 13
 
 
 [501]: /overviews/quasiquotes/expression-details.html#import
-[502]: /overviews/quasiquotes/expression-details.html#match
-[503]: /overviews/quasiquotes/expression-details.html#for
+[502]: /overviews/quasiquotes/expression-details.html#pattern-match
+[503]: /overviews/quasiquotes/expression-details.html#for-and-for-yield-loops
 
-## Abbreviations {:#abbrev}
+## Abbreviations
 
 Prefixes of unquotees imply the following:
 
 * `name: Name`, `tname: TermName`, `tpname: TypeName`
 * `value: T` where `T` is value type that corresponds to given literal (e.g. `Int`, `Char`, `Float` etc)
-* `expr: Tree` an [expression tree](#exprs)
+* `expr: Tree` an [expression tree](#expressions)
 * `tpt: Tree` a [type tree](#types)
-* `pat: Tree` a [pattern tree](#pats)
-* `defn: Tree` a [definition tree](#defns)
-* `earlydefn: Tree` an early definion tree ([val](/overviews/quasiquotes/definition-details.html#val-var) or [type definition](/overviews/quasiquotes/definition-details.html#type))
-* `self: Tree` a self definition tree (i.e. [val definition](/overviews/quasiquotes/definition-details.html#val-var))
-* `stat: Tree` a statement tree ([definition](#defns), [expression](#exprs) or an [import](/overviews/quasiquotes/expression-details.html#import))
-* `topstat: Tree` a top-level statement tree ([class](/overviews/quasiquotes/definition-details.html#class), [trait](/overviews/quasiquotes/definition-details.html#trait), [package](/overviews/quasiquotes/definition-details.html#package), [package object](/overviews/quasiquotes/definition-details.html#package-object) or [import](/overviews/quasiquotes/expression-details.html#import))
-* `enum: Tree` a [for loop](/overviews/quasiquotes/expression-details.html#for) enumerator
-* `param: Tree` a value parameter tree (i.e. [val definition](/overviews/quasiquotes/definition-details.html#val-var))
-* `tparam: Tree` a type paremeter tree (i.e. [type definition](/overviews/quasiquotes/definition-details.html#type))
+* `pat: Tree` a [pattern tree](#patterns)
+* `defn: Tree` a [definition tree](#definitions)
+* `earlydefn: Tree` an early definion tree ([val](/overviews/quasiquotes/definition-details.html#val-and-var-definitions) or [type definition](/overviews/quasiquotes/definition-details.html#type-definition))
+* `self: Tree` a self definition tree (i.e. [val definition](/overviews/quasiquotes/definition-details.html#val-and-var-definitions))
+* `stat: Tree` a statement tree ([definition](#definitions), [expression](#expressions) or an [import](/overviews/quasiquotes/expression-details.html#import))
+* `topstat: Tree` a top-level statement tree ([class](/overviews/quasiquotes/definition-details.html#class-definition), [trait](/overviews/quasiquotes/definition-details.html#trait-definition), [package](/overviews/quasiquotes/definition-details.html#package-definition), [package object](/overviews/quasiquotes/definition-details.html#package-object-definition) or [import](/overviews/quasiquotes/expression-details.html#import))
+* `enum: Tree` a [for loop](/overviews/quasiquotes/expression-details.html#for-and-for-yield-loops) enumerator
+* `param: Tree` a value parameter tree (i.e. [val definition](/overviews/quasiquotes/definition-details.html#val-and-var-definitions))
+* `tparam: Tree` a type paremeter tree (i.e. [type definition](/overviews/quasiquotes/definition-details.html#type-definition))
 * `parent: Tree` a [template](/overviews/quasiquotes/definition-details.html#templates) parent
 * `sel: Tree` an [import](/overviews/quasiquotes/expression-details.html#import) selector tree
 

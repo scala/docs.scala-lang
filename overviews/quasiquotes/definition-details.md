@@ -10,7 +10,7 @@ outof: 13
 ---
 **Denys Shabalin** <span class="label warning" style="float: right;">EXPERIMENTAL</span>
 
-## Modifiers {:#modifiers}
+## Modifiers
 
 Every definition except packages and package objects have associtated modifiers object which contains following data:
 
@@ -62,7 +62,7 @@ Considering the fact that definitions might contain various low-level flags adde
 
     scala> val q"$_ def f" = q"@foo @bar implicit def f"
 
-## Templates {:#templates}
+## Templates
 
 Templates are a common abstraction in definition trees that is used in new expressions, classes, traits, objects, package objects. Although there is no interpolator for it at the moment we can illustrate its structure on the example of new expression (similar handling will applly to all other template-bearing trees):
 
@@ -111,9 +111,9 @@ So template consists of:
         scala> val q"new { ..$body }" = q"new { val x = 1; def y = 'y }"
         body: List[universe.Tree] = List(val x = 1, def y = scala.Symbol("y"))
 
-## Val and Var Definitions {:#val-var}
+## Val and Var Definitions
 
-Vals and vars allow you to define immutable and mutable variables correspondingly. Additionally they are also used to represent [function](/overviews/quasiquotes/expression-details.html#function), [class](#class) and [method](#method) paremeters.
+Vals and vars allow you to define immutable and mutable variables correspondingly. Additionally they are also used to represent [function](/overviews/quasiquotes/expression-details.html#function), [class](#class-definition) and [method](#method-definition) paremeters.
 
 Each val and var consistents of four components: modifiers, name, type tree and a right hand side:
 
@@ -126,7 +126,7 @@ Each val and var consistents of four components: modifiers, name, type tree and 
     tpt: universe.Tree = <type ?>
     rhs: universe.Tree = 2
 
-If type of the val isn't explicitly specified by the user an [empty type](/overviews/quasiquotes/type-details.html#empty) is used as tpt.
+If type of the val isn't explicitly specified by the user an [empty type](/overviews/quasiquotes/type-details.html#empty-type) is used as tpt.
 
 Vals and vars are disjoint (they don't match one another):
 
@@ -142,7 +142,7 @@ Vars always have `MUTABLE` flag in their modifiers:
     tpt: universe.Tree = <type ?>
     rhs: universe.Tree = 2
 
-## Pattern Definitions {:#pattern}
+## Pattern Definitions
 
 Pattern definitions allow to use scala pattern matching capabilities to define variables. Unlike
 val and var definitions, pattern definitions are not first-class and they are get represented
@@ -202,7 +202,7 @@ Simiarly one can also construct a mutable pattern definition:
 
     q"$mods var $pat: $tpt = $rhs"
 
-## Type Definition {:#type}
+## Type Definition
 
 Type definition have two possible shapes: abstract type definitions and alias type definitions.
 
@@ -237,7 +237,7 @@ Due to low level uniform representation of type aliases and abstract types one m
 
 Where `tpt` has a `TypeBoundsTree(low, high)` shape.
 
-## Method Definition {:#method}
+## Method Definition
 
 Each method consists of modifiers, name, type arguments, value arguments, return type and a body:
 
@@ -249,7 +249,7 @@ Each method consists of modifiers, name, type arguments, value arguments, return
     tpt: universe.Tree = <type ?>
     body: universe.Tree = 1
 
-Type arguments are [type definitions](#type) and value arguments are [val definitions](#val-var). Inferred return type is represented as [empty type](/overviews/quasiquotes/type-details.html#empty). If body of the method is [empty expression](/overviews/quasiquotes/expression-details.html#empty) it means that method is abstract.
+Type arguments are [type definitions](#type-definition) and value arguments are [val definitions](#val-and-var-definitions). Inferred return type is represented as [empty type](/overviews/quasiquotes/type-details.html#empty-type). If body of the method is [empty expression](/overviews/quasiquotes/expression-details.html#empty) it means that method is abstract.
 
 Alternatively you can also deconstruct arguments separating implicit and non-implicit parameters:
 
@@ -267,7 +267,7 @@ This way of parameter handling will still work if method doesn\'t have any impli
     implparams: List[universe.ValDef] = List()
     body: universe.Tree = x.$plus(y)
 
-## Secondary Constructor Definition {:#ctor}
+## Secondary Constructor Definition
 
 Secondary constructors are special kinds of methods that have following shape:
 
@@ -288,7 +288,7 @@ Due to low level underlying representation of trees secondary constructors are r
     tpt: universe.Tree = <type ?>
     body: universe.Tree = <init>(0)
 
-## Class Definition {:#class}
+## Class Definition
 
 Classes have a following structure:
 
@@ -296,11 +296,11 @@ Classes have a following structure:
 
 As you probably already see the right part after extends is just a [template](#templates). Apart from it and modifiers classes
 also have primary constructor which consists of constructor modifiers, type and value parameters which behave very much like
-[method](#method) modifiers and parameters.
+[method](#method-definition) modifiers and parameters.
 
-## Trait Definition {:#trait}
+## Trait Definition
 
-Syntactically traits are quite similar to [classes](#class) sans value parameters and constructor modifiers:
+Syntactically traits are quite similar to [classes](#class-definition) sans value parameters and constructor modifiers:
 
      q"$mods trait $tpname[..$tparams] extends { ..$earlydefns } with ..$parents { $self => ..$stats }"
 
@@ -316,13 +316,13 @@ A workaround it to always extract modifiers with wildcard pattern:
     name: universe.TypeName = X
     stats: List[universe.Tree] = List(def x: Int)
 
-## Object Definition {:#object}
+## Object Definition
 
-Syntactically objects are quite similar [classes](#class) without constructors:
+Syntactically objects are quite similar [classes](#class-definition) without constructors:
 
     q"$mods object $tname extends { ..$earlydefns } with ..$parents { $self => ..$stats }"
 
-## Package Definition {:#package}
+## Package Definition
 
 Packages are a fundamental primitive to organize source code. You can express them in quasiquotes as:
 
@@ -350,7 +350,7 @@ Packages are a fundamental primitive to organize source code. You can express th
 Quasiquotes don\'t support inline package definition syntax that are usually used in the
 header of the source file (but it's equivalent to the supported one in terms of ASTs).
 
-## Package Object Definition{:#package-object}
+## Package Object Definition
 
 Package objects are a cross between packages and object:
 
