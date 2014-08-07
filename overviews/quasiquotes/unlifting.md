@@ -46,7 +46,7 @@ One can also successfully combine unquote splicing and unlifting:
 
 Analogously to lifting it would unlift arguments of the function elementwise and wrap the result into a list.
 
-## Bring your own {:#bring-your-own}
+## Bring your own
 
 Similarly to liftables one can define your own unliftables:
 
@@ -70,7 +70,7 @@ Here one needs to pay attention to a few nuances:
    instance of `T`.
 
 1. We only define `Unliftable` for runtime universe, it won't be available in macros.
-   (see [sharing liftable implementations](/overviews/quasiquotes/lifting.html#reusing-impl))
+   (see [sharing liftable implementations](/overviews/quasiquotes/lifting.html#reusing-liftable-implementation-between-universes))
 
 2. Pattern used in this unliftable will only match fully qualified reference to Point that
    starts with `_root_`. It won't match other possible shapes of the reference and they have
@@ -79,7 +79,7 @@ Here one needs to pay attention to a few nuances:
 3. The pattern will also only match trees that have literal `Int` arguments.
    It won't work for other expressions that might evaluate to `Int`.
 
-## Standard Unliftables {:#standard}
+## Standard Unliftables
 
  Type                           | Representation        | Value
 --------------------------------|-----------------------|------

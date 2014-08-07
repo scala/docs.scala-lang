@@ -9,11 +9,11 @@ num: 1
 outof: 13
 ---
 
-## Scala 2.11 {:#211}
+## Scala 2.11
 
-In Scala 2.11, quasiquotes are shipped in the official Scala distribution as part of `scala-reflect.jar`, so you don't need to do anything special to use them - just don't forget to add a dependency on `scala-reflect`. 
+In Scala 2.11, quasiquotes are shipped in the official Scala distribution as part of `scala-reflect.jar`, so you don't need to do anything special to use them - just don't forget to add a dependency on `scala-reflect`.
 
-All examples and code snippets in this guide are run under in 2.11 REPL with one extra line: 
+All examples and code snippets in this guide are run under in 2.11 REPL with one extra line:
 
     scala> val universe: reflect.runtime.universe.type = reflect.runtime.universe
     scala> import universe._
@@ -47,7 +47,7 @@ On the other side of spectrum there is also a `showRaw` pretty printer that show
     scala> println(showRaw(q"class C"))
     ClassDef(Modifiers(), TypeName("C"), List(), Template(List(Select(Ident(scala), TypeName("AnyRef"))), noSelfType, List(DefDef(Modifiers(), termNames.CONSTRUCTOR, List(), List(List()), TypeTree(), Block(List(pendingSuperCall), Literal(Constant(())))))))
 
-## Scala 2.10 {:#210}
+## Scala 2.10
 
 In Scala 2.10, quasiquotes are only available via the [macro paradise compiler plugin](http://docs.scala-lang.org/overviews/macros/paradise.html).
 
@@ -55,7 +55,7 @@ In short, using quasiquotes in 2.10 is as simple as adding a single `addCompiler
 
 New `showCode` pretty printer is not available under 2.10.
 
-## SBT cross-compile {:#sbt}
+## SBT cross-compile
 
 Here's a neat SBT snippet taken from [Spire](https://github.com/non/spire) that allows you to use quasiquotes and cross-compile against both Scala 2.10 and 2.11:
 

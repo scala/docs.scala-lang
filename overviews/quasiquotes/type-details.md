@@ -5,22 +5,22 @@ title: Type details
 disqus: true
 
 partof: quasiquotes
-num: 9 
+num: 9
 outof: 13
 ---
 **Denys Shabalin** <span class="label warning" style="float: right;">EXPERIMENTAL</span>
 
-## Empty Type {:#empty}
+## Empty Type
 
 Empty type (`tq""`) is a canonical way to say that type at given location isn't given by the user and should be inferred by the compiler:
 
-1. [Method](/overviews/quasiquotes/definition-details.html#method) with unknown return type
-2. [Val or Var](/overviews/quasiquotes/definition-details.html#val-var) with unknown type
+1. [Method](/overviews/quasiquotes/definition-details.html#method-definition) with unknown return type
+2. [Val or Var](/overviews/quasiquotes/definition-details.html#val-and-var-definitions) with unknown type
 3. [Anonymous function](/overviews/quasiquotes/expression-details.html#function) with unknown argument type
 
-## Type Identifier {:#ident}
+## Type Identifier
 
-Similarly to [term identifiers](/overviews/quasiquotes/expression-details.html#ref) one can construct a type identifier based on a name:
+Similarly to [term identifiers](/overviews/quasiquotes/expression-details.html#identifier-and-selection) one can construct a type identifier based on a name:
 
     scala> val name = TypeName("Foo")
     name: universe.TypeName = Foo
@@ -35,7 +35,7 @@ And deconstruct it back through [unlifting](/overviews/quasiquotes/unlifting.htm
 
 It's recommended to always ascribe name as `TypeName` when you work with type identifiers. Non-ascribed pattern is equivalent to just a pattern variable binding.
 
-## Singleton Type {:#singleton}
+## Singleton Type
 
 A singleton type is a way to express a type of a term definition that is being referenced:
 
@@ -45,7 +45,7 @@ A singleton type is a way to express a type of a term definition that is being r
     scala> val tq"$ref.type" = tq"foo.bar.type"
     ref: universe.Tree = foo.bar
 
-## Type Projection {:#projection}
+## Type Projection
 
 Type projection is a fundamental way to select types as members of other types:
 
@@ -71,7 +71,7 @@ But semantically such selections are just a shortcut for a combination of single
     scala> val projected = tq"scala.type#Int"
     projected: universe.SelectFromTypeTree = scala.type#Int
 
-Lastly [similarly to expressions](/overviews/quasiquotes/expression-details.html#super-this) one can select members through super and this:
+Lastly [similarly to expressions](/overviews/quasiquotes/expression-details.html#super-and-this) one can select members through super and this:
 
     scala> val superbar = tq"super.Bar"
     superbar: universe.Select = super.Bar
@@ -87,7 +87,7 @@ Lastly [similarly to expressions](/overviews/quasiquotes/expression-details.html
     scala> val tq"this.${tpname: TypeName}" = thisfoo
     tpname: universe.TypeName = Foo
 
-## Applied Type {:#applied}
+## Applied Type
 
 Instantiations of parametized types can be expressed with the help of applied types (type-level equivalent of type application):
 
@@ -102,7 +102,7 @@ Deconstruction of non-applied types will cause `targs` begin extracted as empty 
     scala> val tq"Foo[..$targs]" = tq"Foo"
     targs: List[universe.Tree] = List()
 
-## Annotated Type {:#annotated}
+## Annotated Type
 
 Similarly to expressions types can be annotated:
 
@@ -113,7 +113,7 @@ Similarly to expressions types can be annotated:
     tpt: universe.Tree = T
     annot: universe.Tree = Fooable
 
-## Compound Type {:#compound}
+## Compound Type
 
 Compound type lets users to express a combination of a number of types with optional refined member list:
 
@@ -140,7 +140,7 @@ On the other side of the spectrum are pure refinements without explicit parents 
 
 Here we can see that AnyRef is a parent that is inserted implicitly if we don't provide any.
 
-## Existential Type {:#existential}
+## Existential Type
 
 Existential types consist of a type tree and a list of definitions:
 
@@ -154,7 +154,7 @@ Alternatively there is also an underscrore notation:
     tpt: universe.Tree = List[_$1]
     defns: List[universe.MemberDef] = List(<synthetic> type _$1)
 
-## Tuple Type {:#tuple}
+## Tuple Type
 
 [Similarly to expressions](/overviews/quasiquotes/expression-details.html#tuple), tuple types are just a syntactic sugar over `TupleN` classes:
 
@@ -171,7 +171,7 @@ Analagously `Unit` type is considered to be nullary tuple:
 
 It's important to mention that pattern matching of reference to `Unit` is limited to either fully qualified path or a reference that contains symbols. (see [hygiene](/overviews/quasiquotes/hygiene.html))
 
-## Function Type {:#function}
+## Function Type
 
 Similarly to tuples, function types are a syntactic sugar over `FunctionN` classes:
 

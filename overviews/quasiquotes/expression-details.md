@@ -10,7 +10,7 @@ outof: 13
 ---
 **Denys Shabalin** <span class="label warning" style="float: right;">EXPERIMENTAL</span>
 
-## Empty {:#empty}
+## Empty
 
 `q""` is used to indicate that some part of the tree is not provided by the user:
 
@@ -21,7 +21,7 @@ outof: 13
 
 Default toString formats `q""` as `<empty>`.
 
-## Literal {:#literal}
+## Literal
 
 Scala has a number of default built-in literals:
 
@@ -45,7 +45,7 @@ Thanks to [lifting](/overviews/quasiquotes/lifting.html) you can also easily cre
     scala> val one = q"$x"
     one: universe.Tree = 1
 
-This would work the same way for all literal types (see [standard liftables](/overviews/quasiquotes/lifting.html#standard) except `Null`. Lifting of `null` value and `Null` type isn't supported, use `q"null"` if you really mean to create null literal:
+This would work the same way for all literal types (see [standard liftables](/overviews/quasiquotes/lifting.html#standard-liftables) except `Null`. Lifting of `null` value and `Null` type isn't supported, use `q"null"` if you really mean to create null literal:
 
     scala> val x = null
     scala> q"$x"
@@ -58,9 +58,9 @@ During deconstruction you can use [unlifting](/overviews/quasiquotes/unlifting.h
     scala> val q"${x: Int}" = q"1"
     x: Int = 1
 
-Similarly it would work with all the literal types except `Null`. (see [standard unliftables](/overviews/quasiquotes/unlifting.html#standard))
+Similarly it would work with all the literal types except `Null`. (see [standard unliftables](/overviews/quasiquotes/unlifting.html#standard-unliftables))
 
-## Identifier and Selection {:#ref}
+## Identifier and Selection
 
 Identifiers and member selections are two fundamental primitives that let you refer to other definitions. Combination of two of them is also known `RefTree`.
 
@@ -98,7 +98,7 @@ Similarly you can create and extract member selections:
     scala> val q"foo.$name" = selected
     name: universe.TermName = bar
 
-## Super and This {:#super-this}
+## Super and This
 
 One can use this and super to select precise members within inheritance chain.
 
@@ -129,7 +129,7 @@ Similarly for super we have:
     qual: universe.TypeName = T
     field: universe.Name = foo
 
-## Application and Type Application {:#application}
+## Application and Type Application
 
 Value applications and type applications are two fundamental parts out of which one can construct calls to Scala functions and methods. Lets assume that we would like to handle function calls to the following method:
 
@@ -187,7 +187,7 @@ Similarly to type arguments, implicit value arguments are automatically inferred
     stats: List[universe.Tree] = List(def g(x: Int)(implicit y: Int): Int = x.+(y), implicit val y: Int = 3)
     argss: List[List[universe.Tree]] = List(List(2), List(y))
 
-## Assign and Update {:#assign-update}
+## Assign and Update
 
 Assign and update are two related ways to explictly mutate a variable or collection:
 
@@ -222,7 +222,7 @@ On the other hand if you want to treat this two cases separately it's also possi
     update array at List(0) with 1
 
 
-## Return {:#return}
+## Return
 
 Return expressions is used to perform early return from a function.
 
@@ -232,7 +232,7 @@ Return expressions is used to perform early return from a function.
     scala> val q"return $expr" = ret
     expr: universe.Tree = 2.$plus(2)
 
-## Throw {:#throw}
+## Throw
 
 Throw expression is used to throw a throwable:
 
@@ -242,7 +242,7 @@ Throw expression is used to throw a throwable:
     scala> val q"throw $expr" = thr
     expr: universe.Tree = new Exception()
 
-## Ascription {:#ascription}
+## Ascription
 
 Ascriptions lets users to annotate type of intermidiate expression:
 
@@ -253,7 +253,7 @@ Ascriptions lets users to annotate type of intermidiate expression:
     expr: universe.Tree = 1.$plus(1)
     tpt: universe.Tree = Int
 
-## Annotation {:#annotated}
+## Annotation
 
 Expressions can be annotated:
 
@@ -270,9 +270,9 @@ It's important to mention that such pattern won't match if we combine annotation
     scala.MatchError: (1.$plus(1): Int @positive) (of class scala.reflect.internal.Trees$Typed)
       ... 32 elided
 
-In this case we need to deconstruct it as [ascription](#ascription) and then deconstruct `tpt` as [annotated type](/overviews/quasiquotes/type-details.html#annotated).
+In this case we need to deconstruct it as [ascription](#ascription) and then deconstruct `tpt` as [annotated type](/overviews/quasiquotes/type-details.html#annotated-type).
 
-## Tuple {:#tuple}
+## Tuple
 
 Tuples are heteregeneous data structures with built-in user-friendly syntax. The syntax itself is just a sugar that maps onto `scala.TupleN` calls:
 
@@ -313,7 +313,7 @@ And unit as nullary tuple:
     scala> val q"(..$elems)" = q"()"
     elems: List[universe.Tree] = List()
 
-## Block {:#block}
+## Block
 
 Blocks are a fundamental primitive to express sequence of actions or bindings. `q"..."` interpolator is an equivalent of a block. It allows to express more than one expression seperated by semicolon or a newline:
 
@@ -383,9 +383,9 @@ Zero-element block is equivalent to synthetic unit (one that was inserted by the
     scala> val syntheticUnit = q"..$stats"
     syntheticUnit: universe.Tree = ()
 
-Such units are used in empty else branches of [ifs](#if) and empty bodies of [case clauses](#match) making it convenient to work with those cases as with zero-element blocks.
+Such units are used in empty else branches of [ifs](#if) and empty bodies of [case clauses](#pattern-match) making it convenient to work with those cases as with zero-element blocks.
 
-## If {:#if}
+## If
 
 There are two varieties of if expressions: those with else clause and without it:
 
@@ -401,7 +401,7 @@ There are two varieties of if expressions: those with else clause and without it
 
 No-else clause is equivalent to else clause that contains a synthetic unit literal ([empty block](#block)).
 
-## Pattern Match {:#match}
+## Pattern Match
 
 Pattern matching is cornerstone feature of Scala that lets you deconstruct values into their components:
 
@@ -433,7 +433,7 @@ Case clause without body is equivalent to one holding synthetic unit literal ([e
 
 No-guard is represented with the help of [empty expression](#empty).
 
-## Try {:#try}
+## Try
 
 Try expression is used to handle possible error conditions and ensure consistent state via finally. Both error handling cases and finally clause are optional.
 
@@ -454,9 +454,9 @@ Try expression is used to handle possible error conditions and ensure consistent
     b: List[universe.CaseDef] = List()
     c: universe.Tree = f
 
-Similarly to [pattern matching](#match) cases can be further deconstructed with `cq"..."`. No-finally clause is represented with the help of [empty expression](#empty).
+Similarly to [pattern matching](#pattern-match) cases can be further deconstructed with `cq"..."`. No-finally clause is represented with the help of [empty expression](#empty).
 
-## Function {:#function}
+## Function
 
 There are three ways to create anonymous function:
 
@@ -474,8 +474,8 @@ on type inference to infer its type. Last one explicitly defines function parame
 to implementation restriction second notation can only be used in parenthesis or inside other
 expression. If you leave them out you have to specify parameter types.
 
-Parameters are represented as [Vals](/overviews/quasiquotes/definition-details.html#val-var). If you want to programmatically create val that should have
-its type inferred you need to use [empty type](/overviews/quasiquotes/type-details.html#empty):
+Parameters are represented as [Vals](/overviews/quasiquotes/definition-details.html#val-and-var-definitions). If you want to programmatically create val that should have
+its type inferred you need to use [empty type](/overviews/quasiquotes/type-details.html#empty-type):
 
     scala> val tpt = tq""
     tpt: universe.TypeTree = <type ?>
@@ -508,7 +508,7 @@ You can also tear arguments further apart:
 It's recommended to use underscore pattern in place of [modifiers](/overviews/quasiquotes/definition-details.html#modifiers) even if you don't plan to work
 with them as parameters may contains additional flags which might cause match errors.
 
-## Partial Function {:#partial-function}
+## Partial Function
 
 Partial functions are a neat syntax that lets you express functions with
 limited domain with the help of pattern matching:
@@ -528,7 +528,7 @@ trees for match expressions. Despite this fact they do not match one another:
   scala> val q"$expr match { case ..$cases }" = pf
   scala.MatchError: ...
 
-## While and Do-While Loops {:#while}
+## While and Do-While Loops
 
 While and do-while loops are low-level control structures that used when performance of iteration
 is critical:
@@ -563,7 +563,7 @@ is critical:
     body: universe.Tree = x.$minus$eq(1)
     cond: universe.Tree = x.$greater(0)
 
-## For and For-Yield Loops {:#for}
+## For and For-Yield Loops
 
 For and For-Yield expressions allow to write monadic style comprehensions that desugar into calls to `map`, `flatMap`, `foreach` and `withFilter` methods:
 
@@ -595,7 +595,7 @@ It's important to mention that For and For-Yield do not cross-match each other:
     scala> val q"for (..$enums) $body" = `for-yield`
     scala.MatchError: ...
 
-## New {:#new}
+## New
 
 New expression lets you construct an instance of given type possibly refining it with other types or definitions:
 
@@ -605,7 +605,7 @@ New expression lets you construct an instance of given type possibly refining it
 
 See [templates](/overviews/quasiquotes/definition-details.html#templates) section for details.
 
-## Import {:#import}
+## Import
 
 Import trees consist of reference and a list of selectors:
 
