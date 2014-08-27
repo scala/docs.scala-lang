@@ -19,6 +19,7 @@ In Scala, patterns can be defined independently of case classes. To this end, a 
       val x = Twice(21)
       x match { case Twice(n) => Console.println(n) } // prints 21
     }
+
 There are two syntactic conventions at work here:
 
 The pattern `case Twice(n)` will cause an invocation of `Twice.unapply`, which is used to match any even number; the return value of the `unapply` signals whether the argument has matched or not, and any sub-values that can be used for further matching. Here, the sub-value is `z/2`
