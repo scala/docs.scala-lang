@@ -17,12 +17,14 @@ but require a critical bugfix in 2.10.2 to become fully operational. Implicit ma
 neither in 2.10.x, nor in 2.11.
 
 An extension to implicit macros,
-called fundep materialization, is unavailable in 2.10.x, but has been implemented both in
-[macro paradise](/overviews/macros/paradise.html) and Scala 2.11.0-M5.
-Note that in 2.10.x, expansion of fundep materializer macros requires macro paradise,
+called fundep materialization, is unavailable in 2.10.0 through 2.10.4, but has been implemented in
+[macro paradise](/overviews/macros/paradise.html), Scala 2.10.5 and Scala 2.11.x.
+Note that in 2.10.0 through 2.10.4, expansion of fundep materializer macros requires macro paradise,
 which means that your users will have to add macro paradise to their builds in order to use your fundep materializers.
 However, after fundep materializers expand, the resulting code will no longer have any references to macro paradise
-and won't require its presence at compile-time or at runtime.
+and won't require its presence at compile-time or at runtime. Also note that in 2.10.5, expansion of
+fundep materializer macros can happen without macro paradise, but then your users will have to enable
+the <code>-Yfundep-materialization</code> compiler flag.
 
 ## Implicit macros
 
