@@ -42,7 +42,7 @@ Similarly one can structurally deconstruct a tree using unquoting in pattern mat
     scala> val q"i am $what" = q"i am { a quasiquote }"
     what: universe.Tree = a.quasiquote
 
-## Interpolators {:#interpolators}
+## Interpolators
 
 Scala is a language with rich syntax that differs greatly depending on the syntactical context:
 
@@ -66,9 +66,9 @@ Each of this contexts is covered by separate interpolator:
 
     | Used for
 ----|----------------
- q  | [expressions](/overviews/quasiquotes/syntax-summary.html#exprs), [definitions](/overviews/quasiquotes/syntax-summary.html#defns) and [imports](http://localhost:4000/overviews/quasiquotes/expression-details.html#import)
+ q  | [expressions](/overviews/quasiquotes/syntax-summary.html#expressions), [definitions](/overviews/quasiquotes/syntax-summary.html#definitions) and [imports](http://localhost:4000/overviews/quasiquotes/expression-details.html#import)
  tq | [types](/overviews/quasiquotes/syntax-summary.html#types)
- pq | [patterns](/overviews/quasiquotes/syntax-summary.html#pats)
+ pq | [patterns](/overviews/quasiquotes/syntax-summary.html#patterns)
 
 Syntactical similiarity between different contexts doesn\'t imply similarity between underlying trees:
 
@@ -94,12 +94,12 @@ Additionally there are two auxilary interpolators that let you work with minor a
 
     | Used for
 ----|-------------------------------------
- cq | [case clause](/overviews/quasiquotes/syntax-summary.html#aux)
- fq | [for loop enumerator](/overviews/quasiquotes/syntax-summary.html#aux)
+ cq | [case clause](/overviews/quasiquotes/syntax-summary.html#auxiliary)
+ fq | [for loop enumerator](/overviews/quasiquotes/syntax-summary.html#auxiliary)
 
 See [syntax summary](/overviews/quasiquotes/syntax-summary.html) section for details.
 
-## Splicing {:#splicing}
+## Splicing
 
 Unquote splicing is a way to unquote a variable number of elements:
 

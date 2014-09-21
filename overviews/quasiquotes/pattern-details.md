@@ -10,11 +10,11 @@ outof: 13
 ---
 **Denys Shabalin** <span class="label warning" style="float: right;">EXPERIMENTAL</span>
 
-## Wildcard Pattern {:#wildcard}
+## Wildcard Pattern
 
 Wildcard pattern (`pq"_"`) is the simplest form of pattern that matches any input.
 
-## Literal Pattern {:#literal}
+## Literal Pattern
 
 Literal patterns are equivalent to literal expressions on AST level:
 
@@ -23,7 +23,7 @@ Literal patterns are equivalent to literal expressions on AST level:
 
 See chapter on [literal expressions](/overviews/quasiquotes/expression-details.html#literal) for details.
 
-## Binding Pattern {:#binding}
+## Binding Pattern
 
 Binding pattern is a way to name pattern or one it's part as local variable:
 
@@ -40,9 +40,9 @@ Binding without explicit pattern is equivalent to the one with wildcard pattern:
     name: universe.Name = foo
     pat: universe.Tree = _
 
-See also [type pattern](#type) for an example of type variable binding.
+See also [type pattern](#type-pattern) for an example of type variable binding.
 
-## Extractor Pattern {:#extractor}
+## Extractor Pattern
 
 Extractors are a neat way to delegate a pattern matching to another object's unapply method:
 
@@ -53,7 +53,7 @@ Extractors are a neat way to delegate a pattern matching to another object's una
     id: universe.Tree = Foo
     pats: List[universe.Tree] = List(1, 2, 3)
 
-## Type Pattern {:#type}
+## Type Pattern
 
 Type patterns are a way to check type of a scrutinee:
 
@@ -86,7 +86,7 @@ One can construct (and similarly deconstruct) such patterns by following steps:
     scala> val typevar = pq"_: $tpt"
     typevar: universe.Typed = (_: F[(t @ _)])
 
-## Alternative Pattern {:#alternative}
+## Alternative Pattern
 
 Pattern alternatives represent a pattern that matches whenever at least one of the branches matches:
 
@@ -101,9 +101,9 @@ Pattern alternatives represent a pattern that matches whenever at least one of t
     init: List[universe.Tree] = List(Foo(), Bar())
     last: universe.Tree = Baz()
 
-## Tuple Pattern {:#tuple}
+## Tuple Pattern
 
-Similarly to [tuple expressions](/overviews/quasiquotes/expression-details.html#tuple) and [tuple types](/overviews/quasiquotes/type-details.html#tuple), tuple patterns are just a syntactic sugar that expands as `TupleN` extractor:
+Similarly to [tuple expressions](/overviews/quasiquotes/expression-details.html#tuple) and [tuple types](/overviews/quasiquotes/type-details.html#tuple-type), tuple patterns are just a syntactic sugar that expands as `TupleN` extractor:
 
     scala> val tup2pat = pq"(a, b)"
     tup2pat: universe.Tree = scala.Tuple2((a @ _), (b @ _))

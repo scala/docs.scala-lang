@@ -16,7 +16,7 @@ Sophisticated macro systems such as Racket's have mechanisms that make macros hy
 
 Preventing name clashes between regular and generated code means two things. First, we must ensure that regardless of the context in which we put generated code, its meaning isn't going to change (*referential transparency*). Second, we must make certain that regardless of the context in which we splice regular code, its meaning isn't going to change (often called *hygiene in the narrow sense*). Let's see what can be done to this end on a series of examples.
 
-## Referential transparency {:#referential-transparency}
+## Referential transparency
 
 What referential transparency means is that quasiquotes should remember the lexical context in which they are defined. For instance, if there are imports provided at the definition site of the quasiquote, then these imports should be used to resolve names in the quasiquote. Unfortunately, this is not the case at the moment, and here's an example:
 
@@ -86,7 +86,7 @@ And wrapper will be resolved to `example.Test.wrapper` rather than intended `exa
          q"$wrapper($x)"
        }
 
-## Hygiene in the narrow sense {:#hygiene-in-the-narrow-sense}
+## Hygiene in the narrow sense
 
 What hygiene in the narrow sense means is that quasiquotes shouldn't mess with the bindings of trees that are unquoted into them. For example, if a macro argument unquoted into a macro expansion was originally referring to some variable in enclosing lexical context, then this reference should remain in force after macro expansion, regardless of what code was generated for the macro expansion. Unfortunately, we don't have automatic facilities to ensure this, and that can lead to unexpected situations:
 
