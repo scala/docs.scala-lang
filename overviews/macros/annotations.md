@@ -94,3 +94,8 @@ as typed as possible to remain useful. On the one hand, macro annottees are unty
 of class members). But on the other hand, the thing about all flavors of Scala macros is integration with the typechecker, and
 macro annotations are not an exceptions. During expansion we can have all the type information that's possible to have
 (e.g. we can reflect against the surrounding program or perform type checks / implicit lookups in the enclosing context).
+
+## Blackbox vs whitebox
+
+Macro annotations must be [whitebox](/overviews/macros/blackbox-whitebox.html).
+If you declare a macro annotation as [blackbox](/overviews/macros/blackbox-whitebox.html), it will not work.

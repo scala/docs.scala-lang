@@ -87,8 +87,6 @@ it has performance problems caused by the fact that Scala emits reflective calls
 of structural types. There are several strategies of dealing with that, but this margin is too narrow to contain them
 so I refer you to an amazing blog series by Travis Brown for details: [post 1](http://meta.plasm.us/posts/2013/06/19/macro-supported-dsls-for-schema-bindings/), [post 2](http://meta.plasm.us/posts/2013/07/11/fake-type-providers-part-2/), [post 3](http://meta.plasm.us/posts/2013/07/12/vampire-methods-for-structural-types/).
 
-Please note that anonymous type providers must be [whitebox](/overviews/macros/blackbox-whitebox.html), otherwise they will not work.
-
 ### Public type providers
 
 With the help of [macro paradise](/overviews/macros/paradise.html) and its [macro annotations](/overviews/macros/annotations.html), it becomes
@@ -135,3 +133,8 @@ than bytecode of a full-fledged class. This technique applies to both anonymous 
         else c.abort(s"value $sField is not a member of $sUrl")
       }
     }
+
+### Blackbox vs whitebox
+
+Both anonymous and public type providers must be [whitebox](/overviews/macros/blackbox-whitebox.html).
+If you declare a type provider macro as [blackbox](/overviews/macros/blackbox-whitebox.html), it will not work.

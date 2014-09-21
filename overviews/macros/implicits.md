@@ -149,4 +149,12 @@ Note how simple everything is. The `materializeIso` implicit macro just takes it
 We don't need to make sense of the second type argument (which isn't inferred yet), we don't need to interact with type inference -
 everything happens automatically.
 
-Please note that there is [a funny caveat](https://github.com/scala/scala/blob/7b890f71ecd0d28c1a1b81b7abfe8e0c11bfeb71/test/files/run/t5923a/Macros_1.scala) with Nothings that we plan to address later. Also note that fundep materializers must be [whitebox](/overviews/macros/blackbox-whitebox.html), otherwise they will not work.
+Please note that there is [a funny caveat](https://github.com/scala/scala/blob/7b890f71ecd0d28c1a1b81b7abfe8e0c11bfeb71/test/files/run/t5923a/Macros_1.scala) with Nothings that we plan to address later.
+
+## Blackbox vs whitebox
+
+Vanilla materializers (covered in the first part of this document) can be both [blackbox](/overviews/macros/blackbox-whitebox.html) and [whitebox](/overviews/macros/blackbox-whitebox.html).
+
+There is a noticeable distinction between blackbox and whitebox materializers. An error in an expansion of a blackbox implicit macro (e.g. an explicit <code>c.abort</code> call or an expansion typecheck error) will produce a compilation error. An error in an expansion of a whitebox implicit macro will just remove the macro from the list of implicit candidates in the current implicit search, without ever reporting an actual error to the user. This creates a trade-off: blackbox implicit macros feature better error reporting, while whitebox implicit macros are more flexible, being able to dynamically turn themselves off when necessary.
+
+Fundep materializers must be whitebox. If you declare a fundep materializer as blackbox, it will not work.

@@ -42,3 +42,7 @@ providing type arguments if necessary.
       def mono = macro Impl.mono
       def poly[T] = macro Impl.poly[T]
     }
+
+## Blackbox vs whitebox
+
+Macro bundles can be used to implement both [blackbox](/overviews/macros/blackbox-whitebox.html) and [whitebox](/overviews/macros/blackbox-whitebox.html) macros. Give the macro bundle constructor parameter the type of `scala.reflect.macros.blackbox.Context` to define a blackbox macro and  the type of `scala.reflect.macros.whitebox.Context` to define a whitebox macro.
