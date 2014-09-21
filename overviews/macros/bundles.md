@@ -6,6 +6,7 @@ disqus: true
 
 partof: macros
 num: 5
+outof: 13
 languages: [ja]
 ---
 <span class="label warning" style="float: right;">EXPERIMENTAL</span>

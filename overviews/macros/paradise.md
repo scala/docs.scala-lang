@@ -6,6 +6,7 @@ disqus: true
 
 partof: macros
 num: 11
+outof: 13
 languages: [ja]
 ---
 <span class="label success" style="float: right;">NEW</span>
