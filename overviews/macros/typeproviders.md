@@ -28,7 +28,7 @@ and won't require its presence at compile-time or at runtime.
 Recently we've given a talk about macro-based type providers in Scala, summarizing the state of the art and providing
 concrete examples. Slides and accompanying code can be found at [https://github.com/travisbrown/type-provider-examples](https://github.com/travisbrown/type-provider-examples).
 
-## Type providers
+## Introduction
 
 Type providers are a strongly-typed type-bridging mechanism, which enables information-rich programming in F# 3.0.
 A type provider is a compile-time facility, which is capable of generating definitions and their implementations
@@ -46,7 +46,7 @@ are local in the sense that the scope of their expansions is limited: [https://g
 1. Make generated definitions optionally erasable (Scala supports erasure for a number of language constructs,
 e.g. for abstract type members and value classes, but the mechanism is not extensible, which means that macro writers can't customize it).
 
-### Anonymous type providers
+## Anonymous type providers
 
 Even though the scope of definitions introduced by expansions of def macros is limited to those expansions,
 these definitions can escape their scopes by turning into structural types. For instance, consider the `h2db` macro that
@@ -87,7 +87,7 @@ it has performance problems caused by the fact that Scala emits reflective calls
 of structural types. There are several strategies of dealing with that, but this margin is too narrow to contain them
 so I refer you to an amazing blog series by Travis Brown for details: [post 1](http://meta.plasm.us/posts/2013/06/19/macro-supported-dsls-for-schema-bindings/), [post 2](http://meta.plasm.us/posts/2013/07/11/fake-type-providers-part-2/), [post 3](http://meta.plasm.us/posts/2013/07/12/vampire-methods-for-structural-types/).
 
-### Public type providers
+## Public type providers
 
 With the help of [macro paradise](/overviews/macros/paradise.html) and its [macro annotations](/overviews/macros/annotations.html), it becomes
 possible to easily generate publicly visible classes, without having to apply workarounds based on structural types. The annotation-based
@@ -134,7 +134,7 @@ than bytecode of a full-fledged class. This technique applies to both anonymous 
       }
     }
 
-### Blackbox vs whitebox
+## Blackbox vs whitebox
 
 Both anonymous and public type providers must be [whitebox](/overviews/macros/blackbox-whitebox.html).
 If you declare a type provider macro as [blackbox](/overviews/macros/blackbox-whitebox.html), it will not work.
