@@ -5,7 +5,7 @@ languages: [es, ja]
 ---
 
 <div class="page-header-index">
-  <h1>Core <small>The essentials...</small></h1>
+  <h2>Core <small>The essentials...</small></h2>
 </div>
   * Scala's Collections Library
     * [Introduction](/overviews/collections/introduction.html)
@@ -27,11 +27,14 @@ languages: [es, ja]
     * [Conversions Between Java and Scala Collections](/overviews/collections/conversions-between-java-and-scala-collections.html)
     * [Migrating from Scala 2.7](/overviews/collections/migrating-from-scala-27.html)
   * [The Architecture of Scala Collections](/overviews/core/architecture-of-scala-collections.html)
+  * [String Interpolation](/overviews/core/string-interpolation.html) <span class="label success">New in 2.10</span>
+  * [Implicit Classes](/overviews/core/implicit-classes.html) <span class="label success">New in 2.10</span>
+  * [Value Classes and Universal Traits](/overviews/core/value-classes.html) <span class="label success">New in 2.10</span>
 
 <div class="page-header-index">
-  <h1>Parallel and Concurrent Programming</h1>
+  <h2>Parallel and Concurrent Programming</h2>
 </div>
-  * [Futures and Promises](/overviews/core/futures.html)<span class="label success">New in 2.10</span>
+  * [Futures and Promises](/overviews/core/futures.html) <span class="label success">New in 2.10</span>
   * Scala's Parallel Collections Library
     * [Overview](/overviews/parallel-collections/overview.html)
     * [Concrete Parallel Collection Classes](/overviews/parallel-collections/concrete-parallel-collections.html)
@@ -45,14 +48,7 @@ languages: [es, ja]
   * [The Scala Actors API](/overviews/core/actors.html) <span class="label important">Deprecated</span>
 
 <div class="page-header-index">
-  <h1>Language Features</h1>
-</div>
-  * [Value Classes and Universal Traits](/overviews/core/value-classes.html)<span class="label success">New in 2.10</span>
-  * [String Interpolation](/overviews/core/string-interpolation.html)<span class="label success">New in 2.10</span>
-  * [Implicit Classes](/overviews/core/implicit-classes.html) Available
-
-<div class="page-header-index">
-  <h1>Metaprogramming</h1>
+  <h2>Metaprogramming</h2>
 </div>
   * Reflection <span class="label important">Experimental</span>
     * [Overview](/overviews/reflection/overview.html)
