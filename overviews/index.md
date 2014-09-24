@@ -67,3 +67,7 @@ languages: [es, ja]
     * [Implicit Macros](/overviews/macros/implicits.html)
     * [Extractor Macros](/overviews/macros/extractors.html)
     * [Type Providers](/overviews/macros/typeproviders.html)
+    * [Macro Annotations](/overviews/macros/annotations.html)
+    * [Macro Paradise](/overviews/macros/paradise.html)
+    * [Roadmap](/overviews/macros/roadmap.html)
+    * [Changes in 2.11](/overviews/macros/changelog211.html)
