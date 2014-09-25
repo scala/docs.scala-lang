@@ -69,9 +69,12 @@ Here is a possible implementation of the `assert` macro:
 
 As the example shows, a macro implementation takes several parameter lists. First comes a single parameter, of type `scala.reflect.macros.Context`. This is followed by a list of parameters that have the same names as the macro definition parameters. But where the original macro parameter has type `T`, a macro implementation parameter has type `c.Expr[T]`. `Expr[T]` is a type defined in `Context` that wraps an abstract syntax tree of type `T`. The result type of the `assertImpl` macro implementation is again a wrapped tree, of type `c.Expr[Unit]`.
 
-Also note that macros are considered an experimental and advanced feature, so they need to be enabled explicitly.
+Also note that macros are considered an experimental and advanced feature,
+so in order to write macros you need to enable them.
 Do that either with `import scala.language.experimental.macros` on per-file basis
 or with `-language:experimental.macros` (providing a compiler switch) on per-compilation basis.
+Your users, however, don't need to enable anything - macros look like normal methods
+and can be used as normal methods, without any compiler switches or additional configurations.
 
 ### Generic macros
 
