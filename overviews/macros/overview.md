@@ -6,6 +6,7 @@ disqus: true
 
 partof: macros
 num: 3
+outof: 13
 languages: [ja]
 ---
 <span class="label warning" style="float: right;">EXPERIMENTAL</span>
@@ -14,6 +15,14 @@ languages: [ja]
 
 Def macros are shipped as an experimental feature of Scala since version 2.10.0.
 A subset of def macros, pending a thorough specification, is tentatively scheduled to become stable in one of the future versions of Scala.
+
+<span class="label success">UPDATE</span> This guide has been written for Scala 2.10.0, and now we're well into the Scala 2.11.x release cycle,
+so naturally the contents of the document are outdated. Nevertheless, this guide is not obsolete -
+everything written here will still work in both Scala 2.10.x and Scala 2.11.x, so it will be helpful to read it through.
+After reading the guide, take a look at the docs on [quasiquotes](/overviews/macros/quasiquotes.html)
+and [macro bundles](/overviews/macros/bundles.html) to familiarize yourself with latest developments
+that dramatically simplify writing macros. Then it might be a good idea to follow
+[our macro workshop](https://github.com/scalamacros/macrology201) for more in-depth examples.
 
 ## Intuition
 

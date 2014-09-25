@@ -6,6 +6,7 @@ disqus: true
 
 partof: macros
 num: 8
+outof: 13
 languages: [ja]
 ---
 <span class="label warning" style="float: right;">EXPERIMENTAL</span>
@@ -17,7 +18,7 @@ that Scala macros already provide.
 
 There are two strategies of emulating type providers: one based on structural types (referred to as "anonymous type providers")
 and one based on macro annotations (referred to as "public type providers"). The former builds on functionality available
-in 2.10.x and 2.11, while the latter requires macro paradise. Both strategies can be used to implement erased type providers
+in 2.10.x, 2.11.x and 2.12.x, while the latter requires macro paradise. Both strategies can be used to implement erased type providers
 as described below.
 
 Note that macro paradise is needed both to compile and to expand macro annotations,
@@ -28,7 +29,7 @@ and won't require its presence at compile-time or at runtime.
 Recently we've given a talk about macro-based type providers in Scala, summarizing the state of the art and providing
 concrete examples. Slides and accompanying code can be found at [https://github.com/travisbrown/type-provider-examples](https://github.com/travisbrown/type-provider-examples).
 
-## Type providers
+## Introduction
 
 Type providers are a strongly-typed type-bridging mechanism, which enables information-rich programming in F# 3.0.
 A type provider is a compile-time facility, which is capable of generating definitions and their implementations
@@ -41,12 +42,12 @@ In Scala, macro expansions can generate whatever code the programmer likes, incl
 and other definition nodes, so the code generation part of type providers is covered. Keeping that in mind, in order
 to emulate type providers we need to solve two more challenges:
 
-1. Make generated definitions publicly visible (def macros, the only available macro flavor in Scala 2.10 and 2.11,
+1. Make generated definitions publicly visible (def macros, the only available macro flavor in Scala 2.10, 2.11 and 2.12,
 are local in the sense that the scope of their expansions is limited: [https://groups.google.com/d/msg/scala-user/97ARwwoaq2U/kIGWeiqSGzcJ](https://groups.google.com/d/msg/scala-user/97ARwwoaq2U/kIGWeiqSGzcJ)).
 1. Make generated definitions optionally erasable (Scala supports erasure for a number of language constructs,
 e.g. for abstract type members and value classes, but the mechanism is not extensible, which means that macro writers can't customize it).
 
-### Anonymous type providers
+## Anonymous type providers
 
 Even though the scope of definitions introduced by expansions of def macros is limited to those expansions,
 these definitions can escape their scopes by turning into structural types. For instance, consider the `h2db` macro that
@@ -87,9 +88,7 @@ it has performance problems caused by the fact that Scala emits reflective calls
 of structural types. There are several strategies of dealing with that, but this margin is too narrow to contain them
 so I refer you to an amazing blog series by Travis Brown for details: [post 1](http://meta.plasm.us/posts/2013/06/19/macro-supported-dsls-for-schema-bindings/), [post 2](http://meta.plasm.us/posts/2013/07/11/fake-type-providers-part-2/), [post 3](http://meta.plasm.us/posts/2013/07/12/vampire-methods-for-structural-types/).
 
-Please note that anonymous type providers must be [whitebox](/overviews/macros/blackbox-whitebox.html), otherwise they will not work.
-
-### Public type providers
+## Public type providers
 
 With the help of [macro paradise](/overviews/macros/paradise.html) and its [macro annotations](/overviews/macros/annotations.html), it becomes
 possible to easily generate publicly visible classes, without having to apply workarounds based on structural types. The annotation-based
@@ -135,3 +134,8 @@ than bytecode of a full-fledged class. This technique applies to both anonymous 
         else c.abort(s"value $sField is not a member of $sUrl")
       }
     }
+
+## Blackbox vs whitebox
+
+Both anonymous and public type providers must be [whitebox](/overviews/macros/blackbox-whitebox.html).
+If you declare a type provider macro as [blackbox](/overviews/macros/blackbox-whitebox.html), it will not work.
