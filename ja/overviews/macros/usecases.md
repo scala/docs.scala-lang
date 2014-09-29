@@ -5,7 +5,8 @@ language: ja
 disqus: true
 
 partof: macros
-num: 1
+num: 2
+outof: 10
 title: ユースケース
 ---
 

@@ -5,7 +5,9 @@ language: ja
 disqus: true
 
 partof: macros
-num: 5
+num: 7
+outof: 10
+
 title: 準クォート
 ---
 <a href="/ja/overviews/macros/paradise.html"><span class="label important" style="float: right;">MACRO PARADISE</span></a>

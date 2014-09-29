@@ -5,8 +5,8 @@ language: ja
 disqus: true
 
 partof: macros
-num: 6
-outof: 8
+num: 8
+outof: 10
 title: マクロアノテーション
 ---
 <span class="label important" style="float: right;">MACRO PARADISE</span>
