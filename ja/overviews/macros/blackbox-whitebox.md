@@ -15,7 +15,7 @@ title: blackbox vs whitebox
 **Eugene Burmako 著**<br>
 **Eugene Yokota 訳**
 
-Scala 2.11.0-M6 以降の Scala 2.11 マイルストーンビルドよりマクロを blackbox と whitebox という二つに分かれた実装となった。これは、Scala 2.10.x やマクロパラダイスでは実装されていない。最新の 2.11 マイルストーンをダウンロードして使用するには [http://www.scala-lang.org/download/](http://www.scala-lang.org/download/) に書いてある手順を参照してほしい。
+Scala 2.11.0-M7 以降の Scala 2.11 マイルストーンビルドよりマクロを blackbox と whitebox という二つに分かれた実装となった。これは、Scala 2.10.x やマクロパラダイスでは実装されていない。最新の 2.11 マイルストーンをダウンロードして使用するには [http://www.scala-lang.org/download/](http://www.scala-lang.org/download/) に書いてある手順を参照してほしい。
 
 ## マクロの成功
 
