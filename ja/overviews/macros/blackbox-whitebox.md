@@ -33,7 +33,8 @@ Scala 2.11.0-M6 以降の Scala 2.11 マイルストーンビルドよりマク�
 
 この興味深い機能がもたらす柔軟性によって、[偽装型プロバイダ](http://meta.plasm.us/posts/2013/07/11/fake-type-providers-part-2/)、[具現化の拡張](/sips/pending/source-locations.html)、[関数従属性の具現化](/ja/overviews/macros/implicits.html#fundep_materialization)、[抽出子マクロ](https://github.com/paulp/scala/commit/84a335916556cb0fe939d1c51f27d80d9cf980dc)などを可能とするけども、書かれたコードの明確さ (人にとってもマシンにとっても) が犠牲になるという側面ある。
 
-普通のメソッド同様に振る舞うマクロと戻り値の型を細別化 (refine) するマクロという決定的な区別を明確にするために、blackbox マクロと whitebox マクロという概念を導入することにした。型シグネチャに忠実に従うマクロは、振る舞いを理解するのに実装を知る必要が無い (ブラックボックスとして扱うことができる) ため、**blackbox マクロ** (blackbox macro) と呼ぶ。Scala の型システムを使ってシグネチャを持つことができないマクロは **whitebox マクロ** (whitebox macro) と呼ぶ。
+普通のメソッド同様に振る舞うマクロと戻り値の型を細別化 (refine) するマクロという決定的な区別を明確にするために、blackbox マクロと whitebox マクロという概念を導入することにした。型シグネチャに忠実に従うマクロは、振る舞いを理解するのに実装を知る必要が無い (ブラックボックスとして扱うことができる) ため、**blackbox マクロ** (blackbox macro) と呼ぶ。
+Scala の型システムを使ってシグネチャを持つことができないマクロは **whitebox マクロ** (whitebox macro) と呼ぶ。(whitebox def マクロもシグネチャは持つが、これらのシグネチャは近似値でしかない)
 
 blackbox マクロと whitebox マクロの両方とも大切なことは認識しているけども、より簡単に説明したり、規格化したり、サポートしやすい blackbox マクロの方に我々としては多くの信頼を置いている。そのため、Scala 2.12 で標準化されてるマクロには blackbox マクロのみが含まれる予定だ。将来の Scala リリースには whitebox マクロも実験的機能扱いでは無い形で入るかもしれないけども、今からは何とも言えない。
 
