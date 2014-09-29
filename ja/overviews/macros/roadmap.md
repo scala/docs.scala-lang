@@ -23,4 +23,4 @@ title: ロードマップ
 | [準クォート](/ja/overviews/macros/quasiquotes.html)                                 | No                 | Yes                                                                                       | Yes          |
 | [型マクロ](/ja/overviews/macros/typemacros.html)                                  | No                 | [中止](http://scalamacros.org/news/2013/08/05/macro-paradise-2.0.0-snapshot.html) | No           |
 | [型指定の無いマクロ](/ja/overviews/macros/untypedmacros.html)                            | No                 | [中止](http://scalamacros.org/news/2013/08/05/macro-paradise-2.0.0-snapshot.html) | No           |
-| [マクロアノテーション](/ja/overviews/macros/annotations.html)                           | No                 | Yes                                                                                       | Maybe        |
+| [マクロアノテーション](/ja/overviews/macros/annotations.html)                           | No                 | Yes                                                                                       | No        |
