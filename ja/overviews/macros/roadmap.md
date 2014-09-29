@@ -17,7 +17,7 @@ title: ロードマップ
 
 | 機能                                                                           | Scala 2.10         | [マクロパラダイス](/ja/overviews/macros/paradise.html)                                         | Scala 2.11   |
 |-----------------------------------------------------------------------------------|--------------------|-------------------------------------------------------------------------------------------|--------------|
-| [blackbox と whitebox の分化](/ja/overviews/macros/blackbox-whitebox.html)                                     | No                | No                                                                                       | No          |
+| [blackbox と whitebox の分化](/ja/overviews/macros/blackbox-whitebox.html)                                     | No                | No                                                                                       | Yes          |
 | [def マクロ](/ja/overviews/macros/overview.html)                                     | Yes                | Yes                                                                                       | Yes          |
 | [マクロバンドル](/ja/overviews/macros/bundles.html)                                   | No                 | No                                                                                        | Yes          |
 | [implicit マクロ](/ja/overviews/macros/implicits.html)                               | Yes (2.10.2 以降) | Yes                                                                                       | Yes          |
