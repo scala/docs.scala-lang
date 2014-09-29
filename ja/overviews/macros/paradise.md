@@ -37,4 +37,4 @@ title: マクロパラダイス
     addCompilerPlugin("org.scala-lang.plugins" % "macro-paradise" % "2.0.0-SNAPSHOT" cross CrossVersion.full)
 
 マクロパラダイスのソースは [https://github.com/scalamacros/paradise](https://github.com/scalamacros/paradise) から入手できる。
-最新安定版の 2.10.2、将来出る予定の 2.10.3、2.11.0、および Scala virtualized に対してそれぞれブランチがある。
+最新安定版の 2.10.3、将来出る予定の 2.10.4、2.11.0、および Scala virtualized に対してそれぞれブランチがある。
