@@ -29,7 +29,9 @@ implicit マクロをさらに拡張した関数従属性の具現化という�
 このように宣言された後、`show` はターゲットのみを渡すことで呼び出すことができる。
 もう一つのパラメータは `scalac` が call site のスコープ内からターゲットの型に対応する型クラスのインスタンスを導き出そうとする。もしスコープ内にマッチする暗黙の値があれば、それが推論されコンパイルは成功する。見つからなければ、コンパイルエラーが発生する。
 
-    implicit object IntShowable { def show(x: Int) = x.toString }
+    implicit object IntShowable extends Showable[Int] {
+      def show(x: Int) = x.toString
+    }
     show(42) // "42"
     show("42") // compilation error
 
