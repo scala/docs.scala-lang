@@ -26,3 +26,5 @@ title: ロードマップ
 | [型マクロ](/ja/overviews/macros/typemacros.html)                                  | No                 | [中止](http://scalamacros.org/news/2013/08/05/macro-paradise-2.0.0-snapshot.html) | No           |
 | [型指定の無いマクロ](/ja/overviews/macros/untypedmacros.html)                            | No                 | [中止](http://scalamacros.org/news/2013/08/05/macro-paradise-2.0.0-snapshot.html) | No           |
 | [マクロアノテーション](/ja/overviews/macros/annotations.html)                           | No                 | Yes                                                                                       | No        |
+
+現行ではマクロパラダイスは 2.10.x系のコンパイラのみをサポートするが、正式な Scala 2.11.0 リリースが出しだい、2.11.0 をサポートするものも公開される予定だ。
