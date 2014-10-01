@@ -14,6 +14,9 @@ title: マクロパラダイス
 **Eugene Burmako 著**<br>
 **Eugene Yokota 訳**
 
+<p style="text-align:right"><i>'I have always imagined that paradise will be a kind of library.'<br/>
+―Jorge Luis Borges, "Poem of the Gifts"</i></p>
+
 マクロパラダイス (Macro paradise) とは Scala の複数のバージョンをサポートするコンパイラプラグインで、一般向けにリリースされている <code>scalac</code> と共に正しく動作するように設計されている。
 これによって、将来の Scala に取り込まれるよりもいち早く最新のマクロ機能を使えるようになっている。
 [サポートされている機能とバージョンの一覧](/ja/overviews/macros/roadmap.html))に関してはロードマップページを、
