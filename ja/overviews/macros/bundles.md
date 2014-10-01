@@ -15,7 +15,7 @@ title: マクロバンドル
 **Eugene Burmako 著**<br>
 **Eugene Yokota 訳**
 
-マクロバンドル (macro bundle) は Scala 2.11.0-M4 以降のマイルストーン版に含まれる機能だ。Scala 2.10.x やマクロパラダイスには含まれない。[http://www.scala-lang.org/download/](http://www.scala-lang.org/download/) の説明にしたがって最新の 2.11 のマイルストーン版をダウンロードしてほしい。
+マクロバンドル (macro bundle) は Scala 2.11.0-M4 以降のマイルストーン版に含まれる機能だ (しかし、2.11.0-M8 で構文が変更されたため、本稿は以前の 2.11 には当てはまらない)。Scala 2.10.x やマクロパラダイスには含まれない。[http://www.scala-lang.org/download/](http://www.scala-lang.org/download/) の説明にしたがって最新の 2.11 のマイルストーン版をダウンロードしてほしい。
 
 ## マクロバンドル
 
@@ -27,25 +27,12 @@ title: マクロバンドル
 </ol>
 
 マクロバンドルは、マクロ実装を
-`scala.reflect.macros.BlackboxMacro` か
-`scala.reflect.macros.WhiteboxMacro` を継承したトレイトで実装することで、これらの問題に対する解決策となる。この基底トレイトはそれぞれ
-`val c: BlackboxContext` と
-`val c: WhiteboxContext` を定義してあるため、マクロ実装側のシグネチャで宣言しなくても済むようになり、モジュール化を簡単にする。
+`blackbox.Context` か
+`whitebox.Context` をコンストラクタのパラメータとして受け取るクラス内で実装することで、コンテキストをマクロ実装側のシグネチャで宣言しなくても済むようになり、モジュール化を簡単にする。
 
-    trait BlackboxMacro {
-      val c: BlackboxContext
-    }
+    import scala.reflect.macros.blackbox.Context
 
-    trait WhiteboxMacro {
-      val c: WhiteboxContext
-    }
-
-バンドルで定義されたマクロ実装を参照するのは、オブジェクトで定義された実装を参照するのと同じ方法で行われる。まずバンドル名を指定して、必要ならば型引数付きでメソッドを選択する。
-
-    import scala.reflect.macros.Context
-    import scala.reflect.macros.BlackboxMacro
-
-    trait Impl extends BlackboxMacro {
+    class Impl(val c: Context) {
       def mono = c.literalUnit
       def poly[T: c.WeakTypeTag] = c.literal(c.weakTypeOf[T].toString)
     }

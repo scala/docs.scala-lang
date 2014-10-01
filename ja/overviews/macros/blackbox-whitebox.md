@@ -15,7 +15,7 @@ title: blackbox vs whitebox
 **Eugene Burmako 著**<br>
 **Eugene Yokota 訳**
 
-Scala 2.11.0-M7 以降の Scala 2.11 マイルストーンビルドよりマクロを blackbox と whitebox という二つに分かれた実装となった。これは、Scala 2.10.x やマクロパラダイスでは実装されていない。最新の 2.11 マイルストーンをダウンロードして使用するには [http://www.scala-lang.org/download/](http://www.scala-lang.org/download/) に書いてある手順を参照してほしい。
+Scala 2.11.0-M7 以降の Scala 2.11 マイルストーンビルドよりマクロを blackbox と whitebox という二つに分かれた実装となった (しかし、2.11.0-M8 で構文が変更されたため、本稿は以前の 2.11 には当てはまらない)。blackbox/whitebox の分化は Scala 2.10.x やマクロパラダイスでは実装されていない。最新の 2.11 マイルストーンをダウンロードして使用するには [http://www.scala-lang.org/download/](http://www.scala-lang.org/download/) に書いてある手順を参照してほしい。
 
 ## マクロの成功
 
@@ -42,9 +42,7 @@ blackbox マクロと whitebox マクロの両方とも大切なことは認識�
 
 まずは 2.11 リリースにおいて、def マクロのシグネチャにおいて blackbox マクロと whitebox マクロを区別して、マクロによって `scalac` が振る舞いを変えれることにすることで標準化への初手とする。これは準備段階の一手で、blackbox も witebox も Scala 2.11 では実験的機能扱いのままだ。
 
-この区別は `scala.reflect.macros.Context` を `scala.reflect.macros.BlackboxContext` と `scala.reflect.macros.WhiteboxContext` によって置き換えることで表現する。もしマクロの実装が第一引数として `BlackboxContext` を受け取る定義ならば、それを使うマクロ def は blackbox となり、 `WhiteboxContext` の方も同様となる。当然のことながら互換性のために素の `Context` も方も存在し続けることになるけども、廃止勧告の警告を出すことで blackbox か whitebox かを選ぶことを推奨していく方向となる。
-
-[マクロバンドル](/ja/overviews/macros/bundles.html) も継承に使われる 2つの異なるトレイト `scala.reflect.macros.BlackboxMacro` と `scala.reflect.macros.WhiteboxMacro` を用意することで区別化をサポートする。説明するまでもないが、前者は `BlackboxContext` を提供してそれを使うユーザを blackbox マクロにして、後者は `WhiteboxContext` することで、それを参照する def マクロを whitebox マクロとする。
+この区別は `scala.reflect.macros.Context` を `scala.reflect.macros.blackbox.Context` と `scala.reflect.macros.whitebox.Context` によって置き換えることで表現する。もしマクロの実装が第一引数として `blackbox.Context` を受け取る定義ならば、それを使うマクロ def は blackbox となり、 `whitebox.Context` の方も同様となる。当然のことながら互換性のために素の `Context` も方も存在し続けることになるけども、廃止勧告の警告を出すことで blackbox か whitebox かを選ぶことを推奨していく方向となる。
 
 blackbox def マクロは Scala 2.10 の def マクロと異なる扱いとなる。Scala の型検査において以下の制限が加わる:
 
