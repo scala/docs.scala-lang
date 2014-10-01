@@ -78,6 +78,8 @@ def マクロによって展開された定義群のスコープは展開され�
 [その1](http://meta.plasm.us/posts/2013/06/19/macro-supported-dsls-for-schema-bindings/)、[その2](http://meta.plasm.us/posts/2013/07/11/fake-type-providers-part-2/)、
 [その3](http://meta.plasm.us/posts/2013/07/12/vampire-methods-for-structural-types/)。
 
+偽装型プロバイダは [whitebox](/ja/overviews/macros/blackbox-whitebox.html) マクロじゃないと動作しないことに注意。
+
 ### 本物の型プロバイダ
 
 [マクロパラダイス](/ja/overviews/macros/paradise.html)と[マクロアノテーション](/ja/overviews/macros/annotations.html)を使うことで

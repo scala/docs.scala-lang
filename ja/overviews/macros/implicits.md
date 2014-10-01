@@ -114,10 +114,10 @@ Scala implicit の標準機能である複数のパラメータや重複した�
 [https://github.com/scala/scala/pull/2499](https://github.com/scala/scala/pull/2499) が示すとおり、上記の問題の解法は非常にシンプルでエレガントなものだ。
 
 Scala 2.10 においてはマクロの適用は全ての型引数が推論されるまでは展開されない。しかし、そうする必要は特に無い。
-タイプチェッカはできる所まで推論して (この例の場合、`C` は `Foo` と推論され、`L` は未定となる) そこで一旦停止する。その後マクロを展開して、展開された型を補助にタイプチェッカは再び以前未定だった型引数の型検査を続行する。
+タイプチェッカはできる所まで推論して (この例の場合、`C` は `Foo` と推論され、`L` は未定となる) そこで一旦停止する。その後マクロを展開して、展開された型を補助にタイプチェッカは再び以前未定だった型引数の型検査を続行する。Scala 2.11.0 ではそのように実装されている。
 
-このテクニックを具体例で例示したものとして [files/run/t5923c](https://github.com/scalamacros/kepler/tree/7b890f71ecd0d28c1a1b81b7abfe8e0c11bfeb71/test/files/run/t5923c) テストがある。
+このテクニックを具体例で例示したものとして [files/run/t5923c](https://github.com/scala/scala/tree/7b890f71ecd0d28c1a1b81b7abfe8e0c11bfeb71/test/files/run/t5923c) テストがある。
 全てがすごくシンプルになっていることに注意してほしい。implicit マクロの `materializeIso` は最初の型引数だけを使って展開コードを生成する。
 型推論は自動的に行われるので、(推論することができなかった) 2つ目の型引数のことは分からなくてもいい。
 
-ただし、`Nothing` に関してはまだ[おかしい制限](https://github.com/scalamacros/kepler/blob/7b890f71ecd0d28c1a1b81b7abfe8e0c11bfeb71/test/files/run/t5923a/Macros_1.scala)があるので注意する必要がある。
+ただし、`Nothing` に関してはまだ[おかしい制限](https://github.com/scala/scala/blob/7b890f71ecd0d28c1a1b81b7abfe8e0c11bfeb71/test/files/run/t5923a/Macros_1.scala)があるので注意する必要がある。また、関数従属性の具現化は [whitebox](/ja/overviews/macros/blackbox-whitebox.html) マクロじゃないと動作しないことにも注意。
