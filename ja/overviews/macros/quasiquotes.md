@@ -5,8 +5,7 @@ language: ja
 disqus: true
 
 partof: macros
-num: 8
-outof: 11
+num: 7
 
 title: 準クォート
 ---

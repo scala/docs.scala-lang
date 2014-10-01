@@ -5,8 +5,7 @@ language: ja
 disqus: true
 
 partof: macros
-num: 4
-outof: 11
+num: 3
 
 title: def マクロ
 ---

@@ -5,8 +5,7 @@ language: ja
 disqus: true
 
 partof: macros
-num: 6
-outof: 11
+num: 5
 
 title: implicit マクロ
 ---

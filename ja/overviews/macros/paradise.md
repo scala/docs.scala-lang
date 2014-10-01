@@ -5,8 +5,7 @@ language: ja
 disqus: true
 
 partof: macros
-num: 10
-outof: 11
+num: 9
 
 title: マクロパラダイス
 ---

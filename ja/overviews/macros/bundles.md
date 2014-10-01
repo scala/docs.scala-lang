@@ -5,8 +5,7 @@ language: ja
 disqus: true
 
 partof: macros
-num: 5
-outof: 11
+num: 4
 
 title: マクロバンドル
 ---

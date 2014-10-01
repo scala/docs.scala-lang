@@ -5,8 +5,7 @@ language: ja
 disqus: true
 
 partof: macros
-num: 3
-outof: 11
+num: 2
 
 title: blackbox vs whitebox
 ---
