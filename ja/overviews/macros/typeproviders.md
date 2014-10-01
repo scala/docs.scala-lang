@@ -5,7 +5,7 @@ language: ja
 disqus: true
 
 partof: macros
-num: 6
+num: 7
 
 title: 型プロバイダ
 ---
