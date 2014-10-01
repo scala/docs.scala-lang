@@ -29,6 +29,9 @@ title: マクロパラダイス
              typer   5  the meat and potatoes: type the trees in paradise
                     ...
 
+マクロパラダイスプラグインに対してコンパイル時の依存性を導入するマクロパラダイスの機能と、コンパイル時の依存性を導入しない機能があるが、どの機能も実行時にはマクロパラダイスを必要としない。
+詳細は[機能の一覧を](/ja/overviews/macros/roadmap.html)参照。
+
 具体例に関しては [https://github.com/scalamacros/sbt-example-paradise](https://github.com/scalamacros/sbt-example-paradise) を参照してほしいが、要点をまとめると、マクロパラダイスを使うには以下の二行をビルド定義に加えるだけでいい
 (すでに[sbt を使っている](/ja/overviews/macros/overview.html#using_macros_with_maven_or_sbt)ことが前提だが):
 
@@ -48,4 +51,4 @@ title: マクロパラダイス
     </compilerPlugins>
 
 マクロパラダイスのソースは [https://github.com/scalamacros/paradise](https://github.com/scalamacros/paradise) から入手できる。
-最新安定版の 2.10.3、将来出る予定の 2.11.0、および Scala virtualized に対してそれぞれブランチがある。
+安定版である 2.10.x のいくつか、2.10 と 2.11 のスナップショット、および Scala virtualized に対してそれぞれブランチがある。
