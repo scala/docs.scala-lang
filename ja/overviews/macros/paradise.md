@@ -6,6 +6,7 @@ disqus: true
 
 partof: macros
 num: 10
+outof: 11
 
 title: マクロパラダイス
 ---

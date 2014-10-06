@@ -6,6 +6,7 @@ disqus: true
 
 partof: macros
 num: 7
+outof: 11
 
 title: 型プロバイダ
 ---

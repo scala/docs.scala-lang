@@ -6,6 +6,7 @@ disqus: true
 
 partof: macros
 num: 5
+outof: 11
 
 title: implicit マクロ
 ---

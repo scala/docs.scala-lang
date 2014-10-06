@@ -6,6 +6,7 @@ disqus: true
 
 partof: macros
 num: 11
+outof: 11
 
 title: ロードマップ
 ---

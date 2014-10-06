@@ -6,6 +6,7 @@ disqus: true
 
 partof: macros
 num: 8
+outof: 11
 
 title: 準クォート
 ---

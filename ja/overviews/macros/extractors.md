@@ -6,6 +6,7 @@ disqus: true
 
 partof: macros
 num: 6
+outof: 11
 
 title: 抽出子マクロ
 ---
