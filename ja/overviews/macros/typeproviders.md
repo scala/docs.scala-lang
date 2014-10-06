@@ -24,7 +24,7 @@ title: 型プロバイダ
 ビルドに含める必要があることに注意してほしい。
 しかし、マクロアノテーションが展開した後は、その結果のコードにはマクロパラダイスへの参照は残らないため、コンパイル時にも実行時にもマクロパラダイスは必要ない。
 
-## 型プロバイダ
+## 導入
 
 型プロバイダは強く型付けされた型ブリッジング機構で、F# 3.0 においてインフォメーションリッチプログラミング (information-rich programming) を可能とする。
 型プロバイダは、静的に受け取ったデータソースを元に定義群とその実装を生成するコンパイル時の仕組みだ。
@@ -38,7 +38,7 @@ Scala では、マクロ展開は `ClassDef`、`ModuleDef`、`DefDef`、その�
 1. 生成された定義群を公開する (Scala 2.10.x、2.11.x、2.12.x 系列から使うことができる唯一の種類のマクロ、def マクロは展開されるスコープが制限されるという意味で局所的なものだ: [https://groups.google.com/d/msg/scala-user/97ARwwoaq2U/kIGWeiqSGzcJ](https://groups.google.com/d/msg/scala-user/97ARwwoaq2U/kIGWeiqSGzcJ))
 2. 生成された定義群を任意に消去可能とする (Scala は、抽象型メンバや値クラスといった多くの言語機構について型消去をサポートしているが、その機構は拡張可能ではないためマクロ作者がカスタマイズすることはできない。)
 
-### 匿名型プロバイダ
+## 匿名型プロバイダ
 
 def マクロによって展開された定義群のスコープは展開されたコードに制限されるが、これらの定義群はスコープを構造的部分型にすることで脱出可能だ。
 例えば、接続文字列を受け取って、渡されたのデータベースをカプセル化したモジュールを生成する `h2db` マクロは以下のように展開する。
@@ -78,7 +78,7 @@ def マクロによって展開された定義群のスコープは展開され�
 [その1](http://meta.plasm.us/posts/2013/06/19/macro-supported-dsls-for-schema-bindings/)、[その2](http://meta.plasm.us/posts/2013/07/11/fake-type-providers-part-2/)、
 [その3](http://meta.plasm.us/posts/2013/07/12/vampire-methods-for-structural-types/)。
 
-### public 型プロバイダ
+## public 型プロバイダ
 
 [マクロパラダイス](/ja/overviews/macros/paradise.html)と[マクロアノテーション](/ja/overviews/macros/annotations.html)を使うことで
 構造的部分型を使った回避策を使わなくても簡単に外部から見えるクラスを生成できるようになった。
