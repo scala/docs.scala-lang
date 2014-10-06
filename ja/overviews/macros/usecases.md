@@ -6,6 +6,8 @@ disqus: true
 
 partof: macros
 num: 1
+outof: 11
+
 title: ユースケース
 ---
 

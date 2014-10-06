@@ -5,7 +5,9 @@ language: ja
 disqus: true
 
 partof: macros
-num: 4
+num: 5
+outof: 11
+
 title: implicit マクロ
 ---
 <span class="label warning" style="float: right;">EXPERIMENTAL</span>
@@ -13,8 +15,14 @@ title: implicit マクロ
 **Eugene Burmako 著**<br>
 **Eugene Yokota 訳**
 
-implicit マクロは Scala 2.10.0 以降にある実験的機能だが、クリティカルなバグ修正があったため 2.10.2 以降で完全に動作するようになった。2.11.0 にも載る予定だ。
-implicit マクロをさらに拡張した関数従属性の具現化という機能が現在作られており、これは[マクロパラダイス](/overviews/macros/paradise.html)と Scala 2.11.0-M5 を予定している。
+implicit マクロは Scala 2.10.0 以降にある実験的機能だが、クリティカルなバグ修正があったため 2.10.2 以降で完全に動作するようになった。
+2.10.x と 2.11 のどちらでも、implicit マクロを使うのにマクロパラダイスは必要ない。
+
+implicit マクロの拡張の 1つである関数従属性の具現化 (fundep materialization) は、2.10.0 から 2.10.4 からは使えないが、
+[マクロパラダイス](/ja/overviews/macros/paradise.html)、2.10.5、と 2.11.x で実装された。
+2.10.0 から 2.10.4 において関数従属性の具現化を拡張するのにもマクロパラダイスが必要となるため、その関数従属性の具現化を使うためにはユーザのビルドにもマクロパラダイスを含めなければいけないことに注意してほしい。
+しかし、関数従属性の具現化が展開した後ならば、その結果のコードを参照するのにはコンパイル時でも実行時でもマクロパラダイスは必要ない。
+また、2.10.5 では関数従属性の具現化の展開にはマクロパラダイスは必要ないが、ユーザ側で <code>-Yfundep-materialization</code> というコンパイラフラグを有効にする必要がある。
 
 ## implicit マクロ
 
@@ -29,7 +37,9 @@ implicit マクロをさらに拡張した関数従属性の具現化という�
 このように宣言された後、`show` はターゲットのみを渡すことで呼び出すことができる。
 もう一つのパラメータは `scalac` が call site のスコープ内からターゲットの型に対応する型クラスのインスタンスを導き出そうとする。もしスコープ内にマッチする暗黙の値があれば、それが推論されコンパイルは成功する。見つからなければ、コンパイルエラーが発生する。
 
-    implicit object IntShowable { def show(x: Int) = x.toString }
+    implicit object IntShowable extends Showable[Int] {
+      def show(x: Int) = x.toString
+    }
     show(42) // "42"
     show("42") // compilation error
 
@@ -106,10 +116,24 @@ Scala implicit の標準機能である複数のパラメータや重複した�
 [https://github.com/scala/scala/pull/2499](https://github.com/scala/scala/pull/2499) が示すとおり、上記の問題の解法は非常にシンプルでエレガントなものだ。
 
 Scala 2.10 においてはマクロの適用は全ての型引数が推論されるまでは展開されない。しかし、そうする必要は特に無い。
-タイプチェッカはできる所まで推論して (この例の場合、`C` は `Foo` と推論され、`L` は未定となる) そこで一旦停止する。その後マクロを展開して、展開された型を補助にタイプチェッカは再び以前未定だった型引数の型検査を続行する。
+タイプチェッカはできる所まで推論して (この例の場合、`C` は `Foo` と推論され、`L` は未定となる) そこで一旦停止する。その後マクロを展開して、展開された型を補助にタイプチェッカは再び以前未定だった型引数の型検査を続行する。Scala 2.11.0 ではそのように実装されている。
 
-このテクニックを具体例で例示したものとして [files/run/t5923c](https://github.com/scalamacros/kepler/tree/7b890f71ecd0d28c1a1b81b7abfe8e0c11bfeb71/test/files/run/t5923c) テストがある。
+このテクニックを具体例で例示したものとして [files/run/t5923c](https://github.com/scala/scala/tree/7b890f71ecd0d28c1a1b81b7abfe8e0c11bfeb71/test/files/run/t5923c) テストがある。
 全てがすごくシンプルになっていることに注意してほしい。implicit マクロの `materializeIso` は最初の型引数だけを使って展開コードを生成する。
 型推論は自動的に行われるので、(推論することができなかった) 2つ目の型引数のことは分からなくてもいい。
 
-ただし、`Nothing` に関してはまだ[おかしい制限](https://github.com/scalamacros/kepler/blob/7b890f71ecd0d28c1a1b81b7abfe8e0c11bfeb71/test/files/run/t5923a/Macros_1.scala)があるので注意する必要がある。
+ただし、`Nothing` に関してはまだ[おかしい制限](https://github.com/scala/scala/blob/7b890f71ecd0d28c1a1b81b7abfe8e0c11bfeb71/test/files/run/t5923a/Macros_1.scala)があるので注意する必要がある。
+
+## blackbox vs whitebox
+
+本稿の前半で紹介した素の具現化は [blackbox](/ja/overviews/macros/blackbox-whitebox.html) と [whitebox](/ja/overviews/macros/blackbox-whitebox.html) のどちらでもいい。
+
+blackbox な具現化と whitebox な具現化には大きな違いが一つある。blackbox な implicit マクロの展開 (例えば、明示的な `c.abort` の呼び出しや展開時の型検査の失敗)
+はコンパイルエラーとなるが、whitebox な implicit マクロの展開は、実際のエラーはユーザ側には報告されずに現在の implicit 検索から implicit の候補が抜けるだけになる。
+これによって、blackbox implicit マクロの方がエラー報告という意味では良いけども、whitebox implicit マクロの方が動的に無効化できるなどより柔軟性が高いというトレードオフが生じる。
+
+関数従属性の具現化は [whitebox](/ja/overviews/macros/blackbox-whitebox.html) マクロじゃないと動作しないことにも注意。
+関数従属性の具現化を [blackbox](/ja/overviews/macros/blackbox-whitebox.html) だと宣言すると正しく動作しない。
+
+
+
