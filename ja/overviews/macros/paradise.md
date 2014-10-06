@@ -54,4 +54,7 @@ title: マクロパラダイス
     </compilerPlugins>
 
 マクロパラダイスのソースは [https://github.com/scalamacros/paradise](https://github.com/scalamacros/paradise) から入手できる。
-最新の 2.10.x リリース、2.11.0 のマイルストーンと、2.10.x と 2.11.x の RC版、および Scala virtualized に対してそれぞれブランチがある。
+最新の 2.10.x リリース版、
+最新の 2.11.0 リリース版、
+Scala 2.10.x、2.11.x、2.12.x 系列のスナップショット版、
+および Scala virtualized に対してそれぞれブランチがある。

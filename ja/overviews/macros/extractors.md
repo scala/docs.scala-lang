@@ -14,9 +14,9 @@ title: 抽出子マクロ
 **Eugene Burmako 著**<br>
 **Eugene Yokota 訳**
 
-抽出子マクロ (extractor macro) は、Scala 2.11.0-M5 以降のマイルストーン版より取り込まれた機能で、Scala 2.11.0-M5 にて Paul Phillips 氏によって導入された name-based extractor によって可能となった。Scala 2.10.x やマクロパラダイスには含まれない。[http://www.scala-lang.org/download/](http://www.scala-lang.org/download/) の説明にしたがって最新の 2.11 のマイルストーン版をダウンロードしてほしい。
+抽出子マクロ (extractor macro) は、Scala 2.11.x および Scala 2.12.x 系列に含まれる機能で、Scala 2.11.0-M5 にて Paul Phillips 氏によって導入された name-based extractor によって可能となった。抽出子マクロは Scala 2.10.x では実装されていない。Scala 2.10.x 向けのマクロパラダイスでも、これは実装されていない。
 
-### パターン
+## パターン
 
 具体例で説明するために、以下のような `unapply` メソッドがあるとする
 (話を簡単にするために、被検査体を具象型とするが、テストで示した通りこの抽出子を多相とすることも可能だ):
@@ -55,7 +55,7 @@ typer とのよどみない会話をお膳立てするには全ての部分が�
 と言いたいところだが、残念ながら、値クラスはローカルでは宣言できないため、マッチャーを値クラスにすることはできなかった。
 しかしながら、この制限が将来的に無くなることを願って、無くなり次第タレコミが入るように小鳥を仕組んできた ([neg/t5903e](https://github.com/scala/scala/blob/00624a39ed84c3fd245dd9df7454d4cec4399e13/test/files/neg/t5903e/Macros_1.scala#L1))。
 
-### 用例
+## 用例
 
 このパターンが特に有用なのは文字列補間子のパターンマッチャーで、泥臭い方法を使わずに変幻自在のパターンマッチを実装できる。
 例えば、準クォートの `unapply` はこれでハードコードしなくてすむようになる:
