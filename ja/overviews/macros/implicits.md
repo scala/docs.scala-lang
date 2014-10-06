@@ -121,4 +121,18 @@ Scala 2.10 においてはマクロの適用は全ての型引数が推論され
 全てがすごくシンプルになっていることに注意してほしい。implicit マクロの `materializeIso` は最初の型引数だけを使って展開コードを生成する。
 型推論は自動的に行われるので、(推論することができなかった) 2つ目の型引数のことは分からなくてもいい。
 
-ただし、`Nothing` に関してはまだ[おかしい制限](https://github.com/scala/scala/blob/7b890f71ecd0d28c1a1b81b7abfe8e0c11bfeb71/test/files/run/t5923a/Macros_1.scala)があるので注意する必要がある。また、関数従属性の具現化は [whitebox](/ja/overviews/macros/blackbox-whitebox.html) マクロじゃないと動作しないことにも注意。
+ただし、`Nothing` に関してはまだ[おかしい制限](https://github.com/scala/scala/blob/7b890f71ecd0d28c1a1b81b7abfe8e0c11bfeb71/test/files/run/t5923a/Macros_1.scala)があるので注意する必要がある。
+
+## blackbox vs whitebox
+
+本稿の前半で紹介した素の具現化は [blackbox](/ja/overviews/macros/blackbox-whitebox.html) と [whitebox](/ja/overviews/macros/blackbox-whitebox.html) のどちらでもいい。
+
+blackbox な具現化と whitebox な具現化には大きな違いが一つある。blackbox な implicit マクロの展開 (例えば、明示的な `c.abort` の呼び出しや展開時の型検査の失敗)
+はコンパイルエラーとなるが、whitebox な implicit マクロの展開は、実際のエラーはユーザ側には報告されずに現在の implicit 検索から implicit の候補が抜けるだけになる。
+これによって、blackbox implicit マクロの方がエラー報告という意味では良いけども、whitebox implicit マクロの方が動的に無効化できるなどより柔軟性が高いというトレードオフが生じる。
+
+関数従属性の具現化は [whitebox](/ja/overviews/macros/blackbox-whitebox.html) マクロじゃないと動作しないことにも注意。
+関数従属性の具現化を [blackbox](/ja/overviews/macros/blackbox-whitebox.html) だと宣言すると正しく動作しない。
+
+
+

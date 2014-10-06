@@ -40,3 +40,10 @@ Scala 2.10.x においてマクロ実装は関数として表されている。�
       def mono = macro Impl.mono
       def poly[T] = macro Impl.poly[T]
     }
+
+## blackbox vs whitebox
+
+マクロバンドルは、[blackbox](/ja/overviews/macros/blackbox-whitebox.html) と [whitebox](/ja/overviews/macros/blackbox-whitebox.html)
+の両方のマクロの実装に使うことができる。マクロバンドルのコンストラクタのパラメータに
+`scala.reflect.macros.blackbox.Context` の型を渡せば blackbox マクロになって、
+`scala.reflect.macros.whitebox.Context` ならば whitebox マクロになる。

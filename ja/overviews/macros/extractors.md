@@ -79,4 +79,7 @@ typer とのよどみない会話をお膳立てするには全ての部分が�
 [run/t5903d](https://github.com/scala/scala/tree/00624a39ed84c3fd245dd9df7454d4cec4399e13/test/files/run/t5903d) 
 などのテストケースを参照してほしい。
 
-抽出子マクロは [whitebox](/ja/overviews/macros/blackbox-whitebox.html) マクロじゃないと動作しないことに注意。
+## blackbox vs whitebox
+
+抽出子マクロは [whitebox](/ja/overviews/macros/blackbox-whitebox.html) である必要がある。
+抽出子マクロを [blackbox](/ja/overviews/macros/blackbox-whitebox.html) だと宣言すると正しく動作しない。
