@@ -2,7 +2,7 @@
 <html>
   <head>
 
-    <title>{% if page.partof %}{{ page.partof | replace: '-',' ' | split:" " | capitalize | join:" " }} - {% endif %}{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
+    <title>{% if page.partof %}{{ page.partof | replace: '-',' ' | capitalize }} - {% endif %}{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
     {% if page.description %}
     <meta name="description" content="{{ page.description }}" />
     {% endif %}
