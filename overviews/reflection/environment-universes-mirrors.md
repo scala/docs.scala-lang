@@ -6,7 +6,7 @@ disqus: true
 
 partof: reflection
 num: 2
-outof: 6
+outof: 7
 languages: [ja]
 ---
 
@@ -121,8 +121,6 @@ A `FieldMirror` is used for getting/setting instance fields (like methods, Scala
     res0: Any = 2
 
     scala> fmX.set(3)
-    scala.ScalaReflectionException: cannot set an immutable field x
-    ...
 
     scala> val fieldY = ru.typeOf[C].declaration(ru.newTermName("y")).asTerm.accessed.asTerm
     fieldY: reflect.runtime.universe.TermSymbol = variable y

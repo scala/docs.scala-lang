@@ -11,11 +11,11 @@ language: pt-br
 
 |                                                                                                          |                     |
 | ------                                                                                                   | ------              |
-|  <h2 id="variables">variáveis</h2>                                                                       |                     |
+|  <span id="variables" class="h2">variáveis</span>                                                                       |                     |
 |  `var x = 5`                                                                                             |  variável           |
 |  <span class="label success">Bom</span> `val x = 5`<br> <span class="label important">Ruim</span> `x=6`  |  constante          |
 |  `var x: Double = 5`                                                                                     |  tipo explícito     |
-|  <h2 id="functions">funções</h2>                                                                       |                     |
+|  <span id="functions" class="h2">funções</span>                                                                       |                     |
 |  <span class="label success">Bom</span> `def f(x: Int) = { x*x }`<br> <span class="label important">Ruim</span> `def f(x: Int)   { x*x }` |  define uma função <br> erro omitido: sem = é uma procedure que retorna Unit; causa dano |
 |  <span class="label success">Bom</span> `def f(x: Any) = println(x)`<br> <span class="label important">Ruim</span> `def f(x) = println(x)` |  define uma função <br> erro de sintaxe: necessita tipos para todos os argumentos. |
 |  `type R = Double`                                                                                       |  alias de tipo    |
@@ -34,13 +34,13 @@ language: pt-br
 |  `def mapmake[T](g:T=>T)(seq: List[T]) = seq.map(g)`                                                     |  tipo genérico. |
 |  `5.+(3); 5 + 3` <br> `(1 to 5) map (_*2)`                                                               |  sintáxe 'sugar' para operadores infixos. |
 |  `def sum(args: Int*) = args.reduceLeft(_+_)`                                                            |  varargs. |
-|  <h2 id="packages">pacotes</h2>                                                                         |                 |
+|  <span id="packages" class="h2">pacotes</span>                                                                         |                 |
 |  `import scala.collection._`                                                                             |  caracter coringa para importar tudo de um pacote. |
 |  `import scala.collection.Vector` <br> `import scala.collection.{Vector, Sequence}`                      |  importação seletiva. |
 |  `import scala.collection.{Vector => Vec28}`                                                             |  renomear uma importação. |
 |  `import java.util.{Date => _, _}`                                                                       |  importar tudo de java.util exceto Date. |
 |  `package pkg` _no início do arquivo_ <br> `package pkg { ... }`                                             |  declara um pacote. |
-|  <h2 id="data_structures">estruturas de dados</h2>                                                           |                 |
+|  <span id="data_structures" class="h2">estruturas de dados</span>                                                           |                 |
 |  `(1,2,3)`                                                                                               |  literal de tupla. (`Tuple3`) |
 |  `var (x,y,z) = (1,2,3)`                                                                                 |  atribuição desestruturada: desempacotando uma tupla através de "pattern matching". |
 |  <span class="label important">Ruim</span>`var x,y,z = (1,2,3)`                                           |  erro oculto: cada variável é associada a tupla inteira. |
@@ -49,7 +49,7 @@ language: pt-br
 |  `1 :: List(2,3)`                                                                                        |  concatenação. |
 |  `1 to 5` _o mesmo que_ `1 until 6` <br> `1 to 10 by 2`                                                      |  sintáxe 'sugar' para intervalo. |
 |  `()` _(parênteses vazio)_                                                                                   |  um membro do tipo Unit (igual ao void de C/Java). |
-|  <h2 id="control_constructs">estruturas de controle</h2>                                                     |                 |
+|  <span id="control_constructs" class="h2">estruturas de controle</span>                                                     |                 |
 |  `if (check) happy else sad`                                                                             |  condicional. |
 |  `if (check) happy` _o mesmo que_ <br> `if (check) happy else ()`                                            |  condicional 'sugar'. |
 |  `while (x < 5) { println(x); x += 1}`                                                                   |  while. |
@@ -61,12 +61,12 @@ language: pt-br
 |  `for (x <- xs; y <- ys) {`<br>    `println("%d/%d = %.1f".format(x,y, x*y))`<br>`}`                     |  for: estilo imperativo<br>[sprintf-style](http://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax) |
 |  `for (i <- 1 to 5) {`<br>    `println(i)`<br>`}`                                                        |  for: itera incluindo o limite superior |
 |  `for (i <- 1 until 5) {`<br>    `println(i)`<br>`}`                                                     |  for: itera omitindo o limite superior |
-|  <h2 id="pattern_matching">pattern matching</h2>                                                         |                 |
+|  <span id="pattern_matching" class="h2">pattern matching</span>                                                         |                 |
 |  <span class="label success">Bom</span> `(xs zip ys) map { case (x,y) => x*y }`<br> <span class="label important">Ruim</span> `(xs zip ys) map( (x,y) => x*y )` |  use 'case' nos argumentos de funções para fazer a associação via 'pattern matching'. |
 |  <span class="label important">Ruim</span><br>`val v42 = 42`<br>`Some(3) match {`<br>`  case Some(v42) => println("42")`<br>`    case _ => println("Not 42")`<br>`}` |  "v42" é interpretado como um nome que será comparado com qualquer valor Int, e "42" é impresso. |
 |  <span class="label success">Bom</span><br>`val v42 = 42`<br>`Some(3) match {`<br>``    case Some(`v42`) => println("42")``<br>`case _ => println("Not 42")`<br>`}`  |  "\`v42\`" entre crases é interpretado como existindo o valor `v42`, e "Not 42" é impresso. |
 |  <span class="label success">Bom</span><br>`val UppercaseVal = 42`<br>`Some(3) match {`<br>`  case Some(UppercaseVal) => println("42")`<br>`    case _ => println("Not 42")`<br>`}` |  `UppercaseVal` é tratado como um valor existente, mais do que uma nova variável de padrão, porque ele inicia com uma letra maiúscula. Assim, o valor contido em `UppercaseVal` é checado contra `3`, e "Not 42" é impresso. |
-|  <h2 id="object_orientation">orientação a objetos</h2>                                                     |                 |
+|  <span id="object_orientation" class="h2">orientação a objetos</span>                                                     |                 |
 |  `class C(x: R)` _o mesmo que_ <br>`class C(private val x: R)`<br>`var c = new C(4)`                         |  parâmetros do construtor - privado |
 |  `class C(val x: R)`<br>`var c = new C(4)`<br>`c.x`                                                      |  parâmetros do construtor - público |
 |  `class C(var x: R) {`<br>`assert(x > 0, "positive please")`<br>`var y = x`<br>`val readonly = 5`<br>`private var secret = 1`<br>`def this = this(42)`<br>`}`|<br>o construtor é o corpo da classe<br>declara um membro público<br>declara um membro que pode ser obtido mas não alterado<br>declara um membro privado<br>construtor alternativo|

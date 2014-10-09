@@ -6,14 +6,23 @@ disqus: true
 
 partof: macros
 num: 3
+outof: 13
 languages: [ja]
 ---
 <span class="label warning" style="float: right;">EXPERIMENTAL</span>
 
 **Eugene Burmako**
 
-Def macros are shipped as an experimental feature of Scala since version 2.10.0, including the latest 2.10.3 and the upcoming 2.11.0.
-A subset of def macros, pending a thorough specification, is tentatively scheduled to become stable in 2.12.
+Def macros are shipped as an experimental feature of Scala since version 2.10.0.
+A subset of def macros, pending a thorough specification, is tentatively scheduled to become stable in one of the future versions of Scala.
+
+<span class="label success">UPDATE</span> This guide has been written for Scala 2.10.0, and now we're well into the Scala 2.11.x release cycle,
+so naturally the contents of the document are outdated. Nevertheless, this guide is not obsolete -
+everything written here will still work in both Scala 2.10.x and Scala 2.11.x, so it will be helpful to read it through.
+After reading the guide, take a look at the docs on [quasiquotes](/overviews/macros/quasiquotes.html)
+and [macro bundles](/overviews/macros/bundles.html) to familiarize yourself with latest developments
+that dramatically simplify writing macros. Then it might be a good idea to follow
+[our macro workshop](https://github.com/scalamacros/macrology201) for more in-depth examples.
 
 ## Intuition
 
@@ -60,9 +69,12 @@ Here is a possible implementation of the `assert` macro:
 
 As the example shows, a macro implementation takes several parameter lists. First comes a single parameter, of type `scala.reflect.macros.Context`. This is followed by a list of parameters that have the same names as the macro definition parameters. But where the original macro parameter has type `T`, a macro implementation parameter has type `c.Expr[T]`. `Expr[T]` is a type defined in `Context` that wraps an abstract syntax tree of type `T`. The result type of the `assertImpl` macro implementation is again a wrapped tree, of type `c.Expr[Unit]`.
 
-Also note that macros are considered an experimental and advanced feature, so they need to be enabled explicitly.
+Also note that macros are considered an experimental and advanced feature,
+so in order to write macros you need to enable them.
 Do that either with `import scala.language.experimental.macros` on per-file basis
 or with `-language:experimental.macros` (providing a compiler switch) on per-compilation basis.
+Your users, however, don't need to enable anything - macros look like normal methods
+and can be used as normal methods, without any compiler switches or additional configurations.
 
 ### Generic macros
 

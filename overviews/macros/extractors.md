@@ -5,15 +5,16 @@ title: Extractor Macros
 disqus: true
 
 partof: macros
-num: 6
+num: 7
+outof: 13
 ---
 <span class="label warning" style="float: right;">EXPERIMENTAL</span>
 
 **Eugene Burmako**
 
-Extractor macros are shipped with the recent milestone builds of Scala 2.11, starting from 2.11.0-M5, enabled by name-based extractors introduced by Paul Phillips in Scala 2.11.0-M5. Extractor macros are not available in Scala 2.10.x or in macro paradise. Follow the instructions at [http://www.scala-lang.org/download/](http://www.scala-lang.org/download/) to download and use the latest milestone of 2.11.
+Extractor macros are a feature of Scala 2.11.x and Scala 2.12.x, enabled by name-based extractors introduced by Paul Phillips in Scala 2.11.0-M5. Extractor macros are not supported in Scala 2.10.x. They are also not supported in macro paradise for Scala 2.10.x.
 
-### The pattern
+## The pattern
 
 In a nutshell, given an unapply method (for simplicity, in this
 example the scrutinee is of a concrete type, but it's also possible
@@ -61,7 +62,7 @@ because one can't declare value classes local. Nevertheless,
 I'm leaving a canary in place ([neg/t5903e](https://github.com/scala/scala/blob/00624a39ed84c3fd245dd9df7454d4cec4399e13/test/files/neg/t5903e/Macros_1.scala#L1)) that will let us know
 once this restriction is lifted.
 
-### Use cases
+## Use cases
 
 In particular, the pattern can be used to implement shapeshifting
 pattern matchers for string interpolators without resorting to dirty
@@ -87,4 +88,7 @@ Follow our test cases at [run/t5903a](https://github.com/scala/scala/tree/00624a
 [run/t5903d](https://github.com/scala/scala/tree/00624a39ed84c3fd245dd9df7454d4cec4399e13/test/files/run/t5903d) to see implementations
 of this and other use cases for extractor macros.
 
-Please note that extractor macros must be [whitebox](/overviews/macros/blackbox-whitebox.html), otherwise they will not work.
+## Blackbox vs whitebox
+
+Extractor macros must be [whitebox](/overviews/macros/blackbox-whitebox.html).
+If you declare an extractor macro as [blackbox](/overviews/macros/blackbox-whitebox.html), it will not work.

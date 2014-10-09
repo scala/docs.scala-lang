@@ -328,8 +328,8 @@ Related questions of interest:
 This question and answer were originally submitted on [Stack Overflow][3].
 
   [1]: http://suereth.blogspot.com/2011/02/slides-for-todays-nescala-talk.html
-  [2]: http://lampsvn.epfl.ch/trac/scala/ticket/4427
+  [2]: https://issues.scala-lang.org/browse/SI-4427
   [3]: http://stackoverflow.com/q/5598085/53013
   [4]: http://stackoverflow.com/questions/5512397/passing-scala-math-integral-as-implicit-parameter
-  [5]: www.scala-lang.org/docu/files/ScalaReference.pdf
+  [5]: http://scala-lang.org/files/archive/spec/2.11/
 

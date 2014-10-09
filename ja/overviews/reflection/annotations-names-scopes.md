@@ -172,7 +172,7 @@ Scala のプログラムにおいて、「`_root_`」のような特定の名前
 Scala の仕様において**定数式** (constant expression) と呼ばれる式は
 Scala コンパイラによってコンパイル時に評価することができる。
 以下に挙げる式の種類はコンパイル時定数だ。
-([Scala 言語仕様](http://www.scala-lang.org/docu/files/ScalaReference.pdf) の 6.24 参照):
+([Scala 言語仕様 の 6.24](http://scala-lang.org/files/archive/spec/2.11/06-expressions.html#constant-expressions) 参照):
 
 1. プリミティブ値クラスのリテラル ([Byte](http://www.scala-lang.org/api/current/index.html#scala.Byte)、 [Short](http://www.scala-lang.org/api/current/index.html#scala.Short)、 [Int](http://www.scala-lang.org/api/current/index.html#scala.Int)、 [Long](http://www.scala-lang.org/api/current/index.html#scala.Long)、 [Float](http://www.scala-lang.org/api/current/index.html#scala.Float)、 [Double](http://www.scala-lang.org/api/current/index.html#scala.Double)、 [Char](http://www.scala-lang.org/api/current/index.html#scala.Char)、 [Boolean](http://www.scala-lang.org/api/current/index.html#scala.Boolean) および [Unit](http://www.scala-lang.org/api/current/index.html#scala.Unit))。これは直接対応する型で表される。
 2. 文字列リテラル。これは文字列のインスタンスとして表される。

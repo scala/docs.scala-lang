@@ -25,7 +25,7 @@
 	.footer {
 		padding-top: 15px;
 		clear: both;
-	    background: url(../resources/images/footerbg.jpg) repeat-x #8d8d8d;
+	    background: #8d8d8d;
 		border-top: solid 1px #676767;
 		width: 100%;
 		color: rgba(255, 255, 255, 0.7);
@@ -85,6 +85,12 @@
 		border-top:1px solid #808080;
 	    clear: both;
 	    padding: 10px 0 20px;
+	}
+
+	blockquote p {
+	    font-size: 13px;
+	    font-weight: normal;
+	    font-style: italic;
 	}
 
 /*Coursera stuff*/
@@ -175,4 +181,15 @@ div#pop-up-arrow {
 
 .jvectormap-zoomout {
     top: 30px;
+}
+.h2 {
+  font-size: 24px;
+  line-height: 36px;
+  color: #404040;
+  font-weight: bold;
+  display: block;
+  -webkit-margin-before: 0.83em;
+  -webkit-margin-after: 0.83em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
 }

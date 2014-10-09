@@ -6,7 +6,7 @@ disqus: true
 
 partof: reflection
 num: 4
-outof: 6
+outof: 7
 languages: [ja]
 ---
 
@@ -187,8 +187,7 @@ API, flag sets could be replaced with something else.
 
 Certain expressions that the Scala specification calls *constant expressions*
 can be evaluated by the Scala compiler at compile time. The following kinds of
-expressions are compile-time constants (see section 6.24 of the
-[Scala language specification](http://www.scala-lang.org/docu/files/ScalaReference.pdf)):
+expressions are compile-time constants (see [section 6.24 of the Scala language specification](http://scala-lang.org/files/archive/spec/2.11/06-expressions.html#constant-expressions)):
 
 1. Literals of primitive value classes ([Byte](http://www.scala-lang.org/api/current/index.html#scala.Byte), [Short](http://www.scala-lang.org/api/current/index.html#scala.Short), [Int](http://www.scala-lang.org/api/current/index.html#scala.Int), [Long](http://www.scala-lang.org/api/current/index.html#scala.Long), [Float](http://www.scala-lang.org/api/current/index.html#scala.Float), [Double](http://www.scala-lang.org/api/current/index.html#scala.Double), [Char](http://www.scala-lang.org/api/current/index.html#scala.Char), [Boolean](http://www.scala-lang.org/api/current/index.html#scala.Boolean) and [Unit](http://www.scala-lang.org/api/current/index.html#scala.Unit)) - represented directly as the corresponding type.
 

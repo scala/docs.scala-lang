@@ -3,7 +3,7 @@
 		<ul>
 			<li><h5>API</h5></li>
 			<li><a href="http://www.scala-lang.org/api/current/">Current</a></li>
-			<li><a href="http://www.scala-lang.org/archives/downloads/distrib/files/nightly/docs/library/index.html">Nightly</a></li>
+			<li><a href="http://www.scala-lang.org/files/archive/nightly/2.11.x/api/2.11.x/">Nightly</a></li>
 		</ul>
 		<ul>
 			<li><h5>Learn</h5></li>

@@ -11,11 +11,11 @@ language: fr
 
 |                                                                                                          |                     |
 | ------                                                                                                   | ------              |
-|  <h2 id="variables">variables</h2>                                                                       |                     |
+|  <span id="variables" class="h2">variables</span>                                                                       |                     |
 |  `var x = 5`                                                                                             |  variable           |
 |  <span class="label success">Good</span> `val x = 5`<br> <span class="label important">Bad</span> `x=6`  |  constante          |
 |  `var x: Double = 5`                                                                                     |  type explicite     |
-|  <h2 id="functions">fonctions</h2>                                                                       |                     |
+|  <span id="functions" class="h2">fonctions</span>                                                                       |                     |
 |  <span class="label success">Good</span> `def f(x: Int) = { x*x }`<br> <span class="label important">Bad</span> `def f(x: Int)   { x*x }` |  définition d'une fonction <br> erreur cachée : sans le = c'est une procédure qui retourne un Unit ; occasionnant des problèmes incontrôlés. |
 |  <span class="label success">Good</span> `def f(x: Any) = println(x)`<br> <span class="label important">Bad</span> `def f(x) = println(x)` |  définition d'une fonction <br> erreur de syntaxe : chaque argument à besoin d'être typés. |
 |  `type R = Double`                                                                                       |  alias de type     |
@@ -34,13 +34,13 @@ language: fr
 |  `def mapmake[T](g:T=>T)(seq: List[T]) = seq.map(g)`                                                     |  type générique. |
 |  `5.+(3); 5 + 3` <br> `(1 to 5) map (_*2)`                                                               |  sucre syntaxique pour opérateurs infixés. |
 |  `def sum(args: Int*) = args.reduceLeft(_+_)`                                                            |  arguments variadiques. |
-|  <h2 id="packages">paquetages</h2>                                                                       |                 |
+|  <span id="packages" class="h2">paquetages</span>                                                                       |                 |
 |  `import scala.collection._`                                                                             |  import global. |
 |  `import scala.collection.Vector` <br> `import scala.collection.{Vector, Sequence}`                      |  import sélectif. |
 |  `import scala.collection.{Vector => Vec28}`                                                             |  renommage d'import. |
 |  `import java.util.{Date => _, _}`                                                                       |  importe tout de java.util excepté Date. |
 |  `package pkg` _en début de fichier_ <br> `package pkg { ... }`                                          |  déclare un paquetage. |
-|  <h2 id="data_structures">structures de données</h2>                                                      |                 |
+|  <span id="data_structures" class="h2">structures de données</span>                                                      |                 |
 |  `(1,2,3)`                                                                                               |  tuple littéral. (`Tuple3`) |
 |  `var (x,y,z) = (1,2,3)`                                                                                 |  liaison déstructurée : le déballage du tuple se fait par le "pattern matching". |
 |  <span class="label important">Bad</span>`var x,y,z = (1,2,3)`                                           |  erreur cachée : chaque variable est associée au tuple au complet. |
@@ -49,7 +49,7 @@ language: fr
 |  `1 :: List(2,3)`                                                                                        |  créé une liste par le biais de l'opérateur "cons".|
 |  `1 to 5` _est équivalent à_ `1 until 6` <br> `1 to 10 by 2`                                             |  sucre syntaxique pour les plages de valeurs. |
 |  `()` _(parenthèses vides)_                                                                              |  l'unique membre de type Unit  (à l'instar de void en C/Java). |
-|  <h2 id="control_constructs">structures de constrôle</h2>                                                |                 |
+|  <span id="control_constructs" class="h2">structures de constrôle</span>                                                |                 |
 |  `if (check) happy else sad`                                                                             |  test conditionnel. |
 |  `if (check) happy` _est équivalent à_ <br> `if (check) happy else ()`                                   |  sucre syntaxique pour un test conditionnel. |
 |  `while (x < 5) { println(x); x += 1}`                                                                   |  boucle while. |
@@ -61,12 +61,12 @@ language: fr
 |  `for (x <- xs; y <- ys) {`<br>    `println("%d/%d = %.1f".format(x,y, x*y))`<br>`}`                     |  pour la compréhension : à la manière impérative <br>[sprintf-style](http://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax) |
 |  `for (i <- 1 to 5) {`<br>    `println(i)`<br>`}`                                                        |  pour la compréhension : itère jusqu'à la borne supérieure comprise. |
 |  `for (i <- 1 until 5) {`<br>    `println(i)`<br>`}`                                                     |  pour la compréhension : itère jusqu'à la borne supérieure non comprise. |
-|  <h2 id="pattern_matching">pattern matching</h2>                                                         |                 |
+|  <span id="pattern_matching" class="h2">pattern matching</span>                                                         |                 |
 |  <span class="label success">Good</span> `(xs zip ys) map { case (x,y) => x*y }`<br> <span class="label important">Bad</span> `(xs zip ys) map( (x,y) => x*y )` |  cas d’utilisation d’une fonction utilisée avec un "pattern matching". |
 |  <span class="label important">Bad</span><br>`val v42 = 42`<br>`Some(3) match {`<br>`  case Some(v42) => println("42")`<br>`    case _ => println("Not 42")`<br>`}` |  "v42" est interprété comme un nom ayant n’importe quelle valeur de type Int, donc "42" est affiché. |
 |  <span class="label success">Good</span><br>`val v42 = 42`<br>`Some(3) match {`<br>``    case Some(`v42`) => println("42")``<br>`case _ => println("Not 42")`<br>`}`  |  "\`v42\`" x les "backticks" est interprété avec la valeur de val `v42`, et "Not 42" est affiché. |
 |  <span class="label success">Good</span><br>`val UppercaseVal = 42`<br>`Some(3) match {`<br>`  case Some(UppercaseVal) => println("42")`<br>`    case _ => println("Not 42")`<br>`}` |  `UppercaseVal`i est traité avec la valeur contenue dans val, plutôt qu’un nouvelle variable du "pattern", parce que cela commence par une lettre en capitale. Ainsi, la valeur contenue dans `UppercaseVal` est comparée avec `3`, et "Not 42" est affiché. |
-|  <h2 id="object_orientation">l'orienté objet</h2>                                                        |                 |
+|  <span id="object_orientation" class="h2">l'orienté objet</span>                                                        |                 |
 |  `class C(x: R)` _est équivalent à_ <br>`class C(private val x: R)`<br>`var c = new C(4)`                |  paramètres du constructeur - privé |
 |  `class C(val x: R)`<br>`var c = new C(4)`<br>`c.x`                                                      |  paramètres du constructeur - public |
 |  `class C(var x: R) {`<br>`assert(x > 0, "positive please")`<br>`var y = x`<br>`val readonly = 5`<br>`private var secret = 1`<br>`def this = this(42)`<br>`}`|<br>le constructeur est dans le corps de la classe<br>déclare un membre public<br>are un accesseur<br>déclare un membre privé<br>constructeur alternatif |

@@ -24,7 +24,7 @@ As always, for-expressions can be used as an alternate syntax for expressions in
 
     for (elem <- it) println(elem)
 
-There's an important difference between the foreach method on iterators and the same method on traversable collections: When called to an iterator, `foreach` will leave the iterator at its end when it is done. So calling `next` again on the same iterator will fail with a `NoSuchElementException`. By contrast, when called on on a collection, `foreach` leaves the number of elements in the collection unchanged (unless the passed function adds to removes elements, but this is discouraged, because it may lead to surprising results).
+There's an important difference between the foreach method on iterators and the same method on traversable collections: When called on an iterator, `foreach` will leave the iterator at its end when it is done. So calling `next` again on the same iterator will fail with a `NoSuchElementException`. By contrast, when called on on a collection, `foreach` leaves the number of elements in the collection unchanged (unless the passed function adds to removes elements, but this is discouraged, because it may lead to surprising results).
 
 The other operations that Iterator has in common with `Traversable` have the same property. For instance, iterators provide a `map` method, which returns a new iterator:
 

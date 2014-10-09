@@ -4,7 +4,7 @@ title: Overview
 
 partof: reflection
 num: 1
-outof: 6
+outof: 7
 languages: [ja]
 ---
 
@@ -343,4 +343,4 @@ For more details, see the section of this guide on
 [Mirrors]({{ site.baseurl}}/overviews/reflection/environment-universes-mirrors.html),
 or the
 [Mirrors API docs](http://www.scala-lang.org/api/{{ site.scala-version}}/scala/reflect/api/Mirrors.html)
-in package `scala.reflect.api`.
+in package `scala.reflect.api`.

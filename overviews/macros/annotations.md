@@ -5,29 +5,22 @@ title: Macro Annotations
 disqus: true
 
 partof: macros
-num: 9
-outof: 11
+num: 10
+outof: 13
 languages: [ja]
 ---
 <span class="label important" style="float: right;">MACRO PARADISE</span>
 
 **Eugene Burmako**
 
-Macro annotations are only available in Scala 2.10 with the macro paradise plugin.
-Their inclusion in Scala 2.11 is not planned, but it will possibly happen in Scala 2.12.
+Macro annotations are only available with the macro paradise plugin (in Scala 2.10.x, 2.11.x and 2.12.x alike).
+Their inclusion in official Scala might happen in Scala 2.13, but there is no certainty about it yet.
 Follow the instructions at the ["Macro Paradise"](/overviews/macros/paradise.html) page to download and use our compiler plugin.
 
 Note that macro paradise is needed both to compile and to expand macro annotations,
 which means that your users will have to also add macro paradise to their builds in order to use your macro annotations.
 However, after macro annotations expand, the resulting code will no longer have any references to macro paradise
 and won't require its presence at compile-time or at runtime.
-
-## Call for feedback
-
-This implementation of macro annotations is experimental (hence the snapshot suffix in the current `2.0.0-SNAPSHOT` version
-of macro-paradise) and exists to provide a preview and initiate a discussion that will culminate in submitting
-a Scala improvement proposal for Scala 2.11 or 2.12. Please check whether it handles your code generation needs,
-so that I can refine it appropriately. If something doesn't work, let me know <a href="https://twitter.com/#!/xeno_by">on Twitter</a>.
 
 ## Walkthrough
 
@@ -101,3 +94,8 @@ as typed as possible to remain useful. On the one hand, macro annottees are unty
 of class members). But on the other hand, the thing about all flavors of Scala macros is integration with the typechecker, and
 macro annotations are not an exceptions. During expansion we can have all the type information that's possible to have
 (e.g. we can reflect against the surrounding program or perform type checks / implicit lookups in the enclosing context).
+
+## Blackbox vs whitebox
+
+Macro annotations must be [whitebox](/overviews/macros/blackbox-whitebox.html).
+If you declare a macro annotation as [blackbox](/overviews/macros/blackbox-whitebox.html), it will not work.
