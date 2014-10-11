@@ -31,7 +31,6 @@ language: ko
 * [다형 메소드](polymorphic-methods.html)
 
 [로컬 타입 추론 방식](local-type-inference.html)은 사용자가 불필요한 타입 정보를 어노테이션해야 하는 불편함을 줄여준다. 이와 함께, 이런 기능은 프로그래밍 추상화를 안전하게 재사용하고 소프트웨어를 타입 세이프하게 확장하는 강력한 기반이 된다.
-A [local type inference mechanism](local-type-inference.html) takes care that the user is not required to annotate the program with redundant type information. In combination, these features provide a powerful basis for the safe reuse of programming abstractions and for the type-safe extension of software.
 
 ## 스칼라는 확장성이 높다 ##
 실제 개발 상황에선, 도메인 고유 애플리케이션의 개발에 도메인 고유 언어 확장이 필요할 때가 많다. 스칼라는 라이브러리의 형태로 새로운 언어 구성을 쉽고 자연스럽게 추가할 수 있도록 고유한 언어 기능 조합을 제공한다.
