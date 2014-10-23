@@ -17,7 +17,7 @@ Collection classes that implement `Traversable` just need to define this method;
 
 The `foreach` method is meant to traverse all elements of the collection, and apply the given operation, f, to each element. The type of the operation is `Elem => U`, where `Elem` is the type of the collection's elements and `U` is an arbitrary result type. The invocation of `f` is done for its side effect only; in fact any function result of f is discarded by `foreach`.
 
-`Traversable` also defines many concrete methods, which are all listed in The following table. These methods fall into the following categories:
+`Traversable` also defines many concrete methods, which are all listed in the following table. These methods fall into the following categories:
 
 * **Addition**, `++`, which appends two traversables together, or appends all elements of an iterator to a traversable.
 * **Map** operations `map`, `flatMap`, and `collect`, which produce a new collection by applying some function to collection elements.
