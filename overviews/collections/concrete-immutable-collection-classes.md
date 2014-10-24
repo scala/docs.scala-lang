@@ -63,7 +63,7 @@ Vectors are built and modified just like any other sequence.
 
 Vectors are represented as trees with a high branching factor (The branching factor of a tree or a graph is the number of children at each node). Every tree node contains up to 32 elements of the vector or contains up to 32 other tree nodes. Vectors with up to 32 elements can be represented in a single node. Vectors with up to `32 * 32 = 1024` elements can be represented with a single indirection. Two hops from the root of the tree to the final element node are sufficient for vectors with up to 2<sup>15</sup> elements, three hops for vectors with 2<sup>20</sup>, four hops for vectors with 2<sup>25</sup> elements and five hops for vectors with up to 2<sup>30</sup> elements. So for all vectors of reasonable size, an element selection involves up to 5 primitive array selections. This is what we meant when we wrote that element access is "effectively constant time".
 
-Vectors are immutable, so you cannot change an element of a vector and still retain a new vector. However, with the `updated` method you can crate a new vector that differs from a given vector only in a single element:
+Vectors are immutable, so you cannot change an element of a vector and still retain a new vector. However, with the `updated` method you can create a new vector that differs from a given vector only in a single element:
 
     scala> val vec = Vector(1, 2, 3)
     vec: scala.collection.immutable.Vector[Int] = Vector(1, 2, 3)
