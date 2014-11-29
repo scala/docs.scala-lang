@@ -13,13 +13,11 @@ in order to be accepted.
 
 ## Dependencies ##
 
-This site uses a Jekyll, a ruby framework. You'll need ruby and bundler installed; see [Jekyll installation instructions](http://jekyllrb.com/docs/installation/) for the details.
+This site uses a Jekyll, a Ruby framework. You'll need Ruby and Bundler installed; see [Jekyll installation instructions](http://jekyllrb.com/docs/installation/) for the details.
 
 ## Building & Viewing ##
 
-cd into the directory where you cloned this repository, then install the required gems:
-
-    bundle install
+cd into the directory where you cloned this repository, then install the required gems with `bundle install`. This will automatically put the gems into `./vendor/bundle`.
 
 Start the server in the context of the bundle:
 

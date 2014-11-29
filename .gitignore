@@ -3,3 +3,4 @@ _site
 .project
 .settings
 *~
+vendor/bundle

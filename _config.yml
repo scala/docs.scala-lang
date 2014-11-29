@@ -18,5 +18,4 @@ scala-version: 2.10.0
 highlighter: pygments
 permalink: /:categories/:title.html
 baseurl:
-
-# markdown: rdiscount
+exclude: ["vendor"]
