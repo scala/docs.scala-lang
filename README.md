@@ -13,7 +13,7 @@ in order to be accepted.
 
 ## Dependencies ##
 
-Install [Ruby](https://www.ruby-lang.org/en/downloads/) and [Bundler](http://bundler.io/). Bundler manages ruby dependencies for you. If you're building on a mac, you will need [Xcode](https://developer.apple.com/xcode/downloads/) and the matching version of [Xcode command line tools](https://developer.apple.com/downloads/index.action) (login required, free). 
+This site uses a Jekyll, a ruby framework. You'll need ruby and bundler installed; see [Jekyll installation instructions](http://jekyllrb.com/docs/installation/) for the details.
 
 ## Building & Viewing ##
 
