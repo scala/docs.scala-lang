@@ -6,6 +6,8 @@ disqus: true
 
 tutorial: scala-tour
 num: 13
+tutorial-next: anonymous-function-syntax
+tutorial-previous: mixin-class-composition
 ---
 
 In Scala it is possible to nest function definitions. The following object provides a `filter` function for extracting values from a list of integers that are below a threshold value:
