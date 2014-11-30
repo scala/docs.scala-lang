@@ -6,6 +6,8 @@ disqus: true
 
 tutorial: scala-tour
 num: 27
+tutorial-next: local-type-inference
+tutorial-previous: lower-type-bounds
 ---
 
 When developing extensible software it is sometimes handy to declare the type of the value `this` explicitly. To motivate this, we will derive a small extensible representation of a graph data structure in Scala.
