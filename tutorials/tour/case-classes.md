@@ -6,6 +6,8 @@ disqus: true
 
 tutorial: scala-tour
 num: 5
+tutorial-previous: classes
+tutorial-next: compound-types
 ---
 
 Scala supports the notion of _case classes_. Case classes are regular classes which export their constructor parameters and which provide a recursive decomposition mechanism via [pattern matching](pattern-matching.html).
