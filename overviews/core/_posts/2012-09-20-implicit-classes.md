@@ -17,7 +17,7 @@ Implicit classes were proposed in [SIP-13](http://docs.scala-lang.org/sips/pendi
 
 ## Usage
 
-To create an implicit class, simply place the the `implicit` keyword in front of an appropriate 
+To create an implicit class, simply place the `implicit` keyword in front of an appropriate 
 class.  Here's an example:
 
     object Helpers {
