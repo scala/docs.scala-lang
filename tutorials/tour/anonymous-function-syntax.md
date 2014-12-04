@@ -6,6 +6,8 @@ disqus: true
 
 tutorial: scala-tour
 num: 14
+tutorial-next: currying
+tutorial-previous: nested-functions
 ---
 
 Scala provides a relatively lightweight syntax for defining anonymous functions. The following expression creates a successor function for integers:

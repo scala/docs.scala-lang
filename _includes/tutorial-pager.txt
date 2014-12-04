@@ -1,0 +1,10 @@
+<nav>
+  <ul class="pager">
+  {% if page.tutorial-previous %}
+      <li class="previous"><a href="{{ page.tutorial-previous }}.html""><span aria-hidden="true">&larr;</span> Previous</a></li>
+   {% endif %}
+   {% if page.tutorial-next %}
+      <li class="next"><a href="{{ page.tutorial-next }}.html">Next <span aria-hidden="true">&rarr;</span></a></li>
+   {% endif %}
+  </ul>
+</nav>

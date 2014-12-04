@@ -9,7 +9,9 @@
   {% for i in (1..totalPagesTour) %}
     {% for pg in site.pages %}
       {% if pg.tutorial == "scala-tour" and pg.num and pg.num == i and pg.language == page.language %}
-        <li class="tour-of-scala"><a href="{{ pg.url }}">{{ pg.title }}</a></li>
+        <li class="tour-of-scala {% if page.title == pg.title %} current-page {% endif %}">
+          <a href="{{ pg.url }}">{{ pg.title }}</a>
+        </li>
       {% endif %}
     {% endfor %}
   {% endfor %}
