@@ -26,7 +26,7 @@ The Scala 2.8 design is much simpler. Almost all compiler magic is gone. Instead
 
     scala> val seq: Seq[Int] = a1
     seq: Seq[Int] = WrappedArray(1, 2, 3)
-    scala> val a4: Array[Int] = s.toArray
+    scala> val a4: Array[Int] = seq.toArray
     a4: Array[Int] = Array(1, 2, 3)
     scala> a1 eq a4
     res2: Boolean = true
@@ -103,7 +103,7 @@ Here is some REPL interaction that uses the `evenElems` method.
 In both cases, the Scala compiler automatically constructed a class manifest for the element type (first, `Int`, then `String`) and passed it to the implicit parameter of the `evenElems` method. The compiler can do that for all concrete types, but not if the argument is itself another type parameter without its class manifest. For instance, the following fails:
 
     scala> def wrap[U](xs: Array[U]) = evenElems(xs)
-    <console>:6: error: could not find implicit value for 
+    <console>:6: error: could not find implicit value for
      evidence parameter of type ClassManifest[U]
          def wrap[U](xs: Array[U]) = evenElems(xs)
                                           ^
