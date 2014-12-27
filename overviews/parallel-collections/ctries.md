@@ -9,7 +9,7 @@ num: 4
 ---
 
 Most concurrent data structures do not guarantee consistent
-traversal if the the data structure is modified during traversal.
+traversal if the data structure is modified during traversal.
 This is, in fact, the case with most mutable collections, too.
 Concurrent tries are special in the sense that they allow you to modify
 the trie being traversed itself. The modifications are only visible in the

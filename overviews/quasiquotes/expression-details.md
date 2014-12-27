@@ -75,7 +75,7 @@ Each term identifier is defined by its name and by the fact of being backquoted 
     scala> val backquoted = q"`$name`"
     backquoted: universe.Ident = `Foo`
 
-Although backquoted and non-backquoted identifiers may refer to the same things they are not equivalent from synactical point of view:
+Although backquoted and non-backquoted identifiers may refer to the same things they are not equivalent from syntactical point of view:
 
     scala> val q"`Foo`" = q"Foo"
     scala.MatchError: Foo (of class scala.reflect.internal.Trees$Ident)
@@ -145,7 +145,7 @@ It can be handled in the following way:
     type arguments: List(Int), value arguments: List(1, 2)
     type arguments: List(), value arguments: List(scala.Symbol("a"), scala.Symbol("b"))
 
-As you can see we were able to match both calls even though one has no explicit type applications an danother does have one. This happens because type application matcher extract empty list of type arguments if the tree is not an actual type application making it possible to uniformly handle situations with and without explicit type applications.
+As you can see we were able to match both calls even though one has no explicit type applications and another does have one. This happens because type application matcher extract empty list of type arguments if the tree is not an actual type application making it possible to uniformly handle situations with and without explicit type applications.
 
 It's recommended to always include type applications when you match on function with type arguments as they will be inserted by the compiler during typechecking even if the user didn't write them explicitly:
 
@@ -315,7 +315,7 @@ And unit as nullary tuple:
 
 ## Block
 
-Blocks are a fundamental primitive to express sequence of actions or bindings. `q"..."` interpolator is an equivalent of a block. It allows to express more than one expression seperated by semicolon or a newline:
+Blocks are a fundamental primitive to express sequence of actions or bindings. `q"..."` interpolator is an equivalent of a block. It allows to express more than one expression separated by semicolon or a newline:
 
     scala> val t = q"a; b; c"
     t: universe.Tree =
@@ -584,7 +584,7 @@ Each enumerator in the comprehension can be expressed with `fq"..."` interpolato
     scala> val `for-yield` = q"for (..$enums) yield y"
     for-yield: universe.Tree
 
-Simiarly one can deconstruct for-yield back into a list of enumerators and body:
+Similarly one can deconstruct for-yield back into a list of enumerators and body:
 
     scala> val q"for (..$enums) yield $body" = `for-yield`
     enums: List[universe.Tree] = List(`<-`((x @ _), xs), `if`(x.$greater(0)), (y @ _) = x.$times(2))

@@ -164,7 +164,7 @@ A [concurrent.TrieMap](http://www.scala-lang.org/api/{{ site.scala-version }}/sc
 is a concurrent thread-safe map, whereas a 
 [mutable.ParTrieMap](http://www.scala-lang.org/api/{{ site.scala-version}}/scala/collection/parallel/mutable/ParTrieMap.html) 
 is its parallel counterpart. While most concurrent data structures do not guarantee
-consistent traversal if the the data structure is modified during traversal,
+consistent traversal if the data structure is modified during traversal,
 Ctries guarantee that updates are only visible in the next iteration. This
 means that you can mutate the concurrent trie while traversing it, like in the
 following example which outputs square roots of number from 1 to 99:
