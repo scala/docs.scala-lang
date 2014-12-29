@@ -59,8 +59,8 @@ The result of the `map` is a value that prints `SeqViewM(...)`. This is in essen
 
 You now get a `SeqView` that contains two map operations, so it prints with a double "M": `SeqViewMM(...)`. Finally, forcing the last result gives:
 
-scala> res14.force
-res15: Seq[Int] = Vector(4, 6, 8, 10, 12, 14, 16, 18, 20, 22)
+    scala> res14.force
+    res15: Seq[Int] = Vector(4, 6, 8, 10, 12, 14, 16, 18, 20, 22)
 
 Both stored functions get applied as part of the execution of the `force` operation and a new vector is constructed. That way, no intermediate data structure is needed.
 
