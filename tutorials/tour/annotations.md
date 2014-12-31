@@ -6,6 +6,8 @@ disqus: true
 
 tutorial: scala-tour
 num: 3
+tutorial-next: classes
+tutorial-previous: abstract-types
 ---
 
 Annotations associate meta-information with definitions.

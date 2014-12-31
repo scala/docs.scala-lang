@@ -6,6 +6,9 @@ disqus: true
 
 tutorial: scala-tour
 num: 20
+
+tutorial-next: polymorphic-methods
+tutorial-previous: higher-order-functions
 ---
 
 Scala has a built-in general pattern matching mechanism. It allows to match on any sort of data with a first-match policy. 

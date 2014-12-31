@@ -1,7 +1,7 @@
 markdown: kramdown
 
 title: "Scala Documentation"
-description: "Documentation for the Scala programming language- Tutorials, Overviews, Cheatsheets, and more."
+description: "Documentation for the Scala programming language - Tutorials, Overviews, Cheatsheets, and more."
 keywords:
 - Scala
 - Documentation
@@ -18,5 +18,4 @@ scala-version: 2.10.0
 highlighter: pygments
 permalink: /:categories/:title.html
 baseurl:
-
-# markdown: rdiscount
+exclude: ["vendor"]

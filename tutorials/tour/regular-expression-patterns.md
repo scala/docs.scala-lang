@@ -6,6 +6,9 @@ disqus: true
 
 tutorial: scala-tour
 num: 22
+
+tutorial-next: traits
+tutorial-previous: polymorphic-methods
 ---
 
 ## Right-ignoring sequence patterns ##

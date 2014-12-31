@@ -6,6 +6,8 @@ disqus: true
 
 tutorial: scala-tour
 num: 34
+tutorial-next: named-parameters
+tutorial-previous: xml-processing
 ---
 
 Scala provides the ability to give parameters default values that can be used to allow a caller to omit those parameters.

@@ -6,6 +6,9 @@ disqus: true
 
 tutorial: scala-tour
 num: 21
+
+tutorial-next: regular-expression-patterns
+tutorial-previous: polymorphic-methods
 ---
 
 Methods in Scala can be parameterized with both values and types. Like on the class level, value parameters are enclosed in a pair of parentheses, while type parameters are declared within a pair of brackets.

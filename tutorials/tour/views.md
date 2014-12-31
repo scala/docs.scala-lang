@@ -6,6 +6,8 @@ disqus: true
 
 tutorial: scala-tour
 num: 32
+tutorial-next: xml-processing
+tutorial-previous: variances
 ---
 
 [Implicit parameters](implicit-parameters.html) and methods can also define implicit conversions called _views_. A view from type `S` to type `T` is defined by an implicit value which has function type `S => T`, or by an implicit method convertible to a value of that type.

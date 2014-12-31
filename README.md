@@ -5,7 +5,7 @@ This repository contains the source for the Scala documentation website, as well
 ## Contributing ##
 
 Please have a look at [http://docs.scala-lang.org/contribute.html](http://docs.scala-lang.org/contribute.html) before making a contribution.
-This document gives an overview of the type of documentation contained within the Scala Documentation repository and the repository's structure.
+This document gives an overview of the type of documentation contained within the Scala Documentation repository, the repository's structure, and how to build and run the documentation locally. 
 
 Small changes, or corrected typos will generally be pulled in right away. Large changes, like the addition of new documents, or the rewriting of
 existing documents will be thoroughly reviewed-- please keep in mind that, generally, new documents must be very well-polished, complete, and maintained
@@ -13,15 +13,35 @@ in order to be accepted.
 
 ## Dependencies ##
 
-Jekyll is required. Follow the install instructions at the Jekyll [documentation site](http://jekyllrb.com/docs/installation/).  Since this site is hosted on github pages, make sure you have [whatever version of Jekyll that github is running](https://help.github.com/articles/using-jekyll-with-pages#troubleshooting). As of the writing of this README, that is version >= 1.0.x.
+This site uses a Jekyll, a Ruby framework. You'll need Ruby and Bundler installed; see [Jekyll installation instructions](http://jekyllrb.com/docs/installation/) for the details.
 
 ## Building & Viewing ##
 
-cd into the `scala.github.com` directory, and build by:
+cd into the directory where you cloned this repository, then install the required gems with `bundle install`. This will automatically put the gems into `./vendor/bundle`.
 
-    jekyll serve
+Start the server in the context of the bundle:
+
+    bundle exec jekyll serve
 
 The generated site is available at `http://localhost:4000`
+
+Jekyll will automatically watch for changes on the filesystem, and regenerate the site. It can take a few minutes for your changes to appear. Watch the output from `jekyll serve`. When you start up you'll see this:
+
+     $ bundle exec jekyll serve
+     Configuration file: /Users/ben/src/scala.github.com/_config.yml
+                 Source: /Users/ben/src/scala.github.com
+            Destination: /Users/ben/src/scala.github.com/_site
+          Generating...
+                     done.
+    Auto-regeneration: enabled for '/Users/ben/src/scala.github.com'
+
+When you change a file, this output will tell you that jekyll is regenerating. It's not done until it says `done.`
+
+    Server running... press ctrl-c to stop.
+      Regenerating: 1 files at 2014-11-29 09:19:04 ...done.
+      Regenerating: 3 files at 2014-11-29 09:21:39 ...done.
+      Regenerating: 2 files at 2014-11-29 09:25:10 ...done.
+      Regenerating: 2 files at 2014-11-29 09:27:49
 
 If you get `incompatible encoding` errors when generating the site under Windows, then ensure that the
 console in which you are running jekyll can work with UTF-8 characters. As described in the blog
@@ -30,13 +50,13 @@ you have to execute `chcp 65001`. This command is best added to the `jekyll.bat`
 
 ## Markdown ##
 
-The markdown used in this site uses [Maruku](http://maruku.rubyforge.org/maruku.html) extensions.
+The markdown used in this site uses [kramdown](http://kramdown.gettalong.org/) extensions.
 
 ### Markdown Editor for OSX ###
 
-There exists a free markdown editor for OSX called [Mou](http://mouapp.com/). It's quite convenient to work with, and it generates the translated Markdown in real-time alongside of your editor window, as can be seen here:
+There's a free markdown editor for OSX called [Mou](http://25.io/mou/). It's quite convenient to work with, and it generates the translated Markdown in real-time alongside of your editor window, as can be seen here:
 
-![Mou Screen Shot](http://mouapp.com/images/Mou_Screenshot_1.png)
+![Mou Screen Shot](http://25.io/mou/img/1.png)
 
 ## License ##
 

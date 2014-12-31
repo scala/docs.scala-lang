@@ -6,6 +6,7 @@ disqus: true
 
 tutorial: scala-tour
 num: 1
+tutorial-next: abstract-types
 ---
 
 Scala is a modern multi-paradigm programming language designed to express common programming patterns in a concise, elegant, and type-safe way. It smoothly integrates features of object-oriented and functional languages.

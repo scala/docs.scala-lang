@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-
-    <title>{% if page.partof %}{{ page.partof | replace: '-',' ' | split:" " | capitalize | join:" " }} - {% endif %}{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
+    <title>{% if page.partof %}{% assign words = page.partof | split: '-' %}{% for word in words %}{{ word | capitalize }} {% endfor %}- {% endif %}{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
     {% if page.description %}
     <meta name="description" content="{{ page.description }}" />
     {% endif %}
@@ -31,6 +30,10 @@
 
     <!-- table of contents js -->
     <script src="{{ site.baseurl }}/resources/javascript/toc.js" type="text/javascript" ></script>
+
+    <!-- styles for pager and table of contents -->
+    <link rel="stylesheet" href="{{ site.baseurl }}/resources/stylesheets/pager.css" type="text/css" />
+    <link rel="stylesheet" href="{{ site.baseurl }}/resources/stylesheets/toc.css" type="text/css" />
 
     <!-- google analytics -->
 	<script type="text/javascript">
