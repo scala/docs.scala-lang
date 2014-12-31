@@ -75,21 +75,21 @@ more specific subtype of `Symbol` as appropriate (if you want to use the
 
 For example,
 
-    scala> import reflect.runtime.universe._
-    import reflect.runtime.universe._
+    scala> import scala.reflect.runtime.universe._
+    import scala.reflect.runtime.universe._
 
     scala> class C[T] { def test[U](x: T)(y: U): Int = ??? }
     defined class C
 
     scala> val testMember = typeOf[C[Int]].member(newTermName("test"))
-    testMember: reflect.runtime.universe.Symbol = method test
+    testMember: scala.reflect.runtime.universe.Symbol = method test
 
 In this case, `member` returns an instance of `Symbol`, not `MethodSymbol` as
 one might expect. Thus, we must use `asMethod` to ensure that we obtain a
 `MethodSymbol`
 
     scala> testMember.asMethod
-    res0: reflect.runtime.universe.MethodSymbol = method test
+    res0: scala.reflect.runtime.universe.MethodSymbol = method test
 
 ### Free symbols
 
@@ -134,7 +134,7 @@ example:
     import scala.reflect.runtime.universe._
 
     scala> typeOf[List[Int]]
-    res0: reflect.runtime.universe.Type = scala.List[Int]
+    res0: scala.reflect.runtime.universe.Type = scala.List[Int]
 
 In this example, a
 [`scala.reflect.api.Types$TypeRef`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/reflect/api/Types$TypeRef.html)
@@ -149,10 +149,10 @@ specialized `TypeTag` for us, which we can use to obtain the type of our
 arbitrary instance:
 
     scala> def getType[T: TypeTag](obj: T) = typeOf[T]
-    getType: [T](obj: T)(implicit evidence$1: reflect.runtime.universe.TypeTag[T])reflect.runtime.universe.Type
+    getType: [T](obj: T)(implicit evidence$1: scala.reflect.runtime.universe.TypeTag[T])scala.reflect.runtime.universe.Type
 
     scala> getType(List(1,2,3))
-    res1: reflect.runtime.universe.Type = List[Int]
+    res1: scala.reflect.runtime.universe.Type = List[Int]
 
     scala> class Animal; class Cat extends Animal
     defined class Animal
@@ -162,13 +162,13 @@ arbitrary instance:
     a: Animal = Animal@21c17f5a
 
     scala> getType(a)
-    res2: reflect.runtime.universe.Type = Animal
+    res2: scala.reflect.runtime.universe.Type = Animal
 
     scala> val c = new Cat
     c: Cat = Cat@2302d72d
 
     scala> getType(c)
-    res3: reflect.runtime.universe.Type = Cat
+    res3: scala.reflect.runtime.universe.Type = Cat
 
 _Note:_ Method `typeOf` does not work for types with type parameters, such as
 `typeOf[List[A]]` where `A` is a type parameter. In this case, one can use
@@ -184,7 +184,7 @@ Standard types, such as `Int`, `Boolean`, `Any`, or `Unit`, are accessible throu
     import scala.reflect.runtime.universe
 
     scala> val intTpe = universe.definitions.IntTpe
-    intTpe: reflect.runtime.universe.Type = Int
+    intTpe: scala.reflect.runtime.universe.Type = Int
 
 The list of standard types is specified in trait `StandardTypes` in
 [`scala.reflect.api.StandardDefinitions`](http://www.scala-lang.org/api/current/index.html#scala.reflect.api.StandardDefinitions$StandardTypes).
@@ -204,7 +204,7 @@ Given two `Type` instances, one can easily test whether one is a subtype of
 the other using `<:<` (and in exceptional cases, `weak_<:<`, explained below)
 
     scala> import scala.reflect.runtime.universe._
-    import scala-lang.reflect.runtime.universe._
+    import scala.reflect.runtime.universe._
 
     scala> class A; class B extends A
     defined class A
@@ -276,7 +276,7 @@ denote the exact same compile-time type.
     import scala.reflect.runtime.universe._
 
     scala> def getType[T: TypeTag](obj: T) = typeOf[T]
-    getType: [T](obj: T)(implicit evidence$1: reflect.runtime.universe.TypeTag[T])reflect.runtime.universe.Type
+    getType: [T](obj: T)(implicit evidence$1: scala.reflect.runtime.universe.TypeTag[T])scala.reflect.runtime.universe.Type
 
     scala> class A
     defined class A
@@ -351,14 +351,14 @@ For example, to look up the `map` method of `List`, one can do:
     import scala.reflect.runtime.universe._
 
     scala> typeOf[List[_]].member("map": TermName)
-    res0: reflect.runtime.universe.Symbol = method map
+    res0: scala.reflect.runtime.universe.Symbol = method map
 
 Note that we pass method `member` a `TermName`, since we're looking up a
 method. If we were to look up a type member, such as `List`'s self type, `Self`, we
 would pass a `TypeName`:
 
     scala> typeOf[List[_]].member("Self": TypeName)
-    res1: reflect.runtime.universe.Symbol = type Self
+    res1: scala.reflect.runtime.universe.Symbol = type Self
 
 We can also query all members or declarations on a type in interesting ways.
 We can use method `members` to obtain a `Traversable` (`MemberScopeApi`
@@ -418,7 +418,7 @@ For example, given the following tree:
     import scala.reflect.runtime.universe._
 
     scala> val tree = Apply(Select(Ident(newTermName("x")), newTermName("$plus")), List(Literal(Constant(2))))
-    tree: reflect.runtime.universe.Apply = x.$plus(2)
+    tree: scala.reflect.runtime.universe.Apply = x.$plus(2)
 
 We can use method `show` (or `toString`, which is equivalent) to see what that
 tree represents.
@@ -437,7 +437,7 @@ expression:
     import scala.reflect.runtime.universe._
 
     scala> val expr = reify { class Flower { def name = "Rose" } }
-    expr: reflect.runtime.universe.Expr[Unit] = ...
+    expr: scala.reflect.runtime.universe.Expr[Unit] = ...
 
 Here, `reify` simply takes the Scala expression it was passed, and returns a
 Scala `Expr`, which is simply wraps a `Tree` and a `TypeTag` (see the
@@ -446,7 +446,7 @@ section of this guide for more information about `Expr`s). We can obtain
 the tree that `expr` contains by:
 
     scala> val tree = expr.tree
-    tree: reflect.runtime.universe.Tree =
+    tree: scala.reflect.runtime.universe.Tree =
     {
       class Flower extends AnyRef {
         def <init>() = {
@@ -484,7 +484,7 @@ in the following tree:
     import scala.reflect.runtime.universe._
 
     scala> val tree = Apply(Select(Ident(newTermName("x")), newTermName("$plus")), List(Literal(Constant(2))))
-    tree: reflect.runtime.universe.Apply = x.$plus(2)
+    tree: scala.reflect.runtime.universe.Apply = x.$plus(2)
 
 We can simply match on our `tree`, and in the case that we have an `Apply`
 node, just return `Apply`'s  function and argument:
@@ -492,15 +492,15 @@ node, just return `Apply`'s  function and argument:
     scala> val (fun, arg) = tree match {
          |     case Apply(fn, a :: Nil) => (fn, a)
          | }
-    fun: reflect.runtime.universe.Tree = x.$plus
-    arg: reflect.runtime.universe.Tree = 2
+    fun: scala.reflect.runtime.universe.Tree = x.$plus
+    arg: scala.reflect.runtime.universe.Tree = 2
 
 We can achieve exactly the same thing a bit more concisely, by putting the
 pattern match on the left-hand side:
 
     scala> val Apply(fun, arg :: Nil) = tree
-    fun: reflect.runtime.universe.Tree = x.$plus
-    arg: reflect.runtime.universe.Tree = 2
+    fun: scala.reflect.runtime.universe.Tree = x.$plus
+    arg: scala.reflect.runtime.universe.Tree = 2
 
 Note that `Tree`s can typically be quite complex, with nodes nested
 arbitrarily deep within other nodes. A simple illustration would be if we were
@@ -508,15 +508,15 @@ to add a second `Apply` node to the above tree which serves to add `3` to our
 sum:
 
     scala> val tree = Apply(Select(Apply(Select(Ident(newTermName("x")), newTermName("$plus")), List(Literal(Constant(2)))), newTermName("$plus")), List(Literal(Constant(3))))
-    tree: reflect.runtime.universe.Apply = x.$plus(2).$plus(3)
+    tree: scala.reflect.runtime.universe.Apply = x.$plus(2).$plus(3)
 
 If we apply the same pattern match as above, we obtain the outer `Apply` node
 which contains as its function the entire tree representing `x.$plus(2)` that
 we saw above:
 
     scala> val Apply(fun, arg :: Nil) = tree
-    fun: reflect.runtime.universe.Tree = x.$plus(2).$plus
-    arg: reflect.runtime.universe.Tree = 3
+    fun: scala.reflect.runtime.universe.Tree = x.$plus(2).$plus
+    arg: scala.reflect.runtime.universe.Tree = 3
 
     scala> showRaw(fun)
     res3: String = Select(Apply(Select(Ident(newTermName("x")), newTermName("$plus")), List(Literal(Constant(2)))), newTermName("$plus"))
@@ -546,7 +546,7 @@ all `Apply` nodes, we could do:
     import scala.reflect.runtime.universe._
 
     scala> val tree = Apply(Select(Apply(Select(Ident(newTermName("x")), newTermName("$plus")), List(Literal(Constant(2)))), newTermName("$plus")), List(Literal(Constant(3))))
-    tree: reflect.runtime.universe.Apply = x.$plus(2).$plus(3)
+    tree: scala.reflect.runtime.universe.Apply = x.$plus(2).$plus(3)
 
     scala> object traverser extends Traverser {
          |   var applies = List[Apply]()
@@ -590,7 +590,7 @@ nodes, simply do:
     scala> traverser.traverse(tree)
 
     scala> traverser.applies
-    res0: List[reflect.runtime.universe.Apply] = List(x.$plus(2), x.$plus(2).$plus(3))
+    res0: List[scala.reflect.runtime.universe.Apply] = List(x.$plus(2), x.$plus(2).$plus(3))
 
 ### Creating Trees
 
@@ -644,10 +644,10 @@ For example, let's try to construct a tree representing `println(2)` using
 `splice`:
 
     scala> val x = reify(2)
-    x: reflect.runtime.universe.Expr[Int(2)] = Expr[Int(2)](2)
+    x: scala.reflect.runtime.universe.Expr[Int(2)] = Expr[Int(2)](2)
 
     scala> reify(println(x.splice))
-    res1: reflect.runtime.universe.Expr[Unit] = Expr[Unit](scala.this.Predef.println(2))
+    res1: scala.reflect.runtime.universe.Expr[Unit] = Expr[Unit](scala.this.Predef.println(2))
 
 Here, we `reify` `2` and `println` separately, and simply `splice` one into
 the other.
@@ -657,7 +657,7 @@ valid and typeable Scala code. If instead of the argument to `println` we
 wanted to abstract over the `println` itself, it wouldn't be possible:
 
     scala> val fn = reify(println)
-    fn: reflect.runtime.universe.Expr[Unit] = Expr[Unit](scala.this.Predef.println())
+    fn: scala.reflect.runtime.universe.Expr[Unit] = Expr[Unit](scala.this.Predef.println())
 
     scala> reify(fn.splice(2))
     <console>:12: error: Unit does not take parameters
@@ -687,7 +687,7 @@ section:
     import scala.tools.reflect.ToolBox
 
     scala> val tb = runtimeMirror(getClass.getClassLoader).mkToolBox()
-    tb: scala.tools.reflect.ToolBox[reflect.runtime.universe.type] = scala.tools.reflect.ToolBoxFactory$ToolBoxImpl@7bc979dd
+    tb: scala.tools.reflect.ToolBox[scala.reflect.runtime.universe.type] = scala.tools.reflect.ToolBoxFactory$ToolBoxImpl@7bc979dd
 
     scala> showRaw(tb.parse("println(2)"))
     res2: String = Apply(Ident(newTermName("println")), List(Literal(Constant(2))))
@@ -701,8 +701,8 @@ method.
 _Note:_ when using macros, one shouldn’t use `ToolBox.parse`. This is because
 there’s already a `parse` method built into the macro context. For example:
 
-    scala> import language.experimental.macros
-    import language.experimental.macros
+    scala> import scala.language.experimental.macros
+    import scala.language.experimental.macros
 
     scala> def impl(c: scala.reflect.macros.Context) = c.Expr[Unit](c.parse("println(2)"))
     impl: (c: scala.reflect.macros.Context)c.Expr[Unit]
@@ -733,13 +733,13 @@ When using the runtime reflection framework, typechecking is implemented by
     import scala.reflect.runtime.universe._
 
     scala> val tree = reify { "test".length }.tree
-    tree: reflect.runtime.universe.Tree = "test".length()
+    tree: scala.reflect.runtime.universe.Tree = "test".length()
 
     scala> import scala.tools.reflect.ToolBox
     import scala.tools.reflect.ToolBox
 
     scala> val tb = runtimeMirror(getClass.getClassLoader).mkToolBox()
-    tb: scala.tools.reflect.ToolBox[reflect.runtime.universe.type] = ...
+    tb: scala.tools.reflect.ToolBox[scala.reflect.runtime.universe.type] = ...
 
     scala> val ttree = tb.typeCheck(tree)
     ttree: tb.u.Tree = "test".length()
@@ -766,7 +766,7 @@ Our earlier example involving `println(2)` can be manually constructed as
 follows:
 
     scala> Apply(Ident(newTermName("println")), List(Literal(Constant(2))))
-    res0: reflect.runtime.universe.Apply = println(2)
+    res0: scala.reflect.runtime.universe.Apply = println(2)
 
 The canonical use case for this technique is when the target tree needs to be
 assembled from dynamically created parts, which don’t make sense in isolation

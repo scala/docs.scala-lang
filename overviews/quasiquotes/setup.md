@@ -15,15 +15,15 @@ In Scala 2.11, quasiquotes are shipped in the official Scala distribution as par
 
 All examples and code snippets in this guide are run under in 2.11 REPL with one extra line:
 
-    scala> val universe: reflect.runtime.universe.type = reflect.runtime.universe
+    scala> val universe: scala.reflect.runtime.universe.type = scala.reflect.runtime.universe
     scala> import universe._
 
 A wildcard import from a universe (be it a runtime reflection universe like here or a compile-time universe provided in macros) is all that's needed to use quasiquotes. All of the examples will assume that import.
 
 Additionally some examples that use `ToolBox` API will need a few more lines to get things rolling:
 
-    scala> import reflect.runtime.currentMirror
-    scala> import tools.reflect.ToolBox
+    scala> import scala.reflect.runtime.currentMirror
+    scala> import scala.tools.reflect.ToolBox
     scala> val toolbox = currentMirror.mkToolBox()
 
 Another tool you might want to be aware of is new and shiny `showCode` pretty printer (contributed by [@VladimirNik](https://github.com/VladimirNik)):

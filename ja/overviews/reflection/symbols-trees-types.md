@@ -64,20 +64,20 @@ title: シンボル、構文木、型
 
 具体例を用いて説明しよう。
 
-    scala> import reflect.runtime.universe._
-    import reflect.runtime.universe._
+    scala> import scala.reflect.runtime.universe._
+    import scala.reflect.runtime.universe._
 
     scala> class C[T] { def test[U](x: T)(y: U): Int = ??? }
     defined class C
 
     scala> val testMember = typeOf[C[Int]].member(newTermName("test"))
-    testMember: reflect.runtime.universe.Symbol = method test
+    testMember: scala.reflect.runtime.universe.Symbol = method test
 
 この場合、`member` は期待される `MethodSymbol` ではなく `Symbol` のインスタンスを返す。
 このため、`asMethod` を使って `MethodSymbol` が返されたことを保証する必要がある。
 
     scala> testMember.asMethod
-    res0: reflect.runtime.universe.MethodSymbol = method test
+    res0: scala.reflect.runtime.universe.MethodSymbol = method test
 
 ### 自由シンボル
 
@@ -118,7 +118,7 @@ title: シンボル、構文木、型
     import scala.reflect.runtime.universe._
 
     scala> typeOf[List[Int]]
-    res0: reflect.runtime.universe.Type = scala.List[Int]
+    res0: scala.reflect.runtime.universe.Type = scala.List[Int]
 
 この例では、型コンストラクタ `List` に型引数 `Int` が適用された
 [`scala.reflect.api.Types$TypeRef`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/reflect/api/Types$TypeRef.html)
@@ -130,10 +130,10 @@ title: シンボル、構文木、型
 を生成し、そこから任意のインスタンスに対する型を取得することができる:
 
     scala> def getType[T: TypeTag](obj: T) = typeOf[T]
-    getType: [T](obj: T)(implicit evidence$1: reflect.runtime.universe.TypeTag[T])reflect.runtime.universe.Type
+    getType: [T](obj: T)(implicit evidence$1: scala.reflect.runtime.universe.TypeTag[T])scala.reflect.runtime.universe.Type
 
     scala> getType(List(1,2,3))
-    res1: reflect.runtime.universe.Type = List[Int]
+    res1: scala.reflect.runtime.universe.Type = List[Int]
 
     scala> class Animal; class Cat extends Animal
     defined class Animal
@@ -143,13 +143,13 @@ title: シンボル、構文木、型
     a: Animal = Animal@21c17f5a
 
     scala> getType(a)
-    res2: reflect.runtime.universe.Type = Animal
+    res2: scala.reflect.runtime.universe.Type = Animal
 
     scala> val c = new Cat
     c: Cat = Cat@2302d72d
 
     scala> getType(c)
-    res3: reflect.runtime.universe.Type = Cat
+    res3: scala.reflect.runtime.universe.Type = Cat
 
 **注意**: `typeOf` メソッドは、型パラメータを受け取る型
 (例えば、`A` が型パラメータであるとき `typeOf[List[A]]`) では動作しない。
@@ -166,7 +166,7 @@ title: シンボル、構文木、型
     import scala.reflect.runtime.universe
 
     scala> val intTpe = universe.definitions.IntTpe
-    intTpe: reflect.runtime.universe.Type = Int
+    intTpe: scala.reflect.runtime.universe.Type = Int
 
 標準型のリストは [`scala.reflect.api.StandardDefinitions`](http://www.scala-lang.org/api/current/index.html#scala.reflect.api.StandardDefinitions$StandardTypes) 内の `StandardTypes`
 トレイトにて定義されている。
@@ -255,7 +255,7 @@ Scala の数値型は以下の順序付けに従っている (Scala 言語仕様
     import scala.reflect.runtime.universe._
 
     scala> def getType[T: TypeTag](obj: T) = typeOf[T]
-    getType: [T](obj: T)(implicit evidence$1: reflect.runtime.universe.TypeTag[T])reflect.runtime.universe.Type
+    getType: [T](obj: T)(implicit evidence$1: scala.reflect.runtime.universe.TypeTag[T])scala.reflect.runtime.universe.Type
 
     scala> class A
     defined class A
@@ -327,13 +327,13 @@ Scala の数値型は以下の順序付けに従っている (Scala 言語仕様
     import scala.reflect.runtime.universe._
 
     scala> typeOf[List[_]].member("map": TermName)
-    res0: reflect.runtime.universe.Symbol = method map
+    res0: scala.reflect.runtime.universe.Symbol = method map
 
 メソッドを照会するために `member` メソッドに `TermName` を渡していることに注意してほしい。
 ここで、`List` の自分型である `Self` のような型メンバを照会する場合は `TypeName` を渡す:
 
     scala> typeOf[List[_]].member("Self": TypeName)
-    res1: reflect.runtime.universe.Symbol = type Self
+    res1: scala.reflect.runtime.universe.Symbol = type Self
 
 型の全てのメンバや宣言を面白い方法で照会することもできる。
 `members` メソッドを使って、渡された型の全ての継承もしくは宣言されたメンバを表す
@@ -387,7 +387,7 @@ Scala リフレクションは、ユニバース経由で構文木を視覚化�
     import scala.reflect.runtime.universe._
 
     scala> val tree = Apply(Select(Ident(newTermName("x")), newTermName("$plus")), List(Literal(Constant(2))))
-    tree: reflect.runtime.universe.Apply = x.$plus(2)
+    tree: scala.reflect.runtime.universe.Apply = x.$plus(2)
 
 `show` メソッド (もしくは同等の `toString`) を使ってこの構文木が何を表しているかを見てみよう。
 
@@ -404,14 +404,14 @@ Scala リフレクションは、ユニバース経由で構文木を視覚化�
     import scala.reflect.runtime.universe._
 
     scala> val expr = reify { class Flower { def name = "Rose" } }
-    expr: reflect.runtime.universe.Expr[Unit] = ...
+    expr: scala.reflect.runtime.universe.Expr[Unit] = ...
 
 ここで、`reify` は Scala 式を受け取り `Tree` と `TypeTag` をラッピングする `Expr` を返す。
 (`Expr` の詳細に関してはこのガイドの[式]({{ site.baseurl }}/ja/overviews/reflection/names-exprs-scopes-more.html)の節を参照)
 `expr` が保持する構文木は以下のように取得できる:
 
     scala> val tree = expr.tree
-    tree: reflect.runtime.universe.Tree =
+    tree: scala.reflect.runtime.universe.Tree =
     {
       class Flower extends AnyRef {
         def <init>() = {
@@ -448,35 +448,35 @@ Scala リフレクションは、ユニバース経由で構文木を視覚化�
     import scala.reflect.runtime.universe._
 
     scala> val tree = Apply(Select(Ident(newTermName("x")), newTermName("$plus")), List(Literal(Constant(2))))
-    tree: reflect.runtime.universe.Apply = x.$plus(2)
+    tree: scala.reflect.runtime.universe.Apply = x.$plus(2)
 
 `tree` に対してマッチをかけてやるだけでよく、`Apply` ケースの場合には `Apply` の関数と引数を返す:
 
     scala> val (fun, arg) = tree match {
          |     case Apply(fn, a :: Nil) => (fn, a)
          | }
-    fun: reflect.runtime.universe.Tree = x.$plus
-    arg: reflect.runtime.universe.Tree = 2
+    fun: scala.reflect.runtime.universe.Tree = x.$plus
+    arg: scala.reflect.runtime.universe.Tree = 2
 
 パターンマッチを左辺項に移すことで上記と同じことをより簡潔に実現できる:
 
     scala> val Apply(fun, arg :: Nil) = tree
-    fun: reflect.runtime.universe.Tree = x.$plus
-    arg: reflect.runtime.universe.Tree = 2
+    fun: scala.reflect.runtime.universe.Tree = x.$plus
+    arg: scala.reflect.runtime.universe.Tree = 2
 
 ノードは他のノード内に任意の深さで入れ子になることができるため、`Tree`
 は普通かなり複雑となることに注意してほしい。これを示す簡単な例として、上記の構文木に
 2つ目の `Apply` を加えて既にある和に `3` を加算する:
 
     scala> val tree = Apply(Select(Apply(Select(Ident(newTermName("x")), newTermName("$plus")), List(Literal(Constant(2)))), newTermName("$plus")), List(Literal(Constant(3))))
-    tree: reflect.runtime.universe.Apply = x.$plus(2).$plus(3)
+    tree: scala.reflect.runtime.universe.Apply = x.$plus(2).$plus(3)
 
 これに上記と同じパターンマッチを適用すると外側の `Apply`
 ノードが得られ、それは上で見た `x.$plus(2)` を表す構文木を関数部分として格納する:
 
     scala> val Apply(fun, arg :: Nil) = tree
-    fun: reflect.runtime.universe.Tree = x.$plus(2).$plus
-    arg: reflect.runtime.universe.Tree = 3
+    fun: scala.reflect.runtime.universe.Tree = x.$plus(2).$plus
+    arg: scala.reflect.runtime.universe.Tree = 3
 
     scala> showRaw(fun)
     res3: String = Select(Apply(Select(Ident(newTermName("x")), newTermName("$plus")), List(Literal(Constant(2)))), newTermName("$plus"))
@@ -499,7 +499,7 @@ Scala リフレクションは、ユニバース経由で構文木を視覚化�
     import scala.reflect.runtime.universe._
 
     scala> val tree = Apply(Select(Apply(Select(Ident(newTermName("x")), newTermName("$plus")), List(Literal(Constant(2)))), newTermName("$plus")), List(Literal(Constant(3))))
-    tree: reflect.runtime.universe.Apply = x.$plus(2).$plus(3)
+    tree: scala.reflect.runtime.universe.Apply = x.$plus(2).$plus(3)
 
     scala> object traverser extends Traverser {
          |   var applies = List[Apply]()
@@ -538,7 +538,7 @@ Scala リフレクションは、ユニバース経由で構文木を視覚化�
     scala> traverser.traverse(tree)
 
     scala> traverser.applies
-    res0: List[reflect.runtime.universe.Apply] = List(x.$plus(2), x.$plus(2).$plus(3))
+    res0: List[scala.reflect.runtime.universe.Apply] = List(x.$plus(2), x.$plus(2).$plus(3))
 
 ### 構文木の構築
 
@@ -582,10 +582,10 @@ Scala リフレクションでは、`reify` メソッドを用いた構文木の
 例えば、`splice` を用いて `println(2)` を表す構文木を構築してみよう:
 
     scala> val x = reify(2)
-    x: reflect.runtime.universe.Expr[Int(2)] = Expr[Int(2)](2)
+    x: scala.reflect.runtime.universe.Expr[Int(2)] = Expr[Int(2)](2)
 
     scala> reify(println(x.splice))
-    res1: reflect.runtime.universe.Expr[Unit] = Expr[Unit](scala.this.Predef.println(2))
+    res1: scala.reflect.runtime.universe.Expr[Unit] = Expr[Unit](scala.this.Predef.println(2))
 
 ここで `2` と `println` をそれぞれ別に `reify` して、一方を他方の中に `splice` している。
 
@@ -593,7 +593,7 @@ Scala リフレクションでは、`reify` メソッドを用いた構文木の
 `println` の引数の代わりに、`println` そのものを抽象化しようとした場合は失敗することを以下に示す:
 
     scala> val fn = reify(println)
-    fn: reflect.runtime.universe.Expr[Unit] = Expr[Unit](scala.this.Predef.println())
+    fn: scala.reflect.runtime.universe.Expr[Unit] = Expr[Unit](scala.this.Predef.println())
 
     scala> reify(fn.splice(2))
     <console>:12: error: Unit does not take parameters
@@ -620,7 +620,7 @@ Scala リフレクションでは、`reify` メソッドを用いた構文木の
     import scala.tools.reflect.ToolBox
 
     scala> val tb = runtimeMirror(getClass.getClassLoader).mkToolBox()
-    tb: scala.tools.reflect.ToolBox[reflect.runtime.universe.type] = scala.tools.reflect.ToolBoxFactory$ToolBoxImpl@7bc979dd
+    tb: scala.tools.reflect.ToolBox[scala.reflect.runtime.universe.type] = scala.tools.reflect.ToolBoxFactory$ToolBoxImpl@7bc979dd
 
     scala> showRaw(tb.parse("println(2)"))
     res2: String = Apply(Ident(newTermName("println")), List(Literal(Constant(2))))
@@ -632,8 +632,8 @@ Scala リフレクションでは、`reify` メソッドを用いた構文木の
 **注意**: マクロを使っている場合は、`ToolBox.parse` を使うべきではない。マクロコンテキストに既に
 `parse` メソッドが組み込まれているからだ。具体例を使って説明しよう:
 
-    scala> import language.experimental.macros
-    import language.experimental.macros
+    scala> import scala.language.experimental.macros
+    import scala.language.experimental.macros
 
     scala> def impl(c: scala.reflect.macros.Context) = c.Expr[Unit](c.parse("println(2)"))
     impl: (c: scala.reflect.macros.Context)c.Expr[Unit]
@@ -659,13 +659,13 @@ Scala リフレクションでは、`reify` メソッドを用いた構文木の
     import scala.reflect.runtime.universe._
 
     scala> val tree = reify { "test".length }.tree
-    tree: reflect.runtime.universe.Tree = "test".length()
+    tree: scala.reflect.runtime.universe.Tree = "test".length()
 
     scala> import scala.tools.reflect.ToolBox
     import scala.tools.reflect.ToolBox
 
     scala> val tb = runtimeMirror(getClass.getClassLoader).mkToolBox()
-    tb: scala.tools.reflect.ToolBox[reflect.runtime.universe.type] = ...
+    tb: scala.tools.reflect.ToolBox[scala.reflect.runtime.universe.type] = ...
 
     scala> val ttree = tb.typeCheck(tree)
     ttree: tb.u.Tree = "test".length()
@@ -688,7 +688,7 @@ Scala リフレクションでは、`reify` メソッドを用いた構文木の
 `println(2)` を使った例題を手動で構築すると、こうなる:
 
     scala> Apply(Ident(newTermName("println")), List(Literal(Constant(2))))
-    res0: reflect.runtime.universe.Apply = println(2)
+    res0: scala.reflect.runtime.universe.Apply = println(2)
 
 このテクニックの典型的なユースケースは単独では意味を成さない動的に構築された部分木を組み合わせて構文木を作る必要がある場合だ。
 そのような場合、引数が型付けられていることを必要とする `reify` はおそらく不適切だろう。

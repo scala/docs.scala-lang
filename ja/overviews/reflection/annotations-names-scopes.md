@@ -17,7 +17,7 @@ title: アノテーション、名前、スコープ、その他
 Scala において宣言は `scala.annotation.Annotation` のサブタイプを用いて注釈を付けることができる。
 さらに、Scala は [Java のアノテーションシステム](http://docs.oracle.com/javase/7/docs/technotes/guides/language/annotations.html#_top)に統合するため、標準 Java コンパイラによって生成されたアノテーションを取り扱うこともできる。
 
-アノテーションは、それが永続化されていればリフレクションを使ってインスペクトすることができるため、アノテーション付きの宣言を含むクラスファイルから読み込むことができる。カスタムアノテーション型は 
+アノテーションは、それが永続化されていればリフレクションを使ってインスペクトすることができるため、アノテーション付きの宣言を含むクラスファイルから読み込むことができる。カスタムアノテーション型は
 `scala.annotation.StaticAnnotation` か
 `scala.annotation.ClassfileAnnotation` を継承することで永続化することができる。
 その結果、アノテーション型のインスタンスはクラスファイル内の特別な属性として保存される。
@@ -40,7 +40,7 @@ Scala または Java アノテーションに対しては `scalaArgs` は空で
 アノテーションの場合は、引数は `scalaArgs` に保持され、`javaArgs` は空となる。
 
 `scalaArgs` 内の引数は型付けされた構文木として表される。
-これらの構文木はタイプチェッカより後のどのフェーズにおいても変換されないことに注意する必要がある。 
+これらの構文木はタイプチェッカより後のどのフェーズにおいても変換されないことに注意する必要がある。
 `javaArgs` 内の引数は `scala.reflect.api.Names#Name` から
 `scala.reflect.api.Annotations#JavaArgument` へのマップとして表現される。
 `JavaArgument` のインスタンスは Java アノテーションの引数の様々な型を表現する:
@@ -64,7 +64,7 @@ Scala または Java アノテーションに対しては `scalaArgs` は空で
     import scala.reflect.runtime.universe._
 
     scala> val mapName = newTermName("map")
-    mapName: reflect.runtime.universe.TermName = map
+    mapName: scala.reflect.runtime.universe.TermName = map
 
 上のコードでは、実行時リフレクション・ユニバースに関連付けられた `Name` を作成している。
 (これはパス依存型である `reflect.runtime.universe.TermName` が表示されていることからも分かる。)
@@ -72,16 +72,16 @@ Scala または Java アノテーションに対しては `scalaArgs` は空で
 名前は型のメンバの照会に用いられる。例えば、`List` クラス内で宣言されている (項である) `map` メソッドを検索するには以下のようにする:
 
     scala> val listTpe = typeOf[List[Int]]
-    listTpe: reflect.runtime.universe.Type = scala.List[Int]
+    listTpe: scala.reflect.runtime.universe.Type = scala.List[Int]
 
     scala> listTpe.member(mapName)
-    res1: reflect.runtime.universe.Symbol = method map
+    res1: scala.reflect.runtime.universe.Symbol = method map
 
 型メンバを検索するには `newTypeName` を代わりに使って `member` を呼び出す。
 暗黙の変換を使って文字列から項もしくは型の名前に変換することもできる:
 
     scala> listTpe.member("map": TermName)
-    res2: reflect.runtime.universe.Symbol = method map
+    res2: scala.reflect.runtime.universe.Symbol = method map
 
 ### 標準名
 
@@ -115,7 +115,7 @@ Scala のプログラムにおいて、「`_root_`」のような特定の名前
 以下に `List` クラスでオーバーライドされている全てのシンボルのリストを宣言順に返す具体例をみてみよう:
 
     scala> val overridden = listTpe.declarations.sorted.filter(_.isOverride)
-    overridden: List[reflect.runtime.universe.Symbol] = List(method companion, method ++, method +:, method toList, method take, method drop, method slice, method takeRight, method splitAt, method takeWhile, method dropWhile, method span, method reverse, method stringPrefix, method toStream, method foreach)
+    overridden: List[scala.reflect.runtime.universe.Symbol] = List(method companion, method ++, method +:, method toList, method take, method drop, method slice, method takeRight, method splitAt, method takeWhile, method dropWhile, method span, method reverse, method stringPrefix, method toStream, method foreach)
 
 ## Expr
 
@@ -278,7 +278,7 @@ Java の列挙要素への参照はシンボル (`scala.reflect.api.Symbols#Symb
     import scala.reflect.runtime.universe._
 
     scala> def tree = reify { final class C { def x = 2 } }.tree
-    tree: reflect.runtime.universe.Tree
+    tree: scala.reflect.runtime.universe.Tree
 
     scala> show(tree)
     res0: String =
@@ -351,7 +351,7 @@ Java の列挙要素への参照はシンボル (`scala.reflect.api.Symbols#Symb
     import scala.reflect.runtime.universe._
 
     scala> def tpe = typeOf[{ def x: Int; val y: List[Int] }]
-    tpe: reflect.runtime.universe.Type
+    tpe: scala.reflect.runtime.universe.Type
 
     scala> show(tpe)
     res0: String = scala.AnyRef{def x: Int; val y: scala.List[Int]}

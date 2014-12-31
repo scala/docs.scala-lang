@@ -79,22 +79,22 @@ title: 準クォート
 普通の文字列補間子と違い、準クォートは単独の構文木、構文木のリスト、構文木のリストのリストの挿入または抽出を区別するために複数のスプライシングの方法をサポートしている。スプライス対象とスプライス演算子の基数のミスマッチはコンパイル時のエラーとなる。
 
     scala> val name = TypeName("C")
-    name: reflect.runtime.universe.TypeName = C
+    name: scala.reflect.runtime.universe.TypeName = C
 
     scala> val q"class $name1" = q"class $name"
-    name1: reflect.runtime.universe.Name = C
+    name1: scala.reflect.runtime.universe.Name = C
 
     scala> val args = List(Literal(Constant(2)))
-    args: List[reflect.runtime.universe.Literal] = List(2)
+    args: List[scala.reflect.runtime.universe.Literal] = List(2)
 
     scala> val q"foo(..$args1)" = q"foo(..$args)"
-    args1: List[reflect.runtime.universe.Tree] = List(2)
+    args1: List[scala.reflect.runtime.universe.Tree] = List(2)
 
     scala> val argss = List(List(Literal(Constant(2))), List(Literal(Constant(3))))
-    argss: List[List[reflect.runtime.universe.Literal]] = List(List(2), List(3))
+    argss: List[List[scala.reflect.runtime.universe.Literal]] = List(List(2), List(3))
 
     scala> val q"foo(...$argss1)" = q"foo(...$argss)"
-    argss1: List[List[reflect.runtime.universe.Tree]] = List(List(2), List(3))
+    argss1: List[List[scala.reflect.runtime.universe.Tree]] = List(List(2), List(3))
 
 ## コツとトリック
 
