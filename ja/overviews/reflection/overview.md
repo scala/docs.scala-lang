@@ -100,27 +100,27 @@ Scala コンパイラが持つ型情報を全ては入手できない可能性�
     defined class Person
 
     scala> val m = ru.runtimeMirror(getClass.getClassLoader)
-    m: reflect.runtime.universe.Mirror = JavaMirror with ...
+    m: scala.reflect.runtime.universe.Mirror = JavaMirror with ...
 
-最初のステップとして現在のクラスローダで読み込まれた (`Person` クラスを含む) 
+最初のステップとして現在のクラスローダで読み込まれた (`Person` クラスを含む)
 全てのクラスや型をアクセス可能とするミラー `m` を取得する。
 
     scala> val classPerson = ru.typeOf[Person].typeSymbol.asClass
-    classPerson: reflect.runtime.universe.ClassSymbol = class Person
+    classPerson: scala.reflect.runtime.universe.ClassSymbol = class Person
 
     scala> val cm = m.reflectClass(classPerson)
-    cm: reflect.runtime.universe.ClassMirror = class mirror for Person (bound to null)
+    cm: scala.reflect.runtime.universe.ClassMirror = class mirror for Person (bound to null)
 
 次に、`reflectClass` メソッドを使って `Person` クラスの `ClassMirror` を取得する。
 `ClassMirror` は `Person` クラスのコンストラクタへのアクセスを提供する。
 
     scala> val ctor = ru.typeOf[Person].declaration(ru.nme.CONSTRUCTOR).asMethod
-    ctor: reflect.runtime.universe.MethodSymbol = constructor Person
+    ctor: scala.reflect.runtime.universe.MethodSymbol = constructor Person
 
 `Person` のコンストラクタのシンボルは実行時ユニバース `ru` を用いて `Person` 型の宣言から照会することによってのみ得られる。
 
     scala> val ctorm = cm.reflectConstructor(ctor)
-    ctorm: reflect.runtime.universe.MethodMirror = constructor mirror for Person.<init>(name: String): Person (bound to null)
+    ctorm: scala.reflect.runtime.universe.MethodMirror = constructor mirror for Person.<init>(name: String): Person (bound to null)
 
     scala> val p = ctorm("Mike")
     p: Any = Person(Mike)
@@ -143,22 +143,22 @@ Scala コンパイラが持つ型情報を全ては入手できない可能性�
     import scala.reflect.runtime.{universe=>ru}
 
     scala> val m = ru.runtimeMirror(p.getClass.getClassLoader)
-    m: reflect.runtime.universe.Mirror = JavaMirror with ...
+    m: scala.reflect.runtime.universe.Mirror = JavaMirror with ...
 
 `shipped` メンバにアクセスするには、前の例と同じく、`p` のクラス (`Purchase`) を含むクラスローダが読み込んだ全てのクラスを入手可能とするミラー `m`
 を取得することから始める。
 
     scala> val shippingTermSymb = ru.typeOf[Purchase].declaration(ru.newTermName("shipped")).asTerm
-    shippingTermSymb: reflect.runtime.universe.TermSymbol = method shipped
+    shippingTermSymb: scala.reflect.runtime.universe.TermSymbol = method shipped
 
 次に、`shipped` フィールドの宣言を照会して `TermSymbol` (`Symbol` 型の 1つ) を得る。
 この `Symbol` は後で (何からのオブジェクトの) このフィールドの値にアクセスするのに必要なミラーを得るのに使う。
 
     scala> val im = m.reflect(p)
-    im: reflect.runtime.universe.InstanceMirror = instance mirror for Purchase(Jeff Lebowski,23819,false)
+    im: scala.reflect.runtime.universe.InstanceMirror = instance mirror for Purchase(Jeff Lebowski,23819,false)
 
     scala> val shippingFieldMirror = im.reflectField(shippingTermSymb)
-    shippingFieldMirror: reflect.runtime.universe.FieldMirror = field mirror for Purchase.shipped (bound to Purchase(Jeff Lebowski,23819,false))
+    shippingFieldMirror: scala.reflect.runtime.universe.FieldMirror = field mirror for Purchase.shipped (bound to Purchase(Jeff Lebowski,23819,false))
 
 ある特定のインスタンスの `shipped` メンバにアクセスするためには、その特定のインスタンス `p`
 のためのミラー `im` を必要とする。
@@ -241,7 +241,7 @@ Scala のランタイム型は全てのコンパイル時の型情報を保持�
         |   val rightTag = ru.typeTag[S]
         |   leftTag.tpe <:< rightTag.tpe
         | }
-    m: [T, S](x: T, y: S)(implicit evidence$1: reflect.runtime.universe.TypeTag[T], implicit evidence$2: reflect.runtime.universe.TypeTag[S])Boolean
+    m: [T, S](x: T, y: S)(implicit evidence$1: scala.reflect.runtime.universe.TypeTag[T], implicit evidence$2: scala.reflect.runtime.universe.TypeTag[S])Boolean
 
     scala> m(d, c)
     res9: Boolean = true

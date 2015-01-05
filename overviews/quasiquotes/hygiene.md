@@ -36,8 +36,8 @@ Here we can see that plain reference to `Map` doesn\'t respect our custom import
     // ---- MyMacro.scala ----
     package example
 
-    import reflect.macros.blackbox.Context
-    import language.experimental.macros
+    import scala.reflect.macros.blackbox.Context
+    import scala.language.experimental.macros
 
     object MyMacro {
       def wrapper(x: Int) = { println(s"wrapped x = $x"); x }

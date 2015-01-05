@@ -70,7 +70,7 @@ Names are associated with a universe. Example:
     import scala.reflect.runtime.universe._
 
     scala> val mapName = newTermName("map")
-    mapName: reflect.runtime.universe.TermName = map
+    mapName: scala.reflect.runtime.universe.TermName = map
 
 Above, we're creating a `Name` associated with the runtime reflection universe
 (this is also visible in its path-dependent type
@@ -80,17 +80,17 @@ Names are often used to look up members of types. For example, to search for
 the `map` method (which is a term) declared in the `List` class, one can do:
 
     scala> val listTpe = typeOf[List[Int]]
-    listTpe: reflect.runtime.universe.Type = scala.List[Int]
+    listTpe: scala.reflect.runtime.universe.Type = scala.List[Int]
 
     scala> listTpe.member(mapName)
-    res1: reflect.runtime.universe.Symbol = method map
+    res1: scala.reflect.runtime.universe.Symbol = method map
 
 To search for a type member, one can follow the same procedure, using
 `newTypeName` instead. It is also possible to rely on implicit conversions to
 convert between strings and term or type names:
 
     scala> listTpe.member("map": TermName)
-    res2: reflect.runtime.universe.Symbol = method map
+    res2: scala.reflect.runtime.universe.Symbol = method map
 
 ### Standard Names
 
@@ -127,7 +127,7 @@ The following example returns a list of the symbols of all overridden members
 of the `List` class, in declaration order:
 
     scala> val overridden = listTpe.declarations.sorted.filter(_.isOverride)
-    overridden: List[reflect.runtime.universe.Symbol] = List(method companion, method ++, method +:, method toList, method take, method drop, method slice, method takeRight, method splitAt, method takeWhile, method dropWhile, method span, method reverse, method stringPrefix, method toStream, method foreach)
+    overridden: List[scala.reflect.runtime.universe.Symbol] = List(method companion, method ++, method +:, method toList, method take, method drop, method slice, method takeRight, method splitAt, method takeWhile, method dropWhile, method span, method reverse, method stringPrefix, method toStream, method foreach)
 
 ## Exprs
 
@@ -303,7 +303,7 @@ representation of Scala code. For example:
     import scala.reflect.runtime.universe._
 
     scala> def tree = reify { final class C { def x = 2 } }.tree
-    tree: reflect.runtime.universe.Tree
+    tree: scala.reflect.runtime.universe.Tree
 
     scala> show(tree)
     res0: String =
@@ -380,7 +380,7 @@ The method `show` can be used to produce a *readable* string representation of a
     import scala.reflect.runtime.universe._
 
     scala> def tpe = typeOf[{ def x: Int; val y: List[Int] }]
-    tpe: reflect.runtime.universe.Type
+    tpe: scala.reflect.runtime.universe.Type
 
     scala> show(tpe)
     res0: String = scala.AnyRef{def x: Int; val y: scala.List[Int]}

@@ -79,7 +79,7 @@ A `ReflectiveMirror` is used for loading symbols by name, and as an entry point 
     ru: scala.reflect.api.JavaUniverse = ...
 
     scala> val m = ru.runtimeMirror(getClass.getClassLoader)
-    m: reflect.runtime.universe.Mirror = JavaMirror ...
+    m: scala.reflect.runtime.universe.Mirror = JavaMirror ...
 
 An `InstanceMirror` is used for creating invoker mirrors for methods and fields and for inner classes and inner objects (modules). Entry point: `val im = m.reflect(<value>)`. Example:
 
@@ -87,15 +87,15 @@ An `InstanceMirror` is used for creating invoker mirrors for methods and fields 
     defined class C
 
     scala> val im = m.reflect(new C)
-    im: reflect.runtime.universe.InstanceMirror = instance mirror for C@3442299e
+    im: scala.reflect.runtime.universe.InstanceMirror = instance mirror for C@3442299e
 
 A `MethodMirror` is used for invoking instance methods (Scala only has instance methods-- methods of objects are instance methods of object instances, obtainable via `ModuleMirror.instance`). Entry point: `val mm = im.reflectMethod(<method symbol>)`. Example:
 
     scala> val methodX = ru.typeOf[C].declaration(ru.newTermName("x")).asMethod
-    methodX: reflect.runtime.universe.MethodSymbol = method x
+    methodX: scala.reflect.runtime.universe.MethodSymbol = method x
 
     scala> val mm = im.reflectMethod(methodX)
-    mm: reflect.runtime.universe.MethodMirror = method mirror for C.x: scala.Int (bound to C@3442299e)
+    mm: scala.reflect.runtime.universe.MethodMirror = method mirror for C.x: scala.Int (bound to C@3442299e)
 
     scala> mm()
     res0: Any = 2
@@ -106,16 +106,16 @@ A `FieldMirror` is used for getting/setting instance fields (like methods, Scala
     defined class C
 
     scala> val m = ru.runtimeMirror(getClass.getClassLoader)
-    m: reflect.runtime.universe.Mirror = JavaMirror ...
+    m: scala.reflect.runtime.universe.Mirror = JavaMirror ...
 
     scala> val im = m.reflect(new C)
-    im: reflect.runtime.universe.InstanceMirror = instance mirror for C@5f0c8ac1
+    im: scala.reflect.runtime.universe.InstanceMirror = instance mirror for C@5f0c8ac1
 
     scala> val fieldX = ru.typeOf[C].declaration(ru.newTermName("x")).asTerm.accessed.asTerm
-    fieldX: reflect.runtime.universe.TermSymbol = value x
+    fieldX: scala.reflect.runtime.universe.TermSymbol = value x
 
     scala> val fmX = im.reflectField(fieldX)
-    fmX: reflect.runtime.universe.FieldMirror = field mirror for C.x (bound to C@5f0c8ac1)
+    fmX: scala.reflect.runtime.universe.FieldMirror = field mirror for C.x (bound to C@5f0c8ac1)
 
     scala> fmX.get
     res0: Any = 2
@@ -123,10 +123,10 @@ A `FieldMirror` is used for getting/setting instance fields (like methods, Scala
     scala> fmX.set(3)
 
     scala> val fieldY = ru.typeOf[C].declaration(ru.newTermName("y")).asTerm.accessed.asTerm
-    fieldY: reflect.runtime.universe.TermSymbol = variable y
+    fieldY: scala.reflect.runtime.universe.TermSymbol = variable y
 
     scala> val fmY = im.reflectField(fieldY)
-    fmY: reflect.runtime.universe.FieldMirror = field mirror for C.y (bound to C@5f0c8ac1)
+    fmY: scala.reflect.runtime.universe.FieldMirror = field mirror for C.y (bound to C@5f0c8ac1)
 
     scala> fmY.get
     res1: Any = 3
@@ -142,19 +142,19 @@ A `ClassMirror` is used for creating invoker mirrors for constructors. Entry poi
     defined class C
 
     scala> val m = ru.runtimeMirror(getClass.getClassLoader)
-    m: reflect.runtime.universe.Mirror = JavaMirror ...
+    m: scala.reflect.runtime.universe.Mirror = JavaMirror ...
 
     scala> val classC = ru.typeOf[C].typeSymbol.asClass
-    classC: reflect.runtime.universe.Symbol = class C
+    classC: scala.reflect.runtime.universe.Symbol = class C
 
     scala> val cm = m.reflectClass(classC)
-    cm: reflect.runtime.universe.ClassMirror = class mirror for C (bound to null)
+    cm: scala.reflect.runtime.universe.ClassMirror = class mirror for C (bound to null)
 
     scala> val ctorC = ru.typeOf[C].declaration(ru.nme.CONSTRUCTOR).asMethod
-    ctorC: reflect.runtime.universe.MethodSymbol = constructor C
+    ctorC: scala.reflect.runtime.universe.MethodSymbol = constructor C
 
     scala> val ctorm = cm.reflectConstructor(ctorC)
-    ctorm: reflect.runtime.universe.MethodMirror = constructor mirror for C.<init>(x: scala.Int): C (bound to null)
+    ctorm: scala.reflect.runtime.universe.MethodMirror = constructor mirror for C.<init>(x: scala.Int): C (bound to null)
 
     scala> ctorm(2)
     res0: Any = C(2)
@@ -165,13 +165,13 @@ A `ModuleMirror` is used for accessing instances of singleton objects. Entry poi
     defined module C
 
     scala> val m = ru.runtimeMirror(getClass.getClassLoader)
-    m: reflect.runtime.universe.Mirror = JavaMirror ...
+    m: scala.reflect.runtime.universe.Mirror = JavaMirror ...
 
     scala> val objectC = ru.typeOf[C.type].termSymbol.asModule
-    objectC: reflect.runtime.universe.ModuleSymbol = object C
+    objectC: scala.reflect.runtime.universe.ModuleSymbol = object C
 
     scala> val mm = m.reflectModule(objectC)
-    mm: reflect.runtime.universe.ModuleMirror = module mirror for C (bound to null)
+    mm: scala.reflect.runtime.universe.ModuleMirror = module mirror for C (bound to null)
 
     scala> val obj = mm.instance
     obj: Any = C$@1005ec04

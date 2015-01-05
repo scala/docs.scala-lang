@@ -113,30 +113,30 @@ walk through an example using the REPL:
     defined class Person
 
     scala> val m = ru.runtimeMirror(getClass.getClassLoader)
-    m: reflect.runtime.universe.Mirror = JavaMirror with ...
+    m: scala.reflect.runtime.universe.Mirror = JavaMirror with ...
 
 In the first step we obtain a mirror `m` which makes all classes and types
 available that are loaded by the current classloader, including class
 `Person`.
 
     scala> val classPerson = ru.typeOf[Person].typeSymbol.asClass
-    classPerson: reflect.runtime.universe.ClassSymbol = class Person
+    classPerson: scala.reflect.runtime.universe.ClassSymbol = class Person
 
     scala> val cm = m.reflectClass(classPerson)
-    cm: reflect.runtime.universe.ClassMirror = class mirror for Person (bound to null)
+    cm: scala.reflect.runtime.universe.ClassMirror = class mirror for Person (bound to null)
 
 The second step involves obtaining a `ClassMirror` for class `Person` using
 the `reflectClass` method. The `ClassMirror` provides access to the
 constructor of class `Person`.
 
     scala> val ctor = ru.typeOf[Person].declaration(ru.nme.CONSTRUCTOR).asMethod
-    ctor: reflect.runtime.universe.MethodSymbol = constructor Person
+    ctor: scala.reflect.runtime.universe.MethodSymbol = constructor Person
 
 The symbol for `Person`s constructor can be obtained using only the runtime
 universe `ru` by looking it up in the declarations of type `Person`.
 
     scala> val ctorm = cm.reflectConstructor(ctor)
-    ctorm: reflect.runtime.universe.MethodMirror = constructor mirror for Person.<init>(name: String): Person (bound to null)
+    ctorm: scala.reflect.runtime.universe.MethodMirror = constructor mirror for Person.<init>(name: String): Person (bound to null)
 
     scala> val p = ctorm("Mike")
     p: Any = Person(Mike)
@@ -161,7 +161,7 @@ In this example, we will attempt to get and set the `shipped` field of
     import scala.reflect.runtime.{universe=>ru}
 
     scala> val m = ru.runtimeMirror(p.getClass.getClassLoader)
-    m: reflect.runtime.universe.Mirror = JavaMirror with ...
+    m: scala.reflect.runtime.universe.Mirror = JavaMirror with ...
 
 As we did in the previous example, we'll begin by obtaining a mirror `m`,
 which makes all classes and types available that are loaded by the classloader
@@ -169,7 +169,7 @@ that also loaded the class of `p` (`Purchase`), which we need in order to
 access member `shipped`.
 
     scala> val shippingTermSymb = ru.typeOf[Purchase].declaration(ru.newTermName("shipped")).asTerm
-    shippingTermSymb: reflect.runtime.universe.TermSymbol = method shipped
+    shippingTermSymb: scala.reflect.runtime.universe.TermSymbol = method shipped
 
 We now look up the declaration of the `shipped` field, which gives us a
 `TermSymbol` (a type of `Symbol`). We'll need to use this `Symbol` later to
@@ -177,10 +177,10 @@ obtain a mirror that gives us access to the value of this field (for some
 instance).
 
     scala> val im = m.reflect(p)
-    im: reflect.runtime.universe.InstanceMirror = instance mirror for Purchase(Jeff Lebowski,23819,false)
+    im: scala.reflect.runtime.universe.InstanceMirror = instance mirror for Purchase(Jeff Lebowski,23819,false)
 
     scala> val shippingFieldMirror = im.reflectField(shippingTermSymb)
-    shippingFieldMirror: reflect.runtime.universe.FieldMirror = field mirror for Purchase.shipped (bound to Purchase(Jeff Lebowski,23819,false))
+    shippingFieldMirror: scala.reflect.runtime.universe.FieldMirror = field mirror for Purchase.shipped (bound to Purchase(Jeff Lebowski,23819,false))
 
 In order to access a specific instance's `shipped` member, we need a mirror
 for our specific instance, `p`'s instance mirror, `im`. Given our instance
@@ -272,7 +272,7 @@ it returns `true`.
         |   val rightTag = ru.typeTag[S]
         |   leftTag.tpe <:< rightTag.tpe
         | }
-    m: [T, S](x: T, y: S)(implicit evidence$1: reflect.runtime.universe.TypeTag[T], implicit evidence$2: reflect.runtime.universe.TypeTag[S])Boolean
+    m: [T, S](x: T, y: S)(implicit evidence$1: scala.reflect.runtime.universe.TypeTag[T], implicit evidence$2: scala.reflect.runtime.universe.TypeTag[S])Boolean
 
     scala> m(d, c)
     res9: Boolean = true
