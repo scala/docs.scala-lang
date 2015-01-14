@@ -20,6 +20,8 @@ how to efficiently report a bug.
 
 An easy but very important way to contribute to Scala is to
 [help with the documentation](http://docs.scala-lang.org/contribute.html).
+If you want to [contribute to scaladoc](./contribute-scaladoc.html), the
+process is slightly different, since scaladoc lives alongside the source code.
 
 ### Compiler and other tools
 
