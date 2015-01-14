@@ -293,7 +293,7 @@ it. Also available are some traits with further refinements, such as
 	* `immutable.Set`
 		* `immutable.HashSet` -- An implementation of `Set` based on element hashing.
 		* `immutable.ListSet` -- An implementation of `Set` based on lists.
-		* Additional set classes exists to provide optimized implementions for sets from 0 to 4 elements.
+		* Additional set classes exists to provide optimized implementations for sets from 0 to 4 elements.
 		* `immutable.SetProxy` -- A `Proxy` for an immutable `Set`.
 
 	* `mutable.Set`

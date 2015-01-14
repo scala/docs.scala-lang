@@ -12,9 +12,9 @@ outof: 13
 
 ## Modifiers
 
-Every definition except packages and package objects have associtated modifiers object which contains following data:
+Every definition except packages and package objects have associated modifiers object which contains following data:
 
-1. `FlagSet`, a set of bits that charactarizes given definition.
+1. `FlagSet`, a set of bits that characterizes given definition.
 2. Private within name (e.g. `foo` in `private[foo] def f`)
 3. List of annotations
 
@@ -50,7 +50,7 @@ To provide a definition annotation one need to unquote a new-shaped tree:
     scala> val f5 = q"@foo(1) def f"
     f5: universe.DefDef = @new foo(1) def f: scala.Unit
 
-In deconstruction one can either extract `Modifiers` or annotations, but you can't extract flags separatly:
+In deconstruction one can either extract `Modifiers` or annotations, but you can't extract flags separately:
 
     scala> val q"$mods def f" = q"@foo implicit def f"
     mods: universe.Modifiers = Modifiers(<deferred> implicit, , Map())
@@ -64,7 +64,7 @@ Considering the fact that definitions might contain various low-level flags adde
 
 ## Templates
 
-Templates are a common abstraction in definition trees that is used in new expressions, classes, traits, objects, package objects. Although there is no interpolator for it at the moment we can illustrate its structure on the example of new expression (similar handling will applly to all other template-bearing trees):
+Templates are a common abstraction in definition trees that is used in new expressions, classes, traits, objects, package objects. Although there is no interpolator for it at the moment we can illustrate its structure on the example of new expression (similar handling will apply to all other template-bearing trees):
 
     q"new { ..$earlydefns } with ..$parents { $self => ..$stats }"
 
@@ -113,7 +113,7 @@ So template consists of:
 
 ## Val and Var Definitions
 
-Vals and vars allow you to define immutable and mutable variables correspondingly. Additionally they are also used to represent [function](/overviews/quasiquotes/expression-details.html#function), [class](#class-definition) and [method](#method-definition) paremeters.
+Vals and vars allow you to define immutable and mutable variables correspondingly. Additionally they are also used to represent [function](/overviews/quasiquotes/expression-details.html#function), [class](#class-definition) and [method](#method-definition) parameters.
 
 Each val and var consistents of four components: modifiers, name, type tree and a right hand side:
 
@@ -198,7 +198,7 @@ Generic form of pattern definition consists of modifiers, pattern, ascribed type
 
     q"$mods val $pat: $tpt = $rhs"
 
-Simiarly one can also construct a mutable pattern definition:
+Similarly one can also construct a mutable pattern definition:
 
     q"$mods var $pat: $tpt = $rhs"
 

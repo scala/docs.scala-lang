@@ -18,7 +18,7 @@ Lifting is an extensible way to unquote custom data types in quasiquotes. Its pr
     scala> val four = q"$two + $two"
     four: universe.Tree = 2.$plus(2)
 
-This code runs successfully because `Int` is considered to be `Liftable` by default. `Liftable` type is just a trait with a single absract method that defines a mapping of given type to tree:
+This code runs successfully because `Int` is considered to be `Liftable` by default. `Liftable` type is just a trait with a single abstract method that defines a mapping of given type to tree:
 
     trait Liftable[T] {
       def apply(value: T): Tree
@@ -26,7 +26,7 @@ This code runs successfully because `Int` is considered to be `Liftable` by defa
 
 Whenever there is an implicit value of `Liftable[T]` available, one can unquote `T` in quasiquotes. This design pattern is known as a type class. You can read more about it in ["Type Classes as Objects and Implicits"](http://ropas.snu.ac.kr/~bruno/papers/TypeClasses.pdf).
 
-A number of data types that are supported natively by quasiquotes will never triger usage of `Liftable` representation even if it\'s available: subtypes of `Tree`, `Symbol`, `Name`, `Modifiers` and `FlagSet`.
+A number of data types that are supported natively by quasiquotes will never trigger usage of `Liftable` representation even if it\'s available: subtypes of `Tree`, `Symbol`, `Name`, `Modifiers` and `FlagSet`.
 
 One can also combine lifting and unquote splicing:
 
@@ -64,7 +64,7 @@ into a case class constructor call. In this example there two important points t
 
 1. Here we only defined `Liftable` for runtime reflection. It won't be found if you try to
    use it from a macro due to the fact that each universe contains its own `Liftable` which is not
-   compatible with the others. This problem is caused by path-dependant nature of current reflection
+   compatible with the others. This problem is caused by path-dependent nature of current reflection
    api. (see [sharing liftable implementation between universes](#reusing-liftable-implementation-between-universes))
 
 2. Due to lack of [hygiene](/overviews/quasiquotes/hygiene.html), reference to point companion
