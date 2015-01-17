@@ -31,8 +31,8 @@ macro annotations in 2.0 are done right in the sense that they: 1) apply not jus
 This opens a number of new possibilities in code generation land.
 
 In this walkthrough we will write a silly, but very useful macro that does nothing except for logging the annottees.
-As a first step, we define an annotation that inherits `StaticAnnotation` and defines a `macroTransform` macro.
-(Note the triple question mark body of the macro. Did you know that you can do that starting from 2.10.2?)
+As a first step, we define an annotation that inherits `StaticAnnotation` and defines a `macroTransform` macro
+(the name `macroTransform` is important as it tells the macro engine that the enclosing annotation is a macro annotation).
 
     import scala.reflect.macros.Context
     import scala.language.experimental.macros
