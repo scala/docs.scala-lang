@@ -48,7 +48,7 @@ various contributor activities:
 <p>Help with the Scala tool chain.</p>
 </div>
 <div class="span4 doc-block">
-<h3><a href="https://issues.scala-lang.org/issues/?filter=13002">Compiler</a></h3>
+<h3><a href="https://issues.scala-lang.org/issues/?filter=13000">Compiler</a></h3>
 <p>Ready for a challenge? Here's the compiler bugs.</p>
 </div>
 </div>
