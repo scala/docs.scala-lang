@@ -30,7 +30,7 @@ The `foreach` method is meant to traverse all elements of the collection, and ap
 * **Folds** `foldLeft`, `foldRight`, `/:`, `:\`, `reduceLeft`, `reduceRight` which apply a binary operation to successive elements.
 * **Specific folds** `sum`, `product`, `min`, `max`, which work on collections of specific types (numeric or comparable).
 * **String** operations `mkString`, `addString`, `stringPrefix`, which give alternative ways of converting a collection to a string.
-* **View** operations, consisting of two overloaded variants of the `view` method. A view is a collection that's evaluated lazily. You'll learn more about views in [later](#Views).
+* **View** operations, consisting of two overloaded variants of the `view` method. A view is a collection that's evaluated lazily. You'll learn more about views in a [later post](#Views).
 
 ### Operations in Class Traversable ###
 
