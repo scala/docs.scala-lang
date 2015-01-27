@@ -10,8 +10,10 @@ By Adrian Null
 ## Introduction
 [Maven][1] is a build/project management tool. It favours "convention over configuration"; it can greatly simplify builds for "standard" projects and a Maven user can usually understand the structure of another Maven project just by looking at its `pom.xml` (Project Object Model). Maven is a plugin-based architecture, making it easy to add new libraries and modules to existing projects. For example, adding a new dependency usually involves only 5 extra lines in the `pom.xml`. These "artifacts" are downloaded from repositories such as [The Central Repository][2].
 
+You can also check out the official [example project][36] which uses the same Scala plugin we will show here.
+
 ## Jumping Ahead
-If you're familiar with Maven, you can go ahead with the [Scala Maven Plugin][5] 
+If you're familiar with Maven, you can go ahead with the [Scala Maven Plugin][5].
 
 ## The Scala Maven Plugin
 We'll be using the Scala Maven Plugin ([GitHub repo][5], [website][22]) (formerly known as the maven-scala-plugin; renamed to honour the new naming policy where only Maven core plugins are prefixed with "maven"), by far the dominant plugin for Scala projects. *Note: the plugin includes Scala from the Central Repository so there's no need to install it yourself if you're compiling with Maven.*
@@ -22,7 +24,9 @@ We'll be using the Scala Maven Plugin ([GitHub repo][5], [website][22]) (formerl
 On Debian and Debian-derivatives, Maven is usually available via `apt-get`. Just do `(sudo) apt-get install maven` and you're good to go.
 
 ### OSX
-OSX actually comes with Maven 3 built in. You can confirm this by running "mvn -version" in the Terminal. The Scala Maven Plugin used to require Maven 3.0.4+, and I believe OSX comes with 3.0.3. If you have [MacPorts][4] you can easily install other versions of Maven (for that matter, [Homebrew][6] and [Fink][7] probably have Maven in their repositories too).
+OSX prior to 10.9 (Mavericks) comes with Maven 3 built in.
+If you don't have it, you can get it with the package managers [MacPorts][4], [Homebrew][6], or [Fink][7].
+The Scala Maven Plugin requires Maven 3.0+
 
 ### Manually (Red Hat Linux, OSX, Windows)
 You can download Maven from its [Apache homepage][3]. After extracting it (`tar -zxvf apache-maven-X.X.X-bin.tar.gz`, or use something like [7-zip][8]) to your directory of choice (on Linux and OSX, Unix-like systems, [I like to put them in `/opt/`][9]. On Windows I would probably put this in `C:/`), you need to add Maven to your environment Path variable:
@@ -53,7 +57,8 @@ You run the archetype plugin like this:
 
 If this is your first time, you'll notice that Maven is downloading many jar files. Maven resolves dependencies and downloads them as needed (and only once). Right now, Maven is downloading its core plugins.
 
-Afterwards, it should give you a list of archetypes (828 as of 20 August 2013!). The Scala Maven Plugin was 156 on my list: "net.alchim31.maven:scala-archetype-simple (The maven-scala-plugin is used for compiling/testing/running/documenting scala code in maven.)". As of 20 August 2013, there you can choose version 3.1.4 or 3.1.5 of this plugin; you should choose the latest
+Afterwards, it should give you a list of archetypes (in the hundreds). The Scala Maven Plugin was 339 on my list: "net.alchim31.maven:scala-archetype-simple (The maven-scala-plugin is used for compiling/testing/running/documenting scala code in maven.)".
+As of 2015 January 27, there you can choose version 3.1.4 or 3.1.5 of this plugin; you should choose the latest
 
     Choose net.alchim31.maven:scala-archetype-simple version: 
     1: 1.4
@@ -273,3 +278,4 @@ I'm not going to explain all of Maven in this tutorial (though I hope to add mor
 [33]: http://maven.apache.org/plugins/maven-eclipse-plugin/
 [34]: http://mojo.codehaus.org/build-helper-maven-plugin/
 [35]: http://scala-ide.org
+[36]: https://github.com/scala/scala-module-dependency-sample
