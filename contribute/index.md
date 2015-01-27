@@ -23,9 +23,44 @@ An easy but very important way to contribute to Scala is to
 
 ### Compiler and other tools
 
-Want to dive into the hardcore business? Check out our
-[selection of community tickets](./community-tickets.html),
-which are good starting points to contributing to the compiler and
-surrounding tools, like ScalaDoc.
-
 More info in our [contributing guide](./guide.html).
+
+### Community Tickets
+
+The following links provide starting points for
+various contributor activities:
+
+<div class="container">
+<div class="row">
+<div class="span4 doc-block">
+<h3><a href="https://issues.scala-lang.org/issues/?filter=13003">Documentation</a></h3>
+<p>Help augment or correct the documentation.</p>
+</div>
+<div class="span4 doc-block">
+<h3><a href="https://issues.scala-lang.org/issues/?filter=13001">Core Libraries</a></h3>
+<p>Community bugs and enhancements on the core libs.</p>
+</div>
+</div>
+
+<div class="row">
+<div class="span4 doc-block">
+<h3><a href="https://issues.scala-lang.org/issues/?filter=13002">Tools</a></h3>
+<p>Help with the Scala tool chain.</p>
+</div>
+<div class="span4 doc-block">
+<h3><a href="https://issues.scala-lang.org/issues/?filter=13000">Compiler</a></h3>
+<p>Ready for a challenge? Here's the compiler bugs.</p>
+</div>
+</div>
+
+<div class="row">
+<div class="span4 doc-block">
+<h3><a href="https://issues.scala-lang.org/issues/?filter=13004">Bugs</a></h3>
+<p>All bugs marked with the label <em>community</em>.</p>
+</div>
+<div class="span4 doc-block">
+<h3><a href="https://issues.scala-lang.org/issues/?filter=12111">All Issues</a></h3>
+<p>Bugs + Enhancements marked with the label <em>community</em>.</p>
+</div>
+</div>
+</div>

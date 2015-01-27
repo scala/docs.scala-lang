@@ -21,7 +21,7 @@ title: Contributing guide
 
   <div class="row">
     <div class="span4 doc-block">
-      <h3><a href="{{ site.baseurl }}/contribute/community-tickets.html">Community issues</a></h3>
+      <h3><a href="{{ site.baseurl }}/contribute/#community-tickets">Community issues</a></h3>
       <p>Get cracking on some easy to approach issues.</p>
     </div>
     <div class="span4 doc-block">
