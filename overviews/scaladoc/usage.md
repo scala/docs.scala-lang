@@ -1,11 +1,10 @@
----
-layout: overview-large
-title: Usage
-
-partof: scaladoc
-num: 3
-outof: 3
----
-
-This document is in progress and should be ready soon.
-
+<html>
+<head>
+<meta http-equiv="Refresh" content="0; url=http://docs.scala-lang.org/overviews/scaladoc/interface.html" />
+<title>Moved</title>
+</head>
+<body>
+<h1>Moved</h1>
+<p>This page has moved to <a href="http://docs.scala-lang.org/overviews/scaladoc/interface.html">http://docs.scala-lang.org/overviews/scaladoc/interface.html</a>.</p>
+</body>
+</html>

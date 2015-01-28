@@ -32,6 +32,14 @@ languages: [es, ja]
   * [Value Classes and Universal Traits](/overviews/core/value-classes.html) <span class="label success">New in 2.10</span>
 
 <div class="page-header-index">
+  <h2>Reference / Documentation</h2>
+</div>
+  * Scaladoc
+    * [Overview](/overviews/scaladoc/overview.html)
+    * [Basics](/overviews/scaladoc/basics.html)
+    * [Using Scaladoc Effectively](/overviews/scaladoc/usage.html)
+
+<div class="page-header-index">
   <h2>Parallel and Concurrent Programming</h2>
 </div>
   * [Futures and Promises](/overviews/core/futures.html) <span class="label success">New in 2.10</span>
