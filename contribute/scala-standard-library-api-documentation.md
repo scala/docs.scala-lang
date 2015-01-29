@@ -97,7 +97,7 @@ new API documentation to save time, effort, mistakes and repetition.
   reviewers is at the bottom of this document, but the quick version is to add
   `Review by @dickwall` **in the pull request comments**.
 
-### Extra Requirements for Scaladoc Commits
+### Extra Requirements for Scaladoc Documentation Commits
 
 Although some of the requirements for bug fix pull requests are not needed for
 API documentation commits, here are the step by step requirements to ensure your API documentation
