@@ -41,7 +41,7 @@ title: マクロパラダイス
 
     resolvers += Resolver.sonatypeRepo("releases")
 
-    addCompilerPlugin("org.scalamacros" % "paradise" % "2.0.1" cross CrossVersion.full)
+    addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0-M4" cross CrossVersion.full)
 
 マクロパラダイスを Maven から利用するには、Stack Overflow の [Enabling the macro-paradise Scala compiler plugin in Maven projects](http://stackoverflow.com/questions/19086241/enabling-the-macro-paradise-scala-compiler-plugin-in-maven-projects) に書かれた手順に従ってほしい。
 (Sonatype snapshots と `scala-reflect.jar` への依存性を追加することにも注意)
@@ -50,7 +50,7 @@ title: マクロパラダイス
       <compilerPlugin>
         <groupId>org.scalamacros</groupId>
         <artifactId>paradise_<YOUR.SCALA.VERSION></artifactId>
-        <version>2.0.1</version>
+        <version>2.1.0-M4</version>
       </compilerPlugin>
     </compilerPlugins>
 
