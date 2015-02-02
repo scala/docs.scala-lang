@@ -4,11 +4,11 @@ title: Contribute to API Documentation
 ---
 
 This page is specific to API documentation contributions – that is, API
-documentation for 
-[Scala's standard library](http://scala-lang.org/api/current/#package) – 
+documentation for
+[Scala's standard library](http://scala-lang.org/api/current/#package) –
 sometimes referred to as Scaladoc contributions.
 
-For contributions to tutorial and guide-style documentation on 
+For contributions to tutorial and guide-style documentation on
 [docs.scala-lang.org](http://docs.scala-lang.org),
 see the ["doc-site"'s contribution guide](http://docs.scala-lang.org/contribute.html).
 
@@ -21,13 +21,13 @@ contribution steps and guidelines. Thank you.*
 Since API documentation is located in Scala source code files, the
 process for contributing API documentation is similar to that of contributing bug-fixes
 to the Scala code base, but without the requirement that there be an issue filed on JIRA
-first. When forking/branching, just use a `scaladoc/xxxx` branch name, where xxxx is a 
+first. When forking/branching, just use a `scaladoc/xxxx` branch name, where xxxx is a
 descriptive, but short branch name (e.g. `scaladoc/future-object`).
 However, if an issue *does* exist, please use `issue/NNNN`, where NNNN is the ticket number,
 instead.
 
 If you would like to assist us by helping us find missing documentation and
-submitting bug reports for existing documentation, 
+submitting bug reports for existing documentation,
 [please read the following section](#contribute-api-documentation-bug-reports).
 If you want to contribute new API documentation,
 [jump down to the next section](#contribute-new-api-documentation).
@@ -35,9 +35,9 @@ If you want to contribute new API documentation,
 ## Contribute API Documentation Bug Reports
 
 One good way to contribute is by helping us to identify missing documentation. To do
-this, [browse the current API documentationn](http://www.scala-lang.org/api/current/)
-and identify missing, incorrect or inadequate documentation. A good place to start is 
-package objects for important packages (these often get overlooked for documentation 
+this, [browse the current API documentation](http://www.scala-lang.org/api/current/)
+and identify missing, incorrect or inadequate documentation. A good place to start is
+package objects for important packages (these often get overlooked for documentation
 and are a good place for API overviews).
 
 If you find an issue, please log it in the [Scala issue tracker](https://issues.scala-lang.org)
