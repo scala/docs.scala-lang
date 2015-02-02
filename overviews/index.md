@@ -36,8 +36,8 @@ languages: [es, ja]
 </div>
   * Scaladoc
     * [Overview](/overviews/scaladoc/overview.html)
-    * [Basics](/overviews/scaladoc/basics.html)
-    * [Using Scaladoc Effectively](/overviews/scaladoc/usage.html)
+    * [Using Scaladoc Effectively](/overviews/scaladoc/interface.html)
+    * [Authoring Scaladoc](/overviews/scaladoc/for-library-authors.html)
 
 <div class="page-header-index">
   <h2>Parallel and Concurrent Programming</h2>
