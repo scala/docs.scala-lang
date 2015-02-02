@@ -21,8 +21,9 @@ contribution steps and guidelines. Thank you.*
 Since API documentation is located in Scala source code files, the
 process for contributing API documentation is similar to that of contributing bug-fixes
 to the Scala code base, but without the requirement that there be an issue filed on JIRA
-first (when forking/branching, just use a `scaladoc/xxxx` branch name instead of `issue/NNNN`).
-However, if an issue *does* exist, please use `issue/NNNN` (where NNNN is the ticket number)
+first. When forking/branching, just use a `scaladoc/xxxx` branch name, where xxxx is a 
+descriptive, but short branch name (e.g. `scaladoc/future-object`).
+However, if an issue *does* exist, please use `issue/NNNN`, where NNNN is the ticket number,
 instead.
 
 If you would like to assist us by helping us find missing documentation and
@@ -35,8 +36,8 @@ If you want to contribute new API documentation,
 
 One good way to contribute is by helping us to identify missing documentation. To do
 this, [browse the current API documentationn](http://www.scala-lang.org/api/current/)
-and identify missing, incorrect or inadequate documentation. A good place to start is
-is package objects for important packages (these often get overlooked for documentation 
+and identify missing, incorrect or inadequate documentation. A good place to start is 
+package objects for important packages (these often get overlooked for documentation 
 and are a good place for API overviews).
 
 If you find an issue, please log it in the [Scala issue tracker](https://issues.scala-lang.org)
@@ -74,11 +75,10 @@ component so that they show up in the correct issue filters.
 Please familiarize yourself with **all** of the following before contributing
 new API documentation to save time, effort, mistakes and repetition.
 
-* [Forking the Repo](./hacker-guide.html#set-up) follow setup steps through
-  branch name. If providing new documentation related to an existing JIRA issue, use `issue/NNNN`
+* [Forking the Repo](./hacker-guide.html#2_set_up) - follow the setup steps through
+  the Branch section. If providing new documentation related to an existing JIRA issue, use `issue/NNNN`
   or `ticket/NNNN` as the guide states. If providing API documentation with no associated
-  JIRA issue, use `scaladoc/xxxx` instead, where xxxx is a descriptive but
-  short branch name, e.g. `scaladoc/future-object`.
+  JIRA issue, use `scaladoc/xxxx` instead.
 * [Scaladoc for library authors](http://docs.scala-lang.org/overviews/scaladoc/for-library-authors.html)
   covers the use of scaladoc tags, markdown and other features.
 * [Scaladoc's interface](http://docs.scala-lang.org/overviews/scaladoc/interface.html)
