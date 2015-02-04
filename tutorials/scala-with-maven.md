@@ -20,6 +20,7 @@ We'll be using the Scala Maven Plugin ([GitHub repo][5], [website][22]) (formerl
 
 
 ## Getting Maven
+
 ### Linux (Debian)
 On Debian and Debian-derivatives, Maven is usually available via `apt-get`. Just do `(sudo) apt-get install maven` and you're good to go.
 
@@ -67,7 +68,7 @@ The Scala Maven Plugin was 339 on my list: "net.alchim31.maven:scala-archetype-s
 You can type "scala" (or something else) to filter the results.
 As of 2015 January 27, there you can choose version 3.1.4 or 3.1.5 of this plugin; you should choose the latest
 
-    Choose net.alchim31.maven:scala-archetype-simple version: 
+    Choose net.alchim31.maven:scala-archetype-simple version:
     1: 1.4
     2: 1.5
 
