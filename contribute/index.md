@@ -20,7 +20,7 @@ how to efficiently report a bug.
 
 An easy but very important way to contribute to Scala is to
 [help with the guide/tutorial-style documentation on docs.scala-lang.org](http://docs.scala-lang.org/contribute.html).
-If you want to [contribute to Scala standard library API docmentation](./scala-standard-library-api-documentation.html), the
+If you want to [contribute to Scala standard library API documentation](./scala-standard-library-api-documentation.html), the
 process is slightly different, since API documentation lives within Scala standard library source code.
 
 ### Compiler and other tools
