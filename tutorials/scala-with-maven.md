@@ -33,10 +33,15 @@ You can download Maven from its [Apache homepage][3]. After extracting it (`tar 
 
 - Linux/OSX (option 1): Create a symlink to `/usr/bin`, which is already on your Path
     - `ln -s /usr/bin/mvn /opt/apache-maven-X.X.X/bin/mvn`
-- Linux/OSX (option 2): Add the Maven `bin` folder directly to your Path, using a [profile][10] file
-    - `touch ~/.profile`
-    - Add `export PATH=$PATH:/opt/apache-maven-X.X.X/bin` to `.profile` or `.bash_profile` (or whatever profile for the shell you use)
-    - Example: `echo "export PATH=$PATH:/opt/apache-maven-X.X.X/bin" >> ~/.profile`
+- Linux/OSX (option 2): Add the Maven `bin` folder directly to your path, using your [shell configuration][10] file (e.g. `~/.bash_profile`)
+    - Add `export PATH=$PATH:/opt/apache-maven-X.X.X/bin` to `.bash_profile` (or whatever profile for the shell you use)
+    - Example: `echo "export PATH=$PATH:/opt/apache-maven-X.X.X/bin" >> ~/.bash_profile`
+- Linux/OSX (option 3): Make a `mvn` shell script in an existing path location
+	- Example: you have `$HOME/bin` in your path
+	- Put the folder you extracted in `$HOME/bin` (`mv apache-maven-X.X.X "$HOME/bin/"`)
+	- Create a file `mvn` in `$HOME/bin`
+	- Add `"$HOME/bin/apache-maven-X.X.X/bin/mvn" $@` to it, and `chmod u+x mvn` to make it executable
+	- This is probably the least intrusive way; `$HOME/bin` is usually added to the user's path by default, and if not, it's a useful thing to do/have anyways. The shell script simply invokes the Maven location (which is at some other location) and passes on the arguments
 - Windows
     - Hit Start. Right click on "My Computer" and go to "Properties"
     - This should bring you to "Control Panel -> System and Security -> System", giving an overview of your computer
@@ -57,7 +62,9 @@ You run the archetype plugin like this:
 
 If this is your first time, you'll notice that Maven is downloading many jar files. Maven resolves dependencies and downloads them as needed (and only once). Right now, Maven is downloading its core plugins.
 
-Afterwards, it should give you a list of archetypes (in the hundreds). The Scala Maven Plugin was 339 on my list: "net.alchim31.maven:scala-archetype-simple (The maven-scala-plugin is used for compiling/testing/running/documenting scala code in maven.)".
+Afterwards, it should give you a list of archetypes (in the hundreds).
+The Scala Maven Plugin was 339 on my list: "net.alchim31.maven:scala-archetype-simple (The maven-scala-plugin is used for compiling/testing/running/documenting scala code in maven.)".
+You can type "scala" (or something else) to filter the results.
 As of 2015 January 27, there you can choose version 3.1.4 or 3.1.5 of this plugin; you should choose the latest
 
     Choose net.alchim31.maven:scala-archetype-simple version: 
@@ -165,7 +172,7 @@ After adding this, `mvn package` will also create `[artifactId]-[version]-jar-wi
 - `mvn clean`
 - `mvn package`: compile, run tests, and create jar
 
-### Integration with Eclipse ([Scala IDE][35])
+### Integration with Eclipse ([Scala IDE][24])
 There are instructions at the [Scala Maven Plugin FAQs][23], but I thought I'd expand a bit. The [maven-eclipse-plugin][33] is a core plugin (all plugins prefixed with "maven" are, and are available by default) to generate Eclipse configuration files. However, this plugin does not know about our new Scala source files. We'll be using the [build-helper-maven-plugin][34] to add new source folders:
 
     ...
@@ -228,6 +235,19 @@ Secondly, open the `.project` eclipse file (again, in the same folder). Change `
 
 Finally, in Eclipse, under "File" choose "Import..." and find your project.
 
+#### Using [m2eclipse-scala][35] for Eclipse integration
+m2eclipse-scala is a work in progress, and their website/repository may have updated information.
+It aims to ease integration between m2eclipse and Scala IDE for Eclipse.
+
+Under "Help -> Install New Software", enter "http://alchim31.free.fr/m2e-scala/update-site" and hit enter.
+You should see "Maven Integration for Eclipse -> Maven Integration for Scala IDE".
+
+Afer it installs, go to "New -> Project -> Other" and select "Maven Project".
+Search fo "scala-archetype" choose the one with the group "net.alchim31.maven".
+The wizard will more or less guide you through what was done with `mvn archetype:generate` above, and you should end up with a new Scala project!
+
+To import an existing project, simply go to "File -> Import -> Existing Maven Project" and find the directory containing your project.
+
 ## Adding Dependencies
 The first thing I do is look for "Maven" in the project page. For example, Google's [Guava] page includes [Maven Central links][28]. As you can see in the previous link, The Central Repository conveniently includes the snippet you have to add to your `pom.xml` on the left sidebar.
 
@@ -277,5 +297,5 @@ I'm not going to explain all of Maven in this tutorial (though I hope to add mor
 [32]: http://docs.scala-lang.org/contribute.html
 [33]: http://maven.apache.org/plugins/maven-eclipse-plugin/
 [34]: http://mojo.codehaus.org/build-helper-maven-plugin/
-[35]: http://scala-ide.org
+[35]: https://github.com/sonatype/m2eclipse-scala
 [36]: https://github.com/scala/scala-module-dependency-sample
