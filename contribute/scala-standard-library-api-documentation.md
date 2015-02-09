@@ -72,7 +72,7 @@ component so that they show up in the correct issue filters.
 
 ### Required Reading
 
-Please familiarize yourself with **all** of the following before contributing
+Please familiarize yourself with the following before contributing
 new API documentation to save time, effort, mistakes and repetition.
 
 * [Forking the Repo](./hacker-guide.html#2_set_up) - follow the setup steps through
@@ -86,7 +86,7 @@ new API documentation to save time, effort, mistakes and repetition.
   companions, browsing package object documentation, searching, token searches
   and so on.
 * Prior to commit, be sure to read
-  [A note about git commit messages](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html).
+  [A note about git commit messages](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html) and the [Scala Project & Developer Guidelines](https://github.com/scala/scala/blob/2.11.x/CONTRIBUTING.md).
 * Also read the Scala [Pull Request Policy](https://github.com/scala/scala/wiki/Pull-Request-Policy).
   Some of this document will clearly not apply (like the sections on providing tests,
   however see below for some special requirements for documentation). Do still read
@@ -95,7 +95,7 @@ new API documentation to save time, effort, mistakes and repetition.
   cleanly. Remember that the title of the pull request will become the commit
   message when merged. **Also**, be sure to assign one or more reviewers to the PR, list of
   reviewers is at the bottom of this document, but the quick version is to add
-  `Review by @dickwall` **in the pull request comments**.
+  `Review by @heathermiller` or `Review by @dickwall` **in the pull request comments**.
 
 ### Extra Requirements for Scaladoc Documentation Commits
 
