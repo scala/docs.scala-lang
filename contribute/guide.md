@@ -54,7 +54,7 @@ This is the impatient developer's checklist for the steps to submit a bug-fix pu
 
 1. [Select a bug to fix from JIRA](https://issues.scala-lang.org/issues/?filter=12111), or if you found the bug yourself and want to fix it, [create a JIRA issue](./bug-reporting-guide.html) (but please 
 [make sure it's not a duplicate](./bug-reporting-guide.html#reporting-confirmed-bugs-is-a-sin)).
-2. Optional ([but recommended](./scala-internals#why-its-a-good-idea)), announce your intention to work on the bug on [scala-internals](./scala-internals.html). After all, don't you want to work on a team with 
+2. Optional ([but recommended](./scala-internals.html#why-its-a-good-idea)), announce your intention to work on the bug on [scala-internals](./scala-internals.html). After all, don't you want to work on a team with 
 [these friendly people](./hacker-guide.html#connect) - it's one of the perks of contributing.
 3. [Fork the Scala repository](./hacker-guide.html#fork) and clone your fork (if you haven't already).
 4. [Create a feature branch](./hacker-guide.html#branch) to work on: use the branch name `issue/NNNN` where NNNN is the JIRA issue number.
@@ -77,20 +77,4 @@ on the [scala-internals](http://groups.google.com/group/scala-internals) mailing
 
 Contributions, big or small, simple or complex, controversial or undisputed, need to materialize as patches against
 the Scala project source tree. The [hacker guide](hacker-guide.html) will explain how to materialize your idea into a full-fledged pull request against the Scala code base.
-
-### Further Reading for Larger Changes
-
-The files below are recordings of code walk-through sessions by Martin Odersky about the Scala compiler internals. Some of the information is somewhat outdated, but the clips are still a good introduction to some parts of the compiler architecture.
-
- - [Scala Internals 2008-10-29 (Symbols 1)](http://www.scala-lang.org/sites/default/files/martin_ordersky_scala_internals_2008-10-29.avi)
-
-   Handling of Symbols in the Scala compiler: some details on the symtab subdir, Symbols, Definitions, StdNames, Types (Lazy Types).
-
- - [Scala Internals 2008-11-05 (Symbols 2)](http://www.scala-lang.org/sites/default/files/martin_ordersky_scala_internals_2008-11-05.avi)
-
-   Handling of Symbols part deux: more information on Symbols, Flags, Definitions.
-
- - [Scala Internals 2009-03-04 (Types)](http://www.scala-lang.org/sites/default/files/martin_ordersky_scala_internals_2009-03-04.avi)
-
-   A detailed explanation about how types are represented and manipulated within the Scala compiler: data structures, manipulations of types, coding conventions (audio is not perfect, but intelligible).
 
