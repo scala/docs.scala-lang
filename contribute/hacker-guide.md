@@ -30,7 +30,7 @@ Typically bug fixes and new features start out as an idea or an experiment poste
 about things you want to implement. People proficient in certain areas of Scala usually monitor mailing lists, so you'll often get some help
 by simply posting a message. But the most efficient way to connect is to cc your message to one of the people responsible for maintaining the aspect of Scala which you wish to contribute to.
 
-This is the list of language features/libraries along with their maintainers's full names and GitHub usernames:
+This is the list of language features/libraries along with their maintainer's full names and GitHub usernames:
 
 {% include maintainers.html %}
 
@@ -182,7 +182,7 @@ Here are also some tips & tricks that have proven useful in Scala development:
   just that trait, but it might also be necessary to recompile its users. The `ant` tool is not smart enough to do that, which might lead to
   very strange errors. Full-rebuilds fix the problem. Fortunately that's rarely necessary, because full-rebuilds take a lot of time-- the same 8-30 minutes as mentioned above.
 * Even on solid state drives packaging Scala distribution (i.e. creating jars from class files) is a non-trivial task. To save time here,
-  some people in our team do `ant quick.comp` instead of `ant` and then create custom scripts ([here](https://github.com/adriaanm/binfu/blob/master/scafu.sh) are some examples to get you strarted) to launch Scala from `build/quick/classes`.
+  some people in our team do `ant quick.comp` instead of `ant` and then create custom scripts ([here](https://github.com/adriaanm/binfu/blob/master/scafu.sh) are some examples to get you started) to launch Scala from `build/quick/classes`.
 * Don't underestimate the power of `print`. When starting with Scala, I spent a lot of time in the debugger trying to figure out how
   things work. However later I found out that print-based debugging is often more effective than jumping around. While it might be obvious
   to some, I'd like to explicitly mention that it's also useful to print stack traces to understand the flow of execution. When working with `Trees`, you might want to use `showRaw` to get the `AST` representation.
@@ -415,6 +415,6 @@ workflow) and be ready to elaborate and adjust your patch if necessary. In this 
 
 ## Merge
 
-After your reviewer is happy with your code (usually signalled by a LGTM — “Looks good to me”), your job is done.
+After your reviewer is happy with your code (usually signaled by a LGTM — “Looks good to me”), your job is done.
 Note that there can be a gap between a successful review and the merge, because not every reviewer has merge rights. In that case, someone else from the team will pick up your pull request and merge it.
 So don't be confused if your reviewer says “LGTM”, but your code doesn't get merged immediately.
