@@ -9,7 +9,7 @@ The [scala-internals mailing list](https://groups.google.com/d/forum/scala-inter
 
 ### Coordinating on scala-internals
 
-Prior to commencing on contribution work for the Scala project, even for documentation and bugfixing, it is recommended (but not required) that you make a post on scala-internals announcing your intention. It's a great time to invite any help, advice or ask any questions you might have. It's also a great place to meet peers, one of whom will probably be reviewing your contribution at some point.
+Prior to commencing on contribution work on larger changes to the Scala project, it is recommended (but not required) that you make a post on scala-internals announcing your intention. It's a great time to invite any help, advice or ask any questions you might have. It's also a great place to meet peers, one of whom will probably be reviewing your contribution at some point.  For smaller bug fixes or documentation changes where the risk of effort duplication is minimal, you can skip this post. 
 
 To help subscribers on the scala-internals list to sort through the postings, we request that the following topic labels are applied when you start a new post please:
 
