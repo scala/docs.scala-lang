@@ -8,9 +8,8 @@ There are several ways you can help out with the improvement of Scala documentat
 
 * API Documentation in Scaladoc
 * Code examples and tutorials in activator templates.
-* The Scala Wiki
 * Guides, Overviews, Tutorials, Cheat Sheets and more on the docs.scala-lang.org site
-* Updating Documents on the Main Scala Language Site (this one)
+* Updating scala-lang.org
 
 Please read this page, and the pages linked from this one, fully before contributing documentation. Many of the questions you have will be answered in these resources. If you have a question that isn't answered, feel free to ask on the [scala-internals Google group](https://groups.google.com/forum/#!forum/scala-internals) and then, please, submit a pull request with updated documentation reflecting that answer.
 
@@ -36,12 +35,6 @@ is a tool based on SBT, with a UI mode that is ideal for code based tutorials, o
 
 Please see [Contributing an Activator Template](https://typesafe.com/activator/template/contribute) for more details.
 
-### The Scala Wiki
-
-The [Scala wiki](https://wiki.scala-lang.org/) could be a useful resource, but tends to get out of date quickly. It is perhaps best viewed as a place for information to temporarily live while it is constructed and refined, but with an aim to putting the material into the [docs.scala-lang.org](http://docs.scala-lang.org) site eventually (see the next section). Nonetheless, it is a fast way to add some public documentation.
-
-The wiki is self documenting, so make sure to take a look at the [home page](https://wiki.scala-lang.org/) to get started. Please consider contributions to [docs.scala-lang.org](docs.scala-lang.org) for more enduring documentation, even though it is more work to get through the review process for the main doc site.
-
 ### The Main Scala Documentation Site
 
 [docs.scala-lang.org](https://wiki.scala-lang.org/) houses the primary source of written, non-API documentation for Scala. It's a github project that you can fork and submit pull requests from. It includes:
@@ -59,7 +52,7 @@ and more
 Please read [contributing to the docs.scala-lang.org site](http://docs.scala-lang.org/contribute.html) through before embarking on changes. The site uses 
 the [Jekyll](http://jekyllrb.com/) markdown engine so you will need to follow the instructions to get that running as well.
 
-### The Scala Language Site
+### Updating scala-lang.org
 
 Additional high-level documentation (including documentation on contributing
 to Scala and related projects) is provided on the main 
