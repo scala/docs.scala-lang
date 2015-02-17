@@ -13,6 +13,11 @@ everyone make things better?
 
 That depends on what you want to contribute. Below are some getting started resources for different contribution domains. Please read all of the documentation and follow all the links from the topic pages below before attempting to contribute, as many of the questions you have will already be answered.
 
+### Reporting bugs
+
+See our [bug reporting guide](./bug-reporting-guide.html) to learn
+how to efficiently report a bug.
+
 ### Contribute
 
 Coordination of contribution efforts takes place on the 
@@ -22,8 +27,7 @@ Coordination of contribution efforts takes place on the
 <div class="row">
 <div class="span4 doc-block">
 <h4><a href="./documentation.html">Documentation</a></h4>
-<p><a href="https://typesafe.com/activator/template/contribute">Activator templates</a>, 
-<a href="./scala-standard-library-api-documentation.html">Scaladoc (API)</a>, 
+<p><a href="./scala-standard-library-api-documentation.html">Scaladoc (API)</a>, <a href="https://typesafe.com/activator/template/contribute">Activator templates</a>,
 <a href="http://docs.scala-lang.org/contribute.html">docs.scala-lang.org</a> and 
 <a href="https://github.com/scala/scala-lang">scala-lang.org</a>.</p>
 </div>
@@ -35,32 +39,22 @@ Coordination of contribution efforts takes place on the
 
 <div class="row">
 <div class="span4 doc-block">
-<h4><a href="./tools.html">Tools</a></h4>
-<p>Enhance the Scala tooling ecosystem with features for build tools, IDE plug-ins and other related tools.</p>
-</div>
-<div class="span4 doc-block">
 <h4><a href="./corelibs.html">Core Libraries</a></h4>
 <p>Update and expand the capabilities of the core (and associated) Scala libraries.</p>
 </div>
-</div>
-
-<div class="row">
 <div class="span4 doc-block">
-<h4><a href="./guide.html">Compiler/Language</a></h4>
+<h4><a href="./guide.html#larger-changes-new-features">Compiler/Language</a></h4>
 <p>Larger language features and compiler enhancements including language specification and SIPs.</p>
 </div>
+</div>
+
+<!--<div class="row">
 <div class="span4 doc-block">
-<h4><a href="./scala-fame.html">Contributor Hall of Fame</a></h4>
-<p>Get your props, and find your place in the leader-board.</p>
+<h4><a href="./tools.html">Tools</a></h4>
+<p>Enhance the Scala tooling ecosystem with features for build tools, IDE plug-ins and other related tools.</p>
 </div>
+</div> -->
 </div>
-</div>
-
-
-### Reporting bugs
-
-See our [bug reporting guide](./bug-reporting-guide.html) to learn
-how to efficiently report a bug.
 
 ### Community Tickets
 

@@ -65,7 +65,7 @@ This is the impatient developer's checklist for the steps to submit a bug-fix pu
 https://github.com/scala/scala#git-hygiene). For bug fixes, a single commit is requested, for features several commits may be desirable (but each separate commit must compile and pass all tests)
 9. [Submit a pull request](./hacker-guide.html#submit) following the [Scala project pull-request guidelines](http://docs.scala-lang.org/scala/pull-request-policy.html).
 10. [Work with a reviewer](https://github.com/scala/scala#reviewing) to [get your pull request merged in](./hacker-guide.html#review).
-11. [Bask in the glow of a job well done](./scala-fame.html).
+11. Celebrate!
 
 Need more information or a little more hand-holding for the first one? We got you covered: take a read through the entire [Hacker Guide](./hacker-guide.html) for an example of implementing a new feature (some of the steps can be skipped for bug fixes, this will be obvious from reading it, but many of the steps here will help with bug fixes too).
 
