@@ -60,5 +60,5 @@ to Scala and related projects) is provided on the main
 [scala-lang github project](https://github.com/scala/scala-lang) which may be forked to create pull requests. 
 
 Please read both the
-[docs.scala-lang.org contribution](http://docs.scala-lang.org/contribute.html) document and the scala-lang.org github README file before embarking on any changes to the Scala language site, as it uses the same Jekyll markdown tool and many of the same conventions as the Scala documentation site.
+[docs.scala-lang.org contribution](http://docs.scala-lang.org/contribute.html) document and the [scala-lang.org github README](https://github.com/dickwall/scala-lang#scala-langorg) before embarking on any changes to the Scala language site, as it uses the same Jekyll markdown tool and many of the same conventions as the Scala documentation site.
 
