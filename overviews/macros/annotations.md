@@ -38,12 +38,20 @@ that the enclosing annotation is a macro annotation).
     import scala.reflect.macros.Context
     import scala.language.experimental.macros
     import scala.annotation.StaticAnnotation
+    import scala.annotation.compileTimeOnly
 
+    @compileTimeOnly("enable macro paradise to expand macro annotations")
     class identity extends StaticAnnotation {
       def macroTransform(annottees: Any*) = macro ???
     }
 
-The `macroTransform` macro is supposed to take a list of untyped annottees (in the signature their type is represented as `Any`
+First of all, note the `@compileTimeOnly` annotation. It is not mandatory, but is recommended to avoid confusion.
+Macro annotations look like normal annotations to the vanilla Scala compiler, so if you forget to enable the macro paradise
+plugin in your build, your annotations will silently fail to expand. The `@compileTimeOnly` annotation makes sure that
+no reference to the underlying definition is present in the program code after typer, so it will prevent the aforementioned
+situation from happening.
+
+Now, the `macroTransform` macro is supposed to take a list of untyped annottees (in the signature their type is represented as `Any`
 for the lack of better notion in Scala) and produce one or several results (a single result can be returned as is, multiple
 results have to be wrapped in a `Block` for the lack of better notion in the reflection API).
 
