@@ -90,7 +90,7 @@ various contributor activities:
 <p>All bugs marked with the label <em>community</em>.</p>
 </div>
 <div class="span4 doc-block">
-<h4><a href="https://issues.scala-lang.org/issues/?filter=12111">All Issues</a></h4>
+<h4><a href="https://issues.scala-lang.org/issues/?filter=13009">All Issues</a></h4>
 <p>Bugs + Enhancements marked with the label <em>community</em>.</p>
 </div>
 </div>

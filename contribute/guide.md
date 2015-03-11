@@ -52,7 +52,7 @@ unencumbered by copyrights or patents.
 
 This is the impatient developer's checklist for the steps to submit a bug-fix pull request to the Scala project. For more information, description and justification for the steps, follow the links in that step. Further specific instructions for the release of Scala you are targeting can be found in the `CONTRIBUTING.md` file for that [github branch](https://github.com/scala/scala)
 
-1. [Select a bug to fix from JIRA](https://issues.scala-lang.org/issues/?filter=12111), or if you found the bug yourself and want to fix it, [create a JIRA issue](./bug-reporting-guide.html) (but please 
+1. [Select a bug to fix from JIRA](/contribute/#community-tickets), or if you found the bug yourself and want to fix it, [create a JIRA issue](./bug-reporting-guide.html) (but please 
 [make sure it's not a duplicate](./bug-reporting-guide.html#reporting-confirmed-bugs-is-a-sin)).
 2. Optional ([but recommended](./scala-internals.html#why-its-a-good-idea)), announce your intention to work on the bug on [scala-internals](./scala-internals.html). After all, don't you want to work on a team with 
 [these friendly people](./hacker-guide.html#connect) - it's one of the perks of contributing.
