@@ -112,7 +112,7 @@ The following projects are important to the Scala community but are particularly
 <a href="https://github.com/scala/scala"><img src="https://avatars1.githubusercontent.com/u/57059?v=3&s=200" width="50px" height="50px"/>
 <h4>Scalap</h4></a>
 <p>Scala Decoder (part of scala/scala)</p>
-<a href="https://issues.scala-lang.org/issues/?jql=status%20%3D%20Open%20AND%20text%20~%20%22scalap%22">Issues</a> | 
+<p><a href="https://issues.scala-lang.org/issues/?jql=status%20%3D%20Open%20AND%20text%20~%20%22scalap%22">Issues</a> | 
 <a href="https://github.com/scala/scala#welcome">ReadMe</a> | 
 <a href="./guide.html">Contributing</a></p>
 </div>
@@ -125,3 +125,5 @@ The following projects are important to the Scala community but are particularly
 </div>
 </div>
 </div>
+ 
+ 
