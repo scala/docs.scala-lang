@@ -35,7 +35,7 @@
                 </li>
 
                 <li><a href="{{ site.baseurl }}/contribute.html">Contribute</a></li>
-                <li><a href="{{ site.baseurl }}/sips">SIPs</a></li>
+                <li><a href="{{ site.baseurl }}/sips">SIPs/SLIPs</a></li>
                 <li><a href="http://wiki.scala-lang.org">Wiki</a></li>
           </ul>
           <form method="get" id="searchform" action="{{ site.baseurl }}/search.html">
