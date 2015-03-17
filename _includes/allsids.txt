@@ -1,7 +1,7 @@
-<h3>Pending SIPs</h3>
+<h3>Pending SLIPs</h3>
 <ul class="post-list">
   {% for post in site.categories.pending %}
-    {% if post.layout == 'sip' %}
+    {% if post.layout == 'slip' %}
       <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a> <span class="date">( {{ post.date | date: "%b %Y" }} )</span>
       {% if post.vote-status %}
         {% if post.vote-status == 'accepted' %}
@@ -19,10 +19,10 @@
   {% endfor %}
 </ul>
 
-<h3>Pending SLIPs</h3>
+<h3>Pending SIPs</h3>
 <ul class="post-list">
   {% for post in site.categories.pending %}
-    {% if post.layout == 'slip' %}
+    {% if post.layout == 'sip' %}
       <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a> <span class="date">( {{ post.date | date: "%b %Y" }} )</span>
       {% if post.vote-status %}
         {% if post.vote-status == 'accepted' %}

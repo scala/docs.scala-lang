@@ -5,31 +5,29 @@ title: SLIP Submission Process
 
 ## How do I get started? ##
 
+Before proposing a new SLIP or new library functionality, it's a good idea
+to get a feel for the core libraries first, and there's no better way than
+by helping fix some of the 
+[core library issues in community tickets](http://scala-lang.org/contribute/#community_tickets).
+
+## Pre-requisites
+
 SLIP (Scala Library Improvement Process) is a way to suggest, define, implement and submit
 changes, additions and enhancements to the Scala core libraries. Because it benefits us
 as a community to avoid adding libraries and APIs without careful thought, please read the
 following before deciding to create you SLIP:
 
-* Suggested functionality should not duplicate existing capabilities in the core libraries.
-  If you want to change existing functionality, suggest that, but be ready for questions of
-  backwards compatibility, migration strategies and other concerns. However if you want to
-  add APIs to the core libraries, they should be demonstrably different from those already
-  there, or offer extra functionality not available in the current APIs, or ideally both.
+* The suggested functionality should not conflict with nor directly duplicate existing core library functionality.  If you want to change existing functionality, suggest that, but be ready for questions of
+  backwards compatibility, migration strategies and other concerns. Note that some concepts will be repeated but your functionality should be demonstrably different from that available in either implementation or intent, or both.
+* You may be asked to establish your credentials for submitting code to the core Scala libraries. Implementing popular and established third party libraries for Scala, or contributing bug-fixes to the existing core libraries are ways you can establish your credentials.
 * Any additions or modifications must maintain the existing "feel" of the current core Scala libraries.
   Design questions will likely be asked through during the SLIP reviews to ensure that
-  this aspect has been considered.
+  this aspect has been considered. At the very least an executable/usable proof-of-concept should be provided for reviewers to try out. Ideally the SLIP will be drawn from an existing established library which can be noted in the SLIP submission.
 * Additions or modifications must also be tried and tested. Tested means a strong, complete
   testing suite, tried usually means that the functionality will be drawn from an existing,
   established library that has demonstrated it's utility, reliability and stability already.
-* Typically your contributions will go into an auxiliary library jar that is distributed
-  with the Scala language download, as with the parser combinator and reflection modules
-  (there is a push towards greater modularity within the libraries now). Give some thought
-  to the name of the library you are proposing. If you believe it should be included
-  in the core Scala library jar, you will likely be asked to explain and defend
-  that position.
-* The best starting point is an existing, working library from which you can draw your
-  implementation. Likely you will be cherry picking functionality from the library
-  rather than submitting the whole thing.
+* You should have more than one responsible developer for the SLIP (having one name on the SLIP is not enough, find a second).
+* You may be asked to find a champion or sponsor for your SLIP from the current SLIP committee members.
 
 ## How do I submit? ##
 
@@ -47,7 +45,7 @@ The process to submit is simple:
 * Commit your changes to your forked repository
 * Create a new [pull request](https://github.com/scala/scala.github.com/pull/new/gh-pages).  This will notify the Scala SIP team.
 
-## What will happen next ##
+## Approval/Acceptance ##
 
 The SLIP committee will have a look at your proposal. If it is looks promising, it will be made into a SLIP. At that point, you'll have to sign a CLA (contributor license agreement) which says that you are OK with the text of the proposal and the implementation being used in the Scala project.
 
@@ -55,7 +53,7 @@ It will also be opened to a brief public review, no more than 2 weeks to gather 
 The result of this public review period may be some requested changes to the design or implementation
 of the library, its tests, or its scope.
 
-## What will happen afterwards ##
+## Progression of the SLIP to Completion ##
 
 The SLIP will get a unique number. It should be discussed on the [scala-sips mailing list](https://groups.google.com/forum/#!forum/scala-sips).
 In these mails, every mail that is specific to a SLIP ### should be prefixed with \[SLIP-###\].
