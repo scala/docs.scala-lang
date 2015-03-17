@@ -17,7 +17,7 @@ title: Contributing guide
 
   <div class="row">
     <div class="span4 doc-block">
-      <h3><a href="{{ site.baseurl }}/contribute/#community-tickets">Community issues</a></h3>
+      <h3><a href="{{ site.baseurl }}/contribute/#community_tickets">Community issues</a></h3>
       <p>Get cracking on some easy to approach issues.</p>
     </div>
     <div class="span4 doc-block">
@@ -52,9 +52,9 @@ unencumbered by copyrights or patents.
 
 This is the impatient developer's checklist for the steps to submit a bug-fix pull request to the Scala project. For more information, description and justification for the steps, follow the links in that step. Further specific instructions for the release of Scala you are targeting can be found in the `CONTRIBUTING.md` file for that [github branch](https://github.com/scala/scala)
 
-1. [Select a bug to fix from JIRA](/contribute/#community-tickets), or if you found the bug yourself and want to fix it, [create a JIRA issue](./bug-reporting-guide.html) (but please 
-[make sure it's not a duplicate](./bug-reporting-guide.html#reporting-confirmed-bugs-is-a-sin)).
-2. Optional ([but recommended](./scala-internals.html#why-its-a-good-idea)), announce your intention to work on the bug on [scala-internals](./scala-internals.html). After all, don't you want to work on a team with 
+1. [Select a bug to fix from JIRA](/contribute/index.html#community_tickets), or if you found the bug yourself and want to fix it, [create a JIRA issue](./bug-reporting-guide.html) (but please 
+[make sure it's not a duplicate](./bug-reporting-guide.html#reporting_confirmed_bugs_is_a_sin)).
+2. Optional ([but recommended](./scala-internals.html#why_its_a_good_idea)), announce your intention to work on the bug on [scala-internals](./scala-internals.html). After all, don't you want to work on a team with 
 [these friendly people](./hacker-guide.html#connect) - it's one of the perks of contributing.
 3. [Fork the Scala repository](./hacker-guide.html#fork) and clone your fork (if you haven't already).
 4. [Create a feature branch](./hacker-guide.html#branch) to work on: use the branch name `issue/NNNN` where NNNN is the JIRA issue number.
