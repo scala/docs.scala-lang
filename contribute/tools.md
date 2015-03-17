@@ -12,12 +12,12 @@ Typically, issues for these projects will be reported and kept in the github pro
 Many of these projects have a <a href="https://gitter.im">gitter</a> channel (usually listed in the README or CONTRIBUTING documents) which is a great place to discuss proposed work before commencing.
 
 There are some projects in this section that are in
-[particular need](#projects-in-particular-need) so please check those out
+[particular need](#projects_in_particular_need) so please check those out
 if you would like to help revive them.
 
 ### Broken Links?
 
-Stuff changes. Found a broken link or something that needs updating on this page? Please, consider [submitting a documentation pull request](./documentation.html#updating-scala-langorg) to fix it. 
+Stuff changes. Found a broken link or something that needs updating on this page? Please, consider [submitting a documentation pull request](./documentation.html#updating_scala_langorg) to fix it. 
 
 ### Projects
 

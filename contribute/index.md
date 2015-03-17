@@ -50,7 +50,7 @@ Coordination of contribution efforts takes place on the
 
 <div class="row">
 <div class="span4 doc-block">
-<h4><a href="./guide.html#larger-changes-new-features">Compiler/Language</a></h4>
+<h4><a href="./guide.html#larger_changes_new_features">Compiler/Language</a></h4>
 <p>Larger language features and compiler enhancements including language specification and SIPs.</p>
 </div>
 </div>
