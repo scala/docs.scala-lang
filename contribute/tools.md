@@ -17,7 +17,7 @@ if you would like to help revive them.
 
 ### Broken Links?
 
-Stuff changes. Found a broken link or something that needs updating on this page? Please, consider [submitting a documentation pull request](./documentation.html#updating_scala_langorg) to fix it. 
+Stuff changes. Found a broken link or something that needs updating on this page? Please, consider [submitting a documentation pull request](./documentation.html#updating_scalalangorg) to fix it. 
 
 ### Projects
 
