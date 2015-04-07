@@ -52,7 +52,7 @@
 		<p>Daniel Spiewak and David Copeland’s <em>Scala Style Guide</em> is now available. Thanks to them for putting together such an excellent style guide, and thanks to Simon Ochsenreither for converting it to markdown!</p>		
 
 		<h3><a href="http://www.scala-lang.org/files/archive/spec/2.11/">Language Specification</a> <span class="label success">Available</span></h3>
-		<p>It would be nice to have an HTML version of the language specification, right? This is just an idea for now…</p>				
+		<p>The official definition of Scala.  For when you just have to know the truth, beautiful or ugly.</p>				
 		
 		<p>&nbsp;</p><p>&nbsp;</p>
 		
