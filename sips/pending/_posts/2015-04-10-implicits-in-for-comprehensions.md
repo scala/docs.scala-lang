@@ -31,7 +31,9 @@ heavy use of for comprehensions (in the `do` syntax style of Haskell monads).
 In those cases, the alternatives are ugly: break the code into several for
 comprehensions or explicitly pass the implicit parameter to other methods.
 
-We would like to write the following (where f3 and f4 have an implicit param),
+We would like to write the following (where f4 and f5 have an implicit param),
+and maybe there is code in the body of the `yield` that also would use
+the implicit value v3:
 
     def f4(implicit v: T) = ...
     def f5(implicit v: T) = ...
