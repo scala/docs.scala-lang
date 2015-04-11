@@ -135,7 +135,7 @@ generator clause, expanding the left-hand side of the generator into a tuple.
                        .withFilter((a0, ..., an) => g)) ...
 
 In the above example, either `p1`, `p2` or both may be marked as implicit. If
-`p1` is implicit, then it should be scoped such that it is available in `e1`,
+`p1` is implicit, then it should be scoped such that it is available in
 `e2`, `p2`, `g` and in the body of the for loop/comprehension. If `p2` is
 implicit, then it should be scoped such that it is available in `g` and in the
 body.
