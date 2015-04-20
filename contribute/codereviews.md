@@ -32,7 +32,7 @@ own pull requests.
 <p>Scala bug fixes and changes in the language, core libs and included tools.</p>
 </div>
 <div class="span4 doc-block">
-<h4><a href="https://github.com/scala/scala.github.com/pulls">scala/github.scala.com</a></h4>
+<h4><a href="https://github.com/scala/scala.github.com/pulls">scala/scala.github.com</a></h4>
 <p>Scala documentation site.</p>
 </div>
 </div>
