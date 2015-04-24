@@ -16,8 +16,8 @@ In Java, one tends to see a lot of overloaded methods that only serve to provide
 
     public class HashMap<K,V> {
       public HashMap(Map<? extends K,? extends V> m);
-      /** Create a new HashMap with default capacity (16) 
-        * and loadFactor (0.75) 
+      /** Create a new HashMap with default capacity (16)
+        * and loadFactor (0.75)
         */
       public HashMap();
       /** Create a new HashMap with default loadFactor (0.75) */
@@ -34,8 +34,8 @@ More problematic is that the values used for defaults are in both the Javadoc *a
       public static final float DEFAULT_LOAD_FACTOR = 0.75;
 
       public HashMap(Map<? extends K,? extends V> m);
-      /** Create a new HashMap with default capacity (16) 
-        * and loadFactor (0.75) 
+      /** Create a new HashMap with default capacity (16)
+        * and loadFactor (0.75)
         */
       public HashMap();
       /** Create a new HashMap with default loadFactor (0.75) */
@@ -43,11 +43,11 @@ More problematic is that the values used for defaults are in both the Javadoc *a
       public HashMap(int initialCapacity, float loadFactor);
     }
 
-While this keeps us from repeating ourselves, it's less than expressive.  
+While this keeps us from repeating ourselves, it's less than expressive.
 
 Scala adds direct support for this:
 
-    class HashMap[K,V](initialCapacity:Int = 16, loadFactor:Float = 0.75) {
+    class HashMap[K,V](initialCapacity:Int = 16, loadFactor:Float = 0.75f) {
     }
 
     // Uses the defaults
@@ -57,11 +57,11 @@ Scala adds direct support for this:
     val m2= new HashMap[String,Int](20)
 
     // overriding both
-    val m3 = new HashMap[String,Int](20,0.8)
+    val m3 = new HashMap[String,Int](20,0.8f)
 
     // override only the loadFactory via
     // named arguments
-    val m4 = new HashMap[String,Int](loadFactor = 0.8)
+    val m4 = new HashMap[String,Int](loadFactor = 0.8f)
 
 Note how we can take advantage of *any* default value by using [named parameters]({{ site.baseurl }}/tutorials/tour/named-parameters.html).
 
