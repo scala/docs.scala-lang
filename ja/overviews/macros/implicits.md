@@ -101,7 +101,7 @@ Scala implicit の標準機能である複数のパラメータや重複した�
     }
 
     case class Foo(i: Int, s: String, b: Boolean)
-    def conv[C](c: C)(implicit iso: Iso[C, L]): L = iso.from(c)
+    def conv[C, L](c: C)(implicit iso: Iso[C, L]): L = iso.from(c)
 
     val tp  = conv(Foo(23, "foo", true))
     tp: (Int, String, Boolean)
