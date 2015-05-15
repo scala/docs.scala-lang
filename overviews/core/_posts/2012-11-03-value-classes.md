@@ -47,7 +47,7 @@ One use case for value classes is to combine them with implicit classes ([SIP-13
 
 The following fragment of `RichInt` shows how it extends `Int` to allow the expression `3.toHexString`:
 
-    class RichInt(val self: Int) extends AnyVal {
+    implicit class RichInt(val self: Int) extends AnyVal {
       def toHexString: String = java.lang.Integer.toHexString(self)
     }
 
