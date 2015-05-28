@@ -24,7 +24,6 @@
 		</ul>
 		<ul>
 			<li><h5>Other Resources</h5></li>
-			<li><a href="http://wiki.scala-lang.org">Wiki</a></li>
 			<li><a href="{{ site.baseurl }}/sips">Scala Improvement Process</a></li>				
 		</ul>						
 	</div>
