@@ -49,7 +49,7 @@ In this document, `<[ expr ]>` denotes the abstract syntax tree that represents 
     Literal(Constant("limit exceeded"))
 
     Apply(
-      Select(Ident(newTermName("x")), newTermName("$less"),
+      Select(Ident(TermName("x")), TermName("$less"),
       List(Literal(Constant(10)))))
 
 Here is a possible implementation of the `assert` macro:
@@ -141,7 +141,7 @@ Note the call to `reify`, which provides a shortcut for creating ASTs.
 
     val evals = ListBuffer[ValDef]()
     def precompute(value: Tree, tpe: Type): Ident = {
-      val freshName = newTermName(c.fresh("eval$"))
+      val freshName = TermName(c.fresh("eval$"))
       evals += ValDef(Modifiers(), freshName, TypeTree(tpe), value)
       Ident(freshName)
     }
@@ -172,7 +172,7 @@ To follow the example, create an empty directory and copy the code to a new file
 
         val evals = ListBuffer[ValDef]()
         def precompute(value: Tree, tpe: Type): Ident = {
-          val freshName = newTermName(c.fresh("eval$"))
+          val freshName = TermName(c.fresh("eval$"))
           evals += ValDef(Modifiers(), freshName, TypeTree(tpe), value)
           Ident(freshName)
         }
@@ -248,15 +248,15 @@ With `-Ymacro-debug-lite` it is possible to see both pseudo-Scala representation
       ()
     }
     Block(List(
-    ValDef(Modifiers(), newTermName("eval$1"), TypeTree().setType(String), Literal(Constant("world"))),
+    ValDef(Modifiers(), TermName("eval$1"), TypeTree().setType(String), Literal(Constant("world"))),
     Apply(
-      Select(Select(This(newTypeName("scala")), newTermName("Predef")), newTermName("print")),
+      Select(Select(This(TypeName("scala")), TermName("Predef")), TermName("print")),
       List(Literal(Constant("hello")))),
     Apply(
-      Select(Select(This(newTypeName("scala")), newTermName("Predef")), newTermName("print")),
-      List(Ident(newTermName("eval$1")))),
+      Select(Select(This(TypeName("scala")), TermName("Predef")), TermName("print")),
+      List(Ident(TermName("eval$1")))),
     Apply(
-      Select(Select(This(newTypeName("scala")), newTermName("Predef")), newTermName("print")),
+      Select(Select(This(TypeName("scala")), TermName("Predef")), TermName("print")),
       List(Literal(Constant("!"))))),
     Literal(Constant(())))
 

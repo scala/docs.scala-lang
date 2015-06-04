@@ -70,7 +70,7 @@ title: シンボル、構文木、型
     scala> class C[T] { def test[U](x: T)(y: U): Int = ??? }
     defined class C
 
-    scala> val testMember = typeOf[C[Int]].member(newTermName("test"))
+    scala> val testMember = typeOf[C[Int]].member(TermName("test"))
     testMember: scala.reflect.runtime.universe.Symbol = method test
 
 この場合、`member` は期待される `MethodSymbol` ではなく `Symbol` のインスタンスを返す。
@@ -386,7 +386,7 @@ Scala リフレクションは、ユニバース経由で構文木を視覚化�
     scala> import scala.reflect.runtime.universe._
     import scala.reflect.runtime.universe._
 
-    scala> val tree = Apply(Select(Ident(newTermName("x")), newTermName("$plus")), List(Literal(Constant(2))))
+    scala> val tree = Apply(Select(Ident(TermName("x")), TermName("$plus")), List(Literal(Constant(2))))
     tree: scala.reflect.runtime.universe.Apply = x.$plus(2)
 
 `show` メソッド (もしくは同等の `toString`) を使ってこの構文木が何を表しているかを見てみよう。
@@ -426,7 +426,7 @@ Scala リフレクションは、ユニバース経由で構文木を視覚化�
 生の構文木の内部構造をインスペクトするには以下のように行う:
 
     scala> showRaw(tree)
-    res1: String = Block(List(ClassDef(Modifiers(), newTypeName("Flower"), List(), Template(List(Ident(newTypeName("AnyRef"))), emptyValDef, List(DefDef(Modifiers(), nme.CONSTRUCTOR, List(), List(List()), TypeTree(), Block(List(Apply(Select(Super(This(tpnme.EMPTY), tpnme.EMPTY), nme.CONSTRUCTOR), List())), Literal(Constant(())))), DefDef(Modifiers(), newTermName("name"), List(), List(), TypeTree(), Literal(Constant("Rose"))))))), Literal(Constant(())))
+    res1: String = Block(List(ClassDef(Modifiers(), TypeName("Flower"), List(), Template(List(Ident(TypeName("AnyRef"))), emptyValDef, List(DefDef(Modifiers(), nme.CONSTRUCTOR, List(), List(List()), TypeTree(), Block(List(Apply(Select(Super(This(tpnme.EMPTY), tpnme.EMPTY), nme.CONSTRUCTOR), List())), Literal(Constant(())))), DefDef(Modifiers(), TermName("name"), List(), List(), TypeTree(), Literal(Constant("Rose"))))))), Literal(Constant(())))
 
 ### 構文木の走査
 
@@ -447,7 +447,7 @@ Scala リフレクションは、ユニバース経由で構文木を視覚化�
     scala> import scala.reflect.runtime.universe._
     import scala.reflect.runtime.universe._
 
-    scala> val tree = Apply(Select(Ident(newTermName("x")), newTermName("$plus")), List(Literal(Constant(2))))
+    scala> val tree = Apply(Select(Ident(TermName("x")), TermName("$plus")), List(Literal(Constant(2))))
     tree: scala.reflect.runtime.universe.Apply = x.$plus(2)
 
 `tree` に対してマッチをかけてやるだけでよく、`Apply` ケースの場合には `Apply` の関数と引数を返す:
@@ -468,7 +468,7 @@ Scala リフレクションは、ユニバース経由で構文木を視覚化�
 は普通かなり複雑となることに注意してほしい。これを示す簡単な例として、上記の構文木に
 2つ目の `Apply` を加えて既にある和に `3` を加算する:
 
-    scala> val tree = Apply(Select(Apply(Select(Ident(newTermName("x")), newTermName("$plus")), List(Literal(Constant(2)))), newTermName("$plus")), List(Literal(Constant(3))))
+    scala> val tree = Apply(Select(Apply(Select(Ident(TermName("x")), TermName("$plus")), List(Literal(Constant(2)))), TermName("$plus")), List(Literal(Constant(3))))
     tree: scala.reflect.runtime.universe.Apply = x.$plus(2).$plus(3)
 
 これに上記と同じパターンマッチを適用すると外側の `Apply`
@@ -479,7 +479,7 @@ Scala リフレクションは、ユニバース経由で構文木を視覚化�
     arg: scala.reflect.runtime.universe.Tree = 3
 
     scala> showRaw(fun)
-    res3: String = Select(Apply(Select(Ident(newTermName("x")), newTermName("$plus")), List(Literal(Constant(2)))), newTermName("$plus"))
+    res3: String = Select(Apply(Select(Ident(TermName("x")), TermName("$plus")), List(Literal(Constant(2)))), TermName("$plus"))
 
 特定のノードで止まることなく構文木全体を走査したり、特定の型のノードを収集してインスペクトするなどより複雑なタスクを行うためには
 `Traverser` を用いた走査の方が適しているかもしれない。
@@ -498,7 +498,7 @@ Scala リフレクションは、ユニバース経由で構文木を視覚化�
     scala> import scala.reflect.runtime.universe._
     import scala.reflect.runtime.universe._
 
-    scala> val tree = Apply(Select(Apply(Select(Ident(newTermName("x")), newTermName("$plus")), List(Literal(Constant(2)))), newTermName("$plus")), List(Literal(Constant(3))))
+    scala> val tree = Apply(Select(Apply(Select(Ident(TermName("x")), TermName("$plus")), List(Literal(Constant(2)))), TermName("$plus")), List(Literal(Constant(3))))
     tree: scala.reflect.runtime.universe.Apply = x.$plus(2).$plus(3)
 
     scala> object traverser extends Traverser {
@@ -560,7 +560,7 @@ Scala リフレクションでは、`reify` メソッドを用いた構文木の
     import scala.reflect.runtime.universe._
 
     scala> { val tree = reify(println(2)).tree; showRaw(tree) }
-    res0: String = Apply(Select(Select(This(newTypeName("scala")), newTermName("Predef")), newTermName("println")), List(Literal(Constant(2))))
+    res0: String = Apply(Select(Select(This(TypeName("scala")), TermName("Predef")), TermName("println")), List(Literal(Constant(2))))
 
 ここで、単に `println(2)` という呼び出しを `reify` している。
 つまり、`println(2)` という式をそれに対応する構文木の表現に変換している。そして、生の構文木の内部構造を出力している。
@@ -623,7 +623,7 @@ Scala リフレクションでは、`reify` メソッドを用いた構文木の
     tb: scala.tools.reflect.ToolBox[scala.reflect.runtime.universe.type] = scala.tools.reflect.ToolBoxFactory$ToolBoxImpl@7bc979dd
 
     scala> showRaw(tb.parse("println(2)"))
-    res2: String = Apply(Ident(newTermName("println")), List(Literal(Constant(2))))
+    res2: String = Apply(Ident(TermName("println")), List(Literal(Constant(2))))
 
 `reify` と違って、ツールボックスは型付けの要求を必要としないことに注目してほしい。
 この柔軟性の引き換えに堅牢性が犠牲になっている。どういう事かと言うと、`reify`
@@ -687,7 +687,7 @@ Scala リフレクションでは、`reify` メソッドを用いた構文木の
 
 `println(2)` を使った例題を手動で構築すると、こうなる:
 
-    scala> Apply(Ident(newTermName("println")), List(Literal(Constant(2))))
+    scala> Apply(Ident(TermName("println")), List(Literal(Constant(2))))
     res0: scala.reflect.runtime.universe.Apply = println(2)
 
 このテクニックの典型的なユースケースは単独では意味を成さない動的に構築された部分木を組み合わせて構文木を作る必要がある場合だ。
