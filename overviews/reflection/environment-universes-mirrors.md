@@ -91,7 +91,7 @@ An `InstanceMirror` is used for creating invoker mirrors for methods and fields 
 
 A `MethodMirror` is used for invoking instance methods (Scala only has instance methods-- methods of objects are instance methods of object instances, obtainable via `ModuleMirror.instance`). Entry point: `val mm = im.reflectMethod(<method symbol>)`. Example:
 
-    scala> val methodX = ru.typeOf[C].declaration(ru.newTermName("x")).asMethod
+    scala> val methodX = ru.typeOf[C].declaration(ru.TermName("x")).asMethod
     methodX: scala.reflect.runtime.universe.MethodSymbol = method x
 
     scala> val mm = im.reflectMethod(methodX)
@@ -111,7 +111,7 @@ A `FieldMirror` is used for getting/setting instance fields (like methods, Scala
     scala> val im = m.reflect(new C)
     im: scala.reflect.runtime.universe.InstanceMirror = instance mirror for C@5f0c8ac1
 
-    scala> val fieldX = ru.typeOf[C].declaration(ru.newTermName("x")).asTerm.accessed.asTerm
+    scala> val fieldX = ru.typeOf[C].declaration(ru.TermName("x")).asTerm.accessed.asTerm
     fieldX: scala.reflect.runtime.universe.TermSymbol = value x
 
     scala> val fmX = im.reflectField(fieldX)
@@ -122,7 +122,7 @@ A `FieldMirror` is used for getting/setting instance fields (like methods, Scala
 
     scala> fmX.set(3)
 
-    scala> val fieldY = ru.typeOf[C].declaration(ru.newTermName("y")).asTerm.accessed.asTerm
+    scala> val fieldY = ru.typeOf[C].declaration(ru.TermName("y")).asTerm.accessed.asTerm
     fieldY: scala.reflect.runtime.universe.TermSymbol = variable y
 
     scala> val fmY = im.reflectField(fieldY)

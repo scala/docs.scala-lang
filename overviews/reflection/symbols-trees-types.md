@@ -81,7 +81,7 @@ For example,
     scala> class C[T] { def test[U](x: T)(y: U): Int = ??? }
     defined class C
 
-    scala> val testMember = typeOf[C[Int]].member(newTermName("test"))
+    scala> val testMember = typeOf[C[Int]].member(TermName("test"))
     testMember: scala.reflect.runtime.universe.Symbol = method test
 
 In this case, `member` returns an instance of `Symbol`, not `MethodSymbol` as
@@ -417,7 +417,7 @@ For example, given the following tree:
     scala> import scala.reflect.runtime.universe._
     import scala.reflect.runtime.universe._
 
-    scala> val tree = Apply(Select(Ident(newTermName("x")), newTermName("$plus")), List(Literal(Constant(2))))
+    scala> val tree = Apply(Select(Ident(TermName("x")), TermName("$plus")), List(Literal(Constant(2))))
     tree: scala.reflect.runtime.universe.Apply = x.$plus(2)
 
 We can use method `show` (or `toString`, which is equivalent) to see what that
@@ -461,7 +461,7 @@ the tree that `expr` contains by:
 And we can inspect the raw tree by simply doing:
 
     scala> showRaw(tree)
-    res1: String = Block(List(ClassDef(Modifiers(), newTypeName("Flower"), List(), Template(List(Ident(newTypeName("AnyRef"))), emptyValDef, List(DefDef(Modifiers(), nme.CONSTRUCTOR, List(), List(List()), TypeTree(), Block(List(Apply(Select(Super(This(tpnme.EMPTY), tpnme.EMPTY), nme.CONSTRUCTOR), List())), Literal(Constant(())))), DefDef(Modifiers(), newTermName("name"), List(), List(), TypeTree(), Literal(Constant("Rose"))))))), Literal(Constant(())))
+    res1: String = Block(List(ClassDef(Modifiers(), TypeName("Flower"), List(), Template(List(Ident(TypeName("AnyRef"))), emptyValDef, List(DefDef(Modifiers(), nme.CONSTRUCTOR, List(), List(List()), TypeTree(), Block(List(Apply(Select(Super(This(tpnme.EMPTY), tpnme.EMPTY), nme.CONSTRUCTOR), List())), Literal(Constant(())))), DefDef(Modifiers(), TermName("name"), List(), List(), TypeTree(), Literal(Constant("Rose"))))))), Literal(Constant(())))
 
 ### Traversing Trees
 
@@ -483,7 +483,7 @@ in the following tree:
     scala> import scala.reflect.runtime.universe._
     import scala.reflect.runtime.universe._
 
-    scala> val tree = Apply(Select(Ident(newTermName("x")), newTermName("$plus")), List(Literal(Constant(2))))
+    scala> val tree = Apply(Select(Ident(TermName("x")), TermName("$plus")), List(Literal(Constant(2))))
     tree: scala.reflect.runtime.universe.Apply = x.$plus(2)
 
 We can simply match on our `tree`, and in the case that we have an `Apply`
@@ -507,7 +507,7 @@ arbitrarily deep within other nodes. A simple illustration would be if we were
 to add a second `Apply` node to the above tree which serves to add `3` to our
 sum:
 
-    scala> val tree = Apply(Select(Apply(Select(Ident(newTermName("x")), newTermName("$plus")), List(Literal(Constant(2)))), newTermName("$plus")), List(Literal(Constant(3))))
+    scala> val tree = Apply(Select(Apply(Select(Ident(TermName("x")), TermName("$plus")), List(Literal(Constant(2)))), TermName("$plus")), List(Literal(Constant(3))))
     tree: scala.reflect.runtime.universe.Apply = x.$plus(2).$plus(3)
 
 If we apply the same pattern match as above, we obtain the outer `Apply` node
@@ -519,7 +519,7 @@ we saw above:
     arg: scala.reflect.runtime.universe.Tree = 3
 
     scala> showRaw(fun)
-    res3: String = Select(Apply(Select(Ident(newTermName("x")), newTermName("$plus")), List(Literal(Constant(2)))), newTermName("$plus"))
+    res3: String = Select(Apply(Select(Ident(TermName("x")), TermName("$plus")), List(Literal(Constant(2)))), TermName("$plus"))
 
 In cases where one must do some richer task, such as traversing an entire
 tree without stopping at a specific node, or collecting and inspecting all
@@ -545,7 +545,7 @@ all `Apply` nodes, we could do:
     scala> import scala.reflect.runtime.universe._
     import scala.reflect.runtime.universe._
 
-    scala> val tree = Apply(Select(Apply(Select(Ident(newTermName("x")), newTermName("$plus")), List(Literal(Constant(2)))), newTermName("$plus")), List(Literal(Constant(3))))
+    scala> val tree = Apply(Select(Apply(Select(Ident(TermName("x")), TermName("$plus")), List(Literal(Constant(2)))), TermName("$plus")), List(Literal(Constant(3))))
     tree: scala.reflect.runtime.universe.Apply = x.$plus(2).$plus(3)
 
     scala> object traverser extends Traverser {
@@ -615,7 +615,7 @@ Scala Reflection. To see why, let's start with a small example:
     import scala.reflect.runtime.universe._
 
     scala> { val tree = reify(println(2)).tree; showRaw(tree) }
-    res0: String = Apply(Select(Select(This(newTypeName("scala")), newTermName("Predef")), newTermName("println")), List(Literal(Constant(2))))
+    res0: String = Apply(Select(Select(This(TypeName("scala")), TermName("Predef")), TermName("println")), List(Literal(Constant(2))))
 
 Here, we simply `reify` the call to `println(2)`-- that is, we convert the
 expression `println(2)` to its corresponding tree representation. Then we
@@ -690,7 +690,7 @@ section:
     tb: scala.tools.reflect.ToolBox[scala.reflect.runtime.universe.type] = scala.tools.reflect.ToolBoxFactory$ToolBoxImpl@7bc979dd
 
     scala> showRaw(tb.parse("println(2)"))
-    res2: String = Apply(Ident(newTermName("println")), List(Literal(Constant(2))))
+    res2: String = Apply(Ident(TermName("println")), List(Literal(Constant(2))))
 
 It's important to note that, unlike `reify`, toolboxes aren't limited by the
 typeability requirement-- although this flexibility is achieved by sacrificing
@@ -765,7 +765,7 @@ and fragility.
 Our earlier example involving `println(2)` can be manually constructed as
 follows:
 
-    scala> Apply(Ident(newTermName("println")), List(Literal(Constant(2))))
+    scala> Apply(Ident(TermName("println")), List(Literal(Constant(2))))
     res0: scala.reflect.runtime.universe.Apply = println(2)
 
 The canonical use case for this technique is when the target tree needs to be

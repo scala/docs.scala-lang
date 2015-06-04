@@ -148,7 +148,7 @@ Scala コンパイラが持つ型情報を全ては入手できない可能性�
 `shipped` メンバにアクセスするには、前の例と同じく、`p` のクラス (`Purchase`) を含むクラスローダが読み込んだ全てのクラスを入手可能とするミラー `m`
 を取得することから始める。
 
-    scala> val shippingTermSymb = ru.typeOf[Purchase].declaration(ru.newTermName("shipped")).asTerm
+    scala> val shippingTermSymb = ru.typeOf[Purchase].declaration(ru.TermName("shipped")).asTerm
     shippingTermSymb: scala.reflect.runtime.universe.TermSymbol = method shipped
 
 次に、`shipped` フィールドの宣言を照会して `TermSymbol` (`Symbol` 型の 1つ) を得る。

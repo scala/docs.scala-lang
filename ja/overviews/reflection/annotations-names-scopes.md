@@ -63,7 +63,7 @@ Scala または Java アノテーションに対しては `scalaArgs` は空で
     scala> import scala.reflect.runtime.universe._
     import scala.reflect.runtime.universe._
 
-    scala> val mapName = newTermName("map")
+    scala> val mapName = TermName("map")
     mapName: scala.reflect.runtime.universe.TermName = map
 
 上のコードでは、実行時リフレクション・ユニバースに関連付けられた `Name` を作成している。
@@ -77,7 +77,7 @@ Scala または Java アノテーションに対しては `scalaArgs` は空で
     scala> listTpe.member(mapName)
     res1: scala.reflect.runtime.universe.Symbol = method map
 
-型メンバを検索するには `newTypeName` を代わりに使って `member` を呼び出す。
+型メンバを検索するには `TypeName` を代わりに使って `member` を呼び出す。
 暗黙の変換を使って文字列から項もしくは型の名前に変換することもできる:
 
     scala> listTpe.member("map": TermName)
@@ -140,16 +140,16 @@ Scala のプログラムにおいて、「`_root_`」のような特定の名前
 
 例えば、`C` という名前のクラスを作るには以下のように書く:
 
-    ClassDef(Modifiers(NoFlags), newTypeName("C"), Nil, ...)
+    ClassDef(Modifiers(NoFlags), TypeName("C"), Nil, ...)
 
 ここでフラグ集合は空だ。`C` を private にするには、以下のようにする:
 
-    ClassDef(Modifiers(PRIVATE), newTypeName("C"), Nil, ...)
+    ClassDef(Modifiers(PRIVATE), TypeName("C"), Nil, ...)
 
 垂直バー演算子 (`|`) を使って組み合わせることができる。例えば、private final
 クラスは以下のように書く:
 
-    ClassDef(Modifiers(PRIVATE | FINAL), newTypeName("C"), Nil, ...)
+    ClassDef(Modifiers(PRIVATE | FINAL), TypeName("C"), Nil, ...)
 
 全てのフラグのリストは
 `scala.reflect.api.FlagSets#FlagValues` にて定義されており、
@@ -238,7 +238,7 @@ Java の列挙要素への参照はシンボル (`scala.reflect.api.Symbols#Symb
     object Test extends App {
       val jann = typeOf[JavaAnnottee].typeSymbol.annotations(0).javaArgs
 
-      def jarg(name: String) = jann(newTermName(name)) match {
+      def jarg(name: String) = jann(TermName(name)) match {
         // Constant is always wrapped in a Literal or LiteralArgument tree node
         case LiteralArgument(ct: Constant) => value
         case _ => sys.error("Not a constant")
@@ -301,15 +301,15 @@ Java の列挙要素への参照はシンボル (`scala.reflect.api.Symbols#Symb
 
     scala> showRaw(tree)
     res1: String = Block(List(
-      ClassDef(Modifiers(FINAL), newTypeName("C"), List(), Template(
-        List(Ident(newTypeName("AnyRef"))),
+      ClassDef(Modifiers(FINAL), TypeName("C"), List(), Template(
+        List(Ident(TypeName("AnyRef"))),
         emptyValDef,
         List(
           DefDef(Modifiers(), nme.CONSTRUCTOR, List(), List(List()), TypeTree(),
             Block(List(
               Apply(Select(Super(This(tpnme.EMPTY), tpnme.EMPTY), nme.CONSTRUCTOR), List())),
               Literal(Constant(())))),
-          DefDef(Modifiers(), newTermName("x"), List(), List(), TypeTree(),
+          DefDef(Modifiers(), TermName("x"), List(), List(), TypeTree(),
             Literal(Constant(2))))))),
       Literal(Constant(())))
 
@@ -323,23 +323,23 @@ Java の列挙要素への参照はシンボル (`scala.reflect.api.Symbols#Symb
 
     scala> showRaw(cm.mkToolBox().typeCheck(tree), printTypes = true)
     res2: String = Block[1](List(
-      ClassDef[2](Modifiers(FINAL), newTypeName("C"), List(), Template[3](
-        List(Ident[4](newTypeName("AnyRef"))),
+      ClassDef[2](Modifiers(FINAL), TypeName("C"), List(), Template[3](
+        List(Ident[4](TypeName("AnyRef"))),
         emptyValDef,
         List(
           DefDef[2](Modifiers(), nme.CONSTRUCTOR, List(), List(List()), TypeTree[3](),
             Block[1](List(
-              Apply[4](Select[5](Super[6](This[3](newTypeName("C")), tpnme.EMPTY), ...))),
+              Apply[4](Select[5](Super[6](This[3](TypeName("C")), tpnme.EMPTY), ...))),
               Literal[1](Constant(())))),
-          DefDef[2](Modifiers(), newTermName("x"), List(), List(), TypeTree[7](),
+          DefDef[2](Modifiers(), TermName("x"), List(), List(), TypeTree[7](),
             Literal[8](Constant(2))))))),
       Literal[1](Constant(())))
     [1] TypeRef(ThisType(scala), scala.Unit, List())
     [2] NoType
-    [3] TypeRef(NoPrefix, newTypeName("C"), List())
+    [3] TypeRef(NoPrefix, TypeName("C"), List())
     [4] TypeRef(ThisType(java.lang), java.lang.Object, List())
     [5] MethodType(List(), TypeRef(ThisType(java.lang), java.lang.Object, List()))
-    [6] SuperType(ThisType(newTypeName("C")), TypeRef(... java.lang.Object ...))
+    [6] SuperType(ThisType(TypeName("C")), TypeRef(... java.lang.Object ...))
     [7] TypeRef(ThisType(scala), scala.Int, List())
     [8] ConstantType(Constant(2))
 
@@ -362,10 +362,10 @@ Java の列挙要素への参照はシンボル (`scala.reflect.api.Symbols#Symb
 
     scala> showRaw(tpe)
     res1: String = RefinedType(
-      List(TypeRef(ThisType(scala), newTypeName("AnyRef"), List())),
+      List(TypeRef(ThisType(scala), TypeName("AnyRef"), List())),
       Scope(
-        newTermName("x"),
-        newTermName("y")))
+        TermName("x"),
+        TermName("y")))
 
 この `showRaw` メソッドにはデフォルトでは `false`
 になっている名前付きパラメータ `printIds` と `printKinds` を持つ。
@@ -374,10 +374,10 @@ Java の列挙要素への参照はシンボル (`scala.reflect.api.Symbols#Symb
 
     scala> showRaw(tpe, printIds = true, printKinds = true)
     res2: String = RefinedType(
-      List(TypeRef(ThisType(scala#2043#PK), newTypeName("AnyRef")#691#TPE, List())),
+      List(TypeRef(ThisType(scala#2043#PK), TypeName("AnyRef")#691#TPE, List())),
       Scope(
-        newTermName("x")#2540#METH,
-        newTermName("y")#2541#GET))
+        TermName("x")#2540#METH,
+        TermName("y")#2541#GET))
 
 ## 位置情報
 

@@ -83,7 +83,7 @@ In Scala programs type macros can appear in one of five possible roles: type rol
 
 To put it in a nutshell, expansion of a type macro replace the usage of a type macro with a tree it returns. To find out whether an expansion makes sense, mentally replace some usage of a macro with its expansion and check whether the resulting program is correct.
 
-For example, a type macro used as `TM(2)(3)` in `class C extends TM(2)(3)` can expand into `Apply(Ident(newTypeName("B")), List(Literal(Constant(2))))`, because that would result in `class C extends B(2)`. However the same expansion wouldn't make sense if `TM(2)(3)` was used as a type in `def x: TM(2)(3) = ???`, because `def x: B(2) = ???` (given that `B` itself is not a type macro; if it is, it will be recursively expanded and the result of the expansion will determine validity of the program).
+For example, a type macro used as `TM(2)(3)` in `class C extends TM(2)(3)` can expand into `Apply(Ident(TypeName("B")), List(Literal(Constant(2))))`, because that would result in `class C extends B(2)`. However the same expansion wouldn't make sense if `TM(2)(3)` was used as a type in `def x: TM(2)(3) = ???`, because `def x: B(2) = ???` (given that `B` itself is not a type macro; if it is, it will be recursively expanded and the result of the expansion will determine validity of the program).
 
 ## Tips and tricks
 

@@ -168,7 +168,7 @@ which makes all classes and types available that are loaded by the classloader
 that also loaded the class of `p` (`Purchase`), which we need in order to
 access member `shipped`.
 
-    scala> val shippingTermSymb = ru.typeOf[Purchase].declaration(ru.newTermName("shipped")).asTerm
+    scala> val shippingTermSymb = ru.typeOf[Purchase].declaration(ru.TermName("shipped")).asTerm
     shippingTermSymb: scala.reflect.runtime.universe.TermSymbol = method shipped
 
 We now look up the declaration of the `shipped` field, which gives us a
