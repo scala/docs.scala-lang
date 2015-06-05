@@ -42,7 +42,7 @@ that the enclosing annotation is a macro annotation).
 
     @compileTimeOnly("enable macro paradise to expand macro annotations")
     class identity extends StaticAnnotation {
-      def macroTransform(annottees: Any*) = macro ???
+      def macroTransform(annottees: Any*): Any = macro ???
     }
 
 First of all, note the `@compileTimeOnly` annotation. It is not mandatory, but is recommended to avoid confusion.
