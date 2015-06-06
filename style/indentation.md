@@ -54,8 +54,8 @@ sometimes without even so much as a warning.
 
 When calling a method which takes numerous arguments (in the range of
 five or more), it is often necessary to wrap the method invocation onto
-multiple lines. In such cases, put all arguments on a line by
-themselves, indented two spaces from the current indent level:
+multiple lines. In such cases, put each argument on a line by
+itself, indented two spaces from the current indent level:
 
     foo(
       someVeryLongFieldName,
