@@ -1,6 +1,6 @@
 ---
 layout: sip
-title: Trait Parameters
+title: SIP 25 - Trait Parameters
 ---
 
 __Martin Odersky__
