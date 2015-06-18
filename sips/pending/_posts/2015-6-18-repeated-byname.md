@@ -1,3 +1,10 @@
+---
+layout: sip
+title: SIP-24 - Repeated By Name Parameters
+---
+
+**By: Martin Odersky**
+
 ## Motivation
 
 Scala so far does not allow by-name repeated parameters. But I can't see a good reason why this combination should be disallowed. Also, the combination is necessary to allow vararg parameters that are passed as expressions to inline methods (instead of being lifted out).
