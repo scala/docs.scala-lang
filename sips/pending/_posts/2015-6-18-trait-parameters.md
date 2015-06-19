@@ -1,6 +1,7 @@
 ---
 layout: sip
 title: SIP 25 - Trait Parameters
+disqus: true
 ---
 
 __Martin Odersky__
@@ -61,4 +62,4 @@ the evaluation order would be `e1`, initializer of `T`, `e2`, initializer of `V`
 
 ## See Also ##
 
-Dotty issue: https://github.com/lampepfl/dotty/issues/640
+[Dotty Issue #640](https://github.com/lampepfl/dotty/issues/640)

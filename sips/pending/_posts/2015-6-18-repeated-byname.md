@@ -1,6 +1,7 @@
 ---
 layout: sip
 title: SIP-24 - Repeated By Name Parameters
+disqus: true
 ---
 
 **By: Martin Odersky**
@@ -26,4 +27,4 @@ The same holds for an vararg argument of the form `e: _*`. The argument expressi
 
 ## See also
 
-https://github.com/lampepfl/dotty/issues/499
+[Dotty Issue #499](https://github.com/lampepfl/dotty/issues/499)
