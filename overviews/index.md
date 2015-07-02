@@ -49,7 +49,7 @@ languages: [es, ja]
     * [Parallel Collection Conversions](/overviews/parallel-collections/conversions.html)
     * [Concurrent Tries](/overviews/parallel-collections/ctries.html)
     * [Architecture of the Parallel Collections Library](/overviews/parallel-collections/architecture.html)
-    * [Creating Custom Parallel Collections](/overviews/parallel-collections/custom-parallel-collections.*tml)
+    * [Creating Custom Parallel Collections](/overviews/parallel-collections/custom-parallel-collections.html)
     * [Configuring Parallel Collections](/overviews/parallel-collections/configuration.html)
     * [Measuring Performance](/overviews/parallel-collections/performance.html)
   * [The Scala Actors Migration Guide](/overviews/core/actors-migration-guide.html) <span class="label success">New in 2.10</span>
