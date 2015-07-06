@@ -35,9 +35,7 @@ Remember the following guidelines:
 -   `for` - Omit braces if you have a `yield` clause. Otherwise,
     surround the contents with curly-braces, even if the contents are
     only a single line.
--   `case` - Omit braces if the `case` expression fits on a single line.
-    Otherwise, use curly braces for clarity (even though they are not
-    *required* by the parser).
+-   `case` - Always omit braces in case clauses.
 
 <!-- necessary to separate the following example from the above bullet list --> 
 
