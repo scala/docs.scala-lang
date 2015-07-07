@@ -54,5 +54,8 @@ Right Now:
 * Martin Odersky
 * Josh Suereth
 * Adriaan Moors
+* Seth Tisue
+* Dick Wall
+* Heather Miller
 
 We will ask new members to join from time to time.   The committee decides collectively, but Martin reserves the final say if there is a disagreement.

@@ -7,8 +7,8 @@
           <ul class="nav">
            <li><a href="{{ site.baseurl }}/sips/sip-submission.html">Submitting a SIP</a></li>
            <li><a href="{{ site.baseurl }}/sips/slip-submission.html">Submitting a SLIP</a></li>
-           <li><a href="{{ site.baseurl }}/sips/sip-list.html">SIP/SLIP List</a></li>
-           <li><a href="{{ site.baseurl }}/sips/sip-tutorial.html">Tutorial: Writing a SIP/SLIP</a></li>
+           <li><a href="{{ site.baseurl }}/sips/sip-list.html">SIP List</a></li>
+           <li><a href="{{ site.baseurl }}/sips/sip-tutorial.html">Tutorial: Writing a SIP</a></li>
            <li><a href="https://groups.google.com/forum/#!forum/scala-sips">Mailing List</a></li>
           </ul>
         </div>
