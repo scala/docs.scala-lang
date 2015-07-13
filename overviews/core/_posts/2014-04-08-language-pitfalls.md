@@ -62,8 +62,8 @@ Be aware of the order or use lazy vals or defs.
 
 **Example 2 solution:**
 
-    // no solution for safely overriding a concrete val in parent class.
-    // Use a def in the parent class as in Example 3
+    // early definitions (SRS 5.1.6)
+    new { override val x = 6 } with Foo
 
 **Example 3:**
 
