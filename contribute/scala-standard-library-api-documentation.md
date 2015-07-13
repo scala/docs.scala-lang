@@ -87,8 +87,7 @@ new API documentation to save time, effort, mistakes and repetition.
   and so on.
 * Prior to commit, be sure to read
   [A note about git commit messages](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html) and the [Scala Project & Developer Guidelines](https://github.com/scala/scala/blob/2.11.x/CONTRIBUTING.md).
-* Also read the Scala [Pull Request Policy](https://github.com/scala/scala/wiki/Pull-Request-Policy).
-  Some of this document will clearly not apply (like the sections on providing tests,
+  Some of this latter document will clearly not apply (like the sections on providing tests,
   however see below for some special requirements for documentation). Do still read
   the whole document though, and pay close attention to the title and commit
   message formats, noting *present tense*, *length limits* and that it must merge
