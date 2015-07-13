@@ -1,7 +1,7 @@
 ---
-layout: slip
+layout: sip
 disqus: true
-title: SLIP-NN - SLIP Title
+title: SIP-NN - SIP Title
 ---
 
 **By: Author 1 and Author 2 and Author 3**
@@ -9,8 +9,7 @@ title: SLIP-NN - SLIP Title
 This document is provided as a template to get you started. Feel free to add, augment,
 remove, restructure and otherwise adapt the structure for what you need after cloning it.
 The cloned document should be placed in sips/pending/_posts according to the naming
-conventions described in the [SIP tutorial](./sip-tutorial.html). SIPs and SLIPs share
-organization and infrastructure on docs.scala-lang.org to reduce duplication.
+conventions described in the [SIP tutorial](./sip-tutorial.html).
 
 ## History
 
@@ -30,7 +29,7 @@ A high level overview of the library with:
 * An explanation of the reason the library is needed, what's missing in the core libs
   that is supplied.
 * Simple code examples if they help clarify, note that there will be ample opportunity
-  for more detailed code examples later in the SLIP
+  for more detailed code examples later in the SIP
 
 Think of the introduction as serving to describe the library addition in a way
 that lets a reader decide if this is what they are looking for, whether they think
@@ -87,6 +86,21 @@ can download and try now, is highly recommended.
 * Time frame, target Scala version for inclusion.
 * Roll-out plan (start with external module, include in std distribution, move to core).
 * Other volunteers/contributors (with areas of expertise, github contact info, etc.)
+
+## Counter-Examples
+
+What the library is not intended to be used for. Examples of what to avoid and
+why.
+
+## Drawbacks
+
+Why should we *not* do this. Be honest, these questions will come out during the
+process anyway so it's better to get them out up front.
+
+## Alternatives
+
+* What other possibilities have been examined?
+* What is the impact of not implementing this proposal?
 
 ## References
 

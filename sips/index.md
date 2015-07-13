@@ -6,8 +6,11 @@ title: Scala Improvement Process
 
 # Welcome #
 
-This is the landing page for the Scala Improvement Process (SIP) and the
-Scala Library Improvement Process (SLIP).
+This is the landing page for the Scala Improvement Process (SIP). The
+Scala Library Improvement Process (SLIP) has its own distinct mechanism
+documented at [Scala SLIP github project page](https://www.github.com/scala/slip).
+In time, the SIP mechanism may be split out into a github oriented process 
+similar to the SLIP mechanism.
 
 The SIP process replaced the older SID (Scala Improvement Document) process,
 however the old completed SID documents are still available to review in the
@@ -22,12 +25,7 @@ called the Scala Library Improvement Process (SLIP) exists.
 SLIPs are intended for any library addition or modification that does not require
 associated changes to the Scala language or compiler.
 
-[Submitting a SLIP](./slip-submission.html) covers the process, and the
-[SIP tutorial](./sip-tutorial.html) has information on how to write and format
-your SLIP document.
-
-Logistically, SLIPs share a lot of infrastructure with SIPs, including sharing the
-[SIP mailing list](https://groups.google.com/forum/#!forum/scala-sips).
+[Submitting a SLIP](./slip-submission.html) covers the process.
 
 ## SIPs
 
