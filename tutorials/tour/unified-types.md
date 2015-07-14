@@ -33,7 +33,7 @@ Here is an example that demonstrates that both numbers, characters, boolean valu
       }
     }
  
-The program declares an application `UnifiedTypes` in form of a top-level singleton object extending `App`. The application defines a local variable `set` which refers to an instance of class `LinkedHashSet[Any]`. The program adds various elements to this set. The elements have to conform to the declared set element type `Any`. In the end, string representations of all elements are printed out.
+The program declares an application `UnifiedTypes` in form of a top-level [singleton object](singleton-objects.html) extending `App`. The application defines a local variable `set` which refers to an instance of class `LinkedHashSet[Any]`. The program adds various elements to this set. The elements have to conform to the declared set element type `Any`. In the end, string representations of all elements are printed out.
 
 Here is the output of the program:
 
