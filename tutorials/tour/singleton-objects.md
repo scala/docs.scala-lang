@@ -24,7 +24,7 @@ A singleton object can extend classes and traits. In fact, a [case class](case-c
 
 ## Companions ##
 
-Most singleton objects do not stand alone, but instead are associated with a class of the same name. The “singleton object of the same name” of a case class, mentioned above, is an example of this. When this happens, the singleton object is called the *companion object* of the class, and the class is called the *companion class* of the object. This is so common that it's safe to refer to singleton objects as “companion objects” informally, without much risk of confusion.
+Most singleton objects do not stand alone, but instead are associated with a class of the same name. The “singleton object of the same name” of a case class, mentioned above, is an example of this. When this happens, the singleton object is called the *companion object* of the class, and the class is called the *companion class* of the object.
 
 [Scaladoc](https://wiki.scala-lang.org/display/SW/Introduction) has special support for jumping between a class and its companion: if the big “C” or “O” circle has its edge folded up at the bottom, you can click the circle to jump to the companion.
 
