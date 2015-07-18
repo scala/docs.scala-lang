@@ -30,11 +30,9 @@ Typically bug fixes and new features start out as an idea or an experiment poste
 about things you want to implement. People proficient in certain areas of Scala usually monitor mailing lists, so you'll often get some help
 by simply posting a message. But the most efficient way to connect is to cc your message to one of the people responsible for maintaining the aspect of Scala which you wish to contribute to.
 
-This is the list of language features/libraries along with their maintainer's full names and GitHub usernames:
+A list of language features/libraries along with their maintainer's full names and GitHub usernames is [in the Scala repo README](https://github.com/scala/scala#get-in-touch).
 
-{% include maintainers.html %}
-
-Since Martin is the person who submitted the string interpolation Scala Improvement Proposal and implemented this language feature for Scala 2.10.0, he might be interested in learning of new bugfixes to that feature.
+In our running example, since Martin is the person who submitted the string interpolation Scala Improvement Proposal and implemented this language feature for Scala 2.10.0, he might be interested in learning of new bugfixes to that feature.
 
 As alluded to earlier, one must also choose an appropriate mailing list. Typically, one would use the scala-internals mailing list, as it is devoted to discussions about the core internal design and implementation of the Scala system. However, since this issue has been discussed previously on the scala-user mailing list,
 in this example, we post to the [the scala-user mailing list](http://groups.google.com/group/scala-user) about our issue.
