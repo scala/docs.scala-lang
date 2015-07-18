@@ -5,10 +5,10 @@ title: Regular Expression Patterns
 disqus: true
 
 tutorial: scala-tour
-num: 22
+num: 14
 
-tutorial-next: traits
-tutorial-previous: polymorphic-methods
+tutorial-next: extractor-objects
+tutorial-previous: xml-processing
 ---
 
 ## Right-ignoring sequence patterns ##

@@ -5,9 +5,9 @@ title: Classes
 disqus: true
 
 tutorial: scala-tour
-num: 4
-tutorial-next: case-classes
-tutorial-previous: compound-types
+num: 3
+tutorial-next: traits
+tutorial-previous: unified-types
 ---
 
 Classes in Scala are static templates that can be instantiated into many objects at runtime.

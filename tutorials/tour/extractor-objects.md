@@ -5,9 +5,9 @@ title: Extractor Objects
 disqus: true
 
 tutorial: scala-tour
-num: 8
-tutorial-next: generic-classes
-tutorial-previous: sequence-comprehensions
+num: 15
+tutorial-next: sequence-comprehensions
+tutorial-previous: regular-expression-patterns
 ---
 
 In Scala, patterns can be defined independently of case classes. To this end, a method named unapply is defined to yield a so-called extractor. For instance, the following code defines an extractor [object](singleton-objects.html) Twice.

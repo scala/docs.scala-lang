@@ -5,9 +5,9 @@ title: Higher-order Functions
 disqus: true
 
 tutorial: scala-tour
-num: 18
-tutorial-next: pattern-matching
-tutorial-previous: operators
+num: 7
+tutorial-next: nested-functions
+tutorial-previous: anonymous-function-syntax
 ---
 
 Scala allows the definition of higher-order functions. These are functions that _take other functions as parameters_, or whose _result is a function_. Here is a function `apply` which takes another function `f` and a value `v` and applies function `f` to `v`:
