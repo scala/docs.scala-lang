@@ -5,9 +5,9 @@ title: Anonymous Function Syntax
 disqus: true
 
 tutorial: scala-tour
-num: 14
-tutorial-next: currying
-tutorial-previous: nested-functions
+num: 6
+tutorial-next: higher-order-functions
+tutorial-previous: mixin-class-composition
 ---
 
 Scala provides a relatively lightweight syntax for defining anonymous functions. The following expression creates a successor function for integers:

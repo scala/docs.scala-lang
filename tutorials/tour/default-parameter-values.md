@@ -1,13 +1,13 @@
 ---
 layout: tutorial
-title: Default Parameter values
+title: Default Parameter Values
 
 disqus: true
 
 tutorial: scala-tour
-num: 34
+num: 32
 tutorial-next: named-parameters
-tutorial-previous: xml-processing
+tutorial-previous: annotations
 ---
 
 Scala provides the ability to give parameters default values that can be used to allow a caller to omit those parameters.

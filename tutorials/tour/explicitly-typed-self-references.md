@@ -5,9 +5,9 @@ title: Explicitly Typed Self References
 disqus: true
 
 tutorial: scala-tour
-num: 27
-tutorial-next: local-type-inference
-tutorial-previous: lower-type-bounds
+num: 24
+tutorial-next: implicit-parameters
+tutorial-previous: compound-types
 ---
 
 When developing extensible software it is sometimes handy to declare the type of the value `this` explicitly. To motivate this, we will derive a small extensible representation of a graph data structure in Scala.

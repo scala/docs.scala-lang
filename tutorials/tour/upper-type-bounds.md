@@ -5,9 +5,9 @@ title: Upper Type Bounds
 disqus: true
 
 tutorial: scala-tour
-num: 25
-tutorial-next: explicitly-typed-self-references
-tutorial-previous: traits
+num: 19
+tutorial-next: lower-type-bounds
+tutorial-previous: variances
 ---
 
 In Scala, [type parameters](generic-classes.html) and [abstract types](abstract-types.html) may be constrained by a type bound. Such type bounds limit the concrete values of the type variables and possibly reveal more information about the members of such types. An _upper type bound_ `T <: A` declares that type variable `T` refers to a subtype of type `A`.

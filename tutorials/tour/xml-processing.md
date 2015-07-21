@@ -5,9 +5,9 @@ title: XML Processing
 disqus: true
 
 tutorial: scala-tour
-num: 33
-tutorial-next: default-parameter-values
-tutorial-previous: views
+num: 13
+tutorial-next: regular-expression-patterns
+tutorial-previous: singleton-objects
 ---
 
 Scala can be used to easily create, parse, and process XML documents. XML data can be represented in Scala either by using a generic data representation, or with a data-specific data representation. The latter approach is supported by the *data-binding* tool `schema2src`.

@@ -5,9 +5,9 @@ title: Mixin Class Composition
 disqus: true
 
 tutorial: scala-tour
-num: 12
-tutorial-next: nested-functions
-tutorial-previous: mixin-class-composition
+num: 5
+tutorial-next: anonymous-function-syntax
+tutorial-previous: traits
 ---
 
 As opposed to languages that only support _single inheritance_, Scala has a more general notion of class reuse. Scala makes it possible to reuse the _new member definitions of a class_ (i.e. the delta in relationship to the superclass) in the definition of a new class. This is expressed as a _mixin-class composition_. Consider the following abstraction for iterators.

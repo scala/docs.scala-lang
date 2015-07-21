@@ -5,7 +5,9 @@ title: Lower Type Bounds
 disqus: true
 
 tutorial: scala-tour
-num: 26
+num: 20
+tutorial-next: inner-classes
+tutorial-previous: upper-type-bounds
 ---
 
 While [upper type bounds](upper-type-bounds.html) limit a type to a subtype of another type, *lower type bounds* declare a type to be a supertype of another type. The term `T >: A` expresses that the type parameter `T` or the abstract type `T` refer to a supertype of type `A`.

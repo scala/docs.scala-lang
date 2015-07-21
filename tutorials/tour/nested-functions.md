@@ -5,9 +5,9 @@ title: Nested Functions
 disqus: true
 
 tutorial: scala-tour
-num: 13
-tutorial-next: anonymous-function-syntax
-tutorial-previous: mixin-class-composition
+num: 8
+tutorial-next: currying
+tutorial-previous: higher-order-functions
 ---
 
 In Scala it is possible to nest function definitions. The following object provides a `filter` function for extracting values from a list of integers that are below a threshold value:

@@ -5,9 +5,9 @@ title: Annotations
 disqus: true
 
 tutorial: scala-tour
-num: 3
-tutorial-next: classes
-tutorial-previous: abstract-types
+num: 31
+tutorial-next: default-parameter-values
+tutorial-previous: automatic-closures
 ---
 
 Annotations associate meta-information with definitions.
