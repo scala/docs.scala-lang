@@ -65,8 +65,8 @@ reshape their system so it starts all the actors right after their instantiation
 ## Migration Overview
 
 ### Migration Kit
-In Scala 2.10.0 actors reside inside the [Scala distribution](http://www.scala-lang.org/downloads) as a separate jar ( *scala-actors.jar* ), and 
-the their interface is deprecated. The distribution also includes Akka actors in the *akka-actor.jar*. 
+In Scala 2.10.0 actors reside inside the [Scala distribution](http://www.scala-lang.org/downloads) as a separate jar ( *scala-actors.jar* ), and
+the their interface is deprecated. The distribution also includes Akka actors in the *akka-actor.jar*.
 The AMK resides both in the Scala actors and in the *akka-actor.jar*. Future major releases of Scala will not contain Scala actors and the AMK.
 
 To start the migration user needs to add the *scala-actors.jar* and the *scala-actors-migration.jar* to the build of their projects.
@@ -520,7 +520,7 @@ In Akka, watching the already dead actor will result in sending the `Terminated`
 At this point user code is ready to operate on Akka actors. Now we can switch the actors library from Scala to
 Akka actors. To do this configure the build to exclude the `scala-actors.jar` and the `scala-actors-migration.jar`,
  and to include *akka-actor.jar* and *typesafe-config.jar*. The AMK is built to work only with Akka actors version 2.1 which are included in the [Scala distribution](http://www.scala-lang.org/downloads)
-  and can be configured by these [instructions](http://doc.akka.io/docs/akka/2.1.0/intro/getting-started.html#Using_a_build_tool). 
+  and can be configured by these [instructions](http://doc.akka.io/docs/akka/2.1.0/intro/getting-started.html#Using_a_build_tool).
 
 After this change the compilation will fail due to different package names and slight differences in the API. We will have to change each imported actor
 from scala to Akka. Following is the non-exhaustive list of package names that need to be changed:
@@ -548,11 +548,10 @@ In Akka only the currently processed message can be stashed. Therefore replace t
 
 #### Adding Actor Systems
 
-The Akka actors are organized in [Actor systems](http://doc.akka.io/docs/akka/2.1.0/general/actor-systems.html). Each actor that is instantiated
-must belong to one `ActorSystem`. To achieve this add an `ActorSystem` instance to each actor instatiation call as a first argument. The following example
-shows the transformation.
+The Akka actors are organized in [Actor systems](http://doc.akka.io/docs/akka/2.1.0/general/actor-systems.html).
+ Each actor that is instantiated must belong to one `ActorSystem`. To achieve this add an `ActorSystem` instance to each actor instantiation call as a first argument. The following example shows the transformation.
 
-To achieve this transformation you need to have an actor system instantiated. For example:
+To achieve this transformation you need to have an actor system instantiated. The actor system is usually instantiated in Scala objects or configuration classes that are global to your system. For example:
 
     val system = ActorSystem("migration-system")
 
