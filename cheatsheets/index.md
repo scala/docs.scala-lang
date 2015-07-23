@@ -29,7 +29,7 @@ languages: [fr, ja, pt-br]
 |  `val zscore = (mean:R, sd:R) => (x:R) => (x-mean)/sd`                                                   |  currying, obvious syntax. |
 |  `def zscore(mean:R, sd:R) = (x:R) => (x-mean)/sd`                                                       |  currying, obvious syntax |
 |  `def zscore(mean:R, sd:R)(x:R) = (x-mean)/sd`                                                           |  currying, sugar syntax. but then: |
-|  `val normer = zscore(7, 0.4)_`                                                                          |  need trailing underscore to get the partial, only for the sugar version. |
+|  `val normer = zscore(7, 0.4)(_)`                                                                          |  need trailing underscore to get the partial, only for the sugar version. |
 |  `def mapmake[T](g:T=>T)(seq: List[T]) = seq.map(g)`                                                     |  generic type. |
 |  `5.+(3); 5 + 3` <br> `(1 to 5) map (_*2)`                                                               |  infix sugar. |
 |  `def sum(args: Int*) = args.reduceLeft(_+_)`                                                            |  varargs. |
