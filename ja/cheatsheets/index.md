@@ -39,7 +39,7 @@ language: ja
 |  `import scala.collection.Vector` <br> `import scala.collection.{Vector, Sequence}`                      |  個別にインポートします。         |
 |  `import scala.collection.{Vector => Vec28}`                                                             |  別名でインポートします。           |
 |  `import java.util.{Date => _, _}`                                                                       |  Date を除いて java.util のすべてをインポートします。 |
-|  _(ファイル先頭の) _`package pkg` <br> `package pkg { ... }`                                             |  パッケージ宣言                     |
+|  _(ファイル先頭の)_ `package pkg` <br> `package pkg { ... }`                                             |  パッケージ宣言                     |
 |  <span id="data_structures" class="h2">データ構造</span>                                                 |                                     |
 |  `(1,2,3)`                                                                                               |  タプルリテラル (`Tuple3`)          |
 |  `var (x,y,z) = (1,2,3)`                                                                                 |  構造化代入: パターンマッチによるタプルの展開。   |
