@@ -59,8 +59,8 @@ language: ja
 |  `for ((x,y) <- xs zip ys) yield x*y` _次と同じ_ <br>`(xs zip ys) map { case (x,y) => x*y }`             |  for 内包表記: 構造化代入             |
 |  `for (x <- xs; y <- ys) yield x*y` _次と同じ_ <br>`xs flatMap {x => ys map {y => x*y}}`                 |  for 内包表記: 直積                   |
 |  `for (x <- xs; y <- ys) {`<br>    `println("%d/%d = %.1f".format(x,y, x*y))`<br>`}`                     |  for 内包表記: 命令型の記述<br>[sprintf-style](http://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax) |
-|  `for (i <- 1 to 5) {`<br>    `println(i)`<br>`}`                                                        |  for 内包表記: 上限を含んだイテレート |
-|  `for (i <- 1 until 5) {`<br>    `println(i)`<br>`}`                                                     |  for 内包表記: 上限を除いたイテレート |
+|  `for (i <- 1 to 5) {`<br>    `println(i)`<br>`}`                                                        |  for 内包表記: 上限を含んだ走査       |
+|  `for (i <- 1 until 5) {`<br>    `println(i)`<br>`}`                                                     |  for 内包表記: 上限を除いた走査       |
 |  <span id="pattern_matching" class="h2">パターンマッチング</span>                                        |                                       |
 |  <span class="label success">Good</span> `(xs zip ys) map { case (x,y) => x*y }`<br> <span class="label important">Bad</span> `(xs zip ys) map( (x,y) => x*y )` |  case をパターンマッチのために関数の引数で使っています。 |
 |  <span class="label important">Bad</span><br>`val v42 = 42`<br>`Some(3) match {`<br>`  case Some(v42) => println("42")`<br>`    case _ => println("Not 42")`<br>`}` |  "v42" は任意の Int の値とマッチする変数名として解釈され、 "42" が表示されます。 |
