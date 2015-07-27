@@ -17,7 +17,7 @@ And the short form:
 
     s"I have substituted $identifier into this String"
 
-Where `identifier` is only permitted to consist of alphanumeric characters in SIP-11.
+Where `identifier` is specified in SIP-11 to consist of only alphanumeric characters.
 
 The actual implementation uses the specification of `identifier` from the language spec, where it must start with a letter, but can then contain letters, numbers, or underscores for subsequent characters:
 
@@ -90,6 +90,8 @@ Allow backtick-denoted identifiers when using short-form string interpolation, a
 Permitting any characters within the two delimiting backticks, as per the language specification.
 
 This proposal doesn't break any compatibility, as the `` $` `` construct is currently an error within interpolated strings.
+
+It doesn't go all the way to a full unification of the two identifier styles - as there's no way (and little need) to acommodate the operator form.  But it does remove at least one discrepancy.
 
 
 ## Syntax changes ##
