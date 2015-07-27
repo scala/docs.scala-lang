@@ -19,7 +19,7 @@ And the short form:
 
 Where `identifier` is only permitted to consist of alphanumeric characters in SIP-11.
 
-In practice, `identifier` must start with a letter, but can contain letters, numbers, or underscores for subsequent characters; as per the definition of an Identifier in the language spec:
+The actual implementation uses the specification of `identifier` from the language spec, where it must start with a letter, but can then contain letters, numbers, or underscores for subsequent characters:
 
     op ::= opchar {opchar}
     varid ::= lower idrest
@@ -41,10 +41,26 @@ and string-literal form, denoted by backticks:
     val n = 22
     val `a..n` = 'a' until ('a'+n) mkString ", "
 
-String-literal form is of special interest for interpolation, as it allows domain-specific identifiers that are particularly
-suited to areas such as code generation, quasiquoting and markup languages.
+We therefore have the unfortunate and inconsistent situation that there are TWO permitted specifications for identifiers!  Those used in string interpolation and those used everywhere else.
 
-To use such identifiers, it becomes necessary to redundantly nest backticks within full-form interpolation. e.g:
+So this is fine:
+
+    val tpe = "abc"
+    val str = s"I am a $tpe"
+
+Whereas the following is invalid:
+
+    val `type` = "abc"
+    val str = s"I am a $`type`"
+
+To use such identifiers, it becomes necessary to redundantly nest backticks within full-form interpolation.
+
+
+The following examples are taken from the original use-case of boilerplate generation in Shapeless:
+https://github.com/milessabin/shapeless/blob/master/project/Boilerplate.scala
+
+
+Current usage:
 
     s"implicit def hlistTupler${arity}[${`A..N`}] : Aux[${`A::N`}, ${`(A..N)`}] = ..."
 
@@ -61,6 +77,7 @@ Where short form is invalid because there's no non-alphanumeric character to del
 
     s"I am $qualbody" //invalid
     s"I am ${qual}body" //current solution, but less readable than backticks
+    s"I am $`qual`body" //with SIP proposal
 
 
 ## Proposal ##
@@ -72,18 +89,7 @@ Allow backtick-denoted identifiers when using short-form string interpolation, a
 
 Permitting any characters within the two delimiting backticks, as per the language specification.
 
-This (non-enhanced) proposal doesn't break any compatibility, as the `` $` `` construct is currently an error within interpolated strings.
-
-## Enhanced proposal ##
-
-Allow backtick-denoted identifiers in string interpolation, *without requiring the `$` prefix*:
-
-    s"implicit def hlistTupler`arity`[`A..N`] : Aux[`A::N`, `(A..N)`] = ..."
-    s"I am `qual`body"
-
-As is the norm with escape characters, doubling the backtick would allow it to appear as a literal character in the resuling string.
-
-This is a **breaking change**, most likely to impact users of quasiquotes, where any existing uses would need to be escaped by doubling.  Owing to backward-compatibility, this could normally only occur at a major version, though quasiquotes are fortunately still experimental.
+This proposal doesn't break any compatibility, as the `` $` `` construct is currently an error within interpolated strings.
 
 
 ## Syntax changes ##
@@ -101,17 +107,4 @@ The escaping syntax within processed strings (for the non-enhanced proposal) nee
     alphaid  ::=  upper idrest
               |  varid
 
-and for the enhanced proposal:
 
-    SimpleExpr1  ::= … | processedStringLiteral
-    processedStringLiteral
-             ::= alphaid‘"’ {printableChar \ (‘"’ | ‘$’ | ‘`’) | escape} ‘"’ 
-              |  alphaid ‘"""’ {[‘"’] [‘"’] char \ (‘"’ | ‘$’ | ‘`’) | escape} {‘"’} ‘"""’
-    escape   ::= ‘$$’ 
-              |  ‘``’
-              |  ‘$’ letter { letter | digit } 
-              |  ‘$’ ‘`’ stringLit ‘`’
-              |  ‘`’ stringLit ‘`’
-              |  ‘$’BlockExpr
-    alphaid  ::=  upper idrest
-              |  varid
