@@ -94,7 +94,7 @@ This proposal doesn't break any compatibility, as the `` $` `` construct is curr
 
 ## Syntax changes ##
 
-The escaping syntax within processed strings (for the non-enhanced proposal) needs to be changed as follows:
+The escaping syntax within processed strings needs to be changed as follows:
 
     SimpleExpr1  ::= … | processedStringLiteral
     processedStringLiteral
