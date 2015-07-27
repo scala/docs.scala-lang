@@ -1,1 +1,0 @@
-This wiki will soon be replaced by http://docs.scala-lang.org/scala/.
