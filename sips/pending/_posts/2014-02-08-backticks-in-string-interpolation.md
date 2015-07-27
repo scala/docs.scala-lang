@@ -41,7 +41,7 @@ and string-literal form, denoted by backticks:
     val n = 22
     val `a..n` = 'a' until ('a'+n) mkString ", "
 
-We therefore have the unfortunate and inconsistent situation that there are TWO permitted specifications for identifiers!  Those used in string interpolation and those used everywhere else.
+We therefore have the unfortunate and inconsistent situation that there are TWO permitted specifications for identifiers!  Those used in string interpolation and those used everywhere else.  Backticks have become a second-class citizen.
 
 So this is fine:
 
@@ -51,9 +51,11 @@ So this is fine:
 Whereas the following is invalid:
 
     val `type` = "abc"
-    val str = s"I am a $`type`"
+    val str = s"I am a $`type`" //syntax error
 
-To use such identifiers, it becomes necessary to redundantly nest backticks within full-form interpolation.
+To use such identifiers, we need to redundantly nest backticks within full-form interpolation.
+
+    val str = s"I am a ${`type`}"
 
 
 The following examples are taken from the original use-case of boilerplate generation in Shapeless:
@@ -64,17 +66,13 @@ Current usage:
 
     s"implicit def hlistTupler${arity}[${`A..N`}] : Aux[${`A::N`}, ${`(A..N)`}] = ..."
 
-Compare this to equivalent code if backticks were available to use directly in short-form interpolation:
+Sugested usage following this SIP:
 
     s"implicit def hlistTupler$`arity`[$`A..N`] : Aux[$`A::N`, $`(A..N)`] = ..."
 
 Note the additional benefit of being able to use backquotes in a sample such as:
 
     val qual = "some"
-    s"I am $`qual`body"
-
-Where short form is invalid because there's no non-alphanumeric character to delimit the identifier from subsequent text:
-
     s"I am $qualbody" //invalid
     s"I am ${qual}body" //current solution, but less readable than backticks
     s"I am $`qual`body" //with SIP proposal
@@ -82,7 +80,7 @@ Where short form is invalid because there's no non-alphanumeric character to del
 
 ## Proposal ##
 
-Allow backtick-denoted identifiers when using short-form string interpolation, as per:
+Allow backtick-denoted identifiers when using short-form string interpolation, e.g.:
 
     s"implicit def hlistTupler$`arity`[$`A..N`] : Aux[$`A::N`, $`(A..N)`] = ..."
     s"I am $`qual`body"
