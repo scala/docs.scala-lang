@@ -9,9 +9,9 @@ num: 34
 language: es
 ---
 
-Scala tiene la capacidad de de dar a los parámetros valores por defecto que pueden ser usados para permitir a quien invoca el método o función que omita dichos parámetros.
+Scala tiene la capacidad de dar a los parámetros valores por defecto que pueden ser usados para permitir a quien invoca el método o función que omita dichos parámetros.
 
-En Java, uno tiende a ver muchos métodos sobrecargados que solamente sirven para proveer valores por defecto para ciertos parámetros de un método largo. En especial se ve este comportamiento en contstructores:
+En Java, uno tiende a ver muchos métodos sobrecargados que solamente sirven para proveer valores por defecto para ciertos parámetros de un método largo. En especial se ve este comportamiento en constructores:
 
     public class HashMap<K,V> {
       public HashMap(Map<? extends K,? extends V> m);
@@ -24,9 +24,9 @@ En Java, uno tiende a ver muchos métodos sobrecargados que solamente sirven par
       public HashMap(int initialCapacity, float loadFactor);
     }
 
-Existen realmente dos constructores aquí; uno que toma otro mapa y uno que toma una capacidad y un factor de carga. El tercer y cuarto constructores están ahí para premitir a los usuarios de la clase <code>HashMap</code> crear instancias con el valor por defecto que probablemente sea el mejor para ambos, el factor de carga y la capacidad.
+Existen realmente dos constructores aquí; uno que toma otro mapa y uno que toma una capacidad y un factor de carga. Los constructores tercero y cuarto están ahí para premitir a los usuarios de la clase <code>HashMap</code> crear instancias con el valor por defecto que probablemente sea el mejor para ambos, el factor de carga y la capacidad.
 
-Más problemático es que los valores usados para ser por defecto están tanto en la documentación (Javadoc) y en el código. Mantener esto actualizado es fácil de olvidar. Un típico patrón utilizado para no cometer estos errores es agregar constantes públicas cuyo valor será mostrado en el Javadoc:
+Más problemático es que los valores usados para ser por defecto están tanto en la documentación (Javadoc) como en el código. Mantener ambos actualizado es dificil. Un patrón típico utilizado para no cometer estos errores es agregar constantes públicas cuyo valor será mostrado en el Javadoc:
 
     public class HashMap<K,V> {
       public static final int DEFAULT_CAPACITY = 16;
