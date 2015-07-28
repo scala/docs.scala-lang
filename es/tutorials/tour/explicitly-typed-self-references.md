@@ -9,7 +9,7 @@ num: 27
 language: es
 ---
 
-Cuando se está construyendo software extensible, algunas veces resulta útil declarar el tipo de la variable `this` explicitamente. Para motivar esto, realizaremos una pequeña representación de una estructura de datos Grafo, en Scala.
+Cuando se está construyendo software extensible, algunas veces resulta útil declarar el tipo de la variable `this` explícitamente. Para motivar esto, realizaremos una pequeña representación de una estructura de datos Grafo, en Scala.
 
 Aquí hay una definición que sirve para describir un grafo:
 
@@ -52,7 +52,9 @@ Una posible implementación de la clase `Grafo`es dada en el siguiente programa:
       }
     }
 
-La clase `GrafoDirigido` especializa la clase `Grafo` al proveer una implementación parcial. La implementación es solamente parcial, porque queremos que sea posible extender `GrafoDirigido` aun más. Por lo tanto, esta clase deja todos los detalles de implementación abiertos y así tanto los tipos vértice como nodo son abstractos.  De todas maneras, la clase `GrafoDirigido` revela algunos detalles adicionales sobre la implementación del tipo vértice al acotar el límite a la clase `VerticeImpl`. Además, tenemos algunas implementaciones preliminares de vértices y nodos representados por las clases `VerticeImpl` y `NodoImpl`. Ya que es necesario crear nuevos objetos nodo y vértice con nuestra implementación parcial del grafo, también debimos agregar los métodos constructores `nuevoNodo` y `nuevoVertice`. Los métodos `agregarNodo` y `conectarCon` están ambos definidos en términos de estos métodos constructores. Una mirada más cercana a la implementación del método `conectarCon` revela que para crear un vértice es necesario pasar la auto-referencia `this` al método constructor `newEdge`. Pero a `this` en ese contexto le es asignado el tipo `NodoImpl`, por lo tanto no es compatible con el tipo `Nodo` el cual es requerido por el correspondiente método constructor. Como consecuencia, el programa superior no está bien definido y compilador mostrará un mensaje de error.
+La clase `GrafoDirigido` especializa la clase `Grafo` al proveer una implementación parcial. La implementación es solamente parcial, porque queremos que sea posible extender `GrafoDirigido` aun más. Por lo tanto, esta clase deja todos los detalles de implementación abiertos y así tanto los tipos vértice como nodo son abstractos.  De todas maneras, la clase `GrafoDirigido` revela algunos detalles adicionales sobre la implementación del tipo vértice al acotar el límite a la clase `VerticeImpl`. Además, tenemos algunas implementaciones preliminares de vértices y nodos representados por las clases `VerticeImpl` y `NodoImpl`.
+
+Ya que es necesario crear nuevos objetos nodo y vértice con nuestra implementación parcial del grafo, también debimos agregar los métodos constructores `nuevoNodo` y `nuevoVertice`. Los métodos `agregarNodo` y `conectarCon` están ambos definidos en términos de estos métodos constructores. Una mirada más cercana a la implementación del método `conectarCon` revela que para crear un vértice es necesario pasar la auto-referencia `this` al método constructor `newEdge`. Pero a `this` en ese contexto le es asignado el tipo `NodoImpl`, por lo tanto no es compatible con el tipo `Nodo` el cual es requerido por el correspondiente método constructor. Como consecuencia, el programa superior no está bien definido y compilador mostrará un mensaje de error.
 
 En Scala es posible atar a una clase otro tipo (que será implementado en el futuro) al darle su propia auto-referencia `this` el otro tipo explicitamente. Podemos usar este mecanismo para arreglar nuestro código de arriba. El tipo the `this` explícito es especificado dentro del cuerpo de la clase `GrafoDirigido`.
 
@@ -71,7 +73,7 @@ Este es el progama arreglado:
       ...
     }
 
-En esta nueva definición de la clase `NodoImpl`, `this` tiene el tipo `Nodo`. Ya que `Nodo` es abstracta y por lo tanto todavía no sabemos si `NodoImpl` es realmente un subtipo de `Nodo`, el sistema de tipado de Scala no permitirá instanciar esta clase. Pero de todas maneras, estipulamos con esta anotación explicita de tipo que que en algún momento en el tiempo , una subclase de `NodeImpl` tiene que denotar un subtipo del tipo `Nodo` de forma de ser instanciable.
+En esta nueva definición de la clase `NodoImpl`, `this` tiene el tipo `Nodo`. Ya que `Nodo` es abstracta y por lo tanto todavía no sabemos si `NodoImpl` es realmente un subtipo de `Nodo`, el sistema de tipado de Scala no permitirá instanciar esta clase. Pero de todas maneras, estipulamos con esta anotación explicita de tipo que en algún momento en el tiempo, una subclase de `NodeImpl` tiene que denotar un subtipo del tipo `Nodo` de forma de ser instanciable.
 
 Aquí presentamos una especialización concreta de `GrafoDirigido` donde todos los miembros abstractos son definidos:
 
