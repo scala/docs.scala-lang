@@ -65,4 +65,4 @@ Es necesario notar que generalmente es posible transformar un tipo abstracto en 
       println("content = " + buf.element)
     }
  
-Nótese que es debido usar [variance annotations](variances.html) aquí; de otra manera no sería posible ocultar el tipo implementado por la secuencia concreta del objeto retornado por `newIntSeqBuf`. Además, existen casos en los cuales no es posible remplazar tipos abstractos con tipos parametrizados.
+Nótese que es necesario usar [variance annotations](variances.html) aquí; de otra manera no sería posible ocultar el tipo implementado por la secuencia concreta del objeto retornado por `newIntSeqBuf`. Además, existen casos en los cuales no es posible remplazar tipos abstractos con tipos parametrizados.
