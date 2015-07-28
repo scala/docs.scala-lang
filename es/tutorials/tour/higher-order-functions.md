@@ -31,4 +31,4 @@ La ejecución da como valor el siguiente resultado:
 
     [7]
 
-En este ejemplo, el método `decorator.layout` es coaccionado automáticamente a un valor del tipo `Int => String` como es requerido por el método `apply`. Por favor note que el método `decorator.layout` es un _método polimórfico_ (esto es, se abstrae de algunos de los sus tipos) y el compilador de Scala primero tiene que instanciar correctamente el tipo del método.
+En este ejemplo, el método `decorator.layout` es coaccionado automáticamente a un valor del tipo `Int => String` como es requerido por el método `apply`. Por favor note que el método `decorator.layout` es un _método polimórfico_ (esto es, se abstrae de algunos de sus tipos) y el compilador de Scala primero tiene que instanciar correctamente el tipo del método.
