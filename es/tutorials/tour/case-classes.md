@@ -42,7 +42,7 @@ imprime
     Var(x) == Var(x) => true
     Var(x) == Var(y) => false
 
-Solo tiene sentido definir una clase Case si el reconocimiento de patrones es usado para descomponer la estructura de los datos de la clase. El siguiente objeto define define una linda función que imprime en pantalla nuestra representación del cálculo lambda:
+Solo tiene sentido definir una clase Case si el reconocimiento de patrones es usado para descomponer la estructura de los datos de la clase. El siguiente objeto define define una función de impresión `elegante` (en inglés `pretty`) que imprime en pantalla nuestra representación del cálculo lambda:
 
     object TermTest extends scala.App {
       def printTerm(term: Term) {
