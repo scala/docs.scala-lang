@@ -10,7 +10,7 @@ language: es
 ---
 _Nota de traducción: La palabra `mixin` puede ser traducida como mezcla, dando título a esta sección de: Composición de clases Mezcla, pero es preferible utilizar la notación original_
 
-En diferencia de lenguajes que solo soportan _herencia simple_, Scala tiene una notación más general de la reutilización de clases. Scala hace posible reutilizar la _nueva definición de miembros de una clase_ (es decir, el delta en relación a la superclase) en la definición de una nueva clase. Esto es expresado como una _composición de clases mixin_. Considere la siguiente abstracción para iteradores.
+A diferencia de lenguajes que solo soportan _herencia simple_, Scala tiene una notación más general de la reutilización de clases. Scala hace posible reutilizar la _nueva definición de miembros de una clase_ (es decir, el delta en relación a la superclase) en la definición de una nueva clase. Esto es expresado como una _composición de clases mixin_. Considere la siguiente abstracción para iteradores.
  
     abstract class AbsIterator {
       type T
