@@ -41,7 +41,7 @@ Las últimas dos lineas de este programa son equivalentes al siguiente código, 
     val x: MyPair[Int, String] = MyPair[Int, String](1, "scala")
     val y: Int = id[Int](1)
 
-En algunas situaciones puede ser bastante peligroso confira en el mecanismo de inferencia de tipos de Scala, como se ilustra en el siguiente ejemplo:
+En algunas situaciones puede ser bastante peligroso confiar en el mecanismo de inferencia de tipos de Scala, como se ilustra en el siguiente ejemplo:
 
     object InferenceTest4 {
       var obj = null
