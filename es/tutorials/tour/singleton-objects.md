@@ -6,12 +6,12 @@ disqus: true
 
 tutorial: scala-tour
 num: 12
-
+language: es
 tutorial-next: xml-processing
 tutorial-previous: pattern-matching
 ---
 
-Methods and values that aren't associated with individual instances of a [class](classes.html) belong in *singleton objects*, denoted by using the keyword `object` instead of `class`.
+Métodos y valores que no están asociados con instancias individuales de una [clase](classes.html) se denominan *objetos singleton* y se denotan con la palabra reservada `object` en vez de `class`.
 
     package test
 
@@ -19,19 +19,19 @@ Methods and values that aren't associated with individual instances of a [class]
       def sum(l: List[Int]): Int = l.sum
     }
 
-This `sum` method is available globally, and can be referred to, or imported, as `test.Blah.sum`.
+Este método `sum` está disponible de manera global, y puede ser referenciado, o importado, como `test.Blah.sum`.
 
-Singleton objects are sort of a shorthand for defining a single-use class, which can't directly be instantiated, and a `val` member at the point of definition of the `object`, with the same name. Indeed, like `val`s, singleton objects can be defined as members of a [trait](traits.html) or class, though this is atypical.
+Los objetos singleton son una especie de mezcla entre la definición de una clase de utilización única, la cual no pueden ser instanciada directamente, y un miembro `val`. De hecho, de la misma menera que los `val`, los objetos singleton pueden ser definidos como miembros de un [trait](traits.html) o de una clase, aunque esto no es muy frecuente.
 
-A singleton object can extend classes and traits. In fact, a [case class](case-classes.html) with no [type parameters](generic-classes.html) will by default create a singleton object of the same name, with a [`Function*`](http://www.scala-lang.org/api/current/scala/Function1.html) trait implemented.
+Un objeto singleton puede extender clases y _traits_. De hecho, una [clase Case](case-classes.html) sin [parámetros de tipo](generic-classes.html) generará por defecto un objeto singleton del mismo nombre, con una [`Función*`](http://www.scala-lang.org/api/current/scala/Function1.html) trait implementada.
 
-## Companions ##
+## Acompañantes ##
 
-Most singleton objects do not stand alone, but instead are associated with a class of the same name. The “singleton object of the same name” of a case class, mentioned above, is an example of this. When this happens, the singleton object is called the *companion object* of the class, and the class is called the *companion class* of the object.
+La mayoría de los objetos singleton no están solos, sino que en realidad están asociados con clases del mismo nombre. El "objeto singleton del mismo nombre" de una case Case, mencionada anteriormente es un ejemplo de esto. Cuando esto sucede, el objeto singleton es llamado el *objeto acompañante* de la clase, y la clase es a su vez llamada la *clase acompañante* del objeto.
 
-[Scaladoc](https://wiki.scala-lang.org/display/SW/Introduction) has special support for jumping between a class and its companion: if the big “C” or “O” circle has its edge folded up at the bottom, you can click the circle to jump to the companion.
+[Scaladoc](https://wiki.scala-lang.org/display/SW/Introduction) proporciona un soporte especial para ir y venir entre una clase y su acompañante: Si el gran círculo conteniendo la “C” u la “O” tiene su borde inferior doblado hacia adentro, es posible hacer click en el círculo para ir a su acompañante.
 
-A class and its companion object, if any, must be defined in the same source file. Like this:
+Una clase y su objeto acompañante, si existe, deben estar definidos en el mismo archivo fuente. Como por ejemplo:
 
     class IntPair(val x: Int, val y: Int)
 
@@ -42,13 +42,12 @@ A class and its companion object, if any, must be defined in the same source fil
         Ordering.by(ip => (ip.x, ip.y))
     }
 
-It's common to see typeclass instances as [implicit values](implicit-parameters.html), such as `ipord` above, defined in the companion, when following the typeclass pattern. This is because the companion's members are included in the default implicit search for related values.
+Es común ver instancias de clases tipo como [valores implícitos](implicit-parameters.html), (`ipord` en el ejemplo anterior) definida en el acompañante cuando se sigue el patron de clases tipo. Esto es debido a que los miembros del acompañante se incluyen en la búsqueda de implícitos por defecto.
 
-## Notes for Java programmers ##
+## Notas para los programadores Java ##
+`static` no es una palabra reservada en Scala. En cambio, todos los miembros que serían estáticos, incluso las clases, van en los objetos acompañantes. Estos, pueden ser referenciados usando la misma sintaxis, importados de manera individual o en grupo, etc.
 
-`static` is not a keyword in Scala. Instead, all members that would be static, including classes, should go in a singleton object instead. They can be referred to with the same syntax, imported piecemeal or as a group, and so on.
-
-Frequently, Java programmers define static members, perhaps `private`, as implementation aids for their instance members. These move to the companion, too; a common pattern is to import the companion object's members in the class, like so:
+Frecuentemente, los programadores Java, definen miembros estáticos, incluso definidos como `private`, como ayudas en la implementacion de los miembros de la instancia. Estos elementos también van en el objeto acompañante. Un patrón comúnmente utilizado es de importar los miembros del objeto acompañante en la clase, como por ejemplo:
 
     class X {
       import X._
@@ -60,9 +59,8 @@ Frequently, Java programmers define static members, perhaps `private`, as implem
       private def foo = 42
     }
 
-This illustrates another feature: in the context of `private`, a class and its companion are friends. `object X` can access private members of `class X`, and vice versa. To make a member *really* private to one or the other, use `private[this]`.
+Esto permite ilustrar otra característica: en el contexto de un `private`, una clase y su acompañante son amigos. El `objecto X` puede acceder miembros de la `clase X`, y vice versa. Para hacer un miembro *realmente* privado para uno u otro, utilice `private[this]`.
 
-For Java convenience, methods, including `var`s and `val`s, defined directly in a singleton object also have a static method defined in the companion class, called a *static forwarder*. Other members are accessible via the `X$.MODULE$` static field for `object X`.
+Para conveniencia de Java, los métodos que incluyen `var` y `val`, definidos directamente en un objeto singleton también tienen un método estático definido en la clase acompañante, llamado *static forwarder*. Otros miembros son accesibles por medio del campo estático `X$.MODULE$` para el `objeto X`.
 
-If you move everything to a companion object and find that all you have left is a class you don't want to be able to instantiate, simply delete the class. Static forwarders will still be created.
-
+Si todos los elementos se mueven al objeto acompanante y se descubre que lo que queda es una clase que no se quiere instanciar, entonces simplemente bórrela. Los *static forwarder* de todas formas van a ser creados.
