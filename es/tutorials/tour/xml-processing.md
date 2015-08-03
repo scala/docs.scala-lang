@@ -12,9 +12,9 @@ language: es
 Scala ha sido usado para crear, parsear y procesar de forma fácil documentos XML. Datos XML pueden ser representados en Scala tanto usando una representación genérica, o con una representación específica. Este último es soportado por la herramienta de *data-binding* `schema2src`.
 
 ### Representación en ejecución ###
-Los datos en XML son representados como árboles etiquetados. A partir de Scala 1.2 (versiones previas debían usar la opción -Xmarkup), te es posible crear convenientemente tales nodos etiquetados utilizando sintaxis XML.
+Los datos en XML son representados como árboles etiquetados. A partir de Scala 1.2 (versiones previas debían usar la opción -Xmarkup), es posible crear convenientemente tales nodos etiquetados utilizando sintaxis XML.
 
-Considera la siguiente documento XMl:
+Considera el siguiente documento XMl:
 
     <html>
       <head>
@@ -57,5 +57,6 @@ Es posible mezclar expresiones Scala y XML:
 
 ### Data Binding ###
 
-En muchos casos se tiene un DTD para los documentos XML que se quieren procesar. En este caso se quiere crear clases especiales para esto, y algo de código para parsear y guardar el XML. Scala tiene una ingeniosa herramienta que transofrma tus DTDs en una colección de definiciones de clases en Scala que hacen todo el trabajo por ti.
-La documentación y ejemplos para la herramienta `schema2src` pueden ser hallados en el libro de Burak [draft scala xml book](http://burak.emir.googlepages.com/scalaxbook.docbk.html).
+En muchos casos se tiene un DTD para los documentos XML que se quieren procesar. En este caso se quieren crear clases especiales para esto, y algo de código para parsear y guardar el XML. Scala tiene una ingeniosa herramienta que transforma tus DTDs en una colección de definiciones de clases en Scala que hacen todo el trabajo.
+
+La documentación y ejemplos para la herramienta `schema2src` se pueden encontrar en el libro de Burak [draft scala xml book](http://burak.emir.googlepages.com/scalaxbook.docbk.html).
