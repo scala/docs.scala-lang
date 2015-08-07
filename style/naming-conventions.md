@@ -255,7 +255,7 @@ final, immutable and it belongs to a package object or an object,
 it may be considered a constant (similar to Java's `static final` members):
 
     object Container {
-        val MyConstant = ...
+      val MyConstant = ...
     }
 
 The value: `Pi` in `scala.math` package is another example of such a constant.
