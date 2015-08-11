@@ -98,7 +98,7 @@ For example:
     def map[B](f: A => B) = ...
 
 Specifically, the parentheses may be omitted from the parameter type.
-Thus, we did *not* declare `f` to be of type "`(A) => B`, as this would
+Thus, we did *not* declare `f` to be of type `(A) => B`, as this would
 have been needlessly verbose. Consider the more extreme example:
 
     // wrong!
