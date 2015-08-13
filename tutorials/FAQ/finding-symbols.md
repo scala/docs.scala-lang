@@ -11,8 +11,8 @@ outof: 9
 Let's divide the operators, for the purpose of teaching, into **four categories**:
 
 * Keywords/reserved symbols
-* Automatically imported methods
 * Common methods
+* Automatically imported methods
 * Syntactic sugars/composition
 
 And let's see some arbitrary examples:
@@ -28,10 +28,11 @@ And let's see some arbitrary examples:
 
 The exact meaning of most of these methods depend on the class that is defining
 them. For example, `<=` on `Int` means _"less than or equal to"_, but it might
-mean something else in another class.  `::` is probably the method defined on
-`List` but it _could_ also be the object of the same name.
+mean something else in another class.  `::` in an expression is probably the method of the class
+`List` but it _could_ also be the object of the same name (and in a pattern it
+definitely is).
 
-So, let's see them.
+So, let's discuss these categories.
 
 Keywords/reserved symbols
 -------------------------
@@ -80,19 +81,52 @@ widely used, and has different meanings depending on the context. Here's a sampl
     f(xs: _*)         // Sequence xs is passed as multiple parameters to f(ys: T*)
     case Seq(xs @ _*) // Identifier xs is bound to the whole matched sequence
 
+Common methods
+--------------
+
+Many symbols are simply methods of a class, a trait, or an object. For instance, if you do
+
+    List(1, 2) ++ List(3, 4)
+
+You'll find the method `++` right on the ScalaDoc for [List][5]. However,
+there's one convention that you must be aware when searching for methods.
+Methods ending in colon (`:`) bind _to the right_ instead of the left. In other
+words, while the above method call is equivalent to:
+
+    List(1, 2).++(List(3, 4))
+
+If I had, instead `1 :: List(2, 3)`, that would be equivalent to:
+
+    List(2, 3).::(1)
+
+So you need to look at the type found _on the right_ when looking for methods
+ending in colon. Consider, for instance:
+
+    1 +: List(2, 3) :+ 4
+
+The first method (`+:`) binds to the right, and is found on `List`. The second
+method (`:+`) is just a normal method, and binds to the left -- again, on
+`List`.
+
+If you aren't sure what the type of the receiver is, you can look up the symbol
+on the ScalaDoc [index page for identifiers not starting with letters][2] (for
+standard Scala library; of course, third-party libraries can add their own
+symbolic methods, for which you should look at the corresponding page of _their_
+ScalaDoc).
+
 Automatically imported methods
 ------------------------------
 
-If you did not find the symbol you are looking for in the list above, then
+If you did not find the symbol you are looking for in the list of reserved symbols, then
 it must be a method, or part of one. But, often, you'll see some symbol and the
 documentation for the class will not have that method. When this happens,
 either you are looking at a composition of one or more methods with something
 else, or the method has been imported into scope, or is available through an
 imported implicit conversion.
 
-These can also be found in ScalaDoc's [index][2].
+These can also be found in ScalaDoc's [index][2], as mentioned above.
 
-Every Scala code has three automatic imports:
+All Scala code has three automatic imports:
 
     // Not necessarily in this order
     import java.lang._
@@ -119,33 +153,6 @@ object of type that is receiving the method. For example:
 In the above case, `->` is defined in the class [`ArrowAssoc`][4] through the
 method `any2ArrowAssoc` that takes an object of type `A`, where `A` is an
 unbounded type parameter to the same method.
-
-Common methods
---------------
-
-Many symbols are simply methods on a class. For instance, if you do
-
-    List(1, 2) ++ List(3, 4)
-
-You'll find the method `++` right on the ScalaDoc for [List][5]. However,
-there's one convention that you must be aware when searching for methods.
-Methods ending in colon (`:`) bind _to the right_ instead of the left. In other
-words, while the above method call is equivalent to:
-
-    List(1, 2).++(List(3, 4))
-
-If I had, instead `1 :: List(2, 3)`, that would be equivalent to:
-
-    List(2, 3).::(1)
-
-So you need to look at the type found _on the right_ when looking for methods
-ending in colon. Consider, for instance:
-
-    1 +: List(2, 3) :+ 4
-
-The first method (`+:`) binds to the right, and is found on `List`. The second
-method (`:+`) is just a normal method, and binds to the left -- again, on
-`List`.
 
 Syntactic sugars/composition
 -----------------------------
