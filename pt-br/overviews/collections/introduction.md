@@ -28,7 +28,7 @@ Embora as novidades das coleções sejam sutis à primeira vista, as mudanças q
 
 **Rápidas:** Operações de coleções são ajustadas e otimizadas em suas bibliotecas. E o resultado é que o uso de coleções é normalmente bastante eficiente. Talvez você consiga resultados um pouco melhores com estruturas de dados e operações cuidadosamente ajustadas, mas você também pode ter um resultado muito pior se tomar decisões de implementação não tão ideais durante este processo. Além disso, recentemente as coleções foram adaptadas para execução paralela em _cores_ múltiplos. Coleções paralelas suportam as mesmas operações que as seqüenciais, de forma que não é necessário aprender novas operações e o código não precisa ser reescrito. Você pode converter uma coleção seqüencial em uma paralela simplesmente invocando o método `par`.
 
-**Universal:** Coleções provêm as mesmas operações sobre qualquer tipo onde faz sentido que elas existam, de forma que você possa construir muitas coisas com um vocabulário de operações relativamente pequeno. Por exemplo, uma _string_ é conceitualmente uma seqüência de caracteres. Consequentemente, em coleções Scala, _strings_ suportam todas as operações de seqüências. O mesmo vale para _arrays_.
+**Universal:** Coleções proveem as mesmas operações sobre qualquer tipo onde faz sentido que elas existam, de forma que você possa construir muitas coisas com um vocabulário de operações relativamente pequeno. Por exemplo, uma _string_ é conceitualmente uma seqüência de caracteres. Consequentemente, em coleções Scala, _strings_ suportam todas as operações de seqüências. O mesmo vale para _arrays_.
 
 **Exemplo:** Aqui está uma linha de código que demonstra muitas das vantagens das coleções Scala.
 
@@ -38,4 +38,4 @@ Fica claro o que esta operação faz: ela particiona uma coleção de `pessoas` 
 
 Este código é muito mais conciso do que quando de um a três loops são necessários para o processamento tradicional de coleções (três loops para um _array_, porque o resultado intermediário precisa ser armazenado em outro lugar). Uma vez que você aprendeu o vocabulário básico das coleções você vai também perceber que usar este código é muito mais fácil e seguro que escrever loops explicitamente. Além disso, a operação `partition` é bem eficiente, e executa ainda mais rápido em coleções paralelas em múltiplos _cores_ (coleções paralelas são parte da versão Scala 2.9).
 
-Este documento exibe uma discussão aprofundada das APIs das classes das coleções Scala a partir da perspectiva do usuário. Elas te levam por um tour de todas as as classes e métodos fundamentais que definem.
+Este documento exibe uma discussão aprofundada das APIs das classes das coleções Scala a partir da perspectiva do usuário. Ele te leva por um tour de todas as as classes e métodos fundamentais que definem.
