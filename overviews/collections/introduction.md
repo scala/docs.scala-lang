@@ -92,5 +92,5 @@ collections have been released
 as part of Scala 2.9.)
 
 This document provides an in depth discussion of the APIs of the
-Scala collections classes from a user perspective.  They take you on
+Scala collections classes from a user perspective.  It takes you on
 a tour of all the fundamental classes and the methods they define.
