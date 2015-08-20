@@ -148,7 +148,7 @@ outof: 13
                                     | Quasiquote                  | Type
 ------------------------------------|-----------------------------|--------
  [Import][501]                      | `q"import $ref.{..$sels}"`  | Import
- [Case Clause][502]                 | `cq"$pat if $expr => expr"` | CaseDef
+ [Case Clause][502]                 | `cq"$pat if $expr => $expr"`| CaseDef
  [Generator Enumerator][503]        | `fq"$pat <- $expr"`         | Tree
  [Value Definition Enumerator][503] | `fq"$pat = $expr"`          | Tree
  [Guard Enumerator][503]            | `fq"if $expr"`              | Tree
