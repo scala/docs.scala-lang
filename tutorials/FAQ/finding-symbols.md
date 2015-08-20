@@ -8,30 +8,29 @@ partof: FAQ
 num: 1
 outof: 9
 ---
-Let's divide the operators, for the purpose of teaching, into **four categories**:
+We can divide the operators in Scala, for the purpose of teaching, into four categories:
 
 * Keywords/reserved symbols
-* Automatically imported methods
-* Common methods
+* Normal methods or values
+* Methods provided by implicit conversion
 * Syntactic sugars/composition
 
 And let's see some arbitrary examples:
 
-    ->    // Automatically imported method
     <-    // Keyword
-    ||=   // Syntactic sugar
-    ++=   // Syntactic sugar/composition or common method
+    ->    // Method provided by implicit conversion
     <=    // Common method
-    _+_   // Keyword/composition
+    ++=   // Can be a common method or syntactic sugar involving ++ method
     ::    // Common method or object
-    :+=   // Common method
+    _+_   // Not really a single operator; it's parsed as _ + _
 
-The exact meaning of most of these methods depend on the class that is defining
-them. For example, `<=` on `Int` means _"less than or equal to"_, but it might
-mean something else in another class.  `::` is probably the method defined on
-`List` but it _could_ also be the object of the same name.
+The exact meaning of most of these methods depends on the class they are defined
+on. For example, `<=` on `Int` means _"less than or equal to"_, but it might
+mean something else in another class.  `::` in an expression is probably the method of the class
+`List` but it can also refer to the object of the same name (and in a pattern it
+definitely does).
 
-So, let's see them.
+So, let's discuss these categories.
 
 Keywords/reserved symbols
 -------------------------
@@ -80,50 +79,10 @@ widely used, and has different meanings depending on the context. Here's a sampl
     f(xs: _*)         // Sequence xs is passed as multiple parameters to f(ys: T*)
     case Seq(xs @ _*) // Identifier xs is bound to the whole matched sequence
 
-Automatically imported methods
-------------------------------
-
-If you did not find the symbol you are looking for in the list above, then
-it must be a method, or part of one. But, often, you'll see some symbol and the
-documentation for the class will not have that method. When this happens,
-either you are looking at a composition of one or more methods with something
-else, or the method has been imported into scope, or is available through an
-imported implicit conversion.
-
-These can also be found in ScalaDoc's [index][2].
-
-Every Scala code has three automatic imports:
-
-    // Not necessarily in this order
-    import java.lang._
-    import scala._
-    import scala.Predef._
-
-The first two only make classes and singleton objects available. The third one
-contains all implicit conversions and imported methods, since [`Predef`][3] is
-an object itself.
-
-Looking inside `Predef` quickly shows some symbols:
-
-    class <:<
-    class =:=
-    object <%<
-    object =:=
-
-Any other symbol will be made available through an _implicit conversion_. Just
-look at the methods tagged with `implicit` that receive, as parameter, an
-object of type that is receiving the method. For example:
-
-    "a" -> 1  // Look for an implicit from String, AnyRef, Any or type parameter
-
-In the above case, `->` is defined in the class [`ArrowAssoc`][4] through the
-method `any2ArrowAssoc` that takes an object of type `A`, where `A` is an
-unbounded type parameter to the same method.
-
 Common methods
 --------------
 
-Many symbols are simply methods on a class. For instance, if you do
+Many symbols are simply methods of a class, a trait, or an object. For instance, if you do
 
     List(1, 2) ++ List(3, 4)
 
@@ -147,6 +106,61 @@ The first method (`+:`) binds to the right, and is found on `List`. The second
 method (`:+`) is just a normal method, and binds to the left -- again, on
 `List`.
 
+If the name ends in `=`, look for the method called the same without `=` and
+read the last section.
+
+If you aren't sure what the type of the receiver is, you can look up the symbol
+on the ScalaDoc [index page for identifiers not starting with letters][2] (for
+standard Scala library; of course, third-party libraries can add their own
+symbolic methods, for which you should look at the corresponding page of _their_
+ScalaDoc).
+
+Types and objects can also have symbolic names; in particular, it should be mentioned
+that for types with two type parameters the name can be written _between_ parameters,
+so that e.g. `Int <:< Any` is the same as `<:<[Int, Any]`.
+
+Methods provided by implicit conversion
+---------------------------------------
+
+If you did not find the symbol you are looking for in the list of reserved symbols, then
+it must be a method, or part of one. But, often, you'll see some symbol and the
+documentation for the class will not have that method. When this happens,
+either you are looking at a composition of one or more methods with something
+else, or the method has been imported into scope, or is available through an
+imported implicit conversion.
+
+These can also be found in ScalaDoc's [index][2], as mentioned above.
+
+All Scala code has three automatic imports:
+
+    // Not necessarily in this order
+    import java.lang._
+    import scala._
+    import scala.Predef._
+
+The first two only make classes and singleton objects available, none of which
+look like operators. [`Predef`][3] is the only interesting one for this post.
+
+Looking inside `Predef` shows some symbolic names:
+
+    class <:<
+    class =:=
+    object =:=
+    object <%< // removed in Scala 2.10
+    def ???
+
+There is also `::`, which doesn't appear in the ScalaDoc, but is mentioned in the comments.
+In addition, `Predef` makes some methods available through _implicit conversions_. Just
+look at the methods and classes with `implicit` modifier that receive, as parameter, an
+object of type that is receiving the method. For example, consider `"a" -> 1`. We need
+to look for an implicit which works on `"a"`, and so it can take `String`, one of its
+supertypes (`AnyRef` or `Any`) or a type parameter. In this case, we find
+`implicit final class ArrowAssoc[A](private val self: A)` which makes this implicit
+avaialable on all types.
+
+Other implicit conversions may be visible in your scope depending on imports, extended types or
+self-type annotations. See [Finding implicits](tutorials/FAQ/finding-implicits.md) for details.
+
 Syntactic sugars/composition
 -----------------------------
 
@@ -164,17 +178,16 @@ So, here's a few syntactic sugars that may hide a method:
       def unapply(n: Int) = if (arr.indices contains n) Some(arr(n)) else None
     }
 
-    var ex = new Example
-    println(ex(0))  // calls apply(0)
-    ex(0) = 2       // calls update(0, 2)
-    ex.b = 3        // calls b_=(3)
-    val ex(c) = 2   // calls unapply(2) and assigns result to c
-    ex += 1         // substituted for ex = ex + 1
+    val ex = new Example
+    println(ex(0))  // means ex.apply(0)
+    ex(0) = 2       // means ex.update(0, 2)
+    ex.b = 3        // means ex.b_=(3)
+    val ex(c) = 2   // calls ex.unapply(2) and assigns result to c, if it's Some; throws MatchError if it's None
+    ex += 1         // means ex = ex + 1; if Example had a += method, it would be used instead
 
-The last one is interesting, because *any* symbolic method can be combined to
-form an assignment-like method that way.
+The last one is interesting, because *any* symbolic method can be combined with `=` in that way.
 
-And, of course, there's various combinations that can appear in code:
+And, of course, all of the above can be combined in various combinations, e.g.
 
     (_+_) // An expression, or parameter, that is an anonymous function with
           // two parameters, used exactly where the underscores appear, and
