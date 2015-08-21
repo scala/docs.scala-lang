@@ -124,8 +124,6 @@ Scala provides more flexibility in this respect
                mail = "support@coders.com")
         class MyScalaClass ...
 
-This extended syntax is consistent with .NET's annotations and can accommodate their full capabilities.
-
 
 
 
