@@ -123,6 +123,4 @@ Reader 클래스의 `throws` 어노테이션을 주석으로 처리하면 자바
                mail = "support@coders.com")
         class MyScalaClass ...
 
-이렇게 확장된 구문은 .NET의 어노테이션과 같은 방식이며, 어노테이션의 기능을 최대한 활용할 수 있도록 해준다.
-
 윤창석, 이한욱 옮김

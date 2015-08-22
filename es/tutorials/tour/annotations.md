@@ -122,5 +122,3 @@ Scala provee más flexibilidad en este caso:
     @SourceURL("http://coders.com/",
                mail = "support@coders.com")
         class MyScalaClass ...
-
-Esta sintaxis extendida es consistente con las anotaciones de .NET y pueden obtenerse las capacidades máximas de estas.

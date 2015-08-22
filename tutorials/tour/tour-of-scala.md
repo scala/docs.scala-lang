@@ -41,7 +41,6 @@ In practice, the development of domain-specific applications often requires doma
 
 A joint use of both features facilitates the definition of new statements without extending the syntax and without using macro-like meta-programming facilities.
 
-Scala interoperates with Java and .NET.
-Scala is designed to interoperate well with the popular Java 2 Runtime Environment (JRE). In particular, the interaction with the mainstream object-oriented Java programming language is as smooth as possible. Newer Java features like [annotations](annotations.html) and Java generics have direct analogues in Scala. Those Scala features without Java analogues, such as [default](default-parameter-values.html) and [named parameters](named-parameters.html), compile as close to Java as they can reasonably come. Scala has the same compilation model (separate compilation, dynamic class loading) like Java and allows access to thousands of existing high-quality libraries. Support for the .NET Framework (CLR) is also available.
+Scala is designed to interoperate well with the popular Java 2 Runtime Environment (JRE). In particular, the interaction with the mainstream object-oriented Java programming language is as smooth as possible. Newer Java features like [annotations](annotations.html) and Java generics have direct analogues in Scala. Those Scala features without Java analogues, such as [default](default-parameter-values.html) and [named parameters](named-parameters.html), compile as close to Java as they can reasonably come. Scala has the same compilation model (separate compilation, dynamic class loading) like Java and allows access to thousands of existing high-quality libraries.
 
 Please continue to the next page to read more.

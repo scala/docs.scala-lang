@@ -40,6 +40,6 @@ En la práctica el desarrollo de aplicaciones específicas para un dominio gener
 
 El uso conjunto de ambas características facilita la definición de nuevas sentencias sin tener que extender la sintaxis y sin usar facciones de meta-programación como tipo macros.
 
-Scala está diseñado para interoperar bien con el popular Entorno de ejecución de Java 2 (JRE). En particular, la interacción con el lenguaje orientado a objetos Java es muy sencillo. Scala tiene el mismo esquema de compilación (compilación separada, carga de clases dinámica) que java y permite acceder a las miles de librerías de gran calidad existentes. También está disponible el soporte para el Framework .NET (CLR).
+Scala está diseñado para interoperar bien con el popular Entorno de ejecución de Java 2 (JRE). En particular, la interacción con el lenguaje orientado a objetos Java es muy sencillo. Scala tiene el mismo esquema de compilación (compilación separada, carga de clases dinámica) que java y permite acceder a las miles de librerías de gran calidad existentes.
 
 Por favor continúe a la próxima página para conocer más.
