@@ -5,7 +5,7 @@ label-text: New in 2.10
 overview: futures
 disqus: true
 language: zh-cn
-title: Futures and Promises
+title: Future和Promise
 ---
 
 **Philipp Haller, Aleksandar Prokopec, Heather Miller, Viktor Klang, Roland Kuhn, and Vojin Jovanovic 著**

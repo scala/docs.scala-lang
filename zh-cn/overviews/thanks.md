@@ -7,13 +7,13 @@ title: 致谢名单
 2013年10月份起，CSDN CODE开始组织志愿者翻译Scala官方文档。计划翻译的文档主要为Scala官网上overview部分的内容，包含以下部分：
 
 - The Scala Actors Migration Guide
-- Value Classes and Universal Traits 
-- String Interpolation NEW IN 2.10
-- Implicit Classes AVAILABLE
-- Futures and Promises NEW IN 2.10
+- Value Classes and Universal Traits
+- String Interpolation
+- Implicit Classes
+- Futures and Promises
 - Scala’s Parallel Collections Library
-- The Architecture of Scala Collections  
-- The Scala Actors API 
+- The Architecture of Scala Collections
+- The Scala Actors API
 - Scala’s Collections Library
 
 经过公开征集、筛选，我们最终组织了二十多位志愿者来进行此项翻译工作。我们并邀请到了国内Scala知名社区“Scala研学社”的两位老师**连城**、**尹绪森**来担任顾问和翻译校对的工作。在此向Scala研学社表示衷心的感谢！  

@@ -1,6 +1,6 @@
 ---
 layout: overview-large
-title: Mutable 和 Immutable 集合
+title: Mutable和Immutable集合
 
 disqus: true
 

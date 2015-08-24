@@ -1,6 +1,6 @@
 ---
 layout: overview-large
-title: 不可变集实体类
+title: 具体的不可变集实体类
 
 disqus: true
 

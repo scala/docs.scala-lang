@@ -5,7 +5,7 @@ language: zh-cn
 label-color: success
 label-text: New in 2.10
 overview: value-classes
-title: Value Classes and Universal
+title: Value Classes and Universal Traits
 ---
 
 **Mark Harrah 著**

@@ -5,7 +5,7 @@ language: zh-cn
 label-color: success
 label-text: New in 2.10
 overview: actors-migration-guide
-title: The Scala Actors Migration Guide
+title: Scala Actors迁移指南
 ---
 
 **Vojin Jovanovic 和 Philipp Haller 著**

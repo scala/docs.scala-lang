@@ -3,42 +3,51 @@ layout: guides-index
 language: zh-cn
 title: 目录
 ---
-##[Thanks](Thanks.md)
-##[The Scala Actors Migration Guide NEW IN 2.10](core/The-Scala-Actors-Migration-Guide.md)  
-##[Value Classes and Universal Traits NEW IN 2.10](core/Value-Classes-and-Universal-Traits.md)  
-##[String Interpolation NEW IN 2.10](core/String_Interpolation.md)  
-##[Implicit Classes AVAILABLE](core/Implicit-Classes.md)  
-##[Futures and Promises NEW IN 2.10](core/Futures-and-Promises.md)  
-## Scala’s Parallel Collections Library  
-- [Overview](parallel-collections/Overview.md)  
-- [Concrete Parallel Collection Classes](parallel-collections/Concrete_Parallel_Collection_Classes.md)  
-- [Parallel Collection Conversions](parallel-collections/Parallel_Collection_Conversions.md)  
-- [Concurrent Tries](parallel-collections/Concurrent_Tries.md)  
-- [Architecture of the Parallel Collections Library](parallel-collections/Architecture_of_the_Parallel_Collections_Library.md)  
-- [Creating Custom Parallel Collections](parallel-collections/Creating_Custom_Parallel_Collections.md)  
-- [Configuring Parallel Collections](parallel-collections/Configuring_Parallel_Collections.md)  
-- [Measuring Performance](parallel-collections/Measuring_Performance.md)  
 
-##[The Architecture of Scala Collections](core/The_Architecture_of_Scala_Collections.md)  
-##[The Scala Actors API](core/The_Scala_Actors_API.md)    
+<div class="page-header-index">
+  <h2>核心库</h2>
+</div>
+  * Scala的容器类
+    * [简介](/zh-cn/overviews/collections/introduction.html)
+    * [Mutable和Immutable集合](/zh-cn/overviews/collections/overview.html)
+    * [Trait Traversable](/zh-cn/overviews/collections/trait-traversable.html)
+    * [Trait Iterable](/zh-cn/overviews/collections/trait-iterable.html)
+    * [序列trait：Seq、IndexedSeq 及 LinearSeq](/zh-cn/overviews/collections/seqs.html)
+    * [集合](/zh-cn/overviews/collections/sets.html)
+    * [映射](/zh-cn/overviews/collections/maps.html)
+    * [具体的不可变集实体类](/zh-cn/overviews/collections/concrete-immutable-collection-classes.html)
+    * [具体的可变容器类](/zh-cn/overviews/collections/concrete-mutable-collection-classes.html)
+    * [数组](/zh-cn/overviews/collections/arrays.html)
+    * [字符串](/zh-cn/overviews/collections/strings.html)
+    * [性能特点](/zh-cn/overviews/collections/performance-characteristics.html)
+    * [等价性](/zh-cn/overviews/collections/equality.html)
+    * [视图](/zh-cn/overviews/collections/views.html)
+    * [Iterators](/zh-cn/overviews/collections/iterators.html)
+    * [从头定义新容器](/zh-cn/overviews/collections/creating-collections-from-scratch.html)
+    * [Java和Scala容器的转换](/zh-cn/overviews/collections/conversions-between-java-and-scala-collections.html)
+    * [Scala 2.7迁移指南](/zh-cn/overviews/collections/migrating-from-scala-27.html)
+  * [Scala容器类体系结构](/zh-cn/overviews/core/architecture-of-scala-collections.html)
+  * [字符串插值](/zh-cn/overviews/core/string-interpolation.html) <span class="label success">New in 2.10</span>
+  * [Implicit Classes](/zh-cn/overviews/core/implicit-classes.html) <span class="label success">New in 2.10</span>
+  * [Value Classes and Universal Traits](/zh-cn/overviews/core/value-classes.html) <span class="label success">New in 2.10</span>
 
-## Scala’s Collections Library  
+<div class="page-header-index">
+  <h2>Parallel and Concurrent Programming</h2>
+</div>
+  * [Future和Promise](/zh-cn/overviews/core/futures.html) <span class="label success">New in 2.10</span>
+  * Scala的并行容器类
+    * [概述](/zh-cn/overviews/parallel-collections/overview.html)
+    * [具体并行集合类](/zh-cn/overviews/parallel-collections/concrete-parallel-collections.html)
+    * [并行容器的转换](/zh-cn/overviews/parallel-collections/conversions.html)
+    * [并发字典树](/zh-cn/overviews/parallel-collections/ctries.html)
+    * [并行集合库的架构](/zh-cn/overviews/parallel-collections/architecture.html)
+    * [创建自定义并行容器](/zh-cn/overviews/parallel-collections/custom-parallel-collections.html)
+    * [配置并行集合](/zh-cn/overviews/parallel-collections/configuration.html)
+    * [测量性能](/zh-cn/overviews/parallel-collections/performance.html)
+  * [Scala Actors迁移指南](/zh-cn/overviews/core/actors-migration-guide.html) <span class="label success">New in 2.10</span>
+  * [The Scala Actors API](/zh-cn/overviews/core/actors.html) <span class="label important">Deprecated</span>
 
-- [Introduction](collections/Introduction.md)  
-- [Mutable and Immutable Collections](collections/Mutable_and_Immutable_Collections.md)  
-- [Trait Traversable](collections/Trait_Traversable.md)  
-- [Trait Iterable](collections/Trait_Iterable.md)  
-- [The sequence traits Seq, IndexedSeq, and LinearSeq](collections/The_sequence_traits.md)  
-- [Sets](collections/Sets.md)  
-- [Maps](collections/Maps.md)  
-- [Concrete Immutable Collection Classes](collections/Concrete_Immutable_Collection_Classes.md)  
-- [Concrete Mutable Collection Classes](collections/Concrete_Mutable_Collection_Classes.md)  
-- [Arrays](collections/Arrays.md)  
-- [Strings](collections/Strings.md)  
-- [Performance Characteristics](collections/Performance_Characteristics.md)  
-- [Equality](collections/Equality.md)  
-- [Views](collections/Views.md)  
-- [Iterators](collections/Iterators.md)  
-- [Creating Collections From Scratch](collections/Creating_Collections_From_Scratch.md)  
-- [Conversions Between Java and Scala Collections](collections/Conversions_Between_Java_and_Scala_Collections.md)  
-- [Migrating from Scala 2.7](collections/Migrating_from_Scala_2_7.md)  
+<div class="page-header-index">
+  <h2>Acknowledgements</h2>
+</div>
+* [致谢名单](/zh-cn/overviews/thanks.html)
