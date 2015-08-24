@@ -27,7 +27,7 @@ o sin parámetros:
 
     () => { System.getProperty("user.dir") }
 
-Esiste también una forma simple para escribir los tipos de las funciones. A continuación se muestran los tipos de las tre funciones escritas anteriormente:
+Existe también una forma simple para escribir los tipos de las funciones. A continuación se muestran los tipos de las trés funciones escritas anteriormente:
 
     Int => Int
     (Int, Int) => String

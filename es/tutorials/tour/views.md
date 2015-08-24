@@ -35,9 +35,9 @@ La función `list2ordered` puede ser también expresada con el uso de un _límit
 
     implicit def list2ordered[A <% Ordered[A]](x: List[A]): Ordered[List[A]] = ...
 
-El compilador de Scala que genera después genera el código equivalente a la definición de `list2ordered` vista anteriormente.
+El compilador de Scala genera código equivalente a la definición de `list2ordered` vista anteriormente.
 
-El objeto `scala.Predef` importado implicitamente declara varios tipos predefinidos (ej. `Pair`) and métodos (ej. `assert`) pero también varias vistas. El siguiente ejemplo muestra una idea de la vista predefinida `charWrapper`:
+El objeto `scala.Predef` importado implicitamente declara varios tipos predefinidos (ej. `Pair`) y métodos (ej. `assert`) pero también varias vistas. El siguiente ejemplo muestra una idea de la vista predefinida `charWrapper`:
 
     final class RichChar(c: Char) {
       def isDigit: Boolean = Character.isDigit(c)

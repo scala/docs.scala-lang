@@ -9,7 +9,7 @@ num: 24
 language: es
 ---
 
-_Nota de traducción: La palabra `trait` en inglés puede traducirse literalmente como `rasgo` o `caracteristica`. Preferimos la designación oringial trait por ser una característica muy natural de Scala._
+_Nota de traducción: La palabra `trait` en inglés puede traducirse literalmente como `rasgo` o `caracteristica`. Preferimos la designación original trait por ser una característica muy natural de Scala._
 
 De forma similar a las interfaces de Java, los traits son usados para definir tipos de objetos al especificar el comportamiento mediante los métodos provistos. A diferencia de Java, Scala permite a los traits ser parcialmente implementados, esto es, es posible definir implementaciones por defecto para algunos métodos. En contraste con las clases, los traits no pueden tener parámetros de constructor. 
 A continuación se muestra un ejemplo:
@@ -19,7 +19,7 @@ A continuación se muestra un ejemplo:
       def isNotSimilar(x: Any): Boolean = !isSimilar(x)
     }
  
-Este trait consiste de dos métodos `isSimilar` y `isNotSimilar`. Mientras `isSimilar` no provee una implementación concreta del método (es abstracto en la terminología Java), el método `isNotSimilar` define una implementación concreta. Consecuentemente, las clases que integren este trait solo tienen que proveer una implementación concreta para `isSimilar`. El comportamiento de `isNotSimilar` es directamente herdado del trait. Los traits tipicamente son integrados a una clase (u otros traits) mediante una [Composición de clases mixin](mixin-class-composition.html):
+Este trait consiste de dos métodos `isSimilar` y `isNotSimilar`. Mientras `isSimilar` no provee una implementación concreta del método (es abstracto en la terminología Java), el método `isNotSimilar` define una implementación concreta. Consecuentemente, las clases que integren este trait solo tienen que proveer una implementación concreta para `isSimilar`. El comportamiento de `isNotSimilar` es directamente heredado del trait. Los traits típicamente son integrados a una clase (u otros traits) mediante una [Composición de clases mixin](mixin-class-composition.html):
  
     class Point(xc: Int, yc: Int) extends Similarity {
       var x: Int = xc

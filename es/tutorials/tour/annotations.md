@@ -88,7 +88,7 @@ Y después utilizarlo de la siguiente manera
             mail = "support@coders.com")
     public class MyClass extends HisClass ...
 
-Una anotación en Scala aparenta como una invocación a un constructor. Para instanciar una anotación de Java es necesario usar los argumentos nombrados:
+Una anotación en Scala se asemeja a una invocación a un constructor. Para instanciar una anotación de Java es necesario usar los argumentos nombrados:
 
     @Source(URL = "http://coders.com/",
             mail = "support@coders.com")

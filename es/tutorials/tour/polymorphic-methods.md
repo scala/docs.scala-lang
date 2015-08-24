@@ -23,4 +23,4 @@ Aquí hay un ejemplo:
 
 El método `dup` en el objeto `PolyTest` es parametrizado con el tipo `T` y con los parámetros `x: T` y `n: Int`. Cuando el método `dup` es llamado, el programador provee los parámetros requeridos _(vea la linea 5 del programa anterior)_, pero como se muestra en la linea 6 no es necesario que se provea el parámetro de tipo `T` explicitamente. El sistema de tipado de Scala puede inferir estos tipos. Esto es realizado a través de la observación del tipo de los parámetros pasados y del contexto donde el método es invocado.
 
-Por favor note que el trait `App` está diseñado para escribir programas cortos de testeo, pero debe ser evitado en código en producción (para versiones de Scala 2.8.x y anteriores) ya que puede afectar la habilidad de la JVM de optimizar el código resultante; por favor use `def main()` en su lugar.
+Por favor note que el trait `App` está diseñado para escribir programas cortos de pruebas. Debe ser evitado en código en producción (para versiones de Scala 2.8.x y anteriores) ya que puede afectar la habilidad de la JVM de optimizar el código resultante; por favor use `def main()` en su lugar.
