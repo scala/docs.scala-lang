@@ -1,8 +1,17 @@
-## 概述(Overview)
+---
+layout: overview-large
+title: 概述
 
-Aleksandar Prokopec, Heather Miller
+disqus: true
 
-### 动机 :
+partof: parallel-collections
+num: 1
+language: zh-cn
+---
+
+**Aleksandar Prokopec, Heather Miller**
+
+## 动机
 
 近年来，处理器厂家在单核向多核架构迁移的过程中，学术界和工业界都认为当红的并行编程仍是一个艰巨的挑战。
 

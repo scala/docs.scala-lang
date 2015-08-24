@@ -5,6 +5,7 @@ title: Parallel Collection Conversions
 disqus: true
 
 partof: parallel-collections
+languages: [ja, zh-cn, es]
 num: 3
 ---
 
