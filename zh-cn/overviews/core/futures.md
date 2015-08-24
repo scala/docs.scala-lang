@@ -1,15 +1,14 @@
 ---
-layout: overview-large
-title: Futures and Promises
-
+layout: overview
+label-color: success
+label-text: New in 2.10
+overview: futures
 disqus: true
-
-partof: core
-num: 5
 language: zh-cn
+title: Futures and Promises
 ---
 
-Philipp Haller, Aleksandar Prokopec, Heather Miller, Viktor Klang, Roland Kuhn, and Vojin Jovanovic著
+**Philipp Haller, Aleksandar Prokopec, Heather Miller, Viktor Klang, Roland Kuhn, and Vojin Jovanovic 著**
 
 ## 简介
 

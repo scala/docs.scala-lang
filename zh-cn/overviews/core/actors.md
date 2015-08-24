@@ -1,15 +1,12 @@
 ---
-layout: overview-large
+layout: overview
 title: The Scala Actors API
-
+overview: actors
 disqus: true
-
-partof: core
-num: 7
 language: zh-cn
 ---
 
-Philipp Haller及Stephen Tu
+**Philipp Haller 和 Stephen Tu 著**
 
 ## 简介
 
@@ -36,6 +33,7 @@ Reactor trait中也定义了一个forward方法，这个方法继承于OutputCha
     react {
       case "Hello" => println("Hi there")
     }
+
 调用react没有返回值。因此，在接收到一条消息后，任何要执行的代码必须被包含在传递给react方法的偏函数（partial function）中。举个例子，通过嵌套两个react方法调用可以按顺序接收到两条消息：
 
     react {
@@ -44,6 +42,7 @@ Reactor trait中也定义了一个forward方法，这个方法继承于OutputCha
           case Put(x) => from ! x
         }
     }
+
 Reactor trait 也提供了控制结构，简化了react方法的代码。
 
 ### 终止和执行状态
@@ -59,6 +58,7 @@ Reactor定义了一个getState方法，这个方法可以将actor当前的运行
 exceptionHandler成员允许定义一个异常处理程序，其在Reactor的整个生命周期均可用。
 
     def exceptionHandler: PartialFunction[Exception, Unit]
+
 exceptionHandler返回一个偏函数，它用来处理其他没有被处理的异常。每当一个异常被传递到Reactor的act方法体之外时，这个成员函数就被应用到该异常，以允许这个actor在它结束前执行清理代码。注意：`exceptionHandler`的可见性为protected。
 
 用exceptionHandler来处理异常并使用控制结构对与react的编程是非常有效的。每当exceptionHandler返回的偏函数处理完一个异常后，程序会以当前的后续闭包（continuation closure）继续执行。
@@ -70,6 +70,7 @@ exceptionHandler返回一个偏函数，它用来处理其他没有被处理的�
           else throw new Exception("cannot process data")
       }
     }
+
 假设Reactor覆写了exceptionHandler，在处理完一个在react方法体内抛出的异常后，程序将会执行下一个循环迭代。
 
 ### ReplyReactor trait
@@ -134,6 +135,7 @@ Reactor trait定义了控制结构，它简化了无返回的react操作的编�
         println("hi there")
       }
     }
+
 例如，上述actor实例在它处理了“hello”消息之后，打印一句问候。虽然调用react方法不会返回，我们仍然可以使用andThen来注册这段输出问候的代码（作为actor的延续）。
 
 注意：在react方法的调用（: Unit）中存在一种类型归属。总而言之，既然表达式的结果经常可以被忽略，react方法的结果就可以合法地作为Unit类型来处理。andThen方法无法成为Nothing类型（react方法的结果类型）的一个成员，所以在这里有必要这样做。把react方法的结果类型当作Unit，允许实现一个隐式转换的应用，这个隐式转换使得andThen成员可用。
@@ -161,14 +163,17 @@ send-with-future的消息并不是获得future的唯一的方法。future也可�
     val fut = future { body }
     // ...
     fut() // 等待future
+
 能够通过基于actor的标准接收操作（例如receive方法等）来取回future的结果，使得future实例在actor上下文中变得特殊。此外，也能够通过使用基于事件的操作（react方法和ractWithin方法）。这使得一个actor实例在等待一个future实例结果时不用阻塞它的底层线程。
 
 通过future的inputChannel，使得基于actor的接收操作方法可用。对于一个类型为`Future[T]`的future对象而言，它的类型是`InputChannel[T]`。例如：
+
     val fut = a !! msg
     // ...
     fut.inputChannel.react {
       case Response => // ...
     }
+
 ## Channel（通道）
 
 channnel可以用来对发送到同一actor的不同类型消息的处理进行简化。channel的层级被分为OutputChannel和InputChannel。
@@ -186,9 +191,11 @@ out.send(msg, from)。异步地发送msg到out，并提供from作为消息的发
 注意：OutputChannel trait有一个类型参数，其指定了可以被发送到channel（通道）的消息类型（使用!、forward和send）。这个类型参数是逆变的：
 
     trait OutputChannel[-Msg]
+
 Actor能够从InputChannel接收消息。就像OutputChannel，InputChannel trait也有一个类型参数，用于指定可以从channel（通道）接收的消息类型。这个类型参数是协变的：
 
     trait InputChannel[+Msg]
+
 An` InputChannel[Msg] `in支持下列操作。
 
 in.receive { case Pat1 => ... ; case Patn => ... }（以及类似的 in.receiveWithin）。从in接收一个消息。在一个输入channel（通道）上调用receive方法和actor的标准receive操作具有相同的语义。唯一的区别是，作为参数被传递的偏函数具有PartialFunction[Msg, R]类型，此处R是receive方法的返回类型。
@@ -215,6 +222,7 @@ channel通过使用具体的Channel类创建。它同时扩展了InputChannel和
         case msg => println(msg.length)
       }
     }
+
 运行这个例子将输出字符串“5”到控制台。注意：子actor对out（一个OutputChannel[String]）具有唯一的访问权。而用于接收消息的channel的引用则被隐藏了。然而，必须要注意的是，在子actor向输出channel发送消息之前，确保输出channel被初始化到一个具体的channel。通过使用“go”消息来完成消息发送。当使用channel.receive来从channel接收消息时，因为消息是String类型的，可以使用它提供的length成员。
 
 另一种共享channel的可行的方法是在消息中发送它们。下面的例子对此作了阐述。
@@ -234,6 +242,7 @@ channel通过使用具体的Channel类创建。它同时扩展了InputChannel和
         case msg => println(msg.length)
       }
     }
+
 ReplyTo case class是一个消息类型，用于分派一个引用到OutputChannel[String]。当子actor接收一个ReplyTo消息时，它向它的输出channel发送一个字符串。第二个actor则像以前一样接收那个channel上的消息。
 
 ## Scheduler
@@ -241,6 +250,7 @@ ReplyTo case class是一个消息类型，用于分派一个引用到OutputChann
 scheduler用于执行一个Reactor实例（或子类型的一个实例）。Reactor trait引入了scheduler成员，其返回常用于执行Reactor实例的scheduler。
 
     def scheduler: IScheduler
+
 运行时系统通过使用在IScheduler trait中定义的execute方法之一，向scheduler提交任务来执行actor。只有在完整实现一个新的scheduler时（但没有必要），此trait的大多数其他方法才是相关的。
 
 默认的scheduler常用于执行Reactor实例，而当所有的actor完成其执行时，Actor则会检测环境。当这发生时，scheduler把它自己关闭（终止scheduler使用的任何线程）。然而，一些scheduler，比如SingleThreadedScheduler（位于scheduler包）必须要通过调用它们的shutdown方法显式地关闭。
@@ -248,6 +258,7 @@ scheduler用于执行一个Reactor实例（或子类型的一个实例）。Reac
 创建自定义scheduler的最简单方法是通过扩展SchedulerAdapter，实现下面的抽象成员：
 
     def execute(fun: => Unit): Unit
+
 典型情况下，一个具体的实现将会使用线程池来执行它的按名参数fun。
 
 ## 远程Actor
@@ -258,6 +269,7 @@ scheduler用于执行一个Reactor实例（或子类型的一个实例）。Reac
     import scala.actors.Actor._
     import scala.actors.remote._
     import scala.actors.remote.RemoteActor._
+
 ### 启动远程Actor
 
 远程actor由一个Symbol唯一标记。在这个远程Actor所执行JVM上，这个符号对于JVM实例是唯一的。由名称'myActor标记的远程actor可按如下方法创建。
@@ -269,6 +281,7 @@ scheduler用于执行一个Reactor实例（或子类型的一个实例）。Reac
         // ...
       }
     }
+
 记住：一个名字一次只能标记到一个单独的（存活的）actor。例如，想要标记一个actorA为'myActor，然后标记另一个actorB为'myActor。这种情况下，必须等待A终止。这个要求适用于所有的端口，因此简单地将B标记到不同的端口来作为A是不能满足要求的。
 
 ### 连接到远程Actor
@@ -276,6 +289,7 @@ scheduler用于执行一个Reactor实例（或子类型的一个实例）。Reac
 连接到一个远程actor也同样简单。为了获得一个远程Actor的远程引用（运行于机器名为myMachine，端口为8000，名称为'anActor），可按下述方式使用select方法：
 
     val myRemoteActor = select(Node("myMachine", 8000), 'anActor)
+
 从select函数返回的actor具有类型AbstractActor，这个类型本质上提供了和通常actor相同的接口，因此支持通常的消息发送操作：
 
     myRemoteActor ! "Hello!"
@@ -287,5 +301,6 @@ scheduler用于执行一个Reactor实例（或子类型的一个实例）。Reac
       case oops => println("Failed: " + oops)
     }
     val future = myRemoteActor !! "What is the last digit of PI?"
+
 记住：select方法是惰性的，它不实际初始化任何网络连接。仅当必要时（例如，调用!时），它会单纯地创建一个新的，准备好初始化新网络连接的AbstractActor实例。 
 

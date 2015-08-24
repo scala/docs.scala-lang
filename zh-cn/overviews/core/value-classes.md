@@ -1,15 +1,14 @@
 ---
-layout: overview-large
-title: Value Classes and Universal
-
+layout: overview
 disqus: true
-
-partof: core
-num: 2
 language: zh-cn
+label-color: success
+label-text: New in 2.10
+overview: value-classes
+title: Value Classes and Universal
 ---
 
-Mark Harrah
+**Mark Harrah 著**
 
 ## 引言
 

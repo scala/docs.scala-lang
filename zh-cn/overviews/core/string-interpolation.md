@@ -1,15 +1,15 @@
 ---
-layout: overview-large
-title: 字符串插值
-
+layout: overview
 disqus: true
-
-partof: core
-num: 3
 language: zh-cn
+disqus: true
+label-color: success
+label-text: New in 2.10
+overview: string-interpolation
+title: 字符串插值
 ---
 
-Josh Suereth
+**Josh Suereth 著**
 
 ## 简介
 

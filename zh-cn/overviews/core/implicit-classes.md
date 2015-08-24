@@ -1,15 +1,14 @@
 ---
-layout: overview-large
-title: Implicit Classes
-
+layout: overview
 disqus: true
-
-partof: core
-num: 4
+overview: implicit-classes
+label-color: success
+label-text: Available
 language: zh-cn
+title: Implicit Classes
 ---
 
-Josh Suereth
+**Josh Suereth 著**
 
 ## 介绍
 

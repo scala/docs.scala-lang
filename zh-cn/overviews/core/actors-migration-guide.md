@@ -1,16 +1,14 @@
 ---
-layout: overview-large
-title: The-Scala-Actors-Migration-Guide
-
+layout: overview
 disqus: true
-
-partof: core
-num: 1
 language: zh-cn
+label-color: success
+label-text: New in 2.10
+overview: actors-migration-guide
+title: The Scala Actors Migration Guide
 ---
 
-
-Vojin Jovanovic 和 Philipp Haller
+**Vojin Jovanovic 和 Philipp Haller 著**
 
 ## 概述
 

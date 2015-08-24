@@ -1,15 +1,12 @@
 ---
-layout: overview-large
-title: scala容器类体系结构
-
+layout: overview
+title: Scala容器类体系结构
+overview: architecture-of-scala-collections
 disqus: true
-
-partof: core
-num: 6
 language: zh-cn
 ---
 
-Martin Odersky & Lex Spoon
+**Martin Odersky 和 Lex Spoon 著**
 
 本篇详细的介绍了Scala 容器类(collections)框架。通过与 [Scala 2.8 的 Collection API](http://docs.scala-lang.org/overviews/collections/introduction.html) 的对比，你会了解到更多框架的内部运作方式，同时你也将学习到如何通过几行代码复用这个容器类框架的功能来定义自己的容器类。
 
@@ -27,6 +24,7 @@ Builder类概要：
       def clear(): Unit
       def mapResult[NewTo](f: To => NewTo): Builder[Elem, NewTo] = ...
     }
+
 几乎所有的 Collection 操作都由遍历器（traversals）和构建器 （builders）来完成。Traversal 用可遍历类的foreach方法来实现，而构建新的 容器(collections)是由构建器类的实例来完成。上面的代码就是对这个类的精简描述。
 
 我们用 b += x 来表示为构建器 b 加上元素 x。也可以一次加上多个元素，例如： b += (x, y) 及 b ++= x ，这类似于缓存(buffers)的工作方式（实际上，缓存就是构建器的增强版）。构建器的 result() 方法会返回一个collection。在获取了结果之后，构建器的状态就变成未定义，调用它的 clear() 方法可以把状态重置成空状态。构建器是通用元素类型，它适用于元素，类型，及它所返回的Collection。
@@ -39,7 +37,7 @@ Builder类概要：
     scala> val bldr = buf mapResult (_.toArray)
     bldr: scala.collection.mutable.Builder[Int,Array[Int]]
       = ArrayBuffer()
-      
+
 结果值 bldr，是使用 buf 来收集元素的builder。当调用 bldr 的result时，其实是调用的 buf 的result，结果是返回的buf本身。接着这个数组buffer用 _.toArray 映射成了一个数组，结果 bldr 也就成了一个数组的 builder.
 
 ## 分解(factoring out)通用操作
@@ -58,13 +56,13 @@ Builder类概要：
         b.result
       } 
     }
-    
+
 Collection库重构的主要设计目标是在拥有自然类型的同时又尽可能的共享代码实现。Scala的Collection 遵从“结果类型相同”的原则：只要可能，容器上的转换方法最后都会生成相同类型的Collection。例如，过滤操作对各种Collection类型都应该产生相同类型的实例。在List上应用过滤器应该获得List，在Map上应用过滤器，应该获得Map，如此等等。在下面的章节中，会告诉大家该原则的实现方法。
 
 Scala的 Collection 库通过在 trait 实现中使用通用的构建器（builders）和遍历器（traversals）来避免代码重复、实现“结果类型相同”的原则。这些Trait的名字都有Like后缀。例如：IndexedSeqLike 是 IndexedSeq 的 trait 实现，再如，TraversableLike 是 Traversable 的 trait 实现。和普通的 Collection 只有一个类型参数不同，trait实现有两个类型参数。他们不仅参数化了容器的成员类型，也参数化了 Collection 所代表的类型，就像下面的 Seq[I] 或 List[T]。下面是TraversableLike开头的描述：
 
 	trait TraversableLike[+Elem, +Repr] { ... }
-    
+
 类型参数Elem代表Traversable的元素类型，参数Repr代表它自身。Repr上没有限制，甚至，Repr可以是非Traversable子类的实例。这就意味这，非容器子类的类，例如String和Array也可以使用所有容器实现trait中包含的操作。
 
 以过滤器为例，这个操作只在TraversableLike定义了一次，就使得它适用于所有的容器类(collections)。通过查看前面 TraversableLike类的概述中相关的代码描述，我们知道，该trait声明了两个抽象方法，newBuilder 和 foreach，这些抽象方法在具体的collection类中实现。过滤器也是用这两个方法，通过相同的方式来实现的。首先，它用 newBuiler 方法构造一个新的builder，类型为 Repr 的类型。然后，使用 foreach 来遍历当前 collection 中的所有元素。一旦某个元素 x 满足谓词 p （即，p(x)为真），那么就把x加入到builder中。最后，用 builder 的 result 方法返回类型同 Repr 的 collection，里面的元素就是上面收集到的满足条件的所有元素。
@@ -85,7 +83,7 @@ Scala的 Collection 库通过在 trait 实现中使用通用的构建器（build
     scala> bits map (_.toFloat)
     res14: scala.collection.immutable.Set[Float]
       = Set(1.0, 2.0, 3.0)
-      
+
 在一个BitSet上使用倍乘映射 _*2，会得到另一个BitSet。然而，如果在相同的BitSet上使用映射函数 (_.toFloat) 结果会得到一个 Set[Float]。这样也很合理，因为 BitSet 中只能放整型，而不能存放浮点型。
 
 因此，要提醒大家注意，映射(map)的结果类型是由传进来的方法的类型决定的。如果映射函数中的参数会得到Int类型的值，那么映射的结果就是 BitSet。但如果是其他类型，那么映射的结果就是 Set 类型。后面会让大家了解 Scala 这种灵活的类型适应是如何实现的。
@@ -99,7 +97,7 @@ Scala的 Collection 库通过在 trait 实现中使用通用的构建器（build
     scala> Map("a" -> 1, "b" -> 2) map { case (x, y) => y }
     res4: scala.collection.immutable.Iterable[Int] 
       = List(1, 2)
-      
+
 第一个函数用于交换两个键值对。这个函数映射的结果是一个类似的Map，键和值颠倒了。事实上，地一个表达式产生了一个键值颠倒的map类型（在原map可颠倒的情况下)。然而，第二个函数，把键值对映射成一个整型，即成员变成了具体的值。在这种情况下，我们不可能把结果转换成Map类型，因此处理成，把结果转换成Map的一个可遍历的超类，这里是List。
 
 你可能会问，哪为什么不强制让映射都返回相同类型的Collection呢？例如：BitSet上的映射只能接受整型到整型的函数，而Map上的映射只能接受键值对到键值对的函数。但这种约束从面向对象的观点来看是不能接受的，它会破坏里氏替换原则（Liskov substitution principle），即：Map是可遍历类，因此所有在可遍历类上的合法的操作都必然在Map中合法。
@@ -125,11 +123,11 @@ CanBuildFrom trait：
       // 创建一个新的构造器(builder) 
       def apply(from: From): Builder[Elem, To] 
     }
-    
+
 上面的代码是 trait CanBuildFrom 的定义，它代表着构建者工场。它有三个参数：Elem是要创建的容器(collection)的元素的类型，To是要构建的容器(collection)的类型，From是该构建器工场适用的类型。通过定义适合的隐式定义的构建器工场，你就可以构建出符合你需要的类型转换行为。以 BitSet 类为例，它的伴生对象包含一个 CanBuildFrom[BitSet, Int, BitSet] 类型的构建器工场。这就意味着，当在一个 BitSet 上执行操作的时候，你可以创建另一个元素类型为整型的 BitSet。如果你需要的类型不同，那么，你还可以使用其他的隐式构建器工场，它们在Set的伴生对象中实现。下面就是一个更通用的构建器，A是通用类型参数：
 
 	CanBuildFrom[Set[_], A, Set[A]]
-    
+
 这就意味着，当操作一个任意Set（用现有的类型 Set[] 表述），我们可以再次创建一个 Set，并且无需关心它的元素类型A是什么。给你两个 CanBuildFrom 的隐式实例，你有可以利用 Scala 的隐式解析(implicit resolution)规则去挑选出其中最契合的一个。
 
 所以说，隐式解析(implicit resolution)为类似映射的比较棘手的Collection操作提供了正确的静态类型。但是动态类型又怎么办呢？特别是，假设你有一个List，作为静态类型它有遍历方法，你在它上面使用一些映射(map)方法：
@@ -139,7 +137,7 @@ CanBuildFrom trait：
     
     scala> val ys = xs map (x => x * x)
     ys: Iterable[Int] = List(1, 4, 9)
-    
+
 上述ys的静态类型是可遍历的(Iterable)类型。但是它的动态类型仍然必须是List类型的！此行为是间接被实现的。在CanBuildFrom的apply方法被作为参数传递源容器中。大多数的builder工厂仿制traversables（除建造工厂意外所有的叶子类型(leaf classes)）将调用转发到集合的方法genericBuilder。反过来genericBuilder方法调用属于在定义它收集的建设者。所以Scala使用静态隐式解析，以解决map类型的限制问题，以及分派挑选对应于这些约束最佳的动态类型。
 
 ## 集成新容器
@@ -160,7 +158,7 @@ RNA（核糖核酸）碱基（译者注：RNA链即很多不同RNA碱基的序�
       val fromInt: Int => Base = Array(A, T, G, U)
       val toInt: Base => Int = Map(A -> 0, T -> 1, G -> 2, U -> 3)
     }
-    
+
 假设需要为RNA链建立一个新的序列类型，这些RNA链是由碱基A(腺嘌呤)、T(胸腺嘧啶)、G(鸟嘌呤)、U(尿嘧啶)组成的序列。如上述列出的RNA碱基，很容易建立碱基的定义。
 
 每个碱基都定义为一个具体对象(case object)，该对象继承自一个共同的抽象类Base（碱基）。这个Base类具有一个伴生对象（companion object），该伴生对象定义了描述碱基和整数（0到3）之间映射的2个函数。可以从例子中看到，有两种不同的方式来使用容器（Collection）来实现这些函数。toInt函数通过一个从Base值到整数之间的映射(map)来实现。而它的逆函数fromInt则通过数组来实现。以上这些实现方法都基于一个事实，即“映射和数组都是函数”。因为他们都继承自Function1 trait。
@@ -205,7 +203,7 @@ RNA（核糖核酸）碱基（译者注：RNA链即很多不同RNA碱基的序�
     
       def apply(bases: Base*) = fromSeq(bases)
     }
-    
+
 上面的RNA链类呈现出这个类的第一个版本，它将在以后被细化。类RNA1有一个构造函数，这个构造函数将int数组作为第一个参数。而这个数组包含打包压缩后的RNA数据，每个数组元素都有16个碱基，而最后一个元素则只有一部分有数据。第二个参数是长度，指定了数组中（和序列中）碱基的总数。RNA1类扩展了IndexedSeq[Base]。而IndexedSeq来自scala.collection.immutable，IndexedSeq定义了两个抽象方法：length和apply。这方法些需要在具体的子类中实现。类RNA1通过定义一个相同名字的参数字段来自动实现length。同时，通过类RNA1中给出的代码实现了索引方法apply。实质上，apply方法首先从数组中提取出一个整数值，然后再对这个整数中使用右移位(>>)和掩码(&)提取出正确的两位比特。私有常数S、N来自RNA1的伴生对象，S指定了每个包的尺寸（也就是2），N指定每个整数的两位比特包的数量，而M则是一个比特掩码，分离出一个字（word）的低S位。
 
 注意，RNA1类的构造函数是一个私有函数。这意味着用户端无法通过调用new函数来创建RNA1序列的实例。这是有意义的，因为这能对用户隐藏RNA1序列包装数组的实现。如果用户端无法看到RNA序列的具体实现，以后任何时候，就可以做到改变RNA序列具体实现的同时，不影响到用户端代码。换句话说，这种设计实现了RNA序列的接口和实现之间解藕。然而，如果无法通过new来创建一个RNA序列，那就必须存在其他方法来创建它，否则整个类就变得毫无用处。事实上，有两种建立RNA序列的替代途径，两者都由RNA1的伴生对象（companion object）提供。第一个途径是fromSeq方法，这个方法将一个给定的碱基序列（也就是一个Seq[Base]类型的值）转换成RNA1类的实例。fromSeq方法将所有其序列参数内的碱基打包进一个数组。然后，将这个数组以及原序列的长度作为参数，调用RNA1的私有构造函数。这利用了一个事实：一个类的私有构造函数对于其伴生对象（companion object）是可见的。
@@ -220,7 +218,7 @@ RNA（核糖核酸）碱基（译者注：RNA链即很多不同RNA碱基的序�
     
     scala> val rna1 = RNA1(A, U, G, G, T)
     rna1: RNA1 = RNA1(A, U, G, G, T)
-    
+
 ## 控制RNA类型中方法的返回值
 
 这里有一些和RNA1抽象之间更多的交互操作
@@ -233,6 +231,7 @@ RNA（核糖核酸）碱基（译者注：RNA链即很多不同RNA碱基的序�
     
     scala> rna1.take(3)
     res4: IndexedSeq[Base] = Vector(A, U, G)
+
 前两个返回值正如预期，但最后一个——从rna1中获得前3个元素——的返回值则未必如预期。实际上，我们知道一个IndexedSeq[Base]作为返回值的静态类型而一个Vector作为返回值的动态类型，但我们更想看到一个RNA1的值。但这是无法做到的，因为之前在RNA1类中所做的一切仅仅是让RNA1扩展IndexedSeq。换句话说，IndexedSeq类具有一个take方法，其返回一个IndexedSeq。并且，这个方法是根据 IndexedSeq 的默认是用Vector来实现的。所以，这就是上一个交互中最后一行上所能看到的。
 
 #### RNA链类的第二个版本
@@ -249,10 +248,11 @@ RNA（核糖核酸）碱基（译者注：RNA链即很多不同RNA碱基的序�
     
       def apply(idx: Int): Base = // as before
     }
+
 现在，明白了本质之后，下一个问题便是如何去改变它们。一种途径便是覆写（override）RNA1类中的take方法，可能如下所示：
 
 	def take(count: Int): RNA1 = RNA1.fromSeq(super.take(count))
-    
+
 这对take函数有效，但drop、filter或者init又如何呢？事实上，序列（Sequence）中有超过50个方法同样返回序列。为了保持一致，所有这些方法都必须被覆写。这看起来越来越不像一个有吸引力的选择。幸运的是，有一种更简单的途径来达到同样的效果。RNA类不仅需要继承自IndexedSeq类，同时继承自它的实现trait（特性）IndexedSeqLike。如上面的RNA2所示。新的实现在两个方面与之前不同。第一个，RNA2类现在同样扩展自IndexedSeqLike[Base, RNA2]。这个IndexedSeqLike trait（特性）以可扩展的方式实现了所有IndexedSeq的具体方法。比如，如take、drop、filer或init的返回值类型即是传给IndexedSeqLike类的第二个类型参数，也就是说，在RNA2中的是RNA2本身。
 
 为了能够做，IndexedSeqLike将自身建立在newBuilder抽象上，这个抽象能够创建正确类型的builder。IndexedSeqLike trait（特性）的子类必须覆写newBuilder以返回一个它们自身类型的容器。在RNA2类中，newBuilder方法返回一个Builder[Base, RNA2]类型的builder。
@@ -282,7 +282,7 @@ RNA（核糖核酸）碱基（译者注：RNA链即很多不同RNA碱基的序�
     
     scala> rna2 filter (U !=)
     res6: RNA2 = RNA2(A, G, G, T)
-    
+
 ### 使用map（映射）和friends（友元）
 
 然而，在容器中存在没有被处理的其他类别的方法。这些方法就不总会返回容器类型。它们可能返回同一类型的容器，但包含不同类型的元素。典型的例子就是map方法。如果s是一个Int的序列（Seq[Int]），f是将Int转换为String的方法，那么，s.map(f)将返回一个String的序列（Seq[String]）。这样，元素类型在接收者和结果之间发生了改变，但容器的类型还是保持一致。
@@ -294,10 +294,12 @@ RNA（核糖核酸）碱基（译者注：RNA链即很多不同RNA碱基的序�
     
     scala> rna map { case A => T case b => b }
     res7: RNA = RNA(T, U, G, G, T)
+
 同样，用 ++ 方法来拼接两个RNA链应该再次产生另外一个RNA链。
 
     scala> rna ++ rna
     res8: RNA = RNA(A, U, G, G, T, A, U, G, G, T)
+
 另一方面，在RNA链上进行碱基（类型）到其他类型的映射无法产生另外一个RNA链，因为新的元素有错误的类型。它只能产生一个序列而非RNA链。同样，向RNA链追加非Base类型的元素可以产生一个普通序列，但无法产生另一个RNA链。
 
     scala> rna map Base.toInt
@@ -306,6 +308,7 @@ RNA（核糖核酸）碱基（译者注：RNA链即很多不同RNA碱基的序�
     scala> rna ++ List("missing", "data")
     res3: IndexedSeq[java.lang.Object] = 
       Vector(A, U, G, G, T, missing, data)
+
 这就是在理想情况下应认为结果。但是，RNA2类并不提供这样的处理。事实上，如果你用RNA2类的实例来运行前两个例子，结果则是：
 
     scala> val rna2 = RNA2(A, U, G, G, T)
@@ -316,12 +319,12 @@ RNA（核糖核酸）碱基（译者注：RNA链即很多不同RNA碱基的序�
     
     scala> rna2 ++ rna2
     res1: IndexedSeq[Base] = Vector(A, U, G, G, T, A, U, G, G, T)
-    
+
 所以，即使生成的容器元素类型是Base，map和++的结果也永远不会是RNA链。如需改善，则需要仔细查看map方法的签名（或++，它也有类似的方法签名）。map的方法最初在scala.collection.TraversableLike类中定义，具有如下签名：
 
     def map[B, That](f: A => B)
       （隐含CBF：CanBuildFrom[修订版，B]）：
-      
+
 这里的A是一个容器元素的类型，而Repr是容器本身的类型，即传递给实现类（例如 TraversableLike和IndexedSeqLike）的第二个参数。map方法有两个以上的参数，B和That。参数B表示映射函数的结果类型，同时也是新容器中的元素类型。That作为map的结果类型。所以，That表示所创建的新容器的类型。
 
 对于That类型如何确定，事实上，它是根据隐式参数cbf（CanBuildFrom[Repr，B，That]类型）被链接到其他类型。这些隐式CanBuildFrom由独立的容器类定义。大体上，CanBuildFrom[From，Elem，To]类型的值可以描述为：“有这么一种方法，由给定的From类型的容器，使用Elem类型，建立To的容器。”
@@ -356,6 +359,7 @@ RNA（核糖核酸）碱基（译者注：RNA链即很多不同RNA碱基的序�
         }
       }
     }
+
 #### RNA伴生对象的最终版本
 
     object RNA {
@@ -382,6 +386,7 @@ RNA（核糖核酸）碱基（译者注：RNA链即很多不同RNA碱基的序�
           def apply(from: RNA): Builder[Base, RNA] = newBuilder
         }
     }
+
 现在在RNA2序列链上的 map 和 ++ 的行为变得更加清晰了。由于没有能够创建RNA2序列的CanBuildFrom实例，因此在从trait InexedSeq继承的伴生对象上得到的CanBuildFrom成为了第二选择。这隐式地创建了IndexedSeqs，也是在应用map到RNA2的时候发生的情况。
 
 为了解决这个缺点，你需要在RNA类的同伴对象里定义CanBuildFrom的隐式实例。该实例的类型应该是CanBuildFrom [RNA, Base, RNA] 。即，这个实例规定，给定一个RNA链和新元素类型Base，可以建立另一个RNA链容器。上述有关RNA链的两个代码以及其伴生对象展示了细节。相较于类RNA2有两个重要的区别。首先， newBuilder的实现，从RNA类移到了它的伴生对象中。RNA类中新的newBuilder方法只是转发这个定义。其次，在RNA对象现在有个隐式的CanBuildFrom值。要创建这样的对象你需要在CanBuildFrom trait中定义两个apply方法。同时，为容器RNA创建一个新的builder，但参数列表不同。在apply()方法只是简单地以正确的类型创建builder。相比之下，apply(from)方法将原来的容器作为参数。在适应动态类型的builder的返回值与接收者的动态类型一致非常有用。在RNA的情况下，这不会起作用，因为RNA是final类，所以静态类型的RNA任何接收者同时具有RNA作为其动态类型。这就是为什么apply(from)也只是简单地调用newBuilder ，忽略其参数。
@@ -445,7 +450,7 @@ patricia 树的例子:
     
       override def empty = new PrefixMap[T]
     }
-    
+
 Patricia tries支持非常高效的查找和更新。另一个良好的特点是，支持通过前缀查找子容器。例如，在上述的patricia tree中，你可以从树根处按照“a”链接进行查找，获得所有以”a“为开头的键所组成的子容器。
 
 依据这些思想，来看一下作为Patricia trie的映射实现方式。这种map称为PrefixMap。PrefixMap提供了withPrefix方法，这个方法根据给定的前缀查找子映射（submap），其包含了所有匹配该前缀的键。首先，使用键来定义一个prefix map，执行如下。
@@ -453,7 +458,7 @@ Patricia tries支持非常高效的查找和更新。另一个良好的特点是
     scala> val m = PrefixMap("abc" -> 0, "abd" -> 1, "al" -> 2, 
       "all" -> 3, "xy" -> 4)
     m: PrefixMap[Int] = Map((abc,0), (abd,1), (al,2), (all,3), (xy,4))
-    
+
 然后，在m中调用withPrefix方法将产生另一个prefix map：
 
     scala> m withPrefix "a"
@@ -497,6 +502,7 @@ prefix map的伴生对象：
             def apply() = newBuilder[T]
           }
     }
+
 请注意，在PrefixMap中没有newBuilder方法的定义。这是没有必要的，因为maps和sets有默认的构造器,即MapBuilder类的实例。对可变映射来说，其默认的构造器初始时是一个空映射，然后使用映射的+= 方法连续增加元素。可变集合也类似。非可变映射和非可变集合的默认构造器则不同，它们使用无损的元素添加方法+，而非+=方法。
 
 然而，为了构建合适的集合或映射，你都需要从一个空的集合或映射开始。empty方法提供了这样的功能，它是PrefixMap中最后定义的方法，该方法简单的返回一个新的PrefixMap。
@@ -510,10 +516,12 @@ prefix map的伴生对象：
     
     scala> PrefixMap.empty[String]
     res2: PrefixMap[String] = Map()
+
 另一个PrefixMap对象的成员是内置CanBuildFrom实例。它和上一节定义的CanBuildFrom目的相同：使得类似map等方法能返回最合适的类型。以PrefixMap的键值对映射函数为例，只要该函数生成串型和另一种类型组成的键值对，那么结果又会是一个PrefixMap。这里有一个例子：
 
     scala> res0 map { case (k, v) => (k + "!", "x" * v) }
     res8: PrefixMap[String] = Map((hello!,xxxxx), (hi!,xx))
+
 给出的函数参数是一个PrefixMap res0的键值对绑定，最终生成串型值对。map的结果是一个PrefixMap，只是String类型替代了int类型。如果在PrefixMap中没有内置的canBuildFrom ，那么结果将是一个普通的可变映射，而不是一个PrefixMap。
 
 ### 小结
