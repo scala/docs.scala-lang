@@ -1,8 +1,10 @@
 ---
 layout: overview
 title: Implicit Classes
+overview: implicit-classes
 label-color: success
 label-text: Available
+languages: [zh-cn]
 ---
 
 **Josh Suereth**

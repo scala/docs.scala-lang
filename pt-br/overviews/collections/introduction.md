@@ -9,7 +9,7 @@ partof: collections
 num: 1
 
 about: Este documento foi traduzido por <a href="http://douglasjose.com">Douglas José</a>. Licensed by Douglas José under a CC-BY-SA 3.0 license.
-languages: [ja, pt-br]
+language: pt-br
 ---
 
 **Martin Odersky, and Lex Spoon**
