@@ -8,8 +8,8 @@ partof: collections
 num: 1
 language: zh-cn
 ---
- 
-## Martin Odersky和Lex Spoon
+
+**Martin Odersky 和 Lex Spoon**
 
 在许多人看来，新的集合框架是Scala 2.8中最显著的改进。此前Scala也有集合（实际上新框架大部分地兼容了旧框架），但2.8中的集合类在通用性、一致性和功能的丰富性上更胜一筹。  
 
@@ -27,7 +27,7 @@ language: zh-cn
 
 例子：这有一行代码演示了Scala集合类的先进性。
 
-`val (minors, adults) = people partition (_.age < 18)`
+    val (minors, adults) = people partition (_.age < 18)
 
 这个操作是清晰的：通过他们的age（年龄）把这个集合people拆分到到miors（未成年人）和adults（成年人）中。由于这个拆分方法是被定义在根集合类型TraversableLike类中，这部分代码服务于任何类型的集合，包括数组。例子运行的结果就是miors和adults集合与people集合的类型相同。  
 
