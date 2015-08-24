@@ -6,7 +6,7 @@ disqus: true
 
 partof: collections
 num: 1
-languages: [ja, zh-cn, pt-br]
+languages: [ja, zh-cn]
 ---
 
 **Martin Odersky, and Lex Spoon**
