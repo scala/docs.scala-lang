@@ -38,26 +38,20 @@ Scala 集合类系统地区分了可变的和不可变的集合。可变集合�
     scala.List //通过scala 包中的别名
     List // 因为scala._ 
                                       // 总是是被自动导入。
-                                    
+
 其它类型的别名有： [Traversable](http://www.scala-lang.org/api/current/scala/collection/Traversable.html), [Iterable](http://www.scala-lang.org/api/current/scala/collection/Iterable.html), [Seq](http://www.scala-lang.org/api/current/scala/collection/Seq.html), [IndexedSeq](http://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html), [Iterator](http://www.scala-lang.org/api/current/scala/collection/Iterator.html), [Stream](http://www.scala-lang.org/api/current/scala/collection/immutable/Stream.html), [Vector](http://www.scala-lang.org/api/current/scala/collection/immutable/Vector.html), [StringBuilder](http://www.scala-lang.org/api/current/scala/collection/mutable/StringBuilder.html), [Range](http://www.scala-lang.org/api/current/scala/collection/immutable/Range.html)。
 
 下面的图表显示了`scala.collection`包中所有的集合类。这些都是高级抽象类或特性，它们通常具备和不可变实现一样的可变实现。
 
-
-![collections.png](/pictures/collections.png)
-
+[<img src="{{ site.baseurl }}/resources/images/collections.png" width="550">]({{ site.baseurl }}/resources/images/collections.png)
 
 下面的图表显示scala.collection.immutable中的所有集合类。
 
-
-![collections.immutable.png](/pictures/collections.immutable.png)
-
+[<img src="{{ site.baseurl }}/resources/images/collections.immutable.png" width="550">]({{ site.baseurl }}/resources/images/collections.immutable.png)
 
 下面的图表显示scala.collection.mutable中的所有集合类。
 
-
-![collections.mutable.png](/pictures/collections.mutable.png)
-
+[<img src="{{ site.baseurl }}/resources/images/collections.mutable.png" width="550">]({{ site.baseurl }}/resources/images/collections.mutable.png)
 
 （以上三个图表由Matthias生成， 来自decodified.com）。
 
