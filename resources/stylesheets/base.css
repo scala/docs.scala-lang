@@ -93,6 +93,26 @@
 	    font-style: italic;
 	}
 
+  .langbar li {
+    display: inline;
+  }
+
+  .langbar-cheatsheet li {
+    display: block;
+  }
+
+  .langbar li a {
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 14px;
+    margin-right: 5px;
+  }
+
+  .langbar li a:hover {
+    text-decoration: underline;
+  }
+
 /*Coursera stuff*/
 
   .label {

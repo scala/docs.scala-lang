@@ -14,10 +14,14 @@
 <div id="scroller-anchor">
   <div id="scroller">
     {% if languages %}
-      <a href="{{ site.baseurl }}{{ rootTutorialURL }}"><img src="{{ site.baseurl }}/resources/images/language/en.png" title="Language: en" style="margin-left: 14px;"/></a>
-      {% for l in languages %}
-        <a href="{{ site.baseurl }}/{{ l }}{{ rootTutorialURL }}"><img src="{{ site.baseurl }}/resources/images/language/{{ l }}.png" title="Language: {{ l }}"/></a>
-      {% endfor %}
+      <p class="contents">Languages</p>
+      <ul class="langbar langbar-cheatsheet">
+        <li><a href="{{ site.baseurl }}{{ rootTutorialURL }}" class="lang">English</a></li>
+        {% for l in languages %}
+          {% assign lang = site.data.languages[l] %}
+          <li><a href="{{ site.baseurl }}/{{ l }}{{ rootTutorialURL }}" class="lang">{{lang.name}}</a></li>
+        {% endfor %}
+      </ul>
     {% endif %}
     <p class="contents">Contents</p>
     <div id="toc"></div>

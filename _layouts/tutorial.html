@@ -12,7 +12,7 @@ layout: default
 
       {% for pg in site.pages %}
         {% if pg.tutorial == "scala-tour" and pg.languages %}
-          {% assign lang = pg.languages %}
+          {% assign languages = pg.languages %}
         {% endif %}
       {% endfor %}
 
@@ -24,12 +24,15 @@ layout: default
       {% endif %}
 
       <div class="span6">
-        {% if lang %}
-          <a href="{{ site.baseurl }}{{ rootTutorialURL }}"><img src="{{ site.baseurl }}/resources/images/language/en.png" title="Language: en"/></a> 
-  	      {% for l in lang %}
-		    <a href="{{ site.baseurl }}/{{ l }}{{ rootTutorialURL }}"><img src="{{ site.baseurl }}/resources/images/language/{{ l }}.png" title="Language: {{ l }}"/></a> 
-	      {% endfor %}
-	    {% endif %}
+        {% if languages %}
+        <ul class="langbar">
+          <li><a href="{{ site.baseurl }}{{ rootTutorialURL }}" class="lang">English</a></li>
+          {% for l in languages %}
+            {% assign lang = site.data.languages[l] %}
+            <li><a href="{{ site.baseurl }}/{{ l }}{{ rootTutorialURL }}" class="lang">{{lang.name}}</a></li>
+          {% endfor %}
+        </ul>
+        {% endif %}
       </div>
     
       <div class="span10">
