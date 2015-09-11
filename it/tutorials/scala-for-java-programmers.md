@@ -58,13 +58,13 @@ il programmatore Scala li dichiara in oggetti singleton.
 
 ### Compiliamo l'esempio
 
-Per compilare l'esempio, useremo `scalac`, cioè il compilatore Scala.
+Per compilare l'esempio useremo `scalac`, il compilatore Scala.
 `scalac` lavora come la maggior parte dei compilatori: prende un file
 sorgente come argomento, eventuali opzioni e produce  uno o più object
 file come output. Gli object file sono gli standard file delle classi
 di Java.
 
-Se salviamo il file precedente come `HelloWorld.scala`, lo compiliamo
+Se salviamo il file precedente come `HelloWorld.scala` e lo compiliamo
 con il seguente comando (il segno maggiore `>' rappresenta il prompt
 dei comandi e non va digitato):
 
@@ -77,10 +77,10 @@ sezione.
 
 ### Eseguimo l'esempio
 
-Una volta compilato il programma pu\`o esser facilmente eseguito con il
+Una volta compilato il programma può esser facilmente eseguito con il
 comando scala. L'uso è molto simile al comando java ed accetta le stesse
 opzioni. Il precedente esempio può esser eseguito usando il seguente
-comando che produce l'output atteso:
+comando. L'output prodotto è quello atteso:
 
     > scala -classpath . HelloWorld
 
@@ -88,16 +88,16 @@ comando che produce l'output atteso:
 
 ## Interazione con  Java
 
-Uno dei punti di forza di è quello di rendere semplice l’interazione con
-codice Java. Tutte le classi del package `java.lang` vengono importate di
-default, le altre richiedono l’esplicito import.
+Uno dei punti di forza di Scala è quello di rendere semplice l’interazione con
+codice Java. Tutte le classi del package `java.lang` sono importate di
+default mentre le altre richiedono l’esplicito import.
 
 Osserviamo un esempio che lo dimostra. Vogliamo ottenere la data
 corrente e formattarla in accordo con la convezione usata in uno
 specifico paese del mondo, diciamo la Francia. (Altre regioni, come la parte
-di lingua francese della Svizzera utilizzano le stesse convenzioni.)
+di lingua francese della Svizzera, utilizzano le stesse convenzioni.)
 
-Le librerie delle classi Java definiscoono potenti classi di utilità, come
+Le librerie delle classi Java definiscono potenti classi di utilità come
 `Date` e `DateFormat`. Poiché Scala interagisce direttamente con Java, non
 esistono le classi equivalenti nella libreria delle classi di Scala--possiamo
 semplicemente importare le classi dei corrispondenti package Java:
@@ -114,16 +114,16 @@ semplicemente importare le classi dei corrispondenti package Java:
       }
     }
 
-L’istruzione import di Scala è molto simile all’equivalente in Java,
+L’istruzione import di Scala è molto simile all’equivalente in Java
 tuttavia, risulta essere più potente. Più classi possono essere importate
-dallo stesso package includendole in parentesi graffe come nella prima linea
+dallo stesso package includendole in parentesi graffe come nella prima riga
 di codice precedentemente riportato. Un’altra differenza è evidente
 nell’uso del carattere underscore (`_`) al posto dell’asterisco (`*`) per
 importare tutti i nomi di un package o di una classe. Questo perché
 l’asterisco è un identificatore valido (e.g. nome di un metodo), come
 vedremo più avanti.
 
-Inoltre, l’istruzione import sulla terza linea importa tutti i membri
+Inoltre, l’istruzione import sulla terza riga importa tutti i membri
 della classe `DateFormat`. Questo rende disponibili il metodo statico
 `getDateInstance` ed il campo statico `LONG`.
 
@@ -145,7 +145,7 @@ Apparentemente sembra un piccolo dettaglio sintattico ma, presenta delle
 importanti conseguenze. Una di queste sarà esplorata nella prossima
 sezione.
 
-A questo punto, riguardo l’integrazione con Java abbiamo notato che è
+A questo punto, riguardo l’integrazione con Java, abbiamo notato che è
 altresì possibile ereditare dalle classi Java ed implementare le interfacce
 direttamente in Scala.
 
@@ -155,7 +155,7 @@ direttamente in Scala.
 Scala è un linguaggio orientato agli oggetti (_object-oriented_) puro nel
 senso che *ogni cosa* è un oggetto, inclusi i numeri e le funzioni. In questo
 differisce da Java che invece distingue tra tipi primitivi (come `boolean`
-  e `int` ) e tipi referenziati. I\noltre, Java non permette la manipolazione
+  e `int` ) e tipi referenziati. Inoltre, Java non permette la manipolazione
   di funzioni come fossero valori.
 
 ### I numeri sono oggetti
@@ -200,9 +200,9 @@ cardini di un interessante paradigma di programmazione chiamato
 Come esempio semplice del perché può risultare utile usare le funzioni
 come valori consideriamo una funzione timer che deve eseguire delle
 azione ogni secondo. Come specifichiamo l’azione da eseguire?
-Logicamente, come una funzione. Questo tipo di passaggio di funzione è
+Logicamente come una funzione. Questo tipo di passaggio di funzione è
 familiare a molti programmatori: viene spesso usato nel codice delle
-interfacce utente, per registrare le funzioni di call-back richiamate
+interfacce utente per registrare le funzioni di call-back richiamate
 quando un evento si verifica.
 
 Nel successivo programma la funzione timer è chiamata `oncePerSecond` e
@@ -226,7 +226,7 @@ frase “time flies like an arrow” ogni secondo.
       }
     }
 
-Notare che per stampare la stringa, usiamo il metodo `println` predefinito
+Notare che per stampare la stringa usiamo il metodo `println` predefinito
 invece di quelli inclusi in `System.out`.
 
 #### Funzioni anonime
@@ -253,7 +253,7 @@ invece di *timeFlies* e appare come di seguito:
 
 La presenza delle funzioni anonime in questo esempio è rivelata dal
 simbolo `=>` che separa la lista degli argomenti della funzione dal
-suo corpo. In questo esempio la lista degli argomenti è vuota e di fatti,
+suo corpo. In questo esempio la lista degli argomenti è vuota e di fatti
 la coppia di parentesi sulla sinistra della freccia è vuota. Il corpo della
 funzione `timeFlies` è lo stesso del precedente.
 
@@ -262,7 +262,7 @@ funzione `timeFlies` è lo stesso del precedente.
 Come visto precedentemente Scala è un linguaggio orientato agli oggetti e
 come tale presenta il concetto di classe. (Per ragioni di completezza
 va notato che alcuni linguaggi orientati agli oggetti non hanno il concetto
-di classe ma, Scala non è uno di questi.) Le classi in Scala sono dichiarate
+di classe; Scala non è uno di questi.) Le classi in Scala sono dichiarate
 usando una sintassi molto simile a quella usata in Java. Un'importante
 differenza è che le classi in Scala possono avere dei parametri. Questo
 concetto è mostrato nella seguente definizione dei numeri complessi.
@@ -285,20 +285,19 @@ del segno uguale dei metodi e deducendo che per entrambi si tratta di
 valori di tipo `Double`.
 
 Il compilatore non è sempre capace di dedurre i tipi come nel caso precedente;
-purtroppo non c’è una regola semplice capace di dirci quando sarà in grado e
-quando no. Nella pratica questo non è un problema poiché il compilatore sa quando
-non è in grado di stabilire il tipo che non è stato definito
+purtroppo non c’è una regola semplice capace di dirci quando sarà in grado di
+farlo e quando no. Nella pratica questo non è un problema poiché il compilatore
+sa quando non è in grado di stabilire il tipo che non è stato definito
 esplicitamente. Come semplice regola i programmatori Scala alle prime armi
 dovrebbero provare ad omettere la dichiarazione di tipi che sembrano semplici
-da dedurre per osservare il comportamento del compilatore. Dopo qualche tempo il
-programmatore avrà la sensazione di quando è possibile omettere il tipo
-e quando no.
+da dedurre per osservare il comportamento del compilatore. Dopo qualche tempo si
+avrà la sensazione di quando è possibile omettere il tipo e quando no.
 
 ### Metodi senza argomenti
 
 Un piccolo problema dei metodi `re` e `im`  è che, per essere invocati, è
 necessario far seguire il nome del metodo da una coppia di parentesi tonde
-vuote, come mostrato di seguito:
+vuote, come mostrato nel codice seguente:
 
     object ComplexNumbers {
       def main(args: Array[String]) {
@@ -329,8 +328,8 @@ la classe `scala.AnyRef` è implicitamente usata.
 
 In Scala è possibile eseguire la sovrascrittura (_override_) dei metodi
 ereditati dalla super-classe. È pertanto necessario specificare esplicitamente
-il metodo che si sta sovrascrivendo usando il modificatore `override`, al fine
-di evitare sovrascritture accidentali. Come esempio estendiamo la nostra classe
+il metodo che si sta sovrascrivendo usando il modificatore `override` per
+evitare sovrascritture accidentali. Come esempio estendiamo la nostra classe
  `Complex` ridefinendo il metodo `toString` ereditato da `Object`.
 
     class Complex(real: Double, imaginary: Double) {
@@ -341,7 +340,7 @@ di evitare sovrascritture accidentali. Come esempio estendiamo la nostra classe
     }
 
 
-## Case Classes e Pattern Matching
+## Classi Case  e Pattern Matching
 
 Un tipo di struttura dati che spesso si trova nei programmi è l’albero.
 Ad esempio, gli interpreti ed i compilatori abitualmente rappresentano i
@@ -356,23 +355,24 @@ costanti intere e variabili intere. Due esempi di tali espressioni sono
 `1+2` e `(x+x)+(7+y)`.
 
 A questo punto è necessario definire il tipo di rappresentazione per
-dette espressioni e, a tale proposito, l’albero è la più naturale, dove
-i nodi sono le operazioni (nel nostro caso, l’addizione) e le foglie
-sono i valori (costanti o variabili).
+dette espressioni e, a tale proposito, l’albero è la più naturale, con
+i nodi che rappresentano le operazioni (nel nostro caso, l’addizione) mentre
+le foglie sono i valori (costanti o variabili).
 
-In questo albero è abitualmente rappresentato usando una super-classe
+In Scala questo albero è abitualmente rappresentato usando una super-classe
 astratta per gli alberi e una concreta sotto-classe per i nodi o le
 foglie. In un linguaggio funzionale useremmo un tipo dati algebrico per
-lo stesso scopo. Scala fornisce il concetto di _case classes_ che è qualcosa
-che si trova nel mezzo delle due rappresentazioni. Mostriamo come può essere
-usato per definire il tipo di alberi per il nostro esempio:
+lo stesso scopo. Scala fornisce il concetto di _classi case_ (_case classes_)
+che è qualcosa che si trova nel mezzo delle due rappresentazioni.
+Mostriamo come può essere usato per definire il tipo di alberi per il nostro
+esempio:
 
     abstract class Tree
     case class Sum(l: Tree, r: Tree) extends Tree
     case class Var(n: String) extends Tree
     case class Const(v: Int) extends Tree
 
-Il fatto che le classi `Sum`, `Var` e `Const` sono dichiarate come case classes
+Il fatto che le classi `Sum`, `Var` e `Const` sono dichiarate come classi case
 significa che rispetto alle classi standard differiscono in diversi aspetti:
 
 -   la parola chiave `new` non è necessaria per creare un’istanza di queste
@@ -398,7 +398,7 @@ qualche *ambiente* (_environment_) di valutazione. Lo scopo dell’environment
 `x+1` valutata nell’environment con associato il valore `5` alla
 variabile `x`, scritto `{ x -> 5 }`, restituisce `6` come risultato.
 
-Inoltre dobbiamo trovare un modo per rappresentare gli environment.
+Inoltre, dobbiamo trovare un modo per rappresentare gli environment.
 Potremmo naturalmente usare alcune strutture dati associative come una
 hash table ma, possiamo anche usare direttamente delle funzioni! Un
 environment in realtà non è altro che una funzione con associato un
@@ -413,7 +413,7 @@ altri casi.
 
 Prima di scrivere la funzione di valutazione diamo un nome al tipo di
 environment. Potremmo usare sempre il tipo `String => Int` per gli environment
-ma, semplifichiamo il programma se introduciamo un nome per questo tipo
+ma semplifichiamo il programma se introduciamo un nome per questo tipo
 rendendo anche i cambiamenti futuri più facili. Questo è fatto in con la
 seguente notazione:
 
@@ -464,18 +464,18 @@ e nominare varie parti del valore per valutare il codice che ne fa uso.
 
 Un programmatore object-oriented esperto potrebbe sorprendersi del fatto
 che non abbiamo definito `eval` come *metodo* della classe e delle sue
-sottoclassi. Potremmo averlo fatto, perchè Scala permette la definizione di
+sottoclassi. Potremmo averlo fatto perchè Scala permette la definizione di
 metodi nelle case classes così come nelle classi normali. Decidere quando
 usare il pattern matching o i metodi è quindi una questione di gusti ma,
 ha anche implicazioni importanti riguardo l’estensibilità:
 
 -   quando si usano i metodi è facile aggiungere un nuovo tipo di nodo
     definendo una sotto classe di `Tree` per esso; d’altro canto, aggiungere
-    una nuova operazione per manipolare l’albero è noioso, richiede la
+    una nuova operazione per manipolare l’albero è noioso e richiede la
     modifica di tutte le sotto classi `Tree`;
 -   quando si usa il pattern matching la situazione è ribaltata:
     aggiungere un nuovo tipo di nodo richiede la modifica di tutte le
-    funzioni in cui si fa pattern matching sull’albero, per prendere in
+    funzioni in cui si fa pattern matching sull’albero per prendere in
     esame il nuovo nodo; d’altro canto, aggiungere una nuova operazione
     è semplice, basta definirla come una funzione indipendente.
 
@@ -489,8 +489,8 @@ operazione:
     derivazione, zero altrimenti,
 3.  la derivata di una costante è zero.
 
-Queste regole possono essere tradotte quasi letteralmente in codice Scala,
-per ottenere la seguente definizione:
+Queste regole possono essere tradotte quasi letteralmente in codice Scala e
+ottenere la seguente definizione:
 
     def derive(t: Tree, v: String): Tree = t match {
       case Sum(l, r) => Sum(derive(l, v), derive(r, v))
@@ -504,17 +504,17 @@ matching. Prima di tutto l’istruzione `case` per le variabili ha un
 controllo fa si che il pattern matching è eseguito solo se l’espressione
 è vera. Qui viene usato per esser sicuri che restituiamo la costante `1`
 solo se il nome della variabile da derivare è lo stesso della variabile
-di derivazione `v`. La seconda nuova feature del pattern matching qui
+di derivazione `v`. La seconda nuova caratteristica del pattern matching qui
 introdotta è la *wild-card*, scritta `_`, che corrisponde a qualunque
 valore, senza assegnargli un nome.
 
-Non abbiamo esplorato del tutto la potenza del pattern matching ma, ci
+Non abbiamo esplorato del tutto la potenza del pattern matching ma ci
 fermiamo qui per brevità. Vogliamo ancora osservare come le due
-precedenti funzioni lavorano in un esempio reale. A tale scopo,
+precedenti funzioni lavorano in un esempio reale. A tale scopo
 scriviamo una semplice funzione `main` che esegue diverse operazioni
 sull’espressione `(x+x)+(7+y)`: prima calcola il suo valore
 nell’environment `{ x -> 5, y -> 7 }`, dopo calcola la
-derivata relativa a `x` e poi ad `y`.
+derivata relativa ad `x` e poi ad `y`.
 
     def main(args: Array[String]) {
       val exp: Tree = Sum(Sum(Var("x"),Var("x")),Sum(Const(7),Var("y")))
@@ -525,7 +525,7 @@ derivata relativa a `x` e poi ad `y`.
       println("Derivative relative to y:\n " + derive(exp, "y"))
     }
 
-Eseguendo questo programma, otteniamo l’output atteso:
+Eseguendo questo programma otteniamo l’output atteso:
 
     Expression: Sum(Sum(Var(x),Var(x)),Sum(Const(7),Var(y)))
     Evaluation with x=5, y=7: 24
@@ -534,7 +534,7 @@ Eseguendo questo programma, otteniamo l’output atteso:
     Derivative relative to y:
      Sum(Sum(Const(0),Const(0)),Sum(Const(0),Const(1)))
 
-Esaminando l’output, notiamo che il risultato della derivata dovrebbe
+Esaminando l’output notiamo che il risultato della derivata dovrebbe
 essere semplificato prima di essere visualizzato all’utente. La
 definizione di una funzione di semplificazione usando il pattern
 matching rappresenta un interessante (ma sorprendentemente
@@ -586,7 +586,7 @@ tipo `Object` in Java dato che è altresì il super-tipo dei tipi base come
 
 Per rendere confrontabili gli oggetti di una classe è quindi sufficiente
 definire i predicati con cui testare uguaglianza ed minoranza e unire la
-precedente classe `Ord`. Come esempio, definiamo una classe `Date` che
+precedente classe `Ord`. Come esempio definiamo una classe `Date` che
 rappresenta le date nel calendario Gregoriano. Tali date sono composte dal
 giorno, dal mese e dall’anno che rappresenteremo tutti con interi. Iniziamo
 definendo la classe `Date` come segue:
@@ -613,7 +613,7 @@ Arriviamo alla seguente definizione:
         o.day == day && o.month == month && o.year == year
       }
 
-Questo metofo fa uso di due metodi predefiniti `isInstanceOf` e `asInstanceOf`.
+Questo metodo fa uso di due metodi predefiniti `isInstanceOf` e `asInstanceOf`.
 Il primo, `isInstanceOf`, corrisponde all’operatore `instanceOf` di Java e
 restituisce true se e solo se l’oggetto su cui è applicato è una istanza del
 tipo dati. Il secondo, `asInstanceOf`, corrisponde all’operatore di cast in
@@ -652,7 +652,7 @@ informati dei problemi relativi alla mancanza della programmazione
 generica nel loro linguaggio, un’imperfezione risolta in Java 1.5.
 
 La programmazione generica riguarda la capacità di scrivere codice
-parametrizzato dai tipi. Per esempio, un programmatore che scrive una
+parametrizzato dai tipi. Per esempio un programmatore che scrive una
 libreria per le liste concatenate può incontrare il problema di decidere
 quale tipo dare agli elementi della lista. Dato che questa lista è stata
 concepita per essere usata in contesti differenti, non è possibile
@@ -662,7 +662,7 @@ restrittivo.
 
 I programmatori Java hanno fatto ricorso all’uso di `Object`, che è il
 super-tipo di tutti gli oggetti. Questa soluzione è in ogni caso ben lontana
-dall’esser ideale, poiché non funziona per i tipi base (`int`, `long`, `float`,
+dall’esser ideale perché non funziona per i tipi base (`int`, `long`, `float`,
 ecc.) ed implica che molto type casts dinamico deve esser fatto dal
 programmatore.
 
@@ -690,8 +690,8 @@ tipi numerici, `false` per il tipo `Boolean`, `())`per il tipo `Unit`
 e `null` per tutti i tipi oggetto.
 
 Per usare la classe `Reference` è necessario specificare quale tipo usare per
-il tipo parametro `T`, il tipo di elemento contenuto dalla cella. Adr esempio,
-per creare ed usare una cella che contiene un intero, si potrebbe scrivere il
+il tipo parametro `T`, il tipo di elemento contenuto dalla cella. Ad esempio,
+per creare ed usare una cella che contiene un intero si potrebbe scrivere il
 seguente codice:
 
     object IntegerReference {
@@ -712,5 +712,5 @@ poiché è stata dichiarata per memorizzare un intero.
 Questo documento ha fornito una veloce introduzione del linguaggio Scala e
 presentato alcuni esempi di base. Il lettore interessato può continuare, per
 esempio, leggendo il documento *Scala By Example* che contiene esempi molti più
-avanzati e, consultare al bisogno la documentazione
+avanzati e consultare al bisogno la documentazione
 *Scala Language Specification*.
