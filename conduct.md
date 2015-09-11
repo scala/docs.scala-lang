@@ -90,6 +90,7 @@ The scala forums will *no longer* allow job listings to be posted to the mailing
 ## The Mailing Lists
 
 The Scala mailing lists are split into several sub-lists:
+
 - **scala-user** This is a mailing list for beginners/users of scala. No question is a dumb question on Scala user. No a priori knowledge of math, functional programing, java, or other topics should be assumed on this list. Any question can and should receive a courteous and insightful answer.
 - **scala-debate** This is the ‘anything goes’ list. You can bring up any issue, any loosely scala-related topic. While professional courtesy and respect must be maintained, this is where discussion on controversial topics can occur, or “what-if” type questions.
 - **scala-internals** This is the list relating to compiler/library development. If you’re into the actual day to day nuts and bolts of jenkins, pull requests and compiler bugs, this is the place to hang out. New implementations are discussed here, after being proposed to the general public.
