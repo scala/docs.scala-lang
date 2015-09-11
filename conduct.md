@@ -87,6 +87,6 @@ actions will be taken:
 3. **Removal from community** If a user has already been placed under moderation and returned, or has not learned to be respectful and courteous to others, it will constitute a removal from the Scala community, including all forums the Scala moderators are responsible for.
 
 
-## No Job postings
+## No Job Postings
 
-The scala forums will *no longer* allow job listings to be posted to the mailing list.  While we're all *very* glad to see more and more Scala jobs, we'd prefer if these listing were kept in more appropriate forums.
+The Scala forums does not allow job listings to be posted to the mailing lists.  While we're all *very* glad to see more and more Scala jobs, we'd prefer if these listings were kept in more appropriate forums.
