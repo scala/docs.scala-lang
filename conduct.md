@@ -3,9 +3,9 @@ layout: page
 title: The Scala Code of Conduct
 ---
 
-This Code of Conduct covers our behaviour as contributors/comitters of the 
-Scala Team, as well as those participating in any Scala moderated forum, 
-mailing list, wiki, web site, IRC channel, hackathon, public meeting or 
+This Code of Conduct covers our behaviour as contributors/comitters of the
+Scala Team, as well as those participating in any Scala moderated forum,
+mailing list, wiki, web site, IRC channel, hackathon, public meeting or
 private correspondence.  Scala moderators  are appointed by EPFL /
 Typesafe to maintain the health of the community and will arbitrate in any
 dispute over the conduct of a member of the community.
@@ -40,17 +40,17 @@ Snide comments, like the following:
 > You really haven't comprehended anything I'm saying.
 
 are generally unhelpful.  What you could have said:
-  
+
 > I think perhaps my point was unclear.  Let's rehash:
 
 ## (2) Be Courteous
 
- Whether posting to a mailing list, or submitting a bug report we value your 
- contribution to Scala. When working with another’s work, be courteous and 
- professional. It’s not courteous to demand responses, insult pull requests 
- or post condescending bug reports. In that same vein, avoid posting messages 
- with little to no content on the mailing list. We have a lot of people in 
- the community, let’s keep our signal to noise ratio high, and set emotions 
+ Whether posting to a mailing list, or submitting a bug report we value your
+ contribution to Scala. When working with another’s work, be courteous and
+ professional. It’s not courteous to demand responses, insult pull requests
+ or post condescending bug reports. In that same vein, avoid posting messages
+ with little to no content on the mailing list. We have a lot of people in
+ the community, let’s keep our signal to noise ratio high, and set emotions
  aside before coming to the table.
 
 ## (3) Be Excellent
@@ -67,8 +67,8 @@ No matter what it is, responding to a question, fixing a bug, writing a
 proposal, make sure the contribution is thorough. Don’t leave things half
 written or half done. While the evolution of Scala is a continual process,
 incomplete work is often of negative benefit. At the same time, contributors
-will come and go, as with any open source community. If a contributor needs 
-to drop something, take measures to ensure someone else is willing to pick 
+will come and go, as with any open source community. If a contributor needs
+to drop something, take measures to ensure someone else is willing to pick
 it up, or notify the other maintainers.
 
 
