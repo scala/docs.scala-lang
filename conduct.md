@@ -3,12 +3,16 @@ layout: page
 title: The Scala Code of Conduct
 ---
 
-This Code of Conduct covers our behaviour as contributors/comitters of the
-Scala Team, as well as those participating in any Scala moderated forum,
-mailing list, wiki, web site, IRC channel, hackathon, public meeting or
-private correspondence.  Scala moderators  are appointed by EPFL /
-Typesafe to maintain the health of the community and will arbitrate in any
-dispute over the conduct of a member of the community.
+This Code of Conduct covers our behaviour as contributors/comitters of
+the Scala Team, as well as those participating in any Scala moderated
+forum, mailing list, wiki, web site, IRC channel, hackathon, public
+meeting or private correspondence.  (See the
+[list of community fora](http://www.scala-lang.org/community/)
+on the main Scala site.)
+
+Scala moderators are appointed by EPFL / Typesafe to maintain the
+health of the community and will arbitrate in any dispute over the
+conduct of a member of the community.
 
 Note: This should not be interpreted like a legal document.  It's a statement
 of intent, and a guideline for collaboration.
@@ -86,15 +90,3 @@ actions will be taken:
 ## No Job postings
 
 The scala forums will *no longer* allow job listings to be posted to the mailing list.  While we're all *very* glad to see more and more Scala jobs, we'd prefer if these listing were kept in more appropriate forums.
-
-## The Mailing Lists
-
-The Scala mailing lists are split into several sub-lists:
-
-- **scala-user** This is a mailing list for beginners/users of scala. No question is a dumb question on Scala user. No a priori knowledge of math, functional programing, java, or other topics should be assumed on this list. Any question can and should receive a courteous and insightful answer.
-- **scala-debate** This is the ‘anything goes’ list. You can bring up any issue, any loosely scala-related topic. While professional courtesy and respect must be maintained, this is where discussion on controversial topics can occur, or “what-if” type questions.
-- **scala-internals** This is the list relating to compiler/library development. If you’re into the actual day to day nuts and bolts of jenkins, pull requests and compiler bugs, this is the place to hang out. New implementations are discussed here, after being proposed to the general public.
-- **scala-language** This list is for questions relating to the language itself and its specification. This includes deep topics like “Why do implicits work this way” or “What does Foo extends Any mean?”
-- **scala-sips** This list is for collaboration and feedback regarding actively developed new features for Scala.   A SIP includes both the proposal process, as well as the implemenetation and integration into scala core.   If you want to see what’s coming down the pipe and you’d like to be involved, this is the mailing list for you.
-- **scala-tools** This list is specifically for tooling around Scala, such as emacs, maven, ant and gedit. If you have a question, this may be the right list for you.
-- **scala-announce** This list is for announcements only. All posts are moderated.
