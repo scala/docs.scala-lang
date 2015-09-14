@@ -89,4 +89,4 @@ actions will be taken:
 
 ## No Job Postings
 
-The Scala forums does not allow job listings to be posted to the mailing lists.  While we're all *very* glad to see more and more Scala jobs, we'd prefer if these listings were kept in more appropriate forums.
+Job listings are not allowed on the mailing lists.  While we're all *very* glad to see more and more Scala jobs, please confine these listings to more appropriate forums.
