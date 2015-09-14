@@ -85,8 +85,3 @@ actions will be taken:
 1. **Issued a warning** On the first offense, one of the Scala moderators will issue a warning about the unacceptable behavior.
 2. **Put under moderation** On the second offense, a user may be placed under moderation.  This will continue for a maximum of three months.  If behavior improves, a user can leave moderated status.   If behavior degrades, it can lead to #3.
 3. **Removal from community** If a user has already been placed under moderation and returned, or has not learned to be respectful and courteous to others, it will constitute a removal from the Scala community, including all forums the Scala moderators are responsible for.
-
-
-## No Job Postings
-
-Job listings are not allowed on the mailing lists.  While we're all *very* glad to see more and more Scala jobs, please confine these listings to more appropriate forums.
