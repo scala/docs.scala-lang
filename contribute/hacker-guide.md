@@ -99,7 +99,7 @@ If you are new to Git and branching, read the [Branching Chapter](http://git-scm
 The next step after cloning your fork is setting up your machine to build Scala.
 
 * It is recommended to use Java `1.6` (not `1.7` or `1.8`, because they might cause occasional glitches).
-* The build tool is `ant`.
+* The build tool is `ant`. If you are behind a HTTP proxy, include [`ANT_ARGS=-autoproxy`]( https://ant.apache.org/manual/proxy.html) in your environment.
 * The build runs the `pull-binary-libs.sh` script to download bootstrap libs. This requires `bash` and `curl`.
 * The majority of our team works on Linux and OS X, so these operating systems are guaranteed to work.
 * Windows is supported, but it might have issues. Please report to [the issue tracker](https://issues.scala-lang.org/) if you encounter any.
