@@ -25,6 +25,8 @@ it won't apply more than one conversion in trying to find methods. For example:
       def total = m + n + o
     }
 
+    import scala.language.implicitConversions
+
     // This demonstrates implicit conversion chaining restrictions
     object T1 { // to make it easy to test on REPL
       implicit def toA(n: Int): A = new A(n)
@@ -43,14 +45,13 @@ it won't apply more than one conversion in trying to find methods. For example:
 However, if an implicit definition requires an implicit parameter itself, Scala
 _will_ look for additional implicit values for as long as needed. Continuing from
 the last example:
-   
-    // def m[A <% B](m: A) is the same thing as
-    // def m[A](m: A)(implicit ev: A => B)
 
     object T2 {
       implicit def toA(n: Int): A = new A(n)
-      implicit def aToB[A1 <% A](a: A1): B = new B(a.n, a.n)
-      implicit def bToC[B1 <% B](b: B1): C = new C(b.m, b.n, b.m + b.n)
+      implicit def aToB[A1](a: A1)(implicit f: A1 => A): B =
+        new B(a.n, a.n)
+      implicit def bToC[B1](b: B1)(implicit f: B1 => B): C =
+        new C(b.m, b.n, b.m + b.n)
 
       // works
       println(5.total)
@@ -80,12 +81,14 @@ one:
 
     object T2Translated {
       implicit def toA(n: Int): A = new A(n)
-      implicit def aToB[A1 <% A](a: A1): B = new B(a.n, a.n)
-      implicit def bToC[B1 <% B](b: B1): C = new C(b.m, b.n, b.m + b.n)
+      implicit def aToB[A1](a: A1)(implicit f: A1 => A): B =
+        new B(a.n, a.n)
+      implicit def bToC[B1](b: B1)(implicit f: B1 => B): C =
+        new C(b.m, b.n, b.m + b.n)
 
       // Scala does this
       println(bToC(5)(x => aToB(x)(y => toA(y))).total)
-      println(bToC(new A(5))(x => aToB(x)(identity)).total)      
+      println(bToC(new A(5))(x => aToB(x)(identity)).total)
       println(bToC(new B(5, 5))(identity).total)
 
       // no implicits required
