@@ -83,7 +83,7 @@ Scala は様々な具象不変コレクションクラス (concrete immutable co
 
 ## 不変スタック
 
-後入れ先出し (LIFO: last in first out) の列が必要ならば、スタック ([`Stack`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Stack.html)) がある。 `push` メソッドを使ってスタックに要素をプッシュ、`pop`</a> を使ってポップ、そして`top`</a> を使って削除することなく一番上の要素を読み込むことができる。これらの演算は、全て定数時間で行われる。
+後入れ先出し (LIFO: last in first out) の列が必要ならば、スタック ([`Stack`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Stack.html)) がある。 `push` メソッドを使ってスタックに要素をプッシュ、`pop` を使ってポップ、そして`top` を使って削除することなく一番上の要素を読み込むことができる。これらの演算は、全て定数時間で行われる。
 
 以下はスタックに対して行われる簡単な演算の例だ:
 
