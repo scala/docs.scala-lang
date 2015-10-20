@@ -13,6 +13,7 @@ tutorial-previous: implicit-parameters
 [Implicit parameters](implicit-parameters.html) and methods can also define implicit conversions called _views_. A view from type `S` to type `T` is defined by an implicit value which has function type `S => T`, or by an implicit method convertible to a value of that type.
 
 Views are applied in two situations:
+
 * If an expression `e` is of type `S`, and `S` does not conform to the expression's expected type `T`.
 * In a selection `e.m` with `e` of type `T`, if the selector `m` does not denote a member of `T`.
 
@@ -26,7 +27,7 @@ The following operation on the two lists xs and ys of type `List[Int]` is legal:
 assuming the implicit methods `list2ordered` and `int2ordered` defined below are in scope:
 
     implicit def list2ordered[A](x: List[A])
-        (implicit elem2ordered: a => Ordered[A]): Ordered[List[A]] =
+        (implicit elem2ordered: A => Ordered[A]): Ordered[List[A]] =
       new Ordered[List[A]] { /* .. */ }
     
     implicit def int2ordered(x: Int): Ordered[Int] = 
