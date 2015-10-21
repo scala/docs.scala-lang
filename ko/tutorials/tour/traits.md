@@ -26,7 +26,7 @@ language: ko
         obj.isInstanceOf[Point] &&
         obj.asInstanceOf[Point].x == x
     }
-    object TraitsTest extends Application {
+    object TraitsTest extends App {
       val p1 = new Point(2, 3)
       val p2 = new Point(2, 4)
       val p3 = new Point(3, 3)
