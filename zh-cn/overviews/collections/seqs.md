@@ -25,7 +25,7 @@ language: zh-cn
 
 如果一个序列是可变的，它提供了另一种更新序列中的元素的，但有副作用的update方法，Scala中常有这样的语法，如seq(idx) = elem。它只是seq.update(idx, elem)的简写，所以update 提供了方便的赋值语法。应注意update 和updated之间的差异。update 再原来基础上更改序列中的元素，并且仅适用于可变序列。而updated 适用于所有的序列，它总是返回一个新序列，而不会修改原序列。  
 
-## Set类的操作
+## Seq类的操作
 
 | WHAT IT IS | WHAT IT DOES   |
 |------------------ | -------------------|
