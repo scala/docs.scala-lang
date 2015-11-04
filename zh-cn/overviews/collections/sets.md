@@ -45,7 +45,7 @@ language: zh-cn
 |xs - x | 包含xs中除去给定元素以外的所有元素的集合。  |
 |xs -- ys | 集合内容为：xs中所有元素，去掉ys中所有元素后剩下的部分。  |
 |xs.empty | 与xs同类的空集合。  |
-|**二进制操作：**	  |                   |
+|**二值操作：**	  |                   |
 |xs & ys | 集合xs和ys的交集。  |
 |xs intersect ys | 等同于 xs & ys。  |
 |xs | ys | 集合xs和ys的并集。  |
