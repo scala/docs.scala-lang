@@ -28,7 +28,7 @@ Scala is equipped with an expressive type system that enforces statically that a
 * [inner classes](inner-classes.html) and [abstract types](abstract-types.html) as object members
 * [compound types](compound-types.html)
 * [explicitly typed self references](explicitly-typed-self-references.html)
-* [implicit parameters](implicit-parameters.html) and [views](views.html)
+* [implicit parameters](implicit-parameters.html) and [conversions](implicit-conversions.html)
 * [polymorphic methods](polymorphic-methods.html)
 
 A [local type inference mechanism](local-type-inference.html) takes care that the user is not required to annotate the program with redundant type information. In combination, these features provide a powerful basis for the safe reuse of programming abstractions and for the type-safe extension of software.
