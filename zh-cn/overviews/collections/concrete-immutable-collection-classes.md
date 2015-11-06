@@ -42,7 +42,8 @@ List通常被认为是Scala中最重要的数据结构，所以我们在此不�
     fibs: scala.collection.immutable.Stream[Int] = Stream(1, ?)
     scala> fibs.toList
     res9: List[Int] = List(1, 1, 2, 3, 5, 8, 13)
-    Vector（向量）
+
+## Vector（向量）
 
 对于只需要处理数据结构头结点的算法来说，List非常高效。可是相对于访问、添加和删除List头结点只需要固定时间，访问和修改头结点之后元素所需要的时间则是与List深度线性相关的。
 
@@ -76,7 +77,8 @@ Vector结构通常被表示成具有高分支因子的树（树或者图的分�
 
     scala> collection.immutable.IndexedSeq(1, 2, 3)
     res2: scala.collection.immutable.IndexedSeq[Int] = Vector(1, 2, 3)
-    Immutable stacks（不可变栈）
+
+## Immutable stacks（不可变栈）
 
 如果您想要实现一个后入先出的序列，那您可以使用[Stack](http://www.scala-lang.org/api/2.10.0/scala/collection/immutable/Stack.html)。您可以使用push向栈中压入一个元素，用pop从栈中弹出一个元素，用top查看栈顶元素而不用删除它。所有的这些操作都仅仅耗费固定的运行时间。
 
@@ -176,7 +178,8 @@ BitSet操作的运行时间是非常快的。查找测试仅仅需要固定时�
     res26: Boolean = true
     scala> moreBits(0)
     res27: Boolean = false
-    List Maps
+
+## List Maps
 
 [ListMap](http://www.scala-lang.org/api/2.10.0/scala/collection/immutable/ListMap.html)被用来表示一个保存键-值映射的链表。一般情况下，ListMap操作都需要遍历整个列表，所以操作的运行时间也同列表长度成线性关系。实际上ListMap在Scala中很少使用，因为标准的不可变映射通常速度会更快。唯一的例外是，在构造映射时由于某种原因，链表中靠前的元素被访问的频率大大高于其他的元素。
 
