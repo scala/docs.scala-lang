@@ -1,6 +1,6 @@
 ---
 layout: page-full-width
-title: Scala Contribuitor Hall of Fame
+title: Scala Contributor Hall of Fame
 ---
 
 A big thank you to everyone who contributed to:
