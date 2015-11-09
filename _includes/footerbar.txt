@@ -34,3 +34,9 @@
 		</p>		
 	</div>
 </div>
+
+<!-- search -->
+<script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+<script src="//cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+<script src="{{ site.baseurl }}/resources/javascript/searchbar.js" type="text/javascript" ></script>
+

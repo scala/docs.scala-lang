@@ -4,3 +4,4 @@ _site
 .settings
 *~
 vendor/bundle
+.idea/
