@@ -11,7 +11,7 @@ What follows are the commit totals, to the 2.11.x branch of the scala/scala repo
 for last month.  (For a commit to be counted, it must have been both committed and merged
 in the same month.)
 
-For more a detailed view of recent activity, see the repo's
+For a more detailed view of recent activity, see the repo's
 [GitHub Pulse page](https://github.com/scala/scala/pulse/monthly).
 
 {% for data in site.categories.scala-fame-data limit:1 %}
