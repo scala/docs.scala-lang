@@ -92,7 +92,7 @@ All operations on iterators are summarized below.
 |  `it.toStream`            | Collects the elements returned by `it` in a stream. |
 |  `it.toSet`               | Collects the elements returned by `it` in a set. |
 |  `it.toMap`               | Collects the key/value pairs returned by `it` in a map. |
-|  **Coying:**              |						         |
+|  **Copying:**              |						         |
 |  `it copyToBuffer buf`    | Copies all elements returned by `it` to buffer `buf`. |
 |  `it copyToArray(arr, s, n)`| Copies at most `n` elements returned by `it` to array `arr` starting at index `s`. The last two arguments are optional. |
 |  **Size Info:**           |						         |
