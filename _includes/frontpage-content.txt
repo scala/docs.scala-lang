@@ -30,38 +30,37 @@
 
       <div class="span8">
 
-        <h2>We’re growing…</h2>
-        <p>We’re working on porting much of Scala’s useful documentation to this documentation repository. So hang on, content is soon forthcoming.<p>
+        <h2>Available Documentation</h2>
 
 		<h3><a href="{{ site.baseurl }}/sips">Scala Improvement Process</a> <span class="label success">Available</span></h3>
 		<p>Read language improvement proposals, participate in discussions surrounding submitted proposals, or submit your own improvement proposal.</p>
 
 		<h3><a href="{{ site.baseurl }}/overviews">Guides and Overviews</a> <span class="label success">Some Available</span></h3>
-		<p>Some guides, such as Martin Odersky’s Collections Overview are already available. Others are currently being converted to markdown markup for inclusion here.</p>
+		<p>Some guides, such as Martin Odersky’s Collections Overview are now available.</p>
 		
 		<h3><a href="{{ site.baseurl }}/tutorials">Tutorials</a> <span class="label success">Some Available</span></h3>
-		<p>Some tutorials, such as the <em>Scala for Java Programmers</em> guide is already available. Others are currently being converted to markdown markup for inclusion here.</p>
+		<p>Some tutorials, such as the <em>Scala for Java Programmers</em> guide, are now available.</p>
 		
 		<h3><a href="{{ site.baseurl }}/glossary">Glossary</a> <span class="label success">Available</span></h3>
 		<p>With permission from Artima Inc., we reproduce the glossary from <em>Programming in Scala</em> here, for easy reference.</p>				
 		
 		<h3><a href="{{ site.baseurl }}/cheatsheets">Cheatsheets</a> <span class="label success">Available</span></h3>
-		<p>We've currently got one cheatsheet, thanks to Brendan O’Connor, and are looking for more to include!</p>
+		<p>We've currently got one cheatsheet, thanks to Brendan O’Connor. Contributions in this area are welcome.</p>
 		
 		<h3><a href="{{ site.baseurl }}/style">Scala Style Guide</a> <span class="label success">Available</span></h3>
-		<p>Daniel Spiewak and David Copeland’s <em>Scala Style Guide</em> is now available. Thanks to them for putting together such an excellent style guide, and thanks to Simon Ochsenreither for converting it to markdown!</p>		
+		<p>Thanks to Daniel Spiewak and David Copeland for putting together such an excellent style guide, and thanks to Simon Ochsenreither for converting it to Markdown.</p>		
 
 		<h3><a href="http://www.scala-lang.org/files/archive/spec/2.11/">Language Specification</a> <span class="label success">Available</span></h3>
-		<p>The official definition of Scala.  For when you just have to know the truth, beautiful or ugly.</p>				
+		<p>The official definition of Scala.  For when you just have to know the truth.</p>				
 		
 		<p>&nbsp;</p><p>&nbsp;</p>
 		
       </div>
       <div class="span8">
 		<h1>Contributions Welcomed!</h1>
-                This site was designed so it would be easy for core committers and the community alike to build documentation. We’d love help of any kind&nbsp;– from detailed articles or overviews of Scala’s language features, to help converting documents to markdown. 
+                This site was designed for core committers and the community alike to build documentation. We’d love help of any kind&nbsp;– from detailed articles or overviews of Scala’s language features, to help converting documents to Markdown. 
 		<p>&nbsp;</p>
-		<p><b>If you’d like to help us, please see the <a href="{{ site.baseurl }}/contribute.html">Contribute</a> section of the site, and feel free to contact <a href="http://people.epfl.ch/heather.miller">Heather</a>.</b></p>
+		<p><b>If you’d like to help, please see the <a href="{{ site.baseurl }}/contribute.html">Contribute</a> section of the site, and feel free to contact <a href="http://people.epfl.ch/heather.miller">Heather</a>.</b></p>
 		
 		<div id="recentcomments" class="dsq-widget"><h2 class="dsq-widget-title">Recent Comments</h2><script type="text/javascript" src="http://scalasip.disqus.com/recent_comments_widget.js?num_items=5&hide_avatars=0&avatar_size=32&excerpt_length=200"></script></div>
 		
