@@ -29,6 +29,7 @@ The pattern `case Twice(n)` will cause an invocation of `Twice.unapply`, which i
 The `apply` method is not necessary for pattern matching.  It is only used to mimick a constructor. `val x = Twice(21)` expands to `val x = Twice.apply(21)`.
 
 The return type of an `unapply` should be chosen as follows:
+
 * If it is just a test, return a `Boolean`. For instance `case even()`
 * If it returns a single sub-value of type T, return an `Option[T]`
 * If you want to return several sub-values `T1,...,Tn`, group them in an optional tuple `Option[(T1,...,Tn)]`.
