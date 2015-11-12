@@ -49,7 +49,7 @@ constructor arguments and extensions.:
 All class/object/trait members should be declared interleaved with
 newlines. The only exceptions to this rule are `var` and `val`. These
 may be declared without the intervening newline, but only if none of the
-fields have ScalaDoc and if all of the fields have simple (max of 20-ish
+fields have Scaladoc and if all of the fields have simple (max of 20-ish
 chars, one line) definitions:
 
     class Foo {

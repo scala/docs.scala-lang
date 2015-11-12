@@ -86,7 +86,7 @@ Many symbols are simply methods of a class, a trait, or an object. For instance,
 
     List(1, 2) ++ List(3, 4)
 
-You'll find the method `++` right on the ScalaDoc for [List][5]. However,
+You'll find the method `++` right on the Scaladoc for [List][5]. However,
 there's one convention that you must be aware when searching for methods.
 Methods ending in colon (`:`) bind _to the right_ instead of the left. In other
 words, while the above method call is equivalent to:
@@ -110,10 +110,10 @@ If the name ends in `=`, look for the method called the same without `=` and
 read the last section.
 
 If you aren't sure what the type of the receiver is, you can look up the symbol
-on the ScalaDoc [index page for identifiers not starting with letters][2] (for
+on the Scaladoc [index page for identifiers not starting with letters][2] (for
 standard Scala library; of course, third-party libraries can add their own
 symbolic methods, for which you should look at the corresponding page of _their_
-ScalaDoc).
+Scaladoc).
 
 Types and objects can also have symbolic names; in particular, it should be mentioned
 that for types with two type parameters the name can be written _between_ parameters,
@@ -129,7 +129,7 @@ either you are looking at a composition of one or more methods with something
 else, or the method has been imported into scope, or is available through an
 imported implicit conversion.
 
-These can also be found in ScalaDoc's [index][2], as mentioned above.
+These can also be found in Scaladoc's [index][2], as mentioned above.
 
 All Scala code has three automatic imports:
 
@@ -149,7 +149,7 @@ Looking inside `Predef` shows some symbolic names:
     object <%< // removed in Scala 2.10
     def ???
 
-There is also `::`, which doesn't appear in the ScalaDoc, but is mentioned in the comments.
+There is also `::`, which doesn't appear in the Scaladoc, but is mentioned in the comments.
 In addition, `Predef` makes some methods available through _implicit conversions_. Just
 look at the methods and classes with `implicit` modifier that receive, as parameter, an
 object of type that is receiving the method. For example, consider `"a" -> 1`. We need

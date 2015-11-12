@@ -1,25 +1,25 @@
 ---
 layout: overview-large
-title: ScalaDoc
+title: Scaladoc
 
 partof: style-guide
 num: 10
 ---
 
 It is important to provide documentation for all packages, classes,
-traits, methods, and other members. ScalaDoc generally follows the
+traits, methods, and other members. Scaladoc generally follows the
 conventions of Javadoc, however there are many additional features to
 make writing scaladoc simpler.
 
 In general, you want to worry more about substance and writing style
-than in formatting. ScalaDocs need to be useful to new users of the code
+than in formatting. Scaladocs need to be useful to new users of the code
 as well as experienced users. Achieving this is very simple: increase
 the level of detail and explanation as you write, starting from a terse
 summary (useful for experienced users as reference), while providing
 deeper examples in the detailed sections (which can be ignored by
 experienced users, but can be invaluable for newcomers).
 
-The general format for a ScalaDoc comment should be as follows:
+The general format for a Scaladoc comment should be as follows:
 
     /** This is a brief description of what's being documented.
       *
@@ -40,12 +40,12 @@ customary in Java.
 
 See the
 [AuthorDocs](https://wiki.scala-lang.org/display/SW/Writing+Documentation)
-on the Scala wiki for more technical info on formatting ScalaDoc.
+on the Scala wiki for more technical info on formatting Scaladoc.
 
 ## General Style
 
-It is important to maintain a consistent style with ScalaDoc. It is also
-important to target ScalaDoc to both those unfamiliar with your code and
+It is important to maintain a consistent style with Scaladoc. It is also
+important to target Scaladoc to both those unfamiliar with your code and
 experienced users who just need a quick reference. Here are some general
 guidelines:
 
@@ -60,7 +60,7 @@ guidelines:
 -   Create links to referenced Scala Library classes using the
     square-bracket syntax, e.g. `[[scala.Option]]`
 -   Summarize a method's return value in the `@return` annotation,
-    leaving a longer description for the main ScalaDoc.
+    leaving a longer description for the main Scaladoc.
 -   If the documentation of a method is a one line description of what
     that method returns, do not repeat it with an `@return` annotation.
 -   Document what the method *does do* not what the method *should do*.
@@ -72,19 +72,19 @@ guidelines:
 -   Use the wiki-style syntax instead of HTML wherever possible.
 -   Examples should use either full code listings or the REPL, depending
     on what is needed (the simplest way to include REPL code is to
-    develop the examples in the REPL and paste it into the ScalaDoc).
+    develop the examples in the REPL and paste it into the Scaladoc).
 -   Make liberal use of `@macro` to refer to commonly-repeated values
     that require special formatting.
 
 ## Packages
 
-Provide ScalaDoc for each package. This goes in a file named
+Provide Scaladoc for each package. This goes in a file named
 `package.scala` in your package's directory and looks like so (for the
 package `parent.package.name.mypackage`):
 
     package parent.package.name
 
-    /** This is the ScalaDoc for the package. */
+    /** This is the Scaladoc for the package. */
     package object mypackage {
     }
 
@@ -122,7 +122,7 @@ notation:
 ## Classes, Objects, and Traits
 
 Document all classes, objects, and traits. The first sentence of the
-ScalaDoc should provide a summary of what the class or trait does.
+Scaladoc should provide a summary of what the class or trait does.
 Document all type parameters with `@tparam`.
 
 #### Classes
@@ -131,7 +131,7 @@ If a class should be created using it's companion object, indicate as
 such after the description of the class (though leave the details of
 construction to the companion object). Unfortunately, there is currently
 no way to create a link to the companion object inline, however the
-generated ScalaDoc will create a link for you in the class documentation
+generated Scaladoc will create a link for you in the class documentation
 output.
 
 If the class should be created using a constructor, document it using
@@ -154,7 +154,7 @@ usage.
 Since objects can be used for a variety of purposes, it is important to
 document *how* to use the object (e.g. as a factory, for implicit
 methods). If this object is a factory for other objects, indicate as
-such here, deferring the specifics to the ScalaDoc for the `apply`
+such here, deferring the specifics to the Scaladoc for the `apply`
 method(s). If your object *doesn't* use `apply` as a factory method, be
 sure to indicate the actual method names:
 
@@ -178,7 +178,7 @@ sure to indicate the actual method names:
     }
 
 If your object holds implicit conversions, provide an example in the
-ScalaDoc:
+Scaladoc:
 
     /** Implicit conversions and helpers for [[mypackage.Complex]] instances.
       *
