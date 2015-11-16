@@ -24,25 +24,22 @@ This includes:
 ## Examples ##
 The new proposal allows us to write the following code:
 
-{% highlight scala %}
-import scalaz.\/._
-object Application extends App {
-  // Instead of requiring right[String, Int] explicitly
-  val _ = Set(1,2,3).foldLeft(right[A = String](0)) { (acc, i) => left("...") }
-}
-{% endhighlight %}
+    import scalaz.\/._
+    object Application extends App {
+      // Instead of requiring right[String, Int] explicitly
+      val _ = Set(1,2,3).foldLeft(right[A = String](0)) { (acc, i) => left("...") }
+    }
 
 and
 
-{% highlight scala %}
-import scalaz.\/
-import scalaz.\/._
-object Application extends App {
-  // Instead of needing to duplicate the first argument of flatMap in the second argument
-  // e.g. writing flatMap[String \/ Int, Set[String \/ Int]]
-  val _ = Set(1,2,3).flatMap[String \/ Int, Set[]](a => Set(right(a)))
-}
-{% endhighlight %}
+
+    import scalaz.\/
+    import scalaz.\/._
+    object Application extends App {
+      // Instead of needing to duplicate the first argument of flatMap in the second argument
+      // e.g. writing flatMap[String \/ Int, Set[String \/ Int]]
+      val _ = Set(1,2,3).flatMap[String \/ Int, Set[]](a => Set(right(a)))
+    }
 
 
 ## Related Discussion ##
