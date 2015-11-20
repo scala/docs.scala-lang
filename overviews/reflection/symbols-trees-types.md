@@ -534,7 +534,7 @@ this way, one must individually handle every type of node that we might come
 across in the pattern match. Thus, in these situations, typically class
 `Traverser` is used.
 
-`Traverser` makes sure to visit every node in a given tree, in a breadth-first search.
+`Traverser` makes sure to visit every node in a given tree, in a depth-first search.
 
 To use a `Traverser`, simply subclass `Traverser` and override method
 `traverse`. In doing so, you can simply provide custom logic to handle only
@@ -563,7 +563,7 @@ all `Apply` nodes, we could do:
 In the above, we intend to construct a list of `Apply` nodes that we find in
 our given tree.
 
-We achieve this by in effect _adding_ a special case to the already breadth-first
+We achieve this by in effect _adding_ a special case to the already depth-first
 `traverse` method defined in superclass `Traverser`, via subclass
 `traverser`'s overridden `traverse` method. Our special case affects only
 nodes that match the pattern `Apply(fun, args)`, where `fun` is some function
