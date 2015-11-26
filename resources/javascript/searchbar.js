@@ -6,7 +6,7 @@
         '<div class="branding"><span>Powered by</span><a target="_blank" href="https://algolia.com"><img src="https://www.algolia.com/assets/algolia128x40.png"/></a></div>' +
         '</div>';
 
-    var client = algoliasearch('XT7HFL89G3', '9110ba06379a1615458dbce9604b1e2a');
+    var client = algoliasearch('BH4D9OD16A', '3403ae7bb4cb839fba71e2fae9ab1534');
     var index = client.initIndex('scaladocs');
     var ATTRIBUTES = ['content', 'h6', 'h5', 'h4', 'h3', 'h2', 'h1' ];
 
