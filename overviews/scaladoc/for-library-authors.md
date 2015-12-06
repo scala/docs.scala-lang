@@ -37,7 +37,7 @@ that starts with a `/**` and ends with a `*/`, like this:
       * left margin is on the same column on the
       * first line and on subsequent ones.
       *
-      * The closing scaladoc tag goes on its own,
+      * The closing Scaladoc tag goes on its own,
       * separate line. E.g.
       *
       * Calculate the square of the given number
@@ -71,7 +71,7 @@ include:
 - `@return` detail the return value from a method (one per method).
 
 
-### Constructor and/or Class tags
+### Method, Constructor and/or Class tags
 - `@throws` what exceptions (if any) the method or constructor may throw.
 - `@param` detail a value parameter for a method or constructor, provide one
   per parameter to the method/constructor.
@@ -118,7 +118,7 @@ If a comment is not provided for an entity at the current inheritance level, but
 is supplied for the overridden entity at a higher level in the inheritance
 hierarchy, the comment from the super-class will be used.
 
-Likewise if `@param`, `@tparam`, `@return` and other entity tags are ommitted
+Likewise if `@param`, `@tparam`, `@return` and other entity tags are omitted
 but available from a superclass, those comments will be used.
 
 ### Explicit
@@ -133,8 +133,8 @@ not necessary most of the time as Markdown styles may be used instead.
 Some of the standard Markdown formatting available:
 
     `monospace`
-    ``italic text``
-    ```bold text```
+    ''italic text''
+    '''bold text'''
     __underline__
     ^superscript^
     ,,subscript,,
