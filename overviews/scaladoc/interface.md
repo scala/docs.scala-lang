@@ -51,7 +51,7 @@ may not have known about already, here are a few key points.
 - By expanding linear supertypes triangle, you can see the linearized trait
   definitions for the current class, trait or object.
 - Known subclasses lists all subclasses for this entity within the current
-  scaladoc.
+  Scaladoc.
 - Type hierarchy shows a graphical view of this class related to its super
   classes and traits, immediate sub-types, and important related entities. The
   graphics themselves are links to the various entities.
