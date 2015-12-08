@@ -27,7 +27,7 @@ Scala cuenta con un expresivo sistema de tipado que fuerza estáticamente las ab
 * [clases internas](inner-classes.html) y [tipos abstractos](abstract-types.html) como miembros de objetos,
 * [tipos compuestos](compound-types.html)
 * [auto-referencias explicitamente tipadas](explicitly-typed-self-references.html)
-* [vistas](views.html)
+* [implicit conversions](implicit-conversions.html)
 * [métodos polimórficos](polymorphic-methods.html)
 
 El [mecanismo de inferencia de tipos locales](local-type-inference.html) se encarga de que el usuario no tengan que anotar el programa con información redundante de tipado. Combinadas, estas características proveen una base poderosa para el reuso seguro de abstracciones de programación y para la extensión segura (en cuanto a tipos) de software.

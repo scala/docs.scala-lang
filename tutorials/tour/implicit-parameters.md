@@ -6,7 +6,7 @@ disqus: true
 
 tutorial: scala-tour
 num: 25
-tutorial-next: views
+tutorial-next: implicit-conversions
 tutorial-previous: explicitly-typed-self-references
 ---
 

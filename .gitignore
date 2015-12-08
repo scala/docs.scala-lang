@@ -2,6 +2,7 @@ _site
 .DS_Store
 .project
 .settings
+/.jekyll-metadata
 *~
 vendor/bundle
 .idea/

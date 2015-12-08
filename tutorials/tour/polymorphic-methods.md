@@ -8,7 +8,7 @@ tutorial: scala-tour
 num: 27
 
 tutorial-next: local-type-inference
-tutorial-previous: views
+tutorial-previous: implicit-conversions
 ---
 
 Methods in Scala can be parameterized with both values and types. Like on the class level, value parameters are enclosed in a pair of parentheses, while type parameters are declared within a pair of brackets.
