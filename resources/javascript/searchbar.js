@@ -92,7 +92,16 @@
                     for(var i = 0 ; i < ATTRIBUTES.length ; i++) {
                         if(highlight[ATTRIBUTES[i]] !== undefined) {
                             text = highlight[ATTRIBUTES[i]].value;
-                            text = (snippet[ATTRIBUTES[i]] || {}).value || text;
+                            var snippet = (snippet[ATTRIBUTES[i]] || {}).value
+                            if(snippet) {
+                                if(snippet.charAt(0) === snippet.charAt(0).toLowerCase()) {
+                                    snippet = "…&nbsp;" + snippet;
+                                }
+                                if(['.', '!', '?'].indexOf(snippet.charAt(snippet.length - 1)) === -1) {
+                                    snippet = snippet + "&nbsp;…";
+                                }
+                            }
+                            text = snippet || text;
                             break;
                         }
                     }
