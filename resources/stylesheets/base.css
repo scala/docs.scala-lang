@@ -232,11 +232,11 @@ div#pop-up-arrow {
 }
 
 .algolia-autocomplete .aa-dropdown-menu {
-    width: 500px;
+    width: 550px;
     background-color: #fff;
     border: 1px solid #404040;
     margin-top: 2px;
-    margin-left: -319px;
+    margin-left: -369px;
     padding: 1px;
 }
 
@@ -246,8 +246,9 @@ div#pop-up-arrow {
 }
 
 .algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
-    background-color: #B2D7FF;
+    background-color: #EEEEEE;
 }
+
 .algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
     font-weight: bold;
     font-style: normal;
@@ -263,14 +264,30 @@ div#pop-up-arrow {
     cursor: default;
 }
 
-.aa-suggestion .suggestion-content div {
+.aa-suggestion > div:not(.suggestion-category) {
     display: table-cell;
-    padding: 5px 7px;
+    padding: 5px;
 }
 
-.aa-suggestion .suggestion-content div:first-child {
+.aa-suggestion.aa-cursor .suggestion-empty-subcategory, .aa-suggestion.aa-cursor .suggestion-subcategory {
+    background-color: white;
+}
+
+.aa-suggestion .suggestion-empty-subcategory, .aa-suggestion .suggestion-subcategory {
     border-right: 2px solid #DE3423;
-    width: 180px;
+    width: 150px;
+    font-weight: 500;
+    z-index: 1000;
+    text-align: right;
+}
+
+.aa-suggestion .suggestion-content {
+    width: 376px;
+    border-top: 1px #999 solid;
+}
+
+.aa-suggestion .suggestion-category ~ .suggestion-content {
+    border-top: none;
 }
 
 .aa-dropdown-menu .branding-footer {

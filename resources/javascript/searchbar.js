@@ -36,14 +36,40 @@
                         categories[suggestion._tags[0]].push(suggestion)
                     });
 
-                    categories = $.map(Object.keys(categories).sort(), function(categoryName) {
-                        var items = categories[categoryName];
-                        items[0].isCategoryHeader = true;
-                        items[0].categoryName = capitalize(categoryName);
-
-                        return items;
+                    var categoriesWithSubCategories = {}
+                    $.each(categories, function(categoryName, suggestions) {
+                        var subCategories = {}
+                        suggestions.forEach(function(suggestion) {
+                            var highlight = suggestion._highlightResult || {};
+                            var title = (highlight.title || {}).value
+                            title = title || suggestion.title
+                            title = title || categoryName
+                            subCategories[title] = subCategories[title] || []
+                            subCategories[title].push(suggestion)
+                        });
+                        categoriesWithSubCategories[categoryName] = subCategories;
                     });
-                    callback(categories);
+
+                    var suggestionsSorted = []
+                    Object.keys(categoriesWithSubCategories).sort().forEach(function(categoryName) {
+                        var subCategories = categoriesWithSubCategories[categoryName];
+                        var firstInCategory = true;
+                        Object.keys(subCategories).sort().forEach(function(subCategoryName) {
+                            var items = subCategories[subCategoryName];
+                            items[0].isSubCategoryHeader = true;
+                            items[0].subCategoryName = capitalize(subCategoryName);
+
+                            if(firstInCategory) {
+                                items[0].isCategoryHeader = true;
+                                items[0].categoryName = capitalize(categoryName);
+                                firstInCategory = false;
+                            }
+
+                            suggestionsSorted = suggestionsSorted.concat(items);
+                        });
+                    });
+
+                    callback(suggestionsSorted);
                 });
             },
             name: 'a',
@@ -54,21 +80,33 @@
                     if(suggestion.isCategoryHeader) {
                         html.push('<div class="suggestion-category">' + suggestion.categoryName + '</div>');
                     }
+                    if(suggestion.isSubCategoryHeader) {
+                        html.push('<div class="suggestion-subcategory">' + suggestion.subCategoryName + '</div>');
+                    } else {
+                        html.push('<div class="suggestion-empty-subcategory">&nbsp;</div>');
+                    }
 
                     var highlight = suggestion._highlightResult || {};
                     var snippet = suggestion._snippetResult || {};
-                    var title = highlight.title.value;
                     var text = '';
                     for(var i = 0 ; i < ATTRIBUTES.length ; i++) {
                         if(highlight[ATTRIBUTES[i]] !== undefined) {
                             text = highlight[ATTRIBUTES[i]].value;
-                            text = (snippet[ATTRIBUTES[i]] || {}).value || text;
+                            var snippet = (snippet[ATTRIBUTES[i]] || {}).value
+                            if(snippet) {
+                                if(snippet.charAt(0) === snippet.charAt(0).toLowerCase()) {
+                                    snippet = "…&nbsp;" + snippet;
+                                }
+                                if(['.', '!', '?'].indexOf(snippet.charAt(snippet.length - 1)) === -1) {
+                                    snippet = snippet + "&nbsp;…";
+                                }
+                            }
+                            text = snippet || text;
                             break;
                         }
                     }
 
                     html.push('  <div class="suggestion-content">');
-                    html.push('    <div class="suggestion-title">' + title  + '</div>');
                     html.push('    <div class="suggestion-text">' + text + '</div>');
                     html.push('  </div>');
                     return html.join(' ');
