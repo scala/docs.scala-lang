@@ -232,11 +232,11 @@ div#pop-up-arrow {
 }
 
 .algolia-autocomplete .aa-dropdown-menu {
-    width: 500px;
+    width: 550px;
     background-color: #fff;
     border: 1px solid #404040;
     margin-top: 2px;
-    margin-left: -319px;
+    margin-left: -369px;
     padding: 1px;
 }
 
@@ -275,14 +275,14 @@ div#pop-up-arrow {
 
 .aa-suggestion .suggestion-empty-subcategory, .aa-suggestion .suggestion-subcategory {
     border-right: 2px solid #DE3423;
-    width: 200px;
+    width: 150px;
     font-weight: 500;
     z-index: 1000;
     text-align: right;
 }
 
 .aa-suggestion .suggestion-content {
-    width: 276px;
+    width: 376px;
     border-top: 1px #999 solid;
 }
 
