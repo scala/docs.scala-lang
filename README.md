@@ -25,9 +25,9 @@ Start the server in the context of the bundle:
 
 The generated site is available at `http://localhost:4000`
 
-Jekyll will automatically watch for changes on the filesystem, and regenerate the site. It can take a few minutes for your changes to appear. Watch the output from `jekyll serve`. When you start up you'll see this:
+If you add `--watch` at the end of the command line above, Jekyll will automatically watch for changes on the filesystem, and regenerate the site. It can take a few minutes for your changes to appear. Watch Jekyll's output. When you start up you'll see this:
 
-     $ bundle exec jekyll serve
+     $ bundle exec jekyll serve --watch
      Configuration file: /Users/ben/src/scala.github.com/_config.yml
                  Source: /Users/ben/src/scala.github.com
             Destination: /Users/ben/src/scala.github.com/_site
