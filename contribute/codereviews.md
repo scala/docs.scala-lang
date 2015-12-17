@@ -13,7 +13,7 @@ own pull requests.
  
 ### Review Guidelines
 
-[Code of Conduct Reminder](http://docs.scala-lang.org/conduct.html)
+[Code of Conduct reminder](../conduct.html)
 
 * Keep comments on-topic, concise and precise.
 * Attach comments to particular lines or regions they pertain to whenever possible.
