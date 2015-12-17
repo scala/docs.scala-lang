@@ -4,6 +4,7 @@ title: Scala Contributor Hall of Fame
 ---
 
 A big thank you to everyone who has contributed over the years to:
+
  - [the Scala library and compiler](https://github.com/scala/scala/contributors)
  - [the Scala documentation website](https://github.com/scala/scala.github.com/contributors)
 
