@@ -14,7 +14,7 @@ few important exceptions to this guideline (as given below).
 
 ## Classes/Traits
 
-Classes should be named in the camelCase style with the very first
+Classes should be named in the PascalCase style - camelCase with the very first
 letter of the name capitalized:
 
     class MyFairLady
@@ -23,8 +23,7 @@ This mimics the Java naming convention for classes.
 
 ## Objects
 
-Objects follow the class naming convention (camelCase with a capital
-first letter) except when attempting to mimic a package or a function.
+Objects follow the class naming convention (PascalCase) except when attempting to mimic a package or a function.
 These situations don't happen often, but can be expected in general
 development.:
 
@@ -250,7 +249,7 @@ easily transform even the simplest code into symbolic soup.
 
 ## Constants, Values, Variable and Methods
 
-Constant names should be in upper camel case. That is, if the member is
+Constant names should be in PascalCase. That is, if the member is
 final, immutable and it belongs to a package object or an object,
 it may be considered a constant (similar to Java's `static final` members):
 
@@ -260,7 +259,7 @@ it may be considered a constant (similar to Java's `static final` members):
 
 The value: `Pi` in `scala.math` package is another example of such a constant.
 
-Method, Value and variable names should be in lower camel case:
+Method, Value and variable names should be in camelCase:
 
     val myValue = ...
     def myMethod = ...
@@ -326,7 +325,7 @@ the reader that `M[_]` is the type of the Monad.
 
 ## Annotations
 
-Annotations, such as `@volatile` should be in camel-case, with the first
+Annotations, such as `@volatile` should be in camelCase, with the first
 letter being lower case:
 
     class cloneable extends StaticAnnotation
