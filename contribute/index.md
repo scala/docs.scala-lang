@@ -114,15 +114,14 @@ on our Community page.
 
 ### Scala Community Build
 
-The Scala community build enables us to build and test a corpus of
-Scala open source projects together, using Typesafe's
-[dbuild](https://github.com/typesafehub/dbuild) tool
-(which leverages [sbt](http://www.scala-sbt.org)).
-
-The main goal is to guard against regressions in new versions of Scala
-(language, standard library, and modules). It's also a service to the
-open source community, providing early notice of issues and
-incompatibilities.
+The Scala community build enables the Scala compiler team
+to build and test a corpus of
+Scala open source projects
+against development versions of the Scala compiler and standard
+library in order to discover regressions prior to releases.
+The build uses Typesafe's
+[dbuild](https://github.com/typesafehub/dbuild) tool,
+which leverages [sbt](http://www.scala-sbt.org).
 
 If you're the maintainer -- or just an interested user! -- of an
 open-source Scala library or tool, please visit the
