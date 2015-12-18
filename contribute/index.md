@@ -101,3 +101,30 @@ various contributor activities:
 </div>
 </div>
 </div>
+
+### Tools and Libraries
+
+The Scala ecosystem includes a great many diverse open-source projects
+with their own maintainers and community of contributors.  Helping out
+one of these projects is another way to help Scala.  Consider lending
+on a hand on a project you're already using.  Or, to find out about
+other projects, see the
+[Libraries and Tools section](../community/index.html#community-libraries-and-tools)
+on our Community page.
+
+### Scala Community Build
+
+The Scala community build enables the Scala compiler team
+to build and test a corpus of
+Scala open source projects
+against development versions of the Scala compiler and standard
+library in order to discover regressions prior to releases.
+The build uses Typesafe's
+[dbuild](https://github.com/typesafehub/dbuild) tool,
+which leverages [sbt](http://www.scala-sbt.org).
+
+If you're the maintainer -- or just an interested user! -- of an
+open-source Scala library or tool, please visit the
+[community build documentation](https://github.com/scala/community-builds/wiki)
+for guidelines on what projects are suitable for the community build
+and how projects can be added.
