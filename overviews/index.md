@@ -38,6 +38,8 @@ languages: [ja, zh-cn, es]
     * [Overview](/overviews/scaladoc/overview.html)
     * [Using Scaladoc Effectively](/overviews/scaladoc/interface.html)
     * [Authoring Scaladoc](/overviews/scaladoc/for-library-authors.html)
+  * Scala REPL
+    * [Overview](/overviews/repl/overview.html)
 
 <div class="page-header-index">
   <h2>Parallel and Concurrent Programming</h2>
