@@ -6,16 +6,20 @@ partof: style-guide
 num: 3
 ---
 
-Generally speaking, Scala uses "camelCase" naming conventions. That is,
-each word (except possibly the first) is delimited by capitalizing its
-first letter. Underscores (`_`) are *heavily* discouraged as they have
-special meaning within the Scala syntax. Please note that there are a
-few important exceptions to this guideline (as given below).
+Generally speaking, Scala uses "camel case" naming. That is,
+each word is capitalized, except possibly the first word:
+
+    UpperCamelCase
+    lowerCamelCase
+
+Underscores in names (`_`) are not actually forbidden by the
+compiler, but are strongly discouraged as they have
+special meaning within the Scala syntax. (But see below
+for exceptions.)
 
 ## Classes/Traits
 
-Classes should be named in the camelCase style with the very first
-letter of the name capitalized:
+Classes should be named in upper camel case:
 
     class MyFairLady
 
@@ -23,10 +27,10 @@ This mimics the Java naming convention for classes.
 
 ## Objects
 
-Objects follow the class naming convention (camelCase with a capital
-first letter) except when attempting to mimic a package or a function.
-These situations don't happen often, but can be expected in general
-development.:
+Object names are like class names (upper camel case).
+
+An exception is when mimicking a package or function.
+This isn't common. Example:
 
     object ast {
       sealed trait Expr
@@ -39,9 +43,6 @@ development.:
       def apply(x: Int): Int = x + 1
     }
 
-In *all* other cases, objects should be named according to the class
-naming convention.
-
 ## Packages
 
 Scala packages should follow the Java package naming conventions:
@@ -49,8 +50,12 @@ Scala packages should follow the Java package naming conventions:
     // wrong!
     package coolness
 
-    // right!
+    // right! puts only coolness._ in scope
     package com.novell.coolness
+
+    // right! puts both novell._ and coolness._ in scope
+    package com.novell
+    package coolness
 
     // right, for package object com.novell.coolness
     package com.novell
@@ -60,34 +65,26 @@ Scala packages should follow the Java package naming conventions:
     package object coolness {
     }
 
-### Versions Prior to 2.8
+### _root_
 
-Scala 2.8 changes how packages worked. For 2.7 and earlier, please note
-that this convention does occasionally lead to problems when combined
-with Scala's nested packages feature. For example:
-
-    import net.liftweb._
-
-This import will actually fail to resolve in some contexts as the `net`
-package may refer to the `java.net` package (or similar). To compensate
-for this, it is often necessary to fully-qualify imports using the
-`_root_` directive, overriding any nested package resolves:
+It is occasionally necessary to fully-qualify imports using
+`_root_`.  For example if another `net` is in scope, then
+to access `net.liftweb` we must write e.g.:
 
     import _root_.net.liftweb._
 
-Do not overuse this directive. In general, nested package resolves are a
+Do not overuse `_root_`. In general, nested package resolves are a
 good thing and very helpful in reducing import clutter. Using `_root_`
 not only negates their benefit, but also introduces extra clutter in and
 of itself.
 
 ## Methods
 
-Textual (alphabetic) names for methods should be in the camelCase style
-with the first letter lower-case:
+Textual (alphabetic) names for methods should be in lower camel case:
 
     def myFairMethod = ...
 
-This section is not a comprehensive guide to idiomatic methods in Scala.
+This section is not a comprehensive guide to idiomatic method naming in Scala.
 Further information may be found in the method invocation section.
 
 ### Accessors/Mutators
@@ -128,7 +125,7 @@ conventions are used:
         foo.isBaz           // boolean property
 
 
-Quite unfortunately, these conventions fall afoul of the Java convention
+Unfortunately, these conventions fall afoul of the Java convention
 to name the private fields encapsulated by accessors and mutators
 according to the property they represent. For example:
 
@@ -326,13 +323,12 @@ the reader that `M[_]` is the type of the Monad.
 
 ## Annotations
 
-Annotations, such as `@volatile` should be in camel-case, with the first
-letter being lower case:
+Annotations, such as `@volatile` should be in lower camel case:
 
     class cloneable extends StaticAnnotation
 
 This convention is used throughout the Scala library, even though it is
-not consistent with Java annotations.
+not consistent with Java annotation naming.
 
 Note: This convention applied even when using type aliases on
 annotations. For example, when using JDBC:
@@ -344,14 +340,14 @@ annotations. For example, when using JDBC:
 ## Special Note on Brevity
 
 Because of Scala's roots in the functional languages, it is quite normal
-for local field names to be extremely brief:
+for local names to be very short:
 
     def add(a: Int, b: Int) = a + b
 
-While this would be bad practice in languages like Java, it is *good*
+This would be bad practice in languages like Java, but it is *good*
 practice in Scala. This convention works because properly-written Scala
 methods are quite short, only spanning a single expression and rarely
-going beyond a few lines. Very few local fields are ever used (including
+going beyond a few lines. Few local names are used (including
 parameters), and so there is no need to contrive long, descriptive
 names. This convention substantially improves the brevity of most Scala
 sources. This in turn improves readability, as most expressions fit in
@@ -362,4 +358,3 @@ local fields for very simply classes); everything in the public
 interface should be descriptive. Also note that the names of arguments
 are now part of the public API of a class, since users can use named
 parameters in method calls.
-
