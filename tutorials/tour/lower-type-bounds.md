@@ -21,7 +21,7 @@ Here is an example where this is useful:
         ListNode(elem, this)
     }
 
-The program above implements a linked list with a prepend operation. Unfortunately, this type is invariant in the type parameter of class `ListNode`; i.e. type `ListNode[String]` is not a subtype of type `List[Object]`. With the help of [variance annotations](variances.html) we can express such a subtype semantics:
+The program above implements a linked list with a prepend operation. Unfortunately, this type is invariant in the type parameter of class `ListNode`; i.e. `ListNode[String]` is not a subtype of `ListNode[Any]`. With the help of [variance annotations](variances.html) we can express such a subtype semantics:
 
     case class ListNode[+T](h: T, t: ListNode[T]) { ... }
 
