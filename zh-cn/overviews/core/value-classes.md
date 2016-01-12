@@ -40,7 +40,7 @@ Value class只能继承universal traits，但其自身不能再被继承。所�
 
 下面有关RichInt的代码片段示范了RichInt是如何继承Int来允许3.toHexString的表达式：
 
-    class RichInt(val self: Int) extends AnyVal {
+    implicit class RichInt(val self: Int) extends AnyVal {
       def toHexString: String = java.lang.Integer.toHexString(self)
     }
     
