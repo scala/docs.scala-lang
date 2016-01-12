@@ -14,7 +14,7 @@ Scala中提供了多种具体的不可变集类供你选择，这些类(maps, se
 
 ## List（列表）
 
-列表[List](http://www.scala-lang.org/api/2.10.0/scala/collection/immutable/List.html)是一种有限的不可变序列式。提供了常数时间的访问列表头元素和列表尾的操作，并且提供了常熟时间的构造新链表的操作，该操作将一个新的元素插入到列表的头部。其他许多操作则和列表的长度成线性关系。
+列表[List](http://www.scala-lang.org/api/2.10.0/scala/collection/immutable/List.html)是一种有限的不可变序列式。提供了常数时间的访问列表头元素和列表尾的操作，并且提供了常数时间的构造新链表的操作，该操作将一个新的元素插入到列表的头部。其他许多操作则和列表的长度成线性关系。
 
 List通常被认为是Scala中最重要的数据结构，所以我们在此不必过于赘述。版本2.8中主要的变化是，List类和其子类::以及其子对象Nil都被定义在了其逻辑上所属的scala.collection.immutable包里。scala包中仍然保留了List，Nil和::的别名，所以对于用户来说可以像原来一样访问List。
 
