@@ -47,7 +47,7 @@ title: 値クラスと汎用トレイト
 
 `RichInt` から抜粋した以下のコードは、それが `Int` を拡張して `3.toHexString` という式が書けるようにしていることを示す:
 
-    class RichInt(val self: Int) extends AnyVal {
+    implicit class RichInt(val self: Int) extends AnyVal {
       def toHexString: String = java.lang.Integer.toHexString(self)
     }
 
