@@ -84,7 +84,7 @@ useful for context bounds:
 What are View Bounds used for?
 ------------------------------
 
-View bounds are used mostly to take advantage of the _pimp my library_ pattern,
+View bounds are used mostly to take advantage of the _enrich my library_ pattern,
 through which one "adds" methods to an existing class, in situations where you
 want to return the original type somehow. If you do not need to return that
 type in any way, then you do not need a view bound.
