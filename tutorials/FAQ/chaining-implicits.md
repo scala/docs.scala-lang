@@ -8,7 +8,7 @@ partof: FAQ
 num: 6
 ---
 
-The pimp my library pattern allows one to seemingly add a method to a class by
+The enrich-my-library pattern allows one to seemingly add a method to a class by
 making available an implicit conversion from that class to one that implements
 the method.
 
