@@ -386,13 +386,13 @@ which stores the recent posts from a social network to a mutable set
 and then renders all the posts to the screen:
 
 	val allposts = mutable.Set[String]()
-	
+
 	Future {
 	  session.getRecentPosts
 	} andThen {
-	  posts => allposts ++= posts
+	  case Success(posts) => allposts ++= posts
 	} andThen {
-	  posts =>
+	  case _ =>
 	  clearAll()
 	  for (post <- allposts) render(post)
 	}
