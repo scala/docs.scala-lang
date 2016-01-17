@@ -20,7 +20,7 @@ title: Scala Style Guide
     {% for i in (1..totalPages) %}
       {% for pg in site.pages %}
         {% if pg.partof == "style-guide" and pg.num and pg.num == i %}
-          <li class="tour-of-scala"><a href="{{ pg.url }}">{{ pg.title }}</a></li> 
+          <li class="tour-of-scala"><a href="{{ pg.url }}">{{ pg.title }}</a></li>
         {% endif %}
       {% endfor %}
     {% endfor %}
@@ -33,8 +33,8 @@ title: Scala Style Guide
     <li><a href="{{ site.baseurl }}/style/overview.html">Overview</a></li>
     <li><a href="{{ site.baseurl }}/style/indentation.html">Indentation</a>
       <ul>
-        <li><a href="{{ site.baseurl }}/style/indentation.html#line_wrapping">Line Wrapping</a></li>
-        <li><a href="{{ site.baseurl }}/style/indentation.html#methods_with_numerous_arguments">Methods with Numerous Arguments</a></li>
+        <li><a href="{{ site.baseurl }}/style/indentation.html#line-wrapping">Line Wrapping</a></li>
+        <li><a href="{{ site.baseurl }}/style/indentation.html#methods-with-numerous-arguments">Methods with Numerous Arguments</a></li>
       </ul>
     </li>
     <li><a href="{{ site.baseurl }}/style/naming-conventions.html">Naming Conventions</a>
@@ -43,47 +43,46 @@ title: Scala Style Guide
         <li><a href="{{ site.baseurl }}/style/naming-conventions.html#objects">Objects</a></li>
         <li><a href="{{ site.baseurl }}/style/naming-conventions.html#packages">Packages</a>
           <ul>
-            <li><a href="{{ site.baseurl }}/style/naming-conventions.html#versions_prior_to_28">Versions Prior to 2.8</a></li>
+            <li><a href="{{ site.baseurl }}/style/naming-conventions.html#root">root</a></li>
           </ul>
         </li>
         <li><a href="{{ site.baseurl }}/style/naming-conventions.html#methods">Methods</a>
           <ul>
             <li><a href="{{ site.baseurl }}/style/naming-conventions.html#accessorsmutators">Accessors/Mutators</a></li>
             <li><a href="{{ site.baseurl }}/style/naming-conventions.html#parentheses">Parentheses</a></li>
-            <li><a href="{{ site.baseurl }}/style/naming-conventions.html#symbolic_method_names">Symbolic Method Names</a></li>
+            <li><a href="{{ site.baseurl }}/style/naming-conventions.html#symbolic-method-names">Symbolic Method Names</a></li>
           </ul>
         </li>
-        <li><a href="{{ site.baseurl }}/style/naming-conventions.html#values_variable_and_methods">Values, Variables, and Methods</a></li>
-        <li><a href="{{ site.baseurl }}/style/naming-conventions.html#type_parameters_generics">Type Parameters (Generics)</a>
+        <li><a href="{{ site.baseurl }}/style/naming-conventions.html#constants-values-variable-and-methods">Constants, Values, Variable and Methods</a></li>
+        <li><a href="{{ site.baseurl }}/style/naming-conventions.html#type-parameters-generics">Type Parameters (generics)</a>
           <ul>
-            <li><a href="{{ site.baseurl }}/style/naming-conventions.html#higherkinds_and_parameterized_type_parameters">Higher-Kinds and Parameterized Type Parameters</a></li>
+            <li><a href="{{ site.baseurl }}/style/naming-conventions.html#higher-kinds-and-parameterized-type-parameters">Higher-Kinds and Parameterized Type parameters</a></li>
           </ul>
         </li>
         <li><a href="{{ site.baseurl }}/style/naming-conventions.html#annotations">Annotations</a></li>
-        <li><a href="{{ site.baseurl }}/style/naming-conventions.html#special_note_on_brevity">Special Note on Brevity</a></li>
+        <li><a href="{{ site.baseurl }}/style/naming-conventions.html#special-note-on-brevity">Special Note on Brevity</a></li>
       </ul>
     </li>
     <li><a href="{{ site.baseurl }}/style/types.html">Types</a>
       <ul>
         <li><a href="{{ site.baseurl }}/style/types.html#inference">Inference</a>
           <ul>
-            <li><a href="{{ site.baseurl }}/style/types.html#function_values">Function Values</a></li>
-            <li><a href="{{ site.baseurl }}/style/types.html#void_methods">"Void" Methods</a></li>
+            <li><a href="{{ site.baseurl }}/style/types.html#function-values">Function Values</a></li>
           </ul>
         </li>
         <li><a href="{{ site.baseurl }}/style/types.html#annotations">Annotations</a></li>
         <li><a href="{{ site.baseurl }}/style/types.html#ascription">Ascription</a></li>
         <li><a href="{{ site.baseurl }}/style/types.html#functions">Functions</a>
           <ul>
-            <li><a href="{{ site.baseurl }}/style/types.html#arity1">Arity-1</a></li>
+            <li><a href="{{ site.baseurl }}/style/types.html#arity-1">Arity-1</a></li>
           </ul>
         </li>
-        <li><a href="{{ site.baseurl }}/style/types.html#structural_types">Structural Types</a></li>
+        <li><a href="{{ site.baseurl }}/style/types.html#structural-types">Structural Types</a></li>
       </ul>
     </li>
     <li><a href="{{ site.baseurl }}/style/nested-blocks.html">Nested Blocks</a>
       <ul>
-        <li><a href="{{ site.baseurl }}/style/nested-blocks.html#curly_braces">Curly Braces</a></li>
+        <li><a href="{{ site.baseurl }}/style/nested-blocks.html#curly-braces">Curly Braces</a></li>
         <li><a href="{{ site.baseurl }}/style/nested-blocks.html#parentheses">Parentheses</a></li>
       </ul>
     </li>
@@ -91,13 +90,13 @@ title: Scala Style Guide
       <ul>
         <li><a href="{{ site.baseurl }}/style/declarations.html#classes">Classes</a>
           <ul>
-            <li><a href="{{ site.baseurl }}/style/declarations.html#ordering_of_class_elements">Ordering of Class Elements</a></li>
+            <li><a href="{{ site.baseurl }}/style/declarations.html#ordering-of-class-elements">Ordering Of Class Elements</a></li>
             <li><a href="{{ site.baseurl }}/style/declarations.html#methods">Methods</a>
               <ul>
                 <li><a href="{{ site.baseurl }}/style/declarations.html#modifiers">Modifiers</a></li>
                 <li><a href="{{ site.baseurl }}/style/declarations.html#body">Body</a></li>
-                <li><a href="{{ site.baseurl }}/style/declarations.html#multiple_parameter_lists">Multiple Parameter Lists</a></li>
-                <li><a href="{{ site.baseurl }}/style/declarations.html#higherorder_functions">Higher-Order Functions</a></li>
+                <li><a href="{{ site.baseurl }}/style/declarations.html#multiple-parameter-lists">Multiple Parameter Lists</a></li>
+                <li><a href="{{ site.baseurl }}/style/declarations.html#higher-order-functions">Higher-Order Functions</a></li>
               </ul>
             </li>
             <li><a href="{{ site.baseurl }}/style/declarations.html#fields">Fields</a></li>
@@ -106,48 +105,48 @@ title: Scala Style Guide
         <li><a href="{{ site.baseurl }}/style/declarations.html#function_values">Function Values</a>
           <ul>
             <li><a href="{{ site.baseurl }}/style/declarations.html#spacing">Spacing</a></li>
-            <li><a href="{{ site.baseurl }}/style/declarations.html#multiexpression_functions">Multi-Expression Functions</a></li>
+            <li><a href="{{ site.baseurl }}/style/declarations.html#multi-expression-functions">Multi-Expression Functions</a></li>
           </ul>
         </li>
       </ul>
     </li>
     <li><a href="{{ site.baseurl }}/style/control-structures.html">Control Structures</a>
       <ul>
-        <li><a href="{{ site.baseurl }}/style/control-structures.html#curlybraces">Curly-Braces</a></li>
+        <li><a href="{{ site.baseurl }}/style/control-structures.html#curly-braces">Curly-Braces</a></li>
         <li><a href="{{ site.baseurl }}/style/control-structures.html#comprehensions">Comprehensions</a></li>
-        <li><a href="{{ site.baseurl }}/style/control-structures.html#trivial_conditionals">Trivial Conditionals</a></li>
+        <li><a href="{{ site.baseurl }}/style/control-structures.html#trivial-conditionals">Trivial Conditionals</a></li>
       </ul>
     </li>
     <li><a href="{{ site.baseurl }}/style/method-invocation.html">Method Invocation</a>
       <ul>
-        <li><a href="{{ site.baseurl }}/style/method-invocation.html#arity0">Arity-0</a></li>
+        <li><a href="{{ site.baseurl }}/style/method-invocation.html#arity-0">Arity-0</a></li>
           <ul>
-            <li><a href="{{ site.baseurl }}/style/method-invocation.html#suffix_notation">Suffix Notation</a></li>
+            <li><a href="{{ site.baseurl }}/style/method-invocation.html#suffix-notation">Suffix Notation</a></li>
           </ul>
-        <li><a href="{{ site.baseurl }}/style/method-invocation.html#arity1">Arity-1</a></li>
+        <li><a href="{{ site.baseurl }}/style/method-invocation.html#arity-1">Arity-1</a></li>
           <ul>
-            <li><a href="{{ site.baseurl }}/style/method-invocation.html#higherorder_functions">Higher-Order Functions</a></li>
+            <li><a href="{{ site.baseurl }}/style/method-invocation.html#higher-order-functions">Higher-Order Functions</a></li>
           </ul>
-        <li><a href="{{ site.baseurl }}/style/method-invocation.html#symbolic_methodsoperators">Symbolic Methods / Operators</a></li>
+        <li><a href="{{ site.baseurl }}/style/method-invocation.html#symbolic-methodsoperators">Symbolic methods/Operators</a></li>
       </ul>
     </li>
     <li><a href="{{ site.baseurl }}/style/files.html">Files</a>
       <ul>
-        <li><a href="{{ site.baseurl }}/style/files.html#multiunit_files">Multi-Unit Files</a></li>
+        <li><a href="{{ site.baseurl }}/style/files.html#multi-unit-files">Multi-Unit Files</a></li>
       </ul>
     </li>
     <li><a href="{{ site.baseurl }}/style/scaladoc.html">Scaladoc</a>
       <ul>
-        <li><a href="{{ site.baseurl }}/style/scaladoc.html#general_style">General Style</a></li>
+        <li><a href="{{ site.baseurl }}/style/scaladoc.html#general-style">General Style</a></li>
         <li><a href="{{ site.baseurl }}/style/scaladoc.html#packages">Packages</a></li>
-        <li><a href="{{ site.baseurl }}/style/scaladoc.html#classes_objects_and_traits">Classes, Objects, and Traits</a>
+        <li><a href="{{ site.baseurl }}/style/scaladoc.html#classes-objects-and-traits">Classes, Objects, and Traits</a>
           <ul>
             <li><a href="{{ site.baseurl }}/style/scaladoc.html#classes">Classes</a></li>
             <li><a href="{{ site.baseurl }}/style/scaladoc.html#objects">Objects</a></li>
             <li><a href="{{ site.baseurl }}/style/scaladoc.html#traits">Traits</a></li>
           </ul>
         </li>
-        <li><a href="{{ site.baseurl }}/style/scaladoc.html#methods_and_other_members">Methods and Other Members</a></li>
+        <li><a href="{{ site.baseurl }}/style/scaladoc.html#methods-and-other-members">Methods and Other Members</a></li>
       </ul>
     </li>
   </ul>
