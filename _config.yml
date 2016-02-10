@@ -15,7 +15,7 @@ keywords:
 
 scala-version: 2.10.0
 
-highlighter: pygments
+highlighter: rouge
 permalink: /:categories/:title.html
 baseurl:
 exclude: ["vendor"]
