@@ -16,7 +16,7 @@ languages: [ja]
 
 Since their release as an experimental feature of Scala 2.10, macros have brought previously impossible or prohibitively complex things
 to the realm of possible. Both commercial and research users of Scala use macros to bring their ideas to life.
-At EPFL we are leveraging macros to power our research. Typesafe also employs macros in a number of projects.
+At EPFL we are leveraging macros to power our research. Lightbend also employs macros in a number of projects.
 Macros are also popular in the community and have already given rise to a number of interesting applications.
 
 The recent talk ["What Are Macros Good For?"](http://scalamacros.org/paperstalks/2013-07-17-WhatAreMacrosGoodFor.pdf)
