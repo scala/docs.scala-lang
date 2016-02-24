@@ -402,7 +402,7 @@ Once you are satisfied with your work, synced with `master` and cleaned up your 
 
 Now, we must simply submit our proposed patch. Navigate to your branch in GitHub (for me it was `https://github.com/xeno-by/scala/tree/ticket/6725`)
 and click the pull request button to submit your patch as a pull request to Scala. If you've never submitted patches to Scala, you will
-need to sign the contributor license agreement, which [can be done online](http://typesafe.com/contribute/cla/scala) within a few minutes.
+need to sign the contributor license agreement, which [can be done online](http://www.lightbend.com/contribute/cla/scala) within a few minutes.
 
 <img src="{{ site.baseurl }}/resources/img/04-submit.png" alt="Submit a pull request" class="centerclear" />
 
