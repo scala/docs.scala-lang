@@ -31,7 +31,7 @@ associated changes to the Scala language or compiler.
 
 SIPs are for changes to the Scala language and/or compiler and are subject to a
 [rigorous review process](./sip-submission.html) and are usually accompanied by
-changes to the [Scala language specification](http://www.scala-lang.org/docu/files/ScalaReference.pdf),
+changes to the [Scala language specification](http://www.scala-lang.org/files/archive/spec/2.11/),
 lots of review and discussion on
 the [scala-internals](https://groups.google.com/forum/#!forum/scala-internals) mailing list
 and voting/approval milestones. Please read
