@@ -30,10 +30,10 @@ without creating an issue, but please look to see if there is an issue already s
 
 ### Examples/Tutorials in Activator Templates
 
-[Typesafe Activator](https://typesafe.com/community/core-tools/activator-and-sbt) 
+[Lightbend Activator](https://www.lightbend.com/community/core-tools/activator-and-sbt) 
 is a tool based on SBT, with a UI mode that is ideal for code based tutorials, overviews and walk-throughs. To contribute an example in activator, you can fork an existing template, edit it, add a tutorial, upload it to github and then submit the github project into the template repository. It's the fastest way to produce a working code example with tutorial.
 
-Please see [Contributing an Activator Template](https://typesafe.com/activator/template/contribute) for more details.
+Please see [Contributing an Activator Template](https://www.lightbend.com/activator/template/contribute) for more details.
 
 ### The Main Scala Documentation Site
 

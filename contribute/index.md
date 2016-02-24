@@ -27,7 +27,7 @@ Coordination of contribution efforts takes place on the
 <div class="row">
 <div class="span4 doc-block">
 <h4><a href="./documentation.html">Documentation</a></h4>
-<p><a href="./scala-standard-library-api-documentation.html">Scaladoc (API)</a>, <a href="https://typesafe.com/activator/template/contribute">Activator templates</a>,
+<p><a href="./scala-standard-library-api-documentation.html">Scaladoc (API)</a>, <a href="https://www.lightbend.com/activator/template/contribute">Activator templates</a>,
 <a href="http://docs.scala-lang.org/contribute.html">docs.scala-lang.org</a> and 
 <a href="https://github.com/scala/scala-lang">scala-lang.org</a>.</p>
 </div>
@@ -119,7 +119,7 @@ to build and test a corpus of
 Scala open source projects
 against development versions of the Scala compiler and standard
 library in order to discover regressions prior to releases.
-The build uses Typesafe's
+The build uses Lightbend's
 [dbuild](https://github.com/typesafehub/dbuild) tool,
 which leverages [sbt](http://www.scala-sbt.org).
 
