@@ -322,7 +322,7 @@ reflection, such as `Types`, `Trees`, and `Annotations`. For more details, see
 the section of this guide on
 [Universes]({{ site.baseurl}}/overviews/reflection/environment-universes-mirrors.html),
 or the
-[Universes API docs](http://www.scala-lang.org/api/{{ site.scala-version}}/scala/reflect/api/Universe.html)
+[Universes API docs](http://www.scala-lang.org/api/current/scala-reflect/index.html#scala.reflect.api.Universe)
 in package `scala.reflect.api`.
 
 To use most aspects of Scala reflection, including most code examples provided
@@ -342,5 +342,5 @@ different flavors of mirrors must be used.
 For more details, see the section of this guide on
 [Mirrors]({{ site.baseurl}}/overviews/reflection/environment-universes-mirrors.html),
 or the
-[Mirrors API docs](http://www.scala-lang.org/api/{{ site.scala-version}}/scala/reflect/api/Mirrors.html)
+[Mirrors API docs](http://www.scala-lang.org/api/current/scala-reflect/index.html#scala.reflect.api.Mirrors)
 in package `scala.reflect.api`.
