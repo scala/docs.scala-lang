@@ -64,7 +64,7 @@ The following list shows how named arguments interfere with other language featu
     val a: A = new B
     a.f(a = 1) // OK
 
-**Overloading Resolution** When a method application refers to an overloaded method, ﬁrst the set of applicable alternatives is determined and then the most speciﬁc alternative is chosen (see [1], Chapter 6.25.3).
+**Overloading Resolution** When a method application refers to an overloaded method, ﬁrst the set of applicable alternatives is determined and then the most speciﬁc alternative is chosen (see [1], Chapter 6.26.3).
 
 The presence of named argument inﬂuences the set of applicable alternatives, the argument types have to be matched against the corresponding parameter types based on the names. In the following example, the second alternative is applicable:
 
@@ -72,7 +72,7 @@ The presence of named argument inﬂuences the set of applicable alternatives, t
     def f(a: Int, b: String) // #2
     f(b = "someString", a = 1) // using #2
 
-If multiple alternatives are applicable, the most speciﬁc one is determined. This process is independent of the argument names used in a speciﬁc application and only looks at the method signature (for a detailed description, see [1], Chapter 6.25.3).
+If multiple alternatives are applicable, the most speciﬁc one is determined. This process is independent of the argument names used in a speciﬁc application and only looks at the method signature (for a detailed description, see [1], Chapter 6.26.3).
 
 In the following example, both alternatives are applicable, but none of them is more speciﬁc than the other because the argument types are compared based on their position, not on the argument name:
 
@@ -211,4 +211,4 @@ For constructor defaults, these methods are added to the companion object of the
     // }
 
 ## References
-1. Odersky, M. _The Scala Language Speciﬁcation, Version 2.7_. Available online at [http://www.scala-lang.org/docu/ﬁles/ScalaReference.pdf](http://www.scala-lang.org/docu/ﬁles/ScalaReference.pdf)
+1. Odersky, M. _The Scala Language Speciﬁcation, Version 2.11_. Available online at [http://www.scala-lang.org/files/archive/spec/2.11/](http://www.scala-lang.org/files/archive/spec/2.11/)
