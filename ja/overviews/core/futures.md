@@ -26,19 +26,196 @@ The futures and promises API builds upon the notion of an
 `ExecutionContext`, an execution environment designed to manage
 resources such as thread pools between parallel frameworks and
 libraries (detailed in an accompanying SIP, forthcoming). Futures and
-promises are created through such `ExecutionContext`s. For example, this makes it possible, 
-in the case of an application which requires blocking futures, for an underlying execution 
+promises are created through such `ExecutionContext`s. For example, this makes it possible,
+in the case of an application which requires blocking futures, for an underlying execution
 environment to resize itself if necessary to guarantee progress.
 -->
+
+<!-- A typical future looks like this: -->
+典型的な Future はこんな感じになるだろう。
+
+    val inverseFuture: Future[Matrix] = Future {
+      fatMatrix.inverse() // non-blocking long lasting computation
+    }(executionContext)
+
+<!-- Or with the more idiomatic: -->
+あるいはもっと慣用的な自然なやり方は以下のようになる。
+
+    implicit val ec: ExecutionContext = ...
+    val inverseFuture : Future[Matrix] = Future {
+      fatMatrix.inverse()
+    } // ec is implicitly passed
+
+<!-- Both code snippets delegate the execution of `fatMatrix.inverse()` to an `ExecutionContext` and embody the result of the computation in `inverseFuture`. -->
+どちらのコードスニペットも `fatMatrix.inverse()` の実行を `ExecutionContext` に移譲し、その計算結果を `inverseFuture` として具体化している。
+
+## Execution Context
+
+<!-- Future and Promises revolve around [`ExecutionContext`s](http://www.scala-lang.org/api/current/index.html#scala.concurrent.ExecutionContext), responsible for executing computations. -->
+Future や Promise は、その計算の実行に関わっている [`ExecutionContext`](http://www.scala-lang.org/api/current/index.html#scala.concurrent.ExecutionContext) を中心に機能する。
+
+<!--An `ExecutionContext` is similar to an [Executor](http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Executor.html):
+it is free to execute  computations in a new thread, in a pooled thread or in the current thread
+(although executing the computation in the current thread is discouraged -- more on that below).-->
+`ExecutionContext` は [Executor](http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Executor.html) のようなもので、計算の実行は新しく生成したスレッド、コネクションプールで管理されるスレッド、実行中のスレッド、どのスレッドで実行しようと自由だ（ただし、詳細は後述するが実行中のスレッドでそのまま計算を実行するのは推奨されない）。
+
+<!--The `scala.concurrent` package comes out of the box with an `ExecutionContext` implementation, a global static thread pool.
+It is also possible to convert an `Executor` into an `ExecutionContext`.
+Finally, users are free to extend the `ExecutionContext` trait to implement their own execution contexts,
+although this should only be done in rare cases.-->
+`scala.concurrent` パッケージでは、すぐに使える `ExecutionContext` の実装を提供していて、これはグローバルで静的なスレッドプールを使って動作するものだ。`Executor` を `ExecutionContext` に変換することもできる。また、これはまれなケースではあるものの、最終的には利用者が `ExecutionContext` trait を継承した自前の実装を用いることも可能だ。
+
+### The Global Execution Context
+
+<!--`ExecutionContext.global` is an `ExecutionContext` backed by a [ForkJoinPool](http://docs.oracle.com/javase/tutorial/essential/concurrency/forkjoin.html).
+It should be sufficient for most situations but requires some care.
+A `ForkJoinPool` manages a limited amount of threads (the maximum amount of thread being referred to as *parallelism level*).
+The number of concurrently blocking computations can exceed the parallelism level
+only if each blocking call is wrapped inside a `blocking` call (more on that below).
+Otherwise, there is a risk that the thread pool in the global execution context is starved,
+and no computation can proceed.-->
+
+`ExecutionContext.global` は [ForkJoinPool](http://docs.oracle.com/javase/tutorial/essential/concurrency/forkjoin.html) を用いる `ExecutionContext` だ。ほとんどの場面ではこれで十分事足りるはずだが、少し注意すべき点がある。
+`ForkJoinPool` は限られた数（その上限は*並列度（parallelism level）*と表現される）のスレッドを管理するものだ。
+ブロッキング演算が `blocking` の呼び出し（後述）の中にある場合に限り、同時に実行されるブロッキング演算の数がその並列度を上回る場合がある。
+一方、その場合にグローバルな実行コンテキスト（execution context）のスレッドプールが枯渇してしまう危険性があり、そのような状態になると計算が実行されなくなることもありうる。
+
+<!--By default the `ExecutionContext.global` sets the parallelism level of its underlying fork-join pool to the amount of available processors
+([Runtime.availableProcessors](http://docs.oracle.com/javase/7/docs/api/java/lang/Runtime.html#availableProcessors%28%29)).
+This configuration can be overriden by setting one (or more) of the following VM attributes:-->
+デフォルトでは `ExecutionContext.global` の内部に保持される fork-join スレッドプールの並列度は、利用可能なプロセッサ数の値で設定される([Runtime.availableProcessors](http://docs.oracle.com/javase/7/docs/api/java/lang/Runtime.html#availableProcessors%28%29))。
+この設定は以下のような一つ（または一つ以上の）VM 属性によって上書きすることが可能だ。
+
+<!--
+  * scala.concurrent.context.minThreads - defaults to `Runtime.availableProcessors`
+  * scala.concurrent.context.numThreads - can be a number or a multiplier (N) in the form 'xN' ;  defaults to `Runtime.availableProcessors`
+  * scala.concurrent.context.maxThreads - defaults to `Runtime.availableProcessors`
+-->
+  * scala.concurrent.context.minThreads - デフォルトは `Runtime.availableProcessors` が返す値
+  * scala.concurrent.context.numThreads - 固定の数値または 'xN' の形式でプロセッサ数に対する乗数 N; デフォルトは `Runtime.availableProcessors` が返す値
+  * scala.concurrent.context.maxThreads - デフォルトは `Runtime.availableProcessors` が返す値
+
+<!--The parallelism level will be set to `numThreads` as long as it remains within `[minThreads; maxThreads]`.-->
+並列度は `numThreads` の値が `minThreads` と `maxThreads` の間に位置する限り、その値で設定される。
+
+<!--
+As stated above the `ForkJoinPool` can increase the amount of threads beyond its `parallelismLevel` in the presence of blocking computation.
+As explained in the `ForkJoinPool` API, this is only possible if the pool is explicitly notified:-->
+上記で述べた通り、`ForkJoinPool` はブロッキング演算が存在する場合にその並列度に応じてスレッド数を増やすことがある。
+ただし、`ForkJoinPool` の API で説明されているように、それを明示的にスレッドプールに伝えて初めて可能となる。
+
+    import scala.concurrent.Future
+    import scala.concurrent.forkjoin._
+
+    // the following is equivalent to `implicit val ec = ExecutionContext.global`
+    import ExecutionContext.Implicits.global
+
+    Future {
+      ForkJoinPool.managedBlock(
+        new ManagedBlocker {
+           var done = false
+
+           def block(): Boolean = {
+             try {
+               myLock.lock()
+               // ...
+             } finally {
+              done = true
+             }
+             true
+           }
+
+           def isReleasable: Boolean = done
+        }
+      )
+    }
+
+
+<!--Fortunately the concurrent package provides a convenient way for doing so:-->
+幸いなことに `concurrent` パッケージが、上記のようなことをやるための便利なやり方を予め提供している。
+
+    import scala.concurrent.Future
+    import scala.concurrent.blocking
+
+    Future {
+      blocking {
+        myLock.lock()
+        // ...
+      }
+    }
+
+<!--Note that `blocking` is a general construct that will be discussed more in depth [below](#in_a_future).-->
+`blocking` は、[後ほど](#in_a_future)より深く説明される一般的な概念であることに注意してほしい。
+
+<!--Last but not least, you must remember that the `ForkJoinPool` is not designed for long lasting blocking operations.
+Even when notified with `blocking` the pool might not spawn new workers as you would expect,
+and when new workers are created they can be as many as 32767.
+To give you an idea, the following code will use 32000 threads:-->
+大事なことを言い忘れていたが、`ForkJoinPool` は長時間続くブロッキング処理に適した設計ではないということを覚えておいてほしい。
+`blocking` として伝えていたとしてもスレッドプールはあなたが期待するようには新しいワーカースレッドを生成してくれないかもしれないし、あるいは 32767 に達するほどの大量のスレッドが生成されてしまうかもしれない。参考までに例を挙げると、以下のコードは 32000 スレッドを消費してしまう。
+
+    implicit val ec = ExecutionContext.global
+
+    for( i <- 1 to 32000 ) {
+      Future {
+        blocking {
+          Thread.sleep(999999)
+        }
+      }
+    }
+
+
+<!--If you need to wrap long lasting blocking operations we recommend using a dedicated `ExecutionContext`, for instance by wrapping a Java `Executor`.-->
+もしあなたが長時間続くブロッキングな処理を Future に包む必要があるなら、例えば Java の `Executor` をラップするなどして専用の `ExecutionContext` を使うことを薦める。
+
+
+### Adapting a Java Executor
+
+<!--Using the `ExecutionContext.fromExecutor` method you can wrap a Java `Executor` into an `ExecutionContext`.
+For instance:-->
+
+`ExecutionContext.fromExecutor` メソッドを使えば Java の `Executor` を `ExecutionContext` にすることができる。以下に使用例を示す。
+
+    ExecutionContext.fromExecutor(new ThreadPoolExecutor( /* your configuration */ ))
+
+
+### Synchronous Execution Context
+
+<!--One might be tempted to have an `ExecutionContext` that runs computations within the current thread:-->
+実行中スレッドで計算を実行する `ExecutionContext` をつくりたい誘惑にかられるかもしれない。
+
+    val currentThreadExecutionContext = ExecutionContext.fromExecutor(
+      new Executor {
+        // Do not do this!
+        def execute(runnable: Runnable) { runnable.run() }
+    })
+
+<!--This should be avoided as it introduces non-determinism in the execution of your future.-->
+これは Future の実行に不確定性をもたらしてしまうので避けるべきだ。
+
+    Future {
+      doSomething
+    }(ExecutionContext.global).map {
+      doSomethingElse
+    }(currentThreadExecutionContext)
+
+<!--The `doSomethingElse` call might either execute in `doSomething`'s thread or in the main thread, and therefore be either asynchronous or synchronous.
+As explained [here](http://blog.ometer.com/2011/07/24/callbacks-synchronous-and-asynchronous/) a callback should not be both.-->
+`doSomethingElse` の呼び出しは `doSomething` のスレッドまたはメインスレッドのどちらかで実行されうるため、場合によって非同期実行にも同期実行にもなりうる。
+[ここ](http://blog.ometer.com/2011/07/24/callbacks-synchronous-and-asynchronous/)で説明されている通り、コールバックはどちらでもありうるということにすべきではないだろう。
 
 ## Future
 
 `Future` は、ある時点において利用可能となる可能性のある値を保持するオブジェクトだ。
 この値は、なんらかの計算結果であることが多い。
-その計算が例外とともに失敗する可能性があるため、`Future` は計算が例外を投げる場合を想定して例外を保持することもできる。
-ある `Future` が値もしくは例外を持つとき、`Future` は**完了**したという。
-`Future` が値とともに完了した場合、`Future` はその値とともに**成功**したという。
-`Future` が例外とともに完了した場合、`Future` はその例外とともに**失敗**したという。
+
+1. 計算がまだ完了していないなら、 `Future` は **未完了**という。
+2. 計算が完了して値とともに完了もしくは例外を持つとき、`Future` は **完了**したという。
+
+完了は以下の 2 つの形のうち１つの形をとる。
+
+1. `Future` が値とともに完了した場合、`Future` はその値とともに**成功**したという。
+2. `Future` が例外とともに完了した場合、`Future` はその例外とともに**失敗**したという。
 
 `Future` には 1回だけ代入することができるという重要な特性がある。
 一度 Future オブジェクトが値もしくは例外を持つと、実質不変となり、それが上書きされることは絶対に無い。
@@ -57,9 +234,9 @@ Future オブジェクトを返すメソッドだということだ。
 
     import scala.concurrent._
     import ExecutionContext.Implicits.global
-    
+
     val session = socialNetwork.createSessionFor("user", credentials)
-    val f: Future[List[Friend]] = future {
+    val f: Future[List[Friend]] = Future {
       session.getFriends()
     }
 
@@ -81,9 +258,9 @@ Future オブジェクトを返すメソッドだということだ。
 試みが失敗すると、例外が発生するかもしれない。
 以下の例では、`session` 変数の初期化が不正なため、`future` ブロック内の計算が
 `NullPointerException` を投げる。この Future `f` は、この例外とともに失敗する:
-	
+
     val session = null
-    val f: Future[List[Friend]] = future {
+    val f: Future[List[Friend]] = Future {
       session.getFriends
     }
 
@@ -99,7 +276,7 @@ Future オブジェクトを返すメソッドだということだ。
 テキストファイルがあったとして、その中である特定のキーワードが最初に出てきた位置を知りたいとする。
 この計算はファイルの内容をディスクから読み込むのにブロッキングする可能性があるため、他の計算と並行実行するのは理にかなっている。
 
-    val firstOccurence: Future[Int] = future {
+    val firstOccurence: Future[Int] = Future {
       val source = scala.io.Source.fromFile("myText.txt")
       source.toSeq.indexOfSlice("myKeyword")
     }
@@ -129,10 +306,10 @@ Future の実装の多くは、Future の結果を知りたくなったクライ
 ソーシャルネットワークの例に戻って、最近の自分の投稿した文のリストを取得して画面に表示したいとする。
 これは `List[String]` を返す `getRecentPosts` メソッドを呼ぶことで行われ、戻り値には最近の文のリストが入っている:
 
-    val f: Future[List[String]] = future {
+    val f: Future[List[String]] = Future {
       session.getRecentPosts
     }
-    
+
     f onComplete {
       case Success(posts) => for (post <- posts) println(post)
       case Failure(t) => println("エラーが発生した: " + t.getMessage)
@@ -141,20 +318,20 @@ Future の実装の多くは、Future の結果を知りたくなったクライ
 `onComplete` メソッドは、Future 計算の失敗と成功の両方の結果を扱えるため、汎用性が高い。
 成功した結果のみ扱う場合は、(部分関数を受け取る) `onSuccess` コールバックを使う:
 
-    val f: Future[List[String]] = future {
+    val f: Future[List[String]] = Future {
       session.getRecentPosts
     }
-    
+
     f onSuccess {
       case posts => for (post <- posts) println(post)
     }
 
 失敗した結果のみ扱う場合は、`onFailure` コールバックを使う:
 
-    val f: Future[List[String]] = future {
+    val f: Future[List[String]] = Future {
       session.getRecentPosts
     }
-    
+
     f onFailure {
       case t => println("エラーが発生した: " + t.getMessage)
     }
@@ -168,10 +345,10 @@ Future の実装の多くは、Future の結果を知りたくなったクライ
 部分関数は `isDefinedAt` メソッドを持つため、`onFailure` メソッドはコールバックが特定の `Throwable` に対して定義されている場合のみ発火される。
 以下の例では、登録された `onFailure` コールバックは発火されない:
 
-    val f = future {
+    val f = Future {
       2 / 0
     }
-    
+
     f onFailure {
       case npe: NullPointerException =>
         println("これが表示されているとしたらビックリ。")
@@ -179,7 +356,7 @@ Future の実装の多くは、Future の結果を知りたくなったクライ
 
 キーワードの初出の位置を検索する例に戻ると、キーワードの位置を画面に表示したいかもしれない:
 
-    val firstOccurence: Future[Int] = future {
+    val firstOccurence: Future[Int] = Future {
       val source = scala.io.Source.fromFile("myText.txt")
       source.toSeq.indexOfSlice("myKeyword")
     }
@@ -208,7 +385,7 @@ Future 内の値が利用可能となることを必要とするため、Future 
 
     @volatile var totalA = 0
 
-    val text = future {
+    val text = Future {
       "na" * 16 + "BATMAN!!!"
     }
 
@@ -253,16 +430,16 @@ Future 内の値が利用可能となることを必要とするため、Future 
 為替トレードサービスの API があって、米ドルを有利な場合のみ買いたいとする。
 まずコールバックを使ってこれを実現してみよう:
 
-    val rateQuote = future {
+    val rateQuote = Future {
       connection.getCurrentValue(USD)
     }
-    
+
     rateQuote onSuccess { case quote =>
-      val purchase = future {
+      val purchase = Future {
         if (isProfitable(quote)) connection.buy(amount, quote)
         else throw new Exception("有益ではない")
       }
-      
+
       purchase onSuccess {
         case _ => println(amount + " USD を購入した")
       }
@@ -292,15 +469,15 @@ Future の投射はコレクションの投射と同様に考えることがで�
 
 上の例を `map` コンビネータを使って書き換えてみよう:
 
-    val rateQuote = future {
+    val rateQuote = Future {
       connection.getCurrentValue(USD)
     }
-    
-    val purchase = rateQuote map { quote => 
+
+    val purchase = rateQuote map { quote =>
       if (isProfitable(quote)) connection.buy(amount, quote)
       else throw new Exception("有益ではない")
     }
-    
+
     purchase onSuccess {
       case _ => println(amount + " USD を購入した")
     }
@@ -329,15 +506,15 @@ Future の設計指針の 1つは for 内包表記から利用できるように
 両方の貨幣の為替レートを取得して、両者の値に応じて購入を決定する必要がある。
 以下に for 内包表記を使った `flatMap` と `withFilter` の例をみてみよう:
 
-    val usdQuote = future { connection.getCurrentValue(USD) }
-    val chfQuote = future { connection.getCurrentValue(CHF) }
-    
+    val usdQuote = Future { connection.getCurrentValue(USD) }
+    val chfQuote = Future { connection.getCurrentValue(CHF) }
+
     val purchase = for {
       usd <- usdQuote
       chf <- chfQuote
       if isProfitable(usd, chf)
     } yield connection.buy(amount, chf)
-    
+
     purchase onSuccess {
       case _ => println(amount + " CHF を購入した")
     }
@@ -405,19 +582,19 @@ Future は同じ `Throwable` とともに失敗する。
 この Future と引数の Future が両方失敗した場合は、新しい Future はこの Future の例外とともに失敗する。
 以下に米ドルの値を表示することを試みて、米ドルの取得に失敗した場合はスイス・フランの値を表示する具体例をみてみよう:
 
-    val usdQuote = future {
+    val usdQuote = Future {
       connection.getCurrentValue(USD)
     } map {
       usd => "値: " + usd + " USD"
     }
-    val chfQuote = future {
+    val chfQuote = Future {
       connection.getCurrentValue(CHF)
     } map {
       chf => "値: " + chf + "CHF"
     }
-    
+
     val anyQuote = usdQuote fallbackTo chfQuote
-    
+
     anyQuote onSuccess { println(_) }
 
 `andThen` コンビネータは副作用の目的のためだけに用いられる。
@@ -428,8 +605,8 @@ Future は同じ `Throwable` とともに失敗する。
 ソーシャルネットワークからの最近の投稿文を可変セットに保存して、全ての投稿文を画面に表示する以下の具体例をみてみよう:
 
     val allposts = mutable.Set[String]()
-    
-    future {
+
+    Future {
       session.getRecentPosts
     } andThen {
       posts => allposts ++= posts
@@ -449,14 +626,14 @@ Future は同じ `Throwable` とともに失敗する。
 もし元の Future が成功した場合は、`failed` 投射は `NoSuchElementException`
 とともに失敗する。以下は例外を画面に表示する具体例だ:
 
-    val f = future {
+    val f = Future {
       2 / 0
     }
     for (exc <- f.failed) println(exc)
 
 以下の例は画面に何も表示しない:
 
-    val f = future {
+    val f = Future {
       4 / 2
     }
     for (exc <- f.failed) println(exc)
@@ -476,7 +653,7 @@ the throwable types it matches.
 <!--
 Invoking the `future` construct uses a global execution context to start an asynchronous computation. In the case the client desires to use a custom execution context to start an asynchronous computation:
 
-    val f = customExecutionContext future {
+    val f = customExecutionContext Future {
       4 / 2
     }
 -->
@@ -499,17 +676,17 @@ Future の結果に対してブロックする方法を以下に具体例で説�
 
     import scala.concurrent._
     import scala.concurrent.duration._
-    
+
     def main(args: Array[String]) {
-      val rateQuote = future {
+      val rateQuote = Future {
         connection.getCurrentValue(USD)
       }
-      
+
       val purchase = rateQuote map { quote =>
         if (isProfitable(quote)) connection.buy(amount, quote)
         else throw new Exception("有益ではない")
       }
-      
+
       Await.result(purchase, 0 nanos)
     }
 
@@ -570,17 +747,17 @@ Promise の `p` は `p.future` によって返される Future を完了させ�
 
     import scala.concurrent.{ future, promise }
     import scala.concurrent.ExecutionContext.Implicits.global
-    
+
     val p = promise[T]
     val f = p.future
-    
-    val producer = future {
+
+    val producer = Future {
       val r = produceSomething()
       p success r
       continueDoingSomethingUnrelated()
     }
-    
-    val consumer = future {
+
+    val consumer = Future {
       startDoingSomething()
       f onSuccess {
         case r => doSomethingWithResult()
@@ -601,8 +778,8 @@ Promise の `p` は `p.future` によって返される Future を完了させ�
 
     val p = promise[T]
     val f = p.future
-    
-    val producer = future {
+
+    val producer = Future {
       val r = someComputation
       if (isInvalid(r))
         p failure (new IllegalStateException)
@@ -639,11 +816,11 @@ HTTP レスポンスにのみ興味がある場合で、これは最初に Promi
 渡された Future が完了すると、その Promise も Future の値とともに完了する。
 以下のプログラムは `1` と表示する:
 
-    val f = future { 1 }
+    val f = Future { 1 }
     val p = promise[Int]
-    
+
     p completeWith f
-    
+
     p.future onSuccess {
       case x => println(x)
     }
@@ -702,7 +879,7 @@ for library writers
 
 抽象クラスの `Duration` は以下のメソッドを定義する:
 
-1. 時間の単位の変換 (`toNanos`、`toMicros`、`toMillis`、 
+1. 時間の単位の変換 (`toNanos`、`toMicros`、`toMillis`、
 `toSeconds`、`toMinutes`、`toHours`、`toDays`、及び `toUnit(unit: TimeUnit)`)。
 2. 時間の比較 (`<`、`<=`、`>`、および `>=`)。
 3. 算術演算 (`+`、`-`、`*`、`/`、および `unary_-`)。
@@ -712,14 +889,14 @@ for library writers
 `Duration` は以下の方法で作成することができる:
 
 1. `Int` もしくは `Long` 型からの暗黙の変換する。例: `val d = 100 millis`。
-2. `Long` の長さと `java.util.concurrent.TimeUnit` を渡す。例: `val d = Duration(100, MILLISECONDS)`。 
+2. `Long` の長さと `java.util.concurrent.TimeUnit` を渡す。例: `val d = Duration(100, MILLISECONDS)`。
 3. 時間の長さを表す文字列をパースする。例: `val d = Duration("1.2 µs")`。
 
 `Duration` は `unapply` メソッドも提供するため、パータンマッチング構文の中から使うこともできる。以下に具体例をみる:
 
     import scala.concurrent.duration._
     import java.util.concurrent.TimeUnit._
- 
+
     // 作成
     val d1 = Duration(100, MILLISECONDS) // from Long and TimeUnit
     val d2 = Duration(100, "millis") // from Long and String
