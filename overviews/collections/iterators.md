@@ -13,7 +13,7 @@ An iterator is not a collection, but rather a way to access the elements of a co
 
 The most straightforward way to "step through" all the elements returned by an iterator `it` uses a while-loop:
 
-    while (it.hasNext) 
+    while (it.hasNext)
       println(it.next())
 
 Iterators in Scala also provide analogues of most of the methods that you find in the `Traversable`, `Iterable` and `Seq` classes. For instance, they provide a `foreach` method which executes a given procedure on each element returned by an iterator. Using `foreach`, the loop above could be abbreviated to:
@@ -71,7 +71,7 @@ All operations on iterators are summarized below.
 |  `it.next()`      	    | Returns next element on iterator and advances past it. |
 |  `it.hasNext`  	        | Returns `true` if `it` can return another element. |
 |  **Variations:**          |						         |
-|  `it.buffered`      	    | A buffered iterator returning all elements of `it`. |
+|  `it.buffered`      	    | A buffered iterator returning all elements of `it`.  Do not attempt to reuse `it` after calling this method.|
 |  `it grouped size`      	| An iterator that yields the elements elements returned by `it` in fixed-sized sequence "chunks". |
 |  `xs sliding size`      	| An iterator that yields the elements elements returned by `it` in sequences representing a sliding fixed-sized window. |
 |  **Duplication:**         |						         |
@@ -151,7 +151,7 @@ Sometimes you want an iterator that can "look ahead", so that you can inspect th
 
     def skipEmptyWordsNOT(it: Iterator[String]) =
       while (it.next().isEmpty) {}
-  
+
 But looking at this code more closely, it's clear that this is wrong: The code will indeed skip leading empty strings, but it will also advance `it` past the first non-empty string!
 
 The solution to this problem is to use a buffered iterator. Class [BufferedIterator](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/BufferedIterator.html) is a subclass of [Iterator](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterator.html), which provides one extra method, `head`. Calling `head` on a buffered iterator will return its first element but will not advance the iterator. Using a buffered iterator, skipping empty words can be written as follows.
@@ -174,3 +174,24 @@ Every iterator can be converted to a buffered iterator by calling its `buffered`
     res11: Int = 2
 
 Note that calling `head` on the buffered iterator `bit` does not advance it. Therefore, the subsequent call `bit.next()` returns the same value as `bit.head`.
+
+**Warning**: From the `buffered` [API documentation](http://www.scala-lang.org/api/current/index.html#scala.collection.Iterator):
+
+> Reuse: After calling this method, one should discard the iterator it was called on,
+> and use only the iterator that was returned. Using the old iterator is undefined,
+> subject to change, and may result in changes to the new iterator as well.
+
+You might be tempted to access the first element in the iterator `it` by calling `it.buffered.head` and then continue manipulating `it`.  Instead you should assign `it.buffered` to a variable, and use the result.
+
+For example, if you wish to pass an iterator and its first element to a function, call the function as follows:
+
+    // Correct
+    val it: Iterator[Int] = ...
+    val bit = it.buffered
+    myFunction(bit.head, bit)
+
+    // Incorrect
+    val it: Iterator[Int] = ...
+    myFunction(it.buffered.head, it)
+
+
