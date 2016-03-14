@@ -568,7 +568,7 @@ Promise の `p` は `p.future` によって返される Future を完了させ�
 ある計算が値を生産し、別の計算がそれを消費する Producer-Consumer の具体例を使って説明しよう。
 この値の受け渡しは Promise を使って実現している。
 
-    import scala.concurrent.{ future, promise }
+    import scala.concurrent.{ future, Promise }
     import scala.concurrent.ExecutionContext.Implicits.global
     
     val p = Promise[T]()

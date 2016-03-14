@@ -554,7 +554,7 @@ may be the case that `p.future == p`.
 
 Consider the following producer-consumer example:
 
-    import scala.concurrent.{ future, promise }
+    import scala.concurrent.{ future, Promise }
     
     val p = Promise[T]()
     val f = p.future

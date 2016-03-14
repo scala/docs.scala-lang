@@ -388,10 +388,10 @@ ExecutionException-当因为一个未处理的中断异常、错误或者`scala.
 
 考虑下面的生产者 - 消费者的例子，其中一个计算产生一个值，并把它转移到另一个使用该值的计算。这个传递中的值通过一个promise来完成。
 
-    import scala.concurrent.{ future, promise }
+    import scala.concurrent.{ future, Promise }
     import scala.concurrent.ExecutionContext.Implicits.global
     
-    val p = promise[T]
+    val p = Promise[T]()
     val f = p.future
     
     val producer = future {
