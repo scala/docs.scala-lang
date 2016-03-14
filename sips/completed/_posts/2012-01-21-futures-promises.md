@@ -556,7 +556,7 @@ Consider the following producer-consumer example:
 
     import scala.concurrent.{ future, promise }
     
-    val p = promise[T]
+    val p = Promise[T]()
     val f = p.future
     
     val producer = future {
@@ -588,7 +588,7 @@ promise that has already been completed (or failed) will throw an
 
 The following example shows how to fail a promise. 
 
-    val p = promise[T]
+    val p = Promise[T]()
     val f = p.future
     
     val producer = future {
@@ -637,7 +637,7 @@ future. After the future is completed, the promise gets completed with
 the result of that future as well. The following program prints `1`:
 
     val f = future { 1 }
-    val p = promise[Int]
+    val p = Promise[Int]()
     
     p completeWith f
     

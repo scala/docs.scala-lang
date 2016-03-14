@@ -571,7 +571,7 @@ Promise の `p` は `p.future` によって返される Future を完了させ�
     import scala.concurrent.{ future, promise }
     import scala.concurrent.ExecutionContext.Implicits.global
     
-    val p = promise[T]
+    val p = Promise[T]()
     val f = p.future
     
     val producer = future {
@@ -599,7 +599,7 @@ Promise の `p` は `p.future` によって返される Future を完了させ�
 
 以下は Promise を失敗させる具体例だ。
 
-    val p = promise[T]
+    val p = Promise[T]()
     val f = p.future
     
     val producer = future {
@@ -640,7 +640,7 @@ HTTP レスポンスにのみ興味がある場合で、これは最初に Promi
 以下のプログラムは `1` と表示する:
 
     val f = future { 1 }
-    val p = promise[Int]
+    val p = Promise[Int]()
     
     p completeWith f
     
@@ -662,7 +662,7 @@ Promise、Future の `onComplete` メソッド、そして `future`
 以下のように書くことができる:
 
     def first[T](f: Future[T], g: Future[T]): Future[T] = {
-      val p = promise[T]
+      val p = Promise[T]()
 
       f onSuccess {
         case x => p.tryComplete(x)
