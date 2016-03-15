@@ -58,10 +58,10 @@ popular social network to obtain a list of friends for a given user.
 After opening a new session we want to create an asynchronous request to the
 server for this list:
 
-    import scala.concurrent.future
+    import scala.concurrent.Future
     
     val session = socialNetwork.createSessionFor("user", credentials)
-    val f: Future[List[Friend]] = future {
+    val f: Future[List[Friend]] = Future {
       session.getFriends
     }
 
@@ -73,7 +73,7 @@ the following example, the `session` value is incorrectly
 initialized, so the future will hold a `NullPointerException` instead of the value:
 	
     val session = null
-    val f: Future[List[Friend]] = future {
+    val f: Future[List[Friend]] = Future {
       session.getFriends
     }
 
@@ -101,7 +101,7 @@ Coming back to our social network example, let's assume we want to
 fetch a list of our own recent posts and render them to the screen.
 We do so by calling the method `getRecentPosts` which returns a `List[String]`:
 
-    val f: Future[List[String]] = future {
+    val f: Future[List[String]] = Future {
       session.getRecentPosts
     }
     
@@ -115,7 +115,7 @@ client to handle the result of both failed and successful future
 computations. To handle only successful results, the `onSuccess`
 callback is used (which takes a partial function):
 
-    val f: Future[List[String]] = future {
+    val f: Future[List[String]] = Future {
       session.getRecentPosts
     }
     
@@ -125,7 +125,7 @@ callback is used (which takes a partial function):
 
 To handle failed results, the `onFailure` callback is used:
 
-    val f: Future[List[String]] = future {
+    val f: Future[List[String]] = Future {
       session.getRecentPosts
     }
     
@@ -148,7 +148,7 @@ Since partial functions have the `isDefinedAt` method, the
 `onFailure` method only triggers the callback if it is defined for a
 particular `Throwable`. In the following example the registered callback is never triggered:
 
-    val f = future {
+    val f = Future {
       2 / 0
     }
     
@@ -215,12 +215,12 @@ interfacing with a currency trading service. Suppose we want to buy US
 dollars, but only when it's profitable. We first show how this could
 be done using callbacks:
 
-    val rateQuote = future {
+    val rateQuote = Future {
       connection.getCurrentValue(USD)
     }
     
     rateQuote onSuccess { case quote =>
-      val purchase = future {
+      val purchase = Future {
         if (isProfitable(quote)) connection.buy(amount, quote)
         else throw new Exception("not profitable")
       }
@@ -247,7 +247,7 @@ the future, produces a new future that is completed with the
 mapped value once the original future is successfully completed. Let's
 rewrite the previous example using the `map` combinator:
 
-    val rateQuote = future {
+    val rateQuote = Future {
       connection.getCurrentValue(USD)
     }
     
@@ -278,8 +278,8 @@ Lets assume that we want to exchange US dollars for Swiss francs
 buying based on both quotes.
 Here is an example of `flatMap` usage within for-comprehensions:
 
-    val usdQuote = future { connection.getCurrentValue(USD) }
-    val chfQuote = future { connection.getCurrentValue(CHF) }
+    val usdQuote = Future { connection.getCurrentValue(USD) }
+    val chfQuote = Future { connection.getCurrentValue(CHF) }
     
     val purchase = for {
       usd <- usdQuote
@@ -340,12 +340,12 @@ the exception from this future, as in the following example which
 tries to print US dollar value, but prints the Swiss franc value in
 the case it fails to obtain the dollar value:
 
-    val usdQuote = future {
+    val usdQuote = Future {
 	  connection.getCurrentValue(USD)
 	} map {
 	  usd => "Value: " + usd + "$"
 	}
-	val chfQuote = future {
+	val chfQuote = Future {
 	  connection.getCurrentValue(CHF)
 	} map {
 	  chf => "Value: " + chf + "CHF"
@@ -360,12 +360,12 @@ the result of this future or the argument future, whichever completes
 first, irregardless of success or failure. Here is an example in which
 the quote which is returned first gets printed:
 
-    val usdQuote = future {
+    val usdQuote = Future {
 	  connection.getCurrentValue(USD)
 	} map {
 	  usd => "Value: " + usd + "$"
 	}
-	val chfQuote = future {
+	val chfQuote = Future {
 	  connection.getCurrentValue(CHF)
 	} map {
 	  chf => "Value: " + chf + "CHF"
@@ -387,7 +387,7 @@ and then renders all the posts to the screen:
 
 	val allposts = mutable.Set[String]()
 	
-    future {
+	Future {
 	  session.getRecentPosts
 	} andThen {
 	  posts => allposts ++= posts
@@ -411,14 +411,14 @@ futures also have projections. If the original future fails, the
 fails with a `NoSuchElementException`. The following is an example
 which prints the exception to the screen:
 
-    val f = future {
+    val f = Future {
       2 / 0
     }
     for (exc <- f.failed) println(exc)
 
 The following example does not print anything to the screen:
 
-    val f = future {
+    val f = Future {
       4 / 2
     }
     for (exc <- f.failed) println(exc)
@@ -436,11 +436,11 @@ the throwable types it matches.
 -->
 
 <!--
-Invoking the `future` construct uses a global execution context to start an asynchronous computation. In the case the client desires to use a custom execution context to start an asynchronous computation:
+Invoking the `future` construct uses an implicit execution context to start an asynchronous computation. In the case the client desires to use a custom execution context to start an asynchronous computation:
 
-    val f = customExecutionContext future {
+    val f = Future {
       4 / 2
-    }
+    }(customExecutionContext)
 -->
 
 ### Extending Futures
@@ -462,7 +462,7 @@ Here is an example of how to block on the result of a future:
     import scala.concurrent._
     
     def main(args: Array[String]) {
-      val rateQuote = future {
+      val rateQuote = Future {
         connection.getCurrentValue(USD)
       }
       
@@ -487,7 +487,7 @@ external condition or which may not complete the computation at all. The
 only be called by the execution context implementation itself. To block
 on the future to obtain its result, the `blocking` method must be used.
 
-    val f = future { 1 }
+    val f = Future { 1 }
     val one: Int = blocking(f, 0 ns)
 
 To allow clients to call 3rd party code which is potentially blocking
@@ -554,18 +554,18 @@ may be the case that `p.future == p`.
 
 Consider the following producer-consumer example:
 
-    import scala.concurrent.{ future, Promise }
+    import scala.concurrent.{ Future, Promise }
     
     val p = Promise[T]()
     val f = p.future
     
-    val producer = future {
+    val producer = Future {
       val r = produceSomething()
       p success r
       continueDoingSomethingUnrelated()
     }
     
-    val consumer = future {
+    val consumer = Future {
       startDoingSomething()
       f onSuccess {
         case r => doSomethingWithResult()
@@ -591,7 +591,7 @@ The following example shows how to fail a promise.
     val p = Promise[T]()
     val f = p.future
     
-    val producer = future {
+    val producer = Future {
       val r = someComputation
       if (isInvalid(r))
         p failure (new IllegalStateException)
@@ -636,7 +636,7 @@ The method `completeWith` completes the promise with another
 future. After the future is completed, the promise gets completed with
 the result of that future as well. The following program prints `1`:
 
-    val f = future { 1 }
+    val f = Future { 1 }
     val p = Promise[Int]()
     
     p completeWith f

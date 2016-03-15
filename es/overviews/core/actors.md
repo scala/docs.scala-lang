@@ -273,7 +273,7 @@ un future. Estos pueden ser creados utilizando el método `future`. En el siguie
 ejemplo, `body` se ejecuta de manera concurrente, retornando un future como
 resultado.
 
-    val fut = future { body }
+    val fut = Future { body }
     // ...
     fut() // wait for future
 
