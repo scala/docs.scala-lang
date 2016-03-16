@@ -97,7 +97,7 @@ invoker ミラーを作成することができる。
     scala> mm()
     res0: Any = 2
 
-`FieldMirror` はインスタンス・フィールドの get と set を行うのに使われる (メソッド同様に Scala はインスタンス・フィールドのみがある。)。作り方: `val fm = im.reflectMethod(<field or accessor symbol>)`。
+`FieldMirror` はインスタンス・フィールドの get と set を行うのに使われる (メソッド同様に Scala はインスタンス・フィールドのみがある。)。作り方: `val fm = im.reflectField(<field or accessor symbol>)`。
 具体例:
 
     scala> class C { val x = 2; var y = 3 }
