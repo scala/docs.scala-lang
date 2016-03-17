@@ -20,7 +20,7 @@ Este nuevo mecanismo permite a los usuarios incluir referencias a variables de m
     val name = "James"
     println(s"Hello, $name")  // Hello, James
 
-En el ejemplo anterior, el literal `s"Hello, $name"` es una cadena "procesada". Esto significa que el compilador debe realizar un trabajo adicional durante el tratamiento de dicha cadena. Una cadena "procesada" se denota mediante un conjunto de caracteres que preceden al símbolo `"`. La interpolación de cadenas ha sido introducida por (http://docs.scala-lang.org/sips/pending/string-interpolation.html), el cual contiene todos los detalles de implementación.
+En el ejemplo anterior, el literal `s"Hello, $name"` es una cadena "procesada". Esto significa que el compilador debe realizar un trabajo adicional durante el tratamiento de dicha cadena. Una cadena "procesada" se denota mediante un conjunto de caracteres que preceden al símbolo `"`. La interpolación de cadenas ha sido introducida por [SIP-11](http://docs.scala-lang.org/sips/pending/string-interpolation.html), el cual contiene todos los detalles de implementación.
 
 ## Uso
 
