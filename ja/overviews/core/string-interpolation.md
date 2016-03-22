@@ -19,7 +19,7 @@ Scala 2.10.0 より、Scala は文字列の補間 (string interpolation) とい�
     val name = "James"
     println(s"Hello, $name")  // Hello, James
 
-上の例において、リテラル `s"Hello, $name"` は加工文字列リテラルだ。これはコンパイラがこのリテラルに対して何らかの追加処理を実行するということだ。加工文字リテラルは `"` の前にいくつかの文字を書くことで表記される。文字列の補間は [SIP-13](http://docs.scala-lang.org/sips/pending/string-interpolation.html) によって導入され、実装の詳細もそこに書かれている。
+上の例において、リテラル `s"Hello, $name"` は加工文字列リテラルだ。これはコンパイラがこのリテラルに対して何らかの追加処理を実行するということだ。加工文字リテラルは `"` の前にいくつかの文字を書くことで表記される。文字列の補間は [SIP-11](http://docs.scala-lang.org/sips/pending/string-interpolation.html) によって導入され、実装の詳細もそこに書かれている。
 
 ## 用例
 
