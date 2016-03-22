@@ -63,7 +63,7 @@ Future的一个重要属性在于它只能被赋值一次。一旦给定了某�
 
 我们的例子是基于一个假定的社交网络API，此API的计算包含发送网络请求和等待响应。提供一个涉及到你能试着立即使用的异步计算的例子是公平的。假设你有一个文本文件，你想找出一个特定的关键字第一次出现的位置。当磁盘正在检索此文件内容时，这种计算可能会陷入阻塞，因此并行的执行该操作和程序的其他部分是合理的(make sense)。
 
-    val firstOccurrence: Future[Int] = future {
+    val firstOccurrence: Future[Int] = Future {
       val source = scala.io.Source.fromFile("myText.txt")
       source.toSeq.indexOfSlice("myKeyword")
     }
@@ -80,7 +80,7 @@ Future的一个重要属性在于它只能被赋值一次。一旦给定了某�
 
 回到我们的社交网络的例子，假设我们想要获取我们最近的帖子并显示在屏幕上，我们通过调用getRecentPosts方法获得一个返回值List[String]——一个近期帖子的列表文本：
 
-    val f: Future[List[String]] = future {
+    val f: Future[List[String]] = Future {
       session.getRecentPosts
     }
     
@@ -91,7 +91,7 @@ Future的一个重要属性在于它只能被赋值一次。一旦给定了某�
 
 onComplete方法一般在某种意义上它允许客户处理future计算出的成功或失败的结果。对于仅仅处理成功的结果，onSuccess 回调使用如下（该回调以一个偏函数(partial function)为参数）：
 
-    val f: Future[List[String]] = future {
+    val f: Future[List[String]] = Future {
       session.getRecentPosts
     }
     
@@ -101,7 +101,7 @@ onComplete方法一般在某种意义上它允许客户处理future计算出的�
 
 对于处理失败结果，onFailure回调使用如下：
 
-    val f: Future[List[String]] = future {
+    val f: Future[List[String]] = Future {
       session.getRecentPosts
     }
     
@@ -117,7 +117,7 @@ onComplete方法一般在某种意义上它允许客户处理future计算出的�
 
 因为偏函数具有 isDefinedAt方法， onFailure方法只有在特定的Throwable类型对象中被定义才会触发。下面例子中的onFailure回调永远不会被触发：
 
-    val f = future {
+    val f = Future {
       2 / 0
     }
     
@@ -128,7 +128,7 @@ onComplete方法一般在某种意义上它允许客户处理future计算出的�
 
 回到前面查找某个关键字第一次出现的例子，我们想要在屏幕上打印出此关键字的位置：
 
-    val firstOccurrence: Future[Int] = future {
+    val firstOccurrence: Future[Int] = Future {
       val source = scala.io.Source.fromFile("myText.txt")
       source.toSeq.indexOfSlice("myKeyword")
     }
@@ -149,7 +149,7 @@ onComplete方法一般在某种意义上它允许客户处理future计算出的�
 
     @volatile var totalA = 0
     
-    val text = future {
+    val text = Future {
       "na" * 16 + "BATMAN!!!"
     }
     
@@ -183,12 +183,12 @@ onComplete方法一般在某种意义上它允许客户处理future计算出的�
 
 尽管前文所展示的回调机制已经足够把future的结果和后继计算结合起来的，但是有些时候回调机制并不易于使用，且容易造成冗余的代码。我们可以通过一个例子来说明。假设我们有一个用于进行货币交易服务的API，我们想要在有盈利的时候购进一些美元。让我们先来看看怎样用回调来解决这个问题：
 
-    val rateQuote = future {
+    val rateQuote = Future {
       connection.getCurrentValue(USD)
     }
     
     rateQuote onSuccess { case quote =>
-      val purchase = future {
+      val purchase = Future {
         if (isProfitable(quote)) connection.buy(amount, quote)
         else throw new Exception("not profitable")
       }
@@ -208,7 +208,7 @@ onComplete方法一般在某种意义上它允许客户处理future计算出的�
 
 让我们用map的方法来重构一下前面的例子：
 
-    val rateQuote = future {
+    val rateQuote = Future {
       connection.getCurrentValue(USD)
     }
     
@@ -231,8 +231,8 @@ onComplete方法一般在某种意义上它允许客户处理future计算出的�
 
 让我们假设我们想把一些美元兑换成瑞士法郎。我们必须为这两种货币报价，然后再在这两个报价的基础上确定交易。下面是一个在for-comprehensions中使用flatMap和withFilter的例子：
 
-    val usdQuote = future { connection.getCurrentValue(USD) }
-    val chfQuote = future { connection.getCurrentValue(CHF) }
+    val usdQuote = Future { connection.getCurrentValue(USD) }
+    val chfQuote = Future { connection.getCurrentValue(CHF) }
     
     val purchase = for {
       usd <- usdQuote
@@ -281,12 +281,12 @@ purchase只有当usdQuote和chfQuote都完成计算以后才能完成-- 它以�
 
 fallbackTo组合器生成的future对象可以在该原future成功完成计算时返回结果，如果原future失败或异常返回future参数对象的成功值。在原future和参数future都失败的情况下，新future对象会完成并返回原future对象抛出的异常。正如下面的例子中，本想打印美元的汇率，但是在获取美元汇率失败的情况下会打印出瑞士法郎的汇率：
 
-    val usdQuote = future {
+    val usdQuote = Future {
       connection.getCurrentValue(USD)
     } map {
       usd => "Value: " + usd + "$"
     }
-    val chfQuote = future {
+    val chfQuote = Future {
       connection.getCurrentValue(CHF)
     } map {
       chf => "Value: " + chf + "CHF"
@@ -316,14 +316,14 @@ fallbackTo组合器生成的future对象可以在该原future成功完成计算�
 
 为了确保for解构(for-comprehensions)能够返回异常，futures也提供了投影(projections)。如果原future对象失败了，失败的投影(projection)会返回一个带有Throwable类型返回值的future对象。如果原Future成功了，失败的投影(projection)会抛出一个NoSuchElementException异常。下面就是一个在屏幕上打印出异常的例子：
 
-    val f = future {
+    val f = Future {
       2 / 0
     }
     for (exc <- f.failed) println(exc)
 
 下面的例子不会在屏幕上打印出任何东西：
 
-    val f = future {
+    val f = Future {
       4 / 2
     }
     for (exc <- f.failed) println(exc)
@@ -342,7 +342,7 @@ fallbackTo组合器生成的future对象可以在该原future成功完成计算�
     import scala.concurrent.duration._
     
     def main(args: Array[String]) {
-      val rateQuote = future {
+      val rateQuote = Future {
         connection.getCurrentValue(USD)
       }
     
@@ -388,19 +388,19 @@ ExecutionException-当因为一个未处理的中断异常、错误或者`scala.
 
 考虑下面的生产者 - 消费者的例子，其中一个计算产生一个值，并把它转移到另一个使用该值的计算。这个传递中的值通过一个promise来完成。
 
-    import scala.concurrent.{ future, promise }
+    import scala.concurrent.{ Future, Promise }
     import scala.concurrent.ExecutionContext.Implicits.global
     
-    val p = promise[T]
+    val p = Promise[T]()
     val f = p.future
     
-    val producer = future {
+    val producer = Future {
       val r = produceSomething()
       p success r
       continueDoingSomethingUnrelated()
     }
     
-    val consumer = future {
+    val consumer = Future {
       startDoingSomething()
       f onSuccess {
         case r => doSomethingWithResult()
@@ -416,7 +416,7 @@ ExecutionException-当因为一个未处理的中断异常、错误或者`scala.
     val p = promise[T]
     val f = p.future
     
-    val producer = future {
+    val producer = Future {
       val r = someComputation
       if (isInvalid(r))
         p failure (new IllegalStateException)
@@ -438,7 +438,7 @@ Promises也能通过一个complete方法来实现，这个方法采用了一个`
 
 completeWith方法将用另外一个future完成promise计算。当该future结束的时候，该promise对象得到那个future对象同样的值，如下的程序将打印1：
 
-    val f = future { 1 }
+    val f = Future { 1 }
     val p = promise[Int]
     
     p completeWith f
