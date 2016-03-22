@@ -244,7 +244,7 @@ Throw expression is used to throw a throwable:
 
 ## Ascription
 
-Ascriptions lets users to annotate type of intermidiate expression:
+Ascriptions lets users to annotate type of intermediate expression:
 
     scala> val ascribed = q"(1 + 1): Int"
     ascribed: universe.Typed = (1.$plus(1): Int)
