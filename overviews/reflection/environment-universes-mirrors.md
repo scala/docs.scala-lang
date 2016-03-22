@@ -100,7 +100,7 @@ A `MethodMirror` is used for invoking instance methods (Scala only has instance 
     scala> mm()
     res0: Any = 2
 
-A `FieldMirror` is used for getting/setting instance fields (like methods, Scala only has instance fields, see above). Entry point: `val fm = im.reflectMethod(<field or accessor symbol>)`. Example:
+A `FieldMirror` is used for getting/setting instance fields (like methods, Scala only has instance fields, see above). Entry point: `val fm = im.reflectField(<field or accessor symbol>)`. Example:
 
     scala> class C { val x = 2; var y = 3 }
     defined class C
