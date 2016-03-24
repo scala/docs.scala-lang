@@ -14,7 +14,7 @@ and is related to the code structure within which it is written. It is based on
 other comment based documentation systems like Javadoc, but with some extensions
 such as:
 
-- Markdown like formatting syntax may be used in the comments.
+- Markup may be used in the comments.
 - Extended @ tags (e.g. `@tparam`, `@see`, `@note`, `@example`, `@usecase`,
   `@since`, etc.)
 - Macro definitions (defined values to be substituted in scaladoc).
@@ -125,12 +125,12 @@ but available from a superclass, those comments will be used.
 For explicit comment inheritance, use the `@inheritdoc` tag.
 
 
-## Markdown style formatting
+## Markup
 
 It is still possible to embed HTML tags in Scaladoc (like with Javadoc), but
-not necessary most of the time as Markdown styles may be used instead.
+not necessary most of the time as markup may be used instead.
 
-Some of the standard Markdown formatting available:
+Some of the standard markup available:
 
     `monospace`
     ''italic text''
