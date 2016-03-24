@@ -26,10 +26,10 @@ put each constructor argument on its own line, indented **four** spaces:
     }
 
 If a class/object/trait extends anything, the same general rule applies,
-put it one one line unless it goes over about 100 characters, and then
+put it on one line unless it goes over about 100 characters, and then
 indent **four** spaces with each item being on its own line and **two**
 spaces for extensions; this provides visual separation between
-constructor arguments and extensions.:
+constructor arguments and extensions:
 
     class Person(
         name: String,
@@ -212,7 +212,7 @@ There are three main reasons you should do this:
         List("").foldLeft[Int](0, _ + _.length)
 
 For complex DSLs, or with type-names that are long, it can be difficult
-to fit the entire signature on one line. In those cases, alight the
+to fit the entire signature on one line. In those cases, align the
 open-paren of the parameter lists, one list per line (i.e. if you can't
 put them all on one line, put one each per line):
 
