@@ -21,7 +21,7 @@ def マクロ機能の一部が、徹底した仕様が書かれることを条�
 <span class="label success">追記</span> このガイドは Scala 2.10.0 向けに書かれたもので、現在は Scala 2.11.x 系リリースサイクルのまっただ中なので当然本稿の内容が古くなっている。
 しかしながら、このガイドが廃れたかと言うとそうとも言えなくて、ここで書かれていることの全ては Scala 2.10.x と Scala 2.11.x
 の両方で動作するため目を通す価値はあるはずだ。
-これを読んだ後で、[準クォート](/overviews/macros/quasiquotes.html)と
+これを読んだ後で、[準クォート](/overviews/quasiquotes/intro.html)と
 [マクロバンドル](/ja/overviews/macros/bundles.html)のガイドからマクロ定義を簡略化する最新情報を仕入れてほしい。
 さらに詳しい具体例を調べるには [macro workshop](https://github.com/scalamacros/macrology201)
 も参考にしてほしい。

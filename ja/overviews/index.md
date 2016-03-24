@@ -57,7 +57,7 @@ title: ガイドと概要
      * [ユースケース](/ja/overviews/macros/usecases.html)
      * [blackbox vs whitebox](/ja/overviews/macros/blackbox-whitebox.html)
      * [def マクロ](/ja/overviews/macros/overview.html)
-     * [準クォート](/ja/overviews/macros/quasiquotes.html)
+     * [準クォート](/ja/overviews/quasiquotes/intro.html)
      * [マクロバンドル](/ja/overviews/macros/bundles.html)
      * [implicit マクロ](/ja/overviews/macros/implicits.html)
      * [抽出子マクロ](/ja/overviews/macros/extractors.html)
