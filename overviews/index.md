@@ -72,7 +72,7 @@ languages: [ja, zh-cn, es]
     * [Use Cases](/overviews/macros/usecases.html)
     * [Blackbox Vs Whitebox](/overviews/macros/blackbox-whitebox.html)
     * [Def Macros](/overviews/macros/overview.html)
-    * [Quasiquotes](/overviews/macros/quasiquotes.html)
+    * [Quasiquotes](/overviews/quasiquotes/intro.html)
     * [Macro Bundles](/overviews/macros/bundles.html)
     * [Implicit Macros](/overviews/macros/implicits.html)
     * [Extractor Macros](/overviews/macros/extractors.html)

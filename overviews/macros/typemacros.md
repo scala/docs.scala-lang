@@ -89,4 +89,4 @@ For example, a type macro used as `TM(2)(3)` in `class C extends TM(2)(3)` can e
 
 ### Generating classes and objects
 
-With type macros you might increasingly find yourself in a zone where `reify` is not applicable, as explained [at StackOverflow](http://stackoverflow.com/questions/13795490/how-to-use-type-calculated-in-scala-macro-in-a-reify-clause). In that case consider using [quasiquotes](/overviews/macros/quasiquotes.html), another experimental feature from macro paradise, as an alternative to manual tree construction.
+With type macros you might increasingly find yourself in a zone where `reify` is not applicable, as explained [at StackOverflow](http://stackoverflow.com/questions/13795490/how-to-use-type-calculated-in-scala-macro-in-a-reify-clause). In that case consider using [quasiquotes](/overviews/quasiquotes/intro.html), another experimental feature from macro paradise, as an alternative to manual tree construction.

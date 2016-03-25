@@ -17,7 +17,7 @@ This document lists all major changes to reflection and macros during the develo
 
 ### Quasiquotes
 
-Quasiquotes is the single most impressive upgrade for reflection and macros in Scala 2.11.0. Implemented by Denys Shabalin, they have significantly simplified the life of Scala metaprogrammers around the globe. Visit [the dedicated documentation page](/overviews/macros/quasiquotes.html) to learn more about quasiquotes.
+Quasiquotes is the single most impressive upgrade for reflection and macros in Scala 2.11.0. Implemented by Denys Shabalin, they have significantly simplified the life of Scala metaprogrammers around the globe. Visit [the dedicated documentation page](/overviews/quasiquotes/intro.html) to learn more about quasiquotes.
 
 ### New macro powers
 
