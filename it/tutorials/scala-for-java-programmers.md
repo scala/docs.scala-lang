@@ -5,7 +5,7 @@ overview: scala-for-java-programmers
 
 disqus: true
 multilingual-overview: true
-language: [it]
+language: it
 ---
 
 Di Michel Schinz e Philipp Haller.
