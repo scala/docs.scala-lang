@@ -249,7 +249,7 @@ easily transform even the simplest code into symbolic soup.
 
 Constant names should be in upper camel case. That is, if the member is
 final, immutable and it belongs to a package object or an object,
-it may be considered a constant (similar to Java's `static final` members):
+it may be considered a constant:
 
     object Container {
       val MyConstant = ...
