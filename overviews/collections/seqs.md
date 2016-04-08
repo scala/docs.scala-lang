@@ -13,7 +13,7 @@ The [Seq](http://www.scala-lang.org/api/current/scala/collection/Seq.html) trait
 
 The operations on sequences, summarized in the table below, fall into the following categories:
 
-* **Indexing and length** operations `apply`, `isDefinedAt`, `length`, `indices`, and `lengthCompare`. For a `Seq`, the `apply` operation means indexing; hence a sequence of type `Seq[T]` is a partial function that takes an `Int` argument (an index) and which yields a sequence element of type `T`. In other words `Seq[T]` extends `PartialFunction[Int, T]`. The elements of a sequence are indexed from zero up to the `length` of the sequence minus one. The `length` method on sequences is an alias of the `size` method of general collections. The `lengthCompare` method allows you to compare the lengths of two sequences even if one of the sequences has infinite length.
+* **Indexing and length** operations `apply`, `isDefinedAt`, `length`, `indices`, and `lengthCompare`. For a `Seq`, the `apply` operation means indexing; hence a sequence of type `Seq[T]` is a partial function that takes an `Int` argument (an index) and which yields a sequence element of type `T`. In other words `Seq[T]` extends `PartialFunction[Int, T]`. The elements of a sequence are indexed from zero up to the `length` of the sequence minus one. The `length` method on sequences is an alias of the `size` method of general collections. The `lengthCompare` method allows you to compare the lengths of a sequences with an Int even if the sequences has infinite length.
 * **Index search operations** `indexOf`, `lastIndexOf`, `indexOfSlice`, `lastIndexOfSlice`, `indexWhere`, `lastIndexWhere`, `segmentLength`, `prefixLength`, which return the index of an element equal to a given value or matching some predicate.
 * **Addition operations** `+:`, `:+`, `padTo`, which return new sequences obtained by adding elements at the front or the end of a sequence.
 * **Update operations** `updated`, `patch`, which return a new sequence obtained by replacing some elements of the original sequence.
@@ -32,7 +32,7 @@ If a sequence is mutable, it offers in addition a side-effecting `update` method
 |  `xs(i)`    	  	    |(or, written out, `xs apply i`). The element of `xs` at index `i`.|
 |  `xs isDefinedAt i`	    |Tests whether `i` is contained in `xs.indices`.|
 |  `xs.length`	    	    |The length of the sequence (same as `size`).|
-|  `xs.lengthCompare ys`    |Returns `-1` if `xs` is shorter than `ys`, `+1` if it is longer, and `0` is they have the same length. Works even if one if the sequences is infinite.|
+|  `xs lengthCompare n`    |Returns `-1` if `xs` is shorter than `n`, `+1` if it is longer, and `0` if it is of length `n`. Works even if the sequence is infinite, for example `Stream.from(1) lengthCompare 42` equals `+1`.|
 |  `xs.indices`	     	    |The index range of `xs`, extending from `0` to `xs.length - 1`.|
 |  **Index Search:**        |						     |
 |  `xs indexOf x`   	    |The index of the first element in `xs` equal to `x` (several variants exist).|
