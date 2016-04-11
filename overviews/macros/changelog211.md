@@ -181,3 +181,5 @@ Quasiquotes is the single most impressive upgrade for reflection and macros in S
 
       def ultimateAnswer: Int = macro impl
     }
+
+40) **Use macro-compat**. [Macro-compat](https://github.com/milessabin/macro-compat) is a small library which allows you to compile macros with Scala 2.10.x which are written to the Scala 2.11/2 macro API.  It brings to Scala 2.10: type aliases for the blackbox and whitebox Context types, support for macro bundles, forwarders for the 2.11 API and support for using Tree in the macro def type signatures.
