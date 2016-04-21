@@ -14,7 +14,9 @@ title: SIP-NN - SIP Allow multiple implicit parameter lists
 
 ## Motivation
 
-In Scala the implicit parameters of a function are limited to being placed in the single very last parameter list of a function. This prevents later parameters from using dependant types of former ones as this is only allowed between, but not inside a single parameter list. Another issue introduced by this restriction is, that if you want to explicitly specify one of the implicit parameters you have to specify all of them by hand (or write `implicitly` in place of every other parameter that should be filled by the compiler).
+Currently, the implicit parameters of a function are limited to being placed in a single, final, parameter list of a function. This prevents later parameters from using dependant types of former ones, as this is only allowed between, but not inside a single parameter list. 
+
+This restriction also means that if you want to explicitly specify one of the implicit parameters you have to specify all of them by hand (or write `implicitly` in place of every other parameter that should be filled by the compiler).
 
 ## Motivating Examples
 
@@ -26,7 +28,7 @@ trait A { type B }
 
 def works(a: A)(b: a.B) = "works"
 {% endhighlight %}
-Due to the restriction of being contained in a single parameter list the implicits can't benefit from this goodness. A common workaround is to pull the type member `B` into a type parameter of a new `Aux` object and having this as a type parameter of your function:
+Due to the restriction of being contained in a single parameter list, implicit parameters can't work in the same way. A common workaround is to pull the type member `B` into a type parameter of a new `Aux` object and make this a type parameter of your function:
 {% highlight scala %}
 trait A { type B }
 object A { type Aux[D] = A { type B = D } }
@@ -53,7 +55,7 @@ then(1)
 
 ## Implementation
 
-The implementation of this change is as simple as removing the artificial restriction of having only one parameter list in the `Parser`. A pull request (#5108) from Miles Sabin already implements this change as well as an accompanying test file. The change should not affect any existing code as every Scala statement that was valid before will still be valid after the change. There will even be binary compatibility in both directions.
+The implementation of this change is as simple as removing the restriction of having only one parameter list in the `Parser`. A pull request (#5108) from Miles Sabin already implements this change as well as an accompanying test file. The change should not affect any existing code as every Scala statement that was valid before will still be valid after the change. There will even be binary compatibility in both directions.
 
 ## Drawbacks
 
