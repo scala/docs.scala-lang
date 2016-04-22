@@ -14,7 +14,7 @@ title: SIP-NN - SIP Allow multiple implicit parameter lists
 
 ## Motivation
 
-Currently, the implicit parameters of a function are limited to being placed in a single, final, parameter list of a function. This prevents later parameters from using dependant types of former ones, as this is only allowed between, but not inside a single parameter list. 
+Currently, the implicit parameters of a function are limited to being placed in a single, final, parameter list of a function. This prevents later parameters from using dependent types of former ones, as this is only allowed between, but not inside a single parameter list. 
 
 This restriction also means that if you want to explicitly specify one of the implicit parameters you have to specify all of them by hand (or write `implicitly` in place of every other parameter that should be filled by the compiler).
 
@@ -56,7 +56,7 @@ then(1)
 ## Implementation
 
 The implementation of this change is as simple as removing the restriction of having only one parameter list in the `Parser`. A pull request (#5108) from Miles Sabin already implements this change as well as an accompanying test file. The change should not affect any existing code as every Scala statement that was valid before will still be valid after the change. There will even be binary compatibility in both directions.
-The desugaring ob context and view bounds will be added on the left of the leftmost implicit parameter list to go with the general expectation from the current implementation.
+The desugaring of context and view bounds will be added on the left of the leftmost implicit parameter list to go with the general expectation from the current implementation.
 
 ## References
 
