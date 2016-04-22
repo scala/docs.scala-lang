@@ -41,7 +41,7 @@ With the proposed change of allowing multiple implicit parameter lists the examp
 {% highlight scala %}
 trait A { type B }
 
-def worksWithImplicits(implicit a: A)(b: a.B) = "pls make me work"
+def worksWithImplicits(implicit a: A)(implicit b: a.B) = "pls make me work"
 {% endhighlight %}
 
 Another benefit mentioned before would be that implicit parameters, that are expected to often be filled in manually can be put in separate lists.
@@ -49,17 +49,14 @@ Another benefit mentioned before would be that implicit parameters, that are exp
 def now(implicit a: Int, b: String) = b * a
 now(1, implicitly)
 
-def then(implicit a: Int)(b: String) = b * a
+def then(implicit a: Int)(implicit b: String) = b * a
 then(1)
 {% endhighlight %}
 
 ## Implementation
 
 The implementation of this change is as simple as removing the restriction of having only one parameter list in the `Parser`. A pull request (#5108) from Miles Sabin already implements this change as well as an accompanying test file. The change should not affect any existing code as every Scala statement that was valid before will still be valid after the change. There will even be binary compatibility in both directions.
-
-## Drawbacks
-
-The current simple implementation may not make it obvious from first glance that parameter lists coming after a implicit list are also implicit.
+The desugaring ob context and view bounds will be added on the left of the leftmost implicit parameter list to go with the general expectation from the current implementation.
 
 ## References
 
