@@ -61,5 +61,7 @@ The desugaring of context and view bounds will be added on the left of the leftm
 ## References
 
 1. [Miles' PR][1]
+2. [Travis' blogpost describing the issue a workaround][2]
 
 [1]: https://github.com/scala/scala/pull/5108 "PR#5108"
+[2]: https://meta.plasm.us/posts/2015/07/11/roll-your-own-scala/ "Metaplasm: Roll-your-own Scala"
