@@ -1,7 +1,7 @@
 ---
 layout: guides-index
 title: 도움말 및 개요
-languages: [ja, zh-cn, es, ko]
+languages: ko
 ---
 
 <div class="page-header-index">

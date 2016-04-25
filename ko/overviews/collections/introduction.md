@@ -6,115 +6,64 @@ disqus: true
 
 partof: collections
 num: 1
-languages: [ja, zh-cn, ko]
+language: ko
 ---
 
-**Martin Odersky, and Lex Spoon**
-
-In the eyes of many, the new collections framework is the most significant
-change in the Scala 2.8 release. Scala had collections before (and in fact the new
-framework is largely compatible with them). But it's only 2.8 that
-provides a common, uniform, and all-encompassing framework for
-collection types.
+**Martin Odersky, and Lex Spoon 저**<br>
+**Junbong Lee 번역**
 
 많은 사람들이 스칼라 2.8에서 가장 커다란 변화 중 하나로 새 컬렉션 프레임워크를 꼽는다.
 스칼라에는 이전에도 컬렉션 프레임워크가 있었으나 새 프레임워크는 모든 컬렉션 타입을 아울러
-통일된 형태의 프레임워크를 제공한다는 점에서 다르다(물론 새 프레임워크는 기존의 것과 대부분 호환된다).
+통일된 모습의 프레임워크를 제공한다는 점에서 다르다(물론 새 프레임워크는 기존의 것과 대부분 호환된다).
 
-Even though the additions to collections are subtle at first glance,
-the changes they can provoke in your programming style can be
-profound.
+처음에 언듯 봐서는 기존과 크게 달라진게 없어 보일지도 모르지만, 새 프레임워크는 여러분의 프로그래밍 스타일을 바꿔 놓을 수도 있다.
+여러분은 앞으로 컬렉션에 속한 각각의 요소보다는 전체 프레임워크 자체를 다룰 일이 더 많을 것이며,
+이것은 프로그램의 일부분을 컨트롤하는 고수준 작업을 하는 듯한 느낌을 받을 것이다.
+이런 새로운 프로그래밍 스타일은 약간의 적응이 필요하다. 다행스럽게도, 아래에서 설명할 새 프레임워크의 몇몇 특성들이 여러분을 쉽게 적응할 수 있게 도와 줄 것이다.
 
-In fact, quite often it is
-    as if you work on a higher-level
-    with the basic building blocks of a program
-    being whole collections
-    instead of their elements.
-
-This new style of programming requires some
-adaptation. Fortunately, the adaptation is helped by several nice
-properties of the new Scala collections. They are easy to use,
-concise, safe, fast, universal.
-
-처음 언듯 봐서는 기존과 크게 달라진게 없어 보일지도 모르지만,
-새 프레임워크는 여러분의 프로그래밍 스타일을 크게 바꿔 놓을 만큼 커다란 영향력을 갖고 있다.
-
-이런 새로운 프로그래밍 스타일은 약간의 적응이 필요하다.
-다행스럽게도, 아래에서 설명할 프레임워크의 몇몇 새로운 특성들이 여러분을 쉽게 적응할 수 있게 도와 줄 것이다.
-
-**쉬운 사용:** A small vocabulary of 20-50 methods is
-enough to solve most collection problems in a couple of operations.
-몇십개 정도의 데이터만으로 이루어진 컬렉션 문제들은 대체로 한 두 번의 조작만으로도 충분히 해결할 수 있다.
-
-No need to wrap your head around complicated looping structures or recursions.
+**쉬운 사용:** 컬렉션에 관한 대부분의 문제들은 한 두 번의 컬렉션 연산 만으로도 해결할 수 있을 것이다.
 더이상 복잡한 반복문과 재귀호출에 머리를 싸매며 괴로워 할 필요가 없어졌다.
-
-Persistent collections and side-effect-free operations mean
-that you need not worry about accidentally corrupting existing
-collections with new data.
-유지되는 컬렉션과 부수적인 작용이 없는 컬렉션 조작은
+견고하며 부수적인 작용(side-effect)이 없는 컬렉션 연산은
 여러분이 더이상 데이터 조작으로 인한 충돌에 대해 걱정을 하지 않아도 된다는 것을 의미한다.
+컬렉션의 이터레이션과 데이터를 업데이트 하는 작업은 더이상 서로 영향을 주지 않도록 설계되었다.
 
-Interference between iterators and collection updates is eliminated.
-서로간에 영향을 주는 이터레이션 및 컬렉션 업데이트가 사라졌다.
+**간결함:** 몇 번씩 루프를 돌려야만 했던 작업들도 단일 연산으로 처리할 수 있다. 새 컬렉션 프레임워크의 연산 메서드들은 간결한 함수 형태를 띄고 있으며,
+각각의 연산들이 쉽게 서로 연결될 수 있도록 만들어져 있기 때문에 여러분들은 마치 대수학 연산을 하는 것과 비슷한 느낌을 받을 것이다.
 
-**Concise:** You can achieve with a single word what used to
-take one or several loops. You can express functional operations with
-lightweight syntax and combine operations effortlessly, so that the result
-feels like a custom algebra.  
+**안전성:** 이 부분은 여러분이 좀 더 많이 경험해 보아야 알 수 있다.
+정적 타입 지향적이면서 함수형 프로그래밍 스타일인 스칼라 컬렉션은 다음과 같은 이유로 개발자로 하여금 코드의 오류를 줄일 수 있게 해줄 것이다.
+첫째로, 컬렉션 연산은 빈번히 사용되기 때문에 테스트가 용이해야 하며,
+두번째, 컬렉션 연산은 함수의 정의역 및 공역의 관계와 동일하게 어떠한 입력값에 대한 출력값이 명확하다는 것,
+그리고 이러한 명시적인 입력값과 출력값은 반드시 타입 체킹이 된다는 것이다.
+가장 흔하게 발생하는 오류 중 하나는 개발자가 타입을 잘못 선언함으로써 발생한다.
+수백 줄의 프로그램이 단 한번 만에 실행되는 것은 결코 쉬운 일이 아니다.
 
-**Safe:** This one has to be experienced to sink in. The
-statically typed and functional nature of Scala's collections means
-that the overwhelming majority of errors you might make are caught at
-compile-time. The reason is that (1) the collection operations
-themselves are heavily used and therefore well
-tested. (2) the usages of the collection operation make inputs and
-output explicit as function parameters and results. (3) These explicit
-inputs and outputs are subject to static type checking. The bottom line
-is that the large majority of misuses will manifest themselves as type
-errors. It's not at all uncommon to have programs of several hundred
-lines run at first try.
+**빠른 성능:** 스칼라 컬렉션 라이브러리의 연산들은 이미 최적화가 잘 되어 있기 때문에 대부분의 상황에서 매우 효율적으로 사용할 수 있을 것이다.
+물론 여러분은 스칼라의 컬렉션 프레임워크를 사용하지 않고 직접 만든 자료 구조와 연산으로 더 나은 성능을 낼 수 있을지도 모르지만
+그러기 위해 부차적으로 구현하거나 신경 써야 할 부분이 많다.
+또한, 스칼라 컬렉션 프레임워크는 최근 멀티코어 상에서 연산을 병렬적으로 수행하도록 개선되었다('패러럴 컬렉션'이라 함).
+패러럴 컬렉션은 모든 연산을 순차적인 컬렉션과 동일한 이름으로 제공하기 때문에
+새로운 사용 방법을 익히거나 기존에 순차적으로 작성된 코드들을 다시 작성할 핋요가 전혀 없다.
+순차적인 컬렉션에서 패러럴 컬렉션으로 변경하려면 간단히 `par` 메소드를 실행하기만 하면 된다.
 
-**Fast:** Collection operations are tuned and optimized in the
-libraries. As a result, using collections is typically quite
-efficient. You might be able to do a little bit better with carefully
-hand-tuned data structures and operations, but you might also do a lot
-worse by making some suboptimal implementation decisions along the
-way.  What's more, collections have been recently adapted to parallel
-execution on multi-cores. Parallel collections support the same
-operations as sequential ones, so no new operations need to be learned
-and no code needs to be rewritten. You can turn a sequential collection into a
-parallel one simply by invoking the `par` method.
+**통일성:** 스칼라 컬렉션은 그 타입 클래스가 제공하는 모든 연산을 동일하게 제공하기 때문에 몇 개의 적은 연산 만으로 많은 것을 할 수 있다.
+예를 들어, 문자열은 의미 그대로 문자의 시퀀스이다. 따라서 문자열 컬렉션은 모든 시퀀스 연산을 제공한다.
 
-**Universal:** Collections provide the same operations on
-any type where it makes sense to do so. So you can achieve a lot with
-a fairly small vocabulary of operations. For instance, a string is
-conceptually a sequence of characters. Consequently, in Scala
-collections, strings support all sequence operations. The same holds
-for arrays.
-
-**Example:** Here's one line of code that demonstrates many of the 
-advantages of Scala's collections.
+**예제:** 다음의 한 줄짜리 코드는 스칼라 컬렉션의 많은 특성을 보여준다.
 
     val (minors, adults) = people partition (_.age < 18)
 
-It's immediately clear what this operation does: It partitions a
-collection of `people` into `minors` and `adults` depending on
-their age. Because the `partition` method is defined in the root
-collection type `TraversableLike`, this code works for any kind of
-collection, including arrays. The resulting `minors` and `adults`
-collections will be of the same type as the `people` collection.
+이 코드는 `people` 컬렉션을 나이에 따라 `minors`와 `adults` 컬렉션으로 분리하는 연산을 수행한다.
+`partition` 메서드는 루트 컬렉션 타입인 `TraversableLike`에 정의되어 있기 때문에 이 코드는 배열을 포함한 모든 타입의 컬렉션에 적용할 수 있다.
+결과물인 `minors` 컬렉션과 `adults` 컬렉션은 원본인 `people` 컬렉션과 동일한 타입이 된다.
+코드에서 볼 수 있듯이, 스칼라 컬렉션의 연산은 매우 직관적으로 의미를 알 수 있도록 했다.
 
-This code is much more concise than the one to three loops required for
-traditional collection processing (three loops for an array, because
-the intermediate results need to be buffered somewhere else).  Once
-you have learned the basic collection vocabulary you will also find
-writing this code is much easier and safer than writing explicit
-loops. Furthermore, the `partition` operation is quite fast, and will
-get even faster on parallel collections on multi-cores.  (Parallel
-collections have been released
-as part of Scala 2.9.)
+이 코드는 한 번 내지 세 번의 루프가 필요한 기존의 컬렉션 처리보다 훨씬 간결하다.
+(배열은 중간 결과값이 어딘가에 캐싱 되어야 하기 때문에 세 번의 루프가 필요하다)
+여러분이 새 컬렉션 프레임워크의 사용법을 배우게 되면 위의 코드가 기존의 중첩된 루프를 작성하는 것 보다 훨씬 쉽고 안전하다는 것을 알게 될 것이다.
 
-This document provides an in depth discussion of the APIs of the
-Scala collections classes from a user perspective.  It takes you on
-a tour of all the fundamental classes and the methods they define.
+덧붙여서, `partition` 연산은 아주 빠르며, 멀티코어에서 실행한 '패러럴 컬렉션'에서는 그보다 더욱 빨라진다.
+('패러럴 컬렉션'은 스칼라 2.9 버전에서 릴리즈 되었다)
+
+이 문서는 사용자의 입장에서 스칼라 컬렉션 API들에 대해 깊이 있게 다룰 것이다.
+여러분은 대부분의 주요 컬렉션 클래스들 맟 클래스가 제공하는 메서드들을 둘러보게 된다.
