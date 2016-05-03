@@ -82,7 +82,7 @@ The `foreach` method is meant to traverse all elements of the collection, and ap
 |  **Subdivisions:**        |						     |
 |  `xs splitAt n`	    |Split `xs` at a position, giving the pair of collections `(xs take n, xs drop n)`.|
 |  `xs span p`	    	    |Split `xs` according to a predicate, giving the pair of collections `(xs takeWhile p, xs.dropWhile p)`.|
-|  `xs partition p`	    |Split `xs` into a pair of two collections; one with elements that satisfy the predicate `p`, the other with elements that do not, giving the pair of collections `(xs filter p, xs.filterNot p)`|
+|  `xs partition p`	    |Split `xs` into a pair of collections; one with elements that satisfy the predicate `p`, the other with elements that do not, giving the pair of collections `(xs filter p, xs.filterNot p)`|
 |  `xs groupBy f`	    |Partition `xs` into a map of collections according to a discriminator function `f`.|
 |  **Element Conditions:**  |						     |
 |  `xs forall p`	    |A boolean indicating whether the predicate `p` holds for all elements of `xs`.|
