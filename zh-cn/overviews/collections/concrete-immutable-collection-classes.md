@@ -130,16 +130,14 @@ Vector结构通常被表示成具有高分支因子的树（树或者图的分�
 [Range]表示的是一个有序的等差整数数列。比如说，“1，2，3，”就是一个Range，“5，8，11，14，”也是。在Scala中创建一个Range类，需要用到两个预定义的方法to和by。
 
     scala> 1 to 3
-    res2: scala.collection.immutable.Range.Inclusive
-      with scala.collection.immutable.Range.ByOne = Range(1, 2, 3)
+    res2: scala.collection.immutable.Range.Inclusive = Range(1, 2, 3)
     scala> 5 to 14 by 3
     res3: scala.collection.immutable.Range = Range(5, 8, 11, 14)
 
 如果您想创建一个不包含范围上限的Range类，那么用until方法代替to更为方便：
 
     scala> 1 until 3
-    res2: scala.collection.immutable.Range.Inclusive
-      with scala.collection.immutable.Range.ByOne = Range(1, 2)
+    res2: scala.collection.immutable.Range = Range(1, 2)
   
 Range类的空间复杂度是恒定的，因为只需要三个数字就可以定义一个Range类：起始、结束和步长值。也正是因为有这样的特性，对Range类多数操作都非常非常的快。
 
