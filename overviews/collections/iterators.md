@@ -13,7 +13,7 @@ An iterator is not a collection, but rather a way to access the elements of a co
 
 The most straightforward way to "step through" all the elements returned by an iterator `it` uses a while-loop:
 
-    while (it.hasNext) 
+    while (it.hasNext)
       println(it.next())
 
 Iterators in Scala also provide analogues of most of the methods that you find in the `Traversable`, `Iterable` and `Seq` classes. For instance, they provide a `foreach` method which executes a given procedure on each element returned by an iterator. Using `foreach`, the loop above could be abbreviated to:
@@ -24,7 +24,7 @@ As always, for-expressions can be used as an alternate syntax for expressions in
 
     for (elem <- it) println(elem)
 
-There's an important difference between the foreach method on iterators and the same method on traversable collections: When called on an iterator, `foreach` will leave the iterator at its end when it is done. So calling `next` again on the same iterator will fail with a `NoSuchElementException`. By contrast, when called on on a collection, `foreach` leaves the number of elements in the collection unchanged (unless the passed function adds to removes elements, but this is discouraged, because it may lead to surprising results).
+There's an important difference between the foreach method on iterators and the same method on traversable collections: When called on an iterator, `foreach` will leave the iterator at its end when it is done. So calling `next` again on the same iterator will fail with a `NoSuchElementException`. By contrast, when called on a collection, `foreach` leaves the number of elements in the collection unchanged (unless the passed function adds to removes elements, but this is discouraged, because it may lead to surprising results).
 
 The other operations that Iterator has in common with `Traversable` have the same property. For instance, iterators provide a `map` method, which returns a new iterator:
 
@@ -151,7 +151,7 @@ Sometimes you want an iterator that can "look ahead", so that you can inspect th
 
     def skipEmptyWordsNOT(it: Iterator[String]) =
       while (it.next().isEmpty) {}
-  
+
 But looking at this code more closely, it's clear that this is wrong: The code will indeed skip leading empty strings, but it will also advance `it` past the first non-empty string!
 
 The solution to this problem is to use a buffered iterator. Class [BufferedIterator](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/BufferedIterator.html) is a subclass of [Iterator](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterator.html), which provides one extra method, `head`. Calling `head` on a buffered iterator will return its first element but will not advance the iterator. Using a buffered iterator, skipping empty words can be written as follows.

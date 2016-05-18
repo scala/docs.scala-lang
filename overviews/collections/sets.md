@@ -11,7 +11,7 @@ languages: [ja, zh-cn]
 
 `Set`s are `Iterable`s that contain no duplicate elements. The operations on sets are summarized in the following table for general sets and in the table after that for mutable sets. They fall into the following categories:
 
-* **Tests** `contains`, `apply`, `subsetOf`. The `contains` method asks whether a set contains a given element. The `apply` method for a set is the same as `contains`, so `set(elem)` is the same as `set contains elem`. That means sets can also be used as test functions that return true for the elements they contain. 
+* **Tests** `contains`, `apply`, `subsetOf`. The `contains` method asks whether a set contains a given element. The `apply` method for a set is the same as `contains`, so `set(elem)` is the same as `set contains elem`. That means sets can also be used as test functions that return true for the elements they contain.
 
 For example:
 
@@ -97,7 +97,7 @@ We used `+=` and `-=` on a `var` of type `immutable.Set`. A statement such as `s
     scala> s -= 2
     res4: s.type = Set(1, 4, 3)
 
-The end effect is very similar to the previous interaction; we start with a `Set(1, 2, 3)` end end up with a `Set(1, 3, 4)`. However, even though the statements look the same as before, they do something different. `s += 4` now invokes the `+=` method on the mutable set value `s`, changing the set in place. Likewise, `s -= 2` now invokes the `-=` method on the same set.
+The end effect is very similar to the previous interaction; we start with a `Set(1, 2, 3)` and end up with a `Set(1, 3, 4)`. However, even though the statements look the same as before, they do something different. `s += 4` now invokes the `+=` method on the mutable set value `s`, changing the set in place. Likewise, `s -= 2` now invokes the `-=` method on the same set.
 
 Comparing the two interactions shows an important principle. You often can replace a mutable collection stored in a `val` by an immutable collection stored in a `var`, and _vice versa_. This works at least as long as there are no alias references to the collection through which one can observe whether it was updated in place or whether a new collection was created.
 
@@ -146,4 +146,3 @@ Sorted sets also support ranges of elements. For instance, the `range` method re
 Bitsets are sets of non-negative integer elements that are implemented in one or more words of packed bits. The internal representation of a [BitSet](http://www.scala-lang.org/api/current/scala/collection/BitSet.html) uses an array of `Long`s. The first `Long` covers elements from 0 to 63, the second from 64 to 127, and so on (Immutable bitsets of elements in the range of 0 to 127 optimize the array away and store the bits directly in a one or two `Long` fields.) For every  `Long`, each of its 64 bits is set to 1 if the corresponding element is contained in the set, and is unset otherwise. It follows that the size of a bitset depends on the largest integer that's stored in it. If `N` is that largest integer, then the size of the set is `N/64` `Long` words, or `N/8` bytes, plus a small number of extra bytes for status information.
 
 Bitsets are hence more compact than other sets if they contain many small elements. Another advantage of bitsets is that operations such as membership test with `contains`, or element addition and removal with `+=` and `-=` are all extremely efficient.
-

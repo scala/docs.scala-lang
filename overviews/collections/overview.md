@@ -69,8 +69,8 @@ versions of collections is to import just the package
 
     import scala.collection.mutable
 
-Then a word like `Set` without a prefix still refers to an an immutable collection,
-whereas `mutable.Set` refers to the mutable counterpart. 
+Then a word like `Set` without a prefix still refers to an immutable collection,
+whereas `mutable.Set` refers to the mutable counterpart.
 
 The last package in the collection hierarchy is `collection.generic`. This
 package contains building blocks for implementing
@@ -82,19 +82,19 @@ classes in `generic` only in exceptional circumstances.
 For convenience and backwards compatibility some important types have
 aliases in the `scala` package, so you can use them by their simple
 names without needing an import. An example is the `List` type, which
-can be accessed alternatively as 
+can be accessed alternatively as
 
     scala.collection.immutable.List   // that's where it is defined
     scala.List                        // via the alias in the  scala package
-    List                              // because  scala._ 
+    List                              // because  scala._
                                       // is always automatically imported
 
-Other types so aliased are 
+Other types so aliased are
 [Traversable](http://www.scala-lang.org/api/current/scala/collection/Traversable.html), [Iterable](http://www.scala-lang.org/api/current/scala/collection/Iterable.html), [Seq](http://www.scala-lang.org/api/current/scala/collection/Seq.html), [IndexedSeq](http://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html), [Iterator](http://www.scala-lang.org/api/current/scala/collection/Iterator.html), [Stream](http://www.scala-lang.org/api/current/scala/collection/immutable/Stream.html), [Vector](http://www.scala-lang.org/api/current/scala/collection/immutable/Vector.html), [StringBuilder](http://www.scala-lang.org/api/current/scala/collection/mutable/StringBuilder.html), and [Range](http://www.scala-lang.org/api/current/scala/collection/immutable/Range.html).
 
 The following figure shows all collections in package
 `scala.collection`.  These are all high-level abstract classes or traits, which
-generally have mutable as well as immutable implementations. 
+generally have mutable as well as immutable implementations.
 
 [<img src="{{ site.baseurl }}/resources/images/collections.png" width="550">]({{ site.baseurl }}/resources/images/collections.png)
 
@@ -130,7 +130,7 @@ All these collections get displayed with `toString` in the same way they are wri
 
 All collections support the API provided by `Traversable`, but specialize types wherever this makes sense. For instance the `map` method in class `Traversable` returns another `Traversable` as its result. But this result type is overridden in subclasses. For instance, calling `map` on a `List` yields again a `List`, calling it on a `Set` yields again a `Set` and so on.
 
-    scala> List(1, 2, 3) map (_ + 1) 
+    scala> List(1, 2, 3) map (_ + 1)
     res0: List[Int] = List(2, 3, 4)
     scala> Set(1, 2, 3) map (_ * 2)
     res0: Set[Int] = Set(2, 4, 6)
