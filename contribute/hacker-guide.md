@@ -100,47 +100,25 @@ If you are new to Git and branching, read the [Branching Chapter](http://git-scm
 
 The next step after cloning your fork is setting up your machine to build Scala.
 
-* It is recommended to use Java `1.6` (not `1.7` or `1.8`, because they might cause occasional glitches).
-* The build tool is `ant`. If you are behind a HTTP proxy, include [`ANT_ARGS=-autoproxy`](https://ant.apache.org/manual/proxy.html) in your environment.
-* The build runs the `pull-binary-libs.sh` script to download bootstrap libs. This requires `bash` and `curl`.
-* The majority of our team works on Linux and OS X, so these operating systems are guaranteed to work.
-* Windows is supported, but it might have issues. Please report to [the issue tracker](https://issues.scala-lang.org/) if you encounter any.
+You need the following tools:
 
-Building Scala is as easy as running `ant` in the root of your cloned repository. Be prepared to wait for a while-- a full "clean" build
+* A Java SDK. The baseline version is 6 for 2.11.x and 8 for 2.12.x. It's possible to use a later SDK for local development, but the continuous integration builds will verify against the baseline version.
+* `sbt`, an interactive build tool commonly used in Scala projects. Acquiring sbt manually is not necessary -- the recommended approach is to download the [sbt-extras runner script](https://github.com/paulp/sbt-extras/blob/master/sbt) and use it in place of `sbt`. The script will download and run the correct version of sbt when run from the Scala repository's root directory.
+* `curl` -- the build uses `curl` in the `pull-binary-libs.sh` script to download bootstrap libs.
+
+The majority of our team works on Linux and OS X, so these operating systems are guaranteed to work. Windows is supported, but it might have issues. Please report to [the issue tracker](https://issues.scala-lang.org/) if you encounter any.
+
+Building Scala is as easy as running `sbt dist/mkPack` in the root of your cloned repository. Be prepared to wait for a while -- a full "clean" build
 takes 8+ minutes depending on your machine (and up to 30 minutes on older machines with less memory). Incremental builds are usually within 30-120 seconds range (again, your mileage might vary
 with your hardware).
-
-    16:50 ~/Projects/scala (ticket/6725)$ ant
-    Buildfile: /Users/xeno_by/Projects/scala/build.xml
-
-    strap.clean:
-
-    pack.clean:
-
-    init.jars.check:
-
-    init.jars:
-         [echo] Updating bootstrap libs.  (To do this by hand, run ./pull-binary-libs.sh)
-         [exec] Resolving [943cd5c8802b2a3a64a010efb86ec19bac142e40/lib/ant/ant-contrib.jar]
-
-    ...
-
-    pack.bin:
-        [mkdir] Created dir: /Users/xeno_by/Projects/scala/build/pack/bin
-
-    pack.done:
-
-    build:
-
-    BUILD SUCCESSFUL
-    Total time: 9 minutes 41 seconds
 
 ### IDE
 
 There's no single editor of choice for working with Scala sources, as there are trade-offs associated with each available tool.
 
 Both Eclipse and IntelliJ IDEA have Scala plugins, which are known to work with our codebase.
-Both of those Scala plugins provide navigation, refactoring and error reporting functionality as well as integrated debugging.
+Both of those Scala plugins provide navigation, refactoring, error reporting functionality, and integrated debugging.
+See [the Scala README](https://github.com/scala/scala#ide-setup) for instructions on using Eclipse and IntelliJ IDEA with the Scala repository.
 
 There also exist lighter-weight editors such as Emacs, Sublime or jEdit which are faster and much less memory/compute-intensive to run, while
 lacking semantic services and debugging. To address this shortcoming, they can integrate with ENSIME,
@@ -155,8 +133,8 @@ When hacking on your topic of choice, you'll be modifying Scala, compiling it an
 Typically you would want to first make sure that your changes work on a small example and afterwards verify that nothing break
 by running a comprehensive test suite.
 
-We'll start by creating a `sandbox` directory (this particular name doesn't bear any special meaning), which will hold a single test file and its compilation results. First, let's make sure that
-[the bug](https://issues.scala-lang.org/browse/SI-6725) is indeed reproducible by putting together a simple test and compiling and running it with the Scala compiler that we built using `ant`. The Scala compiler that we just built is located in `build/pack/bin`.
+We'll start by creating a `sandbox` directory (`./sandbox is listed in the .gitignore of the Scala repository), which will hold a single test file and its compilation results. First, let's make sure that
+[the bug](https://issues.scala-lang.org/browse/SI-6725) is indeed reproducible by putting together a simple test and compiling and running it with the Scala compiler that we built using `sbt`. The Scala compiler that we just built is located in `build/pack/bin`.
 
     17:25 ~/Projects/scala (ticket/6725)$ mkdir sandbox
     17:26 ~/Projects/scala (ticket/6725)$ cd sandbox
@@ -178,31 +156,24 @@ Now, implement your bugfix or new feature!
 Here are also some tips & tricks that have proven useful in Scala development:
 
 * If after introducing changes or updating your clone, you get `AbstractMethodError` or other linkage exceptions,
-  try doing `ant clean build`. Due to the way how Scala compiles traits, if a trait changes, then it's sometimes not enough to recompile
-  just that trait, but it might also be necessary to recompile its users. The `ant` tool is not smart enough to do that, which might lead to
-  very strange errors. Full-rebuilds fix the problem. Fortunately that's rarely necessary, because full-rebuilds take a lot of time-- the same 8-30 minutes as mentioned above.
+  try doing `sbt clean`. Due to the way Scala compiles traits, if a trait changes, then it's sometimes not enough to recompile
+  just that trait; it might also be necessary to recompile its users. The `sbt` tool is not smart enough to do that, which might lead to
+  very strange errors. Full rebuilds fix the problem. Fortunately that's rarely necessary, because full rebuilds take a lot of time -- the same 8-30 minutes as mentioned above.
 * Even on solid state drives packaging Scala distribution (i.e. creating jars from class files) is a non-trivial task. To save time here,
-  some people in our team do `ant quick.comp` instead of `ant` and then create custom scripts ([here](https://github.com/adriaanm/binfu/blob/master/scafu.sh) are some examples to get you started) to launch Scala from `build/quick/classes`.
+  some people in our team do `sbt compile` instead of `sbt dist/mkPack` and then create custom scripts using `sbt/mkBin` to launch Scala from `./build/quick/bin`. Also see [the Scala README](https://github.com/scala/scala#incremental-compilation) for tips on speeding up compile times.
 * Don't underestimate the power of `print`. When starting with Scala, I spent a lot of time in the debugger trying to figure out how
   things work. However later I found out that print-based debugging is often more effective than jumping around. While it might be obvious
-  to some, I'd like to explicitly mention that it's also useful to print stack traces to understand the flow of execution. When working with `Trees`, you might want to use `showRaw` to get the `AST` representation.
-* You can publish your newly-built scala version locally to use it from sbt. Here's how:
+  to some, I'd like to explicitly mention that it's also useful to print stack traces to understand the flow of execution. When working with `Trees`, you might want to use the Scala  `showRaw` to get the `AST` representation.
+* You can publish your newly-built scala version locally using `sbt publishLocal` to use it from `sbt`. Here's how:
 
-         $ ant publish-local-opt -Dmaven.version.suffix="-test"
+         $ sbt publishLocal // This may take a while
+         ...
          $ sbt
-         [info] Set current project to test (in build file:/Users/georgii/workspace/test/)
-         > set resolvers += Resolver.mavenLocal
-         [info] Defining *:resolvers
-         [info] The new value will be used by *:externalResolvers
-         [info] Reapplying settings...
-         [info] Set current project to test (in build file:/Users/georgii/workspace/test/)
-         > ++2.12.0-test
-         [info] Setting version to 2.12.0-test
-         [info] Set current project to test (in build file:/Users/georgii/workspace/test/)
+         ...
          > console
          [info] Starting scala interpreter...
-         [info]
-         Welcome to Scala version 2.12.0-20140623-155543-8bdacad317 (Java HotSpot(TM) 64-Bit Server VM, Java 1.7.0_51).
+         [info] 
+         Welcome to Scala version 2.10.6 (OpenJDK 64-Bit Server VM, Java 1.8.0_91).
          Type in expressions to have them evaluated.
          Type :help for more information.
 
@@ -212,7 +183,7 @@ Here are also some tips & tricks that have proven useful in Scala development:
 
 ### Documentation
 
-There are several areas that one could contribute to-- there is the Scala library, the Scala compiler, and other tools such as Scaladoc. Each area has varying amounts of documentation.
+There are several areas that one could contribute to -- there is the Scala library, the Scala compiler, and other tools such as Scaladoc. Each area has varying amounts of documentation.
 
 ##### The Scala Library
 
@@ -263,22 +234,12 @@ but not tokens like `%n`. Looks like an easy fix.
                  start = idx + 1
                }
 
-After applying the fix and running `ant`, our simple test case in `sandbox/Test.scala` started working!
+After applying the fix and running `sbt compile`, our simple test case in `sandbox/Test.scala` started working!
 
     18:51 ~/Projects/scala/sandbox (ticket/6725)$ cd ..
-    18:51 ~/Projects/scala (ticket/6725)$ ant
-    Buildfile: /Users/xeno_by/Projects/scala/build.xml
-
+    18:51 ~/Projects/scala (ticket/6725)$ sbt compile
     ...
-
-    quick.comp:
-    [scalacfork] Compiling 1 file to /Users/xeno_by/Projects/scala/build/quick/classes/compiler
-    [propertyfile] Updating property file: /Users/xeno_by/Projects/scala/build/quick/classes/compiler/compiler.properties
-    [stopwatch] [quick.comp.timer: 6.588 sec]
-
-    ...
-
-    BUILD SUCCESSFUL
+    [success] Total time: 18 s, completed Jun 6, 2016 9:03:02 PM
     Total time: 18 seconds
 
     18:51 ~/Projects/scala (ticket/6725)$ cd sandbox
@@ -332,15 +293,7 @@ Here are some more testing tips:
            [mima]     }
            [mima]
 
-         BUILD FAILED
-         /localhome/jenkins/c/workspace/pr-scala-test/scala/build.xml:1530: The following error occurred while executing this line:
-         /localhome/jenkins/c/workspace/pr-scala-test/scala/build-ant-macros.xml:791: The following error occurred while executing this line:
-         /localhome/jenkins/c/workspace/pr-scala-test/scala/build-ant-macros.xml:773: Java returned: 2
-
-         Total time: 6 minutes 46 seconds
-         Build step 'Execute shell' marked build as failure
-         Archiving artifacts
-         Notifying upstream projects of job completion
+         ...
          Finished: FAILURE
 
 This means your change is backward or forward binary incompatible with the specified version (the check is performed by the [migration manager](https://github.com/typesafehub/migration-manager)). The error message is actually saying what you need to add to `bincompat-backward.whitelist.conf` or `bincompat-forward.whitelist.conf` to make the error go away. If you are getting this on an internal/experimental api, it should be safe to add suggested sections to the config. Otherwise, you might want to target a newer version of scala for this change.
@@ -349,7 +302,7 @@ This means your change is backward or forward binary incompatible with the speci
 
 Now to make sure that my fix doesn't break anything I need to run the test suite using the `partest` tool we wrote to test Scala.
 Read up [the partest guide](partest-guide.html) to learn the details about partest, but in a nutshell you can either
-run `ant test` to go through the entire test suite (30+ minutes) or use wildcards to limit the tests to something manageable:
+run `sbt test` to go through the entire test suite (30+ minutes) or use wildcards to limit the tests to something manageable:
 
     18:52 ~/Projects/scala/sandbox (ticket/6725)$ cd ../test
     18:56 ~/Projects/scala/test (ticket/6725)$ partest files/run/*interpol*
