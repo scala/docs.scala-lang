@@ -106,10 +106,10 @@ You need the following tools:
 * `sbt`, an interactive build tool commonly used in Scala projects. Acquiring sbt manually is not necessary -- the recommended approach is to download the [sbt-extras runner script](https://github.com/paulp/sbt-extras/blob/master/sbt) and use it in place of `sbt`. The script will download and run the correct version of sbt when run from the Scala repository's root directory.
 * `curl` -- the build uses `curl` in the `pull-binary-libs.sh` script to download bootstrap libs.
 
-The majority of our team works on Linux and OS X, so these operating systems are guaranteed to work. Windows is supported, but it might have issues. Please report to [the issue tracker](https://issues.scala-lang.org/) if you encounter any.
+OS X and Linux builds should work. Windows is supported, but it might have issues. Please report to [the issue tracker](https://issues.scala-lang.org/) if you encounter any.
 
 Building Scala is as easy as running `sbt dist/mkPack` in the root of your cloned repository. Be prepared to wait for a while -- a full "clean" build
-takes 8+ minutes depending on your machine (and up to 30 minutes on older machines with less memory). Incremental builds are usually within 30-120 seconds range (again, your mileage might vary
+takes 5+ minutes depending on your machine (longer on older machines with less memory). Incremental builds are usually within 20-120 seconds range (again, your mileage might vary
 with your hardware).
 
 ### IDE
@@ -155,12 +155,8 @@ Now, implement your bugfix or new feature!
 
 Here are also some tips & tricks that have proven useful in Scala development:
 
-* If after introducing changes or updating your clone, you get `AbstractMethodError` or other linkage exceptions,
-  try doing `sbt clean`. Due to the way Scala compiles traits, if a trait changes, then it's sometimes not enough to recompile
-  just that trait; it might also be necessary to recompile its users. The `sbt` tool is not smart enough to do that, which might lead to
-  very strange errors. Full rebuilds fix the problem. Fortunately that's rarely necessary, because full rebuilds take a lot of time -- the same 8-30 minutes as mentioned above.
-* Even on solid state drives packaging Scala distribution (i.e. creating jars from class files) is a non-trivial task. To save time here,
-  some people in our team do `sbt compile` instead of `sbt dist/mkPack` and then create custom scripts using `sbt/mkBin` to launch Scala from `./build/quick/bin`. Also see [the Scala README](https://github.com/scala/scala#incremental-compilation) for tips on speeding up compile times.
+* Even on solid state drives packaging Scala distribution (i.e. creating jars from class files) is a non-trivial task. To save time here, some people in our team do `sbt compile` instead of `sbt dist/mkPack` and then create custom scripts using `sbt/mkBin` to launch Scala from `./build/quick/bin/`. Also see [the Scala README](https://github.com/scala/scala#incremental-compilation) for tips on speeding up compile times.
+* If after introducing changes or updating your clone, you get `AbstractMethodError` or other linkage exceptions, try doing `sbt clean` and building again.
 * Don't underestimate the power of `print`. When starting with Scala, I spent a lot of time in the debugger trying to figure out how
   things work. However later I found out that print-based debugging is often more effective than jumping around. While it might be obvious
   to some, I'd like to explicitly mention that it's also useful to print stack traces to understand the flow of execution. When working with `Trees`, you might want to use the Scala  `showRaw` to get the `AST` representation.
@@ -300,9 +296,9 @@ This means your change is backward or forward binary incompatible with the speci
 
 ### Verify
 
-Now to make sure that my fix doesn't break anything I need to run the test suite using the `partest` tool we wrote to test Scala.
-Read up [the partest guide](partest-guide.html) to learn the details about partest, but in a nutshell you can either
-run `sbt test` to go through the entire test suite (30+ minutes) or use wildcards to limit the tests to something manageable:
+Now to make sure that my fix doesn't break anything I need to run the test suite. The Scala test suite uses [JUnit](http://junit.org/junit4/) and [partest](partest-guide.html), a tool we wrote for testing Scala.
+Run `sbt test` and `sbt partest` to run all of the JUnit and partest tests, respectively.
+`partest` (not `sbt partest`) also allows you to run a subset of the tests using wildcards:
 
     18:52 ~/Projects/scala/sandbox (ticket/6725)$ cd ../test
     18:56 ~/Projects/scala/test (ticket/6725)$ partest files/run/*interpol*
