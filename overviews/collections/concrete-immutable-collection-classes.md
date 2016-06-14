@@ -133,16 +133,14 @@ Note that `dequeue` returns a pair consisting of the element removed and the res
 A [Range](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Range.html) is an ordered sequence of integers that are equally spaced apart. For example, "1, 2, 3," is a range, as is "5, 8, 11, 14." To create a range in Scala, use the predefined methods `to` and `by`.
 
     scala> 1 to 3
-    res2: scala.collection.immutable.Range.Inclusive
-      with scala.collection.immutable.Range.ByOne = Range(1, 2, 3)
+    res2: scala.collection.immutable.Range.Inclusive = Range(1, 2, 3)
     scala> 5 to 14 by 3
     res3: scala.collection.immutable.Range = Range(5, 8, 11, 14)
 
 If you want to create a range that is exclusive of its upper limit, then use the convenience method `until` instead of `to`:
 
     scala> 1 until 3
-    res2: scala.collection.immutable.Range.Inclusive
-      with scala.collection.immutable.Range.ByOne = Range(1, 2)
+    res2: scala.collection.immutable.Range = Range(1, 2)
 
 Ranges are represented in constant space, because they can be defined by just three numbers: their start, their end, and the stepping value. Because of this representation, most operations on ranges are extremely fast.
 

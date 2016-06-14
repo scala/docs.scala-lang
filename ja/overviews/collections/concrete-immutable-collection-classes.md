@@ -134,16 +134,14 @@ first in first out) だ。
 範囲 ([`Range`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Range.html)) は順序付けされた等間隔の整数の列だ。例えば、「1、2、3」は範囲であり、「5、8、11、14」も範囲だ。Scala で範囲を作成するには、予め定義された `to` メソッドと `by` メソッドを使う。
 
     scala> 1 to 3
-    res2: scala.collection.immutable.Range.Inclusive
-      with scala.collection.immutable.Range.ByOne = Range(1, 2, 3)
+    res2: scala.collection.immutable.Range.Inclusive = Range(1, 2, 3)
     scala> 5 to 14 by 3
     res3: scala.collection.immutable.Range = Range(5, 8, 11, 14)
 
 上限を含まない範囲を作成したい場合は、`to` の代わりに、便宜上用意された `until` メソッドを使う:
 
     scala> 1 until 3
-    res2: scala.collection.immutable.Range.Inclusive
-      with scala.collection.immutable.Range.ByOne = Range(1, 2)
+    res2: scala.collection.immutable.Range = Range(1, 2)
 
 範囲は、開始値、終了値、ステップ値という、たった三つの数で定義できため定数空間で表すことができる。そのため、範囲の多くの演算は非常に高速だ。
 

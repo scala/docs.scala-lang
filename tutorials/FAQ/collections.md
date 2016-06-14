@@ -229,7 +229,6 @@ it. Also available are some traits with further refinements, such as
 
 			* `immutable.Range` -- A delimited sequence of integers, closed on the lower end, open on the high end, and with a step.
 				* `immutable.Range.Inclusive` -- A `Range` closed on the high end as well.
-				* `immutable.Range.ByOne` -- A `Range` whose step is 1.
 			* `immutable.NumericRange` -- A more generic version of `Range` which works with any `Integral`.
 				* `immutable.NumericRange.Inclusive`, `immutable.NumericRange.Exclusive`.
 				* `immutable.WrappedString`, `immutable.RichString` -- Wrappers which enables seeing a `String` as a `Seq[Char]`, while still preserving the `String` methods. I'm not sure what the difference between them is.
