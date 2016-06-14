@@ -160,20 +160,26 @@ Here are also some tips & tricks that have proven useful in Scala development:
 * Don't underestimate the power of `print`. When starting with Scala, I spent a lot of time in the debugger trying to figure out how
   things work. However later I found out that print-based debugging is often more effective than jumping around. While it might be obvious
   to some, I'd like to explicitly mention that it's also useful to print stack traces to understand the flow of execution. When working with `Trees`, you might want to use the Scala  `showRaw` to get the `AST` representation.
-* You can publish your newly-built scala version locally using `sbt publishLocal` to use it from `sbt`. Here's how:
+* You can publish your newly-built scala version locally using `sbt publishLocal`. Then, you can invoke a REPL using your version:
 
          $ sbt publishLocal // This may take a while
          ...
          $ sbt
          ...
-         > console
-         [info] Starting scala interpreter...
-         [info] 
-         Welcome to Scala version 2.10.6 (OpenJDK 64-Bit Server VM, Java 1.8.0_91).
-         Type in expressions to have them evaluated.
-         Type :help for more information.
+         > scala
+         [info] Running scala.tools.nsc.MainGenericRunner -usejavacp
+         Welcome to Scala 2.12.0-20160613-195040-cd85531 (OpenJDK 64-Bit Server VM, Java 1.8.0_91).
+         Type in expressions for evaluation. Or try :help.
+         
+         scala> 
 
-         scala>
+Alternatively, you can invoke a REPL using the bash script in `./build/quick/bin/`:
+
+         $ ./build/quick/bin/scala
+         Welcome to Scala 2.12.0-20160613-195040-cd85531 (OpenJDK 64-Bit Server VM, Java 1.8.0_91).
+         Type in expressions for evaluation. Or try :help.
+         
+         scala> 
 
 * Adding a macro to the `Predef` object is a pretty involved task. Due to bootstrapping, you cannot just throw a macro into it. For this reason, the process is more involved. You might want to follow the way `StringContext.f` itself is added. In short, you need to define your macro under `src/compiler/scala/tools/reflect/` and provide no implementation in `Predef` (`def fn = macro ???`). Now you have to set up the wiring. Add the name of your macro to `src/reflect/scala/reflect/internal/StdNames.scala`, add the needed links to it to `src/reflect/scala/reflect/internal/Definitions.scala`, and finally specify the bindings in `src/compiler/scala/tools/reflect/FastTrack.scala`. [Here's](https://github.com/folone/scala/commit/59536ea833ca16c985339727baed5d70e577b0fe) an example of adding a macro.
 
