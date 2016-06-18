@@ -59,9 +59,8 @@ Scala adds direct support for this:
     // overriding both
     val m3 = new HashMap[String,Int](20,0.8f)
 
-    // override only the loadFactory via
+    // override only the loadFactor via
     // named arguments
     val m4 = new HashMap[String,Int](loadFactor = 0.8f)
 
 Note how we can take advantage of *any* default value by using [named parameters]({{ site.baseurl }}/tutorials/tour/named-parameters.html).
-
