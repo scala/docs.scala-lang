@@ -86,7 +86,7 @@ can be accessed alternatively as
 
     scala.collection.immutable.List   // that's where it is defined
     scala.List                        // via the alias in the scala package
-    List                              // because  scala._
+    List                              // because scala._
                                       // is always automatically imported
 
 Other types aliased are
