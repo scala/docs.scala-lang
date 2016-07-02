@@ -9,7 +9,7 @@ num: 33
 tutorial-previous: default-parameter-values
 ---
 
-When calling methods and functions, you can use the name of the variables expliclty in the call, like so:
+When calling methods and functions, you can use the name of the variables explicitly in the call, like so:
 
       def printName(first:String, last:String) = {
         println(first + " " + last)
