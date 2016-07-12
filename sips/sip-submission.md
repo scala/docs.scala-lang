@@ -207,7 +207,7 @@ The current process lead is:
 
 ### Reviewers
 
-The Process Lead assigns every proposal to a member of the committee, which
+The Process Lead assigns every proposal to a member of the committee, who
 becomes the reviewer. The main tasks of the reviewer are the following:
 
 1. Discuss unclear points with the authors,
