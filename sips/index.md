@@ -29,6 +29,18 @@ associated changes to the Scala language or compiler.
 
 ## SIPs
 
+A **SIP** (_Scala Improvement Process_) is a process for submitting changes to
+the Scala language. Its main motivation is to become the primary mechanism to
+propose, discuss and implement language changes. In this process, all changes to
+the language go through design documents, called Scala Improvement Proposals
+(SIPs), which are openly discussed by a committee and only upon reaching a
+consensus are accepted to be merged into the Scala compiler.
+
+The aim of the Scala Improvement Process is to apply the openness and
+collaboration that have shaped Scala's documentation and implementation to the
+process of evolving the language. This document captures our guidelines,
+commitments and expectations regarding this process.
+
 SIPs are for changes to the Scala language and/or compiler and are subject to a
 [rigorous review process](./sip-submission.html) and are usually accompanied by
 changes to the [Scala language specification](http://www.scala-lang.org/files/archive/spec/2.11/),
@@ -37,4 +49,3 @@ the [scala-internals](https://groups.google.com/forum/#!forum/scala-internals) m
 and voting/approval milestones. Please read
 [Submitting a SIP](./sip-submission.html) and our [SIP tutorial](./sip-tutorial.html) for
 more information.
-
