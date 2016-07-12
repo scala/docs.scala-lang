@@ -191,15 +191,19 @@ Lead based on their expertise and implication in the community.
 
 The current committee members are:
 
-- Martin Odersky (EPFL)
-- Adriaan Moors (Lightbend)
-- Erik Osheim (independent)
-- Heather Miller (Scala Center)
-- Seth Tisue (Lightbend)
-- Sebastien Doeraene (EPFL)
-- Eugene Burmako (EPFL)
-- Andrew Marki (independent)
-- Josh Suereth (Google)
+- Martin Odersky ([@odersky](https://github.com/odersky)), EPFL
+- Adriaan Moors ([@adriaanm](https://github.com/adriaanm)), Lightbend
+- Erik Osheim ([@non](https://github.com/non)), independent
+- Heather Miller ([@heathermiller](https://github.com/heathermiller)), Scala Center
+- Seth Tisue ([@SethTisue](https://github.com/SethTisue)), Lightbend
+- Sébastien Doeraene ([@sjrd](https://github.com/sjrd)), EPFL
+- Eugene Burmako ([@xeno-by](https://github.com/xeno-by)), EPFL
+- Andrew Marki ([@som-snytt](https://github.com/som-snytt)), independent
+- Josh Suereth ([@jsuereth](https://github.com/jsuereth)), Google
+
+The current process lead is:
+
+- Jorge Vicente Cantero ([@jvican](https://github.com/jvican)), Scala Center
 
 ### Reviewers
 
