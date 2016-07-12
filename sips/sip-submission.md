@@ -76,16 +76,18 @@ a SIP or needs more work.
 ### Submission
 
 After receiving the green light from the Process Lead, you can write up your
-idea and submit it as a SIP. It ought to contain a clear specification of the
-proposed changes. When such changes significantly alter the compiler internals,
-the author is invited to provide a proof of concept. Delivering a basic
-implementation can speed up the process dramatically. Even compiler hackers find
-very difficult to predict the interaction between the design and the
-implementation, so the sooner we have an evidence of a working prototype that
-interacts with all the features in Scala, the better. Otherwise, committee
-members may feel that the proposed changes are impossible and automatically
-dismiss them. If your changes are big or somewhat controversial, don’t let
-people hypothesize about them and show results upfront.
+idea and submit it as a SIP.
+
+A SIP is a Markdown document written in conformance with the [process template](https://github.com/scala/slip/blob/master/slip-template.md).
+It ought to contain a clear specification of the proposed changes. When such
+changes significantly alter the compiler internals, the author is invited to
+provide a proof of concept. Delivering a basic implementation can speed up the
+process dramatically. Even compiler hackers find very difficult to predict the
+interaction between the design and the implementation, so the sooner we have an
+evidence of a working prototype that interacts with all the features in Scala,
+the better. Otherwise, committee members may feel that the proposed changes are
+impossible and automatically dismiss them. If your changes are big or somewhat
+controversial, don’t let people hypothesize about them and show results upfront.
 
 A SIP is submitted as a pull request against [the official Scala website
 repo](https://github.com/scala/scala.github.com). Within a week of receiving the
