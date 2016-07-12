@@ -53,7 +53,7 @@ There are four major steps in the SIP process:
 
 Before submitting a SIP, it is required that you perform necessary preparations:
 
-1. Discuss your idea on the Scala mailing lists (currently, we suggest
+Discuss your idea on the Scala mailing lists (currently, we suggest
 cross-posting on
 [scala-sips](https://groups.google.com/forum/#!forum/scala-sips),
 [scala-debate](https://groups.google.com/forum/#!forum/scala-debate), and
