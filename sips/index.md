@@ -38,10 +38,8 @@ consensus are accepted to be merged into the Scala compiler.
 
 The aim of the Scala Improvement Process is to apply the openness and
 collaboration that have shaped Scala's documentation and implementation to the
-process of evolving the language. This document captures our guidelines,
-commitments and expectations regarding this process.
-
-SIPs are for changes to the Scala language and/or compiler and are subject to a
+process of evolving the language. SIPs are for changes to the Scala
+language and/or compiler and are subject to a
 [rigorous review process](./sip-submission.html) and are usually accompanied by
 changes to the [Scala language specification](http://www.scala-lang.org/files/archive/spec/2.11/),
 lots of review and discussion on
