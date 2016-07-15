@@ -1,3 +1,8 @@
+---
+layout: sip-landing
+title: SIP Meeting Minutes - 13th July 2016
+---
+
 # Minutes
 
 The following agenda was distributed to attendees:
@@ -7,7 +12,7 @@ The following agenda was distributed to attendees:
 | [Discussion of the new SIP process](http://docs.scala-lang.org/sips/sip-submission.html) | Jorge Vicente Cantero |
 | [SIP 25 - Trait parameters](http://docs.scala-lang.org/sips/pending/trait-parameters.html) | Adriaan Moors |
 | [SIP 26 - Unsigned Integer Data Types](https://github.com/scala/slip/pull/30) | Martin Odersky |
-| [SIP 22 - Async](http://docs.scala-lang.org/sips/pending/async.htmlhttp://docs.scala-lang.org/sips/pending/async.html) | Eugene Burmako |
+| [SIP 22 - Async](http://docs.scala-lang.org/sips/pending/async.html) | Eugene Burmako |
 | [SIP 20 - Improved lazy val initialization](http://docs.scala-lang.org/sips/pending/improved-lazy-val-initialization.html) | Sébastien Doeraene |
 | [Trailing commas SIP](https://github.com/scala/scala.github.com/pull/533) | Eugene Burmako |
   
