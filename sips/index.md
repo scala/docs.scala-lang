@@ -50,4 +50,4 @@ more information.
 
 ## Minutes
 
-* [SIP Meeting July 13th](./minutes/_posts/2016-07-15-sip-minutes.md)
+* [SIP Meeting July 13th](https://www.scala-lang.org/minutes/sip-minutes.md)(http://www.scala-lang.org/sid/2)
