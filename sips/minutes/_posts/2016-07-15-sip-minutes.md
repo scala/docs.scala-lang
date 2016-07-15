@@ -55,13 +55,17 @@ Attendees Present:
 * Eugene Burmako ([@xeno-by](github.com/xeno-by)), EPFL
 * Andrew Marki ([@som-snytt](github.com/som-snytt)), independent
 * Josh Suereth ([@jsuereth](github.com/jsuereth)), Google
+* Dmitry Petrashko ([@DarkDimius](github.com/DarkDimius)), as a guest
 * Jorge Vicente Cantero ([@jvican](github.com/jvican)), Process Lead
+
+## Guests
+* Dmitry Petrashko ([@DarkDimius](github.com/DarkDimius)), EPFL (guest)
 
 ## Proceedings
 ### Opening Remarks
 As acting Process Lead, Jorge Vicente Cantero conducted the meeting, made the
 opening remarks, and introduced the guest Dmitry, who was present to help
-discuss his proposal for an improved lazy val initialization (SIP-20).
+discuss the proposal for an improved lazy val initialization (SIP-20).
   
 ### Scala Improvement Proposals
 #### Proposal SIP-25: Trait Parameters proposed by Martin Odersky
@@ -131,17 +135,17 @@ be resolved before resuming its evaluation.
 revisit the support of async/await in try/catch blocks. When that's considered,
 this SIP should be reopened and and it should see another round of discussion.
 
-#### Proposal SIP-20: Improved lazy val initialization by Dmitry Petrashko
-Sebastien reviews the SIP and asks Dmitry, present in the meeting, to correct
+#### Proposal SIP-20: Improved lazy val initialization presented
+Sébastien reviews the SIP and asks Dmitry, present in the meeting, to correct
 him if he's wrong. He agrees that the SIP is desirable but he's unsure about the
 benchmarks and which of the proposals is faster. Dmitry explains that the
-benchmarks are in the repo, and that in the best case the initialization doesn’t
-need synchronization.
+benchmarks are in the repository. Sébastien also points out that there's an
+implementation missing for scalac, and recommends the author to include more
+documentation..
   
-He also recommends the author to include more documentation.
-  
-**Outcome**: Dmitry volunteers to provide an implementation in three months. The
-Process Lead schedules the next iteration by October 2016.
+**Outcome**: For the next itearation, the reviewer suggests that the SIP should
+have an updated specification, implementation and benchmarks. The Process Lead
+schedules the next iteration by October 2016.
 
 #### Proposal SIP-27: Trailing Commas
 Eugene Burmako, who also reviewed this recently submitted SIP, explains what the
