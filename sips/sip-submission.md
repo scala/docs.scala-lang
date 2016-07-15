@@ -135,9 +135,11 @@ Based on the feedback, the SIP is either:
 1. Accepted, in which case the committee will propose a release date to the
 compiler maintainers, where the role of the committee ends.
 2. Rejected, in which case the SIP is closed and no longer evaluated in the future.
-3. Postponed, in which case the reviewer responds to the committee’s feedback in
-the SIP issue tracker, and the SIP is scheduled for a follow-up discussion
-during the next SIP meeting.
+3. Postponed, in which case the committee sets aside the SIP under some conditions.
+When those conditions are met, the SIP can be resubmitted.
+4. Under revision, in which case the author needs to continue the formal evaluation
+and address all the committee's feedback. Thus, the follow-up discussion is scheduled
+for the next iteration.
 
 If no changes have been made to a SIP in two iterations, it’s marked as dormant
 and both the PR and issue are closed. Dormant SIPs can be reopened by any
