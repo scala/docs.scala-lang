@@ -43,7 +43,7 @@ blackbox マクロと whitebox マクロの両方とも大切なことは認識�
 
 ## 区別の成文化
 
-まずは 2.11 リリースにおいて、def マクロのシグネチャにおいて blackbox マクロと whitebox マクロを区別して、マクロによって `scalac` が振る舞いを変えられることにすることで標準化への初手とする。これは準備段階の一手で、blackbox も witebox も Scala 2.11 では実験的機能扱いのままだ。
+まずは 2.11 リリースにおいて、def マクロのシグネチャにおいて blackbox マクロと whitebox マクロを区別して、マクロによって `scalac` が振る舞いを変えられることにすることで標準化への初手とする。これは準備段階の一手で、blackbox も whitebox も Scala 2.11 では実験的機能扱いのままだ。
 
 この区別は `scala.reflect.macros.Context` を `scala.reflect.macros.blackbox.Context` と `scala.reflect.macros.whitebox.Context` によって置き換えることで表現する。もしマクロの実装が第一引数として `blackbox.Context` を受け取る定義ならば、それを使う def マクロは blackbox となり、 `whitebox.Context` の方も同様となる。当然のことながら互換性のために素の `Context` も方も存在し続けることになるけども、廃止勧告を出すことで blackbox か whitebox かを選ぶことを推奨していく方向となる。
 
