@@ -85,11 +85,11 @@ names without needing an import. An example is the `List` type, which
 can be accessed alternatively as
 
     scala.collection.immutable.List   // that's where it is defined
-    scala.List                        // via the alias in the  scala package
-    List                              // because  scala._
+    scala.List                        // via the alias in the scala package
+    List                              // because scala._
                                       // is always automatically imported
 
-Other types so aliased are
+Other types aliased are
 [Traversable](http://www.scala-lang.org/api/current/scala/collection/Traversable.html), [Iterable](http://www.scala-lang.org/api/current/scala/collection/Iterable.html), [Seq](http://www.scala-lang.org/api/current/scala/collection/Seq.html), [IndexedSeq](http://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html), [Iterator](http://www.scala-lang.org/api/current/scala/collection/Iterator.html), [Stream](http://www.scala-lang.org/api/current/scala/collection/immutable/Stream.html), [Vector](http://www.scala-lang.org/api/current/scala/collection/immutable/Vector.html), [StringBuilder](http://www.scala-lang.org/api/current/scala/collection/mutable/StringBuilder.html), and [Range](http://www.scala-lang.org/api/current/scala/collection/immutable/Range.html).
 
 The following figure shows all collections in package
