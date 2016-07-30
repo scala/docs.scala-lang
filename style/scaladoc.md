@@ -34,9 +34,10 @@ is a simple, short description, this format can be used:
     /** Does something very simple */
     def simple = {}
 
-Note, especially for those coming from Java, that the left-hand margin
-of asterisks falls under the \_third\_ column, not the second, as is
-customary in Java.
+Note that, in contrast to the Javadoc convention, the text begins
+on the first line of the comment but that subsequent text remains aligned.
+In particular, text is aligned on a multiple of two columns,
+since Scala source is usually indented by two columns.
 
 See the
 [AuthorDocs](https://wiki.scala-lang.org/display/SW/Writing+Documentation)
