@@ -51,13 +51,26 @@ Another example is the `dropWhile` method, which can be used to find the first e
     scala> it.next()
     res5: java.lang.String = number
 
-Note again that `it` has changed by the call to `dropWhile`: it now points to the second word "number" in the list. In fact, `it` and the result `res4` returned by `dropWhile` will return exactly the same sequence of elements.
+Note again that `it` was changed by the call to `dropWhile`: it now points to the second word "number" in the list.
+In fact, `it` and the result `res4` returned by `dropWhile` will return exactly the same sequence of elements.
 
-There is only one standard operation which allows to re-use the same iterator: The call
+One way to circumvent this behavior is to `duplicate` the underlying iterator instead of calling methods on it directly.
+The _two_ iterators that result will each return exactly the same elements as the underlying iterator `it`:
 
-    val (it1, it2) = it.duplicate
+    scala> val (words, ns) = Iterator("a", "number", "of", "words").duplicate
+    words: Iterator[String] = non-empty iterator
+    ns: Iterator[String] = non-empty iterator
 
-gives you _two_ iterators which each return exactly the same elements as the iterator `it`. The two iterators work independently; advancing one does not affect the other. By contrast the original iterator `it` is advanced to its end by `duplicate` and is thus rendered unusable.
+    scala> val shorts = words.filter(_.length < 3).toList
+    shorts: List[String] = List(a, of)
+
+    scala> val count = ns.map(_.length).sum
+    count: Int = 14
+
+The two iterators work independently: advancing one does not affect the other, so that each can be
+destructively modified by invoking arbitrary methods. This creates the illusion of iterating over
+the elements twice, but the effect is achieved through internal buffering.
+As usual, the underlying iterator `it` cannot be used directly and must be discarded.
 
 In summary, iterators behave like collections _if one never accesses an iterator again after invoking a method on it_. The Scala collection libraries make this explicit with an abstraction [TraversableOnce](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/TraversableOnce.html), which is a common superclass of [Traversable](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Traversable.html) and [Iterator](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterator.html). As the name implies, `TraversableOnce` objects can be traversed using `foreach` but the state of that object after the traversal is not specified. If the `TraversableOnce` object is in fact an `Iterator`, it will be at its end after the traversal, but if it is a `Traversable`, it will still exist as before. A common use case of `TraversableOnce` is as an argument type for methods that can take either an iterator or a traversable as argument. An example is the appending method `++` in class `Traversable`. It takes a `TraversableOnce` parameter, so you can append elements coming from either an iterator or a traversable collection.
 
@@ -115,16 +128,15 @@ All operations on iterators are summarized below.
 |  `it withFilter p`        | Same as `it` filter `p`. Needed so that iterators can be used in for-expressions. |
 |  `it filterNot p`         | An iterator returning all elements from `it` that do not satisfy the condition `p`. |
 |  **Subdivisions:**        |						         |
-|  `it partition p`         | Splits `it` into a pair of two iterators; one returning all elements from `it` that satisfy the predicate `p`, the other returning all elements from `it` that do not. |
+|  `it partition p`         | Splits `it` into a pair of two iterators: one returning all elements from `it` that satisfy the predicate `p`, the other returning all elements from `it` that do not. |
+|  `it span p`              | Splits `it` into a pair of two iterators: one returning all elements of the prefix of `it` that satisfy the predicate `p`, the other returning all remaining elements of `it`. |
 |  **Element Conditions:**  |						         |
 |  `it forall p`            | A boolean indicating whether the predicate p holds for all elements returned by `it`. |
 |  `it exists p`            | A boolean indicating whether the predicate p holds for some element in `it`. |
 |  `it count p`             | The number of elements in `it` that satisfy the predicate `p`. |
 |  **Folds:**               |						         |
-|  `(z /: it)(op)`          | Apply binary operation `op` between successive elements returned by `it`, going left to right and starting with `z`. |
-|  `(it :\ z)(op)`          | Apply binary operation `op` between successive elements returned by `it`, going right to left and starting with `z`. |
-|  `it.foldLeft(z)(op)`     | Same as `(z /: it)(op)`. |
-|  `it.foldRight(z)(op)`    | Same as `(it :\ z)(op)`. |
+|  `it.foldLeft(z)(op)`     | Apply binary operation `op` between successive elements returned by `it`, going left to right and starting with `z`. |
+|  `it.foldRight(z)(op)`    | Apply binary operation `op` between successive elements returned by `it`, going right to left and starting with `z`. |
 |  `it reduceLeft op`       | Apply binary operation `op` between successive elements returned by non-empty iterator `it`, going left to right. |
 |  `it reduceRight op`      | Apply binary operation `op` between successive elements returned by non-empty iterator `it`, going right to left. |
 |  **Specific Folds:**      |						         |
@@ -164,13 +176,40 @@ Every iterator can be converted to a buffered iterator by calling its `buffered`
     scala> val it = Iterator(1, 2, 3, 4)
     it: Iterator[Int] = non-empty iterator
     scala> val bit = it.buffered
-    bit: java.lang.Object with scala.collection.
-      BufferedIterator[Int] = non-empty iterator
+    bit: scala.collection.BufferedIterator[Int] = non-empty iterator
     scala> bit.head
     res10: Int = 1
     scala> bit.next()
     res11: Int = 1
     scala> bit.next()
-    res11: Int = 2
+    res12: Int = 2
+    scala> bit.optionHead
+    res13: Option[Int] = Some(3)
 
 Note that calling `head` on the buffered iterator `bit` does not advance it. Therefore, the subsequent call `bit.next()` returns the same value as `bit.head`.
+
+As usual, the underlying iterator must not be used directly and must be discarded.
+
+The buffered iterator only buffers the next element when `head` is invoked. Other derived iterators,
+such as those produced by `duplicate` and `partition`, may buffer arbitrary subsequences of the
+underlying iterator. But iterators can be efficiently joined by adding them together with `++`:
+
+    scala> def collapse(it: Iterator[Int]) = if (!it.hasNext) Iterator.empty else {
+         | var head = it.next
+         | val rest = if (head == 0) it.dropWhile(_ == 0) else it
+         | Iterator.single(head) ++ rest
+         | }
+    collapse: (it: Iterator[Int])Iterator[Int]
+
+    scala> def collapse(it: Iterator[Int]) = {
+         | val (zeros, rest) = it.span(_ == 0)
+         | zeros.take(1) ++ rest
+         | }
+    collapse: (it: Iterator[Int])Iterator[Int]
+
+    scala> collapse(Iterator(0, 0, 0, 1, 2, 3, 4)).toList
+    res14: List[Int] = List(0, 1, 2, 3, 4)
+
+In the second version of `collapse`, the unconsumed zeros are buffered internally.
+In the first version, any leading zeros are dropped and the desired result constructed
+as a concatenated iterator, which simply calls its two constituent iterators in turn.
