@@ -677,6 +677,6 @@ Scala는 이 문제를 해결하기 위한 제네릭 클래스와 제네릭 함�
 
 우리는 지금까지 Scala 언어의 간략한 소개와 몇가지의 예제를 살펴
 보았다. 흥미가 생겼다면 *Scala By Example*도 함께 읽어보자. 더 수준
-높고 다양한 예제를 만날 수 있다. 필요 할 때마다 *Scala Langauge
+높고 다양한 예제를 만날 수 있다. 필요 할 때마다 *Scala Language
 Specification*을 참고하는 것도 좋다.
 

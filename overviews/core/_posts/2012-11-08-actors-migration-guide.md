@@ -249,7 +249,7 @@ add the type parameter to all `receive` calls in your system. For example:
       receive[String] { case x: Int => "Number" }
 
 Additionally, to make the code compile, users must add the `override` keyword before the `act` method, and to create
-the empty `receive` method in the code. Method `act` needs to be overriden since its implementation in `ActWithStash`
+the empty `receive` method in the code. Method `act` needs to be overridden since its implementation in `ActWithStash`
 mimics the message processing loop of Akka. The changes are shown in the following example:
 
     class MyActor extends ActWithStash {

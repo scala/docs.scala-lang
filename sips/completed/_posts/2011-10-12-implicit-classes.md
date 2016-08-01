@@ -21,7 +21,7 @@ classes which provide _extension methods_ to another type.
 ## Description ##
 
 The `implicit` keyword will now be allowed as an annotation on
-classes.  Classes annotated with the `implicit` keyword are refered to
+classes.  Classes annotated with the `implicit` keyword are referred to
 as _implicit classes_.
 
 An implicit class must have a primary constructor with *exactly* one

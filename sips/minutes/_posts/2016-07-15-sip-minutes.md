@@ -117,7 +117,7 @@ make it interact correctly with Scala.js (the value classes formalization is not
 suitable for what he wants to address).
 
 Dmitry, Martin and Sébastien start to discuss about the performance of other
-alternatives that would need to change the the representation of scala number.
+alternatives that would need to change the representation of scala number.
 Adriaan and Josh agree that the proposal would be better as a library.
 
 **Outcome**: The board voted; all were in favor of giving it a number. Jorge asks
@@ -147,7 +147,7 @@ be resolved before resuming its evaluation.
 
 **Outcome**: The Process Lead postpones it until the authors want to decide to
 revisit the support of async/await in try/catch blocks. When that's considered,
-this SIP should be reopened and and it should see another round of discussion.
+this SIP should be reopened and it should see another round of discussion.
 
 #### Proposal SIP-20: Improved lazy val initialization presented
 Sébastien reviews the SIP and asks Dmitry, present in the meeting, to correct
