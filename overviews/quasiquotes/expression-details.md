@@ -189,7 +189,7 @@ Similarly to type arguments, implicit value arguments are automatically inferred
 
 ## Assign and Update
 
-Assign and update are two related ways to explictly mutate a variable or collection:
+Assign and update are two related ways to explicitly mutate a variable or collection:
 
     scala> val assign = q"x = 2"
     assign: universe.Tree = x = 2

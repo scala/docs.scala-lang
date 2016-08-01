@@ -46,7 +46,7 @@ range，用于生成步长为step的整型序列，并且iterate，将某个函�
 
 | WHAT IT IS | WHAT IT DOES |
 |-------------------|---------------------|
-| S.emtpy | 空序列 |
+| S.empty | 空序列 |
 | S(x, y, z) | 一个包含x、y、z的序列 |
 | S.concat(xs, ys, zs) | 将xs、ys、zs串街起来形成一个新序列。 |
 | S.fill(n) {e}  | 以表达式e的结果为初值生成一个长度为n的序列。 |

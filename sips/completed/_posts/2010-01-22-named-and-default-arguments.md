@@ -32,7 +32,7 @@ If an argument expression has the form `"x = expr"` and `x` is not a parameter n
     var x = 1
     twice(x = x + 1)
 
-It is an error if the expression `”x = expr”` can be interpreted as both a named argument (parameter name `x`) and an assignment (variable `x` in scope). If the expression is surrounded by an additonal set of parenthesis or braces, it is never treated as a named argument. Also, if the application argument is a block expression (as in `f{ arg }`), `arg` is never treated as a named argument.
+It is an error if the expression `”x = expr”` can be interpreted as both a named argument (parameter name `x`) and an assignment (variable `x` in scope). If the expression is surrounded by an additional set of parenthesis or braces, it is never treated as a named argument. Also, if the application argument is a block expression (as in `f{ arg }`), `arg` is never treated as a named argument.
 
     def twice(op: => Unit) = { op; op }
     var op = 1

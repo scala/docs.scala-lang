@@ -18,7 +18,7 @@ At the moment, we don't plan to introduce new reflection- or macro-related featu
 so the functionality of Scala 2.12 and Paradise 2.12 is going to be the same as Scala 2.11 and Paradise 2.11
 modulo bugfixes and stability improvements.
 
-Feature-wise, our main effort is currently targetted at [scala.meta](http://scalameta.org),
+Feature-wise, our main effort is currently targeted at [scala.meta](http://scalameta.org),
 the new foundation for metaprogramming Scala, which is simpler, more robust and much more suitable for portability
 than the current system based on scala.reflect. We hope that one day scala.meta will supersede scala.reflect
 and become the new standard way of doing metaprogramming in Scala.

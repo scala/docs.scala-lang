@@ -87,7 +87,7 @@ The following implicit assumptions apply to value classes.
 Scala's rule for inheritance do not permit value classes to extend traits that
 extend from `AnyRef`. To permit value classes to extend traits, we introduce
 *universal traits*, which extend from `Any`. A universal trait `T` needs to
-explictly extend class `Any`. In the example below, `Equals` is a universal
+explicitly extend class `Any`. In the example below, `Equals` is a universal
 trait with superclass `Any`, but `Ordered`'s superclass is still assumed to be
 `AnyRef`.
 
