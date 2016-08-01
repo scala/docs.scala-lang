@@ -28,8 +28,15 @@ The general format for a Scaladoc comment should be as follows:
      */
     def myMethod = {}
 
+An alternative Scaladoc comment style right-aligns the column of asterisks
+under the second asterisk, in the third column.
+The Scaladoc tool also accepts Javadoc comment formatting,
+with text following the single asterisks, separated by a single space.
+Because the comment markup is sensitive to whitespace,
+the tool must be able to infer the left margin.
+
 For methods and other type members where the only documentation needed
-is a simple, short description, this format can be used:
+is a simple, short description, a one-line format can be used:
 
     /** Does something very simple */
     def simple = {}
