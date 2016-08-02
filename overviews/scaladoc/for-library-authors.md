@@ -89,6 +89,26 @@ include:
   definition is too complex or noisy. An example is (in the collections API),
   providing documentation for methods that omit the implicit `canBuildFrom`.
 
+
+### Member grouping tags
+- `@group <group>` - mark the entity as a member of the `<group>` group.
+- `@groupname <group> <name>` - provide an optional name for the group. `<name>` is displayed as the group header
+-  before the group description.
+- `@groupdesc <group> <description>` - add optional descriptive text to display under the group name. Supports multiline
+   formatted text.
+- `@groupprio` <priority> - control the order of the group on the page. Defaults to 0. Ungrouped elements have
+  an implicit priority of 1000. Use a value between 0 and 999 to set a relative position to other groups. Low values
+  will appear before high values.
+
+
+### Diagram tags
+- `@contentDiagram` - use with traits and classes to include a content hierarchy diagram showing included types.
+   The diagram content can be fine tuned with additional specifiers taken from `hideNodes`, `hideOutgoingImplicits`,
+   `hideSubclasses`, `hideEdges`, `hideIncomingImplicits`, `hideSuperclasses` and `hideInheritedNode`.
+   `hideDiagram` can be supplied to prevent a diagram from being created if it would be created by default. Packages
+   and objects have content diagrams by default.
+- `@inheritanceDiagram` - TODO
+
 ### Other tags
 - `@author` provide author information for the following entity
 - `@version` the version of the system or API that this entity is a part of.
@@ -103,6 +123,7 @@ include:
   ahead of deprecation. Same fields as `@deprecated`.
 - `@inheritdoc` take comments from a superclass as defaults if comments are not
   provided locally.
+- `@documentable` Expand a type alias and abstract type into a full template page. - TODO: Test the "abstract type" claim - no examples of this in the Scala code base
 
 
 ### Macros
@@ -110,6 +131,10 @@ include:
   within the same source file which will be expanded to the contents of
   `<definition>`.
 
+
+### 2.12 tags - TODO: Move these into the above groups with a 2.12 note
+- `@shortDescription` ???
+- `@hideImplicitConversion` ???
 
 ## Comment Inheritance
 
