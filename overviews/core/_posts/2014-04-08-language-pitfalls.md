@@ -209,13 +209,18 @@ Links to related blog posts, papers, discussions.
 
 ## Parenthesis `( )` vs. `{ }`
 
-Description
+Scala's "infix notation" allows arity-1 calls to use braces instead of parenthesis which can aid readability of methods which take a function as an argument.  Correctly building the function argument when using parenthesis can sometimes cause trouble.
 
-**Reason:** Why does this problem exist or is this limitation in place?
+**Reason:** Closure syntax has some fiddly bits that are relaxed when using braces.
 
-**Symptoms:** What kind of behavior or errors does this lead to?
+**Symptoms:** You will often see syntax errors in code that would work if using braces.
 
-**Suggested solution or workaround:** General description how to fix it
+    scala> List(1,2,3) foreach(x: Int => println(x))
+    <console>:1: error: ')' expected but '(' found.
+       List(1,2,3) foreach(x: Int => println(x))
+                                            ^
+
+**Suggested solution or workaround:** When creating anonymous functions to pass to a call prefer braces.  Use parenthesis for named or eta-expanded functions.
 
 **Example:**
 
@@ -225,9 +230,17 @@ Description
 
     seq foreach{x: Int => println(x)}
 
+Also
+
+    seq foreach((x: Int) => println(x))
+    seq foreach(println)
+
 **Further reading:**
 
-Links to related blog posts, papers, discussions.
+[The Scala Language Specification: Version 2.9](http://www.scala-lang.org/docu/files/ScalaReference.pdf)
+* S6.12.3 Infix Operations
+* S6.23 Anonymous Functions
+* Chapter B: Change Log - Changes in Version 2.1.7 (19-Jul-2006) - Closure Syntax
 
 
 ## Unchecked vs. checked pattern matching 
