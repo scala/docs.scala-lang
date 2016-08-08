@@ -157,7 +157,7 @@ benchmarks are in the repository. Sébastien also points out that there's an
 implementation missing for scalac, and recommends the author to include more
 documentation..
 
-**Outcome**: For the next itearation, the reviewer suggests that the SIP should
+**Outcome**: For the next iteration, the reviewer suggests that the SIP should
 have an updated specification, implementation and benchmarks. The Process Lead
 schedules the next iteration by October 2016.
 
