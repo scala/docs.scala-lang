@@ -71,7 +71,7 @@ All operations on iterators are summarized below.
 |  `it.next()`      	    | Returns next element on iterator and advances past it. |
 |  `it.hasNext`  	        | Returns `true` if `it` can return another element. |
 |  **Variations:**          |						         |
-|  `it.buffered`      	    | A buffered iterator returning all elements of `it`. |
+|  `it.buffered`      	    | A buffered iterator returning all elements of `it`.  Do not attempt to reuse `it` after calling this method.|
 |  `it grouped size`      	| An iterator that yields the elements elements returned by `it` in fixed-sized sequence "chunks". |
 |  `xs sliding size`      	| An iterator that yields the elements elements returned by `it` in sequences representing a sliding fixed-sized window. |
 |  **Duplication:**         |						         |
@@ -174,3 +174,24 @@ Every iterator can be converted to a buffered iterator by calling its `buffered`
     res11: Int = 2
 
 Note that calling `head` on the buffered iterator `bit` does not advance it. Therefore, the subsequent call `bit.next()` returns the same value as `bit.head`.
+
+**Warning**: From the `buffered` [API documentation](http://www.scala-lang.org/api/current/index.html#scala.collection.Iterator):
+
+> Reuse: After calling this method, one should discard the iterator it was called on,
+> and use only the iterator that was returned. Using the old iterator is undefined,
+> subject to change, and may result in changes to the new iterator as well.
+
+You might be tempted to access the first element in the iterator `it` by calling `it.buffered.head` and then continue manipulating `it`.  Instead you should assign `it.buffered` to a variable, and use the result.
+
+For example, if you wish to pass an iterator and its first element to a function, call the function as follows:
+
+    // Correct
+    val it: Iterator[Int] = ...
+    val bit = it.buffered
+    myFunction(bit.head, bit)
+
+    // Incorrect
+    val it: Iterator[Int] = ...
+    myFunction(it.buffered.head, it)
+
+
