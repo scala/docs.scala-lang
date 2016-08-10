@@ -17,6 +17,7 @@ title: SIP-27 - Trailing Commas
 | Jun 27th 2016  | Added motivation that it simplifies codegen |
 | Jun 28th 2016  | Fixed a typo                                |
 | Aug 10th 2016  | Renamed from SIP-NN to SIP-27               |
+| Aug 10th 2016  | Changed scala-commas URL (repo was moved)   |
 
 ## Motivation
 
@@ -122,4 +123,4 @@ As an alternative to changing the language, there already exists today a compile
 
 [SI-4986]: https://issues.scala-lang.org/browse/SI-4986
 [scala/scala#5245]: https://github.com/scala/scala/pull/524://github.com/scala/scala/pull/5245
-[scala-commas]: https://github.com/andyscott/scala-commas
+[scala-commas]: https://github.com/47deg/scala-commas
