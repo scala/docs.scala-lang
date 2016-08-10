@@ -10,14 +10,15 @@ title: SIP-27 - Trailing Commas
 
 ## History
 
-| Date           | Version                                     |
-| ---------------|---------------------------------------------|
-| Jun 25th 2016  | Initial Draft                               |
-| Jun 27th 2016  | Added drawback of changing existing tools   |
-| Jun 27th 2016  | Added motivation that it simplifies codegen |
-| Jun 28th 2016  | Fixed a typo                                |
-| Aug 10th 2016  | Renamed from SIP-NN to SIP-27               |
-| Aug 10th 2016  | Changed scala-commas URL (repo was moved)   |
+| Date           | Version                                      |
+| ---------------|----------------------------------------------|
+| Jun 25th 2016  | Initial Draft                                |
+| Jun 27th 2016  | Added drawback of changing existing tools    |
+| Jun 27th 2016  | Added motivation that it simplifies codegen  |
+| Jun 28th 2016  | Fixed a typo                                 |
+| Aug 10th 2016  | Renamed from SIP-NN to SIP-27                |
+| Aug 10th 2016  | Changed scala-commas URL (repo was moved)    |
+| Aug 10th 2016  | Dialed back some of the language from review |
 
 ## Motivation
 
@@ -64,7 +65,7 @@ Additionally, this means that there is a lot of noise in diffs, such as:
  )
 {% endhighlight %}
 
-Also such feature would massively simplify generating Scala source code.
+Also such feature would simplify generating Scala source code.
 
 There is an open ticket ([SI-4986][]) where this feature was requested, referencing the fact that it facilitates code generation by tools and allows for easier sorting of the values, initially in the context of import selectors but later also for other constructs in the syntax.
 
@@ -113,7 +114,7 @@ Given that this is a change in syntax, another drawback is that it requires chan
 
 As an alternative, trailing commas support could be added universally to all the comma-separated elements of the syntax. This would mean changing more (but still only in the parser), but it would make it consistent.
 
-As an alternative to changing the language, there already exists today a compiler plugin called [scala-commas][] that provides this feature. It also provides evidence that people would even use unsupported compiler apis and reflection to add this functionality, even when such a plugin won't compose with other plugins well.
+As an alternative to changing the language, there already exists today a compiler plugin called [scala-commas][] that provides this feature. It also provides some evidence that people would even use unsupported compiler apis and reflection to add this functionality, even when such a plugin won't compose with other plugins well, though arguably only weak evidence as it's a young and obscure plugin.
 
 ## References
 
