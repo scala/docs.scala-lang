@@ -1,10 +1,10 @@
 ---
 layout: sip
 disqus: true
-title: SIP-NN - Trailing Commas
+title: SIP-27 - Trailing Commas
 ---
 
-# SIP-NN: Trailing Commas
+# SIP-27: Trailing Commas
 
 **By: Dale Wijnand**
 
@@ -16,6 +16,7 @@ title: SIP-NN - Trailing Commas
 | Jun 27th 2016  | Added drawback of changing existing tools   |
 | Jun 27th 2016  | Added motivation that it simplifies codegen |
 | Jun 28th 2016  | Fixed a typo                                |
+| Aug 10th 2016  | Renamed from SIP-NN to SIP-27               |
 
 ## Motivation
 
