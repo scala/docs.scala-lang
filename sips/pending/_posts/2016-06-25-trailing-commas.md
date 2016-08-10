@@ -10,9 +10,12 @@ title: SIP-NN - Trailing Commas
 
 ## History
 
-| Date          | Version       |
-|---------------|---------------|
-| Jun 25th 2016 | Initial Draft |
+| Date           | Version                                     |
+| ---------------|---------------------------------------------|
+| Jun 25th 2016  | Initial Draft                               |
+| Jun 27th 2016  | Added drawback of changing existing tools   |
+| Jun 27th 2016  | Added motivation that it simplifies codegen |
+| Jun 28th 2016  | Fixed a typo                                |
 
 ## Motivation
 
