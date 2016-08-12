@@ -5,7 +5,7 @@ overview: scala-for-java-programmers
 
 disqus: true
 multilingual-overview: true
-language: zh_tw
+language: zh-tw
 ---
 
 Michel Schinz與Philipp Haller著
