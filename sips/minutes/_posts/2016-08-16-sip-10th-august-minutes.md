@@ -23,6 +23,11 @@ The following proposals were rejected:
 * SIP-12: Uncluttering Scala's syntax for control structures
 * SIP-16: Self-cleaning macros
 
+The following proposals will have a follow-up evaluation:
+
+* SIP-23: Literal-based singleton types
+* SIP-27: Trailing commas
+
 ## Date, Time and Location
 
 The meeting took place at 5:15pm Central European Time / 8:15am Pacific Daylight
@@ -67,7 +72,7 @@ Seth Tisue presents the main points of his review:
 
 * There is no clear consensus that this change is desirable.
 * The major downsides are that it makes Scala look and feel noticeably less
-like Java and other C-like languages, there is significant migration pain for
+like Java and other C-like languages, significant migration pain for
 users would be involved, and it's unclear that the actual benefits of the
 change are really that big.
 
@@ -77,15 +82,15 @@ there seems to be no interest.
 In the ensuing discussion, there is a bit of confusion over whether the old
 syntax would continue to be supported, and if so, if adding more ways to
 express the same thing is bad. The proposal recommends supporting the old
-syntax temporarily, and deprecated it after some concrete period.
+syntax temporarily, and deprecate it after some concrete period.
 
 The Committee sees no added value in the proposal, and all seem to be against
 it. Adriaan wants only one way to do things, and avoid diversity of syntax
-options.  Josh points out that sometimes second ways for specifying constructs
-are useful in concrete scenarios, but not in this one. Andrew proposes to put
-the feature under -Y as a starting point. Heather questions the utility of such
-a syntax change. The committee discusses about the parens and braces
-differences.
+options.  Josh points out that second ways for specifying constructs
+are useful under concrete scenarios, but not in this one. Andrew proposes to put
+the feature under -Y (experimental flag) as a starting point. Heather questions
+the utility of such a syntax change. The committee discusses about the parens
+and braces differences.
 
 Jorge and Josh point out that in addition to the obvious migration pain of
 users needing to update their code, there would be pain for the makers of tools
@@ -105,30 +110,30 @@ macros in the language and how useful they are for the Scala community to build
 their tools and frameworks. He thinks that macros have been a successful
 experiment, but one that needs to end. He then points out some of the issues
 with macros (IDE support and dependency on Scala Reflection, which he considers
-overdesigned).
+overdesigned for its purpose).
 
-As these are problems in the very foundations of the macros, he proposes to
+As these are problems present in the very foundations of macros, he proposes to
 reject the SIP and commits to write up a new proposal based on [Scala
 Meta](http://scalameta.org/), the successor of the old Scala macros, redesigned
 from the ground up to overcome the current metaprogramming shortcomings.
 
-Josh agrees that macros are super useful but, as in their existing form, 'not
-really what we want long-term'. The Committee discusses how to announce this
-decision, Adriaan is worried that people will that that macros are going away.
-Everybody agrees that the communication of this decision should be carefully
-made.
+Josh agrees that macros are very useful but, as in their existing form, not
+really what the Committee wants long-term. The Committee discusses how to
+announce this decision, Adriaan is worried that people will believe that macros
+are going away.  Everybody agrees that the communication of this decision should
+be made carefully.
 
 Andrew proposes to use the same number proposal for the upcoming Scala Meta
 proposal. Jorge thinks that it would make more sense to create a new proposal
-with a new number, since they are going to greatly differ.
+with a new number, since they will greatly differ in design.
 
-**Outcome**: The board votes and the proposal is therefore rejected
-unanimously.  A new Scala Meta proposal is coming soon.
+**Outcome**: The board votes and the proposal is therefore rejected unanimously.
+A new Scala Meta proposal is coming soon.
 
 ### Discussion of SIP-27: Trailing Commas
 
 Eugene Burmako thanks Dale, the author of the proposal, by the provided
-feedback from the last meeting's discussion. He did a detailed analysis of the
+feedback from the last meeting's discussion. Dale did a detailed analysis of the
 required feature interaction for trailing commas. Eugene explains the concerns
 of the last meeting and encourages the Committee to have a look at the recent
 comments provided by Martin on the GitHub discussion.
@@ -158,7 +163,7 @@ proposal or study it further.
 **Conclusion**: The Committee asks Dale to explicitly summarize the potential
 conflicts with tuple syntax, review the initial [HList proposal in
 Dotty](https://github.com/lampepfl/dotty/issues/964) to figure out potential
-conflicts with the proposal. Eugene also proposes Dale to consider whether the
+conflicts with his proposal. Eugene also proposes Dale to consider whether the
 Committee can salvage non-controversial parts of this proposal and reduce this
 SIP just to them, as well as discussing the utility of having two ways of doing
 the same thing.
@@ -167,14 +172,15 @@ the same thing.
 
 Adriaan explains what the proposal is about. He's happy that George Leontiev's
 proposal is getting to the finish line by Miles. He wants to decouple more the
-design of the proposal and the implementation, e.g. removing implementation
-details in the proposal. Adriaan will also want the authors to better work out
-the interaction with other Scala features, like the equality against the `Any`
-type, `asInstanceOf` and `isInstanceOf`. He points out that quasiquotes should
-also be addressed.
+design and implementation of the proposal, e.g. removing implementation details
+in the original SIP. Adriaan will also want the authors to better work out the
+interaction with other Scala features, like the equality against the `Any` type,
+and `asInstanceOf`. He points out that quasiquotes should eventually be
+addressed.
 
 Josh needs to leave the meeting and transfers his vote to Adriaan. The
-Committee agrees to put this under review for the next meeting.
+Committee agrees to put this under review for the next meeting, waiting for the
+author's feedback.
 
 **Outcome**: The proposal is under review until the next meeting. Adriaan asks
 the authors to separate the spec and the implementation and address some
