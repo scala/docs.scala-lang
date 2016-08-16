@@ -184,7 +184,8 @@ author's feedback.
 
 **Outcome**: The proposal is under review until the next meeting. Adriaan asks
 the authors to separate the spec and the implementation and address some
-technical issues in the current implementation.
+technical issues in the current implementation. More information on Adriaan's
+review can be found in [the original GitHub proposal](https://github.com/scala/scala.github.com/pull/346#issuecomment-240029772).
 
 ## Closing remarks
 See you next time!
