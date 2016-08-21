@@ -164,7 +164,7 @@ Alternatively there is also an underscrore notation:
     scala> val tq"(..$tpts)" = tup2
     tpts: List[universe.Tree] = List(A, B)
 
-Analagously `Unit` type is considered to be nullary tuple:
+Analogously `Unit` type is considered to be nullary tuple:
 
     scala> val tq"(..$tpts)" = tq"_root_.scala.Unit"
     tpts: List[universe.Tree] = List()

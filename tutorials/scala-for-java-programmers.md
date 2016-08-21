@@ -5,7 +5,7 @@ overview: scala-for-java-programmers
 
 disqus: true
 multilingual-overview: true
-languages: [es, ko, de, it]
+languages: [es, ko, de, it, zh-tw]
 ---
 
 By Michel Schinz and Philipp Haller

@@ -714,7 +714,7 @@ Examples:
 
 
 ## References
-1. [The Task-Based Asychronous Pattern, Stephen Toub, Microsoft, April 2011][1]
+1. [The Task-Based Asynchronous Pattern, Stephen Toub, Microsoft, April 2011][1]
 2. [Finagle Documentation][2]
 3. [Akka Documentation: Futures][3]
 4. [Scala Actors Futures][4]

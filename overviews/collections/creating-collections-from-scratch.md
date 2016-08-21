@@ -24,7 +24,7 @@ You have syntax `List(1, 2, 3)` to create a list of three integers and `Map('A' 
 
     List.apply(1.0, 2.0)
 
-So this is a call to the `apply` method of the companion object of the `List` class. That method takes an arbitrary number of arguments an constructs a list from them. Every collection class in the Scala library has a companion object with such an `apply` method. It does not matter whether the collection class represents a concrete implementation, like `List`, or `Stream` or `Vector`, do, or whether it is an abstract base class such as `Seq`, `Set` or `Traversable`. In the latter case, calling apply will produce some default implementation of the abstract base class. Examples:
+So this is a call to the `apply` method of the companion object of the `List` class. That method takes an arbitrary number of arguments and constructs a list from them. Every collection class in the Scala library has a companion object with such an `apply` method. It does not matter whether the collection class represents a concrete implementation, like `List`, or `Stream` or `Vector`, do, or whether it is an abstract base class such as `Seq`, `Set` or `Traversable`. In the latter case, calling apply will produce some default implementation of the abstract base class. Examples:
 
     scala> List(1, 2, 3)
     res17: List[Int] = List(1, 2, 3)

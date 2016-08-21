@@ -151,7 +151,7 @@ string by appending all the string builders together. This way, elements are
 copied only once at the end instead of being copied every time `combine` is
 called. Ideally, we would like to parallelize this process and copy them in
 parallel (this is being done for parallel arrays), but without tapping into
-the internal represenation of strings this is the best we can do-- we have to
+the internal representation of strings this is the best we can do-- we have to
 live with this sequential bottleneck.
 
     private class ParStringCombiner extends Combiner[Char, ParString] {
@@ -206,7 +206,7 @@ ropes and various heaps are particularly suitable for such an approach.
 parallel hash tables, it assumes the elements can be efficiently
 partially sorted into concatenable buckets from which the final
 data-structure can be constructed in parallel. In the first phase
-different procesors populate these buckets independently and
+different processors populate these buckets independently and
 concatenate the buckets together. In the second phase, the data
 structure is allocated and different processors populate different
 parts of the datastructure in parallel using elements from disjoint

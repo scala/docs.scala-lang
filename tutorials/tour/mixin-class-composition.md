@@ -33,7 +33,7 @@ Here is a concrete iterator class, which returns successive characters of a give
       def next = { val ch = s charAt i; i += 1; ch }
     }
  
-We would like to combine the functionality of `StringIterator` and `RichIterator` into a single class. With single inheritance and interfaces alone this is impossible, as both classes contain member impementations with code. Scala comes to help with its _mixin-class composition_. It allows the programmers to reuse the delta of a class definition, i.e., all new definitions that are not inherited. This mechanism makes it possible to combine `StringIterator` with `RichIterator`, as is done in the following test program which prints a column of all the characters of a given string.
+We would like to combine the functionality of `StringIterator` and `RichIterator` into a single class. With single inheritance and interfaces alone this is impossible, as both classes contain member implementations with code. Scala comes to help with its _mixin-class composition_. It allows the programmers to reuse the delta of a class definition, i.e., all new definitions that are not inherited. This mechanism makes it possible to combine `StringIterator` with `RichIterator`, as is done in the following test program which prints a column of all the characters of a given string.
  
     object StringIteratorTest {
       def main(args: Array[String]) {

@@ -1,10 +1,6 @@
-<html>
-<head>
-<meta http-equiv="Refresh" content="0; url=http://docs.scala-lang.org/overviews/scaladoc/for-library-authors.html" />
-<title>Moved</title>
-</head>
-<body>
-<h1>Moved</h1>
-<p>This page has moved to <a href="http://docs.scala-lang.org/overviews/scaladoc/for-library-authors.html">http://docs.scala-lang.org/overviews/scaladoc/for-library-authors.html</a>.</p>
-</body>
-</html>
+---
+layout: redirected
+sitemap: false
+permalink: /overviews/scaladoc/basics.html
+redirect_to: /overviews/scaladoc/for-library-authors.html
+---

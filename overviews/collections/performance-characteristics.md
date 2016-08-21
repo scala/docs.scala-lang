@@ -69,7 +69,7 @@ The first table treats sequence types--both immutable and mutable--with the foll
 | **head**   | Selecting the first element of the sequence. |
 | **tail**   | Producing a new sequence that consists of all elements except the first one. |
 | **apply**  | Indexing. |
-| **update** | Functional update (with `updated`) for immutable sequences, side-effecting update (with `update` for mutable sequences. |
+| **update** | Functional update (with `updated`) for immutable sequences, side-effecting update (with `update` for mutable sequences). |
 | **prepend**| Adding an element to the front of the sequence. For immutable sequences, this produces a new sequence. For mutable sequences it modified the existing sequence. |
 | **append** | Adding an element and the end of the sequence. For immutable sequences, this produces a new sequence. For mutable sequences it modified the existing sequence. |
 | **insert** | Inserting an element at an arbitrary position in the sequence. This is only supported directly for mutable sequences. |
@@ -82,4 +82,3 @@ The second table treats mutable and immutable sets and maps with the following o
 | **add**    | Adding a new element to a set or key/value pair to a map. |
 | **remove** | Removing an element from a set or a key from a map. |
 | **min**    | The smallest element of the set, or the smallest key of a map. |
-

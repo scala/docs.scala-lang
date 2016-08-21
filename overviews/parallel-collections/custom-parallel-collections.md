@@ -151,7 +151,7 @@ string by appending all the string builders together. This way, elements are
 copied only once at the end instead of being copied every time `combine` is
 called. Ideally, we would like to parallelize this process and copy them in
 parallel (this is being done for parallel arrays), but without tapping into
-the internal represenation of strings this is the best we can do-- we have to
+the internal representation of strings this is the best we can do-- we have to
 live with this sequential bottleneck.
 
     private class ParStringCombiner extends Combiner[Char, ParString] {

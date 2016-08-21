@@ -70,7 +70,7 @@ Each of this contexts is covered by separate interpolator:
  tq | [types](/overviews/quasiquotes/syntax-summary.html#types)
  pq | [patterns](/overviews/quasiquotes/syntax-summary.html#patterns)
 
-Syntactical similiarity between different contexts doesn\'t imply similarity between underlying trees:
+Syntactical similarity between different contexts doesn\'t imply similarity between underlying trees:
 
     scala> println(q"List[Int]" equalsStructure tq"List[Int]")
     false
@@ -90,7 +90,7 @@ Similarly patterns and expressions are not equivalent either:
 
 So it's extremely important to use the right interpolator for the job to construct a valid syntax tree.
 
-Additionally there are two auxilary interpolators that let you work with minor areas of scala syntax:
+Additionally there are two auxiliary interpolators that let you work with minor areas of scala syntax:
 
     | Used for
 ----|-------------------------------------

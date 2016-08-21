@@ -113,7 +113,7 @@ El trait `ReplyReactor` extiende `Reactor[Any]` y sobrescribe y/o añade los sig
   vez se encuentre disponible; asimismo puede ser utilizada para comprobar si la respuesta
   está disponible sin la necesidad de bloquear el emisor. Existen dos versiones sobrecargadas.
   La versión que acepta dos parámetros recibe un argumento adicional de tipo
-  `PartialFuntion[Any, A]`. Esta función parcial es utilizada para realizar el post-procesado de
+  `PartialFunction[Any, A]`. Esta función parcial es utilizada para realizar el post-procesado de
   la respuesta del receptor. Básicamente, `!!` retorna un "future" que aplicará la anterior
   función parcial a la repuesta (una vez recibida). El resultado del "future" es el resultado
   de este post-procesado.
