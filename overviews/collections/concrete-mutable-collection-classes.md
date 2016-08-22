@@ -143,7 +143,7 @@ A concurrent map can be accessed by several threads at once. In addition to the 
 
 | WHAT IT IS  	  	            | WHAT IT DOES				     |
 | ------       	       	        | ------					     |
-|  `m putIfAbsent(k, v)`  	    |Adds key/value binding `k -> m` unless `k` is already defined in `m`         |
+|  `m putIfAbsent(k, v)`  	    |Adds key/value binding `k -> v` unless `k` is already defined in `m`         |
 |  `m remove (k, v)`  	        |Removes entry for `k` if it is currently mapped to `v`.                      |
 |  `m replace (k, old, new)`  	|Replaces value associated with key `k` to `new`, if it was previously bound to `old`. |
 |  `m replace (k, v)`  	        |Replaces value associated with key `k` to `v`, if it was previously bound to some value.|
