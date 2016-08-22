@@ -13,7 +13,7 @@ This website is an open-source repository of official Scala documentation, hoste
 
 ### A Need for Better Documentation
 
-The availability, depth, and quality of documentation is considered by many to be huge issue.
+The availability, depth, and quality of documentation is considered by many to be a huge issue.
 
 As Scala continues to mature, it continues to attract more and more interested newcomers and potential adopters who are well accustomed to easy-to-find, abundant, quality documentation (found in other languages, like Java). For many, the learning curve becomes unnecessarily steep, and [people sometimes get frustrated](http://groups.google.com/group/scala-user/browse_thread/thread/29996782cb8428cd/5ade8462ba30b177).
 
