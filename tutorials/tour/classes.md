@@ -25,7 +25,7 @@ Here is a class definition which defines a class `Point`:
 
 The class defines two variables `x` and `y` and two methods: `move` and `toString`. `move` takes two integer arguments but does not return a value (the implicit return type `Unit` corresponds to `void` in Java-like languages). `toString`, on the other hand, does not take any parameters but returns a `String` value. Since `toString` overrides the pre-defined `toString` method, it has to be tagged with the `override` flag.
 
-Note: In Scala, a block of statements inside a method has a value. The last statement is that value. So, whenever you see a block of code assigned to a method, consider the value evaluated from the last statement to be returned to the caller. In the case of `toString` method above, the only statement in that block is evaluated and returned to the caller.
+Note: In Scala, it isn't necessary to say `return` in order to return a value. The value returned from a method is simply the last value in the method body. In the case of the `toString` method above, the expression after the equals sign is evaluated and returned to the caller.
 
 Classes in Scala are parameterized with constructor arguments. The code above defines two constructor arguments, `xc` and `yc`; they are both visible in the whole body of the class. In our example they are used to initialize the variables `x` and `y`.
 
