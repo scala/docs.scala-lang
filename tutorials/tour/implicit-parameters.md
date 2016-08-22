@@ -19,7 +19,7 @@ The actual arguments that are eligible to be passed to an implicit parameter fal
 
 In the following example we define a method `sum` which computes the sum of a list of elements using the monoid's `add` and `unit` operations. Please note that implicit values can not be top-level, they have to be members of a template.
  
-    /** This example uses a structure from abstract algebra to show how implicit parameters work. A semigroup is an algebraic structure on a set A with an (associative) operation, suggestively called add here, that combines an A pair and returns another A. */
+    /** This example uses a structure from abstract algebra to show how implicit parameters work. A semigroup is an algebraic structure on a set A with an (associative) operation, called add here, that combines a pair of A's and returns another A. */
     abstract class SemiGroup[A] {
       def add(x: A, y: A): A
     }
@@ -28,7 +28,7 @@ In the following example we define a method `sum` which computes the sum of a li
       def unit: A
     }
     object ImplicitTest extends App {
-      /** To show how implicit parameters work we first give monoids that are specialized to strings and integers. The keyword implicit here is used to indicate that the corresponding object can be used implicitly, within the same scope, as a parameter of a function marked implicit. */
+      /** To show how implicit parameters work, we first define monoids for strings and integers. The implicit keyword indicates that the corresponding object can be used implicitly, within this scope, as a parameter of a function marked implicit. */
       implicit object StringMonoid extends Monoid[String] {
         def add(x: String, y: String): String = x concat y
         def unit: String = ""
@@ -37,12 +37,12 @@ In the following example we define a method `sum` which computes the sum of a li
         def add(x: Int, y: Int): Int = x + y
         def unit: Int = 0
       }
-      /** This (curried) function takes a List[A] and returns a function that takes and Monoid[A] and returns an A which represent the combined value of applying the monoid operation sucessively between each A pair in the list. Making the parameter m implicit here means we only have to provide the xs parameter since once we are given a List[A] we know what type A actually is and therefore what type Monoid[A] is. We can then implicitly find which ever val or object in the current scope also has that type and use that without needing to specify it explicitly. */
+      /** This method takes a List[A] returns an A which represent the combined value of applying the monoid operation successively across the whole list. Making the parameter m implicit here means we only have to provide the xs parameter at the call site, since if we have a List[A] we know what type A actually is and therefore what type Monoid[A] is needed. We can then implicitly find whichever val or object in the current scope also has that type and use that without needing to specify it explicitly. */
       def sum[A](xs: List[A])(implicit m: Monoid[A]): A =
         if (xs.isEmpty) m.unit
         else m.add(xs.head, sum(xs.tail))
 
-      /** Here we call sum with only the first of its (curried) parameters, xs provided. In the first case we pass in a List[Int] and in the second case we pass in a List[String]. Since the second parameter of sum, m, is implicit its value is looked up in the current scope, based on the type of monoid required in each case, meaning both expressions can be fully evaluated. */
+      /** Here we call sum twice, with only one parameter each time. Since the second parameter of sum, m, is implicit its value is looked up in the current scope, based on the type of monoid required in each case, meaning both expressions can be fully evaluated. */
       println(sum(List(1, 2, 3)))          // uses IntMonoid implicitly
       println(sum(List("a", "b", "c")))    // uses StringMonoid implicitly
     }
