@@ -13,23 +13,22 @@ tutorial-previous: unified-types
 Classes in Scala are static templates that can be instantiated into many objects at runtime.
 Here is a class definition which defines a class `Point`:
 
-    class Point(xc: Int, yc: Int) {
-      var x: Int = xc
-      var y: Int = yc
-      def move(dx: Int, dy: Int) {
+    class Point(var x: Int, var y: Int) {
+      def move(dx: Int, dy: Int): Unit = {
         x = x + dx
         y = y + dy
       }
-      override def toString(): String = "(" + x + ", " + y + ")";
+      override def toString: String =
+        "(" + x + ", " + y + ")"
     }
 
-The class defines two variables `x` and `y` and two methods: `move` and `toString`. `move` takes two integer arguments but does not return a value (the implicit return type `Unit` corresponds to `void` in Java-like languages). `toString`, on the other hand, does not take any parameters but returns a `String` value. Since `toString` overrides the pre-defined `toString` method, it has to be tagged with the `override` flag.
+Classes in Scala are parameterized with constructor arguments. The code above defines two constructor arguments, `x` and `y`; they are both visible in the whole body of the class.
 
-Note: In Scala, it isn't necessary to say `return` in order to return a value. The value returned from a method is simply the last value in the method body. In the case of the `toString` method above, the expression after the equals sign is evaluated and returned to the caller.
+The class also includes two methods, `move` and `toString`. `move` takes two integer arguments but does not return a value (the return type `Unit` corresponds to `void` in Java-like languages). `toString`, on the other hand, does not take any parameters but returns a `String` value. Since `toString` overrides the pre-defined `toString` method, it is tagged with the `override` keyword.
 
-Classes in Scala are parameterized with constructor arguments. The code above defines two constructor arguments, `xc` and `yc`; they are both visible in the whole body of the class. In our example they are used to initialize the variables `x` and `y`.
+Note that in Scala, it isn't necessary to say `return` in order to return a value. The value returned from a method is simply the last value in the method body. In the case of the `toString` method above, the expression after the equals sign is evaluated and returned to the caller.
 
-Classes are instantiated with the new primitive, as the following example will show:
+Classes are instantiated with the `new` primitive, as follows:
 
     object Classes {
       def main(args: Array[String]) {
@@ -40,7 +39,7 @@ Classes are instantiated with the new primitive, as the following example will s
       }
     }
 
-The program defines an executable application Classes in form of a top-level singleton object with a `main` method. The `main` method creates a new `Point` and stores it in value `pt`. _Note that values defined with the `val` construct are different from variables defined with the `var` construct (see class `Point` above) in that they do not allow updates; i.e. the value is constant._
+The program defines an executable application Classes in form of a top-level singleton object with a `main` method. The `main` method creates a new `Point` and stores it in value `pt`. Note that values defined with the `val` construct are different from variables defined with the `var` construct (see class `Point` above) in that they do not allow updates; i.e. the value is constant.
 
 Here is the output of the program:
 
