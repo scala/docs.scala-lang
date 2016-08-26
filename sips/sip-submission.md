@@ -133,13 +133,17 @@ design document, progress with the implementation, etc) to the SIP Committee.
 Based on the feedback, the SIP is either:
 
 1. Accepted, in which case the committee will propose a release date to the
-compiler maintainers, where the role of the committee ends.
-2. Rejected, in which case the SIP is closed and no longer evaluated in the future.
-3. Postponed, in which case the committee sets aside the SIP under some conditions.
-When those conditions are met, the SIP can be resubmitted.
-4. Under revision, in which case the author needs to continue the formal evaluation
-and address all the committee's feedback. Thus, the follow-up discussion is scheduled
-for the next iteration.
+   compiler maintainers, where the role of the committee ends.
+2. Rejected, in which case the SIP is closed and no longer evaluated in the
+   future.
+3. Under revision, in which case the author needs to continue the formal
+   evaluation and address all the committee's feedback. Thus, the follow-up
+   discussion is scheduled for the next iteration.
+3. Postponed, in which case the committee does not evaluate the proposal anymore
+   and sets it aside under some conditions are met.  Then, the SIP will be
+   resubmitted. This situation happens when proposals entirely depend on another
+   pending proposals and need their admission. In such cases, the dependent
+   proposal is postponed until the Committee votes on the other one.
 
 If no changes have been made to a SIP in two iterations, it’s marked as dormant
 and both the PR and issue are closed. Dormant SIPs can be reopened by any
@@ -219,10 +223,16 @@ becomes the reviewer. The main tasks of the reviewer are the following:
 
 ### Voting
 
+The Committee will only vote on proposals if Committee members have the quorum.
+The quorum is two thirds (2/3) out of the total number of members.
+
 For a SIP to be accepted, it must fulfill two requirements:
 
-- 70% of the committee votes in favor of it.
+- 70% of the quorum votes in favor of it.
 - Martin Odersky does not veto it.
+
+Please, note that **abstentions are not allowed**, Committee members need to
+vote either yes or no.
 
 ### Responsibilities of the members
 
@@ -256,10 +266,13 @@ concrete date.
 be under review until the next available SIP meeting takes place.
 5. **Under revision:** Authors are addressing the issues pinpointed by the
 committee or working on the implementation.
-6. **Dormant:** When a SIP has been under revision for more than two iterations (that
-is, no progress has been made since the last review), it’s considered dormant,
-in which case any related activity will be paralysed and the Process Lead will
-not allocate more resources to it.
+6. **Dormant:** When a SIP has been under revision for more than two iterations
+   and no progress has been made, the Process Lead will mark it as dormant (note
+   that the Committee does not have such privilege). This status means that the
+   Process Lead will not assign its review in future meetings until authors
+   provide the requested feedback or progress. Also, authors can also mark their
+   proposals as dormant, and they are encouraged to do so if they think they
+   will not have time for their update.
 7. **Postponed:** The SIP has been postponed under some concrete conditions. When these
 are met, the SIP can be resubmitted.
 8. **Rejected:** The SIP has been rejected with a clear and full explanation.
