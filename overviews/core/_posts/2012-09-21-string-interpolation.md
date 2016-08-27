@@ -19,7 +19,7 @@ String Interpolation allows users to embed variable references directly in *proc
     println(s"Hello, $name")  // Hello, James
 
 In the above, the literal `s"Hello, $name"` is a *processed* string literal.  This means that the compiler does some additional
-work to this literal.  A processed string literal is denoted by a set of characters precedding the `"`. String interpolation
+work to this literal.  A processed string literal is denoted by a set of characters preceding the `"`. String interpolation
 was introduced by [SIP-11](http://docs.scala-lang.org/sips/pending/string-interpolation.html), which contains all details of the implementation.
 
 ## Usage
@@ -56,7 +56,7 @@ The `f` interpolator is typesafe.  If you try to pass a format string that only 
 error.  For example:
 
     val height: Double = 1.9d
-    
+
     scala> f"$height%4d"
     <console>:9: error: type mismatch;
      found   : Double
@@ -64,7 +64,7 @@ error.  For example:
                f"$height%4d"
                   ^
 
-The `f` interpolator makes use of the string format utilities available from Java.   The formats allowed after the `%` character are outlined in the 
+The `f` interpolator makes use of the string format utilities available from Java.   The formats allowed after the `%` character are outlined in the
 [Formatter javadoc](http://docs.oracle.com/javase/1.6.0/docs/api/java/util/Formatter.html#detail).   If there is no `%` character after a variable
 definition a formatter of `%s` (`String`) is assumed.
 
@@ -74,7 +74,7 @@ definition a formatter of `%s` (`String`) is assumed.
 The raw interpolator is similar to the `s` interpolator except that it performs no escaping of literals within the string.  Here's an example processed string:
 
     scala> s"a\nb"
-    res0: String = 
+    res0: String =
     a
     b
 
@@ -98,14 +98,14 @@ it transforms it into a method call (`id`) on an instance of [StringContext](htt
 This method can also be available on implicit scope.   To define our own string interpolation, we simply need to create an implicit class that adds a new method
 to `StringContext`.  Here's an example:
 
-    // Note: We extends AnyVal to prevent runtime instantiation.  See 
+    // Note: We extends AnyVal to prevent runtime instantiation.  See
     // value class guide for more info.
     implicit class JsonHelper(val sc: StringContext) extends AnyVal {
       def json(args: Any*): JSONObject = sys.error("TODO - IMPLEMENT")
     }
-    
+
     def giveMeSomeJson(x: JSONObject): Unit = ...
-    
+
     giveMeSomeJson(json"{ name: $name, id: $id }")
 
 In this example, we're attempting to create a JSON literal syntax using string interpolation.   The JsonHelper implicit class must be in scope to use this syntax, and the json method would need a complete implementation.   However, the result of such a formatted string literal would not be a string, but a `JSONObject`.
@@ -134,4 +134,3 @@ So, the `json` method has access to the raw pieces of strings and each expressio
     }
 
 Each of the string portions of the processed string are exposed in the `StringContext`'s `parts` member.  Each of the expression values is passed into the `json` method's `args` parameter.   The `json` method takes this and generates a big string which it then parses into JSON.   A more sophisticated implementation could avoid having to generate this string and simply construct the JSON directly from the raw strings and expression values.
-
