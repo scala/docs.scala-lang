@@ -6,7 +6,7 @@ disqus: true
 
 tutorial: scala-tour
 num: 22
-languages: [es, ko]
+languages: [ba, es, ko]
 tutorial-next: compound-types
 tutorial-previous: inner-classes
 ---
