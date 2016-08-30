@@ -73,6 +73,7 @@ Attendees Present:
 * Dmitry Petrashko ([@DarkDimius](github.com/DarkDimius)), EPFL (guest)
 
 ## Proceedings
+
 ### Opening Remarks
 
 As acting Process Lead, Jorge Vicente Cantero conducted the meeting, made the
@@ -80,6 +81,7 @@ opening remarks, and introduced the guest Dmitry, who was present to help
 discuss the proposal for an improved lazy val initialization (SIP-20).
 
 ### Scala Improvement Proposals
+
 #### Proposal SIP-25: Trait Parameters proposed by Martin Odersky
 
 Adriaan Moors, as the assigned reviewer of this SIP, quickly introduced the
