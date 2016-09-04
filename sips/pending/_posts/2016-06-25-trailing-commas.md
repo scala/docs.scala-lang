@@ -20,6 +20,7 @@ title: SIP-27 - Trailing Commas
 | Aug 10th 2016  | Changed scala-commas URL (repo was moved)    |
 | Aug 10th 2016  | Dialed back some of the language from review |
 | Sep 04th 2016  | Split the motivation into sections           |
+| Sep 04th 2016  | Add VCS authorship attribution to motivation |
 
 ## Motivation
 
@@ -69,6 +70,10 @@ Allowing trailing commas also reduces a lot of noise in diffs, such as:
 +  quux
  )
 {% endhighlight %}
+
+### VCS authorship attribution
+
+Using the example above, the authorship of the `baz` line would be preserved, instead of becoming that of the author of the `quux` line.
 
 ### Simplify code generation
 
