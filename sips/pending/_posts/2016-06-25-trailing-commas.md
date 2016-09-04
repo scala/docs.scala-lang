@@ -19,8 +19,11 @@ title: SIP-27 - Trailing Commas
 | Aug 10th 2016  | Renamed from SIP-NN to SIP-27                |
 | Aug 10th 2016  | Changed scala-commas URL (repo was moved)    |
 | Aug 10th 2016  | Dialed back some of the language from review |
+| Sep 04th 2016  | Split the motivation into sections           |
 
 ## Motivation
+
+### Easy to modify lists
 
 When using a comma-separated sequence of elements on multiple lines, such as:
 
@@ -52,7 +55,9 @@ val xs = Seq(
 )
 {% endhighlight %}
 
-Additionally, this means that there is a lot of noise in diffs, such as:
+### Reduce diff noise
+
+Allowing trailing commas also reduces a lot of noise in diffs, such as:
 
 {% highlight diff %}
 @@ -4,7 +4,8 @@
@@ -65,9 +70,15 @@ Additionally, this means that there is a lot of noise in diffs, such as:
  )
 {% endhighlight %}
 
-Also such feature would simplify generating Scala source code.
+### Simplify code generation
+
+Such a feature would also simplify generating Scala source code.
+
+### Long standing ticket
 
 There is an open ticket ([SI-4986][]) where this feature was requested, referencing the fact that it facilitates code generation by tools and allows for easier sorting of the values, initially in the context of import selectors but later also for other constructs in the syntax.
+
+### Real-world use-cases
 
 Some real-world use-cases where elements of a sequence are typically added, removed or moved are:
 
