@@ -21,6 +21,7 @@ title: SIP-27 - Trailing Commas
 | Aug 10th 2016  | Dialed back some of the language from review |
 | Sep 04th 2016  | Split the motivation into sections           |
 | Sep 04th 2016  | Add VCS authorship attribution to motivation |
+| Sep 04th 2016  | Add Cross building hinderance to drawbacks   |
 
 ## Motivation
 
@@ -125,6 +126,8 @@ The implementation is a simple change to the parser, allowing for a trailing com
 The drawback, or trade-off, to this change is that it adds another way in which it is possible to do something in Scala. But it is the opinion of this SIP that the pragmatic advantage of being able to have trailing commas is worth this drawback.
 
 Given that this is a change in syntax, another drawback is that it requires changing the existing tools, such as those that parse Scala: intellij-scala, scalariform, scala.meta and scalaparse.
+
+Another drawback is that for projects that cross build to previous versions of Scala they would have to take into account that this feature wouldn't be available for those versions (assuming this feature isn't backported).
 
 ## Alternatives
 
