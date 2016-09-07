@@ -49,9 +49,9 @@ Tipičan način zaobilaženja ovog problema je dodavanje javnih konstanti čije 
       public HashMap(int initialCapacity, float loadFactor);
     }
 
-Ovo umanjuje ponavljanje koda, ali je manje ekspresivno.
+Ovaj pristup umanjuje ponavljanje koda, ali je manje ekspresivan.
 
-Scala ima direktnu podršku za ovo:
+Scala ima direktnu podršku za ovaj problem:
 
     class HashMap[K,V](initialCapacity:Int = 16, loadFactor:Float = 0.75f) {
     }
