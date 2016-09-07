@@ -14,9 +14,9 @@ Anotacije pridružuju meta-informacije definicijama.
 
 Jednostavna anotacija ima formu `@C` ili `@C(a1, .., an)`. Ovdje je `C` konstruktor klase `C`, koja mora naslijediti klasu `scala.Annotation`. 
 Svi argumenti konstruktora `a1, .., an` moraju biti konstante (npr. izrazi ili numeričke primitive, stringovi, primitive klasa, 
-Java enumeracije i jednodimenzionalni nizovi(`Array`) navedenih).
+Java enumeracije i jednodimenzionalni nizovi (`Array`) navedenih).
 
-Anotacijska klauza(ili više njih) primjenjuje se na prvu definiciju ili deklaraciju koja slijedi nakon nje. 
+Anotacijska klauza (ili više njih) primjenjuje se na prvu definiciju ili deklaraciju koja slijedi nakon nje. 
 Redoslijed anotacijskih klauza nije bitan.
 
 Značenje anotacijskih klauza je _implementacijski-nezavisno_. Na Java platformi, sljedeće Scala anotacije imaju standardno značenje.
@@ -34,11 +34,11 @@ Značenje anotacijskih klauza je _implementacijski-nezavisno_. Na Java platformi
 |  [`scala.transient`](http://www.scala-lang.org/api/2.9.1/scala/transient.html) |  [`transient`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (ključna riječ) |
 |  [`scala.unchecked`](http://www.scala-lang.org/api/2.9.1/scala/unchecked.html) (od 2.4.0) |  nema ekvivalent |
 |  [`scala.volatile`](http://www.scala-lang.org/api/2.9.1/scala/volatile.html) |  [`volatile`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (ključna riječ) |
-|  [`scala.reflect.BeanProperty`](http://www.scala-lang.org/api/2.9.1/scala/reflect/BeanProperty.html) |  [`Design pattern`](http://docs.oracle.com/javase/tutorial/javabeans/writing/properties.html) |
+|  [`scala.reflect.BeanProperty`](http://www.scala-lang.org/api/2.9.1/scala/reflect/BeanProperty.html) |  [`Dizajn patern`](http://docs.oracle.com/javase/tutorial/javabeans/writing/properties.html) |
 
-U sljedećem primjeru dodajemo `throws` anotaciju definiciji metode `read` da bi uhvatili izuzetak(exception) u Java main programu.
+U sljedećem primjeru dodajemo `throws` anotaciju definiciji metode `read` da bi uhvatili izuzetak (exception) u Java main programu.
 
-> Java kompajler provjerava da li program sadrži rukovatelje(handler) za [provjereni izuzetak(checked exception)](http://docs.oracle.com/javase/specs/jls/se5.0/html/exceptions.html) 
+> Java kompajler provjerava da li program sadrži rukovatelje (handler) za [provjereni izuzetak (checked exception)](http://docs.oracle.com/javase/specs/jls/se5.0/html/exceptions.html) 
 analizom koji se izuzeci mogu dobiti izvršenjem neke metode ili konstruktora.
 Za svaki mogući provjereni izuzetak **throws** klauza metodi ili konstruktora _mora_ navesti klasu izuzetka ili neku nadklasu izuzetka.
 > Pošto Scala nema provjerene izuzetke, Scala metode _moraju_ imati jednu ili više `throws` anotacija kako bi Java kod mogao uhvatiti iste.
@@ -54,7 +54,7 @@ Za svaki mogući provjereni izuzetak **throws** klauza metodi ili konstruktora _
 Sljedeći Java program prikazuje sadržaj fajla s imenom koje je proslijeđeno kao prvi argument `main` metode.
 
     package test;
-    import examples.Reader;  // Scala class !!
+    import examples.Reader;  // Scala klasa !!
     public class AnnotaTest {
         public static void main(String[] args) {
             try {
@@ -69,7 +69,7 @@ Sljedeći Java program prikazuje sadržaj fajla s imenom koje je proslijeđeno k
         }
     }
 
-Kada bi zakomentarisali `throws` anotaciju u klasi Reader dobili bi sljedeću grešku s porukom pri kompajliranju Java main programa:
+Kada bi zakomentarisali `throws` anotaciju u klasi `Reader` dobili bi sljedeću grešku s porukom pri kompajliranju Java main programa:
 
     Main.java:11: exception java.io.IOException is never thrown in body of
     corresponding try statement
@@ -88,7 +88,7 @@ Java 1.5 je uvela korisnički definisane metapodatke u formi [anotacija](http://
       public String mail();
     }
 
-I upotrijebiti je kao npr:
+I upotrijebiti je kao npr.:
 
     @Source(URL = "http://coders.com/",
             mail = "support@coders.com")
@@ -100,7 +100,7 @@ Primjena anotacije u Scali izgleda kao poziv konstruktora, dok se za instanciran
             mail = "support@coders.com")
     class MyScalaClass ...
 
-Ova sintaksa je ponekad naporna, npr. ako anotacija ima samo jedan element(bez defaultne vrijednosti), pa po konvenciji, 
+Ova sintaksa je ponekad naporna, npr. ako anotacija ima samo jedan element (bez podrazumijevane vrijednosti), pa po konvenciji, 
 ako se koristi naziv `value` onda se u Javi može koristiti i konstruktor-sintaksa:
 
     @interface SourceURL {
@@ -108,7 +108,7 @@ ako se koristi naziv `value` onda se u Javi može koristiti i konstruktor-sintak
         public String mail() default "";
     }
 
-I upotrijebiti je kao npr:
+I upotrijebiti je kao npr.:
 
     @SourceURL("http://coders.com/")
     public class MyClass extends HisClass ...
@@ -118,8 +118,8 @@ U ovom slučaju, Scala omogućuje istu sintaksu:
     @SourceURL("http://coders.com/")
     class MyScalaClass ...
 
-Element `mail` je specificiran s defaultnom vrijednošću tako da ne moramo eksplicitno navoditi vrijednost za njega. 
-Međutim, ako trebamo, ne možemo miksati dva Javina stila:
+Element `mail` je specificiran s podrazumijevanom vrijednošću tako da ne moramo eksplicitno navoditi vrijednost za njega. 
+Međutim, ako trebamo, ne možemo miješati dva Javina stila:
 
     @SourceURL(value = "http://coders.com/",
                mail = "support@coders.com")

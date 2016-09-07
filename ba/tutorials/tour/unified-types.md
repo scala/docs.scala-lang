@@ -10,7 +10,7 @@ outof: 33
 language: ba
 ---
 
-Suprotno od Jave, sve vrijednosti u Scali su objekti (uključujući brojeve i funkcije).
+Nasuprot Javi, sve vrijednosti u Scali su objekti (uključujući brojeve i funkcije).
 Pošto je Scala bazirana na klasama, sve vrijednosti su instance neke klase.
 Dijagram ispod prikazuje hijerarhiju Scala klasa.
 
@@ -26,7 +26,7 @@ Korisnički definisane klase definišu referencne tipove po defaultu; tj. uvijek
 Svaka korisnični definisana klasa u Scali implicitno nasljeđuje trejt `scala.ScalaObject`.
 Klase iz infrastrukture na kojoj se izvršava Scala (tj. JRE) ne nasljeđuju `scala.ScalaObject`.
 Ako se Scala koristi u kontekstu JRE, onda `scala.AnyRef` odgovara klasi `java.lang.Object`.
-Primijetite da gornji dijagram također prikazuje i implicitne konverzije(isprekidana crta) između vrijednosnih(value) klasa.
+Primijetite da gornji dijagram također prikazuje i implicitne konverzije (isprekidana crta) između vrijednosnih (value) klasa.
 Slijedi primjer koji pokazuje da su i brojevi, i karakteri, boolean vrijednosti, i funkcije samo objekti kao i svaki drugi:
  
     object UnifiedTypes extends App {

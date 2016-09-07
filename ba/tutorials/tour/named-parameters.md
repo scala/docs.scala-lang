@@ -24,7 +24,7 @@ Kada se pozivaju metode i funkcije, možete koristiti imena varijabli eksplicitn
       // ispisuje "John Smith"
 
 Primijetite da kada koristite imenovane parametre pri pozivu, redoslijed nije bitan, dok god su svi parametri imenovani.
-Ova sposobnost Scale radi vrlo dobro u paru sa [defaultnim parametrima]({{ site.baseurl }}/tutorials/tour/default-parameter-values.html):
+Ova sposobnost Scale radi vrlo dobro u paru sa [podrazumijevanim parametrima]({{ site.baseurl }}/tutorials/tour/default-parameter-values.html):
 
       def printName(first: String = "John", last: String = "Smith") = {
         println(first + " " + last)
@@ -33,4 +33,4 @@ Ova sposobnost Scale radi vrlo dobro u paru sa [defaultnim parametrima]({{ site.
       printName(last = "Jones")
       // ispisuje "John Jones"
 
-Pošto parametre možete navesti u bilo kom redoslijedu, možete koristiti defaultne vrijednosti za parametre koji su zadnji u listi parametara.
+Pošto parametre možete navesti u bilo kom redoslijedu, možete koristiti podrazumijevane vrijednosti za parametre koji su zadnji u listi parametara.

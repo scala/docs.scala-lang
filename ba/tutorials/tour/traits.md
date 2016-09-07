@@ -12,7 +12,7 @@ language: ba
 
 Slično Javinim interfejsima, trejtovi se koriste za definisanje tipova objekata navođenjem potpisa podržanih metoda.
 Kao u Javi 8, Scala dozvoljava trejtovima da budu parcijalno implementirani;
-tj. moguće je definisati defaultne implementacije nekih metoda.
+tj. moguće je definisati podrazumijevane implementacije nekih metoda.
 Nasuprot klasama, trejtovi ne mogu imati parametre konstruktora.
 Slijedi primjer:
  

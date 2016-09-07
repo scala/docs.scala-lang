@@ -37,11 +37,11 @@ Ovo je konkretna klasa iteratora, koja vraća sukcesivne karaktere datog stringa
       def next = { val ch = s charAt i; i += 1; ch }
     }
  
-Željeli bismo iskombinirati funkcionalnosti `StringIterator`-a i `RichIterator`-a u jednoj klasi.
+Željeli bismo iskombinirati funkcionalnosti `StringIterator`-a i `RichIterator`-a u jednoj klasi.  
 S jednostrukim nasljeđivanjem i interfejsima ovo je nemoguće, jer obje klase sadrže implementacije članova.
 Scala nam pomaže s _kompozicijom mixin-klasa_.
 Ona dozvoljava programerima da ponovo iskoriste razliku definicija klasa, tj., sve nove definicije koje nisu naslijeđene.
-Ovaj mehanizam omogućuje kombiniranje `StringIterator`-a s `RichIterator`-om, kao u sljedećem testnom programu koji ispisuje kolonu svih karaktera datog stringa.
+Ovaj mehanizam omogućuje kombiniranje `StringIterator`-a s `RichIterator`-om, kao u sljedećem test programu koji ispisuje kolonu svih karaktera datog stringa.
  
     object StringIteratorTest {
       def main(args: Array[String]) {

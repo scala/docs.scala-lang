@@ -27,14 +27,14 @@ Slijedi definicija klase `Point`:
     }
 
 Ova klasa definiše dvije varijable: `x` i `y`, i dvije metode: `move` i `toString`. 
-Metoda `move` prima dva cjelobrojna argumenta ali ne vraća vrijednost(implicitni povratni tip je `Unit`,
+Metoda `move` prima dva cjelobrojna argumenta ali ne vraća vrijednost (implicitni povratni tip je `Unit`,
 koji odgovoara `void`-u u jezicima sličnim Javi). `toString`, za razliku, ne prima nikakve parametre ali vraća `String` vrijednost.
 Pošto `toString` prebrisava predefinisanu `toString` metodu, mora biti tagovana s `override`.
 
 Klase u Scali se parametrizuju parametrima konstruktora. Kod iznad definiše dva parametra konstruktora, `xc` i `yc`; 
 oba su vidljiva u cijelom tijelu klase. U našem primjeru korišteni su za inicijalizaciju varijabli `x` i `y`.
 
-Klase se inicijalizaciju pomoću new primitive, kao u sljedećem primjeru:
+Klase se inicijalizaciju pomoću `new` primitive, kao u sljedećem primjeru:
 
     object Classes {
       def main(args: Array[String]) {
@@ -45,10 +45,10 @@ Klase se inicijalizaciju pomoću new primitive, kao u sljedećem primjeru:
       }
     }
 
-Program definiše izvršnu aplikaciju Classes u form vrhovnog singlton objekta s `main` metodom. 
+Program definiše izvršnu aplikaciju `Classes` u form vrhovnog singlton objekta s `main` metodom. 
 Metoda `main` kreira novu instancu klase `Point` i sprema je u vrijednost `pt`.
-_Imajte u vidu da su vrijednosti definisane s primitivom `val` drugačije 
-od varijabli definisanih s primitivom `var`(vidi klasu `Point` iznad) 
+_Imajte u vidu da se vrijednosti definisane primitivom `val` razlikuju 
+od varijabli definisanih primitivom `var` (vidi klasu `Point` iznad) 
 u tome da ne dozvoljavaju promjenu vrijednosti; tj. vrijednost je konstanta._
 
 Ovo je rezultat programa:

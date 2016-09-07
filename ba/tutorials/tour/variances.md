@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Varijance
+title: Varijanse
 
 disqus: true
 
@@ -10,9 +10,9 @@ outof: 33
 language: ba
 ---
 
-Scala podržava anotacije varijance tipskih parametara [generičkih klasa](generic-classes.html).
-Nasuprot Javi 5 ([JDK 1.5](http://java.sun.com/j2se/1.5/)), anotacije varijance se dodaju pri definiciji same klase,
-dok u Javi 5, anotacije varijance se dodaju na korisničkoj strani, tj. kada se klasa koristi.
+Scala podržava anotacije varijanse tipskih parametara [generičkih klasa](generic-classes.html).
+Nasuprot Javi 5 ([JDK 1.5](http://java.sun.com/j2se/1.5/)), anotacije varijanse se dodaju pri definiciji same klase,
+dok u Javi 5, anotacije varijanse se dodaju na korisničkoj strani, tj. kada se klasa koristi.
 
 Na stranici o [generičkim klasama](generic-classes.html) dat je primjer promjenjivog steka.
 Objasnili smo da je tip definisan klasom `Stack[T]` subjekt invarijantnog nasljeđivanja u odnosu na tipski parametar. 
@@ -50,7 +50,7 @@ Suprotno važi za tipske parametre koji su obilježeni s `-`.
 Za primjer sa stekom morali bi koristiti kovarijantni tipski parametar `T` na kontravarijantnoj poziciji pri definiciji metode `push`.
 Pošto želimo kovarijantno nasljeđivanje za stekove, koristimo trik kojim apstrahujemo nad tipskim parametrom metode `push`. 
 Dobijamo polimorfnu metodu u kojoj koristimo element tip `T` kao donju granicu tipske varijable metode `push`. 
-Ovo ima efekt sinhronizovanja varijance `T` s njegovom deklaracijom kao kovarijantni tipski parametar.
+Ovo ima efekt sinhronizovanja varijanse `T` s njegovom deklaracijom kao kovarijantni tipski parametar.
 Sada su stekovi kovarijantni, ali naše rješenje dozvoljava npr. da dodamo string na stek integera.
 Rezultat će biti stek tipa `Stack[Any]`; 
 tako da samo ako je rezultat korišten u kontekstu gdje se zahtijeva stek integera, možemo otkriti grešku.

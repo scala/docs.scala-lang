@@ -12,7 +12,7 @@ language: ba
 
 Scala podržava tzv. _case klase_.
 Case klase su obične klase koje eksponiraju svoje parametre konstruktora i 
-omogućuju rekurzivnu dekompoziciju pomoću [podudaranja uzorka(pattern matching)](pattern-matching.html).
+omogućuju rekurzivnu dekompoziciju pomoću [podudaranja uzorka (pattern matching)](pattern-matching.html).
 
 Slijedi primjer hijerarhije klasa koja se sastoji od apstraktne nadklase `Term` i tri konkretne case klase `Var`, `Fun`, i `App`.
 
@@ -28,7 +28,7 @@ Primjer:
 
     Fun("x", Fun("y", App(Var("x"), Var("y"))))
 
-Parametri konstruktora case klasa tretiraju se kao javne(public) vrijednosti i može im se pristupiti direktno.
+Parametri konstruktora case klasa tretiraju se kao javne (public) vrijednosti i može im se pristupiti direktno.
 
     val x = Var("x")
     println(x.name)
@@ -84,6 +84,6 @@ Sljedeći [objekt](singleton-objects.html) definiše funkciju za lijepo ispisiva
 U našem primjeru, funkcija `printTerm` je izražena kao naredba podudaranja uzorka s `match` ključnom riječi
 i sastoji se od niza `case Pattern => Body` klauza.
 Gornji program također definiše funkciju `isIdentityFun` koja provjerava da li dati pojam odgovara jednostavnoj funkciji identiteta.
-Ovaj primjer koristi duboke uzorke i čuvare(guard).
-Nakon što se uzorak podudari sa datom vrijednošću, čuvar(definisan nakon ključne riječi `if`) se evaluira.
+Ovaj primjer koristi duboke uzorke i čuvare (guard).
+Nakon što se uzorak podudari s datom vrijednošću, čuvar (definisan nakon ključne riječi `if`) se evaluira.
 Ako vrati `true`, podudaranje uspijeva; u suprotnom, ne uspijeva i sljedeći uzorak će biti pokušan.

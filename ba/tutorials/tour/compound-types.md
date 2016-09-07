@@ -11,7 +11,7 @@ language: ba
 ---
 
 Ponekad je potrebno izraziti da je tip objekta podtip nekoliko drugih tipova. 
-U Scali ovo može biti izraženo pomoću *složenih tipova*, koji su presjeci tipova objekata(A & B).
+U Scali ovo može biti izraženo pomoću *složenih tipova*, koji su presjeci tipova objekata.
 
 Pretpostavimo da imamo dva trejta: `Cloneable` i `Resetable`:
 

@@ -14,7 +14,7 @@ Scala omogućuje relativno lahku sintaksu za definisanje anonimnih funkcija. Slj
 
     (x: Int) => x + 1
 
-Ovo je kratica za definiciju  sljedeće anonimne klase:
+Ovo je kratica za definiciju sljedeće anonimne klase:
 
     new Function1[Int, Int] {
       def apply(x: Int): Int = x + 1

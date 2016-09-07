@@ -29,18 +29,18 @@ Scaline [case klase](case-classes.html) i njen mehanizam [podudaranja uzoraka](p
 koji se koriste u dosta funkcionalnih programskih jezika.
 [Singlton objekti](singleton-objects.html) omogućuju pogodan način za grupisanje funkcija koje nisu članovi klase.
 
-Nadalje, Scalin mehanizam podudaranja uzoraka(pattern-matching) prirodno podržava [procesiranje XML podataka](xml-processing.html) 
+Nadalje, Scalin mehanizam podudaranja uzoraka (pattern-matching) prirodno podržava [procesiranje XML podataka](xml-processing.html) 
 pomoću [desno-ignorišućih uzoraka sekvenci](regular-expression-patterns.html), 
 i generalnim proširivanjem s [ekstraktor objektima](extractor-objects.html).
 U ovom kontekstu, [komprehensije sekvenci](sequence-comprehensions.html) su korisne za izražavanje upita (query).
 Ove mogućnosti čine Scalu idealnom za razvijanje aplikacija kao što su web servisi.
 
-## Scala je statički tipizirana(statically typed) ##
+## Scala je statički tipizirana (statically typed) ##
 Scala je opremljena ekspresivnim sistemom tipova koji primorava da se apstrakcije koriste na bezbjedan i smislen način. 
 Konkretno, sistem tipova podržava sljedeće:
 
 * [generičke klase](generic-classes.html)
-* [anotacije varijance](variances.html)
+* [anotacije varijanse](variances.html)
 * [gornje](upper-type-bounds.html) i [donje](lower-type-bounds.html) granice tipa,
 * [unutarnje klase](inner-classes.html) i [apstraktne tipove](abstract-types.html) kao članove objekta
 * [složene tipove](compound-types.html)
@@ -68,7 +68,7 @@ korištenja olakšica u vidu macro-a ili meta-programiranja.
 Scala je dizajnirana za interoperabilnost s popularnim Java 2 Runtime Environment (JRE). 
 Konkretno, interakcija s popularnim objektno orijentisanim Java programskim jezikom je prirodna. 
 Novije mogućnosti Jave kao [anotacije](annotations.html) i Javini generički tipovi imaju direktnu analogiju u Scali.
-Scaline mogućnosti bez analogija u Javi, kao što su [defaultni](default-parameter-values.html) i [imenovani parametri](named-parameters.html), 
+Scaline mogućnosti bez analogija u Javi, kao što su [podrazumijevani](default-parameter-values.html) i [imenovani parametri](named-parameters.html), 
 se kompajliraju što približnije Javi.
 Scala ima isti kompilacijski model (posebno kompajliranje, dinamičko učitavanje klasa)
 kao Java i time omogućuje pristupanje hiljadama postojećih visoko kvalitetnih biblioteka.

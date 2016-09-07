@@ -10,7 +10,7 @@ outof: 33
 language: ba
 ---
 
-Kada se razvija proširiv softver ponekad je zgodno deklarisati tip vrijednosti `this` eksplicitno. 
+Kada se razvija proširiv softver ponekad je zgodno deklarisati tip vrijednosti `this` eksplicitno.  
 Za motivaciju, izvešćemo malu proširivu reprezentaciju strukture grafa u Scali.
 
 Slijedi definicija koja opisuje grafove:
@@ -29,7 +29,7 @@ Slijedi definicija koja opisuje grafove:
     }
 
 Grafovi se sastoje od liste čvorova i ivica gdje su oba tipa ostavljena apstraktnim.
-Upotreba [apstraktnih tipova](abstract-types.html) dozvoljava da implementacije trejta Graph obezbijede svoje konkretne klase za čvorove i ivice.
+Upotreba [apstraktnih tipova](abstract-types.html) dozvoljava da implementacije trejta `Graph` obezbijede svoje konkretne klase za čvorove i ivice.
 Nadalje, tu je metoda `addNode` za dodavanje novih čvorova u graf. Čvorovi se povezuju metodom `connectWith`.
 
 Moguća implementacija klase `Graph` data je u sljedećoj klasi:
@@ -64,14 +64,14 @@ Zato ova klasa ostavlja implementacijske detalje otvorenim pa su tipovi čvora i
 Klasa `DirectedGraph` otkriva neke dodatne detalje o implementaciji tipa čvora ograničavanjem ga klasom `EdgeImpl`.
 Nadalje, imamo neke preliminarne implementacije ivica i čvorova u klasama `EdgeImpl` i `NodeImpl`.
 Pošto je potrebno kreirati nove čvorove i ivice u našoj parcijalnoj implementaciji grafa,
-moramo dodati i tvorničke(factory) metode `newNode` i `newEdge`.
+moramo dodati i tvorničke (factory) metode `newNode` i `newEdge`.
 Metode `addNode` i `connectWith` su definisane pomoću ovih tvorničkih metoda.
 Pažljiviji pogled na implementaciju metode `connectWith` otkriva da za kreiranje ivice,
-moramo proslijediti samo-referencu(self-reference) `this` tvorničkoj metodi `newEdge`.
+moramo proslijediti samo-referencu (self-reference) `this` tvorničkoj metodi `newEdge`.
 Ali, `this` ima tip `NodeImpl`, tako da nije kompatibilan s tipom `Node` kojeg zahtijeva odgovarajuća tvornička metoda.
 Kao posljedica, gornji program nije dobro formiran i Scala kompajler će javiti grešku.
 
-U Scali je moguće vezati klasu za neki drugi tip(koji će biti implementiran kasnije)
+U Scali je moguće vezati klasu za neki drugi tip (koji će biti implementiran kasnije)
 davanjem drugog tipa samo-referenci `this`.
 Ovaj mehanizam možemo iskoristiti u gornjem kodu.
 Eksplicitna samo-referenca je specificirana u tijelu klase `DirectedGraph`.
@@ -91,12 +91,12 @@ Ovo je popravljeni program:
       ...
     }
 
-U novoj definiciji klase `NodeImpl`, `this`(self) ima tip `Node`. Pošto je tip `Node` apstraktan i još uvijek ne znamo da li je `NodeImpl`
+U novoj definiciji klase `NodeImpl`, `this` (self) ima tip `Node`. Pošto je tip `Node` apstraktan i još uvijek ne znamo da li je `NodeImpl`
 podtip od `Node`, sistem tipova Scale nam neće dozvoliti instanciranje ove klase.
 Kako god, eksplicitnom anotacijom iskazali smo da podklasa `NodeImpl`
 mora navesti podtip tipa `Node` da bi se mogla instancirati.
 
-Ovo je konkretna specijalizacija `DirectedGraph` u kojoj su svi članovi apstraktne klase konkretni:
+Ovo je konkretna specijalizacija klase `DirectedGraph` u kojoj su svi apstraktni članovi klase sada konkretni:
 
     class ConcreteDirectedGraph extends DirectedGraph {
       type Edge = EdgeImpl
@@ -107,7 +107,7 @@ Ovo je konkretna specijalizacija `DirectedGraph` u kojoj su svi članovi apstrak
     }
 
 Primijetite da u ovoj klasi možemo instancirati `NodeImpl` jer znamo da je `NodeImpl`
-podtip tipa `Node`(koja je samo alias za `NodeImpl`).
+podtip tipa `Node` (koja je samo pseudonim za `NodeImpl`).
 
 Primjer korištenja klase `ConcreteDirectedGraph`:
 

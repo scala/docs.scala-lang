@@ -10,7 +10,7 @@ outof: 33
 language: ba
 ---
 
-U Scali, klase su parameterizovane vrijednostima(parameteri konstruktora) i tipovima(ako su [generičke](generic-classes.html)).
+U Scali, klase su parameterizovane vrijednostima (parameteri konstruktora) i tipovima (ako su [generičke](generic-classes.html)).
 Zbog dosljednosti, ne samo da je moguće imati vrijednosti kao članove objekta već i tipove. 
 Nadalje, obje forme članova mogu biti konkretne ili apstraktne.
 Slijedi primjer koji sadrži obje forme: apstraktnu vrijednost i apstraktni tip kao članove [klase](traits.html) `Buffer`.
@@ -21,10 +21,10 @@ Slijedi primjer koji sadrži obje forme: apstraktnu vrijednost i apstraktni tip 
     }
  
 *Apstraktni tipovi* su tipovi čiji identitet nije precizno definisan.
-U gornjem primjeru, poznato je samo da svaki objekat klase `Buffer` ima a tip-član `T`, 
+U gornjem primjeru, poznato je samo da svaki objekat klase `Buffer` ima tip-član `T`, 
 ali definicija klase `Buffer` ne kazuje kojem konkretno tipu odgovara `T`. 
-Kao i definicije vrijednosti, možemo prebrisati(override) definicije tipova u podklasama.
-Ovo nam omogućuje da otkrijemo više informacija o apstraktnom tipu sužavanjem granica tipa(koje opisuju moguće konkretne instance apstraktnog tipa).
+Kao i definicije vrijednosti, možemo redefinisati (override) definicije tipova u podklasama.
+Ovo nam omogućuje da otkrijemo više informacija o apstraktnom tipu sužavanjem granica tipa (koje opisuju moguće konkretne instance apstraktnog tipa).
 
 U sljedećem programu izvodimo klasu `SeqBuffer` koja omogućuje čuvanje samo sekvenci u baferu kazivanjem da tip `T` 
 mora biti podtip `Seq[U]` za neki novi apstraktni tip `U`:
@@ -35,7 +35,7 @@ mora biti podtip `Seq[U]` za neki novi apstraktni tip `U`:
       def length = element.length
     }
  
-Trejtovi(trait) ili [klase](classes.html) s apstraktnim tip-članovima se često koriste u kombinaciji s instanciranjem anonimnih klasa. 
+Trejtovi (trait) ili [klase](classes.html) s apstraktnim tip-članovima se često koriste u kombinaciji s instanciranjem anonimnih klasa. 
 Radi ilustracije, pogledaćemo program koji radi s sekvencijalnim baferom koji sadrži listu integera:
  
     abstract class IntSeqBuffer extends SeqBuffer {
@@ -57,8 +57,8 @@ Povratni tip metode `newIntSeqBuf` odnosi se na specijalizaciju trejta `Buffer` 
 Imamo sličan alijas tip u anonimnoj instanci klase u tijelu metode `newIntSeqBuf`.
 Ovdje kreiramo novu instancu `IntSeqBuffer` u kojoj se tip `T` odnosi na `List[Int]`.
 
-Imajte na umu da je često moguće pretvoriti apstraktni tip-član u tip-parametar klase i obrnuto.
-Slijedi verzija gornjeg koda koji koristi tip-parametre:
+Imajte na umu da je često moguće pretvoriti apstraktni tip-član u tipski parametar klase i obrnuto.
+Slijedi verzija gornjeg koda koji koristi tipske parametre:
  
     abstract class Buffer[+T] {
       val element: T
@@ -76,7 +76,7 @@ Slijedi verzija gornjeg koda koji koristi tip-parametre:
       println("content = " + buf.element)
     }
  
-Primijetite da moramo koristiti [anotacije za varijancu](variances.html) ovdje;
+Primijetite da moramo koristiti [anotacije za varijansu](variances.html) ovdje;
 inače ne bismo mogli sakriti konkretni tip sekvencijalne implementacije objekta vraćenog iz metode `newIntSeqBuf`.
 Nadalje, postoje slučajevi u kojima nije moguće zamijeniti apstraktne tipove tip parametrima.
 

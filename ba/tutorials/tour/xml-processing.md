@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: XML procesiranje
+title: Procesiranje XML-a
 
 disqus: true
 

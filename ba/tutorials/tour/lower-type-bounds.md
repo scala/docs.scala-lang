@@ -23,14 +23,14 @@ Kroz slj. primjer vidjećemo zašto je ovo korisno:
         ListNode(elem, this)
     }
 
-Gornji program implementira povezanu listu s operacijom nadovezivanja(na početak liste).
+Gornji program implementira povezanu listu s operacijom nadovezivanja (na početak liste).
 Nažalost, ovaj tip je invarijantan u tipskom parametru `T`, klase `ListNode`;
 tj. `ListNode[String]` nije podtip `ListNode[Any]`.
-Pomoću [anotacija varijanci](variances.html) možemo izraziti navedeno:
+Pomoću [anotacija varijansi](variances.html) možemo izraziti navedeno:
 
     case class ListNode[+T](h: T, t: ListNode[T]) { ... }
 
-Nažalost, ovaj program se ne može kompajlirati, jer anotacija za kovarijancu je jedino moguća ako se varijabla tipa koristi na kovarijantnoj poziciji(u ovom slučaju kao povratni tip).
+Nažalost, ovaj program se ne može kompajlirati, jer anotacija za kovarijansu je jedino moguća ako se varijabla tipa koristi na kovarijantnoj poziciji (u ovom slučaju kao povratni tip).
 Pošto je varijabla tipa `T` tipski parametar metode `prepend`, ovo pravilo je prekršeno.
 Pomoću *donje granice tipa*, možemo implementirati operaciju nadovezivanja gdje se `T` pojavljuje samo u kovarijantnoj poziciji.
 

@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Automatska konstrukcija tipno zavisnih closura(zatvarajućih funkcija)
+title: Automatska konstrukcija tipno zavisnih closura (zatvarajućih funkcija)
 
 disqus: true
 
@@ -10,9 +10,9 @@ outof: 33
 language: ba
 ---
 
-Scala dozvoljava da se argument(i) metode ne evaluira prije samog poziva metode.
+Scala dozvoljava da se argument (ili više njih) metode ne evaluira prije samog poziva metode.
 Kada se takva metoda pozove, dati parametar se ne evaluira odmah već se na svakom mjestu u metodi gdje se poziva ubacuje 
-besparametarska funkcija koja enkapsulira izračunavanje odgovarajućeg parametra(tzv. *poziv-po-imenu*(call-by-name) evaluacija).
+besparametarska funkcija koja enkapsulira izračunavanje odgovarajućeg parametra (tzv. *poziv-po-imenu* (call-by-name) evaluacija).
 
 Sljedeći kod demonstrira ovaj mehanizam:
 
@@ -36,7 +36,7 @@ Ali svaki put kada se formalni parametri koriste u tijelu `whileLoop`, implicitn
 Stoga, naša metoda `whileLoop` implementira Java-stu while petlju u rekurzivnom stilu.
 
 Možemo kombinirati upotrebu [infiksnih/postfiksnih operatora](operators.html) s ovim mehanizmom da bi kreirali 
-komplikovanije naredbe(s lijepom sintaksom).
+komplikovanije naredbe (s lijepom sintaksom).
 
 Slijedi implementacija loop-unless naredbe:
 
@@ -59,7 +59,7 @@ Slijedi implementacija loop-unless naredbe:
       } unless (i == 0)
     }
 
-Funkcija `loop` prima samo tijelo i vraća instancu klase `LoopUnlessCond`(koja enkapsulira objekat tijela).
+Funkcija `loop` prima samo tijelo i vraća instancu klase `LoopUnlessCond` (koja enkapsulira objekat tijela).
 Primijetite da tijelo još uvijek nije evaluirano.
 Klasa `LoopUnlessCond` ima metodu `unless` koju možemo koristiti kao *infiksni operator*.
 Na ovaj način postižemo prilično prirodnu sintaksu za našu novu petlju: `loop { < stats > } unless ( < cond > )`.

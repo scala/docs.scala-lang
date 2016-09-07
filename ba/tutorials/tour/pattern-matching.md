@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Podudaranje uzoraka(pattern matching)
+title: Podudaranje uzoraka (pattern matching)
 
 disqus: true
 
@@ -11,8 +11,8 @@ outof: 33
 language: ba
 ---
 
-Scala ima ugrađen mehanizam generalnog podudaranja uzorka.
-On omogućuje da se podudaraju(matchaju) uzorci bilo koje vrste podataka politikom "prvo podudaranje".
+Scala ima ugrađen mehanizam generalnog podudaranja uzoraka.
+On omogućuje da se podudaraju uzorci bilo koje vrste podataka politikom "prvo podudaranje".
 Slijedi mali primjer koji pokazuje kako podudarati vrijednost cijelog broja:
 
     object MatchTest1 extends App {
@@ -42,5 +42,5 @@ Prvi `case` se podudara ako je `x` cijeli broj `1`.
 Drugi `case` se podudara ako je `x` jednak stringu `"two"`.
 Treći slučaj se sastoji od tipskog uzorka; podudara se sa bilo kojim integerom i povezuje vrijednost selektora `x` s varijablom `y` tipa integer.
 
-Scalin pattern matching je najkorisniji za podudaranje algebarskih tipova koji su izraženi kroz [case klase](case-classes.html).
+Scalin mehanizam podudaranja uzoraka je najkorisniji za algebarske tipove koji su izraženi kroz [case klase](case-classes.html).
 Scala također dozvoljava definisanje uzoraka nezavisno od case klasa, koristeći `unapply` metode u [ekstraktor objektima](extractor-objects.html).

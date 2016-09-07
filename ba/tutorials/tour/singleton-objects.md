@@ -28,17 +28,17 @@ Kao i `val`, singlton objekti mogu biti definisani kao članovi [trejta](traits.
 
 Singlton objekt može naslijediti klase i trejtove.
 Ustvari, [case klasa](case-classes.html) bez [tipskih parametara](generic-classes.html) 
-će po defaultu kreirati singlton objekt s istim imenom,
+će podrazumijevano kreirati singlton objekt s istim imenom,
 i implementiranim [`Function*`](http://www.scala-lang.org/api/current/scala/Function1.html) trejtom.
 
-## Kompanjoni(prijatelji) ##
+## Kompanjoni (prijatelji) ##
 
 Većina singlton objekata nisu samostalni, već su povezani s istoimenom klasom.
 “Singlton objekt istog imena” case klase, pomenut ranije, je jedan primjer ovoga.
 U ovom slučaju, singlton objekt se zove *kompanjon objekt* klase, a klasa se zove *kompanjon klasa* objekta.
 
 [Scaladoc](https://wiki.scala-lang.org/display/SW/Introduction) ima posebnu podršku za prebacivanje između klase i njenog kompanjona:
-ako krug s velikim “C” ili “O” ima savijenu ivicu(kao papir), možete kliknuti na krug da pređete na kompanjon.
+ako krug s velikim “C” ili “O” ima savijenu ivicu (kao papir), možete kliknuti na krug da pređete na kompanjon.
 
 Klasa i njen kompanjon objekt, ako ga ima, moraju biti definisani u istom izvornom fajlu:
 
@@ -51,7 +51,7 @@ Klasa i njen kompanjon objekt, ako ga ima, moraju biti definisani u istom izvorn
         Ordering.by(ip => (ip.x, ip.y))
     }
 
-Često vidimo instance typeclass-a (jedan od dizajn paterna) kao [implicitne vrijednosti](implicit-parameters.html), kao navedeni `ipord`,
+Često vidimo typeclass (jedan od dizajn paterna) instance kao [implicitne vrijednosti](implicit-parameters.html), kao navedeni `ipord`,
 definisane u kompanjonu.
 Ovo je pogodno jer se i članovi kompanjona uključuju u implicitnu pretragu za potrebnim vrijednostima.
 
@@ -59,7 +59,7 @@ Ovo je pogodno jer se i članovi kompanjona uključuju u implicitnu pretragu za 
 
 `static` nije ključna riječ u Scali.
 Umjesto nje, svi članovi koji bi u Javi bili statički, uključujući i klase, trebaju ići u neki singlton objekt.
-Pristupa im se istom sintaksom, importovanim posebno ili odjednom...
+Pristupa im se istom sintaksom, importovanim posebno ili grupno.
 
 Java programeri nekada definišu statičke članove privatnim kao pomoćne vrijednosti/funkcije.
 Iz ovoga proizilazi čest šablon kojim se importuju svi članovi kompanjon objekta u klasu:

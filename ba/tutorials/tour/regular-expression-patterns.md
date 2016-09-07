@@ -14,7 +14,7 @@ language: ba
 ## Desno-ignorišući uzorci sekvenci ##
 
 Desno-ignorišući uzorci su korisna opcija za dekompoziciju bilo kojeg podatka koji je ili podtip `Seq[A]` 
-ili case klasa s ponavljajućim formalnim parametrima(`Node*` u primjeru), naprimjer:
+ili case klasa s ponavljajućim formalnim parametrima (`Node*` u primjeru), naprimjer:
 
     Elem(prefix: String, label: String, attrs: MetaData, scp: NamespaceBinding, children: Node*)
 

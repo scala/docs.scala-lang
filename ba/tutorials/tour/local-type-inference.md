@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Lokalno zaključivanje tipova(type inference)
+title: Lokalno zaključivanje tipova (type inference)
 
 disqus: true
 
@@ -9,10 +9,10 @@ num: 28
 outof: 33
 language: ba
 ---
-Scala ima ugrađen mehanizam zaključivanja tipova koji dozovljava programeru da izostavi određene anotacije tipova.
+Scala ima ugrađen mehanizam zaključivanja tipova koji dozvoljava programeru da izostavi određene anotacije tipova.
 Često nije potrebno specificirati tip varijable u Scali,
 jer kompajler može sam zaključiti tip iz inicijalizacijskog izraza varijable.
-Povratni tipovi metoda također mogu biti izostavljeni jer oni odgovaraju tipu tijela(zadnji izraz u tijelu), koje kompajler sam zaključi.
+Povratni tipovi metoda također mogu biti izostavljeni jer oni odgovaraju tipu tijela (zadnji izraz u tijelu), koje kompajler sam zaključi.
 
 Slijedi jedan primjer:
 

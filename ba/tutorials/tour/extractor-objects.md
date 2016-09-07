@@ -10,9 +10,9 @@ outof: 33
 language: ba
 ---
 
-U Scali, uzorci(paterni) mogu biti definisani nezavisno od case klasa.
+U Scali, uzorci (patterns) mogu biti definisani nezavisno od case klasa.
 Za ovo se koristi metoda `unapply` koja vraća tzv. ekstraktor.
-Ekstraktor se može smatrati kao specijalna metoda koja ima obrnuti efekt od primjene(apply) nekog objekta na neke ulazne parametre.
+Ekstraktor se može smatrati kao specijalna metoda koja ima obrnuti efekt od primjene (apply) nekog objekta na neke ulazne parametre.
 Svrha mu je da 'ekstraktuje' ulazne parametre koji su bili prisutni prije 'apply' operacije.
 Naprimjer, sljedeći kod definiše ekstraktor [objekt](singleton-objects.html) Twice.
 
@@ -30,17 +30,17 @@ Navedene su dvije sintaksne konvencije:
 
 Uzorak `case Twice(n)` će pozvati `Twice.unapply`, koja se koristi da ekstraktuje bilo koji paran broj;
 povratna vrijednost od `unapply` signalizira da li se argument podudario s uzorkom ili ne,
-i bilo koje pod-vrijednosti mogu biti korištene za daljnje uzorkovanje(matchanje).
+i bilo koje pod-vrijednosti mogu biti korištene za daljnje uzorkovanje (matching).
 Ovdje je pod-vrijednost `z/2`.
 
-Metoda `apply` nije obavezna za uzorkovanje. Ona se jedino koristi da imitira konstructor.
+Metoda `apply` nije obavezna za uzorkovanje. Ona se jedino koristi da imitira konstructor.  
 `val x = Twice(21)` se proširuje na `val x = Twice.apply(21)`.
 
 Povratni tip od `unapply` se bira na sljedeći način:
 
 * Ako je samo test, vraća `Boolean`. Naprimjer `case even()`
 * Ako vraća jednu pod-vrijednost tipa, vraća `Option[T]`
-* Ako vraća više pod-vrijednosti `T1,...,Tn`, groupiše ih u opcionu n-torku `Option[(T1,...,Tn)]`.
+* Ako vraća više pod-vrijednosti `T1,...,Tn`, groupiše ih u opcionu torku `Option[(T1,...,Tn)]`.
 
 Ponekad, broj pod-vrijednosti nije fiksan i želimo da vratimo listu.
 Iz ovog razloga, također možete definisati uzorke pomoću `unapplySeq`.

@@ -17,7 +17,7 @@ Međutim, ako takvoj metodi nedostaju argumenti za implicitne parametre, ti argu
 Argumenti koji se mogu proslijediti kao implicitni parametri spadaju u dvije kategorije:
 
 * Prva, kvalifikovani su svi identifikatori x koji su dostupni pri pozivu metode bez prefiksa i predstavljaju implicitnu definiciju ili implicitni parameter.
-* Druga, kvalifikovani su također svi članovi prijateljskih objekata(modula) tipova implicitnih parametara.
+* Druga, kvalifikovani su također svi članovi prijateljskih objekata (modula) tipova implicitnih parametara.
 
 U sljedećem primjeru definisaćemo metodu `sum` koja izračunava sumu liste elemenata koristeći `add` i `unit` operacije monoida.
 Molimo primijetite da implicitne vrijednosti ne mogu biti top-level, već moraju biti članovi templejta.

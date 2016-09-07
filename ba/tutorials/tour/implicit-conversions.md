@@ -25,7 +25,7 @@ Sljedeća operacija nad dvije liste xs i ys tipa `List[Int]` je legalna:
 
     xs <= ys
 
-pod pretpostavkom da su implicitne metode `list2ordered` i `int2ordered` definisane i dostupne(in scope):
+pod pretpostavkom da su implicitne metode `list2ordered` i `int2ordered` definisane i dostupne (in scope):
 
     implicit def list2ordered[A](x: List[A])
         (implicit elem2ordered: A => Ordered[A]): Ordered[List[A]] =
@@ -34,14 +34,14 @@ pod pretpostavkom da su implicitne metode `list2ordered` i `int2ordered` definis
     implicit def int2ordered(x: Int): Ordered[Int] = 
       new Ordered[Int] { /* .. */ }
 
-Za implicitno importovane objekte `scala.Predef` deklariše nekoliko predefinisanih tipova (npr. `Pair`) i metoda (npr. `assert`) ali i nekoliko implicitnih konverzija.
+Implicitno importovani objekt `scala.Predef` deklariše nekoliko predefinisanih tipova (npr. `Pair`) i metoda (npr. `assert`) ali i nekoliko implicitnih konverzija.
 
 Naprimjer, kada se pozivaju Javine metode koje očekuju `java.lang.Integer`, možete proslijediti `scala.Int`.
-Možete, zato što Predef uključuje slj. implicitnu konverziju:
+Možete, zato što `Predef` uključuje slj. implicitnu konverziju:
 
     implicit def int2Integer(x: Int) =
       java.lang.Integer.valueOf(x)
 
-Da bi definisali vlastite implicitne konverzije, morate importovati `import scala.language.implicitConversions`
+Da bi definisali vlastite implicitne konverzije, morate importovati `scala.language.implicitConversions`
 (ili uključiti kompajler s flegom `-language:implicitConversions`). 
 Ova osobina mora biti korištena eksplicitno jer ima potencijalne zamke ako se koristi neselektivno.

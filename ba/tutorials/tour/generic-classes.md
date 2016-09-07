@@ -36,13 +36,13 @@ Ovo su neki primjeri korištenja:
       println(stack.top)
     }
 
-Izaz ovog programa je:
+Izlaz ovog programa je:
 
     97
     1
 
 _Napomena: nasljeđivanje generičkih tipova je *invarijantno*.
 Ovo znači da ako imamo stek karaktera, koji ima tip `Stack[Char]` onda on ne može biti korišten kao stek cijelih brojeva tipa `Stack[Int]`.
-Ovo bi bilo netačno(unsound) jer bi onda mogli stavljati i integere na stek karaktera.
+Ovo bi bilo netačno (unsound) jer bi onda mogli stavljati i integere na stek karaktera.
 Zaključimo, `Stack[T]` je podtip `Stack[S]` ako i samo ako je `S = T`.
 Pošto ovo može biti prilično ograničavajuće, Scala ima i [anotacije tipskih parametara](variances.html) za kontrolisanje ponašanja podtipova generičkih tipova._
