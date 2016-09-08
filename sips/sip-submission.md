@@ -206,6 +206,7 @@ The current committee members are:
 - Eugene Burmako ([@xeno-by](https://github.com/xeno-by)), EPFL
 - Andrew Marki ([@som-snytt](https://github.com/som-snytt)), independent
 - Josh Suereth ([@jsuereth](https://github.com/jsuereth)), Google
+- Iulian Dragos ([@dragos](https://github.com/dragos)), independent
 
 The current process lead is:
 
