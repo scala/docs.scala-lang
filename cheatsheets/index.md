@@ -3,7 +3,7 @@ layout: cheatsheet
 title: Scalacheat
 by: Brendan O'Connor
 about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheatsheet aims to be a quick reference of Scala syntactic constructions. Licensed by Brendan O'Connor under a CC-BY-SA 3.0 license.
-languages: [fr, ja, pt-br]
+languages: [ba, fr, ja, pt-br]
 ---
 
 ###### Contributed by {{ page.by }}
