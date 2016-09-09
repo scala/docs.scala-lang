@@ -32,10 +32,10 @@ Here is a more complicated example which computes all pairs of numbers between `
       def foo(n: Int, v: Int) =
         for (i <- 0 until n;
              j <- i until n if i + j == v) yield
-          Pair(i, j);
+          Tuple2(i, j);
       foo(20, 32) foreach {
         case (i, j) =>
-          println("(" + i + ", " + j + ")")
+          println(s"($i, j)")
       }
     }
  
@@ -54,6 +54,6 @@ Here's a program which is equivalent to the previous one but uses the special fo
     object ComprehensionTest3 extends App {
       for (i <- Iterator.range(0, 20);
            j <- Iterator.range(i, 20) if i + j == 32)
-        println("(" + i + ", " + j + ")")
+        println(s"($i, $j)")
     }
 
