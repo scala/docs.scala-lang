@@ -32,10 +32,10 @@ Here is a more complicated example which computes all pairs of numbers between `
       def foo(n: Int, v: Int) =
         for (i <- 0 until n;
              j <- i until n if i + j == v) yield
-          Tuple2(i, j);
+          (i, j);
       foo(20, 32) foreach {
         case (i, j) =>
-          println(s"($i, j)")
+          println(s"($i, $j)")
       }
     }
  
