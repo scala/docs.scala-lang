@@ -23,6 +23,8 @@ The syntax already allows this. Excerpting from Dotty's SyntaxSummary.txt (the o
     ConstrApps ::=  ConstrApp {`with' ConstrApp}
     ConstrApp  ::=  AnnotType {ArgumentExprs}
 
+In the `ClassDef` of traits, we still do not allow secondary constructors.
+
 ## Initialization Order ##
 
 Parent traits can now be introduced as a type or as a constructor which can take arguments. The order of initialization of traits is unaffected by parameter passing - as always, traits are initialized in linearization order.
