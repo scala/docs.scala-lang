@@ -76,8 +76,8 @@ Stuff changes. Found a broken link or something that needs updating on this page
 <p>Scala Support for Text Editors</p>
 <p><a href="http://ensime.github.io">Home</a> | 
 <a href="https://github.com/ensime/ensime-server/issues">Issues</a> | 
-<a href="https://github.com/ensime/ensime-server/blob/master/README.md">ReadMe</a> | 
-<a href="https://github.com/ensime/ensime-server/blob/master/README.md#contributions">Contributing</a></p>
+<a href="https://github.com/ensime/ensime-server/blob/2.0/README.md">ReadMe</a> | 
+<a href="https://ensime.github.io/contributing/">Contributing</a></p>
 </div>
 </div>
 
