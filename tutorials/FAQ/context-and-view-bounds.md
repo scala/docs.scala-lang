@@ -26,6 +26,11 @@ of view bounds in the standard library (before Scala 2.8.0, anyway), is with
 Because one can convert `A` into an `Ordered[A]`, and because `Ordered[A]`
 defines the method `<(other: A): Boolean`, I can use the expression `a < b`.
 
+In modern Scala, view bounds are deprecated. You can use context bounds instead:
+
+    type OrderedView[T] = T => Ordered[T]
+    def f[T: OrderedView](a: T, b: T) = if (a < b) a else b
+
 What is a Context Bound?
 ------------------------
 
@@ -47,9 +52,9 @@ implicit value of type `B[A]` available. The syntax goes like this:
 This is more confusing than the view bound because it is not immediately clear
 how to use it. The common example of usage in Scala is this:
 
-    def f[A : ClassManifest](n: Int) = new Array[A](n)
+    def f[A : ClassTag](n: Int) = new Array[A](n)
 
-An `Array` initialization on a parameterized type requires a `ClassManifest` to
+An `Array` initialization on a parameterized type requires a `ClassTag` to
 be available, for arcane reasons related to type erasure and the non-erasure
 nature of arrays.
 
@@ -145,7 +150,7 @@ the traditional operator style. Another example in Scala 2.8 is the `Numeric`:
 
 A more complex example is the new collection usage of `CanBuildFrom`, but
 there's already a very long answer about that, so I'll avoid it here. And, as
-mentioned before, there's the `ClassManifest` usage, which is required to
+mentioned before, there's the `ClassTag` usage, which is required to
 initialize new arrays without concrete types.
 
 The context bound with the typeclass pattern is much more likely to be used by
