@@ -11,7 +11,7 @@ language: ba
 ---
 
 U Scali je moguće da klase imaju druge klase kao članove.
-Nasuprot jezicima sličnim sličnim Javi, gdje su unutarnje klase članovi vanjske klase,
+Nasuprot jezicima sličnim Javi, gdje su unutarnje klase članovi vanjske klase,
 u Scali takve unutarnje klase su vezane za vanjski objekt.
 Radi ilustracije razlike, prikazaćemo implementaciju klase grafa:
  

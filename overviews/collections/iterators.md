@@ -85,8 +85,8 @@ All operations on iterators are summarized below.
 |  `it.hasNext`  	        | Returns `true` if `it` can return another element. |
 |  **Variations:**          |						         |
 |  `it.buffered`      	    | A buffered iterator returning all elements of `it`. |
-|  `it grouped size`      	| An iterator that yields the elements elements returned by `it` in fixed-sized sequence "chunks". |
-|  `xs sliding size`      	| An iterator that yields the elements elements returned by `it` in sequences representing a sliding fixed-sized window. |
+|  `it grouped size`      	| An iterator that yields the elements returned by `it` in fixed-sized sequence "chunks". |
+|  `xs sliding size`      	| An iterator that yields the elements returned by `it` in sequences representing a sliding fixed-sized window. |
 |  **Duplication:**         |						         |
 |  `it.duplicate`           | A pair of iterators that each independently return all elements of `it`. |
 |  **Additions:**           |						         |
