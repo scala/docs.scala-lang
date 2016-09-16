@@ -35,7 +35,7 @@ So, let's discuss these categories.
 Keywords/reserved symbols
 -------------------------
 
-There are a few symbols in Scala that are special and cannot be defined or used used as method names.
+There are a few symbols in Scala that are special and cannot be defined or used as method names.
 Two of them are considered proper keywords, while others are just "reserved". They are:
 
     // Keywords
