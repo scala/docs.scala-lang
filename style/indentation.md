@@ -73,7 +73,7 @@ spaces to achieve alignment. In such cases, the invocation itself should
 be moved to the next line and indented two spaces:
 
     // right!
-    val myOnerousAndLongFieldNameWithNoRealPoint = 
+    val myLongFieldNameWithNoRealPoint =
       foo(
         someVeryLongFieldName,
         andAnotherVeryLongFieldName,
@@ -81,12 +81,10 @@ be moved to the next line and indented two spaces:
         3.1415)
 
     // wrong!
-    val myOnerousAndLongFieldNameWithNoRealPoint = foo(someVeryLongFieldName,
-                                                       andAnotherVeryLongFieldName,
-                                                       "this is a string",
-                                                       3.1415)
+    val myLongFieldNameWithNoRealPoint = foo(someVeryLongFieldName,
+                                             andAnotherVeryLongFieldName,
+                                             "this is a string",
+                                             3.1415)
 
 Better yet, just try to avoid any method which takes more than two or
 three parameters!
-
-
