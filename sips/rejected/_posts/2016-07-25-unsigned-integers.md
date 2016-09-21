@@ -1,19 +1,18 @@
 ---
 layout: sip
-title: SIP 26 - Unsigned Integers
-disqus: true
+title: SIP-26 - Unsigned Integers
+
+vote-status: rejected
+vote-text: The committee votes to reject the proposal because of a 6% performance hit on the provided implementation by the authors.
 ---
 
 __Sébastien Doeraene and Denys Shabalin__
 
-__first submitted 9 November 2015__
-
-**tl;dr**: We propose the addition of 4 "primitive" types to represent
+**Summary**: We propose the addition of 4 "primitive" types to represent
 unsigned integers: `UByte`, `UShort`, `UInt` and `ULong`.
 
 A prototype implementation of this proposal, with unit tests and benchmarks,
-can be found at
-https://github.com/scala/scala/compare/2.12.x...sjrd:uints
+can be found [here](https://github.com/scala/scala/compare/2.12.x...sjrd:uints).
 
 ## History
 
@@ -21,7 +20,7 @@ https://github.com/scala/scala/compare/2.12.x...sjrd:uints
 |--------------|---------------|
 | Nov 9th 2015 | Initial Draft |
 
-## Introduction/Motivation/Abstract
+## Introduction - Motivation - Abstract
 
 Scala was initially designed to target the JVM, and, as such, defines exactly
 9 primitive types corresponding to the 9 primitive types of the JVM (including

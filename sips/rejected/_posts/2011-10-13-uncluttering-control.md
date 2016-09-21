@@ -1,10 +1,9 @@
 ---
 layout: sip
-disqus: true
-title: SIP-12 Uncluttering Scala’s syntax for control structures.
+title: SIP-12 - Uncluttering Scala’s syntax for control structures.
 
-vote-status: postponed
-vote-text: This SIP is in Postponed status currently, with the current action for 2.10. (1) Deprecate "then" in identifiers to reserve for future keyword status. (2) Deprecate problematic "while() do" syntax.  ("do" loops in while loops require braces).
+vote-status: rejected
+vote-text: The committee votes unanimously to reject the change. The conclusion is that there is not a clear benefit for it and the required invested time and efforts would be too high. For more explanation, read the <a href=../minutes/sip-10th-august-minutes.html>minutes</a>.
 ---
 
 **By: Martin Odersky**
