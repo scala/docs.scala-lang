@@ -199,12 +199,10 @@ The current committee members are:
 
 - Martin Odersky ([@odersky](https://github.com/odersky)), EPFL
 - Adriaan Moors ([@adriaanm](https://github.com/adriaanm)), Lightbend
-- Erik Osheim ([@non](https://github.com/non)), independent
 - Heather Miller ([@heathermiller](https://github.com/heathermiller)), Scala Center
 - Seth Tisue ([@SethTisue](https://github.com/SethTisue)), Lightbend
 - Sébastien Doeraene ([@sjrd](https://github.com/sjrd)), EPFL
 - Eugene Burmako ([@xeno-by](https://github.com/xeno-by)), EPFL
-- Andrew Marki ([@som-snytt](https://github.com/som-snytt)), independent
 - Josh Suereth ([@jsuereth](https://github.com/jsuereth)), Google
 - Iulian Dragos ([@dragos](https://github.com/dragos)), independent
 
