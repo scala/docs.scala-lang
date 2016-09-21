@@ -1,10 +1,10 @@
 ---
 layout: sip
 disqus: true
-title: SIP-19 Implicit Source Locations
+title: SIP-19 - Implicit Source Locations
 
-vote-status: not accepted
-vote-text: This is in Not Accepted status. We expect this to be easily implemented using macros without going through a full SIP.
+vote-status: rejected
+vote-text: The proposal is rejected. We expect this to be easily implemented using macros without going through a full SIP. A modern implementation can be found <a href="https://github.com/lihaoyi/sourcecode">here</a>.
 ---
 
 **Philipp Haller**
