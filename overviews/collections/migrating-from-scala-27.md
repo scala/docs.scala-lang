@@ -38,7 +38,7 @@ Generally, the old functionality of Scala 2.7 collections has been left in place
 
 There are two parts of the old libraries which have been replaced wholesale, and for which deprecation warnings were not feasible.
 
-1. The previous `scala.collection.jcl` package is gone. This package tried to mimick some of the Java collection library design in Scala, but in doing so broke many symmetries. Most people who wanted Java collections bypassed `jcl` and used `java.util` directly. Scala 2.8 offers automatic conversion mechanisms between both collection libraries in the [JavaConversions]({{ site.baseurl }}/overviews/collections/conversions-between-java-and-scala-collections.md) object which replaces the `jcl` package.
+1. The previous `scala.collection.jcl` package is gone. This package tried to mimick some of the Java collection library design in Scala, but in doing so broke many symmetries. Most people who wanted Java collections bypassed `jcl` and used `java.util` directly. Scala 2.8 offers automatic conversion mechanisms between both collection libraries in the [JavaConversions]({{ site.baseurl }}/overviews/collections/conversions-between-java-and-scala-collections.html) object which replaces the `jcl` package.
 2. Projections have been generalized and cleaned up and are now available as views. It seems that projections were used rarely, so not much code should be affected by this change.
 
 So, if your code uses either `jcl` or projections there might be some minor rewriting to do.

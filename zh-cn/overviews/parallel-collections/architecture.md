@@ -24,7 +24,7 @@ Spliter的工作，正如其名，它把一个并行集合分割到了它的元�
     trait Splitter[T] extends Iterator[T] {
         def split: Seq[Splitter[T]]
     }
-    
+
 有趣的是，分割器是作为迭代器实现的，这意味着除了分割，他们也被框架用来遍历并行集合（也就是说，他们继承了迭代器的标准方法，如next()和hasNext()）。这种“分割迭代器”的独特之处是它的分割方法把自身（迭代器类型的分割器）进一步分割成额外的分割器，这些新的分割器能遍历到整个并行集合的不相交的元素子集。类似于正常的迭代器，分割器在调用分割方法后失效。
 
 一般来说，集合是使用分割器(Splitters)分成大小大致相同的子集。在某些情况下，任意大小的分区是必须的，特别是在并行序列上，PreciseSplitter（精确的分割器）是很有用的，它是继承于Splitter和另外一个实现了精确分割的方法--psplit.
@@ -46,7 +46,7 @@ trait Combiner[Elem, To] extends Builder[Elem, To] {
 
 Scala的并行集合吸收了很多来自于Scala的（序列）集合库的设计灵感--事实上，它反映了规则地集合框架的相应特征，如下所示。
 
-![parallel-collections-hierarchy.png](/pictures/parallel-collections-hierarchy.png)
+![parallel-collections-hierarchy.png](/resources/images/parallel-collections-hierarchy.png)
 
 Scala集合的层次和并行集合库
 
@@ -59,4 +59,3 @@ Scala集合的层次和并行集合库
 引用
 
 1. [On a Generic Parallel Collection Framework, Aleksandar Prokopec, Phil Bawgell, Tiark Rompf, Martin Odersky, June 2011](http://infoscience.epfl.ch/record/165523/files/techrep.pdf)
-

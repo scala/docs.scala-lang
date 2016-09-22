@@ -15,13 +15,13 @@ language: zh-cn
 
     scala> val pa = scala.collection.parallel.mutable.ParArray.tabulate(1000)(x => 2 * x + 1)
     pa: scala.collection.parallel.mutable.ParArray[Int] = ParArray(1, 3, 5, 7, 9, 11, 13,...
-    
+
     scala> pa reduce (_ + _)
     res0: Int = 1000000
-    
+
     scala> pa map (x => (x - 1) / 2)
     res1: scala.collection.parallel.mutable.ParArray[Int] = ParArray(0, 1, 2, 3, 4, 5, 6, 7,...
-    
+
 在内部，分离一个并行数组[分离器](http://docs.scala-lang.org/overviews/parallel-collections/architecture.html#core_abstractions)相当于使用它们的下标迭代器更新来创建两个分离器。[组合](http://docs.scala-lang.org/overviews/parallel-collections/architecture.html#core_abstractions)稍微负责一点。因为大多数的分离方法(如：flatmap, filter, takeWhile等)我们不能预先知道元素的个数（或者数组的大小），每一次组合本质上来说是一个数组缓冲区的一种变量根据分摊时间来进行加减的操作。不同的处理器进行元素相加操作，对每个独立并列数组进行组合，然后根据其内部连结在再进行组合。在并行数组中的基础数组只有在知道元素的总数之后才能被分配和填充。基于此，变换方法比存取方法要稍微复杂一些。另外，请注意，最终数组分配在JVM上的顺序进行，如果映射操作本身是很便宜，这可以被证明是一个序列瓶颈。
 
 通过调用seq方法，并行数组(parallel arrays)被转换为对应的顺序容器(sequential collections) ArraySeq。这种转换是非常高效的，因为新创建的ArraySeq 底层是通过并行数组(parallel arrays)获得的。
@@ -32,7 +32,7 @@ language: zh-cn
 
     scala> val pv = scala.collection.parallel.immutable.ParVector.tabulate(1000)(x => x)
     pv: scala.collection.parallel.immutable.ParVector[Int] = ParVector(0, 1, 2, 3, 4, 5, 6, 7, 8, 9,...
-    
+
     scala> pv filter (_ % 2 == 0)
     res0: scala.collection.parallel.immutable.ParVector[Int] = ParVector(0, 2, 4, 6, 8, 10, 12, 14, 16, 18,...
 不可变向量表现为32叉树，因此[分离器]通过将子树分配到每个分离器(spliter)来分离。[组合(combiners)]存储元素的向量并通过懒惰(lazily)拷贝来组合元素。因此，转换方法相对于并行数组来说可伸缩性较差。一旦串联操作在将来scala的发布版本中成为可变的，组合器将会使得串联和变量器方法更加有效率。
@@ -45,10 +45,10 @@ language: zh-cn
 
     scala> 1 to 3 par
     res0: scala.collection.parallel.immutable.ParRange = ParRange(1, 2, 3)
-    
+
     scala> 15 to 5 by -2 par
     res1: scala.collection.parallel.immutable.ParRange = ParRange(15, 13, 11, 9, 7, 5)
-    
+
 正如顺序范围有没有创建者(builders)，平行的范围(parallel ranges)有没有组合者(combiners)。映射一个并行范围的元素来产生一个并行向量。顺序范围(sequential ranges)和并行范围(parallel ranges)能够被高效的通过seq和par方法进行转换。
 
 ### 并行哈希表(Parallel Hash Tables)
@@ -57,10 +57,10 @@ language: zh-cn
 
     scala> val phs = scala.collection.parallel.mutable.ParHashSet(1 until 2000: _*)
     phs: scala.collection.parallel.mutable.ParHashSet[Int] = ParHashSet(18, 327, 736, 1045, 773, 1082,...
-    
+
     scala> phs map (x => x * x)
     res0: scala.collection.parallel.mutable.ParHashSet[Int] = ParHashSet(2181529, 2446096, 99225, 2585664,...
-    
+
 并行哈希表组合器元素排序是依据他们的哈希码前缀在桶(buckets)中进行的。它们通过简单地连接这些桶在一起。一旦最后的哈希表被构造出来（如：组合结果的方法被调用），基本数组分配和从不同的桶元素复制在平行于哈希表的数组不同的相邻节段。
 
 连续的哈希映射和散列集合可以被转换成并行的变量使用par方法。并行哈希表内在上要求一个映射的大小在不同块的哈希表元素的数目。这意味着，一个连续的哈希表转换为并行哈希表的第一时间，表被遍历并且size map被创建，因此，第一次调用par方法的时间是和元素个数成线性关系的。进一步修改的哈希表的映射大小保持状态，所以以后的转换使用PAR和序列具有常数的复杂性。使用哈希表的usesizemap方法，映射大小的维护可以开启和关闭。重要的是，在连续的哈希表的修改是在并行哈希表可见，反之亦然。
@@ -71,10 +71,10 @@ language: zh-cn
 
     scala> val phs = scala.collection.parallel.immutable.ParHashSet(1 until 1000: _*)
     phs: scala.collection.parallel.immutable.ParHashSet[Int] = ParSet(645, 892, 69, 809, 629, 365, 138, 760, 101, 479,...
-    
+
     scala> phs map { x => x * x } sum
     res0: Int = 332833500
-    
+
 类似于平行散列哈希表，parallel hash trie在桶(buckets)里预排序这些元素和根据不同的处理器分配不同的桶(buckets) parallel hash trie的结果，这些构建subtrie是独立的。
 
 并行散列试图可以来回转换的，顺序散列试图利用序列和时间常数的方法。
@@ -85,12 +85,12 @@ language: zh-cn
 
     scala> val numbers = scala.collection.parallel.mutable.ParTrieMap((1 until 100) zip (1 until 100): _*) map { case (k, v) => (k.toDouble, v.toDouble) }
     numbers: scala.collection.parallel.mutable.ParTrieMap[Double,Double] = ParTrieMap(0.0 -> 0.0, 42.0 -> 42.0, 70.0 -> 70.0, 2.0 -> 2.0,...
-    
+
     scala> while (numbers.nonEmpty) {
          | numbers foreach { case (num, sqrt) =>
          | val nsqrt = 0.5 * (sqrt + num / sqrt)
          | numbers(num) = nsqrt
-         | if (math.abs(nsqrt - sqrt) < 0.01) { 
+         | if (math.abs(nsqrt - sqrt) < 0.01) {
          | println(num, nsqrt)
          | numbers.remove(num)
          | }
@@ -101,7 +101,7 @@ language: zh-cn
     (7.0,2.64576704419029)
     (4.0,2.0000000929222947)
     ...
-    
+
 合成器是引擎盖下triemaps实施——因为这是一个并行数据结构，只有一个组合构建整个变压器的方法调用和所有处理器共享。
 
 与所有的并行可变容器(collections)，Triemaps和并行partriemaps通过调用序列或PAR方法得到了相同的存储支持，所以修改在一个在其他可见。转换发生在固定的时间。
@@ -110,11 +110,22 @@ language: zh-cn
 
 顺序类型(sequence types)的性能特点：
 
-![20131225152436.png](/pictures/20131225152436.png)
+|               | head | tail | apply | update| prepend | append | insert |
+| --------      | ---- | ---- | ----  | ----  | ----    | ----   | ----   |
+| `ParArray`    | C    | L    | C     | C     |  L      | L      |  L     |
+| `ParVector`   | eC   | eC   | eC    | eC    |  eC     | eC     |  -     |
+| `ParRange`    | C    | C    | C     | -     |  -      | -      |  -     |
 
 性能特征集(set)和映射类型：
 
-![20131225152515.png](/pictures/20131225152515.png)
+|                          | lookup | add  | remove |
+| --------                 | ----   | ---- | ----   |
+| **immutable**            |        |      |        |
+| `ParHashSet`/`ParHashMap`| eC     | eC   | eC     |
+| **mutable**              |        |      |        |
+| `ParHashSet`/`ParHashMap`| C      | C    | C      |
+| `ParTrieMap`             | eC     | eC   | eC     |
+
 
 ####Key
 

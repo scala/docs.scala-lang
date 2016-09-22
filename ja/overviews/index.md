@@ -28,7 +28,7 @@ title: ガイドと概要
      * [Scala 2.7 からの移行](/ja/overviews/collections/migrating-from-scala-27.html)
    * [文字列の補間](/ja/overviews/core/string-interpolation.html) <span class="label success">New in 2.10</span>
    * [値クラスと汎用トレイト](/ja/overviews/core/value-classes.html) <span class="label success">New in 2.10</span>
- 
+
  <div class="page-header-index">
    <h2>並列および並行プログラミング</h2>
  </div>
@@ -39,7 +39,7 @@ title: ガイドと概要
      * [並列コレクションへの変換](/ja/overviews/parallel-collections/conversions.html)
      * [並行トライ](/ja/overviews/parallel-collections/ctries.html)
      * [並列コレクションライブラリのアーキテクチャ](/ja/overviews/parallel-collections/architecture.html)
-     * [カスタム並列コレクションの作成](/ja/overviews/parallel-collections/custom-parallel-collections.*tml)
+     * [カスタム並列コレクションの作成](/ja/overviews/parallel-collections/custom-parallel-collections.html)
      * [並列コレクションの設定](/ja/overviews/parallel-collections/configuration.html)
      * [性能の測定](/ja/overviews/parallel-collections/performance.html)
 
