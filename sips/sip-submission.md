@@ -132,10 +132,10 @@ During every iteration, the appointed reviewer presents the changes (updated
 design document, progress with the implementation, etc) to the SIP Committee.
 Based on the feedback, the SIP is either:
 
-1. Accepted, in which case the committee will propose a release date to the
-   compiler maintainers, where the role of the committee ends. In certain cases,
-   accepted proposal may need exceptional follow-up iterations to flesh out all
-   the details of the proposed specification or implementation.
+1. Accepted, in which case the committee proposes a release date to the compiler
+   maintainers, where the role of the committee ends. The Committee asks authors
+   to update both the specification and implementation according to the final
+   verdict.
 2. Rejected, in which case the SIP is closed and no longer evaluated in the
    future.
 3. Under revision, in which case the author needs to continue the formal
