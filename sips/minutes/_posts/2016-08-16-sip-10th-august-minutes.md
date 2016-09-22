@@ -39,18 +39,18 @@ Minutes were taken by Jorge Vicente Cantero, acting secretary.
 
 Attendees Present:
 
-* Seth Tisue ([@SethTisue](github.com/SethTisue)), EPFL
-* Adriaan Moors ([@adriaanm](github.com/adriaanm)), Lightbend
-* Heather Miller ([@heathermiller](github.com/heathermiller)), Scala Center
-* Eugene Burmako ([@xeno-by](github.com/xeno-by)), EPFL
-* Andrew Marki ([@som-snytt](github.com/som-snytt)), independent
-* Josh Suereth ([@jsuereth](github.com/jsuereth)), Google
-* Jorge Vicente Cantero ([@jvican](github.com/jvican)), Process Lead
+* Seth Tisue ([@SethTisue](https://github.com/SethTisue)), EPFL
+* Adriaan Moors ([@adriaanm](https://github.com/adriaanm)), Lightbend
+* Heather Miller ([@heathermiller](https://github.com/heathermiller)), Scala Center
+* Eugene Burmako ([@xeno-by](https://github.com/xeno-by)), EPFL
+* Andrew Marki ([@som-snytt](https://github.com/som-snytt)), independent
+* Josh Suereth ([@jsuereth](https://github.com/jsuereth)), Google
+* Jorge Vicente Cantero ([@jvican](https://github.com/jvican)), Process Lead
 
 ## Apologies
 
-* Martin Odersky ([@odersky](github.com/odersky)), EPFL
-* Sébastien Doeraene ([@sjrd](github.com/sjrd)), EPFL
+* Martin Odersky ([@odersky](https://github.com/odersky)), EPFL
+* Sébastien Doeraene ([@sjrd](https://github.com/sjrd)), EPFL
 
 ## Proceedings
 ### Opening Remarks

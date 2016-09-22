@@ -59,7 +59,7 @@ Usando un `map` paralelizado para transformar una colección de elementos tipo `
 
     scala> val apellidos = List("Smith","Jones","Frankenstein","Bach","Jackson","Rodin").par
     apellidos: scala.collection.parallel.immutable.ParSeq[String] = ParVector(Smith, Jones, Frankenstein, Bach, Jackson, Rodin)
-    
+
     scala> apellidos.map(_.toUpperCase)
     res0: scala.collection.parallel.immutable.ParSeq[String] = ParVector(SMITH, JONES, FRANKENSTEIN, BACH, JACKSON, RODIN)
 
@@ -69,7 +69,7 @@ Sumatoria mediante `fold` en un `ParArray`:
 
     scala> val parArray = (1 to 1000000).toArray.par
     parArray: scala.collection.parallel.mutable.ParArray[Int] = ParArray(1, 2, 3, ...
-    
+
     scala> parArray.fold(0)(_ + _)
     res0: Int = 1784293664
 
@@ -80,7 +80,7 @@ Usando un filtrado mediante `filter` paralelizado para seleccionar los apellidos
 
     scala> val apellidos = List("Smith","Jones","Frankenstein","Bach","Jackson","Rodin").par
     apellidos: scala.collection.parallel.immutable.ParSeq[String] = ParVector(Smith, Jones, Frankenstein, Bach, Jackson, Rodin)
-    
+
     scala> apellidos.filter(_.head >= 'J')
     res0: scala.collection.parallel.immutable.ParSeq[String] = ParVector(Smith, Jones, Jackson, Rodin)
 
@@ -104,11 +104,11 @@ Lo que es importante desarrollar aquí son estos métodos para la conversión de
 _Nota:_ Las colecciones que son inherentemente secuenciales (en el sentido que sus elementos deben ser accedidos uno a uno), como las listas, colas y streams (a veces llamados flujos), son convertidos a sus contrapartes paralelizadas al copiar los todos sus elementos. Un ejemplo es la clase `List` --es convertida a una secuencia paralelizada inmutable común, que es un `ParVector`. Por supuesto, el tener que copiar los elementos para estas colecciones involucran una carga más de trabajo que no se sufre con otros tipos como: `Array`, `Vector`, `HashMap`, etc.
 
 For more information on conversions on parallel collections, see the
-[conversions]({{ site.baseurl }}/overviews/parallel-collections/converesions.html)
-and [concrete parallel collection classes]({{ site.baseurl }}/overviews/parallel-collections/concrete-parallel-collections.html) 
+[conversions]({{ site.baseurl }}/overviews/parallel-collections/conversions.html)
+and [concrete parallel collection classes]({{ site.baseurl }}/overviews/parallel-collections/concrete-parallel-collections.html)
 sections of thise guide.
 
-Para más información sobre la conversión de colecciones paralelizadas, véase los artículos sobre [conversiones]({{ site.baseurl }}/es/overviews/parallel-collections/converesions.html) y [clases concretas de colecciones paralelizadas]({{ site.baseurl }}/es/overviews/parallel-collections/concrete-parallel-collections.html) de esta misma serie.
+Para más información sobre la conversión de colecciones paralelizadas, véase los artículos sobre [conversiones]({{ site.baseurl }}/es/overviews/parallel-collections/conversions.html) y [clases concretas de colecciones paralelizadas]({{ site.baseurl }}/es/overviews/parallel-collections/concrete-parallel-collections.html) de esta misma serie.
 
 ## Entendiendo las colecciones paralelizadas
 
@@ -138,19 +138,19 @@ Veamos un ejemplo:
 
     scala> val list = (1 to 1000).toList.par
     list: scala.collection.parallel.immutable.ParSeq[Int] = ParVector(1, 2, 3,…
-    
+
     scala> list.foreach(sum += _); sum
     res01: Int = 467766
-    
+
     scala> var sum = 0
     sum: Int = 0
-    
+
     scala> list.foreach(sum += _); sum
     res02: Int = 457073
-    
+
     scala> var sum = 0
     sum: Int = 0
-    
+
     scala> list.foreach(sum += _); sum
     res03: Int = 468520
 
@@ -171,13 +171,13 @@ Dado este funcionamiento "fuera de orden", también se debe ser cuidadoso de rea
 
     scala> val list = (1 to 1000).toList.par
     list: scala.collection.parallel.immutable.ParSeq[Int] = ParVector(1, 2, 3,…
-    
+
     scala> list.reduce(_-_)
     res01: Int = -228888
-    
+
     scala> list.reduce(_-_)
     res02: Int = -61000
-    
+
     scala> list.reduce(_-_)
     res03: Int = -331818
 
@@ -186,8 +186,8 @@ En el ejemplo anterior invocamos reduce sobre un `ParVector[Int]` pasándole `_-
 _Nota:_ Generalmente se piensa que, al igual que las operaciones no asociativas, las operaciones no conmutativas pasadas a un función de orden superior también generan resultados extraños (no deterministas). En realidad esto no es así, un simple ejemplo es la concatenación de Strings (cadenas de caracteres). -- una operación asociativa, pero no conmutativa:
 
     scala> val strings = List("abc","def","ghi","jk","lmnop","qrs","tuv","wx","yz").par
-    strings: scala.collection.parallel.immutable.ParSeq[java.lang.String] = ParVector(abc, def, ghi, jk, lmnop, qrs, tuv, wx, yz) 
-    
+    strings: scala.collection.parallel.immutable.ParSeq[java.lang.String] = ParVector(abc, def, ghi, jk, lmnop, qrs, tuv, wx, yz)
+
     scala> val alfabeto = strings.reduce(_++_)
     alfabeto: java.lang.String = abcdefghijklmnopqrstuvwxyz
 

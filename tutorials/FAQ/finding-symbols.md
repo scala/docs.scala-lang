@@ -159,7 +159,7 @@ supertypes (`AnyRef` or `Any`) or a type parameter. In this case, we find
 avaialable on all types.
 
 Other implicit conversions may be visible in your scope depending on imports, extended types or
-self-type annotations. See [Finding implicits](tutorials/FAQ/finding-implicits.md) for details.
+self-type annotations. See [Finding implicits](tutorials/FAQ/finding-implicits.html) for details.
 
 Syntactic sugars/composition
 -----------------------------

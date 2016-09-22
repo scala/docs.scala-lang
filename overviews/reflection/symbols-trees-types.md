@@ -384,9 +384,9 @@ as ASTs.
 
 In Scala reflection, APIs that produce or use trees are the following:
 
-1. Scala annotations, which use trees to represent their arguments, exposed in `Annotation.scalaArgs` (for more, see the [Annotations]({{ site.baseurl }}/overviews/reflection/names-exprs-scopes-more.html) section of this guide).
+1. Scala annotations, which use trees to represent their arguments, exposed in `Annotation.scalaArgs` (for more, see the [Annotations]({{ site.baseurl }}/overviews/reflection/annotations-names-scopes.html) section of this guide).
 2. `reify`, a special method that takes an expression and returns an AST that represents this expression.
-3. Compile-time reflection with macros (outlined in the [Macros guide]({{ site.baseurl }}/macros/overview.html)) and runtime compilation with toolboxes both use trees as their program representation medium.
+3. Compile-time reflection with macros (outlined in the [Macros guide]({{ site.baseurl }}/overviews/macros/overview.html)) and runtime compilation with toolboxes both use trees as their program representation medium.
 
 It's important to note that trees are immutable except for three fields--
 `pos` (`Position`), `symbol` (`Symbol`), and `tpe` (`Type`), which are
@@ -441,7 +441,7 @@ expression:
 
 Here, `reify` simply takes the Scala expression it was passed, and returns a
 Scala `Expr`, which is simply wraps a `Tree` and a `TypeTag` (see the
-[Expr]({{ site.baseurl }}/overviews/reflection/names-exprs-scopes-more.html)
+[Expr]({{ site.baseurl }}/overviews/reflection/annotations-names-scopes.html)
 section of this guide for more information about `Expr`s). We can obtain
 the tree that `expr` contains by:
 

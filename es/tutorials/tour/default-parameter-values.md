@@ -15,8 +15,8 @@ En Java, uno tiende a ver muchos métodos sobrecargados que solamente sirven par
 
     public class HashMap<K,V> {
       public HashMap(Map<? extends K,? extends V> m);
-      /** Create a new HashMap with default capacity (16) 
-        * and loadFactor (0.75) 
+      /** Create a new HashMap with default capacity (16)
+        * and loadFactor (0.75)
         */
       public HashMap();
       /** Create a new HashMap with default loadFactor (0.75) */
@@ -33,8 +33,8 @@ Más problemático es que los valores usados para ser por defecto están tanto e
       public static final float DEFAULT_LOAD_FACTOR = 0.75;
 
       public HashMap(Map<? extends K,? extends V> m);
-      /** Create a new HashMap with default capacity (16) 
-        * and loadFactor (0.75) 
+      /** Create a new HashMap with default capacity (16)
+        * and loadFactor (0.75)
         */
       public HashMap();
       /** Create a new HashMap with default loadFactor (0.75) */
@@ -62,4 +62,4 @@ Scala cuenta con soporte directo para esto:
     // mediante parametros nombrados
     val m4 = new HashMap[String,Int](loadFactor = 0.8)
 
-Nótese cómo podemos sacar ventaja de cualquier valor por defecto al utilizar [parámetros nombrados]({{ site.baseurl }}/tutorials/tour/named_parameters.html).
+Nótese cómo podemos sacar ventaja de cualquier valor por defecto al utilizar [parámetros nombrados]({{ site.baseurl }}/tutorials/tour/named-parameters.html).
