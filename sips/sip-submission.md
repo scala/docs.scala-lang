@@ -132,8 +132,8 @@ During every iteration, the appointed reviewer presents the changes (updated
 design document, progress with the implementation, etc) to the SIP Committee.
 Based on the feedback, the SIP is either:
 
-1. Accepted, in which case the committee proposes that the compiler maintainers
-   include the new language feature in a future release of the Scala compiler.   
+1. Accepted, in which case the committee asks the compiler maintainers to
+   indicate the earliest version of Scala that can include the language change.
 2. Rejected, in which case the SIP is closed and no longer evaluated in the
    future.
 3. Under revision, in which case the author needs to continue the formal
