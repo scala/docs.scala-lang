@@ -3,6 +3,8 @@ layout: sip
 disqus: true
 title: SIP-20 - Improved Lazy Vals Initialization
 
+vote-status: under review
+vote-text: Next iteration takes place in October 2016.
 ---
 
 **By: Aleksandar Prokopec, Miguel Garcia, Jason Zaugg, Hubert Plociniczak, Viktor Klang, Martin Odersky**
