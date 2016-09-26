@@ -4,8 +4,6 @@ disqus: true
 title: SIP-27 - Trailing Commas
 ---
 
-# SIP-27: Trailing Commas
-
 **By: Dale Wijnand**
 
 ## History

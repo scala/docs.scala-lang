@@ -2,9 +2,10 @@
 layout: sip
 disqus: true
 title: SIP-NN - Inline/meta
----
 
-# SIP-NN: Inline/meta
+vote-status: numbered 
+vote-text: The following proposal has been split and numbered as SIP-28: Inline and SIP-29: Meta. For more information on this decision, check the [minutes](http://docs.scala-lang.org/sips/minutes/sip-20th-september-minutes.html).
+---
 
 **By: Eugene Burmako, Sébastien Doeraene, Vojin Jovanovic, Martin Odersky, Dmitry Petrashko, Denys Shabalin**
 
