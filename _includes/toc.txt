@@ -28,13 +28,13 @@
         {% elsif page.vote-status == 'under review' %}
           <p class="contents">SIP Committee Decision</p>
           <div class="alert-message warning" style="margin-left: 15px;">
-            <strong style="font-size: 15px;">Under review</strong>
+            <strong style="font-size: 15px;">Under Review</strong>
             <p style="padding-top: 10px">{{ page.vote-text }}</p>
           </div>            
         {% elsif page.vote-status == 'rejected' %}
           <p class="contents">SIP Committee Decision</p>
           <div class="alert-message danger" style="margin-left: 15px;">
-            <strong style="font-size: 15px;">Rejected</strong>
+            <strong style="font-size: 15px;">Not Accepted</strong>
             <p style="padding-top: 10px">{{ page.vote-text }}</p>
           </div>            
         {% endif %}                

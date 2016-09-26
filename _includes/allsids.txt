@@ -10,13 +10,13 @@
       {% elsif post.vote-status == 'postponed' %}
         <span class="label light-warning">Postponed</span>
       {% elsif post.vote-status == 'under review' %}
-        <span class="label warning">Under review</span>
+        <span class="label warning">Under Review</span>
       {% elsif post.vote-status == 'numbered' %}
         <span class="label notice">Numbered</span>
       {% elsif post.vote-status == 'not accepted' %}
-        <span class="label danger">Rejected</span>
+        <span class="label danger">Not Accepted</span>
       {% elsif post.vote-status == 'rejected' %}
-        <span class="label danger">Rejected</span>
+        <span class="label danger">Not Accepted</span>
       {% endif %}
     {% endif %}
     </li>
