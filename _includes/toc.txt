@@ -19,6 +19,18 @@
             <strong style="font-size: 15px;">Postponed To A Future Release</strong>
             <p style="padding-top: 10px">{{ page.vote-text }}</p>
           </div>  
+        {% elsif page.vote-status == 'numbered' %}
+          <p class="contents">SIP Committee Decision</p>
+          <div class="alert-message warning" style="margin-left: 15px;">
+            <strong style="font-size: 15px;">Numbered</strong>
+            <p style="padding-top: 10px">{{ page.vote-text }}</p>
+          </div>            
+        {% elsif page.vote-status == 'under review' %}
+          <p class="contents">SIP Committee Decision</p>
+          <div class="alert-message warning" style="margin-left: 15px;">
+            <strong style="font-size: 15px;">Under review</strong>
+            <p style="padding-top: 10px">{{ page.vote-text }}</p>
+          </div>            
         {% elsif page.vote-status == 'rejected' %}
           <p class="contents">SIP Committee Decision</p>
           <div class="alert-message danger" style="margin-left: 15px;">

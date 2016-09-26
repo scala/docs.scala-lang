@@ -321,6 +321,7 @@ button.btn::-moz-focus-inner,input[type=submit].btn::-moz-focus-inner{padding:0;
 .fade{-webkit-transition:opacity 0.15s linear;-moz-transition:opacity 0.15s linear;-ms-transition:opacity 0.15s linear;-o-transition:opacity 0.15s linear;transition:opacity 0.15s linear;opacity:0;}.fade.in{opacity:1;}
 .label{padding:1px 3px 2px;background-color:#bfbfbf;font-size:9.75px;font-weight:bold;color:#ffffff;text-transform:uppercase;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}.label.important{background-color:#c43c35;}
 .label.warning{background-color:#f89406;}
+.label.light-warning{background-color:#9fa847;}
 .label.success{background-color:#46a546;}
 .label.notice{background-color:#62cffc;}
 .media-grid{margin-left:-20px;margin-bottom:0;zoom:1;}.media-grid:before,.media-grid:after{display:table;content:"";zoom:1;*display:inline;}
