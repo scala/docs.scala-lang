@@ -2,6 +2,9 @@
 layout: sip
 disqus: true
 title: SIP-27 - Trailing Commas
+
+vote-status: accepted 
+vote-text: The following proposal needs to be updated, since only the specialized case version (with new lines) has been accepted. For more information, check the <a href="http://docs.scala-lang.org/sips/minutes/sip-20th-september-minutes.html">minutes</a>.
 ---
 
 **By: Dale Wijnand**
