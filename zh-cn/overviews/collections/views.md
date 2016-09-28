@@ -15,7 +15,7 @@ language: zh-cn
 
 作为一个松弛法转换器的例子，分析下面的 lazy map操作：
 
-    def lazyMap[T, U](coll: Iterable[T], f: T => U) = new Iterable[T] {
+    def lazyMap[T, U](coll: Iterable[T], f: T => U) = new Iterable[U] {
       def iterator = coll.iterator map f
     }
 
