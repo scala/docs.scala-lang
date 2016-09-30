@@ -16,7 +16,7 @@ language: ja
 
 非正格な変換演算子の具体例として、以下の遅延 map 演算の実装を見てほしい:
 
-    def lazyMap[T, U](coll: Iterable[T], f: T => U) = new Iterable[T] {
+    def lazyMap[T, U](coll: Iterable[T], f: T => U) = new Iterable[U] {
       def iterator = coll.iterator map f
     }
 

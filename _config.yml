@@ -19,3 +19,6 @@ highlighter: rouge
 permalink: /:categories/:title.html
 baseurl:
 exclude: ["vendor"]
+gems:
+  - jekyll-redirect-from
+
