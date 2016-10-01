@@ -314,7 +314,7 @@ you know how to correct it, please fix it. It's a wiki after all.
 
 Related questions of interest:
 
-* [Context and view bounds](context-and-view-bounds.html)
+* [Context bounds](context-bounds.html)
 * [Chaining implicits](chaining-implicits.html)
 
 This question and answer were originally submitted on [Stack Overflow][3].

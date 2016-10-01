@@ -101,7 +101,7 @@ conversions.
 
 See also:
 
-* [Context and view bounds](context-and-view-bounds.html)
+* [Context bounds](context-bounds.html)
 * [A discussion on types, origin and precedence of implicits](finding-implicits.html)
 
 This question and answer were originally submitted on [Stack Overflow][1].
