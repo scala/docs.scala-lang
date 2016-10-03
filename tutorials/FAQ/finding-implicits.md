@@ -70,7 +70,7 @@ method declaration:
 
     def foo[T](t: T)(implicit integral: Integral[T]) {println(integral)}
 
-### View Bounds
+### Implicit conversions as implicit parameters
 
 There's one situation where an implicit is both an implicit conversion and an
 implicit parameter. For example:
@@ -85,14 +85,6 @@ conversion available from its class to `Seq[T]`. Because of that, I can pass a
 
 Behind the scenes, the compile changes `seq.IndexOf(value)` to
 `conv(seq).indexOf(value)`.
-
-This is so useful that there is a syntactic sugar to write them. Using this
-syntactic sugar, `getIndex` can be defined like this:
-
-    def getIndex[T, CC <% Seq[T]](seq: CC, value: T) = seq.indexOf(value)
-
-This syntactic sugar is described as a _view bound_, akin to an _upper bound_
-(`CC <: Seq[Int]`) or a _lower bound_ (`T >: Null`).
 
 ### Context Bounds
 
@@ -322,7 +314,7 @@ you know how to correct it, please fix it. It's a wiki after all.
 
 Related questions of interest:
 
-* [Context and view bounds](context-and-view-bounds.html)
+* [Context bounds](context-bounds.html)
 * [Chaining implicits](chaining-implicits.html)
 
 This question and answer were originally submitted on [Stack Overflow][3].

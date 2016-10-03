@@ -50,7 +50,8 @@ Two of them are considered proper keywords, while others are just "reserved". Th
     // /* */   // Comments
     #          // Used in type notations
     :          // Type ascription or context bounds
-    <: >: <%   // Upper, lower and view bounds
+    <: >:      // Upper and lower bounds
+    <%         // View bounds (deprecated)
     " """      // Strings
     '          // Indicate symbols and characters
     @          // Annotations and variable binding on pattern matching
