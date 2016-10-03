@@ -1,5 +1,4 @@
-# opt-in to Travis new infrastructure
-sudo: false
+sudo: true
 
 language: ruby
 rvm: 2.0.0
@@ -8,7 +7,9 @@ rvm: 2.0.0
 # will kick in and use `vendor`, ignoring our BUNDLE_PATH
 # declaration in `.bundle/config`
 install:
+- ./scripts/install-coursier.sh
 - bundle install
 
 script:
+- ./scripts/run-tut.sh
 - bundle exec jekyll build
