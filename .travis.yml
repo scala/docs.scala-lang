@@ -12,4 +12,5 @@ install:
 
 script:
 - ./scripts/run-tut.sh
+- rm -r tut-tmp
 - bundle exec jekyll build
