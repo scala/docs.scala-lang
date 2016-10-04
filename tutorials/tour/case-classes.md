@@ -32,7 +32,7 @@ Fun("x", Fun("y", App(Var("x"), Var("y"))))
 The constructor parameters of case classes are treated as public values and can be accessed directly.
 
 ```tut
-val x = x
+val x = Var("x")
 println(x.name)
 ```
 
