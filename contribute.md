@@ -67,7 +67,7 @@ The goal of this documentation repository is to be tighter and more organized th
 - **be polished** it must be thorough, complete, correct, organized, and "article-like" (personal programming notes don't quite fit.)
 - **be maintained** if the document might require revisions from time to time, it should come with an owner
 
-If you have something you're thinking about contributing, or that you're thinking about writing in order to contribute-- we'd love to consider it! Please don't hesitate to contact [Heather](http://people.epfl.ch) with any questions, concerns, clarifications, etc.
+If you have something you're thinking about contributing, or that you're thinking about writing in order to contribute-- we'd love to consider it! Please don't hesitate to use GitHub issues and pull requests and the [scala/contributors room](https://gitter.im/scala/contributors) on Gitter for any questions, concerns, clarifications, etc.
 
 ## Document Templates
 
