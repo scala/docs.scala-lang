@@ -12,15 +12,17 @@ tutorial-previous: regular-expression-patterns
 
 In Scala, patterns can be defined independently of case classes. To this end, a method named unapply is defined to yield a so-called extractor. An extractor can be thought of as a special method that reverses the effect of applying a particular object on some inputs. Its purpose is to 'extract' the inputs that were present before the 'apply' operation. For instance, the following code defines an extractor [object](singleton-objects.html) Twice.
 
-    object Twice {
-      def apply(x: Int): Int = x * 2
-      def unapply(z: Int): Option[Int] = if (z%2 == 0) Some(z/2) else None
-    }
-    
-    object TwiceTest extends App {
-      val x = Twice(21)
-      x match { case Twice(n) => Console.println(n) } // prints 21
-    }
+```tut
+object Twice {
+  def apply(x: Int): Int = x * 2
+  def unapply(z: Int): Option[Int] = if (z%2 == 0) Some(z/2) else None
+}
+
+object TwiceTest extends App {
+  val x = Twice(21)
+  x match { case Twice(n) => Console.println(n) } // prints 21
+}
+```
 
 There are two syntactic conventions at work here:
 

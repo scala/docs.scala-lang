@@ -13,14 +13,16 @@ tutorial-previous: unified-types
 Classes in Scala are static templates that can be instantiated into many objects at runtime.
 Here is a class definition which defines a class `Point`:
 
-    class Point(var x: Int, var y: Int) {
-      def move(dx: Int, dy: Int): Unit = {
-        x = x + dx
-        y = y + dy
-      }
-      override def toString: String =
-        "(" + x + ", " + y + ")"
-    }
+```tut
+class Point(var x: Int, var y: Int) {
+  def move(dx: Int, dy: Int): Unit = {
+    x = x + dx
+    y = y + dy
+  }
+  override def toString: String =
+    "(" + x + ", " + y + ")"
+}
+```
 
 Classes in Scala are parameterized with constructor arguments. The code above defines two constructor arguments, `x` and `y`; they are both visible in the whole body of the class.
 
@@ -30,18 +32,22 @@ Note that in Scala, it isn't necessary to say `return` in order to return a valu
 
 Classes are instantiated with the `new` primitive, as follows:
 
-    object Classes {
-      def main(args: Array[String]) {
-        val pt = new Point(1, 2)
-        println(pt)
-        pt.move(10, 10)
-        println(pt)
-      }
-    }
+```tut
+object Classes {
+  def main(args: Array[String]) {
+    val pt = new Point(1, 2)
+    println(pt)
+    pt.move(10, 10)
+    println(pt)
+  }
+}
+```
 
 The program defines an executable application Classes in form of a top-level singleton object with a `main` method. The `main` method creates a new `Point` and stores it in value `pt`. Note that values defined with the `val` construct are different from variables defined with the `var` construct (see class `Point` above) in that they do not allow updates; i.e. the value is constant.
 
 Here is the output of the program:
 
-    (1, 2)
-    (11, 12)
+```
+(1, 2)
+(11, 12)
+```

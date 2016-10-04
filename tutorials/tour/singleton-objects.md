@@ -13,11 +13,13 @@ tutorial-previous: pattern-matching
 
 Methods and values that aren't associated with individual instances of a [class](classes.html) belong in *singleton objects*, denoted by using the keyword `object` instead of `class`.
 
-    package test
+```
+package test
 
-    object Blah {
-      def sum(l: List[Int]): Int = l.sum
-    }
+object Blah {
+  def sum(l: List[Int]): Int = l.sum
+}
+```
 
 This `sum` method is available globally, and can be referred to, or imported, as `test.Blah.sum`.
 
@@ -33,14 +35,16 @@ Most singleton objects do not stand alone, but instead are associated with a cla
 
 A class and its companion object, if any, must be defined in the same source file. Like this:
 
-    class IntPair(val x: Int, val y: Int)
+```tut
+class IntPair(val x: Int, val y: Int)
 
-    object IntPair {
-      import math.Ordering
+object IntPair {
+  import math.Ordering
 
-      implicit def ipord: Ordering[IntPair] =
-        Ordering.by(ip => (ip.x, ip.y))
-    }
+  implicit def ipord: Ordering[IntPair] =
+    Ordering.by(ip => (ip.x, ip.y))
+}
+```
 
 It's common to see typeclass instances as [implicit values](implicit-parameters.html), such as `ipord` above, defined in the companion, when following the typeclass pattern. This is because the companion's members are included in the default implicit search for related values.
 
@@ -50,15 +54,17 @@ It's common to see typeclass instances as [implicit values](implicit-parameters.
 
 Frequently, Java programmers define static members, perhaps `private`, as implementation aids for their instance members. These move to the companion, too; a common pattern is to import the companion object's members in the class, like so:
 
-    class X {
-      import X._
+```
+class X {
+  import X._
 
-      def blah = foo
-    }
+  def blah = foo
+}
 
-    object X {
-      private def foo = 42
-    }
+object X {
+  private def foo = 42
+}
+```
 
 This illustrates another feature: in the context of `private`, a class and its companion are friends. `object X` can access private members of `class X`, and vice versa. To make a member *really* private to one or the other, use `private[this]`.
 
