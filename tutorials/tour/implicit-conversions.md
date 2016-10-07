@@ -22,22 +22,28 @@ In the second case, a conversion `c` is searched for which is applicable to `e` 
 
 The following operation on the two lists xs and ys of type `List[Int]` is legal:
 
-    xs <= ys
+```
+xs <= ys
+```
 
 assuming the implicit methods `list2ordered` and `int2ordered` defined below are in scope:
 
-    implicit def list2ordered[A](x: List[A])
-        (implicit elem2ordered: A => Ordered[A]): Ordered[List[A]] =
-      new Ordered[List[A]] { /* .. */ }
-    
-    implicit def int2ordered(x: Int): Ordered[Int] = 
-      new Ordered[Int] { /* .. */ }
+```
+implicit def list2ordered[A](x: List[A])
+    (implicit elem2ordered: A => Ordered[A]): Ordered[List[A]] =
+  new Ordered[List[A]] { /* .. */ }
+
+implicit def int2ordered(x: Int): Ordered[Int] = 
+  new Ordered[Int] { /* .. */ }
+```
 
 The implicitly imported object `scala.Predef` declares several predefined types (e.g. `Pair`) and methods (e.g. `assert`) but also several implicit conversions.
 
 For example, when calling a Java method that expects a `java.lang.Integer`, you are free to pass it a `scala.Int` instead. That's because Predef includes the following implicit conversions:
 
-    implicit def int2Integer(x: Int) =
-      java.lang.Integer.valueOf(x)
+```tut
+implicit def int2Integer(x: Int) =
+  java.lang.Integer.valueOf(x)
+```
 
 To define your own implicit conversions, you must first `import scala.language.implicitConversions` (or invoke the compiler with `-language:implicitConversions`). The feature must be explicitly enabled because it has pitfalls if used indiscriminately.

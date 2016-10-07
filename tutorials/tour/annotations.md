@@ -38,39 +38,45 @@ In the following example we add the `throws` annotation to the definition of the
 > A Java compiler checks that a program contains handlers for [checked exceptions](http://docs.oracle.com/javase/specs/jls/se5.0/html/exceptions.html) by analyzing which checked exceptions can result from execution of a method or constructor. For each checked exception which is a possible result, the **throws** clause for the method or constructor _must_ mention the class of that exception or one of the superclasses of the class of that exception.
 > Since Scala has no checked exceptions, Scala methods _must_ be annotated with one or more `throws` annotations such that Java code can catch exceptions thrown by a Scala method.
 
-    package examples
-    import java.io._
-    class Reader(fname: String) {
-      private val in = new BufferedReader(new FileReader(fname))
-      @throws(classOf[IOException])
-      def read() = in.read()
-    }
+```
+package examples
+import java.io._
+class Reader(fname: String) {
+  private val in = new BufferedReader(new FileReader(fname))
+  @throws(classOf[IOException])
+  def read() = in.read()
+}
+```
 
 The following Java program prints out the contents of the file whose name is passed as the first argument to the `main` method.
 
-    package test;
-    import examples.Reader;  // Scala class !!
-    public class AnnotaTest {
-        public static void main(String[] args) {
-            try {
-                Reader in = new Reader(args[0]);
-                int c;
-                while ((c = in.read()) != -1) {
-                    System.out.print((char) c);
-                }
-            } catch (java.io.IOException e) {
-                System.out.println(e.getMessage());
+```
+package test;
+import examples.Reader;  // Scala class !!
+public class AnnotaTest {
+    public static void main(String[] args) {
+        try {
+            Reader in = new Reader(args[0]);
+            int c;
+            while ((c = in.read()) != -1) {
+                System.out.print((char) c);
             }
+        } catch (java.io.IOException e) {
+            System.out.println(e.getMessage());
         }
     }
+}
+```
 
 Commenting out the `throws` annotation in the class Reader produces the following error message when compiling the Java main program:
 
-    Main.java:11: exception java.io.IOException is never thrown in body of
-    corresponding try statement
-            } catch (java.io.IOException e) {
-              ^
-    1 error
+```
+Main.java:11: exception java.io.IOException is never thrown in body of
+corresponding try statement
+        } catch (java.io.IOException e) {
+          ^
+1 error
+```
 
 ### Java Annotations ###
 
@@ -78,53 +84,64 @@ Commenting out the `throws` annotation in the class Reader produces the followin
 
 Java 1.5 introduced user-defined metadata in the form of [annotations](http://java.sun.com/j2se/1.5.0/docs/guide/language/annotations.html). A key feature of annotations is that they rely on specifying name-value pairs to initialize their elements. For instance, if we need an annotation to track the source of some class we might define it as
 
-    @interface Source {
-      public String URL();
-      public String mail();
-    }
+```
+@interface Source {
+  public String URL();
+  public String mail();
+}
+```
 
 And then apply it as follows
 
-    @Source(URL = "http://coders.com/",
-            mail = "support@coders.com")
-    public class MyClass extends HisClass ...
+```
+@Source(URL = "http://coders.com/",
+        mail = "support@coders.com")
+public class MyClass extends HisClass ...
+```
 
 An annotation application in Scala looks like a constructor invocation, for instantiating a Java annotation one has to use named arguments:
 
-    @Source(URL = "http://coders.com/",
-            mail = "support@coders.com")
-    class MyScalaClass ...
+```
+@Source(URL = "http://coders.com/",
+        mail = "support@coders.com")
+class MyScalaClass ...
+```
 
 This syntax is quite tedious if the annotation contains only one element (without default value) so, by convention, if the name is specified as `value` it can be applied in Java using a constructor-like syntax:
 
-    @interface SourceURL {
-        public String value();
-        public String mail() default "";
-    }
+```
+@interface SourceURL {
+    public String value();
+    public String mail() default "";
+}
+```
 
 And then apply it as follows
 
-    @SourceURL("http://coders.com/")
-    public class MyClass extends HisClass ...
+```
+@SourceURL("http://coders.com/")
+public class MyClass extends HisClass ...
+```
 
 In this case, Scala provides the same possibility
 
-    @SourceURL("http://coders.com/")
-    class MyScalaClass ...
+```
+@SourceURL("http://coders.com/")
+class MyScalaClass ...
+```
 
 The `mail` element was specified with a default value so we need not explicitly provide a value for it. However, if we need to do it we can not mix-and-match the two styles in Java:
 
-    @SourceURL(value = "http://coders.com/",
-               mail = "support@coders.com")
-    public class MyClass extends HisClass ...
+```
+@SourceURL(value = "http://coders.com/",
+           mail = "support@coders.com")
+public class MyClass extends HisClass ...
+```
 
 Scala provides more flexibility in this respect
 
-    @SourceURL("http://coders.com/",
-               mail = "support@coders.com")
-        class MyScalaClass ...
-
-
-
-
-
+```
+@SourceURL("http://coders.com/",
+           mail = "support@coders.com")
+    class MyScalaClass ...
+```
