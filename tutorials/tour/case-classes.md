@@ -41,12 +41,15 @@ val title = emailFromJohn.title
 println(title) // prints "Greetings From John!"
 ```
 
-With case classes, you cannot mutate their fields directly. Instead, you make a copy using the `copy` method.
-As seen below, you can replace just some of the fields:
+With case classes, you cannot mutate their fields directly. 
+
+```tut:fail
+emailFromJohn.title = "Goodbye From John!" // This is a compilation error. We cannot assign another value to val fields, which all case classes fields are by default.
+```
+
+Instead, you make a copy using the `copy` method. As seen below, you can replace just some of the fields:
 
 ```tut
-emailFromJohn.title = "Goodbye From John!" // This is a compilation error. We cannot assign another value to val fields, which all case classes fields are by default.
-
 val editedEmail = emailFromJohn.copy(title = "I am learning Scala!", body = "It's so cool!")
 
 println(emailFromJohn) // prints "Email(john.doe@mail.com,Greetings From John!,Hello World!)"
