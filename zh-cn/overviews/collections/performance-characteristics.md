@@ -20,7 +20,7 @@ language: zh-cn
 | List | C | C | L | L | C | L | - |
 |Stream | C | C | L | L | C | L | - |
 |Vector | eC | eC | eC | eC | eC | eC | - |
-|Stack | C | C | L | L | C | C | L |
+|Stack | C | C | L | L | C | L | L |
 |Queue | aC | aC | L | L | L | C | - |
 |Range | C | C | C | - | - | - | - |
 |String | C | L | C | L | L | L | - |
