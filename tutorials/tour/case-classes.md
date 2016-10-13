@@ -17,8 +17,6 @@ Scala supports the notion of _case classes_. Case classes are just regular class
 * Compared by structural equality instead of by reference
 * Succinct to instantiate and operate on
 
-This is achieved through auto-generated code by the Scala compiler.
-
 Here is an example for a Notification type hierarchy which consists of an abstract super class `Notification` and three concrete Notification types implemented with case classes `Email`, `SMS`, and `VoiceRecording`.
 
 ```tut
