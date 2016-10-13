@@ -132,6 +132,6 @@ When programming in Scala, it is recommended that you use Case Classes pervasive
 
 * Immutability frees you from needing to keep track of where and when things are mutated
 * Comparison-by-value allows you compare instances as if they are primitive values - no more uncertainty regarding whether instances of a class is compared by value or reference
-* Pattern Matching makes branching logic simpler, which means less bugs and more readable code. 
+* Pattern Matching simplifies branching logic, which leads to less bugs and more readable code. 
 
 
