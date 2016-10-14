@@ -13,7 +13,7 @@ tutorial-previous: currying
 Scala supports the notion of _case classes_. Case classes are just regular classes that are:
 
 * Immutable by default
-* Decomposable through [Pattern Matching](pattern-matching.html)
+* Decomposable through [pattern matching](pattern-matching.html)
 * Compared by structural equality instead of by reference
 * Succinct to instantiate and operate on
 
@@ -26,7 +26,7 @@ case class SMS(sourceNumber: String, message: String) extends Notification
 case class VoiceRecording(contactName: String, link: String) extends Notification
 ```
 
-Instantiating a Case class is easy: (Note that we don't need to use the `new` keyword)
+Instantiating a case class is easy: (Note that we don't need to use the `new` keyword)
 
 ```tut
 val emailFromJohn = Email("john.doe@mail.com", "Greetings From John!", "Hello World!")
@@ -74,7 +74,7 @@ They are equal!
 SMS is: SMS(12345, Hello!)
 ```
 
-With Case Classes, you can utilize **Pattern Matching** to work with your data. Here's a function that prints out different messages depending on what type of Notification is received:
+With case classes, you can utilize **pattern matching** to work with your data. Here's a function that prints out different messages depending on what type of Notification is received:
 
 ```tut
 def showNotification(notification: Notification): String = {
@@ -128,10 +128,10 @@ val specialSms = SMS("55555", "I'm here! Where are you?")
 
 ```
 
-When programming in Scala, it is recommended that you use Case Classes pervasively to model/group data as they help you to write more expressive and maintainable code:
+When programming in Scala, it is recommended that you use case classes pervasively to model/group data as they help you to write more expressive and maintainable code:
 
 * Immutability frees you from needing to keep track of where and when things are mutated
 * Comparison-by-value allows you compare instances as if they are primitive values - no more uncertainty regarding whether instances of a class is compared by value or reference
-* Pattern Matching simplifies branching logic, which leads to less bugs and more readable code. 
+* Pattern matching simplifies branching logic, which leads to less bugs and more readable code. 
 
 
