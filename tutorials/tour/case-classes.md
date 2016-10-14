@@ -39,7 +39,7 @@ val title = emailFromJohn.title
 println(title) // prints "Greetings From John!"
 ```
 
-With case classes, you cannot mutate their fields directly. 
+With case classes, you cannot mutate their fields directly. (unless you insert `var` before a field, but doing so is generally discouraged). 
 
 ```tut:fail
 emailFromJohn.title = "Goodbye From John!" // This is a compilation error. We cannot assign another value to val fields, which all case classes fields are by default.
