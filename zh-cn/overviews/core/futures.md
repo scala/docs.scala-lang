@@ -299,13 +299,13 @@ fallbackTo组合器生成的future对象可以在该原future成功完成计算�
 组合器andThen的用法是出于纯粹的side-effecting目的。经andThen返回的新Future无论原Future成功或失败都会返回与原Future一模一样的结果。一旦原Future完成并返回结果，andThen后跟的代码块就会被调用，且新Future将返回与原Future一样的结果，这确保了多个andThen调用的顺序执行。正如下例所示，这段代码可以从社交网站上把近期发出的帖子收集到一个可变集合里，然后把它们都打印在屏幕上：
 
     val allposts = mutable.Set[String]()
-    
-    future {
+
+    Future {
       session.getRecentPosts
     } andThen {
-      posts => allposts ++= posts
+      case Success(posts) => allposts ++= posts
     } andThen {
-      posts =>
+      case _ =>
       clearAll()
       for (post <- allposts) render(post)
     }
