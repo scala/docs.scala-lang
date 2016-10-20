@@ -108,7 +108,7 @@ This tree supports following variations:
     name: universe.TypeName =
 
     scala> val q"$name.this" = q"foo.this"
-    name: universe.TypeName = foov
+    name: universe.TypeName = foo
 
 So plain `q"this"` is equivalent to `q"${tpnme.EMPTY}.this"`.
 
