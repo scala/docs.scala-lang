@@ -29,8 +29,6 @@ xs <= ys
 assuming the implicit methods `list2ordered` and `int2ordered` defined below are in scope:
 
 ```
-import scala.language.implicitConversions
-
 implicit def list2ordered[A](x: List[A])
     (implicit elem2ordered: A => Ordered[A]): Ordered[List[A]] =
   new Ordered[List[A]] { /* .. */ }
