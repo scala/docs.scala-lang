@@ -44,6 +44,8 @@ The implicitly imported object `scala.Predef` declares several predefined types 
 For example, when calling a Java method that expects a `java.lang.Integer`, you are free to pass it a `scala.Int` instead. That's because Predef includes the following implicit conversions:
 
 ```tut
+import scala.language.implicitConversions
+
 implicit def int2Integer(x: Int) =
   java.lang.Integer.valueOf(x)
 ```
