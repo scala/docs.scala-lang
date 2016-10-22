@@ -172,7 +172,7 @@ Some of the standard markup available:
 - **Paragraphs** are started with one (or more) blank lines. `*` in the margin
   for the comment is valid (and should be included) but the line should be
   blank otherwise.
-- **Code blocks** are contained within `{{{` and `}}}` and may be multi-line.
+- **Code blocks** are contained within `{{ "{{{` this " }}`}}}` and may be multi-line.
   Indentation is relative to the starting `*` for the comment.
 - **Headings** are defined with surrounding `=` characters, with more `=` denoting
   subheadings. E.g. `=Heading=`, `==Sub-Heading==`, etc.
