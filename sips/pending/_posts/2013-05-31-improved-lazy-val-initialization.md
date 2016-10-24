@@ -514,6 +514,7 @@ This implementation has the following advantages compared to previous version:
 
 Some disadvantages:
 - the `Unsafe` class, used internally has a disadvantage that it can be disallowed with a custom `SecurityManager`.
+Note that this class is extracted from other place in standard library that uses it: scala.concurrent.util.Unsafe.instance
 - it requires usage of `identityHashCode` that is stored for every object inside object header.
 - as global arrays are used to store monitors, seemingly unrelated things may create contention. This is addressed in detail in evaluation section.
 
