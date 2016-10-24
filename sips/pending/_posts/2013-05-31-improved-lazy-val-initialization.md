@@ -7,14 +7,14 @@ vote-status: under review
 vote-text: Next iteration takes place in October 2016.
 ---
 
-**By: Aleksandar Prokopec, Miguel Garcia, Jason Zaugg, Hubert Plociniczak, Viktor Klang, Martin Odersky**
+**By: Aleksandar Prokopec, Dmitry Petrashko, Miguel Garcia, Jason Zaugg, Hubert Plociniczak, Viktor Klang, Martin Odersky**
 
 
 ## Abstract ##
 
 This SIP describes the changes in the lazy vals initialization mechanism that address some of the unnecessary deadlock scenarios. The newly proposed lazy val initialization mechanism aims to eliminate the acquisition of resources during the execution of the lazy val initializer block, thus reducing the possibility of a deadlock. The concrete deadlock scenarios that the new lazy val initialization scheme eliminates are summarized below.
 
-The changes in this SIP have previously been discussed in depth on the mailing lists \[[1][1]\] \[[2][2]\].
+The changes in this SIP have previously been discussed in depth on the mailing lists \[[1][1]\] \[[2][2]\] \[[9][9]\] \[[10][10]\].
 
 
 ## Description ##
@@ -23,7 +23,7 @@ The current lazy val initialization scheme uses double-checked locking to initia
 Assume we have the following declaration.
 
     final class LazyCell {
-      lazy val value = 0
+      lazy val value = <RHS>
     }
 
 Here is an example of an manually written implementation equivalent to what the compiler currently does:
@@ -34,7 +34,7 @@ Here is an example of an manually written implementation equivalent to what the 
       private def value_lzycompute(): Int = {
         this.synchronized {
           if (!bitmap_0) {
-            value_0 = 0
+            value_0 = <RHS>
             bitmap_0 = true
           }
         }
@@ -123,21 +123,6 @@ The thread that fulfills the condition that the lazy val initializer block suspe
 
 This SIP does not attempt to solve this issue - lazy val initialization semantics assume that the `self` object monitor is available or can be made available throughout the lazy val initialization.
 
-Finally, note that the current lazy val initialization implementation is robust against the following scenario in which the initialization block starts an asynchronous computation that attempts to indefinitely grab the monitor of the current object.
-
-    class A { self =>
-      lazy val x: Int = {
-        (new Thread() {
-          override def run() = self.synchronized { while (true) {} }
-        }).start()
-        1
-      }
-    }
-
-In the current implementation the monitor is held throughout the lazy val initialization and released once the initialization block completes.
-This SIP proposes releasing the monitor during the initialization block execution, so the code above could stall indefinitely.
-
-
 ### Circular dependencies with other synchronization constructs ###
 
 Consider the declaration of the following lazy val:
@@ -181,7 +166,7 @@ Here is an example of manually written implementation for the `LazyCell` class f
             return value_0
           }
         }
-        val result = 0 // the initializer block goes here
+        val result = <RHS>
         this.synchronized {
           value_0 = result
           bitmap_0 = 3
@@ -221,7 +206,7 @@ Therefore, we propose the following implementation that avoids calling `notifyAl
               return value_0
           }
         }
-        val result = 0
+        val result = <RHS>
         this.synchronized {
           val oldstate = bitmap_0
           value_0 = result
@@ -246,7 +231,7 @@ Here is an example of a simple implementation obtained by extending the `AtomicI
       @tailrec final def value(): Int = (get: @switch) match {
         case 0 =>
           if (compareAndSet(0, 1)) {
-            val result = 0
+            val result = <RHS>
             value_0 = result
             if (getAndSet(3) != 1) synchronized { notify() }
             result
@@ -298,7 +283,7 @@ See the evaluation section for more information.
       @tailrec final def value(): Int = (arfu_0.get(this): @switch) match {
         case 0 =>
           if (arfu_0.compareAndSet(this, 0, 1)) {
-            val result = 0
+            val result = <RHS>
             value_0 = result
   
             @tailrec def complete(): Unit = (arfu_0.get(this): @switch) match {
@@ -328,14 +313,317 @@ See the evaluation section for more information.
       }
     }
 
-The `Unsafe` class has a disadvantage that it can be disallowed with a custom `SecurityManager`, so we cannot use it instead.
 
-We propose the slightly less efficient, but simpler synchronized approach.
+### Version 5 - retry in case of failure ###
+
+The current Scala semantics require to retry computation in case of failure. 
+The versions 4 presented above provides good performance characteristics in benchmarks, but it  may leave threads waiting for failed initialization forever, leaking threads. Consider this example:
+
+    class LazyCell {
+      private counter = -1
+      lazy val value = {
+          counter = counter + 1
+          if(counter < 42) 
+            throw null 
+          else 0
+        }  
+    }
+    
+In this case, first attempt to initialize the cell would fail. In version 4 this will leave the bitmap with a value still indicating that there's a thread currently computing the value. All the threads trying to access the value would wait for this (non-existent) thread to finish computation, leading to application leaking threads.
+
+In order to maintain current Scala semantics, we need to correctly handle failing initializer. Version presented below, V5, does it correctly:
+
+
+
+    class LazyCellBase { // in a Java file - we need a public bitmap_0
+      public static AtomicIntegerFieldUpdater<LazyCellBase> arfu_0 =
+        AtomicIntegerFieldUpdater.newUpdater(LazyCellBase.class, "bitmap_0");
+      public volatile int bitmap_0 = 0;
+    }
+  
+    final class LazyCell extends LazyCellBase {
+      import LazyCellBase._
+      var value_0: Int = _
+      @tailrec final def value(): Int = (arfu_0.get(this): @switch) match {
+        case 0 =>
+          if (arfu_0.compareAndSet(this, 0, 1)) {
+            val result = 
+              try {<RHS>} catch {
+                case x: Throwable =>
+                complete(0);
+                throw x
+              }
+            value_0 = result
+  
+            @tailrec def complete(newState: Int): Unit = (arfu_0.get(this): @switch) match {
+              case 1 =>
+                if (!arfu_0.compareAndSet(this, 1, newState)) complete()
+              case 2 =>
+                if (arfu_0.compareAndSet(this, 2, newState)) {
+                  synchronized { notifyAll() }
+                } else complete()
+            }
+  
+            complete(3)
+            result
+          } else value()
+        case 1 =>
+          arfu_0.compareAndSet(this, 1, 2)
+          synchronized {
+            while (arfu_0.get(this) != 3) wait()
+          }
+          value_0
+        case 2 =>
+          synchronized {
+            while (arfu_0.get(this) != 3) wait()
+          }
+          value_0
+        case 3 => value_0
+      }
+    }
+    
+This version is basically the same one as Version 4, but it does handle retries in accordance with current Scala specification.
+Unfortunately this comes with a slight performance slowdown, see the evaluation section for more information.
+
+
+### Version 6 - No synchronization on `this` and concurrent initialization of fields ###
+
+Note that the current lazy val initialization implementation is robust against the following scenario in which the initialization block starts an asynchronous computation that attempts to indefinitely grab the monitor of the current object.
+
+    class A { self =>
+      lazy val x: Int = {
+        (new Thread() {
+          override def run() = self.synchronized { while (true) {} }
+        }).start()
+        1
+      }
+    }
+
+In the current implementation the monitor is held throughout the lazy val initialization and released once the initialization block completes.
+All the versions proposed above release the monitor during the initialization block execution and re-acquire it back, so the code above could stall indefinitely.
+
+Additionally, usage of `this` as synchronization point may disallow concurrent initialization of different lazy vals in the same object. Consider the example below:
+
+    class TwoLazies {
+      lazy val slow = { Thread.sleep(100000); 0}
+      lazy val fast = 1
+      lazy val bad: Int = {
+        (new Thread() {
+          override def run() = self.synchronized { while (true) {} }
+        }).start()
+        1
+      }
+    }
+    
+Though two `slow` and `fast` vals are independent, in the current implementation they both synchronize on `this` for the entire duration of computation. This leads to situation when `fast` is required to wail for `slow` to be computed.
+In the versions presented above, a single call to `bad` may lead to monitor on `this` being held forever, leading calls to `slow` and `fast` to also block forever.
+
+Note that those interactions are very surprising to users as they leak the internal limitations of implementation of lazy vals.
+
+To solve overcome those limitations we propose a version that does not synchronized on `this` and instead uses external monitor-objects that are solely used for synchronization.
+
+    final class LazyCell {
+      import dotty.runtime.LazyVals
+      var value_0: Int = _
+      private var bitmap = 0
+      @static private bitmap_offset = LazyVals.getOffset(classOf[LazyCell], "bitmap") 
+      def value(): Int = {
+        var result: Int = 0
+        val retry: Boolean = true
+        val fieldId: Int = 0 // id of lazy val
+        var flag: Long = 0L
+        while retry do {
+          flag = LazyVals.get(this, bitmap_offset)
+          LazyVals.STATE(flag, 0) match {
+            case 0 =>
+              if LazyVals.CAS(this, bitmap_offset, flag, 1) {
+                try {result = <RHS>} catch {
+                  case x: Throwable =>
+                    LazyVals.setFlag(this, bitmap_offset, 0, fieldId)
+                    throw x
+                }
+                value_0 = result
+                LazyVals.setFlag(this, bitmap_offset, 3, fieldId)
+                retry = false
+                }
+            case 1 =>
+              LazyVals.wait4Notification(this, bitmap_offset, flag, fieldId)
+            case 2 =>
+              LazyVals.wait4Notification(this, bitmap_offset, flag, fieldId)
+            case 3 =>
+              retry = false
+              result = $target
+            }
+          }
+        result
+      }
+    }
+
+This implementation relies on helper functions provided in \[[11][11]\] module. Most important of those, `wait4Notification` and `setFlag`, are presented below:
+     
+     def setFlag(t: Object, offset: Long, v: Int, fieldId: Int) = {
+       var retry = true
+       while (retry) {
+         val cur = get(t, offset)
+         if (STATE(cur) == 1) retry = CAS(t, offset, cur, v)
+         else {
+           // cur == 2, somebody is waiting on monitor
+           if (CAS(t, offset, cur, v)) {
+             val monitor = getMonitor(t, fieldId)
+             monitor.synchronized {
+               monitor.notifyAll()
+             }
+             retry = false
+           }
+         }
+       }
+     }
+     
+    def wait4Notification(t: Object, offset: Long, cur: Long, fieldId: Int) = {
+      var retry = true
+      while (retry) {
+        val cur = get(t, offset)
+        val state = STATE(cur)
+        if (state == 1) CAS(t, offset, cur, 2)
+        else if (state == 2) {
+          val monitor = getMonitor(t, fieldId)
+          monitor.synchronized {
+            monitor.wait()
+          }
+        }
+        else retry = false
+      }
+    }
+    
+    val processors: Int = java.lang.Runtime.getRuntime.availableProcessors()
+    val base: Int = 8 * processors * processors
+    val monitors: Array[Object] = (0 to base).map {
+      x => new Object()
+    }.toArray
+
+    def getMonitor(obj: Object, fieldId: Int = 0) = {
+      var id = (java.lang.System.identityHashCode(obj) + fieldId) % base
+      if (id < 0) id += base
+      monitors(id)
+    }
+
+This implementation has the following advantages compared to previous version:
+- it allows concurrent initialization of independent fields
+- it does not interact with user-written code that synchronizes on `this`
+- it does not require expanding monitor on the object to support `notifyAll`
+
+Some disadvantages:
+- the `Unsafe` class, used internally has a disadvantage that it can be disallowed with a custom `SecurityManager`.
+- it requires usage of `identityHashCode` that is stored for every object inside object header.
+- as global arrays are used to store monitors, seemingly unrelated things may create contention. This is addressed in detail in evaluation section.
+
+Both not expanding monitors and usage of `idetityHashCode` interact with each other, as both of them operate on the 
+object header. [12] presents the compete graph of transitions between possible states of object header.
+What can be seen from this transition graph is that in contended case versions V2-V5 were promoting object into the worst case, the `heavyweight monitor` object, while the new scheme only disables biasing. 
+Note that under schemes presented here, V2-V5, this change only happens in case of presence of contention and happens per-object.
+
+### Non-thread safe lazy vals ###
+While the new versions introduce speedups in contended case, they do generate complex bytecode and this may lead to new scheme being less appropriate for lazy vals that are not used in concurrent setting. In order to perfectly fit this use-case we propose to introduce an encoding for single-threaded lazy vals that is very simple and very efficient:
+
+    final class LazyCell {
+      var value_0 = 0
+      var flag = false
+      def value = 
+        if (flag) value_0 
+        else {
+          value_0 = <RHS>;
+          flag = true;
+        }
+    }
+    
+This version behaves faster than all other versions on benchmarks but does not correctly handle safe publication in case of multiple threads. It can be used in applications that utilize multiple threads if some other means of safe publication is used instead.
+
+### Local lazy vals ###
+Aside from lazy vals that are fields of objects, scala supports local lazy vals, defined inside methods:
+
+    def method = {
+      lazy val s = <RHS>
+      s
+    }
+    
+Currently, they use such encoding(we will call it L1):
+
+    def method = {
+      var @volatile flag: Byte = 0.toByte
+      var s_0 = 0
+      def s = {
+        if(flag == 0){ 
+          this.synchronized{
+            if (flag == 0) {
+              s_0 = <RHS>
+              flag = 1
+            }
+          }
+        s_0
+        }
+      s
+    }
+    
+Which is later translated by subsequent phases to:
+
+    private def method$s(flag: VolatileByteRef, s_0: IntRef) = {
+        if(flag.value == 0){ 
+          this.synchronized{
+            if (flag.value == 0) {
+              s_0.value = <RHS>
+              flag.value = 1
+            }
+          }
+        s_0.value
+        }
+        
+    def method = {
+      var flag = new VolatileByteRef(0)
+      var s_0 = new IntRef(0)
+      method$s(flag, s_0)
+    }
+
+
+    
+The current implementation has several shortcomings:
+ - it allocates two boxes
+ - it synchronizes on `this`. This is most severe in case of lambdas, as lambdas do not introduce a new `this`.
+ 
+We propose a new scheme, that is both simpler in implementation and is more efficient and is slightly more compact.
+The scheme introduces new helper classes to standard library: such as `dotty.runtime.LazyInt`[14] and uses them to implement the local lazy val behaviour.
+
+    class LazyInt {
+      var value: Int = _
+      @volatile var initialized: Boolean = false
+    }
+    
+    private def method$s(holder: LazyInt) = {
+        if(!holder.initialized){ 
+          holder.synchronized{
+            if (!holder.initialized) {
+              holder.value = <RHS>
+              holder.initialized = true
+            }
+          }
+        holder.value
+        }
+        
+    def method = {
+      var holder = new LazyInt()
+      method$s(holder)
+    }
+
+This  solves the problem with deadlocks introduced by using java8 labmdas.[14]
+
+
+### Language change ###
+To address the fact that we now have both thread-safe and single-threaded lazy vals,
+we propose to bring lazy vals in sync with normal vals with regards to usage of `@volatile` annotation.
 
 
 ## Evaluation ##
 
-We focus on the memory footprint increase and the performance comparison. Note that the fast path (i.e. the cost of accessing a lazy val after it has been initialized) stays the same as in the current implementation. We thus focus on measuring the overheads in the lazy val initialization in both the uncontended and the contended case.
+We focus on the memory footprint increase, the performance comparison and bytecode size. Note that the fast path (i.e. the cost of accessing a lazy val after it has been initialized) stays the same as in the current implementation. We thus focus on measuring the overheads in the lazy val initialization in both the uncontended and the contended case.
 The microbenchmarks used for evaluation are available in a GitHub repo \[[6][6]\] and the graphs of the evaluation results are available online \[[7][7]\]. We uses the ScalaMeter tool for measurements \[[9][9]\].
 
 ### Memory usage footprint ###
@@ -354,12 +642,22 @@ For the uncontended case, we measure the cost of creating N objects and initiali
 
 For the contended case, we measure the cost of initializing the lazy fields of N objects, previously created and stored in an array, by 4 different threads that linearly try to read the lazy field of an object before proceeding to the next one. The goal of this test is to asses the effect of entering the synchronized block and notifying the waiting threads - since the slow path is slower, the threads that “lag” behind should quickly reach the first object with an uninitialized lazy val, causing contention.
 
-The current lazy val implementation (V1) seems to incur initialization costs that are at least 6 times greater compared to referencing a regular val. The handwritten implementation produces identical bytecode, with the difference that the calls are virtual instead of just querying the field value, probably the reason due to which it is up to 50% slower. The 2 synchronized blocks design with an eager notify (V2) is 3-4 times slower than the current lazy val implementation - just adding the `notifyAll` call changes things considerably. The 4 state/2 synchronized blocks approach (V3) is only 33-50% slower than the current lazy val implementation (V1). The CAS-based approach where `AtomicInteger`s are extended is as fast as the current lazy val initialization (V1), but when generalized and replaced with `AtomicReferenceFieldUpdater`s as discussed before, it is almost 50% slower than the current implementation V1.
+The current lazy val implementation (V1) seems to incur initialization costs that are at least 6 times greater compared to referencing a regular val. The handwritten implementation produces identical bytecode, with the difference that the calls are virtual instead of just querying the field value, probably the reason due to which it is up to 50% slower. The 2 synchronized blocks design with an eager notify (V2) is 3-4 times slower than the current lazy val implementation - just adding the `notifyAll` call changes things considerably. The 4 state/2 synchronized blocks approach (V3) is only 33-50% slower than the current lazy val implementation (V1). The CAS-based approach where `AtomicInteger`s are extended is as fast as the current lazy val initialization (V1), but when generalized and replaced with `AtomicReferenceFieldUpdater`s as discussed before, it is almost 50% slower than the current implementation V1. The final version, V6 uses `Unsafe` to bring back performance and is as around twice fast as fast as current lazy val initialization(V1) while maintaining correct semantics. 
 
-The CAS-based approaches appear to have the best performance here, being twice as fast than the current lazy val initialization implementation (V1). The proposed solution with 4 states and 2 synchronized blocks (V3) is 25% slower than the current lazy val implementation. It’s worth mentioning that this is not a typical use-case that reflects a practical application, but rather a synthetic borderline designed to perform the worst-case comparison in the contention case.
+The CAS-based approaches V4, V5, V6 appear to have the best performance here, being twice as fast than the current lazy val initialization implementation (V1).
+
+The proposed solution with (V6) is 50% faster than the current lazy val implementation in common use case. This comes at a price of synchronizing on global array of monitors, which may create contention between seemingly unrelated things. The more monitors are created the less is the probability of such contention. There's an also a positive effect though, reuse of global objects for synchronization allows the monitors on the instances containing lazy vals not to be expanded, saving on non-local memory allocation. Current implementation uses ` 8 * processorCount * processorCount` monitors and the benchmarks and by-hand study with "Vtune Amplifier XE" demonstrate that positive effect dominates, introducing a 2% speedup[13]. It’s worth mentioning that this is not a typical use-case that reflects a practical application, but rather a synthetic borderline designed to perform the worst-case comparison to demonstrate the cache contention.
+
+The local lazy vals implementation is around 6x faster than the current version, as it eliminates the need for boxing and reduces number of allocations from 2 down to 1.
 
 The concrete microbenchmark code is available as a GitHub repo \[[6][6]\].
 
+## Code size ##
+The versions presented in V2-V6 have a lot more complex implementations and this shows up on the bytecode size. In the worst-case scenario, when the `<RHS>` value is a constant, the current scheme (V1) creates an initializer method that has size of 34 bytes, while dotty creates a version that is 184 bytes long. Local optimizations present in dotty linker[14] are able to reduce this size down to 160 bytes, but this is still substantially more than the current version.
+
+On the other hand, the single-threaded version does not need separate initializer method and is around twice smaller than the current scheme (V1).
+
+The proposed local lazy val transformation scheme also creates less bytecode, introducing 34 bytes instead of 42 bytes, mostly due to reduction in constant table size.
 
 ## Acknowledgements ##
 
@@ -375,15 +673,24 @@ We would like to thank Peter Levart and the other members of the concurrency-int
 6. [GitHub Repo with Microbenchmarks][6]
 7. [Evaluation Results][7]
 8. [ScalaMeter GitHub Repo][8]
+9. [Lazy Vals in Dotty, Scala Internals Mailing list, February 2014][9]
+10. [Lazy Vals in Dotty, Dotty Internals Mailing list, February 2014][10]
+11. [LazyVals runtime module, Dotty sourcecode, February 2014][11]
+12. [Synchronization, HotSpot internals wiki, April 2008][12]
+13. [Lazy Vals in Dotty, cache contention discussion, February 2014][13]
+14. [SI-9824 SI-9814 proper locking scope for lazy vals in lambdas, April 2016][14]
 
   [1]: https://groups.google.com/forum/#!topic/scala-internals/cCgBMp5k8R8 "scala-internals"
   [2]: http://cs.oswego.edu/pipermail/concurrency-interest/2013-May/011354.html "concurrency-interest"
   [3]: http://stackoverflow.com/questions/15176199/scala-parallel-collection-in-object-initializer-causes-a-program-to-hang "pc-object-hang"
   [4]: http://stackoverflow.com/questions/7517964/program-hangs-if-thread-is-created-in-static-initializer-block "static-init-hang"
   [5]: http://docs.oracle.com/javase/specs/jls/se7/html/jls-12.html#jls-12.4.2 "jls-spec"
-  [6]: https://github.com/axel22/lazy-val-bench "lazy-val-bench-code"
+  [6]: https://github.com/DarkDimius/lazy-val-bench/blob/CallSites/src/test/scala/example/package.scala "lazy-val-bench-code"
   [7]: http://lampwww.epfl.ch/~prokopec/lazyvals/report/ "lazy-val-bench-report"
   [8]: http://axel22.github.io/scalameter/ "scalameter-code"
-
-
-
+  [9]: https://groups.google.com/forum/#!msg/scala-internals/4sjw8pcKysg/GlXYDDzCgI0J "scala-internals"
+  [10]: https://groups.google.com/forum/#!topic/dotty-internals/soWIWr3bRk8 "dotty-internals"
+  [11]: https://github.com/lampepfl/dotty/blob/5cbd2fbc8409b446f8751792b006693e1d091055/src/dotty/runtime/LazyVals.scala
+  [12]: https://wiki.openjdk.java.net/display/HotSpot/Synchronization
+  [13]: https://groups.google.com/d/msg/scala-internals/4sjw8pcKysg/gD0au4dmTAsJ
+  [14]: https://github.com/scala/scala-dev/issues/133
