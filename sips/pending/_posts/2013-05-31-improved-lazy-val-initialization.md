@@ -654,6 +654,7 @@ We expect that the proposed changes will not change the memory footprint for mos
 Since we now use 2 bits per lazy val field instead of 1, for classes having 4 or less lazy val field declarations the memory footprint per instance will thus not grow. For classes having more lazy val field declarations the memory footprint per instance will in most cases not grow since the objects have to be aligned to an 8 byte boundary anyway.
 
 We measured the memory footprint of an array of objects with single lazy val fields. The memory footprint did not change with respect to the current version \[[6][6]\] \[[7][7]\].
+The detailed experimental measurements  graphs of memory footprint can be seen in graphs.\[[18][18]\]
 
 ### Performance ###
 
@@ -700,7 +701,7 @@ We would like to thank Peter Levart and the other members of the concurrency-int
 4. [Program Hangs If Thread Is Created In Static Initializer Block][4]
 5. [Java Language Specification, 12.4.2][5]
 6. [GitHub Repo with Microbenchmarks][6]
-7. [Evaluation Results][7]
+7. [Performance Evaluation Results][7]
 8. [ScalaMeter GitHub Repo][8]
 9. [Lazy Vals in Dotty, Scala Internals Mailing list, February 2014][9]
 10. [Lazy Vals in Dotty, Dotty Internals Mailing list, February 2014][10]
@@ -711,6 +712,7 @@ We would like to thank Peter Levart and the other members of the concurrency-int
 15. [Introducing Scalafix: a migration tool for Scalac to Dotty, October 2016][15]
 16. [@static sip, January 2016][16]
 17. [LazyVal Holders in Dotty][17]
+18. [Memory Footprint Evaluation Results][18]
 
   [1]: https://groups.google.com/forum/#!topic/scala-internals/cCgBMp5k8R8 "scala-internals"
   [2]: http://cs.oswego.edu/pipermail/concurrency-interest/2013-May/011354.html "concurrency-interest"
@@ -718,7 +720,7 @@ We would like to thank Peter Levart and the other members of the concurrency-int
   [4]: http://stackoverflow.com/questions/7517964/program-hangs-if-thread-is-created-in-static-initializer-block "static-init-hang"
   [5]: http://docs.oracle.com/javase/specs/jls/se7/html/jls-12.html#jls-12.4.2 "jls-spec"
   [6]: https://github.com/DarkDimius/lazy-val-bench/blob/CallSites/src/test/scala/example/package.scala "lazy-val-bench-code"
-  [7]: http://lampwww.epfl.ch/~prokopec/lazyvals/report/ "lazy-val-bench-report"
+  [7]: https://d-d.me/tnc/30/lazy-sip-perf/report "lazy-val-bench-report"
   [8]: http://axel22.github.io/scalameter/ "scalameter-code"
   [9]: https://groups.google.com/forum/#!msg/scala-internals/4sjw8pcKysg/GlXYDDzCgI0J "scala-internals"
   [10]: https://groups.google.com/forum/#!topic/dotty-internals/soWIWr3bRk8 "dotty-internals"
@@ -729,3 +731,4 @@ We would like to thank Peter Levart and the other members of the concurrency-int
   [15]: http://scala-lang.org/blog/2016/10/24/scalafix.html
   [16]: https://github.com/scala/scala.github.com/pull/491
   [17]: https://github.com/lampepfl/dotty/blob/master/src/dotty/runtime/LazyHolders.scala
+  [18]: https://d-d.me/tnc/30/lazy-mem/report/#config=%7B%22filterConfig%22%3A%7B%22curves%22%3A%5B%22-1%22%2C%220%22%2C%221%22%2C%222%22%2C%223%22%2C%224%22%2C%225%22%2C%226%22%2C%227%22%2C%228%22%5D%2C%22order%22%3A%5B%22param-size%22%2C%22date%22%5D%2C%22filters%22%3A%5B%5B%221000000%22%2C%222000000%22%2C%223000000%22%2C%224000000%22%2C%225000000%22%5D%2C%5B%221477396691000%22%5D%5D%7D%2C%22chartConfig%22%3A%7B%22type%22%3A0%2C%22showCI%22%3Afalse%7D%7D
