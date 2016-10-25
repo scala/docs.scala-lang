@@ -519,7 +519,7 @@ Note that this class is extracted from other place in standard library that uses
 - as global arrays are used to store monitors, seemingly unrelated things may create contention. This is addressed in detail in evaluation section.
 
 Both absence of monitors expansion and usage of `idetityHashCode` interact with each other, as both of them operate on the 
-object header. [12] presents the compete graph of transitions between possible states of object header.
+object header. \[[12][12]\] presents the compete graph of transitions between possible states of object header.
 What can be seen from this transition graph is that in contended case versions V2-V5 were promoting object into the worst case, the `heavyweight monitor` object, while the new scheme only disables biasing. 
 Note that under schemes presented here, V2-V5, this change only happens in case of presence of contention and happens per-object.
 
@@ -591,7 +591,7 @@ The current implementation has several shortcomings:
  - it synchronizes on `this`. This is most severe in case of lambdas, as lambdas do not introduce a new `this`.
  
 We propose a new scheme, that is both simpler in implementation and is more efficient and is slightly more compact.
-The scheme introduces new helper classes to standard library: such as `dotty.runtime.LazyInt`[14] and uses them to implement the local lazy val behaviour.
+The scheme introduces new helper classes to standard library: such as `dotty.runtime.LazyInt`\[[17][17]\] and uses them to implement the local lazy val behaviour.
 
     class LazyInt {
       var value: Int = _
@@ -614,7 +614,7 @@ The scheme introduces new helper classes to standard library: such as `dotty.run
       method$s(holder)
     }
 
-This  solves the problem with deadlocks introduced by using java8 lambdas.[14]
+This  solves the problem with deadlocks introduced by using java8 lambdas.\[[14][14]\]
 
 
 ### Language change ###
@@ -649,7 +649,7 @@ The current lazy val implementation (V1) seems to incur initialization costs tha
 
 The CAS-based approaches V4, V5, V6 appear to have the best performance here, being twice as fast than the current lazy val initialization implementation (V1).
 
-The proposed solution with (V6) is 50% faster than the current lazy val implementation in common use case. This comes at a price of synchronizing on global array of monitors, which may create contention between seemingly unrelated things. The more monitors are created the less is the probability of such contention. There's an also a positive effect though, reuse of global objects for synchronization allows the monitors on the instances containing lazy vals not to be expanded, saving on non-local memory allocation. Current implementation uses ` 8 * processorCount * processorCount` monitors and the benchmarks and by-hand study with "Vtune Amplifier XE" demonstrate that positive effect dominates, introducing a 2% speedup[13]. It’s worth mentioning that this is not a typical use-case that reflects a practical application, but rather a synthetic borderline designed to perform the worst-case comparison to demonstrate the cache contention.
+The proposed solution with (V6) is 50% faster than the current lazy val implementation in common use case. This comes at a price of synchronizing on global array of monitors, which may create contention between seemingly unrelated things. The more monitors are created the less is the probability of such contention. There's an also a positive effect though, reuse of global objects for synchronization allows the monitors on the instances containing lazy vals not to be expanded, saving on non-local memory allocation. Current implementation uses ` 8 * processorCount * processorCount` monitors and the benchmarks and by-hand study with "Vtune Amplifier XE" demonstrate that positive effect dominates, introducing a 2% speedup\[[13][13]\]. It’s worth mentioning that this is not a typical use-case that reflects a practical application, but rather a synthetic borderline designed to perform the worst-case comparison to demonstrate the cache contention.
 
 The local lazy vals implementation is around 6x faster than the current version, as it eliminates the need for boxing and reduces number of allocations from 2 down to 1.
 
@@ -657,7 +657,7 @@ The concrete microbenchmark code is available as a GitHub repo \[[6][6]\]. It ad
 For those wishing to reproduce result, the benchmarking suite takes 90 minutes to run on contemporary CPUs. Enabling all the disabled benchmarks, in particular those that evaluate invokeDynamic based implementation will make the benchmarks take around 5 hours.  
 
 ### Code size ###
-The versions presented in V2-V6 have a lot more complex implementations and this shows up on the bytecode size. In the worst-case scenario, when the `<RHS>` value is a constant, the current scheme (V1) creates an initializer method that has size of 34 bytes, while dotty creates a version that is 184 bytes long. Local optimizations present in dotty linker[14] are able to reduce this size down to 160 bytes, but this is still substantially more than the current version.
+The versions presented in V2-V6 have a lot more complex implementations and this shows up on the bytecode size. In the worst-case scenario, when the `<RHS>` value is a constant, the current scheme (V1) creates an initializer method that has size of 34 bytes, while dotty creates a version that is 184 bytes long. Local optimizations present in dotty linker\[[14][14]\] are able to reduce this size down to 160 bytes, but this is still substantially more than the current version.
 
 On the other hand, the single-threaded version does not need separate initializer method and is around twice smaller than the current scheme (V1).
 
@@ -692,6 +692,7 @@ We would like to thank Peter Levart and the other members of the concurrency-int
 14. [SI-9824 SI-9814 proper locking scope for lazy vals in lambdas, April 2016][14]
 15. [Introducing Scalafix: a migration tool for Scalac to Dotty, October 2016][15]
 16. [@static sip, January 2016][16]
+17. [LazyVal Holders in Dotty][17]
 
   [1]: https://groups.google.com/forum/#!topic/scala-internals/cCgBMp5k8R8 "scala-internals"
   [2]: http://cs.oswego.edu/pipermail/concurrency-interest/2013-May/011354.html "concurrency-interest"
@@ -709,3 +710,4 @@ We would like to thank Peter Levart and the other members of the concurrency-int
   [14]: https://github.com/scala/scala-dev/issues/133
   [15]: http://scala-lang.org/blog/2016/10/24/scalafix.html
   [16]: https://github.com/scala/scala.github.com/pull/491
+  [17]: https://github.com/lampepfl/dotty/blob/master/src/dotty/runtime/LazyHolders.scala
