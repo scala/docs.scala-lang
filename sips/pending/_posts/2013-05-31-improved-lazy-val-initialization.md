@@ -350,8 +350,8 @@ In order to maintain current Scala semantics, we need to correctly handle failin
             val result = 
               try {<RHS>} catch {
                 case x: Throwable =>
-                complete(0);
-                throw x
+                  complete(0);
+                  throw x
               }
             value_0 = result
   
@@ -653,7 +653,8 @@ The proposed solution with (V6) is 50% faster than the current lazy val implemen
 
 The local lazy vals implementation is around 6x faster than the current version, as it eliminates the need for boxing and reduces number of allocations from 2 down to 1.
 
-The concrete microbenchmark code is available as a GitHub repo \[[6][6]\]. It additionally benchmarks many other implementations that are not covered in the text of this SIP, in particular it tests versions based on MethodHandles and runtime code generation and versions that use additional spinning before synchronizing on the monitor. 
+The concrete microbenchmark code is available as a GitHub repo \[[6][6]\]. It additionally benchmarks many other implementations that are not covered in the text of this SIP, in particular it tests versions based on MethodHandles and runtime code generation and versions that use additional spinning before synchronizing on the monitor.
+For those wishing to reproduce result, the benchmarking suite takes 90 minutes to run on contemporary CPUs. Enabling all the disabled benchmarks, in particular those that evaluate invokeDynamic based implementation will make the benchmarks take around 5 hours.  
 
 ### Code size ###
 The versions presented in V2-V6 have a lot more complex implementations and this shows up on the bytecode size. In the worst-case scenario, when the `<RHS>` value is a constant, the current scheme (V1) creates an initializer method that has size of 34 bytes, while dotty creates a version that is 184 bytes long. Local optimizations present in dotty linker[14] are able to reduce this size down to 160 bytes, but this is still substantially more than the current version.
