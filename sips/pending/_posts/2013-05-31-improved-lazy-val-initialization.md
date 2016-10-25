@@ -267,7 +267,7 @@ However, in the more general setting where there are two or more lazy val fields
 - due to the restrictions on the `AtomicIntegerFieldUpdater`s, we would need to make the `bitmap_0` field publicly visible on the byte-code level, which might be an issue for Java code interfacing with Scala code
 - it is much more complicated than the 2 synchronized blocks implementation
 
-Here is a more general implementation, that is slower in the uncontended case than both the current implementation (V1) and the proposed implementation with synchronized blocks (V3). This implementation is, however, in the contended case twice as fast than the current implementation (V1).
+Here is a more general implementation(V4-general), that is slower in the uncontended case than both the current implementation (V1) and the proposed implementation with synchronized blocks (V3). This implementation is, however, in the contended case twice as fast than the current implementation (V1).
 See the evaluation section for more information.
 
     class LazyCellBase { // in a Java file - we need a public bitmap_0
@@ -645,7 +645,7 @@ In order to simplify migration, Scalafix the migration tool that will be used to
 ## Evaluation ##
 
 We focus on the memory footprint increase, the performance comparison and byte-code size. Note that the fast path (i.e. the cost of accessing a lazy val after it has been initialized) stays the same as in the current implementation. Thus, the focus of our measurements is on the overheads in the lazy val initialization in both the uncontended and the contended case.
-The micro-benchmarks used for evaluation are available in a GitHub repo \[[6][6]\] and the graphs of the evaluation results are available online \[[7][7]\]. We used the ScalaMeter tool for measurements \[[9][9]\].
+The micro-benchmarks used for evaluation are available in a GitHub repo \[[6][6]\] and the graphs of the evaluation results are available online \[[7][7]\], \[[18][18]\], \[[19][19]\] . We used the ScalaMeter tool for measurements \[[9][9]\].
 
 ### Memory usage footprint ###
 
@@ -668,12 +668,19 @@ The current lazy val implementation (V1) seems to incur initialization costs tha
 
 The CAS-based approaches (V4, V5 and V6) appear to offer the best performance here, being twice as fast than the current implementation (V1).
 
-The proposed solution with (V6) is 50% faster than the current lazy val implementation in the common case. This comes at a price of synchronizing on a global array of monitors, which may create contention between seemingly unrelated things. The more monitors that are created, the less is the probability of such contention. There's also a positive effect though, the reuse of global objects for synchronization allows the monitors on the instances containing lazy vals to not be expanded, saving on non-local memory allocation. The current implementation uses `8 * processorCount * processorCount` monitors and the benchmarks and by-hand study with "Vtune Amplifier XE" demonstrate that the positive effect dominates, introducing a 2% speedup\[[13][13]\]. It’s worth mentioning that this is not a typical use-case that reflects a practical application, but rather a synthetic edge case designed to show the worst-case comparison demonstrating cache contention.
+The proposed solution with (V6) is 50% faster\[[19][19]\] than the current lazy val implementation in the contended case. This comes at a price of synchronizing on a global array of monitors, which may create contention between seemingly unrelated things. The more monitors that are created, the less is the probability of such contention. There's also a positive effect though, the reuse of global objects for synchronization allows the monitors on the instances containing lazy vals to not be expanded, saving on non-local memory allocation. The current implementation uses `8 * processorCount * processorCount` monitors and the benchmarks and by-hand study with "Vtune Amplifier XE" demonstrate that the positive effect dominates, introducing a 2% speedup\[[13][13]\]. It’s worth mentioning that this is not a typical use-case that reflects a practical application, but rather a synthetic edge case designed to show the worst-case comparison demonstrating cache contention.
 
 The local lazy vals implementation is around 6x faster than the current version, as it eliminates the need for boxing and reduces the number of allocations from 2 to 1.
 
 The concrete micro-benchmark code is available as a GitHub repo \[[6][6]\]. It additionally benchmarks many other implementations that are not covered in the text of this SIP, in particular it tests versions based on MethodHandles and runtime code generation as well as versions that use additional spinning before synchronizing on the monitor.
 For those wishing to reproduce the results, the benchmarking suite takes 90 minutes to run on contemporary CPUs. Enabling all the disabled benchmarks, in particular those that evaluate the `invokeDynamic` based implementation, will make the benchmarks take around 5 hours.
+
+The final result of those benchmarks is that amount proposed versions, the two that worth considering are (V4-general) and (V6). 
+They both perform better than the current implementation in all the contended case.
+Specifically, in the contended case, V6 is 2 times fater than V1, while V4-general is 4 times faster.
+Unfortunately V4-general is 30% slower in the uncontended case than current implemetation(V1), while V6 is in the same ballpark, being up to 5% slower or faster depending on the setup of the benchmark.
+ 
+Based on this, we propose V6 to be used as default in future versions of Scala.
 
 ### Code size ###
 The versions presented in V2-V6 have a lot more complex implementation and this shows up the size of the byte-code. In the worst-case scenario, when the `<RHS>` value is a constant, the current scheme (V1) creates an initializer method that has a size of 34 bytes, while dotty creates a version that is 184 bytes long. Local optimizations present in dotty linker\[[14][14]\] are able to reduce this size down to 160 bytes, but this is still substantially more than the current version.
@@ -688,6 +695,10 @@ Dotty implementation internally uses `@static` proposed in \[[16][16]\].
 
 Both Dotty and released Scala 2.12 already implement "Elegant Local lazy vals". This was incorporated in the 2.12 release before this SIP was considered, as it was fixing a bug that blocked release\[[14][14]\].
 
+### Unsafe ###
+The proposed version, V6 relies on `sun.misc.Unsafe` in order to implement it's behaviour. 
+While `sun.misc.Unsafe` will remain availabe in Java9 there's an intention to deprecate it and replace it with VarHandles.\[[20][20]\].
+The proposed version V6 can be implemented with using functionality present in Var Handles.  
 
 ## Acknowledgements ##
 
@@ -701,7 +712,7 @@ We would like to thank Peter Levart and the other members of the concurrency-int
 4. [Program Hangs If Thread Is Created In Static Initializer Block][4]
 5. [Java Language Specification, 12.4.2][5]
 6. [GitHub Repo with Microbenchmarks][6]
-7. [Performance Evaluation Results][7]
+7. [Uncontended Performance Evaluation Results][7]
 8. [ScalaMeter GitHub Repo][8]
 9. [Lazy Vals in Dotty, Scala Internals Mailing list, February 2014][9]
 10. [Lazy Vals in Dotty, Dotty Internals Mailing list, February 2014][10]
@@ -713,6 +724,8 @@ We would like to thank Peter Levart and the other members of the concurrency-int
 16. [@static sip, January 2016][16]
 17. [LazyVal Holders in Dotty][17]
 18. [Memory Footprint Evaluation Results][18]
+19. [Contended Performance Evaluation Results][19]
+20. [JEP 193: Variable Handles][20]
 
   [1]: https://groups.google.com/forum/#!topic/scala-internals/cCgBMp5k8R8 "scala-internals"
   [2]: http://cs.oswego.edu/pipermail/concurrency-interest/2013-May/011354.html "concurrency-interest"
@@ -720,7 +733,7 @@ We would like to thank Peter Levart and the other members of the concurrency-int
   [4]: http://stackoverflow.com/questions/7517964/program-hangs-if-thread-is-created-in-static-initializer-block "static-init-hang"
   [5]: http://docs.oracle.com/javase/specs/jls/se7/html/jls-12.html#jls-12.4.2 "jls-spec"
   [6]: https://github.com/DarkDimius/lazy-val-bench/blob/CallSites/src/test/scala/example/package.scala "lazy-val-bench-code"
-  [7]: https://d-d.me/tnc/30/lazy-sip-perf/report "lazy-val-bench-report"
+  [7]: https://d-d.me/tnc/30/lazy-sip-perf/report/#config=%7B%22filterConfig%22%3A%7B%22curves%22%3A%5B%220%22%2C%221%22%2C%225%22%2C%226%22%2C%227%22%2C%228%22%2C%2210%22%2C%2212%22%5D%2C%22order%22%3A%5B%22param-size%22%2C%22date%22%5D%2C%22filters%22%3A%5B%5B%22100000%22%2C%22300000%22%2C%22500000%22%2C%221000000%22%2C%223000000%22%2C%225000000%22%5D%2C%5B%221477397877000%22%5D%5D%7D%2C%22chartConfig%22%3A%7B%22type%22%3A0%2C%22showCI%22%3Afalse%7D%7D "lazy-val-bench-report"
   [8]: http://axel22.github.io/scalameter/ "scalameter-code"
   [9]: https://groups.google.com/forum/#!msg/scala-internals/4sjw8pcKysg/GlXYDDzCgI0J "scala-internals"
   [10]: https://groups.google.com/forum/#!topic/dotty-internals/soWIWr3bRk8 "dotty-internals"
@@ -732,3 +745,5 @@ We would like to thank Peter Levart and the other members of the concurrency-int
   [16]: https://github.com/scala/scala.github.com/pull/491
   [17]: https://github.com/lampepfl/dotty/blob/master/src/dotty/runtime/LazyHolders.scala
   [18]: https://d-d.me/tnc/30/lazy-mem/report/#config=%7B%22filterConfig%22%3A%7B%22curves%22%3A%5B%22-1%22%2C%220%22%2C%221%22%2C%222%22%2C%223%22%2C%224%22%2C%225%22%2C%226%22%2C%227%22%2C%228%22%5D%2C%22order%22%3A%5B%22param-size%22%2C%22date%22%5D%2C%22filters%22%3A%5B%5B%221000000%22%2C%222000000%22%2C%223000000%22%2C%224000000%22%2C%225000000%22%5D%2C%5B%221477396691000%22%5D%5D%7D%2C%22chartConfig%22%3A%7B%22type%22%3A0%2C%22showCI%22%3Afalse%7D%7D
+  [19]: https://d-d.me/tnc/30/lazy-sip-perf/report/#config=%7B%22filterConfig%22%3A%7B%22curves%22%3A%5B%2216%22%2C%2217%22%2C%2218%22%2C%2219%22%2C%2221%22%2C%2222%22%2C%2223%22%5D%2C%22order%22%3A%5B%22param-size%22%2C%22date%22%5D%2C%22filters%22%3A%5B%5B%22100000%22%2C%22300000%22%2C%22500000%22%2C%221000000%22%2C%223000000%22%2C%225000000%22%5D%2C%5B%221477397877000%22%5D%5D%7D%2C%22chartConfig%22%3A%7B%22type%22%3A0%2C%22showCI%22%3Afalse%7D%7D
+  [20]: http://openjdk.java.net/jeps/193
