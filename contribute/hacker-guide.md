@@ -108,9 +108,9 @@ You need the following tools:
 
 OS X and Linux builds should work. Windows is supported, but it might have issues. Please report to [the issue tracker](https://issues.scala-lang.org/) if you encounter any.
 
-Building Scala is as easy as running `sbt dist/mkPack` in the root of your cloned repository. Be prepared to wait for a while -- a full "clean" build
-takes 5+ minutes depending on your machine (longer on older machines with less memory). Incremental builds are usually within 20-120 seconds range (again, your mileage might vary
-with your hardware).
+Building Scala is as easy as running `sbt dist/mkPack` in the root of your cloned repository. In general, it's much more efficient to enter the `sbt` shell once and run the various tasks from there, instead of running each task by launching `sbt some-task` on your command prompt.
+
+Be prepared to wait for a while -- a full "clean" build takes 5+ minutes depending on your machine (longer on older machines with less memory). On a recent laptop, incremental builds usually complete within 10-30 seconds.
 
 ### IDE
 
@@ -155,31 +155,33 @@ Now, implement your bugfix or new feature!
 
 Here are also some tips & tricks that have proven useful in Scala development:
 
-* Even on solid state drives packaging Scala distribution (i.e. creating jars from class files) is a non-trivial task. To save time here, some people in our team do `sbt compile` instead of `sbt dist/mkPack` and then create custom scripts using `sbt/mkBin` to launch Scala from `./build/quick/bin/`. Also see [the Scala README](https://github.com/scala/scala#incremental-compilation) for tips on speeding up compile times.
-* If after introducing changes or updating your clone, you get `AbstractMethodError` or other linkage exceptions, try doing `sbt clean` and building again.
+* After building your working copy with the `compile` sbt task, there's no need to leave the comfort of your sbt shell to try it out: the REPL is available as the `scala` task, and you can also run the compiler using the `scalac` task. If you prefer to run the REPL outside sbt, you can generate the scripts in `build/quick/bin` using the `dist/mkQuick` task.
+* The sbt workflow is also great for debugging, as you can simply create a remote debugging session in your favorite IDE, and then activate the JVM options for the next time you run the `scala` or `scalac` tasks using:
+
+```
+> set javaOptions in compiler := List("-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8002")
+> scalac test.scala
+[info] Running scala.tools.nsc.Main -usejavacp test.scala
+Listening for transport dt_socket at address: 8002
+```
+
+* Also see [the Scala README](https://github.com/scala/scala#incremental-compilation) for tips on speeding up compile times.
+* If after introducing changes or updating your clone, you get `AbstractMethodError` or other linkage exceptions, try the `clean` task and building again.
 * Don't underestimate the power of `print`. When starting with Scala, I spent a lot of time in the debugger trying to figure out how
   things work. However later I found out that print-based debugging is often more effective than jumping around. While it might be obvious
-  to some, I'd like to explicitly mention that it's also useful to print stack traces to understand the flow of execution. When working with `Trees`, you might want to use the Scala  `showRaw` to get the `AST` representation.
-* You can publish your newly-built scala version locally using `sbt publishLocal`. Then, you can invoke a REPL using your version:
-
-         $ sbt publishLocal // This may take a while
-         ...
-         $ sbt
-         ...
-         > scala
-         [info] Running scala.tools.nsc.MainGenericRunner -usejavacp
-         Welcome to Scala 2.12.0-20160613-195040-cd85531 (OpenJDK 64-Bit Server VM, Java 1.8.0_91).
-         Type in expressions for evaluation. Or try :help.
-         
-         scala> 
-
-Alternatively, you can invoke a REPL using the bash script in `./build/quick/bin/`:
-
-         $ ./build/quick/bin/scala
-         Welcome to Scala 2.12.0-20160613-195040-cd85531 (OpenJDK 64-Bit Server VM, Java 1.8.0_91).
-         Type in expressions for evaluation. Or try :help.
-         
-         scala> 
+  to some, I'd like to explicitly mention that it's also useful to print stack traces to understand the flow of execution. When working with `Trees`, you might want to use `showRaw` to get the `AST` representation.
+* You can publish your newly-built scala version locally using the `publishLocal` task in sbt.
+* It's convenient to enable the following local settings to speed up your workflow (put these in `local.sbt` in your working copy):
+```
+// skip docs for local publishing
+publishArtifact in (Compile, packageDoc) in ThisBuild := false
+// set version based on current sha, so that you can easily consume this build from another sbt project
+baseVersionSuffix := s"local-${Process("tools/get-scala-commit-sha").lines.head.substring(0, 7)}"
+// show more logging during a partest run
+testOptions in IntegrationTest in LocalProject("test") ++= Seq(Tests.Argument("--show-log"), Tests.Argument("--show-diff"))
+// if incremental compilation is compiling too much (should be fine under sbt 0.13.13)
+// antStyle := true
+```
 
 * Adding a macro to the `Predef` object is a pretty involved task. Due to bootstrapping, you cannot just throw a macro into it. For this reason, the process is more involved. You might want to follow the way `StringContext.f` itself is added. In short, you need to define your macro under `src/compiler/scala/tools/reflect/` and provide no implementation in `Predef` (`def fn = macro ???`). Now you have to set up the wiring. Add the name of your macro to `src/reflect/scala/reflect/internal/StdNames.scala`, add the needed links to it to `src/reflect/scala/reflect/internal/Definitions.scala`, and finally specify the bindings in `src/compiler/scala/tools/reflect/FastTrack.scala`. [Here's](https://github.com/folone/scala/commit/59536ea833ca16c985339727baed5d70e577b0fe) an example of adding a macro.
 
