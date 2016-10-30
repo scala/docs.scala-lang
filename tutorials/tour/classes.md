@@ -43,7 +43,7 @@ object Classes {
 }
 ```
 
-The program defines an executable application Classes in form of a top-level [singleton object](singleton-objects.html) with a `main` method. The `main` method creates a new `Point` and stores it in value `pt`. Note that values defined with the `val` construct are different from variables defined with the `var` construct (see class `Point` above) in that they do not allow updates; i.e. the value is constant.
+The program defines an executable application Classes in form of a top-level [singleton object](singleton-objects) with a `main` method. The `main` method creates a new `Point` and stores it in value `pt`. Note that values defined with the `val` construct are different from variables defined with the `var` construct (see class `Point` above) in that they do not allow updates; i.e. the value is constant.
 
 Here is the output of the program:
 
