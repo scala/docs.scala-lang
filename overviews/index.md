@@ -30,6 +30,7 @@ languages: [ja, zh-cn, es]
   * [String Interpolation](/overviews/core/string-interpolation.html) <span class="label success">New in 2.10</span>
   * [Implicit Classes](/overviews/core/implicit-classes.html) <span class="label success">New in 2.10</span>
   * [Value Classes and Universal Traits](/overviews/core/value-classes.html) <span class="label success">New in 2.10</span>
+  * [Binary Compatibility of Scala Releases](/overviews/core/binary-compatibility-of-scala-releases.html)
 
 <div class="page-header-index">
   <h2>Reference / Documentation</h2>
