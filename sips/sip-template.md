@@ -110,7 +110,7 @@ process anyway so it's better to get them out up front.
 4. [Alternative Libraries/Implementations][4]
 5. [Discussion forum/post/gitter/IRC][5]
 
-[1]: http://github.com "Github"
+[1]: http://github.com "GitHub"
 [2]: http://www.scala-lang.org/api/ "Scaladoc"
 [3]: http://en.wikipedia.org/wiki/Academic_publishing "Academic/Research"
 [4]: https://github.com/dogescript/dogescript "Alternatives"
