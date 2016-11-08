@@ -43,7 +43,7 @@ own pull requests.
 <p>The Scala language web site.</p>
 </div>
 <div class="span4 doc-block">
-<h4><a href="https://github.com/scala">All Scala Github Projects</a></h4>
+<h4><a href="https://github.com/scala">All Scala GitHub Projects</a></h4>
 <p>For other PRs, follow the scala project from here.</p>
 </div>
 </div>
