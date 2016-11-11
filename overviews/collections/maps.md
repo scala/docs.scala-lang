@@ -36,7 +36,7 @@ The fundamental operations on maps are similar to those on sets. They are summar
 |  `ms updated (k, v)`      |Same as `ms + (k -> v)`.|
 | **Removals:**             |						     |
 |  `ms - k`  	            |The map containing all mappings of `ms` except for any mapping of key `k`.|
-|  `ms - (k, 1, m)`  	    |The map containing all mappings of `ms` except for any mapping with the given keys.|
+|  `ms - (k, l, m)`  	    |The map containing all mappings of `ms` except for any mapping with the given keys.|
 |  `ms -- ks`  	            |The map containing all mappings of `ms` except for any mapping with a key in `ks`.|
 |   **Subcollections:**     |						     |
 |  `ms.keys`  	            |An iterable containing each key in `ms`.        |
