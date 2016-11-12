@@ -136,9 +136,9 @@ With this proposal I would like to present 2 variants:
 
 2. The second variant adds trailing comma support to the whole grammar, which means more consistency, but also supporting trailing commas in places that doesn't really need it, such as `ids`.
 
-**NOTE:** I recommend the first variant: only add trailing comma support to `ArgumentExprs`, `Params` and `ClassParams`.
+In this proposal, only the first variant is considered: trailing comma support for `ArgumentExprs`, `Params` and `ParamClasses` for the sake of simplicity.
 
-See below for a summary of what changing `ArgumentExprs`, `Params` and `ClassParams` means.
+See below for more details on what that would mean.
 
 #### Changing `ArgumentExprs`
 
