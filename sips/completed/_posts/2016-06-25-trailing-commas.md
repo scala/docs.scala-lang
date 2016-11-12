@@ -25,10 +25,11 @@ vote-text: The following proposal needs to be updated, since only the specialize
 | Sep 04th 2016  | New motivation: VCS authorship attribution      |
 | Sep 04th 2016  | New drawback: Cross building hinderance         |
 | Sep 12th 2016  | Remove cross building hinderance from drawbacks |
+| Nov 12th 2016  | Major rework: multi-line, 2 variants & spec     |
 
 ## Motivation
 
-### Easy to modify lists
+### Ease of modification
 
 When using a comma-separated sequence of elements on multiple lines, such as:
 
@@ -40,33 +41,33 @@ Seq(
 )
 {% endhighlight %}
 
-It is quite inconvenient to remove or comment out any element because one has to think about the fact that the last element mustn't have a trailing comma:
+It is inconvenient to remove or comment out elements because the last element mustn't have a trailing comma:
 
 {% highlight scala %}
-Map(
+Seq(
   foo,
-  bar //,
+  bar,
 //  baz
-)
+)       // error: illegal start of simple expression
 {% endhighlight %}
 
-Secondly, it is quite inconvenient to re-order the sequence, for instance if you wanted `baz` before `bar` you need to micromanage which is followed by a comma and which isn't:
+It is also inconvenient to reorder because every element but the last one must be followed by a comma:
 
 {% highlight scala %}
 val xs = Seq(
   foo,
-  baz   // This isn't going to work
+  baz
   bar,
-)
+)       // error: illegal start of simple expression
 {% endhighlight %}
 
 ### Reduce diff noise
 
-Allowing trailing commas also reduces a lot of noise in diffs, such as:
+Adding and removing commas also introduces unnecessary noise in diffs:
 
 {% highlight diff %}
 @@ -4,7 +4,8 @@
- Map(
+ Seq(
    foo,
    bar,
 -  baz
@@ -77,15 +78,15 @@ Allowing trailing commas also reduces a lot of noise in diffs, such as:
 
 ### VCS authorship attribution
 
-Using the example above, the authorship of the `baz` line would be preserved, instead of becoming that of the author of the `quux` line.
+Using the example above, adding a comma after `baz` also unnecessarily changed the authorship of the line.
 
 ### Simplify code generation
 
-Such a feature would also simplify generating Scala source code.
+Allowing trailing commas would also simplify generating Scala source code.
 
 ### Long standing ticket
 
-There is an open ticket ([SI-4986][]) where this feature was requested, referencing the fact that it facilitates code generation by tools and allows for easier sorting of the values, initially in the context of import selectors but later also for other constructs in the syntax.
+([SI-4986][]) was opened in 2011 requesting support for trailing commas, referencing that it facilitates code generation by tools and allows easier sorting of values. It was initially in the context of import selectors but later also for other constructs in the syntax.
 
 ### Real-world use-cases
 
@@ -96,45 +97,113 @@ Some real-world use-cases where elements of a sequence are typically added, remo
 
 ## Design Decisions
 
-There are a number of different elements of the Scala syntax that are comma separated, but instead of changing them all a subset of the more useful ones was chosen:
+### Multi-line
 
-* tuples
-* argument and parameter groups, including for implicits, for functions, methods and constructors
-* import selectors
+It is not the intent of introducing trailing commas to promote a code style such as:
 
-From the spec these are:
+{% highlight scala %}
+val xs = Seq(foo, baz, bar, )
+{% endhighlight %}
 
-* SimpleExpr1, ArgumentExprs via Exprs
-* ParamClause, ParamClauses via Params
-* ClassParamClause, ClassParamClauses via ClassParams
-* ImportSelector
+Trailing comma support is therefore restricted to only comma-separated elements that are on separate lines:
 
-The elements that have not changed are:
+{% highlight scala %}
+val xs = Seq(
+  foo,
+  baz,
+  bar,
+)
+{% endhighlight %}
 
-* ValDcl, VarDcl, VarDef via ids
-* Type via FunctionArgTypes
-* SimpleType, TypeArgs via Types
-* Expr, ResultExpr via Bindings
-* SimplePattern via Patterns
-* TypeParamClause, FunTypeParamClause
-* ImportExp
-* PatDef
+### What parts of the Scala grammar to change
+
+There are a number of different parts of the Scala grammar that are comma-separated and, therefore, could support trailing commas. Specifically:
+
+* `ArgumentExprs`
+* `Params` and `ClassParams`
+* `SimpleExpr1`
+* `TypeArgs`, `TypeParamClause` and `FunTypeParamClause`
+* `SimpleType` and `FunctionArgTypes`
+* `SimplePattern`
+* `ImportSelectors`
+* `Import`
+* `Bindings`
+* `ids`, `ValDcl`, `VarDcl`, `VarDef` and `PatDef`
+
+With this proposal I would like to present 2 variants:
+
+1. The first variant adds trailing comma support to only `ArgumentExprs`, `Params` and `ClassParams`, which I consider to be the parts of the grammar that would most benefit from trailing commas.
+
+2. The second variant adds trailing comma support to the whole grammar, which means more consistency, but also supporting trailing commas in places that doesn't really need it, such as `ids`.
+
+**NOTE:** I recommend the first variant: only add trailing comma support to `ArgumentExprs`, `Params` and `ClassParams`.
+
+See below for a summary of what changing `ArgumentExprs`, `Params` and `ClassParams` means.
+
+#### Changing `ArgumentExprs`
+
+**Spec change**
+
+{% highlight diff %}
+         Exprs ::= Expr {‘,’ Expr}
+-ArgumentExprs ::= ‘(’ [Exprs] ‘)’
++ArgumentExprs ::= ‘(’ [Exprs] [‘,’] ‘)'
+{% endhighlight %}
+
+**Example**
+{% highlight scala %}
+Seq(
+  foo,
+  bar,
+  baz,
+)
+{% endhighlight %}
+
+## `Params` and `ClassParams`
+
+**Spec change**
+{% highlight diff %}
+       Params ::=  Param {‘,’ Param}
+- ParamClause ::=  [nl] ‘(’ [Params] ‘)’
+-ParamClauses ::=  {ParamClause} [[nl] ‘(’ ‘implicit’ Params ‘)’]
++ ParamClause ::=  [nl] ‘(’ [Params] [‘,’] ‘)’
++ParamClauses ::=  {ParamClause} [[nl] ‘(’ ‘implicit’ Params [‘,’] ‘)’]
+
+       ClassParams ::=  ClassParam {‘,’ ClassParam}
+- ClassParamClause ::=  [nl] ‘(’ [ClassParams] ‘)’
+-ClassParamClauses ::=  {ClassParamClause} [[nl] ‘(’ ‘implicit’ ClassParams ‘)’]
++ ClassParamClause ::=  [nl] ‘(’ [ClassParams] [‘,’] ‘)’
++ClassParamClauses ::=  {ClassParamClause} [[nl] ‘(’ ‘implicit’ ClassParams [‘,’] ‘)’]
+{% endhighlight %}
+
+**examples**
+{% highlight scala %}
+def bippy(
+  foo: Int,
+  bar: String,
+  baz: Boolean,
+)
+
+class Bippy(
+  foo: Int,
+  bar: String,
+  baz: Boolean,
+)
+{% endhighlight %}
 
 ## Implementation
 
-The implementation is a simple change to the parser, allowing for a trailing comma, for the groups detailed above, and has been proposed in [scala/scala#5245][].
+The implementation of trailing commas is a matter of changing some of the implementation of Scala's parser. An implementation of an earlier version of this proposal can be found at [scala/scala#5245][].
 
 ## Drawbacks/Trade-offs
 
-The drawback, or trade-off, to this change is that it adds another way in which it is possible to do something in Scala. But it is the opinion of this SIP that the pragmatic advantage of being able to have trailing commas is worth this drawback.
+One drawback, or trade-off, to this change is that it adds an alternative way in which it is possible to do something in Scala. But I believe that the pragmatic advantage of being able to have trailing commas is worth this drawback.
 
-Given that this is a change in syntax, another drawback is that it requires changing the existing tools, such as those that parse Scala: intellij-scala, scalariform, scala.meta and scalaparse.
+Another drawback, given this is a change in syntax, is that it requires changing the existing tools, such as those that parse Scala: intellij-scala, scalariform, scala.meta and scalaparse.
 
 ## Alternatives
 
-As an alternative, trailing commas support could be added universally to all the comma-separated elements of the syntax. This would mean changing more (but still only in the parser), but it would make it consistent.
-
-As an alternative to changing the language, there already exists today a compiler plugin called [scala-commas][] that provides this feature. It also provides some evidence that people would even use unsupported compiler apis and reflection to add this functionality, even when such a plugin won't compose with other plugins well, though arguably only weak evidence as it's a young and obscure plugin.
+As an alternative to changing the language, there already exists today a compiler plugin called [scala-commas][] that provides a variant of this feature. It also provides some evidence that people would even use unsupported compiler apis and reflection to add this functionality, even when such a plugin won't compose with other plugins well, though arguably only weak evidence as it's a young and obscure plugin.
 
 ## References
 
