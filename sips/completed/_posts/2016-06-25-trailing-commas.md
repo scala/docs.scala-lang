@@ -14,16 +14,15 @@ vote-text: The following proposal needs to be updated, since only the specialize
 | Date           | Version                                         |
 | ---------------|-------------------------------------------------|
 | Jun 25th 2016  | Initial Draft                                   |
-| Jun 27th 2016  | Added drawback of changing existing tools       |
-| Jun 27th 2016  | Added motivation that it simplifies codegen     |
-| Jun 28th 2016  | Fixed a typo                                    |
-| Aug 10th 2016  | Renamed from SIP-NN to SIP-27                   |
+| Jun 27th 2016  | New drawback: changing existing tools           |
+| Jun 27th 2016  | New motivation: simplifies codegen              |
+| Aug 10th 2016  | SIP numbered: Renamed to SIP-27                 |
 | Aug 10th 2016  | Changed scala-commas URL (repo was moved)       |
-| Aug 10th 2016  | Dialed back some of the language from review    |
+| Aug 10th 2016  | Dialed back some of the language                |
 | Sep 04th 2016  | Split the motivation into sections              |
-| Sep 04th 2016  | Add VCS authorship attribution to motivation    |
-| Sep 04th 2016  | Add Cross building hinderance to drawbacks      |
-| Sep 12th 2016  | Remove Cross building hinderance from drawbacks |
+| Sep 04th 2016  | New motivation: VCS authorship attribution      |
+| Sep 04th 2016  | New drawback: Cross building hinderance         |
+| Sep 12th 2016  | Remove cross building hinderance from drawbacks |
 
 ## Motivation
 
