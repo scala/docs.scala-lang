@@ -59,11 +59,11 @@ Scala的并行容器库设计创意般的同Scala的（序列）容器库（从2
 
 通过fold计算一个ParArray中所有数的累加值：
     
-    scala> val parArray = (1 to 1000000).toArray.par    
+    scala> val parArray = (1 to 10000).toArray.par
     parArray: scala.collection.parallel.mutable.ParArray[Int] = ParArray(1, 2, 3, ...
     
     scala> parArray.fold(0)(_ + _)
-    res0: Int = 1784293664
+    res0: Int = 50005000
     
 #### filter
 

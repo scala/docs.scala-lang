@@ -67,11 +67,11 @@ Usando un `map` paralelizado para transformar una colección de elementos tipo `
 
 Sumatoria mediante `fold` en un `ParArray`:
 
-    scala> val parArray = (1 to 1000000).toArray.par
+    scala> val parArray = (1 to 10000).toArray.par
     parArray: scala.collection.parallel.mutable.ParArray[Int] = ParArray(1, 2, 3, ...
 
     scala> parArray.fold(0)(_ + _)
-    res0: Int = 1784293664
+    res0: Int = 50005000
 
 #### filtrando
 
