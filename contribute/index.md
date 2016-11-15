@@ -27,7 +27,7 @@ Coordination of contribution efforts takes place on the
 <div class="row">
 <div class="span4 doc-block">
 <h4><a href="./documentation.html">Documentation</a></h4>
-<p><a href="./scala-standard-library-api-documentation.html">Scaladoc (API)</a>, <a href="https://www.lightbend.com/activator/template/contribute">Activator templates</a>,
+<p><a href="./scala-standard-library-api-documentation.html">Scaladoc (API)</a>,
 <a href="http://docs.scala-lang.org/contribute.html">docs.scala-lang.org</a> and 
 <a href="https://github.com/scala/scala-lang">scala-lang.org</a>.</p>
 </div>
