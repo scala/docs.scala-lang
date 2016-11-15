@@ -132,9 +132,9 @@ There are a number of different parts of the Scala grammar that are comma-separa
 
 With this proposal I would like to present 2 variants:
 
-1. The first variant adds trailing comma support to only `ArgumentExprs`, `Params` and `ClassParams`, which I consider to be the parts of the grammar that would most benefit from trailing commas.
+1. The first variant adds trailing comma support to only multi-line `ArgumentExprs`, `Params` and `ClassParams`, which I consider to be the parts of the grammar that would most benefit from trailing commas.
 
-2. The second variant adds trailing comma support to the whole grammar, which means more consistency, but also supporting trailing commas in places that doesn't really need it, such as `ids`.
+2. The second variant adds trailing comma support to the whole grammar (again, only for multi-line), which means more consistency, but also supporting trailing commas in places that doesn't really need it, such as `ids`.
 
 In this proposal, only the first variant is considered: trailing comma support for `ArgumentExprs`, `Params` and `ParamClasses` for the sake of simplicity.
 
