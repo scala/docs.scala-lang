@@ -56,7 +56,7 @@ Coordination of contribution efforts takes place on the
 <p>Enhance the Scala tools with features for build tools, IDE plug-ins and other related projects.</p>
 </div>
 <div class="span4 doc-block">
-<h4><a href="./guide.html#larger_changes_new_features">Compiler/Language</a></h4>
+<h4><a href="./guide.html#larger-changes-new-features">Compiler/Language</a></h4>
 <p>Larger language features and compiler enhancements including language specification and SIPs.</p>
 </div>
 </div>

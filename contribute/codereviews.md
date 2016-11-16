@@ -5,7 +5,7 @@ title: Code Review Contributions
 ## Code Review Contributions
 
 In addition to [bug fixing](./guide.html), you can help us review 
-[waiting pull requests](#pull_requests_awaiting_comment). 
+[waiting pull requests](#pull-requests-awaiting-comment). 
 This is also a good (and recommended) way to get to know the feel of
 the bug-fixing and submissions process before jumping in with your
 own pull requests.
