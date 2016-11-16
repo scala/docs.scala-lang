@@ -21,7 +21,7 @@ Thanks
 
 The Scala API documentation lives with the scala project source code. There are many ways you can help with improving Scaladoc, including:
 
-* [Log issues for missing scaladoc documentation](./scala-standard-library-api-documentation.html#contribute_api_documentation_bug_reports) - 
+* [Log issues for missing scaladoc documentation](./scala-standard-library-api-documentation.html#contribute-api-documentation-bug-reports) - 
 Please *follow the issue submission process closely* to help prevent duplicate issues being created.
 * [Claim Scaladoc Issues and Provide Documentation](./scala-standard-library-api-documentation.html) - please claim issues prior to working on a specific scaladoc task to prevent duplication of effort. If you sit on an issue for too long without submitting a pull request, it will revert back to unassigned and you will need to re-claim it.
 * You can also just 
@@ -61,4 +61,3 @@ to Scala and related projects) is provided on the main
 
 Please read both the
 [docs.scala-lang.org contribution](http://docs.scala-lang.org/contribute.html) document and the [scala-lang.org github README](https://github.com/scala/scala-lang#scala-langorg) before embarking on any changes to the Scala language site, as it uses the same Jekyll markdown tool and many of the same conventions as the Scala documentation site.
-

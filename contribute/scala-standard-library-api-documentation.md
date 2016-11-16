@@ -75,7 +75,7 @@ component so that they show up in the correct issue filters.
 Please familiarize yourself with the following before contributing
 new API documentation to save time, effort, mistakes and repetition.
 
-* [Forking the Repo](./hacker-guide.html#2_set_up) - follow the setup steps through
+* [Forking the Repo](./hacker-guide.html#set-up) - follow the setup steps through
   the Branch section. If providing new documentation related to an existing JIRA issue, use `issue/NNNN`
   or `ticket/NNNN` as the guide states. If providing API documentation with no associated
   JIRA issue, use `scaladoc/xxxx` instead.
