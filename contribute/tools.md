@@ -24,7 +24,7 @@ Stuff changes. Found a broken link or something that needs updating on this page
 <div class="container">
 <div class="row">
 <div class="span4 doc-block">
-<a href="https://github.com/sbt/sbt"><img src="http://www.scala-sbt.org/assets/typesafe_sbt_svg.svg" width="100px" height="50px"/>
+<a href="https://github.com/sbt/sbt"><img src="http://www.scala-sbt.org/assets/typesafe_sbt_svg.svg" alt="sbt logo" width="100px" height="50px"/>
 <h4>sbt</h4></a>
 <p>Interactive build tool.</p>
 <p><a href="http://www.scala-sbt.org/">Home</a> | 
@@ -33,7 +33,7 @@ Stuff changes. Found a broken link or something that needs updating on this page
 <a href="https://github.com/sbt/sbt/blob/0.13/CONTRIBUTING.md">Contributing</a></p>
 </div>
 <div class="span4 doc-block">
-<a href="https://github.com/scala/scala"><img src="https://avatars1.githubusercontent.com/u/57059?v=3&s=200" width="50px" height="50px"/>
+<a href="https://github.com/scala/scala"><img src="https://avatars1.githubusercontent.com/u/57059?v=3&s=200" alt="scala logo" width="50px" height="50px"/>
 <h4>Scaladoc Tool</h4></a>
 <p>(Contribute through scala/scala)</p>
 <p><a href="http://www.scala-lang.org/api">Home</a> | 
@@ -45,7 +45,7 @@ Stuff changes. Found a broken link or something that needs updating on this page
 
 <div class="row">
 <div class="span4 doc-block">
-<a href="https://github.com/scala-ide/scala-ide"><img src="https://avatars2.githubusercontent.com/u/1026788?v=3&s=200" width="50px" height="50px"/><h4>Scala IDE</h4></a>
+<a href="https://github.com/scala-ide/scala-ide"><img src="https://avatars2.githubusercontent.com/u/1026788?v=3&s=200" alt="scala IDE logo" width="50px" height="50px"/><h4>Scala IDE</h4></a>
 <p>The Eclipse Scala IDE project.</p>
 <p><a href="http://scala-ide.org/">Home</a> | 
 <a href="http://scala-ide-portfolio.assembla.com/spaces/scala-ide/support/tickets">Issues</a> | 
@@ -53,7 +53,7 @@ Stuff changes. Found a broken link or something that needs updating on this page
 <a href="https://github.com/scala-ide/scala-ide/blob/master/CONTRIBUTING.md">Contributing</a></p>
 </div>
 <div class="span4 doc-block">
-<a href="https://github.com/typesafehub/dbuild"><img src="https://avatars3.githubusercontent.com/u/784923?v=3&s=200" width="50px" height="50px"/><h4>DBuild</h4></a>
+<a href="https://github.com/typesafehub/dbuild"><img src="https://avatars3.githubusercontent.com/u/784923?v=3&s=200" alt="dbuild logo" width="50px" height="50px"/><h4>DBuild</h4></a>
 <p>Multi-project build tool.</p>
 <p><a href="http://typesafehub.github.io/dbuild">Home</a> | 
 <a href="https://github.com/typesafehub/dbuild/issues">Issues</a> | 
@@ -64,7 +64,7 @@ Stuff changes. Found a broken link or something that needs updating on this page
 
 <div class="row">
 <div class="span4 doc-block">
-<a href="https://github.com/scala/scala-partest"><img src="https://avatars1.githubusercontent.com/u/57059?v=3&s=200" width="50px" height="50px"/>
+<a href="https://github.com/scala/scala-partest"><img src="https://avatars1.githubusercontent.com/u/57059?v=3&s=200" alt="scala logo" width="50px" height="50px"/>
 <h4>Partest</h4></a>
 <p>Scala Compiler/Library Testing</p>
 <p><a href="http://docs.scala-lang.org/tutorials/partest-guide.html">Home</a> | 
@@ -72,7 +72,7 @@ Stuff changes. Found a broken link or something that needs updating on this page
 <a href="https://github.com/scala/scala-partest/blob/master/README.md">ReadMe</a></p>
 </div>
 <div class="span4 doc-block">
-<a href="https://github.com/ensime/ensime-server"><img src="https://avatars0.githubusercontent.com/u/5089042?v=3&s=200" width="50px" height="50px"/><h4>Ensime</h4></a>
+<a href="https://github.com/ensime/ensime-server"><img src="https://avatars0.githubusercontent.com/u/5089042?v=3&s=200" alt="ensime logo" width="50px" height="50px"/><h4>Ensime</h4></a>
 <p>Scala Support for Text Editors</p>
 <p><a href="http://ensime.github.io">Home</a> | 
 <a href="https://github.com/ensime/ensime-server/issues">Issues</a> | 
@@ -83,7 +83,7 @@ Stuff changes. Found a broken link or something that needs updating on this page
 
 <div class="row">
 <div class="span4 doc-block">
-<a href="https://github.com/scoverage/scalac-scoverage-plugin"><img src="https://avatars1.githubusercontent.com/u/5998302?v=3&amp;s=200" width="50px" height="50px"/><h4>Scoverage</h4></a>
+<a href="https://github.com/scoverage/scalac-scoverage-plugin"><img src="https://avatars1.githubusercontent.com/u/5998302?v=3&amp;s=200" alt="scoverage logo" width="50px" height="50px"/><h4>Scoverage</h4></a>
 <p>Scala code coverage tool</p>
 <p><a href="http://scoverage.org">Home</a> | 
 <a href="https://github.com/scoverage/scalac-scoverage-plugin/issues">Issues</a> | 
@@ -91,7 +91,7 @@ Stuff changes. Found a broken link or something that needs updating on this page
 <a href="https://groups.google.com/forum/#!forum/scala-code-coverage-tool">Contributing</a></p>
 </div>
 <div class="span4 doc-block">
-<a href="https://github.com/scala/scala-abide"><img src="https://avatars1.githubusercontent.com/u/57059?v=3&s=200" width="50px" height="50px"/>
+<a href="https://github.com/scala/scala-abide"><img src="https://avatars1.githubusercontent.com/u/57059?v=3&s=200" alt="scala logo" width="50px" height="50px"/>
 <h4>Abide</h4></a>
 <p>Lint tooling for Scala</p>
 <p><a href="https://github.com/scala/scala-abide#abide--lint-tooling-for-scala">Home</a> | 
@@ -109,7 +109,7 @@ The following projects are important to the Scala community but are particularly
 <div class="container">
 <div class="row">
 <div class="span4 doc-block">
-<a href="https://github.com/scala/scala"><img src="https://avatars1.githubusercontent.com/u/57059?v=3&s=200" width="50px" height="50px"/>
+<a href="https://github.com/scala/scala"><img src="https://avatars1.githubusercontent.com/u/57059?v=3&s=200" alt="scala logo" width="50px" height="50px"/>
 <h4>Scalap</h4></a>
 <p>Scala Decoder (part of scala/scala)</p>
 <p><a href="https://issues.scala-lang.org/issues/?jql=status%20%3D%20Open%20AND%20text%20~%20%22scalap%22">Issues</a> | 
@@ -117,7 +117,7 @@ The following projects are important to the Scala community but are particularly
 <a href="./guide.html">Contributing</a></p>
 </div>
 <div class="span4 doc-block">
-<a href="https://github.com/mdr/scalariform"><img src="/resources/img/white-line.png" width="50px" height="50px"/><h4>Scalariform</h4></a>
+<a href="https://github.com/mdr/scalariform"><img src="/resources/img/white-line.png" alt="white line" width="50px" height="50px"/><h4>Scalariform</h4></a>
 <p>Scala code formatter</p>
 <p><a href="https://github.com/mdr/scalariform/wiki/Command-line-tool">Home</a> | 
 <a href="https://github.com/mdr/scalariform/issues">Issues</a> | 
