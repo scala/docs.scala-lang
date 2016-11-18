@@ -3,7 +3,7 @@ layout: cheatsheet
 istranslation: true
 title: Scalacheat
 by: Filip Czaplicki
-about: Dzięki <a href="http://brenocon.com/">Brendan O'Connor</a>. Ten cheatsheet ma być szybkim podsumowaniem konstrukcji syntaktycznych Scali. Licencjonowany przez Brendan O'Connor pod licencją CC-BY-SA 3.0.
+about: Dzięki <a href="http://brenocon.com/">Brendan O'Connor</a>. Ten cheatsheet ma być szybkim podsumowaniem konstrukcji składniowych Scali. Licencjonowany przez Brendan O'Connor pod licencją CC-BY-SA 3.0.
 language: pl
 ---
 
@@ -29,10 +29,10 @@ language: pl
 |  `def compose(g:R=>R, h:R=>R) = (x:R) => g(h(x))` <br> `val f = compose({_*2}, {_-1})`                   |  funkcja anonimowa: aby przekazać kilka bloków musisz ponawiasować. |
 |  `val zscore = (mean:R, sd:R) => (x:R) => (x-mean)/sd`                                                   |  rozwijanie funkcji, oczywista składnia. |
 |  `def zscore(mean:R, sd:R) = (x:R) => (x-mean)/sd`                                                       |  rozwijanie funkcji, oczywista składnia. |
-|  `def zscore(mean:R, sd:R)(x:R) = (x-mean)/sd`                                                           |  rozwijanie funkcji, cukier syntaktyczny. ale wtedy: |
-|  `val normer = zscore(7, 0.4) _`                                                                          |  potrzeba wiodącego podkreślenia, aby wydobyć funkcję częściowo zaaplikowaną, tylko dla wersji z cukrem syntaktycznym. |
+|  `def zscore(mean:R, sd:R)(x:R) = (x-mean)/sd`                                                           |  rozwijanie funkcji, lukier składniowy. ale wtedy: |
+|  `val normer = zscore(7, 0.4) _`                                                                          |  potrzeba wiodącego podkreślenia, aby wydobyć funkcję częściowo zaaplikowaną, tylko dla wersji z lukrem składniowym. |
 |  `def mapmake[T](g:T=>T)(seq: List[T]) = seq.map(g)`                                                     |  typ generyczny. |
-|  `5.+(3); 5 + 3` <br> `(1 to 5) map (_*2)`                                                               |  cukier syntaktyczny dla operatorów infiksowych. |
+|  `5.+(3); 5 + 3` <br> `(1 to 5) map (_*2)`                                                               |  lukier składniowy dla operatorów infiksowych. |
 |  `def sum(args: Int*) = args.reduceLeft(_+_)`                                                            |  zmienna liczba argumentów funkcji. |
 |  <span id="packages" class="h2">pakiety</span>                                                                         |                 |
 |  `import scala.collection._`                                                                             |  import z dżokerem. |
@@ -46,12 +46,12 @@ language: pl
 |  <span class="label important">Źle</span>`var x,y,z = (1,2,3)`                                           |  ukryty błąd: do każdego przypisana cała krotka. |
 |  `var xs = List(1,2,3)`                                                                                  |  lista (niezmienna). |
 |  `xs(2)`                                                                                                 |  indeksowanie za pomocą nawiasów. ([slides](http://www.slideshare.net/Odersky/fosdem-2009-1013261/27)) |
-|  `1 :: List(2,3)`                                                                                        |  operator dołożenia elementu na początek listu. |
+|  `1 :: List(2,3)`                                                                                        |  operator dołożenia elementu na początek listy. |
 |  `1 to 5` _to samo co_ `1 until 6` <br> `1 to 10 by 2`                                                      |  składnia dla przedziałów. |
 |  `()` _(puste nawiasy)_                                                                                   |  jedyny obiekt typu Unit (podobnie jak void w C/Java). |
 |  <span id="control_constructs" class="h2">konstrukcje kontrolne</span>                                                     |                 |
 |  `if (check) happy else sad`                                                                             |  warunek. |
-|  `if (check) happy` _to samo co_ <br> `if (check) happy else ()`                                            |  cukier składniowy dla warunku. |
+|  `if (check) happy` _to samo co_ <br> `if (check) happy else ()`                                            |  lukier składniowy dla warunku. |
 |  `while (x < 5) { println(x); x += 1}`                                                                   |  pętla while. |
 |  `do { println(x); x += 1} while (x < 5)`                                                                |  pętla do while. |
 |  `import scala.util.control.Breaks._`<br>`breakable {`<br>`    for (x <- xs) {`<br>`        if (Math.random < 0.1) break`<br>`    }`<br>`}`|  instrukcja przerwania pętli (break). ([slides](http://www.slideshare.net/Odersky/fosdem-2009-1013261/21)) |
@@ -79,7 +79,7 @@ language: pl
 |  `trait T1; trait T2`<br>`class C extends T1 with T2`<br>`class C extends D with T1 with T2`             |  wiele cech. |
 |  `class C extends D { override def f = ...}`	                                                           |  w przeciążeniach funkcji wymagane jest słowo kluczowe override. |
 |  `new java.io.File("f")`                   	                                                           |  tworzenie obiektu. |
-|  <span class="label important">Źle</span> `new List[Int]`<br> <span class="label success">Dobrze</span> `List(1,2,3)` |  błąd typu: typ abstrakcyjny<br>zamiast, konwencja: wywoływalna fabryka przysłaniająca typ |
+|  <span class="label important">Źle</span> `new List[Int]`<br> <span class="label success">Dobrze</span> `List(1,2,3)` |  błąd typu: typ abstrakcyjny<br>zamiast tego konwencja: wywoływalna fabryka przysłaniająca typ |
 |  `classOf[String]`                                                                                       |  literał klasy. |
 |  `x.isInstanceOf[String]`                                                                                |  sprawdzenie typu (w czasie wykonania) |
 |  `x.asInstanceOf[String]`                                                                                |  rzutowanie typu (w czasie wykonania) |
