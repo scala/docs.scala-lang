@@ -133,7 +133,7 @@ When hacking on your topic of choice, you'll be modifying Scala, compiling it an
 Typically you would want to first make sure that your changes work on a small example and afterwards verify that nothing break
 by running a comprehensive test suite.
 
-We'll start by creating a `sandbox` directory (`./sandbox is listed in the .gitignore of the Scala repository), which will hold a single test file and its compilation results. First, let's make sure that
+We'll start by creating a `sandbox` directory (`./sandbox` is listed in the .gitignore of the Scala repository), which will hold a single test file and its compilation results. First, let's make sure that
 [the bug](https://issues.scala-lang.org/browse/SI-6725) is indeed reproducible by putting together a simple test and compiling and running it with the Scala compiler that we built using `sbt`. The Scala compiler that we just built is located in `build/pack/bin`.
 
     17:25 ~/Projects/scala (ticket/6725)$ mkdir sandbox
@@ -172,6 +172,7 @@ Listening for transport dt_socket at address: 8002
   to some, I'd like to explicitly mention that it's also useful to print stack traces to understand the flow of execution. When working with `Trees`, you might want to use `showRaw` to get the `AST` representation.
 * You can publish your newly-built scala version locally using the `publishLocal` task in sbt.
 * It's convenient to enable the following local settings to speed up your workflow (put these in `local.sbt` in your working copy):
+
 ```
 // skip docs for local publishing
 publishArtifact in (Compile, packageDoc) in ThisBuild := false
