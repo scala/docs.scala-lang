@@ -13,19 +13,19 @@ vote-text: The following proposal needs to be updated, since only the specialize
 
 ## History
 
-| Date           | Version                                         |
-| ---------------|-------------------------------------------------|
-| Jun 25th 2016  | Initial Draft                                   |
-| Jun 27th 2016  | New drawback: changing existing tools           |
-| Jun 27th 2016  | New motivation: simplifies codegen              |
-| Aug 10th 2016  | SIP numbered: Renamed to SIP-27                 |
-| Aug 10th 2016  | Changed scala-commas URL (repo was moved)       |
-| Aug 10th 2016  | Dialed back some of the language                |
-| Sep 04th 2016  | Split the motivation into sections              |
-| Sep 04th 2016  | New motivation: VCS authorship attribution      |
-| Sep 04th 2016  | New drawback: Cross building hinderance         |
-| Sep 12th 2016  | Remove cross building hinderance from drawbacks |
-| Nov 12th 2016  | Major rework: multi-line, 2 variants & spec     |
+| Date           | Version                                                    |
+| ---------------|------------------------------------------------------------|
+| Jun 25th 2016  | Initial Draft ([#533][])                                   |
+| Jun 27th 2016  | New drawback: changing existing tools ([#533][])           |
+| Jun 27th 2016  | New motivation: simplifies codegen ([#533][])              |
+| Aug 10th 2016  | SIP numbered: Renamed to SIP-27 ([#533][])                 |
+| Aug 10th 2016  | Changed scala-commas URL (repo was moved) ([#533][])       |
+| Aug 10th 2016  | Dialed back some of the language ([#533][])                |
+| Sep 04th 2016  | Split the motivation into sections ([#533][])              |
+| Sep 04th 2016  | New motivation: VCS authorship attribution ([#533][])      |
+| Sep 04th 2016  | New drawback: Cross building hinderance ([#533][])         |
+| Sep 12th 2016  | Remove cross building hinderance from drawbacks ([#533][]) |
+| Nov 12th 2016  | Major rework: multi-line, 2 variants & spec ([#625][])     |
 
 ## Motivation
 
@@ -214,3 +214,5 @@ As an alternative to changing the language, there already exists today a compile
 [SI-4986]: https://issues.scala-lang.org/browse/SI-4986
 [scala/scala#5245]: https://github.com/scala/scala/pull/524://github.com/scala/scala/pull/5245
 [scala-commas]: https://github.com/47deg/scala-commas
+[#533]: https://github.com/scala/scala.github.com/pull/533
+[#625]: https://github.com/scala/scala.github.com/pull/625
