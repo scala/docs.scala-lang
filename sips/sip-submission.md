@@ -223,15 +223,47 @@ becomes the reviewer. The main tasks of the reviewer are the following:
 ### Voting
 
 The Committee will only vote on proposals if Committee members have the quorum.
-The quorum is two thirds (2/3) out of the total number of members.
+The quorum is two thirds (2/3) out of the total number of members. If the quorum
+is not reached, the meeting will be rescheduled.
 
-For a SIP to be accepted, it must fulfill two requirements:
+For a SIP to be accepted, it must fulfill three requirements:
 
-- 70% of the quorum votes in favor of it.
+- At least 50% of **all** the Committee members vote in favor.
+- At least two thirds of the voting members vote in favor.
 - Martin Odersky does not veto it.
 
-Please, note that **abstentions are not allowed**, Committee members need to
-vote either yes or no.
+On an important note, the two-thirds rule is equivalent to the number of votes
+in favor being at least twice the number of votes against. Abstentions are
+excluded in calculating a two-thirds vote.
+
+The deadline to vote a proposal is decided on a case-by-case basis. Members of
+the Committee can vote after the meeting if their vote is casted via email to
+the SIP Process Lead before the deadline. The deadline will be decided by the
+Committee members present at the last meeting and the SIP Process Lead, and
+will be made public right after the meeting.
+
+#### Examples
+
+Several voting situations are explained next.
+
+All of them assume that there are 9 Committee members and that the quorum is
+reached. The 50% rule enforces that the vote must be equal or greater than 50%
+of *all* the Committee Members (9), which is 5.  The second rule requires that
+2/3 of the voting members are in favor (without counting abstentions). We also
+assume that Martin does not use veto them.
+
+| In favor | Against | Abstentions | Voting members | Result |
+| -------- | ------- | ----------- | -------------- | ------ |
+| 6 | 2 | 1 | 8 | Proposal accepted |
+| 5 | 3 | 1 | 8 | Proposal rejected |
+| 5 | 2 | 2 | 7 | Proposal accepted |
+
+In the first situation, the proposal is accepted because 6 is greater than the
+50% (5) and more than twice the votes against (2).  In the second situation, the
+proposal passes the 50% rule but fails the two thirds rule since 5 is not 6
+(twice the number of votes against, 3).  In the third situation, the proposal is
+accepted because 5 is equal to 50% of all the Committee members and is twice the
+number of votes against (2).
 
 ### Responsibilities of the members
 
