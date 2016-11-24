@@ -105,6 +105,13 @@ It is not the intent of introducing trailing commas to promote a code style such
 val xs = Seq(foo, baz, bar, )
 {% endhighlight %}
 
+for a number of reasons:
+
+1. Subjectively, it's an ugly style.
+2. Some people utilise commas as a mechanism for counting, so introducing an optional trailing commas interferes with this technique; when elements are one by line, then line-counting can be used.
+3. Adding or removing elements is less cumbersome on one line.
+4. Commenting out elements isn't any less cumbersome with an optional trailing comma.
+
 Trailing comma support is therefore restricted to only comma-separated elements that are on separate lines:
 
 {% highlight scala %}
