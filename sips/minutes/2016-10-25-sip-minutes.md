@@ -30,7 +30,7 @@ Minutes were taken by Jorge Vicente Cantero, acting secretary.
 Attendees Present:
 
 * Martin Odersky ([@odersky](https://github.com/odersky)), EPFL
-* Seth Tisue ([@SethTisue](https://github.com/SethTisue)), EPFL
+* Seth Tisue ([@SethTisue](https://github.com/SethTisue)), Lightbend
 * Iulian Dragos ([@dragos](https://github.com/dragos)), Independent
 * Heather Miller ([@heathermiller](https://github.com/heathermiller)), Scala Center
 * Sébastien Doeraene ([@sjrd](https://github.com/sjrd)), EPFL
@@ -101,11 +101,13 @@ discuss proposals and convince each other about the pros and cons. All the
 Committee finally decides to not consider abstentions as no's. Adriaan, however,
 suggests that we should penalize people that abstain too often.
 
-Another system proposed by Martin helps survive the abstention issue mentioned
+Martin proposes a new system that helps survive the abstention issue mentioned
 before. For a proposal to pass, at least 50% of all the Committee 
 and two-thirds of all the people voting (not counting abstentions) must accept
 it. The quorum rule is kept. After some discussion, the Committee unanimously
-votes in favor of the new rules.
+votes in favor of Martin's new system, along with not considering abstentions as
+no's and allowing all the Committee members to vote after the meeting.  These
+rules are formalized [here](https://github.com/scala/scala.github.com/pull/632).
 
 ### Discussion of SIP-27: Trailing Commas
 
@@ -113,7 +115,8 @@ Eugene describes what happened in the last meeting. Martin asks if there is a
 concrete proposal. Jorge says that he thinks that Dale would push for the new
 line specialized case. Martin proposes to push for a more concrete proposal
 because the specification cannot be so open-ended to properly analyze the
-consequences of the suggested changes.
+consequences of the suggested changes. Therefore, he suggests to vote on the
+proposal to see either if we continue its review or we stop its discussion.
 
 Seth and Adriaan voice their opinions on trailing commas again, they don't agree
 this is a problem that should be solved in the language. Martin changes his view
@@ -123,13 +126,13 @@ that it wouldn't be good to contradict last month's vote on the proposal.
 Heather says that she's in favor of trailing commas because makes beginners be
 less confused by the syntax and help people get started with the language.
 Iulian doesn't like the specialized version, he would prefer a general version.
+Josh is not present, but he will vote via email in the next week.
 
-**Outcome**: All the Committee decides to vote on accepting the proposal again for a final
-review with a clear specification of the changes. Seth and Adriaan vote against,
-the rest of the Committee except Josh vote in favor of it. According to our new
-rules, Josh gets to decide whether the proposal will be readmitted for review or
-cancelled (**NOTE**: Josh votes in favor of trailing commas one week after the
-meeting). Trailing commas will be reviewed in November.
+**Outcome**: All the Committee (except Seth and Adriaan) decides to vote on
+accepting the proposal again for a final review. For this review, Dale has to
+update his proposal championing for one of the different changes to the syntax,
+and making a succinct specification whose consequences can be analysed by the
+Committee.  Trailing commas will be reviewed in November.
 
 ### Discussion of SIP-20: Improved Lazy Val Initialization
 
@@ -138,11 +141,14 @@ Several new schemes have been added to the proposal based on his experience in
 Dotty, in which the championed scheme is already implemented.
 
 There are no clear winner in the case of local lazy vals, but there seems to be
-two clear candidates for the non-local lazy vals (B4-general and B6).
-Both are faster than the existing implementation in the contended case but B4
-general is 4x and B6 is only 2x. However, for the uncontended case B4 general is
-30% slower than the existing implementation, while B6 is on par, up to +-5%.
-Dmitry recommends the B6 case because it's a *pure* win. Memory-wise, B6 would
+two clear candidates for the non-local lazy vals
+([V4](http://docs.scala-lang.org/sips/pending/improved-lazy-val-initialization.html)
+and
+[V6](http://docs.scala-lang.org/sips/pending/improved-lazy-val-initialization.html)).
+Both are faster than the existing implementation in the contended case but V4
+general is 4x and V6 is only 2x. However, for the uncontended case V4 general is
+30% slower than the existing implementation, while V6 is on par, up to +-5%.
+Dmitry recommends the V6 case because it's a *pure* win. Memory-wise, V6 would
 have a smaller memory footprint.
 
 Sébastien comments on the increase of the bytecode for the getter of the lazy
@@ -153,7 +159,7 @@ code inlining).
 
 Jorge comments that there's no implementation of this proposal for scalac. This
 means that someone should step up and provide such implementation, because
-Dmitry does not have time for it. Adriaan comments on the fact that B6 uses
+Dmitry does not have time for it. Adriaan comments on the fact that V6 uses
 `sun.misc.Unsafe`, which he prefers that the compiler doesn't depend on to run
 in other platforms that don't allow it (Google App Engine). Sébastien highlights
 that the proposal could use var handles, which are planned to be shipped on Java
@@ -161,13 +167,13 @@ that the proposal could use var handles, which are planned to be shipped on Java
 
 Heather proposes to mark this proposal as dormant, since it's lacking an
 implementation. She wants to let other people claim its ownership and provide an
-implementation if they care about this issue.
+implementation if they care about this issue. Jorge proposes to ask first Dmitry
+if he wants to champion V4, otherwise it would be marked as dormant.
 
-**Outcome**: The Committee agrees to mark the proposal as dormant and let
-someone pick it up and provide an implementation. Ideally, this implementation
-should run in Java 8 and don't depend on var handles. The SIP Process Lead will
-wait some time to receive another candidate from the current author, Dmitry. If
-he doesn't propose anything, the SIP will be marked as dormant.
+**Outcome**: The Committee agrees to wait for Dmitry's response and then mark
+the proposal as dormant. The idea is to let someone pick it up and provide an
+implementation. Ideally, this implementation should run in Java 8 and don't
+depend on var handles.
 
 ## Closing remarks
 See you next time!
