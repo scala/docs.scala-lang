@@ -61,7 +61,7 @@ val xs = Seq(
 )       // error: illegal start of simple expression
 {% endhighlight %}
 
-### Reduce diff noise
+### Diff noise reduction
 
 Adding and removing commas also introduces unnecessary noise in diffs:
 
