@@ -221,7 +221,7 @@ becomes the reviewer. The main tasks of the reviewer are the following:
 
 ### SIP meetings
 
-SIP meetings are scheduled montly by the Process Lead, and require a quorum of
+SIP meetings are scheduled monthly by the Process Lead, and require a quorum of
 two-thirds (2/3) of the committee members. If the quorum is not reached the
 meeting is rescheduled.
 
