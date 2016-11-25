@@ -172,7 +172,7 @@ if he wants to champion V4, otherwise it would be marked as dormant.
 
 **Outcome**: The Committee agrees to wait for Dmitry's response and then mark
 the proposal as dormant. The idea is to let someone pick it up and provide an
-implementation. Ideally, this implementation should run in Java 8 and don't
+implementation. Ideally, this implementation should run on Java 8 and not
 depend on var handles.
 
 ## Closing remarks
