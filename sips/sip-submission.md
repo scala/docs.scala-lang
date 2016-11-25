@@ -219,50 +219,57 @@ becomes the reviewer. The main tasks of the reviewer are the following:
 3. Provide them feedback from the discussions in the meetings, and
 4. Explain the latest progress in every meeting.
 
+### SIP meetings
+
+SIP meetings are scheduled montly by the Process Lead, and require a quorum of
+two-thirds (2/3) of the committee members. If the quorum is not reached the
+meeting is rescheduled.
+
 ### Voting
 
-The committee will only vote on proposals if committee members have the quorum.
-The quorum is two thirds (2/3) out of the total number of members. If the quorum
-is not reached, the meeting will be rescheduled.
+All SIP Committee members vote. They can either vote in the meeting or by
+casting their vote via email to the SIP Process Lead before the set deadline.
 
-For a SIP to be accepted, it must fulfill three requirements:
+SIP Committee members can vote "in favor", "against" or "abstain".
 
-- At least 50% of **all** the committee members vote in favor.
-- At least two thirds of the voting members vote in favor.
+For a SIP to be accepted, the following three requirements must be met:
+
+- At least 50% of the committee members vote in favor.
+- There are at least two-thirds "in favor" versus "against" votes.
 - Martin Odersky does not veto it.
 
-On an important note, the two-thirds rule is equivalent to the number of votes
-in favor being at least twice the number of votes against. Abstentions are
-excluded in calculating a two-thirds vote.
+An alternative way to think of the two-thirds requirement is that the number of
+votes in favor must be at least twice the number of votes against. Abstentions
+are excluded in calculating a two-thirds vote.
 
-The deadline to vote a proposal is decided on a case-by-case basis. Members of
-the committee can vote after the meeting if their vote is cast via email to
-the SIP Process Lead before the deadline. The deadline will be decided by the
-committee members present at the last meeting and the SIP Process Lead, and
-will be made public right after the meeting.
+Note that, when calculating the lower bound, numbers round up. Therefore for a
+committee of 9 members, at least 50% means at least 5 members.
+
+The deadline to vote a proposal is decided on a case-by-case basis. The deadline
+will be decided by the committee members present at the last meeting and the SIP
+Process Lead, and will be made public right after the meeting.
 
 #### Examples
 
 Several voting situations are explained next.
 
-All of them assume that there are 9 committee members and that the quorum is
-reached. The 50% rule enforces that the vote must be equal or greater than 50%
-of *all* the committee members (9), which is 5.  The second rule requires that
-2/3 of the voting members are in favor (without counting abstentions). We also
-assume that Martin does not use veto them.
+All of them assume that there are 9 committee members.  The 50% requirement
+requires at least 5 members to vote in favor.  We also assume that Martin does
+not veto them.
 
-| In favor | Against | Abstentions | Voting members | Result |
-| -------- | ------- | ----------- | -------------- | ------ |
-| 6 | 2 | 1 | 8 | Proposal accepted |
-| 5 | 3 | 1 | 8 | Proposal rejected |
-| 5 | 2 | 2 | 7 | Proposal accepted |
+| In favor | Against | Abstentions | Voting members |    Result    |
+| -------- | ------- | ----------- | -------------- | ------------ |
+|     6    |    2    |      1      |        8       |   Accepted   |
+|     5    |    3    |      1      |        8       | Not Accepted |
+|     5    |    2    |      2      |        7       |   Accepted   |
 
-In the first situation, the proposal is accepted because 6 is greater than the
-50% (5) and more than twice the votes against (2).  In the second situation, the
-proposal passes the 50% rule but fails the two thirds rule since 5 is not 6
-(twice the number of votes against, 3).  In the third situation, the proposal is
-accepted because 5 is equal to 50% of all the committee members and is twice the
-number of votes against (2).
+In the first situation, the proposal is accepted because 6 is both greater than
+the 50% (5) and more than twice the votes against (2).  In the second situation,
+the proposal meets the 50% requirement but fails the two-thirds requirement
+since 5 is less than twice the number of votes against, 3, therefore the
+proposal is not accepted.  In the third situation, the proposal is accepted
+because 5 is equal to 50% of all the committee members and is greater than twice
+the number of votes against (2).
 
 ### Responsibilities of the members
 
