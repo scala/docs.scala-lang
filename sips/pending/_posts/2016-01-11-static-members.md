@@ -93,7 +93,7 @@ object O {
 {% endhighlight %}
 
 Under the proposed scheme users will be able to opt-in to have the field `f` defined in the inner object `I` emited as a static field. 
-In case `O.d` is annotated with `@static` the field will be crated as a static field `d` in `class O`.
+In case `O.d` is annotated with `@static` the field will be created as a static field `d` in `class O`.
 If not annotated, it will be created in the companion module with a static forwarder `d` in `class O`.
 
 ## Restrictions ##
@@ -113,10 +113,13 @@ The following rules ensure that methods can be correctly compiled into static me
 6. Only `@static` methods and vals are supported in companions of traits. Java8 supports those, but not vars, and JavaScript does not have interfaces at all.
 
 ## Compilation scheme ##
-No modificaiton of the typer is planned. The current proposed scheme piggybacks on already existing scoping restrictions in the typer, thus requiring `@static` methods to be defined in `objects`.
+
+No modification of the typer is planned. The current proposed scheme piggybacks on already existing scoping restrictions in the typer, thus requiring `@static` methods to be defined in `object`s.
+
 If implemented in the dotty code base, the following modifications would be needed:
+
  - extend `RefChecks` to check restrictions 1, 2, 4, 5 and 6. This can be done in a separate mini-phase;
- - extend `LamdaLift.CollectDependencies` to be aware that accessing a member annotated `@static` should not trigger capturing the object that contains this member;
+ - extend `LambdaLift.CollectDependencies` to be aware that accessing a member annotated `@static` should not trigger capturing the object that contains this member;
  - extend `LambdaLift` to trigger an error if a method annotated with `@static` method cannot be lifted to the top level scope;
  - extend `GenBCode` to emit static fields and methods in companion classes and forwarders to them in companion modules.
 
