@@ -11,6 +11,8 @@
         <span class="label light-warning">Postponed</span>
       {% elsif post.vote-status == 'under review' %}
         <span class="label warning">Under Review</span>
+      {% elsif post.vote-status == 'under revision' %}
+        <span class="label warning">Under Revision</span>
       {% elsif post.vote-status == 'numbered' %}
         <span class="label notice">Numbered</span>
       {% elsif post.vote-status == 'not accepted' %}

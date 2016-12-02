@@ -3,7 +3,7 @@ layout: sip
 title: SIP 25 - @static fields and methods in Scala objects(SI-4581)
 disqus: true
 
-vote-status: Under revision
+vote-status: under revision
 vote-text: Authors need to update the proposal before the next review.
 ---
 
