@@ -4,7 +4,7 @@ disqus: true
 title: SIP-20 - Improved Lazy Vals Initialization
 
 vote-status: under review
-vote-text: Next iteration takes place in October 2016.
+vote-text: Dormant. This proposal lacks an implementation for Scalac and is looking for a new author.
 ---
 
 **By: Aleksandar Prokopec, Dmitry Petrashko, Miguel Garcia, Jason Zaugg, Hubert Plociniczak, Viktor Klang, Martin Odersky**

@@ -2,6 +2,9 @@
 layout: sip
 title: SIP 25 - Trait Parameters
 disqus: true
+
+vote-status: under review
+vote-text: The board agreed to schedule the next iteration of the evaluation process in 6 months, since there’s no implementation yet and the authors need time to produce one.
 ---
 
 __Martin Odersky__
