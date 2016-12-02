@@ -15,6 +15,8 @@
         <span class="label warning">Under Revision</span>
       {% elsif post.vote-status == 'numbered' %}
         <span class="label notice">Numbered</span>
+      {% elsif post.vote-status == 'dormant' %}
+        <span class="label light-warning">Dormant</span>
       {% elsif post.vote-status == 'not accepted' %}
         <span class="label danger">Not Accepted</span>
       {% elsif post.vote-status == 'rejected' %}
