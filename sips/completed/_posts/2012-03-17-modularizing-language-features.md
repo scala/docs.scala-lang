@@ -3,7 +3,7 @@ layout: sip
 title: SIP-18 - Modularizing Language Features
 
 vote-status: accepted
-vote-text: This is in Accept status, pending implementation. Let the record show Paul is against it.
+vote-text: This SIP has already been accepted with the vote against of Paul.
 ---
 
 
