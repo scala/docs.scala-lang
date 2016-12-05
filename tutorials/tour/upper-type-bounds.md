@@ -11,27 +11,39 @@ tutorial-previous: variances
 ---
 
 In Scala, [type parameters](generic-classes.html) and [abstract types](abstract-types.html) may be constrained by a type bound. Such type bounds limit the concrete values of the type variables and possibly reveal more information about the members of such types. An _upper type bound_ `T <: A` declares that type variable `T` refers to a subtype of type `A`.
-Here is an example which relies on an upper type bound for the implementation of the polymorphic method `findSimilar`:
+Here is an example that demonstrates upper type bound for a type parameter of class `Cage`:
 
 ```tut
-trait Similar {
-  def isSimilar(x: Any): Boolean
+abstract class Animal {
+ def name: String
 }
-case class MyInt(x: Int) extends Similar {
-  def isSimilar(m: Any): Boolean =
-    m.isInstanceOf[MyInt] &&
-    m.asInstanceOf[MyInt].x == x
+
+abstract class Pet extends Animal {}
+
+class Cat extends Pet {
+  override def name: String = "Cat"
 }
-object UpperBoundTest extends App {
-  def findSimilar[T <: Similar](e: T, xs: List[T]): Boolean =
-    if (xs.isEmpty) false
-    else if (e.isSimilar(xs.head)) true
-    else findSimilar[T](e, xs.tail)
-  val list: List[MyInt] = List(MyInt(1), MyInt(2), MyInt(3))
-  println(findSimilar[MyInt](MyInt(4), list))
-  println(findSimilar[MyInt](MyInt(2), list))
+
+class Dog extends Pet {
+  override def name: String = "Dog"
+}
+
+class Lion extends Animal {
+  override def name: String = "Lion"
+}
+
+class Cage[P <: Pet](p: P) {
+  def pet: P = p
+}
+
+object Main extends App {
+  var dogCage = new Cage[Dog](new Dog)
+  var catCage = new Cage[Cat](new Cat)
+  /* Cannot put Lion in a cage as Lion is not a Pet. */
+//  var lionCage = new Cage[Lion](new Lion)
 }
 ```
 
-Without the upper type bound annotation it would not be possible to call method `isSimilar` in method `findSimilar`.
+An instance of class `Cage` may contain an animal with upper bound `Pet`. An animal of type `Lion` is not a pet and therefore cannot be put into a cage.
+
 The usage of lower type bounds is discussed [here](lower-type-bounds.html). 
