@@ -55,8 +55,6 @@ Function0[String]
 The following example shows how to use anonymous function of the beginning of this page
 
 ```tut
-package tour
-
 object AnonymousFunction {
 
   /**
@@ -71,7 +69,7 @@ object AnonymousFunction {
   def main(args: Array[String]) {
 
     // Create an integer to test the anonymous function with
-    var myInteger: Int = 0;
+    var myInteger = 0
 
     println(myInteger) // Prints: 0
 
