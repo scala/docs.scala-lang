@@ -8,7 +8,7 @@ This guide is intended to help you get from an idea of fixing a bug or implement
 
 This guide covers the entire process, from the conception of your idea or bugfix to the point where it is merged into Scala. Throughout, we will use a running example of an idea or bugfix one might wish to contribute.
 
-Other good starting points for first-time contributors include the [Scala README](https://github.com/scala/scala#get-in-touch) and [contributor's guidelines](https://github.com/scala/scala/blob/2.11.x/CONTRIBUTING.md).
+Other good starting points for first-time contributors include the [Scala README](https://github.com/scala/scala#get-in-touch) and [contributor's guidelines](https://github.com/scala/scala/blob/2.12.x/CONTRIBUTING.md).
 
 ## The Running Example
 
@@ -336,7 +336,7 @@ Let's go into each of these points in more detail.
 The [Git Basics](http://git-scm.com/book/en/Git-Basics) chapter in the Git online book covers most of the basic workflow during this stage.
 There are two things you should know here:
 
-1. Commit messages are often the only way to understand the intentions of authors of code written a few years ago. Thus, writing a quality is of utmost importance. The more context you provide for the change you've introduced, the larger the chance that some future maintainer understand your intentions. Consult [the pull request policies](https://github.com/scala/scala/blob/2.11.x/CONTRIBUTING.md) for more information about the desired style of your commits.
+1. Commit messages are often the only way to understand the intentions of authors of code written a few years ago. Thus, writing a quality is of utmost importance. The more context you provide for the change you've introduced, the larger the chance that some future maintainer understand your intentions. Consult [the pull request policies](https://github.com/scala/scala/blob/2.12.x/CONTRIBUTING.md) for more information about the desired style of your commits.
 2. Keeping Scala's git history clean is also important. Therefore we won't accept pull requests for bug fixes that have more than one commit. For features, it is okay to have several commits, but all tests need to pass after every single commit. To clean up your commit structure, you want to [rewrite history](http://git-scm.com/book/en/Git-Branching-Rebasing) using `git rebase` so that your commits are against the latest revision of `master`.
 
 Once you are satisfied with your work, synced with `master` and cleaned up your commits you are ready to submit a patch to the central Scala repository. Before proceeding make sure you have pushed all of your local changes to your fork on GitHub.
