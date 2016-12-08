@@ -36,7 +36,7 @@ A [local type inference mechanism](local-type-inference.html) takes care that th
 
 ## Scala is extensible ##
 
-In practice, the development of domain-specific applications often requires domain-specific language extensions. Scala provides a unique combination of language mechanisms that make it easy to smoothly add new language constructs in form of libraries:
+In practice, the development of domain-specific applications often requires domain-specific language extensions. Scala provides a unique combination of language mechanisms that make it easy to smoothly add new language constructs in the form of libraries:
 
 * any method may be used as an [infix or postfix operator](operators.html)
 * [closures are constructed automatically depending on the expected type](automatic-closures.html) (target typing).
