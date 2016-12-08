@@ -6,8 +6,8 @@ disqus: true
 
 tutorial: scala-tour
 num: 15
-tutorial-next: sequence-comprehensions
-tutorial-previous: regular-expression-patterns
+next-page: sequence-comprehensions
+previous-page: regular-expression-patterns
 ---
 
 In Scala, patterns can be defined independently of case classes. To this end, a method named unapply is defined to yield a so-called extractor. An extractor can be thought of as a special method that reverses the effect of applying a particular object on some inputs. Its purpose is to 'extract' the inputs that were present before the 'apply' operation. For instance, the following code defines an extractor [object](singleton-objects.html) Twice.

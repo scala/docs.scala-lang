@@ -37,6 +37,7 @@ layout: default
 
     <div class="span10">
       {{ content }}
+      {% include pager.txt %}
       {% if page.disqus == true %}{% include disqus.txt %}{% endif %}
     </div>
 

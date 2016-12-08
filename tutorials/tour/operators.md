@@ -6,8 +6,8 @@ disqus: true
 
 tutorial: scala-tour
 num: 29
-tutorial-next: automatic-closures
-tutorial-previous: local-type-inference
+next-page: automatic-closures
+previous-page: local-type-inference
 ---
 
 Any method which takes a single parameter can be used as an *infix operator* in Scala. Here is the definition of class `MyBool` which includes methods `and` and `or`:

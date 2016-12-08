@@ -4,6 +4,9 @@ title: Indentation
 
 partof: style-guide
 num: 2
+
+previous-page: overview
+next-page: naming-conventions
 ---
 
 Indentation should follow the "2-space convention". Thus, instead of
