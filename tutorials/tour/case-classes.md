@@ -120,6 +120,11 @@ val someVoiceRecording = VoiceRecording("Tom", "voicerecording.org/id/123")
 val specialEmail = Email("jane@mail.com", "Drinks tonight?", "I'm free after 5!")
 val specialSms = SMS("55555", "I'm here! Where are you?")
 
+println(showNotificationSpecial(someSms, SPECIAL_EMAIL, SPECIAL_NUMBER))
+println(showNotificationSpecial(someVoiceRecording, SPECIAL_EMAIL, SPECIAL_NUMBER))
+println(showNotificationSpecial(specialEmail, SPECIAL_EMAIL, SPECIAL_NUMBER))
+println(showNotificationSpecial(specialSms, SPECIAL_EMAIL, SPECIAL_NUMBER))
+
 // prints: 
 // You got an SMS from 12345! Message: Are you there?
 // you received a Voice Recording from Tom! Click the link to hear it: voicerecording.org/id/123
