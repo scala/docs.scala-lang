@@ -35,6 +35,6 @@ language: ko
 
 때론 하위 값의 개수가 미리 고정돼 시퀀스를 반환하고 싶을 때도 있다. 이런 이유로 `unapplySeq`를 통해 패턴을 정의할 수 있다. 마지막 하위 값의 타입 `Tn`은 반드시 `Seq[S]`여야 한다. 이 기법은 `case List(x1, ..., xn)`과 같은 패턴에 사용된다.
 
-추출자는 코드의 유지 관리성을 향상시켜준다. 더욱 자세한 내용은 Emir, Odersky, Willians의 ["패턴을 통한 오브젝트의 매칭"](http://lamp.epfl.ch/~emir/written/MatchingObjectsWithPatterns-TR.pdf)(2007년 1월) 4장을 읽어보도록 하자.
+추출자는 코드의 유지 관리성을 향상시켜준다. 더욱 자세한 내용은 Emir, Odersky, Willians의 ["패턴을 통한 오브젝트의 매칭"](https://infoscience.epfl.ch/record/98468/files/MatchingObjectsWithPatterns-TR.pdf)(2007년 1월) 4장을 읽어보도록 하자.
 
 윤창석, 이한욱 옮김

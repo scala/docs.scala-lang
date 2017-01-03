@@ -38,4 +38,4 @@ The return type of an `unapply` should be chosen as follows:
 
 Sometimes, the number of sub-values is fixed and we would like to return a sequence. For this reason, you can also define patterns through `unapplySeq`. The last sub-value type `Tn` has to be `Seq[S]`. This mechanism is used for instance in pattern `case List(x1, ..., xn)`.
 
-Extractors can make code more maintainable. For details, read the paper ["Matching Objects with Patterns"](http://lamp.epfl.ch/~emir/written/MatchingObjectsWithPatterns-TR.pdf) (see section 4) by Emir, Odersky and Williams (January 2007).
+Extractors can make code more maintainable. For details, read the paper ["Matching Objects with Patterns"](https://infoscience.epfl.ch/record/98468/files/MatchingObjectsWithPatterns-TR.pdf) (see section 4) by Emir, Odersky and Williams (January 2007).
