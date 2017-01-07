@@ -43,7 +43,7 @@ object Classes {
 }
 ```
 
-O programa define uma aplicação executável chamada Classes como um [objeto singular/único](singleton-objects) dentro do método `main`. O método `main` cria um novo `Ponto` e armazena o valor em `pt`. Perceba que valores definidos com o construtor `val` são diferentes das variáveis definidas com o construtor `var` (veja acima a classe `Ponto`), `val` não permite atualização do valor, ou seja, o valor é uma constante.
+O programa define uma aplicação executável chamada Classes como um [Objeto Singleton](singleton-objects) dentro do método `main`. O método `main` cria um novo `Ponto` e armazena o valor em `pt`. Perceba que valores definidos com o construtor `val` são diferentes das variáveis definidas com o construtor `var` (veja acima a classe `Ponto`), `val` não permite atualização do valor, ou seja, o valor é uma constante.
 
 Aqui a saída do programa:
 
