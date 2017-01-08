@@ -46,4 +46,4 @@ object MatchTest2 extends App {
 O primeiro `case` realiza o match se `x` refere-se a um valor inteiro `1`. O segundo `case` realiza o match se `x` é igual a string `"dois"`. O terceiro `case` é padrão tipado; realiza o match de qualquer valor que seja um inteiro e associa o valor do match de `x` a uma variável `y` do tipo `Int`.
 
 A correspondência de padrões de Scala é mais útil para realizar os matches de tipos algébricos expressados com [classes case](case-classes.html).
-Scala também permite a definição de padrões independentemente de classes case, basta utilizar o método `unapply` em um [extrator de objetos](extractor-objects.html).
+Scala também permite a definição de padrões independentemente de classes case, basta utilizar o método `unapply` em um [objeto extrator](extractor-objects.html).
