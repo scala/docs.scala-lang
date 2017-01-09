@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Valor Padrão de Parâmetro
+title: Parâmetro com Valor Padrão
 
 disqus: true
 

@@ -24,7 +24,7 @@ trait Similaridade {
 Tal trait consiste em dois métodos `eSemelhante` e `naoESemelhante`. Equanto `eSemelhante` não fornece um método com implementação concreta (que é semelhante ao abstract na linguagem Java), o método `naoESemelhante` define um implementação concreta. Consequentemente, classes que integram essa trait só precisam fornecer uma implementação concreta para o método `eSemelhante`. O comportamento para `naoESemelhante` é herdado diretamente da trait. Traits são tipicamente integradas a uma [classe](classes.html) (ou outras traits) utilizando a [composição mesclada de classes](mixin-class-composition.html):
  
 ```tut
-class Ponto(xc: Int, yc: Int) extends Similaridade {
+class Point(xc: Int, yc: Int) extends Similaridade {
   var x: Int = xc
   var y: Int = yc
   def eSemelhante(obj: Any) =
@@ -32,10 +32,10 @@ class Ponto(xc: Int, yc: Int) extends Similaridade {
     obj.asInstanceOf[Point].x == x
 }
 object TraitsTest extends App {
-  val p1 = new Ponto(2, 3)
-  val p2 = new Ponto(2, 4)
-  val p3 = new Ponto(3, 3)
-  val p4 = new Ponto(2, 3)
+  val p1 = new Point(2, 3)
+  val p2 = new Point(2, 4)
+  val p3 = new Point(3, 3)
+  val p4 = new Point(2, 3)
   println(p1.eSemelhante(p2))
   println(p1.eSemelhante(p3))
   // Ponto.naoESemelhante foi definido na classe Similaridade
