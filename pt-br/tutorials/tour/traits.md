@@ -8,6 +8,7 @@ tutorial: scala-tour
 num: 4
 tutorial-next: mixin-class-composition
 tutorial-previous: classes
+language: pt-br
 ---
 
 Similar a interfaces em Java, traits são utilizadas para definir tipos de objetos apenas especificando as assinaturas dos métodos suportados. Como em Java 8, Scala permite que traits sejam parcialmente implementadas; ex. é possível definir uma implementação padrão para alguns métodos. Diferentemente de classes, traits não precisam ter construtores com parâmetros.

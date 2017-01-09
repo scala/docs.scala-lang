@@ -8,6 +8,7 @@ tutorial: scala-tour
 num: 2
 tutorial-next: classes
 tutorial-previous: tour-of-scala
+language: pt-br
 ---
 
 Diferente de Java, todos os valores em Scala são objetos (incluindo valores numéricos e funções). Dado que Scala é baseada em classes, todos os valores são instâncias de uma classe. O diagrama a seguir ilustra a hierarquia de classes.

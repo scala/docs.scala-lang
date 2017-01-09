@@ -8,6 +8,7 @@ tutorial: scala-tour
 num: 3
 tutorial-next: traits
 tutorial-previous: unified-types
+language: pt-br
 ---
 
 Classes em Scala são templates estáticos que podem ser instânciados como vários objetos em tempo de execução.

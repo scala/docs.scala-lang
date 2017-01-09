@@ -8,6 +8,7 @@ tutorial: scala-tour
 num: 1
 outof: 33
 tutorial-next: unified-types
+language: pt-br
 ---
 
 Scala é uma linguagem de programação moderna e multi-paradigma desenvolvida para expressar padrões de programação comuns em uma forma concisa, elegante e com tipagem segura. Integra fácilmente características de linguagens orientadas a objetos e funcional.
