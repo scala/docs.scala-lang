@@ -5,7 +5,7 @@ title: SIP-27 - Trailing Commas
 redirect_from: "/sips/pending/trailing-commas.html"
 
 vote-status: approved
-vote-text: The following proposal has been approved but the spec needs to be updated and the implementation has to be ported from Parsers to Scanner. For more information, check the minutes in November 2017.
+vote-text: The following proposal has been approved but the spec needs to be updated and the implementation has to be ported from Parsers to Scanner.
 ---
 
 **By: Dale Wijnand**
