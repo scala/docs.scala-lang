@@ -30,6 +30,7 @@ title: Scala Style Guide
   -->
 
   <ul>
+    <li><a href="{{ site.baseurl }}/style/style-printable.html">Printable Version</a></li>
     <li><a href="{{ site.baseurl }}/style/overview.html">Overview</a></li>
     <li><a href="{{ site.baseurl }}/style/indentation.html">Indentation</a>
       <ul>
