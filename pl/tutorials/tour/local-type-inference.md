@@ -31,7 +31,7 @@ object InferenceTest2 {
 }
 ```
 
-Nie jest też konieczne określenie parametrów typu, kiedy są wywoływanie [metody polimorficzne](polymorphic-methods.html) lub kiedy tworzymy [klasy generyczne](generic-classes.html). Kompilator Scali sam określi typ brakujących parametrów typów na podstawie kontekstu oraz typów właściwych parametrów metody/konstruktora.
+Nie jest też konieczne określenie parametrów typu, kiedy są wywoływane [metody polimorficzne](polymorphic-methods.html) lub kiedy tworzymy [klasy generyczne](generic-classes.html). Kompilator Scali sam określi typ brakujących parametrów typów na podstawie kontekstu oraz typów właściwych parametrów metody/konstruktora.
 
 Oto przykład który to ilustruje:
 

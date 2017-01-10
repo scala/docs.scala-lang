@@ -11,7 +11,7 @@ tutorial-next: named-parameters
 tutorial-previous: annotations
 ---
 
-Scala zezwala na określenie domyślnych wartości dla parametrów co pozwala wyrażeniu wywołującemu ją na pominięcie tych parametrów.
+Scala zezwala na określenie domyślnych wartości dla parametrów, co pozwala wyrażeniu wywołującemu ją na pominięcie tych parametrów.
 
 W Javie powszechną praktyką jest definiowanie implementacji metod, które służa wyłącznie określeniu domyślnych wartości dla pewnych parametrów dużych metod. Najczęściej stosuje się to w konstruktorach:
 
@@ -30,7 +30,7 @@ public class HashMap<K,V> {
 
 Mamy tutaj do czynienia tylko z dwoma konstruktorami. Pierwszy przyjmuje inną mapę, a drugi wymaga podania pojemności i load factor. Trzeci oraz czwarty konstruktor pozwala użytkownikom `HashMap` na tworzenie instancji z domyślnymi wartościami tych parametrów, które są prawdopodobnie dobre w większości przypadków.
 
-Bardziej problematyczne jest to, że domyślne wartości są zarówno w Javadoc oraz w kodzie. Łatwo można zapomnieć o odpowiedniej aktualizacji tych wartości. Powszechnym wzorcem jest utworzenie publicznych stałych których wartości pojawią się w Javadoc:
+Bardziej problematyczne jest to, że domyślne wartości zapisane są zarówno w Javadoc oraz w kodzie. Można łatwo zapomnieć o odpowiedniej aktualizacji tych wartości. Dlatego powszechnym wzorcem jest utworzenie publicznych stałych, których wartości pojawią się w Javadoc:
 
 ```java
 public class HashMap<K,V> {
@@ -53,7 +53,7 @@ Mimo że powstrzymuje to nas od powtarzania się, to podejście nie jest zbyt wy
 Scala wprowadza bezpośrednie wsparcie dla domyślnych parametrów:
 
 ```tut
-class HashMap[K,V](initialCapacity:Int = 16, loadFactor:Float = 0.75f) {
+class HashMap[K,V](initialCapacity: Int = 16, loadFactor: Float = 0.75f) {
 }
 
 // Używa domyślnych wartości

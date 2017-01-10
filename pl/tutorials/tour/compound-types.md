@@ -13,7 +13,7 @@ tutorial-previous: abstract-types
 
 Czasami konieczne jest wyrażenie, że dany typ jest podtypem kilku innych typów. W Scali wyraża się to za pomocą *typów złożonych*, które są częścią wspólną typów obiektów.
 
-Załóżmy że mamy dwie cechy `Cloneable` i `Resetable`:
+Załóżmy, że mamy dwie cechy `Cloneable` i `Resetable`:
 
 ```tut
 trait Cloneable extends java.lang.Cloneable {

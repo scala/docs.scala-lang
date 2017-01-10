@@ -11,7 +11,7 @@ tutorial-next: implicit-conversions
 tutorial-previous: explicitly-typed-self-references
 ---
 
-Metodę z _parametrami implicit_ można stosować tak samo jak zwyczajną metod. W takim przypadku etykieta `implicit` nie ma żadnego znaczenia. Jednak jeżeli odpowiednie argumenty dla parametrów implicit nie zostaną jawnie określone, to kompilator dostarczy je automatycznie.
+Metodę z _parametrami implicit_ można stosować tak samo jak zwyczajną metodę. W takim przypadku etykieta `implicit` nie ma żadnego znaczenia. Jednak jeżeli odpowiednie argumenty dla parametrów implicit nie zostaną jawnie określone, to kompilator dostarczy je automatycznie.
 
 Argumenty które mogą być przekazywane jako parametry implicit można podzielić na dwie kategorie:
 
@@ -39,7 +39,7 @@ object ImplicitTest extends App {
     def add(x: Int, y: Int): Int = x + y
     def unit: Int = 0
   }
-  /** Metoda sum pobiera List[A] i zwraca A, który jest wynikiem zastosowania zastosowania monoidu do wszystkich kolejnych elementów listy. Oznaczając parametr m jako implicit sprawiamy, że potrzebne jest tylko podanie parametru xs podczas wywołania, ponieważ mamy już List[A], zatem wiemy jakiego typue jest w rzeczywistości A, zatem wiemy też jakiego typu Monoid[A] jest potrzebny. Możemy więc wyszukać wartość val lub obiekt w aktualnym zasięgu, który ma odpowiadający typu i użyć go bez jawnego określania referencji do niego. */
+  /** Metoda sum pobiera List[A] i zwraca A, który jest wynikiem zastosowania zastosowania monoidu do wszystkich kolejnych elementów listy. Oznaczając parametr m jako implicit sprawiamy, że potrzebne jest tylko podanie parametru xs podczas wywołania, ponieważ mamy już List[A], zatem wiemy jakiego typu jest w rzeczywistości A, zatem wiemy też jakiego typu Monoid[A] jest potrzebny. Możemy więc wyszukać wartość val lub obiekt w aktualnym zasięgu, który ma odpowiadający typu i użyć go bez jawnego określania referencji do niego. */
   def sum[A](xs: List[A])(implicit m: Monoid[A]): A =
     if (xs.isEmpty) m.unit
     else m.add(xs.head, sum(xs.tail))

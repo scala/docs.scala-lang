@@ -11,7 +11,7 @@ tutorial-next: nested-functions
 tutorial-previous: anonymous-function-syntax
 ---
 
-Scala pozwala na definicję funkcji wyższego rzędu. Są to funkcje, które przyjmują funkcje jako parametry lub których wynik jest też funkcją. Poniżej znajduje się przykład funkcji `apply` który pobiera inną funkcję `f` i wartość `v`, po to by zwrócić wynik zastosowania `f` do `v`:
+Scala pozwala na definiowanie funkcji wyższego rzędu. Są to funkcje, które przyjmują funkcje jako parametry lub których wynik jest też funkcją. Poniżej znajduje się przykład funkcji `apply` który pobiera inną funkcję `f` i wartość `v`, po to by zwrócić wynik zastosowania `f` do `v`:
 
 ```tut
 def apply(f: Int => String, v: Int) = f(v)
@@ -39,4 +39,4 @@ Wykonanie zwraca poniższy wynik:
 [7]
 ```
 
-W tym przykładzie, metoda `decorator.layout` jest automatycznie konwertowana do funkcji typu `Int => String` czego wymaga funkcja `apply`. Warto dodać, że metoda `decorator.layout` jest polimorficzna, co oznacza, że jej sygnatura jest odpowiednio dopasowana przez kompilator, dzięki czemu gdy jest przekazana do funkcji `apply`, jest ona traktowana jako `Int => String`.
+W tym przykładzie, metoda `decorator.layout` jest automatycznie konwertowana do funkcji typu `Int => String`, czego wymaga funkcja `apply`. Warto dodać, że metoda `decorator.layout` jest polimorficzna, co oznacza, że jej sygnatura jest odpowiednio dopasowana przez kompilator, dzięki czemu gdy jest przekazana do funkcji `apply`, jest ona traktowana jako `Int => String`.

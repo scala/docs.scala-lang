@@ -54,7 +54,7 @@ object TargetTest2 extends App {
 }
 ```
 
-Funkcja `loop` przyjmuje ciało pętli oraz zwraca instancję klasy `LoopUnlessCond` (która enkapsuluje to ciało). Warto zwrócić uwagę, że ciało tej funkcji nie zostało jeszcze ewaluowane. Klasa `LoopUnlessCond` posiada metodę `unless` którą możemy wykorzystać jako *operator infiksowy*. W ten sposób, uzyskaliśmy całkiem naturalną składnię dla naszej nowej pętli: `loop { < stats > } unless ( < cond > )`.
+Funkcja `loop` przyjmuje ciało pętli oraz zwraca instancję klasy `LoopUnlessCond` (która enkapsuluje to ciało). Warto zwrócić uwagę, że ciało tej funkcji nie zostało jeszcze ewaluowane. Klasa `LoopUnlessCond` posiada metodę `unless`, którą możemy wykorzystać jako *operator infiksowy*. W ten sposób, uzyskaliśmy całkiem naturalną składnię dla naszej nowej pętli: `loop { < stats > } unless ( < cond > )`.
 
 Oto wynik działania programu `TargetTest2`:
 

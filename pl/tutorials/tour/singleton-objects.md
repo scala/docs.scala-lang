@@ -49,7 +49,7 @@ Bardzo powszechne jest użycie wzorca typeclass w połączeniu z [wartościami i
 
 ## Uwagi dla programistów Javy ##
 
-`static` nie jest słowem kluczowym w Scali. Zamiast tego, wszyskie elementy, które powinny być statyczne (wliczając w to klasy) powinny zostać zamieszczone w obiekcie singleton.
+`static` nie jest słowem kluczowym w Scali. Zamiast tego, wszystkie elementy, które powinny być statyczne (wliczając w to klasy) powinny zostać zamieszczone w obiekcie singleton.
 
 Często spotykanym wzorcem jest definiowanie statycznych elementów, np. jako prywatne, pomocniczo dla ich instancji. W Scali przenosi się je do obiektu companion:
 

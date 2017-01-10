@@ -19,7 +19,7 @@ Konwersje implicit są stosowane w dwóch sytuacjach:
 * W przypadku wyboru `e.m` z `e` typu `T`, jeżeli `m` nie jest elementem `T`.
 
 W pierwszym przypadku wyszukiwana jest konwersja `c`, którą można zastosować do `e` aby uzyskać wynik typu `T`.
-W drugim przypadku wyszukiwana jest konwersja `c`, którą można zastosować do `e` i której wyniki zawiera element nazwany `m`.
+W drugim przypadku wyszukiwana jest konwersja `c`, którą można zastosować do `e` i której wynik zawiera element nazwany `m`.
 
 Poniższa operacja na dwóch listach `xs` oraz `ys` typu `List[Int]` jest dopuszczalna:
 

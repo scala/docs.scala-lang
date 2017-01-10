@@ -36,8 +36,8 @@ Znaczenie adnotacji jest zależne od implementacji. Na platformie Java, poniższ
 
 W poniższym przykładzie dodajemy adnotację `throws` do definicji metody `read` w celu obsługi rzuconego wyjątku w programie w Javie.
 
-> Kompilator Javy sprawdza czy program zawiera obsługę dla [wyjątków kontrolowanych](http://docs.oracle.com/javase/tutorial/essential/exceptions/index.html) poprzez sprawdzenie które wyjątki mogą być wynikiem wykonania metody lub konstruktora. Dla każdego kontrolowanego wyjątki który może być wynikiem wykonania, adnotacja **throws** musi określić klasę tego wyjątku lub jedną z jej klas bazowych.
-> Ponieważ Scala nie pozwala na definiowanie wyjątków kontrolowanych, jeżeli chcemy móc obsłużyć wyjątek z kodu w Scali w Javie, należy dodać jedną lub więcej adnotacji `throws` określające klasy wyjątek przez nią rzucanych.
+> Kompilator Javy sprawdza czy program zawiera obsługę dla [wyjątków kontrolowanych](http://docs.oracle.com/javase/tutorial/essential/exceptions/index.html) poprzez sprawdzenie, które wyjątki mogą być wynikiem wykonania metody lub konstruktora. Dla każdego kontrolowanego wyjątku który może być wynikiem wykonania, adnotacja **throws** musi określić klasę tego wyjątku lub jedną z jej klas bazowych.
+> Ponieważ Scala nie pozwala na definiowanie wyjątków kontrolowanych, jeżeli chcemy obsłużyć wyjątek z kodu w Scali w Javie, należy dodać jedną lub więcej adnotacji `throws` określającej klasy wyjątków przez nią rzucanych.
 
 ```
 package examples
@@ -106,7 +106,7 @@ Zastosowanie adnotacji w Scali wygląda podobnie jak wywołanie konstruktora, gd
 class MyScalaClass ...
 ```
 
-Składnia ta może się wydawać nieco nadmiarowa, jeżeli adnotacja składa się tylko z jednego elmentu (bez wartości domyślnej), zatem jeżeli nazwa pola jest określona jako `value`, może być ona stosowana w Javie stosując składnię podobną do konstruktora:
+Składnia ta może się wydawać nieco nadmiarowa, jeżeli adnotacja składa się tylko z jednego elementu (bez wartości domyślnej), zatem jeżeli nazwa pola jest określona jako `value`, może być ona stosowana w Javie stosując składnię podobną do konstruktora:
 
 ```
 @interface SourceURL {

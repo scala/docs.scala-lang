@@ -28,7 +28,7 @@ abstract class Graph {
 }
 ```
 
-Grafy składają się z listy węzłów oraz krawędzi, gdzie zarówno typ węzłą jak i krawędzi są abstrakcyjne. Użycie [typów abstrakcyjnych](abstract-types.html) pozwala implementacjom cechy `Graph` na to by określały swoje konkretne klasy dla węzłów i krawędzi. Ponadto istnieje tutaj metoda `addNode`, której celem jest dodanie nowych węzłów do grafu. Węzły są połączone z użyciem metody `connectWith`.
+Grafy składają się z listy węzłów oraz krawędzi, gdzie zarówno typ węzła jak i krawędzi jest abstrakcyjny. Użycie [typów abstrakcyjnych](abstract-types.html) pozwala implementacjom cechy `Graph` na to, by określały swoje konkretne klasy dla węzłów i krawędzi. Ponadto graf zawiera metodę `addNode`, której celem jest dodanie nowych węzłów do grafu. Węzły są połączone z użyciem metody `connectWith`.
 
 Przykład implementacji klasy `Graph`:
 
@@ -62,7 +62,7 @@ Klasa `DirectedGraph` częściowo implementuje i jednocześnie specjalizuje klas
 
 Ponieważ konieczne jest udostępnienie możliwości tworzenia wierzchołków i krawędzi w naszej częściowej implementacji grafu, dodane zostały metody fabrykujące `newNode` oraz `newEdge`. Metody `addNode` wraz z `connectWith` są zdefiniowane na podstawie tych metod fabrykujących.
 
-Jeżeli przyjrzymy się bliżej implementacji metody `connectWith`, możemy dostrzec że tworząc krawędź, musimy przekazać samoreferencję `this` do metody fabrykującej `newEdge`. Lecz `this` jest już powązany z typem `NodeImpl`, który nie jest kompatybilny z typem `Node` ponieważ jest on tylko ograniczony z góry typem `NodeImpl`. Wynika z tego, iż powyższy program nie jest prawidłowy i kompilator Scali wyemituje błąd kompilacji.
+Jeżeli przyjrzymy się bliżej implementacji metody `connectWith`, możemy dostrzec, że tworząc krawędź, musimy przekazać samoreferencję `this` do metody fabrykującej `newEdge`. Lecz `this` jest już powązany z typem `NodeImpl`, który nie jest kompatybilny z typem `Node`, ponieważ jest on tylko ograniczony z góry typem `NodeImpl`. Wynika z tego, iż powyższy program nie jest prawidłowy i kompilator Scali wyemituje błąd kompilacji.
 
 Scala rozwiązuje ten problem pozwalając na powiązanie klasy z innym typem poprzez jawne typowanie samoreferencji. Możemy użyć tego mechanizmu, aby naprawić powyższy kod:
 
@@ -93,9 +93,9 @@ Scala rozwiązuje ten problem pozwalając na powiązanie klasy z innym typem pop
     }
 ```
 
-W nowej definicji klasy `NodeImpl` referencja `this` jest typu `Node`. Ponieważ typ `Node` jest abstrakcyjny i stąd nie wiemy jeszczy, czy `NodeImpl` w rzeczywistości odpowiada `Node`, system typów w Scali nie pozwoli nam na utworzenie tego typu. Mimo wszystko za pomocą jawnej adnotacji typu stwierdzamy, że w pewnym momencie klasa pochodna od `NodeImpl` musi odpowiadać typowi `Node` aby dało się ją utworzyć.
+W nowej definicji klasy `NodeImpl` referencja `this` jest typu `Node`. Ponieważ typ `Node` jest abstrakcyjny i stąd nie wiemy jeszcze, czy `NodeImpl` w rzeczywistości odpowiada `Node`, system typów w Scali nie pozwoli nam na utworzenie tego typu. Mimo wszystko za pomocą jawnej adnotacji typu stwierdzamy, że w pewnym momencie klasa pochodna od `NodeImpl` musi odpowiadać typowi `Node`, aby dało się ją utworzyć.
 
-Oto konkretna specjalizacja `DirectedGraph`, gdzie abstrakcyjne elementy klasy mają ustalone konkretne znaczenie:
+Oto konkretna specjalizacja `DirectedGraph`, gdzie abstrakcyjne elementy klasy mają ustalone ścisłe znaczenie:
 
 ```tut
 class ConcreteDirectedGraph extends DirectedGraph {
@@ -107,7 +107,7 @@ class ConcreteDirectedGraph extends DirectedGraph {
 }
 ```
 
-Należy dodać, że w tej klasie możemy utworzyć `NodeImpl` ponieważ wiemy już teraz, że `NodeImpl` określa klasę pochodną od `Node` (która jest zwyczajnie aliasem dla `NodeImpl`).
+Należy dodać, że w tej klasie możemy utworzyć `NodeImpl`, ponieważ wiemy już teraz, że `NodeImpl` określa klasę pochodną od `Node` (która jest po prostu aliasem dla `NodeImpl`).
 
 Poniżej przykład zastosowania klasy `ConcreteDirectedGraph`:
 
