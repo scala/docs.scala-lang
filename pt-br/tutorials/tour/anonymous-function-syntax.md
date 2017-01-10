@@ -25,13 +25,13 @@ new Function1[Int, Int] {
 }
 ```
 
-Também é possível definir funções com mútiplos parâmetros:
+Também é possível definir funções com múltiplos parâmetros:
 
 ```tut
 (x: Int, y: Int) => "(" + x + ", " + y + ")"
 ```
 
-or sem parâmetros:
+ou sem parâmetros:
 
 ```tut
 () => { System.getProperty("user.dir") }

@@ -46,8 +46,8 @@ def cloneAndReset(obj: Cloneable with Resetable): Cloneable = {
 }
 ```
 
-Os tipos de compostos podem consistir em vários tipos de objeto e eles podem ter um único refinamento que pode ser usado para restrigird a assinatura de membros de objetos existentes.
+Os tipos de compostos podem consistir em vários tipos de objeto e eles podem ter um único refinamento que pode ser usado para restrigir a assinatura de membros de objetos existentes.
 
-A forma geral é: `A com B com C ... { refinamento }`
+A forma geral é: `A with B with C ... { refinamento }`
 
 Um exemplo para o uso de refinamentos é dado na página sobre [tipos abstratos](abstract-types.html). 

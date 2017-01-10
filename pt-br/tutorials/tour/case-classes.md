@@ -15,10 +15,10 @@ Scala suporta o conceito de _classes case_. Classes case são classes regulares 
 
 * Imutáveis por padrão
 * Decompostas por meio de [correspondência de padrões](pattern-matching.html)
-* Comparadas por igualdade estrututal ao invés de referência
+* Comparadas por igualdade estrutural ao invés de referência
 * Sucintas para instanciar e operar
 
-Aqui um exemplo para hierarquia de tipos de notificação que consiste em uma super classe abstrata `Notification` e três tipos concretos de notificação implementados com classes case `Email`, `SMS`, e `VoiceRecording`.
+Aqui temos um exemplo de hierarquia de tipos para *Notification* que consiste em uma super classe abstrata `Notification` e três tipos concretos de notificação implementados com classes case `Email`, `SMS`, e `VoiceRecording`.
 
 ```tut
 abstract class Notification
@@ -75,7 +75,7 @@ Somos iguais!
 SMS é: SMS(12345, Hello!)
 ```
 
-Com classes case, você pode utilizar **correspondência de padrões** para manipular seus dados. Aqui um exemplo de uma função que escreve como saída diferente mensagens dependendo do tipo de notificação recebida:
+Com classes case, você pode utilizar **correspondência de padrões** para manipular seus dados. Aqui temos um exemplo de uma função que escreve como saída diferente mensagens dependendo do tipo de notificação recebida:
 
 ```tut
 def mostrarNotificacao(notificacao: Notification): String = {
@@ -114,17 +114,17 @@ def mostrarNotificacaoEspecial(notificacao: Notification, emailEspecial: String,
   }
 }
 
-val NUMERO_ESPECIAL = "55555"
-val EMAIL_ESPECIAL = "jane@mail.com"
+val NumeroEspecial = "55555"
+val EmailEspecial = "jane@mail.com"
 val algumSMS = SMS("12345", "Você está aí?")
 val algumaMsgVoz = VoiceRecording("Tom", "voicerecording.org/id/123")
 val emailEspecial = Email("jane@mail.com", "Beber hoje a noite?", "Estou livre depois das 5!")
 val smsEspecial = SMS("55555", "Estou aqui! Onde está você?")
 
-println(mostrarNotificacaoEspecial(algumSMS, EMAIL_ESPECIAL, NUMERO_ESPECIAL))
-println(mostrarNotificacaoEspecial(algumaMsgVoz, EMAIL_ESPECIAL, NUMERO_ESPECIAL))
-println(mostrarNotificacaoEspecial(smsEspecial, EMAIL_ESPECIAL, NUMERO_ESPECIAL))
-println(mostrarNotificacaoEspecial(smsEspecial, EMAIL_ESPECIAL, NUMERO_ESPECIAL))
+println(mostrarNotificacaoEspecial(algumSMS, EmailEspecial, NumeroEspecial))
+println(mostrarNotificacaoEspecial(algumaMsgVoz, EmailEspecial, NumeroEspecial))
+println(mostrarNotificacaoEspecial(smsEspecial, EmailEspecial, NumeroEspecial))
+println(mostrarNotificacaoEspecial(smsEspecial, EmailEspecial, NumeroEspecial))
 
 // Saída: 
 // Você recebeu um SMS de 12345! Mensagem: Você está aí?

@@ -14,7 +14,7 @@ language: pt-br
 
 _Nota de tradução: A palavra cujo o significado melhor corresponde a palavra `match` em inglês seria `correspondência`. Também podemos entender que `match` é como "coincidir" ou "concordar" com algo._
 
-Scala possui mecanismo de correspondência de padrão embutido. Isso permite realizar o match de qualquer tipo de dados any sort of data com a política de primeiro match. 
+Scala possui mecanismo de correspondência de padrão embutido. Isso permite realizar o match de qualquer tipo de dados com a política de primeiro match. 
 Aqui um pequeno exemplo que mostrar como realizar o match de um número inteiro:
 
 ```tut

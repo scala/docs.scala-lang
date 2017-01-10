@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Automatic Type-Dependent Closure Construction
+title: Construção Automática de Closures de Tipo-Dependente
 
 disqus: true
 
@@ -11,7 +11,9 @@ tutorial-previous: operators
 language: pt-br
 ---
 
-O Scala permite nomes de funções sem parâmetros como parâmetros de métodos. Quando um tal método é chamado, os parâmetros reais para nomes de função sem parâmetros não são avaliados e uma função nula é passada em vez disso, tal função encapsula a computação do parâmetro correspondente (isso é conhecido por avaliação *call-by-name*).
+_Nota de tradução: A palavra `closure` em pode ser traduzida como encerramento/fechamento, porém é preferível utilizar a notação original_
+
+Scala permite funções sem parâmetros como parâmetros de métodos. Quando um tal método é chamado, os parâmetros reais para nomes de função sem parâmetros não são avaliados e uma função nula é passada em vez disso, tal função encapsula a computação do parâmetro correspondente (isso é conhecido por avaliação *call-by-name*).
 
 O código a seguir demonstra esse mecanismo:
 
@@ -30,11 +32,11 @@ object TargetTest1 extends App {
 }
 ```
 
-A função `whileLoop` tem dois parâmetros `cond` e `body`. Quando a função é aplicada, os parâmetros reais não são avaliados. Mas sempre que os parâmetros formais são usados no corpo de `whileLoop`, as funções nulas criadas implicitamente serão avaliadas em seu lugar. Assim, o nosso método `whileLoop` implementa um while-loop Java-like com um esquema de implementação recursiva.
+A função `whileLoop` recebe dois parâmetros: `cond` e `body`. Quando a função é aplicada, os parâmetros reais não são avaliados. Mas sempre que os parâmetros formais são usados no corpo de `whileLoop`, as funções nulas criadas implicitamente serão avaliadas em seu lugar. Assim, o nosso método `whileLoop` implementa um while-loop Java-like com um esquema de implementação recursiva.
 
 Podemos combinar o uso de [operadores infix/postfix](operators.html) com este mecanismo para criar declarações mais complexas (com uma sintaxe agradável).
 
-Aqui está a implementação de uma instrução que executa loop ao menos que uma condição seja satisfeita:
+Aqui está a implementação de uma instrução que executa loop a menos que uma condição seja satisfeita:
 
 ```tut
 object TargetTest2 extends App {
@@ -54,7 +56,7 @@ object TargetTest2 extends App {
 }
 ```
 
-A função `loop` apenas aceita um corpo de um loop e retorna uma instância da classe` LoopUnlessCond` (que encapsula este objeto de corpo). Note que o corpo ainda não foi avaliado. A classe `LoopUnlessCond` tem um método `unless` que podemos usar como um *operador infix*. Dessa forma, obtemos uma sintaxe bastante natural para nosso novo loop: `loop { <stats> } unless ( <cond> )`.
+A função `loop` aceita apenas um corpo e retorna uma instância da classe` LoopUnlessCond` (que encapsula este objeto de corpo). Note que o corpo ainda não foi avaliado. A classe `LoopUnlessCond` tem um método `unless` que podemos usar como um *operador infix*. Dessa forma, obtemos uma sintaxe bastante natural para nosso novo loop: `loop { <stats> } unless ( <cond> )`.
 
 Aqui está a saída de quando o `TargetTest2` é executado:
 

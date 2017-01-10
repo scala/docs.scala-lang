@@ -11,9 +11,9 @@ tutorial-previous: inner-classes
 language: pt-br
 ---
 
-Em Scala, as classes são parametrizadas com valores (parâmetros de construtor) e com tipos (se [classes genéricas](generic-classes.html)). Por razões de regularidade, só não é possível ter valores como membros de um objeto; tipos juntamente com valores são membros de objetos. Além disso, ambas as formas de membros podem ser concretas e abstratas.
+Em Scala, as classes são parametrizadas com valores (os parâmetros de construtor) e com tipos (se as [classes genéricas](generic-classes.html)). Por razões de regularidade, só não é possível ter valores como membros de um objeto; tipos juntamente com valores são membros de objetos. Além disso, ambas as formas de membros podem ser concretas e abstratas.
 
-Aqui está um exemplo que define uma definição de valor diferido e uma definição de tipo abstrato como membros de uma [trait](traits.html) chamada `Buffer`.
+Aqui está um exemplo que mostra uma definição de valor diferido e uma definição de tipo abstrato como membros de uma [trait](traits.html) chamada `Buffer`.
  
 ```tut
 trait Buffer {
@@ -22,9 +22,9 @@ trait Buffer {
 }
 ```
 
-*Tipos Abstratos* são tipos cuja identidade não é precisamente conhecida. No exemplo acima, só sabemos que cada objeto da classe `Buffer` tem um membro de tipo `T`, mas a definição de classe `Buffer` não revela para qual tipo concreto o membro do tipo `T` corresponde. Como definições de valores, podemos sobrescrever definições de tipos em subclasses. Isso nos permite revelar mais informações sobre um tipo abstrato ao limitar o tipo associado (o qual descreve as possíveis instâncias concretas do tipo abstrato).
+*Tipos Abstratos* são tipos cuja identidade não é precisamente conhecida. No exemplo acima, só sabemos que cada objeto da classe `Buffer` tem um membro de tipo `T`, mas a definição de classe `Buffer` não revela a qual tipo concreto o membro do tipo `T` corresponde. Como definições de valores, podemos sobrescrever definições de tipos em subclasses. Isso nos permite revelar mais informações sobre um tipo abstrato ao limitar o tipo associado (o qual descreve as possíveis instâncias concretas do tipo abstrato).
 
-No seguinte programa temos uma classe `SeqBuffer` que nos permite armazenar apenas as sequências no buffer ao definir que o tipo `-T` precisa ser um subtipo de `Seq[U]` para um novo tipo abstrato `U`:
+No seguinte programa temos uma classe `SeqBuffer` que nos permite armazenar apenas as sequências no buffer ao definir que o tipo `T` precisa ser um subtipo de `Seq[U]` para um novo tipo abstrato `U`:
 
 ```tut
 abstract class SeqBuffer extends Buffer {
@@ -53,7 +53,7 @@ object AbstractTypeTest1 extends App {
 }
 ```
 
-O tipo de retorno do método `newIntSeqBuf` refere-se a uma especialização da trait `Buffer` no qual o tipo `U` é agora equivalente a `Int`. Declaramos um tipo alias semelhante ao que temos na instanciação da classe anônima dentro do corpo do método `newIntSeqBuf`. Criamos uma nova instância de `IntSeqBuffer` na qual o tipo `T` refere-se a `List [Int]`.
+O tipo de retorno do método `newIntSeqBuf` refere-se a uma especialização da trait `Buffer` no qual o tipo `U` é agora equivalente a `Int`. Declaramos um tipo *alias* semelhante ao que temos na instanciação da classe anônima dentro do corpo do método `newIntSeqBuf`. Criamos uma nova instância de `IntSeqBuffer` na qual o tipo `T` refere-se a `List[Int]`.
 
 Observe que muitas vezes é possível transformar os membros de tipo abstrato em parâmetros de tipo de classes e vice-versa. Aqui está uma versão do código acima que usa apenas parâmetros de tipo:
 
@@ -75,5 +75,5 @@ object AbstractTypeTest2 extends App {
 }
 ```
 
-Note que temos que usar [anotação de variância](variances.html) aqui; Caso contrário, não seríamos capazes de ocultar o tipo implementado pela sequência concreta do objeto retornado por `newIntSeqBuf`. Além disso, há casos em que não é possível substituir tipos abstratos com parâmetros de tipo.
+Note que temos que usar [anotação de variância](variances.html) aqui; Caso contrário, não seríamos capazes de ocultar o tipo implementado pela sequência concreta do objeto retornado pelo método `newIntSeqBuf`. Além disso, há casos em que não é possível substituir tipos abstratos com parâmetros de tipo.
 

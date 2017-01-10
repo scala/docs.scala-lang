@@ -11,7 +11,7 @@ tutorial-previous: nested-functions
 language: pt-br
 ---
 
-_Nota de tradução: Currying é uma técnica de programação funcional nomeada em honra ao matemático e lógico Haskell Curry. Por essa razão a palavra Currying não será traduzida. Entende-se que é uma ação, uma técnica básica de Programação Funcional._
+_Nota de tradução: Currying é uma técnica de programação Funcional nomeada em honra ao matemático e lógico Haskell Curry. Por essa razão a palavra Currying não será traduzida. Entende-se que é uma ação, uma técnica básica de Programação Funcional._
 
 Métodos podem definir múltiplas listas de parâmetros. Quando um método é chamado com uma lista menor de parâmetros, então será retornada uma função que recebe a lista que parâmetros que falta como argumentos.
 

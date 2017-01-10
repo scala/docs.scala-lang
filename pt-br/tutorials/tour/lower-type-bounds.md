@@ -11,7 +11,7 @@ tutorial-previous: upper-type-bounds
 language: pt-br
 ---
 
-Enquanto o [limitante superior de tipos](upper-type-bounds.html) limita um tipo a um subtipo de outro tipo, O *limitante inferior de tipos* declara um tipo para ser supertipo de outro tipo. O termo `T>: A` expressa que o parâmetro de tipo `T` ou tipo abstracto `T` refere-se a um supertipo do tipo `A`.
+Enquanto o [limitante superior de tipos](upper-type-bounds.html) limita um tipo a um subtipo de outro tipo, o *limitante inferior de tipos* declara um tipo para ser supertipo de outro tipo. O termo `T>: A` expressa que o parâmetro de tipo `T` ou tipo abstracto `T` refere-se a um supertipo do tipo `A`.
 
 Aqui está um exemplo onde isso é útil:
 

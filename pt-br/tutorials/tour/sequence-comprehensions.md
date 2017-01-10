@@ -23,7 +23,7 @@ object ComprehensionTest1 extends App {
 }
 ```
  
-A função for-expression in introduz uma nova variável `i` do tipo `Int`, que é subsequentemente associada a todos os valores da lista `List (de, de + 1, ..., ate - 1)`. A restrição `if i% 2 == 0` ignora todos os números ímpares para que o corpo (que só consiste na expressão i) seja avaliado somente para números pares. Consequentemente, toda a expressão `for` retorna uma lista de números pares.
+A função for-expression introduz uma nova variável `i` do tipo `Int`, que é subsequentemente associada a todos os valores da lista `List (de, de + 1, ..., ate - 1)`. A restrição `if i% 2 == 0` ignora todos os números ímpares para que o corpo (que só consiste na expressão i) seja avaliado somente para números pares. Consequentemente, toda a expressão `for` retorna uma lista de números pares.
 
 O programa produz a seguinte saída:
 

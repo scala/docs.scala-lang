@@ -11,7 +11,7 @@ tutorial-previous: polymorphic-methods
 language: pt-br
 ---
 
-Scala tem um mecanismo nativo de inferência de tipos que permite ao programador omitir certas anotações. Por exemplo, muitas vezes não é necessário especificar o tipo de uma variável, uma vez que o compilador pode deduzir o tipo a partir da expressão de inicialização da variável. Também os tipos de retorno de métodos podem muitas vezes ser omitidos, uma vez que correspondem ao tipo do corpo do método, que é inferido pelo compilador.
+Scala tem um mecanismo nativo de inferência de tipos que permite ao programador omitir certas anotações. Por exemplo, muitas vezes não é necessário especificar o tipo de uma variável, uma vez que o compilador pode deduzir o tipo a partir da expressão de inicialização da variável. Os tipos de retorno de métodos também podem muitas vezes ser omitidos, uma vez que correspondem ao tipo do corpo do método, que é inferido pelo compilador.
 
 Por exemplo:
 

@@ -12,7 +12,7 @@ tutorial-previous: implicit-conversions
 language: pt-br
 ---
 
-Os métodos em Scala podem ser parametrizados com valores e tipos. Como no nível de classe, os parâmetros de valor são declarados entre de parênteses, enquanto os parâmetros de tipo são declarados entre colchetes.
+Os métodos em Scala podem ser parametrizados com valores e tipos. Como no nível de classe, os parâmetros de valor são declarados entre parênteses, enquanto os parâmetros de tipo são declarados entre colchetes.
 
 Por exemplo:
 

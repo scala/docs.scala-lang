@@ -11,7 +11,7 @@ tutorial-previous: anonymous-function-syntax
 language: pt-br
 ---
 
-Scala permite definir funções de ordem superior. Tais funções _recebem outras como parâmetros_, as quais _o resultado é outra função_. Por exemplo, a função `apply` recebe outra função `f` e um valor `v` então aplica a função `f` em`v`:
+Scala permite definir funções de ordem superior. Tais funções _recebem outras funções como parâmetros_, ou _resultam em uma função_. Por exemplo, a função `apply` recebe outra função `f` e um valor `v` então aplica a função `f` em`v`:
 
 ```tut
 def apply(f: Int => String, v: Int) = f(v)

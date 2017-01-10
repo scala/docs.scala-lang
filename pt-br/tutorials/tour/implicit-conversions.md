@@ -15,7 +15,7 @@ Uma conversão implícita do tipo `S` para o tipo `T` é definida por um valor i
 
 As conversões implícitas são aplicadas em duas situações:
 
-* Se uma expressão `e` for do tipo`S` e `S` não estiver em conformidade com o tipo esperado `T` da expressão.
+* Se uma expressão `e` for do tipo `S` e `S` não estiver em conformidade com o tipo esperado `T` da expressão.
 * Em uma seleção `e.m` com `e` do tipo `T`, se o seletor `m` não representar um membro de `T`.
 
 No primeiro caso, é procurada uma conversão `c` que seja aplicável a `e` e cujo tipo de resultado esteja em conformidade com `T`.

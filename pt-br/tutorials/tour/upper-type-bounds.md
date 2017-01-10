@@ -11,7 +11,7 @@ tutorial-previous: variances
 language: pt-br
 ---
 
-Em scala, [parâmetros de tipos](generic-classes.html) e [tipos abstratos](abstract-types.html) podem ser restringidos por um limitante de tipo. Tal limitante de tipo limita os valores concretos de uma variável de tipo e possivelmente revela mais informações sobre os membros de determinados tipos. Um _limitante superiror de tipos_ `T <: A` declare que a variável tipo `T` refere-se a um subtipo do tipo `A`.
+Em Scala, [parâmetros de tipos](generic-classes.html) e [tipos abstratos](abstract-types.html) podem ser restringidos por um limitante de tipo. Tal limitante de tipo limita os valores concretos de uma variável de tipo e possivelmente revela mais informações sobre os membros de determinados tipos. Um _limitante superiror de tipos_ `T <: A` declare que a variável tipo `T` refere-se a um subtipo do tipo `A`.
 Aqui um exemplo que demonstra um limitante superior de tipo para um parâmetro de tipo da classe `Cage`:
 
 ```tut

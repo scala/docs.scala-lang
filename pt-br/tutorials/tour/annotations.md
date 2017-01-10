@@ -13,11 +13,11 @@ language: pt-br
 
 Anotações associam meta-informação com definições.
 
-Uma cláusula de anotação simples tem a forma `@C` ou `@C(a1,..., an)`. Aqui, `C` é um construtor de uma classe `C`, que deve estar em conformidade com a classe `scala.Annotation`. Todos os argumentos de construtor fornecidos `a1, .., an` devem ser expressões constantes (isto é, expressões em literais numéricos, strings, classe, enumerações Java e matrizes uni-dimensionais).
+Uma cláusula de anotação simples tem a forma `@C` ou `@C(a1,..., an)`. Aqui, `C` é um construtor de uma classe `C`, que deve estar em conformidade com a classe `scala.Annotation`. Todos os argumentos de construtor fornecidos `a1, .., an` devem ser expressões constantes (isto é, expressões em literais numéricos, strings, literais de classes, enumerações Java e matrizes uni-dimensionais).
 
-Uma cláusula de anotação se aplica à primeira definição ou declaração que a segue. Mais de uma cláusula de anotação pode preceder uma definição e uma  declaração. Não importa a ordem em que essas cláusulas são declaradas.
+Uma cláusula de anotação se aplica à primeira definição ou declaração que a segue. Mais de uma cláusula de anotação pode preceder uma definição e uma declaração. Não importa a ordem em que essas cláusulas são declaradas.
 
-O significado das cláusulas de anotação é _implementação-dependente_. Na plataforma Java, as seguintes anotações Scala têm um significado padrão.
+O significado das cláusulas de anotação é _dependente da implementação_. Na plataforma Java, as seguintes anotações Scala têm um significado padrão.
 
 |           Scala           |           Java           |
 |           ------          |          ------          |
@@ -72,7 +72,7 @@ public class AnnotaTest {
 }
 ```
 
-Se comentar a anotação `throws` na classe `Reader` o complidor produz a seguinte mensagem de erro ao compilar o programa principal Java:
+Comentando-se a anotação `throws` na classe `Reader` o compilador produz a seguinte mensagem de erro ao compilar o programa principal Java:
 
 ```
 Main.java:11: exception java.io.IOException is never thrown in body of
@@ -142,7 +142,7 @@ O elemento `mail` foi especificado com um valor padrão, portanto não precisamo
 public class MyClass extends HisClass ...
 ```
 
-A Scala proporciona mais flexibilidade a respeito disso:
+Scala proporciona mais flexibilidade a respeito disso:
 
 ```
 @SourceURL("http://coders.com/",

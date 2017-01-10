@@ -36,7 +36,7 @@ object TiposUnificados extends App {
 }
 ```
 
-O programa declare uma aplicação chamada `TiposUnificados` em forma de um [objeto Singleton](singleton-objects.html) que estende `App`. A aplicação define uma variável local `set` que se refere à uma instância da classe `LinkedHashSet[Any]`. As demais linhas adicionam vários elementos à variável set. Tais elementos devem estar em conformidade com o tipo `Any` que foi declarado para o set. Por fim, são escritas as representações em string de todos os elementos adicionados ao set.
+O programa declara uma aplicação chamada `TiposUnificados` em forma de um [objeto Singleton](singleton-objects.html) que estende `App`. A aplicação define uma variável local `set` que se refere a uma instância da classe `LinkedHashSet[Any]`. As demais linhas adicionam vários elementos à variável set. Tais elementos devem estar em conformidade com o tipo `Any` que foi declarado para o set. Por fim, são escritas as representações em string de todos os elementos adicionados ao set.
 
 
 Escrita de saída do programa:

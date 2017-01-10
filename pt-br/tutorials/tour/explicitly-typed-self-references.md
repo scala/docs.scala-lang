@@ -58,7 +58,7 @@ abstract class DirectedGraph extends Graph {
 }
 ```
 
-A classe `DirectedGraph` estende a classe `Graph` fornecendo uma implementação parcial. A implementação é apenas parcial porque gostaríamos de poder ampliar o `DirectedGraph`. Portanto, esta classe deixa todos os detalhes de implementação abertos e assim, tanto as arestas e os nós são definidos como abstrato. No entanto, a classe `DirectedGraph` revela alguns detalhes adicionais sobre a implementação do tipo das arestas ao restringir o limite de tipo para a classe `EdgeImpl`. Além disso, temos algumas implementações preliminares de arestas e nós representados pelas classes `EdgeImpl` e `NodeImpl`. Uma vez que é necessário criar novos objetos nó e aresta dentro da nossa implementação de grafo, também temos que adicionar os métodos de construção `newNode` e `newEdge`. Os métodos `addNode` e `connectWith` são ambos definidos em termos destes métodos de construção. Uma análise mais detalhada da implementação do método `connectWith` revela que, para criar uma aresta, temos que passar a auto-referência `this` para o método de construção `newEdge`. Mas a `this` é atribuído o tipo `NodeImpl`, por isso não é compatível com o tipo `Node` que é exigido pelo método de construção correspondente. Como consequência, o programa acima não é bem-formado e o compilador Scala irá emitir uma mensagem de erro.
+A classe `DirectedGraph` estende a classe `Graph` fornecendo uma implementação parcial. A implementação é apenas parcial porque gostaríamos de poder ampliar o `DirectedGraph`. Portanto, esta classe deixa todos os detalhes de implementação abertos e assim, tanto as arestas quanto os nós são definidos como abstratos. No entanto, a classe `DirectedGraph` revela alguns detalhes adicionais sobre a implementação do tipo das arestas ao restringir o limite de tipo para a classe `EdgeImpl`. Além disso, temos algumas implementações preliminares de arestas e nós representados pelas classes `EdgeImpl` e `NodeImpl`. Uma vez que é necessário criar novos objetos nó e aresta dentro da nossa implementação de grafo, também temos que adicionar os métodos de construção `newNode` e `newEdge`. Os métodos `addNode` e `connectWith` são ambos definidos em termos destes métodos de construção. Uma análise mais detalhada da implementação do método `connectWith` revela que, para criar uma aresta, temos que passar a auto-referência `this` para o método de construção `newEdge`. Mas a `this` é atribuído o tipo `NodeImpl`, por isso não é compatível com o tipo `Node` que é exigido pelo método de construção correspondente. Como consequência, o programa acima não é bem-formado e o compilador Scala irá emitir uma mensagem de erro.
 
 Em Scala é possível vincular uma classe a outro tipo (que será implementado no futuro) ao fornecer a auto referência `this` ao outro tipo explicitamente. Podemos usar esse mecanismo para corrigir nosso código acima. O tipo explícito de `this` é especificado dentro do corpo da classe `DirectedGraph`.
 
@@ -91,7 +91,7 @@ abstract class DirectedGraph extends Graph {
 }
 ```
 
-Nesta nova definição de classe `NodeImpl`, `this` tem o tipo `Node`. Como o tipo `Node` é abstrato e, portanto, ainda não sabemos se `NodeImpl` é realmente um subtipo de `Node`, o sistema de tipo Scala não nos permitirá instanciar esta classe. Mas, no entanto, declaramos com a anotação de tipo explícito que, em algum ponto, (uma subclasse de) `NodeImpl` precisa denotar um subtipo de tipo `Node` para ser instantiável.
+Nesta nova definição de classe `NodeImpl`, `this` tem o tipo `Node`. Como o tipo `Node` é abstrato e, portanto, ainda não sabemos se `NodeImpl` é realmente um subtipo de `Node`, o sistema de tipo Scala não nos permitirá instanciar esta classe. No entanto declaramos com a anotação de tipo explícito que, em algum ponto, (uma subclasse de) `NodeImpl` precisa denotar um subtipo de tipo `Node` para ser instantiável.
 
 Aqui está uma especialização concreta de `DirectedGraph` onde todos os membros da classe abstrata são definidos:
 
@@ -105,7 +105,7 @@ class ConcreteDirectedGraph extends DirectedGraph {
 }
 ```
 
-Observe que nesta classe, podemos instanciar `NodeImpl` porque agora sabemos que `NodeImpl` representa um subtipo de tipo `Node` (que é simplesmente um alias para `NodeImpl`).
+Observe que nesta classe, podemos instanciar `NodeImpl` porque agora sabemos que `NodeImpl` representa um subtipo de tipo `Node` (que é simplesmente um *alias* para `NodeImpl`).
 
 Aqui está um exemplo de uso da classe `ConcreteDirectedGraph`:
 

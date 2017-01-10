@@ -11,15 +11,15 @@ tutorial-previous: explicitly-typed-self-references
 language: pt-br
 ---
 
-Um método com _parâmetros implícitos_ pode ser aplicado a argumentos como um método normal. Neste caso, o rótulo implícito não tem efeito. No entanto, se esse método faltar argumentos para os parâmetros implícitos declarados, tais argumentos serão automaticamente fornecidos.
+Um método com _parâmetros implícitos_ pode ser aplicado a argumentos como um método normal. Neste caso, o rótulo implícito não tem efeito. No entanto, se faltarem argumentos para os parâmetros implícitos declarados, tais argumentos serão automaticamente fornecidos.
 
 Os argumentos reais que são elegíveis para serem passados para um parâmetro implícito se dividem em duas categorias:
 
 * Primeira, são elegíveis todos os identificadores x que podem ser acessados no ponto da chamada do método sem um prefixo e que denotam uma definição implícita ou um parâmetro implícito.
 
-* Segunda, são elegíveis também todos os membros dos módulos acompanhates do tipo do parâmetro implícito que são rotulados marcados como `implicit`.
+* Segunda, são elegíveis também todos os membros dos módulos acompanhantes do tipo do parâmetro implícito que são rotulados como `implicit`.
 
-No exemplo a seguir, definimos um método `sum` que calcula a soma de uma lista de elementos usando as operações `add` e `unit` do monóide. Observe que valores implícitos não podem ser de nível superior, eles precisam ser membros de um modelo.
+No exemplo a seguir, definimos um método `sum` que calcula a soma de uma lista de elementos usando as operações `add` e `unit` do monoide. Observe que valores implícitos não podem ser *top-level*, eles precisam ser membros de um modelo.
 
 ```tut
 /** Este exemplo usa uma estrutura da álgebra abstrata para mostrar como funcionam os parâmetros implícitos. Um semigrupo é uma estrutura algébrica em um conjunto A com uma operação (associativa), chamada add, que combina um par de A's e retorna um outro A. */

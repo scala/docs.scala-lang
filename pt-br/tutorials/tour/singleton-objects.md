@@ -32,7 +32,7 @@ Um objeto singleton pode estender classes e traits. Já uma [classe clase](case-
 
 A maioria dos objetos singleton não estão sozinhos, mas sim associados com uma classe de mesmo nome. O “objeto singleton de mesmo nome” que uma classe case, acima mencionado, é um exemplo disso. Quando isso acontece, o objeto singleton é chamado de *objeto acompanhante* de uma classe e, a classe é chamada de *classe acompanhante* de um objeto.
 
-[Scaladoc](https://wiki.scala-lang.org/display/SW/Introduction) possui um um recurso espacial para navegar entre classes e seus acompanhantes: se o grande círculo contendo “C” ou “O” possui sua extremidade superior dobrada para baixo, você pode clicar no círculo para acessar o acompanhante.
+[Scaladoc](https://wiki.scala-lang.org/display/SW/Introduction) possui um recurso especial para navegar entre classes e seus acompanhantes: se o grande círculo contendo “C” ou “O” possui sua extremidade superior dobrada para baixo, você pode clicar no círculo para acessar o acompanhante.
 
 Se houver um objeto acompanhante para uma classe, ambos devem ser definidos no mesmo aquivo fonte. Por exemplo:
 
@@ -47,11 +47,11 @@ object IntPair {
 }
 ```
 
-É comum ver instâncias de classes de tipo como [valores implicit](implicit-parameters.html), como `ipord` acima, definido no objeto acompanhante quando se segue o padrão da classe de tipo. Isso ocorre porque os membros do objeto acompanhante são incluídos por padrão na busca de valores implicitos.
+É comum ver instâncias de classes de tipo como [valores implícitos](implicit-parameters.html), como `ipord` acima, definido no objeto acompanhante quando se segue o padrão da *typeclass*. Isso ocorre porque os membros do objeto acompanhante são incluídos por padrão na busca de valores implícitos.
 
 ## Nota para programadores Java ##
 
-`static` não é uma palavra-chava em Scala. Ao invés disso, todos os membros que devem ser estáticos, incluindo classes, devem ser declarados no objeto singleton. Eles podem ser referenciados com a mesma sintaxe, They can be referred to with the same syntax, importados gradativamente ou como um grupo, e assim por diante.
+`static` não é uma palavra-chave em Scala. Ao invés disso, todos os membros que devem ser estáticos, incluindo classes, devem ser declarados no objeto singleton. Eles podem ser referenciados com a mesma sintaxe, importados gradativamente ou como um grupo, e assim por diante.
 
 Frequentemente, os programadores Java definem membros estáticos, talvez `private`, como auxiliares de implementação para seus membros de instância. Estes são movidos para o acompanhante também; Um padrão comum é importar os membros do objeto acompanhante na classe, da seguinte forma:
 ```
@@ -68,6 +68,6 @@ object X {
 
 Isso demonstra outra característica: no contexto `private`, as classes e seus acompanhantes são amigos. `object X` pode acessar membro privados da `class X`, e vice versa. Para fazer com que um membro seja *realmente* para um ou outro, utilize `private[this]`.
 
-Para conveniência Java, métodos, incluindo `var`s e `val`s, definidos diretamente em um objeto singleton também têm um método estático definido na classe acompanhante, chamado *encaminhadores estáticos*. Outros membros são acessíveis por meio de campos estáticos `X$.MODULE$` para o `object X`.
+Por uma melhor interoperabilidade com Java, métodos, incluindo `var`s e `val`s, definidos diretamente em um objeto singleton também têm um método estático definido na classe acompanhante, chamado *encaminhadores estáticos*. Outros membros são acessíveis por meio de campos estáticos `X$.MODULE$` para o `object X`.
 
-Se você mover tudo para um objeto acompanhante e descobrir que tudo o que resta é uma classe que você não deseja que seja instanciada, exclua simplesmente a classe. Encaminhadores estáticos ainda serão criados.
+Se você mover tudo para um objeto acompanhante e descobrir que tudo o que resta é uma classe que você não deseja que seja instanciada, simplesmente exclua a classe. Encaminhadores estáticos ainda serão criados.
