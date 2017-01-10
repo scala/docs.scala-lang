@@ -7,8 +7,8 @@ disqus: true
 tutorial: scala-tour
 num: 12
 
-tutorial-next: xml-processing
-tutorial-previous: pattern-matching
+next-page: xml-processing
+previous-page: pattern-matching
 ---
 
 Methods and values that aren't associated with individual instances of a [class](classes.html) belong in *singleton objects*, denoted by using the keyword `object` instead of `class`.

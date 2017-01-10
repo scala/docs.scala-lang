@@ -6,8 +6,8 @@ disqus: true
 
 tutorial: scala-tour
 num: 26
-tutorial-next: polymorphic-methods
-tutorial-previous: implicit-parameters
+next-page: polymorphic-methods
+previous-page: implicit-parameters
 ---
 
 An implicit conversion from type `S` to type `T` is defined by an implicit value which has function type `S => T`, or by an implicit method convertible to a value of that type.

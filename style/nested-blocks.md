@@ -4,6 +4,9 @@ title: Nested Blocks
 
 partof: style-guide
 num: 5
+
+previous-page: types
+next-page: files
 ---
 
 ## Curly Braces
@@ -31,13 +34,13 @@ lines as their content (Lisp-style):
     (this + is a very ++ long *
       expression)
 
-Parentheses also serve to disable semicolon inference, and so allow the developer 
+Parentheses also serve to disable semicolon inference, and so allow the developer
 to start lines with operators, which some prefer:
-     
+
     (  someCondition
     || someOtherCondition
     || thirdCondition
     )
-    
-A trailing parenthesis on the following line is acceptable in this case, for 
+
+A trailing parenthesis on the following line is acceptable in this case, for
 aesthetic reasons.

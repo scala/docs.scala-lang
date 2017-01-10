@@ -3,7 +3,10 @@ layout: overview-large
 title: Declarations
 
 partof: style-guide
-num: 6
+num: 9
+
+previous-page: method-invocation
+next-page: scaladoc
 ---
 
 ## Classes
@@ -37,7 +40,7 @@ constructor arguments and extensions:
         birthdate: Date,
         astrologicalSign: String,
         shoeSize: Int,
-        favoriteColor: java.awt.Color) 
+        favoriteColor: java.awt.Color)
       extends Entity
       with Logging
       with Identifiable
@@ -114,14 +117,14 @@ applicable):
 4.  Final modifier (`final`)
 5.  `def`
 
-<!-- necessary to separate the following example from the above bullet list --> 
+<!-- necessary to separate the following example from the above bullet list -->
 
     @Transaction
     @throws(classOf[IOException])
-    override protected final def foo() { 
+    override protected final def foo() {
       ...
     }
-    
+
 #### Body
 
 When a method body comprises a single expression which is less than 30
@@ -186,7 +189,7 @@ There are three main reasons you should do this:
     structures":
 
         def unless(exp: Boolean)(code: => Unit): Unit = if (!exp) code
-        unless(x < 5) { 
+        unless(x < 5) {
           println("x was not less than five")
         }
 
@@ -217,7 +220,7 @@ open-paren of the parameter lists, one list per line (i.e. if you can't
 put them all on one line, put one each per line):
 
     protected def forResource(resourceInfo: Any)
-                             (f: (JsonNode) => Any) 
+                             (f: (JsonNode) => Any)
                              (implicit urlCreator: URLCreator, configurer: OAuthConfiguration): Any = {
       ...
     }
@@ -275,11 +278,11 @@ function value.
 When styles (1) and (4) are used exclusively, it becomes very easy to
 distinguish places in the source code where function values are used.
 Both styles make use of parentheses, since they look clean on a single line.  
- 
+
 ### Spacing
 
 There should be no space between parentheses and the code they contain.  
-Curly braces should be separated from the code within them by a one-space gap, 
+Curly braces should be separated from the code within them by a one-space gap,
 to give the visually busy braces "breathing room".
 
 ### Multi-Expression Functions
@@ -287,8 +290,8 @@ to give the visually busy braces "breathing room".
 Most function values are less trivial than the examples given above.
 Many contain more than one expression. In such cases, it is often more
 readable to split the function value across multiple lines. When this
-happens, only style (1) should be used, substituting braces for parentheses. 
-Style (4) becomes extremely difficult to follow when enclosed in large amounts 
+happens, only style (1) should be used, substituting braces for parentheses.
+Style (4) becomes extremely difficult to follow when enclosed in large amounts
 of code. The declaration itself should loosely follow the declaration style for
 methods, with the opening brace on the same line as the assignment or
 invocation, while the closing brace is on its own line immediately

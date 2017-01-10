@@ -6,8 +6,8 @@ disqus: true
 
 tutorial: scala-tour
 num: 3
-tutorial-next: traits
-tutorial-previous: unified-types
+next-page: traits
+previous-page: unified-types
 ---
 
 Classes in Scala are static templates that can be instantiated into many objects at runtime.

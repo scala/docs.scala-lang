@@ -6,8 +6,8 @@ disqus: true
 
 tutorial: scala-tour
 num: 23
-tutorial-next: explicitly-typed-self-references
-tutorial-previous: abstract-types
+next-page: explicitly-typed-self-references
+previous-page: abstract-types
 ---
 
 Sometimes it is necessary to express that the type of an object is a subtype of several other types. In Scala this can be expressed with the help of *compound types*, which are intersections of object types.

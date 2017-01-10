@@ -6,8 +6,8 @@ disqus: true
 
 tutorial: scala-tour
 num: 10
-tutorial-next: pattern-matching
-tutorial-previous: currying
+next-page: pattern-matching
+previous-page: currying
 ---
 
 Scala supports the notion of _case classes_. Case classes are just regular classes that are:

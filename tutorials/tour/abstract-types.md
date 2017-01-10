@@ -7,8 +7,8 @@ disqus: true
 tutorial: scala-tour
 num: 22
 languages: [ba, es, ko]
-tutorial-next: compound-types
-tutorial-previous: inner-classes
+next-page: compound-types
+previous-page: inner-classes
 ---
 
 In Scala, classes are parameterized with values (the constructor parameters) and with types (if classes are [generic](generic-classes.html)). For reasons of regularity, it is not only possible to have values as object members; types along with values are members of objects. Furthermore, both forms of members can be concrete and abstract.

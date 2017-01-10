@@ -6,8 +6,8 @@ disqus: true
 
 tutorial: scala-tour
 num: 6
-tutorial-next: higher-order-functions
-tutorial-previous: mixin-class-composition
+next-page: higher-order-functions
+previous-page: mixin-class-composition
 ---
 
 Scala provides a relatively lightweight syntax for defining anonymous functions. The following expression creates a successor function for integers:
