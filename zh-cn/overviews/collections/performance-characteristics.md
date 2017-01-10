@@ -14,14 +14,14 @@ language: zh-cn
 
 ## 序列类型的性能特点
 
-| head | tail | apply | update | prepend | append | insert |
-|------|------|-------|--------|---------|--------|--------|
+|      | head | tail | apply | update | prepend | append | insert |
+|------|------|------|-------|--------|---------|--------|--------|
 |**不可变序列**|  |       |        |         |        |        |
 | List | C | C | L | L | C | L | - |
 |Stream | C | C | L | L | C | L | - |
 |Vector | eC | eC | eC | eC | eC | eC | - |
 |Stack | C | C | L | L | C | L | L |
-|Queue | aC | aC | L | L | L | C | - |
+|Queue | aC | aC | L | L | C | C | - |
 |Range | C | C | C | - | - | - | - |
 |String | C | L | C | L | L | L | - |
 |**可变序列**|  |       |        |         |        |        |  
