@@ -12,9 +12,9 @@ tutorial-next: compound-types
 tutorial-previous: inner-classes
 ---
 
-W Scali, klasy są parametryzowane wartościami (parametry konstruktora) oraz typami (jeżeli klasa jest [generyczna](generic-classes.html)). Aby zachować regularność, zarówno typy jak i wartości są elementami klasy. Analogicznie, mogą być konkretne albo abstrakcyjne.
+W Scali, klasy są parametryzowane wartościami (parametry konstruktora) oraz typami (jeżeli klasa jest [generyczna](generic-classes.html)). Aby zachować regularność, zarówno typy jak i wartości są elementami klasy. Analogicznie mogą one być konkretne albo abstrakcyjne.
 
-Poniższy przykład definiuje wartość określaną przez abstrakcyjny typ, będący elementem [cechy](traits.html) `Buffer`:
+Poniższy przykład definiuje wartość określaną przez abstrakcyjny typ będący elementem [cechy](traits.html) `Buffer`:
  
 ```tut
 trait Buffer {
@@ -23,7 +23,7 @@ trait Buffer {
 }
 ```
  
-*Typy abstrakcyjne* są typami, które nie są jednoznacznie określone. W powyższym przykładzie wiemy tylko, że każdy obiekt klasy `Buffer` posiada typ `T`, ale definicja klasy `Buffer` nie zdradza jakiemu konkretnie typowi odpowiada `T`. Tak jak definicje wartość, możemy także nadpisać definicje typów w klasach pochodnych. Pozwala to nam na odkrywanie dodatkowych informacji o abstrakcyjnym typie poprzez zawężanie jego ograniczeń (które opisują możliwe warianty konkretnego typu).
+*Typy abstrakcyjne* są typami, które nie są jednoznacznie określone. W powyższym przykładzie wiemy tylko, że każdy obiekt klasy `Buffer` posiada typ `T`, ale definicja klasy `Buffer` nie zdradza jakiemu konkretnie typowi on odpowiada. Tak jak definicje wartości, możemy także nadpisać definicje typów w klasach pochodnych. Pozwala to nam na odkrywanie dodatkowych informacji o abstrakcyjnym typie poprzez zawężanie jego ograniczeń (które opisują możliwe warianty konkretnego typu).
 
 W poniższym programie definiujemy klasę `SeqBuffer`, która ogranicza możliwe typy `T` do pochodnych sekwencji `Seq[U]` dla nowego typu `U`:
  
@@ -35,7 +35,7 @@ abstract class SeqBuffer extends Buffer {
 }
 ```
  
-Cechy oraz [klasy](classes.html) z abstrakcyjnymi typami są często używane w połączeniu z anonimowymi klasami. Aby to zilustrować wykorzystamy program, w którym utworzymy bufor sekwencji, ograniczony do listy liczb całkowitych:
+Cechy oraz [klasy](classes.html) z abstrakcyjnymi typami są często używane w połączeniu z anonimowymi klasami. Aby to zilustrować wykorzystamy program, w którym utworzymy bufor sekwencji ograniczony do listy liczb całkowitych:
  
 ```tut
 abstract class IntSeqBuffer extends SeqBuffer {
@@ -76,4 +76,4 @@ object AbstractTypeTest2 extends App {
 }
 ```
 
-Należy pamięctać o tym, żeby zastosować [adnotacji wariancji](variance.html). Inaczej nie byłoby możliwe ukrycie konkretnego typu sekwencji obiektu zwracanego przez metodę `newIntSeqBuf`.
+Należy też pamiętać o tym, żeby zastosować [adnotacji wariancji](variance.html). Inaczej nie byłoby możliwe ukrycie konkretnego typu sekwencji obiektu zwracanego przez metodę `newIntSeqBuf`.

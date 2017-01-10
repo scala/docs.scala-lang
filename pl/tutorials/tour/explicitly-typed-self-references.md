@@ -67,14 +67,30 @@ Jeżeli przyjrzymy się bliżej implementacji metody `connectWith`, możemy dost
 Scala rozwiązuje ten problem pozwalając na powiązanie klasy z innym typem poprzez jawne typowanie samoreferencji. Możemy użyć tego mechanizmu, aby naprawić powyższy kod:
 
 ```tut
-class NodeImpl extends NodeIntf {
-  self: Node =>                     // określenie typu "self"
-  def connectWith(node: Node): Edge = {
-    val edge = newEdge(this, node)  // w tej chwili się skompiluje
-    edges = edge :: edges
-    edge
-  }
-}
+    abstract class DirectedGraph extends Graph {
+      type Edge <: EdgeImpl
+      class EdgeImpl(origin: Node, dest: Node) {
+        def from = origin
+        def to = dest
+      }
+      class NodeImpl extends NodeIntf {
+        self: Node =>                     // określenie typu "self"
+        def connectWith(node: Node): Edge = {
+          val edge = newEdge(this, node)  // w tej chwili się skompiluje
+          edges = edge :: edges
+          edge
+        }
+      }
+      protected def newNode: Node
+      protected def newEdge(from: Node, to: Node): Edge
+      var nodes: List[Node] = Nil
+      var edges: List[Edge] = Nil
+      def addNode: Node = {
+        val node = newNode
+        nodes = node :: nodes
+        node
+      }
+    }
 ```
 
 W nowej definicji klasy `NodeImpl` referencja `this` jest typu `Node`. Ponieważ typ `Node` jest abstrakcyjny i stąd nie wiemy jeszczy, czy `NodeImpl` w rzeczywistości odpowiada `Node`, system typów w Scali nie pozwoli nam na utworzenie tego typu. Mimo wszystko za pomocą jawnej adnotacji typu stwierdzamy, że w pewnym momencie klasa pochodna od `NodeImpl` musi odpowiadać typowi `Node` aby dało się ją utworzyć.

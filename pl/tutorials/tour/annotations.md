@@ -13,11 +13,11 @@ language: pl
 
 Adnotacje dodają meta-informacje do różnego rodzaju definicji.
 
-Podstawową formą adnotacji jest `@C` lub `@C(a1, ..., an)`. Tutaj `C` jest konstruktorem klasy `C`, który musi odpowiadać klasie `scala.Annotation`. Wszystkie argumenty konstruktora `a1, ..., an` muszą być stałymi wyrażeniami (czyli wyrażeniami takimi jak liczby, łańcuchy znaków, literały klasowe, enumeracji Javy oraz ich jednowymiarowe tablice).
+Podstawową formą adnotacji jest `@C` lub `@C(a1, ..., an)`. Tutaj `C` jest konstruktorem klasy `C`, który musi odpowiadać klasie `scala.Annotation`. Wszystkie argumenty konstruktora `a1, ..., an` muszą być stałymi wyrażeniami (czyli wyrażeniami takimi jak liczby, łańcuchy znaków, literały klasowe, enumeracje Javy oraz ich jednowymiarowe tablice).
 
 Adnotację stosuje się do pierwszej definicji lub deklaracji która po niej następuje. Możliwe jest zastosowanie więcej niż jednej adnotacji przed definicją lub deklaracją. Kolejność według której są one określone nie ma istotnego znaczenia.
 
-Znaczenie adnotacji jest zależne od implementacji. Na platformie Java, poniższe adnotacje mają standardowe znaczenie:
+Znaczenie adnotacji jest zależne od implementacji. Na platformie Java, poniższe adnotacje domyślnie oznaczają:
 
 |           Scala           |           Java           |
 |           ------          |          ------          |
