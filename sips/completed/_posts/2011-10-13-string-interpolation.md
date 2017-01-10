@@ -3,7 +3,7 @@ layout: sip
 title: SIP-11 - String Interpolation
 
 vote-status: accepted
-vote-text: This SIP is in Accepted status currently.  We expect a SIP for 2.11 that will allow the desugared form of interpolated strings in the pattern matcher to become valid syntax. This SIP only allows the sugared interpolated strings to work.
+vote-text: This SIP has already been accepted. We expect a SIP for 2.11 that will allow the desugared form of interpolated strings in the pattern matcher to become valid syntax. This SIP only allows the sugared interpolated strings to work.
 ---
 
 **By: Martin Odersky**
