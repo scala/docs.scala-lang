@@ -60,7 +60,7 @@ object AnonymousFunction {
   /**
    * Method to increment an integer by one.
    */
-  var anonymousIncrementFunction = (x: Int) => x + 1
+  val plusOne = (x: Int) => x + 1
 
   /**
    * Main method
@@ -68,14 +68,8 @@ object AnonymousFunction {
    */
   def main(args: Array[String]) {
 
-    // Create an integer to test the anonymous function with
-    var myInteger = 0
+    println(plusOne(0)) // Prints: 1
 
-    println(myInteger) // Prints: 0
-
-    myInteger = anonymousIncrementFunction(myInteger)
-
-    println(myInteger) // Prints: 1
   }
 }
 ```
