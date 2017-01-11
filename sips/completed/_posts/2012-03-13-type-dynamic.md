@@ -3,7 +3,7 @@ layout: sip
 title: SIP-17 - Type Dynamic
 
 vote-status: accepted
-vote-text: This is in Accept status.
+vote-text: This SIP has already been accepted.
 ---
 
 

@@ -2,9 +2,10 @@
 layout: sip
 disqus: true
 title: SIP-27 - Trailing Commas
+redirect_from: "/sips/pending/trailing-commas.html"
 
-vote-status: under review
-vote-text: The following proposal needs to be updated, since only the specialized case version (with new lines) has been accepted. For more information, check the <a href="http://docs.scala-lang.org/sips/minutes/sip-20th-september-minutes.html">minutes</a>.
+vote-status: approved
+vote-text: The following proposal has been approved but the spec needs to be updated and the implementation has to be ported from Parsers to Scanner.
 ---
 
 **By: Dale Wijnand**

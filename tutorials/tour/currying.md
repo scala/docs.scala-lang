@@ -6,8 +6,8 @@ disqus: true
 
 tutorial: scala-tour
 num: 9
-tutorial-next: case-classes
-tutorial-previous: nested-functions
+next-page: case-classes
+previous-page: nested-functions
 ---
 
 Methods may define multiple parameter lists. When a method is called with a fewer number of parameter lists, then this will yield a function taking the missing parameter lists as its arguments.

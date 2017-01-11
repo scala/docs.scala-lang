@@ -7,8 +7,8 @@ disqus: true
 tutorial: scala-tour
 num: 12
 language: es
-tutorial-next: xml-processing
-tutorial-previous: pattern-matching
+next-page: xml-processing
+previous-page: pattern-matching
 ---
 
 Métodos y valores que no están asociados con instancias individuales de una [clase](classes.html) se denominan *objetos singleton* y se denotan con la palabra reservada `object` en vez de `class`.

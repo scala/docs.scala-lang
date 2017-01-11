@@ -34,4 +34,4 @@ El tipo de retorno de un método `unapply` debería ser elegido de la siguiente 
 
 Algunas veces, el número de sub valores es fijo y nos gustaría retornar una secuencia. Por esta razón, siempre es posible definir patrones a través de `unapplySeq`. El último sub valor de tipo `Tn` tiene que ser `Seq[S]`. Este mecanismo es usado por ejemplo en el patrón `case List(x1, ..., xn)`.
 
-Los objetos extractores pueden hacer el código más mantenible. Para más detalles lea el paper ["Matching Objects with Patterns (Reconociendo objetos con patrones)"](http://lamp.epfl.ch/~emir/written/MatchingObjectsWithPatterns-TR.pdf) (ver sección 4) por Emir, Odersky y Williams (Enero de 2007).
+Los objetos extractores pueden hacer el código más mantenible. Para más detalles lea el paper ["Matching Objects with Patterns (Reconociendo objetos con patrones)"](https://infoscience.epfl.ch/record/98468/files/MatchingObjectsWithPatterns-TR.pdf) (ver sección 4) por Emir, Odersky y Williams (Enero de 2007).

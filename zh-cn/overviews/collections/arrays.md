@@ -58,7 +58,7 @@ ArrayOps的对象会通过隐式转换自动的插入，因此上述的代码等
     scala> intArrayOps(a1).reverse
     res5: Array[Int] = Array(3, 2, 1)
 
-这里的intArrayOps就是之前例子中插入的隐式转换。这里引出一个疑问，上面代码中，编译器为何选择了intArrayOps而不是WrappedArray做隐式转换？毕竟，两种转换都是将数组映射到支持reverse方法的类型，并且指定输入。答案是两种转换是有优先级次序的，ArrayOps转换比WrappedArray有更高的优先级。前者定义在Predef对象中，而后者定义在继承自Predef的`scala.LowPritoryImplicits`类中。子类、子对象中隐式转换的优先级低于基类。所以如果两种转换都可用，Predef中的会优先选取。字符串的情况也是如此。
+这里的intArrayOps就是之前例子中插入的隐式转换。这里引出一个疑问，上面代码中，编译器为何选择了intArrayOps而不是WrappedArray做隐式转换？毕竟，两种转换都是将数组映射到支持reverse方法的类型，并且指定输入。答案是两种转换是有优先级次序的，ArrayOps转换比WrappedArray有更高的优先级。前者定义在Predef对象中，而后者定义在继承自Predef的`scala.LowPriorityImplicits`类中。子类、子对象中隐式转换的优先级低于基类。所以如果两种转换都可用，Predef中的会优先选取。字符串的情况也是如此。
 
 数组与序列兼容，并支持所有序列操作的方法，你现在应该已经了然于胸。那泛型呢？在Java中你不可以定义一个以T为类型参数的`T[]`。那么Scala的`Array[T]`是如何做的呢？事实上一个像`Array[T] `的泛型数组在运行时态可任意为Java的八个原始数组类型像`byte[]`, `short[]`, `char[]`, `int[]`, `long[]`, `float[]`, `double[]`, `boolean[]`,甚至它可以是一个对象数组。最常见的运行时态类型是AnyRef ，它包括了所有的这些类型（相当于java.lang.Object），因此这样的类型可以通过Scala编译器映射到`Array[T]`.在运行时，当`Array[T]`类型的数组元素被访问或更新时，就会有一个序列的类型测试用于确定真正的数组类型，随后就是java中的正确的数组操作。这些类型测试会影响数组操作的效率。这意味着如果你需要更大的性能，你应该更喜欢具体而明确的泛型数组。代表通用的泛型数组是不够的，因此，也必然有一种方式去创造泛型数组。这是一个更难的问题，需要一点点的帮助你。为了说明这个问题，考虑下面用一个通用的方法去创造数组的尝试。
 

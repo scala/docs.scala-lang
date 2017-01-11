@@ -6,7 +6,7 @@ disqus: true
 
 tutorial: scala-tour
 num: 33
-tutorial-previous: default-parameter-values
+previous-page: default-parameter-values
 ---
 
 When calling methods and functions, you can use the name of the variables explicitly in the call, like so:

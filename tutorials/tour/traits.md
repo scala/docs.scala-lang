@@ -6,8 +6,8 @@ disqus: true
 
 tutorial: scala-tour
 num: 4
-tutorial-next: mixin-class-composition
-tutorial-previous: classes
+next-page: mixin-class-composition
+previous-page: classes
 ---
 
 Similar to interfaces in Java, traits are used to define object types by specifying the signature of the supported methods. Like in Java 8, Scala allows traits to be partially implemented; i.e. it is possible to define default implementations for some methods. In contrast to classes, traits may not have constructor parameters.
@@ -34,16 +34,20 @@ object TraitsTest extends App {
   val p1 = new Point(2, 3)
   val p2 = new Point(2, 4)
   val p3 = new Point(3, 3)
-  println(p1.isNotSimilar(p2))
-  println(p1.isNotSimilar(p3))
+  val p4 = new Point(2, 3)
+  println(p1.isSimilar(p2))
+  println(p1.isSimilar(p3))
+  // Point's isNotSimilar is defined in Similarity
   println(p1.isNotSimilar(2))
+  println(p1.isNotSimilar(p4))
 }
 ```
  
 Here is the output of the program:
 
 ```
+true
 false
 true
-true
+false
 ```

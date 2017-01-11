@@ -50,7 +50,7 @@
 		<h3><a href="{{ site.baseurl }}/style">Scala Style Guide</a> <span class="label success">Available</span></h3>
 		<p>Thanks to Daniel Spiewak and David Copeland for putting together such an excellent style guide, and thanks to Simon Ochsenreither for converting it to Markdown.</p>		
 
-		<h3><a href="http://www.scala-lang.org/files/archive/spec/2.11/">Language Specification</a> <span class="label success">Available</span></h3>
+		<h3><a href="http://www.scala-lang.org/files/archive/spec/2.12/">Language Specification</a> <span class="label success">Available</span></h3>
 		<p>The official definition of Scala.  For when you just have to know the truth.</p>				
 		
 		<p>&nbsp;</p><p>&nbsp;</p>

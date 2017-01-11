@@ -43,6 +43,7 @@ Attendees Present:
 * Josh Suereth ([@jsuereth](https://github.com/jsuereth)), Google
 
 ## Proceedings
+
 ### Opening Remarks
 
 After some controversy sprung by the [latest SIP-27

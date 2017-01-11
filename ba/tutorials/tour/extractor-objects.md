@@ -49,5 +49,5 @@ Ovaj mehanizam se koristi naprimjer za uzorak `case List(x1, ..., xn)`.
 
 Ekstraktori čine kod lakšim za održavanje.
 Za više detalja, pročitajte dokument 
-["Matching Objects with Patterns"](http://lamp.epfl.ch/~emir/written/MatchingObjectsWithPatterns-TR.pdf) 
+["Matching Objects with Patterns"](https://infoscience.epfl.ch/record/98468/files/MatchingObjectsWithPatterns-TR.pdf) 
 (u sekciji 4) od Emir, Odersky i Williams (Januar 2007).

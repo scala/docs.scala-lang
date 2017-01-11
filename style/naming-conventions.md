@@ -4,6 +4,9 @@ title: Naming Conventions
 
 partof: style-guide
 num: 3
+
+previous-page: indentation
+next-page: types
 ---
 
 Generally speaking, Scala uses "camel case" naming. That is,
