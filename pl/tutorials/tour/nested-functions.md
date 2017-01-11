@@ -11,7 +11,7 @@ tutorial-next: currying
 tutorial-previous: higher-order-functions
 ---
 
-Scala pozwala na zagnieżdżanie definicji funkcji. Poniższy obiekt określa funkcję `filter`, która dla danej listy filtruje elementy większe bądź równe niż podany próg `threshold`:
+Scala pozwala na zagnieżdżanie definicji funkcji. Poniższy obiekt określa funkcję `filter`, która dla danej listy filtruje elementy większe bądź równe podanemu progowi `threshold`:
 
 ```tut
 object FilterTest extends App {

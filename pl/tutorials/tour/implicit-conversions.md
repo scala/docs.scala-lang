@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Konwersje implicit
+title: Konwersje niejawne
 
 disqus: true
 
@@ -11,9 +11,9 @@ tutorial-next: polymorphic-methods
 tutorial-previous: implicit-parameters
 ---
 
-Konwersja implicit z typu `S` do `T` jest określona przez wartość implicit, która jest funkcją typu `S => T` lub przez metodę implicit odpowiadającą funkcji tego typu.
+Konwersja niejawna z typu `S` do `T` jest określona przez wartość domniemaną, która jest funkcją typu `S => T` lub przez metodę domniemaną odpowiadającą funkcji tego typu.
 
-Konwersje implicit są stosowane w dwóch sytuacjach:
+Konwersje niejawne mogą być są zastosowane w jednej z dwóch sytuacji:
 
 * Jeżeli wyrażenie `e` jest typu `S` i `S` nie odpowiada wymaganemu typowi `T`.
 * W przypadku wyboru `e.m` z `e` typu `T`, jeżeli `m` nie jest elementem `T`.
@@ -27,7 +27,7 @@ Poniższa operacja na dwóch listach `xs` oraz `ys` typu `List[Int]` jest dopusz
 xs <= ys
 ```
 
-Zakładając, że metody implicit `list2ordered` oraz `int2ordered` zdefiniowane poniżej znajdują się w danym zakresie:
+Zakładając, że metody niejawne `list2ordered` oraz `int2ordered` zdefiniowane poniżej znajdują się w danym zakresie:
 
 ```
 implicit def list2ordered[A](x: List[A])
@@ -38,9 +38,9 @@ implicit def int2ordered(x: Int): Ordered[Int] =
   new Ordered[Int] { /* .. */ }
 ```
 
-Domyślnie importowany obiekt `scala.Predef` deklaruje kilka predefiniowanych typów (np. `Pair`) i metod (np. `assert`) ale także wiele użytecznych konwersji implicit.
+Domyślnie importowany obiekt `scala.Predef` deklaruje kilka predefiniowanych typów (np. `Pair`) i metod (np. `assert`) ale także wiele użytecznych konwersji niejawnych.
 
-Przykładowo, kiedy wywołujemy metodę Javy, która wymaga typu `java.lang.Integer`, dopuszczalne jest przekazanie typu `scala.Int`. Dzieje się tak ponieważ `Predef` zawiera poniższe konwersje implicit:
+Przykładowo, kiedy wywołujemy metodę Javy, która wymaga typu `java.lang.Integer`, dopuszczalne jest przekazanie typu `scala.Int`. Dzieje się tak ponieważ `Predef` definiuje poniższe konwersje niejawne:
 
 ```tut
 import scala.language.implicitConversions
@@ -49,4 +49,4 @@ implicit def int2Integer(x: Int) =
   java.lang.Integer.valueOf(x)
 ```
 
-Aby zdefiniować własne konwersje implicit, należy zaimportować `scala.language.implicitConversions` (albo uruchomić kompilator z opcją `-language:implicitConversions`). Ta funkcjonalność musi być włączona jawnie, ze względu na problemy jakie mogą się wiązać z ich nadmiernym stosowaniem.
+Aby zdefiniować własne konwersje niejawne, należy zaimportować `scala.language.implicitConversions` (albo uruchomić kompilator z opcją `-language:implicitConversions`). Ta funkcjonalność musi być włączona jawnie, ze względu na problemy jakie mogą się wiązać z ich nadmiernym stosowaniem.

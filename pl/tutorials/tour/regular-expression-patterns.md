@@ -14,7 +14,7 @@ tutorial-previous: xml-processing
 
 ## Wzorce sekwencji ignorujące prawą stronę ##
 
-Wzorce ignorujące prawą stronę są użyteczne przy dekomponowaniu danych, które mogą być podtypem `Seq[A]` lub klasą case z iterowalnym parametrem, jak w poniższym przykładzie:
+Wzorce ignorujące prawą stronę są użyteczne przy dekomponowaniu danych, które mogą być podtypem `Seq[A]` lub klasą przypadku z iterowalnym parametrem, jak w poniższym przykładzie:
 
 ```
 Elem(prefix:String, label:String, attrs:MetaData, scp:NamespaceBinding, children:Node*)

@@ -24,7 +24,7 @@ class Stack[T] {
 }
 ```
 
-Klasa `Stack` modeluje zmienny stos z zawierający elementy dowolnego typu `T`. Parametr `T` narzuca ograniczenie dla metod takie, że tylko elementy typu `T` mogą zostać dodane do stosu. Podobnie metoda `top` może zwrócić tylko elementy danego typu.
+Klasa `Stack` modeluje zmienny stos zawierający elementy dowolnego typu `T`. Parametr `T` narzuca ograniczenie dla metod takie, że tylko elementy typu `T` mogą zostać dodane do stosu. Podobnie metoda `top` może zwrócić tylko elementy danego typu.
 
 Przykłady zastosowania:
 

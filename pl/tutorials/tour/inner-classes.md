@@ -58,7 +58,7 @@ object GraphTest extends App {
 }
 ```
  
-Ten kod pokazuje, że typ wierzchołka jest prefikowany przez swoją zewnętrzną instancję (która jest obiektem `g` w naszym przykładzie). Jeżeli mielibyśmy dwa grafy, system typów w Scali nie pozwoli nam na pomieszanie wierzchołków jednego z wierzchołkami drugiego, ponieważ wierzchołki innego grafu są określone innym przez inny typ.
+Ten kod pokazuje, że typ wierzchołka jest prefiksowany przez swoją zewnętrzną instancję (która jest obiektem `g` w naszym przykładzie). Jeżeli mielibyśmy dwa grafy, system typów w Scali nie pozwoli nam na pomieszanie wierzchołków jednego z wierzchołkami drugiego, ponieważ wierzchołki drugiego grafu są określone przez inny typ.
 
 Przykład niedopuszczalnego programu:
  

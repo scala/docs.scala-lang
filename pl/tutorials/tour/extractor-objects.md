@@ -11,7 +11,7 @@ tutorial-next: sequence-comprehensions
 tutorial-previous: regular-expression-patterns
 ---
 
-W Scali, wzorce mogą być zdefiniowane niezależnie od klas case. Obiekt posiadający metodę `unapply` może funkcjonować jako tak zwany ekstraktor. Jest to szczególna metoda, która pozwala na odwrócenie zastosowania obiektu dla pewnych danych. Jego celem jest ekstrakcja danych, z których został on utworzony. Dla przykładu, poniższy kod definiuje ekstraktor dla [obiektu](singleton-objects.html) `Twice`:
+W Scali, wzorce mogą być zdefiniowane niezależnie od klas przypadków. Obiekt posiadający metodę `unapply` może funkcjonować jako tak zwany ekstraktor. Jest to szczególna metoda, która pozwala na odwrócenie zastosowania obiektu dla pewnych danych. Jego celem jest ekstrakcja danych, z których został on utworzony. Dla przykładu, poniższy kod definiuje ekstraktor dla [obiektu](singleton-objects.html) `Twice`:
 
 ```tut
 object Twice {

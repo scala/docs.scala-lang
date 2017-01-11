@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Klasy case
+title: Klasy przypadków
 
 disqus: true
 
@@ -11,14 +11,14 @@ tutorial-next: pattern-matching
 tutorial-previous: currying
 ---
 
-Scala wspiera mechanizm _klas case_. Klasy case są zwykłymi klasami z dodatkowymi założeniami:
+Scala wspiera mechanizm _klas przypadków_. Klasy przypadków są zwykłymi klasami z dodatkowymi założeniami:
 
-* Domyślnie immutable
+* Domyślnie niemutowalne
 * Można je dekomponować poprzez [dopasowanie wzorca](pattern-matching.html)
 * Porównywane poprzez podobieństwo strukturalne zamiast przez referencje
 * Zwięzła składnia tworzenia obiektów i operacji na nich
 
-Poniższy przykład obrazuje hierarchię typów powiadomień, która składa się z abstrakcyjnej klasy `Notification` oraz trzech konkretnych rodzajów zaimplementowanych jako klasy case `Email`, `SMS` i `VoiceRecording`:
+Poniższy przykład obrazuje hierarchię typów powiadomień, która składa się z abstrakcyjnej klasy `Notification` oraz trzech konkretnych rodzajów zaimplementowanych jako klasy przypadków `Email`, `SMS` i `VoiceRecording`:
 
 ```tut
 abstract class Notification
@@ -33,17 +33,17 @@ Tworzenie obiektu jest bardzo proste: (Zwróć uwagę na to, że słowo `new` n
 val emailFromJohn = Email("john.doe@mail.com", "Greetings From John!", "Hello World!")
 ```
 
-Parametry konstruktora klasy case są traktowane jako publiczne wartości i można się do nich odwoływać bezpośrednio:
+Parametry konstruktora klasy przypadków są traktowane jako publiczne wartości i można się do nich odwoływać bezpośrednio:
 
 ```tut
 val title = emailFromJohn.title
 println(title) // wypisuje "Greetings From John!"
 ```
 
-W klasach case nie można modyfikować wartości pól. (Z wyjątkiem sytuacji kiedy dodasz `var` przed nazwą pola)
+W klasach przypadków nie można modyfikować wartości pól. (Z wyjątkiem sytuacji kiedy dodasz `var` przed nazwą pola)
 
 ```tut:fail
-emailFromJohn.title = "Goodbye From John!" // Jest to błąd kompilacji, gdyż pola klasy case są domyślnie immutable
+emailFromJohn.title = "Goodbye From John!" // Jest to błąd kompilacji, gdyż pola klasy przypadku są domyślnie niezmienne
 ```
 
 Zamiast tego, możesz utworzyć kopię używając metody `copy`:
@@ -55,7 +55,7 @@ println(emailFromJohn) // wypisuje "Email(john.doe@mail.com,Greetings From John!
 println(editedEmail) // wypisuje "Email(john.doe@mail.com,I am learning Scala,It's so cool!)"
 ```
 
-Dla każdej klasy case kompilator Scali generuje metodę `equals`, która implementuje strukturalne porównanie obiektów oraz metodę `toString`. Przykład:
+Dla każdej klasy przypadku kompilator Scali wygeneruje metodę `equals`, która implementuje strukturalne porównanie obiektów oraz metodę `toString`. Przykład:
 
 ```tut
 val firstSms = SMS("12345", "Hello!")
@@ -75,7 +75,7 @@ They are equal!
 SMS is: SMS(12345, Hello!)
 ```
 
-Jednym z najważniejszych zastosowań klas case (skąd też się wzięła ich nazwa), jest **dopasowanie wzorca**. Poniższy przykład pokazuje działanie funkcji, która zwraca różne komunikaty, w zależności od rodzaju powiadomienia:
+Jednym z najważniejszych zastosowań klas przypadków (skąd też się wzięła ich nazwa), jest **dopasowanie wzorca**. Poniższy przykład pokazuje działanie funkcji, która zwraca różne komunikaty, w zależności od rodzaju powiadomienia:
 
 ```tut
 def showNotification(notification: Notification): String = {
@@ -134,9 +134,9 @@ println(showNotificationSpecial(specialSms, SPECIAL_EMAIL, SPECIAL_NUMBER))
 
 ```
 
-Programując w Scali, zachęca się abyś jak najszerzej używał klas case do modelowania danych, jako że kod który je wykorzystuje jest bardziej ekspresywny i łatwiejszy do utrzymania:
+Programując w Scali, zachęca się abyś jak najszerzej używał klas przypadków do modelowania danych, jako że kod który je wykorzystuje jest bardziej ekspresywny i łatwiejszy do utrzymania:
 
-* Obiekty typu immutable uwalniają cię od potrzeby śledzenia zmian stanu
+* Obiekty niemutowalne uwalniają cię od potrzeby śledzenia zmian stanu
 * Porównanie przez wartość pozwala na porównywanie instancji tak jakby były prymitywnymi wartościami
 * Dopasowanie wzorca znacząco upraszcza logikę rozgałęzień, co prowadzi do mniejszej ilości błędów i czytelniejszego kodu
 
