@@ -1,16 +1,17 @@
 ---
 layout: sip
 disqus: true
-title: SIP-NN - SIP Title
+title: SIP-NN - Allow referring to other arguments in default parameters
 ---
 
 **By: Pathikrit Bhowmick**
 
 ## History
 
-| Date          | Version       |
-|---------------|---------------|
-| Jan 11th 2017 | Initial Draft |
+| Date          | Version          |
+|---------------|------------------|
+| Jan 11th 2017 | Initial Draft    |
+| Jan 12th 2017 | Initial Feedback |
 
 ## Introduction
 Currently there is no way to refer to other arguments in the default parameters list:
@@ -26,6 +27,15 @@ def substring(s: String, start: Int = 0)(end: Int = s.length): String
 ```
 
 However, the above workaround is not always suitable in certain situations.
+
+The other more verbose alternative is by overloading:
+
+```scala
+def substring(s: String, start: Int = 0, end: Int = s.length): String
+  = substring(s, start = 0, end = s.length)
+def substring(s: String, start: Int, end: Int): String
+```
+
 
 ### Proposal
 Allow to refer to ***any*** parameters in the same (or left) curried parameter list:
@@ -44,7 +54,7 @@ class Substring(s: String, start: Int = 0)(end: Int = s.length)   // Legal
 class Substring(start: Int = 0, end: Int = s.length)(s: String)   // Illegal
 ```
 
-We should also be able to refer to ***multiple*** paramaeters:
+We should also be able to refer to ***multiple*** parameters:
 ```scala
 def binarySearch(start: Int, end: Int, middle: Int = (start + end)/2)  // Legal
 ```
@@ -52,13 +62,13 @@ def binarySearch(start: Int, end: Int, middle: Int = (start + end)/2)  // Legal
 ## Interactions with other syntax
 
 #### Partially Applied Functions:
-It must be required to specify the default arguments if the default argument's reference is unapplied:
+Works as expected:
 ```scala
 def substring(s: String, start: Int = 0, end: Int = s.length)
 
 substring(_, start = 0, end = 5)      // Legal
 substring(_, end = 5)                 // Legal (start = 0)
-substring(_, start = 0)               // Illegal (need to declare end)
+substring(_, start = 5)               // Legal (same as s => substring(s, start = 5, end = s.length)
 ```
 
 #### Multiple Implicit Parameters
