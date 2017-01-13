@@ -6,7 +6,7 @@ disqus: true
 
 __Dmitry Petrashko__
 
-__first submitted 13 February 2017__
+__first submitted 13 January 2017__
 
 ## Introduction ##
 
@@ -19,7 +19,15 @@ As long as signatures of methods in source is not changed, `@binaryCompatible` a
 will be compatible across major version of Scala. 
 
 ## Use Cases
-Dotty currently uses java defined interfaces as public API for SBT in order to ensure binary compatibility. 
+In case there's a need to develop an API that will be used by clients compiled using different major versions of Scala, 
+the current approach is to either develop them in Java or to use best guess to restrict what Scala features should be used.
+There's also a different approach which is used by SBT: instead of publishing a binary `compiler-interface`, sources are published instead 
+that would be locally compiled.
+
+There's also a use-case of defining a class which is supposed to be also used from Java. 
+`@binaryCompatible` will ensure that there are no not-expected methods that would show up in members of a class or an interface.
+
+Dotty currently uses java defined interfaces as public API for IntelliJ in order to ensure binary compatibility. 
 These interfaces can be replaced by `@binaryCompatible` annotated traits to reach the same goal.  
 
 ## Design Guidelines
@@ -55,7 +63,6 @@ trait AbstractFile {
 
 @binaryCompatible
 trait SourceFile extends AbstractFile {
-  /** @return The content of this file as seen by the compiler. */
   def content(): Array[Char]
 }
 
@@ -75,6 +82,14 @@ object Diagnostic {
   @static final val INFO: Int = 0
 }
 
+@binaryCompatible
+class FeaturesInBodies {
+  def apiMethod: Int = {
+    // as body of the method isn't part of the public interface, one can use all features of Scala here.
+    lazy val result = 0 // while lazy vals are prohibited in the class, they are allowed in the bodies of methods
+    result
+  }
+}
 {% endhighlight %}
 ```
 
@@ -82,6 +97,7 @@ object Diagnostic {
 The features listed below have complex encodings that may change in future versions. We prefer not to compromise on them.
 Most of those features can be simulated in a binary compatible way by writing a verbose re-impelemtation 
 which won't rely on desugaring performed inside compiler.
+Note that while those features are prohibited in the public API, they can be safely used inside bodies of the methods.
 
   - public fields. Can be simulated by explicitly defining public getters and setters that access a private field;
   - lazy vals. Can be simulated by explicitly writing an implementation in source;
