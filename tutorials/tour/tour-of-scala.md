@@ -6,6 +6,7 @@ disqus: true
 
 tutorial: scala-tour
 num: 1
+languages: [ba, es, ko, pt-br]
 outof: 33
 next-page: unified-types
 ---
