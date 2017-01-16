@@ -12,6 +12,7 @@ title: SIP-NN - Allow referring to other arguments in default parameters
 |---------------|------------------|
 | Jan 11th 2017 | Initial Draft    |
 | Jan 12th 2017 | Initial Feedback |
+| Jan 16th 2017 | Minor Changes    |
 
 ## Introduction
 Currently there is no way to refer to other arguments in the default parameters list:
@@ -26,16 +27,16 @@ The workaround to achieve this is by using a curried-function:
 def substring(s: String, start: Int = 0)(end: Int = s.length): String
 ```
 
-However, the above workaround is not always suitable in certain situations.
+However, the above workaround is not always suitable in all situations since you may not want a curried function.
 
 The other more verbose alternative is by overloading:
-
 ```scala
-def substring(s: String, start: Int = 0, end: Int = s.length): String
+def substring(s: String, start: Int): String
   = substring(s, start = 0, end = s.length)
-def substring(s: String, start: Int, end: Int): String
+def substring(s: String, start: Int = 0, end: Int): String
 ```
 
+The above is quite verbose as it required 1 extra function definition per argument that refers other args.
 
 ### Proposal
 Allow to refer to ***any*** parameters in the same (or left) curried parameter list:
@@ -58,6 +59,10 @@ We should also be able to refer to ***multiple*** parameters:
 ```scala
 def binarySearch(start: Int, end: Int, middle: Int = (start + end)/2)  // Legal
 ```
+
+# Motivating examples:
+
+TBD
 
 ## Interactions with other syntax
 
