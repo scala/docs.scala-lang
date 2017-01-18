@@ -16,7 +16,9 @@ do the values for `integral` below come from?
     scala> import scala.math._
     import scala.math._
     
-    scala> def foo[T](t: T)(implicit integral: Integral[T]) {println(integral)}
+    scala> def foo[T](t: T)(implicit integral: Integral[T]): Unit = {
+        println(integral)
+    }
     foo: [T](t: T)(implicit integral: scala.math.Integral[T])Unit
     
     scala> foo(0)
@@ -68,7 +70,9 @@ explicitly, which is how one uses `breakOut`, for example (see question about
 In this case, one has to declare the need for an implicit, such as the `foo`
 method declaration:
 
-    def foo[T](t: T)(implicit integral: Integral[T]) {println(integral)}
+    def foo[T](t: T)(implicit integral: Integral[T]): Unit = {
+        println(integral)
+    }
 
 ### Implicit conversions as implicit parameters
 
@@ -159,13 +163,13 @@ Let's give examples for them.
 
     implicit val n: Int = 5
     def add(x: Int)(implicit y: Int) = x + y
-    add(5) // takes n from the current scope
+    add(5) // takes n from the current scope, res: Int = 10
 
 ### Explicit Imports
 
     import scala.collection.JavaConversions.mapAsScalaMap
     def env = System.getenv() // Java map
-    val term = env("TERM")    // implicit conversion from Java Map to Scala Map
+    val term = env("TERM") // implicit conversion from Java Map to Scala Map
     
 ### Wildcard Imports
 
@@ -196,7 +200,7 @@ example:
     for {
         x <- List(1, 2, 3)
         y <- Some('x')
-    } yield, (x, y)
+    } yield (x, y)
 
 That expression is translated by the compile into
 
