@@ -13,7 +13,7 @@ language: pt-br
 
 Scala é uma linguagem de programação moderna e multi-paradigma desenvolvida para expressar padrões de programação comuns em uma forma concisa, elegante e com tipagem segura. Integra facilmente características de linguagens orientadas a objetos e funcional.
 
-## Scala é orienta a objetos ##
+## Scala é orientada a objetos ##
 Scala é uma linguagem puramente orientada a objetos no sentido que [todo valor é um objeto](unified-types.html). Tipos e comportamentos de objetos são descritos por [classes](classes.html) e [traits](traits.html). Classes são estendidas por subclasses e por um flexível mecanismo [de composição mesclada](mixin-class-composition.html) como uma alternativa para herança múltipla.
 
 ## Scala é funcional ##
@@ -35,7 +35,7 @@ Scala é equipada com um expressivo sistema de tipos que reforça estaticamente 
 
 Um [mecanismo de inferência de tipo local](local-type-inference.html) se encarrega para que o usuário não seja obrigado a anotar o programa com informações reduntante de tipos. Combinados, esses recursos fornecem uma base poderosa para a reutilização segura de abstrações de programação e para a extensão de tipos seguro do software.
 
-## Scala é estensível ##
+## Scala é extensível ##
 
 Na prática, o desenvolvimento de aplicações de um determinado domínio geralmente requer uma linguagem de domínio específico. Scala fornece uma combinação única de mecanismos de linguagem que facilitam a adição suave de novas construções de linguagem na forma de bibliotecas:
 
