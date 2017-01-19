@@ -180,7 +180,7 @@ Based on the previous study done in preparation for this SIP, the authors believ
  - only the fields which were not declared by parents of the object can be emitted as static;
  - only fields that are lexically defined before any non-static field or statement in the body can be emitted as static.
 
-Authors believe that the alternative would require the same effort to implement, but will be less intuitive to users and harder to control.
+Authors believe that the alternative would require the same effort to implement, but will be less intuitive to users and harder to control as, for example, reodering fields in object might not be binary compatible.
 
 ## See Also ##
  * [SI-4581](https://issues.scala-lang.org/browse/SI-4581) is a request for a `@static` annotation
