@@ -23,7 +23,7 @@ language: ko
     case class SMS(sourceNumber: String, message: String) extends Notification
     case class VoiceRecording(contactName: String, link: String) extends Notification
 
-케이스클래스를 인스턴스화 하는 것은 쉽다(new 키워드를 사용할 필요 없다는 것에 주목하자)
+케이스클래스를 인스턴스화 하는 것은 쉽다 (new 키워드를 사용할 필요가 없음을 주목하자.)
 
     val emailFromJohn = Email("john.doe@mail.com", "Greetings From John!", "Hello World!")
 
@@ -32,7 +32,7 @@ language: ko
     val title = emailFromJohn.title
     println(title) // prints "Greetings From John!"
 
-케이스 클래스에서 당신은 그 케이스 클래스의 필드를 직접 수정할수 없다. (필드 앞에 var를 넣으면 가능하나, 권장되지는 않는다.)
+여러분은 케이스 클래스의 필드를 직접 수정할 수 없다. (필드 앞에 var를 넣으면 가능하지만, 권장되지는 않는다.)
 
     emailFromJohn.title = "Goodbye From John!" // 이것은 컴파일시에 에러가 난다. 우리는 val인 필드에 다른 값을 할당할수 없으며, 모든 케이스 클래스 필드는 기본적으로 val이다.
     
@@ -58,7 +58,7 @@ language: ko
     They are equal!
     SMS is: SMS(12345, Hello!)
     
-케이스 클래스로, 당신은 데이터와 함께 동작하는 패턴매칭을 이용할수 있다. 여기 어떤Notification 타입을 받느냐에 따라 다른 메시지를 출력하는 함수가 있다.
+케이스 클래스를 통해, 데이터와 함께 동작하는 패턴매칭을 사용할수 있다. 어떤Notification 타입을 받느냐에 따라 다른 메시지를 출력하는 함수가 있다.
 
     def showNotification(notification: Notification): String = {
       notification match {
@@ -81,7 +81,7 @@ language: ko
     // You got an SMS from 12345! Message: Are you there?
     // you received a Voice Recording from Tom! Click the link to hear it: voicerecording.org/id/123
     
-여기 if 방어구문을 사용한 예제가 있다. if방어구문으로 패턴이 일치하는 분기문은 방어구문안의 조건이 false를 리턴하면 실패할 것이다.
+아래에 if 방어구문을 사용한 다른 예제가 있다. if 방어구문을 통해, 패턴이 일치하는 분기문은 방어구문안의 조건이 false를 리턴하면 실패한다.
 
     def showNotificationSpecial(notification: Notification, specialEmail: String, specialNumber: String): String = {
       notification match {
@@ -112,10 +112,10 @@ language: ko
     // You got an email from special someone!
     // You got an SMS from special someone!
 
-스칼라 프로그래밍에 있어서, 보통 model/group 데이터에 케이스 클래스를 사용하도록 권장되는데 당신이 더욱 표현적이거나 유지보수가능한 코드를 작성할때 도움이 된다.
+스칼라 프로그래밍에 있어서, 보통 model/group 데이터에 케이스 클래스를 사용하도록 권장되는데, 당신이 더욱 표현적이거나 유지보수가능한 코드를 작성할 때 도움이 된다.
 
-* 불변성은 당신이 언제 어디서 그것들이 수정되는지 지켜볼필요 없게 만들어 준다
-* 값을 통한 비교는 여러분이 인스턴스들을 원시 값들인것처럼 비교할수 있게 만들어 준다 - 클래스의 인스턴스들이 값 또는 참조를 통해 비교되는지와 같은 불확실성이 없음
-* 패턴배칭은 로직의 분기를 심플하게 만들어주며, 결국 적은 버그와 가독성 높은 코드로 이어진다.
+* 불변성은 당신이 언제 어디서 그것들이 수정되는지 신경쓸 필요 없게 만들어 준다.
+* 값을 통한 비교는 여러분이 인스턴스들을 원시 값들인 것처럼 비교할수 있게 만들어 준다 - 클래스의 인스턴스들이 값 또는 참조를 통해 비교되는지와 같은 불확실성을 제거
+* 패턴매칭은 로직의 분기를 심플하게 만들어주며, 결국 적은 버그와 가독성 높은 코드로 이어진다.
 
 고광현 옮김
