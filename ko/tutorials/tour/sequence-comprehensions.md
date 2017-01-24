@@ -31,10 +31,10 @@ language: ko
       def foo(n: Int, v: Int) =
         for (i <- 0 until n;
              j <- i until n if i + j == v) yield
-          Pair(i, j);
+          (i, j);
       foo(20, 32) foreach {
         case (i, j) =>
-          println("(" + i + ", " + j + ")")
+          println(s"($i, $j)")
       }
     }
  
@@ -52,7 +52,7 @@ language: ko
     object ComprehensionTest3 extends App {
       for (i <- Iterator.range(0, 20);
            j <- Iterator.range(i, 20) if i + j == 32)
-        println("(" + i + ", " + j + ")")
+        println(s"($i, $j)")
     }
 
-윤창석, 이한욱 옮김
+윤창석, 이한욱 옮김, 고광현 수정
