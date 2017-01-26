@@ -48,4 +48,11 @@ implicit def int2Integer(x: Int) =
   java.lang.Integer.valueOf(x)
 ```
 
-To define your own implicit conversions, you must first `import scala.language.implicitConversions` (or invoke the compiler with `-language:implicitConversions`). The feature must be explicitly enabled because it has pitfalls if used indiscriminately.
+Because implicit conversions can have pitfalls if used indiscriminately the compiler warns when compiling the implicit conversion definition.
+
+To turn off the warnings take either of these actions:
+
+* Import `scala.language.implicitConversions` into the scope of the implicit conversion definition
+* Invoke the compiler with `-language:implicitConversions`
+
+No warning is emitted when the conversion is applied by the compiler.
