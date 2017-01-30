@@ -5,7 +5,7 @@ title: 추출자 오브젝트
 disqus: true
 
 tutorial: scala-tour
-num: 8
+num: 15
 language: ko
 ---
 

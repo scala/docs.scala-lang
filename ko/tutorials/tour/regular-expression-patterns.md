@@ -5,7 +5,7 @@ title: 정규 표현식 패턴
 disqus: true
 
 tutorial: scala-tour
-num: 22
+num: 14
 language: ko
 ---
 

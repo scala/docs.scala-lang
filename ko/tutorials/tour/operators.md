@@ -5,7 +5,7 @@ title: 연산자
 disqus: true
 
 tutorial: scala-tour
-num: 17
+num: 29
 language: ko
 ---
 

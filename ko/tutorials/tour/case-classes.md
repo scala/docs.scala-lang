@@ -5,7 +5,7 @@ title: 케이스 클래스
 disqus: true
 
 tutorial: scala-tour
-num: 5
+num: 10
 language: ko
 ---
 

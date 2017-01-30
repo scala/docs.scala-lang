@@ -5,7 +5,7 @@ title: 익명 함수 구문
 disqus: true
 
 tutorial: scala-tour
-num: 14
+num: 6
 language: ko
 ---
 

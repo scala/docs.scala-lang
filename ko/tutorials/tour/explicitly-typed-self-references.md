@@ -5,7 +5,7 @@ title: 명시적으로 타입이 지정된 자기 참조
 disqus: true
 
 tutorial: scala-tour
-num: 27
+num: 24
 language: ko
 ---
 

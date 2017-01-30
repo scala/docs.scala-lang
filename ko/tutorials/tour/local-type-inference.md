@@ -5,7 +5,7 @@ title: 로컬 타입 추론
 disqus: true
 
 tutorial: scala-tour
-num: 29
+num: 28
 language: ko
 ---
 

@@ -5,7 +5,7 @@ title: 커링
 disqus: true
 
 tutorial: scala-tour
-num: 15
+num: 9
 language: ko
 ---
 

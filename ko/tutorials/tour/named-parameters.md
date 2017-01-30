@@ -5,7 +5,7 @@ title: 이름을 지정한 파라미터
 disqus: true
 
 tutorial: scala-tour
-num: 35
+num: 33
 language: ko
 ---
 

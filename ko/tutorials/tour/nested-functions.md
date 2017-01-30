@@ -5,7 +5,7 @@ title: 중첩 함수
 disqus: true
 
 tutorial: scala-tour
-num: 13
+num: 8
 language: ko
 ---
 

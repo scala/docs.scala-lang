@@ -5,7 +5,7 @@ title: 어노테이션
 disqus: true
 
 tutorial: scala-tour
-num: 3
+num: 31
 language: ko
 ---
 

@@ -5,7 +5,7 @@ title: 타입 의존 클로저의 자동 구성
 disqus: true
 
 tutorial: scala-tour
-num: 16
+num: 30
 language: ko
 ---
 

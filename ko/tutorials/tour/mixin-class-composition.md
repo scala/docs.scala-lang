@@ -5,7 +5,7 @@ title: 믹스인 클래스 컴포지션
 disqus: true
 
 tutorial: scala-tour
-num: 12
+num: 5
 language: ko
 ---
 

@@ -5,7 +5,7 @@ title: 내부 클래스
 disqus: true
 
 tutorial: scala-tour
-num: 11
+num: 21
 language: ko
 ---
 

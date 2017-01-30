@@ -5,7 +5,7 @@ title: XML 처리
 disqus: true
 
 tutorial: scala-tour
-num: 33
+num: 13
 language: ko
 ---
 
