@@ -5,7 +5,7 @@ title: 통합 타입
 disqus: true
 
 tutorial: scala-tour
-num: 30
+num: 2
 language: ko
 ---
 

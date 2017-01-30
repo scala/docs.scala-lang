@@ -5,7 +5,7 @@ title: 상위 타입 경계
 disqus: true
 
 tutorial: scala-tour
-num: 25
+num: 19
 language: ko
 ---
 

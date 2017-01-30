@@ -5,7 +5,7 @@ title: 패턴 매칭
 disqus: true
 
 tutorial: scala-tour
-num: 20
+num: 11
 language: ko
 ---
 

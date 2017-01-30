@@ -5,7 +5,7 @@ title: 다형성 메소드
 disqus: true
 
 tutorial: scala-tour
-num: 21
+num: 27
 language: ko
 ---
 

@@ -5,7 +5,7 @@ title: 암시적 파라미터
 disqus: true
 
 tutorial: scala-tour
-num: 10
+num: 25
 language: ko
 ---
 

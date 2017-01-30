@@ -5,7 +5,7 @@ title: 추상 타입
 disqus: true
 
 tutorial: scala-tour
-num: 2
+num: 22
 outof: 35
 language: ko
 ---

@@ -5,7 +5,7 @@ title: 가변성
 disqus: true
 
 tutorial: scala-tour
-num: 31
+num: 18
 language: ko
 ---
 

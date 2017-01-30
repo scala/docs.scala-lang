@@ -5,7 +5,7 @@ title: 하위 타입 경계
 disqus: true
 
 tutorial: scala-tour
-num: 26
+num: 20
 language: ko
 ---
 

@@ -5,7 +5,7 @@ title: 트레잇
 disqus: true
 
 tutorial: scala-tour
-num: 24
+num: 4
 language: ko
 ---
 

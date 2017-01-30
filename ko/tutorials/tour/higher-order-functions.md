@@ -5,7 +5,7 @@ title: 고차 함수
 disqus: true
 
 tutorial: scala-tour
-num: 18
+num: 7
 language: ko
 ---
 

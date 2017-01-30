@@ -5,7 +5,7 @@ title: 기본 파라미터 값
 disqus: true
 
 tutorial: scala-tour
-num: 34
+num: 32
 language: ko
 ---
 

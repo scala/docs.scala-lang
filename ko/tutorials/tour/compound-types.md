@@ -5,7 +5,7 @@ title: 합성 타입
 disqus: true
 
 tutorial: scala-tour
-num: 6
+num: 23
 language: ko
 ---
 

@@ -5,7 +5,7 @@ title: 클래스
 disqus: true
 
 tutorial: scala-tour
-num: 4
+num: 3
 language: ko
 ---
 

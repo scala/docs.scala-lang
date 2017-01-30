@@ -5,7 +5,7 @@ title: 시퀀스 컴프리헨션
 disqus: true
 
 tutorial: scala-tour
-num: 7
+num: 16
 language: ko
 ---
 
