@@ -158,7 +158,7 @@ onComplete方法一般在某种意义上它允许客户处理future计算出的�
     }
     
     text onSuccess {
-      case txt => totalA += txt.count(_ == 'a')
+      case txt => totalA += txt.count(_ == 'A')
     }
 
 以上，这两个回调(callbacks)可能是一个接一个地执行的，这样变量totalA得到的预期值为18。然而，它们也可能是并发执行的，于是totalA最终可能是16或2，因为+= 是一个不可分割的操作符（即它是由一个读和一个写的步骤组成，这样就可能使其与其他的读和写任意交错执行）。
