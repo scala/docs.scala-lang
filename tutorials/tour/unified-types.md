@@ -47,5 +47,5 @@ a string
 732
 c
 true
-$line15.$read$$iw$$iw$$$Lambda$1095/599060649@108a7fff
+<function>
 ```
