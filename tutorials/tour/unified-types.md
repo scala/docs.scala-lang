@@ -26,13 +26,13 @@ Here is an example that demonstrates that numbers, characters, boolean values, a
 
 ```tut
 object UnifiedTypes extends App {
-  var list: List[Any] = List()
-
-  list = list :+ "This is a string"
-  list = list :+ 732
-  list = list :+ 'c'
-  list = list :+ true
-  list = list :+ (() => "This is an anonymous function returning a string")
+  val list: List[Any] = List(
+    "This is a string",
+    732,
+    'c',
+    true,
+    () => "This is an anonymous function returning a string"
+  )
 
   list.foreach(element => println(element))
 }
