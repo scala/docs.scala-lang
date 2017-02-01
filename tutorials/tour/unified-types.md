@@ -25,31 +25,22 @@ The superclass of all classes `scala.Any` has two direct subclasses: `scala.AnyV
 Here is an example that demonstrates that numbers, characters, boolean values, and functions are all objects just like every other object:
 
 ```tut
-scala> var list: List[Any] = List()
-list: List[Any] = List()
+object UnifiedTypes extends App {
+  var list: List[Any] = List()
 
-scala> list = list :+ "This is a string"
-list: List[Any] = List(This is a string)
+  list = list :+ "This is a string"
+  list = list :+ 732
+  list = list :+ 'c'
+  list = list :+ true
+  list = list :+ (() => "This is an anonymous function returning a string")
 
-scala> list = list :+ 732
-list: List[Any] = List(This is a string, 732)
-
-scala> list = list :+ 'c'
-list: List[Any] = List(This is a string, 732, c)
-
-scala> list = list :+ true
-list: List[Any] = List(This is a string, 732, c, true)
-
-scala> list = list :+ (() => "This is an anonymous function returning a string")
-list: List[Any] = List(This is a string, 732, c, true, $$Lambda$1095/599060649@108a7fff)
+  list.foreach(element => println(element))
+}
 ```
 
-The program defines a variable `list` which refers to an instance of class `List[Any]`. The program adds elements of various types to this list.
-
-When you print each element, it will output something like the following:
+The program defines a variable `list` which refers to an instance of class `List[Any]`. The program adds elements of various types to this list. In the end, the program outputs something like below:
 
 ```tut
-scala> list.foreach(element => println(element))
 This is a string
 732
 c
