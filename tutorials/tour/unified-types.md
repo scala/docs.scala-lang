@@ -16,33 +16,43 @@ In contrast to Java, all values in Scala are objects (including numerical values
 
 ## Scala Class Hierarchy ##
 
-The superclass of all classes `scala.Any` has two direct subclasses `scala.AnyVal` and `scala.AnyRef` representing two different class worlds: value classes and reference classes. All value classes are predefined; they correspond to the primitive types of Java-like languages. All other classes define reference types. User-defined classes define reference types by default; i.e. they always (indirectly) subclass `scala.AnyRef`. Every user-defined class in Scala implicitly extends the trait `scala.ScalaObject`. Classes from the infrastructure on which Scala is running (e.g. the Java runtime environment) do not extend `scala.ScalaObject`. If Scala is used in the context of a Java runtime environment, then `scala.AnyRef` corresponds to `java.lang.Object`.
-Please note that the diagram above also shows implicit conversions between the value classes.
-Here is an example that demonstrates that both numbers, characters, boolean values, and functions are objects just like every other object:
- 
+The superclass of all classes `scala.Any` has two direct subclasses: `scala.AnyVal` and `scala.AnyRef`.
+
+`scala.AnyVal` represents value classes. All value classes are predefined; they correspond to the primitive types of Java-like languages. Note that the diagram above also shows implicit conversions between the value classes.
+
+`scala.AnyRef` represents reference classes. All non-value classes are defined as reference class. Every user-defined class in Scala implicitly extends `scala.AnyRef`. If Scala is used in the context of a Java runtime environment, then `scala.AnyRef` corresponds to `java.lang.Object`.
+
+Here is an example that demonstrates that numbers, characters, boolean values, and functions are all objects just like every other object:
+
 ```tut
-object UnifiedTypes extends App {
-  val set = new scala.collection.mutable.LinkedHashSet[Any]
-  set += "This is a string"  // add a string
-  set += 732                 // add a number
-  set += 'c'                 // add a character
-  set += true                // add a boolean value
-  set += main _              // add the main function
-  val iter: Iterator[Any] = set.iterator
-  while (iter.hasNext) {
-    println(iter.next.toString())
-  }
-}
+scala> var list: List[Any] = List()
+list: List[Any] = List()
+
+scala> list = list :+ "This is a string"
+list: List[Any] = List(This is a string)
+
+scala> list = list :+ 732
+list: List[Any] = List(This is a string, 732)
+
+scala> list = list :+ 'c'
+list: List[Any] = List(This is a string, 732, c)
+
+scala> list = list :+ true
+list: List[Any] = List(This is a string, 732, c, true)
+
+scala> list = list :+ (() => "This is an anonymous function returning a string")
+list: List[Any] = List(This is a string, 732, c, true, $$Lambda$1095/599060649@108a7fff)
 ```
 
-The program declares an application `UnifiedTypes` in form of a top-level [singleton object](singleton-objects.html) extending `App`. The application defines a local variable `set` which refers to an instance of class `LinkedHashSet[Any]`. The program adds various elements to this set. The elements have to conform to the declared set element type `Any`. In the end, string representations of all elements are printed out.
+The program defines a variable `list` which refers to an instance of class `List[Any]`. The program adds elements of various types to this list.
 
-Here is the output of the program:
+When you print each element, it will output something like the following:
 
-```
+```tut
+scala> list.foreach(element => println(element))
 This is a string
 732
 c
 true
-<function>
+$line15.$read$$iw$$iw$$$Lambda$1095/599060649@108a7fff
 ```
