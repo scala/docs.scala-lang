@@ -22,16 +22,16 @@ The superclass of all classes `scala.Any` has two direct subclasses: `scala.AnyV
 
 `scala.AnyRef` represents reference classes. All non-value classes are defined as reference class. Every user-defined class in Scala implicitly extends `scala.AnyRef`. If Scala is used in the context of a Java runtime environment, then `scala.AnyRef` corresponds to `java.lang.Object`.
 
-Here is an example that demonstrates that numbers, characters, boolean values, and functions are all objects just like every other object:
+Here is an example that demonstrates that strings, integers, characters, boolean values, and functions are all objects just like every other object:
 
 ```tut
 object UnifiedTypes extends App {
   val list: List[Any] = List(
-    "This is a string",
-    732,
-    'c',
-    true,
-    () => "This is an anonymous function returning a string"
+    "a string",
+    732,  // an integer
+    'c',  // a character
+    true, // a boolean value
+    () => "an anonymous function returning a string"
   )
 
   list.foreach(element => println(element))
