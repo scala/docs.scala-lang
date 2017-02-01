@@ -10,7 +10,7 @@ next-page: classes
 previous-page: tour-of-scala
 ---
 
-In contrast to Java, all values in Scala are objects (including numerical values and functions). Since Scala is class-based, all values are instances of a class. The diagram below illustrates the class hierarchy.
+In Scala, all values are instance of a class, including numerical values and functions. The diagram below illustrates the class hierarchy.
 
 ![Scala Type Hierarchy]({{ site.baseurl }}/resources/images/classhierarchy.img_assist_custom.png)
 
