@@ -20,7 +20,7 @@ The superclass of all classes `scala.Any` has two direct subclasses: `scala.AnyV
 
 `scala.AnyVal` represents value classes. All value classes are not nullable and predefined; they correspond to the primitive types of Java-like languages. Note that the diagram above also shows implicit conversions between the value classes.
 
-`scala.AnyRef` represents reference classes. All non-value classes are defined as reference class. Every user-defined class in Scala implicitly extends `scala.AnyRef`. If Scala is used in the context of a Java runtime environment, then `scala.AnyRef` corresponds to `java.lang.Object`.
+`scala.AnyRef` represents reference classes. All non-value classes are defined as reference class. Every user-defined class in Scala implicitly extends `scala.AnyRef`. If Scala is used in the context of a Java runtime environment, `scala.AnyRef` corresponds to `java.lang.Object`.
 
 Here is an example that demonstrates that strings, integers, characters, boolean values, and functions are all objects just like every other object:
 
