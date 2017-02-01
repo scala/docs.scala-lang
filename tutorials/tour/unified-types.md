@@ -42,7 +42,7 @@ The program declares an application `UnifiedTypes` in form of a top-level [singl
 
 The application defines a variable `list` of type `List[Any]`. The list is initialized with elements of various types, but they all are instance of `scala.Any`, so you can add them to the list.
 
-In the end, the application outputs something like below:
+Here is the output of the program:
 
 ```tut
 a string
