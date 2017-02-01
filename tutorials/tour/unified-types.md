@@ -18,7 +18,7 @@ In contrast to Java, all values in Scala are objects (including numerical values
 
 The superclass of all classes `scala.Any` has two direct subclasses: `scala.AnyVal` and `scala.AnyRef`.
 
-`scala.AnyVal` represents value classes. All value classes are predefined; they correspond to the primitive types of Java-like languages. Note that the diagram above also shows implicit conversions between the value classes.
+`scala.AnyVal` represents value classes. All value classes are not nullable and predefined; they correspond to the primitive types of Java-like languages. Note that the diagram above also shows implicit conversions between the value classes.
 
 `scala.AnyRef` represents reference classes. All non-value classes are defined as reference class. Every user-defined class in Scala implicitly extends `scala.AnyRef`. If Scala is used in the context of a Java runtime environment, then `scala.AnyRef` corresponds to `java.lang.Object`.
 
@@ -38,7 +38,7 @@ object UnifiedTypes extends App {
 }
 ```
 
-The application defines a variable `list` which refers to an instance of class `List[Any]`. The list is initialized with elements of various types. In the end, the application outputs something like below:
+The application defines a variable `list` of type `List[Any]`. The list is initialized with elements of various types, but they all are instance of `scala.Any`. In the end, the application outputs something like below:
 
 ```tut
 a string
