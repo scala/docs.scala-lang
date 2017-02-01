@@ -38,7 +38,9 @@ object UnifiedTypes extends App {
 }
 ```
 
-The application defines a variable `list` of type `List[Any]`. The list is initialized with elements of various types, but they all are instance of `scala.Any`. In the end, the application outputs something like below:
+The program declares an application `UnifiedTypes` in form of a top-level [singleton object](singleton-objects.html) extending [`App`](http://www.scala-lang.org/api/2.12.x/scala/App.html) so that the body of it acts as a main function.
+
+The application defines a variable `list` of type `List[Any]`. The list is initialized with elements of various types, and they all are instance of `scala.Any`. In the end, the application outputs something like below:
 
 ```tut
 a string
