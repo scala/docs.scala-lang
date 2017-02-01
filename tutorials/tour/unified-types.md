@@ -38,7 +38,7 @@ object UnifiedTypes extends App {
 }
 ```
 
-The program defines a variable `list` which refers to an instance of class `List[Any]`. The program adds elements of various types to this list. In the end, the program outputs something like below:
+The application defines a variable `list` which refers to an instance of class `List[Any]`. The list is initialized with elements of various types. In the end, the application outputs something like below:
 
 ```tut
 This is a string
