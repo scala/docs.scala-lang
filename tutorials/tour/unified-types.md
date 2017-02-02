@@ -10,7 +10,7 @@ next-page: classes
 previous-page: tour-of-scala
 ---
 
-In Scala, all values are instance of a class, including numerical values and functions. The diagram below illustrates the class hierarchy.
+In Scala, all values are instances of a class, including numerical values and functions. The diagram below illustrates the class hierarchy.
 
 ![Scala Type Hierarchy]({{ site.baseurl }}/resources/images/classhierarchy.img_assist_custom.png)
 
@@ -18,7 +18,7 @@ In Scala, all values are instance of a class, including numerical values and fun
 
 The superclass of all classes `scala.Any` has two direct subclasses: `scala.AnyVal` and `scala.AnyRef`.
 
-`scala.AnyVal` represents value classes. All value classes are not nullable and predefined; they correspond to the primitive types of Java-like languages. Note that the diagram above also shows implicit conversions between the value classes.
+`scala.AnyVal` represents value classes. All value classes are non-nullable and predefined; they correspond to the primitive types of Java-like languages. Note that the diagram above also shows implicit conversions between the value classes.
 
 `scala.AnyRef` represents reference classes. All non-value classes are defined as reference class. Every user-defined class in Scala implicitly extends `scala.AnyRef`. If Scala is used in the context of a Java runtime environment, `scala.AnyRef` corresponds to `java.lang.Object`.
 
@@ -44,7 +44,7 @@ The application defines a variable `list` of type `List[Any]`. The list is initi
 
 Here is the output of the program:
 
-```tut
+```
 a string
 732
 c
