@@ -10,26 +10,28 @@ next-page: unified-types
 previous-page: tour-of-scala
 ---
 
-## Values and Variables
+In this page, we will cover basics of Scala.
 
-You can define values with `val` keyword.
+## Variables
 
-```
-val x = 1 + 1
-```
-
-When defined with `val`, you cannot mutate the binding.
-
-```
-val x = 1 + 1
-x += 1 // This does not compile because you are mutating values defined with "val" keyword
-```
-
-You can use `var` instead to make it variable, allowing mutation.
+You can define variables with `var` keyword.
 
 ```
 var x = 1 + 1
 x += 1
+```
+
+Often, you want your variables to be immutable. You can use `val` keyword in that case.
+
+```
+val x = 1 + 1
+x += 1 // This does not compile because you declared the variable with "val" keyword
+```
+
+Type of variables can be inferred, but you can also explicitly state type like below.
+
+```
+val x: Int = 1 + 1
 ```
 
 ## Functions
@@ -75,7 +77,7 @@ We will cover classes in depth [later](classes.md).
 
 ## Traits
 
-Traits are used to define object types by specifying the signature of fields and methods.
+Traits define types as signature of fields and methods.
 
 You can define traits with `trait` keyword.
 
@@ -146,7 +148,7 @@ println(point == yetAnotherPoint) // false
 
 Case classes are immutable by default, but it also provides `copy` method so that you can easily create another instance of the class while reusing the values from exiting instances.
 
-Using `copy` method, you can write the above code like below.
+Using `copy` method, you can also write the above code like below.
 
 ```
 val point = Point(1, 2)
@@ -156,7 +158,7 @@ println(point == anotherPoint) // true
 println(point == yetAnotherPoint) // false
 ```
 
-There are many other features you get out-of-box by using case classes. We will cover them [later](case-classes.md).
+There are many other features you get out-of-the-box by using case classes. We will cover them in depth [later](case-classes.md).
 
 ## Singleton Objects
 
@@ -171,6 +173,15 @@ object IdFactory {
     counter
   }
 }
+```
+
+You can access singleton objects just by referring its name.
+
+```
+val newId: Int = IdFactory.create()
+println(newId) // 1
+val newerId: Int = IdFactory.create()
+println(newerId) // 2
 ```
 
 We will cover singleton objects in depth [later](singleton-objects.md).
