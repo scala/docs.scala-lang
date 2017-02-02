@@ -5,7 +5,7 @@ title: Variances
 disqus: true
 
 tutorial: scala-tour
-num: 18
+num: 19
 next-page: upper-type-bounds
 previous-page: generic-classes
 ---

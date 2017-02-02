@@ -5,7 +5,7 @@ title: Nested Functions
 disqus: true
 
 tutorial: scala-tour
-num: 8
+num: 9
 next-page: currying
 previous-page: higher-order-functions
 ---

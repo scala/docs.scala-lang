@@ -5,7 +5,7 @@ title: Abstract Types
 disqus: true
 
 tutorial: scala-tour
-num: 22
+num: 23
 next-page: compound-types
 previous-page: inner-classes
 ---

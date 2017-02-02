@@ -5,7 +5,7 @@ title: Case Classes
 disqus: true
 
 tutorial: scala-tour
-num: 10
+num: 11
 next-page: pattern-matching
 previous-page: currying
 ---

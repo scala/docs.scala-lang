@@ -5,7 +5,7 @@ title: Implicit Parameters
 disqus: true
 
 tutorial: scala-tour
-num: 25
+num: 26
 next-page: implicit-conversions
 previous-page: explicitly-typed-self-references
 ---

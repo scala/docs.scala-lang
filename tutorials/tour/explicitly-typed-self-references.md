@@ -5,7 +5,7 @@ title: Explicitly Typed Self References
 disqus: true
 
 tutorial: scala-tour
-num: 24
+num: 25
 next-page: implicit-parameters
 previous-page: compound-types
 ---

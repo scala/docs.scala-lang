@@ -5,7 +5,7 @@ title: Classes
 disqus: true
 
 tutorial: scala-tour
-num: 3
+num: 4
 next-page: traits
 previous-page: unified-types
 ---

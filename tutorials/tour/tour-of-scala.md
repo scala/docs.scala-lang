@@ -7,8 +7,8 @@ disqus: true
 tutorial: scala-tour
 num: 1
 languages: [ba, es, ko, pt-br]
-outof: 33
-next-page: unified-types
+outof: 34
+next-page: basics
 ---
 
 Scala is a modern multi-paradigm programming language designed to express common programming patterns in a concise, elegant, and type-safe way. It smoothly integrates features of object-oriented and functional languages.

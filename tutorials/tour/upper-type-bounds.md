@@ -5,7 +5,7 @@ title: Upper Type Bounds
 disqus: true
 
 tutorial: scala-tour
-num: 19
+num: 20
 next-page: lower-type-bounds
 previous-page: variances
 ---

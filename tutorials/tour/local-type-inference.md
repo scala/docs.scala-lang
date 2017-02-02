@@ -5,7 +5,7 @@ title: Local Type Inference
 disqus: true
 
 tutorial: scala-tour
-num: 28
+num: 29
 next-page: operators
 previous-page: polymorphic-methods
 ---

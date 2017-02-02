@@ -5,7 +5,7 @@ title: Polymorphic Methods
 disqus: true
 
 tutorial: scala-tour
-num: 27
+num: 28
 
 next-page: local-type-inference
 previous-page: implicit-conversions

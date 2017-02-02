@@ -5,7 +5,7 @@ title: Annotations
 disqus: true
 
 tutorial: scala-tour
-num: 31
+num: 32
 next-page: default-parameter-values
 previous-page: automatic-closures
 ---
