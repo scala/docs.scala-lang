@@ -95,17 +95,6 @@ greet("Scala developer")
 // How are you doing today?
 ```
 
-You can write the corresponding function types like below.
-
-```
-Int => Int
-(Int, Int) => Int
-() => Int
-String => Unit // "Unit" is equivalent of "void" in Scala.
-```
-
-Left hand side of `=>` is parameter type(s) and right hand side of it is return type.
-
 We will cover functions in depth [later](anonymous-function-syntax.md).
 
 ## Classes
