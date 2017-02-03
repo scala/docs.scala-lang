@@ -79,8 +79,8 @@ println(add(1, 2)) // 3
 Or it can take no parameters.
 
 ```
-val now = () => 42
-println(now()) // 42
+val getTheAnswer = () => 42
+println(getTheAnswer()) // 42
 ```
 
 If your function body spans across multiple lines, you can wrap them with `{}`.
@@ -133,24 +133,19 @@ There are some other differences, but for now, you can think of them as somethin
 
 ## Classes
 
-You can define classes with `class` keyword.
+You can define classes with the `class` keyword followed by its name and constructor parameters.
 
 ```
-class Point(var x: Int, var y: Int) {
-  def move(dx: Int, dy: Int): Unit = {
-    x = x + dx
-    y = y + dy
-  }
-
-  override def toString: String = "(" + x + ", " + y + ")"
+class Greeter(prefix: String, postfix: String) {
+  def greet(name: String): Unit = println(prefix + name + postfix)
 }
 ```
 
-You can instantiate classes with `new` keyword.
+You can instantiate classes with the `new` keyword.
 
 ```
-val point = new Point(1, 2)
-println(point) // (1, 2)
+val greeter = new Greeter("Hello, ", "!")
+greeter.greet("Scala developer") // Hello, Scala developer!
 ```
 
 We will cover classes in depth [later](classes.md).
