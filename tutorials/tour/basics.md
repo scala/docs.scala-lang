@@ -217,32 +217,35 @@ Traits define specification of types as signature of fields and methods.
 You can define traits with `trait` keyword.
 
 ```
-trait Point {
-  var x: Int
-  var y: Int
+trait Greeter {
+  def greet(name: String): Unit
 }
 ```
 
-Traits can also have implementation.
+Traits can also have default implementation.
 
 ```
-trait Point {
-  var x: Int
-  var y: Int
-  
-  override def toString: String = "(" + x + ", " + y + ")"
+trait Greeter {
+  def greet(name: String): Unit = println("Hello, " + name + "!")
 }
 ```
 
-You can extend traits with `extends` keyword.
+You can extend traits with the `extends` keyword and override their implementation with the `override` keyword.
 
 ```
-class MyPoint(var x: Int, var y: Int) extends Point {
-  def move(dx: Int, dy: Int): Unit = {
-    x = x + dx
-    y = y + dy
+class DefaultGreeter extends Greeter
+
+class CustomizableGreeter(prefix: String, postfix: String) extends Greeter {
+  override def greet(name: String): Unit = {
+    println(prefix + name + postfix)
   }
 }
+
+val greeter = new DefaultGreeter()
+greeter.greet("Scala developer") // Hello, Scala developer!
+
+val customGreeter = new CustomizableGreeter("How are you, ", "?")
+customGreeter.greet("Scala developer") // How are you, Scala developer?
 ```
 
 We will cover traits in depth [later](traits.md).
