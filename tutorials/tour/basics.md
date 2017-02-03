@@ -24,18 +24,24 @@ It is a perfect way for anybody to experiment a piece of Scala code anywhere, an
 
 ## Variables
 
-You can define variables with `var` keyword.
-
-```
-var x = 1 + 1
-x += 1
-```
-
-Often, you want your variables to be immutable. You can use `val` keyword in that case.
+You can define variables with the `val` keyword.
 
 ```
 val x = 1 + 1
-x += 1 // This does not compile because you declared the variable with "val" keyword
+```
+
+Variables defined by `val` cannot be re-assigned and are immutable in that sense.
+
+```
+val x = 1 + 1
+x += 2 // This does not compile because it is re-assigning the variable.
+```
+
+If you need a mutable variable, you can use the `var` keyword instead.
+
+```
+var y = 1 + 1
+y += 2 // This compiles because "y" is declared with "var" keyword.
 ```
 
 Type of variables can be inferred, but you can also explicitly state type like below.
