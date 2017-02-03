@@ -152,21 +152,7 @@ We will cover classes in depth [later](classes.md).
 
 ## Case Classes
 
-By default, classes are compared by reference. If you want to compare them by values, you need to override `equals` and `hashCode` methods.
-
-```
-class Point(val x: Int, val y: Int) {
-  override def equals(o: Any) = o match {
-    case that: Point => x == that.x && y == that.y
-    case _ => false
-  }
-  override def hashCode = (x.hashCode << 16) + y.hashCode
-}
-```
-
-While it works, it's tedious to define those methods for all classes you want to compare by value.
-
-Thankfully, Scala has another type of class called `case class` that's compared by value by default.
+Scala has a special type of class called case class that's immutable by default and compared by value. You can define case classes with the `case class` keyword.
 
 ```
 case class Point(x: Int, y: Int)
@@ -175,28 +161,26 @@ case class Point(x: Int, y: Int)
 You can instantiate case classes without `new` keyword.
 
 ```
-val point = Point(1, 2) // no "new" here
+val point = Point(1, 2)
 val anotherPoint = Point(1, 2)
 val yetAnotherPoint = Point(2, 2)
-println(point == anotherPoint) // true
-println(point == yetAnotherPoint) // false
+
+if (point == anotherPoint) {
+  println(point + " and " + anotherPoint + " are the same.")
+} else {
+  println(point + " and " + anotherPoint + " are different.")
+}
+// Point(1,2) and Point(1,2) are the same.
+
+if (point == yetAnotherPoint) {
+  println(point + " and " + yetAnotherPoint + " are the same.")
+} else {
+  println(point + " and " + yetAnotherPoint + " are different.")
+}
+// Point(1,2) and Point(2,2) are different.
 ```
 
-Case classes are immutable by default, but it also provides `copy` method so that you can easily create another instance of the class while reusing the values from exiting instances.
-
-Using `copy` method, you can also write the above code like below.
-
-```
-val point = Point(1, 2)
-val anotherPoint = point.copy()
-val yetAnotherPoint = point.copy(x = 2)
-println(point == anotherPoint) // true
-println(point == yetAnotherPoint) // false
-```
-
-Because of case classes, you almost never see classes overriding `equals` and `hashCode` methods in Scala.
-
-There are many other features you get out-of-the-box by using case classes. We will cover them in depth [later](case-classes.md).
+There is a lot more to case classes that we'd like to introduce, and we are convinced you will fall in love with it! We will cover them in depth [later](case-classes.md).
 
 ## Singleton Objects
 
