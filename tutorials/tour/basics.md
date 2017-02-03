@@ -52,18 +52,59 @@ val x: Int = 1 + 1
 
 ## Functions
 
-You can define functions like below.
+You can define functions that returns a given integer + 1 like below.
 
 ```
-(name: String) => println("Hello, " + name + "!")
+(x: Int) => x + 1
 ```
+
+Left hand side of `=>` is parameter(s) and right hand side of it is body.
+
+Notice that the function has no `return` keyword. This is because, in Scala, the last expression of the function is automatically returned.
 
 You can also assign functions to variables.
 
 ```
-val greet = (name: String) => println("Hello, " + name + "!")
-greet("Scala") // Hello, Scala!
+val addOne = (x: Int) => x + 1
+println(addOne(1)) // 2
 ```
+
+Or it can take multiple parameters.
+
+```
+val add = (x: Int, y: Int) => x + y
+println(add(1, 2)) // 3
+```
+
+Or it can take no parameters.
+
+```
+val now = () => 42
+println(now()) // 42
+```
+
+If your function body spans across multiple lines, you can wrap them with `{}`.
+
+```
+val greet = (name: String) => {
+  println("Hello, " + name + "!")
+  println("How are you doing today?")
+}
+greet("Scala developer")
+// Hello, Scala developer!
+// How are you doing today?
+```
+
+You can write the corresponding function types like below.
+
+```
+Int => Int
+(Int, Int) => Int
+() => Int
+String => Unit // "Unit" is equivalent of "void" in Scala.
+```
+
+Left hand side of `=>` is parameter type(s) and right hand side of it is return type.
 
 We will cover functions in depth [later](anonymous-function-syntax.md).
 
