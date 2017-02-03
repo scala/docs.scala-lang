@@ -182,9 +182,11 @@ if (point == yetAnotherPoint) {
 
 There is a lot more to case classes that we'd like to introduce, and we are convinced you will fall in love with it! We will cover them in depth [later](case-classes.md).
 
-## Singleton Objects
+## Objects
 
-You can define singleton objects with `object` keyword.
+Objects are single instances of its own definition. You can think of them as singletons of their own classes.
+
+You can define objects with the `object` keyword.
 
 ```
 object IdFactory {
@@ -197,7 +199,7 @@ object IdFactory {
 }
 ```
 
-You can access singleton objects just by referring its name.
+You can access objects by referring its name.
 
 ```
 val newId: Int = IdFactory.create()
@@ -206,7 +208,7 @@ val newerId: Int = IdFactory.create()
 println(newerId) // 2
 ```
 
-We will cover singleton objects in depth [later](singleton-objects.md).
+We will cover objects in depth [later](singleton-objects.md).
 
 ## Traits
 
