@@ -97,6 +97,40 @@ greet("Scala developer")
 
 We will cover functions in depth [later](anonymous-function-syntax.md).
 
+## Methods
+
+Methods look and behave very similar to functions, but there are a few key differences between them.
+
+Methods are defined like below with the `def` keyword followed by its name, parameter(s), return type, and body.
+
+```
+def add(x: Int, y: Int): Int = x + y
+println(add(1, 2)) // 3
+```
+
+Methods cannot be assigned to variables.
+
+```
+def add(x: Int, y: Int): Int = x + y
+val add2 = add // This does not compile.
+```
+
+Methods can take multiple parameter groups.
+
+```
+def addThenMultiply(x: Int, y: Int)(multiplier: Int): Int = (x + y) * multiplier
+println(addThenMultiply(1, 2)(3)) // 9
+```
+
+Or no parameter group at all.
+
+```
+def name: String = System.getProperty("name")
+println("Hello, " + name + "!")
+```
+
+There are some other differences, but for now, you can think of them as something similar to functions.
+
 ## Classes
 
 You can define classes with `class` keyword.
