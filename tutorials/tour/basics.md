@@ -37,7 +37,7 @@ val x = 1 + 1
 x += 2 // This does not compile because it is re-assigning the variable.
 ```
 
-If you need a mutable variable, you can use the `var` keyword instead.
+If you need to mutate variables, you can use the `var` keyword instead.
 
 ```
 var y = 1 + 1
