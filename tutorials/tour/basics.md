@@ -252,20 +252,10 @@ We will cover traits in depth [later](traits.md).
 
 ## Main Method
 
-Using singleton objects, you can define main methods like below.
+Using objects, you can define main methods like below.
 
 ```
 object Main {
-  def main(args: Array[String]): Unit = {
-    println("Hello, world!")
-  }
-}
-```
-
-Because every runnable application has a main method, Scala also provides a more convenient way of defining your main method by extending `App` trait.
-
-```
-object Main extends App {
-  println("Hello, world!")
+  def main(args: Array[String]): Unit = println("Hello, Scala developer!")
 }
 ```
