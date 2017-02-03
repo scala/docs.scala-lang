@@ -152,7 +152,7 @@ We will cover classes in depth [later](classes.md).
 
 ## Case Classes
 
-Scala has a special type of class called case class that's immutable by default and compared by value. You can define case classes with the `case class` keyword.
+Scala has a special type of class called case class that's immutable and compared by value by default. You can define case classes with the `case class` keyword.
 
 ```
 case class Point(x: Int, y: Int)
@@ -184,7 +184,7 @@ There is a lot more to case classes that we'd like to introduce, and we are conv
 
 ## Objects
 
-Objects are single instances of its own definition. You can think of them as singletons of their own classes.
+Objects are single instances of their own definitions. You can think of them as singletons of their own classes.
 
 You can define objects with the `object` keyword.
 
