@@ -12,6 +12,16 @@ previous-page: tour-of-scala
 
 In this page, we will cover basics of Scala.
 
+## Running Scala on Browser
+
+You can run Scala on browser by using [ScalaFiddle](https://scalafiddle.io).
+
+1. Go to https://scalafiddle.io.
+2. Copy and paste `println("Hello, world!")` to the left pane.
+3. Hit "Run" button and see it prints "Hello, world!" on the right pane.
+
+It is a perfect way for anybody to experiment a piece of Scala code anywhere, anytime!
+
 ## Variables
 
 You can define variables with `var` keyword.
