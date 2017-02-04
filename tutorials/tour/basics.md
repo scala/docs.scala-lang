@@ -59,7 +59,7 @@ You can define functions that returns a given integer + 1 like below.
 (x: Int) => x + 1
 ```
 
-Left hand side of `=>` is parameter(s) and right hand side of it is body.
+Left hand side of `=>` is parameter(s) and right hand side of `=>` is body.
 
 Notice that the function has no `return` keyword. This is because, in Scala, the last expression of the function is automatically returned.
 
@@ -84,7 +84,7 @@ val getTheAnswer = () => 42
 println(getTheAnswer()) // 42
 ```
 
-If your function body spans across multiple lines, you can wrap them with `{}`.
+If your function body spans across multiple lines, you must wrap them with `{}`.
 
 ```
 val greet = (name: String) => {
