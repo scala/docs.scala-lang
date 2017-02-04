@@ -22,32 +22,33 @@ You can run Scala in your browser by using [ScalaFiddle](https://scalafiddle.io)
 
 It is a perfect way for anybody to experiment with a piece of Scala code anywhere, anytime!
 
-## Variables
+## Values and Variables
 
-You can define variables with the `val` keyword.
-
-```
-val x = 1 + 1
-```
-
-Variables defined by `val` cannot be re-assigned and are immutable in that sense.
+You can define values (a.k.a. immutable variables) with the `val` keyword.
 
 ```
 val x = 1 + 1
-x += 2 // This does not compile because it is re-assigning the variable.
 ```
 
-If you need to mutate variables, you can use the `var` keyword instead.
+Values cannot be re-assigned and are immutable in that sense.
+
+```
+val x = 1 + 1
+x = 3 // This does not compile because it is re-assigning the value.
+```
+
+If you need to re-assign, you must declare them as variables using the `var` keyword.
 
 ```
 var y = 1 + 1
-y += 2 // This compiles because "y" is declared with "var" keyword.
+y = 3 // This compiles because "y" is declared with "var" keyword.
 ```
 
-Type of variables can be inferred, but you can also explicitly state type like below.
+Types of values and variables can be inferred, but you can also explicitly state types like below.
 
 ```
 val x: Int = 1 + 1
+var y: Int = 1 + 1
 ```
 
 ## Functions
