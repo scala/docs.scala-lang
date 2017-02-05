@@ -22,48 +22,79 @@ You can run Scala in your browser by using [ScalaFiddle](https://scalafiddle.io)
 
 It is a perfect way for anybody to experiment with a piece of Scala code anywhere, anytime!
 
-## Values and Variables
+## Expressions
 
-You can define values (a.k.a. immutable variables) with the `val` keyword.
+Expressions are computable statements.
+
+You can output results of expressions using the `println`.
+
+```
+println(1) // 1
+println(1 + 1) // 2
+println("Hello!") // Hello!
+println("Hello," + " world!") // Hello, world!
+```
+
+You can name the result of an expression by using the `val` keyword.
 
 ```
 val x = 1 + 1
+println(x) // 2
 ```
 
-Values cannot be re-assigned and are immutable in that sense.
+Named results are called values. For example, in above case, `x` is called a value. Values only hold results of expressions, so they will not re-compute expressions when referenced.
+
+Values cannot be re-assigned.
 
 ```
 val x = 1 + 1
-x = 3 // This does not compile because it is re-assigning the value.
+x = 3 // This does not compile.
 ```
 
-If you need to re-assign, you must declare them as variables using the `var` keyword.
-
-```
-var y = 1 + 1
-y = 3 // This compiles because "y" is declared with "var" keyword.
-```
-
-Types of values and variables can be inferred, but you can also explicitly state types like below.
+Types of values can be inferred, but you can also explicitly state types like below.
 
 ```
 val x: Int = 1 + 1
-var y: Int = 1 + 1
+```
+
+You can create a single expression out of multiple statements by wrapping them with `{}`. When statements are wrapped with `{}`, the result of the last statement will be the result of the overall expression.
+
+```
+println({
+  val x = 1 + 1
+  x + 1
+}) // 3
+```
+
+## Variables
+
+Variables are similar to values except you can re-assign results they hold. You can define variables with the `var` keyword.
+
+```
+var x = 1 + 1
+x = 3 // This compiles because "x" is declared with the "var" keyword.
+println(x) // 3
+```
+
+Just like values, you can also explicitly state types of variables like below.
+
+```
+var x: Int = 1 + 1
 ```
 
 ## Functions
 
-You can define functions that returns a given integer + 1 like below.
+Functions are expressions with parameters.
+
+You can define a function that returns a given integer + 1 like below.
 
 ```
 (x: Int) => x + 1
 ```
 
-Left hand side of `=>` is parameter(s) and right hand side of `=>` is body.
+Left hand side of `=>` is a list of parameters and right hand side of `=>` is an expression taking the parameters.
 
-Notice that the function has no `return` keyword. This is because, in Scala, the last expression of the function is automatically returned.
-
-You can also assign functions to variables.
+You can also name functions.
 
 ```
 val addOne = (x: Int) => x + 1
@@ -84,36 +115,25 @@ val getTheAnswer = () => 42
 println(getTheAnswer()) // 42
 ```
 
-If your function body spans across multiple lines, you must wrap them with `{}`.
-
-```
-val greet = (name: String) => {
-  println("Hello, " + name + "!")
-  println("How are you doing today?")
-}
-greet("Scala developer")
-// Hello, Scala developer!
-// How are you doing today?
-```
-
 We will cover functions in depth [later](anonymous-function-syntax.md).
 
 ## Methods
 
 Methods look and behave very similar to functions, but there are a few key differences between them.
 
-Methods are defined like below with the `def` keyword followed by its name, parameter(s), return type, and body.
+Methods are defined like below with the `def` keyword followed by its name, a list of parameter groups, return type, and an expression.
 
 ```
 def add(x: Int, y: Int): Int = x + y
 println(add(1, 2)) // 3
 ```
 
-Methods cannot be assigned to variables.
+Methods cannot be named with the `val` or `var` keywords.
 
 ```
 def add(x: Int, y: Int): Int = x + y
 val add2 = add // This does not compile.
+var add3 = add // This does not compile either.
 ```
 
 Methods can take multiple parameter groups.
@@ -123,7 +143,7 @@ def addThenMultiply(x: Int, y: Int)(multiplier: Int): Int = (x + y) * multiplier
 println(addThenMultiply(1, 2)(3)) // 9
 ```
 
-Or no parameter group at all.
+Or no parameter groups at all.
 
 ```
 def name: String = System.getProperty("name")
@@ -165,7 +185,11 @@ You can instantiate case classes without `new` keyword.
 val point = Point(1, 2)
 val anotherPoint = Point(1, 2)
 val yetAnotherPoint = Point(2, 2)
+```
 
+And they are compared by values.
+
+```
 if (point == anotherPoint) {
   println(point + " and " + anotherPoint + " are the same.")
 } else {
@@ -223,7 +247,7 @@ trait Greeter {
 }
 ```
 
-Traits can also have default implementation.
+Traits can also have default implementations.
 
 ```
 trait Greeter {
@@ -231,7 +255,7 @@ trait Greeter {
 }
 ```
 
-You can extend traits with the `extends` keyword and override their implementation with the `override` keyword.
+You can extend traits with the `extends` keyword and override their implementations with the `override` keyword.
 
 ```
 class DefaultGreeter extends Greeter
@@ -252,6 +276,8 @@ customGreeter.greet("Scala developer") // How are you, Scala developer?
 We will cover traits in depth [later](traits.md).
 
 ## Main Method
+
+Main method is an entry point of a program.
 
 Using objects, you can define main methods like below.
 
