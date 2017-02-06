@@ -35,7 +35,9 @@ println("Hello!") // Hello!
 println("Hello," + " world!") // Hello, world!
 ```
 
-You can name the result of an expression by using the `val` keyword.
+### Values
+
+You can name results of expressions by using the `val` keyword.
 
 ```
 val x = 1 + 1
@@ -57,16 +59,7 @@ Types of values can be inferred, but you can also explicitly state types like be
 val x: Int = 1 + 1
 ```
 
-You can create a single expression out of multiple statements by wrapping them with `{}`. When statements are wrapped with `{}`, the result of the last statement will be the result of the overall expression.
-
-```
-println({
-  val x = 1 + 1
-  x + 1
-}) // 3
-```
-
-## Variables
+### Variables
 
 Variables are similar to values except you can re-assign results they hold. You can define variables with the `var` keyword.
 
@@ -80,6 +73,19 @@ Just like values, you can also explicitly state types of variables like below.
 
 ```
 var x: Int = 1 + 1
+```
+
+### Blocks
+
+You can create a single expression out of multiple statements by wrapping them with `{}`. We call them blocks or block expressions.
+
+The result of the last statement of the block will be the result of the overall block.
+
+```
+println({
+  val x = 1 + 1
+  x + 1
+}) // 3
 ```
 
 ## Functions
