@@ -28,7 +28,7 @@ Expressions are computable statements.
 
 You can output results of expressions using `println`.
 
-```
+```tut
 println(1) // 1
 println(1 + 1) // 2
 println("Hello!") // Hello!
@@ -39,7 +39,7 @@ println("Hello," + " world!") // Hello, world!
 
 You can name results of expressions with the `val` keyword.
 
-```
+```tut
 val x = 1 + 1
 println(x * x) // 4
 ```
@@ -49,14 +49,14 @@ a value does not re-compute it.
 
 Values cannot be re-assigned.
 
-```
+```tut:nofail
 val x = 1 + 1
 x = 3 // This does not compile.
 ```
 
 Types of values can be inferred, but you can also explicitly state the type, like this:
 
-```
+```tut
 val x: Int = 1 + 1
 ```
 
@@ -64,7 +64,7 @@ val x: Int = 1 + 1
 
 Variables are like values, except you can re-assign them. You can define a variable with the `var` keyword.
 
-```
+```tut
 var x = 1 + 1
 x = 3 // This compiles because "x" is declared with the "var" keyword.
 println(x * x) // 9
@@ -72,7 +72,7 @@ println(x * x) // 9
 
 As with values, you can explicitly state the type if you want:
 
-```
+```tut
 var x: Int = 1 + 1
 ```
 
@@ -82,7 +82,7 @@ You can combine expressions by surrounding them with `{}`. We call this a block.
 
 The result of the last expression in the block is the result of the overall block, too.
 
-```
+```tut
 println({
   val x = 1 + 1
   x + 1
@@ -95,7 +95,7 @@ Functions are expressions that take parameters and compute a result.
 
 You can define a function that returns a given integer plus one:
 
-```
+```tut
 (x: Int) => x + 1
 ```
 
@@ -103,21 +103,21 @@ On the left of `=>` is a list of parameters. On the right is an expression invol
 
 You can also name functions.
 
-```
+```tut
 val addOne = (x: Int) => x + 1
 println(addOne(1)) // 2
 ```
 
 Functions may take multiple parameters.
 
-```
+```tut
 val add = (x: Int, y: Int) => x + y
 println(add(1, 2)) // 3
 ```
 
 Or it can take no parameters.
 
-```
+```tut
 val getTheAnswer = () => 42
 println(getTheAnswer()) // 42
 ```
@@ -130,14 +130,14 @@ Methods look and behave very similar to functions, but there are a few key diffe
 
 Methods are defined with the `def` keyword.  `def` is followed by a name, parameter lists, a return type, and a body.
 
-```
+```tut
 def add(x: Int, y: Int): Int = x + y
 println(add(1, 2)) // 3
 ```
 
 Methods cannot be named with the `val` or `var` keywords.
 
-```
+```tut:nofail
 def add(x: Int, y: Int): Int = x + y
 val add2 = add // This does not compile.
 var add3 = add // This does not compile either.
@@ -145,14 +145,14 @@ var add3 = add // This does not compile either.
 
 Methods can take multiple parameter lists.
 
-```
+```tut
 def addThenMultiply(x: Int, y: Int)(multiplier: Int): Int = (x + y) * multiplier
 println(addThenMultiply(1, 2)(3)) // 9
 ```
 
 Or no parameter lists at all.
 
-```
+```tut
 def name: String = System.getProperty("name")
 println("Hello, " + name + "!")
 ```
@@ -163,7 +163,7 @@ There are some other differences, but for now, you can think of them as somethin
 
 You can define classes with the `class` keyword followed by its name and constructor parameters.
 
-```
+```tut
 class Greeter(prefix: String, suffix: String) {
   def greet(name: String): Unit =
     println(prefix + name + suffix)
@@ -172,7 +172,7 @@ class Greeter(prefix: String, suffix: String) {
 
 You can make an instance of a class with the `new` keyword.
 
-```
+```tut
 val greeter = new Greeter("Hello, ", "!")
 greeter.greet("Scala developer") // Hello, Scala developer!
 ```
@@ -183,13 +183,13 @@ We will cover classes in depth [later](classes.md).
 
 Scala has a special type of class called a "case" class.  By default, case classes are immutable and compared by value. You can define case classes with the `case class` keywords.
 
-```
+```tut
 case class Point(x: Int, y: Int)
 ```
 
 You can instantiate case classes without `new` keyword.
 
-```
+```tut
 val point = Point(1, 2)
 val anotherPoint = Point(1, 2)
 val yetAnotherPoint = Point(2, 2)
@@ -197,7 +197,7 @@ val yetAnotherPoint = Point(2, 2)
 
 And they are compared by value.
 
-```
+```tut
 if (point == anotherPoint) {
   println(point + " and " + anotherPoint + " are the same.")
 } else {
@@ -221,7 +221,7 @@ Objects are single instances of their own definitions. You can think of them as 
 
 You can define objects with the `object` keyword.
 
-```
+```tut
 object IdFactory {
   private var counter = 0
   def create(): Int = {
@@ -233,7 +233,7 @@ object IdFactory {
 
 You can access an object by referring to its name.
 
-```
+```tut
 val newId: Int = IdFactory.create()
 println(newId) // 1
 val newerId: Int = IdFactory.create()
@@ -248,7 +248,7 @@ Traits are types containing certain fields and methods.  Multiple traits can be 
 
 You can define traits with `trait` keyword.
 
-```
+```tut
 trait Greeter {
   def greet(name: String): Unit
 }
@@ -256,7 +256,7 @@ trait Greeter {
 
 Traits can also have default implementations.
 
-```
+```tut
 trait Greeter {
   def greet(name: String): Unit =
     println("Hello, " + name + "!")
@@ -265,7 +265,7 @@ trait Greeter {
 
 You can extend traits with the `extends` keyword and override an implementation with the `override` keyword.
 
-```
+```tut
 class DefaultGreeter extends Greeter
 
 class CustomizableGreeter(prefix: String, postfix: String) extends Greeter {
@@ -293,7 +293,7 @@ argument, an array of strings.
 
 Using an object, you can define a main method as follows:
 
-```
+```tut
 object Main {
   def main(args: Array[String]): Unit =
     println("Hello, Scala developer!")
