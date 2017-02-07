@@ -26,7 +26,7 @@ It is a perfect way for anybody to experiment with a piece of Scala code anywher
 
 Expressions are computable statements.
 
-You can output results of expressions using the `println`.
+You can output results of expressions using `println`.
 
 ```
 println(1) // 1
@@ -211,7 +211,7 @@ if (point == yetAnotherPoint) {
 // Point(1,2) and Point(2,2) are different.
 ```
 
-There is a lot more to case classes that we'd like to introduce, and we are convinced you will fall in love with it! We will cover them in depth [later](case-classes.md).
+There is a lot more to case classes that we'd like to introduce, and we are convinced you will fall in love with them! We will cover them in depth [later](case-classes.md).
 
 ## Objects
 
