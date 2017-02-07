@@ -5,7 +5,7 @@ title: Anonymous Function Syntax
 disqus: true
 
 tutorial: scala-tour
-num: 6
+num: 7
 next-page: higher-order-functions
 previous-page: mixin-class-composition
 ---

@@ -5,7 +5,7 @@ title: Sequence Comprehensions
 disqus: true
 
 tutorial: scala-tour
-num: 16
+num: 17
 next-page: generic-classes
 previous-page: extractor-objects
 ---

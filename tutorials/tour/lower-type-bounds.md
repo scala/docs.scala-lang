@@ -5,7 +5,7 @@ title: Lower Type Bounds
 disqus: true
 
 tutorial: scala-tour
-num: 20
+num: 21
 next-page: inner-classes
 previous-page: upper-type-bounds
 ---

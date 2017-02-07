@@ -5,7 +5,7 @@ title: Implicit Conversions
 disqus: true
 
 tutorial: scala-tour
-num: 26
+num: 27
 next-page: polymorphic-methods
 previous-page: implicit-parameters
 ---

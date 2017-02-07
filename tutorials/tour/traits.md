@@ -5,7 +5,7 @@ title: Traits
 disqus: true
 
 tutorial: scala-tour
-num: 4
+num: 5
 next-page: mixin-class-composition
 previous-page: classes
 ---

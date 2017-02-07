@@ -5,7 +5,7 @@ title: Inner Classes
 disqus: true
 
 tutorial: scala-tour
-num: 21
+num: 22
 next-page: abstract-types
 previous-page: lower-type-bounds
 ---

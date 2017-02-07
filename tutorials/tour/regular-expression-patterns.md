@@ -5,7 +5,7 @@ title: Regular Expression Patterns
 disqus: true
 
 tutorial: scala-tour
-num: 14
+num: 15
 
 next-page: extractor-objects
 previous-page: xml-processing

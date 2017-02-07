@@ -5,7 +5,7 @@ title: Compound Types
 disqus: true
 
 tutorial: scala-tour
-num: 23
+num: 24
 next-page: explicitly-typed-self-references
 previous-page: abstract-types
 ---

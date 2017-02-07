@@ -5,7 +5,7 @@ title: Singleton Objects
 disqus: true
 
 tutorial: scala-tour
-num: 12
+num: 13
 
 next-page: xml-processing
 previous-page: pattern-matching

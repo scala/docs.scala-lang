@@ -5,7 +5,7 @@ title: Extractor Objects
 disqus: true
 
 tutorial: scala-tour
-num: 15
+num: 16
 next-page: sequence-comprehensions
 previous-page: regular-expression-patterns
 ---

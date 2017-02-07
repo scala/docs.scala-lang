@@ -5,7 +5,7 @@ title: Operators
 disqus: true
 
 tutorial: scala-tour
-num: 29
+num: 30
 next-page: automatic-closures
 previous-page: local-type-inference
 ---

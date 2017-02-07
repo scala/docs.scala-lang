@@ -5,7 +5,7 @@ title: XML Processing
 disqus: true
 
 tutorial: scala-tour
-num: 13
+num: 14
 next-page: regular-expression-patterns
 previous-page: singleton-objects
 ---

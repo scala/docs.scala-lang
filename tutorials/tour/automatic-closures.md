@@ -5,7 +5,7 @@ title: Automatic Type-Dependent Closure Construction
 disqus: true
 
 tutorial: scala-tour
-num: 30
+num: 31
 next-page: annotations
 previous-page: operators
 ---

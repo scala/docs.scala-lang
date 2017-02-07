@@ -5,7 +5,7 @@ title: Generic Classes
 disqus: true
 
 tutorial: scala-tour
-num: 17
+num: 18
 next-page: variances
 previous-page: sequence-comprehensions
 ---

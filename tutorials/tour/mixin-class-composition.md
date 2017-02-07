@@ -5,7 +5,7 @@ title: Mixin Class Composition
 disqus: true
 
 tutorial: scala-tour
-num: 5
+num: 6
 next-page: anonymous-function-syntax
 previous-page: traits
 ---

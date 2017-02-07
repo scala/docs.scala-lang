@@ -5,7 +5,7 @@ title: Named Parameters
 disqus: true
 
 tutorial: scala-tour
-num: 33
+num: 34
 previous-page: default-parameter-values
 ---
 

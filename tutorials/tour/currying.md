@@ -5,7 +5,7 @@ title: Currying
 disqus: true
 
 tutorial: scala-tour
-num: 9
+num: 10
 next-page: case-classes
 previous-page: nested-functions
 ---

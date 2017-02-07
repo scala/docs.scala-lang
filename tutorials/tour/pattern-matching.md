@@ -5,7 +5,7 @@ title: Pattern Matching
 disqus: true
 
 tutorial: scala-tour
-num: 11
+num: 12
 
 next-page: singleton-objects
 previous-page: case-classes

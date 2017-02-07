@@ -5,7 +5,7 @@ title: Higher-order Functions
 disqus: true
 
 tutorial: scala-tour
-num: 7
+num: 8
 next-page: nested-functions
 previous-page: anonymous-function-syntax
 ---
