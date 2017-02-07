@@ -16,6 +16,7 @@ title: SIP-NN - Make types behave like expressions
 ## Introduction
 Currently scala allows symbol operators (`-`, `*`, `~~>`, etc.) for both type names and definition names.
 Unfortunately, there is a 'surprise' element since the two differ in behaviour:
+
 1. Infix operator precedence and associativity: 
 The differences are detailed in the Scala spec. Infix types are 'mostly' left-associative, 
 while the expression operations are more intuitive with different precedence weights.
