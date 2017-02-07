@@ -137,12 +137,15 @@ http://stackoverflow.com/questions/23333882/scala-infix-type-aliasing-for-2-type
 ## Interactions with other language features
 
 #### Variance Annotation
-Variance annotation uses the `-` and `+` symbols to annotate contravariant and covariant subtyping, respectively. Introducing unary prefix types might lead to some confusion, more precisely with the `-` symbol.
+Variance annotation uses the `-` and `+` symbols to annotate contravariant and covariant subtyping, respectively. Introducing unary prefix types might lead to some confusion.
 E.g.
 ```scala
 trait Negate[A]
+trait Positive[A]
 type unary_-[A] = Negate[A] 
-trait MyTrait[B, -A <: -B] //contravariant A subtype upper-bounded by Negate[B]
+type unary_+[A] = Positive[A] 
+trait Contravariant[B, -A <: -B] //contravariant A subtype upper-bounded by Negate[B]
+trait Covariant[B, +A <: +B] //covariant A subtype upper-bounded by Positive[B]
 ```
 (Author's note: it seem very unlikely that such feature interaction will occur)  
 
