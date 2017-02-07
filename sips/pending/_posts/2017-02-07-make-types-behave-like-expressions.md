@@ -18,7 +18,7 @@ Currently scala allows symbol operators (`-`, `*`, `~~>`, etc.) for both type na
 Unfortunately, there is a 'surprise' element since the two differ in behaviour:
 
 1. **Infix operator precedence and associativity**: 
-The differences are detailed in the Scala spec. Infix types are 'mostly' left-associative, 
+Infix types are 'mostly' left-associative, 
 while the expression operations are more intuitive with different precedence weights.
 Please see [Infix Types](http://scala-lang.org/files/archive/spec/2.12/03-types.html#infix-types) and [Infix Operations](http://scala-lang.org/files/archive/spec/2.12/06-expressions.html#infix-operations) sections of the Scala specifications for more details. 
 
