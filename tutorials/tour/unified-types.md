@@ -25,20 +25,16 @@ The superclass of all classes `scala.Any` has two direct subclasses: `scala.AnyV
 Here is an example that demonstrates that strings, integers, characters, boolean values, and functions are all objects just like every other object:
 
 ```tut
-object UnifiedTypes extends App {
-  val list: List[Any] = List(
-    "a string",
-    732,  // an integer
-    'c',  // a character
-    true, // a boolean value
-    () => "an anonymous function returning a string"
-  )
+val list: List[Any] = List(
+  "a string",
+  732,  // an integer
+  'c',  // a character
+  true, // a boolean value
+  () => "an anonymous function returning a string"
+)
 
-  list.foreach(element => println(element))
-}
-```
-
-The program declares an application `UnifiedTypes` in form of a top-level [singleton object](singleton-objects.html) extending [`App`](http://www.scala-lang.org/api/2.12.x/scala/App.html) so that the body of it acts as a main function.
+list.foreach(element => println(element))
+````
 
 The application defines a variable `list` of type `List[Any]`. The list is initialized with elements of various types, but they all are instance of `scala.Any`, so you can add them to the list.
 
