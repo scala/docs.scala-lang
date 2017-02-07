@@ -17,7 +17,7 @@ title: SIP-NN - Make types behave like expressions
 Currently scala allows symbol operators (`-`, `*`, `~~>`, etc.) for both type names and definition names.
 Unfortunately, there is a 'surprise' element since the two differ in behaviour:
 
-1. **Infix operator precedence and associativity**: 
+* **Infix operator precedence and associativity**: 
 Infix types are 'mostly' left-associative, 
 while the expression operations are more intuitive with different precedence weights.
 Please see [Infix Types](http://scala-lang.org/files/archive/spec/2.12/03-types.html#infix-types) and [Infix Operations](http://scala-lang.org/files/archive/spec/2.12/06-expressions.html#infix-operations) sections of the Scala specifications for more details. 
@@ -52,7 +52,8 @@ object InfixTypePrecedence {
     //Result_Expected expands to Plus[Plus[N1,Prod[N2,N3]],N4]
 }
 ```
-2. **Prefix operators bracketless unary use**: While expressions have prefix unary operators, there are none for types. See the [Prefix Operations](http://scala-lang.org/files/archive/spec/2.12/06-expressions.html#prefix-operations) section of the Scala specification. 
+
+* **Prefix operators bracketless unary use**: While expressions have prefix unary operators, there are none for types. See the [Prefix Operations](http://scala-lang.org/files/archive/spec/2.12/06-expressions.html#prefix-operations) section of the Scala specification. 
 This is a lacking feature of the type language Scala offers. See also interactions of this feature with other Scala features, further down this text. 
 (Author's note: Not crucial as infix precedence, but good for completeness) 
 
