@@ -17,7 +17,7 @@ title: SIP-NN - Make types behave like expressions
 Currently scala allows symbol operators (`-`, `*`, `~~>`, etc.) for both type names and definition names.
 Unfortunately, there is a 'surprise' element since the two differ in behaviour:
 
-1. Infix operator precedence and associativity: 
+1. **Infix operator precedence and associativity**: 
 The differences are detailed in the Scala spec. Infix types are 'mostly' left-associative, 
 while the expression operations are more intuitive with different precedence weights.
 Please see [Infix Types](http://scala-lang.org/files/archive/spec/2.12/03-types.html#infix-types) and [Infix Operations](http://scala-lang.org/files/archive/spec/2.12/06-expressions.html#infix-operations) sections of the Scala specifications for more details. 
@@ -52,7 +52,37 @@ object InfixTypePrecedence {
     //Result_Expected expands to Plus[Plus[N1,Prod[N2,N3]],N4]
 }
 ```
-2. Prefix operators bracketless unary use:
+2. **Prefix operators bracketless unary use**: While expressions have prefix unary operators, there are none for types. See the [Prefix Operations](http://scala-lang.org/files/archive/spec/2.12/06-expressions.html#prefix-operations) section of the Scala specification. 
+This is a lacking feature of the type language Scala offers. See also interactions of this feature with other Scala features, further down this text. 
+(Author's note: Not crucial as infix precedence, but good for completeness) 
+
+**Example**:
+```scala
+object PrefixExpression {
+  case class Nummy(expand : String) {
+    def unary_- : Nummy = Nummy(s"-$this")
+    def unary_~ : Nummy = Nummy(s"~$this")
+    def unary_! : Nummy = Nummy(s"!$this")
+    def unary_+ : Nummy = Nummy(s"+$this")
+  }
+  object N extends Nummy("N")
+  val n1 = -N
+  val n2 = ~N
+  val n3 = !N
+  val n4 = +N
+}
+object NonExistingPrefixTypes {
+  trait unary_-[A]
+  trait unary_~[A]
+  trait unary_![A]
+  trait unary_+[A]
+  trait N
+  type N1 = -N //Not working
+  type N2 = ~N //Not working
+  type N3 = !N //Not working
+  type N4 = +N //Not working
+}
+```
 
 ---
 ## Proposal
@@ -62,6 +92,8 @@ The proposal is split into two; type infix precedence, and prefix unary types. N
 Make infix types conform to the same precedence and associativity traits as expression operations.
 (Author's note: I can copy-paste the specification and modify it, if it so required)
 ### Proposal, Part 2: Prefix unary types
+Add prefix types, exactly as specified for prefix expression. 
+(Author's note: I can copy-paste the specification and modify it, if it so required)
 
 ---
 
@@ -104,8 +136,37 @@ http://stackoverflow.com/questions/23333882/scala-infix-type-aliasing-for-2-type
 ## Interactions with other language features
 
 #### Variance Annotation
+Variance annotation uses the `-` and `+` symbols to annotate contravariant and covariant subtyping, respectively. Introducing unary prefix types might lead to some confusion, more precisely with the `-` symbol.
+E.g.
+```scala
+trait Negate[A]
+type unary_-[A] = Negate[A] 
+trait MyTrait[B, -A <: -B] //contravariant A subtype upper-bounded by Negate[B]
+```
+(Author's note: it seem very unlikely that such feature interaction will occur)  
 
 #### Negative Literal Types
+Negative literal types are annotated using the `-` symbol. This can lead to the following confusion:
+```scala
+trait Negate[A]
+type unary_-[A] = Negate[A] 
+trait MyTrait[B]
+
+type MinusFortyTwo = MyTrait[-42] 
+type NegateFortyTwo = MyTrait[Negate[42]]
+```
+The above example demonstrates a case of two types `MinusFortyTwo` and `NegateFortyTwo` which are different. They may be equivalent in view (implicit conversion between the two type instances), but they are not equal.
+
+Note: It is not possible to annotate a positive literal type in Scala (checked both in TLS and Dotty):
+```scala
+val a : 42 = +42 //works
+val b : -42 = -42 //works
+val c : +42 = 42 //error: ';' expected but integer literal found 
+```
+This means that if unary prefix types are added, then `+42` will be a type expansion of `unary_+[42]`.
+
+#### Scala meta
+Open question how this SIP affects `scala-meta`.
 
 ---
 
