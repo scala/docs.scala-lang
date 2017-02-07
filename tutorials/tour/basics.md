@@ -14,13 +14,13 @@ In this page, we will cover basics of Scala.
 
 ## Trying Scala in the Browser
 
-You can run Scala in your browser by using [ScalaFiddle](https://scalafiddle.io).
+You can run Scala in your browser with [ScalaFiddle](https://scalafiddle.io).
 
 1. Go to https://scalafiddle.io.
-2. Copy and paste `println("Hello, world!")` to the left pane.
-3. Hit "Run" button and see it prints "Hello, world!" on the right pane.
+2. Paste `println("Hello, world!")` in the left pane.
+3. Hit "Run" button. Output appears in the right pane.
 
-It is a perfect way for anybody to experiment with a piece of Scala code anywhere, anytime!
+This is an easy, zero-setup way to experiment with pieces of Scala code.
 
 ## Expressions
 
@@ -37,14 +37,15 @@ println("Hello," + " world!") // Hello, world!
 
 ### Values
 
-You can name results of expressions by using the `val` keyword.
+You can name results of expressions with the `val` keyword.
 
 ```
 val x = 1 + 1
-println(x) // 2
+println(x * x) // 4
 ```
 
-Named results are called values. For example, in above case, `x` is called a value. Values only hold results of expressions, so they will not re-compute expressions when referenced.
+Named results, such as `x` here, are called values. Referencing
+a value does not re-compute it.
 
 Values cannot be re-assigned.
 
@@ -53,7 +54,7 @@ val x = 1 + 1
 x = 3 // This does not compile.
 ```
 
-Types of values can be inferred, but you can also explicitly state types like below.
+Types of values can be inferred, but you can also explicitly state the type, like this:
 
 ```
 val x: Int = 1 + 1
@@ -61,15 +62,15 @@ val x: Int = 1 + 1
 
 ### Variables
 
-Variables are similar to values except you can re-assign results they hold. You can define variables with the `var` keyword.
+Variables are like values, except you can re-assign them. You can define a variable with the `var` keyword.
 
 ```
 var x = 1 + 1
 x = 3 // This compiles because "x" is declared with the "var" keyword.
-println(x) // 3
+println(x * x) // 9
 ```
 
-Just like values, you can also explicitly state types of variables like below.
+As with values, you can explicitly state the type if you want:
 
 ```
 var x: Int = 1 + 1
@@ -77,9 +78,9 @@ var x: Int = 1 + 1
 
 ### Blocks
 
-You can create a single expression out of multiple statements by wrapping them with `{}`. We call them blocks or block expressions.
+You can combine expressions by surrounding them with `{}`. We call this a block.
 
-The result of the last statement of the block will be the result of the overall block.
+The result of the last expression in the block is the result of the overall block, too.
 
 ```
 println({
@@ -90,15 +91,15 @@ println({
 
 ## Functions
 
-Functions are expressions with parameters.
+Functions are expressions that take parameters and compute a result.
 
-You can define a function that returns a given integer + 1 like below.
+You can define a function that returns a given integer plus one:
 
 ```
 (x: Int) => x + 1
 ```
 
-Left hand side of `=>` is a list of parameters and right hand side of `=>` is an expression taking the parameters.
+On the left of `=>` is a list of parameters. On the right is an expression involving the parameters.
 
 You can also name functions.
 
@@ -107,7 +108,7 @@ val addOne = (x: Int) => x + 1
 println(addOne(1)) // 2
 ```
 
-Or it can take multiple parameters.
+Functions may take multiple parameters.
 
 ```
 val add = (x: Int, y: Int) => x + y
@@ -127,7 +128,7 @@ We will cover functions in depth [later](anonymous-function-syntax.md).
 
 Methods look and behave very similar to functions, but there are a few key differences between them.
 
-Methods are defined like below with the `def` keyword followed by its name, a list of parameter groups, return type, and an expression.
+Methods are defined with the `def` keyword.  `def` is followed by a name, parameter lists, a return type, and a body.
 
 ```
 def add(x: Int, y: Int): Int = x + y
@@ -142,14 +143,14 @@ val add2 = add // This does not compile.
 var add3 = add // This does not compile either.
 ```
 
-Methods can take multiple parameter groups.
+Methods can take multiple parameter lists.
 
 ```
 def addThenMultiply(x: Int, y: Int)(multiplier: Int): Int = (x + y) * multiplier
 println(addThenMultiply(1, 2)(3)) // 9
 ```
 
-Or no parameter groups at all.
+Or no parameter lists at all.
 
 ```
 def name: String = System.getProperty("name")
@@ -163,12 +164,13 @@ There are some other differences, but for now, you can think of them as somethin
 You can define classes with the `class` keyword followed by its name and constructor parameters.
 
 ```
-class Greeter(prefix: String, postfix: String) {
-  def greet(name: String): Unit = println(prefix + name + postfix)
+class Greeter(prefix: String, suffix: String) {
+  def greet(name: String): Unit =
+    println(prefix + name + suffix)
 }
 ```
 
-You can instantiate classes with the `new` keyword.
+You can make an instance of a class with the `new` keyword.
 
 ```
 val greeter = new Greeter("Hello, ", "!")
@@ -179,7 +181,7 @@ We will cover classes in depth [later](classes.md).
 
 ## Case Classes
 
-Scala has a special type of class called case class that's immutable and compared by value by default. You can define case classes with the `case class` keyword.
+Scala has a special type of class called a "case" class.  By default, case classes are immutable and compared by value. You can define case classes with the `case class` keywords.
 
 ```
 case class Point(x: Int, y: Int)
@@ -193,7 +195,7 @@ val anotherPoint = Point(1, 2)
 val yetAnotherPoint = Point(2, 2)
 ```
 
-And they are compared by values.
+And they are compared by value.
 
 ```
 if (point == anotherPoint) {
@@ -222,7 +224,6 @@ You can define objects with the `object` keyword.
 ```
 object IdFactory {
   private var counter = 0
-
   def create(): Int = {
     counter += 1
     counter
@@ -230,7 +231,7 @@ object IdFactory {
 }
 ```
 
-You can access objects by referring its name.
+You can access an object by referring to its name.
 
 ```
 val newId: Int = IdFactory.create()
@@ -243,7 +244,7 @@ We will cover objects in depth [later](singleton-objects.md).
 
 ## Traits
 
-Traits define specification of types as signature of fields and methods.
+Traits are types containing certain fields and methods.  Multiple traits can be combined.
 
 You can define traits with `trait` keyword.
 
@@ -257,11 +258,12 @@ Traits can also have default implementations.
 
 ```
 trait Greeter {
-  def greet(name: String): Unit = println("Hello, " + name + "!")
+  def greet(name: String): Unit =
+    println("Hello, " + name + "!")
 }
 ```
 
-You can extend traits with the `extends` keyword and override their implementations with the `override` keyword.
+You can extend traits with the `extends` keyword and override an implementation with the `override` keyword.
 
 ```
 class DefaultGreeter extends Greeter
@@ -279,16 +281,21 @@ val customGreeter = new CustomizableGreeter("How are you, ", "?")
 customGreeter.greet("Scala developer") // How are you, Scala developer?
 ```
 
+Here, `DefaultGreeter` extends only a single trait, but it could extend multiple traits.
+
 We will cover traits in depth [later](traits.md).
 
 ## Main Method
 
-Main method is an entry point of a program.
+The main method is an entry point of a program.  The Java Virtual
+Machine requires a main method to be named `main` and take one
+argument, an array of strings.
 
-Using objects, you can define main methods like below.
+Using an object, you can define a main method as follows:
 
 ```
 object Main {
-  def main(args: Array[String]): Unit = println("Hello, Scala developer!")
+  def main(args: Array[String]): Unit =
+    println("Hello, Scala developer!")
 }
 ```
