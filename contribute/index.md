@@ -1,6 +1,8 @@
 ---
-layout: page
 title: Contribute
+layout: inner-page-no-masthead
+permalink: /contribute/
+includeTOC: true
 ---
 
 The Scala programming language is an open source project with a very
@@ -26,37 +28,37 @@ Coordination of contribution efforts takes place on the
 <div class="container">
 <div class="row">
 <div class="span4 doc-block">
-<h4><a href="./documentation.html">Documentation</a></h4>
-<p><a href="./scala-standard-library-api-documentation.html">Scaladoc (API)</a>,
+<h4><a href="/contribute/documentation/">Documentation</a></h4>
+<p><a href="/contribute/scala-standard-library-api-documentation/">Scaladoc (API)</a>,
 <a href="http://docs.scala-lang.org/contribute.html">docs.scala-lang.org</a> and 
 <a href="https://github.com/scala/scala-lang">scala-lang.org</a>.</p>
 </div>
 <div class="span4 doc-block">
-<h4><a href="./guide.html">Bug Fixes</a></h4>
-<p>Issues with the tools, core libraries and compiler. Also you can help us by <a href="./bug-reporting-guide.html">reporting bugs</a></p>
+<h4><a href="/contribute/guide/">Bug Fixes</a></h4>
+<p>Issues with the tools, core libraries and compiler. Also you can help us by <a href="/contribute/bug-reporting-guide/">reporting bugs</a></p>
 </div>
 </div>
 
 <div class="row">
 <div class="span4 doc-block">
-<h4><a href="./codereviews.html">Code Reviews</a></h4>
+<h4><a href="/contribute/codereviews/">Code Reviews</a></h4>
 <p>Review pull requests against <a href="https://github.com/scala/scala/pulls">scala/scala</a>, 
 <a href="https://github.com/scala/scala-lang/pulls">scala/scala-lang</a>, 
 <a href="https://github.com/scala/scala.github.com/pulls">scala/scala.github.com</a> and others.</p>
 </div>
 <div class="span4 doc-block">
-<h4><a href="./corelibs.html">Core Libraries</a></h4>
+<h4><a href="/contribute/corelibs/">Core Libraries</a></h4>
 <p>Update and expand the capabilities of the core (and associated) Scala libraries.</p>
 </div>
 </div>
 
 <div class="row">
 <div class="span4 doc-block">
-<h4><a href="./tools.html">IDE and Build Tools</a></h4>
+<h4><a href="/contribute/tools/">IDE and Build Tools</a></h4>
 <p>Enhance the Scala tools with features for build tools, IDE plug-ins and other related projects.</p>
 </div>
 <div class="span4 doc-block">
-<h4><a href="./guide.html#larger-changes-new-features">Compiler/Language</a></h4>
+<h4><a href="/contribute/guide/#larger-changes-new-features">Compiler/Language</a></h4>
 <p>Larger language features and compiler enhancements including language specification and SIPs.</p>
 </div>
 </div>
@@ -109,7 +111,7 @@ with their own maintainers and community of contributors.  Helping out
 one of these projects is another way to help Scala.  Consider lending
 on a hand on a project you're already using.  Or, to find out about
 other projects, see the
-[Libraries and Tools section](../community/index.html#community-libraries-and-tools)
+[Libraries and Tools section](../community/#community-libraries-and-tools)
 on our Community page.
 
 ### Scala Community Build

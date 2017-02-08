@@ -1,6 +1,8 @@
 ---
-layout: page
 title: Bug Reporting
+layout: inner-page-no-masthead
+permalink: /contribute/bug-reporting-guide/
+includeTOC: true
 ---
 
 The Scala project tracker is located at [http://issues.scala-lang.org](http://issues.scala-lang.org). Before you submit a bug make sure that it is certainly a bug by following instructions in *Is it a Bug?*.

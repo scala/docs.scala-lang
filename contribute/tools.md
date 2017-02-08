@@ -1,12 +1,14 @@
 ---
-layout: page
 title: IDE and Build Tool Contributions
+layout: inner-page-no-masthead
+permalink: /contribute/tools/
+includeTOC: true
 ---
 ## Contributing to IDE and Build Tools
 
 The links below are to a number of Scala build and IDE related projects that are important in the larger Scala space, and which welcome contributions.
 
-Since these tools are in separate projects, they may (and likely will) have their own rules and guidelines for contributing. The [Hacker Guide](./hacker-guide.html) and [Bug-fixing](guide.html) pages will likely have much in the way of related information on how to contribute to these projects, and are recommended reading. You should also check the README.md and (if it's present) CONTRIBUTING.md files from the actual projects before contributing to them.
+Since these tools are in separate projects, they may (and likely will) have their own rules and guidelines for contributing. The [Hacker Guide](/contribute/hacker-guide/) and [Bug-fixing](/contribute/guide/) pages will likely have much in the way of related information on how to contribute to these projects, and are recommended reading. You should also check the README.md and (if it's present) CONTRIBUTING.md files from the actual projects before contributing to them.
 
 Typically, issues for these projects will be reported and kept in the github project issue tracker for that project rather than in the Scala project JIRA.
 Many of these projects have a <a href="https://gitter.im">gitter</a> channel (usually listed in the README or CONTRIBUTING documents) which is a great place to discuss proposed work before commencing.
@@ -17,7 +19,7 @@ if you would like to help revive them.
 
 ### Broken Links?
 
-Stuff changes. Found a broken link or something that needs updating on this page? Please, consider [submitting a documentation pull request](./documentation.html#updating-scala-langorg) to fix it. 
+Stuff changes. Found a broken link or something that needs updating on this page? Please, consider [submitting a documentation pull request](/contribute/documentation/#updating-scala-langorg) to fix it. 
 
 ### Projects
 
@@ -39,7 +41,7 @@ Stuff changes. Found a broken link or something that needs updating on this page
 <p><a href="http://www.scala-lang.org/api">Home</a> | 
 <a href="https://issues.scala-lang.org/issues/?jql=status%20%3D%20Open%20AND%20component%20%3D%20%22Scaladoc%20Tool%22">Issues</a> | 
 <a href="https://github.com/scala/scala#welcome">ReadMe</a> | 
-<a href="./guide.html">Contributing</a></p>
+<a href="/contribute/guide/">Contributing</a></p>
 </div>
 </div>
 
@@ -114,7 +116,7 @@ The following projects are important to the Scala community but are particularly
 <p>Scala Decoder (part of scala/scala)</p>
 <p><a href="https://issues.scala-lang.org/issues/?jql=status%20%3D%20Open%20AND%20text%20~%20%22scalap%22">Issues</a> | 
 <a href="https://github.com/scala/scala#welcome">ReadMe</a> | 
-<a href="./guide.html">Contributing</a></p>
+<a href="/contribute/guide.html">Contributing</a></p>
 </div>
 <div class="span4 doc-block">
 <a href="https://github.com/mdr/scalariform"><img src="/resources/img/white-line.png" alt="white line" width="50px" height="50px"/><h4>Scalariform</h4></a>
