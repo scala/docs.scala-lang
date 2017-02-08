@@ -25,84 +25,14 @@ how to efficiently report a bug.
 Coordination of contribution efforts takes place on the 
 [scala-internals Google group](./scala-internals.html).
 
-<div class="container">
-<div class="row">
-<div class="span4 doc-block">
-<h4><a href="/contribute/documentation/">Documentation</a></h4>
-<p><a href="/contribute/scala-standard-library-api-documentation/">Scaladoc (API)</a>,
-<a href="http://docs.scala-lang.org/contribute.html">docs.scala-lang.org</a> and 
-<a href="https://github.com/scala/scala-lang">scala-lang.org</a>.</p>
-</div>
-<div class="span4 doc-block">
-<h4><a href="/contribute/guide/">Bug Fixes</a></h4>
-<p>Issues with the tools, core libraries and compiler. Also you can help us by <a href="/contribute/bug-reporting-guide/">reporting bugs</a></p>
-</div>
-</div>
-
-<div class="row">
-<div class="span4 doc-block">
-<h4><a href="/contribute/codereviews/">Code Reviews</a></h4>
-<p>Review pull requests against <a href="https://github.com/scala/scala/pulls">scala/scala</a>, 
-<a href="https://github.com/scala/scala-lang/pulls">scala/scala-lang</a>, 
-<a href="https://github.com/scala/scala.github.com/pulls">scala/scala.github.com</a> and others.</p>
-</div>
-<div class="span4 doc-block">
-<h4><a href="/contribute/corelibs/">Core Libraries</a></h4>
-<p>Update and expand the capabilities of the core (and associated) Scala libraries.</p>
-</div>
-</div>
-
-<div class="row">
-<div class="span4 doc-block">
-<h4><a href="/contribute/tools/">IDE and Build Tools</a></h4>
-<p>Enhance the Scala tools with features for build tools, IDE plug-ins and other related projects.</p>
-</div>
-<div class="span4 doc-block">
-<h4><a href="/contribute/guide/#larger-changes-new-features">Compiler/Language</a></h4>
-<p>Larger language features and compiler enhancements including language specification and SIPs.</p>
-</div>
-</div>
-</div>
+{% include column-list-of-items.html collection=site.contribute_resources %}
 
 ### Community Tickets
 
 The following links provide starting points for
 various contributor activities:
 
-<div class="container">
-<div class="row">
-<div class="span4 doc-block">
-<h4><a href="https://issues.scala-lang.org/issues/?filter=13003">Documentation</a></h4>
-<p>Help augment or correct the documentation.</p>
-</div>
-<div class="span4 doc-block">
-<h4><a href="https://issues.scala-lang.org/issues/?filter=13001">Core Libraries</a></h4>
-<p>Community bugs and enhancements on the core libs.</p>
-</div>
-</div>
-
-<div class="row">
-<div class="span4 doc-block">
-<h4><a href="https://issues.scala-lang.org/issues/?filter=13002">Tools</a></h4>
-<p>Help with the Scala tool chain.</p>
-</div>
-<div class="span4 doc-block">
-<h4><a href="https://issues.scala-lang.org/issues/?filter=13000">Compiler</a></h4>
-<p>Ready for a challenge? Here's the compiler bugs.</p>
-</div>
-</div>
-
-<div class="row">
-<div class="span4 doc-block">
-<h4><a href="https://issues.scala-lang.org/issues/?filter=13004">Bugs</a></h4>
-<p>All bugs marked with the label <em>community</em>.</p>
-</div>
-<div class="span4 doc-block">
-<h4><a href="https://issues.scala-lang.org/issues/?filter=13009">All Issues</a></h4>
-<p>Bugs + Enhancements marked with the label <em>community</em>.</p>
-</div>
-</div>
-</div>
+{% include column-list-of-items.html collection=site.contribute_community_tickets %}
 
 ### Tools and Libraries
 

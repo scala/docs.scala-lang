@@ -3,6 +3,90 @@ title: IDE and Build Tool Contributions
 layout: inner-page-no-masthead
 permalink: /contribute/tools/
 includeTOC: true
+
+# Projects list:
+projects:
+  - title: sbt
+    description: Interactive build tool.
+    icon: http://www.scala-sbt.org/assets/typesafe_sbt_svg.svg
+    link: https://github.com/sbt/sbt
+    homeLink: http://www.scala-sbt.org/
+    issuesLink: https://github.com/sbt/sbt#issues-and-pull-requests
+    readmeLink: https://github.com/sbt/sbt/blob/0.13/README.md
+    contributingLink: https://github.com/sbt/sbt/blob/0.13/CONTRIBUTING.md
+  - title: Scaladoc Tool
+    description: (Contribute through scala/scala)
+    icon: https://avatars1.githubusercontent.com/u/57059?v=3&s=200
+    link: https://github.com/scala/scala
+    homeLink: http://www.scala-lang.org/api
+    issuesLink: https://issues.scala-lang.org/issues/?jql=status%20%3D%20Open%20AND%20component%20%3D%20%22Scaladoc%20Tool%22
+    readmeLink: https://github.com/scala/scala#welcome
+    contributingLink: http://scala-lang.org/contribute/guide.html
+  - title: Scala IDE
+    description: Interactive build tool.
+    icon: https://avatars2.githubusercontent.com/u/1026788?v=3&s=200
+    link: https://github.com/scala-ide/scala-ide
+    homeLink: http://scala-ide.org/
+    issuesLink: http://scala-ide-portfolio.assembla.com/spaces/scala-ide/support/tickets
+    readmeLink: https://github.com/scala-ide/scala-ide/blob/master/README.md
+    contributingLink: https://github.com/scala-ide/scala-ide/blob/master/CONTRIBUTING.md
+  - title: DBuild
+    description: Multi-project build tool.
+    icon: https://avatars3.githubusercontent.com/u/784923?v=3&s=200
+    link: https://github.com/typesafehub/dbuild
+    homeLink: http://typesafehub.github.io/dbuild
+    issuesLink: https://github.com/typesafehub/dbuild/issues
+    readmeLink: https://github.com/typesafehub/dbuild/blob/master/README.md
+    contributingLink: https://github.com/typesafehub/dbuild/blob/master/README.md#get-involved
+  - title: Partest
+    description: Scala Compiler/Library Testing
+    icon: https://avatars1.githubusercontent.com/u/57059?v=3&s=200
+    link: https://github.com/scala/scala-partest
+    homeLink: http://docs.scala-lang.org/tutorials/partest-guide.html
+    issuesLink: https://github.com/scala/scala-partest/issues
+    readmeLink: https://github.com/scala/scala-partest/blob/master/README.md
+    contributingLink: 
+  - title: Ensime
+    description: Scala Support for Text Editors
+    icon: https://avatars0.githubusercontent.com/u/5089042?v=3&s=200
+    link: https://github.com/ensime/ensime-server
+    homeLink: http://ensime.github.io/
+    issuesLink: https://github.com/ensime/ensime-server/issues
+    readmeLink: https://github.com/ensime/ensime-server/blob/2.0/README.md
+    contributingLink: https://ensime.github.io/contributing/
+  - title: Scoverage
+    description: Scala code coverage tool
+    icon: https://avatars1.githubusercontent.com/u/5998302?v=3&s=200
+    link: https://github.com/scoverage/scalac-scoverage-plugin
+    homeLink: http://scoverage.org/
+    issuesLink: https://github.com/scoverage/scalac-scoverage-plugin/issues
+    readmeLink: https://github.com/scoverage/scalac-scoverage-plugin/blob/master/README.md
+    contributingLink: https://groups.google.com/forum/#!forum/scala-code-coverage-tool
+  - title: Abide
+    description: Lint tooling for Scala
+    icon: https://avatars1.githubusercontent.com/u/57059?v=3&s=200
+    link: https://github.com/scala/scala-abide
+    homeLink: https://github.com/scala/scala-abide#abide--lint-tooling-for-scala
+    issuesLink: https://github.com/scala/scala-abide/issues
+    readmeLink: https://github.com/scala/scala-abide/blob/master/README.md
+    contributingLink: https://github.com/scala/scala-abide#extending-abide  
+
+projectsInNeed:
+  - title: Scalap
+    description: Scala Decoder (part of scala/scala)
+    icon: https://avatars1.githubusercontent.com/u/57059?v=3&s=200
+    link: https://github.com/scala/scala
+    homeLink: 
+    issuesLink: https://issues.scala-lang.org/issues/?jql=status%20%3D%20Open%20AND%20text%20~%20%22scalap%22
+    readmeLink: https://github.com/scala/scala#welcome
+    contributingLink: https://github.com/sbt/sbt/blob/0.13/CONTRIBUTING.md
+  - title: Scaladoc Tool
+    description: (Contribute through scala/scala)
+    icon: /resources/img/white-line.png
+    link: https://github.com/mdr/scalariform
+    homeLink: https://github.com/mdr/scalariform/wiki/Command-line-tool
+    issuesLink: https://github.com/mdr/scalariform/issues
+    readmeLink: https://github.com/mdr/scalariform/blob/master/README.rst
 ---
 ## Contributing to IDE and Build Tools
 
@@ -23,109 +107,10 @@ Stuff changes. Found a broken link or something that needs updating on this page
 
 ### Projects
 
-<div class="container">
-<div class="row">
-<div class="span4 doc-block">
-<a href="https://github.com/sbt/sbt"><img src="http://www.scala-sbt.org/assets/typesafe_sbt_svg.svg" alt="sbt logo" width="100px" height="50px"/>
-<h4>sbt</h4></a>
-<p>Interactive build tool.</p>
-<p><a href="http://www.scala-sbt.org/">Home</a> | 
-<a href="https://github.com/sbt/sbt#issues-and-pull-requests">Issues</a> | 
-<a href="https://github.com/sbt/sbt/blob/0.13/README.md">ReadMe</a> | 
-<a href="https://github.com/sbt/sbt/blob/0.13/CONTRIBUTING.md">Contributing</a></p>
-</div>
-<div class="span4 doc-block">
-<a href="https://github.com/scala/scala"><img src="https://avatars1.githubusercontent.com/u/57059?v=3&s=200" alt="scala logo" width="50px" height="50px"/>
-<h4>Scaladoc Tool</h4></a>
-<p>(Contribute through scala/scala)</p>
-<p><a href="http://www.scala-lang.org/api">Home</a> | 
-<a href="https://issues.scala-lang.org/issues/?jql=status%20%3D%20Open%20AND%20component%20%3D%20%22Scaladoc%20Tool%22">Issues</a> | 
-<a href="https://github.com/scala/scala#welcome">ReadMe</a> | 
-<a href="/contribute/guide/">Contributing</a></p>
-</div>
-</div>
-
-<div class="row">
-<div class="span4 doc-block">
-<a href="https://github.com/scala-ide/scala-ide"><img src="https://avatars2.githubusercontent.com/u/1026788?v=3&s=200" alt="scala IDE logo" width="50px" height="50px"/><h4>Scala IDE</h4></a>
-<p>The Eclipse Scala IDE project.</p>
-<p><a href="http://scala-ide.org/">Home</a> | 
-<a href="http://scala-ide-portfolio.assembla.com/spaces/scala-ide/support/tickets">Issues</a> | 
-<a href="https://github.com/scala-ide/scala-ide/blob/master/README.md">ReadMe</a> | 
-<a href="https://github.com/scala-ide/scala-ide/blob/master/CONTRIBUTING.md">Contributing</a></p>
-</div>
-<div class="span4 doc-block">
-<a href="https://github.com/typesafehub/dbuild"><img src="https://avatars3.githubusercontent.com/u/784923?v=3&s=200" alt="dbuild logo" width="50px" height="50px"/><h4>DBuild</h4></a>
-<p>Multi-project build tool.</p>
-<p><a href="http://typesafehub.github.io/dbuild">Home</a> | 
-<a href="https://github.com/typesafehub/dbuild/issues">Issues</a> | 
-<a href="https://github.com/typesafehub/dbuild/blob/master/README.md">ReadMe</a> | 
-<a href="https://github.com/typesafehub/dbuild/blob/master/README.md#get-involved">Contributing</a></p>
-</div>
-</div>
-
-<div class="row">
-<div class="span4 doc-block">
-<a href="https://github.com/scala/scala-partest"><img src="https://avatars1.githubusercontent.com/u/57059?v=3&s=200" alt="scala logo" width="50px" height="50px"/>
-<h4>Partest</h4></a>
-<p>Scala Compiler/Library Testing</p>
-<p><a href="http://docs.scala-lang.org/tutorials/partest-guide.html">Home</a> | 
-<a href="https://github.com/scala/scala-partest/issues">Issues</a> | 
-<a href="https://github.com/scala/scala-partest/blob/master/README.md">ReadMe</a></p>
-</div>
-<div class="span4 doc-block">
-<a href="https://github.com/ensime/ensime-server"><img src="https://avatars0.githubusercontent.com/u/5089042?v=3&s=200" alt="ensime logo" width="50px" height="50px"/><h4>Ensime</h4></a>
-<p>Scala Support for Text Editors</p>
-<p><a href="http://ensime.github.io">Home</a> | 
-<a href="https://github.com/ensime/ensime-server/issues">Issues</a> | 
-<a href="https://github.com/ensime/ensime-server/blob/2.0/README.md">ReadMe</a> | 
-<a href="https://ensime.github.io/contributing/">Contributing</a></p>
-</div>
-</div>
-
-<div class="row">
-<div class="span4 doc-block">
-<a href="https://github.com/scoverage/scalac-scoverage-plugin"><img src="https://avatars1.githubusercontent.com/u/5998302?v=3&amp;s=200" alt="scoverage logo" width="50px" height="50px"/><h4>Scoverage</h4></a>
-<p>Scala code coverage tool</p>
-<p><a href="http://scoverage.org">Home</a> | 
-<a href="https://github.com/scoverage/scalac-scoverage-plugin/issues">Issues</a> | 
-<a href="https://github.com/scoverage/scalac-scoverage-plugin/blob/master/README.md">ReadMe</a> | 
-<a href="https://groups.google.com/forum/#!forum/scala-code-coverage-tool">Contributing</a></p>
-</div>
-<div class="span4 doc-block">
-<a href="https://github.com/scala/scala-abide"><img src="https://avatars1.githubusercontent.com/u/57059?v=3&s=200" alt="scala logo" width="50px" height="50px"/>
-<h4>Abide</h4></a>
-<p>Lint tooling for Scala</p>
-<p><a href="https://github.com/scala/scala-abide#abide--lint-tooling-for-scala">Home</a> | 
-<a href="https://github.com/scala/scala-abide/issues">Issues</a> | 
-<a href="https://github.com/scala/scala-abide/blob/master/README.md">ReadMe</a> | 
-<a href="https://github.com/scala/scala-abide#extending-abide">Contributing</a></p>
-</div>
-</div>
-</div>
+{% include contributions-projects-list.html collection=page.projects %}
 
 ### Projects in Particular Need
 
 The following projects are important to the Scala community but are particularly in need of contributors to continue their development.
 
-<div class="container">
-<div class="row">
-<div class="span4 doc-block">
-<a href="https://github.com/scala/scala"><img src="https://avatars1.githubusercontent.com/u/57059?v=3&s=200" alt="scala logo" width="50px" height="50px"/>
-<h4>Scalap</h4></a>
-<p>Scala Decoder (part of scala/scala)</p>
-<p><a href="https://issues.scala-lang.org/issues/?jql=status%20%3D%20Open%20AND%20text%20~%20%22scalap%22">Issues</a> | 
-<a href="https://github.com/scala/scala#welcome">ReadMe</a> | 
-<a href="/contribute/guide.html">Contributing</a></p>
-</div>
-<div class="span4 doc-block">
-<a href="https://github.com/mdr/scalariform"><img src="/resources/img/white-line.png" alt="white line" width="50px" height="50px"/><h4>Scalariform</h4></a>
-<p>Scala code formatter</p>
-<p><a href="https://github.com/mdr/scalariform/wiki/Command-line-tool">Home</a> | 
-<a href="https://github.com/mdr/scalariform/issues">Issues</a> | 
-<a href="https://github.com/mdr/scalariform/blob/master/README.rst">ReadMe</a> </p>
-</div>
-</div>
-</div>
- 
- 
+{% include contributions-projects-list.html collection=page.projectsInNeed %}
