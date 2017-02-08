@@ -51,3 +51,25 @@ Function1[Int, Int]
 Function2[Int, Int, String]
 Function0[String]
 ```
+
+The following example shows how to use anonymous function of the beginning of this page
+
+```tut
+object AnonymousFunction {
+
+  /**
+   * Method to increment an integer by one.
+   */
+  val plusOne = (x: Int) => x + 1
+
+  /**
+   * Main method
+   * @param args application arguments
+   */
+  def main(args: Array[String]) {
+
+    println(plusOne(0)) // Prints: 1
+
+  }
+}
+```
