@@ -99,6 +99,9 @@ Add prefix types, exactly as specified for prefix expression.
 ---
 
 ## Motivating examples
+#### Dotty infix type similarity
+Dotty infix type associativity and precedence seem to be the same as expressions (Author's note: I have seen no documentation of this, but checked the implementation for a simple example `implicitly[(N1 + (N2 / N3) + N4) =:= (N1 + N2 / N3 + N4)]`).
+Dotty has no prefix types.
 
 #### Singleton-ops library
 The [singleton-ops library](https://github.com/fthomas/singleton-ops) with [Typelevel Scala](https://github.com/typelevel/scala) (which implemented [SIP-23](http://docs.scala-lang.org/sips/pending/42.type.html)) enables developers to express literal type operations more intuitively. 
