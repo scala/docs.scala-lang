@@ -1,6 +1,8 @@
 ---
-layout: page
 title: Scala Internals Mailing List
+layout: inner-page-no-masthead
+permalink: /contribute/scala-internals/
+includeTOC: true
 ---
 
 ## scala-internals

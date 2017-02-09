@@ -1,6 +1,8 @@
 ---
-layout: page
 title: Running the Test Suite
+layout: inner-page-no-masthead
+permalink: /contribute/partest-guide/
+includeTOC: true
 ---
 
 Partest is a custom parallel testing tool that we use to run the test suite for the Scala compiler and library. Go the scala project folder from your local checkout and run it via `ant` or standalone as follows.
