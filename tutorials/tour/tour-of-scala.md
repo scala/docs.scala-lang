@@ -6,7 +6,7 @@ disqus: true
 
 tutorial: scala-tour
 num: 1
-languages: [ba, es, ko, pt-br]
+languages: [ba, es, ko, pt-br, pl]
 outof: 34
 next-page: basics
 ---
