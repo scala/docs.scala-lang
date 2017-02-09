@@ -17,13 +17,13 @@ That depends on what you want to contribute. Below are some getting started reso
 
 ### Reporting bugs
 
-See our [bug reporting guide](./bug-reporting-guide.html) to learn
+See our [bug reporting guide](/contribute/bug-reporting-guide/) to learn
 how to efficiently report a bug.
 
 ### Contribute
 
 Coordination of contribution efforts takes place on the 
-[scala-internals Google group](./scala-internals.html).
+[scala-internals Google group](/contribute/scala-internals/).
 
 {% include column-list-of-items.html collection=site.contribute_resources %}
 
@@ -41,7 +41,7 @@ with their own maintainers and community of contributors.  Helping out
 one of these projects is another way to help Scala.  Consider lending
 on a hand on a project you're already using.  Or, to find out about
 other projects, see the
-[Libraries and Tools section](../community/#community-libraries-and-tools)
+[Libraries and Tools section](/community/#community-libraries-and-tools)
 on our Community page.
 
 ### Scala Community Build
