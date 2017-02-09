@@ -10,37 +10,38 @@ next-page: classes
 previous-page: basics
 ---
 
-In contrast to Java, all values in Scala are objects (including numerical values and functions). Since Scala is class-based, all values are instances of a class. The diagram below illustrates the class hierarchy.
+In Scala, all values are instances of a class, including numerical values and functions. The diagram below illustrates the class hierarchy.
 
 ![Scala Type Hierarchy]({{ site.baseurl }}/resources/images/classhierarchy.img_assist_custom.png)
 
 ## Scala Class Hierarchy ##
 
-The superclass of all classes `scala.Any` has two direct subclasses `scala.AnyVal` and `scala.AnyRef` representing two different class worlds: value classes and reference classes. All value classes are predefined; they correspond to the primitive types of Java-like languages. All other classes define reference types. User-defined classes define reference types by default; i.e. they always (indirectly) subclass `scala.AnyRef`. Every user-defined class in Scala implicitly extends the trait `scala.ScalaObject`. Classes from the infrastructure on which Scala is running (e.g. the Java runtime environment) do not extend `scala.ScalaObject`. If Scala is used in the context of a Java runtime environment, then `scala.AnyRef` corresponds to `java.lang.Object`.
-Please note that the diagram above also shows implicit conversions between the value classes.
-Here is an example that demonstrates that both numbers, characters, boolean values, and functions are objects just like every other object:
- 
-```tut
-object UnifiedTypes extends App {
-  val set = new scala.collection.mutable.LinkedHashSet[Any]
-  set += "This is a string"  // add a string
-  set += 732                 // add a number
-  set += 'c'                 // add a character
-  set += true                // add a boolean value
-  set += main _              // add the main function
-  val iter: Iterator[Any] = set.iterator
-  while (iter.hasNext) {
-    println(iter.next.toString())
-  }
-}
-```
+The superclass of all classes `scala.Any` has two direct subclasses: `scala.AnyVal` and `scala.AnyRef`.
 
-The program declares an application `UnifiedTypes` in form of a top-level [singleton object](singleton-objects.html) extending `App`. The application defines a local variable `set` which refers to an instance of class `LinkedHashSet[Any]`. The program adds various elements to this set. The elements have to conform to the declared set element type `Any`. In the end, string representations of all elements are printed out.
+`scala.AnyVal` represents value classes. All value classes are non-nullable and predefined; they correspond to the primitive types of Java-like languages. Note that the diagram above also shows implicit conversions between the value classes.
+
+`scala.AnyRef` represents reference classes. All non-value classes are defined as reference class. Every user-defined class in Scala implicitly extends `scala.AnyRef`. If Scala is used in the context of a Java runtime environment, `scala.AnyRef` corresponds to `java.lang.Object`.
+
+Here is an example that demonstrates that strings, integers, characters, boolean values, and functions are all objects just like every other object:
+
+```tut
+val list: List[Any] = List(
+  "a string",
+  732,  // an integer
+  'c',  // a character
+  true, // a boolean value
+  () => "an anonymous function returning a string"
+)
+
+list.foreach(element => println(element))
+````
+
+It defines a variable `list` of type `List[Any]`. The list is initialized with elements of various types, but they all are instance of `scala.Any`, so you can add them to the list.
 
 Here is the output of the program:
 
 ```
-This is a string
+a string
 732
 c
 true
