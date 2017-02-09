@@ -8,9 +8,12 @@ title: SIP-NN - Make types behave like expressions
 
 ## History
 
-| Date          | Version          |
-|---------------|------------------|
-| Feb 7th 2017  | Initial Draft    |
+| Date          | Version                  |
+|---------------|--------------------------|
+| Feb 7th 2017  | Initial Draft            |
+| Feb 9th 2017  | Updates from feedback    |
+
+Your feedback is welcome! If you're interested in discussing this proposal, head over to [this](https://contributors.scala-lang.org/t/sip-nn-make-infix-type-alias-precedence-like-expression-operator-precedence/471) Scala Contributors thread and let me know what you think.
 
 ---
 ## Introduction
@@ -19,43 +22,42 @@ Unfortunately, there is a 'surprise' element since the two differ in behaviour:
 
 * **Infix operator precedence and associativity**: 
 Infix types are 'mostly' left-associative, 
-while the expression operations are more intuitive with different precedence weights.
+while the expression operation precedence is determined by the operator's first character (e.g., `/` is precedent to `+`). 
 Please see [Infix Types](http://scala-lang.org/files/archive/spec/2.12/03-types.html#infix-types) and [Infix Operations](http://scala-lang.org/files/archive/spec/2.12/06-expressions.html#infix-operations) sections of the Scala specifications for more details. 
 
 **Example**:
 ```scala
 object InfixExpressionPrecedence {
-    case class Nummy(expand : String) {
-      def + (that : Nummy) : Nummy = Nummy(s"Plus[$this,$that]")
-      def * (that : Nummy) : Nummy = Nummy(s"Prod[$this,$that]")
-      override def toString : String = expand
-    }
-    object N1 extends Nummy("N1")
-    object N2 extends Nummy("N2")
-    object N3 extends Nummy("N3")
-    object N4 extends Nummy("N4")
-    val result_expected = N1 + N2 * N3 + N4
-    //result_expected.expand is Plus[Plus[N1,Prod[N2,N3]],N4]
+  case class Nummy(expand : String) {
+    def + (that : Nummy) : Nummy = Nummy(s"Plus[$this,$that]")
+    def / (that : Nummy) : Nummy = Nummy(s"Div[$this,$that]")
+  }
+  object N1 extends Nummy("N1")
+  object N2 extends Nummy("N2")
+  object N3 extends Nummy("N3")
+  object N4 extends Nummy("N4")
+  //Both expand to Plus[Plus[N1,Div[N2,N3]],N4]
+  assert((N1 + N2 / N3 + N4).expand == (N1 + (N2 / N3) + N4).expand)
 }
 object InfixTypePrecedence {
-    trait Plus[N1, N2]
-    trait Prod[N1, N2]
-    type +[N1, N2] = Plus[N1, N2]
-    type *[N1, N2] = Prod[N1, N2]
-    trait N1 
-    trait N2
-    trait N3 
-    trait N4 
-    type Result_Surprise = N1 + N2 * N3 + N4
-    //Result_Surprise expands to Plus[Prod[Plus[N1,N2],N3],N4]
-    type Result_Expected = N1 + (N2 * N3) + N4
-    //Result_Expected expands to Plus[Plus[N1,Prod[N2,N3]],N4]
+  trait Plus[N1, N2]
+  trait Div[N1, N2]
+  type +[N1, N2] = Plus[N1, N2]
+  type /[N1, N2] = Div[N1, N2]
+  trait N1
+  trait N2
+  trait N3
+  trait N4
+  //Error!
+  //Left  expands to Plus[Plus[N1,Div[N2,N3]],N4] (Surprising)
+  //Right expands to Plus[Div[Plus[N1,N2],N3],N4]
+  implicitly[(N1 + N2 / N3 + N4) =:= (N1 + (N2 / N3) + N4)]
 }
 ```
 
 * **Prefix operators bracketless unary use**: While expressions have prefix unary operators, there are none for types. See the [Prefix Operations](http://scala-lang.org/files/archive/spec/2.12/06-expressions.html#prefix-operations) section of the Scala specification. 
 This is a lacking feature of the type language Scala offers. See also interactions of this feature with other Scala features, further down this text. 
-(Author's note: Not crucial as infix precedence, but good for completeness) 
+
 
 **Example**:
 ```scala
@@ -91,19 +93,22 @@ The proposal is split into two; type infix precedence, and prefix unary types. N
 
 ### Proposal, Part 1: Infix type precedence & associativity
 Make infix types conform to the same precedence and associativity traits as expression operations.
-(Author's note: I can copy-paste the specification and modify it, if it so required)
 ### Proposal, Part 2: Prefix unary types
 Add prefix types, exactly as specified for prefix expression. 
-(Author's note: I can copy-paste the specification and modify it, if it so required)
+
 
 ---
+## Motivation
+The general motivation is developers expect terms and types to behave equally regarding operation precedence and availability of unary types.
 
-## Motivating examples
+### Motivating examples
 #### Dotty infix type similarity
-Dotty infix type associativity and precedence seem to be the same as expressions (Author's note: I have seen no documentation of this, but checked the implementation for a simple example `implicitly[(N1 + (N2 / N3) + N4) =:= (N1 + N2 / N3 + N4)]`).
-Dotty has no prefix types.
+Dotty infix type associativity and precedence seem to act the same as expressions. 
+No documentation available to prove this, but the infix example above works perfectly in dotty.
 
-#### Singleton-ops library
+Dotty has no prefix types, same as Scalac.
+
+#### Singleton-ops library example
 The [singleton-ops library](https://github.com/fthomas/singleton-ops) with [Typelevel Scala](https://github.com/typelevel/scala) (which implemented [SIP-23](http://docs.scala-lang.org/sips/pending/42.type.html)) enables developers to express literal type operations more intuitively. 
 For example: 
 ```scala
@@ -129,18 +134,16 @@ val works : 1 + (2 * 3) + 4 = 11
 val fails : 1 + 2 * 3 + 4 = 11 //left associative:(((1+2)*3)+4))) = 13
 ```
 
-#### Developer issues
-The following stackoverflow question demonstrate developers are 'surprised' by the difference in infix precedence.
+#### Developer issues example
+The following stackoverflow question demonstrate developers are 'surprised' by the difference in infix precedence, expecting infix type precedence to act the same as expression operations.
 http://stackoverflow.com/questions/23333882/scala-infix-type-aliasing-for-2-type-parameters
 
 
 
----
-
 ## Interactions with other language features
 
 #### Variance Annotation
-Variance annotation uses the `-` and `+` symbols to annotate contravariant and covariant subtyping, respectively. Introducing unary prefix types might lead to some confusion.
+Variance annotation uses the `-` and `+` symbols to annotate contravariant and covariant subtyping, respectively. Introducing unary prefix types may lead to some developer confusion.
 E.g.
 ```scala
 trait Negate[A]
@@ -150,7 +153,6 @@ type unary_+[A] = Positive[A]
 trait Contravariant[B, -A <: -B] //contravariant A subtype upper-bounded by Negate[B]
 trait Covariant[B, +A <: +B] //covariant A subtype upper-bounded by Positive[B]
 ```
-(Author's note: it seem very unlikely that such feature interaction will occur)  
 
 #### Negative Literal Types
 Negative literal types are annotated using the `-` symbol. This can lead to the following confusion:
@@ -172,26 +174,14 @@ val c : +42 = 42 //error: ';' expected but integer literal found
 ```
 This means that if unary prefix types are added, then `+42` will be a type expansion of `unary_+[42]`.
 
-#### Scala meta
-Open question how this SIP affects `scala-meta`.
-
 ---
 
 ## Backward Compatibility
 Changing infix type associativity and precedence affects code that uses type operations and conforms to the current specification.
-(Author's note: I don't know if providing a flag to select the precedence is good or not. IMHO, it is better to create a tool that adds brackets to convert code to the old associativity.)    
 
 ---
 
-### Extended proposal alternative
-It is possible to extend this proposal and allow the developer to annotate the expected associativity and precedence per operation. 
-(Author's note: I personally don't like this, but if such a solution is better for the community, then I will gladly modify this SIP to reflect that.)
-See the following [Typelevel Scala issue](https://github.com/typelevel/scala/issues/69) for the suggestion.
-
-### Other languages
-Would love some help to complete what happens in different programming languages.
-
-### Discussions
+### Bibliography
 [Scala Contributors](https://contributors.scala-lang.org/t/sip-nn-make-infix-type-alias-precedence-like-expression-operator-precedence/471)
 
 [scala-sips](https://groups.google.com/forum/#!topic/scala-sips/ARVf1RLDw9U)
