@@ -14,9 +14,9 @@ In this page, we will cover basics of Scala.
 
 ## Trying Scala in the Browser
 
-You can run Scala in your browser with [ScalaFiddle](https://scalafiddle.io).
+You can run Scala in your browser with ScalaFiddle.
 
-1. Go to https://scalafiddle.io.
+1. Go to [https://scalafiddle.io](https://scalafiddle.io).
 2. Paste `println("Hello, world!")` in the left pane.
 3. Hit "Run" button. Output appears in the right pane.
 
@@ -41,7 +41,7 @@ You can name results of expressions with the `val` keyword.
 
 ```tut
 val x = 1 + 1
-println(x * x) // 4
+println(x) // 2
 ```
 
 Named results, such as `x` here, are called values. Referencing
@@ -91,7 +91,7 @@ println({
 
 ## Functions
 
-Functions are expressions that take parameters and compute a result.
+Functions are expressions that take parameters.
 
 You can define a function that returns a given integer plus one:
 
