@@ -11,12 +11,10 @@ previous-page: anonymous-function-syntax
 assumed-knowledge: sequence-comprehensions
 ---
 
-Higher order functions are functions that take other functions are parameters
-or whose result is a function. They can be useful for reducing duplicate code
-when you want to create multiple functions with only slightly different functionality.
-
+Higher order functions take other functions as parameters or return a function as
+a result. This is possible because functions are first-class objects in Scala.
 One of the most common examples is the higher-order
-function `map` available for collections in Scala.
+function `map` which is available for collections in Scala.
 ```tut
 val salaries = Seq(20000, 70000, 40000)
 val doubleSalary = (x: Int) => x * 2
@@ -29,8 +27,8 @@ list of salaries. A more idiomatic way to write the same piece of code would be
 val salaries = Seq(20000, 70000, 40000)
 val newSalaries = salaries.map(_ * 2)
 ```
-The Scala compiler already knows the type of the parameters (a single Int) so
-you just need to provide the right side of the function doubleSalary. The only
+The Scala compiler already knows the type of the parameters (a single Int) that function argument
+for `map` needs. Therefore you just need to provide the right side of the function `doubleSalary`. The only
 caveat is that you need to use `_` in place of a parameter name (it was `x` in
 the previous example).
 
@@ -48,9 +46,7 @@ case class WeeklyWeatherForecast(temperatures: Seq[Double]) {
 Here the method `convertCtoF` is passed to getForecastInFahrenheit  This is possible because the compiler coerces `convertCtoF` to `_ => convertCtoF(_)`, i.e. a function.
 
 ## Functions that accept functions
-Let's say you wanted a function that could either search for files by directory,
-by regular expression, or by a substring.
-by file name, extension, or by contents. Without creating a higher-order function,
+One reason to use higher-order functions is to reduce redundant code. Let's say you wanted functions  that could either search for files by directory, by regular expression, or by a substring. Without creating a higher-order function,
 it might look something like this:
 
 ```tut
@@ -88,7 +84,7 @@ object FileMatcher {
     def filesContaining(query: String) =
       filesMatching(_.contains(query))
 
-    def filesRegex(query: String) =
+    def filesMatchingRegex(query: String) =
       filesMatching(_.matches(query))
     }
 ```
@@ -100,7 +96,10 @@ created by the `for`/`yield`.
 Credit: Odersky, Martin, Lex Spoon, and Bill Venners. Programming in Scala. Walnut Creek, CA: Artima, 2010. Web.
 
 ## Functions that return functions
-There are certain cases where you
+
+There are certain cases where you want to generate a function. Here's an example
+of a method that returns a function.
+
 ```tut
 def urlBuilder(ssl: Boolean, domainName: String): (String, String) => String = {
   val schema = if (ssl) "https://" else "http://"
@@ -112,11 +111,7 @@ def getURL = urlBuilder(ssl=true, domainName)
 ​
 val endpoint = "users"
 val query = "id=1"
-getURL(endpoint, query) // "https://www.example.com/users?id=1": String
+val url = getURL(endpoint, query) // "https://www.example.com/users?id=1": String
 ​```
-
-
-Caveat
-```tut
-List(1,3,4).map(MyNum(_))
-```
+Notice the return type of urlBuilder `(String, String) => String`. This means that
+the returned anonymous function takes two Strings and returns a String.
