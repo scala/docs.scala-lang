@@ -201,11 +201,13 @@ object Object extends Super {
 {% endhighlight %}
 ```
 Let's consider possible options:
+
  - if the field `c` is emitted as `static` on the bytecode level, it will be initialized before the `c` in superclass is initialized, reordering side-effects in initializers;
  - if the field `c` is emitted as `static` on the bytecode level it will use a different storage that the memory layout defined by `Super`, leading to potential bugs and wasted memory;
  - if the field `c` is _not_ emitted as `static` but the field `d` is, then the order of initialization would also be affected, reordering side-effects.
  
 Based on the previous study done in preparation for this SIP, the authors believe that the only reasonable way to maintain current sematics would be to say that such alternative would require these rules:
+
  - only the fields which were not declared by parents of the object can be emitted as static;
  - only fields that are lexically defined before any non-static field or statement in the body can be emitted as static.
 
