@@ -1,7 +1,7 @@
 ---
 layout: sip
 disqus: true
-title: SIP-NN - Make types behave like expressions 
+title: SIP-NN - Match infix & prefix types to meet expression rules 
 ---
 
 **By: Oron Port**
@@ -12,6 +12,7 @@ title: SIP-NN - Make types behave like expressions
 |---------------|--------------------------|
 | Feb 7th 2017  | Initial Draft            |
 | Feb 9th 2017  | Updates from feedback    |
+| Feb 10th 2017 | Updates from feedback    |
 
 Your feedback is welcome! If you're interested in discussing this proposal, head over to [this](https://contributors.scala-lang.org/t/sip-nn-make-infix-type-alias-precedence-like-expression-operator-precedence/471) Scala Contributors thread and let me know what you think.
 
@@ -20,7 +21,7 @@ Your feedback is welcome! If you're interested in discussing this proposal, head
 Currently scala allows symbol operators (`-`, `*`, `~~>`, etc.) for both type names and definition names.
 Unfortunately, there is a 'surprise' element since the two differ in behaviour:
 
-* **Infix operator precedence and associativity**: 
+###Infix operator precedence and associativity 
 Infix types are 'mostly' left-associative, 
 while the expression operation precedence is determined by the operator's first character (e.g., `/` is precedent to `+`). 
 Please see [Infix Types](http://scala-lang.org/files/archive/spec/2.12/03-types.html#infix-types) and [Infix Operations](http://scala-lang.org/files/archive/spec/2.12/06-expressions.html#infix-operations) sections of the Scala specifications for more details. 
@@ -55,7 +56,8 @@ object InfixTypePrecedence {
 }
 ```
 
-* **Prefix operators bracketless unary use**: While expressions have prefix unary operators, there are none for types. See the [Prefix Operations](http://scala-lang.org/files/archive/spec/2.12/06-expressions.html#prefix-operations) section of the Scala specification. 
+###Prefix operators bracketless unary use
+While expressions have prefix unary operators, there are none for types. See the [Prefix Operations](http://scala-lang.org/files/archive/spec/2.12/06-expressions.html#prefix-operations) section of the Scala specification. 
 This is a lacking feature of the type language Scala offers. See also interactions of this feature with other Scala features, further down this text. 
 
 
