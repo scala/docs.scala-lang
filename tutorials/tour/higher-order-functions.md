@@ -112,7 +112,8 @@ def getURL = urlBuilder(ssl=true, domainName)
 val endpoint = "users"
 val query = "id=1"
 val url = getURL(endpoint, query) // "https://www.example.com/users?id=1": String
-​```
+​
+```
 
 Notice the return type of urlBuilder `(String, String) => String`. This means that
 the returned anonymous function takes two Strings and returns a String.
