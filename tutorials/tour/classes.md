@@ -8,6 +8,8 @@ tutorial: scala-tour
 num: 4
 next-page: traits
 previous-page: unified-types
+topics: classes
+assumed-knowledge: no-return-keyword, type-syntax
 ---
 
 Classes in Scala are static templates that can be instantiated into many objects at runtime.
@@ -33,17 +35,12 @@ Note that in Scala, it isn't necessary to say `return` in order to return a valu
 Classes are instantiated with the `new` primitive, as follows:
 
 ```tut
-object Classes {
-  def main(args: Array[String]) {
-    val pt = new Point(1, 2)
-    println(pt)
-    pt.move(10, 10)
-    println(pt)
-  }
-}
-```
+val pt = new Point(1, 2) // <-- the "new" keyword is used to create an instance of the class Point
+println(pt)
+pt.move(10, 10)
+println(pt)
 
-The program defines an executable application Classes in form of a top-level [singleton object](singleton-objects) with a `main` method. The `main` method creates a new `Point` and stores it in value `pt`. Note that values defined with the `val` construct are different from variables defined with the `var` construct (see class `Point` above) in that they do not allow updates; i.e. the value is constant.
+```
 
 Here is the output of the program:
 
