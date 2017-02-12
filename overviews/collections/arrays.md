@@ -74,7 +74,7 @@ The `evenElems` method returns a new array that consist of all elements of the a
 
     error: cannot find class manifest for element type T
       val arr = new Array[T]((arr.length + 1) / 2)
-            ^
+                ^
 
 What's required here is that you help the compiler out by providing some runtime hint what the actual type parameter of `evenElems` is. This runtime hint takes the form of a class manifest of type `scala.reflect.ClassManifest`. A class manifest is a type descriptor object which describes what the top-level class of a type is. Alternatively to class manifests there are also full manifests of type `scala.reflect.Manifest`, which describe all aspects of a type. But for array creation, only class manifests are needed.
 
@@ -106,7 +106,7 @@ In both cases, the Scala compiler automatically constructed a class manifest for
     scala> def wrap[U](xs: Vector[U]) = evenElems(xs)
     <console>:6: error: No ClassManifest available for U.
          def wrap[U](xs: Vector[U]) = evenElems(xs)
-                                          ^
+                                               ^
 
 What happened here is that the `evenElems` demands a class manifest for the type parameter `U`, but none was found. The solution in this case is, of course, to demand another implicit class manifest for `U`. So the following works:
 
