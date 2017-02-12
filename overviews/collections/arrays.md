@@ -103,16 +103,16 @@ Here is some REPL interaction that uses the `evenElems` method.
 
 In both cases, the Scala compiler automatically constructed a class manifest for the element type (first, `Int`, then `String`) and passed it to the implicit parameter of the `evenElems` method. The compiler can do that for all concrete types, but not if the argument is itself another type parameter without its class manifest. For instance, the following fails:
 
-    scala> def wrap[U](xs: Array[U]) = evenElems(xs)
+    scala> def wrap[U](xs: Vector[U]) = evenElems(xs)
     <console>:6: error: could not find implicit value for
      evidence parameter of type ClassManifest[U]
-         def wrap[U](xs: Array[U]) = evenElems(xs)
+         def wrap[U](xs: Vector[U]) = evenElems(xs)
                                           ^
 
 What happened here is that the `evenElems` demands a class manifest for the type parameter `U`, but none was found. The solution in this case is, of course, to demand another implicit class manifest for `U`. So the following works:
 
-    scala> def wrap[U: ClassManifest](xs: Array[U]) = evenElems(xs)
-    wrap: [U](xs: Array[U])(implicit evidence$1: ClassManifest[U])Array[U]
+    scala> def wrap[U: ClassManifest](xs: Vector[U]) = evenElems(xs)
+    wrap: [U](xs: Vector[U])(implicit evidence$1: ClassManifest[U])Array[U]
 
 This example also shows that the context bound in the definition of `U` is just a shorthand for an implicit parameter named here `evidence$1` of type `ClassManifest[U]`.
 
