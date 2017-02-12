@@ -12,7 +12,7 @@ tutorial-next: singleton-objects
 tutorial-previous: case-classes
 ---
 
-Scala posiada wbudowany mechanizm dopasowania wzorców. Umożliwia on dopasowanie dowolnego rodzaju danych, na podstawie zasady że zwracamy zawsze pierwsze dopasowanie. Przykład dopasowania liczby całkowitej:
+Scala posiada wbudowany mechanizm dopasowania wzorców. Umożliwia on dopasowanie dowolnego rodzaju danych, przy czym zawsze zwracamy pierwsze dopasowanie. Przykład dopasowania liczby całkowitej:
 
 ```tut
 object MatchTest1 extends App {
@@ -40,7 +40,7 @@ object MatchTest2 extends App {
 }
 ```
 
-Pierwszy przypadek jest dopasowany, gdy `x` jest liczbą całkowitą równą `1`. Drugi określa przypadek, gdy `x` jest równe łańcuchowi znaków `"two"`. Ostatecznie mamy wzorzec dopasowania typu. Jest on spełniony gdy `x` jest dowolną liczbą całkowitą oraz gwarantuje, że `y` jest (statycznie) typu liczby całkowitej.
+Pierwszy przypadek jest dopasowany, gdy `x` jest liczbą całkowitą równą `1`. Drugi określa przypadek, gdy `x` jest równe łańcuchowi znaków `"two"`. Ostatecznie mamy wzorzec dopasowania typu. Jest on spełniony, gdy `x` jest dowolną liczbą całkowitą oraz gwarantuje, że `y` jest (statycznie) typu liczby całkowitej.
 
 Dopasowanie wzorca w Scali jest najbardziej użyteczne z wykorzystaniem typów algebraicznych modelowanych przez [klasy przypadków](case-classes.html).
-Scala także pozwala też na używanie wzorców niezależnie od klas przypadków, używając metody `unapply` definiowanej przez [obiekty ekstraktorów](extractor-objects.html).
+Scala pozwala też na używanie wzorców niezależnie od klas przypadków - używając metody `unapply` definiowanej przez [obiekty ekstraktorów](extractor-objects.html).

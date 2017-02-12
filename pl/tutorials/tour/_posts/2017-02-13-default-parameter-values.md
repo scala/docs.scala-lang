@@ -70,4 +70,4 @@ val m3 = new HashMap[String,Int](20,0.8f)
 val m4 = new HashMap[String,Int](loadFactor = 0.8f)
 ```
 
-Należy zwrócić uwagę na to, w jaki sposób możemy wykorzystać *dowolną* domyślną wartość poprzez użycie [parametrów nazwanych](named-parameters.html).
+Należy zwrócić uwagę, w jaki sposób możemy wykorzystać *dowolną* domyślną wartość poprzez użycie [parametrów nazwanych](named-parameters.html).

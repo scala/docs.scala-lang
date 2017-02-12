@@ -12,7 +12,7 @@ tutorial-next: sequence-comprehensions
 tutorial-previous: regular-expression-patterns
 ---
 
-W Scali, wzorce mogą być zdefiniowane niezależnie od klas przypadków. Obiekt posiadający metodę `unapply` może funkcjonować jako tak zwany ekstraktor. Jest to szczególna metoda, która pozwala na odwrócenie zastosowania obiektu dla pewnych danych. Jego celem jest ekstrakcja danych, z których został on utworzony. Dla przykładu, poniższy kod definiuje ekstraktor dla [obiektu](singleton-objects.html) `Twice`:
+W Scali wzorce mogą być zdefiniowane niezależnie od klas przypadków. Obiekt posiadający metodę `unapply` może funkcjonować jako tak zwany ekstraktor. Jest to szczególna metoda, która pozwala na odwrócenie zastosowania obiektu dla pewnych danych. Jego celem jest ekstrakcja danych, z których został on utworzony. Dla przykładu, poniższy kod definiuje ekstraktor dla [obiektu](singleton-objects.html) `Twice`:
 
 ```tut
 object Twice {
@@ -38,6 +38,6 @@ Typ zwracany przez `unapply` powinien odpowiadać jednemu przypadkowi:
 * Jeżeli zwraca pojedynczą wartość typu T, powinien zwrócić `Option[T]`
 * Jeżeli zwraca kilka wartości typów: `T1, ..., Tn`, należy je pogrupować jako opcjonalna krotka `Option[(T1, ..., Tn)]`
 
-Zdarza się, że chcielibyśmy dopasować określoną liczbę wartości oraz sekwencję. Z tego powodu, możesz także zdefiniować wzorce poprzez metodę `unapplySeq`. Ostatnia wartość typu `Tn` powinna być `Seq[S]`. Ten mechanizm pozwala na dopasowanie wzorców takich jak `case List(x1, ..., xn)`.
+Zdarza się, że chcielibyśmy dopasować określoną liczbę wartości oraz sekwencję. Z tego powodu możesz także zdefiniować wzorce poprzez metodę `unapplySeq`. Ostatnia wartość typu `Tn` powinna być `Seq[S]`. Ten mechanizm pozwala na dopasowanie wzorców takich jak `case List(x1, ..., xn)`.
 
 Ekstraktory sprawiają, że kod jest łatwiejszy do utrzymania. Aby dowiedzieć się więcej, możesz przeczytać publikację ["Matching Objects with Patterns"](http://lamp.epfl.ch/~emir/written/MatchingObjectsWithPatterns-TR.pdf) (zobacz sekcję 4) autorstwa Emir, Odersky i Williams (styczeń 2007).

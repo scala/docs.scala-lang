@@ -21,7 +21,7 @@ Wzorce ignorujące prawą stronę są użyteczne przy dekomponowaniu danych, kt�
 Elem(prefix:String, label:String, attrs:MetaData, scp:NamespaceBinding, children:Node*)
 ```
 
-W tych przypadkach, Scala pozwala wzorcom na zastosowanie symbolu `_*` w ostatniej pozycji aby dopasować sekwencje dowolnej długości.
+W tych przypadkach Scala pozwala wzorcom na zastosowanie symbolu `_*` w ostatniej pozycji, aby dopasować sekwencje dowolnej długości.
 Poniższy przykład demonstruje dopasowanie wzorca, który rozpoznaje początek sekwencji i wiąże resztę do zmiennej `rest`:
 
 ```tut

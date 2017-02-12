@@ -12,13 +12,13 @@ tutorial-next: classes
 tutorial-previous: tour-of-scala
 ---
 
-W przeciwieństwie do Javy, wszystkie wartości w Scali są obiektami (wliczając w to wartości numeryczne i funkcje). Ponieważ Scala bazuje na klasach, wszystkie wartości są instancjami klasy. Można zatem powiedzieć, że Scala posiada zunifikowany system typów. Poniższy diagram ilustruje hierarchię klas Scali:
+W przeciwieństwie do Javy wszystkie wartości w Scali są obiektami (wliczając w to wartości numeryczne i funkcje). Ponieważ Scala bazuje na klasach, wszystkie wartości są instancjami klasy. Można zatem powiedzieć, że Scala posiada zunifikowany system typów. Poniższy diagram ilustruje hierarchię klas Scali:
 
 ![Scala Type Hierarchy]({{ site.baseurl }}/resources/images/classhierarchy.img_assist_custom.png)
 
 ## Hierarchia Klas Scali ##
 
-Klasa bazowa dla wszystkich klas `scala.Any` posiada dwie bezpośrednie klasy pochodne: `scala.AnyVal` oraz `scala.AnyRef`, które reprezentują dwie różne rodziny klas: klasy wartości oraz klasy referencji. Klasy wartości są predefiniowane i odpowiadają one typom prymitywnym z języków takich jak Java. Wszystkie inne klasy definiują typy referencyjne. Klasy zdefiniowane przez użytkownika są domyślnie typami referencyjnymi, tzn. są one zawsze podtypem klasy `scala.AnyRef`. W kontekście maszyny wirtualnej Javy, `scala.AnyRef` odpowiada typowi `java.lang.Object`. Powyższy diagram ilustruje także konwersje implicit pomiędzy klasami wartości.
+Klasa bazowa dla wszystkich klas `scala.Any` posiada dwie bezpośrednie klasy pochodne: `scala.AnyVal` oraz `scala.AnyRef`, które reprezentują dwie różne rodziny klas: klasy wartości oraz klasy referencji. Klasy wartości są predefiniowane i odpowiadają one typom prymitywnym z języków takich jak Java. Wszystkie inne klasy definiują typy referencyjne. Klasy zdefiniowane przez użytkownika są domyślnie typami referencyjnymi, tzn. są one zawsze podtypem klasy `scala.AnyRef`. W kontekście maszyny wirtualnej Javy `scala.AnyRef` odpowiada typowi `java.lang.Object`. Powyższy diagram ilustruje także konwersje implicit pomiędzy klasami wartości.
 
 Poniższy przykład pokazuje, że liczby, znaki, wartości logiczne oraz funkcje są obiektami:
 

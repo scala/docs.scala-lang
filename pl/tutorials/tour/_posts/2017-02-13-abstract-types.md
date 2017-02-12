@@ -13,7 +13,7 @@ tutorial-next: compound-types
 tutorial-previous: inner-classes
 ---
 
-W Scali, klasy są parametryzowane wartościami (parametry konstruktora) oraz typami (jeżeli klasa jest [generyczna](generic-classes.html)). Aby zachować regularność, zarówno typy jak i wartości są elementami klasy. Analogicznie mogą one być konkretne albo abstrakcyjne.
+W Scali klasy są parametryzowane wartościami (parametry konstruktora) oraz typami (jeżeli klasa jest [generyczna](generic-classes.html)). Aby zachować regularność, zarówno typy jak i wartości są elementami klasy. Analogicznie mogą one być konkretne albo abstrakcyjne.
 
 Poniższy przykład definiuje wartość określaną przez abstrakcyjny typ będący elementem [cechy](traits.html) `Buffer`:
  
@@ -36,7 +36,7 @@ abstract class SeqBuffer extends Buffer {
 }
 ```
  
-Cechy oraz [klasy](classes.html) z abstrakcyjnymi typami są często używane w połączeniu z anonimowymi klasami. Aby to zilustrować wykorzystamy program, w którym utworzymy bufor sekwencji ograniczony do listy liczb całkowitych:
+Cechy oraz [klasy](classes.html) z abstrakcyjnymi typami są często używane w połączeniu z anonimowymi klasami. Aby to zilustrować, wykorzystamy program, w którym utworzymy bufor sekwencji ograniczony do listy liczb całkowitych:
  
 ```tut
 abstract class IntSeqBuffer extends SeqBuffer {
@@ -57,7 +57,7 @@ object AbstractTypeTest1 extends App {
  
 Typ zwracany przez metodę `newIntSeqBuf` nawiązuje do specjalizacji cechy `Buffer`, w której typ `U` jest równy `Int`. Podobnie w anonimowej klasie tworzonej w metodzie `newIntSeqBuf` określamy `T` jako `List[Int]`.
 
-Warto zwrócić uwagę na to, że często jest możliwa zamiana abstrakcyjnych typów w parametry typów klas i odwrotnie. Poniższy przykład stosuje wyłącznie parametry typów:
+Warto zwrócić uwagę, że często jest możliwa zamiana abstrakcyjnych typów w parametry typów klas i odwrotnie. Poniższy przykład stosuje wyłącznie parametry typów:
  
 ```tut
 abstract class Buffer[+T] {

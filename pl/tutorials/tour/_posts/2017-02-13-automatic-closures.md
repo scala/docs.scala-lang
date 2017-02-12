@@ -31,7 +31,7 @@ object TargetTest1 extends App {
 }
 ```
 
-Funkcja `whileLoop` pobiera dwa parametry: `cond` i `body`. Kiedy funkcja jest aplikowana, jej właściwe parametry nie są ewaluowane. Lecz gdy te parametry są wykorzystane w ciele `whileLoop`, zostanie ewaluowana niejawnie utworzona funkcja, zwracająca ich prawdziwą wartość. Zatem metoda `whileLoop` implementuje rekursywnie pętlę while w stylu Javy.
+Funkcja `whileLoop` pobiera dwa parametry: `cond` i `body`. Kiedy funkcja jest aplikowana, jej właściwe parametry nie są ewaluowane. Lecz gdy te parametry są wykorzystane w ciele `whileLoop`, zostanie ewaluowana niejawnie utworzona funkcja zwracająca ich prawdziwą wartość. Zatem metoda `whileLoop` implementuje rekursywnie pętlę while w stylu Javy.
 
 Możemy połączyć ze sobą wykorzystanie [operatorów infiksowych/postfiksowych](operators.html) z tym mechanizmem aby utworzyć bardziej złożone wyrażenia.
 
@@ -55,7 +55,7 @@ object TargetTest2 extends App {
 }
 ```
 
-Funkcja `loop` przyjmuje ciało pętli oraz zwraca instancję klasy `LoopUnlessCond` (która enkapsuluje to ciało). Warto zwrócić uwagę, że ciało tej funkcji nie zostało jeszcze ewaluowane. Klasa `LoopUnlessCond` posiada metodę `unless`, którą możemy wykorzystać jako *operator infiksowy*. W ten sposób, uzyskaliśmy całkiem naturalną składnię dla naszej nowej pętli: `loop { < stats > } unless ( < cond > )`.
+Funkcja `loop` przyjmuje ciało pętli oraz zwraca instancję klasy `LoopUnlessCond` (która enkapsuluje to ciało). Warto zwrócić uwagę, że ciało tej funkcji nie zostało jeszcze ewaluowane. Klasa `LoopUnlessCond` posiada metodę `unless`, którą możemy wykorzystać jako *operator infiksowy*. W ten sposób uzyskaliśmy całkiem naturalną składnię dla naszej nowej pętli: `loop { < stats > } unless ( < cond > )`.
 
 Oto wynik działania programu `TargetTest2`:
 

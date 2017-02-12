@@ -47,7 +47,7 @@ W klasach przypadków nie można modyfikować wartości pól. (Z wyjątkiem sytu
 emailFromJohn.title = "Goodbye From John!" // Jest to błąd kompilacji, gdyż pola klasy przypadku są domyślnie niezmienne
 ```
 
-Zamiast tego, możesz utworzyć kopię używając metody `copy`:
+Zamiast tego możesz utworzyć kopię używając metody `copy`:
 
 ```tut
 val editedEmail = emailFromJohn.copy(title = "I am learning Scala!", body = "It's so cool!")
@@ -56,7 +56,7 @@ println(emailFromJohn) // wypisuje "Email(john.doe@mail.com,Greetings From John!
 println(editedEmail) // wypisuje "Email(john.doe@mail.com,I am learning Scala,It's so cool!)"
 ```
 
-Dla każdej klasy przypadku kompilator Scali wygeneruje metodę `equals`, która implementuje strukturalne porównanie obiektów oraz metodę `toString`. Przykład:
+Dla każdej klasy przypadku kompilator Scali wygeneruje metodę `equals` implementującą strukturalne porównanie obiektów oraz metodę `toString`. Przykład:
 
 ```tut
 val firstSms = SMS("12345", "Hello!")
@@ -76,7 +76,7 @@ They are equal!
 SMS is: SMS(12345, Hello!)
 ```
 
-Jednym z najważniejszych zastosowań klas przypadków (skąd też się wzięła ich nazwa), jest **dopasowanie wzorca**. Poniższy przykład pokazuje działanie funkcji, która zwraca różne komunikaty, w zależności od rodzaju powiadomienia:
+Jednym z najważniejszych zastosowań klas przypadków (skąd też się wzięła ich nazwa) jest **dopasowanie wzorca**. Poniższy przykład pokazuje działanie funkcji, która zwraca różne komunikaty w zależności od rodzaju powiadomienia:
 
 ```tut
 def showNotification(notification: Notification): String = {
@@ -135,10 +135,10 @@ println(showNotificationSpecial(specialSms, SPECIAL_EMAIL, SPECIAL_NUMBER))
 
 ```
 
-Programując w Scali, zachęca się abyś jak najszerzej używał klas przypadków do modelowania danych, jako że kod który je wykorzystuje jest bardziej ekspresywny i łatwiejszy do utrzymania:
+Programując w Scali zachęca się, abyś jak najszerzej używał klas przypadków do modelowania danych, jako że kod, który je wykorzystuje, jest bardziej ekspresywny i łatwiejszy do utrzymania:
 
 * Obiekty niemutowalne uwalniają cię od potrzeby śledzenia zmian stanu
-* Porównanie przez wartość pozwala na porównywanie instancji tak jakby były prymitywnymi wartościami
+* Porównanie przez wartość pozwala na porównywanie instancji tak, jakby były prymitywnymi wartościami
 * Dopasowanie wzorca znacząco upraszcza logikę rozgałęzień, co prowadzi do mniejszej ilości błędów i czytelniejszego kodu
 
 

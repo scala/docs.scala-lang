@@ -18,7 +18,7 @@ Podstawową formą adnotacji jest `@C` lub `@C(a1, ..., an)`. Tutaj `C` jest kon
 
 Adnotację stosuje się do pierwszej definicji lub deklaracji która po niej następuje. Możliwe jest zastosowanie więcej niż jednej adnotacji przed definicją lub deklaracją. Kolejność według której są one określone nie ma istotnego znaczenia.
 
-Znaczenie adnotacji jest zależne od implementacji. Na platformie Java, poniższe adnotacje domyślnie oznaczają:
+Znaczenie adnotacji jest zależne od implementacji. Na platformie Java poniższe adnotacje domyślnie oznaczają:
 
 |           Scala           |           Java           |
 |           ------          |          ------          |
@@ -37,8 +37,8 @@ Znaczenie adnotacji jest zależne od implementacji. Na platformie Java, poniższ
 
 W poniższym przykładzie dodajemy adnotację `throws` do definicji metody `read` w celu obsługi rzuconego wyjątku w programie w Javie.
 
-> Kompilator Javy sprawdza czy program zawiera obsługę dla [wyjątków kontrolowanych](http://docs.oracle.com/javase/tutorial/essential/exceptions/index.html) poprzez sprawdzenie, które wyjątki mogą być wynikiem wykonania metody lub konstruktora. Dla każdego kontrolowanego wyjątku który może być wynikiem wykonania, adnotacja **throws** musi określić klasę tego wyjątku lub jedną z jej klas bazowych.
-> Ponieważ Scala nie pozwala na definiowanie wyjątków kontrolowanych, jeżeli chcemy obsłużyć wyjątek z kodu w Scali w Javie, należy dodać jedną lub więcej adnotacji `throws` określającej klasy wyjątków przez nią rzucanych.
+> Kompilator Javy sprawdza, czy program zawiera obsługę dla [wyjątków kontrolowanych](http://docs.oracle.com/javase/tutorial/essential/exceptions/index.html) poprzez sprawdzenie, które wyjątki mogą być wynikiem wykonania metody lub konstruktora. Dla każdego kontrolowanego wyjątku, który może być wynikiem wykonania, adnotacja **throws** musi określić klasę tego wyjątku lub jedną z jej klas bazowych.
+> Ponieważ Scala nie pozwala na definiowanie wyjątków kontrolowanych, jeżeli chcemy obsłużyć wyjątek z kodu w Scali w Javie, należy dodać jedną lub więcej adnotacji `throws` określających klasy rzucanych wyjątków.
 
 ```
 package examples
@@ -123,7 +123,7 @@ Następnie ją można zastosować:
 public class MyClass extends HisClass ...
 ```
 
-W tym przypadku, Scala daje taką samą możliwość:
+W tym przypadku Scala daje taką samą możliwość:
 
 ```
 @SourceURL("http://coders.com/")
