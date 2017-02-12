@@ -18,7 +18,7 @@ languages: [ja, zh-cn]
     scala> val a3 = a2 filter (_ % 2 != 0)
     a3: Array[Int] = Array(3, 9)
     scala> a3.reverse
-    res1: Array[Int] = Array(9, 3)
+    res0: Array[Int] = Array(9, 3)
 
 Given that Scala arrays are represented just like Java arrays, how can these additional features be supported in Scala? In fact, the answer to this question differs between Scala 2.8 and earlier versions. Previously, the Scala compiler somewhat "magically" wrapped and unwrapped arrays to and from `Seq` objects when required in a process called boxing and unboxing. The details of this were quite complicated, in particular when one created a new array of generic type `Array[T]`. There were some puzzling corner cases and the performance of array operations was not all that predictable.
 
@@ -29,7 +29,7 @@ The Scala 2.8 design is much simpler. Almost all compiler magic is gone. Instead
     scala> val a4: Array[Int] = seq.toArray
     a4: Array[Int] = Array(1, 2, 3)
     scala> a1 eq a4
-    res2: Boolean = true
+    res1: Boolean = true
 
 The interaction above demonstrates that arrays are compatible with sequences, because there's an implicit conversion from arrays to `WrappedArray`s. To go the other way, from a `WrappedArray` to an `Array`, you can use the `toArray` method defined in `Traversable`. The last REPL line above shows that wrapping and then unwrapping with `toArray` gives the same array you started with.
 
