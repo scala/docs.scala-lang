@@ -104,8 +104,7 @@ Here is some REPL interaction that uses the `evenElems` method.
 In both cases, the Scala compiler automatically constructed a class manifest for the element type (first, `Int`, then `String`) and passed it to the implicit parameter of the `evenElems` method. The compiler can do that for all concrete types, but not if the argument is itself another type parameter without its class manifest. For instance, the following fails:
 
     scala> def wrap[U](xs: Vector[U]) = evenElems(xs)
-    <console>:6: error: could not find implicit value for
-     evidence parameter of type ClassManifest[U]
+    <console>:6: error: No ClassManifest available for U.
          def wrap[U](xs: Vector[U]) = evenElems(xs)
                                           ^
 
