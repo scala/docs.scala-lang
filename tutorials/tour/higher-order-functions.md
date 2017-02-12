@@ -43,7 +43,7 @@ case class WeeklyWeatherForecast(temperatures: Seq[Double]) {
   def getForecastInFahrenheit() = temperatures.map(convertCtoF) // <-- passing the method convertCtoF
 }
 ```
-Here the method `convertCtoF` is passed to getForecastInFahrenheit  This is possible because the compiler coerces `convertCtoF` to `_ => convertCtoF(_)`, which is a function.
+Here the method `convertCtoF` is passed to getForecastInFahrenheit  This is possible because the compiler coerces `convertCtoF` to the function `_ => convertCtoF(_)`.
 
 ## Functions that accept functions
 One reason to use higher-order functions is to reduce redundant code. Let's say you wanted functions  that could either search for files by directory, by regular expression, or by a substring. Without creating a higher-order function,
