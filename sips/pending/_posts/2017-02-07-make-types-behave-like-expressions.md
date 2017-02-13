@@ -28,6 +28,7 @@ Please see [Infix Types](http://scala-lang.org/files/archive/spec/2.12/03-types.
 
 **Example**:
 ```scala
+{% highlight scala %}
 object InfixExpressionPrecedence {
   case class Nummy(expand : String) {
     def + (that : Nummy) : Nummy = Nummy(s"Plus[$this,$that]")
@@ -54,6 +55,7 @@ object InfixTypePrecedence {
   //Right expands to Plus[Div[Plus[N1,N2],N3],N4]
   implicitly[(N1 + N2 / N3 + N4) =:= (N1 + (N2 / N3) + N4)]
 }
+{% endhighlight %}
 ```
 
 ###Prefix operators bracketless unary use
@@ -63,6 +65,7 @@ This is a lacking feature of the type language Scala offers. See also interactio
 
 **Example**:
 ```scala
+{% highlight scala %}
 object PrefixExpression {
   case class Nummy(expand : String) {
     def unary_- : Nummy = Nummy(s"-$this")
@@ -87,6 +90,7 @@ object NonExistingPrefixTypes {
   type N3 = !N //Not working
   type N4 = +N //Not working
 }
+{% endhighlight %}
 ```
 
 ---
@@ -114,6 +118,7 @@ Dotty has no prefix types, same as Scalac.
 The [singleton-ops library](https://github.com/fthomas/singleton-ops) with [Typelevel Scala](https://github.com/typelevel/scala) (which implemented [SIP-23](http://docs.scala-lang.org/sips/pending/42.type.html)) enables developers to express literal type operations more intuitively. 
 For example: 
 ```scala
+{% highlight scala %}
 import singleton.ops._
 
 val four1 : 4 = implicitly[2 + 2]
@@ -129,11 +134,14 @@ object MyVec {
 }
 val myVec : MyVec[10] = MyVec[4 + 1].doubleSize
 val myBadVec = MyVec[-1] //fails compilation, as required
+{% endhighlight %}
 ```  
 We currently loose some of the intuitive appeal due to the precedence issue:
 ```scala
+{% highlight scala %}
 val works : 1 + (2 * 3) + 4 = 11
 val fails : 1 + 2 * 3 + 4 = 11 //left associative:(((1+2)*3)+4))) = 13
+{% endhighlight %}
 ```
 
 #### Developer issues example
@@ -148,31 +156,37 @@ http://stackoverflow.com/questions/23333882/scala-infix-type-aliasing-for-2-type
 Variance annotation uses the `-` and `+` symbols to annotate contravariant and covariant subtyping, respectively. Introducing unary prefix types may lead to some developer confusion.
 E.g.
 ```scala
+{% highlight scala %}
 trait Negate[A]
 trait Positive[A]
 type unary_-[A] = Negate[A] 
 type unary_+[A] = Positive[A] 
 trait Contravariant[B, -A <: -B] //contravariant A subtype upper-bounded by Negate[B]
 trait Covariant[B, +A <: +B] //covariant A subtype upper-bounded by Positive[B]
+{% endhighlight %}
 ```
 
 #### Negative Literal Types
 Negative literal types are annotated using the `-` symbol. This can lead to the following confusion:
 ```scala
+{% highlight scala %}
 trait Negate[A]
 type unary_-[A] = Negate[A] 
 trait MyTrait[B]
 
 type MinusFortyTwo = MyTrait[-42] 
 type NegateFortyTwo = MyTrait[Negate[42]]
+{% endhighlight %}
 ```
 The above example demonstrates a case of two types `MinusFortyTwo` and `NegateFortyTwo` which are different. They may be equivalent in view (implicit conversion between the two type instances), but they are not equal.
 
 Note: It is not possible to annotate a positive literal type in Scala (checked both in TLS and Dotty):
 ```scala
+{% highlight scala %}
 val a : 42 = +42 //works
 val b : -42 = -42 //works
 val c : +42 = 42 //error: ';' expected but integer literal found 
+{% endhighlight %}
 ```
 This means that if unary prefix types are added, then `+42` will be a type expansion of `unary_+[42]`.
 
