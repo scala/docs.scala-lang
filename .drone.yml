@@ -1,0 +1,10 @@
+pipeline:
+  build:
+    image: ruby:2.0
+    commands:
+      - curl -L -o coursier https://git.io/vgvpD
+      - bundle install
+      - chmod +x coursier
+      - ./scripts/run-tut.sh
+      - rm -r tut-tmp
+      - bundle exec jekyll build
