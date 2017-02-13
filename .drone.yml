@@ -1,0 +1,9 @@
+pipeline:
+  build:
+    image: scalaplatform/jdk8-ruby2-coursier:0.1
+    pull: true
+    commands:
+      - bundle install
+      - ./scripts/run-tut.sh
+      - rm -r tut-tmp
+      - bundle exec jekyll build
