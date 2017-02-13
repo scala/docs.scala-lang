@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: 통합 타입
+title: 통합된 타입
 
 disqus: true
 
