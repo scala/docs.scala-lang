@@ -16,4 +16,4 @@ before_script: chmod +x coursier
 script:
 - ./scripts/run-tut.sh
 - rm -r tut-tmp
-- bundle exec jekyll build
+- travis_wait 30 bundle exec jekyll build
