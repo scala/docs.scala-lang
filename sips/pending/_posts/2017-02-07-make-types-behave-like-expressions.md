@@ -5,7 +5,7 @@ title: SIP-NN - Match infix & prefix types to meet expression rules
 ---
 
 **By: Oron Port**
- 
+
 ## History
 
 | Date          | Version                  |
