@@ -3,7 +3,7 @@ layout: sip
 title: SIP 25 - @static fields and methods in Scala objects(SI-4581)
 disqus: true
 
-vote-status: under revision
+vote-status: under review
 vote-text: Authors need to update the proposal before the next review.
 ---
 
@@ -105,7 +105,7 @@ The following rules ensure that methods can be correctly compiled into static me
 
 1. Only objects can have members annotated with `@static`
 
-2. The fields annotated with `@static` should preceed any non-`@static` fields. This ensures that we do not introduce surprises for users in initialization order.
+2. The fields annotated with `@static` should preceed any non-`@static` fields. This ensures that we do not introduce surprises for users in initialization order of this class.
 
 3. The right hand side of a method or field annotated with `@static` can only refer to top-level classes, members of globally accessible objects and `@static` members. In particular, for non-static objects `this` is not accesible. `super` is never accessible.
 
@@ -114,6 +114,8 @@ The following rules ensure that methods can be correctly compiled into static me
 5. If a member `foo` of an `object C` is annotated with `@static`, the companion class `C` is not allowed to inherit classes that define a term member with name `foo`.
 
 6. Only `@static` methods and vals are supported in companions of traits. Java8 supports those, but not vars, and JavaScript does not have interfaces at all.
+
+Note that because of platform requirements for JavaScript interop, rules `3` and `4` would be lifted for objects that have a companion class that inherits `js.Any`.
 
 ## Compilation scheme ##
 
@@ -132,12 +134,83 @@ Java allows classes to define static methods with the same name and signature as
 This is required because in Java calling a `static` method on a class instance is supported.
 This proposal does not need to introduce this notion as we do not support such calls.
 
+## Scala.js and @JSStatic ##
+As Scala.js needs this feature fast, a decision has been made to ship it under a name of `@JSStatic` before waiting for this SIP to be accepted and implemented in `scalac`. When this SIP is accepted and implemented in `scalac` the `@JSStatic` would become a deprecated type alias to `scala.static`.
+
 ## Comparison with [@lrytz's proposal](https://gist.github.com/lrytz/80f3141de8240f9629da) ##
 Lukas Rytz has proposed a similar SIP, but his SIP requires changes to the typer to ensure that `@static` fields do not capture `this`, as in his proposal `@static` fields are defined in the class, rather than its companion object.
 It also does not address the question of `@static` members in inner objects and inheritance/hiding of those methods in subclasses.
 
 ## Open questions ##
  - @static lazy val
+ 
+## Initialization order discussion ##
+In general, emission of static fields could affect the initialization order and change semantics.
+This SIP solves this by enforcing (rule `2`) that `@static` fields and expressions preceed non-static fields.
+This means that no code precedes the `@static` field initialization which makes it hard to observe the difference between if the field is initialized statically or not, 
+since fields are initialized in the order `as written`, similar to how normal fields are initialized.
+
+The `@static` proposal is similar to `@tailrec` in a sense that it fails compilation in the case where the user did not write code that follows the aforementioned rules. 
+These rules exist to enforce the unlikelyhood of an observable difference in semantics if `@static` annotations are dropped;
+The restrictions in this SIP make it hard to observe changes in initialization within the same object.
+It is still possible to observe those changes using multiple classes and side effects within initializers:
+
+```scala
+{% highlight scala %}
+class C { 
+  val x = {println("x"); 1 } 
+}
+
+
+object O extends C { 
+  val y = { println("y"); 2 } 
+  // prints:
+  // x
+  // y
+}
+    
+object Os extends C { 
+  @static val y = { println("y"); 2 }
+   // prints:
+   // y
+   // x
+}
+{% endhighlight %}
+```
+
+Static fields can be initialized earlier than they used to be initialized while being non-static, but never later.
+By requiring `@static` first to be defined first inside the object, 
+we guarantee that you can't observe the changes in initialization withing the same object without resorting to code which either uses `Unsafe` or exhibits undefined behaviour under the JVM.
+
+## Could `@static` be a `@tailrec`-like annotation that doesn't affect code generation but only checks ##
+Unlike `@tailrec` this annotation does affect the binary API and dropping such an annotation would be a binary incompatible change. This is why authors believe that developers should be in full control of what is static.
+
+## Alternative: Emitting fields of objects as static by default ##
+An alternative to this proposal would be to emit all the fields defined in objects as static.
+Unfortunately this gets us under dark waters when we try to figure out in the following example:
+
+```
+{% highlight scala %}
+class Super {
+ val c = {println(1); 1}
+}
+object Object extends Super {
+ override val c = {println(2); 2}
+ val d = {println(3); 2}
+}
+{% endhighlight %}
+```
+Let's consider possible options:
+
+ - if the field `c` is emitted as `static` on the bytecode level, it will be initialized before the `c` in superclass is initialized, reordering side-effects in initializers;
+ - if the field `c` is _not_ emitted as `static` but the field `d` is, then the order of initialization would also be affected, reordering side-effects.
+ 
+Based on the previous study done in preparation for this SIP, the authors believe that the only reasonable way to maintain current sematics would be to say that such alternative would require these rules:
+
+ - only the fields which were not declared by parents of the object can be emitted as static;
+ - only fields that are lexically defined before any non-static field or statement in the body can be emitted as static.
+
+Authors believe that the alternative would require the same effort to implement, but will be less intuitive to users and harder to control as, for example, reodering fields in object might not be binary compatible.
 
 ## See Also ##
  * [SI-4581](https://issues.scala-lang.org/browse/SI-4581) is a request for a `@static` annotation
