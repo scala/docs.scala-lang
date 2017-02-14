@@ -37,7 +37,7 @@ class Point(var x: Int, var y: Int) {
 ```
 
 This `Point` class has four members: the variables `x` and `y` and the methods `move` and
-`toString`. Unlike many other languages, the primary constructor is in the class signature `(var x: Int, var y: Int)`. The `move` method takes two integer arguments but does not return a value (the return type `Unit` corresponds to `void` in Java-like languages). `toString`, on the other hand, does not take any parameters but returns a `String` value. Since `toString` overrides the pre-defined `toString` method, it is tagged with the `override` keyword.
+`toString`. Unlike many other languages, the primary constructor is in the class signature `(var x: Int, var y: Int)`. The `move` method takes two integer arguments but does not return a value (the return type `Unit` corresponds to `void` in Java-like languages). `toString`, on the other hand, does not take any parameters but returns a `String` value. Since `toString` overrides the inherited `toString` method, it is tagged with the `override` keyword.
 
 ## Constructors
 
@@ -57,18 +57,18 @@ Optional parameters give you a lot of flexibility but if you still need more fle
 class Point {
   def this(x: Int, y: Int) {
     this()
-    if (x > 100 || y > 100) println("Out of bounds: " + toString)
+    if (x > 100 || y > 100) println("Warning: Out of bounds)
   }
 }
 ```
 There are few requirements for auxiliary constructors:
-* The procedure must be called `def this`
-* The arguments must _not_ be declared `val` or `var`
+* They must start with `def this`
+* The parameters must _not_ be declared `val` or `var`
 * The first statement in the body must call the primary constructor or another auxiliary constructor. In the example above, the implicit primary constructor, `this()`, is called.
 
 ## Member scope
 Methods are public by default. Use the `private` access modifier
-to hide them from outside them outside of the class.
+to hide them from outside of the class.
 ```tut
 import scala.math._
 
@@ -80,11 +80,31 @@ class Point(var x: Double, var y: Double) {
   }
 ```
 
+You can also simply nest private methods inside of the public ones
+that use them:
+
+```
+class Point(var x: Double, var y: Double) {
+
+  override def toString: String = {
+    def distanceFromOrigin = sqrt(x * x + y * y)
+
+    s"Point: ($x, $y"), Distance from origin: $distanceFromOrigin"
+
+  }
+}
+```
+
 Primary constructor parameters with `val` and `var` are public. However, because `val`s are immutable, you can't write the following.
 ```
 class Point(val x: Int, val y: Int)
 val point = new Point(1, 2)
-val.x = 3// <-- this doesn't compile
+val.x = 3  // <-- does not compile
 ```
 
-Parameters without `val` or `var` are private within the class and its subclasses.
+Parameters without `val` or `var` are private values, visible within the class and its subclasses.
+```
+class Point(x: Int, y: Int)
+val point = new Point(1, 2)
+val.x  // <-- does not compile
+```
