@@ -12,9 +12,9 @@ tutorial-next: upper-type-bounds
 tutorial-previous: generic-classes
 ---
 
-Scala wspiera adnotacje wariancji parametrów typów [klas generycznych](generic-classes.html). W porównaniu do Javy, adnotacje wariancji mogą zostać dodane podczas definiowania abstrakcji klasy, gdy w Javie adnotacje wariancji są podane przez użytkowników tych klas.
+Scala wspiera adnotacje wariancji parametrów typów [klas generycznych](generic-classes.html). W porównaniu do Javy adnotacje wariancji mogą zostać dodane podczas definiowania abstrakcji klasy, gdy w Javie adnotacje wariancji są podane przez użytkowników tych klas.
 
-Na stronie o [klasach generycznych](generic-classes.html) omówiliśmy przykład zmiennego stosu. Wyjaśniliśmy, że typ definiowany przez klasę `Stack[T]` jest poddany niezmiennemu podtypowaniu w stosunku do parametru typu. Może to ograniczyć możliwość ponownego wykorzystania abstrakcji tej klasy. Spróbujemy teraz opracować funkcyjną (tzn. niemutowalną) implementację dla stosów, które nie posiadają tego ograniczenia. Warto zwrócić uwagę na to, że jest to zaawansowany przykład łączący w sobie zastosowanie [funkcji polimorficznych](polymorphic-methods.html), [dolnych ograniczeń typu](lower-type-bounds.html) oraz kowariantnych adnotacji parametru typu. Dodatkowo stosujemy też [klasy wewnętrzne](inner-classes.html), aby połączyć ze sobą elementy stosu bez jawnych powiązań.
+Na stronie o [klasach generycznych](generic-classes.html) omówiliśmy przykład zmiennego stosu. Wyjaśniliśmy, że typ definiowany przez klasę `Stack[T]` jest poddany niezmiennemu podtypowaniu w stosunku do parametru typu. Może to ograniczyć możliwość ponownego wykorzystania abstrakcji tej klasy. Spróbujemy teraz opracować funkcyjną (tzn. niemutowalną) implementację dla stosów, które nie posiadają tego ograniczenia. Warto zwrócić uwagę, że jest to zaawansowany przykład łączący w sobie zastosowanie [funkcji polimorficznych](polymorphic-methods.html), [dolnych ograniczeń typu](lower-type-bounds.html) oraz kowariantnych adnotacji parametru typu. Dodatkowo stosujemy też [klasy wewnętrzne](inner-classes.html), aby połączyć ze sobą elementy stosu bez jawnych powiązań.
 
 ```tut
 class Stack[+A] {

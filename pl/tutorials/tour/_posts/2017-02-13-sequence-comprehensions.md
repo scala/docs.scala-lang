@@ -47,7 +47,7 @@ object ComprehensionTest2 extends App {
 }
 ```
  
-Ten przykład pokazuje, że wyrażenia for nie są ograniczone do list. Każdy typ danych, który wspiera operacje: `withFilter`, `map` oraz `flatMap` (z odpowiednimi typami) może być użyty w instrukcjach for.
+Ten przykład pokazuje, że wyrażenia for nie są ograniczone do list. Każdy typ danych, który wspiera operacje: `withFilter`, `map` oraz `flatMap` (z odpowiednimi typami), może być użyty w instrukcjach for.
 
 Wynik powyższego programu:
 
@@ -58,7 +58,7 @@ Wynik powyższego programu:
 (16, 16)
 ```
 
-Istnieje szczególna postać instrukcji for, które zwracają `Unit`. Tutaj wiązania utworzone przez listę generatorów i filtrów są użyte do wykonania efektów ubocznych. Aby to osiągnąć należy pominąć słowo kluczowe `yield`:
+Istnieje szczególna postać instrukcji for, które zwracają `Unit`. Tutaj wiązania utworzone przez listę generatorów i filtrów są użyte do wykonania efektów ubocznych. Aby to osiągnąć, należy pominąć słowo kluczowe `yield`:
  
 ```
 object ComprehensionTest3 extends App {

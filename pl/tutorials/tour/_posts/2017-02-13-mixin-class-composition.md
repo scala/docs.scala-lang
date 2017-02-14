@@ -12,7 +12,7 @@ tutorial-next: anonymous-function-syntax
 tutorial-previous: traits
 ---
 
-W przeciwieństwie do języków które wspierają jedynie pojedyncze dziedziczenie, Scala posiada bardziej uogólniony mechanizm ponownego wykorzystania klas. Scala umożliwia na wykorzystanie _nowych elementów klasy_ (różnicy w stosunku do klasy bazowej) w definicji nowej klasy. Wyraża się to przy pomocy _kompozycji domieszek_.
+W przeciwieństwie do języków, które wspierają jedynie pojedyncze dziedziczenie, Scala posiada bardziej uogólniony mechanizm ponownego wykorzystania klas. Scala umożliwia wykorzystanie _nowych elementów klasy_ (różnicy w stosunku do klasy bazowej) w definicji nowej klasy. Wyraża się to przy pomocy _kompozycji domieszek_.
 
 Rozważmy poniższe uogólnienie dla iteratorów:
 
@@ -24,7 +24,7 @@ abstract class AbsIterator {
 }
 ```
  
-Następnie, rozważmy klasę domieszkową, która doda do klasy `AbsIterator` metodę `foreach` wykonującą podaną funkcję dla każdego elementu zwracanego przez iterator. Aby zdefiniować klasę domieszkową użyjemy słowa kluczowego `trait`:
+Następnie rozważmy klasę domieszkową, która doda do klasy `AbsIterator` metodę `foreach` wykonującą podaną funkcję dla każdego elementu zwracanego przez iterator. Aby zdefiniować klasę domieszkową, użyjemy słowa kluczowego `trait`:
 
 ```tut
 trait RichIterator extends AbsIterator {
@@ -43,7 +43,7 @@ class StringIterator(s: String) extends AbsIterator {
 }
 ```
  
-Chcielibyśmy także połączyć funkcjonalność `StringIterator` oraz `RichIterator` w jednej klasie. Z pojedynczym dziedziczeniem czy też samymi interfejsami jest to niemożliwe, gdyż obie klasy zawierają implementacje metod. Scala pozwala na rozwiązanie tego problemu z użyciem _kompozycji domieszek_. Umożliwia ona na ponowne wykorzystanie różnicy definicji klas, tzn. wszystkich definicji które nie zostały odziedziczone. Ten mechanizm pozwala nam na połączenie `StringIterator` z `RichIterator`, tak jak w poniższym przykładzie, gdzie chcielibyśmy wypisać w kolumnie wszystkie znaki z danego łańcucha:
+Chcielibyśmy także połączyć funkcjonalność `StringIterator` oraz `RichIterator` w jednej klasie. Z pojedynczym dziedziczeniem czy też samymi interfejsami jest to niemożliwe, gdyż obie klasy zawierają implementacje metod. Scala pozwala na rozwiązanie tego problemu z użyciem _kompozycji domieszek_. Umożliwia ona ponowne wykorzystanie różnicy definicji klas, tzn. wszystkich definicji, które nie zostały odziedziczone. Ten mechanizm pozwala nam na połączenie `StringIterator` z `RichIterator`, tak jak w poniższym przykładzie - gdzie chcielibyśmy wypisać w kolumnie wszystkie znaki z danego łańcucha:
  
 ```tut
 object StringIteratorTest {

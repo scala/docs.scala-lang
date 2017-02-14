@@ -96,4 +96,4 @@ class Graph {
 }
 ```
  
-> Ważne jest, że ten program nie pozwala nam na dołączenie wierzchołka do dwóch różnych grafów. Jeżeli byśmy chcieli znieść to ograniczenie, należy zmienić typ zmiennej `nodes` na `Graph#Node`.
+> Ważne jest, że ten program nie pozwala nam na dołączenie wierzchołka do dwóch różnych grafów. Jeżeli chcielibyśmy znieść to ograniczenie, należy zmienić typ zmiennej `nodes` na `Graph#Node`.

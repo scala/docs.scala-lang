@@ -14,7 +14,7 @@ tutorial-previous: explicitly-typed-self-references
 
 Metodę z _parametrami domniemanymi_ można stosować tak samo jak każdą zwyczajną metodę. W takim przypadku etykieta `implicit` nie ma żadnego znaczenia. Jednak jeżeli odpowiednie argumenty dla parametrów domniemanych nie zostaną jawnie określone, to kompilator dostarczy je automatycznie.
 
-Argumenty które mogą być przekazywane jako parametry domniemane można podzielić na dwie kategorie:
+Argumenty, które mogą być przekazywane jako parametry domniemane, można podzielić na dwie kategorie:
 
 * Najpierw dobierane są takie identyfikatory, które są dostępne bezpośrednio w punkcie wywołania metody i które określają definicję lub parametr domniemany.
 * W drugiej kolejności dobrane mogą być elementy modułów towarzyszących odpowiadających typom tych parametrów domniemanych, które są oznaczone jako `implicit`.
@@ -45,7 +45,7 @@ object ImplicitTest extends App {
     if (xs.isEmpty) m.unit
     else m.add(xs.head, sum(xs.tail))
 
-  /** Wywołamy tutaj dwa razy sum, podając za każdym razem tylko listę. Ponieważ drugi parametr (m) jest domniemany, jego wartość jest wyszukiwana przez kompilator w aktualnym zasięgu, na podstawie typu monoidu wymaganego w każdym przypadku, co oznacza że oba wyrażenia mogą być w pełni ewaluowane. */
+  /** Wywołamy tutaj dwa razy sum podając za każdym razem tylko listę. Ponieważ drugi parametr (m) jest domniemany, jego wartość jest wyszukiwana przez kompilator w aktualnym zasięgu na podstawie typu monoidu wymaganego w każdym przypadku, co oznacza że oba wyrażenia mogą być w pełni ewaluowane. */
   println(sum(List(1, 2, 3)))          // używa IntMonoid
   println(sum(List("a", "b", "c")))    // używa StringMonoid
 }

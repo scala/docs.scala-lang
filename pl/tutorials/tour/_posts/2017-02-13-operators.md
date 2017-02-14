@@ -12,7 +12,7 @@ tutorial-next: automatic-closures
 tutorial-previous: local-type-inference
 ---
 
-Każda metoda, która przyjmuje jeden parametr może być użyta jako *operator infiksowy*. Oto definicja klasy `MyBool` która zawiera metody `and` i `or`:
+Każda metoda, która przyjmuje jeden parametr, może być użyta jako *operator infiksowy*. Oto definicja klasy `MyBool` która zawiera metody `and` i `or`:
 
 ```tut
 case class MyBool(x: Boolean) {

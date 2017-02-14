@@ -47,6 +47,6 @@ object Main extends App {
 }
 ```
 
-Instancja klasy `Cage` może zawierać `Animal` z górnym ograniczeniem `Pet`. Obiekt typu `Lion` nie należy do klasy `Pet` zatem nie może być włożony do obiektu `Cage`.
+Instancja klasy `Cage` może zawierać `Animal` z górnym ograniczeniem `Pet`. Obiekt typu `Lion` nie należy do klasy `Pet`, zatem nie może być włożony do obiektu `Cage`.
 
 Zastosowanie dolnych ograniczeń typów jest opisane [tutaj](lower-type-bounds.html).

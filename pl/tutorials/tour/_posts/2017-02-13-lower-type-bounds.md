@@ -14,7 +14,7 @@ tutorial-previous: upper-type-bounds
 
 Podczas gdy [górne ograniczenia typów](upper-type-bounds.html) zawężają typ do podtypu innego typu, *dolne ograniczenia typów* określają dany typ jako typ bazowy innego typu. Sformułowanie `T >: A` wyraża, że parametr typu `T` lub typ abstrakcyjny `T` odwołuje się do typu bazowego `A`.
 
-Oto przykład w którym jest to użyteczne:
+Oto przykład, w którym jest to użyteczne:
 
 ```tut
 case class ListNode[T](h: T, t: ListNode[T]) {
@@ -31,7 +31,7 @@ Powyższy program implementuje listę jednokierunkową z operacją dodania eleme
 case class ListNode[+T](h: T, t: ListNode[T]) { ... }
 ```
 
-Niestety ten program się nie skompiluje, ponieważ adnotacja kowariancji może być zastosowana tylko jeżeli zmienna typu jest używana wyłącznie w pozycji kowariantnej. Jako że zmienna typu `T` występuje jako parametr typu metody `prepend`, ta zasada jest złamana. Z pomocą *dolnego ograniczenia typu*, możemy jednak zaimplementować tą metodę w taki sposób, że `T` występuje tylko w pozycji kowariantnej:
+Niestety ten program się nie skompiluje, ponieważ adnotacja kowariancji może być zastosowana tylko, jeżeli zmienna typu jest używana wyłącznie w pozycji kowariantnej. Jako że zmienna typu `T` występuje jako parametr typu metody `prepend`, ta zasada jest złamana. Z pomocą *dolnego ograniczenia typu* możemy jednak zaimplementować tą metodę w taki sposób, że `T` występuje tylko w pozycji kowariantnej:
 
 ```tut
 case class ListNode[+T](h: T, t: ListNode[T]) {
@@ -44,7 +44,7 @@ case class ListNode[+T](h: T, t: ListNode[T]) {
 
 _Uwaga:_ nowa wersja metody `prepend` ma mniej ograniczający typ. Przykładowo pozwala ona na dodanie obiektu typu bazowego elementów istniejącej listy. Wynikowa lista będzie listą tego typu bazowego.
 
-Przykład który to ilustruje:
+Przykład, który to ilustruje:
 
 ```tut
 object LowerBoundTest extends App {
