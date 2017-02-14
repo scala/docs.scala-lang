@@ -21,11 +21,13 @@ As long as declarations in source have not changed, `@stableABI` annotated class
 It complements MiMa\[[2]\] in indicating if a class will remain binary compatible across major Scala releases.
 
 ## Term definitions
-* #####Binary descriptors
 
-  As defined by the JVM spec\[[4]\]: 
+* ##### Binary descriptors
+
+As defined by the JVM spec\[[4]\]: 
+
   > A descriptor is a string representing the type of a field or method. Descriptors are represented in the class file format using modified UTF-8 strings (§4.4.7)
-   and thus may be drawn, where not further constrained, from the entire Unicode codespace.
+  >  and thus may be drawn, where not further constrained, from the entire Unicode codespace.
   >
   > A method descriptor contains zero or more parameter descriptors, representing the types of parameters that the method takes, and a return descriptor, representing the type of the value (if any) that the method returns. 
     
@@ -34,7 +36,7 @@ It complements MiMa\[[2]\] in indicating if a class will remain binary compatibl
   runtime as they no longer link to the changed field.
   
   In this document we use the term `binary descriptor` to refer to both method and field descriptors used by the JVM.
-* #####Public API
+* ##### Public API
   
   Methods and fields marked with `ACC_PUBLIC`\[[5]\] may be accessed from any class and package. 
   This loosely corresponds to absence of AccessModifier\[[6]\] in Scala source.
@@ -48,7 +50,7 @@ It complements MiMa\[[2]\] in indicating if a class will remain binary compatibl
   
   In this document we use the term `Public API` to refer both to methods and fields defined as `ACC_PUBLIC` and `ACC_PROTECTED`. 
   Changes do binary descriptors of Public API may lead to runtime linkage failures.  
-* #####Binary compatibility
+* ##### Binary compatibility
 
   Two versions of the same class are called binary compatible if there are no changes to the Public API of this class,
   meaning that those two classes can be substituted in runtime without linkage errors.
@@ -78,6 +80,7 @@ the current approach is to either develop them in Java or to use best guess to r
 There's also a different approach which is used by SBT: instead of publishing a binary `compiler-interface`, sources are published instead that would be locally compiled.
 
 Examples:
+
   1. Zinc\[[8]\] is writing their interfaces in Java because the interface has to be Scala version agnostic, as it is shipped in every sbt release, independently of Scala version that was used to compile zinc or will be used in to compile the project.
 SBT additionally compiles on demand the compiler bridge, which implements this Java interface. 
 
