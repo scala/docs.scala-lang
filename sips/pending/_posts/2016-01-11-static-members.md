@@ -155,7 +155,6 @@ These rules exist to enforce the unlikelyhood of an observable difference in sem
 The restrictions in this SIP make it hard to observe changes in initialization within the same object.
 It is still possible to observe those changes using multiple classes and side effects within initializers:
 
-```scala
 {% highlight scala %}
 class C { 
   val x = {println("x"); 1 } 
@@ -176,7 +175,7 @@ object Os extends C {
    // x
 }
 {% endhighlight %}
-```
+
 
 Static fields can be initialized earlier than they used to be initialized while being non-static, but never later.
 By requiring `@static` first to be defined first inside the object, 
@@ -189,7 +188,7 @@ Unlike `@tailrec` this annotation does affect the binary API and dropping such a
 An alternative to this proposal would be to emit all the fields defined in objects as static.
 Unfortunately this gets us under dark waters when we try to figure out in the following example:
 
-```
+
 {% highlight scala %}
 class Super {
  val c = {println(1); 1}
@@ -199,7 +198,7 @@ object Object extends Super {
  val d = {println(3); 2}
 }
 {% endhighlight %}
-```
+
 Let's consider possible options:
 
  - if the field `c` is emitted as `static` on the bytecode level, it will be initialized before the `c` in superclass is initialized, reordering side-effects in initializers;
