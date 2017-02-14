@@ -36,6 +36,7 @@ As defined by the JVM spec\[[4]\]:
   runtime as they no longer link to the changed field.
   
   In this document we use the term `binary descriptor` to refer to both method and field descriptors used by the JVM.
+  
 * ##### Public API
   
   Methods and fields marked with `ACC_PUBLIC`\[[5]\] may be accessed from any class and package. 
@@ -50,6 +51,7 @@ As defined by the JVM spec\[[4]\]:
   
   In this document we use the term `Public API` to refer both to methods and fields defined as `ACC_PUBLIC` and `ACC_PROTECTED`. 
   Changes do binary descriptors of Public API may lead to runtime linkage failures.  
+  
 * ##### Binary compatibility
 
   Two versions of the same class are called binary compatible if there are no changes to the Public API of this class,
@@ -101,6 +103,7 @@ This is because we will be able to allow more features later, but we won't have 
 
 ## Overview ##
 In order for a class, trait or an object to succeed compilation with the `@stableABI` annotation it has to be:
+
   - defined on the top level;
   - if a class or an object has a companion annotated with `@stableABI`, than annotation applies to both of them;
   - use a subset of Scala that during compilation does not require changes to public API of the class, including
@@ -164,6 +167,7 @@ Note that while those features are prohibited in the public API, they can be saf
   - case classes. Can be simulated by explicitly defining getters and other members synthesized for a case class(`copy`, `productArity`, `apply`, `unapply`, etc).
 
 The features listed below cannot be easily re-implemented in a class or trait annotated with `@stableABI`.
+
   - default arguments;
   - default methods. See Addendum;
   - constant types(both explicit and inferred);
@@ -194,6 +198,7 @@ While in perfect world it would be nice to require all `@stableABI` classes and 
 and only return `@stableABI` values, we believe that all-or-nothing system will be a lot harder to adopt and migrate to.
 
 Because of this we propose to emmit warnings in those cases:
+
   - non-`@stableABI` value is returned from a method or field defined inside a `@stableABI` class or trait;
   - an invocation to a method not-defined inside a `@stableABI` class is used in  
   implementation of a method or a field initializer inside a `@stableABI` class or trait.   
@@ -237,6 +242,7 @@ This provides early guidance and warning when designing long-living APIs before 
 
 ## Compilation scheme ##
 No modification of typer or any existing phase is planned. The current proposed scheme introduces a late phase that runs before the very bytecode emission that checks that:
+
  - classes, traits and objects annotated as  `@stableABI` are on the top level; 
  - compiler did not introduce new Public API methods or fields inside  `@stableABI` classes, traits and objects;
  - compiler did not change descriptors of existing Public API methods or fields inside `@stableABI` classes, traits and objects.
