@@ -9,42 +9,82 @@ num: 4
 next-page: traits
 previous-page: unified-types
 topics: classes
-assumed-knowledge: no-return-keyword, type-syntax
+assumed-knowledge: no-return-keyword, type-declaration-syntax, string-interpolation
 ---
 
-Classes in Scala are static templates that can be instantiated into many objects at runtime.
-Here is a class definition which defines a class `Point`:
+Classes in Scala are blueprints for creating objects. They can contain methods,
+values, and variables, which are collectively called _members_.
+
+## Defining a class
+A minimal class definition is simply the keyword `class` and
+an identifier:
+```tut
+class MyClass
+```
+However, a class will often have a primary constructor and a body as well. Here is an example class definition for a point:
 
 ```tut
 class Point(var x: Int, var y: Int) {
+
   def move(dx: Int, dy: Int): Unit = {
     x = x + dx
     y = y + dy
   }
+
   override def toString: String =
-    "(" + x + ", " + y + ")"
+    s"($x, $y)"
 }
 ```
 
-Classes in Scala are parameterized with constructor arguments. The code above defines two constructor arguments, `x` and `y`; they are both visible in the whole body of the class.
+This `Point` class has four members: the variables `x` and `y` and the methods `move` and
+`toString`. Unlike many other languages, the primary constructor is in the class signature `(var x: Int, var y: Int)`. The `move` method takes two integer arguments but does not return a value (the return type `Unit` corresponds to `void` in Java-like languages). `toString`, on the other hand, does not take any parameters but returns a `String` value. Since `toString` overrides the pre-defined `toString` method, it is tagged with the `override` keyword.
 
-The class also includes two methods, `move` and `toString`. `move` takes two integer arguments but does not return a value (the return type `Unit` corresponds to `void` in Java-like languages). `toString`, on the other hand, does not take any parameters but returns a `String` value. Since `toString` overrides the pre-defined `toString` method, it is tagged with the `override` keyword.
+## Constructors
 
-Note that in Scala, it isn't necessary to say `return` in order to return a value. The value returned from a method is simply the last value in the method body. In the case of the `toString` method above, the expression after the equals sign is evaluated and returned to the caller.
-
-Classes are instantiated with the `new` primitive, as follows:
+Constructors can have optional parameters by providing a default value like so:
 
 ```tut
-val pt = new Point(1, 2) // <-- the "new" keyword is used to create an instance of the class Point
-println(pt)
-pt.move(10, 10)
-println(pt)
+class Point(var x: Int = 0, var y: Int = 0)
 
+val origin = new Point()
+
+println(origin) // (0, 0)
 ```
 
-Here is the output of the program:
+Optional parameters give you a lot of flexibility but if you still need more flexibility, you can create auxiliary constructors which are procedures (i.e. a `def` with no `=` and no return type).
 
+```tut
+class Point {
+  def this(x: Int, y: Int) {
+    this()
+    if (x > 100 || y > 100) println("Out of bounds: " + toString)
+  }
+}
 ```
-(1, 2)
-(11, 12)
+There are few requirements for auxiliary constructors:
+* The procedure must be called `def this`
+* The arguments must _not_ be declared `val` or `var`
+* The first statement in the body must call the primary constructor or another auxiliary constructor. In the example above, the implicit primary constructor, `this()`, is called.
+
+## Member scope
+Methods are public by default. Use the `private` access modifier
+to hide them from outside them outside of the class.
+```tut
+import scala.math._
+
+class Point(var x: Double, var y: Double) {
+  private def distanceFromOrigin = sqrt(x * x + y * y)
+
+  override def toString: String =
+    s"Point: ($x, $y"), Distance from origin: $distanceFromOrigin"
+  }
 ```
+
+Primary constructor parameters with `val` and `var` are public. However, because `val`s are immutable, you can't write the following.
+```
+class Point(val x: Int, val y: Int)
+val point = new Point(1, 2)
+val.x = 3// <-- this doesn't compile
+```
+
+Parameters without `val` or `var` are private within the class and its subclasses.
