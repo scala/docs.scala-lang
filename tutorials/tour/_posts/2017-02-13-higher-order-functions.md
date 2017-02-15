@@ -9,34 +9,112 @@ categories: tour
 num: 8
 next-page: nested-functions
 previous-page: anonymous-function-syntax
+assumed-knowledge: sequence-comprehensions, anonymous-function-syntax
 ---
 
-Scala allows the definition of higher-order functions. These are functions that _take other functions as parameters_, or whose _result is a function_. Here is a function `apply` which takes another function `f` and a value `v` and applies function `f` to `v`:
+Higher order functions take other functions as parameters or return a function as
+a result. This is possible because functions are first-class values in Scala.
+One of the most common examples is the higher-order
+function `map` which is available for collections in Scala.
+```tut
+val salaries = Seq(20000, 70000, 40000)
+val doubleSalary = (x: Int) => x * 2
+val newSalaries = salaries.map(doubleSalary) // List(40000, 140000, 80000)
+```
+`doubleSalary` is a function which takes a single Int, `x`, and returns `x * 2`. In general, the tuple on the left of the arrow `=>` is a parameter list and the value of the expression on the right is what gets returned. One line 3, the function `doubleSalary` gets applied to each element in the
+list of salaries.
+
+To shrink the code, we could make the function anonymous and pass it directly as
+an argument to map:
+```
+val salaries = Seq(20000, 70000, 40000)
+val newSalaries = salaries.map(x => x * 2) // List(40000, 140000, 80000)
+```
+Notice how `x` is not declared as an Int in the above example. That's because the
+compiler can infer the type based on the type of function map expects. An even more idiomatic way to write the same piece of code would be
 
 ```tut
-def apply(f: Int => String, v: Int) = f(v)
+val salaries = Seq(20000, 70000, 40000)
+val newSalaries = salaries.map(_ * 2)
 ```
+Since the Scala compiler already knows the type of the parameters (a single Int),
+ you just need to provide the right side of the function. The only
+caveat is that you need to use `_` in place of a parameter name (it was `x` in
+the previous example).
 
-_Note: methods are automatically coerced to functions if the context requires this._
+## Coercing methods into functions
+It is also possible to pass methods as arguments to higher-order functions because
+the Scala compiler will coerce the method into a function.
+```
+case class WeeklyWeatherForecast(temperatures: Seq[Double]) {
 
-Here is another example:
- 
+  private def convertCtoF(temp: Double) = temp * 1.8 + 32
+
+  def forecastInFahrenheit: Double = temperatures.map(convertCtoF) // <-- passing the method convertCtoF
+}
+```
+Here the method `convertCtoF` is passed to forecastInFahrenheit  This is possible because the compiler coerces `convertCtoF` to the function `x => convertCtoF(x)` (note: `x` will
+  be a generated name which is guaranteed to be unique within its scope).
+
+## Functions that accept functions
+One reason to use higher-order functions is to reduce redundant code. Let's say you wanted functions that could raise someone's salaries by various factors. Without creating a higher-order function,
+it might look something like this:
+
 ```tut
-class Decorator(left: String, right: String) {
-  def layout[A](x: A) = left + x.toString() + right
+object SalaryRaiser {
+
+  def smallPromotion(salaries: List[Double]): List[Double] =
+    salaries.map(salary => salary * 1.1)
+
+  def greatPromotion(salaries: List[Double]): List[Double] =
+    salaries.map(salary => salary * math.log(salary))
+
+  def hugePromotion(salaries: List[Double]): List[Double] =
+    salaries.map(salary => salary * salary)
+}
+```
+
+Notice how each of the three methods vary only by the multiplication factor. To simplify,
+you can extract the repeated code into a higher-order function like so:
+
+```tut
+object SalaryRaiser {
+
+  private def promotion(salaries: List[Double], promotionFunction: Double => Double): List[Double] =
+    salaries.map(promotionFunction)
+
+  def smallPromotion(salaries: List[Double]): List[Double] =
+    promotion(salaries, salary => salary * 1.1)
+
+  def bigPromotion(salaries: List[Double]): List[Double] =
+    promotion(salaries, salary => salary * math.log(salary))
+
+  def hugePromotion(salaries: List[Double]): List[Double] =
+    promotion(salaries, salary => salary * salary)
+}
+```
+
+The new function, `promotion`, takes the salaries plus a function of type `Double => Double`
+(i.e. a function that takes a Double and returns a Double) and returns the product.
+
+## Functions that return functions
+
+There are certain cases where you want to generate a function. Here's an example
+of a method that returns a function.
+
+```tut
+def urlBuilder(ssl: Boolean, domainName: String): (String, String) => String = {
+  val schema = if (ssl) "https://" else "http://"
+  (endpoint: String, query: String) => s"$schema$domainName/$endpoint?$query"
 }
 
-object FunTest extends App {
-  def apply(f: Int => String, v: Int) = f(v)
-  val decorator = new Decorator("[", "]")
-  println(apply(decorator.layout, 7))
-}
-```
- 
-Execution yields the output:
-
-```
-[7]
+val domainName = "www.example.com"
+def getURL = urlBuilder(ssl=true, domainName)
+val endpoint = "users"
+val query = "id=1"
+val url = getURL(endpoint, query) // "https://www.example.com/users?id=1": String
 ```
 
-In this example, the method `decorator.layout` is coerced automatically to a value of type `Int => String` as required by method `apply`. Please note that method `decorator.layout` is a _polymorphic method_ (i.e. it abstracts over some of its signature types) and the Scala compiler has to instantiate its method type first appropriately.
+Notice the return type of urlBuilder `(String, String) => String`. This means that
+the returned anonymous function takes two Strings and returns a String. In this case,
+the returned anonymous function is `(endpoint: String, query: String) => s"$schema$domainName/$endpoint?$query"`.
