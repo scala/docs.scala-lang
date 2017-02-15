@@ -18,7 +18,7 @@ languages: [ja, zh-cn]
     scala> val a3 = a2 filter (_ % 2 != 0)
     a3: Array[Int] = Array(3, 9)
     scala> a3.reverse
-    res1: Array[Int] = Array(9, 3)
+    res0: Array[Int] = Array(9, 3)
 
 Given that Scala arrays are represented just like Java arrays, how can these additional features be supported in Scala? In fact, the answer to this question differs between Scala 2.8 and earlier versions. Previously, the Scala compiler somewhat "magically" wrapped and unwrapped arrays to and from `Seq` objects when required in a process called boxing and unboxing. The details of this were quite complicated, in particular when one created a new array of generic type `Array[T]`. There were some puzzling corner cases and the performance of array operations was not all that predictable.
 
@@ -29,7 +29,7 @@ The Scala 2.8 design is much simpler. Almost all compiler magic is gone. Instead
     scala> val a4: Array[Int] = seq.toArray
     a4: Array[Int] = Array(1, 2, 3)
     scala> a1 eq a4
-    res2: Boolean = true
+    res1: Boolean = true
 
 The interaction above demonstrates that arrays are compatible with sequences, because there's an implicit conversion from arrays to `WrappedArray`s. To go the other way, from a `WrappedArray` to an `Array`, you can use the `toArray` method defined in `Traversable`. The last REPL line above shows that wrapping and then unwrapping with `toArray` gives the same array you started with.
 
@@ -74,7 +74,8 @@ The `evenElems` method returns a new array that consist of all elements of the a
 
     error: cannot find class manifest for element type T
       val arr = new Array[T]((arr.length + 1) / 2)
-            ^
+                ^
+
 What's required here is that you help the compiler out by providing some runtime hint what the actual type parameter of `evenElems` is. This runtime hint takes the form of a class manifest of type `scala.reflect.ClassManifest`. A class manifest is a type descriptor object which describes what the top-level class of a type is. Alternatively to class manifests there are also full manifests of type `scala.reflect.Manifest`, which describe all aspects of a type. But for array creation, only class manifests are needed.
 
 The Scala compiler will construct class manifests automatically if you instruct it to do so. "Instructing" means that you demand a class manifest as an implicit parameter, like this:
@@ -102,15 +103,15 @@ Here is some REPL interaction that uses the `evenElems` method.
 
 In both cases, the Scala compiler automatically constructed a class manifest for the element type (first, `Int`, then `String`) and passed it to the implicit parameter of the `evenElems` method. The compiler can do that for all concrete types, but not if the argument is itself another type parameter without its class manifest. For instance, the following fails:
 
-    scala> def wrap[U](xs: Array[U]) = evenElems(xs)
-    <console>:6: error: could not find implicit value for
-     evidence parameter of type ClassManifest[U]
-         def wrap[U](xs: Array[U]) = evenElems(xs)
-                                          ^
+    scala> def wrap[U](xs: Vector[U]) = evenElems(xs)
+    <console>:6: error: No ClassManifest available for U.
+         def wrap[U](xs: Vector[U]) = evenElems(xs)
+                                               ^
+
 What happened here is that the `evenElems` demands a class manifest for the type parameter `U`, but none was found. The solution in this case is, of course, to demand another implicit class manifest for `U`. So the following works:
 
-    scala> def wrap[U: ClassManifest](xs: Array[U]) = evenElems(xs)
-    wrap: [U](xs: Array[U])(implicit evidence$1: ClassManifest[U])Array[U]
+    scala> def wrap[U: ClassManifest](xs: Vector[U]) = evenElems(xs)
+    wrap: [U](xs: Vector[U])(implicit evidence$1: ClassManifest[U])Array[U]
 
 This example also shows that the context bound in the definition of `U` is just a shorthand for an implicit parameter named here `evidence$1` of type `ClassManifest[U]`.
 

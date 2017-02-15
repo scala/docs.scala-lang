@@ -1,5 +1,6 @@
 ---
-layout: default
+layout: post
+permalink: /tutorials/:categories/:title/
 ---
 {% include header.txt %}
 <div class="wrapper">
@@ -10,8 +11,8 @@ layout: default
 
       <div class="span10">{% if page.title %}<h1>{{ page.title }}</h1>{% else %}<h1>{{ site.title }}</h1>{% endif %}</div>
 
-      {% for pg in site.pages %}
-        {% if pg.tutorial == "scala-tour" and pg.languages %}
+      {% for pg in site.categories.tour %}
+        {% if pg.languages %}
           {% assign languages = pg.languages %}
         {% endif %}
       {% endfor %}
