@@ -104,7 +104,7 @@ The call is expanded to the following reflective macro invocation
 ## A complete example
 
 This section provides an end-to-end implementation of a `printf` macro, which validates and applies the format string at compile-time.
-For the sake of simplicity the discussion uses console Scala compiler, but as explained below macros are also supported by Maven and SBT.
+For the sake of simplicity the discussion uses console Scala compiler, but as explained below macros are also supported by Maven and sbt.
 
 Writing a macro starts with a macro definition, which represents the facade of the macro.
 Macro definition is a normal function with anything one might fancy in its signature.
@@ -217,9 +217,9 @@ An important aspect of macrology is separate compilation. To perform macro expan
 
 This scenario is covered in the previous section. In short, compile macros and their usages using separate invocations of `scalac`, and everything should work fine. If you use REPL, then it's even better, because REPL processes every line in a separate compilation run, so you'll be able to define a macro and use it right away.
 
-### Using macros with Maven or SBT
+### Using macros with Maven or sbt
 
-The walkthrough in this guide uses the simplest possible command-line compilation, but macros also work with build tools such as Maven and SBT. Check out [https://github.com/scalamacros/sbt-example](https://github.com/scalamacros/sbt-example) or [https://github.com/scalamacros/maven-example](https://github.com/scalamacros/maven-example) for end-to-end examples, but in a nutshell you only need to know two things:
+The walkthrough in this guide uses the simplest possible command-line compilation, but macros also work with build tools such as Maven and sbt. Check out [https://github.com/scalamacros/sbt-example](https://github.com/scalamacros/sbt-example) or [https://github.com/scalamacros/maven-example](https://github.com/scalamacros/maven-example) for end-to-end examples, but in a nutshell you only need to know two things:
 * Macros needs scala-reflect.jar in library dependencies.
 * The separate compilation restriction requires macros to be placed in a separate project.
 

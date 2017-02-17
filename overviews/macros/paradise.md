@@ -39,7 +39,7 @@ Proceed to the [the feature list](/overviews/macros/roadmap.html) document for m
 
 Consult [https://github.com/scalamacros/sbt-example-paradise](https://github.com/scalamacros/sbt-example-paradise)
 for an end-to-end example, but in a nutshell working with macro paradise is as easy as adding the following two lines
-to your build (granted you’ve already [set up SBT](/overviews/macros/overview.html#using_macros_with_maven_or_sbt)
+to your build (granted you’ve already [set up sbt](/overviews/macros/overview.html#using_macros_with_maven_or_sbt)
 to use macros).
 
     resolvers += Resolver.sonatypeRepo("releases")
