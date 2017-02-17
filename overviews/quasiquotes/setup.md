@@ -51,13 +51,13 @@ On the other side of spectrum there is also a `showRaw` pretty printer that show
 
 In Scala 2.10, quasiquotes are only available via the [macro paradise compiler plugin](http://docs.scala-lang.org/overviews/macros/paradise.html).
 
-In short, using quasiquotes in 2.10 is as simple as adding a single `addCompilerPlugin` line to your SBT build for the macro paradise plugin that enables quasiquotes and an additional `libraryDependencies` line for the supporting library that is necessary for quasiquotes to function in Scala 2.10. A full example is provided at [https://github.com/scalamacros/sbt-example-paradise](https://github.com/scalamacros/sbt-example-paradise).
+In short, using quasiquotes in 2.10 is as simple as adding a single `addCompilerPlugin` line to your sbt build for the macro paradise plugin that enables quasiquotes and an additional `libraryDependencies` line for the supporting library that is necessary for quasiquotes to function in Scala 2.10. A full example is provided at [https://github.com/scalamacros/sbt-example-paradise](https://github.com/scalamacros/sbt-example-paradise).
 
 New `showCode` pretty printer is not available under 2.10.
 
-## SBT cross-compile
+## sbt cross-compile
 
-Here's a neat SBT snippet taken from [Spire](https://github.com/non/spire) that allows you to use quasiquotes and cross-compile against both Scala 2.10 and 2.11:
+Here's a neat sbt snippet taken from [Spire](https://github.com/non/spire) that allows you to use quasiquotes and cross-compile against both Scala 2.10 and 2.11:
 
     libraryDependencies := {
       CrossVersion.partialVersion(scalaVersion.value) match {

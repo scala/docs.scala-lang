@@ -194,7 +194,7 @@ Jorge asks the SIP committee to provide  feedback to the authors to speed up the
 SLIP process in the future.
 
 * JSON AST: No news from the last discussion in the slip repo. It's been
-integrated into Play and SBT server 1.0. The committee considers that it's a
+integrated into Play and sbt server 1.0. The committee considers that it's a
 prime candidate for the platform.
 * Extensions of Futures and Promises: the committee calls for an implementation.
 This SLIP will be addressed by the next SLIP committee.

@@ -217,9 +217,9 @@ Scala コードの生成については[リフレクションの概要](http://d
 このシナリオは前節で説明したとおりだ。つまり、マクロとそれを使用するコードを別に呼び出した `scalac` によってコンパイルすることで、全てうまくいくはずだ。REPL をつかっているなら、さらに都合がいい。なぜなら REPL はそれぞれの行を独立したコンパイルとして扱うため、マクロを定義してすぐに使うことができる。
 
 <a name="using_macros_with_maven_or_sbt">&nbsp;</a>
-### Maven か SBT を用いてマクロを使う
+### Maven か sbt を用いてマクロを使う
 
-本稿での具体例では最もシンプルなコマンドラインのコンパイルを使っているが、マクロは Maven や SBT などのビルドツールからも使うことができる。完結した具体例としては [https://github.com/scalamacros/sbt-example](https://github.com/scalamacros/sbt-example) か [https://github.com/scalamacros/maven-example](https://github.com/scalamacros/maven-example) を見てほしいが、要点は以下の 2点だ:
+本稿での具体例では最もシンプルなコマンドラインのコンパイルを使っているが、マクロは Maven や sbt などのビルドツールからも使うことができる。完結した具体例としては [https://github.com/scalamacros/sbt-example](https://github.com/scalamacros/sbt-example) か [https://github.com/scalamacros/maven-example](https://github.com/scalamacros/maven-example) を見てほしいが、要点は以下の 2点だ:
 
 <ul>
 <li>マクロは、scala-reflect.jar をライブラリ依存性として必要とする。</li>
