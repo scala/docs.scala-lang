@@ -198,7 +198,7 @@ integrated into Play and sbt server 1.0. The committee considers that it's a
 prime candidate for the platform.
 * Extensions of Futures and Promises: the committee calls for an implementation.
 This SLIP will be addressed by the next SLIP committee.
-* Either monadic bias: it was merged one day before by the Lightband team. Therefore, this SIP is both accepted and merged.
+* Either monadic bias: it was merged one day before by the Lightbend team. Therefore, this SIP is both accepted and merged.
 * scala.io.Target: Martin proposes to delay it until the SLIP committee decides
 how the platform would look like. Then, they will take care of it.
 * Redesigning collections views: Jorge explains what Josh, who is author of the
