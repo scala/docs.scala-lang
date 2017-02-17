@@ -58,7 +58,7 @@ language: pl
 |  `for (x <- xs if x%2 == 0) yield x*10` _to samo co_ <br>`xs.filter(_%2 == 0).map(_*10)`                    |  instrukcja for: filtrowanie / mapowanie |
 |  `for ((x,y) <- xs zip ys) yield x*y` _to samo co_ <br>`(xs zip ys) map { case (x,y) => x*y }`              |  instrukcja for: przypisanie z podziałem |
 |  `for (x <- xs; y <- ys) yield x*y` _to samo co_ <br>`xs flatMap {x => ys map {y => x*y}}`                  |  instrukcja for: iloczyn kartezjański |
-|  `for (x <- xs; y <- ys) {`<br>    `println("%d/%d = %.1f".format(x,y, x*y))`<br>`}`                     |  instrukcja for: imperatywnie<br>[sprintf-style](http://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax) |
+|  `for (x <- xs; y <- ys) {`<br>    `println("%d/%d = %.1f".format(x, y, x/y.toFloat))`<br>`}`                     |  instrukcja for: imperatywnie<br>[sprintf-style](http://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax) |
 |  `for (i <- 1 to 5) {`<br>    `println(i)`<br>`}`                                                        |  instrukcja for: iterowanie aż do górnej granicy |
 |  `for (i <- 1 until 5) {`<br>    `println(i)`<br>`}`                                                     |  instrukcja for: iterowanie poniżej górnej granicy |
 |  <span id="pattern_matching" class="h2">pattern matching (dopasowywanie wzorca)</span>                                                         |                 |
