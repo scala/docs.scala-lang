@@ -46,7 +46,7 @@ object ComprehensionTest2 extends App {
 }
 ```
  
-This example shows that comprehensions are not restricted to lists. The previous program uses iterators instead. Every datatype that supports the operations `filterWith`, `map`, and `flatMap` (with the proper types) can be used in sequence comprehensions.
+This example shows that comprehensions are not restricted to lists. The previous program uses iterators instead. Every datatype that supports the operations `withFilter`, `map`, and `flatMap` (with the proper types) can be used in sequence comprehensions.
 
 Here's the output of the program:
 

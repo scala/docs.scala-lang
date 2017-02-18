@@ -39,7 +39,7 @@ Aquí se muestra un ejemplo más complicado que computa todos los pares de núme
       }
     }
 
-Este ejemplo muestra que las comprensiones no están restringidas solo a listas. El programa anterior usa iteradores en su lugar. Cualquier tipo de datos que soporte las operaciones `filterWith`, `map`, y `flatMap` (con los tipos apropiados) puede ser usado en la comprensión de secuencias.
+Este ejemplo muestra que las comprensiones no están restringidas solo a listas. El programa anterior usa iteradores en su lugar. Cualquier tipo de datos que soporte las operaciones `withFilter`, `map`, y `flatMap` (con los tipos apropiados) puede ser usado en la comprensión de secuencias.
 
 Esta es la salida del programa:
 
