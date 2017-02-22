@@ -1,0 +1,16 @@
+digraph UnifiedTypes {
+  node [fontname = "Courier"];
+  rankdir="BT"
+  AnyVal -> Any;
+  "AnyRef (java.lang.Object)" -> Any;
+
+  Double, Float, Long, Int, Short, Byte, Unit, Boolean, Char -> AnyVal;
+  List, Option, YourClass -> "AnyRef (java.lang.Object)"
+
+  Null -> {List Option YourClass}
+  "Nothing" -> {Double, Float, Long, Int, Short, Byte, Char, Unit, Boolean,  Null}
+
+  {rank = min; "Nothing"}
+  {rank = same; Double; Float; Long; Int; Short; Byte; Char; Unit; Boolean;  List; Option; YourClass}
+  {rank = same; "AnyRef (java.lang.Object)"; AnyVal}
+}
