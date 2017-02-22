@@ -16,7 +16,7 @@ An implicit conversion from type `S` to type `T` is defined by an implicit value
 Implicit conversions are applied in two situations:
 
 * If an expression `e` is of type `S`, and `S` does not conform to the expression's expected type `T`.
-* In a selection `e.m` with `e` of type `T`, if the selector `m` does not denote a member of `T`.
+* In a selection `e.m` with `e` of type `S`, if the selector `m` does not denote a member of `S`.
 
 In the first case, a conversion `c` is searched for which is applicable to `e` and whose result type conforms to `T`.
 In the second case, a conversion `c` is searched for which is applicable to `e` and whose result contains a member named `m`.
