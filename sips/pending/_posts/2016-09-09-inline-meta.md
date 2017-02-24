@@ -187,7 +187,7 @@ A typical first line of a macro impl is `import c.universe._` that makes the ent
 
 In addition to the compiler context, for every term parameter of a macro def, its macro impl
 takes a term parameter that carries a representation of the corresponding argument of the macro application.
-Macro impls can can also get ahold of representation of type arguments, but this functionality is unnecessary for this example.
+Macro impls can also get ahold of representation of type arguments, but this functionality is unnecessary for this example.
 
 A macro impl returns an abstract syntax tree, and this AST replaces the original macro application in the compilation pipeline.
 This is how we're going to perform the LINQ translation of calls to `Query.map`.

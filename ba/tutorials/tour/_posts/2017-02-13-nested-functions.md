@@ -12,7 +12,7 @@ language: ba
 ---
 
 U Scali je moguće ugnježdavati definicije funkcija.
-Sljedeći objekt sadrži funkciju `filter` za dobijanje vrijednosti iz liste cijelih brojeva koji su manji od vrijednosti praga (treshold):
+Sljedeći objekt sadrži funkciju `filter` za dobijanje vrijednosti iz liste cijelih brojeva koji su manji od vrijednosti praga (threshold):
 
     object FilterTest extends App {
       def filter(xs: List[Int], threshold: Int) = {
