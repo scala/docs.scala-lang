@@ -199,7 +199,7 @@ class Bippy(
 
 ## Implementation
 
-The implementation of trailing commas is is limited to changing Parsers.scala in the Scala compiler. An implementation of this proposal can be found at [scala/scala#5245][].
+The implementation of trailing commas is limited to changing Parsers.scala in the Scala compiler. An implementation of this proposal can be found at [scala/scala#5245][].
 
 ## Drawbacks/Trade-offs
 
