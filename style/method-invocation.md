@@ -54,19 +54,19 @@ readability and will make it much easier to understand at a glance the
 most basic operation of any given method. Resist the urge to omit
 parentheses simply to save two characters!
 
-### Suffix Notation
+## Postfix Notation
 
-Scala allows methods of arity-0 to be invoked using suffix notation:
+Scala allows methods that take no arguments to be invoked using postfix notation:
 
+    // recommended
     names.toList
 
-    // is the same as
-
-    names toList // Unsafe, don't use!
+    // discourage
+    names toList
 
 This style is unsafe, and should not be used.  Since semicolons are
 optional, the compiler will attempt to treat it as an infix method
-if it can, potentially taking a term from the next line.  
+if it can, potentially taking a term from the next line.
 
     names toList
     val answer = 42        // will not compile!
@@ -75,83 +75,44 @@ This may result in unexpected compile errors at best, and happily
 compiled faulty code at worst.  Although the syntax is used by some
 DSLs, it should be considered deprecated, and avoided.
 
-As of Scala 2.10, using suffix operator notation will result in a compiler warning.
+Since Scala 2.10, using postfix operator notation will result in a
+compiler warning.
 
-## Arity-1
+## Infix notation
 
-Scala has a special syntax for invoking methods of arity-1 (one
-argument):
+Scala has a special punctuation-free syntax for invoking methods that
+take one argument. Many Scala programmers use this notation for
+symbolic-named methods:
 
+    // recommended
+    a + b
+
+    // legal, but less readable
+    a+b
+
+    // legal, but definitely strange
+    a.+(b)
+
+but avoid it for almost all alphabetic-named methods:
+
+    // recommended
     names.mkString(",")
 
-    // is the same as
-
+    // also sometimes seen; controversial
     names mkString ","
 
-This syntax is formally known as "infix notation". It should *only* be
-used for purely-functional methods (methods with no side-effects) - such
-as `mkString` -or methods which take functions as parameters - such as
-`foreach`:
+A gray area is short, operator-like methods like `max`,
+especially if commutative:
 
-    // right!
-    names foreach (n => println(n))
-    names mkString ","
-    optStr getOrElse "<empty>"
-
-    // wrong!
-    javaList add item
-
-### Higher-Order Functions
-
-As noted, methods which take functions as parameters (such as `map` or
-`foreach`) should be invoked using infix notation. It is also *possible*
-to invoke such methods in the following way:
-
-    names.map (_.toUpperCase)     // wrong!
-
-This style is *not* the accepted standard! The reason to avoid this
-style is for situations where more than one invocation must be chained
-together:
-
-    // wrong!
-    names.map (_.toUpperCase).filter (_.length > 5)
-
-    // right!
-    names map (_.toUpperCase) filter (_.length > 5)
-
-Both of these work, but the former exploits an extremely unintuitive
-wrinkle in Scala's grammar. The sub-expression
-`(_.toUpperCase).filter` when taken in isolation looks for all the
-world like we are invoking the `filter` method on a function value.
-However, we are actually invoking `filter` on the result of the `map`
-method, which takes the function value as a parameter. This syntax is
-confusing and often discouraged in Ruby, but it is shunned outright in
-Scala.
-
-## Symbolic methods/Operators
-
-Methods with symbolic names should *always* be invoked using infix
-notation with spaces separating the target, the symbolic method and the
-parameter:
-
-    // right!
-    "daniel" + " " + "Spiewak"
-
-    // wrong!
-    "daniel"+" "+"spiewak"
-
-For the most part, this idiom follows Java and Haskell syntactic
-conventions.
+    // fairly common
+    a max b
 
 Symbolic methods which take more than one parameter (they do exist!)
-should still be invoked using infix notation, delimited by spaces:
+may still be invoked using infix notation, delimited by spaces:
 
     foo ** (bar, baz)
 
-Such methods are fairly rare, however, and should be avoided during API
-design.
-
-Finally, the use of the `/:` and `:\` should be avoided in preference to
-the more explicit `foldLeft` and `foldRight` method of `Iterator`. The
-right-associativity of the `/:` can lead to extremely confusing code, at
-the benefit of saving a few characters.
+Such methods are fairly rare, however, and should normally be avoided
+during API design.  For example, the use of the `/:` and `:\` methods
+should be avoided in preference to their better-known names,
+`foldLeft` and `foldRight`.
