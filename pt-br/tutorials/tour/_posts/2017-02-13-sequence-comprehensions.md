@@ -47,7 +47,7 @@ object ComprehensionTest2 extends App {
 }
 ```
  
-Este exemplo mostra que as compreensões não estão restritas às listas. Pois o programa anterior usa iteradores. Todo tipo de dados que suporta as operações `filterWith`, `map`, e `flatMap` (com os tipos apropriados) pode ser usado em compreensões de sequência.
+Este exemplo mostra que as compreensões não estão restritas às listas. Pois o programa anterior usa iteradores. Todo tipo de dados que suporta as operações `withFilter`, `map`, e `flatMap` (com os tipos apropriados) pode ser usado em compreensões de sequência.
 
 Aqui está a saída do programa:
 

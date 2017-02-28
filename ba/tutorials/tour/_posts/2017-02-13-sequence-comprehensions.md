@@ -48,7 +48,7 @@ Slijedi komplikovaniji primjer koji izračunava sve parove brojeva između `0` i
  
 Ovaj primjer pokazuje da komprehensije nisu ograničene samo na liste.
 Prethodni program koristi iteratore (a ne liste).
-Svaki tip podatka koji podržava operacije `filterWith`, `map`, i `flatMap` (s odgovarajućim tipovima) može biti korišten u komprehensijama.
+Svaki tip podatka koji podržava operacije `withFilter`, `map`, i `flatMap` (s odgovarajućim tipovima) može biti korišten u komprehensijama.
 
 Ovo je izlaz programa:
 
