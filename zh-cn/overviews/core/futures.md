@@ -42,7 +42,7 @@ Future的一个重要属性在于它只能被赋值一次。一旦给定了某�
     import ExecutionContext.Implicits.global
     
     val session = socialNetwork.createSessionFor("user", credentials)
-    val session = socialNetwork.createSessionFor("user", credentials)
+    val f: Future[List[Friend]] = Future {
       session.getFriends()
     }
 
@@ -55,7 +55,7 @@ Future的一个重要属性在于它只能被赋值一次。一旦给定了某�
 未成功的尝试可能会导致一个异常(exception)。在下面的例子中，session的值未被正确的初始化，于是在future的计算中将抛出NullPointerException，future f 不会圆满完成，而是以此异常失败。
 
     val session = null
-    val session = socialNetwork.createSessionFor("user", credentials)
+    val f: Future[List[Friend]] = Future {
       session.getFriends
     }
 
