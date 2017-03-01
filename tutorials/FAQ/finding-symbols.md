@@ -35,7 +35,7 @@ So, let's discuss these categories.
 Keywords/reserved symbols
 -------------------------
 
-There are a few symbols in Scala that are special and cannot be defined or used used as method names.
+There are a few symbols in Scala that are special and cannot be defined or used as method names.
 Two of them are considered proper keywords, while others are just "reserved". They are:
 
     // Keywords
@@ -50,7 +50,8 @@ Two of them are considered proper keywords, while others are just "reserved". Th
     // /* */   // Comments
     #          // Used in type notations
     :          // Type ascription or context bounds
-    <: >: <%   // Upper, lower and view bounds
+    <: >:      // Upper and lower bounds
+    <%         // View bounds (deprecated)
     " """      // Strings
     '          // Indicate symbols and characters
     @          // Annotations and variable binding on pattern matching
@@ -159,7 +160,7 @@ supertypes (`AnyRef` or `Any`) or a type parameter. In this case, we find
 avaialable on all types.
 
 Other implicit conversions may be visible in your scope depending on imports, extended types or
-self-type annotations. See [Finding implicits](tutorials/FAQ/finding-implicits.md) for details.
+self-type annotations. See [Finding implicits](tutorials/FAQ/finding-implicits.html) for details.
 
 Syntactic sugars/composition
 -----------------------------

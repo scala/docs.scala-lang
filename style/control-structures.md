@@ -4,6 +4,9 @@ title: Control Structures
 
 partof: style-guide
 num: 7
+
+previous-page: files
+next-page: method-invocation
 ---
 
 All control structures should be written with a space following the
@@ -13,7 +16,7 @@ defining keyword:
     if (foo) bar else baz
     for (i <- 0 to 10) { ... }
     while (true) { println("Hello, World!") }
-    
+
     // wrong!
     if(foo) bar else baz
     for(i <- 0 to 10) { ... }
@@ -37,7 +40,7 @@ Remember the following guidelines:
     only a single line.
 -   `case` - Always omit braces in case clauses.
 
-<!-- necessary to separate the following example from the above bullet list --> 
+<!-- necessary to separate the following example from the above bullet list -->
 
     val news = if (foo)
       goodNews()
@@ -60,7 +63,7 @@ one generator (usually, more than one `<-` symbol). In such cases, there
 are two alternative syntaxes which may be used:
 
     // wrong!
-    for (x <- board.rows; y <- board.files) 
+    for (x <- board.rows; y <- board.files)
       yield (x, y)
 
     // right!

@@ -47,8 +47,3 @@ the [scala-internals](https://groups.google.com/forum/#!forum/scala-internals) m
 and voting/approval milestones. Please read
 [Submitting a SIP](./sip-submission.html) and our [SIP tutorial](./sip-tutorial.html) for
 more information.
-
-## Minutes
-
-* [SIP Meeting July 13th](./minutes/sip-minutes.html)
-* [SIP Meeting August 10th](./minutes/sip-10th-august-minutes.html)

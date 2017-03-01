@@ -572,7 +572,7 @@ Finally, Scala programs are terminating when all the non-daemon threads and acto
 
 #### Remote Actors
 
-Once the code base is moved to Akka remoting will not work any more. The methods methods `registerActorFor` and `alive` need to be removed. In Akka, remoting is done solely by configuration and
+Once the code base is moved to Akka remoting will not work any more. The methods `registerActorFor` and `alive` need to be removed. In Akka, remoting is done solely by configuration and
 for further details refer to the [Akka remoting documentation](http://doc.akka.io/docs/akka/2.1.0/scala/remoting.html).
 
 #### Examples and Issues

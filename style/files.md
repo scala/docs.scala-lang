@@ -3,7 +3,10 @@ layout: overview-large
 title: Files
 
 partof: style-guide
-num: 9
+num: 6
+
+previous-page: nested-blocks
+next-page: control-structures
 ---
 
 As a rule, files should contain a *single* logical compilation unit. By
@@ -63,4 +66,3 @@ declarations. These filenames may be based upon a significant type which
 they contain (e.g. `option.scala` for the example above), or may be
 descriptive of the logical property shared by all units within (e.g.
 `ast.scala`).
-

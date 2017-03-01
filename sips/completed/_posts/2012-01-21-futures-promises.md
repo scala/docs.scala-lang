@@ -4,7 +4,7 @@ disqus: true
 title: SIP-14 - Futures and Promises
 
 vote-status: accepted
-vote-text: This SIP is in Accepted status currently.
+vote-text: This SIP has already been accepted.
 ---
 
 **By: Philipp Haller, Aleksandar Prokopec, Heather Miller, Viktor Klang, Roland Kuhn, and Vojin Jovanovic**
@@ -386,13 +386,13 @@ which stores the recent posts from a social network to a mutable set
 and then renders all the posts to the screen:
 
 	val allposts = mutable.Set[String]()
-	
+
 	Future {
 	  session.getRecentPosts
 	} andThen {
-	  posts => allposts ++= posts
+	  case Success(posts) => allposts ++= posts
 	} andThen {
-	  posts =>
+	  case _ =>
 	  clearAll()
 	  for (post <- allposts) render(post)
 	}

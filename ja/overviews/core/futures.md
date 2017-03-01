@@ -428,13 +428,13 @@ Future は同じ `Throwable` とともに失敗する。
 ソーシャルネットワークからの最近の投稿文を可変セットに保存して、全ての投稿文を画面に表示する以下の具体例をみてみよう:
 
     val allposts = mutable.Set[String]()
-    
+
     Future {
       session.getRecentPosts
     } andThen {
-      posts => allposts ++= posts
+      case Success(posts) => allposts ++= posts
     } andThen {
-      posts =>
+      case _ =>
       clearAll()
       for (post <- allposts) render(post)
     }

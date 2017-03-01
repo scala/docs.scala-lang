@@ -2,6 +2,9 @@
 layout: sip
 title: SIP 25 - Trait Parameters
 disqus: true
+
+vote-status: under review
+vote-text: The board agreed to schedule the next iteration of the evaluation process in 6 months, since there’s no implementation yet and the authors need time to produce one.
 ---
 
 __Martin Odersky__
@@ -22,6 +25,8 @@ The syntax already allows this. Excerpting from Dotty's SyntaxSummary.txt (the o
     Template ::=  ConstrApps [TemplateBody] | TemplateBody
     ConstrApps ::=  ConstrApp {`with' ConstrApp}
     ConstrApp  ::=  AnnotType {ArgumentExprs}
+
+In the `ClassDef` of traits, we still do not allow secondary constructors.
 
 ## Initialization Order ##
 

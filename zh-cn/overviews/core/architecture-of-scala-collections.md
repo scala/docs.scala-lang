@@ -17,7 +17,7 @@ language: zh-cn
 Builder类概要：
 
     package scala.collection.mutable
-    
+
     class Builder[-Elem, +To] {
       def +=(elem: Elem): this.type
       def result(): To
@@ -33,7 +33,7 @@ Builder类概要：
 
     scala> val buf = new ArrayBuffer[Int]
     buf: scala.collection.mutable.ArrayBuffer[Int] = ArrayBuffer()
-    
+
     scala> val bldr = buf mapResult (_.toArray)
     bldr: scala.collection.mutable.Builder[Int,Array[Int]]
       = ArrayBuffer()
@@ -45,7 +45,7 @@ Builder类概要：
 ### TraversableLike类概述
 
     package scala.collection
-    
+
     class TraversableLike[+Elem, +Repr] {
       def newBuilder: Builder[Elem, Repr] // deferred
       def foreach[U](f: Elem => U) // deferred
@@ -54,7 +54,7 @@ Builder类概要：
         val b = newBuilder
         foreach { elem => if (p(elem)) b += elem }
         b.result
-      } 
+      }
     }
 
 Collection库重构的主要设计目标是在拥有自然类型的同时又尽可能的共享代码实现。Scala的Collection 遵从“结果类型相同”的原则：只要可能，容器上的转换方法最后都会生成相同类型的Collection。例如，过滤操作对各种Collection类型都应该产生相同类型的实例。在List上应用过滤器应该获得List，在Map上应用过滤器，应该获得Map，如此等等。在下面的章节中，会告诉大家该原则的实现方法。
@@ -73,13 +73,13 @@ Scala的 Collection 库通过在 trait 实现中使用通用的构建器（build
 
     scala> import collection.immutable.BitSet
     import collection.immutable.BitSet
-    
+
     scala> val bits = BitSet(1, 2, 3)
     bits: scala.collection.immutable.BitSet = BitSet(1, 2, 3)
-    
+
     scala> bits map (_ * 2)
     res13: scala.collection.immutable.BitSet = BitSet(2, 4, 6)
-    
+
     scala> bits map (_.toFloat)
     res14: scala.collection.immutable.Set[Float]
       = Set(1.0, 2.0, 3.0)
@@ -91,11 +91,11 @@ Scala的 Collection 库通过在 trait 实现中使用通用的构建器（build
 类似 BitSet 的问题不是唯一的，这里还有在map类型上应用map函数的交互式例子：
 
     scala> Map("a" -> 1, "b" -> 2) map { case (x, y) => (y, x) }
-    res3: scala.collection.immutable.Map[Int,java.lang.String] 
+    res3: scala.collection.immutable.Map[Int,java.lang.String]
       = Map(1 -> a, 2 -> b)
-    
+
     scala> Map("a" -> 1, "b" -> 2) map { case (x, y) => y }
-    res4: scala.collection.immutable.Iterable[Int] 
+    res4: scala.collection.immutable.Iterable[Int]
       = List(1, 2)
 
 第一个函数用于交换两个键值对。这个函数映射的结果是一个类似的Map，键和值颠倒了。事实上，地一个表达式产生了一个键值颠倒的map类型（在原map可颠倒的情况下)。然而，第二个函数，把键值对映射成一个整型，即成员变成了具体的值。在这种情况下，我们不可能把结果转换成Map类型，因此处理成，把结果转换成Map的一个可遍历的超类，这里是List。
@@ -112,16 +112,16 @@ TraversableLike 中映射（map）的实现：
       for (x <- this) b += f(x)
       b.result
     }
-    
+
 上面的代码展示了TraversableLike如何实现映射的trait。看起来非常类似于TraversableLike类的过滤器的实现。主要的区别在于，过滤器使用TraversableLike类的抽象方法 newBuilder，而映射使用的是Builder工场，它作为CanBuildFrom类型的一个额外的隐式参数传入。
 
 CanBuildFrom trait：
-    
+
     package scala.collection.generic
-    
+
     trait CanBuildFrom[-From, -Elem, +To] {
-      // 创建一个新的构造器(builder) 
-      def apply(from: From): Builder[Elem, To] 
+      // 创建一个新的构造器(builder)
+      def apply(from: From): Builder[Elem, To]
     }
 
 上面的代码是 trait CanBuildFrom 的定义，它代表着构建者工场。它有三个参数：Elem是要创建的容器(collection)的元素的类型，To是要构建的容器(collection)的类型，From是该构建器工场适用的类型。通过定义适合的隐式定义的构建器工场，你就可以构建出符合你需要的类型转换行为。以 BitSet 类为例，它的伴生对象包含一个 CanBuildFrom[BitSet, Int, BitSet] 类型的构建器工场。这就意味着，当在一个 BitSet 上执行操作的时候，你可以创建另一个元素类型为整型的 BitSet。如果你需要的类型不同，那么，你还可以使用其他的隐式构建器工场，它们在Set的伴生对象中实现。下面就是一个更通用的构建器，A是通用类型参数：
@@ -134,7 +134,7 @@ CanBuildFrom trait：
 
     scala> val xs: Iterable[Int] = List(1, 2, 3)
     xs: Iterable[Int] = List(1, 2, 3)
-    
+
     scala> val ys = xs map (x => x * x)
     ys: Iterable[Int] = List(1, 4, 9)
 
@@ -153,7 +153,7 @@ RNA（核糖核酸）碱基（译者注：RNA链即很多不同RNA碱基的序�
     case object T extends Base
     case object G extends Base
     case object U extends Base
-    
+
     object Base {
       val fromInt: Int => Base = Array(A, T, G, U)
       val toInt: Base => Int = Map(A -> 0, T -> 1, G -> 2, U -> 3)
@@ -170,37 +170,37 @@ RNA（核糖核酸）碱基（译者注：RNA链即很多不同RNA碱基的序�
     import collection.IndexedSeqLike
     import collection.mutable.{Builder, ArrayBuffer}
     import collection.generic.CanBuildFrom
-    
+
     final class RNA1 private (val groups: Array[Int],
         val length: Int) extends IndexedSeq[Base] {
-    
+
       import RNA1._
-    
+
       def apply(idx: Int): Base = {
         if (idx < 0 || length <= idx)
           throw new IndexOutOfBoundsException
         Base.fromInt(groups(idx / N) >> (idx % N * S) & M)
       }
     }
-    
+
     object RNA1 {
-    
+
       // 表示一组所需要的比特数
       private val S = 2            
-    
+
       // 一个Int能够放入的组数
       private val N = 32 / S       
-    
+
       // 分离组的位掩码(bitmask)
-      private val M = (1 << S) - 1 
-    
+      private val M = (1 << S) - 1
+
       def fromSeq(buf: Seq[Base]): RNA1 = {
         val groups = new Array[Int]((buf.length + N - 1) / N)
         for (i <- 0 until buf.length)
           groups(i / N) |= Base.toInt(buf(i)) << (i % N * S)
         new RNA1(groups, buf.length)
       }
-    
+
       def apply(bases: Base*) = fromSeq(bases)
     }
 
@@ -212,10 +212,10 @@ RNA（核糖核酸）碱基（译者注：RNA链即很多不同RNA碱基的序�
 
     scala> val xs = List(A, G, T, A)
     xs: List[Product with Base] = List(A, G, T, A)
-    
+
     scala> RNA1.fromSeq(xs)
     res1: RNA1 = RNA1(A, G, T, A)
-    
+
     scala> val rna1 = RNA1(A, U, G, G, T)
     rna1: RNA1 = RNA1(A, U, G, G, T)
 
@@ -225,10 +225,10 @@ RNA（核糖核酸）碱基（译者注：RNA链即很多不同RNA碱基的序�
 
     scala> rna1.length
     res2: Int = 5
-    
+
     scala> rna1.last
     res3: Base = T
-    
+
     scala> rna1.take(3)
     res4: IndexedSeq[Base] = Vector(A, U, G)
 
@@ -240,12 +240,12 @@ RNA（核糖核酸）碱基（译者注：RNA链即很多不同RNA碱基的序�
       val groups: Array[Int],
       val length: Int
     ) extends IndexedSeq[Base] with IndexedSeqLike[Base, RNA2] {
-    
+
       import RNA2._
-    
-      override def newBuilder: Builder[Base, RNA2] = 
+
+      override def newBuilder: Builder[Base, RNA2] =
         new ArrayBuffer[Base] mapResult fromSeq
-    
+
       def apply(idx: Int): Base = // as before
     }
 
@@ -267,7 +267,7 @@ RNA（核糖核酸）碱基（译者注：RNA链即很多不同RNA碱基的序�
      => scala.collection.mutable.Builder[Base,IndexedSeq[Base]] has
      incompatible type
     class RNA2 private (val groups: Array[Int], val length: Int)           ^
-          
+
 	one error found（发现一个错误）
 
 错误信息非常地长，并且很复杂，体现了容器（Collection）库错综复杂的组合。所以，最好忽略有关这些方法来源的信息，因为在这种情况下，它更多得是分散人的精力。而剩下的，则说明需要声明一个具有返回类型Builder[Base, RNA2]的newBuilder方法，但无法找到一个具有返回类型Builder[Base,IndexedSeq[Base]]的newBuilder方法。后者并不覆写前者。第一个方法——返回值类型为Builder[Base, RNA2]——是一个抽象方法，其在RNA2类中通过传递RNA2的类型参数给IndexedSeqLike，来以这种类型实例化。第二个方法的返回值类型为Builder[Base,IndexedSeq[Base]]——是由继承后的IndexedSeq类提供的。换句话说，如果没有声明一个以第一个返回值类型为返回值的newBuilder，RNA2类就是非法的。
@@ -276,10 +276,10 @@ RNA（核糖核酸）碱基（译者注：RNA链即很多不同RNA碱基的序�
 
     scala> val rna2 = RNA2(A, U, G, G, T)
     rna2: RNA2 = RNA2(A, U, G, G, T)
-    
+
     scala> rna2 take 3
     res5: RNA2 = RNA2(A, U, G)
-    
+
     scala> rna2 filter (U !=)
     res6: RNA2 = RNA2(A, G, G, T)
 
@@ -291,7 +291,7 @@ RNA（核糖核酸）碱基（译者注：RNA链即很多不同RNA碱基的序�
 
     scala> val rna = RNA(A, U, G, G, T)
     rna: RNA = RNA(A, U, G, G, T)
-    
+
     scala> rna map { case A => T case b => b }
     res7: RNA = RNA(T, U, G, G, T)
 
@@ -304,19 +304,19 @@ RNA（核糖核酸）碱基（译者注：RNA链即很多不同RNA碱基的序�
 
     scala> rna map Base.toInt
     res2: IndexedSeq[Int] = Vector(0, 3, 2, 2, 1)
-    
+
     scala> rna ++ List("missing", "data")
-    res3: IndexedSeq[java.lang.Object] = 
+    res3: IndexedSeq[java.lang.Object] =
       Vector(A, U, G, G, T, missing, data)
 
 这就是在理想情况下应认为结果。但是，RNA2类并不提供这样的处理。事实上，如果你用RNA2类的实例来运行前两个例子，结果则是：
 
     scala> val rna2 = RNA2(A, U, G, G, T)
     rna2: RNA2 = RNA2(A, U, G, G, T)
-    
+
     scala> rna2 map { case A => T case b => b }
     res0: IndexedSeq[Base] = Vector(T, U, G, G, T)
-    
+
     scala> rna2 ++ rna2
     res1: IndexedSeq[Base] = Vector(A, U, G, G, T, A, U, G, G, T)
 
@@ -331,23 +331,23 @@ RNA（核糖核酸）碱基（译者注：RNA链即很多不同RNA碱基的序�
 
 #### RNA链类的最终版本
 
-    final class RNA private (val groups: Array[Int], val length: Int) 
+    final class RNA private (val groups: Array[Int], val length: Int)
       extends IndexedSeq[Base] with IndexedSeqLike[Base, RNA] {
-    
+
       import RNA._
-    
+
       // 在IndexedSeq中必须重新实现newBuilder
-      override protected[this] def newBuilder: Builder[Base, RNA] = 
+      override protected[this] def newBuilder: Builder[Base, RNA] =
         RNA.newBuilder
-    
+
       // 在IndexedSeq中必须实现apply
       def apply(idx: Int): Base = {
         if (idx < 0 || length <= idx)
           throw new IndexOutOfBoundsException
         Base.fromInt(groups(idx / N) >> (idx % N * S) & M)
       }
-    
-      // （可选）重新实现foreach, 
+
+      // （可选）重新实现foreach,
       // 来提高效率
       override def foreach[U](f: Base => U): Unit = {
         var i = 0
@@ -363,24 +363,24 @@ RNA（核糖核酸）碱基（译者注：RNA链即很多不同RNA碱基的序�
 #### RNA伴生对象的最终版本
 
     object RNA {
-    
+
       private val S = 2 // group中的比特（bit）数
       private val M = (1 << S) - 1 // 用于隔离group的比特掩码
       private val N = 32 / S // 一个Int中的group数
-    
+
       def fromSeq(buf: Seq[Base]): RNA = {
         val groups = new Array[Int]((buf.length + N - 1) / N)
         for (i <- 0 until buf.length)
           groups(i / N) |= Base.toInt(buf(i)) << (i % N * S)
         new RNA(groups, buf.length)
       }
-    
+
       def apply(bases: Base*) = fromSeq(bases)
-    
-      def newBuilder: Builder[Base, RNA] = 
+
+      def newBuilder: Builder[Base, RNA] =
         new ArrayBuffer mapResult fromSeq
-    
-      implicit def canBuildFrom: CanBuildFrom[RNA, Base, RNA] = 
+
+      implicit def canBuildFrom: CanBuildFrom[RNA, Base, RNA] =
         new CanBuildFrom[RNA, Base, RNA] {
           def apply(): Builder[Base, RNA] = newBuilder
           def apply(from: RNA): Builder[Base, RNA] = newBuilder
@@ -399,28 +399,28 @@ RNA（核糖核酸）碱基（译者注：RNA链即很多不同RNA碱基的序�
 
 在第二个实例中，将介绍如何将一个新的map类型整合到容器框架中的。其方式是通过使用关键字“Patricia trie”，实现以String作为类型的可变映射（mutable map）。术语“Patricia“实际上就是"Practical Algorithm to Retrieve Information Coded in Alphanumeric."(检索字母数字编码信息的实用算法) 的缩写。思想是以树的形式存储一个set或者map，在这种树中，后续字符作为子树可以用唯一确定的关键字查找。例如，一个 Patricia trie存储了三个字符串 "abc", "abd", "al", "all", "xy" 。如下:
 
-patricia 树的例子: 
+patricia 树的例子:
 
-![20131225160411.png](/pictures/20131225160411.png)
+![patricia.png](/resources/images/patricia.png)
 
 为了能够在trie中查找与字符串”abc“匹配的节点，只要沿着标记为”a“的子树，查找到标记为”b“的子树，最后到达标记为”c“的子树。如果 Patricia trie作为map使用，键所对应的值保存在一个可通过键定位的节点上。如果作为set，只需保存一个标记，说明set中存在这个节点。
 
 使用Patricia tries的prefix map实现方式：
 
     import collection._
-    
+
     class PrefixMap[T]
-    extends mutable.Map[String, T] 
+    extends mutable.Map[String, T]
        with mutable.MapLike[String, T, PrefixMap[T]] {
-    
+
       var suffixes: immutable.Map[Char, PrefixMap[T]] = Map.empty
       var value: Option[T] = None
-    
+
       def get(s: String): Option[T] =
         if (s.isEmpty) value
         else suffixes get (s(0)) flatMap (_.get(s substring 1))
-    
-      def withPrefix(s: String): PrefixMap[T] = 
+
+      def withPrefix(s: String): PrefixMap[T] =
         if (s.isEmpty) this
         else {
           val leading = s(0)
@@ -431,23 +431,23 @@ patricia 树的例子:
           }
           suffixes(leading) withPrefix (s substring 1)
         }
-    
+
       override def update(s: String, elem: T) =
         withPrefix(s).value = Some(elem)
-    
+
       override def remove(s: String): Option[T] =
         if (s.isEmpty) { val prev = value; value = None; prev }
         else suffixes get (s(0)) flatMap (_.remove(s substring 1))
-    
+
       def iterator: Iterator[(String, T)] =
         (for (v <- value.iterator) yield ("", v)) ++
-        (for ((chr, m) <- suffixes.iterator; 
+        (for ((chr, m) <- suffixes.iterator;
               (s, v) <- m.iterator) yield (chr +: s, v))
-    
+
       def += (kv: (String, T)): this.type = { update(kv._1, kv._2); this }
-    
+
       def -= (s: String): this.type = { remove(s); this }
-    
+
       override def empty = new PrefixMap[T]
     }
 
@@ -455,7 +455,7 @@ Patricia tries支持非常高效的查找和更新。另一个良好的特点是
 
 依据这些思想，来看一下作为Patricia trie的映射实现方式。这种map称为PrefixMap。PrefixMap提供了withPrefix方法，这个方法根据给定的前缀查找子映射（submap），其包含了所有匹配该前缀的键。首先，使用键来定义一个prefix map，执行如下。
 
-    scala> val m = PrefixMap("abc" -> 0, "abd" -> 1, "al" -> 2, 
+    scala> val m = PrefixMap("abc" -> 0, "abd" -> 1, "al" -> 2,
       "all" -> 3, "xy" -> 4)
     m: PrefixMap[Int] = Map((abc,0), (abd,1), (al,2), (all,3), (xy,4))
 
@@ -482,21 +482,21 @@ prefix map的伴生对象：
 
     import scala.collection.mutable.{Builder, MapBuilder}
     import scala.collection.generic.CanBuildFrom
-    
+
     object PrefixMap extends {
       def empty[T] = new PrefixMap[T]
-    
+
       def apply[T](kvs: (String, T)*): PrefixMap[T] = {
         val m: PrefixMap[T] = empty
         for (kv <- kvs) m += kv
         m
       }
-    
-      def newBuilder[T]: Builder[(String, T), PrefixMap[T]] = 
+
+      def newBuilder[T]: Builder[(String, T), PrefixMap[T]] =
         new MapBuilder[String, T, PrefixMap[T]](empty)
-    
+
       implicit def canBuildFrom[T]
-        : CanBuildFrom[PrefixMap[_], (String, T), PrefixMap[T]] = 
+        : CanBuildFrom[PrefixMap[_], (String, T), PrefixMap[T]] =
           new CanBuildFrom[PrefixMap[_], (String, T), PrefixMap[T]] {
             def apply(from: PrefixMap[_]) = newBuilder[T]
             def apply() = newBuilder[T]
@@ -513,7 +513,7 @@ prefix map的伴生对象：
 
     scala> PrefixMap("hello" -> 5, "hi" -> 2)
     res0: PrefixMap[Int] = Map((hello,5), (hi,2))
-    
+
     scala> PrefixMap.empty[String]
     res2: PrefixMap[String] = Map()
 
@@ -537,4 +537,4 @@ prefix map的伴生对象：
 
 ### 致谢
 
-这些页面的素材改编自，由Odersky，Spoon和Venners编写的[Scala编程](http://www.artima.com/shop/programming_in_scala)第2版 。感谢Artima 对于出版的大力支持。 
+这些页面的素材改编自，由Odersky，Spoon和Venners编写的[Scala编程](http://www.artima.com/shop/programming_in_scala)第2版 。感谢Artima 对于出版的大力支持。

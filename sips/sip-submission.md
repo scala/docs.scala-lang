@@ -72,7 +72,6 @@ Within two weeks after your submission of the pre-SIP to the mailing list, the
 Process Lead will intervene and advise you whether your idea can be submitted as
 a SIP or needs more work.
 
-
 ### Submission
 
 After receiving the green light from the Process Lead, you can write up your
@@ -103,7 +102,7 @@ accepted for review: assigned a reviewer and scheduled for formal presentation.
 During the next available SIP Committee meeting, the appointed reviewer presents
 the SIP to the committee and kick starts the initial discussion.
 
-If the Committee agrees that following through the SIP is a good idea, then the
+If the committee agrees that following through the SIP is a good idea, then the
 following happens:
 
 1. The SIP is assigned a number.
@@ -132,14 +131,18 @@ During every iteration, the appointed reviewer presents the changes (updated
 design document, progress with the implementation, etc) to the SIP Committee.
 Based on the feedback, the SIP is either:
 
-1. Accepted, in which case the committee will propose a release date to the
-compiler maintainers, where the role of the committee ends.
-2. Rejected, in which case the SIP is closed and no longer evaluated in the future.
-3. Postponed, in which case the committee sets aside the SIP under some conditions.
-When those conditions are met, the SIP can be resubmitted.
-4. Under revision, in which case the author needs to continue the formal evaluation
-and address all the committee's feedback. Thus, the follow-up discussion is scheduled
-for the next iteration.
+1. Accepted, in which case the committee asks the compiler maintainers to
+   indicate the earliest version of Scala that can include the language change.
+2. Rejected, in which case the SIP is closed and no longer evaluated in the
+   future.
+3. Under revision, in which case the author needs to continue the formal
+   evaluation and address all the committee's feedback. Thus, the follow-up
+   discussion is scheduled for the next iteration.
+3. Postponed, in which case the committee does not evaluate the proposal anymore
+   and sets it aside under some conditions are met.  Then, the SIP will be
+   resubmitted. This situation happens when proposals entirely depend on another
+   pending proposals and need their admission. In such cases, the dependent
+   proposal is postponed until the Committee votes on the other one.
 
 If no changes have been made to a SIP in two iterations, it’s marked as dormant
 and both the PR and issue are closed. Dormant SIPs can be reopened by any
@@ -157,22 +160,22 @@ cannot be merged under a flag, the compiler maintainers will merge it directly.
 
 The SIP process involves the following parties:
 
-1. The SIP Authors
-2. The Process lead
+1. The SIP Author(s)
+2. The Process Lead
 3. The SIP Committee
 
-### The SIP Authors
+### The SIP Author(s)
 
 Authors are responsible for building consensus within the community and
 documenting dissenting opinions before the SIP is officially discussed by the
-SIP committee. Their goal is to convince the committee that their proposal is
+SIP Committee. Their goal is to convince the committee that their proposal is
 useful and addresses pertinent problems in the language as well as interactions
-with already existing features. Authors can change over the lifecycle of the
+with already existing features. Authors can change over the life-cycle of the
 SIP.
 
-### The Process lead
+### The Process Lead
 
-The Process lead is the responsible of the smooth running of SIPs and SLIPs. He
+The Process Lead is the responsible of the smooth running of SIPs and SLIPs. He
 or she appoints the committee members, calls the meetings monthly, assigns new
 proposals to the members, and ensures that all of them are discussed within a
 short period of time.
@@ -195,15 +198,14 @@ The current committee members are:
 
 - Martin Odersky ([@odersky](https://github.com/odersky)), EPFL
 - Adriaan Moors ([@adriaanm](https://github.com/adriaanm)), Lightbend
-- Erik Osheim ([@non](https://github.com/non)), independent
 - Heather Miller ([@heathermiller](https://github.com/heathermiller)), Scala Center
 - Seth Tisue ([@SethTisue](https://github.com/SethTisue)), Lightbend
 - Sébastien Doeraene ([@sjrd](https://github.com/sjrd)), EPFL
 - Eugene Burmako ([@xeno-by](https://github.com/xeno-by)), EPFL
-- Andrew Marki ([@som-snytt](https://github.com/som-snytt)), independent
 - Josh Suereth ([@jsuereth](https://github.com/jsuereth)), Google
+- Iulian Dragos ([@dragos](https://github.com/dragos)), independent
 
-The current process lead is:
+The current Process Lead is:
 
 - Jorge Vicente Cantero ([@jvican](https://github.com/jvican)), Scala Center
 
@@ -217,16 +219,61 @@ becomes the reviewer. The main tasks of the reviewer are the following:
 3. Provide them feedback from the discussions in the meetings, and
 4. Explain the latest progress in every meeting.
 
+### SIP meetings
+
+SIP meetings are scheduled monthly by the Process Lead, and require a quorum of
+two-thirds (2/3) of the committee members. If the quorum is not reached the
+meeting is rescheduled.
+
 ### Voting
 
-For a SIP to be accepted, it must fulfill two requirements:
+All SIP Committee members vote. They can either vote in the meeting or by
+casting their vote via email to the SIP Process Lead before the set deadline.
 
-- 70% of the committee votes in favor of it.
+SIP Committee members can vote "in favor", "against" or "abstain".
+
+For a SIP to be accepted, the following three requirements must be met:
+
+- At least 50% of the committee members vote in favor.
+- There are at least two-thirds "in favor" versus "against" votes.
 - Martin Odersky does not veto it.
+
+An alternative way to think of the two-thirds requirement is that the number of
+votes in favor must be at least twice the number of votes against. Abstentions
+are excluded in calculating a two-thirds vote.
+
+Note that, when calculating the lower bound, numbers round up. Therefore for a
+committee of 9 members, at least 50% means at least 5 members.
+
+The deadline to vote a proposal is decided on a case-by-case basis. The deadline
+will be decided by the committee members present at the last meeting and the SIP
+Process Lead, and will be made public right after the meeting.
+
+#### Examples
+
+Several voting situations are explained next.
+
+All of them assume that there are 9 committee members.  The 50% requirement
+requires at least 5 members to vote in favor.  We also assume that Martin does
+not veto them.
+
+| In favor | Against | Abstentions | Voting members |    Result    |
+| -------- | ------- | ----------- | -------------- | ------------ |
+|     6    |    2    |      1      |        8       |   Accepted   |
+|     5    |    3    |      1      |        8       | Not Accepted |
+|     5    |    2    |      2      |        7       |   Accepted   |
+
+In the first situation, the proposal is accepted because 6 is both greater than
+the 50% (5) and more than twice the votes against (2).  In the second situation,
+the proposal meets the 50% requirement but fails the two-thirds requirement
+since 5 is less than twice the number of votes against, 3, therefore the
+proposal is not accepted.  In the third situation, the proposal is accepted
+because 5 is equal to 50% of all the committee members and is greater than twice
+the number of votes against (2).
 
 ### Responsibilities of the members
 
-- Review the proposals they are assigned to. The process lead will always notify
+- Review the proposals they are assigned to. The Process Lead will always notify
 them two weeks in advance, at minimum.
 - Play a role in the discussions, learn in advance about the topic if needed, and
 make up their mind in the voting process.
@@ -243,12 +290,12 @@ the current state of the proposal, both its design and implementation.
 ## Proposal states
 
 The state of a proposal changes over time depending on the phase of the process
-and the decisions taken by the Committee. A given proposal can be in one of
+and the decisions taken by the committee. A given proposal can be in one of
 several states:
 
 1. **Validated:** The Process Lead has validated the proposal and checked that
 meets all the formal requirements.
-2. **Numbered:** The Committee agrees that the proposal is a valid document and
+2. **Numbered:** The committee agrees that the proposal is a valid document and
 it’s worth considering it. Then, the Process Lead gives it a number.
 3. **Awaiting review:** The proposal has been scheduled to be reviewed for a
 concrete date.
@@ -256,10 +303,13 @@ concrete date.
 be under review until the next available SIP meeting takes place.
 5. **Under revision:** Authors are addressing the issues pinpointed by the
 committee or working on the implementation.
-6. **Dormant:** When a SIP has been under revision for more than two iterations (that
-is, no progress has been made since the last review), it’s considered dormant,
-in which case any related activity will be paralysed and the Process Lead will
-not allocate more resources to it.
+6. **Dormant:** When a SIP has been under revision for more than two iterations
+   and no progress has been made, the Process Lead will mark it as dormant (note
+   that the committee does not have such privilege). This status means that the
+   Process Lead will not assign its review in future meetings until authors
+   provide the requested feedback or progress. Also, authors can also mark their
+   proposals as dormant, and they are encouraged to do so if they think they
+   will not have time for their update.
 7. **Postponed:** The SIP has been postponed under some concrete conditions. When these
 are met, the SIP can be resubmitted.
 8. **Rejected:** The SIP has been rejected with a clear and full explanation.
@@ -278,4 +328,3 @@ The process to submit is simple:
 * Create a link to your SIP in the "pending sips" section of `index.md`
 * Commit your changes to your forked repository
 * Create a new [pull request](https://github.com/scala/scala.github.com/pull/new/gh-pages).  This will notify the Scala SIP team.
-

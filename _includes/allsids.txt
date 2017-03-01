@@ -8,8 +8,18 @@
       {% elsif post.vote-status == 'deferred' %}
         <span class="label warning">Deferred</span>
       {% elsif post.vote-status == 'postponed' %}
-        <span class="label warning">Postponed</span>
+        <span class="label light-warning">Postponed</span>
+      {% elsif post.vote-status == 'under review' %}
+        <span class="label warning">Under Review</span>
+      {% elsif post.vote-status == 'under revision' %}
+        <span class="label warning">Under Revision</span>
+      {% elsif post.vote-status == 'numbered' %}
+        <span class="label notice">Numbered</span>
+      {% elsif post.vote-status == 'dormant' %}
+        <span class="label light-warning">Dormant</span>
       {% elsif post.vote-status == 'not accepted' %}
+        <span class="label danger">Not Accepted</span>
+      {% elsif post.vote-status == 'rejected' %}
         <span class="label danger">Not Accepted</span>
       {% endif %}
     {% endif %}

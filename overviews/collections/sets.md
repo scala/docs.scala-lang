@@ -40,7 +40,7 @@ For example:
 |  `xs + x`                 |The set containing all elements of `xs` as well as `x`.|
 |  `xs + (x, y, z)`         |The set containing all elements of `xs` as well as the given additional elements.|
 |  `xs ++ ys`  	            |The set containing all elements of `xs` as well as all elements of `ys`.|
-|  **Tests:**               |						     |
+|  **Removals:**               |						     |
 |  `xs - x`  	            |The set containing all elements of `xs` except `x`.|
 |  `xs - (x, y, z)`         |The set containing all elements of `xs` except the given elements.|
 |  `xs -- ys`  	            |The set containing all elements of `xs` except the elements of `ys`.|

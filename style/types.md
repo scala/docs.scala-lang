@@ -4,27 +4,30 @@ title: Types
 
 partof: style-guide
 num: 4
+
+previous-page: naming-conventions
+next-page: nested-blocks
 ---
 
 ## Inference
 
-Use type inference where possible, but put clarity first, and favour 
+Use type inference where possible, but put clarity first, and favour
 explicitness in public APIs.
 
-You should almost never annotate the type of a private field or a local 
+You should almost never annotate the type of a private field or a local
 variable, as their type will usually be immediately evident in
 their value:
 
     private val name = "Daniel"
 
-However, you may wish to still display the type where the assigned value has a 
-complex or non-obvious form. 
-  
-All public methods should have explicit type annotations.  Type inference may 
+However, you may wish to still display the type where the assigned value has a
+complex or non-obvious form.
+
+All public methods should have explicit type annotations.  Type inference may
 break encapsulation in these cases, because it depends on internal method
-and class details.  Without an explicit type, a change to the internals 
+and class details.  Without an explicit type, a change to the internals
 of a method or val could alter the public API of the class without warning,
-potentially breaking client code.  Explicit type annotations can also help 
+potentially breaking client code.  Explicit type annotations can also help
 to improve compile times.
 
 ### Function Values
@@ -137,7 +140,7 @@ by a semi-colon and a single space, the opening brace should be
 *followed* by a space while the closing brace should be *preceded* by a
 space (as demonstrated in both examples above).
 
-Structural types are implemented with reflection at runtime, and are 
-inherently less performant than nominal types.  Developers should 
-prefer the use of nominal types, unless structural types provide a 
+Structural types are implemented with reflection at runtime, and are
+inherently less performant than nominal types.  Developers should
+prefer the use of nominal types, unless structural types provide a
 clear benefit.

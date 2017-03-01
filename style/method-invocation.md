@@ -4,6 +4,9 @@ title: Method Invocation
 
 partof: style-guide
 num: 8
+
+previous-page: control-structures
+next-page: declarations
 ---
 
 Generally speaking, method invocation in Scala follows Java conventions.
@@ -62,14 +65,14 @@ Scala allows methods of arity-0 to be invoked using suffix notation:
     names toList // Unsafe, don't use!
 
 This style is unsafe, and should not be used.  Since semicolons are
-optional, the compiler will attempt to treat it as an infix method 
+optional, the compiler will attempt to treat it as an infix method
 if it can, potentially taking a term from the next line.  
 
     names toList
     val answer = 42        // will not compile!
 
-This may result in unexpected compile errors at best, and happily 
-compiled faulty code at worst.  Although the syntax is used by some 
+This may result in unexpected compile errors at best, and happily
+compiled faulty code at worst.  Although the syntax is used by some
 DSLs, it should be considered deprecated, and avoided.
 
 As of Scala 2.10, using suffix operator notation will result in a compiler warning.
@@ -152,4 +155,3 @@ Finally, the use of the `/:` and `:\` should be avoided in preference to
 the more explicit `foldLeft` and `foldRight` method of `Iterator`. The
 right-associativity of the `/:` can lead to extremely confusing code, at
 the benefit of saving a few characters.
-

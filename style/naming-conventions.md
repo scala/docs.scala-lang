@@ -4,6 +4,9 @@ title: Naming Conventions
 
 partof: style-guide
 num: 3
+
+previous-page: indentation
+next-page: types
 ---
 
 Generally speaking, Scala uses "camel case" naming. That is,
@@ -98,7 +101,7 @@ conventions are used:
 -   In some instances, it is acceptable to prepend "\`is\`" on a boolean
     accessor (e.g. `isEmpty`). This should only be the case when no
     corresponding mutator is provided. Please note that the
-    [Lift](http://liftweb.com) convention of appending "`_?`" to boolean
+    [Lift](http://liftweb.net) convention of appending "`_?`" to boolean
     accessors is non-standard and not used outside of the Lift
     framework.
 -   For mutators, the name of the method should be the name of the

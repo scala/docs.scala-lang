@@ -8,15 +8,16 @@ partof: FAQ
 num: 7
 ---
 
-An _implicit_ question to newcomers to Scala seems to be: where does the
-compiler look for implicits? I mean implicit because the question never seems
-to get fully formed, as if there weren't words for it. :-) For example, where
-do the values for `integral` below come from?
+Newcomers to Scala often ask: Where does the compiler look for implicits?
+
+For example, where do the values for `integral` below come from?
 
     scala> import scala.math._
     import scala.math._
     
-    scala> def foo[T](t: T)(implicit integral: Integral[T]) {println(integral)}
+    scala> def foo[T](t: T)(implicit integral: Integral[T]): Unit = {
+        println(integral)
+    }
     foo: [T](t: T)(implicit integral: scala.math.Integral[T])Unit
     
     scala> foo(0)
@@ -25,9 +26,9 @@ do the values for `integral` below come from?
     scala> foo(0L)
     scala.math.Numeric$LongIsIntegral$@48c610af
 
-Another question that does follow up to those who decide to learn the answer to
-the first question is how does the compiler choose which implicit to use, in
-certain situations of apparent ambiguity (but that compile anyway)?
+The natural continuation of this line of inquiry leads to a second question: How
+does the compiler choose which implicit to use, in certain situations of apparent
+ambiguity (but that compile anyway)?
 
 For instance, `scala.Predef` defines two conversions from `String`: one to
 `WrappedString` and another to `StringOps`. Both classes, however, share a lot
@@ -35,7 +36,7 @@ of methods, so why doesn't Scala complain about ambiguity when, say, calling
 `map`?
 
 **Note:** this question was inspired by [this other question on Stack
-Overflow][4], but stating the problem in more general terms.  The example was
+Overflow][4], but states the problem in more general terms.  The example was
 copied from there, because it is referred to in the answer.
 
 ## Types of Implicits
@@ -68,9 +69,11 @@ explicitly, which is how one uses `breakOut`, for example (see question about
 In this case, one has to declare the need for an implicit, such as the `foo`
 method declaration:
 
-    def foo[T](t: T)(implicit integral: Integral[T]) {println(integral)}
+    def foo[T](t: T)(implicit integral: Integral[T]): Unit = {
+        println(integral)
+    }
 
-### View Bounds
+### Implicit conversions as implicit parameters
 
 There's one situation where an implicit is both an implicit conversion and an
 implicit parameter. For example:
@@ -80,19 +83,11 @@ implicit parameter. For example:
     getIndex("abc", 'a')
 
 The method `getIndex` can receive any object, as long as there is an implicit
-conversion available from its class to `Seq[T]`. Because of that, I can pass a
-`String` to `getIndex`, and it will work.
+conversion available from its class to `Seq[T]`. Because of that, a `String` can be
+passed to `getIndex`, and it will work.
 
-Behind the scenes, the compile changes `seq.IndexOf(value)` to
+Behind the scenes, the compiler changes `seq.IndexOf(value)` to
 `conv(seq).indexOf(value)`.
-
-This is so useful that there is a syntactic sugar to write them. Using this
-syntactic sugar, `getIndex` can be defined like this:
-
-    def getIndex[T, CC <% Seq[T]](seq: CC, value: T) = seq.indexOf(value)
-
-This syntactic sugar is described as a _view bound_, akin to an _upper bound_
-(`CC <: Seq[Int]`) or a _lower bound_ (`T >: Null`).
 
 ### Context Bounds
 
@@ -101,9 +96,9 @@ pattern enables the provision of common interfaces to classes which did not
 declare them. It can both serve as a bridge pattern -- gaining separation of
 concerns -- and as an adapter pattern.
 
-The `Integral` class you mentioned is a classic example of type class pattern.
-Another example on Scala's standard library is `Ordering`. There's a library
-that makes heavy use of this pattern, called Scalaz.
+The `Integral` class mentioned above is a classic example of type class pattern.
+Another example on Scala's standard library is `Ordering`. Scalaz is a library
+that makes heavy use of this pattern.
 
 This is an example of its use:
 
@@ -138,16 +133,16 @@ a method which does not exist on the object's class, or because you are calling
 a method that requires an implicit parameter, it will search for an implicit
 that will fit the need.
 
-This search obey certain rules that define which implicits are visible and
+This search obeys certain rules that define which implicits are visible and
 which are not. The following table showing where the compiler will search for
 implicits was taken from an excellent [presentation][1] about implicits by Josh
-Suereth, which I heartily recommend to anyone wanting to improve their Scala
+Suereth, which is heartily recommend to anyone wanting to improve their Scala
 knowledge. It has been complemented since then with feedback and updates.
 
-The implicits available under number 1 below has precedence over the ones under
+The implicits available under number 1 below have precedence over the ones under
 number 2. Other than that, if there are several eligible arguments which match
 the implicit parameter’s type, a most specific one will be chosen using the rules
-of static overloading resolution (see [Scala Specification][5] §6.26.3).
+of static overloading resolution (see [Scala Specification][5] §6.26.4).
 
 1. First look in current scope
     * Implicits defined in current scope
@@ -159,7 +154,6 @@ of static overloading resolution (see [Scala Specification][5] §6.26.3).
     * Implicit scope of an argument's type **(2.9.1)**
     * Implicit scope of type arguments **(2.8.0)**
     * Outer objects for nested types
-    * Other dimensions
 
 Let's give examples for them.
 
@@ -167,13 +161,13 @@ Let's give examples for them.
 
     implicit val n: Int = 5
     def add(x: Int)(implicit y: Int) = x + y
-    add(5) // takes n from the current scope
+    add(5) // takes n from the current scope, res: Int = 10
 
 ### Explicit Imports
 
     import scala.collection.JavaConversions.mapAsScalaMap
     def env = System.getenv() // Java map
-    val term = env("TERM")    // implicit conversion from Java Map to Scala Map
+    val term = env("TERM") // implicit conversion from Java Map to Scala Map
     
 ### Wildcard Imports
 
@@ -204,9 +198,9 @@ example:
     for {
         x <- List(1, 2, 3)
         y <- Some('x')
-    } yield, (x, y)
+    } yield (x, y)
 
-That expression is translated by the compile into
+That expression is translated by the compiler into
 
     List(1, 2, 3).flatMap(x => Some('x').map(y => (x, y)))
 
@@ -232,18 +226,18 @@ Note that companion objects of super classes are also looked into. For example:
     val b = new B(5, 2)
     val s: String = b  // s == "A: 2"
 
-This is how Scala found the implicit `Numeric[Int]` and `Numeric[Long]` in your
-question, by the way, as they are found inside `Numeric`, not `Integral`.
+This is how Scala found the implicit `Numeric[Int]` and `Numeric[Long]` in the
+opening example, by the way, as they are found inside `Numeric`, not `Integral`.
     
 ### Implicit scope of an argument's type
 
 If you have a method with an argument type `A`, then the implicit scope of type
-`A` will also be considered. By "implicit scope" I mean that all these rules
+`A` will also be considered. Here "implicit scope" means all these rules
 will be applied recursively -- for example, the companion object of `A` will be
 searched for implicits, as per the rule above.
 
 Note that this does not mean the implicit scope of `A` will be searched for
-conversions of that parameter, but of the whole expression. For example:
+conversions of that parameter alone, but of the whole expression. For example:
 
     class A(val n: Int) {
       def +(other: A) = new A(n + other.n)
@@ -289,17 +283,15 @@ implicits are found inside companion objects to the type parameters of
 `CanBuildFrom`.
 
 **Note**: `Ordering` is defined as `trait Ordering[T]`, where `T` is a type
-parameter. Previously, I said that Scala looked inside type parameters, which
-doesn't make much sense. The implicit looked for above is `Ordering[A]`, where
+parameter. The implicit looked for above is `Ordering[A]`, where
 `A` is an actual type, not type parameter: it is a _type argument_ to
-`Ordering`. See section 7.2 of the [Scala Specification][5].
+`Ordering`. See section 7.2 of the [Scala Specification][6].
 
 **This available only since Scala 2.8.0.**
 
 ### Outer Objects for Nested Types
 
-I haven't actually seen examples of this. I'd be grateful if someone could
-share one. The principle is simple:
+The principle is simple:
 
     class A(val n: Int) {
       class B(val m: Int) { require(m < n) }
@@ -311,25 +303,26 @@ share one. The principle is simple:
     val b = new a.B(3)
     val s: String = b  // s == "B: 3"
 
-### Other Dimensions
+A real world example of this would be welcome. Please share your example!
 
-I'm pretty sure this was a joke, but this answer might not be up-to-date. So
-don't take this question as being the final arbiter of what is happening, and
-if you do noticed it has gotten out-of-date, do open a ticket about it, or, if
-you know how to correct it, please fix it. It's a wiki after all.
+### Call To Action
 
-**EDIT**
+Avoid taking this question as being the final arbiter of what is happening.
+If you do notice it has become out-of-date, do [open a ticket about it][7], or, if
+you know how to correct it, please fix it.
 
 Related questions of interest:
 
-* [Context and view bounds](context-and-view-bounds.html)
+* [Context bounds](context-bounds.html)
 * [Chaining implicits](chaining-implicits.html)
 
 This question and answer were originally submitted on [Stack Overflow][3].
 
-  [1]: http://suereth.blogspot.com/2011/02/slides-for-todays-nescala-talk.html
+  [1]: http://jsuereth.com/scala/2011/02/18/2011-implicits-without-tax.html
   [2]: https://issues.scala-lang.org/browse/SI-4427
   [3]: http://stackoverflow.com/q/5598085/53013
   [4]: http://stackoverflow.com/questions/5512397/passing-scala-math-integral-as-implicit-parameter
-  [5]: http://scala-lang.org/files/archive/spec/2.11/
+  [5]: http://scala-lang.org/files/archive/spec/2.11/06-expressions.html
+  [6]: http://scala-lang.org/files/archive/spec/2.11/07-implicits.html
+  [7]: https://github.com/scala/scala.github.com/issues
 

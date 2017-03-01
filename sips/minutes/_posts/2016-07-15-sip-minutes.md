@@ -58,21 +58,22 @@ Minutes were taken by Jorge Vicente Cantero, acting secretary.
 
 Attendees Present:
 
-* Martin Odersky ([@odersky](github.com/odersky)), EPFL
-* Adriaan Moors ([@adriaanm](github.com/adriaanm)), Lightbend
-* Heather Miller ([@heathermiller](github.com/heathermiller)), Scala Center
-* Sébastien Doeraene ([@sjrd](github.com/sjrd)), EPFL
-* Eugene Burmako ([@xeno-by](github.com/xeno-by)), EPFL
-* Andrew Marki ([@som-snytt](github.com/som-snytt)), independent
-* Josh Suereth ([@jsuereth](github.com/jsuereth)), Google
-* Dmitry Petrashko ([@DarkDimius](github.com/DarkDimius)), as a guest
-* Jorge Vicente Cantero ([@jvican](github.com/jvican)), Process Lead
+* Martin Odersky ([@odersky](https://github.com/odersky)), EPFL
+* Adriaan Moors ([@adriaanm](https://github.com/adriaanm)), Lightbend
+* Heather Miller ([@heathermiller](https://github.com/heathermiller)), Scala Center
+* Sébastien Doeraene ([@sjrd](https://github.com/sjrd)), EPFL
+* Eugene Burmako ([@xeno-by](https://github.com/xeno-by)), EPFL
+* Andrew Marki ([@som-snytt](https://github.com/som-snytt)), independent
+* Josh Suereth ([@jsuereth](https://github.com/jsuereth)), Google
+* Dmitry Petrashko ([@DarkDimius](https://github.com/DarkDimius)), as a guest
+* Jorge Vicente Cantero ([@jvican](https://github.com/jvican)), Process Lead
 
 ## Guests
 
-* Dmitry Petrashko ([@DarkDimius](github.com/DarkDimius)), EPFL (guest)
+* Dmitry Petrashko ([@DarkDimius](https://github.com/DarkDimius)), EPFL (guest)
 
 ## Proceedings
+
 ### Opening Remarks
 
 As acting Process Lead, Jorge Vicente Cantero conducted the meeting, made the
@@ -80,6 +81,7 @@ opening remarks, and introduced the guest Dmitry, who was present to help
 discuss the proposal for an improved lazy val initialization (SIP-20).
 
 ### Scala Improvement Proposals
+
 #### Proposal SIP-25: Trait Parameters proposed by Martin Odersky
 
 Adriaan Moors, as the assigned reviewer of this SIP, quickly introduced the
@@ -192,11 +194,11 @@ Jorge asks the SIP committee to provide  feedback to the authors to speed up the
 SLIP process in the future.
 
 * JSON AST: No news from the last discussion in the slip repo. It's been
-integrated into Play and SBT server 1.0. The committee considers that it's a
+integrated into Play and sbt server 1.0. The committee considers that it's a
 prime candidate for the platform.
 * Extensions of Futures and Promises: the committee calls for an implementation.
 This SLIP will be addressed by the next SLIP committee.
-* Either monadic bias: it was merged one day before by the Lightband team. Therefore, this SIP is both accepted and merged.
+* Either monadic bias: it was merged one day before by the Lightbend team. Therefore, this SIP is both accepted and merged.
 * scala.io.Target: Martin proposes to delay it until the SLIP committee decides
 how the platform would look like. Then, they will take care of it.
 * Redesigning collections views: Jorge explains what Josh, who is author of the

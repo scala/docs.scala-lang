@@ -1,20 +1,15 @@
-{% for pg in site.pages %}
-  {% if pg.tutorial == "scala-tour" and pg.outof and pg.language == page.language %}
-    {% assign totalPagesTour = pg.outof %}
-  {% endif %}
-{% endfor %}
+{% assign sorted_tour_posts = site.categories.tour | sort: 'num' %}
+{% assign tour_posts_size = sorted_tour_posts | size %}
 
-{% if totalPagesTour %}
+{% if tour_posts_size %}
   <ul>
-  {% for i in (1..totalPagesTour) %}
-    {% for pg in site.pages %}
-      {% if pg.tutorial == "scala-tour" and pg.num and pg.num == i and pg.language == page.language %}
+    {% for pg in sorted_tour_posts %}
+      {% if pg.language == page.language %}
         <li class="tour-of-scala {% if page.title == pg.title %} current-page {% endif %}">
           <a href="{{ pg.url }}">{{ pg.title }}</a>
         </li>
       {% endif %}
     {% endfor %}
-  {% endfor %}
   </ul>
 {% else %} **ERROR**. Couldn't find the total number of pages in this set of tutorial articles. Have you declared the `outof` tag in your YAML front matter?
 {% endif %}
