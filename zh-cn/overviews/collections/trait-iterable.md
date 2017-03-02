@@ -59,7 +59,7 @@ Iterable有两个方法返回迭代器：grouped和sliding。然而，这些迭�
 | xs sameElements ys | 测试 xs 和 ys 是否以相同的顺序包含相同的元素。 |
 
 
-在Iterable下的继承层次结构你会发现有三个traits：[Seq](http://www.scala-lang.org/docu/files/collections-api/collections_5.html)，[Set](http://www.scala-lang.org/docu/files/collections-api/collections_7.html)，和 [Map](http://www.scala-lang.org/docu/files/collections-api/collections_10.html)。这三个Traits有一个共同的特征，它们都实现了[PartialFunction](http://www.scala-lang.org/api/current/scala/PartialFunction.html) trait以及它的应用和isDefinedAt 方法。然而，每一个trait实现的[PartialFunction](http://www.scala-lang.org/api/current/scala/PartialFunction.html) 方法却各不相同。 
+在Iterable下的继承层次结构你会发现有三个traits：[Seq](https://www.scala-lang.org/api/current/scala/collection/Seq.html)，[Set](https://www.scala-lang.org/api/current/scala/collection/Set.html)，和 [Map](https://www.scala-lang.org/api/current/scala/collection/Map.html)。这三个Traits有一个共同的特征，它们都实现了[PartialFunction](https://www.scala-lang.org/api/current/scala/PartialFunction.html) trait以及它的应用和isDefinedAt 方法。然而，每一个trait实现的[PartialFunction](https://www.scala-lang.org/api/current/scala/PartialFunction.html) 方法却各不相同。 
 
 例如序列，使用用的是位置索引，它里面的元素的总是从0开始编号。即`Seq(1, 2, 3)(1) `为2。例如sets，使用的是成员测试。例如`Set('a', 'b', 'c')('b') `算出来的是true，而`Set()('a')`为false。最后，maps使用的是选择。比如`Map('a' -> 1, 'b' -> 10, 'c' -> 100)('b')` 得到的是10。
 
