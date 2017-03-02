@@ -58,7 +58,7 @@ Trait `Iterable` also adds some other methods to `Traversable` that can be imple
 |  **Comparison:** 	    |						     |
 |  `xs sameElements ys`	    |A test whether `xs` and `ys` contain the same elements in the same order|
 
-In the inheritance hierarchy below Iterable you find three traits: [Seq](https://www.scala-lang.org/api/current/scala/collection/Seq.html), [Set](https://www.scala-lang.org/api/current/scala/collection/Set.html), and [Map](https://www.scala-lang.org/api/current/scala/collection/Map.html). A common aspect of these three traits is that they all implement the [PartialFunction](https://www.scala-lang.org/api/current/scala/PartialFunction.html) trait with its `apply` and `isDefinedAt` methods. However, the way each trait implements `PartialFunction` differs.
+In the inheritance hierarchy below Iterable you find three traits: [Seq](https://www.scala-lang.org/api/current/scala/collection/Seq.html), [Set](https://www.scala-lang.org/api/current/scala/collection/Set.html), and [Map](https://www.scala-lang.org/api/current/scala/collection/Map.html). `Seq` and `Map` implement the [PartialFunction](https://www.scala-lang.org/api/current/scala/PartialFunction.html) trait with its `apply` and `isDefinedAt` methods, each implemented differently. `Set` gets its `apply` method from [GenSetLike](https://www.scala-lang.org/api/current/scala/collection/GenSetLike.html).
 
 For sequences, `apply` is positional indexing, where elements are always numbered from `0`. That is, `Seq(1, 2, 3)(1)` gives `2`. For sets, `apply` is a membership test. For instance, `Set('a', 'b', 'c')('b')` gives `true` whereas `Set()('a')` gives `false`. Finally for maps, `apply` is a selection. For instance, `Map('a' -> 1, 'b' -> 10, 'c' -> 100)('b')` gives `10`.
 
