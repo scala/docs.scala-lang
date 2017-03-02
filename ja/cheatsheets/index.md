@@ -58,7 +58,7 @@ language: ja
 |  `for (x <- xs if x%2 == 0) yield x*10` <br>_(_ `xs.filter(_%2 == 0).map(_*10)`  _と同じ)_               |  for 内包表記: filter/map             |
 |  `for ((x,y) <- xs zip ys) yield x*y` <br>_(_ `(xs zip ys) map { case (x,y) => x*y }` _と同じ)_          |  for 内包表記: 構造化代入             |
 |  `for (x <- xs; y <- ys) yield x*y` <br>_(_ `xs flatMap {x => ys map {y => x*y}}` _と同じ)_              |  for 内包表記: 直積                   |
-|  `for (x <- xs; y <- ys) {`<br>    `println("%d/%d = %.1f".format(x,y, x*y))`<br>`}`                     |  for 内包表記: 命令型の記述<br>[sprintf-style](http://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax) |
+|  `for (x <- xs; y <- ys) {`<br>    `println("%d/%d = %.1f".format(x, y, x/y.toFloat))`<br>`}`                     |  for 内包表記: 命令型の記述<br>[sprintf-style](http://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax) |
 |  `for (i <- 1 to 5) {`<br>    `println(i)`<br>`}`                                                        |  for 内包表記: 上限を含んだ走査       |
 |  `for (i <- 1 until 5) {`<br>    `println(i)`<br>`}`                                                     |  for 内包表記: 上限を除いた走査       |
 |  <span id="pattern_matching" class="h2">パターンマッチング</span>                                        |                                       |

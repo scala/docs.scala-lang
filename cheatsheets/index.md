@@ -57,7 +57,7 @@ languages: [ba, fr, ja, pl, pt-br]
 |  `for (x <- xs if x%2 == 0) yield x*10` _same as_ <br>`xs.filter(_%2 == 0).map(_*10)`                    |  for comprehension: filter/map |
 |  `for ((x,y) <- xs zip ys) yield x*y` _same as_ <br>`(xs zip ys) map { case (x,y) => x*y }`              |  for comprehension: destructuring bind |
 |  `for (x <- xs; y <- ys) yield x*y` _same as_ <br>`xs flatMap {x => ys map {y => x*y}}`                  |  for comprehension: cross product |
-|  `for (x <- xs; y <- ys) {`<br>    `println("%d/%d = %.1f".format(x,y, x*y))`<br>`}`                     |  for comprehension: imperative-ish<br>[sprintf-style](http://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax) |
+|  `for (x <- xs; y <- ys) {`<br>    `println("%d/%d = %.1f".format(x, y, x/y.toFloat))`<br>`}`                     |  for comprehension: imperative-ish<br>[sprintf-style](http://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax) |
 |  `for (i <- 1 to 5) {`<br>    `println(i)`<br>`}`                                                        |  for comprehension: iterate including the upper bound |
 |  `for (i <- 1 until 5) {`<br>    `println(i)`<br>`}`                                                     |  for comprehension: iterate omitting the upper bound |
 |  <span id="pattern_matching" class="h2">pattern matching</span>                                                         |                 |

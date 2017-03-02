@@ -104,7 +104,7 @@ Summing via `fold` on a `ParArray`:
 #### filter
 
 Using a parallel `filter` to select the last names that come alphabetically
-after the letter "K".
+after the letter "I".
 
     scala> val lastNames = List("Smith","Jones","Frankenstein","Bach","Jackson","Rodin").par
     lastNames: scala.collection.parallel.immutable.ParSeq[String] = ParVector(Smith, Jones, Frankenstein, Bach, Jackson, Rodin)

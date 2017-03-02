@@ -58,7 +58,7 @@ language: pt-br
 |  `for (x <- xs if x%2 == 0) yield x*10` _o mesmo que_ <br>`xs.filter(_%2 == 0).map(_*10)`                    |  for: filter/map |
 |  `for ((x,y) <- xs zip ys) yield x*y` _o mesmo que_ <br>`(xs zip ys) map { case (x,y) => x*y }`              |  for: associação desestruturada |
 |  `for (x <- xs; y <- ys) yield x*y` _o mesmo que_ <br>`xs flatMap {x => ys map {y => x*y}}`                  |  for: produto cruzado |
-|  `for (x <- xs; y <- ys) {`<br>    `println("%d/%d = %.1f".format(x,y, x*y))`<br>`}`                     |  for: estilo imperativo<br>[sprintf-style](http://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax) |
+|  `for (x <- xs; y <- ys) {`<br>    `println("%d/%d = %.1f".format(x, y, x/y.toFloat))`<br>`}`                     |  for: estilo imperativo<br>[sprintf-style](http://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax) |
 |  `for (i <- 1 to 5) {`<br>    `println(i)`<br>`}`                                                        |  for: itera incluindo o limite superior |
 |  `for (i <- 1 until 5) {`<br>    `println(i)`<br>`}`                                                     |  for: itera omitindo o limite superior |
 |  <span id="pattern_matching" class="h2">pattern matching</span>                                                         |                 |
