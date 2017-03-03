@@ -151,7 +151,7 @@ All operations on iterators are summarized below.
 |  **Update:**              |						         |
 |  `it patch (i, jt, r)`    | The iterator resulting from `it` by replacing `r` elements starting with `i` by the patch iterator `jt`. |
 |  **Comparison:**          |						         |
-|  `it sameElements jt`     | A test whether iterators it and `jt` return the same elements in the same order. Note: At least one of `it` and `jt` will be at its end after this operation. |
+|  `it sameElements jt`     | A test whether iterators it and `jt` return the same elements in the same order. Note: Using the iterators after this operation is undefined and subject to change. |
 |  **Strings:**             |						         |
 |  `it addString (b, start, sep, end)`| Adds a string to `StringBuilder` `b` which shows all elements returned by `it` between separators `sep` enclosed in strings `start` and `end`. `start`, `sep`, `end` are all optional. |
 |  `it mkString (start, sep, end)` | Converts the collection to a string which shows all elements returned by `it` between separators `sep` enclosed in strings `start` and `end`. `start`, `sep`, `end` are all optional. |
