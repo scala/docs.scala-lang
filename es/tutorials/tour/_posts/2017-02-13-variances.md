@@ -14,24 +14,26 @@ Scala soporta anotaciones de varianza para parámetros de tipo para [clases gen�
 
 En el artículo sobre clases genéricas dimos un ejemplo de una pila mutable. Explicamos que el tipo definido por la clase `Stack[T]` es objeto de subtipos invariantes con respecto al parámetro de tipo. Esto puede restringir el reuso de la abstracción (la clase). Ahora derivaremos una implementación funcional (es decir, inmutable) para pilas que no tienen esta restricción. Nótese que este es un ejemplo avanzado que combina el uso de [métodos polimórficos](polymorphic-methods.html), [límites de tipado inferiores](lower-type-bounds.html), y anotaciones de parámetros de tipo covariante de una forma no trivial. Además hacemos uso de [clases internas](inner-classes.html) para encadenar los elementos de la pila sin enlaces explícitos.
 
-    class Stack[+A] {
-      def push[B >: A](elem: B): Stack[B] = new Stack[B] {
-        override def top: B = elem
-        override def pop: Stack[B] = Stack.this
-        override def toString() = elem.toString() + " " +
-                                  Stack.this.toString()
-      }
-      def top: A = sys.error("no element on stack")
-      def pop: Stack[A] = sys.error("no element on stack")
-      override def toString() = ""
-    }
-    
-    object VariancesTest extends App {
-      var s: Stack[Any] = new Stack().push("hello");
-      s = s.push(new Object())
-      s = s.push(7)
-      println(s)
-    }
+```tut
+class Stack[+T] {
+  def push[S >: T](elem: S): Stack[S] = new Stack[S] {
+    override def top: S = elem
+    override def pop: Stack[S] = Stack.this
+    override def toString: String =
+      elem.toString + " " + Stack.this.toString
+  }
+  def top: T = sys.error("no element on stack")
+  def pop: Stack[T] = sys.error("no element on stack")
+  override def toString: String = ""
+}
+
+object VariancesTest extends App {
+  var s: Stack[Any] = new Stack().push("hello")
+  s = s.push(new Object())
+  s = s.push(7)
+  println(s)
+}
+```
 
 La anotación `+T` declara que el tipo `T` sea utilizado solamente en posiciones covariantes. De forma similar, `-T` declara que `T` sea usado en posiciones contravariantes. Para parámetros de tipo covariantes obtenemos una relación de subtipo covariante con respecto al parámetro de tipo. Para nuestro ejemplo, esto significa que `Stack[T]` es un subtipo de `Stack[S]` si `T` es un subtipo de `S`. Lo contrario se cumple para parámetros de tipo que son etiquetados con un signo `-`.
 

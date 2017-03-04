@@ -14,24 +14,26 @@ language: ko
 
 [제네릭 클래스](generic-classes.html)에 관한 페이지에선 변경 가능한 스택의 예제를 살펴보면서, 클래스 `Stack[T]`에서 정의한 타입은 타입 파라미터의 서브타입이 불변자여야 함을 설명했었다. 이는 추상화된 클래스의 재사용을 제한할 수 있다. 지금부턴 이런 제약이 없는 함수형(즉, 변경이 불가능한) 스택의 구현을 알아본다. 이 구현은 [다형성 메소드](polymorphic-methods.html), [하위 타입 경계](lower-type-bounds.html), 순가변 타입 파라미터 어노테이션 등의 중요 개념을 조합한 좀 더 어려운 예제임을 알아두자. 또한 [내부 클래스](inner-classes.html)를 사용해 명시적인 연결 없이도 스택의 항목을 서로 묶을 수 있도록 만들었다.
 
-    class Stack[+A] {
-      def push[B >: A](elem: B): Stack[B] = new Stack[B] {
-        override def top: B = elem
-        override def pop: Stack[B] = Stack.this
-        override def toString() = elem.toString() + " " +
-                                  Stack.this.toString()
-      }
-      def top: A = sys.error("no element on stack")
-      def pop: Stack[A] = sys.error("no element on stack")
-      override def toString() = ""
-    }
-    
-    object VariancesTest extends App {
-      var s: Stack[Any] = new Stack().push("hello");
-      s = s.push(new Object())
-      s = s.push(7)
-      println(s)
-    }
+```tut
+class Stack[+T] {
+  def push[S >: T](elem: S): Stack[S] = new Stack[S] {
+    override def top: S = elem
+    override def pop: Stack[S] = Stack.this
+    override def toString: String =
+      elem.toString + " " + Stack.this.toString
+  }
+  def top: T = sys.error("no element on stack")
+  def pop: Stack[T] = sys.error("no element on stack")
+  override def toString: String = ""
+}
+
+object VariancesTest extends App {
+  var s: Stack[Any] = new Stack().push("hello")
+  s = s.push(new Object())
+  s = s.push(7)
+  println(s)
+}
+```
 
 어노테이션 `+T`는 타입 순가변 위치에서만 사용할 수 있는 타입 `T`를 선언한다. 이와 유사하게, `-T`는 역가변 위치에서만 사용할 수 있는 `T`를 선언한다. 순가변 타입 파라미터의 경우, 타입 파라미터의 정의에 따라 서브타입과 순가변 관계를 형성한다. 즉, `T`가 `S`의 서브타입이라면 이 예제의 `Stack[T]`는 `Stack[S]`의 서브타입이다. `-`로 표시된 타입 파라미터 사이에는 이와는 반대의 관계가 맺어진다.
 

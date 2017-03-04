@@ -17,20 +17,20 @@ Scala wspiera adnotacje wariancji parametrów typów [klas generycznych](generic
 Na stronie o [klasach generycznych](generic-classes.html) omówiliśmy przykład zmiennego stosu. Wyjaśniliśmy, że typ definiowany przez klasę `Stack[T]` jest poddany niezmiennemu podtypowaniu w stosunku do parametru typu. Może to ograniczyć możliwość ponownego wykorzystania abstrakcji tej klasy. Spróbujemy teraz opracować funkcyjną (tzn. niemutowalną) implementację dla stosów, które nie posiadają tego ograniczenia. Warto zwrócić uwagę, że jest to zaawansowany przykład łączący w sobie zastosowanie [funkcji polimorficznych](polymorphic-methods.html), [dolnych ograniczeń typu](lower-type-bounds.html) oraz kowariantnych adnotacji parametru typu. Dodatkowo stosujemy też [klasy wewnętrzne](inner-classes.html), aby połączyć ze sobą elementy stosu bez jawnych powiązań.
 
 ```tut
-class Stack[+A] {
-  def push[B >: A](elem: B): Stack[B] = new Stack[B] {
-    override def top: B = elem
-    override def pop: Stack[B] = Stack.this
-    override def toString() = elem.toString() + " " +
-                              Stack.this.toString()
+class Stack[+T] {
+  def push[S >: T](elem: S): Stack[S] = new Stack[S] {
+    override def top: S = elem
+    override def pop: Stack[S] = Stack.this
+    override def toString: String =
+      elem.toString + " " + Stack.this.toString
   }
-  def top: A = sys.error("no element on stack")
-  def pop: Stack[A] = sys.error("no element on stack")
-  override def toString() = ""
+  def top: T = sys.error("no element on stack")
+  def pop: Stack[T] = sys.error("no element on stack")
+  override def toString: String = ""
 }
 
 object VariancesTest extends App {
-  var s: Stack[Any] = new Stack().push("hello");
+  var s: Stack[Any] = new Stack().push("hello")
   s = s.push(new Object())
   s = s.push(7)
   println(s)
