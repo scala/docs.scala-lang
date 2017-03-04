@@ -102,11 +102,11 @@ En este ejemplo, estamos intentando crear una cadena JSON mediante el uso de la 
 
 Cuando el compilador encuentra la cadena `json"{ name: $name, id: $id }"` reescribe la siguiente expresión:
 
-    new StringContext("{ name:", ",id: ", "}").json(name, id)
+    new StringContext("{ name: ", ", id: ", " }").json(name, id)
 
 La clase implícita es utilizada para reescribir el fragmento anterior de la siguiente forma:
 
-    new JsonHelper(new StringContext("{ name:", ",id: ", "}")).json(name, id)
+    new JsonHelper(new StringContext("{ name: ", ", id: ", " }")).json(name, id)
 
 De este modo, el método `json` tiene acceso a las diferentes partes de las cadenas así como cada una de las expresiones. Una implementación simple, y con errores, de este método podría ser:
 
