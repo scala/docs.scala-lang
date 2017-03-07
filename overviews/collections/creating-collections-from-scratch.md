@@ -18,7 +18,7 @@ You have syntax `List(1, 2, 3)` to create a list of three integers and `Map('A' 
     Iterator(1, 2, 3)         // An iterator returning three integers.
     Set(dog, cat, bird)       // A set of three animals
     HashSet(dog, cat, bird)   // A hash set of the same animals
-    Map(a -> 7, 'b' -> 0)     // A map from characters to integers
+    Map('a' -> 7, 'b' -> 0)   // A map from characters to integers
 
 "Under the covers" each of the above lines is a call to the `apply` method of some object. For instance, the third line above expands to
 
