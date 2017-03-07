@@ -2,8 +2,8 @@
 	<div class="container">
 		<ul>
 			<li><h5>API</h5></li>
-			<li><a href="http://www.scala-lang.org/api/current/">Current</a></li>
-			<li><a href="http://www.scala-lang.org/files/archive/nightly/2.11.x/api/2.11.x/">Nightly</a></li>
+			<li><a href="https://www.scala-lang.org/api/current/">Current</a></li>
+			<li><a href="https://www.scala-lang.org/files/archive/nightly/2.12.x/api/2.12.x/">Nightly</a></li>
 		</ul>
 		<ul>
 			<li><h5>Learn</h5></li>
@@ -18,9 +18,9 @@
 		</ul>
 		<ul>
 			<li><h5>Contribute</h5></li>
-			<li><a href="http://github.com/scala/scala.github.com">Source Code</a></li>
+			<li><a href="https://github.com/scala/scala.github.com">Source Code</a></li>
 			<li><a href="{{ site.baseurl }}/contribute.html">Contributors Guide</a></li>
-			<li><a href="http://getsatisfaction.com/scaladocs">Suggestions</a></li>
+			<li><a href="https://getsatisfaction.com/scaladocs">Suggestions</a></li>
 		</ul>
 		<ul>
 			<li><h5>Other Resources</h5></li>
@@ -29,7 +29,7 @@
 	</div>
 	<div class="container copyright">
  		<p>
-			Copyright &copy; 2011-2015 EPFL. All rights reserved.
+			Copyright &copy; 2011-2017 EPFL. All rights reserved.
 			<a href="https://github.com/scala/scala.github.com/commits/gh-pages.atom"><img align="right" height="20px" width="20px" src="{{ site.baseurl }}/resources/images/rss.png" alt="RSS feed of updates to the github repo hosting this site"></a>
 		</p>
 	</div>

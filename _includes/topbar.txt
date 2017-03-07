@@ -9,8 +9,8 @@
                 <li class="menu">
                       <a href="#" class="menu">API</a>
                       <ul class="menu-dropdown">
-                        <li><a href="http://www.scala-lang.org/api/current/">Current</a></li>
-                        <li><a href="http://www.scala-lang.org/files/archive/nightly/2.11.x/api/2.11.x/">Nightly</a></li>
+                        <li><a href="https://www.scala-lang.org/api/current/">Current</a></li>
+                        <li><a href="https://www.scala-lang.org/files/archive/nightly/2.12.x/api/2.12.x/">Nightly</a></li>
                         <!--<li class="divider"></li>
                         <li><a href="#">Previous Versions</a></li>
                         -->
