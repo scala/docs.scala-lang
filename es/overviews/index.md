@@ -9,6 +9,5 @@ title: Guías y resúmenes
 </div>
 
 {% include localized-overview-index.txt %}
-
 <!--* Swing <span class="label important">Traducción en progreso . . .</span>-->
 
