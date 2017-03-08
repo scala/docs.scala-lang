@@ -20,6 +20,8 @@ the <b>for comprehension</b>.
 Following is a proposal for a concise syntax for working with Comonads(map, extract & coflatMap):
 the <b>cofor comprehension</b>.
 
+The proposal has an existing implementation in <a href="https://github.com/scala/scala/pull/5725">PR 5725</a>
+
 ## Motivating Examples
 
 ### Examples
