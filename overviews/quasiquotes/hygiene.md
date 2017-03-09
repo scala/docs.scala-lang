@@ -7,6 +7,7 @@ disqus: true
 partof: quasiquotes
 num: 5
 outof: 13
+languages: [ko]
 ---
 **Denys Shabalin, Eugene Burmako** <span class="label warning" style="float: right;">EXPERIMENTAL</span>
 

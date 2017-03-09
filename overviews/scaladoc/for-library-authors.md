@@ -7,6 +7,7 @@ disqus: true
 partof: scaladoc
 num: 2
 outof: 3
+languages: [ko]
 ---
 
 Scaladoc is a documentation system that lives in the comments of Scala source code

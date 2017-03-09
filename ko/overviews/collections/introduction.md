@@ -1,12 +1,12 @@
 ---
 layout: overview-large
-title: Introduction
+title: 소개
 
 disqus: true
 
 partof: collections
 num: 1
-languages: [ko, ja, zh-cn]
+language: ko
 ---
 
 **Martin Odersky, and Lex Spoon**

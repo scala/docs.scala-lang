@@ -6,7 +6,7 @@ disqus: true
 
 partof: collections
 num: 8
-languages: [ja, zh-cn]
+languages: [ko, ja, zh-cn]
 ---
 
 Scala provides many concrete immutable collection classes for you to choose from. They differ in the traits they implement (maps, sets, sequences), whether they can be infinite, and the speed of various operations. Here are some of the most common immutable collection types used in Scala.

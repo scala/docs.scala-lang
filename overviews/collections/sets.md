@@ -6,7 +6,7 @@ disqus: true
 
 partof: collections
 num: 6
-languages: [ja, zh-cn]
+languages: [ko, ja, zh-cn]
 ---
 
 `Set`s are `Iterable`s that contain no duplicate elements. The operations on sets are summarized in the following table for general sets and in the table after that for mutable sets. They fall into the following categories:

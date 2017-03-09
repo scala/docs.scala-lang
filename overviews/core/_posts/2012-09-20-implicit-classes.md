@@ -4,7 +4,7 @@ title: Implicit Classes
 overview: implicit-classes
 label-color: success
 label-text: Available
-languages: [zh-cn]
+languages: [ko, zh-cn]
 ---
 
 **Josh Suereth**

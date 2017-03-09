@@ -6,7 +6,7 @@ disqus: true
 
 partof: collections
 num: 2
-languages: [ja, zh-cn]
+languages: [ko, ja, zh-cn]
 ---
 
 Scala collections systematically distinguish between mutable and

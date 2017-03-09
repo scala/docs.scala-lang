@@ -3,7 +3,7 @@ layout: overview-large
 title: Type Macros
 
 disqus: true
-languages: [ja]
+languages: [ko, ja]
 ---
 <span class="label important" style="float: right;">OBSOLETE</span>
 

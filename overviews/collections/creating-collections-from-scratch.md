@@ -6,7 +6,7 @@ disqus: true
 
 partof: collections
 num: 16
-languages: [ja, zh-cn]
+languages: [ko, ja, zh-cn]
 ---
 
 You have syntax `List(1, 2, 3)` to create a list of three integers and `Map('A' -> 1, 'C' -> 2)` to create a map with two bindings. This is actually a universal feature of Scala collections. You can take any collection name and follow it by a list of elements in parentheses. The result will be a new collection with the given elements. Here are some more examples:

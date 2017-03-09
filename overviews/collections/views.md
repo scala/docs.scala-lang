@@ -6,7 +6,7 @@ disqus: true
 
 partof: collections
 num: 14
-languages: [ja, zh-cn]
+languages: [ko, ja, zh-cn]
 ---
 
 Collections have quite a few methods that construct new collections. Examples are `map`, `filter` or `++`. We call such methods transformers because they take at least one collection as their receiver object and produce another collection as their result.

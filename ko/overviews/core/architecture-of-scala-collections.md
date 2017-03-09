@@ -2,7 +2,8 @@
 layout: overview
 title: The Architecture of Scala Collections
 overview: architecture-of-scala-collections
-languages: [ko, zh-cn]
+disqus: true
+language: ko
 ---
 
 **Martin Odersky and Lex Spoon**

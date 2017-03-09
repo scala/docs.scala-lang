@@ -5,7 +5,7 @@ title: Architecture of the Parallel Collections Library
 disqus: true
 
 partof: parallel-collections
-languages: [ja, zh-cn, es]
+languages: [ko, ja, zh-cn, es]
 num: 5
 ---
 

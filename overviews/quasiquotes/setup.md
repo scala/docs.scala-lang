@@ -7,6 +7,7 @@ disqus: true
 partof: quasiquotes
 num: 1
 outof: 13
+languages: [ko]
 ---
 
 ## Scala 2.11
