@@ -17,20 +17,20 @@ Scala suporta anotações de variância de parâmetros de tipo de [classes gené
 Na página sobre [classes genéricas](generic-classes.html) foi dado um exemplo de uma pilha de estado mutável. Explicamos que o tipo definido pela classe `Stack [T]` está sujeito a subtipos invariantes em relação ao parâmetro de tipo. Isso pode restringir a reutilização da abstração de classe. Derivamos agora uma implementação funcional (isto é, imutável) para pilhas que não tem esta restrição. Por favor, note que este é um exemplo avançado que combina o uso de [métodos polimórficos](polymorphic-methods.html), [limites de tipo inferiores](lower-type-bounds.html) e anotações de parâmetros de tipos covariantes em um estilo não trivial. Além disso, fazemos uso de [classes internas](inner-classes.html) para encadear os elementos da pilha sem links explícitos.
 
 ```tut
-class Stack[+A] {
-  def push[B >: A](elem: B): Stack[B] = new Stack[B] {
-    override def top: B = elem
-    override def pop: Stack[B] = Stack.this
-    override def toString() = elem.toString() + " " +
-                              Stack.this.toString()
+class Stack[+T] {
+  def push[S >: T](elem: S): Stack[S] = new Stack[S] {
+    override def top: S = elem
+    override def pop: Stack[S] = Stack.this
+    override def toString: String =
+      elem.toString + " " + Stack.this.toString
   }
-  def top: A = sys.error("no element on stack")
-  def pop: Stack[A] = sys.error("no element on stack")
-  override def toString() = ""
+  def top: T = sys.error("no element on stack")
+  def pop: Stack[T] = sys.error("no element on stack")
+  override def toString: String = ""
 }
 
 object VariancesTest extends App {
-  var s: Stack[Any] = new Stack().push("hello");
+  var s: Stack[Any] = new Stack().push("hello")
   s = s.push(new Object())
   s = s.push(7)
   println(s)
