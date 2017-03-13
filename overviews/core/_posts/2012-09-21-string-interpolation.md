@@ -112,11 +112,11 @@ In this example, we're attempting to create a JSON literal syntax using string i
 
 When the compiler encounters the literal `json"{ name: $name, id: $id }"` it rewrites it to the following expression:
 
-    new StringContext("{ name:", ",id: ", "}").json(name, id)
+    new StringContext("{ name: ", ", id: ", " }").json(name, id)
 
 The implicit class is then used to rewrite it to the following:
 
-    new JsonHelper(new StringContext("{ name:", ",id: ", "}")).json(name, id)
+    new JsonHelper(new StringContext("{ name: ", ", id: ", " }")).json(name, id)
 
 So, the `json` method has access to the raw pieces of strings and each expression as a value.   A simple (buggy) implementation of this method could be:
 

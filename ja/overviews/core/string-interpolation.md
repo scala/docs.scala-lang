@@ -101,11 +101,11 @@ Scala では、全ての加工文字列リテラルは簡単なコード変換�
 
 コンパイラが `json"{ name: $name, id: $id }"` を見つけると、以下の式に書き換える:
 
-    new StringContext("{ name:", ",id: ", "}").json(name, id)
+    new StringContext("{ name: ", ", id: ", " }").json(name, id)
 
 さらに、implicit クラスは以下のように書き換える:
 
-    new JsonHelper(new StringContext("{ name:", ",id: ", "}")).json(name, id)
+    new JsonHelper(new StringContext("{ name: ", ", id: ", " }")).json(name, id)
 
 そのため、`json` メソッドは生の String 部分と渡される式の値をみることができる。シンプルな (だけどバギーな) 実装を以下に示す:
 
