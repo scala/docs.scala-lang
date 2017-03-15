@@ -80,14 +80,14 @@ Adding and removing commas also introduces unnecessary noise in diffs:
 
 Adding and removing commas also unnecessarily changed the authorship of the line:
 
-{% highlight %}
+~~~
 ^199861c (Alice Doe 2016-12-20 10:20:05 +0000 1) Seq(
 ^199861c (Alice Doe 2016-12-20 10:20:05 +0000 2)   foo,
 ^199861c (Alice Doe 2016-12-20 10:20:05 +0000 3)   bar,
 66dddcc3 (Bob Doe   2017-01-10 11:45:10 +0000 4)   baz,
 66dddcc3 (Bob Doe   2017-01-10 11:45:10 +0000 5)   quux
 ^199861c (Alice Doe 2016-12-20 10:20:05 +0000 6) )
-{% endhighlight %}
+~~~
 
 ### Simplify code generation
 
