@@ -146,7 +146,7 @@ There are a number of different parts of the Scala grammar that are comma-separa
 * `Bindings`
 * `ids`, `ValDcl`, `VarDcl`, `VarDef` and `PatDef`
 
-Following Dr. Martin Odersky's suggestion, the proposal is that trailing commas are only supported in comma-separated elements that are enclosed by parentheses, brackets or braces (`)`, `}`, and `]`, respectively).
+Following Dr. Martin Odersky's suggestion, the proposal is that trailing commas are only supported in comma-separated elements that are enclosed by parentheses, square brackets or curly braces (`)`, `]`, and `}`, respectively).
 
 ## Implementation
 
