@@ -12,7 +12,7 @@ outof: 13
 
 ## Empty Type
 
-Empty type (`tq""`) is a canonical way to say that type at given location isn't given by the user and should be inferred by the compiler:
+The empty type (`tq""`) is a canonical way to say that the type at given location isn't given by the user and should be inferred by the compiler:
 
 1. [Method](/overviews/quasiquotes/definition-details.html#method-definition) with unknown return type
 2. [Val or Var](/overviews/quasiquotes/definition-details.html#val-and-var-definitions) with unknown type
@@ -33,7 +33,7 @@ And deconstruct it back through [unlifting](/overviews/quasiquotes/unlifting.htm
     scala> val tq"${name: TypeName}" = tq"Foo"
     name: universe.TypeName = Foo
 
-It's recommended to always ascribe name as `TypeName` when you work with type identifiers. Non-ascribed pattern is equivalent to just a pattern variable binding.
+It is recommended to always ascribe the name as `TypeName` when you work with type identifiers. A non-ascribed pattern is equivalent to a pattern variable binding.
 
 ## Singleton Type
 
@@ -56,7 +56,7 @@ Type projection is a fundamental way to select types as members of other types:
     foo: universe.Tree = Foo
     bar: universe.TypeName = Bar
 
-Similarly to identifiers it\'s recommended to always ascribe name as `TypeName`. Non-ascribed matching behaviour might change in the future.
+Similarly to identifiers, it\'s recommended to always ascribe the name as `TypeName`. Non-ascribed matching behaviour might change in the future.
 
 As a convenience one can also select type members of terms:
 
@@ -66,12 +66,12 @@ As a convenience one can also select type members of terms:
     scala> val tq"scala.$name" = int
     name: universe.TypeName = Int
 
-But semantically such selections are just a shortcut for a combination of singleton types and type projections:
+But semantically, such selections are just a shortcut for a combination of singleton types and type projections:
 
     scala> val projected = tq"scala.type#Int"
     projected: universe.SelectFromTypeTree = scala.type#Int
 
-Lastly [similarly to expressions](/overviews/quasiquotes/expression-details.html#super-and-this) one can select members through super and this:
+Lastly and [similarly to expressions](/overviews/quasiquotes/expression-details.html#super-and-this) one can select members through `super` and `this`:
 
     scala> val superbar = tq"super.Bar"
     superbar: universe.Select = super.Bar
@@ -97,14 +97,14 @@ Instantiations of parametized types can be expressed with the help of applied ty
     scala> val tq"Foo[..$targs]" = applied
     targs: List[universe.Tree] = List(A, B)
 
-Deconstruction of non-applied types will cause `targs` begin extracted as empty list:
+Deconstruction of non-applied types will cause `targs` to be extracted as an empty list:
 
     scala> val tq"Foo[..$targs]" = tq"Foo"
     targs: List[universe.Tree] = List()
 
 ## Annotated Type
 
-Similarly to expressions types can be annotated:
+Similarly to expressions, types can be annotated:
 
     scala> val annotated = tq"T @Fooable"
     annotated: universe.Annotated = T @Fooable
@@ -115,16 +115,16 @@ Similarly to expressions types can be annotated:
 
 ## Compound Type
 
-Compound type lets users to express a combination of a number of types with optional refined member list:
+A compound type lets users express a combination of a number of types with an optional refined member list:
 
     scala> val compound = tq"A with B with C"
     compound: universe.CompoundTypeTree = A with B with C
 
-    scala> val tq"..$parents { }" = compound
+    scala> val tq"..$parents { ..$defns }" = compound
     parents: List[universe.Tree] = List(A, B, C)
     defns: List[universe.Tree] = List()
 
-Braces after parents are required to signal that this type is a compound type even if there are no refinements and we just want to extract a sequence of types combined with `with` keyword.
+Braces after parents are required to signal that this type is a compound type, even if there are no refinements and we just want to extract a sequence of types combined with the `with` keyword.
 
 On the other side of the spectrum are pure refinements without explicit parents (a.k.a. structural types):
 
@@ -156,7 +156,7 @@ Alternatively there is also an underscrore notation:
 
 ## Tuple Type
 
-[Similarly to expressions](/overviews/quasiquotes/expression-details.html#tuple), tuple types are just a syntactic sugar over `TupleN` classes:
+[Similar to expressions](/overviews/quasiquotes/expression-details.html#tuple), tuple types are just syntactic sugar over `TupleN` classes:
 
     scala> val tup2 = tq"(A, B)"
     tup2: universe.Tree = scala.Tuple2[A, B]
@@ -164,16 +164,16 @@ Alternatively there is also an underscrore notation:
     scala> val tq"(..$tpts)" = tup2
     tpts: List[universe.Tree] = List(A, B)
 
-Analogously `Unit` type is considered to be nullary tuple:
+Analogously the `Unit` type is considered to be a nullary tuple:
 
     scala> val tq"(..$tpts)" = tq"_root_.scala.Unit"
     tpts: List[universe.Tree] = List()
 
-It's important to mention that pattern matching of reference to `Unit` is limited to either fully qualified path or a reference that contains symbols. (see [hygiene](/overviews/quasiquotes/hygiene.html))
+It is important to mention that pattern matching a reference to `Unit` is limited to either fully the qualified path or a reference that contains symbols. (see [hygiene](/overviews/quasiquotes/hygiene.html))
 
 ## Function Type
 
-Similarly to tuples, function types are a syntactic sugar over `FunctionN` classes:
+Similar to tuples, function types are syntactic sugar over `FunctionN` classes:
 
     scala> val funtype = tq"(A, B) => C"
     funtype: universe.Tree = _root_.scala.Function2[A, B, C]
@@ -181,5 +181,3 @@ Similarly to tuples, function types are a syntactic sugar over `FunctionN` class
     scala> val tq"..$foo => $bar" = funtype
     foo: List[universe.Tree] = List(A, B)
     bar: universe.Tree = C
-
-

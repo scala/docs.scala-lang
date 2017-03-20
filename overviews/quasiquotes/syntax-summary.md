@@ -178,5 +178,4 @@ Prefixes of unquotees imply the following:
 * `parent: Tree` a [template](/overviews/quasiquotes/definition-details.html#templates) parent
 * `sel: Tree` an [import](/overviews/quasiquotes/expression-details.html#import) selector tree
 
-Whenever a name has suffix `s` it means that it is a List of something. `ss` means List of Lists. So for example `exprss` means a List of Lists of expressions.
-
+Whenever a name has suffix `s` it means that it is a `List` of something. `ss` means List of Lists. So for example `exprss` means a `List` of `List`s of expressions.

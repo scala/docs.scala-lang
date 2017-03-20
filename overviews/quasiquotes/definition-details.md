@@ -12,13 +12,13 @@ outof: 13
 
 ## Modifiers
 
-Every definition except packages and package objects have associated modifiers object which contains following data:
+Every definition except packages and package objects have associated an modifiers object that contains the following data:
 
-1. `FlagSet`, a set of bits that characterizes given definition.
-2. Private within name (e.g. `foo` in `private[foo] def f`)
-3. List of annotations
+1. `FlagSet`, a set of bits that characterizes the given definition.
+2. Private within name (e.g. `foo` in `private[foo] def f`).
+3. A list of annotations.
 
-Quasiquotes let you easily work with those fields through native support for `Modifiers`, `FlagSet` and annotation unquoting:
+Quasiquotes let you work easily with those fields through native support for `Modifiers`, `FlagSet` and annotation unquoting:
 
     scala> val f1 = q"${Modifiers(PRIVATE | IMPLICIT)} def f"
     f1: universe.DefDef = implicit private def f: scala.Unit
@@ -29,7 +29,7 @@ Quasiquotes let you easily work with those fields through native support for `Mo
     scala> val f3 = q"private implicit def f"
     f3: universe.DefDef = implicit private def f: scala.Unit
 
-All of those quasiquotes result into equivalent trees. It's also possible to combine unquoted flags with one provided inline in the source code but unquoted one should be used before inline ones:
+All of those quasiquotes result in equivalent trees. It's also possible to combine unquoted flags with one provided inline in the source code, but an unquoted one should be used before inline ones:
 
     scala> q"$PRIVATE implicit def foo"
     res10: universe.DefDef = implicit private def foo: scala.Unit
@@ -39,7 +39,7 @@ All of those quasiquotes result into equivalent trees. It's also possible to com
                   q"implicit $PRIVATE def foo"
                              ^
 
-To provide a definition annotation one need to unquote a new-shaped tree:
+To provide a definition annotation one must unquote a new-shaped tree:
 
     scala> val annot = q"new foo(1)"
     annot: universe.Tree = new Foo(1)
@@ -58,19 +58,19 @@ In deconstruction one can either extract `Modifiers` or annotations, but you can
     scala> val q"@..$annots implicit def f" = q"@foo @bar implicit def f"
     annots: List[universe.Tree] = List(new foo(), new bar())
 
-Considering the fact that definitions might contain various low-level flags added to trees during typechecking it\'s recommended to always extract complete modifiers as otherwise your pattern might not be exhaustive. If you don't care about them just use a wildcard:
+Considering that definitions might contain various low-level flags added to trees during typechecking, it\'s recommended to always extract complete modifiers, or your pattern might not be exhaustive. If you don't care about them just use a wildcard:
 
     scala> val q"$_ def f" = q"@foo @bar implicit def f"
 
 ## Templates
 
-Templates are a common abstraction in definition trees that is used in new expressions, classes, traits, objects, package objects. Although there is no interpolator for it at the moment we can illustrate its structure on the example of new expression (similar handling will apply to all other template-bearing trees):
+Templates are a common abstraction in definition trees that are used in new expressions, classes, traits, objects, and package objects. Although there is no interpolator for it at the moment we can illustrate its structure using the example of a new expression (similar handling will apply to all other template-bearing trees):
 
     q"new { ..$earlydefns } with ..$parents { $self => ..$stats }"
 
-So template consists of:
+The template consists of:
 
-1. Early definitions. A list of val or type definitions. Type definitions are still allowed by they are deprecated and will be removed in the future:
+1. Early definitions. A list of `val` or `type` definitions. Type definitions are still allowed by they are deprecated and will be removed in the future:
 
         scala> val withx = q"new { val x = 1 } with RequiresX"
         withx: universe.Tree = ...
@@ -78,12 +78,12 @@ So template consists of:
         scala> val q"new { ..$earlydefns } with RequiresX" = withx
         earlydefns: List[universe.Tree] = List(val x = 1)
 
-2. List of parents. A list of type identifiers with possibly an optional arguments to the first one in the list:
+2. List of parents. A list of type identifiers with optional arguments to the first one in the list:
 
         scala> val q"new ..$parents"  = q"new Foo(1) with Bar[T]"
         parents: List[universe.Tree] = List(Foo(1), Bar[T])
 
-   First of the parents has a bit unusual shape that is a symbiosis of term and type trees:
+   The first of the parents has an unusual shape that is a combination of term and type trees:
 
         scala> val q"${tq"$name[..$targs]"}(...$argss)" = parents.head
         name: universe.Tree = Foo
@@ -96,7 +96,7 @@ So template consists of:
         name: universe.Tree = Bar
         targs: List[universe.Tree] = List(T)
 
-3. Self type definition. A val definition that can be used to define an alias to this and provide a self-type via tpt:
+3. Self type definition. A `val` definition that can be used to define an alias to `this` and provide a self-type via `tpt`:
 
         scala> val q"new { $self => }" = q"new { self: T => }"
         self: universe.ValDef = private val self: T = _
@@ -113,9 +113,9 @@ So template consists of:
 
 ## Val and Var Definitions
 
-Vals and vars allow you to define immutable and mutable variables correspondingly. Additionally they are also used to represent [function](/overviews/quasiquotes/expression-details.html#function), [class](#class-definition) and [method](#method-definition) parameters.
+`Val`s and `var`s allow you to define immutable values and mutable variables respectively. Additionally they can be used to represent [function](/overviews/quasiquotes/expression-details.html#function), [class](#class-definition) and [method](#method-definition) parameters.
 
-Each val and var consistents of four components: modifiers, name, type tree and a right hand side:
+Each `val` and `var` consistents of four components: modifiers, a name, a type tree and a right hand side:
 
     scala> val valx = q"val x = 2"
     valx: universe.ValDef = val x = 2
@@ -126,15 +126,15 @@ Each val and var consistents of four components: modifiers, name, type tree and 
     tpt: universe.Tree = <type ?>
     rhs: universe.Tree = 2
 
-If type of the val isn't explicitly specified by the user an [empty type](/overviews/quasiquotes/type-details.html#empty-type) is used as tpt.
+If the type of the `val` isn't explicitly specified by the user an [empty type](/overviews/quasiquotes/type-details.html#empty-type) is used as `tpt`.
 
-Vals and vars are disjoint (they don't match one another):
+`Val`s and `var`s are disjoint (they don't match one another):
 
     scala> val q"$mods val $name: $tpt = $rhs" = q"var x = 2"
     scala.MatchError: var x = 2 (of class scala.reflect.internal.Trees$ValDef)
       ... 32 elided
 
-Vars always have `MUTABLE` flag in their modifiers:
+Vars always have the `MUTABLE` flag in their modifiers:
 
     scala> val q"$mods var $name: $tpt = $rhs" = q"var x = 2"
     mods: universe.Modifiers = Modifiers(<mutable>, , Map())
@@ -144,9 +144,7 @@ Vars always have `MUTABLE` flag in their modifiers:
 
 ## Pattern Definitions
 
-Pattern definitions allow to use scala pattern matching capabilities to define variables. Unlike
-val and var definitions, pattern definitions are not first-class and they are get represented
-through combination of regular vals and vars and pattern matching:
+Pattern definitions allow you to use Scala pattern matching capabilities to define variables. Unlike `val` and `var` definitions, pattern definitions are not first-class and they are represented through a combination of regular `val`s, `var`s and pattern matching:
 
     scala> val patdef = q"val (x, y) = (1, 2)"
     patdef: universe.Tree =
@@ -161,8 +159,8 @@ through combination of regular vals and vars and pattern matching:
 
 This representation has a few side-effects on the usage of such definitions:
 
-1. Due to the fact that single definition often gets desugared into multiple lower-level
-   ones, one need to always use unquote splicing to unquote pattern definitions into other trees:
+1. Due to the fact that a single definition often gets desugared into multiple lower-level
+   ones, you must always use unquote splicing to unquote pattern definitions into other trees:
 
         scala> val tupsum = q"..$patdef; a + b"
         tupsum: universe.Tree =
@@ -175,7 +173,7 @@ This representation has a few side-effects on the usage of such definitions:
           a.$plus(b)
         }
 
-   Otherwise if a regular unquoting is used, the definitions will be nested in a block that will make
+   Otherwise, if a regular unquoting is used, the definitions will be nested in a block that will make
    them invisible in the scope where they are meant to be used:
 
         scala> val wrongtupsum = q"$patdef; a + b"
@@ -194,17 +192,17 @@ This representation has a few side-effects on the usage of such definitions:
 
 2. One can only construct pattern definitions, not deconstruct them.
 
-Generic form of pattern definition consists of modifiers, pattern, ascribed type and a right hand side:
+A generic form of pattern definition consists of modifiers, pattern, ascribed type and a right hand side:
 
     q"$mods val $pat: $tpt = $rhs"
 
-Similarly one can also construct a mutable pattern definition:
+Similarly, one can also construct a mutable pattern definition:
 
     q"$mods var $pat: $tpt = $rhs"
 
 ## Type Definition
 
-Type definition have two possible shapes: abstract type definitions and alias type definitions.
+Type definitions have two possible shapes: abstract type definitions and alias type definitions.
 
 Abstract type definitions have the following shape:
 
@@ -216,7 +214,7 @@ Abstract type definitions have the following shape:
     low: universe.Tree = <empty>
     high: universe.Tree = List[T]
 
-Whenever one of the bounds isn\'t available it gets represented as [empty tree](/overviews/quasiquotes/expression-details.html#empty). Here each of the type arguments is a type definition iteself.
+Whenever one of the bounds isn\'t available, it gets represented as an [empty tree](/overviews/quasiquotes/expression-details.html#empty). Here each of the type arguments is a type definition itself.
 
 Another form of type definition is a type alias:
 
@@ -227,7 +225,7 @@ Another form of type definition is a type alias:
     args: List[universe.TypeDef] = List(type T)
     tpt: universe.Tree = List[T]
 
-Due to low level uniform representation of type aliases and abstract types one matches another:
+Due to the low level uniform representation of type aliases and abstract types one matches another:
 
     scala> val q"$mods type $name[..$args] = $tpt" = q"type Foo[T] <: List[T]"
     mods: universe.Modifiers = Modifiers(<deferred>, , Map())
@@ -239,7 +237,7 @@ Where `tpt` has a `TypeBoundsTree(low, high)` shape.
 
 ## Method Definition
 
-Each method consists of modifiers, name, type arguments, value arguments, return type and a body:
+Each method consists of modifiers, a name, type arguments, value arguments, return type and a body:
 
     scala> val q"$mods def $name[..$tparams](...$paramss): $tpt = $body" = q"def f = 1"
     mods: universe.Modifiers = Modifiers(, , Map())
@@ -249,9 +247,9 @@ Each method consists of modifiers, name, type arguments, value arguments, return
     tpt: universe.Tree = <type ?>
     body: universe.Tree = 1
 
-Type arguments are [type definitions](#type-definition) and value arguments are [val definitions](#val-and-var-definitions). Inferred return type is represented as [empty type](/overviews/quasiquotes/type-details.html#empty-type). If body of the method is [empty expression](/overviews/quasiquotes/expression-details.html#empty) it means that method is abstract.
+Type arguments are [type definitions](#type-definition) and value arguments are [val definitions](#val-and-var-definitions). The inferred return type is represented as an [empty type](/overviews/quasiquotes/type-details.html#empty-type). If the body of the method is an [empty expression](/overviews/quasiquotes/expression-details.html#empty) it means that method is abstract.
 
-Alternatively you can also deconstruct arguments separating implicit and non-implicit parameters:
+Alternatively you can also deconstruct arguments, separating implicit and non-implicit parameters:
 
     scala> val q"def g(...$paramss)(implicit ..$implparams) = $body" =
                q"def g(x: Int)(implicit y: Int) = x + y"
@@ -259,7 +257,7 @@ Alternatively you can also deconstruct arguments separating implicit and non-imp
     implparams: List[universe.ValDef] = List(implicit val y: Int = _)
     body: universe.Tree = x.$plus(y)
 
-This way of parameter handling will still work if method doesn\'t have any implicit parameters and `implparams` will get extracted as an empty list:
+This way of handling parameters will still work if the method doesn\'t have any implicit parameters and `implparams` will get extracted as an empty list:
 
     scala> val q"def g(...$paramss)(implicit ..$implparams) = $rhs" =
                q"def g(x: Int)(y: Int) = x + y"
@@ -269,7 +267,7 @@ This way of parameter handling will still work if method doesn\'t have any impli
 
 ## Secondary Constructor Definition
 
-Secondary constructors are special kinds of methods that have following shape:
+Secondary constructors are special kinds of methods that have the following shape:
 
     scala> val q"$mods def this(...$paramss) = this(...$argss)" =
                q"def this() = this(0)"
@@ -277,7 +275,7 @@ Secondary constructors are special kinds of methods that have following shape:
     paramss: List[List[universe.ValDef]] = List(List())
     argss: List[List[universe.Tree]] = List(List(0))
 
-Due to low level underlying representation of trees secondary constructors are represented as special kind of method with `termNames.CONSTRUCTOR` name:
+Due to the low level underlying representation of trees, secondary constructors are represented as a special kind of method with `termNames.CONSTRUCTOR` name:
 
     scala> val q"$mods def $name[..$tparams](...$paramss): $tpt = $body"
              = q"def this() = this(0)"
@@ -290,27 +288,24 @@ Due to low level underlying representation of trees secondary constructors are r
 
 ## Class Definition
 
-Classes have a following structure:
+Classes have the following structure:
 
     q"$mods class $tpname[..$tparams] $ctorMods(...$paramss) extends { ..$earlydefns } with ..$parents { $self => ..$stats }"
 
-As you probably already see the right part after extends is just a [template](#templates). Apart from it and modifiers classes
-also have primary constructor which consists of constructor modifiers, type and value parameters which behave very much like
-[method](#method-definition) modifiers and parameters.
+As you can may already see, the right part after the `extends` is just a [template](#templates). Apart from it and the modifiers, classes also have a primary constructor that consists of constructor modifiers, type and value parameters that behave very much like [method](#method-definition) modifiers and parameters.
 
 ## Trait Definition
 
-Syntactically traits are quite similar to [classes](#class-definition) sans value parameters and constructor modifiers:
+Syntactically, traits are quite similar to [classes](#class-definition) minus value parameters and constructor modifiers:
 
      q"$mods trait $tpname[..$tparams] extends { ..$earlydefns } with ..$parents { $self => ..$stats }"
 
-An important difference in handling is caused by [SI-8399](https://issues.scala-lang.org/browse/SI-8399?filter=12305): due to INTERFACE flag that is set for traits with only abstract
-members trait pattern might not match:
+An important difference in handling is caused by [SI-8399](https://issues.scala-lang.org/browse/SI-8399?filter=12305) due to the INTERFACE flag that is set for traits. Wwith only abstract members, trait patterns might not match:
 
     scala> val q"trait $name { ..$stats }" = q"trait X { def x: Int }"
     scala.MatchError: ...
 
-A workaround it to always extract modifiers with wildcard pattern:
+A workaround is to always extract modifiers using wildcard pattern:
 
     scala> val q"$_ trait $name { ..$stats }" = q"trait X { def x: Int }"
     name: universe.TypeName = X
@@ -318,7 +313,7 @@ A workaround it to always extract modifiers with wildcard pattern:
 
 ## Object Definition
 
-Syntactically objects are quite similar [classes](#class-definition) without constructors:
+Syntactically, objects are quite similar to [classes](#class-definition) without constructors:
 
     q"$mods object $tname extends { ..$earlydefns } with ..$parents { $self => ..$stats }"
 
@@ -347,8 +342,7 @@ Packages are a fundamental primitive to organize source code. You can express th
       }
     })
 
-Quasiquotes don\'t support inline package definition syntax that are usually used in the
-header of the source file (but it's equivalent to the supported one in terms of ASTs).
+Quasiquotes don\'t support the inline package definition syntax that is usually used in the header of the source file (but it's equivalent to the supported one in terms of ASTs).
 
 ## Package Object Definition
 
@@ -358,7 +352,7 @@ Package objects are a cross between packages and object:
 
 All of the handling properties are equivalent to those of objects apart from the fact that they don\'t have [modifiers](#modifiers).
 
-Even though package and regular objects seem to be quite similar syntactically they don't match one another:
+Even though package and regular objects seem to be quite similar syntactically, they don't match one another:
 
     scala> val q"$mods object $name" = q"package object O"
     scala.MatchError: ...
@@ -366,7 +360,7 @@ Even though package and regular objects seem to be quite similar syntactically t
     scala> val q"package object $name" = q"object O"
     scala.MatchError: ...
 
-Internally they get represtend as an object nested into package with given name:
+Internally, they get represented as an object nested in a package with a given name:
 
     scala> val P = q"package object P"
     P: universe.PackageDef =
@@ -379,4 +373,4 @@ Internally they get represtend as an object nested into package with given name:
       }
     }
 
-This also means that you can match package object as a package.
+This also means that you can match a package object as a package.
