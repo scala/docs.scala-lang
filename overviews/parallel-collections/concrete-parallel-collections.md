@@ -5,7 +5,7 @@ title: Concrete Parallel Collection Classes
 disqus: true
 
 partof: parallel-collections
-languages: [ja, zh-cn, es]
+languages: [ja, zh-cn, es, ru]
 num: 2
 ---
 
