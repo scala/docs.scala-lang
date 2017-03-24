@@ -6,7 +6,7 @@ disqus: true
 
 partof: collections
 num: 3
-languages: [ja, zh-cn]
+languages: [ko, ja, zh-cn]
 ---
 
 At the top of the collection hierarchy is trait `Traversable`. Its only abstract operation is `foreach`:

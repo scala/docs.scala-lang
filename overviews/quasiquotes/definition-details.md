@@ -7,6 +7,7 @@ disqus: true
 partof: quasiquotes
 num: 11
 outof: 13
+languages: [ko]
 ---
 **Denys Shabalin** <span class="label warning" style="float: right;">EXPERIMENTAL</span>
 

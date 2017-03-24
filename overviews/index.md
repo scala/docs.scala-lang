@@ -1,7 +1,7 @@
 ---
 layout: guides-index
 title: Guides and Overviews
-languages: [ja, zh-cn, es]
+languages: [ko, ja, zh-cn, es]
 ---
 
 <div class="page-header-index">

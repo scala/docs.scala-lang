@@ -7,6 +7,7 @@ disqus: true
 partof: scaladoc
 num: 3
 outof: 3
+languages: [ko]
 ---
 
 Many Scala developers, including those with a great deal of experience, are

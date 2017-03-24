@@ -7,6 +7,7 @@ disqus: true
 partof: scaladoc
 num: 1
 outof: 3
+languages: [ko]
 ---
 
 Scaladoc is Scala's main documentation _tool_. Scaladoc is a documentation

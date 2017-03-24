@@ -6,7 +6,7 @@ disqus: true
 
 partof: collections
 num: 9
-languages: [ja, zh-cn]
+languages: [ko, ja, zh-cn]
 ---
 
 You've now seen the most commonly used immutable collection classes that Scala provides in its standard library. Take a look now at the mutable collection classes.

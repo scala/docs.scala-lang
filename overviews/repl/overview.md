@@ -7,6 +7,7 @@ disqus: true
 partof: repl
 num: 1
 outof: 1
+languages: [ko]
 ---
 
 The Scala REPL is a tool (_scala_) for evaluating expressions in Scala.

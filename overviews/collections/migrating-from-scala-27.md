@@ -7,7 +7,7 @@ disqus: true
 partof: collections
 num: 18
 outof: 18
-languages: [ja, zh-cn]
+languages: [ko, ja, zh-cn]
 ---
 
 Porting your existing Scala applications to use the new collections should be almost automatic. There are only a couple of possible issues to take care of.

@@ -7,7 +7,7 @@ disqus: true
 partof: reflection
 num: 6
 outof: 7
-languages: [ja]
+languages: [ko, ja]
 ---
 
 <span class="label important" style="float: right;">EXPERIMENTAL</span>

@@ -6,7 +6,7 @@ disqus: true
 
 partof: collections
 num: 17
-languages: [ja, zh-cn]
+languages: [ko, ja, zh-cn]
 ---
 
 Like Scala, Java also has a rich collections library. There are many similarities between the two. For instance, both libraries know iterators, iterables, sets, maps, and sequences. But there are also important differences. In particular, the Scala libraries put much more emphasis on immutable collections, and provide many more operations that transform a collection into a new one.

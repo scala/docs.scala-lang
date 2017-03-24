@@ -5,7 +5,7 @@ disqus: true
 label-color: success
 label-text: New in 2.10
 overview: string-interpolation
-languages: [es, ja, zh-cn]
+languages: [ko, es, ja, zh-cn]
 ---
 
 **Josh Suereth**

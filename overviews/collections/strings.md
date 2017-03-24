@@ -6,7 +6,7 @@ disqus: true
 
 partof: collections
 num: 11
-languages: [ja, zh-cn]
+languages: [ko, ja, zh-cn]
 ---
 
 Like arrays, strings are not directly sequences, but they can be converted to them, and they also support all sequence operations on strings. Here are some examples of operations you can invoke on strings.

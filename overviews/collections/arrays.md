@@ -6,7 +6,7 @@ disqus: true
 
 partof: collections
 num: 10
-languages: [ja, zh-cn]
+languages: [ko, ja, zh-cn]
 ---
 
 [Array](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/Array.html) is a special kind of collection in Scala. On the one hand, Scala arrays correspond one-to-one to Java arrays. That is, a Scala array `Array[Int]` is represented as a Java `int[]`, an `Array[Double]` is represented as a Java `double[]` and a `Array[String]` is represented as a Java `String[]`. But at the same time, Scala arrays offer much more than their Java analogues. First, Scala arrays can be _generic_. That is, you can have an `Array[T]`, where `T` is a type parameter or abstract type. Second, Scala arrays are compatible with Scala sequences - you can pass an `Array[T]` where a `Seq[T]` is required. Finally, Scala arrays also support all sequence operations. Here's an example of this in action:

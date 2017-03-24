@@ -6,7 +6,7 @@ disqus: true
 
 partof: collections
 num: 5
-languages: [ja, zh-cn]
+languages: [ko, ja, zh-cn]
 ---
 
 The [Seq](http://www.scala-lang.org/api/current/scala/collection/Seq.html) trait represents sequences. A sequence is a kind of iterable that has a `length` and whose elements have fixed index positions, starting from `0`.
