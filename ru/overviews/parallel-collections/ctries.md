@@ -1,4 +1,4 @@
-﻿---
+---
 layout: overview-large
 title: Многопоточные префиксные деревья
 
