@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Nested Functions
+title: Nested Methods
 
 disqus: true
 
@@ -11,25 +11,26 @@ next-page: currying
 previous-page: higher-order-functions
 ---
 
-In Scala it is possible to nest function definitions. The following object provides a `filter` function for extracting values from a list of integers that are below a threshold value:
+In Scala it is possible to nest function definitions. The following object provides a `factorial` function for computing the factorial of a given number:
 
 ```tut
-object FilterTest extends App {
-  def filter(xs: List[Int], threshold: Int) = {
-    def process(ys: List[Int]): List[Int] =
-      if (ys.isEmpty) ys
-      else if (ys.head < threshold) ys.head :: process(ys.tail)
-      else process(ys.tail)
-    process(xs)
-  }
-  println(filter(List(1, 9, 2, 8, 3, 7, 4), 5))
-}
+ def factorial(x: Int): Int = {
+    def fact(x: Int, accumulator: Int): Int = {
+      if (x <= 1) accumulator
+      else fact(x - 1, x * accumulator)
+    }  
+    fact(x, 1)
+ }
+
+ println("Factorial of 2: " + factorial(2))
+ println("Factorial of 3: " + factorial(3))
 ```
 
-_Note: the nested function `process` refers to variable `threshold` defined in the outer scope as a parameter value of `filter`._
+_Note: the nested function `fact` refers to variable `x` defined in the outer scope as a parameter value of `factorial`._
 
 The output of this program is:
 
 ```
-List(1,2,3,4)
+Factorial of 2: 2
+Factorial of 3: 6
 ```
