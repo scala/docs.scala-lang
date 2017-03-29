@@ -26,8 +26,6 @@ In Scala it is possible to nest function definitions. The following object provi
  println("Factorial of 3: " + factorial(3))
 ```
 
-_Note: the nested function `fact` refers to variable `x` defined in the outer scope as a parameter value of `factorial`._
-
 The output of this program is:
 
 ```
