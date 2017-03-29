@@ -5,7 +5,7 @@ title: Configuring Parallel Collections
 disqus: true
 
 partof: parallel-collections
-languages: [ja, zh-cn, es]
+languages: [ja, zh-cn, es, ru]
 num: 7
 ---
 
