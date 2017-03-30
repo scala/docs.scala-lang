@@ -12,7 +12,7 @@ outof: 13
 
 ## Modifiers
 
-Every definition except packages and package objects have associated an modifiers object that contains the following data:
+Every definition except packages and package objects have associated a modifiers object that contains the following data:
 
 1. `FlagSet`, a set of bits that characterizes the given definition.
 2. Private within name (e.g. `foo` in `private[foo] def f`).
@@ -113,7 +113,7 @@ The template consists of:
 
 ## Val and Var Definitions
 
-`Val`s and `var`s allow you to define immutable values and mutable variables respectively. Additionally they can be used to represent [function](/overviews/quasiquotes/expression-details.html#function), [class](#class-definition) and [method](#method-definition) parameters.
+`val`s and `var`s allow you to define immutable values and mutable variables respectively. Additionally they can be used to represent [function](/overviews/quasiquotes/expression-details.html#function), [class](#class-definition) and [method](#method-definition) parameters.
 
 Each `val` and `var` consistents of four components: modifiers, a name, a type tree and a right hand side:
 
@@ -128,7 +128,7 @@ Each `val` and `var` consistents of four components: modifiers, a name, a type t
 
 If the type of the `val` isn't explicitly specified by the user an [empty type](/overviews/quasiquotes/type-details.html#empty-type) is used as `tpt`.
 
-`Val`s and `var`s are disjoint (they don't match one another):
+`val`s and `var`s are disjoint (they don't match one another):
 
     scala> val q"$mods val $name: $tpt = $rhs" = q"var x = 2"
     scala.MatchError: var x = 2 (of class scala.reflect.internal.Trees$ValDef)

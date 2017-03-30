@@ -62,7 +62,7 @@ Similarly it would work with all the literal types except `Null`. (see [standard
 
 ## Identifier and Selection
 
-Identifiers and member selections are two fundamental primitives that let you refer to other definitions. A combination of two of them is also known `RefTree`.
+Identifiers and member selections are two fundamental primitives that let you refer to other definitions. A combination of two of them is also known as a `RefTree`.
 
 Each term identifier is defined by its name and whether or not it is backquoted:
 
@@ -75,7 +75,7 @@ Each term identifier is defined by its name and whether or not it is backquoted:
     scala> val backquoted = q"`$name`"
     backquoted: universe.Ident = `Foo`
 
-Although backquoted and non-backquoted identifiers may refer to the same thing they are not equivalent from a syntactical point of view:
+Although backquoted and non-backquoted identifiers may refer to the same thing they are not syntactically equivalent:
 
     scala> val q"`Foo`" = q"Foo"
     scala.MatchError: Foo (of class scala.reflect.internal.Trees$Ident)
@@ -88,7 +88,7 @@ Apart from matching on identifiers with a given name, you can also extract their
     scala> val q"${name: TermName}" = q"Foo"
     name: universe.TermName = Foo
 
-Name ascription is important here because without it you\'ll get a pattern that is equivalent to regular pattern variable binding.
+Name ascription is important here because without it you'll get a pattern that is equivalent to regular pattern variable binding.
 
 Similarly you can create and extract member selections:
 
@@ -156,7 +156,7 @@ It is recommended to always include type applications when you match on a functi
     ts: List[universe.Tree] = List(Int)
     args: List[universe.Tree] = List(1, 2, 3)
 
-Other important features of scala method calls are multiple argument lists and implicit arguments:
+Other important features of Scala method calls are multiple argument lists and implicit arguments:
 
     def g(x: Int)(implicit y: Int) = x + y
 
