@@ -4,8 +4,8 @@ disqus: true
 title: SIP-27 - Trailing Commas
 redirect_from: "/sips/pending/trailing-commas.html"
 
-vote-status: approved
-vote-text: The following proposal has been approved but the spec needs to be updated and the implementation has to be ported from Parsers to Scanner.
+vote-status: accepted
+vote-text: This SIP has been Accepted, and is a part of Scala 2.12.2.
 ---
 
 **By: Dale Wijnand**
@@ -25,6 +25,7 @@ vote-text: The following proposal has been approved but the spec needs to be upd
 | Sep 04th 2016  | New drawback: Cross building hinderance ([#533][])         |
 | Sep 12th 2016  | Remove cross building hinderance from drawbacks ([#533][]) |
 | Nov 12th 2016  | Major rework: multi-line, 2 variants & spec ([#625][])     |
+| Mar 14th 2017  | Final rework: multi-line, scanner level ([#731][])         |
 
 ## Motivation
 
@@ -77,7 +78,16 @@ Adding and removing commas also introduces unnecessary noise in diffs:
 
 ### VCS authorship attribution
 
-Using the example above, adding a comma after `baz` also unnecessarily changed the authorship of the line.
+Adding and removing commas also unnecessarily changed the authorship of the line:
+
+~~~
+^199861c (Alice Doe 2016-12-20 10:20:05 +0000 1) Seq(
+^199861c (Alice Doe 2016-12-20 10:20:05 +0000 2)   foo,
+^199861c (Alice Doe 2016-12-20 10:20:05 +0000 3)   bar,
+66dddcc3 (Bob Doe   2017-01-10 11:45:10 +0000 4)   baz,
+66dddcc3 (Bob Doe   2017-01-10 11:45:10 +0000 5)   quux
+^199861c (Alice Doe 2016-12-20 10:20:05 +0000 6) )
+~~~
 
 ### Simplify code generation
 
@@ -136,70 +146,13 @@ There are a number of different parts of the Scala grammar that are comma-separa
 * `Bindings`
 * `ids`, `ValDcl`, `VarDcl`, `VarDef` and `PatDef`
 
-With this proposal I would like to present 2 variants:
-
-1. The first variant adds trailing comma support to only multi-line `ArgumentExprs`, `Params` and `ClassParams`, which I consider to be the parts of the grammar that would most benefit from trailing commas.
-
-2. The second variant adds trailing comma support to the whole grammar (again, only for multi-line), which means more consistency, but also supporting trailing commas in places that in practice don't really require it as much, such as `ids`.
-
-In this proposal, only the first variant is considered: trailing comma support for `ArgumentExprs`, `Params` and `ParamClasses` for the sake of simplicity.
-
-See below for more details on what that would mean.
-
-#### Changing `ArgumentExprs`
-
-**Spec change**
-
-{% highlight diff %}
-         Exprs ::= Expr {‘,’ Expr}
--ArgumentExprs ::= ‘(’ [Exprs] ‘)’
-+ArgumentExprs ::= ‘(’ [Exprs] [‘,’] ‘)'
-{% endhighlight %}
-
-**Example**
-{% highlight scala %}
-Seq(
-  foo,
-  bar,
-  baz,
-)
-{% endhighlight %}
-
-## `Params` and `ClassParams`
-
-**Spec change**
-{% highlight diff %}
-       Params ::=  Param {‘,’ Param}
-- ParamClause ::=  [nl] ‘(’ [Params] ‘)’
--ParamClauses ::=  {ParamClause} [[nl] ‘(’ ‘implicit’ Params ‘)’]
-+ ParamClause ::=  [nl] ‘(’ [Params] [‘,’] ‘)’
-+ParamClauses ::=  {ParamClause} [[nl] ‘(’ ‘implicit’ Params [‘,’] ‘)’]
-
-       ClassParams ::=  ClassParam {‘,’ ClassParam}
-- ClassParamClause ::=  [nl] ‘(’ [ClassParams] ‘)’
--ClassParamClauses ::=  {ClassParamClause} [[nl] ‘(’ ‘implicit’ ClassParams ‘)’]
-+ ClassParamClause ::=  [nl] ‘(’ [ClassParams] [‘,’] ‘)’
-+ClassParamClauses ::=  {ClassParamClause} [[nl] ‘(’ ‘implicit’ ClassParams [‘,’] ‘)’]
-{% endhighlight %}
-
-**examples**
-{% highlight scala %}
-def bippy(
-  foo: Int,
-  bar: String,
-  baz: Boolean,
-)
-
-class Bippy(
-  foo: Int,
-  bar: String,
-  baz: Boolean,
-)
-{% endhighlight %}
+Following Dr. Martin Odersky's suggestion, the proposal is that trailing commas are only supported in comma-separated elements that are enclosed by parentheses, square brackets or curly braces (`)`, `]`, and `}`, respectively).
 
 ## Implementation
 
-The implementation of trailing commas is limited to changing Parsers.scala in the Scala compiler. An implementation of this proposal can be found at [scala/scala#5245][].
+As such, the suggested implementation would be a Scanner-level implementation, in which newlines and the closing delimiters are taken into account.
+
+Such an implementation can be found at [scala/scala#5245][].
 
 ## Drawbacks/Trade-offs
 
@@ -222,3 +175,4 @@ As an alternative to changing the language, there already exists today a compile
 [scala-commas]: https://github.com/47deg/scala-commas
 [#533]: https://github.com/scala/scala.github.com/pull/533
 [#625]: https://github.com/scala/scala.github.com/pull/625
+[#731]: https://github.com/scala/scala.github.com/pull/731
