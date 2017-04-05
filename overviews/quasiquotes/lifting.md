@@ -18,15 +18,15 @@ Lifting is an extensible way to unquote custom data types in quasiquotes. Its pr
     scala> val four = q"$two + $two"
     four: universe.Tree = 2.$plus(2)
 
-This code runs successfully because `Int` is considered to be `Liftable` by default. `Liftable` type is just a trait with a single abstract method that defines a mapping of given type to tree:
+This code runs successfully because `Int` is considered to be `Liftable` by default. The `Liftable` type is just a trait with a single abstract method that defines a mapping of a given type to tree:
 
     trait Liftable[T] {
       def apply(value: T): Tree
     }
 
-Whenever there is an implicit value of `Liftable[T]` available, one can unquote `T` in quasiquotes. This design pattern is known as a type class. You can read more about it in ["Type Classes as Objects and Implicits"](http://ropas.snu.ac.kr/~bruno/papers/TypeClasses.pdf).
+Whenever there is an implicit value of `Liftable[T]` available, one can unquote `T` in quasiquotes. This design pattern is known as a *type class*. You can read more about it in ["Type Classes as Objects and Implicits"](http://ropas.snu.ac.kr/~bruno/papers/TypeClasses.pdf).
 
-A number of data types that are supported natively by quasiquotes will never trigger usage of `Liftable` representation even if it\'s available: subtypes of `Tree`, `Symbol`, `Name`, `Modifiers` and `FlagSet`.
+A number of data types that are supported natively by quasiquotes will never trigger the usage of a `Liftable` representation, even if it\'s available: subtypes of `Tree`, `Symbol`, `Name`, `Modifiers` and `FlagSet`.
 
 One can also combine lifting and unquote splicing:
 
@@ -38,7 +38,7 @@ One can also combine lifting and unquote splicing:
     scala> val f123456 = q"f(...$intss)"
     f123456: universe.Tree = f(1, 2, 3)(4, 5)(6)
 
-In this case each element of the list will be lifted separately and the result will be spliced right in.
+In this case, each element of the list will be lifted separately and the result will be spliced in at the definition point.
 
 ## Bring your own
 
@@ -55,21 +55,20 @@ To define tree representation for your own data type just provide an implicit in
       }
     }
 
-This way whenever a value of Point type is unquoted in runtime quasiquote it will be automatically transformed
-into a case class constructor call. In this example there two important points to take into account:
+This way, whenever a value of type `Point` is unquoted at runtime it will be automatically transformed into a case class constructor call. In this example there are three important points you should consider:
 
-0. Liftable companion contains helper `apply` method to simplifies creation of `Liftable` instances.
+1. The `Liftable` companion contains a helper `apply` method to simplify the creation of `Liftable` instances.
    It takes a single type parameter `T` and a `T => Tree` function as a single value parameter and
    returns a `Liftable[T]`.
 
-1. Here we only defined `Liftable` for runtime reflection. It won't be found if you try to
-   use it from a macro due to the fact that each universe contains its own `Liftable` which is not
-   compatible with the others. This problem is caused by path-dependent nature of current reflection
-   api. (see [sharing liftable implementation between universes](#reusing-liftable-implementation-between-universes))
+2. Here we only defined `Liftable` for runtime reflection. It won't be found if you try to
+   use it from a macro due to the fact that each universe contains its own `Liftable`, which is not
+   compatible with the others. This problem is caused by the path-dependent nature of the current reflection
+   API. (see [sharing liftable implementation between universes](#reusing-liftable-implementation-between-universes))
 
-2. Due to lack of [hygiene](/overviews/quasiquotes/hygiene.html), reference to point companion
-   has to be fully qualified to ensure correctness in of this tree in every possible context. Another
-   way to workaround reference issue is to use symbols to refer to things:
+3. Due to a lack of [hygiene](/overviews/quasiquotes/hygiene.html), the reference to `Point`'s companion
+   has to be fully qualified to ensure the correctness of this tree in every possible context. Another
+   way to workaround this reference issue is to use symbols instead:
 
        val PointSym = symbolOf[Point].companionModule
        implicit val lift = Liftable[Point] { p =>
@@ -112,7 +111,7 @@ into a case class constructor call. In this example there two important points t
 
 ## Reusing Liftable implementation between universes
 
-Due to path dependent nature of current reflection API it isn't trivial to share the same Liftable definition between both macro and runtime universes. A possible way to do this is to define Liftable implementations in a trait and instantiate it for each universe separately:
+Due to the path dependent nature of the current reflection API, it is non-trivial to share the same `Liftable` definition between the *macro* and the *runtime* universes. One possible way to do this is to define `Liftable` implementations in a trait and instantiate it for each universe separately:
 
     import scala.reflect.api.Universe
     import scala.reflect.macros.blackbox.Context
@@ -140,7 +139,7 @@ Due to path dependent nature of current reflection API it isn't trivial to share
       // ...
     }
 
-So in practice it's much easier to just define a liftable for given universe at hand:
+So, in practice, it's much easier to just define a `Liftable` for given universe at hand:
 
     import scala.reflect.macros.blackbox.Context
 

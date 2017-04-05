@@ -12,11 +12,11 @@ outof: 13
 
 ## AST manipulation in macros and compiler plugins
 
-Quasiquotes were designed primary as tool for ast manipulation in macros. Common workflow is to deconstruct arguments with quasiquotes patterns and construct rewritten result with another quasiquote:
+Quasiquotes were designed primary as tool for ast manipulation in macros. A common workflow is to deconstruct arguments with quasiquote patterns and then construct a rewritten result with another quasiquote:
 
-    // macro that prints expression code before executing it
+    // macro that prints the expression code before executing it
     object debug {
-      def apply[T](x: =>T): T = macro impl
+      def apply[T](x: => T): T = macro impl
       def impl(c: Context)(x: c.Tree) = { import c.universe._
         val q"..$stats" = x
         val loggedStats = stats.flatMap { stat =>
@@ -43,7 +43,7 @@ Quasiquotes were designed primary as tool for ast manipulation in macros. Common
     java.lang.Exception
     ...
 
-To simplify integration with macros we've also made it easier to just use trees in macro implementations instead of previous reify-centric `Expr` api:
+To simplify integration with macros we've also made it easier to simply use trees in macro implementations instead of the reify-centric `Expr` api that might be used previously:
 
     // 2.10
     object Macro {
@@ -61,13 +61,13 @@ To simplify integration with macros we've also made it easier to just use trees 
       }
     }
 
-You don't have to manually wrap return value of a macro into `c.Expr` or specify argument types twice any more. Return type in `impl` is optional too.
+You no longer need to wrap the return value of a macro with `c.Expr`, or to specify the argument types twice, and the return type in `impl` is now optional.
 
-Quasiquotes can also be used as is in compiler plugins as reflection api is strict subset of compiler's `Global` api.
+Quasiquotes can also be used "as is" in compiler plugins as the reflection API is strict subset of the compiler's `Global` API.
 
 ## Just in time compilation
 
-Thanks to `ToolBox` api one can generate, compile and run Scala code at runtime:
+Thanks to the `ToolBox` API, one can generate, compile and run Scala code at runtime:
 
     scala> val code = q"""println("compiled and run at runtime!")"""
     scala> val compiledCode = toolbox.compile(code)
@@ -77,7 +77,7 @@ Thanks to `ToolBox` api one can generate, compile and run Scala code at runtime:
 
 ## Offline code generation
 
-Thanks to new `showCode` pretty printer one can implement offline code generator that does AST manipulation with the help of quasiquotes and then serializes into actual source right before writing them to disk:
+Thanks to the new `showCode` "pretty printer" one can implement an offline code generator that does AST manipulation with the help of quasiquotes, and then serializes that into actual source code right before writing it to disk:
 
     object OfflineCodeGen extends App {
       def generateCode() =
@@ -89,5 +89,3 @@ Thanks to new `showCode` pretty printer one can implement offline code generator
       }
       saveToFile("myfile.scala", generateCode())
     }
-
-
