@@ -78,7 +78,7 @@ The template consists of:
         scala> val q"new { ..$earlydefns } with RequiresX" = withx
         earlydefns: List[universe.Tree] = List(val x = 1)
 
-2. List of parents. A list of type identifiers with optional arguments to the first one in the list:
+2. List of parents. A list of type identifiers where only the first one in the list may have optional type and value arguments.  This is because the first parent must be a class and subsequent parents are just traits that don't yet accept arguments:
 
         scala> val q"new ..$parents"  = q"new Foo(1) with Bar[T]"
         parents: List[universe.Tree] = List(Foo(1), Bar[T])

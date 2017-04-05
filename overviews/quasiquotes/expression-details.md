@@ -557,7 +557,7 @@ While and do-while loops are low-level control structures that can be used when 
 
 ## For and For-Yield Loops
 
-For and For-Yield expressions allow us to write a monadic style comprehension that desugar into calls to `map`, `flatMap`, `foreach` and `withFilter` methods:
+`for` and `for-yield` expressions allow us to write a monadic style comprehension that desugar into calls to `map`, `flatMap`, `foreach` and `withFilter` methods:
 
     scala> val `for-yield` = q"for (x <- xs; if x > 0; y = x * 2) yield x"
     for-yield: universe.Tree =
@@ -582,7 +582,7 @@ Similarly one can deconstruct the `for-yield` back into a list of enumerators an
     enums: List[universe.Tree] = List(`<-`((x @ _), xs), `if`(x.$greater(0)), (y @ _) = x.$times(2))
     body: universe.Tree = x
 
-It's important to mention that For and For-Yield do not cross-match each other:
+It's important to mention that `for` and `for-yield` do not cross-match each other:
 
     scala> val q"for (..$enums) $body" = `for-yield`
     scala.MatchError: ...
