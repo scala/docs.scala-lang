@@ -202,8 +202,45 @@ There are multiple use cases covered by this SIP. I think the two most important
 
 **Sébastien** The goal is to be able to reuse artifacts from another compiler version or from a different compiler entirely but what happens to the @scala annotations? Is the classfile API might be the same between the same between 2.11 and 2.12 but it doesn't mean that the serialized form of the Scala signature notation is the same and can be read by the other compiler. So if you compile you source code against the binary artifacts that was published on maven your compilation will fail potentially with a crash or something like that because it cannot read the Scala-specific information from the class.
 
-**Dmitry** The proposal is not to emit Scala signatures.
+**Dmitry** The proposal is not to emit stable Scala signatures.
 
 **Sébastien** So it really looks like a Java class file. Needs to be mentioned in the proposal.
 
-**Martin** If you don't emit a Scala signature then you can't have a core contravariant type parameter because they are only expressed in Scala signatures, in Java it's not there. I don't see how that follows from the current proposal.
+**Martin** If you don't emit a Scala signature then you can't have a co- or contravariant type parameter because they are only expressed in Scala signatures, in Java it's not there. I don't see how that follows from the current proposal. Also, isn't it platform dependent?
+
+**Sébastien** We do have a Java signature. Scala-JS doesn't disable classfile emission. When you say quickly compile, it uses the classfiles to quickly compile. when you use macros, it will extend from those classfiles. When you use an IDE it reduces the classfiles to identify things. When you use sbt, it uses classfiles to detect the changes. However, they aren't used by the ScalaJS linker.
+
+**Seth** Does this need to be part of the compiler or can it move forward as a plugin or just as a check performed in MIMA? MIMA just compares two different APIs. Can it have this other job as well: seeing if it does anything outside of the boundaries.
+
+**Dmitry** It could be a plugin, but it's not the right responsibility. Whoever develops the pluin does not have a way to enforce its rules by future compilers. Even though it provides guarantees to users, people providing these guarantees should be the people building the future versions. MIMA would need to be come half compiler. It's possible but not practical. If we say we emit Scala signatures, it's a strong promise and we allow users more. If everyone agrees, I would be glad.
+
+**Martin** Five years from now, do we even know whether Scala compilers will emit Java signatures? To put that in the spec seems too pre-implemention-oriented. We might need a minimum Scala signature, even if we don't emit a Java one. The way the signatures are treated should be an implemenation aspect which should be exactly orthogonal to what we do with stableABI that we want to have something that is stable across lots of implementations.
+
+**Jorge** We could make an exception that if we change the platform, then this annotation wouldn't apply.
+
+**Dmitry** The current proposal proposes only top-level classes by _____ (1:01:43).
+
+**Martin** It just has to be the guarantee of the whole package. The compiler has to translate this somehow so that future compilers will be able to read it in all eternity. That's the contract of stableABI.
+
+**Dmitry** Does this automatically mean that all future compilers should emit Scala signatures?
+
+**Martin** No, they just have to read whatever the previous one produced that had this thing.
+
+**Dmitry** So it means that the artifact compiled by Dotty that doesn't emit Scala signatures won't be able to consume it from Scalac.
+
+**Martin** That is true. You want to make a rule that newer compilers can ____ (1:02:54) the older ones but not the other way around.
+
+
+### SIP-NN - Match infix & prefix types to meet expression rules (1:04:00)
+
+**Jorge** Making a change to the parser to make types behave as expressions. The other part of the proposal is about prefix types. Just like unary operators, he wants to have unary prefixes for type. So you can create a unary operator for types.
+
+**Iulian** Covariant and contravariant operators can cause confusion.
+
+**Eugene** But at least it's not ambiguous.
+
+**Sébastien** At least as long as we don't have Covariant type alias or abstract type members. If I could define `type +A`, what does that mean?
+
+**Eugene** If it's on the lefthand side of the equals signs type member, then it's covariant. As long as it's in a binding position, unary infix, should work.
+
+**Jorge** Will vote later. 
