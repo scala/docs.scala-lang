@@ -14,14 +14,14 @@ The following agenda was distributed to attendees:
 | [SIP 25 - @static fields and methods in Scala objects(SI-4581)](http://docs.scala-lang.org/sips/pending/static-members.html) | Dmitry Petrashko, Sébastien Doeraene and Martin Odersky |
 | [SIP-NN - Match infix & prefix types to meet expression rules](http://docs.scala-lang.org/sips/pending/make-types-behave-like-expressions.html) | Oron Port |
 
-Jorge Vicente Cantero was the Process Lead and acting secretary of the meeting.
+Jorge Vicente Cantero was the Process Lead. Travis (@travissarles) was acting secretary of the meeting.
 
 ## Date, Time and Location
 
 The meeting took place at 5:00pm Central European Time / 8:00am Pacific Daylight
-Time on Tuesday, 14th February 2016 via Google Hangouts.
+Time on Tuesday, 14th February 2017 via Google Hangouts.
 
-Minutes were taken by Jorge Vicente Cantero, acting secretary.
+Minutes were taken by Travis Lee, acting secretary.
 
 ## Attendees
 
@@ -32,11 +32,13 @@ Attendees Present:
 * Lukas Rytz ([@lrytz](https://github.com/lrytz)), Lightbend
 * Seth Tisue ([@SethTisue](https://github.com/SethTisue)), Lightbend
 * Iulian Dragos ([@dragos](https://github.com/dragos)), Independent
-????* Heather Miller ([@heathermiller](https://github.com/heathermiller)), Scala Center
 * Sébastien Doeraene ([@sjrd](https://github.com/sjrd)), EPFL
 * Eugene Burmako ([@xeno-by](https://github.com/xeno-by)), EPFL
 * Jorge Vicente Cantero ([@jvican](https://github.com/jvican)), Process Lead
-?????* Adriaan Moors ([@adriaanm](https://github.com/adriaanm)), Lightbend
+
+Absent:
+* Heather Miller ([@heathermiller](https://github.com/heathermiller)), Scala Center
+* Josh Suereth ([jsuereth](https://github.com/jsuereth)),
 
 ## Proceedings
 
@@ -45,7 +47,7 @@ Attendees Present:
 ### SIP 25 - @static fields and methods in Scala objects(SI-4581)
 Jorge asks Dmitry to explain the biggest changes since the last proposal.
 The biggest changes were addressing the feedback of reader.
-**Dmitry** says which included three questions. first cover whether the static can be tail ____ annotation (1:30) which doesn't actually impact compilation but only warns if it isn't possible to make something static. I don't think so because static effects binary compatibility. Also, it depends on the superclass. If the superclass defined a field with the same name, the subclass can't have it. If we decide to make something static, we only be able to do it if the superclass doesn't have the fields with the same name. If static is done automatically and not triggered by the user we will enforce very strong requirements on superclass objects which is no-go.
+**Dmitry** First, he covers whether the static annotation can behave like the tail recursive annotation, which doesn't actually impact compilation but only warns if it isn't possible to make something static. Dmitry doesn't think the static annotation should have the same semantics because it affects binary compatibility. Also, it depends on the superclass. If the superclass defined a field with the same name, the subclass can't have it. If we decide to make something static, we only be able to do it if the superclass doesn't have the fields with the same name. If static is done automatically and not triggered by the user we will enforce very strong requirements on superclass objects which is no-go.
 
 I proposed a scheme (which I elaborate more on the details frictions in the SIP). I present several examples of possible issues in this case.
 
@@ -61,7 +63,7 @@ The current SIP tries to make it behave as expected by the users in common cases
 
 **Martin** How can that be done?
 
-**Dmitry** Just refer to the class in bytecode. Just mention the signature
+**Dmitry** Just refer to the class in bytecode. Just mention the signature.
 
 **Martin** Does that mean we have to change the immediate code to enforce that?
 
@@ -85,7 +87,7 @@ The current SIP tries to make it behave as expected by the users in common cases
 
 **Dmitry** They should also be after all the statics.
 
-**Sébastien** That's not written in the SIPs.
+**Sébastien** That's not written in the SIP.
 
 **Dmitry** Will update. The last question is whether it will effect binary compatibility. YES! The point is you should be able to call and access stuff which is static through a more efficient way on the JVM. So removing @static annotation will be a binary incompatible change. If we add forwarders, adding static won't be a binary incompatible change because you'll still have fowarders which forward to the static thing. Both methods and fields.
 
@@ -123,11 +125,11 @@ The current SIP tries to make it behave as expected by the users in common cases
 
 **Dmitry** We don't require them but I'm not sure about Scalac. Does Scalac use initializers or trait setters?
 
-**Sébastien** Trait setters
+**Sébastien** Trait setters.
 
 **Dmitry** For us, we can easily say that we support final but we're trying to take into account scalac. So is there some important use case where you want to have static fields implement not-static signatures.
 
-**Sébastien** No
+**Sébastien** No.
 
 **Dmitry** Would you be willing to lean on a conservative way in this case?
 
@@ -143,15 +145,19 @@ The current SIP tries to make it behave as expected by the users in common cases
 
 **Sébastien** ScalaJS already implemented it under another name but it's supposed to be conservative with respect to the aesthetic SIP in the sense that things that are allowed now with @jsstatic will also be allowed with @static. @static might open up a little bit more.
 
-### SIP-NN - Allow referring to other arguments in default parameters (22:30)
+**Conclusion** We need an implementation for Scalac. Lightbend hasn't discussed working on this yet. We will pass on this proposal.
+
+### SIP-NN - [Allow referring to other arguments in default parameters](https://github.com/scala/scala.github.com/pull/653) (22:30)
 Sébastien is the reviewer
 **Sébastien** The SIP is a generalization of why we can use in default values of parameters. Especially referring to other arguments. In current Scala we can refer to arguments in previous parameter lists. This SIP wants to open that up. The way it's currently written, any parameter whether it's in the same parameter list or a previous one, it's also allowed to refer to argument on the right. The text needs to be elaborated on use cases. Doesn't address implementation concerns. Jorge answered on the PR with analysis of feasibility. I'm convinced that the version where we can also refer to a parameter on the right is infeasible because you can have arbitrary cycles and you don't know _______ ( 24:55) and it's completely impossible. Other than that, in principle the SIP looks reasonable. It's possible to implement but it will cause more bytecode because now the third parameter will always need to receive the first two parameters to decide its value. We cannot decide that whether based on the default value actually refers to the previous parameters because that would be unstable in respect to binary compatibility. You need to always give to the default accessor all the prior parameters and that means it can potentially increase bytecode size. That needs to be analyzed maybe with a prototype, compare with Scala library.
 
-**Jorge** I implemented this. I did a study and analysis of whether referring to parameters on the right is visible and I've explained in a comment in the PR why it's not. Basically this is a change that would require breaking binary compatibility and this would be targeting 2.13 so we are not gonna see it any time soon. I think that it would be very useful to have a look at the numbers to see how it affects bytecode size. I'll run some benchmarks and report the results in the PR.
+**Jorge** I implemented this. I did a study and analysis of whether referring to parameters on the right is visible and I've explained in a comment in the PR why it's not. Basically this is a change that would require breaking binary compatibility and this would be targeting 2.13 so we are not gonna see it any time soon. I think that it would be very useful to have a look at the numbers to see how it affects bytecode size. I'll run some benchmarks and [report the results in the PR](https://github.com/scala/scala/pull/5641).
 
 **Sébastien** SIP addendum, Type Members: In current Scala in the same way that you can only refer to parameters on terms previous parameter lists you can also only refer to path-dependent types of parameters in previous parameter lists and there is a small section in the SIP that says in the same vein we should allow to refer to path-dependent types of parameters in the same parameter list probably on the left. But for that one I don't have a good intuition of what effects it would have on type inference because type inference works parameter list per parameter list. The fact that you cannot refer to path-dependent types from the same parameter list means you can complete type inference from one parameter list without juggling path-dependent types within the same thing. Then when you move to the next one it's already inferred from the previous parameters. So it seems simpler but it's just a guest. Martin, would that be problematic?
 
 **Martin** It would be a completely sweeping change. It's one of the key types that suddenly becomes recursive. So you can imagine what that means. Every time we construct such a type we can't do it inductively anymore. So basically it's the difference between polytypes and method types. I'm not saying it's impossible but it would be a huge change the compiler to do that. It's probably beyond what we can do for Scalac and just for Dotty we could think about it but it would be a very big change.
+
+**Conclusion** This is a sweeping change. There could be some unexpected corner cases. We will not see it any time soon.
 
 ### SIP-XX: Improving binary compatibility with @stableABI (33:30)
 **Dmitry** This proposes annotations which does not change the compilation scheme. A bit of background, Scala is being released with versions which can be either minor or major. So 2.11 is major version compared to 2.10. 2.11.1 and 2.11.2 are minor versions. Scala currently guarantees binary-compatibility between minor versions. At the same time, big parts of the scala community live in different major versions of the compiler which require them to publish artifacts multiple times because the same artifact will be incompatible if used in a different compiler.
@@ -230,6 +236,8 @@ There are multiple use cases covered by this SIP. I think the two most important
 
 **Martin** That is true. You want to make a rule that newer compilers can ____ (1:02:54) the older ones but not the other way around.
 
+**Conclusion**  
+
 
 ### SIP-NN - Match infix & prefix types to meet expression rules (1:04:00)
 
@@ -243,4 +251,6 @@ There are multiple use cases covered by this SIP. I think the two most important
 
 **Eugene** If it's on the lefthand side of the equals signs type member, then it's covariant. As long as it's in a binding position, unary infix, should work.
 
-**Jorge** Will vote later. 
+**Jorge** We will vote later.
+
+**Conclusion** The vote took place outside the meeting and the proposal was numbered. All of the committee members (including those absent) have accepted the change.
