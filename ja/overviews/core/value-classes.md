@@ -19,7 +19,7 @@ title: 値クラスと汎用トレイト
 
     class Wrapper(val underlying: Int) extends AnyVal
 
-これはただ1つの、public な `val` パラメータを持ち、これが内部での実行時のデータ構造となる。
+これはただ1つの、 `val` パラメータを持ち、これが内部での実行時のデータ構造となる。
 コンパイル時の型は `Wrapper` だが、実行時のデータ構造は `Int` だ。
 値クラスは `def` を定義することができるが、`val`、`var`、または入れ子の `trait`、`class`、`object` は許されない:
 
@@ -141,7 +141,7 @@ JVM が値クラスという概念をサポートしていないこともあり�
 
 <!-- keep this html -->
 <ol>
-<li> … ただ1つの public で値クラス以外の型の <code>val</code> パラメータを持つプライマリコンストラクタのみを持つことができる。</li>
+<li> … ただ1つの値クラス以外の型の <code>val</code> パラメータを持つプライマリコンストラクタのみを持つことができる。</li>
 <li> … specialized な型パラメータを持つことができない。</li>
 <li> … 入れ子のローカルクラス、トレイト、やオブジェクトを持つことがでない。</li>
 <li> … <code>equals</code> や <code>hashCode</code> メソッドを定義することができない。</li>
@@ -160,7 +160,7 @@ JVM が値クラスという概念をサポートしていないこともあり�
 
 Scala コンパイラは以下のエラーメッセージを生成する:
 
-    Complex.scala:1: error: value class needs to have exactly one public val parameter
+    Complex.scala:1: error: value class needs to have exactly one val parameter
     class Complex(val real: Double, val imag: Double) extends AnyVal
           ^
 
