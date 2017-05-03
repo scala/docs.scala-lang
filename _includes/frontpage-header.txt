@@ -65,7 +65,7 @@
 
     <style type="text/css">
       html {
-		background-color: #bcbcbc;
+		background-color: #eeeeee;
       }
 
       body {
@@ -91,7 +91,7 @@
 	  text-shadow: 0 1px 2px rgba(0,0,0,.5);
 	}
 	.bottom {
-		background-color: #bcbcbc;
+		background-color: #eeeeee;
 		padding-top: 20px;
 		border-top: 1px solid #8e397d;
 	}
@@ -131,7 +131,7 @@
 	     -moz-border-radius:7px;
 	     -webkit-border-radius:7px;
 	     padding:0 10px 10px 10px;
-	     color: #bcbcbc;
+	     color: #eeeeee;
 	     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
 	}
 
