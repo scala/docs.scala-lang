@@ -28,8 +28,8 @@ Minutes were taken by Travis Lee, acting secretary.
 Attendees Present:
 
 * Martin Odersky ([@odersky](https://github.com/odersky)), EPFL
-* Dmitry Petrashko (@DarkDimius)(https://github.com/DarkDimius), EPFL
-* Lukas Rytz ([@lrytz](https://github.com/lrytz)), Lightbend
+* Dmitry Petrashko ([]@DarkDimius)](https://github.com/DarkDimius), EPFL
+* Lukas Rytz (Taking Adriaan Moore's place) ([@lrytz](https://github.com/lrytz)), Lightbend
 * Seth Tisue ([@SethTisue](https://github.com/SethTisue)), Lightbend
 * Iulian Dragos ([@dragos](https://github.com/dragos)), Independent
 * Sébastien Doeraene ([@sjrd](https://github.com/sjrd)), EPFL
@@ -38,7 +38,7 @@ Attendees Present:
 
 Absent:
 * Heather Miller ([@heathermiller](https://github.com/heathermiller)), Scala Center
-* Josh Suereth ([jsuereth](https://github.com/jsuereth)),
+* Josh Suereth ([jsuereth](https://github.com/jsuereth)), Independent
 
 ## Proceedings
 
@@ -46,8 +46,10 @@ Absent:
 
 ### SIP 25 - @static fields and methods in Scala objects(SI-4581)
 Jorge asks Dmitry to explain the biggest changes since the last proposal.
-The biggest changes were addressing the feedback of reader.
-**Dmitry** First, he covers whether the static annotation can behave like the tail recursive annotation, which doesn't actually impact compilation but only warns if it isn't possible to make something static. Dmitry doesn't think the static annotation should have the same semantics because it affects binary compatibility. Also, it depends on the superclass. If the superclass defined a field with the same name, the subclass can't have it. If we decide to make something static, we only be able to do it if the superclass doesn't have the fields with the same name. If static is done automatically and not triggered by the user we will enforce very strong requirements on superclass objects which is no-go.
+The biggest changes were addressing the feedback of the reader.
+**Dmitry** First, he covers whether the static annotation can behave like the tail recursive annotation, which doesn't actually impact compilation but only warns if it isn't possible to make something static. Dmitry doesn't think the static annotation should have the same semantics because it affects binary compatibility.
+
+Also, it depends on the superclass. If the superclass defined a field with the same name, the subclass can't have it. If we decide to make something static, we only be able to do it if the superclass doesn't have the fields with the same name. If static is done automatically and not triggered by the user we will enforce very strong requirements on superclass objects which is no-go.
 
 I proposed a scheme (which I elaborate more on the details frictions in the SIP). I present several examples of possible issues in this case.
 
@@ -56,6 +58,8 @@ The other question was clarify how does the static effect initialization order a
 In short, it can make initlization happen earlier but never later. By enforcing syntax restriction would make it harder to observe this. But still it is possible to observe initialization requirements. This is a sweet spot because static should be independent. The point is you want some fields to be initialized without the initialization of an entire object. There is a side-effect that an object is initialized and there are multiple ways to observe it somehow.
 
 The current SIP tries to make it behave as expected by the users in common cases.
+
+Conclusion: 
 
 **Lukas** Let's take a simple example, you have an object with a static field and a non-static field. Now the user code, the program access the non=static field first. That means the module gets initialized, but the static field lives in the companion class, right? So the static field is not initialized necessary even though you access the module. Assuming the field initializers have side effects then you can observe the differences. Then the static field will only be initialized at some point later when you use the class and not when you access the module.
 
