@@ -3,12 +3,12 @@ layout: guides-index
 title: Guides and Overviews
 languages: [ja, zh-cn, es]
 redirect_from:
-  - /overviews
+  - /overviews/index.html
 ---
 
 ## Guides
 * [Frequently Asked Questions](http://docs.scala-lang.org/tutorials/FAQ/finding-symbols) from StackOverflow.
-* [Scala for Java Programmers](http://docs.scala-lang.org/tutorials/scala-for-java-programmers.html) compares the two languages.
+* [Scala for Java Programmers](http://docs.scala-lang.org/tutorials/scala-for-java-programmers.html): a comparison of the two languages.
 * [Style Guide](http://docs.scala-lang.org/style/)
 
 <div class="page-header-index">
