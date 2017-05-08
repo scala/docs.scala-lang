@@ -1,4 +1,5 @@
 _site
+.ruby-version
 .DS_Store
 .project
 .settings
