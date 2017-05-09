@@ -40,7 +40,7 @@ def factorial(x: Int): Int = {
 }
 ```
 The `factorialHelper` method has the `@tailrec` which ensures the method is indeed tail-recursive. If we were to change the implementation of `factorialHelper` to the following, it would fail:
-```tut:fail
+```
 import scala.annotation.tailrec
 
 def factorial(x: Int): Int = {
