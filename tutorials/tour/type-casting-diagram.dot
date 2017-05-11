@@ -1,0 +1,14 @@
+digraph UnifiedTypes {
+  node [fontname = "Courier"];
+  rankdir="BT"
+
+
+  Byte -> Short;
+  Short -> Int;
+  Int -> Long;
+  Long -> Float;
+  Float -> Double;
+  Char -> Int;
+
+  {rank = same; Double; Float; Long; Int; Short; Byte; }
+}

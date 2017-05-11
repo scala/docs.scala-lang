@@ -1,4 +1,4 @@
----
+  ---
 layout: tutorial
 title: Lower Type Bounds
 
@@ -9,50 +9,59 @@ categories: tour
 num: 21
 next-page: inner-classes
 previous-page: upper-type-bounds
+prerequisite-knowledge: upper-type-bounds, generics, variance
 ---
 
-While [upper type bounds](upper-type-bounds.html) limit a type to a subtype of another type, *lower type bounds* declare a type to be a supertype of another type. The term `T >: A` expresses that the type parameter `T` or the abstract type `T` refer to a supertype of type `A`.
+While [upper type bounds](upper-type-bounds.html) limit a type to a subtype of another type, *lower type bounds* declare a type to be a supertype of another type. The term `B >: A` expresses that the type parameter `B` or the abstract type `B` refer to a supertype of type `A`. In most cases, `A` will be the type parameter of the class and `B` will be the type parameter of a method.
 
 Here is an example where this is useful:
 
+```tut:fail
+trait Node[+B] {
+  def prepend(elem: B): Unit
+}
+
+case class ListNode[+B](h: B, t: Node[B]) extends Node[B] {
+  def prepend(elem: B) = ListNode[B](elem, this)
+  def head: B = h
+  def tail = t
+}
+
+case class Nil[+B]() extends Node[B] {
+  def prepend(elem: B) = ListNode[B](elem, this)
+}
+```
+This program implements a singly-linked list. `Nil` represents an empty element (i.e. an empty list). `class ListNode` is a node which contains an element of type `B` (`head`) and a reference to the rest of the list (`tail`). The `class Node` and its subtypes are covariant because we have `+B`.
+
+However, this program does _not_ compile because the parameter `elem` in `prepend` is of type `B`, which we declared *co*variant. This doesn't work because functions are *contra*variant in their parameter types and *co*variant in their result types.
+
+To fix this, we need to flip the variance of the type of the parameter `elem` in `prepend`. We do this by introducing a new type parameter `U` that has `B` as a lower type bound.
+
 ```tut
-case class ListNode[T](h: T, t: ListNode[T]) {
-  def head: T = h
-  def tail: ListNode[T] = t
-  def prepend(elem: T): ListNode[T] =
-    ListNode(elem, this)
+trait Node[+B] {
+  def prepend[U >: B](elem: U)
+}
+
+case class ListNode[+B](h: B, t: Node[B]) extends Node[B] {
+  def prepend[U >: B](elem: U) = ListNode[U](elem, this)
+  def head: B = h
+  def tail = t
+}
+
+case class Nil[+B]() extends Node[B] {
+  def prepend[U >: B](elem: U) = ListNode[U](elem, this)
 }
 ```
 
-The program above implements a linked list with a prepend operation. Unfortunately, this type is invariant in the type parameter of class `ListNode`; i.e. `ListNode[String]` is not a subtype of `ListNode[Any]`. With the help of [variance annotations](variances.html) we can express such a subtype semantics:
-
-```
-case class ListNode[+T](h: T, t: ListNode[T]) { ... }
-```
-
-Unfortunately, this program does not compile, because a covariance annotation is only possible if the type variable is used only in covariant positions. Since type variable `T` appears as a parameter type of method `prepend`, this rule is broken. With the help of a *lower type bound*, though, we can implement a prepend method where `T` only appears in covariant positions.
-
-Here is the corresponding code:
-
+Now we can do the following:
 ```tut
-case class ListNode[+T](h: T, t: ListNode[T]) {
-  def head: T = h
-  def tail: ListNode[T] = t
-  def prepend[U >: T](elem: U): ListNode[U] =
-    ListNode(elem, this)
-}
+trait Mammal
+case class AfricanSwallow() extends Mammal
+case class EuropeanSwallow() extends Mammal
+
+
+val africanSwallowList= ListNode[AfricanSwallow](AfricanSwallow(), Nil())
+val mammalList: Node[Mammal] = africanSwallowList
+mammalList.prepend(new EuropeanSwallow)
 ```
-
-_Note:_ the new `prepend` method has a slightly less restrictive type. It allows, for instance, to prepend an object of a supertype to an existing list. The resulting list will be a list of this supertype.
-
-Here is some code which illustrates this:
-
-```tut
-object LowerBoundTest extends App {
-  val empty: ListNode[Null] = ListNode(null, null)
-  val strList: ListNode[String] = empty.prepend("hello")
-                                       .prepend("world")
-  val anyList: ListNode[Any] = strList.prepend(12345)
-}
-```
-
+The `Node[Mammal]` can be assigned the `africanSwallowList` but then accept `EuropeanSwallow`s.
