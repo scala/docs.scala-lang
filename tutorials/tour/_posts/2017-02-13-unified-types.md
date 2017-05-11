@@ -14,7 +14,7 @@ prerequisite-knowledge: classes, basics
 
 In Scala, all values have a type, including numerical values and functions. The diagram below illustrates a subset of the type hierarchy.
 
-![Scala Type Hierarchy]({{ site.baseurl }}/tutorial/tour/unified-types-diagram.svg)
+<a href="/tutorials/tour/unified-types-diagram.svg"><img  style="width:100%" src="/tutorials/tour/unified-types-diagram.svg" alt="Scala Type Hierarchy"></a>
 
 ## Scala Type Hierarchy ##
 
@@ -49,10 +49,13 @@ c
 true
 <function>
 ```
+
 ## Type Casting
 Value types can be cast in the following way:
-![Scala Type Hierarchy]({{ site.baseurl }}/tutorial/tour/type-casting-diagram.svg)
+<a href="/tutorials/tour/type-casting-diagram.svg"><img  style="width:100%" src="/tutorials/tour/type-casting-diagram.svg" alt="Scala Type Hierarchy"></a>
+
 For example:
+
 ```tut
 val x: Long = 987654321
 val y: Float = x  // 9.8765434E8 (note that some precision is lost in this case)
@@ -60,12 +63,15 @@ val y: Float = x  // 9.8765434E8 (note that some precision is lost in this case)
 val face: Char = '☺'
 val number: Int = face  // 9786
 ```
+
 Casting is unidirectional. This will not compile:
+
 ```
 val x: Long = 987654321
 val y: Float = x  // 9.8765434E8
 val z: Long = y  // Does not conform
 ```
+
 You can also cast a reference type to a subtype. This will be covered later in the tour.
 
 ## Nothing and Null
