@@ -12,36 +12,50 @@ next-page: extractor-objects
 previous-page: xml-processing
 ---
 
-## Right-ignoring sequence patterns ##
-
-Right-ignoring patterns are a useful feature to decompose any data which is either a subtype of `Seq[A]` or a case class with an iterated formal parameter, like for instance
-
-```
-Elem(prefix:String, label:String, attrs:MetaData, scp:NamespaceBinding, children:Node*)
-```
-
-In those cases, Scala allows patterns having a wildcard-star `_*` in the rightmost position to stand for arbitrary long sequences.
-The following example demostrate a pattern match which matches a prefix of a sequence and binds the rest to the variable `rest`.
+Regular expressions are strings which can be used to find patterns (or lack thereof) in data. Any string can be converted to a regular expression using the `.r` method.
 
 ```tut
-object RegExpTest1 extends App {
-  def containsScala(x: String): Boolean = {
-    val z: Seq[Char] = x
-    z match {
-      case Seq('s','c','a','l','a', rest @ _*) =>
-        println("rest is "+rest)
-        true
-      case Seq(_*) =>
-        false
-    }
-  }
+import scala.util.matching.Regex
+
+val numberPattern: Regex = "[0-9]".r
+
+numberPattern.findFirstMatchIn("awesomepassword") match {
+  case Some(_) => println("Password OK")
+  case None => println("Password must contain a number")
 }
 ```
 
-In contrast to previous Scala versions, it is no longer allowed to have arbitrary regular expressions, for the reasons described below.
+In the above example, the `numberPattern` is a `Regex`
+(regular expression) which we use to make sure a password contains a number.
 
-###General `RegExp` patterns temporarily retracted from Scala###
+You can also search for groups of regular expressions using parentheses.
 
-Since we discovered a problem in correctness, this feature is temporarily retracted from the Scala language. If there is request from the user community, we might reactivate it in an improved form.
+```tut
+import scala.util.matching.Regex
 
-According to our opinion regular expressions patterns were not so useful for XML processing as we estimated. In real life XML processing applications, XPath seems a far better option. When we discovered that our translation or regular expressions patterns has some bugs for esoteric patterns which are unusual yet hard to exclude, we chose it would be time to simplify the language.
+val keyValPattern: Regex = "([0-9a-zA-Z-#() ]+): ([0-9a-zA-Z-#() ]+)".r
+
+val input: String =
+  """background-color: #A03300;
+    |background-image: url(img/header100.png);
+    |background-position: top center;
+    |background-repeat: repeat-x;
+    |background-size: 2160px 108px;
+    |margin: 0;
+    |height: 108px;
+    |width: 100%;""".stripMargin
+
+for (patternMatch <- keyValPattern.findAllMatchIn(input))
+  println(s"key: ${patternMatch.group(1)} value: ${patternMatch.group(2)}")
+```
+Here we parse out the keys and values of a String. Each match has a group of sub-matches. Here is the output:
+```
+key: background-color value: #A03300
+key: background-image value: url(img
+key: background-position value: top center
+key: background-repeat value: repeat-x
+key: background-size value: 2160px 108px
+key: margin value: 0
+key: height value: 108px
+key: width value: 100
+```
