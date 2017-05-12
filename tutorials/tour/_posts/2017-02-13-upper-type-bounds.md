@@ -33,18 +33,17 @@ class Lion extends Animal {
   override def name: String = "Lion"
 }
 
-class Cage[P <: Pet](p: P) {
+class PetContainer[P <: Pet](p: P) {
   def pet: P = p
 }
 
-object Main extends App {
-  var dogCage = new Cage[Dog](new Dog)
-  var catCage = new Cage[Cat](new Cat)
-  /* Cannot put Lion in a cage as Lion is not a Pet. */
-//  var lionCage = new Cage[Lion](new Lion)
-}
+val dogContainer = new PetContainer[Dog](new Dog)
+val catContainer = new PetContainer[Cat](new Cat)
+//  val lionContainer = new PetContainer[Lion](new Lion)
+//                         ^this would not compile
 ```
+The `class PetContainer` take a type parameter `P` which must be a subtype of `Pet`. `Dog` and `Cat` are subtypes of `Pet` so we can create a new `PetContainer[Dog]` and `PetContainer[Cat]`. However, if we tried to create a `PetContainer[Lion]`, we would get the following Error:
 
-An instance of class `Cage` may contain an animal with upper bound `Pet`. An animal of type `Lion` is not a pet and therefore cannot be put into a cage.
+`type arguments [Lion] do not conform to class PetContainer's type parameter bounds [P <: Pet]`
 
-The usage of lower type bounds is discussed [here](lower-type-bounds.html). 
+This is because `Lion` is not a subtype of `Pet`.
