@@ -11,77 +11,57 @@ next-page: default-parameter-values
 previous-page: automatic-closures
 ---
 
-Annotations associate meta-information with definitions.
+Annotations associate meta-information with definitions. For example, the annotation `@deprecated` before a method causes the compiler to print a warning if the method is used.
+```
+object DeprecationDemo extends App {
+  @deprecated
+  def hello = "hola"
 
-A simple annotation clause has the form `@C` or `@C(a1, .., an)`. Here, `C` is a constructor of a class `C`, which must conform to the class `scala.Annotation`. All given constructor arguments `a1, .., an` must be constant expressions (i.e., expressions on numeral literals, strings, class literals, Java enumerations and one-dimensional arrays of them).
+  hello  
+}
+```
+This will compile but the compiler will print a warning: "there was one deprecation warning".
 
 An annotation clause applies to the first definition or declaration following it. More than one annotation clause may precede a definition and declaration. The order in which these clauses are given does not matter.
 
-The meaning of annotation clauses is _implementation-dependent_. On the Java platform, the following Scala annotations have a standard meaning.
 
-|           Scala           |           Java           |
-|           ------          |          ------          |
-|  [`scala.SerialVersionUID`](https://www.scala-lang.org/api/current/scala/SerialVersionUID.html)   |  [`serialVersionUID`](http://java.sun.com/j2se/1.5.0/docs/api/java/io/Serializable.html#navbar_bottom) (field)  |
-|  [`scala.deprecated`](https://www.scala-lang.org/api/current/scala/deprecated.html)   |  [`java.lang.Deprecated`](http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Deprecated.html) |
-|  [`scala.inline`](https://www.scala-lang.org/api/current/scala/inline.html) (since 2.6.0)  |  no equivalent |
-|  [`scala.native`](https://www.scala-lang.org/api/current/scala/native.html) (since 2.6.0)  |  [`native`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (keyword) |
-|  [`scala.remote`](https://www.scala-lang.org/api/current/scala/remote.html) |  [`java.rmi.Remote`](http://java.sun.com/j2se/1.5.0/docs/api/java/rmi/Remote.html) |
-|  [`scala.throws`](https://www.scala-lang.org/api/current/scala/throws.html) |  [`throws`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (keyword) |
-|  [`scala.transient`](https://www.scala-lang.org/api/current/scala/transient.html) |  [`transient`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (keyword) |
-|  [`scala.unchecked`](https://www.scala-lang.org/api/current/scala/unchecked.html) (since 2.4.0) |  no equivalent |
-|  [`scala.volatile`](https://www.scala-lang.org/api/current/scala/volatile.html) |  [`volatile`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (keyword) |
-|  [`scala.beans.BeanProperty`](https://www.scala-lang.org/api/current/scala/beans/BeanProperty.html) |  [`Design pattern`](http://docs.oracle.com/javase/tutorial/javabeans/writing/properties.html) |
+## Annotations that ensure correctness of encodings
+Certain annotations will actually cause compilation to fail if a condition(s) is not met. For example, the annotation `@tailrec` ensures that a method is [tail-recursive](https://en.wikipedia.org/wiki/Tail_call). Tail-recursion can keep memory requirements constant. Here's how it's used in a method which calculates the factorial:
+```tut
+import scala.annotation.tailrec
 
-In the following example we add the `throws` annotation to the definition of the method `read` in order to catch the thrown exception in the Java main program.
+def factorial(x: Int): Int = {
 
-> A Java compiler checks that a program contains handlers for [checked exceptions](http://docs.oracle.com/javase/specs/jls/se5.0/html/exceptions.html) by analyzing which checked exceptions can result from execution of a method or constructor. For each checked exception which is a possible result, the **throws** clause for the method or constructor _must_ mention the class of that exception or one of the superclasses of the class of that exception.
-> Since Scala has no checked exceptions, Scala methods _must_ be annotated with one or more `throws` annotations such that Java code can catch exceptions thrown by a Scala method.
-
-```
-package examples
-import java.io._
-class Reader(fname: String) {
-  private val in = new BufferedReader(new FileReader(fname))
-  @throws(classOf[IOException])
-  def read() = in.read()
+  @tailrec
+  def factorialHelper(x: Int, accumulator: Int): Int = {
+    if (x == 1) accumulator else factorialHelper(x - 1, accumulator * x)
+  }
+  factorialHelper(x, 1)
 }
 ```
-
-The following Java program prints out the contents of the file whose name is passed as the first argument to the `main` method.
-
+The `factorialHelper` method has the `@tailrec` which ensures the method is indeed tail-recursive. If we were to change the implementation of `factorialHelper` to the following, it would fail:
 ```
-package test;
-import examples.Reader;  // Scala class !!
-public class AnnotaTest {
-    public static void main(String[] args) {
-        try {
-            Reader in = new Reader(args[0]);
-            int c;
-            while ((c = in.read()) != -1) {
-                System.out.print((char) c);
-            }
-        } catch (java.io.IOException e) {
-            System.out.println(e.getMessage());
-        }
-    }
+import scala.annotation.tailrec
+
+def factorial(x: Int): Int = {
+  @tailrec
+  def factorialHelper(x: Int): Int = {
+    if (x == 1) 1 else x * factorialHelper(x - 1)
+  }
+  factorialHelper(x)
 }
 ```
+We would get the message "Recursive call not in tail position".
 
-Commenting out the `throws` annotation in the class Reader produces the following error message when compiling the Java main program:
 
-```
-Main.java:11: exception java.io.IOException is never thrown in body of
-corresponding try statement
-        } catch (java.io.IOException e) {
-          ^
-1 error
-```
+## Annotations affecting code generation
+Some annotations like `@inline` affect the generated code (i.e. your jar file might have different bytes than if you hadn't used the annotation). Inlining means inserting the code in a method's body at the call site. The resulting bytecode is longer, but hopefully runs faster. Using the annotation `@inline` does not ensure that a method will be inlined, but it will cause the compiler to do it if and only if some heuristics about the size of the generated code are met.
 
 ### Java Annotations ###
+When writing Scala code which interoperates with Java, there are a few differences in annotation syntax to note.
+**Note:** Make sure you use the `-target:jvm-1.8` option with Java annotations.
 
-**Note:** Make sure you use the `-target:jvm-1.5` option with Java annotations.
-
-Java 1.5 introduced user-defined metadata in the form of [annotations](http://java.sun.com/j2se/1.5.0/docs/guide/language/annotations.html). A key feature of annotations is that they rely on specifying name-value pairs to initialize their elements. For instance, if we need an annotation to track the source of some class we might define it as
+Java has user-defined metadata in the form of [annotations](https://docs.oracle.com/javase/tutorial/java/annotations/). A key feature of annotations is that they rely on specifying name-value pairs to initialize their elements. For instance, if we need an annotation to track the source of some class we might define it as
 
 ```
 @interface Source {
