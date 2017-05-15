@@ -1,0 +1,91 @@
+<!-- Online -->
+<div class="online-courses">
+  <div class="heading-line">
+    <h2><span>Online Courses</span></h2>
+  </div>
+
+  {% comment %}
+  We're going to follow the next ordering for the online courses:
+    1- First we'll show those items that belong to an specific specialization (i.e.: Scala's progfun in Coursera). Those will be ordered alphabetically by title and each item under the specialization by the `specialization-order` tag in each one.
+    2- After those, courses that don't belong to any specific specialization.
+  We'll only show those courses that are not finished yet.
+  {% endcomment %}
+
+  {% assign specializations = '' | split: ',' %}
+  {% assign courses = '' | split: ',' %}
+  {% assign upcomingCourses = '' | split: ',' %}
+  {% capture now %}{{site.time | date: '%s' | plus: 0}}{% endcapture %}
+
+  {% for course in site.online_courses %}
+    {% unless specializations contains course.specialization %}
+      {% assign specializations = specializations | push: course.specialization %}
+    {% endunless %}
+
+    {% capture endDate %}{{course.end-date | date: '%s' | plus: 86400}}{% endcapture %}
+    {% if now <= endDate %}
+      {% assign upcomingCourses = upcomingCourses | push: course %}
+    {% endif %}
+  {% endfor %}
+
+  {% for specialization in specializations %}
+    {% assign specCourses = '' | split: ',' %}
+
+    {% for course in upcomingCourses %}
+      {% if course.specialization %}
+        {% if course.specialization == specialization %}
+          {% assign specCourses = specCourses | push: course %}     
+        {% endif %}
+
+        {% assign sortedSpecCourses = specCourses | sort: 'specialization-order' %}
+      {% endif %}
+    {% endfor %}
+    {% for sortedCourse in sortedSpecCourses %}
+      {% assign courses = courses | push: sortedCourse %}
+    {% endfor %}
+  {% endfor %}  
+  
+  {% for course in upcomingCourses %}
+    {% unless course.specialization %}
+      {% assign courses = courses | push: course %}
+    {% endunless %}
+  {% endfor %}
+
+  <div class="course-items-list">
+    {% for course in courses %}
+      <a href="{{course.url}}" class="course-item card">
+        <img src=
+          {% assign platform = course.platform | downcase %}
+          {% case platform %}
+            {% when "coursera" %}
+              "/resources/img/frontpage/coursera-icon.png"
+            {% when "edx" %}
+              "/resources/img/frontpage/edx-icon.png"
+          {% endcase %}
+         alt="">
+        <div class="card-text">
+          <h4>{{course.title}}</h4>
+          <ul>
+            <li class="online-courses-price">
+              {% if course.paid == true %}
+                {{site.data.common.texts.onlineCoursesPaid}}
+              {% else %}
+                {{site.data.common.texts.onlineCoursesFree}}
+              {% endif %}
+            </li>
+            <li class="dot">•</li>
+            <li class="online-courses-date">
+              {% if course.showDate == true %}
+                {{course.date | date_to_string}}
+              {% else %}
+                {{site.data.common.texts.courseraLaunchPeriod}}
+              {% endif %}              
+            </li>
+          </ul>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+  <div class="call-to-action action-medium">
+    <p class="align-top">Visit all the <a href="{{site.data.common.courseraMoocsUrl}}">Online Courses</a> courses</p>
+  </div>
+</div>

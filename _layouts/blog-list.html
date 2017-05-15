@@ -1,0 +1,9 @@
+---
+layout: inner-page-parent-searchbar
+---
+
+{% if page.category %}
+	{% include blog-list.html category=page.category %}
+{% else %}
+	{% include blog-list.html %}
+{% endif %}

@@ -1,0 +1,27 @@
+<section class="content">
+	<div class="wrap">
+		<div class="content-primary">
+			<div class="inner-box">
+				<div class="blog-detail-head">
+					<div>
+						<p>{{page.date | date: "%A %-d %B %Y"}}</p>
+						<p>{{page.by}}</p>
+					</div>
+					{% if page.tags %}
+					<ul class="tag-list">
+						{% for tag in page.tags %}
+						<li class="tag-item">{{tag}}</li>
+						{% endfor %}
+					</ul>
+					{% endif %}
+					</div>
+					<div class="filter-tag">{{page.category | upcase}}</div>
+					<h2><a href="{{page.url}}">{{page.title}}</a></h2>
+					{{content}}
+				</div>
+			</div>
+			<!-- TOC -->
+			{% include sidebar-toc.html %}
+		</div>
+	</div>
+</section>

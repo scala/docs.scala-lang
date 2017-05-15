@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    {% if page.description %}
+    <meta name="description" content="{{ page.description }}" />
+    {% endif %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" type="image/png" href="{{ site.baseurl }}/resources/favicon.ico">
+    <link rel="shortcut icon" type="image/png" href="{{ site.baseurl }}/resources/favicon.ico">
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <!-- Custom stylesheet --> 
+    <link href="{{ site.baseurl }}/resources/css/unslider-dots.css" rel="stylesheet" type="text/css">
+    <link href="{{ site.baseurl }}/resources/css/unslider.css" rel="stylesheet" type="text/css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/solarized-dark.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{ site.baseurl }}/resources/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="{{ site.baseurl }}/resources/css/vendor/codemirror.css" type="text/css" />
+    <link rel="stylesheet" href="{{ site.baseurl }}/resources/css/vendor/monokai.css" type="text/css" />
+
+    <!-- Typekit (should stay at top of page, do not move to footer)-->
+    <!--<script type="text/javascript" src="//use.typekit.net/abh3wgk.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script> -->
+
+    <!-- Atom feeds -->
+    <link rel="alternate" type="application/atom+xml" title="News Feed" href="{{ site.baseurl }}/feed/index.xml" />
+    <link rel="alternate" type="application/atom+xml" title="Blog Feed" href="{{ site.baseurl }}/feed/blog.xml" />

@@ -1,0 +1,38 @@
+<!-- Training -->
+<div class="upcoming-training">
+  <div class="heading-line">
+    <h2><span>Upcoming Training</span></h2>
+  </div>
+  <div class="training-items-list">
+    {% assign upcomingTrainings = '' | split: ',' %}
+    {% capture now %}{{site.time | date: '%s' | plus: 0}}{% endcapture %}
+    {% for training in site.trainings %}
+      {% capture date %}{{training.when | date: '%s' | plus: 86400}}{% endcapture %}
+      {% if now <= date %}
+        {% assign upcomingTrainings = upcomingTrainings | push: training %}
+      {% endif %}
+    {% endfor %}
+    {% for training in upcomingTrainings %}
+      <a href="{{training.link-out}}" class="training-item card">
+        <span class="calendar">
+          <span>
+            {% capture date %}{{training.date | date: '%B' }}{% endcapture %}
+            {{date | truncate: 3, ""}}
+          </span>
+          <span>{{training.date | date: '%-d' }}</span>
+        </span>
+        <div class="card-text">
+          <h4>{{training.title}}</h4>
+          <ul>
+            <li class="online-courses-price">{{training.where | upcase}}</li>
+            <li class="dot">•</li>
+            <li class="online-courses-date">{{training.organizer}}</li>
+          </ul>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+  <div class="call-to-action action-medium">
+    <p class="align-top">See <a href="/training/">more training</a> or <a href="https://github.com/scala/scala-lang/tree/master/training">add one to our feed</a></p>
+  </div>
+</div>

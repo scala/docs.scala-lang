@@ -1,0 +1,19 @@
+<header id="site-header">
+	<div class="wrap">
+		<nav class="navigation" role="menu">
+			<a href="/" class="navigation-bdand">
+				<img src="/resources/img/frontpage/scala-logo-white@2x.png" alt="">
+			</a>
+			<div class="navigation-panel-button">
+				<i class="fa fa-bars"></i>
+			</div>
+			<ul class="navigation-menu">
+				{% for navItem in site.data.nav-header %}
+				    <li class="navigation-menu-item">
+				      <a href="{{navItem.url}}" {% if page.url contains navItem.url %}class="active"{% endif %}>{{navItem.title}}</a>
+				    </li>
+				{% endfor %}
+			</ul>
+		</nav>
+	</div>
+</header>

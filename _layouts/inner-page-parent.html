@@ -1,0 +1,22 @@
+{% include headertop.html %}
+{% include headerbottom.html %}
+
+<div class="navigation-fade-screen"></div>
+
+{% include navbar-inner.html %}
+
+<main id="inner-main">
+
+	<!-- Title -->
+	<section class="title-page">
+		<div class="wrap">
+			<h1>{{page.title}}</h1>
+		</div>
+	</section>
+
+	{% comment %}Specific content from child layouts{% endcomment %}
+	{{content}}
+
+</main>
+
+{% include footer.html %}

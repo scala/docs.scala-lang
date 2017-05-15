@@ -1,0 +1,32 @@
+{% include headertop.html %}
+{% include headerbottom.html %}
+
+<div class="navigation-fade-screen"></div>
+
+{% include navbar-inner.html %}
+
+<main id="inner-main">
+
+	<!-- Title -->
+	<section class="title-page">
+		<div class="wrap">
+			<div class="content-title-blog">
+				<h1>{{page.title}}</h1>
+				<div class="search-container">
+					<div class="icon-search">
+						<i class="fa fa-search"></i>
+					</div>
+					<input type="text" id="blog-search-bar" placeholder="Search in blog...">
+					<ul class="result-container" id="result-container">
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	{% comment %}Specific content from child layouts{% endcomment %}
+	{{content}}
+
+</main>
+
+{% include footer.html %}
