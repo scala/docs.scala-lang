@@ -3,6 +3,7 @@
 title: Automatic Type-Dependent Closure Construction
 
 disqus: true
+layout: inner-page-no-masthead
 
 tutorial: scala-tour
 categories: tour
@@ -70,4 +71,3 @@ i = 3
 i = 2
 i = 1
 ```
-

@@ -3,6 +3,7 @@
 title: Upper Type Bounds
 
 disqus: true
+layout: inner-page-no-masthead
 
 tutorial: scala-tour
 categories: tour
@@ -47,4 +48,4 @@ object Main extends App {
 
 An instance of class `Cage` may contain an animal with upper bound `Pet`. An animal of type `Lion` is not a pet and therefore cannot be put into a cage.
 
-The usage of lower type bounds is discussed [here](lower-type-bounds.html). 
+The usage of lower type bounds is discussed [here](lower-type-bounds.html).

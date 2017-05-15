@@ -3,6 +3,7 @@
 title: Case Classes
 
 disqus: true
+layout: inner-page-no-masthead
 
 tutorial: scala-tour
 categories: tour
@@ -33,14 +34,14 @@ Instantiating a case class is easy: (Note that we don't need to use the `new` ke
 val emailFromJohn = Email("john.doe@mail.com", "Greetings From John!", "Hello World!")
 ```
 
-The constructor parameters of case classes are treated as public values and can be accessed directly. 
+The constructor parameters of case classes are treated as public values and can be accessed directly.
 
 ```tut
 val title = emailFromJohn.title
 println(title) // prints "Greetings From John!"
 ```
 
-With case classes, you cannot mutate their fields directly. (unless you insert `var` before a field, but doing so is generally discouraged). 
+With case classes, you cannot mutate their fields directly. (unless you insert `var` before a field, but doing so is generally discouraged).
 
 ```tut:fail
 emailFromJohn.title = "Goodbye From John!" // This is a compilation error. We cannot assign another value to val fields, which all case classes fields are by default.
@@ -126,7 +127,7 @@ println(showNotificationSpecial(someVoiceRecording, SPECIAL_EMAIL, SPECIAL_NUMBE
 println(showNotificationSpecial(specialEmail, SPECIAL_EMAIL, SPECIAL_NUMBER))
 println(showNotificationSpecial(specialSms, SPECIAL_EMAIL, SPECIAL_NUMBER))
 
-// prints: 
+// prints:
 // You got an SMS from 12345! Message: Are you there?
 // you received a Voice Recording from Tom! Click the link to hear it: voicerecording.org/id/123
 // You got an email from special someone!
@@ -138,6 +139,4 @@ When programming in Scala, it is recommended that you use case classes pervasive
 
 * Immutability frees you from needing to keep track of where and when things are mutated
 * Comparison-by-value allows you compare instances as if they are primitive values - no more uncertainty regarding whether instances of a class is compared by value or reference
-* Pattern matching simplifies branching logic, which leads to less bugs and more readable code. 
-
-
+* Pattern matching simplifies branching logic, which leads to less bugs and more readable code.

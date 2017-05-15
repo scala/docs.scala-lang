@@ -3,6 +3,7 @@
 title: Pattern Matching
 
 disqus: true
+layout: inner-page-no-masthead
 
 tutorial: scala-tour
 categories: tour
@@ -12,7 +13,7 @@ next-page: singleton-objects
 previous-page: case-classes
 ---
 
-Scala has a built-in general pattern matching mechanism. It allows to match on any sort of data with a first-match policy. 
+Scala has a built-in general pattern matching mechanism. It allows to match on any sort of data with a first-match policy.
 Here is a small example which shows how to match against an integer value:
 
 ```tut

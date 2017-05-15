@@ -3,6 +3,7 @@
 title: Singleton Objects
 
 disqus: true
+layout: inner-page-no-masthead
 
 tutorial: scala-tour
 categories: tour

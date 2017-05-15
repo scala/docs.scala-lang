@@ -3,6 +3,7 @@
 title: Implicit Parameters
 
 disqus: true
+layout: inner-page-no-masthead
 
 tutorial: scala-tour
 categories: tour
@@ -19,7 +20,7 @@ The actual arguments that are eligible to be passed to an implicit parameter fal
 * Second, eligible are also all members of companion modules of the implicit parameter's type that are labeled implicit.
 
 In the following example we define a method `sum` which computes the sum of a list of elements using the monoid's `add` and `unit` operations. Please note that implicit values can not be top-level, they have to be members of a template.
- 
+
 ```tut
 /** This example uses a structure from abstract algebra to show how implicit parameters work. A semigroup is an algebraic structure on a set A with an (associative) operation, called add here, that combines a pair of A's and returns another A. */
 abstract class SemiGroup[A] {

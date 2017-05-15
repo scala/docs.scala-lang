@@ -3,6 +3,7 @@
 title: Local Type Inference
 
 disqus: true
+layout: inner-page-no-masthead
 
 tutorial: scala-tour
 categories: tour
@@ -60,4 +61,3 @@ object InferenceTest4 {
 ```
 
 This program does not compile because the type inferred for variable `obj` is `Null`. Since the only value of that type is `null`, it is impossible to make this variable refer to another value.
-

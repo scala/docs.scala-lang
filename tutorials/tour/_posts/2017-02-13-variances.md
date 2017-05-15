@@ -3,6 +3,7 @@
 title: Variances
 
 disqus: true
+layout: inner-page-no-masthead
 
 tutorial: scala-tour
 num: 19
@@ -43,10 +44,10 @@ object CovarianceTest extends App {
       println(animal.name)
     }
   }
-  
+
   val cats: List[Cat] = List(Cat("Whiskers"), Cat("Tom"))
   val dogs: List[Dog] = List(Dog("Fido"), Dog("Rex"))
-  
+
   printAnimalNames(cats)
   // Whiskers
   // Tom
@@ -92,7 +93,7 @@ object ContravarianceTest extends App {
   def printMyCat(printer: Printer[Cat]): Unit = {
     printer.print(myCat)
   }
-  
+
   val catPrinter: Printer[Cat] = new CatPrinter
   val animalPrinter: Printer[Animal] = new AnimalPrinter
 

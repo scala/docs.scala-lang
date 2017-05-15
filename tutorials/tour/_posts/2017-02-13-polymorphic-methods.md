@@ -3,6 +3,7 @@
 title: Polymorphic Methods
 
 disqus: true
+layout: inner-page-no-masthead
 
 tutorial: scala-tour
 categories: tour

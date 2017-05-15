@@ -3,6 +3,7 @@
 title: Generic Classes
 
 disqus: true
+layout: inner-page-no-masthead
 
 tutorial: scala-tour
 categories: tour

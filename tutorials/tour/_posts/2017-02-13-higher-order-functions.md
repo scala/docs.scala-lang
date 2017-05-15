@@ -3,6 +3,7 @@
 title: Higher-order Functions
 
 disqus: true
+layout: inner-page-no-masthead
 
 tutorial: scala-tour
 categories: tour
@@ -20,7 +21,7 @@ def apply(f: Int => String, v: Int) = f(v)
 _Note: methods are automatically coerced to functions if the context requires this._
 
 Here is another example:
- 
+
 ```tut
 class Decorator(left: String, right: String) {
   def layout[A](x: A) = left + x.toString() + right
@@ -32,7 +33,7 @@ object FunTest extends App {
   println(apply(decorator.layout, 7))
 }
 ```
- 
+
 Execution yields the output:
 
 ```

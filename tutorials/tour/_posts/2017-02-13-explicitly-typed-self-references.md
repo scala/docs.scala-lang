@@ -3,6 +3,7 @@
 title: Explicitly Typed Self References
 
 disqus: true
+layout: inner-page-no-masthead
 
 tutorial: scala-tour
 categories: tour
@@ -120,4 +121,3 @@ object GraphTest extends App {
   n1.connectWith(n3)
 }
 ```
-

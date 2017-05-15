@@ -3,6 +3,7 @@
 title: Compound Types
 
 disqus: true
+layout: inner-page-no-masthead
 
 tutorial: scala-tour
 categories: tour
@@ -17,7 +18,7 @@ Suppose we have two traits `Cloneable` and `Resetable`:
 
 ```tut
 trait Cloneable extends java.lang.Cloneable {
-  override def clone(): Cloneable = { 
+  override def clone(): Cloneable = {
     super.clone().asInstanceOf[Cloneable]
   }
 }
@@ -49,4 +50,4 @@ def cloneAndReset(obj: Cloneable with Resetable): Cloneable = {
 Compound types can consist of several object types and they may have a single refinement which can be used to narrow the signature of existing object members.
 The general form is: `A with B with C ... { refinement }`
 
-An example for the use of refinements is given on the page about [abstract types](abstract-types.html). 
+An example for the use of refinements is given on the page about [abstract types](abstract-types.html).
