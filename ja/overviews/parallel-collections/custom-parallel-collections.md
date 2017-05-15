@@ -1,5 +1,6 @@
 ---
-layout: overview-large
+layout: inner-page-no-masthead
+
 title: カスタム並列コレクションの作成
 
 disqus: true

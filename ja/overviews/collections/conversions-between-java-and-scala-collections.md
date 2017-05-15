@@ -1,5 +1,6 @@
 ---
-layout: overview-large
+layout: inner-page-no-masthead
+
 title: Java と Scala 間のコレクションの変換
 
 disqus: true

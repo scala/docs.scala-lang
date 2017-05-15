@@ -1,5 +1,6 @@
 ---
-layout: overview-large
+layout: inner-page-no-masthead
+
 title: How do I find what some symbol means or does?
 
 disqus: true

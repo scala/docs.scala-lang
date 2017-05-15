@@ -1,5 +1,6 @@
 ---
-layout: overview-large
+layout: inner-page-no-masthead
+
 title: Configurando las colecciones paralelas
 
 disqus: true

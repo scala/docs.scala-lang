@@ -1,5 +1,6 @@
 ---
-layout: overview-large
+layout: inner-page-no-masthead
+
 title: What is breakOut, and how does it work?
 
 disqus: true

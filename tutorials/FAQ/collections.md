@@ -1,5 +1,6 @@
 ---
-layout: overview-large
+layout: inner-page-no-masthead
+
 title: How are the collections structured? Which one should I choose?
 
 disqus: true

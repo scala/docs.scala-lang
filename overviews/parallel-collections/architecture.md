@@ -1,5 +1,6 @@
 ---
-layout: overview-large
+layout: inner-page-no-masthead
+
 title: Architecture of the Parallel Collections Library
 
 disqus: true

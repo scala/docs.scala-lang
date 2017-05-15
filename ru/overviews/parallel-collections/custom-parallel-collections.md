@@ -1,5 +1,6 @@
 ---
-layout: overview-large
+layout: inner-page-no-masthead
+
 title: Создание пользовательской параллельной коллекции
 
 disqus: true

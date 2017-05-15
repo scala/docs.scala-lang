@@ -1,5 +1,6 @@
 ---
-layout: overview-large
+layout: inner-page-no-masthead
+
 title: Conversions Between Java and Scala Collections
 
 disqus: true

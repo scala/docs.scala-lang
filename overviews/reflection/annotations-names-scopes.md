@@ -1,5 +1,6 @@
 ---
-layout: overview-large
+layout: inner-page-no-masthead
+
 title: Annotations, Names, Scopes, and More
 
 disqus: true

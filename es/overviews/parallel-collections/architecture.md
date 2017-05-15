@@ -1,5 +1,6 @@
 ---
-layout: overview-large
+layout: inner-page-no-masthead
+
 title: Arquitectura de la librería de colecciones paralelas de Scala
 
 disqus: true

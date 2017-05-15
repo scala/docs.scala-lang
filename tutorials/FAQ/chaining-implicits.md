@@ -1,5 +1,6 @@
 ---
-layout: overview-large
+layout: inner-page-no-masthead
+
 title: How can I chain/nest implicit conversions?
 
 disqus: true

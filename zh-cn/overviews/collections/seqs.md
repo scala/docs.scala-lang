@@ -1,5 +1,6 @@
 ---
-layout: overview-large
+layout: inner-page-no-masthead
+
 title: 序列trait：Seq、IndexedSeq及LinearSeq
 
 disqus: true

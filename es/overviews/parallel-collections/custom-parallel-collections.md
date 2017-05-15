@@ -1,5 +1,6 @@
 ---
-layout: overview-large
+layout: inner-page-no-masthead
+
 title: Creating Custom Parallel Collections
 
 disqus: true

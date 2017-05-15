@@ -1,5 +1,6 @@
 ---
-layout: overview-large
+layout: inner-page-no-masthead
+
 title: The sequence traits Seq, IndexedSeq, and LinearSeq
 
 disqus: true

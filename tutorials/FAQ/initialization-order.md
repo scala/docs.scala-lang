@@ -1,5 +1,6 @@
 ---
-layout: overview-large
+layout: inner-page-no-masthead
+
 title: Why is my abstract or overridden val null?
 
 disqus: true

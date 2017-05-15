@@ -1,5 +1,6 @@
 ---
-layout: overview-large
+layout: inner-page-no-masthead
+
 title: What is the difference between view, stream and iterator?
 
 disqus: true
