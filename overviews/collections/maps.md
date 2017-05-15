@@ -143,9 +143,9 @@ Because the mutable map returned by the `makeMap` method mixes in the `Synchroni
     scala> val capital = MapMaker.makeMap  
     capital: scala.collection.mutable.Map[String,String] = Map()
     scala> capital ++ List("US" -> "Washington",
-            "Paris" -> "France", "Japan" -> "Tokyo")
+            "France" -> "Paris", "Japan" -> "Tokyo")
     res0: scala.collection.mutable.Map[String,String] =
-      Map(Paris -> France, US -> Washington, Japan -> Tokyo)
+      Map(France -> Paris, US -> Washington, Japan -> Tokyo)
     scala> capital("Japan")
     res1: String = Tokyo
     scala> capital("New Zealand")

@@ -146,9 +146,9 @@ makeMap方法返回的可变映射混入了 SynchronizedMap trait，因此可以
     scala> val capital = MapMaker.makeMap  
     capital: scala.collection.mutable.Map[String,String] = Map()
     scala> capital ++ List("US" -> "Washington",
-            "Paris" -> "France", "Japan" -> "Tokyo")
+            "France" -> "Paris", "Japan" -> "Tokyo")
     res0: scala.collection.mutable.Map[String,String] =
-      Map(Paris -> France, US -> Washington, Japan -> Tokyo)
+      Map(France -> Paris, US -> Washington, Japan -> Tokyo)
     scala> capital("Japan")
     res1: String = Tokyo
     scala> capital("New Zealand")

@@ -11,7 +11,7 @@ You might have encountered some code like the one below, and wonder what is
 `breakOut`, and why is it being passed as parameter?
 
     import scala.collection.breakOut
-    val map : Map[Int,String] = List("London", "Paris").map(x => (x.length, x))(breakOut)
+    val map : Map[Int,String] = List("London", "France").map(x => (x.length, x))(breakOut)
 
 
 The answer is found on the definition of `map`:
@@ -186,7 +186,7 @@ it chose the second `CanBuildFrom`.
 Let's see the first example, `List`'s and `map`'s definition (again) to
 see how the types are inferred:
 
-    val map : Map[Int,String] = List("London", "Paris").map(x => (x.length, x))(breakOut)
+    val map : Map[Int,String] = List("London", "France").map(x => (x.length, x))(breakOut)
 
     sealed abstract class List[+A] 
     extends LinearSeq[A] with Product with GenericTraversableTemplate[A, List] with LinearSeqLike[A, List[A]]
@@ -205,7 +205,7 @@ see how the types are inferred:
 
     def map[B, That](f : (A) => B)(implicit bf : CanBuildFrom[Repr, B, That]) : That 
 
-The type of `List("London", "Paris")` is `List[String]`, so the types `A` and
+The type of `List("London", "France")` is `List[String]`, so the types `A` and
 `Repr` defined on `TraversableLike` are:
 
     A = String
