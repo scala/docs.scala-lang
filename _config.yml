@@ -25,7 +25,6 @@ permalink: /:categories/:title.html
 exclude: ["vendor"]
 gems:
   - jekyll-redirect-from
-  - jekyll-multiple-languages-plugin
 
 
 # Defaults

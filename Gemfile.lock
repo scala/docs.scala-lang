@@ -81,8 +81,6 @@ GEM
       activesupport (~> 4.0)
       html-pipeline (~> 2.3)
       jekyll (~> 3.0)
-    jekyll-multiple-languages-plugin (1.5.1)
-      jekyll (>= 2.0, < 4.0)
     jekyll-paginate (1.1.0)
     jekyll-redirect-from (0.11.0)
       jekyll (>= 2.0)
@@ -142,7 +140,6 @@ PLATFORMS
 
 DEPENDENCIES
   github-pages
-  jekyll-multiple-languages-plugin
   jekyll-redirect-from
 
 BUNDLED WITH
