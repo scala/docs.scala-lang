@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+
 title: Operators
 
 disqus: true

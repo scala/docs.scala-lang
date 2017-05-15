@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+
 title: Singleton Objects
 
 disqus: true

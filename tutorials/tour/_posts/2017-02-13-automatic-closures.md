@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+
 title: Automatic Type-Dependent Closure Construction
 
 disqus: true

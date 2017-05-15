@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+
 title: Polymorphic Methods
 
 disqus: true

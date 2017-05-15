@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+
 title: Named Arguments
 
 disqus: true

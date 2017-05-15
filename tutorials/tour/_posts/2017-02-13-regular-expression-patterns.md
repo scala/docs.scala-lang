@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+
 title: Regular Expression Patterns
 
 disqus: true

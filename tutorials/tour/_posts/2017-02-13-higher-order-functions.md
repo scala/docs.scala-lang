@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+
 title: Higher-order Functions
 
 disqus: true

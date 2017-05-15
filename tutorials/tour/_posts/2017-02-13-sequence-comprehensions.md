@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+
 title: Sequence Comprehensions
 
 disqus: true

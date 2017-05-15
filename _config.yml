@@ -25,8 +25,15 @@ permalink: /:categories/:title.html
 exclude: ["vendor"]
 gems:
   - jekyll-redirect-from
+  - jekyll-multiple-languages-plugin
 
 
 # Defaults
-  - values:
-    includeTOC: true
+  -
+    values:
+      includeTOC: true
+  -
+    scope:
+      path: "tutorials/tour/_posts"
+    values:
+      layout: "inner-page-documentation"

@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+
 title: Default Parameter Values
 
 disqus: true

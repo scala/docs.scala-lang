@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+
 title: Implicit Parameters
 
 disqus: true

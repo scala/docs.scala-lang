@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+
 title: Anonymous Function Syntax
 
 disqus: true

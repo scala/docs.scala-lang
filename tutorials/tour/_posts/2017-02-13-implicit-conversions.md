@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+
 title: Implicit Conversions
 
 disqus: true

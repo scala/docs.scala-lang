@@ -1,5 +1,5 @@
   ---
-layout: tutorial
+
 title: Lower Type Bounds
 
 disqus: true

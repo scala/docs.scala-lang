@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+
 title: Local Type Inference
 
 disqus: true

@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+
 title: Case Classes
 
 disqus: true

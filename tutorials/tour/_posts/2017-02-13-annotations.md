@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+
 title: Annotations
 
 disqus: true

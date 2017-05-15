@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+
 title: Upper Type Bounds
 
 disqus: true

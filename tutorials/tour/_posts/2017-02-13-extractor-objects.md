@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+
 title: Extractor Objects
 
 disqus: true

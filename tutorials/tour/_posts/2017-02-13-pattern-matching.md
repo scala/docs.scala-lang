@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+
 title: Pattern Matching
 
 disqus: true

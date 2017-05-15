@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+
 title: Abstract Types
 
 disqus: true

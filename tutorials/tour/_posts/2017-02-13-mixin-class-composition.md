@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+
 title: Mixin Class Composition
 
 disqus: true

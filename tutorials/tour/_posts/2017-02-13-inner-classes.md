@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+
 title: Inner Classes
 
 disqus: true

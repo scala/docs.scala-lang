@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+
 title: Unified Types
 
 disqus: true
