@@ -10,15 +10,15 @@ links:
   - title: "Getting Started"
     description: "Install Scala on your computer and start writing some Scala code!"
     icon: "fa fa-rocket"
-    link: /documentation/getting-started/
+    link: getting-started.html
   - title: "Tour of Scala"
     description: "Get an introduction to some of the core language concepts."
     icon: "fa fa-flag"
-    link: http://docs.scala-lang.org/tutorials/tour/tour-of-scala.html
+    link: /tutorials/tour/tour-of-scala.html
   - title: "Guides"
     description: "Access detailed documentation on important language features."
     icon: "fa fa-file-text"
-    link: http://docs.scala-lang.org/guides.html
+    link: guides.html
   - title: "Reference"
     description: "Search the API, read the language spec, and the glossary"
     icon: "fa fa-database"
