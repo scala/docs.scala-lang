@@ -27,6 +27,10 @@ gems:
   - jekyll-redirect-from
 
 
+# Collections
+collections:
+  - overviews
+
 # Defaults
   -
     values:
