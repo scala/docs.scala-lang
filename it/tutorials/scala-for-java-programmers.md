@@ -1,5 +1,6 @@
 ---
-layout: overview
+layout: inner-page-no-masthead
+
 title: Un'introduzione a Scala per programmatori Java
 overview: scala-for-java-programmers
 

@@ -49,7 +49,8 @@ For one to contribute a document, one must simply
 [Markdown](http://daringfireball.net/projects/markdown/syntax) (example below), and submit a pull request. That's it. Likely after some edits and discussion, your document will be made live on [docs.scala-lang.org](http://docs.scala-lang.org).
 
     ---
-    layout: overview
+    layout: inner-page-no-masthead
+
     title: My Awesome Title
     ---
 
@@ -82,7 +83,8 @@ If you have something you're thinking about contributing, or that you're thinkin
 A guide or an overview that can be logically placed on **one** page must be placed in the directory `overviews/RELEVANT-CATEGORY/_posts` with the file name in the format `YYYY-MM-dd-title-separarted-by-dashes.md`, and header:
 
     ---
-    layout: overview
+    layout: inner-page-no-masthead
+
     title: YOUR TITLE
     ---
 
@@ -122,7 +124,8 @@ Index pages, such as [http://docs.scala-lang.org/overviews/index.html](http://do
 At the moment, a tutorial that can be logically placed on **one** page must be placed in the directory `tutorials/` with the file name in the format `title-separated-by-dashes.md`. For the moment, single-page tutorials use the same layout as single-page overviews:
 
     ---
-    layout: overview
+    layout: inner-page-no-masthead
+
     title: YOUR TITLE
     ---
 

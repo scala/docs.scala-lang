@@ -1,5 +1,6 @@
 ---
-layout: overview
+layout: inner-page-no-masthead
+
 title: The Scala Actors API
 overview: actors
 disqus: true

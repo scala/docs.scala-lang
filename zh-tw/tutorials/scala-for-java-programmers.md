@@ -1,5 +1,6 @@
 ---
-layout: overview
+layout: inner-page-no-masthead
+
 title: 給 Java 程式設計師的 Scala 入門教學
 overview: scala-for-java-programmers
 

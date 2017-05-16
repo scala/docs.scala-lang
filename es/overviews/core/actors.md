@@ -1,5 +1,6 @@
 ---
-layout: overview
+layout: inner-page-no-masthead
+
 title: API de actores en Scala
 label-color: success
 label-text: Available

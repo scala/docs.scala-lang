@@ -1,5 +1,6 @@
 ---
-layout: overview
+layout: inner-page-no-masthead
+
 title: Interpolación de cadenas
 disqus: true
 label-color: success

@@ -1,5 +1,6 @@
 ---
-layout: overview
+layout: inner-page-no-masthead
+
 disqus: true
 language: zh-cn
 disqus: true

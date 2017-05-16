@@ -1,5 +1,6 @@
 ---
-layout: overview
+layout: inner-page-no-masthead
+
 partof: reflection
 overview: reflection
 language: ja

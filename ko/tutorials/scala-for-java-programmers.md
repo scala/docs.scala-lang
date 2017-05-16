@@ -1,5 +1,6 @@
 ---
-layout: overview
+layout: inner-page-no-masthead
+
 title: 자바 프로그래머를 위한 스칼라 튜토리얼
 overview: scala-for-java-programmers
 

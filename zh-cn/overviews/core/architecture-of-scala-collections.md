@@ -1,5 +1,6 @@
 ---
-layout: overview
+layout: inner-page-no-masthead
+
 title: Scala容器类体系结构
 overview: architecture-of-scala-collections
 disqus: true

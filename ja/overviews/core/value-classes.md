@@ -1,5 +1,6 @@
 ---
-layout: overview
+layout: inner-page-no-masthead
+
 label-color: success
 label-text: New in 2.10
 language: ja

@@ -1,5 +1,6 @@
 ---
-layout: overview
+layout: inner-page-no-masthead
+
 title: Ein Scala Tutorial für Java Programmierer
 overview: scala-for-java-programmers
 
