@@ -29,9 +29,11 @@ gems:
 
 # Collections
 collections:
-  - overviews
+  overviews:
+    output: true
 
 # Defaults
+defaults:
   -
     values:
       includeTOC: true
