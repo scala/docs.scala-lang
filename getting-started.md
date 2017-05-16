@@ -1,7 +1,6 @@
 ---
 layout: inner-page-no-masthead
 title: Getting Started
-permalink: /documentation/getting-started/
 includeTOC: true
 ---
 
