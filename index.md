@@ -22,11 +22,11 @@ links:
   - title: "Reference"
     description: "Search the API, read the language spec, and the glossary"
     icon: "fa fa-database"
-    link: /documentation/reference.html
+    link: /reference.html
   - title: "Learning Resources"
     description: "Books and online exercises"
     icon: "fa fa-book"
-    link: /documentation/learn.html
+    link: /learn.html
 
 ---
 
