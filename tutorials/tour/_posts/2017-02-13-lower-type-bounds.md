@@ -1,4 +1,4 @@
-  ---
+---
 layout: tutorial
 title: Lower Type Bounds
 
