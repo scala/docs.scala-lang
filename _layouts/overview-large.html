@@ -1,0 +1,19 @@
+---
+layout: inner-page-parent
+---
+
+{% for pg in site.pages %}
+  {% if pg.partof == page.partof and pg.languages %}
+    {% assign languages = pg.languages %}
+  {% endif %}
+{% endfor %}
+
+{% if page.language %}
+  {% capture intermediate %}{{ page.url | remove_first: page.language }}{% endcapture %}
+  {% capture rootTutorialURL %}{{ intermediate | remove_first: '/' }}{% endcapture %}
+{% else %}
+  {% assign rootTutorialURL = page.url %}
+{% endif %}
+
+<!-- Main content -->
+{% include inner-page-main-content.html %}

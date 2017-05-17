@@ -5,8 +5,14 @@
 				{{content}}
 			</div>
 		</div>
-		
+
 		<!-- TOC -->
+		{% if sidebar_toc % }
 		{% include sidebar-toc.html %}
+		{% endif %}
+
+		{%if collection_toc %}
+		{% include collection-toc.html %}
+		{% endif %}
 	</div>
 </section>

@@ -3,6 +3,7 @@ layout: overview-large
 title: Arrays
 
 disqus: true
+collection_toc: true
 
 partof: collections
 num: 10
