@@ -5,6 +5,7 @@ _site
 /.jekyll-metadata
 *~
 vendor/bundle
+vendor/cache
 .idea/
 /coursier
 /tut-tmp/
