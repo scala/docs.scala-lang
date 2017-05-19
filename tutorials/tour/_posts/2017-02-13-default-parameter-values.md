@@ -7,7 +7,7 @@ disqus: true
 tutorial: scala-tour
 categories: tour
 num: 33
-next-page: named-parameters
+next-page: named-arguments
 previous-page: annotations
 prerequisite-knowledge: named-arguments, function syntax
 ---
