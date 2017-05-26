@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Sequence Comprehensions
+title: For Comprehensions
 
 disqus: true
 
@@ -36,7 +36,7 @@ Here is a more complicated example using two generators. It computes all pairs o
 def foo(n: Int, v: Int) =
    for (i <- 0 until n;
         j <- i until n if i + j == v)
-     yield (i, j)
+   yield (i, j)
 
 foo(10, 10) foreach {
   case (i, j) =>
