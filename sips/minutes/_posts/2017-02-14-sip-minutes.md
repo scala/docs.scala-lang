@@ -12,7 +12,7 @@ The following agenda was distributed to attendees:
 | [SIP-XX: Improving binary compatibility with @stableABI](http://docs.scala-lang.org/sips/pending/binary-compatibility.html) | Dmitry Petrashko |
 | [SIP-NN - Allow referring to other arguments in default parameters](http://docs.scala-lang.org/sips/pending/refer-other-arguments-in-args.html) | Pathikrit Bhowmick |
 | [SIP 25 - @static fields and methods in Scala objects(SI-4581)](http://docs.scala-lang.org/sips/pending/static-members.html) | Dmitry Petrashko, Sébastien Doeraene and Martin Odersky |
-| [SIP-NN - Match infix & prefix types to meet expression rules](http://docs.scala-lang.org/sips/pending/make-types-behave-like-expressions.html) | Oron Port |
+| [SIP-33 - Match infix & prefix types to meet expression rules](http://docs.scala-lang.org/sips/pending/make-types-behave-like-expressions.html) | Oron Port |
 
 Jorge Vicente Cantero was the Process Lead. Travis (@travissarles) was acting secretary of the meeting.
 
@@ -58,8 +58,6 @@ The other question was clarify how does the static effect initialization order a
 In short, it can make initlization happen earlier but never later. By enforcing syntax restriction would make it harder to observe this. But still it is possible to observe initialization requirements. This is a sweet spot because static should be independent. The point is you want some fields to be initialized without the initialization of an entire object. There is a side-effect that an object is initialized and there are multiple ways to observe it somehow.
 
 The current SIP tries to make it behave as expected by the users in common cases.
-
-Conclusion:
 
 **Lukas** Let's take a simple example, you have an object with a static field and a non-static field. Now the user code, the program access the non=static field first. That means the module gets initialized, but the static field lives in the companion class, right? So the static field is not initialized necessary even though you access the module. Assuming the field initializers have side effects then you can observe the differences. Then the static field will only be initialized at some point later when you use the class and not when you access the module.
 
@@ -149,10 +147,11 @@ Conclusion:
 
 **Sébastien** ScalaJS already implemented it under another name but it's supposed to be conservative with respect to the aesthetic SIP in the sense that things that are allowed now with @jsstatic will also be allowed with @static. @static might open up a little bit more.
 
-**Conclusion** We need an implementation for Scalac. Lightbend hasn't discussed working on this yet. We will pass on this proposal.
+**Conclusion**  The static SIP proposal has to be implemented in Scala, as it's already present in Dotty. Triplequote (Iulian Dragos and Mirco Dotta) has offered to provide an implementation targeting 2.12.3.
 
 ### SIP-NN - [Allow referring to other arguments in default parameters](https://github.com/scala/scala.github.com/pull/653) (22:30)
-Sébastien is the reviewer
+Sébastien is the reviewer of this proposal.
+
 **Sébastien** The SIP is a generalization of why we can use in default values of parameters. Especially referring to other arguments. In current Scala we can refer to arguments in previous parameter lists. This SIP wants to open that up. The way it's currently written, any parameter whether it's in the same parameter list or a previous one, it's also allowed to refer to argument on the right. The text needs to be elaborated on use cases. Doesn't address implementation concerns. Jorge answered on the PR with analysis of feasibility. I'm convinced that the version where we can also refer to a parameter on the right is infeasible because you can have arbitrary cycles and you don't know _______ ( 24:55) and it's completely impossible.
 
 Other than that, in principle the SIP looks reasonable. It's possible to implement but it will cause more bytecode because now the third parameter will always need to receive the first two parameters to decide its value. We cannot decide that whether based on the default value actually refers to the previous parameters because that would be unstable in respect to binary compatibility. You need to always give to the default accessor all the prior parameters and that means it can potentially increase bytecode size. That needs to be analyzed maybe with a prototype, compare with Scala library.
@@ -163,7 +162,7 @@ Other than that, in principle the SIP looks reasonable. It's possible to impleme
 
 **Martin** It would be a completely sweeping change. It's one of the key types that suddenly becomes recursive. So you can imagine what that means. Every time we construct such a type we can't do it inductively anymore. So basically it's the difference between polytypes and method types. I'm not saying it's impossible but it would be a huge change the compiler to do that. It's probably beyond what we can do for Scalac and just for Dotty we could think about it but it would be a very big change.
 
-**Conclusion** This is a sweeping change. There could be some unexpected corner cases. We will not see it any time soon.
+**Conclusion** The proposal has been numbered as SIP-32. The reference to type members seems tricky in implementation and interaction and it may be removed as the analysis of this SIP continues. The reference to other arguments in the same parameter list has been implemented by Jorge in [scala/scala#5641](https://github.com/scala/scala/pull/5641).
 
 ### SIP-XX: Improving binary compatibility with @stableABI (33:30)
 **Dmitry** This proposes annotations which does not change the compilation scheme. A bit of background, Scala is being released with versions which can be either minor or major. So 2.11 is major version compared to 2.10. 2.11.1 and 2.11.2 are minor versions. Scala currently guarantees binary-compatibility between minor versions. At the same time, big parts of the scala community live in different major versions of the compiler which require them to publish artifacts multiple times because the same artifact will be incompatible if used in a different compiler.
@@ -242,10 +241,9 @@ There are multiple use cases covered by this SIP. I think the two most important
 
 **Martin** That is true. You want to make a rule that newer compilers can ____ (1:02:54) the older ones but not the other way around.
 
-**Conclusion**: We will sleep on this.
+**Conclusion**:  This proposal has been numbered as SIP-34. This is a complicated proposal that needs synchronization between the Scala and Dotty team to decide which encodings are good enough to make binary compatible. When Dmitry, the author of this proposal, figures out which features should be binary compatible and has more information on the future implementation, the SIP Committee will start the review period.
 
-
-### SIP-NN - Match infix & prefix types to meet expression rules (1:04:00)
+### SIP-33 - Match infix & prefix types to meet expression rules (1:04:00)
 
 **Jorge** Making a change to the parser to make types behave as expressions. The other part of the proposal is about prefix types. Just like unary operators, he wants to have unary prefixes for type. So you can create a unary operator for types.
 
