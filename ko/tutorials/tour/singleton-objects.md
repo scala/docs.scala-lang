@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+layout: inner-page-no-masthead
 title: 싱글톤 객체
 
 disqus: true

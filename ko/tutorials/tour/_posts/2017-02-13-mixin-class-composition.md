@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+layout: inner-page-no-masthead
 title: 믹스인 클래스 컴포지션
 
 disqus: true

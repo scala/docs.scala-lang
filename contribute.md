@@ -127,7 +127,7 @@ At the moment, a tutorial that can be logically placed on **one** page must be p
 If you have a **multiple-page** tutorial, like in the case of multiple-page overviews, you must both specify an ordering for your document, and a name must be assigned to the collection of tutorial pages. For example, the following header is used for the [Tour of Scala]({{ site.baseurl }}/tutorials) series of tutorial articles:
 
     ---
-    layout: tutorial
+    layout: inner-page-no-masthead
     title: YOUR TITLE
 
     tutorial: scala-tour

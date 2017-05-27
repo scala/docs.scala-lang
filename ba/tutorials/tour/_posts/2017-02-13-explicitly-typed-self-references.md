@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+layout: inner-page-no-masthead
 title: Eksplicitno tipizirane samo-reference
 
 disqus: true

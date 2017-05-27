@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+layout: inner-page-no-masthead
 title: Sintaxe de Função Anônima
 
 disqus: true

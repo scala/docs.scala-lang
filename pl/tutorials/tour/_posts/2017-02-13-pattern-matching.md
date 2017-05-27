@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+layout: inner-page-no-masthead
 title: Dopasowanie wzorców (Pattern matching)
 
 disqus: true
