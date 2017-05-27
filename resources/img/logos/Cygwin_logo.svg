@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 0 100 100"
+   id="svg3969"
+   version="1.1"
+   inkscape:version="0.48.3.1 r9886"
+   width="100%"
+   height="100%"
+   sodipodi:docname="Cygwin_logo.svg"
+   inkscape:export-filename="/home/sast/projects/scala/scala-lang/resources/img/logos/Cygwin_logo.png"
+   inkscape:export-xdpi="40.449398"
+   inkscape:export-ydpi="40.449398">
+  <metadata
+     id="metadata3981">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs3979" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="640"
+     inkscape:window-height="480"
+     id="namedview3977"
+     showgrid="false"
+     inkscape:zoom="2.36"
+     inkscape:cx="50"
+     inkscape:cy="50"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg3969" />
+  <g
+     stroke-linejoin="round"
+     stroke-width="4"
+     id="g3971">
+    <path
+       d="M94,19l-28-9h-39c-9,0-19,9-19,19v47c0,9,10,19,19,19h39l28-10l-28-9h-26c-9,0-13-3-13-13v-22c0-10,4-13,13-13h26z"
+       fill="#000"
+       stroke="#000"
+       id="path3973" />
+    <path
+       d="M94,52l-41-11h-13v3c10,0,10,16,0,16v3h13z"
+       fill="#0F0"
+       stroke="#0F0"
+       id="path3975" />
+  </g>
+</svg>
