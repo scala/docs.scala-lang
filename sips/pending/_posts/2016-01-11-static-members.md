@@ -1,5 +1,5 @@
 ---
-layout: sip
+layout: inner-page-no-masthead
 title: SIP 25 - @static fields and methods in Scala objects(SI-4581)
 disqus: true
 

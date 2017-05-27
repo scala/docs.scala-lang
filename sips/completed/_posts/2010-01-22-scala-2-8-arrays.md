@@ -1,5 +1,5 @@
 ---
-layout: sip
+layout: inner-page-no-masthead
 title: SID-7 - Scala 2.8 Arrays
 ---
 

@@ -1,5 +1,5 @@
 ---
-layout: sip
+layout: inner-page-no-masthead
 title: SIP-16 - Self-cleaning Macros
 
 vote-status: rejected

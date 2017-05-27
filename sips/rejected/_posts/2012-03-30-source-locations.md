@@ -1,5 +1,5 @@
 ---
-layout: sip
+layout: inner-page-no-masthead
 disqus: true
 title: SIP-19 - Implicit Source Locations
 

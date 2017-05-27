@@ -1,5 +1,5 @@
 ---
-layout: sip
+layout: inner-page-no-masthead
 title: SID-10 - Storage of pickled Scala signatures in class files
 ---
 

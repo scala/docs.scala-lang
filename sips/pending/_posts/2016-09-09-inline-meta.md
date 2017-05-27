@@ -1,5 +1,5 @@
 ---
-layout: sip
+layout: inner-page-no-masthead
 disqus: true
 title: SIP-28 and SIP-29 - Inline meta
 
