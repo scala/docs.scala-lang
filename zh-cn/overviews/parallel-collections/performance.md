@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: 测量性能
 
 disqus: true

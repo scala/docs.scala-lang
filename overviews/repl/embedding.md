@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: Programmatic Use of Scala REPL
 
 disqus: true

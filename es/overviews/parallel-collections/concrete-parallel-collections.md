@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: Clases Concretas de las Colecciones Paralelas
 
 disqus: true

@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: Where does Scala look for implicits?
 
 disqus: true

@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: What are Scala context bounds?
 
 disqus: true

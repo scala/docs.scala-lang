@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: 性能の測定
 
 disqus: true

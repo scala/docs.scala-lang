@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: 并发字典树
 
 disqus: true

@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: Expression details
 
 disqus: true

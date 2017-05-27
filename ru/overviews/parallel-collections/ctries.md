@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: Многопоточные префиксные деревья
 
 disqus: true

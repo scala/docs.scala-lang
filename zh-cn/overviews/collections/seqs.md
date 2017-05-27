@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: 序列trait：Seq、IndexedSeq及LinearSeq
 
 disqus: true
