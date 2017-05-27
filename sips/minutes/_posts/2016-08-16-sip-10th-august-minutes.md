@@ -1,5 +1,5 @@
 ---
-layout: inner-page-no-masthead-landing
+layout: inner-page-no-masthead
 title: SIP Meeting Minutes - 10th August 2016
 ---
 

@@ -1,5 +1,5 @@
 ---
-layout: inner-page-no-masthead-landing
+layout: inner-page-no-masthead
 title: Minutes
 ---
 
