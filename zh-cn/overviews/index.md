@@ -1,5 +1,5 @@
 ---
-layout: guides-index
+layout: inner-page-no-masthead
 language: zh-cn
 title: 目录
 ---
