@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: カスタム並列コレクションの作成
 
 disqus: true

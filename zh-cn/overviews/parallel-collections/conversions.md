@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: 并行容器的转换
 
 disqus: true

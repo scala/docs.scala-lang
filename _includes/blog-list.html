@@ -1,0 +1,75 @@
+{% comment %}Use the include variable 'category' to select the category to show (included in blog-categories.yml), or assign it to "all" if you want to show all posts.{% endcomment %}
+
+<section class="content">
+	<div class="wrap">
+		<div class="content-primary-blog">
+			<div class="inner-box">
+				<ul class="nav-tab">
+					<li class="item-tab"><a {% if page.category == "all" %}class="active"{% endif %} href="/blog/">All</a></li>
+					{% for category in site.data.blog-categories %}
+						<li class="item-tab">
+							<a {% if category.categoryId == include.category %}class="active"{% endif %} href="{{category.url}}">{{category.title}}</a>
+						</li>
+					{% endfor %}
+				</ul>
+				<div class="blog-list">
+					{% for post in paginator.posts %}
+						<div class="blog-item">
+							<h2><a href="{{post.url}}">{{post.title}}</a></h2>
+							<p class="blog-date">{{post.date | date: "%A %-d %B %Y"}}</p>
+							{% if post.by %}<p class="blog-author">{{post.by}}</p>{% endif %}
+							{% if post.tags %}
+								<ul class="tag-list">
+									{% for tag in post.tags %}
+										<li class="tag-item">{{tag}}</li>
+									{% endfor %}									
+								</ul>
+							{% endif %}
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+			{% for category in site.data.blog-categories %}
+				{% if category.categoryId == include.category %}
+					{% assign currentCategoryPath = category.url %}
+				{% endif %}
+			{% endfor %}
+
+			{% capture urlPath %}{% if include.category == "all" %}blog{% else %}{{currentCategoryPath}}{% endif %}{% endcapture %}
+			{% assign urlPath = urlPath | split: '/' | join: '/' | remove_first: '/' %}
+			{% include paginator.html urlPath=urlPath %}	
+		</div>
+		{% assign highlights = "" | split: "," %}
+		{% for post in site.posts %}
+			{% if post.isHighlight == true %}
+				{% assign highlights = highlights | push: post %}
+			{% endif %}
+		{% endfor %}
+
+		{% for post in highlights %}
+			{% if forloop.first %}
+				<div class="content-nav-blog">
+					<div class="inner-box">
+						<h5>Highlights</h5>
+						<div class="blog-list-nav">	
+			{% endif %}
+			<div class="blog-list-nav-item">
+				<h4><a href="{{post.url}}">{{post.title}}</a></h4>
+				{% if post.by %}<p>{{post.by}}</p>{% endif %}
+				{% if post.tags %}
+					{% for tag in post.tags %}
+						<ul class="tag-list">
+							<li class="tag-item">{{tag}}</li>
+						</ul>
+					{% endfor %}
+				{% endif %}
+			</div>
+			{% if forloop.last %}
+						</div>
+					</div>
+				</div>
+			{% endif %}
+		{% endfor %}
+		
+	</div>
+</section>

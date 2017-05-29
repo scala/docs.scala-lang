@@ -1,5 +1,5 @@
 ---
-layout: sip
+layout: inner-page-no-masthead
 disqus: true
 title: SIP-NN - Allow referring to other arguments in default parameters
 ---

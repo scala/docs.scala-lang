@@ -1,5 +1,5 @@
 ---
-layout: sip
+layout: inner-page-no-masthead
 disqus: true
 title: SIP-20 - Improved Lazy Vals Initialization
 

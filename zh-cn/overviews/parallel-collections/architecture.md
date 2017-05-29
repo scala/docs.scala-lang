@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: 并行集合库的架构
 
 disqus: true

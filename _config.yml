@@ -15,7 +15,7 @@ keywords:
 - Document
 - Guide
 
-scala-version: 2.12.0
+scala-version: 2.12.2
 
 highlighter: rouge
 permalink: /:categories/:title.html

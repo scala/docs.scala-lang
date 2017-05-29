@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: Environment, Universes, and Mirrors
 
 disqus: true

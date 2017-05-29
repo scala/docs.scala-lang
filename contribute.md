@@ -93,7 +93,7 @@ At the moment, `RELEVANT-CATEGORY` corresponds to only a single category, "core,
 If your document consists of **multiple** pages, like the [Collections]({{ site.baseurl }}/overviews/collections/introduction.html) overview, an ordering must be specified, by numbering documents in their logical order with `num`, and a name must be assigned to the collection of pages using `partof`. For example, the following header might be used for a document in the collections overview:
 
     ---
-    layout: overview-large
+    layout: overview
     title: YOUR TITLE
 
     partof: collections
@@ -103,7 +103,7 @@ If your document consists of **multiple** pages, like the [Collections]({{ site.
 A **single** document in the collection must contain a tag in the header, `outof`, that indicates the total number of documents in the large overview. Putting it on the last page in the overview is often best:
 
     ---
-    layout: overview-large
+    layout: overview
     title: YOUR TITLE
 
     partof: collections
@@ -127,7 +127,7 @@ At the moment, a tutorial that can be logically placed on **one** page must be p
 If you have a **multiple-page** tutorial, like in the case of multiple-page overviews, you must both specify an ordering for your document, and a name must be assigned to the collection of tutorial pages. For example, the following header is used for the [Tour of Scala]({{ site.baseurl }}/tutorials) series of tutorial articles:
 
     ---
-    layout: tutorial
+    layout: inner-page-no-masthead
     title: YOUR TITLE
 
     tutorial: scala-tour

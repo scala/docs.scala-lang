@@ -1,5 +1,5 @@
 ---
-layout: guides-index
+layout: inner-page-no-masthead
 title: Guides and Overviews
 languages: [ja, zh-cn, es]
 redirect_from:

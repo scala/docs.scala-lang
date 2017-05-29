@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+layout: inner-page-no-masthead
 title: Podrazumijevane vrijednosti parametara
 
 disqus: true

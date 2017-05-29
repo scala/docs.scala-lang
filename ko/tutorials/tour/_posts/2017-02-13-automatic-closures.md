@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+layout: inner-page-no-masthead
 title: 타입 의존 클로저의 자동 구성
 
 disqus: true

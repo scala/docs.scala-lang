@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: Why is my abstract or overridden val null?
 
 disqus: true

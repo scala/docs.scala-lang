@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: Migrating from Scala 2.7
 
 disqus: true

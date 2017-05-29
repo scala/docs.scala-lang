@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: 从头定义新容器
 
 disqus: true

@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+layout: inner-page-no-masthead
 title: Instrukcje for (For comprehension)
 
 disqus: true

@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 
 language: ja
 disqus: true

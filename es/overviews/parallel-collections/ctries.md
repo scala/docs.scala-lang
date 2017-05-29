@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: Tries Concurrentes
 
 disqus: true

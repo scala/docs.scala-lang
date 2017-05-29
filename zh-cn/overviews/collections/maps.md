@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: 映射
 
 disqus: true

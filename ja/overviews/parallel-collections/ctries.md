@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: 並行トライ
 
 disqus: true

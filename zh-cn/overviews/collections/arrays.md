@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: 数组
 
 disqus: true

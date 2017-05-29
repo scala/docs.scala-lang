@@ -1,5 +1,5 @@
 ---
-layout: sip
+layout: inner-page-no-masthead
 title: SIP XX - Improving binary compatibility with @stableABI
 disqus: true
 ---

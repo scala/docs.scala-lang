@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: Scaladoc for Library Authors
 
 disqus: true

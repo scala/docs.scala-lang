@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: Архитектура библиотеки параллельных коллекций
 
 disqus: true

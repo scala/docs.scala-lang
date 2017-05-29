@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: 列トレイト Seq、IndexedSeq、および LinearSeq
 
 disqus: true

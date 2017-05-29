@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: 性能特点
 
 disqus: true

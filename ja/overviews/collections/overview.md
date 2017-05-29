@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: 可変コレクションおよび不変コレクション
 
 disqus: true

@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: Syntax summary
 
 disqus: true
