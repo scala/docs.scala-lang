@@ -1,0 +1,24 @@
+.algolia-docsearch-suggestion--category-header {
+  background-color: #DE3423;
+}
+.algolia-docsearch-suggestion--highlight {
+  color: #000;
+}
+.aa-cursor .algolia-docsearch-suggestion--content {
+  color: #404040;
+}
+.aa-cursor .algolia-docsearch-suggestion {
+  background: #DDDDDD;
+}
+
+.algolia-autocomplete .aa-dropdown-menu {
+    width: 550px;
+    margin-top: 2px;
+    margin-left: -418px;
+    padding: 1px;
+}
+
+.algolia-docsearch-footer .algolia-docsearch-footer--logo {
+    height: 0px
+}
+
