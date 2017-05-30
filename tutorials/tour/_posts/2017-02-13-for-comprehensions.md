@@ -28,7 +28,7 @@ val twentySomethings = for (user <- userBase if (user.age >=20 && user.age < 30)
 
 twentySomethings.foreach(name => println(name))  // prints Travis Dennis
 ```
-The `for` loop used with a `yield` statement actually creates a `List`. Because we said `yield user.name`, it's a `List[String]`. `user <- userBase` is our iterator and `if (user.age >=20 && user.age < 30)` is a guard that filters out users who are in their 20s.
+The `for` loop used with a `yield` statement actually creates a `List`. Because we said `yield user.name`, it's a `List[String]`. `user <- userBase` is our generator and `if (user.age >=20 && user.age < 30)` is a guard that filters out users who are in their 20s.
 
 Here is a more complicated example using two generators. It computes all pairs of numbers between `0` and `n-1` whose sum is equal to a given value `v`:
 
