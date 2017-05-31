@@ -7,9 +7,9 @@ redirect_from:
 ---
 
 ## Guides
-* [Frequently Asked Questions](http://docs.scala-lang.org/tutorials/FAQ/finding-symbols) from StackOverflow.
-* [Scala for Java Programmers](http://docs.scala-lang.org/tutorials/scala-for-java-programmers.html): a comparison of the two languages.
-* [Style Guide](http://docs.scala-lang.org/style/)
+* [Frequently Asked Questions](/tutorials/FAQ/finding-symbols) from StackOverflow.
+* [Scala for Java Programmers](/tutorials/scala-for-java-programmers.html): a comparison of the two languages.
+* [Style Guide](/style/)
 
 <div class="page-header-index">
   <h2>Core Scala</h2>
