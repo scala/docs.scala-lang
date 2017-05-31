@@ -17,6 +17,7 @@ These tutorials will get you writing Scala code as quickly as possible. Choose o
 
 ## Next Steps
 Once you've finished these tutorials, check out
+
 * [The Tour of Scala](http://docs.scala-lang.org/tutorials/tour/tour-of-scala.html)
 * [Guides](guides.html)
 * [Learning Resources](learn) including books and online courses
