@@ -38,12 +38,9 @@ A [local type inference mechanism](local-type-inference.html) takes care that th
 
 ## Scala is extensible ##
 
-In practice, the development of domain-specific applications often requires domain-specific language extensions. Scala provides a unique combination of language mechanisms that make it easy to smoothly add new language constructs in the form of libraries:
+In practice, the development of domain-specific applications often requires domain-specific language extensions. Scala provides a unique combination of language mechanisms that make it easy to smoothly add new language constructs in the form of libraries.
 
-* any method may be used as an [infix or postfix operator](operators.html)
-* [closures are constructed automatically depending on the expected type](automatic-closures.html) (target typing).
-
-A joint use of both features facilitates the definition of new statements without extending the syntax and without using macro-like meta-programming facilities.
+A joint use of both features facilitates the definition of new statements without using meta-programming facilities such as macros.
 
 Scala is designed to interoperate well with the popular Java 2 Runtime Environment (JRE). In particular, the interaction with the mainstream object-oriented Java programming language is as smooth as possible. Newer Java features like [annotations](annotations.html) and Java generics have direct analogues in Scala. Those Scala features without Java analogues, such as [default](default-parameter-values.html) and [named parameters](named-parameters.html), compile as close to Java as they can reasonably come. Scala has the same compilation model (separate compilation, dynamic class loading) like Java and allows access to thousands of existing high-quality libraries.
 
