@@ -66,8 +66,8 @@ languages: [ba, fr, ja, pl, pt-br]
 |  <span class="label success">Good</span><br>`val v42 = 42`<br>`Some(3) match {`<br>``    case Some(`v42`) => println("42")``<br>`case _ => println("Not 42")`<br>`}`  |  "\`v42\`" with backticks is interpreted as the existing val `v42`, and "Not 42" is printed. |
 |  <span class="label success">Good</span><br>`val UppercaseVal = 42`<br>`Some(3) match {`<br>`  case Some(UppercaseVal) => println("42")`<br>`    case _ => println("Not 42")`<br>`}` |  `UppercaseVal` is treated as an existing val, rather than a new pattern variable, because it starts with an uppercase letter. Thus, the value contained within `UppercaseVal` is checked against `3`, and "Not 42" is printed. |
 |  <span id="object_orientation" class="h2">object orientation</span>                                                     |                 |
-|  `class C(x: R)` _same as_ <br>`class C(private val x: R)`<br>`var c = new C(4)`                         |  constructor params - private |
-|  `class C(val x: R)`<br>`var c = new C(4)`<br>`c.x`                                                      |  constructor params - public |
+|  `class C(x: R)`                         |  constructor params - `x` is only available in class body |
+|  `class C(val x: R)`<br>`var c = new C(4)`<br>`c.x`                                                      |  constructor params - automatic public member defined |
 |  `class C(var x: R) {`<br>`assert(x > 0, "positive please")`<br>`var y = x`<br>`val readonly = 5`<br>`private var secret = 1`<br>`def this = this(42)`<br>`}`|<br>constructor is class body<br>declare a public member<br>declare a gettable but not settable member<br>declare a private member<br>alternative constructor|
 |  `new{ ... }`                                                                                            |  anonymous class |
 |  `abstract class D { ... }`                                                                              |  define an abstract class. (non-createable) |
