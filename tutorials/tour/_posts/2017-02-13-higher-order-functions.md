@@ -1,5 +1,5 @@
 ---
-layout: inner-page-no-masthead
+layout: overview
 title: Higher-order Functions
 
 disqus: true

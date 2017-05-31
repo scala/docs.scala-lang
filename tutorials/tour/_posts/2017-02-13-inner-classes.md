@@ -1,5 +1,5 @@
 ---
-layout: inner-page-no-masthead
+layout: overview
 title: Inner Classes
 
 disqus: true

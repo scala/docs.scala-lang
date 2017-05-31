@@ -1,5 +1,5 @@
 ---
-layout: inner-page-no-masthead
+layout: overview
 title: Implicit Parameters
 
 disqus: true
