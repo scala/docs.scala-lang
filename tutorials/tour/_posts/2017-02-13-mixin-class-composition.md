@@ -1,5 +1,5 @@
 ---
-layout: overview
+layout: tour
 title: Mixin Class Composition
 
 disqus: true

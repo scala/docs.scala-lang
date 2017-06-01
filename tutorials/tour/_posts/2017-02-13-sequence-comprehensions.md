@@ -1,5 +1,5 @@
 ---
-layout: overview
+layout: tour
 title: Sequence Comprehensions
 
 disqus: true

@@ -1,5 +1,5 @@
 ---
-layout: overview
+layout: tour
 title: Implicit Parameters
 
 disqus: true

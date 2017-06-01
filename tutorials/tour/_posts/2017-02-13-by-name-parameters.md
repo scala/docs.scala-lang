@@ -1,5 +1,5 @@
 ---
-layout: overview
+layout: tour
 title: By-name Parameters
 
 disqus: true

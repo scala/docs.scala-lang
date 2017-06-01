@@ -1,5 +1,5 @@
 ---
-layout: overview
+layout: tour
 title: Default Parameter Values
 
 disqus: true

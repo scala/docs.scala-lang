@@ -1,5 +1,5 @@
 ---
-layout: overview
+layout: tour
 title: Case Classes
 
 disqus: true

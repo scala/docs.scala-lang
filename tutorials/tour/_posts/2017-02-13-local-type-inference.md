@@ -1,5 +1,5 @@
 ---
-layout: overview
+layout: tour
 title: Local Type Inference
 
 disqus: true
