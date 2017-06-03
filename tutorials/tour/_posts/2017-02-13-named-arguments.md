@@ -1,5 +1,5 @@
 ---
-layout: overview
+layout: tour
 title: Named Arguments
 
 disqus: true

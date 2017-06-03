@@ -1,5 +1,5 @@
 ---
-layout: overview
+layout: tour
 title: Unified Types
 
 disqus: true

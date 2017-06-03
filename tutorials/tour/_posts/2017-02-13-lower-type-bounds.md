@@ -1,5 +1,5 @@
 ---
-layout: overview
+layout: tour
 title: Lower Type Bounds
 
 disqus: true

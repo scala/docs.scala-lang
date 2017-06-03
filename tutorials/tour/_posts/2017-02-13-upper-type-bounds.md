@@ -1,5 +1,5 @@
 ---
-layout: overview
+layout: tour
 title: Upper Type Bounds
 
 disqus: true

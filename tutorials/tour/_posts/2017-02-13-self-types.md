@@ -1,5 +1,5 @@
 ---
-layout: overview
+layout: tour
 title: Self-type
 
 disqus: true

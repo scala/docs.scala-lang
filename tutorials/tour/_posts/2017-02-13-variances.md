@@ -1,5 +1,5 @@
 ---
-layout: overview
+layout: tour
 title: Variances
 
 disqus: true

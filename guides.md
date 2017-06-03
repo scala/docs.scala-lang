@@ -32,11 +32,10 @@ redirect_from:
     * [Iterators](/overviews/collections/iterators.html)
     * [Creating Collections From Scratch](/overviews/collections/creating-collections-from-scratch.html)
     * [Conversions Between Java and Scala Collections](/overviews/collections/conversions-between-java-and-scala-collections.html)
-    * [Migrating from Scala 2.7](/overviews/collections/migrating-from-scala-27.html)
   * [The Architecture of Scala Collections](/overviews/core/architecture-of-scala-collections.html)
-  * [String Interpolation](/overviews/core/string-interpolation.html) <span class="label success">New in 2.10</span>
-  * [Implicit Classes](/overviews/core/implicit-classes.html) <span class="label success">New in 2.10</span>
-  * [Value Classes and Universal Traits](/overviews/core/value-classes.html) <span class="label success">New in 2.10</span>
+  * [String Interpolation](/overviews/core/string-interpolation.html)
+  * [Implicit Classes](/overviews/core/implicit-classes.html)
+  * [Value Classes and Universal Traits](/overviews/core/value-classes.html)
   * [Binary Compatibility of Scala Releases](/overviews/core/binary-compatibility-of-scala-releases.html)
 
 <div class="page-header-index">
@@ -52,7 +51,7 @@ redirect_from:
 <div class="page-header-index">
   <h2>Parallel and Concurrent Programming</h2>
 </div>
-  * [Futures and Promises](/overviews/core/futures.html) <span class="label success">New in 2.10</span>
+  * [Futures and Promises](/overviews/core/futures.html)
   * Scala's Parallel Collections Library
     * [Overview](/overviews/parallel-collections/overview.html)
     * [Concrete Parallel Collection Classes](/overviews/parallel-collections/concrete-parallel-collections.html)
@@ -62,7 +61,7 @@ redirect_from:
     * [Creating Custom Parallel Collections](/overviews/parallel-collections/custom-parallel-collections.html)
     * [Configuring Parallel Collections](/overviews/parallel-collections/configuration.html)
     * [Measuring Performance](/overviews/parallel-collections/performance.html)
-  * [The Scala Actors Migration Guide](/overviews/core/actors-migration-guide.html) <span class="label success">New in 2.10</span>
+  * [The Scala Actors Migration Guide](/overviews/core/actors-migration-guide.html)
   * [The Scala Actors API](/overviews/core/actors.html) <span class="label important">Deprecated</span>
 
 <div class="page-header-index">

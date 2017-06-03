@@ -23,17 +23,5 @@ includeCollectionTOC: true
   {% assign rootTutorialURL = page.url %}
 {% endif %}
 
-<div class="span6">
-  {% if languages %}
-  <ul class="langbar">
-    <li><a href="{{ site.baseurl }}{{ rootTutorialURL }}" class="lang">English</a></li>
-    {% for l in languages %}
-      {% assign lang = site.data.languages[l] %}
-      <li><a href="{{ site.baseurl }}/{{ l }}{{ rootTutorialURL }}" class="lang">{{lang.name}}</a></li>
-    {% endfor %}
-  </ul>
-  {% endif %}
-</div>
-
 <!-- Main content -->
 {% include inner-page-main-content.html %}

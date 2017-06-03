@@ -1,5 +1,5 @@
 ---
-layout: overview
+layout: tour
 title: Inner Classes
 
 disqus: true

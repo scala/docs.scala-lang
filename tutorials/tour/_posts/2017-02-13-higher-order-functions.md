@@ -1,5 +1,5 @@
 ---
-layout: overview
+layout: tour
 title: Higher-order Functions
 
 disqus: true
