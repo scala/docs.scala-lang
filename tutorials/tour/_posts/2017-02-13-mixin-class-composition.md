@@ -7,7 +7,7 @@ disqus: true
 tutorial: scala-tour
 categories: tour
 num: 6
-next-page: anonymous-function-syntax
+next-page: higher-order-functions
 previous-page: traits
 ---
 

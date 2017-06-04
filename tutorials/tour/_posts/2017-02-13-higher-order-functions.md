@@ -8,7 +8,7 @@ tutorial: scala-tour
 categories: tour
 num: 8
 next-page: nested-functions
-previous-page: anonymous-function-syntax
+previous-page: mixin-class-composition
 ---
 
 Scala allows the definition of higher-order functions. These are functions that _take other functions as parameters_, or whose _result is a function_. Here is a function `apply` which takes another function `f` and a value `v` and applies function `f` to `v`:
