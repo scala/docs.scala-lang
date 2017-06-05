@@ -7,7 +7,7 @@ disqus: true
 tutorial: scala-tour
 categories: tour
 num: 23
-next-page: compound-types
+next-page: self-types
 previous-page: inner-classes
 prerequisite-knowledge: variance, upper-type-bound
 ---
