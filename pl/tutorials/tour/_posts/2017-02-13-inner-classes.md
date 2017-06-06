@@ -2,7 +2,7 @@
 layout: tutorial
 title: Klasy wewnętrzne
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

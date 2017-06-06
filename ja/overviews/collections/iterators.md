@@ -2,7 +2,7 @@
 layout: overview-large
 title: イテレータ
 
-disqus: true
+discourse: true
 
 partof: collections
 num: 15

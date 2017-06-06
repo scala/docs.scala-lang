@@ -2,7 +2,7 @@
 layout: tutorial
 title: Case Classes
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

@@ -2,7 +2,7 @@
 layout: overview-large
 title: Annotations, Names, Scopes, and More
 
-disqus: true
+discourse: true
 
 partof: reflection
 num: 4

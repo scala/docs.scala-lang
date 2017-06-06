@@ -2,7 +2,7 @@
 layout: tutorial
 title: Funkcje zagnieżdżone
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

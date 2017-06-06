@@ -2,7 +2,7 @@
 layout: tutorial
 title: Operatory
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

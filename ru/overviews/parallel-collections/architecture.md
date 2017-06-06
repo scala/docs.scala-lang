@@ -2,7 +2,7 @@
 layout: overview-large
 title: Архитектура библиотеки параллельных коллекций
 
-disqus: true
+discourse: true
 
 partof: parallel-collections
 language: ru

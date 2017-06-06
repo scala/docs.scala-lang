@@ -2,7 +2,7 @@
 layout: overview-large
 title: Quasiquotes
 
-disqus: true
+discourse: true
 
 partof: macros
 num: 4

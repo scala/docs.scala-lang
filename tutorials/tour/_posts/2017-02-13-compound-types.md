@@ -2,7 +2,7 @@
 layout: tutorial
 title: Compound Types
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

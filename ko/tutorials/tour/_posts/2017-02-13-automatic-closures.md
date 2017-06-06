@@ -2,7 +2,7 @@
 layout: tutorial
 title: 타입 의존 클로저의 자동 구성
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

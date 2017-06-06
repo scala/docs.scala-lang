@@ -2,7 +2,7 @@
 layout: tutorial
 title: Construcción de closures automáticas
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

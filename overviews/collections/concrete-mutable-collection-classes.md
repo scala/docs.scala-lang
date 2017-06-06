@@ -2,7 +2,7 @@
 layout: overview-large
 title: Concrete Mutable Collection Classes
 
-disqus: true
+discourse: true
 
 partof: collections
 num: 9

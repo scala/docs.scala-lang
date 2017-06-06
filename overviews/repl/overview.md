@@ -2,7 +2,7 @@
 layout: overview-large
 title: Overview
 
-disqus: true
+discourse: true
 
 partof: repl
 num: 1

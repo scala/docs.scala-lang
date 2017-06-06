@@ -2,7 +2,7 @@
 layout: overview-large
 title: 性能の測定
 
-disqus: true
+discourse: true
 
 partof: parallel-collections
 num: 8

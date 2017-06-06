@@ -2,7 +2,7 @@
 layout: tutorial
 title: Gornja granica tipa
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

@@ -2,7 +2,7 @@
 layout: overview
 title: Scala with Maven
 
-disqus: true
+discourse: true
 ---
 
 By Adrian Null

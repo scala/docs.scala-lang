@@ -1,6 +1,6 @@
 ---
 layout: sip
-disqus: true
+discourse: true
 title: SIP-27 - Trailing Commas
 redirect_from: "/sips/pending/trailing-commas.html"
 

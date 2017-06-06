@@ -2,7 +2,7 @@
 layout: overview-large
 title: Macro Bundles
 
-disqus: true
+discourse: true
 
 partof: macros
 num: 5

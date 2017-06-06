@@ -2,7 +2,7 @@
 layout: tutorial
 title: Sintaxis de funciones anónimas
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

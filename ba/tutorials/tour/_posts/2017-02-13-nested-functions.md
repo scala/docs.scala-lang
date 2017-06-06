@@ -2,7 +2,7 @@
 layout: tutorial
 title: Ugniježdene funkcije
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

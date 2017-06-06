@@ -1,6 +1,6 @@
 ---
 layout: sip
-disqus: true
+discourse: true
 title: SIP-20 - Improved Lazy Vals Initialization
 
 vote-status: under review

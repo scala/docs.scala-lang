@@ -2,7 +2,7 @@
 layout: overview-large
 title: How can I chain/nest implicit conversions?
 
-disqus: true
+discourse: true
 
 partof: FAQ
 num: 6

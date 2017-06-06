@@ -1,6 +1,6 @@
 ---
 layout: sip
-disqus: true
+discourse: true
 title: SIP-NN - Allow referring to other arguments in default parameters
 ---
 

@@ -2,7 +2,7 @@
 layout: tutorial
 title: Klasy przypadków
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

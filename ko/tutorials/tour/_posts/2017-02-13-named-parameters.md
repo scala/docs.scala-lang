@@ -2,7 +2,7 @@
 layout: tutorial
 title: 이름을 지정한 파라미터
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

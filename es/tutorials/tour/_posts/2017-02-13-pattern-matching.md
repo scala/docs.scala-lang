@@ -2,7 +2,7 @@
 layout: tutorial
 title: Reconocimiento de patrones
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

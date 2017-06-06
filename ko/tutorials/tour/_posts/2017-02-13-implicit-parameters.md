@@ -2,7 +2,7 @@
 layout: tutorial
 title: 암시적 파라미터
  
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

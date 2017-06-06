@@ -2,7 +2,7 @@
 layout: tutorial
 title: Parâmetros Implícitos
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

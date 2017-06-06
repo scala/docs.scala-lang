@@ -2,7 +2,7 @@
 layout: tutorial
 title: Konwersje niejawne
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

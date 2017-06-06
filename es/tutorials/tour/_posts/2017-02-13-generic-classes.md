@@ -2,7 +2,7 @@
 layout: tutorial
 title: Clases genéricas
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

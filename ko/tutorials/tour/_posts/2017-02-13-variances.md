@@ -2,7 +2,7 @@
 layout: tutorial
 title: 가변성
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

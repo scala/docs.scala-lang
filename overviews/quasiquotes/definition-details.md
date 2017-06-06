@@ -2,7 +2,7 @@
 layout: overview-large
 title: Definition and import details
 
-disqus: true
+discourse: true
 
 partof: quasiquotes
 num: 11

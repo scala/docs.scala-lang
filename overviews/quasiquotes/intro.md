@@ -2,7 +2,7 @@
 layout: overview-large
 title: Introduction
 
-disqus: true
+discourse: true
 
 partof: quasiquotes
 num: 2

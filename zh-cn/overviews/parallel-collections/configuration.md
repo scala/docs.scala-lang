@@ -2,7 +2,7 @@
 layout: overview-large
 title: 配置并行集合
 
-disqus: true
+discourse: true
 
 partof: parallel-collections
 num: 7

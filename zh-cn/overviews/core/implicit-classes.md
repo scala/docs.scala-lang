@@ -1,6 +1,6 @@
 ---
 layout: overview
-disqus: true
+discourse: true
 overview: implicit-classes
 label-color: success
 label-text: Available

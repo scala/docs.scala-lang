@@ -1,6 +1,6 @@
 ---
 layout: sip
-disqus: true
+discourse: true
 title: SIP-NN - SIP Title
 ---
 

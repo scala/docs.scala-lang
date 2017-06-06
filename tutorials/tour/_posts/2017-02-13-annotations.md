@@ -2,7 +2,7 @@
 layout: tutorial
 title: Annotations
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

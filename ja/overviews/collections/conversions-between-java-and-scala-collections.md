@@ -2,7 +2,7 @@
 layout: overview-large
 title: Java と Scala 間のコレクションの変換
 
-disqus: true
+discourse: true
 
 partof: collections
 num: 17

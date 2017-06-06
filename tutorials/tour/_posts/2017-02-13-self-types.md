@@ -2,7 +2,7 @@
 layout: tutorial
 title: Self-type
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

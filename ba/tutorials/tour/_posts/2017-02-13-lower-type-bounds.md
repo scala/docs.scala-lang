@@ -2,7 +2,7 @@
 layout: tutorial
 title: Donja granica tipa
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

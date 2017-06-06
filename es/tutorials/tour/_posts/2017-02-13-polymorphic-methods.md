@@ -2,7 +2,7 @@
 layout: tutorial
 title: Métodos polimórficos
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

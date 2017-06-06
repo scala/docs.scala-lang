@@ -2,7 +2,7 @@
 layout: tutorial
 title: 합성 타입
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

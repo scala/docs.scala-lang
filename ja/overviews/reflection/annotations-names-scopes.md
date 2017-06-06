@@ -1,7 +1,7 @@
 ---
 layout: overview-large
 
-disqus: true
+discourse: true
 
 partof: reflection
 num: 4

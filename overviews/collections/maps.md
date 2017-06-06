@@ -2,7 +2,7 @@
 layout: overview-large
 title: Maps
 
-disqus: true
+discourse: true
 
 partof: collections
 num: 7

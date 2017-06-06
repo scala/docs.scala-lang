@@ -2,7 +2,7 @@
 layout: tutorial
 title: Domyślne wartości parametrów
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

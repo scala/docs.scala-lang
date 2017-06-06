@@ -2,7 +2,7 @@
 layout: overview
 title: Scala容器类体系结构
 overview: architecture-of-scala-collections
-disqus: true
+discourse: true
 language: zh-cn
 ---
 

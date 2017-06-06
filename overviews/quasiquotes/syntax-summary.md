@@ -2,7 +2,7 @@
 layout: overview-large
 title: Syntax summary
 
-disqus: true
+discourse: true
 
 partof: quasiquotes
 num: 7

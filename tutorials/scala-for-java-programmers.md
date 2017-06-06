@@ -3,7 +3,7 @@ layout: overview
 title: A Scala Tutorial for Java Programmers
 overview: scala-for-java-programmers
 
-disqus: true
+discourse: true
 multilingual-overview: true
 languages: [es, ko, de, it, zh-tw]
 ---

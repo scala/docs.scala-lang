@@ -2,7 +2,7 @@
 layout: overview-large
 title: Type Providers
 
-disqus: true
+discourse: true
 
 partof: macros
 num: 8

@@ -1,6 +1,6 @@
 ---
 layout: sip
-disqus: true
+discourse: true
 title: SIP-28 and SIP-29 - Inline meta
 
 vote-status: under revision

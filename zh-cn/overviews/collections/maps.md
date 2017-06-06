@@ -2,7 +2,7 @@
 layout: overview-large
 title: 映射
 
-disqus: true
+discourse: true
 
 partof: collections
 num: 7

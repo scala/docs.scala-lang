@@ -2,7 +2,7 @@
 layout: tutorial
 title: Eksplicitno tipizirane samo-reference
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

@@ -2,7 +2,7 @@
 layout: tutorial
 title: Funções Aninhadas
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

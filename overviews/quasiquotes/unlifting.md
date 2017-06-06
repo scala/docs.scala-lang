@@ -2,7 +2,7 @@
 layout: overview-large
 title: Unlifting
 
-disqus: true
+discourse: true
 
 partof: quasiquotes
 num: 4

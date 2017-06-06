@@ -2,7 +2,7 @@
 layout: overview-large
 title: Scaladoc for Library Authors
 
-disqus: true
+discourse: true
 
 partof: scaladoc
 num: 2

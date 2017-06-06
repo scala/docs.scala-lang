@@ -2,7 +2,7 @@
 layout: tutorial
 title: Abstract Types
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

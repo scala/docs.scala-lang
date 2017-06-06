@@ -2,7 +2,7 @@
 layout: tutorial
 title: Autorefrencias explicitamente tipadas
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

@@ -2,7 +2,7 @@
 layout: overview-large
 title: Configurando las colecciones paralelas
 
-disqus: true
+discourse: true
 
 partof: parallel-collections
 num: 7

@@ -2,7 +2,7 @@
 layout: overview-large
 title: Equality
 
-disqus: true
+discourse: true
 
 partof: collections
 num: 13

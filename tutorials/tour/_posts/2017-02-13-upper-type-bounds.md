@@ -2,7 +2,7 @@
 layout: tutorial
 title: Upper Type Bounds
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

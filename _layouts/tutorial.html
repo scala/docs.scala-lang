@@ -39,7 +39,7 @@ permalink: /tutorials/:categories/:title/
       <div class="span10">
         {{ content }}
         {% include pager.txt %}
-        {% if page.disqus == true %}{% include disqus.txt %}{% endif %}
+        {% if page.discourse == true %}{% include discourse.html %}{% endif %}
       </div>
 
       <div class="span6">

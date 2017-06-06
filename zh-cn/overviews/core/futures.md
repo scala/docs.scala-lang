@@ -3,7 +3,7 @@ layout: overview
 label-color: success
 label-text: New in 2.10
 overview: futures
-disqus: true
+discourse: true
 language: zh-cn
 title: Future和Promise
 ---

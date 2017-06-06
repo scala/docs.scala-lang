@@ -2,7 +2,7 @@
 layout: overview-large
 title: Untyped Macros
 
-disqus: true
+discourse: true
 languages: [ja]
 ---
 <span class="label important" style="float: right;">OBSOLETE</span>

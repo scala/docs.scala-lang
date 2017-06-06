@@ -2,7 +2,7 @@
 layout: overview-large
 title: 並行トライ
 
-disqus: true
+discourse: true
 
 partof: parallel-collections
 num: 4

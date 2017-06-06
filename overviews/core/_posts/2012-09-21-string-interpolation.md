@@ -1,7 +1,7 @@
 ---
 layout: overview
 title: String Interpolation
-disqus: true
+discourse: true
 label-color: success
 label-text: New in 2.10
 overview: string-interpolation

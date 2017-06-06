@@ -2,7 +2,7 @@
 layout: tutorial
 title: Parámetros nombrados
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

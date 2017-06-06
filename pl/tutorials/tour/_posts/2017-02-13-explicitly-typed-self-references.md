@@ -2,7 +2,7 @@
 layout: tutorial
 title: Jawnie typowane samoreferencje
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

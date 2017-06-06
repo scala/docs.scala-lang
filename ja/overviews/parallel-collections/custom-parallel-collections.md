@@ -2,7 +2,7 @@
 layout: overview-large
 title: カスタム並列コレクションの作成
 
-disqus: true
+discourse: true
 
 partof: parallel-collections
 num: 6
