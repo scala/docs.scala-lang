@@ -2,7 +2,7 @@
 layout: overview-large
 title: Overview
 
-disqus: true
+discourse: true
 
 partof: parallel-collections
 languages: [ja, zh-cn, es, ru]

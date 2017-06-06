@@ -1,8 +1,8 @@
 ---
 layout: overview
-disqus: true
+discourse: true
 language: zh-cn
-disqus: true
+discourse: true
 label-color: success
 label-text: New in 2.10
 overview: string-interpolation

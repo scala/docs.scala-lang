@@ -2,7 +2,7 @@
 layout: overview-large
 title: Why is my abstract or overridden val null?
 
-disqus: true
+discourse: true
 
 partof: FAQ
 num: 9

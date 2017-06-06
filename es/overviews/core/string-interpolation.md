@@ -1,7 +1,7 @@
 ---
 layout: overview
 title: Interpolación de cadenas
-disqus: true
+discourse: true
 label-color: success
 label-text: New in 2.10
 language: es

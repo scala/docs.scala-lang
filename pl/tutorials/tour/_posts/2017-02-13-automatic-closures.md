@@ -2,7 +2,7 @@
 layout: tutorial
 title: Automatyczna konstrukcja domknięć
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

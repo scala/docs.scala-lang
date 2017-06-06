@@ -2,7 +2,7 @@
 layout: tutorial
 title: Generic Classes
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

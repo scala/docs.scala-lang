@@ -2,7 +2,7 @@
 layout: tutorial
 title: 패턴 매칭
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

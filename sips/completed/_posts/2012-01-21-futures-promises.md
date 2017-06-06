@@ -1,6 +1,6 @@
 ---
 layout: sip
-disqus: true
+discourse: true
 title: SIP-14 - Futures and Promises
 
 vote-status: accepted

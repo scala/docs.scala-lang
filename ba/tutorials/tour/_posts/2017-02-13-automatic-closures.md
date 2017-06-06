@@ -2,7 +2,7 @@
 layout: tutorial
 title: Automatska konstrukcija tipno zavisnih closura (zatvarajućih funkcija)
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

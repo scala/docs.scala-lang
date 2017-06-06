@@ -2,7 +2,7 @@
 layout: overview-large
 title: Migrating from Scala 2.7
 
-disqus: true
+discourse: true
 
 partof: collections
 num: 18

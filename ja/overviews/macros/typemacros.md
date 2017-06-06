@@ -2,7 +2,7 @@
 layout: overview-large
 language: ja
 
-disqus: true
+discourse: true
 
 title: 型マクロ
 ---

@@ -2,7 +2,7 @@
 layout: overview-large
 title: Arrays
 
-disqus: true
+discourse: true
 
 partof: collections
 num: 10

@@ -2,7 +2,7 @@
 layout: tutorial
 title: Typy złożone
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

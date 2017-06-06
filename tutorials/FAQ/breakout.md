@@ -2,7 +2,7 @@
 layout: overview-large
 title: What is breakOut, and how does it work?
 
-disqus: true
+discourse: true
 
 partof: FAQ
 num: 5

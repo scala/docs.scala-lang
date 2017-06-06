@@ -2,7 +2,7 @@
 layout: tutorial
 title: 시퀀스 컴프리헨션
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

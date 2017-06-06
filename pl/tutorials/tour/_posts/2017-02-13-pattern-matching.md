@@ -2,7 +2,7 @@
 layout: tutorial
 title: Dopasowanie wzorców (Pattern matching)
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

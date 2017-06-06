@@ -2,7 +2,7 @@
 layout: overview-large
 title: Concrete Immutable Collection Classes
 
-disqus: true
+discourse: true
 
 partof: collections
 num: 8

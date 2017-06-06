@@ -2,7 +2,7 @@
 layout: tutorial
 title: Parametry domniemane
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

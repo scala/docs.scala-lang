@@ -2,7 +2,7 @@
 layout: tutorial
 title: Parâmetro com Valor Padrão
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

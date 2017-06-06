@@ -2,7 +2,7 @@
 layout: tutorial
 title: Lokalna inferencja typów
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

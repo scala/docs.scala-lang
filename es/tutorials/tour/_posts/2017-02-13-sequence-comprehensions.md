@@ -2,7 +2,7 @@
 layout: tutorial
 title: Sequencias por Comprensión
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

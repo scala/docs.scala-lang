@@ -2,7 +2,7 @@
 layout: overview-large
 title: Scala 2.7 からの移行
 
-disqus: true
+discourse: true
 
 partof: collections
 num: 18

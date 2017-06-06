@@ -2,7 +2,7 @@
 layout: tutorial
 title: Regularni izrazi
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

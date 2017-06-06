@@ -2,7 +2,7 @@
 layout: tutorial
 title: Composição de Classes Mixin
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

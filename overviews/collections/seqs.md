@@ -2,7 +2,7 @@
 layout: overview-large
 title: The sequence traits Seq, IndexedSeq, and LinearSeq
 
-disqus: true
+discourse: true
 
 partof: collections
 num: 5

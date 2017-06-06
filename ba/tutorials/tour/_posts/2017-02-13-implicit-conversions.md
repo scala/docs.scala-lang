@@ -2,7 +2,7 @@
 layout: tutorial
 title: Implicitne konverzije
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

@@ -2,7 +2,7 @@
 layout: tutorial
 title: Regular Expression Patterns
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

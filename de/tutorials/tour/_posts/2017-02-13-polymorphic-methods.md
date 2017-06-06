@@ -2,7 +2,7 @@
 layout: tutorial
 title: Polymorphe Methoden
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

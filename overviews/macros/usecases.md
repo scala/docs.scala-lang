@@ -2,7 +2,7 @@
 layout: overview-large
 title: Use Cases
 
-disqus: true
+discourse: true
 
 partof: macros
 num: 1

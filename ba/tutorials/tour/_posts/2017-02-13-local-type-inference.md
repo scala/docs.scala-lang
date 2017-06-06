@@ -2,7 +2,7 @@
 layout: tutorial
 title: Lokalno zaključivanje tipova (type inference)
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

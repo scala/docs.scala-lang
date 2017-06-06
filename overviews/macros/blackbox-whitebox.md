@@ -2,7 +2,7 @@
 layout: overview-large
 title: Blackbox Vs Whitebox
 
-disqus: true
+discourse: true
 
 partof: macros
 num: 2

@@ -3,7 +3,7 @@ layout: overview
 title: 자바 프로그래머를 위한 스칼라 튜토리얼
 overview: scala-for-java-programmers
 
-disqus: true
+discourse: true
 language: ko
 ---
 

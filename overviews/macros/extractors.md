@@ -2,7 +2,7 @@
 layout: overview-large
 title: Extractor Macros
 
-disqus: true
+discourse: true
 
 partof: macros
 num: 7

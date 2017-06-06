@@ -2,7 +2,7 @@
 layout: tutorial
 title: Singlton objekti
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

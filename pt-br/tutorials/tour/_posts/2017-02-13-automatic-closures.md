@@ -2,7 +2,7 @@
 layout: tutorial
 title: Construção Automática de Closures de Tipo-Dependente
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

@@ -2,7 +2,7 @@
 layout: tutorial
 title: Case klase
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

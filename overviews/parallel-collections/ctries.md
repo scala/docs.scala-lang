@@ -2,7 +2,7 @@
 layout: overview-large
 title: Concurrent Tries
 
-disqus: true
+discourse: true
 
 partof: parallel-collections
 languages: [ja, zh-cn, es, ru]

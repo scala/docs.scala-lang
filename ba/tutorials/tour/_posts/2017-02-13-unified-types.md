@@ -2,7 +2,7 @@
 layout: tutorial
 title: Sjedinjeni tipovi
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

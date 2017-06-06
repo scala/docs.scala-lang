@@ -2,7 +2,7 @@
 layout: tutorial
 title: 제네릭 클래스
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

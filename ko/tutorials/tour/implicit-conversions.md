@@ -2,7 +2,7 @@
 layout: tutorial
 title: 암시적 변환
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 num: 26

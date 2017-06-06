@@ -2,7 +2,7 @@
 layout: tutorial
 title: 고차 함수
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

@@ -2,7 +2,7 @@
 layout: tutorial
 title: Uvod
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

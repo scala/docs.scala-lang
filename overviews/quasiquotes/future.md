@@ -2,7 +2,7 @@
 layout: overview-large
 title: Future prospects
 
-disqus: true
+discourse: true
 
 partof: quasiquotes
 num: 13

@@ -2,7 +2,7 @@
 layout: tutorial
 title: Wzorce wyrażeń regularnych
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

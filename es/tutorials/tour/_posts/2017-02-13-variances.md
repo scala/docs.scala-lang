@@ -2,7 +2,7 @@
 layout: tutorial
 title: Varianzas
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

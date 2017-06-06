@@ -2,7 +2,7 @@
 layout: overview-large
 title: Type details
 
-disqus: true
+discourse: true
 
 partof: quasiquotes
 num: 9

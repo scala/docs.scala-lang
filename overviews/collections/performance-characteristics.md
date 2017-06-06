@@ -2,7 +2,7 @@
 layout: overview-large
 title: Performance Characteristics
 
-disqus: true
+discourse: true
 
 partof: collections
 num: 12

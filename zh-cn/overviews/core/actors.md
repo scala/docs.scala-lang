@@ -2,7 +2,7 @@
 layout: overview
 title: The Scala Actors API
 overview: actors
-disqus: true
+discourse: true
 language: zh-cn
 ---
 

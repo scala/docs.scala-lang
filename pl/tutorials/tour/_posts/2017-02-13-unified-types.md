@@ -2,7 +2,7 @@
 layout: tutorial
 title: Hierarchia typów
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

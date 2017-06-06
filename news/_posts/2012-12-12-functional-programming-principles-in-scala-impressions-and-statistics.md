@@ -1,7 +1,7 @@
 ---
 layout: news-coursera
 title: "Functional Programming Principles in Scala: Impressions and Statistics"
-disqus: true
+discourse: true
 ---
 <div class="authors">By Heather Miller and Martin Odersky</div>
 

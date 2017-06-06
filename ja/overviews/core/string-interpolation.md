@@ -1,6 +1,6 @@
 ---
 layout: overview
-disqus: true
+discourse: true
 label-color: success
 language: ja
 label-text: New in 2.10

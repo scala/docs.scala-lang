@@ -2,7 +2,7 @@
 layout: tutorial
 title: 추출자 오브젝트
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

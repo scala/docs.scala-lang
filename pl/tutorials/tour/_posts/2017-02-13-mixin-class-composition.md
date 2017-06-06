@@ -2,7 +2,7 @@
 layout: tutorial
 title: Kompozycja domieszek
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

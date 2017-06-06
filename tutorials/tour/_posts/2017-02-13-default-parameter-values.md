@@ -2,7 +2,7 @@
 layout: tutorial
 title: Default Parameter Values
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

@@ -2,7 +2,7 @@
 layout: overview-large
 title: Symbols, Trees, and Types
 
-disqus: true
+discourse: true
 
 partof: reflection
 num: 3

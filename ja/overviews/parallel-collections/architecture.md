@@ -2,7 +2,7 @@
 layout: overview-large
 title: 並列コレクションライブラリのアーキテクチャ
 
-disqus: true
+discourse: true
 
 partof: parallel-collections
 num: 5

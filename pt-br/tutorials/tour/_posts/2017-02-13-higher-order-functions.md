@@ -2,7 +2,7 @@
 layout: tutorial
 title: Funções de ordem superior
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

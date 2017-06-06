@@ -2,7 +2,7 @@
 layout: tutorial
 title: Funkcije višeg reda
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

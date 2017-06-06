@@ -2,7 +2,7 @@
 layout: overview-large
 title: What are Scala context bounds?
 
-disqus: true
+discourse: true
 
 partof: FAQ
 num: 3

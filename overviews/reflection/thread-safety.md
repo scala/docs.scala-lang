@@ -2,7 +2,7 @@
 layout: overview-large
 title: Thread Safety
 
-disqus: true
+discourse: true
 
 partof: reflection
 num: 6

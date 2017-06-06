@@ -2,7 +2,7 @@
 layout: overview-large
 title: Use cases
 
-disqus: true
+discourse: true
 
 partof: quasiquotes
 num: 6

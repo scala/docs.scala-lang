@@ -2,7 +2,7 @@
 layout: tutorial
 title: Funciones Anidadas
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

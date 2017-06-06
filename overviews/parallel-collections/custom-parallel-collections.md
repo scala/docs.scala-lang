@@ -2,7 +2,7 @@
 layout: overview-large
 title: Creating Custom Parallel Collections
 
-disqus: true
+discourse: true
 
 partof: parallel-collections
 languages: [ja, zh-cn, es, ru]

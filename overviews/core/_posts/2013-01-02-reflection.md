@@ -1,7 +1,7 @@
 ---
 layout: overview
 title: Reflection
-disqus: true
+discourse: true
 partof: reflection
 overview: reflection
 languages: [ja]

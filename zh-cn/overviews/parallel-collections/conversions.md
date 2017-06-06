@@ -2,7 +2,7 @@
 layout: overview-large
 title: 并行容器的转换
 
-disqus: true
+discourse: true
 
 partof: parallel-collections
 num: 3

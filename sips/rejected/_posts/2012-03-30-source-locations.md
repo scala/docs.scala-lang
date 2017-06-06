@@ -1,6 +1,6 @@
 ---
 layout: sip
-disqus: true
+discourse: true
 title: SIP-19 - Implicit Source Locations
 
 vote-status: rejected

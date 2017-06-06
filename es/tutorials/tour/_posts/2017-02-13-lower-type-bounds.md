@@ -2,7 +2,7 @@
 layout: tutorial
 title: Límite de tipado inferior
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

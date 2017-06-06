@@ -1,6 +1,6 @@
 ---
 layout: sip
-disqus: true
+discourse: true
 title: SIP-13 - Implicit classes
 
 vote-status: accepted

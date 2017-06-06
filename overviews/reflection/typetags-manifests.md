@@ -2,7 +2,7 @@
 layout: overview-large
 title: TypeTags and Manifests
 
-disqus: true
+discourse: true
 
 partof: reflection
 num: 5

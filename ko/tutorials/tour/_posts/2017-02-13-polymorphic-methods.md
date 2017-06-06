@@ -2,7 +2,7 @@
 layout: tutorial
 title: 다형성 메소드
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

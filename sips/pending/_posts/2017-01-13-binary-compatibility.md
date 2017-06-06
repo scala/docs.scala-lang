@@ -1,7 +1,7 @@
 ---
 layout: sip
 title: SIP XX - Improving binary compatibility with @stableABI
-disqus: true
+discourse: true
 ---
 
 __Dmitry Petrashko__

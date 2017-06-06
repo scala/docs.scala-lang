@@ -2,7 +2,7 @@
 layout: tutorial
 title: Correspondência de Padrões
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour
