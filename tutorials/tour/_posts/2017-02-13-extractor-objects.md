@@ -7,7 +7,7 @@ discourse: true
 tutorial: scala-tour
 categories: tour
 num: 16
-next-page: sequence-comprehensions
+next-page: for-comprehensions
 previous-page: regular-expression-patterns
 ---
 
