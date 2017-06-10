@@ -8,8 +8,8 @@ tutorial: scala-tour
 categories: tour
 num: 27
 
-tutorial-next: local-type-inference
-tutorial-previous: implicit-conversions
+next-page: local-type-inference
+previous-page: implicit-conversions
 language: pt-br
 ---
 

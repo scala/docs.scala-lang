@@ -7,8 +7,8 @@ discourse: true
 tutorial: scala-tour
 categories: tour
 num: 29
-tutorial-next: automatic-closures
-tutorial-previous: local-type-inference
+next-page: automatic-closures
+previous-page: local-type-inference
 language: pt-br
 ---
 

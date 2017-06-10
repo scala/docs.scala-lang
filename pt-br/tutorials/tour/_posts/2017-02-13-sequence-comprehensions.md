@@ -7,8 +7,8 @@ discourse: true
 tutorial: scala-tour
 categories: tour
 num: 16
-tutorial-next: generic-classes
-tutorial-previous: extractor-objects
+next-page: generic-classes
+previous-page: extractor-objects
 language: pt-br
 ---
 

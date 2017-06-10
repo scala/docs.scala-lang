@@ -7,8 +7,8 @@ discourse: true
 tutorial: scala-tour
 categories: tour
 num: 2
-tutorial-next: classes
-tutorial-previous: tour-of-scala
+next-page: classes
+previous-page: tour-of-scala
 language: pt-br
 ---
 

@@ -7,8 +7,8 @@ discourse: true
 tutorial: scala-tour
 categories: tour
 num: 10
-tutorial-next: pattern-matching
-tutorial-previous: currying
+next-page: pattern-matching
+previous-page: currying
 language: pt-br
 ---
 

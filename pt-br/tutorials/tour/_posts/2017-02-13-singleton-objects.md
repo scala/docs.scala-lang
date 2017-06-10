@@ -8,8 +8,8 @@ tutorial: scala-tour
 categories: tour
 num: 12
 
-tutorial-next: regular-expression-patterns
-tutorial-previous: pattern-matching
+next-page: regular-expression-patterns
+previous-page: pattern-matching
 language: pt-br
 ---
 

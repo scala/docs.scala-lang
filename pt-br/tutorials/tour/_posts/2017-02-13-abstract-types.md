@@ -7,8 +7,8 @@ discourse: true
 tutorial: scala-tour
 categories: tour
 num: 22
-tutorial-next: compound-types
-tutorial-previous: inner-classes
+next-page: compound-types
+previous-page: inner-classes
 language: pt-br
 ---
 

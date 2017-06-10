@@ -8,8 +8,8 @@ tutorial: scala-tour
 categories: tour
 num: 14
 
-tutorial-next: extractor-objects
-tutorial-previous: singleton-objects
+next-page: extractor-objects
+previous-page: singleton-objects
 language: pt-br
 ---
 

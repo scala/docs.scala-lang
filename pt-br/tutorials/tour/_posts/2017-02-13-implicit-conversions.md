@@ -7,8 +7,8 @@ discourse: true
 tutorial: scala-tour
 categories: tour
 num: 26
-tutorial-next: polymorphic-methods
-tutorial-previous: implicit-parameters
+next-page: polymorphic-methods
+previous-page: implicit-parameters
 language: pt-br
 ---
 

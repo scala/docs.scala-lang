@@ -7,8 +7,8 @@ discourse: true
 tutorial: scala-tour
 categories: tour
 num: 32
-tutorial-next: named-parameters
-tutorial-previous: annotations
+next-page: named-parameters
+previous-page: annotations
 language: pt-br
 ---
 
