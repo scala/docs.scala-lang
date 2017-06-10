@@ -9,6 +9,9 @@ categories: tour
 num: 22
 outof: 35
 language: ko
+
+next-page: compound-types
+previous-page: inner-classes
 ---
 
 스칼라에선 값(생성자 파라미터)과 타입(클래스가 [제네릭](generic-classes.html)일 경우)으로 클래스가 매개변수화된다. 규칙성을 지키기 위해, 값이 객체 멤버가 될 수 있을 뿐만 아니라 값의 타입 역시 객체의 멤버가 된다. 또한 이런 두 형태의 멤버 모두 다 구체화되거나 추상화될 수 있다.

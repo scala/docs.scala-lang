@@ -8,6 +8,9 @@ tutorial: scala-tour
 categories: tour
 num: 23
 language: ko
+
+next-page: explicitly-typed-self-references
+previous-page: abstract-types
 ---
 
 때론 객체의 타입을 여러 다른 타입의 서브타입으로 표현해야 할 때가 있다. 스칼라에선 *합성 타입(Compound Types)*으로 표현될 수 있는데, 이는 객체 타입들의 교차점을 의미한다.

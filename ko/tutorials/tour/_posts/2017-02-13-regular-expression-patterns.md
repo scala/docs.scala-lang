@@ -8,6 +8,9 @@ tutorial: scala-tour
 categories: tour
 num: 14
 language: ko
+
+next-page: extractor-objects
+previous-page: pattern-matching
 ---
 
 ## 우측 무시 시퀀스 패턴 ##
