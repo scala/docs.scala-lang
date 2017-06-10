@@ -9,7 +9,7 @@ categories: tour
 num: 12
 language: pl
 
-tutorial-next: xml-processing
+tutorial-next: regular-expression-patterns
 tutorial-previous: pattern-matching
 ---
 

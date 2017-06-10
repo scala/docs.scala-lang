@@ -9,7 +9,7 @@ categories: tour
 num: 14
 
 tutorial-next: extractor-objects
-tutorial-previous: xml-processing
+tutorial-previous: singleton-objects
 language: pt-br
 ---
 

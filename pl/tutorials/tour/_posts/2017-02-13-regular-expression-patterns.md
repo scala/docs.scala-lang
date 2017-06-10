@@ -10,7 +10,7 @@ num: 14
 language: pl
 
 tutorial-next: extractor-objects
-tutorial-previous: xml-processing
+tutorial-previous: singleton-objects
 ---
 
 ## Wzorce sekwencji ignorujące prawą stronę ##

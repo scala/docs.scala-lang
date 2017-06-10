@@ -8,7 +8,7 @@ tutorial: scala-tour
 num: 12
 language: ko
 
-next-page: xml-processing
+next-page: regular-expression-patterns
 previous-page: pattern-matching
 ---
 
