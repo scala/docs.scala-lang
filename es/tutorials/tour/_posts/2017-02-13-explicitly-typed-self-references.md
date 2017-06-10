@@ -8,6 +8,9 @@ tutorial: scala-tour
 categories: tour
 num: 27
 language: es
+
+next-page: local-type-inference
+previous-page: lower-type-bounds
 ---
 
 Cuando se está construyendo software extensible, algunas veces resulta útil declarar el tipo de la variable `this` explícitamente. Para motivar esto, realizaremos una pequeña representación de una estructura de datos Grafo, en Scala.

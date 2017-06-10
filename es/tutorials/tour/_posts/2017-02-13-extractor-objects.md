@@ -8,6 +8,9 @@ tutorial: scala-tour
 categories: tour
 num: 8
 language: es
+
+next-page: generic-classes
+previous-page: sequence-comprehensions
 ---
 
 En Scala pueden ser definidos patrones independientemente de las clases Caso (en inglés case classes, desde ahora clases Case). Para este fin exite un método llamado `unapply` que proveera el ya dicho extractor. Por ejemplo, en el código siguiente se define el objeto extractor `Twice`

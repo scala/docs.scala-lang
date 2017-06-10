@@ -8,8 +8,9 @@ tutorial: scala-tour
 categories: tour
 num: 12
 language: es
-next-page: regular-expression-patterns
-previous-page: pattern-matching
+
+next-page: nested-functions
+previous-page: mixin-class-composition
 ---
 
 Métodos y valores que no están asociados con instancias individuales de una [clase](classes.html) se denominan *objetos singleton* y se denotan con la palabra reservada `object` en vez de `class`.
