@@ -10,7 +10,7 @@ num: 14
 language: ko
 
 next-page: extractor-objects
-previous-page: pattern-matching
+previous-page: singleton-objects
 ---
 
 ## 우측 무시 시퀀스 패턴 ##

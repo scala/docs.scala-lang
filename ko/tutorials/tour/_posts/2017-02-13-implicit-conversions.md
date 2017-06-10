@@ -5,8 +5,12 @@ title: 암시적 변환
 discourse: true
 
 tutorial: scala-tour
+categories: tour
 num: 26
 language: ko
+
+next-page: polymorphic-methods
+previous-page: implicit-parameters
 ---
 
 타입 `S`로부터 타입 `T`로의 암시적 변환는 함수 타입 `S => T`의 암시적 값이나 해당 타입으로 변환 가능한 암시적 메소드로 정의된다.

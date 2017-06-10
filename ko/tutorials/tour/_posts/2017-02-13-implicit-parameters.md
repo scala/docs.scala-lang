@@ -9,7 +9,7 @@ categories: tour
 num: 25
 language: ko
 
-next-page: polymorphic-methods
+next-page: implicit-conversions
 previous-page: explicitly-typed-self-references
 ---
 

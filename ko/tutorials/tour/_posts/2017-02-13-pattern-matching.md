@@ -9,7 +9,7 @@ categories: tour
 num: 11
 language: ko
 
-next-page: regular-expression-patterns
+next-page: singleton-objects
 previous-page: case-classes
 ---
 

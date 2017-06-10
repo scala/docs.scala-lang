@@ -5,6 +5,7 @@ title: 싱글톤 객체
 discourse: true
 
 tutorial: scala-tour
+categories: tour
 num: 12
 language: ko
 
