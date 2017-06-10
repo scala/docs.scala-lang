@@ -8,8 +8,8 @@ tutorial: scala-tour
 categories: tour
 num: 26
 language: pl
-tutorial-next: polymorphic-methods
-tutorial-previous: implicit-parameters
+next-page: polymorphic-methods
+previous-page: implicit-parameters
 ---
 
 Konwersja niejawna z typu `S` do `T` jest określona przez wartość domniemaną, która jest funkcją typu `S => T` lub przez metodę domniemaną odpowiadającą funkcji tego typu.
