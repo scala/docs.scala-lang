@@ -10,6 +10,9 @@ num: 12
 
 outof: 33
 language: ba
+
+next-page: regular-expression-patterns
+previous-page: pattern-matching
 ---
 
 Metode i vrijednosti koje ne pripadaju individualnim instancama [klase](classes.html) pripadaju *singlton objektima*,

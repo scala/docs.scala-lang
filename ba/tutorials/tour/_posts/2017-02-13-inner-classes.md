@@ -9,6 +9,9 @@ categories: tour
 num: 21
 outof: 33
 language: ba
+
+next-page: abstract-types
+previous-page: lower-type-bounds
 ---
 
 U Scali je moguće da klase imaju druge klase kao članove.

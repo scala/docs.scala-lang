@@ -9,6 +9,9 @@ categories: tour
 num: 7
 outof: 33
 language: ba
+
+next-page: nested-functions
+previous-page: anonymous-function-syntax
 ---
 
 Scala dozvoljava definisanje funkcija višeg reda.

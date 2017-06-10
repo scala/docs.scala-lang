@@ -9,6 +9,9 @@ categories: tour
 num: 30
 outof: 33
 language: ba
+
+next-page: case-classes
+previous-page: operators
 ---
 
 Scala dozvoljava da se argument (ili više njih) metode ne evaluira prije samog poziva metode.

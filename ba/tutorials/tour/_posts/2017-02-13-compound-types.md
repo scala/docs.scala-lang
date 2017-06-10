@@ -9,6 +9,9 @@ categories: tour
 num: 23
 outof: 33
 language: ba
+
+next-page: explicitly-typed-self-references
+previous-page: abstract-types
 ---
 
 Ponekad je potrebno izraziti da je tip objekta podtip nekoliko drugih tipova. 

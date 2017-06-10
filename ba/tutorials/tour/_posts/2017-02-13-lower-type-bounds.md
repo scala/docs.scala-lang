@@ -9,6 +9,9 @@ categories: tour
 num: 20
 outof: 33
 language: ba
+
+next-page: inner-classes
+previous-page: upper-type-bounds
 ---
 
 Dok [gornja granica tipa](upper-type-bounds.html) limitira tip na podtip nekog drugog tipa,

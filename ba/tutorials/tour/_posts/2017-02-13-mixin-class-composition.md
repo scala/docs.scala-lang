@@ -9,6 +9,9 @@ categories: tour
 num: 5
 outof: 33
 language: ba
+
+next-page: anonymous-function-syntax
+previous-page: traits
 ---
 
 Nasuprot jezicima koji podržavaju samo _jednostruko nasljeđivanje_, Scala ima generalniji pojam ponovne upotrebe klasa.

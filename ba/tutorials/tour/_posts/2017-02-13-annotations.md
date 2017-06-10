@@ -9,6 +9,9 @@ categories: tour
 num: 31
 outof: 33
 language: ba
+
+next-page: default-parameter-values
+previous-page: case-classes
 ---
 
 Anotacije pridružuju meta-informacije definicijama.
