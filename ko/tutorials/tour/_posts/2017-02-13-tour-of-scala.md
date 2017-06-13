@@ -2,7 +2,7 @@
 layout: tutorial
 title: 들어가며
 
-discourse: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour

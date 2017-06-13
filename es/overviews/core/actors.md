@@ -5,6 +5,8 @@ label-color: success
 label-text: Available
 language: es
 overview: actors
+
+discourse: false
 ---
 
 **Philipp Haller and Stephen Tu**

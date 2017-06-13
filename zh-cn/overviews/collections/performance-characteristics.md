@@ -2,7 +2,7 @@
 layout: overview-large
 title: 性能特点
 
-discourse: true
+discourse: false
 
 partof: collections
 num: 12

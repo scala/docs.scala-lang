@@ -2,7 +2,7 @@
 layout: overview-large
 title: 具体并行集合类
 
-discourse: true
+discourse: false
 
 partof: parallel-collections
 num: 2

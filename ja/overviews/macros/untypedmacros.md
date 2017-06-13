@@ -2,7 +2,7 @@
 layout: overview-large
 language: ja
 
-discourse: true
+discourse: false
 
 title: 型指定の無いマクロ
 ---

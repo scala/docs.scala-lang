@@ -2,7 +2,7 @@
 layout: overview-large
 title: Iterators
 
-discourse: true
+discourse: false
 
 partof: collections
 num: 15

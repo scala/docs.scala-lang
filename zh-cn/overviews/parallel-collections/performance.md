@@ -2,7 +2,7 @@
 layout: overview-large
 title: 测量性能
 
-discourse: true
+discourse: false
 
 partof: parallel-collections
 num: 8

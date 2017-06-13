@@ -2,7 +2,7 @@
 layout: tutorial
 title: Imenovani parametri
 
-discourse: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour

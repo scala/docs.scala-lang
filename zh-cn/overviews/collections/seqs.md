@@ -2,7 +2,7 @@
 layout: overview-large
 title: 序列trait：Seq、IndexedSeq及LinearSeq
 
-discourse: true
+discourse: false
 
 partof: collections
 num: 5

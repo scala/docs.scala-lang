@@ -2,7 +2,7 @@
 layout: overview-large
 title: 列トレイト Seq、IndexedSeq、および LinearSeq
 
-discourse: true
+discourse: false
 
 partof: collections
 num: 5

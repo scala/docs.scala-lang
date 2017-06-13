@@ -2,7 +2,7 @@
 layout: overview-large
 title: Конкретные классы параллельных коллекций
 
-discourse: true
+discourse: false
 
 partof: parallel-collections
 language: ru

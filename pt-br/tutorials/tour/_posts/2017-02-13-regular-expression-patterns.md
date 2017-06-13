@@ -2,7 +2,7 @@
 layout: tutorial
 title: Padrões de Expressões Regulares
 
-discourse: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour

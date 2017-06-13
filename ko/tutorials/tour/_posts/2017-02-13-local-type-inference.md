@@ -2,7 +2,7 @@
 layout: tutorial
 title: 로컬 타입 추론
 
-discourse: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour

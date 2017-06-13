@@ -6,6 +6,8 @@ label-color: success
 label-text: New in 2.10
 language: es
 overview: string-interpolation
+
+discourse: false
 ---
 
 **Josh Suereth**

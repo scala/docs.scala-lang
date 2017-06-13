@@ -2,7 +2,7 @@
 layout: tutorial
 title: Unutarnje klase
 
-discourse: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour

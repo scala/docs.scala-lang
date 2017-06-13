@@ -2,7 +2,7 @@
 layout: overview-large
 
 language: ja
-discourse: true
+discourse: false
 
 partof: macros
 num: 1

@@ -2,7 +2,7 @@
 layout: tutorial
 title: Sintaksa anonimnih funkcija
 
-discourse: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour

@@ -2,7 +2,7 @@
 layout: overview-large
 title: 创建自定义并行容器
 
-discourse: true
+discourse: false
 
 partof: parallel-collections
 num: 6

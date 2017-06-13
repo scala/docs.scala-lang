@@ -2,7 +2,7 @@
 layout: overview-large
 title: 並列コレクションへの変換
 
-discourse: true
+discourse: false
 
 partof: parallel-collections
 num: 3

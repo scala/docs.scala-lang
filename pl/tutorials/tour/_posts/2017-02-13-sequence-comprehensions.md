@@ -2,7 +2,7 @@
 layout: tutorial
 title: Instrukcje for (For comprehension)
 
-discourse: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour

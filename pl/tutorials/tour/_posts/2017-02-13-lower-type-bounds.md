@@ -2,7 +2,7 @@
 layout: tutorial
 title: Dolne ograniczenia typów
 
-discourse: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour

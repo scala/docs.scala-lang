@@ -2,7 +2,7 @@
 layout: overview-large
 title: マップ
 
-discourse: true
+discourse: false
 
 partof: collections
 num: 7

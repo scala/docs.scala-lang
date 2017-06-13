@@ -2,7 +2,7 @@
 layout: tutorial
 title: Podudaranje uzoraka (pattern matching)
 
-discourse: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour

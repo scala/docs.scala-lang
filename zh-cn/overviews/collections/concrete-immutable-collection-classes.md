@@ -2,7 +2,7 @@
 layout: overview-large
 title: 具体的不可变集实体类
 
-discourse: true
+discourse: false
 
 partof: collections
 num: 8

@@ -2,7 +2,7 @@
 layout: tutorial
 title: Ekstraktor objekti
 
-discourse: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour

@@ -2,7 +2,7 @@
 layout: tutorial
 title: Typy abstrakcyjne
 
-discourse: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour

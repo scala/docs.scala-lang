@@ -2,7 +2,7 @@
 layout: overview-large
 title: Java和Scala容器的转换
 
-discourse: true
+discourse: false
 
 partof: collections
 num: 17
