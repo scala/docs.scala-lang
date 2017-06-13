@@ -2,7 +2,7 @@
 layout: tutorial
 title: Patrones basados en expresiones regulares
 
-discourse: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour

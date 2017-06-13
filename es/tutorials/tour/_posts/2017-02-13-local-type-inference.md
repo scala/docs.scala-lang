@@ -2,7 +2,7 @@
 layout: tutorial
 title: Inferencia de tipos Local
 
-discourse: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
