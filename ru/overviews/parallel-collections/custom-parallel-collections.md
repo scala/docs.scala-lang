@@ -2,7 +2,7 @@
 layout: overview-large
 title: Создание пользовательской параллельной коллекции
 
-discourse: true
+discourse: false
 
 partof: parallel-collections
 language: ru

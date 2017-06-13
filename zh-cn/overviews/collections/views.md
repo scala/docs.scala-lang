@@ -2,7 +2,7 @@
 layout: overview-large
 title: 视图
 
-discourse: true
+discourse: false
 
 partof: collections
 num: 14

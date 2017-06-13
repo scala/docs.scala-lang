@@ -2,7 +2,7 @@
 layout: tutorial
 title: Auto Referências Explicitamente Tipadas
 
-discourse: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour

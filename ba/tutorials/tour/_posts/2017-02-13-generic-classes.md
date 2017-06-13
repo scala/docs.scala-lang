@@ -2,7 +2,7 @@
 layout: tutorial
 title: Generičke klase
 
-discourse: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour

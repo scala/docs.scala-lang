@@ -3,9 +3,10 @@ layout: overview
 label-color: success
 label-text: New in 2.10
 overview: futures
-discourse: true
 language: zh-cn
 title: Future和Promise
+
+discourse: false
 ---
 
 **Philipp Haller, Aleksandar Prokopec, Heather Miller, Viktor Klang, Roland Kuhn, and Vojin Jovanovic 著**

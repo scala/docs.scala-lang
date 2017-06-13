@@ -2,7 +2,7 @@
 layout: tutorial
 title: 연산자
 
-discourse: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour

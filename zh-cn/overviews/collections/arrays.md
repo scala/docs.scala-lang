@@ -2,7 +2,7 @@
 layout: overview-large
 title: 数组
 
-discourse: true
+discourse: false
 
 partof: collections
 num: 10

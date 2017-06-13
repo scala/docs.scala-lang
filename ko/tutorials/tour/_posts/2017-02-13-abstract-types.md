@@ -2,7 +2,7 @@
 layout: tutorial
 title: 추상 타입
 
-discourse: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour

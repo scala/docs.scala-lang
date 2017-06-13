@@ -2,7 +2,7 @@
 layout: tutorial
 title: 어노테이션
 
-discourse: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour

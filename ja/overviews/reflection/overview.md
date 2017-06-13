@@ -6,6 +6,8 @@ num: 1
 outof: 6
 language: ja
 title: 概要
+
+discourse: false
 ---
 
 <span class="label important" style="float: right;">EXPERIMENTAL</span>

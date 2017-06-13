@@ -2,7 +2,7 @@
 layout: overview-large
 title: Clases Concretas de las Colecciones Paralelas
 
-discourse: true
+discourse: false
 
 partof: parallel-collections
 num: 2

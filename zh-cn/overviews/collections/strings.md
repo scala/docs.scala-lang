@@ -2,7 +2,7 @@
 layout: overview-large
 title: 字符串
 
-discourse: true
+discourse: false
 
 partof: collections
 num: 11

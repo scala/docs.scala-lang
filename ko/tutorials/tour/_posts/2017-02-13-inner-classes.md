@@ -2,7 +2,7 @@
 layout: tutorial
 title: 내부 클래스
 
-discourse: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour

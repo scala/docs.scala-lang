@@ -2,7 +2,7 @@
 layout: overview-large
 title: 具体的可变容器类
 
-discourse: true
+discourse: false
 
 partof: collections
 num: 9

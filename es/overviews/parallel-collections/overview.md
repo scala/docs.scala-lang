@@ -2,7 +2,7 @@
 layout: overview-large
 title: Overview
 
-discourse: true
+discourse: false
 
 partof: parallel-collections
 num: 1

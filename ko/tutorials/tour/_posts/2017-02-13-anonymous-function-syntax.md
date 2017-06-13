@@ -2,7 +2,7 @@
 layout: tutorial
 title: 익명 함수 구문
 
-discourse: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour

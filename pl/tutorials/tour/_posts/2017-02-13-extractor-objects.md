@@ -2,7 +2,7 @@
 layout: tutorial
 title: Obiekty ekstraktorów
 
-discourse: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour

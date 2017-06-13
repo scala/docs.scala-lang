@@ -2,7 +2,7 @@
 layout: tutorial
 title: 믹스인 클래스 컴포지션
 
-discourse: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour

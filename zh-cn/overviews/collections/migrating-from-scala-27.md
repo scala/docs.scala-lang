@@ -2,7 +2,7 @@
 layout: overview-large
 title: Scala 2.7迁移指南
 
-discourse: true
+discourse: false
 
 partof: collections
 num: 18

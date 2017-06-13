@@ -2,7 +2,7 @@
 layout: tutorial
 title: Tipos Compostos
 
-discourse: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour

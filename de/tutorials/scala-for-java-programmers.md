@@ -3,7 +3,7 @@ layout: overview
 title: Ein Scala Tutorial für Java Programmierer
 overview: scala-for-java-programmers
 
-discourse: true
+discourse: false
 multilingual-overview: true
 language: de
 ---

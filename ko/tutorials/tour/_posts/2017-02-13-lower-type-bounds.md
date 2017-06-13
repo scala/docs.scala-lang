@@ -2,7 +2,7 @@
 layout: tutorial
 title: 하위 타입 경계
 
-discourse: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour

@@ -2,7 +2,7 @@
 layout: tutorial
 title: Podrazumijevane vrijednosti parametara
 
-discourse: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour

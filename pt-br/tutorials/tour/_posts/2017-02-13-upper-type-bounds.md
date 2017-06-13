@@ -2,7 +2,7 @@
 layout: tutorial
 title: Limitante Superior de Tipos
 
-discourse: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour

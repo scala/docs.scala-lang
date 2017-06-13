@@ -2,7 +2,7 @@
 layout: overview-large
 title: 具象不変コレクションクラス
 
-discourse: true
+discourse: false
 
 partof: collections
 num: 8

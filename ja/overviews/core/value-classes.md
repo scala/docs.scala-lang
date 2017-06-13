@@ -5,6 +5,8 @@ label-text: New in 2.10
 language: ja
 overview: value-classes
 title: 値クラスと汎用トレイト
+
+discourse: false
 ---
 
 **Mark Harrah 著**<br>

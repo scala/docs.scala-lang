@@ -2,7 +2,7 @@
 layout: overview-large
 title: 等価性
 
-discourse: true
+discourse: false
 
 partof: collections
 num: 13

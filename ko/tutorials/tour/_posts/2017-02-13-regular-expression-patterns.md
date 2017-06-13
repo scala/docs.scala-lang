@@ -2,7 +2,7 @@
 layout: tutorial
 title: 정규 표현식 패턴
 
-discourse: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour

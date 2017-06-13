@@ -2,7 +2,7 @@
 layout: overview-large
 language: ja
 
-discourse: true
+discourse: false
 
 title: 型推論補助マクロ
 ---

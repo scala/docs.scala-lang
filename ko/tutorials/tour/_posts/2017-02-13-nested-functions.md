@@ -2,7 +2,7 @@
 layout: tutorial
 title: 중첩 함수
 
-discourse: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour

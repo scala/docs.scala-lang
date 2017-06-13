@@ -2,7 +2,7 @@
 layout: overview-large
 title: Trait Iterable
 
-discourse: true
+discourse: false
 
 partof: collections
 num: 4

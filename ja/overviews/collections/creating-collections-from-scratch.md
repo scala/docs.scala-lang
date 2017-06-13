@@ -2,7 +2,7 @@
 layout: overview-large
 title: コレクションの作成
 
-discourse: true
+discourse: false
 
 partof: collections
 num: 16

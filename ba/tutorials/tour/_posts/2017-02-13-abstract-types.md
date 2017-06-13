@@ -2,7 +2,7 @@
 layout: tutorial
 title: Apstraktni tipovi
 
-discourse: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour

@@ -2,7 +2,7 @@
 layout: tutorial
 title: 싱글톤 객체
 
-discourse: true
+discourse: false
 
 tutorial: scala-tour
 num: 12
