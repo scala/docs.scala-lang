@@ -2,7 +2,7 @@
 layout: tutorial
 title: Singleton Objects
 
-discourse: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour

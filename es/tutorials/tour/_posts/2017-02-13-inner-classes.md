@@ -2,7 +2,7 @@
 layout: tutorial
 title: Clases Internas
 
-discourse: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
