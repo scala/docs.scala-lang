@@ -62,8 +62,6 @@
 		<p>&nbsp;</p>
 		<p><b>If you’d like to help, please see the <a href="{{ site.baseurl }}/contribute.html">Contribute</a> section of the site, and feel free to contact <a href="http://people.epfl.ch/heather.miller">Heather</a>.</b></p>
 		
-		<div id="recentcomments" class="dsq-widget"><h2 class="dsq-widget-title">Recent Comments</h2><script type="text/javascript" src="http://scalasip.disqus.com/recent_comments_widget.js?num_items=5&hide_avatars=0&avatar_size=32&excerpt_length=200"></script></div>
-		
 
       </div>
     
