@@ -9,6 +9,9 @@ categories: tour
 num: 8
 outof: 33
 language: ba
+
+next-page: currying
+previous-page: higher-order-functions
 ---
 
 U Scali je moguće ugnježdavati definicije funkcija.

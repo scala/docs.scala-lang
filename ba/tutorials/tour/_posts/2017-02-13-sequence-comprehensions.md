@@ -9,6 +9,9 @@ categories: tour
 num: 16
 outof: 33
 language: ba
+
+next-page: generic-classes
+previous-page: extractor-objects
 ---
 
 Scala ima skraćenu notaciju za pisanje *komprehensija sekvenci*.

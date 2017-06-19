@@ -7,8 +7,8 @@ discourse: false
 tutorial: scala-tour
 categories: tour
 num: 5
-tutorial-next: anonymous-function-syntax
-tutorial-previous: traits
+next-page: anonymous-function-syntax
+previous-page: traits
 language: pt-br
 ---
 _Nota de tradução: A palavra `mixin` pode ser traduzida como mescla, porém é preferível utilizar a notação original_

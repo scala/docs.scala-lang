@@ -9,6 +9,9 @@ categories: tour
 num: 24
 outof: 33
 language: ba
+
+next-page: implicit-parameters
+previous-page: compound-types
 ---
 
 Kada se razvija proširiv softver ponekad je zgodno deklarisati tip vrijednosti `this` eksplicitno.  

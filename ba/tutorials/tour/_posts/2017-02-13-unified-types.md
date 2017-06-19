@@ -9,6 +9,9 @@ categories: tour
 num: 2
 outof: 33
 language: ba
+
+next-page: classes
+previous-page: tour-of-scala
 ---
 
 Nasuprot Javi, sve vrijednosti u Scali su objekti (uključujući brojeve i funkcije).

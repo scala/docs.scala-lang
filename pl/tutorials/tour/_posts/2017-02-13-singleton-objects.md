@@ -9,8 +9,8 @@ categories: tour
 num: 12
 language: pl
 
-tutorial-next: xml-processing
-tutorial-previous: pattern-matching
+next-page: regular-expression-patterns
+previous-page: pattern-matching
 ---
 
 Metody i wartości, które nie są powiązane z konkretną instancją [klasy](classes.html), należą do *obiektów singleton* określanych za pomocą słowa kluczowego `object` zamiast `class`.

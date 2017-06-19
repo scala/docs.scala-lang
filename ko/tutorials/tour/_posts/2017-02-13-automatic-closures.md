@@ -8,6 +8,9 @@ tutorial: scala-tour
 categories: tour
 num: 30
 language: ko
+
+next-page: annotations
+previous-page: operators
 ---
 
 스칼라에선 파라미터가 없는 함수의 이름을 메소드의 파라미터로 사용할 수 있다. 이런 메소드가 호출되면 파라미터가 없는 함수의 이름에 해당하는 실제 파라미터를 찾지 않고, 대신 해당 파라미터의 계산을 캡슐화한 무항 함수를 전달하게 된다(소위 말하는 *이름에 의한 호출* 연산).

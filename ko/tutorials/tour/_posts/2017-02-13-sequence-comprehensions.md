@@ -8,6 +8,9 @@ tutorial: scala-tour
 categories: tour
 num: 16
 language: ko
+
+next-page: generic-classes
+previous-page: extractor-objects
 ---
 
 스칼라는 *시퀀스 컴프리헨션(sequence comprehensions)*을 표현하기 위한 간편한 문법을 제공한다. 컴프리헨션은 `for (enumerators) yield e`와 같은 형태를 가지며, 여기서 `enumerators`는 세미콜론으로 구분된 이뉴머레이터들을 뜻한다. *이뉴머레이터*는 새로운 변수를 정의하는 생성자이거나 필터이다. 컴프리헨션은 생성된 각각의 새로운 변수에 대해서 그 몸체인 `e`를 계산하여 그 값들의 시퀀스를 반환한다. 

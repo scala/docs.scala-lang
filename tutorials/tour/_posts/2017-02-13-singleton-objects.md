@@ -8,7 +8,7 @@ tutorial: scala-tour
 categories: tour
 num: 13
 
-next-page: xml-processing
+next-page: regular-expression-patterns
 previous-page: pattern-matching
 ---
 

@@ -8,8 +8,8 @@ tutorial: scala-tour
 categories: tour
 num: 8
 language: pl
-tutorial-next: currying
-tutorial-previous: higher-order-functions
+next-page: currying
+previous-page: higher-order-functions
 ---
 
 Scala pozwala na zagnieżdżanie definicji funkcji. Poniższy obiekt określa funkcję `filter`, która dla danej listy filtruje elementy większe bądź równe podanemu progowi `threshold`:

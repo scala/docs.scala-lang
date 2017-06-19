@@ -8,6 +8,9 @@ tutorial: scala-tour
 categories: tour
 num: 7
 language: ko
+
+next-page: nested-functions
+previous-page: anonymous-function-syntax
 ---
 
 스칼라는 고차 함수의 정의를 허용한다. 이런 함수는 _다른 함수를 파라미터로 받거나_, 수행의 _결과가 함수다_. 다음과 같은 함수 `apply`는 다른 함수 `f`와 값 `v`를 받아서 함수 `f`를 `v`에 적용한다.

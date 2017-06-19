@@ -8,8 +8,8 @@ tutorial: scala-tour
 categories: tour
 num: 32
 language: pl
-tutorial-next: named-parameters
-tutorial-previous: annotations
+next-page: named-parameters
+previous-page: annotations
 ---
 
 Scala zezwala na określenie domyślnych wartości dla parametrów, co pozwala wyrażeniu wywołującemu ją na pominięcie tych parametrów.

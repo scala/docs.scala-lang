@@ -7,8 +7,8 @@ discourse: false
 tutorial: scala-tour
 categories: tour
 num: 21
-tutorial-next: abstract-types
-tutorial-previous: lower-type-bounds
+next-page: abstract-types
+previous-page: lower-type-bounds
 language: pt-br
 ---
 

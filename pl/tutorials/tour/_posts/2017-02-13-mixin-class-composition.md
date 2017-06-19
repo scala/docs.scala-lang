@@ -8,8 +8,8 @@ tutorial: scala-tour
 categories: tour
 num: 5
 language: pl
-tutorial-next: anonymous-function-syntax
-tutorial-previous: traits
+next-page: anonymous-function-syntax
+previous-page: traits
 ---
 
 W przeciwieństwie do języków, które wspierają jedynie pojedyncze dziedziczenie, Scala posiada bardziej uogólniony mechanizm ponownego wykorzystania klas. Scala umożliwia wykorzystanie _nowych elementów klasy_ (różnicy w stosunku do klasy bazowej) w definicji nowej klasy. Wyraża się to przy pomocy _kompozycji domieszek_.

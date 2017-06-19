@@ -9,8 +9,8 @@ categories: tour
 num: 14
 language: pl
 
-tutorial-next: extractor-objects
-tutorial-previous: xml-processing
+next-page: extractor-objects
+previous-page: singleton-objects
 ---
 
 ## Wzorce sekwencji ignorujące prawą stronę ##

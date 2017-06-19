@@ -8,8 +8,8 @@ tutorial: scala-tour
 categories: tour
 num: 7
 language: pl
-tutorial-next: nested-functions
-tutorial-previous: anonymous-function-syntax
+next-page: nested-functions
+previous-page: anonymous-function-syntax
 ---
 
 Scala pozwala na definiowanie funkcji wyższego rzędu. Są to funkcje, które przyjmują funkcje jako parametry lub których wynik jest też funkcją. Poniżej znajduje się przykład funkcji `apply`, która pobiera inną funkcję `f` i wartość `v` po to, by zwrócić wynik zastosowania `f` do `v`:

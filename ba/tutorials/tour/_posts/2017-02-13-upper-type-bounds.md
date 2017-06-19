@@ -9,6 +9,9 @@ categories: tour
 num: 19
 outof: 33
 language: ba
+
+next-page: lower-type-bounds
+previous-page: variances
 ---
 
 U Scali, [tipski parametri](generic-classes.html) i [apstraktni tipovi](abstract-types.html) mogu biti ograničeni granicom tipa.

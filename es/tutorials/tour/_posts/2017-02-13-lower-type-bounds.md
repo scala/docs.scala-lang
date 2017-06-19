@@ -8,6 +8,9 @@ tutorial: scala-tour
 categories: tour
 num: 26
 language: es
+
+next-page: explicitly-typed-self-references
+previous-page: upper-type-bounds
 ---
 
 Mientras que los [límites de tipado superior](upper-type-bounds.html) limitan el tipo de un subtipo de otro tipo, los *límites de tipado inferior* declaran que un tipo sea un supertipo de otro tipo. El término `T >: A` expresa que el parámetro de tipo `T` o el tipo abstracto `T` se refiera a un supertipo del tipo `A`

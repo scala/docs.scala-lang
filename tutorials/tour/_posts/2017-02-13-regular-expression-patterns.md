@@ -9,7 +9,7 @@ categories: tour
 num: 15
 
 next-page: extractor-objects
-previous-page: xml-processing
+previous-page: singleton-objects
 ---
 
 Regular expressions are strings which can be used to find patterns (or lack thereof) in data. Any string can be converted to a regular expression using the `.r` method.

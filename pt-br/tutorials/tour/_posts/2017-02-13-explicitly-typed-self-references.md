@@ -7,8 +7,8 @@ discourse: false
 tutorial: scala-tour
 categories: tour
 num: 24
-tutorial-next: implicit-parameters
-tutorial-previous: compound-types
+next-page: implicit-parameters
+previous-page: compound-types
 language: pt-br
 ---
 

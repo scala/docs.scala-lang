@@ -9,6 +9,9 @@ categories: tour
 num: 28
 outof: 33
 language: ba
+
+next-page: operators
+previous-page: polymorphic-methods
 ---
 Scala ima ugrađen mehanizam zaključivanja tipova koji dozvoljava programeru da izostavi određene anotacije tipova.
 Često nije potrebno specificirati tip varijable u Scali,

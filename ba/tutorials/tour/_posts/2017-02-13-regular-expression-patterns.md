@@ -10,6 +10,9 @@ num: 14
 
 outof: 33
 language: ba
+
+next-page: extractor-objects
+previous-page: singleton-objects
 ---
 
 ## Desno-ignorišući uzorci sekvenci ##

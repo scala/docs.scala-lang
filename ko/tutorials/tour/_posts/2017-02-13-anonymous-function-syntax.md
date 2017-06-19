@@ -8,6 +8,9 @@ tutorial: scala-tour
 categories: tour
 num: 6
 language: ko
+
+next-page: higher-order-functions
+previous-page: mixin-class-composition
 ---
 
 스칼라를 사용하면 비교적 간결한 구문을 통해 익명 함수를 정의할 수 있다. 다음 표현식은 정수의 지정 함수를 만들어준다.

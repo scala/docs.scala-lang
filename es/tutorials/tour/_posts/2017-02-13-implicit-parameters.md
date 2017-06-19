@@ -8,6 +8,9 @@ tutorial: scala-tour
 categories: tour
 num: 10
 language: es
+
+next-page: inner-classes
+previous-page: generic-classes
 ---
 
 Un método con _parámetros implícitos_ puede ser aplicado a argumentos tal como un método normal. En este caso la etiqueta `implicit` no tiene efecto. De todas maneras, si a un método le faltan argumentos para sus parámetros implícitos, tales argumentos serán automáticamente provistos.

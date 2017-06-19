@@ -9,6 +9,9 @@ categories: tour
 num: 22
 outof: 33
 language: ba
+
+next-page: compound-types
+previous-page: inner-classes
 ---
 
 U Scali, klase su parameterizovane vrijednostima (parameteri konstruktora) i tipovima (ako su [generičke](generic-classes.html)).

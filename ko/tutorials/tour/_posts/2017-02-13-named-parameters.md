@@ -8,6 +8,8 @@ tutorial: scala-tour
 categories: tour
 num: 33
 language: ko
+
+previous-page: default-parameter-values
 ---
 
 메소드와 함수를 호출할 땐 다음과 같이 해당 호출에서 명시적으로 변수의 이름을 사용할 수 있다.

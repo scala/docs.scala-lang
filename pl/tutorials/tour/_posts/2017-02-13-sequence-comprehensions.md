@@ -8,8 +8,8 @@ tutorial: scala-tour
 categories: tour
 num: 16
 language: pl
-tutorial-next: generic-classes
-tutorial-previous: extractor-objects
+next-page: generic-classes
+previous-page: extractor-objects
 ---
 
 Scala posiada lekką składnię do wyrażania instrukcji for. Tego typu wyrażania przybierają formę `for (enumerators) yield e`, gdzie `enumerators` oznacza listę enumeratorów oddzielonych średnikami. *Enumerator* może być generatorem wprowadzającym nowe zmienne albo filtrem. Wyrażenie `e` określa wynik dla każdego powiązania wygenerowanego przez enumeratory i zwraca sekwencję tych wartości.

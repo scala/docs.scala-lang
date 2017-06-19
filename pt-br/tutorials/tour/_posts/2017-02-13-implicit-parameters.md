@@ -7,8 +7,8 @@ discourse: false
 tutorial: scala-tour
 categories: tour
 num: 25
-tutorial-next: implicit-conversions
-tutorial-previous: explicitly-typed-self-references
+next-page: implicit-conversions
+previous-page: explicitly-typed-self-references
 language: pt-br
 ---
 

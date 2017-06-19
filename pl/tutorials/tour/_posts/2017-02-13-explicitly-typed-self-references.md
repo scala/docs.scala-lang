@@ -8,8 +8,8 @@ tutorial: scala-tour
 categories: tour
 num: 24
 language: pl
-tutorial-next: implicit-parameters
-tutorial-previous: compound-types
+next-page: implicit-parameters
+previous-page: compound-types
 ---
 
 Dążąc do tego, aby nasze oprogramowanie było rozszerzalne, często przydatne okazuje się jawne deklarowanie typu `this`. Aby to umotywować, spróbujemy opracować rozszerzalną reprezentację grafu w Scali.

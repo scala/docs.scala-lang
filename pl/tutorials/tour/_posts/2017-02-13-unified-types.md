@@ -8,8 +8,8 @@ tutorial: scala-tour
 categories: tour
 num: 2
 language: pl
-tutorial-next: classes
-tutorial-previous: tour-of-scala
+next-page: classes
+previous-page: tour-of-scala
 ---
 
 W przeciwieństwie do Javy wszystkie wartości w Scali są obiektami (wliczając w to wartości numeryczne i funkcje). Ponieważ Scala bazuje na klasach, wszystkie wartości są instancjami klasy. Można zatem powiedzieć, że Scala posiada zunifikowany system typów. Poniższy diagram ilustruje hierarchię klas Scali:

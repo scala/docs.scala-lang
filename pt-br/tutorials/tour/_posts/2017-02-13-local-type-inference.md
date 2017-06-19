@@ -7,8 +7,8 @@ discourse: false
 tutorial: scala-tour
 categories: tour
 num: 28
-tutorial-next: operators
-tutorial-previous: polymorphic-methods
+next-page: operators
+previous-page: polymorphic-methods
 language: pt-br
 ---
 

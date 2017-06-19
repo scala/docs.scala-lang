@@ -8,6 +8,9 @@ tutorial: scala-tour
 categories: tour
 num: 11
 language: ko
+
+next-page: singleton-objects
+previous-page: case-classes
 ---
 
 스칼라는 범용적 빌트인 패턴 매칭 기능을 제공한다. 이는 우선 매칭 정책에 따라 어떤 종류의 데이터든 매칭할 수 있도록 해준다.

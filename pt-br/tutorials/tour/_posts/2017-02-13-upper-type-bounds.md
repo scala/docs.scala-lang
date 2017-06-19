@@ -7,8 +7,8 @@ discourse: false
 tutorial: scala-tour
 categories: tour
 num: 19
-tutorial-next: lower-type-bounds
-tutorial-previous: variances
+next-page: lower-type-bounds
+previous-page: variances
 language: pt-br
 ---
 

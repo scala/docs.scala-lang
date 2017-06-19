@@ -7,8 +7,8 @@ discourse: false
 tutorial: scala-tour
 categories: tour
 num: 7
-tutorial-next: nested-functions
-tutorial-previous: anonymous-function-syntax
+next-page: nested-functions
+previous-page: anonymous-function-syntax
 language: pt-br
 ---
 

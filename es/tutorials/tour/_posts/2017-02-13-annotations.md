@@ -8,6 +8,9 @@ tutorial: scala-tour
 categories: tour
 num: 3
 language: es
+
+next-page: classes
+previous-page: abstract-types
 ---
 
 Las anotaciones sirven para asociar meta-información con definiciones.

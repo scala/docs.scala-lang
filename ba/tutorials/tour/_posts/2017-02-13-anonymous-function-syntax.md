@@ -9,6 +9,9 @@ categories: tour
 num: 6
 outof: 33
 language: ba
+
+next-page: higher-order-functions
+previous-page: mixin-class-composition
 ---
 
 Scala omogućuje relativno lahku sintaksu za definisanje anonimnih funkcija. Sljedeći izraz kreira funkciju za sljedbenike cijelih brojeva:

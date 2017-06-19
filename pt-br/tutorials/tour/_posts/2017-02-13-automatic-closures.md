@@ -7,8 +7,8 @@ discourse: false
 tutorial: scala-tour
 categories: tour
 num: 30
-tutorial-next: annotations
-tutorial-previous: operators
+next-page: annotations
+previous-page: operators
 language: pt-br
 ---
 

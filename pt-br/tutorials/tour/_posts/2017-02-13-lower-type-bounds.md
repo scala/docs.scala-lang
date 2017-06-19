@@ -7,8 +7,8 @@ discourse: false
 tutorial: scala-tour
 categories: tour
 num: 20
-tutorial-next: inner-classes
-tutorial-previous: upper-type-bounds
+next-page: inner-classes
+previous-page: upper-type-bounds
 language: pt-br
 ---
 

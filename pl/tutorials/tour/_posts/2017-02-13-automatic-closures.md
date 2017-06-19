@@ -8,8 +8,8 @@ tutorial: scala-tour
 categories: tour
 num: 30
 language: pl
-tutorial-next: annotations
-tutorial-previous: operators
+next-page: annotations
+previous-page: operators
 ---
 
 Scala pozwala na przekazywanie funkcji bezparametrycznych jako argumenty dla metod. Kiedy tego typu metoda jest wywołana, właściwe parametry dla funkcji bezparametrycznych nie są ewaluowane i przekazywana jest pusta funkcja, która enkapsuluje obliczenia odpowiadającego parametru (tzw. *wywołanie-przez-nazwę*).

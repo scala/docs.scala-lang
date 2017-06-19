@@ -10,6 +10,9 @@ num: 11
 
 outof: 33
 language: ba
+
+next-page: singleton-objects
+previous-page: currying
 ---
 
 Scala ima ugrađen mehanizam generalnog podudaranja uzoraka.

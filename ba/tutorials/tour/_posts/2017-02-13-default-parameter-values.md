@@ -9,6 +9,9 @@ categories: tour
 num: 32
 outof: 33
 language: ba
+
+next-page: named-parameters
+previous-page: annotations
 ---
 
 Scala omogućuje davanje podrazumijevanih vrijednosti parametrima koje dozvoljavaju korisniku metode da izostavi te parametre.

@@ -8,6 +8,9 @@ tutorial: scala-tour
 categories: tour
 num: 5
 language: ko
+
+next-page: anonymous-function-syntax
+previous-page: traits
 ---
 
 _단일 상속_ 만을 지원하는 여러 언어와는 달리, 스칼라는 더욱 일반화된 시각에서 클래스를 재사용한다. 스칼라는 새로운 클래스를 정의할 때 _클래스의 새로운 멤버 정의_ (즉, 슈퍼클래스와 비교할 때 변경된 부분)를 재사용할 수 있다. 이를 _믹스인 클래스 컴포지션_ 이라고 부른다. 이터레이터를 추상화한 다음 예제를 살펴보자.
