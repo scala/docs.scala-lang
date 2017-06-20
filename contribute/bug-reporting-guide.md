@@ -3,7 +3,7 @@ layout: page
 title: Bug Reporting
 ---
 
-The Scala project tracker is located at [http://issues.scala-lang.org](http://issues.scala-lang.org). Before you submit a bug make sure that it is certainly a bug by following instructions in *Is it a Bug?*.
+The Scala compiler and standard library bug tracker is located at [https://github.com/scala/bug](https://github.com/scala/bug). Before you submit a bug make sure that it is certainly a bug by following instructions in *Is it a Bug?*.
 
 ## Is it a Bug?
 
@@ -43,12 +43,12 @@ If you have a code snippet that is resulting in bytecode which you believe is be
 
    5. If you want to file an improvement in the issue tracker please discuss it first on one of the mailing lists. They offer much bigger audience than issue tracker. The latter is not suitable for long discussions.
 
-* Keep in mind that the behavior you are witnessing could be intended. Good formal resources for verifying whether or not the language behavior is intended is either in the [Scala Improvement Proposal Documents](http://docs.scala-lang.org/sips/sip-list.html) or in the [Scala Language Specification](http://www.scala-lang.org/files/archive/spec/2.11/). If in doubt, you may always ask on the [scala-internals mailing list](https://groups.google.com/forum/?fromgroups#!forum/scala-internals) or [stackoveflow](http://stackoverflow.com/questions/tagged/scala).
+* Keep in mind that the behavior you are witnessing could be intended. Good formal resources for verifying whether or not the language behavior is intended is either in the [Scala Improvement Proposal Documents](http://docs.scala-lang.org/sips/sip-list.html) or in the [Scala Language Specification](http://www.scala-lang.org/files/archive/spec/2.12/). If in doubt, you may always ask on the [Community Category](https://contributors.scala-lang.org/c/community) or [Stack Overflow](https://stackoverflow.com/questions/tagged/scala).
 
-In general, if you find yourself stuck on any of these steps, asking on one of the following Scala mailing lists can be helpful:
+In general, if you find yourself stuck on any of these steps, asking on [Scala Contributors](https://contributors.scala-lang.org/) can be helpful:
 
- - For unexpected behavior use [scala-language](https://groups.google.com/forum/?fromgroups#!forum/scala-language), or [scala-user](https://groups.google.com/forum/?fromgroups#!forum/scala-user) mailing lists.
- - For compiler bugs use the [scala-internals](https://groups.google.com/forum/?fromgroups#!forum/scala-internals) mailing list.
+ - For unexpected behavior use the [Community Category](https://contributors.scala-lang.org/c/community).
+ - For compiler bugs use the [Compiler Category](https://contributors.scala-lang.org/c/compiler).
 
 * Examples of exceptions reported by the compiler which usually are not bugs:
   1. `StackOverflowError` is typically not a bug unless the stacktrace involves the internal packages of the compiler (like `scala.tools.nsc...`). Try to increase the Java stack size (`-Xss`), in most of the cases it helps.
@@ -84,4 +84,4 @@ In the description of your issue, be as detailed as you can. Bug reports which h
  2. The expected output.
  3. The actual output, including the stacktrace.
  4. Related discussion on the mailing lists, if applicable.
- 4. If you have already looked into the issue provide interesting insights or proposals for fixing the issue.
+ 5. If you have already looked into the issue provide interesting insights or proposals for fixing the issue.
