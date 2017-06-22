@@ -1,11 +1,6 @@
 ---
-<<<<<<< HEAD
 layout: inner-page-no-masthead
-disqus: true
-=======
-layout: sip
 discourse: true
->>>>>>> upstream/master
 title: SIP-27 - Trailing Commas
 redirect_from: "/sips/pending/trailing-commas.html"
 

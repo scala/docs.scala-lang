@@ -1,11 +1,6 @@
 ---
-<<<<<<< HEAD
 layout: inner-page-no-masthead
-disqus: true
-=======
-layout: sip
 discourse: true
->>>>>>> upstream/master
 title: SIP-20 - Improved Lazy Vals Initialization
 
 vote-status: under review
@@ -680,11 +675,11 @@ The local lazy vals implementation is around 6x faster than the current version,
 The concrete micro-benchmark code is available as a GitHub repo \[[6][6]\]. It additionally benchmarks many other implementations that are not covered in the text of this SIP, in particular it tests versions based on MethodHandles and runtime code generation as well as versions that use additional spinning before synchronizing on the monitor.
 For those wishing to reproduce the results, the benchmarking suite takes 90 minutes to run on contemporary CPUs. Enabling all the disabled benchmarks, in particular those that evaluate the `invokeDynamic` based implementation, will make the benchmarks take around 5 hours.
 
-The final result of those benchmarks is that amount proposed versions, the two that worth considering are (V4-general) and (V6). 
+The final result of those benchmarks is that amount proposed versions, the two that worth considering are (V4-general) and (V6).
 They both perform better than the current implementation in all the contended case.
 Specifically, in the contended case, V6 is 2 times fater than V1, while V4-general is 4 times faster.
 Unfortunately V4-general is 30% slower in the uncontended case than current implemetation(V1), while V6 is in the same ballpark, being up to 5% slower or faster depending on the setup of the benchmark.
- 
+
 Based on this, we propose V6 to be used as default in future versions of Scala.
 
 ### Code size ###
@@ -701,7 +696,7 @@ Dotty implementation internally uses `@static` proposed in \[[16][16]\].
 Both Dotty and released Scala 2.12 already implement "Elegant Local lazy vals". This was incorporated in the 2.12 release before this SIP was considered, as it was fixing a bug that blocked release\[[14][14]\].
 
 ### Unsafe ###
-The proposed version, V6 relies on `sun.misc.Unsafe` in order to implement it's behaviour. 
+The proposed version, V6 relies on `sun.misc.Unsafe` in order to implement it's behaviour.
 While `sun.misc.Unsafe` will remain availabe in Java9 there's an intention to deprecate it and replace it with VarHandles.\[[20][20]\].
 The proposed version V6 can be implemented with using functionality present in Var Handles.  
 

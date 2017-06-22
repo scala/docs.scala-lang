@@ -1,11 +1,6 @@
 ---
-<<<<<<< HEAD
 layout: inner-page-no-masthead
-disqus: true
-=======
-layout: sip
 discourse: true
->>>>>>> upstream/master
 title: SIP-14 - Futures and Promises
 
 vote-status: accepted
@@ -49,9 +44,9 @@ promises are created through such `ExecutionContext`s. For example, this makes i
 
 A future is an abstraction which represents a value which may become
 available at some point. A `Future` object either holds a result of a
-computation or an exception in the case that the computation failed. 
-An important property of a future is that it is in effect immutable-- 
-it can never be written to or failed by the holder of the `Future` object. 
+computation or an exception in the case that the computation failed.
+An important property of a future is that it is in effect immutable--
+it can never be written to or failed by the holder of the `Future` object.
 
 The simplest way to create a future object is to invoke the `future`
 method which starts an asynchronous computation and returns a
@@ -64,7 +59,7 @@ After opening a new session we want to create an asynchronous request to the
 server for this list:
 
     import scala.concurrent.Future
-    
+
     val session = socialNetwork.createSessionFor("user", credentials)
     val f: Future[List[Friend]] = Future {
       session.getFriends
@@ -76,7 +71,7 @@ responds.
 An unsuccessful attempt may result in an exception. In
 the following example, the `session` value is incorrectly
 initialized, so the future will hold a `NullPointerException` instead of the value:
-	
+
     val session = null
     val f: Future[List[Friend]] = Future {
       session.getFriends
@@ -85,13 +80,13 @@ initialized, so the future will hold a `NullPointerException` instead of the val
 ### Callbacks
 
 We are generally interested in the result value of the computation. To
-obtain the future's result, a client of the future would have to block 
-until the future is completed. Although this is allowed by the `Future` 
-API as we will show later in this document, a better way to do it is in a 
-completely non-blocking way, by registering a callback on the future. This 
-callback is called asynchronously once the future is completed. If the 
-future has already been completed when registering the callback, then 
-the callback may either be executed asynchronously, or sequentially on 
+obtain the future's result, a client of the future would have to block
+until the future is completed. Although this is allowed by the `Future`
+API as we will show later in this document, a better way to do it is in a
+completely non-blocking way, by registering a callback on the future. This
+callback is called asynchronously once the future is completed. If the
+future has already been completed when registering the callback, then
+the callback may either be executed asynchronously, or sequentially on
 the same thread.
 
 The most general form of registering a callback is by using the `onComplete`
@@ -109,7 +104,7 @@ We do so by calling the method `getRecentPosts` which returns a `List[String]`:
     val f: Future[List[String]] = Future {
       session.getRecentPosts
     }
-    
+
     f onComplete {
       case Right(posts) => for (post <- posts) render(post)
       case Left(t)  => render("An error has occured: " + t.getMessage)
@@ -123,7 +118,7 @@ callback is used (which takes a partial function):
     val f: Future[List[String]] = Future {
       session.getRecentPosts
     }
-    
+
     f onSuccess {
       case posts => for (post <- posts) render(post)
     }
@@ -133,7 +128,7 @@ To handle failed results, the `onFailure` callback is used:
     val f: Future[List[String]] = Future {
       session.getRecentPosts
     }
-    
+
     f onFailure {
       case t => render("An error has occured: " + t.getMessage)
     }
@@ -156,7 +151,7 @@ particular `Throwable`. In the following example the registered callback is neve
     val f = Future {
       2 / 0
     }
-    
+
     f onFailure {
       case npe: NullPointerException =>
         println("I'd be amazed if this printed out.")
@@ -223,13 +218,13 @@ be done using callbacks:
     val rateQuote = Future {
       connection.getCurrentValue(USD)
     }
-    
+
     rateQuote onSuccess { case quote =>
       val purchase = Future {
         if (isProfitable(quote)) connection.buy(amount, quote)
         else throw new Exception("not profitable")
       }
-      
+
       purchase onSuccess {
         case _ => println("Purchased " + amount + " USD")
       }
@@ -255,12 +250,12 @@ rewrite the previous example using the `map` combinator:
     val rateQuote = Future {
       connection.getCurrentValue(USD)
     }
-    
+
     val purchase = rateQuote map {
       quote => if (isProfitable(quote)) connection.buy(amount, quote)
                else throw new Exception("not profitable")
     }
-    
+
     purchase onSuccess {
       case _ => println("Purchased " + amount + " USD")
     }
@@ -285,13 +280,13 @@ Here is an example of `flatMap` usage within for-comprehensions:
 
     val usdQuote = Future { connection.getCurrentValue(USD) }
     val chfQuote = Future { connection.getCurrentValue(CHF) }
-    
+
     val purchase = for {
       usd <- usdQuote
       chf <- chfQuote
       if isProfitable(usd, chf)
     } yield connection.buy(amount, chf)
-    
+
     purchase onSuccess {
       case _ => println("Purchased " + amount + " CHF")
     }
@@ -355,9 +350,9 @@ the case it fails to obtain the dollar value:
 	} map {
 	  chf => "Value: " + chf + "CHF"
 	}
-	
+
 	val anyQuote = usdQuote fallbackTo chfQuote
-	
+
 	anyQuote onSuccess { println(_) }
 
 The `either` combinator creates a new future which either holds
@@ -375,9 +370,9 @@ the quote which is returned first gets printed:
 	} map {
 	  chf => "Value: " + chf + "CHF"
 	}
-	
+
 	val anyQuote = usdQuote either chfQuote
-	
+
 	anyQuote onSuccess { println(_) }
 
 The `andThen` combinator is used purely for side-effecting purposes.
@@ -465,17 +460,17 @@ end of the application to make sure that all of the futures have been completed.
 Here is an example of how to block on the result of a future:
 
     import scala.concurrent._
-    
+
     def main(args: Array[String]) {
       val rateQuote = Future {
         connection.getCurrentValue(USD)
       }
-      
+
       val purchase = rateQuote map {
         quote => if (isProfitable(quote)) connection.buy(amount, quote)
                  else throw new Exception("not profitable")
       }
-      
+
       blocking(purchase, 0 ns)
     }
 
@@ -560,16 +555,16 @@ may be the case that `p.future == p`.
 Consider the following producer-consumer example:
 
     import scala.concurrent.{ Future, Promise }
-    
+
     val p = Promise[T]()
     val f = p.future
-    
+
     val producer = Future {
       val r = produceSomething()
       p success r
       continueDoingSomethingUnrelated()
     }
-    
+
     val consumer = Future {
       startDoingSomething()
       f onSuccess {
@@ -591,11 +586,11 @@ such, they can be completed only once. Calling `success` on a
 promise that has already been completed (or failed) will throw an
 `IllegalStateException`.
 
-The following example shows how to fail a promise. 
+The following example shows how to fail a promise.
 
     val p = Promise[T]()
     val f = p.future
-    
+
     val producer = Future {
       val r = someComputation
       if (isInvalid(r))
@@ -643,9 +638,9 @@ the result of that future as well. The following program prints `1`:
 
     val f = Future { 1 }
     val p = Promise[Int]()
-    
+
     p completeWith f
-    
+
     p.future onSuccess {
       case x => println(x)
     }
@@ -687,7 +682,7 @@ To simplify handling of time in concurrent applications `scala.concurrent`
 
 Abstract `Duration` contains methods that allow :
 
-1. Conversion to different time units (`toNanos`, `toMicros`, `toMillis`, 
+1. Conversion to different time units (`toNanos`, `toMicros`, `toMillis`,
 `toSeconds`, `toMinutes`, `toHours`, `toDays` and `toUnit(unit: TimeUnit)`).
 2. Comparison of durations (`<`, `<=`, `>` and `>=`).
 3. Arithmetic operations (`+`, `-`, `*`, `/` and `unary_-`).
@@ -697,17 +692,17 @@ Abstract `Duration` contains methods that allow :
 `Duration` can be instantiated in the following ways:
 
 1. Implicitly from types `Int` and `Long`. For example `val d = 100 millis`.
-2. By passing a `Long` length and a `java.util.concurrent.TimeUnit`. 
+2. By passing a `Long` length and a `java.util.concurrent.TimeUnit`.
 For example `val d = Duration(100, MILLISECONDS)`.
 3. By parsing a string that represent a time period. For example `val d = Duration("1.2 µs")`.
- 
+
 Duration also provides `unapply` methods so it can be used in pattern matching constructs.
 Examples:
 
     import scala.concurrent.util.Duration
     import scala.concurrent.util.duration._
     import java.util.concurrent.TimeUnit._
- 
+
     // instantiation
     val d1 = Duration(100, MILLISECONDS) // from Long and TimeUnit
     val d2 = Duration(100, "millis") // from Long and String
@@ -735,4 +730,3 @@ Examples:
 ## Appendix A: API Traits
 
 An implementation is available at [http://github.com/phaller/scala](https://github.com/phaller/scala/tree/execution-context/src/library/scala/concurrent). (Reasonably stable implementation, though possibility of flux.)
-

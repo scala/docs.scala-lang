@@ -1,11 +1,6 @@
 ---
-<<<<<<< HEAD
 layout: tour
-title: Mixin Class Composition
-=======
-layout: tutorial
 title: Class Composition with Mixins
->>>>>>> upstream/master
 
 discourse: true
 

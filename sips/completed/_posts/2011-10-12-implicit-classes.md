@@ -1,11 +1,6 @@
 ---
-<<<<<<< HEAD
 layout: inner-page-no-masthead
-disqus: true
-=======
-layout: sip
 discourse: true
->>>>>>> upstream/master
 title: SIP-13 - Implicit classes
 
 vote-status: accepted
@@ -95,5 +90,3 @@ Classes would describe the behavior of the construct.
 
 The new syntax should not break existing code, and so remain source
 compatible with existing techniques.
-
-

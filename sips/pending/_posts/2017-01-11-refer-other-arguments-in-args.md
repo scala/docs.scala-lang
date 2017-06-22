@@ -1,11 +1,6 @@
 ---
-<<<<<<< HEAD
 layout: inner-page-no-masthead
-disqus: true
-=======
-layout: sip
 discourse: true
->>>>>>> upstream/master
 title: SIP-NN - Allow referring to other arguments in default parameters
 ---
 
