@@ -2,7 +2,7 @@
 layout: tour
 title: Nested Methods
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

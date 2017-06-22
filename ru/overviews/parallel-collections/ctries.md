@@ -2,7 +2,7 @@
 layout: overview
 title: Многопоточные префиксные деревья
 
-disqus: true
+discourse: false
 
 partof: parallel-collections
 language: ru

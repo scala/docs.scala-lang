@@ -2,14 +2,14 @@
 layout: inner-page-no-masthead
 title: Operatory
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 29
 language: pl
-tutorial-next: automatic-closures
-tutorial-previous: local-type-inference
+next-page: automatic-closures
+previous-page: local-type-inference
 ---
 
 Każda metoda, która przyjmuje jeden parametr, może być użyta jako *operator infiksowy*. Oto definicja klasy `MyBool` która zawiera metody `and` i `or`:

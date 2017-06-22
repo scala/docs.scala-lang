@@ -2,14 +2,14 @@
 layout: inner-page-no-masthead
 title: Dolne ograniczenia typów
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 20
 language: pl
-tutorial-next: inner-classes
-tutorial-previous: upper-type-bounds
+next-page: inner-classes
+previous-page: upper-type-bounds
 ---
 
 Podczas gdy [górne ograniczenia typów](upper-type-bounds.html) zawężają typ do podtypu innego typu, *dolne ograniczenia typów* określają dany typ jako typ bazowy innego typu. Sformułowanie `T >: A` wyraża, że parametr typu `T` lub typ abstrakcyjny `T` odwołuje się do typu bazowego `A`.

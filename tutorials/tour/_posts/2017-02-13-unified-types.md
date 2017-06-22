@@ -2,7 +2,7 @@
 layout: tour
 title: Unified Types
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

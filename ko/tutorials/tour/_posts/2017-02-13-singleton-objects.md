@@ -2,13 +2,14 @@
 layout: inner-page-no-masthead
 title: 싱글톤 객체
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
+categories: tour
 num: 12
 language: ko
 
-next-page: xml-processing
+next-page: regular-expression-patterns
 previous-page: pattern-matching
 ---
 

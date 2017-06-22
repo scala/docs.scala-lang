@@ -2,7 +2,7 @@
 layout: overview
 title: Implicit Macros
 
-disqus: true
+discourse: true
 
 partof: macros
 num: 6

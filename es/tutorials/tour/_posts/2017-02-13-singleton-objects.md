@@ -2,14 +2,15 @@
 layout: inner-page-no-masthead
 title: Singleton Objects
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 12
 language: es
-next-page: xml-processing
-previous-page: pattern-matching
+
+next-page: nested-functions
+previous-page: mixin-class-composition
 ---
 
 Métodos y valores que no están asociados con instancias individuales de una [clase](classes.html) se denominan *objetos singleton* y se denotan con la palabra reservada `object` en vez de `class`.

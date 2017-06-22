@@ -2,13 +2,16 @@
 layout: inner-page-no-masthead
 title: Unutarnje klase
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 21
 outof: 33
 language: ba
+
+next-page: abstract-types
+previous-page: lower-type-bounds
 ---
 
 U Scali je moguće da klase imaju druge klase kao članove.

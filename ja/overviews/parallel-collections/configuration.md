@@ -2,7 +2,7 @@
 layout: overview
 title: 並列コレクションの設定
 
-disqus: true
+discourse: false
 
 partof: parallel-collections
 num: 7

@@ -2,13 +2,16 @@
 layout: inner-page-no-masthead
 title: Anotacije
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 31
 outof: 33
 language: ba
+
+next-page: default-parameter-values
+previous-page: case-classes
 ---
 
 Anotacije pridružuju meta-informacije definicijama.

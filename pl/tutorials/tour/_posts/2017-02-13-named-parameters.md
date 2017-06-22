@@ -2,13 +2,13 @@
 layout: inner-page-no-masthead
 title: Parametry nazwane
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 33
 language: pl
-tutorial-previous: default-parameter-values
+previous-page: default-parameter-values
 ---
 
 Wywołując metody i funkcje, możesz użyć nazwy parametru jawnie podczas wywołania:

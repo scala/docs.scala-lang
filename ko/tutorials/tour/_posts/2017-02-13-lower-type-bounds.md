@@ -2,12 +2,15 @@
 layout: inner-page-no-masthead
 title: 하위 타입 경계
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 20
 language: ko
+
+next-page: inner-classes
+previous-page: upper-type-bounds
 ---
 
 [상위 타입 경계](upper-type-bounds.html)가 특정 타입의 서브타입으로 타입을 제한한다면, *하위 타입 경계*는 대상 타입을 다른 타입의 슈퍼타입으로 선언한다. `T>:A`는 타입 파라미터 `T`나 추상 타입 `T`가 타입 `A`의 슈퍼타입임을 나타낸다.

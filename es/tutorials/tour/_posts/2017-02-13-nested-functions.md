@@ -2,12 +2,15 @@
 layout: inner-page-no-masthead
 title: Funciones Anidadas
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 13
 language: es
+
+next-page: anonymous-function-syntax
+previous-page: singleton-objects
 ---
 
 En scala es posible anidar definiciones de funciones. El siguiente objeto provee una función `filter` para extraer valores de una lista de enteros que están por debajo de un valor determinado:

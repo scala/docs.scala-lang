@@ -2,13 +2,13 @@
 layout: inner-page-no-masthead
 title: Construção Automática de Closures de Tipo-Dependente
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 30
-tutorial-next: annotations
-tutorial-previous: operators
+next-page: annotations
+previous-page: operators
 language: pt-br
 ---
 

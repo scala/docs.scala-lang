@@ -2,13 +2,13 @@
 layout: inner-page-no-masthead
 title: Funções Aninhadas
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 8
-tutorial-next: currying
-tutorial-previous: higher-order-functions
+next-page: currying
+previous-page: higher-order-functions
 language: pt-br
 ---
 

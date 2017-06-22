@@ -2,13 +2,13 @@
 layout: inner-page-no-masthead
 title: Classes Case
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 10
-tutorial-next: pattern-matching
-tutorial-previous: currying
+next-page: pattern-matching
+previous-page: currying
 language: pt-br
 ---
 

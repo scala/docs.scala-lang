@@ -2,12 +2,15 @@
 layout: inner-page-no-masthead
 title: Métodos polimórficos
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 21
 language: es
+
+next-page: regular-expression-patterns
+previous-page: pattern-matching
 ---
 
 Los métodos en Scala pueden ser parametrizados tanto con valores como con tipos. Como a nivel de clase, parámetros de valores son encerrados en un par de paréntesis, mientras que los parámetros de tipo son declarados dentro de un par de corchetes.

@@ -2,13 +2,13 @@
 layout: inner-page-no-masthead
 title: Variâncias
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 18
-tutorial-next: upper-type-bounds
-tutorial-previous: generic-classes
+next-page: upper-type-bounds
+previous-page: generic-classes
 language: pt-br
 ---
 

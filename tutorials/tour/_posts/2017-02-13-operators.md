@@ -2,12 +2,12 @@
 layout: tour
 title: Operators
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour
 num: 30
-next-page: automatic-closures
+next-page: by-name-parameters
 previous-page: local-type-inference
 prerequisite-knowledge: case-classes
 ---

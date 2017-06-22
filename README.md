@@ -3,6 +3,16 @@
 
 This repository contains the source for the Scala documentation website, as well as the source for "Scala Improvement Process" (SIP) documents.
 
+## Quickstart ##
+
+To build and view the site locally:
+
+    gem install bundler
+    bundle install
+    bundle exec jekyll serve -I
+
+For more details, read on.
+
 ## Contributing ##
 
 Please have a look at [http://docs.scala-lang.org/contribute.html](http://docs.scala-lang.org/contribute.html) before making a contribution.

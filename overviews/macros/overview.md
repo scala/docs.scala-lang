@@ -2,7 +2,7 @@
 layout: overview
 title: Def Macros
 
-disqus: true
+discourse: true
 
 partof: macros
 num: 3

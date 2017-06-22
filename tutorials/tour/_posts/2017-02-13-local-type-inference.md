@@ -2,7 +2,7 @@
 layout: tour
 title: Local Type Inference
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

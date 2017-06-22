@@ -2,12 +2,15 @@
 layout: inner-page-no-masthead
 title: 기본 파라미터 값
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 32
 language: ko
+
+next-page: named-parameters
+previous-page: annotations
 ---
 
 스칼라는 파라미터에 기본 값을 부여해서 호출자가 해당 파라미터를 생략할 수 있는 편리함을 제공한다.

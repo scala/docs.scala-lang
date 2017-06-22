@@ -2,12 +2,14 @@
 layout: inner-page-no-masthead
 title: Parámetros nombrados
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 35
 language: es
+
+previous-page: default-parameter-values
 ---
 
 En la invocación de métodos y funciones se puede usar el nombre de las variables explícitamente en la llamada, de la siguiente manera:

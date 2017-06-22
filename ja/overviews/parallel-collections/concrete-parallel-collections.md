@@ -2,7 +2,7 @@
 layout: overview
 title: 具象並列コレクションクラス
 
-disqus: true
+discourse: false
 
 partof: parallel-collections
 num: 2

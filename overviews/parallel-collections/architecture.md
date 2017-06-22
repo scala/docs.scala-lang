@@ -2,7 +2,7 @@
 layout: overview
 title: Architecture of the Parallel Collections Library
 
-disqus: true
+discourse: true
 
 partof: parallel-collections
 languages: [ja, zh-cn, es, ru]

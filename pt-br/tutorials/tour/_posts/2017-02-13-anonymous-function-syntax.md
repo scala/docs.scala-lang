@@ -2,13 +2,13 @@
 layout: inner-page-no-masthead
 title: Sintaxe de Função Anônima
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 6
-tutorial-next: higher-order-functions
-tutorial-previous: mixin-class-composition
+next-page: higher-order-functions
+previous-page: mixin-class-composition
 language: pt-br
 ---
 

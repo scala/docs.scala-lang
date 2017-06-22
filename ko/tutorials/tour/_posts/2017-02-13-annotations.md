@@ -2,12 +2,15 @@
 layout: inner-page-no-masthead
 title: 어노테이션
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 31
 language: ko
+
+next-page: default-parameter-values
+previous-page: automatic-closures
 ---
 
 어노테이션은 메타 정보와 정의 내용을 연결해준다.

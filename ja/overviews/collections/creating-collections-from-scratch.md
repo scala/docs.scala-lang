@@ -2,7 +2,7 @@
 layout: overview
 title: コレクションの作成
 
-disqus: true
+discourse: false
 
 partof: collections
 num: 16

@@ -2,7 +2,7 @@
 layout: overview
 title: 并发字典树
 
-disqus: true
+discourse: false
 
 partof: parallel-collections
 num: 4

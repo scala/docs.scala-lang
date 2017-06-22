@@ -2,7 +2,7 @@
 layout: tour
 title: Variances
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 num: 19

@@ -111,7 +111,7 @@ A **single** document in the collection must contain a tag in the header, `outof
     outof: 15
     ---
 
-Any overview document may also include comments. To include comments, just add the tag `disqus: true` to your header.
+Any overview document may also include comments. To include comments, just add the tag `discourse: true` to your header.
 
 Index pages, such as [http://docs.scala-lang.org/overviews/index.html](http://docs.scala-lang.org/overviews/index.html) are automatically generated, assuming documents are properly placed under the correct `RELEVANT-CATEGORY`. So, simply drop your document into the correct folder, and you're done.
 
@@ -134,7 +134,7 @@ If you have a **multiple-page** tutorial, like in the case of multiple-page over
     num: 4
     ---
 
-Any tutorial document may also include comments. To include comments, just add the tag `disqus: true` to your header.
+Any tutorial document may also include comments. To include comments, just add the tag `discourse: true` to your header.
 
 At the moment, only indexes for multiple-page tutorials are automatically generated.
 

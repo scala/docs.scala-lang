@@ -2,7 +2,7 @@
 layout: overview
 title: 从头定义新容器
 
-disqus: true
+discourse: false
 
 partof: collections
 num: 16

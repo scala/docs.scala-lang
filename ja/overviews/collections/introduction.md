@@ -2,7 +2,7 @@
 layout: overview
 title: はじめに
 
-disqus: true
+discourse: false
 
 partof: collections
 num: 1

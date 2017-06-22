@@ -2,7 +2,7 @@
 layout: inner-page-no-masthead
 title: Podudaranje uzoraka (pattern matching)
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
@@ -10,6 +10,9 @@ num: 11
 
 outof: 33
 language: ba
+
+next-page: singleton-objects
+previous-page: currying
 ---
 
 Scala ima ugrađen mehanizam generalnog podudaranja uzoraka.

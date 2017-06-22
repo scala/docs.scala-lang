@@ -1,7 +1,7 @@
 ---
 layout: overview
 title: Scala's Parallel Collections Library
-disqus: true
+discourse: true
 partof: parallel-collections
 overview: parallel-collections
 languages: [es, ja]

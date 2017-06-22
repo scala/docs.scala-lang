@@ -2,7 +2,7 @@
 layout: overview
 title: Roadmap
 
-disqus: true
+discourse: true
 
 partof: macros
 num: 12

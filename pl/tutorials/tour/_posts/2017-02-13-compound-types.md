@@ -2,14 +2,14 @@
 layout: inner-page-no-masthead
 title: Typy złożone
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 23
 language: pl
-tutorial-next: explicitly-typed-self-references
-tutorial-previous: abstract-types
+next-page: explicitly-typed-self-references
+previous-page: abstract-types
 ---
 
 Czasami konieczne jest wyrażenie, że dany typ jest podtypem kilku innych typów. W Scali wyraża się to za pomocą *typów złożonych*, które są częścią wspólną typów obiektów.

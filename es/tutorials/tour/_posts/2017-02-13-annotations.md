@@ -2,12 +2,15 @@
 layout: inner-page-no-masthead
 title: Anotaciones
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 3
 language: es
+
+next-page: classes
+previous-page: abstract-types
 ---
 
 Las anotaciones sirven para asociar meta-información con definiciones.

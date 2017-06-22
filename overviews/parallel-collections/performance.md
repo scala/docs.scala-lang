@@ -2,7 +2,7 @@
 layout: overview
 title: Measuring Performance
 
-disqus: true
+discourse: true
 
 partof: parallel-collections
 num: 8

@@ -2,13 +2,16 @@
 layout: inner-page-no-masthead
 title: Eksplicitno tipizirane samo-reference
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 24
 outof: 33
 language: ba
+
+next-page: implicit-parameters
+previous-page: compound-types
 ---
 
 Kada se razvija proširiv softver ponekad je zgodno deklarisati tip vrijednosti `this` eksplicitno.  

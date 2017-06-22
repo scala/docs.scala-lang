@@ -2,12 +2,15 @@
 layout: inner-page-no-masthead
 title: 명시적으로 타입이 지정된 자기 참조
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 24
 language: ko
+
+next-page: implicit-parameters
+previous-page: compound-types
 ---
 
 확장 가능한 소프트웨어를 개발할 땐 `this` 값의 타입을 명시적으로 선언하는 편이 편리할 수도 있다. 이를 이해하기 위해 스칼라로 작성된 작고 확장 가능한 그래프 데이터 구조를 만들어 보기로 하자.

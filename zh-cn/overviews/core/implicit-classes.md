@@ -1,11 +1,12 @@
 ---
 layout: overview
-disqus: true
 overview: implicit-classes
 label-color: success
 label-text: Available
 language: zh-cn
 title: Implicit Classes
+
+discourse: false
 ---
 
 **Josh Suereth 著**

@@ -2,14 +2,14 @@
 layout: inner-page-no-masthead
 title: Padrões de Expressões Regulares
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 14
 
-tutorial-next: extractor-objects
-tutorial-previous: xml-processing
+next-page: extractor-objects
+previous-page: singleton-objects
 language: pt-br
 ---
 

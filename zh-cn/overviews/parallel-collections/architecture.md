@@ -2,7 +2,7 @@
 layout: overview
 title: 并行集合库的架构
 
-disqus: true
+discourse: false
 
 partof: parallel-collections
 num: 5

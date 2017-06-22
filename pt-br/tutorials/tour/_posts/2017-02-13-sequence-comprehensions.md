@@ -2,13 +2,13 @@
 layout: inner-page-no-masthead
 title: Sequence Comprehensions
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 16
-tutorial-next: generic-classes
-tutorial-previous: extractor-objects
+next-page: generic-classes
+previous-page: extractor-objects
 language: pt-br
 ---
 

@@ -2,7 +2,7 @@
 layout: overview
 title: Views
 
-disqus: true
+discourse: true
 
 partof: collections
 num: 14

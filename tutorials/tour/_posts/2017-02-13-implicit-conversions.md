@@ -2,7 +2,7 @@
 layout: tour
 title: Implicit Conversions
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

@@ -2,7 +2,7 @@
 layout: overview
 title: Измерение производительности
 
-disqus: true
+discourse: false
 
 partof: parallel-collections
 num: 8

@@ -2,7 +2,7 @@
 layout: tour
 title: By-name Parameters
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

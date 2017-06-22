@@ -2,13 +2,16 @@
 layout: inner-page-no-masthead
 title: Podrazumijevane vrijednosti parametara
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 32
 outof: 33
 language: ba
+
+next-page: named-parameters
+previous-page: annotations
 ---
 
 Scala omogućuje davanje podrazumijevanih vrijednosti parametrima koje dozvoljavaju korisniku metode da izostavi te parametre.

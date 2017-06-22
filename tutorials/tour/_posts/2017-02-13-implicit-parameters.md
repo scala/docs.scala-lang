@@ -2,13 +2,13 @@
 layout: tour
 title: Implicit Parameters
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour
 num: 26
 next-page: implicit-conversions
-previous-page: explicitly-typed-self-references
+previous-page: self-types
 ---
 
 A method with _implicit parameters_ can be applied to arguments just like a normal method. In this case the implicit label has no effect. However, if such a method misses arguments for its implicit parameters, such arguments will be automatically provided.

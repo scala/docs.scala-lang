@@ -2,7 +2,7 @@
 layout: overview
 title: Arquitectura de la librería de colecciones paralelas de Scala
 
-disqus: true
+discourse: false
 
 partof: parallel-collections
 num: 5

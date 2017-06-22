@@ -2,7 +2,7 @@
 layout: overview
 title: Concrete Parallel Collection Classes
 
-disqus: true
+discourse: true
 
 partof: parallel-collections
 languages: [ja, zh-cn, es, ru]

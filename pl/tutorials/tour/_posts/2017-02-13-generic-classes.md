@@ -2,14 +2,14 @@
 layout: inner-page-no-masthead
 title: Klasy generyczne
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 17
 language: pl
-tutorial-next: variances
-tutorial-previous: sequence-comprehensions
+next-page: variances
+previous-page: sequence-comprehensions
 ---
 
 Scala posiada wbudowaną obsługą klas parametryzowanych przez typy. Tego typu klasy generyczne są szczególnie użyteczne podczas tworzenia klas kolekcji.

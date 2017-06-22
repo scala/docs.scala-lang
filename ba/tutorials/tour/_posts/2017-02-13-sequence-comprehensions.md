@@ -2,13 +2,16 @@
 layout: inner-page-no-masthead
 title: Komprehensije sekvenci
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 16
 outof: 33
 language: ba
+
+next-page: generic-classes
+previous-page: extractor-objects
 ---
 
 Scala ima skraćenu notaciju za pisanje *komprehensija sekvenci*.

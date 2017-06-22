@@ -2,13 +2,16 @@
 layout: inner-page-no-masthead
 title: Ekstraktor objekti
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 15
 outof: 33
 language: ba
+
+next-page: sequence-comprehensions
+previous-page: regular-expression-patterns
 ---
 
 U Scali, uzorci (patterns) mogu biti definisani nezavisno od case klasa.

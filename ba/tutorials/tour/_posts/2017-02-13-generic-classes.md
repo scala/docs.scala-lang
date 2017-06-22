@@ -2,13 +2,16 @@
 layout: inner-page-no-masthead
 title: Generičke klase
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 17
 outof: 33
 language: ba
+
+next-page: variances
+previous-page: sequence-comprehensions
 ---
 
 Kao u Javi 5 ([JDK 1.5](http://java.sun.com/j2se/1.5/)), Scala ima ugrađenu podršku za klase parametrizovane tipovima.

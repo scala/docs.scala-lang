@@ -2,7 +2,7 @@
 layout: overview
 title: Programmatic Use of Scala REPL
 
-disqus: true
+discourse: true
 
 partof: repl
 num: 2

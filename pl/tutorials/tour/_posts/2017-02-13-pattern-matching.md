@@ -2,14 +2,14 @@
 layout: inner-page-no-masthead
 title: Dopasowanie wzorców (Pattern matching)
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 11
 language: pl
-tutorial-next: singleton-objects
-tutorial-previous: case-classes
+next-page: singleton-objects
+previous-page: case-classes
 ---
 
 Scala posiada wbudowany mechanizm dopasowania wzorców. Umożliwia on dopasowanie dowolnego rodzaju danych, przy czym zawsze zwracamy pierwsze dopasowanie. Przykład dopasowania liczby całkowitej:

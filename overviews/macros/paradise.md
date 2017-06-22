@@ -2,7 +2,7 @@
 layout: overview
 title: Macro Paradise
 
-disqus: true
+discourse: true
 
 partof: macros
 num: 11

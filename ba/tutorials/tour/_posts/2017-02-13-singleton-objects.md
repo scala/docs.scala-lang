@@ -2,7 +2,7 @@
 layout: inner-page-no-masthead
 title: Singlton objekti
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
@@ -10,6 +10,9 @@ num: 12
 
 outof: 33
 language: ba
+
+next-page: regular-expression-patterns
+previous-page: pattern-matching
 ---
 
 Metode i vrijednosti koje ne pripadaju individualnim instancama [klase](classes.html) pripadaju *singlton objektima*,

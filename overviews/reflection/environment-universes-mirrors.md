@@ -2,7 +2,7 @@
 layout: overview
 title: Environment, Universes, and Mirrors
 
-disqus: true
+discourse: true
 
 partof: reflection
 num: 2

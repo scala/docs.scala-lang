@@ -2,12 +2,15 @@
 layout: inner-page-no-masthead
 title: 제네릭 클래스
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 17
 language: ko
+
+next-page: variances
+previous-page: sequence-comprehensions
 ---
 
 자바 5(다른 이름은 [JDK 1.5](http://java.sun.com/j2se/1.5/))와 같이, 스칼라는 타입으로 파라미터화된 클래스의 빌트인 지원을 제공한다. 이런 제네릭 클래스는 특히 컬렉션 클래스의 개발에 유용하다. 이에 관한 예제를 살펴보자.

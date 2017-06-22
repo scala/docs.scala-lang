@@ -2,13 +2,13 @@
 layout: inner-page-no-masthead
 title: Classes Genéricas
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 17
-tutorial-next: variances
-tutorial-previous: sequence-comprehensions
+next-page: variances
+previous-page: sequence-comprehensions
 language: pt-br
 ---
 

@@ -2,7 +2,7 @@
 layout: overview
 title: Trait Traversable
 
-disqus: true
+discourse: false
 
 partof: collections
 num: 3

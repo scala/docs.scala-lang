@@ -2,12 +2,15 @@
 layout: inner-page-no-masthead
 title: Clases Case
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 5
 language: es
+
+next-page: compound-types
+previous-page: classes
 ---
 
 Scala da soporte a la noción de _clases caso_ (en inglés _case classes_, desde ahora _clases Case_). Las clases Case son clases regulares las cuales exportan sus parámetros constructores y a su vez proveen una descomposición recursiva de sí mismas a través de [reconocimiento de patrones](pattern-matching.html).

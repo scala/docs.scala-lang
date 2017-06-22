@@ -2,7 +2,7 @@
 layout: overview
 title: Sets
 
-disqus: true
+discourse: true
 
 partof: collections
 num: 6

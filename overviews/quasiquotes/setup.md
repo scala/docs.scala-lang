@@ -2,7 +2,7 @@
 layout: overview
 title: Dependencies and setup
 
-disqus: true
+discourse: true
 
 partof: quasiquotes
 num: 1

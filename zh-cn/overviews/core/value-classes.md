@@ -1,11 +1,12 @@
 ---
 layout: overview
-disqus: true
 language: zh-cn
 label-color: success
 label-text: New in 2.10
 overview: value-classes
 title: Value Classes and Universal Traits
+
+discourse: false
 ---
 
 **Mark Harrah 著**

@@ -2,7 +2,7 @@
 layout: overview
 title: How are the collections structured? Which one should I choose?
 
-disqus: true
+discourse: true
 
 partof: FAQ
 num: 8

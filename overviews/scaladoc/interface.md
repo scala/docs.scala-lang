@@ -2,7 +2,7 @@
 layout: overview
 title: Using the Scaladoc Interface
 
-disqus: true
+discourse: true
 
 partof: scaladoc
 num: 3

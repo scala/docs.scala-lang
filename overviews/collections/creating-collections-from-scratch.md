@@ -2,7 +2,7 @@
 layout: overview
 title: Creating Collections From Scratch
 
-disqus: true
+discourse: true
 
 partof: collections
 num: 16

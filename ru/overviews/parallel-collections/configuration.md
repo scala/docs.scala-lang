@@ -2,7 +2,7 @@
 layout: overview
 title: Конфигурирование параллельных коллекций
 
-disqus: true
+discourse: false
 
 partof: parallel-collections
 language: ru

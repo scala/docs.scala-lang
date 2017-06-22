@@ -2,7 +2,7 @@
 layout: overview
 title: Traversable トレイト
 
-disqus: true
+discourse: false
 
 partof: collections
 num: 3

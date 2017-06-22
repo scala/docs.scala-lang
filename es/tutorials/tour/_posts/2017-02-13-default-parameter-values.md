@@ -2,12 +2,15 @@
 layout: inner-page-no-masthead
 title: Valores de parámetros por defecto
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 34
 language: es
+
+next-page: named-parameters
+previous-page: implicit-conversions
 ---
 
 Scala tiene la capacidad de dar a los parámetros valores por defecto que pueden ser usados para permitir a quien invoca el método o función que omita dichos parámetros.

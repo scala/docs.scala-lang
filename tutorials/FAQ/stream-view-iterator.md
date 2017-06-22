@@ -2,7 +2,7 @@
 layout: overview
 title: What is the difference between view, stream and iterator?
 
-disqus: true
+discourse: true
 
 partof: FAQ
 num: 4

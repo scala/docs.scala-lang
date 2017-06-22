@@ -2,7 +2,7 @@
 layout: tour
 title: Pattern Matching
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

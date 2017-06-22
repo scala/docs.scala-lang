@@ -2,7 +2,7 @@
 layout: overview
 title: Mutable and Immutable Collections
 
-disqus: true
+discourse: true
 
 partof: collections
 num: 2

@@ -2,7 +2,7 @@
 layout: overview
 title: 具体的可变容器类
 
-disqus: true
+discourse: false
 
 partof: collections
 num: 9

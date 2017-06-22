@@ -2,12 +2,15 @@
 layout: inner-page-no-masthead
 title: 상위 타입 경계
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 19
 language: ko
+
+next-page: lower-type-bounds
+previous-page: variances
 ---
 
 스칼라에선 [타입 파라미터](generic-classes.html) 와 [추상 타입](abstract-types.html)의 타입 경계를 제한할 수 있다. 이런 타입 경계는 타입 변수의 콘크리트 값을 제한하고, 해당 타입의 멤버에 관한 정보를 추가할 수도 있다. _상위 타입 경계_ `T <: A`는 타입 변수 `T`를 선언하면서 서브타입 `A`를 참조하고 있다. 다음은 다형성 메소드 `findSimilar`의 구현을 위해 상위 타입 경계를 사용한 예제다.

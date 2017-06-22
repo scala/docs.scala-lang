@@ -2,7 +2,7 @@
 layout: overview
 title: Hygiene
 
-disqus: true
+discourse: true
 
 partof: quasiquotes
 num: 5

@@ -2,7 +2,7 @@
 layout: overview
 title: 具象可変コレクションクラス
 
-disqus: true
+discourse: false
 
 partof: collections
 num: 9

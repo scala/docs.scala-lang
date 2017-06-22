@@ -2,7 +2,7 @@
 layout: overview
 title: 简介
 
-disqus: true
+discourse: false
 
 partof: collections
 num: 1

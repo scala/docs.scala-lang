@@ -2,8 +2,9 @@
 layout: overview
 title: The Scala Actors API
 overview: actors
-disqus: true
 language: zh-cn
+
+discourse: false
 ---
 
 **Philipp Haller 和 Stephen Tu 著**

@@ -2,13 +2,16 @@
 layout: inner-page-no-masthead
 title: Operatori
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 29
 outof: 33
 language: ba
+
+next-page: automatic-closures
+previous-page: local-type-inference
 ---
 
 Bilo koja metoda koja prima samo jedan parametar može biti korištena kao *infiksni operator* u Scali.

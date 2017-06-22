@@ -1,6 +1,11 @@
 ---
+<<<<<<< HEAD
 layout: inner-page-no-masthead
 disqus: true
+=======
+layout: sip
+discourse: true
+>>>>>>> upstream/master
 title: SIP-NN - Match infix & prefix types to meet expression rules 
 ---
 

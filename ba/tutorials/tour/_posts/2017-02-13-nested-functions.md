@@ -2,13 +2,16 @@
 layout: inner-page-no-masthead
 title: Ugniježdene funkcije
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 8
 outof: 33
 language: ba
+
+next-page: currying
+previous-page: higher-order-functions
 ---
 
 U Scali je moguće ugnježdavati definicije funkcija.

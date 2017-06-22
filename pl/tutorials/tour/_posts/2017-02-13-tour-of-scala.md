@@ -2,14 +2,14 @@
 layout: inner-page-no-masthead
 title: Wprowadzenie
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 1
 outof: 33
 language: pl
-tutorial-next: unified-types
+next-page: unified-types
 ---
 
 Scala jest nowoczesnym, wieloparadygmatowym językiem programowania zaprojektowanym do wyrażania powszechnych wzorców programistycznych w zwięzłym, eleganckim i bezpiecznie typowanym stylu. Scala płynnie integruje ze sobą cechy języków funkcyjnych i zorientowanych obiektowo.

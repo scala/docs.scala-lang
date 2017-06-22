@@ -2,12 +2,15 @@
 layout: inner-page-no-masthead
 title: 로컬 타입 추론
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 28
 language: ko
+
+next-page: operators
+previous-page: polymorphic-methods
 ---
 
 스칼라는 프로그래머가 특정한 타입 어노테이션을 생략할 수 있도록 해주는 빌트인 타입 추론 기능을 갖추고 있다. 예를 들어, 스칼라에선 컴파일러가 변수의 초기화 표현식으로부터 타입을 추론할 수 있기 때문에 변수의 타입을 지정할 필요가 없을 때가 많다. 또한 메소드의 반환 타입은 본문의 타입과 일치하기 때문에 이 반환 타입 역시 컴파일러가 추론할 수 있고, 주로 생략된다.

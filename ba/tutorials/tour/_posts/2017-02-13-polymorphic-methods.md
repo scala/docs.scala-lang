@@ -2,7 +2,7 @@
 layout: inner-page-no-masthead
 title: Polimorfne metode
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
@@ -10,6 +10,9 @@ num: 27
 
 outof: 33
 language: ba
+
+next-page: local-type-inference
+previous-page: implicit-conversions
 ---
 
 Metode u Scali mogu biti parametrizovane i s vrijednostima i s tipovima.

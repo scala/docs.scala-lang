@@ -2,7 +2,7 @@
 layout: overview
 title: Strings
 
-disqus: true
+discourse: true
 
 partof: collections
 num: 11

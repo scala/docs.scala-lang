@@ -1,7 +1,7 @@
 ---
 layout: overview
 title: Conversiones en colecciones paralelas
-disqus: true
+discourse: false
 
 partof: parallel-collections
 num: 3

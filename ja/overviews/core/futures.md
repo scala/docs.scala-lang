@@ -5,6 +5,8 @@ label-text: New in 2.10
 overview: futures
 language: ja
 title: Future と Promise
+
+discourse: false
 ---
 
 **Philipp Haller, Aleksandar Prokopec, Heather Miller, Viktor Klang, Roland Kuhn, Vojin Jovanovic 著**<br>

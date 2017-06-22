@@ -2,13 +2,13 @@
 layout: tour
 title: Generic Classes
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour
 num: 18
 next-page: variances
-previous-page: sequence-comprehensions
+previous-page: for-comprehensions
 assumed-knowledge: classes unified-types
 ---
 Generic classes are classes which take a type as a parameter. They are particularly useful for collection classes.

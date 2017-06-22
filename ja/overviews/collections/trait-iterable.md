@@ -2,7 +2,7 @@
 layout: overview
 title: Iterable トレイト
 
-disqus: true
+discourse: false
 
 partof: collections
 num: 4

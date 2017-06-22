@@ -2,12 +2,15 @@
 layout: inner-page-no-masthead
 title: Patrones basados en expresiones regulares
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 22
 language: es
+
+next-page: traits
+previous-page: polymorphic-methods
 ---
 
 ## Patrones de secuencias que ignoran a la derecha ##

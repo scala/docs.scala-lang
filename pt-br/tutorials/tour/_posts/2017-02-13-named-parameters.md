@@ -2,12 +2,12 @@
 layout: inner-page-no-masthead
 title: Parâmetros Nomeados
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 33
-tutorial-previous: default-parameter-values
+previous-page: default-parameter-values
 language: pt-br
 ---
 

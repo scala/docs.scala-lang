@@ -2,7 +2,7 @@
 layout: overview
 title: Terminology summary 
 
-disqus: true
+discourse: true
 
 partof: quasiquotes
 num: 12

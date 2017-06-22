@@ -2,13 +2,15 @@
 layout: inner-page-no-masthead
 title: Imenovani parametri
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 33
 outof: 33
 language: ba
+
+previous-page: default-parameter-values
 ---
 
 Kada se pozivaju metode i funkcije, možete koristiti imena varijabli eksplicitno pri pozivu:

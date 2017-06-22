@@ -2,13 +2,16 @@
 layout: inner-page-no-masthead
 title: Implicitne konverzije
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 26
 outof: 33
 language: ba
+
+next-page: polymorphic-methods
+previous-page: implicit-parameters
 ---
 
 Implicitna konverzija iz tipa `S` u tip `T` je definisana kao implicitna vrijednost koja ima tip `S => T` (funkcija), 

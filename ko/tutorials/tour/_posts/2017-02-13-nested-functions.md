@@ -2,12 +2,15 @@
 layout: inner-page-no-masthead
 title: 중첩 함수
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 8
 language: ko
+
+next-page: currying
+previous-page: higher-order-functions
 ---
 
 스칼라에선 중첩 함수를 정의할 수 있다. 다음 오브젝트는 정수의 리스트에서 지정된 값보다 작은 값을 값을 추출해주는 `filter` 함수를 제공한다.

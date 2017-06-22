@@ -2,12 +2,15 @@
 layout: inner-page-no-masthead
 title: 가변성
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 18
 language: ko
+
+next-page: upper-type-bounds
+previous-page: generic-classes
 ---
 
 스칼라는 [제네릭 클래스](generic-classes.html)의 타입 파라미터에 관한 가변성 어노테이션을 지원한다. 자바 5(다른 이름은 [JDK 1.5](http://java.sun.com/j2se/1.5/))에선 추상화된 클래스가 사용될 때 클라이언트가 가변성 어노테이션을 결정하지만, 반면에 스칼라는 추상화된 클래스를 정의할 때 가변성 어노테이션을 추가할 수 있다.

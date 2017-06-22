@@ -1,6 +1,11 @@
 ---
+<<<<<<< HEAD
 layout: inner-page-no-masthead
 disqus: true
+=======
+layout: sip
+discourse: true
+>>>>>>> upstream/master
 title: SIP-28 and SIP-29 - Inline meta
 
 vote-status: under revision

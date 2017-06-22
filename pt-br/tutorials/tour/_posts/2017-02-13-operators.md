@@ -2,13 +2,13 @@
 layout: inner-page-no-masthead
 title: Operadores
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 29
-tutorial-next: automatic-closures
-tutorial-previous: local-type-inference
+next-page: automatic-closures
+previous-page: local-type-inference
 language: pt-br
 ---
 

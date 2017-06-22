@@ -2,13 +2,16 @@
 layout: inner-page-no-masthead
 title: Case klase
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 30
 outof: 33
 language: ba
+
+next-page: annotations
+previous-page: automatic-closures
 ---
 
 Scala podržava tzv. _case klase_.

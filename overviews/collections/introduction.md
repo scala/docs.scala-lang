@@ -2,7 +2,7 @@
 layout: overview
 title: Introduction
 
-disqus: true
+discourse: true
 
 partof: collections
 num: 1

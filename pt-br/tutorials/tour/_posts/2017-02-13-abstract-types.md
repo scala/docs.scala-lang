@@ -2,13 +2,13 @@
 layout: inner-page-no-masthead
 title: Tipos Abstratos
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 22
-tutorial-next: compound-types
-tutorial-previous: inner-classes
+next-page: compound-types
+previous-page: inner-classes
 language: pt-br
 ---
 

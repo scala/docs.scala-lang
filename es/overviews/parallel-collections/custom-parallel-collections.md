@@ -2,7 +2,7 @@
 layout: overview
 title: Creating Custom Parallel Collections
 
-disqus: true
+discourse: false
 
 partof: parallel-collections
 num: 6

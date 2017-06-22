@@ -2,7 +2,7 @@
 layout: overview
 title: Pattern details
 
-disqus: true
+discourse: true
 
 partof: quasiquotes
 num: 10

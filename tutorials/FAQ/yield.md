@@ -2,7 +2,7 @@
 layout: overview
 title: How does yield work?
 
-disqus: true
+discourse: true
 
 partof: FAQ
 num: 2

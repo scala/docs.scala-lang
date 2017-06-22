@@ -2,13 +2,16 @@
 layout: inner-page-no-masthead
 title: Kompozicija mixin klasa
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 5
 outof: 33
 language: ba
+
+next-page: anonymous-function-syntax
+previous-page: traits
 ---
 
 Nasuprot jezicima koji podržavaju samo _jednostruko nasljeđivanje_, Scala ima generalniji pojam ponovne upotrebe klasa.

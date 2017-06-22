@@ -2,14 +2,14 @@
 layout: inner-page-no-masthead
 title: Objetos Singleton
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 12
 
-tutorial-next: xml-processing
-tutorial-previous: pattern-matching
+next-page: regular-expression-patterns
+previous-page: pattern-matching
 language: pt-br
 ---
 

@@ -2,13 +2,13 @@
 layout: inner-page-no-masthead
 title: Tipos Unificados
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 2
-tutorial-next: classes
-tutorial-previous: tour-of-scala
+next-page: classes
+previous-page: tour-of-scala
 language: pt-br
 ---
 

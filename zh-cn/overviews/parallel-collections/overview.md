@@ -2,7 +2,7 @@
 layout: overview
 title: 概述
 
-disqus: true
+discourse: false
 
 partof: parallel-collections
 num: 1

@@ -2,14 +2,14 @@
 layout: inner-page-no-masthead
 title: Funkcje anonimowe
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 6
 language: pl
-tutorial-next: higher-order-functions
-tutorial-previous: mixin-class-composition
+next-page: higher-order-functions
+previous-page: mixin-class-composition
 ---
 
 Scala posiada lekką składnię pozwalającą na definiowanie funkcji anonimowych. Poniższe wyrażenie tworzy funkcję następnika dla liczb całkowitych:

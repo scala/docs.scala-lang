@@ -6,4 +6,6 @@ language: ja
 label-color: important
 label-text: Experimental
 title: マクロ
+
+discourse: false
 ---

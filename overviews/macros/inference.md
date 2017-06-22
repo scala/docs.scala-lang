@@ -2,7 +2,7 @@
 layout: overview
 title: Inference-Driving Macros
 
-disqus: true
+discourse: true
 languages: [ja]
 ---
 <span class="label important" style="float: right;">EXPERIMENTAL</span>

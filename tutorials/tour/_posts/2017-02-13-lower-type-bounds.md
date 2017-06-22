@@ -2,7 +2,7 @@
 layout: tour
 title: Lower Type Bounds
 
-disqus: true
+discourse: true
 
 tutorial: scala-tour
 categories: tour

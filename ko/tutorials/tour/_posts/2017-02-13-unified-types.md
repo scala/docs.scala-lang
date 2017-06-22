@@ -2,12 +2,15 @@
 layout: inner-page-no-masthead
 title: 통합된 타입
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 2
 language: ko
+
+next-page: classes
+previous-page: tour-of-scala
 ---
 
 자바와는 달리, 스칼라에선 모든 값이 객체다(숫자 값과 함수를 포함해). 스칼라는 클래스 기반이기 때문에 모든 값은 클래스의 인스턴스다. 다음의 다이어그램은 클래스 계층구조를 나타낸다.

@@ -2,7 +2,7 @@
 layout: overview
 title: Macro Annotations
 
-disqus: true
+discourse: true
 
 partof: macros
 num: 10

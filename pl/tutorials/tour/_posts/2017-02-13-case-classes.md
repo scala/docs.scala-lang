@@ -2,14 +2,14 @@
 layout: inner-page-no-masthead
 title: Klasy przypadków
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 10
 language: pl
-tutorial-next: pattern-matching
-tutorial-previous: currying
+next-page: pattern-matching
+previous-page: currying
 ---
 
 Scala wspiera mechanizm _klas przypadków_. Klasy przypadków są zwykłymi klasami z dodatkowymi założeniami:

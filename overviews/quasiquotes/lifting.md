@@ -2,7 +2,7 @@
 layout: overview
 title: Lifting
 
-disqus: true
+discourse: true
 
 partof: quasiquotes
 num: 3

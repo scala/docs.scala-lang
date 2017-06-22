@@ -2,13 +2,13 @@
 layout: inner-page-no-masthead
 title: Parâmetro com Valor Padrão
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 32
-tutorial-next: named-parameters
-tutorial-previous: annotations
+next-page: named-parameters
+previous-page: annotations
 language: pt-br
 ---
 

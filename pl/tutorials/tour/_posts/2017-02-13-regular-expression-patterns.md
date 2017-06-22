@@ -2,15 +2,15 @@
 layout: inner-page-no-masthead
 title: Wzorce wyrażeń regularnych
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 14
 language: pl
 
-tutorial-next: extractor-objects
-tutorial-previous: xml-processing
+next-page: extractor-objects
+previous-page: singleton-objects
 ---
 
 ## Wzorce sekwencji ignorujące prawą stronę ##

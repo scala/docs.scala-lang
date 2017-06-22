@@ -2,12 +2,15 @@
 layout: inner-page-no-masthead
 title: Reconocimiento de patrones
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 20
 language: es
+
+next-page: polymorphic-methods
+previous-page: higher-order-functions
 ---
 
 _Nota de traducción: Es dificil encontrar en nuestro idioma una palabra que se relacione directamente con el significado de `match` en inglés. Podemos entender a `match` como "coincidir" o "concordar" con algo. En algunos lugares se utiliza la palabra `machear`, aunque esta no existe en nuestro idioma con el sentido que se le da en este texto, sino que se utiliza como traducción de `match`._

@@ -2,13 +2,15 @@
 layout: inner-page-no-masthead
 title: Uvod
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 1
 outof: 33
 language: ba
+
+next-page: unified-types
 ---
 
 Scala je moderan programski jezik koji spaja više paradigmi,

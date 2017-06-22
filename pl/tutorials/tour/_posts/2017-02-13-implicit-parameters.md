@@ -2,14 +2,14 @@
 layout: inner-page-no-masthead
 title: Parametry domniemane
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 25
 language: pl
-tutorial-next: implicit-conversions
-tutorial-previous: explicitly-typed-self-references
+next-page: implicit-conversions
+previous-page: explicitly-typed-self-references
 ---
 
 Metodę z _parametrami domniemanymi_ można stosować tak samo jak każdą zwyczajną metodę. W takim przypadku etykieta `implicit` nie ma żadnego znaczenia. Jednak jeżeli odpowiednie argumenty dla parametrów domniemanych nie zostaną jawnie określone, to kompilator dostarczy je automatycznie.

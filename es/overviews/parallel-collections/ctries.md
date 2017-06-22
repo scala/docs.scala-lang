@@ -2,7 +2,7 @@
 layout: overview
 title: Tries Concurrentes
 
-disqus: true
+discourse: false
 
 partof: parallel-collections
 num: 4

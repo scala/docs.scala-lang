@@ -2,7 +2,7 @@
 layout: inner-page-no-masthead
 title: Regularni izrazi
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
@@ -10,6 +10,9 @@ num: 14
 
 outof: 33
 language: ba
+
+next-page: extractor-objects
+previous-page: singleton-objects
 ---
 
 ## Desno-ignorišući uzorci sekvenci ##

@@ -2,7 +2,7 @@
 layout: overview
 title: How do I find what some symbol means or does?
 
-disqus: true
+discourse: true
 
 partof: FAQ
 num: 1

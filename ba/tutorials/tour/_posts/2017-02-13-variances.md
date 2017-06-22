@@ -2,13 +2,16 @@
 layout: inner-page-no-masthead
 title: Varijanse
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 18
 outof: 33
 language: ba
+
+next-page: upper-type-bounds
+previous-page: generic-classes
 ---
 
 Scala podržava anotacije varijanse tipskih parametara [generičkih klasa](generic-classes.html).

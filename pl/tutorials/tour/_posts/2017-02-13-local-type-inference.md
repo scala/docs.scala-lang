@@ -2,14 +2,14 @@
 layout: inner-page-no-masthead
 title: Lokalna inferencja typów
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 28
 language: pl
-tutorial-next: operators
-tutorial-previous: polymorphic-methods
+next-page: operators
+previous-page: polymorphic-methods
 ---
 
 Scala posiada wbudowany mechanizm inferencji typów, który pozwala programiście pominąć pewne informacje o typach. Przykładowo zazwyczaj nie wymaga się podawania typów zmiennych, gdyż kompilator sam jest w stanie go wydedukować na podstawie typu wyrażenia inicjalizacji zmiennej. Także typy zwracane przez metody mogą być często pominięte, ponieważ odpowiadają one typowi ciała metody, który jest inferowany przez kompilator.

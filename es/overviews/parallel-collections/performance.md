@@ -2,7 +2,7 @@
 layout: overview
 title: Midiendo el rendimiento
 
-disqus: true
+discourse: false
 
 partof: parallel-collections
 num: 8

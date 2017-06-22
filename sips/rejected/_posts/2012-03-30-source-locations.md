@@ -1,6 +1,11 @@
 ---
+<<<<<<< HEAD
 layout: inner-page-no-masthead
 disqus: true
+=======
+layout: sip
+discourse: true
+>>>>>>> upstream/master
 title: SIP-19 - Implicit Source Locations
 
 vote-status: rejected

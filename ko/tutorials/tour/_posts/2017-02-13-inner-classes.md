@@ -2,12 +2,15 @@
 layout: inner-page-no-masthead
 title: 내부 클래스
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 21
 language: ko
+
+next-page: abstract-types
+previous-page: lower-type-bounds
 ---
 
 스칼라의 클래스는 다른 클래스를 멤버로 가질 수 있다. 자바와 같은 언어의 내부 클래스는 자신을 감싸고 있는 클래스의 멤버인 반면에, 스칼라에선 내부 클래스가 외부 객체의 경계 안에 있다. 이런 차이점을 분명히 하기 위해 그래프 데이터타입의 구현을 간단히 그려보자.

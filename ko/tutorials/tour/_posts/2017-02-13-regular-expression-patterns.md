@@ -2,12 +2,15 @@
 layout: inner-page-no-masthead
 title: 정규 표현식 패턴
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 14
 language: ko
+
+next-page: extractor-objects
+previous-page: singleton-objects
 ---
 
 ## 우측 무시 시퀀스 패턴 ##

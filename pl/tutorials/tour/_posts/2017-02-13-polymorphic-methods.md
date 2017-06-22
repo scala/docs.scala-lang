@@ -2,14 +2,14 @@
 layout: inner-page-no-masthead
 title: Metody polimorficzne
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 27
 language: pl
-tutorial-next: local-type-inference
-tutorial-previous: implicit-conversions
+next-page: local-type-inference
+previous-page: implicit-conversions
 ---
 
 Metody w Scali mogą być parametryzowane zarówno przez wartości, jak i typy. Tak jak na poziomie klas, wartości parametrów zawierają się w parze nawiasów okrągłych, podczas gdy parametry typów są deklarawane w parze nawiasów kwadratowych.

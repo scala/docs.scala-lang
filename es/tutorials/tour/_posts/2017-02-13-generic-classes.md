@@ -2,12 +2,15 @@
 layout: inner-page-no-masthead
 title: Clases genéricas
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 9
 language: es
+
+next-page: implicit-parameters
+previous-page: extractor-objects
 ---
 
 Tal como en Java 5 ([JDK 1.5](http://java.sun.com/j2se/1.5/)), Scala provee soporte nativo para clases parametrizados con tipos. Eso es llamado clases genéricas y son especialmente importantes para el desarrollo de clases tipo colección.

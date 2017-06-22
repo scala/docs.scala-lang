@@ -2,12 +2,15 @@
 layout: inner-page-no-masthead
 title: Sintaxis de funciones anónimas
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 14
 language: es
+
+next-page: currying
+previous-page: nested-functions
 ---
 
 Scala provee una sintaxis relativamente livana para definir funciones anónimas. La siguiente expresión crea una función incrementadora para números enteros:

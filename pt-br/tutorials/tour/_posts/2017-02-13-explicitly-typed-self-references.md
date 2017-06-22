@@ -2,13 +2,13 @@
 layout: inner-page-no-masthead
 title: Auto Referências Explicitamente Tipadas
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 24
-tutorial-next: implicit-parameters
-tutorial-previous: compound-types
+next-page: implicit-parameters
+previous-page: compound-types
 language: pt-br
 ---
 

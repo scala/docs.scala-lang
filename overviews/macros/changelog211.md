@@ -2,7 +2,7 @@
 layout: overview
 title: Changes in Scala 2.11
 
-disqus: true
+discourse: true
 
 partof: macros
 num: 13

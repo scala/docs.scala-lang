@@ -2,7 +2,7 @@
 layout: overview
 title: 可変コレクションおよび不変コレクション
 
-disqus: true
+discourse: false
 
 partof: collections
 num: 2

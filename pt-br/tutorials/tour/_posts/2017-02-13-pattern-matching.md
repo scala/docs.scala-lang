@@ -2,14 +2,14 @@
 layout: inner-page-no-masthead
 title: Correspondência de Padrões
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 11
 
-tutorial-next: singleton-objects
-tutorial-previous: case-classes
+next-page: singleton-objects
+previous-page: case-classes
 language: pt-br
 ---
 

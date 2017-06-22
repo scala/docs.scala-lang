@@ -2,7 +2,7 @@
 layout: overview
 title: Where does Scala look for implicits?
 
-disqus: true
+discourse: true
 
 partof: FAQ
 num: 7

@@ -2,13 +2,16 @@
 layout: inner-page-no-masthead
 title: Implicitni parametri
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 25
 outof: 33
 language: ba
+
+next-page: implicit-conversions
+previous-page: explicitly-typed-self-references
 ---
 
 Metoda s _implicitnim parametrima_ može biti primijenjena na argumente kao i normalna metoda.

@@ -2,13 +2,13 @@
 layout: inner-page-no-masthead
 title: Tipos Compostos
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 23
-tutorial-next: explicitly-typed-self-references
-tutorial-previous: abstract-types
+next-page: explicitly-typed-self-references
+previous-page: abstract-types
 language: pt-br
 ---
 

@@ -2,12 +2,15 @@
 layout: inner-page-no-masthead
 title: 추출자 오브젝트
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 15
 language: ko
+
+next-page: sequence-comprehensions
+previous-page: regular-expression-patterns
 ---
 
 스칼라에선 캐이스 클래스와 상관 없이 패턴을 정의할 수 있다. 이런 측면에서 추출자라 불리는 unapply라는 이름의 메소드를 정의한다. 예를 들어, 다음의 코드는 추출자 오브젝트 Twice를 정의한다.

@@ -2,13 +2,13 @@
 layout: inner-page-no-masthead
 title: Introdução
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 1
 outof: 33
-tutorial-next: unified-types
+next-page: unified-types
 language: pt-br
 ---
 

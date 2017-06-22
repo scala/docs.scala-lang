@@ -2,12 +2,15 @@
 layout: inner-page-no-masthead
 title: 다형성 메소드
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 27
 language: ko
+
+next-page: local-type-inference
+previous-page: implicit-conversions
 ---
 
 스칼라의 메소드는 값과 타입 모두가 파라미터화 될 수 있다. 클래스 수준에서와 같이, 값 파라미터는 괄호의 쌍으로 묶이며 타입 파라미터는 브래킷의 쌍 안에 위치한다.

@@ -2,7 +2,7 @@
 layout: overview
 title: Conversions Between Java and Scala Collections
 
-disqus: true
+discourse: true
 
 partof: collections
 num: 17

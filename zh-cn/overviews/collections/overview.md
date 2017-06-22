@@ -2,7 +2,7 @@
 layout: overview
 title: Mutable和Immutable集合
 
-disqus: true
+discourse: false
 
 partof: collections
 num: 2

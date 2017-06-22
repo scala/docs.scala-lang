@@ -2,13 +2,13 @@
 layout: inner-page-no-masthead
 title: Anotações
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 31
-tutorial-next: default-parameter-values
-tutorial-previous: automatic-closures
+next-page: default-parameter-values
+previous-page: automatic-closures
 language: pt-br
 ---
 

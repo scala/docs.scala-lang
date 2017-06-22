@@ -2,12 +2,15 @@
 layout: inner-page-no-masthead
 title: Operadores
 
-disqus: true
+discourse: false
 
 tutorial: scala-tour
 categories: tour
 num: 17
 language: es
+
+next-page: higher-order-functions
+previous-page: automatic-closures
 ---
 
 En Scala, cualquier método el cual reciba un solo parámetro puede ser usado como un *operador de infijo (infix)*. Aquí se muestra la definición de la clase `MyBool`, la cual define tres métodos `and`, `or`, y `negate`.

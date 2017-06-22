@@ -3,7 +3,7 @@ layout: overview
 title: Un'introduzione a Scala per programmatori Java
 overview: scala-for-java-programmers
 
-disqus: true
+discourse: false
 multilingual-overview: true
 language: it
 ---
