@@ -266,11 +266,13 @@ Adding tests to the test suite is as easy as moving them to the appropriate dire
 * Code which should not compile needs to go into the [“neg” directory](https://github.com/scala/scala/tree/2.12.x/test/files/neg).
 * Code which should compile and get executed by the test suite needs to go into the [“run” directory](https://github.com/scala/scala/tree/2.12.x/test/files/run) and have a corresponding `.check` file with the expected output. You will get test failures if the content of a `.check` file is different from what the test produces while running. If the change in the output is an expected product of your work, you might not want to change the `.check` file by hand. To make partest change the `.check` file, run it with a `--update-check` flag, like so `./test/partest --update-check path/to/test.scala`. For more information on partest, please refer to its [documentation](http://docs.scala-lang.org/tutorials/partest-guide.html).
 * Everything that can be unit-tested should go to ["junit" directory](https://github.com/scala/scala/tree/2.12.x/test/junit)
-* Property-based tests go to the ["scalacheck" directory](https://github.com/scala/scala/tree/2.12.x/test/files/scalacheck)
+* Property-based tests go to the ["scalacheck" directory](https://github.com/scala/scala/tree/2.12.x/test/scalacheck)
 
 Here are some more testing tips:
 
-* If you have several tests, and want a tool for only running tests that conform to some regular expression, you can use `partest-ack` in the `tools` directory: `./tools/partest-ack "dottype"`
+* If you have several tests, and want a tool for only running tests that conform to some regular expression, you can use `partest-ack` in the `tools` directory: `./tools/partest-ack "dottype"`. `partest-ack` was removed in 2.12.
+* If you want to run all scalacheck tests from sbt use `scalacheck/testOnly`
+* To run scalacheck tests by name when in sbt use `scalacheck/testOnly <test1> ... <testN>`, for example `scalacheck/testOnly scala.tools.nsc.scaladoc.HtmlFactoryTest`
 * If your tests fail in the following way:
 
         test.bc:
@@ -321,6 +323,8 @@ Run `sbt test` and `sbt partest` to run all of the JUnit and partest tests, resp
     testing: [...]/files/run/interpolation.scala                          [  OK  ]
     testing: [...]/files/run/stringinterpolation_macro-run.scala          [  OK  ]
     All of 6 tests were successful (elapsed time: 00:00:08)
+
+`partest` was removed in 2.12.
 
 ## 4. Publish
 
