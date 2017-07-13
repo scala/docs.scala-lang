@@ -1,18 +1,18 @@
 ---
 title: Code Review Contributions
 layout: inner-page-no-masthead
-permalink: /contribute/codereviews/
+# permalink: /contribute/codereviews/
 includeTOC: true
 ---
 ## Code Review Contributions
 
-In addition to [bug fixing](/contribute/guide/), you can help us review 
-[waiting pull requests](#pull-requests-awaiting-comment). 
+In addition to [bug fixing](/contribute/guide/), you can help us review
+[waiting pull requests](#pull-requests-awaiting-comment).
 This is also a good (and recommended) way to get to know the feel of
 the bug-fixing and submissions process before jumping in with your
 own pull requests.
 
- 
+
 ### Review Guidelines
 
 [Code of Conduct reminder](/conduct/)

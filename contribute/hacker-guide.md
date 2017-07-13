@@ -2,7 +2,7 @@
 title: Scala hacker guide
 by: Eugene Burmako
 layout: inner-page-no-masthead
-permalink: /contribute/hacker-guide/
+# permalink: /contribute/hacker-guide/
 includeTOC: true
 ---
 <br>
@@ -54,7 +54,7 @@ it probably makes sense to familiarize yourself with Git first. We recommend
 
 * the [Git Pro](http://git-scm.com/book/en/) online book.
 * the help page on [Forking a Git Repository](https://help.github.com/articles/fork-a-repo).
-* this great training tool [LearnGitBranching](http://pcottle.github.io/learnGitBranching/). One hour hands-on training helps more than 1000 hours reading. 
+* this great training tool [LearnGitBranching](http://pcottle.github.io/learnGitBranching/). One hour hands-on training helps more than 1000 hours reading.
 
 ### Fork
 

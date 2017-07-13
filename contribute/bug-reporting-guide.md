@@ -1,7 +1,7 @@
 ---
 title: Bug Reporting
 layout: inner-page-no-masthead
-permalink: /contribute/bug-reporting-guide/
+# permalink: /contribute/bug-reporting-guide/
 includeTOC: true
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Contributing guide
 layout: inner-page-no-masthead
-permalink: /contribute/guide/
+# permalink: /contribute/guide/
 includeTOC: true
 ---
 
@@ -54,9 +54,9 @@ unencumbered by copyrights or patents.
 
 This is the impatient developer's checklist for the steps to submit a bug-fix pull request to the Scala project. For more information, description and justification for the steps, follow the links in that step. Further specific instructions for the release of Scala you are targeting can be found in the `CONTRIBUTING.md` file for that [github branch](https://github.com/scala/scala)
 
-1. [Select a bug to fix from JIRA](/contribute/#community-tickets), or if you found the bug yourself and want to fix it, [create a JIRA issue](/contribute/bug-reporting-guide/) (but please 
+1. [Select a bug to fix from JIRA](/contribute/#community-tickets), or if you found the bug yourself and want to fix it, [create a JIRA issue](/contribute/bug-reporting-guide/) (but please
 [make sure it's not a duplicate](/contribute/bug-reporting-guide/#reporting-confirmed-bugs-is-a-sin)).
-2. Optional ([but recommended](/contribute/scala-internals/#why-its-a-good-idea)), announce your intention to work on the bug on [scala-internals](/contribute/scala-internals/). After all, don't you want to work on a team with 
+2. Optional ([but recommended](/contribute/scala-internals/#why-its-a-good-idea)), announce your intention to work on the bug on [scala-internals](/contribute/scala-internals/). After all, don't you want to work on a team with
 [these friendly people](/contribute/hacker-guide/#connect) - it's one of the perks of contributing.
 3. [Fork the Scala repository](/contribute/hacker-guide/#fork) and clone your fork (if you haven't already).
 4. [Create a feature branch](/contribute/hacker-guide/#branch) to work on: use the branch name `issue/NNNN` where NNNN is the JIRA issue number.

@@ -1,7 +1,7 @@
 ---
 title: IDE and Build Tool Contributions
 layout: inner-page-no-masthead
-permalink: /contribute/tools/
+# permalink: /contribute/tools/
 includeTOC: true
 
 # Projects list:
@@ -45,7 +45,7 @@ projects:
     homeLink: http://docs.scala-lang.org/tutorials/partest-guide.html
     issuesLink: https://github.com/scala/scala-partest/issues
     readmeLink: https://github.com/scala/scala-partest/blob/master/README.md
-    contributingLink: 
+    contributingLink:
   - title: Ensime
     description: Scala Support for Text Editors
     icon: https://avatars0.githubusercontent.com/u/5089042?v=3&s=200
@@ -76,7 +76,7 @@ projectsInNeed:
     description: Scala Decoder (part of scala/scala)
     icon: https://avatars1.githubusercontent.com/u/57059?v=3&s=200
     link: https://github.com/scala/scala
-    homeLink: 
+    homeLink:
     issuesLink: https://issues.scala-lang.org/issues/?jql=status%20%3D%20Open%20AND%20text%20~%20%22scalap%22
     readmeLink: https://github.com/scala/scala#welcome
     contributingLink: https://github.com/sbt/sbt/blob/0.13/CONTRIBUTING.md
@@ -103,7 +103,7 @@ if you would like to help revive them.
 
 ### Broken Links?
 
-Stuff changes. Found a broken link or something that needs updating on this page? Please, consider [submitting a documentation pull request](/contribute/documentation/#updating-scala-langorg) to fix it. 
+Stuff changes. Found a broken link or something that needs updating on this page? Please, consider [submitting a documentation pull request](/contribute/documentation/#updating-scala-langorg) to fix it.
 
 ### Projects
 

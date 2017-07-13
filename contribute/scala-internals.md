@@ -7,11 +7,11 @@ includeTOC: true
 
 ## scala-internals
 
-The [scala-internals mailing list](https://groups.google.com/d/forum/scala-internals) is where technical and logistical discussions concerning bugs, bug fixes, documentation, improvements, new features and other contributor related topics occur. 
+The [scala-internals mailing list](https://groups.google.com/d/forum/scala-internals) is where technical and logistical discussions concerning bugs, bug fixes, documentation, improvements, new features and other contributor related topics occur.
 
 ### Coordinating on scala-internals
 
-Prior to commencing on contribution work on larger changes to the Scala project, it is recommended (but not required) that you make a post on scala-internals announcing your intention. It's a great time to invite any help, advice or ask any questions you might have. It's also a great place to meet peers, one of whom will probably be reviewing your contribution at some point.  For smaller bug fixes or documentation changes where the risk of effort duplication is minimal, you can skip this post. 
+Prior to commencing on contribution work on larger changes to the Scala project, it is recommended (but not required) that you make a post on scala-internals announcing your intention. It's a great time to invite any help, advice or ask any questions you might have. It's also a great place to meet peers, one of whom will probably be reviewing your contribution at some point.  For smaller bug fixes or documentation changes where the risk of effort duplication is minimal, you can skip this post.
 
 To help subscribers on the scala-internals list to sort through the postings, we request that the following topic labels are applied when you start a new post please:
 
@@ -44,4 +44,3 @@ While it is optional to announce your intentions/work items on scala-internals b
 * There are a lot of nice people waiting to talk to you on scala-internals, you might be surprised how valuable and pleasant you find the experience of talking to them.
 
 If all of this has not convinced you then, please, go ahead and work on contributions anyway. It *is* less important to post to scala-internals first for small, self contained bugs than it is for larger issues or features, and not having posted first will not be a reason for your PR to be rejected, it just might be a rougher review/merge process than if you had posted first. It's your choice.
-

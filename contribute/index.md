@@ -1,7 +1,7 @@
 ---
 title: Contribute
 layout: inner-page-no-masthead
-permalink: /contribute/
+# permalink: /contribute/
 includeTOC: true
 ---
 
@@ -22,7 +22,7 @@ how to efficiently report a bug.
 
 ### Contribute
 
-Coordination of contribution efforts takes place on the 
+Coordination of contribution efforts takes place on the
 [scala-internals Google group](/contribute/scala-internals/).
 
 {% include column-list-of-items.html collection=site.contribute_resources %}
