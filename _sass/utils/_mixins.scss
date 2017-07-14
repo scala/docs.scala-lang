@@ -1,0 +1,85 @@
+// MIXINS
+//------------------------------------------------
+//------------------------------------------------
+
+// Breakpoints
+//------------------------------------------------
+@mixin bp($point) {
+	@if $point==xxlarge {
+		@media (max-width: $bp-xxlarge) {
+			@content;
+		}
+	}
+	@if $point==xlarge {
+		@media (max-width: $bp-xlarge) {
+			@content;
+		}
+	}
+	@if $point==large {
+		@media (max-width: $bp-large) {
+			@content;
+		}
+	}
+	@if $point==medium {
+		@media (max-width: $bp-medium) {
+			@content;
+		}
+	}
+	@if $point==small {
+		@media (max-width: $bp-small) {
+			@content;
+		}
+	}
+}
+
+// Images
+//------------------------------------------------
+@mixin image-size {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+// Font
+//------------------------------------------------
+@mixin font-smoothing($value: on) {
+    @if $value == on {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    @else {
+        -webkit-font-smoothing: subpixel-antialiased;
+        -moz-osx-font-smoothing: auto;
+    }
+}
+
+// Border
+//------------------------------------------------
+@mixin border-radius($radius) {
+  border-radius: $radius;
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  -o-border-radius: $radius;
+}
+
+// User select
+//------------------------------------------------
+@mixin no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+
+// Box Shadow
+//------------------------------------------------
+@mixin box-shadow($params) {
+  -webkit-box-shadow: $params;
+     -moz-box-shadow: $params;
+          box-shadow: $params;
+}

@@ -1,0 +1,16 @@
+// TITLE PAGE
+//------------------------------------------------
+//------------------------------------------------
+
+.title-page {
+  background: $brand-tertiary;
+  height: 200px;
+  h1 {
+    font-size: 1.875rem;
+    font-family: $base-font-family;
+    padding-top: $padding-large;
+    text-transform: uppercase;
+    text-shadow: $text-shadow;
+    color: #fff;
+  }
+}

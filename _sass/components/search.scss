@@ -1,0 +1,54 @@
+// Search
+//------------------------------------------------
+//------------------------------------------------
+
+.search-container {
+    position: relative;
+
+    .icon-search {
+        position: absolute;
+        left: 14px;
+        top: 4px;
+        z-index: 30;
+    }
+
+    input {
+        padding: 8px 18px 8px 40px;
+        appearance: none;
+        font-size: $base-font-size;
+        border-radius: $border-radius-base;
+        width: 100%;
+        box-sizing: border-box;
+
+        &:focus {
+            outline: none;
+            background: rgba(#fff, 0.9);
+            @include box-shadow($box-shadow-inner);
+            border-radius: 0;
+        }
+    }
+
+    .result-container {
+        position: absolute;
+        display: none;
+        width: 100%;
+        left: 0;
+        top: 38px;
+        background: #fff;
+        @include box-shadow($box-shadow-search);
+        padding: 10px;
+
+        li {
+          border-bottom: $base-border-gray;
+
+            a {
+                display: block;
+                padding: 4px 16px;
+            }
+
+            &:last-child {
+              border-bottom: none;
+            }
+        }
+    }
+}

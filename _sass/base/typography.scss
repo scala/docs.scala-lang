@@ -1,0 +1,62 @@
+// TYPOGRAPHY
+//------------------------------------------------
+//------------------------------------------------
+html {
+font-size: $base-font-size;
+
+}
+
+body {
+    color: $base-font-color;
+    font-family: $base-font-family;
+    font-weight: $font-regular;
+    line-height: $base-line-height;
+    @include font-smoothing(on);
+}
+* {
+  transition: $base-transition;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $heading-font-family;
+    line-height: $heading-line-height;
+    font-weight: $font-black;
+    margin: 0;
+}
+
+h2 {
+  font-weight: $font-regular;
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    color: $base-link-color;
+    text-decoration: none;
+    transition: $base-transition;
+    &:active,
+    &:focus,
+    &:hover {
+        color: $hover-link-color;
+        text-decoration: underline;
+    }
+}
+
+hr {
+    border-bottom: $base-border-gray;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    margin: 0;
+}
+
+blockquote {
+  margin: 0;
+}

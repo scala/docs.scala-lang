@@ -1,0 +1,31 @@
+.upcoming-events {
+    background: $gray;
+
+    .heading-line {
+        h2 {
+            span {
+                background: $gray;
+            }
+        }
+    }
+
+    .events-items-list {
+        @include clearfix;
+
+        .event-item {
+            @include span-columns(4);
+            @include omega(3n);
+            @include bp(large) {
+                 @include span-columns(12);
+            }
+        }
+    }
+
+    .card {
+        background: $gray-dark;
+
+        &:hover {
+            background: $gray-darker;
+        }
+    }
+}

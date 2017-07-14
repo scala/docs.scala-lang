@@ -1,0 +1,71 @@
+// RUNS
+//------------------------------------------------
+//------------------------------------------------
+
+#site-main {
+    .runs {
+        padding: 30px 0;
+        background: $gray;
+
+        h2 {
+            color: #fff;
+            text-align: center;
+            font-size: $font-size-large;
+        }
+
+        ul {
+            @include display(flex);
+            @include align-items(center);
+            @include justify-content(center);
+            margin-top: 30px;
+            li:nth-child(2) {
+              height: 100px;
+              width: 1px;
+             background: $base-border-color-white;
+              margin-left: 36px;
+              margin-right: 36px;
+            }
+            li:nth-child(1),
+            li:nth-child(3) {
+
+                @include border-radius(100%);
+                @include display(flex);
+                @include align-items(center);
+                @include justify-content(center);
+
+
+
+                span {
+
+                    @include border-radius(100%);
+                    @include display(flex);
+                    @include align-items(center);
+                    @include justify-content(center);
+
+                    img {
+                        height: 56px;
+                        width: 56px;
+                        opacity: 0.3;
+                        transition: $base-transition;
+                    }
+                }
+
+                &:hover {
+                  span {
+                    img {
+                      opacity: 1;
+                    }
+                  }
+                }
+            }
+        }
+
+        p {
+            text-align: center;
+            color: rgba(#fff, 0.6);
+            margin-top: 28px;
+            text-transform: uppercase;
+            font-size: $font-size-small;
+        }
+    }
+}

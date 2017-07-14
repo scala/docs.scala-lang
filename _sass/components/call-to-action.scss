@@ -1,0 +1,39 @@
+// CALL TO ACTION
+//------------------------------------------------
+//------------------------------------------------
+
+.call-to-action {
+    text-align: center;
+    margin-top: $padding-large;
+
+    &.action-medium {
+        margin-top: $padding-medium;
+    }
+
+    &.action-small {
+        margin-top: $padding-small;
+    }
+
+    p {
+        font-size: $font-size-small;
+        color: $base-font-color-inverse;
+
+        &.align-top {
+            margin-bottom: 12px;
+        }
+
+        &.align-bottom {
+            margin-top: 12px;
+        }
+
+        a {
+          text-decoration: underline;
+          color: $base-font-color-inverse;
+          &:active,
+          &:focus,
+          &:hover {
+            color: #fff;
+          }
+        }
+    }
+}

@@ -1,0 +1,52 @@
+// HEADING LINE
+//------------------------------------------------
+//------------------------------------------------
+
+.heading-line {
+    margin-bottom: $padding-large;
+    text-align: center;
+
+    h2 {
+        color: #fff;
+        position: relative;
+        font-size: $font-size-h2;
+        font-weight: $font-bold;
+
+        span {
+            padding: 0 30px;
+            position: relative;
+            background: $gray-dark;
+            z-index: 5;
+        }
+
+
+
+        &:before {
+            content: "";
+            display: block;
+            height: 1px;
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            background: $base-border-color-white;
+        }
+    }
+
+    .sub-heading {
+        font-size: $font-size-small;
+        color: $base-font-color-inverse;
+        font-style: italic;
+    }
+
+    .lead {
+        font-size: $font-size-large;
+        color: $base-font-color-inverse;
+        margin-top: 10px;
+        @include span-columns(8);
+        @include shift(2);
+        @include bp(medium) {
+             @include span-columns(12);
+            @include shift(0);
+        }
+    }
+}
