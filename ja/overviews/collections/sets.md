@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: 集合
 
 discourse: false

@@ -1,5 +1,5 @@
 ---
-layout: sip-landing
+layout: inner-page-no-masthead
 title: SIP Meeting Minutes - 25th October 2016
 ---
 

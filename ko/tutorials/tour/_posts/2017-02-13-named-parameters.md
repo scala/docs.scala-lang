@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+layout: inner-page-no-masthead
 title: 이름을 지정한 파라미터
 
 discourse: false

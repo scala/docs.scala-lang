@@ -1,0 +1,37 @@
+<section class="table-of-content">
+	<div class="wrap">
+		<div class="inner-box">
+			<div class="community">
+				<div class="discourse">
+					<h3>Discourse</h3>
+					<span>Mailing list</span>
+					<ul>
+						{% for forum in site.data.chats-forums.discourseForums %}
+							<li>
+								<img src="/resources/img/frontpage/discourse-logo.png" alt="{{forum.title}}">
+								<div>
+									<h4><a href="{{forum.url}}">{{forum.title}}</a></h4>
+									<p>{{forum.subtitle}}</p>
+								</div>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+				<div class="gitter">
+					<h3>Gitter</h3>
+					<span>Real-time (topic-specialized) chat</span>
+					<ul>
+						{% for channel in site.data.chats-forums.gitterChannels %}
+							<li>
+								<a href="{{channel.url}}">
+									<img src="/resources/img/frontpage/gitter-logo.png" alt="{{channel.name}}">
+									<h4>{{channel.name}}</h4>
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,5 +1,5 @@
 ---
-layout: sip
+layout: inner-page-no-masthead
 discourse: true
 title: SIP-NN - Match infix & prefix types to meet expression rules 
 ---
@@ -22,10 +22,10 @@ Your feedback is welcome! If you're interested in discussing this proposal, head
 Currently scala allows symbol operators (`-`, `*`, `~~>`, etc.) for both type names and definition names.
 Unfortunately, there is a 'surprise' element since the two differ in behaviour:
 
-### Infix operator precedence and associativity 
-Infix types are 'mostly' left-associative, 
-while the expression operation precedence is determined by the operator's first character (e.g., `/` is precedent to `+`). 
-Please see [Infix Types](http://scala-lang.org/files/archive/spec/2.12/03-types.html#infix-types) and [Infix Operations](http://scala-lang.org/files/archive/spec/2.12/06-expressions.html#infix-operations) sections of the Scala specifications for more details. 
+### Infix operator precedence and associativity
+Infix types are 'mostly' left-associative,
+while the expression operation precedence is determined by the operator's first character (e.g., `/` is precedent to `+`).
+Please see [Infix Types](http://scala-lang.org/files/archive/spec/2.12/03-types.html#infix-types) and [Infix Operations](http://scala-lang.org/files/archive/spec/2.12/06-expressions.html#infix-operations) sections of the Scala specifications for more details.
 
 **Example**:
 
@@ -59,8 +59,8 @@ Please see [Infix Types](http://scala-lang.org/files/archive/spec/2.12/03-types.
     {% endhighlight %}
 
 ### Prefix operators bracketless unary use
-While expressions have prefix unary operators, there are none for types. See the [Prefix Operations](http://scala-lang.org/files/archive/spec/2.12/06-expressions.html#prefix-operations) section of the Scala specification. 
-This is a lacking feature of the type language Scala offers. See also interactions of this feature with other Scala features, further down this text. 
+While expressions have prefix unary operators, there are none for types. See the [Prefix Operations](http://scala-lang.org/files/archive/spec/2.12/06-expressions.html#prefix-operations) section of the Scala specification.
+This is a lacking feature of the type language Scala offers. See also interactions of this feature with other Scala features, further down this text.
 
 
 **Example**:
@@ -101,7 +101,7 @@ The proposal is split into two; type infix precedence, and prefix unary types. N
 Make infix types conform to the same precedence and associativity traits as expression operations.
 
 ### Proposal, Part 2: Prefix unary types
-Add prefix types, exactly as specified for prefix expression. 
+Add prefix types, exactly as specified for prefix expression.
 
 
 ---
@@ -112,22 +112,22 @@ The general motivation is developers expect terms and types to behave equally re
 ### Motivating examples
 
 #### Dotty infix type similarity
-Dotty infix type associativity and precedence seem to act the same as expressions. 
+Dotty infix type associativity and precedence seem to act the same as expressions.
 No documentation available to prove this, but the infix example above works perfectly in dotty.
 
 Dotty has no prefix types, same as Scalac.
 
 #### Singleton-ops library example
-The [singleton-ops library](https://github.com/fthomas/singleton-ops) with [Typelevel Scala](https://github.com/typelevel/scala) (which implemented [SIP-23](http://docs.scala-lang.org/sips/pending/42.type.html)) enables developers to express literal type operations more intuitively. 
-For example: 
+The [singleton-ops library](https://github.com/fthomas/singleton-ops) with [Typelevel Scala](https://github.com/typelevel/scala) (which implemented [SIP-23](http://docs.scala-lang.org/sips/pending/42.type.html)) enables developers to express literal type operations more intuitively.
+For example:
 
     {% highlight scala %}
     import singleton.ops._
-    
+
     val four1 : 4 = implicitly[2 + 2]
     val four2 : 2 + 2 = 4
     val four3 : 1 + 3 = implicitly[2 + 2]
-    
+
     class MyVec[L] {
       def doubleSize = new MyVec[2 * L]
       def nSize[N] = new MyVec[N * L]
@@ -160,8 +160,8 @@ E.g.
     {% highlight scala %}
     trait Negate[A]
     trait Positive[A]
-    type unary_-[A] = Negate[A] 
-    type unary_+[A] = Positive[A] 
+    type unary_-[A] = Negate[A]
+    type unary_+[A] = Positive[A]
     trait Contravariant[B, -A <: -B] //contravariant A subtype upper-bounded by Negate[B]
     trait Covariant[B, +A <: +B] //covariant A subtype upper-bounded by Positive[B]
     {% endhighlight %}
@@ -171,10 +171,10 @@ Negative literal types are annotated using the `-` symbol. This can lead to the 
 
     {% highlight scala %}
     trait Negate[A]
-    type unary_-[A] = Negate[A] 
+    type unary_-[A] = Negate[A]
     trait MyTrait[B]
-    
-    type MinusFortyTwo = MyTrait[-42] 
+
+    type MinusFortyTwo = MyTrait[-42]
     type NegateFortyTwo = MyTrait[Negate[42]]
     {% endhighlight %}
 
@@ -185,7 +185,7 @@ Note: It is not possible to annotate a positive literal type in Scala (checked b
     {% highlight scala %}
     val a : 42 = +42 //works
     val b : -42 = -42 //works
-    val c : +42 = 42 //error: ';' expected but integer literal found 
+    val c : +42 = 42 //error: ';' expected but integer literal found
     {% endhighlight %}
 
 This means that if unary prefix types are added, then `+42` will be a type expansion of `unary_+[42]`.

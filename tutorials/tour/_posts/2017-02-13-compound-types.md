@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+layout: tour
 title: Compound Types
 
 discourse: true

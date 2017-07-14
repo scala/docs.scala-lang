@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: Conversions Between Java and Scala Collections
 
 discourse: true

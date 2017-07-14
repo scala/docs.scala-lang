@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: Architecture of the Parallel Collections Library
 
 discourse: true

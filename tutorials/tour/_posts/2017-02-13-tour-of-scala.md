@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+layout: tour
 title: Introduction
 
 discourse: true
@@ -10,6 +10,8 @@ num: 1
 languages: [ba, es, ko, pt-br, pl]
 outof: 34
 next-page: basics
+redirect_from:
+  - /tutorials/index.html
 ---
 
 Scala is a modern multi-paradigm programming language designed to express common programming patterns in a concise, elegant, and type-safe way. It smoothly integrates features of object-oriented and functional languages.

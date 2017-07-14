@@ -1,5 +1,5 @@
 ---
-layout: guides-thanks
+layout: inner-page-no-masthead
 language: zh-cn
 title: 致谢名单
 ---

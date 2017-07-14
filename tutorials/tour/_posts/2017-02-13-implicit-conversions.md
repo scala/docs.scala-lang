@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+layout: tour
 title: Implicit Conversions
 
 discourse: true

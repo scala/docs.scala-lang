@@ -1,5 +1,5 @@
 ---
-layout: sip
+layout: inner-page-no-masthead
 title: SIP-15 - Value Classes
 
 vote-status: accepted

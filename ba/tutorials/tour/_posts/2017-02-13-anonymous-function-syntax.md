@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+layout: inner-page-no-masthead
 title: Sintaksa anonimnih funkcija
 
 discourse: false

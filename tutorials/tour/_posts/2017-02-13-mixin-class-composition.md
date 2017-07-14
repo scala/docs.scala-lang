@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+layout: tour
 title: Class Composition with Mixins
 
 discourse: true

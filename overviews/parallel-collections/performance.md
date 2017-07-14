@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: Measuring Performance
 
 discourse: true

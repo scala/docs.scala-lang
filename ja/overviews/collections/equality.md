@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: 等価性
 
 discourse: false

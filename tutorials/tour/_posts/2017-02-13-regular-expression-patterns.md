@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+layout: tour
 title: Regular Expression Patterns
 
 discourse: true

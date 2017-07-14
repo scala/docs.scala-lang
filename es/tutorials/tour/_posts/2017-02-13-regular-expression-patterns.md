@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+layout: inner-page-no-masthead
 title: Patrones basados en expresiones regulares
 
 discourse: false

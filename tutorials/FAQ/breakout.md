@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: What is breakOut, and how does it work?
 
 discourse: true

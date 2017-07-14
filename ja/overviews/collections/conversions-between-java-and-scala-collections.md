@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: Java と Scala 間のコレクションの変換
 
 discourse: false

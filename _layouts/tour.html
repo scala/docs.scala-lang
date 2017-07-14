@@ -1,0 +1,17 @@
+---
+layout: inner-page-parent
+permalink: /tutorials/:categories/:title/
+---
+<section class="content">
+	<div class="wrap">
+		<div class="content-primary">
+			<div class="inner-box">
+				{{content}}
+        {% include pager.txt %}
+			</div>
+		</div>
+
+		<!-- TOC -->
+		{% include tutorial-toc.html %}
+	</div>
+</section>

@@ -1,5 +1,5 @@
 ---
-layout: sip
+layout: inner-page-no-masthead
 discourse: true
 title: SIP-19 - Implicit Source Locations
 
@@ -26,7 +26,7 @@ To obtain the source location for each invocation of a method `debug`, say, one 
     def debug(message: String)(implicit loc: SourceLocation): Unit = {
       println("@" + loc.fileName + ":" + loc.line + ": " + message)
     }
-    
+
 This means that inside the body of the `debug` method, we can access the source location of its current invocation through the `loc` parameter. For example, suppose
 we are invoking `debug` on line `34` in a file `"MyApp.scala"`:
 
@@ -43,10 +43,10 @@ The `SourceLocation` trait is a new type member of the `scala.reflect` package. 
     trait SourceLocation {
       /** The name of the source file */
       def fileName: String
-    
+
       /** The line number */
       def line: Int
-    
+
       /** The character offset */
       def charOffset: Int
     }
@@ -64,4 +64,3 @@ First, if there is already an implicit argument of type `SourceLocation`, this a
 An implementation of this proposal can be found at: [https://github.com/phaller/scala/tree/topic/source-location](https://github.com/phaller/scala/tree/topic/source-location)
 
 An extension of this proposal is also part of Scala-Virtualized. The extension adds a subtrait `SourceContext` which in addition provides access to information, such as variable names in the context of a method invocation. More information can be found at: [https://github.com/TiarkRompf/scala-virtualized/wiki/SourceLocation-and-SourceContext](https://github.com/TiarkRompf/scala-virtualized/wiki/SourceLocation-and-SourceContext)
-

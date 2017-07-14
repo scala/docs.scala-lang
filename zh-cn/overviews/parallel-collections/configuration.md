@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: 配置并行集合
 
 discourse: false

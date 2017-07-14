@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+layout: inner-page-no-masthead
 title: 시퀀스 컴프리헨션
 
 discourse: false

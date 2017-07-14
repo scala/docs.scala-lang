@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+layout: tour
 title: Pattern Matching
 
 discourse: true

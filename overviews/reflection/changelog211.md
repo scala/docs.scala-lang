@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: Changes in Scala 2.11
 
 partof: reflection
