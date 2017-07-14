@@ -12,7 +12,7 @@ includeTOC: true
       <p>Get a peek into the inners of the Scala compiler.</p>
     </div>
     <div class="span4 doc-block">
-      <h3><a href="{{ site.baseurl }}/contribute/bug-reporting-guide/">Report an issue</a></h3>
+      <h3><a href="{{ site.baseurl }}/contribute/bug-reporting-guide.html">Report an issue</a></h3>
       <p>File a bug report or a feature request.</p>
     </div>
   </div>
@@ -54,8 +54,8 @@ unencumbered by copyrights or patents.
 
 This is the impatient developer's checklist for the steps to submit a bug-fix pull request to the Scala project. For more information, description and justification for the steps, follow the links in that step. Further specific instructions for the release of Scala you are targeting can be found in the `CONTRIBUTING.md` file for that [github branch](https://github.com/scala/scala)
 
-1. [Select a bug to fix from JIRA](/contribute/#community-tickets), or if you found the bug yourself and want to fix it, [create a JIRA issue](/contribute/bug-reporting-guide/) (but please
-[make sure it's not a duplicate](/contribute/bug-reporting-guide/#reporting-confirmed-bugs-is-a-sin)).
+1. [Select a bug to fix from JIRA](/contribute/#community-tickets), or if you found the bug yourself and want to fix it, [create a JIRA issue](/contribute/bug-reporting-guide.html) (but please
+[make sure it's not a duplicate](/contribute/bug-reporting-guide.html#reporting-confirmed-bugs-is-a-sin)).
 2. Optional ([but recommended](/contribute/scala-internals/#why-its-a-good-idea)), announce your intention to work on the bug on [scala-internals](/contribute/scala-internals/). After all, don't you want to work on a team with
 [these friendly people](/contribute/hacker-guide/#connect) - it's one of the perks of contributing.
 3. [Fork the Scala repository](/contribute/hacker-guide/#fork) and clone your fork (if you haven't already).

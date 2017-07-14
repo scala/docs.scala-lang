@@ -17,7 +17,7 @@ That depends on what you want to contribute. Below are some getting started reso
 
 ### Reporting bugs
 
-See our [bug reporting guide](/contribute/bug-reporting-guide/) to learn
+See our [bug reporting guide](/contribute/bug-reporting-guide.html) to learn
 how to efficiently report a bug.
 
 ### Contribute
