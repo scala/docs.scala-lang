@@ -22,8 +22,8 @@ how to efficiently report a bug.
 
 ### Contribute
 
-Coordination of contribution efforts takes place on the
-[scala-internals Google group](/contribute/scala-internals/).
+Coordination of contribution efforts takes place on
+[Scala Contributors](https://contributors.scala-lang.org/).
 
 {% include column-list-of-items.html collection=site.contribute_resources %}
 

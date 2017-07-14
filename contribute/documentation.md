@@ -12,7 +12,7 @@ There are several ways you can help out with the improvement of Scala documentat
 * Guides, Overviews, Tutorials, Cheat Sheets and more on the docs.scala-lang.org site
 * Updating scala-lang.org
 
-Please read this page, and the pages linked from this one, fully before contributing documentation. Many of the questions you have will be answered in these resources. If you have a question that isn't answered, feel free to ask on the [scala-internals Google group](https://groups.google.com/forum/#!forum/scala-internals) and then, please, submit a pull request with updated documentation reflecting that answer.
+Please read this page, and the pages linked from this one, fully before contributing documentation. Many of the questions you have will be answered in these resources. If you have a question that isn't answered, feel free to ask on the [Scala Contributors](https://contributors.scala-lang.org/) mailing list and then, please, submit a pull request with updated documentation reflecting that answer.
 
 **General requirements** for documentation submissions include spell-checking all written language, ensuring code samples compile and run correctly, correct grammar, and clean formatting/layout of the documentation.
 
@@ -27,7 +27,7 @@ Please *follow the issue submission process closely* to help prevent duplicate i
 * [Claim Scaladoc Issues and Provide Documentation](/contribute/scala-standard-library-api-documentation/) - please claim issues prior to working on a specific scaladoc task to prevent duplication of effort. If you sit on an issue for too long without submitting a pull request, it will revert back to unassigned and you will need to re-claim it.
 * You can also just
 [submit new Scaladoc](/contribute/scala-standard-library-api-documentation/)
-without creating an issue, but please look to see if there is an issue already submitted for your task and claim it if there is. If not, please post your intention to work on a specific scaladoc task on scala-internals so that people know what you are doing.
+without creating an issue, but please look to see if there is an issue already submitted for your task and claim it if there is. If not, please post your intention to work on a specific scaladoc task on [Scala Contributors](https://contributors.scala-lang.org/) so that people know what you are doing.
 
 ### The Main Scala Documentation Site
 

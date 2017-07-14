@@ -8,7 +8,7 @@ includeTOC: true
 <div class="container">
   <div class="row">
     <div class="span4 doc-block">
-      <h3><a href="http://groups.google.com/group/scala-internals">Scala Internals</a></h3>
+      <h3><a href="https://contributors.scala-lang.org/">Scala Contributors</a></h3>
       <p>Get a peek into the inners of the Scala compiler.</p>
     </div>
     <div class="span4 doc-block">
@@ -56,7 +56,7 @@ This is the impatient developer's checklist for the steps to submit a bug-fix pu
 
 1. [Select a bug to fix from JIRA](/contribute/#community-tickets), or if you found the bug yourself and want to fix it, [create a JIRA issue](/contribute/bug-reporting-guide.html) (but please
 [make sure it's not a duplicate](/contribute/bug-reporting-guide.html#reporting-confirmed-bugs-is-a-sin)).
-2. Optional ([but recommended](/contribute/scala-internals/#why-its-a-good-idea)), announce your intention to work on the bug on [scala-internals](/contribute/scala-internals/). After all, don't you want to work on a team with
+2. Optional ([but recommended](/contribute/scala-internals/#why-its-a-good-idea)), announce your intention to work on the bug on [Scala Contributors](https://contributors.scala-lang.org/). After all, don't you want to work on a team with
 [these friendly people](/contribute/hacker-guide/#connect) - it's one of the perks of contributing.
 3. [Fork the Scala repository](/contribute/hacker-guide/#fork) and clone your fork (if you haven't already).
 4. [Create a feature branch](/contribute/hacker-guide/#branch) to work on: use the branch name `issue/NNNN` where NNNN is the JIRA issue number.
@@ -75,7 +75,7 @@ Need more information or a little more hand-holding for the first one? We got yo
 
 For larger, more ambitious changes (e.g. new language features), the first step to making a change is to discuss it with the community at large, to make sure everyone agrees on the idea
 and on the implementation plan. Announce the change
-on the [scala-internals](http://groups.google.com/group/scala-internals) mailing list and get developer feedback. For really complex changes, a [Scala Improvement Process (SIP)](http://docs.scala-lang.org/sips/) document might be required, but the first step is always to discuss it on the mailing list and if a SIP is required, that will be discussed on the mailing list.
+on the [Scala Contributors](https://contributors.scala-lang.org/) mailing list and get developer feedback. For really complex changes, a [Scala Improvement Process (SIP)](http://docs.scala-lang.org/sips/) document might be required, but the first step is always to discuss it on the mailing list and if a SIP is required, that will be discussed on the mailing list.
 
 Contributions, big or small, simple or complex, controversial or undisputed, need to materialize as patches against
 the Scala project source tree. The [hacker guide](/contribute/hacker-guide/) will explain how to materialize your idea into a full-fledged pull request against the Scala code base.

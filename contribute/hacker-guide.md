@@ -38,7 +38,7 @@ A list of language features/libraries along with their maintainer's full names a
 
 In our running example, since Martin is the person who submitted the string interpolation Scala Improvement Proposal and implemented this language feature for Scala 2.10.0, he might be interested in learning of new bugfixes to that feature.
 
-As alluded to earlier, one must also choose an appropriate mailing list. Typically, one would use the scala-internals mailing list, as it is devoted to discussions about the core internal design and implementation of the Scala system. However, since this issue has been discussed previously on the scala-user mailing list,
+As alluded to earlier, one must also choose an appropriate mailing list. Typically, one would use the [Scala Contributors](https://contributors.scala-lang.org/) mailing list, as it is devoted to discussions about the core internal design and implementation of the Scala system. However, since this issue has been discussed previously on the scala-user mailing list,
 in this example, we post to the [the scala-user mailing list](http://groups.google.com/group/scala-user) about our issue.
 
 <img src="{{ site.baseurl }}/resources/img/01-post.png" alt="Posting to scala-user" class="centerclear" />
@@ -202,7 +202,7 @@ If you intend on contributing to Scala collections, please make sure you're fami
 
 ##### The Scala Compiler
 
-Documentation about the internal workings of the Scala compiler is scarce, and most of the knowledge is passed around by email (scala-internals mailing list), ticket, or word of mouth. However the situation is steadily improving. Here are the resources that might help:
+Documentation about the internal workings of the Scala compiler is scarce, and most of the knowledge is passed around by email ([Scala Contributors](https://contributors.scala-lang.org/) mailing list), ticket, or word of mouth. However the situation is steadily improving. Here are the resources that might help:
 
 * [Compiler internals videos by Martin Odersky](http://www.scala-lang.org/old/node/598.html) are quite dated, but still very useful. In this three-video
   series Martin explains the general architecture of the compiler, and the basics of the front-end, which has recently become Scala reflection API.
@@ -212,7 +212,7 @@ Documentation about the internal workings of the Scala compiler is scarce, and m
   at Lang.NEXT 2012 in which Martin elaborates on the design of scalac and the architecture of the reflection API.
 * [Scala compiler corner](http://lampwww.epfl.ch/~magarcia/ScalaCompilerCornerReloaded/) contains extensive documentation about
   most of the post-typer phases (i.e. the backend) in the Scala compiler.
-* [scala-internals](http://groups.google.com/group/scala-internals), a mailing list which hosts discussions about the core
+* [Scala Contributors](https://contributors.scala-lang.org/), a mailing list which hosts discussions about the core
   internal design and implementation of the Scala system.
 
 ##### Other Projects
