@@ -3,6 +3,7 @@ pipeline:
     image: scalaplatform/jdk8-ruby2-coursier:0.1
     pull: true
     commands:
+      - rbenv local 2.4.1
       - bundle install
       - ./scripts/run-tut.sh
       - rm -r tut-tmp
