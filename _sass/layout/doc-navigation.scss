@@ -1,0 +1,130 @@
+// DOC NAVIGATION
+//------------------------------------------------
+//------------------------------------------------
+
+$nav-height: 46px;
+
+.doc-navigation {
+    padding: 10px 20px;
+    @include display(flex);
+    @include flex-direction(row);
+    @include align-items(center);
+    @include justify-content(space-between);
+    .navigation-bdand {
+      img {
+        width: 58px;
+        height: 20px;
+        @include bp(large) {
+          display: none;
+        }
+      }
+    }
+    .navigation-ellipsis {
+        display: none;
+        font-size: 1.333rem;
+        cursor: pointer;
+        @include bp(medium) {
+            color: rgba(255, 255, 255, 0.5);
+            order: 3;
+            display: block;
+
+            a {
+              &:active,
+              &:hover {
+                color: #ffffff;
+              }
+            }
+        }
+    }
+
+    .navigation-menu {
+        .navigation-menu-item {
+            display: inline-block;
+
+            .navigation-dropdown {
+              background: $gray;
+              min-width: 190px;
+              position: absolute;
+              margin-top: 10px;
+              display: none;
+              z-index: 1;
+              box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+
+              @include bp(medium) {
+                  order: 3;
+              }
+
+              li {
+                line-height: $nav-height;
+                &:hover {
+                  background: $gray-darker;
+                  text-decoration: none;
+                  a {
+                    color: #ffffff;
+                    &:hover {
+                      text-decoration: none;
+                    }
+                  }
+                }
+              }
+            }
+
+            @include bp(medium) {
+              @include after(3) {
+                display: none;
+              }
+            }
+
+            &:last-child {
+                margin-right: 0;
+            }
+
+            a {
+                display: block;
+                padding: 5px 15px;
+                color: rgba(255, 255, 255, 0.5);
+                font-weight: $font-bold;
+
+                &:focus,
+                &.active {
+                    color: #ffffff;
+                    text-decoration: none;
+                }
+
+                &:hover {
+                  text-decoration: none;
+                }
+
+                &:not(:only-child):after {
+                  padding-left: 4px;
+                  content: ' ▾';
+                } // Dropdown list
+            }
+        }
+    }
+}
+
+.navigation-submenu {
+  li {
+    text-align: center;
+    line-height: $nav-height;
+
+    &:hover {
+      background: $gray-darker;
+      text-decoration: none;
+      a {
+        color: #ffffff;
+      }
+    }
+
+    a {
+      padding-left: 20px;
+      display: block;
+      color: rgba(255, 255, 255, 0.5);
+      font-weight: $font-bold;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}

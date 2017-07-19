@@ -71,6 +71,47 @@ $(".hide").click(function() {
     $(".new-on-the-blog").hide();
 });
 
+// Documentation menu dropdown toggle
+$(document).ready(function() { // DOM ready
+  // If a link has a dropdown, add sub menu toggle.
+  $('nav ul li a:not(:only-child)').click(function(e) {
+
+    // if mobile...
+    if ($(".navigation-ellipsis").css("display") == "block" ){
+
+      // toggle the submenu associated with the clicked id
+      var submenuId = $(this).attr('id');
+      $(".doc-navigation-submenus #" + submenuId).toggle();
+
+      // Close one dropdown when selecting another
+      $('.navigation-submenu:not(#' + submenuId + ')').hide();
+
+    } else { // not mobile
+
+      // toggle the dropdown associted with the clicked li element
+      $(this).siblings('.navigation-dropdown').toggle();
+
+      // Close one dropdown when selecting another
+      $('.navigation-dropdown').not($(this).siblings()).hide();
+    }
+    e.stopPropagation();
+  });
+  // Clicking away from dropdown will remove the dropdown class
+  $('html').click(function() {
+    $('.navigation-dropdown').hide();
+    $('.navigation-submenu:not(.ellipsis-menu)').hide();
+    // $('.ellipsis-menu').hide();
+  });
+
+  // expands doc menu on mobile
+  $('.navigation-ellipsis').click(function(e) {
+    $(".navigation-submenu.ellipsis-menu").toggle();
+  });
+}); // end DOM ready
+
+
+
+
 //Tweet feed in frontpage
 $('#tweet-feed').tweetMachine('', {
     backendScript: '/webscripts/ajax/getFromTwitter.php',
@@ -208,7 +249,7 @@ var toggleStickyToc = function() {
                bottomSpacing: 500
             });
         }
-    }    
+    }
 }
 
 // Blog search
@@ -219,7 +260,7 @@ $(document).ready(function() {
       resultsContainer: document.getElementById('result-container'),
       json: '/resources/json/search.json',
       searchResultTemplate: '<li><a href="{url}">{title}</a></li>',
-      limit: 5,      
+      limit: 5,
     });
 
     $("#blog-search-bar").on("change paste keyup", function () {
@@ -260,7 +301,7 @@ $(document).ready(function() {
               $('.btn-run i').removeClass("fa-spinner fa-spin").addClass("fa fa-play");
             }, 2000);
         })
-    }    
+    }
 });
 
 // OS detection

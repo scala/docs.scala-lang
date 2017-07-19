@@ -83,3 +83,11 @@
      -moz-box-shadow: $params;
           box-shadow: $params;
 }
+
+// Select all elements after the nth element
+//------------------------------------------------
+@mixin after($num) {
+  &:nth-child(n+#{$num + 1}) {
+    @content
+   }
+}

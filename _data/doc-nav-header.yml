@@ -1,0 +1,35 @@
+- title: API
+  url: "#!"
+  submenu:
+    - title: Current
+      url: http://google.com
+    - title: Nightly
+      url: http://google.com
+    - title: All Versions
+      url: http://google.com
+- title: Learn
+  url: "#!"
+  submenu:
+    - title: Getting Started
+      url: http://google.com
+    - title: Tour of Scala
+      url: http://google.com
+    - title: Scala for Java Programmers
+      url: http://google.com
+- title: Reference
+  url: "#!"
+  submenu:
+    - title: Guides
+      url: http://google.com
+    - title: Language Spec
+      url: http://google.com
+    - title: Books
+      url: http://google.com
+- title: Style Guide
+  url: https://index.scala-lang.org
+- title: Cheatsheet
+  url: https://www.scala-lang.org/contribute/
+- title: Glossary
+  url: https://www.scala-lang.org/blog/
+- title: SIPs
+  url: https://www.scala-lang.org/blog/
