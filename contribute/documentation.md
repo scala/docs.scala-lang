@@ -31,7 +31,7 @@ without creating an issue, but please look to see if there is an issue already s
 
 ### The Main Scala Documentation Site
 
-[docs.scala-lang.org](https://wiki.scala-lang.org/) houses the primary source of written, non-API documentation for Scala. It's a github project that you can fork and submit pull requests from. It includes:
+[docs.scala-lang.org](https://docs.scala-lang.org/) houses the primary source of written, non-API documentation for Scala. It's a github project that you can fork and submit pull requests from. It includes:
 
 * Overviews
 * Tutorials
