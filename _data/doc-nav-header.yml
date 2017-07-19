@@ -24,7 +24,7 @@
     - title: Language Spec
       url: http://google.com
     - title: Books
-      url: http://google.com
+      url: "/books.html"
 - title: Style Guide
   url: https://index.scala-lang.org
 - title: Cheatsheet
