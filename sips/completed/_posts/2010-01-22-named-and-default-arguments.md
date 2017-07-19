@@ -1,5 +1,5 @@
 ---
-layout: sip
+layout: inner-page-no-masthead
 title: SID-1 Named and Default Arguments
 ---
 

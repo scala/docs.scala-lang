@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: Control Structures
 
 partof: style-guide

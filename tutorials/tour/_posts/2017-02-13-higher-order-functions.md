@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+layout: tour
 title: Higher-order Functions
 
 discourse: true

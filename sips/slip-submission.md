@@ -1,5 +1,5 @@
 ---
-layout: sip-landing
+layout: inner-page-no-masthead
 title: SLIP Submission Process
 ---
 

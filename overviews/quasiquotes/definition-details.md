@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: Definition and import details
 
 discourse: true

@@ -1,5 +1,5 @@
 ---
-layout: sip
+layout: inner-page-no-masthead
 discourse: true
 title: SIP-NN - SIP Title
 ---

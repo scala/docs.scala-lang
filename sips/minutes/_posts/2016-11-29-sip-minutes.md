@@ -1,5 +1,5 @@
 SIP-25:Static---
-layout: sip-landing
+layout: inner-page-no-masthead
 title: SIP Meeting Minutes - 29th November 2016
 ---
 

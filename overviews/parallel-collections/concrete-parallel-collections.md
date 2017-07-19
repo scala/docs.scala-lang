@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: Concrete Parallel Collection Classes
 
 discourse: true

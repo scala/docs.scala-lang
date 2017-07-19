@@ -1,5 +1,5 @@
 ---
-layout: sip
+layout: inner-page-no-masthead
 title: SIP-11 - String Interpolation
 
 vote-status: accepted

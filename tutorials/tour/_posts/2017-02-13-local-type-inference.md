@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+layout: tour
 title: Local Type Inference
 
 discourse: true

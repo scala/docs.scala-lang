@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: 具体的不可变集实体类
 
 discourse: false

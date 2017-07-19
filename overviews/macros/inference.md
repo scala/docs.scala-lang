@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: Inference-Driving Macros
 
 discourse: true

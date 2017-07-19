@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: 创建自定义并行容器
 
 discourse: false

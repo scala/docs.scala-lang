@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: The sequence traits Seq, IndexedSeq, and LinearSeq
 
 discourse: true

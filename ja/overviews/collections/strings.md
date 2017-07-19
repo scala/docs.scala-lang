@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: 文字列
 
 discourse: false

@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: Creating Collections From Scratch
 
 discourse: true

@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: コレクションの作成
 
 discourse: false

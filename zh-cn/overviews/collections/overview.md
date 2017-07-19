@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: Mutable和Immutable集合
 
 discourse: false

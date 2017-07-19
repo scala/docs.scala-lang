@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: 具体的可变容器类
 
 discourse: false

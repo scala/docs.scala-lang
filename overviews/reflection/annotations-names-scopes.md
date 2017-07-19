@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: Annotations, Names, Scopes, and More
 
 discourse: true

@@ -1,0 +1,19 @@
+<section class="table-of-content">
+	<div class="wrap">
+		<div class="inner-box">
+			<div class="documentation">
+				{% for link in page.links %}
+					<a href="{{link.link}}" class="doc-item">
+						<div class="doc-item-header">
+							<i class="{{link.icon}}"></i>
+							<h5>{{link.title}}</h5>
+						</div>
+						<div class="doc-item-main">
+							<p>{{link.description}}</p>
+						</div>
+					</a>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</section>

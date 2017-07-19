@@ -1,5 +1,5 @@
 ---
-layout: sip
+layout: inner-page-no-masthead
 title: SIP-12 - Uncluttering Scala’s syntax for control structures.
 redirect_from: "/sips/pending/uncluttering-control.html"
 

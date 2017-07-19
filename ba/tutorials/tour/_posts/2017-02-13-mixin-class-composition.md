@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+layout: inner-page-no-masthead
 title: Kompozicija mixin klasa
 
 discourse: false

@@ -1,0 +1,55 @@
+<footer id="site-footer">
+    <div class="wrap">
+      <div class="site-footer-top">
+        {% for item in site.data.footer %}
+          <ul class="{{item.class}}">
+            <li><h3>{{item.title}}</h3></li>
+            {% for link in item.links %}
+              <li><a href="{{link.url}}">{{link.title}}</a></li>
+            {% endfor %}
+          </ul>
+        {% endfor %}
+      </div>
+      <div class="site-footer-bottom">
+        <p>{{site.data.common.copyrightText}}</p>
+        <img src="/resources/img/frontpage/scala-logo-white.png" alt="">
+      </div>
+    </div>
+  </footer>
+
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="{{ site.baseurl }}/resources/js/vendor/jquery.autocomplete.js" type="text/javascript" ></script>
+
+    <!-- tweet feed -->
+    <script src="{{ site.baseurl }}/resources/js/tweetMachine-update.js" type="text/javascript" ></script>
+    
+    <!-- prettify js -->
+    <script src="{{ site.baseurl }}/resources/js/vendor/prettify/prettify.js" type="text/javascript" ></script>
+    <script src="{{ site.baseurl }}/resources/js/vendor/prettify/lang-scala.js" type="text/javascript" ></script>
+
+    <!-- unslider js -->
+    <script src="{{ site.baseurl }}/resources/js/vendor/unslider.js" type="text/javascript" ></script>
+
+    <!-- Highlight -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/scala.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/java.min.js" type="text/javascript"></script>
+
+    <!-- CodeMirror -->
+    <script src="{{ site.baseurl }}/resources/js/vendor/codemirror/codemirror.js" type="text/javascript"></script>
+    <script src="{{ site.baseurl }}/resources/js/vendor/codemirror/clike.js" type="text/javascript"></script>
+
+    <!-- TOC -->
+    {% if page.includeTOC == true %}
+      <script src="/resources/js/vendor/jquery.sticky.js" type="text/javascript" ></script>
+      <script src="/resources/js/vendor/toc.js" type="text/javascript" ></script>
+    {% endif %}    
+
+    <!-- Blog search -->
+    <script src="{{ site.baseurl }}/resources/js/vendor/jekyll.search.min.js" type="text/javascript"></script>
+
+    <!-- Custom javascript -->
+    <script src="{{ site.baseurl }}/resources/js/functions.js" type="text/javascript"></script>
+  </body>
+</html>

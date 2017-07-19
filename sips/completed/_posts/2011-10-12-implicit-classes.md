@@ -1,5 +1,5 @@
 ---
-layout: sip
+layout: inner-page-no-masthead
 discourse: true
 title: SIP-13 - Implicit classes
 
@@ -90,5 +90,3 @@ Classes would describe the behavior of the construct.
 
 The new syntax should not break existing code, and so remain source
 compatible with existing techniques.
-
-

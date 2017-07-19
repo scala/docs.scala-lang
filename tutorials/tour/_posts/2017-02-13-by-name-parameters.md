@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+layout: tour
 title: By-name Parameters
 
 discourse: true

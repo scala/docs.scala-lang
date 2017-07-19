@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 
 partof: reflection
 num: 1

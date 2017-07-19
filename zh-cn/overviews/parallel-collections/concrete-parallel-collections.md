@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: 具体并行集合类
 
 discourse: false

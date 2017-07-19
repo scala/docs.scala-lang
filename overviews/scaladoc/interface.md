@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: Using the Scaladoc Interface
 
 discourse: true

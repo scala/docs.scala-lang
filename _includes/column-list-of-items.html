@@ -1,0 +1,18 @@
+{% comment %}
+	Layouts using this include should pass an include variable called 'collection' referencing a collection carrying the data (i.e.: contribute_community_tickets, contribute_resources...)
+{% endcomment %}
+<div class="documentation">
+	{% for item in include.collection %}
+		<div class="doc-item">
+			<div class="doc-item-header">
+				<i class="{{item.icon}}"></i>
+				<a href="{{item.link}}">
+					<h4>{{item.title}}</h4>
+				</a>
+			</div>
+			<div class="doc-item-main">
+				{{item.content}}
+			</div>
+		</div>
+	{% endfor %}
+</div>

@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: Arquitectura de la librería de colecciones paralelas de Scala
 
 discourse: false

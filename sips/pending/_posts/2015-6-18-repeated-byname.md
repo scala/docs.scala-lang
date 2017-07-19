@@ -1,5 +1,5 @@
 ---
-layout: sip
+layout: inner-page-no-masthead
 title: SIP-24 - Repeated By Name Parameters
 discourse: true
 

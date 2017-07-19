@@ -1,5 +1,5 @@
 ---
-layout: overview-large
+layout: overview
 title: Scala 2.7 からの移行
 
 discourse: false

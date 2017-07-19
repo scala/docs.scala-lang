@@ -1,5 +1,5 @@
 ---
-layout: sip
+layout: inner-page-no-masthead
 discourse: true
 title: SIP-NN - comonadic-comprehensions
 ---
@@ -14,7 +14,7 @@ title: SIP-NN - comonadic-comprehensions
 
 ## Motivation
 
-Scala provides a concise syntax for working with Monads(map & flatMap): 
+Scala provides a concise syntax for working with Monads(map & flatMap):
 the <b>for comprehension</b>.
 
 Following is a proposal for a concise syntax for working with Comonads(map, extract & coflatMap):
@@ -31,12 +31,12 @@ Consider the following class:
 {% highlight scala %}
 
 case class StreamZipper[A](left: Stream[A], focus: A, right: Stream[A]) {
-  def map[B](f: A => B): StreamZipper[B] = 
+  def map[B](f: A => B): StreamZipper[B] =
     StreamZipper(left.map(f), f(focus), right.map(f))
-  def extract: A = 
-	focus 
-  def coflatMap(f: StreamZipper[A] => B): StreamZipper[B] = 
-	??? 
+  def extract: A =
+	focus
+  def coflatMap(f: StreamZipper[A] => B): StreamZipper[B] =
+	???
 }
 
 {% endhighlight %}
@@ -44,7 +44,7 @@ case class StreamZipper[A](left: Stream[A], focus: A, right: Stream[A]) {
 <i>StreamZipper[A]</i> represents a <b>non-empty</b> Stream of <i>A</i>s with a cursor (focus).
 
 <ul>
-<li>The <i>map</i> method invokes <i>f</i> on every element and produces a StreamZipper of 
+<li>The <i>map</i> method invokes <i>f</i> on every element and produces a StreamZipper of
 the results.</li>
 <li>The <i>extract</i> method returns the value at the cursor</li>
 <li>The <i>coflatMap</i> method invokes <i>f</i> on every cursor (all possible zippers) providing a contextual global operation.
@@ -56,25 +56,25 @@ The above implementation for `coflatMap` was left out for brevity. See [3].
 
 Now, consider the following methods:
 {% highlight scala %}
-  
+
   // returns whether the current cursor in a zipper of ints is between the previous
   // and the next numbers.
-  def isInTheMiddle(z : StreamZipper[Int]): Boolean = 
+  def isInTheMiddle(z : StreamZipper[Int]): Boolean =
     z match {
       case StreamZipper(pi +: _, i, ni +: _) if (pi < i && i < ni) => true
       case _ => false
     }  
 
   // counts how many consecutive values of <i>true</i> starting from the cursor
-  def numberOfTrues(z: StreamZipper[Boolean]) : Int  = 
-    if (z.focus) 1 + z.right.takeWhile(true ==).size else 0 
+  def numberOfTrues(z: StreamZipper[Boolean]) : Int  =
+    if (z.focus) 1 + z.right.takeWhile(true ==).size else 0
 
 {% endhighlight %}
 
 And, let's say we have a StreamZipper[Person]:
 {% highlight scala %}
   case class Person(name: String, age: Int)
-  
+
   // a given stream with cursor at some position
   val people: StreamZipper[Person] = ???
 {% endhighlight %}
@@ -111,12 +111,12 @@ the <i>context</i> between the invocations of <i>coflatMap</i>.
 
 The proposed syntax allows for the following usage:
 {% highlight scala %}
-  val flow : StreamZipper[Person] => (Person, Boolean, Int) = 
+  val flow : StreamZipper[Person] => (Person, Boolean, Int) =
     cofor (p @ Person(_, age)) {
       tag <- isInTheMiddle(age)
       count <- numberOfTrues(tag)
     } yield (p.extract, tag.extract, count.extract)
-	
+
   val goal = people.coflatMap(flow)
 {% endhighlight %}
 
@@ -132,14 +132,14 @@ The syntax for `cofor` is defined as:
 		pattern2 <- generator2
 		...
 	} yield body
-	
+
 	patternN    = regular case patterns
-	generatorN  = expr 
+	generatorN  = expr
 	body        = expr
 
 {% endhighlight %}
 
-The result type of a `cofor` expression is a function from the comonad type to 
+The result type of a `cofor` expression is a function from the comonad type to
 a result (`T[A] => B`).
 This means that the return type must be available at call-site!
 Note that unlike `for`, guards and assignments are not supported.
@@ -151,12 +151,12 @@ A `cofor` desugaring is much more complex than the respective `for`.
 Desugaring example:
 
 {% highlight scala %}
-  val flow : StreamZipper[Person] => (Person, Boolean, Int) = 
+  val flow : StreamZipper[Person] => (Person, Boolean, Int) =
     cofor (p @ Person(_, age)) {
       tag <- isInTheMiddle(age)
       count <- numberOfTrues(tag)
     } yield (p.extract, tag.extract, count.extract)
-	
+
   val goal = people.coflatMap(flow)
 {% endhighlight %}
 
@@ -164,7 +164,7 @@ The above `cofor` expression will be desugared into the following function:
 {% highlight scala %}
 	input => {
 	  // desugaring the generators
-	  val enums = 
+	  val enums =
 		// assign values to input variables
 		// actual assignment is done through pattern matching
 		input.map(p => (

@@ -1,5 +1,5 @@
 ---
-layout: sip
+layout: inner-page-no-masthead
 title: SIP 25 - Trait Parameters
 discourse: true
 
