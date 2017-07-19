@@ -135,7 +135,7 @@ Fortunately, the compiler stops us long before we could get this far.
 
 ### Other Examples
 
-Another example that can help one understand variance is `trait Function1[-T, R]` from the Scala standard library. `Function1` represents a function with one argument, where the first type parameter `T` represents the argument type, and the second type parameter `R` represents the return type. A `Function1` is contravariant over its argument type, and covariant over its return type. For this example we'll use the literal notation `A => B` to represent a `Function1[A, B]`.
+Another example that can help one understand variance is `trait Function1[-T, +R]` from the Scala standard library. `Function1` represents a function with one argument, where the first type parameter `T` represents the argument type, and the second type parameter `R` represents the return type. A `Function1` is contravariant over its argument type, and covariant over its return type. For this example we'll use the literal notation `A => B` to represent a `Function1[A, B]`.
 
 Assume the similar `Cat`, `Dog`, `Animal` inheritance tree used earlier, plus the following:
 
