@@ -76,23 +76,24 @@ The `evenElems` method returns a new array that consist of all elements of the a
       val arr = new Array[T]((arr.length + 1) / 2)
                 ^
 
-What's required here is that you help the compiler out by providing some runtime hint what the actual type parameter of `evenElems` is. This runtime hint takes the form of a class manifest of type `scala.reflect.ClassManifest`. A class manifest is a type descriptor object which describes what the top-level class of a type is. Alternatively to class manifests there are also full manifests of type `scala.reflect.Manifest`, which describe all aspects of a type. But for array creation, only class manifests are needed.
+What's required here is that you help the compiler out by providing some runtime hint what the actual type parameter of `evenElems` is. This runtime hint takes the form of a class manifest of type `scala.reflect.ClassTag`. A class manifest is a type descriptor object which describes what the top-level class of a type is. Alternatively to class manifests there are also full manifests of type `scala.reflect.Manifest`, which describe all aspects of a type. But for array creation, only class manifests are needed.
 
 The Scala compiler will construct class manifests automatically if you instruct it to do so. "Instructing" means that you demand a class manifest as an implicit parameter, like this:
+    
+    def evenElems[T](xs: Vector[T])(implicit m: ClassTag[T]): Array[T] = ...
 
-    def evenElems[T](xs: Vector[T])(implicit m: ClassManifest[T]): Array[T] = ...
+Using an alternative and shorter syntax, you can also demand that the type comes with a class manifest by using a context bound. This means following the type with a colon and the class name `ClassTag`, like this:
 
-Using an alternative and shorter syntax, you can also demand that the type comes with a class manifest by using a context bound. This means following the type with a colon and the class name `ClassManifest`, like this:
-
+    import scala.reflect.ClassTag
     // this works
-    def evenElems[T: ClassManifest](xs: Vector[T]): Array[T] = {
+    def evenElems[T: ClassTag](xs: Vector[T]): Array[T] = {
       val arr = new Array[T]((xs.length + 1) / 2)
       for (i <- 0 until xs.length by 2)
         arr(i / 2) = xs(i)
       arr
     }
 
-The two revised versions of `evenElems` mean exactly the same. What happens in either case is that when the `Array[T]` is constructed, the compiler will look for a class manifest for the type parameter T, that is, it will look for an implicit value of type `ClassManifest[T]`. If such a value is found, the manifest is used to construct the right kind of array. Otherwise, you'll see an error message like the one above.
+The two revised versions of `evenElems` mean exactly the same. What happens in either case is that when the `Array[T]` is constructed, the compiler will look for a class manifest for the type parameter T, that is, it will look for an implicit value of type `ClassTag[T]`. If such a value is found, the manifest is used to construct the right kind of array. Otherwise, you'll see an error message like the one above.
 
 Here is some REPL interaction that uses the `evenElems` method.
 
@@ -104,15 +105,15 @@ Here is some REPL interaction that uses the `evenElems` method.
 In both cases, the Scala compiler automatically constructed a class manifest for the element type (first, `Int`, then `String`) and passed it to the implicit parameter of the `evenElems` method. The compiler can do that for all concrete types, but not if the argument is itself another type parameter without its class manifest. For instance, the following fails:
 
     scala> def wrap[U](xs: Vector[U]) = evenElems(xs)
-    <console>:6: error: No ClassManifest available for U.
+    <console>:6: error: No ClassTag available for U.
          def wrap[U](xs: Vector[U]) = evenElems(xs)
                                                ^
 
 What happened here is that the `evenElems` demands a class manifest for the type parameter `U`, but none was found. The solution in this case is, of course, to demand another implicit class manifest for `U`. So the following works:
 
-    scala> def wrap[U: ClassManifest](xs: Vector[U]) = evenElems(xs)
-    wrap: [U](xs: Vector[U])(implicit evidence$1: ClassManifest[U])Array[U]
+    scala> def wrap[U: ClassTag](xs: Vector[U]) = evenElems(xs)
+    wrap: [U](xs: Vector[U])(implicit evidence$1: scala.reflect.ClassTag[U])Array[U]
 
-This example also shows that the context bound in the definition of `U` is just a shorthand for an implicit parameter named here `evidence$1` of type `ClassManifest[U]`.
+This example also shows that the context bound in the definition of `U` is just a shorthand for an implicit parameter named here `evidence$1` of type `ClassTag[U]`.
 
-In summary, generic array creation demands class manifests. So whenever creating an array of a type parameter `T`, you also need to provide an implicit class manifest for `T`. The easiest way to do this is to declare the type parameter with a `ClassManifest` context bound, as in `[T: ClassManifest]`.
+In summary, generic array creation demands class manifests. So whenever creating an array of a type parameter `T`, you also need to provide an implicit class manifest for `T`. The easiest way to do this is to declare the type parameter with a `ClassTag` context bound, as in `[T: ClassTag]`.

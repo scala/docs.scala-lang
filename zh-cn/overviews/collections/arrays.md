@@ -76,16 +76,17 @@ evenElems方法返回一个新数组，该数组包含了参数向量xs的所有
       val arr = new Array[T]((arr.length + 1) / 2)
                 ^
 
-这里需要你做的就是通过提供一些运行时的实际元素类型参数的线索来帮助编译器处理。这个运行时的提示采取的形式是一个`scala.reflect.ClassManifest`类型的类声明。一个类声明就是一个类型描述对象，给对象描述了一个类型的顶层类。另外，类声明也有`scala.reflect.Manifest`类型的所有声明，它描述了类型的各个方面。但对于数组创建而言，只需要提供类声明。
+这里需要你做的就是通过提供一些运行时的实际元素类型参数的线索来帮助编译器处理。这个运行时的提示采取的形式是一个`scala.reflect.ClassTag`类型的类声明。一个类声明就是一个类型描述对象，给对象描述了一个类型的顶层类。另外，类声明也有`scala.reflect.Manifest`类型的所有声明，它描述了类型的各个方面。但对于数组创建而言，只需要提供类声明。
 
 如果你指示编译器那么做它就会自动的构建类声明。“指示”意味着你决定一个类声明作为隐式参数，像这样：
 
-    def evenElems[T](xs: Vector[T])(implicit m: ClassManifest[T]): Array[T] = ...
+    def evenElems[T](xs: Vector[T])(implicit m: ClassTag[T]): Array[T] = ...
     
 使用一个替换和较短的语法。通过用一个上下文绑定你也可以要求类型与一个类声明一起。这种方式是跟在一个冒号类型和类名为ClassManifest的后面，想这样：
 
+    import scala.reflect.ClassTag
     // this works
-    def evenElems[T: ClassManifest](xs: Vector[T]): Array[T] = {
+    def evenElems[T: ClassTag](xs: Vector[T]): Array[T] = {
       val arr = new Array[T]((xs.length + 1) / 2)
       for (i <- 0 until xs.length by 2)
         arr(i / 2) = xs(i)
@@ -104,16 +105,16 @@ evenElems方法返回一个新数组，该数组包含了参数向量xs的所有
 在这两种情况下，Scala编译器自动的为元素类型构建一个类声明（首先，Int,然后String）并且通过它传递evenElems 方法的隐式参数。编译器可以对所有的具体类型构造，但如果论点本身是另一个没有类声明的类型参数就不可以。例如，下面的错误：
 
     scala> def wrap[U](xs: Vector[U]) = evenElems(xs)
-    <console>:6: error: No ClassManifest available for U.
+    <console>:6: error: No ClassTag available for U.
          def wrap[U](xs: Vector[U]) = evenElems(xs)
                                                ^
 
 这里所发生的是，evenElems 需要一个类型参数U的类声明，但是没有发现。这种情况下的解决方案是，当然，是为了U的另一个隐式类声明。所以下面起作用了：
 
-    scala> def wrap[U: ClassManifest](xs: Vector[U]) = evenElems(xs)
-    wrap: [U](xs: Vector[U])(implicit evidence$1: ClassManifest[U])Array[U]
+    scala> def wrap[U: ClassTag](xs: Vector[U]) = evenElems(xs)
+    wrap: [U](xs: Vector[U])(implicit evidence$1: scala.reflect.ClassTag[U])Array[U]
 
-这个实例还显示在定义U的上下文绑定里这仅是一个简短的隐式参数命名为`ClassManifest[U]`类型的`evidence$1`。
+这个实例还显示在定义U的上下文绑定里这仅是一个简短的隐式参数命名为`ClassTag[U]`类型的`evidence$1`。
 
-总结，泛型数组创建需要类声明。所以每当创建一个类型参数T的数组，你还需要提供一个T的隐式类声明。最简单的方法是声明类型参数与ClassManifest的上下文绑定，如 `[T: ClassManifest]`。 
+总结，泛型数组创建需要类声明。所以每当创建一个类型参数T的数组，你还需要提供一个T的隐式类声明。最简单的方法是声明类型参数与ClassManifest的上下文绑定，如 `[T: ClassTag]`。 
 
