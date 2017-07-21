@@ -1,6 +1,6 @@
 ---
 layout: sip
-title: SIP XX - Improving binary compatibility with @stableABI
+title: SIP-NN - Improving binary compatibility with @stableABI
 discourse: true
 ---
 
