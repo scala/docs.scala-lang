@@ -2,9 +2,9 @@
   url: "#!"
   submenu:
     - title: Current
-      url: http://google.com
+      url: https://www.scala-lang.org/api/current/
     - title: Nightly
-      url: http://google.com
+      url: https://www.scala-lang.org/files/archive/nightly/2.12.x/api/2.12.x/
     - title: All Versions
       url: http://google.com
 - title: Learn
@@ -19,10 +19,10 @@
 - title: Reference
   url: "#!"
   submenu:
-    - title: Guides
-      url: http://google.com
+    - title: "Guides & Overviews"
+      url: "/overviews/index.html"
     - title: Language Spec
-      url: http://google.com
+      url: http://scala-lang.org/files/archive/spec/2.12/
     - title: Books
       url: "/books.html"
 - title: Style Guide

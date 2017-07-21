@@ -1,0 +1,153 @@
+- category: Core Scala
+  overviews:
+    - title: Collections
+      icon: sitemap
+      url: "collections/introduction.html"
+      description: "Scala's Collection Library."
+      subdocs:
+        - title: Introduction
+          url: "collections/introduction.html"
+        - title: Mutable and Immutable Collections
+          url: "collections/overview.html"
+        - title: Trait Traversable
+          url: "collections/trait-traversable.html"
+        - title: Trait Iterable
+          url: "collections/trait-iterable.html"
+        - title: The sequence traits Seq, IndexedSeq, and LinearSeq
+        - title: Concrete Immutable Collection Classes
+          url: "collections/concrete-immutable-collection-classes.html"
+        - title: Concrete Mutable Collection Classes
+          url: "collections/concrete-mutable-collection-classes.html"
+        - title: Arrays
+          url: "collections/arrays.html"
+        - title: Strings
+          url: "collections/strings.html"
+        - title: Performance Characteristics
+          url: "collections/performance-characteristics.html"
+        - title: Equality
+          url: "collections/equality.html"
+        - title: Views
+          url: "collections/views.html"
+        - title: Iterators
+          url: "collections/iterators.html"
+        - title: Creating Collections From Scratch
+          url: "collections/creating-collections-from-scratch.html"
+        - title: Conversions Between Java and Scala Collections
+          url: "collections/conversions-between-java-and-scala-collections.html"
+    - title: The Architecture of Scala Collections
+      icon: building
+      url: "core/architecture-of-scala-collections.html"
+    - title: String Interpolation
+      icon: usd
+      url: "core/string-interpolation.html"
+    - title: Implicit Classes
+      url: "core/implicit-classes.html"
+    - title: Value Classes and Universal Traits
+      icon: diamond
+      url: "core/value-classes.html"
+    - title: Binary Compatibility of Scala Releases
+      icon: puzzle-piece
+      url: "core/binary-compatibility-of-scala-releases.html"
+
+- category: "Reference/Documentation"
+  overviews:
+    - title: Scaladoc
+      icon: book
+      url: "collections/introduction.html"
+      description: "Scala's API documentation generation tool."
+      subdocs:
+        - title: Overview
+          url: "scaladoc/overview.html"
+        - title: Using Scaladoc Effectively
+          url: "scaladoc/interface.html"
+        - title: Authoring Scaladoc
+          url: "scaladoc/for-library-authors.html"
+    - title: Scala REPL
+      icon: terminal
+      url: "repl/overview.html"
+
+- category: Parallel and Concurrent Programming
+  overviews:
+    - title: Futures and Promises
+      icon: tasks
+      url: "core/futures.html"
+    - title: Parallel Collections
+      icon: rocket
+      url: "parallel-collections/overview.html"
+      description: "Scala's Parallel Collections Library."
+      subdocs:
+        - title: Overview
+          url: "parallel-collections/overview.html"
+        - title: Concrete Parallel Collection Classes
+          url: "parallel-collections/concrete-parallel-collections.html"
+        - title: Parallel Collection Conversions
+          url: "parallel-collections/conversions.html"
+        - title: Concurrent Tries
+          url: "parallel-collections/ctries.html"
+        - title: Architecture of the Parallel Collections Library
+          url: "parallel-collections/architecture.html"
+        - title: Creating Custom Parallel Collections
+          url: "parallel-collections/custom-parallel-collections.html"
+        - title: Configuring Parallel Collections
+          url: "parallel-collections/configuration.html"
+        - title: Measuring Performance
+          url: "parallel-collections/performance.html"
+    - title: The Scala Actors Migration Guide
+      icon: truck
+      url: "core/actors-migration-guide.html"
+    - title: The Scala Actors API
+      icon: users
+      url: "core/actors.html"
+      label-color: orange
+      label-text: deprecated
+
+- category: Metaprogramming
+  overviews:
+    - title: Reflection
+      icon: binoculars
+      url: "reflection/overview.html"
+      description: "Scala's runtime/compile-time reflection framework."
+      subdocs:
+        - title: Overview
+          url: "reflection/overview.html"
+        - title: Environment, Universes, and Mirrors
+          url: "reflection/environment-universes-mirrors.html"
+        - title: Symbols, Trees, and Types
+          url: "reflection/symbols-trees-types.html"
+        - title: Annotations, Names, Scopes, and More
+          url: "reflection/annotations-names-scopes.html"
+        - title: TypeTags and Manifests
+          url: "reflection/typetags-manifests.html"
+        - title: Thread Safety
+          url: "reflection/thread-safety.html"
+        - title: Changes in Scala 2.11
+          url: "reflection/changelog211.html"
+    - title: Macros
+      icon: magic
+      url: "#!"
+      description: "Scala's metaprogramming framework."
+      subdocs:
+        - title: Use Cases
+          url: "macros/usecases.html"
+        - title: Blackbox Vs Whitebox
+          url: "macros/blackbox-whitebox.html"
+        - title: Def Macros
+          url: "macros/overview.html"
+        - title: Quasiquotes
+          url: "quasiquotes/intro.html"
+        - title: Macro Bundles
+          url: "macros/bundles.html"
+        - title: Implicit Macros
+          url: "macros/implicits.html"
+        - title: Extractor Macros
+          url: "macros/extractors.html"
+        - title: Type Providers
+          url: "macros/typeproviders.html"
+        - title: Macro Annotations
+          url: "macros/annotations.html"
+        - title: Macro Paradise
+          url: "macros/paradise.html"
+        - title: Roadmap
+          url: "macros/roadmap.html"
+        - title: Changes in 2.11
+          url: "macros/changelog211.html"

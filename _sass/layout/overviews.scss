@@ -1,0 +1,72 @@
+// OVERVIEWS INDEX PAGE
+//------------------------------------------------
+//------------------------------------------------
+
+.card-group {
+    // @include span-columns(6);
+    // @include bp(large) {
+    //   @include span-columns(12);
+    // }
+    @include display(flex);
+    @include flex-direction(row);
+    @include flex-wrap(wrap);
+    @include justify-content(space-between);
+
+    // @include align-items(center);
+
+    h3 {
+        font-family: $base-font-family;
+        // text-transform: uppercase;
+        border-bottom: $base-border-gray;
+    }
+
+    .content-card {
+        flex: 0 1 calc(50% - 0.5em);
+        margin-bottom: 1em;
+
+        @include bp(medium) {
+          flex: 0 1 calc(100% - 0.5em);
+        }
+
+        background: #fff;
+
+        max-height: 400px;
+        overflow: hidden;
+        &:hover {
+          transition: max-height .5s ease-in;
+          max-height: 1000px;
+        }
+        transition: max-height .3s ease-out;
+
+        padding: 22px;
+        display: inline-block;
+        text-decoration: none;
+        border-radius: $border-radius-base;
+        box-shadow: $box-shadow-item;
+
+      a {
+          h3 {
+              color: $gray-dark;
+              transition: $base-transition;
+              padding-bottom: 8px;
+              margin-bottom: 6px;
+              font-weight: $font-bold;
+              font-size: $font-size-h2;
+
+              &:hover {
+                text-decoration: none;
+                color: $brand-primary;
+              }
+          }
+        &:hover {
+          text-decoration: none;
+        }
+      }
+
+      ul {
+        li {
+          margin-bottom: 0px;
+        }
+      }
+    }
+}
