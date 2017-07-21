@@ -76,7 +76,7 @@ a SIP or needs more work.
 After receiving the green light from the Process Lead, you can write up your
 idea and submit it as a SIP.
 
-A SIP is a Markdown document written in conformance with the [process template](https://github.com/scala/slip/blob/master/slip-template.md).
+A SIP is a Markdown document written in conformance with the [process template](https://github.com/scala/scala.github.com/blob/master/sips/sip-template.md).
 It ought to contain a clear specification of the proposed changes. When such
 changes significantly alter the compiler internals, the author is invited to
 provide a proof of concept. Delivering a basic implementation can speed up the
