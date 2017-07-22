@@ -1,6 +1,7 @@
 - category: Core Scala
   overviews:
     - title: Collections
+      by: Martin Odersky
       icon: sitemap
       url: "collections/introduction.html"
       description: "Scala's Collection Library."
@@ -37,15 +38,27 @@
     - title: The Architecture of Scala Collections
       icon: building
       url: "core/architecture-of-scala-collections.html"
+      by: Martin Odersky and Lex Spoon
+      description: "These pages describe the architecture of the Scala collections framework in detail. Compared to the Collections API you will find out more about the internal workings of the framework. You will also learn how this architecture helps you define your own collections in a few lines of code, while reusing the overwhelming part of collection functionality from the framework."
     - title: String Interpolation
       icon: usd
       url: "core/string-interpolation.html"
+      description: >
+        String Interpolation allows users to embed variable references directly in processed string literals. Here’s an example:
+          <pre><code>val name = "James"
+          println(s"Hello, $name")  // Hello, James</code></pre>
+        In the above, the literal <code>s"Hello, $name"</code> is a processed string literal. This means that the compiler does some additional work to this literal. A processed string literal is denoted by a set of characters preceding the ". String interpolation was introduced by SIP-11, which contains all details of the implementation.
     - title: Implicit Classes
+      by: Josh Suereth
+      description: "Scala 2.10 introduced a new feature called implicit classes. An implicit class is a class marked with the implicit keyword. This keyword makes the class’ primary constructor available for implicit conversions when the class is in scope."
       url: "core/implicit-classes.html"
     - title: Value Classes and Universal Traits
+      by: Mark Harrah
+      description: "Value classes are a new mechanism in Scala to avoid allocating runtime objects. This is accomplished through the definition of new AnyVal subclasses."
       icon: diamond
       url: "core/value-classes.html"
     - title: Binary Compatibility of Scala Releases
+      description: "When two versions of Scala are binary compatible, it is safe to compile your project on one Scala version and link against another Scala version at run time. Safe run-time linkage (only!) means that the JVM does not throw a (subclass of) LinkageError when executing your program in the mixed scenario, assuming that none arise when compiling and running on the same version of Scala. Concretely, this means you may have external dependencies on your run-time classpath that use a different version of Scala than the one you’re compiling with, as long as they’re binary compatible. In other words, separate compilation on different binary compatible versions does not introduce problems compared to compiling and running everything on the same version of Scala."
       icon: puzzle-piece
       url: "core/binary-compatibility-of-scala-releases.html"
 
@@ -65,12 +78,18 @@
     - title: Scala REPL
       icon: terminal
       url: "repl/overview.html"
+      description: |
+        The Scala REPL is a tool (<code>scala</code>) for evaluating expressions in Scala.
+        <br><br>
+        The <code>scala</code> command will execute a source script by wrapping it in a template and then compiling and executing the resulting program
 
 - category: Parallel and Concurrent Programming
   overviews:
     - title: Futures and Promises
+      by: "Philipp Haller, Aleksandar Prokopec, Heather Miller, Viktor Klang, Roland Kuhn, and Vojin Jovanovic"
       icon: tasks
       url: "core/futures.html"
+      description: "Futures provide a way to reason about performing many operations in parallel– in an efficient and non-blocking way. A Future is a placeholder object for a value that may not yet exist. Generally, the value of the Future is supplied concurrently and can subsequently be used. Composing concurrent tasks in this way tends to result in faster, asynchronous, non-blocking parallel code."
     - title: Parallel Collections
       icon: rocket
       url: "parallel-collections/overview.html"
@@ -93,11 +112,15 @@
         - title: Measuring Performance
           url: "parallel-collections/performance.html"
     - title: The Scala Actors Migration Guide
+      by: Vojin Jovanovic and Philipp Haller
       icon: truck
       url: "core/actors-migration-guide.html"
+      description: "To ease the migration from Scala Actors to Akka we have provided the Actor Migration Kit (AMK). The AMK consists of an extension to Scala Actors which is enabled by including the scala-actors-migration.jar on a project’s classpath. In addition, Akka 2.1 includes features, such as the ActorDSL singleton, which enable a simpler conversion of code using Scala Actors to Akka. The purpose of this document is to guide users through the migration process and explain how to use the AMK."
     - title: The Scala Actors API
+      by: Philipp Haller and Stephen Tu
       icon: users
       url: "core/actors.html"
+      description: "This guide describes the API of the scala.actors package of Scala 2.8/2.9. The organization follows groups of types that logically belong together. The trait hierarchy is taken into account to structure the individual sections. The focus is on the run-time behavior of the various methods that these traits define, thereby complementing the existing Scaladoc-based API documentation."
       label-color: orange
       label-text: deprecated
 
@@ -106,7 +129,7 @@
     - title: Reflection
       icon: binoculars
       url: "reflection/overview.html"
-      description: "Scala's runtime/compile-time reflection framework."
+      description: Scala's runtime/compile-time reflection framework.
       subdocs:
         - title: Overview
           url: "reflection/overview.html"
