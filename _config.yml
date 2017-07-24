@@ -22,7 +22,7 @@ collections:
 scala-version: 2.12.2
 
 highlighter: rouge
-permalink: /:categories/:title.html
+permalink: /:categories/:title.html:output_ext
 baseurl:
 exclude: ["vendor"]
 gems:

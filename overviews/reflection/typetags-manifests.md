@@ -156,7 +156,7 @@ Instead, one could generate corresponding types using the reflection APIs provid
 - **Certain manifest operations(i.e., `<:<`, `>:>` and `typeArguments`) are not supported.**
 Instead, one could use the reflection APIs provided by Java (for classes) and Scala (for types).
 
-In Scala 2.10, `scala.reflect.ClassManifests` are deprecated, and it is
+In Scala 2.10, `scala.reflect.ClassManifest` are deprecated, and it is
 planned to deprecate `scala.reflect.Manifest` in favor of `TypeTag`s and
 `ClassTag`s in an upcoming point release. Thus, it is advisable to migrate any
 `Manifest`-based APIs to use `Tag`s.
