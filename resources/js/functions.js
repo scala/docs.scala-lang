@@ -109,7 +109,41 @@ $(document).ready(function() { // DOM ready
   });
 }); // end DOM ready
 
+// Expand button on cards (guides & overviews page)
+$(document).ready(function() {
+  $.fn.hasOverflow = function() {
+      var $this = $(this);
+      var $children = $this.find('*');
+      var len = $children.length;
 
+      if (len) {
+          var maxWidth = 0;
+          var maxHeight = 0
+          $children.map(function(){
+              maxWidth = Math.max(maxWidth, $(this).outerWidth(true));
+              maxHeight = Math.max(maxHeight, $(this).outerHeight(true));
+          });
+
+          return maxWidth > $this.width() || maxHeight > $this.height();
+      }
+
+      return false;
+  };
+
+  $('.white-card').each(function (index) {
+    if (!$(this).hasOverflow()) {
+      $(this).find(".card-footer").css("visibility", "hidden");
+    }
+  });
+
+  $(".white-card").hover(function () {
+    $(this).find(".card-footer").hide();
+    $(this).find(".expand-btn").hide();
+  }, function () {
+    $(this).find(".card-footer").show();
+    $(this).find(".expand-btn").show();
+  });
+});
 
 
 //Tweet feed in frontpage

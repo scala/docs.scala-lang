@@ -1,4 +1,5 @@
 - category: Core Scala
+  description: "Guides and overviews covering central libraries in the Scala standard library, core language features, and more."
   overviews:
     - title: Collections
       by: Martin Odersky
@@ -63,6 +64,7 @@
       url: "core/binary-compatibility-of-scala-releases.html"
 
 - category: "Reference/Documentation"
+  description: "Reference material on core Scala tools like Scaladoc and the Scala REPL."
   overviews:
     - title: Scaladoc
       icon: book
@@ -84,6 +86,7 @@
         The <code>scala</code> command will execute a source script by wrapping it in a template and then compiling and executing the resulting program
 
 - category: Parallel and Concurrent Programming
+  description: "Complete guides covering some of Scala's libraries for parallel and concurrent programming."
   overviews:
     - title: Futures and Promises
       by: "Philipp Haller, Aleksandar Prokopec, Heather Miller, Viktor Klang, Roland Kuhn, and Vojin Jovanovic"
@@ -91,6 +94,7 @@
       url: "core/futures.html"
       description: "Futures provide a way to reason about performing many operations in parallel– in an efficient and non-blocking way. A Future is a placeholder object for a value that may not yet exist. Generally, the value of the Future is supplied concurrently and can subsequently be used. Composing concurrent tasks in this way tends to result in faster, asynchronous, non-blocking parallel code."
     - title: Parallel Collections
+      by: Aleksandar Prokopec and Heather Miller
       icon: rocket
       url: "parallel-collections/overview.html"
       description: "Scala's Parallel Collections Library."
@@ -121,15 +125,18 @@
       icon: users
       url: "core/actors.html"
       description: "This guide describes the API of the scala.actors package of Scala 2.8/2.9. The organization follows groups of types that logically belong together. The trait hierarchy is taken into account to structure the individual sections. The focus is on the run-time behavior of the various methods that these traits define, thereby complementing the existing Scaladoc-based API documentation."
-      label-color: orange
+      label-color: "#899295"
       label-text: deprecated
 
 - category: Metaprogramming
+  description: "Guides and overviews covering the experimental reflection API introduced in Scala 2.10, and Scala's tools for metaprogramming (def macros, macro annotations, and more), also introduced in Scala 2.10"
   overviews:
     - title: Reflection
+      by: Heather Miller, Eugene Burmako, and Philipp Haller
       icon: binoculars
       url: "reflection/overview.html"
       description: Scala's runtime/compile-time reflection framework.
+      label-text: experimental
       subdocs:
         - title: Overview
           url: "reflection/overview.html"
@@ -146,9 +153,11 @@
         - title: Changes in Scala 2.11
           url: "reflection/changelog211.html"
     - title: Macros
+      by: Eugene Burmako
       icon: magic
       url: "#!"
       description: "Scala's metaprogramming framework."
+      label-text: experimental
       subdocs:
         - title: Use Cases
           url: "macros/usecases.html"
