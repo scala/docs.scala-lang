@@ -1,6 +1,6 @@
 ---
-layout: inner-page-no-masthead
-title: SIP XX - Improving binary compatibility with @stableABI
+layout: sip
+title: SIP-NN - Improving binary compatibility with @stableABI
 discourse: true
 ---
 
