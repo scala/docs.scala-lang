@@ -667,11 +667,11 @@ Promise、Future の `onComplete` メソッド、そして `future`
       val p = Promise[T]()
 
       f onSuccess {
-        case x => p.tryComplete(x)
+        case x => p.trySuccess(x)
       }
 
       g onSuccess {
-        case x => p.tryComplete(x)
+        case x => p.trySuccess(x)
       }
 
       p.future
