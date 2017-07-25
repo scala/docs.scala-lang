@@ -94,6 +94,12 @@
                         & > li {
                           margin-top: 10px;
                           line-height: 1.2;
+
+                          .active {
+                            font-weight: $font-black;
+                            color: $hover-link-color;
+                          }
+
                             & > a {
                                 color: $gray-dark;
 
@@ -101,6 +107,7 @@
                                 &:focus,
                                 &:hover {
                                     color: $hover-link-color;
+                                    text-decoration: none;
                                 }
                             }
 

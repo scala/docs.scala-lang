@@ -1,0 +1,48 @@
+// SINGLE-PAGE TOC
+//------------------------------------------------
+//------------------------------------------------
+
+#toc {
+  ul {
+      list-style: none;
+      margin-left: 18px;
+
+      a {
+        display: block;
+        list-style: none;
+        line-height: 1.3;
+        font-weight: $font-bold;
+        font-size: $font-size-small;
+        color: $gray-dark;
+        width: 100%;
+
+        &:hover {
+          color: $brand-primary;
+          text-decoration: none;
+        }
+
+      }
+
+      li {
+        margin-top: 10px;
+
+        ul {
+          list-style: disc;
+          margin-left: 28px;
+          margin-top: -6px;
+          margin-bottom: 6px;
+
+          a {
+            line-height: 1;
+            font-weight: normal;
+          }
+
+          li {
+            margin-bottom: 0px;
+            margin-top: 0px;
+            line-height: 1.2;
+          }
+        }
+      }
+  }
+}

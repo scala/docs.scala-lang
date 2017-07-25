@@ -40,11 +40,13 @@
             <ul>
               {% for pg in sorted %}
                 {% if pg.num %}
-                  <li><a href="{{ site.baseurl }}{{ pg.url }}">{{ pg.title }}</a></li>
+                  <li><a {% if pg.num == page.num %}class="active"{% endif %} href="{{ site.baseurl }}{{ pg.url }}">{{ pg.title }}</a></li>
+                  {% if pg.num == page.num %}
+                    <div id="toc"></div>
+                  {% endif %}
                 {% endif %}
               {% endfor %}
             </ul>
-            <div id="toc"></div>
         {% endif %}
       {% endfor %}
     {% endif %}

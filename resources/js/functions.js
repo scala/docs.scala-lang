@@ -264,7 +264,7 @@ $(document).ready(function() {
 // TOC:
 $(document).ready(function() {
     if ($("#sidebar-toc").length) {
-        $('#sidebar-toc').toc({exclude: 'h1, h5, h6', context: '.inner-box', autoId: true, numerate: false});
+        $('#toc').toc({exclude: 'h1, h5, h6', context: '.inner-box', autoId: true, numerate: false});
         toggleStickyToc();
     }
 })
