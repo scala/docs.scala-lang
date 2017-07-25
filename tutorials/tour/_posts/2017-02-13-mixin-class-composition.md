@@ -76,6 +76,6 @@ object StringIteratorTest extends App {
   iter foreach println
 }
 ```
-The new class `RichStringIter` has `StringIterator` as a superclass and `RichIterator` as a mixin.
+The new class `Iter` has `StringIterator` as a superclass and `RichIterator` as a mixin.
 
 With single inheritance we would not be able to achieve this level of flexibility.
