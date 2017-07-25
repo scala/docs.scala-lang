@@ -86,7 +86,7 @@ The method `getIndex` can receive any object, as long as there is an implicit
 conversion available from its class to `Seq[T]`. Because of that, a `String` can be
 passed to `getIndex`, and it will work.
 
-Behind the scenes, the compiler changes `seq.IndexOf(value)` to
+Behind the scenes, the compiler changes `seq.indexOf(value)` to
 `conv(seq).indexOf(value)`.
 
 ### Context Bounds
