@@ -16,6 +16,8 @@ keywords:
 - Guide
 
 collections:
+  style:
+    output: true
   books:
     output: false
 

@@ -26,7 +26,7 @@
     - title: Books
       url: "/books.html"
 - title: Style Guide
-  url: https://index.scala-lang.org
+  url: "/style/index.html"
 - title: Cheatsheet
   url: https://www.scala-lang.org/contribute/
 - title: Glossary
