@@ -149,6 +149,6 @@ context bound `[T: TypeTag]` からコンパイラは `TypeTag[T]`
 代わりに、(クラスの場合は) Java か (型の場合は) Scala によって提供されるリフレクション API を使うことができる。</li>
 </ul>
 
-`scala.reflect.ClassManifest` は Scala 2.10 から廃止予定となり、将来のマイナーリリースにおいて
+`scala.reflect.ClassManifests` は Scala 2.10 から廃止予定となり、将来のマイナーリリースにおいて
 `scala.reflect.Manifest` も廃止予定として `TypeTag` と `ClassTag` に道を開けることを予定している。
 そのため、マニフェストを使ったコードは型タグを使うものに移行することを推奨する。

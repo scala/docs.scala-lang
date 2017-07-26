@@ -1,12 +1,14 @@
 ---
-layout: overview
+layout: multipage-overview
 title: Scala 2.7 からの移行
 
 discourse: false
 
 partof: collections
+overview-name: Collections
+
 num: 18
-outof: 18
+
 language: ja
 ---
 

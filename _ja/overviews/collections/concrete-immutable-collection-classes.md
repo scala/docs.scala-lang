@@ -1,11 +1,14 @@
 ---
-layout: overview
+layout: multipage-overview
 title: 具象不変コレクションクラス
 
 discourse: false
 
 partof: collections
+overview-name: Collections
+
 num: 8
+
 language: ja
 ---
 
@@ -187,7 +190,7 @@ Scala は内部で赤黒木を使った不変集合と不変マップの実装�
 リストマップ ([`ListMap`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/ListMap.html)) は、キー/値ペアの連結リスト (linked list) により実装されたマップを表す。一般的に、リストマップの演算はリスト全体を総なめする必要がある可能性がある。そのため、リストマップの演算はマップのサイズに対して線形時間をとる。標準の不変マップの方が常に高速なので Scala のリストマップが使われることはほとんど無い。唯一性能の差が出る可能性としては、マップが何らかの理由でリストの最初の要素が他の要素に比べてずっと頻繁に読み込まれるように構築された場合だ。
 
     scala> val map = scala.collection.immutable.ListMap(1->"one", 2->"two")
-    map: scala.collection.immutable.ListMap[Int,java.lang.String] = 
+    map: scala.collection.immutable.ListMap[Int,java.lang.String] =
        Map(1 -> one, 2 -> two)
     scala> map(2)
     res30: String = "two"

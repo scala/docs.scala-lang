@@ -1,3 +1,4 @@
+
 // Sliding Panel and scala in a nutshell
 $(document).ready(function() {
   $('.navigation-panel-button,.navigation-fade-screen,.navigation-panel-close').on('click touchstart', function(e) {
@@ -321,6 +322,7 @@ function DropDown(el) {
   this.opts = this.dd.find('ul.dropdown > li');
   this.val = '';
   this.index = -1;
+  this.href = '';
   this.initEvents();
 }
 DropDown.prototype = {
@@ -337,6 +339,8 @@ DropDown.prototype = {
       obj.val = opt.text();
       obj.index = opt.index();
       obj.placeholder.text(obj.val);
+      obj.href = opt.find('a').attr("href");
+      window.location.href = obj.href;
     });
   },
   getValue: function() {

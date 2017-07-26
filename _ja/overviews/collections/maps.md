@@ -1,11 +1,14 @@
 ---
-layout: overview
+layout: multipage-overview
 title: マップ
 
 discourse: false
 
 partof: collections
+overview-name: Collections
+
 num: 7
+
 language: ja
 ---
 
@@ -78,7 +81,7 @@ language: ja
 
 `getOrElseUpdate` はキャッシュとして振る舞うマップにアクセスするのに役立つ。例えば、関数 `f` により呼び出される時間のかかる計算があるとする:
 
-    scala> def f(x: String) = { 
+    scala> def f(x: String) = {
            println("taking my time."); sleep(100)
            x.reverse }
     f: (x: String)String
@@ -102,7 +105,7 @@ language: ja
 
     def cachedF(arg: String) = cache get arg match {
       case Some(result) => result
-      case None => 
+      case None =>
         val result = f(x)
         cache(arg) = result
         result

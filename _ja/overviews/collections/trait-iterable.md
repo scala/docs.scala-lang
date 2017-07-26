@@ -1,11 +1,14 @@
 ---
-layout: overview
+layout: multipage-overview
 title: Iterable トレイト
 
 discourse: false
 
 partof: collections
+overview-name: Collections
+
 num: 4
+
 language: ja
 ---
 
@@ -14,7 +17,7 @@ language: ja
     def foreach[U](f: Elem => U): Unit = {
       val it = iterator
       while (it.hasNext) f(it.next())
-    } 
+    }
 
 多くの `Iterable` のサブクラスは、より効率的な実装を提供するため、上の `foreach` の標準実装をオーバーライドしている。 `foreach` は `Traversable` の全ての演算の基となっているため、効率的であることが重要なのだ。
 

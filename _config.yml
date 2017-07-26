@@ -22,6 +22,9 @@ collections:
     output: true
   books:
     output: false
+  ja: # Japanese translations
+    output: true
+    permalink: /:collection/:path.html
 
 scala-version: 2.12.2
 

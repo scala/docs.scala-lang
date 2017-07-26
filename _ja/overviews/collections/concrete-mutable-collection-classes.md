@@ -1,11 +1,14 @@
 ---
-layout: overview
+layout: multipage-overview
 title: 具象可変コレクションクラス
 
 discourse: false
 
 partof: collections
+overview-name: Collections
+
 num: 9
+
 language: ja
 ---
 
@@ -42,7 +45,7 @@ Scala が標準ライブラリで提供する不変コレクションで最も�
 配列バッファが配列を構築するのに便利で、リストバッファがリストを構築するのに便利なように、文字列ビルダ ([`StringBuilder`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/StringBuilder.html)) は文字列を構築するのに便利なものだ。文字列ビルダはあまりに頻繁に使われるため、デフォルトの名前空間に既にインポートされている。以下のように、単に `new StringBuilder` で文字列ビルダを作成することができる:
 
     scala> val buf = new StringBuilder
-    buf: StringBuilder = 
+    buf: StringBuilder =
     scala> buf += 'a'
     res38: buf.type = a
     scala> buf ++= "bcdef"

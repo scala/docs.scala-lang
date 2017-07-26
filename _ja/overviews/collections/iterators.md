@@ -1,11 +1,14 @@
 ---
-layout: overview
+layout: multipage-overview
 title: イテレータ
 
 discourse: false
 
 partof: collections
+overview-name: Collections
+
 num: 15
+
 language: ja
 ---
 
@@ -13,7 +16,7 @@ language: ja
 
 イテレータ `it` が返す全ての要素を渡り歩くのに最も率直な方法は while ループを使うことだ:
 
-    while (it.hasNext) 
+    while (it.hasNext)
       println(it.next())
 
 `Traversable`、`Iterable`、および `Seq` クラスのほとんどのメソッドに類似するものを Scala のイテレータは提供している。たとえば、与えられた手順をイテレータが返す全ての要素に対して実行する `foreach` メソッドを提供する。 `foreach` を使うことで、先ほどのループは以下のように短縮できる:

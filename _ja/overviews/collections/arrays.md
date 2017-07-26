@@ -1,10 +1,12 @@
 ---
-layout: overview
+layout: multipage-overview
 title: 配列
 
 discourse: false
 
 partof: collections
+overview-name: Collections
+
 num: 10
 language: ja
 ---

@@ -2,17 +2,27 @@
 	<div class="inner-box sidebar-toc-wrapper" style="">
 		<h5 class="contents">Contents</h5>
 		<div class="inner-toc" id="sidebar-toc">
-      {% if page.includeCollectionTOC or layout.includeCollectionTOC %}
-        <ul>
-          {% assign sorted = site.overviews | sort: 'num' %}
-          {% for pg in sorted %}
-            {% if pg.num and (page.partof == pg.partof) %}
-              <li><a href="{{ site.baseurl }}{{ pg.url }}">{{ pg.title }}</a></li>
-              {% if pg.num == page.num %}<div id="toc"></div>{% endif %}
+
+      <ul>
+        {% assign sorted = site.overviews | sort: 'num' %}
+        {% for pg in sorted %}
+          {% if pg.num and (page.partof == pg.partof) %}
+            {% if page.language %}
+              {% assign prefix = page.language | prepend: '/' %}
+              {% assign localizedId = pg.id | prepend: prefix %}
+              {% for lpg in site.[page.language] %}
+                {% if lpg.id == localizedId %}
+                  <li><a href="/{{ site.baseurl }}{{ page.language }}{{ pg.url }}">{{ lpg.title }}</a></li>
+                {% endif %}
+              {% endfor %}
+            {% else %}
+            <li><a href="{{ site.baseurl }}{{ pg.url }}">{{ pg.title }}</a></li>
             {% endif %}
-          {% endfor %}
-        </ul>
-      {% endif %}
+            {% if pg.num == page.num %}<div id="toc"></div>{% endif %}
+          {% endif %}
+        {% endfor %}
+      </ul>
+
       {% if page.languages %}
         <ul id="available-languages" style="display: none;">
           <li><a href="{{ page.url }}">English</a></li>
@@ -22,7 +32,17 @@
       			{% assign lang = site.data.languages[l] %}
       			<li><a href="{{ site.baseurl }}/{{ l }}/{{ rootTutorialURL }}" class="lang">{{ lang.name }}</a></li>
           {% endfor %}
-      </ul>
+        </ul>
+      {% elsif page.language %}
+         {% assign engPath = page.id | remove_first: "/" | remove_first: page.language | append: '.html' %}
+         {% assign engPg = site.overviews | where: 'partof', page.partof | first %}
+        <ul id="available-languages" style="display: none;">
+          <li><a href="{{ site.baseurl }}{{ engPath }}">English</a></li>
+          {% for l in engPg.languages %}
+            {% assign lang = site.data.languages[l] %}
+            <li><a href="{{ site.baseurl }}/{{ l }}{{ engPath }}" class="lang">{{ lang.name }}</a></li>
+          {% endfor %}
+        </ul>
       {% endif %}
 		</div>
 		<hr>

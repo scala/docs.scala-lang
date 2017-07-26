@@ -1,11 +1,14 @@
 ---
-layout: overview
+layout: multipage-overview
 title: 可変コレクションおよび不変コレクション
 
 discourse: false
 
 partof: collections
+overview-name: Collections
+
 num: 2
+
 language: ja
 ---
 
@@ -88,7 +91,7 @@ Scala のコレクションは、体系的に可変および不変コレクシ�
 たとえば、`Traversable` クラスの `map` メソッドは別の `Traversable` を戻り値として返すが、結果の型はサブクラスでオーバーライドされる。
 たとえば、`List` が `map` を呼び出しても再び `List` が返ってき、`Set` が `map` を呼び出すと `Set` が返ってくる、といういう具合だ。
 
-    scala> List(1, 2, 3) map (_ + 1) 
+    scala> List(1, 2, 3) map (_ + 1)
     res0: List[Int] = List(2, 3, 4)
     scala> Set(1, 2, 3) map (_ * 2)
     res0: Set[Int] = Set(2, 4, 6)

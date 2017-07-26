@@ -1,11 +1,14 @@
 ---
-layout: overview
+layout: multipage-overview
 title: 等価性
 
 discourse: false
 
 partof: collections
+overview-name: Collections
+
 num: 13
+
 language: ja
 ---
 
@@ -16,7 +19,7 @@ language: ja
     scala> import collection.mutable.{HashMap, ArrayBuffer}
     import collection.mutable.{HashMap, ArrayBuffer}
     scala> val buf = ArrayBuffer(1, 2, 3)
-    buf: scala.collection.mutable.ArrayBuffer[Int] = 
+    buf: scala.collection.mutable.ArrayBuffer[Int] =
     ArrayBuffer(1, 2, 3)
     scala> val map = HashMap(buf -> 3)
     map: scala.collection.mutable.HashMap[scala.collection.
@@ -25,7 +28,7 @@ language: ja
     res13: Int = 3
     scala> buf(0) += 1
     scala> map(buf)
-    java.util.NoSuchElementException: key not found: 
-    ArrayBuffer(2, 2, 3) 
+    java.util.NoSuchElementException: key not found:
+    ArrayBuffer(2, 2, 3)
 
 この例では、最後から二番目の行において配列 `xs` のハッシュコードが変わったため、最後の行の選択は恐らく失敗に終わる。ハッシュコードによる検索は `xs` が格納されていた元の位置とは別の場所を探しているからだ。

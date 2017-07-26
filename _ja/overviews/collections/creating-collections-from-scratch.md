@@ -1,11 +1,14 @@
 ---
-layout: overview
+layout: multipage-overview
 title: コレクションの作成
 
 discourse: false
 
 partof: collections
+overview-name: Collections
+
 num: 16
+
 language: ja
 ---
 

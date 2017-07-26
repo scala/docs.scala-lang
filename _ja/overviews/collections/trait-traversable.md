@@ -1,17 +1,20 @@
 ---
-layout: overview
+layout: multipage-overview
 title: Traversable トレイト
 
 discourse: false
 
 partof: collections
+overview-name: Collections
+
 num: 3
+
 language: ja
 ---
 
 走査可能 ([`Traversable`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Traversable.html))トレイトはコレクション階層の最上位に位置する。訳注: 木構造などでノードを一つづつ走査することを traverse と言う。また、-able で終わるトレイトは名詞としても使われるため、「走査可能なもの」という意味だ。 `Traversable` の抽象的な演算は `foreach` のみだ:
 
-    def foreach[U](f: Elem => U) 
+    def foreach[U](f: Elem => U)
 
 `Traverable` を実装するコレクションクラスは、このメソッドを定義するだけでいい。逆に言うと、その他全てのメソッドは `Traversable` から継承することができる。
 

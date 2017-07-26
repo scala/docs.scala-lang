@@ -1,15 +1,18 @@
 ---
-layout: overview
+layout: multipage-overview
 title: ビュー
 
 discourse: false
 
 partof: collections
+overview-name: Collections
+
 num: 14
+
 language: ja
 ---
 
-コレクションには新たなコレクションを構築するメソッドがたくさんある。例えば `map`、`filter`、`++` などがある。これらのメソッドは1つ以上のコレクションをレシーバとして取り、戻り値として別のコレクションを生成するため**変換演算子** 
+コレクションには新たなコレクションを構築するメソッドがたくさんある。例えば `map`、`filter`、`++` などがある。これらのメソッドは1つ以上のコレクションをレシーバとして取り、戻り値として別のコレクションを生成するため**変換演算子**
 (transformer) と呼ばれる。
 
 変換演算子を実装するには主に二つの方法がある。**正格** (strict) 法は変換演算子の戻り値として全ての要素を含む新たなコレクションを返す。非正格法、もしくは**遅延** (lazy) 法と呼ばれる方法は、結果のコレクションの代理のみを構築して返し、実際の要素は必用に応じて構築される。
@@ -32,7 +35,7 @@ language: ja
     v: scala.collection.immutable.Vector[Int] =
        Vector(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
     scala> v map (_ + 1) map (_ * 2)
-    res5: scala.collection.immutable.Vector[Int] = 
+    res5: scala.collection.immutable.Vector[Int] =
        Vector(4, 6, 8, 10, 12, 14, 16, 18, 20, 22)
 
 最後のステートメントにおいて、式 `v map (_ + 1)` は新たなベクトルを構築し、それは第2の `map (_ * 2)`
@@ -44,7 +47,7 @@ language: ja
 同じ演算の手順をもう1度ひとつひとつ見てみよう:
 
     scala> val vv = v.view
-    vv: scala.collection.SeqView[Int,Vector[Int]] = 
+    vv: scala.collection.SeqView[Int,Vector[Int]] =
        SeqView(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 
 `v.view` を適用することで遅延評価される `Seq` である `SeqView` が得られる。`SeqView` には2つの型パラメータがある。第1の `Int` はビューの要素の型を示す。第2の `Vector[Int]` は `view`

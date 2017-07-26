@@ -1,11 +1,14 @@
 ---
-layout: overview
+layout: multipage-overview
 title: 集合
 
 discourse: false
 
 partof: collections
+overview-name: Collections
+
 num: 6
+
 language: ja
 ---
 
