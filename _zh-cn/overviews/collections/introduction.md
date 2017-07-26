@@ -1,10 +1,12 @@
 ---
-layout: overview
+layout: multipage-overview
 title: 简介
 
 discourse: false
 
 partof: collections
+overview-name: Collections
+
 num: 1
 language: zh-cn
 ---
@@ -34,4 +36,3 @@ language: zh-cn
 这个代码比使用传统的类运行一到三个循环更加简明（三个循环处理一个数组，是由于中间结果需要有其它地方做缓存）。一旦你已经学习了基本的集合词汇，你将也发现写这种代码显式的循环更简单和更安全。而且，这个拆分操作是非常快速，并且在多核处理器上采用并行集合类达到更快的速度（并行集合类已经Scala 2.9的一部分发布）。  
 
 本文档从一个用户的角度出发，提供了一个关于Scala集合类的 API的深入讨论。它将带你体验它定义的所有的基础类和方法。
-

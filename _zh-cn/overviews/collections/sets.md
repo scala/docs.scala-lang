@@ -1,10 +1,12 @@
 ---
-layout: overview
+layout: multipage-overview
 title: 集合
 
 discourse: false
 
 partof: collections
+overview-name: Collections
+
 num: 6
 language: zh-cn
 ---
@@ -17,7 +19,7 @@ language: zh-cn
 例如
 
     val fruit = Set("apple", "orange", "peach", "banana")
-    fruit: scala.collection.immutable.Set[java.lang.String] = 
+    fruit: scala.collection.immutable.Set[java.lang.String] =
     Set(apple, orange, peach, banana)
     scala> fruit("peach")
     res0: Boolean = true
@@ -56,11 +58,11 @@ language: zh-cn
 
 可变集合提供加法类方法，可以用来添加、删除或更新元素。下面对这些方法做下总结。
 
-## mutable.Set 类的操作 
+## mutable.Set 类的操作
 
 | WHAT IT IS   | WHAT IT DOES   |
 |------------------|------------------------|
-|  **加法：** |                     |	
+|  **加法：** |                     |
 |  `xs += x` | 把元素 `x` 添加到集合 `xs` 中。该操作有副作用，它会返回左操作符，这里是 `xs` 自身。  |
 |  `xs += (x, y, z)` | 添加指定的元素到集合 `xs` 中，并返回 `xs` 本身。（同样有副作用）  |
 |  `xs ++= ys` | 添加集合 `ys` 中的所有元素到集合 `xs` 中，并返回 `xs` 本身。（表达式有副作用）  |
@@ -110,7 +112,7 @@ language: zh-cn
 
 集合的两个特质是 `SortedSet` 和 `BitSet`。
 
-## 有序集（SortedSet） 
+## 有序集（SortedSet）
 
  [SortedSet](http://www.scala-lang.org/api/current/scala/collection/SortedSet.html) 是指以特定的顺序（这一顺序可以在创建集合之初自由的选定）排列其元素（使用iterator或foreach）的集合。 [SortedSet](http://www.scala-lang.org/api/current/scala/collection/SortedSet.html) 的默认表示是有序二叉树，即左子树上的元素小于所有右子树上的元素。这样，一次简单的顺序遍历能按增序返回集合中的所有元素。Scala的类 `immutable.TreeSet` 使用红黑树实现，它在维护元素顺序的同时，也会保证二叉树的平衡，即叶节点的深度差最多为1。
 
@@ -141,9 +143,8 @@ language: zh-cn
     scala> res3 from "three"
     res5: scala.collection.immutable.TreeSet[String] = TreeSet(three, two)
 
-## 位集合（Bitset） 
+## 位集合（Bitset）
 
 位集合是由单字或多字的紧凑位实现的非负整数的集合。其内部使用 `Long` 型数组来表示。第一个 `Long` 元素表示的范围为0到63，第二个范围为64到127，以此类推（值为0到127的非可变位集合通过直接将值存储到第一个或第两个 `Long` 字段的方式，优化掉了数组处理的消耗）。对于每个 `Long`，如果有相应的值包含于集合中则它对应的位设置为1，否则该位为0。这里遵循的规律是，位集合的大小取决于存储在该集合的最大整数的值的大小。假如N是为集合所要表示的最大整数，则集合的大小就是 `N/64` 个长整形字，或者 `N/8` 个字节，再加上少量额外的状态信息字节。  
 
 因此当位集合包含的元素值都比较小时，它比其他的集合类型更紧凑。位集合的另一个优点是它的 `contains` 方法（成员测试）、`+=` 运算（添加元素）、`-=` 运算（删除元素）都非常的高效。  
-

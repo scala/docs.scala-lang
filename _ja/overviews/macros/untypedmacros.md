@@ -1,5 +1,5 @@
 ---
-layout: overview
+layout: multipage-overview
 language: ja
 
 discourse: false

@@ -1,10 +1,12 @@
 ---
-layout: overview
+layout: multipage-overview
 title: 具体的可变容器类
 
 discourse: false
 
 partof: collections
+overview-name: Collections
+
 num: 9
 language: zh-cn
 ---
@@ -24,7 +26,7 @@ language: zh-cn
     res33: buf.type = ArrayBuffer(1, 10)
     scala> buf.toArray
     res34: Array[Int] = Array(1, 10)
-    
+
 ## List Buffers
 
 [ListBuffer](http://www.scala-lang.org/api/2.10.0/scala/collection/mutable/ListBuffer.html) 类似于数组缓冲。区别在于前者内部实现是链表， 而非数组。如果你想把构造完的缓冲转换为列表，那就用列表缓冲，别用数组缓冲。
@@ -43,7 +45,7 @@ language: zh-cn
 数组缓冲用来构建数组，列表缓冲用来创建列表。类似地，[StringBuilder](http://www.scala-lang.org/api/2.10.0/scala/collection/mutable/StringBuilder.html) 用来构造字符串。作为常用的类，字符串构造器已导入到默认的命名空间。直接用 new StringBuilder就可创建字符串构造器 ，像这样：
 
     scala> val buf = new StringBuilder
-    buf: StringBuilder = 
+    buf: StringBuilder =
     scala> buf += 'a'
     res38: buf.type = a
     scala> buf ++= "bcdef"
@@ -167,4 +169,3 @@ Concurrent Map可以同时被多个线程访问。除了[Map](http://www.scala-l
     res50: bits.type = BitSet(1, 3)
     scala> bits
     res51: scala.collection.mutable.BitSet = BitSet(1, 3)
-

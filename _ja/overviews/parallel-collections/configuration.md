@@ -1,10 +1,12 @@
 ---
-layout: overview
+layout: multipage-overview
 title: 並列コレクションの設定
 
 discourse: false
 
 partof: parallel-collections
+overview-name: Parallel Collections
+
 num: 7
 language: ja
 ---
@@ -26,13 +28,13 @@ JVM 1.5 とその他のフォーク/ジョインプールをサポートしな�
 
     scala> import scala.collection.parallel._
     import scala.collection.parallel._
-    
+
     scala> val pc = mutable.ParArray(1, 2, 3)
     pc: scala.collection.parallel.mutable.ParArray[Int] = ParArray(1, 2, 3)
-    
+
     scala> pc.tasksupport = new ForkJoinTaskSupport(new scala.concurrent.forkjoin.ForkJoinPool(2))
     pc.tasksupport: scala.collection.parallel.TaskSupport = scala.collection.parallel.ForkJoinTaskSupport@4a5d484a
-    
+
     scala> pc map { _ + 1 }
     res0: scala.collection.parallel.mutable.ParArray[Int] = ParArray(2, 3, 4)
 
@@ -41,7 +43,7 @@ JVM 1.5 とその他のフォーク/ジョインプールをサポートしな�
 
     scala> pc.tasksupport = new ThreadPoolTaskSupport()
     pc.tasksupport: scala.collection.parallel.TaskSupport = scala.collection.parallel.ThreadPoolTaskSupport@1d914a39
-    
+
     scala> pc map { _ + 1 }
     res1: scala.collection.parallel.mutable.ParArray[Int] = ParArray(2, 3, 4)
 
@@ -51,9 +53,9 @@ JVM 1.5 とその他のフォーク/ジョインプールをサポートしな�
 カスタムのタスクサポートを実装するには、`TaskSupport` トレイトを拡張して以下のメソッドを実装する:
 
     def execute[R, Tp](task: Task[R, Tp]): () => R
-    
+
     def executeAndWaitResult[R, Tp](task: Task[R, Tp]): R
-    
+
     def parallelismLevel: Int
 
 `execute` メソッドはタスクを非同期的にスケジューリングし、計算の結果をフューチャー値として返す。

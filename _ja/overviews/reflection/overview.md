@@ -1,9 +1,11 @@
 ---
-layout: overview
+layout: multipage-overview
 
 partof: reflection
+overview-name: Reflection
+
 num: 1
-outof: 6
+
 language: ja
 title: 概要
 

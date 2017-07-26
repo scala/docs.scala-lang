@@ -1,11 +1,13 @@
 ---
-layout: overview
+layout: multipage-overview
 
 discourse: false
 
 partof: reflection
+overview-name: Reflection
+
 num: 4
-outof: 6
+
 language: ja
 title: アノテーション、名前、スコープ、その他
 ---

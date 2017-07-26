@@ -1,10 +1,12 @@
 ---
-layout: overview
+layout: multipage-overview
 title: Java和Scala容器的转换
 
 discourse: false
 
 partof: collections
+overview-name: Collections
+
 num: 17
 language: zh-cn
 ---
@@ -43,10 +45,10 @@ import之后，就可以在Scala容器和与之对应的Java容器之间进行�
 
 还有一些Scala容器类型可以转换成对应的Java类型，但是并没有将相应的Java类型转换成Scala类型的能力，它们是：
 
-    Seq => java.util.List 
+    Seq => java.util.List
     mutable.Seq => java.util.List
-    Set => java.util.Set 
-    Map => java.util.Map 
+    Set => java.util.Set
+    Map => java.util.Map
 
 因为Java并未区分可变容器不可变容器类型，所以，虽然能将`scala.immutable.List`转换成`java.util.List`，但所有的修改操作都会抛出“UnsupportedOperationException”。参见下例：
 
@@ -55,4 +57,3 @@ import之后，就可以在Scala容器和与之对应的Java容器之间进行�
     scala> jul.add(7)
     java.lang.UnsupportedOperationException
             at java.util.AbstractList.add(AbstractList.java:131)
-        

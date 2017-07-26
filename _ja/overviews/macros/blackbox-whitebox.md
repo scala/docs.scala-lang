@@ -1,12 +1,13 @@
 ---
-layout: overview
+layout: multipage-overview
 
 language: ja
 discourse: false
 
 partof: macros
+overview-name: Macros
+
 num: 2
-outof: 11
 
 title: blackbox vs whitebox
 ---

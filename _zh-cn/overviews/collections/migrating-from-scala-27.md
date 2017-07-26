@@ -1,12 +1,13 @@
 ---
-layout: overview
+layout: multipage-overview
 title: Scala 2.7迁移指南
 
 discourse: false
 
 partof: collections
+overview-name: Collections
+
 num: 18
-outof: 18
 language: zh-cn
 ---
 
@@ -36,7 +37,7 @@ Scala 2.7中容器的旧有功能基本上全部予以保留。某些功能被�
            m.keys
              ^
     res2: Iterable[Int] = Set(1, 3)
-    
+
 老版本的库中有两个部分被整个移除，所以在deprecation警告中看不到它们。
 
 scala.collection.jcl包被移除了。这个包试图在Scala中模拟某些Java的容器，但是该包破坏了Scala的一些对称性。绝大多数人，当他们需要Java容器的时候，他们会直接选用java.util。  

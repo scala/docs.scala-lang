@@ -1,10 +1,12 @@
 ---
-layout: overview
+layout: multipage-overview
 title: Mutable和Immutable集合
 
 discourse: false
 
 partof: collections
+overview-name: Collections
+
 num: 2
 language: zh-cn
 ---
@@ -26,8 +28,8 @@ Scala 集合类系统地区分了可变的和不可变的集合。可变集合�
 
 一个有用的约定，如果你想要同时使用可变和不可变集合类，只导入collection.mutable包即可。
 
-	import scala.collection.mutable  //导入包scala.collection.mutable 
-    
+	import scala.collection.mutable  //导入包scala.collection.mutable
+
 然而，像没有前缀的Set这样的关键字， 仍然指的是一个不可变集合，然而`mutable.Set`指的是可变的副本（可变集合）。
 
 集合树的最后一个包是`collection.generic`。这个包包含了集合的构建块。集合类延迟了`collection.generic`类中的部分操作实现，另一方面集合框架的用户需要引用`collection.generic`中类在异常情况中。
@@ -36,7 +38,7 @@ Scala 集合类系统地区分了可变的和不可变的集合。可变集合�
 
     scala.collection.immutable.List // 这是它的定义位置
     scala.List //通过scala 包中的别名
-    List // 因为scala._ 
+    List // 因为scala._
                                       // 总是是被自动导入。
 
 其它类型的别名有： [Traversable](http://www.scala-lang.org/api/current/scala/collection/Traversable.html), [Iterable](http://www.scala-lang.org/api/current/scala/collection/Iterable.html), [Seq](http://www.scala-lang.org/api/current/scala/collection/Seq.html), [IndexedSeq](http://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html), [Iterator](http://www.scala-lang.org/api/current/scala/collection/Iterator.html), [Stream](http://www.scala-lang.org/api/current/scala/collection/immutable/Stream.html), [Vector](http://www.scala-lang.org/api/current/scala/collection/immutable/Vector.html), [StringBuilder](http://www.scala-lang.org/api/current/scala/collection/mutable/StringBuilder.html), [Range](http://www.scala-lang.org/api/current/scala/collection/immutable/Range.html)。
@@ -67,7 +69,7 @@ Scala 集合类系统地区分了可变的和不可变的集合。可变集合�
     Buffer(x, y, z)
     IndexedSeq(1.0, 2.0)
     LinearSeq(a, b, c)
-    
+
 相同的原则也应用于特殊的集合实现，例如：
 
     List(1, 2, 3)
@@ -77,7 +79,7 @@ Scala 集合类系统地区分了可变的和不可变的集合。可变集合�
 
 Traversable类提供了所有集合支持的API，同时，对于特殊类型也是有意义的。例如，Traversable类 的map方法会返回另一个Traversable对象作为结果，但是这个结果类型在子类中被重写了。例如，在一个List上调用map会又生成一个List，在Set上调用会再生成一个Set，以此类推。  
 
-    scala> List(1, 2, 3) map (_ + 1) 
+    scala> List(1, 2, 3) map (_ + 1)
     res0: List[Int] = List(2, 3, 4)
     scala> Set(1, 2, 3) map (_ * 2)
     res0: Set[Int] = Set(2, 4, 6)

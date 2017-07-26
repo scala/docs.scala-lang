@@ -1,12 +1,13 @@
 ---
-layout: overview
+layout: multipage-overview
 language: ja
 
 discourse: false
 
 partof: macros
+overview-name: Macros
+
 num: 6
-outof: 11
 
 title: 抽出子マクロ
 ---
@@ -77,7 +78,7 @@ typer とのよどみない会話をお膳立てするには全ての部分が�
 [run/t5903a](https://github.com/scala/scala/tree/00624a39ed84c3fd245dd9df7454d4cec4399e13/test/files/run/t5903a)、
 [run/t5903b](https://github.com/scala/scala/tree/00624a39ed84c3fd245dd9df7454d4cec4399e13/test/files/run/t5903b)、
 [run/t5903c](https://github.com/scala/scala/tree/00624a39ed84c3fd245dd9df7454d4cec4399e13/test/files/run/t5903c)、
-[run/t5903d](https://github.com/scala/scala/tree/00624a39ed84c3fd245dd9df7454d4cec4399e13/test/files/run/t5903d) 
+[run/t5903d](https://github.com/scala/scala/tree/00624a39ed84c3fd245dd9df7454d4cec4399e13/test/files/run/t5903d)
 などのテストケースを参照してほしい。
 
 ## blackbox vs whitebox

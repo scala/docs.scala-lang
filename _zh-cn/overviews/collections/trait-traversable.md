@@ -1,10 +1,12 @@
 ---
-layout: overview
+layout: multipage-overview
 title: Trait Traversable
 
 discourse: false
 
 partof: collections
+overview-name: Collections
+
 num: 3
 language: zh-cn
 ---
@@ -119,4 +121,3 @@ Traversable同时定义的很多具体方法，如下表所示。这些方法可
 |  **视图（View）：**	 | 	                 |
 | xs.view	| 通过容器xs生成一个视图。 |
 | xs view (from, to)	| 生成一个表示在指定索引范围内的xs元素的视图。 |
-

@@ -1,10 +1,12 @@
 ---
-layout: overview
+layout: multipage-overview
 title: 概要
 
 discourse: false
 
 partof: parallel-collections
+overview-name: Parallel Collections
+
 num: 1
 language: ja
 ---
@@ -28,7 +30,7 @@ language: ja
 
     val list = (1 to 10000).toList
     list.map(_ + 42)
-    
+
 同じ演算を並列に実行するには、単に順次コレクションである `list` に対して `par` メソッドを呼び出すだけでいい。後は、順次コレクションを普通に使うのと同じように並列コレクションを利用できる。上記の例は以下のように並列化できる:
 
     list.par.map(_ + 42)
@@ -61,7 +63,7 @@ Scala の並列コレクションライブラリは、順次ライブラリコ�
 
     scala> val lastNames = List("Smith","Jones","Frankenstein","Bach","Jackson","Rodin").par
     lastNames: scala.collection.parallel.immutable.ParSeq[String] = ParVector(Smith, Jones, Frankenstein, Bach, Jackson, Rodin)
-    
+
     scala> lastNames.map(_.toUpperCase)
     res0: scala.collection.parallel.immutable.ParSeq[String] = ParVector(SMITH, JONES, FRANKENSTEIN, BACH, JACKSON, RODIN)
 
@@ -71,7 +73,7 @@ Scala の並列コレクションライブラリは、順次ライブラリコ�
 
     scala> val parArray = (1 to 10000).toArray.par
     parArray: scala.collection.parallel.mutable.ParArray[Int] = ParArray(1, 2, 3, ...
-    
+
     scala> parArray.fold(0)(_ + _)
     res0: Int = 50005000
 
@@ -81,7 +83,7 @@ Scala の並列コレクションライブラリは、順次ライブラリコ�
 
     scala> val lastNames = List("Smith","Jones","Frankenstein","Bach","Jackson","Rodin").par
     lastNames: scala.collection.parallel.immutable.ParSeq[String] = ParVector(Smith, Jones, Frankenstein, Bach, Jackson, Rodin)
-    
+
     scala> lastNames.filter(_.head >= 'J')
     res0: scala.collection.parallel.immutable.ParSeq[String] = ParVector(Smith, Jones, Jackson, Rodin)
 
@@ -107,22 +109,22 @@ Scala の並列コレクションライブラリは、順次ライブラリコ�
 
     scala> val list = (1 to 1000).toList.par
     list: scala.collection.parallel.immutable.ParSeq[Int] = ParVector(1, 2, 3,…
-    
+
     scala> list.foreach(sum += _); sum
     res01: Int = 467766
-    
+
     scala> var sum = 0
     sum: Int = 0
-    
+
     scala> list.foreach(sum += _); sum
     res02: Int = 457073    
-    
+
     scala> var sum = 0
     sum: Int = 0
-    
+
     scala> list.foreach(sum += _); sum
     res03: Int = 468520    
-    
+
 ここでは、`sum` が 0 に初期化されて、`list` に対して `foreach` が呼び出されるたびに `sum` が異なる値を持っていることが分かる。この非決定性の原因は**データ競合** (data race; 同一の可変変数に対する並行した読み書き) だ。
 
 上の例だと、二つのスレッドが `sum` の**同じ**値を読み込んで、その `sum` の値に対して何らかの演算を実行した後で、`sum` に新しい値を書きこもうとするかもしれない。以下に示すように、その場合は、大切な結果の上書き（つまり、損失）が起きる可能性がある:
@@ -140,16 +142,16 @@ Scala の並列コレクションライブラリは、順次ライブラリコ�
 
     scala> val list = (1 to 1000).toList.par
     list: scala.collection.parallel.immutable.ParSeq[Int] = ParVector(1, 2, 3,…
-    
+
     scala> list.reduce(_-_)
     res01: Int = -228888
-    
+
     scala> list.reduce(_-_)
     res02: Int = -61000
-    
+
     scala> list.reduce(_-_)
     res03: Int = -331818
-    
+
 上の例では、`ParVector[Int]` の `reduce` メソッドが `_-_` と共に呼び出されている。
 これは二つの不特定の要素を取り出し、前者から後者を引く。
 並列コレクションフレームワークはスレッドを呼び出し、それぞれが実質的に、独自にコレクションから異なる部位を取り出し `reduce(_-_)` を実行するため、同じコレクションに `reduce(_-_)` を実行するたびに毎回異なった結果が得られることとなる。
@@ -157,11 +159,11 @@ Scala の並列コレクションライブラリは、順次ライブラリコ�
 **注意:** 結合則が成立しない演算と同様に、交換則が成立しない演算も並列コレクションの高階関数に渡されると非決定的な振る舞いをみせると思われがちだが、それは間違っている。単純な例としては、文字列の連結がある。結合則は成立するが、交換則は成立しない演算だ:
 
     scala> val strings = List("abc","def","ghi","jk","lmnop","qrs","tuv","wx","yz").par
-    strings: scala.collection.parallel.immutable.ParSeq[java.lang.String] = ParVector(abc, def, ghi, jk, lmnop, qrs, tuv, wx, yz) 
-    
+    strings: scala.collection.parallel.immutable.ParSeq[java.lang.String] = ParVector(abc, def, ghi, jk, lmnop, qrs, tuv, wx, yz)
+
     scala> val alphabet = strings.reduce(_++_)
     alphabet: java.lang.String = abcdefghijklmnopqrstuvwxyz
 
 並列コレクションにおける**「アウト・オブ・オーダー」**の意味論は、演算が（**時間的**な意味で、つまり非逐次的に）バラバラの順序で実行されるという意味であって、結果が（**空間的**に）バラバラに**「再合成」**されるという意味ではない。結果は、一般的に**順序どおり** (in-order) に再合成される。つまり、A、B、C の順番に分割された並列コレクションは、再び A、B、C の順番に再合成される。任意の B、C、A というような順序にはならない。
 
-異なる並列コレクションの型における、分割と再合成の詳細ついてはこのガイドの[アーキテクチャ](architecture.html)の節を参照してほしい。 
+異なる並列コレクションの型における、分割と再合成の詳細ついてはこのガイドの[アーキテクチャ](architecture.html)の節を参照してほしい。

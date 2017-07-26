@@ -1,10 +1,12 @@
 ---
-layout: overview
+layout: multipage-overview
 title: 并发字典树
 
 discourse: false
 
 partof: parallel-collections
+overview-name: Parallel Collections
+
 num: 4
 language: zh-cn
 ---
@@ -19,14 +21,14 @@ language: zh-cn
     case class Entry(num: Double) {
       var sqrt = num
     }
-    
+
     val length = 50000
-    
+
     // 准备链表
     val entries = (1 until length) map { num => Entry(num.toDouble) }
     val results = ParTrieMap()
     for (e <- entries) results += ((e.num, e))
-    
+
     //  计算平方根
     while (results.nonEmpty) {
       for ((num, e) <- results) {
@@ -36,40 +38,40 @@ language: zh-cn
         } else e.sqrt = nsqrt
       }
     }
-    
+
 注意，在上面的计算平方根的巴比伦算法([3](http://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Babylonian_method))中，某些数据会比别的数据收敛的更快。基于这个因素，我们希望能够尽快把他们从结果中剔除，只遍历那些真正需要耗时处理的元素。
 
 另一个例子是广度优先搜索算法，该算法迭代地在末端节点遍历，直到找到通往目标的路径，或遍历完所有周围节点。一个二维地图上的节点定义为Int的元组。map定义为二维布尔值数组，用来表示各个位置是否已经到达。然后，定义2个并行字典树映射，open和closed。其中，映射open保存接着需要被遍历的末端节点。映射closed保存所有已经被遍历过的节点。映射open使用恰当节点来初始化，用以从地图的一角开始搜索，并找到通往地图中心的路径。随后，并行地对映射open中的所有节点迭代遍历，直到没有节点可以遍历。每次一个节点被遍历时，将它从映射open中移除，并放置在映射closed中。一旦执行完成，输出从目标节点到初始节点的路径。
 （译者注：如扫雷，不断判断当前位置（末端节点）上下左右是否为地雷（二维布尔数组），从起始位置逐渐向外扩张。）
 
     val length = 1000
-    
+
     //定义节点类型
     type Node = (Int, Int);
     type Parent = (Int, Int);
-    
+
     //定义节点类型上的操作
     def up(n: Node) = (n._1, n._2 - 1);
     def down(n: Node) = (n._1, n._2 + 1);
     def left(n: Node) = (n._1 - 1, n._2);
     def right(n: Node) = (n._1 + 1, n._2);
-    
+
     // 创建一个map及一个target
     val target = (length / 2, length / 2);
     val map = Array.tabulate(length, length)((x, y) => (x % 3) != 0 || (y % 3) != 0 || (x, y) == target)
     def onMap(n: Node) = n._1 >= 0 && n._1 < length && n._2 >= 0 && n._2 < length
-    
+
     //open列表 - 前节点
     // closed 列表 - 已处理的节点
     val open = ParTrieMap[Node, Parent]()
     val closed = ParTrieMap[Node, Parent]()
-    
+
     // 加入一对起始位置
     open((0, 0)) = null
     open((length - 1, length - 1)) = null
     open((0, length - 1)) = null
     open((length - 1, 0)) = null
-    
+
     //  贪婪广度优先算法路径搜索
     while (open.nonEmpty && !open.contains(target)) {
       for ((node, parent) <- open) {
@@ -86,7 +88,7 @@ language: zh-cn
         open.remove(node)
       }
     }
-    
+
     // 打印路径
     var pathnode = open(target)
     while (closed.contains(pathnode)) {
@@ -108,4 +110,3 @@ size操作也基于快照。一种直接的实现方式是，size调用仅仅生
 [具有高效非阻塞快照的并发字典树][2](http://lampwww.epfl.ch/~prokopec/ctries-snapshot.pdf)  
 [计算平方根的方法][3](http://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Babylonian_method)  
 [人生游戏模拟程序][4](https://github.com/axel22/ScalaDays2012-TrieMap)（译注：类似大富翁的棋盘游戏）  
-

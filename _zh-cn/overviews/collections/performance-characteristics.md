@@ -1,10 +1,12 @@
 ---
-layout: overview
+layout: multipage-overview
 title: 性能特点
 
 discourse: false
 
 partof: collections
+overview-name: Collections
+
 num: 12
 language: zh-cn
 ---
@@ -83,4 +85,3 @@ language: zh-cn
 |add | 添加一个新的元素到一个集合中或者添加一个键值对到一个映射中。 |  
 |remove | 移除一个集合中的一个元素或者移除一个映射中一个键。 |  
 |min | 集合中的最小元素，或者映射中的最小键。 |  
-

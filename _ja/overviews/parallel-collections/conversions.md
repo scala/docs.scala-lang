@@ -1,10 +1,12 @@
 ---
-layout: overview
+layout: multipage-overview
 title: 並列コレクションへの変換
 
 discourse: false
 
 partof: parallel-collections
+overview-name: Parallel Collections
+
 num: 3
 language: ja
 ---
@@ -35,7 +37,7 @@ language: ja
 全ての並列コレクションは、`seq` メソッドを用いて何らかの順次コレクションに変換できる。
 並列コレクションから順次コレクションへの変換は常に効率的で、定数時間で実行される。
 並列可変コレクションに対して `seq` を呼び出すと、同じ内部構造にデータを格納した順次コレクションを返す。
-そのため、コレクションの変更は、他方にも見えることになる。 
+そのため、コレクションの変更は、他方にも見えることになる。
 
 ## 異なるコレクション型の間での変換
 

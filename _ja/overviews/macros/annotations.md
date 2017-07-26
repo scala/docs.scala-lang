@@ -1,12 +1,13 @@
 ---
-layout: overview
+layout: multipage-overview
 
 language: ja
 discourse: false
 
 partof: macros
+overview-name: Macros
+
 num: 9
-outof: 11
 
 title: マクロアノテーション
 ---

@@ -1,10 +1,12 @@
 ---
-layout: overview
+layout: multipage-overview
 title: 並行トライ
 
 discourse: false
 
 partof: parallel-collections
+overview-name: Parallel Collections
+
 num: 4
 language: ja
 ---
@@ -26,14 +28,14 @@ language: ja
     case class Entry(num: Double) {
       var sqrt = num
     }
-    
+
     val length = 50000
-    
+
     // リストを準備する
     val entries = (1 until length) map { num => Entry(num.toDouble) }
     val results = ParTrieMap()
     for (e <- entries) results += ((e.num, e))
-    
+
     // 平方根を計算する
     while (results.nonEmpty) {
       for ((num, e) <- results) {
@@ -58,33 +60,33 @@ language: ja
 完了したら、対象ノードから初期ノードまでの経路を表示する。
 
     val length = 1000
-    
+
     // Node 型を定義する
     type Node = (Int, Int);
     type Parent = (Int, Int);
-    
+
     // Node 型の演算
     def up(n: Node) = (n._1, n._2 - 1);
     def down(n: Node) = (n._1, n._2 + 1);
     def left(n: Node) = (n._1 - 1, n._2);
     def right(n: Node) = (n._1 + 1, n._2);
-    
+
     // map と target を作る
     val target = (length / 2, length / 2);
     val map = Array.tabulate(length, length)((x, y) => (x % 3) != 0 || (y % 3) != 0 || (x, y) == target)
     def onMap(n: Node) = n._1 >= 0 && n._1 < length && n._2 >= 0 && n._2 < length
-    
+
     // open マップ - ノード前線
     // closed マップ - 滞在済みのノード
     val open = ParTrieMap[Node, Parent]()
     val closed = ParTrieMap[Node, Parent]()
-    
+
     // 初期位置をいくつか追加する
     open((0, 0)) = null
     open((length - 1, length - 1)) = null
     open((0, length - 1)) = null
     open((length - 1, 0)) = null
-    
+
     // 貪欲法による幅優先探索
     while (open.nonEmpty && !open.contains(target)) {
       for ((node, parent) <- open) {
@@ -101,7 +103,7 @@ language: ja
         open.remove(node)
       }
     }
-    
+
     // 経路の表示
     var pathnode = open(target)
     while (closed.contains(pathnode)) {

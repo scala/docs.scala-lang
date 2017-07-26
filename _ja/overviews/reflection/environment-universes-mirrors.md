@@ -1,11 +1,13 @@
 ---
-layout: overview
+layout: multipage-overview
 
 discourse: false
 
 partof: reflection
+overview-name: Reflection
+
 num: 2
-outof: 6
+
 language: ja
 title: 環境、ユニバース、ミラー
 ---

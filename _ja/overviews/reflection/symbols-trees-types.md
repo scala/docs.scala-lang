@@ -1,11 +1,13 @@
 ---
-layout: overview
+layout: multipage-overview
 
 discourse: false
 
 partof: reflection
+overview-name: Reflection
+
 num: 3
-outof: 6
+
 language: ja
 title: シンボル、構文木、型
 ---

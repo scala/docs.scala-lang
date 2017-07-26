@@ -1,10 +1,12 @@
 ---
-layout: overview
+layout: multipage-overview
 title: 映射
 
 discourse: false
 
 partof: collections
+overview-name: Collections
+
 num: 7
 language: zh-cn
 ---
@@ -79,7 +81,7 @@ language: zh-cn
 
 getOrElseUpdate特别适合用于访问用作缓存的映射（Map）。假设调用函数f开销巨大：
 
-    scala> def f(x: String) = { 
+    scala> def f(x: String) = {
            println("taking my time."); sleep(100)
            x.reverse }
     f: (x: String)String
@@ -94,7 +96,7 @@ getOrElseUpdate特别适合用于访问用作缓存的映射（Map）。假设�
     scala> def cachedF(s: String) = cache.getOrElseUpdate(s, f(s))
     cachedF: (s: String)String
     scala> cachedF("abc")
-    
+
 稍等片刻。
 
     res3: String = cba
@@ -105,12 +107,12 @@ getOrElseUpdate特别适合用于访问用作缓存的映射（Map）。假设�
 
     def cachedF(arg: String) = cache get arg match {
       case Some(result) => result
-      case None => 
+      case None =>
         val result = f(x)
         cache(arg) = result
         result
     }
-    
+
 ## 同步集合（Set）和映射（Map）
 
 无论什么样的Map实现，只需混入`SychronizedMap trait`，就可以得到对应的线程安全版的Map。例如，我们可以像下述代码那样在HashMap中混入SynchronizedMap。这个示例一上来先从`scala.colletion.mutable`包中import了两个trait：Map、SynchronizedMap，和一个类：HashMap。接下来，示例中定义了一个单例对象MapMaker，其中定义了一个方法makeMap。该方法的返回值类型是一个同时以String为键值类型的可变映射。
@@ -126,19 +128,19 @@ getOrElseUpdate特别适合用于访问用作缓存的映射（Map）。假设�
             }
         }
       }
-      
+
 混入SynchronizedMap trait
 
 makeMap方法中的第1个语句构造了一个新的混入了SynchronizedMap trait的可变映射：
 
     new HashMap[String, String] with
       SynchronizedMap[String, String]
-  
+
 针对这段代码，Scala编译器会合成HashMap的一个混入了SynchronizedMap trait的子类，同时生成（并返回）该合成子类的一个实例。处于下面这段代码的缘故，这个合成类还覆写了default方法：
 
     override def default(key: String) =
       "Why do you want to know?"
-  
+
 当向某个Map查询给定的键所对应的值，而Map中不存在与该键相关联的值时，默认情况下会触发一个NoSuchElementException异常。不过，如果自定义一个Map类并覆写default方法，便可以针对不存在的键返回一个default方法返回的值。所以，编译器根据上述代码合成的HashMap子类在碰到不存在的键时将会反过来质问你“Why do you want to know?”
 
 makeMap方法返回的可变映射混入了 SynchronizedMap trait，因此可以用在多线程环境下。对该映射的每次访问都是同步的。以下示例展示的是从解释器内以单个线程访问该映射：
@@ -159,10 +161,9 @@ makeMap方法返回的可变映射混入了 SynchronizedMap trait，因此可以
 
 同步集合（synchronized set）的创建方法与同步映射（synchronized map）类似。例如，我们可以通过混入SynchronizedSet trait来创建同步哈希集：
 
-    import scala.collection.mutable  //导入包scala.collection.mutable 
+    import scala.collection.mutable  //导入包scala.collection.mutable
     val synchroSet =
       new mutable.HashSet[Int] with
           mutable.SynchronizedSet[Int]
-      
-最后，如有使用同步容器（synchronized collection）的需求，还可以考虑使用`java.util.concurrent`中提供的并发容器（concurrent collections）。
 
+最后，如有使用同步容器（synchronized collection）的需求，还可以考虑使用`java.util.concurrent`中提供的并发容器（concurrent collections）。

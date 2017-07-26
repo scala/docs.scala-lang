@@ -1,10 +1,12 @@
 ---
-layout: overview
+layout: multipage-overview
 title: 性能の測定
 
 discourse: false
 
 partof: parallel-collections
+overview-name: Parallel Collections
+
 num: 8
 outof: 8
 language: ja
@@ -54,14 +56,14 @@ Scala の標準ライブラリには `scala.testing.Benchmark` トレイトが�
 
     import collection.parallel.mutable.ParTrieMap
     import collection.parallel.ForkJoinTaskSupport
-    
+
     object Map extends testing.Benchmark {
       val length = sys.props("length").toInt
       val par = sys.props("par").toInt
       val partrie = ParTrieMap((0 until length) zip (0 until length): _*)
-      
+
       partrie.tasksupport = new ForkJoinTaskSupport(new scala.concurrent.forkjoin.ForkJoinPool(par))
-      
+
       def run = {
         partrie map {
           kv => kv
@@ -125,25 +127,25 @@ Scala の標準ライブラリには `scala.testing.Benchmark` トレイトが�
 サイズがいくつであるかを大まかに示すために、以下に安価で副作用を伴わないベクトルの集約演算（この場合、sum）をクアッドコアの i7（ハイパースレッディング無し）で JDK7 上で実行した具体例を示す:
 
     import collection.parallel.immutable.ParVector
-    
+
     object Reduce extends testing.Benchmark {
       val length = sys.props("length").toInt
       val par = sys.props("par").toInt
       val parvector = ParVector((0 until length): _*)
-      
+
       parvector.tasksupport = new collection.parallel.ForkJoinTaskSupport(new scala.concurrent.forkjoin.ForkJoinPool(par))
-      
+
       def run = {
         parvector reduce {
           (a, b) => a + b
         }
       }
     }
-   
+
     object ReduceSeq extends testing.Benchmark {
       val length = sys.props("length").toInt
       val vector = collection.immutable.Vector((0 until length): _*)
-      
+
       def run = {
         vector reduce {
           (a, b) => a + b
@@ -172,25 +174,25 @@ Scala の標準ライブラリには `scala.testing.Benchmark` トレイトが�
 もう一つの具体例として、`mutable.ParHashMap` と（変換メソッドである）`map` メソッドに注目して同じ環境で以下のベンチマークを実行する:
 
     import collection.parallel.mutable.ParHashMap
-    
+
     object Map extends testing.Benchmark {
       val length = sys.props("length").toInt
       val par = sys.props("par").toInt
       val phm = ParHashMap((0 until length) zip (0 until length): _*)
-      
+
       phm.tasksupport = new collection.parallel.ForkJoinTaskSupport(new scala.concurrent.forkjoin.ForkJoinPool(par))
-      
+
       def run = {
         phm map {
           kv => kv
         }
       }
     }
-   
+
     object MapSeq extends testing.Benchmark {
       val length = sys.props("length").toInt
       val hm = collection.mutable.HashMap((0 until length) zip (0 until length): _*)
-      
+
       def run = {
         hm map {
           kv => kv

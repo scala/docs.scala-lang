@@ -25,6 +25,9 @@ collections:
   ja: # Japanese translations
     output: true
     permalink: /:collection/:path.html
+  zh-cn: # Chinese (Simplified) translations
+    output: true
+    permalink: /:collection/:path.html
 
 scala-version: 2.12.2
 

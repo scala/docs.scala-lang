@@ -1,10 +1,12 @@
 ---
-layout: overview
+layout: multipage-overview
 title: 测量性能
 
 discourse: false
 
 partof: parallel-collections
+overview-name: Parallel Collections
+
 num: 8
 language: zh-cn
 ---
@@ -35,27 +37,27 @@ scala.testing.Benchmark trait 是在Scala标准库中被预先定义的，并按
 
     import collection.parallel.mutable.ParTrieMap
     import collection.parallel.ForkJoinTaskSupport
-    
+
     object Map extends testing.Benchmark {
       val length = sys.props("length").toInt
       val par = sys.props("par").toInt
       val partrie = ParTrieMap((0 until length) zip (0 until length): _*)
-    
+
       partrie.tasksupport = new ForkJoinTaskSupport(new scala.concurrent.forkjoin.ForkJoinPool(par))
-    
+
       def run = {
         partrie map {
           kv => kv
         }
       }
     }
-    
+
 run方法包含了基准测试代码，重复运行时测量执行时间。上面的Map对象扩展了scala.testing.Benchmark trait，同时，参数par为系统的并行度，length为trie中元素数量的长度。
 
 在编译上面的程序之后，可以这样运行：
 
 	java -server -cp .:../../build/pack/lib/scala-library.jar -Dpar=1 -Dlength=300000 Map 10
-    
+
 server参数指定需要使用server类型的虚拟机。cp参数指定了类文件的路径，包含当前文件夹的类文件以及以及scala类库的jar包。参数-Dpar和-Dlength分别对应并行度和元素数量。最后，10意味着基准测试需要在同一个JVM中运行的次数。
 
 在i7四核超线程处理器上将par的值设置为1、2、4、8并获得对应的执行时间。
@@ -84,31 +86,31 @@ collection的大小所对应的实际并发消耗取决于很多因素。部分�
 即使单独的来看，对上面的问题进行推断并给出关于容器应有大小的明确答案也是不容易的。为了粗略的说明容器的应有大小，我们给出了一个无副作用的在i7四核处理器（没有使用超线程）和JDK7上运行的并行矢量减（在这个例子中进行的是求和）处理性能的例子：
 
     import collection.parallel.immutable.ParVector
-    
+
     object Reduce extends testing.Benchmark {
       val length = sys.props("length").toInt
       val par = sys.props("par").toInt
       val parvector = ParVector((0 until length): _*)
-    
+
       parvector.tasksupport = new collection.parallel.ForkJoinTaskSupport(new scala.concurrent.forkjoin.ForkJoinPool(par))
-    
+
       def run = {
         parvector reduce {
           (a, b) => a + b
         }
       }
     }
-    
+
     object ReduceSeq extends testing.Benchmark {
       val length = sys.props("length").toInt
       val vector = collection.immutable.Vector((0 until length): _*)
-    
+
       def run = {
         vector reduce {
           (a, b) => a + b
         }
       }
-      
+
     }
 首先我们设定在元素数量为250000的情况下运行基准测试，在线程数设置为1、2、4的情况下得到了如下结果：
 
@@ -129,25 +131,25 @@ collection的大小所对应的实际并发消耗取决于很多因素。部分�
 在另一个例子中，我们使用mutable.ParHashMap和map方法（一个转换方法），并在同样的环境中运行下面的测试程序：
 
     import collection.parallel.mutable.ParHashMap
-    
+
     object Map extends testing.Benchmark {
       val length = sys.props("length").toInt
       val par = sys.props("par").toInt
       val phm = ParHashMap((0 until length) zip (0 until length): _*)
-    
+
       phm.tasksupport = new collection.parallel.ForkJoinTaskSupport(new scala.concurrent.forkjoin.ForkJoinPool(par))
-    
+
       def run = {
         phm map {
           kv => kv
         }
       }
     }
-    
+
     object MapSeq extends testing.Benchmark {
       val length = sys.props("length").toInt
       val hm = collection.mutable.HashMap((0 until length) zip (0 until length): _*)
-    
+
       def run = {
         hm map {
           kv => kv
@@ -162,7 +164,7 @@ collection的大小所对应的实际并发消耗取决于很多因素。部分�
     Map$ 138 68 57 56 57 56 56 55 54 55
     java -server -cp .:../../build/pack/lib/scala-library.jar -Dpar=4 -Dlength=120000 Map 10 10
     Map$ 124 54 42 40 38 41 40 40 39 39
-    
+
 现在，如果我们将元素数量降低到15000来跟序列化哈希映射做比较：
 
     java -server -cp .:../../build/pack/lib/scala-library.jar -Dpar=1 -Dlength=15000 Map 10 10
@@ -171,11 +173,10 @@ collection的大小所对应的实际并发消耗取决于很多因素。部分�
     Map$ 48 15 9 8 7 7 6 7 8 6
     java -server -cp .:../../build/pack/lib/scala-library.jar -Dlength=15000 MapSeq 10 10
     MapSeq$ 39 9 9 9 8 9 9 9 9 9
-    
+
 对这个容器和操作来说，当元素数量大于15000的时候采用并发是有意义的（通常情况下，对于数组和向量来说使用更少的元素来并行处理hashmap和hashset是可行的但不是必须的）。
 
 **引用**
 
 1. [Anatomy of a flawed microbenchmark，Brian Goetz](http://www.ibm.com/developerworks/java/library/j-jtp02225/index.html)
 2. [Dynamic compilation and performance measurement, Brian Goetz](http://www.ibm.com/developerworks/library/j-jtp12214/)
-

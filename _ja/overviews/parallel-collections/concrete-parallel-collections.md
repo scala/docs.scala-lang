@@ -1,10 +1,12 @@
 ---
-layout: overview
+layout: multipage-overview
 title: 具象並列コレクションクラス
 
 discourse: false
 
 partof: parallel-collections
+overview-name: Parallel Collections
+
 num: 2
 language: ja
 ---
@@ -18,10 +20,10 @@ language: ja
 
     scala> val pa = scala.collection.parallel.mutable.ParArray.tabulate(1000)(x => 2 * x + 1)
     pa: scala.collection.parallel.mutable.ParArray[Int] = ParArray(1, 3, 5, 7, 9, 11, 13,...
-    
+
     scala> pa reduce (_ + _)
     res0: Int = 1000000
-    
+
     scala> pa map (x => (x - 1) / 2)
     res1: scala.collection.parallel.mutable.ParArray[Int] = ParArray(0, 1, 2, 3, 4, 5, 6, 7,...
 
@@ -41,7 +43,7 @@ language: ja
 
     scala> val pv = scala.collection.parallel.immutable.ParVector.tabulate(1000)(x => x)
     pv: scala.collection.parallel.immutable.ParVector[Int] = ParVector(0, 1, 2, 3, 4, 5, 6, 7, 8, 9,...
-    
+
     scala> pv filter (_ % 2 == 0)
     res0: scala.collection.parallel.immutable.ParVector[Int] = ParVector(0, 2, 4, 6, 8, 10, 12, 14, 16, 18,...
 
@@ -54,13 +56,13 @@ language: ja
 
 ## 並列範囲
 
-並列範囲 ([`ParRange`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/immutable/ParRange.html)) 
+並列範囲 ([`ParRange`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/immutable/ParRange.html))
 は、順序付けされた等間隔の要素の列だ。
 並列範囲は、逐次版の [Range](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Range.html) と同様に作成される:
 
     scala> 1 to 3 par
     res0: scala.collection.parallel.immutable.ParRange = ParRange(1, 2, 3)
-    
+
     scala> 15 to 5 by -2 par
     res1: scala.collection.parallel.immutable.ParRange = ParRange(15, 13, 11, 9, 7, 5)
 
@@ -72,13 +74,13 @@ language: ja
 
 並列ハッシュテーブルは要素を内部の配列に格納し、各要素のハッシュコードにより格納する位置を決定する。
 並列可変ハッシュ集合 (
-[mutable.ParHashSet](http://www.scala-lang.org/api/{{ site.scala-version}}/scala/collection/parallel/mutable/ParHashSet.html)) 
+[mutable.ParHashSet](http://www.scala-lang.org/api/{{ site.scala-version}}/scala/collection/parallel/mutable/ParHashSet.html))
 と並列可変ハッシュマップ ([mutable.ParHashMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/mutable/ParHashMap.html))
 はハッシュテーブルに基づいている。
 
     scala> val phs = scala.collection.parallel.mutable.ParHashSet(1 until 2000: _*)
     phs: scala.collection.parallel.mutable.ParHashSet[Int] = ParHashSet(18, 327, 736, 1045, 773, 1082,...
-    
+
     scala> phs map (x => x * x)
     res0: scala.collection.parallel.mutable.ParHashSet[Int] = ParHashSet(2181529, 2446096, 99225, 2585664,...
 
@@ -103,7 +105,7 @@ language: ja
 
     scala> val phs = scala.collection.parallel.immutable.ParHashSet(1 until 1000: _*)
     phs: scala.collection.parallel.immutable.ParHashSet[Int] = ParSet(645, 892, 69, 809, 629, 365, 138, 760, 101, 479,...
-    
+
     scala> phs map { x => x * x } sum
     res0: Int = 332833500
 
@@ -122,12 +124,12 @@ language: ja
 
     scala> val numbers = scala.collection.parallel.mutable.ParTrieMap((1 until 100) zip (1 until 100): _*) map { case (k, v) => (k.toDouble, v.toDouble) }
     numbers: scala.collection.parallel.mutable.ParTrieMap[Double,Double] = ParTrieMap(0.0 -> 0.0, 42.0 -> 42.0, 70.0 -> 70.0, 2.0 -> 2.0,...
-    
+
     scala> while (numbers.nonEmpty) {
          |   numbers foreach { case (num, sqrt) =>
          |     val nsqrt = 0.5 * (sqrt + num / sqrt)
          |     numbers(num) = nsqrt
-         |     if (math.abs(nsqrt - sqrt) < 0.01) { 
+         |     if (math.abs(nsqrt - sqrt) < 0.01) {
          |       println(num, nsqrt)
          |       numbers.remove(num)
          |     }

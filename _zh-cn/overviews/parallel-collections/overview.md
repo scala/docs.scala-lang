@@ -1,10 +1,12 @@
 ---
-layout: overview
+layout: multipage-overview
 title: 概述
 
 discourse: false
 
 partof: parallel-collections
+overview-name: Parallel Collections
+
 num: 1
 language: zh-cn
 ---
@@ -51,27 +53,27 @@ Scala的并行容器库设计创意般的同Scala的（序列）容器库（从2
 
     scala> val lastNames = List("Smith","Jones","Frankenstein","Bach","Jackson","Rodin").par
     astNames: scala.collection.parallel.immutable.ParSeq[String] = ParVector(Smith, Jones, Frankenstein, Bach, Jackson, Rodin)
-    
+
     scala> lastNames.map(_.toUpperCase)
     res0: scala.collection.parallel.immutable.ParSeq[String] = ParVector(SMITH, JONES, FRANKENSTEIN, BACH, JACKSON, RODIN)
 
 #### fold
 
 通过fold计算一个ParArray中所有数的累加值：
-    
+
     scala> val parArray = (1 to 10000).toArray.par
     parArray: scala.collection.parallel.mutable.ParArray[Int] = ParArray(1, 2, 3, ...
-    
+
     scala> parArray.fold(0)(_ + _)
     res0: Int = 50005000
-    
+
 #### filter
 
 使用并行过滤器来选择按字母顺序排在“K”之后的姓名。（译者注：这个例子有点问题，应该是排在“J”之后的）
 
     scala> val lastNames = List("Smith","Jones","Frankenstein","Bach","Jackson","Rodin").par
     astNames: scala.collection.parallel.immutable.ParSeq[String] = ParVector(Smith, Jones, Frankenstein, Bach, Jackson, Rodin)
-    
+
     scala> lastNames.filter(_.head >= 'J')
     res0: scala.collection.parallel.immutable.ParSeq[String] = ParVector(Smith, Jones, Jackson, Rodin)
 
@@ -85,11 +87,11 @@ Scala的并行容器库设计创意般的同Scala的（序列）容器库（从2
 
     import scala.collection.parallel.immutable.ParVector
     val pv = new ParVector[Int]
-    
+
 第二种，通过从一个顺序容器转换得来：
 
 	val pv = Vector(1,2,3,4,5,6,7,8,9).par
-    
+
 这里需要着重强调的是这些转换方法：通过调用顺序容器(sequential collections)的par方法，顺序容器(sequential collections)可以被转换为并行容器；通过调用并行容器的seq方法，并行容器可以被转换为顺序容器。
 
 注意：那些天生就有序的容器（意思是元素必须一个接一个的访问），像lists，queues和streams，通过拷贝元素到类似的并行容器中被转换为它们的并行对应物。例如List--被转换为一个标准的不可变的并行序列中，就是ParVector。当然，其他容器类型不需要这些拷贝的开销，比如：Array，Vector，HashMap等等。
@@ -113,25 +115,25 @@ Scala的并行容器库设计创意般的同Scala的（序列）容器库（从2
 
     scala> var sum = 0
     sum: Int = 0
-    
+
     scala> val list = (1 to 1000).toList.par
     list: scala.collection.parallel.immutable.ParSeq[Int] = ParVector(1, 2, 3,…
-    
+
     scala> list.foreach(sum += _); sum
     res01: Int = 467766
-    
+
     scala> var sum = 0
     sum: Int = 0
-    
+
     scala> list.foreach(sum += _); sum
     res02: Int = 457073    
-    
+
     scala> var sum = 0
     sum: Int = 0
-    
+
     scala> list.foreach(sum += _); sum
     res03: Int = 468520    
-    
+
 从上述例子我们可以看到虽然每次 sum 都被初始化为0，在list的foreach每次调用之后，sum都得到不同的值。这个不确定的源头就是数据竞争 -- 同时读/写同一个可变变量(mutable variable)。
 
 在上面这个例子中，可能同时有两个线程在读取同一个sum的值，某些操作花了些时间后，它们又试图写一个新的值到sum中，可能的结果就是某个有用的值被覆盖了（因此丢失了），如下表所示：
@@ -140,7 +142,7 @@ Scala的并行容器库设计创意般的同Scala的（序列）容器库（从2
     线程B: 读取sum的值, sum = 0         sum的值: 0
     线程A:  sum 加上760,      写 sum = 760            sum的值: 760
     线程B:  sum 加上12,      写 sum = 12            sum的值: 12
-    
+
 上面的示例演示了一个场景:两个线程读相同的值：0。在这种情况下，线程A读0并且累计它的元素：0+760，线程B，累计0和它的元素：0+12。在各自计算了和之后，它们各自把计算结果写入到sum中。从线程A到线程B，线程A写入后，马上被线程B写入的值覆盖了，值760就完全被覆盖了（因此丢失了）。
 
 ### 非关联(non-associative)操作
@@ -149,26 +151,26 @@ Scala的并行容器库设计创意般的同Scala的（序列）容器库（从2
 
     scala> val list = (1 to 1000).toList.par
     list: scala.collection.parallel.immutable.ParSeq[Int] = ParVector(1, 2, 3,…
-    
+
     scala> list.reduce(_-_)
     res01: Int = -228888
-    
+
     scala> list.reduce(_-_)
     res02: Int = -61000
-    
+
     scala> list.reduce(_-_)
     res03: Int = -331818
-    
+
 在上面这个例子中，我们对 ParVector[Int]调用 reduce 函数，并给他 _-_ 参数（简单的两个非命名元素），从第二个减去第一个。因为并行容器(parallel collections)框架创建线程来在容器的不同部分执行reduce(-)，而由于执行顺序的不确定性，两次应用reduce(-)在并行容器上很可能会得到不同的结果。
 
 注意：通常人们认为，像不可结合(non-associative)作，不可交换(non-commutative)操作传递给并行容器的高阶函数同样导致非确定的行为。但和不可结合是不一样的，一个简单的例子是字符串联合(concatenation)，就是一个可结合但不可交换的操作：
 
     scala> val strings = List("abc","def","ghi","jk","lmnop","qrs","tuv","wx","yz").par
-    strings: scala.collection.parallel.immutable.ParSeq[java.lang.String] = ParVector(abc, def, ghi, jk, lmnop, qrs, tuv, wx, yz) 
-    
+    strings: scala.collection.parallel.immutable.ParSeq[java.lang.String] = ParVector(abc, def, ghi, jk, lmnop, qrs, tuv, wx, yz)
+
     scala> val alphabet = strings.reduce(_++_)
     alphabet: java.lang.String = abcdefghijklmnopqrstuvwxyz
-    
+
 并行容器的“乱序”语义仅仅意味着操作被执行是没有顺序的（从时间意义上说，就是非顺序的），并不意味着结果的重“组合”也是乱序的（从空间意义上）。恰恰相反，结果一般总是按序组合的 -- 一个并行容器被分成A，B，C三部分，按照这个顺序，将重新再次按照A，B，C的顺序组合。而不是某种其他随意的顺序如B，C，A。
 
 关于并行容器在不同的并行容器类型上怎样进行分解和组合操作的更多信息，请参见。

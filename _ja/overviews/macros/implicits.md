@@ -1,12 +1,13 @@
 ---
-layout: overview
+layout: multipage-overview
 
 language: ja
 discourse: false
 
 partof: macros
+overview-name: Macros
+
 num: 5
-outof: 11
 
 title: implicit マクロ
 ---
@@ -134,6 +135,3 @@ blackbox な具現化と whitebox な具現化には大きな違いが一つあ�
 
 関数従属性の具現化は [whitebox](/ja/overviews/macros/blackbox-whitebox.html) マクロじゃないと動作しないことにも注意。
 関数従属性の具現化を [blackbox](/ja/overviews/macros/blackbox-whitebox.html) だと宣言すると正しく動作しない。
-
-
-

@@ -1,12 +1,13 @@
 ---
-layout: overview
+layout: multipage-overview
 language: ja
 
 discourse: false
 
 partof: macros
+overview-name: Macros
+
 num: 7
-outof: 11
 
 title: 型プロバイダ
 ---

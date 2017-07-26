@@ -1,10 +1,12 @@
 ---
-layout: overview
+layout: multipage-overview
 title: 字符串
 
 discourse: false
 
 partof: collections
+overview-name: Collections
+
 num: 11
 language: zh-cn
 ---
@@ -17,7 +19,7 @@ language: zh-cn
     res6: String = olleh
     scala> str.map(_.toUpper)
     res7: String = HELLO
-    scala> str drop 3 
+    scala> str drop 3
     res8: String = lo
     scala> str slice (1, 4)
     res9: String = ell

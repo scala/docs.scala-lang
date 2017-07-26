@@ -1,10 +1,12 @@
 ---
-layout: overview
+layout: multipage-overview
 title: 具体的不可变集实体类
 
 discourse: false
 
 partof: collections
+overview-name: Collections
+
 num: 8
 language: zh-cn
 ---
@@ -28,7 +30,7 @@ List通常被认为是Scala中最重要的数据结构，所以我们在此不�
 
     scala> val str = 1 #:: 2 #:: 3 #:: Stream.empty
     str: scala.collection.immutable.Stream[Int] = Stream(1, ?)
-    
+
 该stream的头结点是1，尾是2和3.尾部并没有被打印出来，因为还没有被计算。stream被特别定义为懒惰计算，并且stream的toString方法很谨慎的设计为不去做任何额外的计算。
 
 下面给出一个稍复杂些的例子。这里讲一个以两个给定的数字为起始的斐波那契数列转换成stream。斐波那契数列的定义是，序列中的每个元素等于序列中在它之前的两个元素之和。
@@ -99,7 +101,7 @@ Vector结构通常被表示成具有高分支因子的树（树或者图的分�
 
 ## Immutable Queues（不可变队列）
 
-[Queue](http://www.scala-lang.org/api/2.10.0/scala/collection/immutable/Queue.html)是一种与stack很相似的数据结构，除了与stack的后入先出不同，Queue结构的是先入先出的。 
+[Queue](http://www.scala-lang.org/api/2.10.0/scala/collection/immutable/Queue.html)是一种与stack很相似的数据结构，除了与stack的后入先出不同，Queue结构的是先入先出的。
 
 这里给出一个创建空不可变queue的例子：
 
@@ -116,7 +118,7 @@ Vector结构通常被表示成具有高分支因子的树（树或者图的分�
     scala> val has123 = has1.enqueue(List(2, 3))
     has123: scala.collection.immutable.Queue[Int]
       = Queue(1, 2, 3)
-  
+
 如果想要从queue的头部删除一个元素，您可以使用dequeue方法：
 
     scala> val (element, has23) = has123.dequeue
@@ -138,7 +140,7 @@ Vector结构通常被表示成具有高分支因子的树（树或者图的分�
 
     scala> 1 until 3
     res2: scala.collection.immutable.Range = Range(1, 2)
-  
+
 Range类的空间复杂度是恒定的，因为只需要三个数字就可以定义一个Range类：起始、结束和步长值。也正是因为有这样的特性，对Range类多数操作都非常非常的快。
 
 ## Hash Tries
@@ -182,8 +184,7 @@ BitSet操作的运行时间是非常快的。查找测试仅仅需要固定时�
 [ListMap](http://www.scala-lang.org/api/2.10.0/scala/collection/immutable/ListMap.html)被用来表示一个保存键-值映射的链表。一般情况下，ListMap操作都需要遍历整个列表，所以操作的运行时间也同列表长度成线性关系。实际上ListMap在Scala中很少使用，因为标准的不可变映射通常速度会更快。唯一的例外是，在构造映射时由于某种原因，链表中靠前的元素被访问的频率大大高于其他的元素。
 
     scala> val map = scala.collection.immutable.ListMap(1->"one", 2->"two")
-    map: scala.collection.immutable.ListMap[Int,java.lang.String] = 
+    map: scala.collection.immutable.ListMap[Int,java.lang.String] =
        Map(1 -> one, 2 -> two)
     scala> map(2)
     res30: String = "two"
-

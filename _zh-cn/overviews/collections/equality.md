@@ -1,10 +1,12 @@
 ---
-layout: overview
+layout: multipage-overview
 title: 等价性
 
 discourse: false
 
 partof: collections
+overview-name: Collections
+
 num: 13
 language: zh-cn
 ---
@@ -17,7 +19,7 @@ language: zh-cn
     scala> import collection.mutable.{HashMap, ArrayBuffer}
     import collection.mutable.{HashMap, ArrayBuffer}
     scala> val buf = ArrayBuffer(1, 2, 3)
-    buf: scala.collection.mutable.ArrayBuffer[Int] = 
+    buf: scala.collection.mutable.ArrayBuffer[Int] =
     ArrayBuffer(1, 2, 3)
     scala> val map = HashMap(buf -> 3)
     map: scala.collection.mutable.HashMap[scala.collection。
@@ -26,7 +28,7 @@ language: zh-cn
     res13: Int = 3
     scala> buf(0) += 1
     scala> map(buf)
-    java.util.NoSuchElementException: key not found: 
-    ArrayBuffer(2, 2, 3) 
+    java.util.NoSuchElementException: key not found:
+    ArrayBuffer(2, 2, 3)
 
 在这个例子中，由于数组xs的散列码已经在倒数第二行发生了改变，最后一行的选择操作将很有可能失败。因此，基于散列码的查找函数将会查找另一个位置，而不是xs所存储的位置。

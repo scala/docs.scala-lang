@@ -1,11 +1,12 @@
 ---
-layout: overview
+layout: multipage-overview
 
 discourse: false
 
 partof: reflection
+overview-name: Reflection
+
 num: 5
-outof: 6
 
 language: ja
 title: 型タグとマニフェスト
@@ -142,7 +143,7 @@ context bound `[T: TypeTag]` からコンパイラは `TypeTag[T]`
 ある型がプリミティブ値クラスであるかを調べるには、型タグを (基底タグのコンパニオンオブジェクトで定義されている) 基底タグと比較することができる。もしくは、
 <code>&lt;tag&gt;.tpe.typeSymbol.isPrimitiveValueClass</code> を使うこともできる。</li>
 
-<li>マニフェストのコンパニオンオブジェクトに定義されるファクトリ・メソッドに相当するものは無い。 
+<li>マニフェストのコンパニオンオブジェクトに定義されるファクトリ・メソッドに相当するものは無い。
 代わりに、(クラスの場合は) Java か (型の場合は) Scala によって提供されるリフレクション API を使って対応する型を生成することができる。</li>
 
 <li>いくつかのマニフェスト演算 (具体的には、<code>&lt;:&lt;</code>、 <code>&gt;:&gt;</code>、と <code>typeArguments</code>) はサポートされない。

@@ -1,10 +1,12 @@
 ---
-layout: overview
+layout: multipage-overview
 title: 並列コレクションライブラリのアーキテクチャ
 
 discourse: false
 
 partof: parallel-collections
+overview-name: Parallel Collections
+
 num: 5
 language: ja
 ---

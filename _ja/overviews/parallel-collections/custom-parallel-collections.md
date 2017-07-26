@@ -1,10 +1,12 @@
 ---
-layout: overview
+layout: multipage-overview
 title: カスタム並列コレクションの作成
 
 discourse: false
 
 partof: parallel-collections
+overview-name: Parallel Collections
+
 num: 6
 language: ja
 ---
@@ -24,7 +26,7 @@ language: ja
 次に、全ての不変列にあるメソッドを定義する:
 
       def apply(i: Int) = str.charAt(i)
-      
+
       def length = str.length
 
 この並列コレクションの直列版も定義しなければならない。
@@ -36,12 +38,12 @@ language: ja
 このスプリッタは `ParStringSplitter` と名づけ、列スプリッタの `SeqSplitter[Char]` を継承することにする:
 
       def splitter = new ParStringSplitter(str, 0, str.length)
-      
+
       class ParStringSplitter(private var s: String, private var i: Int, private val ntl: Int)
       extends SeqSplitter[Char] {
 
         final def hasNext = i < ntl
-		
+
         final def next = {
           val r = s.charAt(i)
           i += 1
@@ -55,7 +57,7 @@ language: ja
 次に、現在のスプリッタを複製する `dup` というメソッドがある。
 
         def remaining = ntl - i
-        
+
         def dup = new ParStringSplitter(s, i, ntl)
 
 最後に、現在のスプリッタの要素の部分集合を走査する別のスプリッタを作成するのに使われる `split` と `psplit` メソッドがある。
@@ -70,7 +72,7 @@ language: ja
           if (rem >= 2) psplit(rem / 2, rem - rem / 2)
           else Seq(this)
         }
-        
+
         def psplit(sizes: Int*): Seq[ParStringSplitter] = {
           val splitted = new ArrayBuffer[ParStringSplitter]
           for (sz <- sizes) {
@@ -124,28 +126,28 @@ language: ja
       var sz = 0
       val chunks = new ArrayBuffer[StringBuilder] += new StringBuilder
       var lastc = chunks.last
-      
+
       def size: Int = sz
-      
+
       def +=(elem: Char): this.type = {
         lastc += elem
         sz += 1
         this
       }
-      
+
       def clear = {
         chunks.clear
         chunks += new StringBuilder
         lastc = chunks.last
         sz = 0
       }
-      
+
       def result: ParString = {
         val rsb = new StringBuilder
         for (sb <- chunks) rsb.append(sb)
         new ParString(rsb.toString)
       }
-      
+
       def combine[U <: Char, NewTo >: ParString](other: Combiner[U, NewTo]) = if (other eq this) this else {
         val that = other.asInstanceOf[ParStringCombiner]
         sz += that.sz
@@ -190,7 +192,7 @@ language: ja
     extends immutable.ParSeq[Char]
        with GenericParTemplate[Char, ParString]
        with ParSeqLike[Char, ParString, collection.immutable.WrappedString] {
-      
+
       def companion = ParString
 
 コンパニオンオブジェクトの中で `CanBuildFrom` パラメータのための暗黙の値を提供する。
@@ -201,11 +203,11 @@ language: ja
           def apply(from: ParString) = newCombiner
           def apply() = newCombiner
         }
-        
+
       def newBuilder: Combiner[Char, ParString] = newCombiner
-      
+
       def newCombiner: Combiner[Char, ParString] = new ParStringCombiner
-      
+
       def apply(elems: Char*): ParString = {
         val cb = newCombiner
         cb ++= elems

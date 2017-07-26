@@ -1,10 +1,12 @@
 ---
-layout: overview
+layout: multipage-overview
 title: 视图
 
 discourse: false
 
 partof: collections
+overview-name: Collections
+
 num: 14
 language: zh-cn
 ---
@@ -32,9 +34,9 @@ language: zh-cn
     v: scala.collection.immutable.Vector[Int] =
        Vector(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
     scala> v map (_ + 1) map (_ * 2)
-    res5: scala.collection.immutable.Vector[Int] = 
+    res5: scala.collection.immutable.Vector[Int] =
        Vector(4, 6, 8, 10, 12, 14, 16, 18, 20, 22)
-   
+
 在最后一条语句中，表达式`v map (_ + 1) ` 构建了一个新的vector对象，该对象被map第二次调用`(_ * 2)`而转换成第3个vector对象。很多情况下，从map的第一次调用构造一个中间结果有点浪费资源。上述示例中，将map的两次操作结合成一次单一的map操作执行得会更快些。如果这两次操作同时可行，则可亲自将它们结合成一次操作。但通常，数据结构的连续转换出现在不同的程序模块里。融合那些转换将会破坏其模块性。更普遍的做法是通过把vector对象首先转换成其视图，然后把所有的转换作用于该视图，最后强制将视图转换成vector对象，从而避开出现中间结果这种情况。
 
     scala> (v.view map (_ + 1) map (_ * 2)).force
@@ -43,9 +45,9 @@ language: zh-cn
 让我们按这个步骤一步一步再做一次：
 
     scala> val vv = v.view
-    vv: scala.collection.SeqView[Int,Vector[Int]] = 
+    vv: scala.collection.SeqView[Int,Vector[Int]] =
        SeqView(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-   
+
  v.view 给出了SeqView对象，它是一个延迟计算的Seq。SeqView有两个参数，第一个是整型（Int）表示视图单元的类型。第二个Vector[Int]数组表示当需要强制将视图转回时构造函数的类型。  
 
 将第一个map 转换成视图可得到：
@@ -74,7 +76,7 @@ map的结果是输出`SeqViewM(...)`的值。实质是记录函数`map (_ + 1)`�
 现在，假设你有一个很长序列的单词表，你想在这个序列的第一百万个字内找到回文。你能复用findPalidrome么？当然，你可以写：
 
     findPalindrome(words take 1000000)
-    
+
 这很好地解决了两个方面问题：提取序列的第一个百万单词，找到一个回文结构。但缺点是，它总是构建由一百万个字组成的中间序列，即使该序列的第一个单词已经是一个回文。所以可能，999 '999个单词在根本没被检查就复制到中间的结果（数据结构中）。很多程序员会在这里放弃转而编写给定参数前缀的寻找回文的自定义序列。但对于视图（views），这没必要。简单地写：
 
     findPalindrome(words.view take 1000000)

@@ -1,10 +1,12 @@
 ---
-layout: overview
+layout: multipage-overview
 title: 配置并行集合
 
 discourse: false
 
 partof: parallel-collections
+overview-name: Parallel Collections
+
 num: 7
 language: zh-cn
 ---
@@ -22,21 +24,21 @@ language: zh-cn
 
     scala> import scala.collection.parallel._
     import scala.collection.parallel._
-    
+
     scala> val pc = mutable.ParArray(1, 2, 3)
     pc: scala.collection.parallel.mutable.ParArray[Int] = ParArray(1, 2, 3)
-    
+
     scala> pc.tasksupport = new ForkJoinTaskSupport(new scala.concurrent.forkjoin.ForkJoinPool(2))
     pc.tasksupport: scala.collection.parallel.TaskSupport = scala.collection.parallel.ForkJoinTaskSupport@4a5d484a
-    
+
     scala> pc map { _ + 1 }
     res0: scala.collection.parallel.mutable.ParArray[Int] = ParArray(2, 3, 4)
-    
+
 以上代码配置并行集合使用parallelism 级别为2的fork-join池。配置并行集合使用线程池执行器：
 
     scala> pc.tasksupport = new ThreadPoolTaskSupport()
     pc.tasksupport: scala.collection.parallel.TaskSupport = scala.collection.parallel.ThreadPoolTaskSupport@1d914a39
-    
+
     scala> pc map { _ + 1 }
     res1: scala.collection.parallel.mutable.ParArray[Int] = ParArray(2, 3, 4)
 
@@ -45,14 +47,13 @@ language: zh-cn
 通过继承TaskSupport 特征并实现下列方法，可实现一个典型的任务支持：
 
     def execute[R, Tp](task: Task[R, Tp]): () => R
-    
+
     def executeAndWaitResult[R, Tp](task: Task[R, Tp]): R
-    
+
     def parallelismLevel: Int
-    
+
 execute方法异步调度任务并且返回等待计算结果的未来状态。executeAndWait 方法功能一样，但只当任务完成时才返回。parallelismLevel 简单地返回任务支持用于调度任务的处理器目标数量。
 
 **引用**
 
 1. [On a Generic Parallel Collection Framework, June 2011](http://infoscience.epfl.ch/record/165523/files/techrep.pdf)
-
