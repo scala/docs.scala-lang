@@ -1,5 +1,5 @@
 ---
-layout: overview
+layout: multipage-overview
 title: Overview
 
 discourse: false

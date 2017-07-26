@@ -1,10 +1,12 @@
 ---
-layout: overview
+layout: multipage-overview
 title: Конкретные классы параллельных коллекций
 
 discourse: false
 
 partof: parallel-collections
+overview-name: Parallel Collections
+
 language: ru
 num: 2
 ---
@@ -15,10 +17,10 @@ num: 2
 
     scala> val pa = scala.collection.parallel.mutable.ParArray.tabulate(1000)(x => 2 * x + 1)
     pa: scala.collection.parallel.mutable.ParArray[Int] = ParArray(1, 3, 5, 7, 9, 11, 13,...
-    
+
     scala> pa reduce (_ + _)
     res0: Int = 1000000
-    
+
     scala> pa map (x => (x - 1) / 2)
     res1: scala.collection.parallel.mutable.ParArray[Int] = ParArray(0, 1, 2, 3, 4, 5, 6, 7,...
 
@@ -32,11 +34,11 @@ num: 2
 
     scala> val pv = scala.collection.parallel.immutable.ParVector.tabulate(1000)(x => x)
     pv: scala.collection.parallel.immutable.ParVector[Int] = ParVector(0, 1, 2, 3, 4, 5, 6, 7, 8, 9,...
-    
+
     scala> pv filter (_ % 2 == 0)
     res0: scala.collection.parallel.immutable.ParVector[Int] = ParVector(0, 2, 4, 6, 8, 10, 12, 14, 16, 18,...
 
-Неизменяемые векторы представлены 32-ичными деревьями (32-way trees), поэтому [разделители]({{ site.baseurl }}/ru/overviews/parallel-collections/architecture.html#core_abstractions) разбивают их, назначая по поддереву каждому новому разделителю. 
+Неизменяемые векторы представлены 32-ичными деревьями (32-way trees), поэтому [разделители]({{ site.baseurl }}/ru/overviews/parallel-collections/architecture.html#core_abstractions) разбивают их, назначая по поддереву каждому новому разделителю.
 [Компоновщики]({{ site.baseurl }}/ru/overviews/parallel-collections/architecture.html#core_abstractions) в настоящий момент хранят вектор из элементов и компонуют путем отложенного копирования. По этой причине методы трансформации менее масштабируемы по сравнению с теми же методами параллельного массива. Как только в будущем релизе Scala станет доступной операция конкатенации векторов, компоновщики станут образовываться путем конкатенации, и от этого методы трансформации станут гораздо более эффективными.
 
 Параллельный вектор является параллельным аналогом последовательной коллекции [Vector](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Vector.html), и преобразования одного в другое занимают постоянное время.
@@ -47,7 +49,7 @@ num: 2
 
     scala> 1 to 3 par
     res0: scala.collection.parallel.immutable.ParRange = ParRange(1, 2, 3)
-    
+
     scala> 15 to 5 by -2 par
     res1: scala.collection.parallel.immutable.ParRange = ParRange(15, 13, 11, 9, 7, 5)
 
@@ -59,7 +61,7 @@ num: 2
 
     scala> val phs = scala.collection.parallel.mutable.ParHashSet(1 until 2000: _*)
     phs: scala.collection.parallel.mutable.ParHashSet[Int] = ParHashSet(18, 327, 736, 1045, 773, 1082,...
-	
+
     scala> phs map (x => x * x)
     res0: scala.collection.parallel.mutable.ParHashSet[Int] = ParHashSet(2181529, 2446096, 99225, 2585664,...
 
@@ -73,7 +75,7 @@ num: 2
 
     scala> val phs = scala.collection.parallel.immutable.ParHashSet(1 until 1000: _*)
     phs: scala.collection.parallel.immutable.ParHashSet[Int] = ParSet(645, 892, 69, 809, 629, 365, 138, 760, 101, 479,...
-	
+
     scala> phs map { x => x * x } sum
     res0: Int = 332833500
 
@@ -87,12 +89,12 @@ num: 2
 
     scala> val numbers = scala.collection.parallel.mutable.ParTrieMap((1 until 100) zip (1 until 100): _*) map { case (k, v) => (k.toDouble, v.toDouble) }
     numbers: scala.collection.parallel.mutable.ParTrieMap[Double,Double] = ParTrieMap(0.0 -> 0.0, 42.0 -> 42.0, 70.0 -> 70.0, 2.0 -> 2.0,...
-    
+
     scala> while (numbers.nonEmpty) {
          |   numbers foreach { case (num, sqrt) =>
 		 |     val nsqrt = 0.5 * (sqrt + num / sqrt)
 		 |     numbers(num) = nsqrt
-		 |     if (math.abs(nsqrt - sqrt) < 0.01) { 
+		 |     if (math.abs(nsqrt - sqrt) < 0.01) {
 		 |       println(num, nsqrt)
 		 |		 numbers.remove(num)
 		 |	   }
@@ -162,4 +164,3 @@ num: 2
 | **add**    | Добавление нового элемента во множество или новой пары ключ/значение в ассоциативный массив. |
 | **remove** | Удаление элемента из множества или ключа из ассоциативного массива. |
 | **min**    | Минимальный элемент множества или минимальный ключ ассоциативного массива. |
-

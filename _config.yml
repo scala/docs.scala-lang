@@ -15,6 +15,8 @@ keywords:
 - Document
 - Guide
 
+scala-version: 2.12.2
+
 collections:
   style:
     output: true
@@ -28,8 +30,12 @@ collections:
   zh-cn: # Chinese (Simplified) translations
     output: true
     permalink: /:collection/:path.html
-
-scala-version: 2.12.2
+  ru: # Russian translations
+    output: true
+    permalink: /:collection/:path.html
+  es: # Spanish translations
+    output: true
+    permalink: /:collection/:path.html
 
 highlighter: rouge
 permalink: /:categories/:title.html:output_ext

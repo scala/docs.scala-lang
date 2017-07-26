@@ -1,17 +1,19 @@
 ---
-layout: overview
+layout: multipage-overview
 title: Configurando las colecciones paralelas
 
 discourse: false
 
 partof: parallel-collections
+overview-name: Parallel Collections
+
 num: 7
 language: es
 ---
 
 ## "Task support"
 
-Las colecciones paralelas son modulares respecto al modo en que las operaciones 
+Las colecciones paralelas son modulares respecto al modo en que las operaciones
 son planificadas. Cada colección paralela es planificada con un objeto "task support"
 el cual es responsable de la planificación y el balanceo de las tareas a los
 distintos procesadores.
@@ -20,7 +22,7 @@ El objeto "task support" mantiene internamente un referencia a un pool de hilos 
 cómo y cuando las tareas son divididas en tareas más pequeñas. Para conocer más en detalle
 cómo funciona internamente diríjase al informe técnico \[[1][1]\].
 
-En la actualidad las colecciones paralelas disponen de unas cuantas implementaciones de 
+En la actualidad las colecciones paralelas disponen de unas cuantas implementaciones de
 "task support". El `ForkJoinTaskSupport` utiliza internamente un fork-join pool y es utilizado
 por defecto en JVM 1.6 o superiores. `ThreadPoolTaskSupport`, menos eficiente, es utilizado como
 mecanismo de reserva para JVM 1.5 y máquinas virtuales que no soporten los fork join pools. El
@@ -34,13 +36,13 @@ A continuación se muestra cómo se puede modificar el objeto "task support" de 
 
     scala> import scala.collection.parallel._
     import scala.collection.parallel._
-    
+
     scala> val pc = mutable.ParArray(1, 2, 3)
     pc: scala.collection.parallel.mutable.ParArray[Int] = ParArray(1, 2, 3)
-    
+
     scala> pc.tasksupport = new ForkJoinTaskSupport(new scala.concurrent.forkjoin.ForkJoinPool(2))
     pc.tasksupport: scala.collection.parallel.TaskSupport = scala.collection.parallel.ForkJoinTaskSupport@4a5d484a
-    
+
     scala> pc map { _ + 1 }
     res0: scala.collection.parallel.mutable.ParArray[Int] = ParArray(2, 3, 4)
 
@@ -49,7 +51,7 @@ paralelismo. Para indicar que la colección utilice un thread pool executor tend
 
     scala> pc.tasksupport = new ThreadPoolTaskSupport()
     pc.tasksupport: scala.collection.parallel.TaskSupport = scala.collection.parallel.ThreadPoolTaskSupport@1d914a39
-    
+
     scala> pc map { _ + 1 }
     res1: scala.collection.parallel.mutable.ParArray[Int] = ParArray(2, 3, 4)
 
@@ -62,9 +64,9 @@ Para llevar a cabo una implementación personalizada de un nuevo objeto "task su
 extender del trait `TaskSupport` e implementar los siguientes métodos:
 
     def execute[R, Tp](task: Task[R, Tp]): () => R
-    
+
     def executeAndWaitResult[R, Tp](task: Task[R, Tp]): R
-    
+
     def parallelismLevel: Int
 
 El método `execute` planifica una tarea asíncrona y retorna una "future" sobre la que

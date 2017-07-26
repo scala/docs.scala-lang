@@ -1,10 +1,12 @@
 ---
-layout: overview
+layout: multipage-overview
 title: Creating Custom Parallel Collections
 
 discourse: false
 
 partof: parallel-collections
+overview-name: Parallel Collections
+
 num: 6
 language: es
 ---
@@ -29,7 +31,7 @@ are logically immutable sequences, we have parallel strings inherit
 Next, we define methods found in every immutable sequence:
 
       def apply(i: Int) = str.charAt(i)
-      
+
       def length = str.length
 
 We have to also define the sequential counterpart of this parallel collection.
@@ -42,12 +44,12 @@ name the splitter `ParStringSplitter` and have it inherit a sequence splitter,
 that is, `SeqSplitter[Char]`:
 
       def splitter = new ParStringSplitter(str, 0, str.length)
-      
+
       class ParStringSplitter(private var s: String, private var i: Int, private val ntl: Int)
       extends SeqSplitter[Char] {
 
         final def hasNext = i < ntl
-		
+
         final def next = {
           val r = s.charAt(i)
           i += 1
@@ -64,9 +66,9 @@ of elements this splitter has yet to traverse. Next, they have a method called
 `dup` which duplicates the current splitter.
 
         def remaining = ntl - i
-		
+
         def dup = new ParStringSplitter(s, i, ntl)
-		
+
 Finally, methods `split` and `psplit` are used to create splitters which
 traverse subsets of the elements of the current splitter. Method `split` has
 the contract that it returns a sequence of splitters which traverse disjoint,
@@ -86,7 +88,7 @@ invalidates the current splitter.
           if (rem >= 2) psplit(rem / 2, rem - rem / 2)
           else Seq(this)
         }
-		
+
         def psplit(sizes: Int*): Seq[ParStringSplitter] = {
           val splitted = new ArrayBuffer[ParStringSplitter]
           for (sz <- sizes) {
@@ -158,28 +160,28 @@ live with this sequential bottleneck.
       var sz = 0
       val chunks = new ArrayBuffer[StringBuilder] += new StringBuilder
       var lastc = chunks.last
-      
+
       def size: Int = sz
-      
+
       def +=(elem: Char): this.type = {
         lastc += elem
         sz += 1
         this
       }
-      
+
       def clear = {
         chunks.clear
         chunks += new StringBuilder
         lastc = chunks.last
         sz = 0
       }
-      
+
       def result: ParString = {
         val rsb = new StringBuilder
         for (sb <- chunks) rsb.append(sb)
         new ParString(rsb.toString)
       }
-      
+
       def combine[U <: Char, NewTo >: ParString](other: Combiner[U, NewTo]) = if (other eq this) this else {
         val that = other.asInstanceOf[ParStringCombiner]
         sz += that.sz
@@ -245,7 +247,7 @@ define the companion object of `ParString`.
     extends immutable.ParSeq[Char]
        with GenericParTemplate[Char, ParString]
        with ParSeqLike[Char, ParString, collection.immutable.WrappedString] {
-	  
+
 	  def companion = ParString
 
 Inside the companion object we provide an implicit evidence for the `CanBuildFrom` parameter.
@@ -256,11 +258,11 @@ Inside the companion object we provide an implicit evidence for the `CanBuildFro
           def apply(from: ParString) = newCombiner
           def apply() = newCombiner
         }
-	  
+
       def newBuilder: Combiner[Char, ParString] = newCombiner
-      
+
       def newCombiner: Combiner[Char, ParString] = new ParStringCombiner
-      
+
       def apply(elems: Char*): ParString = {
 		val cb = newCombiner
 		cb ++= elems
@@ -323,10 +325,3 @@ collection to return `false`. Such collections will fail to execute some
 methods which rely on splitters being strict, i.e. returning a correct value
 in the `remaining` method. Importantly, this does not effect methods used in
 for-comprehensions.
-
-
-
-
-
-
-

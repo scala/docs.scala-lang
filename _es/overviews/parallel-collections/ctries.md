@@ -1,10 +1,12 @@
 ---
-layout: overview
+layout: multipage-overview
 title: Tries Concurrentes
 
 discourse: false
 
 partof: parallel-collections
+overview-name: Parallel Collections
+
 num: 4
 language: es
 ---
@@ -14,9 +16,9 @@ si la estructura es modificada durante el recorrido de la misma. De hecho,
 esto también sucede en la mayor parte de las colecciones mutables. Los "tries"
 concurrentes presentan una característica especial, permitiendo la modificación
 de los mismos mientras están siendo recorridos. Las modificaciones solo son visibles
-en los recorridos posteriores a las mismas. Ésto aplica tanto a los "tries" secuenciales 
+en los recorridos posteriores a las mismas. Ésto aplica tanto a los "tries" secuenciales
 como a los paralelos. La única diferencia entre ambos es que el primero de ellos
-recorre todos los elementos de la estructura de manera secuencial mientras que 
+recorre todos los elementos de la estructura de manera secuencial mientras que
 el segundo lo hace en paralelo.
 
 Esta propiedad nos permite escribir determinados algoritmos de un modo mucho más
@@ -25,20 +27,20 @@ iterativa y diferentes elementos necesitan distinto número de iteraciones para 
 procesados.
 
 El siguiente ejemplo calcula la raíz cuadrada de un conjunto de números. Cada iteración
-actualiza, de manera iterativa, el valor de la raíz cuadrada. Aquellos números cuyas 
+actualiza, de manera iterativa, el valor de la raíz cuadrada. Aquellos números cuyas
 raíces convergen son eliminados del mapa.
 
     case class Entry(num: Double) {
       var sqrt = num
     }
-	
+
     val length = 50000
-	
+
 	// prepare the list
     val entries = (1 until length) map { num => Entry(num.toDouble) }
     val results = ParTrieMap()
     for (e <- entries) results += ((e.num, e))
-    
+
 	// compute square roots
     while (results.nonEmpty) {
       for ((num, e) <- results) {
@@ -56,45 +58,45 @@ elementos sobre los que realmente necesitamos trabajar son recorridos.
 
 Otro ejemplo es el algoritmo de búsqueda en anchura, el cual iterativamente expande el "nodo cabecera"
 hasta que encuentra un camino hacia el objetivo o no existen más nodos a expandir. Definamos
-un nodo en mapa 2D como una tupla de enteros (`Int`s). Definamos un `map` como un array de 
+un nodo en mapa 2D como una tupla de enteros (`Int`s). Definamos un `map` como un array de
 booleanos de dos dimensiones el cual determina si un determinado slot está ocupado o no. Posteriormente,
-declaramos dos "concurrent tries maps" -- `open` contiene todos los nodos que deben ser expandidos 
+declaramos dos "concurrent tries maps" -- `open` contiene todos los nodos que deben ser expandidos
 ("nodos cabecera") mientras que `close` continene todos los nodos que ya han sido expandidos. Comenzamos
-la búsqueda desde las esquinas del mapa en busca de un camino hasta el centro del mismo -- 
-e inicializamos el mapa `open` con los nodos apropiados. Iterativamamente, y en paralelo, 
+la búsqueda desde las esquinas del mapa en busca de un camino hasta el centro del mismo --
+e inicializamos el mapa `open` con los nodos apropiados. Iterativamamente, y en paralelo,
 expandimos todos los nodos presentes en el mapa `open` hasta que agotamos todos los elementos
 que necesitan ser expandidos. Cada vez que un nodo es expandido, se elimina del mapa `open` y se
-añade en el mapa `closed`. Una vez finalizado el proceso, se muestra el camino desde el nodo 
+añade en el mapa `closed`. Una vez finalizado el proceso, se muestra el camino desde el nodo
 destino hasta el nodo inicial.
-	
+
 	val length = 1000
-	
+
 	// define the Node type
     type Node = (Int, Int);
     type Parent = (Int, Int);
-    
+
 	// operations on the Node type
     def up(n: Node) = (n._1, n._2 - 1);
     def down(n: Node) = (n._1, n._2 + 1);
     def left(n: Node) = (n._1 - 1, n._2);
     def right(n: Node) = (n._1 + 1, n._2);
-    
+
     // create a map and a target
     val target = (length / 2, length / 2);
     val map = Array.tabulate(length, length)((x, y) => (x % 3) != 0 || (y % 3) != 0 || (x, y) == target)
     def onMap(n: Node) = n._1 >= 0 && n._1 < length && n._2 >= 0 && n._2 < length
-    
+
     // open list - the nodefront
     // closed list - nodes already processed
     val open = ParTrieMap[Node, Parent]()
     val closed = ParTrieMap[Node, Parent]()
-    
+
     // add a couple of starting positions
     open((0, 0)) = null
     open((length - 1, length - 1)) = null
     open((0, length - 1)) = null
     open((length - 1, 0)) = null
- 
+
     // greedy bfs path search
     while (open.nonEmpty && !open.contains(target)) {
       for ((node, parent) <- open) {
@@ -111,7 +113,7 @@ destino hasta el nodo inicial.
         open.remove(node)
       }
     }
-	
+
     // print path
     var pathnode = open(target)
     while (closed.contains(pathnode)) {
@@ -121,11 +123,11 @@ destino hasta el nodo inicial.
     println()
 
 
-Los "tries" concurrentes también soportan una operación atómica, no bloqueante y de 
+Los "tries" concurrentes también soportan una operación atómica, no bloqueante y de
 tiempo constante conocida como `snapshot`. Esta operación genera un nuevo `trie`
-concurrente en el que se incluyen todos los elementos es un instante determinado de 
-tiempo, lo que en efecto captura el estado del "trie" en un punto específico. 
-Esta operación simplemente crea una nueva raíz para el "trie" concurrente. Posteriores 
+concurrente en el que se incluyen todos los elementos es un instante determinado de
+tiempo, lo que en efecto captura el estado del "trie" en un punto específico.
+Esta operación simplemente crea una nueva raíz para el "trie" concurrente. Posteriores
 actualizaciones reconstruyen, de manera perezosa, la parte del "trie" concurrente que se
 ha visto afectada por la actualización, manteniendo intacto el resto de la estructura.
 En primer lugar, esto implica que la propia operación de `snapshot` no es costosa en si misma
@@ -133,7 +135,7 @@ puesto que no necesita copiar los elementos. En segundo lugar, dado que la optim
 "copy-and-write" solo copia determinadas partes del "trie" concurrente, las sucesivas
 actualizaciones escalan horizontalmente. El método  `readOnlySnapshot` es ligeramente
 más efeciente que el método `snapshot`, pero retorna un mapa en modo solo lectura que no
-puede ser modificado. Este tipo de estructura de datos soporta una operación atómica y en tiempo 
+puede ser modificado. Este tipo de estructura de datos soporta una operación atómica y en tiempo
 constante llamada `clear` la cual está basada en el anterior mecanismo de `snapshot`.
 
 Si desea conocer en más detalle cómo funcionan los "tries" concurrentes y el mecanismo de

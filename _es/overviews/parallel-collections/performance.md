@@ -1,12 +1,13 @@
 ---
-layout: overview
+layout: multipage-overview
 title: Midiendo el rendimiento
 
 discourse: false
 
 partof: parallel-collections
+overview-name: Parallel Collections
+
 num: 8
-outof: 8
 language: es
 ---
 
@@ -14,50 +15,50 @@ language: es
 
 Algunas veces el modelo de rendimiento de la JVM se complica debido a comentarios
 sobre el mismo, y como resultado de los mismos, se tienen concepciones equívocas del mismo.
-Por diferentes motivos, determinado código podría ofrecer un rendimiento o escalabilidad 
+Por diferentes motivos, determinado código podría ofrecer un rendimiento o escalabilidad
 inferior a la esperada. A continuación ofrecemos algunos ejemplos.
 
 Uno de los principales motivos es que el proceso de compilación de una aplicación que se
 ejecuta sobre la JVM no es el mismo que el de un lenguaje compilado de manera estática
-(véase \[[2][2]\]). Los compiladores de Java y Scala traducen el código fuente en *bytecode* y 
-el conjunto de optimizaciones que llevan a cabo es muy reducido. En la mayoría de las JVM 
+(véase \[[2][2]\]). Los compiladores de Java y Scala traducen el código fuente en *bytecode* y
+el conjunto de optimizaciones que llevan a cabo es muy reducido. En la mayoría de las JVM
 modernas, una vez el bytecode es ejecutado, se convierte en código máquina dependiente de la
 arquitectura de la máquina subyacente. Este proceso es conocido como compilación "just-int-time".
-Sin embargo, el nivel de optimización del código es muy bajo puesto que dicho proceso deber ser 
+Sin embargo, el nivel de optimización del código es muy bajo puesto que dicho proceso deber ser
 lo más rápido posible. Con el objetivo de evitar el proceso de recompilación, el llamado
 compilador HotSpot optimiza únicamente aquellas partes del código que son ejecutadas de manera
 frecuente. Esto supone que los desarrolladores de "benchmarks" deberán ser conscientes que los
-programas podrían presentar rendimientos dispares en diferentes ejecuciones. Múltiples ejecuciones 
+programas podrían presentar rendimientos dispares en diferentes ejecuciones. Múltiples ejecuciones
 de un mismo fragmento de código (por ejemplo un método) podrían ofrecer rendimientos dispares en función de
 si se ha llevado a cabo un proceso de optimización del código entre dichas ejecuciones. Adicionalmente,
 la medición de los tiempos de ejecución de un fragmento de código podría incluir el tiempo en el que
 el propio compilador JIT lleva a cabo el proceso de optimizacion, falseando los resultados.
 
 Otro elemento "oculto" que forma parte de la JVM es la gestión automática de la memoria. De vez en cuando,
-la ejecución de un programa es detenida para que el recolector de basura entre en funcionamiento. Si el 
+la ejecución de un programa es detenida para que el recolector de basura entre en funcionamiento. Si el
 programa que estamos analizando realiza alguna reserva de memoria (algo que la mayoría de programas hacen),
 el recolector de basura podría entrar en acción, posiblemente distorsionando los resultados. Con el objetivo
 de disminuir los efectos de la recolección de basura, el programa bajo estudio deberá ser ejecutado en
 múltiples ocasiones para disparar numerosas recolecciones de basura.
 
-Una causa muy común que afecta de manera notable al rendimiento son las conversiones implícitas que se 
+Una causa muy común que afecta de manera notable al rendimiento son las conversiones implícitas que se
 llevan a cabo cuando se pasa un tipo primitivo a un método que espera un argumento genérico. En tiempo
 de ejecución, los tipos primitivos con convertidos en los objetos que los representan, de manera que puedan
 ser pasados como argumentos en los métodos que presentan parámetros genéricos. Este proceso implica un conjunto
 extra de reservas de memoria y es más lento, ocasionando nueva basura en el heap.
 
 Cuando nos referimos al rendimiento en colecciones paralelas la contención de la memoria es un problema muy
-común, dado que el desarrollador no dispone de un control explícito sobre la asignación de los objetos. 
+común, dado que el desarrollador no dispone de un control explícito sobre la asignación de los objetos.
 De hecho, debido a los efectos ocasionados por la recolección de basura, la contención puede producirse en
 un estado posterior del ciclo de vida de la aplicación, una vez los objetos hayan ido circulando por la
 memoria. Estos efectos deberán ser tenidos en cuenta en el momento en que se esté desarrollando un benchmark.
 
 ## Ejemplo de microbenchmarking
 
-Numerosos enfoques permiten evitar los anteriores efectos durante el periodo de medición. 
-En primer lugar, el microbenchmark debe ser ejecutado el número de veces necesario que 
-permita asegurar que el compilador just-in-time ha compilado a código máquina y que 
-ha optimizado el código resultante. Esto es lo que comunmente se conoce como fase de 
+Numerosos enfoques permiten evitar los anteriores efectos durante el periodo de medición.
+En primer lugar, el microbenchmark debe ser ejecutado el número de veces necesario que
+permita asegurar que el compilador just-in-time ha compilado a código máquina y que
+ha optimizado el código resultante. Esto es lo que comunmente se conoce como fase de
 calentamiento.
 
 El microbenchmark debe ser ejecutado en una instancia independiente de la máquina virtual
@@ -72,20 +73,20 @@ Finalmente, con el objetivo de reducir la posibilidad de que una recolección de
 durante la ejecución del benchmark, idealmente, debería producirse un ciclo de recolección de basura antes
 de la ejecución del benchmark, retrasando el siguiente ciclo tanto como sea posible.
 
-El trait `scala.testing.Benchmark` se predefine en la librería estándar de Scala y ha sido diseñado con 
+El trait `scala.testing.Benchmark` se predefine en la librería estándar de Scala y ha sido diseñado con
 el punto anterior en mente. A continuación se muestra un ejemplo del benchmarking de un operación map
 sobre un "trie" concurrente:
 
     import collection.parallel.mutable.ParTrieMap
 	import collection.parallel.ForkJoinTaskSupport
-	
+
     object Map extends testing.Benchmark {
       val length = sys.props("length").toInt
       val par = sys.props("par").toInt
       val partrie = ParTrieMap((0 until length) zip (0 until length): _*)
-      
+
       partrie.tasksupport = new ForkJoinTaskSupport(new scala.concurrent.forkjoin.ForkJoinPool(par))
-      
+
       def run = {
         partrie map {
           kv => kv
@@ -95,7 +96,7 @@ sobre un "trie" concurrente:
 
 El método `run` encapsula el código del microbenchmark que será ejecutado de
 manera repetitiva y cuyos tiempos de ejecución serán medidos. El anterior objeto `Map` extiende
-el trait `scala.testing.Benchmark` y parsea los parámetros `par` (nivel de paralelismo) y 
+el trait `scala.testing.Benchmark` y parsea los parámetros `par` (nivel de paralelismo) y
 `length` (número de elementos en el trie). Ambos parámetros son especificados a través de
 propiedades del sistema.
 
@@ -109,7 +110,7 @@ la librería de Scala. Los argumentos `-Dpar` y `-Dlength` representan el nivel 
 el número de elementos respectivamente. Por último, `10` indica el número de veces que el benchmark
 debería ser ejecutado en una misma máquina virtual.
 
-Los tiempos de ejecución obtenidos estableciendo `par` a los valores `1`, `2`, `4` y `8` sobre un 
+Los tiempos de ejecución obtenidos estableciendo `par` a los valores `1`, `2`, `4` y `8` sobre un
 procesador quad-core i7 con hyperthreading habilitado son los siguientes:
 
     Map$	126	57	56	57	54	54	54	53	53	53
@@ -131,7 +132,7 @@ El tamaño de la colección a partir de la cual la paralelización merece la pen
 depende de numerosos factores. Algunos de ellos, aunque no todos, son:
 
 - Arquitectura de la máquina. Diferentes tipos de CPU ofrecen diferente características
-  de rendimiento y escalabilidad. Por ejemplo, si la máquina es multicore o presenta 
+  de rendimiento y escalabilidad. Por ejemplo, si la máquina es multicore o presenta
   múltiples procesadores comunicados mediante la placa base.
 
 - Versión y proveedor de la JVM. Diferentes máquinas virtuales llevan a cabo
@@ -158,7 +159,7 @@ depende de numerosos factores. Algunos de ellos, aunque no todos, son:
   producir contención.
 
 - Gestión de memoria. Cuando se reserva espacio para muchos objectos es posible
-  que se dispare un ciclo de recolección de basura. Dependiendo de cómo se 
+  que se dispare un ciclo de recolección de basura. Dependiendo de cómo se
   distribuyan las referencias de los objetos el ciclo de recolección puede llevar
   más o menos tiempo.
 
@@ -168,27 +169,27 @@ colección. Para ilustrar de manera aproximada cuál debería ser el valor de di
 a continuación, se presenta un ejemplo de una sencilla operación de reducción, __sum__ en este caso,
 libre de efectos colaterales sobre un vector en un procesador i7 quad-core (hyperthreading
 deshabilitado) sobre JDK7
-  
+
     import collection.parallel.immutable.ParVector
-    
+
     object Reduce extends testing.Benchmark {
       val length = sys.props("length").toInt
       val par = sys.props("par").toInt
       val parvector = ParVector((0 until length): _*)
-      
+
       parvector.tasksupport = new collection.parallel.ForkJoinTaskSupport(new scala.concurrent.forkjoin.ForkJoinPool(par))
-      
+
       def run = {
         parvector reduce {
           (a, b) => a + b
         }
       }
     }
-   
+
     object ReduceSeq extends testing.Benchmark {
       val length = sys.props("length").toInt
       val vector = collection.immutable.Vector((0 until length): _*)
-      
+
       def run = {
         vector reduce {
           (a, b) => a + b
@@ -219,25 +220,25 @@ En un ejemplo diferente, utilizamos `mutable.ParHashMap` y el método `map` (un 
 y ejecutamos el siguiente benchmark en el mismo entorno:
 
     import collection.parallel.mutable.ParHashMap
-    
+
     object Map extends testing.Benchmark {
       val length = sys.props("length").toInt
       val par = sys.props("par").toInt
       val phm = ParHashMap((0 until length) zip (0 until length): _*)
-      
+
       phm.tasksupport = new collection.parallel.ForkJoinTaskSupport(new scala.concurrent.forkjoin.ForkJoinPool(par))
-      
+
       def run = {
         phm map {
           kv => kv
         }
       }
     }
-   
+
     object MapSeq extends testing.Benchmark {
       val length = sys.props("length").toInt
       val hm = collection.mutable.HashMap((0 until length) zip (0 until length): _*)
-      
+
       def run = {
         hm map {
           kv => kv
