@@ -1,8 +1,8 @@
 ---
-layout: documentation-page
+layout: style-guide
 title: Scala Style Guide
 partof: style
-includeCollectionTOC: true
+overview-name: "&nbsp;"
 ---
 
 This document is intended to outline some basic Scala stylistic guidelines which should be followed with more or less fervency. Wherever possible, this guide attempts to detail why a particular style is encouraged and how it relates to other alternatives. As with all style guides, treat this document as a list of rules to be broken. There are certainly times when alternative styles should be preferred over the ones given here.

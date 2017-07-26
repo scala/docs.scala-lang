@@ -1,8 +1,10 @@
 ---
-layout: overview
+layout: style-guide
 title: Naming Conventions
 
 partof: style
+overview-name: "Style Guide"
+
 num: 3
 
 previous-page: indentation

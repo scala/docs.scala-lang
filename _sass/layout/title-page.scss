@@ -4,7 +4,8 @@
 
 .title-page {
   background: $brand-tertiary;
-  height: 200px;
+  // height: 200px;
+  min-height: 200px;
   h1 {
     font-size: 1.875rem;
     font-family: $base-font-family;

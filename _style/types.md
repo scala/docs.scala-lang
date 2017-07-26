@@ -1,8 +1,10 @@
 ---
-layout: overview
+layout: style-guide
 title: Types
 
 partof: style
+overview-name: "Style Guide"
+
 num: 4
 
 previous-page: naming-conventions

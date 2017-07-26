@@ -1,8 +1,10 @@
 ---
-layout: overview
+layout: style-guide
 title: Method Invocation
 
 partof: style
+overview-name: "Style Guide"
+
 num: 8
 
 previous-page: control-structures

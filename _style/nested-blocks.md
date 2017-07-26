@@ -1,8 +1,10 @@
 ---
-layout: overview
+layout: style-guide
 title: Nested Blocks
 
 partof: style
+overview-name: "Style Guide"
+
 num: 5
 
 previous-page: types

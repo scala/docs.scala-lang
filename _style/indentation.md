@@ -1,8 +1,10 @@
 ---
-layout: overview
+layout: style-guide
 title: Indentation
 
 partof: style
+overview-name: "Style Guide"
+
 num: 2
 
 previous-page: overview

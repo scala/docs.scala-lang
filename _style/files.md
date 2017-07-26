@@ -1,8 +1,10 @@
 ---
-layout: overview
+layout: style-guide
 title: Files
 
 partof: style
+overview-name: "Style Guide"
+
 num: 6
 
 previous-page: nested-blocks

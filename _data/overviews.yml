@@ -68,15 +68,15 @@
   overviews:
     - title: Scaladoc
       icon: book
-      url: "collections/introduction.html"
+      url: "scaladoc/overview.html"
       description: "Scala's API documentation generation tool."
       subdocs:
         - title: Overview
           url: "scaladoc/overview.html"
-        - title: Using Scaladoc Effectively
-          url: "scaladoc/interface.html"
-        - title: Authoring Scaladoc
+        - title: Scaladoc for Library Authors
           url: "scaladoc/for-library-authors.html"
+        - title: Using the Scaladoc Interface
+          url: "scaladoc/interface.html"
     - title: Scala REPL
       icon: terminal
       url: "repl/overview.html"
@@ -155,7 +155,7 @@
     - title: Macros
       by: Eugene Burmako
       icon: magic
-      url: "#!"
+      url: "macros/usecases.html"
       description: "Scala's metaprogramming framework."
       label-text: experimental
       subdocs:

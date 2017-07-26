@@ -1,8 +1,10 @@
 ---
-layout: overview
+layout: style-guide
 title: Scaladoc
 
 partof: style
+overview-name: "Style Guide"
+
 num: 10
 
 previous-page: declarations

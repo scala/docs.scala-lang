@@ -1,74 +1,77 @@
 // Sliding Panel and scala in a nutshell
 $(document).ready(function() {
-    $('.navigation-panel-button,.navigation-fade-screen,.navigation-panel-close').on('click touchstart', function(e) {
-        $('.navigation-menu,.navigation-fade-screen').toggleClass('is-visible');
-        e.preventDefault();
+  $('.navigation-panel-button,.navigation-fade-screen,.navigation-panel-close').on('click touchstart', function(e) {
+    $('.navigation-menu,.navigation-fade-screen').toggleClass('is-visible');
+    e.preventDefault();
+  });
+
+  var menus = $('.items-menu');
+  var allContents = $('.items-code');
+  var allButtons = $('.scala-item');
+
+  menus.each(function(index1, row) {
+    var row = $(row);
+    var items = row.find('.scala-item');
+    var content = row.children('.items-content');
+    var contents = content.children('.items-code');
+
+    items.each(function(index2, button) {
+      var jButton = $(button);
+      jButton.click(function(event) {
+        var activeCode = contents.eq(index2);
+        var others = allContents.not(activeCode);
+        allButtons.removeClass('active');
+        others.hide();
+
+        if (activeCode.is(":visible")) {
+          activeCode.hide();
+        } else {
+          jButton.addClass('active')
+          activeCode.show();
+        }
+
+      });
     });
-
-    var menus = $('.items-menu');
-    var allContents = $('.items-code');
-    var allButtons = $('.scala-item');
-
-    menus.each(function(index1, row) {
-        var row = $(row);
-        var items = row.find('.scala-item');
-        var content = row.children('.items-content');
-        var contents = content.children('.items-code');
-
-        items.each(function(index2, button) {
-            var jButton = $(button);
-            jButton.click(function(event) {
-                var activeCode = contents.eq(index2);
-                var others = allContents.not(activeCode);
-                allButtons.removeClass('active');
-                others.hide();
-
-                if (activeCode.is(":visible")) {
-                    activeCode.hide();
-                } else {
-                    jButton.addClass('active')
-                    activeCode.show();
-                }
-
-            });
-        });
-    });
+  });
 });
 
 // Tooltip
 $(document).ready(function() {
-        // Tooltip only Text
-        $('.masterTooltip').hover(function(){
-                // Hover over code
-                var title = $(this).attr('title');
-                $(this).data('tipText', title).removeAttr('title');
-                $('<p class="tooltip"></p>')
-                .text(title)
-                .appendTo('body')
-                .fadeIn('slow');
-        }, function() {
-                // Hover out code
-                $(this).attr('title', $(this).data('tipText'));
-                $('.tooltip').remove();
-        }).mousemove(function(e) {
-                var mousex = e.pageX + 20; //Get X coordinates
-                var mousey = e.pageY + 10; //Get Y coordinates
-                $('.tooltip')
-                .css({ top: mousey, left: mousex })
-        });
+  // Tooltip only Text
+  $('.masterTooltip').hover(function() {
+    // Hover over code
+    var title = $(this).attr('title');
+    $(this).data('tipText', title).removeAttr('title');
+    $('<p class="tooltip"></p>')
+      .text(title)
+      .appendTo('body')
+      .fadeIn('slow');
+  }, function() {
+    // Hover out code
+    $(this).attr('title', $(this).data('tipText'));
+    $('.tooltip').remove();
+  }).mousemove(function(e) {
+    var mousex = e.pageX + 20; //Get X coordinates
+    var mousey = e.pageY + 10; //Get Y coordinates
+    $('.tooltip')
+      .css({
+        top: mousey,
+        left: mousex
+      })
+  });
 });
 
 // Highlight
 $(document).ready(function() {
-    hljs.configure({
-      languages: ["scala", "bash"]
-    })
-    hljs.initHighlighting();
+  hljs.configure({
+    languages: ["scala", "bash"]
+  })
+  hljs.initHighlighting();
 });
 
 // Show Blog
 $(".hide").click(function() {
-    $(".new-on-the-blog").hide();
+  $(".new-on-the-blog").hide();
 });
 
 // Documentation menu dropdown toggle
@@ -77,7 +80,7 @@ $(document).ready(function() { // DOM ready
   $('nav ul li a:not(:only-child)').click(function(e) {
 
     // if mobile...
-    if ($(".navigation-ellipsis").css("display") == "block" ){
+    if ($(".navigation-ellipsis").css("display") == "block") {
 
       // toggle the submenu associated with the clicked id
       var submenuId = $(this).attr('id');
@@ -112,52 +115,69 @@ $(document).ready(function() { // DOM ready
 // Expand button on cards (guides & overviews page)
 $(document).ready(function() {
   $.fn.hasOverflow = function() {
-      var $this = $(this);
-      var $children = $this.find('*');
-      var len = $children.length;
+    var $this = $(this);
+    var $children = $this.find('*');
+    var len = $children.length;
 
-      if (len) {
-          var maxWidth = 0;
-          var maxHeight = 0
-          $children.map(function(){
-              maxWidth = Math.max(maxWidth, $(this).outerWidth(true));
-              maxHeight = Math.max(maxHeight, $(this).outerHeight(true));
-          });
+    if (len) {
+      var maxWidth = 0;
+      var maxHeight = 0
+      $children.map(function() {
+        maxWidth = Math.max(maxWidth, $(this).outerWidth(true));
+        maxHeight = Math.max(maxHeight, $(this).outerHeight(true));
+      });
 
-          return maxWidth > $this.width() || maxHeight > $this.height();
-      }
+      return maxWidth > $this.width() || maxHeight > $this.height();
+    }
 
-      return false;
+    return false;
   };
 
-  $('.white-card').each(function (index) {
+  $('.white-card').each(function(index) {
     if (!$(this).hasOverflow()) {
       $(this).find(".card-footer").css("visibility", "hidden");
     }
   });
 
-  $(".white-card").hover(function () {
+  $(".white-card").hover(function() {
     $(this).find(".card-footer").hide();
     $(this).find(".expand-btn").hide();
-  }, function () {
+  }, function() {
     $(this).find(".card-footer").show();
     $(this).find(".expand-btn").show();
   });
 });
 
 
+// populate language dropdown
+$(document).ready(function() {
+  var old = $("#available-languages");
+  var items = $("#available-languages li");
+  var newList = $("#dd .dropdown");
+  items.each(function(index, value){
+      newList.append(value);
+  });
+  old.empty();
+
+  // if there are no translations, hide language dropdown box
+  if (items.length <= 1) {
+    $("#dd").hide();
+  }
+});
+
+
 //Tweet feed in frontpage
 $('#tweet-feed').tweetMachine('', {
-    backendScript: '/webscripts/ajax/getFromTwitter.php',
-    endpoint: 'statuses/user_timeline',
-    user_name: 'scala_lang',
-    include_retweets: true,
-    exclude_replies: false,
-    limit: 6,
-    pageLimit: 3,
-    autoRefresh: false,
-    animateIn: false,
-    tweetFormat: `
+  backendScript: '/webscripts/ajax/getFromTwitter.php',
+  endpoint: 'statuses/user_timeline',
+  user_name: 'scala_lang',
+  include_retweets: true,
+  exclude_replies: false,
+  limit: 6,
+  pageLimit: 3,
+  autoRefresh: false,
+  animateIn: false,
+  tweetFormat: `
     <div class="item-tweet">
             <img src="" class="avatar" alt="">
             <div class="tweet-text">
@@ -173,7 +193,7 @@ $('#tweet-feed').tweetMachine('', {
           </div>
       `
 }, function(tweets, tweetsDisplayed) {
-    $('.slider-twitter').unslider({});
+  $('.slider-twitter').unslider({});
 });
 
 // Scaladex autocomplete search
@@ -181,92 +201,100 @@ var prevResult = "";
 var lastElementClicked;
 
 $(document).mousedown(function(e) {
-    lastElementClicked = $(e.target);
+  lastElementClicked = $(e.target);
 });
 
 $(document).mouseup(function(e) {
-    lastElementClicked = null;
+  lastElementClicked = null;
 });
 
 function hideSuggestions() {
-    $('.autocomplete-suggestions').hide();
-    $('.autocomplete-suggestion').hide();
+  $('.autocomplete-suggestions').hide();
+  $('.autocomplete-suggestion').hide();
 }
 
 function showSuggestions() {
-    $('.autocomplete-suggestions').show();
-    $('.autocomplete-suggestion').show();
+  $('.autocomplete-suggestions').show();
+  $('.autocomplete-suggestion').show();
 }
 
 hideSuggestions();
 $('#scaladex-search').on('input', function(e) {
-    if ($("#scaladex-search").val() == "") hideSuggestions();
+  if ($("#scaladex-search").val() == "") hideSuggestions();
 });
 
 $('#scaladex-search').on('focus', function(e) {
-    if ($("#scaladex-search").val() != "") showSuggestions();
+  if ($("#scaladex-search").val() != "") showSuggestions();
 });
 
 $('#scaladex-search').on('blur', function(e) {
-    if (!$(e.target).is('.autocomplete-suggestion')) {
-        if (lastElementClicked != null && !lastElementClicked.is('.autocomplete-suggestion')) {
-            hideSuggestions();
-        }
-    } else {
-        hideSuggestions();
+  if (!$(e.target).is('.autocomplete-suggestion')) {
+    if (lastElementClicked != null && !lastElementClicked.is('.autocomplete-suggestion')) {
+      hideSuggestions();
     }
+  } else {
+    hideSuggestions();
+  }
 });
 
 $('#scaladex-search').autocomplete({
-    paramName: 'q',
-    serviceUrl: 'https://index.scala-lang.org/api/autocomplete',
-    dataType: 'json',
-    beforeRender: function() {
-        showSuggestions();
-    },
-    onSearchStart: function(query) {
-        if (query == "") {
-            hideSuggestions()
-        } else {
-            showSuggestions();
-        }
-    },
-    transformResult: function(response) {
-        return {
-            suggestions: $.map(response, function(dataItem) {
-                return { value: dataItem.repository, data: 'https://scaladex.scala-lang.org/' + dataItem.organization + "/" + dataItem.repository };
-            })
-        };
-    },
-    onSearchComplete: function (query, suggestions) {
-        suggestions.length > 0 ? showSuggestions() : hideSuggestions();
-    },
-    onSelect: function (suggestion) {
-        if (suggestion.data != prevResult) {
-            prevResult = suggestion.data;
-            hideSuggestions();
-            $("#scaladex-search").blur();
-            window.open(suggestion.data, '_blank');
-        }
+  paramName: 'q',
+  serviceUrl: 'https://index.scala-lang.org/api/autocomplete',
+  dataType: 'json',
+  beforeRender: function() {
+    showSuggestions();
+  },
+  onSearchStart: function(query) {
+    if (query == "") {
+      hideSuggestions()
+    } else {
+      showSuggestions();
     }
+  },
+  transformResult: function(response) {
+    return {
+      suggestions: $.map(response, function(dataItem) {
+        return {
+          value: dataItem.repository,
+          data: 'https://scaladex.scala-lang.org/' + dataItem.organization + "/" + dataItem.repository
+        };
+      })
+    };
+  },
+  onSearchComplete: function(query, suggestions) {
+    suggestions.length > 0 ? showSuggestions() : hideSuggestions();
+  },
+  onSelect: function(suggestion) {
+    if (suggestion.data != prevResult) {
+      prevResult = suggestion.data;
+      hideSuggestions();
+      $("#scaladex-search").blur();
+      window.open(suggestion.data, '_blank');
+    }
+  }
 
 });
 
 $(document).ready(function() {
-    $(window).on("blur", function() {
-        if ($("#scaladex-search").length) {
-            $("#scaladex-search").blur();
-            $("#scaladex-search").autocomplete().clear();
-        }
-    });
+  $(window).on("blur", function() {
+    if ($("#scaladex-search").length) {
+      $("#scaladex-search").blur();
+      $("#scaladex-search").autocomplete().clear();
+    }
+  });
 });
 
 // TOC:
 $(document).ready(function() {
-    if ($("#sidebar-toc").length) {
-        $('#toc').toc({exclude: 'h1, h5, h6', context: '.inner-box', autoId: true, numerate: false});
-        toggleStickyToc();
-    }
+  if ($("#sidebar-toc").length) {
+    $('#toc').toc({
+      exclude: 'h1, h5, h6',
+      context: '.inner-box',
+      autoId: true,
+      numerate: false
+    });
+    toggleStickyToc();
+  }
 })
 
 $(window).resize(function() {
@@ -274,17 +302,61 @@ $(window).resize(function() {
 });
 
 var toggleStickyToc = function() {
-    if ($("#sidebar-toc").length) {
-        if ($(window).width() <= 992) {
-            $(".sidebar-toc-wrapper").unstick();
-        } else {
-            $(".sidebar-toc-wrapper").sticky({
-               topSpacing: 0,
-               bottomSpacing: 500
-            });
-        }
+  if ($("#sidebar-toc").length) {
+    if ($(window).width() <= 992) {
+      $(".sidebar-toc-wrapper").unstick();
+    } else {
+      $(".sidebar-toc-wrapper").sticky({
+        topSpacing: 0,
+        bottomSpacing: 500
+      });
     }
+  }
 }
+
+// Language dropdown
+function DropDown(el) {
+  this.dd = el;
+  this.placeholder = this.dd.children('span');
+  this.opts = this.dd.find('ul.dropdown > li');
+  this.val = '';
+  this.index = -1;
+  this.initEvents();
+}
+DropDown.prototype = {
+  initEvents: function() {
+    var obj = this;
+
+    obj.dd.on('click', function(event) {
+      $(this).toggleClass('active');
+      return false;
+    });
+
+    obj.opts.on('click', function() {
+      var opt = $(this);
+      obj.val = opt.text();
+      obj.index = opt.index();
+      obj.placeholder.text(obj.val);
+    });
+  },
+  getValue: function() {
+    return this.val;
+  },
+  getIndex: function() {
+    return this.index;
+  }
+}
+
+$(function() {
+
+  var dd = new DropDown($('#dd'));
+
+  $(document).click(function() {
+    // all dropdowns
+    $('.wrapper-dropdown').removeClass('active');
+  });
+
+});
 
 // Blog search
 $(document).ready(function() {
@@ -297,7 +369,7 @@ $(document).ready(function() {
       limit: 5,
     });
 
-    $("#blog-search-bar").on("change paste keyup", function () {
+    $("#blog-search-bar").on("change paste keyup", function() {
       if ($(this).val()) {
         $("#result-container").show();
       } else {
@@ -309,33 +381,33 @@ $(document).ready(function() {
 
 // Scala in the browser
 $(document).ready(function() {
-    if ($("#scastie-textarea").length) {
-        var editor = CodeMirror.fromTextArea(document.getElementById("scastie-textarea"), {
-            lineNumbers: true,
-            matchBrackets: true,
-            theme: "monokai",
-            mode: "text/x-scala",
-            autoRefresh: true,
-            fixedGutter: false
-          });
-        editor.setSize("100%", ($("#scastie-code-container").height()));
+  if ($("#scastie-textarea").length) {
+    var editor = CodeMirror.fromTextArea(document.getElementById("scastie-textarea"), {
+      lineNumbers: true,
+      matchBrackets: true,
+      theme: "monokai",
+      mode: "text/x-scala",
+      autoRefresh: true,
+      fixedGutter: false
+    });
+    editor.setSize("100%", ($("#scastie-code-container").height()));
 
-        var codeSnippet = "List(\"Hello\", \"World\").mkString(\"\", \", \", \"!\")";
-        editor.getDoc().setValue(codeSnippet);
-        editor.refresh();
+    var codeSnippet = "List(\"Hello\", \"World\").mkString(\"\", \", \", \"!\")";
+    editor.getDoc().setValue(codeSnippet);
+    editor.refresh();
 
-        $('.btn-run').click(function() {
-            // TODO: Code to connect to the scastie server would be here, what follows is just a simulation for the UI elements:
-            $('.btn-run').addClass("inactive");
-            $('.btn-run i').removeClass("fa fa-play").addClass("fa fa-spinner fa-spin");
-            setTimeout(function() {
-              var currentCodeSnippet = editor.getDoc().getValue();
-              console.log("Current code snippet: " + currentCodeSnippet);
-              $('.btn-run').removeClass("inactive");
-              $('.btn-run i').removeClass("fa-spinner fa-spin").addClass("fa fa-play");
-            }, 2000);
-        })
-    }
+    $('.btn-run').click(function() {
+      // TODO: Code to connect to the scastie server would be here, what follows is just a simulation for the UI elements:
+      $('.btn-run').addClass("inactive");
+      $('.btn-run i').removeClass("fa fa-play").addClass("fa fa-spinner fa-spin");
+      setTimeout(function() {
+        var currentCodeSnippet = editor.getDoc().getValue();
+        console.log("Current code snippet: " + currentCodeSnippet);
+        $('.btn-run').removeClass("inactive");
+        $('.btn-run i').removeClass("fa-spinner fa-spin").addClass("fa fa-play");
+      }, 2000);
+    })
+  }
 });
 
 // OS detection
@@ -349,19 +421,25 @@ function getOS() {
 }
 
 $(document).ready(function() {
-    if ($(".main-download").length) {
-        var os = getOS();
-        var intelliJlink = $("#intellij-" + os).text();
-        var sbtLink = $("#sbt-" + os).text();
-        var stepOneContent = $("#stepOne-" + os).html()
-        $("#download-intellij-link").attr("href", intelliJlink);
-        $("#download-sbt-link").attr("href", sbtLink);
-        $("#download-step-one").html(stepOneContent);
-    }
+  if ($(".main-download").length) {
+    var os = getOS();
+    var intelliJlink = $("#intellij-" + os).text();
+    var sbtLink = $("#sbt-" + os).text();
+    var stepOneContent = $("#stepOne-" + os).html()
+    $("#download-intellij-link").attr("href", intelliJlink);
+    $("#download-sbt-link").attr("href", sbtLink);
+    $("#download-step-one").html(stepOneContent);
+  }
 });
 
-var image = { width: 1680, height: 1100 };
-var target = { x: 1028, y: 290 };
+var image = {
+  width: 1680,
+  height: 1100
+};
+var target = {
+  x: 1028,
+  y: 290
+};
 
 var pointer = $('#position-marker');
 
@@ -370,12 +448,12 @@ $(window).resize(updatePointer);
 
 function updatePointer() {
 
-    var windowWidth = $(window).width();
-    var windowHeight = $(window).height();
+  var windowWidth = $(window).width();
+  var windowHeight = $(window).height();
 
-    var xScale = windowWidth / image.width;
-    var yScale = windowHeight / image.height;
+  var xScale = windowWidth / image.width;
+  var yScale = windowHeight / image.height;
 
-    pointer.css('top', (target.y));
-    pointer.css('left', (target.x) * xScale);
+  pointer.css('top', (target.y));
+  pointer.css('left', (target.x) * xScale);
 }

@@ -18,6 +18,8 @@ keywords:
 collections:
   style:
     output: true
+  overviews:
+    output: true
   books:
     output: false
 

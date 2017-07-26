@@ -1,8 +1,10 @@
 ---
-layout: overview
+layout: style-guide
 title: Declarations
 
 partof: style
+overview-name: "Style Guide"
+
 num: 9
 
 previous-page: method-invocation

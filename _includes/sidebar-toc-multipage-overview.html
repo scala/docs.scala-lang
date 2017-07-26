@@ -1,0 +1,31 @@
+<div class="content-nav">
+	<div class="inner-box sidebar-toc-wrapper" style="">
+		<h5 class="contents">Contents</h5>
+		<div class="inner-toc" id="sidebar-toc">
+      {% if page.includeCollectionTOC or layout.includeCollectionTOC %}
+        <ul>
+          {% assign sorted = site.overviews | sort: 'num' %}
+          {% for pg in sorted %}
+            {% if pg.num and (page.partof == pg.partof) %}
+              <li><a href="{{ site.baseurl }}{{ pg.url }}">{{ pg.title }}</a></li>
+              {% if pg.num == page.num %}<div id="toc"></div>{% endif %}
+            {% endif %}
+          {% endfor %}
+        </ul>
+      {% endif %}
+      {% if page.languages %}
+        <ul id="available-languages" style="display: none;">
+          <li><a href="{{ page.url }}">English</a></li>
+          {% for l in page.languages %}
+            {% capture intermediate %}{{ page.url | remove_first: l }}{% endcapture %}
+            {% capture rootTutorialURL %}{{ intermediate | remove_first: '/' }}{% endcapture %}
+      			{% assign lang = site.data.languages[l] %}
+      			<li><a href="{{ site.baseurl }}/{{ l }}/{{ rootTutorialURL }}" class="lang">{{ lang.name }}</a></li>
+          {% endfor %}
+      </ul>
+      {% endif %}
+		</div>
+		<hr>
+		<div class="help-us"><a href="/contribute/documentation/#updating-scala-langorg">Problem with this page?<br> Please help us fix it!</a></div>
+	</div>
+</div>

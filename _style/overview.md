@@ -1,10 +1,11 @@
 ---
-layout: overview
+layout: style-guide
 title: Overview
 
 partof: style
+overview-name: "Style Guide"
+
 num: 1
-outof: 10
 
 next-page: indentation
 ---

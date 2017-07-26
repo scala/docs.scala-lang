@@ -6,25 +6,18 @@
 //------------------------------------------------
 @import 'vendors/bourbon/bourbon';
 @import 'vendors/neat/neat';
-@import 'vendors/unslider/unslider';
-
-// UTILS
+@import 'vendors/unslider/unslider'; // UTILS
 //------------------------------------------------
 @import 'utils/variables';
-@import 'utils/mixins';
-
-// BASE
+@import 'utils/mixins'; // BASE
 //------------------------------------------------
 @import 'base/body';
 @import 'base/form';
 @import 'base/helper';
 @import 'base/lists';
 @import 'base/media';
-@import 'base/typography';
-
-// LAYOUT
+@import 'base/typography'; // LAYOUT
 //------------------------------------------------
-
 // Home
 @import 'layout/header';
 @import 'layout/inner-text';
@@ -38,6 +31,7 @@
 @import 'layout/overviews';
 @import 'layout/toc';
 @import 'layout/courses';
+@import 'layout/documentation';
 @import 'layout/upcoming-events';
 @import 'layout/scala-ecosystem';
 @import 'layout/new-blog';
@@ -47,9 +41,7 @@
 @import 'layout/marker';
 @import 'layout/runs';
 @import 'layout/run-scala';
-@import 'layout/scaladex';
-
-// Inner Page
+@import 'layout/scaladex'; // Inner Page
 @import 'layout/inner-main';
 @import 'layout/title-page';
 @import 'layout/type-md';
@@ -58,10 +50,7 @@
 @import 'layout/books';
 @import 'layout/training-events';
 @import 'layout/blog';
-@import 'layout/download';
-
-
-// COMPONENTS
+@import 'layout/download'; // COMPONENTS
 //------------------------------------------------
 //------------------------------------------------
 @import 'components/buttons';
@@ -76,3 +65,4 @@
 @import 'components/tab';
 @import 'components/tag';
 @import 'components/search';
+@import 'components/dropdown';
