@@ -5,6 +5,8 @@ title: Overview
 discourse: false
 
 partof: parallel-collections
+overview-name: Parallel Collections
+
 num: 1
 language: es
 ---

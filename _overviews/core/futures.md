@@ -2,6 +2,8 @@
 layout: singlepage-overview
 title: Futures and Promises
 
+partof: futures
+
 languages: [ja, zh-cn]
 
 permalink: /overviews/core/:title.html

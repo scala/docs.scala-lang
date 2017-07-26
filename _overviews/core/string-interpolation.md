@@ -4,6 +4,8 @@ title: String Interpolation
 
 discourse: true
 
+partof: string-interpolation
+
 languages: [es, ja, zh-cn]
 
 permalink: /overviews/core/:title.html

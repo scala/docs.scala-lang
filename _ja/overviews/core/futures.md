@@ -1,10 +1,10 @@
 ---
-layout: overview
-label-color: success
-label-text: New in 2.10
-overview: futures
-language: ja
+layout: singlepage-overview
 title: Future と Promise
+
+partof: futures
+
+language: ja
 
 discourse: false
 ---
@@ -28,8 +28,8 @@ The futures and promises API builds upon the notion of an
 `ExecutionContext`, an execution environment designed to manage
 resources such as thread pools between parallel frameworks and
 libraries (detailed in an accompanying SIP, forthcoming). Futures and
-promises are created through such `ExecutionContext`s. For example, this makes it possible, 
-in the case of an application which requires blocking futures, for an underlying execution 
+promises are created through such `ExecutionContext`s. For example, this makes it possible,
+in the case of an application which requires blocking futures, for an underlying execution
 environment to resize itself if necessary to guarantee progress.
 -->
 
@@ -59,7 +59,7 @@ Future オブジェクトを返すメソッドだということだ。
 
     import scala.concurrent._
     import ExecutionContext.Implicits.global
-    
+
     val session = socialNetwork.createSessionFor("user", credentials)
     val f: Future[List[Friend]] = Future {
       session.getFriends()
@@ -83,7 +83,7 @@ Future オブジェクトを返すメソッドだということだ。
 試みが失敗すると、例外が発生するかもしれない。
 以下の例では、`session` 変数の初期化が不正なため、`future` ブロック内の計算が
 `NullPointerException` を投げる。この Future `f` は、この例外とともに失敗する:
-	
+
     val session = null
     val f: Future[List[Friend]] = Future {
       session.getFriends
@@ -134,7 +134,7 @@ Future の実装の多くは、Future の結果を知りたくなったクライ
     val f: Future[List[String]] = Future {
       session.getRecentPosts
     }
-    
+
     f onComplete {
       case Success(posts) => for (post <- posts) println(post)
       case Failure(t) => println("エラーが発生した: " + t.getMessage)
@@ -146,7 +146,7 @@ Future の実装の多くは、Future の結果を知りたくなったクライ
     val f: Future[List[String]] = Future {
       session.getRecentPosts
     }
-    
+
     f onSuccess {
       case posts => for (post <- posts) println(post)
     }
@@ -156,7 +156,7 @@ Future の実装の多くは、Future の結果を知りたくなったクライ
     val f: Future[List[String]] = Future {
       session.getRecentPosts
     }
-    
+
     f onFailure {
       case t => println("エラーが発生した: " + t.getMessage)
     }
@@ -173,7 +173,7 @@ Future の実装の多くは、Future の結果を知りたくなったクライ
     val f = Future {
       2 / 0
     }
-    
+
     f onFailure {
       case npe: NullPointerException =>
         println("これが表示されているとしたらビックリ。")
@@ -258,13 +258,13 @@ Future 内の値が利用可能となることを必要とするため、Future 
     val rateQuote = Future {
       connection.getCurrentValue(USD)
     }
-    
+
     rateQuote onSuccess { case quote =>
       val purchase = Future {
         if (isProfitable(quote)) connection.buy(amount, quote)
         else throw new Exception("有益ではない")
       }
-      
+
       purchase onSuccess {
         case _ => println(amount + " USD を購入した")
       }
@@ -297,12 +297,12 @@ Future の投射はコレクションの投射と同様に考えることがで�
     val rateQuote = Future {
       connection.getCurrentValue(USD)
     }
-    
-    val purchase = rateQuote map { quote => 
+
+    val purchase = rateQuote map { quote =>
       if (isProfitable(quote)) connection.buy(amount, quote)
       else throw new Exception("有益ではない")
     }
-    
+
     purchase onSuccess {
       case _ => println(amount + " USD を購入した")
     }
@@ -333,13 +333,13 @@ Future の設計指針の 1つは for 内包表記から利用できるように
 
     val usdQuote = Future { connection.getCurrentValue(USD) }
     val chfQuote = Future { connection.getCurrentValue(CHF) }
-    
+
     val purchase = for {
       usd <- usdQuote
       chf <- chfQuote
       if isProfitable(usd, chf)
     } yield connection.buy(amount, chf)
-    
+
     purchase onSuccess {
       case _ => println(amount + " CHF を購入した")
     }
@@ -417,9 +417,9 @@ Future は同じ `Throwable` とともに失敗する。
     } map {
       chf => "値: " + chf + "CHF"
     }
-    
+
     val anyQuote = usdQuote fallbackTo chfQuote
-    
+
     anyQuote onSuccess { println(_) }
 
 `andThen` コンビネータは副作用の目的のためだけに用いられる。
@@ -501,17 +501,17 @@ Future の結果に対してブロックする方法を以下に具体例で説�
 
     import scala.concurrent._
     import scala.concurrent.duration._
-    
+
     def main(args: Array[String]) {
       val rateQuote = Future {
         connection.getCurrentValue(USD)
       }
-      
+
       val purchase = rateQuote map { quote =>
         if (isProfitable(quote)) connection.buy(amount, quote)
         else throw new Exception("有益ではない")
       }
-      
+
       Await.result(purchase, 0 nanos)
     }
 
@@ -572,16 +572,16 @@ Promise の `p` は `p.future` によって返される Future を完了させ�
 
     import scala.concurrent.{ Future, Promise }
     import scala.concurrent.ExecutionContext.Implicits.global
-    
+
     val p = Promise[T]()
     val f = p.future
-    
+
     val producer = Future {
       val r = produceSomething()
       p success r
       continueDoingSomethingUnrelated()
     }
-    
+
     val consumer = Future {
       startDoingSomething()
       f onSuccess {
@@ -603,7 +603,7 @@ Promise の `p` は `p.future` によって返される Future を完了させ�
 
     val p = Promise[T]()
     val f = p.future
-    
+
     val producer = Future {
       val r = someComputation
       if (isInvalid(r))
@@ -643,9 +643,9 @@ HTTP レスポンスにのみ興味がある場合で、これは最初に Promi
 
     val f = Future { 1 }
     val p = Promise[Int]()
-    
+
     p completeWith f
-    
+
     p.future onSuccess {
       case x => println(x)
     }
@@ -704,7 +704,7 @@ for library writers
 
 抽象クラスの `Duration` は以下のメソッドを定義する:
 
-1. 時間の単位の変換 (`toNanos`、`toMicros`、`toMillis`、 
+1. 時間の単位の変換 (`toNanos`、`toMicros`、`toMillis`、
 `toSeconds`、`toMinutes`、`toHours`、`toDays`、及び `toUnit(unit: TimeUnit)`)。
 2. 時間の比較 (`<`、`<=`、`>`、および `>=`)。
 3. 算術演算 (`+`、`-`、`*`、`/`、および `unary_-`)。
@@ -714,14 +714,14 @@ for library writers
 `Duration` は以下の方法で作成することができる:
 
 1. `Int` もしくは `Long` 型からの暗黙の変換する。例: `val d = 100 millis`。
-2. `Long` の長さと `java.util.concurrent.TimeUnit` を渡す。例: `val d = Duration(100, MILLISECONDS)`。 
+2. `Long` の長さと `java.util.concurrent.TimeUnit` を渡す。例: `val d = Duration(100, MILLISECONDS)`。
 3. 時間の長さを表す文字列をパースする。例: `val d = Duration("1.2 µs")`。
 
 `Duration` は `unapply` メソッドも提供するため、パータンマッチング構文の中から使うこともできる。以下に具体例をみる:
 
     import scala.concurrent.duration._
     import java.util.concurrent.TimeUnit._
- 
+
     // 作成
     val d1 = Duration(100, MILLISECONDS) // from Long and TimeUnit
     val d2 = Duration(100, "millis") // from Long and String

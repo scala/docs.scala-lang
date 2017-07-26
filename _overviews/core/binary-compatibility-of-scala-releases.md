@@ -2,6 +2,8 @@
 layout: singlepage-overview
 title: Binary Compatibility of Scala Releases
 
+partof: binary-compatibility
+
 permalink: /overviews/core/:title.html
 ---
 

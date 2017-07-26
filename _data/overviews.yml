@@ -1,3 +1,4 @@
+
 - category: Core Scala
   description: "Guides and overviews covering central libraries in the Scala standard library, core language features, and more."
   overviews:
@@ -67,8 +68,8 @@
   description: "Reference material on core Scala tools like Scaladoc and the Scala REPL."
   overviews:
     - title: Scaladoc
-      icon: book
       url: "scaladoc/overview.html"
+      icon: book
       description: "Scala's API documentation generation tool."
       subdocs:
         - title: Overview

@@ -1,11 +1,10 @@
 ---
-layout: overview
-discourse: true
-label-color: success
-language: ja
-label-text: New in 2.10
-overview: string-interpolation
+layout: singlepage-overview
 title: 文字列の補間
+
+partof: string-interpolation
+
+language: ja
 
 discourse: false
 ---
@@ -53,7 +52,7 @@ Scala は `s`、`f`、そして `raw` という 3つの補間子 (interpolator) 
 `f` 補間子は型安全だ。整数のみで動作する書式に `Double` を渡すとコンパイラはエラーを表示する。例えば:
 
     val height: Double = 1.9d
-    
+
     scala> f"$height%4d"
     <console>:9: error: type mismatch;
      found   : Double
@@ -68,7 +67,7 @@ Scala は `s`、`f`、そして `raw` という 3つの補間子 (interpolator) 
 `raw` 補間子は `s` 補間子に似ているが、違いは文字列リテラル内でエスケープを実行しないことだ。以下の加工文字列をみてみよう:
 
     scala> s"a\nb"
-    res0: String = 
+    res0: String =
     a
     b
 
@@ -94,9 +93,9 @@ Scala では、全ての加工文字列リテラルは簡単なコード変換�
     implicit class JsonHelper(val sc: StringContext) extends AnyVal {
       def json(args: Any*): JSONObject = sys.error("TODO - IMPLEMENT")
     }
-    
+
     def giveMeSomeJson(x: JSONObject): Unit = ...
-    
+
     giveMeSomeJson(json"{ name: $name, id: $id }")
 
 この例では、文字列の補間を使って JSON リテラル構文に挑戦している。この構文を使うには implicit クラスの `JsonHelper` がスコープにある必要があり、また `json` メソッドを実装する必要がある。注意して欲しいのは書式文字列リテラルが文字列ではなく、`JSONObject` を返す点だ。

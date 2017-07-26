@@ -2,6 +2,8 @@
 layout: singlepage-overview
 title: Value Classes and Universal Traits
 
+partof: value-classes
+
 languages: [ja, zh-cn]
 
 permalink: /overviews/core/:title.html

@@ -2,6 +2,8 @@
 layout: singlepage-overview
 title: The Scala Actors Migration Guide
 
+partof: actor-migration
+
 languages: [zh-cn]
 
 permalink: /overviews/core/:title.html

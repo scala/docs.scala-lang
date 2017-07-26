@@ -1,10 +1,10 @@
 ---
-layout: overview
-label-color: success
-label-text: New in 2.10
-language: ja
-overview: value-classes
+layout: singlepage-overview
 title: 値クラスと汎用トレイト
+
+partof: value-classes
+
+language: ja
 
 discourse: false
 ---

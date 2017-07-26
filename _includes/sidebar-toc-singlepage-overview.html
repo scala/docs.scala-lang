@@ -13,6 +13,16 @@
       			<li><a href="{{ site.baseurl }}/{{ l }}/{{ rootTutorialURL }}" class="lang">{{ lang.name }}</a></li>
           {% endfor %}
       </ul>
+      {% elsif page.language %}
+         {% assign engPath = page.id | remove_first: "/" | remove_first: page.language | append: '.html' %}
+         {% assign engPg = site.overviews | where: 'partof', page.partof | first %}
+        <ul id="available-languages" style="display: none;">
+          <li><a href="{{ site.baseurl }}{{ engPath }}">English</a></li>
+          {% for l in engPg.languages %}
+            {% assign lang = site.data.languages[l] %}
+            <li><a href="{{ site.baseurl }}/{{ l }}{{ engPath }}" class="lang">{{ lang.name }}</a></li>
+          {% endfor %}
+        </ul>
       {% endif %}
 		</div>
 		<hr>

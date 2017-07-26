@@ -2,6 +2,8 @@
 layout: singlepage-overview
 title: The Architecture of Scala Collections
 
+partof: collections-architecture
+
 languages: [zh-cn]
 
 permalink: /overviews/core/:title.html

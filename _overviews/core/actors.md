@@ -2,6 +2,8 @@
 layout: singlepage-overview
 title: The Scala Actors API
 
+partof: actors
+
 languages: [zh-cn, es]
 
 permalink: /overviews/core/:title.html

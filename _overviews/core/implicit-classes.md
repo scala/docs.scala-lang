@@ -2,6 +2,8 @@
 layout: singlepage-overview
 title: Implicit Classes
 
+partof: implicit-classes
+
 languages: [zh-cn]
 
 permalink: /overviews/core/:title.html
