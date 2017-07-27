@@ -1,6 +1,6 @@
 pipeline:
   build:
-    image: scalaplatform/jdk8-ruby2-coursier:0.1
+    image: scalacenter/scala-rvm-jvm-coursier:1.0
     pull: true
     commands:
       - bundle install
