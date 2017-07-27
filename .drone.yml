@@ -1,10 +1,6 @@
 pipeline:
   build:
-    image: scalacenter/scala-rvm-jvm-coursier:1.0
+    image: scalacenter/scala-rvm-jvm-coursier:2.0
     pull: true
     commands:
-      - source ~/.profile
-      - bundle install
-      - ./scripts/run-tut.sh
-      - rm -r tut-tmp
-      - bundle exec jekyll build
+      - ./scripts/ci.sh
