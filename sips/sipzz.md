@@ -52,9 +52,9 @@ satisfy the following criteria:
 
  * `C` must not extend any parents (other than the implicit `scala.AnyRef`).
 
- * `C` may not have type parameters.
+ * `C` may not define secondary constructors or early definitions.
 
-  * `C` may not define secondary constructors or early definitions.
+ * `C` may have all the constructor modifiers except `protected`.
 
  * `C` may not define concrete `equals`, `hashCode`, or `toString`
    methods.
