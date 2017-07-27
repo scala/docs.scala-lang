@@ -1,11 +1,14 @@
 ---
-layout: overview
+layout: multipage-overview
 title: What are Scala context bounds?
 
 discourse: true
 
+overview-name: FAQ
 partof: FAQ
+
 num: 3
+permalink: /tutorials/FAQ/:title.html
 ---
 
 What is a Context Bound?
@@ -17,7 +20,7 @@ functionality provided by Haskell type classes, though in a more verbose
 manner.
 
 A context bound requires a _parameterized type_, such as `Ordered[A]`,
-but unlike `String`. 
+but unlike `String`.
 
 A context bound describes an implicit _value_. It is used to declare that for
 some type `A`, there is an
@@ -102,4 +105,3 @@ Related questions of interest:
 This answer was originally submitted in response to [this question on Stack Overflow][1].
 
   [1]: http://stackoverflow.com/q/4465948/53013
-

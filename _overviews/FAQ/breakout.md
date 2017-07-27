@@ -1,11 +1,14 @@
 ---
-layout: overview-large
+layout: multipage-overview
 title: What is breakOut, and how does it work?
 
 discourse: true
 
+overview-name: FAQ
 partof: FAQ
+
 num: 5
+permalink: /tutorials/FAQ/:title.html
 ---
 You might have encountered some code like the one below, and wonder what is
 `breakOut`, and why is it being passed as parameter?
@@ -169,11 +172,11 @@ that these are the values of `That`. But where do they come from?
 If we look inside the companion objects of the classes involved, we see some
 implicit declarations providing them. On object `Map`:
 
-    implicit def  canBuildFrom [A, B] : CanBuildFrom[Map, (A, B), Map[A, B]]
+    implicit def  canBuildFrom [A, B] : CanBuildFrom[Map, (A, B), Map[A, B]]  
 
 And on object `Iterable`, whose class is extended by `Map`:
 
-    implicit def  canBuildFrom [A] : CanBuildFrom[Iterable, A, Iterable[A]]
+    implicit def  canBuildFrom [A] : CanBuildFrom[Iterable, A, Iterable[A]]  
 
 These definitions provide factories for parameterized `CanBuildFrom`.
 

@@ -1,11 +1,14 @@
 ---
-layout: overview
+layout: multipage-overview
 title: How are the collections structured? Which one should I choose?
 
 discourse: true
 
+overview-name: FAQ
 partof: FAQ
+
 num: 8
+permalink: /tutorials/FAQ/:title.html
 ---
 ## Foreword
 
@@ -374,4 +377,3 @@ Overflow.
   [7]: http://i.stack.imgur.com/Dsptl.png
   [8]: http://i.stack.imgur.com/szWUr.png
   [9]: http://stackoverflow.com/q/1722137/53013
-

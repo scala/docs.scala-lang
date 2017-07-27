@@ -1,12 +1,15 @@
 ---
-layout: overview-large
+layout: multipage-overview
 title: How do I find what some symbol means or does?
 
 discourse: true
 
+overview-name: FAQ
 partof: FAQ
+
 num: 1
-outof: 9
+
+permalink: /tutorials/FAQ/:title.html
 ---
 We can divide the operators in Scala, for the purpose of teaching, into four categories:
 

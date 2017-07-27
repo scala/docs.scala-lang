@@ -1,11 +1,12 @@
 ---
-layout: overview
+layout: multipage-overview
 title: How does yield work?
 
 discourse: true
 
 partof: FAQ
 num: 2
+permalink: /tutorials/FAQ/:title.html
 ---
 Though there's a `yield` in other languages such as Python and Ruby, Scala's
 `yield` does something very different from them. In Scala, `yield` is part
@@ -20,8 +21,8 @@ Translating for-comprehensions
 ------------------------------
 
 Scala's "for comprehensions" are syntactic sugar for composition of multiple
-operations with `foreach`, `map`, `flatMap`, `filter` or `withFilter`. 
-Scala actually translates a for-expression into calls to those methods, 
+operations with `foreach`, `map`, `flatMap`, `filter` or `withFilter`.
+Scala actually translates a for-expression into calls to those methods,
 so any class providing them, or a subset of them, can be used with for comprehensions.
 
 First, let's talk about the translations. There are very simple rules:
@@ -54,7 +55,7 @@ with a fallback into
 
     c.filter(x => cond).map(x => {...})
 
-if method `withFilter` is not available but `filter` is. 
+if method `withFilter` is not available but `filter` is.
 The next chapter has more information on this.
 
 #### Example 4
@@ -96,16 +97,16 @@ collection. To understand this better, let's take a look at some Scala 2.7 with
 
     scala> var found = false
     found: Boolean = false
-    
+
     scala> List.range(1,10).filter(_ % 2 == 1 && !found).foreach(x => if (x == 5) found = true else println(x))
     1
     3
     7
     9
-    
+
     scala> found = false
     found: Boolean = false
-    
+
     scala> Stream.range(1,10).filter(_ % 2 == 1 && !found).foreach(x => if (x == 5) found = true else println(x))
     1
     3
@@ -120,10 +121,10 @@ each element is requested by `foreach`, `filter` tests the condition, which
 enables `foreach` to influence it through `found`. Just to make it clear, here
 is the equivalent for-comprehension code:
 
-    for (x <- List.range(1, 10); if x % 2 == 1 && !found) 
+    for (x <- List.range(1, 10); if x % 2 == 1 && !found)
       if (x == 5) found = true else println(x)
 
-    for (x <- Stream.range(1, 10); if x % 2 == 1 && !found) 
+    for (x <- Stream.range(1, 10); if x % 2 == 1 && !found)
       if (x == 5) found = true else println(x)
 
 This caused many problems, because people expected the `if` to be considered
@@ -135,16 +136,16 @@ methods on Scala 2.8:
 
     scala> var found = false
     found: Boolean = false
-    
+
     scala> List.range(1,10).filter(_ % 2 == 1 && !found).foreach(x => if (x == 5) found = true else println(x))
     1
     3
     7
     9
-    
+
     scala> found = false
     found: Boolean = false
-    
+
     scala> List.range(1,10).withFilter(_ % 2 == 1 && !found).foreach(x => if (x == 5) found = true else println(x))
     1
     3

@@ -1,11 +1,14 @@
 ---
-layout: overview
+layout: multipage-overview
 title: How can I chain/nest implicit conversions?
 
 discourse: true
 
+overview-name: FAQ
 partof: FAQ
+
 num: 6
+permalink: /tutorials/FAQ/:title.html
 ---
 
 The enrich-my-library pattern allows one to seemingly add a method to a class by

@@ -1,11 +1,14 @@
 ---
-layout: overview-large
+layout: multipage-overview
 title: What is the difference between view, stream and iterator?
 
 discourse: true
 
+overview-name: FAQ
 partof: FAQ
+
 num: 4
+permalink: /tutorials/FAQ/:title.html
 ---
 First, they are all _non-strict_. That has a particular mathematical meaning
 related to functions, but, basically, means they are computed on-demand instead
