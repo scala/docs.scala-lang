@@ -22,6 +22,9 @@ collections:
     output: true
   overviews:
     output: true
+  tour:
+    output: true
+    permalink: /:collection/:path.html
   books:
     output: false
   ja: # Japanese translations
@@ -36,6 +39,18 @@ collections:
   es: # Spanish translations
     output: true
     permalink: /:collection/:path.html
+  ba: # Bosnian translations
+    output: true
+    permalink: /:collection/:path.html
+
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "tour"
+    values:
+      overview-name: "Tour of Scala"
 
 highlighter: rouge
 permalink: /:categories/:title.html:output_ext

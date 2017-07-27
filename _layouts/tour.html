@@ -1,17 +1,18 @@
 ---
-layout: inner-page-parent
-permalink: /tutorials/:categories/:title/
+layout: inner-page-parent-dropdown
+includeTOC: true
+includeCollectionTOC: true
 ---
+
 <section class="content">
 	<div class="wrap">
-		<div class="content-primary">
+		<div class="content-primary documentation">
 			<div class="inner-box">
 				{{content}}
-        {% include pager.txt %}
 			</div>
 		</div>
 
 		<!-- TOC -->
-		{% include tutorial-toc.html %}
+		{% include sidebar-toc-tour-overview.html %}
 	</div>
 </section>
