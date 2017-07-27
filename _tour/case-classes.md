@@ -45,7 +45,7 @@ val messagesAreTheSame = message2 == message3  // true
 Even though `message2` and `message3` refer to different objects, the value of each object is equal.
 
 ## Copying
-You can create a deep copy of an instance of a case class simply by using the `copy` method. You can optionally change the constructor arguments.
+You can create a (shallow) copy of an instance of a case class simply by using the `copy` method. You can optionally change the constructor arguments.
 ```
 case class Message(sender: String, recipient: String, body: String)
 val message4 = Message("julien@bretagne.fr", "travis@washington.us", "Me zo o komz gant ma amezeg")
