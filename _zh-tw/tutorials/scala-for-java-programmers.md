@@ -1,10 +1,10 @@
 ---
-layout: overview
+layout: singlepage-overview
 title: 給 Java 程式設計師的 Scala 入門教學
-overview: scala-for-java-programmers
+
+partof: scala-for-java-programmers
 
 discourse: false
-multilingual-overview: true
 language: zh-tw
 ---
 

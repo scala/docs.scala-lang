@@ -54,7 +54,15 @@ collections:
   ko: # Korean translations
     output: true
     permalink: /:collection/:path.html
-
+  de: # German translations
+    output: true
+    permalink: /:collection/:path.html
+  it: # Italian translations
+    output: true
+    permalink: /:collection/:path.html
+  zh-tw: # Taiwanese translations
+    output: true
+    permalink: /:collection/:path.html
 
 defaults:
   -
@@ -68,5 +76,5 @@ highlighter: rouge
 permalink: /:categories/:title.html:output_ext
 baseurl:
 exclude: ["vendor"]
-gems:
+plugins:
   - jekyll-redirect-from

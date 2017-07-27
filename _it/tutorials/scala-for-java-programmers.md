@@ -1,10 +1,10 @@
 ---
-layout: overview
+layout: singlepage-overview
 title: Un'introduzione a Scala per programmatori Java
-overview: scala-for-java-programmers
+
+partof: scala-for-java-programmers
 
 discourse: false
-multilingual-overview: true
 language: it
 ---
 

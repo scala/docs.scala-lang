@@ -1,10 +1,10 @@
 ---
-layout: overview
+layout: singlepage-overview
 title: Ein Scala Tutorial für Java Programmierer
-overview: scala-for-java-programmers
+
+partof: scala-for-java-programmers
 
 discourse: false
-multilingual-overview: true
 language: de
 ---
 
@@ -631,4 +631,3 @@ Dieses Dokument hat einen kurzen Überblick über die Sprache Scala gegeben und 
 Beispiele verwendet. Interessierte Leser können beispielsweise mit dem Dokument *Scala by Example*
 fortfahren, welches fortgeschrittenere Beispiele enthält, und die *Scala Language Specification*
 konsultieren, sofern nötig.
-

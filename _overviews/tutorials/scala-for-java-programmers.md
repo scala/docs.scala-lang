@@ -1,11 +1,13 @@
 ---
-layout: overview
+layout: singlepage-overview
 title: A Scala Tutorial for Java Programmers
-overview: scala-for-java-programmers
+
+partof: scala-for-java-programmers
 
 discourse: true
-multilingual-overview: true
+
 languages: [es, ko, de, it, zh-tw]
+permalink: /tutorials/:title.html
 ---
 
 By Michel Schinz and Philipp Haller

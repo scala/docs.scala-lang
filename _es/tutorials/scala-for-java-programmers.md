@@ -1,13 +1,14 @@
 ---
-layout: overview
+layout: singlepage-overview
 title: Tutorial de Scala para programadores Java
-overview: scala-for-java-programmers
+
+partof: scala-for-java-programmers
 
 discourse: true
 language: es
 ---
 
-Por Michel Schinz y Philipp Haller. 
+Por Michel Schinz y Philipp Haller.
 Traducción y arreglos Santiago Basulto.
 
 ## Introducción
@@ -75,7 +76,7 @@ La declaración `import` en la tercer línea por lo tanto importa todos los miem
 Dentro del método `main` primero creamos una instancia de la clase `Date` la cual por defecto contiene la fecha actual. A continuación definimos un formateador de fechas utilizando el método estático `getDateInstance` que importamos previamente. Finalmente, imprimimos la fecha actual formateada de acuerdo a la instancia de `DateFormat` que fue "localizada". Esta última línea muestra una propiedad interesante de la sintaxis de Scala. Los métodos que toman un solo argumento pueden ser usados con una sintaxis de infijo Es decir, la expresión
 
     df format ahora
-    
+
 es solamente otra manera más corta de escribir la expresión:
 
     df.format(ahora)
@@ -129,7 +130,7 @@ En el siguiente programa, la función del temporizador se llama `unaVezPorSegund
         unaVezPorSegundo(tiempoVuela)
       }
     }
-    
+
 _Nota: si nunca tuviste experiencias previas con programación funcional te recomiendo que te tomes unos segundos para analizar cuando se utilizan paréntesis y cuando no en los lugares donde aparece *callback*. Por ejemplo, dentro de la declaración de `unaVezPorSegundo` no aparece, ya que se trata de la función como un "valor", a diferencia de cómo aparece dentro del método, ya que en ese caso se la está invocando (por eso los paréntesis)._
 Note that in order to print the string, we used the predefined method
 `println` instead of using the one from `System.out`.
@@ -163,7 +164,7 @@ Como hemos visto anteriormente, Scala es un lenguaje orientado a objetos, y como
 Esta clase compleja toma dos argumentos, que son las partes real e imaginarias de un número complejo. Estos argumentos deben ser pasados cuando se crea una instancia de la clase `Complejo`, de la siguiente manera:
 
     new Complejo(1.5, 2.3)
-    
+
 La clase contiene dos métodos llamados `re` e `im`, que proveen acceso a las dos partes del número.
 
 Debe notarse que el tipo de retorno de estos dos métodos no está expresado explícitamente. Será inferido automáticamente por el compilador, que primero mira la parte derecha de estos métodos y puede deducir que ambos retornan un valor de tipo `Double`.
@@ -198,7 +199,7 @@ Es posible sobreescribir métodos heredados de una superclase en Scala. Aunque e
     class Complejo(real: Double, imaginaria: Double) {
       def re = real
       def im = imaginaria
-      override def toString() = 
+      override def toString() =
         "" + re + (if (im < 0) "" else "+") + im + "i"
     }
 
@@ -224,11 +225,11 @@ El hecho de que las clases `Sum`, `Var` y `Const` sean declaradas como clases ca
   en lugar de `new Const(5)`),
 - se crea automáticamente un "getter" (un método para obtener el valor)
   para los parámetros utilizados en el constructor (por ejemplo es posible
-  obtener el valor de `v` de una instancia `c` de la clase `Const` de la 
+  obtener el valor de `v` de una instancia `c` de la clase `Const` de la
   siguiente manera: `c.v`),
 - se proveen definiciones por defecto de los métodos `equals` y `hashCode`,
   que trabajan sobre la estructura de las instancias y no sobre su identidad,
-- se crea una definición por defecto del método `toString` que 
+- se crea una definición por defecto del método `toString` que
   imprime el valor de una forma "tipo código) (ej: la expresión
   del árbol `x+1` se imprimiría `Sum(Var(x),Const(1))`),
 - las instancias de estas clases pueden ser descompuestas
@@ -377,7 +378,7 @@ La última característica de Scala que exploraremos en este tutorial es la de l
 
 Los tipos genéricos proveen al programador la habilidad de escribir código parametrizado por tipos. Por ejemplo, escribir una librería para listas enlazadas se enfrenta al problema de decidir qué tipo darle a los elementos de la lista. Ya que esta lista está pensada para ser usada en diferentes contextos, no es posible decidir que el tipo de elementos sea, digamos, `Int`. Esto sería completamente arbitrario y muy restrictivo.
 
-Los programadores Java cuentan como último recurso con `Object`, que es el supertipo de todos los objetos. Esta solución de todas maneras está lejos de ser ideal, ya que no funciona con tipos primitivos (`int`, `long`, `float`, etc.) e implica que el programador tenga que realizar muchos casteos de tipos en su programa. 
+Los programadores Java cuentan como último recurso con `Object`, que es el supertipo de todos los objetos. Esta solución de todas maneras está lejos de ser ideal, ya que no funciona con tipos primitivos (`int`, `long`, `float`, etc.) e implica que el programador tenga que realizar muchos casteos de tipos en su programa.
 
 Scala hace posible definir clases genéricas (y métodos) para resolver este problema. Examinemos esto con un ejemplo del contenedor más simple posible: una referencia, que puede estar tanto vacía como apuntar a un objeto de algún tipo.
 
