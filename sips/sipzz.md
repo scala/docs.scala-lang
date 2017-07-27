@@ -39,6 +39,10 @@ class C (val u: U) extends NewType {
 Such classes are called newtype classes. A newtype class C must
 satisfy the following criteria:
 
+ * `C` must be a class.
+
+ * `C` must not be abstract (`abstract class`), a `case class` or an enum.
+
  * `C` must have exactly one parameter, which is marked with `val` and
    which has `public` accessibility. The type of that parameter
    (e.g. `U` above) is called the underlying type of `C`.
@@ -46,9 +50,11 @@ satisfy the following criteria:
  * Other than its underlying value (of type `U`) `C` may not define
    any other `val` members (`def` members are OK).
 
- * `C` may not have secondary constructors.
+ * `C` must not extend any parents (other than the implicit `scala.AnyRef`).
 
- * `C` must not be a `case class`.
+ * `C` may not have type parameters.
+
+  * `C` may not define secondary constructors or early definitions.
 
  * `C` may not define concrete `equals`, `hashCode`, or `toString`
    methods.
