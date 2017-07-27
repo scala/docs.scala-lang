@@ -30,6 +30,6 @@
 - title: Cheatsheet
   url: https://www.scala-lang.org/contribute/
 - title: Glossary
-  url: https://www.scala-lang.org/blog/
+  url: "/glossary/index.html"
 - title: SIPs
   url: https://www.scala-lang.org/blog/
