@@ -1,16 +1,18 @@
 ---
 layout: cheatsheet
-istranslation: true
 title: Scalacheat
+
+partof: cheatsheet
+
 by: Brendan O'Connor
 about: Zahvaljujući <a href="http://brenocon.com/">Brendan O'Connor</a>u ovaj cheatsheet teži da bude kratki pregled sintakse Scale. Licenca pripada Brendan O'Connor-u, pod CC-BY-SA 3.0 licencom.
+
 language: ba
 ---
 
 ###### Doprinio {{ page.by }}
+{{ page.about }}
 
-|                                                                                                          |                 |
-| ------                                                                                                   | ------          |
 |  <span id="variables" class="h2">varijable</span>                                                                       |                 |
 |  `var x = 5`                                                                                             |  varijabla.       |
 |  <span class="label success">Dobro</span> `val x = 5`<br> <span class="label important">Loše</span> `x=6`  |  konstanta.       |

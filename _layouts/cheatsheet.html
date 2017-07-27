@@ -1,5 +1,5 @@
 ---
-layout: inner-page-parent
+layout: inner-page-parent-dropdown
 ---
 
 <section class="full-width">
@@ -7,6 +7,29 @@ layout: inner-page-parent
 		<div class="content-primary cheatsheet">
 			<div class="inner-box">
 				{{content}}
+        {% if page.languages %}
+          <ul id="available-languages" style="display: none;">
+            <li><a href="{{ page.url }}">English</a></li>
+            {% for l in page.languages %}
+              {% capture intermediate %}{{ page.url | remove_first: l }}{% endcapture %}
+              {% capture rootTutorialURL %}{{ intermediate | remove_first: '/' }}{% endcapture %}
+        			{% assign lang = site.data.languages[l] %}
+        			<li><a href="{{ site.baseurl }}/{{ l }}/{{ rootTutorialURL }}" class="lang">{{ lang.name }}</a></li>
+            {% endfor %}
+          </ul>
+        {% elsif page.language %}
+           {% assign engPath = page.id | remove_first: "/" | remove_first: page.language | append: '.html' %}
+           {% assign engPg = site.overviews | where: 'partof', page.partof | first %}
+           {{ engPg.languages }}
+          <ul id="available-languages" style="display: none;">
+            <li><a href="{{ site.baseurl }}{{ engPath }}">English</a></li>
+            {% for l in engPg.languages %}
+              aHEYHEYHEY! {{ l }} <br>
+              {% assign lang = site.data.languages[l] %}
+              <li><a href="{{ site.baseurl }}/{{ l }}{{ engPath }}" class="lang">{{ lang.name }}</a></li>
+            {% endfor %}
+          </ul>
+        {% endif %}
 			</div>
 		</div>
 	</div>

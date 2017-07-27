@@ -1,16 +1,18 @@
 ---
 layout: cheatsheet
-istranslation: true
 title: Scalacheat
+
+partof: cheatsheet
+
 by: Filip Czaplicki
 about: Podziękowania dla <a href="http://brenocon.com/">Brendan O'Connor</a>. Ten cheatsheet ma być szybkim podsumowaniem konstrukcji składniowych Scali. Licencjonowany przez Brendan O'Connor pod licencją CC-BY-SA 3.0.
+
 language: pl
 ---
 
 ###### Contributed by {{ page.by }}
+{{ page.about }}
 
-|                                                                                                          |                 |
-| ------                                                                                                   | ------          |
 |  <span id="variables" class="h2">zmienne</span>                                                          |                 |
 |  `var x = 5`                                                                                             |  zmienna        |
 |  <span class="label success">Dobrze</span> `val x = 5`<br> <span class="label important">Źle</span> `x=6`  |  stała          |

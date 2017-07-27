@@ -1,9 +1,14 @@
 ---
 layout: cheatsheet
 title: Scalacheat
+
+partof: cheatsheet
+
 by: Brendan O'Connor
 about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheatsheet aims to be a quick reference of Scala syntactic constructions. Licensed by Brendan O'Connor under a CC-BY-SA 3.0 license.
-languages: [ba, fr, ja, pl, pt-br]
+
+languages: [ba, fr, ja, pl, pt-br, zh-cn]
+permalink: /cheatsheets/index.html
 ---
 
 <!-- ###### Contributed by {{ page.by }} -->

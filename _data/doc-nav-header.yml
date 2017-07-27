@@ -13,9 +13,9 @@
     - title: Getting Started
       url: http://google.com
     - title: Tour of Scala
-      url: http://google.com
+      url: "/tour/tour-of-scala.html"
     - title: Scala for Java Programmers
-      url: http://google.com
+      url: "/tutorials/scala-for-java-programmers.html"
 - title: Reference
   url: "#!"
   submenu:
@@ -28,7 +28,7 @@
 - title: Style Guide
   url: "/style/index.html"
 - title: Cheatsheet
-  url: https://www.scala-lang.org/contribute/
+  url: "/cheatsheets/index.html"
 - title: Glossary
   url: "/glossary/index.html"
 - title: SIPs

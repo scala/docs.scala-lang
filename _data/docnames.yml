@@ -3,3 +3,6 @@ scala-tour:
 
 futures:
   name: "Futures"
+
+cheatsheet:
+  name: "Scala Cheatsheet"

@@ -1,16 +1,19 @@
 ---
 layout: cheatsheet
-istranslation: true
 title: Scalacheat
+
+partof: cheatsheet
+
 by: Brendan O'Connor
 about: 感谢 <a href="http://brenocon.com/">Brendan O'Connor</a>, 本速查表可以用于快速地查找Scala语法结构。Licensed by Brendan O'Connor under a CC-BY-SA 3.0 license.
-languages: [zh-cn]
+
+language: "zh-cn"
 ---
 
 ###### Contributed by {{ page.by }}
+{{ page.about }}
 
-|                                                                                                          |                 |
-| ------                                                                                                   | ------          |
+
 |  <span id="variables" class="h2">变量</span>                                                                       |                 |
 |  `var x = 5`                                                                                             |  可变量       |
 |  <span class="label success">Good</span> `val x = 5`<br> <span class="label important">Bad</span> `x=6`  |  常量       |
@@ -84,5 +87,3 @@ languages: [zh-cn]
 |  `x.isInstanceOf[String]`                                                                                |  类型检查 (运行时) |
 |  `x.asInstanceOf[String]`                                                                                |  类型强制转换 (运行时) |
 |  `x: String`                                                                                             |  归属 (编译时) |
-
-

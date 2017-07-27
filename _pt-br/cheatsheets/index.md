@@ -1,16 +1,18 @@
 ---
 layout: cheatsheet
-istranslation: true
 title: Scalacheat
+
+partof: cheatsheet
+
 by: Reginaldo Russinholi
 about: Agradecimentos a  <a href="http://brenocon.com/">Brendan O'Connor</a>, este 'cheatsheet' se destina a ser uma referência rápida às construções sintáticas de Scala. Licenciado por Brendan O'Connor sobre a licença CC-BY-SA 3.0.
+
 language: pt-br
 ---
 
 ###### Contribuição de {{ page.by }}
+{{ page.about }}
 
-|                                                                                                          |                     |
-| ------                                                                                                   | ------              |
 |  <span id="variables" class="h2">variáveis</span>                                                                       |                     |
 |  `var x = 5`                                                                                             |  variável           |
 |  <span class="label success">Bom</span> `val x = 5`<br> <span class="label important">Ruim</span> `x=6`  |  constante          |

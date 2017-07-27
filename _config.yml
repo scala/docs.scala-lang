@@ -63,6 +63,9 @@ collections:
   zh-tw: # Taiwanese translations
     output: true
     permalink: /:collection/:path.html
+  fr: # French translations
+    output: true
+    permalink: /:collection/:path.html
 
 defaults:
   -

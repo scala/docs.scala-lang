@@ -1,16 +1,19 @@
 ---
 layout: cheatsheet
-istranslation: true
 title: Scalacheat
+
+partof: cheatsheet
+
 by: Kenji Ohtsuka
 about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>. このチートシートは Scala 構文 のクイックリファレンスとして作成されました。 Licensed by Brendan O'Connor under a CC-BY-SA 3.0 license.
+
 language: ja
 ---
 
 ###### Contributed by {{ page.by }}
+{{ page.about }}
 
-|                                                                                                          |                 |
-| ------                                                                                                   | ------          |
+
 |  <span id="variables" class="h2">変数</span>                                                             |                 |
 |  `var x = 5`                                                                                             |  変数           |
 |  <span class="label success">Good</span> `val x = 5`<br> <span class="label important">Bad</span> `x=6`  |  定数           |
