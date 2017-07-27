@@ -25,6 +25,9 @@ collections:
   tour:
     output: true
     permalink: /:collection/:path.html
+  tutorials:
+    output: true
+    permalink: /:collection/:path.html
   books:
     output: false
   ja: # Japanese translations

@@ -1,5 +1,5 @@
 ---
-layout: overview
+layout: overview-large
 title: Where does Scala look for implicits?
 
 discourse: true
@@ -14,15 +14,15 @@ For example, where do the values for `integral` below come from?
 
     scala> import scala.math._
     import scala.math._
-    
+
     scala> def foo[T](t: T)(implicit integral: Integral[T]): Unit = {
         println(integral)
     }
     foo: [T](t: T)(implicit integral: scala.math.Integral[T])Unit
-    
+
     scala> foo(0)
     scala.math.Numeric$IntIsIntegral$@3dbea611
-    
+
     scala> foo(0L)
     scala.math.Numeric$LongIsIntegral$@48c610af
 
@@ -168,7 +168,7 @@ Let's give examples for them.
     import scala.collection.JavaConversions.mapAsScalaMap
     def env = System.getenv() // Java map
     val term = env("TERM") // implicit conversion from Java Map to Scala Map
-    
+
 ### Wildcard Imports
 
     def sum[T : Integral](list: List[T]): T = {
@@ -219,7 +219,7 @@ the object `Ordering`, companion to the class `Ordering`, and finds an implicit
 Note that companion objects of super classes are also looked into. For example:
 
     class A(val n: Int)
-    object A { 
+    object A {
         implicit def str(a: A) = "A: %d" format a.n
     }
     class B(val x: Int, y: Int) extends A(y)
@@ -228,7 +228,7 @@ Note that companion objects of super classes are also looked into. For example:
 
 This is how Scala found the implicit `Numeric[Int]` and `Numeric[Long]` in the
 opening example, by the way, as they are found inside `Numeric`, not `Integral`.
-    
+
 ### Implicit scope of an argument's type
 
 If you have a method with an argument type `A`, then the implicit scope of type
@@ -325,4 +325,3 @@ This question and answer were originally submitted on [Stack Overflow][3].
   [5]: http://scala-lang.org/files/archive/spec/2.11/06-expressions.html
   [6]: http://scala-lang.org/files/archive/spec/2.11/07-implicits.html
   [7]: https://github.com/scala/scala.github.com/issues
-
