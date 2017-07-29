@@ -1,0 +1,23 @@
+// STYLE GUIDE
+//------------------------------------------------
+//------------------------------------------------
+
+.style-guide {
+  ul {
+    li {
+      font-weight: $font-black;
+      ul {
+        margin-top: 6px !important;
+        margin-bottom: 0;
+        li {
+          font-weight: $font-regular;
+          margin-bottom: 0 !important;
+          ul {
+            margin-top: 0 !important;
+            margin-bottom: 4px;
+          }
+        }
+      }
+    }
+  }
+}
