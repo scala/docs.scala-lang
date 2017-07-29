@@ -2,6 +2,12 @@
 //------------------------------------------------
 //------------------------------------------------
 
+.overviews {
+  .inner-box {
+    background: #fafafa !important;
+  }
+}
+
 .card-group {
     // @include span-columns(6);
     // @include bp(large) {
@@ -16,40 +22,71 @@
 
     h3 {
         font-family: $base-font-family;
-        // text-transform: uppercase;
-        border-bottom: $base-border-gray;
     }
 
 
     .white-card {
+      display: flex;
+      flex-direction: column;
+      // justify-content: flex-end;
       position: relative;
       flex: 0 1 calc(50% - 1em);
       margin-bottom: 2em;
+      transition: max-height .3s ease-out;
+      text-decoration: none;
+      border-radius: 2px;
+      box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12);
+      background: #fff;
+      max-height: 400px;
+      overflow: hidden;
 
       @include bp(medium) {
         flex: 0 1 calc(100% - 0.5em);
       }
 
-      background: #fff;
+      .card-wrap {
+        // align-self: stretch;
+        position: relative;
+        // padding: 22px;
 
-      max-height: 400px;
-      overflow: hidden;
-      &:hover {
-        transition: max-height .3s ease-in;
-        max-height: 1000px;
-      }
-      transition: max-height .3s ease-out;
+        .card-header {
+          display: flex;
+          padding: 16px;
 
-      display: inline-block;
-      text-decoration: none;
-      border-radius: $border-radius-base;
-      box-shadow: $box-shadow-item;
+          .text {
+            display: flex;
+          }
+        }
 
-      .card-content {
-        padding: 22px;
+        .card-content {
+          padding: 20px;
+          padding-top: 0px;
+          padding-bottom: 0px;
+        }
 
         h2 {
           margin-bottom: 0px;
+        }
+
+        .card-avatar {
+            width: 40px;
+            height: 40px;
+            margin-right: 12px;
+
+            .icon {
+                font-size: 26px;
+                color: #fff;
+                border-radius: 50%;
+                margin: auto;
+                text-align: center;
+                display: inline-block;
+                vertical-align: middle;
+                background-color: $brand-primary;
+                height: 40px;
+                width: 40px;
+                min-height: 40px;
+                min-width: 40px;
+            }
         }
 
         .by {
@@ -76,14 +113,14 @@
 
         a {
             h3 {
+                display: inline-block;
+                padding: 0;
+                margin: 0;
                 color: $gray-dark;
                 transition: $base-transition;
-                margin-top: 0px;
-                padding-bottom: 8px;
-                margin-bottom: 6px;
                 font-weight: $font-black;
                 font-size: 26px;
-                // text-transform: uppercase;
+                line-height: 1.15;
 
                 &:hover {
                   text-decoration: none;
@@ -108,24 +145,25 @@
       position: absolute;
       bottom: 0;
       width: 100%;
-      background: $gray-lighter;
-      text-align: center;
+      padding: 20px;
+      height: 66px;
+      background: #fff;
+      border-top: 1px solid lighten($base-font-color-light, 35%);
 
-      .expand-btn {
-        display: inline-block;
-        margin: 4px 0;
-        padding: 0 3px;
-        color: lighten($base-font-color-light, 15%);
-        text-transform: uppercase;
-        border: 1px solid lighten($base-font-color-light, 25%);
-        font-weight: $font-regular;
-        font-size: $font-size-xsmall;
-
-        &:hover {
-          cursor: pointer;
-          background: lighten($base-font-color-light, 25%);
-          color: $gray-lighter;
+      &:hover {
+        cursor: pointer;
+        background: $brand-primary;
+        .expand-btn,
+        .go-btn {
+          color: #fff;
         }
+      }
+
+      .expand-btn,
+      .go-btn {
+        color: lighten($base-font-color-light, 15%);
+        font-weight: $font-regular;
+        font-size: $font-regular;
       }
     }
 }

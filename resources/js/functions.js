@@ -128,7 +128,7 @@ $(document).ready(function() {
         maxHeight = Math.max(maxHeight, $(this).outerHeight(true));
       });
 
-      return maxWidth > $this.width() || maxHeight > $this.height();
+      return maxWidth > $this.width() || (maxHeight + 66) > $this.height();
     }
 
     return false;
@@ -136,16 +136,26 @@ $(document).ready(function() {
 
   $('.white-card').each(function(index) {
     if (!$(this).hasOverflow()) {
-      $(this).find(".card-footer").css("visibility", "hidden");
+      $(this).find(".expand-btn").hide();
+      $(this).find(".go-btn").show();
     }
   });
 
-  $(".white-card").hover(function() {
-    $(this).find(".card-footer").hide();
-    $(this).find(".expand-btn").hide();
-  }, function() {
-    $(this).find(".card-footer").show();
-    $(this).find(".expand-btn").show();
+  $(".card-footer").click(function() {
+    // if we clicked on the expand button, expand the box
+    if ($(this).find(".expand-btn").is(':visible')) {
+      
+      // height mangling becasue flexbox align-self: self-end; doesn't work :(
+      $(this).parent().css('max-height', 'none');
+      var cardWrapHeight = $(this).parent().find(".card-wrap").outerHeight();
+      var cardFooterHeight = $(this).outerHeight()
+      $(this).parent().outerHeight(cardWrapHeight + cardFooterHeight);
+
+      $(this).find(".expand-btn").hide();
+      $(this).find(".go-btn").show();
+    } else {
+      window.location.href = $(this).find(".go-btn").attr("href");
+    }
   });
 });
 
