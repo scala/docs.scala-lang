@@ -10,7 +10,7 @@
       <ul class="navigation-menu">
         {% for navItem in site.data.nav-header %}
             <li class="navigation-menu-item">
-              <a href="{{navItem.url}}" {% if page.url contains navItem.url %}class="active"{% endif %}>{{navItem.title}}</a>
+              <a href="{{navItem.url}}/" {% if page.url contains navItem.url %}class="active"{% endif %}>{{navItem.title}}</a>
             </li>
         {% endfor %}
       </ul>
@@ -20,7 +20,7 @@
 <header id="doc-header">
   <div class="wrap" style="padding: 0px;">
     <nav class="doc-navigation" role="menu">
-      <a href="https://docs.scala-lang.org" class="navigation-bdand">
+      <a href="{{ site.baseurl }}/" class="navigation-bdand">
         <img src="/resources/img/documentation-logo@2x.png" alt="">
       </a>
       <div class="navigation-ellipsis">
