@@ -17,9 +17,9 @@ includeTOC: true
       {% if page.vote-status %}
         <h5 class="contents">SIP Committee Decision</h5>
          <div class="tag" style="background-color: {{ site.data.sip-data[page.vote-status].color }}">{{ site.data.sip-data[page.vote-status].text }}</div>
-         {% if page.vote-text %}
-           <p class="vote-text" style="color: {{ site.data.sip-data[page.vote-status].color }}">{{ page.vote-text }}</p>
-         {% endif %}
+           <p class="vote-text" style="color: {{ site.data.sip-data[page.vote-status].color }}">
+             {% if page.vote-text %}{{ page.vote-text }}{% endif %}
+           </p>
         {% endif %}
     		<h5 class="contents">SIP Contents</h5>
     		<div class="inner-toc" id="sidebar-toc">
