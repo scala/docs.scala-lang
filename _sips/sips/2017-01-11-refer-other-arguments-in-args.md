@@ -2,6 +2,8 @@
 layout: sip
 discourse: true
 title: SIP-NN - Allow referring to other arguments in default parameters
+
+vote-status: pending
 permalink: /sips/:title.html
 ---
 

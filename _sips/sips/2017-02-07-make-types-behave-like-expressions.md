@@ -2,6 +2,8 @@
 layout: sip
 discourse: true
 title: SIP-NN - Match infix & prefix types to meet expression rules
+
+vote-status: pending
 permalink: /sips/:title.html
 ---
 

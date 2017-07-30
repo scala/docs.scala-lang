@@ -2,6 +2,8 @@
 layout: sip
 discourse: true
 title: SIP-NN - Right-Associative By-Name Operators
+
+vote-status: pending
 permalink: /sips/:title.html
 ---
 

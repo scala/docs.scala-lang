@@ -2,6 +2,8 @@
 layout: sip
 title: SIP-NN - Improving binary compatibility with @stableABI
 discourse: true
+
+vote-status: pending
 permalink: /sips/:title.html
 ---
 

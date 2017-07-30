@@ -2,6 +2,8 @@
 layout: sip
 discourse: true
 title: SIP-NN - comonadic-comprehensions
+
+vote-status: pending
 permalink: /sips/:title.html
 ---
 
