@@ -15,10 +15,10 @@ includeTOC: true
 The following tutorials will walk you through the set up process for either way
 you prefer.
 
-If you don't want to install anything, and you just want to jump directly into Scala:
+However, if you just want to jump directly into Scala without installing anything, skip the guides on this page and check out:
 
 <ul style="margin-bottom: 24px;">
-  <li style="margin-bottom: 4px;">Check out <a href="https://www.scala-exercises.org/scala_tutorial/terms_and_types">our interactive introduction to Scala on scala-exercises.com</a>, or</li>
+  <li style="margin-bottom: 4px;"><a href="https://www.scala-exercises.org/scala_tutorial/terms_and_types">our interactive introduction to Scala on scala-exercises.com</a>, or</li>
   <li style="margin-bottom: 4px;"><a href="https://scastie.scala-lang.org/">Scastie</a>, Scala in the browser, with access to all Scala compilers and all published libraries!</li>
 </ul>
 
