@@ -1,6 +1,6 @@
 ---
 title: Testing Scala in IntelliJ with ScalaTest
-layout: inner-page-no-masthead
+layout: singlepage-overview
 disqus: true
 previous-page: building-a-scala-project-with-intellij-and-sbt
 ---
@@ -53,6 +53,7 @@ class CubeCalculatorTest extends FunSuite {
 'CubeCalculatorTest'**.
 
 ## Understanding the code
+
 Let's go over this line by line.
 
 * `class CubeCalculatorTest` means we are testing the object `CubeCalculator`

@@ -1,22 +1,21 @@
 ---
 title: Getting Started with Scala in IntelliJ
-layout: inner-page-no-masthead
+layout: singlepage-overview
 disqus: true
 next-page: building-a-scala-project-with-intellij-and-sbt
 ---
 
-In this tutorial, we'll see how to build a minimal Scala project
-using IntelliJ IDE with the Scala plugin. We'll have IntelliJ download
-Scala for you.
+In this tutorial, we'll see how to build a minimal Scala project using IntelliJ
+IDE with the Scala plugin. In this guide, IntelliJ will download Scala for you.
 
 ## Installation
 1. Make sure you have the Java 8 JDK (also known as 1.8)
-    * Run `javac -version` in the command line and make sure you see
+    * Run `javac -version` on the command line and make sure you see
     `javac 1.8.___`
     * If you don't have version 1.8 or higher, [install the JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
-1. Install [IntelliJ Community Edition](https://www.jetbrains.com/idea/download/)
-1. Install the Scala plugin by following the instructions on
-[how to install IntelliJ plugins](https://www.jetbrains.com/help/idea/installing-updating-and-uninstalling-repository-plugins.html)
+1. Next, download and install [IntelliJ Community Edition](https://www.jetbrains.com/idea/download/)
+1. Then, after starting up IntelliJ, you can download and install the Scala plugin by following the instructions on
+[how to install IntelliJ plugins](https://www.jetbrains.com/help/idea/installing-updating-and-uninstalling-repository-plugins.html) (search for "Scala" in the plugins menu.)
 
 When we create the project, we'll install the latest version of Scala.
 Note: If you want to open an existing Scala project, you can click **Open**
@@ -29,7 +28,7 @@ when you start IntelliJ.
 1. Assuming this is your first time creating a Scala project with IntelliJ,
 you'll need to install a Scala SDK. To the right of the Scala SDK field,
 click the **Create** button.
-1. Select the highest version number (e.g. 2.12.1) and click **Download**. This might
+1. Select the highest version number (e.g. {{ site.scala-version }}) and click **Download**. This might
 take a few minutes but subsequent projects can use the same SDK.
 1. Once the SDK is created and you're back to the "New Project" window click **Finish**.
 
@@ -58,9 +57,7 @@ A good way to try out code samples is with Scala Worksheets
 `src` and select **New** => **Scala Worksheet**.
 1. Enter the following code into the worksheet:
 
-
 ```
-
 def square(x: Int) = x * x
 
 square(2)
@@ -70,6 +67,7 @@ As you change your code, you'll notice that it gets evaluated
 in the right pane.
 
 ## Next Steps
+
 Now you know how to create a simple Scala project which can be used
 for starting to learn the language. In the next tutorial, we'll introduce
 an important build tool called sbt which can be used for simple projects

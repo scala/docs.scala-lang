@@ -42,8 +42,8 @@ If you prefer using a text editor like emacs, Vim, Atom, or Sublime Text, then
 the best way to compile, test, and run Scala code is using _sbt_, Scala's build
 tool.
 
-* [Getting Started with Scala and sbt on the Command Line](getting-started-sbt-track/getting-started-with-scala-and-sbt-in-the-command-line.html)
-* [Testing Scala with sbt and ScalaTest on the Command Line](getting-started-sbt-track/testing-scala-with-sbt-in-the-command-line.html)
+* [Getting Started with Scala and sbt on the Command Line](getting-started-sbt-track/getting-started-with-scala-and-sbt-on-the-command-line.html)
+* [Testing Scala with sbt and ScalaTest on the Command Line](getting-started-sbt-track/testing-scala-with-sbt-on-the-command-line.html)
 
 <!-- sbt is the easiest way to ensure that your Scala project is reproducible;
 you specify a Scala version, any libraries you depend on, and sbt takes care of
