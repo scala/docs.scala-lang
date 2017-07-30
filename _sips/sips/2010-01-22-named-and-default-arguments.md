@@ -3,6 +3,7 @@ layout: sip
 title: SID-1 Named and Default Arguments
 vote-status: complete
 vote-text: This SIP has already been accepted and completed.
+permalink: /sips/:title.html
 ---
 
 **Lukas Rytz**

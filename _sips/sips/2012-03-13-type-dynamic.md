@@ -4,6 +4,7 @@ title: SIP-17 - Type Dynamic
 
 vote-status: complete
 vote-text: This SIP has already been accepted and completed.
+permalink: /sips/:title.html
 ---
 
 

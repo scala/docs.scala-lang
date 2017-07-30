@@ -21,3 +21,7 @@ accepted:
 complete:
   color: "#859900"
   text: "Complete"
+
+rejected:
+  color: "#dc322f"
+  text: "Rejected"

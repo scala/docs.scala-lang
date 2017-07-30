@@ -2,6 +2,7 @@
 layout: sip
 title: SIP-NN - Improving binary compatibility with @stableABI
 discourse: true
+permalink: /sips/:title.html
 ---
 
 __Dmitry Petrashko__

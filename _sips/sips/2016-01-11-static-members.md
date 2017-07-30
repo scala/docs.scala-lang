@@ -5,6 +5,7 @@ discourse: true
 
 vote-status: "under-review"
 vote-text: Authors need to update the proposal before the next review.
+permalink: /sips/:title.html
 ---
 
 __Dmitry Petrashko, Sébastien Doeraene and Martin Odersky__

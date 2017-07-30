@@ -4,6 +4,7 @@ title: SIP-15 - Value Classes
 
 vote-status: complete
 vote-text: This SIP has already been accepted and completed. There has been concern for numerical computing.  We think future SIP(s), using work from SIP-15, can provide more benefit to numerical computing users. The SIP as it exists benefits all users of implicit enrichment classes, and takes us much further to unboxed high performance code. This SIP does not exclude further work towards improving numerical computing in Scala.
+permalink: /sips/:title.html
 ---
 
 **By: Martin Odersky and Jeff Olson and Paul Phillips and Joshua Suereth**

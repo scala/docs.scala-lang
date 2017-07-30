@@ -1,10 +1,11 @@
 ---
-layout: inner-page-no-masthead
+layout: sip
 title: SIP-12 - Uncluttering Scala’s syntax for control structures.
 redirect_from: "/sips/pending/uncluttering-control.html"
 
 vote-status: rejected
 vote-text: The committee votes unanimously to reject the change. The conclusion is that there is not a clear benefit for it and the required invested time and efforts would be too high. For more explanation, read the <a href=../minutes/sip-10th-august-minutes.html>minutes</a>.
+permalink: /sips/:title.html
 ---
 
 **By: Martin Odersky**
@@ -44,7 +45,7 @@ do-while is easy. Simply do the following:
 
     as syntax (i.e. drop the required parentheses around the condition).
 
-While loops and for loops are more tricky. 
+While loops and for loops are more tricky.
 
 ## Part 3: while ##
 
@@ -69,7 +70,7 @@ For while loops:
         while (expression1) do expression2 while expression3
 
     To write a `do-while` inside a `while` loop you will need braces, like this:
- 
+
         while (expression1) { do expression2 while epression3 }
 
 3.  In Scala 2.11: Disallow
@@ -120,7 +121,3 @@ Here are some examples of expressions enabled by the changes.
 ## Discussion ##
 
 The new syntax removes more cases than it introduces. It also removes several hard to remember and non-orthogonal rules where you need parentheses, where you can have braces, and what the difference is. It thus makes the language simpler, more regular, and more pleasant to use. Some tricky situations with migration can be dealt with; and should apply anyway only in rare cases.
-
-
-
-

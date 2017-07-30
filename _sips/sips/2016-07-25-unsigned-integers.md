@@ -1,9 +1,10 @@
 ---
-layout: inner-page-no-masthead
+layout: sip
 title: SIP-26 - Unsigned Integers
 
 vote-status: rejected
 vote-text: The committee votes to reject the proposal because of a 6% performance hit on the provided implementation by the authors.
+permalink: /sips/:title.html
 ---
 
 __Sébastien Doeraene and Denys Shabalin__

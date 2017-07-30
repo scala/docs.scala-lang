@@ -2,6 +2,7 @@
 layout: sip
 discourse: true
 title: SIP-NN - comonadic-comprehensions
+permalink: /sips/:title.html
 ---
 
 **By: Shimi Bandiel**

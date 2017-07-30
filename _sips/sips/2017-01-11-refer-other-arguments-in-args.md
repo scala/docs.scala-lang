@@ -2,6 +2,7 @@
 layout: sip
 discourse: true
 title: SIP-NN - Allow referring to other arguments in default parameters
+permalink: /sips/:title.html
 ---
 
 **By: Pathikrit Bhowmick**

@@ -5,6 +5,7 @@ title: SIP-22 - Async
 
 vote-status: dormant
 vote-text: Authors have marked this proposal as dormant. Details in the implementation need to be figured out. Check <a href="/sips/minutes/sip-minutes.html">July 2016's minutes</a>.
+permalink: /sips/:title.html
 ---
 
 **By: Philipp Haller and Jason Zaugg**

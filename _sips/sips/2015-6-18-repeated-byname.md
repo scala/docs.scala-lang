@@ -5,6 +5,8 @@ discourse: true
 
 vote-status: dormant
 vote-text: Looking for a new owner. This proposal needs to be updated according to the <a href="https://www.youtube.com/watch?v=hrxp4PGbi6s">SIP meeting in November 2016</a>.
+permalink: /sips/:title.html
+
 ---
 
 **By: Martin Odersky**

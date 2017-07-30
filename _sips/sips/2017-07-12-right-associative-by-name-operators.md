@@ -2,6 +2,7 @@
 layout: sip
 discourse: true
 title: SIP-NN - Right-Associative By-Name Operators
+permalink: /sips/:title.html
 ---
 
 **By: Stefan Zeiger**

@@ -2,6 +2,7 @@
 layout: sip
 discourse: true
 title: SIP-NN - Match infix & prefix types to meet expression rules
+permalink: /sips/:title.html
 ---
 
 **By: Oron Port**

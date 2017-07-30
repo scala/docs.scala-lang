@@ -4,6 +4,7 @@ title: SIP-18 - Modularizing Language Features
 
 vote-status: complete
 vote-text: This SIP has already been accepted and completed. Let the record show Paul is against it.
+permalink: /sips/:title.html
 ---
 
 
