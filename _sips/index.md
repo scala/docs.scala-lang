@@ -7,7 +7,7 @@ title: Scala Improvement Process
 <div style="font-size: 1.25rem; color: #073642; font-weight: 400; font-family: 'Roboto Slab', serif; margin-bottom: 18px;"> There are <strong>two</strong> ways to make changes to Scala.</div>
 
 <ol style="margin-bottom: 24px;">
-  <li style="margin-bottom: 4px;">Library changes, typically the Scala standard library and other central libraries.</li>
+  <li style="margin-bottom: 4px;">Library changes, typically to the Scala standard library and other central libraries.</li>
   <li style="margin-bottom: 4px;">Compiler/language changes.</li>
 </ol>
 
@@ -18,13 +18,12 @@ language.
 
 ## Scala Platform Process (SPP)
 
-For changes and additions to the Scala core libraries, a process called the
-Scala Platform Process (SPP) exists.
-
 The Scala Platform aims to be a stable collection of libraries with widespread
 use and a low barrier to entry for beginners and intermediate users. The
 Platform consists of several independent modules that solve specific problems.
 The Scala community sets the overall direction of the Platform.
+
+<a class="button" href="https://scalacenter.github.io/platform-staging/platform.html">Learn more</a>
 
 
 
