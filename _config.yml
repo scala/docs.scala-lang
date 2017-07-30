@@ -28,6 +28,9 @@ collections:
   tutorials:
     output: true
     permalink: /:collection/:path.html
+  sips:
+    output: true
+    permalink: /:collection/:path.html
   books:
     output: false
   ja: # Japanese translations

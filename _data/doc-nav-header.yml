@@ -32,4 +32,4 @@
 - title: Glossary
   url: "/glossary/index.html"
 - title: SIPs
-  url: https://www.scala-lang.org/blog/
+  url: "/sips/index.html"
