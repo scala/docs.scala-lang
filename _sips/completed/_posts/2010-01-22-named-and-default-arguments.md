@@ -1,6 +1,8 @@
 ---
-layout: inner-page-no-masthead
+layout: sip
 title: SID-1 Named and Default Arguments
+vote-status: complete
+vote-text: This SIP has already been accepted and completed.
 ---
 
 **Lukas Rytz**
@@ -18,7 +20,7 @@ In Scala 2.8, method arguments can be speciﬁed in _named style_ using the same
     f(b = getT(), a = getInt())
 
 
-The argument expressions are evaluated in call-site order, so in the above example `getT()` is executed before `getInt()`f. Mixing named and positional arguments is allowed as long as the positional part forms a preﬁx of the argument list: 
+The argument expressions are evaluated in call-site order, so in the above example `getT()` is executed before `getInt()`f. Mixing named and positional arguments is allowed as long as the positional part forms a preﬁx of the argument list:
 
     f(0, b = "1")     // valid
     f(b = "1", a = 0) // valid
@@ -198,7 +200,7 @@ For every default argument expression the compiler generates a method computing 
     // def f$default$1[T]: Int = 1
     // def f$default$2[T](a: Int): Int = a + 1
     // def f$default$3[T](a: Int)(b: T): T = b
-    
+
 For constructor defaults, these methods are added to the companion object of the class (which is created if it does not exist). For other methods, the default methods are generated at the same location as the original method. Method calls which use default arguments are transformed into a block of the same form as described above for named arguments:
 
     f()("str")()

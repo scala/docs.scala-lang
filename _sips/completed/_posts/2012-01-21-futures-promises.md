@@ -1,10 +1,10 @@
 ---
-layout: inner-page-no-masthead
+layout: sip
 discourse: true
 title: SIP-14 - Futures and Promises
 
-vote-status: accepted
-vote-text: This SIP has already been accepted.
+vote-status: complete
+vote-text: This SIP has already been accepted and completed.
 ---
 
 **By: Philipp Haller, Aleksandar Prokopec, Heather Miller, Viktor Klang, Roland Kuhn, and Vojin Jovanovic**

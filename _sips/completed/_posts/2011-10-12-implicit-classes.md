@@ -1,10 +1,10 @@
 ---
-layout: inner-page-no-masthead
+layout: sip
 discourse: true
 title: SIP-13 - Implicit classes
 
-vote-status: accepted
-vote-text: This SIP has already been accepted.
+vote-status: complete
+vote-text: This SIP has already been accepted and completed.
 ---
 
 **By: Josh Suereth**

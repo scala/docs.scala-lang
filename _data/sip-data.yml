@@ -13,3 +13,11 @@ dormant:
 under-revision:
   color: "#2aa198"
   text: "Under Revision"
+
+accepted:
+  color: "#859900"
+  text: "Accepted"
+
+complete:
+  color: "#859900"
+  text: "Complete"

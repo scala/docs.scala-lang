@@ -1,9 +1,9 @@
 ---
-layout: inner-page-no-masthead
+layout: sip
 title: SIP-15 - Value Classes
 
-vote-status: accepted
-vote-text: This SIP has already been accepted. There has been concern for numerical computing.  We think future SIP(s), using work from SIP-15, can provide more benefit to numerical computing users. The SIP as it exists benefits all users of implicit enrichment classes, and takes us much further to unboxed high performance code. This SIP does not exclude further work towards improving numerical computing in Scala.
+vote-status: complete
+vote-text: This SIP has already been accepted and completed. There has been concern for numerical computing.  We think future SIP(s), using work from SIP-15, can provide more benefit to numerical computing users. The SIP as it exists benefits all users of implicit enrichment classes, and takes us much further to unboxed high performance code. This SIP does not exclude further work towards improving numerical computing in Scala.
 ---
 
 **By: Martin Odersky and Jeff Olson and Paul Phillips and Joshua Suereth**
@@ -192,7 +192,7 @@ Generally, a call
     p.m(args)
 
 where `m` is an extractable method declared in a value class `C` gets rewritten to
- 
+
     C.extension$m(p, args)
 
 For instance the two calls in the following code fragment
@@ -320,31 +320,31 @@ follows.
 After all 4 steps the `Meter` class is translated to the following code.
 
     class Meter(val underlying: Double) extends AnyVal with Printable {
-       def plus (other: Meter): Meter = 
+       def plus (other: Meter): Meter =
          new Meter(Meter.extension$plus(this.underlying, other.underlying))
-       def divide (other: Meter): Double = 
+       def divide (other: Meter): Double =
          Meter.extension1$divide(this.underlying, other)
-       def divide (factor: Double): Meter = 
+       def divide (factor: Double): Meter =
          new Meter(Meter.extension2$divide(this.underlying, factor))
-       def less (other: Meter): Boolean = 
+       def less (other: Meter): Boolean =
          Meter.extension$less(this.underlying, other)
-       override def toString: String = 
+       override def toString: String =
          Meter.extension$toString(this.underlying)
-       override def equals(other: Any) = 
+       override def equals(other: Any) =
          Meter.extension$equals(this)
-       override def hashCode = 
+       override def hashCode =
          Meter.extension$hashCode(this)
     }
     object Meter {
-      def extension$plus($this: Double, other: Double) = 
+      def extension$plus($this: Double, other: Double) =
         $this + other
-      def extension1$divide($this: Double, other: Double): Double = 
+      def extension1$divide($this: Double, other: Double): Double =
         $this / other
-      def extension2$divide($this: Double, factor: Double): Double = 
+      def extension2$divide($this: Double, factor: Double): Double =
         $this / factor)
       def extension$less($this: Double, other: Double): Boolean =
         $this < other
-      def extension$toString($this: Double): String = 
+      def extension$toString($this: Double): String =
         $this.toString + “m”
       def extension$equals($this: Double, other: Object) = other match {
         case that: Meter => $this == that.underlying

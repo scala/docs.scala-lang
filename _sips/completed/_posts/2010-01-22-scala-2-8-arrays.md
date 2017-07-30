@@ -1,6 +1,8 @@
 ---
-layout: inner-page-no-masthead
+layout: sip
 title: SID-7 - Scala 2.8 Arrays
+vote-status: complete
+vote-text: This SIP has already been accepted and completed.
 ---
 
 *(This is an older SID, its original PDF can be found [here](http://www.scala-lang.org/sid/7))*
@@ -179,7 +181,7 @@ methods to class `String`. The second, which goes from `String` to
 ## Generic Array Creation and Manifests
 
 That’s almost everything. The only remaining question is how to implement
-generic array creation. Unlike Java, Scala allows an instance creation 
+generic array creation. Unlike Java, Scala allows an instance creation
 `new Array[T]` where `T` is a type parameter. How can this be implemented, given
 the fact that there does not exist a uniform array representation in Java? The
 only way to do this is to require additional runtime information which
@@ -188,7 +190,7 @@ called a `Manifest`. An object of type `Manifest[T]` provides complete
 information about the type `T`. Manifest values are typically passed in implicit
 parameters; and the compiler knows how to construct them for statically
 known types `T`. There exists also a weaker form named `ClassManifest` which can
-be constructed from knowing just the top-level class of a type, without 
+be constructed from knowing just the top-level class of a type, without
 necessarily knowing all its argument types. It is this type of runtime
 information that’s required for array creation.
 
@@ -196,10 +198,10 @@ Here’s an example. Consider the method `tabulate` which forms an array from
 the results of applying a given function `f` on a range of numbers from 0
 until a given length. Up to Scala 2.7, `tabulate` could be written as follows:
 
-    def tabulate[T](len: Int, f: Int => T) = { 
+    def tabulate[T](len: Int, f: Int => T) = {
     	val xs = new Array[T](len)
     	for (i <- 0 until len) xs(i) = f(i)
-    	xs 
+    	xs
     }
 
 In Scala 2.8 this is no longer possible, because runtime information is
@@ -207,7 +209,7 @@ necessary to create the right representation of `Array[T]`. One needs to
 provide this information by passing a `ClassManifest[T]` into the method as an
 implicit parameter:
 
-    def tabulate[T](len: Int, f: Int => T)(implicit m: ClassManifest[T]) = { 
+    def tabulate[T](len: Int, f: Int => T)(implicit m: ClassManifest[T]) = {
     	val xs = new Array[T](len)
     	for (i <- 0 until len) xs(i) = f(i)
     	xs
@@ -233,7 +235,7 @@ not feasible, Scala 2.8 offers an alternative version of arrays in the
 `GenericArray` class. This class is defined in package
 `scala.collection.mutable` along the following lines.
 
-    class GenericArray[T](length: Int) extends Vector[T] { 
+    class GenericArray[T](length: Int) extends Vector[T] {
     	val array: Array[AnyRef] = new Array[AnyRef](length)
     	...
     	// all vector operations defined in terms of ‘array’
@@ -258,7 +260,7 @@ detail of `sortWith`, we felt that it was unreasonable to demand a class
 manifest for the element type of the sequence. Hence the choice of a
 `GenericArray`.
 
-## Conclusion 
+## Conclusion
 
 In summary, the new Scala collection framework resolves some long-standing
 problems with arrays and with strings. It removes a considerable amount of
@@ -280,37 +282,3 @@ three language features will be described in more detail in separate notes.
   [1]: http://www.drmaciver.com/2008/06/scala- arrays
   [2]: http://oldfashionedsoftware.com/2009/08/05/the-mystery-of-the-parameterized-array
   [3]: http://www.drmaciver.com/repos/scala-arrays/sip-arrays.xhtml
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
