@@ -1,10 +1,10 @@
 ---
 title: Learning Resources
-layout: learn
-includeTOC: true
+layout: inner-page-no-masthead
 redirect_from:
   - /documentation/books.html
 ---
+
 ## Online Learning
 
 ### Quick Online Exercises
@@ -30,5 +30,3 @@ There are a handful of websites where you can interactively run Scala code in yo
 
 ### ScalaCourses
 [Independent Courseware](http://getscala.com), online self-study or instructor-led Scala and Play courses for a fee.
-
-## Books
