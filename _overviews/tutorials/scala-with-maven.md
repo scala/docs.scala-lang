@@ -1,8 +1,9 @@
 ---
-layout: overview
+layout: singlepage-overview
 title: Scala with Maven
 
 discourse: true
+permalink: /tutorials/:title.html
 ---
 
 By Adrian Null

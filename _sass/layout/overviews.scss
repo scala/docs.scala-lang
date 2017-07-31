@@ -8,6 +8,21 @@
   }
 }
 
+.two-columns {
+  @include display(flex);
+  @include flex-direction(row);
+  @include flex-wrap(wrap);
+  @include justify-content(space-between);
+
+  .first,
+  .second {
+    flex: 0 1 calc(50% - 1em);
+    @include bp(medium) {
+      flex: 0 1 calc(100% - 0.5em);
+    }    
+  }
+}
+
 .card-group {
     // @include span-columns(6);
     // @include bp(large) {
