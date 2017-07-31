@@ -1,5 +1,5 @@
 ---
-layout: singlepage-overview
+layout: sips
 title: Scala Improvement Process
 ---
 

@@ -144,7 +144,7 @@ $(document).ready(function() {
   $(".card-footer").click(function() {
     // if we clicked on the expand button, expand the box
     if ($(this).find(".expand-btn").is(':visible')) {
-      
+
       // height mangling becasue flexbox align-self: self-end; doesn't work :(
       $(this).parent().css('max-height', 'none');
       var cardWrapHeight = $(this).parent().find(".card-wrap").outerHeight();
