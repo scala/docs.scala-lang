@@ -1,22 +1,21 @@
 <footer id="site-footer">
-  <div class="wrap">
-    <div class="site-footer-top">
-      {% for item in site.data.footer %}
-      <ul class="{{item.class}}">
-        <li>
-          <h3>{{item.title}}</h3></li>
-        {% for link in item.links %}
-        <li><a href="{{link.url}}">{{link.title}}</a></li>
+    <div class="wrap">
+      <div class="site-footer-top">
+        {% for item in site.data.footer %}
+          <ul class="{{item.class}}">
+            <li><h3>{{item.title}}</h3></li>
+            {% for link in item.links %}
+              <li><a href="{{link.url}}">{{link.title}}</a></li>
+            {% endfor %}
+          </ul>
         {% endfor %}
-      </ul>
-      {% endfor %}
+      </div>
+      <div class="site-footer-bottom">
+        <p>{{site.data.common.copyrightText}}</p>
+        <img src="/resources/img/frontpage/scala-logo-white.png" alt="">
+      </div>
     </div>
-    <div class="site-footer-bottom">
-      <p>{{site.data.common.copyrightText}}</p>
-      <img src="/resources/img/frontpage/scala-logo-white.png" alt="">
-    </div>
-  </div>
-</footer>
+  </footer>
 
 <!-- jquery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
