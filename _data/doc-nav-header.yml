@@ -16,17 +16,17 @@
       url: "/tour/tour-of-scala.html"
     - title: Scala for Java Programmers
       url: "/tutorials/scala-for-java-programmers.html"
-    - title: Tutorials and Scala FAQs
-      url: "/tutorials/index.html"      
 - title: Reference
   url: "#!"
   submenu:
     - title: "Guides & Overviews"
       url: "/overviews/index.html"
-    - title: Language Spec
-      url: http://scala-lang.org/files/archive/spec/2.12/
     - title: Books
       url: "/books.html"
+    - title: Scala FAQs
+      url: "/tutorials/FAQ/index.html"
+    - title: Language Spec
+      url: http://scala-lang.org/files/archive/spec/2.12/
 - title: Style Guide
   url: "/style/index.html"
 - title: Cheatsheet
