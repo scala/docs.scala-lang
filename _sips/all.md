@@ -1,6 +1,8 @@
 ---
 layout: sips
 title: List of All SIPs
+
+redirect_from: "/sips/sip-list.html"
 ---
 
 
