@@ -8,7 +8,8 @@ from July 2016.
 
 ### Minutes ###
 <ul class="minute-list">
-  {% for pg in site.sips %}
+  {% assign sips = site.sips | sort: 'date' | reverse %}
+  {% for pg in sips %}
     {% if pg.partof == 'minutes' %}
       <li><a href="{{ site.baseurl }}{{ pg.url }}">{{ pg.title }}</a></li>
     {% endif %}
