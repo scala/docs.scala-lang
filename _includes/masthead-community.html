@@ -8,7 +8,7 @@
 					<ul>
 						{% for forum in site.data.chats-forums.discourseForums %}
 							<li>
-								<img src="/resources/img/frontpage/discourse-logo.png" alt="{{forum.title}}">
+								<img src="{{ site.baseurl }}/resources/img/frontpage/discourse-logo.png" alt="{{forum.title}}">
 								<div>
 									<h4><a href="{{forum.url}}">{{forum.title}}</a></h4>
 									<p>{{forum.subtitle}}</p>
@@ -24,7 +24,7 @@
 						{% for channel in site.data.chats-forums.gitterChannels %}
 							<li>
 								<a href="{{channel.url}}">
-									<img src="/resources/img/frontpage/gitter-logo.png" alt="{{channel.name}}">
+									<img src="{{ site.baseurl }}/resources/img/frontpage/gitter-logo.png" alt="{{channel.name}}">
 									<h4>{{channel.name}}</h4>
 								</a>
 							</li>

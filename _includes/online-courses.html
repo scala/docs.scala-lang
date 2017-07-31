@@ -57,9 +57,9 @@
           {% assign platform = course.platform | downcase %}
           {% case platform %}
             {% when "coursera" %}
-              "/resources/img/frontpage/coursera-icon.png"
+              "{{ site.baseurl }}/resources/img/frontpage/coursera-icon.png"
             {% when "edx" %}
-              "/resources/img/frontpage/edx-icon.png"
+              "{{ site.baseurl }}/resources/img/frontpage/edx-icon.png"
           {% endcase %}
          alt="">
         <div class="card-text">

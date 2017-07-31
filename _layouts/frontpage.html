@@ -19,7 +19,7 @@
         <!-- Navigation -->
         <nav class="navigation" role="menu">
           <a href="/" class="navigation-bdand">
-            <img src="/resources/img/frontpage/scala-logo-white@2x.png" alt="">
+            <img src="{{ site.baseurl }}/resources/img/frontpage/scala-logo-white@2x.png" alt="">
           </a>
           <div class="navigation-panel-button">
             <i class="fa fa-bars"></i>
@@ -41,7 +41,7 @@
         <div id="position-marker" class="marker">
           <div class="info-marker">
               <span class="arrow">
-              <img src="/resources/img/frontpage/arrow.png" alt="pushpin">
+              <img src="{{ site.baseurl }}/resources/img/frontpage/arrow.png" alt="pushpin">
               </span>
             {{site.data.common.texts.frontpageMarker}}
           </div>
@@ -72,7 +72,7 @@
           </div>
           <div class="scala-brand-circle">
             <div class="circle-solid">
-              <img src="/resources/img/frontpage/scala-spiral.png" alt="">
+              <img src="{{ site.baseurl }}/resources/img/frontpage/scala-spiral.png" alt="">
               <div class="scala-version">
                 <span>Scala</span>
                 <span>{{page.currentScalaVersion}}</span>
@@ -116,7 +116,7 @@
         <a {% if ide.ensime == true %}class="masterTooltip" title="{{site.data.common.texts.ensimeSupportedInIDE}}"{% endif %} href="{{ide.url}}" target="_blank">
           {% if ide.ensime == true %}
             <span class="bullet">
-              <img src="/resources/img/frontpage/icon-ensime.png" alt="">
+              <img src="{{ site.baseurl }}/resources/img/frontpage/icon-ensime.png" alt="">
             </span>
           {% endif %}          
           <img src="{{ide.icon}}" alt="{{ide.name}}">
@@ -229,8 +229,8 @@
     </div>
     <div class="browser">
       <div class="header-browser">
-        <a href="{{site.data.common.scaladexUrl}}" target="_blank"><img src="/resources/img/frontpage/scaladex-logo.png" alt=""></a>
-        <a href="{{site.data.common.scaladexUrl}}" target="_blank"><img src="/resources/img/frontpage/button-github.png" alt=""></a>
+        <a href="{{site.data.common.scaladexUrl}}" target="_blank"><img src="{{ site.baseurl }}/resources/img/frontpage/scaladex-logo.png" alt=""></a>
+        <a href="{{site.data.common.scaladexUrl}}" target="_blank"><img src="{{ site.baseurl }}/resources/img/frontpage/button-github.png" alt=""></a>
       </div>
       <div class="main-browser">
         <h2>The Scala Library Index</h2>
@@ -293,7 +293,7 @@
       <h3>Mailing lists / forums</h3>
       {% for forum in site.data.chats-forums.discourseForums %}
         <a href="{{forum.url}}" class="{{forum.cssClass}}">
-          <img src="/resources/img/frontpage/discourse-logo.png" alt="{{forum.title}}">
+          <img src="{{ site.baseurl }}/resources/img/frontpage/discourse-logo.png" alt="{{forum.title}}">
           <h4>{{forum.title}}</h4>
           <p>{{forum.subtitle}}</p>
         </a>
@@ -315,7 +315,7 @@
         {% endif %}
         <li>
           <a href="{{channel.url}}">
-            <img src="/resources/img/frontpage/gitter-logo.png" alt="">
+            <img src="{{ site.baseurl }}/resources/img/frontpage/gitter-logo.png" alt="">
             <span>{{channel.name}}</span>
           </a>
         </li>
