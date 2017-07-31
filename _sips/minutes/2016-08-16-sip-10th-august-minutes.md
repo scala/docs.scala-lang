@@ -1,6 +1,8 @@
 ---
-layout: inner-page-no-masthead
+layout: sips
 title: SIP Meeting Minutes - 10th August 2016
+
+partof: minutes
 ---
 
 # Minutes

@@ -1,5 +1,5 @@
 ---
-layout: inner-page-no-masthead
+layout: sips
 title: SIP Specification and Submission
 ---
 

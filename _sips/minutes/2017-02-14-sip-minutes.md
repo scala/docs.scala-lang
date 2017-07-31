@@ -1,6 +1,8 @@
 ---
-layout: sip-landing
+layout: sips
 title: SIP Meeting Minutes - 14th February 2017
+
+partof: minutes
 ---
 
 # Minutes

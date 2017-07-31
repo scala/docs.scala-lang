@@ -1,6 +1,8 @@
 ---
-layout: inner-page-no-masthead
+layout: sips
 title: SIP Meeting Minutes - 20th September 2016
+
+partof: minutes
 ---
 
 # Minutes
@@ -144,7 +146,7 @@ Sébastien introduces his updates on the proposal. He's tried hard to remove the
 performance regression in his implementation, but he hasn't found a way. He
 describes that the implementation is still 6% slower because of performance hits
 in the hashCode and equals implementation of a case class. To work around this
-issue, two things are required: 
+issue, two things are required:
 
   * Changing the underlying implementation of byte and short ints.
   * Making the super class of unsigned integer extend *java.lang.Number*

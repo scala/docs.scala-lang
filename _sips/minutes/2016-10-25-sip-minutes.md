@@ -1,6 +1,8 @@
 ---
-layout: inner-page-no-masthead
+layout: sips
 title: SIP Meeting Minutes - 25th October 2016
+
+partof: minutes
 ---
 
 # Minutes
@@ -103,7 +105,7 @@ Committee finally decides to not consider abstentions as no's. Adriaan, however,
 suggests that we should penalize people that abstain too often.
 
 Martin proposes a new system that helps survive the abstention issue mentioned
-before. For a proposal to pass, at least 50% of all the Committee 
+before. For a proposal to pass, at least 50% of all the Committee
 and two-thirds of all the people voting (not counting abstentions) must accept
 it. The quorum rule is kept. After some discussion, the Committee unanimously
 votes in favor of Martin's new system, along with not considering abstentions as
