@@ -16,10 +16,42 @@
 .documentation {
     @include clearfix;
 
+
+    h2.frontpage {
+      color: $brand-primary;
+      margin-top: 8px;
+      margin-bottom: 24px;
+    }
+
+
+    .section,
+    .more-resources {
+      @include clearfix;
+    }
+
+    .more-resources {
+      color: $headings-font-color;
+      line-height: 1.2;
+      margin-bottom: 24px;
+      text-align: center;
+      .heading {
+        font-weight: $font-bold;
+      }
+      ul {
+        li {
+          display: inline;
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+        li+li { border-left: 1px solid $base-font-color }
+      }
+    }
+
+
     .doc-item {
         @include span-columns(4);
-        @include omega(3n);
-        margin-bottom: $padding-medium;
+        @include omega;
+        // margin-bottom: $padding-medium;
         min-height: 120px;
         padding: 15px;
         @include bp(large) {
@@ -66,6 +98,10 @@
             text-decoration: none;
             background: $gray-lighter;
         }
+    }
+
+    .nth-doc-item {
+      @include omega(3n);
     }
 }
 

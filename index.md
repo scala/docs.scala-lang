@@ -6,44 +6,64 @@ title: Documentation
 #includeTOC: true
 
 # Content masthead links
-links:
-  - title: "Getting Started"
-    description: "Install Scala on your computer and start writing some Scala code!"
-    icon: "fa fa-rocket"
-    link: getting-started.html
-  - title: "Tour of Scala"
-    description: "Get an introduction to some of the core language concepts."
-    icon: "fa fa-flag"
-    link: /tutorials/tour/tour-of-scala.html
-  - title: "Guides"
-    description: "Access detailed documentation on important language features."
-    icon: "fa fa-file-text"
-    link: guides.html
-  - title: "Reference"
-    description: "Search the API, read the language spec, and the glossary"
-    icon: "fa fa-database"
-    link: /reference.html
-  - title: "Learning Resources"
-    description: "Books and online exercises"
-    icon: "fa fa-book"
-    link: /learn.html
-  - title: "Learning Resources"
-    description: "Books and online exercises"
-    icon: "fa fa-book"
-    link: /learn.html    
-  - title: "Reference"
-    description: "Search the API, read the language spec, and the glossary"
-    icon: "fa fa-database"
-    link: /reference.html
-  - title: "Learning Resources"
-    description: "Books and online exercises"
-    icon: "fa fa-book"
-    link: /learn.html
-  - title: "Learning Resources"
-    description: "Books and online exercises"
-    icon: "fa fa-book"
-    link: /learn.html    
+sections:
 
+  - title: "First Steps..."
+    links:
+      - title: "Getting Started"
+        description: "Install Scala on your computer and start writing some Scala code!"
+        icon: "fa fa-rocket"
+        link: getting-started.html
+      - title: "Tour of Scala"
+        description: "Bite-sized introductions to some of the core language concepts."
+        icon: "fa fa-flag"
+        link: /tour/tour-of-scala.html
+      - title: "Scala for Java Programmers"
+        description: "A quick introduction to Scala for those with a Java background."
+        icon: "fa fa-coffee"
+        link: /learn.html  
+    more-resources:
+      - title: Online Courses, Exercises, & Blogs
+        url: /learn.html
+      - title: Books
+        url: /books.html        
 
+  - title: "Returning Users"      
+    links:
+      - title: "API"
+        description: "API documentation for every version of Scala."
+        icon: "fa fa-file-text"
+        link: /api/all.html
+      - title: "Overviews"
+        description: "In-depth documentation covering many of Scala's features."
+        icon: "fa fa-database"
+        link: /reference.html
+      - title: "Style Guide"
+        description: "An in-depth guide on how to write idiomatic Scala code."
+        icon: "fa fa-bookmark"
+        link: /style/index.html
+      - title: "Cheatsheet"
+        description: "A handy cheatsheet covering the basics of Scala's syntax."
+        icon: "fa fa-list"
+        link: /cheatsheets/index.html    
+      - title: "Scala FAQs"
+        description: "A list of frequently-asked questions about Scala language features and their answers."
+        icon: "fa fa-question-circle"
+        link: /reference.html
+      - title: "Language Spec"
+        description: "Scala's formal language specification."
+        icon: "fa fa-book"
+        link: http://scala-lang.org/files/archive/spec/2.12/
+
+  - title: "Scala Evolution"      
+    links:
+      - title: "SIPs"
+        description: "The Scala Improvement Process. Language & compiler evolution."
+        icon: "fa fa-cogs"
+        link: sips/index.html
+      - title: "SPP"
+        description: "The Scala Platform Process. Community-driven library evolution."
+        icon: "fa fa-users"
+        link: https://scalacenter.github.io/platform-staging/platform.html
 
 ---

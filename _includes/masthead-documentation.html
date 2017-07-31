@@ -2,16 +2,31 @@
 	<div class="wrap">
 		<div class="inner-box">
 			<div class="documentation">
-				{% for link in page.links %}
-					<a href="{{link.link}}" class="doc-item">
-						<div class="doc-item-header">
-							<i class="{{link.icon}}"></i>
-							<h5>{{link.title}}</h5>
-						</div>
-						<div class="doc-item-main">
-							<p>{{link.description}}</p>
-						</div>
-					</a>
+				{% for section in page.sections %}
+          <div class="section">
+            <h2 class="frontpage">{{ section.title }}</h2>
+            {% for link in section.links %}
+  					<a href="{{link.link}}" class="doc-item">
+  						<div class="doc-item-header">
+  							<i class="{{link.icon}}"></i>
+  							<h5>{{link.title}}</h5>
+  						</div>
+  						<div class="doc-item-main">
+  							<p>{{link.description}}</p>
+  						</div>
+  					</a>
+            {% endfor %}
+          </div>
+          <div class="more-resources">&nbsp;
+            {% if section.more-resources %}
+              <span class="heading">More Resources: </span>
+              <ul>
+              {% for resource in section.more-resources %}
+                <li><a href="{{ resource.url }}">{{ resource.title }}</a></li>
+              {% endfor %}
+              </ul>
+            {% endif %}
+          </div>
 				{% endfor %}
 			</div>
 		</div>
