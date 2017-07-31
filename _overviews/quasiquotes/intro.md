@@ -11,7 +11,7 @@ num: 2
 
 permalink: /overviews/quasiquotes/:title.html
 ---
-**Denys Shabalin** <span class="label warning" style="float: right;">EXPERIMENTAL</span>
+**Denys Shabalin** <span class="tag" style="float: right;">EXPERIMENTAL</span>
 
 Quasiquotes are a neat notation that lets you manipulate Scala syntax trees with ease:
 

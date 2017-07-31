@@ -11,7 +11,7 @@ num: 7
 
 title: 型プロバイダ
 ---
-<span class="label warning" style="float: right;">EXPERIMENTAL</span>
+<span class="tag" style="float: right;">EXPERIMENTAL</span>
 
 **Eugene Burmako 著**<br>
 **Eugene Yokota 訳**

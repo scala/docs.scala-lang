@@ -11,7 +11,7 @@ num: 13
 
 permalink: /overviews/quasiquotes/:title.html
 ---
-**Denys Shabalin** <span class="label warning" style="float: right;">EXPERIMENTAL</span>
+**Denys Shabalin** <span class="tag" style="float: right;">EXPERIMENTAL</span>
 
 In the [scala.meta](http://scalameta.org) project we are working on the following features that target future versions of Scala:
 

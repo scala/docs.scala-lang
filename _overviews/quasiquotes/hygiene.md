@@ -11,7 +11,7 @@ num: 5
 
 permalink: /overviews/quasiquotes/:title.html
 ---
-**Denys Shabalin, Eugene Burmako** <span class="label warning" style="float: right;">EXPERIMENTAL</span>
+**Denys Shabalin, Eugene Burmako** <span class="tag" style="float: right;">EXPERIMENTAL</span>
 
 The notion of hygiene has been widely popularized by macro research in Scheme. A code generator is called hygienic if it ensures the absence of name clashes between regular and generated code, preventing accidental capture of identifiers. As numerous experience reports show, hygiene is of great importance to code generation, because name binding problems are often non-obvious and lack of hygiene might manifest itself in subtle ways.
 

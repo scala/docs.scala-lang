@@ -11,7 +11,7 @@ num: 6
 
 permalink: /overviews/quasiquotes/:title.html
 ---
-**Denys Shabalin** <span class="label warning" style="float: right;">EXPERIMENTAL</span>
+**Denys Shabalin** <span class="tag" style="float: right;">EXPERIMENTAL</span>
 
 ## AST manipulation in macros and compiler plugins
 

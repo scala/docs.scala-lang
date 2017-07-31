@@ -11,7 +11,7 @@ num: 4
 
 permalink: /overviews/quasiquotes/:title.html
 ---
-**Denys Shabalin** <span class="label warning" style="float: right;">EXPERIMENTAL</span>
+**Denys Shabalin** <span class="tag" style="float: right;">EXPERIMENTAL</span>
 
 Unlifting is the reverse operation to [lifting](/overviews/quasiquotes/lifting.html): it takes a tree and recovers a value from it:
 

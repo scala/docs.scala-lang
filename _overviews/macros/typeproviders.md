@@ -12,7 +12,7 @@ num: 8
 languages: [ja]
 permalink: /overviews/macros/:title.html
 ---
-<span class="label warning" style="float: right;">EXPERIMENTAL</span>
+<span class="tag" style="float: right;">EXPERIMENTAL</span>
 
 **Eugene Burmako**
 

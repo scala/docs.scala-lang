@@ -184,3 +184,36 @@
           url: "macros/roadmap.html"
         - title: Changes in 2.11
           url: "macros/changelog211.html"
+    - title: Quasiquotes
+      by: Denys Shabalin
+      icon: quote-left
+      url: "quasiquotes/setup.html"
+      description: "Quasiquotes are a convenient way to manipulate Scala syntax trees."
+      label-text: experimental
+      subdocs:
+        - title: Dependencies and setup
+          url: "quasiquotes/setup.html"
+        - title: Introduction
+          url: "quasiquotes/intro.html"
+        - title: Lifting
+          url: "quasiquotes/lifting.html"
+        - title: Unlifting
+          url: "quasiquotes/unlifting.html"
+        - title: Hygiene
+          url: "quasiquotes/hygiene.html"
+        - title: Use cases
+          url: "quasiquotes/usecases.html"
+        - title: Syntax summary
+          url: "quasiquotes/syntax-summary.html"
+        - title: Expression details
+          url: "quasiquotes/expression-details.html"
+        - title: Type details
+          url: "quasiquotes/type-details.html"
+        - title: Pattern details
+          url: "quasiquotes/pattern-details.html"
+        - title: Definition and import details
+          url: "quasiquotes/definition-details.html"
+        - title: Terminology summary
+          url: "quasiquotes/terminology.html"
+        - title: Future prospects
+          url: "quasiquotes/future.html"
