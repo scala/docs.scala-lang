@@ -14,7 +14,7 @@ prerequisite-knowledge: classes, basics
 
 In Scala, all values have a type, including numerical values and functions. The diagram below illustrates a subset of the type hierarchy.
 
-<a href="/tutorials/tour/unified-types-diagram.svg"><img  style="width:100%" src="/tutorials/tour/unified-types-diagram.svg" alt="Scala Type Hierarchy"></a>
+<a href="{{ site.baseurl }}/resources/images/tour/unified-types-diagram.svg"><img  style="width:100%" src="{{ site.baseurl }}/resources/images/tour/unified-types-diagram.svg" alt="Scala Type Hierarchy"></a>
 
 ## Scala Type Hierarchy ##
 
