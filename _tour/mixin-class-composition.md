@@ -39,7 +39,7 @@ Now let's look at a more interesting example starting with an abstract class:
 abstract class AbsIterator {
   type T
   def hasNext: Boolean
-  def next: T
+  def next(): T
 }
 ```
 The class has an abstract type `T` and the standard iterator methods.
@@ -51,7 +51,7 @@ class StringIterator(s: String) extends AbsIterator {
   type T = Char
   private var i = 0
   def hasNext = i < s.length
-  def next = {
+  def next() = {
     val ch = s charAt i
     i += 1
     ch
@@ -64,7 +64,7 @@ Now let's create a trait which also extends `AbsIterator`.
 
 ```tut
 trait RichIterator extends AbsIterator {
-  def foreach(f: T => Unit): Unit = while (hasNext) f(next)
+  def foreach(f: T => Unit): Unit = while (hasNext) f(next())
 }
 ```
 Because `RichIterator` is a trait, it doesn't need to implement the abstract members of AbsIterator.

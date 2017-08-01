@@ -22,14 +22,14 @@ Razmotrimo apstrakciju za iteratore.
     abstract class AbsIterator {
       type T
       def hasNext: Boolean
-      def next: T
+      def next(): T
     }
  
 Dalje, razmotrimo mixin klasu koja nasljeđuje `AbsIterator` s metodom `foreach` koja primjenjuje datu funkciju na svaki element iteratora.
 Da bi definisali klasu koja može biti korištena kao mixin koristimo ključnu riječ `trait` (en. osobina, svojstvo).
  
     trait RichIterator extends AbsIterator {
-      def foreach(f: T => Unit) { while (hasNext) f(next) }
+      def foreach(f: T => Unit) { while (hasNext) f(next()) }
     }
  
 Ovo je konkretna klasa iteratora, koja vraća sukcesivne karaktere datog stringa:
@@ -38,7 +38,7 @@ Ovo je konkretna klasa iteratora, koja vraća sukcesivne karaktere datog stringa
       type T = Char
       private var i = 0
       def hasNext = i < s.length()
-      def next = { val ch = s charAt i; i += 1; ch }
+      def next() = { val ch = s charAt i; i += 1; ch }
     }
  
 Željeli bismo iskombinirati funkcionalnosti `StringIterator`-a i `RichIterator`-a u jednoj klasi.  
