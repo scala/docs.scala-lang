@@ -85,4 +85,4 @@ Continue to the next tutorial in the _getting started with sbt_ series, and lear
 
 - Continue learning Scala interactively online on
  [Scala Exercises](https://www.scala-exercises.org/scala_tutorial).
-- Learn about Scala's features in bite-sized pieces by stepping through our [Tour of Scala]({{ site.baseurl }}/tour/tour-of-scala.html }).
+- Learn about Scala's features in bite-sized pieces by stepping through our [Tour of Scala]({{ site.baseurl }}/tour/tour-of-scala.html).
