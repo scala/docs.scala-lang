@@ -9,6 +9,8 @@ partof: scala-tour
 num: 10
 next-page: case-classes
 previous-page: nested-functions
+
+redirect_from: "/tutorials/tour/currying.html"
 ---
 
 Methods may define multiple parameter lists. When a method is called with a fewer number of parameter lists, then this will yield a function taking the missing parameter lists as its arguments.

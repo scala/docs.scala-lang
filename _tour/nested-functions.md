@@ -9,6 +9,8 @@ partof: scala-tour
 num: 9
 next-page: currying
 previous-page: higher-order-functions
+
+redirect_from: "/tutorials/tour/nested-functions.html"
 ---
 
 In Scala it is possible to nest function definitions. The following object provides a `factorial` function for computing the factorial of a given number:

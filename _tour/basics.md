@@ -9,6 +9,8 @@ partof: scala-tour
 num: 2
 next-page: unified-types
 previous-page: tour-of-scala
+
+redirect_from: "/tutorials/tour/basics.html"
 ---
 
 In this page, we will cover basics of Scala.

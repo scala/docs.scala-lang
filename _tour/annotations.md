@@ -9,6 +9,8 @@ partof: scala-tour
 num: 32
 next-page: default-parameter-values
 previous-page: by-name-parameters
+
+redirect_from: "/tutorials/tour/annotations.html"
 ---
 
 Annotations associate meta-information with definitions. For example, the annotation `@deprecated` before a method causes the compiler to print a warning if the method is used.

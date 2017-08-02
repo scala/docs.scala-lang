@@ -10,6 +10,8 @@ num: 6
 next-page: higher-order-functions
 previous-page: traits
 prerequisite-knowledge: inheritance, traits, abstract-classes, unified-types
+
+redirect_from: "/tutorials/tour/mixin-class-composition.html"
 ---
 Mixins are traits which are used to compose a class.
 

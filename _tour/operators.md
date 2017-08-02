@@ -10,6 +10,8 @@ num: 30
 next-page: by-name-parameters
 previous-page: local-type-inference
 prerequisite-knowledge: case-classes
+
+redirect_from: "/tutorials/tour/operators.html"
 ---
 In Scala, operators are methods. Any method with a single parameter can be used as an _infix operator_. For example, `+` can be called with dot-notation:
 ```

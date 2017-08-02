@@ -9,6 +9,8 @@ partof: scala-tour
 num: 1
 
 next-page: basics
+
+redirect_from: "/tutorials/tour/tour-of-scala.html"
 ---
 
 Scala is a modern multi-paradigm programming language designed to express common programming patterns in a concise, elegant, and type-safe way. It smoothly integrates features of object-oriented and functional languages.

@@ -10,6 +10,8 @@ num: 13
 
 next-page: regular-expression-patterns
 previous-page: pattern-matching
+
+redirect_from: "/tutorials/tour/singleton-objects.html"
 ---
 
 Methods and values that aren't associated with individual instances of a [class](classes.html) belong in *singleton objects*, denoted by using the keyword `object` instead of `class`.

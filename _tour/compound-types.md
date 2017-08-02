@@ -9,6 +9,8 @@ partof: scala-tour
 num: 24
 next-page: self-types
 previous-page: abstract-types
+
+redirect_from: "/tutorials/tour/compound-types.html"
 ---
 
 Sometimes it is necessary to express that the type of an object is a subtype of several other types. In Scala this can be expressed with the help of *compound types*, which are intersections of object types.

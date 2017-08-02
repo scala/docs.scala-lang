@@ -9,6 +9,8 @@ partof: scala-tour
 num: 31
 next-page: annotations
 previous-page: operators
+
+redirect_from: "/tutorials/tour/by-name-parameters.html"
 ---
 
 _By-name parameters_ are only evaluated when used. They are in contrast to _by-value parameters_. To make a parameter called by-name, simply prepend `=>` to its type.

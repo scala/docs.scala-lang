@@ -9,6 +9,8 @@ partof: scala-tour
 num: 19
 next-page: upper-type-bounds
 previous-page: generic-classes
+
+redirect_from: "/tutorials/tour/variances.html"
 ---
 
 Variance is the correlation of subtyping relationships of complex types and the subtyping relationships of their component types. Scala supports variance annotations of type parameters of [generic classes](generic-classes.html), to allow them to be covariant, contravariant, or invariant if no annotations are used. The use of variance in the type system allows us to make intuitive connections between complex types, whereas the lack of variance can restrict the reuse of a class abstraction.

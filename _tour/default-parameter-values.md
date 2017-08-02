@@ -10,6 +10,8 @@ num: 33
 next-page: named-arguments
 previous-page: annotations
 prerequisite-knowledge: named-arguments, function syntax
+
+redirect_from: "/tutorials/tour/default-parameter-values.html"
 ---
 
 Scala provides the ability to give parameters default values that can be used to allow a caller to omit those parameters.

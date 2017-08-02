@@ -9,6 +9,8 @@ partof: scala-tour
 num: 22
 next-page: abstract-types
 previous-page: lower-type-bounds
+
+redirect_from: "/tutorials/tour/inner-classes.html"
 ---
 
 In Scala it is possible to let classes have other classes as members. As opposed to Java-like languages where such inner classes are members of the enclosing class, in Scala such inner classes are bound to the outer object. Suppose we want the compiler to prevent us, at compile time, from mixing up which nodes belong to what graph. Path-dependent types provide a solution.

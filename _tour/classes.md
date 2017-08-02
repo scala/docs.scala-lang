@@ -11,6 +11,8 @@ next-page: traits
 previous-page: unified-types
 topics: classes
 prerequisite-knowledge: no-return-keyword, type-declaration-syntax, string-interpolation, procedures
+
+redirect_from: "/tutorials/tour/classes.html"
 ---
 
 Classes in Scala are blueprints for creating objects. They can contain methods,
