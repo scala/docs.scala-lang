@@ -19,7 +19,7 @@ Ao contrário de linguagens que suportam somente _herança simples_, Scala tem u
 abstract class AbsIterator {
   type T
   def hasNext: Boolean
-  def next: T
+  def next(): T
 }
 ```
  
@@ -27,7 +27,7 @@ A seguir, considere a classe mixin que estende `AbsIterator` com um método `for
  
 ```tut
 trait RichIterator extends AbsIterator {
-  def foreach(f: T => Unit) { while (hasNext) f(next) }
+  def foreach(f: T => Unit) { while (hasNext) f(next()) }
 }
 ```
  
@@ -38,7 +38,7 @@ class StringIterator(s: String) extends AbsIterator {
   type T = Char
   private var i = 0
   def hasNext = i < s.length()
-  def next = { val ch = s charAt i; i += 1; ch }
+  def next() = { val ch = s charAt i; i += 1; ch }
 }
 ```
  
