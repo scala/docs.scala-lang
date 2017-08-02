@@ -1,0 +1,125 @@
+// SCALA ECOSISTEM
+//------------------------------------------------
+//------------------------------------------------
+
+#site-main {
+    .scala-ecosystem {
+        padding-bottom: 0;
+        background: url("../img/frontpage/background-scala-ecosystem.png") no-repeat center bottom $gray-li;
+        @include image-size();
+
+        .heading-line {
+            @include clearfix;
+
+            h2 {
+                span {
+                    background: #234D57;
+                }
+            }
+        }
+
+        .browser {
+            .header-browser {
+                background: $gray-dark;
+                padding: 14px 20px;
+                @include display(flex);
+                @include align-items(center);
+                @include justify-content(space-between);
+
+                img {
+                    width: 116px;
+                    height: auto;
+                }
+
+                img:last-child {
+                    width: 86px;
+                    height: auto;
+                }
+            }
+
+            .main-browser {
+                background: rgba($gray, 0.5);
+                transition: $base-transition;
+                text-align: center;
+                padding: 70px 0 80px;
+
+                h2 {
+                    color: #fff;
+                    font-size: 2.5rem;
+                    margin-bottom: 24px;
+                }
+
+                .input-control {
+                    position: relative;
+                    background: #333;
+                    width: 550px;
+                    margin-left: auto;
+                    margin-right: auto;
+                    color: $base-font-color-light;
+
+                    span {
+                        position: absolute;
+                        left: 20px;
+                        top: 8px;
+                    }
+
+                    input {
+                        padding: 12px 18px 12px 50px;
+                        border-radius: $border-radius-small;
+                        width: 100%;
+                        font-weight: $font-bold;
+                    }
+                }
+                @include bp(medium) {
+                    padding-left: 20px;
+                    padding-right: 20px;
+
+                    h2 {
+                        font-size: 1.4rem;
+                    }
+
+                    .input-control {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+
+        &:hover {
+            .main-browser {
+                background: $gray;
+                padding-bottom: 140px;
+            }
+        }
+    }
+
+    .autocomplete-suggestions {
+        border: 1px solid $gray-light;
+        background: #FFF;
+        overflow: auto;
+    }
+
+    .autocomplete-suggestion {
+        padding: 2px 5px;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .autocomplete-selected {
+        background: $gray-lighter;
+    }
+
+    .autocomplete-suggestions strong {
+        font-weight: normal;
+        color: $gray-dark;
+    }
+
+    .autocomplete-group {
+        padding: 2px 5px;
+    }
+
+    .autocomplete-group strong {
+        display: block;
+        border-bottom: 1px solid $gray-light;
+    }
+}

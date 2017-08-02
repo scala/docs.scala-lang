@@ -1,0 +1,31 @@
+// COURSES
+//------------------------------------------------
+//------------------------------------------------
+
+.courses {
+    background: $gray-li;
+
+    .heading-line {
+        h2 {
+
+            span {
+                background: $gray-li;
+            }
+        }
+    }
+
+    .online-courses,
+    .upcoming-training {
+      @include span-columns(6);
+
+      @include bp(large) {
+        @include span-columns(12);
+      }
+    }
+
+    .online-courses {
+      @include bp(large) {
+        margin-bottom: 40px;
+      }
+    }
+}

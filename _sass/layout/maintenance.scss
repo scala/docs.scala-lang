@@ -1,0 +1,89 @@
+// MAINTENANCE
+//------------------------------------------------
+//------------------------------------------------
+
+.maintenance {
+    background: $gray-dark;
+
+    .heading-line {
+        h2 {
+            span {
+                background: $gray-dark;
+            }
+        }
+    }
+
+    h3 {
+        color: #fff;
+        text-align: center;
+        font-size: 0.9375rem;
+    }
+
+    .maintained {
+        @include display(flex);
+        @include align-items(center);
+        @include justify-content(center);
+        flex-wrap: wrap;
+        margin-bottom: 40px;
+
+        li {
+            &:first-child {
+                margin-right: 32px;
+            }
+
+            a {
+                img {
+                    height: 43px;
+                    width: auto;
+                    opacity: 0.3;
+                    transition: $base-transition;
+                }
+
+                &:hover {
+                    img {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+        @include bp(small) {
+            li:first-child {
+                margin-right: 0;
+            }
+        }
+    }
+
+    .supported {
+      padding-top: 30px;
+        @include display(flex);
+        @include flex-direction(row);
+        @include align-items(center);
+        @include justify-content(space-between);
+        flex-wrap: wrap;
+
+        a {
+
+            img {
+                height: 42px;
+                width: auto;
+                display: block;
+                opacity: 0.3;
+                transition: $base-transition;
+
+                @include bp(large) {
+                  margin: 5px;
+                }
+
+                @include bp(medium) {
+                  margin: 10px;
+                }
+
+            }
+            &:hover {
+                img {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}

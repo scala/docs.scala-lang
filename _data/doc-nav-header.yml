@@ -1,0 +1,37 @@
+- title: API
+  url: "#!"
+  submenu:
+    - title: Current
+      url: https://www.scala-lang.org/api/current/
+    - title: Nightly
+      url: https://www.scala-lang.org/files/archive/nightly/2.12.x/api/2.12.x/
+    - title: All Versions
+      url: "/api/all.html"
+- title: Learn
+  url: "#!"
+  submenu:
+    - title: Getting Started
+      url: "/getting-started.html"
+    - title: Tour of Scala
+      url: "/tour/tour-of-scala.html"
+    - title: Scala for Java Programmers
+      url: "/tutorials/scala-for-java-programmers.html"
+- title: Reference
+  url: "#!"
+  submenu:
+    - title: "Guides & Overviews"
+      url: "/overviews/index.html"
+    - title: Books
+      url: "/books.html"
+    - title: Scala FAQs
+      url: "/tutorials/FAQ/index.html"
+    - title: Language Spec
+      url: http://scala-lang.org/files/archive/spec/2.12/
+- title: Style Guide
+  url: "/style/index.html"
+- title: Cheatsheet
+  url: "/cheatsheets/index.html"
+- title: Glossary
+  url: "/glossary/index.html"
+- title: SIPs
+  url: "/sips/index.html"

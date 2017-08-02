@@ -1,0 +1,111 @@
+// HEADER
+//------------------------------------------------
+//------------------------------------------------
+//------------------------------------------------
+
+#site-header {
+    background: $gray-darker;
+
+    .new-on-the-blog {
+      background: rgba($gray-darker, 0.8);
+      text-align: center;
+      padding: 8px 0;
+      color: #fff;
+      transition: $base-transition;
+      position: relative;
+
+        @include bp(medium) {
+          padding: 10px 40px;
+        }
+
+      span {
+        position: absolute;
+        right: 20px;
+        top: 3px;
+        z-index: 1;
+        cursor: pointer;
+        font-size: 1.275rem;
+        opacity: 0.6;
+        transition: $base-transition;
+        &:hover {
+          opacity: 1;
+        }
+      }
+      a {
+        color: #fff;
+        text-decoration: underline;
+        &:active,
+        &:focus,
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+    &.header-home {
+        background: none;
+        .header-background {
+            background: rgba($gray-darker, 0.45);
+            position: relative;
+            padding-bottom: 150px;
+
+            &:before {
+                content: "";
+                position: absolute;
+                background: url("../img/frontpage/background-header-home.jpg") no-repeat center center;
+                @include image-size();
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: -1;
+            }
+        }
+    }
+}
+
+#doc-header {
+    background: $gray;
+
+    // .new-on-the-blog {
+    //   background: rgba($gray-darker, 0.8);
+    //   text-align: center;
+    //   padding: 8px 0;
+    //   color: #fff;
+    //   transition: $base-transition;
+    //   position: relative;
+    //
+    //     @include bp(medium) {
+    //       padding: 10px 40px;
+    //     }
+    //
+    //   span {
+    //     position: absolute;
+    //     right: 20px;
+    //     top: 3px;
+    //     z-index: 1;
+    //     cursor: pointer;
+    //     font-size: 1.275rem;
+    //     opacity: 0.6;
+    //     transition: $base-transition;
+    //     &:hover {
+    //       opacity: 1;
+    //     }
+    //   }
+    //   a {
+    //     color: #fff;
+    //     text-decoration: underline;
+    //     &:active,
+    //     &:focus,
+    //     &:hover {
+    //       text-decoration: none;
+    //     }
+    //   }
+    // }
+    &.header-home {
+        background: none;
+        .header-background {
+            background: rgba($gray-darker, 0.45);
+            position: relative;
+            padding-bottom: 150px;
+        }
+    }
+}

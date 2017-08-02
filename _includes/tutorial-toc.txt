@@ -1,6 +1,0 @@
-      <div id="scroller-anchor">
-        <div id="scroller">
-          <p class="contents">Contents</p>
-          {% include tutorial-tour-list.txt %}
-	    </div>
-      </div>

@@ -2,10 +2,16 @@
 layout: glossary
 title: Glossary
 ---
+
+<h5>Glossary from the definitive book on Scala, <a href="http://www.artima.com/shop/programming_in_scala">Programming in Scala</a>.</h5>
+
 <div class="filterbar">
-  <span class="title">Look up a term</span>
-  <input class="field" id="filter" type="text" />
-  <span id="filter-count"></span>
+  <div class="icon-search">
+    <i class="fa fa-search"></i>
+  </div>
+  <input type="text" id="filter" placeholder="Look up a term...">
+  <!-- <input class="field" id="filter" type="text" /> -->
+  <span id="filter-count">&nbsp;</span>
 </div>
 
 * #### algebraic data type
@@ -385,66 +391,3 @@ A type parameter of a class or trait can be marked with a _variance_ annotation,
 
 * #### yield
 An expression can _yield_ a result. The `yield` keyword designates the result of a [for comprehension](#for-comprehension).
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

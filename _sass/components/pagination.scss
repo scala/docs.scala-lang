@@ -1,0 +1,33 @@
+// PAGINATION
+//------------------------------------------------
+//------------------------------------------------
+.pagination {
+  margin-top: $padding-medium;
+  @include display(flex);
+  @include align-items(center);
+  @include justify-content(center);
+
+  .pagination-item {
+    a {
+      display: block;
+      padding: 3px 10px;
+      background: $brand-tertiary;
+      color: #fff;
+      margin-right: 2px;
+      border-radius: $border-radius-small;
+
+      &:active,
+      &:focus,
+      &:hover {
+        text-decoration: none;
+        background: darken($brand-tertiary, 15%);
+      }
+
+      &.active {
+        background: #fff;
+        color: $base-font-color-light;
+        pointer-events: none;
+      }
+    }
+  }
+}

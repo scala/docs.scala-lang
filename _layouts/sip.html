@@ -1,23 +1,34 @@
 ---
-layout: default
+layout: inner-page-parent-dropdown
+includeTOC: true
 ---
-{% include header.txt %}    
-{% include sips-topbar.txt %}
 
-<div class="container">
-  <div class="row">    
+<section class="content">
+	<div class="wrap">
+		<div class="content-primary documentation">
+			<div class="inner-box">
+				{{content}}
+			</div>
+		</div>
 
-    <div class="span12">
-      {% if page.title %}<h1>{{ page.title }}</h1>{% else %}<h1>{{ site.title }}</h1>{% endif %}    
-      {{ content }}
-      {% if page.discourse == true %}{% include discourse.html %}{% endif %}
+		<!-- TOC -->
+    <div class="content-nav">
+    	<div class="inner-box sidebar-toc-wrapper sip-toc" style="">
+      {% if page.vote-status %}
+        <h5 class="contents">SIP Committee Decision</h5>
+         <div class="tag" style="background-color: {{ site.data.sip-data[page.vote-status].color }}">{{ site.data.sip-data[page.vote-status].text }}</div>
+           <p class="vote-text" style="color: {{ site.data.sip-data[page.vote-status].color }}">
+             {% if page.vote-text %}{{ page.vote-text }}{% endif %}
+           </p>
+        {% endif %}
+    		<h5 class="contents">SIP Contents</h5>
+    		<div class="inner-toc" id="sidebar-toc">
+          <div id="toc"></div>
+    		</div>
+    		<hr>
+    		<div class="help-us"><a href="/contribute/documentation/#updating-scala-langorg">Problem with this page?<br> Please help us fix it!</a></div>
+    	</div>
     </div>
-    
-    <div class="span4">
-      {% include toc.txt %}
-    </div>
-  
-  </div>
-</div>
 
-{% include footer.txt %}    
+	</div>
+</section>

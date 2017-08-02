@@ -1,32 +1,36 @@
 ---
-layout: default
+layout: inner-page-parent-dropdown
 ---
 
-{% include cheatsheet-header.txt %}
-
-<div class="wrapper">
-  {% include topbar.txt %}
-
-  <header class="scrollingmenu">
-    <h1>{{ page.title }}</h1>
-  </header>
-
-  <div class="bottom">
-    <div class="container">
-      <div class="row">
-
-        <div class="span3">
-          {% include cheatsheet-sidebar.txt %}
-        </div>
-    
-        <div class="span13">
-          {{ content }}
-        </div>
-    
-      </div>
-	
-    </div>
-  </div>
-  <div class="push"></div>
-</div>
-{% include footer.txt %}    
+<section class="full-width">
+	<div class="wrap">
+		<div class="content-primary cheatsheet">
+			<div class="inner-box">
+				{{content}}
+        {% if page.languages %}
+          <ul id="available-languages" style="display: none;">
+            <li><a href="{{ page.url }}">English</a></li>
+            {% for l in page.languages %}
+              {% capture intermediate %}{{ page.url | remove_first: l }}{% endcapture %}
+              {% capture rootTutorialURL %}{{ intermediate | remove_first: '/' }}{% endcapture %}
+        			{% assign lang = site.data.languages[l] %}
+        			<li><a href="{{ site.baseurl }}/{{ l }}/{{ rootTutorialURL }}" class="lang">{{ lang.name }}</a></li>
+            {% endfor %}
+          </ul>
+        {% elsif page.language %}
+           {% assign engPath = page.id | remove_first: "/" | remove_first: page.language | append: '.html' %}
+           {% assign engPg = site.overviews | where: 'partof', page.partof | first %}
+           {{ engPg.languages }}
+          <ul id="available-languages" style="display: none;">
+            <li><a href="{{ site.baseurl }}{{ engPath }}">English</a></li>
+            {% for l in engPg.languages %}
+              aHEYHEYHEY! {{ l }} <br>
+              {% assign lang = site.data.languages[l] %}
+              <li><a href="{{ site.baseurl }}/{{ l }}{{ engPath }}" class="lang">{{ lang.name }}</a></li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,100 @@
+---
+layout: inner-page-parent
+---
+
+<section class="books">
+	<div class="wrap">
+		<div class="inner-box download">
+			<div class="content-ribbon">
+				<div class="ribbon-version">
+					<span>{{page.release_version}}</span>
+				</div>
+				<ul>
+					<li><a href="/download/changelog/">Release Notes</a></li>
+					<li class="dot">•</li>
+					<li><a href="/download/changelog/">Changelog</a></li>
+				</ul>
+			</div>
+			<div class="main-download">
+				<h2>Compared to other programming languages, installing Scala is a bit unusual. It's possible to "install" Scala in numerous ways.</h2>
+				<div class="install-steps">
+					<div class="step">
+						<img src="{{ site.baseurl }}/resources/img/download/arrow-asset.png" alt="">
+						<div class="number-step">1</div>
+						<div class="text-step" id="download-step-one">
+							<h3>First, make sure you have the Java 8 JDK installed.</h3>
+							<p><code>java -version</code><span>(Make sure you have version 1.8.)</span></p>
+						</div>
+					</div>
+					<div class="step">
+						<div class="number-step">2</div>
+						<div class="text-step">
+							<h3>Then, install Scala using:</h3>
+						</div>
+					</div>
+					<div class="download-options">
+						<div class="download-intellij">
+							<span class="or">or</span>
+							<div class="description">
+								<img src="{{ site.baseurl }}/resources/img/download/arrow-left.png" alt="">
+								<p>Best if you prefer a full-featured IDE (recommended for beginners)</p>
+							</div>
+							<a href="" class="btn-download" id="download-intellij-link">
+								<i class="fa fa-download"></i>
+								<span>Download intellij</span>
+							</a> 
+							<ul>
+								{% include tutorial-list.html column=1 %}
+							</ul>
+						</div>
+						<div class="download-sbt">
+							<div class="description">
+								<img src="{{ site.baseurl }}/resources/img/download/arrow-right.png" alt="">
+								<p>Best if you are familiar with the command line</p>
+							</div>
+							<a href="" class="btn-download" id="download-sbt-link">
+								<i class="fa fa-download"></i>
+								<span>Download Sbt</span>
+							</a>
+							<ul>
+								{% include tutorial-list.html column=0 %}
+							</ul>
+						</div>
+					</div>
+					<p class="bottom-lead">Scala is unusual because it is usually installed for each of your Scala projects rather than being installed system-wide. Both of the above options manage a specific Scala version per Scala project you create.</p>
+
+					<h3>Release Notes</h3>
+					<p>For important changes, please consult the <a href="/blog/announcements/">release notes</a>.</p>
+
+					<h3>Software Requirements</h3>
+
+					{{ page.requirements }}
+
+					{{ content }}
+
+					{% if page.show_resources == "true" %}
+
+					{% include download-resource-list.html %}
+
+					{% endif %}					
+
+					<h3>License</h3>
+					<p>The Scala distribution is released under the <a href="{{ site.baseurl }}/license/">3-clause BSD license</a>.</p>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	{% for step in site.data.downloads.stepOne %}
+		<div style="display:none" id="stepOne-{{step.os}}">{{step.text}}</div>
+	{% endfor %}
+
+	{% for intellijUrl in site.data.downloads.intellijUrls %}
+		<div style="display:none" id="intellij-{{intellijUrl.os}}">{{intellijUrl.url}}</div>
+	{% endfor %}
+
+	{% for sbtUrl in site.data.downloads.sbtUrls %}
+		<div style="display:none" id="sbt-{{sbtUrl.os}}">{{sbtUrl.url}}</div>
+	{% endfor %}
+</section>
