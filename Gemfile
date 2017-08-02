@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 gem 'jekyll-redirect-from'
+# gem 'html-proofer' # link-checking: bundle exec htmlproofer ./_site/ --only-4xx --empty-alt-ignore --allow-hash-href
 
 # group :jekyll_plugins do
 #   gem 'hawkins'
