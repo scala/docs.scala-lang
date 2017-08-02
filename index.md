@@ -13,7 +13,7 @@ sections:
       - title: "Getting Started"
         description: "Install Scala on your computer and start writing some Scala code!"
         icon: "fa fa-rocket"
-        link: getting-started.html
+        link: /getting-started.html
       - title: "Tour of Scala"
         description: "Bite-sized introductions to some of the core language concepts."
         icon: "fa fa-flag"
@@ -37,7 +37,7 @@ sections:
       - title: "Overviews"
         description: "In-depth documentation covering many of Scala's features."
         icon: "fa fa-database"
-        link: /reference.html
+        link: /overviews/index.html
       - title: "Style Guide"
         description: "An in-depth guide on how to write idiomatic Scala code."
         icon: "fa fa-bookmark"
@@ -49,7 +49,7 @@ sections:
       - title: "Scala FAQs"
         description: "A list of frequently-asked questions about Scala language features and their answers."
         icon: "fa fa-question-circle"
-        link: /reference.html
+        link: /tutorials/FAQ/index.html
       - title: "Language Spec"
         description: "Scala's formal language specification."
         icon: "fa fa-book"

@@ -1,5 +1,5 @@
 - title: API
-  url: "#!"
+  url: "#"
   submenu:
     - title: Current
       url: https://www.scala-lang.org/api/current/
@@ -8,7 +8,7 @@
     - title: All Versions
       url: "/api/all.html"
 - title: Learn
-  url: "#!"
+  url: "#"
   submenu:
     - title: Getting Started
       url: "/getting-started.html"
@@ -17,7 +17,7 @@
     - title: Scala for Java Programmers
       url: "/tutorials/scala-for-java-programmers.html"
 - title: Reference
-  url: "#!"
+  url: "#"
   submenu:
     - title: "Guides & Overviews"
       url: "/overviews/index.html"

@@ -7,8 +7,6 @@
       url: "https://www.scala-lang.org/api/current/index.html"
     - title: Overviews/Guides
       url: "/overviews"
-    - title: Tutorials
-      url: "tutorials/"
     - title: Language Specification
       url: "http://scala-lang.org/files/archive/spec/2.12/"
 - title: Download
