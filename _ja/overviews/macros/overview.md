@@ -308,7 +308,7 @@ Scala コードの生成については[リフレクションの概要](http://d
 ### 警告とエラーの報告
 
 ユーザと対話するための正式な方法は `scala.reflect.macros.FrontEnds` のメソッドを使うことだ。
-`c.error` はコンパイルエラーを報告し、`c.info` は警告を発令し、`c.abort` はエラーを報告しマクロの実行を停止する。
+`c.error` はコンパイルエラーを報告し、`c.warning` は警告を発令し、`c.abort` はエラーを報告しマクロの実行を停止する。
 
     scala> def impl(c: Context) =
       c.abort(c.enclosingPosition, "macro has reported an error")
