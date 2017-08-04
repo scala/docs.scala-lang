@@ -74,8 +74,7 @@ to see if sbt can run your project on the command line.
 when you save changes to a file in the project.
 1. Click **OK**.
 1. On the **Run** menu. Click **Run 'Run the program'**.
-1. In the code, change `currentYear - 1` to `currentYear - 2`
-and look at the updated output in the console.
+1. In the code, change the `ages` sequence replacing `29` with `99`, save and look at the updated output in the console.
 
 ## Adding a dependency
 Changing gears a bit, let's look at how to use published libraries to add
