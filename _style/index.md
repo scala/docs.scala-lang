@@ -6,134 +6,69 @@ overview-name: "&nbsp;"
 ---
 
 This document is intended to outline some basic Scala stylistic guidelines which should be followed with more or less fervency. Wherever possible, this guide attempts to detail why a particular style is encouraged and how it relates to other alternatives. As with all style guides, treat this document as a list of rules to be broken. There are certainly times when alternative styles should be preferred over the ones given here.
-<div class="span8">
 
-  <ul>
-    <li><a href="{{ site.baseurl }}/style/indentation.html">Indentation</a>
-      <ul>
-        <li><a href="{{ site.baseurl }}/style/indentation.html#line-wrapping">Line Wrapping</a></li>
-        <li><a href="{{ site.baseurl }}/style/indentation.html#methods-with-numerous-arguments">Methods with Numerous Arguments</a></li>
-      </ul>
-    </li>
-    <li><a href="{{ site.baseurl }}/style/naming-conventions.html">Naming Conventions</a>
-      <ul>
-        <li><a href="{{ site.baseurl }}/style/naming-conventions.html#classestraits">Classes/Traits</a></li>
-        <li><a href="{{ site.baseurl }}/style/naming-conventions.html#objects">Objects</a></li>
-        <li><a href="{{ site.baseurl }}/style/naming-conventions.html#packages">Packages</a>
-          <ul>
-            <li><a href="{{ site.baseurl }}/style/naming-conventions.html#root">root</a></li>
-          </ul>
-        </li>
-        <li><a href="{{ site.baseurl }}/style/naming-conventions.html#methods">Methods</a>
-          <ul>
-            <li><a href="{{ site.baseurl }}/style/naming-conventions.html#accessorsmutators">Accessors/Mutators</a></li>
-            <li><a href="{{ site.baseurl }}/style/naming-conventions.html#parentheses">Parentheses</a></li>
-            <li><a href="{{ site.baseurl }}/style/naming-conventions.html#symbolic-method-names">Symbolic Method Names</a></li>
-          </ul>
-        </li>
-        <li><a href="{{ site.baseurl }}/style/naming-conventions.html#constants-values-variable-and-methods">Constants, Values, Variable and Methods</a></li>
-        <li><a href="{{ site.baseurl }}/style/naming-conventions.html#type-parameters-generics">Type Parameters (generics)</a>
-          <ul>
-            <li><a href="{{ site.baseurl }}/style/naming-conventions.html#higher-kinds-and-parameterized-type-parameters">Higher-Kinds and Parameterized Type parameters</a></li>
-          </ul>
-        </li>
-        <li><a href="{{ site.baseurl }}/style/naming-conventions.html#annotations">Annotations</a></li>
-        <li><a href="{{ site.baseurl }}/style/naming-conventions.html#special-note-on-brevity">Special Note on Brevity</a></li>
-      </ul>
-    </li>
-    <li><a href="{{ site.baseurl }}/style/types.html">Types</a>
-      <ul>
-        <li><a href="{{ site.baseurl }}/style/types.html#inference">Inference</a>
-          <ul>
-            <li><a href="{{ site.baseurl }}/style/types.html#function-values">Function Values</a></li>
-          </ul>
-        </li>
-        <li><a href="{{ site.baseurl }}/style/types.html#annotations">Annotations</a></li>
-        <li><a href="{{ site.baseurl }}/style/types.html#ascription">Ascription</a></li>
-        <li><a href="{{ site.baseurl }}/style/types.html#functions">Functions</a>
-          <ul>
-            <li><a href="{{ site.baseurl }}/style/types.html#arity-1">Arity-1</a></li>
-          </ul>
-        </li>
-        <li><a href="{{ site.baseurl }}/style/types.html#structural-types">Structural Types</a></li>
-      </ul>
-    </li>
-    <li><a href="{{ site.baseurl }}/style/nested-blocks.html">Nested Blocks</a>
-      <ul>
-        <li><a href="{{ site.baseurl }}/style/nested-blocks.html#curly-braces">Curly Braces</a></li>
-        <li><a href="{{ site.baseurl }}/style/nested-blocks.html#parentheses">Parentheses</a></li>
-      </ul>
-    </li>
-    <li><a href="{{ site.baseurl }}/style/declarations.html">Declarations</a>
-      <ul>
-        <li><a href="{{ site.baseurl }}/style/declarations.html#classes">Classes</a>
-          <ul>
-            <li><a href="{{ site.baseurl }}/style/declarations.html#ordering-of-class-elements">Ordering Of Class Elements</a></li>
-            <li><a href="{{ site.baseurl }}/style/declarations.html#methods">Methods</a>
-              <ul>
-                <li><a href="{{ site.baseurl }}/style/declarations.html#modifiers">Modifiers</a></li>
-                <li><a href="{{ site.baseurl }}/style/declarations.html#body">Body</a></li>
-                <li><a href="{{ site.baseurl }}/style/declarations.html#multiple-parameter-lists">Multiple Parameter Lists</a></li>
-                <li><a href="{{ site.baseurl }}/style/declarations.html#higher-order-functions">Higher-Order Functions</a></li>
-              </ul>
-            </li>
-            <li><a href="{{ site.baseurl }}/style/declarations.html#fields">Fields</a></li>
-          </ul>
-        </li>
-        <li><a href="{{ site.baseurl }}/style/declarations.html#function_values">Function Values</a>
-          <ul>
-            <li><a href="{{ site.baseurl }}/style/declarations.html#spacing">Spacing</a></li>
-            <li><a href="{{ site.baseurl }}/style/declarations.html#multi-expression-functions">Multi-Expression Functions</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    <li><a href="{{ site.baseurl }}/style/control-structures.html">Control Structures</a>
-      <ul>
-        <li><a href="{{ site.baseurl }}/style/control-structures.html#curly-braces">Curly-Braces</a></li>
-        <li><a href="{{ site.baseurl }}/style/control-structures.html#comprehensions">Comprehensions</a></li>
-        <li><a href="{{ site.baseurl }}/style/control-structures.html#trivial-conditionals">Trivial Conditionals</a></li>
-      </ul>
-    </li>
-    <li><a href="{{ site.baseurl }}/style/method-invocation.html">Method Invocation</a>
-      <ul>
-        <li><a href="{{ site.baseurl }}/style/method-invocation.html#arity-0">Arity-0</a></li>
-          <ul>
-            <li><a href="{{ site.baseurl }}/style/method-invocation.html#suffix-notation">Suffix Notation</a></li>
-          </ul>
-        <li><a href="{{ site.baseurl }}/style/method-invocation.html#arity-1">Arity-1</a></li>
-          <ul>
-            <li><a href="{{ site.baseurl }}/style/method-invocation.html#higher-order-functions">Higher-Order Functions</a></li>
-          </ul>
-        <li><a href="{{ site.baseurl }}/style/method-invocation.html#symbolic-methodsoperators">Symbolic methods/Operators</a></li>
-      </ul>
-    </li>
-    <li><a href="{{ site.baseurl }}/style/files.html">Files</a>
-      <ul>
-        <li><a href="{{ site.baseurl }}/style/files.html#multi-unit-files">Multi-Unit Files</a></li>
-      </ul>
-    </li>
-    <li><a href="{{ site.baseurl }}/style/scaladoc.html">Scaladoc</a>
-      <ul>
-        <li><a href="{{ site.baseurl }}/style/scaladoc.html#general-style">General Style</a></li>
-        <li><a href="{{ site.baseurl }}/style/scaladoc.html#packages">Packages</a></li>
-        <li><a href="{{ site.baseurl }}/style/scaladoc.html#classes-objects-and-traits">Classes, Objects, and Traits</a>
-          <ul>
-            <li><a href="{{ site.baseurl }}/style/scaladoc.html#classes">Classes</a></li>
-            <li><a href="{{ site.baseurl }}/style/scaladoc.html#objects">Objects</a></li>
-            <li><a href="{{ site.baseurl }}/style/scaladoc.html#traits">Traits</a></li>
-          </ul>
-        </li>
-        <li><a href="{{ site.baseurl }}/style/scaladoc.html#methods-and-other-members">Methods and Other Members</a></li>
-      </ul>
-    </li>
-  </ul>
 
-</div>
+- [Indentation](indentation.html)
+  - [Line Wrapping](indentation.html#line-wrapping)
+  - [Methods with Numerous Arguments](indentation.html#methods-with-numerous-arguments)
+- [Naming Conventions](naming-conventions.html)
+  - [Classes/Traits](naming-conventions.html#classestraits)
+  - [Objects](naming-conventions.html#objects)
+  - [Packages](naming-conventions.html#packages)
+    - [root](naming-conventions.html#root)
+  - [Methods](naming-conventions.html#methods)
+    - [Accessors/Mutators](naming-conventions.html#accessorsmutators)
+    - [Parentheses](naming-conventions.html#parentheses)
+    - [Symbolic Method Names](naming-conventions.html#symbolic-method-names)
+  - [Constants, Values, Variable and Methods](naming-conventions.html#constants-values-variable-and-methods)
+  - [Type Parameters (generics)](naming-conventions.html#type-parameters-generics)
+    - [Higher-Kinds and Parameterized Type parameters](naming-conventions.html#higher-kinds-and-parameterized-type-parameters)
+  - [Annotations](naming-conventions.html#annotations)
+  - [Special Note on Brevity](naming-conventions.html#special-note-on-brevity)
+- [Types](types.html)
+  - [Inference](types.html#inference)
+    - [Function Values](types.html#function-values)
+  - [Annotations](types.html#annotations)
+  - [Ascription](types.html#ascription)
+  - [Functions](types.html#functions)
+    - [Arity-1](types.html#arity-1)
+  - [Structural Types](types.html#structural-types)
+- [Nested Blocks](nested-blocks.html)
+  - [Curly Braces](nested-blocks.html#curly-braces)
+  - [Parentheses](nested-blocks.html#parentheses)
+- [Declarations](declarations.html)
+  - [Classes](declarations.html#classes)
+    - [Ordering Of Class Elements](declarations.html#ordering-of-class-elements)
+    - [Methods](declarations.html#methods)
+      - [Modifiers](declarations.html#modifiers)
+      - [Body](declarations.html#body)
+      - [Multiple Parameter Lists](declarations.html#multiple-parameter-lists)
+      - [Higher-Order Functions](declarations.html#higher-order-functions)
+    - [Fields](declarations.html#fields)
+  - [Function Values](declarations.html#function_values)
+    - [Spacing](declarations.html#spacing)
+    - [Multi-Expression Functions](declarations.html#multi-expression-functions)
+- [Control Structures](control-structures.html)
+  - [Curly-Braces](control-structures.html#curly-braces)
+  - [Comprehensions](control-structures.html#comprehensions)
+  - [Trivial Conditionals](control-structures.html#trivial-conditionals)
+- [Method Invocation](method-invocation.html)
+  - [Arity-0](method-invocation.html#arity-0)
+    - [Suffix Notation](method-invocation.html#suffix-notation)
+  - [Arity-1](method-invocation.html#arity-1)
+    - [Higher-Order Functions](method-invocation.html#higher-order-functions)
+  - [Symbolic methods/Operators](method-invocation.html#symbolic-methodsoperators)
+- [Files](files.html)
+  - [Multi-Unit Files](files.html#multi-unit-files)
+- [Scaladoc](scaladoc.html)
+  - [General Style](scaladoc.html#general-style)
+  - [Packages](scaladoc.html#packages)
+  - [Classes, Objects, and Traits](scaladoc.html#classes-objects-and-traits)
+    - [Classes](scaladoc.html#classes)
+    - [Objects](scaladoc.html#objects)
+    - [Traits](scaladoc.html#traits)
+  - [Methods and Other Members](scaladoc.html#methods-and-other-members)
 
-<div class="span8">
+### Thanks to ###
 
-<h3>Thanks to</h3>
-<p><a href="http://www.codecommit.com/">Daniel Spiewak</a> and <a href="http://www.naildrivin5.com/">David Copeland</a> for putting this style guide together, and Simon Ochsenreither for converting it to Markdown.</p>
-
-</div>
+[Daniel Spiewak](http://www.codecommit.com/) and [David Copeland](http://www.naildrivin5.com/) for putting this style guide together, and Simon Ochsenreither for converting it to Markdown.
