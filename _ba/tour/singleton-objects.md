@@ -41,7 +41,7 @@ Većina singlton objekata nisu samostalni, već su povezani s istoimenom klasom.
 “Singlton objekt istog imena” case klase, pomenut ranije, je jedan primjer ovoga.
 U ovom slučaju, singlton objekt se zove *kompanjon objekt* klase, a klasa se zove *kompanjon klasa* objekta.
 
-[Scaladoc](https://wiki.scala-lang.org/display/SW/Introduction) ima posebnu podršku za prebacivanje između klase i njenog kompanjona:
+[Scaladoc](/style/scaladoc.html) ima posebnu podršku za prebacivanje između klase i njenog kompanjona:
 ako krug s velikim “C” ili “O” ima savijenu ivicu (kao papir), možete kliknuti na krug da pređete na kompanjon.
 
 Klasa i njen kompanjon objekt, ako ga ima, moraju biti definisani u istom izvornom fajlu:

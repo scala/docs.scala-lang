@@ -50,9 +50,9 @@ on the first line of the comment but that subsequent text remains aligned.
 In particular, text is aligned on a multiple of two columns,
 since Scala source is usually indented by two columns.
 
-See the
-[AuthorDocs](https://wiki.scala-lang.org/display/SW/Writing+Documentation)
-on the Scala wiki for more technical info on formatting Scaladoc.
+See
+[Scaladoc for Library Authors](/overviews/scaladoc/for-library-authors.html)
+for more technical info on formatting Scaladoc.
 
 ## General Style
 
