@@ -82,7 +82,7 @@ only. As a general heuristic, speed-ups tend to be noticeable when the size of
 the collection is large, typically several thousand elements. (For more
 information on the relationship between the size of a parallel collection and
 performance, please see the
-[appropriate subsection]({{ site.baseurl}}/overviews/parallel-collections/performance.html#how_big_should_a_collection_be_to_go_parallel) of the [performance]({{ site.baseurl }}/overviews/parallel-collections/performance.html)
+[appropriate subsection]({{ site.baseurl}}/overviews/parallel-collections/performance.html#how-big-should-a-collection-be-to-go-parallel) of the [performance]({{ site.baseurl }}/overviews/parallel-collections/performance.html)
 section of this guide.)
 
 #### map

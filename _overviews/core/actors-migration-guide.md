@@ -14,7 +14,7 @@ permalink: /overviews/core/:title.html
 ## Introduction
 
 Starting with Scala 2.11.0, the Scala
-[Actors](http://docs.scala-lang.org/overviews/core/actors.html)
+[Actors](actors.html)
 library is deprecated. Already in Scala 2.10.0 the default actor library is
 [Akka](http://akka.io).
 
