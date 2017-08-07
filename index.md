@@ -21,7 +21,7 @@ sections:
       - title: "Scala for Java Programmers"
         description: "A quick introduction to Scala for those with a Java background."
         icon: "fa fa-coffee"
-        link: /learn.html  
+        link: /tutorials/scala-for-java-programmers.html
     more-resources:
       - title: Online Courses, Exercises, & Blogs
         url: /learn.html
