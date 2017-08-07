@@ -196,6 +196,4 @@ Some of the standard markup available:
 ## More details on writing Scaladoc
 
 Further information on the formatting and style recommendations can be found in
-[Scala-lang scaladoc style guide](http://docs.scala-lang.org/style/scaladoc.html)
-and on the
-[Scala Wiki](https://wiki.scala-lang.org/display/SW/Writing+Documentation).
+[Scala-lang scaladoc style guide](http://docs.scala-lang.org/style/scaladoc.html).
