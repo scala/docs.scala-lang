@@ -298,7 +298,7 @@ As the printout shows, nothing dramatic happens. Compiler guards itself against 
 ### Reporting warnings and errors
 
 The canonical way to interact with the user is through the methods of `scala.reflect.macros.FrontEnds`.
-`c.error` reports a compilation error, `c.info` issues a warning, `c.abort` reports an error and terminates
+`c.error` reports a compilation error, `c.warning` issues a warning, `c.abort` reports an error and terminates
 execution of a macro.
 
     scala> def impl(c: Context) =

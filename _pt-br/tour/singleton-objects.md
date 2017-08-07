@@ -33,7 +33,7 @@ Um objeto singleton pode estender classes e traits. Já uma [classe clase](case-
 
 A maioria dos objetos singleton não estão sozinhos, mas sim associados com uma classe de mesmo nome. O “objeto singleton de mesmo nome” que uma classe case, acima mencionado, é um exemplo disso. Quando isso acontece, o objeto singleton é chamado de *objeto acompanhante* de uma classe e, a classe é chamada de *classe acompanhante* de um objeto.
 
-[Scaladoc](https://wiki.scala-lang.org/display/SW/Introduction) possui um recurso especial para navegar entre classes e seus acompanhantes: se o grande círculo contendo “C” ou “O” possui sua extremidade superior dobrada para baixo, você pode clicar no círculo para acessar o acompanhante.
+[Scaladoc](/style/scaladoc.html) possui um recurso especial para navegar entre classes e seus acompanhantes: se o grande círculo contendo “C” ou “O” possui sua extremidade superior dobrada para baixo, você pode clicar no círculo para acessar o acompanhante.
 
 Se houver um objeto acompanhante para uma classe, ambos devem ser definidos no mesmo aquivo fonte. Por exemplo:
 
