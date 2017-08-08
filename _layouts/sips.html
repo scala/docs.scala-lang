@@ -40,7 +40,7 @@ layout: inner-page-parent-dropdown
           <li><a href="{{ site.baseurl }}/sips/sip-submission.html">Submitting a SIP</a></li>
           <li><a href="{{ site.baseurl }}/sips/sip-tutorial.html">Tutorial: Writing a SIP</a></li>
         </ul>
-    		<div class="help-us"><a href="https://github.com/scala/scala.github.com/blob/master/{{ page.relative_path }}"><i class="fa fa-pencil" aria-hidden="true"></i> Problem with this page?<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Please help us fix it!</a></div>
+    		<div class="help-us"><a href="https://github.com/scala/scala.github.com/blob/master/{% if page.collection %}{{ page.relative_path }}{% else %}{{ page.path }}{% endif %}"><i class="fa fa-pencil" aria-hidden="true"></i> Problem with this page?<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Please help us fix it!</a></div>
     	</div>
     </div>
 
