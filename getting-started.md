@@ -53,9 +53,9 @@ Scala project. -->
 ## Next Steps
 Once you've finished these tutorials, check out
 
-* [The Tour of Scala](http://docs.scala-lang.org/tutorials/tour/tour-of-scala.html) for bite-sized introductions to Scala's features.
-* [Learning Resources](learn), which includes online interactive tutorials and courses.
-* [Our list of some popular Scala books]({{ site.baseurl }}/books.html).
+* [The Tour of Scala](tutorials/tour/tour-of-scala.html) for bite-sized introductions to Scala's features.
+* [Learning Resources](learn.html), which includes online interactive tutorials and courses.
+* [Our list of some popular Scala books](books.html).
 
 ## Getting Help
 There are a multitude of mailing lists and real-time chat channels in case you want to quickly connect with other Scala users. Check out our [community](https://scala-lang.org/community/) page a list of these resources and where to reach out for help.

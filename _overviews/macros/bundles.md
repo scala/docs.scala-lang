@@ -27,7 +27,7 @@ following reasons:
 1. Being limited to functions makes modularizing complex macros awkward. It's quite typical to see macro logic concentrate in helper
 traits outside macro implementations, turning implementations into trivial wrappers, which just instantiate and call helpers.
 
-2. Moreover, since macro parameters are path-dependent on the macro context, [special incantations](/overviews/macros/overview.html#writing_bigger_macros) are required to wire implementations and helpers together.
+2. Moreover, since macro parameters are path-dependent on the macro context, [special incantations](/overviews/macros/overview.html#writing-bigger-macros) are required to wire implementations and helpers together.
 
 Macro bundles provide a solution to these problems by allowing macro implementations to be declared in classes that take
 `c: scala.reflect.macros.blackbox.Context` or `c: scala.reflect.macros.whitebox.Context` as their constructor parameters, relieving macro implementations from having

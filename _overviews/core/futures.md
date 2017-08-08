@@ -132,7 +132,7 @@ Fortunately the concurrent package provides a convenient way for doing so:
       }
     }
 
-Note that `blocking` is a general construct that will be discussed more in depth [below](#in_a_future).
+Note that `blocking` is a general construct that will be discussed more in depth [below](#blocking-inside-a-future).
 
 Last but not least, you must remember that the `ForkJoinPool` is not designed for long lasting blocking operations.
 Even when notified with `blocking` the pool might not spawn new workers as you would expect,
