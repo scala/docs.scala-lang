@@ -1,7 +1,7 @@
 ---
 layout: sip
 discourse: true
-title: SIP-32 - Match infix & prefix types to meet expression rules
+title: SIP-33 - Match infix & prefix types to meet expression rules
 
 vote-status: pending
 permalink: /sips/:title.html
