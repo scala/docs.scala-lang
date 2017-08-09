@@ -68,7 +68,7 @@ extra functionality to our apps.
 libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % "1.0.5"
 ```
 Here, `libraryDependencies` is a set of dependencies, and by using `+=`,
-we're adding the [scala-parser-combinators]({{site.baseurl}}/scala/scala-parser-combinators) dependency to the set of dependencies that sbt will go
+we're adding the [scala-parser-combinators](https://github.com/scala/scala-parser-combinators) dependency to the set of dependencies that sbt will go
 and fetch when it starts up. Now, in any Scala file, you can import classes,
 objects, etc, from scala-parser-combinators with a regular import.
 
