@@ -743,7 +743,7 @@ We would like to thank Peter Levart and the other members of the concurrency-int
   [13]: https://groups.google.com/d/msg/scala-internals/4sjw8pcKysg/gD0au4dmTAsJ
   [14]: https://github.com/scala/scala-dev/issues/133
   [15]: http://scala-lang.org/blog/2016/10/24/scalafix.html
-  [16]: https://github.com/scala/scala.github.com/pull/491
+  [16]: https://github.com/scala/docs.scala-lang/pull/491
   [17]: https://github.com/lampepfl/dotty/blob/master/src/dotty/runtime/LazyHolders.scala
   [18]: https://d-d.me/tnc/30/lazy-mem/report/#config=%7B%22filterConfig%22%3A%7B%22curves%22%3A%5B%22-1%22%2C%220%22%2C%221%22%2C%222%22%2C%223%22%2C%224%22%2C%225%22%2C%226%22%2C%227%22%2C%228%22%5D%2C%22order%22%3A%5B%22param-size%22%2C%22date%22%5D%2C%22filters%22%3A%5B%5B%221000000%22%2C%222000000%22%2C%223000000%22%2C%224000000%22%2C%225000000%22%5D%2C%5B%221477396691000%22%5D%5D%7D%2C%22chartConfig%22%3A%7B%22type%22%3A0%2C%22showCI%22%3Afalse%7D%7D
   [19]: https://d-d.me/tnc/30/lazy-sip-perf/report/#config=%7B%22filterConfig%22%3A%7B%22curves%22%3A%5B%2216%22%2C%2217%22%2C%2218%22%2C%2219%22%2C%2221%22%2C%2222%22%2C%2223%22%5D%2C%22order%22%3A%5B%22param-size%22%2C%22date%22%5D%2C%22filters%22%3A%5B%5B%22100000%22%2C%22300000%22%2C%22500000%22%2C%221000000%22%2C%223000000%22%2C%225000000%22%5D%2C%5B%221477397877000%22%5D%5D%7D%2C%22chartConfig%22%3A%7B%22type%22%3A0%2C%22showCI%22%3Afalse%7D%7D

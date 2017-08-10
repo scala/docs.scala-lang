@@ -149,7 +149,7 @@ The current SIP tries to make it behave as expected by the users in common cases
 
 **Conclusion**  The static SIP proposal has to be implemented in Scala, as it's already present in Dotty. Triplequote (Iulian Dragos and Mirco Dotta) has offered to provide an implementation targeting 2.12.3.
 
-### SIP-NN - [Allow referring to other arguments in default parameters](https://github.com/scala/scala.github.com/pull/653) (22:30)
+### SIP-NN - [Allow referring to other arguments in default parameters](https://github.com/scala/docs.scala-lang/pull/653) (22:30)
 Sébastien is the reviewer of this proposal.
 
 **Sébastien** The SIP is a generalization of why we can use in default values of parameters. Especially referring to other arguments. In current Scala we can refer to arguments in previous parameter lists. This SIP wants to open that up. The way it's currently written, any parameter whether it's in the same parameter list or a previous one, it's also allowed to refer to argument on the right. The text needs to be elaborated on use cases. Doesn't address implementation concerns. Jorge answered on the PR with analysis of feasibility. I'm convinced that the version where we can also refer to a parameter on the right is infeasible because you can have arbitrary cycles and you don't know _______ ( 24:55) and it's completely impossible.
