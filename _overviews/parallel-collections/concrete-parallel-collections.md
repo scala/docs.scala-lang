@@ -32,9 +32,9 @@ arrays in the sense that their size is constant.
     res1: scala.collection.parallel.mutable.ParArray[Int] = ParArray(0, 1, 2, 3, 4, 5, 6, 7,...
 
 Internally, splitting a parallel array
-[splitter]({{ site.baseurl }}/overviews/parallel-collections/architecture.html#core_abstractions)
+[splitter]({{ site.baseurl }}/overviews/parallel-collections/architecture.html#core-abstractions)
 amounts to creating two new splitters with their iteration indices updated.
-[Combiners]({{ site.baseurl }}/overviews/parallel-collections/architecture.html#core_abstractions)
+[Combiners]({{ site.baseurl }}/overviews/parallel-collections/architecture.html#core-abstractions)
 are slightly more involved.Since for most transformer methods (e.g. `flatMap`, `filter`, `takeWhile`,
 etc.) we don't know the number of elements (and hence, the array size) in
 advance, each combiner is essentially a variant of an array buffer with an
@@ -65,9 +65,9 @@ update time.
     res0: scala.collection.parallel.immutable.ParVector[Int] = ParVector(0, 2, 4, 6, 8, 10, 12, 14, 16, 18,...
 
 Immutable vectors are represented by 32-way trees, so
-[splitter]({{ site.baseurl }}/overviews/parallel-collections/architecture.html#core_abstractions)s
+[splitter]({{ site.baseurl }}/overviews/parallel-collections/architecture.html#core-abstractions)s
 are split by assigning subtrees to each splitter.
-[Combiners]({{ site.baseurl }}/overviews/parallel-collections/architecture.html#core_abstractions)
+[Combiners]({{ site.baseurl }}/overviews/parallel-collections/architecture.html#core-abstractions)
 currently keep a vector of
 elements and are combined by lazily copying the elements. For this reason,
 transformer methods are less scalable than those of a parallel array. Once the
@@ -94,7 +94,7 @@ created in a similar way as the sequential
     res1: scala.collection.parallel.immutable.ParRange = ParRange(15, 13, 11, 9, 7, 5)
 
 Just as sequential ranges have no builders, parallel ranges have no
-[combiner]({{ site.baseurl }}/overviews/parallel-collections/architecture.html#core_abstractions)s.
+[combiner]({{ site.baseurl }}/overviews/parallel-collections/architecture.html#core-abstractions)s.
 Mapping the elements of a parallel range produces a parallel vector.
 Sequential ranges and parallel ranges can be converted efficiently one from
 another using the `seq` and `par` methods.
@@ -153,7 +153,7 @@ and
     res0: Int = 332833500
 
 Similar to parallel hash tables, parallel hash trie
-[combiners]({{ site.baseurl }}/overviews/parallel-collections/architecture.html#core_abstractions)
+[combiners]({{ site.baseurl }}/overviews/parallel-collections/architecture.html#core-abstractions)
 pre-sort the
 elements into buckets and construct the resulting hash trie in parallel by
 assigning different buckets to different processors, which construct the
@@ -194,7 +194,7 @@ following example which outputs square roots of number from 1 to 99:
 	...
 
 
-[Combiners]({{ site.baseurl }}/overviews/parallel-collections/architecture.html#core_abstractions)
+[Combiners]({{ site.baseurl }}/overviews/parallel-collections/architecture.html#core-abstractions)
 are implemented as `TrieMap`s under the hood-- since this is a
 concurrent data structure, only one combiner is constructed for the entire
 transformer method invocation and shared by all the processors.

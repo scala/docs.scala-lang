@@ -23,7 +23,7 @@ A subset of def macros, pending a thorough specification, is tentatively schedul
 so naturally the contents of the document are outdated. Nevertheless, this guide is not obsolete -
 everything written here will still work in both Scala 2.10.x and Scala 2.11.x, so it will be helpful to read it through.
 After reading the guide, take a look at the docs on [quasiquotes](/overviews/quasiquotes/intro.html)
-and [macro bundles](/overviews/macros/bundles.html) to familiarize yourself with latest developments
+and [macro bundles](bundles.html) to familiarize yourself with latest developments
 that dramatically simplify writing macros. Then it might be a good idea to follow
 [our macro workshop](https://github.com/scalamacros/macrology201) for more in-depth examples.
 
