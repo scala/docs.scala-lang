@@ -13,7 +13,7 @@ permalink: /overviews/quasiquotes/:title.html
 ---
 **Denys Shabalin** <span class="tag" style="float: right;">EXPERIMENTAL</span>
 
-Lifting is an extensible way to unquote custom data types in quasiquotes. Its primary use-case is support unquoting of [literal](/overviews/quasiquotes/expression-details.html#literal) values and a number of reflection primitives as trees:
+Lifting is an extensible way to unquote custom data types in quasiquotes. Its primary use-case is support unquoting of [literal]({{ site.baseurl }}/overviews/quasiquotes/expression-details.html#literal) values and a number of reflection primitives as trees:
 
     scala> val two = 1 + 1
     two: Int = 2
@@ -69,7 +69,7 @@ This way, whenever a value of type `Point` is unquoted at runtime it will be aut
    compatible with the others. This problem is caused by the path-dependent nature of the current reflection
    API. (see [sharing liftable implementation between universes](#reusing-liftable-implementation-between-universes))
 
-3. Due to a lack of [hygiene](/overviews/quasiquotes/hygiene.html), the reference to `Point`'s companion
+3. Due to a lack of [hygiene]({{ site.baseurl }}/overviews/quasiquotes/hygiene.html), the reference to `Point`'s companion
    has to be fully qualified to ensure the correctness of this tree in every possible context. Another
    way to workaround this reference issue is to use symbols instead:
 

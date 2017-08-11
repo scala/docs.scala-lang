@@ -9,7 +9,7 @@ layout: inner-page-parent-dropdown
 				{{content}}
         {% if page.languages %}
           <ul id="available-languages" style="display: none;">
-            <li><a href="{{ page.url }}">English</a></li>
+            <li><a href="{{site.baseurl}}{{ page.url }}">English</a></li>
             {% for l in page.languages %}
               {% capture intermediate %}{{ page.url | remove_first: l }}{% endcapture %}
               {% capture rootTutorialURL %}{{ intermediate | remove_first: '/' }}{% endcapture %}

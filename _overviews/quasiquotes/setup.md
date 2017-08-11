@@ -52,7 +52,7 @@ On the other side of spectrum there is also a `showRaw` pretty printer that show
 
 ## Scala 2.10
 
-In Scala 2.10, quasiquotes are only available via the [macro paradise compiler plugin](http://docs.scala-lang.org/overviews/macros/paradise.html).
+In Scala 2.10, quasiquotes are only available via the [macro paradise compiler plugin]({{ site.baseurl }}/overviews/macros/paradise.html).
 
 In short, using quasiquotes in 2.10 is as simple as adding a single `addCompilerPlugin` line to your sbt build for the macro paradise plugin that enables quasiquotes and an additional `libraryDependencies` line for the supporting library that is necessary for quasiquotes to function in Scala 2.10. A full example is provided at [https://github.com/scalamacros/sbt-example-paradise](https://github.com/scalamacros/sbt-example-paradise).
 

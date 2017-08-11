@@ -22,7 +22,7 @@ A subset of def macros, pending a thorough specification, is tentatively schedul
 <span class="label success">UPDATE</span> This guide has been written for Scala 2.10.0, and now we're well into the Scala 2.11.x release cycle,
 so naturally the contents of the document are outdated. Nevertheless, this guide is not obsolete -
 everything written here will still work in both Scala 2.10.x and Scala 2.11.x, so it will be helpful to read it through.
-After reading the guide, take a look at the docs on [quasiquotes](/overviews/quasiquotes/intro.html)
+After reading the guide, take a look at the docs on [quasiquotes]({{ site.baseurl }}/overviews/quasiquotes/intro.html)
 and [macro bundles](bundles.html) to familiarize yourself with latest developments
 that dramatically simplify writing macros. Then it might be a good idea to follow
 [our macro workshop](https://github.com/scalamacros/macrology201) for more in-depth examples.
@@ -136,7 +136,7 @@ This also means that the code below won't work for `printf(get_format(), ...)`, 
     val Literal(Constant(s_format: String)) = format.tree
 
 Typical macros (and this macro is not an exception) need to create ASTs (abstract syntax trees) which represent Scala code.
-To learn more about generation of Scala code, take a look at [the overview of reflection](http://docs.scala-lang.org/overviews/reflection/overview.html). Along with creating ASTs the code provided below also manipulates types.
+To learn more about generation of Scala code, take a look at [the overview of reflection]({{ site.baseurl }}/overviews/reflection/overview.html). Along with creating ASTs the code provided below also manipulates types.
 Note how we get a hold of Scala types that correspond to `Int` and `String`.
 Reflection overview linked above covers type manipulations in detail.
 The final step of code generation combines all the generated code into a `Block`.

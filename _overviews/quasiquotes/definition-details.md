@@ -115,7 +115,7 @@ The template consists of:
 
 ## Val and Var Definitions
 
-`val`s and `var`s allow you to define immutable values and mutable variables respectively. Additionally they can be used to represent [function](/overviews/quasiquotes/expression-details.html#function), [class](#class-definition) and [method](#method-definition) parameters.
+`val`s and `var`s allow you to define immutable values and mutable variables respectively. Additionally they can be used to represent [function](expression-details.html#function), [class](#class-definition) and [method](#method-definition) parameters.
 
 Each `val` and `var` consistents of four components: modifiers, a name, a type tree and a right hand side:
 
@@ -128,7 +128,7 @@ Each `val` and `var` consistents of four components: modifiers, a name, a type t
     tpt: universe.Tree = <type ?>
     rhs: universe.Tree = 2
 
-If the type of the `val` isn't explicitly specified by the user an [empty type](/overviews/quasiquotes/type-details.html#empty-type) is used as `tpt`.
+If the type of the `val` isn't explicitly specified by the user an [empty type](type-details.html#empty-type) is used as `tpt`.
 
 `val`s and `var`s are disjoint (they don't match one another):
 
@@ -216,7 +216,7 @@ Abstract type definitions have the following shape:
     low: universe.Tree = <empty>
     high: universe.Tree = List[T]
 
-Whenever one of the bounds isn\'t available, it gets represented as an [empty tree](/overviews/quasiquotes/expression-details.html#empty). Here each of the type arguments is a type definition itself.
+Whenever one of the bounds isn\'t available, it gets represented as an [empty tree](expression-details.html#empty). Here each of the type arguments is a type definition itself.
 
 Another form of type definition is a type alias:
 
@@ -249,7 +249,7 @@ Each method consists of modifiers, a name, type arguments, value arguments, retu
     tpt: universe.Tree = <type ?>
     body: universe.Tree = 1
 
-Type arguments are [type definitions](#type-definition) and value arguments are [val definitions](#val-and-var-definitions). The inferred return type is represented as an [empty type](/overviews/quasiquotes/type-details.html#empty-type). If the body of the method is an [empty expression](/overviews/quasiquotes/expression-details.html#empty) it means that method is abstract.
+Type arguments are [type definitions](#type-definition) and value arguments are [val definitions](#val-and-var-definitions). The inferred return type is represented as an [empty type](type-details.html#empty-type). If the body of the method is an [empty expression](expression-details.html#empty) it means that method is abstract.
 
 Alternatively you can also deconstruct arguments, separating implicit and non-implicit parameters:
 
