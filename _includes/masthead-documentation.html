@@ -6,7 +6,7 @@
           <div class="section">
             <h2 class="frontpage">{{ section.title }}</h2>
             {% for link in section.links %}
-  					<a href="{{link.link}}" class="doc-item">
+  					<a href="{% if link.link contains '://' %}{{link.link}}{% else %}{{site.baseurl}}{{link.link}}{% endif %}" class="doc-item">
   						<div class="doc-item-header">
   							<i class="{{link.icon}}"></i>
   							<h5>{{link.title}}</h5>
@@ -22,7 +22,7 @@
               <span class="heading">More Resources: </span>
               <ul>
               {% for resource in section.more-resources %}
-                <li><a href="{{ resource.url }}">{{ resource.title }}</a></li>
+                <li><a href="{{ site.baseurl }}{{ resource.url }}">{{ resource.title }}</a></li>
               {% endfor %}
               </ul>
             {% endif %}

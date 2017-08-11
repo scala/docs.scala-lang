@@ -18,7 +18,7 @@ While [upper type bounds](upper-type-bounds.html) limit a type to a subtype of a
 
 Here is an example where this is useful:
 
-```tut:fail
+```tut
 trait Node[+B] {
   def prepend(elem: B): Unit
 }

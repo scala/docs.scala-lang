@@ -142,7 +142,7 @@ an abstract syntax tree and an internal type tag to provide access to the type
 of the tree. `Expr`s are mainly used to simply and conveniently create typed
 abstract syntax trees for use in a macro. In most cases, this involves methods
 `reify` and `splice` (see the
-[macros guide](http://docs.scala-lang.org/overviews/macros/overview.html) for details).
+[macros guide]({{ site.baseurl }}/overviews/macros/overview.html) for details).
 
 ## Flags and flag sets
 

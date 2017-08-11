@@ -13,7 +13,7 @@ permalink: /overviews/macros/:title.html
 
 **Eugene Burmako**
 
-Untyped macros used to be available in previous versions of ["Macro Paradise"](/overviews/macros/paradise.html),
+Untyped macros used to be available in previous versions of ["Macro Paradise"](paradise.html),
 but are not supported anymore in macro paradise 2.0.
 Visit [the paradise 2.0 announcement](http://scalamacros.org/news/2013/08/05/macro-paradise-2.0.0-snapshot.html)
 for an explanation and suggested migration strategy.

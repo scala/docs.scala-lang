@@ -42,13 +42,13 @@ All of those values are of type `Literal` except symbols, which have a different
     scala> val foo = q"'foo"
     foo: universe.Tree = scala.Symbol("foo")
 
-Thanks to [lifting](/overviews/quasiquotes/lifting.html), you can also easily create literal trees directly from values of corresponding types:
+Thanks to [lifting]({{ site.baseurl }}/overviews/quasiquotes/lifting.html), you can also easily create literal trees directly from values of corresponding types:
 
     scala> val x = 1
     scala> val one = q"$x"
     one: universe.Tree = 1
 
-This would work the same way for all literal types (see [standard liftables](/overviews/quasiquotes/lifting.html#standard-liftables) except `Null`. Lifting of the `null` value into the `Null` type isn't supported; use `q"null"` if you really want to create a `null` literal:
+This would work the same way for all literal types (see [standard liftables]({{ site.baseurl }}/overviews/quasiquotes/lifting.html#standard-liftables) except `Null`. Lifting of the `null` value into the `Null` type isn't supported; use `q"null"` if you really want to create a `null` literal:
 
     scala> val x = null
     scala> q"$x"
@@ -56,12 +56,12 @@ This would work the same way for all literal types (see [standard liftables](/ov
                   q"$x"
                      ^
 
-During deconstruction you can use [unlifting](/overviews/quasiquotes/unlifting.html) to extract values out of `Literal` trees:
+During deconstruction you can use [unlifting]({{ site.baseurl }}/overviews/quasiquotes/unlifting.html) to extract values out of `Literal` trees:
 
     scala> val q"${x: Int}" = q"1"
     x: Int = 1
 
-Similarly it would work with all the literal types except `Null`. (see [standard unliftables](/overviews/quasiquotes/unlifting.html#standard-unliftables))
+Similarly it would work with all the literal types except `Null`. (see [standard unliftables]({{ site.baseurl }}/overviews/quasiquotes/unlifting.html#standard-unliftables))
 
 ## Identifier and Selection
 
@@ -86,7 +86,7 @@ Although backquoted and non-backquoted identifiers may refer to the same thing t
 
 This is because backquoted identifiers have different semantics in pattern patching.
 
-Apart from matching on identifiers with a given name, you can also extract their name values with the help of [unlifting](/overviews/quasiquotes/unlifting.html):
+Apart from matching on identifiers with a given name, you can also extract their name values with the help of [unlifting]({{ site.baseurl }}/overviews/quasiquotes/unlifting.html):
 
     scala> val q"${name: TermName}" = q"Foo"
     name: universe.TermName = Foo
@@ -273,7 +273,7 @@ It's important to mention that such a pattern won't match if we combine annotati
     scala.MatchError: (1.$plus(1): Int @positive) (of class scala.reflect.internal.Trees$Typed)
       ... 32 elided
 
-In this case we need to deconstruct it as an [ascription](#ascription) and then deconstruct `tpt` as an [annotated type](/overviews/quasiquotes/type-details.html#annotated-type).
+In this case we need to deconstruct it as an [ascription](#ascription) and then deconstruct `tpt` as an [annotated type]({{ site.baseurl }}/overviews/quasiquotes/type-details.html#annotated-type).
 
 ## Tuple
 
@@ -474,7 +474,7 @@ There are three ways to create anonymous function:
 
 The first one uses the placeholder syntax. The second one names the function parameter but still relies on type inference to infer its type. An the last one explicitly defines the function parameter. Due to an implementation restriction, the second notation can only be used in parentheses or inside another expression. If you leave them out the you must specify the parameter types.
 
-Parameters are represented as [Vals](/overviews/quasiquotes/definition-details.html#val-and-var-definitions). If you want to programmatically create a `val` that should have its type inferred you need to use the [empty type](/overviews/quasiquotes/type-details.html#empty-type):
+Parameters are represented as [Vals]({{ site.baseurl }}/overviews/quasiquotes/definition-details.html#val-and-var-definitions). If you want to programmatically create a `val` that should have its type inferred you need to use the [empty type]({{ site.baseurl }}/overviews/quasiquotes/type-details.html#empty-type):
 
     scala> val tpt = tq""
     tpt: universe.TypeTree = <type ?>
@@ -504,7 +504,7 @@ You can also tear arguments apart even further:
     name: universe.TermName = a
     tpt: universe.Tree = Int
 
-It is recommended that you use the underscore pattern in place of [modifiers](/overviews/quasiquotes/definition-details.html#modifiers), even if you don't plan to work with them as parameters, they may contain additional flags which might cause match failures.
+It is recommended that you use the underscore pattern in place of [modifiers]({{ site.baseurl }}/overviews/quasiquotes/definition-details.html#modifiers), even if you don't plan to work with them as parameters, they may contain additional flags which might cause match failures.
 
 ## Partial Function
 
@@ -598,7 +598,7 @@ New expressions let you construct an instance of given type, possibly refining i
     parents: List[universe.Tree] = List(Foo(1), Bar)
     body: List[universe.Tree] = List(def baz = 2)
 
-See the [templates](/overviews/quasiquotes/definition-details.html#templates) section for details.
+See the [templates]({{ site.baseurl }}/overviews/quasiquotes/definition-details.html#templates) section for details.
 
 ## Import
 

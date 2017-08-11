@@ -22,7 +22,7 @@ permalink: /overviews/macros/:title.html
 Macro paradise is a plugin for several versions of Scala compilers.
 It is designed to reliably work with production releases of <code>scalac</code>,
 making latest macro developments available way before they end up in future versions Scala.
-Refer to the roadmap for [the list of supported features and versions](/overviews/macros/roadmap.html)
+Refer to the roadmap for [the list of supported features and versions](roadmap.html)
 and visit [the paradise announcement](http://scalamacros.org/news/2013/08/07/roadmap-for-macro-paradise.html)
 to learn more about our support guarantees.
 
@@ -38,11 +38,11 @@ to learn more about our support guarantees.
 
 Some features in macro paradise bring a compile-time dependency on the macro paradise plugin,
 some features do not, however none of those features need macro paradise at runtime.
-Proceed to the [the feature list](/overviews/macros/roadmap.html) document for more information.
+Proceed to the [the feature list](roadmap.html) document for more information.
 
 Consult [https://github.com/scalamacros/sbt-example-paradise](https://github.com/scalamacros/sbt-example-paradise)
 for an end-to-end example, but in a nutshell working with macro paradise is as easy as adding the following two lines
-to your build (granted you’ve already [set up sbt](/overviews/macros/overview.html#using-macros-with-maven-or-sbt)
+to your build (granted you’ve already [set up sbt](overview.html#using-macros-with-maven-or-sbt)
 to use macros).
 
     resolvers += Resolver.sonatypeRepo("releases")

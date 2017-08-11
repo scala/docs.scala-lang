@@ -7,8 +7,8 @@ includeTOC: true
 ---
 
 ## Quick Reference
-* [Glossary](/glossary/) of Scala terms
-* [Cheatsheet](/cheatsheets/) for syntax. This can be useful for quickly picking up the syntax once you understand the basics of the language.
+* [Glossary]({{ site.baseurl }}/glossary/) of Scala terms
+* [Cheatsheet]({{ site.baseurl }}/cheatsheets/) for syntax. This can be useful for quickly picking up the syntax once you understand the basics of the language.
 
 ## Search the API
 The searchable API docs below are an invaluable resource as you make use of the Scala libraries. For newcomers to Scala, start with the [Standard Library API for 2.12.2](http://www.scala-lang.org/api/2.12.2/).
