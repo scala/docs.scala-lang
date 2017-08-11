@@ -18,7 +18,7 @@ While [upper type bounds](upper-type-bounds.html) limit a type to a subtype of a
 
 Here is an example where this is useful:
 
-```tut
+```tut:fail
 trait Node[+B] {
   def prepend(elem: B): Unit
 }
@@ -33,6 +33,7 @@ case class Nil[+B]() extends Node[B] {
   def prepend(elem: B) = ListNode[B](elem, this)
 }
 ```
+
 This program implements a singly-linked list. `Nil` represents an empty element (i.e. an empty list). `class ListNode` is a node which contains an element of type `B` (`head`) and a reference to the rest of the list (`tail`). The `class Node` and its subtypes are covariant because we have `+B`.
 
 However, this program does _not_ compile because the parameter `elem` in `prepend` is of type `B`, which we declared *co*variant. This doesn't work because functions are *contra*variant in their parameter types and *co*variant in their result types.
