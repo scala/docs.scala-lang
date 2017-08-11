@@ -24,12 +24,12 @@ trait User {
 }
 
 trait Tweeter {
-	this: User =>  // reassign this
-	def tweet(tweetText: String) = println(s"$username: $tweetText")
+  this: User =>  // reassign this
+  def tweet(tweetText: String) = println(s"$username: $tweetText")
 }
 
 class VerifiedTweeter(val username_ : String) extends Tweeter with User {  // We mixin User because Tweeter required it
-	def username = s"real $username_"
+  def username = s"real $username_"
 }
 
 val realBeyoncé = new VerifiedTweeter("Beyoncé")
