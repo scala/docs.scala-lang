@@ -12,7 +12,9 @@ module Jekyll
     end
 
     def convert(content)
-        content.gsub("```tut\n", "```scala\n")
+      content = content.gsub("```tut:fail\n", "```scala\n")
+      content = content.gsub("```tut:nofail\n", "```scala\n")
+      content.gsub("```tut\n", "```scala\n")
     end
   end
 end
