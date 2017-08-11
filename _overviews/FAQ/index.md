@@ -16,7 +16,7 @@ provided by Daniel Sobral, adapted from his StackOverflow posts.
 <ul>
 {% for overview in overviews %}
   {% if overview.partof == "FAQ" %}
-    <li><a href="{{ overview.url }}">{{ overview.title }}</a></li>
+    <li><a href="{{ site.baseurl }}{{ overview.url }}">{{ overview.title }}</a></li>
   {% endif %}
 {% endfor %}
 </ul>

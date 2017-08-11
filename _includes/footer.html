@@ -5,7 +5,7 @@
           <ul class="{{item.class}}">
             <li><h3>{{item.title}}</h3></li>
             {% for link in item.links %}
-              <li><a href="{{link.url}}">{{link.title}}</a></li>
+              <li><a href="{% if link.url contains '://' %}{{link.url}}{% else %}{{site.baseurl}}{{link.url}}{% endif %}">{{link.title}}</a></li>
             {% endfor %}
           </ul>
         {% endfor %}

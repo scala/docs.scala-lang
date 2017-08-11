@@ -69,9 +69,9 @@ Each of these contexts is covered by a separate interpolator:
 
     | Used for
 ----|----------------
- q  | [expressions](/overviews/quasiquotes/syntax-summary.html#expressions), [definitions](/overviews/quasiquotes/syntax-summary.html#definitions) and [imports](http://localhost:4000/overviews/quasiquotes/expression-details.html#import)
- tq | [types](/overviews/quasiquotes/syntax-summary.html#types)
- pq | [patterns](/overviews/quasiquotes/syntax-summary.html#patterns)
+ q  | [expressions]({{ site.baseurl }}/overviews/quasiquotes/syntax-summary.html#expressions), [definitions]({{ site.baseurl }}/overviews/quasiquotes/syntax-summary.html#definitions) and [imports](http://localhost:4000/overviews/quasiquotes/expression-details.html#import)
+ tq | [types]({{ site.baseurl }}/overviews/quasiquotes/syntax-summary.html#types)
+ pq | [patterns]({{ site.baseurl }}/overviews/quasiquotes/syntax-summary.html#patterns)
 
 Syntactical similarity between different contexts doesn\'t imply similarity between underlying trees:
 
@@ -97,10 +97,10 @@ Additionally there are two auxiliary interpolators that let you work with minor 
 
     | Used for
 ----|-------------------------------------
- cq | [case clause](/overviews/quasiquotes/syntax-summary.html#auxiliary)
- fq | [for loop enumerator](/overviews/quasiquotes/syntax-summary.html#auxiliary)
+ cq | [case clause]({{ site.baseurl }}/overviews/quasiquotes/syntax-summary.html#auxiliary)
+ fq | [for loop enumerator]({{ site.baseurl }}/overviews/quasiquotes/syntax-summary.html#auxiliary)
 
-See the section [syntax summary](/overviews/quasiquotes/syntax-summary.html) for details.
+See the section [syntax summary]({{ site.baseurl }}/overviews/quasiquotes/syntax-summary.html) for details.
 
 ## Splicing
 
@@ -154,4 +154,4 @@ So, in general, only one `..$` is allowed per given list. Similar restrictions a
     case q"f(...$init)(..$first)" => // ok
     case q"f(...$a)(...$b)"       => // not allowed
 
-In this section we only worked with function arguments but the same splicing rules are true for all syntax forms with a variable number of elements. [Syntax summary](/overviews/quasiquotes/syntax-summary.html) and the corresponding details sections demonstrate how you can use splicing with other syntactic forms.
+In this section we only worked with function arguments but the same splicing rules are true for all syntax forms with a variable number of elements. [Syntax summary]({{ site.baseurl }}/overviews/quasiquotes/syntax-summary.html) and the corresponding details sections demonstrate how you can use splicing with other syntactic forms.

@@ -17,13 +17,13 @@ permalink: /overviews/quasiquotes/:title.html
 
 The empty type (`tq""`) is a canonical way to say that the type at given location isn't given by the user and should be inferred by the compiler:
 
-1. [Method](/overviews/quasiquotes/definition-details.html#method-definition) with unknown return type
-2. [Val or Var](/overviews/quasiquotes/definition-details.html#val-and-var-definitions) with unknown type
-3. [Anonymous function](/overviews/quasiquotes/expression-details.html#function) with unknown argument type
+1. [Method](definition-details.html#method-definition) with unknown return type
+2. [Val or Var](definition-details.html#val-and-var-definitions) with unknown type
+3. [Anonymous function](expression-details.html#function) with unknown argument type
 
 ## Type Identifier
 
-Similarly to [term identifiers](/overviews/quasiquotes/expression-details.html#identifier-and-selection) one can construct a type identifier based on a name:
+Similarly to [term identifiers](expression-details.html#identifier-and-selection) one can construct a type identifier based on a name:
 
     scala> val name = TypeName("Foo")
     name: universe.TypeName = Foo
@@ -31,7 +31,7 @@ Similarly to [term identifiers](/overviews/quasiquotes/expression-details.html#i
     scala> val foo = tq"$name"
     foo: universe.Ident = Foo
 
-And deconstruct it back through [unlifting](/overviews/quasiquotes/unlifting.html):
+And deconstruct it back through [unlifting](unlifting.html):
 
     scala> val tq"${name: TypeName}" = tq"Foo"
     name: universe.TypeName = Foo
@@ -74,7 +74,7 @@ But semantically, such selections are just a shortcut for a combination of singl
     scala> val projected = tq"scala.type#Int"
     projected: universe.SelectFromTypeTree = scala.type#Int
 
-Lastly and [similarly to expressions](/overviews/quasiquotes/expression-details.html#super-and-this) one can select members through `super` and `this`:
+Lastly and [similarly to expressions](expression-details.html#super-and-this) one can select members through `super` and `this`:
 
     scala> val superbar = tq"super.Bar"
     superbar: universe.Select = super.Bar
@@ -159,7 +159,7 @@ Alternatively there is also an underscrore notation:
 
 ## Tuple Type
 
-[Similar to expressions](/overviews/quasiquotes/expression-details.html#tuple), tuple types are just syntactic sugar over `TupleN` classes:
+[Similar to expressions](expression-details.html#tuple), tuple types are just syntactic sugar over `TupleN` classes:
 
     scala> val tup2 = tq"(A, B)"
     tup2: universe.Tree = scala.Tuple2[A, B]
@@ -172,7 +172,7 @@ Analogously the `Unit` type is considered to be a nullary tuple:
     scala> val tq"(..$tpts)" = tq"_root_.scala.Unit"
     tpts: List[universe.Tree] = List()
 
-It is important to mention that pattern matching a reference to `Unit` is limited to either fully the qualified path or a reference that contains symbols. (see [hygiene](/overviews/quasiquotes/hygiene.html))
+It is important to mention that pattern matching a reference to `Unit` is limited to either fully the qualified path or a reference that contains symbols. (see [hygiene](hygiene.html))
 
 ## Function Type
 

@@ -51,7 +51,7 @@ In particular, text is aligned on a multiple of two columns,
 since Scala source is usually indented by two columns.
 
 See
-[Scaladoc for Library Authors](/overviews/scaladoc/for-library-authors.html)
+[Scaladoc for Library Authors]({{ site.baseurl }}/overviews/scaladoc/for-library-authors.html)
 for more technical info on formatting Scaladoc.
 
 ## General Style

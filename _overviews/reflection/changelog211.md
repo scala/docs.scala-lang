@@ -15,4 +15,4 @@ permalink: /overviews/reflection/:title.html
 
 **Eugene Burmako**
 
-The page lives at [/overviews/macros/changelog211.html](/overviews/macros/changelog211.html).
+The page lives at [/overviews/macros/changelog211.html]({{ site.baseurl }}/overviews/macros/changelog211.html).

@@ -22,7 +22,7 @@ neither in 2.10.x, nor in 2.11.
 
 An extension to implicit macros,
 called fundep materialization, is unavailable in 2.10.0 through 2.10.4, but has been implemented in
-[macro paradise](/overviews/macros/paradise.html), Scala 2.10.5 and Scala 2.11.x.
+[macro paradise](paradise.html), Scala 2.10.5 and Scala 2.11.x.
 Note that in 2.10.0 through 2.10.4, expansion of fundep materializer macros requires macro paradise,
 which means that your users will have to add macro paradise to their builds in order to use your fundep materializers.
 However, after fundep materializers expand, the resulting code will no longer have any references to macro paradise
@@ -157,7 +157,7 @@ Please note that there is [a funny caveat](https://github.com/scala/scala/blob/7
 
 ## Blackbox vs whitebox
 
-Vanilla materializers (covered in the first part of this document) can be both [blackbox](/overviews/macros/blackbox-whitebox.html) and [whitebox](/overviews/macros/blackbox-whitebox.html).
+Vanilla materializers (covered in the first part of this document) can be both [blackbox](blackbox-whitebox.html) and [whitebox](blackbox-whitebox.html).
 
 There is a noticeable distinction between blackbox and whitebox materializers. An error in an expansion of a blackbox implicit macro (e.g. an explicit <code>c.abort</code> call or an expansion typecheck error) will produce a compilation error. An error in an expansion of a whitebox implicit macro will just remove the macro from the list of implicit candidates in the current implicit search, without ever reporting an actual error to the user. This creates a trade-off: blackbox implicit macros feature better error reporting, while whitebox implicit macros are more flexible, being able to dynamically turn themselves off when necessary.
 
