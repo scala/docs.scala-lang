@@ -3,7 +3,7 @@ layout: sip-landing
 title: SIP Meeting Minutes - 13th July 2016
 ---
 
-# Minutes
+# Minutes II
 
 The following agenda was distributed to attendees:
 
@@ -15,14 +15,6 @@ The following agenda was distributed to attendees:
 | [SIP 22 - Async](http://docs.scala-lang.org/sips/pending/async.html) | Eugene Burmako |
 | [SIP 20 - Improved lazy val initialization](http://docs.scala-lang.org/sips/pending/improved-lazy-val-initialization.html) | Sébastien Doeraene |
 | [Trailing commas SIP](https://github.com/scala/scala.github.com/pull/533) | Eugene Burmako |
-
-Quick iteration through all the SLIPs:
-
-* [Adding standard JSON AST](https://github.com/scala/slip/pull/28)
-* [Extensions of Futures and Promises ](https://github.com/scala/slip/issues/7)
-* [Implicit enrichment of Either to support Monadic bias](https://github.com/scala/slip/pull/20)
-* [Adding scala.io.Target](https://github.com/scala/slip/pull/2)
-* [SLIP 27 - Redesigning collection views](https://github.com/scala/slip/blob/master/text/0027-collection-view-redesign.md)
 
 Jorge Vicente Cantero was the Process Lead and acting secretary of the meeting.
 
