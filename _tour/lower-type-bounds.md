@@ -58,13 +58,13 @@ case class Nil[+B]() extends Node[B] {
 
 Now we can do the following:
 ```tut
-trait Mammal
-case class AfricanSwallow() extends Mammal
-case class EuropeanSwallow() extends Mammal
+trait Bird
+case class AfricanSwallow() extends Bird
+case class EuropeanSwallow() extends Bird
 
 
 val africanSwallowList= ListNode[AfricanSwallow](AfricanSwallow(), Nil())
-val mammalList: Node[Mammal] = africanSwallowList
-mammalList.prepend(new EuropeanSwallow)
+val birdList: Node[Bird] = africanSwallowList
+birdList.prepend(new EuropeanSwallow)
 ```
-The `Node[Mammal]` can be assigned the `africanSwallowList` but then accept `EuropeanSwallow`s.
+The `Node[Bird]` can be assigned the `africanSwallowList` but then accept `EuropeanSwallow`s.
