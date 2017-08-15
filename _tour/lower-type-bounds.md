@@ -42,7 +42,7 @@ To fix this, we need to flip the variance of the type of the parameter `elem` in
 
 ```tut
 trait Node[+B] {
-  def prepend[U >: B](elem: U)
+  def prepend[U >: B](elem: U): Node[B]
 }
 
 case class ListNode[+B](h: B, t: Node[B]) extends Node[B] {
@@ -58,13 +58,13 @@ case class Nil[+B]() extends Node[B] {
 
 Now we can do the following:
 ```tut
-trait Mammal
-case class AfricanSwallow() extends Mammal
-case class EuropeanSwallow() extends Mammal
+trait Bird
+case class AfricanSwallow() extends Bird
+case class EuropeanSwallow() extends Bird
 
 
 val africanSwallowList= ListNode[AfricanSwallow](AfricanSwallow(), Nil())
-val mammalList: Node[Mammal] = africanSwallowList
-mammalList.prepend(new EuropeanSwallow)
+val birdList: Node[Bird] = africanSwallowList
+birdList.prepend(new EuropeanSwallow)
 ```
-The `Node[Mammal]` can be assigned the `africanSwallowList` but then accept `EuropeanSwallow`s.
+The `Node[Bird]` can be assigned the `africanSwallowList` but then accept `EuropeanSwallow`s.
