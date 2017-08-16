@@ -1,6 +1,6 @@
 ---
 layout: sips
-title: SIP Meeting Minutes - 29th November 2016
+title: SIP Meeting Minutes - 8th May 2017
 
 partof: minutes
 ---
