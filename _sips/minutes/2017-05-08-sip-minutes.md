@@ -11,89 +11,83 @@ The following agenda was distributed to attendees:
 
 |Topic|Reviewers| Accepted/Rejected |
 | --- | --- | --- |
-| [SIP-28 and SIP-29 - Inline and meta](http://docs.scala-lang.org/sips/pending/inline-meta.html) | Josh Suereth and Iulian Dragos | Pending |
-| [SIP-24 - Repeated By Name Parameters](http://docs.scala-lang.org/sips/pending/repeated-byname.html) | Heather Miller | Pending |
-| [SIP-25:Static](https://github.com/scala/docs.scala-lang/pull/491/files)| Adriaan Moors | Pending |
-|[SIP-27: Trailing commas](http://docs.scala-lang.org/sips/completed/trailing-commas.html)|Eugene Burkamo| Accepted |
+| [SIP-NN - comonadic-comprehensions](http://docs.scala-lang.org/sips/comonadic-comprehensions.html) | Shimi Bandiel | Rejected |
+| [SIP-33 - Match infix & prefix types to meet expression rules](http://docs.scala-lang.org/sips/make-types-behave-like-expressions.html)| Oron Port | Pending |
+|Scala Library Changes|Adriaan Moors| **WHAT DO I PUT HERE** |
 
-Jorge Vicente Cantero was the Process Lead and Travis Lee was the secretary.
+Jorge Vicente Cantero was the Process Lead.
 
 
 ## Date and Location
-The meeting took place on 29 November 2016 via Google Hangouts at EPFL in Lausanne, Switzerland as well as other locations.
+The meeting took place on 8 May 2017 via Google Hangouts at EPFL in Lausanne, Switzerland as well as other locations.
 
-Minutes were taken by Travis Lee.
+[Watch on Scala Center YouTube channel](https://youtu.be/6rKa4OV7GfM)
+
+Minutes were taken by Darja Jovanovic.
 
 ## Attendees
 
 * Martin Odersky ([@odersky](https://github.com/odersky)), EPFL
 * Jorge Vicente Cantero ([@jvican](https://github.com/jvican)), Process Lead
 * Seth Tisue ([@SethTisue](https://github.com/SethTisue)), Lightbend
-* Heather Miller ([@heathermiller](https://github.com/heathermiller)), Scala Center
 * Sébastien Doeraene ([@sjrd](https://github.com/sjrd)), EPFL
 * Eugene Burmako ([@xeno-by](https://github.com/xeno-by)), EPFL
 * Iulian Dragos ([@dragos](https://github.com/dragos)), Independent
 * Adriaan Moors ([@adriaanm](https://github.com/adriaanm)), Lightbend
-* Dale Wijnand ([@dwijnand](https://github.com/dwijnand)), author of SIP-27
 
 
 ## Proceedings
 ### Opening Remarks
 
-**Jorge** We'll talk about the SIPS for Scala Meta. Eugene will start.
+**Jorge** going over the agenda, points out that the second item will be skipped because they are waiting for the prototype from the author of the proposal.
 
-### [SIP-28 and SIP-29 - Inline and meta](http://docs.scala-lang.org/sips/pending/inline-meta.html)
+### [SIP-NN - comonadic-comprehensions](http://docs.scala-lang.org/sips/comonadic-comprehensions.html)
+[YouTube time: 1:39](https://youtu.be/6rKa4OV7GfM?t=99)
 
-Eugene and co have been working hard for two months on inline and Scala Meta. Previously discussed new macro system with new inline and meta features. Inline provides a facility to declare methods with inline right hand side into call side (0:01:24) and meta implements compile-time function execution to do meta-programming. Martin implemented inline mechanism in Dotty. Eugene worked on macro notations. New style macros will integrate with tools. Eugene shows how it works in IntelliJ. For example, you can print the value of the parameters. Meta blocks supported by IntelliJ. So are quasi-quotes. You can also expand macros. Will greatly help debugability.
+Proposal aims to introduce new syntax from comprehension for monads to comonads.
+Martin is the reviewer. He asks others attendees for their opinion on this.  Everyone had read the SIP.
 
-Iulian says we should flesh out the Scala meta API.
+**Eugene** referred to original proposal and wishes to see a better motivation for this language feature encouraging use of “plain English” to simplify the use of Scala as practice oriented language. He believes that it could be critical how this SIP can be improved. During the recent conference, organized by Facebook, he spoke with typescript guys that are developing idiomic solutions that would benefit typescript and javascript and allow community users to give their inputs.
+Refers to the paper “Denotation” he linked in a proposal, that is not enough for Scala, but a good start.
 
-The spec needs to be updated based on Martin's Dotty implementation. We need to split the SIPs for the next meeting.
+**Jorge** is getting back discussion on voting on this proposal and he mentioned that Josh insisted on more examples and suggestions on motivation of this SIP.
 
-**Conclusion** This proposal needs at least another iteration to shape up and provide concrete implementation and specification details. This proposal is therefore under revision -- Eugene, the author, will gather and address more feedback and will resubmit the proposal to analysis when it's ready.
+**Eugene** wanted to add more syntax (map and flatmap), but Martin opposed to that saying that Scala is quite serious program and needs more reason to add any additional syntax to it. **Martin** would like to see more widespread use of common attic constructs and Libraries, and before doing that, he wouldn’t consider any further change. **Sebastian** agrees with Martin and says that he doesn’t really understand Josh’s and Eugene’s proposal. **Iulian** agrees that the proposal is quite complicated and he wonders how it can be useful. He believes that it is an interesting research direction, but that it needs more users feedbacks in aim to be included in the Scala, therefore questioning if the proposal should be numbered in the current form. Seth and Adriaan agree with Martin and Iulian.
 
-### [SIP-24 - Repeated By Name Parameters](http://docs.scala-lang.org/sips/pending/repeated-byname.html)
+**Conclusion** Proposal discarded unanimously. They will send the feedback to the author.
 
-Heather says the debate is about the semantics or translation rules. All arguments are evaluated each time the parameter is referenced in the method. This is implemented in Dotty. Should this be implemented in Scalac?
+### [SIP-33 - Match infix & prefix types to meet expression rules](http://docs.scala-lang.org/sips/make-types-behave-like-expressions.html)
 
-Sébastien thinks that Java bridge should be forbidden in this case. It's annotation that we add, so we could just make it an error.
+Skipped since they are waiting for the prototype from the author of the proposal.
 
-The SIP needs more examples. Martin says it's to remove an annoying restriction; there's no reason we can't we mix repeated and by name parameters. Evaluating them all together is much simpler. There's another reason regarding case classes. Inline function should maintain call by value semantics. Pass parameters by name just to be clean.
+### Scala Library Changes
+ [YouTube time 10:52](https://youtu.be/6rKa4OV7GfM?t=652)
 
-The main motivation is to prepare for inline. Inline won't work very well without this. Need to flesh this out in SIP.
+ **Adriaan** starts presentation and notes that feedbacks on his proposal are available through the 2.13 platform. It is more reorganization of things in different modules. He suggests list of packages, from the ticket, that he believes shouldn’t be in the core:
+ *Scala concurrent*, *Scala.ref*, *Scala.cis*, *Scala.compat* (that is already totally deprecated), *Scala.text* (that has already couple of things that are deprecated), *Scala.util*; whereas *Scala.io* and *Scala.sys* are good candidates for replacements with better community modules.
+ Also, some hashing could be removed in separate package and make Scala package cut clean. He is open to discuss if some of these packages should stay in the Scala Library Jar. Most of these packages are subjects of deprecations.
+ Scala concurrent could live in its current form, but it could be split out since it’s dependent platform however.
 
-**Conclusion** There is not an implementation for Scalac, but for Dotty. This proposal is on hold until the Committee decides the specifics of the Inline proposal and how it relates to it. After that, the author will resubmit the proposal for further analysis.
+ **Jorge** asks what they should change in XML. **Adriaan** says that it’s already a model and all these packages should wing as Scala changes. If no one from the community does push forward to maintain that, they should continue maintaining them through depreciation cycle, helped by replacement through SPPs. All these packages and classes of packages should be available in 2.13 as Jars, but you should add them by yourself to your classpath if you are using them.
 
-### [SIP-NN:Static](https://github.com/scala/docs.scala-lang/pull/491/files)
+ **Martin** asks what they’ll get with this breaking of the system, since each package depends on each other.
 
-Iulian says too much code is generated by annotations. We could solve name clashes the way ScalaJS does by specifying the exported name. How can we wake code generation predictable without looking at annotations? How do we emit public static field without accessors? Having everything emitted as static and object where possible is going to simplify reasoning about how things are initialized.
+ **Adriaan** propose that Scala concurrent can stay, if there is no use of separation. He also agrees that Scala.util should not be removed. But others are good candidates for separation, due to their lower quality. That will allow them faster cycle of reparation.
 
-How should a user decide when to use static? It is platform-dependent.
+ **Martin** says to keep Scala math.
 
-This would generate another set of accessors. It changes the bytecode. It has a special relationship with lazy vals. Maybe it shouldn't be an annotation.
+ **Sebastian** also suggests that Scala.ref also should rest.
 
-Seth thinks it ought to be an annotation because it's affecting an external representation of the code and not the meaning from Scala's perspective.
+ **Adriaan** said that it was just a proposal of maximal list of packages that they could split out and he’s ready to put it down to the more reasonable size. (Adriaan sent a document). The document shows the list of parts that are dependable and how platform would work if they’d be split out.
 
-Martin says it's important that there are these restrictions, that they come first in order not to have surprises with initialization order.
+ **Sebastian** believes that these platforms should not be split out for the moment.
 
-A lot of people are surprised about initialization order.
+ **Adriaan** agrees with that. He believes that is probably too painful to change anything about it.
 
-Sometimes we need something to be static for Java interop.
+ **Jorge** proposes to keep thinking on this and to discuss it in the next two months, migration cycle.  
 
-Sébastien says binary compatibility is also an argument in favor of having explicit @static annotation. If in one version you have a static method, in the next version you add a method with same name and signature. The static implementation is not there anymore, then you have broken binary compatibility in a silent way.
+ **Seth** said that 2.13 circle progresses will bring more information and feedback about the usage. He believes that it is a good start to begin with and they’ll know more as they go through it.
 
-**Conclusion** There are a lot of edge cases when not using annotations. The authors need time to work on the specifics of the proposal and address the Committee's feedback. We need to think about cases around initialization to simplify it. Why do statics need to go first? Show surprising results. There are different implementation strategies. Is this more like @tailrec or does it change generated code? This is the first review iteration of this proposal.
+ **Adriaan** agreed and said that he’d love to get some statistics on the usage of the sub-packages.
 
-### [SIP-27: Trailing commas](http://docs.scala-lang.org/sips/completed/trailing-commas.html)
-
-Dale talks about how we wanted trailing commas for multi-line elements. Should be easy. Need to discuss which parts of the syntax can use trailing commas. There are two variants of the SIP to vote on. The first is _parameters and arguments_. The other variant is _everywhere_ for consistency. Dale implemented the first one. The second one shouldn't be more hard to implement except for tuples. It needs to fail compilation somehow.
-
-It could be confusing if trailing commas are only allowed some places and not others. We'd need lots of error messages.
-
-Seth isn't that excited about trailing commas but if we have them, they should be everywhere.
-
-In the case where you have a one-element tuple like `(1,)` it would create an normal expression. This should fail.
-
-Martin suggests a rule could be "a trailing comma followed by a new line and a closing paren, bracket, or brace, is ignored". That would include imports but not a lot of other things. That could be done in the scanner only.
-
-**Conclusion** Give this one week. Generally people feel good about it. Dale needs to implement Martin's newline rule.
+**Conclusion** They should keep thinking on it, keep sending suggestions and to discuss more on it during the next meeting.
