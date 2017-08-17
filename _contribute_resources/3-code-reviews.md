@@ -1,6 +1,6 @@
 ---
 title: Code Reviews
-link: /contribute/codereviews/
+link: /contribute/codereviews.html
 icon: fa fa-eye
 ---
 Review pull requests against [scala/scala](https://github.com/scala/scala/pulls), 
