@@ -15,7 +15,7 @@ own pull requests.
 
 ### Review Guidelines
 
-[Code of Conduct reminder](/conduct/)
+[Code of Conduct reminder]({{ site.baseurl }}/conduct.html)
 
 * Keep comments on-topic, concise and precise.
 * Attach comments to particular lines or regions they pertain to whenever possible.
