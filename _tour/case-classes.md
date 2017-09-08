@@ -23,7 +23,7 @@ case class Book(isbn: String)
 
 val frankenstein = Book("978-0486282114")
 ```
-Notice how the keyword `new` was not used to instantiate the `Message` case class. This is because case classes have an `apply` method by default which takes care of object construction.
+Notice how the keyword `new` was not used to instantiate the `Book` case class. This is because case classes have an `apply` method by default which takes care of object construction.
 
 When you create a case class with parameters, the parameters are public `val`s.
 ```
