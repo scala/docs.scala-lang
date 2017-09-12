@@ -51,7 +51,7 @@ When talking about two versions being compatible, the direction matters too. If 
 if we say that any library release of `v1.x.x` will be forwards compatible, we can use `v1.0.0` anywhere where `v1.1.0` was originally used.
 For the rest of the guide, when the 'compatible' is used we mean backwards compatible, as it is the more common case of compatibility guarantee.
 
-An important note to make is that while breaking source compatibility normally results in breaking binary compatibility, they are actually orthorgonal 
+An important note to make is that while breaking source compatibility normally results in breaking binary compatibility, they are actually orthogonal 
 (breaking one does not imply breaking the other). See below for more examples (TODO: make sure we have examples?)
 TODO: more facts?
 
@@ -69,7 +69,7 @@ Unfortunately at 2am, we got frantic calls from customers saying that our App is
 
 ![Binary incompatibility after upgrading]({{ site.baseurl }}/resources/images/library-author-guide/after_update.png){: style="width: 280px; margin: auto; display: block;"}
 
-Why did we get a `NoSuchMethodError`? Remember that `A v1.0.0` is compiled with `C v1.0.0` and thus calls methods availble in `Cv1.0.0`. While `B` and
+Why did we get a `NoSuchMethodError`? Remember that `A v1.0.0` is compiled with `C v1.0.0` and thus calls methods available in `Cv1.0.0`. While `B` and
 our App has been recompiled with available classes/methods in `C v2.0.0`, `A v1.0.0`'s bytecode hasn't changed - it still calls the same method that is now missing in `C v2.0.0`!
 
 This situation can only be resolved by ensuring that the chosen version of `C` is binary compatible with all other evicted versions of `C`. In this case, we need a new version of `A` that depends
@@ -98,14 +98,14 @@ to help spot binary incompatibility between library releases. (Follow the link f
 
 TODO
 
-## Versioning Scheme - Communicate binary compatiblity breakages
+## Versioning Scheme - Communicate binary compatibility breakages
 
 We recommend using the following schemes to communicate binary and source compatibility to your users:
 
 * Any release with the same major version are **Binary Backwards Compatible** with each other
 * A minor version bump signals new features and **may contain minor source incompatibilities** that can be easily fixed by the end user
-* Patch version for bugfixes and minor behavioural changes
-* For **expreimental library versions** (where the major version is `0`, such as `v0.1.0`), a minor version bump **may contain both source and binary breakages**
+* Patch version for bug fixes and minor behavioral changes
+* For **experimental library versions** (where the major version is `0`, such as `v0.1.0`), a minor version bump **may contain both source and binary breakages**
 * Some libraries may take a harder stance on maintaining source compatibility, bumping the major version number for ANY source incompatibility even if they are binary compatible
 
 Some examples:
@@ -123,7 +123,7 @@ Many libraries in the Scala ecosystem has adopted this versioning scheme. A few 
 
 Why do we use the major version number to signal binary compatibility releases?
 
-From our [example](#why-binary-compatibility-matters) above, we have learnt two important lessons:
+From our [example](#why-binary-compatibility-matters) above, we have learned two important lessons:
 
 * Binary incompatibility releases often leads to dependency hell, rendering your users unable to update any of their libraries without breaking their application
 * If a new library version is binary compatible but source incompatible, the user can simply fix the compile errors in their application and everything will work
