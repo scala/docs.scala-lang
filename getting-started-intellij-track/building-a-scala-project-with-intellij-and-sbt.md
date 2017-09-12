@@ -74,7 +74,7 @@ to see if sbt can run your project on the command line.
 when you save changes to a file in the project.
 1. Click **OK**.
 1. On the **Run** menu. Click **Run 'Run the program'**.
-1. In the code, change `currentYear - 1` to `currentYear - 2`
+1. In the code, change the `println` line to read `println(s"The youngest person is ${ages.min}")`
 and look at the updated output in the console.
 
 ## Adding a dependency
