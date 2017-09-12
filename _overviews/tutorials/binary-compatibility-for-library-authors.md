@@ -41,15 +41,16 @@ Therefore when deciding which JARs to use for compilation, SBT only selects one 
 and all other versions of the same library are **evicted**. When packaging applications, the same versions of libraries that was used for compiling the 
 application is packaged and used during runtime.
 
-Two library versions are said to be **Source Compatible** if switching one for the other does not incur any compile errors. For example, If we can switch from `v1.0.0` of a dependency to `v2.0.0` and
-recompile our code without causing any compilation errors, `v2.0.0` is said to be source compatible with `v1.0.0`.
+Two library versions are said to be **Source Compatible** if switching one for the other does not incur any compile errors. For example, If we can switch from `v1.0.0` of a dependency to `v1.1.0` and
+recompile our code without causing any compilation errors, `v1.1.0` is said to be source compatible with `v1.0.0`.
 
 Two library versions are said to be **Binary Compatible** if the compiled bytecode of these versions are compatible. Using the example above, removing a class will render two version
 binary incompatible too, as the compiled bytecode for v2.0.0 will no longer contain the removed class.
 
 When talking about two versions being compatible, the direction matters too. If we can use `v2.0.0` in place of `v1.0.0`, `v2.0.0` is said to be **backwards compatible** with `v1.0.0`. Conversely,
 if we say that any library release of `v1.x.x` will be forwards compatible, we can use `v1.0.0` anywhere where `v1.1.0` was originally used.
-For the rest of the guide, when the 'compatible' is used we mean backwards compatible, as it is the more common case of compatibility guarantee.
+
+(For the rest of this guide, when you see the word "compatible" assume backwards compatibility, as it is the more common case of compatibility guarantee)
 
 An important note to make is that while breaking source compatibility normally results in breaking binary compatibility, they are actually orthogonal 
 (breaking one does not imply breaking the other). See below for more examples (TODO: make sure we have examples?)
@@ -63,7 +64,7 @@ Our application depends on library `A` and `B`. Both `A` and `B` depends on libr
 
 ![Initial dependency graph]({{ site.baseurl }}/resources/images/library-author-guide/before_update.png){: style="width: 280px; margin: auto; display: block;"}
 
-Some time later, we see `B v1.1.0` is now available and we upgraded the version in our `build.sbt`. Our code compiles and seems to work so we push it to production and goes home for dinner.
+Some time later, we see `B v1.1.0` is available and upgrade its version in our build.sbt. Our code compiles and seems to work so we push it to production and go home for dinner.
 
 Unfortunately at 2am, we got frantic calls from customers saying that our App is broken! Looking at the logs, you find lots of `NoSuchMethodError` is being thrown by some code in `A`! 
 
@@ -77,7 +78,7 @@ on `C v2.0.0` (or any other future `C` version that is binary compatible with `C
 
 Now imagine if our App is more complex with lots of dependencies themselves depending on `C` (either directly or transitively) - it becomes extremely difficult to upgrade any dependencies because it now
 pulls in a version of `C` that is incompatible with the rest of the versions of `C` in our dependency tree! In the example below, we cannot upgrade `D` because it will transitively pull in `C v2.0.0`, causing breakages
-due to binary incompatibility. This inability to upgrade any packages without breaking anything is common known as **Dependency Hell**.
+due to binary incompatibility. This inability to upgrade any packages without breaking anything is commonly known as **Dependency Hell**.
 
 ![Dependency Hell]({{ site.baseurl }}/resources/images/library-author-guide/dependency_hell.png)
 
