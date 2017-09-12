@@ -39,12 +39,10 @@ but here's a glance at what everything is for:
     - main (application code)
         - java (Java source files)
         - scala (Scala source files) <-- This is all we need for now
-        - scala-2.12 (Scala 2.12 specific files)
     - test (unit tests)
 - target (generated files)
 - build.sbt (build definition file for sbt)
 ```
-
 
 ## Writing Scala code
 1. On the **Project** panel on the left, expand `SBTExampleProject` => `src`
@@ -62,7 +60,7 @@ object Main extends App {
 }
 ```
 
-Note: IntelliJ has its own implementation the Scala compiler, and sometimes your
+Note: IntelliJ has its own implementation of the Scala compiler, and sometimes your
 code is correct even though IntelliJ indicates otherwise. You can always check
 to see if sbt can run your project on the command line.
 
@@ -73,7 +71,7 @@ to see if sbt can run your project on the command line.
 1. In the **Tasks** field, type `~run`. The `~` causes SBT to rebuild and rerun the project
 when you save changes to a file in the project.
 1. Click **OK**.
-1. On the **Run** menu. Click **Run 'Run the program'**.
+1. On the **Run** menu, click **Run 'Run the program'**.
 1. In the code, change the `println` line to read `println(s"The youngest person is ${ages.min}")`
 and look at the updated output in the console.
 
