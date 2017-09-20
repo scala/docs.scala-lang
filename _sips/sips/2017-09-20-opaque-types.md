@@ -171,14 +171,14 @@ The above `Logarithm` type companion contains the following definitions:
  * Extension methods to unlift the type from `Logarithm` to `Double`: `unapply` and `toDouble`.
  * Extension methods to define more operations on the type, like `plus`.
  
-The key peculiarity of opaque type aliases is that they behave like normal
+The key peculiarity of opaque types is that they behave like normal
 [type alias]es inside their type companion; that is, users can convert from
 the type alias and its equivalent definition interchangeably without the use of
 explicit lift and unlift methods. We can say that opaque types are "transparent"
 inside their type companion.
 
 However, the story changes for users of this API. Outside of their type companions,
-opaque type aliases are not transparent and, therefore, the Scala compiler fails
+opaque types are not transparent and, therefore, the Scala compiler fails
 to compile code that pretends they are. A common example is:
 
 ```scala
