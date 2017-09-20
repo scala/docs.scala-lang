@@ -1,14 +1,39 @@
-SIP-ZZ - NewType Classes
+---
+layout: sip
+title: SIP-ZZ - Opaque type aliases
+
+vote-status: pending
+permalink: /sips/:title.html
+---
+
+**Authors: Erik Osheim and Jorge Vicente Cantero**
+
+**Supervisor and advisor: Sébastien Doeraene**
+
+## History
+
+| Date          | Version       |
+|---------------|---------------|
+| Sep 20th 2017 | Initial Draft |
 
 # Introduction
 
-This is a proposal to introduce syntax for classes in Scala that can
-get completely inlined, so operations on these classes have zero
-overhead compared to external methods. Some use cases for inlined
-classes are:
+This is a proposal to introduce syntax for type aliases that only
+exist at compile time, emulating wrapper types.
 
- * Inlined implicit wrappers. Methods on those wrappers would be
-   translated to extensions methods.
+The goal is that operations on these wrapper types must not create any
+extra overhead at runtime while still providing a type safe use at compile
+time.
+
+Intuitively, these opaque types are similar to value classes with the exception
+that:
+
+ * Their definitions do not generate bytecode -- therefore they don't
+   exist at runtime.
+ * Operations on these opaque types aliases have zero overhead compared
+   to value classes, which can box or unbox depending on the scenario.
+   
+Some use cases for opaque types are:
 
  * New numeric classes, such as unsigned ints. There would no longer
    need to be a boxing overhead for such classes. So this is similar
@@ -16,252 +41,262 @@ classes are:
 
  * Classes representing units of measure. Again, no boxing overhead
    would be incurred for these classes.
+   
+We expand on all these points in our [Motivation](motivation) section.
+   
+### Implementation note
 
-The proposal is currently in an early stage. It’s not yet been
-implemented, and the proposed implementation strategy is too
-complicated to be able to predict with certainty that it will work as
-specified. Consequently, details of the proposal might change driven
-by implementation concerns.
+The proposal is currently in an early stage.
+[It’s being implemented](https://github.com/scalacenter/scala/tree/opaque-type),
+but the proposed implementation strategy is not stable enough to be able
+to predict with certainty that it will work as specified. Consequently,
+details of the proposal might change driven by implementation concerns.
 
-# NewType Classes
+# Opaque types
 
-The gist of the proposal is to allow user-defined classes to extend
-from `NewType` in situations like this:
+## Motivation
+
+Explain differences between value classes and opaque type.
+
+## Definition
+
+Let's continue with the example in our motivation section, and define `Logarithm`
+with an opaque type:
 
 ```scala
-class C (val u: U) extends NewType {
-  def m1(ps1) = ...
-  ...
-  def mN(psN) = ...
+package object opaquetypes {
+  opaque type Logarithm = Double
 }
 ```
 
-Such classes are called newtype classes. A newtype class C must
-satisfy the following criteria:
+The opaque type definition is akin to the one of type aliases, except that it
+is prefixed by a new `opaque` keyword.
 
- * `C` must be a class.
+Opaque types are always accompanied by type companions. Type companions
+define the public API of an opaque type, and they are defined in the same way
+that class companions are. It is possible to define an opaque type without a type
+companion, but then the opaque type is useless.
 
- * `C` must not be abstract (`abstract class`), a `case class` or an enum.
-
- * `C` must have exactly one parameter, which is marked with `val` and
-   which has `public` accessibility. The type of that parameter
-   (e.g. `U` above) is called the underlying type of `C`.
-
- * Other than its underlying value (of type `U`) `C` may not define
-   any other `val` members (`def` members are OK).
-
- * `C` must not extend any parents (other than the implicit `scala.AnyRef`).
-
- * `C` may not define secondary constructors or early definitions.
-
- * `C` may have all the constructor modifiers except `protected`.
-
- * `C` may not define concrete `equals`, `hashCode`, or `toString`
-   methods.
-
- * `C` must be either a top-level class or a member of a statically
-   accessible object.
-
- * `C` must be ephemeral (as defined in SIP-15).
-
-The runtime representation of `C` is always the same as the runtime
-representation of `U` (its underlying type). This means that
-`ClassTag[U]` is used as `C`'s class tag, `Array[C]` erases to `[]U`
-in Java, and so on.
-
-The following implicit assumptions apply to newtype classes.
-
- * Newtype classes are implicitly treated as `final`, so they cannot be
-   extended by other classes.
-
- * Newtype classes are implicitly assumed to have structural equality
-   and hash codes (using their underlying value). Their universal
-   methods (`equals`, `toString`, `hashCode`) cannot be implemented,
-   and are erased to those defined by `U`.
-
-# Universal traits
-
-Unlike value classes, newtype classes cannot extend universal traits.
-
-# Expansion of newtype classes.
-
-Newtype classes are expanded as follows. For concreteness, we assume a
-newtype class `Logarithm` that is defined like this:
+Let's define a type companion for our previous opaque type `Logarithm`:
 
 ```scala
-class Logarithm(val exponent: Double) extends NewType {
-  def toDouble: Double = math.exp(exponent)
+package object opaquetypes {
+  // The previous opaque type definition
+  opaque type Logarithm = Double
 
-  def plus(that: Logarithm): Logarithm = Logarithm.logOf(toDouble + that.toDouble)
-  def plus(n: Double): Logarithm = Logarithm.logOf(toDouble + n)
+  object Logarithm {
+    // These are the ways to lift to the logarithm type
+    def apply(d: Double): Logarithm = math.log(d)
+    def safe(d: Double): Option[Logarithm] =
+      if (d > 0.0) Some(Logarithm(d)) else None
+      
+    // This is the first way to unlift the logarithm type
+    def unapply(l: Logarithm): Option[Double] = Some(l)
 
-  def times(that: Logarithm): Logarithm = new Logarithm(exponent + that.exponent)
-}
-
-object Logarithm {
-  def logOf(n: Double): Logarithm = {
-    require(n > 0.0)
-    new Logarithm(math.log(n))
+    // Extension methods define opaque types' public APIs
+    implicit class LogarithmOps(val `this`: Logarithm) extends AnyVal {
+      // This is the second way to unlift the logarithm type
+      def toDouble: Double = math.exp(`this`)
+      def plus(that: Logarithm): Logarithm = Logarithm(`this`.toDouble + that.toDouble)
+    }
   }
 }
 ```
 
-# Steps
+The above `Logarithm` type companion contains the following definitions:
 
-We can express the required code transformations in three steps. In
-practice we may do the transformation in a single transformation step,
-but logically breaking up the transformations makes them easier to
-discuss in this document.
+ * Methods to lift the type from `Double` to `Logarithm`: `apply` and `safe`.
+ * Extension methods to unlift the type from `Logarithm` to `Double`: `unapply` and `toDouble`.
+ * Extension methods to define more operations on the type, like `plus`.
+ 
+The key peculiarity of opaque type aliases is that they behave like normal
+[type aliases] inside their type companion; that is, users can convert from
+the type alias and its equivalent definition interchangeably without the use of
+explicit lift and unlift methods. We can say that opaque types are "transparent"
+inside their type companion.
 
-## Step 1: Extracting methods.
-
-Let the extractable methods of a newtype class be all methods that are
-directly declared in the class. (It is not possible for a newtype
-class to inherit methods.) For each extractable method `m`, we create
-another method named `extension$m` in the companion object of that
-class (if no companion object exists, a fresh one is created). The
-`extension$m` method takes an additional parameter in first position
-which is named `$this` and has runtime representation as its
-type. Generally, in a value class
-
-    class C(val u: U) extends AnyVal
-
-a method
-
-    def m(params): R = body
-
-is expanded to the following method in the companion object of class C:
-
-    def extension$m($this: C, params): R = body2
-
-Here `body2` is the same as body with each occurence of `this` or
-`C.this` replaced by `$this`.
-
-Overloaded methods may be also augmented with an additional integer to
-distinguish them after types are erased (see the transformations of
-the `add` method in the following steps).
-
-In our example, the `Logarithm` companion would be expanded as
-follows:
+However, the story changes for users of this API. Outside of their type companions,
+opaque type aliases are not transparent and, therefore, the Scala compiler fails
+to compile code that pretends they are. A common example is:
 
 ```scala
-object Logarithm {
-  def logOf(n: Double): Logarithm = {
-    require(n > 0.0)
-    new Logarithm(math.log(n))
-  }
+val l: Logarithm = 1.0
+```
 
-  // generated methods follow
-  def extension$toDouble($this: Logarithm): Double =
-    math.exp($this.exponent)
+which fails to compile with a type mismatch error:
 
-  def extension1$plus($this: Logarithm, that: Logarithm): Logarithm =
-    Logarithm.logOf($this.toDouble + that.toDouble)
+```scala
+<console>:11: error: type mismatch;
+ found   : Double
+ required: Logarithm
+       val l: Logarithm = 1.0
+                          ^
+```
 
-  def extension2$plus($this: Logarithm, n: Double): Logarithm =
-    Logarithm.logOf($this.toDouble + n)
+The same happens for `val d: Double = l` where `l` is an instance of `Logarithm`.
 
-  def extension$times($this: Logarithm, that: Logarithm): Logarithm =
-    new Logarithm($this.exponent + that.exponent)
+The idea, then, is to let library authors create wrapper types and their API in a
+concrete, isolated part of their code and force users to use this API to lift to
+and unlift from the opaque type.
+
+By design, downstream users can define more operations on these opaque types via
+their own extension methods, but they cannot create a new API to lift/unlift them,
+e.g. users need to use the library-provided `toDouble`, `Logarithm.safe` and
+`Logarithm.apply`.
+
+The following code showcases legit uses of the `Logarithm` opaque type:
+
+```scala
+package object usesites {
+  import opaquetypes._
+  val l = Logarithm(1.0)
+  val l2 = Logarithm(2.0)
+  val l3 = legitLogarithm.plus(l2)
+  val d = l3.toDouble
+  val l3: Logarithm = (1.0).asInstanceOf[Logarithm]
 }
 ```
 
-Currently, we think that certain annotations (like `@inline`) will not
-be preserved when methods are extracted and rerouted. We think that
-most other annotations will be supported but more work is needed here.
-
-## Step 2: Rerouting calls
-
-In this step any call to a method that got extracted in step 1 into a
-companion object gets redirected to the newly created method in that
-companion object. Generally, a call:
+While the following fails to typecheck:
 
 ```scala
-p.m(args)
+package object usesites {
+  import opaquetypes._
+  val l: Logarithm = Logarithm(1.0)
+  val d: Double = l // fails to typecheck
+  val l2: Logarithm = 1.0 // fails to typecheck
+}
 ```
 
-where `m` is an extractable method declared in a newtype class `C`
-gets rewritten to:
+For the sake of completeness, this is how you extend these opaque types with more operations:
 
 ```scala
-C.extension$m(p, args)
+package object usesites {
+  // ...
+  implicit class UserOps(`this`: Logarithm) extends AnyVal {
+    def times(that: Logarithm): Logarithm = Logarithm(`this`. + that)
+  }
+}
 ```
 
-For instance the two calls in the following code fragment:
+## Formal definition
 
-```scala
-val x: Logarithm = new Logarithm(1.0)
-val y: Logarithm = new Logarithm(2.0)
-val z = x.times(y)
-val a = x.plus(12345.0)
+The Scala Language doesn't have a concept of either opaque types or type companions. In the
+following section, we formalize our previous definitions and specify the required changes to
+the Scala Language Specification.
+
+### Opaque type definition
+
+An opaque type follows the same structure as an alias type but it requires the use of a new
+`opaque` modifier.
+
+```yaml
+LocalModifier     ::=  ‘abstract’
+                    |  ‘final’
+                    |  ‘sealed’
+                    |  ‘implicit’
+                    |  ‘lazy’
+                    |  ‘opaque’
 ```
 
-would be rewritten to
+This new modifier is then used to qualify the type alias definition:
 
-```scala
-val x: Logarithm = new Logarithm(1.0)
-val y: Logarithm = new Logarithm(2.0)
-val z = Logarithm.extension$times(x, y)
-val a = Logarithm.extension2$plus(x, 12345.0)
+```yaml
+Def        ::= ‘opaque‘ ‘type’ {nl} TypeDef
+TypeDef    ::=  id [TypeParamClause] ‘=’ Type
 ```
 
-(Note that at this point we are still talking about the `Logarithm`
-type. We've just re-routed calls to extension methods, so that we are
-no longer accessing any members of `Logarithm` except for its
-underlying value `exponent`.)
+Opaque modifiers are only valid for type definitions.
+Note that contrary to type alias definitions, opaque type definitions cannot be overridden.
 
-## Step 3: Unwrapping
+Here's a formal definition of opaque types:
 
-At this point, using `U` (the underlying type of `C`) we calculate
-`C`'s transitive underlying type (called `W`). This is done by the
-following recursive definition:
+> An opaque `type t = T` defines `t` to be an alias name for the `type T` only in the scope of the opaque
+type companion `t`. The left hand side of an opaque type may have a type parameter clause, e.g.
+`type t[tps] = T`. The scope of a type parameter extends over the right hand side `T` and the type
+parameter clause `tps` itself.
 
- * If `U` is a newtype class, use the transitive underlying type of `U`.
- * Otherwise, use `U` as the transitive underlying type.
+As per this definition, opaque types modify the type equivalence relationship explained in the
+[3.5.1. Equivalence] section of the Scala Language Specification. In particular, the next item
+qualifies the type equivalence for opaque types:
 
-We now do the following four replacements:
+> If `t` is defined by an opaque type `opaque type t = T`, then `t` is not equivalent to `T` unless
+`t` occurs in the template of the opaque type companion.
 
- 1. We replace every occurence of the type `C` in a symbol’s type or
-    in a tree’s type annotation by `W`.
+In the [Implementation notes](implementation-notes), we explain how this can be achieved in the
+implementation.
 
- 2. We replace every occurence of `new C(e)` with `e`.
+### Opaque type companion
 
- 3. We replace every occurence of `(c: C).u` with `c`. (After applying
-    replacement 1 the type of `c` here will actually be `W`.)
+We define a type companion in a similar way companion classes are described in the Scala Language
+Specification in [5.5. Object Definitions]:
 
- 4. We replace any other methods calls `(c: C).m` with `c.m`. These
-    will be universal methods available on `Any`, which we need to
-    re-route to the underlying value. (Examples includes `equals`,
-    `hashCode`, `toString`, etc.)
+> Generally, a companion module of an opaque type is an object which has the same name as the opaque
+type and is defined in the same scope and compilation unit. Conversely to companion classes, the
+companion class of the module does not have a notion of companion type.
 
-We then re-typecheck the program.
+#### Opaque type companions and implicit search
 
-Types such as `Array`, `ClassTag`, `Class`, etc. will all be rewritten
-according to these same rules:
+These opaque type companions are also part of the implicit search scope of the opaque type `t`. 
+Therefore, uses of extension methods defined in the opaque type companion do not require users
+to import the opaque type companion explicitly.
 
- * `Array[C]` becomes `Array[W]`
- * `ClassTag[C]` becomes `ClassTag[W]`
- * `Class[C]` becomes `Class[W]`
+### Technical discussions
 
-Newtype classes are removed at this stage. That is, the class `C` is
-removed (although the companion object `C` stays). Other than the
-companion, there should be no mention of `C` (either as a class or a
-type) in any tree.
+In our current proposal, we make several trade-offs. Next, we defend these trade-offs and propose
+alternative ways to achieve the same (if any).
 
-The effect of this is that at runtime values whose provided type was
-`C` are not distinguishable from values whose type is `W`.
+#### `opaque` as a modifier
 
-# Timing
+Note that adding `opaque` as a modifier prevents the use of `opaque` anywhere in the users'
+program, which could possibly break someone's code. To fix this scenario, we could create a
+Scalafix rule that will rewrite any place where `opaque` is an identifier.
 
-These rewrites should occur as early as possible (but after typer, of
-course). Specifically, we would like for these to occur before the
-existing `AnyVal` rewrites, before the specialization phase, and
-before the erasure phase.
+For those SIP Committee members wary of adding a new keyword to the language, we propose an
+alternative approach. Instead of defining opaque types with the `opaque` modifier, opaque types
+may also be defined by combining the existing `new` and `type` keywords, e.g.
+`new type Logarithm = Double`. This option would be akin to the syntax used in Haskell for wrapper
+types, e.g. `newtype`.
 
-This allows us to support specialized newtype classes, as well as
-wrapping `AnyVal` types in newtype classes. It also means that
-platforms like *scala-js* don't have to worry about adding encodings
-for newtypes (since they reduce to the existing language).
+#### Type companions
+
+This proposal only adds the notion of type companions for opaque types. After discussing with
+members of the SIP Committee and Scala compiler hackers, we believe that a notion of type companions
+extended to type aliases would not work because the typechecker aggressively dealiases**, and it is
+not possible to link to the type companion symbol once type aliases have been dealiased.
+
+** Note that dealiasing means [beta reducing] a type alias.
+
+## Implementation notes
+
+To implement opaque types, we need to modify three compiler phases: parser, namer and typer. At the
+time of this writing, it is unclear if later phases like erasure must be changed as well, but we
+think this should not be necessary.
+
+There are several key ideas in the current, work-in-progress implementation:
+
+ * To meet the type equivalence relationship for opaque types, we synthesize two implicit conversions
+   inside the opaque type companion, if they do not already exist. If `opaque type t = T`, then
+   two implicit conversions are synthesized, one from `t` to `T` is synthesized and another for the
+   other way around. The body of these methods will use `t.asInstanceOf[T]` and viceversa **.
+
+ * Phases after typer always dealias opaque types. This way, erasure and codegen can unwrap opaque
+   types out of the box and, at the bytecode level, their underlying representation is used instead.
+   
+All these ideas are open to refinements by the SIP Committee.
+
+These conceptual changes 
+   
+** Note that these `asInstanceOf` can be removed at compile-time, but there is no precedent of
+doing so in the Scalac compiler. However, it is not clear whether leaving these casts will have
+an impact on performance -- the underlying virtual machine may remove the operation based on type
+analysis due to the fact that the cast is from `Double => Double`.
+
+# Cross-platform
+
+We believe that by implementing opaque types early in the pipeline, [Scala.js] and [Scala Native]
+can compile them out-of-the-box. Thus, we do not expect opaque types to have problems for different
+backends, since erasure will always see the dealiased types.
 
 # Examples
 
@@ -335,3 +370,16 @@ base class).
 Work in this direction should only start once single-parameter newtype
 classes are implemented (at least experimentally), since one of the
 places multi-value newtype classes may struggle is in performance.
+
+## Conclusion
+
+We believe that opaque types fit in the language nicely. The combination of type aliases and value
+classes (for the zero runtime overhead of extension methods) result in compile-time wrapper types
+
+[Scala Language Specification]: https://www.scala-lang.org/files/archive/spec/2.12/
+[type alias]: http://www.scala-lang.org/files/archive/spec/2.12/04-basic-declarations-and-definitions.html#type-declarations-and-type-aliases
+[5.5. Object definitions]: http://www.scala-lang.org/files/archive/spec/2.12/05-classes-and-objects.html#object-definitions
+[3.5.1. Equivalence]: http://www.scala-lang.org/files/archive/spec/2.12/03-types.html#equivalence
+[Scala.js]: https://www.scala-js.org/
+[Scala Native]: https://github.com/scala-native/scala-native
+[beta reducing]: https://en.wikipedia.org/wiki/Beta_normal_form
