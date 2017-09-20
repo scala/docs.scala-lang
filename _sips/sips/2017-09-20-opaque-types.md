@@ -358,83 +358,35 @@ We believe that by implementing opaque types early in the pipeline, [Scala.js] a
 can compile them out-of-the-box. Thus, we do not expect opaque types to have problems for different
 backends, since erasure will always see the dealiased types.
 
-# Examples
-
-## Example 1
-
-The program statements on the left are converted using steps 1 to 3 to
-the statements on the right.
-
-    var m, n: Logarithm       var m, n: Double
-    var o: AnyRef             var o: AnyRef
-    m = n                     m = n
-    o = m                     o = m.asInstanceOf[AnyRef]
-    m plus n                  Logarithm.extension1$plus(m, n)
-    o.isInstanceOf[Logarithm] o.isInstanceOf[Double]
-    o.asInstanceOf[Logarithm] o.asInstanceOf[Double]
-    m.isInstanceOf[Logarithm] m.isInstanceOf[Double]
-    m.asInstanceOf[Logarithm] m.asInstanceOf[Double]
-
-## Example 2
-
-After all 3 steps the `Logarithm` class is translated to the following
-code.
-
-```scala
-object Logarithm {
-  def logOf(n: Double): Double = {
-    require(n > 0.0)
-    math.log(n)
-  }
-
-  // generated methods follow
-  def extension$toDouble($this: Double): Double =
-    math.exp($this)
-
-  def extension1$plus($this: Double, that: Double): Double =
-    Logarithm.logOf(Logarithm.extension$toDouble($this) + Logarithm.extension$toDouble(that))
-
-  def extension2$plus($this: Double, n: Double): Double =
-    Logarithm.logOf(Logarithm.extension$toDouble($this) + n)
-
-  def extension$times($this: Double, that: Double): Double =
-    $this + that
-}
-```
-
-Note that the two `plus` methods end up with the same type in object
-`Logarithm`. That’s why we needed to distinguish them by adding an
-integer number.
-
-The same situation can arise in other circumstances as well: Two
-overloaded methods might end up with the same type after
-unwrapping. In the general case, Scala would treat this situation as
-an error, as it would for other types that get erased. So we propose
-to solve only the specific problem that multiple overloaded methods in
-a newtype class itself might clash after unwrapping.
-
 ## Further Optimizations?
 
-We could imagine this newtype feature being generalized to tuples. In
-that case, a newtype class could wrap *N* values (0-22), and be
+We could imagine opaque types being generalized to tuples. In
+that case, an opaque type could wrap *N* values (0-22), and be
 represented either by 0-22 positional parameters (in the extension
 methods) or by a single tuple of the appropriate arity (when a reified
 value was needed, e.g. for use in a collection).
 
-Newtype classes as written here can already wrap tuples in a
+Opaque types as written here can already wrap tuples in a
 transparent way, so the required addition would be allowing multiple
 parameters to be provided positionally rather than in a tuple
 (i.e. adding two kinds of extension method for every method in the
 base class).
 
-Work in this direction should only start once single-parameter newtype
-classes are implemented (at least experimentally), since one of the
-places multi-value newtype classes may struggle is in performance.
+Work in this direction should only start once single-parameter opaque
+types are implemented (at least experimentally), since one of the
+places multi-value opaque types may struggle is in performance.
 
 ## Conclusion
 
 We believe that opaque types fit in the language nicely. The combination of type aliases and value
 classes (for the zero runtime overhead of extension methods) result in compile-time wrapper types
+that address the performance issues of value classes.
+
+As a summary, opaque types are:
+
+ * A subset of type aliases that are transparent only within the type companion.
+ * Extensible (users can define their own extension methods).
+ * Fit for performance-sensitive code (no boxing/unboxing by design).
 
 ## References
 
