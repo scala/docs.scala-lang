@@ -57,7 +57,7 @@ Value classes, a Scala feature proposed in [SIP-15], were introduced to the
 language to offer inlined classes whose operations have zero overhead at runtime.
 
 This feature allows users to define classes with a few restrictions in exchange of
-performance (value classes are not boxed/unboxed under some concrete scenarios,
+performance (value classes are boxed/unboxed under some concrete scenarios,
 that are deemed to be commonplace).
 
 These scenarios, while certainly common, do not cover the majority of scenarios
