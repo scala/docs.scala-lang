@@ -264,7 +264,7 @@ LocalModifier     ::=  ‘abstract’
 This new modifier is then used to qualify the type alias definition:
 
 ```yaml
-Def        ::= ‘opaque‘ ‘type’ {nl} TypeDef
+Def        ::= [‘opaque‘] ‘type’ {nl} TypeDef
 TypeDef    ::=  id [TypeParamClause] ‘=’ Type
 ```
 
