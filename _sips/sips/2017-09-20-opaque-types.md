@@ -241,6 +241,10 @@ package object usesites {
 }
 ```
 
+Note that the rational for this encoding is to allow users to convert from the opaque type
+and the underlying type in constant time. Users have to be able to tag complex type structures
+without having to reallocate, iterate over or inspect it.
+
 ## Formal definition
 
 The Scala Language doesn't have a concept of either opaque types or type companions. In the
@@ -310,6 +314,9 @@ alternative ways to achieve the same (if any).
 
 #### `opaque` as a modifier
 
+`opaque` has been added as a modifier to a type def for simplicity. We believe that a new keyword
+for this feature is worthwhile.
+
 Note that adding `opaque` as a modifier prevents the use of `opaque` anywhere in the users'
 program, which could possibly break someone's code. To fix this scenario, we could create a
 Scalafix rule that will rewrite any place where `opaque` is an identifier.
@@ -329,6 +336,12 @@ not possible to link to the type companion symbol once type aliases have been de
 
 ** Note that dealiasing means [beta reducing] a type alias.
 
+#### Static extension methods
+
+The extension methods synthesized for implicit value classes are not static. We have not measured
+if the current encoding has an impact in performance, but if so, we can consider changing the
+encoding of extension methods either in this proposal or in a future one.
+
 ## Implementation notes
 
 To implement opaque types, we need to modify three compiler phases: parser, namer and typer. At the
@@ -347,10 +360,14 @@ There are several key ideas in the current, work-in-progress implementation:
    
 All these ideas are open to refinements by the SIP Committee.
 
+### On removing `asInstanceOf` at compile-time
+
 ** Note that these `asInstanceOf` can be removed at compile-time, but there is no precedent of
 doing so in the Scalac compiler. However, it is not clear whether leaving these casts will have
 an impact on performance -- the underlying virtual machine may remove the operation based on type
-analysis due to the fact that the cast is from `Double => Double`.
+analysis due to the fact that the cast is from `Double => Double` via Class Hierarchy Analysis.
+Despite not having a precedence, the authors of the proposal incline to remove these checks at
+compile-time. This will also require a modification to the spec.
 
 # Cross-platform
 
