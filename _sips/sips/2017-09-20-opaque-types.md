@@ -358,24 +358,6 @@ We believe that by implementing opaque types early in the pipeline, [Scala.js] a
 can compile them out-of-the-box. Thus, we do not expect opaque types to have problems for different
 backends, since erasure will always see the dealiased types.
 
-## Further Optimizations?
-
-We could imagine opaque types being generalized to tuples. In
-that case, an opaque type could wrap *N* values (0-22), and be
-represented either by 0-22 positional parameters (in the extension
-methods) or by a single tuple of the appropriate arity (when a reified
-value was needed, e.g. for use in a collection).
-
-Opaque types as written here can already wrap tuples in a
-transparent way, so the required addition would be allowing multiple
-parameters to be provided positionally rather than in a tuple
-(i.e. adding two kinds of extension method for every method in the
-base class).
-
-Work in this direction should only start once single-parameter opaque
-types are implemented (at least experimentally), since one of the
-places multi-value opaque types may struggle is in performance.
-
 ## Conclusion
 
 We believe that opaque types fit in the language nicely. The combination of type aliases and value
