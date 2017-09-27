@@ -52,9 +52,8 @@ if we say that any library release of `v1.x.x` will be forwards compatible, we c
 
 (For the rest of this guide, when you see the word "compatible" assume backwards compatibility, as it is the more common case of compatibility guarantee)
 
-An important note to make is that while breaking source compatibility normally results in breaking binary compatibility, they are actually orthogonal 
-(breaking one does not imply breaking the other). See below for more examples (TODO: make sure we have examples?)
-TODO: more facts?
+An important note to make is that while source compatibility breakages normally results in binary compatibility breakages as well, they are actually orthogonal 
+(breaking one does not imply breaking the other).
 
 ## Why binary compatibility matters
 
@@ -88,19 +87,39 @@ How can we, as library authors, spare our users of runtime errors and dependency
 * **Avoid breaking binary compatibility** through careful design and evolution of your library interfaces
 * Communicate binary compatibility breakages clearly through **versioning**
 
-## MiMa - Check Binary Compatibility with Previous Library Versions 
+## MiMa - Check binary compatibility with previous library versions 
 
-The [Migration Manager for Scala](https://github.com/typesafehub/migration-manager) (MiMa) is a tool for diagnosing binary incompatibilities between different library versions.
+The [Migration Manager for Scala](https://github.com/typesafehub/migration-manager) (MiMa) is a tool for diagnosing binary incompatibilities between different library versions.  
+It works by comparing the class files of two provided JARs and report any binary incompatibilities found.
 
-When run standalone in the command line, it will compare the .class files in the two provided JARs and report any binary incompatibilities found. Most library authors use the [SBT plugin](https://github.com/typesafehub/migration-manager/wiki/Sbt-plugin)
-to help spot binary incompatibility between library releases. (Follow the link for instructions on how to use it in your project)
+By incorporating [MiMa SBT plugin](https://github.com/typesafehub/migration-manager/wiki/Sbt-plugin) into your SBT build, you can easily check whether 
+you have accidentally introduced binary incompatible changes. Detailed instruction on how to use the SBT plugin can be found in the link.
 
-## Designing for Evolution - without breaking binary compatibility
+We strongly encourage every library author to incorporate MiMa into their library release workflow.
 
-TODO
+## Evolving code without breaking binary compatibility
+
+Binary compatibility breakages can often be avoided through careful use of certain Scala features as well as some techniques you can apply when modifying code.
+
+Some language features may break binary compatibility:
+
+* Default parameter values for methods or classes
+* Case classes
+* Default methods on traits (doesn't cause breakages since 2.12)
+
+Techniques you can use to avoid breaking binary compatibility:
+
+* Annotate public methods's return type explicitly
+* Mark methods as package private when you want to remove a method or modify its signature
+* Don't use inlining (for libraries)
+
+For brevity of this guide, detailed explanation and runnable code examples can be found in [Binary Compatibility Code Examples & Explanation](https://github.com/jatcwang/binary-compatibility-guide).
+
+Again, we recommend using MiMa to double check that you have not broken binary compatibility after making changes.
 
 ## Versioning Scheme - Communicate binary compatibility breakages
 
+### Recommmended Versioning Scheme
 We recommend using the following schemes to communicate binary and source compatibility to your users:
 
 * Any release with the same major version are **Binary Backwards Compatible** with each other
