@@ -131,7 +131,7 @@ def goIdle(device: Device) = device match {
 `def goIdle` has a different behavior depending on the type of `Device`. This is useful when the case needs to call a method on the pattern. It is a convention to use the first letter of the type as the case identifier (`p` and `c` in this case).
 
 ## Sealed classes
-Traits and classes can be marked `sealed` which means all subtypes must be declared in the same file. The assures that all subtypes are known.
+Traits and classes can be marked `sealed` which means all subtypes must be declared in the same file. This assures that all subtypes are known.
 
 ```tut
 sealed abstract class Furniture
