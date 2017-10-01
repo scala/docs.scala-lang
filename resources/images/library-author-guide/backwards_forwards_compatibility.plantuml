@@ -1,0 +1,10 @@
+top to bottom direction
+
+component "A v1.0.0" as a
+component "C v1.1.0" as c1
+component "C v1.0.0" as c0
+component "C v1.2.0" as c2
+
+a -down-> c1
+c0 -[hidden]> c1
+c1 -[hidden]> c2
