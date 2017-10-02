@@ -62,7 +62,7 @@ After a short discussion about the protocol, mainly about skipping the numbering
 **Conclusion**: The SIP is numbered as "SIP-34", by unanimity and it will be at disposal for a month for the community comments.
 
 ### [SIP-ZZ: Opaque types](http://docs.scala-lang.org/sips/opaque-types.html) (Numbered: SIP-35)
-[YouTube time: 2'50''- 8'26''](https://youtu.be/yzTpVbTUj18?t=169) 
+[YouTube time: 8'27''-51'13''](https://youtu.be/yzTpVbTUj18?t=507) 
 
 **Sébastien**, as a reviewer, is asked to present the SIP to the Committee and Public. 
 The Committee likes the proposal overall, though it has some questions/concerns.
