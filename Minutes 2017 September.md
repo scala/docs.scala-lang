@@ -12,9 +12,9 @@ The following agenda was distributed to attendees:
 |Topic|Reviewers| Accepted/Rejected |
 | --- | --- | --- |
 | [SIP-NN: Right-Associative By-Name Operators](http://docs.scala-lang.org/sips/right-associative-by-name-operators.html) | Adriaan Moors | Pending |
-| [SIP-ZZ - Opaque types](http://docs.scala-lang.org/sips/opaque-types.html) | Sébastien Doeraene | Pending |
+| [SIP-ZZ: Opaque types](http://docs.scala-lang.org/sips/opaque-types.html) | Sébastien Doeraene | Pending |
 | [SIP-33: Match infix and prefix types to meet expression rules](http://docs.scala-lang.org/sips/make-types-behave-like-expressions.html)| Josh Suereth | Pending |
-|[SIP-28 and SIP-29 - Inline meta](http://docs.scala-lang.org/sips/inline-meta.html)|Josh Suereth and Iulian Dragos| Pending |
+|[SIP-28 and SIP-29: Inline meta](http://docs.scala-lang.org/sips/inline-meta.html)|Josh Suereth and Iulian Dragos| Pending |
 
 Jorge Vicente Cantero was the Process Lead and Darja Jovanovic as secretary.
 
@@ -47,8 +47,8 @@ Minutes were taken by Darja Jovanovic.
 **Darja** introduces herself as a Scala Center's Communication Manager to the Committee and the Community.
 [YouTube time: 00 - 2'50''](https://youtu.be/yzTpVbTUj18)
 
-### [SIP-NN: Right-Associative By-Name Operators](http://docs.scala-lang.org/sips/right-associative-by-name-operators.html)
-[YouTube time: 2'50''- 8'26'''](https://youtu.be/yzTpVbTUj18?t=169)
+### [SIP-NN: Right-Associative By-Name Operators](http://docs.scala-lang.org/sips/right-associative-by-name-operators.html) (Numvered: SIP-34)
+[YouTube time: 2'50''- 8'26''](https://youtu.be/yzTpVbTUj18?t=169) 
 
 **Jorge** opens the meeting and gives the word to **Adriaan**, the the reviewer.
 **Adriaan** introduces the SIP and describes why it's important. In essence, the proposal aims at removing the eager evaluation of right-associative operators. This change is important for the new collection redesign supposed to happen in 2.13.
@@ -61,8 +61,8 @@ After a short discussion about the protocol, mainly about skipping the numbering
 
 **Conclusion**: The SIP is numbered as "SIP-34", by unanimity and it will be at disposal for a month for the community comments.
 
-### [SIP-ZZ: Opaque types](http://docs.scala-lang.org/sips/opaque-types.html)
-[YouTube time: 2'50''- 8'26''](https://youtu.be/yzTpVbTUj18?t=169)
+### [SIP-ZZ: Opaque types](http://docs.scala-lang.org/sips/opaque-types.html) (Numbered: SIP-35)
+[YouTube time: 2'50''- 8'26''](https://youtu.be/yzTpVbTUj18?t=169) 
 
 **Sébastien**, as a reviewer, is asked to present the SIP to the Committee and Public. 
 The Committee likes the proposal overall, though it has some questions/concerns.
