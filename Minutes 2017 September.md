@@ -47,7 +47,7 @@ Minutes were taken by Darja Jovanovic.
 **Darja** introduces herself as a Scala Center's Communication Manager to the Committee and the Community.
 [YouTube time: 00 - 2'50''](https://youtu.be/yzTpVbTUj18)
 
-### [SIP-NN: Right-Associative By-Name Operators](http://docs.scala-lang.org/sips/right-associative-by-name-operators.html) (Numvered: SIP-34)
+### [SIP-NN: Right-Associative By-Name Operators](http://docs.scala-lang.org/sips/right-associative-by-name-operators.html) (Numbered: SIP-34)
 [YouTube time: 2'50''- 8'26''](https://youtu.be/yzTpVbTUj18?t=169) 
 
 **Jorge** opens the meeting and gives the word to **Adriaan**, the the reviewer.
