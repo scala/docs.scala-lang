@@ -101,5 +101,5 @@ However, after the Advisory Board approved to involve Scala Center to assist the
 That said, **Eugene** suggests to delay the proposal in order to allow the time to see what comes out of the experiments. 
 After **Heather** raises the question about project transfer, proposing **Olaf** as a new lead and **Eugene** as an advisor, **Eugene** agrees and is happy that the project can move forward.
 
-Conclusion: The SIP is delayed until **Olaf** gathers the team and has some new updates to share with the Committee.
+**Conclusion**: The SIP is delayed until **Olaf** gathers the team and has some new updates to share with the Committee.
 
