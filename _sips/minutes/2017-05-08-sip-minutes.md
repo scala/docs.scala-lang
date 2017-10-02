@@ -13,7 +13,7 @@ The following agenda was distributed to attendees:
 | --- | --- | --- |
 | [SIP-NN - comonadic-comprehensions](http://docs.scala-lang.org/sips/comonadic-comprehensions.html) | Shimi Bandiel | Rejected |
 | [SIP-33 - Match infix & prefix types to meet expression rules](http://docs.scala-lang.org/sips/make-types-behave-like-expressions.html)| Oron Port | Pending |
-|Scala Library Changes|Adriaan Moors| **WHAT DO I PUT HERE** |
+|[Scala Library Changes](scala/scala-dev#323)|Adriaan Moors| Scala-dev proposal |
 
 Jorge Vicente Cantero was the Process Lead.
 
@@ -64,11 +64,11 @@ Skipped since they are waiting for the prototype from the author of the proposal
  [YouTube time 10:52](https://youtu.be/6rKa4OV7GfM?t=652)
 
  **Adriaan** starts presentation and notes that feedbacks on his proposal are available through the 2.13 platform. It is more reorganization of things in different modules. He suggests list of packages, from the ticket, that he believes shouldn’t be in the core:
- *Scala concurrent*, *Scala.ref*, *Scala.cis*, *Scala.compat* (that is already totally deprecated), *Scala.text* (that has already couple of things that are deprecated), *Scala.util*; whereas *Scala.io* and *Scala.sys* are good candidates for replacements with better community modules.
- Also, some hashing could be removed in separate package and make Scala package cut clean. He is open to discuss if some of these packages should stay in the Scala Library Jar. Most of these packages are subjects of deprecations.
- Scala concurrent could live in its current form, but it could be split out since it’s dependent platform however.
+ *Scala concurrent*, *Scala.ref*, *Scala.sys*, *Scala.compat* (that is already totally deprecated), *Scala.text* (that has already couple of things that are deprecated), *Scala.util*; whereas *Scala.io* and *Scala.sys* are good candidates for replacements with better community modules.
+ Also, some hashing could be removed in separate package and make Scala package cut clean. He is open to discuss if some of these packages should stay in the Scala Library jar. Most of these packages are subjects of deprecations.
+ Scala concurrent could live in its current form, but it could be split out since it’s platform dependent however.
 
- **Jorge** asks what they should change in XML. **Adriaan** says that it’s already a model and all these packages should wing as Scala changes. If no one from the community does push forward to maintain that, they should continue maintaining them through depreciation cycle, helped by replacement through SPPs. All these packages and classes of packages should be available in 2.13 as Jars, but you should add them by yourself to your classpath if you are using them.
+ **Jorge** asks what they should change in XML. **Adriaan** says that it’s already a model and all these packages should wing as Scala changes. If no one from the community does push forward to maintain that, they should continue maintaining them through depreciation cycle, helped by replacement through SPPs. All these packages and classes of packages should be available in 2.13 as jars, but you should add them by yourself to your classpath if you are using them.
 
  **Martin** asks what they’ll get with this breaking of the system, since each package depends on each other.
 
@@ -86,7 +86,7 @@ Skipped since they are waiting for the prototype from the author of the proposal
 
  **Jorge** proposes to keep thinking on this and to discuss it in the next two months, migration cycle.  
 
- **Seth** said that 2.13 circle progresses will bring more information and feedback about the usage. He believes that it is a good start to begin with and they’ll know more as they go through it.
+ **Seth** said that as the 2.13 cycle progresses will bring more information and feedback about the usage. He believes that it is a good start to begin with and they’ll know more as they go through it.
 
  **Adriaan** agreed and said that he’d love to get some statistics on the usage of the sub-packages.
 
