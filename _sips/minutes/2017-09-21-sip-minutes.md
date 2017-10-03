@@ -70,13 +70,13 @@ In a 40min discussion the questions raised were as follows:
 
 1. Articulating the motivation, emphasis on what is the concrete use of it
 2. Articulating the direction regarding the value classes
-3. How do we explain to users having both opaque types and multi parameter value classes **Eugene** https://youtu.be/yzTpVbTUj18?t=1005 ; https://youtu.be/yzTpVbTUj18?t=1094
-- Even "getting rid" of value classes, and letting opaque taking its place? **Seth** https://youtu.be/yzTpVbTUj18?t=1753
-4. The importance of consistency across the language **Josh**  https://youtu.be/yzTpVbTUj18?t=1442
+3. How do we explain to users having both opaque types and multi parameter value classes **Eugene** [(link 1)](https://youtu.be/yzTpVbTUj18?t=1005); [(link 2)](https://youtu.be/yzTpVbTUj18?t=1094)
+- Even "getting rid" of value classes, and letting opaque taking its place? **Seth** [(link)](https://youtu.be/yzTpVbTUj18?t=1753)
+4. The importance of consistency across the language **Josh** [(link)](https://youtu.be/yzTpVbTUj18?t=1442)
 5. Mention impact on Valhalla, value types at the JVM level
-6. Investigate the possibilities for exposing bounds **Martin** https://youtu.be/yzTpVbTUj18?t=2092
-7. Opaque type companion **Iulian** https://youtu.be/yzTpVbTUj18?t=788
-- Raising confusion about the companion relation **Heather** and **Seth** https://youtu.be/yzTpVbTUj18?t=1545
+6. Investigate the possibilities for exposing bounds **Martin** [(link)](https://youtu.be/yzTpVbTUj18?t=2092)
+7. Opaque type companion **Iulian** [(link)](https://youtu.be/yzTpVbTUj18?t=788)
+- Raising confusion about the companion relation **Heather** and **Seth** [(link)](https://youtu.be/yzTpVbTUj18?t=1545)
 Syntax "new" "type"
 
 
