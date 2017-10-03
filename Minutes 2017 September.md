@@ -36,7 +36,7 @@ Minutes were taken by Darja Jovanovic.
 * Iulian Dragos ([@dragos](https://github.com/dragos)), Independent
 * Adriaan Moors ([@adriaanm](https://github.com/adriaanm)), Lightbend
 * Josh Suereth ([@jsuereth](https://github.com/jsuereth)), Independent
-* Darja Jovanovic ([@darjutak](https://github.com/darjutak)), Communication Manager, Scala Center
+* Darja Jovanovic ([@darjutak](https://github.com/darjutak)), Scala Center
 
 
 
