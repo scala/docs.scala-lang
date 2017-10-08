@@ -23,7 +23,7 @@ use and a low barrier to entry for beginners and intermediate users. The
 Platform consists of several independent modules that solve specific problems.
 The Scala community sets the overall direction of the Platform.
 
-<a class="button" href="https://scalacenter.github.io/platform-staging/platform.html">Learn more</a>
+<a class="button" href="https://scalacenter.github.io/platform/">Learn more</a>
 
 
 
