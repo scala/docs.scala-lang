@@ -1,28 +1,30 @@
 ---
 layout: tour
 title: Singlton objekti
+language: ba
 
-discourse: false
+discourse: true
 
 partof: scala-tour
 
-num: 12
-
-
-language: ba
+num: 13
 
 next-page: regular-expression-patterns
 previous-page: pattern-matching
+
+redirect_from: "/tutorials/tour/singleton-objects.html"
 ---
 
 Metode i vrijednosti koje ne pripadaju individualnim instancama [klase](classes.html) pripadaju *singlton objektima*,
 označenim ključnom riječju `object` umjesto `class`.
 
-    package test
+```
+package test
 
-    object Blah {
-      def sum(l: List[Int]): Int = l.sum
-    }
+object Blah {
+  def sum(l: List[Int]): Int = l.sum
+}
+```
 
 Metoda `sum` je dostupna globalno, i može se pozvati, ili importovati, kao `test.Blah.sum`.
 
@@ -46,14 +48,16 @@ ako krug s velikim “C” ili “O” ima savijenu ivicu (kao papir), možete k
 
 Klasa i njen kompanjon objekt, ako ga ima, moraju biti definisani u istom izvornom fajlu:
 
-    class IntPair(val x: Int, val y: Int)
+```tut
+class IntPair(val x: Int, val y: Int)
 
-    object IntPair {
-      import math.Ordering
+object IntPair {
+  import math.Ordering
 
-      implicit def ipord: Ordering[IntPair] =
-        Ordering.by(ip => (ip.x, ip.y))
-    }
+  implicit def ipord: Ordering[IntPair] =
+    Ordering.by(ip => (ip.x, ip.y))
+}
+```
 
 Često vidimo typeclass (jedan od dizajn paterna) instance kao [implicitne vrijednosti](implicit-parameters.html), kao navedeni `ipord`,
 definisane u kompanjonu.
@@ -68,15 +72,17 @@ Pristupa im se istom sintaksom, importovanim posebno ili grupno.
 Java programeri nekada definišu statičke članove privatnim kao pomoćne vrijednosti/funkcije.
 Iz ovoga proizilazi čest šablon kojim se importuju svi članovi kompanjon objekta u klasu:
 
-    class X {
-      import X._
+```
+class X {
+  import X._
 
-      def blah = foo
-    }
+  def blah = foo
+}
 
-    object X {
-      private def foo = 42
-    }
+object X {
+  private def foo = 42
+}
+```
 
 U kontekstu ključne riječi `private`, klasa i njen kompanjon su prijatelji.
 `object X` može pristupiti privatnim članovima od `class X`, i obrnuto.

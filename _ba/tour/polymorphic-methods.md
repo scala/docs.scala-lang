@@ -1,36 +1,39 @@
 ---
 layout: tour
 title: Polimorfne metode
+language: ba
 
-discourse: false
+discourse: true
 
 partof: scala-tour
 
-num: 27
-
-
-language: ba
+num: 28
 
 next-page: local-type-inference
 previous-page: implicit-conversions
+prerequisite-knowledge: unified-types
+
+redirect_from: "/tutorials/tour/polymorphic-methods.html"
 ---
 
 Metode u Scali mogu biti parametrizovane i s vrijednostima i s tipovima.
-Kao i na nivou klase, parameteri vrijednosti su ograđeni parom zagrada, dok su tipski parameteri deklarisani u paru uglatih zagrada.
+Sintaksa je slična kao kod generičkih klasa.
+Vrijednosni parameteri ("obični") su ograđeni parom zagrada, dok su tipski parameteri deklarisani u paru uglatih zagrada.
 
 Slijedi primjer:
 
-    def dup[T](x: T, n: Int): List[T] =
-      if (n == 0)
+```tut
+def listOfDuplicates[A](x: A, length: Int): List[A] = {
+    if (length < 1)
         Nil
-      else
-        x :: dup(x, n - 1)
+    else
+        x :: listOfDuplicates(x, length - 1)
+}
+println(listOfDuplicates[Int](3, 4))  // List(3, 3, 3, 3)
+println(listOfDuplicates("La", 8))  // List(La, La, La, La, La, La, La, La)
+```
 
-    println(dup[Int](3, 4))
-    println(dup("three", 3))
+Metoda `listOfDuplicates` je parametrizovana tipom `A` i vrijednostima parametara `x: A` i `n: Int`.
+Ako je `length < 1` vraćamo praznu listu. U suprotnom dodajemo `x` na početak liste duplikata vraćene rekurzivnim pozivom `listOfDuplicates`. (napomena: `::` znači dodavanje elementa na početak sekvence).
 
-Metoda `dup` je parametrizovana tipom `T` i vrijednostima parametara `x: T` i `n: Int`.
-Pri prvom pozivu `dup`, programer navodi sve zahtijevane parametre, ali kako vidimo u sljedećoj liniji,
-programer ne mora eksplicitno navesti tipske parametre.
-Scalin sistem tipova može zaključiti takve tipove sam.
-Scalin kompajler ovo postiže gledanjem tipova vrijednosti datih parametara i konteksta u kojem je metoda pozvana.
+Kada pozovemo `listOfDuplicates` s `[Int]` kao tipskim parametrom, prvi argument mora biti `Int` a povratni tip će biti `List[Int]`. Međutim, ne morate uvijek eksplicitno navoditi tipski parametaryou jer kompajler često može zaključiti tip argumenta (`"La"` je String). Ustvari, ako se ova metoda poziva iz Jave, nemoguće je da se proslijedi tipski parametar.

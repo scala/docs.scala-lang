@@ -1,20 +1,22 @@
 ---
 layout: tour
 title: Klase
+language: ba
 
-discourse: false
+discourse: true
 
 partof: scala-tour
 
-num: 3
-
-language: ba
-
+num: 4
 next-page: traits
 previous-page: unified-types
+topics: classes
+prerequisite-knowledge: no-return-keyword, type-declaration-syntax, string-interpolation, procedures
+
+redirect_from: "/tutorials/tour/classes.html"
 ---
 
-Klase u Scali su statički šabloni koji mogu biti instancirani u više objekata tokom izvršavanja programa (runtime).
+Klase u Scali su šabloni koji mogu biti instancirani u više objekata tokom izvršavanja programa (runtime).
 Slijedi definicija klase `Point`:
 
     class Point(xc: Int, yc: Int) {

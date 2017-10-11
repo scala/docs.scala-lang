@@ -1,62 +1,77 @@
 ---
 layout: tour
 title: Donja granica tipa
+language: ba
 
-discourse: false
+discourse: true
 
 partof: scala-tour
 
-num: 20
-
-language: ba
-
+num: 21
 next-page: inner-classes
 previous-page: upper-type-bounds
+prerequisite-knowledge: upper-type-bounds, generics, variance
+
+redirect_from: "/tutorials/tour/lower-type-bounds.html"
 ---
 
 Dok [gornja granica tipa](upper-type-bounds.html) limitira tip na podtip nekog drugog tipa,
 *donja granica tipa* limitira tip da bude nadtip nekog drugog tipa.
-Izraz `T >: A` izražava tipski parametar `T` ili apstraktni tip `T` koji je nadtip tipa `A`.
+Izraz `B >: A` izražava tipski parametar `B` ili apstraktni tip `B` koji je nadtip tipa `A`. U većini slučajeva, `A` je tipski parametar klase a `B` je tipski parametar metode.
 
-Kroz slj. primjer vidjećemo zašto je ovo korisno:
+Kroz sljedeći primjer vidjećemo zašto je ovo korisno:
 
-    case class ListNode[T](h: T, t: ListNode[T]) {
-      def head: T = h
-      def tail: ListNode[T] = t
-      def prepend(elem: T): ListNode[T] =
-        ListNode(elem, this)
-    }
+```tut:fail
+trait Node[+B] {
+  def prepend(elem: B): Unit
+}
 
-Gornji program implementira povezanu listu s operacijom nadovezivanja (na početak liste).
-Nažalost, ovaj tip je invarijantan u tipskom parametru `T`, klase `ListNode`;
-tj. `ListNode[String]` nije podtip `ListNode[Any]`.
-Pomoću [anotacija varijansi](variances.html) možemo izraziti navedeno:
+case class ListNode[+B](h: B, t: Node[B]) extends Node[B] {
+  def prepend(elem: B) = ListNode[B](elem, this)
+  def head: B = h
+  def tail = t
+}
 
-    case class ListNode[+T](h: T, t: ListNode[T]) { ... }
+case class Nil[+B]() extends Node[B] {
+  def prepend(elem: B) = ListNode[B](elem, this)
+}
+```
 
-Nažalost, ovaj program se ne može kompajlirati, jer anotacija za kovarijansu je jedino moguća ako se varijabla tipa koristi na kovarijantnoj poziciji (u ovom slučaju kao povratni tip).
-Pošto je varijabla tipa `T` tipski parametar metode `prepend`, ovo pravilo je prekršeno.
-Pomoću *donje granice tipa*, možemo implementirati operaciju nadovezivanja gdje se `T` pojavljuje samo u kovarijantnoj poziciji.
+Ovaj program implementira jednostruko povezanu listu.
+`Nil` predstavlja prazan element (tj. prazna lista). `class ListNode` je čvor koji sadrži element tipa `B` (`head`) i referencu na ostatak liste (`tail`). Klasa `Node` i njeni podtipovi su kovarijantni jer imaju `+B`.
 
-Ovo je odgovarajući kod:
 
-    case class ListNode[+T](h: T, t: ListNode[T]) {
-      def head: T = h
-      def tail: ListNode[T] = t
-      def prepend[U >: T](elem: U): ListNode[U] =
-        ListNode(elem, this)
-    }
+Nažalost, ovaj program se _ne može kompajlirati_ jer je parametar `elem` u `prepend` tipa `B`, kojeg smo deklarisali *ko*varijantnim. 
+Ovo ne radi jer su funkcije *kontra*varijantne u svojim tipovima parametara i *ko*varijantne u svom tipu rezultata.
 
-_Napomena:_ nova `prepend` metoda ima manje restriktivan tip.
-Ona dozvoljava, naprimjer, da se nadoveže objekt nadtipa na postojeću listu.
-Rezultujuća lista biće lista ovog nadtipa.
+Da bismo popravili ovo, moramo zamijeniti varijansu tipskog parametra `elem` u `prepend`. 
+Ovo radimo uvođenjem novog tipskog parametra `U` koji ima `B` kao svoju donju granicu tipa.
 
-Ovo je kod koji to ilustrira:
+```tut
+trait Node[+B] {
+  def prepend[U >: B](elem: U)
+}
 
-    object LowerBoundTest extends App {
-      val empty: ListNode[Null] = ListNode(null, null)
-      val strList: ListNode[String] = empty.prepend("hello")
-                                           .prepend("world")
-      val anyList: ListNode[Any] = strList.prepend(12345)
-    }
+case class ListNode[+B](h: B, t: Node[B]) extends Node[B] {
+  def prepend[U >: B](elem: U) = ListNode[U](elem, this)
+  def head: B = h
+  def tail = t
+}
 
+case class Nil[+B]() extends Node[B] {
+  def prepend[U >: B](elem: U) = ListNode[U](elem, this)
+}
+```
+
+Sada možemo uraditi sljedeće:
+```tut
+trait Bird
+case class AfricanSwallow() extends Bird
+case class EuropeanSwallow() extends Bird
+
+
+val africanSwallowList= ListNode[AfricanSwallow](AfricanSwallow(), Nil())
+val birdList: Node[Bird] = africanSwallowList
+birdList.prepend(new EuropeanSwallow)
+```
+`Node[Bird]` može biti dodijeljena `africanSwallowList` ali onda prihvatiti `EuropeanSwallow`e.

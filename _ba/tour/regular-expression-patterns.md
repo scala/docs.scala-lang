@@ -1,51 +1,66 @@
 ---
 layout: tour
 title: Regularni izrazi
+language: ba
 
-discourse: false
+discourse: true
 
 partof: scala-tour
 
-num: 14
-
-
-language: ba
+num: 15
 
 next-page: extractor-objects
 previous-page: singleton-objects
+
+redirect_from: "/tutorials/tour/regular-expression-patterns.html"
 ---
 
-## Desno-ignorišući uzorci sekvenci ##
+Regularni izrazi su stringovi koji se mogu koristiti za traženje uzoraka u podacima.
+Bilo koji string se može pretvoriti u regularni izraz pozivom `.r` metode.
 
-Desno-ignorišući uzorci su korisna opcija za dekompoziciju bilo kojeg podatka koji je ili podtip `Seq[A]` 
-ili case klasa s ponavljajućim formalnim parametrima (`Node*` u primjeru), naprimjer:
+```tut
+import scala.util.matching.Regex
 
-    Elem(prefix: String, label: String, attrs: MetaData, scp: NamespaceBinding, children: Node*)
+val numberPattern: Regex = "[0-9]".r
 
-U takvim slučajevima, Scala dozvoljava uzorke koji imaju zvjezdicu `_*` na najdesnijoj poziciji, predstavljajući sekvencu bilo koje dužine.
-Sljedeći primjer demonstrira uzorak koji se podudara s prefiksom sekvence i povezuje ostatak s varijablom `rest`.
+numberPattern.findFirstMatchIn("awesomepassword") match {
+  case Some(_) => println("Password OK")
+  case None => println("Password must contain a number")
+}
+```
 
-    object RegExpTest1 extends App {
-      def containsScala(x: String): Boolean = {
-        val z: Seq[Char] = x
-        z match {
-          case Seq('s', 'c', 'a', 'l', 'a', rest @ _*) =>
-            println("rest is " + rest)
-            true
-          case Seq(_*) =>
-            false
-        }
-      }
-    }
+U gornjem primjeru, `numberPattern` je `Regex`
+(regularni izraz) kojim provjeravamo da li šifra sadrži broj.
 
-Za razliku od prijašnjih verzija Scale, više nije dozvoljeno imati bilo kakve regularne izraze, iz razloga navedenih ispod.
+Također, možete tražiti grupe regularnih izraza koristeći zagrade.
 
-### Generalni `RegExp` uzorci privremeno povučeni iz Scale ###
+```tut
+import scala.util.matching.Regex
 
-Pošto smo otkrili problem tačnosti, ova opcija je privremeno povučena iz Scala jezika.
-Ako korisnici budu zahtijevali, moguće je da ćemo je ponovo aktivirati u poboljšanoj formi.
+val keyValPattern: Regex = "([0-9a-zA-Z-#() ]+): ([0-9a-zA-Z-#() ]+)".r
 
-Naše mišljenje je da uzorci za regularne izraze nisu bili toliko korisni za procesiranje XML-a kako smo mislili.
-U stvarnim aplikacijama za procesiranje XML-a, XPath se čini kao bolja opcija.
-Kada smo otkrili da naš prevod uzoraka regularnih izraza ima greške kod ezoteričnih uzoraka koji su neobični ali nezamjenjivi,
-odlučili smo da je vrijeme da pojednostavimo jezik.
+val input: String =
+  """background-color: #A03300;
+    |background-image: url(img/header100.png);
+    |background-position: top center;
+    |background-repeat: repeat-x;
+    |background-size: 2160px 108px;
+    |margin: 0;
+    |height: 108px;
+    |width: 100%;""".stripMargin
+
+for (patternMatch <- keyValPattern.findAllMatchIn(input))
+  println(s"key: ${patternMatch.group(1)} value: ${patternMatch.group(2)}")
+```
+Ovdje parsiramo ključeve i vrijednosti Stringa. 
+Svaki pogodak ima grupu pod-pogodaka. Ovo je izlaz:
+```
+key: background-color value: #A03300
+key: background-image value: url(img
+key: background-position value: top center
+key: background-repeat value: repeat-x
+key: background-size value: 2160px 108px
+key: margin value: 0
+key: height value: 108px
+key: width value: 100
+```

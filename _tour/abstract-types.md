@@ -1,4 +1,4 @@
----
+
 layout: tour
 title: Abstract Types
 

@@ -1,16 +1,17 @@
 ---
 layout: tour
 title: Uvod
+language: ba
 
-discourse: false
+discourse: true
 
 partof: scala-tour
 
 num: 1
 
-language: ba
+next-page: basics
 
-next-page: unified-types
+redirect_from: "/tutorials/tour/tour-of-scala.html"
 ---
 
 Scala je moderan programski jezik koji spaja više paradigmi,
@@ -60,15 +61,12 @@ i za tipski bezbjedno proširenje softvera.
 
 U praksi, razvijanje domenski specifičnih aplikacija često zahtijeva i domenski specifične ekstenzije jezika.
 Scala omogućuje jedinstvenu kombinaciju mehanizama jezika koji olakšavaju elegantno dodavanje novih
-jezičkih konstrukcija u formi biblioteka:
-
-* bilo koja metoda se može koristiti kao [infiksni ili postfiksni operator](operators.html)
-* [closure se prave automatski zavisno od očekivanog tipa](automatic-closures.html) (ciljno tipiziranje).
+jezičkih konstrukcija u formi biblioteka.
 
 Zajedničkom upotrebom obje mogućnosti olakšava definisanje novih izraza bez proširenja sintakse samog Scala jezika i bez
 korištenja olakšica u vidu macro-a ili meta-programiranja.
 
-Scala je dizajnirana za interoperabilnost s popularnim Java 2 Runtime Environment (JRE). 
+Scala je dizajnirana za interoperabilnost s popularnim Java Runtime Environment (JRE). 
 Konkretno, interakcija s popularnim objektno orijentisanim Java programskim jezikom je prirodna. 
 Novije mogućnosti Jave kao [anotacije](annotations.html) i Javini generički tipovi imaju direktnu analogiju u Scali.
 Scaline mogućnosti bez analogija u Javi, kao što su [podrazumijevani](default-parameter-values.html) i [imenovani parametri](named-parameters.html), 
