@@ -12,43 +12,65 @@ previous-page: declarations
 
 It is important to provide documentation for all packages, classes,
 traits, methods, and other members. Scaladoc generally follows the
-conventions of Javadoc, however there are many additional features to
-make writing scaladoc simpler.
+conventions of Javadoc, but provides many additional features that
+simplify writing documentation for Scala code.
 
 In general, you want to worry more about substance and writing style
-than in formatting. Scaladocs need to be useful to new users of the code
+than about formatting. Scaladocs need to be useful to new users of the code
 as well as experienced users. Achieving this is very simple: increase
 the level of detail and explanation as you write, starting from a terse
 summary (useful for experienced users as reference), while providing
 deeper examples in the detailed sections (which can be ignored by
 experienced users, but can be invaluable for newcomers).
 
-The general format for a Scaladoc comment should be as follows:
+The Scaladoc tool does not mandate a documentation comment style.
 
-    /** This is a brief description of what's being documented.
+The following examples demonstrate a single line summary followed
+by detailed documentation, in the three common styles of indentation.
+
+Javadoc style:
+
+    /**
+     * Provides a service as described.
      *
-     *  This is further documentation of what we're documenting.  It should
-     *  provide more details as to how this works and what it does.
+     * This is further documentation of what we're documenting.
+     * Here are more details about how it works and what it does.
      */
-    def myMethod = {}
+    def member: Unit = ()
 
-An alternative Scaladoc comment style right-aligns the column of asterisks
-under the second asterisk, in the third column.
-The Scaladoc tool also accepts Javadoc comment formatting,
-with text following the single asterisks, separated by a single space.
+Scaladoc style, with gutter asterisks aligned in column two:
+
+    /** Provides a service as described.
+     *
+     *  This is further documentation of what we're documenting.
+     *  Here are more details about how it works and what it does.
+     */
+    def member: Unit = ()
+
+Scaladoc style, with gutter asterisks aligned in column three:
+
+    /** Provides a service as described.
+      *
+      * This is further documentation of what we're documenting.
+      * Here are more details about how it works and what it does.
+      */
+    def member: Unit = ()
+
 Because the comment markup is sensitive to whitespace,
 the tool must be able to infer the left margin.
 
-For methods and other type members where the only documentation needed
-is a simple, short description, a one-line format can be used:
+When only a simple, short description is needed, a one-line format can be used:
 
     /** Does something very simple */
-    def simple = {}
+    def simple: Unit = ()
 
-Note that, in contrast to the Javadoc convention, the text begins
-on the first line of the comment but that subsequent text remains aligned.
-In particular, text is aligned on a multiple of two columns,
-since Scala source is usually indented by two columns.
+Note that, in contrast to the Javadoc convention, the text in
+the Scaladoc styles begins on the first line of the comment.
+This format saves vertical space in the source file.
+
+In either Scaladoc style, all lines of text are aligned on column five.
+Since Scala source is usually indented by two spaces,
+the text aligns with source indentation in a way that is visually pleasing.
 
 See
 [Scaladoc for Library Authors]({{ site.baseurl }}/overviews/scaladoc/for-library-authors.html)
