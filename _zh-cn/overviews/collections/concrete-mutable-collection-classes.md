@@ -89,7 +89,7 @@ Scala除了提供了不可变队列之外，还提供了可变队列。你可以
 
 Array Sequences 是具有固定大小的可变序列。在它的内部，用一个 `Array[Object]`来存储元素。在Scala 中，[ArraySeq](http://www.scala-lang.org/api/2.10.0/scala/collection/mutable/ArraySeq.html) 是它的实现类。
 
-如果你想拥有 Array 的性能特点，又想建立一个泛型序列实例，但是你又不知道其元素的类型，在运行阶段也无法提供一个`ClassManifest` ，那么你通常可以使用 `ArraySeq` 。这些问题在[arrays](http://docs.scala-lang.org/overviews/collections/arrays.html)一节中有详细的说明。
+如果你想拥有 Array 的性能特点，又想建立一个泛型序列实例，但是你又不知道其元素的类型，在运行阶段也无法提供一个`ClassTag` ，那么你通常可以使用 `ArraySeq` 。这些问题在[arrays](http://docs.scala-lang.org/overviews/collections/arrays.html)一节中有详细的说明。
 
 ## 堆栈
 
