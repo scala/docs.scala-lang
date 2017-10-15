@@ -73,7 +73,7 @@ We would like to combine the functionality of `StringIterator` and `RichIterator
 
 ```tut
 object StringIteratorTest extends App {
-  class Iter extends StringIterator(args(0)) with RichIterator
+  class RichStringIter extends StringIterator(args(0)) with RichIterator
   val iter = new Iter
   iter foreach println
 }
