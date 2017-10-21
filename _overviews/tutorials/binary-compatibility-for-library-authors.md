@@ -2,9 +2,11 @@
 layout: singlepage-overview
 title: Binary Compatibility for library authors
 
-discourse: true
-permalink: /tutorials/:title.html
+partof: binary-compatibility
+permalink: /overviews/core/:title.html
 ---
+
+**By Jacob Wang**
 
 ## Introduction
 
@@ -208,4 +210,3 @@ In this guide we covered the importance of binary compatibility and showed you a
 binary compatibility breakages clearly to your users. 
 
 If we follow these guidelines, we as a community can spend less time untangling dependency hell and more time building cool things!
-
