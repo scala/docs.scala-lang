@@ -26,11 +26,11 @@ Before we start, let's understand how code is compiled and executed on the Java 
 Scala is compiled to a platform-independent format called **JVM bytecode** and stored in `.class` files. These class files are collated in JAR files for distribution.
 
 When some code depends on a library, its compiled bytecode references the library's bytecode. The library's bytecode is referenced by its class/method signatures and loaded lazily
-by the the JVM classloader during runtime. If a class or method matching the signature is not found, an exception is thrown. 
+by the JVM classloader during runtime. If a class or method matching the signature is not found, an exception is thrown. 
 
 As a result of this execution model:
 
-* We need to provide the JARs of every library used in our dependency tree when starting an application, since the library's bytecode is only referenced -- not merged into its user's bytecode
+* We need to provide the JARs of every library used in our dependency tree when starting an application since the library's bytecode is only referenced, not merged into its user's bytecode
 * A missing class/method problem may only surface after the application has been running for a while, due to lazy loading.
 
 Common exceptions from classloading failures includes 
@@ -42,21 +42,24 @@ Consider an application `App` that depends on `A` which itself depends on librar
 for all of `App`, `A` and `C` (something like `java -cp App.jar:A.jar:C.jar:. MainClass`). If we did not provide `C.jar` or if we provided a `C.jar` that does not contain some classes/methods
 which `A` calls, we will get classloading exceptions when our code attempts to invoke the missing classes/methods.
 
-These are what we call **Binary Incompatibility Errors**. An error caused by binary incompatibility happens when the compiled bytecode references a name that cannot be resolved during runtime
+These are what we call **Binary Incompatibility Errors** -- errors that happen when the compiled bytecode references a name that cannot be resolved during runtime.
+
+Before we look at how to avoid binary incompatibility errors, let us first
+establish some key terminologies we will be using for the rest of the guide.
 
 ## What are Evictions, Source Compatibility and Binary Compatibility?
 
 ### Evictions
 When a class is needed during execution, the JVM classloader loads the first matching class file from the classpath (any other matching class files are ignored).
-Because of this, having multiple versions of the same library in the classpath is generally undesireable:
+Because of this, having multiple versions of the same library in the classpath is generally undesirable:
 
 * Unnecessary application size increase
-* Unexpected runtime behaviour if the order of class files changes
+* Unexpected runtime behavior if the order of class files changes
 
 Therefore, when resolving JARs to use for compilation and packaging, most build tools will pick only one version of each library and **evict** the rest.
 
 ### Source Compatibility
-Two library versions are **Source Compatible** if switching one for the other does not incur any compile errors.  
+Two library versions are **Source Compatible** if switching one for the other does not incur any compile errors or unintended behavioral changes at runtime.  
 For example, If we can upgrade `v1.0.0` of a dependency to `v1.1.0` and recompile our code without any compilation errors, `v1.1.0` is source compatible with `v1.0.0`.
 
 ### Binary Compatibility
@@ -66,7 +69,7 @@ For example, if we can replace the class files of a library's `v1.0.0` with the 
 
 **NOTE:** While breaking source compatibility normally results in binary compatibility breakages as well, they are actually orthogonal -- breaking one does not imply breaking the other.
 
-### Forwards and Backwards Compatibility
+#### Forwards and Backwards Compatibility
 
 There are two "directions" when we describe compatibility of a library release:
 
@@ -74,8 +77,7 @@ There are two "directions" when we describe compatibility of a library release:
 this is the common and implied direction.
 
 **Forwards Compatible** means that an older library can be used in an environment where a newer version is expected.  
-Forward compatibility is generally not upheld for userland libraries. It is only important in situations where an older version of a library is commonly 
-used at runtime against code that is compiled with newer version. (e.g. Scala's standard library)
+Forward compatibility is generally not upheld for userland libraries. It is only important in situations where an older version of a library is commonly used at runtime against code that is compiled with newer versions. (for example, [Scala's standard library](http://docs.scala-lang.org/overviews/core/binary-compatibility-of-scala-releases.html))
 
 Let's look at an example where library `A v1.0.0` is compiled with library `C v1.1.0`.
 
@@ -83,29 +85,29 @@ Let's look at an example where library `A v1.0.0` is compiled with library `C v1
 
 `C v1.1.0 ` is **Forwards Binary Compatible** with `v1.0.0` if we can use `v1.0.0`'s JAR at runtime instead of `v1.1.0`'s JAR without any binary compatibility errors.
 
-`C v1.2.0 ` is **Backwards Binary Compatible** with `v1.1.0` if we can use `v1.2.0`'s JAR at runtime instaed of `v1.1.0`'s JAR without any binary compatibility errors..
+`C v1.2.0 ` is **Backwards Binary Compatible** with `v1.1.0` if we can use `v1.2.0`'s JAR at runtime instead of `v1.1.0`'s JAR without any binary compatibility errors.
 
 ## Why binary compatibility matters
 
-Binary Compatibility matters because failing to maintain it makes life hard for everyone.
+Binary Compatibility matters because breaking binary compatibility have bad consequences on the ecosystem around the software.
 
-* End users has to update all library versions in their whole transitive dependency tree such that they are binary compatible, otherwise binary compatibility errors will happen at runtime
-* Library authors are forced to update the dependencies of their library so users can continue using them, greatly increases the effort required to maintain libraries
+* End users have to update versions transitively in all their dependency tree such that they are binary compatible. This process is time-consuming and error-prone, and it can change the semantics of end program.
+* Library authors need to update their library dependencies to avoid "falling behind" and causing dependency hell for their users. Frequent binary breakages increase the effort required to maintain libraries.
 
-Constant binary compatibility breakages in libraries, especially ones that are used by other libraries, is detrimental to our ecosystem as they require a lot of effort
-from users and library authors to resolve.
+Constant binary compatibility breakages in libraries, especially ones that are used by other libraries, is detrimental to our ecosystem as they require time 
+and effort from end users and maintainers of dependent libraries to resolve.
 
 Let's look at an example where binary incompatibility can cause grief and frustration:
 
 ### An example of "Dependency Hell"
 
-Our application `App` depends on library `A` and `B`. Both `A` and `B` depends on library `C`. Initially both `A` and `B` depends on `C v1.0.0`.
+Our application `App` depends on library `A` and `B`. Both `A` and `B` depends on library `C`. Initially, both `A` and `B` depends on `C v1.0.0`.
 
 ![Initial dependency graph]({{ site.baseurl }}/resources/images/library-author-guide/before_update.png){: style="width: 50%; margin: auto; display: block;"}
 
-Some time later, we see `B v1.1.0` is available and upgrade its version in our build. Our code compiles and seems to work so we push it to production and go home for dinner.
+Sometime later, we see `B v1.1.0` is available and upgrade its version in our build. Our code compiles and seems to work so we push it to production and go home for dinner.
 
-Unfortunately at 2am, we got frantic calls from customers saying that our application is broken! Looking at the logs, you find lots of `NoSuchMethodError` is being thrown by some code in `A`! 
+Unfortunately at 2am, we get frantic calls from customers saying that our application is broken! Looking at the logs, you find lots of `NoSuchMethodError` are being thrown by some code in `A`! 
 
 ![Binary incompatibility after upgrading]({{ site.baseurl }}/resources/images/library-author-guide/after_update.png){: style="width: 50%; margin: auto; display: block;"}
 
@@ -151,7 +153,7 @@ Some language features may break binary compatibility:
 
 Techniques you can use to avoid breaking binary compatibility:
 
-* Annotate public methods's return type explicitly
+* Annotate public method's return type explicitly
 * Mark methods as package private when you want to remove a method or modify its signature
 * Don't use inlining (for libraries)
 
@@ -161,17 +163,17 @@ Again, we recommend using MiMa to double check that you have not broken binary c
 
 ## Versioning Scheme - Communicating compatibility breakages
 
-Library authors use verioning schemes to communicate compatibility guarantees between library releases to their users. Versioning schemes like [Semantic Versioning](http://semver.org/)(SemVer) allow
-users to easily reason about the impact of a updating a library, without needing to read the detailed release note.
+Library authors use versioning schemes to communicate compatibility guarantees between library releases to their users. Versioning schemes like [Semantic Versioning](http://semver.org/)(SemVer) allow
+users to easily reason about the impact of updating a library, without needing to read the detailed release note.
 
-In the following section we will outline a versioning scheme based on Semantic Versioning that we **strongly encourage** you to adopt for your libraries. The rules listed below are **in addition** to 
+In the following section, we will outline a versioning scheme based on Semantic Versioning that we **strongly encourage** you to adopt for your libraries. The rules listed below are **in addition** to 
 Semantic Versioning v2.0.0.
 
-### Recommmended Versioning Scheme
+### Recommended Versioning Scheme
 
-* If backwards **binary compatibility** is broken, **major version number** must be increased
-* If backwards **source compatibility** is broken, **minor version number** must be increased
-* A change in **patch version number** signals **no binary nor source incompatibility**. According to SemVer, patch versions should contain only bug fixes that fixes incorrect behavior so major behavioral
+* If backward **binary compatibility** is broken, **major version number** must be increased
+* If backward **source compatibility** is broken, **minor version number** must be increased
+* A change in **patch version number** signals **no binary nor source incompatibility**. According to SemVer, patch versions should contain only bug fixes that fix incorrect behavior so major behavioral
 change in method/classes should result in a minor version bump.
 * When major version is `0`, a minor version bump **may contain both source and binary breakages**
 * Some libraries may take a harder stance on maintaining source compatibility, bumping the major version number for ANY source incompatibility even if they are binary compatible
@@ -189,8 +191,8 @@ Many libraries in the Scala ecosystem has adopted this versioning scheme. A few 
 
 If this version scheme is followed, reasoning about binary compatibility is now very simple:
 
-* Ensure major versions of the all versions of a library in the dependency tree are the same
-* Pick latest version and evict the rest (This is the default behavior of SBT).
+* Ensure major versions of all versions of a library in the dependency tree are the same
+* Pick the latest version and evict the rest (This is the default behavior of SBT).
 
 ### Explanation
 
@@ -202,11 +204,12 @@ From our [example](#why-binary-compatibility-matters) above, we have learned two
 * If a new library version is binary compatible but source incompatible, the user can simply fix the compile errors in their application and everything will work
 
 Therefore, **binary incompatible releases should be avoided if possible** and be more noticeable when they happen, warranting the use of the major version number. While source compatibility
-is also important, if they are minor breakages that does not require effort to fix, then it is best to let the major number signal just binary compatibility.
+is also important, if they are minor breakages that do not require effort to fix, then it is best to let the major number signal just binary compatibility.
 
 ## Conclusion
 
-In this guide we covered the importance of binary compatibility and showed you a few tricks to avoid breaking binary compatibility. Finally, we laid out a versioning scheme to communicate 
+In this guide, we covered the importance of binary compatibility and showed you a few tricks to avoid breaking binary compatibility. Finally, we laid out a versioning scheme to communicate 
 binary compatibility breakages clearly to your users. 
 
 If we follow these guidelines, we as a community can spend less time untangling dependency hell and more time building cool things!
+
