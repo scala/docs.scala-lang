@@ -18,7 +18,7 @@ redirect_from: "/tutorials/tour/unified-types.html"
 Sve vrijednosti u Scali su objekti, uključujući brojeve i funkcije.
 Dijagram ispod prikazuje hijerarhiju Scala klasa.
 
-![Scala Type Hierarchy]({{ site.baseurl }}/resources/images/classhierarchy.img_assist_custom.png)
+<a href="{{ site.baseurl }}/resources/images/tour/unified-types-diagram.svg"><img  style="width:100%" src="{{ site.baseurl }}/resources/images/tour/unified-types-diagram.svg" alt="Scala Type Hierarchy"></a>
 
 ## Hijerarhija tipova u Scali ##
 
