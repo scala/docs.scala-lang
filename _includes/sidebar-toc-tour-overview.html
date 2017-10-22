@@ -35,8 +35,7 @@
         <ul id="available-languages" style="display: none;">
           <li><a href="{{ site.baseurl }}{{ page.url }}">English</a></li>
           {% for l in site.data.translations.tour.languages %}
-            {% capture intermediate %}{{ page.url | remove_first: l }}{% endcapture %}
-            {% capture rootTutorialURL %}{{ intermediate | remove_first: '/' }}{% endcapture %}
+            {% capture rootTutorialURL %}{{ page.url | remove_first: '/' }}{% endcapture %}
             {% assign lang = site.data.languages[l] %}
             <li><a href="{{ site.baseurl }}/{{ l }}/{{ rootTutorialURL }}" class="lang">{{ lang.name }}</a></li>
           {% endfor %}
