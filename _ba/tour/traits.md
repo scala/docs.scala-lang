@@ -1,55 +1,88 @@
 ---
 layout: tour
 title: Trejtovi
+language: ba
 
-discourse: false
+discourse: true
 
 partof: scala-tour
 
-num: 4
-
-language: ba
-
+num: 5
 next-page: mixin-class-composition
 previous-page: classes
+assumed-knowledge: expressions, classes, generics, objects, companion-objects
+
+redirect_from: "/tutorials/tour/traits.html"
 ---
 
-Slično Javinim interfejsima, trejtovi se koriste za definisanje tipova objekata navođenjem potpisa podržanih metoda.
-Kao u Javi 8, Scala dozvoljava trejtovima da budu parcijalno implementirani;
-tj. moguće je definisati podrazumijevane implementacije nekih metoda.
-Nasuprot klasama, trejtovi ne mogu imati parametre konstruktora.
-Slijedi primjer:
- 
-    trait Similarity {
-      def isSimilar(x: Any): Boolean
-      def isNotSimilar(x: Any): Boolean = !isSimilar(x)
-    }
- 
-Ovaj trejt se sastoji od dvije metode, `isSimilar` i `isNotSimilar`. 
-Dok metoda `isSimilar` nema konkretnu implementaciju (u Java terminologiji, apstraktna je), 
-metoda `isNotSimilar` definiše konkretnu implementaciju. 
-Klase koje integrišu ovaj trejt moraju obezbijediti samo implementaciju za `isSimilar`. 
-Ponašanje metode `isNotSimilar` se direktno nasljeđuje iz trejta.
-Trejtovi se obično integrišu u [klase](classes.html) (ili druge trejtove) [kompozicijom mixin klasa](mixin-class-composition.html):
- 
-    class Point(xc: Int, yc: Int) extends Similarity {
-      var x: Int = xc
-      var y: Int = yc
-      def isSimilar(obj: Any) =
-        obj.isInstanceOf[Point] &&
-        obj.asInstanceOf[Point].x == x
-    }
-    object TraitsTest extends App {
-      val p1 = new Point(2, 3)
-      val p2 = new Point(2, 4)
-      val p3 = new Point(3, 3)
-      println(p1.isNotSimilar(p2))
-      println(p1.isNotSimilar(p3))
-      println(p1.isNotSimilar(2))
-    }
- 
-Ovo je izlaz programa:
+Trejtovi se koriste za dijeljenje interfejsa i polja među klasama.
+Slični su interfejsima Jave 8.
+Klase i objekti mogu naslijediti trejtove ali trejtovi ne mogu biti instancirani i zato nemaju parametara.
 
-    false
-    true
-    true
+## Definisanje trejta
+Minimalni trejt je samo ključna riječ `trait` i identifikator:
+
+```tut
+trait HairColor
+```
+
+Trejtovi su vrlo korisni s generičkim tipovima i apstraktnim metodama.
+```tut
+trait Iterator[A] {
+  def hasNext: Boolean
+  def next(): A
+}
+```
+
+Nasljeđivanje `trait Iterator[A]` traži tip `A` i implementacije metoda `hasNext` i `next`.
+
+## Korištenje trejtova
+Koristite `extends` za nasljeđivanje trejta. Zatim implementirajte njegove apstraktne članove koristeći `override` ključnu riječ:
+```tut
+trait Iterator[A] {
+  def hasNext: Boolean
+  def next(): A
+}
+
+class IntIterator(to: Int) extends Iterator[Int] {
+  private var current = 0
+  override def hasNext: Boolean = current < to
+  override def next(): Int =  {
+    if (hasNext) {
+      val t = current
+      current += 1
+      t
+    } else 0
+  }
+}
+
+
+val iterator = new IntIterator(10)
+iterator.next()  // prints 0
+iterator.next()  // prints 1
+```
+Klasa `IntIterator` uzima parametar `to` kao gornju granicu. 
+Ona nasljeđuje `Iterator[Int]` što znači da `next` mora vraćati `Int`.
+
+## Podtipovi
+Podtipovi trejtova mogu se koristiti gdje se trejt traži.
+```tut
+import scala.collection.mutable.ArrayBuffer
+
+trait Pet {
+  val name: String
+}
+
+class Cat(val name: String) extends Pet
+class Dog(val name: String) extends Pet
+
+val dog = new Dog("Harry")
+val cat = new Cat("Sally")
+
+val animals = ArrayBuffer.empty[Pet]
+animals.append(dog)
+animals.append(cat)
+animals.foreach(pet => println(pet.name))  // Prints Harry Sally
+```
+`trait Pet` ima apstraktno polje `name` koje implementiraju `Cat` i `Dog` u svojim konstruktorima. 
+Na zadnjoj liniji, zovemo `pet.name` koje mora biti implementirano u bilo kom podtipu trejta `Pet`.

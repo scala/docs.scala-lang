@@ -1,57 +1,68 @@
 ---
 layout: tour
 title: Ekstraktor objekti
+language: ba
 
-discourse: false
+discourse: true
 
 partof: scala-tour
 
-num: 15
-
-language: ba
-
-next-page: sequence-comprehensions
+num: 16
+next-page: for-comprehensions
 previous-page: regular-expression-patterns
+
+redirect_from: "/tutorials/tour/extractor-objects.html"
 ---
 
-U Scali, uzorci (patterns) mogu biti definisani nezavisno od case klasa.
-Za ovo se koristi metoda `unapply` koja vraća tzv. ekstraktor.
-Ekstraktor se može smatrati kao specijalna metoda koja ima obrnuti efekt od primjene (apply) nekog objekta na neke ulazne parametre.
-Svrha mu je da 'ekstraktuje' ulazne parametre koji su bili prisutni prije 'apply' operacije.
-Naprimjer, sljedeći kod definiše ekstraktor [objekt](singleton-objects.html) Twice.
+Ekstraktor objekat je objekat koji ima `unapply` metodu.
+Dok je `apply` metoda kao konstruktor koji uzima argumente i kreira objekat, `unapply` metoda prima objekat i pokušava vratiti argumente. 
+Ovo se najčešće koristi u podudaranju uzoraka i parcijalnim funkcijama.
 
-    object Twice {
-      def apply(x: Int): Int = x * 2
-      def unapply(z: Int): Option[Int] = if (z%2 == 0) Some(z/2) else None
-    }
-    
-    object TwiceTest extends App {
-      val x = Twice(21)
-      x match { case Twice(n) => Console.println(n) } // prints 21
-    }
+```tut
+import scala.util.Random
 
-Navedene su dvije sintaksne konvencije:
+object CustomerID {
 
-Uzorak `case Twice(n)` će pozvati `Twice.unapply`, koja se koristi da ekstraktuje bilo koji paran broj;
-povratna vrijednost od `unapply` signalizira da li se argument podudario s uzorkom ili ne,
-i bilo koje pod-vrijednosti mogu biti korištene za daljnje uzorkovanje (matching).
-Ovdje je pod-vrijednost `z/2`.
+  def apply(name: String) = s"$name--${Random.nextLong}"
 
-Metoda `apply` nije obavezna za uzorkovanje. Ona se jedino koristi da imitira konstructor.  
-`val x = Twice(21)` se proširuje na `val x = Twice.apply(21)`.
+  def unapply(customerID: String): Option[String] = {
+    val name = customerID.split("--").head
+    if (name.nonEmpty) Some(name) else None
+  }
+}
+
+val customer1ID = CustomerID("Sukyoung")  // Sukyoung--23098234908
+customer1ID match {
+  case CustomerID(name) => println(name)  // prints Sukyoung
+  case _ => println("Could not extract a CustomerID")
+}
+```
+
+Metoda `apply` kreira `CustomerID` string od argumenta `name`. 
+Metoda `unapply` radi suprotno da dobije `name` nazad. 
+Kada pozovemo `CustomerID("Sukyoung")`, to je skraćena sintaksa za `CustomerID.apply("Sukyoung")`. 
+Kada pozovemo `case CustomerID(name) => customer1ID`, ustvari pozivamo `unapply` metodu.
+
+Metoda `unapply` se može koristiti i za dodjelu vrijednosti.
+
+```tut
+val customer2ID = CustomerID("Nico")
+val CustomerID(name) = customer2ID
+println(name)  // prints Nico
+```
+
+Ovo je ekvivalentno `val name = CustomerID.unapply(customer2ID).get`. Ako se uzorak ne podudari, baciće se  `scala.MatchError` izuzetak:
+
+```tut:fail
+val CustomerID(name2) = "--asdfasdfasdf"
+```
 
 Povratni tip od `unapply` se bira na sljedeći način:
 
 * Ako je samo test, vraća `Boolean`. Naprimjer `case even()`
-* Ako vraća jednu pod-vrijednost tipa, vraća `Option[T]`
-* Ako vraća više pod-vrijednosti `T1,...,Tn`, groupiše ih u opcionu torku `Option[(T1,...,Tn)]`.
+* Ako vraća jednu pod-vrijednost tipa `T`, vraća `Option[T]`
+* Ako vraća više pod-vrijednosti `T1,...,Tn`, grupiše ih u opcionu torku `Option[(T1,...,Tn)]`.
 
 Ponekad, broj pod-vrijednosti nije fiksan i želimo da vratimo listu.
-Iz ovog razloga, također možete definisati uzorke pomoću `unapplySeq`.
-Zadnja pod-vrijednost tipa `Tn` mora biti `Seq[S]`.
+Iz ovog razloga, također možete definisati uzorke pomoću `unapplySeq` koja vraća `Option[Seq[T]]`.
 Ovaj mehanizam se koristi naprimjer za uzorak `case List(x1, ..., xn)`.
-
-Ekstraktori čine kod lakšim za održavanje.
-Za više detalja, pročitajte dokument 
-["Matching Objects with Patterns"](https://infoscience.epfl.ch/record/98468/files/MatchingObjectsWithPatterns-TR.pdf) 
-(u sekciji 4) od Emir, Odersky i Williams (Januar 2007).
