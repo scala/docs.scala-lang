@@ -17,6 +17,7 @@ permalink: /sips/:title.html
 | Feb 9th 2017  | Updates from feedback                                                  |
 | Feb 10th 2017 | Updates from feedback                                                  |
 | Aug 8th 2017  | Numbered SIP, improve view, fixed example, and added related issues    |
+| Oct 20th 2017 | Added implementation link                                              |
 
 
 Your feedback is welcome! If you're interested in discussing this proposal, head over to [this](https://contributors.scala-lang.org/t/sip-nn-make-infix-type-alias-precedence-like-expression-operator-precedence/471) Scala Contributors thread and let me know what you think.
@@ -226,6 +227,9 @@ def foo(a : N1*N2*) : Unit = {} //repeated parameter of type *[N1, N2]
 
 ## Backward Compatibility
 Changing infix type associativity and precedence affects code that uses type operations and conforms to the current specification.
+
+## Implementation
+Pull request is available at https://github.com/scala/scala/pull/6142
 
 ---
 
