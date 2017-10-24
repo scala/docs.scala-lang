@@ -459,6 +459,9 @@ as above.
 
 ### Fix-point type
 
+Here's an interesting little example which defines the recursive
+opaque type `Fix`:
+
 ```scala
 package object fixed {
   opaque type Fix[F_]] = F[Fix[F]]
@@ -493,7 +496,68 @@ package object fixed {
 }
 ```
 
+This is an interesting example which is intended to show that opaque
+types (unlike type aliases) have an independent existence, even within
+the companion. This means that unlike type alises, `Fix[F]` should not
+result in an infinite expansion in the above code.
+
+The `Fix` type is useful to implementing recursion schemes, or just
+for creating recursive structures which are parameterized on their
+recursive type.
+
+### Explicit nullable types
+
+There have previously been proposals to provide a "zero-cost Option"
+using value classes. Opaque types make this very straight-forward by
+bounding the underlying type (`A`) with `AnyRef`.
+
+```scala
+package object nullable {
+  opaque type Nullable[A <: AnyRef] = A
+  
+  object Nullable {
+    def apply[A <: AnyRef](a: A): Nullable[A] = a
+    
+    implicit class NullableOps[A <: AnyRef](na: Nullable[A]) {
+      def exists(p: A => Boolean): Boolean =
+        na != null && p(na)
+      def filter(p: A => Boolean): Nullable[A] =
+        if (na != null && p(na)) na else null
+      def flatMap[B <: AnyRef](f: A => Nullable[B]): Nullable[B] =
+        if (na == null) null else f(na)
+      def forall(p: A => Boolean): Boolean =
+        na == null || p(na)
+      def getOrElse(a: => A): A =
+        if (na == null) a else na
+      def map[B <: AnyRef](f: A => B): Nullable[B] =
+        if (na == null) null else f(na)
+      def orElse(na2: => Nullable[A]): Nullable[A] =
+        if (na == null) na2 else na
+      def toOption: Option[A] =
+        Option(na)
+    }
+  }
+}
+```
+
+This example provides most of the benefits of using `Option` at API
+boundaries with libraries that use `null` (such as many Java
+libraries). Notice that `Nullable[Nullable[B]]` is not a valid type,
+because `Nullalbe[B]` is not known to be `<: AnyRef`. This is a key
+difference between a type like `Option` (which is parametric and can
+easily wrap itself) and a type like `Nullable` (which only has one
+`null` value to use).
+
 ### Custom instances
+
+Currently, many libraries (including Scalding and Algebird) define
+wrapper types which change the kind of aggregation used for that
+type. This is useful in frameworks like MapReduce, Spark, Flink,
+Storm, etc. where users describe computation in terms of mapping and
+aggregation.
+
+The following example shows how opaque types can make using these
+wrappers a bit more elegant:
 
 ```scala
 package object groups {
@@ -593,7 +657,23 @@ package object groups {
 }
 ```
 
+The example demonstrates using an abstract class (`Wrapper`) to share
+code between opaque type companion objects. Like the tagging example,
+we can use two methods (`wraps` and `unwraps`) to wrap and unwrap `A`
+types, even if neseted in an arbitrary context (`G[_]`). These methods
+cannot be implemented in `Wrapper` because each opaque type companion
+contains the only scope where its particular methods can be
+implemented.
+
+Similarly to the tagging example, these types are zero-cost wrappers
+which can be used to tag how to aggregate the underlying type (for
+example `Int`).
+
 ### Probability interval
+
+Here's an example that demonstrates how opaque types can limit the
+underlying type's range of values in a way that minimizes the require
+error-checking:
 
 ```scala
 package object prob {
@@ -641,6 +721,17 @@ package object prob {
   }
 }
 ```
+
+Outside of the `Probability` companion, we can be sure that the
+underlying `Double` values fall in the interval *[0, 1]*, which means
+we don't need to include error-checking code when working with
+`Probability` values. We can be sure that adding this kind of
+compile-time safety to a program doesn't add any additional cost
+(except for the error-checking that we explicitly want).
+
+This example is somewhat similar to `Logarithm` above. Other
+properties we might want to verify at compile-time: `NonNegative`,
+`Positive`, `Finite`, `Unsigned` and so on.
 
 ## Implementation notes
 
