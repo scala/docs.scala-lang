@@ -221,7 +221,7 @@ val l: Logarithm = 1.0
 
 which fails to compile with a type mismatch error:
 
-```scala
+```
 <console>:11: error: type mismatch;
  found   : Double
  required: Logarithm
@@ -375,6 +375,272 @@ not possible to link to the type companion symbol once type aliases have been de
 The extension methods synthesized for implicit value classes are not static. We have not measured
 if the current encoding has an impact in performance, but if so, we can consider changing the
 encoding of extension methods either in this proposal or in a future one.
+
+## More examples
+
+### Type tagging
+
+This example focuses on using type parameters to opaque types (one of
+which is a phantom type). The goal here is to be able to mark concrete
+types (`S`) with arbitrary *tags* (`T`) which can be used to
+distinguish them at compile-time.
+
+```scala
+package object tagging {
+
+  // Tagged[S, T] means that S is tagged with T
+  opaque type Tagged[S, T] = S
+
+  object Tagged {
+    def tag[S, T](s: S): Tagged[S, T] = s
+    def untag[S, T](st: Tagged[S, T]): S = st
+
+    def tags[F[_], S, T](fs: F[S]): F[Tagged[S, T]] = fs
+    def untags[F[_], S, T](fst: F[Tagged[S, T]]): F[S] = fst
+
+    implicit def taggedClassTag[S, T](implicit ct: ClassTag[S]): ClassTag[Tagged[S, T]] =
+      ct
+  }
+
+  type @@[S, T] = Tagged[S, T]
+
+  implicit class UntagOps[S, T](st: S @@ T) extends AnyVal {
+    def untag: S = Tagged.untag(st)
+  }
+
+  implicit class UntagsOps[F[_], S, T](fs: F[S @@ T]) extends AnyVal {
+    def untags: F[S] = Tagged.untags(fs)
+  }
+
+  implicit class TagOps[S](s: S) extends AnyVal {
+    def tag[T]: S @@ T = Tagged.tag(s)
+  }
+
+  implicit class TagsOps[F[_], S](fs: F[S]) extends AnyVal {
+    def tags[T]: F[S @@ T] = Tagged.tags(fs)
+  }
+
+  trait Meter
+  trait Foot
+  trait Fathom
+
+  val x: Double @@ Meter = (1e7).tag[Meter]
+  val y: Double @@ Foot = (123.0).tag[Foot]
+  val xs: Array[Double @@ Meter] = Array(1.0, 2.0, 3.0).tags[Meter]
+
+  val o: Ordering[Double] = implicitly
+  val om: Ordering[Double @@ Meter] = o.tags[Meter]
+  om.compare(x, x) // 0
+  om.compare(x, y) // does not compile
+  xs.min(om) // 1.0
+  xs.min(o) // does not compile
+
+  // uses ClassTag[Double] via 'Tagged.taggedClassTag'.
+  val ys = new Array[Double @@ Foot](20)
+}
+```
+
+There are a few interesting things to note here.
+
+First, as above we expect that tagging and untagging will not cause
+any boxing of these values at runtime, even though `Tagged` is
+generic. We also expect that the `Array[Double @@ Meter]` will be
+represented by `Array[Double]` at runtime.
+
+Second, notice that `Ordering[Double]` and `ClassTag[Double]` are not
+automatically in scope for `Tagged[Double, Meter]`. Opaque types
+currently need to "re-export" (or otherwise provide) their own
+implicit values.
+
+It would be possible to automatically provide `ClassTag` instances,
+using an `implicit val` in the case of opaque types wrapping concrete
+types (e.g.`opaque type X = Double`) and `implicit def` in cases such
+as above.
+
+### Fix-point type
+
+```scala
+package object fixed {
+  opaque type Fix[F_]] = F[Fix[F]]
+  
+  object Fix {
+    def fix[F[_]](unfixed: F[Fix[F]]): Fix[F] = unfixed
+    def unfix[F[_]](fixed: Fix[F]): F[Fix[F]] = fixed
+  }
+  
+  sealed abstract class TreeU[R]
+
+  type Tree = Fix[TreeU]
+
+  object TreeU {
+    def cata[A](t: Tree)(f: TreeU[A] => A): A =
+      f(Fix.unfix(t) match {
+        case Branch(l, r) => Branch(cata(l)(f), cata(r)(f))
+        case Leaf(s) => Leaf(s)
+      })
+
+    case class Branch[R](left: R, right: R) extends TreeU[R]
+    case class Leaf[R](label: String) extends TreeU[R]
+  }
+
+  def leaf(s: String): Tree = Fix.fix(Leaf(s))
+  def branch(lhs: Tree, rhs: Tree): Tree = Fix.fix(Branch(lhs, rhs))
+
+  val tree: Tree = branch(branch(leaf("a"), leaf("b")), leaf("c"))
+
+  println(tree)
+  // Branch(Branch(Leaf(a), Leaf(b)), Leaf(c))
+}
+```
+
+### Custom instances
+
+```scala
+package object groups {
+  trait Semigroup[A] {
+    def combine(x: A, y: A): A
+  }
+
+  object Semigroup {
+    def instance[A](f: (A, A) => A): Semigroup[A] =
+      new Semigroup[A] {
+        def combine(x: A, y: A): A = f(x, y)
+      }
+  }
+
+  type Id[A] = A
+
+  trait Wrapping[F[_]] {
+    def wraps[G[_], A](ga: G[A]): G[F[A]]
+    def unwraps[G[_], A](ga: G[F[A]]): G[A]
+  }
+
+  abstract class Wrapper[F[_]] { self =>
+    def wraps[G[_], A](ga: G[A]): G[F[A]]
+    def unwraps[G[_], A](gfa: G[F[A]]): G[A]
+
+    final def apply[A](a: A): F[A] = wraps[Id, A](a)
+
+    implicit object WrapperWrapping extends Wrapping[F] {
+      def wraps[G[_], A](ga: G[A]): G[F[A]] = self.wraps(ga)
+      def unwraps[G[_], A](ga: G[F[A]]): G[A] = self.unwraps(ga)
+    }
+  }
+
+  opaque type First[A] = A
+  object First extends Wrapper[First] {
+    def wraps[G[_], A](ga: G[A]): G[First[A]] = ga
+    def unwrap[G[_], A](gfa: G[First[A]]): G[A] = gfa
+    implicit def firstSemigroup[A]: Semigroup[First[A]] =
+      Semigroup.instance((x, y) => x)
+  }
+
+  opaque type Last[A] = A
+  object Last extends Wrapper[Last] {
+    def wraps[G[_], A](ga: G[A]): G[Last[A]] = ga
+    def unwrap[G[_], A](gfa: G[Last[A]]): G[A] = gfa
+    implicit def lastSemigroup[A]: Semigroup[Last[A]] =
+      Semigroup.instance((x, y) => y)
+  }
+
+  opaque type Min[A] = A
+  object Min extends Wrapper[Min] {
+    def wraps[G[_], A](ga: G[A]): G[Min[A]] = ga
+    def unwrap[G[_], A](gfa: G[Min[A]]): G[A] = gfa
+    implicit def minSemigroup[A](implicit o: Ordering[A]): Semigroup[Min[A]] =
+      Semigroup.instance(o.min)
+  }
+
+  opaque type Max[A] = A
+  object Max extends Wrapper[Max] {
+    def wraps[G[_], A](ga: G[A]): G[Max[A]] = ga
+    def unwrap[G[_], A](gfa: G[Max[A]]): G[A] = gfa
+    implicit def maxSemigroup[A](implicit o: Ordering[A]): Semigroup[Max[A]] =
+      Semigroup.instance(o.max)
+  }
+
+  opaque type Plus[A] = A
+  object Plus extends Wrapper[Plus] {
+    def wraps[G[_], A](ga: G[A]): G[Plus[A]] = ga
+    def unwrap[G[_], A](gfa: G[Plus[A]]): G[A] = gfa
+    implicit def plusSemigroup[A](implicit n: Numeric[A]): Semigroup[Plus[A]] =
+      Semigroup.instance(n.plus)
+  }
+
+  opaque type Times[A] = A
+  object Times extends Wrapper[Times] {
+    def wraps[G[_], A](ga: G[A]): G[Times[A]] = ga
+    def unwrap[G[_], A](gfa: G[Times[A]]): G[A] = gfa
+    implicit def timesSemigroup[A](implicit n: Numeric[A]): Semigroup[Times[A]] =
+      Semigroup.instance(n.times)
+  }
+
+  opaque type Reversed[A] = A
+  object Reversed extends Wrapper[Reversed] {
+    def wraps[G[_], A](ga: G[A]): G[Reversed[A]] = ga
+    def unwrap[G[_], A](gfa: G[Reversed[A]]): G[A] = gfa
+    implicit def reversedOrdering[A](implicit o: Ordering[A]): Ordering[Reversed[A]] =
+      o.reverse
+  }
+
+  opaque type Unordered[A] = A
+  object Unordered extends Wrapper[Unordered] {
+    def wraps[G[_], A](ga: G[A]): G[Reversed[A]] = ga
+    def unwrap[G[_], A](gfa: G[Reversed[A]]): G[A] = gfa
+    implicit def unorderedOrdering[A]: Ordering[Unordered[A]] =
+      Ordering.by(_ => ())
+  }
+}
+```
+
+### Probability interval
+
+```scala
+package object prob {
+  opaque type Probability = Double
+
+  object Probability {
+    def apply(n: Double): Option[Probability] =
+      if (0.0 <= n && n <= 1.0) Some(n) else None
+
+    def unsafe(p: Double): Probability = {
+      require(0.0 <= p && p <= 1.0, s"probabilities lie in [0, 1] (got $p)")
+      p
+    }
+
+    def asDouble(p: Probability): Double = p
+    
+    val Never: Probability = 0.0
+    val CoinToss: Probability = 0.5
+    val Certain: Probability = 1.0
+
+    implicit val ordering: Ordering[Probability] =
+      implicitly[Ordering[Double]]
+
+    implicit class ProbabilityOps(p1: Probability) extends AnyVal {
+      def unary_~ : Probability = Certain - p1
+      def &(p2: Probability): Probability = p1 * p2
+      def |(p2: Probability): Probability = p1 + p2 - (p1 * p2)
+
+      def isImpossible: Boolean = p1 == Never
+      def isCertain: Boolean = p1 == Certain
+
+      import scala.util.Random
+
+      def sample(r: Random = Random): Boolean = r.nextDouble <= p1
+      def toDouble: Double = p1
+    }
+
+    val caughtTrain = Probability.unsafe(0.3)
+    val missedTrain = ~caughtTrain
+    val caughtCab = Probability.CoinToss
+    val arrived = caughtTrain | (missedTrain & caughtCab)
+
+    println((1 to 5).map(_ => arrived.sample()).toList)
+    // List(true, true, false, true, false)
+  }
+}
+```
 
 ## Implementation notes
 
