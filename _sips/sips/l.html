@@ -1,0 +1,228 @@
+<hr />
+<p>layout: sip
+discourse: true
+title: SIP-NN - Match infix &amp; prefix types to meet expression rules</p>
+
+<p>vote-status: pending
+permalink: /sips/:title.html
+—</p>
+
+<p><strong>By: Oron Port</strong></p>
+
+<h2 id="history">History</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Version</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Feb 7th 2017</td>
+      <td>Initial Draft</td>
+    </tr>
+    <tr>
+      <td>Feb 9th 2017</td>
+      <td>Updates from feedback</td>
+    </tr>
+    <tr>
+      <td>Feb 10th 2017</td>
+      <td>Updates from feedback</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Your feedback is welcome! If you’re interested in discussing this proposal, head over to <a href="https://contributors.scala-lang.org/t/sip-nn-make-infix-type-alias-precedence-like-expression-operator-precedence/471">this</a> Scala Contributors thread and let me know what you think.</p>
+
+<hr />
+
+<h2 id="introduction">Introduction</h2>
+<p>Currently scala allows symbol operators (<code>-</code>, <code>*</code>, <code>~~&gt;</code>, etc.) for both type names and definition names.
+Unfortunately, there is a ‘surprise’ element since the two differ in behaviour:</p>
+
+<h3 id="infix-operator-precedence-and-associativity">Infix operator precedence and associativity</h3>
+<p>Infix types are ‘mostly’ left-associative,
+while the expression operation precedence is determined by the operator’s first character (e.g., <code>/</code> is precedent to <code>+</code>).
+Please see <a href="http://scala-lang.org/files/archive/spec/2.12/03-types.html#infix-types">Infix Types</a> and <a href="http://scala-lang.org/files/archive/spec/2.12/06-expressions.html#infix-operations">Infix Operations</a> sections of the Scala specifications for more details.</p>
+
+<p><strong>Example</strong>:</p>
+
+<pre><code>{% highlight scala %}
+object InfixExpressionPrecedence {
+  case class Nummy(expand : String) {
+    def + (that : Nummy) : Nummy = Nummy(s"Plus[$this,$that]")
+    def / (that : Nummy) : Nummy = Nummy(s"Div[$this,$that]")
+  }
+  object N1 extends Nummy("N1")
+  object N2 extends Nummy("N2")
+  object N3 extends Nummy("N3")
+  object N4 extends Nummy("N4")
+  //Both expand to Plus[Plus[N1,Div[N2,N3]],N4]
+  assert((N1 + N2 / N3 + N4).expand == (N1 + (N2 / N3) + N4).expand)
+}
+object InfixTypePrecedence {
+  trait Plus[N1, N2]
+  trait Div[N1, N2]
+  type +[N1, N2] = Plus[N1, N2]
+  type /[N1, N2] = Div[N1, N2]
+  trait N1
+  trait N2
+  trait N3
+  trait N4
+  //Error!
+  //Left  expands to Plus[Plus[N1,Div[N2,N3]],N4] (Surprising)
+  //Right expands to Plus[Div[Plus[N1,N2],N3],N4]
+  implicitly[(N1 + N2 / N3 + N4) =:= (N1 + (N2 / N3) + N4)]
+}
+{% endhighlight %}
+</code></pre>
+
+<h3 id="prefix-operators-bracketless-unary-use">Prefix operators bracketless unary use</h3>
+<p>While expressions have prefix unary operators, there are none for types. See the <a href="http://scala-lang.org/files/archive/spec/2.12/06-expressions.html#prefix-operations">Prefix Operations</a> section of the Scala specification.
+This is a lacking feature of the type language Scala offers. See also interactions of this feature with other Scala features, further down this text.</p>
+
+<p><strong>Example</strong>:</p>
+
+<pre><code>{% highlight scala %}
+object PrefixExpression {
+  case class Nummy(expand : String) {
+    def unary_- : Nummy = Nummy(s"-$this")
+    def unary_~ : Nummy = Nummy(s"~$this")
+    def unary_! : Nummy = Nummy(s"!$this")
+    def unary_+ : Nummy = Nummy(s"+$this")
+  }
+  object N extends Nummy("N")
+  val n1 = -N
+  val n2 = ~N
+  val n3 = !N
+  val n4 = +N
+}
+object NonExistingPrefixTypes {
+  trait unary_-[A]
+  trait unary_~[A]
+  trait unary_![A]
+  trait unary_+[A]
+  trait N
+  type N1 = -N //Not working
+  type N2 = ~N //Not working
+  type N3 = !N //Not working
+  type N4 = +N //Not working
+}
+{% endhighlight %}
+</code></pre>
+
+<hr />
+
+<h2 id="proposal">Proposal</h2>
+<p>The proposal is split into two; type infix precedence, and prefix unary types. Note to the SIP committee: It might be better to vote on the two parts separately.</p>
+
+<h3 id="proposal-part-1-infix-type-precedence--associativity">Proposal, Part 1: Infix type precedence &amp; associativity</h3>
+<p>Make infix types conform to the same precedence and associativity traits as expression operations.</p>
+
+<h3 id="proposal-part-2-prefix-unary-types">Proposal, Part 2: Prefix unary types</h3>
+<p>Add prefix types, exactly as specified for prefix expression.</p>
+
+<hr />
+
+<h2 id="motivation">Motivation</h2>
+<p>The general motivation is developers expect terms and types to behave equally regarding operation precedence and availability of unary types.</p>
+
+<h3 id="motivating-examples">Motivating examples</h3>
+
+<h4 id="dotty-infix-type-similarity">Dotty infix type similarity</h4>
+<p>Dotty infix type associativity and precedence seem to act the same as expressions.
+No documentation available to prove this, but the infix example above works perfectly in dotty.</p>
+
+<p>Dotty has no prefix types, same as Scalac.</p>
+
+<h4 id="singleton-ops-library-example">Singleton-ops library example</h4>
+<p>The <a href="https://github.com/fthomas/singleton-ops">singleton-ops library</a> with <a href="https://github.com/typelevel/scala">Typelevel Scala</a> (which implemented <a href="http://docs.scala-lang.org/sips/pending/42.type.html">SIP-23</a>) enables developers to express literal type operations more intuitively.
+For example:</p>
+
+<pre><code>{% highlight scala %}
+import singleton.ops._
+
+val four1 : 4 = implicitly[2 + 2]
+val four2 : 2 + 2 = 4
+val four3 : 1 + 3 = implicitly[2 + 2]
+
+class MyVec[L] {
+  def doubleSize = new MyVec[2 * L]
+  def nSize[N] = new MyVec[N * L]
+}
+object MyVec {
+  implicit def apply[L](implicit check : Require[L &gt; 0]) : MyVec[L] = new MyVec[L]()
+}
+val myVec : MyVec[10] = MyVec[4 + 1].doubleSize
+val myBadVec = MyVec[-1] //fails compilation, as required
+{% endhighlight %}
+</code></pre>
+
+<p>We currently loose some of the intuitive appeal due to the precedence issue:</p>
+
+<pre><code>{% highlight scala %}
+val works : 1 + (2 * 3) + 4 = 11
+val fails : 1 + 2 * 3 + 4 = 11 //left associative:(((1+2)*3)+4))) = 13
+{% endhighlight %}
+</code></pre>
+
+<h4 id="developer-issues-example">Developer issues example</h4>
+<p><a href="http://stackoverflow.com/questions/23333882/scala-infix-type-aliasing-for-2-type-parameters">This</a> stackoverflow question demonstrate developers are ‘surprised’ by the difference in infix precedence, expecting infix type precedence to act the same as expression operations.</p>
+
+<hr />
+
+<h2 id="interactions-with-other-language-features">Interactions with other language features</h2>
+
+<h4 id="variance-annotation">Variance Annotation</h4>
+<p>Variance annotation uses the <code>-</code> and <code>+</code> symbols to annotate contravariant and covariant subtyping, respectively. Introducing unary prefix types may lead to some developer confusion.
+E.g.</p>
+
+<pre><code>{% highlight scala %}
+trait Negate[A]
+trait Positive[A]
+type unary_-[A] = Negate[A]
+type unary_+[A] = Positive[A]
+trait Contravariant[B, -A &lt;: -B] //contravariant A subtype upper-bounded by Negate[B]
+trait Covariant[B, +A &lt;: +B] //covariant A subtype upper-bounded by Positive[B]
+{% endhighlight %}
+</code></pre>
+
+<h4 id="negative-literal-types">Negative Literal Types</h4>
+<p>Negative literal types are annotated using the <code>-</code> symbol. This can lead to the following confusion:</p>
+
+<pre><code>{% highlight scala %}
+trait Negate[A]
+type unary_-[A] = Negate[A]
+trait MyTrait[B]
+
+type MinusFortyTwo = MyTrait[-42]
+type NegateFortyTwo = MyTrait[Negate[42]]
+{% endhighlight %}
+</code></pre>
+
+<p>The above example demonstrates a case of two types <code>MinusFortyTwo</code> and <code>NegateFortyTwo</code> which are different. They may be equivalent in view (implicit conversion between the two type instances), but they are not equal.</p>
+
+<p>Note: It is not possible to annotate a positive literal type in Scala (checked both in TLS and Dotty):</p>
+
+<pre><code>{% highlight scala %}
+val a : 42 = +42 //works
+val b : -42 = -42 //works
+val c : +42 = 42 //error: ';' expected but integer literal found
+{% endhighlight %}
+</code></pre>
+
+<p>This means that if unary prefix types are added, then <code>+42</code> will be a type expansion of <code>unary_+[42]</code>.</p>
+
+<hr />
+
+<h2 id="backward-compatibility">Backward Compatibility</h2>
+<p>Changing infix type associativity and precedence affects code that uses type operations and conforms to the current specification.</p>
+
+<hr />
+
+<h3 id="bibliography">Bibliography</h3>
+<p><a href="https://contributors.scala-lang.org/t/sip-nn-make-infix-type-alias-precedence-like-expression-operator-precedence/471">Scala Contributors</a></p>
+
+<p><a href="https://groups.google.com/forum/#!topic/scala-sips/ARVf1RLDw9U">scala-sips</a></p>
