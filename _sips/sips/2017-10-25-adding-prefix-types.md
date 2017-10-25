@@ -67,12 +67,11 @@ CompoundType ::= PrefixType
 ---
 
 ## Motivation
-The general motivation is developers expect terms and types to behave the same.
+Developers expect terms and types to be expressed the same for mathematical and logical operations.
 
 ### Motivating examples
 
-The [singleton-ops library](https://github.com/fthomas/singleton-ops) with [Typelevel Scala](https://github.com/typelevel/scala) (which implemented [SIP-23](http://docs.scala-lang.org/sips/pending/42.type.html)) enables developers to express literal type operations more intuitively.
-For example:
+The [singleton-ops library](https://github.com/fthomas/singleton-ops) with [Typelevel Scala](https://github.com/typelevel/scala) (which implemented [SIP-23](http://docs.scala-lang.org/sips/pending/42.type.html)) enable developers to express literal type operations more intuitively. For example:
 
 ```scala
 import singleton.ops._
@@ -98,11 +97,16 @@ Note: `type ![A]` is possible to define, but `type -[A]` is not due to collision
 
 ---
 
-## Interactions with other language features
+## Implementation
+
+A PR for this SIP is available at: 
+
+------
+
+### Interactions with other language features
 
 #### Variance Annotation
-Variance annotation uses the `-` and `+` symbols to annotate contravariant and covariant subtyping, respectively. Introducing unary prefix types may lead to some developer confusion. However, such interaction is very unlikely to occur.
-E.g.
+Variance annotation uses the `-` and `+` symbols to annotate contravariant and covariant subtyping, respectively. Introducing unary prefix types may lead to some developer confusion. However, such interaction is very unlikely to occur. E.g.:
 
 ```scala
 trait Negate[A]
@@ -152,12 +156,6 @@ It is not yet clear if this is an implementation issue, or if the spec should be
 If this is a spec change, then the committee should approve it also. 
 
 ----
-
-## Implementation
-
-A PR for this SIP is available at: 
-
----
 
 ### Bibliography
 [Scala Contributors](https://contributors.scala-lang.org/t/sip-nn-make-infix-type-alias-precedence-like-expression-operator-precedence/471)
