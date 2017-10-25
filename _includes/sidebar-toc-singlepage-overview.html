@@ -5,7 +5,7 @@
       <div id="toc"></div>
       {% if page.languages %}
         <ul id="available-languages" style="display: none;">
-          <li><a href="{{ page.url }}">English</a></li>
+          <li><a href="{{ site.baseurl }}{{ page.url }}">English</a></li>
           {% for l in page.languages %}
             {% capture intermediate %}{{ page.url | remove_first: l }}{% endcapture %}
             {% capture rootTutorialURL %}{{ intermediate | remove_first: '/' }}{% endcapture %}
@@ -26,6 +26,6 @@
       {% endif %}
 		</div>
 		<hr>
-		<div class="help-us"><a href="https://github.com/scala/scala.github.com/blob/master/{% if page.collection %}{{ page.relative_path }}{% else %}{{ page.path }}{% endif %}"><i class="fa fa-pencil" aria-hidden="true"></i> Problem with this page?<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Please help us fix it!</a></div>
+		<div class="help-us"><a href="https://github.com/scala/docs.scala-lang/blob/master/{% if page.collection %}{{ page.relative_path }}{% else %}{{ page.path }}{% endif %}"><i class="fa fa-pencil" aria-hidden="true"></i> Problem with this page?<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Please help us fix it!</a></div>
 	</div>
 </div>

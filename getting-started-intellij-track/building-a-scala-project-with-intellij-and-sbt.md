@@ -15,7 +15,7 @@ or more than one code file.
 ## Creating the project
 In this section, we'll show you how to create the project in IntelliJ. However, if you're
 comfortable with the command line, we recommend you try [Getting
-Started with Scala and sbt on the Command Line]({{site.baseurl}}/documentation/getting-started-sbt-track/getting-started-with-scala-and-sbt-on-the-command-line.html) and then come back
+Started with Scala and sbt on the Command Line]({{site.baseurl}}/getting-started-sbt-track/getting-started-with-scala-and-sbt-on-the-command-line.html) and then come back
  here to the section "Writing Scala code".
 
 1. If you didn't create the project from the command line, open up IntelliJ and select "Create New Project"
@@ -74,7 +74,7 @@ to see if sbt can run your project on the command line.
 when you save changes to a file in the project.
 1. Click **OK**.
 1. On the **Run** menu. Click **Run 'Run the program'**.
-1. In the code, change `currentYear - 1` to `currentYear - 2`
+1. In the code, change `75` to `61`
 and look at the updated output in the console.
 
 ## Adding a dependency
@@ -86,7 +86,7 @@ extra functionality to our apps.
 libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % "1.0.5"
 ```
 Here, `libraryDependencies` is a set of dependencies, and by using `+=`,
-we're adding the [scala-parser-combinators]({{site.baseurl}}/scala/scala-parser-combinators) dependency to the set of dependencies that sbt will go
+we're adding the [scala-parser-combinators](https://github.com/scala/scala-parser-combinators) dependency to the set of dependencies that sbt will go
 and fetch when it starts up. Now, in any Scala file, you can import classes,
 objects, etc, from scala-parser-combinators with a regular import.
 

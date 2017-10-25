@@ -130,8 +130,6 @@ val getTheAnswer = () => 42
 println(getTheAnswer()) // 42
 ```
 
-We will cover functions in depth [later](anonymous-function-syntax.html).
-
 ## Methods
 
 Methods look and behave very similar to functions, but there are a few key differences between them.

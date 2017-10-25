@@ -80,7 +80,7 @@ substring(_, start = 5)               // Legal (same as s => substring(s, start 
 ```
 
 #### Multiple Implicit Parameters
-[Multiple implicit parameters](https://github.com/scala/scala.github.com/pull/520) should also be allowed to refer to one another (left to right):
+[Multiple implicit parameters](https://github.com/scala/docs.scala-lang/pull/520) should also be allowed to refer to one another (left to right):
 ```scala
 def codec[A](data: A)(implicit encoder: Encoder[A])(implicit decoder: Decoder[A] = encoder.reverse) // Legal
 ```

@@ -1,35 +1,39 @@
 ---
 layout: tour
-title: Ugniježdene funkcije
+title: Ugniježdene metode
+language: ba
 
-discourse: false
+discourse: true
 
 partof: scala-tour
 
-num: 8
-
-language: ba
-
+num: 9
 next-page: currying
 previous-page: higher-order-functions
+
+redirect_from: "/tutorials/tour/nested-functions.html"
 ---
 
-U Scali je moguće ugnježdavati definicije funkcija.
-Sljedeći objekt sadrži funkciju `filter` za dobijanje vrijednosti iz liste cijelih brojeva koji su manji od vrijednosti praga (threshold):
+U Scali je moguće ugnježdavati definicije metode.
+Sljedeći objekt sadrži metodu `factorial` za računanje faktorijela datog broja:
 
-    object FilterTest extends App {
-      def filter(xs: List[Int], threshold: Int) = {
-        def process(ys: List[Int]): List[Int] =
-          if (ys.isEmpty) ys
-          else if (ys.head < threshold) ys.head :: process(ys.tail)
-          else process(ys.tail)
-        process(xs)
-      }
-      println(filter(List(1, 9, 2, 8, 3, 7, 4), 5))
-    }
+```tut
+ def factorial(x: Int): Int = {
+    def fact(x: Int, accumulator: Int): Int = {
+      if (x <= 1) accumulator
+      else fact(x - 1, x * accumulator)
+    }  
+    fact(x, 1)
+ }
 
-_Napomena: ugniježdena funkcija `process` koristi i varijablu `threshold` definisanu u vanjskom području (scope) kao parametar funkcije `filter`._
+ println("Factorial of 2: " + factorial(2))
+ println("Factorial of 3: " + factorial(3))
+```
 
 Izlaz ovog programa je:
 
-    List(1,2,3,4)
+```
+Factorial of 2: 2
+Factorial of 3: 6
+```
+

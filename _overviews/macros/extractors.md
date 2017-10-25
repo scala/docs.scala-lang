@@ -94,5 +94,5 @@ of this and other use cases for extractor macros.
 
 ## Blackbox vs whitebox
 
-Extractor macros must be [whitebox](/overviews/macros/blackbox-whitebox.html).
-If you declare an extractor macro as [blackbox](/overviews/macros/blackbox-whitebox.html), it will not work.
+Extractor macros must be [whitebox](blackbox-whitebox.html).
+If you declare an extractor macro as [blackbox](blackbox-whitebox.html), it will not work.

@@ -24,7 +24,7 @@ Literal patterns are equivalent to literal expressions on AST level:
     scala> val equivalent = pq"1" equalsStructure q"1"
     equivalent: Boolean = true
 
-See the chapter on [literal expressions](/overviews/quasiquotes/expression-details.html#literal) for details.
+See the chapter on [literal expressions]({{ site.baseurl }}/overviews/quasiquotes/expression-details.html#literal) for details.
 
 ## Binding Pattern
 
@@ -106,7 +106,7 @@ Pattern alternatives represent a pattern that matches whenever, at least, one of
 
 ## Tuple Pattern
 
-Similar to [tuple expressions](/overviews/quasiquotes/expression-details.html#tuple) and [tuple types](/overviews/quasiquotes/type-details.html#tuple-type), tuple patterns are just syntactic sugar that expands as a `TupleN` extractor:
+Similar to [tuple expressions]({{ site.baseurl }}/overviews/quasiquotes/expression-details.html#tuple) and [tuple types]({{ site.baseurl }}/overviews/quasiquotes/type-details.html#tuple-type), tuple patterns are just syntactic sugar that expands as a `TupleN` extractor:
 
     scala> val tup2pat = pq"(a, b)"
     tup2pat: universe.Tree = scala.Tuple2((a @ _), (b @ _))

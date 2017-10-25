@@ -1,17 +1,17 @@
 ---
 layout: tour
 title: Implicitne konverzije
+language: ba
 
-discourse: false
+discourse: true
 
 partof: scala-tour
 
-num: 26
-
-language: ba
-
+num: 27
 next-page: polymorphic-methods
 previous-page: implicit-parameters
+
+redirect_from: "/tutorials/tour/implicit-conversions.html"
 ---
 
 Implicitna konverzija iz tipa `S` u tip `T` je definisana kao implicitna vrijednost koja ima tip `S => T` (funkcija), 
@@ -27,25 +27,37 @@ U drugom slučaju, traži se konverzija `c` koja je primjenjiva na `e` i čiji r
 
 Sljedeća operacija nad dvije liste xs i ys tipa `List[Int]` je legalna:
 
-    xs <= ys
+```
+xs <= ys
+```
 
 pod pretpostavkom da su implicitne metode `list2ordered` i `int2ordered` definisane i dostupne (in scope):
 
-    implicit def list2ordered[A](x: List[A])
-        (implicit elem2ordered: A => Ordered[A]): Ordered[List[A]] =
-      new Ordered[List[A]] { /* .. */ }
-    
-    implicit def int2ordered(x: Int): Ordered[Int] = 
-      new Ordered[Int] { /* .. */ }
+```
+implicit def list2ordered[A](x: List[A])
+    (implicit elem2ordered: A => Ordered[A]): Ordered[List[A]] =
+  new Ordered[List[A]] { /* .. */ }
+
+implicit def int2ordered(x: Int): Ordered[Int] =
+  new Ordered[Int] { /* .. */ }
+```
 
 Implicitno importovani objekt `scala.Predef` deklariše nekoliko predefinisanih tipova (npr. `Pair`) i metoda (npr. `assert`) ali i nekoliko implicitnih konverzija.
 
 Naprimjer, kada se pozivaju Javine metode koje očekuju `java.lang.Integer`, možete proslijediti `scala.Int`.
 Možete, zato što `Predef` uključuje slj. implicitnu konverziju:
 
-    implicit def int2Integer(x: Int) =
-      java.lang.Integer.valueOf(x)
+```tut
+import scala.language.implicitConversions
 
-Da bi definisali vlastite implicitne konverzije, morate importovati `scala.language.implicitConversions`
-(ili uključiti kompajler s flegom `-language:implicitConversions`). 
-Ova osobina mora biti korištena eksplicitno jer ima potencijalne zamke ako se koristi neselektivno.
+implicit def int2Integer(x: Int) =
+  java.lang.Integer.valueOf(x)
+```
+
+Pošto su implicitne konverzije opasne ako se koriste pogrešno, kompajler upozorava kada kompajlira definiciju implicitne konverzije.
+
+Da biste ugasili ova upozorenja, uradite jedno od ovog:
+
+* Importujte `scala.language.implicitConversions` u domen definicije implicitne konverzije
+* Upalite kompajler s `-language:implicitConversions`
+

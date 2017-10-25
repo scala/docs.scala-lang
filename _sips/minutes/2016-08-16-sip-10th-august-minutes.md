@@ -16,7 +16,7 @@ The following agenda was distributed to attendees:
 | [SIP-21: Spores](http://docs.scala-lang.org/sips/pending/spores.html) | Martin Odersky |
 | [SIP-23: Literal-based singleton types](http://docs.scala-lang.org/sips/pending/42.type.html) | Adriaan Moors |
 | [SIP-24: Repeated by-name parameters](http://docs.scala-lang.org/sips/pending/repeated-byname.html) | Andrew Marki |
-| [SIP-27: Trailing commas](https://github.com/scala/scala.github.com/pull/533#issuecomment-232959066) | Eugene Burmako |
+| [SIP-27: Trailing commas](https://github.com/scala/docs.scala-lang/pull/533#issuecomment-232959066) | Eugene Burmako |
 
 Jorge Vicente Cantero was the Process Lead and acting secretary of the meeting.
 
@@ -187,7 +187,7 @@ author's feedback.
 **Outcome**: The proposal is under review until the next meeting. Adriaan asks
 the authors to separate the spec and the implementation and address some
 technical issues in the current implementation. More information on Adriaan's
-review can be found in [the original GitHub proposal](https://github.com/scala/scala.github.com/pull/346#issuecomment-240029772).
+review can be found in [the original GitHub proposal](https://github.com/scala/docs.scala-lang/pull/346#issuecomment-240029772).
 
 ## Closing remarks
 See you next time!

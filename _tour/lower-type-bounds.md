@@ -33,6 +33,7 @@ case class Nil[+B]() extends Node[B] {
   def prepend(elem: B) = ListNode[B](elem, this)
 }
 ```
+
 This program implements a singly-linked list. `Nil` represents an empty element (i.e. an empty list). `class ListNode` is a node which contains an element of type `B` (`head`) and a reference to the rest of the list (`tail`). The `class Node` and its subtypes are covariant because we have `+B`.
 
 However, this program does _not_ compile because the parameter `elem` in `prepend` is of type `B`, which we declared *co*variant. This doesn't work because functions are *contra*variant in their parameter types and *co*variant in their result types.
@@ -57,13 +58,13 @@ case class Nil[+B]() extends Node[B] {
 
 Now we can do the following:
 ```tut
-trait Mammal
-case class AfricanSwallow() extends Mammal
-case class EuropeanSwallow() extends Mammal
+trait Bird
+case class AfricanSwallow() extends Bird
+case class EuropeanSwallow() extends Bird
 
 
 val africanSwallowList= ListNode[AfricanSwallow](AfricanSwallow(), Nil())
-val mammalList: Node[Mammal] = africanSwallowList
-mammalList.prepend(new EuropeanSwallow)
+val birdList: Node[Bird] = africanSwallowList
+birdList.prepend(new EuropeanSwallow)
 ```
-The `Node[Mammal]` can be assigned the `africanSwallowList` but then accept `EuropeanSwallow`s.
+The `Node[Bird]` can be assigned the `africanSwallowList` but then accept `EuropeanSwallow`s.

@@ -13,7 +13,7 @@ The following agenda was distributed to attendees:
 | --- | --- |
 | Discussion of the voting system | N/A |
 | [SIP-20: Improved Lazy Val Initialization](http://docs.scala-lang.org/sips/pending/improved-lazy-val-initialization.html) | Sébastien Doeraene |
-| [SIP-27: Trailing commas](https://github.com/scala/scala.github.com/pull/533#issuecomment-232959066) | Eugene Burmako |
+| [SIP-27: Trailing commas](https://github.com/scala/docs.scala-lang/pull/533#issuecomment-232959066) | Eugene Burmako |
 
 Jorge Vicente Cantero was the Process Lead and acting secretary of the meeting.
 
@@ -110,7 +110,7 @@ and two-thirds of all the people voting (not counting abstentions) must accept
 it. The quorum rule is kept. After some discussion, the Committee unanimously
 votes in favor of Martin's new system, along with not considering abstentions as
 no's and allowing all the Committee members to vote after the meeting.  These
-rules are formalized [here](https://github.com/scala/scala.github.com/pull/632).
+rules are formalized [here](https://github.com/scala/docs.scala-lang/pull/632).
 
 ### Discussion of SIP-27: Trailing Commas
 

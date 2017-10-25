@@ -9,7 +9,7 @@ title: Contribute
 
 [docs.scala-lang.org](http://docs.scala-lang.org) was intended to make it easier for the Scala team and the community at large to easily collect, organize, and "make public" many different types of documentation while making it easy for users to find, interact, and help us improve that documentation.
 
-This website is an open-source repository of official Scala documentation, hosted on [github](https://github.com/scala/scala.github.com), that is always ready for contributions.
+This website is an open-source repository of official Scala documentation, hosted on [github](https://github.com/scala/docs.scala-lang), that is always ready for contributions.
 
 ### A Need for Better Documentation
 
@@ -33,7 +33,7 @@ Currently, the _types_ of documentation supported in this repository are:
 
 ### Implementation
 
-This documentation repository is open-source, it lives in [github repository](https://github.com/scala/scala.github.com), and is always contribution-ready.
+This documentation repository is open-source, it lives in [github repository](https://github.com/scala/docs.scala-lang), and is always contribution-ready.
 
 It's statically generated from [Markdown](http://en.wikipedia.org/wiki/Markdown) source using [Jekyll](https://github.com/mojombo/jekyll), and hosted on [GitHub Pages](http://pages.github.com/). This workflow was chosen so as to make it as easy as possible for core committers and the community alike to produce HTML documentation, and as easy as possible to publish it in a central location.
 
@@ -45,7 +45,7 @@ Additionally [tut](https://github.com/tpolecat/tut) is used during pull requests
 
 For one to contribute a document, one must simply
 [fork](https://help.github.com/articles/fork-a-repo/) the
-[repo](https://github.com/scala/scala.github.com), write their article in
+[repo](https://github.com/scala/docs.scala-lang), write their article in
 [Markdown](http://daringfireball.net/projects/markdown/syntax) (example below), and submit a pull request. That's it. Likely after some edits and discussion, your document will be made live on [docs.scala-lang.org](http://docs.scala-lang.org).
 
     ---
@@ -124,7 +124,7 @@ At the moment, a tutorial that can be logically placed on **one** page must be p
     title: YOUR TITLE
     ---
 
-If you have a **multiple-page** tutorial, like in the case of multiple-page overviews, you must both specify an ordering for your document, and a name must be assigned to the collection of tutorial pages. For example, the following header is used for the [Tour of Scala]({{ site.baseurl }}/tutorials) series of tutorial articles:
+If you have a **multiple-page** tutorial, like in the case of multiple-page overviews, you must both specify an ordering for your document, and a name must be assigned to the collection of tutorial pages. For example, the following header is used for the [Tour of Scala]({{ site.baseurl }}/tour/tour-of-scala.html) series of tutorial articles:
 
     ---
     layout: inner-page-no-masthead

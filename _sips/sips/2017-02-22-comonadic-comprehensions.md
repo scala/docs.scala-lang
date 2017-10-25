@@ -3,7 +3,7 @@ layout: sip
 discourse: true
 title: SIP-NN - comonadic-comprehensions
 
-vote-status: pending
+vote-status: rejected
 permalink: /sips/:title.html
 ---
 

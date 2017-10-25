@@ -327,4 +327,4 @@ This question and answer were originally submitted on [Stack Overflow][3].
   [4]: http://stackoverflow.com/questions/5512397/passing-scala-math-integral-as-implicit-parameter
   [5]: http://scala-lang.org/files/archive/spec/2.11/06-expressions.html
   [6]: http://scala-lang.org/files/archive/spec/2.11/07-implicits.html
-  [7]: https://github.com/scala/scala.github.com/issues
+  [7]: https://github.com/scala/docs.scala-lang/issues

@@ -1,52 +1,72 @@
 ---
 layout: tour
 title: Generičke klase
+language: ba
 
-discourse: false
+discourse: true
 
 partof: scala-tour
 
-num: 17
-
-language: ba
-
+num: 18
 next-page: variances
-previous-page: sequence-comprehensions
+previous-page: for-comprehensions
+assumed-knowledge: classes unified-types
+
+redirect_from: "/tutorials/tour/generic-classes.html"
 ---
 
-Kao u Javi 5 ([JDK 1.5](http://java.sun.com/j2se/1.5/)), Scala ima ugrađenu podršku za klase parametrizovane tipovima.
-Takve klase su vrlo korisne za implementiranje kolekcija.
-Ovo je primjer koji to demonstrira:
+Generičke klase su klase koje primaju tipove kao parametre.
+Vrlo su korisne za implementiranje kolekcija.
 
-    class Stack[T] {
-      var elems: List[T] = Nil
-      def push(x: T) { elems = x :: elems }
-      def top: T = elems.head
-      def pop() { elems = elems.tail }
-    }
+## Definisanje generičke klase
 
-Klasa `Stack` modeluje imperativne (promjenjive) stekove elemenata proizvoljnog tipa `T`.
-Parametri tipova obezbjeđuju sigurnost da se samo legalni elementi (samo tipa `T`) guraju na stek.
-Slično, s tipskim parametrima možemo izraziti da metoda `top` vraća samo elemente zadanog tipa.
+Generičke klase primaju tip kao parametar u uglastim zagradama `[]`. 
+Konvencija je da se koristi slovo `A` kao identifikator tipa, mada se može koristiti bilo koje ime.
 
-Ovo su neki primjeri korištenja:
+```tut
+class Stack[A] {
+  private var elements: List[A] = Nil
+  def push(x: A) { elements = x :: elements }
+  def peek: A = elements.head
+  def pop(): A = {
+    val currentTop = peek
+    elements = elements.tail
+    currentTop
+  }
+}
+```
 
-    object GenericsTest extends App {
-      val stack = new Stack[Int]
-      stack.push(1)
-      stack.push('a')
-      println(stack.top)
-      stack.pop()
-      println(stack.top)
-    }
+Ova implementacija `Stack` klase prima bilo koji tip `A` kao parametar. 
+Ovo znači da unutarnja lista, `var elements: List[A] = Nil`, može čuvati samo elemente tipa `A`. 
+Metoda `def push` prima samo objekte tipa `A` (napomena: `elements = x :: elements` dodjeljuje varijabli `elements` novu listu kreiranu dodavanjem `x` na trenutne `elements`).
 
-Izlaz ovog programa je:
+## Korištenje
 
-    97
-    1
+Da bi koristili generičku klasu, stavite tip u uglaste zagrade umjesto `A`.
+```
+val stack = new Stack[Int]
+stack.push(1)
+stack.push(2)
+println(stack.pop)  // prints 2
+println(stack.pop)  // prints 1
+```
+Instanca `stack` može čuvati samo Int-ove. Međutim, ako tipski argument ima podtipove, oni mogu biti proslijeđeni:
+```
+class Fruit
+class Apple extends Fruit
+class Banana extends Fruit
+
+val stack = new Stack[Fruit]
+val apple = new Apple
+val banana = new Banana
+
+stack.push(apple)
+stack.push(banana)
+```
+Klasa `Apple` i `Banana` obje nasljeđuju `Fruit` tako da možemo stavljati instance `apple` i `banana` na stek za `Fruit`.
 
 _Napomena: nasljeđivanje generičkih tipova je *invarijantno*.
 Ovo znači da ako imamo stek karaktera, koji ima tip `Stack[Char]` onda on ne može biti korišten kao stek cijelih brojeva tipa `Stack[Int]`.
 Ovo bi bilo netačno (unsound) jer bi onda mogli stavljati i integere na stek karaktera.
-Zaključimo, `Stack[T]` je podtip `Stack[S]` ako i samo ako je `S = T`.
+Zaključimo, `Stack[A]` je podtip `Stack[B]` ako i samo ako je `A = B`.
 Pošto ovo može biti prilično ograničavajuće, Scala ima i [anotacije tipskih parametara](variances.html) za kontrolisanje ponašanja podtipova generičkih tipova._

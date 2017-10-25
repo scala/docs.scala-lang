@@ -320,7 +320,7 @@ Some(3) match {
     </tr>
     <tr>
       <td><code class="highlighter-rouge">trait T { ... }</code><br /><code class="highlighter-rouge">class C extends T { ... }</code><br /><code class="highlighter-rouge">class C extends D with T { ... }</code></td>
-      <td>traits.<br />interfaces-with-implementation. no constructor params. <a href="/tutorials/tour/mixin-class-composition.html">mixin-able</a>.</td>
+      <td>traits.<br />interfaces-with-implementation. no constructor params. <a href="{{site.baseurl}}/tutorials/tour/mixin-class-composition.html">mixin-able</a>.</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">trait T1; trait T2</code><br /><code class="highlighter-rouge">class C extends T1 with T2</code><br /><code class="highlighter-rouge">class C extends D with T1 with T2</code></td>

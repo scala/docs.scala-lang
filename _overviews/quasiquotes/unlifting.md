@@ -13,7 +13,7 @@ permalink: /overviews/quasiquotes/:title.html
 ---
 **Denys Shabalin** <span class="tag" style="float: right;">EXPERIMENTAL</span>
 
-Unlifting is the reverse operation to [lifting](/overviews/quasiquotes/lifting.html): it takes a tree and recovers a value from it:
+Unlifting is the reverse operation to [lifting](lifting.html): it takes a tree and recovers a value from it:
 
     trait Unliftable[T] {
       def unapply(tree: Tree): Option[T]
@@ -73,11 +73,11 @@ Here one must pay attention to a few nuances:
    it is expected to return an instance of `T` unconditionally.
 
 2. We've only define `Unliftable` for the runtime universe, it won't be available in macros.
-   (see [sharing liftable implementations](/overviews/quasiquotes/lifting.html#reusing-liftable-implementation-between-universes))
+   (see [sharing liftable implementations](lifting.html#reusing-liftable-implementation-between-universes))
 
 3. Patterns used in this unliftable will only match a fully qualified reference to `Point` that
    starts with `_root_`. It won't match other possible shapes of the reference; they have
-   to be specified by hand. This problem is caused by a lack of [hygiene](/overviews/quasiquotes/hygiene.html).
+   to be specified by hand. This problem is caused by a lack of [hygiene](hygiene.html).
 
 4. The pattern will only match trees that have literal `Int` arguments.
    It won't work for other expressions that might evaluate to `Int`.

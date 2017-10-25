@@ -36,12 +36,6 @@ Extending the `trait Iterator[A]` requires a type `A` and implementations of the
 ## Using traits
 Use the `extends` keyword to extend a trait. Then implement any abstract members of the trait using the `override` keyword:
 ```tut
-trait Iterator[A] {
-  def hasNext: Boolean
-  def next(): A
-}
-
-
 class IntIterator(to: Int) extends Iterator[Int] {
   private var current = 0
   override def hasNext: Boolean = current < to
@@ -62,7 +56,7 @@ iterator.next()  // prints 1
 This `IntIterator` class takes a parameter `to` as an upper bound. It `extends Iterator[Int]` which means that the `next` method must return an Int.
 
 ## Subtyping
-Subtypes of traits can be used where a the trait is required.
+Subtypes of traits can be used where the trait is required.
 ```tut
 import scala.collection.mutable.ArrayBuffer
 

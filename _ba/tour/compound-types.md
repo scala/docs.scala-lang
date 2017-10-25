@@ -1,17 +1,17 @@
 ---
 layout: tour
 title: Složeni tipovi
+language: ba
 
-discourse: false
+discourse: true
 
 partof: scala-tour
 
-num: 23
-
-language: ba
-
-next-page: explicitly-typed-self-references
+num: 24
+next-page: self-types
 previous-page: abstract-types
+
+redirect_from: "/tutorials/tour/compound-types.html"
 ---
 
 Ponekad je potrebno izraziti da je tip objekta podtip nekoliko drugih tipova. 
@@ -19,22 +19,26 @@ U Scali ovo može biti izraženo pomoću *složenih tipova*, koji su presjeci ti
 
 Pretpostavimo da imamo dva trejta: `Cloneable` i `Resetable`:
 
-    trait Cloneable extends java.lang.Cloneable {
-      override def clone(): Cloneable = { 
-        super.clone().asInstanceOf[Cloneable]
-      }
-    }
-    trait Resetable {
-      def reset: Unit
-    }
+```tut
+trait Cloneable extends java.lang.Cloneable {
+  override def clone(): Cloneable = {
+    super.clone().asInstanceOf[Cloneable]
+  }
+}
+trait Resetable {
+  def reset: Unit
+}
+```
 
 Pretpostavimo da želimo napisati funkciju `cloneAndReset` koja prima objekt, klonira ga i resetuje originalni objekt:
 
-    def cloneAndReset(obj: ?): Cloneable = {
-      val cloned = obj.clone()
-      obj.reset
-      cloned
-    }
+```
+def cloneAndReset(obj: ?): Cloneable = {
+  val cloned = obj.clone()
+  obj.reset
+  cloned
+}
+```
 
 Postavlja se pitanje koji bi trebao biti tip parametra `obj`.
 Ako je `Cloneable` onda objekt može biti `clone`-iran, ali ne i `reset`-ovan; 
@@ -44,9 +48,11 @@ Ovaj složeni tip u Scali se piše kao: `Cloneable with Resetable`.
 
 Ovo je ažurirana funkcija:
 
-    def cloneAndReset(obj: Cloneable with Resetable): Cloneable = {
-      //...
-    }
+```
+def cloneAndReset(obj: Cloneable with Resetable): Cloneable = {
+  //...
+}
+```
 
 Složeni tipovi mogu se sastojati od više tipova i mogu imati jednu rafinaciju koja može biti korištena da suzi potpis postojećih članova objekta.
 General forma je: `A with B with C ... { refinement }`

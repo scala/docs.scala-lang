@@ -16,7 +16,7 @@ The following agenda was distributed to attendees:
 | [SIP 26 - Unsigned Integer Data Types](https://github.com/scala/slip/pull/30) | Martin Odersky |
 | [SIP 22 - Async](http://docs.scala-lang.org/sips/pending/async.html) | Eugene Burmako |
 | [SIP 20 - Improved lazy val initialization](http://docs.scala-lang.org/sips/pending/improved-lazy-val-initialization.html) | Sébastien Doeraene |
-| [Trailing commas SIP](https://github.com/scala/scala.github.com/pull/533) | Eugene Burmako |
+| [Trailing commas SIP](https://github.com/scala/docs.scala-lang/pull/533) | Eugene Burmako |
 
 Quick iteration through all the SLIPs:
 

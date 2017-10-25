@@ -93,7 +93,7 @@ so I refer you to an amazing blog series by Travis Brown for details: [post 1](h
 
 ## Public type providers
 
-With the help of [macro paradise](/overviews/macros/paradise.html) and its [macro annotations](/overviews/macros/annotations.html), it becomes
+With the help of [macro paradise](paradise.html) and its [macro annotations](annotations.html), it becomes
 possible to easily generate publicly visible classes, without having to apply workarounds based on structural types. The annotation-based
 solution is very straightforward, so I won't be writing much about it here.
 
@@ -140,5 +140,5 @@ than bytecode of a full-fledged class. This technique applies to both anonymous 
 
 ## Blackbox vs whitebox
 
-Both anonymous and public type providers must be [whitebox](/overviews/macros/blackbox-whitebox.html).
-If you declare a type provider macro as [blackbox](/overviews/macros/blackbox-whitebox.html), it will not work.
+Both anonymous and public type providers must be [whitebox](blackbox-whitebox.html).
+If you declare a type provider macro as [blackbox](blackbox-whitebox.html), it will not work.

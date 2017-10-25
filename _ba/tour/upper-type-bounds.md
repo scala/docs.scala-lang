@@ -1,41 +1,56 @@
 ---
 layout: tour
 title: Gornja granica tipa
-
-discourse: false
-
-partof: scala-tour
-
-num: 19
-
 language: ba
 
+discourse: true
+
+partof: scala-tour
+categories: tour
+num: 20
 next-page: lower-type-bounds
 previous-page: variances
+
+redirect_from: "/tutorials/tour/upper-type-bounds.html"
 ---
 
 U Scali, [tipski parametri](generic-classes.html) i [apstraktni tipovi](abstract-types.html) mogu biti ograničeni granicom tipa.
 Takve granice tipa ograničavaju konkretne vrijednosti tipskih varijabli i ponekad otkrivaju još informacija o članovima takvih tipova.
-  _Gornja granica tipa_ `T <: A` deklariše da se tipska varijabla `T` odnosi na podtip tipa `A`.
-Slijedi primjer koji se oslanja na gornju granicu tipa za implementaciju polimorfne metode `findSimilar`:
+  _Gornja granica tipa_ `T <: A` kaže da se tipska varijabla `T` odnosi na podtip tipa `A`.
+Slijedi primjer koji demonstrira gornju granicu tipa za tipski parametar klase `PetContainer`:
 
-    trait Similar {
-      def isSimilar(x: Any): Boolean
-    }
-    case class MyInt(x: Int) extends Similar {
-      def isSimilar(m: Any): Boolean =
-        m.isInstanceOf[MyInt] &&
-        m.asInstanceOf[MyInt].x == x
-    }
-    object UpperBoundTest extends App {
-      def findSimilar[T <: Similar](e: T, xs: List[T]): Boolean =
-        if (xs.isEmpty) false
-        else if (e.isSimilar(xs.head)) true
-        else findSimilar[T](e, xs.tail)
-      val list: List[MyInt] = List(MyInt(1), MyInt(2), MyInt(3))
-      println(findSimilar[MyInt](MyInt(4), list))
-      println(findSimilar[MyInt](MyInt(2), list))
-    }
+```tut
+abstract class Animal {
+ def name: String
+}
 
-Bez gornje granice ne bi bilo moguće pozvati metodu `isSimilar` iz metode `findSimilar`.
-Korištenje donje granice tipa razmotreno je [ovdje](lower-type-bounds.html). 
+abstract class Pet extends Animal {}
+
+class Cat extends Pet {
+  override def name: String = "Cat"
+}
+
+class Dog extends Pet {
+  override def name: String = "Dog"
+}
+
+class Lion extends Animal {
+  override def name: String = "Lion"
+}
+
+class PetContainer[P <: Pet](p: P) {
+  def pet: P = p
+}
+
+val dogContainer = new PetContainer[Dog](new Dog)
+val catContainer = new PetContainer[Cat](new Cat)
+//  val lionContainer = new PetContainer[Lion](new Lion)
+//                         ^this would not compile
+```
+Klasa `PetContainer` prima tipski parametar `P` koji mora biti podtip od `Pet`. 
+`Dog` i `Cat` su podtipovi `Pet` tako da možemo kreirati novi `PetContainer[Dog]` i `PetContainer[Cat]`. 
+Međutim, ako pokušamo kreirati `PetContainer[Lion]`, dobićemo sljedeću grešku:
+
+`type arguments [Lion] do not conform to class PetContainer's type parameter bounds [P <: Pet]`
+
+To je zato što `Lion` nije podtip `Pet`.

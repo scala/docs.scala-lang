@@ -1,85 +1,87 @@
 ---
 layout: tour
 title: Apstraktni tipovi
+language: ba
 
-discourse: false
+discourse: true
 
 partof: scala-tour
 
-num: 22
-
-language: ba
-
+num: 23
 next-page: compound-types
 previous-page: inner-classes
+prerequisite-knowledge: variance, upper-type-bound
+
+redirect_from: "/tutorials/tour/abstract-types.html"
 ---
 
-U Scali, klase su parameterizovane vrijednostima (parameteri konstruktora) i tipovima (ako su [generičke](generic-classes.html)).
-Zbog dosljednosti, ne samo da je moguće imati vrijednosti kao članove objekta već i tipove.
-Nadalje, obje forme članova mogu biti konkretne ili apstraktne.
-Slijedi primjer koji sadrži obje forme: apstraktnu vrijednost i apstraktni tip kao članove [klase](traits.html) `Buffer`.
+Trejtovi i apstraktne klase mogu imati apstraktne tipove kao članove.
+To znači da konkretne implementacije definišu stvarni tip.
+Slijedi primjer:
 
-    trait Buffer {
-      type T
-      val element: T
-    }
+```tut
+trait Buffer {
+  type T
+  val element: T
+}
+```
 
-*Apstraktni tipovi* su tipovi čiji identitet nije precizno definisan.
-U gornjem primjeru, poznato je samo da svaki objekat klase `Buffer` ima tip-član `T`,
-ali definicija klase `Buffer` ne kazuje kojem konkretno tipu odgovara `T`.
-Kao i definicije vrijednosti, možemo redefinisati (override) definicije tipova u podklasama.
-Ovo nam omogućuje da otkrijemo više informacija o apstraktnom tipu sužavanjem granica tipa (koje opisuju moguće konkretne instance apstraktnog tipa).
+U gornjem primjeru smo definisali apstraktni tip `T`.
+On se koristi za opis člana `element`.
+Ovaj trejt možemo naslijediti u apstraktnoj klasi i dodati gornju granicu tipa za `T` da bi ga učinili preciznijim.
 
-U sljedećem programu izvodimo klasu `SeqBuffer` koja omogućuje čuvanje samo sekvenci u baferu kazivanjem da tip `T`
-mora biti podtip `Seq[U]` za neki novi apstraktni tip `U`:
+```tut
+abstract class SeqBuffer extends Buffer {
+  type U
+  type T <: Seq[U]
+  def length = element.length
+}
+```
 
-    abstract class SeqBuffer extends Buffer {
-      type U
-      type T <: Seq[U]
-      def length = element.length
-    }
+Primijetite da možemo koristiti još jedan apstraktni tip, `U`, kao gornju granicu tipa. Klasa `SeqBuffer` omogućuje čuvanje samo sekvenci u baferu kazivanjem da tip `T`
+mora biti podtip `Seq[U]` za neki novi apstraktni tip `U`.
 
-Trejtovi (trait) ili [klase](classes.html) s apstraktnim tip-članovima se često koriste u kombinaciji s instanciranjem anonimnih klasa.
+Trejtovi ili [klase](classes.html) s apstraktnim tip-članovima se često koriste u kombinaciji s instanciranjem anonimnih klasa.
 Radi ilustracije, pogledaćemo program koji radi s sekvencijalnim baferom koji sadrži listu integera:
 
-    abstract class IntSeqBuffer extends SeqBuffer {
-      type U = Int
-    }
+```tut
+abstract class IntSeqBuffer extends SeqBuffer {
+  type U = Int
+}
 
-    object AbstractTypeTest1 extends App {
-      def newIntSeqBuf(elem1: Int, elem2: Int): IntSeqBuffer =
-        new IntSeqBuffer {
-             type T = List[U]
-             val element = List(elem1, elem2)
-           }
-      val buf = newIntSeqBuf(7, 8)
-      println("length = " + buf.length)
-      println("content = " + buf.element)
-    }
 
-Povratni tip metode `newIntSeqBuf` odnosi se na specijalizaciju trejta `Buffer` u kom je tip `U` sada jednak `Int`u.
-Imamo sličan alijas tip u anonimnoj instanci klase u tijelu metode `newIntSeqBuf`.
-Ovdje kreiramo novu instancu `IntSeqBuffer` u kojoj se tip `T` odnosi na `List[Int]`.
+def newIntSeqBuf(elem1: Int, elem2: Int): IntSeqBuffer =
+  new IntSeqBuffer {
+       type T = List[U]
+       val element = List(elem1, elem2)
+     }
+val buf = newIntSeqBuf(7, 8)
+println("length = " + buf.length)
+println("content = " + buf.element)
+```
 
-Imajte na umu da je često moguće pretvoriti apstraktni tip-član u tipski parametar klase i obrnuto.
+Metoda `newIntSeqBuf` koristi anonimnu klasu kao implementaciju  `IntSeqBuf` postavljanjem tipa `T` u `List[Int]`.
+
+Često je moguće pretvoriti apstraktni tip-član u tipski parametar klase i obrnuto.
 Slijedi verzija gornjeg koda koji koristi tipske parametre:
 
-    abstract class Buffer[+T] {
-      val element: T
-    }
-    abstract class SeqBuffer[U, +T <: Seq[U]] extends Buffer[T] {
-      def length = element.length
-    }
-    object AbstractTypeTest2 extends App {
-      def newIntSeqBuf(e1: Int, e2: Int): SeqBuffer[Int, Seq[Int]] =
-        new SeqBuffer[Int, List[Int]] {
-          val element = List(e1, e2)
-        }
-      val buf = newIntSeqBuf(7, 8)
-      println("length = " + buf.length)
-      println("content = " + buf.element)
-    }
+```tut
+abstract class Buffer[+T] {
+  val element: T
+}
+abstract class SeqBuffer[U, +T <: Seq[U]] extends Buffer[T] {
+  def length = element.length
+}
 
-Primijetite da moramo koristiti [anotacije za varijansu](variances.html) ovdje;
-inače ne bismo mogli sakriti konkretni tip sekvencijalne implementacije objekta vraćenog iz metode `newIntSeqBuf`.
+def newIntSeqBuf(e1: Int, e2: Int): SeqBuffer[Int, Seq[Int]] =
+  new SeqBuffer[Int, List[Int]] {
+    val element = List(e1, e2)
+  }
+
+val buf = newIntSeqBuf(7, 8)
+println("length = " + buf.length)
+println("content = " + buf.element)
+```
+
+Primijetite da moramo koristiti [anotacije za varijansu](variances.html) ovdje (`+T <: Seq[U]`) da sakrijemo konkretni tip sekvencijalne implementacije objekta vraćenog iz metode `newIntSeqBuf`.
 Nadalje, postoje slučajevi u kojima nije moguće zamijeniti apstraktne tipove tip parametrima.
