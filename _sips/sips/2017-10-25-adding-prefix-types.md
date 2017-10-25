@@ -99,7 +99,7 @@ Note: `type ![A]` is possible to define, but `type -[A]` is not due to collision
 
 ## Implementation
 
-A PR for this SIP is available at: 
+A PR for this SIP is available at: [https://github.com/scala/scala/pull/6148](https://github.com/scala/scala/pull/6148)
 
 ------
 

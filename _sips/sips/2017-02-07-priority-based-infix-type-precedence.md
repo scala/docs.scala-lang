@@ -114,7 +114,7 @@ val fails : 1 + 2 * 3 + 4 = 11 //left associative:(((1+2)*3)+4))) = 13
 
 ## Implementation
 
-A PR for this SIP is available at: 
+A PR for this SIP is available at: [https://github.com/scala/scala/pull/6147](https://github.com/scala/scala/pull/6147)
 
 ------
 
