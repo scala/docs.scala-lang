@@ -53,7 +53,7 @@ establish some key terminologies we will be using for the rest of the guide.
 When a class is needed during execution, the JVM classloader loads the first matching class file from the classpath (any other matching class files are ignored).
 Because of this, having multiple versions of the same library in the classpath is generally undesirable:
 
-* Unnecessary application size increase
+* Need to fetch and bundle multiple library versions when only one is actually used
 * Unexpected runtime behavior if the order of class files changes
 
 Therefore, when resolving JARs to use for compilation and packaging, most build tools will pick only one version of each library and **evict** the rest.
