@@ -200,9 +200,9 @@ The current committee members are:
 - Heather Miller ([@heathermiller](https://github.com/heathermiller)), Scala Center
 - Seth Tisue ([@SethTisue](https://github.com/SethTisue)), Lightbend
 - Sébastien Doeraene ([@sjrd](https://github.com/sjrd)), EPFL
-- Eugene Burmako ([@xeno-by](https://github.com/xeno-by)), EPFL
+- Eugene Burmako ([@xeno-by](https://github.com/xeno-by)), Twitter
 - Josh Suereth ([@jsuereth](https://github.com/jsuereth)), Google
-- Iulian Dragos ([@dragos](https://github.com/dragos)), independent
+- Iulian Dragos ([@dragos](https://github.com/dragos)), Triplequote
 
 The current Process Lead is:
 
