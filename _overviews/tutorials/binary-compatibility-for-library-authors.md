@@ -155,7 +155,7 @@ Techniques you can use to avoid breaking binary compatibility:
 
 * Annotate public method's return type explicitly
 * Mark methods as package private when you want to remove a method or modify its signature
-* Don't use inlining (for libraries)
+* Don't turn on inlining for methods from dependencies
 
 For brevity of this guide, detailed explanation and runnable code examples can be found in [Binary Compatibility Code Examples & Explanation](https://github.com/jatcwang/binary-compatibility-guide).
 
