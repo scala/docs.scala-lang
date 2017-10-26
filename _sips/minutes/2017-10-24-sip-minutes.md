@@ -65,7 +65,7 @@ They are working on updates, but don't have any to share for this meeting.
 ### [SIP-33: Match infix and prefix types to meet expression rules](http://docs.scala-lang.org/sips/make-types-behave-like-expressions.html)
 [YouTube time: 03'12''-03'12''](https://youtu.be/aIc-o1pcRhw?t=194)
 
-**Jorge** introduces the SIP adding that Oron provided the implementation for associativity of the infix type, not for the prefix type. **Martin** makes the remark that Dotty does the same thing. He continues by saying he is "skeptical" about *prefix* types, as it seems to be another feature and "a necessary compromise to the mathematical conventions". On the other hand, he believes that once the roots for the associativity are fixed **?? PLEASE ADD, I DONT UNDERSTAND WHAT HE SAYS.**
+**Jorge** introduces the SIP adding that Oron provided the implementation for associativity of the infix type, not for the prefix type. **Martin** makes the remark that Dotty does the same thing. He continues by saying he is "skeptical" about *prefix* types, as it seems to be another feature and "a necessary compromise to the mathematical conventions". On the other hand, he believes that once the rules for  associativity are fixed then types and terms will be consistent.
 **Martin** concludes by saying "yes" to the infix part and "no" to the prefix part. **Adriaan** agrees and adds that the best way to go forward would be to split up the SIP, based on the "one idea one SIP" motto, noting that *prefix* and *infix* types, even though related, are not dependent therefore should be treated separately.
 The Committee agrees with Adriaan.
 
@@ -196,15 +196,16 @@ Challenges that can be taken on:
 **Eugene**
 https://youtu.be/aIc-o1pcRhw?t=1877
 Agrees both with **Adriaan** and **Olaf**, on one hand "prototyping" in the current macro system can be beneficial e.g automatic owner chain fixer but on the other, scala reflect is fundamentally different from the prototype macro system and even if the tests are run there might be no point to it.
-He does agree with **Olaf** that classification of the macros is useful. Concluding that supporting the generation transformation macros shouldn't be that hard, but than the question of how valuable to the community these are needs to be raised.
--- OLAF NEEDS TO RE-WRITE THIS PART --
+He does agree with **Olaf** that classification of the macros is useful. Concluding that supporting the generation transformation macros shouldn't be that hard, but then the question of how valuable to the community these are needs to be raised.
 
 Other question raised:
 
-- discuss the quasiquote (by **Martin**, **Olaf** and **Heather**)
- Go to: https://youtu.be/aIc-o1pcRhw?t=1960
+- typed quasiquotes (by **Martin**, **Olaf** and **Heather**)
+ [YouTube link](https://youtu.be/aIc-o1pcRhw?t=1960)
+
+**Martin** encourages to promote typed tree transformations as the default way to implement macros. The experience with this approach has been good in Dotty.
  "How restrictive is to demand all quasiquote to be fully typed instead of free name reference to type up the abstract" **Martin**
--- PLEASE SUMMARISE THE MAIN POINTS IN THIS DISCUSSION --
+**Heather** questions whether if this leads to departing from quasiquotes, **Martin** suggests to separate typed and untyped quasiquotes rather than getting rid of them. 
 
  - White box / Black box(by **Martin** / **Olaf**)
   Main concern "when do tools have to run the untrusted code?"
