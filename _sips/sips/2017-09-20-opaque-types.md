@@ -1,6 +1,6 @@
 ---
 layout: sip
-title: SIP-ZZ - Opaque types
+title: SIP-35 - Opaque types
 
 vote-status: pending
 permalink: /sips/:title.html
@@ -33,14 +33,14 @@ Some use cases for opaque types are:
 
  * Classes representing units of measure. Again, no boxing overhead
    would be incurred for these classes.
-   
+
  * Classes representing different entities with the same underlying type,
    such as `Id` and `Password` being defined in terms of `String`.
-   
+
 We expand on all these points in our [Motivation](motivation) section.
 
 For a definition of boxing and previous state-of-the-art, we recommend reading [SIP-15].
-   
+
 ### Implementation note
 
 The proposal is currently in an early stage.
@@ -83,7 +83,7 @@ package object valueclass {
     def +(that: Logarithm): Logarithm = Logarithm(toDouble + that.toDouble)
     def *(that: Logarithm): Logarithm = new Logarithm(exponent + that.exponent)
   }
-  
+
   object Logarithm {
     def apply(x: Double): Logarithm = new Logarithm(math.log(x))
   }
@@ -92,7 +92,7 @@ package object valueclass {
 package object usesites {
   // 1e7 is approximately (e ** 16.11809565095832),
   // so x is encoded as 16.11809565095832.
-  val x: Logarithm = Logarithm(1e7) 
+  val x: Logarithm = Logarithm(1e7)
 }
 ```
 
@@ -183,7 +183,7 @@ package object opaquetypes {
 
     def safe(d: Double): Option[Logarithm] =
       if (d > 0.0) Some(math.log(d)) else None
-      
+
     // This is the first way to unlift the logarithm type
     def exponent(l: Logarithm): Double = l
 
@@ -204,7 +204,7 @@ The above `Logarithm` type companion contains the following definitions:
  * Methods to lower the type from `Logarithm` to `Double` (i.e. `exponent`)
  * Extension methods to unlift the type from `Logarithm` to `Double` (i.e. `toDouble`)
  * Extension methods to define more operations on the type (i.e. like `+` and `*`)
- 
+
 The key peculiarity of opaque types is that they behave like normal
 [type alias]es inside their type companion; that is, users can convert from
 the type alias and its equivalent definition interchangeably without the use of
@@ -337,7 +337,7 @@ companion class of the module does not have a notion of companion type.
 
 #### Opaque type companions and implicit search
 
-These opaque type companions are also part of the implicit search scope of the opaque type `t`. 
+These opaque type companions are also part of the implicit search scope of the opaque type `t`.
 Therefore, uses of extension methods defined in the opaque type companion do not require users
 to import the opaque type companion explicitly.
 
@@ -391,7 +391,7 @@ There are several key ideas in the current, work-in-progress implementation:
 
  * Phases after typer always dealias opaque types. This way, erasure and codegen can unwrap opaque
    types out of the box and, at the bytecode level, their underlying representation is used instead.
-   
+
 All these ideas are open to refinements by the SIP Committee.
 
 ### On removing `asInstanceOf` at compile-time
