@@ -55,21 +55,21 @@ The Committee votes.
 **Conclusion**: The SIP is accepted by unanimity.
 
 ### [SIP-35: Opaque types](http://docs.scala-lang.org/sips/opaque-types.html)
-[YouTube time: 02'03''- 10'05''](https://youtu.be/aIc-o1pcRhw?t=122)
+[YouTube time: 02'03''- 03'10''](https://youtu.be/aIc-o1pcRhw?t=122)
 
 **Jorge** gives a brief update about the stage of the SIP-35, says that both community and the committee members gave a lot of feedback.
 They are working on updates, but don't have any to share for this meeting.
 
-**Conclusion**: The SIP-35 will be discussed on the next meeting.
+**Conclusion**: The SIP-35 will be proposed on the agenda once the updates are provided.
 
 ### [SIP-33: Match infix and prefix types to meet expression rules](http://docs.scala-lang.org/sips/make-types-behave-like-expressions.html)
-[YouTube time: 03'12''-03'12''](https://youtu.be/aIc-o1pcRhw?t=194)
+[YouTube time: 03'12''- 10'04''](https://youtu.be/aIc-o1pcRhw?t=194)
 
-**Jorge** introduces the SIP adding that Oron provided the implementation for associativity of the infix type, not for the prefix type. **Martin** makes the remark that Dotty does the same thing. He continues by saying he is "skeptical" about *prefix* types, as it seems to be another feature and "a necessary compromise to the mathematical conventions". On the other hand, he believes that once the rules for  associativity are fixed then types and terms will be consistent.
+**Jorge** introduces the SIP adding that **Oron** provided the implementation for associativity of the infix type, not for the prefix type. **Martin** makes the remark that Dotty does the same thing. He continues by saying he is "skeptical" about *prefix* types, as it seems to be another feature and "a necessary compromise to the mathematical conventions". On the other hand, he believes that once the rules for  associativity are fixed then types and terms will be consistent.
 **Martin** concludes by saying "yes" to the infix part and "no" to the prefix part. **Adriaan** agrees and adds that the best way to go forward would be to split up the SIP, based on the "one idea one SIP" motto, noting that *prefix* and *infix* types, even though related, are not dependent therefore should be treated separately.
 The Committee agrees with Adriaan.
 
-**Conclusion** The SIP 35 should be split in two separate SIPs, underlining that one related to *prefix* types needs more convincing as for now it looks like a "dead-end".
+**Conclusion**: The SIP 35 should be split in two separate SIPs, underlining that one related to *prefix* types needs more convincing as for now it looks like a "dead-end".
 The *infix* type has sound ground and should be worked on.
 The feedback will be given to the author.
 
@@ -186,39 +186,35 @@ Open discussion about the above proposed
 
 About 40 minutes were dedicated to finding a common ground for the  direction of the project as well as the technical details that should be addressed going forward.
 
-**Adriaan** immediately pointed out that by taking on the "hard stuff" to deal with first will give clarity to what could be supported for the next year. He suggests tackling the more ambitious features first, by experimenting in a current macro system, is a "cheap way" to find out the "unknown". The goal would be to find out how to implement it in the next macro system.
+**Adriaan** immediately pointed out that going forward, project should focus on the "hard stuff" to deal with first in order to give clarity to what could be supported for the next year. He believes that tackling the more ambitious features first, by experimenting in a current macro system, is a "cheap way" to discover the "unknown". The ultimate goal would be to find out how to implement it in the next macro system.
 Challenges that can be taken on:
-[(https://youtu.be/aIc-o1pcRhw?t=1673)]
+
 - splicing trees, ending up with owner chains that are correct
 - hygiene
 - better tools for macro authors, to experiment in a current macro system
 
-**Eugene**
-https://youtu.be/aIc-o1pcRhw?t=1877
-Agrees both with **Adriaan** and **Olaf**, on one hand "prototyping" in the current macro system can be beneficial e.g automatic owner chain fixer but on the other, scala reflect is fundamentally different from the prototype macro system and even if the tests are run there might be no point to it.
+**Eugene** agrees with both **Adriaan** and **Olaf**, on one hand "prototyping" in the current macro system can be beneficial e.g automatic owner chain fixer but on the other, scala reflect is fundamentally different from the prototype macro system and even if the tests are run there might be no point to it.
 He does agree with **Olaf** that classification of the macros is useful. Concluding that supporting the generation transformation macros shouldn't be that hard, but then the question of how valuable to the community these are needs to be raised.
 
 Other question raised:
 
 - typed quasiquotes (by **Martin**, **Olaf** and **Heather**)
- [YouTube link](https://youtu.be/aIc-o1pcRhw?t=1960)
 
 **Martin** encourages to promote typed tree transformations as the default way to implement macros. The experience with this approach has been good in Dotty.
- "How restrictive is to demand all quasiquote to be fully typed instead of free name reference to type up the abstract" **Martin**
-**Heather** questions whether if this leads to departing from quasiquotes, **Martin** suggests to separate typed and untyped quasiquotes rather than getting rid of them. 
+ "How restrictive is to demand all quasiquote to be fully typed instead of free name reference to type up the abstract" *Martin*
+**Heather** questions whether if this leads to departing from quasiquotes, **Martin** suggests to separate typed and untyped quasiquotes rather than getting rid of them.
 
  - White box / Black box(by **Martin** / **Olaf**)
   Main concern "when do tools have to run the untrusted code?"
 
  - Annotation macros (Community)
- **Martin** insists on leaving the paradise functionality in "meta/template scala" but that *scala* assumes only the things that have proven themselves e.g. simulacrum
- -- PLEASE ADD THE REASON IF NECESSARY
+
+**Martin** insists on leaving the paradise functionality in "paradise scala" and annotations that prove themselves to be essential can be considered for inclusion in the main scala.
 
  He strongly believes that macro annotations are a "complete abuse of macros" and will make sure that "this things are not possible anymore"
 
 - The interaction between type inference and macros (**Iulian**)
-quote https://youtu.be/aIc-o1pcRhw?t=3436
--- OLAF, PLEASE MAKE SURE THE SENSE IS MADE OF WHAT IULIAN SAID --
+This interaction seems to be one of the hard unsolved problems in the current macro system. For example, code that uses shapeless typically has two type parameters where one parameter is unbounded and it's inferred type is guided by the shapeless macro.
 
 **Adriaan** thinks that's a great example for the language feature.
 
@@ -226,9 +222,8 @@ quote https://youtu.be/aIc-o1pcRhw?t=3436
 "Keep inline as a sort of enabler of meta to get full macros. Main job moving the code from A to B, doing simplifications, wheres actual generation and inspection of quasiquote is the job of macros."
 Adding that it is also an interesting idea to split generation and inspection
 
-- Untype trees ??
-https://youtu.be/aIc-o1pcRhw?t=3752
--- OLAF PLEASE PUT A SENTENCE OR TWO --
+- Untyped trees
+**Eugene** thinks that mixing of untyped trees and typed trees is one of the hard problems. He believes we are only a "few steps" away from solving. Solving this problem should be the focus of next month and the fruit of that work will benefit both the new macro system as well as existing scala.reflect macros and open opportunities for more macro applications.
 
 
 **Conclusion**: Moving forward, **Olaf** and the team should focus on the above suggested and keep the Committee informed about the progress. The SIP will be up on the agenda once it's ready with the implementation, by **Olaf** estimation, within 4 to 6 months.
