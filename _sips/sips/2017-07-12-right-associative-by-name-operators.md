@@ -1,7 +1,7 @@
 ---
 layout: sip
 discourse: true
-title: SIP-NN - Right-Associative By-Name Operators
+title: SIP-34 - Right-Associative By-Name Operators
 
 vote-status: accepted
 permalink: /sips/:title.html
