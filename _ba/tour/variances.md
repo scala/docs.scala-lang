@@ -11,7 +11,6 @@ num: 19
 next-page: upper-type-bounds
 previous-page: generic-classes
 
-redirect_from: "/tutorials/tour/variances.html"
 ---
 
 Varijansa je korelacija podtipskih veza kompleksnih tipova i podtipskih veza njihovih tipova komponenti. 

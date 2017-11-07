@@ -12,7 +12,6 @@ num: 15
 next-page: extractor-objects
 previous-page: singleton-objects
 
-redirect_from: "/tutorials/tour/regular-expression-patterns.html"
 ---
 
 Regularni izrazi su stringovi koji se mogu koristiti za traženje uzoraka u podacima.

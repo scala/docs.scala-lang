@@ -11,7 +11,6 @@ num: 29
 next-page: operators
 previous-page: polymorphic-methods
 
-redirect_from: "/tutorials/tour/local-type-inference.html"
 ---
 Scala ima ugrađen mehanizam zaključivanja tipova koji dozvoljava programeru da izostavi određene anotacije tipova.
 Često nije potrebno specificirati tip varijable u Scali,

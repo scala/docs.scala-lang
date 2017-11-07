@@ -12,7 +12,6 @@ num: 13
 next-page: regular-expression-patterns
 previous-page: pattern-matching
 
-redirect_from: "/tutorials/tour/singleton-objects.html"
 ---
 
 Metode i vrijednosti koje ne pripadaju individualnim instancama [klase](classes.html) pripadaju *singlton objektima*,
