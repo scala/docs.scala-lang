@@ -11,7 +11,6 @@ num: 2
 next-page: unified-types
 previous-page: tour-of-scala
 
-redirect_from: "/tutorials/tour/basics.html"
 ---
 
 Na ovoj stranici ćemo objasniti osnove Scale.

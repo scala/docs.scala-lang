@@ -11,7 +11,6 @@ num: 24
 next-page: self-types
 previous-page: abstract-types
 
-redirect_from: "/tutorials/tour/compound-types.html"
 ---
 
 Ponekad je potrebno izraziti da je tip objekta podtip nekoliko drugih tipova. 

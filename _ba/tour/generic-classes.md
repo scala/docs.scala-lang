@@ -12,7 +12,6 @@ next-page: variances
 previous-page: for-comprehensions
 assumed-knowledge: classes unified-types
 
-redirect_from: "/tutorials/tour/generic-classes.html"
 ---
 
 Generičke klase su klase koje primaju tipove kao parametre.

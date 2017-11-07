@@ -11,7 +11,6 @@ num: 16
 next-page: for-comprehensions
 previous-page: regular-expression-patterns
 
-redirect_from: "/tutorials/tour/extractor-objects.html"
 ---
 
 Ekstraktor objekat je objekat koji ima `unapply` metodu.

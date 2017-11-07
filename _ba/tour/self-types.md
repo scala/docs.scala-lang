@@ -12,7 +12,6 @@ next-page: implicit-parameters
 previous-page: compound-types
 prerequisite-knowledge: nested-classes, mixin-class-composition
 
-redirect_from: "/tutorials/tour/self-types.html"
 ---
 Self-tipovi su način da deklarišemo da trejt mora biti umiksan u drugi trejt, iako ga ne nasljeđuje direktno.
 Ovo omogućuje da članovi zavisnog trejta budu dostupni bez importovanja.

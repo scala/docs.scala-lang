@@ -12,7 +12,6 @@ next-page: pattern-matching
 previous-page: currying
 prerequisite-knowledge: classes, basics, mutability
 
-redirect_from: "/tutorials/tour/case-classes.html"
 ---
 
 Case klase su kao obične klase s par ključnih razlika.

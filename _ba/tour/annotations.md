@@ -11,7 +11,6 @@ num: 32
 next-page: default-parameter-values
 previous-page: by-name-parameters
 
-redirect_from: "/tutorials/tour/annotations.html"
 ---
 
 Anotacije pridružuju meta-informacije definicijama.

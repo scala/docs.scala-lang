@@ -11,7 +11,6 @@ num: 22
 next-page: abstract-types
 previous-page: lower-type-bounds
 
-redirect_from: "/tutorials/tour/inner-classes.html"
 ---
 
 U Scali je moguće da klase imaju druge klase kao članove.

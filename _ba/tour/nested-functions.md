@@ -11,7 +11,6 @@ num: 9
 next-page: currying
 previous-page: higher-order-functions
 
-redirect_from: "/tutorials/tour/nested-functions.html"
 ---
 
 U Scali je moguće ugnježdavati definicije metode.
