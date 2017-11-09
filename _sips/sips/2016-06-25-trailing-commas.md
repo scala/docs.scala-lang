@@ -172,7 +172,7 @@ As an alternative to changing the language, there already exists today a compile
 3. [scala-commas][]
 
 [SI-4986]: https://issues.scala-lang.org/browse/SI-4986
-[scala/scala#5245]: https://github.com/scala/scala/pull/524://github.com/scala/scala/pull/5245
+[scala/scala#5245]: https://github.com/scala/scala/pull/5245
 [scala-commas]: https://github.com/47deg/scala-commas
 [#533]: https://github.com/scala/docs.scala-lang/pull/533
 [#625]: https://github.com/scala/docs.scala-lang/pull/625
