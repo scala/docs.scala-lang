@@ -23,10 +23,13 @@ Before we start, let's understand how code is compiled and executed on the Java 
 
 ## The JVM execution model
 
-Scala is compiled to a platform-independent format called **JVM bytecode** and stored in `.class` files. These class files are collated in JAR files for distribution.
+Scala is compiled to a platform-independent format called **JVM bytecode** and stored in `.class` files. 
+These class files are collated in JAR files for distribution.
 
-When some code depends on a library, its compiled bytecode references the library's bytecode. The library's bytecode is referenced by its class/method signatures and loaded lazily
-by the JVM classloader during runtime. If a class or method matching the signature is not found, an exception is thrown. 
+When some code depends on a library, its compiled bytecode references the library's bytecode. 
+The library's bytecode is referenced by its class/method signatures and loaded lazily
+by the JVM classloader during runtime. If a class or method matching the signature is not found,
+an exception is thrown. 
 
 As a result of this execution model:
 
@@ -42,7 +45,14 @@ Consider an application `App` that depends on `A` which itself depends on librar
 for all of `App`, `A` and `C` (something like `java -cp App.jar:A.jar:C.jar:. MainClass`). If we did not provide `C.jar` or if we provided a `C.jar` that does not contain some classes/methods
 which `A` calls, we will get classloading exceptions when our code attempts to invoke the missing classes/methods.
 
-These are what we call **Binary Incompatibility Errors** -- errors that happen when the compiled bytecode references a name that cannot be resolved during runtime.
+These are what we call **Linkage Errors** -- errors that happen when the compiled bytecode references a name that cannot be resolved during runtime.
+
+### What about Scala.js and Scala Native?
+Similarly to the JVM, Scala.js and Scala Native have their respective equivalents of .class files, namely .sjsir files and .nir files. Similarly to .class files, they are distributed in .jars and linked together at the end.
+
+However, contrary to the JVM, Scala.js and Scala Native link their respective IR files at link time, so eagerly, instead of lazily at run-time. Failure to correctly link the entire program results in linking errors reported while trying to invoke `fastOptJS`/`fullOptJS` or `nativeLink`.
+
+Besides that difference in the timing of linkage errors, the models are extremely similar. **Unless otherwise noted, the contents of this guide apply equally to the JVM, Scala.js and Scala Native.**
 
 Before we look at how to avoid binary incompatibility errors, let us first
 establish some key terminologies we will be using for the rest of the guide.
@@ -59,15 +69,14 @@ Because of this, having multiple versions of the same library in the classpath i
 Therefore, when resolving JARs to use for compilation and packaging, most build tools will pick only one version of each library and **evict** the rest.
 
 ### Source Compatibility
-Two library versions are **Source Compatible** if switching one for the other does not incur any compile errors or unintended behavioral changes at runtime.  
-For example, If we can upgrade `v1.0.0` of a dependency to `v1.1.0` and recompile our code without any compilation errors, `v1.1.0` is source compatible with `v1.0.0`.
+Two library versions are **Source Compatible** with each other if switching one for the other does not incur any compile errors or unintended behavioral changes (semantic errors).  
+For example, If we can upgrade `v1.0.0` of a dependency to `v1.1.0` and recompile our code without any compilation errors or semantic errors, `v1.1.0` is source compatible with `v1.0.0`.
 
 ### Binary Compatibility
-Two library versions are **Binary Compatible** if the compiled bytecode of these versions can be interchanged without causing binary compatibility errors.  
-For example, if we can replace the class files of a library's `v1.0.0` with the class files of `v1.1.0` without any binary compatibility errors during runtime,
-`v1.1.0` is binary compatible with `v1.0.0`.
+Two library versions are **Binary Compatible** with each other if the compiled bytecode of these versions can be interchanged without causing Linkage Errors.
 
-**NOTE:** While breaking source compatibility normally results in binary compatibility breakages as well, they are actually orthogonal -- breaking one does not imply breaking the other.
+### Relationship between source and binary compatibility
+While breaking source compatibility often results in binary incompatibilities as well, they are actually orthogonal -- breaking one does not imply breaking the other.
 
 #### Forwards and Backwards Compatibility
 
@@ -76,20 +85,20 @@ There are two "directions" when we describe compatibility of a library release:
 **Backwards Compatible** means that a newer library version can be used in an environment where an older version is expected. When talking about binary and source compatibility,
 this is the common and implied direction.
 
-**Forwards Compatible** means that an older library can be used in an environment where a newer version is expected.  
-Forward compatibility is generally not upheld for userland libraries. It is only important in situations where an older version of a library is commonly used at runtime against code that is compiled with newer versions. (for example, [Scala's standard library](http://docs.scala-lang.org/overviews/core/binary-compatibility-of-scala-releases.html))
+**Forwards Compatible** means that an older library can be used in an environment where a newer version is expected.
+Forward compatibility is generally not upheld for libraries.
 
 Let's look at an example where library `A v1.0.0` is compiled with library `C v1.1.0`.
 
 ![Forwards and Backwards Compatibility]({{ site.baseurl }}/resources/images/library-author-guide/fowards_backwards_compatibility.png){: style="width: 65%; margin: auto; display: block"}
 
-`C v1.1.0 ` is **Forwards Binary Compatible** with `v1.0.0` if we can use `v1.0.0`'s JAR at runtime instead of `v1.1.0`'s JAR without any binary compatibility errors.
+`C v1.1.0 ` is **Forwards Binary Compatible** with `v1.0.0` if we can use `v1.0.0`'s JAR at runtime instead of `v1.1.0`'s JAR without any linkage errors.
 
-`C v1.2.0 ` is **Backwards Binary Compatible** with `v1.1.0` if we can use `v1.2.0`'s JAR at runtime instead of `v1.1.0`'s JAR without any binary compatibility errors.
+`C v1.2.0 ` is **Backwards Binary Compatible** with `v1.1.0` if we can use `v1.2.0`'s JAR at runtime instead of `v1.1.0`'s JAR without any linkage errors.
 
 ## Why binary compatibility matters
 
-Binary Compatibility matters because breaking binary compatibility have bad consequences on the ecosystem around the software.
+Binary Compatibility matters because breaking binary compatibility has bad consequences on the ecosystem around the software.
 
 * End users have to update versions transitively in all their dependency tree such that they are binary compatible. This process is time-consuming and error-prone, and it can change the semantics of end program.
 * Library authors need to update their library dependencies to avoid "falling behind" and causing dependency hell for their users. Frequent binary breakages increase the effort required to maintain libraries.
@@ -134,30 +143,32 @@ How can we, as library authors, spare our users of runtime errors and dependency
 ## MiMa - Checking binary compatibility against previous library versions 
 
 The [Migration Manager for Scala](https://github.com/typesafehub/migration-manager) (MiMa) is a tool for diagnosing binary incompatibilities between different library versions.  
-It works by comparing the class files of two provided JARs and report any binary incompatibilities found.
+It works by comparing the class files of two provided JARs and report any binary incompatibilities found. 
+Both backwards and forwards binary incompatibility can be detected by swapping input order of the JARs.
 
 By incorporating [MiMa SBT plugin](https://github.com/typesafehub/migration-manager/wiki/Sbt-plugin) into your SBT build, you can easily check whether 
 you have accidentally introduced binary incompatible changes. Detailed instruction on how to use the SBT plugin can be found in the link.
 
-We strongly encourage every library author to incorporate MiMa into their library release workflow.
+We strongly encourage every library author to incorporate MiMa into their continuous integration and release workflow.
+
+Detecting backwards source compatibility is difficult with Scala due to language features like implicit
+and named parameters. The best approximation to checking backwards source compatibility is running
+both forwards and backwards binary compatibility check, as this can detect most cases
+of source-incompatible changes. For example, adding/removing public class members is a source
+incompatible change, and will be caught through forward + backward binary compatibility check.
 
 ## Evolving code without breaking binary compatibility
 
-Binary compatibility breakages can often be avoided through careful use of certain Scala features as well as some techniques you can apply when modifying code.
+Binary compatibility breakages can often be avoided through the careful use of certain Scala features 
+as well as some techniques you can apply when modifying code.
 
-Some language features may break binary compatibility:
+For example, the use of these language features are a common source of binary compatibility breakages
+in library releases:
 
 * Default parameter values for methods or classes
 * Case classes
-* Default methods on traits (doesn't cause breakages since 2.12)
 
-Techniques you can use to avoid breaking binary compatibility:
-
-* Annotate public method's return type explicitly
-* Mark methods as package private when you want to remove a method or modify its signature
-* Don't turn on inlining for methods from dependencies
-
-For brevity of this guide, detailed explanation and runnable code examples can be found in [Binary Compatibility Code Examples & Explanation](https://github.com/jatcwang/binary-compatibility-guide).
+You can find detailed explanations, runnable examples and tips to maintain binary compatibility in [Binary Compatibility Code Examples & Explanation](https://github.com/jatcwang/binary-compatibility-guide).
 
 Again, we recommend using MiMa to double check that you have not broken binary compatibility after making changes.
 
@@ -171,45 +182,40 @@ Semantic Versioning v2.0.0.
 
 ### Recommended Versioning Scheme
 
-* If backward **binary compatibility** is broken, **major version number** must be increased
-* If backward **source compatibility** is broken, **minor version number** must be increased
-* A change in **patch version number** signals **no binary nor source incompatibility**. According to SemVer, patch versions should contain only bug fixes that fix incorrect behavior so major behavioral
+* If backward **binary compatibility** is broken, **major version number** must be increased.
+* If backward **source compatibility** is broken, **minor version number** must be increased.
+* A change in **patch version number** signals **no binary nor source incompatibility**. 
+According to SemVer, patch versions should contain only bug fixes that fix incorrect behavior so major behavioral
 change in method/classes should result in a minor version bump.
-* When major version is `0`, a minor version bump **may contain both source and binary breakages**
-* Some libraries may take a harder stance on maintaining source compatibility, bumping the major version number for ANY source incompatibility even if they are binary compatible
+* When major version is `0`, a minor version bump **may contain both source and binary breakages**.
 
 Some examples:
 
-* `v1.0.0 -> v2.0.0` is <span style="color: red">binary incompatible</span>. Cares needs to be taken to make sure no evicted versions are still in the `v1.x.x` range to avoid runtime errors
-* `v1.0.0 -> v1.1.0` is <span style="color: blue">binary compatible</span> and maybe source incompatible
-* `v1.0.0 -> v1.0.1` is <span style="color: blue">binary compatible</span> and source compatible
-* `v0.4.0 -> v0.5.0` is <span style="color: red">binary incompatible</span> and maybe source incompatible
-* `v0.4.0 -> v0.4.1` is <span style="color: blue">binary compatible</span> and source compatible
+* `v1.0.0 -> v2.0.0` is <span style="color: #c10000">binary incompatible</span>. 
+  End users and library maintainers need to update all their dependency graph to remove all dependency on `v1.0.0`.
+* `v1.0.0 -> v1.1.0` is <span style="color: #2b2bd4">binary compatible</span>. Classpath can safely contain both `v1.0.0` and `v1.1.0`. End user may need to fix minor source breaking changes introduced
+* `v1.0.0 -> v1.0.1` is <span style="color: #2b2bd4">binary compatible</span>. This is a safe upgrade that does not introduce binary or source incompatibilities.
+* `v0.4.0 -> v0.5.0` is <span style="color: #c10000">binary incompatible</span>. 
+  End users and library maintainers need to update all their dependency graph to remove all dependency on `v0.4.0`.
+* `v0.4.0 -> v0.4.1` is <span style="color: #2b2bd4">binary compatible</span>. Classpath can safely contain both `v1.0.0` and `v1.1.0`. End user may need to fix minor source breaking changes introduced
 
 Many libraries in the Scala ecosystem has adopted this versioning scheme. A few examples are [Akka](http://doc.akka.io/docs/akka/2.5/scala/common/binary-compatibility-rules.html),
 [Cats](https://github.com/typelevel/cats#binary-compatibility-and-versioning) and [Scala.js](https://www.scala-js.org/).
 
-If this version scheme is followed, reasoning about binary compatibility is now very simple:
+## Conclusion
 
-* Ensure major versions of all versions of a library in the dependency tree are the same
-* Pick the latest version and evict the rest (This is the default behavior of SBT).
-
-### Explanation
-
-Why do we use the major version number to signal binary incompatible releases?
+Why is binary compatibility so important such that we recommend using the major version number to track it?
 
 From our [example](#why-binary-compatibility-matters) above, we have learned two important lessons:
 
-* Binary incompatibility releases often leads to dependency hell, rendering your users unable to update any of their libraries without breaking their application
-* If a new library version is binary compatible but source incompatible, the user can simply fix the compile errors in their application and everything will work
+* Binary incompatibility releases often lead to dependency hell, rendering your users unable to update any of their libraries without breaking their application.
+* If a new library version is binary compatible but source incompatible, the user can fix the compile errors and their application should work.
 
-Therefore, **binary incompatible releases should be avoided if possible** and be more noticeable when they happen, warranting the use of the major version number. While source compatibility
-is also important, if they are minor breakages that do not require effort to fix, then it is best to let the major number signal just binary compatibility.
+Therefore, **binary incompatible releases should be avoided if possible** and unambiguously documented
+when they happen, warranting the use of the major version number. Users of your library can then enjoy
+simple version upgrades and have clear warnings when they need to align library versions in their dependency tree
+due to a binary incompatible release.
 
-## Conclusion
+If we follow all recommendations laid out in this guide, we as a community can spend less time untangling dependency hell and more time building cool things!
 
-In this guide, we covered the importance of binary compatibility and showed you a few tricks to avoid breaking binary compatibility. Finally, we laid out a versioning scheme to communicate 
-binary compatibility breakages clearly to your users. 
-
-If we follow these guidelines, we as a community can spend less time untangling dependency hell and more time building cool things!
 
