@@ -81,7 +81,7 @@ Pošto je `RichIterator` trejt, on ne mora implementirati apstraktne članove `A
 
 ```tut
 object StringIteratorTest extends App {
-  class Iter extends StringIterator(args(0)) with RichIterator
+  class Iter extends StringIterator("Scala") with RichIterator
   val iter = new Iter
   iter foreach println
 }

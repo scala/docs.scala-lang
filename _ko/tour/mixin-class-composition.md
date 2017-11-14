@@ -40,7 +40,7 @@ _단일 상속_ 만을 지원하는 여러 언어와는 달리, 스칼라는 더
  
     object StringIteratorTest {
       def main(args: Array[String]) {
-        class Iter extends StringIterator(args(0)) with RichIterator
+        class Iter extends StringIterator("Scala") with RichIterator
         val iter = new Iter
         iter foreach println
       }
