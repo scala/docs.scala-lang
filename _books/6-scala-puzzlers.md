@@ -1,7 +1,7 @@
 ---
 title: "Scala Puzzlers"
 link: http://www.artima.com/shop/scala_puzzlers
-image: /resources/img/books/icon_Scala_in_Depth_93x116.png
+image: /resources/img/books/scala-puzzlers-book.jpg
 status: Available now
 authors: ["Andrew Phillips", "Nermin Šerifović"]
 publisher: Artima Press
