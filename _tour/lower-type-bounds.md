@@ -42,7 +42,7 @@ To fix this, we need to flip the variance of the type of the parameter `elem` in
 
 ```tut
 trait Node[+B] {
-  def prepend[U >: B](elem: U)
+  def prepend[U >: B](elem: U): Node[U]
 }
 
 case class ListNode[+B](h: B, t: Node[B]) extends Node[B] {
