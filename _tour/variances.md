@@ -143,7 +143,7 @@ Another example that can help one understand variance is `trait Function1[-T, +R
 Assume the similar `Cat`, `Dog`, `Animal` inheritance tree used earlier, plus the following:
 
 ```tut
-class SmallAnimal
+class SmallAnimal extends Animal
 class Mouse extends SmallAnimal
 ```
 
