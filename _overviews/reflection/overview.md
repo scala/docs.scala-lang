@@ -132,7 +132,7 @@ The second step involves obtaining a `ClassMirror` for class `Person` using
 the `reflectClass` method. The `ClassMirror` provides access to the
 constructor of class `Person`.
 
-    scala> val ctor = ru.typeOf[Person].decls(ru.nme.CONSTRUCTOR).asMethod
+    scala> val ctor = ru.typeOf[Person].decl(ru.termNames.CONSTRUCTOR).asMethod
     ctor: scala.reflect.runtime.universe.MethodSymbol = constructor Person
 
 The symbol for `Person`s constructor can be obtained using only the runtime
@@ -171,7 +171,7 @@ which makes all classes and types available that are loaded by the classloader
 that also loaded the class of `p` (`Purchase`), which we need in order to
 access member `shipped`.
 
-    scala> val shippingTermSymb = ru.typeOf[Purchase].decls(ru.TermName("shipped")).asTerm
+    scala> val shippingTermSymb = ru.typeOf[Purchase].decl(ru.TermName("shipped")).asTerm
     shippingTermSymb: scala.reflect.runtime.universe.TermSymbol = method shipped
 
 We now look up the declaration of the `shipped` field, which gives us a
