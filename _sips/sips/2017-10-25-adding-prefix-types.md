@@ -14,6 +14,7 @@ permalink: /sips/:title.html
 | Date          | Version                                  |
 | ------------- | ---------------------------------------- |
 | Oct 25th 2017 | Split prefix types from [SIP33](http://docs.scala-lang.org/sips/priority-based-infix-type-precedence.html), and emphasize motivation |
+| Nov 29th 2017 | Updated SIP according to feedback in the PR, and recent update to SIP23 |
 
 
 Your feedback is welcome! If you're interested in discussing this proposal, head over to [this](https://contributors.scala-lang.org/t/sip-nn-make-infix-type-alias-precedence-like-expression-operator-precedence/471) Scala Contributors thread and let me know what you think.
@@ -54,24 +55,14 @@ object NonExistingPrefixTypes {
 
 ---
 
-## Proposal
-Add support for prefix types, which is equivalent to the prefix operations for expressions.
-
-```
-PrefixType ::= [`-' | `+' | `~' | `!'] SimpleType
-CompoundType ::= PrefixType
-              |  AnnotType {with AnnotType} [Refinement]
-              |  Refinement
-```
-
----
-
 ## Motivation
-Developers expect terms and types to be expressed the same for mathematical and logical operations.
+It is easier to reason about the language when mathematical and logical operations for both terms and types are expressed the same. The proposal is relevant solely for projects which utilize numeric literal type operations (supported by SIP23, which was not yet accepted into Lightbend Scala). However, the SIP is implementation is very small and should have minor effect on compiler performance. 
 
 ### Motivating examples
 
-The [singleton-ops library](https://github.com/fthomas/singleton-ops) with [Typelevel Scala](https://github.com/typelevel/scala) (which implemented [SIP-23](http://docs.scala-lang.org/sips/pending/42.type.html)) enable developers to express literal type operations more intuitively. For example:
+The [singleton-ops library](https://github.com/fthomas/singleton-ops) with [Typelevel Scala](https://github.com/typelevel/scala) (which implemented [SIP-23](http://docs.scala-lang.org/sips/pending/42.type.html)) enable developers to express literal type operations more intuitively. 
+
+Consider the following example, where `foo` has two equivalent implementations, one using types, while the other uses terms:
 
 ```scala
 import singleton.ops._
@@ -81,8 +72,10 @@ object PrefixExample {
   We would much rather write the following to acheive more clarity and shorter code:
   type Foo[Cond1, Cond2, Num] = ITE[Cond1 && !Cond2, -Num, Num]	
   */
-  type Foo[Cond1, Cond2, Num] = ITE[Cond1 && ![Cond2], Negate[Num], Num]  
+  type Foo[Cond1, Cond2, Num] = ITE[Cond1 && ![Cond2], Negate[Num], Num]
+  //foo executes typelevel operations by using singleton-ops
   def foo[Cond1, Cond2, Num](implicit f : Foo[Cond1, Cond2, Num]) : f.Out = f.value
+  //foo executes term operations
   def foo(cond1 : Boolean, cond2 : Boolean, num : Int) : Int = 
     if (cond1 && !cond2) -num else num
 }
@@ -96,6 +89,19 @@ foo(true, false, 3) //returns -3
 Note: `type ![A]` is possible to define, but `type -[A]` is not due to collision with infix type parsing.
 
 ---
+
+## Proposal
+
+Add support for prefix types, which is equivalent to the prefix operations for expressions.
+
+```
+PrefixType ::= [`-' | `+' | `~' | `!'] SimpleType
+CompoundType ::= PrefixType
+              |  AnnotType {with AnnotType} [Refinement]
+              |  Refinement
+```
+
+------
 
 ## Implementation
 
@@ -143,18 +149,15 @@ This means that if unary prefix types are added, then `+42` will be a type expan
 
 **Related Issues**
 * [Dotty Issue #2783](https://github.com/lampepfl/dotty/issues/2783)
-* [Typelevel Scala Issue #157](https://github.com/typelevel/scala/issues/157)
+* [Typelevel Scala Issue #157](https://github.com/typelevel/scala/issues/157) (Resolved in recent update to SIP23)
 
-Both SIP23 implementation and Dotty's implementation of literal types currently fail compilation when infix types interact with a negative literal type.
+Dotty's implementation of literal types currently fail compilation when infix types interact with a negative literal type.
 ```scala
 type ~~[A, B]
 type good = 2 ~~ 2
 type bad = 2 ~~ -2 //Error:(9, 20) ';' expected but integer literal found.
-type work_around = 2 ~~ (-2) //works for Typelevel scala, but fails in Dotty
+type work_around = 2 ~~ (-2) //Error in Dotty
 ```
-It is not yet clear if this is an implementation issue, or if the spec should be changed to allow this as well.
-If this is a spec change, then the committee should approve it also. 
-
 ----
 
 ### Bibliography
