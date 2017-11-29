@@ -56,7 +56,7 @@ object NonExistingPrefixTypes {
 ---
 
 ## Motivation
-It is easier to reason about the language when mathematical and logical operations for both terms and types are expressed the same. The proposal is relevant solely for projects which utilize numeric literal type operations (supported by SIP23, which was not yet accepted into Lightbend Scala). However, the SIP is implementation is very small and should have minor effect on compiler performance. 
+It is easier to reason about the language when mathematical and logical operations for both terms and types are expressed the same. The proposal is relevant solely for projects which utilize numeric literal type operations (supported by SIP23, which was not yet accepted into Lightbend Scala). However, the SIP's implementation is very small and should have minor effect on compiler performance. 
 
 ### Motivating examples
 
