@@ -19,6 +19,7 @@ permalink: /sips/:title.html
 | Aug 8th 2017  | Numbered SIP, improve view, fixed example, and added related issues |
 | Oct 20th 2017 | Added implementation link                |
 | Oct 25th 2017 | Moved prefix types to [another SIP](http://docs.scala-lang.org/sips/adding-prefix-types.html), changed title and PR |
+| Nov 29th 2017 | Updated SIP according to feedback in the PR |
 
 
 Your feedback is welcome! If you're interested in discussing this proposal, head over to [this](https://contributors.scala-lang.org/t/sip-nn-make-infix-type-alias-precedence-like-expression-operator-precedence/471) Scala Contributors thread and let me know what you think.
