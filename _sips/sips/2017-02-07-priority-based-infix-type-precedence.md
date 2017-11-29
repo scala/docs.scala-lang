@@ -62,14 +62,8 @@ object InfixTypePrecedence {
 
 ---
 
-## Proposal
-
-Make infix types conform to the same precedence and associativity traits as expression operations.
-
----
-
 ## Motivation
-Developers expect terms and types to be expressed the same for mathematical and logical operations.
+It is easier to reason about the language when mathematical and logical operations for both terms and types are expressed the same.
 
 ### Motivating examples
 
@@ -111,6 +105,12 @@ val fails : 1 + 2 * 3 + 4 = 11 //left associative:(((1+2)*3)+4))) = 13
 [This](http://stackoverflow.com/questions/23333882/scala-infix-type-aliasing-for-2-type-parameters) stackoverflow question demonstrate developers are 'surprised' by the difference in infix precedence, expecting infix type precedence to act the same as expression operations.
 
 ---
+
+## Proposal
+
+Make infix types conform to the same precedence and associativity traits as term operations.
+
+------
 
 ## Implementation
 

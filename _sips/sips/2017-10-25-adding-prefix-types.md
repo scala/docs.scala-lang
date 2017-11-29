@@ -60,6 +60,8 @@ It is easier to reason about the language when mathematical and logical operatio
 
 ### Motivating examples
 
+#### Singleton-ops library example
+
 The [singleton-ops library](https://github.com/fthomas/singleton-ops) with [Typelevel Scala](https://github.com/typelevel/scala) (which implemented [SIP-23](http://docs.scala-lang.org/sips/pending/42.type.html)) enable developers to express literal type operations more intuitively. 
 
 Consider the following example, where `foo` has two equivalent implementations, one using types, while the other uses terms:
@@ -87,6 +89,30 @@ foo(true, false, 3) //returns -3
 ```
 
 Note: `type ![A]` is possible to define, but `type -[A]` is not due to collision with infix type parsing.
+
+#### DFiant library example
+
+DFiant is a domain specific language for hardware description I (Oron) am developing. Hardware interfaces have a direction annotation (e.g., `vec : DFBits[8] <> IN`). Sometime interfaces have multiple ports, in different directions. E.g.:
+
+```scala
+trait MyInterface {
+  val data : DFBits[32] <> IN
+  val address : DFBits[32] <> OUT
+}
+```
+
+To be able to use the same interface in reverse, we need the ability to easily express it as:
+
+```scala
+trait MyReversableInterface[D <: Direction] {
+  val data : DFBits[32] <> D
+  val address : DFBits[32] <> ~D
+}
+```
+
+An implicit conversion can then assure that `~IN` is translated to `OUT` and vice-versa.
+
+Interfaces may possess dozens of ports, thus without prefix types can be quite cumbersome.
 
 ---
 
