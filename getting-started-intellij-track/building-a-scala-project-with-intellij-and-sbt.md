@@ -6,7 +6,7 @@ previous-page: getting-started-intellij-track/getting-started-with-scala-in-inte
 next-page: testing-scala-in-intellij-with-scalatest
 ---
 
-In this tutorial, we'll see how to build a Scala project using [sbt](http://www.scala-sbt.org/0.13/docs/index.html). sbt is a popular tool for compiling, running, and testing Scala projects of any
+In this tutorial, we'll see how to build a Scala project using [sbt](http://www.scala-sbt.org/1.x/docs/index.html). sbt is a popular tool for compiling, running, and testing Scala projects of any
 size. Using a build tool such as sbt (or Maven/Gradle) becomes essential once you create projects with dependencies
 or more than one code file.
  We assume you've completed the

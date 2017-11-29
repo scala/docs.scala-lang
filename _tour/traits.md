@@ -50,8 +50,8 @@ class IntIterator(to: Int) extends Iterator[Int] {
 
 
 val iterator = new IntIterator(10)
-iterator.next()  // prints 0
-iterator.next()  // prints 1
+println(iterator.next())  // prints 0
+println(iterator.next())  // prints 1
 ```
 This `IntIterator` class takes a parameter `to` as an upper bound. It `extends Iterator[Int]` which means that the `next` method must return an Int.
 

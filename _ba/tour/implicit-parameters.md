@@ -11,7 +11,6 @@ num: 26
 next-page: implicit-conversions
 previous-page: self-types
 
-redirect_from: "/tutorials/tour/implicit-parameters.html"
 ---
 
 Metoda s _implicitnim parametrima_ može biti primijenjena na argumente kao i normalna metoda.

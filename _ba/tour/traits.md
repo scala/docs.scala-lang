@@ -12,7 +12,6 @@ next-page: mixin-class-composition
 previous-page: classes
 assumed-knowledge: expressions, classes, generics, objects, companion-objects
 
-redirect_from: "/tutorials/tour/traits.html"
 ---
 
 Trejtovi se koriste za dijeljenje interfejsa i polja među klasama.

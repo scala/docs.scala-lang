@@ -13,7 +13,6 @@ next-page: singleton-objects
 previous-page: case-classes
 prerequisite-knowledge: case-classes, string-interpolation, subtyping
 
-redirect_from: "/tutorials/tour/pattern-matching.html"
 ---
 
 Podudaranje uzoraka je mehanizam za provjeranje da li vrijednost odgovara uzroku. Uspješno podudaranje može također i dekonstruisati vrijednost na njene dijelove. Ono je moćnija verzija `switch` izjave u Javi tako da se može koristiti umjesto serije if/else izjava.

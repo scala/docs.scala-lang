@@ -12,7 +12,6 @@ next-page: classes
 previous-page: basics
 prerequisite-knowledge: classes, basics
 
-redirect_from: "/tutorials/tour/unified-types.html"
 ---
 
 Sve vrijednosti u Scali su objekti, uključujući brojeve i funkcije.

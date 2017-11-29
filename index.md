@@ -64,6 +64,6 @@ sections:
       - title: "SPP"
         description: "The Scala Platform Process. Community-driven library evolution."
         icon: "fa fa-users"
-        link: https://scalacenter.github.io/platform-staging/platform.html
+        link: https://platform.scala-lang.org
 
 ---

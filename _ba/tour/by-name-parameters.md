@@ -11,7 +11,6 @@ num: 31
 next-page: annotations
 previous-page: operators
 
-redirect_from: "/tutorials/tour/by-name-parameters.html"
 ---
 
 _By-name parametri_ (u slobodnom prevodu "po-imenu parametri") se izračunavaju samo kada se koriste. 

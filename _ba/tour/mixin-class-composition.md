@@ -12,7 +12,6 @@ next-page: higher-order-functions
 previous-page: traits
 prerequisite-knowledge: inheritance, traits, abstract-classes, unified-types
 
-redirect_from: "/tutorials/tour/mixin-class-composition.html"
 ---
 
 Mixini su trejtovi koji se koriste za kompoziciju klase.
@@ -82,7 +81,7 @@ Pošto je `RichIterator` trejt, on ne mora implementirati apstraktne članove `A
 
 ```tut
 object StringIteratorTest extends App {
-  class Iter extends StringIterator(args(0)) with RichIterator
+  class Iter extends StringIterator("Scala") with RichIterator
   val iter = new Iter
   iter foreach println
 }

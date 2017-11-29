@@ -11,7 +11,6 @@ num: 34
 previous-page: default-parameter-values
 prerequisite-knowledge: function-syntax
 
-redirect_from: "/tutorials/tour/named-arguments.html"
 ---
 
 Kada se pozivaju metode, možete koristiti imena varijabli eksplicitno pri pozivu:

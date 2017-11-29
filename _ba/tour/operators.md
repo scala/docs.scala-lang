@@ -12,7 +12,6 @@ next-page: by-name-parameters
 previous-page: local-type-inference
 prerequisite-knowledge: case-classes
 
-redirect_from: "/tutorials/tour/operators.html"
 ---
 
 U Scali, operatori su metode. 
