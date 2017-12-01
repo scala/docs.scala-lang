@@ -15,6 +15,7 @@ permalink: /sips/:title.html
 | ------------- | ---------------------------------------- |
 | Oct 25th 2017 | Split prefix types from [SIP33](http://docs.scala-lang.org/sips/priority-based-infix-type-precedence.html), and emphasize motivation |
 | Nov 29th 2017 | Updated SIP according to feedback in the PR, and recent update to SIP23 |
+| Dec 1st 2017  | Added use-case for prefix type `~` |
 
 
 Your feedback is welcome! If you're interested in discussing this proposal, head over to [this](https://contributors.scala-lang.org/t/sip-nn-make-infix-type-alias-precedence-like-expression-operator-precedence/471) Scala Contributors thread and let me know what you think.
@@ -59,6 +60,9 @@ object NonExistingPrefixTypes {
 It is easier to reason about the language when mathematical and logical operations for both terms and types are expressed the same. The proposal is relevant solely for projects which utilize numeric literal type operations (supported by SIP23, which was not yet accepted into Lightbend Scala). However, the SIP's implementation is very small and should have minor effect on compiler performance. 
 
 ### Motivating examples
+
+#### Splice prefix types for meta-programming
+A requirement for `unary_~` is described by Martin Odersky at [this proposal](https://gist.github.com/odersky/f91362f6d9c58cc1db53f3f443311140).
 
 #### Singleton-ops library example
 
