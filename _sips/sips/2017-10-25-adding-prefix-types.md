@@ -15,8 +15,7 @@ permalink: /sips/:title.html
 | ------------- | ---------------------------------------- |
 | Oct 25th 2017 | Split prefix types from [SIP33](http://docs.scala-lang.org/sips/priority-based-infix-type-precedence.html), and emphasize motivation |
 | Nov 29th 2017 | Updated SIP according to feedback in the PR, and recent update to SIP23 |
-| Dec 1st 2017  | Added use-case for prefix type `~` |
-
+| Dec 1st 2017  | Added another use-case for prefix type `~` |
 
 Your feedback is welcome! If you're interested in discussing this proposal, head over to [this](https://contributors.scala-lang.org/t/sip-nn-make-infix-type-alias-precedence-like-expression-operator-precedence/471) Scala Contributors thread and let me know what you think.
 
