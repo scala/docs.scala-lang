@@ -32,7 +32,7 @@ Scaline [case klase](case-classes.html) i njen mehanizam [podudaranja uzoraka](p
 koji se koriste u dosta funkcionalnih programskih jezika.
 [Singlton objekti](singleton-objects.html) omogućuju pogodan način za grupisanje funkcija koje nisu članovi klase.
 
-Nadalje, Scalin mehanizam podudaranja uzoraka (pattern-matching) prirodno podržava [procesiranje XML podataka](xml-processing.html)
+Nadalje, Scalin mehanizam podudaranja uzoraka (pattern-matching) prirodno podržava procesiranje XML podataka
 pomoću [desno-ignorišućih uzoraka sekvenci](regular-expression-patterns.html),
 i generalnim proširivanjem s [ekstraktor objektima](extractor-objects.html).
 U ovom kontekstu, komprehensije sekvenci su korisne za izražavanje upita (query).
