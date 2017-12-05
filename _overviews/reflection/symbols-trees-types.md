@@ -325,7 +325,7 @@ types, nested classes/objects/traits, etc. A `Type`'s _declarations_ are only
 those members that were declared (not inherited) in the class/trait/object
 definition which the given `Type` represents.
 
-To obtain a `Symbol` for some specific member or declaration, one need only to use methods `members` or `declarations` which provide the list of definitions associated with that type. There also exists singular counterparts for each, methods `member` and `declaration` as well. The signatures of all four are shown below:
+To obtain a `Symbol` for some specific member or declaration, one need only to use methods `members` or `decls` which provide the list of definitions associated with that type. There also exists singular counterparts for each, methods `member` and `decl` as well. The signatures of all four are shown below:
 
     /** The member with given name, either directly declared or inherited, an
       * OverloadedSymbol if several exist, NoSymbol if none exist. */
@@ -333,7 +333,7 @@ To obtain a `Symbol` for some specific member or declaration, one need only to u
 
     /** The defined or declared members with name name in this type; an
       * OverloadedSymbol if several exist, NoSymbol if none exist. */
-    def declaration(name: Universe.Name): Universe.Symbol
+    def decl(name: Universe.Name): Universe.Symbol
 
     /** A Scope containing all members of this type
       * (directly declared or inherited). */
@@ -343,7 +343,7 @@ To obtain a `Symbol` for some specific member or declaration, one need only to u
                                       // filter, foreach to query!
 
     /** A Scope containing the members declared directly on this type. */
-    def declarations: Universe.MemberScope // MemberScope is a type of
+    def decls: Universe.MemberScope // MemberScope is a type of
                                            // Traversable, use higher-order
                                            // functions such as map,
                                            // filter, foreach to query!

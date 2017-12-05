@@ -90,7 +90,7 @@ invoker ミラーを作成することができる。
 `MethodMirror` はインスタンス・メソッド (Scala にはインスタンス・メソッドのみがある。オブジェクトのメソッドは `ModuleMirror.instance` から取得されるオブジェクト・インスタンスのインスタンス・メソッドだ。) の呼び出しに使われる。作り方: `val mm = im.reflectMethod(<method symbol>)`。
 具体例:
 
-    scala> val methodX = ru.typeOf[C].declaration(ru.TermName("x")).asMethod
+    scala> val methodX = ru.typeOf[C].decl(ru.TermName("x")).asMethod
     methodX: scala.reflect.runtime.universe.MethodSymbol = method x
 
     scala> val mm = im.reflectMethod(methodX)
@@ -111,7 +111,7 @@ invoker ミラーを作成することができる。
     scala> val im = m.reflect(new C)
     im: scala.reflect.runtime.universe.InstanceMirror = instance mirror for C@5f0c8ac1
 
-    scala> val fieldX = ru.typeOf[C].declaration(ru.TermName("x")).asTerm.accessed.asTerm
+    scala> val fieldX = ru.typeOf[C].decl(ru.TermName("x")).asTerm.accessed.asTerm
     fieldX: scala.reflect.runtime.universe.TermSymbol = value x
 
     scala> val fmX = im.reflectField(fieldX)
@@ -122,7 +122,7 @@ invoker ミラーを作成することができる。
 
     scala> fmX.set(3)
 
-    scala> val fieldY = ru.typeOf[C].declaration(ru.TermName("y")).asTerm.accessed.asTerm
+    scala> val fieldY = ru.typeOf[C].decl(ru.TermName("y")).asTerm.accessed.asTerm
     fieldY: scala.reflect.runtime.universe.TermSymbol = variable y
 
     scala> val fmY = im.reflectField(fieldY)
@@ -151,7 +151,7 @@ invoker ミラーを作成することができる。
     scala> val cm = m.reflectClass(classC)
     cm: scala.reflect.runtime.universe.ClassMirror = class mirror for C (bound to null)
 
-    scala> val ctorC = ru.typeOf[C].declaration(ru.nme.CONSTRUCTOR).asMethod
+    scala> val ctorC = ru.typeOf[C].decl(ru.nme.CONSTRUCTOR).asMethod
     ctorC: scala.reflect.runtime.universe.MethodSymbol = constructor C
 
     scala> val ctorm = cm.reflectConstructor(ctorC)
