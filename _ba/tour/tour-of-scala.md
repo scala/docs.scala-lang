@@ -35,7 +35,7 @@ koji se koriste u dosta funkcionalnih programskih jezika.
 Nadalje, Scalin mehanizam podudaranja uzoraka (pattern-matching) prirodno podržava [procesiranje XML podataka](xml-processing.html) 
 pomoću [desno-ignorišućih uzoraka sekvenci](regular-expression-patterns.html), 
 i generalnim proširivanjem s [ekstraktor objektima](extractor-objects.html).
-U ovom kontekstu, [komprehensije sekvenci](sequence-comprehensions.html) su korisne za izražavanje upita (query).
+U ovom kontekstu, komprehensije sekvenci su korisne za izražavanje upita (query).
 Ove mogućnosti čine Scalu idealnom za razvijanje aplikacija kao što su web servisi.
 
 ## Scala je statički tipizirana (statically typed) ##

@@ -8,7 +8,7 @@ partof: scala-tour
 
 num: 17
 next-page: variances
-previous-page: sequence-comprehensions
+previous-page: extractor-objects
 language: pt-br
 ---
 

@@ -20,7 +20,7 @@ Scala es un lenguaje puramente orientado a objetos en el sentido de que [todo es
 ## Scala es funcional ##
 Scala es también un lenguaje funcional en el sentido que [toda función es un valor](unified_types.html). Scala provee una [sintaxis ligera](anonymous-function-syntax.html) para definir funciones anónimas. Soporta [funciones de primer orden](higher-order-functions.html), permite que las funciones sean [anidadas](nested-functions.html), y soporta [currying](currying.html). Las [clases caso](case-classes.html) de Scala y las construcciones incorporadas al lenguaje para [reconocimiento de patrones](pattern-matching.html) modelan tipos algebráicos usados en muchos lenguajes de programación funcionales.
 
-Además, la noción de reconocimiento de patrones de Scala se puede extender naturalmente al [procesamiento de datos XML](xml-processing.html) con la ayuda de [patrones de expresiones regulares](regular-expression-patterns.html). En este contexto, [seq comprehensions](sequence-comprehensions.html) resultan útiles para formular consultas. Estas características hacen a Scala ideal para desarrollar aplicaciones como Web Services.
+Además, la noción de reconocimiento de patrones de Scala se puede extender naturalmente al [procesamiento de datos XML](xml-processing.html) con la ayuda de [patrones de expresiones regulares](regular-expression-patterns.html). En este contexto, seq comprehensions resultan útiles para formular consultas. Estas características hacen a Scala ideal para desarrollar aplicaciones como Web Services.
 
 ## Scala estáticamente tipado ##
 Scala cuenta con un expresivo sistema de tipado que fuerza estáticamente las abstracciones a ser usadas en una manera coherente y segura. En particular, el sistema de tipado soporta:

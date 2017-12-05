@@ -8,7 +8,7 @@ partof: scala-tour
 
 num: 15
 language: pl
-next-page: sequence-comprehensions
+next-page: generic-classes
 previous-page: regular-expression-patterns
 ---
 

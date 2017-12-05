@@ -7,7 +7,7 @@ discourse: false
 partof: scala-tour
 
 num: 15
-next-page: sequence-comprehensions
+next-page: generic-classes
 previous-page: regular-expression-patterns
 language: pt-br
 ---
