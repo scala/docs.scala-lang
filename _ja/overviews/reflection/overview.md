@@ -118,7 +118,7 @@ Scala コンパイラが持つ型情報を全ては入手できない可能性�
 次に、`reflectClass` メソッドを使って `Person` クラスの `ClassMirror` を取得する。
 `ClassMirror` は `Person` クラスのコンストラクタへのアクセスを提供する。
 
-    scala> val ctor = ru.typeOf[Person].decl(ru.nme.CONSTRUCTOR).asMethod
+    scala> val ctor = ru.typeOf[Person].decl(ru.termNames.CONSTRUCTOR).asMethod
     ctor: scala.reflect.runtime.universe.MethodSymbol = constructor Person
 
 `Person` のコンストラクタのシンボルは実行時ユニバース `ru` を用いて `Person` 型の宣言から照会することによってのみ得られる。

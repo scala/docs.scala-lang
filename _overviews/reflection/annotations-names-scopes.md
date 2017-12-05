@@ -100,7 +100,7 @@ convert between strings and term or type names:
 Certain names, such as "`_root_`", have special meanings in Scala programs. As
 such they are essential for reflectively accessing certain Scala constructs.
 For example, reflectively invoking a constructor requires using the
-*standard name* `universe.nme.CONSTRUCTOR`, the term name `<init>` which represents the
+*standard name* `universe.termNames.CONSTRUCTOR`, the term name `<init>` which represents the
 constructor name on the JVM.
 
 There are both
@@ -109,7 +109,7 @@ There are both
 - *standard type names,* _e.g.,_ "`<error>`", "`_`", and "`_*`".
 
 Some names, such as "package", exist both as a type name and a term name.
-Standard names are made available through the `nme` and `tpnme` members of
+Standard names are made available through the `termNames` and `typeNames` members of
 class `Universe`. For a complete specification of all standard names, see the
 [API documentation](http://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/StandardNames.html).
 
@@ -337,9 +337,9 @@ valid Scala code.
         List(Ident(TypeName("AnyRef"))),
         emptyValDef,
         List(
-          DefDef(Modifiers(), nme.CONSTRUCTOR, List(), List(List()), TypeTree(),
+          DefDef(Modifiers(), termNames.CONSTRUCTOR, List(), List(List()), TypeTree(),
             Block(List(
-              Apply(Select(Super(This(tpnme.EMPTY), tpnme.EMPTY), nme.CONSTRUCTOR), List())),
+              Apply(Select(Super(This(typeNames.EMPTY), typeNames.EMPTY), termNames.CONSTRUCTOR), List())),
               Literal(Constant(())))),
           DefDef(Modifiers(), TermName("x"), List(), List(), TypeTree(),
             Literal(Constant(2))))))),
@@ -359,9 +359,9 @@ The method `showRaw` can also print `scala.reflect.api.Types` next to the artifa
         List(Ident[4](TypeName("AnyRef"))),
         emptyValDef,
         List(
-          DefDef[2](Modifiers(), nme.CONSTRUCTOR, List(), List(List()), TypeTree[3](),
+          DefDef[2](Modifiers(), termNames.CONSTRUCTOR, List(), List(List()), TypeTree[3](),
             Block[1](List(
-              Apply[4](Select[5](Super[6](This[3](TypeName("C")), tpnme.EMPTY), ...))),
+              Apply[4](Select[5](Super[6](This[3](TypeName("C")), typeNames.EMPTY), ...))),
               Literal[1](Constant(())))),
           DefDef[2](Modifiers(), TermName("x"), List(), List(), TypeTree[7](),
             Literal[8](Constant(2))))))),
