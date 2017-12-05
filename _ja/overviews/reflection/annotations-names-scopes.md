@@ -90,7 +90,7 @@ Scala または Java アノテーションに対しては `scalaArgs` は空で
 Scala のプログラムにおいて、「`_root_`」のような特定の名前は特殊な意味を持つ。
 そのため、それらは Scala の構造物をリフレクションを用いてアクセスするのに欠かすことができない。
 例えば、リフレクションを用いてコンストラクタを呼び出すには**標準名** (standard name)
-`universe.nme.CONSTRUCTOR` を用いる。これは、JVM 上でのコンストラクタ名である項名「`<init>`」を指す。
+`universe.termNames.CONSTRUCTOR` を用いる。これは、JVM 上でのコンストラクタ名である項名「`<init>`」を指す。
 
 - 「`<init>`」、「`package`」、「`_root_`」のような**標準項名** (standard term names) と
 - 「`<error>`」、「`_`」、「`_*`」のような**標準型名** (standard type names)
@@ -98,7 +98,7 @@ Scala のプログラムにおいて、「`_root_`」のような特定の名前
 の両方が存在する。
 
 「`package`」のようないくつかの名前は型名と項名の両方が存在する。
-標準名は `Universe` クラスの `nme` と `tpnme` というメンバとして公開されている。
+標準名は `Universe` クラスの `termNames` と `typeNames` というメンバとして公開されている。
 全ての標準名の仕様は [API doc](http://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/StandardNames.html) を参照。
 
 ## スコープ
@@ -307,9 +307,9 @@ Java の列挙要素への参照はシンボル (`scala.reflect.api.Symbols#Symb
         List(Ident(TypeName("AnyRef"))),
         emptyValDef,
         List(
-          DefDef(Modifiers(), nme.CONSTRUCTOR, List(), List(List()), TypeTree(),
+          DefDef(Modifiers(), termNames.CONSTRUCTOR, List(), List(List()), TypeTree(),
             Block(List(
-              Apply(Select(Super(This(tpnme.EMPTY), tpnme.EMPTY), nme.CONSTRUCTOR), List())),
+              Apply(Select(Super(This(typeNames.EMPTY), typeNames.EMPTY), termNames.CONSTRUCTOR), List())),
               Literal(Constant(())))),
           DefDef(Modifiers(), TermName("x"), List(), List(), TypeTree(),
             Literal(Constant(2))))))),
@@ -329,9 +329,9 @@ Java の列挙要素への参照はシンボル (`scala.reflect.api.Symbols#Symb
         List(Ident[4](TypeName("AnyRef"))),
         emptyValDef,
         List(
-          DefDef[2](Modifiers(), nme.CONSTRUCTOR, List(), List(List()), TypeTree[3](),
+          DefDef[2](Modifiers(), termNames.CONSTRUCTOR, List(), List(List()), TypeTree[3](),
             Block[1](List(
-              Apply[4](Select[5](Super[6](This[3](TypeName("C")), tpnme.EMPTY), ...))),
+              Apply[4](Select[5](Super[6](This[3](TypeName("C")), typeNames.EMPTY), ...))),
               Literal[1](Constant(())))),
           DefDef[2](Modifiers(), TermName("x"), List(), List(), TypeTree[7](),
             Literal[8](Constant(2))))))),

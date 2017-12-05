@@ -132,7 +132,7 @@ The second step involves obtaining a `ClassMirror` for class `Person` using
 the `reflectClass` method. The `ClassMirror` provides access to the
 constructor of class `Person`.
 
-    scala> val ctor = ru.typeOf[Person].decl(ru.nme.CONSTRUCTOR).asMethod
+    scala> val ctor = ru.typeOf[Person].decl(ru.termNames.CONSTRUCTOR).asMethod
     ctor: scala.reflect.runtime.universe.MethodSymbol = constructor Person
 
 The symbol for `Person`s constructor can be obtained using only the runtime

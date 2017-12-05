@@ -151,7 +151,7 @@ invoker ミラーを作成することができる。
     scala> val cm = m.reflectClass(classC)
     cm: scala.reflect.runtime.universe.ClassMirror = class mirror for C (bound to null)
 
-    scala> val ctorC = ru.typeOf[C].decl(ru.nme.CONSTRUCTOR).asMethod
+    scala> val ctorC = ru.typeOf[C].decl(ru.termNames.CONSTRUCTOR).asMethod
     ctorC: scala.reflect.runtime.universe.MethodSymbol = constructor C
 
     scala> val ctorm = cm.reflectConstructor(ctorC)
