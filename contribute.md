@@ -37,7 +37,7 @@ This documentation repository is open-source, it lives in [github repository](ht
 
 It's statically generated from [Markdown](http://en.wikipedia.org/wiki/Markdown) source using [Jekyll](https://github.com/mojombo/jekyll), and hosted on [GitHub Pages](http://pages.github.com/). This workflow was chosen so as to make it as easy as possible for core committers and the community alike to produce HTML documentation, and as easy as possible to publish it in a central location.
 
-The markdown syntax being used supports [Maruku](http://maruku.rubyforge.org/maruku.html) extensions, and has automatic syntax highlighting, without the need for any tags.
+The markdown syntax being used supports [Maruku](https://github.com/bhollis/maruku) extensions, and has automatic syntax highlighting, without the need for any tags.
 
 Additionally [tut](https://github.com/tpolecat/tut) is used during pull requests to validate Scala code blocks. To use this feature you must use the backtick notation as documented by tut. Note that only validation is done. The output files from tut are not used in the building of the tutorial. Either use `tut` or `tut:fail` for your code blocks.
 

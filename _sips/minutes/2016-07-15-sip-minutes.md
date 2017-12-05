@@ -24,7 +24,7 @@ Quick iteration through all the SLIPs:
 * [Extensions of Futures and Promises ](https://github.com/scala/slip/issues/7)
 * [Implicit enrichment of Either to support Monadic bias](https://github.com/scala/slip/pull/20)
 * [Adding scala.io.Target](https://github.com/scala/slip/pull/2)
-* [SLIP 27 - Redesigning collection views](https://github.com/scala/slip/blob/master/text/0027-collection-view-redesign.md)
+* SLIP 27 - Redesigning collection views
 
 Jorge Vicente Cantero was the Process Lead and acting secretary of the meeting.
 

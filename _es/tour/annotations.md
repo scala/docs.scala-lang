@@ -36,7 +36,7 @@ El significado de las anotaciones _depende de la implementación_. En la platafo
 
 En el siguiente ejemplo agregamos la anotación `throws` a la definición del método `read` de manera de capturar la excepción lanzada en el programa principal de Java.
 
-> El compilador de Java comprueba que un programa contenga manejadores para [excepciones comprobadas](http://docs.oracle.com/javase/specs/jls/se5.0/html/exceptions.html) al analizar cuales de esas excepciones comprobadas pueden llegar a lanzarse en la ejecución de un método o un constructor. Por cada excepción comprobada que sea un posible resultado, la cláusula **throws** debe para ese método o constructor debe ser mencionada en la clase de esa excepción o una de las superclases.
+> El compilador de Java comprueba que un programa contenga manejadores para excepciones comprobadas al analizar cuales de esas excepciones comprobadas pueden llegar a lanzarse en la ejecución de un método o un constructor. Por cada excepción comprobada que sea un posible resultado, la cláusula **throws** debe para ese método o constructor debe ser mencionada en la clase de esa excepción o una de las superclases.
 > Ya que Scala no tiene excepciones comprobadas, los métodos en Scala deben ser anotados con una o más anotaciones `throws` para que el código Java pueda capturar las excepciones lanzadas por un método de Scala.
 
     package examples

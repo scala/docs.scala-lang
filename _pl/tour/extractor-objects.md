@@ -40,4 +40,4 @@ Typ zwracany przez `unapply` powinien odpowiadać jednemu przypadkowi:
 
 Zdarza się, że chcielibyśmy dopasować określoną liczbę wartości oraz sekwencję. Z tego powodu możesz także zdefiniować wzorce poprzez metodę `unapplySeq`. Ostatnia wartość typu `Tn` powinna być `Seq[S]`. Ten mechanizm pozwala na dopasowanie wzorców takich jak `case List(x1, ..., xn)`.
 
-Ekstraktory sprawiają, że kod jest łatwiejszy do utrzymania. Aby dowiedzieć się więcej, możesz przeczytać publikację ["Matching Objects with Patterns"](http://lamp.epfl.ch/~emir/written/MatchingObjectsWithPatterns-TR.pdf) (zobacz sekcję 4) autorstwa Emir, Odersky i Williams (styczeń 2007).
+Ekstraktory sprawiają, że kod jest łatwiejszy do utrzymania. Aby dowiedzieć się więcej, możesz przeczytać publikację ["Matching Objects with Patterns"](https://infoscience.epfl.ch/record/98468/files/MatchingObjectsWithPatterns-TR.pdf) (zobacz sekcję 4) autorstwa Emir, Odersky i Williams (styczeń 2007).

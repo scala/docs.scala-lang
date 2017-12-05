@@ -26,7 +26,7 @@ def マクロがコンパイラが特定をメソッドの呼び出しを見つ�
     Db.Coffees.update(brazilian.copy(price = 10))
     println(Db.Coffees.all)
 
-`H2Db` マクロの完全なソースコードは [GitHub にて](https://github.com/xeno-by/typemacros-h2db)提供して、本稿では重要な点だけをかいつまんで説明する。まず、マクロは、コンパイル時にデータベースに接続することで静的に型付けされたデータベースのラッパーを生成する。(構文木の生成に関しては[リフレクションの概要](http://docs.scala-lang.org/ja/overviews/reflection/overview.html)にて説明する) 次に、<span class="label success">NEW</span> `c.introduceTopLevel` API ([Scaladoc](https://scala-webapps.epfl.ch/jenkins/view/misc/job/macro-paradise211-nightly-main/ws/dists/latest/doc/scala-devel-docs/api/index.html#scala.reflect.macros.Synthetics)) を用いて生成されたラッパーをコンパイラによって管理されているトップレベル定義のリストに挿入する。最後に、マクロは生成されたクラスのスーパーコンストラクタを呼び出す `Apply` ノードを返す。<span class="tag">注意</span> `c.Expr[T]` に展開される def マクロとちがって型マクロは `c.Tree` に展開されることに注意してほしい。これは、`Expr` が値を表すのに対して、型マクロは型に展開することによる。
+`H2Db` マクロの完全なソースコードは [GitHub にて](https://github.com/xeno-by/typemacros-h2db)提供して、本稿では重要な点だけをかいつまんで説明する。まず、マクロは、コンパイル時にデータベースに接続することで静的に型付けされたデータベースのラッパーを生成する。(構文木の生成に関しては[リフレクションの概要](http://docs.scala-lang.org/ja/overviews/reflection/overview.html)にて説明する) 次に、<span class="label success">NEW</span> `c.introduceTopLevel` API を用いて生成されたラッパーをコンパイラによって管理されているトップレベル定義のリストに挿入する。最後に、マクロは生成されたクラスのスーパーコンストラクタを呼び出す `Apply` ノードを返す。<span class="tag">注意</span> `c.Expr[T]` に展開される def マクロとちがって型マクロは `c.Tree` に展開されることに注意してほしい。これは、`Expr` が値を表すのに対して、型マクロは型に展開することによる。
 
     type H2Db(url: String) = macro impl
 
@@ -76,7 +76,7 @@ def マクロがコンパイラが特定をメソッドの呼び出しを見つ�
 </tbody>
 </table>
 
-Scala のプログラムにおいて型マクロは、type、applied type、parent type、new、そして annotation という 5つ役割 (role) のうちの 1つとして登場する。マクロが使われた役割によって許される展開は異なっている。また、役割は　<span class="label success">NEW</span> `c.macroRole` API ([Scaladoc](https://scala-webapps.epfl.ch/jenkins/view/misc/job/macro-paradise211-nightly-main/ws/dists/latest/doc/scala-devel-docs/api/index.html#scala.reflect.macros.Enclosures)) によって検査することができる。
+Scala のプログラムにおいて型マクロは、type、applied type、parent type、new、そして annotation という 5つ役割 (role) のうちの 1つとして登場する。マクロが使われた役割によって許される展開は異なっている。また、役割は　<span class="label success">NEW</span> `c.macroRole` API  によって検査することができる。
 
 <table>
 <thead>

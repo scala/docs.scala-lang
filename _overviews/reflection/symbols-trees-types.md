@@ -45,8 +45,8 @@ entity, such as a top-level package, then its owner is the special
 `NoSymbol` singleton object. Representing a missing symbol, `NoSymbol` is
 commonly used in the API to denote an empty or default value. Accessing the
 `owner` of `NoSymbol` throws an exception. See the API docs for the general
-interface provided by type
-[`Symbol`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/reflect/api/Symbols$SymbolApi.html)
+interface provided by type `Symbol`
+
 
 ### `TypeSymbol`s
 
@@ -140,7 +140,7 @@ example:
     res0: scala.reflect.runtime.universe.Type = scala.List[Int]
 
 In this example, a
-[`scala.reflect.api.Types$TypeRef`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/reflect/api/Types$TypeRef.html)
+`scala.reflect.api.Types$TypeRef`
 is returned, which corresponds to the type constructor `List`, applied to
 the type argument `Int`.
 

@@ -74,4 +74,4 @@ nothing changes for them (and you won't be able to specify any return type for a
 
 Finally the untyped macros patch enables using `c.Tree` instead of `c.Expr[T]` everywhere in signatures of macro implementations.
 Both for parameters and return types, all four combinations of untyped/typed in macro def and tree/expr in macro impl are supported.
-Check our unit tests for more information: [test/files/run/macro-untyped-conformance](https://github.com/scalamacros/kepler/blob/b55bda4860a205c88e9ae27015cf2d6563cc241d/test/files/run/macro-untyped-conformance/Impls_Macros_1.scala).
+Check our unit tests for more information: test/files/run/macro-untyped-conformance.

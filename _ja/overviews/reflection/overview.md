@@ -282,7 +282,7 @@ API に基づいていることだ。これにより、マクロと実行時リ�
 ユニバースは、型 (`Type`)、構文木 (`Tree`)、アノテーション (`Annotation`)
 といったリフレクションで使われる主要な概念に対するインターフェイスを提供する。
 詳細はこのガイドの[ユニバース]({{ site.baseurl}}/ja/overviews/reflection/environment-universes-mirrors.html)の節か、
-`scala.reflect.api` パッケージの[ユニバースの API doc](http://www.scala-lang.org/api/{{ site.scala-version}}/scala/reflect/api/Universe.html)
+`scala.reflect.api` パッケージのユニバースの API doc
 を参考にしてほしい。
 
 このガイドにおける多くの例を含め、Scala リフレクションを利用するには何らかの
@@ -299,5 +299,5 @@ API に基づいていることだ。これにより、マクロと実行時リ�
 型情報の種類やリフレクションを用いたタスクの種類によって異なるミラーを使う必要がある。
 
 詳細はこのガイドの[ミラー]({{ site.baseurl}}/ja/overviews/reflection/environment-universes-mirrors.html)の節か、
-`scala.reflect.api` パッケージの[ミラーの API doc](http://www.scala-lang.org/api/{{ site.scala-version}}/scala/reflect/api/Mirrors.html)
+`scala.reflect.api` パッケージのミラーの API doc
 を参考にしてほしい。

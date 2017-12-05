@@ -723,8 +723,8 @@ Examples:
 
   [1]: http://www.microsoft.com/download/en/details.aspx?id=19957 "NETAsync"
   [2]: http://twitter.github.com/scala_school/finagle.html "Finagle"
-  [3]: http://akka.io/docs/akka/2.0-M2/scala/futures.html "AkkaFutures"
-  [4]: http://www.scala-lang.org/api/current/scala/actors/Futures$.html "SActorsFutures"
+  [3]: https://doc.akka.io/docs/akka/current/futures.html "AkkaFutures"
+  [4]: http://www.scala-lang.org/api/2.9.3/scala/actors/Future.html "SActorsFutures"
   [5]: http://code.google.com/p/scalaz/ "Scalaz"
 
 

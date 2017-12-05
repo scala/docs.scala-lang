@@ -39,7 +39,7 @@ title: シンボル、構文木、型
 `NoSymbol` という特殊なシングルトン・オブジェクトのオーナーが用いられる。
 シンボルが無いことを表す `NoSymbol` は空を表わしたり、デフォルトの値として API の中で多用されている。
 `NoSymbol` の `owner` にアクセスすると例外が発生する。
-[`Symbol`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/reflect/api/Symbols$SymbolApi.html)
+`Symbol`
 型によって提供される一般インターフェイスに関しては API doc を参照してほしい。
 
 ### 型シンボル (`TypeSymbol`)
@@ -123,7 +123,7 @@ title: シンボル、構文木、型
     res0: scala.reflect.runtime.universe.Type = scala.List[Int]
 
 この例では、型コンストラクタ `List` に型引数 `Int` が適用された
-[`scala.reflect.api.Types$TypeRef`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/reflect/api/Types$TypeRef.html)
+`scala.reflect.api.Types$TypeRef`
 が返っている。
 
 しかし、この方法はインスタンス化しようとしている型を手動で指定する必要があることに注意してほしい。

@@ -61,7 +61,7 @@ language: ja
 |  **比較演算:**        　　  |                                               |
 |  `xs sameElements ys`     |`xs` と `ys` が同じ要素を同じ順序で格納しているかを調べる。|
 
-継承階層では `Iterable` 直下に [`Seq`](https://www.scala-lang.org/api/current/scala/collection/Seq.html)、[`Set`](https://www.scala-lang.org/api/current/scala/collection/Set.html)、[`Map`](https://www.scala-lang.org/api/current/scala/collection/Map.html``) という三つのトレイトがある。
+継承階層では `Iterable` 直下に [`Seq`](https://www.scala-lang.org/api/current/scala/collection/Seq.html)、[`Set`](https://www.scala-lang.org/api/current/scala/collection/Set.html)、[`Map`](https://www.scala-lang.org/api/current/scala/collection/Map.html) という三つのトレイトがある。
 この三つのトレイトに共通することは `apply` メソッドと `isDefinedAt` メソッドを持ったトレイト [`
 PartialFunction`](https://www.scala-lang.org/api/current/scala/PartialFunction.html) を実装しているということだ。
 しかし、`PartialFunction` の実装方法は三者三様である。

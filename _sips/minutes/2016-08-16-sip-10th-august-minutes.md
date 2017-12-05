@@ -12,7 +12,7 @@ The following agenda was distributed to attendees:
 | Topic | Reviewer |
 | --- | --- |
 | [SIP-12: Uncluttering Scala's syntax for control structures](http://docs.scala-lang.org/sips/pending/uncluttering-control.html) | Seth Tisue |
-| [SIP-16: Self-cleaning macros](http://docs.scala-lang.org/sips/pending/self-cleaning-macros.html) | Eugene Burmako |
+| [SIP-16: Self-cleaning macros](http://docs.scala-lang.org/sips/self-cleaning-macros.html) | Eugene Burmako |
 | [SIP-21: Spores](http://docs.scala-lang.org/sips/pending/spores.html) | Martin Odersky |
 | [SIP-23: Literal-based singleton types](http://docs.scala-lang.org/sips/pending/42.type.html) | Adriaan Moors |
 | [SIP-24: Repeated by-name parameters](http://docs.scala-lang.org/sips/pending/repeated-byname.html) | Andrew Marki |

@@ -298,6 +298,6 @@ I'm not going to explain all of Maven in this tutorial (though I hope to add mor
 [31]: http://mvnrepository.com
 [32]: http://docs.scala-lang.org/contribute.html
 [33]: http://maven.apache.org/plugins/maven-eclipse-plugin/
-[34]: http://mojo.codehaus.org/build-helper-maven-plugin/
+[34]: http://www.mojohaus.org/build-helper-maven-plugin/
 [35]: https://github.com/sonatype/m2eclipse-scala
 [36]: https://github.com/scala/scala-module-dependency-sample

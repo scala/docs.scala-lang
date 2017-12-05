@@ -35,7 +35,7 @@ Scala 2.11.x および Scala 2.12.x 系列では、マクロ機能が blackbox �
 
 しかし、ときとして def マクロは「ただのメソッド呼び出し」という概念を超越することがある。例えば、展開されたマクロは、元のマクロの戻り値の型よりも特化された型を持つ式を返すことが可能だ。Scala 2.10 では、StackOverflow の [Static return type of Scala macros](http://stackoverflow.com/questions/13669974/static-return-type-of-scala-macros) で解説したように、そのような展開は特化された型を保持し続けることができる。
 
-この興味深い機能がもたらす柔軟性によって、[偽装型プロバイダ](http://meta.plasm.us/posts/2013/07/11/fake-type-providers-part-2/)、[具現化の拡張](/sips/source-locations.html)、[関数従属性の具現化](/ja/overviews/macros/implicits.html#fundep_materialization)、[抽出子マクロ](https://github.com/paulp/scala/commit/84a335916556cb0fe939d1c51f27d80d9cf980dc)などを可能とするけども、書かれたコードの明確さ (人にとってもマシンにとっても) が犠牲になるという側面がある。
+この興味深い機能がもたらす柔軟性によって、[偽装型プロバイダ](http://meta.plasm.us/posts/2013/07/11/fake-type-providers-part-2/)、[具現化の拡張](/sips/source-locations.html)、[関数従属性の具現化](/ja/overviews/macros/implicits.html#fundep_materialization)、抽出子マクロなどを可能とするけども、書かれたコードの明確さ (人にとってもマシンにとっても) が犠牲になるという側面がある。
 
 普通のメソッド同様に振る舞うマクロと戻り値の型を細別化 (refine) するマクロという決定的な区別を明確にするために、blackbox マクロと whitebox マクロという概念を導入することにした。型シグネチャに忠実に従うマクロは、振る舞いを理解するのに実装を知る必要が無い (ブラックボックスとして扱うことができる) ため、**blackbox マクロ** (blackbox macro) と呼ぶ。
 Scala の型システムを使ってシグネチャを持つことができないマクロは **whitebox マクロ** (whitebox macro) と呼ぶ。(whitebox def マクロもシグネチャは持つが、これらのシグネチャは近似値でしかない)
@@ -53,6 +53,6 @@ blackbox def マクロは Scala 2.10 の def マクロと異なる扱いとな�
 1. blackbox マクロが構文木 `x` に展開するとき、展開される式は型注釈 `(x: T)` でラップされる。この `T` は blackbox マクロの宣言された戻り値の型に、マクロ適用時に一貫性を持つように型引数やパス依存性を適用したものとなる。これによって、blackbox マクロを[型プロバイダ](http://meta.plasm.us/posts/2013/07/11/fake-type-providers-part-2/)のための手段としての利用は無効となる。
 1. Scala の型推論アルゴリズムが終わった後でも blackbox マクロの適用に未決定の型パラメータが残る場合、これらの型パラメータは普通のメソッドと同様に強制的に型推論が実行される。これによって blackbox マクロから型推論に影響を与えることが不可能となり、[関数従属性の具現化](/ja/overviews/macros/implicits.html#fundep_materialization)に使うことが無効となる。
 1. blackbox マクロの適用が implicit の候補として使われる場合、implicit 検索がそのマクロを選択するまでは展開は実行されない。これによって [implicit マクロの入手可能性を動的に計算する](/sips/source-locations.html)ことが無効となる。
-1. blackbox マクロの適用がパターンマッチの抽出子として使われる場合、無条件でコンパイラエラーを発生するようにして、マクロで実装された[パターンマッチングのカスタマイズ](https://github.com/paulp/scala/commit/84a335916556cb0fe939d1c51f27d80d9cf980dc)を無効となる。
+1. blackbox マクロの適用がパターンマッチの抽出子として使われる場合、無条件でコンパイラエラーを発生するようにして、マクロで実装されたパターンマッチングのカスタマイズを無効となる。
 
 whitebox def マクロは Scala 2.10 での def マクロ同様に動作する。一切の制限が無いため、2.10 のマクロで出来ていたことの全てが 2.11 と 2.12 でも行えるはずだ。
