@@ -8,7 +8,7 @@ partof: scala-tour
 
 num: 25
 next-page: implicit-conversions
-previous-page: explicitly-typed-self-references
+previous-page: self-types
 language: pt-br
 ---
 

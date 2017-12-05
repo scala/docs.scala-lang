@@ -9,7 +9,7 @@ partof: scala-tour
 num: 25
 language: pl
 next-page: implicit-conversions
-previous-page: explicitly-typed-self-references
+previous-page: self-types
 ---
 
 Metodę z _parametrami domniemanymi_ można stosować tak samo jak każdą zwyczajną metodę. W takim przypadku etykieta `implicit` nie ma żadnego znaczenia. Jednak jeżeli odpowiednie argumenty dla parametrów domniemanych nie zostaną jawnie określone, to kompilator dostarczy je automatycznie.

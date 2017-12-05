@@ -47,7 +47,7 @@ Konkretno, sistem tipova podržava sljedeće:
 * [gornje](upper-type-bounds.html) i [donje](lower-type-bounds.html) granice tipa,
 * [unutarnje klase](inner-classes.html) i [apstraktne tipove](abstract-types.html) kao članove objekta
 * [složene tipove](compound-types.html)
-* [eksplicitno tipizirane samo-reference](explicitly-typed-self-references.html)
+* [eksplicitno tipizirane samo-reference](self-types.html)
 * implicitne [parametre](implicit-parameters.html) i [konverzije](implicit-conversions.html)
 * [polimorfne metode](polymorphic-methods.html)
 

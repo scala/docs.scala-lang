@@ -9,7 +9,7 @@ partof: scala-tour
 num: 23
 language: ko
 
-next-page: explicitly-typed-self-references
+next-page: self-types
 previous-page: abstract-types
 ---
 

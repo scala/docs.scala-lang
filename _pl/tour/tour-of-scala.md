@@ -30,7 +30,7 @@ Scala posiada ekspresywny system typów zapewniający, że abstrakcje są używa
 * [górne](upper-type-bounds.html) oraz [dolne](lower-type-bounds.html) ograniczenia typów
 * [klasy zagnieżdżone](inner-classes.html) i [typy abstrakcyjne](abstract-types.html) jako elementy obiektów
 * [typy złożone](compound-types.html)
-* [jawnie typowane samoreferencje](explicitly-typed-self-references.html)
+* [jawnie typowane samoreferencje](self-types.html)
 * [parametry domniemane](implicit-parameters.html) i [konwersje niejawne](implicit-conversions.html)
 * [metody polimorficzne](polymorphic-methods.html)
 

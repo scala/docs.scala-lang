@@ -29,7 +29,7 @@ Scala cuenta con un expresivo sistema de tipado que fuerza estáticamente las ab
 * límites de tipado [superiores](upper-type-bounds.html) e [inferiores](lower-type-bounds.html),
 * [clases internas](inner-classes.html) y [tipos abstractos](abstract-types.html) como miembros de objetos,
 * [tipos compuestos](compound-types.html)
-* [auto-referencias explicitamente tipadas](explicitly-typed-self-references.html)
+* [auto-referencias explicitamente tipadas](self-types.html)
 * [implicit conversions](implicit-conversions.html)
 * [métodos polimórficos](polymorphic-methods.html)
 

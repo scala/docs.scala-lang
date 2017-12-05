@@ -30,7 +30,7 @@ next-page: unified-types
 * [상위 타입 경계](upper-type-bounds.html)와 [하위 타입 경계](lower-type-bounds.html)
 * 객체 멤버로써의 [내부 클래스](inner-classes.html)와 [추상 타입](abstract-types.html)
 * [합성 타입](compound-types.html)
-* [명시적으로 타입이 지정된 자기 참조](explicitly-typed-self-references.html)
+* [명시적으로 타입이 지정된 자기 참조](self-types.html)
 * [뷰](views.html)
 * [다형 메소드](polymorphic-methods.html)
 
