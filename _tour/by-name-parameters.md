@@ -17,7 +17,7 @@ _By-name parameters_ are only evaluated when used. They are in contrast to _by-v
 ```tut
 def calculate(input: => Int) = input * 37
 ```
-By-name parameters have the the advantage that they are not evaluated if they aren't used in the function body. On the other hand, by-value parameters have the advantage that they are evaluated only once.
+By-name parameters have the advantage that they are not evaluated if they aren't used in the function body. On the other hand, by-value parameters have the advantage that they are evaluated only once.
 
 Here's an example of how we could implement a while loop:
 
