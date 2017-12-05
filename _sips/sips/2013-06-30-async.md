@@ -4,7 +4,7 @@ discourse: true
 title: SIP-22 - Async
 
 vote-status: dormant
-vote-text: Authors have marked this proposal as dormant. Details in the implementation need to be figured out. Check <a href="/sips/minutes/sip-minutes.html">July 2016's minutes</a>.
+vote-text: Authors have marked this proposal as dormant. Details in the implementation need to be figured out. Check <a href="/sips/minutes-list.html">July 2016's minutes</a>.
 permalink: /sips/:title.html
 ---
 
@@ -121,12 +121,12 @@ the state machine. The class contains:
 
 ### Example
 
-    val future = async {                                     
-      val f1 = async { true }                                 
-      val x = 1                                               
-      def inc(t: Int) = t + x                                 
-      val t = 0                                               
-      val f2 = async { 42 }                                   
+    val future = async {
+      val f1 = async { true }
+      val x = 1
+      def inc(t: Int) = t + x
+      val t = 0
+      val f2 = async { 42 }
       if (await(f1)) await(f2) else { val z = 1; inc(t + z) }
     }
 

@@ -4,7 +4,7 @@ title: SIP-12 - Uncluttering Scala’s syntax for control structures.
 redirect_from: "/sips/pending/uncluttering-control.html"
 
 vote-status: rejected
-vote-text: The committee votes unanimously to reject the change. The conclusion is that there is not a clear benefit for it and the required invested time and efforts would be too high. For more explanation, read the <a href=../minutes/sip-10th-august-minutes.html>minutes</a>.
+vote-text: The committee votes unanimously to reject the change. The conclusion is that there is not a clear benefit for it and the required invested time and efforts would be too high. For more explanation, read the <a href=minutes/2016-08-16-sip-10th-august-minutes.html>minutes</a>.
 permalink: /sips/:title.html
 ---
 
@@ -26,11 +26,11 @@ So, here is the proposal (for Scala 2.10):
 
         if expression then expression [else expression]
 
-3.  At some point in the future (there’s no rush) we could deprecate the form   
+3.  At some point in the future (there’s no rush) we could deprecate the form
 
         if (expression) expression else expression
 
-    and then remove it.  
+    and then remove it.
 
 
 Once we have dealt with if, we should do the same thing with while, do-while and for.
@@ -61,9 +61,9 @@ For while loops:
 
     ? I.e. a `do-while` loop inside an old-style `while` loop? Here’s a possible migration strategy.
 
-2.  In Scala 2.10:  Introduce     
+2.  In Scala 2.10:  Introduce
 
-        while expression1 do expression2    
+        while expression1 do expression2
 
     where `expression1` is not allowed to have parentheses at the outermost level (there’s no need to have them anyway). Also, emit a deprecation warning if the compiler comes across a do-while nested directly in an old-style while:
 
@@ -83,7 +83,7 @@ For while loops:
 
 For-loops and for expressions can be handled similarly:
 
-1.  Allow  
+1.  Allow
 
         for enumerators yield expression
 

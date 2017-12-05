@@ -9,7 +9,6 @@ overview-name: Macros
 
 num: 13
 
-languages: [ja]
 permalink: /overviews/macros/:title.html
 ---
 

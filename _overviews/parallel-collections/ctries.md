@@ -9,7 +9,7 @@ overview-name: Parallel Collections
 
 num: 4
 
-languages: [ja, zh-cn, es, ru]
+languages: [ja, zh-cn, ru]
 permalink: /overviews/parallel-collections/:title.html
 ---
 

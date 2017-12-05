@@ -195,5 +195,4 @@ _Nota:_ Generalmente se piensa que, al igual que las operaciones no asociativas,
 
 Lo que implica el "fuera de orden" en las colecciones paralelizadas es solamente que la operación será ejecutada fuera de orden (en un sentido _temporal_, es decir no secuencial, no significa que el resultado va a ser re-"*combinado*" fuera de orden (en un sentido de _espacio_). Al contrario, en general los resultados siempre serán reensamblados en roden, es decir una colección paralelizada que se divide en las siguientes particiones A, B, C, en ese orden, será reensamblada nuevamente en el orden A, B, C. No en otro orden arbitrario como B, C, A.
 
-Para más información de cómo se dividen y se combinan los diferentes tipos de colecciones paralelizadas véase el artículo sobre [Arquitectura]({{ site.baseurl }}/es/overviews
-/parallel-collections/architecture.html) de esta misma serie.
+Para más información de cómo se dividen y se combinan los diferentes tipos de colecciones paralelizadas véase el artículo sobre [Arquitectura]({{ site.baseurl }}/es/overviews/parallel-collections/architecture.html) de esta misma serie.

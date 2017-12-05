@@ -99,4 +99,4 @@ Scala のプログラムにおいて型マクロは、type、applied type、pare
 
 ### クラスやオブジェクトの生成
 
-[StackOverflow](http://stackoverflow.com/questions/13795490/how-to-use-type-calculated-in-scala-macro-in-a-reify-clause) でも説明したが、型マクロを作っていると `reify` がどんどん役に立たなくなっていくことに気付くだろう。その場合は、手で構文木を構築するだけではなく、マクロパラダイスにあるもう1つの実験的機能である[準クォート](/ja/overviews/quasiquotes/intro.html)を使うことも検討してみてほしい。
+[StackOverflow](http://stackoverflow.com/questions/13795490/how-to-use-type-calculated-in-scala-macro-in-a-reify-clause) でも説明したが、型マクロを作っていると `reify` がどんどん役に立たなくなっていくことに気付くだろう。その場合は、手で構文木を構築するだけではなく、マクロパラダイスにあるもう1つの実験的機能である準クォートを使うことも検討してみてほしい。

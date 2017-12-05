@@ -31,7 +31,7 @@ next-page: unified-types
 * 객체 멤버로써의 [내부 클래스](inner-classes.html)와 [추상 타입](abstract-types.html)
 * [합성 타입](compound-types.html)
 * [명시적으로 타입이 지정된 자기 참조](self-types.html)
-* [뷰](views.html)
+* 뷰
 * [다형 메소드](polymorphic-methods.html)
 
 [로컬 타입 추론 방식](local-type-inference.html)은 사용자가 불필요한 타입 정보를 어노테이션해야 하는 불편함을 줄여준다. 이와 함께, 이런 기능은 프로그래밍 추상화를 안전하게 재사용하고 소프트웨어를 타입 세이프하게 확장하는 강력한 기반이 된다.

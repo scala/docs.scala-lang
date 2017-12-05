@@ -99,7 +99,7 @@ Using a parallel `map` to transform a collection of `String` to all-uppercase:
 
 Summing via `fold` on a `ParArray`:
 
-    scala> val parArray = (1 to 10000).toArray.par    
+    scala> val parArray = (1 to 10000).toArray.par
     parArray: scala.collection.parallel.mutable.ParArray[Int] = ParArray(1, 2, 3, ...
 
     scala> parArray.fold(0)(_ + _)
@@ -192,13 +192,13 @@ declared outside of the closure which is passed to `foreach`.
     sum: Int = 0
 
     scala> list.foreach(sum += _); sum
-    res02: Int = 457073    
+    res02: Int = 457073
 
     scala> var sum = 0
     sum: Int = 0
 
     scala> list.foreach(sum += _); sum
-    res03: Int = 468520    
+    res03: Int = 468520
 
 Here, we can see that each time `sum` is reinitialized to 0, and `foreach` is
 called again on `list`, `sum` holds a different value. The source of this
@@ -273,5 +273,4 @@ broken into partitions A, B, C, in that order, will be reassembled once again
 in the order A, B, C. Not some other arbitrary order like B, C, A.
 
 For more on how parallel collections split and combine operations on different
-parallel collection types, see the [Architecture]({{ site.baseurl }}/overviews
-/parallel-collections/architecture.html) section of this guide.
+parallel collection types, see the [Architecture]({{ site.baseurl }}/overviews/parallel-collections/architecture.html) section of this guide.
