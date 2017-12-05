@@ -24,7 +24,7 @@ language: zh-cn
     scala> pa map (x => (x - 1) / 2)
     res1: scala.collection.parallel.mutable.ParArray[Int] = ParArray(0, 1, 2, 3, 4, 5, 6, 7,...
 
-在内部，分离一个并行数组[分离器](http://docs.scala-lang.org/overviews/parallel-collections/architecture.html#core_abstractions)相当于使用它们的下标迭代器更新来创建两个分离器。[组合](http://docs.scala-lang.org/overviews/parallel-collections/architecture.html#core_abstractions)稍微负责一点。因为大多数的分离方法(如：flatmap, filter, takeWhile等)我们不能预先知道元素的个数（或者数组的大小），每一次组合本质上来说是一个数组缓冲区的一种变量根据分摊时间来进行加减的操作。不同的处理器进行元素相加操作，对每个独立并列数组进行组合，然后根据其内部连结在再进行组合。在并行数组中的基础数组只有在知道元素的总数之后才能被分配和填充。基于此，变换方法比存取方法要稍微复杂一些。另外，请注意，最终数组分配在JVM上的顺序进行，如果映射操作本身是很便宜，这可以被证明是一个序列瓶颈。
+在内部，分离一个并行数组[分离器](http://docs.scala-lang.org/overviews/parallel-collections/architecture.html)相当于使用它们的下标迭代器更新来创建两个分离器。[组合](http://docs.scala-lang.org/overviews/parallel-collections/architecture.html)稍微负责一点。因为大多数的分离方法(如：flatmap, filter, takeWhile等)我们不能预先知道元素的个数（或者数组的大小），每一次组合本质上来说是一个数组缓冲区的一种变量根据分摊时间来进行加减的操作。不同的处理器进行元素相加操作，对每个独立并列数组进行组合，然后根据其内部连结在再进行组合。在并行数组中的基础数组只有在知道元素的总数之后才能被分配和填充。基于此，变换方法比存取方法要稍微复杂一些。另外，请注意，最终数组分配在JVM上的顺序进行，如果映射操作本身是很便宜，这可以被证明是一个序列瓶颈。
 
 通过调用seq方法，并行数组(parallel arrays)被转换为对应的顺序容器(sequential collections) ArraySeq。这种转换是非常高效的，因为新创建的ArraySeq 底层是通过并行数组(parallel arrays)获得的。
 

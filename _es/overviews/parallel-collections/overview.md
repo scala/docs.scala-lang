@@ -53,7 +53,7 @@ executed in parallel.
 
 De forma de ilustrar la generalidad y utilidad de las colecciones paralelizadas, proveemos un conjunto de ejemplos de uso útiles, todos ellos siendo ejecutados en paralelo de forma totalmente transparente al usuario.
 
-_Nota:_ Algunos de los siguientes ejemplos operan en colecciones pequeñas, lo cual no es recomendado. Son provistos como ejemplo para ilustrar solamente el propósito. Como una regla heurística general, los incrementos en velocidad de ejecución comienzan a ser notados cuando el tamaño de la colección es lo suficientemente grande, tipicamente algunos cuantos miles de elementos. (Para más información en la relación entre tamaño de una coleccion paralelizada y su performance, por favor véase [appropriate subsection]({{ site.baseurl}}/es/overviews/parallel-collections/performance.html#how_big_should_a_collection_be_to_go_parallel) en la sección [performance]({{ site.baseurl }}/es/overviews/parallel-collections/performance.html) (en inglés).
+_Nota:_ Algunos de los siguientes ejemplos operan en colecciones pequeñas, lo cual no es recomendado. Son provistos como ejemplo para ilustrar solamente el propósito. Como una regla heurística general, los incrementos en velocidad de ejecución comienzan a ser notados cuando el tamaño de la colección es lo suficientemente grande, tipicamente algunos cuantos miles de elementos. (Para más información en la relación entre tamaño de una coleccion paralelizada y su performance, por favor véase [appropriate subsection]({{ site.baseurl}}/es/overviews/parallel-collections/performance.html) en la sección [performance]({{ site.baseurl }}/es/overviews/parallel-collections/performance.html) (en inglés).
 
 #### map
 

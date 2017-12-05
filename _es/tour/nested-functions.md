@@ -9,7 +9,7 @@ partof: scala-tour
 num: 13
 language: es
 
-next-page: anonymous-function-syntax
+next-page: currying
 previous-page: singleton-objects
 ---
 

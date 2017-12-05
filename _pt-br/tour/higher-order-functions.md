@@ -8,7 +8,7 @@ partof: scala-tour
 
 num: 7
 next-page: nested-functions
-previous-page: anonymous-function-syntax
+previous-page: mixin-class-composition
 language: pt-br
 ---
 
@@ -21,7 +21,7 @@ def apply(f: Int => String, v: Int) = f(v)
 _Nota: métodos são automaticamente convertidos em funções se o contexto demandar.**_
 
 Outro exemplo:
- 
+
 ```tut
 class Decorator(left: String, right: String) {
   def layout[A](x: A) = left + x.toString() + right
@@ -33,7 +33,7 @@ object FunTest extends App {
   println(apply(decorator.layout, 7))
 }
 ```
- 
+
 A execução produz a saída:
 
 ```
