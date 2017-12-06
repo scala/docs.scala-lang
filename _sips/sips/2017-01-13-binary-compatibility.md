@@ -161,7 +161,7 @@ class FeaturesInBodies {
 
 ## Features that will fail compilation with `@stableABI`
 The features listed below have complex encodings that may change in future versions. We prefer not to compromise on them.
-Most of those features can be simulated in a binary compatible way by writing a verbose re-implemtation
+Most of those features can be simulated in a binary compatible way by writing a verbose re-implementation
 which won't rely on desugaring performed inside compiler.
 Note that while those features are prohibited in the public API, they can be safely used inside bodies of the methods.
 
@@ -237,7 +237,7 @@ across major versions, while MiMa checks that previously published artifacts ind
 so introduction of new members won't be prohibited. This is a use-case for MiMa.
 
 MiMa does not indicate how hard, if possible, would it be to maintain compatibility of a class across future versions of Scala.
-Multiple features of Scala, most notably lazy vals and traits, have been compiled diffently by different Scala versions
+Multiple features of Scala, most notably lazy vals and traits, have been compiled differently by different Scala versions
 making porting existing compiled bytecode across versions very hard.
 MiMa will complain retroactively that the new version is incompatible with the old one.
 `@stableABI` will instead indicate at compile time that the old version used features whose encoding is prone to change.

@@ -679,7 +679,7 @@ For those wishing to reproduce the results, the benchmarking suite takes 90 minu
 The final result of those benchmarks is that amount proposed versions, the two that worth considering are (V4-general) and (V6).
 They both perform better than the current implementation in all the contended case.
 Specifically, in the contended case, V6 is 2 times fater than V1, while V4-general is 4 times faster.
-Unfortunately V4-general is 30% slower in the uncontended case than current implemetation(V1), while V6 is in the same ballpark, being up to 5% slower or faster depending on the setup of the benchmark.
+Unfortunately V4-general is 30% slower in the uncontended case than current implementation(V1), while V6 is in the same ballpark, being up to 5% slower or faster depending on the setup of the benchmark.
 
 Based on this, we propose V6 to be used as default in future versions of Scala.
 

@@ -408,7 +408,7 @@ do these desugarings, and scala.meta shields us from this fact.
 We can use the WYSIWYG pattern `q"$_($prefix)"` in order to unwrap the original prefix of the call.
 
 Moreover, we don't have to worry about the compiler internally mangling non-alphanumeric names.
-Again, even if the underying macro engine internally does name mangling, scala.meta abstracts away such implementation details.
+Again, even if the underlying macro engine internally does name mangling, scala.meta abstracts away such implementation details.
 
 Finally, we are able to improve on scala.reflect thanks to more precise quasiquotes.
 If in the current macro system, we used `q"($name: $_) => ..."` to match the `fn` argument,
