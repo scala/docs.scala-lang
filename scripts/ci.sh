@@ -1,8 +1,9 @@
 #!/bin/bash
 
+. /usr/local/rvm/scripts/rvm
+
 set -eux
 
-. /usr/local/rvm/scripts/rvm
 bundle install
 ./scripts/run-tut.sh
 rm -r tut-tmp
