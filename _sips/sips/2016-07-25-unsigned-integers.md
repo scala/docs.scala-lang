@@ -468,7 +468,7 @@ arithmetic expressions for all number types (both primitive signed ones and
 user-defined unsigned ones.)
 
 For each type we've generated 4 benchmarks that use `+, -, *` ops (fastops)
-and 4 benchmarks that use `+, -, *, /, %` (allops). Each of the 4 benchmarks uses exatly
+and 4 benchmarks that use `+, -, *, /, %` (allops). Each of the 4 benchmarks uses exactly
 the same arithmetic expressions for all types. Benchmarks on bytes and shorts wrap back
 to corresponding type after each operation.
 

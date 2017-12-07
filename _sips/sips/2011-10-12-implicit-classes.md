@@ -30,7 +30,7 @@ argument in its first parameter list. It may also include an
 additional implicit parameter list. An implicit class must be defined
 in a scope where method definitions are allowed (not at the top
 level).  An implicit class is desugared into a class and implicit
-method pairing, where the implciit method mimics the constructor of
+method pairing, where the implicit method mimics the constructor of
 the class.
 
 The generated implicit method will have the same name as the implicit

@@ -498,7 +498,7 @@ package object fixed {
 
 This is an interesting example which is intended to show that opaque
 types (unlike type aliases) have an independent existence, even within
-the companion. This means that unlike type alises, `Fix[F]` should not
+the companion. This means that unlike type aliases, `Fix[F]` should not
 result in an infinite expansion in the above code.
 
 The `Fix` type is useful to implementing recursion schemes, or just
@@ -663,7 +663,7 @@ package object groups {
 The example demonstrates using an abstract class (`Wrapper`) to share
 code between opaque type companion objects. Like the tagging example,
 we can use two methods (`wraps` and `unwraps`) to wrap and unwrap `A`
-types, even if neseted in an arbitrary context (`G[_]`). These methods
+types, even if nested in an arbitrary context (`G[_]`). These methods
 cannot be implemented in `Wrapper` because each opaque type companion
 contains the only scope where its particular methods can be
 implemented.
@@ -747,7 +747,7 @@ There are several key ideas in the current, work-in-progress implementation:
  * To meet the type equivalence relationship for opaque types, we synthesize two implicit conversions
    inside the opaque type companion, if they do not already exist. If `opaque type t = T`, then
    two implicit conversions are synthesized, one from `t` to `T` is synthesized and another for the
-   other way around. The body of these methods will use `t.asInstanceOf[T]` and viceversa **.
+   other way around. The body of these methods will use `t.asInstanceOf[T]` and vice versa **.
 
  * Phases after typer always dealias opaque types. This way, erasure and codegen can unwrap opaque
    types out of the box and, at the bytecode level, their underlying representation is used instead.

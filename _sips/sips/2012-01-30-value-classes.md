@@ -136,7 +136,7 @@ is expanded to the following method in the companion object of class `C`:
 
     def extension$m($this: C, params): R = body2
 
-Here `body2` is the same as `body` with each occurence of `this` or `C.this`
+Here `body2` is the same as `body` with each occurrence of `this` or `C.this`
 replaced by `$this`. The original method `m` in `C` will be changed to
 
     def m(params): R = C.extension$m(this, params)
@@ -214,7 +214,7 @@ will be eliminated again in step 4). The newly generated type is assumed to have
 no members and to be completely outside the normal Scala class hierarchy. That
 is, it is a subtype of no other type and is a supertype only of `scala.Nothing`.
 
-We now replace every occurence of the type `C` in a symbol's type or in a tree's
+We now replace every occurrence of the type `C` in a symbol's type or in a tree's
 type annotation by `C$unboxed`. There are however the following two exceptions
 to this rule:
 
@@ -223,7 +223,7 @@ to this rule:
 
         e.isInstanceOf[C]
 
-2. All occurences of methods in class `C` are left unaffected.
+2. All occurrences of methods in class `C` are left unaffected.
 
 We then re-typecheck the program, performing the following adaptations if types
 do not match up.
