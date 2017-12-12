@@ -1,9 +1,9 @@
 ---
-layout: news-coursera
+layout: inner-page-no-masthead
 title: "Functional Programming Principles in Scala: Impressions and Statistics"
-disqus: true
+discourse: true
 ---
-<div class="authors">By Heather Miller and Martin Odersky</div>
+###### By Heather Miller and Martin Odersky
 
 <div class="summary">
   In this post, we discuss our experience giving the popular MOOC Functional Programming Principles in Scala, and provide some insight into who our course participants were, how, overall, students performed in the course, and how students felt about the course. We visualize a lot of these statistics in a number of interactive plots, and we go on to publicly release <a href="http://github.com/heathermiller/progfun-stats">the data and the code</a> to generate these plots within a fun Scala-based project aimed at allowing you to manipulate these statistics with functional programming in Scala, to generate HTML/Javascript for easily visualizing and sharing them. We encourage you to share what you find with us&mdash; we'll share a number of your plots in a follow-up post!
@@ -102,7 +102,6 @@ Given sufficient interest, we're planning on posting a follow-up blog article wi
 
 ## Closing Thoughts
 
-Overall, it was an intense 7 weeks for us as well as the course students. Organizing a MOOC is no small matter. We could count on the help the EPFL team, with Lukas Rytz, Nada Amin, Vojin Jovanovic and Manohar Jonnalagedda who designed and implemented the grading infrastructure, prepared the setup instructions, designed the homeworks, and edited the videos and quizzes; Tao Lee, who did most of the video cutting and editing, Tobias Schlatter, who worked tirelessly answering questions on the discussion boards, Pedro Pinto, who designed the recording equipment setup, and Nastaran Fatemi Odersky who did content editing. Many people at Typesafe also helped, in particular the IDE team around Iulian Dragos and Mirco Dotta who implemented the worksheet software and Josh Suereth who helped with SBT.
+Overall, it was an intense 7 weeks for us as well as the course students. Organizing a MOOC is no small matter. We could count on the help the EPFL team, with Lukas Rytz, Nada Amin, Vojin Jovanovic and Manohar Jonnalagedda who designed and implemented the grading infrastructure, prepared the setup instructions, designed the homeworks, and edited the videos and quizzes; Tao Lee, who did most of the video cutting and editing, Tobias Schlatter, who worked tirelessly answering questions on the discussion boards, Pedro Pinto, who designed the recording equipment setup, and Nastaran Fatemi Odersky who did content editing. Many people at Typesafe also helped, in particular the IDE team around Iulian Dragos and Mirco Dotta who implemented the worksheet software and Josh Suereth who helped with sbt.
 
 Hard as the work of preparing and running the course was, the amount of positive feedback we got made it worth for us many times over. We believe this medium has a lot of potential and, so far, we are only scratching the surface.
-

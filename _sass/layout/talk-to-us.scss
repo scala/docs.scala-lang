@@ -1,0 +1,197 @@
+// TLAK TO US
+//------------------------------------------------
+//------------------------------------------------
+
+.talk-to-us {
+    .heading-line {
+        h2 {
+            color: $gray-dark;
+
+            span {
+                background: #fff;
+            }
+
+            &:before {
+                background: $base-border-color-gray;
+            }
+        }
+    }
+
+    h3 {
+        text-align: center;
+        color: $gray-dark;
+        font-size: $font-size-medium;
+        margin-bottom: 40px;
+    }
+
+    .discourse,
+    .gitter {
+        margin-bottom: 50px;
+        @include clearfix;
+    }
+
+    .discourse {
+        .scala-user-discourse {
+            @include shift(2);
+        }
+
+        .scala-contributors-discourse,
+        .scala-user-discourse {
+            padding: 20px;
+
+            img {
+                width: 34px;
+                height: auto;
+            }
+
+            h4 {
+                font-family: $base-font-family;
+                font-size: $font-size-large;
+                text-transform: uppercase;
+                color: $gray-dark;
+                margin: 12px 0 8px;
+            }
+            text-align: center;
+
+            p {
+                color: $base-font-color;
+            }
+
+            &:active,
+            &:focus,
+            &:hover {
+                text-decoration: none;
+                background: $gray-lighter;
+                border-radius: $border-radius-small;
+
+                h4 {
+                    color: $brand-primary;
+                }
+            }
+            @include span-columns(4);
+            @include bp(large) {
+                 @include span-columns(12);
+                @include shift(0);
+            }
+        }
+    }
+
+    .gitter {
+        ul.first {
+            @include shift(2);
+
+            li {
+                &:last-child {
+                    border-bottom: $base-border-gray;
+                }
+            }
+        }
+
+        ul,
+        ul.first {
+            @include span-columns(4);
+            @include bp(medium) {
+                 @include span-columns(12);
+                @include shift(0);
+
+                li {
+                    &:last-child {
+                        border-bottom: none;
+                    }
+                }
+            }
+        }
+
+        ul {
+            li {
+                a {
+                    @include display(flex);
+                    @include align-items(center);
+                    @include justify-content(flex-start);
+                    padding: 14px 0;
+                    color: $base-font-color;
+                    font-weight: $font-bold;
+                    padding-left: 30px;
+
+                    &:active,
+                    &:focus,
+                    &:hover {
+                        background: $gray-lighter;
+                        text-decoration: none;
+                    }
+
+                    img {
+                        width: 28px;
+                        height: auto;
+                        margin-right: 10px;
+                    }
+                }
+                border-top: $base-border-gray;
+
+                &:last-child {
+                    border-bottom: $base-border-gray;
+                }
+            }
+        }
+    }
+
+    .communities {
+        ul {
+            text-align: center;
+
+            li {
+                display: inline-block;
+
+                &:first-child {
+                    img {
+                        width: 127px;
+                        height: auto;
+                    }
+                    margin-right: 20px;
+                }
+
+                &:last-child {
+                    img {
+                        width: 131px;
+                        height: auto;
+                    }
+                }
+
+                a {
+                    &:active,
+                    &:focus,
+                    &:hover {
+                        opacity: 0.7;
+                    }
+                }
+            }
+        }
+    }
+
+    .social {
+      margin-top: 40px;
+      text-align: center;
+      ul {
+        li {
+          display: inline-block;
+          font-size: 1.75rem;
+
+          &:first-child {
+            margin-right: 14px;
+          }
+
+          a {
+            color: $gray;
+
+            &:active,
+            &:focus,
+            &:hover {
+              color: $brand-primary;
+            }
+          }
+
+        }
+
+      }
+    }
+}

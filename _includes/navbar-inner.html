@@ -1,0 +1,67 @@
+<header id="site-header">
+  <div class="wrap">
+    <nav class="navigation" role="menu">
+      <a href="http://scala-lang.org" class="navigation-bdand">
+        <img src="{{ site.baseurl }}/resources/img/frontpage/scala-logo-white@2x.png" alt="">
+      </a>
+      <div class="navigation-panel-button">
+        <i class="fa fa-bars"></i>
+      </div>
+      <ul class="navigation-menu">
+        {% for navItem in site.data.nav-header %}
+            <li class="navigation-menu-item">
+              <a href="{% if navItem.url contains '://' %}{{navItem.url}}{% else %}{{site.baseurl}}{{navItem.url}}{% endif %}" {% if page.url contains navItem.url %}class="active"{% endif %}>{{navItem.title}}</a>
+            </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>
+<header id="doc-header">
+  <div class="wrap" style="padding: 0px;">
+    <nav class="doc-navigation" role="menu">
+      <a href="{{ site.baseurl }}/" class="navigation-bdand">
+        <img src="{{ site.baseurl }}/resources/img/documentation-logo@2x.png" alt="">
+      </a>
+      <div class="navigation-ellipsis">
+        <i class="fa fa-ellipsis-v"></i>
+      </div>
+      <ul class="navigation-menu">
+        {% for navItem in site.data.doc-nav-header %}
+            <li class="navigation-menu-item">
+              <a href="{% if navItem.url contains '://' or navItem.url == '#'  %}{{navItem.url}}{% else %}{{site.baseurl}}{{navItem.url}}{% endif %}" id="{{ navItem.title | downcase | strip }}" {% if page.url contains navItem.url %}class="active"{% endif %}>{{navItem.title}}</a>
+                {% if navItem.submenu %}
+                <ul class="navigation-dropdown">
+                {% for subItem in navItem.submenu %}
+                  <li>
+                    <a href="{% if subItem.url contains '://' %}{{ subItem.url }}{% else %}{{ site.baseurl }}{{ subItem.url }}{% endif %}">{{ subItem.title }}</a>
+                  </li>
+                {% endfor %}
+                </ul>
+                {% endif %}
+            </li>
+        {% endfor %}
+      </ul>
+    </nav>
+    <nav class="doc-navigation-submenus">
+      {% for navItem in site.data.doc-nav-header %}
+        {% if navItem.submenu %}
+          <ul class="navigation-submenu" id="{{ navItem.title | downcase | strip }}" style="display: none;">
+            {% for subItem in navItem.submenu %}
+              <li>
+                <a href="{% if subItem.url contains '://' %}{{subItem.url}}{% else %}{{site.baseurl}}{{subItem.url}}{% endif %}">{{ subItem.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% endfor %}
+      <ul class="navigation-submenu ellipsis-menu" style="display: none;">
+        {% for navItem in site.data.doc-nav-header %}
+          {% if forloop.index > 3 %}
+            <li><a href="{% if navItem.url contains '://' %}{{navItem.url}}{% else %}{{site.baseurl}}{{navItem.url}}{% endif %}">{{ navItem.title }}</a></li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>

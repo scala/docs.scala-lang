@@ -1,0 +1,82 @@
+// TRAINING-EVENTS
+//------------------------------------------------
+//------------------------------------------------
+
+.training-events {
+    h3 {
+        border-bottom: $base-border-gray;
+        padding-bottom: 14px;
+    }
+
+    .training-list {
+        @include clearfix;
+        margin-top: $padding-medium;
+
+        .training-item {
+          margin-bottom: $padding-medium;
+            @include span-columns(3);
+            @include omega(4n);
+            @include bp(medium) {
+              @include span-columns(12);
+
+              padding-bottom: 20px;
+              border-bottom: $base-border-gray;
+            }
+
+            img,
+            .calendar {
+              float: left;
+            }
+
+            img {
+              width: 28px;
+              height: auto;
+            }
+
+            .calendar {
+                span:last-child {
+                    background: $gray-lighter;
+                }
+            }
+
+            .training-text {
+              margin-left: 44px;
+
+              h4 {
+                margin-bottom: 6px;
+              }
+
+              p {
+                  color: $base-font-color;
+
+                  &:nth-child(2) {
+                      text-transform: uppercase;
+                  }
+              }
+            }
+
+
+            &:active,
+            &:focus,
+            &:hover {
+                text-decoration: none;
+
+                h4 {
+                    color: $brand-primary;
+                }
+            }
+        }
+    }
+
+    .org-scala-event {
+    //  background: $gray-lighter;
+      padding: 24px;
+      border: 2px dashed $base-border-color-gray;
+
+      h2 {
+        margin-top: 0;
+        margin-bottom: 10px;
+      }
+      margin-top: $padding-medium;
+    }
+}

@@ -1,0 +1,25 @@
+// CODE
+//------------------------------------------------
+//------------------------------------------------
+.code-element {
+    margin-bottom: 20px;
+
+    pre {
+        margin-top: 0;
+    }
+
+    code {
+        padding: 20px;
+    }
+
+    .bar-code {
+        background: #B4BBBD;
+        text-align: center;
+        padding: 2px 0;
+        font-size: $font-size-small;
+        font-weight: $font-bold;
+        min-height: 26px;
+        @include border-radius($border-radius-base $border-radius-base 0 0);
+
+    }
+}

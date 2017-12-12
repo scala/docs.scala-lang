@@ -1,0 +1,97 @@
+<footer id="site-footer">
+    <div class="wrap">
+      <div class="site-footer-top">
+        {% for item in site.data.footer %}
+          <ul class="{{item.class}}">
+            <li><h3>{{item.title}}</h3></li>
+            {% for link in item.links %}
+              <li><a href="{% if link.url contains '://' %}{{link.url}}{% else %}{{site.baseurl}}{{link.url}}{% endif %}">{{link.title}}</a></li>
+            {% endfor %}
+          </ul>
+        {% endfor %}
+      </div>
+      <div class="site-footer-bottom">
+        <p>{{site.data.common.copyrightText}}</p>
+        <img src="{{ site.baseurl }}/resources/img/frontpage/scala-logo-white.png" alt="">
+      </div>
+    </div>
+  </footer>
+
+<!-- jquery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="{{ site.baseurl }}/resources/js/vendor/jquery.autocomplete.js" type="text/javascript"></script>
+
+<!-- moment js -->
+<script src="{{ site.baseurl }}/resources/js/vendor/moment.min.js" type="text/javascript"></script>
+
+<!-- tweet feed -->
+<script src="{{ site.baseurl }}/resources/js/tweetMachine-update.js" type="text/javascript"></script>
+
+<!-- prettify js -->
+<script src="{{ site.baseurl }}/resources/js/vendor/prettify/prettify.js" type="text/javascript"></script>
+<script src="{{ site.baseurl }}/resources/js/vendor/prettify/lang-scala.js" type="text/javascript"></script>
+
+<!-- unslider js -->
+<script src="{{ site.baseurl }}/resources/js/vendor/unslider.js" type="text/javascript"></script>
+
+<!-- Highlight -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/scala.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/java.min.js" type="text/javascript"></script>
+
+<!-- CodeMirror -->
+<script src="{{ site.baseurl }}/resources/js/vendor/codemirror/codemirror.js" type="text/javascript"></script>
+<script src="{{ site.baseurl }}/resources/js/vendor/codemirror/clike.js" type="text/javascript"></script>
+
+<!-- TOC -->
+<script src="{{ site.baseurl }}/resources/js/vendor/jquery.sticky.js" type="text/javascript"></script>
+<script src="{{ site.baseurl }}/resources/js/vendor/toc.js" type="text/javascript"></script>
+
+<!-- Blog search -->
+<script src="{{ site.baseurl }}/resources/js/vendor/jekyll.search.min.js" type="text/javascript"></script>
+
+<!-- Custom javascript -->
+<script src="{{ site.baseurl }}/resources/js/functions.js" type="text/javascript"></script>
+
+{% if page.layout == "sips"%}
+<script type="text/javascript">
+// Get next SIP meeting date/time
+$(document).ready(function() {
+  var listVidsQuery = "https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UCn_8OeZlf5S6sqCqntAvaIw&eventType=upcoming&type=video&key=AIzaSyCzVD5wYXjeee7no32Jipju7WAhsvR4D94";
+  var vidQuery = "https://www.googleapis.com/youtube/v3/videos?part=liveStreamingDetails&key=AIzaSyCzVD5wYXjeee7no32Jipju7WAhsvR4D94&id=";
+  $.getJSON(listVidsQuery, function(data) {
+
+    // if there indeed are upcoming meetings, display the next one
+    if (data.items.length > 0) {
+
+      // YouTube video ID for the next upcoming SIP meeting
+        var videoId = data.items[0].id.videoId;
+
+        $.getJSON(vidQuery + videoId, function(vidData) {
+          if (vidData.items.length > 0) {
+            var result = vidData.items[0].liveStreamingDetails.scheduledStartTime;
+            var startTime = moment(result).format("dddd, MMMM Do YYYY, ha");
+
+            var meetingTitle = moment(result).format("MMMM YYYY") + " SIP Meeting";
+            var href = "https://www.youtube.com/watch?v=" + videoId;
+            var a = document.createElement('a');
+            $(a).attr('href', href).text(meetingTitle);
+
+            $("#meeting-title").prepend(a);
+            $("#watch-meeting").attr('href', href);
+            $("#meeting-time").text(startTime);
+          }
+        });
+
+    } else {
+      // if there are no upcoming meetings scheduled, hide the upcoming meeting section
+      $("#upcoming-meeting").hide();
+    }
+
+  });
+});
+</script>
+{% endif %}
+</body>
+
+</html>

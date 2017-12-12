@@ -1,0 +1,8 @@
+scala-tour:
+  name: "Tour of Scala"
+
+futures:
+  name: "Futures"
+
+cheatsheet:
+  name: "Scala Cheatsheet"

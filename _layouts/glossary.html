@@ -1,35 +1,17 @@
 ---
-layout: default
+layout: inner-page-parent-dropdown
+includeTOC: true
 ---
 
-{% include glossary-header.txt %}
+<section class="content">
+	<div class="wrap">
+		<div class="content-primary documentation glossary">
+			<div class="inner-box">
+				{{content}}
+			</div>
+		</div>
 
-<div class="wrapper">
-  {% include topbar.txt %}
-
-  <header class="scrollingmenu">
-    <h1>{{ page.title }}</h1>
-  </header>
-
-  <div class="bottom">
-    <div class="container">
-      <div class="row">
-
-        <div class="span3">
-          {% include glossary-sidebar.txt %}
-        </div>
-    
-        <div class="span13">
-	      <h6>Glossary from the definitive book on Scala, <a href="http://www.artima.com/shop/programming_in_scala">Programming in Scala</a>.</h6>
-          <div id="glossary">
-	        {{ content }}
-	      </div>
-        </div>
-    
-      </div>
-	
-    </div>
-  </div>
-  <div class="push"></div>
-</div>
-{% include footer.txt %}    
+		<!-- TOC -->
+		{% include sidebar-toc-glossary.html %}
+	</div>
+</section>

@@ -1,0 +1,111 @@
+// NUTSHELL
+//------------------------------------------------
+//------------------------------------------------
+
+.nutshell {
+    background: $gray;
+
+    .heading-line {
+        h2 {
+            span {
+                background: $gray;
+            }
+        }
+    }
+
+    .scala-items-list {
+        .items-menu {
+            .scala-item {
+                @include span-columns(4);
+                @include omega(3n);
+                padding: $padding-small;
+                text-align: center;
+                transition: $base-transition;
+                @include bp(medium) {
+                     @include span-columns(12);
+                }
+
+                min-height: 165px;
+
+                h3 {
+                    color: #fff;
+                    font-size: $font-size-h3;
+                    text-transform: uppercase;
+                    font-family: $base-font-family;
+                    margin-bottom: 10px;
+                }
+
+                p {
+                    color: $base-font-color-inverse;
+                    font-size: $font-size-large;
+                }
+
+
+                &:active,
+                &:focus,
+                &:hover {
+                    cursor: pointer;
+                    background: $gray-dark;
+                }
+
+                &.active {
+                    background: $gray-dark;
+                }
+            }
+
+            .items-content {
+                background: $gray-dark;
+                transition: $base-transition;
+
+                .items-code {
+                    display: none;
+                    background: $gray-dark;
+                    padding: 65px 0;
+
+                    .scala-code {
+
+                      @include span-columns(6);
+                      @include bp(large) {
+                        @include span-columns(12);
+                      }
+                    }
+
+                    .scala-text {
+                        code {
+                            background: $gray-darker;
+                            padding: 2px 8px;
+                            color: #859900;
+                            border-radius: 2px;
+                            margin: 0 3px;
+                        }
+                        @include span-columns(6);
+                        @include bp(large) {
+                          @include span-columns(12);
+                        }
+
+                        h3 {
+                            font-size: 1.625rem;
+                            color: #fff;
+                            margin-bottom: 20px;
+                        }
+
+                        p {
+                            color: $base-font-color-inverse;
+                        }
+
+                        &.scala-text-large {
+                          @include span-columns(12);
+                          margin-bottom: 30px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .scala-item-expanded {
+        display: none;
+        height: 400px;
+        background: $gray-dark;
+    }
+}

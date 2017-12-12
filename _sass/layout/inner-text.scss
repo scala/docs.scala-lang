@@ -1,0 +1,28 @@
+// INNER TEXT
+//------------------------------------------------
+//------------------------------------------------
+.inner-text {
+  position: relative;
+    h1 {
+        font-family: $base-font-family;
+        font-size: 2.813rem;
+        font-weight: $font-black;
+        color: #fff;
+        margin: $padding-medium 0 ($padding-medium / 2) 0;
+    }
+
+    p {
+        font-size: 1.25rem;
+        color: #fff;
+        margin-bottom: $padding-medium;
+    }
+    @include span-columns(8);
+    @include bp(large) {
+         @include span-columns(12);
+
+        h1 {
+            font-size: 2.213rem;
+            margin: 0 0 ($padding-medium / 2) 0;
+        }
+    }
+}

@@ -2,10 +2,16 @@
 layout: glossary
 title: Glossary
 ---
+
+<h5>Glossary from the definitive book on Scala, <a href="http://www.artima.com/shop/programming_in_scala">Programming in Scala</a>.</h5>
+
 <div class="filterbar">
-  <span class="title">Look up a term</span>
-  <input class="field" id="filter" type="text" />
-  <span id="filter-count"></span>
+  <div class="icon-search">
+    <i class="fa fa-search"></i>
+  </div>
+  <input type="text" id="filter" placeholder="Look up a term...">
+  <!-- <input class="field" id="filter" type="text" /> -->
+  <span id="filter-count">&nbsp;</span>
 </div>
 
 * #### algebraic data type
@@ -33,7 +39,7 @@ When a function is invoked, an argument is passed for each parameter of that fun
 You can assign an object to a variable. Afterwards, the variable will refer to the object.
 
 * #### auxiliary constructor
-Extra constructors defined inside the curly braces of the class definition, which look like method definitions named this, but with no result type.
+Extra constructors defined inside the curly braces of the class definition, which look like method definitions named `this`, but with no result type.
 
 * #### block
 One or more expressions and declarations surrounded by curly braces. When the block evaluates, all of its expressions and declarations are processed in order, and then the block returns the value of the last expression as its own value. Blocks are commonly used as the bodies of functions, [for expressions](#for-expression), `while` loops, and any other place where you want to group a number of statements together. More formally, a block is an encapsulation construct for which you can only see side effects and a result value. The curly braces in which you define a class or object do not, therefore, form a block, because fields and methods (which are defined inside those curly braces) are visible from the out- side. Such curly braces form a template.
@@ -385,66 +391,3 @@ A type parameter of a class or trait can be marked with a _variance_ annotation,
 
 * #### yield
 An expression can _yield_ a result. The `yield` keyword designates the result of a [for comprehension](#for-comprehension).
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

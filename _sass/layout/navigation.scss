@@ -1,0 +1,94 @@
+// NAVIGATION
+//------------------------------------------------
+//------------------------------------------------
+
+.navigation {
+    padding: $padding-medium 0;
+    @include display(flex);
+    @include flex-direction(row);
+    @include align-items(center);
+    @include justify-content(space-between);
+    .navigation-bdand {
+      img {
+        width: 104px;
+        height: 43px;
+      }
+    }
+    .navigation-panel-button {
+        display: none;
+        font-size: 1.333rem;
+        color: #fff;
+        cursor: pointer;
+        @include bp(large) {
+            order: 3;
+            display: block;
+        }
+    }
+
+    .navigation-menu {
+        .navigation-menu-item {
+            display: inline-block;
+
+            &:last-child {
+                margin-right: 0;
+            }
+
+            a {
+                padding: 5px 15px;
+                text-transform: uppercase;
+                color: #fff;
+                border-radius: 300px;
+                font-weight: $font-bold;
+
+                &:active,
+                &:focus,
+                &:hover,
+                &.active {
+                    background: $brand-primary;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+@include bp(large) {
+    .navigation {
+        .navigation-menu {
+            padding: 20px;
+            $sliding-panel-width: 270px;
+            @include position(fixed, 0 0 0 auto);
+            @include size($sliding-panel-width 100%);
+            @include transform(translateX(+ $sliding-panel-width));
+            @include transition(all 0.25s linear);
+            background: #fff;
+            -webkit-overflow-scrolling: touch;
+            overflow-y: auto;
+            z-index: 100;
+            background: rgba($gray-darker, 0.99);
+
+            &.is-visible {
+                @include transform(translateX(0));
+            }
+
+            .navigation-menu-item {
+                margin-right: 16px;
+                padding: 10px 0;
+                display: block;
+            }
+        }
+    }
+}
+
+.navigation-fade-screen {
+    @include position(fixed, 0 0 0 0);
+    @include transition;
+    background: #000;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 90;
+
+    &.is-visible {
+        opacity: 0.6;
+        visibility: visible;
+    }
+}

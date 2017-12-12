@@ -1,0 +1,89 @@
+// BOOKS
+//------------------------------------------------
+//------------------------------------------------
+
+.books {
+    h2 {
+        margin-bottom: 30px;
+    }
+}
+
+.books-list {
+    @include clearfix;
+
+    .book-item {
+        @include span-columns(4);
+        @include omega(3n);
+        margin-bottom: $padding-xlarge;
+        @include bp(medium) {
+             @include span-columns(12);
+        }
+
+        .book-item-header {
+            .content-img-boook {
+                border-bottom: $base-border-gray;
+                height: 120px;
+                overflow: hidden;
+
+                img {
+                    height: 145px;
+                    width: auto;
+                    display: block;
+                    margin-top: 10px;
+                    transition: $base-transition;
+                    border: {
+                        left: $base-border-gray;
+                        top: $base-border-gray;
+                        right: $base-border-gray;
+                    }
+                }
+            }
+
+            h3 {
+                margin-bottom: 10px;
+                transition: $base-transition;
+            }
+
+            a {
+                &:active,
+                &:focus,
+                &:hover {
+                    text-decoration: none;
+                    color: $brand-primary;
+
+                    img {
+                        margin-top: 0;
+                    }
+
+                    h3 {
+                        color: $brand-primary;
+                    }
+                }
+            }
+        }
+
+        .book-item-main {
+            .author,
+            .published {
+                color: $base-font-color-light;
+            }
+
+            .published {
+                font-style: italic;
+            }
+
+            .description {
+                margin-top: 10px;
+            }
+
+            ul {
+                padding-left: 18px;
+
+                li {
+                    list-style: disc;
+                    margin-bottom: 3px;
+                }
+            }
+        }
+    }
+}

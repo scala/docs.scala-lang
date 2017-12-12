@@ -1,0 +1,38 @@
+{% include headertop.html %}
+{% include headerbottom.html %}
+
+<div class="navigation-fade-screen"></div>
+
+{% include navbar-inner.html %}
+
+<main id="inner-main">
+
+  <!-- Title -->
+  <section class="title-page">
+    <div class="wrap">
+      <div class="content-title-documentation">
+        <div class="titles">
+          {% if page.overview-name %}
+            <div class="supertitle">{{ page.overview-name }}</div>
+          {% elsif site.data.docnames[page.partof].name %}
+            <div class="supertitle">{{ site.data.docnames[page.partof].name }}</div>
+          {% else %}
+            <div class="supertitle">&nbsp;</div>
+          {% endif %}
+          <h1>{{ page.title }}</h1>
+        </div>
+        <div class="language-dropdown">
+          <div id="dd" class="wrapper-dropdown" tabindex="1">
+            <span>Language</span>
+              <ul class="dropdown"></ul>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  {% comment %}Specific content from child layouts{% endcomment %}
+  {{content}}
+
+</main>
+
+{% include footer.html %}
