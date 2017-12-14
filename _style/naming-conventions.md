@@ -308,23 +308,25 @@ Higher-kinds are theoretically no different from regular type parameters
 (except that their
 [kind](http://en.wikipedia.org/wiki/Kind_(type_theory)) is at least
 `*=>*` rather than simply `*`). The naming conventions are generally
-similar, however it is preferred to use a descriptive name rather than a
-single letter, for clarity:
+similar, however it is preferred to use a descriptive name rather
+than a single letter, for clarity. The inner parameter names should be
+`*` or other descriptive names, instead of `_`, to avoid confusion with
+existential types:
 
-    class HigherOrderMap[Key[_], Value[_]] { ... }
+    class HigherOrderMap[Key[*], Value[*]] { ... }
 
 The single letter form is (sometimes) acceptable for fundamental concepts
-used throughout a codebase, such as `F[_]` for Functor and `M[_]` for
+used throughout a codebase, such as `F[*]` for Functor and `M[*]` for
 Monad.
 
 In such cases, the fundamental concept should be something well known
 and understood to the team, or have tertiary evidence, such as the
 following:
 
-    def doSomething[M[_]: Monad](m: M[Int]) = ...
+    def doSomething[M[*]: Monad](m: M[Int]) = ...
 
 Here, the type bound `: Monad` offers the necessary evidence to inform
-the reader that `M[_]` is the type of the Monad.
+the reader that `M[*]` is the type of the Monad.
 
 ## Annotations
 
