@@ -35,7 +35,7 @@ Minutes were taken by Darja Jovanovic.
 * Seth Tisue ([@SethTisue](https://github.com/SethTisue)), Lightbend
 * Sébastien Doeraene ([@sjrd](https://github.com/sjrd)), EPFL
 * Eugene Burmako ([@xeno-by](https://github.com/xeno-by)), Twitter
-* Iulian Dragos ([@dragos](https://github.com/dragos)), Independent
+* Iulian Dragos ([@dragos](https://github.com/dragos)), Triplequote
 * Adriaan Moors ([@adriaanm](https://github.com/adriaanm)), Lightbend
 * Miles Sabin ([@milessabin](https://github.com/milessabin)], Independent
 * Darja Jovanovic ([@darjutak](https://github.com/darjutak)), Scala Center
