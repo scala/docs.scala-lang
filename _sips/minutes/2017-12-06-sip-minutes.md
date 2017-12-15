@@ -16,7 +16,7 @@ The following agenda was distributed to attendees:
 |[SIP-33: Priority-based infix type precedence rules](http://docs.scala-lang.org/sips/make-types-behave-like-expressions.html) | Adriaan Moors | Accepted |
 |[SIP-NN: Adding prefix types](http://docs.scala-lang.org/sips/adding-prefix-types.html) | Adriaan Moors | Pending |
 |[SIP-35: Opaque types](http://docs.scala-lang.org/sips/opaque-types.html) | Adriaan Moors | Not discussed |
-|Discussion about the future of Scala 2.13 and 2.14. In concrete, the following ideas that Adriaan has presented publicly in his talk, [the link](https://adriaanm.github.io/reveal.js/scala-2.13-beyond.html#/) |  | Not discussed |
+|Discussion about the future of Scala 2.13 and 2.14 |  | Not discussed |
 
 
 Jorge Vicente Cantero was the Process Lead and Darja Jovanovic as secretary.
