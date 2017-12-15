@@ -1,7 +1,7 @@
 ---
 layout: sip
 discourse: true
-title: SIP-NN - Adding prefix types
+title: SIP-36 - Adding prefix types
 
 vote-status: pending
 permalink: /sips/:title.html
