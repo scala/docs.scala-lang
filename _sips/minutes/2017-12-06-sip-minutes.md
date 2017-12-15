@@ -31,7 +31,7 @@ Minutes were taken by Darja Jovanovic.
 ## Attendees
 
 * Martin Odersky ([@odersky](https://github.com/odersky)), EPFL
-* Jorge Vicente Cantero ([@jvican](https://github.com/jvican)), Process Lead
+* Jorge Vicente Cantero ([@jvican](https://github.com/jvican)), Scala Center
 * Seth Tisue ([@SethTisue](https://github.com/SethTisue)), Lightbend
 * Sébastien Doeraene ([@sjrd](https://github.com/sjrd)), EPFL
 * Eugene Burmako ([@xeno-by](https://github.com/xeno-by)), Twitter
