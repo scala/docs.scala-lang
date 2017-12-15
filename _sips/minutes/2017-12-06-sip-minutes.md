@@ -100,6 +100,8 @@ The Committee proceeds with voting on numbering the SIP.
 
 **Conclusion**: The SIP-NN is numbered, from now SIP-36, it will be discussed once results of the Typelevel implementation are ready.
 
+### To be discussed
+
 Other announced agenda items were not discussed in this meeting because of the lack of time. They will be addressed in the next meeting.
 
 - [SIP-35: Opaque types](http://docs.scala-lang.org/sips/opaque-types.html)
