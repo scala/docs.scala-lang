@@ -22,7 +22,7 @@ val salaries = Seq(20000, 70000, 40000)
 val doubleSalary = (x: Int) => x * 2
 val newSalaries = salaries.map(doubleSalary) // List(40000, 140000, 80000)
 ```
-`doubleSalary` is a function which takes a single Int, `x`, and returns `x * 2`. In general, the tuple on the left of the arrow `=>` is a parameter list and the value of the expression on the right is what gets returned. One line 3, the function `doubleSalary` gets applied to each element in the
+`doubleSalary` is a function which takes a single Int, `x`, and returns `x * 2`. In general, the tuple on the left of the arrow `=>` is a parameter list and the value of the expression on the right is what gets returned. On line 3, the function `doubleSalary` gets applied to each element in the
 list of salaries.
 
 To shrink the code, we could make the function anonymous and pass it directly as
