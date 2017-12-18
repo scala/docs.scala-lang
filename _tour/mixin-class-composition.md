@@ -28,8 +28,8 @@ trait C extends A {
 class D extends B with C
 
 val d = new D
-d.message  // I'm an instance of class B
-d.loudMessage  // I'M AN INSTANCE OF CLASS B
+println(d.message)  // I'm an instance of class B
+println(d.loudMessage)  // I'M AN INSTANCE OF CLASS B
 ```
 Class `D` has a superclass `B` and a mixin `C`. Classes can only have one superclass but many mixins (using the keywords `extends` and `with` respectively). The mixins and the superclass may have the same supertype.
 
