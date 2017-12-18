@@ -13,9 +13,9 @@ The following agenda was distributed to attendees:
 | --- | --- | --- |
 |Discussion and voting on Miles Sabin (Typelevel representative) joining the Committee |  | Accepted
 |[SIP 23: Literal-based singleton types](http://docs.scala-lang.org/sips/42.type.html) | Adriaan Moors | Accepted
-|[SIP-33: Priority-based infix type precedence rules](http://docs.scala-lang.org/sips/make-types-behave-like-expressions.html) | Adriaan Moors | Accepted |
-|[SIP-NN: Adding prefix types](http://docs.scala-lang.org/sips/adding-prefix-types.html) | Adriaan Moors | Pending |
-|[SIP-35: Opaque types](http://docs.scala-lang.org/sips/opaque-types.html) | Adriaan Moors | Not discussed |
+|[SIP-33: Priority-based infix type precedence rules](http://docs.scala-lang.org/sips/make-types-behave-like-expressions.html) | Josh Suereth | Accepted |
+|[SIP-NN: Adding prefix types](http://docs.scala-lang.org/sips/adding-prefix-types.html) | Josh Suereth | Pending |
+|[SIP-35: Opaque types](http://docs.scala-lang.org/sips/opaque-types.html) | Sébastien Doeraene | Not discussed |
 |Discussion about the future of Scala 2.13 and 2.14 |  | Not discussed |
 
 
