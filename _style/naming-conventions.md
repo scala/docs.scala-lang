@@ -307,10 +307,10 @@ used in place of a longer, descriptive name:
 Higher-kinds are theoretically no different from regular type parameters
 (except that their
 [kind](http://en.wikipedia.org/wiki/Kind_(type_theory)) is at least
-`*=>*` rather than simply `*`). The naming conventions are generally
-similar, however it is preferred to use a descriptive name rather
-than a single letter, for clarity. The inner parameter names should be
-`*` or other descriptive names, instead of `_`, to avoid confusion with
+`*[*]` rather than simply `*`). The naming conventions are generally
+similar, however it is preferred to use a descriptive name rather than a
+single letter, for clarity. The inner parameter names should be `*` or
+other descriptive names, instead of `_`, to avoid confusion with
 existential types:
 
     class HigherOrderMap[Key[*], Value[*]] { ... }
