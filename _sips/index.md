@@ -4,17 +4,42 @@ title: Scala Improvement Process
 ---
 
 
-<div style="font-size: 1.25rem; color: #073642; font-weight: 400; font-family: 'Roboto Slab', serif; margin-bottom: 18px;"> There are <strong>two</strong> ways to make changes to Scala.</div>
+Two separate processes govern changes to Scala:
 
-<ol style="margin-bottom: 24px;">
-  <li style="margin-bottom: 4px;">Library changes, typically to the Scala standard library and other central libraries.</li>
-  <li style="margin-bottom: 4px;">Compiler/language changes.</li>
-</ol>
+1. The **Scala Improvement Process** (SIP) covers changes to the Scala
+language, the Scala compiler, and the core of the Scala standard
+library.
 
-The Scala Platform Process (SPP) is intended for library changes, and the Scala
-Improvement Process (SIP) is intended for changes to the Scala compiler or
-language.
+2. The **Scala Platform Process** (SPP) aims to establish a stable
+collection of libraries suitable for widespread use, with a low barrier
+to entry for newcomers.
 
+## Scala Improvement Process (SIP)
+
+The **SIP** (_Scala Improvement Process_) is a process for submitting
+changes to the Scala language. This process aims to evolve Scala
+openly and collaboratively.
+
+The SIP process covers the Scala language and compiler and the core of
+the Scala standard library.  (The core is anything that is unlikely to
+be spun off into a separate module.)
+
+A proposed change requires a design document, called a Scala
+Improvement Proposal (SIP).  The SIP committee meets monthly to
+discuss, and eventually vote upon, proposals.
+
+A SIP is subject to a [review process](./sip-submission.html).
+Proposals normally include proposed changes to the
+[Scala language specification](http://www.scala-lang.org/files/archive/spec/2.12/).
+Before reaching the committee, a proposal normally receives community
+discussion and review on the
+[Scala Contributors](https://contributors.scala-lang.org/) forum.
+Please read [Submitting a SIP](./sip-submission.html) and our
+[SIP tutorial](./sip-tutorial.html) for more information.
+
+> Historical note: The SIP replaces the older SID (Scala Improvement Document) process.
+> Completed SID documents remain available in the
+> [completed section of the SIP list](sip-list.html).
 
 ## Scala Platform Process (SPP)
 
@@ -23,27 +48,4 @@ use and a low barrier to entry for beginners and intermediate users. The
 Platform consists of several independent modules that solve specific problems.
 The Scala community sets the overall direction of the Platform.
 
-<a class="button" href="https://scalacenter.github.io/platform/">Learn more</a>
-
-
-
-## Scala Improvement Process (SIP)
-
-The **SIP** (_Scala Improvement Process_) is a process for submitting changes to
-the Scala language. All changes to the language go through design documents,
-called Scala Improvement Proposals (SIPs), which are openly discussed by a
-committee and only upon reaching a consensus are accepted to be merged into the
-Scala compiler.
-
-The aim of the Scala Improvement Process is to apply openness and collaboration
-to the process of evolving the language. SIPs are for changes to the Scala
-language and/or compiler and are subject to a [rigorous review process](./sip-submission.html)
-and are usually accompanied by changes to the
-[Scala language specification](http://www.scala-lang.org/files/archive/spec/2.12/), lots of
-review and discussion on the [Scala Contributors](https://contributors.scala-lang.org/) mailing list and
-voting/approval milestones. Please read [Submitting a SIP](./sip-submission.html) and our
-[SIP tutorial](./sip-tutorial.html) for more information.
-
-> Note: the SIP process replaced the older SID (Scala Improvement Document) process,
-however the old completed SID documents are still available to review in the
-[completed section of the SIP list](sip-list.html).
+<a class="button" href="https://scalacenter.github.io/platform/">Learn more about the Scala Platform</a>
