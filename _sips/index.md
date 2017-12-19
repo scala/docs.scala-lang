@@ -48,4 +48,4 @@ use and a low barrier to entry for beginners and intermediate users. The
 Platform consists of several independent modules that solve specific problems.
 The Scala community sets the overall direction of the Platform.
 
-<a class="button" href="https://scalacenter.github.io/platform/">Learn more about the Scala Platform</a>
+<a class="button" href="https://platform.scala-lang.org">Learn more about the Scala Platform</a>
