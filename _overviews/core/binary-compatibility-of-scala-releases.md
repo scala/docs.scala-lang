@@ -26,8 +26,12 @@ In short, we recommend that library authors use to [MiMa](https://github.com/typ
 Compiling identical sources with different versions of the scala compiler (or on different JVM versions!) could result in binary incompatible bytecode. This is rare, and we try to avoid it, but we can't guarantee it will never happen.
 
 #### Concretely
-We guarantee forwards and backwards compatibility of the `"org.scala-lang" % "scala-library" % "2.N.x"` and `"org.scala-lang" % "scala-reflect" % "2.N.x"` artifacts, except for anything under the `scala.reflect.internal` package, as scala-reflect is still experimental. We also strongly discourage relying on the stability of `scala.concurrent.impl` and `scala.reflect.runtime`, though we will only break compatibility for severe bugs here.
+We guarantee forwards and backwards compatibility of the `"org.scala-lang" % "scala-library" % "2.N.x"` and `"org.scala-lang" % "scala-reflect" % "2.N.x"` artifacts, except for 
+- the `scala.reflect.internal` and `scala.reflect.io` packages, as scala-reflect is still experimental, and
+- the `scala.runtime` package, which contains classes used by generated code at runtime.
+
+We also strongly discourage relying on the stability of `scala.concurrent.impl`, `scala.sys.process.*Impl`, and `scala.reflect.runtime`, though we will only break compatibility for severe bugs here.
 
 Note that we will only enforce *backwards* binary compatibility for modules (artifacts under the groupId `org.scala-lang.modules`). As they are opt-in, it's less of a burden to require having the latest version on the classpath. (Without forward compatibility, the latest version of the artifact must be on the run-time classpath to avoid linkage errors.)
 
-Finally, since Scala 2.11, `scala-library-all` aggregates all modules that constitute a Scala release. Note that this means it does not provide forward binary compatibility, whereas the core `scala-library` artifact does. We consider the versions of the modules that `"scala-library-all" % "2.N.x"` depends on to be the canonical ones, that are part of the official Scala distribution. (The distribution itself is defined by the `scala-dist` maven artifact.)
+Finally, from Scala 2.11 until Scala 2.13.0-M1, `scala-library-all` aggregates all modules that constitute a Scala release. Note that this means it does not provide forward binary compatibility, whereas the core `scala-library` artifact does. We consider the versions of the modules that `"scala-library-all" % "2.N.x"` depends on to be the canonical ones, that are part of the official Scala distribution. (The distribution itself is defined by the `scala-dist` maven artifact.)

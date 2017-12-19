@@ -91,7 +91,7 @@ Scala コンパイラが持つ型情報を全ては入手できない可能性�
 
 目的の `Type` のインスタンスが得られれば、これをインスペクトすることもできる。以下に具体例で説明しよう:
 
-    scala> val decls = theType.declarations.take(10)
+    scala> val decls = theType.decls.take(10)
     decls: Iterable[ru.Symbol] = List(constructor List, method companion, method isEmpty, method head, method tail, method ::, method :::, method reverse_:::, method mapConserve, method ++)
 
 #### ランタイム型のインスタンス化
@@ -118,7 +118,7 @@ Scala コンパイラが持つ型情報を全ては入手できない可能性�
 次に、`reflectClass` メソッドを使って `Person` クラスの `ClassMirror` を取得する。
 `ClassMirror` は `Person` クラスのコンストラクタへのアクセスを提供する。
 
-    scala> val ctor = ru.typeOf[Person].declaration(ru.nme.CONSTRUCTOR).asMethod
+    scala> val ctor = ru.typeOf[Person].decl(ru.termNames.CONSTRUCTOR).asMethod
     ctor: scala.reflect.runtime.universe.MethodSymbol = constructor Person
 
 `Person` のコンストラクタのシンボルは実行時ユニバース `ru` を用いて `Person` 型の宣言から照会することによってのみ得られる。
@@ -152,7 +152,7 @@ Scala コンパイラが持つ型情報を全ては入手できない可能性�
 `shipped` メンバにアクセスするには、前の例と同じく、`p` のクラス (`Purchase`) を含むクラスローダが読み込んだ全てのクラスを入手可能とするミラー `m`
 を取得することから始める。
 
-    scala> val shippingTermSymb = ru.typeOf[Purchase].declaration(ru.TermName("shipped")).asTerm
+    scala> val shippingTermSymb = ru.typeOf[Purchase].decl(ru.TermName("shipped")).asTerm
     shippingTermSymb: scala.reflect.runtime.universe.TermSymbol = method shipped
 
 次に、`shipped` フィールドの宣言を照会して `TermSymbol` (`Symbol` 型の 1つ) を得る。

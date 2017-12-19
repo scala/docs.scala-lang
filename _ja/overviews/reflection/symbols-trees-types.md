@@ -170,7 +170,7 @@ title: シンボル、構文木、型
     scala> val intTpe = universe.definitions.IntTpe
     intTpe: scala.reflect.runtime.universe.Type = Int
 
-標準型のリストは [`scala.reflect.api.StandardDefinitions`](http://www.scala-lang.org/api/current/index.html#scala.reflect.api.StandardDefinitions$StandardTypes) 内の `StandardTypes`
+標準型のリストは [`scala.reflect.api.StandardDefinitions`](http://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/StandardDefinitions$StandardTypes.html) 内の `StandardTypes`
 トレイトにて定義されている。
 
 ### 型の一般的な演算
@@ -299,8 +299,8 @@ Scala の数値型は以下の順序付けに従っている (Scala 言語仕様
 `Type` の**宣言** (declaration) にはその `Type` が表すクラス/オブジェクト/トレイト内で宣言された (継承されなかった) メンバのみが含まれる。
 
 ある特定のメンバや宣言の `Symbol` を取得するにはその型に関連する定義のリストを提供する
-`members` か `declarations` メソッドを使うだけでいい。単一のシンボルのみを返す
-`meber` と `declaration` というメソッドもある。以下に 4つのメソッド全てのシグネチャを示す:
+`members` か `decls` メソッドを使うだけでいい。単一のシンボルのみを返す
+`member` と `decl` というメソッドもある。以下に 4つのメソッド全てのシグネチャを示す:
 
     /** The member with given name, either directly declared or inherited, an
       * OverloadedSymbol if several exist, NoSymbol if none exist. */
@@ -308,7 +308,7 @@ Scala の数値型は以下の順序付けに従っている (Scala 言語仕様
 
     /** The defined or declared members with name name in this type; an
       * OverloadedSymbol if several exist, NoSymbol if none exist. */
-    def declaration(name: Universe.Name): Universe.Symbol
+    def decl(name: Universe.Name): Universe.Symbol
 
     /** A Scope containing all members of this type
       * (directly declared or inherited). */
@@ -318,7 +318,7 @@ Scala の数値型は以下の順序付けに従っている (Scala 言語仕様
                                       // filter, foreach to query!
 
     /** A Scope containing the members declared directly on this type. */
-    def declarations: Universe.MemberScope // MemberScope is a type of
+    def decls: Universe.MemberScope // MemberScope is a type of
                                            // Traversable, use higher-order
                                            // functions such as map,
                                            // filter, foreach to query!
@@ -428,7 +428,7 @@ Scala リフレクションは、ユニバース経由で構文木を視覚化�
 生の構文木の内部構造をインスペクトするには以下のように行う:
 
     scala> showRaw(tree)
-    res1: String = Block(List(ClassDef(Modifiers(), TypeName("Flower"), List(), Template(List(Ident(TypeName("AnyRef"))), emptyValDef, List(DefDef(Modifiers(), nme.CONSTRUCTOR, List(), List(List()), TypeTree(), Block(List(Apply(Select(Super(This(tpnme.EMPTY), tpnme.EMPTY), nme.CONSTRUCTOR), List())), Literal(Constant(())))), DefDef(Modifiers(), TermName("name"), List(), List(), TypeTree(), Literal(Constant("Rose"))))))), Literal(Constant(())))
+    res1: String = Block(List(ClassDef(Modifiers(), TypeName("Flower"), List(), Template(List(Ident(TypeName("AnyRef"))), emptyValDef, List(DefDef(Modifiers(), termNames.CONSTRUCTOR, List(), List(List()), TypeTree(), Block(List(Apply(Select(Super(This(typeNames.EMPTY), typeNames.EMPTY), termNames.CONSTRUCTOR), List())), Literal(Constant(())))), DefDef(Modifiers(), TermName("name"), List(), List(), TypeTree(), Literal(Constant("Rose"))))))), Literal(Constant(())))
 
 ### 構文木の走査
 

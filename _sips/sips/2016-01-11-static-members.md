@@ -106,7 +106,7 @@ The following rules ensure that methods can be correctly compiled into static me
 
 1. Only objects can have members annotated with `@static`
 
-2. The fields annotated with `@static` should preceed any non-`@static` fields. This ensures that we do not introduce surprises for users in initialization order of this class.
+2. The fields annotated with `@static` should precede any non-`@static` fields. This ensures that we do not introduce surprises for users in initialization order of this class.
 
 3. The right hand side of a method or field annotated with `@static` can only refer to top-level classes, members of globally accessible objects and `@static` members. In particular, for non-static objects `this` is not accesible. `super` is never accessible.
 
@@ -205,12 +205,12 @@ Let's consider possible options:
  - if the field `c` is emitted as `static` on the bytecode level, it will be initialized before the `c` in superclass is initialized, reordering side-effects in initializers;
  - if the field `c` is _not_ emitted as `static` but the field `d` is, then the order of initialization would also be affected, reordering side-effects.
 
-Based on the previous study done in preparation for this SIP, the authors believe that the only reasonable way to maintain current sematics would be to say that such alternative would require these rules:
+Based on the previous study done in preparation for this SIP, the authors believe that the only reasonable way to maintain current semantics would be to say that such alternative would require these rules:
 
  - only the fields which were not declared by parents of the object can be emitted as static;
  - only fields that are lexically defined before any non-static field or statement in the body can be emitted as static.
 
-Authors believe that the alternative would require the same effort to implement, but will be less intuitive to users and harder to control as, for example, reodering fields in object might not be binary compatible.
+Authors believe that the alternative would require the same effort to implement, but will be less intuitive to users and harder to control as, for example, reordering fields in object might not be binary compatible.
 
 ## See Also ##
  * [SI-4581](https://issues.scala-lang.org/browse/SI-4581) is a request for a `@static` annotation

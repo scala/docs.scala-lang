@@ -14,7 +14,7 @@ permalink: /overviews/core/:title.html
 ## Introduction
 
 Scala 2.10 introduced a new feature called *implicit classes*.  An *implicit class* is a class
-marked with the `implicit` keyword.  This keyword makes the class' primary constructor available
+marked with the `implicit` keyword.  This keyword makes the class's primary constructor available
 for implicit conversions when the class is in scope.
 
 Implicit classes were proposed in [SIP-13](http://docs.scala-lang.org/sips/pending/implicit-classes.html).
