@@ -142,11 +142,11 @@ How can we, as library authors, spare our users of runtime errors and dependency
 
 ## MiMa - Checking binary compatibility against previous library versions 
 
-The [Migration Manager for Scala](https://github.com/typesafehub/migration-manager) (MiMa) is a tool for diagnosing binary incompatibilities between different library versions.  
+The [Migration Manager for Scala](https://github.com/lightbend/migration-manager) (MiMa) is a tool for diagnosing binary incompatibilities between different library versions.  
 It works by comparing the class files of two provided JARs and report any binary incompatibilities found. 
 Both backwards and forwards binary incompatibility can be detected by swapping input order of the JARs.
 
-By incorporating [MiMa SBT plugin](https://github.com/typesafehub/migration-manager/wiki/Sbt-plugin) into your SBT build, you can easily check whether 
+By incorporating [MiMa SBT plugin](https://github.com/lightbend/migration-manager/wiki/Sbt-plugin) into your SBT build, you can easily check whether 
 you have accidentally introduced binary incompatible changes. Detailed instruction on how to use the SBT plugin can be found in the link.
 
 We strongly encourage every library author to incorporate MiMa into their continuous integration and release workflow.
@@ -175,7 +175,7 @@ Again, we recommend using MiMa to double check that you have not broken binary c
 ## Versioning Scheme - Communicating compatibility breakages
 
 Library authors use versioning schemes to communicate compatibility guarantees between library releases to their users. Versioning schemes like [Semantic Versioning](http://semver.org/)(SemVer) allow
-users to easily reason about the impact of updating a library, without needing to read the detailed release note.
+users to easily reason about the impact of updating a library, without needing to read the detailed release notes.
 
 In the following section, we will outline a versioning scheme based on Semantic Versioning that we **strongly encourage** you to adopt for your libraries. The rules listed below are **in addition** to 
 Semantic Versioning v2.0.0.
@@ -184,7 +184,7 @@ Semantic Versioning v2.0.0.
 
 * If backward **binary compatibility** is broken, **major version number** must be increased.
 * If backward **source compatibility** is broken, **minor version number** must be increased.
-* A change in **patch version number** signals **no binary nor source incompatibility**. 
+* A change in **patch version number** signals **neither binary nor source incompatibility**. 
 According to SemVer, patch versions should contain only bug fixes that fix incorrect behavior so major behavioral
 change in method/classes should result in a minor version bump.
 * When major version is `0`, a minor version bump **may contain both source and binary breakages**.
