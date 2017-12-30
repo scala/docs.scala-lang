@@ -123,7 +123,7 @@ applicable):
 
     @Transaction
     @throws(classOf[IOException])
-    override protected final def foo() {
+    override protected final def foo(): Unit = {
       ...
     }
 
