@@ -66,7 +66,8 @@ Because of this, having multiple versions of the same library in the classpath i
 * Need to fetch and bundle multiple library versions when only one is actually used
 * Unexpected runtime behavior if the order of class files changes
 
-Therefore, when resolving JARs to use for compilation and packaging, most build tools will pick only one version of each library and **evict** the rest.
+Therefore, build tools like SBT and Gradle will pick one version and **evict** the rest when resolving JARs to use for compilation and packaging. 
+By default they pick the latest version of each library, but it is possible to specify another version if required.
 
 ### Source Compatibility
 Two library versions are **Source Compatible** with each other if switching one for the other does not incur any compile errors or unintended behavioral changes (semantic errors).  
