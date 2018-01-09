@@ -23,7 +23,7 @@ There are a few interactive resources for trying out Scala, to get a look and fe
     * Functional Programming in Scala Capstone
 
 ### Try Scala In Your Browser!
-There are a handful of websites where you can interactively run Scala code in your browser! Have a look at [scala-js-fiddle](http://www.scala-js-fiddle.com/), [Scala Kata](http://www.scalakata.com/), and [Scastie](http://scastie.org/) for more.
+There are a handful of websites where you can interactively run Scala code in your browser! Have a look at [ScalaFiddle](https://scalafiddle.io/) and [Scastie](http://scastie.org/).
 
 ### allaboutscala
 [allaboutscala](http://allaboutscala.com/) provides detailed tutorials for beginners.
