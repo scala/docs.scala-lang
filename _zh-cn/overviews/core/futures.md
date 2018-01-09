@@ -87,7 +87,7 @@ Future的一个重要属性在于它只能被赋值一次。一旦给定了某�
 
     f onComplete {
       case Success(posts) => for (post <- posts) println(post)
-      case Success(posts) => for (post <- posts) println(post)
+      case Failure(t) => println("An error has occured: " + t.getMessage)
     }
 
 onComplete方法一般在某种意义上它允许客户处理future计算出的成功或失败的结果。对于仅仅处理成功的结果，onSuccess 回调使用如下（该回调以一个偏函数(partial function)为参数）：
