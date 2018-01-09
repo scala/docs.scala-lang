@@ -1,16 +1,15 @@
 ---
-layout: tutorial
+layout: tour
 title: Packages and Imports
 
-disqus: true
+discourse: true
 
-tutorial: scala-tour
-categories: tour
-num: 4
-next-page:
-previous-page: named-parameters
-prerequisite-knowledge: basics, unified-types, classes
+partof: scala-tour
+
+num: 35
+previous-page: named-arguments
 ---
+
 # Packages and Imports
 Scala uses packages to create namespaces which allow you to modularize programs.
 

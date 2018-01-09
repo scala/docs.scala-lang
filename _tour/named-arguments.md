@@ -7,6 +7,7 @@ discourse: true
 partof: scala-tour
 
 num: 34
+next-page: packages-and-imports
 previous-page: default-parameter-values
 prerequisite-knowledge: function-syntax
 
