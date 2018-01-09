@@ -195,7 +195,7 @@ Some examples:
 * `v1.0.0 -> v2.0.0` is <span style="color: #c10000">binary incompatible</span>. 
   End users and library maintainers need to update all their dependency graph to remove all dependency on `v1.0.0`.
 * `v1.0.0 -> v1.1.0` is <span style="color: #2b2bd4">binary compatible</span>. Classpath can safely contain both `v1.0.0` and `v1.1.0`. End user may need to fix minor source breaking changes introduced
-* `v1.0.0 -> v1.0.1` is <span style="color: #2b2bd4">binary compatible</span>. This is a safe upgrade that does not introduce binary or source incompatibilities.
+* `v1.0.0 -> v1.0.1` is <span style="color: #2b2bd4">source and binary compatible</span>. This is a safe upgrade that does not introduce binary or source incompatibilities.
 * `v0.4.0 -> v0.5.0` is <span style="color: #c10000">binary incompatible</span>. 
   End users and library maintainers need to update all their dependency graph to remove all dependency on `v0.4.0`.
 * `v0.4.0 -> v0.4.1` is <span style="color: #2b2bd4">binary compatible</span>. Classpath can safely contain both `v1.0.0` and `v1.1.0`. End user may need to fix minor source breaking changes introduced
