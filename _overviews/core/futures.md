@@ -74,7 +74,7 @@ although this should only be done in rare cases.
 
 `ExecutionContext.global` is an `ExecutionContext` backed by a [ForkJoinPool](http://docs.oracle.com/javase/tutorial/essential/concurrency/forkjoin.html).
 It should be sufficient for most situations but requires some care.
-A `ForkJoinPool` manages a limited amount of threads (the maximum amount of thread being referred to as *parallelism level*).
+A `ForkJoinPool` manages a limited amount of threads (the maximum amount of threads being referred to as *parallelism level*).
 The number of concurrently blocking computations can exceed the parallelism level
 only if each blocking call is wrapped inside a `blocking` call (more on that below).
 Otherwise, there is a risk that the thread pool in the global execution context is starved,
