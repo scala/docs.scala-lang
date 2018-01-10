@@ -35,7 +35,7 @@ O significado das cláusulas de anotação é _dependente da implementação_. N
 
 No exemplo a seguir, adicionamos a anotação `throws` à definição do método `read` para capturar a exceção lançada no código Java.
 
-> Um compilador Java verifica se um programa contém manipuladores para [exceções verificadas](http://docs.oracle.com/javase/specs/jls/se5.0/html/exceptions.html) analisando quais exceções verificadas podem resultar da execução de um método ou construtor. Para cada exceção verificada que é um resultado possível, a cláusula **throws** para o método ou construtor _deve_ mencionar a classe dessa exceção ou uma das superclasses da classe dessa exceção.
+> Um compilador Java verifica se um programa contém manipuladores para exceções verificadas analisando quais exceções verificadas podem resultar da execução de um método ou construtor. Para cada exceção verificada que é um resultado possível, a cláusula **throws** para o método ou construtor _deve_ mencionar a classe dessa exceção ou uma das superclasses da classe dessa exceção.
 > Como Scala não tem exceções verificadas, os métodos Scala _devem_ ser anotados com uma ou mais anotações `throws`, de forma que o código Java possa capturar exceções lançadas por um método Scala.
 
 

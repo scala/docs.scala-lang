@@ -9,7 +9,7 @@ partof: scala-tour
 num: 26
 language: es
 
-next-page: explicitly-typed-self-references
+next-page: self-types
 previous-page: upper-type-bounds
 ---
 

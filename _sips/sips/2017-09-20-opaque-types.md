@@ -37,7 +37,7 @@ Some use cases for opaque types are:
  * Classes representing different entities with the same underlying type,
    such as `Id` and `Password` being defined in terms of `String`.
 
-We expand on all these points in our [Motivation](motivation) section.
+We expand on all these points in our motivation section.
 
 For a definition of boxing and previous state-of-the-art, we recommend reading [SIP-15].
 
@@ -323,7 +323,7 @@ qualifies the type equivalence for opaque types:
 > If `t` is defined by an opaque type `opaque type t = T`, then `t` is not equivalent to `T` unless
 `t` occurs in the template of the opaque type companion.
 
-In the [Implementation notes](implementation-notes), we explain how this can be achieved in the
+In the Implementation notes, we explain how this can be achieved in the
 implementation.
 
 ### Opaque type companion
@@ -465,12 +465,12 @@ opaque type `Fix`:
 ```scala
 package object fixed {
   opaque type Fix[F_]] = F[Fix[F]]
-  
+
   object Fix {
     def fix[F[_]](unfixed: F[Fix[F]]): Fix[F] = unfixed
     def unfix[F[_]](fixed: Fix[F]): F[Fix[F]] = fixed
   }
-  
+
   sealed abstract class TreeU[R]
 
   type Tree = Fix[TreeU]
@@ -514,10 +514,10 @@ bounding the underlying type (`A`) with `AnyRef`.
 ```scala
 package object nullable {
   opaque type Nullable[A <: AnyRef] = A
-  
+
   object Nullable {
     def apply[A <: AnyRef](a: A): Nullable[A] = a
-    
+
     implicit class NullableOps[A <: AnyRef](na: Nullable[A]) {
       def exists(p: A => Boolean): Boolean =
         na != null && p(na)
@@ -692,7 +692,7 @@ package object prob {
     }
 
     def asDouble(p: Probability): Double = p
-    
+
     val Never: Probability = 0.0
     val CoinToss: Probability = 0.5
     val Certain: Probability = 1.0

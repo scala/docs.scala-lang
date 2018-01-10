@@ -10,7 +10,7 @@ num: 29
 language: es
 
 next-page: unified-types
-previous-page: explicitly-typed-self-references
+previous-page: self-types
 ---
 
 Scala tiene incorporado un mecanismo de inferencia de tipos el cual permite al programador omitir ciertos tipos de anotaciones. Por ejemplo, generalmente no es necesario especificar el tipo de una variable, ya que el compilador puede deducir el tipo mediante la expresión de inicialización de la variable. También puede generalmente omitirse los tipos de retorno de métodos ya que se corresponden con el tipo del cuerpo, que es inferido por el compilador.

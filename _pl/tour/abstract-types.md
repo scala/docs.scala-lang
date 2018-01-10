@@ -76,4 +76,4 @@ object AbstractTypeTest2 extends App {
 }
 ```
 
-Należy też pamiętać o zastosowaniu [adnotacji wariancji](variance.html). Inaczej nie byłoby możliwe ukrycie konkretnego typu sekwencji obiektu zwracanego przez metodę `newIntSeqBuf`.
+Należy też pamiętać o zastosowaniu [adnotacji wariancji](variances.html). Inaczej nie byłoby możliwe ukrycie konkretnego typu sekwencji obiektu zwracanego przez metodę `newIntSeqBuf`.

@@ -9,7 +9,7 @@ overview-name: Collections
 
 num: 17
 
-languages: [ja, zh-cn]
+languages: [zh-cn]
 permalink: /overviews/collections/:title.html
 ---
 

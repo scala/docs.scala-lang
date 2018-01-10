@@ -27,8 +27,8 @@ language: ja
     scala> pa map (x => (x - 1) / 2)
     res1: scala.collection.parallel.mutable.ParArray[Int] = ParArray(0, 1, 2, 3, 4, 5, 6, 7,...
 
-内部的には、並列配列の[「スプリッタ」 (splitter)](architecture.html#id1) の分割は走査用の添字を更新した二つの新たなスプリッタを作る事に結局なる。
-[「コンバイナ」 (combiner)](architecture.html#id1) はより複雑だ。多くの変換メソッドの多く（例えば、`flatMap`、`filter`、`takeWhile` など）は、事前に結果の要素数（そのため、配列のサイズ）が分からないため、それぞれのコンバイナはならし定数時間 (amortized constant time) の
+内部的には、並列配列の[「スプリッタ」 (splitter)](architecture.html) の分割は走査用の添字を更新した二つの新たなスプリッタを作る事に結局なる。
+[「コンバイナ」 (combiner)](architecture.html) はより複雑だ。多くの変換メソッドの多く（例えば、`flatMap`、`filter`、`takeWhile` など）は、事前に結果の要素数（そのため、配列のサイズ）が分からないため、それぞれのコンバイナはならし定数時間 (amortized constant time) の
  `+=` 演算を持つ配列バッファの変種だ。
 異なるプロセッサがそれぞれの並列配列コンバイナに要素を追加し、後で内部の配列を連結することで合成が行われる。
 要素の総数が分かった後になってから、内部の配列が割り当てられ、並列に書き込まれる。そのため、変換メソッドは読み込みメソッドに比べて少し高価だ。また、最後の配列の割り当ては JVM上で逐次的に実行されるため、map 演算そのものが非常に安価な場合は、配列の割り当てが逐次的ボトルネックとなりうる。

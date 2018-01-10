@@ -9,7 +9,7 @@ partof: scala-tour
 num: 6
 language: es
 
-next-page: sequence-comprehensions
+next-page: extractor-objects
 previous-page: case-classes
 ---
 

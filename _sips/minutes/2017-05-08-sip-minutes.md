@@ -13,7 +13,7 @@ The following agenda was distributed to attendees:
 | --- | --- | --- |
 | [SIP-NN - comonadic-comprehensions](http://docs.scala-lang.org/sips/comonadic-comprehensions.html) | Shimi Bandiel | Rejected |
 | [SIP-33 - Match infix & prefix types to meet expression rules](http://docs.scala-lang.org/sips/make-types-behave-like-expressions.html)| Oron Port | Pending |
-|[Scala Library Changes](scala/scala-dev#323)|Adriaan Moors| Scala-dev proposal |
+|[Scala Library Changes](https://github.com/scala/scala-dev/issues/323)|Adriaan Moors| Scala-dev proposal |
 
 Jorge Vicente Cantero was the Process Lead.
 
@@ -84,7 +84,7 @@ Skipped since they are waiting for the prototype from the author of the proposal
 
  **Adriaan** agrees with that. He believes that is probably too painful to change anything about it.
 
- **Jorge** proposes to keep thinking on this and to discuss it in the next two months, migration cycle.  
+ **Jorge** proposes to keep thinking on this and to discuss it in the next two months, migration cycle.
 
  **Seth** said that as the 2.13 cycle progresses will bring more information and feedback about the usage. He believes that it is a good start to begin with and they’ll know more as they go through it.
 

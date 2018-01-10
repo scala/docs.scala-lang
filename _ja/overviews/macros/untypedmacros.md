@@ -52,7 +52,7 @@ title: 型指定の無いマクロ
 
 型指定の無いマクロは抽出子マクロを可能とすることに注意してほしい: [SI-5903](https://issues.scala-lang.org/browse/SI-5903)。
 Scala 2.10.x においても `unapply` や `unaoolySeq` をマクロとして宣言することは可能だが、リンクした JIRA ケースに記述されているとおり、使い勝手は非常に制限されたものとなっている。パターンマッチング内におけるテキスト抽象化の全力は型指定の無いマクロによって発揮できるようになる。
-詳細は単体テストの [test/files/run/macro-expand-unapply-c](https://github.com/scalamacros/kepler/tree/paradise/macros/test/files/run/macro-expand-unapply-c) を参照。
+詳細は単体テストの test/files/run/macro-expand-unapply-c を参照。
 
 もしマクロに型指定の無いパラメータがあった場合、マクロ展開を型付けする際にタイプチェッカーは引数に関しては何もせずに型指定の無いままマクロに渡す。もしいくつかのパラメータが型アノテーションを持っていたとしても、現行では無視される。これは将来改善される予定だ: [SI-6971](https://issues.scala-lang.org/browse/SI-6971)。引数が型検査されていないため、implicit の解決や型引数の推論は実行されない (しかし、両者ともそれぞれ `c.typeCheck` と `c.inferImplicitValue` として実行できる)。
 
@@ -62,4 +62,4 @@ Scala 2.10.x においても `unapply` や `unaoolySeq` をマクロとして宣
 
 最後に、型指定のないマクロのパッチは `c.Expr[T]` の代わりにマクロ実装のシグネチャのどこでも `c.Tree` を使うことを可能とする。
 マクロ定義の型指定なし/型付きと、構文木/式によるマクロ実装の 4通りの組み合わせ全てがパラメータと戻り値の型の両方においてサポートされている。
-さらに詳しいことはユニットテストを参照してほしい: [test/files/run/macro-untyped-conformance](https://github.com/scalamacros/kepler/blob/b55bda4860a205c88e9ae27015cf2d6563cc241d/test/files/run/macro-untyped-conformance/Impls_Macros_1.scala)。
+さらに詳しいことはユニットテストを参照してほしい: test/files/run/macro-untyped-conformance。
