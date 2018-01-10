@@ -1,0 +1,35 @@
+// SLIDER
+//------------------------------------------------
+//------------------------------------------------
+.unslider {
+	ul {
+		li {
+			padding: 0 1px;
+		}
+	}
+
+	.unslider-arrow {
+		display: none;
+	}
+
+	.unslider-nav {
+		margin-top: 10px;
+		@include bp(large) {
+			margin-top: 10px;
+		}
+
+		ol {
+			li {
+				width: 7px;
+				height: 7px;
+				border: none;
+				background: rgba(#fff, 0.3);
+
+				&.unslider-active {
+					pointer-events: none;
+					background: #fff;
+				}
+			}
+		}
+	}
+}

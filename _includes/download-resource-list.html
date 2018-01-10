@@ -1,0 +1,31 @@
+<h3>Other resources</h3>
+
+<p>You can find the installer download links for other operating systems, as well as documentation and source code archives for Scala {{page.release_version}} below.</p>
+
+<div class="content-primary">
+<table>
+<thead><tr>
+  <th style="text-align: left">Archive</th>
+  <th style="text-align: left">System</th>
+  {% unless page.dont_show_sizes %}
+  <th style="text-align: left">Size</th>
+  {% endunless %}
+</tr></thead>
+
+<tbody>
+{% for resource in page.resources %}
+<tr>
+  <td style="text-align: left">
+    <a id="#link{{ resource[0] }}" href="{{ resource[2] }}">
+      {{ resource[1] }}
+    </a>
+  </td>
+  <td style="text-align: left">{{ resource[3] }}</td>
+  {% unless page.dont_show_sizes %}
+  <td style="text-align: left">{{ resource[4] }}</td>
+  {% endunless %}
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>

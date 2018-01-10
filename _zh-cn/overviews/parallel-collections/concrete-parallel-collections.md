@@ -1,10 +1,12 @@
 ---
-layout: overview-large
+layout: multipage-overview
 title: 具体并行集合类
 
-disqus: true
+discourse: false
 
 partof: parallel-collections
+overview-name: Parallel Collections
+
 num: 2
 language: zh-cn
 ---

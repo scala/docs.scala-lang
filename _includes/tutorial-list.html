@@ -1,0 +1,7 @@
+{% comment %}Use include variable 'column' to describe which column list to draw (0 or 1){% endcomment %}
+{% for tutorial in site.data.tutorials limit: 6 %}
+	{% assign loopindex = forloop.index | modulo: 2 %}
+	{% if loopindex == include.column %}
+	  <li><a href="{{tutorial.url}}"><i class="fa fa-file-text-o"></i>{{tutorial.title | truncate: 60}}</a></li>
+	{% endif %}
+{% endfor %}

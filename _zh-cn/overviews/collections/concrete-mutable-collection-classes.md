@@ -1,10 +1,12 @@
 ---
-layout: overview-large
+layout: multipage-overview
 title: 具体的可变容器类
 
-disqus: true
+discourse: false
 
 partof: collections
+overview-name: Collections
+
 num: 9
 language: zh-cn
 ---
@@ -24,7 +26,7 @@ language: zh-cn
     res33: buf.type = ArrayBuffer(1, 10)
     scala> buf.toArray
     res34: Array[Int] = Array(1, 10)
-    
+
 ## List Buffers
 
 [ListBuffer](http://www.scala-lang.org/api/2.10.0/scala/collection/mutable/ListBuffer.html) 类似于数组缓冲。区别在于前者内部实现是链表， 而非数组。如果你想把构造完的缓冲转换为列表，那就用列表缓冲，别用数组缓冲。
@@ -43,7 +45,7 @@ language: zh-cn
 数组缓冲用来构建数组，列表缓冲用来创建列表。类似地，[StringBuilder](http://www.scala-lang.org/api/2.10.0/scala/collection/mutable/StringBuilder.html) 用来构造字符串。作为常用的类，字符串构造器已导入到默认的命名空间。直接用 new StringBuilder就可创建字符串构造器 ，像这样：
 
     scala> val buf = new StringBuilder
-    buf: StringBuilder = 
+    buf: StringBuilder =
     scala> buf += 'a'
     res38: buf.type = a
     scala> buf ++= "bcdef"
@@ -87,7 +89,7 @@ Scala除了提供了不可变队列之外，还提供了可变队列。你可以
 
 Array Sequences 是具有固定大小的可变序列。在它的内部，用一个 `Array[Object]`来存储元素。在Scala 中，[ArraySeq](http://www.scala-lang.org/api/2.10.0/scala/collection/mutable/ArraySeq.html) 是它的实现类。
 
-如果你想拥有 Array 的性能特点，又想建立一个泛型序列实例，但是你又不知道其元素的类型，在运行阶段也无法提供一个`ClassManifest` ，那么你通常可以使用 `ArraySeq` 。这些问题在[arrays](http://docs.scala-lang.org/overviews/collections/arrays.html)一节中有详细的说明。
+如果你想拥有 Array 的性能特点，又想建立一个泛型序列实例，但是你又不知道其元素的类型，在运行阶段也无法提供一个`ClassTag` ，那么你通常可以使用 `ArraySeq` 。这些问题在[arrays](http://docs.scala-lang.org/overviews/collections/arrays.html)一节中有详细的说明。
 
 ## 堆栈
 
@@ -167,4 +169,3 @@ Concurrent Map可以同时被多个线程访问。除了[Map](http://www.scala-l
     res50: bits.type = BitSet(1, 3)
     scala> bits
     res51: scala.collection.mutable.BitSet = BitSet(1, 3)
-

@@ -1,0 +1,64 @@
+// MARKER
+//------------------------------------------------
+//------------------------------------------------
+
+.marker {
+    position: absolute;
+    width: 16px;
+    height: 8px;
+    background: #A4302E;
+    left: 0px;
+    top: 0px;
+    border-radius: 100%;
+    cursor: pointer;
+
+    @include bp(xxlarge) {
+      display: none;
+    }
+
+    &:hover {
+        .info-marker,
+        .arrow {
+            visibility: visible;
+            opacity: 1;
+            transition: $base-transition;
+        }
+    }
+
+    &:before {
+        content: "";
+        position: absolute;
+        background: rgba(#A4302E, 0.3);
+        left: -8px;
+        top: -4px;
+        width: 32px;
+        height: 16px;
+        border-radius: 100%;
+        z-index: 1;
+    }
+
+    .info-marker {
+        width: 472px;
+        position: absolute;
+        left: -13px;
+        top: 30px;
+        font-size: $font-size-small;
+        color: #fff;
+        font-family: $heading-font-family;
+        background: rgba($gray-dark, 0.8);
+        padding: 20px;
+        visibility: hidden;
+        opacity: 0;
+
+
+        .arrow {
+            position: absolute;
+            left: 0;
+            top: -16px;
+            width: 23px;
+            height: 13px;
+            z-index: 1;
+        }
+    }
+
+}

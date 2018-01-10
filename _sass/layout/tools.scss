@@ -1,0 +1,66 @@
+// TOOLS
+//------------------------------------------------
+//------------------------------------------------
+//------------------------------------------------
+
+.content-primary {
+    .tools {
+        @include clearfix;
+
+        .tool-item {
+            @include span-columns(4);
+            @include omega(3n);
+            margin-bottom: $padding-medium;
+            min-height: 120px;
+            padding: 15px;
+            @include bp(large) {
+                 @include span-columns(12);
+                min-height: auto;
+            }
+
+            .tool-item-header {
+                margin-bottom: 10px;
+
+                img {
+                    height: 50px;
+                    width: auto;
+                }
+
+
+                h4 {
+                    color: $headings-font-color;
+                    margin-bottom: 0;
+                    transition: $base-transition;
+                }
+
+                a {
+                  &:active,
+                  &:focus,
+                  &:hover {
+                    text-decoration: none;
+                  }
+                }
+
+            }
+
+            .tool-item-main {
+                p {
+                    color: $base-font-color;
+                    margin-bottom: 6px;
+                }
+                ul {
+                    padding: 0;
+                    margin: 0;
+
+                    li {
+                        list-style: none;
+                        padding: 0;
+                        margin: 0;
+                        display: inline-block;
+
+                    }
+                }
+            }
+        }
+    }
+}

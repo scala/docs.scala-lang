@@ -1,0 +1,36 @@
+{% comment %}
+	Layouts using this include should pass an include variable called 'collection' referencing a collection carrying the data
+{% endcomment %}
+<div class="tools">
+	{% for item in include.collection %}
+		<div class="tool-item">
+			<div class="tool-item-header">
+				<a href="{{item.link}}">
+					<img src="{{item.icon}}" alt="{{item.title}}">
+					<h4>{{item.title}}</h4>
+				</a>
+			</div>
+			<div class="tool-item-main">
+				<p>{{item.description}}</p>
+				<ul>
+					{% if item.homeLink %}
+						<li><a href="{{item.homeLink}}">Home</a></li>
+						{% if item.contributingLink or item.readmeLink or item.issuesLink %}<li class="dot">•</li>{% endif %}
+					{% endif %}
+					{% if item.issuesLink %}						
+						<li><a href="{{item.issuesLink}}">Issues</a></li>
+						{% if item.contributingLink or item.readmeLink %}<li class="dot">•</li>{% endif %}
+					{% endif %}
+					{% if item.readmeLink %}
+						<li><a href="{{item.readmeLink}}">ReadMe</a></li>
+						{% if item.contributingLink %}<li class="dot">•</li>{% endif %}
+					{% endif %}
+					{% if item.contributingLink %}
+						<li><a href="{{item.contributingLink}}">Contributing</a></li>
+					{% endif %}
+				</ul>
+			</div>
+		</div>
+	{% endfor %}
+	
+</div>

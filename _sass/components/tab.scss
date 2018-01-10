@@ -1,0 +1,43 @@
+// TAB
+//------------------------------------------------
+//------------------------------------------------
+
+.nav-tab {
+    border-bottom: $base-border-gray;
+    @include display(flex);
+    @include align-items(center);
+    @include justify-content(flex-start);
+    margin-bottom: 10px;
+
+    .item-tab {
+        a {
+            color: $base-font-color-light;
+            display: block;
+            padding: 0 20px 10px;
+            margin-bottom: -1px;
+
+            &:active,
+            &:focus,
+            &:hover {
+                text-decoration: none;
+                color: $base-font-color;
+            }
+
+            &.active {
+                border-bottom: 2px solid $brand-primary;
+                color: $brand-primary;
+                pointer-events: none;
+            }
+        }
+
+    }
+    @include bp(small) {
+        @include justify-content(space-between);
+        .item-tab {
+        a {
+            padding: 0 10px 10px;
+            font-size: $font-size-medium;
+        }
+        }
+    }
+}

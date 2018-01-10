@@ -1,0 +1,31 @@
+<div class="content-nav">
+	<div class="inner-box sidebar-toc-wrapper" style="">
+		<h5 class="contents">Contents</h5>
+		<div class="inner-toc" id="sidebar-toc">
+      <div id="toc"></div>
+      {% if page.languages %}
+        <ul id="available-languages" style="display: none;">
+          <li><a href="{{ site.baseurl }}{{ page.url }}">English</a></li>
+          {% for l in page.languages %}
+            {% capture intermediate %}{{ page.url | remove_first: l }}{% endcapture %}
+            {% capture rootTutorialURL %}{{ intermediate | remove_first: '/' }}{% endcapture %}
+      			{% assign lang = site.data.languages[l] %}
+      			<li><a href="{{ site.baseurl }}/{{ l }}/{{ rootTutorialURL }}" class="lang">{{ lang.name }}</a></li>
+          {% endfor %}
+      </ul>
+      {% elsif page.language %}
+         {% assign engPath = page.id | remove_first: "/" | remove_first: page.language | append: '.html' %}
+         {% assign engPg = site.overviews | where: 'partof', page.partof | first %}
+        <ul id="available-languages" style="display: none;">
+          <li><a href="{{ site.baseurl }}{{ engPath }}">English</a></li>
+          {% for l in engPg.languages %}
+            {% assign lang = site.data.languages[l] %}
+            <li><a href="{{ site.baseurl }}/{{ l }}{{ engPath }}" class="lang">{{ lang.name }}</a></li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+		</div>
+		<hr>
+		<div class="help-us"><a href="https://github.com/scala/docs.scala-lang/blob/master/{% if page.collection %}{{ page.relative_path }}{% else %}{{ page.path }}{% endif %}"><i class="fa fa-pencil" aria-hidden="true"></i> Problem with this page?<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Please help us fix it!</a></div>
+	</div>
+</div>

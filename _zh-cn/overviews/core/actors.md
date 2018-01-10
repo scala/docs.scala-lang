@@ -1,9 +1,12 @@
 ---
-layout: overview
+layout: singlepage-overview
 title: The Scala Actors API
-overview: actors
-disqus: true
+
+partof: actors
+
 language: zh-cn
+
+discourse: false
 ---
 
 **Philipp Haller 和 Stephen Tu 著**
@@ -99,7 +102,7 @@ reactWithin(0) { case HighPriorityMsg => // ... case TIMEOUT => react { case Low
 
 在上述例子中，即使在信箱里有一个先到达的低优先级的消息，actor对象也会首先处理下一个高优先级的消息。actor对象只有在信箱里没有高优先级消息时才会首先处理一个低优先级的消息。
 
-另外，ReplyReactor 增加了`Actor.State.TimedSuspended`执行状态。一个使用`reactWithin`方法等待接收消息而挂起的actor对象，处在` Actor.State.TimedSuspended `状态。 
+另外，ReplyReactor 增加了`Actor.State.TimedSuspended`执行状态。一个使用`reactWithin`方法等待接收消息而挂起的actor对象，处在` Actor.State.TimedSuspended `状态。
 
 ### Actor trait
 
@@ -228,13 +231,13 @@ channel通过使用具体的Channel类创建。它同时扩展了InputChannel和
 另一种共享channel的可行的方法是在消息中发送它们。下面的例子对此作了阐述。
 
     case class ReplyTo(out: OutputChannel[String])
-    
+
     val child = actor {
       react {
         case ReplyTo(out) => out ! "hello"
       }
     }
-    
+
     actor {
       val channel = new Channel[String]
       child ! ReplyTo(channel)
@@ -302,5 +305,4 @@ scheduler用于执行一个Reactor实例（或子类型的一个实例）。Reac
     }
     val future = myRemoteActor !! "What is the last digit of PI?"
 
-记住：select方法是惰性的，它不实际初始化任何网络连接。仅当必要时（例如，调用!时），它会单纯地创建一个新的，准备好初始化新网络连接的AbstractActor实例。 
-
+记住：select方法是惰性的，它不实际初始化任何网络连接。仅当必要时（例如，调用!时），它会单纯地创建一个新的，准备好初始化新网络连接的AbstractActor实例。

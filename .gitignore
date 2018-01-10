@@ -1,4 +1,5 @@
 _site
+.ruby-version
 .DS_Store
 .project
 .settings
@@ -8,3 +9,4 @@ vendor/bundle
 .idea/
 /coursier
 /tut-tmp/
+.sass-cache/

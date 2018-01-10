@@ -1,11 +1,12 @@
 ---
-layout: overview
-disqus: true
-overview: implicit-classes
-label-color: success
-label-text: Available
-language: zh-cn
+layout: singlepage-overview
 title: Implicit Classes
+
+partof: implicit-classes
+
+language: zh-cn
+
+discourse: false
 ---
 
 **Josh Suereth 著**
@@ -37,14 +38,14 @@ Scala 2.10引入了一种叫做隐式类的新特性。隐式类指的是用impl
 
     scala> import Helpers._
     import Helpers._
-    
+
     scala> 5 times println("HI")
     HI
     HI
     HI
     HI
     HI
-    
+
 使用隐式类时，类名必须在当前作用域内可见且无歧义，这一要求与隐式值等其他隐式类型转换方式类似。
 
 ## 限制条件
@@ -75,8 +76,8 @@ Scala 2.10引入了一种叫做隐式类的新特性。隐式类指的是用impl
 
     object Bar
     implicit class Bar(x: Int) // 错误！
-    
+
     val x = 5
     implicit class x(y: Int) // 错误！
-    
+
     implicit case class Baz(x: Int) // 错误！

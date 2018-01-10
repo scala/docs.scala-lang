@@ -1,0 +1,54 @@
+- title: Documentation
+  class: documentation
+  links:
+    - title: Getting Started
+      url: "/getting-started.html"
+    - title: API
+      url: "https://www.scala-lang.org/api/current/index.html"
+    - title: Overviews/Guides
+      url: "/overviews"
+    - title: Language Specification
+      url: "http://scala-lang.org/files/archive/spec/2.12/"
+- title: Download
+  class: download
+  links:
+    - title: Current Version
+      url: "http://scala-lang.org/download/"
+    - title: All versions
+      url: "http://scala-lang.org/download/all.html"
+- title: Community
+  class: community
+  links:
+    - title: Community
+      url: "http://scala-lang.org/community/"
+    - title: Mailing Lists
+      url: "http://scala-lang.org/community/index.html#mailing-lists"
+    - title: Chat Rooms & More
+      url: "http://scala-lang.org/community/index.html#chat-rooms"
+    - title: Libraries and Tools
+      url: "http://scala-lang.org/community/index.html#community-libraries-and-tools"
+    - title: "The Scala Center"
+      url: "http://scala.epfl.ch/"
+- title: Contribute
+  class: contribute
+  links:
+    - title: How to help
+      url: "http://scala-lang.org/contribute/"
+    - title: Report an Issue
+      url: "http://scala-lang.org/contribute/bug-reporting-guide.html"
+- title: Scala
+  class: scala
+  links:
+    - title: Blog
+      url: "http://scala-lang.org/blog/"
+    - title: Code of Conduct
+      url: "http://scala-lang.org/conduct/"
+    - title: License
+      url: "http://scala-lang.org/license/"
+- title: Social
+  class: social
+  links:
+    - title: GitHub
+      url: "https://github.com/scala/scala"
+    - title: Twitter
+      url: "https://twitter.com/scala_lang"

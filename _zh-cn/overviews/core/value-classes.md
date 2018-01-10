@@ -1,11 +1,12 @@
 ---
-layout: overview
-disqus: true
-language: zh-cn
-label-color: success
-label-text: New in 2.10
-overview: value-classes
+layout: singlepage-overview
 title: Value Classes and Universal Traits
+
+partof: value-classes
+
+language: zh-cn
+
+discourse: false
 ---
 
 **Mark Harrah 著**
@@ -257,4 +258,3 @@ value类不能继承non-universal trait，并且其本身不能被继承：
     object Outer {
       class Inner(val x: Int) extends AnyVal
     }
-

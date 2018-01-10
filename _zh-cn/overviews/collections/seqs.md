@@ -1,10 +1,12 @@
 ---
-layout: overview-large
+layout: multipage-overview
 title: 序列trait：Seq、IndexedSeq及LinearSeq
 
-disqus: true
+discourse: false
 
 partof: collections
+overview-name: Collections
+
 num: 5
 language: zh-cn
 ---
@@ -104,4 +106,3 @@ ListBuffer和ArrayBuffer是常用的buffer实现 。顾名思义，ListBuffer依
 | buf.clear() | 移除buffer中的所有元素。 |
 | **克隆：**	 |            |
 | buf.clone | 与buf具有相同元素的新buffer。 |
-

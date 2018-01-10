@@ -1,0 +1,181 @@
+// SCALA MAIN RESOURCES
+//------------------------------------------------
+//------------------------------------------------
+
+.scala-main-resources {
+    height: 180px;
+    background: $gray-darker;
+    position: relative;
+
+    .resources {
+        .button {
+            font-size: $font-size-large;
+            display: block;
+            @include border-top-radius(200px);
+            @include border-right-radius(0);
+            @include border-bottom-radius(0);
+            @include border-left-radius(200px);
+            padding: $padding-small $padding-large;
+        }
+
+        .download {
+            @include span-columns(4);
+            @include shift(2);
+        }
+
+        .api-docs {
+            @include span-columns(4);
+
+            .button {
+                text-align: right;
+                @include border-top-radius(0);
+                @include border-right-radius(200px);
+                @include border-bottom-radius(200px);
+                @include border-left-radius(0);
+            }
+        }
+        @include bp(large) {
+            .download {
+                @include span-columns(6);
+                @include shift(0);
+            }
+
+            .api-docs {
+                @include span-columns(6);
+                margin-right: 0;
+            }
+        }
+
+        .api-docs,
+        .download {
+            margin-top: -40px;
+
+            ul {
+                margin-top: 12px;
+                max-width: 180px;
+                text-align: center;
+
+                li {
+                    &:first-child {
+                        border-bottom: $base-border-white;
+                        font-family: $heading-font-family;
+                        padding-bottom: 4px;
+                        margin-bottom: 2px;
+                        font-weight: $font-bold;
+
+                        a {
+                          font-size: $font-size-large;
+                        }
+                    }
+
+                    a {
+                        color: rgba(#fff, 0.90);
+                        font-size: $font-size-medium;
+
+                        &:active,
+                        &:focus,
+                        &:hover {
+                            text-decoration: none;
+                            color: rgba(#fff, 0.50);
+                        }
+                    }
+                }
+            }
+        }
+
+        .api-docs {
+            ul {
+                float: right;
+            }
+        }
+
+        .scala-brand-circle {
+            width: 340px;
+            height: 340px;
+            left: 50%;
+            top: -178px;
+            margin-left: -170px;
+            background: rgba($gray-darker, 0.4);
+            border-radius: 100%;
+            position: absolute;
+            z-index: 60;
+            @include display(flex);
+            @include align-items(center);
+            @include justify-content(center);
+
+            .circle-solid {
+                background: $gray-darker;
+                width: 224px;
+                height: 224px;
+                border-radius: 100%;
+                text-align: center;
+
+                > img {
+                    width: 152px;
+                    height: auto;
+                    margin-top: -28px;
+                }
+
+                .scala-version {
+                  span {
+                    display: block;
+                    color: #fff;
+                    font-family: $heading-font-family;
+                  }
+
+                  span:first-child {
+                    font-size:  1.375rem;
+                    margin-top: -9px;
+                  }
+
+                  span:nth-child(2) {
+                    font-size: 1.9rem;
+                    margin-top: -10px;
+                  }
+                  p {
+                    color: rgba(#fff, 0.50);
+                    font-style: italic;
+                    font-size: $font-size-medium;
+                    line-height: 1.3;
+                    margin-top: 10px;
+                  }
+                }
+            }
+        }
+    }
+    @include bp(medium) {
+        height: auto;
+        padding-bottom: $padding-xlarge;
+
+        .resources {
+            .download {
+                margin-top: 180px;
+            }
+
+            .api-docs {
+                margin-top: 40px;
+            }
+
+            .api-docs,
+            .download {
+                @include span-columns(12);
+
+                .button {
+                    border-radius: 100px;
+                    padding: ($padding-small / 2) ($padding-large / 2);
+                    font-size: $base-font-size;
+                    text-align: center;
+                }
+
+                ul {
+                    max-width: 100%;
+                    float: none;
+                }
+            }
+
+            .scala-brand-circle {
+                transform: scale(0.8);
+            }
+        }
+    }
+}

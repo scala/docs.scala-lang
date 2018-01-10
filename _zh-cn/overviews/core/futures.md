@@ -1,11 +1,12 @@
 ---
-layout: overview
-label-color: success
-label-text: New in 2.10
-overview: futures
-disqus: true
-language: zh-cn
+layout: singlepage-overview
 title: Future和Promise
+
+partof: futures
+
+language: zh-cn
+
+discourse: false
 ---
 
 **Philipp Haller, Aleksandar Prokopec, Heather Miller, Viktor Klang, Roland Kuhn, and Vojin Jovanovic 著**
@@ -40,7 +41,7 @@ Future的一个重要属性在于它只能被赋值一次。一旦给定了某�
 
     import scala.concurrent._
     import ExecutionContext.Implicits.global
-    
+
     val session = socialNetwork.createSessionFor("user", credentials)
     val f: Future[List[Friend]] = Future {
       session.getFriends()
@@ -83,10 +84,10 @@ Future的一个重要属性在于它只能被赋值一次。一旦给定了某�
     val f: Future[List[String]] = Future {
       session.getRecentPosts
     }
-    
+
     f onComplete {
       case Success(posts) => for (post <- posts) println(post)
-      case Success(posts) => for (post <- posts) println(post)
+      case Failure(t) => println("An error has occured: " + t.getMessage)
     }
 
 onComplete方法一般在某种意义上它允许客户处理future计算出的成功或失败的结果。对于仅仅处理成功的结果，onSuccess 回调使用如下（该回调以一个偏函数(partial function)为参数）：
@@ -94,7 +95,7 @@ onComplete方法一般在某种意义上它允许客户处理future计算出的�
     val f: Future[List[String]] = Future {
       session.getRecentPosts
     }
-    
+
     f onSuccess {
       case posts => for (post <- posts) println(post)
     }
@@ -104,11 +105,11 @@ onComplete方法一般在某种意义上它允许客户处理future计算出的�
     val f: Future[List[String]] = Future {
       session.getRecentPosts
     }
-    
+
     f onFailure {
       case t => println("An error has occured: " + t.getMessage)
     }
-    
+
     f onSuccess {
       case posts => for (post <- posts) println(post)
     }
@@ -120,7 +121,7 @@ onComplete方法一般在某种意义上它允许客户处理future计算出的�
     val f = Future {
       2 / 0
     }
-    
+
     f onFailure {
       case npe: NullPointerException =>
         println("I'd be amazed if this printed out.")
@@ -132,11 +133,11 @@ onComplete方法一般在某种意义上它允许客户处理future计算出的�
       val source = scala.io.Source.fromFile("myText.txt")
       source.toSeq.indexOfSlice("myKeyword")
     }
-    
+
     firstOccurrence onSuccess {
       case idx => println("The keyword first appears at position: " + idx)
     }
-    
+
     firstOccurrence onFailure {
       case t => println("Could not process file: " + t.getMessage)
     }
@@ -148,15 +149,15 @@ onComplete方法一般在某种意义上它允许客户处理future计算出的�
 此外，回调(callback)执行的顺序不是预先定义的，甚至在相同的应用程序中callback的执行顺序也不尽相同。事实上，callback也许不是一个接一个连续的调用，但是可能会在同一时间同时执行。这意味着在下面的例子中，变量totalA也许不能在计算上下文中被设置为正确的大写或者小写字母。
 
     @volatile var totalA = 0
-    
+
     val text = Future {
       "na" * 16 + "BATMAN!!!"
     }
-    
+
     text onSuccess {
       case txt => totalA += txt.count(_ == 'a')
     }
-    
+
     text onSuccess {
       case txt => totalA += txt.count(_ == 'A')
     }
@@ -186,13 +187,13 @@ onComplete方法一般在某种意义上它允许客户处理future计算出的�
     val rateQuote = Future {
       connection.getCurrentValue(USD)
     }
-    
+
     rateQuote onSuccess { case quote =>
       val purchase = Future {
         if (isProfitable(quote)) connection.buy(amount, quote)
         else throw new Exception("not profitable")
       }
-    
+
       purchase onSuccess {
         case _ => println("Purchased " + amount + " USD")
       }
@@ -202,7 +203,7 @@ onComplete方法一般在某种意义上它允许客户处理future计算出的�
 
 这确实是可行的，但是有两点原因使这种做法并不方便。其一，我们不得不使用onSuccess，且不得不在其中嵌套purchase future对象。试想一下，如果在purchase执行完成之后我们可能会想要卖掉一些其他的货币。这时我们将不得不在onSuccess的回调中重复这个模式，从而可能使代码过度嵌套，过于冗长，并且难以理解。
 
-其二，purchase只是定义在局部范围内--它只能被来自onSuccess内部的回调响应。这也就是说，这个应用的其他部分看不到purchase，而且不能为它注册其他的onSuccess回调，比如说卖掉些别的货币。 
+其二，purchase只是定义在局部范围内--它只能被来自onSuccess内部的回调响应。这也就是说，这个应用的其他部分看不到purchase，而且不能为它注册其他的onSuccess回调，比如说卖掉些别的货币。
 
 为解决上述的两个问题，futures提供了组合器（combinators）来使之具有更多易用的组合形式。映射（map）是最基本的组合器之一。试想给定一个future对象和一个通过映射来获得该future值的函数，映射方法将创建一个新Future对象，一旦原来的Future成功完成了计算操作，新的Future会通过该返回值来完成自己的计算。你能够像理解容器(collections)的map一样来理解future的map。
 
@@ -211,12 +212,12 @@ onComplete方法一般在某种意义上它允许客户处理future计算出的�
     val rateQuote = Future {
       connection.getCurrentValue(USD)
     }
-    
-    val purchase = rateQuote map { quote => 
+
+    val purchase = rateQuote map { quote =>
       if (isProfitable(quote)) connection.buy(amount, quote)
       else throw new Exception("not profitable")
     }
-    
+
     purchase onSuccess {
       case _ => println("Purchased " + amount + " USD")
     }
@@ -233,13 +234,13 @@ onComplete方法一般在某种意义上它允许客户处理future计算出的�
 
     val usdQuote = Future { connection.getCurrentValue(USD) }
     val chfQuote = Future { connection.getCurrentValue(CHF) }
-    
+
     val purchase = for {
       usd <- usdQuote
       chf <- chfQuote
       if isProfitable(usd, chf)
     } yield connection.buy(amount, chf)
-    
+
     purchase onSuccess {
       case _ => println("Purchased " + amount + " CHF")
     }
@@ -291,11 +292,11 @@ fallbackTo组合器生成的future对象可以在该原future成功完成计算�
     } map {
       chf => "Value: " + chf + "CHF"
     }
-    
+
     al anyQuote = usdQuote fallbackTo chfQuote
-    
+
     anyQuote onSuccess { println(_) }
-    
+
 组合器andThen的用法是出于纯粹的side-effecting目的。经andThen返回的新Future无论原Future成功或失败都会返回与原Future一模一样的结果。一旦原Future完成并返回结果，andThen后跟的代码块就会被调用，且新Future将返回与原Future一样的结果，这确保了多个andThen调用的顺序执行。正如下例所示，这段代码可以从社交网站上把近期发出的帖子收集到一个可变集合里，然后把它们都打印在屏幕上：
 
     val allposts = mutable.Set[String]()
@@ -340,17 +341,17 @@ fallbackTo组合器生成的future对象可以在该原future成功完成计算�
 
     import scala.concurrent._
     import scala.concurrent.duration._
-    
+
     def main(args: Array[String]) {
       val rateQuote = Future {
         connection.getCurrentValue(USD)
       }
-    
+
       val purchase = rateQuote map { quote =>
         if (isProfitable(quote)) connection.buy(amount, quote)
         else throw new Exception("not profitable")
       }
-    
+
       Await.result(purchase, 0 nanos)
     }
 
@@ -390,23 +391,23 @@ ExecutionException-当因为一个未处理的中断异常、错误或者`scala.
 
     import scala.concurrent.{ Future, Promise }
     import scala.concurrent.ExecutionContext.Implicits.global
-    
+
     val p = Promise[T]()
     val f = p.future
-    
+
     val producer = Future {
       val r = produceSomething()
       p success r
       continueDoingSomethingUnrelated()
     }
-    
+
     val consumer = Future {
       startDoingSomething()
       f onSuccess {
         case r => doSomethingWithResult()
       }
     }
-    
+
 在这里，我们创建了一个promise并利用它的future方法获得由它实现的Future。然后，我们开始了两种异步计算。第一种做了某些计算，结果值存放在r中，通过执行promise p，这个值被用来完成future对象f。第二种做了某些计算，然后读取实现了future f的计算结果值r。需要注意的是，在生产者完成执行`continueDoingSomethingUnrelated()` 方法这个任务之前，消费者可以获得这个结果值。
 
 正如前面提到的，promises具有单赋值语义。因此，它们仅能被实现一次。在一个已经计算完成的promise或者failed的promise上调用success方法将会抛出一个IllegalStateException异常。
@@ -415,7 +416,7 @@ ExecutionException-当因为一个未处理的中断异常、错误或者`scala.
 
     val p = promise[T]
     val f = p.future
-    
+
     val producer = Future {
       val r = someComputation
       if (isInvalid(r))
@@ -440,9 +441,9 @@ completeWith方法将用另外一个future完成promise计算。当该future结�
 
     val f = Future { 1 }
     val p = promise[Int]
-    
+
     p completeWith f
-    
+
     p.future onSuccess {
       case x => println(x)
     }
@@ -455,18 +456,18 @@ completeWith方法将用另外一个future完成promise计算。当该future结�
 
     def first[T](f: Future[T], g: Future[T]): Future[T] = {
       val p = promise[T]
-    
+
       f onSuccess {
         case x => p.trySuccess(x)
       }
-    
+
       g onSuccess {
         case x => p.trySuccess(x)
       }
-    
+
       p.future
     }
-    
+
 注意，在这种实现方式中，如果f与g都不是成功的，那么`first(f, g)`将不会实现（即返回一个值或者返回一个异常）。
 
 ## 工具(Utilities)
@@ -491,13 +492,12 @@ Duration也提供了unapply方法，因此可以i被用于模式匹配中，例�
 
     import scala.concurrent.duration._
     import java.util.concurrent.TimeUnit._
-    
+
     // instantiation
     val d1 = Duration(100, MILLISECONDS) // from Long and TimeUnit
     val d2 = Duration(100, "millis") // from Long and String
     val d3 = 100 millis // implicitly from Long, Int or Double
     val d4 = Duration("1.2 µs") // from String
-    
+
     // pattern matching
     val Duration(length, unit) = 5 millis
-

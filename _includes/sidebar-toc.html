@@ -1,0 +1,59 @@
+{% if page.includeTOC or layout.includeTOC %}
+	{% if page.includeTOC != false %}
+		<!-- Don't include TOC -->
+
+		{% for pg in site.posts %}
+      {% if pg.overview == page.overview and pg.languages %}
+        {% assign languages = pg.languages %}
+      {% endif %}
+    {% endfor %}
+
+    {% for pg in site.pages %}
+      {% if pg.overview == page.overview and pg.languages %}
+        {% assign languages = pg.languages %}
+      {% endif %}
+    {% endfor %}
+
+    {% if page.language %}
+      {% capture intermediate %}{{ page.url | remove_first: page.language }}{% endcapture %}
+      {% capture rootTutorialURL %}{{ intermediate | remove_first: '/' }}{% endcapture %}
+    {% else %}
+      {% assign rootTutorialURL = page.url %}
+    {% endif %}
+
+<div class="content-nav">
+	<div class="inner-box sidebar-toc-wrapper" style="">
+
+		<!-- <li><a href="{{ site.baseurl }}{{ rootTutorialURL }}" class="lang">English</a></li>
+		{% for l in languages %}
+			{% assign lang = site.data.languages[l] %}
+			<li><a href="{{ site.baseurl }}/{{ l }}{{ rootTutorialURL }}" class="lang">{{lang.name}}</a></li>
+		{% endfor %} -->
+
+		<h5 class="contents">Contents</h5>
+		<div class="inner-toc" id="sidebar-toc">
+      {% if page.includeCollectionTOC or layout.includeCollectionTOC %}
+        {% for collection in site.collections %}
+          {% assign name = collection.label %}
+          {% if page.partof == name %}
+            {% assign sorted = (site.[name]| sort: 'num') %}
+            <ul>
+              {% for pg in sorted %}
+                {% if pg.num %}
+                  <li><a href="{{ site.baseurl }}{{ pg.url }}">{{ pg.title }}</a></li>
+                  {% if pg.num == page.num %}
+                    <div id="toc"></div>
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+            </ul>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+		</div>
+		<hr>
+		<div class="help-us"><a href="https://github.com/scala/docs.scala-lang/blob/master/{% if page.collection %}{{ page.relative_path }}{% else %}{{ page.path }}{% endif %}"><i class="fa fa-pencil" aria-hidden="true"></i> Problem with this page?<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Please help us fix it!</a></div>
+	</div>
+</div>
+	{% endif %}
+{% endif %}

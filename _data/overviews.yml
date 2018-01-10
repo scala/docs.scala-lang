@@ -1,0 +1,223 @@
+
+- category: Core Scala
+  description: "Guides and overviews covering central libraries in the Scala standard library, core language features, and more."
+  overviews:
+    - title: Collections
+      by: Martin Odersky
+      icon: sitemap
+      url: "collections/introduction.html"
+      description: "Scala's Collection Library."
+      subdocs:
+        - title: Introduction
+          url: "collections/introduction.html"
+        - title: Mutable and Immutable Collections
+          url: "collections/overview.html"
+        - title: Trait Traversable
+          url: "collections/trait-traversable.html"
+        - title: Trait Iterable
+          url: "collections/trait-iterable.html"
+        - title: The sequence traits Seq, IndexedSeq, and LinearSeq
+        - title: Concrete Immutable Collection Classes
+          url: "collections/concrete-immutable-collection-classes.html"
+        - title: Concrete Mutable Collection Classes
+          url: "collections/concrete-mutable-collection-classes.html"
+        - title: Arrays
+          url: "collections/arrays.html"
+        - title: Strings
+          url: "collections/strings.html"
+        - title: Performance Characteristics
+          url: "collections/performance-characteristics.html"
+        - title: Equality
+          url: "collections/equality.html"
+        - title: Views
+          url: "collections/views.html"
+        - title: Iterators
+          url: "collections/iterators.html"
+        - title: Creating Collections From Scratch
+          url: "collections/creating-collections-from-scratch.html"
+        - title: Conversions Between Java and Scala Collections
+          url: "collections/conversions-between-java-and-scala-collections.html"
+    - title: The Architecture of Scala Collections
+      icon: building
+      url: "core/architecture-of-scala-collections.html"
+      by: Martin Odersky and Lex Spoon
+      description: "These pages describe the architecture of the Scala collections framework in detail. Compared to the Collections API you will find out more about the internal workings of the framework. You will also learn how this architecture helps you define your own collections in a few lines of code, while reusing the overwhelming part of collection functionality from the framework."
+    - title: String Interpolation
+      icon: usd
+      url: "core/string-interpolation.html"
+      description: >
+        String Interpolation allows users to embed variable references directly in processed string literals. Here’s an example:
+          <pre><code>val name = "James"
+          println(s"Hello, $name")  // Hello, James</code></pre>
+        In the above, the literal <code>s"Hello, $name"</code> is a processed string literal. This means that the compiler does some additional work to this literal. A processed string literal is denoted by a set of characters preceding the ". String interpolation was introduced by SIP-11, which contains all details of the implementation.
+    - title: Implicit Classes
+      by: Josh Suereth
+      description: "Scala 2.10 introduced a new feature called implicit classes. An implicit class is a class marked with the implicit keyword. This keyword makes the class’ primary constructor available for implicit conversions when the class is in scope."
+      url: "core/implicit-classes.html"
+    - title: Value Classes and Universal Traits
+      by: Mark Harrah
+      description: "Value classes are a new mechanism in Scala to avoid allocating runtime objects. This is accomplished through the definition of new AnyVal subclasses."
+      icon: diamond
+      url: "core/value-classes.html"
+    - title: Binary Compatibility of Scala Releases
+      description: "When two versions of Scala are binary compatible, it is safe to compile your project on one Scala version and link against another Scala version at run time. Safe run-time linkage (only!) means that the JVM does not throw a (subclass of) LinkageError when executing your program in the mixed scenario, assuming that none arise when compiling and running on the same version of Scala. Concretely, this means you may have external dependencies on your run-time classpath that use a different version of Scala than the one you’re compiling with, as long as they’re binary compatible. In other words, separate compilation on different binary compatible versions does not introduce problems compared to compiling and running everything on the same version of Scala."
+      icon: puzzle-piece
+      url: "core/binary-compatibility-of-scala-releases.html"
+    - title: Binary Compatibility for library authors
+      description: "A diverse and comprehensive set of libraries is important to any productive software ecosystem. While it is easy to develop and distribute Scala libraries, good library authorship goes beyond just writing code and publishing it. In this guide, we cover the important topic of Binary Compatibility."
+      icon: puzzle-piece
+      url: "core/binary-compatibility-for-library-authors.html"
+
+- category: "Reference/Documentation"
+  description: "Reference material on core Scala tools like Scaladoc and the Scala REPL."
+  overviews:
+    - title: Scaladoc
+      url: "scaladoc/overview.html"
+      icon: book
+      description: "Scala's API documentation generation tool."
+      subdocs:
+        - title: Overview
+          url: "scaladoc/overview.html"
+        - title: Scaladoc for Library Authors
+          url: "scaladoc/for-library-authors.html"
+        - title: Using the Scaladoc Interface
+          url: "scaladoc/interface.html"
+    - title: Scala REPL
+      icon: terminal
+      url: "repl/overview.html"
+      description: |
+        The Scala REPL is a tool (<code>scala</code>) for evaluating expressions in Scala.
+        <br><br>
+        The <code>scala</code> command will execute a source script by wrapping it in a template and then compiling and executing the resulting program
+
+- category: Parallel and Concurrent Programming
+  description: "Complete guides covering some of Scala's libraries for parallel and concurrent programming."
+  overviews:
+    - title: Futures and Promises
+      by: "Philipp Haller, Aleksandar Prokopec, Heather Miller, Viktor Klang, Roland Kuhn, and Vojin Jovanovic"
+      icon: tasks
+      url: "core/futures.html"
+      description: "Futures provide a way to reason about performing many operations in parallel– in an efficient and non-blocking way. A Future is a placeholder object for a value that may not yet exist. Generally, the value of the Future is supplied concurrently and can subsequently be used. Composing concurrent tasks in this way tends to result in faster, asynchronous, non-blocking parallel code."
+    - title: Parallel Collections
+      by: Aleksandar Prokopec and Heather Miller
+      icon: rocket
+      url: "parallel-collections/overview.html"
+      description: "Scala's Parallel Collections Library."
+      subdocs:
+        - title: Overview
+          url: "parallel-collections/overview.html"
+        - title: Concrete Parallel Collection Classes
+          url: "parallel-collections/concrete-parallel-collections.html"
+        - title: Parallel Collection Conversions
+          url: "parallel-collections/conversions.html"
+        - title: Concurrent Tries
+          url: "parallel-collections/ctries.html"
+        - title: Architecture of the Parallel Collections Library
+          url: "parallel-collections/architecture.html"
+        - title: Creating Custom Parallel Collections
+          url: "parallel-collections/custom-parallel-collections.html"
+        - title: Configuring Parallel Collections
+          url: "parallel-collections/configuration.html"
+        - title: Measuring Performance
+          url: "parallel-collections/performance.html"
+    - title: The Scala Actors Migration Guide
+      by: Vojin Jovanovic and Philipp Haller
+      icon: truck
+      url: "core/actors-migration-guide.html"
+      description: "To ease the migration from Scala Actors to Akka we have provided the Actor Migration Kit (AMK). The AMK consists of an extension to Scala Actors which is enabled by including the scala-actors-migration.jar on a project’s classpath. In addition, Akka 2.1 includes features, such as the ActorDSL singleton, which enable a simpler conversion of code using Scala Actors to Akka. The purpose of this document is to guide users through the migration process and explain how to use the AMK."
+    - title: The Scala Actors API
+      by: Philipp Haller and Stephen Tu
+      icon: users
+      url: "core/actors.html"
+      description: "This guide describes the API of the scala.actors package of Scala 2.8/2.9. The organization follows groups of types that logically belong together. The trait hierarchy is taken into account to structure the individual sections. The focus is on the run-time behavior of the various methods that these traits define, thereby complementing the existing Scaladoc-based API documentation."
+      label-color: "#899295"
+      label-text: deprecated
+
+- category: Metaprogramming
+  description: "Guides and overviews covering the experimental reflection API introduced in Scala 2.10, and Scala's tools for metaprogramming (def macros, macro annotations, and more), also introduced in Scala 2.10"
+  overviews:
+    - title: Reflection
+      by: Heather Miller, Eugene Burmako, and Philipp Haller
+      icon: binoculars
+      url: "reflection/overview.html"
+      description: Scala's runtime/compile-time reflection framework.
+      label-text: experimental
+      subdocs:
+        - title: Overview
+          url: "reflection/overview.html"
+        - title: Environment, Universes, and Mirrors
+          url: "reflection/environment-universes-mirrors.html"
+        - title: Symbols, Trees, and Types
+          url: "reflection/symbols-trees-types.html"
+        - title: Annotations, Names, Scopes, and More
+          url: "reflection/annotations-names-scopes.html"
+        - title: TypeTags and Manifests
+          url: "reflection/typetags-manifests.html"
+        - title: Thread Safety
+          url: "reflection/thread-safety.html"
+        - title: Changes in Scala 2.11
+          url: "reflection/changelog211.html"
+    - title: Macros
+      by: Eugene Burmako
+      icon: magic
+      url: "macros/usecases.html"
+      description: "Scala's metaprogramming framework."
+      label-text: experimental
+      subdocs:
+        - title: Use Cases
+          url: "macros/usecases.html"
+        - title: Blackbox Vs Whitebox
+          url: "macros/blackbox-whitebox.html"
+        - title: Def Macros
+          url: "macros/overview.html"
+        - title: Quasiquotes
+          url: "quasiquotes/intro.html"
+        - title: Macro Bundles
+          url: "macros/bundles.html"
+        - title: Implicit Macros
+          url: "macros/implicits.html"
+        - title: Extractor Macros
+          url: "macros/extractors.html"
+        - title: Type Providers
+          url: "macros/typeproviders.html"
+        - title: Macro Annotations
+          url: "macros/annotations.html"
+        - title: Macro Paradise
+          url: "macros/paradise.html"
+        - title: Roadmap
+          url: "macros/roadmap.html"
+        - title: Changes in 2.11
+          url: "macros/changelog211.html"
+    - title: Quasiquotes
+      by: Denys Shabalin
+      icon: quote-left
+      url: "quasiquotes/setup.html"
+      description: "Quasiquotes are a convenient way to manipulate Scala syntax trees."
+      label-text: experimental
+      subdocs:
+        - title: Dependencies and setup
+          url: "quasiquotes/setup.html"
+        - title: Introduction
+          url: "quasiquotes/intro.html"
+        - title: Lifting
+          url: "quasiquotes/lifting.html"
+        - title: Unlifting
+          url: "quasiquotes/unlifting.html"
+        - title: Hygiene
+          url: "quasiquotes/hygiene.html"
+        - title: Use cases
+          url: "quasiquotes/usecases.html"
+        - title: Syntax summary
+          url: "quasiquotes/syntax-summary.html"
+        - title: Expression details
+          url: "quasiquotes/expression-details.html"
+        - title: Type details
+          url: "quasiquotes/type-details.html"
+        - title: Pattern details
+          url: "quasiquotes/pattern-details.html"
+        - title: Definition and import details
+          url: "quasiquotes/definition-details.html"
+        - title: Terminology summary
+          url: "quasiquotes/terminology.html"
+        - title: Future prospects
+          url: "quasiquotes/future.html"

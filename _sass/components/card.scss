@@ -1,0 +1,60 @@
+// CARD
+//------------------------------------------------
+//------------------------------------------------
+
+.card {
+    padding: 18px;
+    border-radius: $border-radius-base;
+    @include display(flex);
+    @include flex-direction(row);
+    background: $gray;
+    transition: $base-transition;
+    margin-bottom: 14px;
+
+    &:hover {
+        background: $gray-dark;
+    }
+
+    img {
+        width: 28px;
+        height: 28px;
+        border-radius: $border-radius-small;
+    }
+
+    .card-text {
+        margin-left: 14px;
+
+        h4 {
+            font-family: $base-font-family;
+            font-size: $font-size-large;
+            color: #fff;
+        }
+
+        ul {
+            li {
+                color: $base-font-color-inverse;
+                display: inline-block;
+
+                &.online-courses-price,
+                &.event-location {
+                    font-size: $font-size-xsmall;
+                    text-transform: uppercase;
+                }
+
+                &.online-courses-date,
+                &.date-event {
+                    font-size: $font-size-small;
+                }
+
+                &.dot {
+                    color: rgba($base-font-color-inverse, 0.4);
+                }
+            }
+        }
+    }
+    &:active,
+    &:focus,
+    &:hover {
+      text-decoration: none;
+    }
+}

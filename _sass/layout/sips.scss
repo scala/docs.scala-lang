@@ -1,0 +1,201 @@
+// SIPS INDEX PAGE AND INDIVIDUAL SIP PAGES
+//------------------------------------------------
+//------------------------------------------------
+
+.sip-toc {
+  .tag {
+    // position: absolute;
+    // right: 0;
+    position: relative;
+    display: inline-block;
+    top: 3px;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 1px 5px;
+    margin-bottom: 8px;
+  }
+
+  .vote-text {
+    line-height: 1.2;
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+
+  ul {
+    margin-bottom: 18px;
+    li {
+      margin-top: 6px;
+      a {
+        color: $headings-font-color;
+        // font-weight: $font-black;
+        &:hover {
+          color: $hover-link-color;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  #sip-meetings {
+    margin-bottom: 20px;
+  }
+
+  #live-on-youtube {
+    margin-top: 4px;
+    font-style: italic;
+    line-height: 1.1;
+    color: $headings-font-color;
+    font-size: $font-size-small;
+
+    #watch-meeting {
+      display: inline-block;
+      margin-top: 6px;
+      color: $brand-primary;
+    }
+  }
+
+  #meeting-minutes {
+    a {
+      color: $headings-font-color;
+      // font-weight: $font-black;
+      &:hover {
+        color: $hover-link-color;
+        text-decoration: none;
+      }
+    }
+  }
+
+  #meeting-time {
+    font-size: $font-size-xsmall;
+    text-transform: uppercase;
+    font-weight: $font-black;
+    color: $base-font-color-light;
+    margin-top: 0px;
+  }
+
+  #meeting-title {
+    a {
+      color: $headings-font-color;
+      font-weight: $font-black;
+      &:hover {
+        color: $hover-link-color;
+        text-decoration: none;
+      }
+    }
+  }
+
+  #upcoming-meeting {
+    margin-top: 10px;
+    padding: 8px;
+    padding-left: 10px;
+    padding-bottom: 14px;
+    background-color: rgba($brand-primary, 0.1);
+
+    h6 {
+      font-family: $heading-font-family;
+      color: $brand-primary;
+      font-size: $font-size-large;
+      font-weight: $font-regular;
+    }
+  }
+}
+
+.sips {
+
+  .pending,
+  .completed,
+  .rejected {
+    .date {
+      display: block;
+      font-size: $font-size-small;
+      text-transform: uppercase;
+      font-weight: $font-bold;
+      color: $base-font-color-light;
+      margin-top: 4px;
+    }
+
+    strong {
+      font-weight: $font-black;
+    }
+
+    .tag {
+      float: left;
+      position: relative;
+      display: block;
+      top: 3px;
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 1px 5px;
+    }
+  }
+
+  .pending {
+    display: flex;
+    // flex-direction: column;
+    // flex-wrap: wrap;
+    // max-height: 400px;
+    ul {
+      list-style: inside disc;
+      -webkit-column-count: 2; /* Chrome, Safari, Opera */
+      -moz-column-count: 2; /* Firefox */
+      column-count: 2;
+      padding-left: 0px;
+
+      li {
+        margin-left: 1em;
+        padding-bottom: 24px;
+        line-height: 1;
+        -webkit-column-break-inside: avoid;
+          page-break-inside: avoid;
+               break-inside: avoid;
+      }
+
+      a {
+        color: $gray-darker;
+        &:hover {
+          color: $brand-primary;
+        }
+      }
+    }
+  }
+
+  .other-sips {
+    @include display(flex);
+    @include flex-direction(row);
+    @include flex-wrap(wrap);
+    @include justify-content(space-between);
+
+    .completed,
+    .rejected {
+      display: flex;
+      flex-direction: column;
+      // justify-content: flex-end;
+      position: relative;
+      flex: 0 1 calc(50% - 1em);
+
+      @include bp(medium) {
+        flex: 0 1 calc(100% - 0.5em);
+      }
+
+      ul {
+        // padding-left: 0px;
+
+        li {
+          // margin-left: 1em;
+          padding-bottom: 24px;
+          line-height: 1;
+        }
+
+        a {
+          color: $gray-darker;
+          &:hover {
+            color: $brand-primary;
+          }
+        }
+      }
+    }
+  }
+}

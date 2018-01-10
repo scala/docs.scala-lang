@@ -1,10 +1,12 @@
 ---
-layout: overview-large
+layout: multipage-overview
 title: 并行集合库的架构
 
-disqus: true
+discourse: false
 
 partof: parallel-collections
+overview-name: Parallel Collections
+
 num: 5
 language: zh-cn
 ---
