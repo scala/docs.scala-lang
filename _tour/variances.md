@@ -143,8 +143,8 @@ Another example that can help one understand variance is `trait Function1[-T, +R
 Assume the similar `Cat`, `Dog`, `Animal` inheritance tree used earlier, plus the following:
 
 ```tut
-class SmallAnimal extends Animal
-class Mouse extends SmallAnimal
+abstract class SmallAnimal extends Animal
+case class Mouse(name: String) extends SmallAnimal
 ```
 
 Suppose we're working with functions that accept types of animals, and return the types of food they eat. If we would like a `Cat => SmallAnimal` (because cats eat small animals), but are given a `Animal => Mouse` instead, our program will still work. Intuitively an `Animal => Mouse` will still accept a `Cat` as an argument, because a `Cat` is an `Animal`, and it returns a `Mouse`, which is also an `SmallAnimal`. Since we can safely and invisibly substitute the former for the latter, we can say `Animal => Mouse` is a subtype of `Cat => SmallAnimal`.
