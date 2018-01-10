@@ -12,7 +12,7 @@ We assume you know [how to create a Scala project with sbt](getting-started-with
 
 ## Setup
 1. On the command line, create a new directory somewhere.
-1. `cd` into the directory and run `sbt new scala/scalatest-example.g8`
+1. `cd` into the directory and run `sbt new scala/scalatest-example.g8`  <----
 1. Name the project `ScalaTestTutorial`.
 1. The project comes with ScalaTest as a dependency in the `build.sbt` file.
 1. `cd` into the directory and run `sbt test`. This will run the test suite
