@@ -1,0 +1,14 @@
+// HELPER
+//------------------------------------------------
+//------------------------------------------------
+
+.wrap {
+	@include outer-container;
+	@include padding(0 20px);
+}
+
+.dot {
+	font-size: 10px;
+	color: rgba($base-font-color-light, 0.6);
+	margin: 0 3px;
+}

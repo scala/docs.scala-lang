@@ -1,10 +1,12 @@
 ---
-layout: overview-large
+layout: multipage-overview
 title: Iterators
 
-disqus: true
+discourse: false
 
 partof: collections
+overview-name: Collections
+
 num: 15
 language: zh-cn
 ---
@@ -13,9 +15,9 @@ language: zh-cn
 
 让迭代器it逐个返回所有元素最简单的方法是使用while循环：
 
-    while (it.hasNext) 
+    while (it.hasNext)
       println(it.next())
-  
+
 Scala为Traversable, Iterable和Seq类中的迭代器提供了许多类似的方法。比如：这些类提供了foreach方法以便在迭代器返回的每个元素上执行指定的程序。使用foreach方法可以将上面的循环缩写为：
 
     it foreach println
@@ -27,7 +29,7 @@ Scala为Traversable, Iterable和Seq类中的迭代器提供了许多类似的方
 在迭代器或traversable容器中调用foreach方法的最大区别是：当在迭代器中完成调用foreach方法后会将迭代器保留在最后一个元素的位置。所以在这个迭代器上再次调用next方法时会抛出NoSuchElementException异常。与此不同的是，当在容器中调用foreach方法后，容器中的元素数量不会变化（除非被传递进来的函数删除了元素，但不赞成这样做，因为这会导致意想不到的结果）。
 
 迭代器的其他操作跟Traversable一样具有相同的特性。例如：迭代器提供了map方法，该方法会返回一个新的迭代器：
-    
+
     scala> val it = Iterator("a", "number", "of", "words")
     it: Iterator[java.lang.String] = non-empty iterator
     scala> it.map(_.length)
@@ -39,7 +41,7 @@ Scala为Traversable, Iterable和Seq类中的迭代器提供了许多类似的方
     5
     scala> it.next()
     java.util.NoSuchElementException: next on empty iterator
-    
+
 如你所见，在调用了it.map方法后，迭代器it移动到了最后一个元素的位置。
 
 另一个例子是关于dropWhile方法，它用来在迭代器中找到第一个具有某些属性的元素。比如：在上文所说的迭代器中找到第一个具有两个以上字符的单词，你可以这样写：
@@ -150,14 +152,14 @@ Scala为Traversable, Iterable和Seq类中的迭代器提供了许多类似的方
 
     def skipEmptyWordsNOT(it: Iterator[String]) =
       while (it.next().isEmpty) {}
-  
+
 但仔细看看这段代码，就会发现明显的错误：代码确实会跳过空字符串，但同时它也跳过了第一个非空字符串！
 
 要解决这个问题，可以使用带缓冲能力的迭代器。[BufferedIterator]类是[Iterator]的子类，提供了一个附加的方法，head。在BufferedIterator中调用head 会返回它指向的第一个元素，但是不会令迭代器步进。使用BufferedIterator，跳过空字符串的方法可以写成下面这样：
 
     def skipEmptyWords(it: BufferedIterator[String]) =
       while (it.head.isEmpty) { it.next() }
-  
+
 通过调用buffered方法，所有迭代器都可以转换成BufferedIterator。参见下例：
 
     scala> val it = Iterator(1, 2, 3, 4)

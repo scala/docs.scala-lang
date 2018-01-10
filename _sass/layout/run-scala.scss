@@ -1,0 +1,57 @@
+// RUN SCALA
+//------------------------------------------------
+//------------------------------------------------
+
+#site-main {
+    .run-scala {
+        background: $gray-dark;
+        padding-bottom: 0;
+        overflow: hidden;
+
+        .code-element {
+            margin-bottom: -1px;
+            margin-top: 48px;
+            position: relative;
+
+            textarea {
+              width: 100%;
+              background: $gray-darker;
+              height: 400px;
+              overflow: hidden;
+
+              &:focus {
+                outline: none;
+              }
+            }
+
+            .btn-run {
+              position: absolute;
+              right: 20px;
+              bottom: 20px;
+              background: rgba(#fff, 0.1);
+              padding: 3px 14px;
+              color: #fff;
+              font-size: $font-size-small;
+              cursor: pointer;
+              transition: $base-transition;
+              @include user-select(none);
+
+
+
+              &:hover {
+                background: rgba(#fff, 0.2);
+              }
+
+              &.inactive {
+                color: rgba(#fff, 0.5);
+                background: rgba(#fff, 0.05);
+                pointer-events: none;
+              }
+
+              i {
+                margin-right: 10px;
+              }
+            }
+        }
+    }
+}

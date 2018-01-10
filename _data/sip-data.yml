@@ -1,0 +1,27 @@
+under-review:
+  color: "#b58900"
+  text: "Under Review"
+
+pending:
+  color: "#b58900"
+  text: "Pending"
+
+dormant:
+  color: "#839496"
+  text: "Dormant"
+
+under-revision:
+  color: "#2aa198"
+  text: "Under Revision"
+
+accepted:
+  color: "#859900"
+  text: "Accepted"
+
+complete:
+  color: "#859900"
+  text: "Complete"
+
+rejected:
+  color: "#dc322f"
+  text: "Rejected"

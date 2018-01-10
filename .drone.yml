@@ -1,9 +1,6 @@
 pipeline:
   build:
-    image: scalaplatform/jdk8-ruby2-coursier:0.1
+    image: scalacenter/scala-rvm-jvm-coursier:2.0
     pull: true
     commands:
-      - bundle install
-      - ./scripts/run-tut.sh
-      - rm -r tut-tmp
-      - bundle exec jekyll build
+      - ./scripts/ci.sh

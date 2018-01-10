@@ -1,0 +1,33 @@
+// CALENDAR
+//------------------------------------------------
+//------------------------------------------------
+
+.calendar {
+  width: 28px;
+  height: 32px;
+  background: #fff;
+  border-radius: $border-radius-small;
+  overflow: hidden;
+
+  span {
+    display: block;
+    font-size: 10px;
+    font-weight: $font-bold;
+    text-align: center;
+  }
+  span:first-child {
+    background: $brand-primary;
+    color: #fff;
+  }
+
+}
+
+a {
+  .calendar {
+    span:last-child {
+      color: $gray-dark;
+      font-size: 12px;
+      margin-top: -1px;
+    }
+  }
+}

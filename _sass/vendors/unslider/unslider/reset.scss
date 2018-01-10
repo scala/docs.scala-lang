@@ -1,0 +1,70 @@
+.#{$unslider-namespace}, %#{$unslider-namespace} {
+	//  Should either be relative or absolute
+	//  as long as it's not static, but we'll
+	//  set it using jQuery
+	// position: relative;
+	overflow: auto;
+	margin: 0;
+	padding: 0;
+
+	&-wrap {
+		position: relative;
+		
+		&.unslider-carousel > li {
+			float: left;
+		}
+	}
+
+	//  Vertical sliders don't float left
+	&-vertical {
+		> ul {
+			height: 100%;
+		}
+
+		li {
+			float: none;
+			width: 100%;
+		}
+	}
+
+	//  Fading needs everything to appear on top of
+	//  each other
+	&-fade {
+		position: relative;
+
+		.unslider-wrap li {
+			position: absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			z-index: 8;
+
+			&.unslider-active {
+				z-index: 10;
+			}
+		}
+	}
+	
+	ul, ol, li {
+		list-style: none;
+		
+		/* Reset any weird spacing */
+		margin: 0;
+		padding: 0;
+		
+		border: none;
+	}
+
+	&-arrow {
+		position: absolute;
+		left: 20px;
+		z-index: 2;
+
+		cursor: pointer;
+
+		&.next {
+			left: auto;
+			right: 20px;
+		}
+	}
+}

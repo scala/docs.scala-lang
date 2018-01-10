@@ -1,0 +1,30 @@
+// FORM
+//------------------------------------------------
+//------------------------------------------------
+
+input,
+select,
+textarea {
+  font-family: $base-font-family;
+  font-size: $font-size-large;
+  display: block;
+  appearance: none;
+  border: none;
+}
+
+
+::-webkit-input-placeholder {
+   color: $base-font-color-light;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: $base-font-color-light;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: $base-font-color-light;
+}
+
+:-ms-input-placeholder {
+   color: $base-font-color-light;
+}

@@ -1,0 +1,25 @@
+component "App" as app
+component "A 1.0.0" as a1
+component "B 1.0.0" as b1
+component "C 1.0.0" as c_1
+component "D 1.1.0" as d
+component "E 1.5.0" as e
+component "C 1.0.0" as c_2
+component "C 1.0.0" as c_3
+
+app -down-> a1
+app -down-> b1
+app -down-> d
+a1 -down-> c_1
+b1 -down-> c_2
+d  -down-> e
+e  -down-> c_3
+
+cloud "Available Updates" {
+  component "D 1.1.1" as d2
+  component "E 1.5.1" as e_new
+  component "C 2.0.0" as c_new_1
+ 
+  d2 -down-> e_new
+  e_new -down-> c_new_1
+}

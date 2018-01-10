@@ -1,0 +1,29 @@
+
+.prettyprint { background-color: #073642; font-size: 1em; }
+.prettyprint code { color: #B0BABC;  overflow: auto; }
+.prettyprint .pln { color: inherit; }
+.prettyprint .str, .prettyprint .atv { color: #5BCCC4; }
+.prettyprint .lit { color: #DB5A98;}
+.prettyprint .kwd { color: #A4B536; }
+.prettyprint .com,
+.prettyprint .dec { color: #6B868E; font-style: italic; }
+.prettyprint .typ { color: #1C97EF; }
+.prettyprint .pun { color: inherit; }
+.prettyprint .opn { color: inherit; }
+.prettyprint .clo { color: inherit; }
+.prettyprint .tag { color: #1C97EF; font-weight: bold; }
+.prettyprint .atn { color: inherit; }
+
+pre.prettyprint {
+  overflow-x: auto;
+  padding: 9px;
+  border: 1px solid #073642;
+  -webkit-border-radius: 0px 0px 4px 4px;
+  -moz-border-radius: 0px 0px 4px 4px;
+  border-radius: 0px 0px 4px 4px;
+  border-top: 0px;
+}
+
+/* Specify class=linenums on a pre to get line numbering */
+ol.linenums { margin: 0 0 0 40px; } /* IE indents via margin-left */
+ol.linenums > li { color: rgba(67, 94, 101, 0.6); line-height: 20px; width: 100%; s}

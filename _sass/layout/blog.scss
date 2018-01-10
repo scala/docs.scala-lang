@@ -1,0 +1,113 @@
+// BLOG
+//------------------------------------------------
+//------------------------------------------------
+
+.title-page {
+    h1 {
+      line-height: 1.875rem;
+    }
+    .content-title-blog {
+        h1 {
+            @include span-columns(9);
+            @include bp(medium) {
+                 @include span-columns(12);
+            }
+        }
+
+        .search-container {
+            @include span-columns(3);
+            margin-top: 50px;
+            @include bp(medium) {
+                 @include span-columns(12);
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+        }
+    }
+}
+
+.blog-list {
+    .blog-item {
+        display: block;
+        border-bottom: $base-border-gray;
+        padding-bottom: 18px;
+
+        h2 {
+            margin-bottom: 6px;
+            font-size: 1.5rem;
+        }
+
+        .blog-date {
+            text-transform: uppercase;
+            margin-bottom: 4px;
+            font-size: 0.875rem;
+        }
+
+        .blog-author {
+            margin-bottom: 12px;
+        }
+
+        a {
+            &:active,
+            &:focus,
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+.blog-list-nav {
+    margin-top: 18px;
+
+    .blog-list-nav-item {
+        border-bottom: $base-border-gray;
+        padding-bottom: 10px;
+        margin-top: 14px;
+
+        &:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        h4 {
+            font-family: $base-font-family;
+        }
+
+        p {
+            margin-bottom: 10px;
+            font-size: $font-size-medium;
+        }
+
+        a {
+            color: $headings-font-color;
+
+            &:active,
+            &:focus,
+            &:hover {
+                text-decoration: none;
+                color: $brand-primary;
+            }
+        }
+    }
+}
+
+.blog-detail-head {
+    border-bottom: $base-border-gray;
+    @include display(flex);
+    @include align-items(flex-start);
+    @include justify-content(space-between);
+    flex-wrap: wrap;
+    padding-bottom: 18px;
+
+    div {
+      p:first-child {
+        text-transform: uppercase;
+        margin-bottom: 8px;
+        font-size: 0.875rem;
+      }
+        p {
+            margin-bottom: 0;
+        }
+    }
+}

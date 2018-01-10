@@ -1,12 +1,12 @@
 ---
-layout: overview
-disqus: true
-language: zh-cn
-disqus: true
-label-color: success
-label-text: New in 2.10
-overview: string-interpolation
+layout: singlepage-overview
 title: 字符串插值
+
+partof: string-interpolation
+
+language: zh-cn
+
+discourse: false
 ---
 
 **Josh Suereth 著**
@@ -17,7 +17,7 @@ title: 字符串插值
 
     val name="James"
     println(s"Hello,$name")//Hello,James
-    
+
 在上例中， s"Hello,$name" 是待处理字符串字面，编译器会对它做额外的工作。待处理字符串字面通过“号前的字符来标示（例如：上例中是s）。字符串插值的实现细节在 [SIP-11](http://docs.scala-lang.org/sips/pending/string-interpolation.html) 中有全面介绍。
 
 ## 用法
@@ -47,7 +47,7 @@ Scala 提供了三种创新的字符串插值方法：s,f 和 raw.
 f 插值器是类型安全的。如果试图向只支持 int 的格式化串传入一个double 值，编译器则会报错。例如：
 
     val height:Double=1.9d
-    
+
     scala>f"$height%4d"
     <console>:9: error: type mismatch;
      found : Double
@@ -61,7 +61,7 @@ f 插值器利用了java中的字符串数据格式。这种以%开头的格式�
 除了对字面值中的字符不做编码外，raw 插值器与 s 插值器在功能上是相同的。如下是个被处理过的字符串：
 
     scala>s"a\nb"
-    res0:String= 
+    res0:String=
     a
     b
 这里，s 插值器用回车代替了\n。而raw插值器却不会如此处理。
@@ -80,25 +80,25 @@ f 插值器利用了java中的字符串数据格式。这种以%开头的格式�
 它都会被转换成一个StringContext实例的call(id)方法。这个方法在隐式范围内仍可用。只需要简单得
 建立一个隐类，给StringContext实例增加一个新方法，便可以定义我们自己的字符串插值器。如下例：
 
-    //注意：为了避免运行时实例化，我们从AnyVal中继承。 
+    //注意：为了避免运行时实例化，我们从AnyVal中继承。
     //更多信息请见值类的说明
     implicit class JsonHelper(val sc:StringContext) extends AnyVal{
       def json(args:Any*):JSONObject=sys.error("TODO-IMPLEMENT")
     }
-    
+
     def giveMeSomeJson(x:JSONObject):Unit=...
-    
+
     giveMeSomeJson(json"{name:$name,id:$id}")
 在这个例子中，我们试图通过字符串插值生成一个JSON文本语法。隐类 JsonHelper 作用域内使用该语法，且这个JSON方法需要一个完整的实现。只不过，字符串字面值格式化的结果不是一个字符串，而是一个JSON对象。
 
 当编译器遇到"{name:$name,id:$id"}"，它将会被重写成如下表达式：
 
     new StringContext("{name:",",id:","}").json(name,id)
-    
+
 隐类则被重写成如下形式
 
     new JsonHelper(new StringContext("{name:",",id:","}")).json(name,id)
-    
+
 所以，JSON方法可以访问字符串的原生片段而每个表达式都是一个值。这个方法的一个简单但又令人迷惑的例子：
 
     implicit class JsonHelper(val sc:StringContext) extends AnyVal{
@@ -113,7 +113,7 @@ f 插值器利用了java中的字符串数据格式。这种以%开头的格式�
         parseJson(buf)
       }
     }
-    
+
 被处理过的字符串的每部分都是StringContext的成员。每个表达式的值都将传入到JSON方法的args参数。JSON方法接受这些值并合成一个大字符串，然后再解析成JSON格式。有一种更复杂的实现可以避免合成字符串的操作，它只是简单的直接通过原生字符串和表达式值构建JSON。
 
 ## 限制

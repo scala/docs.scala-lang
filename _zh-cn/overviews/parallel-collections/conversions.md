@@ -1,10 +1,12 @@
 ---
-layout: overview-large
+layout: multipage-overview
 title: 并行容器的转换
 
-disqus: true
+discourse: false
 
 partof: parallel-collections
+overview-name: Parallel Collections
+
 num: 3
 language: zh-cn
 ---
@@ -15,12 +17,12 @@ language: zh-cn
 
 | 顺序 |并行 |
 |------|-----|
-|可变性(mutable)|          |	
+|可变性(mutable)|          |
 |Array|ParArray|
 |HashMap| ParHashMap|
 |HashSet| ParHashSet|
 |TrieMap| ParTrieMap|
-|不可变性(immutable)|         |	
+|不可变性(immutable)|         |
 |Vector | ParVector|
 |Range | ParRange|
 |HashMap | ParHashMap|
@@ -49,4 +51,3 @@ language: zh-cn
 |toSeq | ParSeq |
 |toSet | ParSet |
 |toMap | ParMap |
-

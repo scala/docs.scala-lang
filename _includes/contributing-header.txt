@@ -2,14 +2,6 @@
 <html>
   <head>
 
-    <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
-    {% if page.description %}
-    <meta name="description" content="{{ page.description }}" />
-    {% endif %}
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-
-    <link rel="icon" type="image/png" href="{{ site.baseurl }}/resources/favicon.ico">
-
     <!-- prettify js and CSS -->
     <link rel="stylesheet" href="{{ site.baseurl }}/resources/stylesheets/prettify.css" type="text/css" />
     <script src="{{ site.baseurl }}/resources/javascript/prettify/prettify.js" type="text/javascript" ></script>

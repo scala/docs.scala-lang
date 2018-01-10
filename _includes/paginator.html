@@ -1,0 +1,9 @@
+{% if paginator.total_pages > 1 %}
+	<ul class="pagination">
+		{% for page in (1..paginator.total_pages) %}
+			<li class="pagination-item">
+				<a {% if page == paginator.page %}class="active"{% endif %} href="/{{include.urlPath}}/{% if page > 1 %}{{page}}/{% endif %}">{{page}}</a>
+			</li>
+		{% endfor %}
+	</ul>	
+{% endif %}	

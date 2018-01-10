@@ -1,0 +1,140 @@
+// TWITTER FEED
+//------------------------------------------------
+//------------------------------------------------
+
+.twitter-feed {
+    background: $brand-tertiary;
+
+    .heading-line {
+        h2 {
+            span {
+                background: $brand-tertiary;
+            }
+
+            &:before {
+                background: rgba(#fff, 0.5);
+            }
+        }
+    }
+
+    .slider-twitter {
+        ul {
+            li {
+                padding: 0 15px;
+                @include display(flex);
+                @include flex-direction(row);
+                @include align-items(stretch);
+                @include justify-content(space-between);
+
+
+                @include bp(large) {
+                  display: block;
+                }
+
+
+
+
+                .item-tweet {
+                    padding: $padding-small;
+                    background: #fff;
+                    border-radius: $border-radius-base;
+                    transition: $base-transition;
+                    max-width: 360px;
+                    margin-right: 20px;
+
+                    @include bp(large) {
+                      max-width: 100%;
+                      margin-right: 0;
+                      margin-bottom: 20px;
+
+                    }
+
+
+                      &:last-child {
+                        margin-right: 0;
+                      }
+
+
+                    img {
+                        border-radius: $border-radius-base;
+                        width: 44px;
+                        height: auto;
+                        float: left;
+                    }
+
+                    .tweet-text {
+                        margin-left: 64px;
+
+                        .header-tweet {
+                            @include display(flex);
+                            @include flex-direction(row);
+                            @include align-items(top);
+                            @include justify-content(space-between);
+
+                            ul {
+                                li {
+                                    padding: 0;
+                                    margin-right: 6px;
+
+                                    &.user {
+                                        font-size: $font-size-large;
+                                        font-weight: $font-bold;
+                                        color: $headings-font-color;
+
+                                        a {
+                                            color: $headings-font-color;
+
+                                            &:active,
+                                            &:focus,
+                                            &:hover {
+                                                color: $hover-link-color;
+                                                text-decoration: none;
+                                            }
+                                        }
+                                    }
+
+                                    &.username {
+                                        font-size: $font-size-small;
+                                        color: $base-font-color-light;
+                                        font-weight: $font-bold;
+                                    }
+                                }
+                            }
+
+                            .date {
+                                font-size: $font-size-small;
+                                color: $base-font-color-light;
+                            }
+                        }
+
+                        .main-tweet {
+                            p {
+                                font-size: $font-size-medium;
+
+                                .hastag {
+                                    color: rgba($base-font-color-light, 0.7);
+
+                                    &:active,
+                                    &:focus,
+                                    &:hover {
+                                        color: $base-font-color-light;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    &:hover {
+                        background: rgba(#fff, 0.88);
+                    }
+                }
+            }
+        }
+    }
+
+    .call-to-action {
+        p {
+            color: #fff;
+        }
+    }
+}

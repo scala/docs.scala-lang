@@ -1,0 +1,42 @@
+---
+---
+
+@font-face {
+	font-family: 'Consolas';
+	src: url('{{ site.baseurl }}/resources/glyphs/Consolas.eot');
+	src: url('{{ site.baseurl }}/resources/glyphs/Consolas.eot?#iefix') format('embedded-opentype'),
+		url('{{ site.baseurl }}/resources/glyphs/Consolas.woff') format('woff'),
+		url('{{ site.baseurl }}/resources/glyphs/Consolas.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Consolas';
+	src: url('{{ site.baseurl }}/resources/glyphs/Consolas-BoldItalic.eot');
+	src: url('{{ site.baseurl }}/resources/glyphs/Consolas-BoldItalic.eot?#iefix') format('embedded-opentype'),
+		url('{{ site.baseurl }}/resources/glyphs/Consolas-BoldItalic.woff') format('woff'),
+		url('{{ site.baseurl }}/resources/glyphs/Consolas-BoldItalic.ttf') format('truetype');
+	font-weight: bold;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Consolas';
+	src: url('{{ site.baseurl }}/resources/glyphs/Consolas-Italic.eot');
+	src: url('{{ site.baseurl }}/resources/glyphs/Consolas-Italic.eot?#iefix') format('embedded-opentype'),
+		url('{{ site.baseurl }}/resources/glyphs/Consolas-Italic.woff') format('woff'),
+		url('{{ site.baseurl }}/resources/glyphs/Consolas-Italic.ttf') format('truetype');
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Consolas';
+	src: url('{{ site.baseurl }}/resources/glyphs/Consolas-Bold.eot');
+	src: url('{{ site.baseurl }}/resources/glyphs/Consolas-Bold.eot?#iefix') format('embedded-opentype'),
+		url('{{ site.baseurl }}/resources/glyphs/Consolas-Bold.woff') format('woff'),
+		url('{{ site.baseurl }}/resources/glyphs/Consolas-Bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}

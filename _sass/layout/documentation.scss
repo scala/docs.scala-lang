@@ -1,0 +1,59 @@
+// BLOG
+//------------------------------------------------
+//------------------------------------------------
+
+.title-page {
+  h1 {
+    line-height: 1.875rem;
+  }
+
+  .content-title-documentation {
+    .titles {
+      @include span-columns(9);
+      @include bp(medium) {
+         @include span-columns(12);
+      }
+      min-height: 70px;
+      max-height: 160px;
+      margin-top: 30px;
+      margin-bottom: 100px;
+      @include bp(medium) {
+         margin-bottom: 0;
+      }
+
+      .supertitle {
+        text-transform: uppercase;
+        font-weight: $font-black;
+        font-size: 20px;
+        color: darken(#53b6d3, 15%);
+      }
+
+      h1 {
+        padding-top: 0;
+      }
+    }
+
+    .spacer {
+      height: 80px;
+    }
+  }
+}
+
+.content-primary.documentation {
+  line-height: 1.3;
+
+  ol {
+    margin-bottom: 18px;
+  }
+
+  .tag {
+    float: right;
+    top: 3px;
+    background: $brand-primary;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: $font-bold;
+    padding: 1px 5px;
+  }
+}

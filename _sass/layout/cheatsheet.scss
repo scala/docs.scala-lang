@@ -1,0 +1,55 @@
+// CHEATSHEET
+//------------------------------------------------
+//------------------------------------------------
+
+.content-primary.cheatsheet {
+  code {
+    font-family: 'Consolas';
+  }
+
+  pre.highlight {
+    margin: 0;
+    code {
+      padding: 0;
+      background: #fff;
+      border: 0;
+    }
+  }
+
+  .h2 {
+    display: block;
+    font-size: $font-size-h2;
+    font-weight: $font-black;
+    color: $gray-darker;
+    padding-top: 26px;
+  }
+
+  h6 {
+    color: $base-font-color-light;
+    font-family: $base-font-family;
+    text-transform: uppercase;
+    font-size: $font-size-small;
+  }
+
+  .label {
+    display: inline-block;
+    // position: absolute;
+    // right: 0;
+    position: relative;
+    // float: right;
+    top: 3px;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 1px 5px;
+  }
+
+  .important {
+    background: $brand-primary;
+  }
+
+  .success {
+    background: $brand-secondary;
+  }
+}

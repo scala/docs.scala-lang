@@ -1,11 +1,12 @@
 ---
-layout: overview
-disqus: true
-language: zh-cn
-label-color: success
-label-text: New in 2.10
-overview: actors-migration-guide
+layout: singlepage-overview
 title: Scala Actors迁移指南
+
+partof: actor-migration
+
+language: zh-cn
+
+discourse: false
 ---
 
 **Vojin Jovanovic 和 Philipp Haller 著**
@@ -18,7 +19,7 @@ title: Scala Actors迁移指南
 
 本指南包括以下内容：在“迁移工具的局限性”章节中，我们在此概述了迁移工具的主要局限性。在“迁移概述”章节中我们描述了迁移过程和谈论了Scala的变化分布，使得迁移成为一种可能。最后，在“一步一步指导迁移到Akka”章节里，我们展示了一些迁移工作的例子，以及各个步骤，如果需要从Scala Actors迁移至Akka's actors，本节是推荐阅读的。
 
-免责声明:并发代码是臭名昭著的，当出现bug时很难调试和修复。由于两个actor的不同实现，这种差异导致可能出现错误。迁移过程没一步后都建议进行完全的代码测试。
+免责声明:并发代码是臭名昭著的，当出现bug时很难调试和修复。由于两个actor的不同实现，这种差异导致可能出现错误。迁移过程每一步后都建议进行完全的代码测试。
 
 ## 迁移工具的局限性
 
@@ -71,7 +72,7 @@ Scala actors库提供了公共访问多个类型的actors。他们被组织在�
 为了为DaemonActor提供配对功能，将下列代码添加到类的定义。
 
 	override def scheduler: IScheduler = DaemonScheduler
-    
+
 ### 步骤2 - 实例化
 
 在Akka中,actors可以访问只有通过ActorRef接口。ActorRef的实例可以通过在ActorDSL对象上调用actor方法或者通过调用ActorRefFactory实例的actorOf方法来获得。在Scala的AMK工具包中，我们提供了Akka ActorRef和ActorDSL的一个子集，该子集实际上是Akka库的一个单例对象(singleton object)。
@@ -86,11 +87,11 @@ actor实例的转换规则（以下规则需要import scala.actors.migration._�
 
         val myActor = new MyActor(arg1, arg2)
         myActor.start()
-        
+
 应该被替换
 
 	ActorDSL.actor(new MyActor(arg1, arg2))
-    
+
 2. 用于创建Actors的DSL(译注：领域专用语言(Domain Specific Language))
 
         val myActor = actor {
@@ -103,7 +104,7 @@ actor实例的转换规则（以下规则需要import scala.actors.migration._�
              // actor 定义
            }
         })
-        
+
 3. 从Actor Trait扩展来的对象
 
         object MyActor extends Actor {
@@ -115,7 +116,7 @@ actor实例的转换规则（以下规则需要import scala.actors.migration._�
         class MyActor extends Actor {
           // MyActor 定义
         }
-        
+
         object MyActor {
           val ref = ActorDSL.actor(new MyActor)
         }
@@ -142,30 +143,30 @@ actor实例的转换规则（以下规则需要import scala.actors.migration._�
 额外规则1-3的作用域定义在无限的时间需要一个隐含的超时。然而，由于Akka不允许无限超时，我们会使用100年。例如：
 
     implicit val timeout = Timeout(36500 days)
-    
+
 规则：
 
 1. !!(msg: Any): Future[Any] 被？替换。这条规则会改变一个返回类型到scala.concurrent.Future这可能导致类型不匹配。由于scala.concurrent.Future比过去的返回值具有更广泛的功能，这种类型的错误可以很容易地固定在与本地修改：
 
 		actor !! message -> respActor ? message
-        
+
 2. !![A] (msg: Any, handler: PartialFunction[Any, A]): Future[A] 被？取代。处理程序可以提取作为一个单独的函数，并用来生成一个future对象结果。处理的结果应给出另一个future对象结果,就像在下面的例子:
 
         val handler: PartialFunction[Any, T] = ... // handler
         actor !! (message, handler) -> (respActor ? message) map handler
-        
+
 3. !? (msg: Any):任何被？替换都将阻塞在返回的future对象上
 
         actor !? message ->
           Await.result(respActor ? message, Duration.Inf)
-          
+
 4. !? (msec: Long, msg: Any): Option[Any]任何被？替换都将显式的阻塞在future对象
 
         actor !? (dur, message) ->
           val res = respActor.?(message)(Timeout(dur milliseconds))
           val optFut = res map (Some(_)) recover { case _ => None }
           Await.result(optFut, Duration.Inf)
-          
+
 这里没有提到的公共方法是为了actors DSL被申明为公共的。他们只能在定义actor时使用，所以他们的这一步迁移是不相关的。
 
 ###第3步 -  从Actor 到 ActWithStash
@@ -175,19 +176,19 @@ actor实例的转换规则（以下规则需要import scala.actors.migration._�
 为了达到这个目的，所有的从Actor继承的类，按照下列的方式，需要改为继承自ActWithStash：
 
 	class MyActor extends Actor -> class MyActor extends ActWithStash
-    
+
 经过这样修改以后，代码会无法通过编译。因为ActWithStash中的receive 方法不能在act中像原来那样使用。要使代码通过编译，需要在所有的 receive 调用中加上类型参数。例如：
 
       receive { case x: Int => "Number" } ->
         receive[String] { case x: Int => "Number" }
-        
+
 另外，要使代码通过编译，还要在act方法前加上 override关键字，并且定义一个空的receive方法。act方法需要被重写，因为它在ActWithStash 的实现中模拟了Akka的消息处理循环。需要修改的地方请看下面的例子：
 
       class MyActor extends ActWithStash {
-      
+
          // 空的 receive 方法 (现在还没有用)
          def receive = {case _ => }
-      
+
          override def act() {
            // 原来代码中的 receive 方法改为 react。
          }
@@ -197,7 +198,7 @@ ActWithStash 的实例中，变量trapExit 的缺省值是true。如果希望改
 远程控制器在ActWithStash 下无法直接使用，register('name, this)方法需要被替换为：
 
 		registerActorRef('name, self)
-        
+
 在后面的步骤中， registerActorRef 和 alive 方法的调用与其它方法一样。
 
 现在，用户可以测试运行，整个系统的运行会和原来一样。ActWithStash 和Actor 拥有相同的基本架构，所以系统的运行会与原来没有什么区别。
@@ -229,7 +230,7 @@ ActWithStash 的实例中，变量trapExit 的缺省值是true。如果希望改
       override def preStart() {
         //初始化的代码放在这里
       }
-      
+
       def act() {
         loop {
           react{ ... }
@@ -251,7 +252,7 @@ ActWithStash 的实例中，变量trapExit 的缺省值是true。如果希望改
       def receive = {
         // body
       }
-      
+
 3. 当act包含一个loopWhile 结构，用下面的方法。
 
         def act() = {
@@ -274,7 +275,7 @@ ActWithStash 的实例中，变量trapExit 的缺省值是true。如果希望改
           context.stop(self)
         }
     }
-    
+
 4. 当act包含嵌套的react，用下面的规则：
 
         def act() = {
@@ -311,7 +312,7 @@ ActWithStash 的实例中，变量trapExit 的缺省值是true。如果希望改
            }).orElse { case x => stash(x) })
           }
       }
-      
+
 5. reactWithin方法使用下面的修改规则：
 
         loop {
@@ -323,13 +324,13 @@ ActWithStash 的实例中，变量trapExit 的缺省值是true。如果希望改
 应该被替换
 
         import scala.concurrent.duration._
-        
+
         context.setReceiveTimeout(t millisecond)
         def receive = {
           case ReceiveTimeout => // timeout processing code
           case msg => // message processing code
         }
-        
+
 6. 在Akka中，异常处理用另一种方式完成。如果要模拟Scala控制器的方式，那就用下面的方法
 
         def act() = {
@@ -340,7 +341,7 @@ ActWithStash 的实例中，变量trapExit 的缺省值是true。如果希望改
             }
           }
         }
-        
+
         override def exceptionHandler = {
           case x: Exception => println("got exception")
         }
@@ -351,11 +352,11 @@ ActWithStash 的实例中，变量trapExit 的缺省值是true。如果希望改
           // 可能会失败的代码
       }, { case x: Exception => println("got exception") })
       PFCatch 的定义
-      
+
       class PFCatch(f: PartialFunction[Any, Unit],
         handler: PartialFunction[Exception, Unit])
         extends PartialFunction[Any, Unit] {
-      
+
         def apply(x: Any) = {
           try {
             f(x)
@@ -364,16 +365,16 @@ ActWithStash 的实例中，变量trapExit 的缺省值是true。如果希望改
               handler(e)
           }
         }
-      
+
         def isDefinedAt(x: Any) = f.isDefinedAt(x)
       }
-      
+
       object PFCatch {
         def apply(f: PartialFunction[Any, Unit],
           handler: PartialFunction[Exception, Unit]) =
             new PFCatch(f, handler)
       }
-      
+
 PFCatch并不包含在AMK之中，所以它可以保留在移植代码中，AMK将会在下一版本中被删除。当整个移植完成后，错误处理也可以改由Akka来监管。
 
 #### 修改Actor的方法
@@ -398,7 +399,7 @@ linking 和 watching 之间的区别在于：watching actor总是接受结束通
         println("sorry about your " + reason)
         ...
 应该被替换
-      
+
       case t @ Terminated(actorRef) =>
         println("sorry about your " + t.reason)
         ...
@@ -414,7 +415,7 @@ linking 和 watching 之间的区别在于：watching actor总是接受结束通
       scala.actors.migration.ActWithStash -> akka.actor.ActorDSL._
       scala.actors.migration.pattern.ask -> akka.pattern.ask
       scala.actors.migration.Timeout -> akka.util.Timeout
-      
+
 当然，ActWithStash 中方法的声明 def receive = 必须加上前缀override。
 
 在Scala actor中，stash 方法需要一个消息做为参数。例如：
@@ -423,14 +424,14 @@ linking 和 watching 之间的区别在于：watching actor总是接受结束通
         ...
         case x => stash(x)
       }
-      
+
 在Akka中，只有当前处理的消息可以被隐藏(stashed)。因此，上面的例子可以替换为：
 
         def receive = {
           ...
           case x => stash()
         }
-        
+
 #### 添加Actor System
 
 Akka actor 组织在[Actor systems](http://doc.akka.io/docs/akka/2.1.0/general/actor-systems.html)系统中。每一个被实例化的actor必须属于某一个ActorSystem。因此，要添加一个ActorSystem 实例作为每个actor 实例调用的第一个参数。下面给出了例子。
@@ -438,17 +439,17 @@ Akka actor 组织在[Actor systems](http://doc.akka.io/docs/akka/2.1.0/general/a
 为了完成该转换，你需要有一个actor system 实例。例如：
 
 	val system = ActorSystem("migration-system")
-    
+
 然后，做如下转换：
 
 	ActorDSL.actor(...) -> ActorDSL.actor(system)(...)
-    
+
 如果对actor 的调用都使用同一个ActorSystem ，那么它可以作为隐式参数来传递。例如：
 
       ActorDSL.actor(...) ->
         import project.implicitActorSystem
         ActorDSL.actor(...)
-        
+
 当所有的主线程和actors结束后，Scala程序会终止。迁移到Akka后，当所有的主线程结束，所有的actor systems关闭后，程序才会结束。Actor systems 需要在程序退出前明确的中止。这需要通过在Actor system中调用shutdown 方法来完成。
 
 #### 远程 Actors
@@ -462,4 +463,3 @@ Akka actor 组织在[Actor systems](http://doc.akka.io/docs/akka/2.1.0/general/a
 这篇文档和Actor移植组件由 [Vojin Jovanovic](http://people.epfl.ch/vojin.jovanovic)和[Philipp Haller](http://lampwww.epfl.ch/~phaller/)编写。
 
 如果你发现任何问题或不完善的地方，请把它们报告给 [Scala Bugtracker](https://github.com/scala/actors-migration/issues)。
-

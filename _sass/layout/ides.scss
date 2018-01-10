@@ -1,0 +1,81 @@
+// IDES
+//------------------------------------------------
+//------------------------------------------------
+
+.ides {
+    background: $gray-dark;
+
+    ul {
+        @include display(flex);
+        @include align-items(top);
+        @include justify-content(space-around);
+
+        li {
+            text-align: center;
+            position: relative;
+
+            &:nth-child(2n) {
+                width: 1px;
+                height: 94px;
+                background: $base-border-color-white;
+            }
+
+            a {
+              display: inline-block;
+              .bullet {
+                position: absolute;
+                top: -12px;
+                right: -14px;
+                background: $gray;
+                border-radius: 100%;
+                width: 24px;
+                height: 24px;
+                z-index: 10;
+                transition: $base-transition;
+                text-align: center;
+
+                img {
+                  width: 16px;
+                  height: 16px;
+                  margin-top: 4px;
+                }
+              }
+
+              &.sublime {
+                .bullet {
+                  top: -10px;
+                  right: 0;
+                }
+              }
+
+                color: rgba(#fff, 0.5);
+                font-family: $heading-font-family;
+                img {
+                    height: 56px;
+                    width: auto;
+                    margin-bottom: 6px;
+                    opacity: 0.4;
+                    transition: $base-transition;
+                }
+
+                span {
+                    display: block;
+                    font-size: $font-size-small;
+                }
+
+
+                &:hover {
+                    img {
+                        opacity: 1;
+                    }
+                    .bullet {
+                      background: $brand-secondary;
+                    }
+
+                    color: #fff;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}

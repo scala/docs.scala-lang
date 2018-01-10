@@ -1,0 +1,73 @@
+{% capture currentYear %}{{site.time | date: '%Y' | plus: 0}}{% endcapture %}
+
+<section class="training-events">
+	<div class="wrap">
+		<div class="inner-box">
+			{% comment %}Because of Jekyll limitations, we need to pass the paginated collection to iterate in an include variable 'collection'{% endcomment %}
+
+			{% capture firstMonth %}{{include.collection.first.date | date: "%m"}}{% endcapture %}
+			{% assign firstMonthNum = firstMonth | plus: 0 %}
+			{% capture lastMonth %}{{include.collection.last.date | date: "%m"}}{% endcapture %}
+			{% assign lastMonthNum = lastMonth | plus: 0 %}
+
+			{% for m in (firstMonth..lastMonth) %}
+				{% assign currentMonthEvents = '' | split: ','' %}
+
+				{% for event in include.collection %}
+					{% capture month %}{{event.date | date: "%m"}}{% endcapture %}
+					{% assign monthNum = month | plus: 0 %}
+					{% if monthNum == m %}
+						{% assign currentMonthEvents = currentMonthEvents | push: event %}
+					{% endif %}
+				{% endfor %}
+
+				{% capture monthName %}
+					{% case m %}
+					  {% when 1 %}January
+					  {% when 2 %}February
+					  {% when 3 %}March
+					  {% when 4 %}April
+					  {% when 5 %}May
+					  {% when 6 %}June
+					  {% when 7 %}July
+					  {% when 8 %}August
+					  {% when 9 %}September
+					  {% when 10 %}October
+					  {% when 11 %}November
+					  {% when 12 %}December
+					{% endcase %}
+				{% endcapture %}
+
+				{% for event in currentMonthEvents %}
+					{% capture year %}{{event.date | date: "%Y"}}{% endcapture %}
+					{% capture day %}{{event.date | date: "%d"}}{% endcapture %}
+					{% if forloop.first %}
+						<h3>{{monthName}} {{year}}</h3>
+						<div class="training-list">
+					{% endif %}
+
+					<a href="{{event.link-out}}" class="training-item">
+						{% if event.logo %}
+							<img src="{{event.logo}}" alt="{{event.title}}">
+						{% else %}
+							<div class="calendar">
+								<span>{{monthName | truncate: 9, "" | upcase}}</span>
+								<span>{{day}}</span>
+							</div>
+						{% endif %}						
+						<div class="training-text">
+							<h4>{{event.title}}</h4>
+							<p>{{event.location}}</p>
+							{% if event.organizer %}
+								<p>{{event.organizer}}</p>
+							{% else %}
+								<p>{{event.start}}{% if event.start != event.date %} - {{event.end}}{% endif %}</p>
+							{% endif %}
+						</div>
+					</a>
+
+					{% if forloop.last %}
+						</div>
+					{% endif %}
+				{% endfor %}
+			{% endfor %}

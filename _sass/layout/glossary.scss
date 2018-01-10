@@ -1,0 +1,75 @@
+// GLOSSARY
+//------------------------------------------------
+//------------------------------------------------
+
+.glossary {
+
+  .filterbar {
+    position: relative;
+    margin-bottom: 24px;
+
+    #filter-count {
+      visibility: hidden;
+      font-size: $font-size-xsmall;
+      text-transform: uppercase;
+      color: $base-font-color-light;
+      transition: $base-transition;
+    }
+
+    .icon-search {
+        position: absolute;
+        left: 14px;
+        top: 4px;
+        z-index: 30;
+    }
+
+    input {
+        padding: 8px 18px 8px 40px;
+        background: rgba($brand-tertiary, 0.1);
+        appearance: none;
+        font-size: $base-font-size;
+        border-radius: $border-radius-base;
+        width: 100%;
+        box-sizing: border-box;
+
+        &:focus {
+            outline: none;
+            background: rgba($brand-tertiary, 0.07);
+            @include box-shadow($box-shadow-inner);
+        }
+    }
+  }
+
+  h5 {
+    font-size: $font-size-medium !important;
+    color: $base-font-color-light !important;
+  }
+
+  ul {
+    padding-left: 0 !important;
+  }
+
+  ul li {
+    list-style-type: none !important;
+    padding-left: 0 !important;
+  }
+
+  li {
+    h4 {
+      text-transform: none;
+      margin-bottom: 2px;
+      font-weight: $font-black;
+    }
+  }
+}
+
+.glossary-toc {
+  #toc {
+    ul {
+      li {
+        // margin-bottom: 0;
+        margin-top: 2px;
+      }
+    }
+  }
+}

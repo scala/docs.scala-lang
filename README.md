@@ -1,7 +1,18 @@
 # Scala Documentation #
-[![Build Status](https://platform-ci.scala-lang.org/api/badges/scala/scala.github.com/status.svg)](https://platform-ci.scala-lang.org/scala/scala.github.com)
+
+[![Build Status](https://platform-ci.scala-lang.org/api/badges/scala/docs.scala-lang/status.svg)](https://platform-ci.scala-lang.org/scala/docs.scala-lang)
 
 This repository contains the source for the Scala documentation website, as well as the source for "Scala Improvement Process" (SIP) documents.
+
+## Quickstart ##
+
+To build and view the site locally:
+
+    gem install bundler
+    bundle install
+    bundle exec jekyll serve -I
+
+For more details, read on.
 
 ## Contributing ##
 

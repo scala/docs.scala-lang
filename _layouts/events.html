@@ -1,0 +1,13 @@
+---
+layout: inner-page-parent
+---
+
+{% include events-training-list-top.html collection=paginator.events %}
+		<div class="org-scala-event">
+			{{content}}
+		</div>
+
+	</div>
+
+	{% include paginator.html urlPath="events" %}		
+</div>

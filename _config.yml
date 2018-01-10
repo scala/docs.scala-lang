@@ -15,11 +15,72 @@ keywords:
 - Document
 - Guide
 
-scala-version: 2.12.0
+scala-version: 2.12.2
+
+collections:
+  style:
+    output: true
+  overviews:
+    output: true
+  tour:
+    output: true
+    permalink: /:collection/:path.html
+  tutorials:
+    output: true
+    permalink: /:collection/:path.html
+  sips:
+    output: true
+    permalink: /:collection/:path.html
+  books:
+    output: false
+  ja: # Japanese translations
+    output: true
+    permalink: /:collection/:path.html
+  zh-cn: # Chinese (Simplified) translations
+    output: true
+    permalink: /:collection/:path.html
+  ru: # Russian translations
+    output: true
+    permalink: /:collection/:path.html
+  es: # Spanish translations
+    output: true
+    permalink: /:collection/:path.html
+  ba: # Bosnian translations
+    output: true
+    permalink: /:collection/:path.html
+  pl: # Polish translations
+    output: true
+    permalink: /:collection/:path.html
+  pt-br: # Brazilian Portuguese translations
+    output: true
+    permalink: /:collection/:path.html
+  ko: # Korean translations
+    output: true
+    permalink: /:collection/:path.html
+  de: # German translations
+    output: true
+    permalink: /:collection/:path.html
+  it: # Italian translations
+    output: true
+    permalink: /:collection/:path.html
+  zh-tw: # Taiwanese translations
+    output: true
+    permalink: /:collection/:path.html
+  fr: # French translations
+    output: true
+    permalink: /:collection/:path.html
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "tour"
+    values:
+      overview-name: "Tour of Scala"
 
 highlighter: rouge
-permalink: /:categories/:title.html
+permalink: /:categories/:title.html:output_ext
 baseurl:
 exclude: ["vendor"]
-gems:
+plugins:
   - jekyll-redirect-from
