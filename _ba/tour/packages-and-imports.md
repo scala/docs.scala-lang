@@ -1,0 +1,17 @@
+---
+layout: tour
+title: Packages and Imports
+language: ba
+
+discourse: true
+
+partof: scala-tour
+
+num: 35
+previous-page: named-arguments
+---
+
+# Packages and Imports
+
+(this section of the tour has not been translated yet. pull request
+with translation welcome!)
