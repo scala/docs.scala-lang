@@ -1,18 +1,15 @@
 ---
 layout: tour
-title: Packages and Imports
-language: ko
+title: Type Inference
+language: es
 
 discourse: true
 
 partof: scala-tour
 
-num: 35
-previous-page: named-arguments
-next-page: type-inference
+num: 36
+previous-page: packages-and-imports
 ---
-
-# Packages and Imports
 
 (this section of the tour has not been translated yet. pull request
 with translation welcome!)
