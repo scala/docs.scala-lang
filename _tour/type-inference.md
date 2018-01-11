@@ -58,11 +58,16 @@ The parameter for map is `f: A => B`. Because we put integers in the `Seq`, the 
 
 It is generally considered more readable to declare the type of members exposed in a public API.  Therefore, we recommended that you make the type explicit for any APIs that will be exposed to users of your code.
 
-Also, type inference can sometimes infer a too-specific type, as the following program shows:
+Also, type inference can sometimes infer a too-specific type.  Suppose we write:
+
+```tut
+var obj = null
+```
+
+Then we can't then go on and make this reassignment:
 
 ```tut:fail
-var obj = null
 obj = new AnyRef
 ```
 
-This program does not compile because the type inferred for variable `obj` is `Null`. Since the only value of that type is `null`, it is impossible to make this variable refer to another value.
+It won't compile, because the type inferred for `obj` was `Null`. Since the only value of that type is `null`, it is impossible to assign a different value.
