@@ -9,6 +9,7 @@ partof: scala-tour
 
 num: 35
 previous-page: named-arguments
+next-page: type-inference
 ---
 
 # Packages and Imports
