@@ -10,7 +10,7 @@ num: 10
 next-page: case-classes
 previous-page: nested-functions
 
-redirect_from: "/tutorials/tour/currying.html"
+redirect_from: "/tutorials/tour/multiple-parameter-lists.html"
 ---
 
 Methods may define multiple parameter lists. When a method is called with a fewer number of parameter lists, then this will yield a function taking the missing parameter lists as its arguments.
@@ -21,7 +21,7 @@ Here is an example, defined in [Traversable](/overviews/collections/trait-traver
 def foldLeft[B](z: B)(op: (B, A) => B): B
 ```
 
-`foldLeft` applies a binary operator `op` to an initial value `z` and all elements of this traversable, going from left to right. Here is an example of its usage:
+`foldLeft` applies a binary operator `op` to an initial value `z` and all elements of this traversable, going left to right. Here is an example of its usage:
 
 ```tut
 val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
