@@ -17,7 +17,7 @@ Methods may define multiple parameter lists. When a method is called with a fewe
 
 Here is an example, defined in [Traversable](/overviews/collections/trait-traversable.html) trait from Scala collections:
 
-```tut
+```
 def foldLeft[B](z: B)(op: (B, A) => B): B
 ```
 
@@ -26,20 +26,17 @@ def foldLeft[B](z: B)(op: (B, A) => B): B
 ```tut
 val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 val res = numbers.foldLeft(0)((m: Int, n: Int) => m + n)
-print(res)
+print(res) // 55
 ```
 
-Starting with an initial value of 0, `foldLeft` applies the function `(m: Int, n: Int) => m + n` to each element in the List and the previous accumulated value. The output of the above program is:
-```tut
-55
-```
+Starting with an initial value of 0, `foldLeft` applies the function `(m: Int, n: Int) => m + n` to each element in the List and the previous accumulated value.
 
 Multiple parameter lists have a more verbose invocation syntax; and hence should be used sparingly. Suggested use cases include:
 
 1. ##### Implicit parameters
     To specify certain parameters in a parameter list as `implicit`, multiple parameter lists should be used. An example of this is:
 
-    ```tut
+    ```
     def execute(arg: Int)(implicit ec: ExecutionContext) = ???
     ```
 
