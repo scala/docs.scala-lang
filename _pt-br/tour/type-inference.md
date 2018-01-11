@@ -1,7 +1,7 @@
 ---
 layout: tour
 title: Type Inference
-language: ba
+language: pt-br
 
 discourse: true
 
