@@ -22,17 +22,17 @@ Kroz sljedeći primjer vidjećemo zašto je ovo korisno:
 
 ```tut:fail
 trait Node[+B] {
-  def prepend(elem: B): Unit
+  def prepend(elem: B): Node[B]
 }
 
 case class ListNode[+B](h: B, t: Node[B]) extends Node[B] {
-  def prepend(elem: B) = ListNode[B](elem, this)
+  def prepend(elem: B): ListNode[B] = ListNode(elem, this)
   def head: B = h
-  def tail = t
+  def tail: Node[B] = t
 }
 
 case class Nil[+B]() extends Node[B] {
-  def prepend(elem: B) = ListNode[B](elem, this)
+  def prepend(elem: B): ListNode[B] = ListNode(elem, this)
 }
 ```
 
@@ -48,17 +48,17 @@ Ovo radimo uvođenjem novog tipskog parametra `U` koji ima `B` kao svoju donju g
 
 ```tut
 trait Node[+B] {
-  def prepend[U >: B](elem: U)
+  def prepend[U >: B](elem: U): Node[U]
 }
 
 case class ListNode[+B](h: B, t: Node[B]) extends Node[B] {
-  def prepend[U >: B](elem: U) = ListNode[U](elem, this)
+  def prepend[U >: B](elem: U): ListNode[U] = ListNode(elem, this)
   def head: B = h
-  def tail = t
+  def tail: Node[B] = t
 }
 
 case class Nil[+B]() extends Node[B] {
-  def prepend[U >: B](elem: U) = ListNode[U](elem, this)
+  def prepend[U >: B](elem: U): ListNode[U] = ListNode(elem, this)
 }
 ```
 
