@@ -187,7 +187,7 @@ Every iterator can be converted to a buffered iterator by calling its `buffered`
     res11: Int = 1
     scala> bit.next()
     res12: Int = 2
-    scala> bit.optionHead
+    scala> bit.headOption
     res13: Option[Int] = Some(3)
 
 Note that calling `head` on the buffered iterator `bit` does not advance it. Therefore, the subsequent call `bit.next()` returns the same value as `bit.head`.
