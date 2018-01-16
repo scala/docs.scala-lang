@@ -4,14 +4,12 @@ title: Traits
 
 discourse: true
 
-partof: scala-tour
-
+tutorial: scala-tour
+categories: tour
 num: 5
 next-page: mixin-class-composition
 previous-page: classes
 assumed-knowledge: expressions, classes, generics, objects, companion-objects
-
-redirect_from: "/tutorials/tour/traits.html"
 ---
 
 Traits are used to share interfaces and fields between classes. They are similar to Java 8's interfaces. Classes and objects can extend traits but traits cannot be instantiated and therefore have no parameters.
@@ -36,6 +34,11 @@ Extending the `trait Iterator[A]` requires a type `A` and implementations of the
 ## Using traits
 Use the `extends` keyword to extend a trait. Then implement any abstract members of the trait using the `override` keyword:
 ```tut
+trait Iterator[A] {
+  def hasNext: Boolean
+  def next(): A
+}
+
 class IntIterator(to: Int) extends Iterator[Int] {
   private var current = 0
   override def hasNext: Boolean = current < to
@@ -50,13 +53,13 @@ class IntIterator(to: Int) extends Iterator[Int] {
 
 
 val iterator = new IntIterator(10)
-println(iterator.next())  // prints 0
-println(iterator.next())  // prints 1
+iterator.next()  // returns 0
+iterator.next()  // returns 1
 ```
 This `IntIterator` class takes a parameter `to` as an upper bound. It `extends Iterator[Int]` which means that the `next` method must return an Int.
 
 ## Subtyping
-Subtypes of traits can be used where the trait is required.
+Where a given trait is required, a subtype of the trait can be used instead.
 ```tut
 import scala.collection.mutable.ArrayBuffer
 
