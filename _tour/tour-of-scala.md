@@ -35,7 +35,7 @@ Scala is equipped with an expressive type system that enforces statically that a
 * [implicit parameters](implicit-parameters.html) and [conversions](implicit-conversions.html)
 * [polymorphic methods](polymorphic-methods.html)
 
-A [local type inference mechanism](local-type-inference.html) takes care that the user is not required to annotate the program with redundant type information. In combination, these features provide a powerful basis for the safe reuse of programming abstractions and for the type-safe extension of software.
+[Type inference](type-inference.html) means the user is not required to annotate code with redundant type information. In combination, these features provide a powerful basis for the safe reuse of programming abstractions and for the type-safe extension of software.
 
 ## Scala is extensible ##
 

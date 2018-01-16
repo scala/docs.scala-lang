@@ -34,7 +34,7 @@ Scala posiada ekspresywny system typów zapewniający, że abstrakcje są używa
 * [parametry domniemane](implicit-parameters.html) i [konwersje niejawne](implicit-conversions.html)
 * [metody polimorficzne](polymorphic-methods.html)
 
-[Mechanizm lokalnej inferencji typów](local-type-inference.html) sprawia, że nie jest konieczne podawanie nadmiarowych informacji o typach w programie. W połączeniu te funkcje języka pozwalają na bezpiecznie typowane ponowne wykorzystanie programistycznych abstrakcji.
+[Mechanizm lokalnej inferencji typów](type-inference.html) sprawia, że nie jest konieczne podawanie nadmiarowych informacji o typach w programie. W połączeniu te funkcje języka pozwalają na bezpiecznie typowane ponowne wykorzystanie programistycznych abstrakcji.
 
 ## Scala jest rozszerzalna ##
 W praktyce rozwiązania specyficzne dla domeny wymagają odpowiednich rozszerzeń języka. Scala dostarcza unikalne mechanizmy, dzięki którym można łatwo dodawać nowe konstrukcje do języka w postaci bibliotek:
