@@ -51,7 +51,7 @@ Konkretno, sistem tipova podržava sljedeće:
 * implicitne [parametre](implicit-parameters.html) i [konverzije](implicit-conversions.html)
 * [polimorfne metode](polymorphic-methods.html)
 
-Mehanizam za [lokalno zaključivanje tipova](local-type-inference.html) se brine da korisnik ne mora pisati tipove varijabli
+Mehanizam za [lokalno zaključivanje tipova](type-inference.html) se brine da korisnik ne mora pisati tipove varijabli
 više nego što je potrebno.
 U kombinaciji, ove mogućnosti su jaka podloga za bezbjedno ponovno iskorištenje programskih apstrakcija
 i za tipski bezbjedno proširenje softvera.

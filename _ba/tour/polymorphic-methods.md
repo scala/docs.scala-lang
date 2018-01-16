@@ -9,7 +9,7 @@ partof: scala-tour
 
 num: 28
 
-next-page: local-type-inference
+next-page: type-inference
 previous-page: implicit-conversions
 prerequisite-knowledge: unified-types
 

@@ -34,7 +34,7 @@ Scala é equipada com um expressivo sistema de tipos que reforça estaticamente 
 * [parâmetros implícitos](implicit-parameters.html) e [conversões implícitas](implicit-conversions.html)
 * [métodos polimórficos](polymorphic-methods.html)
 
-Um [mecanismo de inferência de tipo local](local-type-inference.html) se encarrega para que o usuário não seja obrigado a anotar o programa com informações reduntante de tipos. Combinados, esses recursos fornecem uma base poderosa para a reutilização segura de abstrações de programação e para a extensão de tipos seguro do software.
+Um [mecanismo de inferência de tipo local](type-inference.html) se encarrega para que o usuário não seja obrigado a anotar o programa com informações reduntante de tipos. Combinados, esses recursos fornecem uma base poderosa para a reutilização segura de abstrações de programação e para a extensão de tipos seguro do software.
 
 ## Scala é extensível ##
 

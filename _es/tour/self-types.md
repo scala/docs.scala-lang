@@ -9,7 +9,7 @@ partof: scala-tour
 num: 27
 language: es
 
-next-page: local-type-inference
+next-page: type-inference
 previous-page: lower-type-bounds
 ---
 
