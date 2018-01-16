@@ -6,8 +6,9 @@ discourse: true
 
 partof: scala-tour
 
-num: 36
-previous-page: packages-and-imports
+num: 29
+next-page: operators
+previous-page: polymorphic-methods
 ---
 
 The Scala compiler can often infer the type of an expression so you don't have to declare it explicitly.
