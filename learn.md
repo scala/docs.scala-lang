@@ -28,5 +28,14 @@ There are a handful of websites where you can interactively run Scala code in yo
 ### allaboutscala
 [allaboutscala](http://allaboutscala.com/) provides detailed tutorials for beginners.
 
-### ScalaCourses
-[Independent Courseware](http://getscala.com), online self-study or instructor-led Scala and Play courses for a fee.
+### ScalaCourses.com
+ScalaCourses.com has been dedicated to teaching Scala and Play Framework online since 2013.
+Enrollments are for 365 days, and during that time students can interact with instructors via email or screen sharing.
+Course material is continuously updated; enrolled students have access to all updates at no extra charge.
+[GetScala.com](https://www.getscala.com) describes the individual self-study and remote instructor-led training options.
+
+Courses include:
+ * [Introduction to Scala](https://www.scalacourses.com/showCourse/40)
+ * [Intermediate Scala](https://www.scalacourses.com/showCourse/45)
+ * [Introduction to Play Framework for Scala](https://www.scalacourses.com/showCourse/39)
+
