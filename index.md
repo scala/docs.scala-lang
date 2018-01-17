@@ -15,7 +15,7 @@ sections:
         icon: "fa fa-rocket"
         link: /getting-started.html
       - title: "Tour of Scala"
-        description: "Bite-sized introductions to some of the core language concepts."
+        description: "Bite-sized introductions to core language features."
         icon: "fa fa-flag"
         link: /tour/tour-of-scala.html
       - title: "Scala for Java Programmers"
