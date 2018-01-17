@@ -8,7 +8,7 @@ partof: scala-tour
 
 num: 30
 next-page: by-name-parameters
-previous-page: local-type-inference
+previous-page: type-inference
 prerequisite-knowledge: case-classes
 
 redirect_from: "/tutorials/tour/operators.html"

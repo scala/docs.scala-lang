@@ -8,7 +8,7 @@ partof: scala-tour
 
 num: 27
 
-next-page: local-type-inference
+next-page: type-inference
 previous-page: implicit-conversions
 language: pt-br
 ---

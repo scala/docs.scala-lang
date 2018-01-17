@@ -9,7 +9,7 @@ partof: scala-tour
 num: 27
 language: ko
 
-next-page: local-type-inference
+next-page: type-inference
 previous-page: implicit-conversions
 ---
 
