@@ -22,6 +22,8 @@ There are a few interactive resources for trying out Scala, to get a look and fe
 
 Note : There is a paid version available. The only difference between the free and the paid version is that you get a certificate of completion from Coursera on the paid version. You can learn more about coursera certificates in [this help document](https://learner.coursera.help/hc/en-us/articles/209819053-Get-a-Course-Certificate).
 
+### Dr.Mark C Lewis's Lectures from Trinity University
+
  * [Dr.Mark C Lewis](http://www.cs.trinity.edu/~mlewis/) from Trinity University, San Antonio, TX, teaches programming courses using the Scala language. Course videos are available in Youtube for free. Some of the courses below.
    * [Introduction to Programming and Problem Solving Using Scala](https://www.youtube.com/playlist?list=PLLMXbkbDbVt9MIJ9DV4ps-_trOzWtphYO)
    * [Object-Orientation, Abstraction, and Data Structures Using Scala](https://www.youtube.com/playlist?list=PLLMXbkbDbVt8JLumqKj-3BlHmEXPIfR42)
