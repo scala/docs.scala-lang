@@ -62,5 +62,4 @@ Multiple parameter lists have a more verbose invocation syntax; and hence should
     ```
     def execute(arg: Int)(implicit ec: ExecutionContext) = ???
     ```
-
-2. 
+    
