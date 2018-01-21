@@ -7,7 +7,7 @@ discourse: false
 partof: scala-tour
 
 num: 8
-next-page: currying
+next-page: multiple-parameter-lists
 previous-page: higher-order-functions
 language: pt-br
 ---

@@ -9,7 +9,7 @@ partof: scala-tour
 num: 10
 language: pl
 next-page: pattern-matching
-previous-page: currying
+previous-page: multiple-parameter-lists
 ---
 
 Scala wspiera mechanizm _klas przypadków_. Klasy przypadków są zwykłymi klasami z dodatkowymi założeniami:
