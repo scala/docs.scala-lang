@@ -13,7 +13,7 @@ previous-page: nested-functions
 redirect_from: "/tutorials/tour/multiple-parameter-lists.html"
 ---
 
-Methods may define multiple parameter lists. When a method is called with a fewer number of parameter lists, then this will yield a function taking the missing parameter lists as its arguments.
+Methods may define multiple parameter lists. When a method is called with a fewer number of parameter lists, then this will yield a function taking the missing parameter lists as its arguments. This is formally known as [currying](https://en.wikipedia.org/wiki/Currying)
 
 Here is an example, defined in [Traversable](/overviews/collections/trait-traversable.html) trait from Scala collections:
 
