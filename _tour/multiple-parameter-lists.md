@@ -1,6 +1,6 @@
 ---
 layout: tour
-title: Multiple Parameter Lists
+title: Multiple Parameter Lists (Currying)
 
 discourse: true
 
