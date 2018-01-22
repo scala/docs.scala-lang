@@ -8,7 +8,7 @@ partof: scala-tour
 
 num: 10
 next-page: pattern-matching
-previous-page: currying
+previous-page: multiple-parameter-lists
 language: pt-br
 ---
 

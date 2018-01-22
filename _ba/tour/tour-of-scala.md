@@ -27,7 +27,7 @@ kao čistom zamjenom za višestruko nasljeđivanje.
 Scala je također funkcionalni jezik u smislu da je [svaka funkcija vrijednost](unified-types.html).
 Scala ima lahku sintaksu za definisanje anonimnih funkcija,
 i podržava [funkcije višeg reda](higher-order-functions.html), omogućuje [ugnježdavanje funkcija](nested-functions.html),
-i podržava [curry-jevanje](currying.html).
+i podržava [curry-jevanje](multiple-parameter-lists.html).
 Scaline [case klase](case-classes.html) i njen mehanizam [podudaranja uzoraka](pattern-matching.html) modeluju algebarske tipove
 koji se koriste u dosta funkcionalnih programskih jezika.
 [Singlton objekti](singleton-objects.html) omogućuju pogodan način za grupisanje funkcija koje nisu članovi klase.

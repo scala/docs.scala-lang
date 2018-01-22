@@ -18,7 +18,7 @@ next-page: unified-types
 [모든 값이 객체](unified-types.html)라는 측면에서 스칼라는 순수 객체지향 언어다. 객체의 타입과 행위는 [클래스](classes.html)와 [트레잇](traits.html)으로 나타난다. 클래스는 서브클래스를 만들거나, 다중 상속을 깔끔하게 대체하는 유연한 [믹스인 기반 컴포지션](mixin-class-composition.html) 방법을 통해 확장된다.
 
 ## 스칼라는 함수형이다 ##
-또한, 스칼라는 [모든 함수가 값](unified-types.html)이라는 측면에서 함수형 언어다. 스칼라는 익명 함수를 위한 경량 구문을 제공하고, [고차 함수](higher-order-functions.html)를 지원하며, 함수의 [중첩](nested-functions.html)을 허용하고, [커링](currying.html)을 지원한다. 스칼라의 [케이스 클래스](case-classes.html)와 케이스 클래스의 [패턴 매칭](pattern-matching.html) 빌트인 지원을 통해 여러 함수형 프로그래밍 언어에서 사용되는 대수 타입을 만들 수 있다.
+또한, 스칼라는 [모든 함수가 값](unified-types.html)이라는 측면에서 함수형 언어다. 스칼라는 익명 함수를 위한 경량 구문을 제공하고, [고차 함수](higher-order-functions.html)를 지원하며, 함수의 [중첩](nested-functions.html)을 허용하고, [커링](multiple-parameter-lists.html)을 지원한다. 스칼라의 [케이스 클래스](case-classes.html)와 케이스 클래스의 [패턴 매칭](pattern-matching.html) 빌트인 지원을 통해 여러 함수형 프로그래밍 언어에서 사용되는 대수 타입을 만들 수 있다.
 
 뿐만 아니라 스칼라의 패턴 매칭 개념은 [우측 무시 시퀀스 패턴](regular-expression-patterns.html)의 도움을 받아 자연스럽게 XML 데이터의 처리로 확장된다. 이런 맥락에서 시퀀스 컴프리헨션은 쿼리를 만들 때 유용하다. 이런 기능 때문에 스칼라는 웹 서비스와 같은 애플리케이션 개발에 있어서 이상적인 선택이 될 수 있다.
 
