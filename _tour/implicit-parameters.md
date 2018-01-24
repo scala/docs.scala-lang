@@ -1,14 +1,15 @@
 ---
 layout: tour
-title: Implicit Parameters
+title: Implicit Conversions
 
 discourse: true
 
 partof: scala-tour
 
 num: 26
+
 next-page: implicit-conversions
-previous-page: self-types
+previous-page: explicitly-typed-self-references
 
 redirect_from: "/tutorials/tour/implicit-parameters.html"
 ---
@@ -23,6 +24,7 @@ The actual arguments that are eligible to be passed to an implicit parameter fal
 In the following example we define a method `sum` which computes the sum of a list of elements using the monoid's `add` and `unit` operations. Please note that implicit values can not be top-level, they have to be members of a template.
 This example uses a structure from abstract algebra to show how implicit parameters work.
 A semigroup is an algebraic structure on a set A with an (associative) operation, called add here, that combines a pair of A's and returns another A.
+This example uses a structure from abstract algebra to show how implicit parameters work. A semigroup is an algebraic structure on a set A with an (associative) operation, called add here, that combines a pair of A's and returns another A.
  
 ```tut
 abstract class SemiGroup[A] {
@@ -31,6 +33,7 @@ abstract class SemiGroup[A] {
 ```
 
 A monoid is a semigroup with a distinguished element of A, called unit, that when combined with any other element of A returns that other element again.
+
 ```tut
 abstract class Monoid[A] extends SemiGroup[A] {
   def unit: A
