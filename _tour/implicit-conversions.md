@@ -7,6 +7,7 @@ discourse: true
 partof: scala-tour
 
 num: 27
+
 next-page: polymorphic-methods
 previous-page: implicit-parameters
 
