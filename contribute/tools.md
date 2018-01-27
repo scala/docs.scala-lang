@@ -19,7 +19,7 @@ projects:
     icon: https://avatars1.githubusercontent.com/u/57059?v=3&s=200
     link: https://github.com/scala/scala
     homeLink: http://www.scala-lang.org/api
-    issuesLink: https://issues.scala-lang.org/issues/?jql=status%20%3D%20Open%20AND%20component%20%3D%20%22Scaladoc%20Tool%22
+    issuesLink: https://github.com/scala/bug/labels/scaladoc
     readmeLink: https://github.com/scala/scala#welcome
     contributingLink: http://scala-lang.org/contribute/guide.html
   - title: Scala IDE
