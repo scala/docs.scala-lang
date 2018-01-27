@@ -72,14 +72,6 @@ projects:
     contributingLink: https://github.com/scala/scala-abide#extending-abide  
 
 projectsInNeed:
-  - title: Scalap
-    description: Scala Decoder (part of scala/scala)
-    icon: https://avatars1.githubusercontent.com/u/57059?v=3&s=200
-    link: https://github.com/scala/scala
-    homeLink:
-    issuesLink: https://issues.scala-lang.org/issues/?jql=status%20%3D%20Open%20AND%20text%20~%20%22scalap%22
-    readmeLink: https://github.com/scala/scala#welcome
-    contributingLink: https://github.com/sbt/sbt/blob/0.13/CONTRIBUTING.md
   - title: Scalariform
     description: Scala source code formatter
     icon: /resources/img/white-line.png
