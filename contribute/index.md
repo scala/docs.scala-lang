@@ -29,10 +29,8 @@ Coordination of contribution efforts takes place on
 
 ### Community Tickets
 
-The following links provide starting points for
-various contributor activities:
-
-{% include column-list-of-items.html collection=site.contribute_community_tickets %}
+All issues can be found in the [Scala bug tracker](https://github.com/scala/bug). Most issues are labeled
+to make it easier to find issues you are interested in.
 
 ### Tools and Libraries
 
