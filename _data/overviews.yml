@@ -89,6 +89,10 @@
         The Scala REPL is a tool (<code>scala</code>) for evaluating expressions in Scala.
         <br><br>
         The <code>scala</code> command will execute a source script by wrapping it in a template and then compiling and executing the resulting program
+    - title: JDK Compatibility
+      icon: coffee
+      url: "jdk-compatibility/overview.html"
+      description: "Tables and more explaining Scala's use of the Java Virtual Machine and Java Development Kit."
 
 - category: Parallel and Concurrent Programming
   description: "Complete guides covering some of Scala's libraries for parallel and concurrent programming."
