@@ -17,7 +17,7 @@ Other good starting points for first-time contributors include the [Scala README
 Let's say that you particularly enjoy the new string interpolation language feature introduced in Scala 2.10.0, and you use it quite heavily.
 
 Though, there's an annoying issue
-which you occasionally stumble upon: the formatting string interpolator `f` [does not support](https://issues.scala-lang.org/browse/SI-6725)
+which you occasionally stumble upon: the formatting string interpolator `f` [does not support](https://github.com/scala/bug/issues/6725)
 new line tokens `%n`.
 
 One approach would be to go the mailing list, request that the bug be fixed, and then to wait indefinitely for the fix arrive. Another approach would be to instead patch Scala oneself, and to submit the fix to the Scala repository in hopes that it might make it into a subsequent release.
@@ -88,10 +88,10 @@ Before you start making changes, always create your own branch. Never work on th
 the changes you plan on making. Use a prefix that describes the nature of your change. There are essentially two kinds of changes:
 bug fixes and new features.
 
-* For bug fixes, use `issue/NNNN` or `ticket/NNNN` for bug NNNN from the [Scala issue tracker](https://issues.scala-lang.org/).
+* For bug fixes, use `issue/NNNN` or `ticket/NNNN` for bug NNNN from the [Scala bug tracker](https://github.com/scala/bug).
 * For new feature use `topic/XXX` for feature XXX. Use feature names that make sense in the context of the whole Scala project and not just to you personally. For example, if you work on diagrams in Scaladoc, use `topic/scaladoc-diagrams` instead of just `topic/diagrams` would be a good branch name.
 
-Since in our example, we're going to fix an existing bug [SI-6725](https://issues.scala-lang.org/browse/SI-6725), we'll create a branch named `ticket/6725`.
+Since in our example, we're going to fix an existing bug [6725](https://github.com/scala/bug/issues/6725), we'll create a branch named `ticket/6725`.
 
     16:39 ~/Projects/scala (master)$ git checkout -b ticket/6725
     Switched to a new branch 'ticket/6725'
@@ -108,7 +108,7 @@ You need the following tools:
 * `sbt`, an interactive build tool commonly used in Scala projects. Acquiring sbt manually is not necessary -- the recommended approach is to download the [sbt-extras runner script](https://github.com/paulp/sbt-extras/blob/master/sbt) and use it in place of `sbt`. The script will download and run the correct version of sbt when run from the Scala repository's root directory.
 * `curl` -- the build uses `curl` in the `pull-binary-libs.sh` script to download bootstrap libs.
 
-OS X and Linux builds should work. Windows is supported, but it might have issues. Please report to [the issue tracker](https://issues.scala-lang.org/) if you encounter any.
+OS X and Linux builds should work. Windows is supported, but it might have issues. Please report to the [Scala bug tracker](https://github.com/scala/bug) if you encounter any.
 
 Building Scala is as easy as running `sbt dist/mkPack` in the root of your cloned repository. In general, it's much more efficient to enter the `sbt` shell once and run the various tasks from there, instead of running each task by launching `sbt some-task` on your command prompt.
 
@@ -136,7 +136,7 @@ Typically you would want to first make sure that your changes work on a small ex
 by running a comprehensive test suite.
 
 We'll start by creating a `sandbox` directory (`./sandbox` is listed in the .gitignore of the Scala repository), which will hold a single test file and its compilation results. First, let's make sure that
-[the bug](https://issues.scala-lang.org/browse/SI-6725) is indeed reproducible by putting together a simple test and compiling and running it with the Scala compiler that we built using `sbt`. The Scala compiler that we just built is located in `build/pack/bin`.
+[the bug](https://github.com/scala/bug/issues/6725) is indeed reproducible by putting together a simple test and compiling and running it with the Scala compiler that we built using `sbt`. The Scala compiler that we just built is located in `build/pack/bin`.
 
     17:25 ~/Projects/scala (ticket/6725)$ mkdir sandbox
     17:26 ~/Projects/scala (ticket/6725)$ cd sandbox
@@ -221,7 +221,7 @@ Tools like Scaladoc also welcome contributions. Unfortunately these smaller proj
 
 ### Interlude
 
-To fix [the bug we're interested in](https://issues.scala-lang.org/browse/SI-6725) we've tracked the `StringContext.f` interpolator
+To fix [the bug we're interested in](https://github.com/scala/bug/issues/6725) we've tracked the `StringContext.f` interpolator
 down to a macro implemented in `MacroImplementations.scala` There we notice that the interpolator only processes conversions,
 but not tokens like `%n`. Looks like an easy fix.
 
