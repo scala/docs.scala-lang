@@ -80,8 +80,8 @@ projectsInNeed:
     issuesLink: https://issues.scala-lang.org/issues/?jql=status%20%3D%20Open%20AND%20text%20~%20%22scalap%22
     readmeLink: https://github.com/scala/scala#welcome
     contributingLink: https://github.com/sbt/sbt/blob/0.13/CONTRIBUTING.md
-  - title: Scaladoc Tool
-    description: (Contribute through scala/scala)
+  - title: Scalariform
+    description: Scala source code formatter
     icon: /resources/img/white-line.png
     link: https://github.com/mdr/scalariform
     homeLink: https://github.com/mdr/scalariform/wiki/Command-line-tool
