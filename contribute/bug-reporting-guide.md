@@ -21,7 +21,6 @@ If your issue is related to any of the following external projects, make sure to
  - [Akka](http://doc.akka.io/docs/akka/current/project/issue-tracking.html)
  - [Play!](http://github.com/playframework/Play20/issues)
  - [Slick](http://github.com/slick/slick/issues)
- - [Actors Migration Kit](http://github.com/scala/actors-migration/issues?state=open)
  - [Scala IDE](https://scala-ide-portfolio.assembla.com/spaces/scala-ide/support/tickets)
  - [sbt](https://github.com/sbt/sbt/issues)
 
