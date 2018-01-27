@@ -43,7 +43,7 @@ The main Scala project consists of the standard Scala library, the Scala reflect
 the Scala compiler and the Scaladoc tool. This means there's plenty to choose from when deciding what to work on.
 Typically the scaladoc tool provides a low entry point for new committers, so it is a good first step into contributing.
 
-On the Scala bug tracker you will find many bugs that are [marked as good starting points to contributing ("community" bugs)](https://issues.scala-lang.org/secure/IssueNavigator.jspa?requestId=12111) or [that are not currently assigned](https://issues.scala-lang.org/secure/IssueNavigator.jspa?requestId=12112) and that you could pick up. Once you decided on a ticket to look at, see the next step on how to proceed further.
+On the [Scala bug tracker](https://github.com/scala/bug) you will find the bugs that you could pick up. Once you decided on a ticket to look at, see the next step on how to proceed further.
 
 If you are interested in contributing code, we ask you to sign the
 [Scala Contributor License Agreement](http://www.lightbend.com/contribute/cla/scala),
