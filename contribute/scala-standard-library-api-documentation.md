@@ -22,7 +22,7 @@ contribution steps and guidelines. Thank you.*
 
 Since API documentation is located in Scala source code files, the
 process for contributing API documentation is similar to that of contributing bug-fixes
-to the Scala code base, but without the requirement that there be an issue filed on JIRA
+to the Scala code base, but without the requirement that there be an issue filed on GitHub
 first. When forking/branching, just use a `scaladoc/xxxx` branch name, where xxxx is a
 descriptive, but short branch name (e.g. `scaladoc/future-object`).
 However, if an issue *does* exist, please use `issue/NNNN`, where NNNN is the ticket number,
@@ -78,9 +78,9 @@ Please familiarize yourself with the following before contributing
 new API documentation to save time, effort, mistakes and repetition.
 
 * [Forking the Repo](./hacker-guide.html#set-up) - follow the setup steps through
-  the Branch section. If providing new documentation related to an existing JIRA issue, use `issue/NNNN`
+  the Branch section. If providing new documentation related to an existing GitHub issue, use `issue/NNNN`
   or `ticket/NNNN` as the guide states. If providing API documentation with no associated
-  JIRA issue, use `scaladoc/xxxx` instead.
+  GitHub issue, use `scaladoc/xxxx` instead.
 * [Scaladoc for library authors](http://docs.scala-lang.org/overviews/scaladoc/for-library-authors.html)
   covers the use of scaladoc tags, markdown and other features.
 * [Scaladoc's interface](http://docs.scala-lang.org/overviews/scaladoc/interface.html)

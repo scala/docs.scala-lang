@@ -86,7 +86,7 @@ The links below are to a number of Scala build and IDE related projects that are
 
 Since these tools are in separate projects, they may (and likely will) have their own rules and guidelines for contributing. The [Hacker Guide](/contribute/hacker-guide/) and [Bug-fixing](/contribute/guide/) pages will likely have much in the way of related information on how to contribute to these projects, and are recommended reading. You should also check the README.md and (if it's present) CONTRIBUTING.md files from the actual projects before contributing to them.
 
-Typically, issues for these projects will be reported and kept in the github project issue tracker for that project rather than in the Scala project JIRA.
+Typically, issues for these projects will be reported and kept in the GitHub project issue tracker for that project rather than in the Scala bug tracker.
 Many of these projects have a <a href="https://gitter.im">gitter</a> channel (usually listed in the README or CONTRIBUTING documents) which is a great place to discuss proposed work before commencing.
 
 There are some projects in this section that are in
