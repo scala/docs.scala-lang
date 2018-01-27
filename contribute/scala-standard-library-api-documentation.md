@@ -42,7 +42,7 @@ and identify missing, incorrect or inadequate documentation. A good place to sta
 package objects for important packages (these often get overlooked for documentation
 and are a good place for API overviews).
 
-If you find an issue, please log it in the [Scala issue tracker](https://issues.scala-lang.org)
+If you find an issue, please log it in the [Scala bug tracker](https://github.com/scala/bug)
 **after making sure it is not already logged as an issue**. To help with
 disambiguation, please use the following format for issue title:
 
