@@ -33,11 +33,11 @@ projects:
   - title: DBuild
     description: Multi-project build tool.
     icon: https://avatars3.githubusercontent.com/u/784923?v=3&s=200
-    link: https://github.com/typesafehub/dbuild
-    homeLink: http://typesafehub.github.io/dbuild
-    issuesLink: https://github.com/typesafehub/dbuild/issues
-    readmeLink: https://github.com/typesafehub/dbuild/blob/master/README.md
-    contributingLink: https://github.com/typesafehub/dbuild/blob/master/README.md#get-involved
+    link: https://github.com/lightbend/dbuild
+    homeLink: http://lightbend.github.io/dbuild
+    issuesLink: https://github.com/lightbend/dbuild/issues
+    readmeLink: https://github.com/lightbend/dbuild/blob/master/README.md
+    contributingLink: https://github.com/lightbend/dbuild/blob/master/README.md#get-involved
   - title: Partest
     description: Scala Compiler/Library Testing
     icon: https://avatars1.githubusercontent.com/u/57059?v=3&s=200
