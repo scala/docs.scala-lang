@@ -52,8 +52,8 @@ projects:
     link: https://github.com/ensime/ensime-server
     homeLink: http://ensime.github.io/
     issuesLink: https://github.com/ensime/ensime-server/issues
-    readmeLink: https://github.com/ensime/ensime-server/blob/2.0/README.md
-    contributingLink: https://ensime.github.io/contributing/
+    readmeLink: http://ensime.github.io/
+    contributingLink: http://ensime.github.io/server/contributing/
   - title: Scoverage
     description: Scala code coverage tool
     icon: https://avatars1.githubusercontent.com/u/5998302?v=3&s=200
