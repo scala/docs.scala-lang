@@ -65,7 +65,7 @@ Also, type inference can sometimes infer a too-specific type.  Suppose we write:
 var obj = null
 ```
 
-Then we can't then go on and make this reassignment:
+We can't then go on and make this reassignment:
 
 ```tut:fail
 obj = new AnyRef
