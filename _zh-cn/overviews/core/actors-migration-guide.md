@@ -41,7 +41,7 @@ discourse: false
 
 在Scal 2.10.0 actors 是在[Scala distribution](http://www.scala-lang.org/downloads)中作为一个单独包（scala-actors.jar）存在的，并且他们的接口已被弃用。这种分布也包含在Akka actors的akka-actor.jar里。AMK同时存在Scala actors 和 akka-actor.jar之中。未来的主要版本的Scala将不包含Scala actors和AMK。
 
-开始迁移，用户需要添加scala-actors.jar和scala-actors-migration.jar来构建他们的项目。添加scala-actors.jar和scala-actors-migration.jar允许使用下面描述的AMK。这些jar位于[Scala Tools](https://oss.sonatype.org/content/groups/scala-tools/org/scala-lang/)库和[Scala distribution](http://www.scala-lang.org/downloads)库中。
+开始迁移，用户需要添加scala-actors.jar和scala-actors-migration.jar来构建他们的项目。添加scala-actors.jar和scala-actors-migration.jar允许使用下面描述的AMK。这些jar位于Scala Tools库和[Scala distribution](http://www.scala-lang.org/downloads)库中。
 
 ### 一步一步来迁移
 
@@ -83,7 +83,7 @@ Scala actors库提供了公共访问多个类型的actors。他们被组织在�
 
 actor实例的转换规则（以下规则需要import scala.actors.migration._）：
 
-1. 构造器调用实例化  
+1. 构造器调用实例化
 
         val myActor = new MyActor(arg1, arg2)
         myActor.start()

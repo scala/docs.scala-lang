@@ -1016,7 +1016,7 @@ mandated by the SIP process.
 [Materialization]: http://docs.scala-lang.org/overviews/macros/implicits.html
 [SbtMacroSupport]: https://github.com/sbt/sbt/issues/1729
 [AnonymousTypeProviders]: http://docs.scala-lang.org/overviews/macros/typeproviders.html#anonymous-type-providers
-[ExtractorMacros]: http://docs.scala-lang.org/overviews/macros/extractors
+[ExtractorMacros]: https://docs.scala-lang.org/overviews/macros/extractors.html
 [AnnotationsTypecheck]: https://github.com/scalamacros/paradise/issues/75
 [FeedbackSection]: #feedback
 [FeedbackWebsite]: http://gitter.im/scalameta/sips

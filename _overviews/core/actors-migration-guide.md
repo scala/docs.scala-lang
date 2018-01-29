@@ -75,8 +75,6 @@ The AMK resides both in the Scala actors and in the *akka-actor.jar*. Future maj
 
 To start the migration user needs to add the *scala-actors.jar* and the *scala-actors-migration.jar* to the build of their projects.
 Addition of *scala-actors.jar* and *scala-actors-migration.jar* enables the usage of the AMK described below.
- These artifacts reside in the [Scala Tools](https://oss.sonatype.org/content/groups/scala-tools/org/scala-lang/)
- repository and in the [Scala distribution](http://www.scala-lang.org/downloads).
 
 ### Step by Step Migration
 Actor Migration Kit should be used in 5 steps. Each step is designed to introduce minimal changes

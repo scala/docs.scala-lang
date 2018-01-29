@@ -630,12 +630,12 @@ it is viewed as such, otherwise a `ClassCastException` is
 thrown.
 
 Finally, the last method to define is the predicate which tests for
-inferiority, as follows. It makes use of another predefined method,
-`error`, which throws an exception with the given error message.
+inferiority, as follows. It makes use of another method,
+`error` from the package object `scala.sys`, which throws an exception with the given error message.
 
     def <(that: Any): Boolean = {
       if (!that.isInstanceOf[Date])
-        error("cannot compare " + that + " and a Date")
+        sys.error("cannot compare " + that + " and a Date")
 
       val o = that.asInstanceOf[Date]
       (year < o.year) ||

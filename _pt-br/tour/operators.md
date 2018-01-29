@@ -8,7 +8,7 @@ partof: scala-tour
 
 num: 29
 next-page: automatic-closures
-previous-page: local-type-inference
+previous-page: type-inference
 language: pt-br
 ---
 

@@ -8,7 +8,7 @@ partof: scala-tour
 
 num: 28
 
-next-page: local-type-inference
+next-page: type-inference
 previous-page: implicit-conversions
 prerequisite-knowledge: unified-types
 
@@ -20,11 +20,12 @@ Methods in Scala can be parameterized by type as well as value. The syntax is si
 Here is an example:
 
 ```tut
-def listOfDuplicates[A](x: A, length: Int): List[A] =
+def listOfDuplicates[A](x: A, length: Int): List[A] = {
   if (length < 1)
     Nil
   else
     x :: listOfDuplicates(x, length - 1)
+}
 println(listOfDuplicates[Int](3, 4))  // List(3, 3, 3, 3)
 println(listOfDuplicates("La", 8))  // List(La, La, La, La, La, La, La, La)
 ```

@@ -9,7 +9,18 @@ includeCollectionTOC: true
 		<div class="content-primary documentation">
 			<div class="inner-box">
 				{{content}}
-			</div>
+
+                <div class="two-columns">
+                    {% if page.previous-page %}
+                    <a href="{{page.previous-page}}.html">&larr; <strong>previous</strong></a>
+                    {% else %}
+                    <div></div>
+                    {% endif %}
+                    {% if page.next-page %}
+                    <a href="{{page.next-page}}.html"><strong>next</strong> &rarr;</a>
+                    {% endif %}
+                </div>
+            </div>
 		</div>
 
 		<!-- TOC -->

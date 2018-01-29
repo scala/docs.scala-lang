@@ -92,7 +92,7 @@ Scala は不変キューの他に可変キュー ([`mutable.Queue`](http://www.s
 
 既に不変スタックについては説明した。スタックには、[`mutable.Stack`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/Stack.html) クラスにより実装される可変バージョンもある。変更が上書き処理されるという違いの他は、不変バージョンと全く同じように動作する。
 
-    scala> val stack = new scala.collection.mutable.Stack[Int]           
+    scala> val stack = new scala.collection.mutable.Stack[Int]
     stack: scala.collection.mutable.Stack[Int] = Stack()
     scala> stack.push(1)
     res0: stack.type = Stack(1)
@@ -106,9 +106,9 @@ Scala は不変キューの他に可変キュー ([`mutable.Queue`](http://www.s
     res8: Int = 2
     scala> stack
     res9: scala.collection.mutable.Stack[Int] = Stack(1, 2)
-    scala> stack.pop    
+    scala> stack.pop
     res10: Int = 2
-    scala> stack    
+    scala> stack
     res11: scala.collection.mutable.Stack[Int] = Stack(1)
 
 ## 配列スタック
@@ -140,7 +140,7 @@ Scala は不変キューの他に可変キュー ([`mutable.Queue`](http://www.s
 
 ## 並行マップ
 
-並行マップ ([`ConcurrentMap`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/ConcurrentMap.html)) は複数のスレッドから同時にアクセスすることできる。通常の[マップ](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Map.html)の演算の他に、以下のアトミックな演算を提供する:
+並行マップ (`ConcurrentMap`) は複数のスレッドから同時にアクセスすることできる。通常の[マップ](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Map.html)の演算の他に、以下のアトミックな演算を提供する:
 
 ### ConcurrentMap クラスの演算 ###
 
@@ -151,7 +151,7 @@ Scala は不変キューの他に可変キュー ([`mutable.Queue`](http://www.s
 |  `m replace (k, old, new)`|`k` に関連付けられた値が `old` である場合、それを `new` で上書きする。|
 |  `m replace (k, v)`  	     |`k` に任意の関連付けられた値がある場合、それを `v` で上書きする。|
 
-[`ConcurrentMap`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/ConcurrentMap.html) は Scala コレクションライブラリ内のトレイトだ。現在そのトレイトを実装するのは Java の
+`ConcurrentMap` は Scala コレクションライブラリ内のトレイトだ。現在そのトレイトを実装するのは Java の
 `java.util.concurrent.ConcurrentMap` クラスだけで、それは [Java/Scala コレクションの標準変換](conversions-between-java-and-scala-collections.html)を使って Scala のマップに変換することができる。
 
 ## 可変ビット集合

@@ -9,7 +9,7 @@ partof: scala-tour
 
 num: 11
 next-page: pattern-matching
-previous-page: currying
+previous-page: multiple-parameter-lists
 prerequisite-knowledge: classes, basics, mutability
 
 ---

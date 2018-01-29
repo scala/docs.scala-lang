@@ -7,7 +7,7 @@ discourse: false
 partof: scala-tour
 
 num: 32
-next-page: named-parameters
+next-page: named-arguments
 previous-page: annotations
 language: pt-br
 ---
@@ -39,7 +39,7 @@ public class HashMap<K,V> {
   public static final float DEFAULT_LOAD_FACTOR = 0.75;
 
   public HashMap(Map<? extends K,? extends V> m);
-  /** Cria um novo HashMap com capacidade padrão (16) 
+  /** Cria um novo HashMap com capacidade padrão (16)
     * e fator de carga padrão (0.75)
     */
   public HashMap();
@@ -71,5 +71,5 @@ val m3 = new HashMap[String,Int](20,0.8f)
 val m4 = new HashMap[String,Int](loadFactor = 0.8f)
 ```
 
-Observe como podemos tirar proveito de *qualquer* valor padrão usando [parâmetros nomeados](named-parameters.html).
+Observe como podemos tirar proveito de *qualquer* valor padrão usando [parâmetros nomeados](named-arguments.html).
 

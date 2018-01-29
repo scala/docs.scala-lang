@@ -63,6 +63,10 @@
       description: "When two versions of Scala are binary compatible, it is safe to compile your project on one Scala version and link against another Scala version at run time. Safe run-time linkage (only!) means that the JVM does not throw a (subclass of) LinkageError when executing your program in the mixed scenario, assuming that none arise when compiling and running on the same version of Scala. Concretely, this means you may have external dependencies on your run-time classpath that use a different version of Scala than the one you’re compiling with, as long as they’re binary compatible. In other words, separate compilation on different binary compatible versions does not introduce problems compared to compiling and running everything on the same version of Scala."
       icon: puzzle-piece
       url: "core/binary-compatibility-of-scala-releases.html"
+    - title: Binary Compatibility for library authors
+      description: "A diverse and comprehensive set of libraries is important to any productive software ecosystem. While it is easy to develop and distribute Scala libraries, good library authorship goes beyond just writing code and publishing it. In this guide, we cover the important topic of Binary Compatibility."
+      icon: puzzle-piece
+      url: "core/binary-compatibility-for-library-authors.html"
 
 - category: "Reference/Documentation"
   description: "Reference material on core Scala tools like Scaladoc and the Scala REPL."

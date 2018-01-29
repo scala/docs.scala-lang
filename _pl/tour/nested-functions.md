@@ -8,7 +8,7 @@ partof: scala-tour
 
 num: 8
 language: pl
-next-page: currying
+next-page: multiple-parameter-lists
 previous-page: higher-order-functions
 ---
 

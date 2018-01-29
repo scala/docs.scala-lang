@@ -13,13 +13,22 @@ next-page: basics
 redirect_from: "/tutorials/tour/tour-of-scala.html"
 ---
 
+## Welcome to the tour
+This tour contains bite-sized introductions to the most frequently used features
+of Scala. It is intended for newcomers to the language.
+
+This is just a brief tour, not a full language tutorial. If
+you want that, consider obtaining [a book](/books.html) or consulting
+[other resources](/learn.html).
+
+## What is Scala?
 Scala is a modern multi-paradigm programming language designed to express common programming patterns in a concise, elegant, and type-safe way. It smoothly integrates features of object-oriented and functional languages.
 
 ## Scala is object-oriented ##
 Scala is a pure object-oriented language in the sense that [every value is an object](unified-types.html). Types and behavior of objects are described by [classes](classes.html) and [traits](traits.html). Classes are extended by subclassing and a flexible [mixin-based composition](mixin-class-composition.html) mechanism as a clean replacement for multiple inheritance.
 
 ## Scala is functional ##
-Scala is also a functional language in the sense that [every function is a value](unified-types.html). Scala provides a [lightweight syntax](basics.html#functions) for defining anonymous functions, it supports [higher-order functions](higher-order-functions.html), it allows functions to be [nested](nested-functions.html), and supports [currying](currying.html). Scala's [case classes](case-classes.html) and its built-in support for [pattern matching](pattern-matching.html) model algebraic types used in many functional programming languages. [Singleton objects](singleton-objects.html) provide a convenient way to group functions that aren't members of a class.
+Scala is also a functional language in the sense that [every function is a value](unified-types.html). Scala provides a [lightweight syntax](basics.html#functions) for defining anonymous functions, it supports [higher-order functions](higher-order-functions.html), it allows functions to be [nested](nested-functions.html), and supports [currying](multiple-parameter-lists.html). Scala's [case classes](case-classes.html) and its built-in support for [pattern matching](pattern-matching.html) model algebraic types used in many functional programming languages. [Singleton objects](singleton-objects.html) provide a convenient way to group functions that aren't members of a class.
 
 Furthermore, Scala's notion of pattern matching naturally extends to the [processing of XML data](https://github.com/scala/scala-xml/wiki/XML-Processing) with the help of [right-ignoring sequence patterns](regular-expression-patterns.html), by way of general extension via [extractor objects](extractor-objects.html). In this context, [for comprehensions](for-comprehensions.html) are useful for formulating queries. These features make Scala ideal for developing applications like web services.
 
@@ -35,7 +44,7 @@ Scala is equipped with an expressive type system that enforces statically that a
 * [implicit parameters](implicit-parameters.html) and [conversions](implicit-conversions.html)
 * [polymorphic methods](polymorphic-methods.html)
 
-A [local type inference mechanism](local-type-inference.html) takes care that the user is not required to annotate the program with redundant type information. In combination, these features provide a powerful basis for the safe reuse of programming abstractions and for the type-safe extension of software.
+[Type inference](type-inference.html) means the user is not required to annotate code with redundant type information. In combination, these features provide a powerful basis for the safe reuse of programming abstractions and for the type-safe extension of software.
 
 ## Scala is extensible ##
 

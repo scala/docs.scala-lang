@@ -7,7 +7,7 @@ discourse: false
 partof: scala-tour
 
 num: 23
-next-page: explicitly-typed-self-references
+next-page: self-types
 previous-page: abstract-types
 language: pt-br
 ---

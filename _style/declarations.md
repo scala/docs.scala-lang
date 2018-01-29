@@ -123,7 +123,7 @@ applicable):
 
     @Transaction
     @throws(classOf[IOException])
-    override protected final def foo() {
+    override protected final def foo(): Unit = {
       ...
     }
 
@@ -207,7 +207,7 @@ There are three main reasons you should do this:
     type inferencer can allow a simpler syntax when invoking the
     remaining parameter lists. Consider fold:
 
-        def foldLeft[B](z: B)(op: (A,B) => B): B
+        def foldLeft[B](z: B)(op: (B, A) => B): B
         List("").foldLeft(0)(_ + _.length)
 
         // If, instead:

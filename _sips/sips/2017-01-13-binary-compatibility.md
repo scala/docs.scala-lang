@@ -53,7 +53,7 @@ As defined by the JVM spec\[[4]\]:
   which may affect all subclasses of this class leading to a runtime linkage failure.
 
   In this document we use the term `Public API` to refer both to methods and fields defined as `ACC_PUBLIC` and `ACC_PROTECTED`.
-  Changes do binary descriptors of Public API may lead to runtime linkage failures.  
+  Changes do binary descriptors of Public API may lead to runtime linkage failures.
 
 * ##### Binary compatibility
 
@@ -90,7 +90,7 @@ Examples:
 sbt additionally compiles on demand the compiler bridge, which implements this Java interface.
 
   2. Dotty\[[7]\] currently uses java defined interfaces as public API for IntelliJ in order to ensure binary compatibility.
-These interfaces can be replaced by `@stableABI` annotated traits to reach the same goal.  
+These interfaces can be replaced by `@stableABI` annotated traits to reach the same goal.
 
 ## Design Guidelines
 `@stableABI` is a feature which is supposed to be used by a small subset of the ecosystem to be binary compatible across major versions of Scala.
@@ -203,8 +203,8 @@ and only return `@stableABI` values, we believe that all-or-nothing system will 
 Because of this we propose to emmit warnings in those cases:
 
   - non-`@stableABI` value is returned from a method or field defined inside a `@stableABI` class or trait;
-  - an invocation to a method not-defined inside a `@stableABI` class is used in  
-  implementation of a method or a field initializer inside a `@stableABI` class or trait.   
+  - an invocation to a method not-defined inside a `@stableABI` class is used in
+  implementation of a method or a field initializer inside a `@stableABI` class or trait.
 
 Those warnings can be suppressed using an `@unchecked` annotations or made fatal using `+Xfatal-warnings`.
 
@@ -241,7 +241,7 @@ Multiple features of Scala, most notably lazy vals and traits, have been compile
 making porting existing compiled bytecode across versions very hard.
 MiMa will complain retroactively that the new version is incompatible with the old one.
 `@stableABI` will instead indicate at compile time that the old version used features whose encoding is prone to change.
-This provides early guidance and warning when designing long-living APIs before they are publicly released.  
+This provides early guidance and warning when designing long-living APIs before they are publicly released.
 
 ## Compilation scheme ##
 No modification of typer or any existing phase is planned. The current proposed scheme introduces a late phase that runs before the very bytecode emission that checks that:
@@ -295,4 +295,5 @@ Thus, the authors of this SIP has decided not to allow default methods in the
 [5]: http://docs.oracle.com/javase/specs/jvms/se8/html/jvms-4.html#jvms-4.6-200-A.1 "JVM access flags"
 [6]: http://www.scala-lang.org/files/archive/spec/2.11/05-classes-and-objects.html#modifiers "Scala AccessModifiers"
 [7]: https://github.com/lampepfl/dotty/tree/master/interfaces/src/dotty/tools/dotc/interfaces "Dotty interfaces"
-[8]: https://github.com/sbt/zinc/tree/1.0/internal/compiler-interface/src/main/java/xsbti "zinc interfaces"
+[8]: https://github.com/sbt/zinc/tree/v1.0.0/internal/compiler-interface/src/main/java/xsbti "zinc interfaces"
+

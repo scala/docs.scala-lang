@@ -166,7 +166,7 @@ println(addThenMultiply(1, 2)(3)) // 9
 Or no parameter lists at all.
 
 ```tut
-def name: String = System.getProperty("name")
+def name: String = System.getProperty("user.name")
 println("Hello, " + name + "!")
 ```
 

@@ -4,14 +4,12 @@ title: Self-type
 
 discourse: true
 
-partof: scala-tour
-
+tutorial: scala-tour
+categories: tour
 num: 25
 next-page: implicit-parameters
 previous-page: compound-types
 prerequisite-knowledge: nested-classes, mixin-class-composition
-
-redirect_from: "/tutorials/tour/self-types.html"
 ---
 Self-types are a way to declare that a trait must be mixed into another trait, even though it doesn't directly extend it. That makes the members of the dependency available without imports.
 
@@ -29,7 +27,7 @@ trait Tweeter {
 }
 
 class VerifiedTweeter(val username_ : String) extends Tweeter with User {  // We mixin User because Tweeter required it
-  def username = s"real $username_"
+	def username = s"real $username_"
 }
 
 val realBeyoncé = new VerifiedTweeter("Beyoncé")

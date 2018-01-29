@@ -278,8 +278,7 @@ three language features will be described in more detail in separate notes.
 ## References
 1. [David MacIver. Scala arrays. Blog, June 2008.][1]
 2. [Matt Malone. The mystery of the parameterized array. Blog, August 2009.][2]
-3. [David MacIver. Refactoring scala.array. Pre-SIP (Scala Improvement Proposal), October 2008.][3]
+3. David MacIver. Refactoring scala.array. Pre-SIP (Scala Improvement Proposal), October 2008.
 
-  [1]: http://www.drmaciver.com/2008/06/scala- arrays
+  [1]: http://www.drmaciver.com/2008/06/scala-arrays
   [2]: http://oldfashionedsoftware.com/2009/08/05/the-mystery-of-the-parameterized-array
-  [3]: http://www.drmaciver.com/repos/scala-arrays/sip-arrays.xhtml

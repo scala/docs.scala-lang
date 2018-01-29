@@ -24,7 +24,7 @@ Una secuencia [ParArray](http://www.scala-lang.org/api/{{ site.scala-version }}/
     scala> pa map (x => (x - 1) / 2)
     res1: scala.collection.parallel.mutable.ParArray[Int] = ParArray(0, 1, 2, 3, 4, 5, 6, 7,...
 
-Internamente, para partir el array para que sea procesado de forma paralela se utilizan [splitters]({{ site.baseurl }}/es/overviews/parallel-collections/architecture.html#core_abstractions) (o "partidores"). El Splitter parte y crea dos nuevos splitters con sus índices actualizados. A continuación son utilizados los [combiners]({{ site.baseurl }}/es/overviews/parallel-collections/architecture.html#core_abstractions) (o "combinadores"), que necesitan un poco más de trabajo. Ya que en la mayoría de los métodos transformadores (ej: `flatMap`, `filter`, `takeWhile`, etc.) previamente no es sabido la cantidad de elementos (y por ende, el tamaño del array), cada combiner es esencialmente una variante de un array buffer con un tiempo constante de la operación `+=`. Diferentes procesadores añaden elementos a combiners de arrays separados, que después son combinados al encadenar sus arrays internos. El array subyacente se crea en memoria y se rellenan sus elementos después que el número total de elementos es conocido. Por esta razón, los métodos transformadores son un poco más caros que los métodos de acceso. También, nótese que la asignación de memoria final procede secuencialmente en la JVM, lo que representa un cuello de botella si la operación de mapeo (el método transformador aplicado) es en sí económico (en términos de procesamiento).
+Internamente, para partir el array para que sea procesado de forma paralela se utilizan [splitters]({{ site.baseurl }}/es/overviews/parallel-collections/architecture.html) (o "partidores"). El Splitter parte y crea dos nuevos splitters con sus índices actualizados. A continuación son utilizados los [combiners]({{ site.baseurl }}/es/overviews/parallel-collections/architecture.html) (o "combinadores"), que necesitan un poco más de trabajo. Ya que en la mayoría de los métodos transformadores (ej: `flatMap`, `filter`, `takeWhile`, etc.) previamente no es sabido la cantidad de elementos (y por ende, el tamaño del array), cada combiner es esencialmente una variante de un array buffer con un tiempo constante de la operación `+=`. Diferentes procesadores añaden elementos a combiners de arrays separados, que después son combinados al encadenar sus arrays internos. El array subyacente se crea en memoria y se rellenan sus elementos después que el número total de elementos es conocido. Por esta razón, los métodos transformadores son un poco más caros que los métodos de acceso. También, nótese que la asignación de memoria final procede secuencialmente en la JVM, lo que representa un cuello de botella si la operación de mapeo (el método transformador aplicado) es en sí económico (en términos de procesamiento).
 
 Al invocar el método `seq`, los arrays paralelos son convertidos al tipo de colección `ArraySeq`, que vendría a ser la contraparte secuencial del `ParArray`. Esta conversión es eficiente, y el `ArraySeq` utiliza a bajo nivel el mismo array que había sido obtenido por el array paralelo.
 
@@ -53,7 +53,7 @@ Un [ParRange](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/colle
     scala> 15 to 5 by -2 par
     res1: scala.collection.parallel.immutable.ParRange = ParRange(15, 13, 11, 9, 7, 5)
 
-Tal como los rangos secuenciales no tienen constructores, los rangos paralelos no tienen [combiner]({{ site.baseurl }}/overviews/parallel-collections/architecture.html#core_abstractions)s. Mapear elementos de un rango paralelo produce un vector paralelo. Los rangos secuenciales y paralelos pueden ser convertidos de uno a otro utilizando los métodos `seq` y `par`.
+Tal como los rangos secuenciales no tienen constructores, los rangos paralelos no tienen [combiner]({{ site.baseurl }}/overviews/parallel-collections/architecture.html)s. Mapear elementos de un rango paralelo produce un vector paralelo. Los rangos secuenciales y paralelos pueden ser convertidos de uno a otro utilizando los métodos `seq` y `par`.
 
     scala> (1 to 5 par) map ((x) => x * 2)
     res2: scala.collection.parallel.immutable.ParSeq[Int] = ParVector(2, 4, 6, 8, 10)
@@ -85,7 +85,7 @@ y
     scala> phs map { x => x * x } sum
     res0: Int = 332833500
 
-De forma similar a las tablas hash paralelas, los [combiners]({{ site.baseurl }}/overviews/parallel-collections/architecture.html#core_abstractions) de los hash tries paralelos pre-ordenan los elementos en posiciones y construyen el hash trie resultante en paralelo al asignarle distintos grupos de posiciones a diferentes procesadores, los cuales contruyen los sub-tries independientemente.
+De forma similar a las tablas hash paralelas, los [combiners]({{ site.baseurl }}/overviews/parallel-collections/architecture.html) de los hash tries paralelos pre-ordenan los elementos en posiciones y construyen el hash trie resultante en paralelo al asignarle distintos grupos de posiciones a diferentes procesadores, los cuales contruyen los sub-tries independientemente.
 
 Los hash tries paralelos pueden ser convertidos hacia y desde hash tries secuenciales por medio de los métodos `seq` y `par`.
 
@@ -114,7 +114,7 @@ Un [concurrent.TrieMap](http://www.scala-lang.org/api/{{ site.scala-version }}/s
     ...
 
 
-Para ofrecer más detalles de lo que sucede bajo la superficie, los [Combiners]({{ site.baseurl }}/overviews/parallel-collections/architecture.html#core_abstractions) son implementados como `TrieMap`s --ya que esta es una estructura de datos concurrente, solo un combiner es construido para todo la invocación al método transformador y compartido por todos los procesadores.
+Para ofrecer más detalles de lo que sucede bajo la superficie, los [Combiners]({{ site.baseurl }}/overviews/parallel-collections/architecture.html) son implementados como `TrieMap`s --ya que esta es una estructura de datos concurrente, solo un combiner es construido para todo la invocación al método transformador y compartido por todos los procesadores.
 
 Al igual que todas las colecciones paralelas mutables, `TrieMap`s y la versión paralela, `ParTrieMap`s obtenidas mediante los métodos `seq` o `par` subyacentemente comparten la misma estructura de almacenamiento, por lo tanto modificaciones en una es visible en la otra.
 

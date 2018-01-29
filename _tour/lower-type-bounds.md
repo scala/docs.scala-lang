@@ -20,17 +20,17 @@ Here is an example where this is useful:
 
 ```tut:fail
 trait Node[+B] {
-  def prepend(elem: B): Unit
+  def prepend(elem: B): Node[B]
 }
 
 case class ListNode[+B](h: B, t: Node[B]) extends Node[B] {
-  def prepend(elem: B) = ListNode[B](elem, this)
+  def prepend(elem: B): ListNode[B] = ListNode(elem, this)
   def head: B = h
-  def tail = t
+  def tail: Node[B] = t
 }
 
 case class Nil[+B]() extends Node[B] {
-  def prepend(elem: B) = ListNode[B](elem, this)
+  def prepend(elem: B): ListNode[B] = ListNode(elem, this)
 }
 ```
 
@@ -46,13 +46,13 @@ trait Node[+B] {
 }
 
 case class ListNode[+B](h: B, t: Node[B]) extends Node[B] {
-  def prepend[U >: B](elem: U) = ListNode[U](elem, this)
+  def prepend[U >: B](elem: U): ListNode[U] = ListNode(elem, this)
   def head: B = h
-  def tail = t
+  def tail: Node[B] = t
 }
 
 case class Nil[+B]() extends Node[B] {
-  def prepend[U >: B](elem: U) = ListNode[U](elem, this)
+  def prepend[U >: B](elem: U): ListNode[U] = ListNode(elem, this)
 }
 ```
 

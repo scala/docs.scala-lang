@@ -3,7 +3,7 @@ layout: sip
 title: SIP-16 - Self-cleaning Macros
 
 vote-status: rejected
-vote-text: The proposal is rejected unanimously because Scala Meta, the successor metaprogramming tool, is coming soon. For more explanation, read the <a href=../minutes/sip-10th-august-minutes.html>minutes</a>.
+vote-text: The proposal is rejected unanimously because Scala Meta, the successor metaprogramming tool, is coming soon. For more explanation, read the <a href=minutes/2016-08-16-sip-10th-august-minutes.html>minutes</a>.
 permalink: /sips/:title.html
 ---
 

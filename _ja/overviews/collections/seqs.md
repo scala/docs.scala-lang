@@ -83,7 +83,7 @@ Scala の他の構文の例にならって、`seq(idx) = elem` は `seq.update(i
 `Vector` は添字付き列と線形列の間の興味深い折衷案だ。
 事実上定数時間のオーバーヘッドで添字アクセスと線形アクセスを提供するからだ。
 そのため、ベクトルは添字アクセスと線形アクセスの両方を混合して使用してるアクセスパターンにおける良い基盤となる。
-ベクトルに関しては、また[後ほど詳しくみていく](concrete-immutable-collection-classes.html#vectors)。
+ベクトルに関しては、また[後ほど詳しくみていく](concrete-immutable-collection-classes.html)。
 
 ### バッファ ###
 

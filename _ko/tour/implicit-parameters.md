@@ -10,7 +10,7 @@ num: 25
 language: ko
 
 next-page: implicit-conversions
-previous-page: explicitly-typed-self-references
+previous-page: self-types
 ---
 
 _암시적 파라미터_ 를 갖는 메서드 역시 다른 일반적인 메서드와 마찬가지로 인수를 적용할 수 있다. 이런 경우 implicit 키워드는 아무런 영향을 미치지 않는다. 하지만, 이 경우에 암시적 파라미터에 주는 인수를 생략한다면, 그 생략된 인수는 자동적으로 제공될 것이다.

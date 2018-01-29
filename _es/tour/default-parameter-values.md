@@ -9,7 +9,7 @@ partof: scala-tour
 num: 34
 language: es
 
-next-page: named-parameters
+next-page: named-arguments
 previous-page: implicit-conversions
 ---
 
@@ -66,4 +66,4 @@ Scala cuenta con soporte directo para esto:
     // mediante parametros nombrados
     val m4 = new HashMap[String,Int](loadFactor = 0.8)
 
-Nótese cómo podemos sacar ventaja de cualquier valor por defecto al utilizar [parámetros nombrados]({{ site.baseurl }}/tutorials/tour/named-parameters.html).
+Nótese cómo podemos sacar ventaja de cualquier valor por defecto al utilizar [parámetros nombrados]({{ site.baseurl }}/tutorials/tour/named-arguments.html).
