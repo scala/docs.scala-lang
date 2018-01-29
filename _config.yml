@@ -84,3 +84,4 @@ baseurl:
 exclude: ["vendor"]
 plugins:
   - jekyll-redirect-from
+  - jekyll-scalafiddle

@@ -25,6 +25,9 @@ You can run Scala in your browser with ScalaFiddle.
 
 This is an easy, zero-setup way to experiment with pieces of Scala code.
 
+Many of the code examples in this documentation are also integrated with ScalaFiddle, so you
+can directly experiment with them simply by clicking the Run-button.
+
 ## Expressions
 
 Expressions are computable statements.
@@ -33,12 +36,14 @@ Expressions are computable statements.
 ```
 You can output results of expressions using `println`.
 
+{% scalafiddle %}
 ```tut
 println(1) // 1
 println(1 + 1) // 2
 println("Hello!") // Hello!
 println("Hello," + " world!") // Hello, world!
 ```
+{% endscalafiddle %}
 
 ### Values
 
@@ -111,17 +116,21 @@ On the left of `=>` is a list of parameters. On the right is an expression invol
 
 You can also name functions.
 
+{% scalafiddle %}
 ```tut
 val addOne = (x: Int) => x + 1
 println(addOne(1)) // 2
 ```
+{% endscalafiddle %}
 
 Functions may take multiple parameters.
 
+{% scalafiddle %}
 ```tut
 val add = (x: Int, y: Int) => x + y
 println(add(1, 2)) // 3
 ```
+{% endscalafiddle %}
 
 Or it can take no parameters.
 
@@ -136,19 +145,23 @@ Methods look and behave very similar to functions, but there are a few key diffe
 
 Methods are defined with the `def` keyword.  `def` is followed by a name, parameter lists, a return type, and a body.
 
+{% scalafiddle %}
 ```tut
 def add(x: Int, y: Int): Int = x + y
 println(add(1, 2)) // 3
 ```
+{% endscalafiddle %}
 
 Notice how the return type is declared _after_ the parameter list and a colon `: Int`.
 
 Methods can take multiple parameter lists.
 
+{% scalafiddle %}
 ```tut
 def addThenMultiply(x: Int, y: Int)(multiplier: Int): Int = (x + y) * multiplier
 println(addThenMultiply(1, 2)(3)) // 9
 ```
+{% endscalafiddle %}
 
 Or no parameter lists at all.
 
@@ -266,6 +279,7 @@ trait Greeter {
 
 Traits can also have default implementations.
 
+{% scalafiddle %}
 ```tut
 trait Greeter {
   def greet(name: String): Unit =
@@ -290,6 +304,7 @@ greeter.greet("Scala developer") // Hello, Scala developer!
 val customGreeter = new CustomizableGreeter("How are you, ", "?")
 customGreeter.greet("Scala developer") // How are you, Scala developer?
 ```
+{% endscalafiddle %}
 
 Here, `DefaultGreeter` extends only a single trait, but it could extend multiple traits.
 
