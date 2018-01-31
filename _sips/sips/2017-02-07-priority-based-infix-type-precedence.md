@@ -3,7 +3,7 @@ layout: sip
 discourse: true
 title: SIP-33 - Priority-based infix type precedence
 
-vote-status: completed
+vote-status: complete
 permalink: /sips/:title.html
 ---
 
