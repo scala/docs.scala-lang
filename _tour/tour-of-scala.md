@@ -55,7 +55,7 @@ Scala is designed to interoperate well with the popular Java Runtime Environment
 Please continue to the [next page](basics.html) in the Contents menu to read more.
 
 ## Implicit classes in Scala ##
-Scala offers a language construct called implicit class which simplifies the creation of classes that provide extension methods to another type.Classes annotated with the implicit keyword are referred to as implicit classes.For an implicit class to work, its name must be in scope and unambiguous.
+Scala offers a language construct called implicit class which simplifies the creation of classes that provide extension methods to another type. Classes annotated with the `implicit` keyword are referred to as implicit classes. For an implicit class to work, it's name must be in scope and unambiguous.
 
 ## Scala offers string interpolation ##
-With mechanism of string interpolation, Scala enables users too embed variables in string literals.Scala offers three string interpolation methods out of the box:  `s`, `f` and `raw`.Prepending `s` to any string literal allows the usage of variables directly in the string.Prepending `f` to any string literal allows the creation of simple formatted strings.The raw interpolator is similar to the `s` interpolator except that it performs no escaping of literals within the string.
+With mechanism of string interpolation, Scala enables users to embed variables in string literals. Scala offers three string interpolators in the standard library:  `s`, `f` and `raw`. Most commonly used string interpolator is `s` and prepending it to any string literal allows the usage of variables directly in the string.
