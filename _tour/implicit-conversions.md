@@ -23,21 +23,21 @@ Implicit conversions are applied in two situations:
 In the first case, a conversion `c` is searched for which is applicable to `e` and whose result type conforms to `T`.
 In the second case, a conversion `c` is searched for which is applicable to `e` and whose result contains a member named `m`.
 
-The following operation on the two lists xs and ys of type `List[Int]` is legal:
-
-```
-xs <= ys
-```
-
-assuming the implicit methods `list2ordered` and `int2ordered` defined below are in scope:
+If an implicit method `List[A] => Ordered[List[A]]` like the one below
 
 ```
 implicit def list2ordered[A](x: List[A])
     (implicit elem2ordered: A => Ordered[A]): Ordered[List[A]] =
-  new Ordered[List[A]] { /* .. */ }
+  new Ordered[List[A]] { 
+    //replace with a more useful implementation
+    def compare(that: List[A]): Int = 1
+  }
+```
 
-implicit def int2ordered(x: Int): Ordered[Int] =
-  new Ordered[Int] { /* .. */ }
+is in scope, the following operation on the two lists of type `List[Int]` is legal:
+
+```
+List(1, 2, 3) <= List(4, 5)
 ```
 
 The implicitly imported object `scala.Predef` declares several predefined types (e.g. `Pair`) and methods (e.g. `assert`) but also several implicit conversions.
