@@ -74,7 +74,7 @@ permalink: /overviews/quasiquotes/:title.html
 -----------------------------|---------------------------------------|---------------------
  [Empty Type][201]           | `tq""`                                | TypeTree
  [Type Identifier][202]      | `tq"$tpname"` or `tq"Name"`           | Ident
- [Singleton Type][203]       | `tq"$ref.type"`                       | SingletonType
+ [Singleton Type][203]       | `tq"$ref.type"`                       | SingletonTypeTree
  [Type Projection][204]      | `tq"$tpt#$tpname"`                    | SelectFromTypeTree
  [Type Selection][204]       | `tq"$ref.$tpname"`                    | Select
  [Super Type Selection][204] | `tq"$tpname.super[$tpname].$tpname"`  | Select
