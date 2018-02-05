@@ -64,7 +64,7 @@ Here the method `convertCtoF` is passed to forecastInFahrenheit  This is possibl
   be a generated name which is guaranteed to be unique within its scope).
 
 ## Functions that accept functions
-One reason to use higher-order functions is to reduce redundant code. Let's say you wanted functions that could raise someone's salaries by various factors. Without creating a higher-order function,
+One reason to use higher-order functions is to reduce redundant code. Let's say you wanted some methods that could raise someone's salaries by various factors. Without creating a higher-order function,
 it might look something like this:
 
 ```tut
