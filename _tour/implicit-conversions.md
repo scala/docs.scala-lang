@@ -34,7 +34,8 @@ implicit def list2ordered[A](x: List[A])
   }
 ```
 
-is in scope, the following operation on the two lists of type `List[Int]` is legal:
+is in scope, as well as an implicit method `Int => Ordered[Int]`, one of which is provided automatically
+through `scala.Predef.intWrapper`, the following operation on the two lists of type `List[Int]` is legal:
 
 ```
 List(1, 2, 3) <= List(4, 5)
