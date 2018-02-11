@@ -12,11 +12,11 @@
               {% assign localizedId = pg.id | prepend: prefix %}
               {% for lpg in site.[page.language] %}
                 {% if lpg.id == localizedId %}
-                  <li><a href="/{{ site.baseurl }}{{ page.language }}{{ pg.url }}">{{ lpg.title }}</a></li>
+                  <li><a {% if page.title == lpg.title %}class="active"{% endif %} href="/{{ site.baseurl }}{{ page.language }}{{ pg.url }}">{{ lpg.title }}</a></li>
                 {% endif %}
               {% endfor %}
             {% else %}
-            <li><a href="{{ site.baseurl }}{{ pg.url }}">{{ pg.title }}</a></li>
+            <li><a {% if pg.title == page.title %}class="active"{% endif %} href="{{ site.baseurl }}{{ pg.url }}">{{ pg.title }}</a></li>
             {% endif %}
           {% endif %}
         {% endfor %}
