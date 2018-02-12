@@ -7,7 +7,7 @@ discourse: true
 tutorial: scala-tour
 categories: tour
 num: 25
-next-page: implicit-parameters
+next-page: implicits
 previous-page: compound-types
 prerequisite-knowledge: nested-classes, mixin-class-composition
 ---
