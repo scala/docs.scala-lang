@@ -73,4 +73,31 @@
         margin-right: 65px;
       }
     }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      width: 44px;
+      height: 44px;
+      line-height: 44px;
+      text-align: center;
+      z-index: 2;
+      color: #f0f3f3;
+      background-color: #dc322f;
+      border-radius: 50%;
+      display: none;
+     
+      &:active,
+      &:focus,
+      &:hover {
+        color:#f0f3f3;
+        text-decoration: none;
+      }
+
+      i {
+        font-size: 22px;
+      }
+    }    
+    
 }
