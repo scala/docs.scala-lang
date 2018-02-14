@@ -17,8 +17,8 @@ This table shows the first Scala release in each series that functions on each J
 
 | JDK version | First Scala release supporting JDK version per series |
 |:-----------:|:-----------------------------------------------------|
-| 9           | 2.12.4, 2.11.12                                      |
-| 8           | 2.12.0, 2.11.0, 2.10.7                               |
+| 9           | 2.12.4, 2.11.12, 2.10.7                              |
+| 8           | 2.12.0, 2.11.0, 2.10.0                               |
 | 7           | 2.11.0, 2.10.0                                       |
 | 6           | 2.10.0                                               |
 
