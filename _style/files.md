@@ -39,7 +39,7 @@ file. One common example is that of a sealed trait and several
 sub-classes (often emulating the ADT language feature available in
 functional languages):
 
-    sealed trait Option[+A]
+    sealed abstract class Option[+A]
 
     case class Some[A](a: A) extends Option[A]
 
