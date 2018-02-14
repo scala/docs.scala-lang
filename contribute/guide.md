@@ -61,11 +61,11 @@ This is the impatient developer's checklist for the steps to submit a bug-fix pu
 3. [Fork the Scala repository](/contribute/hacker-guide.html#fork) and clone your fork (if you haven't already).
 4. [Create a feature branch](/contribute/hacker-guide.html#branch) to work on: use the branch name `issue/NNNN` where NNNN is the GitHub issue number.
 5. [Fix the bug, or implement the new small feature](/contribute/hacker-guide.html#implement), include new tests (yes, for bug fixes too).
-6. [Test, rinse](/contribute/hacker-guide.html#test) and [test some more](/contribute/partest-guide/) until [all the tests pass](/contribute/hacker-guide.html#verify).
+6. [Test, rinse](/contribute/hacker-guide.html#test) and [test some more](/contribute/partest-guide.html) until [all the tests pass](/contribute/hacker-guide.html#verify).
 7. [Commit your changes](/contribute/hacker-guide.html#commit) to your feature branch in your fork. Please choose your commit message based on the [Git Hygiene](https://github.com/scala/scala#user-content-git-hygiene) section of the Scala project README.
 8. If necessary [re-write git history](http://git-scm.com/book/en/Git-Branching-Rebasing) so that [commits are organized by major steps to the fix/feature](
 https://github.com/scala/scala#git-hygiene). For bug fixes, a single commit is requested, for features several commits may be desirable (but each separate commit must compile and pass all tests)
-9. [Submit a pull request](./hacker-guide.html#submit) following the [Scala project pull-request guidelines](http://docs.scala-lang.org/scala/pull-request-policy.html).
+9. [Submit a pull request](./hacker-guide.html#submit).
 10. [Work with a reviewer](https://github.com/scala/scala#reviewing) to [get your pull request merged in](/contribute/hacker-guide.html#review).
 11. Celebrate!
 
