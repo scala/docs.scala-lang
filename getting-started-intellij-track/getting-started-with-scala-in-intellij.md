@@ -23,7 +23,7 @@ when you start IntelliJ.
 
 ## Creating the Project
 1. Open up IntelliJ and click **File** => **New** => **Project**
-1. On the left panel, select Scala. On the right panel, select Scala once again.
+1. On the left panel, select Scala. On the right panel, select IDEA.
 1. Name the project **HelloWorld**
 1. Assuming this is your first time creating a Scala project with IntelliJ,
 you'll need to install a Scala SDK. To the right of the Scala SDK field,
