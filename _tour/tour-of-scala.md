@@ -53,3 +53,9 @@ In practice, the development of domain-specific applications often requires doma
 Scala is designed to interoperate well with the popular Java Runtime Environment (JRE). In particular, the interaction with the mainstream object-oriented Java programming language is as smooth as possible. Newer Java features like [annotations](annotations.html) and Java generics have direct analogues in Scala. Those Scala features without Java analogues, such as [default](default-parameter-values.html) and [named parameters](named-arguments.html), compile as close to Java as they can reasonably come. Scala has the same compilation model (separate compilation, dynamic class loading) like Java and allows access to thousands of existing high-quality libraries.
 
 Please continue to the [next page](basics.html) in the Contents menu to read more.
+
+## Implicit classes in Scala ##
+Scala offers a language construct called implicit class which simplifies the creation of classes that provide extension methods to another type. Classes annotated with the `implicit` keyword are referred to as implicit classes. For an implicit class to work, it's name must be in scope and unambiguous.
+
+## Scala offers string interpolation ##
+With mechanism of string interpolation, Scala enables users to embed variables in string literals. Scala offers three string interpolators in the standard library:  `s`, `f` and `raw`. Most commonly used string interpolator is `s` and prepending it to any string literal allows the usage of variables directly in the string.
