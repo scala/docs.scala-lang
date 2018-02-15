@@ -17,8 +17,8 @@ A method can have an _implicit_ parameter list, marked by the _implicit_ keyword
 
 The places Scala will look for these parameters fall into two categories:
 
-* First, eligible are all identifiers that can be accessed at the point of the method call without a prefix and that denote an implicit definition or an implicit parameter.
-* Second, eligible are also all members of companion objects of the implicit parameter's type that are labeled implicit.
+* Scala will first look for implicit definitions and implicit parameters that can be accessed directly (without a prefix) at the point the method with the implicit parameter block is called.
+* Then, it falls back to all members that are marked implicit in the companion object of the implicit parameter.
 
 In the following example we define a method `sum` which computes the sum of a list of elements using the monoid's `add` and `unit` operations. Please note that implicit values can not be top-level.
 
@@ -29,12 +29,12 @@ abstract class Monoid[A] {
 }
 
 object ImplicitTest {
-  implicit object StringMonoid extends Monoid[String] {
+  implicit val stringMonoid: Monoid[String] = new Monoid[String] {
     def add(x: String, y: String): String = x concat y
     def unit: String = ""
   }
   
-  implicit object IntMonoid extends Monoid[Int] {
+  implicit val intMonoid: Monoid[Int] = new Monoid[Int] {
     def add(x: Int, y: Int): Int = x + y
     def unit: Int = 0
   }
@@ -58,11 +58,11 @@ The method `sum` takes a `List[A]` and returns an `A`, which takes the initial `
 
 In our `main` method we call `sum` twice, and only provide the `xs` parameter. Scala will now look for an implicit in the scope mentioned above. The first call to `sum` passes a `List[Int]` for `xs`, which means that `A` is `Int`. The implicit parameter list with `m` is left out, so Scala will look for an implicit of type `Monoid[Int]`. The first lookup rule reads
 
-> First, eligible are all identifiers that can be accessed at the point of the method call without a prefix and that denote an implicit definition or an implicit parameter.
+> Scala will first look for implicit definitions and implicit parameters that can be accessed directly (without a prefix) at the point the method with the implicit parameter block is called.
 
-`IntMonoid` is an identifier, it can be accessed directly in `main`, and it is an implicit definition. It is also of the correct type, so it's passed to the sum method automatically.
+`intMonoid` is an implicit definition that can be accessed directly directly in `main`. It is also of the correct type, so it's passed to the sum method automatically.
 
-The second call to `sum` passes a `List[String]`, which means that `A` is `String`. Implicit lookup will go the same way as with `Int`, but will this time find `StringMonoid`, and passes that automatically as `m`.
+The second call to `sum` passes a `List[String]`, which means that `A` is `String`. Implicit lookup will go the same way as with `Int`, but will this time find `stringMonoid`, and passes that automatically as `m`.
 
 The program will output
 ```
