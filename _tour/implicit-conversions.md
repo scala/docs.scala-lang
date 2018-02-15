@@ -32,6 +32,8 @@ List(1, 2, 3) <= List(4, 5)
 An implicit method `Int => Ordered[Int]` is provided automatically through `scala.Predef.intWrapper`. An example of an implicit method `List[A] => Ordered[List[A]]` is provided below.
 
 ```tut
+import scala.language.implicitConversions
+
 implicit def list2ordered[A](x: List[A])
     (implicit elem2ordered: A => Ordered[A]): Ordered[List[A]] =
   new Ordered[List[A]] { 
