@@ -13,9 +13,9 @@ previous-page: self-types
 redirect_from: "/tutorials/tour/implicit-parameters.html"
 ---
 
-A method can have an _implicit_ parameter list, marked by the _implicit_ keyword at the start of the parameter list. If the parameters in that parameter list are not passed as usual, scala will look if it can get an implicit value of the correct type, and if it can, pass it automatically.
+A method can have an _implicit_ parameter list, marked by the _implicit_ keyword at the start of the parameter list. If the parameters in that parameter list are not passed as usual, Scala will look if it can get an implicit value of the correct type, and if it can, pass it automatically.
 
-The places scala will look for these parameters fall into two categories:
+The places Scala will look for these parameters fall into two categories:
 
 * First, eligible are all identifiers that can be accessed at the point of the method call without a prefix and that denote an implicit definition or an implicit parameter.
 * Second, eligible are also all members of companion objects of the implicit parameter's type that are labeled implicit.
@@ -54,9 +54,9 @@ object ImplicitTest {
 
 To show how implicit parameters work, we first define monoids `StringMonoid` and `IntMonoid` for strings and integers, respectively. The `implicit` keyword indicates that the corresponding object can be used implicitly.
 
-The method `sum` takes a `List[A]` and returns an `A`, which takes the initial `A` from `unit`, and combines each next `A` in the list to that with the `add` method. Making the parameter `m` implicit here means we only have to provide the `xs` parameter when we call the method if scala can find a an implict `Monoid[A]` to use for the implicit `m` parameter.
+The method `sum` takes a `List[A]` and returns an `A`, which takes the initial `A` from `unit`, and combines each next `A` in the list to that with the `add` method. Making the parameter `m` implicit here means we only have to provide the `xs` parameter when we call the method if Scala can find a an implict `Monoid[A]` to use for the implicit `m` parameter.
 
-In our `main` method we call `sum` twice, and only provide the `xs` parameter. Scala will now look for an implicit in the scope mentioned above. The first call to `sum` passes a `List[Int]` for `xs`, which means that `A` is `Int`. The implicit parameter list with `m` is left out, so scala will look for an implicit of type `Monoid[Int]`. The first lookup rule reads
+In our `main` method we call `sum` twice, and only provide the `xs` parameter. Scala will now look for an implicit in the scope mentioned above. The first call to `sum` passes a `List[Int]` for `xs`, which means that `A` is `Int`. The implicit parameter list with `m` is left out, so Scala will look for an implicit of type `Monoid[Int]`. The first lookup rule reads
 
 > First, eligible are all identifiers that can be accessed at the point of the method call without a prefix and that denote an implicit definition or an implicit parameter.
 
