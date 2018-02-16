@@ -1,7 +1,7 @@
 ---
 title: Contribute to API Documentation
 layout: inner-page-no-masthead
-# permalink: /contribute/scala-standard-library-api-documentation/
+# permalink: /contribute/scala-standard-library-api-documentation.html
 includeTOC: true
 ---
 
