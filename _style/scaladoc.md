@@ -161,7 +161,7 @@ Document all type parameters with `@tparam`.
 
 #### Classes
 
-If a class should be created using it's companion object, indicate as
+If a class should be created using its companion object, indicate as
 such after the description of the class (though leave the details of
 construction to the companion object). Unfortunately, there is currently
 no way to create a link to the companion object inline, however the
