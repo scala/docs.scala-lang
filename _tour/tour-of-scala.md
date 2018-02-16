@@ -57,7 +57,7 @@ In many cases, this can be done without using meta-programming facilities such a
 
 ## Scala interoperates
 
-Scala is designed to interoperate well with the popular Java Runtime Environment (JRE). In particular, the interaction with the mainstream object-oriented Java programming language is as smooth as possible. Newer Java features like [annotations](annotations.html) and Java generics have direct analogues in Scala.
+Scala is designed to interoperate well with the popular Java Runtime Environment (JRE). In particular, the interaction with the mainstream object-oriented Java programming language is as smooth as possible. Newer Java features like SAMs, [lambdas](higher-order-functions.html), [annotations](annotations.html), and [generics](generic-classes.html) have direct analogues in Scala.
 
 Those Scala features without Java analogues, such as [default](default-parameter-values.html) and [named parameters](named-arguments.html), compile as close to Java as they can reasonably come. Scala has the same compilation model (separate compilation, dynamic class loading) like Java and allows access to thousands of existing high-quality libraries.
 
