@@ -15,7 +15,7 @@ We assume you know [how to build a project in IntelliJ](building-a-scala-project
 * Add the ScalaTest dependency to your build.sbt file:
 
 ```
-libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1" % "test"
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % "test"
 ```
 
 1. this will cause sbt to pull down the ScalaTest library

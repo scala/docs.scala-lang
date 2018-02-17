@@ -65,7 +65,7 @@ extra functionality to our apps.
 1. Open up `build.sbt` and add the following line:
 
 ```
-libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % "1.0.5"
+libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % "1.1.0"
 ```
 Here, `libraryDependencies` is a set of dependencies, and by using `+=`,
 we're adding the [scala-parser-combinators](https://github.com/scala/scala-parser-combinators) dependency to the set of dependencies that sbt will go
