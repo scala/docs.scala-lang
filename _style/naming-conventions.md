@@ -32,10 +32,7 @@ This mimics the Java naming convention for classes.
 
 ## Objects
 
-Object names are like class names (upper camel case).
-
-An exception is when mimicking a package or function.
-This isn't common. Example:
+Object should be named in lower camel case :
 
     object ast {
       sealed trait Expr
