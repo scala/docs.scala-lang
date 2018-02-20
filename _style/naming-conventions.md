@@ -44,6 +44,17 @@ Object should be named in lower camel case :
     object inc {
       def apply(x: Int): Int = x + 1
     }
+ 
+Unless these are companion Objects, 
+in which case Object name should be same as class name(which then be upper camel case)
+ 
+    class Car (val year : Int, val miles : Int) {
+       ....
+    }
+     
+    object Car {
+      def create(year: Int) = new Car(year, 0)
+    }
 
 ## Packages
 
