@@ -36,9 +36,7 @@ val salaries = Seq(20000, 70000, 40000)
 val newSalaries = salaries.map(x => x * 2) // List(40000, 140000, 80000)
 ```
 Notice how `x` is not declared as an Int in the above example. That's because the
-compiler can infer the type based on the type of function map expects. An even more idiomatic way to write the same piece of code would be
-
-Here is another example:
+compiler can infer the type based on the type of function map expects. An even more idiomatic way to write the same piece of code would be:
 
 ```tut
 val salaries = Seq(20000, 70000, 40000)
@@ -60,7 +58,7 @@ case class WeeklyWeatherForecast(temperatures: Seq[Double]) {
   def forecastInFahrenheit: Seq[Double] = temperatures.map(convertCtoF) // <-- passing the method convertCtoF
 }
 ```
-Here the method `convertCtoF` is passed to forecastInFahrenheit  This is possible because the compiler coerces `convertCtoF` to the function `x => convertCtoF(x)` (note: `x` will
+Here the method `convertCtoF` is passed to `forecastInFahrenheit`. This is possible because the compiler coerces `convertCtoF` to the function `x => convertCtoF(x)` (note: `x` will
   be a generated name which is guaranteed to be unique within its scope).
 
 ## Functions that accept functions
@@ -80,8 +78,6 @@ object SalaryRaiser {
     salaries.map(salary => salary * salary)
 }
 ```
-
-Execution yields the output:
 
 Notice how each of the three methods vary only by the multiplication factor. To simplify,
 you can extract the repeated code into a higher-order function like so:
@@ -126,4 +122,4 @@ val url = getURL(endpoint, query) // "https://www.example.com/users?id=1": Strin
 
 Notice the return type of urlBuilder `(String, String) => String`. This means that
 the returned anonymous function takes two Strings and returns a String. In this case,
-the returned anonymous function is `(endpoint: String, query: String) => s"$schema$domainName/$endpoint?$query"`.
+the returned anonymous function is `(endpoint: String, query: String) => s"https://www.example.com/$endpoint?$query"`.
