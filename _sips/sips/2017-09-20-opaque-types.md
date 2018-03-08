@@ -32,7 +32,7 @@ Some use cases for opaque types are:
    are expanded in-place.
 
  * New numeric classes, such as unsigned integers. There would no
-   longer need to be a boxing overhead for such classes. So this is
+   longer need to be a boxing overhead for such classes. This is
    similar to value types in .NET and `newtype` in Haskell. Many APIs
    currently use signed integers (to avoid overhead) but document that
    the values will be treated as unsigned.
