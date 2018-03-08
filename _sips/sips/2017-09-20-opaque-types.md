@@ -894,7 +894,7 @@ and value classes less attractive:
 package object pkg {
   opaque type XCoord = Int
 
-  case class private[pkg] YCoord (private[pkg] val Int) extends AnyVal
+  case class private[pkg] YCoord (private[pkg] val n: Int) extends AnyVal
 
   // in both cases, we'd need public factory constructors
   // to allow users to produce values of these types.
@@ -910,20 +910,21 @@ and unboxed representations when wrapping `AnyRef` values).
 
 By contrast, when seen from the "outside" opaque types extend
 `Any`. Their bounds are the same as those of a type parameter without
-explicit bounds (e.g. `A <: Any >: Nothing`).
+explicit bounds, i.e. `A <: Any >: Nothing`.
 
 ### Size of artifacts produced
 
-Since value classes do have a runtime reprsentation, they do increase
-the size of runtime artifacts produced (whether a JAR file, or a
-javascript file). Their methods are also compiled to multiple
-representations (i.e. they support both the boxed and unboxed forms
-via extensions methods). Again, this comes at a cost.
+Since value classes do have a runtime representation, they do increase
+the size of runtime artifacts produced (whether a JAR file, a
+javascript file, or something else). Their methods are also compiled
+to multiple representations (i.e. they support both the boxed and
+unboxed forms via extensions methods). Again, this comes at a cost.
 
 By contrast, opaque types have no inherent runtime footprint. The
 opaque type's companion *is* present at runtime, but it usually
 contains validation and data transformation code which would have been
-required even if the author had just stuck to the underlying type.
+required even if the author had just stuck to the underlying type, and
+doesn't add any extra extension methods.
 
 ## Implementation notes
 
