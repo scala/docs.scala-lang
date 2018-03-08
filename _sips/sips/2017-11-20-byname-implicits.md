@@ -605,12 +605,11 @@ divergence. Thanks to the striping the Scala compiler accepts this program.
 #### Divergence checking proposed in this SIP
 
 This SIP changes the above algorithm to accomodate byname cycles. It also limits the scope of strict
-divergence checking across byname boundaries within the expansion -- similarly to striping by definition
-in the current divergence checker, this safely admits more programs as convergent.
+divergence checking across byname boundaries within the expansion -- similarly to striping by
+definition in the current divergence checker, this safely admits more programs as convergent.
 
-Call the set of types and type constructors which are mentioned in a type it's _covering set_.  We say
-that a type _T_ _covers_ a type _U_ if the covering set of _U_ is a weak subset of the covering set of
-_U_. For example, given the following types,
+Call the set of types and type constructors which are mentioned in a type it's _covering set_. For
+example, given the following types,
 
 ```scala
 type A = List[(Int, Int)]
@@ -631,9 +630,9 @@ is not more complex than `B` or `C`, and `B` is more complex than both `A` and `
 
 We revise the definition of domination as follows: a core type _T_ dominates a type _U_ if _T_ is
 equivalent to _U_, or if the top-level type constructors of _T_ and _U_ have a common element and _T_
-is more _complex_ than _U_ and _U_ _covers_ _T_. For intuition, observe that if _T_ is more complex
-than _U_ and _U_ covers _T_ then _T_ is structurally larger than _U_ despite using only elements that
-are present in _U_
+is more _complex_ than _U_ and _U_ and _T_ have the same covering set. For intuition, observe that if
+_T_ is more complex than _U_ and _U_ and _T_ have the same covering set then _T_ is structurally
+larger than _U_ despite using only elements that are present in _U_
 
 This give us the following,
 
@@ -641,15 +640,13 @@ This give us the following,
 > 
 > + Identify the definition _d_ which satisfies _T_.
 >
-> + We inspect _O_ from the top to either the bottom if _T_ is byname; or to the topmost element
->   of the form _<d', => U>_ if _T_ is not byname.
+> + if there is an element _e_ of _O_ of the form _<d, T>_ such that at least one element between _e_
+>   and the top of the stack is of the form _<d', => U>_ then we have observed an admissable cycle
+>   and we're done.
 >
->   1. if we find an element _e_ of the form _<d, T>_ such that at least one element between _e_
->      and the top of the stack is of the form _<d', => U>_ then we have observed an admissable cycle
->      and we're done.
->   2. if we find an element _<d, U>_ where the core type of _T_ dominates _U_ then we have observed
->      divergence and we're done.
-> 
+> + If the core type of _T_ dominates the type _U_ of some element _<d, U>_ of _O_ then we have
+>   observed divergence and we're done.
+>
 > + If _d_ has no implicit arguments then the result is the value yielded by _d_.
 > 
 > + Otherwise for each implicit argument _a_ of _d_, resolve _a_ against _O+<d, T>_, and the result is
@@ -657,6 +654,8 @@ This give us the following,
 
 An informal proof that this this procedure will either converge or are detect divergence is similar
 the two given earlier.
+
+**Note 8/3/2018 &mdash; proof needs repair following simplification of algorithm**
 
 First we show that with the revised definition of domination all non dominating sequences of types are
 finite, using the additional assumption that in any given program there is,
@@ -694,6 +693,120 @@ finite.
 
 Finally, as in the previous proof we rely on **P3** to show that there are only a finite number of
 these finite definitional subpaths and hence that their interleaving must also be finite ∎.
+
+#### Motivating example for the covering set based divergence critera
+
+We follow with a motivating example for the introduction of the covering condition in new divergence
+checking model. In current Scala, consider the following set of instances for a type class `Foo`, as
+might arise in a type class derivation for simple product
+types,
+
+```scala
+trait Generic[T] {
+  type Repr
+}
+object Generic {
+  type Aux[T, R] = Generic[T] { type Repr = R }
+}
+
+trait GNil
+
+trait Foo[T]
+object Foo {
+  implicit val fooUnit: Foo[Unit] = ???
+  implicit val fooInt: Foo[Int] = ???
+  implicit val fooString: Foo[String] = ???
+  implicit val fooBoolean: Foo[Boolean] = ???
+  implicit def fooPair[T, U](implicit fooT: Foo[T], fooU: Foo[U]): Foo[(T, U)] = ???
+  implicit def fooGen[T, R](implicit gen: Generic.Aux[T, R], fr: Foo[R]): Foo[T] = ???
+}
+
+case class A(b: B, i: Int)
+object A {
+  implicit val genA: Generic[A] { type Repr = (B, (Int, Unit)) } = ???
+}
+
+case class B(c: C, i: Int, b: Boolean)
+object B {
+  implicit val genB: Generic[B] { type Repr = (C, (Int, (Boolean, Unit))) } = ???
+}
+
+case class C(i: Int, s: String, b: Boolean)
+object C {
+  implicit val genC: Generic[C] { type Repr = (Int, (String, (Boolean, Unit))) } = ???
+}
+
+implicitly[Foo[C]] // OK
+implicitly[Foo[B]] // Diverging implicit expansion starting with fooPair
+implicitly[Foo[A]] // Diverging implicit expansion starting with fooPair
+```
+
+Here we have the product type `A` being isomorphic to `(B, (Int, Unit))`, the product type `B` being
+isomorphic to `(C, (Int, (Boolean, Unit)))` and the product type `C` being isomorphic to `(Int,
+(String, (Boolean, Unit)))`. None of the data types `A`, `B` and `C` are recursive, being simple
+product types, and we can see that there is a simple terminating unfolding of their elements into
+nested pairs, like so,
+
+```
+C -> (Int, (String, (Boolean, Unit)))
+B -> ((Int, (String, (Boolean, Unit))), (Int, (Boolean, Unit)))
+A -> (((Int, (String, (Boolean, Unit))), (Int, (Boolean, Unit))), (Int, Unit))
+```
+
+and yet this diverges, why?
+
+The answer is clear if we follow the expansion of `Foo[A]` through from the beginning,
+
+```
+               Foo[A]
+
+                 V
+
+       Foo[(B, (Int, Unit))]           via `fooGen` prior to `fooPair`
+
+                 V
+
+               Foo[B]
+
+                 V
+
+  Foo[(C, (Int, (Boolean, Unit)))]     via `fooGen` prior to `fooPair`
+
+                 V
+
+               Foo[C]
+
+                 V
+
+Foo[(Int, (String, (Boolean, Unit)))]  via `fooGen` prior to `fooPair`
+```
+
+Here we can see immediately that, on the current critera, divergence will be detected on the fourth
+step because we have a more complex type (`Foo[(C, (Int, (Boolean, Unit)))]` vs. `Foo[(B, (Int,
+Unit))]`) being resolved in the same context (`fooGen` for `fooPair`).
+
+Unsurprisingly examples of this sort arose very early in the developement of shapeless-based type
+class derivation, first being documented in a [StackOverflow question from Travis
+Brown](https://stackoverflow.com/questions/25923974), even in advance of attempts to derive type
+class instances for recursive ADTs.
+
+The new divergence checking algorithm proposed in this SIP permits the example above because the
+covering condition is not met. If we look at the covering sets and complexities of the sequence,
+
+```
+  Complexity      Covering set
+
+  2               Foo, A
+* 6               Foo, B, Int, Unit
+  2               Foo, B
+* 8               Foo, C, Int, Boolean, Unit
+  2               Foo, C
+* 8               Foo, Int, String, Boolean, Unit
+```
+
+(the `*` prefix indicates steps which are generated via `fooGen` prior to `fooPair` and are hence
+subject to divergence checking) we can see that at the 2nd, 4th and 6th steps, although the size of
+the types is growing, the covering sets differ.
 
 ## Follow on work from this SIP
 
