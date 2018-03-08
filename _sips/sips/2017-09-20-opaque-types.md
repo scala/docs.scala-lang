@@ -763,11 +763,12 @@ pattern:
  3. Return the array, which is now treated as immutable.
 
 In this pattern, the vast majority of time is spent in the third step,
-where the arrays compactness and speed of iteration/access provide
+where the array's compactness and speed of iteration/access provide
 major wins over other data types.
 
 This pattern is currently only enforced by convention. However, opaque
-types create an opportunity to provide more safety without overhead:
+types create an opportunity to provide more safety without incurring
+any overhead:
 
 ```scala
 package object ia {
