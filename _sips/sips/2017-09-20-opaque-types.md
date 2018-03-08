@@ -69,9 +69,9 @@ values are considered interchangeable (i.e. type aliases are not
 appropriate for differentiating various `String` values).
 
 One appropriate solution to the above problem is to create case
-classes which wrap `String`. This works, but incurs a small runtime
-overhead (for every `String` in the previous system we also allocate a
-wrapper, or a "box"). In many cases this is fine but in some it is not.
+classes which wrap `String`. This works, but incurs a runtime overhead
+(for every `String` in the previous system we also allocate a wrapper,
+or a "box"). In many cases this is fine but in some it is not.
 
 Value classes, a Scala feature proposed in [SIP-15], were introduced
 to the language to offer classes that could be inlined in some
@@ -822,6 +822,11 @@ is to show that traditional, "low-level" code with `Array`, `Int`,
 etc. can be written with opaque types without sacrificing any
 performance.
 
+Our other examples enrich existing data types with new
+functionality. This example serves to constrain the operations used
+with a type (but without introducing any overhead/indirection, which a
+traditional wrapper would).
+
 ## Differences with value classes
 
 Most of the above examples can also be implemented using value
@@ -901,6 +906,9 @@ package object pkg {
 }
 ```
 
+Opaque types' default behavior is more appropriate for
+information-hiding when defining wrapper types.
+
 ### LUB differences
 
 Value classes extend `AnyVal` by virtue of the syntax used to define
@@ -909,8 +917,28 @@ them. One reason this is necessary is that value classes cannot be
 and unboxed representations when wrapping `AnyRef` values).
 
 By contrast, when seen from the "outside" opaque types extend
-`Any`. Their bounds are the same as those of a type parameter without
-explicit bounds, i.e. `A <: Any >: Nothing`.
+`Any`. Their bounds are the same as those of a type parameter or type
+member without explicit bounds, i.e. `A <: Any >: Nothing`.
+
+This is not a major difference (for example, under `-Xlint` inferring
+either type will generate a warning) but does it illustrate that an
+opaque type is standing in for an unknown type (i.e. *anything*)
+whereas a value class introduces its own semantics which remain in the
+type system even if we hope to never see the instances:
+
+```scala
+class Letters(val toString: String) extends AnyVal
+class Digits(val toInt: Int) extends AnyVal
+
+// inferred to List[AnyVal]
+val ys = List(new Letters("abc"), new Digits("123"))
+
+// inferred to List[String].
+List[AnyVal] val xs = List("abc", "123")
+```
+
+Through covariance `List[String] <: List[AnyRef]` (and `List[Any]`)
+but it is *not* a `List[AnyVal]`.
 
 ### Size of artifacts produced
 
