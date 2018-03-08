@@ -34,7 +34,7 @@ Some use cases for opaque types are:
  * New numeric classes, such as unsigned integers. There would no
    longer need to be a boxing overhead for such classes. So this is
    similar to value types in .NET and `newtype` in Haskell. Many APIs
-   currently use singed integers (to avoid overhead) but document that
+   currently use signed integers (to avoid overhead) but document that
    the values will be treated as unsigned.
 
  * Classes representing units of measure. Again, no boxing overhead
