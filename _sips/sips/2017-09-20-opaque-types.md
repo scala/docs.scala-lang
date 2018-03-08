@@ -27,9 +27,15 @@ time.
 
 Some use cases for opaque types are:
 
- * New numeric classes, such as unsigned ints. There would no longer
-   need to be a boxing overhead for such classes. So this is similar
-   to value types in .NET and `newtype` in Haskell.
+ * Implementing type members while retaining parametricity. Currently,
+   concrete `type` definitions are treated as type aliases, i.e. they
+   are expanded in-place.
+
+ * New numeric classes, such as unsigned integers. There would no
+   longer need to be a boxing overhead for such classes. This is
+   similar to value types in .NET and `newtype` in Haskell. Many APIs
+   currently use signed integers (to avoid overhead) but document that
+   the values will be treated as unsigned.
 
  * Classes representing units of measure. Again, no boxing overhead
    would be incurred for these classes.
@@ -53,16 +59,27 @@ details of the proposal might change driven by implementation concerns.
 
 ### Motivation
 
-Value classes, a Scala feature proposed in [SIP-15], were introduced to the
-language to offer inlined classes whose operations have zero overhead at runtime.
+Authors often introduce type aliases to differentiate many values that
+share a very common type (e.g. `String`, `Int`, `Double`, `Boolean`,
+etc.). In some cases, these authors may believe that using type
+aliases such as `Id` and `Password` means that if they later mix these
+values up, the compiler will catch their error. However, since type
+aliases are replaced by their underlying type (e.g. `String`), these
+values are considered interchangeable (i.e. type aliases are not
+appropriate for differentiating various `String` values).
 
-This feature allows users to define classes with a few restrictions in exchange of
-performance (value classes are boxed/unboxed under some concrete scenarios,
-that are deemed to be commonplace).
+One appropriate solution to the above problem is to create case
+classes which wrap `String`. This works, but incurs a runtime overhead
+(for every `String` in the previous system we also allocate a wrapper,
+or a "box"). In many cases this is fine but in some it is not.
 
-These scenarios, while certainly common, do not cover the majority of scenarios
-that library authors have to deal with. In reality, experimentation shows that they
-are insufficient, and hence performance-sensitive code suffers (see [Appendix A]).
+Value classes, a Scala feature proposed in [SIP-15], were introduced
+to the language to offer classes that could be inlined in some
+scenarios, thereby removing runtime overhead. These scenarios, while
+certainly common, do not cover the majority of scenarios that library
+authors have to deal with. In reality, experimentation shows that they
+are insufficient, and hence performance-sensitive code suffers (see
+[Appendix A]).
 
 In the following example, we show the current limitations of value classes and
 motivate the need of compile-time wrapper types.
@@ -735,6 +752,215 @@ compile-time safety to a program doesn't add any additional cost
 This example is somewhat similar to `Logarithm` above. Other
 properties we might want to verify at compile-time: `NonNegative`,
 `Positive`, `Finite`, `Unsigned` and so on.
+
+### Immutable (i.e. write-once) arrays
+
+Often performance sensitive code will use arrays via the following
+pattern:
+
+ 1. Allocate an array of a fixed, known size.
+ 2. Initialize the array via code which mutates it.
+ 3. Return the array, which is now treated as immutable.
+
+In this pattern, the vast majority of time is spent in the third step,
+where the array's compactness and speed of iteration/access provide
+major wins over other data types.
+
+This pattern is currently only enforced by convention. However, opaque
+types create an opportunity to provide more safety without incurring
+any overhead:
+
+```scala
+package object ia {
+
+  import java.util.Arrays
+
+  opaque type IArray[A] = Array[A]
+
+  object IArray {
+    @inline final def initialize[A](body: => Array[A]): IArray[A] = body
+
+    @inline final def size(ia: IArray[A]): Int = ia.length
+    @inline final def get(ia: IArray[A], i: Int): A = ia(i)
+
+    // return a sorted copy of the array
+    def sorted(ia: IArray[A]): IArray[A] = {
+      val arr = Arrays.copyOf(ia, ia.length)
+      scala.util.Sorting.quickSort(arr)
+      arr
+    }
+
+    // use a standard java method to search a sorted IArray.
+    // (note that this doesn't mutate the array).
+    def binarySearch(ia: IArray[Long], elem: Long): Int =
+      Arrays.binarySearch(ia, elem)
+  }
+
+  // same as IArray.binarySearch but implemented by-hand.
+  //
+  // given a sorted IArray, returns index of `elem`,
+  // or a negative value if not found.
+  def binaryIndexOf(ia: IArray[Long], elem: Long): Int = {
+    var lower: Int = 0
+    var upper: Int = IArray.size(ia)
+    while (lower <= upper) {
+      val middle = (lower + upper) >>> 1
+      val n = IArray.get(ia, middle)
+
+      if (n == elem) return middle
+      else if (n < elem) first = middle + 1
+      else last = middle - 1
+    }
+    -lower - 1
+  }
+}
+```
+
+This example is a bit different from others: there's no attempt to
+enrich the `IArray` type with syntactic conveniences. Rather, the goal
+is to show that traditional, "low-level" code with `Array`, `Int`,
+etc. can be written with opaque types without sacrificing any
+performance.
+
+Our other examples enrich existing data types with new
+functionality. This example serves to constrain the operations used
+with a type (but without introducing any overhead/indirection, which a
+traditional wrapper would).
+
+## Differences with value classes
+
+Most of the above examples can also be implemented using value
+classes. This section will highlight some differences between these
+hypothetical encodings.
+
+### Used as a type parameter
+
+In many cases an author would introduce opaque types or value classes
+to add extra type safety to a "stringly-typed" API, by replacing
+instances of the `String` type with a more specific type.
+
+For example:
+
+```scala
+package object pkg {
+
+  import Character.{isAlphabetic, isDigit}
+
+  class Alphabetic private[pkg] (val value: String) extends AnyVal
+
+  object Alphabetic {
+    def fromString(s: String): Option[Alphabetic] =
+      if (s.forall(isAlphabetic(_))) Some(new Alphabetic(s))
+      else None
+  }
+
+  opaque type Digits = String
+
+  object Digits {
+    def fromString(s: String): Option[Digits] =
+      if (s.forall(isDigit(_))) Some(s)
+      else None
+
+    def asString(d: Digits): String = d
+  }
+}
+```
+
+The code here is relatively comparable. However, when changing
+`String` to `Alphabetic` in code, the following types would be changed
+(i.e. boxed):
+
+ * `Array[Alphabetic]`
+ * `Option[Alphabetic]` (e.g. the result of `Alphabetic.fromString`)
+ * `Vector[Alphabetic]`
+ * `Alphabetic => Boolean`
+ * `Map[Alphabetic, Int]`
+ * `Ordering[Alphabetic]`
+ * `(Alphabetic, String)`
+ * `Monoid[Alphabetic]`
+
+In many cases users won't mind the fact that this code will box, but
+there will certainly be an impact on the bytecode produced (and
+possibly the runtime performance).
+
+By contrast, replacing `String` with `Digits` is guaranteed to have no
+impact (all occurances of `Digits` are guaranteed to be erased to
+`String`). Aside from the ergonomics of calling the `fromString` and
+`asString` methods, there's no runtime impact versus using the
+underlying type.
+
+One wrinkle to the above is that built-in primitive types will
+naturally box in some situations (but not others). For example
+`List[Double]` will be represented as a `List[java.lang.Double]`,
+`(Double, Double)` will be represented as a `scala.Tuple2$mcDD$sp`,
+and so on. In these cases, an opaque type will exhibit the same
+behavior.
+
+### Default visibility
+
+By default, a value class' constructor and accessor are public. It
+*is* possible to restrict access, using a `private` constructor and
+`private` accessor, but this makes the comparison between opaque types
+and value classes less attractive:
+
+```scala
+package object pkg {
+  opaque type XCoord = Int
+
+  case class private[pkg] YCoord (private[pkg] val n: Int) extends AnyVal
+
+  // in both cases, we'd need public factory constructors
+  // to allow users to produce values of these types.
+}
+```
+
+Opaque types' default behavior is more appropriate for
+information-hiding when defining wrapper types.
+
+### LUB differences
+
+Value classes extend `AnyVal` by virtue of the syntax used to define
+them. One reason this is necessary is that value classes cannot be
+`null` (otherwise this could create ambiguities between their boxed
+and unboxed representations when wrapping `AnyRef` values).
+
+By contrast, when seen from the "outside" opaque types extend
+`Any`. Their bounds are the same as those of a type parameter or type
+member without explicit bounds, i.e. `A <: Any >: Nothing`.
+
+This is not a major difference (for example, under `-Xlint` inferring
+either type will generate a warning) but does it illustrate that an
+opaque type is standing in for an unknown type (i.e. *anything*)
+whereas a value class introduces its own semantics which remain in the
+type system even if we hope to never see the instances:
+
+```scala
+class Letters(val toString: String) extends AnyVal
+class Digits(val toInt: Int) extends AnyVal
+
+// inferred to List[AnyVal]
+val ys = List(new Letters("abc"), new Digits("123"))
+
+// inferred to List[String].
+List[AnyVal] val xs = List("abc", "123")
+```
+
+Through covariance `List[String] <: List[AnyRef]` (and `List[Any]`)
+but it is *not* a `List[AnyVal]`.
+
+### Size of artifacts produced
+
+Since value classes do have a runtime representation, they do increase
+the size of runtime artifacts produced (whether a JAR file, a
+javascript file, or something else). Their methods are also compiled
+to multiple representations (i.e. they support both the boxed and
+unboxed forms via extensions methods). Again, this comes at a cost.
+
+By contrast, opaque types have no inherent runtime footprint. The
+opaque type's companion *is* present at runtime, but it usually
+contains validation and data transformation code which would have been
+required even if the author had just stuck to the underlying type, and
+doesn't add any extra extension methods.
 
 ## Implementation notes
 
