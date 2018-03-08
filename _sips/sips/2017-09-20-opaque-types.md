@@ -886,7 +886,15 @@ possibly the runtime performance).
 By contrast, replacing `String` with `Digits` is guaranteed to have no
 impact (all occurances of `Digits` are guaranteed to be erased to
 `String`). Aside from the ergonomics of calling the `fromString` and
-`asString` methods, there's no runtime impact of any kind.
+`asString` methods, there's no runtime impact versus using the
+underlying type.
+
+One wrinkle to the above is that built-in primitive types will
+naturally box in some situations (but not others). For example
+`List[Double]` will be represented as a `List[java.lang.Double]`,
+`(Double, Double)` will be represented as a `scala.Tuple2$mcDD$sp`,
+and so on. In these cases, an opaque type will exhibit the same
+behavior.
 
 ### Default visibility
 
