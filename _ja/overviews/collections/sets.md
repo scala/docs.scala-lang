@@ -91,7 +91,7 @@ language: ja
     scala> s
     res2: scala.collection.immutable.Set[Int] = Set(1, 3, 4)
 
-ここでは `immutable.Set`型の `var` に対して `+=` と `-=` を使った。`s += 4` のようなステートメントは、`s = s + 4` の略だ。つまり、これは集合 `s` に対して追加メソッドの `+` を呼び出して、結果を変数`s` に代入しなおしてる。次に、可変集合でのやりとりを見てほしい。
+ここでは `immutable.Set`型の `var` に対して `+=` と `-=` を使った。`s += 4` のようなステートメントは、`s = s + 4` の略だ。つまり、これは集合 `s` に対して追加メソッドの `+` を呼び出して、結果を変数`s` に代入しなおしている。次に、可変集合でのやりとりを見てほしい。
 
     scala> val s = collection.mutable.Set(1, 2, 3)
     s: scala.collection.mutable.Set[Int] = Set(1, 2, 3)
