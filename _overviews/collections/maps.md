@@ -45,7 +45,7 @@ The fundamental operations on maps are similar to those on sets. They are summar
 |   **Subcollections:**     |						     |
 |  `ms.keys`  	            |An iterable containing each key in `ms`.        |
 |  `ms.keySet`              |A set containing each key in `ms`.              |
-|  `ms.keyIterator`         |An iterator yielding each key in `ms`.          |
+|  `ms.keysIterator`        |An iterator yielding each key in `ms`.          |
 |  `ms.values`      	    |An iterable containing each value associated with a key in `ms`.|
 |  `ms.valuesIterator`      |An iterator yielding each value associated with a key in `ms`.|
 |   **Transformation:**     |						     |
