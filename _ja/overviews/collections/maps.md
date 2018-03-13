@@ -44,7 +44,7 @@ language: ja
 |   **サブコレクション取得演算:**     |						     |
 |  `ms.keys`  	            |`ms`内の全てのキーを含む iterable。|
 |  `ms.keySet`              |`ms`内の全てのキーを含む集合。|
-|  `ms.keyIterator`         |`ms`内の全てのキーを返すイテレータ。|
+|  `ms.keysIterator`        |`ms`内の全てのキーを返すイテレータ。|
 |  `ms.values`      	    |`ms`内のキーに関連付けられた全ての値を含む iterable。|
 |  `ms.valuesIterator`      |`ms`内のキーに関連付けられた全ての値を返すイテレータ。|
 |   **変換演算:**     |						     |

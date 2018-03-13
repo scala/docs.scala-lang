@@ -44,7 +44,7 @@ language: zh-cn
 | **子容器（Subcollection）：**	 |                 |
 | ms.keys | 返回一个用于包含ms中所有键的iterable对象（译注：请注意iterable对象与iterator的区别） |
 | ms.keySet | 返回一个包含ms中所有的键的集合。 |
-| ms.keyIterator | 返回一个用于遍历ms中所有键的迭代器。 |
+| ms.keysIterator | 返回一个用于遍历ms中所有键的迭代器。 |
 | ms.values | 返回一个包含ms中所有值的iterable对象。 |
 | ms.valuesIterator | 返回一个用于遍历ms中所有值的迭代器。 |
 | **变换：**	 |             |
