@@ -12,7 +12,7 @@ previous-page: extractor-objects
 language: pt-br
 ---
 
-Semelhante ao Java 5 (aka. [JDK 1.5](http://java.sun.com/j2se/1.5/)), Scala tem suporte nativo para classes parametrizadas com tipos. Essas classes genéricas são particularmente úteis para o desenvolvimento de classes que representam coleções de dados.
+Semelhante ao Java 5 (aka. JDK 1.5), Scala tem suporte nativo para classes parametrizadas com tipos. Essas classes genéricas são particularmente úteis para o desenvolvimento de classes que representam coleções de dados.
 Aqui temos um exemplo que demonstra isso:
 
 ```tut
