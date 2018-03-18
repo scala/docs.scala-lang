@@ -226,7 +226,7 @@
         - title: Future prospects
           url: "quasiquotes/future.html"
     - title: Compiler Plugins
-      by: Lex Spoon
+      by: Lex Spoon and Seth Tisue
       icon: puzzle-piece
       url: "plugins/index.html"
-      description: "Compiler plugins permit customizing and extending the Scala compiler."
+      description: "Compiler plugins permit customizing and extending the Scala compiler. This tutorial describes the plugin facility and walks you through how to create a simple plugin."
