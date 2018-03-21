@@ -62,7 +62,7 @@ In our `main` method we call `sum` twice, and only provide the `xs` parameter. S
 
 > Scala will first look for implicit definitions and implicit parameters that can be accessed directly (without a prefix) at the point the method with the implicit parameter block is called.
 
-`intMonoid` is an implicit definition that can be accessed directly directly in `main`. It is also of the correct type, so it's passed to the sum method automatically.
+`intMonoid` is an implicit definition that can be accessed directly in `main`. It is also of the correct type, so it's passed to the sum method automatically.
 
 The second call to `sum` passes a `List[String]`, which means that `A` is `String`. Implicit lookup will go the same way as with `Int`, but will this time find `stringMonoid`, and passes that automatically as `m`.
 
