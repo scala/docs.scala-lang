@@ -17,7 +17,7 @@ language: ja
 以下の表にまとめられた列の演算は以下のカテゴリーに分けることができる:
 
 * **添字と長さの演算** `apply`、 `isDefinedAt`、 `length`、 `indices`、および `lengthCompare`。`Seq` では `apply` メソッドは添字の意味で使われるため、`Seq[T]`型の列は `Int` を引数 (添字) としてをとり、`T`型の要素を返す部分関数だ。つまり、`Seq[T]` は `PartialFunction[Int, T]` を継承する。列内の要素はゼロから列の長さ (`length`) − 1 まで添字付けられている。列の `length` メソッドは一般コレクションにおける `size` メソッドの別名だ。`lengthCompare` メソッドは、たとえどちらかの列が無限の長さを持っていても、二つの列の長さを比較することができる。
-* **添字検索演算**である `indexOf`、 `lastIndexOf`、 `indexofSlice`、 `lastIndexOfSlice`、 `indexWhere`、 `lastIndexWhere`、 `segmentLength`、 `prefixLength` は、渡された値もしくは条件関数に合致する要素の添字を返す。
+* **添字検索演算**である `indexOf`、 `lastIndexOf`、 `indexOfSlice`、 `lastIndexOfSlice`、 `indexWhere`、 `lastIndexWhere`、 `segmentLength`、 `prefixLength` は、渡された値もしくは条件関数に合致する要素の添字を返す。
 * **加算**である `+:`、`:+`、`padTo` は、列の先頭か最後に要素を追加した新しい列を返す。
 * **更新演算**である `updated`、`patch` は、元の列に何らかの要素を上書きした列を返す。
 * **並べ替え演算**である `sorted`、`sortWith`、`sortBy` は、列内の要素を何らかの基準に基づいて並べ替える。
@@ -82,7 +82,7 @@ Scala の他の構文の例にならって、`seq(idx) = elem` は `seq.update(i
 よく使われる線形列の例に `scala.collection.immutable.List` と `scala.collection.immutable.Stream` がある。よく使われる添字付き列の例としては `scala.Array` と `scala.collection.mutable.ArrayBuffer` がある。
 `Vector` は添字付き列と線形列の間の興味深い折衷案だ。
 事実上定数時間のオーバーヘッドで添字アクセスと線形アクセスを提供するからだ。
-そのため、ベクトルは添字アクセスと線形アクセスの両方を混合して使用してるアクセスパターンにおける良い基盤となる。
+そのため、ベクトルは添字アクセスと線形アクセスの両方を混合して使用しているアクセスパターンにおける良い基盤となる。
 ベクトルに関しては、また[後ほど詳しくみていく](concrete-immutable-collection-classes.html)。
 
 ### バッファ ###
