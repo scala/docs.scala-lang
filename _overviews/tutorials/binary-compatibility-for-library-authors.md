@@ -66,7 +66,7 @@ Because of this, having multiple versions of the same library in the classpath i
 * Need to fetch and bundle multiple library versions when only one is actually used
 * Unexpected runtime behavior if the order of class files changes
 
-Therefore, build tools like SBT and Gradle will pick one version and **evict** the rest when resolving JARs to use for compilation and packaging. 
+Therefore, build tools like sbt and Gradle will pick one version and **evict** the rest when resolving JARs to use for compilation and packaging. 
 By default they pick the latest version of each library, but it is possible to specify another version if required.
 
 ### Source Compatibility
@@ -147,8 +147,8 @@ The [Migration Manager for Scala](https://github.com/lightbend/migration-manager
 It works by comparing the class files of two provided JARs and report any binary incompatibilities found. 
 Both backwards and forwards binary incompatibility can be detected by swapping input order of the JARs.
 
-By incorporating [MiMa SBT plugin](https://github.com/lightbend/migration-manager/wiki/Sbt-plugin) into your SBT build, you can easily check whether 
-you have accidentally introduced binary incompatible changes. Detailed instruction on how to use the SBT plugin can be found in the link.
+By incorporating MiMa's [sbt plugin](https://github.com/lightbend/migration-manager/wiki/sbt-plugin) into your sbt build, you can easily check whether 
+you have accidentally introduced binary incompatible changes. Detailed instruction on how to use the sbt plugin can be found in the link.
 
 We strongly encourage every library author to incorporate MiMa into their continuous integration and release workflow.
 
