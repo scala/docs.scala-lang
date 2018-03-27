@@ -1,7 +1,6 @@
 ---
 layout: sip
 title: SIP-12 - Uncluttering Scala’s syntax for control structures.
-redirect_from: "/sips/pending/uncluttering-control.html"
 
 vote-status: rejected
 vote-text: The committee votes unanimously to reject the change. The conclusion is that there is not a clear benefit for it and the required invested time and efforts would be too high. For more explanation, read the <a href=minutes/2016-08-16-sip-10th-august-minutes.html>minutes</a>.
