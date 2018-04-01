@@ -1,25 +1,4 @@
 
-- category: Language
-  description: "Guides and overviews covering features in the Scala language."
-  overviews:
-    - title: String Interpolation
-      icon: usd
-      url: "core/string-interpolation.html"
-      description: >
-        String Interpolation allows users to embed variable references directly in processed string literals. Here’s an example:
-          <pre><code>val name = "James"
-          println(s"Hello, $name")  // Hello, James</code></pre>
-        In the above, the literal <code>s"Hello, $name"</code> is a processed string literal. This means that the compiler does some additional work to this literal. A processed string literal is denoted by a set of characters preceding the ". String interpolation was introduced by SIP-11, which contains all details of the implementation.
-    - title: Implicit Classes
-      by: Josh Suereth
-      description: "Scala 2.10 introduced a new feature called implicit classes. An implicit class is a class marked with the implicit keyword. This keyword makes the class’ primary constructor available for implicit conversions when the class is in scope."
-      url: "core/implicit-classes.html"
-    - title: Value Classes and Universal Traits
-      by: Mark Harrah
-      description: "Value classes are a new mechanism in Scala to avoid allocating runtime objects. This is accomplished through the definition of new AnyVal subclasses."
-      icon: diamond
-      url: "core/value-classes.html"
-
 - category: Standard Library
   description: "Guides and overviews covering the Scala standard library."
   overviews:
@@ -63,6 +42,28 @@
       url: "core/architecture-of-scala-collections.html"
       by: Martin Odersky and Lex Spoon
       description: "These pages describe the architecture of the Scala collections framework in detail. Compared to the Collections API you will find out more about the internal workings of the framework. You will also learn how this architecture helps you define your own collections in a few lines of code, while reusing the overwhelming part of collection functionality from the framework."
+
+- category: Language
+  description: "Guides and overviews covering features in the Scala language."
+  overviews:
+    - title: String Interpolation
+      icon: usd
+      url: "core/string-interpolation.html"
+      description: >
+        String Interpolation allows users to embed variable references directly in processed string literals. Here’s an example:
+          <pre><code>val name = "James"
+          println(s"Hello, $name")  // Hello, James</code></pre>
+        In the above, the literal <code>s"Hello, $name"</code> is a processed string literal. This means that the compiler does some additional work to this literal. A processed string literal is denoted by a set of characters preceding the ". String interpolation was introduced by SIP-11, which contains all details of the implementation.
+    - title: Implicit Classes
+      by: Josh Suereth
+      description: "Scala 2.10 introduced a new feature called implicit classes. An implicit class is a class marked with the implicit keyword. This keyword makes the class’ primary constructor available for implicit conversions when the class is in scope."
+      url: "core/implicit-classes.html"
+    - title: Value Classes and Universal Traits
+      by: Mark Harrah
+      description: "Value classes are a new mechanism in Scala to avoid allocating runtime objects. This is accomplished through the definition of new AnyVal subclasses."
+      icon: diamond
+      url: "core/value-classes.html"
+
 - category: Parallel and Concurrent Programming
   description: "Complete guides covering some of Scala's libraries for parallel and concurrent programming."
   overviews:
