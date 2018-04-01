@@ -226,3 +226,19 @@
       icon: puzzle-piece
       url: "plugins/index.html"
       description: "Compiler plugins permit customizing and extending the Scala compiler. This tutorial describes the plugin facility and walks you through how to create a simple plugin."
+
+- category: Legacy
+  description: "Guides covering features no longer relevant to recent Scala versions (2.11+)."
+  overviews:
+    - title: The Scala Actors Migration Guide
+      by: Vojin Jovanovic and Philipp Haller
+      icon: truck
+      url: "core/actors-migration-guide.html"
+      description: "To ease the migration from Scala Actors to Akka we have provided the Actor Migration Kit (AMK). The AMK consists of an extension to Scala Actors which is enabled by including the scala-actors-migration.jar on a project’s classpath. In addition, Akka 2.1 includes features, such as the ActorDSL singleton, which enable a simpler conversion of code using Scala Actors to Akka. The purpose of this document is to guide users through the migration process and explain how to use the AMK."
+    - title: The Scala Actors API
+      by: Philipp Haller and Stephen Tu
+      icon: users
+      url: "core/actors.html"
+      description: "This guide describes the API of the scala.actors package of Scala 2.8/2.9. The organization follows groups of types that logically belong together. The trait hierarchy is taken into account to structure the individual sections. The focus is on the run-time behavior of the various methods that these traits define, thereby complementing the existing Scaladoc-based API documentation."
+      label-color: "#899295"
+      label-text: deprecated
