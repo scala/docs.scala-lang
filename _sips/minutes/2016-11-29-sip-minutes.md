@@ -11,8 +11,8 @@ The following agenda was distributed to attendees:
 
 |Topic|Reviewers| Accepted/Rejected |
 | --- | --- | --- |
-| [SIP-28 and SIP-29 - Inline and meta](http://docs.scala-lang.org/sips/pending/inline-meta.html) | Josh Suereth and Iulian Dragos | Pending |
-| [SIP-24 - Repeated By Name Parameters](http://docs.scala-lang.org/sips/pending/repeated-byname.html) | Heather Miller | Pending |
+| [SIP-28 and SIP-29 - Inline and meta](http://docs.scala-lang.org/sips/inline-meta.html) | Josh Suereth and Iulian Dragos | Pending |
+| [SIP-24 - Repeated By Name Parameters](http://docs.scala-lang.org/sips/repeated-byname.html) | Heather Miller | Pending |
 | [SIP-25:Static](https://github.com/scala/docs.scala-lang/pull/491/files)| Adriaan Moors | Pending |
 |[SIP-27: Trailing commas](http://docs.scala-lang.org/sips/completed/trailing-commas.html)|Eugene Burkamo| Accepted |
 
@@ -42,7 +42,7 @@ Minutes were taken by Travis Lee.
 
 **Jorge** We'll talk about the SIPS for Scala Meta. Eugene will start.
 
-### [SIP-28 and SIP-29 - Inline and meta](http://docs.scala-lang.org/sips/pending/inline-meta.html)
+### [SIP-28 and SIP-29 - Inline and meta](http://docs.scala-lang.org/sips/inline-meta.html)
 
 Eugene and co have been working hard for two months on inline and Scala Meta. Previously discussed new macro system with new inline and meta features. Inline provides a facility to declare methods with inline right hand side into call side (0:01:24) and meta implements compile-time function execution to do meta-programming. Martin implemented inline mechanism in Dotty. Eugene worked on macro notations. New style macros will integrate with tools. Eugene shows how it works in IntelliJ. For example, you can print the value of the parameters. Meta blocks supported by IntelliJ. So are quasi-quotes. You can also expand macros. Will greatly help debugability.
 
@@ -52,7 +52,7 @@ The spec needs to be updated based on Martin's Dotty implementation. We need to 
 
 **Conclusion** This proposal needs at least another iteration to shape up and provide concrete implementation and specification details. This proposal is therefore under revision -- Eugene, the author, will gather and address more feedback and will resubmit the proposal to analysis when it's ready.
 
-### [SIP-24 - Repeated By Name Parameters](http://docs.scala-lang.org/sips/pending/repeated-byname.html)
+### [SIP-24 - Repeated By Name Parameters](http://docs.scala-lang.org/sips/repeated-byname.html)
 
 Heather says the debate is about the semantics or translation rules. All arguments are evaluated each time the parameter is referenced in the method. This is implemented in Dotty. Should this be implemented in Scalac?
 

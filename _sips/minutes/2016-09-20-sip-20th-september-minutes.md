@@ -12,7 +12,7 @@ The following agenda was distributed to attendees:
 | Topic | Reviewer |
 | --- | --- |
 | [SIP-NN: Scala Meta SIP](https://github.com/scala/docs.scala-lang/pull/567) | Iulian Dragos and Josh Suereth |
-| [SIP-21: Spores](http://docs.scala-lang.org/sips/pending/spores.html) | Martin Odersky |
+| [SIP-21: Spores](http://docs.scala-lang.org/sips/spores.html) | Martin Odersky |
 | [SIP-26: Unsigned Integer Data Types](https://github.com/scala/slip/pull/30) | Martin Odersky |
 | [SIP-27: Trailing commas](https://github.com/scala/docs.scala-lang/pull/533#issuecomment-232959066) | Eugene Burmako |
 

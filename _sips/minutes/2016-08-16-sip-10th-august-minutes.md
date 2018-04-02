@@ -11,11 +11,11 @@ The following agenda was distributed to attendees:
 
 | Topic | Reviewer |
 | --- | --- |
-| [SIP-12: Uncluttering Scala's syntax for control structures](http://docs.scala-lang.org/sips/pending/uncluttering-control.html) | Seth Tisue |
+| [SIP-12: Uncluttering Scala's syntax for control structures](http://docs.scala-lang.org/sips/uncluttering-control.html) | Seth Tisue |
 | [SIP-16: Self-cleaning macros](http://docs.scala-lang.org/sips/self-cleaning-macros.html) | Eugene Burmako |
-| [SIP-21: Spores](http://docs.scala-lang.org/sips/pending/spores.html) | Martin Odersky |
-| [SIP-23: Literal-based singleton types](http://docs.scala-lang.org/sips/pending/42.type.html) | Adriaan Moors |
-| [SIP-24: Repeated by-name parameters](http://docs.scala-lang.org/sips/pending/repeated-byname.html) | Andrew Marki |
+| [SIP-21: Spores](http://docs.scala-lang.org/sips/spores.html) | Martin Odersky |
+| [SIP-23: Literal-based singleton types](http://docs.scala-lang.org/sips/42.type.html) | Adriaan Moors |
+| [SIP-24: Repeated by-name parameters](http://docs.scala-lang.org/sips/repeated-byname.html) | Andrew Marki |
 | [SIP-27: Trailing commas](https://github.com/scala/docs.scala-lang/pull/533#issuecomment-232959066) | Eugene Burmako |
 
 Jorge Vicente Cantero was the Process Lead and acting secretary of the meeting.

@@ -11,10 +11,10 @@ The following agenda was distributed to attendees:
 
 | Topic | Reviewer |
 | --- | --- |
-| [SIP-XX: Improving binary compatibility with @stableABI](http://docs.scala-lang.org/sips/pending/binary-compatibility.html) | Dmitry Petrashko |
-| [SIP-NN - Allow referring to other arguments in default parameters](http://docs.scala-lang.org/sips/pending/refer-other-arguments-in-args.html) | Pathikrit Bhowmick |
-| [SIP 25 - @static fields and methods in Scala objects(SI-4581)](http://docs.scala-lang.org/sips/pending/static-members.html) | Dmitry Petrashko, Sébastien Doeraene and Martin Odersky |
-| [SIP-33 - Match infix & prefix types to meet expression rules](http://docs.scala-lang.org/sips/pending/make-types-behave-like-expressions.html) | Oron Port |
+| [SIP-XX: Improving binary compatibility with @stableABI](http://docs.scala-lang.org/sips/binary-compatibility.html) | Dmitry Petrashko |
+| [SIP-NN - Allow referring to other arguments in default parameters](http://docs.scala-lang.org/sips/refer-other-arguments-in-args.html) | Pathikrit Bhowmick |
+| [SIP 25 - @static fields and methods in Scala objects(SI-4581)](http://docs.scala-lang.org/sips/static-members.html) | Dmitry Petrashko, Sébastien Doeraene and Martin Odersky |
+| [SIP-33 - Match infix & prefix types to meet expression rules](http://docs.scala-lang.org/sips/priority-based-infix-type-precedence.html) | Oron Port |
 
 Jorge Vicente Cantero was the Process Lead. Travis (@travissarles) was acting secretary of the meeting.
 

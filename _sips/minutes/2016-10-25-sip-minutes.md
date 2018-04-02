@@ -12,7 +12,7 @@ The following agenda was distributed to attendees:
 | Topic | Reviewer |
 | --- | --- |
 | Discussion of the voting system | N/A |
-| [SIP-20: Improved Lazy Val Initialization](http://docs.scala-lang.org/sips/pending/improved-lazy-val-initialization.html) | Sébastien Doeraene |
+| [SIP-20: Improved Lazy Val Initialization](http://docs.scala-lang.org/sips/improved-lazy-val-initialization.html) | Sébastien Doeraene |
 | [SIP-27: Trailing commas](https://github.com/scala/docs.scala-lang/pull/533#issuecomment-232959066) | Eugene Burmako |
 
 Jorge Vicente Cantero was the Process Lead and acting secretary of the meeting.

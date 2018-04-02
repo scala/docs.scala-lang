@@ -87,7 +87,7 @@ Syntax "new" "type"
 
 Still waiting on the implementation updates, therefore this item will be discussed in the next SIP Meeting.
 
-### [SIP-28 and SIP-29: Inline and meta](http://docs.scala-lang.org/sips/pending/inline-meta.html)
+### [SIP-28 and SIP-29: Inline and meta](http://docs.scala-lang.org/sips/inline-meta.html)
 [YouTube time: 51'40'' until the end](https://youtu.be/yzTpVbTUj18?t=3100)
 
 **Eugene** gives a brief history of this SIP development, shares the good news and suggests how to proceed.

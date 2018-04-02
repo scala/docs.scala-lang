@@ -75,7 +75,7 @@ The feedback will be given to the author.
 
 
 
-### [SIP-28 and SIP-29: Inline and meta](http://docs.scala-lang.org/sips/pending/inline-meta.html)
+### [SIP-28 and SIP-29: Inline and meta](http://docs.scala-lang.org/sips/inline-meta.html)
 [YouTube time: 10'05'' until the end](https://youtu.be/aIc-o1pcRhw?t=605)
 
 **Jorge** introduces **Olaf** as a new Team Lead of SIP-28 and SIP-29.
