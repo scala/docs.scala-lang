@@ -4,6 +4,7 @@ title: SIP-35 - Opaque types
 
 vote-status: pending
 permalink: /sips/:title.html
+redirect_from: /sips/pending/opaque-types.html
 ---
 
 **Authors: Erik Osheim and Jorge Vicente Cantero**

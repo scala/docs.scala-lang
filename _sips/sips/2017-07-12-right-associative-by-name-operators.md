@@ -5,6 +5,7 @@ title: SIP-34 - Right-Associative By-Name Operators
 
 vote-status: accepted
 permalink: /sips/:title.html
+redirect_from: /sips/pending/right-associative-by-name-operators.html
 ---
 
 **By: Stefan Zeiger**

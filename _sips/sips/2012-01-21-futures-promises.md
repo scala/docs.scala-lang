@@ -6,6 +6,7 @@ title: SIP-14 - Futures and Promises
 vote-status: complete
 vote-text: This SIP has already been accepted and completed.
 permalink: /sips/:title.html
+redirect_from: /sips/pending/futures-promises.html
 ---
 
 **By: Philipp Haller, Aleksandar Prokopec, Heather Miller, Viktor Klang, Roland Kuhn, and Vojin Jovanovic**

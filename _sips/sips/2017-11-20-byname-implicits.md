@@ -5,6 +5,7 @@ title: SIP-NN - Byname implicit arguments
 
 vote-status: pending
 permalink: /sips/:title.html
+redirect_from: /sips/pending/byname-implicits.html
 ---
 
 **Author: Miles Sabin**

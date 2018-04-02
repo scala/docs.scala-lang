@@ -5,6 +5,7 @@ title: SIP-NN - comonadic-comprehensions
 
 vote-status: rejected
 permalink: /sips/:title.html
+redirect_from: /sips/pending/comonadic-comprehensions.html
 ---
 
 **By: Shimi Bandiel**

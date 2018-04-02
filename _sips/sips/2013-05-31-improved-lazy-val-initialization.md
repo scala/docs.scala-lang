@@ -6,6 +6,7 @@ title: SIP-20 - Improved Lazy Vals Initialization
 vote-status: dormant
 vote-text: This proposal lacks an implementation for Scalac and is looking for a new owner.
 permalink: /sips/:title.html
+redirect_from: /sips/pending/improved-lazy-val-initialization.html
 ---
 
 **By: Aleksandar Prokopec, Dmitry Petrashko, Miguel Garcia, Jason Zaugg, Hubert Plociniczak, Viktor Klang, Martin Odersky**

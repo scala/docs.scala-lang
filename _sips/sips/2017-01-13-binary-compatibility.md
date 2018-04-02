@@ -5,6 +5,7 @@ discourse: true
 
 vote-status: pending
 permalink: /sips/:title.html
+redirect_from: /sips/pending/binary-compatibility.html
 ---
 
 __Dmitry Petrashko__

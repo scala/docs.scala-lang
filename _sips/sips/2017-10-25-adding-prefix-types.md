@@ -5,6 +5,7 @@ title: SIP-36 - Adding prefix types
 
 vote-status: pending
 permalink: /sips/:title.html
+redirect_from: /sips/pending/adding-prefix-types.html
 ---
 
 **By: Oron Port**

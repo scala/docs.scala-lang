@@ -6,6 +6,7 @@ title: SIP-13 - Implicit classes
 vote-status: complete
 vote-text: This SIP has already been accepted and completed.
 permalink: /sips/:title.html
+redirect_from: /sips/pending/implicit-classes.html
 ---
 
 **By: Josh Suereth**
