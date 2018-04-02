@@ -39,7 +39,7 @@ Please read [Submitting a SIP](./sip-submission.html) and our
 
 > Historical note: The SIP replaces the older SID (Scala Improvement Document) process.
 > Completed SID documents remain available in the
-> [completed section of the SIP list](sip-list.html).
+> [completed section of the SIP list](all.html).
 
 ## Scala Platform Process (SPP)
 
