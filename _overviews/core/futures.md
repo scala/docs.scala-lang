@@ -74,13 +74,13 @@ although this should only be done in rare cases.
 
 `ExecutionContext.global` is an `ExecutionContext` backed by a [ForkJoinPool](http://docs.oracle.com/javase/tutorial/essential/concurrency/forkjoin.html).
 It should be sufficient for most situations but requires some care.
-A `ForkJoinPool` manages a limited amount of threads (the maximum amount of threads being referred to as *parallelism level*).
+A `ForkJoinPool` manages a limited number of threads (the maximum number of threads being referred to as *parallelism level*).
 The number of concurrently blocking computations can exceed the parallelism level
 only if each blocking call is wrapped inside a `blocking` call (more on that below).
 Otherwise, there is a risk that the thread pool in the global execution context is starved,
 and no computation can proceed.
 
-By default the `ExecutionContext.global` sets the parallelism level of its underlying fork-join pool to the amount of available processors
+By default the `ExecutionContext.global` sets the parallelism level of its underlying fork-join pool to the number of available processors
 ([Runtime.availableProcessors](http://docs.oracle.com/javase/7/docs/api/java/lang/Runtime.html#availableProcessors%28%29)).
 This configuration can be overridden by setting one (or more) of the following VM attributes:
 
@@ -90,7 +90,7 @@ This configuration can be overridden by setting one (or more) of the following V
 
 The parallelism level will be set to `numThreads` as long as it remains within `[minThreads; maxThreads]`.
 
-As stated above the `ForkJoinPool` can increase the amount of threads beyond its `parallelismLevel` in the presence of blocking computation.
+As stated above the `ForkJoinPool` can increase the number of threads beyond its `parallelismLevel` in the presence of blocking computation.
 As explained in the `ForkJoinPool` API, this is only possible if the pool is explicitly notified:
 
     import scala.concurrent.Future
