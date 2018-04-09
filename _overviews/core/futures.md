@@ -349,24 +349,10 @@ handled, the `foreach` callback can be used:
       for (post <- posts) println(post)
     }
 
-To handle failed results, the `foreach` callback can be used on the
-`Future[Throwable]` obtained via the `failed` projection (which is
-explained [below](#projections)):
-
-    val f: Future[List[String]] = Future {
-      session.getRecentPosts
-    }
-
-    f.failed foreach { t =>
-      println("An error has occured: " + t.getMessage)
-    }
-
-    f foreach { posts =>
-      for (post <- posts) println(post)
-    }
-
-The `failed.foreach` callback is only executed if the future fails, that
-is, if the original `Future` contains an exception.
+`Future`s provide a clean way of handling only failed results using
+the `failed` projection which converts a `Failure[Throwable]` to a
+`Success[Throwable]`. An example of doing this is provided in the
+section below on [projections](#projections).
 
 Coming back to the previous example with searching for the first
 occurrence of a keyword, you might want to print the position
@@ -710,12 +696,18 @@ which prints the exception to the screen:
     }
     for (exc <- f.failed) println(exc)
 
+The for-comprehension in this example is translated to:
+
+    f.failed.foreach(exc => println(exc))
+
+Because `f` is unsuccessful here, the closure is registered to
+the `foreach` callback on a newly-successful `Future[Throwable]`.
 The following example does not print anything to the screen:
 
-    val f = Future {
+    val g = Future {
       4 / 2
     }
-    for (exc <- f.failed) println(exc)
+    for (exc <- g.failed) println(exc)
 
 <!--
 There is another projection called `timedout` which is specific to the
