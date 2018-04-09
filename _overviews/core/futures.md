@@ -824,9 +824,8 @@ When asynchronous computations throw unhandled exceptions, futures
 associated with those computations fail. Failed futures store an
 instance of `Throwable` instead of the result value. `Future`s provide
 the `failed` projection method, which allows this `Throwable` to be
-treated as the success value of another `Future`.
-The following special exceptions are
-treated differently:
+treated as the success value of another `Future`. The following special
+exceptions are treated differently:
 
 1. `scala.runtime.NonLocalReturnControl[_]` -- this exception holds a value
 associated with the return. Typically, `return` constructs in method
