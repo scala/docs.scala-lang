@@ -20,6 +20,7 @@ redirect_from: /sips/pending/byname-implicits.html
 | Mar 8th  2018  | Simplified covering-set based algorithm                            |
 | Apr 17th 2018  | Updated termination proof, non-lazy desugaring, incorporated       |
 |                | feedback on covering-set criterion from Martin                     |
+| Apr 18th 2018  | Updated link to induction heuristics PR                            |
 
 ## Introduction
 
@@ -121,7 +122,7 @@ Byname implicits have a number of benefits over the macro implementation of `Laz
   able to both solve recursive occurrences _and_ check for divergence.
 
 + the implementation of `Lazy` interferes with the heuristics for solving inductive implicits in
-  this [Scala PR](https://github.com/scala/scala/pull/5649) because the latter depends on being able
+  this [Scala PR](https://github.com/scala/scala/pull/6481) because the latter depends on being able
   to verify that induction steps strictly reduce the size of the types being solved for; the
   additional `Lazy` type constructors make types appear be non-decreasing in size. Whilst this
   could be special-cased, doing so would require some knowledge of shapeless to be incorporated into
