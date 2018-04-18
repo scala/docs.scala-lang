@@ -691,21 +691,12 @@ of types with complexity less than or equal to _c(T<sub>ps</sub>)_ is finite and
 exhausted. This time, however, the sequence cannot be extended, because there are no more distinct
 covering sets available to be introduced to avoid dominating an earlier element of the sequence ∎.
 
-To show that all paths in the tree of implicit expansions are finite we must decompose them into
-definitional subpaths as in the previous proof. All nodes are either byname or strict, and so each of
-these definitional subpaths consist of zero or more byname nodes each separated by zero or more strict
-nodes.
+Finally, as in the previous proof each path in the tree consists of nodes labelled with some element
+of _D_ and so can be decomposed into an interleaving of definitional subpaths with respect to each of
+those definitions.  These definitional subpaths are non-dominating and hence, by the earlier lemma,
+finite. **P3** asserts that there are only a finite number of these finite paths, so we know that
+their interleaving must also be finite ∎.
 
-Call the sequence consisting of only the byname nodes of a definitional subpath, in path order, its
-_byname subpath_. And call the set of (possibly empty) sequences of strict nodes separating each
-byname node its _strict subpaths_. By construction, the byname subpath is non-dominating and so by
-the lemma above must be finite. Each of the strict subpaths is also non-dominating by construction and
-hence also finite. Consequently each of the definitional subpaths are the concatenation of a finite
-number of finite byname nodes separated by a finite sequence of strict nodes, which must in turn be
-finite.
-
-Finally, as in the previous proof we rely on **P3** to show that there are only a finite number of
-these finite definitional subpaths and hence that their interleaving must also be finite ∎.
 
 #### Motivating example for the covering set based divergence critera
 
