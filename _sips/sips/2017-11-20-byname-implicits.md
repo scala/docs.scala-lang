@@ -10,13 +10,17 @@ redirect_from: /sips/pending/byname-implicits.html
 
 **Author: Miles Sabin**
 
-**Supervisor and advisor: Adriaan Moors**
+**Supervisor and advisor: Martin Odersky**
 
 ## History
 
 | Date           | Version                                                            |
 | ---------------|--------------------------------------------------------------------|
 | Nov 20th 2017  | Initial SIP                                                        |
+| Mar 8th  2018  | Simplified covering-set based algorithm                            |
+| Apr 17th 2018  | Updated termination proof, non-lazy desugaring, incorporated       |
+|                | feedback on covering-set criterion from Martin                     |
+| Apr 18th 2018  | Updated link to induction heuristics PR                            |
 
 ## Introduction
 
@@ -46,8 +50,8 @@ implementations compile their test cases equivalently.
 
 ### Proposal summary
 
-This SIP proposes allowing implicit arguments to be marked as byname. At call sites they will be
-eligible as parameters in recursively nested positions within their own implicit expansions.
+This SIP proposes allowing implicit arguments to be marked as byname. At call sites recursive uses of
+implicit values are permitted if they occur in an implicit byname argument.
 
 Consider the following example,
 
@@ -82,16 +86,16 @@ val foo = implicitly[Foo]
 assert(foo eq foo.next)
 ```
 
-When compiled, recursive byname implicit arguments of this sort are extracted out as `lazy val`
+When compiled, recursive byname implicit arguments of this sort are extracted out as `val`
 members of a local synthetic object at call sites as follows,
 
 ```scala
 val foo: Foo = scala.Predef.implicitly[Foo](
   {
     object LazyDefns$1 {
-      lazy val rec$1: Foo = Foo.foo(rec$1)
-                            //      ^^^^^
-                            // recursive knot tied here
+      val rec$1: Foo = Foo.foo(rec$1)
+                       //      ^^^^^
+                       // recursive knot tied here
     }
     LazyDefns$1.rec$1
   }
@@ -99,7 +103,9 @@ val foo: Foo = scala.Predef.implicitly[Foo](
 assert(foo eq foo.next)
 ```
 
-and the example compiles with the assertion successful.
+and the example compiles with the assertion successful. Note that the recursive use of `rec$1` occurs
+within the byname argument of `foo` and is consequently deferred. The desugaring matches what a
+programmer would do to construct such a recursive value _explicitly_.
 
 This general pattern is essential to the derivation of type class instances for recursive data
 types, one of shapeless's most common applications.
@@ -113,20 +119,20 @@ Byname implicits have a number of benefits over the macro implementation of `Laz
 + the shapeless implementation is unable to modify divergence checking, so to solve recursive
   instances it effectively disables divergence checking altogether. This means that incautious use
   of `Lazy` can cause the typechecker to loop indefinitely. A byname implicits implementation is
-  able to both solve recursive occurrences and check for divergence.
+  able to both solve recursive occurrences _and_ check for divergence.
 
 + the implementation of `Lazy` interferes with the heuristics for solving inductive implicits in
-  this [Scala PR](https://github.com/scala/scala/pull/5649) because the latter depends on being able
+  this [Scala PR](https://github.com/scala/scala/pull/6481) because the latter depends on being able
   to verify that induction steps strictly reduce the size of the types being solved for; the
-  additional `Lazy` type constructors make the type appear be non-decreasing in size. Whilst this
+  additional `Lazy` type constructors make types appear be non-decreasing in size. Whilst this
   could be special-cased, doing so would require some knowledge of shapeless to be incorporated into
   the compiler. Being a language-level feature, byname implicits can be accommodated directly in the
   induction heuristics.
 
 + in common cases more implicit arguments would have to be marked as `Lazy` than would have to be
-  marked as byname, due to limitations of macros. Given that there is a runtime cost associated with
-  capturing the thunks required for both `Lazy` and byname arguments, any reduction in the number is
-  beneficial.
+  marked as byname, due to limitations of macros and their interaction with divergence checking. Given
+  that there is a runtime cost associated with capturing the thunks required for both `Lazy` and
+  byname arguments, any reduction in the number is beneficial.
 
 ### Motivating examples
 
@@ -245,9 +251,9 @@ Intuitively we are confident that the nested implicit resolutions will not diver
 have mapped into the tuple representation type `(Int, (String, Unit))` each nested step of the
 implicit resolution reduces the size of the required type.
 
-The need for shapeless's `Lazy` or byname implicit arguments only becomes apparent when we want to
-derive type class instances for recursive ADTs. These come into play when we consider types which
-are sums of products rather than just simple products. We can use a basic cons-list as an example,
+The need for shapeless's `Lazy` or byname implicit arguments becomes apparent when we want to derive
+type class instances for recursive ADTs. These come into play when we consider types which are sums of
+products rather than just simple products. We can use a basic cons-list as an example,
 
 ```scala
 sealed trait List[+T]
@@ -263,9 +269,9 @@ Let's attempt to derive a `Show` type class instance for `List` similarly to the
 `Semigroup` above. In this case `Generic` will map `List` and its constructors as follows,
 
 ```scala
-List[T]  -> Either[Cons[T], Either[Nil.type, Unit]]
+List[T]  -> Either[Cons[T], Unit]
 Cons[T]  -> (T, (List[T], Unit))
-Nil.type -> Unit
+Nil      -> Unit
 ```
 
 We define instances for the basic types, pairs, `Either` and types with a `Generic` instance like
@@ -309,8 +315,8 @@ object Show {
       su: Show[U]):
           Show[Either[T, U]] = new Show[Either[T, U]] {
     def show(x: Either[T, U]): String = x match {
-      case Left(t)  => st(t)
-      case Right(t) => su(u)
+      case Left(t)  => st.show(t)
+      case Right(u) => su.show(u)
     }
   }
 
@@ -319,7 +325,7 @@ object Show {
       gen: Generic.Aux[T, R],
       sr:  Show[R]):
            Show[T] = new Show[T] {
-    def show(x: T): String = sr(gen.to(x))
+    def show(x: T): String = sr.show(gen.to(x))
   }
 }
 
@@ -340,7 +346,7 @@ the chain of implicits required to produce a value of type `Show[List[Int]]` dev
 
               V
 
-Show[Either[Cons[Int], Nil.type]]
+Show[Either[Cons[Int], Unit]]
 
               V
 
@@ -360,19 +366,18 @@ and reject expansions of this sort. Indeed, this is what we should expect becaus
 attempting to construct is itself recursive, and there is no mechanism here to allow us to tie the
 knot.
 
-If we were to try to construct a value of this sort by hand we would make use of lazy vals and
-byname arguments,
+If we were to try to construct a value of this sort by hand we would make use of byname arguments,
 
 ```scala
-lazy val showListInt: Show[List[Int]] =
+val showListInt: Show[List[Int]] =
   showGeneric(
     generic[List[Int]],
     showEither(
       showGeneric(
-        generic[Cons[Int]]
-        showCons(
+        generic[Cons[Int]],
+        showPair(
           showInt,
-          showCons(
+          showPair(
             showListInt,
             showUnit
           )
@@ -383,15 +388,15 @@ lazy val showListInt: Show[List[Int]] =
   )
 ```  
 
-where at least one argument position between the lazy val definition and the recursive occurrence of
+where at least one argument position between the val definition and the recursive occurrence of
 `showListInt` is byname.
 
 This SIP proposes automating the above manual process by,
 
-+ allowing implicit arguments to byname.
++ allowing implicit arguments to be byname.
 
-+ constucting a dictionary of lazy val definitions at call sites where byname arguments are referred
-  to recursively.
++ constucting a dictionary at call sites where recursive references within byname arguments can be
+  defined as vals.
 
 To allow the above example to work as intended we modify the `Show` instance definition as follows,
 
@@ -406,7 +411,7 @@ object Show {
       gen:    Generic.Aux[T, R],
       sr:  => Show[R]):
               Show[T] = new Show[T] {
-    def show(x: T): String = sr(gen.to(x))
+    def show(x: T): String = sr.show(gen.to(x))
   }
 }
 
@@ -422,7 +427,7 @@ and now the definition of `sl` compiles successfully as,
 val sl: Show[List[Int]] = Show.apply[List[Int]](
   {
     object LazyDefns$1 {
-      lazy val rec$1: Show[List[Int]] =
+      val rec$1: Show[List[Int]] =
         showGeneric(
           generic[List[Int]],
           showEither(
@@ -431,7 +436,7 @@ val sl: Show[List[Int]] = Show.apply[List[Int]](
               showCons(
                 showInt,
                 showCons(
-                  showListInt,
+                  rec$1,
                   showUnit
                 )
               )
@@ -605,11 +610,13 @@ divergence. Thanks to the striping the Scala compiler accepts this program.
 
 #### Divergence checking proposed in this SIP
 
-This SIP changes the above algorithm to accomodate byname cycles. It also limits the scope of strict
-divergence checking across byname boundaries within the expansion -- similarly to striping by
-definition in the current divergence checker, this safely admits more programs as convergent.
+This SIP changes the above algorithm to accomodate byname cycles. It also revises the definition of
+domination to allow an additional class of non-cyclic programs to be safely admitted as convergent
+&mdash; whilst non-cyclic, these programs commonly arise in the same sort of type class derivation
+scenarios as the cyclic cases we have already seen. See the [further motivating example below](
+#motivating-example-for-the-covering-set-based-divergence-critera) for more details.
 
-Call the set of types and type constructors which are mentioned in a type it's _covering set_. For
+Call the set of types and type constructors which are mentioned in a type its _covering set_. For
 example, given the following types,
 
 ```scala
@@ -626,16 +633,17 @@ B: List, Tuple2, Int
 C: List, Tuple2, Int, String
 ```
 
-and we say that `A` covers `B` but does not cover `C`. Note that by the definition given earlier `A`
-is not more complex than `B` or `C`, and `B` is more complex than both `A` and `C`.
+Here `A` and `B` have the same covering set, which is distinct from the covering set of `C`. Note that
+by the definition given earlier, `A` is not more complex than `B` or `C`, and `B` is more complex than
+both `A` and `C`.
 
 We revise the definition of domination as follows: a core type _T_ dominates a type _U_ if _T_ is
 equivalent to _U_, or if the top-level type constructors of _T_ and _U_ have a common element and _T_
-is more _complex_ than _U_ and _U_ and _T_ have the same covering set. For intuition, observe that if
-_T_ is more complex than _U_ and _U_ and _T_ have the same covering set then _T_ is structurally
-larger than _U_ despite using only elements that are present in _U_
+is more _complex_ than _U_, and _U_ and _T_ have the same covering set. For intuition, observe that if
+_T_ is more complex than _U_, and _U_ and _T_ have the same covering set then _T_ is structurally
+larger than _U_ despite using only elements that are present in _U_.
 
-This give us the following,
+This gives us the following,
 
 > To resolve an implicit of type _T_ given stack of open implicits _O_, 
 > 
@@ -656,51 +664,45 @@ This give us the following,
 An informal proof that this this procedure will either converge or are detect divergence is similar
 the two given earlier.
 
-**Note 8/3/2018 &mdash; proof needs repair following simplification of algorithm**
-
 First we show that with the revised definition of domination all non dominating sequences of types are
 finite, using the additional assumption that in any given program there is,
 
 **P4**. a finite number of type definitions.
 
-Call the complexity of type _T_, _c(T)_, the covering set of _T_, _cs(T)_, and the set of all types
-and type constructors in the program _U_. From **P1** we know that the number of types with complexity
-less than or equal to _c(T<sub>0</sub>)_ is finite, so eventually the sequence must reach a type
-_T<sub>p</sub>_ with a complexity greater than _c(T<sub>0</sub>)_. For this to be non dominating it
-must introduce some type _A<sub>p</sub>_ which is not a member of _cs(T<sub>0</sub>)_. Again from
-**P1** we know that the number of types with complexity less that _c(T<sub>p</sub>)_ is finite, so
-eventually the sequence must reach a type _T<sub>q</sub>_ with a complexity greater than
-_c(T<sub>p</sub>)_ and so to continue _T<sub>q</sub>_ must introduce some type _A<sub>q</sub>_ which
-is not a member of _cs(T<sub>0</sub>)_ ∪ _A<sub>p</sub>_. Continuing in this way the sequence can
-increase in complexity while accumulating an expanding covering set _cs(T<sub>0</sub>)_ ∪
-_A<sub>p</sub>_ ∪ _A<sub>q</sub>_ ∪ _A<sub>r</sub>_ ... which from **P4** we know must eventually
-exhaust _U_. Call the type at which this happens _T<sub>U</sub>_. Once again from **P1** we know that
-the number of types with complexity less than or equal to _c(T<sub>U</sub>)_ is finite and so will
-eventually be exhausted. This time, however, the sequence cannot be extended, because there are no
-more types available to be introduced to avoid dominating an earlier element of the sequence ∎.
+And we observe as a consequence that the powerset of the set of type definitions must also be finite,
+hence that in any given program there can only be a finite number of distinct covering sets.
 
-To show that all paths in the tree of implicit expansions are finite we must decompose them into
-definitional subpaths as in the previous proof. All nodes are either byname or strict, and so each of
-these definitional subpaths consist of zero or more byname nodes each separated by zero or more strict
-nodes.
+Call the complexity of type _T_, _c(T)_, the covering set of _T_, _cs(T)_, the set of all type
+definitions in the program _S_ and the powerset of the latter _P(S)_.
 
-Call the sequence consisting of only the byname nodes of a definitional subpath, in path order, it's
-_byname subpath_. And call the set of (possibly empty) sequences of strict nodes separating each
-byname node it's _strict subpaths_. By construction, the byname subpath is non-dominating and so by
-the lemma above must be finite. Each of the strict subpaths is also non-dominating by construction and
-hence also finite. Consequently each of the definitional subpaths are the concatenation of a finite
-number of finite byname nodes separated by a finite sequence of strict nodes, which must in turn be
-finite.
+From **P1** we know that the number of types with complexity less than or equal to _c(T<sub>0</sub>)_
+is finite, so eventually the sequence must reach a type _T<sub>p</sub>_ with a complexity greater than
+_c(T<sub>0</sub>)_. For this to be non dominating its covering set _cs(T<sub>p</sub>)_ must differ
+from _cs(T<sub>0</sub>)_. Again from **P1** we know that the number of types with complexity less that
+_c(T<sub>p</sub>)_ is finite, so eventually the sequence must reach a type _T<sub>q</sub>_ with a
+complexity greater than _c(T<sub>p</sub>)_ and so to continue _T<sub>q</sub>_ must have a covering set
+_cs(T<sub>q</sub>)_ which is distinct from both _cs(T<sub>0</sub>)_ and _cs(T<sub>p</sub>)_.
+Continuing in this way the sequence can increase in complexity while running through distinct covering
+sets _cs(T<sub>0</sub>)_, _cs(T<sub>p</sub>)_, _cs(T<sub>q</sub>)_, _cs(T<sub>r</sub>)_ ... which from
+**P4** we know must eventually exhaust _P(S)_.
 
-Finally, as in the previous proof we rely on **P3** to show that there are only a finite number of
-these finite definitional subpaths and hence that their interleaving must also be finite ∎.
+Call the type at which this happens _T<sub>ps</sub>_. Once again from **P1** we know that the number
+of types with complexity less than or equal to _c(T<sub>ps</sub>)_ is finite and so will eventually be
+exhausted. This time, however, the sequence cannot be extended, because there are no more distinct
+covering sets available to be introduced to avoid dominating an earlier element of the sequence ∎.
+
+Finally, as in the previous proof each path in the tree consists of nodes labelled with some element
+of _D_ and so can be decomposed into an interleaving of definitional subpaths with respect to each of
+those definitions.  These definitional subpaths are non-dominating and hence, by the earlier lemma,
+finite. **P3** asserts that there are only a finite number of these finite paths, so we know that
+their interleaving must also be finite ∎.
+
 
 #### Motivating example for the covering set based divergence critera
 
 We follow with a motivating example for the introduction of the covering condition in new divergence
 checking model. In current Scala, consider the following set of instances for a type class `Foo`, as
-might arise in a type class derivation for simple product
-types,
+might arise in a type class derivation for simple product types,
 
 ```scala
 trait Generic[T] {
@@ -710,48 +712,54 @@ object Generic {
   type Aux[T, R] = Generic[T] { type Repr = R }
 }
 
-trait GNil
-
 trait Foo[T]
 object Foo {
   implicit val fooUnit: Foo[Unit] = ???
   implicit val fooInt: Foo[Int] = ???
   implicit val fooString: Foo[String] = ???
   implicit val fooBoolean: Foo[Boolean] = ???
-  implicit def fooPair[T, U](implicit fooT: Foo[T], fooU: Foo[U]): Foo[(T, U)] = ???
-  implicit def fooGen[T, R](implicit gen: Generic.Aux[T, R], fr: Foo[R]): Foo[T] = ???
+
+  implicit def fooPair[T, U]
+    (implicit fooT: Foo[T], fooU: Foo[U]): Foo[(T, U)] = ???
+
+  implicit def fooGen[T, R]
+    (implicit gen: Generic.Aux[T, R], fr: Foo[R]): Foo[T] = ???
 }
 
 case class A(b: B, i: Int)
 object A {
-  implicit val genA: Generic[A] { type Repr = (B, (Int, Unit)) } = ???
+  implicit val genA: Generic.Aux[A, (B, (Int, Unit))] = ???
 }
 
 case class B(c: C, i: Int, b: Boolean)
 object B {
-  implicit val genB: Generic[B] { type Repr = (C, (Int, (Boolean, Unit))) } = ???
+  implicit val genB:
+    Generic.Aux[B, (C, (Int, (Boolean, Unit)))] = ???
 }
 
 case class C(i: Int, s: String, b: Boolean)
 object C {
-  implicit val genC: Generic[C] { type Repr = (Int, (String, (Boolean, Unit))) } = ???
+  implicit val genC:
+    Generic.Aux[C, (Int, (String, (Boolean, Unit)))] = ???
 }
 
 implicitly[Foo[C]] // OK
-implicitly[Foo[B]] // Diverging implicit expansion starting with fooPair
-implicitly[Foo[A]] // Diverging implicit expansion starting with fooPair
+implicitly[Foo[B]] // Diverges
+implicitly[Foo[A]] // Diverges
 ```
 
-Here we have the product type `A` being isomorphic to `(B, (Int, Unit))`, the product type `B` being
-isomorphic to `(C, (Int, (Boolean, Unit)))` and the product type `C` being isomorphic to `(Int,
-(String, (Boolean, Unit)))`. None of the data types `A`, `B` and `C` are recursive, being simple
-product types, and we can see that there is a simple terminating unfolding of their elements into
-nested pairs, like so,
+Here we have simple product types `A`, `B` and `C` which are nested, but none of which are recursive.
+We can see that there is a simple terminating unfolding of their elements into nested pairs, like so,
 
 ```
-C -> (Int, (String, (Boolean, Unit)))
-B -> ((Int, (String, (Boolean, Unit))), (Int, (Boolean, Unit)))
-A -> (((Int, (String, (Boolean, Unit))), (Int, (Boolean, Unit))), (Int, Unit))
+C ->   (Int, (String, (Boolean, Unit)))
+
+B ->  ((Int, (String, (Boolean, Unit))),
+       (Int, (Boolean, Unit)))
+
+A -> (((Int, (String, (Boolean, Unit))),
+       (Int, (Boolean, Unit))),
+       (Int,  Unit))
 ```
 
 and yet this diverges, why?
@@ -763,7 +771,7 @@ The answer is clear if we follow the expansion of `Foo[A]` through from the begi
 
                  V
 
-       Foo[(B, (Int, Unit))]           via `fooGen` prior to `fooPair`
+       Foo[(B, (Int, Unit))]
 
                  V
 
@@ -771,7 +779,7 @@ The answer is clear if we follow the expansion of `Foo[A]` through from the begi
 
                  V
 
-  Foo[(C, (Int, (Boolean, Unit)))]     via `fooGen` prior to `fooPair`
+  Foo[(C, (Int, (Boolean, Unit)))]
 
                  V
 
@@ -779,12 +787,12 @@ The answer is clear if we follow the expansion of `Foo[A]` through from the begi
 
                  V
 
-Foo[(Int, (String, (Boolean, Unit)))]  via `fooGen` prior to `fooPair`
+Foo[(Int, (String, (Boolean, Unit)))]
 ```
 
 Here we can see immediately that, on the current critera, divergence will be detected on the fourth
 step because we have a more complex type (`Foo[(C, (Int, (Boolean, Unit)))]` vs. `Foo[(B, (Int,
-Unit))]`) being resolved in the same context (`fooGen` for `fooPair`).
+Unit))]`) being resolved in the same context (`fooGen`).
 
 Unsurprisingly examples of this sort arose very early in the developement of shapeless-based type
 class derivation, first being documented in a [StackOverflow question from Travis
@@ -805,9 +813,9 @@ covering condition is not met. If we look at the covering sets and complexities 
 * 8               Foo, Int, String, Boolean, Unit
 ```
 
-(the `*` prefix indicates steps which are generated via `fooGen` prior to `fooPair` and are hence
-subject to divergence checking) we can see that at the 2nd, 4th and 6th steps, although the size of
-the types is growing, the covering sets differ.
+(the `*` prefix indicates steps which are generated via `fooGen` and are hence subject to divergence
+checking within the same definitional stripe) we can see that at the 2nd, 4th and 6th steps, although
+the size of the types is growing, the covering sets differ.
 
 ## Follow on work from this SIP
 
