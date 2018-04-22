@@ -12,11 +12,10 @@ We assume you know [how to build a project in IntelliJ](building-a-scala-project
 
 ## Setup
 1. Create an sbt project in IntelliJ.
-* Add the ScalaTest dependency to your build.sbt file:
-
-```
-libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % "test"
-```
+* Add the ScalaTest dependency to your build.sbt file
+    ```
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % "test"
+    ```
 
 1. this will cause sbt to pull down the ScalaTest library
 1. If you get a notification "build.sbt was changed", select **auto-import**.
@@ -24,30 +23,28 @@ libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % "test"
 1. Right-click on `scala` and select **New** => **Scala class**.
 1. Call it `CubeCalculator`, change the **Kind** to `object`, and click **OK**.
 1. Replace the code with the following:
-
-```
-object CubeCalculator extends App {
-  def cube(x: Int) = {
-    x * x * x
-  }
-}
-```
+    ```
+    object CubeCalculator extends App {
+      def cube(x: Int) = {
+        x * x * x
+      }
+    }
+    ```
 
 ## Creating a test
 1. On the project pane on the left, expand `src` => `test`.
 1. Right-click on `scala` and select **New** => **Scala class**.
 1. Name the class `CubeCalculatorTest` and click **OK**.
 1. Replace the code with the following:
-
-```
-import org.scalatest.FunSuite
-
-class CubeCalculatorTest extends FunSuite {
-  test("CubeCalculator.cube") {
-    assert(CubeCalculator.cube(3) === 27)
-  }
-}
-```
+    ```
+    import org.scalatest.FunSuite
+    
+    class CubeCalculatorTest extends FunSuite {
+      test("CubeCalculator.cube") {
+        assert(CubeCalculator.cube(3) === 27)
+      }
+    }
+    ```
 
 1. In the source code, right-click `CubeCalculatorTest` and select **Run
 'CubeCalculatorTest'**.
