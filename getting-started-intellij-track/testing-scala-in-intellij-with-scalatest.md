@@ -20,6 +20,8 @@ This assumes you know [how to build a project in IntelliJ](building-a-scala-proj
         ```
     1. If you get a notification "build.sbt was changed", select **auto-import**.
     1. These two actions will cause `sbt` to download the ScalaTest library.
+    1. Build the project to compile/index the ScalaTest library by selecting the
+        **Build** menu and then **Build Project**.
 1. On the project pane on the left, expand `src` => `main`.
 1. Right-click on `scala` and select **New** => **Scala class**.
 1. Call it `CubeCalculator`, change the **Kind** to `object`, and click **OK**.
