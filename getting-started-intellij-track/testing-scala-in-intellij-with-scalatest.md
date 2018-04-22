@@ -12,11 +12,10 @@ We assume you know [how to build a project in IntelliJ](building-a-scala-project
 
 ## Setup
 1. Create an sbt project in IntelliJ.
-* Add the ScalaTest dependency to your build.sbt file
+1.  Add the ScalaTest dependency to your build.sbt file
     ```
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % "test"
     ```
-
 1. this will cause sbt to pull down the ScalaTest library
 1. If you get a notification "build.sbt was changed", select **auto-import**.
 1. On the project pane on the left, expand `src` => `main`.
@@ -45,7 +44,6 @@ We assume you know [how to build a project in IntelliJ](building-a-scala-project
       }
     }
     ```
-
 1. In the source code, right-click `CubeCalculatorTest` and select **Run
 'CubeCalculatorTest'**.
 
