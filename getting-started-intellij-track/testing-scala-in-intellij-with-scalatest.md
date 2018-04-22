@@ -12,12 +12,13 @@ We assume you know [how to build a project in IntelliJ](building-a-scala-project
 
 ## Setup
 1. Create an sbt project in IntelliJ.
-1.  Add the ScalaTest dependency to your build.sbt file
-    ```
-    libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % "test"
-    ```
-1. this will cause sbt to pull down the ScalaTest library
-1. If you get a notification "build.sbt was changed", select **auto-import**.
+1. Add the ScalaTest dependency:
+    1. Add the ScalaTest dependency to your `build.sbt` file:
+        ```
+        libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % "test"
+        ```
+    1. If you get a notification "build.sbt was changed", select **auto-import**.
+    1. These two actions will cause `sbt` to download the ScalaTest library.
 1. On the project pane on the left, expand `src` => `main`.
 1. Right-click on `scala` and select **New** => **Scala class**.
 1. Call it `CubeCalculator`, change the **Kind** to `object`, and click **OK**.
@@ -49,7 +50,7 @@ We assume you know [how to build a project in IntelliJ](building-a-scala-project
 
 ## Understanding the code
 
-Let's go over this line by line.
+Let's go over this line by line:
 
 * `class CubeCalculatorTest` means we are testing the object `CubeCalculator`
 * `extends FunSuite` lets us use functionality of ScalaTest's FunSuite class
