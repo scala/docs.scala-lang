@@ -46,8 +46,8 @@ This assumes you know [how to build a project in IntelliJ](building-a-scala-proj
       }
     }
     ```
-1. In the source code, right-click `CubeCalculatorTest` and select **Run
-'CubeCalculatorTest'**.
+1. In the source code, right-click `CubeCalculatorTest` and select
+    **Run 'CubeCalculatorTest'**.
 
 ## Understanding the code
 
@@ -66,10 +66,10 @@ indeed 27. The `===` is part of ScalaTest and provides clean error messages.
 
 ## Adding another test case
 1. Add another `assert` statement after the first one that checks for the cube
-of `0`.
+    of `0`.
 1. Re-run the test again by right-clicking `CubeCalculatorTest` and selecting
-'Run **CubeCalculatorTest**'.
+    'Run **CubeCalculatorTest**'.
 
 ## Conclusion
-You've seen one way to test your Scala code. You can learn more about
-ScalaTest's FunSuite on the [official website](http://www.scalatest.org/getting_started_with_fun_suite).
+You've seen one way to test your Scala code. You can learn more about ScalaTest's
+FunSuite on the [official website](http://www.scalatest.org/getting_started_with_fun_suite).
