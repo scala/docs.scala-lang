@@ -8,7 +8,8 @@ previous-page: building-a-scala-project-with-intellij-and-sbt
 There are multiple libraries and testing methodologies for Scala,
 but in this tutorial, we'll demonstrate one popular option from the ScalaTest framework
 called [FunSuite](http://www.scalatest.org/getting_started_with_fun_suite).
-We assume you know [how to build a project in IntelliJ](building-a-scala-project-with-intellij-and-sbt.html).
+
+This assumes you know [how to build a project in IntelliJ](building-a-scala-project-with-intellij-and-sbt.html).
 
 ## Setup
 1. Create an sbt project in IntelliJ.
