@@ -42,7 +42,7 @@ def foo(n: Int, v: Int) =
 
 foo(10, 10) foreach {
   case (i, j) =>
-    print(s"($i, $j) ")  // prints (1, 9) (2, 8) (3, 7) (4, 6) (5, 5)
+    println(s"($i, $j) ")  // prints (1, 9) (2, 8) (3, 7) (4, 6) (5, 5)
 }
 
 ```
@@ -60,7 +60,7 @@ You can omit `yield` in a comprehension. In that case, comprehension will return
 def foo(n: Int, v: Int) =
    for (i <- 0 until n;
         j <- i until n if i + j == v)
-   print(s"($i, $j)")
+   println(s"($i, $j)")
 
 foo(10, 10)
 ```
