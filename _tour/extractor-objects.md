@@ -45,10 +45,16 @@ val CustomerID(name) = customer2ID
 println(name)  // prints Nico
 ```
 
-This is equivalent to `val name = CustomerID.unapply(customer2ID).get`. If there is no match, a `scala.MatchError` is thrown:
+This is equivalent to `val name = CustomerID.unapply(customer2ID).get`.
+
+```tut
+val CustomerID(name2) = "--asdfasdfasdf"
+```
+
+If there is no match, a `scala.MatchError` is thrown:
 
 ```tut:fail
-val CustomerID(name2) = "--asdfasdfasdf"
+val CustomerID(name3) = "-asdfasdfasdf"
 ```
 
 The return type of an `unapply` should be chosen as follows:
