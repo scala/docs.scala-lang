@@ -148,7 +148,7 @@ It also does not address the question of `@static` members in inner objects and 
 
 ## Initialization order discussion ##
 In general, emission of static fields could affect the initialization order and change semantics.
-This SIP solves this by enforcing (rule `2`) that `@static` fields and expressions preceed non-static fields.
+This SIP solves this by enforcing (rule `2`) that `@static` fields and expressions precede non-static fields.
 This means that no code precedes the `@static` field initialization which makes it hard to observe the difference between if the field is initialized statically or not,
 since fields are initialized in the order `as written`, similar to how normal fields are initialized.
 
