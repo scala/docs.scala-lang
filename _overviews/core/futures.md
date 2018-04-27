@@ -56,7 +56,7 @@ Or with the more idiomatic:
 Both code snippets delegate the execution of `fatMatrix.inverse()` to an `ExecutionContext` and embody the result of the computation in `inverseFuture`.
 
 
-## Execution Context   
+## Execution Context
 
 Future and Promises revolve around [`ExecutionContext`s](http://www.scala-lang.org/api/current/index.html#scala.concurrent.ExecutionContext), responsible for executing computations.
 
@@ -144,7 +144,7 @@ To give you an idea, the following code will use 32000 threads:
     for( i <- 1 to 32000 ) {
       Future {
         blocking {
-          Thread.sleep(999999)		
+          Thread.sleep(999999)
         }
       }
     }
@@ -155,7 +155,7 @@ If you need to wrap long lasting blocking operations we recommend using a dedica
 
 ### Adapting a Java Executor
 
-Using the `ExecutionContext.fromExecutor` method you can wrap a Java `Executor` into an `ExecutionContext`.  
+Using the `ExecutionContext.fromExecutor` method you can wrap a Java `Executor` into an `ExecutionContext`.
 For instance:
 
     ExecutionContext.fromExecutor(new ThreadPoolExecutor( /* your configuration */ ))
@@ -333,7 +333,7 @@ a `List[String]`-- a list of recent textual posts:
 
     f onComplete {
       case Success(posts) => for (post <- posts) println(post)
-      case Failure(t) => println("An error has occured: " + t.getMessage)
+      case Failure(t) => println("An error has occurred: " + t.getMessage)
     }
 
 The `onComplete` method is general in the sense that it allows the
@@ -356,7 +356,7 @@ To handle failed results, the `onFailure` callback is used:
     }
 
     f onFailure {
-      case t => println("An error has occured: " + t.getMessage)
+      case t => println("An error has occurred: " + t.getMessage)
     }
 
     f onSuccess {
