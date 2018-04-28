@@ -5,7 +5,7 @@ title: Scala Compiler Plugins
 discourse: true
 ---
 
-**Lex Spoon (2008)**  
+**Lex Spoon (2008)**
 **Seth Tisue (2018)**
 
 ## Introduction
@@ -158,7 +158,7 @@ aspects of note.
 The `runsAfter` method gives the plugin author control over when the
 phase is executed. As seen above, it is expected to return a list of
 phase names. This makes it possible to specify multiple phase names to
-preceed the plugin. It is also possible, but optional, to specify a
+precede the plugin. It is also possible, but optional, to specify a
 `runsBefore` constraint of phase names that this phase should
 precede. And it is also possible, but again optional, to specify a
 `runsRightAfter` constraint to run immediately after a specific

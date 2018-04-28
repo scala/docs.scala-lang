@@ -34,6 +34,8 @@ Some Scala releases increase the *required* JVM versions for a Scala release. To
 
 For example, Scala 2.12 raised the minimum JVM, for both compiling and running, from version from 6 to 8. This was done so we could take advantage of new features in 8 such as lambdas and default methods.
 
+Like the 2.12.x series, the Scala 2.13.x series will support Java 8 and higher.  (Eventually Java 11 or higher will become required, but the earliest this might happen is Scala 2.14.)
+
 ## JDK 9 & 10 compatibility notes
 
 As of Scala 2.12.5 and 2.11.12, **JDK 9 & 10 support is incomplete**. Notably, `scalac` will not enforce the restrictions of the Java Platform Module System, which means that code that typechecks may incur linkage errors at runtime.

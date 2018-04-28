@@ -19,7 +19,7 @@ Unlifting is the reverse operation to [lifting](lifting.html): it takes a tree a
       def unapply(tree: Tree): Option[T]
     }
 
-Due to the fact that the tree may not be a represention of our data type, the return type of unapply is `Option[T]` rather than just `T`. This signature makes it easy to use `Unliftable` instances as extractors.
+Due to the fact that the tree may not be a representation of our data type, the return type of unapply is `Option[T]` rather than just `T`. This signature makes it easy to use `Unliftable` instances as extractors.
 
 Whenever an implicit instance of `Unliftable` is available for a given data type you can use it for pattern matching with the help of an ascription syntax:
 

@@ -116,7 +116,7 @@ returning a list of odds -- since `found` is `false`. Only then `foreach` is
 executed, but, by this time, changing `found` is meaningless, as `filter` has
 already executed.
 
-In the case of `Stream`, the condition is not immediatelly applied. Instead, as
+In the case of `Stream`, the condition is not immediately applied. Instead, as
 each element is requested by `foreach`, `filter` tests the condition, which
 enables `foreach` to influence it through `found`. Just to make it clear, here
 is the equivalent for-comprehension code:
