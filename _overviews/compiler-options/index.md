@@ -47,7 +47,7 @@ This page come to the rescue for the people to find...
 scalac [ <options> ] <source files>
 ```
 
-E.g. `scalac -encoding utf8 -Xfalta-warnings Hello.scala`
+E.g. `scalac -encoding utf8 -Xfatal-warnings Hello.scala`
 
 
 
