@@ -141,7 +141,11 @@
     }
 
     li,
-    p {
+    p,
+    tr,
+    td,
+    dt,
+    dd {
         code {
             font-family: 'Consolas';
             @include border-radius($border-radius-small);
