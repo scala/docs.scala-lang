@@ -81,7 +81,11 @@ scalacOptions ++= Seq(
     {% capture option_argument %}{% if option.schema.type != "Boolean" and option.schema.type != "Prefix" %}{{ option_argument_separator }}{{ option_argument_placeholder }}{% if option.schema.multiple %}1,{{ option_argument_placeholder }}2{% endif %}{% endif %}{% endcapture %}
     <dt>
         <code>{{ option.option | xml_escape }}{{ option_argument }}</code>
-        {% if option.abbreviation %} or <code>{{ option.abbreviation | xml_escape }}{{ option_argument }}</code>{% endif %}
+        {% if option.abbreviations %}
+        {% for abbreviation in option.abbreviations %}
+         or <code>{{ abbreviation | xml_escape }}{{ option_argument }}</code>
+        {% endfor %}  
+        {% endif %}
     </dt>
     {% if option.deprecated %}<dd class="deprecated"><i class="fa fa-exclamation-triangle"></i> Deprecated: {{ option.deprecated | markdownify | remove: '<p>' | remove: '</p>'}}</dd>{% endif %}            
     <dd class="description">
