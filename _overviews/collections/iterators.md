@@ -52,7 +52,7 @@ Another example is the `dropWhile` method, which can be used to find the first e
     it: Iterator[java.lang.String] = non-empty iterator
     scala> it dropWhile (_.length < 2)
     res4: Iterator[java.lang.String] = non-empty iterator
-    scala> it.next()
+    scala> res4.next()
     res5: java.lang.String = number
 
 Note again that `it` was changed by the call to `dropWhile`: it now points to the second word "number" in the list.
