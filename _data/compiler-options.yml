@@ -1,7 +1,6 @@
 - category: "Standard Settings"
   description: "A set of standard options that are supported on the current development environment and will be supported in future releases."
   options:
-# Path related settings.
   - option: "-classpath"
     schema:
       type: "Path"
@@ -9,6 +8,43 @@
     description: "Specify where to find user class files."
     abbreviations:
     - "-cp"
+  - option: "-no-specialization"
+    schema:
+      type: "Boolean"
+    description: "Ignore `@specialize` annotations."
+  - option: "-language"
+    schema:
+      type: "Choice"
+      multiple: true
+      arg: "feat"
+      choices:
+      - choice: "dynamics"
+        description: "Allow direct or indirect subclasses of `scala.Dynamic`."
+      - choice: "postfixOps"
+        description: "Allow postfix operator notation, such as `1 to 10 toList`."
+      - choice: "reflectiveCalls"
+        description: "Allow reflective access to members of structural types."
+      - choice: "implicitConversions"
+        description: "Allow definition of implicit functions called views."
+      - choice: "higherKinds"
+        description: "Allow higher-kinded types."
+      - choice: "existentials"
+        description: "Existential types (besides wildcard types) can be written and inferred."
+      - choice: "experimental.macros"
+        description: "Allow macro definition (besides implementation and application."
+    description: "Enable or disable language features."
+  - option: "-release"
+    schema:
+      type: "String"
+      arg: "release"
+    description: "Compile for a specific version of the Java platform. Supported targets: 6, 7, 8, 9."
+  - option: "-optimise"
+    schema:
+      type: "Boolean"
+    description: "Compiler flag for the optimizer in Scala 2.11."
+    abbreviations:
+    - "-optimize"
+    deprecated: "In 2.12, `-optimise` enables `-opt:l:inline -opt-inline-from:**`. Check `-opt:help` for using the Scala 2.12 optimizer."
   - option: "-bootclasspath"
     schema:
       type: "Path"
@@ -81,13 +117,6 @@
     schema:
       type: "Boolean"
     description: "Generate no warnings."
-  - option: "-optimise"
-    schema:
-      type: "Boolean"
-    description: "Compiler flag for the optimizer in Scala 2.11."
-    abbreviations:
-    - "-optimize"
-    deprecated: "In 2.12, `-optimise` enables `-opt:l:inline -opt-inline-from:**`. Check `-opt:help` for using the Scala 2.12 optimizer."
   - option: "-print"
     schema:
       type: "Boolean"
@@ -126,36 +155,6 @@
     schema:
       type: "Boolean"
     description: "Print product version and exit."
-  - option: "-no-specialization"
-    schema:
-      type: "Boolean"
-    description: "Ignore `@specialize` annotations."
-  - option: "-language"
-    schema:
-      type: "Choice"
-      multiple: true
-      arg: "feat"
-      choices:
-      - choice: "dynamics"
-        description: "Allow direct or indirect subclasses of `scala.Dynamic`."
-      - choice: "postfixOps"
-        description: "Allow postfix operator notation, such as `1 to 10 toList`."
-      - choice: "reflectiveCalls"
-        description: "Allow reflective access to members of structural types."
-      - choice: "implicitConversions"
-        description: "Allow definition of implicit functions called views."
-      - choice: "higherKinds"
-        description: "Allow higher-kinded types."
-      - choice: "existentials"
-        description: "Existential types (besides wildcard types) can be written and inferred."
-      - choice: "experimental.macros"
-        description: "Allow macro definition (besides implementation and application."
-    description: "Enable or disable language features."
-  - option: "-release"
-    schema:
-      type: "String"
-      arg: "release"
-    description: "Compile for a specific version of the Java platform. Supported targets: 6, 7, 8, 9."
 
 
 - category: "JVM Settings"
@@ -405,6 +404,20 @@
       - choice: "coalescing"
         description: "Convert PCData to Text and coalesce sibling nodes."
     description: "Configure XML parsing."
+  - option: "-Xfuture"
+    schema:
+      type: "Boolean"
+    description: "Turn on future language features."
+  - option: "-Xexperimental"
+    schema:
+      type: "Boolean"
+    description: "Enable experimental extensions in Scala 2.12 and earlier."
+    deprecated: "In 2.13 all options previously enabled by `-Xexperimental` are enabled by default or removed."
+  - option : "-Xmacro-settings"
+    schema:
+      type: "String"
+      multiple: true
+    description: "Custom settings for macros."
 
 
 
@@ -603,6 +616,26 @@
     schema:
       type: "Boolean"
     description: "Do not cache flat classpath representation of classpath elements from jars across compiler instances."
+  - option: "-Ycache-plugin-class-loader"
+    schema:
+      type: "Choice"
+      default: "none"
+      choices:
+      - choice: "none"
+        description: "Don't cache class loader."
+      - choice: "last-modified"
+        description: "Cache class loader, using file last-modified time to invalidate."
+    description: "Policy for caching class loaders for compiler plugins that are dynamically loaded."
+  - option: "-Ycache-macro-class-loader"
+    schema:
+      type: "Choice"
+      default: "none"
+      choices:
+      - choice: "none"
+        description: "Don't cache class loader."
+      - choice: "last-modified"
+        description: "Cache class loader, using file last-modified time to invalidate."
+    description: "Policy for caching class loaders for macros that are dynamically loaded."
   - option: "-Yvirtpatmat"
     schema:
       type: "Boolean"
@@ -646,26 +679,6 @@
       min: "Deflater.DEFAULT_COMPRESSION"
       max: "Deflater.BEST_COMPRESSION"
     description: "Compression level to use when writing jar files."
-  - option: "-Ycache-plugin-class-loader"
-    schema:
-      type: "Choice"
-      default: "none"
-      choices:
-      - choice: "none"
-        description: "Don't cache class loader."
-      - choice: "last-modified"
-        description: "Cache class loader, using file last-modified time to invalidate."
-    description: "Policy for caching class loaders for compiler plugins that are dynamically loaded."
-  - option: "-Ycache-macro-class-loader"
-    schema:
-      type: "Choice"
-      default: "none"
-      choices:
-      - choice: "none"
-        description: "Don't cache class loader."
-      - choice: "last-modified"
-        description: "Cache class loader, using file last-modified time to invalidate."
-    description: "Policy for caching class loaders for macros that are dynamically loaded."
   - option: "-opt"
     schema:
       type: "Choice"
@@ -836,22 +849,6 @@
     schema:
       type: "Boolean"
     description: "Trace quasiquote-related activities."
-# Groups of Settings.
-  - option: "-Xfuture"
-    schema:
-      type: "Boolean"
-    description: "Turn on future language features."
-  - option: "-Xexperimental"
-    schema:
-      type: "Boolean"
-    description: "Enable experimental extensions in Scala 2.12 and earlier."
-    deprecated: "In 2.13 all options previously enabled by `-Xexperimental` are enabled by default or removed."
-  - option : "-Xmacro-settings"
-    schema:
-      type: "String"
-      multiple: true
-    description: "Custom settings for macros."
-#   * IDE-specific settings
   - option: "-Ypresentation-verbose"
     schema:
       type: "Boolean"
