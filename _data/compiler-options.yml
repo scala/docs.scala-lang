@@ -66,13 +66,13 @@
         type: Choice
         arg: level
         default: vars
-      description: "Set level of generated debugging info."
-      choices:
+        choices:
         - choice: none
         - choice: source
         - choice: line
         - choice: vars
         - choice: notailcalls
+      description: "Set level of generated debugging info."
     - option: -help
       schema:
         type: Boolean
@@ -95,12 +95,12 @@
       scheam:
         type: Choice
         default: jvm-1.8
-      description: "Target platform for object files. All JVM `1.5` - `1.7` targets are deprecated."
-      choices:
+        choices:
         - choice: jvm-1.5
         - choice: jvm-1.6
         - choice: jvm-1.7
         - choice: jvm-1.8
+      description: "Target platform for object files. All JVM `1.5` - `1.7` targets are deprecated."
     - option: -unchecked
       schema:
         type: Boolean
@@ -134,8 +134,7 @@
         type: Choice
         multiple: true
         arg: feat
-      description: "Enable or disable language features."
-      choices:
+        choices:
         - choice: dynamics
           description: "Allow direct or indirect subclasses of `scala.Dynamic`."
         - choice: postfixOps
@@ -150,6 +149,7 @@
           description: "Existential types (besides wildcard types) can be written and inferred."
         - choice: experimental.macros
           description: "Allow macro definition (besides implementation and application."
+      description: "Enable or disable language features."
     - option: -release
       schema:
         type: String
@@ -388,22 +388,22 @@
         type: Choice
         arg: mode
         default: true
-      description: "Generate forwarder methods in classes inhering concrete methods from traits."
-      choices:
+        choices:
         - choice: true
           description: "Always generate mixin forwarders."
         - choice: junit
           description: "Generate mixin forwarders for JUnit-annotated methods (JUnit 4 does not support default methods)."
         - choice: false
           description: "Only generate mixin forwarders required for program correctness."
+      description: "Generate forwarder methods in classes inhering concrete methods from traits."
     - option: -Xxml
       schema:
         type: Choice
         arg: property
-      description: "Configure XML parsing."
-      choices:
+        choices:
         - choice: coalescing
           description: "Convert PCData to Text and coalesce sibling nodes."
+      description: "Configure XML parsing."
 
 
 
@@ -463,11 +463,11 @@
         type: Choice
         arg: strategy
         default: error
-      description: "Resolve term conflicts."
-      choices:
+        choices:
         - choice: package
         - choice: object
         - choice: error
+      description: "Resolve term conflicts."
     - option: -Ylog
       schema:
         type: Phases
@@ -570,11 +570,11 @@
         type: Choice
         arg: policy
         default: normal
-      description: "Control expansion of macros, useful for scaladoc and presentation compiler."
-      choices:
+        choices:
         - choice: none
         - choice: normal
         - choice: discard
+      description: "Control expansion of macros, useful for scaladoc and presentation compiler."
     - option: -Ymacro-no-expand
       schema:
         type: Boolean
@@ -616,10 +616,10 @@
         type: Choice
         arg: strategy
         default: method
-      description: "Strategy used for translating lambdas into JVM code."
-      choices:
+        choices:
         - choice: inline
         - choice: method
+      description: "Strategy used for translating lambdas into JVM code."
     - option: -Ybackend-parallelism
       schema:
         type: Int
@@ -648,29 +648,27 @@
       schema:
         type: Choice
         default: none
-      description: "Policy for caching class loaders for compiler plugins that are dynamically loaded."
-      choices:
+        choices:
         - choice: none
           description: "Don't cache class loader."
         - choice: last-modified
           description: "Cache class loader, using file last-modified time to invalidate."
+      description: "Policy for caching class loaders for compiler plugins that are dynamically loaded."
     - option: -Ycache-macro-class-loader
       schema:
         type: Choice
         default: none
-      description: "Policy for caching class loaders for macros that are dynamically loaded."
-      choices:
+        choices:
         - choice: none
           description: "Don't cache class loader."
         - choice: last-modified
           description: "Cache class loader, using file last-modified time to invalidate."
+      description: "Policy for caching class loaders for macros that are dynamically loaded."
     - option: -opt
       schema:
         type: Choice
         multiple: true
-      description: "Enable optimizations. Check `-opt:help` for using the Scala 2.12 optimizer."
-      note: "if `inline` not contained and either `l:project` or `l:classpath` are contained, then `l:inline` is enabled."
-      choices:
+        choices:
         - choice: unreachable-code
           description: "Eliminate unreachable code, exception handlers guarding no instructions, redundant metadata (debug information, line numbers)."
         - choice: simplify-jumps
@@ -704,6 +702,8 @@
         - choice: l:classpath
           description: "Enable cross-method optimizations across the entire classpath."
           deprecated: "Use `-opt:l:inline -opt-inline-from` instead."
+      description: "Enable optimizations. Check `-opt:help` for using the Scala 2.12 optimizer."
+      note: "if `inline` not contained and either `l:project` or `l:classpath` are contained, then `l:inline` is enabled."
     - option: -opt-inline-from
       schema:
         type: String
@@ -715,18 +715,17 @@
         type: Choice
         arg: strategy
         default: default
-      description: "Set the heuristics for inlining decisions."
-      choices:
+        choices:
         - choice: at-inline-annotated
         - choice: everything
         - choice: default
+      description: "Set the heuristics for inlining decisions."
     - option: -opt-warnings
       schema:
         type: Choice
         multiple: true
         default: at-inline-failed
-      description: "Enable optimizer warnings."
-      choices:
+        choices:
         - choice: none
           description: "No optimizer warnings."
         - choice: at-inline-failed-summary
@@ -741,6 +740,7 @@
           description: "Warn if an inlining decision cannot be made because a the bytecode of a class or member cannot be found on the compilation classpath."
         - choice: no-inline-missing-attribute
           description: "Warn if an inlining decision cannot be made because a Scala classfile does not have a ScalaInlineInfo attribute."
+      description: "Enable optimizer warnings."
     - option: -Yopt-trace
       schema:
         type: String
@@ -899,8 +899,7 @@
       schema:
         type: Choice
         arg: mode
-      description: "Enable lint warnings on macro expansions."
-      choices:
+        choices:
         - choice: none
           description: "Do not inspect expansions or their original trees when generating unused symbol warnings."
         - choice: before
@@ -909,6 +908,7 @@
           description: "Only inspect expanded trees when generating unused symbol warnings."
         - choice: both
           description: "Inspect both user-written code and expanded trees when generating unused symbol warnings."
+      description: "Enable lint warnings on macro expansions."
     - option: -Ywarn-dead-code
       schema:
         type: Boolean
@@ -928,25 +928,25 @@
         multiple: true
         arg: warn
         default: _
+        choices:
+        - choice: imports
+          description: "Warn if an import selector is not referenced."
+        - choice: patvars
+          description: "Warn if a variable bound in a pattern is unused."
+        - choice: privates
+          description: "Warn if a private member is unused."
+        - choice: locals
+          description: "Warn if a local definition is unused."
+        - choice: explicits
+          description: "Warn if an explicit parameter is unused."
+        - choice: implicits
+          description: "Warn if an implicit parameter is unused."
+        - choice: params
+          description: "Enable `-Ywarn-unused:explicits,implicits`."
+        - choice: linted
+          description: "Enable `-Ywarn-unused:imports,privates,locals,implicits`."
+          note: "Alias is `-Xlint:unused`."
       description: "Enable or disable specific `unused` warnings."
-      choices:
-      - choice: imports
-        description: "Warn if an import selector is not referenced."
-      - choice: patvars
-        description: "Warn if a variable bound in a pattern is unused."
-      - choice: privates
-        description: "Warn if a private member is unused."
-      - choice: locals
-        description: "Warn if a local definition is unused."
-      - choice: explicits
-        description: "Warn if an explicit parameter is unused."
-      - choice: implicits
-        description: "Warn if an implicit parameter is unused."
-      - choice: params
-        description: "Enable `-Ywarn-unused:explicits,implicits`."
-      - choice: linted
-        description: "Enable `-Ywarn-unused:imports,privates,locals,implicits`."
-        note: "Alias is `-Xlint:unused`."
     - option: -Ywarn-unused-import
       schema:
         type: Boolean
@@ -965,47 +965,47 @@
         multiple: true
         arg: warn
         default: _
+        choices:
+        - choice: adapted-args
+          description: "Warn if an argument list is modified to match the receiver."
+          note: "Alias is `-Ywarn-adapted-args`."
+        - choice: nullary-unit
+          description: "Warn when nullary methods return Unit."
+          note: "Alias is `-Ywarn-nullary-unit`."
+        - choice: inaccessible
+          description: "Warn about inaccessible types in method signatures."
+          note: "Alias is `-Ywarn-inaccessible`."
+        - choice: nullary-override
+          description: "Warn when non-nullary `def f()` overrides nullary `def f`."
+          note: "Alias is `-Ywarn-nullary-override`."
+        - choice: infer-any
+          description: "Warn when a type argument is inferred to be `Any`."
+          note: "Alias is `-Ywarn-infer-any`."
+        - choice: missing-interpolator
+          description: "A string literal appears to be missing an interpolator id."
+        - choice: doc-detached
+          description: "A Scaladoc comment appears to be detached from its element."
+        - choice: private-shadow
+          description: "A private field (or class parameter) shadows a superclass field."
+        - choice: type-parameter-shadow
+          description: "A local type parameter shadows a type already in scope."
+        - choice: poly-implicit-overload
+          description: "Parameterized overloaded implicit methods are not visible as view bounds."
+        - choice: option-implicit
+          description: "Option.apply used implicit view."
+        - choice: delayedinit-select
+          description: "Selecting member of DelayedInit."
+        - choice: by-name-right-associative
+          description: "By-name parameter of right associative operator."
+        - choice: package-object-classes
+          description: "Class or object defined in package object."
+        - choice: unsound-match
+          description: "Pattern match may not be typesafe."
+        - choice: stars-align
+          description: "Pattern sequence wildcard must align with sequence component."
+        - choice: constant
+          description: "Evaluation of a constant arithmetic expression results in an error."
+        - choice: unused
+          description: "Enable `-Ywarn-unused:imports,privates,locals,implicits`."
       description: "Enable or disable specific warnings."
       note: "If this options contains `unused`, it enables `-Ywarn-unused:linted`. Otherwise it disables `-Ywarn-unused:linted`."
-      choices:
-      - choice: adapted-args
-        description: "Warn if an argument list is modified to match the receiver."
-        note: "Alias is `-Ywarn-adapted-args`."
-      - choice: nullary-unit
-        description: "Warn when nullary methods return Unit."
-        note: "Alias is `-Ywarn-nullary-unit`."
-      - choice: inaccessible
-        description: "Warn about inaccessible types in method signatures."
-        note: "Alias is `-Ywarn-inaccessible`."
-      - choice: nullary-override
-        description: "Warn when non-nullary `def f()` overrides nullary `def f`."
-        note: "Alias is `-Ywarn-nullary-override`."
-      - choice: infer-any
-        description: "Warn when a type argument is inferred to be `Any`."
-        note: "Alias is `-Ywarn-infer-any`."
-      - choice: missing-interpolator
-        description: "A string literal appears to be missing an interpolator id."
-      - choice: doc-detached
-        description: "A Scaladoc comment appears to be detached from its element."
-      - choice: private-shadow
-        description: "A private field (or class parameter) shadows a superclass field."
-      - choice: type-parameter-shadow
-        description: "A local type parameter shadows a type already in scope."
-      - choice: poly-implicit-overload
-        description: "Parameterized overloaded implicit methods are not visible as view bounds."
-      - choice: option-implicit
-        description: "Option.apply used implicit view."
-      - choice: delayedinit-select
-        description: "Selecting member of DelayedInit."
-      - choice: by-name-right-associative
-        description: "By-name parameter of right associative operator."
-      - choice: package-object-classes
-        description: "Class or object defined in package object."
-      - choice: unsound-match
-        description: "Pattern match may not be typesafe."
-      - choice: stars-align
-        description: "Pattern sequence wildcard must align with sequence component."
-      - choice: constant
-        description: "Evaluation of a constant arithmetic expression results in an error."
-      - choice: unused
-        description: "Enable `-Ywarn-unused:imports,privates,locals,implicits`."

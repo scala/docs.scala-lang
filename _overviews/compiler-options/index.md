@@ -91,11 +91,11 @@ scalacOptions ++= Seq(
         {% if option.schema.max %}Max: <code>{{ option.schema.max }}</code><br>{% endif %}        
     </dd>
     {% if option.note %}<dd class="note"><i class="fa fa-sticky-note"></i> Note: {{ option.note | markdownify | remove: '<p>' | remove: '</p>'}}</dd>{% endif %}            
-    {% if option.choices %}
+    {% if option.schema.choices %}
     <dd class="choices">
         <dl class="choices">
           <!-- TODO: deprecated for choice -->          
-          {% for choice in option.choices %}
+          {% for choice in option.schema.choices %}
             <dt><code>{{ option.option | xml_escape }}{{ option_argument_separator }}{{ choice.choice | xml_escape }}</code></dt>
             {% if choice.deprecated %}<dd class="deprecated"><i class="fa fa-exclamation-triangle"></i> Deprecated: {{ choice.deprecated | markdownify | remove: '<p>' | remove: '</p>'}}</dd>{% endif %}
             {% if choice.description %}<dd class="description">{{ choice.description | markdownify}}</dd>{% endif %}
