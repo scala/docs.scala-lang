@@ -1,413 +1,412 @@
-- category: Standard Settings
+- category: "Standard Settings"
   description: "A set of standard options that are supported on the current development environment and will be supported in future releases."
   options:
 # Path related settings.
-    - option: -classpath
-      abbreviation: -cp
+    - option: "-classpath"
+      abbreviation: "-cp"
       schema:
-        type: Path
-        arg: path
+        type: "Path"
+        arg: "path"
       description: "Specify where to find user class files."
-    - option: -bootclasspath
+    - option: "-bootclasspath"
       schema:
-        type: Path
-        arg: path
-        default: Defaults.scalaBootClassPath
+        type: "Path"
+        arg: "path"
+        default: "Defaults.scalaBootClassPath"
       description: "Override location of bootstrap class files."
-    - option: -extdirs
+    - option: "-extdirs"
       schema:
-        type: Path
-        arg: path
-        default: Defaults.scalaExtDirs
+        type: "Path"
+        arg: "path"
+        default: "Defaults.scalaExtDirs"
       description:   "Override location of installed extensions."
-    - option: -javabootclasspath
+    - option: "-javabootclasspath"
       schema:
-        type: Path
-        arg: path
-        default: Defaults.javaBootClassPath
+        type: "Path"
+        arg: "path"
+        default: "Defaults.javaBootClassPath"
       description: "Override java boot classpath."
-    - option: -javaextdirs
+    - option: "-javaextdirs"
       schema:
-        type: Path
-        arg: path
-        default: Defaults.javaExtDirs
+        type: "Path"
+        arg: "path"
+        default: "Defaults.javaExtDirs"
       description: "Override java extdirs classpath."
-    - option: -sourcepath
+    - option: "-sourcepath"
       schema:
-        type: Path
+        type: "Path"
       description: "Specify location(s) of source files."
-# other settings
-    - option: -dependencyfile
+    - option: "-dependencyfile"
       schema:
-        type: String
-        arg: file
-        default: .scala_dependencies
+        type: "String"
+        arg: "file"
+        default: ".scala_dependencies"
       description: "Set dependency tracking file."
-    - option: -deprecation
+    - option: "-deprecation"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Emit warning and location for usages of deprecated APIs."
-    - option: -encoding
+    - option: "-encoding"
       schema:
-        type: String
-        arg: encoding
-        default: Properties.sourceEncoding
+        type: "String"
+        arg: "encoding"
+        default: "Properties.sourceEncoding"
       description: "Specify character encoding used by source files."
-    - option: -explaintypes
+    - option: "-explaintypes"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Explain type errors in more detail."
-    - option: -feature
+    - option: "-feature"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Emit warning and location for usages of features that should be imported explicitly."
-    - option: -g
+    - option: "-g"
       schema:
-        type: Choice
-        arg: level
-        default: vars
+        type: "Choice"
+        arg: "level"
+        default: "vars"
         choices:
-        - choice: none
-        - choice: source
-        - choice: line
-        - choice: vars
-        - choice: notailcalls
+        - choice: "none"
+        - choice: "source"
+        - choice: "line"
+        - choice: "vars"
+        - choice: "notailcalls"
       description: "Set level of generated debugging info."
-    - option: -help
+    - option: "-help"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Print a synopsis of standard options."
-    - option: -nowarn
+    - option: "-nowarn"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Generate no warnings."
-    - option: -optimise
-      abbreviation: -optimize
+    - option: "-optimise"
+      abbreviation: "-optimize"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Compiler flag for the optimizer in Scala 2.11."
       deprecated: "In 2.12, `-optimise` enables `-opt:l:inline -opt-inline-from:**`. Check `-opt:help` for using the Scala 2.12 optimizer."
-    - option: -print
+    - option: "-print"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Print program with Scala-specific features removed."
-    - option: -target
+    - option: "-target"
       scheam:
-        type: Choice
-        default: jvm-1.8
+        type: "Choice"
+        default: "jvm-1.8"
         choices:
-        - choice: jvm-1.5
-        - choice: jvm-1.6
-        - choice: jvm-1.7
-        - choice: jvm-1.8
+        - choice: "jvm-1.5"
+        - choice: "jvm-1.6"
+        - choice: "jvm-1.7"
+        - choice: "jvm-1.8"
       description: "Target platform for object files. All JVM `1.5` - `1.7` targets are deprecated."
-    - option: -unchecked
+    - option: "-unchecked"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Enable additional warnings where generated code depends on assumptions."
-    - option: -uniqid
+    - option: "-uniqid"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Uniquely tag all identifiers in debugging output."
-    - option: -usejavacp
+    - option: "-usejavacp"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Utilize the `java.class.path` in classpath resolution."
-    - option: -usemanifestcp
+    - option: "-usemanifestcp"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Utilize the manifest in classpath resolution."
-    - option: -verbose
+    - option: "-verbose"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Output messages about what the compiler is doing."
-    - option: -version
+    - option: "-version"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Print product version and exit."
-    - option: -no-specialization
+    - option: "-no-specialization"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Ignore `@specialize` annotations."
-    - option: -language
+    - option: "-language"
       schema:
-        type: Choice
+        type: "Choice"
         multiple: true
-        arg: feat
+        arg: "feat"
         choices:
-        - choice: dynamics
+        - choice: "dynamics"
           description: "Allow direct or indirect subclasses of `scala.Dynamic`."
-        - choice: postfixOps
+        - choice: "postfixOps"
           description: "Allow postfix operator notation, such as `1 to 10 toList`."
-        - choice: reflectiveCalls
+        - choice: "reflectiveCalls"
           description: "Allow reflective access to members of structural types."
-        - choice: implicitConversions
+        - choice: "implicitConversions"
           description: "Allow definition of implicit functions called views."
-        - choice: higherKinds
+        - choice: "higherKinds"
           description: "Allow higher-kinded types."
-        - choice: existentials
+        - choice: "existentials"
           description: "Existential types (besides wildcard types) can be written and inferred."
-        - choice: experimental.macros
+        - choice: "experimental.macros"
           description: "Allow macro definition (besides implementation and application."
       description: "Enable or disable language features."
-    - option: -release
+    - option: "-release"
       schema:
-        type: String
-        arg: release
+        type: "String"
+        arg: "release"
       description: "Compile for a specific version of the Java platform. Supported targets: 6, 7, 8, 9."
 
 
-- category: JVM Settings
+- category: "JVM Settings"
   description: "Settings influencing the runtime system."
   options:
-    - option: -Jflag
+    - option: "-Jflag"
       schema:
-        type: Prefix
+        type: "Prefix"
       description: "Pass `flag` directly to the runtime system."
-    - option: -Dproperty=value
+    - option: "-Dproperty=value"
       schema:
-        type: Prefix
+        type: "Prefix"
       description: "Pass `-Dproperty=value` directly to the runtime system."
-    - option: -nobootcp
+    - option: "-nobootcp"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Do not use the boot classpath for the scala jars."
 
 
-- category: Plugin Settings
+- category: "Plugin Settings"
   description: ""
   options:
-    - option: -P
+    - option: "-P"
       schema:
-        type: Prefix
+        type: "Prefix"
         arg: ":plugin:opt"
       description: "Pass an option to a plugin in the form of `-P:<plugin>:<opt>`."
       note: "If you use sbt, [compiler plugins support](https://www.scala-sbt.org/1.x/docs/Compiler-Plugins.html) may be useful."
 
 
-- category: Advanced Settings
+- category: "Advanced Settings"
   description: "Options that starts with `-X` are maybe renamed or removed in future releases."
   options:
-    - option: -X
+    - option: "-X"
       schema:
-        type: Boolean 
+        type: "Boolean" 
       description: "Print a synopsis of advanced options."
-    - option: -Xcheckinit
+    - option: "-Xcheckinit"
       schema:
-        type: Boolean 
+        type: "Boolean" 
       description: "Wrap field accessors to throw an exception on uninitialized access."
-    - option: -Xdev
+    - option: "-Xdev"
       schema:
-        type: Boolean 
+        type: "Boolean" 
       description: "Indicates user is a developer - issue warnings about anything which seems amiss."
-    - option: -Xdisable-assertions
+    - option: "-Xdisable-assertions"
       schema:
-        type: Boolean 
+        type: "Boolean" 
       description: "Generate no assertions or assumptions."
-    - option: -Xelide-below
+    - option: "-Xelide-below"
       schema:
-        type: Int
-        arg: min
-        default: Int.MinValue
+        type: "Int"
+        arg: "min"
+        default: "Int.MinValue"
       description: "Calls to `@elidable` methods are omitted if method priority is lower than argument."
-    - option: -Xno-forwarders
+    - option: "-Xno-forwarders"
       schema:
-        type: Boolean 
+        type: "Boolean" 
       description: "Do not generate static forwarders in mirror classes."
-    - option: -Xgenerate-phase-graph
+    - option: "-Xgenerate-phase-graph"
       schema:
-        type: String 
-        arg: file
+        type: "String" 
+        arg: "file"
       description: "Generate the phase graphs (outputs .dot files) to fileX.dot."
-    - option: -Xlog-implicits
+    - option: "-Xlog-implicits"
       schema:
-        type: Boolean 
+        type: "Boolean" 
       description: "Show more detail on why some implicits are not applicable."
-    - option: -Xlog-implicit-conversions
+    - option: "-Xlog-implicit-conversions"
       schema:
-        type: Boolean 
+        type: "Boolean" 
       description: "Print a message whenever an implicit conversion is inserted."
-    - option: -Xlog-reflective-calls
+    - option: "-Xlog-reflective-calls"
       schema:
-        type: Boolean 
+        type: "Boolean" 
       description: "Print a message when a reflective method call is generated."
-    - option: -Xlog-free-terms
+    - option: "-Xlog-free-terms"
       schema:
-        type: Boolean 
+        type: "Boolean" 
       description: "Print a message when reification creates a free term."
-    - option: -Xlog-free-types
+    - option: "-Xlog-free-types"
       schema:
-        type: Boolean 
+        type: "Boolean" 
       description: "Print a message when reification resorts to generating a free type."
-    - option: -Xmax-classfile-name
+    - option: "-Xmax-classfile-name"
       schema:
-        type: Int
-        arg: max
+        type: "Int"
+        arg: "max"
         default: 255
         min: 72
         max: 255
       description: "Maximum filename length for generated classes."
-    - option: -Xmaxerrs
+    - option: "-Xmaxerrs"
       schema:
-        type: Int
-        arg: max
+        type: "Int"
+        arg: "max"
         default: 100
       description: "Maximum errors to print."
-    - option: -Xmaxwarns
+    - option: "-Xmaxwarns"
       schema:
-        type: Int
-        arg: max
+        type: "Int"
+        arg: "max"
         default: 100
       description: "Maximum warnings to print."
-    - option: -Xmigration
+    - option: "-Xmigration"
       schema:
-        type: ScalaVersion
-        arg: version
-        default: any
+        type: "ScalaVersion"
+        arg: "version"
+        default: "any"
       description: "Warn about constructs whose behavior may have changed since version."
-    - option: -Xno-uescape
+    - option: "-Xno-uescape"
       schema:
-        type: Boolean 
+        type: "Boolean" 
       description: "Disable handling of \\u unicode escapes."
-    - option: -Xnojline
+    - option: "-Xnojline"
       schema:
-        type: Boolean 
+        type: "Boolean" 
       description: "Do not use JLine for editing."
-    - option: -Xverify
+    - option: "-Xverify"
       schema:
-        type: Boolean 
+        type: "Boolean" 
       description: "Verify generic signatures in generated bytecode."
-    - option: -Xplugin
+    - option: "-Xplugin"
       schema:
-        type: String
+        type: "String"
         multiple: true
-        arg: path
+        arg: "path"
       description: "Load a plugin from each classpath."
-    - option: -Xplugin-disable
+    - option: "-Xplugin-disable"
       schema:
-        type: String
+        type: "String"
         multiple: true
-        arg: plugin
+        arg: "plugin"
       description: "Disable plugins by name."
-    - option: -Xplugin-list
+    - option: "-Xplugin-list"
       schema:
-        type: Boolean 
+        type: "Boolean" 
       description: "Print a synopsis of loaded plugins."
-    - option: -Xplugin-require
+    - option: "-Xplugin-require"
       schema:
-        type: String
+        type: "String"
         multiple: true
-        arg: plugin
+        arg: "plugin"
       description: "Abort if a named plugin is not loaded."
-    - option: -Xpluginsdir
+    - option: "-Xpluginsdir"
       schema:
-        type: String
-        arg: path
-        default: Defaults.scalaPluginPath
+        type: "String"
+        arg: "path"
+        default: "Defaults.scalaPluginPath"
       description: "Path to search for plugin archives."
-    - option: -Xprint
+    - option: "-Xprint"
       schema:
-        type: Phases
-        arg: phases
+        type: "Phases"
+        arg: "phases"
       description: "Print out program after PHASES (see [Compilation Phases](#compilation-phases))"
-    - option: -Xprint-pos
+    - option: "-Xprint-pos"
       schema:
-        type: Boolean 
+        type: "Boolean" 
       description: "Print tree positions, as offsets."
-    - option: -Xprint-types
+    - option: "-Xprint-types"
       schema:
-        type: Boolean 
+        type: "Boolean" 
       description: "Print tree types (debugging option)."
-    - option: -Xprint-args
+    - option: "-Xprint-args"
       schema:
-        type: Boolean 
+        type: "Boolean" 
       description: "Print all compiler arguments and exit."
-    - option: -Xprompt
+    - option: "-Xprompt"
       schema:
-        type: Boolean 
+        type: "Boolean" 
       description: "Display a prompt after each error (debugging option)."
-    - option: -Xresident
+    - option: "-Xresident"
       schema:
-        type: Boolean 
+        type: "Boolean" 
       description: "Compiler stays resident: read source filenames from standard input."
-    - option: -Xscript
+    - option: "-Xscript"
       schema:
-        type: String
-        arg: object
+        type: "String"
+        arg: "object"
       description: "Treat the source file as a script and wrap it in a main method."
-    - option: -Xmain-class
+    - option: "-Xmain-class"
       schema:
-        type: String
-        arg: path
+        type: "String"
+        arg: "path"
       description: "Class for manifest's Main-Class entry (only useful with `-d <jar>`)"
-    - option: -Xshow-class
+    - option: "-Xshow-class"
       schema:
-        type: String
-        arg: class
+        type: "String"
+        arg: "class"
       description: "Show internal representation of class."
-    - option: -Xshow-object
+    - option: "-Xshow-object"
       schema:
-        type: String
-        arg: object
+        type: "String"
+        arg: "object"
       description: "Show internal representation of object."
-    - option: -Xshow-phases
+    - option: "-Xshow-phases"
       schema:
-        type: Boolean 
+        type: "Boolean" 
       description: "Print a synopsis of compiler phases."
-    - option: -Xsource-reader
+    - option: "-Xsource-reader"
       schema:
-        type: String
-        arg: classname
+        type: "String"
+        arg: "classname"
       description: "Specify a custom method for reading source files."
-    - option: -Xreporter
+    - option: "-Xreporter"
       schema:
-        type: String
-        arg: classname
-        default: scala.tools.nsc.reporters.ConsoleReporter
+        type: "String"
+        arg: "classname"
+        default: "scala.tools.nsc.reporters.ConsoleReporter"
       description: "Specify a custom reporter for compiler messages."
-    - option: -Xstrict-inference
+    - option: "-Xstrict-inference"
       schema:
-        type: Boolean 
+        type: "Boolean" 
       description: "Don't infer known-unsound types."
-    - option: -Xsource
+    - option: "-Xsource"
       schema:
-        type: Scala Version
-        arg: version
-        default: 2.13
+        type: "Scala Version"
+        arg: "version"
+        default: "2.13"
       description: "Treat compiler input as Scala source for the specified version, see [scala/bug#8126](https://github.com/scala/bug/issues/8126)."
-    - option: -Xno-patmat-analysis
+    - option: "-Xno-patmat-analysis"
       schema:
-        type: Boolean 
+        type: "Boolean" 
       description: "Don't perform exhaustivity/unreachability analysis. Also, ignore `@switch` annotation."
-    - option: -Xfull-lubs
+    - option: "-Xfull-lubs"
       schema:
-        type: Boolean 
+        type: "Boolean" 
       description: "Retains pre 2.10 behavior of less aggressive truncation of least upper bounds."
-    - option: -Xmixin-force-forwarders
+    - option: "-Xmixin-force-forwarders"
       schema:
-        type: Choice
-        arg: mode
-        default: true
+        type: "Choice"
+        arg: "mode"
+        default: "true"
         choices:
-        - choice: true
+        - choice: "true"
           description: "Always generate mixin forwarders."
-        - choice: junit
+        - choice: "junit"
           description: "Generate mixin forwarders for JUnit-annotated methods (JUnit 4 does not support default methods)."
-        - choice: false
+        - choice: "false"
           description: "Only generate mixin forwarders required for program correctness."
       description: "Generate forwarder methods in classes inhering concrete methods from traits."
-    - option: -Xxml
+    - option: "-Xxml"
       schema:
-        type: Choice
-        arg: property
+        type: "Choice"
+        arg: "property"
         choices:
-        - choice: coalescing
+        - choice: "coalescing"
           description: "Convert PCData to Text and coalesce sibling nodes."
       description: "Configure XML parsing."
 
 
 
-- category: Private Settings
+- category: "Private Settings"
   description: |
     Options with `-Y` prefix are more experimental and unstable than those with `-X` prefix.
 
@@ -415,472 +414,471 @@
 
     Some optimization-related options, e.g. `-opt:**` and `-opt-inline-form` are included in this section, since **REASON_HERE**.
   options:
-    - option: -Y
+    - option: "-Y"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Print a synopsis of private options."
-    - option: -Yoverride-objects
+    - option: "-Yoverride-objects"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Allow member objects to be overridden."
-    - option: -Yoverride-vars
+    - option: "-Yoverride-vars"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Allow vars to be overridden."
-    - option: -Ybreak-cycles
+    - option: "-Ybreak-cycles"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Attempt to break cycles encountered during typing."
-    - option: -Ybrowse
+    - option: "-Ybrowse"
       schema:
-        type: Phases
-        arg: phases
+        type: "Phases"
+        arg: "phases"
       description: "Browse the abstract syntax tree after PHASES (see [Compilation Phases](#compilation-phases))"
-    - option: -Ycheck
+    - option: "-Ycheck"
       schema:
-        type: Phases
-        arg: phases
+        type: "Phases"
+        arg: "phases"
       description: "Check the tree at the end of PHASES (see [Compilation Phases](#compilation-phases))"
-    - option: -Yshow
+    - option: "-Yshow"
       schema:
-        type: Phases
-        arg: phases
+        type: "Phases"
+        arg: "phases"
       description: "(Requires `-Xshow-class` or `-Xshow-object`) Show after PHASES (see [Compilation Phases](#compilation-phases))"
-    - option: -Ycompact-trees
+    - option: "-Ycompact-trees"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Use compact tree printer when displaying trees."
-    - option: -Yno-completion
+    - option: "-Yno-completion"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Disable tab-completion in the REPL."
-    - option: -Ydebug
+    - option: "-Ydebug"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Increase the quantity of debugging output."
-    - option: -Yresolve-term-conflict
+    - option: "-Yresolve-term-conflict"
       schema:
-        type: Choice
-        arg: strategy
-        default: error
+        type: "Choice"
+        arg: "strategy"
+        default: "error"
         choices:
-        - choice: package
-        - choice: object
-        - choice: error
+        - choice: "package"
+        - choice: "object"
+        - choice: "error"
       description: "Resolve term conflicts."
-    - option: -Ylog
+    - option: "-Ylog"
       schema:
-        type: Phases
-        arg: phases
+        type: "Phases"
+        arg: "phases"
       description: "Log operations during PHASES (see [Compilation Phases](#compilation-phases))"
-    - option: -Ylog-classpath
+    - option: "-Ylog-classpath"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Output information about what classpath is being applied."
-    - option: -Yno-generic-signatures
+    - option: "-Yno-generic-signatures"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Suppress generation of generic signatures for Java."
-    - option: -Yno-imports
+    - option: "-Yno-imports"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Compile without importing scala.*, java.lang.*, or Predef."
-    - option: -Yno-predef
+    - option: "-Yno-predef"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Compile without importing Predef."
-    - option: -Yno-adapted-args
+    - option: "-Yno-adapted-args"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Do not adapt an argument list (either by inserting () or creating a tuple) to match the receiver."
-    - option: -Yrecursion
+    - option: "-Yrecursion"
       schema:
-        type: Int
-        arg: depth
+        type: "Int"
+        arg: "depth"
         default: 0
         min: 0
         max: Int.MaxValue
       description: "Set recursion depth used when locking symbols."
-    - option: -Yshow-trees
+    - option: "-Yshow-trees"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "(Requires `-Xprint:`) Print detailed ASTs in formatted form."
-    - option: -Yshow-trees-compact
+    - option: "-Yshow-trees-compact"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "(Requires `-Xprint:`) Print detailed ASTs in compact form."
-    - option: -Yshow-trees-stringified
+    - option: "-Yshow-trees-stringified"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "(Requires `-Xprint:`) Print stringifications along with detailed ASTs."
-    - option: -Yshow-syms
+    - option: "-Yshow-syms"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Print the AST symbol hierarchy after each phase."
-    - option: -Yshow-symkinds
+    - option: "-Yshow-symkinds"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Print abbreviated symbol kinds next to symbol names."
-    - option: -Yshow-symowners
+    - option: "-Yshow-symowners"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Print owner identifiers next to symbol names."
-    - option: -Yskip
+    - option: "-Yskip"
       schema:
-        type: Phases
-        arg: phases
+        type: "Phases"
+        arg: "phases"
       description: "Skip PHASES (see [Compilation Phases](#compilation-phases))"
-    - option: -Ygen-asmp
+    - option: "-Ygen-asmp"
       schema:
-        type: String
-        arg: dir
+        type: "String"
+        arg: "dir"
       description: "Generate a parallel output directory of .asmp files (ie ASM Textifier output)."
-    - option: -Ydump-classes
+    - option: "-Ydump-classes"
       schema:
-        type: String
-        arg: dir
+        type: "String"
+        arg: "dir"
       description: "Dump the generated bytecode to .class files (useful for reflective compilation that utilizes in-memory classloaders)."
-    - option: -Ystop-after
-      abbreviation: -stop
+    - option: "-Ystop-after"
+      abbreviation: "-stop"
       schema:
-        type: Phases
-        arg: phases
+        type: "Phases"
+        arg: "phases"
       description: "Stop after PHASES (see [Compilation Phases](#compilation-phases))"
-    - option: -Ystop-before
+    - option: "-Ystop-before"
       schema:
-        type: Phases
-        arg: phases
+        type: "Phases"
+        arg: "phases"
       description: "Stop before PHASES (see [Compilation Phases](#compilation-phases))"
-    - option: -Yrangepos
+    - option: "-Yrangepos"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Use range positions for syntax trees."
-    - option: -Yshow-member-pos
+    - option: "-Yshow-member-pos"
       schema:
-        type: String
-        arg: style
+        type: "String"
+        arg: "style"
       description: "Show start and end positions of members."
       note: "`-Yrangepos` is enabled at the same time."
-    - option: -Yreify-copypaste
+    - option: "-Yreify-copypaste"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Dump the reified trees in copypasteable representation."
-    - option: -Ymacro-expand
+    - option: "-Ymacro-expand"
       schema:
-        type: Choice
-        arg: policy
-        default: normal
+        type: "Choice"
+        arg: "policy"
+        default: "normal"
         choices:
-        - choice: none
-        - choice: normal
-        - choice: discard
+        - choice: "none"
+        - choice: "normal"
+        - choice: "discard"
       description: "Control expansion of macros, useful for scaladoc and presentation compiler."
-    - option: -Ymacro-no-expand
+    - option: "-Ymacro-no-expand"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Don't expand macros. Might be useful for scaladoc and presentation compiler, but will crash anything which uses macros and gets past typer."
       deprecated: "Use `-Ymacro-expand:none` instead."
-    - option: -Yrepl-sync
+    - option: "-Yrepl-sync"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Do not use asynchronous code for REPL startup."
-    - option: -Yrepl-class-based
+    - option: "-Yrepl-class-based"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Use classes to wrap REPL snippets instead of objects."
-    - option: -Yrepl-outdir
+    - option: "-Yrepl-outdir"
       schema:
-        type: String
-        arg: path
+        type: "String"
+        arg: "path"
       description: "Write repl-generated classfiles to given output directory (use \"\" to generate a temporary dir)"
-    - option: -Yinfer-argument-types
+    - option: "-Yinfer-argument-types"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Infer types for arguments of overridden methods."
-    - option: -YdisableFlatCpCaching
+    - option: "-YdisableFlatCpCaching"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Do not cache flat classpath representation of classpath elements from jars across compiler instances."
-    - option: -Yvirtpatmat
+    - option: "-Yvirtpatmat"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Enable pattern matcher virtualization."
-    - option: -Yexpose-empty-package
+    - option: "-Yexpose-empty-package"
 # TODO: internal only
       internalOnly: true
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Internal only: expose the empty package."
-    - option: -Ydelambdafy
+    - option: "-Ydelambdafy"
       schema:
-        type: Choice
-        arg: strategy
-        default: method
+        type: "Choice"
+        arg: "strategy"
+        default: "method"
         choices:
-        - choice: inline
-        - choice: method
+        - choice: "inline"
+        - choice: "method"
       description: "Strategy used for translating lambdas into JVM code."
-    - option: -Ybackend-parallelism
+    - option: "-Ybackend-parallelism"
       schema:
-        type: Int
-        arg: threads
+        type: "Int"
+        arg: "threads"
         default: 1
         min: 1
         max: 16
       description: "Maximum worker threads for backend."
-    - option: -Ybackend-worker-queue
+    - option: "-Ybackend-worker-queue"
       description: "Backend threads worker queue size."
       schema:
-        type: Int
-        arg: size
+        type: "Int"
+        arg: "size"
         default: 0
         min: 0
         max: 1000
-    - option: -Yjar-compression-level
+    - option: "-Yjar-compression-level"
       schema:
-        type: Int
-        arg: level
-        default: Deflater.DEFAULT_COMPRESSION
-        min: Deflater.DEFAULT_COMPRESSION
-        max: Deflater.BEST_COMPRESSION
+        type: "Int"
+        arg: "level"
+        default: "Deflater.DEFAULT_COMPRESSION"
+        min: "Deflater.DEFAULT_COMPRESSION"
+        max: "Deflater.BEST_COMPRESSION"
       description: "Compression level to use when writing jar files."
-    - option: -Ycache-plugin-class-loader
+    - option: "-Ycache-plugin-class-loader"
       schema:
-        type: Choice
-        default: none
+        type: "Choice"
+        default: "none"
         choices:
-        - choice: none
+        - choice: "none"
           description: "Don't cache class loader."
-        - choice: last-modified
+        - choice: "last-modified"
           description: "Cache class loader, using file last-modified time to invalidate."
       description: "Policy for caching class loaders for compiler plugins that are dynamically loaded."
-    - option: -Ycache-macro-class-loader
+    - option: "-Ycache-macro-class-loader"
       schema:
-        type: Choice
-        default: none
+        type: "Choice"
+        default: "none"
         choices:
-        - choice: none
+        - choice: "none"
           description: "Don't cache class loader."
-        - choice: last-modified
+        - choice: "last-modified"
           description: "Cache class loader, using file last-modified time to invalidate."
       description: "Policy for caching class loaders for macros that are dynamically loaded."
-    - option: -opt
+    - option: "-opt"
       schema:
-        type: Choice
+        type: "Choice"
         multiple: true
         choices:
-        - choice: unreachable-code
+        - choice: "unreachable-code"
           description: "Eliminate unreachable code, exception handlers guarding no instructions, redundant metadata (debug information, line numbers)."
-        - choice: simplify-jumps
+        - choice: "simplify-jumps"
           description: "Simplify branching instructions, eliminate unnecessary ones."
-        - choice: compact-locals
+        - choice: "compact-locals"
           description:  "Eliminate empty slots in the sequence of local variables."
-        - choice: copy-propagation
+        - choice: "copy-propagation"
           description: "Eliminate redundant local variables and unused values (including closures). Enables unreachable-code."
-        - choice: redundant-casts
+        - choice: "redundant-casts"
           description: "Eliminate redundant casts using a type propagation analysis."
-        - choice: box-unbox
+        - choice: "box-unbox"
           description: "Eliminate box-unbox pairs within the same method (also tuples, xRefs, value class instances). Enables unreachable-code."
         - choice: "nullness-tracking"
           description: "Track nullness / non-nullness of local variables and apply optimizations."
-        - choice: closure-invocations
+        - choice: "closure-invocations"
           description: "Rewrite closure invocations to the implementation method."
-        - choice: inline
+        - choice: "inline"
           description: "Inline method invocations according to `-Yopt-inline-heuristics` and `-opt-inline-from`."
-        - choice: l:none
+        - choice: "l:none"
           description: "Disable optimizations. Takes precedence: `-opt:l:none,+box-unbox` / `-opt:l:none -opt:box-unbox` don't enable box-unbox."
           note: "Unlike the other optimizer levels, `l:none` appears up in the `opt.value` set because it's not an expanding option."
-        - choice: l:default
+        - choice: "l:default"
           description: "Enable default optimizations: `unreachable-code`."
-        - choice: l:method
+        - choice: "l:method"
           description: "Enable intra-method optimizations: `unreachable-code`, `simplify-jumps`, `compact-locals`, `copy-propagation`, `redundant-casts`, `box-unbox`, `nullness-tracking`, `closure-invocations`."
-        - choice: l:inline
+        - choice: "l:inline"
           description: "Enable cross-method optimizations (note: inlining requires `-opt-inline-from`): `unreachable-code`, `simplify-jumps`, `compact-locals`, `copy-propagation`, `redundant-casts`, `box-unbox`, `nullness-tracking`, `closure-invocations`, `inline`."
-        - choice: l:project
+        - choice: "l:project"
           description: "Enable cross-method optimizations within the current project."
           deprecated: "Use `-opt:l:inline -opt-inline-from` instead."
-        - choice: l:classpath
+        - choice: "l:classpath"
           description: "Enable cross-method optimizations across the entire classpath."
           deprecated: "Use `-opt:l:inline -opt-inline-from` instead."
       description: "Enable optimizations. Check `-opt:help` for using the Scala 2.12 optimizer."
       note: "if `inline` not contained and either `l:project` or `l:classpath` are contained, then `l:inline` is enabled."
-    - option: -opt-inline-from
+    - option: "-opt-inline-from"
       schema:
-        type: String
+        type: "String"
         multiple: true
-        arg: pattern
+        arg: "pattern"
       description: "Patterns for classfile names from which to allow inlining, `help` for details."
-    - option: -Yopt-inline-heuristics
+    - option: "-Yopt-inline-heuristics"
       schema:
-        type: Choice
-        arg: strategy
-        default: default
+        type: "Choice"
+        arg: "strategy"
+        default: "default"
         choices:
-        - choice: at-inline-annotated
-        - choice: everything
-        - choice: default
+        - choice: "at-inline-annotated"
+        - choice: "everything"
+        - choice: "default"
       description: "Set the heuristics for inlining decisions."
-    - option: -opt-warnings
+    - option: "-opt-warnings"
       schema:
-        type: Choice
+        type: "Choice"
         multiple: true
-        default: at-inline-failed
+        default: "at-inline-failed"
         choices:
-        - choice: none
+        - choice: "none"
           description: "No optimizer warnings."
-        - choice: at-inline-failed-summary
+        - choice: "at-inline-failed-summary"
           description: "One-line summary if there were `@inline` method calls that could not be inlined."
-        - choice: at-inline-failed
+        - choice: "at-inline-failed"
           description: "A detailed warning for each `@inline` method call that could not be inlined."
-        - choice: any-inline-failed
+        - choice: "any-inline-failed"
           description: "A detailed warning for every callsite that was chosen for inlining by the heuristics, but could not be inlined."
-        - choice: no-inline-mixed
+        - choice: "no-inline-mixed"
           description: "In mixed compilation, warn at callsites methods defined in java sources (the inlining decision cannot be made without bytecode)."
-        - choice: no-inline-missing-bytecode
+        - choice: "no-inline-missing-bytecode"
           description: "Warn if an inlining decision cannot be made because a the bytecode of a class or member cannot be found on the compilation classpath."
-        - choice: no-inline-missing-attribute
+        - choice: "no-inline-missing-attribute"
           description: "Warn if an inlining decision cannot be made because a Scala classfile does not have a ScalaInlineInfo attribute."
       description: "Enable optimizer warnings."
-    - option: -Yopt-trace
+    - option: "-Yopt-trace"
       schema:
-        type: String
-        arg: package/Class.method
+        type: "String"
+        arg: "package/Class.method"
       description: "Trace the optimizer progress for methods; `_` to print all, prefix match to select."
-    - option: -Yopt-log-inline
+    - option: "-Yopt-log-inline"
       schema:
-        type: String
-        arg: package/Class.method
+        type: "String"
+        arg: "package/Class.method"
       description: "Print a summary of inliner activity; `_` to print all, prefix match to select."
-    - option: -Ystatistics
+    - option: "-Ystatistics"
       schema:
-        type: Phases
-        arg: phases
+        type: "Phases"
+        arg: "phases"
         default: "parser,typer,patmat,erasure,cleanup,jvm"
       description: "Print compiler statistics for specific phases. (see [Compilation Phases](#compilation-phases))"
-    - option: -Yhot-statistics-enabled
+    - option: "-Yhot-statistics-enabled"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Enable `-Ystatistics` to print hot statistics."
-    - option: -Yprofile-enabled
+    - option: "-Yprofile-enabled"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Enable profiling."
-    - option: -Yprofile-destination
-      arg: file
+    - option: "-Yprofile-destination"
+      arg: "file"
       schema:
-        type: String
+        type: "String"
       description: "where to send profiling output - specify a file, default is to the console."
       note: "`-Yprofile-enabled` is enabled at the same time."
-    - option: -Yprofile-external-tool
+    - option: "-Yprofile-external-tool"
       schema:
-        type: Phases
-        arg: phases
+        type: "Phases"
+        arg: "phases"
         default: "typer"
       description: "Enable profiling for a phase using an external tool hook. Generally only useful for a single phase."
       note: "`-Yprofile-enabled` is enabled at the same time."
-    - option: -Yprofile-run-gc
+    - option: "-Yprofile-run-gc"
       schema:
-        type: Phases
-        arg: phases
+        type: "Phases"
+        arg: "phases"
         default: "_"
       description: "Run a GC between phases - this allows heap size to be accurate at the expense of more time. Specify a list of phases, or `all`."
       note: "`-Yprofile-enabled` is enabled at the same time."
 #  Area-specific debug output.
-    - option: -Ydoc-debug
+    - option: "-Ydoc-debug"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Trace all scaladoc activity."
-    - option: -Yide-debug
+    - option: "-Yide-debug"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Generate, validate and output trees using the interactive compiler."
-    - option: -Yissue-debug
+    - option: "-Yissue-debug"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Print stack traces when a context issues an error."
-    - option: -Ymacro-debug-lite
+    - option: "-Ymacro-debug-lite"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Trace essential macro-related activities."
-    - option: -Ymacro-debug-verbose
+    - option: "-Ymacro-debug-verbose"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Trace all macro-related activities: compilation, generation of synthetics, classloading, expansion, exceptions."
-    - option: -Ypos-debug
+    - option: "-Ypos-debug"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Trace position validation."
-    - option: -Yreify-debug
+    - option: "-Yreify-debug"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Trace reification."
-    - option: -Ytyper-debug
+    - option: "-Ytyper-debug"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Trace all type assignments."
-    - option: -Ypatmat-debug
+    - option: "-Ypatmat-debug"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Trace pattern matching translation."
-    - option: -Ypatmat-exhaust-depth
+    - option: "-Ypatmat-exhaust-depth"
       schema:
-        type: Int
-        arg: off
+        type: "Int"
+        arg: "off"
         default: 20
         min: 10
         max: Int.MaxValue
       description: "off"
-    - option: -Yquasiquote-debug
+    - option: "-Yquasiquote-debug"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Trace quasiquote-related activities."
 # Groups of Settings.
-    - option: -Xfuture
+    - option: "-Xfuture"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Turn on future language features."
-      enablingIfNotSetByUser: futureSettings
-    - option: -Xexperimental
+    - option: "-Xexperimental"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Enable experimental extensions in Scala 2.12 and earlier."
       deprecated: "In 2.13 all options previously enabled by `-Xexperimental` are enabled by default or removed."
-    - option : -Xmacro-settings
+    - option : "-Xmacro-settings"
       schema:
-        type: String
+        type: "String"
         multiple: true
       description: "Custom settings for macros."
 #   * IDE-specific settings
-    - option: -Ypresentation-verbose
+    - option: "-Ypresentation-verbose"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Print information about presentation compiler tasks."
-    - option: -Ypresentation-debug
+    - option: "-Ypresentation-debug"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Enable debugging output for the presentation compiler."
-    - option: -Ypresentation-any-thread
+    - option: "-Ypresentation-any-thread"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Allow use of the presentation compiler from any thread."
-    - option: -Ypresentation-strict
+    - option: "-Ypresentation-strict"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Do not report type errors in sources with syntax errors."
-    - option: -Ypresentation-log
+    - option: "-Ypresentation-log"
       schema:
-        type: String
-        arg: file
+        type: "String"
+        arg: "file"
       description: "Log presentation compiler events into file."
-    - option: -Ypresentation-replay
+    - option: "-Ypresentation-replay"
       schema:
-        type: String
-        arg: file
+        type: "String"
+        arg: "file"
       description: "Replay presentation compiler events from file."
-    - option: -Ypresentation-delay
+    - option: "-Ypresentation-delay"
       schema:
-        type: Int
-        arg: miliseconds
+        type: "Int"
+        arg: "miliseconds"
         default: 0
         min: 0
         max: 999
@@ -888,124 +886,124 @@
 
 
 
-- category: Warning Settings
+- category: "Warning Settings"
   description: "This section assembles the `-X` and `-Y` options those influence the printing of warnings."
   options:
-    - option: -Xfatal-warnings
+    - option: "-Xfatal-warnings"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Fail the compilation if there are any warnings."
-    - option: -Ywarn-macros
+    - option: "-Ywarn-macros"
       schema:
-        type: Choice
-        arg: mode
+        type: "Choice"
+        arg: "mode"
         choices:
-        - choice: none
+        - choice: "none"
           description: "Do not inspect expansions or their original trees when generating unused symbol warnings."
-        - choice: before
+        - choice: "before"
           description: "Only inspect unexpanded user-written code for unused symbols."
-        - choice: after
+        - choice: "after"
           description: "Only inspect expanded trees when generating unused symbol warnings."
-        - choice: both
+        - choice: "both"
           description: "Inspect both user-written code and expanded trees when generating unused symbol warnings."
       description: "Enable lint warnings on macro expansions."
-    - option: -Ywarn-dead-code
+    - option: "-Ywarn-dead-code"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Warn when dead code is identified."
-    - option: -Ywarn-value-discard
+    - option: "-Ywarn-value-discard"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Warn when non-Unit expression results are unused."
       note: "To reduce noises for common idiom, warning are suppressed if type of results are `this.type`."
-    - option: -Ywarn-numeric-widen
+    - option: "-Ywarn-numeric-widen"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Warn when numerics are widened."
-    - option: -Ywarn-unused
+    - option: "-Ywarn-unused"
       schema:
-        type: Choice
+        type: "Choice"
         multiple: true
-        arg: warn
-        default: _
+        arg: "warn"
+        default: "_"
         choices:
-        - choice: imports
+        - choice: "imports"
           description: "Warn if an import selector is not referenced."
-        - choice: patvars
+        - choice: "patvars"
           description: "Warn if a variable bound in a pattern is unused."
-        - choice: privates
+        - choice: "privates"
           description: "Warn if a private member is unused."
-        - choice: locals
+        - choice: "locals"
           description: "Warn if a local definition is unused."
-        - choice: explicits
+        - choice: "explicits"
           description: "Warn if an explicit parameter is unused."
-        - choice: implicits
+        - choice: "implicits"
           description: "Warn if an implicit parameter is unused."
-        - choice: params
+        - choice: "params"
           description: "Enable `-Ywarn-unused:explicits,implicits`."
-        - choice: linted
+        - choice: "linted"
           description: "Enable `-Ywarn-unused:imports,privates,locals,implicits`."
           note: "Alias is `-Xlint:unused`."
       description: "Enable or disable specific `unused` warnings."
-    - option: -Ywarn-unused-import
+    - option: "-Ywarn-unused-import"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Warn when imports are unused."
-    - option: -Ywarn-extra-implicit
+    - option: "-Ywarn-extra-implicit"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Warn when more than one implicit parameter section is defined."
-    - option: -Ywarn-self-implicit
+    - option: "-Ywarn-self-implicit"
       schema:
-        type: Boolean
+        type: "Boolean"
       description: "Warn when an implicit resolves to an enclosing self-definition."
-    - option: -Xlint
+    - option: "-Xlint"
       schema:
-        type: Choice
+        type: "Choice"
         multiple: true
-        arg: warn
-        default: _
+        arg: "warn"
+        default: "_"
         choices:
-        - choice: adapted-args
+        - choice: "adapted-args"
           description: "Warn if an argument list is modified to match the receiver."
           note: "Alias is `-Ywarn-adapted-args`."
-        - choice: nullary-unit
+        - choice: "nullary-unit"
           description: "Warn when nullary methods return Unit."
           note: "Alias is `-Ywarn-nullary-unit`."
-        - choice: inaccessible
+        - choice: "inaccessible"
           description: "Warn about inaccessible types in method signatures."
           note: "Alias is `-Ywarn-inaccessible`."
-        - choice: nullary-override
+        - choice: "nullary-override"
           description: "Warn when non-nullary `def f()` overrides nullary `def f`."
           note: "Alias is `-Ywarn-nullary-override`."
-        - choice: infer-any
+        - choice: "infer-any"
           description: "Warn when a type argument is inferred to be `Any`."
           note: "Alias is `-Ywarn-infer-any`."
-        - choice: missing-interpolator
+        - choice: "missing-interpolator"
           description: "A string literal appears to be missing an interpolator id."
-        - choice: doc-detached
+        - choice: "doc-detached"
           description: "A Scaladoc comment appears to be detached from its element."
-        - choice: private-shadow
+        - choice: "private-shadow"
           description: "A private field (or class parameter) shadows a superclass field."
-        - choice: type-parameter-shadow
+        - choice: "type-parameter-shadow"
           description: "A local type parameter shadows a type already in scope."
-        - choice: poly-implicit-overload
+        - choice: "poly-implicit-overload"
           description: "Parameterized overloaded implicit methods are not visible as view bounds."
-        - choice: option-implicit
+        - choice: "option-implicit"
           description: "Option.apply used implicit view."
-        - choice: delayedinit-select
+        - choice: "delayedinit-select"
           description: "Selecting member of DelayedInit."
-        - choice: by-name-right-associative
+        - choice: "by-name-right-associative"
           description: "By-name parameter of right associative operator."
-        - choice: package-object-classes
+        - choice: "package-object-classes"
           description: "Class or object defined in package object."
-        - choice: unsound-match
+        - choice: "unsound-match"
           description: "Pattern match may not be typesafe."
-        - choice: stars-align
+        - choice: "stars-align"
           description: "Pattern sequence wildcard must align with sequence component."
-        - choice: constant
+        - choice: "constant"
           description: "Evaluation of a constant arithmetic expression results in an error."
-        - choice: unused
+        - choice: "unused"
           description: "Enable `-Ywarn-unused:imports,privates,locals,implicits`."
       description: "Enable or disable specific warnings."
       note: "If this options contains `unused`, it enables `-Ywarn-unused:linted`. Otherwise it disables `-Ywarn-unused:linted`."
