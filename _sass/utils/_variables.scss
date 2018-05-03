@@ -6,11 +6,11 @@
 //------------------------------------------------
 $brand-primary: #DC322F;
 $brand-secondary: #859900;
-$brand-tertiary: #5CC6E4;
+$brand-tertiary: #0080A3;
 //-------------------------------------------------
 $gray-darker: #002B36;
 $gray-dark: #073642;
-$gray: #15414C;
+$gray: #133942;
 $gray-li: #244E58;
 $gray-light: #E5EAEA;
 $gray-lighter: #F0F3F3;
@@ -53,7 +53,7 @@ $font-black: 900;
 
 // Link Colors
 //------------------------------------------------
-$base-link-color: darken($brand-tertiary, 15%);
+$base-link-color: $brand-tertiary;
 $hover-link-color: $brand-primary;
 
 // Border
