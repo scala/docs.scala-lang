@@ -428,7 +428,7 @@
 
     Those influencing to language semantics are likely to be deprecated in Scala 2.13 (see [scala/scala-dev#430](https://github.com/scala/scala-dev/issues/430)).
 
-    Some optimization-related options, e.g. `-opt:**` and `-opt-inline-form` are included in this section, since **REASON_HERE**.
+    Some optimization-related options, e.g. `-opt:**` and `-opt-inline-from` are included in this section, since **REASON_HERE**.
   options:
   - option: "-Y"
     schema:
