@@ -311,7 +311,8 @@
   - option: "-Xprint"
     schema:
       type: "Phases"
-    description: "Print out program after phases (see [Compilation Phases](#compilation-phases))"
+    description: "Print out program after phases"
+    note: "See [Compilation Phases](#compilation-phases)"
   - option: "-Xprint-pos"
     schema:
       type: "Boolean"
@@ -414,8 +415,8 @@
   - option: "-Xexperimental"
     schema:
       type: "Boolean"
-    description: "Enable experimental extensions in Scala 2.12 and earlier."
-    deprecated: "In 2.13 all options previously enabled by `-Xexperimental` are enabled by default or removed."
+    description: "Enable experimental extensions."
+    deprecated: "For in Scala 2.12 and earlier. In 2.13 all options previously enabled by `-Xexperimental` are enabled by default or removed."
   - option: "-Xmacro-settings"
     schema:
       type: "String"
@@ -449,15 +450,18 @@
   - option: "-Ybrowse"
     schema:
       type: "Phases"
-    description: "Browse the abstract syntax tree after phases (see [Compilation Phases](#compilation-phases))"
+    description: "Browse the abstract syntax tree after phases"
+    note: "See [Compilation Phases](#compilation-phases)"
   - option: "-Ycheck"
     schema:
       type: "Phases"
-    description: "Check the tree at the end of PHASES (see [Compilation Phases](#compilation-phases))"
+    description: "Check the tree at the end of phases"
+    note: "See [Compilation Phases](#compilation-phases)"
   - option: "-Yshow"
     schema:
       type: "Phases"
-    description: "(Requires -Xshow-class or -Xshow-object) Show after PHASES (see [Compilation Phases](#compilation-phases))"
+    description: "(Requires -Xshow-class or -Xshow-object) Show after phases"
+    note: "See [Compilation Phases](#compilation-phases)"
   - option: "-Ycompact-trees"
     schema:
       type: "Boolean"
@@ -538,7 +542,8 @@
   - option: "-Yskip"
     schema:
       type: "Phases"
-    description: "Skip phases (see [Compilation Phases](#compilation-phases))"
+    description: "Skip phases"
+    note: "See [Compilation Phases](#compilation-phases)"
   - option: "-Ygen-asmp"
     schema:
       type: "String"
@@ -552,13 +557,15 @@
   - option: "-Ystop-after"
     schema:
       type: "Phases"
-    description: "Stop after PHASES (see [Compilation Phases](#compilation-phases))"
+    description: "Stop after phases"
+    note: "See [Compilation Phases](#compilation-phases)"
     abbreviations:
     - "-stop"
   - option: "-Ystop-before"
     schema:
       type: "Phases"
-    description: "Stop before PHASES (see [Compilation Phases](#compilation-phases))"
+    description: "Stop before phases"
+    note: "See [Compilation Phases](#compilation-phases)"
   - option: "-Yrangepos"
     schema:
       type: "Boolean"
@@ -764,7 +771,8 @@
     schema:
       type: "Phases"
       default: "parser,typer,patmat,erasure,cleanup,jvm"
-    description: "Print compiler statistics for specific phases phases (default: parser,typer,patmat,erasure,cleanup,jvm) (see [Compilation Phases](#compilation-phases))"
+    description: "Print compiler statistics for specific phases phases (default: parser,typer,patmat,erasure,cleanup,jvm)"
+    note: "See [Compilation Phases](#compilation-phases)"
   - option: "-Yhot-statistics-enabled"
     schema:
       type: "Boolean"
