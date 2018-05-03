@@ -426,9 +426,9 @@
   description: |
     Options with `-Y` prefix are more experimental and unstable than those with `-X` prefix.
 
-    Those influencing to language semantics are likely to be deprecated in Scala 2.13 (see [scala/scala-dev#430](https://github.com/scala/scala-dev/issues/430)).
+    Some without `-Y` prefix (e.g. `-opt:**` and `-opt-inline-from`) are also included, since such granular optimization-related options are changeable.
 
-    Some optimization-related options, e.g. `-opt:**` and `-opt-inline-from` are included in this section, since **REASON_HERE**.
+    Those influencing to language semantics are likely to be deprecated in Scala 2.13 (see [scala/scala-dev#430](https://github.com/scala/scala-dev/issues/430)).
   options:
   - option: "-Y"
     schema:
