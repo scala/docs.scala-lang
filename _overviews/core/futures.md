@@ -834,7 +834,7 @@ completed, but does not retrieve its result. In the same way, calling
 that method will not throw an exception if the future is failed.
 
 The `Future` trait implements the `Awaitable` trait with methods
-method `ready()` and `result()`. These methods cannot be called directly
+`ready()` and `result()`. These methods cannot be called directly
 by the clients-- they can only be called by the execution context.
 
 
