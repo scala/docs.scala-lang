@@ -6,7 +6,7 @@ discourse: true
 permalink: /tutorials/:title.html
 ---
 
-By Adrian Null
+By Adriaan Moors
 
 ## Introduction
 [Maven][1] is a build/project management tool. It favours "convention over configuration"; it can greatly simplify builds for "standard" projects and a Maven user can usually understand the structure of another Maven project just by looking at its `pom.xml` (Project Object Model). Maven is a plugin-based architecture, making it easy to add new libraries and modules to existing projects. For example, adding a new dependency usually involves only 5 extra lines in the `pom.xml`. These "artifacts" are downloaded from repositories such as [The Central Repository][2].
