@@ -435,7 +435,7 @@ class Capped1[A] private (val capacity: Int, val length: Int, offset: Int, elems
 
   def apply(i: Int): A = elems((i + offset) % capacity).asInstanceOf[A]
 
-  def iterator(): Iterator[A] = new AbstractIterator[A] {
+  def iterator: Iterator[A] = new AbstractIterator[A] {
     private var current = 0
     def hasNext = current < self.length
     def next(): A = {
@@ -546,7 +546,7 @@ class Capped2[A] private (val capacity: Int, val length: Int, offset: Int, elems
   @`inline` def :+ [B >: A](elem: B): Capped2[B] = // as before
   def apply(i: Int): A = // as before
 
-  def iterator(): Iterator[A] = // as before
+  def iterator: Iterator[A] = // as before
 
   val iterableFactory: IterableFactory[Capped2] = new Capped2Factory(capacity)
   protected[this] def fromSpecificIterable(coll: Iterable[A]): Capped2[A] = iterableFactory.from(coll)
@@ -649,7 +649,7 @@ final class Capped[A] private (val capacity: Int, val length: Int, offset: Int, 
 
   def apply(i: Int): A = elems((i + offset) % capacity).asInstanceOf[A]
 
-  def iterator(): Iterator[A] = view.iterator()
+  def iterator: Iterator[A] = view.iterator
 
   override def view: IndexedView[A] = new IndexedView[A] {
     def length: Int = self.length
@@ -1030,7 +1030,7 @@ final class RNA private (
 
   // Optional re-implementation of iterator,
   // to make it more efficient.
-  override def iterator(): Iterator[Base] = new AbstractIterator[Base] {
+  override def iterator: Iterator[Base] = new AbstractIterator[Base] {
     private var i = 0
     private var b = 0
     def hasNext: Boolean = i < rna.length
@@ -1177,10 +1177,10 @@ class PrefixMap[A]
       suffixes(leading) withPrefix (s substring 1)
     }
 
-  def iterator(): Iterator[(String, A)] =
-    (for (v <- value.iterator()) yield ("", v)) ++
-      (for ((chr, m) <- suffixes.iterator();
-            (s, v) <- m.iterator()) yield (chr +: s, v))
+  def iterator: Iterator[(String, A)] =
+    (for (v <- value.iterator) yield ("", v)) ++
+      (for ((chr, m) <- suffixes.iterator;
+            (s, v) <- m.iterator) yield (chr +: s, v))
 
   def add(kv: (String, A)): this.type = {
     withPrefix(kv._1).value = Some(kv._2)
@@ -1290,7 +1290,7 @@ creating sub-maps as necessary if some prefix of characters is not yet
 contained as a path in the tree.
 
 The last abstract method to implement for a mutable map is
-`iterator()`. This method needs to produce an iterator that yields all
+`iterator`. This method needs to produce an iterator that yields all
 key/value pairs stored in the map. For any given prefix map this
 iterator is composed of the following parts: First, if the map
 contains a defined value, `Some(x)`, in the `value` field at its root,
@@ -1300,10 +1300,10 @@ all submaps stored in the `suffixes` field, but it needs to add a
 character in front of every key string returned by those
 iterators. More precisely, if `m` is the submap reached from the root
 through a character `chr`, and `(s, v)` is an element returned from
-`m.iterator()`, then the root's iterator will return `(chr +: s, v)`
+`m.iterator`, then the root's iterator will return `(chr +: s, v)`
 instead. This logic is implemented quite concisely as a concatenation
-of two `for` expressions in the implementation of the `iterator()` method in
-`PrefixMap`. The first `for` expression iterates over `value.iterator()`. This
+of two `for` expressions in the implementation of the `iterator` method in
+`PrefixMap`. The first `for` expression iterates over `value.iterator`. This
 makes use of the fact that `Option` values define an iterator method
 that returns either no element, if the option value is `None`, or
 exactly one element `x`, if the option value is `Some(x)`.
