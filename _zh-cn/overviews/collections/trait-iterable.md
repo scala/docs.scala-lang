@@ -11,14 +11,14 @@ num: 4
 language: zh-cn
 ---
 
-自下而上的容器（collection）层次结构具有可迭代的Trait。Trait的所有方法可定义为一个抽象方法，逐个生成容器（collection）元素迭代器。Traversable Trait的foreach方法实现了迭代器的Iterable。下面是具体的实现。
+容器（collection）结构的上层还有另一个trait。这个trait里所有方法的定义都基于一个抽象方法，迭代器（iterator，会逐一的产生集合的所有元素）。从Traversable trait里继承来的foreach方法在这里也是利用iterator实现。下面是具体的实现。
 
     def foreach[U](f: Elem => U): Unit = {
       val it = iterator
       while (it.hasNext) f(it.next())
     }
 
-许多Iterable 的子类覆写了Iteable的foreach标准实现，因为它们提供了更多有效的实现。记住，由于性能问题，foreach是Traversable所有操作能够实现的基础。
+许多Iterable 的子类覆写了Iteable的foreach标准实现，因为它们能提供更高效的实现。记住，foreach是Traversable所有操作的基础，所以它的性能表现很关键。
 
 Iterable有两个方法返回迭代器：grouped和sliding。然而，这些迭代器返回的不是单个元素，而是原容器（collection）元素的全部子序列。这些最大的子序列作为参数传给这些方法。grouped方法返回元素的增量分块，sliding方法生成一个滑动元素的窗口。两者之间的差异通过REPL的作用能够清楚看出。
 
