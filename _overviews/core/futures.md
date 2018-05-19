@@ -338,47 +338,21 @@ a `List[String]`-- a list of recent textual posts:
 
 The `onComplete` method is general in the sense that it allows the
 client to handle the result of both failed and successful future
-computations. To handle only successful results, the `onSuccess`
-callback is used (which takes a partial function):
+computations. In the case where only successful results need to be
+handled, the `foreach` callback can be used:
 
     val f: Future[List[String]] = Future {
       session.getRecentPosts
     }
 
-    f onSuccess {
-      case posts => for (post <- posts) println(post)
+    f foreach { posts =>
+      for (post <- posts) println(post)
     }
 
-To handle failed results, the `onFailure` callback is used:
-
-    val f: Future[List[String]] = Future {
-      session.getRecentPosts
-    }
-
-    f onFailure {
-      case t => println("An error has occurred: " + t.getMessage)
-    }
-
-    f onSuccess {
-      case posts => for (post <- posts) println(post)
-    }
-
-The `onFailure` callback is only executed if the future fails, that
-is, if it contains an exception.
-
-Since partial functions have the `isDefinedAt` method, the
-`onFailure` method only triggers the callback if it is defined for a
-particular `Throwable`. In the following example the registered `onFailure`
-callback is never triggered:
-
-    val f = Future {
-      2 / 0
-    }
-
-    f onFailure {
-      case npe: NullPointerException =>
-        println("I'd be amazed if this printed out.")
-    }
+`Future`s provide a clean way of handling only failed results using
+the `failed` projection which converts a `Failure[Throwable]` to a
+`Success[Throwable]`. An example of doing this is provided in the
+section below on [projections](#projections).
 
 Coming back to the previous example with searching for the first
 occurrence of a keyword, you might want to print the position
@@ -389,16 +363,14 @@ of the keyword to the screen:
       source.toSeq.indexOfSlice("myKeyword")
     }
 
-    firstOccurrence onSuccess {
-      case idx => println("The keyword first appears at position: " + idx)
+    firstOccurrence onComplete {
+      case Success(idx) => println("The keyword first appears at position: " + idx)
+      case Failure(t) => println("Could not process file: " + t.getMessage)
     }
 
-    firstOccurrence onFailure {
-      case t => println("Could not process file: " + t.getMessage)
-    }
 
-The `onComplete`, `onSuccess`, and
-`onFailure` methods have result type `Unit`, which means invocations
+The `onComplete` and `foreach` methods both have result type `Unit`, which
+means invocations
 of these methods cannot be chained. Note that this design is intentional,
 to avoid suggesting that chained
 invocations may imply an ordering on the execution of the registered
@@ -427,12 +399,12 @@ text.
       "na" * 16 + "BATMAN!!!"
     }
 
-    text onSuccess {
-      case txt => totalA += txt.count(_ == 'a')
+    text foreach { txt =>
+      totalA += txt.count(_ == 'a')
     }
 
-    text onSuccess {
-      case txt => totalA += txt.count(_ == 'A')
+    text foreach { txt =>
+      totalA += txt.count(_ == 'A')
     }
 
 Above, the two callbacks may execute one after the other, in
@@ -448,9 +420,9 @@ For the sake of completeness the semantics of callbacks are listed here:
 ensures that the corresponding closure is invoked after
 the future is completed, eventually.
 
-2. Registering an `onSuccess` or `onFailure` callback has the same
+2. Registering a `foreach` callback has the same
 semantics as `onComplete`, with the difference that the closure is only called
-if the future is completed successfully or fails, respectively.
+if the future is completed successfully.
 
 3. Registering a callback on the future which is already completed
 will result in the callback being executed eventually (as implied by
@@ -488,21 +460,21 @@ be done using callbacks:
       connection.getCurrentValue(USD)
     }
 
-    rateQuote onSuccess { case quote =>
+    rateQuote foreach { quote =>
       val purchase = Future {
         if (isProfitable(quote)) connection.buy(amount, quote)
         else throw new Exception("not profitable")
       }
 
-      purchase onSuccess {
-        case _ => println("Purchased " + amount + " USD")
+      purchase foreach { _ =>
+        println("Purchased " + amount + " USD")
       }
     }
 
 We start by creating a future `rateQuote` which gets the current exchange
 rate.
 After this value is obtained from the server and the future successfully
-completed, the computation proceeds in the `onSuccess` callback and we are
+completed, the computation proceeds in the `foreach` callback and we are
 ready to decide whether to buy or not.
 We therefore create another future `purchase` which makes a decision to buy only if it's profitable
 to do so, and then sends a request.
@@ -510,16 +482,16 @@ Finally, once the purchase is completed, we print a notification message
 to the standard output.
 
 This works, but is inconvenient for two reasons. First, we have to use
-`onSuccess`, and we have to nest the second `purchase` future within
+`foreach` and nest the second `purchase` future within
 it. Imagine that after the `purchase` is completed we want to sell
 some other currency. We would have to repeat this pattern within the
-`onSuccess` callback, making the code overly indented, bulky and hard
+`foreach` callback, making the code overly indented, bulky and hard
 to reason about.
 
 Second, the `purchase` future is not in the scope with the rest of
-the code-- it can only be acted upon from within the `onSuccess`
+the code-- it can only be acted upon from within the `foreach`
 callback. This means that other parts of the application do not
-see the `purchase` future and cannot register another `onSuccess`
+see the `purchase` future and cannot register another `foreach`
 callback to it, for example, to sell some other currency.
 
 For these two reasons, futures provide combinators which allow a
@@ -541,11 +513,11 @@ Let's rewrite the previous example using the `map` combinator:
       else throw new Exception("not profitable")
     }
 
-    purchase onSuccess {
-      case _ => println("Purchased " + amount + " USD")
+    purchase foreach { _ =>
+      println("Purchased " + amount + " USD")
     }
 
-By using `map` on `rateQuote` we have eliminated one `onSuccess` callback and,
+By using `map` on `rateQuote` we have eliminated one `foreach` callback and,
 more importantly, the nesting.
 If we now decide to sell some other currency, it suffices to use
 `map` on `purchase` again.
@@ -567,8 +539,8 @@ contains the same exception. This exception propagating semantics is
 present in the rest of the combinators, as well.
 
 One of the design goals for futures was to enable their use in for-comprehensions.
-For this reason, futures also have the `flatMap`, `filter` and
-`foreach` combinators. The `flatMap` method takes a function that maps the value
+For this reason, futures also have the `flatMap` and `withFilter`
+combinators. The `flatMap` method takes a function that maps the value
 to a new future `g`, and then returns a future which is completed once
 `g` is completed.
 
@@ -586,8 +558,8 @@ Here is an example of `flatMap` and `withFilter` usage within for-comprehensions
       if isProfitable(usd, chf)
     } yield connection.buy(amount, chf)
 
-    purchase onSuccess {
-      case _ => println("Purchased " + amount + " CHF")
+    purchase foreach { _ =>
+      println("Purchased " + amount + " CHF")
     }
 
 The `purchase` future is completed only once both `usdQuote`
@@ -626,13 +598,6 @@ calling `filter` has exactly the same effect as does calling `withFilter`.
 
 The relationship between the `collect` and `filter` combinator is similar
 to the relationship of these methods in the collections API.
-
-It is important to note that calling the `foreach` combinator does not
-block to traverse the value once it becomes available.
-Instead, the function for the `foreach` gets asynchronously
-executed only if the future is completed successfully. This means that
-the `foreach` has exactly the same semantics as the `onSuccess`
-callback.
 
 Since the `Future` trait can conceptually contain two types of values
 (computation results and exceptions), there exists a need for
@@ -688,7 +653,7 @@ the case it fails to obtain the dollar value:
 
 	val anyQuote = usdQuote fallbackTo chfQuote
 
-	anyQuote onSuccess { println(_) }
+	anyQuote foreach { println(_) }
 
 The `andThen` combinator is used purely for side-effecting purposes.
 It returns a new future with exactly the same result as the current
@@ -731,12 +696,18 @@ which prints the exception to the screen:
     }
     for (exc <- f.failed) println(exc)
 
+The for-comprehension in this example is translated to:
+
+    f.failed.foreach(exc => println(exc))
+
+Because `f` is unsuccessful here, the closure is registered to
+the `foreach` callback on a newly-successful `Future[Throwable]`.
 The following example does not print anything to the screen:
 
-    val f = Future {
+    val g = Future {
       4 / 2
     }
-    for (exc <- f.failed) println(exc)
+    for (exc <- g.failed) println(exc)
 
 <!--
 There is another projection called `timedout` which is specific to the
@@ -844,9 +815,9 @@ by the clients-- they can only be called by the execution context.
 When asynchronous computations throw unhandled exceptions, futures
 associated with those computations fail. Failed futures store an
 instance of `Throwable` instead of the result value. `Future`s provide
-the `onFailure` callback method, which accepts a `PartialFunction` to
-be applied to a `Throwable`. The following special exceptions are
-treated differently:
+the `failed` projection method, which allows this `Throwable` to be
+treated as the success value of another `Future`. The following special
+exceptions are treated differently:
 
 1. `scala.runtime.NonLocalReturnControl[_]` -- this exception holds a value
 associated with the return. Typically, `return` constructs in method
@@ -903,8 +874,8 @@ that value. This passing of the value is done using a promise.
 
     val consumer = Future {
       startDoingSomething()
-      f onSuccess {
-        case r => doSomethingWithResult()
+      f foreach { r =>
+        doSomethingWithResult()
       }
     }
 
@@ -977,8 +948,8 @@ the result of that future as well. The following program prints `1`:
 
     p completeWith f
 
-    p.future onSuccess {
-      case x => println(x)
+    p.future foreach { x =>
+      println(x)
     }
 
 When failing a promise with an exception, three subtypes of `Throwable`s
@@ -1001,12 +972,12 @@ Here is an example of how to do it:
     def first[T](f: Future[T], g: Future[T]): Future[T] = {
       val p = promise[T]
 
-      f onSuccess {
-        case x => p.trySuccess(x)
+      f foreach { x =>
+        p.trySuccess(x)
       }
 
-      g onSuccess {
-        case x => p.trySuccess(x)
+      g foreach { x =>
+        p.trySuccess(x)
       }
 
       p.future
