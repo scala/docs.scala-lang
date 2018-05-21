@@ -38,7 +38,7 @@ Like the 2.12.x series, the Scala 2.13.x series will support Java 8 and higher. 
 
 ## JDK 9 & 10 compatibility notes
 
-As of Scala 2.12.5 and 2.11.12, **JDK 9 & 10 support is incomplete**. Notably, `scalac` will not enforce the restrictions of the Java Platform Module System, which means that code that typechecks may incur linkage errors at runtime.
+As of Scala 2.12.6 and 2.11.12, **JDK 9 & 10 support is incomplete**. Notably, `scalac` will not enforce the restrictions of the Java Platform Module System, which means that code that typechecks may incur linkage errors at runtime.
 
 JDK 9 & 10 support requires minimum sbt version 1.1.0, or 0.13.17 in the 0.13.x series.
 
