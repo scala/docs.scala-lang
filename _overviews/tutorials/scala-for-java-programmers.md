@@ -532,7 +532,9 @@ computes its derivative relative to `x` and then `y`.
       println("Derivative relative to y:\n " + derive(exp, "y"))
     }
 
-Executing this program, we get the expected output:
+You will need to wrap the `Environment` type and `eval`, `derive`, and
+`main` methods in a `Calc` object before compiling.  Executing this
+program, we get the expected output:
 
     Expression: Sum(Sum(Var(x),Var(x)),Sum(Const(7),Var(y)))
     Evaluation with x=5, y=7: 24
