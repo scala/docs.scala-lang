@@ -9,17 +9,17 @@ languages: [zh-cn]
 permalink: /overviews/core/:title.html
 ---
 
-**Martin Odersky and Lex Spoon**
+**Martin Odersky, Lex Spoon and Julien Richard-Foy**
 
 These pages describe the architecture of the Scala collections
 framework in detail. Compared to
-[the Scala 2.8 Collections API]({{ site.baseurl }}/overviews/collections/introduction.html) you
+[the Collections Introduction]({{ site.baseurl }}/overviews/collections/introduction.html) you
 will find out more about the internal workings of the framework. You
 will also learn how this architecture helps you define your own
 collections in a few lines of code, while reusing the overwhelming
 part of collection functionality from the framework.
 
-[The Scala 2.8 Collections API]({{ site.baseurl }}/overviews/collections/introduction.html)
+[The Collections API]({{ site.baseurl }}/overviews/collections/introduction.html)
 contains a large number of collection
 operations, which exist uniformly on many different collection
 implementations. Implementing every collection operation anew for
@@ -27,7 +27,7 @@ every collection type would lead to an enormous amount of code, most
 of which would be copied from somewhere else. Such code duplication
 could lead to inconsistencies over time, when an operation is added or
 modified in one part of the collection library but not in others. The
-principal design objective of the new collections framework was to
+principal design objective of the collections framework is to
 avoid any duplication, defining every operation in as few places as
 possible. (Ideally, everything should be defined in one place only,
 but there are a few exceptions where things needed to be redefined.)
@@ -38,286 +38,667 @@ templates and other classes and traits that constitute the "building
 blocks" of the framework, as well as the construction principles they
 support.
 
-## Builders ##
-
-An outline of the `Builder` trait:
-
-    package scala.collection.mutable
-
-    trait Builder[-Elem, +To] {
-      def +=(elem: Elem): this.type
-      def result(): To
-      def clear(): Unit
-      def mapResult[NewTo](f: To => NewTo): Builder[Elem, NewTo] = ...
-    }
-
-Almost all collection operations are implemented in terms of
-*traversals* and *builders*. Traversals are handled by `Traversable`'s
-`foreach` method, and building new collections is handled by instances
-of class `Builder`. The listing above presents a slightly abbreviated
-outline of this trait.
-
-You can add an element `x` to a builder `b` with `b += x`. There's also
-syntax to add more than one element at once, for instance `b += (x, y)`.
-Adding another collection with `b ++= xs` works as for buffers (in fact,
-buffers are an enriched
-version of builders). The `result()` method returns a collection from a
-builder. The state of the builder is undefined after taking its
-result, but it can be reset into a new empty state using
-`clear()`. Builders are generic in both the element type, `Elem`, and in
-the type, `To`, of collections they return.
-
-Often, a builder can refer to some other builder for assembling the
-elements of a collection, but then would like to transform the result
-of the other builder, for example to give it a different type. This
-task is simplified by method `mapResult` in class `Builder`. Suppose for
-instance you have an array buffer `buf`. Array buffers are builders for
-themselves, so taking the `result()` of an array buffer will return the
-same buffer. If you want to use this buffer to produce a builder that
-builds arrays, you can use `mapResult` like this:
-
-    scala> val buf = new ArrayBuffer[Int]
-    buf: scala.collection.mutable.ArrayBuffer[Int] = ArrayBuffer()
-
-    scala> val bldr = buf mapResult (_.toArray)
-    bldr: scala.collection.mutable.Builder[Int,Array[Int]]
-      = ArrayBuffer()
-
-The result value, `bldr`, is a builder that uses the array buffer, `buf`,
-to collect elements. When a result is demanded from `bldr`, the result
-of `buf` is computed, which yields the array buffer `buf` itself. This
-array buffer is then mapped with `_.toArray` to an array. So the end
-result is that `bldr` is a builder for arrays.
-
 ## Factoring out common operations ##
 
-### Outline of trait TraversableLike ###
+This section presents the variability found in collections, which has to
+be abstracted over to define reusable operation implementations.
 
-    package scala.collection
+We can group collection operations into two categories:
 
-    trait TraversableLike[+Elem, +Repr] {
-      def newBuilder: Builder[Elem, Repr] // deferred
-      def foreach[U](f: Elem => U): Unit  // deferred
-              ...
-      def filter(p: Elem => Boolean): Repr = {
-        val b = newBuilder
-        foreach { elem => if (p(elem)) b += elem }
-        b.result
-      }
-    }
+- **transformation** operations, which return another collection (e.g.
+  `map`, `filter`, `zip`, …),
+- **reduction** operations, which return a single value (e.g. `isEmpty`,
+  `foldLeft`, `find`, …).
 
-The main design objectives of the collection library redesign were to
-have, at the same time, natural types and maximal sharing of
-implementation code. In particular, Scala's collections follow the
-"same-result-type" principle: wherever possible, a transformation
-method on a collection will yield a collection of the same type. For
-instance, the `filter` operation should yield, on every collection type,
-an instance of the same collection type. Applying `filter` on a `List`
-should give a `List`; applying it on a `Map` should give a `Map`, and so
-on. In the rest of this section, you will find out how this is
-achieved.
+Transformation operations are harder to implement in template traits
+because we want them to return collection types that are unknown yet.
+For instance, consider the signature of the `map` operation on `List[A]`
+and `Vector[A]`:
 
-The Scala collection library avoids code duplication and achieves the
-"same-result-type" principle by using generic builders and traversals
-over collections in so-called *implementation traits*. These traits are
-named with a `Like` suffix; for instance, `IndexedSeqLike` is the
-implementation trait for `IndexedSeq`, and similarly, `TraversableLike` is
-the implementation trait for `Traversable`. Collection traits such as
-`Traversable` or `IndexedSeq` inherit all their concrete method
-implementations from these traits. Implementation traits have two type
-parameters instead of one for normal collections. They parameterize
-not only over the collection's element type, but also over the
-collection's *representation type*, i.e., the type of the underlying
-collection, such as `Seq[T]` or `List[T]`. For instance, here is the
-header of trait `TraversableLike`:
+~~~ scala
+trait List[A] {
+  def map[B](f: A => B): List[B]
+}
 
-    trait TraversableLike[+Elem, +Repr] { ... }
+trait Vector[A] {
+  def map[B](f: A => B): Vector[B]
+}
+~~~
 
-The type parameter, `Elem`, stands for the element type of the
-traversable whereas the type parameter `Repr` stands for its
-representation. There are no constraints on `Repr`. In particular `Repr`
-might be instantiated to a type that is itself not a subtype of
-`Traversable`. That way, classes outside the collections hierarchy such
-as `String` and `Array` can still make use of all operations defined in a
-collection implementation trait.
+To generalize the type signature of `map` we have to abstract over
+the resulting *collection type constructor*.
 
-Taking `filter` as an example, this operation is defined once for all
-collection classes in the trait `TraversableLike`. An outline of the
-relevant code is shown in the above [outline of trait
-`TraversableLike`](#outline-of-trait-traversablelike). The trait declares
-two abstract methods, `newBuilder`
-and `foreach`, which are implemented in concrete collection classes. The
-`filter` operation is implemented in the same way for all collections
-using these methods. It first constructs a new builder for the
-representation type `Repr`, using `newBuilder`. It then traverses all
-elements of the current collection, using `foreach`. If an element `x`
-satisfies the given predicate `p` (i.e., `p(x)` is `true`), it is added to
-the builder. Finally, the elements collected in the builder are
-returned as an instance of the `Repr` collection type by calling the
-builder's `result` method.
+A slightly different example is `filter`. Consider its type signature on
+`List[A]` and `Map[K, V]`:
 
-A bit more complicated is the `map` operation on collections. For
-instance, if `f` is a function from `String` to `Int`, and `xs` is a
-`List[String]`, then `xs map f` should give a `List[Int]`. Likewise,
-if `ys` is an `Array[String]`, then `ys map f` should give an
-`Array[Int]`. The question is how do we achieve that without duplicating
-the definition of the `map` method in lists and arrays. The
-`newBuilder`/`foreach` framework shown in
-[trait `TraversableLike`](#outline-of-trait-traversablelike) is
-not sufficient for this because it only allows creation of new
-instances of the same collection *type* whereas `map` needs an
-instance of the same collection *type constructor*, but possibly with
-a different element type.
+~~~ scala
+trait List[A] {
+  def filter(p: A => Boolean): List[A]
+}
 
-What's more, even the result type constructor of a function like `map`
-might depend in non-trivial ways on the other argument types. Here is
-an example:
+trait Map[K, V] {
+  def filter(p: ((K, V)) => Boolean): Map[K, V]
+}
+~~~
 
-    scala> import collection.immutable.BitSet
-    import collection.immutable.BitSet
+To generalize the type signature of `filter` we have to abstract
+over the resulting *collection type*.
 
-    scala> val bits = BitSet(1, 2, 3)
-    bits: scala.collection.immutable.BitSet = BitSet(1, 2, 3)
+In summary, operations that change the elements type (`map`,
+`flatMap`, `collect`, etc.) need to abstract over the resulting
+collection type constructor, and operations that keep the same
+elements type (`filter`, `take`, `drop`, etc.) need to abstract
+over the resulting collection type.
 
-    scala> bits map (_ * 2)
-    res13: scala.collection.immutable.BitSet = BitSet(2, 4, 6)
+### Abstracting over collection types ###
 
-    scala> bits map (_.toFloat)
-    res14: scala.collection.immutable.Set[Float]
-      = Set(1.0, 2.0, 3.0)
+The template trait `IterableOps` implements the operations available
+on the `Iterable[A]` collection type.
 
-If you `map` the doubling function `_ * 2` over a bit set you obtain
-another bit set. However, if you map the function `(_.toFloat)` over the
-same bit set, the result is a general `Set[Float]`. Of course, it can't
-be a bit set because bit sets contain `Int`s, not `Float`s.
+Here is the header of trait `IterableOps`:
 
-Note that `map`'s result type depends on the type of function that's
-passed to it. If the result type of that function argument is again an
-`Int`, the result of `map` is a `BitSet`, but if the result type of the
-function argument is something else, the result of `map` is just a
-`Set`. You'll find out soon how this type-flexibility is achieved in
-Scala.
+~~~ scala
+trait IterableOps[+A, +CC[_], +C] { … }
+~~~
 
-The problem with `BitSet` is not an isolated case. Here are two more
-interactions with the interpreter that both map a function over a `Map`:
+The type parameter `A` stands for the element type of the iterable,
+the type parameter `CC` stands for the collection type constructor
+and the type parameter `C` stands for the collection type.
 
-    scala> Map("a" -> 1, "b" -> 2) map { case (x, y) => (y, x) }
-    res3: scala.collection.immutable.Map[Int,java.lang.String]
-      = Map(1 -> a, 2 -> b)
+This allows us to define the signature of `filter` and `map` like
+so:
 
-    scala> Map("a" -> 1, "b" -> 2) map { case (x, y) => y }
-    res4: scala.collection.immutable.Iterable[Int]
-      = List(1, 2)
+~~~ scala
+trait IterableOps[+A, +CC[_], +C] {
+  def filter(p: A => Boolean): C = …
+  def map[B](f: A => B): CC[B] = …
+}
+~~~
 
-The first function swaps two arguments of a key/value pair. The result
-of mapping this function is again a map, but now going in the other
-direction. In fact, the first expression yields the inverse of the
-original map, provided it is invertible. The second function, however,
-maps the key/value pair to an integer, namely its value component. In
-that case, we cannot form a `Map` from the results, but we can still
-form an `Iterable`, a supertrait of `Map`.
+And then leaf collection types appropriately instantiate the type
+parameters. For instance, in the case of `List[A]` we want `CC` to
+be `List` and `C` to be `List[A]`:
 
-You might ask, why not restrict `map` so that it can always return the
-same kind of collection? For instance, on bit sets `map` could accept
-only `Int`-to-`Int` functions and on `Map`s it could only accept
-pair-to-pair functions. Not only are such restrictions undesirable
-from an object-oriented modelling point of view, they are illegal
-because they would violate the Liskov substitution principle: A `Map` *is*
-an `Iterable`. So every operation that's legal on an `Iterable` must also
-be legal on a `Map`.
+~~~ scala
+trait List[+A] extends Iterable[A]
+  with IterableOps[A, List, List[A]]
+~~~
 
-Scala solves this problem instead with overloading: not the simple
-form of overloading inherited by Java (that would not be flexible
-enough), but the more systematic form of overloading that's provided
-by implicit parameters.
+### Four branches of templates traits ###
 
-Implementation of `map` in `TraversableLike`:
+The astute reader might have noticed that the given type signature
+for the `map` operation doesn’t work with `Map` collections because
+the `CC[_]` type parameter of the `IterableOps` trait takes one type
+parameter whereas `Map[K, V]` takes two type parameters.
 
-    def map[B, That](f: Elem => B)
-        (implicit bf: CanBuildFrom[Repr, B, That]): That = {
-      val b = bf(this)
-      this.foreach(x => b += f(x))
-      b.result
-    }
+To support collection types constructors with two types parameters
+we have another template trait named `MapOps`:
 
-The listing above shows trait `TraversableLike`'s implementation of
-`map`. It's quite similar to the implementation of `filter` shown in [trait
-`TraversableLike`](#outline-of-trait-traversablelike).
-The principal difference is that where `filter` used
-the `newBuilder` method, which is abstract in `TraversableLike`, `map`
-uses a *builder factory* that's passed as an additional implicit
-parameter of type `CanBuildFrom`.
+~~~ scala
+trait MapOps[K, +V, +CC[_, _], +C] extends IterableOps[(K, V), Iterable, C] {
+  def map[K2, V2](f: ((K, V)) => (K2, V2)): CC[K2, V2] = …
+}
+~~~ 
 
-The `CanBuildFrom` trait:
+And then `Map[K, V]` can extend this trait and appropriately instantiate its
+type parameters:
 
-    package scala.collection.generic
+~~~ scala
+trait Map[K, V] extends Iterable[(K, V)]
+  with MapOps[K, V, Map, Map[K, V]]
+~~~
 
-    trait CanBuildFrom[-From, -Elem, +To] {
-      // Creates a new builder
-      def apply(from: From): Builder[Elem, To]
-    }
+Note that the `MapOps` trait inherits from `IterableOps` so that operations
+defined in `IterableOps` are also available in `MapOps`. Also note that
+the collection type constructor passed to the `IterableOps` trait is
+`Iterable`. This means that `Map[K, V]` inherits two overloads of the `map`
+operation:
 
-The listing above shows the definition of the trait `CanBuildFrom`,
-which represents builder factories. It has three type parameters: `From` indicates
-the type for which this builder factory applies, `Elem` indicates the element
-type of the collection to be built, and `To` indicates the type of
-collection to build. By defining the right implicit
-definitions of builder factories, you can tailor the right typing
-behavior as needed. Take class `BitSet` as an example. Its companion
-object would contain a builder factory of type `CanBuildFrom[BitSet, Int, BitSet]`.
-This means that when operating on a `BitSet` you can
-construct another `BitSet` provided the element type of the collection to build
-is `Int`. If this is not the case, the compiler will check the superclasses, and
-fall back to the implicit builder factory defined in
-`mutable.Set`'s companion object. The type of this more general builder
-factory, where `A` is a generic type parameter, is:
+~~~ scala
+// from MapOps
+def map[K2, V2](f: ((K, V)) => (K2, V2)): Map[K2, V2]
 
-    CanBuildFrom[Set[_], A, Set[A]]
+// from IterableOps
+def map[B](f: ((K, V)) => B): Iterable[B]
+~~~
 
-This means that when operating on an arbitrary `Set` (expressed by the
-existential type `Set[_]`) you can build a `Set` again, no matter what the
-element type `A` is. Given these two implicit instances of `CanBuildFrom`,
-you can then rely on Scala's rules for implicit resolution to pick the
-one that's appropriate and maximally specific.
+At use-site, if you call the `map` operation, the overloading resolution rules
+first try the definition that comes from `MapOps` (because `MapOps` is more
+specific than `IterableOps`), which returns a `Map`, but if it doesn’t type
+check (in case the return type of the function passed to the `map` call is not
+a pair), it fallbacks to the definition from `IterableOps`, which returns an
+`Iterable`. This is how we follow the “same-result-type” principle: wherever
+possible a transformation method on a collection yields a collection of the
+same type.
 
-So implicit resolution provides the correct static types for tricky
-collection operations such as `map`. But what about the dynamic types?
-Specifically, say you map some function over a `List` value that has
-`Iterable` as its static type:
+In summary, the fact that `Map` collection types take two type parameters makes
+it impossible to unify their transformation operations with the ones from
+`IterableOps`, hence the specialized `MapOps` template trait.
 
-    scala> val xs: Iterable[Int] = List(1, 2, 3)
-    xs: Iterable[Int] = List(1, 2, 3)
+There is another situation where the type signatures of the transformation
+operations defined in `IterableOps` don’t match the type signature of a
+more concrete collection type: `SortedSet[A]`. In that case the type
+signature of the `map` operation is the following:
 
-    scala> val ys = xs map (x => x * x)
-    ys: Iterable[Int] = List(1, 4, 9)
+~~~ scala
+def map[B](f: A => B)(implicit ord: Ordering[B]): SortedSet[B]
+~~~
 
-The static type of `ys` above is `Iterable`, as expected. But its dynamic
-type is (and should still be) `List`! This behavior is achieved by one
-more indirection. The `apply` method in `CanBuildFrom` is passed the
-source collection as argument. Most builder factories for generic
-traversables (in fact all except builder factories for leaf classes)
-forward the call to a method `genericBuilder` of a collection. The
-`genericBuilder` method in turn calls the builder that belongs to the
-collection in which it is defined. So Scala uses static implicit
-resolution to resolve constraints on the types of `map`, and virtual
-dispatch to pick the best dynamic type that corresponds to these
-constraints.
+The difference with the signature we have in `IterableOps` is that here
+we need an implicit `Ordering` instance for the type of elements.
 
-In the current example, the static implicit resolution will pick the
-`Iterable`'s `CanBuildFrom`, which calls `genericBuilder` on the value it
-received as argument. But at runtime, because of virtual dispatch, it is
-`List.genericBuilder` that gets called rather than `Iterable.genericBuilder`,
-and so map builds a `List`.
+Like for `Map`, `SortedSet` needs a specialized template trait with
+overloads for transformation operations:
 
-## Integrating a new collection: RNA sequences ##
+~~~ scala
+trait SortedSetOps[A, +CC[_], +C] extends IterableOps[A, Set, C] {
+
+  def map[B](f: A => B)(implicit ord: Ordering[B]): CC[B] = …
+
+}
+~~~
+
+And then collection types that inherit the `SortedSetOps` trait appropriately
+instantiate its type parameters:
+
+~~~ scala
+trait SortedSet[A] extends SortedSetOps[A, SortedSet, SortedSet[A]]
+~~~
+
+Last, there is a fourth kind of collection that requires a specialized template
+trait: `SortedMap[K, V]`. This type of collection has two type parameters and
+needs an implicit ordering instance on the type of keys. Therefore we have a
+`SortedMapOps` template trait that provides the appropriate overloads.
+
+In total, we’ve seen that we have four branches of template traits:
+
+
+  kind     |  not sorted   |  sorted
+===========|===============|===============
+`CC[_]`    | `IterableOps` | `SortedSetOps`
+`CC[_, _]` | `MapOps`      | `SortedMapOps`
+
+Here is a diagram illustrating the architecture:
+
+![]({{ site.baseurl }}/resources/images/collections-architecture.svg)
+
+Template traits are in grey whereas collection types are in white.
+
+### Strict and non-strict collections ###
+
+Another difference that has been taken into account in the design of the
+collections framework is the fact that some collection types eagerly
+evaluate their elements (e.g. `List`, `Set`, etc.), whereas others
+delay their evaluation until the element is effectively accessed (e.g.
+`LazyList` and `View`). The former category of collections is said to
+be “strict”, whereas the latter is said to be “non-strict”.
+
+Thus, the default implementation of transformation operations must
+preserve the “strictness” of the concrete collection type that inherits
+these implementations. For instance, we want the default `map` implementation
+to be non-strict when inherited by a `View`, and strict when inherited
+by a `List`.
+
+### Operations implementation ###
+
+Now that we are more familiar with the structure of the template traits, we can have
+a look at the actual implementation of some operations. Consider for instance the
+implementations of `filter` and `map`:
+
+~~~ scala
+trait IterableOps[+A, +CC[_], +C] {
+
+  def filter(pred: A => Boolean): C =
+    fromSpecificIterable(View.Filter(toIterable, pred))
+
+  def map[B](f: A => B): CC[B] = 
+    fromIterable(View.Map(toIterable, f))
+
+  def toIterable: Iterable[A]
+  protected def fromSpecificIterable(coll: Iterable[A]): C
+  protected def fromIterable[E](it: Iterable[E]): CC[E]
+}
+~~~
+
+Let’s detail the implementation of `filter`, step by step:
+
+- `toIterable` turns the `IterableOps` instance into an `Iterable`. This operation is
+  a no-op when it is effectively called on an `Iterable` instance (it is possible to
+  create an `IterableOps` instance that does not inherit from `Iterable` but that’s out
+  of the scope of this document) ;
+- the call to `View.Filter` creates a (non-strict) `View` that filters the elements
+  of the underling collection ;
+- finally, the call to `fromSpecificIterable` turns the `View` into a concrete
+  collection `C`. The implementation of `fromSpecificIterable` is left to
+  concrete collections: they can decide to evaluate in a strict or non-strict way
+  the elements resulting from the operation.
+
+The implementation of `map` is similar, excepted that instead of using
+`fromSpecificIterable` it uses `fromIterable` which takes as parameter an
+iterable whose element type is arbitrary.
+
+Actually, `fromIterable` is not abstract in `IterableOps`: it delegates to an
+`iterableFactory` member (which is abstract):
+
+~~~ scala
+trait IterableOps[+A, +CC[_], +C] {
+
+  protected def fromIterable[E](it: Iterable[E]): CC[E] =
+    iterableFactory.from(it)
+
+  def iterableFactory: IterableFactory[CC]
+
+}
+~~~
+
+This `iterableFactory` member is implemented by concrete collections and typically
+refer to their companion object, which provides factory methods to create concrete
+collection instances. Here is an excerpt of the definition of `IterableFactory`:
+
+~~~ scala
+trait IterableFactory[+CC[_]] {
+  def from[A](source: IterableOnce[A]): CC[A]
+}
+~~~
+
+Last but not least, as explained in the above sections, since we have four branches
+of template traits, we have four corresponding branches of factories. For instance,
+here are the relevant parts of code of the `map` operation implementation in `Map`:
+
+~~~ scala
+trait MapOps[K, +V, +CC[_, _], +C]
+  extends IterableOps[(K, V), Iterable, C] {
+
+  def map[K2, V2](f: ((K, V)) => (K2, V2)): CC[K2, V2] =
+    mapFromIterable(View.Map(toIterable, f))
+
+  // Similar to fromIterable, but returns a Map collection type
+  protected def mapFromIterable[K2, V2](it: Iterable[(K2, V2)]): CC[K2, V2] =
+    mapFactory.from(it)
+
+  def mapFactory: MapFactory[CC]
+
+}
+
+trait MapFactory[+CC[_, _]] {
+  def from[K, V](it: IterableOnce[(K, V)]): CC[K, V]
+}
+~~~
+
+### When a strict evaluation is preferable (or unavoidable) ###
+
+In the previous sections we explained that the “strictness” of concrete collections
+should be preserved by default operation implementations. However in some cases this
+leads to less efficient implementations. For instance, `partition` has to perform
+two traversals of the underlying collection. In some other case (e.g. `groupBy`) it
+is simply not possible to implement the operation without evaluating the collection
+elements.
+
+For those cases, we also provide ways to implement operations in a strict mode.
+The pattern is different: instead of being based on a `View`, it is based on a
+`Builder`. Here is an outline of the `Builder` trait:
+
+~~~ scala
+package scala.collection.mutable
+
+trait Builder[-A, +C] {
+  def add(elem: A): this.type
+  def result(): C
+}
+~~~
+
+Builders are generic in both the element type `A` and the type of collection they
+return, `C`.
+You can add an element `x` to a builder `b` with `b.add(x)` (or `b += x`). The
+`result()` method returns a collection from a builder.
+
+By symmetry with `fromSpecificIterable` and `fromIterable`, template traits provide
+ways to get a builder resulting in a collection with the same type of elements, and
+to get a builder resulting in a collection of the same type but with a different
+type of elements. The following code shows the relevant parts of `IterableOps` and
+`IterableFactory` to build collections in both strict and non-strict modes:
+
+~~~ scala
+trait IterableOps[+A, +CC[_], +C] {
+  def iterableFactory: IterableFactory[CC]
+  protected def fromSpecificIterable(coll: Iterable[A]): C
+  protected def newSpecificBuilder(): Builder[A, C]
+}
+
+trait IterableFactory[+CC[_]] {
+  def from[A](source: IterableOnce[A]): CC[A]
+  def newBuilder[A](): Builder[A, CC[A]]
+}
+~~~
+
+Note that, in general, an operation that doesn’t *have to* be strict should
+be implemented in a non-strict mode, otherwise it would lead to surprising
+behaviour when used on a non-strict concrete collection. That being said,
+the strict mode is often more efficient. This is why we provide template
+traits whose operation implementations have been overridden to take
+advantage of strict builders. The name of these template traits always
+starts with `StrictOptimized`. You should use such a template trait for
+your custom collection if it is a strict collection.
+
+## Integrating a new collection: capped sequence ##
 
 What needs to be done if you want to integrate a new collection class,
 so that it can profit from all predefined operations with the right
-types? In the next few sections you'll be walked through two examples
-that do this, namely sequences of RNA bases and prefix maps implemented
-with Patricia tries.
+types? In the next few sections you’ll be walked through three examples
+that do this, namely capped sequences, sequences of RNA
+bases and prefix maps implemented with Patricia tries.
 
-To start with the first example, we define the four RNA Bases:
+Say you want to create a collection containing *at most* `n` elements:
+if more elements are added then the first elements are removed. Such a
+collection can be efficiently implemented using an `Array` with a fixed
+capacity: random access and element insertion are O(1) operations.
+
+The first task is to find the supertype of our collection: is it
+`Seq`, `Set`, `Map` or just `Iterable`? In our case, it is tempting
+to choose `Seq` because our collection can contain duplicates and
+iteration order is determined by insertion order. However, some
+properties of `Seq` are not satisfied:
+
+~~~ scala
+(xs ++ ys).size == xs.size + ys.size
+~~~
+
+Consequently, the only sensible choice as a base collection type
+is `Iterable`.
+
+### First version of `Capped` class ###
+
+~~~ scala
+import scala.collection._
+
+class Capped1[A] private (val capacity: Int, val length: Int, offset: Int, elems: Array[Any])
+  extends immutable.Iterable[A] { self =>
+
+  def this(capacity: Int) =
+    this(capacity, length = 0, offset = 0, elems = Array.ofDim(capacity))
+
+  def appended[B >: A](elem: B): Capped1[B] = {
+    val newElems = Array.ofDim[Any](capacity)
+    Array.copy(elems, 0, newElems, 0, capacity)
+    val (newOffset, newLength) =
+      if (length == capacity) {
+        newElems(offset) = elem
+        ((offset + 1) % capacity, length)
+      } else {
+        newElems(length) = elem
+        (offset, length + 1)
+      }
+    new Capped1[B](capacity, newLength, newOffset, newElems)
+  }
+
+  @`inline` def :+ [B >: A](elem: B): Capped1[B] = appended(elem)
+
+  def apply(i: Int): A = elems((i + offset) % capacity).asInstanceOf[A]
+
+  def iterator: Iterator[A] = new AbstractIterator[A] {
+    private var current = 0
+    def hasNext = current < self.length
+    def next(): A = {
+      val elem = self(current)
+      current += 1
+      elem
+    }
+  }
+
+  def iterableFactory: IterableFactory[immutable.Iterable] = immutable.Iterable
+  protected[this] def fromSpecificIterable(coll: Iterable[A]): immutable.Iterable[A] = iterableFactory.from(coll)
+  protected[this] def newSpecificBuilder(): Builder[A, immutable.Iterable[A]] = iterableFactory.newBuilder()
+
+}
+~~~
+
+The above listing presents the first version of our capped collection
+implementation. It will be refined later. The class `Capped1` has a
+private constructor that takes the collection capacity, length,
+offset (first element index) and the underlying array as parameters.
+The public constructor takes only the capacity of the collection. It
+sets the length and offset to 0, and uses an empty array of elements.
+
+The `appended` method defines how elements can be appended to a given
+`Capped1` collection: it creates a new underlying array of elements,
+copies the current elements and adds the new element. As long as the
+number of elements does not exceed the `capacity`, the new element
+is appended after the previous elements. However, as soon as the
+maximal capacity has been reached, the new element replaces the first
+element of the collection (at `offset` index).
+
+The `apply` method implements indexed access: it translates the given
+index into its corresponding index in the underlying array by adding
+the `offset`.
+
+These two methods, `appended` and `apply`, implement the specific
+behavior of the `Capped1` collection type. In addition to them, we have
+to implement a few methods to make the generic collection operations
+work on `Capped` collections:
+
+- `length`, automatically implemented by the parametric field of the
+  same name,
+- `iterator` (used by reduction operations such as `foldLeft` or
+  `count`), implemented by using indexed access,
+- `iterableFactory` (used by transformation operations such as `map`
+   or `flatMap`), implemented by delegating to the `immutable.Iterable`
+   object,
+- `fromSpecifiIterable` and `newSpecificBuilder` (used by
+   transformation operations such as `take` or `filter`).
+
+Here are some interactions with the `Capped1` collection:
+
+~~~ scala
+scala> new Capped1(capacity = 4)
+res0: Capped1[Nothing] = Capped1()
+
+scala> res0 :+ 1 :+ 2 :+ 3
+res1: Capped1[Int] = Capped1(1, 2, 3)
+
+scala> res1.length
+res2: Int = 3
+
+scala> res1.lastOption
+res3: Option[Int] = Some(3)
+
+scala> res1 :+ 4 :+ 5 :+ 6
+res4: Capped1[Int] = Capped1(3, 4, 5, 6)
+
+scala> res4.take(3)
+res5: collection.immutable.Iterable[Int] = List(3, 4, 5)
+~~~
+
+You can see that if we try to grow the collection with more than four
+elements, the first elements are dropped (see `res4`). The operations
+behave as expected except for the last one: after calling `take` we
+get back a `List` instead of the expected `Capped1` collection. This
+is because all that was done in class
+[`Capped1`](#first-version-of-capped-class) was making `Capped1` extend
+`immutable.Iterable`. This class, on the other hand, has a `take` method
+that returns an `immutable.Iterable`, and that’s implemented in terms of
+`immutable.Iterable`’s default implementation, `List`. So, that’s what
+you were seeing on the last line of the previous interaction.
+
+Now that you understand why things are the way they are, the next
+question should be what needs to be done to change them? One way to do
+this would be to override the `take` method in class `Capped1`, maybe like
+this:
+
+    def take(count: Int): Capped1 = …
+
+This would do the job for `take`. But what about `drop`, or `filter`, or
+`init`? In fact there are over fifty methods on sequences that return
+again a sequence. For consistency, all of these would have to be
+overridden. This looks less and less like an attractive
+option. Fortunately, there is a much easier way to achieve the same
+effect, as shown in the next section.
+
+### Second version of `Capped` class ###
+
+~~~ scala
+class Capped2[A] private (val capacity: Int, val length: Int, offset: Int, elems: Array[Any])
+  extends immutable.Iterable[A]
+    with IterableOps[A, Capped2, Capped2[A]] { self =>
+
+  def this(capacity: Int) = // as before
+
+  def appended[B >: A](elem: B): Capped2[B] = // as before
+  @`inline` def :+ [B >: A](elem: B): Capped2[B] = // as before
+  def apply(i: Int): A = // as before
+
+  def iterator: Iterator[A] = // as before
+
+  val iterableFactory: IterableFactory[Capped2] = new Capped2Factory(capacity)
+  protected[this] def fromSpecificIterable(coll: Iterable[A]): Capped2[A] = iterableFactory.from(coll)
+  protected[this] def newSpecificBuilder(): Builder[A, Capped2[A]] = iterableFactory.newBuilder()
+
+}
+
+class Capped2Factory(capacity: Int) extends IterableFactory[Capped2] {
+
+  def from[A](source: IterableOnce[A]): Capped2[A] =
+    (newBuilder[A]() ++= source).result()
+
+  def empty[A]: Capped2[A] = new Capped2[A](capacity)
+
+  def newBuilder[A](): Builder[A, Capped2[A]] =
+    new ImmutableBuilder[A, Capped2[A]](empty) {
+      def add(elem: A): this.type = { elems = elems :+ elem; this }
+    }
+}
+~~~
+
+The Capped class needs to inherit not only from `Iterable`, but also
+from its implementation trait `IterableOps`. This is shown in the
+above listing of class `Capped2`. The new implementation differs
+from the previous one in only two aspects. First, class `Capped2`
+now also extends `IterableOps[A, Capped2, Capped2[A]]`. Second, its
+collection construction methods (`fromSpecificIterable` and
+`newSpecificBuilder`) now return a `Capped2`. As explained in the
+previous sections, the `IterableOps` trait implements all concrete
+methods of `Iterable` in an extensible way. For instance, the
+return type of methods like `take`, `drop`, `filter` or `init`
+is the third type parameter passed to class `IterableOps`, i.e.,
+in class `Capped2`, it is `Capped2[A]`. Similarly, the return
+type of methods like `map`, `flatMap` or `concat` is defined
+by the second type parameter passed to class `IterableOps`,
+i.e., in class `Capped2`, it is `Capped2` itself.
+
+To construct a `Capped2`, the `fromSpecificIterable` and
+`newSpecificBuilder` implementations
+delegate to an instance of the `Capped2Factory` class. This class
+provides convenient factory methods to build collections. Eventually,
+these methods delegate to `empty`, which builds an empty `Capped2`
+instance, and `newBuilder`, which uses the `appended` operation
+to grow a `Capped2` collection.
+
+With the refined implementation of the [`Capped2` class](#second-version-of-capped-class),
+the transformation operations work now as expected, and the
+`Capped2Factory` class provides seamless conversions from other collections:
+
+~~~ scala
+scala> object Capped extends Capped2Factory(capacity = 4)
+defined object Capped
+
+scala> Capped(1, 2, 3)
+res0: Capped2[Int] = Capped2(1, 2, 3)
+
+scala> res0.take(2)
+res1: Capped2[Int] = Capped2(1, 2)
+
+scala> res0.filter(x => x % 2 == 1)
+res2: Capped2[Int] = Capped2(1, 3)
+
+scala> res0.map(x => x * x)
+res3: Capped2[Int] = Capped2(1, 4, 9)
+
+scala> List(1, 2, 3, 4, 5).to(Capped)
+res4: mycollections.Capped2[Int] = Capped2(2, 3, 4, 5)
+~~~
+
+This implementation now behaves correctly, but we can still improve
+a few things. Since our collection is strict, we can take advantage
+of strict implementations for transformation operations.
+
+### Final version of `Capped` class ###
+
+~~~ scala
+final class Capped[A] private (val capacity: Int, val length: Int, offset: Int, elems: Array[Any])
+  extends immutable.Iterable[A]
+    with IterableOps[A, Capped, Capped[A]]
+    with StrictOptimizedIterableOps[A, Capped, Capped[A]] { self =>
+
+  def this(capacity: Int) =
+    this(capacity, length = 0, offset = 0, elems = Array.ofDim(capacity))
+
+  def appended[B >: A](elem: B): Capped[B] = {
+    val newElems = Array.ofDim[Any](capacity)
+    Array.copy(elems, 0, newElems, 0, capacity)
+    val (newOffset, newLength) =
+      if (length == capacity) {
+        newElems(offset) = elem
+        ((offset + 1) % capacity, length)
+      } else {
+        newElems(length) = elem
+        (offset, length + 1)
+      }
+    new Capped[B](capacity, newLength, newOffset, newElems)
+  }
+
+  @`inline` def :+ [B >: A](elem: B): Capped[B] = appended(elem)
+
+  def apply(i: Int): A = elems((i + offset) % capacity).asInstanceOf[A]
+
+  def iterator: Iterator[A] = view.iterator
+
+  override def view: IndexedView[A] = new IndexedView[A] {
+    def length: Int = self.length
+    def apply(i: Int): A = self(i)
+  }
+
+  override def knownSize: Int = length
+
+  val iterableFactory: IterableFactory[Capped] = new CappedFactory(capacity)
+  protected[this] def fromSpecificIterable(coll: Iterable[A]): Capped[A] = iterableFactory.from(coll)
+  protected[this] def newSpecificBuilder(): Builder[A, Capped[A]] = iterableFactory.newBuilder()
+
+}
+
+class CappedFactory(capacity: Int) extends IterableFactory[Capped] {
+
+  def from[A](source: IterableOnce[A]): Capped[A] =
+    source match {
+      case cs: Capped[A] if cs.capacity == capacity => cs
+      case _ => (newBuilder[A]() ++= source).result()
+    }
+
+  def empty[A]: Capped[A] = new Capped[A](capacity)
+
+  def newBuilder[A](): Builder[A, Capped[A]] =
+    new ImmutableBuilder[A, Capped[A]](empty) {
+      def add(elem: A): this.type = { elems = elems :+ elem; this }
+    }
+
+}
+~~~
+
+That is it. The final [`Capped` class](#final-version-of-capped-class):
+
+- extends the `StrictOptimizedIterableOps` trait, which overrides all
+  transformation operations to take advantage of strict builders,
+- overrides a few operations for performance: the `view` now uses
+  indexed access, and the `iterator` delegates to the view. The
+  `knownSize` operation is also overridden because the size is always
+  known.
+
+Its implementation requires a little bit of protocol. In essence, you
+have to inherit from the `Ops` template trait in addition to just
+inheriting from a collection type, and then implement the abstract
+methods required by transformation operations.
+
+## Integrating a new collection: RNA sequences ##
+
+To start with the second example, we define the four RNA Bases:
 
     abstract class Base
     case object A extends Base
@@ -337,8 +718,8 @@ listing of RNA bases above.
 
 Every base is defined as a case object that inherits from a common
 abstract class `Base`. The `Base` class has a companion object that
-defines two functions that map between bases and the integers 0 to
-3. You can see in the examples two different ways to use collections
+defines two functions that map between bases and the integers 0 to 3.
+You can see in the examples two different ways to use collections
 to implement these functions. The `toInt` function is implemented as a
 `Map` from `Base` values to integers. The reverse function, `fromInt`, is
 implemented as an array. This makes use of the fact that both maps and
@@ -355,12 +736,13 @@ representation.
 
 ### First version of RNA strands class ###
 
-    import collection.IndexedSeqLike
-    import collection.mutable.{Builder, ArrayBuffer}
-    import collection.generic.CanBuildFrom
+    import collection.immutable.{ IndexedSeq, IndexedSeqOps }
 
-    final class RNA1 private (val groups: Array[Int],
-        val length: Int) extends IndexedSeq[Base] {
+    final class RNA1 private (
+      val groups: Array[Int],
+      val length: Int
+    ) extends IndexedSeq[Base]
+      with IndexedSeqOps[Base, IndexedSeq, RNA1] {
 
       import RNA1._
 
@@ -369,6 +751,12 @@ representation.
           throw new IndexOutOfBoundsException
         Base.fromInt(groups(idx / N) >> (idx % N * S) & M)
       }
+
+      def iterableFactory: SeqFactory[IndexedSeq] = IndexedSeq
+      protected[this] def fromSpecificIterable(coll: Iterable[Base]): RNA1 =
+        fromSeq(coll.toSeq)
+      protected[this] def newSpecificBuilder(): Builder[Base, RNA1] =
+        iterableFactory.newBuilder[Base]().mapResult(fromSeq)
     }
 
     object RNA1 {
@@ -394,25 +782,30 @@ representation.
 
 The [RNA strands class listing](#first-version-of-rna-strands-class) above
 presents the first version of this
-class. It will be refined later. The class `RNA1` has a constructor that
+class. The class `RNA1` has a constructor that
 takes an array of `Int`s as its first argument. This array contains the
 packed RNA data, with sixteen bases in each element, except for the
 last array element, which might be partially filled. The second
 argument, `length`, specifies the total number of bases on the array
-(and in the sequence). Class `RNA1` extends `IndexedSeq[Base]`. Trait
-`IndexedSeq`, which comes from package `scala.collection.immutable`,
-defines two abstract methods, `length` and `apply`. These need to be
-implemented in concrete subclasses. Class `RNA1` implements `length`
-automatically by defining a parametric field of the same name. It
-implements the indexing method `apply` with the code given in [class
-`RNA1`](#first-version-of-rna-strands-class). Essentially, `apply` first
-extracts an integer value from the
-`groups` array, then extracts the correct two-bit number from that
-integer using right shift (`>>`) and mask (`&`). The private constants `S`,
-`N`, and `M` come from the `RNA1` companion object. `S` specifies the size of
-each packet (i.e., two); `N` specifies the number of two-bit packets per
-integer; and `M` is a bit mask that isolates the lowest `S` bits in a
-word.
+(and in the sequence). Class `RNA1` extends `IndexedSeq[Base]` and
+`IndexedSeqOps[Base, IndexedSeq, RNA1]`. These traits define the following
+abstract methods:
+
+- `length`, automatically implemented by defining a parametric field of
+  the same name,
+- `apply` (indexing method), implemented by first extracting an integer value
+  from the `groups` array, then extracting the correct two-bit number from that
+  integer using right shift (`>>`) and mask (`&`). The private constants `S`,
+  `N`, and `M` come from the `RNA1` companion object. `S` specifies the size of
+  each packet (i.e., two); `N` specifies the number of two-bit packets per
+  integer; and `M` is a bit mask that isolates the lowest `S` bits in a
+  word,
+- `iterableFactory` (used by transformation operations), implemented
+  by delegating to the `IndexedSeq` companion object,
+- `fromSpecificIterable`, implemented by the `fromSeq` method of the `RNA1`
+  companion object,
+- `newSpecificBuilder`, implemented by using the default `IndexedSeq` builder
+  and transforming its result into an `RNA1` with the `mapResult` method.
 
 Note that the constructor of class `RNA1` is `private`. This means that
 clients cannot create `RNA1` sequences by calling `new`, which makes
@@ -441,7 +834,7 @@ simply forwards them as a sequence to `fromSeq`. Here are the two
 creation schemes in action:
 
     scala> val xs = List(A, G, U, A)
-    xs: List[Product with Serializable with Base] = List(A, G, U, A)
+    xs: List[Base] = List(A, G, U, A)
 
     scala> RNA1.fromSeq(xs)
     res1: RNA1 = RNA1(A, G, U, A)
@@ -449,144 +842,32 @@ creation schemes in action:
     scala> val rna1 = RNA1(A, U, G, G, C)
     rna1: RNA1 = RNA1(A, U, G, G, C)
 
-### Adapting the result type of RNA methods ###
+Also note that the type parameters of the `IndexedSeqOps` trait that
+we inherit from are: `Base`, `IndexedSeq` and `RNA1`. The first one
+stands for the type of elements, the second one stands for the
+type constructor used by transformation operations that return
+a collection with a different type of elements, and the third one
+stands for the type used by transformation operations that return
+a collection with the same type of elements. In our case, it is
+worth noting that the second one is `IndexedSeq` whereas the
+third one is `RNA1`. This means that operations like `map` or
+`flatMap` return an `IndexedSeq`, whereas operations like `take` or
+`filter` return an `RNA1`.
 
-Here are some more interactions with the `RNA1` abstraction:
-
-    scala> rna1.length
-    res2: Int = 5
-
-    scala> rna1.last
-    res3: Base = C
+Here is an example showing the usage of `take` and `filter`:
 
     scala> rna1.take(3)
-    res4: IndexedSeq[Base] = Vector(A, U, G)
+    res5: RNA1 = RNA1(A, U, G)
 
-The first two results are as expected, but the last result of taking
-the first three elements of `rna1` might not be. In fact, you see a
-`IndexedSeq[Base]` as static result type and a `Vector` as the dynamic
-type of the result value. You might have expected to see an `RNA1` value
-instead. But this is not possible because all that was done in [class
-`RNA1`](#first-version-of-rna-strands-class) was making `RNA1` extend
-`IndexedSeq`. Class `IndexedSeq`, on the other
-hand, has a `take` method that returns an `IndexedSeq`, and that's
-implemented in terms of `IndexedSeq`'s default implementation,
-`Vector`. So that's what you were seeing on the last line of the
-previous interaction.
-
-Now that you understand why things are the way they are, the next
-question should be what needs to be done to change them? One way to do
-this would be to override the `take` method in class `RNA1`, maybe like
-this:
-
-    def take(count: Int): RNA1 = RNA1.fromSeq(super.take(count))
-
-This would do the job for `take`. But what about `drop`, or `filter`, or
-`init`? In fact there are over fifty methods on sequences that return
-again a sequence. For consistency, all of these would have to be
-overridden. This looks less and less like an attractive
-option. Fortunately, there is a much easier way to achieve the same
-effect, as shown in the next section.
-
-
-### Second version of RNA strands class ###
-
-    final class RNA2 private (
-      val groups: Array[Int],
-      val length: Int
-    ) extends IndexedSeq[Base] with IndexedSeqLike[Base, RNA2] {
-
-      import RNA2._
-
-      override def newBuilder: Builder[Base, RNA2] =
-        new ArrayBuffer[Base] mapResult fromSeq
-
-      def apply(idx: Int): Base = // as before
-    }
-
-The RNA class needs to inherit not only from `IndexedSeq`, but
-also from its implementation trait `IndexedSeqLike`. This is shown in
-the above listing of class `RNA2`. The new implementation differs from
-the previous one in only two aspects. First, class `RNA2` now also
-extends `IndexedSeqLike[Base, RNA2]`. Second, it provides a builder for
-RNA strands. The `IndexedSeqLike` trait
-implements all concrete methods of `IndexedSeq` in an extensible
-way. For instance, the return type of methods like `take`, `drop`, `filter`,
-or `init` is the second type parameter passed to class `IndexedSeqLike`,
-i.e., in class `RNA2` it is `RNA2` itself.
-
-To be able to do this, `IndexedSeqLike` bases itself on the `newBuilder`
-abstraction, which creates a builder of the right kind. Subclasses of
-trait `IndexedSeqLike` have to override `newBuilder` to return collections
-of their own kind. In class `RNA2`, the `newBuilder` method returns a
-builder of type `Builder[Base, RNA2]`.
-
-To construct this builder, it first creates an `ArrayBuffer`, which
-itself is a `Builder[Base, ArrayBuffer]`. It then transforms the
-`ArrayBuffer` builder by calling its `mapResult` method to an `RNA2`
-builder. The `mapResult` method expects a transformation function from
-`ArrayBuffer` to `RNA2` as its parameter. The function given is simply
-`RNA2.fromSeq`, which converts an arbitrary base sequence to an `RNA2`
-value (recall that an array buffer is a kind of sequence, so
-`RNA2.fromSeq` can be applied to it).
-
-If you had left out the `newBuilder` definition, you would have gotten
-an error message like the following:
-
-    RNA2.scala:5: error: overriding method newBuilder in trait
-    TraversableLike of type => scala.collection.mutable.Builder[Base,RNA2];
-     method newBuilder in trait GenericTraversableTemplate of type
-     => scala.collection.mutable.Builder[Base,IndexedSeq[Base]] has
-     incompatible type
-    class RNA2 private (val groups: Array[Int], val length: Int)
-          ^
-    one error found
-
-The error message is quite long and complicated, which reflects the
-intricate way the collection libraries are put together. It's best to
-ignore the information about where the methods come from, because in
-this case it detracts more than it helps. What remains is that a
-method `newBuilder` with result type `Builder[Base, RNA2]` needed to be
-defined, but a method `newBuilder` with result type
-`Builder[Base,IndexedSeq[Base]]` was found. The latter does not override
-the former. The first method, whose result type is `Builder[Base, RNA2]`,
-is an abstract method that got instantiated at this type in
-[class `RNA2`](#second-version-of-rna-strands-class) by passing the
-`RNA2` type parameter to `IndexedSeqLike`. The
-second method, of result type `Builder[Base,IndexedSeq[Base]]`, is
-what's provided by the inherited `IndexedSeq` class. In other words, the
-`RNA2` class is invalid without a definition of `newBuilder` with the
-first result type.
-
-With the refined implementation of the [`RNA2` class](#second-version-of-rna-strands-class),
-methods like `take`,
-`drop`, or `filter` work now as expected:
-
-    scala> val rna2 = RNA2(A, U, G, G, C)
-    rna2: RNA2 = RNA2(A, U, G, G, C)
-
-    scala> rna2 take 3
-    res5: RNA2 = RNA2(A, U, G)
-
-    scala> rna2 filter (U !=)
-    res6: RNA2 = RNA2(A, G, G, C)
+    scala> rna1.filter(_ != U)
+    res6: RNA1 = RNA1(A, G, G, C)
 
 ### Dealing with map and friends ###
 
-However, there is another class of methods in collections that are not
-dealt with yet. These methods do not always return the collection type
-exactly. They might return the same kind of collection, but with a
-different element type. The classical example of this is the `map`
-method. If `s` is a `Seq[Int]`, and `f` is a function from `Int` to `String`,
-then `s.map(f)` would return a `Seq[String]`. So the element type changes
-between the receiver and the result, but the kind of collection stays
-the same.
+However, transformation operations that return a collection with a
+different element type always return an `IndexedSeq`.
 
-There are a number of other methods that behave like `map`. For some of
-them you would expect this (e.g., `flatMap`, `collect`), but for others
-you might not. For instance, the append method, `++`, also might return
-a result of different type as its arguments--appending a list of
-`String` to a list of `Int` would give a list of `Any`. How should these
+How should these
 methods be adapted to RNA strands? The desired behavior would be to get
 back an RNA strand when mapping bases to bases or appending two RNA strands
 with `++`:
@@ -614,161 +895,207 @@ yield a general sequence, but it cannot yield another RNA strand.
       Vector(A, U, G, G, C, missing, data)
 
 This is what you'd expect in the ideal case. But this is not what the
-[`RNA2` class](#second-version-of-rna-strands-class) provides. In fact, all
+[`RNA1` class](#first-version-of-rna-strands-class) provides. In fact, all
 examples will return instances of `Vector`, not just the last two. If you run
 the first three commands above with instances of this class you obtain:
 
-    scala> val rna2 = RNA2(A, U, G, G, C)
-    rna2: RNA2 = RNA2(A, U, G, G, C)
+    scala> val rna1 = RNA1(A, U, G, G, C)
+    rna1: RNA1 = RNA1(A, U, G, G, C)
 
-    scala> rna2 map { case A => U case b => b }
+    scala> rna1 map { case A => U case b => b }
     res0: IndexedSeq[Base] = Vector(U, U, G, G, C)
 
-    scala> rna2 ++ rna2
+    scala> rna1 ++ rna1
     res1: IndexedSeq[Base] = Vector(A, U, G, G, C, A, U, G, G, C)
 
 So the result of `map` and `++` is never an RNA strand, even if the
 element type of the generated collection is `Base`. To see how to do
 better, it pays to have a close look at the signature of the `map`
 method (or of `++`, which has a similar signature). The `map` method is
-originally defined in class `scala.collection.TraversableLike` with the
+originally defined in class `scala.collection.IterableOps` with the
 following signature:
 
-    def map[B, That](f: A => B)
-      (implicit cbf: CanBuildFrom[Repr, B, That]): That
+    def map[B](f: A => B): CC[B]
 
-Here `A` is the type of elements of the collection, and `Repr` is the type
-of the collection itself, that is, the second type parameter that gets
-passed to implementation classes such as `TraversableLike` and
-`IndexedSeqLike`. The `map` method takes two more type parameters, `B` and
-`That`. The `B` parameter stands for the result type of the mapping
-function, which is also the element type of the new collection. The
-`That` appears as the result type of `map`, so it represents the type of
-the new collection that gets created.
+Here `A` is the type of elements of the collection, and `CC` is the type
+constructor passed as a second parameter to the `IterableOps` trait.
 
-How is the `That` type determined? In fact it is linked to the other
-types by an implicit parameter `cbf`, of type `CanBuildFrom[Repr, B, That]`.
-These `CanBuildFrom` implicits are defined by the individual
-collection classes. Recall that an implicit value of type
-`CanBuildFrom[Repr, B, That]` says: "Here is a way, given a collection
-of type `Repr` and new elements of type `B`, to build a collection of type
-`That` containing those elements".
+In our `RNA1` implementation, this `CC` type constructor is `IndexedSeq`,
+this is why we always get a `Vector` as a result.
 
-Now the behavior of `map` and `++` on `RNA2` sequences becomes
-clearer. There is no `CanBuildFrom` instance that creates `RNA2`
-sequences, so the next best available `CanBuildFrom` was found in the
-companion object of the inherited trait `IndexedSeq`. That implicit
-creates `Vector`s (recall that `Vector` is the default implementation
-of `IndexedSeq`), and that's what you saw when applying `map` to
-`rna2`.
+### Second version of RNA strands class ###
 
+    final class RNA2 private (val groups: Array[Int], val length: Int)
+      extends IndexedSeq[Base] with IndexedSeqOps[Base, IndexedSeq, RNA2] {
+
+      import RNA2._
+
+      def apply(idx: Int): Base = // as before
+      def iterableFactory: SeqFactory[IndexedSeq] = // as before
+      protected[this] def fromSpecificIterable(coll: Iterable[Base]): RNA2 = // as before
+      protected[this] def newSpecificBuilder(): Builder[Base, RNA2] = // as before
+      
+      // Overloading of `appended`, `prepended`, `appendedAll`,
+      // `prependedAll`, `map` and `flatMap` to return an `RNA2`
+      // when possible
+      def appended(base: Base): RNA2 =
+        fromSpecificIterable(View.Append(this, base))
+      def appendedAll(suffix: Iterable[Base]): RNA2 =
+        fromSpecificIterable(View.Concat(this, suffix))
+      def prepended(base: Base): RNA2 = 
+        fromSpecificIterable(View.Prepend(base, this))
+      def prependedAll(prefix: Iterable[Base]): RNA2 =
+        fromSpecificIterable(View.Concat(prefix, this))
+      def map(f: Base => Base): RNA2 =
+        fromSpecificIterable(View.Map(this, f))
+      def flatMap(f: Base => IterableOnce[Base]): RNA2 =
+        fromSpecificIterable(View.FlatMap(this, f))
+    }
+
+To address this shortcoming, you need to overload the methods that
+return an `IndexedSeq[B]` for the case where `B` is known to be `Base`,
+to return an `RNA2` instead.
+
+Compared to [class `RNA1`](#first-version-of-rna-strands-class)
+we added overloads for methods `appended`, `appendedAll`, `prepended`,
+`prependedAll`, `map` and `flatMap`.
+
+This implementation now behaves correctly, but we can still improve a few things. Since our
+collection is strict, we could take advantage of strict builders in transformation operations.
+Also, if we try to convert an `Iterable[Base]` into an `RNA2` it fails:
+
+~~~
+scala> val bases: Iterable[Base] = List(A, U, C, C)
+bases: Iterable[Base] = List(A, U, C, C)
+
+scala> bases.to(RNA2)
+                ^
+       error: type mismatch;
+        found   : RNA2.type
+        required: scala.collection.Factory[Base,?]
+~~~
 
 ### Final version of RNA strands class ###
 
-    final class RNA private (val groups: Array[Int], val length: Int)
-      extends IndexedSeq[Base] with IndexedSeqLike[Base, RNA] {
+~~~ scala
+final class RNA private (
+  val groups: Array[Int],
+  val length: Int
+) extends IndexedSeq[Base]
+    with IndexedSeqOps[Base, IndexedSeq, RNA]
+    with StrictOptimizedSeqOps[Base, IndexedSeq, RNA] { rna =>
 
-      import RNA._
+  import RNA._
 
-      // Mandatory re-implementation of `newBuilder` in `IndexedSeq`
-      override protected[this] def newBuilder: Builder[Base, RNA] =
-        RNA.newBuilder
+  // Mandatory implementation of `apply` in `IndexedSeqOps`
+  def apply(idx: Int): Base = {
+    if (idx < 0 || length <= idx)
+      throw new IndexOutOfBoundsException
+    Base.fromInt(groups(idx / N) >> (idx % N * S) & M)
+  }
 
-      // Mandatory implementation of `apply` in `IndexedSeq`
-      def apply(idx: Int): Base = {
-        if (idx < 0 || length <= idx)
-          throw new IndexOutOfBoundsException
-        Base.fromInt(groups(idx / N) >> (idx % N * S) & M)
-      }
+  // Mandatory implementation of `iterableFactory`,
+  // `fromSpecificIterable` and `newSpecificBuilder`,
+  // from `IterableOps`
+  def iterableFactory: SeqFactory[IndexedSeq] = IndexedSeq
+  protected[this] def fromSpecificIterable(coll: Iterable[Base]): RNA =
+    RNA.fromSpecific(coll)
+  protected[this] def newSpecificBuilder(): Builder[Base, RNA] =
+    RNA.newBuilder()
 
-      // Optional re-implementation of foreach,
-      // to make it more efficient.
-      override def foreach[U](f: Base => U): Unit = {
-        var i = 0
-        var b = 0
-        while (i < length) {
-          b = if (i % N == 0) groups(i / N) else b >>> S
-          f(Base.fromInt(b & M))
-          i += 1
-        }
-      }
+  // Overloading of `appended`, `prepended`, `appendedAll`, `prependedAll`,
+  // `map` and `flatMap` to return an `RNA` when possible
+  def appended(base: Base): RNA = 
+    (newSpecificBuilder() ++= this += base).result()
+  def appendedAll(suffix: Iterable[Base]): RNA =
+    (newSpecificBuilder() ++= this ++= suffix).result()
+  def prepended(base: Base): RNA = 
+    (newSpecificBuilder() += base ++= this).result()
+  def prependedAll(prefix: Iterable[Base]): RNA =
+    (newSpecificBuilder() ++= prefix ++= this).result()
+  def map(f: Base => Base): RNA = {
+    var b = newSpecificBuilder()
+    for (base <- this) {
+      b += f(base)
     }
-
-### Final version of RNA companion object ###
-
-    object RNA {
-
-      private val S = 2            // number of bits in group
-      private val M = (1 << S) - 1 // bitmask to isolate a group
-      private val N = 32 / S       // number of groups in an Int
-
-      def fromSeq(buf: Seq[Base]): RNA = {
-        val groups = new Array[Int]((buf.length + N - 1) / N)
-        for (i <- 0 until buf.length)
-          groups(i / N) |= Base.toInt(buf(i)) << (i % N * S)
-        new RNA(groups, buf.length)
-      }
-
-      def apply(bases: Base*) = fromSeq(bases)
-
-      def newBuilder: Builder[Base, RNA] =
-        new ArrayBuffer mapResult fromSeq
-
-      implicit def canBuildFrom: CanBuildFrom[RNA, Base, RNA] =
-        new CanBuildFrom[RNA, Base, RNA] {
-          def apply(): Builder[Base, RNA] = newBuilder
-          def apply(from: RNA): Builder[Base, RNA] = newBuilder
-        }
+    b.result()
+  }
+  def flatMap(f: Base => IterableOnce[Base]): RNA = {
+    var b = newSpecificBuilder()
+    for (base <- this) {
+      b ++= f(base)
     }
+    b.result()
+  }
 
-To address this shortcoming, you need to define an implicit instance
-of `CanBuildFrom` in the companion object of the RNA class. That
-instance should have type `CanBuildFrom[RNA, Base, RNA]`. Hence, this
-instance states that, given an RNA strand and a new element type `Base`,
-you can build another collection which is again an RNA strand. The two
-listings above of [class `RNA`](#final-version-of-rna-strands-class) and
-[its companion object](#final-version-of-rna-companion-object) show the
-details. Compared to [class `RNA2`](#second-version-of-rna-strands-class)
-there are two important
-differences. First, the `newBuilder` implementation has moved from the
-RNA class to its companion object. The `newBuilder` method in class `RNA`
-simply forwards to this definition. Second, there is now an implicit
-`CanBuildFrom` value in object `RNA`. To create this value you need to
-define two `apply` methods in the `CanBuildFrom` trait. Both create a new
-builder for an `RNA` collection, but they differ in their argument
-list. The `apply()` method simply creates a new builder of the right
-type. By contrast, the `apply(from)` method takes the original
-collection as argument. This can be useful to adapt the dynamic type
-of builder's return type to be the same as the dynamic type of the
-receiver. In the case of `RNA` this does not come into play because `RNA`
-is a final class, so any receiver of static type `RNA` also has `RNA` as
-its dynamic type. That's why `apply(from)` also simply calls `newBuilder`,
-ignoring its argument.
+  // Optional re-implementation of iterator,
+  // to make it more efficient.
+  override def iterator: Iterator[Base] = new AbstractIterator[Base] {
+    private var i = 0
+    private var b = 0
+    def hasNext: Boolean = i < rna.length
+    def next(): Base = {
+      b = if (i % N == 0) groups(i / N) else b >>> S
+      i += 1
+      Base.fromInt(b & M)
+    }
+  }
 
-That is it. The final [`RNA` class](#final-version-of-rna-strands-class)
-implements all collection methods at
-their expected types. Its implementation requires a little bit of
-protocol. In essence, you need to know where to put the `newBuilder`
-factories and the `canBuildFrom` implicits. On the plus side, with
-relatively little code you get a large number of methods automatically
-defined. Also, if you don't intend to do bulk operations like `take`,
-`drop`, `map`, or `++` on your collection you can choose to not go the extra
-length and stop at the implementation shown in for [class `RNA1`](#first-version-of-rna-strands-class).
+}
+
+object RNA extends SpecificIterableFactory[Base, RNA] {
+
+  private val S = 2            // number of bits in group
+  private val M = (1 << S) - 1 // bitmask to isolate a group
+  private val N = 32 / S       // number of groups in an Int
+
+  def fromSeq(buf: Seq[Base]): RNA = {
+    val groups = new Array[Int]((buf.length + N - 1) / N)
+    for (i <- 0 until buf.length)
+      groups(i / N) |= Base.toInt(buf(i)) << (i % N * S)
+    new RNA(groups, buf.length)
+  }
+
+  // Mandatory factory methods: `empty`, `newBuilder`
+  // and `fromSpecific`
+  def empty: RNA = fromSeq(Seq.empty)
+
+  def newBuilder(): Builder[Base, RNA] =
+    ArrayBuffer.newBuilder[Base]().mapResult(fromSeq)
+
+  def fromSpecific(it: IterableOnce[Base]): RNA = it match {
+    case seq: Seq[Base] => fromSeq(seq)
+    case _ => fromSeq(ArrayBuffer.from(it))
+  }
+}
+~~~
+
+The final [`RNA` class](#final-version-of-rna-strands-class):
+
+- extends the `StrictOptimizedSeqOps` trait, which overrides all transformation
+  operations to take advantage of strict builders,
+- uses a strict mode for overloads of transformation operations that return
+  an `RNA`,
+- has a companion object that extends `SpecificFactory[Base, RNA]`, which makes
+  it possible to use it as a parameter of a `to` call (to convert any collection
+  of bases to an `RNA`),
+- moves the `newSpecificBuilder` and `fromSpecificIterable` implementations
+  to the companion object.
 
 The discussion so far centered on the minimal amount of definitions
 needed to define new sequences with methods that obey certain
 types. But in practice you might also want to add new functionality to
 your sequences or to override existing methods for better
-efficiency. An example of this is the overridden `foreach` method in
-class `RNA`.  `foreach` is an important method in its own right because it
+efficiency. An example of this is the overridden `iterator` method in
+class `RNA`. `iterator` is an important method in its own right because it
 implements loops over collections. Furthermore, many other collection
-methods are implemented in terms of `foreach`. So it makes sense to
+methods are implemented in terms of `iterator`. So it makes sense to
 invest some effort optimizing the method's implementation. The
-standard implementation of `foreach` in `IndexedSeq` will simply select
+standard implementation of `iterator` in `IndexedSeq` will simply select
 every `i`'th element of the collection using `apply`, where `i` ranges from
 0 to the collection's length minus one. So this standard
 implementation selects an array element and unpacks a base from it
-once for every element in an RNA strand. The overriding `foreach` in
+once for every element in an RNA strand. The overriding `iterator` in
 class `RNA` is smarter than that. For every selected array element it
 immediately applies the given function to all bases contained in
 it. So the effort for array selection and bit unpacking is much
@@ -776,7 +1103,7 @@ reduced.
 
 ## Integrating a new prefix map ##
 
-As a second example you'll learn how to integrate a new kind of map
+As a third example you'll learn how to integrate a new kind of map
 into the collection framework. The idea is to implement a mutable map
 with `String` as the type of keys by a "Patricia trie". The term
 *Patricia* is in fact an abbreviation for "Practical Algorithm to
@@ -822,57 +1149,98 @@ Then calling `withPrefix` on `m` will yield another prefix map:
 
 ### Patricia trie implementation ###
 
-    import collection._
+~~~ scala
+import scala.collection._
+import scala.collection.mutable.{ GrowableBuilder, Builder }
 
-    class PrefixMap[T]
-    extends mutable.Map[String, T]
-       with mutable.MapLike[String, T, PrefixMap[T]] {
+class PrefixMap[A]
+  extends mutable.Map[String, A]
+    with mutable.MapOps[String, A, mutable.Map, PrefixMap[A]]
+    with StrictOptimizedIterableOps[(String, A), mutable.Iterable, PrefixMap[A]] {
 
-      var suffixes: immutable.Map[Char, PrefixMap[T]] = Map.empty
-      var value: Option[T] = None
+  var suffixes: immutable.Map[Char, PrefixMap[A]] = immutable.Map.empty
+  var value: Option[A] = None
 
-      def get(s: String): Option[T] =
-        if (s.isEmpty) value
-        else suffixes get (s(0)) flatMap (_.get(s substring 1))
+  def get(s: String): Option[A] =
+    if (s.isEmpty) value
+    else suffixes get (s(0)) flatMap (_.get(s substring 1))
 
-      def withPrefix(s: String): PrefixMap[T] =
-        if (s.isEmpty) this
-        else {
-          val leading = s(0)
-          suffixes get leading match {
-            case None =>
-              suffixes = suffixes + (leading -> empty)
-            case _ =>
-          }
-          suffixes(leading) withPrefix (s substring 1)
-        }
-
-      override def update(s: String, elem: T) =
-        withPrefix(s).value = Some(elem)
-
-      override def remove(s: String): Option[T] =
-        if (s.isEmpty) { val prev = value; value = None; prev }
-        else suffixes get (s(0)) flatMap (_.remove(s substring 1))
-
-      def iterator: Iterator[(String, T)] =
-        (for (v <- value.iterator) yield ("", v)) ++
-        (for ((chr, m) <- suffixes.iterator;
-              (s, v) <- m.iterator) yield (chr +: s, v))
-
-      def += (kv: (String, T)): this.type = { update(kv._1, kv._2); this }
-
-      def -= (s: String): this.type  = { remove(s); this }
-
-      override def empty = new PrefixMap[T]
+  def withPrefix(s: String): PrefixMap[A] =
+    if (s.isEmpty) this
+    else {
+      val leading = s(0)
+      suffixes get leading match {
+        case None =>
+          suffixes = suffixes + (leading -> empty)
+        case _ =>
+      }
+      suffixes(leading) withPrefix (s substring 1)
     }
 
+  def iterator: Iterator[(String, A)] =
+    (for (v <- value.iterator) yield ("", v)) ++
+      (for ((chr, m) <- suffixes.iterator;
+            (s, v) <- m.iterator) yield (chr +: s, v))
+
+  def add(kv: (String, A)): this.type = {
+    withPrefix(kv._1).value = Some(kv._2)
+    this
+  }
+
+  def subtract(s: String): this.type  = {
+    if (s.isEmpty) { val prev = value; value = None; prev }
+    else suffixes get (s(0)) flatMap (_.remove(s substring 1))
+    this
+  }
+
+  def empty = new PrefixMap[A]
+
+  // Overloading of transformation methods that should return a PrefixMap
+  def map[B](f: ((String, A)) => (String, B)): PrefixMap[B] = PrefixMap.from(View.Map(this, f))
+  def flatMap[B](f: ((String, A)) => IterableOnce[(String, B)]): PrefixMap[B] = PrefixMap.from(View.FlatMap(this, f))
+
+  // Override concat method to refine its return type
+  override def concat[B >: A](suffix: Iterable[(String, B)]): PrefixMap[B] = PrefixMap.from(View.Concat(this, suffix))
+
+  // Members declared in scala.collection.mutable.Clearable
+  def clear(): Unit = suffixes = immutable.Map.empty
+  // Members declared in scala.collection.IterableOps
+  protected[this] def fromSpecificIterable(coll: Iterable[(String, A)]): PrefixMap[A] = PrefixMap.from(coll)
+  protected[this] def newSpecificBuilder(): Builder[(String, A), PrefixMap[A]] = PrefixMap.newBuilder()
+  // Members declared in scala.collection.MapOps
+  def mapFactory: MapFactory[mutable.Map] = mutable.Map
+  protected[this] def mapFromIterable[K2, V2](it: Iterable[(K2, V2)]): mutable.Map[K2,V2] = mapFactory.from(it)
+}
+
+object PrefixMap {
+  def empty[A] = new PrefixMap[A]
+
+  def from[A](source: IterableOnce[(String, A)]): PrefixMap[A] =
+    source match {
+      case pm: PrefixMap[A] => pm
+      case _ => (newBuilder() ++= source).result()
+    }
+
+  def apply[A](kvs: (String, A)*): PrefixMap[A] = from(kvs)
+
+  def newBuilder[A](): Builder[(String, A), PrefixMap[A]] =
+    new GrowableBuilder[(String, A), PrefixMap[A]](empty)
+
+  implicit def toFactory[A](self: this.type): Factory[(String, A), PrefixMap[A]] =
+    new Factory[(String, A), PrefixMap[A]] {
+      def fromSpecific(it: IterableOnce[(String, A)]): PrefixMap[A] = self.from(it)
+      def newBuilder(): Builder[(String, A), PrefixMap[A]] = self.newBuilder()
+    }
+
+}
+~~~
 
 The previous listing shows the definition of `PrefixMap`. The map has
-keys of type `String` and the values are of parametric type `T`. It extends
-`mutable.Map[String, T]` and `mutable.MapLike[String, T, PrefixMap[T]]`.
+keys of type `String` and the values are of parametric type `A`. It extends
+`mutable.Map[String, A]` and `mutable.MapOps[String, A, mutable.Map, PrefixMap[A]]`.
 You have seen this pattern already for sequences in the
 RNA strand example; then as now inheriting an implementation class
-such as `MapLike` serves to get the right result type for
+such as `MapOps` serves to get the right result type for
 transformations such as `filter`.
 
 A prefix map node has two mutable fields: `suffixes` and `value`. The
@@ -911,11 +1279,11 @@ yielding a new option, which is returned by the flatmap.
 
 The next two methods to implement for a mutable map are `+=` and `-=`. In
 the implementation of `PrefixMap`, these are defined in terms of two
-other methods: `update` and `remove`.
+other methods: `add` and `subtract`.
 
-The `remove` method is very similar to `get`, except that before returning
+The `subtract` method is very similar to `get`, except that before returning
 any associated value, the field containing that value is set to
-`None`. The `update` method first calls `withPrefix` to navigate to the tree
+`None`. The `add` method first calls `withPrefix` to navigate to the tree
 node that needs to be updated, then sets the `value` field of that node
 to the given value. The `withPrefix` method navigates through the tree,
 creating sub-maps as necessary if some prefix of characters is not yet
@@ -940,50 +1308,16 @@ makes use of the fact that `Option` values define an iterator method
 that returns either no element, if the option value is `None`, or
 exactly one element `x`, if the option value is `Some(x)`.
 
-Note that there is no `newBuilder` method defined in `PrefixMap`. There is
-no need to, because maps and sets come with default builders, which
-are instances of class `MapBuilder`. For a mutable map the default
-builder starts with an empty map and then adds successive elements
-using the map's `+=` method. For immutable maps, the non-destructive
-element addition method `+` is used instead of method `+=`. Sets work
-in the same way.
-
 However, in all these cases, to build the right kind of colletion
 you need to start with an empty collection of that kind. This is
 provided by the `empty` method, which is the last method defined in
 `PrefixMap`. This method simply returns a fresh `PrefixMap`.
 
-
-### The companion object for prefix maps ###
-
-    import scala.collection.mutable.{Builder, MapBuilder}
-    import scala.collection.generic.CanBuildFrom
-
-    object PrefixMap extends {
-      def empty[T] = new PrefixMap[T]
-
-      def apply[T](kvs: (String, T)*): PrefixMap[T] = {
-        val m: PrefixMap[T] = empty
-        for (kv <- kvs) m += kv
-        m
-      }
-
-      def newBuilder[T]: Builder[(String, T), PrefixMap[T]] =
-        new MapBuilder[String, T, PrefixMap[T]](empty)
-
-      implicit def canBuildFrom[T]
-        : CanBuildFrom[PrefixMap[_], (String, T), PrefixMap[T]] =
-          new CanBuildFrom[PrefixMap[_], (String, T), PrefixMap[T]] {
-            def apply(from: PrefixMap[_]) = newBuilder[T]
-            def apply() = newBuilder[T]
-          }
-    }
-
 We'll now turn to the companion object `PrefixMap`. In fact it is not
 strictly necessary to define this companion object, as class `PrefixMap`
 can stand well on its own. The main purpose of object `PrefixMap` is to
-define some convenience factory methods. It also defines a
-`CanBuildFrom` implicit to make typing work out better.
+define some convenience factory methods. It also defines an implicit
+`Factory` for a better interoperability with other collections.
 
 The two convenience methods are `empty` and `apply`. The same methods are
 present for all other collections in Scala's collection framework so
@@ -996,26 +1330,6 @@ write `PrefixMap` literals like you do for any other collection:
     scala> PrefixMap.empty[String]
     res2: PrefixMap[String] = Map()
 
-The other member in object `PrefixMap` is an implicit `CanBuildFrom`
-instance. It has the same purpose as the `CanBuildFrom` definition in
-the [`RNA` companion object](#final-version-of-rna-companion-object)
-from the last section: to make methods like `map` return the best possible
-type. For instance, consider mapping a function over the key/value
-pairs of a `PrefixMap`. As long as that function produces pairs of
-strings and some second type, the result collection will again be a
-`PrefixMap`. Here's an example:
-
-    scala> res0 map { case (k, v) => (k + "!", "x" * v) }
-    res8: PrefixMap[String] = Map(hello! -> xxxxx, hi! -> xx)
-
-The given function argument takes the key/value bindings of the prefix
-map `res0` and produces pairs of strings. The result of the `map` is a
-`PrefixMap`, this time with value type `String` instead of `Int`. Without
-the `canBuildFrom` implicit in `PrefixMap` the result would just have been
-a general mutable map, not a prefix map. For convenience, the `PrefixMap`
-object defines a `newBuilder` method, but it still just uses the
-default `MapBuilder`.
-
 ## Summary ##
 
 To summarize, if you want to fully integrate a new collection class
@@ -1025,9 +1339,6 @@ into the framework you need to pay attention to the following points:
 2. Pick the right base traits for the collection.
 3. Inherit from the right implementation trait to implement most
    collection operations.
-4. If you want `map` and similar operations to return instances of your
-   collection type, provide an implicit `CanBuildFrom` in your class's
-   companion object.
 
 You have now seen how Scala's collections are built and how you can
 add new kinds of collections. Because of Scala's rich support for
