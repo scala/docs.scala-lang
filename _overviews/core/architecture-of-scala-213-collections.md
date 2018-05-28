@@ -29,10 +29,29 @@ possible. (Ideally, everything should be defined in one place only,
 but there are a few exceptions where things needed to be redefined.)
 The design approach was to implement most operations in collection
 "templates" that can be flexibly inherited from individual base
-classes and implementations. The following pages explain these
-templates and other classes and traits that constitute the "building
-blocks" of the framework, as well as the construction principles they
-support.
+classes and implementations.
+ 
+More precisely, these templates address the following challenges:
+
+- some transformation operations return the same concrete collection
+  type (e.g. `filter`, called on a `List[Int]` returns a `List[Int]`),
+- some transformation operations return the same concrete collection
+  type with a different type of elements (e.g. `map`, called on a
+  `List[Int]`, can return a `List[String]`),
+- some collections have a single element type (e.g. `List[A]`), while
+  some others have two (e.g. `Map[K, V]`),
+- some operations on collections return a different concrete collection
+  depending on the element type. For example, `map` called on a `Map`
+  returns a `Map` if the mapping function returns a key-value pair, but
+  otherwise returns an `Iterable`,
+- transformation operations on some collections require additional
+  implicit parameters (e.g. `map` on `SortedSet` takes an implicit
+  `Ordering`),
+- some collections are strict (e.g. `List`), while some others are
+  non-strict (e.g. `View` and `LazyList`).
+ 
+The following sections explain how the templates address these
+challenges.
 
 ## Factoring out common operations ##
 
@@ -210,7 +229,7 @@ In total, we’ve seen that we have four branches of template traits:
 
 
   kind     |  not sorted   |  sorted
-===========|===============|===============
+-----------|---------------|----------------
 `CC[_]`    | `IterableOps` | `SortedSetOps`
 `CC[_, _]` | `MapOps`      | `SortedMapOps`
 
@@ -353,12 +372,12 @@ type of elements. The following code shows the relevant parts of `IterableOps` a
 trait IterableOps[+A, +CC[_], +C] {
   def iterableFactory: IterableFactory[CC]
   protected def fromSpecificIterable(coll: Iterable[A]): C
-  protected def newSpecificBuilder(): Builder[A, C]
+  protected def newSpecificBuilder: Builder[A, C]
 }
 
 trait IterableFactory[+CC[_]] {
   def from[A](source: IterableOnce[A]): CC[A]
-  def newBuilder[A](): Builder[A, CC[A]]
+  def newBuilder[A]: Builder[A, CC[A]]
 }
 ~~~
 
@@ -379,23 +398,21 @@ types? In the next few sections you’ll be walked through three examples
 that do this, namely capped sequences, sequences of RNA
 bases and prefix maps implemented with Patricia tries.
 
-Say you want to create a collection containing *at most* `n` elements:
-if more elements are added then the first elements are removed. Such a
-collection can be efficiently implemented using an `Array` with a fixed
-capacity: random access and element insertion are O(1) operations.
+Say you want to create an immutable collection containing *at most* `n` elements:
+if more elements are added then the first elements are removed.
 
 The first task is to find the supertype of our collection: is it
 `Seq`, `Set`, `Map` or just `Iterable`? In our case, it is tempting
 to choose `Seq` because our collection can contain duplicates and
 iteration order is determined by insertion order. However, some
-properties of `Seq` are not satisfied:
+properties of [`Seq`](/overviews/collections/seqs.html) are not satisfied:
 
 ~~~ scala
 (xs ++ ys).size == xs.size + ys.size
 ~~~
 
 Consequently, the only sensible choice as a base collection type
-is `Iterable`.
+is `collection.immutable.Iterable`.
 
 ### First version of `Capped` class ###
 
@@ -688,7 +705,7 @@ To start with the second example, we define the four RNA Bases:
       val toInt: Base => Int = Map(A -> 0, U -> 1, G -> 2, C -> 3)
     }
 
-Say you want to create a new sequence type for RNA strands, which are
+Say you want to create a new immutable sequence type for RNA strands, which are
 sequences of bases A (adenine), U (uracil), G (guanine), and C
 (cytosine). The definitions for bases are easily set up as shown in the
 listing of RNA bases above.
@@ -1087,7 +1104,7 @@ reduced.
 
 ## Integrating a new prefix map ##
 
-As a third example you'll learn how to integrate a new kind of map
+As a third example you'll learn how to integrate a new kind of mutable map
 into the collection framework. The idea is to implement a mutable map
 with `String` as the type of keys by a "Patricia trie". The term
 *Patricia* is in fact an abbreviation for "Practical Algorithm to
@@ -1124,12 +1141,12 @@ define a prefix map with the keys shown in the running example:
 
     scala> val m = PrefixMap("abc" -> 0, "abd" -> 1, "al" -> 2,
       "all" -> 3, "xy" -> 4)
-    m: PrefixMap[Int] = Map((abc,0), (abd,1), (al,2), (all,3), (xy,4))
+    m: PrefixMap[Int] = PrefixMap((abc,0), (abd,1), (al,2), (all,3), (xy,4))
 
 Then calling `withPrefix` on `m` will yield another prefix map:
 
     scala> m withPrefix "a"
-    res14: PrefixMap[Int] = Map((bc,0), (bd,1), (l,2), (ll,3))
+    res14: PrefixMap[Int] = PrefixMap((bc,0), (bd,1), (l,2), (ll,3))
 
 ### Patricia trie implementation ###
 
@@ -1334,6 +1351,9 @@ into the framework you need to pay attention to the following points:
 2. Pick the right base traits for the collection.
 3. Inherit from the right implementation trait to implement most
    collection operations.
+4. Overload desired operations that do not return, by default, a
+   collection as specific as they could. A complete list of such
+   operations is given as an appendix.
 
 You have now seen how Scala's collections are built and how you can
 add new kinds of collections. Because of Scala's rich support for
@@ -1346,3 +1366,49 @@ These pages contain material adapted from the 2nd edition of
 [Programming in Scala](http://www.artima.com/shop/programming_in_scala) by
 Odersky, Spoon and Venners. We thank Artima for graciously agreeing to its
 publication.
+
+## Appendix: Methods to overload to support the “same result type” principle ##
+
+You want to add overloads to specialize a transformation operations such that they return a more specific result. Examples are:
+- `map`, on `StringOps`, when the mapping function returns a `Char`, should return a `String` (instead of an `IndexedSeq`),
+- `map`, on `Map`, when the mapping function returns a pair, should return a `Map` (instead of an `Iterable`),
+- `map`, on `SortedSet`, when an implicit `Ordering` is available for the resulting element type, should return a
+`SortedSet` (instead of a `Set`).
+
+The following table lists transformation operations that might return a too wide type. You might want to overload
+these operations to return a more specific type.
+
+ Collection    | Operations
+---------------|--------------
+`Iterable`     | `map`, `flatMap`, `collect`, `scanLeft`, `scanRight`, `groupMap`, `concat`, `zip`, `zipAll`, `unzip`
+`Seq`          | `prepended`, `appended`, `prependedAll`, `appendedAll`, `padTo`, `patch`
+`immutable.Seq`| `updated`
+`SortedSet`    | `map`, `flatMap`, `collect`, `zip`
+`Map`          | `map`, `flatMap`, `collect`, `concat`
+`immutable.Map`| `updated`, `transform`
+`SortedMap`    | `map`, `flatMap`, `collect`, `concat`
+`immutable.SortedMap` | `updated`
+
+## Appendix: Cross-building custom collections ##
+
+Since the new internal API of the Scala 2.13 collections is very different from the previous
+collections API, authors of custom collection types should use separate source directories
+(per Scala version) to define them.
+
+With sbt you can achieve this by adding the following setting to your project:
+
+~~~ scala
+// Adds a `src/main/scala-2.13+` source directory for Scala 2.13 and newer
+// and a `src/main/scala-2.13-` source directory for Scala version older than 2.13
+unmanagedSourceDirectories in Compile += {
+  val sourceDir = (sourceDirectory in Compile).value
+  CrossVersion.partialVersion(scalaVersion.value) match {
+    case Some((2, n)) if n >= 13 => sourceDir / "scala-2.13+"
+    case _                       => sourceDir / "scala-2.13-"
+  }
+}
+~~~
+
+And then you can define a Scala 2.13 compatible implementation of your collection
+in the `src/main/scala-2.13+` source directory, and an implementation for the
+previous Scala versions in the `src/main/scala-2.13-` source directory.
