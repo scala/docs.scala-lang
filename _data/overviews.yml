@@ -42,6 +42,11 @@
       url: "core/architecture-of-scala-collections.html"
       by: Martin Odersky and Lex Spoon
       description: "These pages describe the architecture of the Scala collections framework in detail. Compared to the Collections API you will find out more about the internal workings of the framework. You will also learn how this architecture helps you define your own collections in a few lines of code, while reusing the overwhelming part of collection functionality from the framework."
+    - title: The Architecture of Scala 2.13’s Collections
+      icon: building
+      url: "core/architecture-of-scala-213-collections.html"
+      by: Martin Odersky, Lex Spoon and Julien Richard-Foy
+      description: "These pages describe the architecture of the collections framework introduced in Scala 2.13. Compared to the Collections API you will find out more about the internal workings of the framework. You will also learn how this architecture helps you define your own collections in a few lines of code, while reusing the overwhelming part of collection functionality from the framework."
 
 - category: Language
   description: "Guides and overviews covering features in the Scala language."
