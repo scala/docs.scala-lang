@@ -16,6 +16,8 @@
       url: "/tour/tour-of-scala.html"
     - title: Scala for Java Programmers
       url: "/tutorials/scala-for-java-programmers.html"
+    - title: Online Resources
+      url: "/learn.html"
 - title: Reference
   url: "#"
   submenu:
