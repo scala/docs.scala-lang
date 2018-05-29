@@ -22,7 +22,7 @@ The following shows a very minimal value class definition:
 
 It has a single, public `val` parameter that is the underlying runtime representation.
 The type at compile time is `Wrapper`, but at runtime, the representation is an `Int`.
-A value class can define `def`s, but no `val`s, `var`s, or nested `traits`s, `class`es or `object`s:
+A value class can define `def`s, but no `val`s, `var`s, or nested `trait`s, `class`es or `object`s:
 
     class Wrapper(val underlying: Int) extends AnyVal {
       def foo: Wrapper = new Wrapper(underlying * 19)
