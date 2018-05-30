@@ -73,11 +73,11 @@ def sqrtplus1(x: Int) = {
   sqrt(x) + 1.0
 }
 ```
-In the event there is a naming conflict and you need to import something from the root of the project, prefix the package name with `__root__`:
+In the event there is a naming conflict and you need to import something from the root of the project, prefix the package name with `_root_`:
 ```
 package accounts
 
-import __root__.users._
+import _root_.users._
 ```
 
 
