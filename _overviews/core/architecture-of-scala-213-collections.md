@@ -613,7 +613,7 @@ res4: Capped2[Int] = Capped2(2, 3, 4, 5)
 This implementation now behaves correctly, but we can still improve
 a few things. Since our collection is strict, we can take advantage
 of the better performance offered by 
-of strict implementations for transformation operations.
+strict implementations of transformation operations.
 
 ### Final version of `Capped` class ###
 
@@ -1077,7 +1077,7 @@ The final [`RNA` class](#final-version-of-rna-strands-class):
   operations to take advantage of strict builders,
 - uses a strict mode for overloads of transformation operations that return
   an `RNA`,
-- has a companion object that extends `SpecificFactory[Base, RNA]`, which makes
+- has a companion object that extends `SpecificIterableFactory[Base, RNA]`, which makes
   it possible to use it as a parameter of a `to` call (to convert any collection
   of bases to an `RNA`),
 - moves the `newSpecificBuilder` and `fromSpecificIterable` implementations
@@ -1159,8 +1159,8 @@ class PrefixMap[A]
     with mutable.MapOps[String, A, mutable.Map, PrefixMap[A]]
     with StrictOptimizedIterableOps[(String, A), mutable.Iterable, PrefixMap[A]] {
 
-  var suffixes: immutable.Map[Char, PrefixMap[A]] = immutable.Map.empty
-  var value: Option[A] = None
+  private var suffixes: immutable.Map[Char, PrefixMap[A]] = immutable.Map.empty
+  private var value: Option[A] = None
 
   def get(s: String): Option[A] =
     if (s.isEmpty) value
@@ -1369,13 +1369,13 @@ publication.
 
 ## Appendix: Methods to overload to support the “same result type” principle ##
 
-You want to add overloads to specialize a transformation operations such that they return a more specific result. Examples are:
+You want to add overloads to specialize transformation operations such that they return a more specific result type. Examples are:
 - `map`, on `StringOps`, when the mapping function returns a `Char`, should return a `String` (instead of an `IndexedSeq`),
 - `map`, on `Map`, when the mapping function returns a pair, should return a `Map` (instead of an `Iterable`),
 - `map`, on `SortedSet`, when an implicit `Ordering` is available for the resulting element type, should return a
 `SortedSet` (instead of a `Set`).
 
-The following table lists transformation operations that might return a too wide type. You might want to overload
+The following table lists transformation operations that might return an undesirably wide type. You might want to overload
 these operations to return a more specific type.
 
  Collection    | Operations
