@@ -255,6 +255,21 @@ these implementations. For instance, we want the default `map` implementation
 to be non-strict when inherited by a `View`, and strict when inherited
 by a `List`.
 
+To achieve that, operations are, by default, implemented in terms of a
+non-strict `View`. For the record, a `View` “describes” an operation applied
+to a collection but does not evaluate its result until the `View` is
+effectively traversed. Here is the (simplified) definition of `View`:
+
+~~~ scala
+trait View[+A] extends Iterable[A] with IterableOps[A, View, View[A]] {
+  def iterator: Iterator[A]
+}
+~~~
+
+A `View` is an `Iterable` that has only one abstract method returning
+an `Iterator` for traversing its elements. The `View` elements are
+evaluated only when its `Iterator` is traversed.
+
 ### Operations implementation ###
 
 Now that we are more familiar with the hierarchy of the template traits, we can have
