@@ -130,7 +130,7 @@ trait IterableOps[+A, +CC[_], +C] {
 }
 ~~~
 
-And then leaf collection types appropriately instantiate the type
+Leaf collection types appropriately instantiate the type
 parameters. For instance, in the case of `List[A]` we want `CC` to
 be `List` and `C` to be `List[A]`:
 
@@ -177,14 +177,15 @@ def map[K2, V2](f: ((K, V)) => (K2, V2)): Map[K2, V2]
 def map[B](f: ((K, V)) => B): Iterable[B]
 ~~~
 
-At use-site, if you call the `map` operation, the overloading resolution rules
-first try the definition that comes from `MapOps` (because `MapOps` is more
-specific than `IterableOps`), which returns a `Map`, but if it doesn’t type
-check (in case the return type of the function passed to the `map` call is not
-a pair), it fallbacks to the definition from `IterableOps`, which returns an
-`Iterable`. This is how we follow the “same-result-type” principle: wherever
-possible a transformation method on a collection yields a collection of the
-same type.
+At use-site, when you call the `map` operation, the compiler selects one of
+the two overloads. If the function passed as argument to `map` returns a pair,
+both functions are applicable. In this case, the version from `MapOps` is used
+because it is more specific by the rules of overloading resolution, so the
+resulting collection is a `Map`. If the argument function does not return a pair,
+only the version defined in `IterableOps` is applicable. In this case, the
+resulting collection is an `Iterable`. This is how we follow the
+“same-result-type” principle: wherever possible a transformation method on a
+collection yields a collection of the same type.
 
 In summary, the fact that `Map` collection types take two type parameters makes
 it impossible to unify their transformation operations with the ones from
@@ -405,7 +406,7 @@ The first task is to find the supertype of our collection: is it
 `Seq`, `Set`, `Map` or just `Iterable`? In our case, it is tempting
 to choose `Seq` because our collection can contain duplicates and
 iteration order is determined by insertion order. However, some
-properties of [`Seq`](/overviews/collections/seqs.html) are not satisfied:
+[properties of `Seq`](/overviews/collections/seqs.html) are not satisfied:
 
 ~~~ scala
 (xs ++ ys).size == xs.size + ys.size
@@ -507,8 +508,8 @@ You can see that if we try to grow the collection with more than four
 elements, the first elements are dropped (see `res4`). The operations
 behave as expected except for the last one: after calling `take` we
 get back a `List` instead of the expected `Capped1` collection. This
-is because all that was done in class
-[`Capped1`](#first-version-of-capped-class) was making `Capped1` extend
+is because all that was done in [class
+`Capped1`](#first-version-of-capped-class) was making `Capped1` extend
 `immutable.Iterable`. This class has a `take` method
 that returns an `immutable.Iterable`, and that’s implemented in terms of
 `immutable.Iterable`’s default implementation, `List`. So, that’s what
@@ -531,6 +532,8 @@ effect, as shown in the next section.
 ### Second version of `Capped` class ###
 
 ~~~ scala
+import scala.collection._
+
 class Capped2[A] private (val capacity: Int, val length: Int, offset: Int, elems: Array[Any])
   extends immutable.Iterable[A]
     with IterableOps[A, Capped2, Capped2[A]] { self =>
@@ -554,8 +557,8 @@ class Capped2Factory(capacity: Int) extends IterableFactory[Capped2] {
 
   def empty[A]: Capped2[A] = new Capped2[A](capacity)
 
-  def newBuilder[A]: Builder[A, Capped2[A]] =
-    new ImmutableBuilder[A, Capped2[A]](empty) {
+  def newBuilder[A]: mutable.Builder[A, Capped2[A]] =
+    new mutable.ImmutableBuilder[A, Capped2[A]](empty) {
       def addOne(elem: A): this.type = { elems = elems :+ elem; this }
     }
 }
@@ -618,6 +621,8 @@ strict implementations of transformation operations.
 ### Final version of `Capped` class ###
 
 ~~~ scala
+import scala.collection._
+
 final class Capped[A] private (val capacity: Int, val length: Int, offset: Int, elems: Array[Any])
   extends immutable.Iterable[A]
     with IterableOps[A, Capped, Capped[A]]
@@ -667,8 +672,8 @@ class CappedFactory(capacity: Int) extends IterableFactory[Capped] {
 
   def empty[A]: Capped[A] = new Capped[A](capacity)
 
-  def newBuilder[A]: Builder[A, Capped[A]] =
-    new ImmutableBuilder[A, Capped[A]](empty) {
+  def newBuilder[A]: mutable.Builder[A, Capped[A]] =
+    new mutable.ImmutableBuilder[A, Capped[A]](empty) {
       def addOne(elem: A): this.type = { elems = elems :+ elem; this }
     }
 
@@ -730,6 +735,7 @@ representation.
 
 ### First version of RNA strands class ###
 
+    import collection.mutable
     import collection.immutable.{ IndexedSeq, IndexedSeqOps }
 
     final class RNA1 private (
@@ -748,7 +754,7 @@ representation.
 
       override protected def fromSpecificIterable(coll: Iterable[Base]): RNA1 =
         fromSeq(coll.toSeq)
-      override protected def newSpecificBuilder: Builder[Base, RNA1] =
+      override protected def newSpecificBuilder: mutable.Builder[Base, RNA1] =
         iterableFactory.newBuilder[Base].mapResult(fromSeq)
     }
 
@@ -763,7 +769,7 @@ representation.
       // Bitmask to isolate a group
       private val M = (1 << S) - 1
 
-      def fromSeq(buf: Seq[Base]): RNA1 = {
+      def fromSeq(buf: collection.Seq[Base]): RNA1 = {
         val groups = new Array[Int]((buf.length + N - 1) / N)
         for (i <- 0 until buf.length)
           groups(i / N) |= Base.toInt(buf(i)) << (i % N * S)
@@ -920,6 +926,9 @@ this is why we always get a `Vector` as a result.
 
 ### Second version of RNA strands class ###
 
+    import scala.collection.{ View, mutable }
+    import scala.collection.immutable.{ IndexedSeq, IndexedSeqOps }
+
     final class RNA2 private (val groups: Array[Int], val length: Int)
       extends IndexedSeq[Base] with IndexedSeqOps[Base, IndexedSeq, RNA2] {
 
@@ -927,7 +936,7 @@ this is why we always get a `Vector` as a result.
 
       def apply(idx: Int): Base = // as before
       override protected def fromSpecificIterable(coll: Iterable[Base]): RNA2 = // as before
-      override protected def newSpecificBuilder: Builder[Base, RNA2] = // as before
+      override protected def newSpecificBuilder: mutable.Builder[Base, RNA2] = // as before
       
       // Overloading of `appended`, `prepended`, `appendedAll`,
       // `prependedAll`, `map`, `flatMap` and `concat` to return an `RNA2`
@@ -975,6 +984,9 @@ scala> bases.to(RNA2)
 ### Final version of RNA strands class ###
 
 ~~~ scala
+import scala.collection.{ AbstractIterator, SpecificIterableFactory, StrictOptimizedSeqOps, View, mutable }
+import scala.collection.immutable.{ IndexedSeq, IndexedSeqOps }
+
 final class RNA private (
   val groups: Array[Int],
   val length: Int
@@ -995,16 +1007,16 @@ final class RNA private (
   // `newSpecificBuilder`, from `IterableOps`
   override protected def fromSpecificIterable(coll: Iterable[Base]): RNA =
     RNA.fromSpecific(coll)
-  override protected def newSpecificBuilder: Builder[Base, RNA] =
+  override protected def newSpecificBuilder: mutable.Builder[Base, RNA] =
     RNA.newBuilder
 
   // Overloading of `appended`, `prepended`, `appendedAll`, `prependedAll`,
   // `map`, `flatMap` and `concat` to return an `RNA` when possible
-  def appended(base: Base): RNA = 
+  def appended(base: Base): RNA =
     (newSpecificBuilder ++= this += base).result()
   def appendedAll(suffix: Iterable[Base]): RNA =
     (newSpecificBuilder ++= this ++= suffix).result()
-  def prepended(base: Base): RNA = 
+  def prepended(base: Base): RNA =
     (newSpecificBuilder += base ++= this).result()
   def prependedAll(prefix: Iterable[Base]): RNA =
     (newSpecificBuilder ++= prefix ++= this).result()
@@ -1050,7 +1062,7 @@ object RNA extends SpecificIterableFactory[Base, RNA] {
   private val M = (1 << S) - 1 // bitmask to isolate a group
   private val N = 32 / S       // number of groups in an Int
 
-  def fromSeq(buf: Seq[Base]): RNA = {
+  def fromSeq(buf: collection.Seq[Base]): RNA = {
     val groups = new Array[Int]((buf.length + N - 1) / N)
     for (i <- 0 until buf.length)
       groups(i / N) |= Base.toInt(buf(i)) << (i % N * S)
@@ -1061,12 +1073,12 @@ object RNA extends SpecificIterableFactory[Base, RNA] {
   // and `fromSpecific`
   def empty: RNA = fromSeq(Seq.empty)
 
-  def newBuilder(): Builder[Base, RNA] =
-    ArrayBuffer.newBuilder[Base]().mapResult(fromSeq)
+  def newBuilder: mutable.Builder[Base, RNA] =
+    mutable.ArrayBuffer.newBuilder[Base].mapResult(fromSeq)
 
   def fromSpecific(it: IterableOnce[Base]): RNA = it match {
-    case seq: Seq[Base] => fromSeq(seq)
-    case _ => fromSeq(ArrayBuffer.from(it))
+    case seq: collection.Seq[Base] => fromSeq(seq)
+    case _ => fromSeq(mutable.ArrayBuffer.from(it))
   }
 }
 ~~~
@@ -1079,7 +1091,7 @@ The final [`RNA` class](#final-version-of-rna-strands-class):
   an `RNA`,
 - has a companion object that extends `SpecificIterableFactory[Base, RNA]`, which makes
   it possible to use it as a parameter of a `to` call (to convert any collection
-  of bases to an `RNA`),
+  of bases to an `RNA`, e.g. `List(U, A, G, C).to(RNA)`),
 - moves the `newSpecificBuilder` and `fromSpecificIterable` implementations
   to the companion object.
 
@@ -1329,7 +1341,12 @@ We'll now turn to the companion object `PrefixMap`. In fact it is not
 strictly necessary to define this companion object, as class `PrefixMap`
 can stand well on its own. The main purpose of object `PrefixMap` is to
 define some convenience factory methods. It also defines an implicit
-`Factory` for a better interoperability with other collections.
+conversion to `Factory` for a better interoperability with other
+collections. This conversion is triggered when one writes, for instance,
+`List("foo" -> 3).to(PrefixMap)`. The `to` operation takes a `Factory`
+as parameter but the `PrefixMap` companion object does not extend `Factory` (and it
+can not because a `Factory` fixes the type of collection elements,
+whereas `PrefixMap` has a polymorphic type of values).
 
 The two convenience methods are `empty` and `apply`. The same methods are
 present for all other collections in Scala's collection framework so
@@ -1375,6 +1392,10 @@ You want to add overloads to specialize transformation operations such that they
 - `map`, on `SortedSet`, when an implicit `Ordering` is available for the resulting element type, should return a
 `SortedSet` (instead of a `Set`).
 
+Typically, this happens when the collection fixes some type parameter of its template trait. For instance in
+the case of the `RNA` collection type, we fix the element type to `Base`, and in the case of the `PrefixMap[A]`
+collection type, we fix the type of keys to `String`.
+
 The following table lists transformation operations that might return an undesirably wide type. You might want to overload
 these operations to return a more specific type.
 
@@ -1412,3 +1433,7 @@ unmanagedSourceDirectories in Compile += {
 And then you can define a Scala 2.13 compatible implementation of your collection
 in the `src/main/scala-2.13+` source directory, and an implementation for the
 previous Scala versions in the `src/main/scala-2.13-` source directory.
+
+You can see how this has been put in practice in
+[scalacheck](https://github.com/rickynils/scalacheck/pull/411) and
+[scalaz](https://github.com/scalaz/scalaz/pull/1730).
