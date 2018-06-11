@@ -7,7 +7,7 @@ partof: minutes
 
 # Minutes
 
-Open discusion about SIP role and transition with given evolution of Scala language, from Scala 2 to Scala 3.
+Open discusion about SIP role and transition with given evolution of Scala language, from Scala 2 to Scala 3. The conversation was prompted due to the wake of Martin Odersky's keynote at Scala Days, Berlin 2018 introducing the future of Scala - Scala 3 (link to the key note will be added once published by the organisers).
 
 Jorge Vicente Cantero was the Process Lead and Darja Jovanovic was the secretary.
 
