@@ -75,7 +75,8 @@ The above mentioned structure and organisation was gathered throughout the meeti
 - **Heather** lays down the structure/organisation idea [YouTube time: 13'51''](https://youtu.be/q2LVmTe9qmU?t=824)
 - Between [YouTube time: 19'38'' and 24'](https://youtu.be/q2LVmTe9qmU?t=1178) the Committee discusses and agrees on the next steps: 1. Batches; 2. Plan; 3. Public comments on Contributors
 
-Other: spec, quorum
+4. Other: spec, quorum
+
 **Heather** bings up a question about Scala spec [YouTube time: 4'49''](https://youtu.be/q2LVmTe9qmU?t=289) to which **Martin** responds within the next year we should know which features are included as a first priority but that spec should not be left for the last minute.
 
 **Miles** [YouTube time: 8'45](https://youtu.be/q2LVmTe9qmU?t=525) asks PLEASE ADD
