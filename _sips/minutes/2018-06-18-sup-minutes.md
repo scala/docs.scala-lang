@@ -53,7 +53,7 @@ All present agreed that SIP Committee should continue its mandate in approving t
 
 2. SIP Committee role in Scala 2
 
-SIP Committee will focus on Scala 3 changes and creating the spec, **Martin** [YouTube time: 6'54''](https://youtu.be/q2LVmTe9qmU?t=414), Scala 2 SIP proposals will continue as before, but at a slower pace.
+SIP Committee will focus on Scala 3 changes and creating the spec, **Martin** ([YouTube time: 6'54''](https://youtu.be/q2LVmTe9qmU?t=414)), Scala 2 SIP proposals will continue as before, but at a slower pace.
 
 3. How to structure and organise the workflow
 
@@ -72,18 +72,18 @@ The first batch should be the removals as per list already prepared for 2.14 rel
 
 The above mentioned structure and organisation was gathered throughout the meeting, here are the snippets:
 
-- **Adriaan** suggests the batches, to be able to move faster [YouTube time: 5'51''](https://youtu.be/q2LVmTe9qmU?t=351) and gives a reason why [YouTube time: 8'25''](https://youtu.be/q2LVmTe9qmU?t=505).
-- **Seth** suggests to put the changes up for public comment [YouTube time: 7.12](https://youtu.be/q2LVmTe9qmU?t=432)
-- At [YouTube time: 24'04''](https://youtu.be/q2LVmTe9qmU?t=1444) **Martin** suggests a list of changes that needs to be considered 
-- **Heather** lays down the structure/organisation idea [YouTube time: 13'51''](https://youtu.be/q2LVmTe9qmU?t=824)
+- **Adriaan** suggests the batches, to be able to move faster ([YouTube time: 5'51''](https://youtu.be/q2LVmTe9qmU?t=351)) and gives a reason why ([YouTube time: 8'25''](https://youtu.be/q2LVmTe9qmU?t=505)).
+- **Seth** suggests to put the changes up for public comment ([YouTube time: 7.12](https://youtu.be/q2LVmTe9qmU?t=432))
+- At ([YouTube time: 24'04''](https://youtu.be/q2LVmTe9qmU?t=1444)) **Martin** suggests a list of changes that needs to be considered 
+- **Heather** lays down the structure/organisation idea ([YouTube time: 13'51''](https://youtu.be/q2LVmTe9qmU?t=824))
 - Between [YouTube time: 19'38'' and 24'](https://youtu.be/q2LVmTe9qmU?t=1178) the Committee discusses and agrees on the next steps: 1. Batches; 2. Plan; 3. Public comments on Contributors
 
 4. Other: spec, quorum
 
-**Heather** bings up a question about Scala spec [YouTube time: 4'49''](https://youtu.be/q2LVmTe9qmU?t=289) to which **Martin** responds within the next year we should know which features are included as a first priority but that spec should not be left for the last minute.
+**Heather** bings up a question about Scala spec ([YouTube time: 4'49''](https://youtu.be/q2LVmTe9qmU?t=289)) to which **Martin** responds within the next year we should know which features are included as a first priority but that spec should not be left for the last minute.
 
-**Miles** [YouTube time: 8'45](https://youtu.be/q2LVmTe9qmU?t=525) asks PLEASE ADD
+**Miles** ([YouTube time: 8'45](https://youtu.be/q2LVmTe9qmU?t=525)) asks PLEASE ADD
 
-**Martin** [YouTube time: 37'59''](https://youtu.be/q2LVmTe9qmU?t=2279 ) also raised a question about the decision making process, asking if it would be better to change to simple majority when it comes to voting. This was rejected by most of the Members and agreed it should be discussed in a different meeting or time.
+**Martin** ([YouTube time: 37'59''](https://youtu.be/q2LVmTe9qmU?t=2279)) also raised a question about the decision making process, asking if it would be better to change to simple majority when it comes to voting. This was rejected by most of the Members and agreed it should be discussed in a different meeting or time.
 
 **Conclusion** The first batch should be agreed upon, posted on the Contributors thread for public comments. Such discussion should be summaraized and included in the next meeting (22nd June 2018, after ScalaDays NewYork). 
