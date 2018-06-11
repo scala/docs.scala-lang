@@ -13,7 +13,10 @@ Jorge Vicente Cantero was the Process Lead and Darja Jovanovic was the secretary
 
 
 ## Date and Location
-The meeting took place on 18th May 2018 in Zalando offices in Berlin, Germany day after ScalaDays 2018 finished.
+The meeting took place on 18th May 2018 in Zalando offices in Berlin at 5 PM CET, Germany day after ScalaDays 2018 finished.
+All the attendees were in the same room and it was broadcasted via Google HangOuts.
+
+[Watch on Scala Center YouTube channel](https://youtu.be/q2LVmTe9qmU?t=3)
 
 Minutes were taken by Darja Jovanovic.
 
