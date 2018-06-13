@@ -7,7 +7,7 @@ partof: minutes
 
 # Minutes
 
-Open discusion about SIP role and transition with given evolution of Scala language, from Scala 2 to Scala 3. The conversation was prompted due to the wake of Martin Odersky's keynote at Scala Days, Berlin 2018 introducing the future of Scala - Scala 3 (link to the key note will be added once published by the organisers).
+Open discussion about SIP role and transition with given evolution of Scala language, from Scala 2 to Scala 3. The conversation was prompted due to the wake of Martin Odersky's keynote at Scala Days, Berlin 2018 introducing the future of Scala - Scala 3 (link to the key note will be added once published by the organisers).
 
 Jorge Vicente Cantero was the Process Lead and Darja Jovanovic was the secretary.
 
@@ -82,7 +82,7 @@ The above mentioned structure and organisation was gathered throughout the meeti
 
 **Heather** bings up an important question "What about Scala spec" ([YouTube time: 4'49''](https://youtu.be/q2LVmTe9qmU?t=289)) to which **Martin** responds within the next year we should know which features are included as a first priority but that spec should not be left for the last minute.
 
-**Miles** ([YouTube time: 8'45](https://youtu.be/q2LVmTe9qmU?t=525)) states that SIP proposals should be directly linked to specification changes which will save a lot of time and effort.
+**Miles** ([YouTube time: 8'45](https://youtu.be/q2LVmTe9qmU?t=525))suggested that SIP proposals should include draft specification changes to save time and effort pulling the eventual spec update together.
 
 **Martin** ([YouTube time: 37'59''](https://youtu.be/q2LVmTe9qmU?t=2279)) also raised a question about the decision making process, asking if it would be better to change to simple majority when it comes to voting. This was rejected by most of the Members and agreed it should be discussed in a different meeting or time.
 
