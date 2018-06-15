@@ -62,7 +62,7 @@ object Main extends App {
 }
 ```
 
-Note: IntelliJ has its own implementation the Scala compiler, and sometimes your
+Note: IntelliJ has its own implementation of the Scala compiler, and sometimes your
 code is correct even though IntelliJ indicates otherwise. You can always check
 to see if sbt can run your project on the command line.
 
