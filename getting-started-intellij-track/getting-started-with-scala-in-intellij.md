@@ -55,7 +55,8 @@ A good way to try out code samples is with Scala Worksheets
 
 1. In the project pane on the left, right click
 `src` and select **New** => **Scala Worksheet**.
-1. Enter the following code into the worksheet:
+2. Name your new Scala worksheet "Mathematician".
+3. Enter the following code into the worksheet:
 
 ```
 def square(x: Int) = x * x
