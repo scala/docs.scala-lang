@@ -47,11 +47,16 @@
       url: "core/architecture-of-scala-213-collections.html"
       by: Julien Richard-Foy
       description: "These pages describe the architecture of the collections framework introduced in Scala 2.13. Compared to the Collections API you will find out more about the internal workings of the framework."
-    - title: Custom Collection Types
+    - title: Implementing Custom Collections (Scala 2.13)
       icon: building
       url: "core/custom-collections.html"
       by: Martin Odersky, Lex Spoon and Julien Richard-Foy
       description: "In this document you will learn how the collections framework helps you define your own collections in a few lines of code, while reusing the overwhelming part of collection functionality from the framework."
+    - title: Adding Custom Collection Operations (Scala 2.13)
+      icon: building
+      url: "core/custom-collection-operations.html"
+      by: Julien Richard-Foy
+      description: "This guide shows how to write operations that can be applied to any collection type and return the same collection type, and how to write operations that can be parameterized by the type of collection to build."
 
 - category: Language
   description: "Guides and overviews covering features in the Scala language."

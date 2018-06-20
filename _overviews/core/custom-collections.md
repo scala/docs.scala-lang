@@ -1,7 +1,6 @@
 ---
 layout: singlepage-overview
-title: Custom Collection Types
-
+title: Implementing Custom Collections (Scala 2.13)
 permalink: /overviews/core/:title.html
 ---
 
