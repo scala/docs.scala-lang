@@ -236,6 +236,12 @@
       icon: puzzle-piece
       url: "plugins/index.html"
       description: "Compiler plugins permit customizing and extending the Scala compiler. This tutorial describes the plugin facility and walks you through how to create a simple plugin."
+    - title: Compiler Options
+      by: Community
+      icon: cog
+      url: "compiler-options/index.html"
+      description: "Various options to control how scalac compiles your code."
+
 
 - category: Legacy
   description: "Guides covering features no longer relevant to recent Scala versions (2.11+)."
