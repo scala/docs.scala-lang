@@ -23,8 +23,10 @@ You should indent like this:
 
     // right!
     class Foo {
-      def bar = ..
+      def bar = ...
     }
+    
+    //I fail to see the difference.
 
 The Scala language encourages a startling amount of nested scopes and
 logical blocks (function values and such). Do yourself a favor and don't
