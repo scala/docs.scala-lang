@@ -11,19 +11,25 @@ previous-page: overview
 next-page: naming-conventions
 ---
 
-Indentation should follow the "2-space convention". Thus, instead of
+Each level of indentation is 2 spaces. Tabs are not used. Thus, instead of
 indenting like this:
 
     // wrong!
     class Foo {
-        def bar = ...
+        def fourspaces = {
+            val x = 4
+            ..
+        }
     }
 
 You should indent like this:
 
     // right!
     class Foo {
-      def bar = ..
+      def twospaces = {
+        val x = 2
+        ..
+      }
     }
 
 The Scala language encourages a startling amount of nested scopes and
