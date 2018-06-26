@@ -34,11 +34,11 @@ you get a certificate of completion from Coursera on the paid version. You can l
 
 ## Dr.Mark C Lewis's Lectures from Trinity University
 
- * [Dr.Mark C Lewis](http://www.cs.trinity.edu/~mlewis/) from Trinity University, San Antonio, TX, teaches programming courses using the Scala language. Course videos are available in Youtube for free. Some of the courses below.
+ * [Dr.Mark C Lewis](http://www.cs.trinity.edu/~mlewis/) from Trinity University, San Antonio, TX, teaches programming courses using the Scala language. Course videos are available in YouTube for free. Some of the courses below.
    * [Introduction to Programming and Problem Solving Using Scala](https://www.youtube.com/playlist?list=PLLMXbkbDbVt9MIJ9DV4ps-_trOzWtphYO)
    * [Object-Orientation, Abstraction, and Data Structures Using Scala](https://www.youtube.com/playlist?list=PLLMXbkbDbVt8JLumqKj-3BlHmEXPIfR42)
 
- You can visit his [Youtube channel](https://www.youtube.com/user/DrMarkCLewis/featured) for more videos.
+ You can visit his [YouTube channel](https://www.youtube.com/user/DrMarkCLewis/featured) for more videos.
 
 
 ## Try Scala In Your Browser!
