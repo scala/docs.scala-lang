@@ -27,21 +27,21 @@ discourse: true
 
 ## Introduction
 
-Scala compiler `scalac` offers various **compiler options**, also referred as **compiler flags**, to change how to compile your program.
+Scala compiler `scalac` offers various **compiler options**, also referred to as **compiler flags**, to change how to compile your program.
 
-Nowadays, most people are not running scalac from the command line.
-Instead, they use sbt, IDE, and other tools as their interface to the compiler.
-Therefore they may not even have scalac installed, and won't think to do `man scalac`.
+Nowadays, most people are not running `scalac` from the command line.
+Instead, they use sbt, an IDE, and other tools as their interface to the compiler.
+Therefore they may not even have `scalac` installed, and won't think to do `man scalac`.
 
-This page come to the rescue for the people to find...
+This page comes to the rescue for the people to find&hellip;
 
-* What compiler options scalac offers
-* How to use compiler option
+* What compiler options `scalac` offers
+* How to use compiler options
 
 
 ## How to use compiler options
 
-### Use compiler option with scalac
+### Use compiler options with scalac
 
 ```bash
 scalac [ <options> ] <source files>
@@ -51,7 +51,7 @@ E.g. `scalac -encoding utf8 -Xfatal-warnings Hello.scala`
 
 
 
-### Use compiler option with sbt
+### Use compiler options with sbt
 
 
 
