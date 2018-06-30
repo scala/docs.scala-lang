@@ -14,9 +14,10 @@ redirect_from: /sips/pending/case-if.html
 
 ## History
 
-| Date          | Version       |
-|---------------|---------------|
-| May 26th 2018 | Initial Draft |
+| Date          | Version        |
+|---------------|----------------|
+| May 26th 2018 | Initial Draft  |
+| May 28th 2018 | Underscoreless |
 
 ## Motivation
 
@@ -34,29 +35,52 @@ We propose to go underscoreless, pace the famous consultancy.
 
 If we can't have SIP-12 then we can have tidy syntax for `if-then` in `case` blocks.
 
+Since `Scala <3` abhors two ways of doing a thing, we eliminate underscore
+as a pattern. Underscore as a subpattern, that is, as a `pattern2`, is patterned
+after placeholder syntax in expressions, just as constructor patterns are patterned
+after constructor invocations. We read `C(_)` and `case C(_) =>` to mean construction
+of `C` with an argument unspecified. Similarly, just as placeholder syntax is
+restricted, so that an underscore is never an `Expr`, pattern syntax must disallow
+underscore as a `Pattern` production.
+
+In fact, underscore never quite functioned that way, since the definition
+
+    val _ = 42
+
+has always incorrectly introduced a variable named `_`.
+
+Suggestions have surfaced that this syntax should mean something entirely different,
+namely, the introduction of a freshly named variable which cannot be named in
+source code, but induces the evaluation of the RHS of the definition, and which
+can be accessed implicitly if defined as an implicit value.
+
+However that may be, underscore must first be disallowed as a `Pattern`.
+
+The only way to coherently define a `case` for which no pattern is applied is to omit
+the pattern. And in the absence of alternative semantics, `val _` is not meaningful.
+Underscore on the RHS of `var` definitions has already been deprecated, and it is
+expected that that syntax will also be removed.
+
 ## Syntax
 
 In lieu of
 
     42 match {
       case _ if now isAfter midnight => nothingGoodHappens()
+      case _ => ()
     }
 
 we write
 
     42 match {
       case if now isAfter midnight => nothingGoodHappens()
+      case => ()
     }
 
 The syntax accepts either a pattern with optional guard, or a guard with no pattern:
 
     CaseClause        ::=  ‘case’ (Pattern [Guard] | Guard) ‘=>’ Block
     Guard             ::=  ‘if’ PostfixExpr
-
-A guard with no pattern is taken as though the pattern were an underscore, which matches
-any value.
-
-This modest proposal eschews dispensing with the pattern altogether, `case =>`.
 
 ## Further Justifications
 
