@@ -534,12 +534,11 @@ $(document).ready(function () {
   // e.g. https://api.github.com/repos/scala/docs.scala-lang/commits?path=README
   let url = githubApiUrl + '?path=' + thisPageUrl;
   $.get(url, function (data, status) {
-    
     let contributorsUnique = [];
     let res = data.forEach(commit => {
       // add if not already in array
       let addedToList = contributorsUnique.find(c => {
-        let matches = c.authorName == commit.commit.committer.name;
+        let matches = c.authorName == commit.commit.author.name;
         if (!matches && commit.author) {
           matches = c.authorName == commit.author.login;
         }
@@ -548,9 +547,9 @@ $(document).ready(function () {
 
       if (!addedToList) {
         // first set fallback properties
-        let authorName = commit.commit.committer.name;
-        let authorLink = 'mailto:' + commit.commit.committer.email;
-        let authorImageLink = 'https://github.com/identicons/' + commit.commit.committer.name + '.png';
+        let authorName = commit.commit.author.name;
+        let authorLink = '';
+        let authorImageLink = 'https://github.com/identicons/' + commit.commit.author.name + '.png';
         // if author present, fill these preferably
         if (commit.author) {
           authorName = commit.author.login;
@@ -569,7 +568,10 @@ $(document).ready(function () {
     contributorsUnique.forEach(contributor => {
       let contributorHtml = '<div>';
       contributorHtml += '<img src="' + contributor.authorImageLink + '">';
-      contributorHtml += '<a href="' + contributor.authorLink + '">' + contributor.authorName + '</a>';
+      if (contributor.authorLink)
+        contributorHtml += '<a href="' + contributor.authorLink + '">' + contributor.authorName + '</a>';
+      else
+        contributorHtml += '<a>' + contributor.authorName + '</a>';
       contributorHtml += '</div>';
       contributorsHtml += contributorHtml;
     });
