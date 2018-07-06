@@ -527,15 +527,40 @@ $(document).ready(function(){
 // see https://stackoverflow.com/a/19200303/4496364
 $(document).ready(function () {
   let githubApiUrl = 'https://api.github.com/repos/scala/docs.scala-lang/commits';
-  // transform "/tour/basics.html" to "_ba/tour/basics.md";
+  let identiconsUrl = 'https://github.com/identicons';
+  /* - we need to transform "/tour/basics.html" to "_ba/tour/basics.md"
+   * - some files aren't prefixed with underscore, see rootFiles
+   * - some files are placed in _overviews but rendered to its folder, see overviewsFolders
+   */
+  
+  let rootFiles = ['getting-started', 'learn', 'glossary'];
+  let overviewsFolders = ['FAQ', 'cheatsheets', 'collections', 'compiler-options',
+    'core', 'jdk-compatibility', 'macros', 'parallel-collections',
+    'plugins', 'quasiquotes', 'reflection',
+    'repl', 'scaladoc', 'tutorials'
+  ];
+
   let thisPageUrl = window.location.pathname;
+  // chop off beginning slash and ending .html
   thisPageUrl = thisPageUrl.substring(1, thisPageUrl.lastIndexOf('.'));
-  thisPageUrl = '_' + thisPageUrl + '.md';
-  // e.g. https://api.github.com/repos/scala/docs.scala-lang/commits?path=README
+  let isRootFile = rootFiles.some(rf => thisPageUrl.startsWith(rf));
+  let isInOverviewsFolder = overviewsFolders.some(of => thisPageUrl.startsWith(of));
+  if(isRootFile) {
+    thisPageUrl = thisPageUrl + '.md';
+  } else if(isInOverviewsFolder) {
+    thisPageUrl = '_overviews/'+ thisPageUrl + '.md';
+  } else {
+    thisPageUrl = '_' + thisPageUrl + '.md';
+  }
+  
   let url = githubApiUrl + '?path=' + thisPageUrl;
   $.get(url, function (data, status) {
+    if(!data || data.length < 1) {
+      $('.content-contributors').html(''); // clear content
+      return false; // break
+    }
     let contributorsUnique = [];
-    let res = data.forEach(commit => {
+    data.forEach(commit => {
       // add if not already in array
       let addedToList = contributorsUnique.find(c => {
         let matches = c.authorName == commit.commit.author.name;
@@ -549,7 +574,7 @@ $(document).ready(function () {
         // first set fallback properties
         let authorName = commit.commit.author.name;
         let authorLink = '';
-        let authorImageLink = 'https://github.com/identicons/' + commit.commit.author.name + '.png';
+        let authorImageLink = identiconsUrl + '/' + commit.commit.author.name + '.png';
         // if author present, fill these preferably
         if (commit.author) {
           authorName = commit.author.login;
