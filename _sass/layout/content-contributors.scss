@@ -1,0 +1,22 @@
+.content-contributors {
+    .contributors-container {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        div {
+            margin: 5px;
+            a {
+                vertical-align: middle;
+                padding: 3px;
+                text-decoration: none;
+            }
+            img {
+                vertical-align: middle;
+                width: 35px;
+                height: 35px;
+                margin-bottom: 0;
+                border-radius: 7px;
+            }
+        }
+    }
+}
