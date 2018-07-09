@@ -5,7 +5,7 @@ title: Scala Compiler Plugins
 discourse: true
 ---
 
-**Lex Spoon (2008)**
+**Lex Spoon (2008)**  
 **Seth Tisue (2018)**
 
 ## Introduction
