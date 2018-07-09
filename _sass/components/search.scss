@@ -4,7 +4,19 @@
 
 .search-container {
     position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+    .algolia-autocomplete {
+        width: 100%;
+    }
 
+    @media screen and (min-width: 768px) {
+        margin: 0;
+        margin-top: -20px;
+        float: right;
+        width: 24%;
+    }
     .icon-search {
         position: absolute;
         left: 14px;

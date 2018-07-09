@@ -1,6 +1,4 @@
-
-{% include headertop.html %}
-{% include headerbottom.html %}
+ {% include headertop.html %} {% include headerbottom.html %}
 
 <div class="navigation-fade-screen"></div>
 
@@ -11,12 +9,22 @@
 	<!-- Title -->
 	<section class="title-page">
 		<div class="wrap">
-			<h1>{{page.title}}</h1>
+			<div class="content-title-documentation">
+
+				<h1>{{page.title}}</h1>
+				<div class="search-container">
+					<div class="icon-search">
+						<i class="fa fa-search"></i>
+					</div>
+					<input type="text" class="doc-search" id="doc-search-bar" placeholder="Search in doc...">
+					<ul class="result-container" id="result-container" style="display: none;"></ul>
+				</div>
+			</div>
+
 		</div>
 	</section>
 
-	{% comment %}Specific content from child layouts{% endcomment %}
-	{{content}}
+	{% comment %}Specific content from child layouts{% endcomment %} {{content}}
 
 </main>
 
