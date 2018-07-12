@@ -116,8 +116,9 @@ applicable):
 1.  Annotations, *each on their own line*
 2.  Override modifier (`override`)
 3.  Access modifier (`protected`, `private`)
-4.  Final modifier (`final`)
-5.  `def`
+4.  Implicit modifier (`implicit`)
+5.  Final modifier (`final`)
+6.  `def`
 
 <!-- necessary to separate the following example from the above bullet list -->
 
