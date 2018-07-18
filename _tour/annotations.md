@@ -16,7 +16,7 @@ redirect_from: "/tutorials/tour/annotations.html"
 Annotations associate meta-information with definitions. For example, the annotation `@deprecated` before a method causes the compiler to print a warning if the method is used.
 ```
 object DeprecationDemo extends App {
-  @deprecated
+  @deprecated("deprecation message", "release # which deprecates method")
   def hello = "hola"
 
   hello  
