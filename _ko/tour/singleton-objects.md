@@ -70,8 +70,6 @@ object X {
 
 이것은 또 다른 특징을 설명한다. `private`의 문맥에서 클래스와 그 동반자는 친구다. `객체 X`는 `클래스 X`의 private 멤버들에 접근할수 있다. 하나의 멤버를 *정말로* private하게 만들고 싶다면 `private[this]`를 사용하라.
 
-For Java convenience, methods, including `var`s and `val`s, defined directly in a singleton object also have a static method defined in the companion class, called a *static forwarder*. Other members are accessible via the `X$.MODULE$` static field for `object X`.
-
 자바 편의를 위해서, `var`와 `val`의 것 모두, 싱글턴 객체에 정의된 메서드들은 *static forwarder* 라고 불리는 동반자 클래스안에 정의된 static메서드를 가진다. 다른 멤버들은 `객체 X`를 위한 static 필드 `X$.MODULE$`를 통해 접근할수 있다.
 
 만약 당신이 모든 것을 동반자 객체에 옮기고, 당신이 남겨놓은 모든것이 인스턴스화가 되길 바라지 않는 하나의 클래스라면, 간단하게 그 클래스를 삭제하라. Static forwarder는 여전히 생성된다.
