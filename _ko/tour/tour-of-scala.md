@@ -9,7 +9,7 @@ partof: scala-tour
 num: 1
 language: ko
 
-next-page: unified-types
+next-page: basics
 ---
 
 스칼라는 정확하고 명쾌하며 타입 세이프한 방식으로 일반적인 유형의 프로그래밍 패턴을 표현하기 위해 설계된 새로운 다중 패러다임 프로그래밍 언어다. 스칼라는 객체지향과 함수형 언어를 자연스럽게 통합해준다.

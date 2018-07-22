@@ -6,7 +6,7 @@ discourse: false
 
 partof: scala-tour
 
-num: 3
+num: 4
 language: ko
 
 next-page: traits

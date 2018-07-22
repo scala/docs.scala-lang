@@ -6,7 +6,7 @@ discourse: false
 
 partof: scala-tour
 
-num: 4
+num: 5
 language: ko
 
 next-page: mixin-class-composition
