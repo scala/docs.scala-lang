@@ -69,6 +69,9 @@ collections:
   fr: # French translations
     output: true
     permalink: /:collection/:path.html
+  th: # Thai translations
+    output: true
+    permalink: /:collection/:path.html
 
 defaults:
   -
