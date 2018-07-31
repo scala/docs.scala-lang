@@ -73,9 +73,9 @@ One detail to note is that the static type of the final result is a Seq, not a V
 There are two reasons why you might want to consider using views. The first is performance. You have seen that by switching a collection to a view the construction of intermediate results can be avoided. These savings can be quite important. As another example, consider the problem of finding the first palindrome in a list of words. A palindrome is a word which reads backwards the same as forwards. Here are the necessary definitions:
 
     def isPalindrome(x: String) = x == x.reverse
-    def findPalidrome(s: Seq[String]) = s find isPalindrome
+    def findPalindrome(s: Seq[String]) = s find isPalindrome
 
-Now, assume you have a very long sequence words and you want to find a palindrome in the first million words of that sequence. Can you re-use the definition of `findPalidrome`? Of course, you could write:
+Now, assume you have a very long sequence words and you want to find a palindrome in the first million words of that sequence. Can you re-use the definition of `findPalindrome`? Of course, you could write:
 
     findPalindrome(words take 1000000)
 
