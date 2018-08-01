@@ -115,7 +115,7 @@ proposals may still make interpolations more regular. This proposal is
 deliberately small, and intends not to be in the way of any potential further
 proposals.
 
-[1]: https://github.com/Scala/bug/issues/6476 "\" escape does not work with string interpolation"
+[1]: https://github.com/Scala/bug/issues/6476 "\\\" escape does not work with string interpolation"
 [2]: https://stackoverflow.com/questions/31366563/string-interpolation-escaping-quotation-mark/31366588 ""
 [3]: https://stackoverflow.com/questions/17085354/escaping-quotation-marks-in-f-string-interpolation ""
 [4]: https://github.com/scala/bug/issues/6476#issuecomment-292412577 "@retronym said: +1 to s"$"". Because it doesn't compile today, we don't risk changing the meaning of existing programs."
