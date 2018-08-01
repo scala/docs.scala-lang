@@ -56,6 +56,46 @@ The following fragment of `RichInt` shows how it extends `Int` to allow the expr
 At runtime, this expression `3.toHexString` is optimised to the equivalent of a method call on a static object
 (`RichInt$.MODULE$.extension$toHexString(3)`), rather than a method call on a newly instantiated object.
 
+### Location of extension methods
+
+There are several options regarding where to place the implemented extension methods.
+They can be placed in a package object which makes them available within the package automatically.
+
+    package object mypackage {
+      implicit class RichInt(val self: Int) extends AnyVal {
+        def toHexString: String = java.lang.Integer.toHexString(self)
+      }
+    }
+
+If the extension methods shall be reused it might be feasible to implement them not implicitly and include them via traits.
+
+    // in file: src/main/scala/mypackage/package.scala
+    package object mypackage extends mypackage.Shared {
+    }
+
+    // in file: src/main/scala/mypackage/Shared.scala
+    trait Shared {
+      implicit def toRichInt(self: Int): RichInt = new RichInt(self)
+    }
+
+    class RichInt(val self: Int) extends AnyVal {
+      def toHexString: String = java.lang.Integer.toHexString(self)
+    }
+
+However automatically available implicits have their drawbacks so it might be better to place them within a regular object.
+
+    object implicits {
+      implicit class RichInt(val self: Int) extends AnyVal {
+        def toHexString: String = java.lang.Integer.toHexString(self)
+      }
+    }
+
+To make them available an import is necessary like this:
+
+    import org.example.mypackage.implicits._
+
+    val h = 3.toHexString
+
 ## Correctness
 
 Another use case for value classes is to get the type safety of a data type without the runtime allocation overhead.
