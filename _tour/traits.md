@@ -15,7 +15,7 @@ prerequisite-knowledge: expressions, classes, generics, objects, companion-objec
 redirect_from: "/tutorials/tour/traits.html"
 ---
 
-Traits are used to share interfaces and fields between classes. They are similar to Java 8's interfaces. Classes and objects can extend traits but traits cannot be instantiated and therefore have no parameters.
+Traits are used to share interfaces and fields between classes. They are similar to Java 8's functional interfaces. Classes and objects can extend traits but traits cannot be instantiated and therefore have no parameters.
 
 ## Defining a trait
 A minimal trait is simply the keyword `trait` and an identifier:
