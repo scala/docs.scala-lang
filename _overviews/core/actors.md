@@ -460,7 +460,7 @@ is as follows:
 
 ### Starting remote actors
 
-A remote actor is uniquely identified by a [`Symbol`](http://www.scala-lang.org/api/2.9.1/scala/Symbol.html). This symbol is
+A remote actor is uniquely identified by a [`Symbol`](https://www.scala-lang.org/api/current/scala/Symbol.html). This symbol is
 unique to the JVM instance on which the remote actor is executed. A
 remote actor identified with name `'myActor` can be created as follows.
 

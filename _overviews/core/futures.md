@@ -15,7 +15,7 @@ permalink: /overviews/core/:title.html
 
 Futures provide a way to reason about performing many operations
 in parallel-- in an efficient and non-blocking way.
-A [`Future`](http://www.scala-lang.org/api/current/index.html#scala.concurrent.Future)
+A [`Future`](https://www.scala-lang.org/api/current/scala/concurrent/Future.html)
 is a placeholder object for a value that may not yet exist.
 Generally, the value of the Future is supplied concurrently and can subsequently be used.
 Composing concurrent tasks in this way tends to result in faster, asynchronous, non-blocking parallel code.
@@ -58,7 +58,7 @@ Both code snippets delegate the execution of `fatMatrix.inverse()` to an `Execut
 
 ## Execution Context
 
-Future and Promises revolve around [`ExecutionContext`s](http://www.scala-lang.org/api/current/index.html#scala.concurrent.ExecutionContext), responsible for executing computations.
+Future and Promises revolve around [`ExecutionContext`s](https://www.scala-lang.org/api/current/scala/concurrent/ExecutionContext.html), responsible for executing computations.
 
 An `ExecutionContext` is similar to an [Executor](http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Executor.html):
 it is free to execute  computations in a new thread, in a pooled thread or in the current thread
