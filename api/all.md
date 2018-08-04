@@ -27,6 +27,9 @@ includeTOC: true
 
 ## Nightly builds
 
+* Scala 2.13.x
+  * [Library API](https://www.scala-lang.org/files/archive/nightly/2.13.x/api/2.13.x/)
+  * [Compiler API](https://www.scala-lang.org/files/archive/nightly/2.13.x/api/2.13.x/scala-compiler/)
 * Scala 2.12.x
   * [Library API](http://www.scala-lang.org/files/archive/nightly/2.12.x/api/2.12.x/)
   * [Compiler API](http://www.scala-lang.org/files/archive/nightly/2.12.x/api/2.12.x/scala-compiler/)
