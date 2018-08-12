@@ -25,7 +25,7 @@ class User
 
 val user1 = new User
 ```
-关键字`new`被用于创建类的实例。`User`由于没有定义任何构造器，因而只有一个不接受任何参数的默认构造器。然而，你通常需要一个构造器和类体。下面是类定义的一个例子：
+关键字`new`被用于创建类的实例。`User`由于没有定义任何构造器，因而只有一个不带任何参数的默认构造器。然而，你通常需要一个构造器和类体。下面是类定义的一个例子：
 
 ```tut
 class Point(var x: Int, var y: Int) {
@@ -44,7 +44,7 @@ point1.x  // 2
 println(point1)  // prints (2, 3)
 ```
 
-`Point`类有4个成员：变量`x`和`y`，方法`move`和`toString`。与许多其他语言不同，主构造方法在类的签名中`(var x: Int, var y: Int)`。`move`方法接受2个参数，返回无任何意义的`Unit`类型值`()`。这一点与Java这类语言中的`void`相当。另外，`toString`方法不接受任何参数但是返回一个`String`值。因为`toString`覆盖了[`AnyRef`](unified-types.html)中的`toString`方法，所以用了`override`关键字标记。
+`Point`类有4个成员：变量`x`和`y`，方法`move`和`toString`。与许多其他语言不同，主构造方法在类的签名中`(var x: Int, var y: Int)`。`move`方法带有2个参数，返回无任何意义的`Unit`类型值`()`。这一点与Java这类语言中的`void`相当。另外，`toString`方法不带任何参数但是返回一个`String`值。因为`toString`覆盖了[`AnyRef`](unified-types.html)中的`toString`方法，所以用了`override`关键字标记。
 
 ## 构造器
 

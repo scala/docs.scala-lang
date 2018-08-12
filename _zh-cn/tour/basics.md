@@ -26,7 +26,7 @@ redirect_from: "/tutorials/tour/basics.html"
 
 这是一种简单的、零设置的方法来实践Scala的代码片段。
 
-这篇文档中的大部分代码示例集成了ScalaFiddle，所以你可以直接点击“Run"按钮来实践。
+这篇文档中的大部分代码示例集成了ScalaFiddle，直接点击“Run"按钮即可运行。
 
 ## 表达式
 
@@ -45,7 +45,7 @@ println("Hello," + " world!") // Hello, world!
 ```
 {% endscalafiddle %}
 
-### 常量
+### 常量（`Values`）
 
 你可以使用`val`关键字来给表达式的结果命名。
 
@@ -54,22 +54,22 @@ val x = 1 + 1
 println(x) // 2
 ```
 
-对于结果比如这里的`x`的命名，被称为常量。引用一个常量不会再次计算。
+对于结果比如这里的`x`的命名，被称为常量（`values`）。引用一个常量（`value`）不会再次计算。
 
-常量不能重新被赋值。
+常量（`values`）不能重新被赋值。
 
 ```tut:nofail
 val x = 1 + 1
 x = 3 // This does not compile.
 ```
 
-常量的类型可以被推断，或者你也可以显示地声明类型，例如：
+常量（`values`）的类型可以被推断，或者你也可以显示地声明类型，例如：
 
 ```tut
 val x: Int = 1 + 1
 ```
 
-注意下，在标识符`x`的后面，类型声明`Int`是怎么出现的。这里你还需要一个`:`。
+注意下，在标识符`x`的后面、类型声明`Int`的前面，还需要一个冒号`:`。
 
 ### 变量
 
@@ -88,11 +88,11 @@ var x: Int = 1 + 1
 ```
 
 
-## 块（Blocks）
+## 代码块（Blocks）
 
-你可以组合几个表达式，并且用`{}`包围起来。我们称之为块（block）。
+你可以组合几个表达式，并且用`{}`包围起来。我们称之为代码块（block）。
 
-这个块中最后一个表达式的结果，也正是整个块的结果。
+代码块中最后一个表达式的结果，也正是整个块的结果。
 
 ```tut
 println({
@@ -103,7 +103,7 @@ println({
 
 ## 函数
 
-函数是接受参数的表达式。
+函数是带有参数的表达式。
 
 你可以定义一个匿名函数（即没有名字），来返回一个给定整数加一的结果。
 
@@ -122,7 +122,7 @@ println(addOne(1)) // 2
 ```
 {% endscalafiddle %}
 
-函数可以接受多个参数。
+函数可带有多个参数。
 
 {% scalafiddle %}
 ```tut
@@ -131,7 +131,7 @@ println(add(1, 2)) // 3
 ```
 {% endscalafiddle %}
 
-或者不接受参数。
+或者不带参数。
 
 ```tut
 val getTheAnswer = () => 42
@@ -217,7 +217,7 @@ val anotherPoint = Point(1, 2)
 val yetAnotherPoint = Point(2, 2)
 ```
 
-并且它们可以进行值比较。
+并且它们的值可以进行比较。
 
 ```tut
 if (point == anotherPoint) {
