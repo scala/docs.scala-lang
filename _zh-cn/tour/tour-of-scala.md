@@ -53,9 +53,9 @@ Scala配备了一个拥有强大表达能力的类型系统，它可以静态地
 * [隐式类](http://docs.scala-lang.org/overviews/core/implicit-classes.html)允许给已有的类型添加扩展方法。
 * [字符串插值](/overviews/core/string-interpolation.html)可以让用户使用自定义的插值器进行扩展。
 
-## Scala的交互
+## Scala的互操作性
 
-通过使用流行的Java运行环境（JRE），Scala设计了很好的交互。特别是与主流的面向对象的Java编程语言的交互尽可能的平滑。Java的最新特性如函数接口（SAMs）、[lambda表达式](higher-order-functions.html)、[注解](annotations.html)及[泛型类](generic-classes.html) 在Scala中都有类似的实现。
+Scala设计的目标是与流行的Java运行环境（JRE）进行良好的互操作，特别是与主流的面向对象编程语言——Java的互操作尽可能的平滑。Java的最新特性如函数接口（SAMs）、[lambda表达式](higher-order-functions.html)、[注解](annotations.html)及[泛型类](generic-classes.html) 在Scala中都有类似的实现。
 
 另外有些Java中并没有的特性，如[缺省参数值](default-parameter-values.html)和[带名字的参数](named-arguments.html)等，也是尽可能地向Java靠拢。Scala拥有类似Java的编译模型（独立编译、动态类加载），且允许使用已有的成千上万的高质量类库。
 
