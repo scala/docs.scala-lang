@@ -13,3 +13,5 @@ language: zh-cn
 next-page: unified-types
 previous-page: basics
 ---
+
+## Functions
