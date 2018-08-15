@@ -59,8 +59,7 @@ println(x) // 2
 
 常量（`values`）不能重新被赋值。
 
-```tut:nofail
-val x = 1 + 1
+```tut:fail
 x = 3 // This does not compile.
 ```
 

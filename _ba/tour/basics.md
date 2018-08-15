@@ -54,8 +54,7 @@ Referenciranje vrijednosti ne okida njeno ponovno izračunavanje.
 
 Vrijednosti se ne mogu mijenjati.
 
-```tut:nofail
-val x = 1 + 1
+```tut:fail
 x = 3 // Ovo se ne kompajlira.
 ```
 

@@ -59,8 +59,7 @@ a value does not re-compute it.
 
 Values cannot be re-assigned.
 
-```tut:nofail
-val x = 1 + 1
+```tut:fail
 x = 3 // This does not compile.
 ```
 
