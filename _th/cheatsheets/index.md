@@ -5,7 +5,7 @@ title: Scalacheat
 partof: cheatsheet
 
 by: Brendan O'Connor
-about: ขอบคุณ <a href="http://brenocon.com/">Brendan O'Connor</a>, สำหรับ cheatsheet นี้มีวัตถุประสงค์เพื่ออ้างอิ่งอย่างง่ายสำหรับโครงสร้างประโยคของ Scala, Licensed by Brendan O'Connor under a CC-BY-SA 3.0 license.
+about: ขอบคุณ <a href="http://brenocon.com/">Brendan O'Connor</a>, สำหรับ cheatsheet นี้มีวัตถุประสงค์เพื่ออ้างอิงอย่างง่ายสำหรับโครงสร้างประโยคของ Scala, Licensed by Brendan O'Connor under a CC-BY-SA 3.0 license.
 
 language: "th"
 ---
@@ -14,15 +14,15 @@ language: "th"
 
 {{ page.about }}
 
-|  <span id="variables" class="h2">ตัวแปล</span>                                                                     |                      |
-|  `var x = 5`                                                                                                      |  ค่าตัวแปล             |
+|  <span id="variables" class="h2">ตัวแปร</span>                                                                     |                      |
+|  `var x = 5`                                                                                                      |  ค่าตัวแปร             |
 |  <span class="label success">Good</span><br> `val x = 5`<br> <span class="label important">Bad</span><br> `x=6`   |  ค่าคงที่               |
 |  `var x: Double = 5`                                                                                              |  type ที่ชัดเจน         |
 |  <span id="functions" class="h2">ฟังก์ชัน</span>                                                                 |                      |
 |  <span class="label success">Good</span><br> `def f(x: Int) = { x*x }`<br> <span class="label important">Bad</span><br> `def f(x: Int)   { x*x }`   |  กำหนดฟังก์ชัน <br> ซ้อนความผิดพลาด : ไม่มีการ return Unit ของฟังก์ชัน;<br> เป็นสาเหตุให้เกิดข้อผิดพลาดได้ |
 |  <span class="label success">Good</span><br> `def f(x: Any) = println(x)`<br> <span class="label important">Bad</span><br> `def f(x) = println(x)`  |  กำหนดฟังก์ชัน <br> ไวยกรณ์ผิดพลาด : จำเป็นต้องกำหนดค่าสำหรับทุกๆ arg |
 |  `type R = Double`                                                                                       |  นามแฝงของ type                                                               |
-|  `def f(x: R)` vs.<br> `def f(x: => R)`                                                                  |  ส่งผ่านฟังก์ชันโดยค่าของข้อมูล <br> ส่งผ่านฟังก์ชันโดยชื่อ (lazy parameters)                |
+|  `def f(x: R)` vs.<br> `def f(x: => R)`                                                                  |  call-by-value <br> call-by-name (lazy parameters)                |
 |  `(x:R) => x*x`                                                                                          |  ฟังก์ชันที่ไม่ระบุชื่อ                                                                |
 |  `(1 to 5).map(_*2)` vs.<br> `(1 to 5).reduceLeft( _+_ )`                                                |  ฟังก์ชันที่ไม่ระบุชื่อ : ตำแหน่งของขีดล่างตรงกับตำแหน่งของ arg  |
 |  `(1 to 5).map( x => x*x )`                                                                              |  ฟังก์ชันที่ไม่ระบุชื่อ : เพื่อใช้ arg สองครั้งต้องตั้งชื่อ |
