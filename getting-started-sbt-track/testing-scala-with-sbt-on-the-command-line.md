@@ -16,7 +16,7 @@ We assume you know [how to create a Scala project with sbt](getting-started-with
 1. Name the project `ScalaTestTutorial`.
 1. The project comes with ScalaTest as a dependency in the `build.sbt` file.
 1. `cd` into the directory and run `sbt test`. This will run the test suite
-`CubeCalculatorTest` with a single test called `CubeCalculatorTest.cube`.
+`CubeCalculatorTest` with a single test called `CubeCalculator.cube`.
 
 ```
 sbt test
