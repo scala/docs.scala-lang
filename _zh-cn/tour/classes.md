@@ -6,8 +6,10 @@ discourse: true
 
 partof: scala-tour
 
-language: zh-cn
 num: 4
+
+language: zh-cn
+
 next-page: traits
 previous-page: unified-types
 topics: classes

@@ -26,7 +26,7 @@ Scala是一门现代的多范式语言，志在以简洁、优雅及类型安全
 
 ## Scala是函数式的 ##
 
-鉴于[一切函数都是值](unified-types.html)，又可以说Scala是一门函数式语言。Scala为定义匿名函数提供了[轻量级的语法](basics.html#functions)，支持[高阶函数](higher-order-functions.html)，允许[函数嵌套](nested-functions.html)及[柯里化](multiple-parameter-lists.html)。Scala的[样例类](case-classes.html)和内置支持的[模式匹配](pattern-matching.html)代数模型在许多函数式编程语言中都被使用。对于那些并非类的成员函数，[单例对象](singleton-objects.html)提供了便捷的方式去组织它们。
+鉴于[一切函数都是值](unified-types.html)，又可以说Scala是一门函数式语言。Scala为定义匿名函数提供了[轻量级的语法](basics.html#函数)，支持[高阶函数](higher-order-functions.html)，允许[函数嵌套](nested-functions.html)及[柯里化](multiple-parameter-lists.html)。Scala的[样例类](case-classes.html)和内置支持的[模式匹配](pattern-matching.html)代数模型在许多函数式编程语言中都被使用。对于那些并非类的成员函数，[单例对象](singleton-objects.html)提供了便捷的方式去组织它们。
 
 此外，通过对提取器的一般扩展，Scala的模式匹配概念使用了[right-ignoring序列模式](regular-expression-patterns.html)，自然地延伸到[XML数据的处理](https://github.com/scala/scala-xml/wiki/XML-Processing)。其中，[for表达式](for-comprehensions.html)对于构建查询很有用。这些特性使得Scala成为开发web服务等程序的理想选择。
 
