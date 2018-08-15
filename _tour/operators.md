@@ -78,4 +78,4 @@ Is equivalent to
 ```
 ((a + b) ^? (c ?^ d)) less ((a ==> b) | c)
 ```
-`?^` has the highest precedence because it starts with the character `?`. `+` has the second highest precedence, followed by `^?`, `==>`, `|`, and `less`.
+`?^` has the highest precedence because it starts with the character `?`. `+` has the second highest precedence, followed by `==>`, `^?`, `|`, and `less`.
