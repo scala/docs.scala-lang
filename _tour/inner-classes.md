@@ -79,5 +79,3 @@ class Graph {
   }
 }
 ```
-
-> Note that this program doesn't allow us to attach a node to two different graphs. If we want to remove this restriction as well, we have to change the type of variable nodes to `Graph#Node`.

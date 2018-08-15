@@ -97,7 +97,7 @@ In Scala, all processed string literals are simple code transformations.   Anyti
 
     id"string content"
 
-it transforms it into a method call (`id`) on an instance of [StringContext](http://www.scala-lang.org/api/current/index.html#scala.StringContext).
+it transforms it into a method call (`id`) on an instance of [StringContext](https://www.scala-lang.org/api/current/scala/StringContext.html).
 This method can also be available on implicit scope.   To define our own string interpolation, we simply need to create an implicit class that adds a new method
 to `StringContext`.  Here's an example:
 

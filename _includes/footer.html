@@ -67,8 +67,7 @@ $(document).ready(function() {
 
     // if there indeed are upcoming meetings, display the next one
     if (data.items.length > 0) {
-
-      // YouTube video ID for the next upcoming SIP meeting
+        // YouTube video ID for the next upcoming SIP/SPP meeting
         var videoId = data.items[0].id.videoId;
 
         $.getJSON(vidQuery + videoId, function(vidData) {
@@ -76,7 +75,10 @@ $(document).ready(function() {
             var result = vidData.items[0].liveStreamingDetails.scheduledStartTime;
             var startTime = moment(result).format("dddd, MMMM Do YYYY, ha");
 
-            var meetingTitle = moment(result).format("MMMM YYYY") + " SIP Meeting";
+            var sipOrSpp = "SIP";
+            if (data.items[0].snippet.title.indexOf("SPP") !== -1) sipOrSpp = "SPP";
+
+            var meetingTitle = moment(result).format("MMMM YYYY") + " " + sipOrSpp + " Meeting";
             var href = "https://www.youtube.com/watch?v=" + videoId;
             var a = document.createElement('a');
             $(a).attr('href', href).text(meetingTitle);

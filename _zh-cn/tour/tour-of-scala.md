@@ -26,7 +26,7 @@ Scala是一门现代的多范式语言，志在以简洁、优雅及类型安全
 
 ## Scala是函数式的 ##
 
-鉴于[一切函数都是值](unified-types.html)，又可以说Scala是一门函数式语言。Scala为定义匿名函数提供了[轻量级的语法](basics.html#functions)，支持[高阶函数](higher-order-functions.html)，允许[函数嵌套](nested-functions.html)及[柯里化](multiple-parameter-lists.html)。Scala的[样例类](case-classes.html)和内置支持的[模式匹配](pattern-matching.html)代数模型在许多函数式编程语言中都被使用。对于那些并非类的成员函数，[单例对象](singleton-objects.html)提供了便捷的方式去组织它们。
+鉴于[一切函数都是值](unified-types.html)，又可以说Scala是一门函数式语言。Scala为定义匿名函数提供了[轻量级的语法](basics.html#函数)，支持[高阶函数](higher-order-functions.html)，允许[函数嵌套](nested-functions.html)及[柯里化](multiple-parameter-lists.html)。Scala的[样例类](case-classes.html)和内置支持的[模式匹配](pattern-matching.html)代数模型在许多函数式编程语言中都被使用。对于那些并非类的成员函数，[单例对象](singleton-objects.html)提供了便捷的方式去组织它们。
 
 此外，通过对提取器的一般扩展，Scala的模式匹配概念使用了[right-ignoring序列模式](regular-expression-patterns.html)，自然地延伸到[XML数据的处理](https://github.com/scala/scala-xml/wiki/XML-Processing)。其中，[for表达式](for-comprehensions.html)对于构建查询很有用。这些特性使得Scala成为开发web服务等程序的理想选择。
 
@@ -53,9 +53,9 @@ Scala配备了一个拥有强大表达能力的类型系统，它可以静态地
 * [隐式类](http://docs.scala-lang.org/overviews/core/implicit-classes.html)允许给已有的类型添加扩展方法。
 * [字符串插值](/overviews/core/string-interpolation.html)可以让用户使用自定义的插值器进行扩展。
 
-## Scala的交互
+## Scala的互操作性
 
-通过使用流行的Java运行环境（JRE），Scala设计了很好的交互。特别是与主流的面向对象的Java编程语言的交互尽可能的平滑。Java的最新特性如函数接口（SAMs）、[lambda表达式](higher-order-functions.html)、[注解](annotations.html)及[泛型类](generic-classes.html) 在Scala中都有类似的实现。
+Scala设计的目标是与流行的Java运行环境（JRE）进行良好的互操作，特别是与主流的面向对象编程语言——Java的互操作尽可能的平滑。Java的最新特性如函数接口（SAMs）、[lambda表达式](higher-order-functions.html)、[注解](annotations.html)及[泛型类](generic-classes.html) 在Scala中都有类似的实现。
 
 另外有些Java中并没有的特性，如[缺省参数值](default-parameter-values.html)和[带名字的参数](named-arguments.html)等，也是尽可能地向Java靠拢。Scala拥有类似Java的编译模型（独立编译、动态类加载），且允许使用已有的成千上万的高质量类库。
 

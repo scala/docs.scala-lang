@@ -45,8 +45,7 @@ numbers.foldLeft(0, {(m: Int, n: Int) => m + n})
 ```
 numbers.foldLeft(0)(_ + _)
 ```
-    
-   Also, it allows us to fix the parameter `z` and pass around a partial function and reuse it as shown below:
+   Above statement `numbers.foldLeft(0)(_ + _)` allows us to fix the parameter `z` and pass around a partial function and reuse it as shown below:
 ```tut
 val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 val numberFunc = numbers.foldLeft(List[Int]())_
@@ -58,6 +57,21 @@ val cubes = numberFunc((xs, x) => xs:+ x*x*x)
 print(cubes.toString())  // List(1, 8, 27, 64, 125, 216, 343, 512, 729, 1000)
 ```
 
+   Finally, `foldLeft` and `foldRight` can be used in any of the following terms,
+```tut
+val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+
+numbers.foldLeft(0)((sum, item) => sum + item) // Generic Form
+numbers.foldRight(0)((sum, item) => sum + item) // Generic Form
+
+numbers.foldLeft(0)(_+_) // Curried Form
+numbers.foldRight(0)(_+_) // Curried Form
+
+(0 /: numbers)(_+_) // Used in place of foldLeft
+(numbers :\ 0)(_+_) // Used in place of foldRight
+```   
+
+   
 #### Implicit parameters
    To specify certain parameters in a parameter list as `implicit`, multiple parameter lists should be used. An example of this is:
 
