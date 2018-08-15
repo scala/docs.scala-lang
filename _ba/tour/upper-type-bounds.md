@@ -43,8 +43,10 @@ class PetContainer[P <: Pet](p: P) {
 
 val dogContainer = new PetContainer[Dog](new Dog)
 val catContainer = new PetContainer[Cat](new Cat)
-//  val lionContainer = new PetContainer[Lion](new Lion)
-//                         ^this would not compile
+```
+
+```tut:fail
+val lionContainer = new PetContainer[Lion](new Lion) // this would not compile
 ```
 Klasa `PetContainer` prima tipski parametar `P` koji mora biti podtip od `Pet`. 
 `Dog` i `Cat` su podtipovi `Pet` tako da možemo kreirati novi `PetContainer[Dog]` i `PetContainer[Cat]`. 

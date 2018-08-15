@@ -225,15 +225,13 @@ if (point == anotherPoint) {
   println(point + " and " + anotherPoint + " are the same.")
 } else {
   println(point + " and " + anotherPoint + " are different.")
-}
-// Point(1,2) and Point(1,2) are the same.
+} // Point(1,2) and Point(1,2) are the same.
 
 if (point == yetAnotherPoint) {
   println(point + " and " + yetAnotherPoint + " are the same.")
 } else {
   println(point + " and " + yetAnotherPoint + " are different.")
-}
-// Point(1,2) and Point(2,2) are different.
+} // Point(1,2) and Point(2,2) are different.
 ```
 
 关于样例类，还有不少内容我们乐于介绍，并且我们确信你会爱上它们。我们会在[后面](case-classes.html)深入介绍它们。

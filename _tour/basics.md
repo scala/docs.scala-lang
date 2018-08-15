@@ -225,15 +225,13 @@ if (point == anotherPoint) {
   println(point + " and " + anotherPoint + " are the same.")
 } else {
   println(point + " and " + anotherPoint + " are different.")
-}
-// Point(1,2) and Point(1,2) are the same.
+} // Point(1,2) and Point(1,2) are the same.
 
 if (point == yetAnotherPoint) {
   println(point + " and " + yetAnotherPoint + " are the same.")
 } else {
   println(point + " and " + yetAnotherPoint + " are different.")
-}
-// Point(1,2) and Point(2,2) are different.
+} // Point(1,2) and Point(2,2) are different.
 ```
 
 There is a lot more to case classes that we'd like to introduce, and we are convinced you will fall in love with them! We will cover them in depth [later](case-classes.html).

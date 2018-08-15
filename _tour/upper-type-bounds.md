@@ -41,8 +41,10 @@ class PetContainer[P <: Pet](p: P) {
 
 val dogContainer = new PetContainer[Dog](new Dog)
 val catContainer = new PetContainer[Cat](new Cat)
-//  val lionContainer = new PetContainer[Lion](new Lion)
-//                         ^this would not compile
+```
+
+```tut:fail
+val lionContainer = new PetContainer[Lion](new Lion) // this would not compile
 ```
 The `class PetContainer` take a type parameter `P` which must be a subtype of `Pet`. `Dog` and `Cat` are subtypes of `Pet` so we can create a new `PetContainer[Dog]` and `PetContainer[Cat]`. However, if we tried to create a `PetContainer[Lion]`, we would get the following Error:
 
