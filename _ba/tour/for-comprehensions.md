@@ -22,12 +22,12 @@ Komprehensija evaluira tijelo `e` za svako vezivanje varijable generisano od str
 Slijedi primjer:
 
 ```tut
-case class User(val name: String, val age: Int)
+case class User(name: String, age: Int)
 
-val userBase = List(new User("Travis", 28),
-  new User("Kelly", 33),
-  new User("Jennifer", 44),
-  new User("Dennis", 23))
+val userBase = List(User("Travis", 28),
+  User("Kelly", 33),
+  User("Jennifer", 44),
+  User("Dennis", 23))
 
 val twentySomethings = for (user <- userBase if (user.age >=20 && user.age < 30))
   yield user.name  // i.e. add this to a list
