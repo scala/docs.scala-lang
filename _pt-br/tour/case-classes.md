@@ -93,12 +93,8 @@ def mostrarNotificacao(notificacao: Notification): String = {
 val algumSMS = SMS("12345", "Você está aí?")
 val algumaMsgVoz = VoiceRecording("Tom", "voicerecording.org/id/123")
 
-println(mostrarNotificacao(algumSMS))
-println(mostrarNotificacao(algumaMsgVoz))
-
-// Saída:
-// Você recebeu um SMS de 12345! Mensagem: Você está aí?
-// Você recebeu uma Mensagem de Voz de Tom! Clique no link para ouvir: voicerecording.org/id/123
+println(mostrarNotificacao(algumSMS)) // Saída "Você recebeu um SMS de 12345! Mensagem: Você está aí?"
+println(mostrarNotificacao(algumaMsgVoz)) // Saída "Você recebeu uma Mensagem de Voz de Tom! Clique no link para ouvir: voicerecording.org/id/123"
 ```
 
 Aqui um exemplo mais elaborado utilizando a proteção `if`. Com a proteção `if`, o correspondência de padrão irá falhar se a condição de proteção retorna falso.
@@ -122,17 +118,10 @@ val algumaMsgVoz = VoiceRecording("Tom", "voicerecording.org/id/123")
 val emailEspecial = Email("jane@mail.com", "Beber hoje a noite?", "Estou livre depois das 5!")
 val smsEspecial = SMS("55555", "Estou aqui! Onde está você?")
 
-println(mostrarNotificacaoEspecial(algumSMS, EmailEspecial, NumeroEspecial))
-println(mostrarNotificacaoEspecial(algumaMsgVoz, EmailEspecial, NumeroEspecial))
-println(mostrarNotificacaoEspecial(smsEspecial, EmailEspecial, NumeroEspecial))
-println(mostrarNotificacaoEspecial(smsEspecial, EmailEspecial, NumeroEspecial))
-
-// Saída: 
-// Você recebeu um SMS de 12345! Mensagem: Você está aí?
-// Você recebeu uma Mensagem de Voz de Tom! Clique no link para ouvir: voicerecording.org/id/123
-// Você recebeu um email de alguém especial!
-// Você recebeu um SMS de alguém especial!
-
+println(mostrarNotificacaoEspecial(algumSMS, EmailEspecial, NumeroEspecial)) // Saída "Você recebeu um SMS de 12345! Mensagem: Você está aí?"
+println(mostrarNotificacaoEspecial(algumaMsgVoz, EmailEspecial, NumeroEspecial)) // Saída "Você recebeu uma Mensagem de Voz de Tom! Clique no link para ouvir: voicerecording.org/id/123"
+println(mostrarNotificacaoEspecial(smsEspecial, EmailEspecial, NumeroEspecial)) // Saída "Você recebeu um email de alguém especial!"
+println(mostrarNotificacaoEspecial(smsEspecial, EmailEspecial, NumeroEspecial)) // Saída "Você recebeu um SMS de alguém especial!"
 ```
 
 Ao programar em Scala, recomenda-se que você use classes case de forma pervasiva para modelar / agrupar dados, pois elas ajudam você a escrever código mais expressivo e passível de manutenção:

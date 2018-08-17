@@ -54,8 +54,7 @@ Referenciranje vrijednosti ne okida njeno ponovno izračunavanje.
 
 Vrijednosti se ne mogu mijenjati.
 
-```tut:nofail
-val x = 1 + 1
+```tut:fail
 x = 3 // Ovo se ne kompajlira.
 ```
 
@@ -216,15 +215,13 @@ if (point == anotherPoint) {
   println(point + " and " + anotherPoint + " are the same.")
 } else {
   println(point + " and " + anotherPoint + " are different.")
-}
-// Point(1,2) i Point(1,2) su iste.
+} // Point(1,2) i Point(1,2) su iste.
 
 if (point == yetAnotherPoint) {
   println(point + " and " + yetAnotherPoint + " are the same.")
 } else {
   println(point + " and " + yetAnotherPoint + " are different.")
-}
-// Point(1,2) su Point(2,2) različite.
+} // Point(1,2) su Point(2,2) različite.
 ```
 
 Ima još mnogo stvari vezanih za case klase koje bismo voljeli objasniti, i ubijeđeni smo da ćete se zaljubiti u njih! 0
