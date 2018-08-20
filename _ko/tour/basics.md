@@ -57,8 +57,7 @@ println(x) // 2
 
 `x` 같이 이름이 붙여진 결과를 값이라고 부른다. 참조된 값은 재연산하지 않으며 값을 재할당할 수 없다.
 
-```tut:nofail
-val x = 1 + 1
+```tut:fail
 x = 3 // This does not compile.
 ```
 
@@ -226,15 +225,13 @@ if (point == anotherPoint) {
   println(point + " and " + anotherPoint + " are the same.")
 } else {
   println(point + " and " + anotherPoint + " are different.")
-}
-// Point(1,2) and Point(1,2) are the same.
+} // Point(1,2) and Point(1,2) are the same.
 
 if (point == yetAnotherPoint) {
   println(point + " and " + yetAnotherPoint + " are the same.")
 } else {
   println(point + " and " + yetAnotherPoint + " are different.")
-}
-// Point(1,2) and Point(2,2) are different.
+} // Point(1,2) and Point(2,2) are different.
 ```
 
 소개할 케이스 클래스가 많고 마음에 들었으면 좋겠다. 이후 [케이스 클래스 페이지](case-classes.html)에서 자세히 다룰 것이다.
