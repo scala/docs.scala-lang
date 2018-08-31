@@ -43,7 +43,10 @@ Here is a way to change the task support of a parallel collection:
     scala> val pc = mutable.ParArray(1, 2, 3)
     pc: scala.collection.parallel.mutable.ParArray[Int] = ParArray(1, 2, 3)
 
-    scala> pc.tasksupport = new ForkJoinTaskSupport(new scala.concurrent.forkjoin.ForkJoinPool(2))
+    scala> val forkJoinPool = new java.util.concurrent.ForkJoinPool(2)
+    forkJoinPool: java.util.concurrent.ForkJoinPool = java.util.concurrent.ForkJoinPool@6436e181[Running, parallelism = 2, size = 0, active = 0, running = 0, steals = 0, tasks = 0, submissions = 0]
+
+    scala> pc.tasksupport = new ForkJoinTaskSupport(forkJoinPool)
     pc.tasksupport: scala.collection.parallel.TaskSupport = scala.collection.parallel.ForkJoinTaskSupport@4a5d484a
 
     scala> pc map { _ + 1 }
@@ -58,6 +61,14 @@ executor:
 
     scala> pc map { _ + 1 }
     res1: scala.collection.parallel.mutable.ParArray[Int] = ParArray(2, 3, 4)
+
+    scala> forkJoinPool.shutdown()
+
+Note that if you are making your own `ForkJoinPool` instance you should call
+`ForkJoinPool.shutdown()` when you no longer need the thread pool.  If you do
+not call `ForkJoinPool.shutdown()` and continue to create new instances of
+ForkJoinPool the JVM may eventually run out of available threads and throw a
+`java.lang.OutOfMemoryError`.
 
 When a parallel collection is serialized, the task support field is omitted
 from serialization. When deserializing a parallel collection, the task support
