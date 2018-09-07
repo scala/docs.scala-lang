@@ -44,7 +44,8 @@ val catContainer = new PetContainer[Cat](new Cat)
 ```
 
 ```tut:fail
-val lionContainer = new PetContainer[Lion](new Lion) // this would not compile
+// this would not compile
+val lionContainer = new PetContainer[Lion](new Lion)
 ```
 The `class PetContainer` take a type parameter `P` which must be a subtype of `Pet`. `Dog` and `Cat` are subtypes of `Pet` so we can create a new `PetContainer[Dog]` and `PetContainer[Cat]`. However, if we tried to create a `PetContainer[Lion]`, we would get the following Error:
 
