@@ -1,6 +1,6 @@
 ---
 layout: tour
-title: 通过混入来组合类
+title: 通过混入（mixin）来组合类
 
 discourse: false
 
