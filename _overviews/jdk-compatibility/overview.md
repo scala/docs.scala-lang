@@ -15,12 +15,14 @@ And as Scala and the JVM improve independently over time, Scala may drop compati
 
 This table shows the first Scala release in each series that works with each JVM release.
 
-| JVM version | Minimum Scala versions                               |
-|:-----------:|:-----------------------------------------------------|
-| 9, 10       | 2.12.4, 2.11.12, 2.10.7                              |
-| 8           | 2.12.0, 2.11.0, 2.10.2                               |
-| 7           | 2.11.0, 2.10.0                                       |
-| 6           | 2.11.0, 2.10.0                                       |
+| JVM version | Minimum Scala versions                                                                        |
+|:-----------:|:----------------------------------------------------------------------------------------------|
+| 9, 10       | 2.12.4[¹](#jdk-9--10-compatibility-notes), 2.11.12[¹](#jdk-9--10-compatibility-notes), 2.10.7 |
+| 8           | 2.12.0, 2.11.0, 2.10.2                                                                        |
+| 7           | 2.11.0, 2.10.0                                                                                |
+| 6           | 2.11.0, 2.10.0                                                                                |
+
+
 
 ## Running versus compiling
 
@@ -36,7 +38,7 @@ For example, Scala 2.12 raised the minimum JVM, for both compiling and running, 
 
 Like the 2.12.x series, the Scala 2.13.x series will support Java 8 and higher.  (Eventually Java 11 or higher will become required, but the earliest this might happen is Scala 2.14.)
 
-## JDK 9 & 10 compatibility notes
+## ¹JDK 9 & 10 compatibility notes
 
 As of Scala 2.12.6 and 2.11.12, **JDK 9 & 10 support is incomplete**. Notably, `scalac` will not enforce the restrictions of the Java Platform Module System, which means that code that typechecks may incur linkage errors at runtime.
 
