@@ -722,6 +722,6 @@ particular cell, since it was declared as holding an integer.
 
 This document gave a quick overview of the Scala language and
 presented some basic examples. The interested reader can go on, for example, by
-reading the document *Scala By Example*, which
+reading the document *[Scala By Example](https://www.scala-lang.org/docu/files/ScalaByExample.pdf)*, which
 contains much more advanced examples, and consult the *Scala
   Language Specification* when needed.
