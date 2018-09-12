@@ -9,7 +9,7 @@ partof: scala-tour
 num: 11
 language: es
 
-next-page: mixin-class-composition
+next-page: tuples
 previous-page: implicit-parameters
 ---
 

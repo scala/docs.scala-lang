@@ -9,7 +9,7 @@ partof: scala-tour
 
 num: 6
 next-page: higher-order-functions
-previous-page: traits
+previous-page: tuples
 prerequisite-knowledge: inheritance, traits, abstract-classes, unified-types
 
 ---

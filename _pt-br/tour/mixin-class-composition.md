@@ -8,7 +8,7 @@ partof: scala-tour
 
 num: 5
 next-page: higher-order-functions
-previous-page: traits
+previous-page: tuples
 language: pt-br
 ---
 _Nota de tradução: A palavra `mixin` pode ser traduzida como mescla, porém é preferível utilizar a notação original_

@@ -11,5 +11,5 @@ num: 6
 language: zh-cn
 
 next-page: higher-order-functions
-previous-page: traits
+previous-page: tuples
 ---

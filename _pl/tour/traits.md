@@ -8,7 +8,7 @@ partof: scala-tour
 
 num: 4
 language: pl
-next-page: mixin-class-composition
+next-page: tuples
 previous-page: classes
 ---
 
