@@ -46,4 +46,4 @@ As of Scala 2.12.6 and 2.11.12, **JDK 9+ support is incomplete**. Notably, `scal
 
 JDK 9+ support requires minimum sbt version 1.1.0, or 0.13.17 in the 0.13.x series.
 
-For more information on JDK 9+ compatibility, watch the ["Support JDK 9"](https://github.com/scala/scala-dev/issues/139 "scala/scala-dev #139") issue on GitHub. To help with testing Java 11, the next LTS version, see https://github.com/scala/scala-dev/issues/559.
+For more information on JDK 9+ compatibility, watch the ["Support JDK 9"](https://github.com/scala/scala-dev/issues/139 "scala/scala-dev #139") issue on GitHub. To help with testing Java 11, the next LTS version, see [scala/scala-dev#599](https://github.com/scala/scala-dev/issues/559).
