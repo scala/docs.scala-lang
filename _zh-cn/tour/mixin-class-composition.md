@@ -11,7 +11,7 @@ num: 6
 language: zh-cn
 
 next-page: higher-order-functions
-previous-page: traits
+previous-page: tuples
 ---
 
 当某个特质被用于组合类时，被称为混入。

@@ -9,7 +9,7 @@ partof: scala-tour
 num: 5
 language: ko
 
-next-page: mixin-class-composition
+next-page: tuples
 previous-page: classes
 ---
 

@@ -9,7 +9,7 @@ partof: scala-tour
 num: 5
 language: pl
 next-page: higher-order-functions
-previous-page: traits
+previous-page: tuples
 ---
 
 W przeciwieństwie do języków, które wspierają jedynie pojedyncze dziedziczenie, Scala posiada bardziej uogólniony mechanizm ponownego wykorzystania klas. Scala umożliwia wykorzystanie _nowych elementów klasy_ (różnicy w stosunku do klasy bazowej) w definicji nowej klasy. Wyraża się to przy pomocy _kompozycji domieszek_.

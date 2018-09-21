@@ -8,7 +8,7 @@ discourse: true
 partof: scala-tour
 
 num: 5
-next-page: mixin-class-composition
+next-page: tuples
 previous-page: classes
 assumed-knowledge: expressions, classes, generics, objects, companion-objects
 

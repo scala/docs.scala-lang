@@ -11,5 +11,5 @@ num: 6
 language: th
 
 next-page: higher-order-functions
-previous-page: traits
+previous-page: tuples
 ---

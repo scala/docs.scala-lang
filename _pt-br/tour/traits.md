@@ -7,7 +7,7 @@ discourse: false
 partof: scala-tour
 
 num: 4
-next-page: mixin-class-composition
+next-page: tuples
 previous-page: classes
 language: pt-br
 ---

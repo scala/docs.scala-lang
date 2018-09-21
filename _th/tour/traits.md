@@ -10,6 +10,6 @@ num: 5
 
 language: th
 
-next-page: mixin-class-composition
+next-page: tuples
 previous-page: classes
 ---

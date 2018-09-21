@@ -10,7 +10,7 @@ num: 5
 
 language: zh-cn
 
-next-page: mixin-class-composition
+next-page: tuples
 previous-page: classes
 topics: traits
 prerequisite-knowledge: expressions, classes, generics, objects, companion-objects
