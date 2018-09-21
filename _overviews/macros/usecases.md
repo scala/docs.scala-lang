@@ -22,7 +22,7 @@ to the realm of possible. Both commercial and research users of Scala use macros
 At EPFL we are leveraging macros to power our research. Lightbend also employs macros in a number of projects.
 Macros are also popular in the community and have already given rise to a number of interesting applications.
 
-The recent talk ["What Are Macros Good For?"](http://scalamacros.org/paperstalks/2013-07-17-WhatAreMacrosGoodFor.pdf)
+The recent talk ["What Are Macros Good For?"](http://scalamacros.org/paperstalks/2014-02-04-WhatAreMacrosGoodFor.pdf)
 describes and systemizes uses that macros found among Scala 2.10 users. The thesis of the talk is that macros are good for
 code generation, static checking and DSLs, illustrated with a number of examples from research and industry.
 
