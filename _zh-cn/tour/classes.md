@@ -14,8 +14,6 @@ next-page: traits
 previous-page: unified-types
 topics: classes
 prerequisite-knowledge: no-return-keyword, type-declaration-syntax, string-interpolation, procedures
-
-redirect_from: "/tutorials/tour/classes.html"
 ---
 
 Scala中的类是用于创建对象的蓝图，其中包含了方法、常量、变量、类型、对象、特质、类，这些统称为成员。类型、对象和特质将在后面的文章中介绍。

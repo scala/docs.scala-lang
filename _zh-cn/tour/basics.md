@@ -11,8 +11,6 @@ language: zh-cn
 
 next-page: unified-types
 previous-page: tour-of-scala
-
-redirect_from: "/tutorials/tour/basics.html"
 ---
 
 这篇文章涵盖了Scala的基础知识。

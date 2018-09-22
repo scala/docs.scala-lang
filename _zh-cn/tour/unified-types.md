@@ -13,8 +13,6 @@ language: zh-cn
 next-page: classes
 previous-page: basics
 prerequisite-knowledge: classes, basics
-
-redirect_from: "/tutorials/tour/unified-types.html"
 ---
 
 在Scala中，所有的值都有类型，包括数值和函数。下图阐述了类型层次结构的一个子集。
