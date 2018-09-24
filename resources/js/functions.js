@@ -300,13 +300,13 @@ $(document).ready(function() {
   if ($("#sidebar-toc").length) {
     $('#toc').toc({
       exclude: 'h1, h5, h6',
-      context: '.inner-box',
+      context: '.toc-context',
       autoId: true,
       numerate: false
     });
     toggleStickyToc();
   }
-})
+});
 
 $(window).resize(function() {
   toggleStickyToc();
