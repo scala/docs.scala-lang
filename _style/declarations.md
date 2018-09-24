@@ -301,7 +301,7 @@ invocation, while the closing brace is on its own line immediately
 following the last line of the function. Parameters should be on the
 same line as the opening brace, as should the "arrow" (`=>`):
 
-    val f1 = { (a: Int, b: Int) =>
+    val f1 = (a: Int, b: Int) => {
       val sum = a + b
       sum
     }
