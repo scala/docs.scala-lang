@@ -1,6 +1,6 @@
 ---
 layout: tour
-title: Nested Methods
+title: 嵌套方法
 
 discourse: false
 
