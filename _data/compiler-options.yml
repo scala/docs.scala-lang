@@ -570,11 +570,16 @@
     schema:
       type: "Boolean"
     description: "Use range positions for syntax trees."
+  - option: "-Yvalidate-pos"
+    schema:
+      type: "Phases"
+    description: "Validate positions after the given phases (implies -Yrangepos)"
+    note: "`-Yrangepos` is enabled at the same time."
   - option: "-Yshow-member-pos"
     schema:
       type: "String"
       arg: "output style"
-    description: "Show start and end positions of members"
+    description: "Show start and end positions of members (implies -Yrangepos)"
     note: "`-Yrangepos` is enabled at the same time."
   - option: "-Yreify-copypaste"
     schema:
