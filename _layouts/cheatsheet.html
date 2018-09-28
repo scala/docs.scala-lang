@@ -6,7 +6,10 @@ layout: inner-page-parent-dropdown
 	<div class="wrap">
 		<div class="content-primary cheatsheet">
 			<div class="inner-box">
-				{{content}}
+				<div class="toc-context">
+					{{content}}
+				</div>
+
         {% if page.languages %}
           <ul id="available-languages" style="display: none;">
             <li><a href="{{site.baseurl}}{{ page.url }}">English</a></li>
