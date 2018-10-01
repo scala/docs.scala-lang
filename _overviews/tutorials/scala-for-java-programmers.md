@@ -588,9 +588,8 @@ abstract one. The predicates for equality and inequality do not appear
 here since they are by default present in all objects.
 
 The type `Any` which is used above is the type which is a
-super-type of all other types in Scala. It can be seen as a more
-general version of Java's `Object` type, since it is also a
-super-type of basic types like `Int`, `Float`, etc.
+super-type of all other types in Scala. It can be seen as a
+general version of Java's `Object` type.
 
 To make objects of a class comparable, it is therefore sufficient to
 define the predicates which test equality and inferiority, and mix in
