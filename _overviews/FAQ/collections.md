@@ -39,7 +39,7 @@ collections, which was introduced with Scala 2.9. I'll talk about them in the
 next section. The hierarchy described in this section refers _exclusively to
 non-parallel collections_.
 
-The following image shows the non-specific hierarchy introduced with Scala 2.8:
+The following image shows the non-specific hierarchy as of Scala 2.10:
 ![General collection hierarchy][5]
 
 All elements shown are traits. In the other two hierarchies there are also
@@ -48,10 +48,10 @@ as_ belonging in that hierarchy through implicit conversion to wrapper classes.
 The legend for these graphs can be found after them.
 
 Graph for immutable hierarchy:
-<img src="http://i.stack.imgur.com/2fjoA.png" width="600px" />
+![Immutable collection hierarchy][10]
 
 Graph for mutable hierarchy:
-<a href="http://i.stack.imgur.com/Dsptl.png"><img src="http://i.stack.imgur.com/Dsptl.png" width="600px" /></a>
+![Mutable collection hierarchy][11]
 
 Legend:
 
@@ -67,9 +67,11 @@ Here's an abbreviated ASCII depiction of the collection hierarchy, for those who
           +------------------+--------------------+
          Map                Set                  Seq
           |                  |                    |
-          |             +----+----+         +-----+------+
-        Sorted Map  SortedSet   BitSet   Buffer Vector LinearSeq
-
+          |                  |             +------+-------+
+      SortedMap          SortedSet      Buffer Vector LinearSeq
+                             |
+                             |
+                          BitSet
 
 ## Parallel Collections
 
@@ -282,10 +284,6 @@ it. Also available are some traits with further refinements, such as
 
 * `Set` -- A set is a collection that includes at most one of any object.
 
-	* `BitSet` -- A set of integers stored as a bitset.
-		* `immutable.BitSet`
-		* `mutable.BitSet`
-
 	* `SortedSet` -- A set whose elements are ordered.
 		* `immutable.SortedSet`
 			* `immutable.TreeSet` -- An implementation of a `SortedSet` based on a tree.
@@ -293,12 +291,14 @@ it. Also available are some traits with further refinements, such as
 	* `SetProxy` -- A `Proxy` for a `Set`.
 
 	* `immutable.Set`
+		* `immutable.BitSet` -- A set of integers stored as a bitset.
 		* `immutable.HashSet` -- An implementation of `Set` based on element hashing.
 		* `immutable.ListSet` -- An implementation of `Set` based on lists.
 		* Additional set classes exists to provide optimized implementations for sets from 0 to 4 elements.
 		* `immutable.SetProxy` -- A `Proxy` for an immutable `Set`.
 
 	* `mutable.Set`
+		* `mutable.BitSet` -- A set of integers stored as a bitset.
 		* `mutable.HashSet` -- An implementation of `Set` based on element hashing.
 		* `mutable.ImmutableSetAdaptor` -- A class implementing a mutable `Set` from an immutable `Set`.
 		* `LinkedHashSet` -- An implementation of `Set` based on lists.
@@ -372,8 +372,10 @@ Overflow.
   [2]: http://docs.scala-lang.org/overviews/core/architecture-of-scala-collections.html
   [3]: http://www.scala-lang.org/sid/3
   [4]: https://github.com/sirthias/scala-collections-charts/downloads
-  [5]: http://i.stack.imgur.com/bSVyA.png
+  [5]: http://docs.scala-lang/resources/images/tour/collections.svg
   [6]: http://i.stack.imgur.com/2fjoA.png
   [7]: http://i.stack.imgur.com/Dsptl.png
-  [8]: http://i.stack.imgur.com/szWUr.png
+  [8]: http://docs.scala-lang/resources/images/tour/collections-legend.svg
   [9]: http://stackoverflow.com/q/1722137/53013
+  [10]: http://docs.scala-lang/resources/images/tour/collections-immutable.svg
+  [11]: http://docs.scala-lang/resources/images/tour/collections-mutable.svg
