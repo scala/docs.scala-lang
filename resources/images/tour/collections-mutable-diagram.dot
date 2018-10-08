@@ -1,0 +1,121 @@
+digraph MutableCollections {
+  edge [
+    color="#7F7F7F"
+  ];
+  node [
+    shape="box",
+    style="rounded, filled",
+    fontcolor="#FFFFFF",
+    color="#6DC6E6"
+  ];
+  rankdir="TB";
+
+  HashSet [color="#4A5659"];
+  ImmutableSetAdaptor [color="#4A5659"];
+  LinkedHashSet [color="#4A5659"];
+  HashMap [color="#4A5659"];
+  OpenHashMap [color="#4A5659"];
+  WeakHashMap [color="#4A5659"];
+  LinkedHashMap [color="#4A5659"];
+  ListMap [color="#4A5659"];
+  ImmutableMapAdaptor [color="#4A5659"];
+  ArraySeq [color="#4A5659"];
+  ArrayBuffer [color="#4A5659"];
+  StringBuilder [color="#4A5659"];
+  ListBuffer [color="#4A5659"];
+  Stack [color="#4A5659"];
+  ArrayStack [color="#4A5659"];
+  SynchronizedStack [color="#4A5659"];
+  PriorityQueue [color="#4A5659"];
+  SynchronizedPriorityQueue [color="#4A5659"];
+  SynchronizedQueue [color="#4A5659"];
+  MutableList [color="#4A5659"];
+  LinkedList [color="#4A5659"];
+  DoubleLinkedList [color="#4A5659"];
+
+  Traversable -> Iterable [penwidth="4"];
+  Iterable -> Map;
+  Map -> HashMap [penwidth="4"];
+  Map -> WeakHashMap;
+  Map -> OpenHashMap;
+  Map -> LinkedHashMap;
+  Map -> ObservableMap;
+  Map -> SynchronizedMap;
+  Map -> ImmutableMapAdaptor;
+  Map -> ListMap;
+  Map -> MultiMap;
+  Iterable -> Set;
+  Set -> HashSet [penwidth="4"];
+  Set -> BitSet;
+  Set -> ObservableSet;
+  Set -> SynchronizedSet;
+  Set -> ImmutableSetAdaptor;
+  Set -> LinkedHashSet;
+  Iterable -> Seq [penwidth="4"];
+  Seq -> IndexedSeq [penwidth="4"];
+  Seq -> Buffer;
+  Seq -> Stack;
+  Seq -> ArrayStack;
+  Seq -> PriorityQueue;
+  Seq -> LinearSeq;
+  IndexedSeq -> ArraySeq;
+  IndexedSeq -> StringBuilder;
+  IndexedSeq -> ArrayBuffer [penwidth="4"];
+  Buffer -> ArrayBuffer [penwidth="4"];
+  Buffer -> ObservableBuffer;
+  Buffer -> SynchronizedBuffer;
+  Buffer -> ListBuffer;
+  Stack -> SynchronizedStack;
+  PriorityQueue -> SynchronizedPriorityQueue;
+  LinearSeq -> MutableList [penwidth="4"];
+  LinearSeq -> LinkedList;
+  LinearSeq -> DoubleLinkedList;
+  MutableList -> Queue;
+  Queue -> SynchronizedQueue;
+
+  {rank=same;
+    Map;
+    Set}
+  {rank=same;
+    HashMap;
+    LinkedHashMap;
+    ListMap;
+    MultiMap;
+    HashSet;
+    BitSet;
+    LinkedHashSet}
+  {rank=same;
+    WeakHashMap;
+    OpenHashMap;
+    ObservableMap;
+    SynchronizedMap;
+    ImmutableMapAdaptor;
+    ObservableSet;
+    SynchronizedSet;
+    ImmutableSetAdaptor}
+  {rank=same;
+    Seq}
+  {rank=same;
+    IndexedSeq;
+    Buffer;
+    LinearSeq}
+  {rank=same;
+    ArraySeq;
+    StringBuilder;
+    ArrayBuffer;
+    ListBuffer;
+    Stack;
+    ArrayStack;
+    PriorityQueue;
+    MutableList;
+    LinkedList;
+    DoubleLinkedList}
+  {rank=same;
+    ObservableBuffer;
+    SynchronizedBuffer;
+    SynchronizedStack;
+    SynchronizedPriorityQueue;
+    Queue}
+  {rank=same;
+    SynchronizedQueue}
+}
