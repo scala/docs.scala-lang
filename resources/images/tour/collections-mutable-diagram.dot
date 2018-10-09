@@ -18,6 +18,7 @@ digraph MutableCollections {
   WeakHashMap [color="#4A5659"];
   LinkedHashMap [color="#4A5659"];
   ListMap [color="#4A5659"];
+  TreeMap [color="#4A5659"];
   ImmutableMapAdaptor [color="#4A5659"];
   ArraySeq [color="#4A5659"];
   ArrayBuffer [color="#4A5659"];
@@ -37,6 +38,7 @@ digraph MutableCollections {
   Iterable -> Map;
   Iterable -> Seq [penwidth="4"];
   Iterable -> Set;
+  Iterable -> PriorityQueue;
   Map -> HashMap [penwidth="4"];
   Map -> WeakHashMap;
   Map -> OpenHashMap;
@@ -44,6 +46,7 @@ digraph MutableCollections {
   Map -> ObservableMap;
   Map -> SynchronizedMap;
   Map -> ImmutableMapAdaptor;
+  Map -> TreeMap;
   Map -> ListMap;
   Map -> MultiMap;
   Set -> HashSet [penwidth="4"];
@@ -57,7 +60,6 @@ digraph MutableCollections {
   Seq -> IndexedSeq [penwidth="4"];
   Seq -> Buffer;
   Seq -> Stack;
-  Seq -> PriorityQueue;
   Seq -> ArrayStack;
   LinearSeq -> MutableList [penwidth="4"];
   LinearSeq -> LinkedList;
@@ -75,12 +77,17 @@ digraph MutableCollections {
   Queue -> SynchronizedQueue;
 
   {rank=same;
+    Iterable;
+    PriorityQueue;
+    SynchronizedPriorityQueue}
+  {rank=same;
     Map;
     Set}
   {rank=same;
     WeakHashMap;
     LinkedHashMap;
     ListMap;
+    ObservableMap;
     ImmutableMapAdaptor;
     BitSet;
     LinkedHashSet;
@@ -89,7 +96,6 @@ digraph MutableCollections {
   {rank=same;
     HashMap;
     OpenHashMap;
-    ObservableMap;
     SynchronizedMap;
     MultiMap;
     HashSet;
@@ -100,14 +106,12 @@ digraph MutableCollections {
     Buffer;
     LinearSeq;
     Stack;
-    PriorityQueue;
     ArrayStack}
   {rank=same;
     ArraySeq;
     ArrayBuffer;
     SynchronizedBuffer;
     SynchronizedStack;
-    SynchronizedPriorityQueue;
     MutableList;
     LinkedList}
   {rank=same;
@@ -116,6 +120,4 @@ digraph MutableCollections {
     ListBuffer;
     Queue;
     DoubleLinkedList}
-  {rank=same;
-    SynchronizedQueue}
 }
