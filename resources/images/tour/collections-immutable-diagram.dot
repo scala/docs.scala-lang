@@ -8,7 +8,6 @@ digraph ImmutableCollections {
     fontcolor="#FFFFFF",
     color="#6DC6E6"
   ];
-
   rankdir="TB";
 
   HashSet [color="#4A5659"];

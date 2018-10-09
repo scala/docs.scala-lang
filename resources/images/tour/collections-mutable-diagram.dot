@@ -35,6 +35,8 @@ digraph MutableCollections {
 
   Traversable -> Iterable [penwidth="4"];
   Iterable -> Map;
+  Iterable -> Seq [penwidth="4"];
+  Iterable -> Set;
   Map -> HashMap [penwidth="4"];
   Map -> WeakHashMap;
   Map -> OpenHashMap;
@@ -44,20 +46,22 @@ digraph MutableCollections {
   Map -> ImmutableMapAdaptor;
   Map -> ListMap;
   Map -> MultiMap;
-  Iterable -> Set;
   Set -> HashSet [penwidth="4"];
-  Set -> BitSet;
   Set -> ObservableSet;
-  Set -> SynchronizedSet;
   Set -> ImmutableSetAdaptor;
   Set -> LinkedHashSet;
-  Iterable -> Seq [penwidth="4"];
+  Set -> SynchronizedSet;
+  Set -> SortedSet;
+  SortedSet -> BitSet;
+  Seq -> LinearSeq;
   Seq -> IndexedSeq [penwidth="4"];
   Seq -> Buffer;
   Seq -> Stack;
-  Seq -> ArrayStack;
   Seq -> PriorityQueue;
-  Seq -> LinearSeq;
+  Seq -> ArrayStack;
+  LinearSeq -> MutableList [penwidth="4"];
+  LinearSeq -> LinkedList;
+  LinearSeq -> DoubleLinkedList;
   IndexedSeq -> ArraySeq;
   IndexedSeq -> StringBuilder;
   IndexedSeq -> ArrayBuffer [penwidth="4"];
@@ -67,9 +71,6 @@ digraph MutableCollections {
   Buffer -> ListBuffer;
   Stack -> SynchronizedStack;
   PriorityQueue -> SynchronizedPriorityQueue;
-  LinearSeq -> MutableList [penwidth="4"];
-  LinearSeq -> LinkedList;
-  LinearSeq -> DoubleLinkedList;
   MutableList -> Queue;
   Queue -> SynchronizedQueue;
 
@@ -77,45 +78,44 @@ digraph MutableCollections {
     Map;
     Set}
   {rank=same;
-    HashMap;
+    WeakHashMap;
     LinkedHashMap;
     ListMap;
-    MultiMap;
-    HashSet;
+    ImmutableMapAdaptor;
     BitSet;
-    LinkedHashSet}
+    LinkedHashSet;
+    ObservableSet;
+    Seq}
   {rank=same;
-    WeakHashMap;
+    HashMap;
     OpenHashMap;
     ObservableMap;
     SynchronizedMap;
-    ImmutableMapAdaptor;
-    ObservableSet;
-    SynchronizedSet;
-    ImmutableSetAdaptor}
-  {rank=same;
-    Seq}
+    MultiMap;
+    HashSet;
+    ImmutableSetAdaptor;
+    SynchronizedSet}
   {rank=same;
     IndexedSeq;
     Buffer;
-    LinearSeq}
+    LinearSeq;
+    Stack;
+    PriorityQueue;
+    ArrayStack}
   {rank=same;
     ArraySeq;
-    StringBuilder;
     ArrayBuffer;
-    ListBuffer;
-    Stack;
-    ArrayStack;
-    PriorityQueue;
-    MutableList;
-    LinkedList;
-    DoubleLinkedList}
-  {rank=same;
-    ObservableBuffer;
     SynchronizedBuffer;
     SynchronizedStack;
     SynchronizedPriorityQueue;
-    Queue}
+    MutableList;
+    LinkedList}
+  {rank=same;
+    ObservableBuffer;
+    StringBuilder;
+    ListBuffer;
+    Queue;
+    DoubleLinkedList}
   {rank=same;
     SynchronizedQueue}
 }

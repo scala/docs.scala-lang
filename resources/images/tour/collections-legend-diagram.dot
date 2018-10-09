@@ -11,18 +11,9 @@ digraph Legend {
   ];
   rankdir="LR";
 
-  Class1 [
-    label="Class",
-    color="#4A5659"
-  ];
-  Class2 [
-    label="Class",
-    color="#4A5659"
-  ];
-  Class3 [
-    label="Class",
-    color="#4A5659"
-  ];
+  Class1 [label="Class", color="#4A5659"];
+  Class2 [label="Class", color="#4A5659"];
+  Class3 [label="Class", color="#4A5659"];
 
   Trait1 -> Class1 [label="Implemented by"];
   Trait2 -> Class2 [label="Default Implementation", penwidth="4"];

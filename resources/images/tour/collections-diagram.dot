@@ -8,7 +8,7 @@ digraph Collections {
     fontcolor="#FFFFFF",
     color="#6DC6E6"
   ];
-  rankdir=TB;
+  rankdir="TB";
 
   Traversable -> Iterable;
   Iterable -> Seq;
