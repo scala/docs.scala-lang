@@ -286,19 +286,20 @@ it. Also available are some traits with further refinements, such as
 
 	* `SortedSet` -- A set whose elements are ordered.
 		* `immutable.SortedSet`
+			* `immutable.BitSet` -- A set of integers stored as a bitset.
 			* `immutable.TreeSet` -- An implementation of a `SortedSet` based on a tree.
+		* `mutable.SortedSet`
+			* `mutable.BitSet` -- A set of integers stored as a bitset.
 
 	* `SetProxy` -- A `Proxy` for a `Set`.
 
 	* `immutable.Set`
-		* `immutable.BitSet` -- A set of integers stored as a bitset.
 		* `immutable.HashSet` -- An implementation of `Set` based on element hashing.
 		* `immutable.ListSet` -- An implementation of `Set` based on lists.
 		* Additional set classes exists to provide optimized implementations for sets from 0 to 4 elements.
 		* `immutable.SetProxy` -- A `Proxy` for an immutable `Set`.
 
 	* `mutable.Set`
-		* `mutable.BitSet` -- A set of integers stored as a bitset.
 		* `mutable.HashSet` -- An implementation of `Set` based on element hashing.
 		* `mutable.ImmutableSetAdaptor` -- A class implementing a mutable `Set` from an immutable `Set`.
 		* `LinkedHashSet` -- An implementation of `Set` based on lists.
