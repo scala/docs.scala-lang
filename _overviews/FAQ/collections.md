@@ -40,7 +40,7 @@ next section. The hierarchy described in this section refers _exclusively to
 non-parallel collections_.
 
 The following image shows the non-specific hierarchy as of Scala 2.10:
-![General collection hierarchy][5]
+[![General collection hierarchy][5]][5]
 
 All elements shown are traits. In the other two hierarchies there are also
 classes directly inheriting the traits as well as classes which can be _viewed
@@ -48,14 +48,14 @@ as_ belonging in that hierarchy through implicit conversion to wrapper classes.
 The legend for these graphs can be found after them.
 
 Graph for immutable hierarchy:
-![Immutable collection hierarchy][10]
+[![Immutable collection hierarchy][10]][10]
 
 Graph for mutable hierarchy:
-![Mutable collection hierarchy][11]
+[![Mutable collection hierarchy][11]][11]
 
 Legend:
 
-![Graph legend][8]
+[![Graph legend][8]][8]
 
 Here's an abbreviated ASCII depiction of the collection hierarchy, for those who can't see the images.
 
