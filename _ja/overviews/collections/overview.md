@@ -53,17 +53,19 @@ Scala のコレクションは、体系的に可変および不変コレクシ�
 次の図は `scala.collection` パッケージ内の全てのコレクションを示す。
 これらはすべて、高レベルの抽象クラスやトレイトで一般に可変と不変の両方の実装を持っている。
 
-[<img src="{{ site.baseurl }}/resources/images/collections.png" width="550">]({{ site.baseurl }}/resources/images/collections.png)
+[![General collection hierarchy][1]][1]
 
 次の図は `scala.collection.immutable` パッケージ内の全てのコレクションを示す。
 
-[<img src="{{ site.baseurl }}/resources/images/collections.immutable.png" width="550">]({{ site.baseurl }}/resources/images/collections.immutable.png)
+[![Immutable collection hierarchy][2]][2]
 
 そして、次の図は `scala.collection.mutable` パッケージ内の全てのコレクションを示す。
 
-[<img src="{{ site.baseurl }}/resources/images/collections.mutable.png" width="550">]({{ site.baseurl }}/resources/images/collections.mutable.png)
+[![Mutable collection hierarchy][3]][3]
 
-(以上三つ全ての図は decodified.com の Matthias によって生成された。)
+図の伝説:
+
+[![Graph legend][4]][4]
 
 ## コレクションAPIの概要
 
@@ -102,3 +104,9 @@ Scala のコレクションは、体系的に可変および不変コレクシ�
 唯一の例外は、可変コレクションにのみ存在する `Buffer` トレイトだ。
 
 これより、これらのクラスを一つずつ見ていく。
+
+
+  [1]: /resources/images/tour/collections-diagram.svg
+  [2]: /resources/images/tour/collections-immutable-diagram.svg
+  [3]: /resources/images/tour/collections-mutable-diagram.svg
+  [4]: /resources/images/tour/collections-legend-diagram.svg
