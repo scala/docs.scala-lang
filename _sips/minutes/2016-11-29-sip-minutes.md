@@ -13,8 +13,8 @@ The following agenda was distributed to attendees:
 | --- | --- | --- |
 | [SIP-28 and SIP-29 - Inline and meta](http://docs.scala-lang.org/sips/inline-meta.html) | Josh Suereth and Iulian Dragos | Pending |
 | [SIP-24 - Repeated By Name Parameters](http://docs.scala-lang.org/sips/repeated-byname.html) | Heather Miller | Pending |
-| [SIP-25:Static](https://github.com/scala/docs.scala-lang/pull/491/files)| Adriaan Moors | Pending |
-|[SIP-27: Trailing commas](http://docs.scala-lang.org/sips/completed/trailing-commas.html)|Eugene Burkamo| Accepted |
+| [SIP-30 - Static members](https://github.com/scala/docs.scala-lang/pull/491/files) | Adriaan Moors | Pending |
+| [SIP-27 - Trailing commas](http://docs.scala-lang.org/sips/completed/trailing-commas.html) |Eugene Burkamo | Accepted |
 
 Jorge Vicente Cantero was the Process Lead and Travis Lee was the secretary.
 

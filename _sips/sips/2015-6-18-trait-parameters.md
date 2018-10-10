@@ -1,6 +1,6 @@
 ---
 layout: sip
-title: SIP 25 - Trait Parameters
+title: SIP-25 - Trait Parameters
 discourse: true
 
 vote-status: "under-review"
