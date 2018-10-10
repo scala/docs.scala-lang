@@ -94,7 +94,8 @@ simple Scala language specification [more](https://youtu.be/tEb4UF6RJrM?t=916).
 
 #### [“Proposal to remove the procedure Syntax”](https://contributors.scala-lang.org/t/proposal-to-remove-procedure-syntax/2143)
 
-([YouTube time: 16’50’’ - 19.28’’](https://youtu.be/tEb4UF6RJrM?t=1010)
+([YouTube time: 16’50’’ - 19.28’’](https://youtu.be/tEb4UF6RJrM?t=1010))
+
 **Jorge** reminds that in the last meeting we agreed that before moving forward with the change we needed:
 1. A better motivation
 2. A good explanation of why this change promotes the use of types (making it safer)
@@ -103,15 +104,17 @@ simple Scala language specification [more](https://youtu.be/tEb4UF6RJrM?t=916).
 
 **Jorge** then points out that the changes need to be done in order to move
 forward, but is asking a Committee to voice their opinion about removing this
-feature in Scala 3. **Josh** underlines that there were 2 parts in the debate
+feature in Scala 3. 
+**Josh** underlines that there were 2 parts in the debate
 1) Are procedures different than a method, do we want them visually
-distinctive? 2) Other issues listed by **Jorge** above. In particular, the fact that we want people to explicitly annotate the unit in their methods because it makes code more readable.
+distinctive? 
+2) Other issues listed by **Jorge** above. In particular, the fact that we want people to explicitly annotate the unit in their methods because it makes code more readable.
 
 A decision will be taken into the future when all those items are acted on.
  
 #### [“Proposal to remove early initializers from the language”](https://contributors.scala-lang.org/t/proposal-to-remove-early-initializers-from-the-language/2144)
 
-([YouTube time: 19’29’ - 20’40’’](https://youtu.be/tEb4UF6RJrM?t=1169)
+([YouTube time: 19’29’ - 20’40’’](https://youtu.be/tEb4UF6RJrM?t=1169))
 
 ### Discussion of the second Scala 3 batch
 
@@ -144,7 +147,7 @@ and the one they use in other languages like Typescript. **Martin** points
 out that performance-wise Scala union types would be more performant because
 `T | Null` wouldn't box if `T` is a primitive type.
 
-**Sebastien’s” ([YouTube time: 30’03’’](https://youtu.be/tEb4UF6RJrM?t=1803))
+**Sebastien’s** ([YouTube time: 30’03’’](https://youtu.be/tEb4UF6RJrM?t=1803))
 gives his input based on the fact that Scala.js already has Union Types in
 Scala 2. He states that they are very limited; they were introduced for
 modeling because some libraries “desperately needed” them but turned out they
@@ -158,6 +161,7 @@ presence of specialization). [More](https://youtu.be/tEb4UF6RJrM?t=1913)
 #### [Proposal to add Implicit Function Types to the Language](https://dotty.epfl.ch/docs/reference/implicit-function-types.html)
 
 ([YouTube time: 39’01’’ - 43’11’’](https://youtu.be/tEb4UF6RJrM?t=2341))
+
 **Martin** explains what implicit function types are about and points out it's
 a pretty “hot” feature that was published in POPL 2018.
 He underlines the advantages of implicit function types (like further
@@ -182,6 +186,7 @@ name clash with implicit function types there is a problem indeed.
 
 #### [Proposal to add Dependent Function Types to the Language](https://dotty.epfl.ch/docs/reference/dependent-function-types.html)
  ([YouTube time: 43’11’’ - 44’40’’](https://youtu.be/tEb4UF6RJrM?t=2591))
+
 **Martin** mentions that dependent function types is the last big addition to Scala's type checker. The reason why they are added is because Scala has dependent methods and there is a need for dependent functions (the same rationale has been doing with regards to implicit methods and implicit function types). It's an obvious win because dependent function types allow us to abstract over the idea of implicit methods in functions, so the more we can do the better. Initially he was afraid of the feature because he thought it violated this Scala principle that in the end anything is an instance of a class in some way and it turned out that a new encoding of dependent function types made this initial argument moot. Dependent function types are now encoded as implicit function types with type refinements, so this way it doesn't violate that principle.
 **Adriaan** mentions that the last missing bit is polymorphic function types
 and Martin agrees and says that they are looking into that, but maybe not for
@@ -190,6 +195,7 @@ Scala 3.0 (Guillaume Martres is pushing for polymorphic function types).
 #### [Proposal to add Trait Parameters to the Language](https://dotty.epfl.ch/docs/reference/trait-parameters.html)
 
 ([YouTube time: 44’42’’ - ](https://youtu.be/tEb4UF6RJrM?t=2682)) 
+
 **Martin** describes trait parameters and says that they subsume a large number of use
 cases of early initializers. They were not added to Scala 2 because of
 uncertainty in the way they would work with regards to linearization and
@@ -205,7 +211,8 @@ initializers and see if trait parameters allow him to replace them. He's
 curious about how clean would the code look after the change.
 
 **Jorge** then wraps up the meeting, points out how feedback on these
-*proposals would work (check the following link
-*https://contributors.scala-lang.org/t/second-batch-of-scala-3-sips-additions-to-scalas-type-system/2376)
-*and finalizes the discussion.
+proposals would work (check the following link
+*https://contributors.scala-lang.org/t/second-batch-of-scala-3-sips-additions-to-scalas-type-system/2376*)
+and finalizes the discussion.
 
+**Conclusion** Next meeting will be dedicated to the Second Batch disscusion. 
