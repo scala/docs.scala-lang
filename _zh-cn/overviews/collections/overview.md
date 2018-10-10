@@ -45,17 +45,19 @@ Scala 集合类系统地区分了可变的和不可变的集合。可变集合�
 
 下面的图表显示了`scala.collection`包中所有的集合类。这些都是高级抽象类或特性，它们通常具备和不可变实现一样的可变实现。
 
-[<img src="{{ site.baseurl }}/resources/images/collections.png" width="550">]({{ site.baseurl }}/resources/images/collections.png)
+[![General collection hierarchy][1]][1]
 
 下面的图表显示scala.collection.immutable中的所有集合类。
 
-[<img src="{{ site.baseurl }}/resources/images/collections.immutable.png" width="550">]({{ site.baseurl }}/resources/images/collections.immutable.png)
+[![Immutable collection hierarchy][2]][2]
 
 下面的图表显示scala.collection.mutable中的所有集合类。
 
-[<img src="{{ site.baseurl }}/resources/images/collections.mutable.png" width="550">]({{ site.baseurl }}/resources/images/collections.mutable.png)
+[![Mutable collection hierarchy][3]][3]
 
-（以上三个图表由Matthias生成， 来自decodified.com）。
+图传奇:
+
+[![Graph legend][4]][4]
 
 ## 集合API概述
 
@@ -89,3 +91,9 @@ Traversable类提供了所有集合支持的API，同时，对于特殊类型也
 大多数类在集合树中存在这于三种变体：root, mutable 和immutable。唯一的例外是缓冲区特征，它仅在于mutable集合。  
 
 下面我们将一个个的回顾这些类。
+
+
+  [1]: /resources/images/tour/collections-diagram.svg
+  [2]: /resources/images/tour/collections-immutable-diagram.svg
+  [3]: /resources/images/tour/collections-mutable-diagram.svg
+  [4]: /resources/images/tour/collections-legend-diagram.svg
