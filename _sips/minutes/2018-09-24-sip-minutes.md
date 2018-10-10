@@ -28,7 +28,7 @@ The meeting took place on the 24th September 2018 at 5 PM CEST via Google Hangou
 [Watch on Scala Center YouTube channel](https://youtu.be/tEb4UF6RJrM)
 
 
-Minutes were taken by Darja Jovanovic.
+Minutes were taken by Darja Jovanovic and Jorge Vicente Cantero.
 
 ## Attendees
 
@@ -58,17 +58,22 @@ Decision / voting / postponing the discussion
 
 #### [“Proposal to remove XML literals from the language”](https://contributors.scala-lang.org/t/proposal-to-remove-xml-literals-from-the-language/2146)
 ([YouTube time 3’ - 16’50’’](https://youtu.be/gnlL4PlstFY?t=891))
+
 **Sébastien** suggests to postpone the removal of XML and Procedure syntax, because when
 the removal takes place it will be a code breaking change, not a binary or
 tasty one. Adds it would be better to focus on changes that have an impact on
 tasty and binary format and deal with these later.
-**Seth** 4’54 https://youtu.be/tEb4UF6RJrM?t=294 suggests to have a warning
+
+**Seth** [YouTube time:4’54](https://youtu.be/tEb4UF6RJrM?t=294) suggests to have a warning
 notes that it will eventually be removed.
+
 **Eugene** asks what would be the positive effect of that change? And that we
 need to vote on it first.
+
 **Iulian** asks what are the promises with regards to binary-compatible and
 source-compatible releases in Scala 3. To him it looks weird that we could
 break the source between 3.0 and 3.1.
+
 **Josh** notes that by enforcing binary compatibility across Scala 2 and Scala
 3 we are sacrificing source compatibility. He asks for this decision to be
 more thought over as it is a big decision with lots of impact for Scala
@@ -76,6 +81,7 @@ tooling. He agrees we can make source-breaking releases nicer to use in
 source-based build tools like Pants or Bazel, but trading off binary
 compatibility by source compatibility is not a decision to take lightly [more](
 https://youtu.be/tEb4UF6RJrM?t=612).
+
 **Martin** thinks that no matter what trade-offs we do with regards to
 compatibility, he'd like to be able to remove XML literals in the first
 release of Scala 3.0 because having the XML spec inside the Scala spec gives
