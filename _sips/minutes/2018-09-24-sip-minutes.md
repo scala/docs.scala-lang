@@ -194,7 +194,7 @@ Scala 3.0 (Guillaume Martres is pushing for polymorphic function types).
 
 #### [Proposal to add Trait Parameters to the Language](https://dotty.epfl.ch/docs/reference/trait-parameters.html)
 
-([YouTube time: 44’42’’ - ](https://youtu.be/tEb4UF6RJrM?t=2682)) 
+([YouTube time: 44’42’’ - end ](https://youtu.be/tEb4UF6RJrM?t=2682)) 
 
 **Martin** describes trait parameters and says that they subsume a large number of use
 cases of early initializers. They were not added to Scala 2 because of
