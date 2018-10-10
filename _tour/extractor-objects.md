@@ -37,7 +37,7 @@ customer1ID match {
 
 The `apply` method creates a `CustomerID` string from a `name`. The `unapply` does the inverse to get the `name` back. When we call `CustomerID("Sukyoung")`, this is shorthand syntax for calling `CustomerID.apply("Sukyoung")`. When we call `case CustomerID(name) => println(name)`, we're calling the unapply method.
 
-The unapply method can also be used to assign a value.
+Since a value definition can use a pattern to introduce a new variable, an extractor can be used to initialize the variable, where the unapply method supplies the value.
 
 ```tut
 val customer2ID = CustomerID("Nico")
@@ -63,4 +63,4 @@ The return type of an `unapply` should be chosen as follows:
 * If it returns a single sub-value of type T, return an `Option[T]`.
 * If you want to return several sub-values `T1,...,Tn`, group them in an optional tuple `Option[(T1,...,Tn)]`.
 
-Sometimes, the number of sub-values isn't fixed and we would like to return a sequence. For this reason, you can also define patterns through `unapplySeq` which returns `Option[Seq[T]]` This mechanism is used for instance in pattern `case List(x1, ..., xn)`.
+Sometimes, the number of values to extract isn't fixed and we would like to return an arbitrary number of values, depending on the input. For this use case, you can define extractors with an `unapplySeq` method which returns an `Option[Seq[T]]`. Common examples of these patterns include deconstructing a `List` using `case List(x, y, z) =>` and decomposing a `String` using a regular expression `Regex`, such as `case r(name, remainingFields @ _*) =>`.
