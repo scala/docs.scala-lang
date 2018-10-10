@@ -160,6 +160,22 @@ All operations on iterators are summarized below.
 |  `it addString (b, start, sep, end)`| Adds a string to `StringBuilder` `b` which shows all elements returned by `it` between separators `sep` enclosed in strings `start` and `end`. `start`, `sep`, `end` are all optional. |
 |  `it mkString (start, sep, end)` | Converts the collection to a string which shows all elements returned by `it` between separators `sep` enclosed in strings `start` and `end`. `start`, `sep`, `end` are all optional. |
 
+### Laziness
+
+Unlike operations directly on a concrete collection like `List`, operations on `Iterator` are lazy.
+
+A lazy operation does not immediately compute all of its results. Instead, it computes the results as they are individually requested.
+
+So the expression `(1 to 10).iterator.map(println)` would not print anything to the screen. The `map` method in this case doesn't apply its argument function to the values in the range, it returns a new `Iterator` that will do this as each one is requested. Adding `.toList` to the end of that expression will actually print the elements.
+
+A consequence of this is that a method like `map` or `filter` won't necessarily apply its argument function to all of the input elements. The expression `(1 to 10).iterator.map(println).take(5).toList` would only print the values `1` to `5`, for instance, since those are only ones that will be requested from the `Iterator` returned by `map`.
+
+This is one of the reasons why it's important to only use pure functions as arguments to `map`, `filer`, `fold` and similar methods. Remember, a pure function has no side-effects, so one would not normally use `println` in a `map`. `println` is used to demonstrate laziness as it's not normally visible with pure functions.
+
+Laziness is still valuable, despite often not being visible, as it can prevent unneeded computations from happening, and can allow for working with infinite sequences, like so:
+
+    def zipWithIndex[A](i: Iterator[A]): Iterator[(Int, A)] = Stream.from(0).zip(i)
+
 ### Buffered iterators
 
 Sometimes you want an iterator that can "look ahead", so that you can inspect the next element to be returned without advancing past that element. Consider for instance, the task to skip leading empty strings from an iterator that returns a sequence of strings. You might be tempted to write the following
