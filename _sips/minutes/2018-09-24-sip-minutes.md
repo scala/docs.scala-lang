@@ -120,10 +120,10 @@ A decision will be taken into the future when all those items are acted on.
 
 An overview of the second batch can be found [in this Scala Contributors thread](https://contributors.scala-lang.org/t/second-batch-of-scala-3-sips-additions-to-scalas-type-system/2376). The batches under discussion are:
 
-1. https://contributors.scala-lang.org/t/proposal-to-add-trait-parameters-to-the-language/2356/11
-2. https://contributors.scala-lang.org/t/proposal-to-add-intersection-types-to-the-language/2351/1
-3.  https://contributors.scala-lang.org/t/proposal-to-add-union-types-to-the-language/2352/1
-4. https://contributors.scala-lang.org/t/proposal-to-add-dependent-function-types-to-the-language/2354/1
+1. https://contributors.scala-lang.org/t/proposal-to-add-trait-parameters-to-the-language/2356
+2. https://contributors.scala-lang.org/t/proposal-to-add-intersection-types-to-the-language/2351
+3. https://contributors.scala-lang.org/t/proposal-to-add-union-types-to-the-language/2352
+4. https://contributors.scala-lang.org/t/proposal-to-add-dependent-function-types-to-the-language/2354
 5. https://contributors.scala-lang.org/t/proposal-to-add-implicit-function-types-to-the-language/2353
 
 Feedback on these proposals is open until the 25th October 2018, as describe
@@ -134,7 +134,7 @@ in the linked Scala Contributors thread.
  ([YouTube time: 20’49’’ - 24'01](https://youtu.be/tEb4UF6RJrM?t=1250))
 
 **Martin** presents the intersection types as per doc. He does a basic
-description of the feature and points ou8t that intersection types are the
+description of the feature and points out that intersection types are the
 duals of union types. He points out that union types have helped replace most
 of the lubbing mechanism and early precocious lubbing that happened in Scala
 2 (which happens in less degree in the current implementation of Scala 3 but
@@ -197,7 +197,7 @@ Scala 3.0 (Guillaume Martres is pushing for polymorphic function types).
 ([YouTube time: 44’42’’ - end ](https://youtu.be/tEb4UF6RJrM?t=2682)) 
 
 **Martin** describes trait parameters and says that they subsume a large number of use
-cases of early initializers. They were not added to Scala 2 because of
+cases of early initializers. They were not added to Scala from the start because of
 uncertainty in the way they would work with regards to linearization and
 initialization of parameters. The way they solved this problem is by
 enforcing the rule that only the class extending a trait with parameters can
