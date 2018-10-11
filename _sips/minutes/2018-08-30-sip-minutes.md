@@ -208,10 +208,9 @@ Discussion:
 
 **Eugene**  ([YouTube time: 25’30’]( https://youtu.be/gnlL4PlstFY?t=1530)) thinks that the proposal needs to be cleared about the impact, referring to possible replacements with string literals that might never happen. Suggests to position this proposal as simply removing the feature and leaving it up to the community to decide and implement the replacements.
 
-**Martin** https://youtu.be/gnlL4PlstFY?t=1579 responds by saying Committee should be responsible because…
-**Josh** 27’16’’ https://youtu.be/gnlL4PlstFY?t=1636 clarifies that in order to replace the libraries (XML with string literals) one would need a proof of concept, and currently there is none.
+**Josh** ([YouTube time: 27’16’’](https://youtu.be/gnlL4PlstFY?t=1636) clarifies that in order to replace the libraries one would need a proof of concept, and currently there is none.
 
-**Adriaan** [YouTube time 30’](https://youtu.be/gnlL4PlstFY?t=1796) summarises the discussion, pointing out that Committee needs to answer a question "will we support XML in some way" and "waht would be the most "Scala-like" way to do so and who will be maintaing it.  
+**Adriaan** [YouTube time 30’](https://youtu.be/gnlL4PlstFY?t=1796) summarises the discussion, pointing out that Committee needs to answer a question *will we support XML in some way* and *waht would be the most "Scala-like" way to do so* and *who will be maintaing it*.  
 
 **Seth** [YouTube time 35’57’’](https://youtu.be/gnlL4PlstFY?t=2157) is under the impression that large portion of XML user base are the ones using it to do generation and rarer to be reading in XML using the existing Scala XML support and asks others to share their impressions.
 **Martin** re-phrases it as “using XML for pattern matching”.
