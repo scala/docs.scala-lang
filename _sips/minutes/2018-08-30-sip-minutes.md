@@ -12,8 +12,7 @@ The following agenda was distributed to attendees:
 |Topic|Reviewers| Accepted/Rejected |
 | --- | --- | --- |
 |Summary of the Contributors thread [“Proposal to remove auto application from the language”](https://contributors.scala-lang.org/t/proposal-to-remove-auto-application-from-the-language/2145) | Miles Sabin | Pending
-|Summary of the Contributors thread [“Proposal to remove XML literals from the language”](https://contributors.scala-lang.org/t/proposal-to-remove-xml-literals-from-the-language/2146) 
- | Sébastien Doeraene | Pending
+|Summary of the Contributors thread [“Proposal to remove XML literals from the language”](https://contributors.scala-lang.org/t/proposal-to-remove-xml-literals-from-the-language/2146) | Sébastien Doeraene | Pending
 |Summary of the Contributors thread [“Proposal to remove the procedure Syntax”](https://contributors.scala-lang.org/t/proposal-to-remove-procedure-syntax/2143) | Josh Suereth | Pending |
 |Summary of the Contributors thread [“Proposal to remove early initializers from the language”](https://contributors.scala-lang.org/t/proposal-to-remove-early-initializers-from-the-language/2144) | Adriaan Moors | Pending |
 |Summary of the Contributors thread [“DelayedInit or OnCreate, any solution?”](https://contributors.scala-lang.org/t/delayedinit-or-oncreate-any-solution/1748)  | Adriaan Moors | pending |
