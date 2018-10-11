@@ -1,6 +1,6 @@
 ---
 layout: tour
-title: Multiple Parameter Lists (Currying)
+title: 多参数列表（柯里化）
 
 discourse: false
 
@@ -16,7 +16,7 @@ previous-page: nested-functions
 
 方法可以定义多个参数列表，当使用较少的参数列表调用多参数列表的方法时，会产生一个新的函数，该函数接收剩余的参数列表作为其参数。这被称为[柯里化](https://zh.wikipedia.org/wiki/%E6%9F%AF%E9%87%8C%E5%8C%96)。
 
-下面是一个例子，在Scala集合中定义的特质[Traversable](/overviews/collections/trait-traversable.html)：
+下面是一个例子，在Scala集合中定义的特质[Traversable](/zh-cn/overviews/collections/trait-traversable.html)：
 
 ```
 def foldLeft[B](z: B)(op: (B, A) => B): B
