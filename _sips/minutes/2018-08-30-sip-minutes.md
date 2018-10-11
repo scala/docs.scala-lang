@@ -286,15 +286,15 @@ Counter Proposals
  
 **Conclusion** Before making a final decision, the proposal needs a better motivation 1. Why it is safer 2. Refactoring tools / parsing 3. IntelliJ tool explained?
 
-**Adriaan** [YouTube time: 54’ - 1h04’](https://youtu.be/gnlL4PlstFY?t=3241) summarised 2 discussions on Contributors thread 
 
-[“Proposal to remove early initializers from the language”](https://contributors.scala-lang.org/t/proposal-to-remove-early-initializers-from-the-language/2144);
-[“DelayedInit or OnCreate, any solution?”](https://contributors.scala-lang.org/t/delayedinit-or-oncreate-any-solution/1748)
+### [“Proposal to remove early initializers from the language”](https://contributors.scala-lang.org/t/proposal-to-remove-early-initializers-from-the-language/2144) 
+[YouTube time: 54’12’’ - 59’35’](https://youtu.be/gnlL4PlstFY?t=3250)
 
-[“Proposal to remove early initializers from the language”](https://contributors.scala-lang.org/t/proposal-to-remove-early-initializers-from-the-language/2144) [YouTube time: 54’12’’ - 59’35’](https://youtu.be/gnlL4PlstFY?t=3250)
-**Adriaan’s** comment: https://contributors.scala-lang.org/t/proposal-to-remove-early-initializers-from-the-language/2144/24?u=adriaanm
+**Adriaan’s** best summarised in comment: https://contributors.scala-lang.org/t/proposal-to-remove-early-initializers-from-the-language/2144/24?u=adriaanm
 
-https://contributors.scala-lang.org/t/proposal-to-remove-early-initializers-from-the-language/2144/24?u=adriaanm
-[“DelayedInit or OnCreate, any solution?”](https://contributors.scala-lang.org/t/delayedinit-or-oncreate-any-solution/1748) [YouTube time: 59’35’’ - end ’](https://youtu.be/gnlL4PlstFY?t=3575)
+### [“DelayedInit or OnCreate, any solution?”](https://contributors.scala-lang.org/t/delayedinit-or-oncreate-any-solution/1748) 
+[YouTube time: 59’35’’ - end ’](https://youtu.be/gnlL4PlstFY?t=3575)
 
-**Conclusion** to sleep on it, 14 days left on the Contributors thread…
+**Adriaan’s** best summarised in comment: https://contributors.scala-lang.org/t/delayedinit-or-oncreate-any-solution/1748/36
+
+**Conclusion** 14 days left on the Contributors thread, Committee should revisit this topic later on.
