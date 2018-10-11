@@ -207,60 +207,68 @@ https://gist.github.com/nafg/112bf83e5676ed316f17cea505ea5d93
 
 Discussion:
 
-**Eugene**  [YouTube time: 25’30’]( https://youtu.be/gnlL4PlstFY?t=1530) thinks that the proposal needs to be cleared about the impact, referring to possible replacements with string literals that might never happen. Suggests to position this proposal as simply removing the feature and leaving it up to the community to decide and implement the replacements (?)
+**Eugene**  ([YouTube time: 25’30’]( https://youtu.be/gnlL4PlstFY?t=1530)) thinks that the proposal needs to be cleared about the impact, referring to possible replacements with string literals that might never happen. Suggests to position this proposal as simply removing the feature and leaving it up to the community to decide and implement the replacements.
+
 **Martin** https://youtu.be/gnlL4PlstFY?t=1579 responds by saying Committee should be responsible because…
-**Josh** 27’16’’ https://youtu.be/gnlL4PlstFY?t=1636 clarifies that in order to replace the libraries (XML with string literals) one would need a proof, and currently there is none.
+**Josh** 27’16’’ https://youtu.be/gnlL4PlstFY?t=1636 clarifies that in order to replace the libraries (XML with string literals) one would need a proof of concept, and currently there is none.
 
+**Adriaan** [YouTube time 30’](https://youtu.be/gnlL4PlstFY?t=1796) summarises the discussion, pointing out that Committee needs to answer a question "will we support XML in some way" and "waht would be the most "Scala-like" way to do so and who will be maintaing it.  
 
-…. Not understanding
-**Jorge** [Youtube time 28.53](https://youtu.be/gnlL4PlstFY?t=1732) asks what does Committee think about the counter proposal?
-**Adriaan** summarises at [YouTube time 30’[(https://youtu.be/gnlL4PlstFY?t=1796)
-Again not really clear until 34.30 Iulian
-Seb answers a youtube comment
 **Seth** [YouTube time 35’57’’](https://youtu.be/gnlL4PlstFY?t=2157) is under the impression that large portion of XML user base are the ones using it to do generation and rarer to be reading in XML using the existing Scala XML support and asks others to share their impressions.
 **Martin** re-phrases it as “using XML for pattern matching”.
 **Sébastien** says it is super rare.
 **Iulian** says it is used more than we think in pattern matching and in value definitions he seen in not OS projects; they can be found in old, large code basis; probably decreasing.
 He suggests to ask IntelliJ to collect and share the XML usage patterns.  
 
-**Conclusion** ??? 
-[“Proposal to remove the procedure Syntax”](https://contributors.scala-lang.org/t/proposal-to-remove-procedure-syntax/2143)
+### [“Proposal to remove the procedure Syntax”](https://contributors.scala-lang.org/t/proposal-to-remove-procedure-syntax/2143)
+
 [YouTube time: 40’13’’ - 52’10](https://youtu.be/gnlL4PlstFY?t=2404 )
+
 **Josh Suereth** summarised the discussion on Contributors thread:
 
-Underlines the general concern about the lack of motivation part of the proposal; 
-Notes that in the Contributors discussion, ones that were for the removal would mostly put “+1” while ones against the removal would be more elaborate, that gives a false impression there were more arguments against the removal;
-Structures his presentation around community’s points in a light of better motivation adding his opinion after each 
-Concludes that that going forward procedure syntax should be removed because in the long run it helps new developers learn Scala faster and better (more details below).
+- Underlines the general concern about the lack of motivation part of the proposal; 
+- Notes that in the Contributors discussion, ones that were for the removal would mostly put “+1” while ones against the removal would be more elaborate, that gives a false impression there were more arguments against the removal;
+- Structures his presentation around community’s points in a light of better motivation adding his opinion after each 
+- Concludes that that going forward procedure syntax should be removed because in the long run it helps new developers learn Scala faster and better (more details below).
 
 Summary + **Josh’s** comments: 
 
 Fixable/Addressable Concerns
-Concerned that rewrite tools (and people) would use def foo() = {} syntax instead of def foo(): Unit = {}
+- Concerned that rewrite tools (and people) would use def foo() = {} syntax instead of def foo(): Unit = {}
+
 Pros
-Clean up inconsistency in the language
-Dropping return value is dangerous, in general
+
+- Clean up inconsistency in the language
+- Dropping return value is dangerous, in general
 *Experience teaching Scala gave an insight to how often the return value is dropped which leads to broken code leaving students confused* 
+
 Cons
-More verbose syntax to safely ignore return values
+- More verbose syntax to safely ignore return values
 *Semi legitimate concern; developers need to change their habits and annotate return values when it’s important*  
-Lazy people will just write def foo() = {} and get bad behavior.
+- Lazy people will just write def foo() = {} and get bad behavior.
 *The way it is written leads to a confusion and should be removed from the proposal why: https://youtu.be/gnlL4PlstFY?t=2795 *
+
 Not well motivated Pros
-Safer
+
+- Safer
 *We need to detail “why” it is safer*
-Cleaner for refactoring tools to treat methods of this sort.
+
+- Cleaner for refactoring tools to treat methods of this sort.
 *Given the way things are structured, this issue comes down to the way the methods are parsed => change the parser betters the refactoring tools. This point needs to be clear in the proposal*
+
 Not well motivated Cons
-People have to change their habits
-Proposal coming from people who don't mutate state
+
+- People have to change their habits
+- Proposal coming from people who don't mutate state
 *After analyzing two of his “side-effecty” codebases, looking to find where he uses the most procedure syntaxes, Josh concluded that there are many : Unit*
-Call into question authority/judgement of proposer
+- Call into question authority/judgement of proposer
 *Josh doesn’t find it appropriate and will ignore such comments stating that “...it is not a legitimate way to make a technical argument.” [YouTube time 42’07’’](https://youtu.be/gnlL4PlstFY?t=2522)*
+
 Counter Proposals
-Effect tracking
+
+- Effect tracking
 *A bit of an “overkill”*
-Multiple "def" keywords, one which would mean side-effecting function
+- Multiple "def" keywords, one which would mean side-effecting function
 := for side effects 
 
 **Josh** concludes: big point to debate would the language consistency be worth the change to more verbose expresion.   
@@ -270,16 +278,15 @@ Multiple "def" keywords, one which would mean side-effecting function
 
 **Josh** points out that current developers would need to change their habits but motivation lies in introducing new developers to Scala and having this consistency to help them stay, given that as it is now it takes longer to learn and making mistakes here is bad.
 
-**Jorge** Intellij already warns developer whenever they use procedure syntax, and suggests them to rewrite it with an automatic rewrite. It’s true that not all Scala developers use IntelliJ, but a big part of do, and thanks to IntelliJ they are strictly discouraged to use procedure syntax.
+**Jorge** IntelliJ already warns developer whenever they use procedure syntax, and suggests them to rewrite it with an automatic rewrite. It’s true that not all Scala developers use IntelliJ, but a big part of do, and thanks to IntelliJ they are strictly discouraged to use procedure syntax.
 
-**Eugene** [YouTube time: 50’49’’](https://youtu.be/gnlL4PlstFY?t=3049) asks what is the migration strategy; is it possible to do a batch migration for the big code base or would it be necessary to go through your code in IntelliJ? More? https://youtu.be/gnlL4PlstFY?t=3049 
+**Eugene** [YouTube time: 50’49’’](https://youtu.be/gnlL4PlstFY?t=3049) asks what is the migration strategy; is it possible to do a batch migration for the big code base or would it be necessary to go through your code in IntelliJ? 
 
-**Seth** reminds the viewers/Committee that it was deprecated only in 2.13 OM4 , which is probably why this proposal got so many responses.
+**Seth** reminds the viewers/Committee that it was deprecated only in 2.13 OM4, which is probably why this proposal got so many responses.
  
 **Conclusion** Before making a final decision, the proposal needs a better motivation 1. Why it is safer 2. Refactoring tools / parsing 3. IntelliJ tool explained?
-Great summary by Josh form September meeting
-
-Adriaan [YouTube time: 54’ - 1h04’](https://youtu.be/gnlL4PlstFY?t=3241) summarised 2 discussions on Contributors thread 
+
+**Adriaan** [YouTube time: 54’ - 1h04’](https://youtu.be/gnlL4PlstFY?t=3241) summarised 2 discussions on Contributors thread 
 
 [“Proposal to remove early initializers from the language”](https://contributors.scala-lang.org/t/proposal-to-remove-early-initializers-from-the-language/2144);
 [“DelayedInit or OnCreate, any solution?”](https://contributors.scala-lang.org/t/delayedinit-or-oncreate-any-solution/1748)
@@ -288,6 +295,6 @@ Adriaan [YouTube time: 54’ - 1h04’](https://youtu.be/gnlL4PlstFY?t=3241) sum
 **Adriaan’s** comment: https://contributors.scala-lang.org/t/proposal-to-remove-early-initializers-from-the-language/2144/24?u=adriaanm
 
 https://contributors.scala-lang.org/t/proposal-to-remove-early-initializers-from-the-language/2144/24?u=adriaanm
-[“DelayedInit or OnCreate, any solution?”](https://contributors.scala-lang.org/t/delayedinit-or-oncreate-any-solution/1748) [YouTube time: 59’35’’ - ’](https://youtu.be/gnlL4PlstFY?t=3575)
+[“DelayedInit or OnCreate, any solution?”](https://contributors.scala-lang.org/t/delayedinit-or-oncreate-any-solution/1748) [YouTube time: 59’35’’ - end ’](https://youtu.be/gnlL4PlstFY?t=3575)
 
 **Conclusion** to sleep on it, 14 days left on the Contributors thread…
