@@ -208,11 +208,11 @@ Discussion:
 
 **Eugene**  ([YouTube time: 25’30’]( https://youtu.be/gnlL4PlstFY?t=1530)) thinks that the proposal needs to be cleared about the impact, referring to possible replacements with string literals that might never happen. Suggests to position this proposal as simply removing the feature and leaving it up to the community to decide and implement the replacements.
 
-**Josh** ([YouTube time: 27’16’’](https://youtu.be/gnlL4PlstFY?t=1636) clarifies that in order to replace the libraries one would need a proof of concept, and currently there is none.
+**Josh** ([YouTube time: 27’16’’](https://youtu.be/gnlL4PlstFY?t=1636)) clarifies that in order to replace the libraries one would need a proof of concept, and currently there is none.
 
-**Adriaan** [YouTube time 30’](https://youtu.be/gnlL4PlstFY?t=1796) summarises the discussion, pointing out that Committee needs to answer a question *will we support XML in some way* and *waht would be the most "Scala-like" way to do so* and *who will be maintaing it*.  
+**Adriaan** ([YouTube time 30’](https://youtu.be/gnlL4PlstFY?t=1796)) summarises the discussion, pointing out that Committee needs to answer a question *will we support XML in some way* and *waht would be the most "Scala-like" way to do so* and *who will be maintaing it*.  
 
-**Seth** [YouTube time 35’57’’](https://youtu.be/gnlL4PlstFY?t=2157) is under the impression that large portion of XML user base are the ones using it to do generation and rarer to be reading in XML using the existing Scala XML support and asks others to share their impressions.
+**Seth** ([YouTube time 35’57’’](https://youtu.be/gnlL4PlstFY?t=2157)) is under the impression that large portion of XML user base are the ones using it to do generation and rarer to be reading in XML using the existing Scala XML support and asks others to share their impressions.
 **Martin** re-phrases it as “using XML for pattern matching”.
 **Sébastien** says it is super rare.
 **Iulian** says it is used more than we think in pattern matching and in value definitions he seen in not OS projects; they can be found in old, large code basis; probably decreasing.
@@ -220,7 +220,7 @@ He suggests to ask IntelliJ to collect and share the XML usage patterns.
 
 ### [“Proposal to remove the procedure Syntax”](https://contributors.scala-lang.org/t/proposal-to-remove-procedure-syntax/2143)
 
-[YouTube time: 40’13’’ - 52’10](https://youtu.be/gnlL4PlstFY?t=2404 )
+([YouTube time: 40’13’’ - 52’10](https://youtu.be/gnlL4PlstFY?t=2404 ))
 
 **Josh Suereth** summarised the discussion on Contributors thread:
 
@@ -271,14 +271,14 @@ Counter Proposals
 
 **Josh** concludes: big point to debate would the language consistency be worth the change to more verbose expresion.   
 
-**Iulian** [You/tube time: ]( https://youtu.be/gnlL4PlstFY?t=2928 ) adds that 1. last 5 years Syntax procedure was anyway deprecated; 2. going forward we should consider Scala 3 in a light of next 15 years, now is the right moment to clean up the language and 3. this is “the easiest refactoring to automate the code base” that could be a “zero cost migration” 
+**Iulian** ([You/tube time: ]( https://youtu.be/gnlL4PlstFY?t=2928)) adds that 1. last 5 years Syntax procedure was anyway deprecated; 2. going forward we should consider Scala 3 in a light of next 15 years, now is the right moment to clean up the language and 3. this is “the easiest refactoring to automate the code base” that could be a “zero cost migration” 
 
 
 **Josh** points out that current developers would need to change their habits but motivation lies in introducing new developers to Scala and having this consistency to help them stay, given that as it is now it takes longer to learn and making mistakes here is bad.
 
-**Jorge** IntelliJ already warns developer whenever they use procedure syntax, and suggests them to rewrite it with an automatic rewrite. It’s true that not all Scala developers use IntelliJ, but a big part of do, and thanks to IntelliJ they are strictly discouraged to use procedure syntax.
+**Jorge** says IntelliJ already warns developer whenever they use procedure syntax, and suggests them to rewrite it with an automatic rewrite. It’s true that not all Scala developers use IntelliJ, but a big part of do, and thanks to IntelliJ they are strictly discouraged to use procedure syntax.
 
-**Eugene** [YouTube time: 50’49’’](https://youtu.be/gnlL4PlstFY?t=3049) asks what is the migration strategy; is it possible to do a batch migration for the big code base or would it be necessary to go through your code in IntelliJ? 
+**Eugene** ([YouTube time: 50’49’’](https://youtu.be/gnlL4PlstFY?t=3049)) asks what is the migration strategy; is it possible to do a batch migration for the big code base or would it be necessary to go through your code in IntelliJ? 
 
 **Seth** reminds the viewers/Committee that it was deprecated only in 2.13 OM4, which is probably why this proposal got so many responses.
  
@@ -286,12 +286,12 @@ Counter Proposals
 
 
 ### [“Proposal to remove early initializers from the language”](https://contributors.scala-lang.org/t/proposal-to-remove-early-initializers-from-the-language/2144) 
-[YouTube time: 54’12’’ - 59’35’](https://youtu.be/gnlL4PlstFY?t=3250)
+([YouTube time: 54’12’’ - 59’35’](https://youtu.be/gnlL4PlstFY?t=3250))
 
 **Adriaan’s** best summarised in comment: https://contributors.scala-lang.org/t/proposal-to-remove-early-initializers-from-the-language/2144/24?u=adriaanm
 
 ### [“DelayedInit or OnCreate, any solution?”](https://contributors.scala-lang.org/t/delayedinit-or-oncreate-any-solution/1748) 
-[YouTube time: 59’35’’ - end ’](https://youtu.be/gnlL4PlstFY?t=3575)
+([YouTube time: 59’35’’ - end ’](https://youtu.be/gnlL4PlstFY?t=3575))
 
 **Adriaan’s** best summarised in comment: https://contributors.scala-lang.org/t/delayedinit-or-oncreate-any-solution/1748/36
 
