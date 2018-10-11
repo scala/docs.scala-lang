@@ -14,9 +14,9 @@ next-page: case-classes
 previous-page: nested-functions
 ---
 
-方法可以定义多个参数列表，当一个方法使用较少的参数列表调用时，会产生一个新的函数，该函数接收剩余的参数列表作为其参数。这被称为[柯里化](https://zh.wikipedia.org/wiki/%E6%9F%AF%E9%87%8C%E5%8C%96)。
+方法可以定义多个参数列表，当使用较少的参数列表调用多参数列表的方法时，会产生一个新的函数，该函数接收剩余的参数列表作为其参数。这被称为[柯里化](https://zh.wikipedia.org/wiki/%E6%9F%AF%E9%87%8C%E5%8C%96)。
 
-这里有一个例子，在Scala集合中定义的特质[Traversable](/overviews/collections/trait-traversable.html)：
+下面是一个例子，在Scala集合中定义的特质[Traversable](/overviews/collections/trait-traversable.html)：
 
 ```
 def foldLeft[B](z: B)(op: (B, A) => B): B
@@ -46,8 +46,8 @@ numbers.foldLeft(0, {(m: Int, n: Int) => m + n})
 ```
 numbers.foldLeft(0)(_ + _)
 ```
-   上述声明`numbers.foldLeft(0)(_ + _)`
-   Above statement `numbers.foldLeft(0)(_ + _)` allows us to fix the parameter `z` and pass around a partial function and reuse it as shown below:
+   上述声明`numbers.foldLeft(0)(_ + _)`让我们可以指定参数`z`，然后再传递折叠函数，并且可以复用，如下所示：
+
 ```tut
 val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 val numberFunc = numbers.foldLeft(List[Int]())_
@@ -59,7 +59,7 @@ val cubes = numberFunc((xs, x) => xs:+ x*x*x)
 print(cubes.toString())  // List(1, 8, 27, 64, 125, 216, 343, 512, 729, 1000)
 ```
 
-   Finally, `foldLeft` and `foldRight` can be used in any of the following terms,
+   最后，`foldLeft` 和 `foldRight` 可以按以下任意一种形式使用，
 ```tut
 val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 
@@ -74,8 +74,8 @@ numbers.foldRight(0)(_+_) // Curried Form
 ```   
 
    
-#### Implicit parameters
-   To specify certain parameters in a parameter list as `implicit`, multiple parameter lists should be used. An example of this is:
+#### 隐式（implicit）参数
+   如果要指定参数列表中的某些参数为隐式（implicit），应该使用多参数列表。例如：
 
 ```
 def execute(arg: Int)(implicit ec: ExecutionContext) = ???
