@@ -46,7 +46,7 @@ numbers.foldLeft(0, {(m: Int, n: Int) => m + n})
 ```
 numbers.foldLeft(0)(_ + _)
 ```
-   上述声明`numbers.foldLeft(0)(_ + _)`让我们可以指定参数`z`，然后再传递折叠函数，并且可以复用，如下所示：
+   像上述语句这样，我们可以给定多参数列表的一部分参数列表（如上述的`z`）来形成一个新的函数（partially applied function），达到复用的目的，如下所示：
 
 ```tut
 val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
