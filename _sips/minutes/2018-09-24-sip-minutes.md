@@ -40,10 +40,10 @@ Minutes were taken by Darja Jovanovic and Jorge Vicente Cantero.
 * Josh Suereth ([@jsuereth](https://github.com/jsuereth)), Independent
 * Sébastien Doeraene ([@sjrd](https://github.com/sjrd)), Scala Center
 * Adriaan Moors ([@adriaanm](https://github.com/adriaanm)), Lightbend
-* Miles Sabin ([@milessabin](https://github.com/milessabin)), Independent
 * Darja Jovanovic ([@darjutak](https://github.com/darjutak)), Scala Center
 
 ## Not present
+* Miles Sabin ([@milessabin](https://github.com/milessabin)), Independent
 * Heather Miller ([@heathermiller](https://github.com/heathermiller)), CMU
 
 ## Proceedings
