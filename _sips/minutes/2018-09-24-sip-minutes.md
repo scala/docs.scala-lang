@@ -64,7 +64,7 @@ the removal takes place it will be a code breaking change, not a binary or
 tasty one. Adds it would be better to focus on changes that have an impact on
 tasty and binary format and deal with these later.
 
-**Seth** [YouTube time:4’54](https://youtu.be/tEb4UF6RJrM?t=294) suggests to have a warning
+**Seth** ([YouTube time:4’54](https://youtu.be/tEb4UF6RJrM?t=294)) suggests to have a warning
 notes that it will eventually be removed.
 
 **Eugene** asks what would be the positive effect of that change? And that we
@@ -112,10 +112,6 @@ distinctive?
 
 A decision will be taken into the future when all those items are acted on.
  
-#### [“Proposal to remove early initializers from the language”](https://contributors.scala-lang.org/t/proposal-to-remove-early-initializers-from-the-language/2144)
-
-([YouTube time: 19’29’ - 20’40’’](https://youtu.be/tEb4UF6RJrM?t=1169))
-
 ### Discussion of the second Scala 3 batch
 
 An overview of the second batch can be found [in this Scala Contributors thread](https://contributors.scala-lang.org/t/second-batch-of-scala-3-sips-additions-to-scalas-type-system/2376). The batches under discussion are:
@@ -147,7 +143,7 @@ and the one they use in other languages like Typescript. **Martin** points
 out that performance-wise Scala union types would be more performant because
 `T | Null` wouldn't box if `T` is a primitive type.
 
-**Sebastien’s** ([YouTube time: 30’03’’](https://youtu.be/tEb4UF6RJrM?t=1803))
+**Sebastien** ([YouTube time: 30’03’’](https://youtu.be/tEb4UF6RJrM?t=1803))
 gives his input based on the fact that Scala.js already has Union Types in
 Scala 2. He states that they are very limited; they were introduced for
 modeling because some libraries “desperately needed” them but turned out they
