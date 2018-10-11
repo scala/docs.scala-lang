@@ -50,17 +50,23 @@ Minutes were taken by Darja Jovanovic.
 ## Proceedings
 ### Opening Remarks
 
-Jorge opens the meeting, explains SIP dynamics:
+**Jorge** opens the meeting, explains SIP dynamics:
 Selected batches (proposals for language change in Scala 3) are published on Contributors
 Community has 1 month deadline to discuss the proposals
 Committee summarises the comments and discusses during the meeting
 Decision / voting / postponing the discussion
 
-(more in May minutes: https://docs.scala-lang.org/sips/minutes/2018-05-18-sip-minutes.html)
-**Miles Sabin** [YouTube time: 2’15’’ - 11’22’’ ](https://youtu.be/gnlL4PlstFY?t=136) summarised discussion on Contributors thread [“Proposal to remove auto application from the language”](https://contributors.scala-lang.org/t/proposal-to-remove-auto-application-from-the-language/2145)
-Focuses on the Contributors discussion rather than on the proposal itself
-Underlines a lack of motivation in the light of a separate issue from [Dotty: Weak eta-expansion](https://github.com/lampepfl/dotty/issues/2570)
-Concludes that this proposal should be aligned with eta-extension issue
+[More in May 2018 minutes](https://docs.scala-lang.org/sips/minutes/2018-05-18-sip-minutes.html)]
+
+### Summaries of discussions of the First Scala 3 batch
+
+###[“Proposal to remove auto application from the language”](https://contributors.scala-lang.org/t/proposal-to-remove-auto-application-from-the-language/2145)
+([YouTube time: 2’15’’ - 11’22’’ ](https://youtu.be/gnlL4PlstFY?t=136))
+
+**Miles Sabin**  summarised discussion on Contributors thread.
+- Focuses on the Contributors discussion rather than on the proposal itself
+- Underlines a lack of motivation in the light of a separate issue from [Dotty: Weak eta-expansion](https://github.com/lampepfl/dotty/issues/2570)
+- Concludes that this proposal should be aligned with eta-extension issue
 
 Summary:
 
@@ -132,11 +138,11 @@ Summary:
 + Interaction with nullary constructors. Currently `class Foo` is interpreted as
   `class Foo()`. Mutatis mutandis for case class `apply` methods.
 
-**Martin** [Youtube time: 11.37](https://youtu.be/gnlL4PlstFY?t=688) addressing a comment + compatibility
-Than new collections use cases as a shaper to this proposal. Agrees with Miles about ?
+**Martin** ([Youtube time: 11.37](https://youtu.be/gnlL4PlstFY?t=688)) mentiones that this proposal also came about due to New collection usecases that surfaced in recent work - showing that without a strict rule there is a high amount of "un-disciplined" use of (). But he agrees with Miles about merging the two proposals together.
 
-**Conclusion** https://youtu.be/gnlL4PlstFY?t=764 Jorge will merge something and write a motivation, reusing something Martin showed him + compatibility with Scala 2
-**Sébastien** [YouTube time” 14’53’ - 40’10’’](https://youtu.be/gnlL4PlstFY?t=891) summarised discussion on Contributors thread [“Proposal to remove XML literals from the language”](https://contributors.scala-lang.org/t/proposal-to-remove-xml-literals-from-the-language/2146) 
+**Conclusion** **Jorge** takes the task to merge the proposals and extend the motivation.  
+
+**Sébastien** [YouTube time” 14’53’ - 40’10’’](https://youtu.be/gnlL4PlstFY?t=891) summarised discussion on Contributors thread [“Proposal to remove XML literals from the language”](https://contributors.scala-lang.org/t/proposal-to-remove-xml-literals-from-the-language/2146) 
 Summary: 
 In favor of the removal
 Significant language specification weight, as well as compiler implementation. The whole XML spec must be embedded in Scala!
