@@ -93,7 +93,7 @@ Comments
 
 + Some questions about parentheses and implicit argument lists.
 
-  Resolution from Sebastiane: implicit argument application syntax unaffected
+  Resolution from Sébastiane: implicit argument application syntax unaffected
   by this proposal.
 
 + A request for clarification about Java/Scala 2/3 mixed overrides, given the
@@ -148,7 +148,7 @@ Comments
 
 ### [“Proposal to remove XML literals from the language”](https://contributors.scala-lang.org/t/proposal-to-remove-xml-literals-from-the-language/2146)
 
-**Sébastien** [YouTube time” 14’53’ - 40’10’’](https://youtu.be/gnlL4PlstFY?t=891) summarised discussion on Contributors thread. 
+**Sébastien** ([YouTube time” 14’53’ - 40’10’’](https://youtu.be/gnlL4PlstFY?t=891)) summarised discussion on Contributors thread. 
 
 Summary: 
 
