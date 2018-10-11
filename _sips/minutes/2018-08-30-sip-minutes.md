@@ -74,7 +74,7 @@ Decision / voting / postponing the discussion
 
 Summary:
 
-### References
+References
 
 + [Scala Contributors thread](https://contributors.scala-lang.org/t/proposal-to-remove-auto-application-from-the-language/2145).
 
@@ -82,7 +82,7 @@ Summary:
 
 + [Martin's comment on the issue above](https://github.com/lampepfl/dotty/issues/2570#issuecomment-306202339).
 
-### Comments
+Comments
 
 + One comment to the effect that the motivation doesn't actually provide any
   motivating reasons.
