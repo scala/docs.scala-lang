@@ -160,26 +160,26 @@ In favor of the removal:
 - scala-xml is very complicated, and has serious usability problems
 
 - Adding the extra xml"""...""" shouldn’t be a bother
- - For JSX-style support, maybe a jsx"" interpolator could have the same semantics as JSX, rather than that of scala-xml
+  - For JSX-style support, maybe a jsx"" interpolator could have the same semantics as JSX, rather than that of scala-xml
 - Direct language support for XML only existed because string interpolators did not exist back then (supposedly). It seems to be an obviously better design to build on string interpolators.
 - Removes XML as a special case. With interpolators, one can embed arbitrary languages within Scala.
- - Similar argument: XML should have no higher place in the language than YAML, JSON, etc.
+  - Similar argument: XML should have no higher place in the language than YAML, JSON, etc.
 - JSX-style use cases should use ScalaTags-style libraries anyway.
 - XML being part of the language is the reason that XML libraries have stalled, and that JSON ones have flourished
- - Counter-argument: lib stalling is due to the “symbol”-based translation. A name-based translation would not have this issue.
+  - Counter-argument: lib stalling is due to the “symbol”-based translation. A name-based translation would not have this issue.
 
 Against the removal
 
 - Difficulty of syntax highlighting
- - Shouldn’t be a real issue as long as editors are on board
+  - Shouldn’t be a real issue as long as editors are on board
 - The promised XML interpolator was never materialized
 - JSX is now in widespread use in languages for front-end development. It is ironic that Scala would drop support for a similar feature now. It is even built in some languages, e.g., TypeScript.
- - JSX is simpler than scala-xml, though: no namespace support, in particular.
+  - JSX is simpler than scala-xml, though: no namespace support, in particular.
 - For front-end devs looking at Scala/Scala.js, string interpolators will look horrible compared to JSX, and it might be one of those “no-no” things that will push them away.
 - Being able to just copy-paste examples from the Net is nice. (8 Likes on this one)
 - No one uses XML anymore, right?
- - Some answer that they do. Especially in non-greenfield projects.
- - Kojo uses XML literals as building blocks for the Storytelling feature.
+  - Some answer that they do. Especially in non-greenfield projects.
+  - Kojo uses XML literals as building blocks for the Storytelling feature.
 
 Counter-proposal
 
@@ -188,7 +188,7 @@ Named-based XML desugaring: https://contributors.scala-lang.org/t/pre-sip-name-b
 - Less complexity in the language/compiler
 - Open for library competition
 - Compared to a string interpolator, flavors can be implemented using normal library code, without (whitebox) macros.
- - Whiteboxness is necessary for xml”””<button …></button>””” to return a more precise type such as `xml.tags.Button` rather than `xml.Node`
+  - Whiteboxness is necessary for xml”””<button …></button>””” to return a more precise type such as `xml.tags.Button` rather than `xml.Node`
 
 Other ideas
 - Can it be a compiler plugin or a macro?
@@ -197,11 +197,11 @@ Other ideas
 Related links
 
 - Other XML libraries:
- - https://note.github.io/xml-lens/
- - One in scalaz-deriving: https://gitlab.com/fommil/scalaz-deriving/tree/master/examples/xmlformat/src/main/scala/xmlformat (link behind a login wall, it seems)
+  - https://note.github.io/xml-lens/
+  - One in scalaz-deriving: https://gitlab.com/fommil/scalaz-deriving/tree/master/examples/xmlformat/src/main/scala/xmlformat (link behind a login wall, it seems)
 - JSX-style libraries for Scala:
- - https://github.com/OlivierBlanvillain/monadic-html
- - Binding.scala, TODO app: https://scalafiddle.io/sf/dGkVqlV/9
+  - https://github.com/OlivierBlanvillain/monadic-html
+  - Binding.scala, TODO app: https://scalafiddle.io/sf/dGkVqlV/9
 - Ammonite script to convert HTML to the VDOM DSL of scalajs-react (a ScalaTags flavor):
 https://gist.github.com/nafg/112bf83e5676ed316f17cea505ea5d93
 
