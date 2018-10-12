@@ -83,7 +83,7 @@ object SalaryRaiser {
 }
 ```
 
-新的方法`promotion`有两个参数，薪资列表和一个`Double => Double`的函数（输入Double参数返回Double的函数），返回薪资提升的结果。
+新的方法`promotion`有两个参数，薪资列表和一个类型为`Double => Double`的函数（参数和返回值类型均为Double），返回薪资提升的结果。
 
 ## 返回函数的函数
 
