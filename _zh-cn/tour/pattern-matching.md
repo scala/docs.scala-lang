@@ -31,9 +31,9 @@ x match {
   case _ => "many"
 }
 ```
-The `val x` above is a random integer between 0 and 10. `x` becomes the left operand of the `match` operator and on the right is an expression with four cases. The last case `_` is a "catch all" case for any number greater than 2. Cases are also called _alternatives_.
+上述代码中的`val x`是一个0到10之间的随机整数，将它放在`match`运算符的左侧对其进行模式匹配，`match`的右侧是包含4条`case`的表达式，其中最后一个`case _`表示匹配其余所有情况，在这里即是`x`大于2的情况。
 
-Match expressions have a value.
+`match`表达式具有一个结果值
 ```tut
 def matchTest(x: Int): String = x match {
   case 1 => "one"
@@ -43,11 +43,11 @@ def matchTest(x: Int): String = x match {
 matchTest(3)  // many
 matchTest(1)  // one
 ```
-This match expression has a type String because all of the cases return String. Therefore, the function `matchTest` returns a String.
+这个`match`表达式是String类型的，因为所有的情况（case）均返回String，所以`matchTest`函数的返回值是String类型。
 
-## Matching on case classes
+## 案例类（case classes）的匹配
 
-Case classes are especially useful for pattern matching.
+案例类非常适合用于模式匹配。
 
 ```tut
 abstract class Notification
@@ -80,10 +80,10 @@ println(showNotification(someSms))  // prints You got an SMS from 12345! Message
 
 println(showNotification(someVoiceRecording))  // you received a Voice Recording from Tom! Click the link to hear it: voicerecording.org/id/123
 ```
-The function `showNotification` takes as a parameter the abstract type `Notification` and matches on the type of `Notification` (i.e. it figures out whether it's an `Email`, `SMS`, or `VoiceRecording`). In the `case Email(email, title, _)` the fields `email` and `title` are used in the return value but the `body` field is ignored with `_`.
+`showNotification`函数接受一个抽象类`Notification`对象作为输入参数，然后匹配其具体类型。（也就是判断它是一个`Email`，`SMS`，还是`VoiceRecording`）。在`case Email(email, title, _)`中，对象的`email`和`title`属性在返回值中被使用，而`body`属性则被忽略，故使用`_`代替。
 
-## Pattern guards
-Pattern guards are simply boolean expressions which are used to make cases more specific. Just add `if <boolean expression>` after the pattern.
+## 模式守卫（Pattern gaurds）
+为了让匹配更加具体，可以使用模式守卫，也就是在模式后面加上`if <boolean expression>`。
 ```
 
 def showImportantNotification(notification: Notification, importantPeopleInfo: Seq[String]): String = {
@@ -110,10 +110,11 @@ println(showImportantNotification(importantEmail, importantPeopleInfo))
 println(showImportantNotification(importantSms, importantPeopleInfo))
 ```
 
-In the `case Email(email, _, _) if importantPeopleInfo.contains(email)`, the pattern is matched only if the `email` is in the list of important people.
+在`case Email(email, _, _) if importantPeopleInfo.contains(email)`中，除了要求`notification`是`Email`类型外，还需要`email`在重要人物列表`importantPeopleInfo`中，才会匹配到该模式。
+ 
 
-## Matching on type only
-You can match on the type like so:
+## 仅匹配类型
+也可以仅匹配类型，如下所示：
 ```tut
 abstract class Device
 case class Phone(model: String) extends Device{
@@ -128,10 +129,11 @@ def goIdle(device: Device) = device match {
   case c: Computer => c.screenSaverOn
 }
 ```
-`def goIdle` has a different behavior depending on the type of `Device`. This is useful when the case needs to call a method on the pattern. It is a convention to use the first letter of the type as the case identifier (`p` and `c` in this case).
+当不同类型对象需要调用不同方法时，仅匹配类型的模式非常有用，如上代码中`goIdle`函数对不同类型的`Device`有着不同的表现。一般使用类型的首字母作为`case`的标识符，例如上述代码中的`p`和`c`，这是一种惯例。
 
-## Sealed classes
-Traits and classes can be marked `sealed` which means all subtypes must be declared in the same file. This assures that all subtypes are known.
+## 密封类
+
+特质（trait）和类（class）可以用`sealed`标记为密封的，这意味着其所有子类都必须与之定义在相同文件中，从而保证所有子类型都是已知的。
 
 ```tut
 sealed abstract class Furniture
@@ -143,9 +145,8 @@ def findPlaceToSit(piece: Furniture): String = piece match {
   case b: Chair => "Sit on the chair"
 }
 ```
-This is useful for pattern matching because we don't need a "catch all" case.
+这对于模式匹配很有用，因为我们不再需要一个匹配其他任意情况的`case`。
 
-## Notes
+## 备注
 
-Scala's pattern matching statement is most useful for matching on algebraic types expressed via [case classes](case-classes.html).
-Scala also allows the definition of patterns independently of case classes, using `unapply` methods in [extractor objects](extractor-objects.html).
+Scala的模式匹配语句对于使用[案例类（case classes）](case-classes.html)表示的类型非常有用，同时也可以利用[提取器对象（extractor objects）](extractor-objects.html)中的`unapply`方法来定义非案例类对象的匹配。
