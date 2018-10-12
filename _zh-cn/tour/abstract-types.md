@@ -13,7 +13,7 @@ language: zh-cn
 next-page: compound-types
 previous-page: inner-classes
 ---
-特征(Trait)和抽象类(abstract class)可以包含抽象类型成员。这表示具体的实现可以在具体类型中。示例如下：
+特征(Trait)和抽象类(abstract class)可以包含一个抽象类型成员，意味着实际类型可由具体实现来确定。示例如下：
 ```$scala
 trait Buffer {
   type T
