@@ -1,0 +1,21 @@
+digraph Legend {
+  edge [
+    color="#7F7F7F"
+  ];
+  node [
+    label="Trait"
+    shape="box",
+    style="rounded, filled",
+    fontcolor="#FFFFFF",
+    color="#6DC6E6"
+  ];
+  rankdir="LR";
+
+  Class1 [label="Class", color="#4A5659"];
+  Class2 [label="Class", color="#4A5659"];
+  Class3 [label="Class", color="#4A5659"];
+
+  Trait1 -> Class1 [label="Implemented by"];
+  Trait2 -> Class2 [label="Default Implementation", penwidth="4"];
+  Trait3 -> Class3 [label="via Implicit Conversion", style="dashed"];
+}

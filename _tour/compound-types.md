@@ -51,4 +51,4 @@ def cloneAndReset(obj: Cloneable with Resetable): Cloneable = {
 Compound types can consist of several object types and they may have a single refinement which can be used to narrow the signature of existing object members.
 The general form is: `A with B with C ... { refinement }`
 
-An example for the use of refinements is given on the page about [abstract types](abstract-types.html).
+An example for the use of refinements is given on the page about [class composition with mixins](mixin-class-composition.html).

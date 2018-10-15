@@ -1,0 +1,22 @@
+digraph Collections {
+  edge [
+    color="#7F7F7F"
+  ];
+  node [
+    shape="box",
+    style="rounded, filled",
+    fontcolor="#FFFFFF",
+    color="#6DC6E6"
+  ];
+  rankdir="TB";
+
+  Traversable -> Iterable;
+  Iterable -> Seq;
+  Iterable -> Set;
+  Iterable -> Map;
+  Seq -> IndexedSeq;
+  Seq -> LinearSeq;
+  Set -> SortedSet;
+  SortedSet -> BitSet;
+  Map -> SortedMap;
+}
