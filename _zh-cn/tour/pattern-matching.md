@@ -14,7 +14,7 @@ next-page: singleton-objects
 previous-page: case-classes
 ---
 
-模式匹配是检查某个值（value）是否匹配某一个模式的机制，一个成功的匹配同时会将匹配值解构为其组成部分。它是Java中的`switch`语句的升级版，同样可以用于替代一些列的 if/else 语句。
+模式匹配是检查某个值（value）是否匹配某一个模式的机制，一个成功的匹配同时会将匹配值解构为其组成部分。它是Java中的`switch`语句的升级版，同样可以用于替代一系列的 if/else 语句。
 
 ## 语法
 一个模式匹配语句包括一个待匹配的值，`match`关键字，以及至少一个`case`语句。
