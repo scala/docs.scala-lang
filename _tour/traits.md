@@ -61,6 +61,15 @@ iterator.next()  // returns 1
 ```
 This `IntIterator` class takes a parameter `to` as an upper bound. It `extends Iterator[Int]` which means that the `next` method must return an Int.
 
+The `App` trait can be used to quickly turn objects into executable programs. Here is an example:
+```tut
+object Main extends App {
+  println("Hello World") // Prints Hello World
+}
+```
+Here, object Main inherits the main method of App.
+
+
 ## Subtyping
 Where a given trait is required, a subtype of the trait can be used instead.
 ```tut
@@ -82,11 +91,3 @@ animals.append(cat)
 animals.foreach(pet => println(pet.name))  // Prints Harry Sally
 ```
 The `trait Pet` has an abstract field `name` which gets implemented by Cat and Dog in their constructors. On the last line, we call `pet.name` which must be implemented in any subtype of the trait `Pet`.
-
-The App trait can be used to quickly turn objects into executable programs. Here is an example:
-```tut
-object Main extends App {
-  println("Hello World") // Prints Hello World
-}
-```
-Here, object Main inherits the main method of App.
