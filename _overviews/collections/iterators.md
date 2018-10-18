@@ -170,7 +170,7 @@ So the expression `(1 to 10).iterator.map(println)` would not print anything to 
 
 A consequence of this is that a method like `map` or `filter` won't necessarily apply its argument function to all of the input elements. The expression `(1 to 10).iterator.map(println).take(5).toList` would only print the values `1` to `5`, for instance, since those are only ones that will be requested from the `Iterator` returned by `map`.
 
-This is one of the reasons why it's important to only use pure functions as arguments to `map`, `filer`, `fold` and similar methods. Remember, a pure function has no side-effects, so one would not normally use `println` in a `map`. `println` is used to demonstrate laziness as it's not normally visible with pure functions.
+This is one of the reasons why it's important to only use pure functions as arguments to `map`, `filter`, `fold` and similar methods. Remember, a pure function has no side-effects, so one would not normally use `println` in a `map`. `println` is used to demonstrate laziness as it's not normally visible with pure functions.
 
 Laziness is still valuable, despite often not being visible, as it can prevent unneeded computations from happening, and can allow for working with infinite sequences, like so:
 
