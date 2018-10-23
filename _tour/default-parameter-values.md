@@ -25,7 +25,7 @@ log("User not found", "WARNING")  // prints WARNING: User not found
 
 The parameter `level` has a default value so it is optional. On the last line, the argument `"WARNING"` overrides the default argument `"INFO"`. Where you might do overloaded methods in Java, you can use methods with optional parameters to achieve the same effect. However, if the caller omits an argument, any following arguments must be named.
 
-```tut  
+```tut
 class Point(val x: Double = 0, val y: Double = 0)
 
 val point1 = new Point(y = 1)
