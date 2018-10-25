@@ -44,7 +44,8 @@ This assumes you know [how to build a project in IntelliJ](building-a-scala-proj
     
     class CubeCalculatorTest extends FunSuite {
       test("CubeCalculator.cube") {
-        assert(CubeCalculator.cube(3) === 27)
+        val calc = new CubeCalculator()
+        assert(calc.cube(3) === 27)
       }
     }
     ```
@@ -55,15 +56,16 @@ This assumes you know [how to build a project in IntelliJ](building-a-scala-proj
 
 Let's go over this line by line:
 
-* `class CubeCalculatorTest` means we are testing the object `CubeCalculator`
+* `class CubeCalculatorTest` means we are testing the class `CubeCalculator`
 * `extends FunSuite` lets us use functionality of ScalaTest's FunSuite class
 such as the `test` function
 * `test` is function that comes from the FunSuite library that collects
 results from assertions within the function body.
 * `"CubeCalculator.cube"` is a name for the test. You can call it anything but
 one convention is "ClassName.methodName".
+* `val calc = new CubeCalculator()` defines calc as an instance of `CubeCalculator`
 * `assert` takes a boolean condition and determines whether the test passes or fails.
-* `CubeCalculator.cube(3) === 27` checks whether the output of the `cube` function is
+* `calc.cube(3) === 27` checks whether the output of the `cube` function is
 indeed 27. The `===` is part of ScalaTest and provides clean error messages.
 
 ## Adding another test case
