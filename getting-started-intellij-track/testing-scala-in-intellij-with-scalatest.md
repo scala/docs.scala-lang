@@ -63,7 +63,7 @@ such as the `test` function
 results from assertions within the function body.
 * `"CubeCalculator.cube"` is a name for the test. You can call it anything but
 one convention is "ClassName.methodName".
-* `val calc = new CubeCalculator()` defines calc as an instance of `CubeCalculator`
+* `val calc = new CubeCalculator()` defines `calc` as an instance of `CubeCalculator`
 * `assert` takes a boolean condition and determines whether the test passes or fails.
 * `calc.cube(3) === 27` checks whether the output of the `cube` function is
 indeed 27. The `===` is part of ScalaTest and provides clean error messages.
