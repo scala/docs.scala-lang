@@ -49,7 +49,7 @@ val input: String =
 for (patternMatch <- keyValPattern.findAllMatchIn(input))
   println(s"key: ${patternMatch.group(1)} value: ${patternMatch.group(2)}")
 ```
-此例中我们从字符串中解析出多组键值对.  每一个匹配值都包含一组子匹配值.  一下是输出:
+此例中我们从字符串中解析出多组键值对.  每一个匹配值都包含一组子匹配值.  结果如下:
 ```
 key: background-color value: #A03300
 key: background-image value: url(img
