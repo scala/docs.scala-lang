@@ -6,7 +6,7 @@ discourse: true
 
 partof: scala-tour
 
-num: 
+num: 6
 next-page: mixin-class-composition
 previous-page: traits
 topics: tuples
@@ -92,5 +92,4 @@ for ((a, b) <- numPairs) {
 
 The value () of type Unit is conceptually the same as the value () of type Tuple0. There can only be one value of this type since it has no elements.
 
-Users may sometimes find hard to chose between Tuples and case classes. As a rule, case classes are preferred choice if elements
-carry more meaning.
+Users may sometimes find hard to chose between Tuples and case classes. As a rule, case classes are preferred choice if elements carry more meaning.
