@@ -114,7 +114,7 @@ The animal's name is: Boots
 
 ### 不变
 
-默认情况下，Scala中的通用类是不变的。 这意味着它们既不是协变的也不是逆变的。 在下例中，类 `Container` 是不变的。 `Container[Cat]` _不是_ `Container[Animal]`，反之亦然。
+默认情况下，Scala中的泛型类是不变的。 这意味着它们既不是协变的也不是逆变的。 在下例中，类 `Container` 是不变的。 `Container[Cat]` _不是_ `Container[Animal]`，反之亦然。
 
 ```tut
 class Container[A](value: A) {
@@ -137,9 +137,9 @@ val cat: Cat = catContainer.getValue // 糟糕，我们最终会将一只狗作�
 
 幸运的是，编译器在此之前就会阻止我们。
 
-### 别的例子
+### 其他例子
 
-另一个可以帮助理型变的例子是来自 Scala 标准库的 `trait Function1[-T, +R]`。 `Function1` 表示具有一个参数的函数，其中第一个类型参数 `T` 表示参数类型，第二个类型参数 `R` 表示返回类型。 `Function1` 在其参数类型上是逆变的，并且在其返回类型上是协变的。 对于这个例子，我们将使用文字符号 `A => B` 来表示 `Function1[A, B]`。
+另一个可以帮助理解型变的例子是 Scala 标准库中的 `trait Function1[-T, +R]`。 `Function1` 表示具有一个参数的函数，其中第一个类型参数 `T` 表示参数类型，第二个类型参数 `R` 表示返回类型。 `Function1` 在其参数类型上是逆变的，并且在其返回类型上是协变的。 对于这个例子，我们将使用文字符号 `A => B` 来表示 `Function1[A, B]`。
 
 假设前面使用过的类似 `Cat`，`Dog`，`Animal` 的继承关系，加上以下内容：
 
@@ -148,7 +148,7 @@ abstract class SmallAnimal extends Animal
 case class Mouse(name: String) extends SmallAnimal
 ```
 
-假设我们正在处理接受动物类型的函数，并返回他们的食物类型。 如果我们想要一个 `Cat => SmallAnimal`（因为猫吃小动物），但是给它一个 `Animal => Mouse`，我们的程序仍然可以工作。 直观地看，一个 `Animal => Mouse` 的函数仍然会接受一个 `Cat` 作为参数，因为 `Cat` 即是一个 `Animal`，并且这个函数返回一个 `Mouse`，也是一个 `SmallAnimal`。 既然我们可以安全地，无形地用前者代替后者，我们可以说 `Animal => Mouse` 是 `Cat => SmallAnimal` 的子类型。
+假设我们正在处理接受动物类型的函数，并返回他们的食物类型。 如果我们想要一个 `Cat => SmallAnimal`（因为猫吃小动物），但是给它一个 `Animal => Mouse`，我们的程序仍然可以工作。 直观地看，一个 `Animal => Mouse` 的函数仍然会接受一个 `Cat` 作为参数，因为 `Cat` 即是一个 `Animal`，并且这个函数返回一个 `Mouse`，也是一个 `SmallAnimal`。 既然我们可以安全地，隐式地用前者代替后者，我们可以说 `Animal => Mouse` 是 `Cat => SmallAnimal` 的子类型。
 
 ### 与其他语言的比较
 
