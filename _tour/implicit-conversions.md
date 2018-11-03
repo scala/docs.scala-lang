@@ -42,7 +42,7 @@ implicit def list2ordered[A](x: List[A])
   }
 ```
 
-The implicitly imported object `scala.Predef` declares several predefined types (e.g. `Pair`) and methods (e.g. `assert`) but also several implicit conversions.
+The implicitly imported object `scala.Predef` declares several aliases to frequently used types (e.g. `scala.collection.immutable.Map` is aliased to `Map`) and methods (e.g. `assert`) but also several implicit conversions.
 
 For example, when calling a Java method that expects a `java.lang.Integer`, you are free to pass it a `scala.Int` instead. That's because Predef includes the following implicit conversions:
 
