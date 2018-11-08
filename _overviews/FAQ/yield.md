@@ -127,7 +127,7 @@ is the equivalent for-comprehension code:
     for (x <- Stream.range(1, 10); if x % 2 == 1 && !found)
       if (x == 5) found = true else println(x)
 
-This caused many problems, because people expected the `if` to be considered
+This caused many problems, because people expected the `filter` to be considered
 on-demand, instead of being applied to the whole collection beforehand.
 
 Scala 2.8 introduced `withFilter`, which is _always_ non-strict, no matter the
