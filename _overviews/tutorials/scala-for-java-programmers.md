@@ -554,7 +554,10 @@ Apart from inheriting code from a super-class, a Scala class can also
 import code from one or several *traits*.
 
 Maybe the easiest way for a Java programmer to understand what traits
-are is to view them as interfaces which can also contain code. In
+are is to view them as interfaces which can also contain code (This 
+feature is available in Java since version 8 using the `default` keyword
+as well as static methods. Default methods can be overriden in implementing
+classes. Since Java 9 private methods can also be used in interfaces.). In
 Scala, when a class inherits from a trait, it implements that trait's
 interface, and inherits all the code contained in the trait.
 
