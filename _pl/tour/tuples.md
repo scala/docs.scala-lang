@@ -2,10 +2,11 @@
 layout: tour
 title: Tuples
 
-discourse: true
+discourse: false
 
 partof: scala-tour
-num: 
+
+num: 5
 language: pl
 next-page: mixin-class-composition
 previous-page: traits

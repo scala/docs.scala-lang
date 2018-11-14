@@ -6,7 +6,7 @@ discourse: true
 
 partof: scala-tour
 
-num: 6
+num: 7
 next-page: higher-order-functions
 previous-page: tuples
 prerequisite-knowledge: inheritance, traits, abstract-classes, unified-types
