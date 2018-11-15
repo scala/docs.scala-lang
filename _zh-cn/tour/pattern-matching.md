@@ -60,7 +60,8 @@ case class VoiceRecording(contactName: String, link: String) extends Notificatio
 
 
 ```
-`Notification` is an abstract super class which has three concrete Notification types implemented with case classes `Email`, `SMS`, and `VoiceRecording`. Now we can do pattern matching on these case classes:
+
+`Notification` 是一个虚基类，它有三个具体的子类`Email`, `SMS`和`VoiceRecording`，我们可以在这些案例类(Case Class)上像这样使用模式匹配：
 
 ```
 def showNotification(notification: Notification): String = {
