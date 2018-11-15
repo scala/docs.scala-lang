@@ -56,5 +56,5 @@ message5.sender  // travis@washington.us
 message5.recipient // claire@bourgogne.fr
 message5.body  // "Me zo o komz gant ma amezeg"
 ```
-上述代码`message4`的`recipient`被用作为了`message5`的`sender`，重新指定了`message5`的`recipient`，而`message4`的`body`则是直接拷贝作为`message5`的`body`了。
+上述代码指定`message4`的`recipient`作为`message5`的`sender`，指定`message5`的`recipient`为"claire@bourgogne.fr"，而`message4`的`body`则是直接拷贝作为`message5`的`body`了。
 
