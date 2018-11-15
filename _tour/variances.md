@@ -23,7 +23,7 @@ class Baz[A]  // An invariant class
 
 ### Covariance
 
-A type parameter `A` of a generic class can be made covariant by using the annotation `+A`. For some `class List[+A]`, making  `A` covariant implies that for two types `A` and `B` where `A` is a subtype of `B`, then `List[A]` is a subtype of `List[B]`. This allows us to make very useful and intuitive subtyping relationships using generics.
+A type parameter `A` of a generic class can be made covariant by using the annotation `+A`. For some `class List[+A]`, making  `A` covariant implies that for two types `A` and `B` where `A` is a supertype of `B`, then `List[A]` is a supertype of `List[B]`. This allows us to make very useful and intuitive subtyping relationships using generics.
 
 Consider this simple class structure:
 
@@ -62,7 +62,7 @@ object CovarianceTest extends App {
 
 ### Contravariance
 
-A type parameter `A` of a generic class can be made contravariant by using the annotation `-A`. This creates a subtyping relationship between the class and its type parameter that is similar, but opposite to what we get with covariance. That is, for some `class Writer[-A]`, making `A` contravariant implies that for two types `A` and `B` where `A` is a subtype of `B`, `Writer[B]` is a subtype of `Writer[A]`.
+A type parameter `A` of a generic class can be made contravariant by using the annotation `-A`. This creates a subtyping relationship between the class and its type parameter that is similar, but opposite to what we get with covariance. That is, for some `class Writer[-A]`, making `A` contravariant implies that for two types `A` and `B` where `A` is a subtype of `B`, `Writer[A]` is a subtype of `Writer[B]`.
 
 Consider the `Cat`, `Dog`, and `Animal` classes defined above for the following example:
 
