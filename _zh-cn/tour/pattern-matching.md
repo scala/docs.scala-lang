@@ -151,3 +151,4 @@ def findPlaceToSit(piece: Furniture): String = piece match {
 ## 备注
 
 Scala的模式匹配语句对于使用[案例类（case classes）](case-classes.html)表示的类型非常有用，同时也可以利用[提取器对象（extractor objects）](extractor-objects.html)中的`unapply`方法来定义非案例类对象的匹配。
+
