@@ -17,7 +17,7 @@ previous-page: multiple-parameter-lists
 案例类（Case classes）和普通类差不多，只有几点关键差别，接下来的介绍将会涵盖这些差别。案例类非常适合用于不可变的数据。下一节将会介绍他们在[模式匹配](pattern-matching.html)中的应用。
  
 ## 定义一个案例类
-一个最简单的案例类定义由关键字`case class`，类名，参数列表（可为空）组成:
+一个最简单的案例类定义由关键字`case class`，类名，参数列表（可为空）组成：
 ```tut
 case class Book(isbn: String)
 
