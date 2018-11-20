@@ -1,6 +1,6 @@
 ---
 layout: tour
-title: For 循环推导
+title: For 推导
 
 discourse: false
 
