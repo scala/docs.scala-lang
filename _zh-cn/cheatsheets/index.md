@@ -19,7 +19,7 @@ language: "zh-cn"
 |  <span class="label success">Good</span> `val x = 5`<br> <span class="label important">Bad</span> `x=6`  |  常量       |
 |  `var x: Double = 5`                                                                                     |  显式类型  |
 |  <span id="functions" class="h2">函数</span>                                                                       |                 |
-|  <span class="label success">Good</span> `def f(x: Int) = { x*x }`<br> <span class="label important">Bad</span> `def f(x: Int)   { x*x }` |  定义函数 <br> 隐蔽的错误: 不加“=”号将会是一段返回Unit类型的过程，这将会导致意想不到的错误。 |
+|  <span class="label success">Good</span> `def f(x: Int) = { x*x }`<br> <span class="label important">Bad</span> `def f(x: Int)   { x*x }` |  定义函数 <br> 隐含的错误: 不加“=”号将会是一段返回Unit类型的过程，这将会导致意想不到的错误。 |
 |  <span class="label success">Good</span> `def f(x: Any) = println(x)`<br> <span class="label important">Bad</span> `def f(x) = println(x)` |  定义函数 <br> 语法错误: 每个参数都需要指定类型。 |
 |  `type R = Double`                                                                                       |  类型别名     |
 |  `def f(x: R)` vs.<br> `def f(x: => R)`                                                                  |  传值调用 <br> 传名调用 （惰性参数） |
@@ -46,7 +46,7 @@ language: "zh-cn"
 |  <span id="data_structures" class="h2">数据结构</span>                                                           |                 |
 |  `(1,2,3)`                                                                                               |  元组字面量 (`Tuple3`) |
 |  `var (x,y,z) = (1,2,3)`                                                                                 |  解构绑定：通过模式匹配来解构元组。 |
-|  <span class="label important">Bad</span>`var x,y,z = (1,2,3)`                                           |  隐蔽的错误：整个元组被赋值给了每一个变量。 |
+|  <span class="label important">Bad</span>`var x,y,z = (1,2,3)`                                           |  隐含的错误：整个元组被赋值给了每一个变量。 |
 |  `var xs = List(1,2,3)`                                                                                  |  列表 (不可变)。 |
 |  `xs(2)`                                                                                                 |  用括号索引 ([slides](http://www.slideshare.net/Odersky/fosdem-2009-1013261/27)) |
 |  `1 :: List(2,3)`                                                                                        |  Cons（构成） |
@@ -58,12 +58,12 @@ language: "zh-cn"
 |  `while (x < 5) { println(x); x += 1}`                                                                   |  while循环 |
 |  `do { println(x); x += 1} while (x < 5)`                                                                |  do while循环 |
 |  `import scala.util.control.Breaks._`<br>`breakable {`<br>`    for (x <- xs) {`<br>`        if (Math.random < 0.1) break`<br>`    }`<br>`}`|  break. ([slides](http://www.slideshare.net/Odersky/fosdem-2009-1013261/21)) |
-|  `for (x <- xs if x%2 == 0) yield x*10` _等价于_ <br>`xs.filter(_%2 == 0).map(_*10)`                    |  for 推导: filter/map |
-|  `for ((x,y) <- xs zip ys) yield x*y` _等价于_ <br>`(xs zip ys) map { case (x,y) => x*y }`              |  for 推导: 解构绑定 |
-|  `for (x <- xs; y <- ys) yield x*y` _等价于_ <br>`xs flatMap {x => ys map {y => x*y}}`                  |  for 推导: 叉乘 |
-|  `for (x <- xs; y <- ys) {`<br>    `println("%d/%d = %.1f".format(x, y, x/y.toFloat))`<br>`}`                     |  for 推导: 不可避免的格式<br>[sprintf-style](http://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax) |
-|  `for (i <- 1 to 5) {`<br>    `println(i)`<br>`}`                                                        |  for 推导: 包括上边界的遍历 |
-|  `for (i <- 1 until 5) {`<br>    `println(i)`<br>`}`                                                     |  for 推导: 忽略上边界的遍历 |
+|  `for (x <- xs if x%2 == 0) yield x*10` _等价于_ <br>`xs.filter(_%2 == 0).map(_*10)`                    |  for 推导式: filter/map |
+|  `for ((x,y) <- xs zip ys) yield x*y` _等价于_ <br>`(xs zip ys) map { case (x,y) => x*y }`              |  for 推导式: 解构绑定 |
+|  `for (x <- xs; y <- ys) yield x*y` _等价于_ <br>`xs flatMap {x => ys map {y => x*y}}`                  |  for 推导式: 叉乘 |
+|  `for (x <- xs; y <- ys) {`<br>    `println("%d/%d = %.1f".format(x, y, x/y.toFloat))`<br>`}`                     |  for 推导式: 不可避免的格式<br>[sprintf-style](http://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax) |
+|  `for (i <- 1 to 5) {`<br>    `println(i)`<br>`}`                                                        |  for 推导式: 包括上边界的遍历 |
+|  `for (i <- 1 until 5) {`<br>    `println(i)`<br>`}`                                                     |  for 推导式: 忽略上边界的遍历 |
 |  <span id="pattern_matching" class="h2">模式匹配</span>                                                         |                 |
 |  <span class="label success">Good</span> `(xs zip ys) map { case (x,y) => x*y }`<br> <span class="label important">Bad</span> `(xs zip ys) map( (x,y) => x*y )` |  在函数的参数中使用模式匹配的例子。 |
 |  <span class="label important">Bad</span><br>`val v42 = 42`<br>`Some(3) match {`<br>`  case Some(v42) => println("42")`<br>`    case _ => println("Not 42")`<br>`}` |  "v42" 被解释为可以匹配任何Int类型值的名称，打印输出"42"。 |
