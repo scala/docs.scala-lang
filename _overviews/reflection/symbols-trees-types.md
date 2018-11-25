@@ -573,7 +573,7 @@ nodes that match the pattern `Apply(fun, args)`, where `fun` is some function
 (represented by a `Tree`) and `args` is a list of arguments (represented by a
 list of `Tree`s).
 
-When a the tree matches the pattern (_i.e.,_ when we have an `Apply` node), we
+When a tree matches the pattern (_i.e.,_ when we have an `Apply` node), we
 simply add it to our `List[Apply]`, `applies`, and continue our traversal.
 
 Note that, in our match, we call `super.traverse` on the function `fun`
