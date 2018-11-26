@@ -53,7 +53,7 @@ The main goals and achievements of these meetings were:
 
 Better understanding was enabled by in depth presentations and Q&As with the EPFL Dotty team; the Approach was agreed upon the first day which resulted in creating “FAQs about Scala 3” (see below) and the Action Plan was outlined and is still under construction.
 As the most important points and summary is reflected in “FAQs about Scala 3”, it will stand as an official “minutes” for this unique SIP meeting.
-The following document is not intended to fully answer the listed questions, rather to acknowledge them; SIP Committee is outlining a frame and will pursue answers moving forward. Answers may change down the line, as the Process evolves. 
+The following document is not intended to fully answer the listed questions, rather to acknowledge them; the SIP Committee is outlining a frame and will pursue answers moving forward. Answers may change down the line, as the Process evolves. 
 
 ### What is the goal of Scala 3?
 This new iteration of the language will be focused on simplification, ergonomics, and on creating a stronger foundation for future evolution.
