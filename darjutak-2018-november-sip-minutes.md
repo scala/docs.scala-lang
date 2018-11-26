@@ -66,7 +66,7 @@ As usual, existing Scala code should be able to transition to Scala 3 with minim
 The first phase will end in 2019 with a feature freeze. Before the feature freeze, the SIP Committee and the Scala 3 team will focus on ironing out the set of language features and concrete semantics.
 The second phase will continue into 2020, where the focus will shift to hardening, tooling and polishing documentation to ensure a smooth migration. 
 
-#### Who’s behind Scala 3?
+### Who’s behind Scala 3?
 Over the last five years, Prof. Martin Odersky and his team at EPFL have developed Scala 3. (Also, several Scala 2 features were first incubated in Scala 3.)
 Scala 3 will continue to leverage this collaboration with the Scala 2 team at Lightbend to improve the language for existing Scala users and ease migration. 
 
@@ -102,7 +102,7 @@ For more about the project progress, please see https://github.com/lampepfl/dott
 ### How do we plan to address language experimentation?
 We acknowledge that language experimentation is necessary for improving the language. We also believe it requires a different vehicle than stable Scala releases. We don’t have a concrete solution for now, but we’re working on one.
 
-## Other “documents” created during the meetings:
+### Other “documents” created during the meetings:
 
 https://github.com/lampepfl/dotty/issues/5372
 https://github.com/lampepfl/dotty/issues/5378
