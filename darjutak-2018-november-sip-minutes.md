@@ -73,9 +73,9 @@ Scala 3 will continue to leverage this collaboration with the Scala 2 team at Li
 
 ### What’s the role of the SIP Committee in the Scala 3 migration?
 The SIP Committee takes account of the interests of the varied stakeholders of the Scala language. Regarding the transition to Scala 3, the Committee is tasked with:
-Curating language changes in the Scala specification;
- Providing recommendations for migration from Scala 2 to Scala 3;
-Work with the Scala Center to be a point of reference during the transition to Scala 3, incorporating feedback from implementation experience and from the community.
+1. Curating language changes in the Scala specification;
+2. Providing recommendations for migration from Scala 2 to Scala 3;
+3. Work with the Scala Center to be a point of reference during the transition to Scala 3, incorporating feedback from implementation experience and from the community.
 
 ### What’s the plan for keeping the migration period as short as possible?
 A smooth migration process is key for the success of Scala 3. We have learned from our own past experience as well as that of other language communities (for example, Python 3) to recommend the following plan.
@@ -93,7 +93,7 @@ In addition, the Scala community has a culture of upgrading the ecosystem on eve
 
 ### How will the transition to Scala 3 affect users of Scala 2 macros and reflection?
 
-The dependence of Scala 2 macros and reflection on internal implementation details of the Scala 2 compiler mean that significant change is inevitable if Scala is to evolve.
+The dependency of Scala 2 macros and reflection on internal implementation details of the Scala 2 compiler mean that significant change is inevitable if Scala is to evolve.
 We recognize that important parts of the Scala ecosystem have made essential use of the Scala 2 facilities and that it is vital that as many as possible of these use cases be accommodated in Scala 3 in some form or another. This will be disruptive, but we hope to mitigate the disruption by providing facilities which make the more straightforward and important scenarios simpler whilst leaving others still possible.
 Our direction is still evolving, however we believe that replacing the current excessively general and expressive macro system with a suite of less powerful but complementary tools is the way forward.
 Currently we are exploring options which range from improved support for type level programming in the language itself (eg. specialized inline, match types, stable definitions, GADT improvements); intensifying certain features currently supported by macros (eg. by-name implicits, generic programming primitives); through to less general forms of metaprogramming (quote/splice and staging) and portable reflection via TASTy (which we recommend to support in both Scala 2/3 and via compiler-independent libraries and tools; [see also](https://github.com/scalacenter/advisoryboard/pull/40)). We recommend that most current uses of Scala macros and reflection can be accommodated by some combination of these tools.
