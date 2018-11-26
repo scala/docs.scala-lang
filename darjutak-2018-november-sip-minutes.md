@@ -77,6 +77,26 @@ The SIP Committee takes account of the interests of the varied stakeholders of t
 2. Providing recommendations for migration from Scala 2 to Scala 3;
 3. Work with the Scala Center to be a point of reference during the transition to Scala 3, incorporating feedback from implementation experience and from the community.
 
+During the meeting, the Committee came up with the curated list of the Core Scala 3 features, that are considered as a bundle that represents Scala 3, others are marked as "not core" or "essential". Please see the [full list here](https://docs.google.com/spreadsheets/d/1GWJUo0U3JbBtrfg5vqgb6H5S6wlU5HnTxebLcHwD1zw/edit?usp=sharing), naming the "core" features as follows:
+
+[Early Initializers](https://dotty.epfl.ch/docs/reference/dropped/early-initializers.html)
+[Trait Parameters](https://dotty.epfl.ch/docs/reference/trait-parameters.html)
+[Intersection Types](http://dotty.epfl.ch/docs/reference/intersection-types.html)
+[Union Types](http://dotty.epfl.ch/docs/reference/union-types.html)
+[Dependent Function Types](http://dotty.epfl.ch/docs/reference/dependent-function-types.html)
+[Implicit Function Types](http://dotty.epfl.ch/docs/reference/implicit-function-types.html)
+[Weak Conformance](https://dotty.epfl.ch/docs/reference/dropped/weak-conformance.html)
+[Type Lambdas](https://dotty.epfl.ch/docs/reference/type-lambdas.html)
+[Type Checking](https://dotty.epfl.ch/docs/reference/changed/type-checking.html)
+[Type Inference](https://dotty.epfl.ch/docs/reference/changed/type-inference.html)
+[Implicit Resolution](https://dotty.epfl.ch/docs/reference/changed/implicit-resolution.html)
+[Pattern matching](https://dotty.epfl.ch/docs/reference/changed/pattern-matching.html)
+[Existential Types](https://dotty.epfl.ch/docs/reference/dropped/existential-types.html)
+[Type Projection](https://dotty.epfl.ch/docs/reference/dropped/type-projection.html)
+[Class Shadowing](https://dotty.epfl.ch/docs/reference/dropped/class-shadowing.html)
+[Trait Parameters](https://dotty.epfl.ch/docs/reference/trait-parameters.html)
+
+
 ### What’s the plan for keeping the migration period as short as possible?
 A smooth migration process is key for the success of Scala 3. We have learned from our own past experience as well as that of other language communities (for example, Python 3) to recommend the following plan.
 
@@ -104,17 +124,15 @@ We acknowledge that language experimentation is necessary for improving the lang
 
 ### Other “documents” created during the meetings:
 
-https://github.com/lampepfl/dotty/issues/5372
+[SIP: Structural Types])https://github.com/lampepfl/dotty/issues/5372)
 
-https://github.com/lampepfl/dotty/issues/5378
+[SIP: TASTY changes](https://github.com/lampepfl/dotty/issues/5378)
 
-https://github.com/lampepfl/dotty/issues/5379
+[SIP: Underscore Syntax for Type Lambdas](https://github.com/lampepfl/dotty/issues/5379)
 
-https://github.com/lampepfl/dotty/issues/5381
-
+[Should we bring back rewrite methods?](https://github.com/lampepfl/dotty/issues/5381)
 
 Features work progress overview:
-
 https://docs.google.com/spreadsheets/d/1GWJUo0U3JbBtrfg5vqgb6H5S6wlU5HnTxebLcHwD1zw/edit?usp=sharing 
 
 For more info please consult the Dotty documentation:
