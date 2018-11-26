@@ -105,9 +105,13 @@ We acknowledge that language experimentation is necessary for improving the lang
 ### Other “documents” created during the meetings:
 
 https://github.com/lampepfl/dotty/issues/5372
+
 https://github.com/lampepfl/dotty/issues/5378
+
 https://github.com/lampepfl/dotty/issues/5379
+
 https://github.com/lampepfl/dotty/issues/5381
+
 
 Features work progress overview:
 
