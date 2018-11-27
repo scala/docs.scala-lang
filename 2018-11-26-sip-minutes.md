@@ -142,7 +142,7 @@ We acknowledge that language experimentation is necessary for improving the lang
 
 ### Other “documents” created during the meetings:
 
-[SIP: Structural Types])https://github.com/lampepfl/dotty/issues/5372)
+[SIP: Structural Types](https://github.com/lampepfl/dotty/issues/5372)
 
 [SIP: TASTY changes](https://github.com/lampepfl/dotty/issues/5378)
 
