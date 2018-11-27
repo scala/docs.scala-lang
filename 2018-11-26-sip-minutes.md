@@ -14,7 +14,7 @@ Jorge Vicente Cantero and Darja Jovanovic were the Process Leads.
 
 
 ## Date and Location
-The meeting took place on the 1-3 November 2018 during the working hours, 9 AM - 5 PM CET, at EPFL in Lausanne, Switzerland as well as other locations.
+The meeting took place on November 1-3 2018, during the working hours 9 AM - 5 PM CET, at EPFL in Lausanne, Switzerland as well as other locations.
 
 The meeting was not recorded.
 
@@ -42,18 +42,18 @@ The meeting was not recorded.
 ## Proceedings
 ### Opening Remarks
 
-The SIP Committee gathered for the first time face-to-face, for an extensive SIP meeting from 1st to the 3rd of November 2018 at EPFL, Switzerland.  
-
-The main goals and achievements of these meetings were:
+The SIP Committee gathered for the first time face-to-face, for an extensive 3-day SIP meeting. The main goals and achievements of these meetings were:
 
 - Understand better the upcoming changes to Scala; 
 - Agree about the role of the Committee in the Scala 2 to Scala 3 transition;
 - Outline an action plan within a set time-frame;
 - Other: Unanimously voted for Guillaume Martres to join the Committee.
 
-Better understanding was enabled by in depth presentations and Q&As with the EPFL Dotty team; the Approach was agreed upon the first day which resulted in creating “FAQs about Scala 3” (see below) and the Action Plan was outlined and is still under construction.
+Better understanding was enabled by in depth presentations and Q&As with the EPFL Dotty team; the Approach was agreed upon the first day which resulted in creating “FAQs about Scala 3” (see below) and the Action Plan was outlined and is still under construction; sveveral issues were opened and a project plan Meta programming in Scala 3 has been developed (please see the list at the end of this document).
 As the most important points and summary is reflected in “FAQs about Scala 3”, it will stand as an official “minutes” for this unique SIP meeting.
 The following document is not intended to fully answer the listed questions, rather to acknowledge them; the SIP Committee is outlining a frame and will pursue answers moving forward. Answers may change down the line, as the Process evolves. 
+
+## Frequently Asked Questions about Scala 3
 
 ### What is the goal of Scala 3?
 This new iteration of the language will be focused on simplification, ergonomics, and on creating a stronger foundation for future evolution.
