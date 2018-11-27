@@ -49,11 +49,11 @@ The SIP Committee gathered for the first time face-to-face, for an extensive 3-d
 - Outline an action plan within a set time-frame;
 - Other: Unanimously voted for Guillaume Martres to join the Committee.
 
-*Better understanding* was enabled by in depth presentations and Q&As with the EPFL Dotty team; *the Approach* was agreed upon the first day which resulted in creating “FAQs about Scala 3” (see below) and *the Action Plan* was outlined and is still under construction; sveveral issues were opened and a project plan Meta programming in Scala 3 has been developed (please see the list at the end of this document).
+*Better understanding* was enabled by in depth presentations and Q&As with the EPFL Dotty team; *the Approach* was agreed upon the first day which resulted in creating “FAQs about Scala 3” (see below) and *the Action Plan* was outlined and is still under construction; several issues were opened and a project plan "Meta-programming in Scala 3" has been developed (please see the list at the end of this document).
 
 As the most important points and summary is reflected in “FAQs about Scala 3”, it will stand as an official “minutes” for this unique SIP meeting.
 
-The following document is not intended to fully answer the listed questions, rather to acknowledge them; the SIP Committee is outlining a frame and will pursue answers moving forward. Answers may change down the line, as the Process evolves. 
+The following document is not intended to fully answer the listed questions, but to acknowledge them; the SIP Committee is outlining a frame and will pursue answers moving forward. Answers may change down the line, as the Process evolves. 
 
 ## Frequently Asked Questions about Scala 3
 
@@ -79,7 +79,7 @@ The SIP Committee takes account of the interests of the varied stakeholders of t
 2. Providing recommendations for migration from Scala 2 to Scala 3;
 3. Work with the Scala Center to be a point of reference during the transition to Scala 3, incorporating feedback from implementation experience and from the community.
 
-During the meeting, the Committee came up with the curated list of the Core Scala 3 features, that are considered as a bundle that represents Scala 3, others are marked as "not core" or "essential". Please see the [full list here](https://docs.google.com/spreadsheets/d/1GWJUo0U3JbBtrfg5vqgb6H5S6wlU5HnTxebLcHwD1zw/edit?usp=sharing), naming the "core" features as follows:
+During the meeting, the Committee came up with the curated list of the Core Scala 3 features, that are considered as a bundle that represents Scala 3. Other features are marked as "not core" or "essential". Please see the [full list here](https://docs.google.com/spreadsheets/d/1GWJUo0U3JbBtrfg5vqgb6H5S6wlU5HnTxebLcHwD1zw/edit?usp=sharing), naming the "core" features as follows:
 
 [Early Initializers](https://dotty.epfl.ch/docs/reference/dropped/early-initializers.html)
 
@@ -122,7 +122,7 @@ These are the key properties of a successful upgrade plan that we recommend to i
 
 1. **Incremental.** Instead of a one-time big upgrade, users should be able to adopt Scala 3 at their own pace.
   
-  a) Compatibility and cross-building. Users should be able to use a common subset of Scala to mix Scala 2 and Scala 3 projects (tbd after the feature freeze) in the same codebase. Scala 2 should guide users towards this subset through deprecation warnings.
+  a) Compatibility and cross-building. Users should be able to use a common subset of Scala to mix Scala 2 and Scala 3 projects (to be determined after the feature freeze) in the same codebase. Scala 2 should guide users towards this subset through deprecation warnings.
   
   b) [Tasty](https://www.scala-lang.org/blog/2018/04/30/in-a-nutshell.html) compatibility. Scala 2 and Scala 3 should converge on the use of Tasty, an intermediate representation format, that will have a strong backwards compatibility policy.
 2. **Static types.** Most Scala code leverages static types which makes migrating safer and easier.
@@ -133,11 +133,11 @@ In addition, the Scala community has a culture of upgrading the ecosystem on eve
 
 ### How will the transition to Scala 3 affect users of Scala 2 macros and reflection?
 
-The dependency of Scala 2 macros and reflection on internal implementation details of the Scala 2 compiler mean that significant change is inevitable if Scala is to evolve.
-We recognize that important parts of the Scala ecosystem have made essential use of the Scala 2 facilities and that it is vital that as many as possible of these use cases be accommodated in Scala 3 in some form or another. This will be disruptive, but we hope to mitigate the disruption by providing facilities which make the more straightforward and important scenarios simpler whilst leaving others still possible.
-Our direction is still evolving, however we believe that replacing the current excessively general and expressive macro system with a suite of less powerful but complementary tools is the way forward.
+The dependency of Scala 2 macros and reflection on internal implementation details of the Scala 2 compiler means that significant change is inevitable if Scala is to evolve.
+We recognize that important parts of the Scala ecosystem have made essential use of the Scala 2 facilities and that it is vital that as many as possible of these use cases be accommodated in Scala 3 in some form or another. This will be disruptive, but we hope to mitigate the disruption by providing facilities which make the more straightforward and important scenarios simpler while still leaving others possible.
+Our direction is still evolving; however we believe that replacing the current excessively general and expressive macro system with a suite of less powerful but complementary tools is the way forward.
 Currently we are exploring options which range from improved support for type level programming in the language itself (eg. specialized inline, match types, stable definitions, GADT improvements); intensifying certain features currently supported by macros (eg. by-name implicits, generic programming primitives); through to less general forms of metaprogramming (quote/splice and staging) and portable reflection via TASTy (which we recommend to support in both Scala 2/3 and via compiler-independent libraries and tools; [see also](https://github.com/scalacenter/advisoryboard/pull/40)). We recommend that most current uses of Scala macros and reflection can be accommodated by some combination of these tools.
-For more about the project progress, please see https://github.com/lampepfl/dotty/issues/5489
+For more about the project's progress, please see https://github.com/lampepfl/dotty/issues/5489
 
 ### How do we plan to address language experimentation?
 We acknowledge that language experimentation is necessary for improving the language. We also believe it requires a different vehicle than stable Scala releases. We don’t have a concrete solution for now, but we’re working on one.
