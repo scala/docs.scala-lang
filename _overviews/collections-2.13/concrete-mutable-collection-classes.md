@@ -53,17 +53,14 @@ Just like an array buffer is useful for building arrays, and a list buffer is us
     scala> buf.toString
     res41: String = abcdef
 
-## Linked Lists
+## ArrayDeque
 
-Linked lists are mutable sequences that consist of nodes which are linked with next pointers. They are supported by class [LinkedList](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/LinkedList.html). In most languages `null` would be picked as the empty linked list. That does not work for Scala collections, because even empty sequences must support all sequence methods. In particular `LinkedList.empty.isEmpty` should return `true` and not throw a `NullPointerException`. Empty linked lists are encoded instead in a special way: Their `next` field points back to the node itself. Like their immutable cousins, linked lists are best traversed sequentially. In addition linked lists make it easy to insert an element or linked list into another linked list.
+An [ArrayDeque](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/ArrayDeque.html)
+is a sequence that supports efficient addition of elements in the front and in the end.
+It internally uses a resizable array.
 
-## Double Linked Lists
-
-Double linked lists are like single linked lists, except that they have besides `next` another mutable field `prev` that points to the element preceding the current node. The main benefit of that additional link is that it makes element removal very fast. Double linked lists are supported by class [DoubleLinkedList](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/DoubleLinkedList.html).
-
-## Mutable Lists
-
-A [MutableList](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/MutableList.html) consists of a single linked list together with a pointer that refers to the terminal empty node of that list. This makes list append a constant time operation because it avoids having to traverse the list in search for its terminal node. [MutableList](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/MutableList.html) is currently the standard implementation of [mutable.LinearSeq](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/LinearSeq.html) in Scala.
+If you need to append and prepend elements to a buffer, use an `ArrayDeque` instead of
+an `ArrayBuffer`.
 
 ## Queues
 
@@ -81,12 +78,6 @@ Scala provides mutable queues in addition to immutable ones. You use a `mQueue` 
     res13: String = a
     scala> queue
     res14: scala.collection.mutable.Queue[String] = Queue(b, c)
-
-## Array Sequences
-
-Array sequences are mutable sequences of fixed size which store their elements internally in an `Array[Object]`. They are implemented in Scala by class [ArraySeq](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/ArraySeq.html).
-
-You would typically use an `ArraySeq` if you want an array for its performance characteristics, but you also want to create generic instances of the sequence where you do not know the type of the elements and you do not have a `ClassTag` to provide it at run-time. These issues are explained in the section on [arrays]({{ site.baseurl }}/overviews/collections/arrays.html).
 
 ## Stacks
 
@@ -111,9 +102,11 @@ You saw immutable stacks earlier. There is also a mutable version, supported by 
     scala> stack    
     res11: scala.collection.mutable.Stack[Int] = Stack(1)
 
-## Array Stacks
+## Mutable ArraySeqs
 
-[ArrayStack](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/ArrayStack.html) is an alternative implementation of a mutable stack which is backed by an Array that gets re-sized as needed. It provides fast indexing and is generally slightly more efficient for most operations than a normal mutable stack.
+Array sequences are mutable sequences of fixed size which store their elements internally in an `Array[Object]`. They are implemented in Scala by class [ArraySeq](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/ArraySeq.html).
+
+You would typically use an `ArraySeq` if you want an array for its performance characteristics, but you also want to create generic instances of the sequence where you do not know the type of the elements and you do not have a `ClassTag` to provide it at run-time. These issues are explained in the section on [arrays]({{ site.baseurl }}/overviews/collections/arrays.html).
 
 ## Hash Tables
 
@@ -142,16 +135,16 @@ A weak hash map is a special kind of hash map where the garbage collector does n
 
 A concurrent map can be accessed by several threads at once. In addition to the usual [Map](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Map.html) operations, it provides the following atomic operations:
 
-### Operations in class ConcurrentMap
+### Operations in Class concurrent.Map
 
 | WHAT IT IS  	  	            | WHAT IT DOES				     |
 | ------       	       	        | ------					     |
-|  `m putIfAbsent(k, v)`  	    |Adds key/value binding `k -> v` unless `k` is already defined in `m`         |
-|  `m remove (k, v)`  	        |Removes entry for `k` if it is currently mapped to `v`.                      |
-|  `m replace (k, old, new)`  	|Replaces value associated with key `k` to `new`, if it was previously bound to `old`. |
-|  `m replace (k, v)`  	        |Replaces value associated with key `k` to `v`, if it was previously bound to some value.|
+|  `m.putIfAbsent(k, v)`  	    |Adds key/value binding `k -> v` unless `k` is already defined in `m`         |
+|  `m.remove(k, v)`  	          |Removes entry for `k` if it is currently mapped to `v`.                      |
+|  `m.replace(k, old, new)`  	  |Replaces value associated with key `k` to `new`, if it was previously bound to `old`. |
+|  `m.replace (k, v)`  	        |Replaces value associated with key `k` to `v`, if it was previously bound to some value.|
 
-`ConcurrentMap` is a trait in the Scala collections library. Currently, its only implementation is Java's `java.util.concurrent.ConcurrentMap`, which can be converted automatically into a Scala map using the [standard Java/Scala collection conversions]({{ site.baseurl }}/overviews/collections/conversions-between-java-and-scala-collections.html).
+`concurrent.Map` is a trait in the Scala collections library. Currently, it has two implementations. The first one is Java's `java.util.concurrent.ConcurrentMap`, which can be converted automatically into a Scala map using the [standard Java/Scala collection conversions]({{ site.baseurl }}/overviews/collections/conversions-between-java-and-scala-collections.html). The second implementation is [TrieMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/concurrent/TrieMap.html), which is a lock-free implementation of a hash array mapped trie.
 
 ## Mutable Bitsets
 

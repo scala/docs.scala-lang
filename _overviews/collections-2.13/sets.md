@@ -12,7 +12,7 @@ num: 6
 permalink: /overviews/collections-2.13/:title.html
 ---
 
-`Set`s are `Iterable`s that contain no duplicate elements. The operations on sets are summarized in the following table for general sets and in the table after that for mutable sets. They fall into the following categories:
+`Set`s are `Iterable`s that contain no duplicate elements. The operations on sets are summarized in the following tables for general sets, immutable sets and mutable sets. They fall into the following categories:
 
 * **Tests** `contains`, `apply`, `subsetOf`. The `contains` method asks whether a set contains a given element. The `apply` method for a set is the same as `contains`, so `set(elem)` is the same as `set contains elem`. That means sets can also be used as test functions that return true for the elements they contain.
 
@@ -27,9 +27,9 @@ For example:
     res1: Boolean = false
 
 
-* **Additions** `+` and `++`, which add one or more elements to a set, yielding a new set.
-* **Removals** `-`, `--`, which remove one or more elements from a set, yielding a new set.
-* **Set operations** for union, intersection, and set difference. Each of these operations exists in two forms: alphabetic and symbolic. The alphabetic versions are `intersect`, `union`, and `diff`, whereas the symbolic versions are `&`, `|`, and `&~`. In fact, the `++` that Set inherits from `Traversable` can be seen as yet another alias of `union` or `|`, except that `++` takes a `Traversable` argument whereas `union` and `|` take sets.
+* **Additions** `incl` and `concat` (or `+` and `++`, respectively), which add one or more elements to a set, yielding a new set.
+* **Removals** `excl` and `removeAll` (or `-` and `--`, respectively), which remove one or more elements from a set, yielding a new set.
+* **Set operations** for union, intersection, and set difference. Each of these operations exists in two forms: alphabetic and symbolic. The alphabetic versions are `intersect`, `union`, and `diff`, whereas the symbolic versions are `&`, `|`, and `&~`. In fact, the `++` that `Set` inherits from `Iterable` can be seen as yet another alias of `union` or `|`, except that `++` takes an `IterableOnce` argument whereas `union` and `|` take sets.
 
 ### Operations in Class Set ###
 
@@ -39,22 +39,26 @@ For example:
 |  `xs contains x`  	    |Tests whether `x` is an element of `xs`.        |
 |  `xs(x)`        	    |Same as `xs contains x`.                        |
 |  `xs subsetOf ys`  	    |Tests whether `xs` is a subset of `ys`.         |
-|  **Additions:**           |						     |
-|  `xs + x`                 |The set containing all elements of `xs` as well as `x`.|
-|  `xs + (x, y, z)`         |The set containing all elements of `xs` as well as the given additional elements.|
-|  `xs ++ ys`  	            |The set containing all elements of `xs` as well as all elements of `ys`.|
-|  **Removals:**               |						     |
-|  `xs - x`  	            |The set containing all elements of `xs` except `x`.|
-|  `xs - (x, y, z)`         |The set containing all elements of `xs` except the given elements.|
-|  `xs -- ys`  	            |The set containing all elements of `xs` except the elements of `ys`.|
+|  **Addition:**           |						     |
+|  `xs concat ys`<br>or `xs ++ ys`  	            |The set containing all elements of `xs` as well as all elements of `ys`.|
+|  **Removal:**               |						     |
 |  `xs.empty`  	            |An empty set of the same class as `xs`.         |
 |  **Binary Operations:**   |						     |
-|  `xs & ys`  	            |The set intersection of `xs` and `ys`.          |
-|  `xs intersect ys`        |Same as `xs & ys`.                              |
-|  <code>xs &#124; ys</code>  	            |The set union of `xs` and `ys`.                 |
-|  `xs union ys`  	    |Same as <code>xs &#124; ys</code>.                              |
-|  `xs &~ ys`  	            |The set difference of `xs` and `ys`.            |
-|  `xs diff ys`  	    |Same as `xs &~ ys`.                             |
+|  `xs intersect ys`<br>or `xs & ys`  	            |The set intersection of `xs` and `ys`.          |
+|  `xs union ys`<br>or <code>xs &#124; ys</code>  	            |The set union of `xs` and `ys`.                 |
+|  `xs diff ys`<br>or `xs &~ ys`  	            |The set difference of `xs` and `ys`.            |
+
+Immutable sets offer methods to add or remove elements by returning new `Set`s, as summarized in below.
+
+### Operations in Class immutable.Set ###
+
+| WHAT IT IS  	  	    | WHAT IT DOES				     |
+| ------       	       	    | ------					     |
+|  **Additions:**           |						     |
+|  `xs incl x`<br>or `xs + x`                 |The set containing all elements of `xs` as well as `x`.|
+|  **Removals:**               |						     |
+|  `xs excl x`<br>or `xs - x`  	            |The set containing all elements of `xs` except `x`.|
+|  `xs removeAll ys`<br>or `xs -- ys`  	            |The set containing all elements of `xs` except the elements of `ys`.|
 
 Mutable sets offer in addition methods to add, remove, or update elements, which are summarized in below.
 
@@ -63,23 +67,21 @@ Mutable sets offer in addition methods to add, remove, or update elements, which
 | WHAT IT IS  	  	    | WHAT IT DOES				     |
 | ------       	       	    | ------					     |
 |  **Additions:**           |						     |
-|  `xs += x`  	            |Adds element `x` to set `xs` as a side effect and returns `xs` itself.|
-|  `xs += (x, y, z)`        |Adds the given elements to set `xs` as a side effect and returns `xs` itself.|
-|  `xs ++= ys`  	    |Adds all elements in `ys` to set `xs` as a side effect and returns `xs` itself.|
+|  `xs addOne x`<br>or `xs += x`  	            |Adds element `x` to set `xs` as a side effect and returns `xs` itself.|
+|  `xs addAll ys`<br>or `xs ++= ys`  	    |Adds all elements in `ys` to set `xs` as a side effect and returns `xs` itself.|
 |  `xs add x`  	            |Adds element `x` to `xs` and returns `true` if `x` was not previously contained in the set, `false` if it was.|
 |  **Removals:**            |						     |
-|  `xs -= x`  	            |Removes element `x` from set `xs` as a side effect and returns `xs` itself.|
-|  `xs -= (x, y, z)`  	    |Removes the given elements from set `xs` as a side effect and returns `xs` itself.|
-|  `xs --= ys`  	    |Removes all elements in `ys` from set `xs` as a side effect and returns `xs` itself.|
+|  `xs subtractOne x`<br>or `xs -= x`  	            |Removes element `x` from set `xs` as a side effect and returns `xs` itself.|
+|  `xs subtractAll ys`<br>or `xs --= ys`  	    |Removes all elements in `ys` from set `xs` as a side effect and returns `xs` itself.|
 |  `xs remove x`  	    |Removes element `x` from `xs` and returns `true` if `x` was previously contained in the set, `false` if it was not.|
-|  `xs retain p`  	    |Keeps only those elements in `xs` that satisfy predicate `p`.|
+|  `xs filterInPlace p`  	    |Keeps only those elements in `xs` that satisfy predicate `p`.|
 |  `xs.clear()`  	    |Removes all elements from `xs`.|
 |  **Update:**              |						     |
 |  `xs(x) = b`  	    |(or, written out, `xs.update(x, b)`). If boolean argument `b` is `true`, adds `x` to `xs`, otherwise removes `x` from `xs`.|
 |  **Cloning:**             |						     |
 |  `xs.clone`  	            |A new mutable set with the same elements as `xs`.|
 
-Just like an immutable set, a mutable set offers the `+` and `++` operations for element additions and the `-` and `--` operations for element removals. But these are less often used for mutable sets since they involve copying the set. As a more efficient alternative, mutable sets offer the update methods `+=` and `-=`. The operation `s += elem` adds `elem` to the set `s` as a side effect, and returns the mutated set as a result. Likewise, `s -= elem` removes `elem` from the set, and returns the mutated set as a result. Besides `+=` and `-=` there are also the bulk operations `++=` and `--=` which add or remove all elements of a traversable or an iterator.
+The operation `s += elem` adds `elem` to the set `s` as a side effect, and returns the mutated set as a result. Likewise, `s -= elem` removes `elem` from the set, and returns the mutated set as a result. Besides `+=` and `-=` there are also the bulk operations `++=` and `--=` which add or remove all elements of an iterable or an iterator.
 
 The choice of the method names `+=` and `-=` means that very similar code can work with either mutable or immutable sets. Consider first the following REPL dialogue which uses an immutable set `s`:
 
@@ -106,7 +108,7 @@ Comparing the two interactions shows an important principle. You often can repla
 
 Mutable sets also provide add and remove as variants of `+=` and `-=`. The difference is that `add` and `remove` return a Boolean result indicating whether the operation had an effect on the set.
 
-The current default implementation of a mutable set uses a hashtable to store the set's elements. The default implementation of an immutable set uses a representation that adapts to the number of elements of the set. An empty set is represented by just a singleton object. Sets of sizes up to four are represented by a single object that stores all elements as fields. Beyond that size, immutable sets are implemented as [hash tries](concrete-immutable-collection-classes.html).
+The current default implementation of a mutable set uses a hashtable to store the set's elements. The default implementation of an immutable set uses a representation that adapts to the number of elements of the set. An empty set is represented by just a singleton object. Sets of sizes up to four are represented by a single object that stores all elements as fields. Beyond that size, immutable sets are implemented as [Compressed Hash-Array Mapped Prefix-tree](concrete-immutable-collection-classes.html).
 
 A consequence of these representation choices is that, for sets of small sizes (say up to 4), immutable sets are usually more compact and also more efficient than mutable sets. So, if you expect the size of a set to be small, try making it immutable.
 
@@ -133,14 +135,14 @@ Or you can leave out the ordering argument but give an element type or the empty
 
 If you create new sets from a tree-set (for instance by concatenation or filtering) they will keep the same ordering as the original set. For instance,
 
-    scala> res2 + ("one", "two", "three", "four")
+    scala> res2 + "one" + "two" + "three" + "four"
     res3: scala.collection.immutable.TreeSet[String] = TreeSet(four, one, three, two)
 
 Sorted sets also support ranges of elements. For instance, the `range` method returns all elements from a starting element up to, but excluding, an end element. Or, the `from` method returns all elements greater or equal than a starting element in the set's ordering. The result of calls to both methods is again a sorted set. Examples:
 
-    scala> res3 range ("one", "two")
+    scala> res3.range("one", "two")
     res4: scala.collection.immutable.TreeSet[String] = TreeSet(one, three)
-    scala> res3 from "three"
+    scala> res3 rangeFrom "three"
     res5: scala.collection.immutable.TreeSet[String] = TreeSet(three, two)
 
 

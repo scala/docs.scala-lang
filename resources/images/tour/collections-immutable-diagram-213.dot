@@ -1,0 +1,55 @@
+digraph ImmutableCollections {
+  edge [
+    color="#7F7F7F"
+  ];
+  node [
+    shape="box",
+    style="rounded, filled",
+    fontcolor="#FFFFFF",
+    color="#6DC6E6"
+  ];
+  rankdir="TB";
+
+  HashSet [color="#4A5659"];
+  TreeSet [color="#4A5659"];
+  ListSet [color="#4A5659"];
+  HashMap [color="#4A5659"];
+  TreeMap [color="#4A5659"];
+  ListMap [color="#4A5659"];
+  VectorMap [color="#4A5659"];
+  Vector [color="#4A5659"];
+  ArraySeq [color="#4A5659"];
+  NumericRange [color="#4A5659"];
+  String [color="#4A5659"];
+  Range [color="#4A5659"];
+  List [color="#4A5659"];
+  LazyList [color="#4A5659"];
+  Queue [color="#4A5659"];
+
+  Iterable -> Set;
+  Iterable -> Seq [penwidth="4"];
+  Iterable -> Map;
+  Set -> SortedSet;
+  Set -> HashSet [penwidth="4"];
+  Set -> ListSet;
+  SortedSet -> BitSet;
+  SortedSet -> TreeSet;
+  Seq -> IndexedSeq;
+  Seq -> LinearSeq [penwidth="4"];
+  IndexedSeq -> Vector [penwidth="4"];
+  IndexedSeq -> ArraySeq;
+  IndexedSeq -> NumericRange;
+  IndexedSeq -> Range;
+  IndexedSeq -> String [style="dashed"];
+  LinearSeq -> List [penwidth="4"];
+  LinearSeq -> LazyList;
+  LinearSeq -> Queue;
+  Map -> HashMap [penwidth="4"];
+  Map -> SortedMap;
+  Map -> SeqMap;
+  SortedMap -> TreeMap;
+  SeqMap -> ListMap;
+  SeqMap -> VectorMap;
+
+  {rank=same; Seq; TreeMap}
+}

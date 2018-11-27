@@ -21,7 +21,7 @@ additions, removals, or updates, but those operations will in each
 case return a new collection and leave the old collection unchanged.
 
 All collection classes are found in the package `scala.collection` or
-one of its sub-packages `mutable`, `immutable`, and `generic`.  Most
+one of its sub-packages `mutable` and `immutable`.  Most
 collection classes needed by client code exist in three variants,
 which are located in packages `scala.collection`,
 `scala.collection.immutable`, and `scala.collection.mutable`,
@@ -45,12 +45,15 @@ is a superclass of both [collection.immutable.IndexedSeq\[T\]](http://www.scala-
 and
 [collection.mutable.IndexedSeq\[T\]](http://www.scala-lang.org/api/current/scala/collection/mutable/IndexedSeq.html)
 Generally, the root collections in
-package `scala.collection` define the same interface as the immutable
-collections, and the mutable collections in package
+package `scala.collection` support transformation operations
+affecting the whole collection, the immutable
+collections in package `scala.collection.immutable` typically add
+operations for adding or removing single
+values, and the mutable collections in package
 `scala.collection.mutable` typically add some side-effecting
-modification operations to this immutable interface.
+modification operations to the root interface.
 
-The difference between root collections and immutable collections is
+Another difference between root collections and immutable collections is
 that clients of an immutable collection have a guarantee that nobody
 can mutate the collection, whereas clients of a root collection only
 promise not to change the collection themselves. Even though the
@@ -75,12 +78,8 @@ versions of collections is to import just the package
 Then a word like `Set` without a prefix still refers to an immutable collection,
 whereas `mutable.Set` refers to the mutable counterpart.
 
-The last package in the collection hierarchy is `collection.generic`. This
-package contains building blocks for implementing
-collections. Typically, collection classes defer the implementations
-of some of their operations to classes in `generic`. Users of the
-collection framework on the other hand should need to refer to
-classes in `generic` only in exceptional circumstances.
+The last package in the collection hierarchy is `scala.collection.generic`. This
+package contains building blocks for abstracting over concrete collections.
 
 For convenience and backwards compatibility some important types have
 aliases in the `scala` package, so you can use them by their simple
@@ -93,7 +92,7 @@ can be accessed alternatively as
                                       // is always automatically imported
 
 Other types aliased are
-[Traversable](http://www.scala-lang.org/api/current/scala/collection/Traversable.html), [Iterable](http://www.scala-lang.org/api/current/scala/collection/Iterable.html), [Seq](http://www.scala-lang.org/api/current/scala/collection/Seq.html), [IndexedSeq](http://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html), [Iterator](http://www.scala-lang.org/api/current/scala/collection/Iterator.html), [Stream](http://www.scala-lang.org/api/current/scala/collection/immutable/Stream.html), [Vector](http://www.scala-lang.org/api/current/scala/collection/immutable/Vector.html), [StringBuilder](http://www.scala-lang.org/api/current/scala/collection/mutable/StringBuilder.html), and [Range](http://www.scala-lang.org/api/current/scala/collection/immutable/Range.html).
+[Iterable](http://www.scala-lang.org/api/current/scala/collection/Iterable.html), [Seq](http://www.scala-lang.org/api/current/scala/collection/immutable/Seq.html), [IndexedSeq](http://www.scala-lang.org/api/current/scala/collection/immutable/IndexedSeq.html), [Iterator](http://www.scala-lang.org/api/current/scala/collection/Iterator.html), [LazyList](http://www.scala-lang.org/api/current/scala/collection/immutable/LazyList.html), [Vector](http://www.scala-lang.org/api/current/scala/collection/immutable/Vector.html), [StringBuilder](http://www.scala-lang.org/api/current/scala/collection/mutable/StringBuilder.html), and [Range](http://www.scala-lang.org/api/current/scala/collection/immutable/Range.html).
 
 The following figure shows all collections in package
 `scala.collection`.  These are all high-level abstract classes or traits, which
@@ -117,7 +116,6 @@ Legend:
 
 The most important collection classes are shown in the figures above. There is quite a bit of commonality shared by all these classes. For instance, every kind of collection can be created by the same uniform syntax, writing the collection class name followed by its elements:
 
-    Traversable(1, 2, 3)
     Iterable("x", "y", "z")
     Map("x" -> 24, "y" -> 25, "z" -> 26)
     Set(Color.red, Color.green, Color.blue)
@@ -133,7 +131,7 @@ The same principle also applies for specific collection implementations, such as
 
 All these collections get displayed with `toString` in the same way they are written above.
 
-All collections support the API provided by `Traversable`, but specialize types wherever this makes sense. For instance the `map` method in class `Traversable` returns another `Traversable` as its result. But this result type is overridden in subclasses. For instance, calling `map` on a `List` yields again a `List`, calling it on a `Set` yields again a `Set` and so on.
+All collections support the API provided by `Iterable`, but specialize types wherever this makes sense. For instance the `map` method in class `Iterable` returns another `Iterable` as its result. But this result type is overridden in subclasses. For instance, calling `map` on a `List` yields again a `List`, calling it on a `Set` yields again a `Set` and so on.
 
     scala> List(1, 2, 3) map (_ + 1)
     res0: List[Int] = List(2, 3, 4)
@@ -142,12 +140,12 @@ All collections support the API provided by `Traversable`, but specialize types 
 
 This behavior which is implemented everywhere in the collections libraries is called the _uniform return type principle_.
 
-Most of the classes in the collections hierarchy exist in three variants: root, mutable, and immutable. The only exception is the Buffer trait which only exists as a mutable collection.
+Most of the classes in the collections hierarchy exist in three variants: root, mutable, and immutable. The only exception is the `Buffer` trait which only exists as a mutable collection.
 
 In the following, we will review these classes one by one.
 
 
-  [1]: /resources/images/tour/collections-diagram.svg
-  [2]: /resources/images/tour/collections-immutable-diagram.svg
-  [3]: /resources/images/tour/collections-mutable-diagram.svg
+  [1]: /resources/images/tour/collections-diagram-213.svg
+  [2]: /resources/images/tour/collections-immutable-diagram-213.svg
+  [3]: /resources/images/tour/collections-mutable-diagram-213.svg
   [4]: /resources/images/tour/collections-legend-diagram.svg

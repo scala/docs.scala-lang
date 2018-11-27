@@ -32,15 +32,6 @@ The fundamental operations on maps are similar to those on sets. They are summar
 |  `ms getOrElse (k, d)`    |The value associated with key `k` in map `ms`, or the default value `d` if not found.|
 |  `ms contains k`  	    |Tests whether `ms` contains a mapping for key `k`.|
 |  `ms isDefinedAt k`  	    |Same as `contains`.                             |
-| **Additions and Updates:**|						     |
-|  `ms + (k -> v)`          |The map containing all mappings of `ms` as well as the mapping `k -> v` from key `k` to value `v`.|
-|  `ms + (k -> v, l -> w)`  |The map containing all mappings of `ms` as well as the given key/value pairs.|
-|  `ms ++ kvs`              |The map containing all mappings of `ms` as well as all key/value pairs of `kvs`.|
-|  `ms updated (k, v)`      |Same as `ms + (k -> v)`.|
-| **Removals:**             |						     |
-|  `ms - k`  	            |The map containing all mappings of `ms` except for any mapping of key `k`.|
-|  `ms - (k, l, m)`  	    |The map containing all mappings of `ms` except for any mapping with the given keys.|
-|  `ms -- ks`  	            |The map containing all mappings of `ms` except for any mapping with a key in `ks`.|
 |   **Subcollections:**     |						     |
 |  `ms.keys`  	            |An iterable containing each key in `ms`.        |
 |  `ms.keySet`              |A set containing each key in `ms`.              |
@@ -48,8 +39,20 @@ The fundamental operations on maps are similar to those on sets. They are summar
 |  `ms.values`      	    |An iterable containing each value associated with a key in `ms`.|
 |  `ms.valuesIterator`      |An iterator yielding each value associated with a key in `ms`.|
 |   **Transformation:**     |						     |
-|  `ms filterKeys p`        |A map view containing only those mappings in `ms` where the key satisfies predicate `p`.|
-|  `ms mapValues f`         |A map view resulting from applying function `f` to each value associated with a key in `ms`.|
+|  `ms.view filterKeys p`        |A map view containing only those mappings in `ms` where the key satisfies predicate `p`.|
+|  `ms.view mapValues f`         |A map view resulting from applying function `f` to each value associated with a key in `ms`.|
+
+Immutable maps support in addition operations to add and remove mappings by returning new `Map`s, as summarized in the following table.
+
+### Operations in Class immutable.Map ###
+
+| WHAT IT IS  	  	    | WHAT IT DOES				     |
+| ------       	       	    | ------					     |
+| **Additions and Updates:**|						     |
+|  `ms.updated(k, v)`<br>or `ms + (k -> v)`  |The map containing all mappings of `ms` as well as the mapping `k -> v` from key `k` to value `v`.|
+| **Removals:**             |						     |
+|  `ms remove k`<br>or `ms - k`  	            |The map containing all mappings of `ms` except for any mapping of key `k`.|
+|  `ms removeAll ks`<br>or `ms -- ks`  	            |The map containing all mappings of `ms` except for any mapping with a key in `ks`.|
 
 Mutable maps support in addition the operations summarized in the following table.
 
@@ -60,24 +63,22 @@ Mutable maps support in addition the operations summarized in the following tabl
 | ------       	       	    | ------					     |
 |  **Additions and Updates:**|						     |
 |  `ms(k) = v`              |(Or, written out, `ms.update(x, v)`). Adds mapping from key `k` to value `v` to map ms as a side effect, overwriting any previous mapping of `k`.|
-|  `ms += (k -> v)`         |Adds mapping from key `k` to value `v` to map `ms` as a side effect and returns `ms` itself.|
-|  `ms += (k -> v, l -> w)` |Adds the given mappings to `ms` as a side effect and returns `ms` itself.|
-|  `ms ++= kvs`             |Adds all mappings in `kvs` to `ms` as a side effect and returns `ms` itself.|
-|  `ms put (k, v)`          |Adds mapping from key `k` to value `v` to `ms` and returns any value previously associated with `k` as an option.|
+|  `ms.addOne(k -> v)`<br>or `ms += (k -> v)`         |Adds mapping from key `k` to value `v` to map `ms` as a side effect and returns `ms` itself.|
+|  `ms addAll xvs`<br>or `ms ++= kvs`             |Adds all mappings in `kvs` to `ms` as a side effect and returns `ms` itself.|
+|  `ms.put(k, v)`           |Adds mapping from key `k` to value `v` to `ms` and returns any value previously associated with `k` as an option.|
 |  `ms getOrElseUpdate (k, d)`|If key `k` is defined in map `ms`, return its associated value. Otherwise, update `ms` with the mapping `k -> d` and return `d`.|
 |  **Removals:**|						     |
-|  `ms -= k`                |Removes mapping with key `k` from ms as a side effect and returns `ms` itself.|
-|  `ms -= (k, l, m)`        |Removes mappings with the given keys from `ms` as a side effect and returns `ms` itself.|
-|  `ms --= ks`              |Removes all keys in `ks` from `ms` as a side effect and returns `ms` itself.|
+|  `ms subtractOne k`<br>or `ms -= k`                |Removes mapping with key `k` from ms as a side effect and returns `ms` itself.|
+|  `ms subtractAll ks`<br>or `ms --= ks`              |Removes all keys in `ks` from `ms` as a side effect and returns `ms` itself.|
 |  `ms remove k`            |Removes any mapping with key `k` from `ms` and returns any value previously associated with `k` as an option.|
-|  `ms retain p`            |Keeps only those mappings in `ms` that have a key satisfying predicate `p`.|
+|  `ms filterInPlace p`            |Keeps only those mappings in `ms` that have a key satisfying predicate `p`.|
 |  `ms.clear()`             |Removes all mappings from `ms`.                 |
 |  **Transformation:**      |						     |
-|  `ms transform f`         |Transforms all associated values in map `ms` with function `f`.|
+|  `ms mapValuesInPlace f`         |Transforms all associated values in map `ms` with function `f`.|
 |  **Cloning:**             |						     |
 |  `ms.clone`               |Returns a new mutable map with the same mappings as `ms`.|
 
-The addition and removal operations for maps mirror those for sets. Like sets, mutable maps also support the non-destructive addition operations `+`, `-`, and `updated`, but they are used less frequently because they involve a copying of the mutable map. Instead, a mutable map `m` is usually updated "in place", using the two variants `m(key) = value` or `m += (key -> value)`. There is also the variant `m put (key, value)`, which returns an `Option` value that contains the value previously associated with `key`, or `None` if the `key` did not exist in the map before.
+The addition and removal operations for maps mirror those for sets. A mutable map `m` is usually updated "in place", using the two variants `m(key) = value` or `m += (key -> value)`. There is also the variant `m.put(key, value)`, which returns an `Option` value that contains the value previously associated with `key`, or `None` if the `key` did not exist in the map before.
 
 The `getOrElseUpdate` is useful for accessing maps that act as caches. Say you have an expensive computation triggered by invoking a function `f`:
 
@@ -110,58 +111,3 @@ Note that the second argument to `getOrElseUpdate` is "by-name", so the computat
         cache(arg) = result
         result
     }
-
-### Synchronized Sets and Maps ###
-
-To get a thread-safe mutable map, you can mix the `SynchronizedMap` trait into whatever particular map implementation you desire. For example, you can mix `SynchronizedMap` into `HashMap`, as shown in the code below. This example begins with an import of two traits, `Map` and `SynchronizedMap`, and one class, `HashMap`, from package `scala.collection.mutable`. The rest of the example is the definition of singleton object `MapMaker`, which declares one method, `makeMap`. The `makeMap` method declares its result type to be a mutable map of string keys to string values.
-
-      import scala.collection.mutable.{Map,
-          SynchronizedMap, HashMap}
-      object MapMaker {
-        def makeMap: Map[String, String] = {
-            new HashMap[String, String] with
-                SynchronizedMap[String, String] {
-              override def default(key: String) =
-                "Why do you want to know?"
-            }
-        }
-      }
-
-<center>Mixing in the `SynchronizedMap` trait.</center>
-
-The first statement inside the body of `makeMap` constructs a new mutable `HashMap` that mixes in the `SynchronizedMap` trait:
-
-    new HashMap[String, String] with
-      SynchronizedMap[String, String]
-
-Given this code, the Scala compiler will generate a synthetic subclass of `HashMap` that mixes in `SynchronizedMap`, and create (and return) an instance of it. This synthetic class will also override a method named `default`, because of this code:
-
-    override def default(key: String) =
-      "Why do you want to know?"
-
-If you ask a map to give you the value for a particular key, but it doesn't have a mapping for that key, you'll by default get a `NoSuchElementException`. If you define a new map class and override the `default` method, however, your new map will return the value returned by `default` when queried with a non-existent key. Thus, the synthetic `HashMap` subclass generated by the compiler from the code in the synchronized map code will return the somewhat curt response string, `"Why do you want to know?"`, when queried with a non-existent key.
-
-Because the mutable map returned by the `makeMap` method mixes in the `SynchronizedMap` trait, it can be used by multiple threads at once. Each access to the map will be synchronized. Here's an example of the map being used, by one thread, in the interpreter:
-
-    scala> val capital = MapMaker.makeMap  
-    capital: scala.collection.mutable.Map[String,String] = Map()
-    scala> capital ++ List("US" -> "Washington",
-            "France" -> "Paris", "Japan" -> "Tokyo")
-    res0: scala.collection.mutable.Map[String,String] =
-      Map(France -> Paris, US -> Washington, Japan -> Tokyo)
-    scala> capital("Japan")
-    res1: String = Tokyo
-    scala> capital("New Zealand")
-    res2: String = Why do you want to know?
-    scala> capital += ("New Zealand" -> "Wellington")
-    scala> capital("New Zealand")                    
-    res3: String = Wellington
-
-You can create synchronized sets similarly to the way you create synchronized maps. For example, you could create a synchronized `HashSet` by mixing in the `SynchronizedSet` trait, like this:
-
-    import scala.collection.mutable
-    val synchroSet =
-      new mutable.HashSet[Int] with
-          mutable.SynchronizedSet[Int]
-
-Finally, if you are thinking of using synchronized collections, you may also wish to consider the concurrent collections of `java.util.concurrent` instead.

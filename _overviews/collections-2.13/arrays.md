@@ -23,35 +23,33 @@ permalink: /overviews/collections-2.13/:title.html
     scala> a3.reverse
     res0: Array[Int] = Array(9, 3)
 
-Given that Scala arrays are represented just like Java arrays, how can these additional features be supported in Scala? In fact, the answer to this question differs between Scala 2.8 and earlier versions. Previously, the Scala compiler somewhat "magically" wrapped and unwrapped arrays to and from `Seq` objects when required in a process called boxing and unboxing. The details of this were quite complicated, in particular when one created a new array of generic type `Array[T]`. There were some puzzling corner cases and the performance of array operations was not all that predictable.
+Given that Scala arrays are represented just like Java arrays, how can these additional features be supported in Scala? The Scala array implementation makes systematic use of implicit conversions. In Scala, an array does not pretend to _be_ a sequence. It can't really be that because the data type representation of a native array is not a subtype of `Seq`. Instead there is an implicit "wrapping" conversion between arrays and instances of class `scala.collection.mutable.ArraySeq`, which is a subclass of `Seq`. Here you see it in action:
 
-The Scala 2.8 design is much simpler. Almost all compiler magic is gone. Instead the Scala 2.8 array implementation makes systematic use of implicit conversions. In Scala 2.8 an array does not pretend to _be_ a sequence. It can't really be that because the data type representation of a native array is not a subtype of `Seq`. Instead there is an implicit "wrapping" conversion between arrays and instances of class `scala.collection.mutable.WrappedArray`, which is a subclass of `Seq`. Here you see it in action:
-
-    scala> val seq: Seq[Int] = a1
-    seq: Seq[Int] = WrappedArray(1, 2, 3)
+    scala> val seq: collection.Seq[Int] = a1
+    seq: scala.collection.Seq[Int] = ArraySeq(1, 2, 3)
     scala> val a4: Array[Int] = seq.toArray
     a4: Array[Int] = Array(1, 2, 3)
     scala> a1 eq a4
-    res1: Boolean = true
+    res1: Boolean = false
 
-The interaction above demonstrates that arrays are compatible with sequences, because there's an implicit conversion from arrays to `WrappedArray`s. To go the other way, from a `WrappedArray` to an `Array`, you can use the `toArray` method defined in `Traversable`. The last REPL line above shows that wrapping and then unwrapping with `toArray` gives the same array you started with.
+The interaction above demonstrates that arrays are compatible with sequences, because there's an implicit conversion from arrays to `ArraySeq`s. To go the other way, from an `ArraySeq` to an `Array`, you can use the `toArray` method defined in `Iterable`. The last REPL line above shows that wrapping and then unwrapping with `toArray` produces a copy of the original array.
 
 There is yet another implicit conversion that gets applied to arrays. This conversion simply "adds" all sequence methods to arrays but does not turn the array itself into a sequence. "Adding" means that the array is wrapped in another object of type `ArrayOps` which supports all sequence methods. Typically, this `ArrayOps` object is short-lived; it will usually be inaccessible after the call to the sequence method and its storage can be recycled. Modern VMs often avoid creating this object entirely.
 
 The difference between the two implicit conversions on arrays is shown in the next REPL dialogue:
 
-    scala> val seq: Seq[Int] = a1
-    seq: Seq[Int] = WrappedArray(1, 2, 3)
+    scala> val seq: collection.Seq[Int] = a1
+    seq: scala.collection.Seq[Int] = ArraySeq(1, 2, 3)
     scala> seq.reverse
-    res2: Seq[Int] = WrappedArray(3, 2, 1)
-    scala> val ops: collection.mutable.ArrayOps[Int] = a1
-    ops: scala.collection.mutable.ArrayOps[Int] = [I(1, 2, 3)
+    res2: scala.collection.Seq[Int] = ArraySeq(3, 2, 1)
+    scala> val ops: collection.ArrayOps[Int] = a1
+    ops: scala.collection.ArrayOps[Int] = scala.collection.ArrayOps@2d7df55
     scala> ops.reverse
     res3: Array[Int] = Array(3, 2, 1)
 
-You see that calling reverse on `seq`, which is a `WrappedArray`, will give again a `WrappedArray`. That's logical, because wrapped arrays are `Seqs`, and calling reverse on any `Seq` will give again a `Seq`. On the other hand, calling reverse on the ops value of class `ArrayOps` will give an `Array`, not a `Seq`.
+You see that calling reverse on `seq`, which is an `ArraySeq`, will give again a `ArraySeq`. That's logical, because wrapped arrays are `Seqs`, and calling reverse on any `Seq` will give again a `Seq`. On the other hand, calling reverse on the ops value of class `ArrayOps` will give an `Array`, not a `Seq`.
 
-The `ArrayOps` example above was quite artificial, intended only to show the difference to `WrappedArray`. Normally, you'd never define a value of class `ArrayOps`. You'd just call a `Seq` method on an array:
+The `ArrayOps` example above was quite artificial, intended only to show the difference to `ArraySeq`. Normally, you'd never define a value of class `ArrayOps`. You'd just call a `Seq` method on an array:
 
     scala> a1.reverse
     res4: Array[Int] = Array(3, 2, 1)
@@ -61,7 +59,7 @@ The `ArrayOps` object gets inserted automatically by the implicit conversion. So
     scala> intArrayOps(a1).reverse
     res5: Array[Int] = Array(3, 2, 1)
 
-where `intArrayOps` is the implicit conversion that was inserted previously. This raises the question how the compiler picked `intArrayOps` over the other implicit conversion to `WrappedArray` in the line above. After all, both conversions map an array to a type that supports a reverse method, which is what the input specified. The answer to that question is that the two implicit conversions are prioritized. The `ArrayOps` conversion has a higher priority than the `WrappedArray` conversion. The first is defined in the `Predef` object whereas the second is defined in a class `scala.LowPriorityImplicits`, which is inherited by `Predef`. Implicits in subclasses and subobjects take precedence over implicits in base classes. So if both conversions are applicable, the one in `Predef` is chosen. A very similar scheme works for strings.
+where `intArrayOps` is the implicit conversion that was inserted previously. This raises the question how the compiler picked `intArrayOps` over the other implicit conversion to `ArraySeq` in the line above. After all, both conversions map an array to a type that supports a reverse method, which is what the input specified. The answer to that question is that the two implicit conversions are prioritized. The `ArrayOps` conversion has a higher priority than the `ArraySeq` conversion. The first is defined in the `Predef` object whereas the second is defined in a class `scala.LowPriorityImplicits`, which is inherited by `Predef`. Implicits in subclasses and subobjects take precedence over implicits in base classes. So if both conversions are applicable, the one in `Predef` is chosen. A very similar scheme works for strings.
 
 So now you know how arrays can be compatible with sequences and how they can support all sequence operations. What about genericity? In Java you cannot write a `T[]` where `T` is a type parameter. How then is Scala's `Array[T]` represented? In fact a generic array like `Array[T]` could be at run-time any of Java's eight primitive array types `byte[]`, `short[]`, `char[]`, `int[]`, `long[]`, `float[]`, `double[]`, `boolean[]`, or it could be an array of objects. The only common run-time type encompassing all of these types is `AnyRef` (or, equivalently `java.lang.Object`), so that's the type to which the Scala compiler maps `Array[T]`. At run-time, when an element of an array of type `Array[T]` is accessed or updated there is a sequence of type tests that determine the actual array type, followed by the correct array operation on the Java array. These type tests slow down array operations somewhat. You can expect accesses to generic arrays to be three to four times slower than accesses to primitive or object arrays. This means that if you need maximal performance, you should prefer concrete over generic arrays. Representing the generic array type is not enough, however, there must also be a way to create generic arrays. This is an even harder problem, which requires a little bit of help from you. To illustrate the problem, consider the following attempt to write a generic method that creates an array.
 

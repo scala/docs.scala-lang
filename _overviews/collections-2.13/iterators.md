@@ -29,28 +29,31 @@ As always, for-expressions can be used as an alternate syntax for expressions in
 
 There's an important difference between the foreach method on iterators and the same method on traversable collections: When called on an iterator, `foreach` will leave the iterator at its end when it is done. So calling `next` again on the same iterator will fail with a `NoSuchElementException`. By contrast, when called on a collection, `foreach` leaves the number of elements in the collection unchanged (unless the passed function adds to removes elements, but this is discouraged, because it may lead to surprising results).
 
-The other operations that Iterator has in common with `Traversable` have the same property. For instance, iterators provide a `map` method, which returns a new iterator:
+The other operations that `Iterator` has in common with `Iterable` have the same property. For instance, iterators provide a `map` method, which returns a new iterator:
 
     scala> val it = Iterator("a", "number", "of", "words")
-    it: Iterator[java.lang.String] = non-empty iterator
+    it: Iterator[java.lang.String] = <iterator>
     scala> it.map(_.length)
-    res1: Iterator[Int] = non-empty iterator
+    res1: Iterator[Int] = <iterator>
+    scala> it.hasNext
+    res2: Boolean = true
     scala> res1 foreach println
     1
     6
     2
     5
-    scala> it.next()
-    java.util.NoSuchElementException: next on empty iterator
+    scala> it.hasNext
+    res4: Boolean = false
 
-As you can see, after the call to `it.map`, the `it` iterator has advanced to its end.
+As you can see, after the call to `it.map`, the `it` iterator hasn’t advanced to its end, but traversing the iterator
+resulting from the call to `it.map` also traverses `it` and advances it to its end.
 
 Another example is the `dropWhile` method, which can be used to find the first elements of an iterator that has a certain property. For instance, to find the first word in the iterator above that has at least two characters you could write:
 
     scala> val it = Iterator("a", "number", "of", "words")
-    it: Iterator[java.lang.String] = non-empty iterator
+    it: Iterator[java.lang.String] = <iterator>
     scala> it dropWhile (_.length < 2)
-    res4: Iterator[java.lang.String] = non-empty iterator
+    res4: Iterator[java.lang.String] = <iterator>
     scala> res4.next()
     res5: java.lang.String = number
 
@@ -61,8 +64,8 @@ One way to circumvent this behavior is to `duplicate` the underlying iterator in
 The _two_ iterators that result will each return exactly the same elements as the underlying iterator `it`:
 
     scala> val (words, ns) = Iterator("a", "number", "of", "words").duplicate
-    words: Iterator[String] = non-empty iterator
-    ns: Iterator[String] = non-empty iterator
+    words: Iterator[String] = <iterator>
+    ns: Iterator[String] = <iterator>
 
     scala> val shorts = words.filter(_.length < 3).toList
     shorts: List[String] = List(a, of)
@@ -75,7 +78,7 @@ destructively modified by invoking arbitrary methods. This creates the illusion 
 the elements twice, but the effect is achieved through internal buffering.
 As usual, the underlying iterator `it` cannot be used directly and must be discarded.
 
-In summary, iterators behave like collections _if one never accesses an iterator again after invoking a method on it_. The Scala collection libraries make this explicit with an abstraction [TraversableOnce](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/TraversableOnce.html), which is a common superclass of [Traversable](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Traversable.html) and [Iterator](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterator.html). As the name implies, `TraversableOnce` objects can be traversed using `foreach` but the state of that object after the traversal is not specified. If the `TraversableOnce` object is in fact an `Iterator`, it will be at its end after the traversal, but if it is a `Traversable`, it will still exist as before. A common use case of `TraversableOnce` is as an argument type for methods that can take either an iterator or a traversable as argument. An example is the appending method `++` in class `Traversable`. It takes a `TraversableOnce` parameter, so you can append elements coming from either an iterator or a traversable collection.
+In summary, iterators behave like collections _if one never accesses an iterator again after invoking a method on it_. The Scala collection libraries make this explicit with an abstraction [IterableOnce](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/IterableOnce.html), which is a common superclass of [Iterable](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterable.html) and [Iterator](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterator.html). `IterableOnce[A]` only has two methods: `iterator: Iterator[A]` and `knownSize: Int`. If an `IterableOnce` object is in fact an `Iterator`, its `iterator` operation always returns itself, in its current state, but if it is an `Iterable`, its `iterator` operation always return a new `Iterator`. A common use case of `IterableOnce` is as an argument type for methods that can take either an iterator or a collection as argument. An example is the appending method `concat` in class `Iterable`. It takes an `IterableOnce` parameter, so you can append elements coming from either an iterator or a collection.
 
 All operations on iterators are summarized below.
 
@@ -93,8 +96,8 @@ All operations on iterators are summarized below.
 |  **Duplication:**         |						         |
 |  `it.duplicate`           | A pair of iterators that each independently return all elements of `it`. |
 |  **Additions:**           |						         |
-|  `it ++ jt`               | An iterator returning all elements returned by iterator `it`, followed by all elements returned by iterator `jt`. |
-|  `it padTo (len, x)`      | The iterator that first returns all elements of `it` and then follows that by copies of `x` until length `len` elements are returned overall. |
+|  `it concat jt`<br>or `it ++ jt` | An iterator returning all elements returned by iterator `it`, followed by all elements returned by iterator `jt`. |
+|  `it.padTo(len, x)`      | The iterator that first returns all elements of `it` and then follows that by copies of `x` until length `len` elements are returned overall. |
 |  **Maps:**                |						         |
 |  `it map f`               | The iterator obtained from applying the function `f` to every element returned from `it`. |
 |  `it flatMap f`           | The iterator obtained from applying the iterator-valued function f to every element in `it` and appending the results. |
@@ -105,18 +108,17 @@ All operations on iterators are summarized below.
 |  `it.toIterable`          | Collects the elements returned by `it` in an iterable. |
 |  `it.toSeq`               | Collects the elements returned by `it` in a sequence. |
 |  `it.toIndexedSeq`        | Collects the elements returned by `it` in an indexed sequence. |
-|  `it.toStream`            | Collects the elements returned by `it` in a stream. |
+|  `it.toLazyList`            | Collects the elements returned by `it` in a lazy list. |
 |  `it.toSet`               | Collects the elements returned by `it` in a set. |
 |  `it.toMap`               | Collects the key/value pairs returned by `it` in a map. |
 |  **Copying:**              |						         |
-|  `it copyToBuffer buf`    | Copies all elements returned by `it` to buffer `buf`. |
-|  `it copyToArray(arr, s, n)`| Copies at most `n` elements returned by `it` to array `arr` starting at index `s`. The last two arguments are optional. |
+|  `it.copyToArray(arr, s, n)`| Copies at most `n` elements returned by `it` to array `arr` starting at index `s`. The last two arguments are optional. |
 |  **Size Info:**           |						         |
 |  `it.isEmpty`             | Test whether the iterator is empty (opposite of `hasNext`). |
 |  `it.nonEmpty`            | Test whether the collection contains elements (alias of `hasNext`). |
 |  `it.size`                | The number of elements returned by `it`. Note: `it` will be at its end after this operation! |
 |  `it.length`              | Same as `it.size`. |
-|  `it.hasDefiniteSize`     | Returns `true` if `it` is known to return finitely many elements (by default the same as `isEmpty`). |
+|  `xs.knownSize`	    	    |The number of elements, if this one is known without modifying the iterator’s state, otherwise `-1`.	     |
 |  **Element Retrieval Index Search:**|						         |
 |  `it find p`              | An option containing the first element returned by `it` that satisfies `p`, or `None` is no element qualifies. Note: The iterator advances to after the element, or, if none is found, to the end. |
 |  `it indexOf x`           | The index of the first element returned by `it` that equals `x`. Note: The iterator advances past the position of this element. |
@@ -124,12 +126,13 @@ All operations on iterators are summarized below.
 |  **Subiterators:**        |						         |
 |  `it take n`              | An iterator returning of the first `n` elements of `it`. Note: it will advance to the position after the `n`'th element, or to its end, if it contains less than `n` elements. |
 |  `it drop n`              | The iterator that starts with the `(n+1)`'th element of `it`. Note: `it` will advance to the same position. |
-|  `it slice (m,n)`         | The iterator that returns a slice of the elements returned from it, starting with the `m`'th element and ending before the `n`'th element. |
+|  `it.slice(m,n)`         | The iterator that returns a slice of the elements returned from it, starting with the `m`'th element and ending before the `n`'th element. |
 |  `it takeWhile p`         | An iterator returning elements from `it` as long as condition `p` is true. |
 |  `it dropWhile p`         | An iterator skipping elements from `it` as long as condition `p` is `true`, and returning the remainder. |
 |  `it filter p`            | An iterator returning all elements from `it` that satisfy the condition `p`. |
 |  `it withFilter p`        | Same as `it` filter `p`. Needed so that iterators can be used in for-expressions. |
 |  `it filterNot p`         | An iterator returning all elements from `it` that do not satisfy the condition `p`. |
+|  `it.distinct`            | An iterator returning the elements from `it` without duplicates. |
 |  **Subdivisions:**        |						         |
 |  `it partition p`         | Splits `it` into a pair of two iterators: one returning all elements from `it` that satisfy the predicate `p`, the other returning all elements from `it` that do not. |
 |  `it span p`              | Splits `it` into a pair of two iterators: one returning all elements of the prefix of `it` that satisfy the predicate `p`, the other returning all remaining elements of `it`. |
@@ -149,15 +152,15 @@ All operations on iterators are summarized below.
 |  `it.max`                 | The maximum of the ordered element values returned by iterator `it`. |
 |  **Zippers:**             |						         |
 |  `it zip jt`              | An iterator of pairs of corresponding elements returned from iterators `it` and `jt`. |
-|  `it zipAll (jt, x, y)`   | An iterator of pairs of corresponding elements returned from iterators `it` and `jt`, where the shorter iterator is extended to match the longer one by appending elements `x` or `y`. |
+|  `it.zipAll(jt, x, y)`   | An iterator of pairs of corresponding elements returned from iterators `it` and `jt`, where the shorter iterator is extended to match the longer one by appending elements `x` or `y`. |
 |  `it.zipWithIndex`        | An iterator of pairs of elements returned from `it` with their indices. |
 |  **Update:**              |						         |
-|  `it patch (i, jt, r)`    | The iterator resulting from `it` by replacing `r` elements starting with `i` by the patch iterator `jt`. |
+|  `it.patch(i, jt, r)`    | The iterator resulting from `it` by replacing `r` elements starting with `i` by the patch iterator `jt`. |
 |  **Comparison:**          |						         |
 |  `it sameElements jt`     | A test whether iterators it and `jt` return the same elements in the same order. Note: Using the iterators after this operation is undefined and subject to change. |
 |  **Strings:**             |						         |
-|  `it addString (b, start, sep, end)`| Adds a string to `StringBuilder` `b` which shows all elements returned by `it` between separators `sep` enclosed in strings `start` and `end`. `start`, `sep`, `end` are all optional. |
-|  `it mkString (start, sep, end)` | Converts the collection to a string which shows all elements returned by `it` between separators `sep` enclosed in strings `start` and `end`. `start`, `sep`, `end` are all optional. |
+|  `it.addString(b, start, sep, end)`| Adds a string to `StringBuilder` `b` which shows all elements returned by `it` between separators `sep` enclosed in strings `start` and `end`. `start`, `sep`, `end` are all optional. |
+|  `it.mkString(start, sep, end)` | Converts the collection to a string which shows all elements returned by `it` between separators `sep` enclosed in strings `start` and `end`. `start`, `sep`, `end` are all optional. |
 
 ### Laziness
 
@@ -173,7 +176,8 @@ This is one of the reasons why it's important to only use pure functions as argu
 
 Laziness is still valuable, despite often not being visible, as it can prevent unneeded computations from happening, and can allow for working with infinite sequences, like so:
 
-    def zipWithIndex[A](i: Iterator[A]): Iterator[(Int, A)] = Stream.from(0).zip(i)
+    def zipWithIndex[A](i: Iterator[A]): Iterator[(Int, A)] =
+      Iterator.from(0).zip(i)
 
 ### Buffered iterators
 
@@ -193,9 +197,9 @@ The solution to this problem is to use a buffered iterator. Class [BufferedItera
 Every iterator can be converted to a buffered iterator by calling its `buffered` method. Here's an example:
 
     scala> val it = Iterator(1, 2, 3, 4)
-    it: Iterator[Int] = non-empty iterator
+    it: Iterator[Int] = <iterator>
     scala> val bit = it.buffered
-    bit: scala.collection.BufferedIterator[Int] = non-empty iterator
+    bit: scala.collection.BufferedIterator[Int] = <iterator>
     scala> bit.head
     res10: Int = 1
     scala> bit.next()

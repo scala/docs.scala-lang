@@ -89,10 +89,10 @@ traditional collection processing (three loops for an array, because
 the intermediate results need to be buffered somewhere else).  Once
 you have learned the basic collection vocabulary you will also find
 writing this code is much easier and safer than writing explicit
-loops. Furthermore, the `partition` operation is quite fast, and will
-get even faster on parallel collections on multi-cores.  (Parallel
-collections have been released
-as part of Scala 2.9.)
+loops. Furthermore, the `partition` operation is quite fast, and can
+be even faster on parallel collections on multi-cores. (Parallel
+collections are available as a
+[separate library](https://index.scala-lang.org/scala/scala-parallel-collections/scala-parallel-collections))
 
 This document provides an in depth discussion of the APIs of the
 Scala collections classes from a user perspective.  It takes you on

@@ -20,9 +20,9 @@ Performance characteristics of sequence types:
 | --------      | ---- | ---- | ----  | ----  | ----    | ----   | ----   |
 | **immutable** |      |      |       |       |         |        |        |
 | `List`        | C    | C    | L     | L     |  C      | L      |  -     |
-| `Stream`      | C    | C    | L     | L     |  C      | L      |  -     |
+| `LazyList`    | C    | C    | L     | L     |  C      | L      |  -     |
+| `ArraySeq`    | C    | L    | C     | L     |  L      | L      |  -     |
 | `Vector`      | eC   | eC   | eC    | eC    |  eC     | eC     |  -     |
-| `Stack`       | C    | C    | L     | L     |  C      | L      |  L     |
 | `Queue`       | aC   | aC   | L     | L     |  C      | C      |  -     |
 | `Range`       | C    | C    | C     | -     |  -      | -      |  -     |
 | `String`      | C    | L    | C     | L     |  L      | L      |  -     |
@@ -30,12 +30,11 @@ Performance characteristics of sequence types:
 | `ArrayBuffer` | C    | L    | C     | C     |  L      | aC     |  L     |
 | `ListBuffer`  | C    | L    | L     | L     |  C      | C      |  L     |
 |`StringBuilder`| C    | L    | C     | C     |  L      | aC     |  L     |
-| `MutableList` | C    | L    | L     | L     |  C      | C      |  L     |
 | `Queue`       | C    | L    | L     | L     |  C      | C      |  L     |
 | `ArraySeq`    | C    | L    | C     | C     |  -      | -      |  -     |
 | `Stack`       | C    | L    | L     | L     |  C      | L      |  L     |
-| `ArrayStack`  | C    | L    | C     | C     |  aC     | L      |  L     |
 | `Array`       | C    | L    | C     | C     |  -      | -      |  -     |
+| `ArrayDeque`  | C    | L    | C     | C     |  aC     | aC     |  L     |
 
 Performance characteristics of set and map types:
 
@@ -45,6 +44,7 @@ Performance characteristics of set and map types:
 | `HashSet`/`HashMap`| eC     | eC   | eC    | L             |
 | `TreeSet`/`TreeMap`| Log    | Log  | Log   | Log           |
 | `BitSet`           | C      | L    | L     | eC<sup>1</sup>|
+| `VectorMap`        | eC     | eC   | aC    | L             |
 | `ListMap`          | L      | L    | L     | L             |
 | **mutable**        |        |      |       |               |
 | `HashSet`/`HashMap`| eC     | eC   | eC    | L             |

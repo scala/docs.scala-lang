@@ -59,8 +59,6 @@
           url: "collections-2.13/introduction.html"
         - title: Mutable and Immutable Collections
           url: "collections-2.13/overview.html"
-        - title: Trait Traversable
-          url: "collections-2.13/trait-traversable.html"
         - title: Trait Iterable
           url: "collections-2.13/trait-iterable.html"
         - title: The sequence traits Seq, IndexedSeq, and LinearSeq

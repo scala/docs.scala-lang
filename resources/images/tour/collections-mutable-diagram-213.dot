@@ -1,0 +1,84 @@
+digraph MutableCollections {
+  edge [
+    color="#7F7F7F"
+  ];
+  node [
+    shape="box",
+    style="rounded, filled",
+    fontcolor="#FFFFFF",
+    color="#6DC6E6"
+  ];
+  rankdir="TB";
+
+  HashSet [color="#4A5659"];
+  LinkedHashSet [color="#4A5659"];
+  HashMap [color="#4A5659"];
+  WeakHashMap [color="#4A5659"];
+  LinkedHashMap [color="#4A5659"];
+  ListMap [color="#4A5659"];
+  TreeMap [color="#4A5659"];
+  ArraySeq [color="#4A5659"];
+  ArrayBuffer [color="#4A5659"];
+  ArrayDeque [color="#4A5659"];
+  StringBuilder [color="#4A5659"];
+  ListBuffer [color="#4A5659"];
+  Stack [color="#4A5659"];
+  Queue [color="#4A5659"];
+  PriorityQueue [color="#4A5659"];
+
+  Iterable -> Map;
+  Iterable -> Seq [penwidth="4"];
+  Iterable -> Set;
+  Iterable -> PriorityQueue;
+  Map -> HashMap [penwidth="4"];
+  Map -> WeakHashMap;
+  Map -> TreeMap;
+  Map -> ListMap;
+  Map -> MultiMap;
+  Map -> SeqMap;
+  SeqMap -> LinkedHashMap;
+  Set -> HashSet [penwidth="4"];
+  Set -> LinkedHashSet;
+  Set -> SortedSet;
+  SortedSet -> BitSet;
+  Seq -> IndexedSeq [penwidth="4"];
+  Seq -> Buffer;
+  ArrayDeque -> Stack;
+  IndexedSeq -> ArraySeq;
+  IndexedSeq -> StringBuilder;
+  IndexedSeq -> ArrayBuffer [penwidth="4"];
+  IndexedSeq -> ArrayDeque;
+  Buffer -> ArrayBuffer [penwidth="4"];
+  Buffer -> ArrayDeque;
+  Buffer -> ListBuffer;
+  ArrayDeque -> Queue;
+
+  {rank=same;
+    Iterable;
+    PriorityQueue}
+  {rank=same;
+    Map;
+    Set}
+  {rank=same;
+    WeakHashMap;
+    LinkedHashMap;
+    ListMap;
+    BitSet;
+    LinkedHashSet;
+    Seq}
+  {rank=same;
+    HashMap;
+    MultiMap;
+    HashSet}
+  {rank=same;
+    IndexedSeq;
+    Buffer}
+  {rank=same;
+    ArraySeq;
+    ArrayBuffer}
+  {rank=same;
+    StringBuilder;
+    ListBuffer;
+    Queue;
+    Stack}
+}

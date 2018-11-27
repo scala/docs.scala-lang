@@ -18,40 +18,76 @@ Scala provides many concrete immutable collection classes for you to choose from
 
 A [List](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/List.html) is a finite immutable sequence. They provide constant-time access to their first element as well as the rest of the list, and they have a constant-time cons operation for adding a new element to the front of the list. Many other operations take linear time.
 
-Lists have always been the workhorse for Scala programming, so not much needs to be said about them here. The major change in 2.8 is that the `List` class together with its subclass `::` and its subobject `Nil` is now defined in package `scala.collection.immutable`, where it logically belongs. There are still aliases for `List`, `Nil`, and `::` in the `scala` package, so from a user perspective, lists can be accessed as before.
+## LazyLists
 
-Another change is that lists now integrate more closely into the collections framework, and are less of a special case than before. For instance all of the numerous methods that originally lived in the `List` companion object have been deprecated. They are replaced by the [uniform creation methods]({{ site.baseurl }}/overviews/collections/creating-collections-from-scratch.html) inherited by every collection.
+A [LazyList](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/LazyList.html) is like a list except that its elements are computed lazily. Because of this, a lazy list can be infinitely long. Only those elements requested are computed. Otherwise, lazy lists have the same performance characteristics as lists.
 
-## Streams
+Whereas lists are constructed with the `::` operator, lazy lists are constructed with the similar-looking `#::`. Here is a simple example of a lazy list containing the integers 1, 2, and 3:
 
-A [Stream](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Stream.html) is like a list except that its elements are computed lazily. Because of this, a stream can be infinitely long. Only those elements requested are computed. Otherwise, streams have the same performance characteristics as lists.
+    scala> val lazyList = 1 #:: 2 #:: 3 #:: LazyList.empty
+    lazyList: scala.collection.immutable.LazyList[Int] = LazyList(?)
 
-Whereas lists are constructed with the `::` operator, streams are constructed with the similar-looking `#::`. Here is a simple example of a stream containing the integers 1, 2, and 3:
+The head of this lazy list is 1, and the tail of it has 2 and 3. None of the elements are printed here, though, because the list
+hasn’t been computed yet! Lazy lists are specified to compute lazily, and the `toString` method of a lazy list is careful not to force any extra evaluation.
 
-    scala> val str = 1 #:: 2 #:: 3 #:: Stream.empty
-    str: scala.collection.immutable.Stream[Int] = Stream(1, ?)
-
-The head of this stream is 1, and the tail of it has 2 and 3. The tail is not printed here, though, because it hasn't been computed yet! Streams are specified to compute lazily, and the `toString` method of a stream is careful not to force any extra evaluation.
-
-Below is a more complex example. It computes a stream that contains a Fibonacci sequence starting with the given two numbers. A Fibonacci sequence is one where each element is the sum of the previous two elements in the series.
+Below is a more complex example. It computes a lazy list that contains a Fibonacci sequence starting with the given two numbers. A Fibonacci sequence is one where each element is the sum of the previous two elements in the series.
 
 
-    scala> def fibFrom(a: Int, b: Int): Stream[Int] = a #:: fibFrom(b, a + b)
-    fibFrom: (a: Int,b: Int)Stream[Int]
+    scala> def fibFrom(a: Int, b: Int): LazyList[Int] = a #:: fibFrom(b, a + b)
+    fibFrom: (a: Int,b: Int)LazyList[Int]
 
 This function is deceptively simple. The first element of the sequence is clearly `a`, and the rest of the sequence is the Fibonacci sequence starting with `b` followed by `a + b`. The tricky part is computing this sequence without causing an infinite recursion. If the function used `::` instead of `#::`, then every call to the function would result in another call, thus causing an infinite recursion. Since it uses `#::`, though, the right-hand side is not evaluated until it is requested.
 Here are the first few elements of the Fibonacci sequence starting with two ones:
 
     scala> val fibs = fibFrom(1, 1).take(7)
-    fibs: scala.collection.immutable.Stream[Int] = Stream(1, ?)
+    fibs: scala.collection.immutable.LazyList[Int] = LazyList(?)
     scala> fibs.toList
     res9: List[Int] = List(1, 1, 2, 3, 5, 8, 13)
 
-## Vectors
+## Immutable ArraySeqs
 
 Lists are very efficient when the algorithm processing them is careful to only process their heads. Accessing, adding, and removing the head of a list takes only constant time, whereas accessing or modifying elements later in the list takes time linear in the depth into the list.
 
-[Vector](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Vector.html) is a collection type (introduced in Scala 2.8) that addresses the inefficiency for random access on lists. Vectors allow accessing any element of the list in "effectively" constant time. It's a larger constant than for access to the head of a list or for reading an element of an array, but it's a constant nonetheless. As a result, algorithms using vectors do not have to be careful about accessing just the head of the sequence. They can access and modify elements at arbitrary locations, and thus they can be much more convenient to write.
+[ArraySeq](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/ArraySeq.html) is a
+collection type (introduced in Scala 2.13) that addresses the inefficiency for random access on lists. ArraySeqs
+allow accessing any element of the collection in constant time. As a result, algorithms using ArraySeqs do not
+have to be careful about accessing just the head of the collection. They can access elements at arbitrary locations,
+and thus they can be much more convenient to write.
+
+ArraySeqs are built and updated just like any other sequence.
+
+~~~
+scala> val arr = scala.collection.immutable.ArraySeq(1, 2, 3)
+arr: scala.collection.immutable.ArraySeq[Int] = ArraySeq(1, 2, 3)
+scala> val arr2 = arr :+ 4
+arr2: scala.collection.immutable.ArraySeq[Int] = ArraySeq(1, 2, 3, 4)
+scala> arr2(0)
+res22: Int = 1
+~~~
+
+ArraySeqs are immutable, so you cannot change an element in place. However, the `updated`, `appended` and `prepended`
+operations create new ArraySeqs that differ from a given ArraySeq only in a single element:
+
+~~~
+scala> arr.updated(2, 4)
+res26: scala.collection.immutable.ArraySeq[Int] = ArraySeq(1, 2, 4)
+scala> arr
+res27: scala.collection.immutable.ArraySeq[Int] = ArraySeq(1, 2, 3)
+~~~
+
+As the last line above shows, a call to `updated` has no effect on the original ArraySeq `arr`.
+
+ArraySeqs store their elements in a private [Array](arrays.html). This is a compact representation that supports fast
+indexed access, but updating or adding one element is linear since it requires creating another array and copying all
+the original array’s elements.
+
+## Vectors
+
+We have seen in the previous sections that `List` and `ArraySeq` are efficient data structures in some specific
+use cases but they are also inefficient in other use cases: for instance, prepending an element is constant for `List`,
+but linear for `ArraySeq`, and, conversely, indexed access is constant for `ArraySeq` but linear for `List`.
+
+[Vector](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Vector.html) is a collection type that provides good performance for all its operations. Vectors allow accessing any element of the sequence in "effectively" constant time. It's a larger constant than for access to the head of a List or for reading an element of an ArraySeq, but it's a constant nonetheless. As a result, algorithms using vectors do not have to be careful about accessing just the head of the sequence. They can access and modify elements at arbitrary locations, and thus they can be much more convenient to write.
 
 Vectors are built and modified just like any other sequence.
 
@@ -66,16 +102,7 @@ Vectors are built and modified just like any other sequence.
 
 Vectors are represented as trees with a high branching factor (The branching factor of a tree or a graph is the number of children at each node). Every tree node contains up to 32 elements of the vector or contains up to 32 other tree nodes. Vectors with up to 32 elements can be represented in a single node. Vectors with up to `32 * 32 = 1024` elements can be represented with a single indirection. Two hops from the root of the tree to the final element node are sufficient for vectors with up to 2<sup>15</sup> elements, three hops for vectors with 2<sup>20</sup>, four hops for vectors with 2<sup>25</sup> elements and five hops for vectors with up to 2<sup>30</sup> elements. So for all vectors of reasonable size, an element selection involves up to 5 primitive array selections. This is what we meant when we wrote that element access is "effectively constant time".
 
-Vectors are immutable, so you cannot change an element of a vector and still retain a new vector. However, with the `updated` method you can create a new vector that differs from a given vector only in a single element:
-
-    scala> val vec = Vector(1, 2, 3)
-    vec: scala.collection.immutable.Vector[Int] = Vector(1, 2, 3)
-    scala> vec updated (2, 4)
-    res0: scala.collection.immutable.Vector[Int] = Vector(1, 2, 4)
-    scala> vec
-    res1: scala.collection.immutable.Vector[Int] = Vector(1, 2, 3)
-
-As the last line above shows, a call to `updated` has no effect on the original vector `vec`. Like selection, functional vector updates are also "effectively constant time". Updating an element in the middle of a vector can be done by copying the node that contains the element, and every node that points to it, starting from the root of the tree. This means that a functional update creates between one and five nodes that each contain up to 32 elements or subtrees. This is certainly more expensive than an in-place update in a mutable array, but still a lot cheaper than copying the whole vector.
+Like selection, functional vector updates are also "effectively constant time". Updating an element in the middle of a vector can be done by copying the node that contains the element, and every node that points to it, starting from the root of the tree. This means that a functional update creates between one and five nodes that each contain up to 32 elements or subtrees. This is certainly more expensive than an in-place update in a mutable array, but still a lot cheaper than copying the whole vector.
 
 Because vectors strike a good balance between fast random selections and fast random functional updates, they are currently the default implementation of immutable indexed sequences:
 
@@ -83,29 +110,9 @@ Because vectors strike a good balance between fast random selections and fast ra
     scala> collection.immutable.IndexedSeq(1, 2, 3)
     res2: scala.collection.immutable.IndexedSeq[Int] = Vector(1, 2, 3)
 
-## Immutable stacks
-
-If you need a last-in-first-out sequence, you can use a [Stack](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Stack.html). You push an element onto a stack with `push`, pop an element with `pop`, and peek at the top of the stack without removing it with `top`. All of these operations are constant time.
-
-Here are some simple operations performed on a stack:
-
-
-    scala> val stack = scala.collection.immutable.Stack.empty
-    stack: scala.collection.immutable.Stack[Nothing] = Stack()
-    scala> val hasOne = stack.push(1)
-    hasOne: scala.collection.immutable.Stack[Int] = Stack(1)
-    scala> stack
-    stack: scala.collection.immutable.Stack[Nothing] = Stack()
-    scala> hasOne.top
-    res20: Int = 1
-    scala> hasOne.pop
-    res19: scala.collection.immutable.Stack[Int] = Stack()
-
-Immutable stacks are used rarely in Scala programs because their functionality is subsumed by lists: A `push` on an immutable stack is the same as a `::` on a list and a `pop` on a stack is the same as a `tail` on a list.
-
 ## Immutable Queues
 
-A [Queue](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Queue.html) is just like a stack except that it is first-in-first-out rather than last-in-first-out.
+A [Queue](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Queue.html) is a first-in-first-out sequence. You enqueue an element onto a queue with `enqueue`, and dequeue an element with `dequeue`. These operations are constant time.
 
 Here's how you can create an empty immutable queue:
 
@@ -117,9 +124,9 @@ You can append an element to an immutable queue with `enqueue`:
     scala> val has1 = empty.enqueue(1)
     has1: scala.collection.immutable.Queue[Int] = Queue(1)
 
-To append multiple elements to a queue, call `enqueue` with a collection as its argument:
+To append multiple elements to a queue, call `enqueueAll` with a collection as its argument:
 
-    scala> val has123 = has1.enqueue(List(2, 3))
+    scala> val has123 = has1.enqueueAll(List(2, 3))
     has123: scala.collection.immutable.Queue[Int]
       = Queue(1, 2, 3)
 
@@ -147,9 +154,9 @@ If you want to create a range that is exclusive of its upper limit, then use the
 
 Ranges are represented in constant space, because they can be defined by just three numbers: their start, their end, and the stepping value. Because of this representation, most operations on ranges are extremely fast.
 
-## Hash Tries
+## Compressed Hash-Array Mapped Prefix-trees
 
-Hash tries are a standard way to implement immutable sets and maps efficiently. They are supported by class [immutable.HashMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/HashMap.html). Their representation is similar to vectors in that they are also trees where every node has 32 elements or 32 subtrees. But the selection of these keys is now done based on hash code. For instance, to find a given key in a map, one first takes the hash code of the key. Then, the lowest 5 bits of the hash code are used to select the first subtree, followed by the next 5 bits and so on. The selection stops once all elements stored in a node have hash codes that differ from each other in the bits that are selected up to this level.
+Hash tries are a standard way to implement immutable sets and maps efficiently. [Compressed Hash-Array Mapped Prefix-trees](https://github.com/msteindorfer/oopsla15-artifact/) are a design for hash tries on the JVM which improves locality and makes sure the trees remain in a canonical and compact representation. They are supported by class [immutable.HashMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/HashMap.html). Their representation is similar to vectors in that they are also trees where every node has 32 elements or 32 subtrees. But the selection of these keys is now done based on hash code. For instance, to find a given key in a map, one first takes the hash code of the key. Then, the lowest 5 bits of the hash code are used to select the first subtree, followed by the next 5 bits and so on. The selection stops once all elements stored in a node have hash codes that differ from each other in the bits that are selected up to this level.
 
 Hash tries strike a nice balance between reasonably fast lookups and reasonably efficient functional insertions (`+`) and deletions (`-`). That's why they underly Scala's default implementations of immutable maps and sets. In fact, Scala has a further optimization for immutable sets and maps that contain less than five elements. Sets and maps with one to four elements are stored as single objects that just contain the elements (or key/value pairs in the case of a map) as fields. The empty immutable set and the empty immutable map is in each case a single object - there's no need to duplicate storage for those because an empty immutable set or map will always stay empty.
 
@@ -184,7 +191,31 @@ Operations on bit sets are very fast. Testing for inclusion takes constant time.
     scala> moreBits(0)
     res27: Boolean = false
 
-## List Maps
+## VectorMaps
+
+A [VectorMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/VectorMap.html) represents
+a map using both a `Vector` of keys and a `HashMap`. It provides an iterator that returns all the entries in their
+insertion order.
+
+~~~
+scala> val vm = scala.collection.immutable.VectorMap.empty[Int, String]
+vm: scala.collection.immutable.VectorMap[Int,String] =
+  VectorMap()
+scala> val vm1 = vm + (1 -> "one")
+vm1: scala.collection.immutable.VectorMap[Int,String] =
+  VectorMap(1 -> one)
+scala> val vm2 = vm1 + (2 -> "two")
+vm2: scala.collection.immutable.VectorMap[Int,String] =
+  VectorMap(1 -> one, 2 -> two)
+scala> vm2 == Map(2 -> "two", 1 -> "one")
+res29: Boolean = true
+~~~
+
+The first lines show that the content of the `VectorMap` keeps the insertion order, and the last line
+shows that `VectorMap`s are comparable with other `Map`s and that this comparison does not take the
+order of elements into account.
+
+## ListMaps
 
 A [ListMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/ListMap.html) represents a map as a linked list of key-value pairs. In general, operations on a list map might have to iterate through the entire list. Thus, operations on a list map take time linear in the size of the map. In fact there is little usage for list maps in Scala because standard immutable maps are almost always faster. The only possible exception to this is if the map is for some reason constructed in such a way that the first elements in the list are selected much more often than the other elements.
 
