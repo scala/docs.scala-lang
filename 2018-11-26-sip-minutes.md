@@ -128,23 +128,24 @@ A smooth migration process is key for the success of Scala 3. We have learned fr
 
 These are the key properties of a successful upgrade plan that we recommend to incorporate in the migration to Scala 3.
 
-1. **Incremental.** Instead of a one-time big upgrade, users should be able to adopt Scala 3 at their own pace.
-  
+1. **Static types.** Most Scala code leverages static types which makes migrating safer and easier.
+2. **Tooling to ease upgrades.** There should be a rewriting tool for automatic migrations and changes in the current Scala tooling. This tool should accommodate most of the needed changes.
+3. **Shared standard library.** Scala 2.14 and Scala 3.0 should share the same Scala standard library.
+
+In addition, Scala community has a culture of upgrading the ecosystem on every major version of Scala through the community build. We  recommend to leverage the same mechanism to vet Scala upgrades with the migration to Scala 3.
+
+**Incremental.** Instead of a one-time big upgrade, users should be able to adopt Scala 3 at their own pace. 
+
   a) Compatibility and cross-building. Users should be able to use a common subset of Scala to mix Scala 2 and Scala 3 projects (to be determined after the feature freeze) in the same codebase. Scala 2 should guide users towards this subset through deprecation warnings.
   
   b) [Tasty](https://www.scala-lang.org/blog/2018/04/30/in-a-nutshell.html) compatibility. Scala 2 and Scala 3 should converge on the use of Tasty, an intermediate representation format, that will have a strong backwards compatibility policy.
-2. **Static types.** Most Scala code leverages static types which makes migrating safer and easier.
-3. **Tooling to ease upgrades.** There should be a rewriting tool for automatic migrations and changes in the current Scala tooling. This tool should accommodate most of the needed changes.
-4. **Shared standard library.** Scala 2.14 and Scala 3.0 should share the same Scala standard library.
-
-In addition, the Scala community has a culture of upgrading the ecosystem on every major version of Scala through the community build. We  recommend to leverage the same mechanism to evaluate Scala upgrades with the migration to Scala 3.
 
 ### How will the transition to Scala 3 affect users of Scala 2 macros and reflection?
 
 The dependency of Scala 2 macros and reflection on internal implementation details of the Scala 2 compiler means that significant change is inevitable if Scala is to evolve.
 We recognize that important parts of the Scala ecosystem have made essential use of the Scala 2 facilities and that it is vital that as many as possible of these use cases be accommodated in Scala 3 in some form or another. This will be disruptive, but we hope to mitigate the disruption by providing facilities which make the more straightforward and important scenarios simpler while still leaving others possible.
 Our direction is still evolving; however we believe that replacing the current excessively general and expressive macro system with a suite of less powerful but complementary tools is the way forward.
-Currently we are exploring options which range from improved support for type level programming in the language itself (eg. specialized inline, match types, stable definitions, GADT improvements); intrinsifying certain features currently supported by macros (eg. by-name implicits, generic programming primitives); through to less general forms of metaprogramming (quote/splice and staging) and portable reflection via Tasty (which we [recommend]((https://github.com/scalacenter/advisoryboard/pull/40)) to support in both Scala 2/3 and via compiler-independent libraries and tools. We recommend that most current uses of Scala macros and reflection can be accommodated by some combination of these tools.
+Currently we are exploring options which range from improved support for type level programming in the language itself (eg. specialized inline, match types, stable definitions, GADT improvements); intrinsifying certain features currently supported by macros (eg. by-name implicits, generic programming primitives); through to less general forms of metaprogramming (quote/splice and staging) and portable reflection via Tasty (which we [recommend](https://github.com/scalacenter/advisoryboard/pull/40)) to support in both Scala 2/3 and via compiler-independent libraries and tools. We recommend that most current uses of Scala macros and reflection can be accommodated by some combination of these tools.
 For more about the project's progress, please see https://github.com/lampepfl/dotty/issues/5489
 
 ### How do we plan to address language experimentation?
