@@ -7,7 +7,7 @@ partof: minutes
 
 # Minutes
 
-The following agenda was distributed to attendees, please [click here](https://docs.google.com/spreadsheets/d/1JdTyAxqqKqXtiXnZBPTaesMrWk7lyTWna1VPL3N5KWo/edit?usp=sharing).
+The following agenda distributed to attendees is [here](https://docs.google.com/spreadsheets/d/1JdTyAxqqKqXtiXnZBPTaesMrWk7lyTWna1VPL3N5KWo/edit?usp=sharing).
 
 
 Jorge Vicente Cantero and Darja Jovanovic were the Process Leads.
@@ -49,7 +49,7 @@ The SIP Committee gathered for the first time face-to-face, for an extensive 3-d
 - Outline an action plan within a set time-frame;
 - Other: Unanimously voted for Guillaume Martres to join the Committee.
 
-*Better understanding* was enabled by in depth presentations and Q&As with the EPFL Dotty team; *the Approach* was agreed upon the first day which resulted in creating “FAQs about Scala 3” (see below) and *the Action Plan* was outlined and is still under construction; several issues were opened and a project plan "Meta-programming in Scala 3" has been developed (please see the list at the end of this document).
+*Better understanding* was enabled by in depth presentations and Q&As with the EPFL Dotty team; *the Approach* was agreed upon the first day which resulted in creating “FAQs about Scala 3” (see below) and *the Action Plan* was outlined and is still under construction; several issues were opened (please see the list at the end of this document) and a project plan ["Meta-programming in Scala 3"](https://github.com/lampepfl/dotty/issues/5489) has been developed.
 
 As the most important points and summary is reflected in “FAQs about Scala 3”, it will stand as an official “minutes” for this unique SIP meeting.
 
@@ -79,7 +79,15 @@ The SIP Committee takes account of the interests of the varied stakeholders of t
 2. Providing recommendations for migration from Scala 2 to Scala 3;
 3. Work with the Scala Center to be a point of reference during the transition to Scala 3, incorporating feedback from implementation experience and from the community.
 
-During the meeting, the Committee came up with the curated list of the Core Scala 3 features, that are considered as a bundle that represents Scala 3. Other features are marked as "not core" or "essential". Please see the [full list here](https://docs.google.com/spreadsheets/d/1GWJUo0U3JbBtrfg5vqgb6H5S6wlU5HnTxebLcHwD1zw/edit?usp=sharing), naming the "core" features as follows:
+The Committee came up with the curated list, based on 3 categories, "core", "essential", and "not core".
+
+"Core" are well-defined features or changes that are already designed and implemented. They have been accepted on principle, but the finer details are still up for discussion.
+
+"Essential" are wide, unsolved areas for which the Committee recognizes that it cannot decently ship Scala 3.0 without a final design and implementation to solve them. Nothing has been accepted yet because they're not even fully designed yet.
+
+"Not core" 
+
+Please see the [full list here](https://docs.google.com/spreadsheets/d/1GWJUo0U3JbBtrfg5vqgb6H5S6wlU5HnTxebLcHwD1zw/edit?usp=sharing), naming the "core" features as follows:
 
 [Early Initializers](https://dotty.epfl.ch/docs/reference/dropped/early-initializers.html)
 
@@ -136,7 +144,7 @@ In addition, the Scala community has a culture of upgrading the ecosystem on eve
 The dependency of Scala 2 macros and reflection on internal implementation details of the Scala 2 compiler means that significant change is inevitable if Scala is to evolve.
 We recognize that important parts of the Scala ecosystem have made essential use of the Scala 2 facilities and that it is vital that as many as possible of these use cases be accommodated in Scala 3 in some form or another. This will be disruptive, but we hope to mitigate the disruption by providing facilities which make the more straightforward and important scenarios simpler while still leaving others possible.
 Our direction is still evolving; however we believe that replacing the current excessively general and expressive macro system with a suite of less powerful but complementary tools is the way forward.
-Currently we are exploring options which range from improved support for type level programming in the language itself (eg. specialized inline, match types, stable definitions, GADT improvements); intensifying certain features currently supported by macros (eg. by-name implicits, generic programming primitives); through to less general forms of metaprogramming (quote/splice and staging) and portable reflection via TASTy (which we recommend to support in both Scala 2/3 and via compiler-independent libraries and tools; [see also](https://github.com/scalacenter/advisoryboard/pull/40)). We recommend that most current uses of Scala macros and reflection can be accommodated by some combination of these tools.
+Currently we are exploring options which range from improved support for type level programming in the language itself (eg. specialized inline, match types, stable definitions, GADT improvements); intensifying certain features currently supported by macros (eg. by-name implicits, generic programming primitives); through to less general forms of metaprogramming (quote/splice and staging) and portable reflection via Tasty (which we recommend to support in both Scala 2/3 and via compiler-independent libraries and tools; [see also](https://github.com/scalacenter/advisoryboard/pull/40)). We recommend that most current uses of Scala macros and reflection can be accommodated by some combination of these tools.
 For more about the project's progress, please see https://github.com/lampepfl/dotty/issues/5489
 
 ### How do we plan to address language experimentation?
