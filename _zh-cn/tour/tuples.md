@@ -79,7 +79,7 @@ planetDistanceFromSun.foreach{ tuple => {
 }
 ```
 
-或者，在 'for' 推导中。
+或者，在 'for' 表达式中。
 
 ```tut
 val numPairs = List((2, 5), (3, -7), (20, 56))
