@@ -24,7 +24,7 @@ package users
 
 class User
 ```
-一个惯例是将包命名为与包含 Scala 文件的目录名相同。 但是，Scala 并不知道文件布局。 `package users` 的 sbt 工程的目录结构可能如下所示：
+一个惯例是将包命名为与包含 Scala 文件的目录名相同。 但是，Scala 并未对文件布局作任何限制。 在一个 sbt 工程中，`package users` 的目录结构可能如下所示：
 ```
 - ExampleProject
   - build.sbt
@@ -38,7 +38,7 @@ class User
           UserPreferences.scala
     - test
 ```
-注意 `users` 目录是包含在在 `scala` 目录中的，以及该包中包含有多个 Scala 文件。 包中的每个 Scala 文件都可以具有相同的包声明。 声明包的另一种方式是使用大括号：
+注意 `users` 目录是包含在 `scala` 目录中的，该包中包含有多个 Scala 文件。 包中的每个 Scala 文件都可以具有相同的包声明。 声明包的另一种方式是使用大括号：
 ```
 package users {
   package administrators {
@@ -51,7 +51,7 @@ package users {
 ```
 如你所见，这允许包嵌套并提供了对范围和封装的更好控制。
 
-包名称应全部为小写，如果代码是在具有网站的组织内开发的，则应采用以下的约定格式：`<top-level-domain>.<domain-name>.<project-name>`。 例如，如果 Google 有一个名为 `SelfDrivingCar` 的项目，则包名称将如下所示：
+包名称应全部为小写，如果代码是在拥有独立网站的组织内开发的，则应采用以下的约定格式：`<top-level-domain>.<domain-name>.<project-name>`。 例如，如果 Google 有一个名为 `SelfDrivingCar` 的项目，则包名称将如下所示：
 ```
 package com.google.selfdrivingcar.camera
 
@@ -60,7 +60,7 @@ class Lens
 这可以对应于以下目录结构：`SelfDrivingCar/src/main/scala/com/google/selfdrivingcar/camera/Lens.scala`
 
 ## 导入
-`import` 子句用于访问其他包中的成员（类，特质，函数等）。 访问相同包的成员不需要 `import` 子句。 导入子句可以有选择性：
+`import` 语句用于导入其他包中的成员（类，特质，函数等）。 使用相同包的成员不需要 `import` 语句。 导入语句可以有选择性：
 ```
 import users._  // 导入包 users 中的所有成员
 import users.User  // 导入类 User
