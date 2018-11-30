@@ -14,7 +14,7 @@ next-page: packages-and-imports
 previous-page: default-parameter-values
 ---
 
-当调用方法时，你可以像下面这样使用参数名称来标记参数：
+当调用方法时，实际参数可以通过其对应的形式参数的名称来标记：
 
 ```tut
 def printName(first: String, last: String): Unit = {
