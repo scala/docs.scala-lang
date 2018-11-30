@@ -64,7 +64,7 @@ Let's jump in and see how to do each of the above with a few examples.
 
 #### Inspecting a Runtime Type (Including Generic Types at Runtime)
 
-As with other JVM languages, Scala's types are _erased_ at compile time. This
+As with other JVM languages, Scala's types are _erased_ at run time. This
 means that if you were to inspect the runtime type of some instance, that you
 might not have access to all type information that the Scala compiler has
 available at compile time.
