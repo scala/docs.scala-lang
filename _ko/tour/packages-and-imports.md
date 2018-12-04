@@ -10,6 +10,7 @@ num: 35
 language: ko
 
 previous-page: named-arguments
+next-page: package-objects
 ---
 
 # 패키지와 임포트

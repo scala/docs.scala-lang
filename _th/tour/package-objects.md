@@ -1,13 +1,13 @@
 ---
 layout: tour
 title: Package Objects
-language: zh-cn
+language: th
 
 discourse: true
 
 partof: scala-tour
 
-num: 35
+num: 36
 previous-page: packages-and-imports
 ---
 
