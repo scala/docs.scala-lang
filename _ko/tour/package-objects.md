@@ -1,18 +1,17 @@
 ---
 layout: tour
-title: Packages and Imports
-language: es
+title: Package Objects
+language: ko
 
 discourse: true
 
 partof: scala-tour
 
-num: 35
-previous-page: named-arguments
-next-page: package-objects
+num: 36
+previous-page: packages-and-imports
 ---
 
-# Packages and Imports
+# Package objects
 
 (this section of the tour has not been translated yet. pull request
 with translation welcome!)
