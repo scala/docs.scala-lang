@@ -60,8 +60,8 @@ val CustomerID(name3) = "-asdfasdfasdf"
 
 `unapply` 方法的返回值应当符合下面的某一条：
 
-* 如果只是用来判断真假，返回一个 `Boolean` 类型的值。例如 `case even()`。
-* 如果只是用来提取单个 T 类型的值，返回 `Option[T]`。
-* 如果你想要提取多个值，类型分别为 `T1,...,Tn`，把它们放在一个可选的元组中 `Option[(T1,...,Tn)]`。
+* 如果只是用来判断真假，可以返回一个 `Boolean` 类型的值。例如 `case even()`。
+* 如果只是用来提取单个 T 类型的值，可以返回 `Option[T]`。
+* 如果你想要提取多个值，类型分别为 `T1,...,Tn`，可以把它们放在一个可选的元组中 `Option[(T1,...,Tn)]`。
 
 有时，要提取的值的数量不是固定的，因此我们想根据输入来返回随机数量的值。这种情况下，你可以用 `unapplySeq` 方法来定义提取器，此方法返回 `Option[Seq[T]]`。常见的例子有，用 `case List(x, y, z) =>` 来解构一个列表 `List`，以及用一个正则表达式 `Regex` 来分解一个字符串 `String`，例如 `case r(name, remainingFields @ _*) =>`。
