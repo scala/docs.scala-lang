@@ -29,7 +29,7 @@ numberPattern.findFirstMatchIn("awesomepassword") match {
 
 上例中，`numberPattern`的类型是正则表达式类`Regex`，其作用是确保密码中包含一个数字。
 
-使用括号之后还可以同时匹配多组正则表达式。
+你还可以使用括号来同时匹配多组正则表达式。
 
 ```tut
 import scala.util.matching.Regex
