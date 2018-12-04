@@ -59,6 +59,6 @@ implicit def int2Integer(x: Int) =
 要关闭警告，执行以下任一操作：
 
 * 将 `scala.language.implicitConversions` 导入到隐式转换定义的上下文范围内
-* 将参数 `-language:implicitConversions` 传递给编译器
+* 启用编译器选项 `-language:implicitConversions` 
 
 在编译器应用隐式转换时不会发出警告。
