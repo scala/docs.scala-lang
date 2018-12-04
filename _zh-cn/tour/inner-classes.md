@@ -14,9 +14,9 @@ next-page: abstract-types
 previous-page: lower-type-bounds
 ---
 
-在Scala中，一个类可以作为另一个类的成员。 在一些类似 Java 的语言中，内部类是外部类的成员，而 Scala 正好相反，内部类是绑定到外部对象的。 假设我们希望编译器在编译时阻止我们搞乱节点 nodes 与图形 graph 的关系。 路径依赖的类型提供了一种解决方案。
+在Scala中，一个类可以作为另一个类的成员。 在一些类似 Java 的语言中，内部类是外部类的成员，而 Scala 正好相反，内部类是绑定到外部对象的。 假设我们希望编译器在编译时阻止我们混淆节点 nodes 与图形 graph 的关系，路径依赖类型提供了一种解决方案。
 
-为了说明差异，我们简单描述了图形 graph 数据类型的实现：
+为了说明差异，我们简单描述了一个图形数据类型的实现：
 
 ```tut
 class Graph {
@@ -36,7 +36,7 @@ class Graph {
   }
 }
 ```
-该程序将图形表示为节点列表 (`List[Node]`)。 每个节点都有一个用来存储与其相连的其他节点的列表 (`connectedNodes`)。 类 `class Node` 是一个 _路径依赖的类型_，因为它嵌套在类 `class Graph` 中。 因此，`connectedNodes` 中存储的所有节点必须使用同一个 `Graph` 的实例对象的 `newNode` 方法来创建。
+该程序将图形表示为节点列表 (`List[Node]`)。 每个节点都有一个用来存储与其相连的其他节点的列表 (`connectedNodes`)。 类 `Node` 是一个 _路径依赖类型_，因为它嵌套在类 `Graph` 中。 因此，`connectedNodes` 中存储的所有节点必须使用同一个 `Graph` 的实例对象的 `newNode` 方法来创建。
 
 ```tut
 val graph1: Graph = new Graph
