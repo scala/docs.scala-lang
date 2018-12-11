@@ -21,8 +21,7 @@ Scala 提供包对象作为在整个包中方便的共享使用的容器。
 
 每个包都允许有一个包对象。 在包对象中的任何定义都被认为是包自身的成员。
 
-看下例。 首先假设包中有一个类 `Fruit` 和三个 `Fruit` 对象
-`gardening.fruits`:
+看下例。 假设有一个类 `Fruit` 和三个 `Fruit` 对象在包 `gardening.fruits` 中；
 
 ```
 // in file gardening/fruits/Fruit.scala
@@ -48,7 +47,7 @@ package object fruits {
 }
 ```
 
-下例演示了如何使用，下例中的对象 `PrintPlanted` 用导入类 `Fruit` 相同的方式来导入 `planted` 和 `showFruit`，在导入包 `gardening.fruits` 时使用通配符：
+作为一个使用范例，下例中的对象 `PrintPlanted` 用导入类 `Fruit` 相同的方式来导入 `planted` 和 `showFruit`，在导入包 `gardening.fruits` 时使用通配符：
 
 ```
 // in file PrintPlanted.scala
