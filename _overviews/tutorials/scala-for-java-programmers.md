@@ -104,7 +104,6 @@ classes in the Scala class library--we can simply import the classes
 of the corresponding Java packages:
 
     import java.util.{Date, Locale}
-    import java.text.DateFormat
     import java.text.DateFormat._
 
     object FrenchDate {
