@@ -1,6 +1,6 @@
 ---
 layout: tour
-title: Abstract Types
+title: Abstract Type Members
 
 discourse: false
 

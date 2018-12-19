@@ -38,7 +38,7 @@ Scala is equipped with an expressive type system that enforces statically that a
 * [generic classes](generic-classes.html)
 * [variance annotations](variances.html)
 * [upper](upper-type-bounds.html) and [lower](lower-type-bounds.html) type bounds,
-* [inner classes](inner-classes.html) and [abstract types](abstract-types.html) as object members
+* [inner classes](inner-classes.html) and [abstract type members](abstract-type-members.html) as object members
 * [compound types](compound-types.html)
 * [explicitly typed self references](self-types.html)
 * [implicit parameters](implicit-parameters.html) and [conversions](implicit-conversions.html)

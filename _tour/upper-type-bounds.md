@@ -13,7 +13,7 @@ previous-page: variances
 redirect_from: "/tutorials/tour/upper-type-bounds.html"
 ---
 
-In Scala, [type parameters](generic-classes.html) and [abstract types](abstract-types.html) may be constrained by a type bound. Such type bounds limit the concrete values of the type variables and possibly reveal more information about the members of such types. An _upper type bound_ `T <: A` declares that type variable `T` refers to a subtype of type `A`.
+In Scala, [type parameters](generic-classes.html) and [abstract type members](abstract-type-members.html) may be constrained by a type bound. Such type bounds limit the concrete values of the type variables and possibly reveal more information about the members of such types. An _upper type bound_ `T <: A` declares that type variable `T` refers to a subtype of type `A`.
 Here is an example that demonstrates upper type bound for a type parameter of class `PetContainer`:
 
 ```tut
