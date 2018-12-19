@@ -12,7 +12,7 @@ next-page: lower-type-bounds
 previous-page: variances
 ---
 
-W Scali [parametry typów](generic-classes.html) oraz [typy abstrakcyjne](abstract-types.html) mogą być warunkowane przez ograniczenia typów. Tego rodzaju ograniczenia pomagają określić konkretne wartości zmiennych typu oraz odkryć więcej informacji na temat elementów tych typów. _Ograniczenie górne typu_ `T <: A` zakładają, że zmienna `T` jest podtypem typu `A`.
+W Scali [parametry typów](generic-classes.html) oraz [typy abstrakcyjne](abstract-type-members.html) mogą być warunkowane przez ograniczenia typów. Tego rodzaju ograniczenia pomagają określić konkretne wartości zmiennych typu oraz odkryć więcej informacji na temat elementów tych typów. _Ograniczenie górne typu_ `T <: A` zakładają, że zmienna `T` jest podtypem typu `A`.
 
 Poniższy przykład demonstruje zastosowanie ograniczeń górnych typu dla parametru typu klasy `Cage`:
 

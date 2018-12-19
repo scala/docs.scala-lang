@@ -9,7 +9,7 @@ partof: scala-tour
 num: 23
 language: pl
 next-page: self-types
-previous-page: abstract-types
+previous-page: abstract-type-members
 ---
 
 Czasami konieczne jest wyrażenie, że dany typ jest podtypem kilku innych typów. W Scali wyraża się to za pomocą *typów złożonych*, które są częścią wspólną typów obiektów.
@@ -50,4 +50,4 @@ def cloneAndReset(obj: Cloneable with Resetable): Cloneable = {
 Typy złożone mogą składać się z kilku typów obiektów i mogą mieć tylko jedno wyrafinowanie, które może być użyte do zawężenia sygnatury istniejących elementów obiektu.
 Przyjmują one postać: `A with B with C ... { wyrafinowanie }`
 
-Przykład użycia wyrafinowania typów jest pokazany na stronie o [typach abstrakcyjnych](abstract-types.html).
+Przykład użycia wyrafinowania typów jest pokazany na stronie o [typach abstrakcyjnych](abstract-type-members.html).

@@ -10,7 +10,7 @@ num: 3
 language: es
 
 next-page: classes
-previous-page: abstract-types
+previous-page: abstract-type-members
 ---
 
 Las anotaciones sirven para asociar meta-información con definiciones.

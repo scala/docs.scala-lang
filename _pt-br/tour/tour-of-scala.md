@@ -28,7 +28,7 @@ Scala é equipada com um expressivo sistema de tipos que reforça estaticamente 
 * [Classes genéricas](generic-classes.html)
 * [Anotações variáveis](variances.html)
 * [Limites de tipos superiores](upper-type-bounds.html) e [limites de tipos inferiores](lower-type-bounds.html),
-* [Classes internas](inner-classes.html) e [tipos abstratos](abstract-types.html) como membros de um objeto
+* [Classes internas](inner-classes.html) e [tipos abstratos](abstract-type-members.html) como membros de um objeto
 * [Tipos compostos](compound-types.html)
 * [Auto referências explicitamente tipadas](self-types.html)
 * [parâmetros implícitos](implicit-parameters.html) e [conversões implícitas](implicit-conversions.html)

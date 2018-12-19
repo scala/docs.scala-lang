@@ -8,7 +8,7 @@ discourse: true
 partof: scala-tour
 
 num: 22
-next-page: abstract-types
+next-page: abstract-type-members
 previous-page: lower-type-bounds
 
 ---

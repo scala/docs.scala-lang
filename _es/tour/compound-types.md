@@ -44,4 +44,4 @@ Los tipos compuestos pueden crearse a partir de varios tipos de objeto y pueden 
 
 La forma general es: `A with B with C ... { refinamiento }`
 
-Un ejemplo del uso de los refinamientos se muestra en la página sobre [tipos abstractos](abstract-types.html).
+Un ejemplo del uso de los refinamientos se muestra en la página sobre [tipos abstractos](abstract-type-members.html).

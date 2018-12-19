@@ -10,6 +10,6 @@ num: 20
 
 language: th
 
-next-page: abstract-types
+next-page: abstract-type-members
 previous-page: lower-type-bounds
 ---
