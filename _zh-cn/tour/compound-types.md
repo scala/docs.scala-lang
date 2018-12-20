@@ -11,7 +11,7 @@ num: 22
 language: zh-cn
 
 next-page: self-types
-previous-page: abstract-types
+previous-page: abstract-type-members
 ---
 
 有时需要表明一个对象的类型是其他几种类型的子类型。 在 Scala 中，这可以表示成 *复合类型*，即多个类型的交集。

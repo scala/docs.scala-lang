@@ -9,7 +9,7 @@ partof: scala-tour
 num: 1
 language: es
 
-next-page: abstract-types
+next-page: abstract-type-members
 ---
 
 Scala es un lenguaje de programación moderno multi-paradigma diseñado para expresar patrones de programación comunes de una forma concisa, elegante, y de tipado seguro. Integra fácilmente características de lenguajes orientados a objetos y funcionales.
@@ -27,7 +27,7 @@ Scala cuenta con un expresivo sistema de tipado que fuerza estáticamente las ab
 * [Clases genéricas](generic-classes.html)
 * [anotaciones variables](variances.html),
 * límites de tipado [superiores](upper-type-bounds.html) e [inferiores](lower-type-bounds.html),
-* [clases internas](inner-classes.html) y [tipos abstractos](abstract-types.html) como miembros de objetos,
+* [clases internas](inner-classes.html) y [tipos abstractos](abstract-type-members.html) como miembros de objetos,
 * [tipos compuestos](compound-types.html)
 * [auto-referencias explicitamente tipadas](self-types.html)
 * [implicit conversions](implicit-conversions.html)

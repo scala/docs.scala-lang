@@ -1,6 +1,6 @@
 ---
 layout: tour
-title: Abstract Types
+title: Abstract Type Members
 
 discourse: true
 
@@ -8,13 +8,16 @@ partof: scala-tour
 num: 23
 next-page: compound-types
 previous-page: inner-classes
-topics: abstract types
+topics: abstract type members
 prerequisite-knowledge: variance, upper-type-bound
 
 redirect_from: "/tutorials/tour/abstract-types.html"
+redirect_from: "/tour/abstract-types.html"
 ---
 
-Traits and abstract classes can have an abstract type member. This means that the concrete implementations define the actual type. Here's an example:
+Abstract types, such as traits and abstract classes, can in turn have abstract type members.
+This means that the concrete implementations define the actual types.
+Here's an example:
 
 ```tut
 trait Buffer {

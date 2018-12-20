@@ -29,7 +29,7 @@ abstract class Graph {
 }
 ```
 
-Um grafo consiste em uma lista de nós e arestas onde o nó e o tipo de aresta são declarados como abstratos. O uso de [tipos abstratos](abstract-types.html) permite que a implementação da trait `Graph` forneça suas próprias classes concretas para nós e arestas. Além disso, existe um método `addNode` para adicionar novos nós a um grafo. Os nós são conectados usando o método `connectWith`.
+Um grafo consiste em uma lista de nós e arestas onde o nó e o tipo de aresta são declarados como abstratos. O uso de [tipos abstratos](abstract-type-members.html) permite que a implementação da trait `Graph` forneça suas próprias classes concretas para nós e arestas. Além disso, existe um método `addNode` para adicionar novos nós a um grafo. Os nós são conectados usando o método `connectWith`.
 
 Uma possível implementação de `Graph` é ilustrada na classe a seguir:
 

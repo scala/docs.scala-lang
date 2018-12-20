@@ -8,7 +8,7 @@ partof: scala-tour
 
 num: 24
 next-page: self-types
-previous-page: abstract-types
+previous-page: abstract-type-members
 
 redirect_from: "/tutorials/tour/compound-types.html"
 ---
