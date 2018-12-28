@@ -119,8 +119,6 @@ Please see the [full list here](https://docs.google.com/spreadsheets/d/1GWJUo0U3
 
 [Class Shadowing](https://dotty.epfl.ch/docs/reference/dropped-features/class-shadowing.html)
 
-[Trait Parameters](https://dotty.epfl.ch/docs/reference/other-new-features/trait-parameters.html)
-
 
 
 ### What’s the plan for keeping the migration period as short as possible?
