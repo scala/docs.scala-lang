@@ -89,37 +89,35 @@ The Committee came up with the curated list, based on 3 categories, "core", "ess
 
 Please see the [full list here](https://docs.google.com/spreadsheets/d/1GWJUo0U3JbBtrfg5vqgb6H5S6wlU5HnTxebLcHwD1zw/edit?usp=sharing), naming the "core" features as follows:
 
-[Early Initializers](https://dotty.epfl.ch/docs/reference/dropped/early-initializers.html)
+[Early Initializers](https://dotty.epfl.ch/docs/reference/dropped-features/early-initializers.html)
 
-[Trait Parameters](https://dotty.epfl.ch/docs/reference/trait-parameters.html)
+[Trait Parameters](https://dotty.epfl.ch/docs/reference/other-new-features/trait-parameters.html)
 
-[Intersection Types](http://dotty.epfl.ch/docs/reference/intersection-types.html)
+[Intersection Types](http://dotty.epfl.ch/docs/reference/new-types/intersection-types.html)
 
-[Union Types](http://dotty.epfl.ch/docs/reference/union-types.html)
+[Union Types](http://dotty.epfl.ch/docs/reference/new-types/union-types.html)
 
-[Dependent Function Types](http://dotty.epfl.ch/docs/reference/dependent-function-types.html)
+[Dependent Function Types](http://dotty.epfl.ch/docs/reference/new-types/dependent-function-types.html)
 
-[Implicit Function Types](http://dotty.epfl.ch/docs/reference/implicit-function-types.html)
+[Implicit Function Types](http://dotty.epfl.ch/docs/reference/new-types/implicit-function-types.html)
 
-[Weak Conformance](https://dotty.epfl.ch/docs/reference/dropped/weak-conformance.html)
+[Weak Conformance](https://dotty.epfl.ch/docs/reference/dropped-features/weak-conformance.html)
 
-[Type Lambdas](https://dotty.epfl.ch/docs/reference/type-lambdas.html)
+[Type Lambdas](https://dotty.epfl.ch/docs/reference/new-types/type-lambdas.html)
 
-[Type Checking](https://dotty.epfl.ch/docs/reference/changed/type-checking.html)
+[Type Checking](https://dotty.epfl.ch/docs/reference/changed-features/type-checking.html)
 
-[Type Inference](https://dotty.epfl.ch/docs/reference/changed/type-inference.html)
+[Type Inference](https://dotty.epfl.ch/docs/reference/changed-features/type-inference.html)
 
-[Implicit Resolution](https://dotty.epfl.ch/docs/reference/changed/implicit-resolution.html)
+[Implicit Resolution](https://dotty.epfl.ch/docs/reference/changed-features/implicit-resolution.html)
 
-[Pattern matching](https://dotty.epfl.ch/docs/reference/changed/pattern-matching.html)
+[Pattern matching](https://dotty.epfl.ch/docs/reference/changed-features/pattern-matching.html)
 
-[Existential Types](https://dotty.epfl.ch/docs/reference/dropped/existential-types.html)
+[Existential Types](https://dotty.epfl.ch/docs/reference/dropped-features/existential-types.html)
 
-[Type Projection](https://dotty.epfl.ch/docs/reference/dropped/type-projection.html)
+[Type Projection](https://dotty.epfl.ch/docs/reference/dropped-features/type-projection.html)
 
-[Class Shadowing](https://dotty.epfl.ch/docs/reference/dropped/class-shadowing.html)
-
-[Trait Parameters](https://dotty.epfl.ch/docs/reference/trait-parameters.html)
+[Class Shadowing](https://dotty.epfl.ch/docs/reference/dropped-features/class-shadowing.html)
 
 
 
