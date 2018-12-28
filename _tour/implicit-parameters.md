@@ -46,15 +46,15 @@ object ImplicitTest {
     else m.add(xs.head, sum(xs.tail))
     
   def main(args: Array[String]): Unit = {
-    println(sum(List(1, 2, 3)))       // uses IntMonoid implicitly
-    println(sum(List("a", "b", "c"))) // uses StringMonoid implicitly
+    println(sum(List(1, 2, 3)))       // uses intMonoid implicitly
+    println(sum(List("a", "b", "c"))) // uses stringMonoid implicitly
   }
 }
 ```
 
 `Monoid` defines an operation called `add` here, that combines a pair of `A`s and returns another `A`, together with an operation called `unit` that is able to create some (specific) `A`.
 
-To show how implicit parameters work, we first define monoids `StringMonoid` and `IntMonoid` for strings and integers, respectively. The `implicit` keyword indicates that the corresponding object can be used implicitly.
+To show how implicit parameters work, we first define monoids `stringMonoid` and `intMonoid` for strings and integers, respectively. The `implicit` keyword indicates that the corresponding object can be used implicitly.
 
 The method `sum` takes a `List[A]` and returns an `A`, which takes the initial `A` from `unit`, and combines each next `A` in the list to that with the `add` method. Making the parameter `m` implicit here means we only have to provide the `xs` parameter when we call the method if Scala can find a an implict `Monoid[A]` to use for the implicit `m` parameter.
 
@@ -62,7 +62,7 @@ In our `main` method we call `sum` twice, and only provide the `xs` parameter. S
 
 > Scala will first look for implicit definitions and implicit parameters that can be accessed directly (without a prefix) at the point the method with the implicit parameter block is called.
 
-`intMonoid` is an implicit definition that can be accessed directly in `main`. It is also of the correct type, so it's passed to the sum method automatically.
+`intMonoid` is an implicit definition that can be accessed directly in `main`. It is also of the correct type, so it's passed to the `sum` method automatically.
 
 The second call to `sum` passes a `List[String]`, which means that `A` is `String`. Implicit lookup will go the same way as with `Int`, but will this time find `stringMonoid`, and passes that automatically as `m`.
 
