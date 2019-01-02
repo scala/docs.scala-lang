@@ -138,7 +138,7 @@ Fortunately, the compiler stops us long before we could get this far.
 
 ### Other Examples
 
-Another example that can help one understand variance is `trait Function1[-T, +R]` from the Scala standard library. `Function1` represents a function with one argument, where the first type parameter `T` represents the argument type, and the second type parameter `R` represents the return type. A `Function1` is contravariant over its argument type, and covariant over its return type. For this example we'll use the literal notation `A => B` to represent a `Function1[A, B]`.
+Another example that can help one understand variance is `trait Function1[-T, +R]` from the Scala standard library. `Function1` represents a function with one parameter, where the first type parameter `T` represents the parameter type, and the second type parameter `R` represents the return type. A `Function1` is contravariant over its argument type, and covariant over its return type. For this example we'll use the literal notation `A => B` to represent a `Function1[A, B]`.
 
 Assume the similar `Cat`, `Dog`, `Animal` inheritance tree used earlier, plus the following:
 
@@ -147,7 +147,7 @@ abstract class SmallAnimal extends Animal
 case class Mouse(name: String) extends SmallAnimal
 ```
 
-Suppose we're working with functions that accept types of animals, and return the types of food they eat. If we would like a `Cat => SmallAnimal` (because cats eat small animals), but are given a `Animal => Mouse` instead, our program will still work. Intuitively an `Animal => Mouse` will still accept a `Cat` as an argument, because a `Cat` is an `Animal`, and it returns a `Mouse`, which is also a `SmallAnimal`. Since we can safely and invisibly substitute the former for the latter, we can say `Animal => Mouse` is a subtype of `Cat => SmallAnimal`.
+Suppose we're working with functions that accept types of animals, and return the types of food they eat. If we would like a `Cat => SmallAnimal` (because cats eat small animals), but are given a `Animal => Mouse` instead, our program will still work. Intuitively an `Animal => Mouse` will still accept a `Cat` as an argument, because a `Cat` is an `Animal`, and it returns a `Mouse`, which is also a `SmallAnimal`. Since we can safely and invisibly substitute the former by the latter, we can say `Animal => Mouse` is a subtype of `Cat => SmallAnimal`.
 
 ### Comparison With Other Languages
 
