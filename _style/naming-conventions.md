@@ -17,6 +17,16 @@ each word is capitalized, except possibly the first word:
     UpperCamelCase
     lowerCamelCase
 
+Acronyms should be treated as normal words:
+
+    Xhtml
+    maxId
+
+instead of:
+
+    XHTML
+    maxID
+
 Underscores in names (`_`) are not actually forbidden by the
 compiler, but are strongly discouraged as they have
 special meaning within the Scala syntax. (But see below
