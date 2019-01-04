@@ -244,7 +244,7 @@ It aims to ease integration between m2eclipse and Scala IDE for Eclipse.
 Under "Help -> Install New Software", enter "http://alchim31.free.fr/m2e-scala/update-site" and hit enter.
 You should see "Maven Integration for Eclipse -> Maven Integration for Scala IDE".
 
-Afer it installs, go to "New -> Project -> Other" and select "Maven Project".
+After it installs, go to "New -> Project -> Other" and select "Maven Project".
 Search fo "scala-archetype" choose the one with the group "net.alchim31.maven".
 The wizard will more or less guide you through what was done with `mvn archetype:generate` above, and you should end up with a new Scala project!
 
