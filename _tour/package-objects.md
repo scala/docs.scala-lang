@@ -42,7 +42,7 @@ Here's how this is done:
 
 ```
 // in file gardening/fruits/package.scala
-package gardening.fruits
+package gardening
 package object fruits {
   val planted = List(Apple, Plum, Banana)
   def showFruit(fruit: Fruit): Unit = {
