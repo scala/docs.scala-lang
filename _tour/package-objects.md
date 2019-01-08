@@ -37,7 +37,7 @@ object Plum extends Fruit("Plum", "blue")
 object Banana extends Fruit("Banana", "yellow")
 ```
 
-Now assume you want to place a variable `planted` and a method `showFruit` directly into package `gardening`.
+Now assume you want to place a variable `planted` and a method `showFruit` directly into package `gardening.fruits`.
 Here's how this is done:
 
 ```
