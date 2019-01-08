@@ -28,7 +28,7 @@ For example:
 
 
 * **Additions** `incl` and `concat` (or `+` and `++`, respectively), which add one or more elements to a set, yielding a new set.
-* **Removals** `excl` and `removeAll` (or `-` and `--`, respectively), which remove one or more elements from a set, yielding a new set.
+* **Removals** `excl` and `removedAll` (or `-` and `--`, respectively), which remove one or more elements from a set, yielding a new set.
 * **Set operations** for union, intersection, and set difference. Each of these operations exists in two forms: alphabetic and symbolic. The alphabetic versions are `intersect`, `union`, and `diff`, whereas the symbolic versions are `&`, `|`, and `&~`. In fact, the `++` that `Set` inherits from `Iterable` can be seen as yet another alias of `union` or `|`, except that `++` takes an `IterableOnce` argument whereas `union` and `|` take sets.
 
 ### Operations in Class Set ###
@@ -58,7 +58,7 @@ Immutable sets offer methods to add or remove elements by returning new `Set`s, 
 |  `xs incl x`<br>or `xs + x`                 |The set containing all elements of `xs` as well as `x`.|
 |  **Removals:**               |						     |
 |  `xs excl x`<br>or `xs - x`  	            |The set containing all elements of `xs` except `x`.|
-|  `xs removeAll ys`<br>or `xs -- ys`  	            |The set containing all elements of `xs` except the elements of `ys`.|
+|  `xs removedAll ys`<br>or `xs -- ys`  	            |The set containing all elements of `xs` except the elements of `ys`.|
 
 Mutable sets offer in addition methods to add, remove, or update elements, which are summarized in below.
 

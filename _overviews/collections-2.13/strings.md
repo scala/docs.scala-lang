@@ -22,7 +22,7 @@ Like arrays, strings are not directly sequences, but they can be converted to th
     res7: String = HELLO
     scala> str drop 3
     res8: String = lo
-    scala> str slice (1, 4)
+    scala> str.slice(1, 4)
     res9: String = ell
     scala> val s: Seq[Char] = str
     s: Seq[Char] = hello

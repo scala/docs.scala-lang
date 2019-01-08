@@ -47,7 +47,7 @@ The difference between the two implicit conversions on arrays is shown in the ne
     scala> ops.reverse
     res3: Array[Int] = Array(3, 2, 1)
 
-You see that calling reverse on `seq`, which is an `ArraySeq`, will give again a `ArraySeq`. That's logical, because wrapped arrays are `Seqs`, and calling reverse on any `Seq` will give again a `Seq`. On the other hand, calling reverse on the ops value of class `ArrayOps` will give an `Array`, not a `Seq`.
+You see that calling reverse on `seq`, which is an `ArraySeq`, will give again a `ArraySeq`. That's logical, because arrayseqs are `Seqs`, and calling reverse on any `Seq` will give again a `Seq`. On the other hand, calling reverse on the ops value of class `ArrayOps` will give an `Array`, not a `Seq`.
 
 The `ArrayOps` example above was quite artificial, intended only to show the difference to `ArraySeq`. Normally, you'd never define a value of class `ArrayOps`. You'd just call a `Seq` method on an array:
 
