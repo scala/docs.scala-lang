@@ -41,7 +41,7 @@ language: ru
     </tr>
     <tr>
       <td><span class="label success">Хорошо</span><br> <code class="highlighter-rouge">def f(x: Int) = { x*x }</code><br /> <span class="label important">Плохо</span><br> <code class="highlighter-rouge">def f(x: Int)   { x*x }</code></td>
-      <td>объявление функции <br /> незаметная ошибка: без = используется процедурный стиль объявления в котором возвращаемый тип обязательно "Unit", это может ввести в заблуждение, поэтому избегайте такого стиля объявления функции</td>
+      <td>объявление функции <br /> незаметная ошибка: без = используется процедурный стиль объявления, в котором возвращаемый тип обязательно "Unit". Это может ввести в заблуждение, избегайте такой стиль</td>
     </tr>
     <tr>
       <td><span class="label success">Хорошо</span><br> <code class="highlighter-rouge">def f(x: Any) = println(x)</code><br /> <span class="label important">Плохо</span><br> <code class="highlighter-rouge">def f(x) = println(x)</code></td>
@@ -52,8 +52,8 @@ language: ru
       <td>псевдоним для типа</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">def f(x: R)</code> vs.<br /> <code class="highlighter-rouge">def f(x: =&gt; R)</code></td>
-      <td>вызов по значению <br /> вызов по имени (вычисление аргумента отложено до его непосредственного вызова)</td>
+      <td><code class="highlighter-rouge">def f(x: R)</code> vs.<br /><br /> <code class="highlighter-rouge">def f(x: =&gt; R)</code></td>
+      <td>вызов по значению <br /> вызов по имени (вычисление аргумента отложено)</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">(x:R) =&gt; x*x</code></td>
@@ -77,7 +77,7 @@ language: ru
     </tr>
     <tr>
       <td><code class="highlighter-rouge">(1 to 5) filter {_%2 == 0} map {_*2}</code></td>
-      <td>анонимные функции: конвеерный стиль. в однострочных выражениях можно использовать простые скобки.</td>
+      <td>анонимные функции: конвейерный стиль. В однострочных выражениях можно использовать простые скобки.</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">def compose(g:R=&gt;R, h:R=&gt;R) = (x:R) =&gt; g(h(x))</code> <br /> <code class="highlighter-rouge">val f = compose({_*2}, {_-1})</code></td>
@@ -93,11 +93,11 @@ language: ru
     </tr>
     <tr>
       <td><code class="highlighter-rouge">def zscore(mean:R, sd:R)(x:R) = (x-mean)/sd</code></td>
-      <td>каррирование, синтаксический сахар. но если :</td>
+      <td>каррирование, синтаксический сахар. Но если :</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">val normer = zscore(7, 0.4) _</code></td>
-      <td>следом использовать подчеркивание то мы получим частично определенную функцию.</td>
+      <td>следом использовать подчеркивание, то мы получим частично определенную функцию.</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">def mapmake[T](g:T=&gt;T)(seq: List[T]) = seq.map(g)</code></td>
@@ -117,7 +117,7 @@ language: ru
     </tr>
     <tr>
       <td><code class="highlighter-rouge">import scala.collection._</code></td>
-      <td>импорд всех членов пакета.</td>
+      <td>импорт всех членов пакета.</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">import scala.collection.Vector</code> <br /> <code class="highlighter-rouge">import scala.collection.{Vector, Sequence}</code></td>
@@ -149,7 +149,7 @@ language: ru
     </tr>
     <tr>
       <td><span class="label important">Плохо</span><br><code class="highlighter-rouge">var x,y,z = (1,2,3)</code></td>
-      <td>незаметная ошибка: каждая переменная будет приравнена к упорядоченому набору.</td>
+      <td>незаметная ошибка: каждая переменная будет приравнена к упорядоченному набору.</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">var xs = List(1,2,3)</code></td>
@@ -201,7 +201,7 @@ breakable {
       break
   }
 }</code></pre></td>
-      <td>выход из цикла используя break. (<a href="http://www.slideshare.net/Odersky/fosdem-2009-1013261/21">примеры</a>)</td>
+      <td>выход из цикла с использованием break. (<a href="http://www.slideshare.net/Odersky/fosdem-2009-1013261/21">примеры</a>)</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">for (x &lt;- xs if x%2 == 0) yield x*10</code>
@@ -219,7 +219,7 @@ breakable {
       <td><code class="highlighter-rouge">for (x &lt;- xs; y &lt;- ys) yield x*y</code>
       <br><em><strong>тоже что и</strong></em><br>
       <code class="highlighter-rouge">xs flatMap {x =&gt; ys map {y =&gt; x*y}}</code></td>
-      <td>for comprehension: объединение нескольких выражений через ; </td>
+      <td>for представление: объединение нескольких выражений через ; </td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>for (x <- xs; y <- ys) {
@@ -254,7 +254,7 @@ Some(3) match {
   case Some(v42) => println("42")
   case _ => println("Not 42")
 }</code></pre></td>
-      <td>“v42” интерпритированно как имя для <b>новой</b> константы любого типа, поэтому “42” выведено.</td>
+      <td>“v42” интерпретировано как имя для <b>новой</b> константы любого типа, поэтому “42” выведено.</td>
     </tr>
     <tr>
       <td><span class="label success">Хорошо</span><br>
@@ -263,7 +263,7 @@ Some(3) match {
   case Some(`v42`) => println("42")
   case _ => println("Not 42")
 }</code></pre></td>
-      <td>”`v42`” с обратными ковычками интерпритируется как указание на значение существующей константы <code class="highlighter-rouge">v42</code>, отображается “Not 42”.</td>
+      <td>”`v42`” с обратными кавычками интерпретируется как указание на значение существующей константы <code class="highlighter-rouge">v42</code>, отображается “Not 42”.</td>
     </tr>
     <tr>
       <td><span class="label success">Хорошо</span><br>
@@ -272,7 +272,7 @@ Some(3) match {
   case Some(UppercaseVal) => println("42")
   case _ => println("Not 42")
 }</code></pre></td>
-      <td><code class="highlighter-rouge">UppercaseVal</code> однако константы, имена которых начинаются заглавной буквы, в проверке по шаблону проверяются на совпадение значения, поэтому при проверке <code class="highlighter-rouge">UppercaseVal</code> на совпадение с <code class="highlighter-rouge">3</code>, выводится “Not 42”.</td>
+      <td><code class="highlighter-rouge">UppercaseVal</code> однако константы, имена которых начинаются с заглавной буквы, в проверке по шаблону проверяются на совпадение значения. Поэтому при проверке <code class="highlighter-rouge">UppercaseVal</code> на совпадение с <code class="highlighter-rouge">3</code>, выводится “Not 42”.</td>
     </tr>
     <tr>
       <td><span id="object_orientation" class="h2">Работа с объектами</span></td>
@@ -302,7 +302,7 @@ Some(3) match {
     </tr>
     <tr>
       <td><code class="highlighter-rouge">abstract class D { ... }</code></td>
-      <td>задание абстрактного класса. (не создаваемого, только наследуемого)</td>
+      <td>задание абстрактного класса (не создаваемого, только наследуемого)</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">class C extends D { ... }</code></td>
@@ -314,7 +314,7 @@ Some(3) match {
     </tr>
     <tr>
       <td><code class="highlighter-rouge">object O extends D { ... }</code></td>
-      <td>задание обьекта существующего в единственном экземпляре (сингэлтон) на основе другого класса.</td>
+      <td>задание объекта существующего в единственном экземпляре (сингэлтон) на основе другого класса.</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">trait T { ... }</code><br /><code class="highlighter-rouge">class C extends T { ... }</code><br /><code class="highlighter-rouge">class C extends D with T { ... }</code></td>
@@ -335,7 +335,7 @@ Some(3) match {
     </tr>
     <tr>
       <td><span class="label important">Плохо</span><br> <code class="highlighter-rouge">new List[Int]</code><br /> <span class="label success">Хорошо</span><br> <code class="highlighter-rouge">List(1,2,3)</code></td>
-      <td>ошибка: List - это абстрактный класс<br />вместо этого используйте обьект List (вызываемый без new) который создает новые классы типа List</td>
+      <td>ошибка: List - это абстрактный класс<br />вместо этого используйте объект List (вызываемый без new) который создает новые классы типа List</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">classOf[String]</code></td>
