@@ -60,7 +60,7 @@ println(x) // 2
 Значения константны и не могут быть переназначены.
 
 ```tut:fail
-x = 3 // This does not compile.
+x = 3 // Не компилируется.
 ```
 
 Типы значений могут быть выведены, но вы также можете явно указать тип, как показано ниже:
@@ -77,7 +77,7 @@ val x: Int = 1 + 1
 
 ```tut
 var x = 1 + 1
-x = 3 // This compiles because "x" is declared with the "var" keyword.
+x = 3 // Компилируется потому что "x" объявлен с ключевым словом "var".
 println(x * x) // 9
 ```
 
@@ -225,13 +225,13 @@ if (point == anotherPoint) {
   println(point + " and " + anotherPoint + " are the same.")
 } else {
   println(point + " and " + anotherPoint + " are different.")
-} // Point(1,2) and Point(1,2) are the same.
+} // Point(1,2) и Point(1,2) одни и теже.
 
 if (point == yetAnotherPoint) {
   println(point + " and " + yetAnotherPoint + " are the same.")
 } else {
   println(point + " and " + yetAnotherPoint + " are different.")
-} // Point(1,2) and Point(2,2) are different.
+} // Point(1,2) и Point(2,2) разные.
 ```
 
 Есть еще куча вещей которые мы бы хотели показать про классы образцы, мы уверены, что вы влюбитесь в них! Обязательно рассмотрим их подробнее немного [позже](casee-classes.html).

@@ -31,7 +31,7 @@ case class Message(sender: String, recipient: String, body: String)
 val message1 = Message("guillaume@quebec.ca", "jorge@catalonia.es", "Ça va ?")
 
 println(message1.sender)  // prints guillaume@quebec.ca
-message1.sender = "travis@washington.us"  // this line does not compile
+message1.sender = "travis@washington.us"  // эта строка не компилируется
 ```
 Вы не можете переназначить `message1.sender`, потому что это `val` (т.е. константа). Возможно использовать `var`s в классах образцах, но это не рекомендуется.
 
