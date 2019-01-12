@@ -1,6 +1,6 @@
 ---
 layout: tour
-title: Составные типы
+title: Составные Типы
 
 discourse: true
 
