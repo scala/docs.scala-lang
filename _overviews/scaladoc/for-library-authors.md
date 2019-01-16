@@ -181,8 +181,28 @@ Some of the standard markup available:
   subheadings. E.g. `=Heading=`, `==Sub-Heading==`, etc.
 - **List blocks** are a sequence of list items with the same style and level,
   with no interruptions from other block styles. Unordered lists can be bulleted
-  using `-`, while numbered lists can be denoted using `1.`, `i.`, `I.`, `a.` for
-  the various numbering styles.
+  using `-`; numbered lists can be denoted using `1.`, `i.`, `I.`, or `a.` for the
+  various numbering styles. In both cases, you must have extra space in front, and
+  more space makes a sub-level. 
+  
+The markup for list blocks looks like:
+
+    /** Here is an unordered list:
+      * 
+      *   - First item
+      *   - Second item
+      *     - Sub-item to the second
+      *     - Another sub-item
+      *   - Third item
+      *
+      * Here is an ordered list:
+      *
+      *   1. First numbered item
+      *   1. Second numbered item
+      *     i. Sub-item to the second
+      *     i. Another sub-item
+      *   1. Third item
+      */
 
 ## General Notes for Writing Scaladoc Comments ##
 
