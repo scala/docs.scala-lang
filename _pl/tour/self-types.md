@@ -29,7 +29,7 @@ abstract class Graph {
 }
 ```
 
-Grafy składają się z listy węzłów oraz krawędzi, gdzie zarówno typ węzła jak i krawędzi jest abstrakcyjny. Użycie [typów abstrakcyjnych](abstract-types.html) pozwala implementacjom cechy `Graph` na to, by określały swoje konkretne klasy dla węzłów i krawędzi. Ponadto graf zawiera metodę `addNode`, której celem jest dodanie nowych węzłów do grafu. Węzły są połączone z użyciem metody `connectWith`.
+Grafy składają się z listy węzłów oraz krawędzi, gdzie zarówno typ węzła jak i krawędzi jest abstrakcyjny. Użycie [typów abstrakcyjnych](abstract-type-members.html) pozwala implementacjom cechy `Graph` na to, by określały swoje konkretne klasy dla węzłów i krawędzi. Ponadto graf zawiera metodę `addNode`, której celem jest dodanie nowych węzłów do grafu. Węzły są połączone z użyciem metody `connectWith`.
 
 Przykład implementacji klasy `Graph`:
 

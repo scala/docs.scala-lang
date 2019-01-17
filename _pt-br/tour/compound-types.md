@@ -8,7 +8,7 @@ partof: scala-tour
 
 num: 23
 next-page: self-types
-previous-page: abstract-types
+previous-page: abstract-type-members
 language: pt-br
 ---
 
@@ -51,4 +51,4 @@ Os tipos de compostos podem consistir em vários tipos de objeto e eles podem te
 
 A forma geral é: `A with B with C ... { refinamento }`
 
-Um exemplo para o uso de refinamentos é dado na página sobre [tipos abstratos](abstract-types.html). 
+Um exemplo para o uso de refinamentos é dado na página sobre [tipos abstratos](abstract-type-members.html). 

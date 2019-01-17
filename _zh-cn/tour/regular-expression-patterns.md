@@ -16,6 +16,7 @@ previous-page: singleton-objects
 
 正则表达式是用来找出数据中的指定模式（或缺少该模式）的字符串。`.r`方法可使任意字符串变成一个正则表达式。
 
+
 ```tut
 import scala.util.matching.Regex
 
@@ -50,6 +51,7 @@ for (patternMatch <- keyValPattern.findAllMatchIn(input))
   println(s"key: ${patternMatch.group(1)} value: ${patternMatch.group(2)}")
 ```
 上例解析出了一个字符串中的多个键和值，其中的每个匹配又有一组子匹配，结果如下：
+
 ```
 key: background-color value: #A03300
 key: background-image value: url(img

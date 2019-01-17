@@ -835,7 +835,7 @@ the client in which future the computation failed.
 Fatal exceptions (as determined by `NonFatal`) are rethrown in the thread executing
 the failed asynchronous computation. This informs the code managing the executing
 threads of the problem and allows it to fail fast, if necessary. See
-[`NonFatal`](http://www.scala-lang.org/api/current/index.html#scala.util.control.NonFatal$)
+[`NonFatal`](https://www.scala-lang.org/api/current/scala/util/control/NonFatal$.html)
 for a more precise description of the semantics.
 
 ## Promises

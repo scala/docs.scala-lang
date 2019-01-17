@@ -10,7 +10,7 @@ num: 23
 language: ko
 
 next-page: self-types
-previous-page: abstract-types
+previous-page: abstract-type-members
 ---
 
 때론 객체의 타입을 여러 다른 타입의 서브타입으로 표현해야 할 때가 있다. 스칼라에선 *합성 타입(Compound Types)*으로 표현될 수 있는데, 이는 객체 타입들의 교차점을 의미한다.
@@ -44,6 +44,6 @@ previous-page: abstract-types
 
 합성 타입은 여러 객체 타입으로 구성될 수 있고, 단일 리파인먼트를 가짐으로써 객체 멤버의 시그니처의 범위를 좁힐 수도 있다. 일반적인 형태는 `A with B with C ... { 리파인먼트 }`이다.
 
-리파인먼트 사용 예제는 [추상 타입](abstract-types.html) 에 있다.  
+리파인먼트 사용 예제는 [추상 타입](abstract-type-members.html) 에 있다.  
 
 윤창석, 이한욱 옮김, 고광현 수정

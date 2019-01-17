@@ -13,7 +13,7 @@ languages: [ja]
 permalink: /overviews/reflection/:title.html
 ---
 
-As with other JVM languages, Scala’s types are erased at compile time. This
+As with other JVM languages, Scala’s types are erased at run time. This
 means that if you were to inspect the runtime type of some instance, you
 might not have access to all type information that the Scala compiler has
 available at compile time.

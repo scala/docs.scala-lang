@@ -104,7 +104,6 @@ classes in the Scala class library--we can simply import the classes
 of the corresponding Java packages:
 
     import java.util.{Date, Locale}
-    import java.text.DateFormat
     import java.text.DateFormat._
 
     object FrenchDate {
@@ -123,7 +122,7 @@ package or class, one uses the underscore character (`_`) instead
 of the asterisk (`*`). That's because the asterisk is a valid
 Scala identifier (e.g. method name), as we will see later.
 
-The import statement on the third line therefore imports all members
+The import statement on the second line therefore imports all members
 of the `DateFormat` class. This makes the static method
 `getDateInstance` and the static field `LONG` directly
 visible.
@@ -554,9 +553,12 @@ Apart from inheriting code from a super-class, a Scala class can also
 import code from one or several *traits*.
 
 Maybe the easiest way for a Java programmer to understand what traits
-are is to view them as interfaces which can also contain code. In
+are is to view them as interfaces which can also contain code.  In
 Scala, when a class inherits from a trait, it implements that trait's
 interface, and inherits all the code contained in the trait.
+
+(Note that since Java 8, Java interfaces can also contain code, either
+using the `default` keyword, or as static methods.)
 
 To see the usefulness of traits, let's look at a classical example:
 ordered objects. It is often useful to be able to compare objects of a

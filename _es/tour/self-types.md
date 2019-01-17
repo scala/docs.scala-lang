@@ -28,7 +28,7 @@ Aquí hay una definición que sirve para describir un grafo:
       def agregarNodo: Nodo
     }
 
-Los grafos consisten de una lista de nodos y vértices (o aristas en alguna bibliografía) donde tanto el tipo nodo, como el vértice fueron declarados abstractos. El uso de [tipos abstractos](abstract-types.html) permite las implementaciones del trait `Grafo` proveer sus propias clases concretas para nodos y vértices. Además, existe un método `agregarNodo` para agregar nuevos nodos al grafo. Los nodos se conectan entre sí utilizando el método `conectarCon`.
+Los grafos consisten de una lista de nodos y vértices (o aristas en alguna bibliografía) donde tanto el tipo nodo, como el vértice fueron declarados abstractos. El uso de [tipos abstractos](abstract-type-members.html) permite las implementaciones del trait `Grafo` proveer sus propias clases concretas para nodos y vértices. Además, existe un método `agregarNodo` para agregar nuevos nodos al grafo. Los nodos se conectan entre sí utilizando el método `conectarCon`.
 
 Una posible implementación de la clase `Grafo`es dada en el siguiente programa:
 

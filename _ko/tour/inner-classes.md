@@ -9,7 +9,7 @@ partof: scala-tour
 num: 21
 language: ko
 
-next-page: abstract-types
+next-page: abstract-type-members
 previous-page: lower-type-bounds
 ---
 

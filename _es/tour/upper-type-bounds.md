@@ -13,7 +13,7 @@ next-page: lower-type-bounds
 previous-page: traits
 ---
 
-En Scala, los [parámetros de tipo](generic-classes.html) y los [tipos abstractos](abstract-types.html) pueden ser restringidos por un límite de tipado. Tales límites de tipado limitan los valores concretos de las variables de tipo y posiblemente revelan más información acerca de los miembros de tales tipos. Un _límite de tipado superior_ `T <: A` declara que la variable de tipo `T` es un subtipo del tipo `A`.
+En Scala, los [parámetros de tipo](generic-classes.html) y los [tipos abstractos](abstract-type-members.html) pueden ser restringidos por un límite de tipado. Tales límites de tipado limitan los valores concretos de las variables de tipo y posiblemente revelan más información acerca de los miembros de tales tipos. Un _límite de tipado superior_ `T <: A` declara que la variable de tipo `T` es un subtipo del tipo `A`.
 Aquí se muestra un ejemplo el cual se basa en un límite de tipado superior para la implementación del método polimórfico `findSimilar`:
 
     trait Similar {

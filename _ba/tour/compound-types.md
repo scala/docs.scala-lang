@@ -9,7 +9,7 @@ partof: scala-tour
 
 num: 24
 next-page: self-types
-previous-page: abstract-types
+previous-page: abstract-type-members
 
 ---
 
@@ -56,4 +56,4 @@ def cloneAndReset(obj: Cloneable with Resetable): Cloneable = {
 Složeni tipovi mogu se sastojati od više tipova i mogu imati jednu rafinaciju koja može biti korištena da suzi potpis postojećih članova objekta.
 General forma je: `A with B with C ... { refinement }`
 
-Primjer za upotrebu rafinacije dat je na stranici o [apstraktnim tipovima](abstract-types.html). 
+Primjer za upotrebu rafinacije dat je na stranici o [apstraktnim tipovima](abstract-type-members.html). 

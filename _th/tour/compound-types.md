@@ -11,5 +11,5 @@ num: 22
 language: th
 
 next-page: self-types
-previous-page: abstract-types
+previous-page: abstract-type-members
 ---

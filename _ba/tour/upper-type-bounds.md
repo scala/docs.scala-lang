@@ -13,7 +13,7 @@ previous-page: variances
 
 ---
 
-U Scali, [tipski parametri](generic-classes.html) i [apstraktni tipovi](abstract-types.html) mogu biti ograničeni granicom tipa.
+U Scali, [tipski parametri](generic-classes.html) i [apstraktni tipovi](abstract-type-members.html) mogu biti ograničeni granicom tipa.
 Takve granice tipa ograničavaju konkretne vrijednosti tipskih varijabli i ponekad otkrivaju još informacija o članovima takvih tipova.
   _Gornja granica tipa_ `T <: A` kaže da se tipska varijabla `T` odnosi na podtip tipa `A`.
 Slijedi primjer koji demonstrira gornju granicu tipa za tipski parametar klase `PetContainer`:

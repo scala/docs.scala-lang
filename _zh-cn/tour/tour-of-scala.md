@@ -36,7 +36,7 @@ Scala配备了一个拥有强大表达能力的类型系统，它可以静态地
 * [泛型类](generic-classes.html)
 * [型变注解](variances.html)
 * [上](upper-type-bounds.html)、[下](lower-type-bounds.html) 类型边界
-* 作为对象成员的[内部类](inner-classes.html)和[抽象类型](abstract-types.html)
+* 作为对象成员的[内部类](inner-classes.html)和[抽象类型](abstract-type-members.html)
 * [复合类型](compound-types.html)
 * [显式类型的自我引用](self-types.html)
 * [隐式参数](implicit-parameters.html)和[隐式转化](implicit-conversions.html)
