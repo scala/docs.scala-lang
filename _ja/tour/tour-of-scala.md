@@ -39,7 +39,7 @@ Scalaの[ケースクラス](case-classes.html\\) とその組み込みは多く
 [シングルトンオブジェクト](singleton-objects.html\) はクラスのメンバーではない関数をグループ化する便利な方法を提供します。
 
 さらに、Scalaのパターンマッチングの概念は当然のことながら、[エクストラクタオブジェクト](extractor-objects.html\) による一般的な拡張として、[シーケンスパターンを正しく無視して](regular-expression-patterns.html\) 、[XMLデータの処理](https://github.com/scala/scala-xml/wiki/XML-Processing\\) をすることまで拡張されます。
-
+この際、For内包表記はクエリの定式化に役立ちます。これらの機能によりWebサービスのようなアプリケーション開発の際、Scalaを理想的なものとなります。
 
 ## Scalaは静的型付け ##
 Scalaは抽象化が安全で首尾一貫した方法で使われることを静的に強制する表現型システムを備えています。
