@@ -17,6 +17,7 @@
         - title: Trait Iterable
           url: "collections/trait-iterable.html"
         - title: The sequence traits Seq, IndexedSeq, and LinearSeq
+          url: "collections/seqs.html"
         - title: Concrete Immutable Collection Classes
           url: "collections/concrete-immutable-collection-classes.html"
         - title: Concrete Mutable Collection Classes
