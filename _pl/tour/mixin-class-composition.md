@@ -1,20 +1,43 @@
 ---
 layout: tour
-title: Kompozycja domieszek
+title: Kompozycja klas przez domieszki
 
 discourse: false
 
 partof: scala-tour
 
-num: 6
+num: 7
 language: pl
 next-page: higher-order-functions
 previous-page: tuples
 ---
 
-W przeciwieństwie do języków, które wspierają jedynie pojedyncze dziedziczenie, Scala posiada bardziej uogólniony mechanizm ponownego wykorzystania klas. Scala umożliwia wykorzystanie _nowych elementów klasy_ (różnicy w stosunku do klasy bazowej) w definicji nowej klasy. Wyraża się to przy pomocy _kompozycji domieszek_.
+Domieszka (ang. mixin) to cecha (trait), która używana jest do komponowania klas.
 
-Rozważmy poniższe uogólnienie dla iteratorów:
+{% scalafiddle %}
+```tut
+abstract class A {
+  val message: String
+}
+class B extends A {
+  val message = "Jestem instancją klasy B"
+}
+trait C extends A {
+  def loudMessage = message.toUpperCase()
+}
+class D extends B with C
+
+val d = new D
+println(d.message)  // wyświetli "Jestem instancją klasy B"
+println(d.loudMessage)  // wyświetli "JESTEM INSTANCJĄ KLASY B"
+```
+{% endscalafiddle %}
+
+Klasa `D` posiada nadklasę `B` oraz domieszkę `C`.
+Klasy mogą mieć tylko jedną nadklasę, ale wiele domieszek (używając kolejno słów kluczowych `extends`, a następnie `with`).
+Domieszki i nadklasy mogą posiadać tą samą nadklasę (typ bazowy).
+
+Spójrzmy teraz na trochę ciekawszy przykład zawierający klasę abstrakcyjną.
 
 ```tut
 abstract class AbsIterator {
@@ -24,35 +47,44 @@ abstract class AbsIterator {
 }
 ```
 
-Następnie rozważmy klasę domieszkową, która doda do klasy `AbsIterator` metodę `foreach` wykonującą podaną funkcję dla każdego elementu zwracanego przez iterator. Aby zdefiniować klasę domieszkową, użyjemy słowa kluczowego `trait`:
-
-```tut
-trait RichIterator extends AbsIterator {
-  def foreach(f: T => Unit) { while (hasNext) f(next()) }
-}
-```
-
-Oto przykład konkretnego iteratora, który zwraca kolejne znaki w podanym łańcuchu znaków:
+Klasa ta zawiera abstrakcyjny typ `type T` oraz standardowe metody iteracyjne `hasNext` i `next`.
 
 ```tut
 class StringIterator(s: String) extends AbsIterator {
   type T = Char
   private var i = 0
-  def hasNext = i < s.length()
-  def next() = { val ch = s charAt i; i += 1; ch }
-}
-```
-
-Chcielibyśmy także połączyć funkcjonalność `StringIterator` oraz `RichIterator` w jednej klasie. Z pojedynczym dziedziczeniem czy też samymi interfejsami jest to niemożliwe, gdyż obie klasy zawierają implementacje metod. Scala pozwala na rozwiązanie tego problemu z użyciem _kompozycji domieszek_. Umożliwia ona ponowne wykorzystanie różnicy definicji klas, tzn. wszystkich definicji, które nie zostały odziedziczone. Ten mechanizm pozwala nam na połączenie `StringIterator` z `RichIterator`, tak jak w poniższym przykładzie - gdzie chcielibyśmy wypisać w kolumnie wszystkie znaki z danego łańcucha:
-
-```tut
-object StringIteratorTest {
-  def main(args: Array[String]) {
-    class Iter extends StringIterator("Scala") with RichIterator
-    val iter = new Iter
-    iter foreach println
+  def hasNext = i < s.length
+  def next() = {
+    val ch = s charAt i
+    i += 1
+    ch
   }
 }
 ```
 
-Klasa `iter` w funkcji `main` jest skonstruowana wykorzystując kompozycję domieszek `StringIterator` oraz `RichIterator` z użyciem słowa kluczowego `with`. Pierwszy rodzic jest nazywany _klasą bazową_ `Iter`, podczas gdy drugi (i każdy kolejny) rodzic jest nazywany _domieszką_.
+Klasa `StringIterator` przyjmuje parametr typu `String`, może być ona użyta do iterowania po typach String (np. aby sprawdzić czy String zawiera daną literę).
+
+Stwórzmy teraz cechę, która również rozszerza `AbsIterator`.
+
+```tut
+trait RichIterator extends AbsIterator {
+  def foreach(f: T => Unit): Unit = while (hasNext) f(next())
+}
+```
+
+Cecha `RichIterator` implementuje metodę `foreach`, która z kolei wywołuje przekazaną przez parametr funkcję `f: T => Unit` na kolejnym elemencie (`f(next())`) tak długo, jak dostępne są kolejne elementy (`while (hasNext)`).
+Ponieważ `RichIterator` jest cechą, nie musi implementować abstrakcyjnych składników klasy `AbsIterator`.
+
+Spróbujmy teraz połączyć funkcjonalności `StringIterator` oraz `RichIterator` w jednej klasie.
+
+```tut
+object StringIteratorTest extends App {
+  class RichStringIter extends StringIterator("Scala") with RichIterator
+  val richStringIter = new RichStringIter
+  richStringIter foreach println
+}
+```
+
+Nowo powstała `RichStringIter` posiada `StringIterator` jako nadklasę oraz `RichIterator` jako domieszkę.
+
+Mając do dyspozycji jedynie pojedyncze dziedziczenie, nie byli byśmy w stanie osiągnąć takiego stopnia elastyczności.
