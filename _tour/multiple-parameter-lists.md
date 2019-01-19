@@ -25,11 +25,13 @@ def foldLeft[B](z: B)(op: (B, A) => B): B
 
 Starting with an initial value of 0, `foldLeft` here applies the function `(m, n) => m + n` to each element in the List and the previous accumulated value.
 
+{% scalafiddle %}
 ```tut
 val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 val res = numbers.foldLeft(0)((m, n) => m + n)
-print(res) // 55
+println(res) // 55
 ```
+{% endscalafiddle %}
 
 Multiple parameter lists have a more verbose invocation syntax; and hence should be used sparingly. Suggested use cases include:
 
