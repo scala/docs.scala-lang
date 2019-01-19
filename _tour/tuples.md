@@ -22,7 +22,7 @@ Tuples come in handy when we have to return multiple values from a function.
 A tuple can be created as:
 
 ```tut
-val ingredient = ("Sugar" , 25):Tuple2[String, Int]
+val ingredient : Tuple2[String, Int] = ("Sugar" , 25)
 ```
 This creates a tuple containing a String element and an Int element.
 
