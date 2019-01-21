@@ -14,82 +14,71 @@ topics: tuples
 redirect_from: "/tutorials/tour/tuples.html"
 ---
 
-In Scala, a tuple is a class that can hold elements of different types.
-Tuples are immutable.
+In Scala, a tuple is a value that contains a fixed number of elements, each
+with a distinct type.  Tuples are immutable.
 
-Tuples come in handy when we have to return multiple values from a function.
+Tuples are especially handy for returning multiple values from a method.
 
-A tuple can be created as:
+A tuple with two elements can be created as follows:
 
 ```tut
-val ingredient = ("Sugar" , 25):Tuple2[String, Int]
+val ingredient = ("Sugar" , 25)
 ```
-This creates a tuple containing a String element and an Int element.
 
-Tuple in Scala is a series of classes: Tuple2, Tuple3, etc., through Tuple22.
-So when we create a tuple with n elements(n lying between 2 and 22), Scala basically instantiates
-one of the corresponding classes from the group, parameterized with types of constituent elements.
-For eg., ingredient is of type Tuple2[String, Int].
+This creates a tuple containing a `String` element and an `Int` element.
+
+The inferred type of `ingredient` is `(String, Int)`, which is shorthand
+for `Tuple2[String, Int]`.
+
+To represent tuples, Scala uses a series of classes: `Tuple2`, `Tuple3`, etc., through `Tuple22`.
+Each class has as many type parameters as it has elements.
 
 ## Accessing the elements
 
-Tuple elements are accessed using underscore syntax.
-'tuple._n' gives nth element(given there are that many elements).
+One way of accessing tuple elements is by position.  The individual
+elements are named `_1`, `_2`, and so forth.
 
 ```tut
 println(ingredient._1) // Sugar
-
 println(ingredient._2) // 25
 ```
 
-## Destructuring tuple data
+## Pattern matching on tuples
 
-Scala tuple also supports destructuring.
+A tuple can also be taken apart using pattern matching:
 
 ```tut
 val (name, quantity) = ingredient
-
 println(name) // Sugar
-
 println(quantity) // 25
 ```
 
-Tuple destructuring can be used in pattern matching too.
+Here `name`'s inferred type is `String` and `quantity`'s inferred type
+is `Int`.
+
+Here is another example of pattern-matching a tuple:
 
 ```tut
-val planetDistanceFromSun = List(("Mercury", 57.9), ("Venus", 108.2), ("Earth", 149.6 ), ("Mars", 227.9), ("Jupiter", 778.3))
-
-planetDistanceFromSun.foreach{ tuple => {
-  
-  tuple match {
-    
-      case ("Mercury", distance) => println(s"Mercury is $distance millions km far from Sun")
-      
-      case p if(p._1 == "Venus") => println(s"Venus is ${p._2} millions km far from Sun")
-      
-      case p if(p._1 == "Earth") => println(s"Blue planet is ${p._2} millions km far from Sun")
-      
-      case _ => println("Too far....")
-      
-    }
-    
-  }
-  
+val planets =
+  List(("Mercury", 57.9), ("Venus", 108.2), ("Earth", 149.6),
+       ("Mars", 227.9), ("Jupiter", 778.3))
+planets.foreach{
+  case ("Earth", distance) =>
+    println(s"Our planet is $distance kilometers from the sun")
+  case _ =>
 }
 ```
 
-Or, in 'for' comprehension.
+Or, in `for` comprehension:
 
 ```tut
 val numPairs = List((2, 5), (3, -7), (20, 56))
-
 for ((a, b) <- numPairs) {
-
   println(a * b)
-  
 }
 ```
 
-The value () of type Unit is conceptually the same as the value () of type Tuple0. There can only be one value of this type since it has no elements.
+## Tuples and case classes
 
-Users may sometimes find hard to choose between Tuples and case classes. As a rule, case classes are preferred choice if elements carry more meaning.
+Users may sometimes find hard to choose between tuples and case classes. Case classes have named elements. The names can improve the readability of some kinds of code. In the planet example above, we might define `case class Planet(name: String, distance: Double)` rather than using tuples.
+
