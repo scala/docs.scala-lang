@@ -1,6 +1,6 @@
 ---
 layout: tour
-title: 正则表达式
+title: 正则表达式模式
 
 discourse: false
 
@@ -14,7 +14,8 @@ next-page: extractor-objects
 previous-page: singleton-objects
 ---
 
-正则表达式是一类特殊的字符串，可以用来在数据中寻找特定模式。 任何字符串都可以通过调用 `.r` 方法来转换成正则表达式。
+正则表达式是用来找出数据中的指定模式（或缺少该模式）的字符串。`.r`方法可使任意字符串变成一个正则表达式。
+
 
 ```tut
 import scala.util.matching.Regex
@@ -27,9 +28,9 @@ numberPattern.findFirstMatchIn("awesomepassword") match {
 }
 ```
 
-在上例中，常量 `numberPattern` 是一个 `Regex` 类型的实例（正则表达式），这里用来确保密码中含有一个数字。
+上例中，`numberPattern`的类型是正则表达式类`Regex`，其作用是确保密码中包含一个数字。
 
-你也可以用圆括号括起多个正则表达式，以便一次寻找多个值。
+你还可以使用括号来同时匹配多组正则表达式。
 
 ```tut
 import scala.util.matching.Regex
@@ -49,7 +50,8 @@ val input: String =
 for (patternMatch <- keyValPattern.findAllMatchIn(input))
   println(s"key: ${patternMatch.group(1)} value: ${patternMatch.group(2)}")
 ```
-此例中我们从字符串中解析出多组键值对。每一个匹配值都包含一组子匹配值。结果如下：
+上例解析出了一个字符串中的多个键和值，其中的每个匹配又有一组子匹配，结果如下：
+
 ```
 key: background-color value: #A03300
 key: background-image value: url(img
