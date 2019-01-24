@@ -40,7 +40,7 @@ val list: List[Any] = List(
 list.foreach(element => println(element))
 ```
 
-It defines a variable `list` of type `List[Any]`. The list is initialized with elements of various types, but they all are instance of `scala.Any`, so you can add them to the list.
+It defines a value `list` of type `List[Any]`. The list is initialized with elements of various types, but they all are instance of `scala.Any`, so you can add them to the list.
 
 Here is the output of the program:
 
