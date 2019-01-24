@@ -12,7 +12,7 @@ IDE with the Scala plugin. In this guide, IntelliJ will download Scala for you.
 1. Make sure you have the Java 8 JDK (also known as 1.8)
     * Run `javac -version` on the command line and make sure you see
     `javac 1.8.___`
-    * If you don't have version 1.8 or higher, [install the JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+    * If you don't have version 1.8 or higher, [install the JDK](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 1. Next, download and install [IntelliJ Community Edition](https://www.jetbrains.com/idea/download/)
 1. Then, after starting up IntelliJ, you can download and install the Scala plugin by following the instructions on
 [how to install IntelliJ plugins](https://www.jetbrains.com/help/idea/installing-updating-and-uninstalling-repository-plugins.html) (search for "Scala" in the plugins menu.)

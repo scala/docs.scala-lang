@@ -15,7 +15,7 @@ We assume you know how to use a terminal.
 1. Make sure you have the Java 8 JDK (also known as 1.8)
     * Run `javac -version` in the command line and make sure you see
     `javac 1.8.___`
-    * If you don't have version 1.8 or higher, [install the JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+    * If you don't have version 1.8 or higher, [install the JDK](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 1. Install sbt
     * [Mac](http://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Mac.html)
     * [Windows](http://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Windows.html)
