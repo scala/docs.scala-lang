@@ -14,6 +14,14 @@ To build and view the site locally:
 
 For more details, read on.
 
+## Quickstart with Docker ##
+
+To build and view site with docker:
+
+    docker-compose up
+
+It will incrementally build and serve site at `http://localhost:8080`
+
 ## Contributing ##
 
 Please have a look at [http://docs.scala-lang.org/contribute.html](http://docs.scala-lang.org/contribute.html) before making a contribution.
