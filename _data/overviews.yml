@@ -17,6 +17,11 @@
         - title: Trait Iterable
           url: "collections/trait-iterable.html"
         - title: The sequence traits Seq, IndexedSeq, and LinearSeq
+          url: "collections/seqs.html"
+        - title: Sets
+          url: "collections/sets.html"
+        - title: Maps
+          url: "collections/maps.html"
         - title: Concrete Immutable Collection Classes
           url: "collections/concrete-immutable-collection-classes.html"
         - title: Concrete Mutable Collection Classes
@@ -37,6 +42,8 @@
           url: "collections/creating-collections-from-scratch.html"
         - title: Conversions Between Java and Scala Collections
           url: "collections/conversions-between-java-and-scala-collections.html"
+        - title: Migrating from Scala 2.7
+          url: "collections/migrating-from-scala-27.html"
     - title: The Architecture of Scala Collections
       icon: building
       url: "core/architecture-of-scala-collections.html"
