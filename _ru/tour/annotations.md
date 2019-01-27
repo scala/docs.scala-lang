@@ -105,7 +105,7 @@ class MyScalaClass ...
 public class MyClass extends HisClass ...
 ```
 
-В такомже случае Scala предоставляет такую же возможность
+В этом случае Scala предоставляет такую же возможность
 
 ```
 @SourceURL("http://coders.com/")
