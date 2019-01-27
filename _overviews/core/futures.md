@@ -1003,28 +1003,28 @@ To simplify handling of time in concurrent applications `scala.concurrent`
  general time abstraction. It is meant to be used with concurrency libraries and
  resides in `scala.concurrent` package.
 
-`Duration` is the base class representing length of time. It can be either finite or infinite.
- Finite duration is represented with `FiniteDuration` class which is constructed from `Long` length and
- `java.util.concurrent.TimeUnit`. Infinite durations, also extended from `Duration`,
- exist in only two instances , `Duration.Inf` and `Duration.MinusInf`. Library also
+`Duration` is the base class representing a length of time. It can be either finite or infinite.
+ A finite duration is represented with the `FiniteDuration` class, which is constructed from a `Long` length and
+ a `java.util.concurrent.TimeUnit`. Infinite durations, also extended from `Duration`,
+ exist in only two instances, `Duration.Inf` and `Duration.MinusInf`. The library also
  provides several `Duration` subclasses for implicit conversion purposes and those should
  not be used.
 
-Abstract `Duration` contains methods that allow :
+Abstract `Duration` contains methods that allow:
 
 1. Conversion to different time units (`toNanos`, `toMicros`, `toMillis`,
 `toSeconds`, `toMinutes`, `toHours`, `toDays` and `toUnit(unit: TimeUnit)`).
 2. Comparison of durations (`<`, `<=`, `>` and `>=`).
 3. Arithmetic operations (`+`, `-`, `*`, `/` and `unary_-`).
 4. Minimum and maximum between `this` duration and the one supplied in the argument (`min`, `max`).
-5. Check if the duration is finite (`isFinite`).
+5. Checking whether the duration is finite (`isFinite`).
 
 `Duration` can be instantiated in the following ways:
 
-1. Implicitly from types `Int` and `Long`. For example `val d = 100 millis`.
-2. By passing a `Long` length and a `java.util.concurrent.TimeUnit`.
-For example `val d = Duration(100, MILLISECONDS)`.
-3. By parsing a string that represent a time period. For example `val d = Duration("1.2 µs")`.
+1. Implicitly from types `Int` and `Long`, for example, `val d = 100 millis`.
+2. By passing a `Long` length and a `java.util.concurrent.TimeUnit`,
+for example, `val d = Duration(100, MILLISECONDS)`.
+3. By parsing a string that represent a time period, for example, `val d = Duration("1.2 µs")`.
 
 Duration also provides `unapply` methods so it can be used in pattern matching constructs.
 Examples:
