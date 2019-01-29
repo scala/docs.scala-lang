@@ -335,7 +335,7 @@ Some(3) match {
     </tr>
     <tr>
       <td><span class="label important">Плохо</span><br> <code class="highlighter-rouge">new List[Int]</code><br /> <span class="label success">Хорошо</span><br> <code class="highlighter-rouge">List(1,2,3)</code></td>
-      <td>ошибка: List - это абстрактный класс<br />вместо этого по соглашению обычно используется объект с именем как у абстрактного типа, который уже создает классы</td>
+      <td>ошибка: List - это абстрактный класс<br />по соглашению используется объект с именем как у абстрактного класса, который уже создает конкретные экземпляры</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">classOf[String]</code></td>
