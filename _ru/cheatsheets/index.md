@@ -29,11 +29,11 @@ language: ru
     </tr>
     <tr>
       <td><span class="label success">Хорошо</span><br><code class="highlighter-rouge">val x = 5</code><br /> <span class="label important">Плохо</span><br><code class="highlighter-rouge">x=6</code></td>
-      <td>постоянная</td>
+      <td>константа</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">var x: Double = 5</code></td>
-      <td>явное указание типа переменной</td>
+      <td>явное указание типа</td>
     </tr>
     <tr>
       <td><span id="functions" class="h2">функции</span></td>
@@ -41,7 +41,7 @@ language: ru
     </tr>
     <tr>
       <td><span class="label success">Хорошо</span><br> <code class="highlighter-rouge">def f(x: Int) = { x*x }</code><br /> <span class="label important">Плохо</span><br> <code class="highlighter-rouge">def f(x: Int)   { x*x }</code></td>
-      <td>объявление функции <br /> незаметная ошибка: без = используется процедурный стиль объявления, в котором возвращаемый тип обязательно "Unit". Это может ввести в заблуждение, избегайте такой стиль</td>
+      <td>объявление функции <br /> незаметная ошибка: без = это процедура с возвращаемым типом "Unit". Такое может ввести в заблуждение</td>
     </tr>
     <tr>
       <td><span class="label success">Хорошо</span><br> <code class="highlighter-rouge">def f(x: Any) = println(x)</code><br /> <span class="label important">Плохо</span><br> <code class="highlighter-rouge">def f(x) = println(x)</code></td>
@@ -61,15 +61,15 @@ language: ru
     </tr>
     <tr>
       <td><code class="highlighter-rouge">(1 to 5).map(_*2)</code> vs.<br /> <code class="highlighter-rouge">(1 to 5).reduceLeft( _+_ )</code></td>
-      <td>анонимная функция: квантификатор (подчеркивание) означает что на это место подставляется каждый элемент из диапазона (от 1 до 5).</td>
+      <td>анонимная функция: подчеркивание указывает место подставляемого элемента.</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">(1 to 5).map( x =&gt; x*x )</code></td>
-      <td>анонимная функция: слева от =&gt; задается имя для подставляемого элемента, которое мы можем в дальнейшем переиспользовать</td>
+      <td>анонимная функция: слева от =&gt; задается имя подставляемого элемента, чтоб его можно было переиспользовать</td>
     </tr>
     <tr>
       <td><span class="label success">Хорошо</span><br> <code class="highlighter-rouge">(1 to 5).map(2*)</code><br /> <span class="label important">Плохо</span><br> <code class="highlighter-rouge">(1 to 5).map(*2)</code></td>
-      <td>анонимная функция: связанный инфиксный метод. Ради четкого понимания лучше использовать явное указание позиции подставляемого элемента в стиле <code class="highlighter-rouge">2*_</code>.</td>
+      <td>анонимная функция: запись с использованием инфиксного стиля. Ради четкого понимания лучше использовать явное указание позиции подставляемого элемента в стиле <code class="highlighter-rouge">2*_</code>.</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">(1 to 5).map { x =&gt; val y=x*2; println(y); y }</code></td>
@@ -101,15 +101,15 @@ language: ru
     </tr>
     <tr>
       <td><code class="highlighter-rouge">def mapmake[T](g:T=&gt;T)(seq: List[T]) = seq.map(g)</code></td>
-      <td>Обобщенный тип.</td>
+      <td>обобщенный тип.</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">5.+(3); 5 + 3</code> <br /> <code class="highlighter-rouge">(1 to 5) map (_*2)</code></td>
-      <td>инфиксный тип записи (синтаксический сахар - можно не указывать точку и скобки).</td>
+      <td>инфиксный стиль.</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">def sum(args: Int*) = args.reduceLeft(_+_)</code></td>
-      <td>звездочка означает произвольное количество аргументов.</td>
+      <td>функция с переменным числом аргументов.</td>
     </tr>
     <tr>
       <td><span id="packages" class="h2">пакеты</span></td>
@@ -141,15 +141,15 @@ language: ru
     </tr>
     <tr>
       <td><code class="highlighter-rouge">(1,2,3)</code></td>
-      <td>упорядоченный набор фиксированной длины 3 (кортеж). (<code class="highlighter-rouge">Tuple3</code>)</td>
+      <td>кортеж размера 3. (<code class="highlighter-rouge">Tuple3</code>)</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">var (x,y,z) = (1,2,3)</code></td>
-      <td>разложение на отдельные параметры: набор раскладывается через проверку по шаблону на отдельные элементы x, y и z.</td>
+      <td>разложение на отдельные элементы: кортеж раскладывается на элементы x, y и z используя сопоставление с образцом.</td>
     </tr>
     <tr>
       <td><span class="label important">Плохо</span><br><code class="highlighter-rouge">var x,y,z = (1,2,3)</code></td>
-      <td>незаметная ошибка: каждая переменная будет приравнена к упорядоченному набору.</td>
+      <td>незаметная ошибка: каждой переменной будет присвоено по кортежу.</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">var xs = List(1,2,3)</code></td>
@@ -161,7 +161,7 @@ language: ru
     </tr>
     <tr>
       <td><code class="highlighter-rouge">1 :: List(2,3)</code></td>
-      <td>объединение в последовательность.</td>
+      <td>добавление к списку.</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">1 to 5</code> <em>тоже что и</em> <code class="highlighter-rouge">1 until 6</code> <br /> <code class="highlighter-rouge">1 to 10 by 2</code></td>
@@ -169,15 +169,15 @@ language: ru
     </tr>
     <tr>
       <td><code class="highlighter-rouge">()</code> <em>(пустые скобки)</em></td>
-      <td>отдельный член типа Unit используемый для указание отсутствия возвращаемого результата (тоже что C/Java void).</td>
+      <td>одиночный член типа Unit (тоже что и void в C/Java).</td>
     </tr>
     <tr>
-      <td><span id="control_constructs" class="h2">конструкции для контроля</span></td>
+      <td><span id="control_constructs" class="h2">управляющие структуры</span></td>
       <td> </td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">if (check) happy else sad</code></td>
-      <td>задание условий.</td>
+      <td>условие.</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">if (check) happy</code>
@@ -207,45 +207,45 @@ breakable {
       <td><code class="highlighter-rouge">for (x &lt;- xs if x%2 == 0) yield x*10</code>
       <br><em><strong>тоже что и</strong></em><br>
       <code class="highlighter-rouge">xs.filter(_%2 == 0).map(_*10)</code></td>
-      <td>for представление: работает через набор функции с filter/map</td>
+      <td>for-выражение: выражается набором с filter/map</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">for ((x,y) &lt;- xs zip ys) yield x*y</code>
       <br><em><strong>тоже что и</strong></em><br>
       <code class="highlighter-rouge">(xs zip ys) map { case (x,y) =&gt; x*y }</code></td>
-      <td>for представление: когда слева от &lt;- стоит шаблон (в данном случае это набор из 2х элементов x, y), то происходит распаковка по этому шаблону</td>
+      <td>for-выражение: извлечение элементов с последующим вычислением</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">for (x &lt;- xs; y &lt;- ys) yield x*y</code>
       <br><em><strong>тоже что и</strong></em><br>
       <code class="highlighter-rouge">xs flatMap {x =&gt; ys map {y =&gt; x*y}}</code></td>
-      <td>for представление: объединение нескольких выражений через ; </td>
+      <td>for-выражение: перекрестное объединение</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>for (x <- xs; y <- ys) {
   println("%d/%d = %.1f".format(x, y, x/y.toFloat))
 }</code></pre></td>
-      <td>for представление: императивно<br /><a href="http://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax">sprintf-style</a></td>
+      <td>for-выражение: императивно<br /><a href="http://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax">sprintf-style</a></td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>for (i <- 1 to 5) {
   println(i)
 }</code></pre></td>
-      <td>for представление: обход диапазона (от 1 до 5) включая его верхнюю границу </td>
+      <td>for-выражение: обход диапазона (от 1 до 5) включая его верхнюю границу </td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>for (i <- 1 until 5) {
   println(i)
 }</code></pre></td>
-      <td>for представление: обход диапазона (от 1 до 5) не включая его верхнюю границу</td>
+      <td>for-выражение: обход диапазона (от 1 до 5) не включая его верхнюю границу</td>
     </tr>
     <tr>
-      <td><span id="pattern_matching" class="h2">проверка по шаблону</span></td>
+      <td><span id="pattern_matching" class="h2">сопоставление с примером</span></td>
       <td> </td>
     </tr>
     <tr>
       <td><span class="label success">Хорошо</span><br> <code class="highlighter-rouge">(xs zip ys) map { case (x,y) =&gt; x*y }</code><br /> <span class="label important">Плохо</span><br> <code class="highlighter-rouge">(xs zip ys) map( (x,y) =&gt; x*y )</code></td>
-      <td>используйте ключевое слово case при передачи аргументов в функцию для проверки по шаблону.</td>
+      <td>используйте ключевое слово case при передачи аргументов в функцию для запуска механизма сопоставления с примером.</td>
     </tr>
     <tr>
       <td><span class="label important">Плохо</span><br>
@@ -254,7 +254,7 @@ Some(3) match {
   case Some(v42) => println("42")
   case _ => println("Not 42")
 }</code></pre></td>
-      <td>“v42” интерпретировано как имя для <b>новой</b> константы любого типа, поэтому “42” выведено.</td>
+      <td>“v42” интерпретировано как имя для <b>новой</b> константы любого типа, поэтому напечатано “42”.</td>
     </tr>
     <tr>
       <td><span class="label success">Хорошо</span><br>
@@ -263,7 +263,7 @@ Some(3) match {
   case Some(`v42`) => println("42")
   case _ => println("Not 42")
 }</code></pre></td>
-      <td>”`v42`” с обратными кавычками интерпретируется как указание на значение существующей константы <code class="highlighter-rouge">v42</code>, отображается “Not 42”.</td>
+      <td>”`v42`” с обратными кавычками интерпретируется как указание на значение существующей константы <code class="highlighter-rouge">v42</code>, напечатано “Not 42”.</td>
     </tr>
     <tr>
       <td><span class="label success">Хорошо</span><br>
@@ -272,7 +272,7 @@ Some(3) match {
   case Some(UppercaseVal) => println("42")
   case _ => println("Not 42")
 }</code></pre></td>
-      <td><code class="highlighter-rouge">UppercaseVal</code> однако константы, имена которых начинаются с заглавной буквы, в проверке по шаблону проверяются на совпадение значения. Поэтому при проверке <code class="highlighter-rouge">UppercaseVal</code> на совпадение с <code class="highlighter-rouge">3</code>, выводится “Not 42”.</td>
+      <td><code class="highlighter-rouge">UppercaseVal</code> однако константы, имена которых начинаются с заглавной буквы, сопоставляются по значению. Поэтому при сопоставлении <code class="highlighter-rouge">UppercaseVal</code> с <code class="highlighter-rouge">3</code>, выводится “Not 42”.</td>
     </tr>
     <tr>
       <td><span id="object_orientation" class="h2">Работа с объектами</span></td>
@@ -302,11 +302,11 @@ Some(3) match {
     </tr>
     <tr>
       <td><code class="highlighter-rouge">abstract class D { ... }</code></td>
-      <td>задание абстрактного класса (не создаваемого, только наследуемого)</td>
+      <td>объявление абстрактного класса (не создаваемого, только наследуемого)</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">class C extends D { ... }</code></td>
-      <td>задание унаследованного класса.</td>
+      <td>объявление класса с наследованием.</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">class D(var x: R)</code><br /><code class="highlighter-rouge">class C(x: R) extends D(x)</code></td>
@@ -314,7 +314,7 @@ Some(3) match {
     </tr>
     <tr>
       <td><code class="highlighter-rouge">object O extends D { ... }</code></td>
-      <td>задание объекта существующего в единственном экземпляре (сингэлтон) на основе другого класса.</td>
+      <td>объявление объекта одиночки (Singleton) на основе другого класса.</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">trait T { ... }</code><br /><code class="highlighter-rouge">class C extends T { ... }</code><br /><code class="highlighter-rouge">class C extends D with T { ... }</code></td>
@@ -327,7 +327,7 @@ Some(3) match {
     </tr>
     <tr>
       <td><code class="highlighter-rouge">class C extends D { override def f = ...}</code></td>
-      <td>во избежании ошибок при наследовании и создании методов с одинаковыми названиями необходимо указывать override.</td>
+      <td>при наследовании и создании методов с одинаковыми именами необходимо указывать override.</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">new java.io.File("f")</code></td>
@@ -335,7 +335,7 @@ Some(3) match {
     </tr>
     <tr>
       <td><span class="label important">Плохо</span><br> <code class="highlighter-rouge">new List[Int]</code><br /> <span class="label success">Хорошо</span><br> <code class="highlighter-rouge">List(1,2,3)</code></td>
-      <td>ошибка: List - это абстрактный класс<br />вместо этого используйте объект List (вызываемый без new) который создает новые классы типа List</td>
+      <td>ошибка: List - это абстрактный класс<br />вместо этого по соглашению обычно используется объект с именем как у абстрактного типа, который уже создает классы</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">classOf[String]</code></td>
