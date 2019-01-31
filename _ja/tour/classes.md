@@ -1,6 +1,7 @@
 ---
 layout: tour
-title: Classes
+title: クラス
+language: ja
 
 discourse: true
 
@@ -15,18 +16,24 @@ prerequisite-knowledge: no-return-keyword, type-declaration-syntax, string-inter
 redirect_from: "/tutorials/tour/classes.html"
 ---
 
-Classes in Scala are blueprints for creating objects. They can contain methods,
-values, variables, types, objects, traits, and classes which are collectively called _members_. Types, objects, and traits will be covered later in the tour.
+Scalaにおけるクラスはオブジェクトを作るための設計図となります。
+それらはメソッド、値、変数、型、オブジェクト、トレイト、クラスを持ち、まとめて _メンバー_ と呼ばれます。
+型、オブジェクト、トレイトはツアーで後ほど取り扱います。
 
-## Defining a class
-A minimal class definition is simply the keyword `class` and
-an identifier. Class names should be capitalized.
+## クラスを定義する
+
+最小のクラス定義は単純に`class`キーワードと識別子になります。
+クラス名はキャメルケースであるべきです。
+
 ```tut
 class User
 
 val user1 = new User
 ```
-The keyword `new` is used to create an instance of the class. `User` has a default constructor which takes no arguments because no constructor was defined. However, you'll often want a constructor and class body. Here is an example class definition for a point:
+`new`キーワードはクラスのインスタンスを作るために使われます。
+`User`は引数を受け取らないデフォルトコンストラクターを持ちます。なぜならコンストラクターは定義されていないからです。
+しかしながら、コンストラクターとクラス本体は頻繁に欲しくなるでしょう。
+こちらは位置情報のクラス定義の例になります。
 
 ```tut
 class Point(var x: Int, var y: Int) {
@@ -44,35 +51,41 @@ val point1 = new Point(2, 3)
 point1.x  // 2
 println(point1)  // prints (2, 3)
 ```
+この`Point`クラスは4つのメンバーを持ちます。
+変数`x` と `y` そしてメソッド `move` と `toString`です。
+多くの他の言語とは異なり、プライマリコンストラクタはクラスのシグネイチャになります。
+（シグネイチャはメソッドの名、そのメソッドに対する引数の数と型で構成されています。）
+`move`メソッドは2つのInteger引数を受け取り、意味を運ばないUnitの値である`()` を返します。
+これは乱暴に言えば、Javaのような言語における`void`と一致します。
+その一方で`toString`は引数を受け取りませんが、`String`の値を返します。
+なぜなら[`AnyRef`](unified-types.html)の`toString`を`toString`がオーバーライドするためで、それは`override`キーワードでタグ付けされます。
 
-This `Point` class has four members: the variables `x` and `y` and the methods `move` and
-`toString`. Unlike many other languages, the primary constructor is in the class signature `(var x: Int, var y: Int)`. The `move` method takes two integer arguments and returns the Unit value `()`, which carries no information. This corresponds roughly with `void` in Java-like languages. `toString`, on the other hand, does not take any arguments but returns a `String` value. Since `toString` overrides `toString` from [`AnyRef`](unified-types.html), it is tagged with the `override` keyword.
+## コンストラクター
 
-## Constructors
-
-Constructors can have optional parameters by providing a default value like so:
+コンストラクターはデフォルト値を提供することで、以下のようにオプションパラメーターを持つことができます。
 
 ```tut
 class Point(var x: Int = 0, var y: Int = 0)
 
-val origin = new Point  // x and y are both set to 0
+val origin = new Point  // x と y には共に0がセットされます。
 val point1 = new Point(1)
-println(point1.x)  // prints 1
-
+println(point1.x)  // 1 が出力されます。
 ```
+このバージョンの`Point`クラスでは、`x` と `y` はデフォルト値0を持ち、引数が必須ではありません。
+しかしながらコンストラクタは引数を左から右に読み込むため、もし`y`の値だけを渡したい場合は、パラメーターに名前をつけてやる必要があります。
 
-In this version of the `Point` class, `x` and `y` have the default value `0` so no arguments are required. However, because the constructor reads arguments left to right, if you just wanted to pass in a `y` value, you would need to name the parameter.
 ```
 class Point(var x: Int = 0, var y: Int = 0)
 val point2 = new Point(y=2)
-println(point2.y)  // prints 2
+println(point2.y)  // 2 が出力されます。
 ```
 
-This is also a good practice to enhance clarity.
+これは明快さを高める良い習慣にもなります。
 
-## Private Members and Getter/Setter Syntax
-Members are public by default. Use the `private` access modifier
-to hide them from outside of the class.
+## プライベートメンバーとゲッター/セッター構文
+メンバーはデフォルトではパブリックになります。
+クラスの外から隠したい場合は`private`アクセス修飾詞を使いましょう。
+
 ```tut
 class Point {
   private var _x = 0
@@ -94,20 +107,26 @@ class Point {
 
 val point1 = new Point
 point1.x = 99
-point1.y = 101 // prints the warning
+point1.y = 101 // 警告が出力されます。
 ```
-In this version of the `Point` class, the data is stored in private variables `_x` and `_y`. There are methods `def x` and `def y` for accessing the private data. `def x_=` and `def y_=` are for validating and setting the value of `_x` and `_y`. Notice the special syntax for the setters: the method has `_=` appended to the identifier of the getter and the parameters come after.
+このバージョンの`Point`クラスでは、データはプライベート変数 `_x` と `_y` に保存されます。
+メソッド`def x` と `def y` はプライベートなデータにアクセスするためのものです。
+`def x_=` と `def y_=` は `_x` と `_y` の値を検証し設定するためのものになります。
+セッターのための特別な構文に注意してください。
+セッターメソッドはゲッターメソッドの識別子に`_=`を追加し、その後ろにパラメーターを取ります。
 
-Primary constructor parameters with `val` and `var` are public. However, because `val`s are immutable, you can't write the following.
+プライマリコンストラクタの`val` と `var` を持つパラメーターはパブリックになります。
+しかしながら`val` は不変となるため、以下のように記述することはできません。
+
 ```
 class Point(val x: Int, val y: Int)
 val point = new Point(1, 2)
-point.x = 3  // <-- does not compile
+point.x = 3  // <-- コンパイルされません。
 ```
 
-Parameters without `val` or `var` are private values, visible only within the class.
+`val` や `var` が存在しないパラメーターはクラス内でだけで参照できるプライベートな値や変数となります。
 ```
 class Point(x: Int, y: Int)
 val point = new Point(1, 2)
-point.x  // <-- does not compile
+point.x  // <-- コンパイルされません。
 ```
