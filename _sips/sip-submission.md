@@ -197,16 +197,17 @@ The current committee members are:
 
 - Martin Odersky ([@odersky](https://github.com/odersky)), EPFL
 - Adriaan Moors ([@adriaanm](https://github.com/adriaanm)), Lightbend
-- Heather Miller ([@heathermiller](https://github.com/heathermiller)), Scala Center
+- Heather Miller ([@heathermiller](https://github.com/heathermiller)), Carnegie Mellon University
 - Seth Tisue ([@SethTisue](https://github.com/SethTisue)), Lightbend
-- Sébastien Doeraene ([@sjrd](https://github.com/sjrd)), EPFL
+- Sébastien Doeraene ([@sjrd](https://github.com/sjrd)), Scala Center
 - Eugene Burmako ([@xeno-by](https://github.com/xeno-by)), Twitter
 - Josh Suereth ([@jsuereth](https://github.com/jsuereth)), Google
 - Iulian Dragos ([@dragos](https://github.com/dragos)), Triplequote
+- Guillaume Martres ([@smarter](https://github.com/smarter)), EPFL
 
 The current Process Lead is:
 
-- Jorge Vicente Cantero ([@jvican](https://github.com/jvican)), Scala Center
+- Darja Jovanovic ([@darjutak](https://github.com/darjutak)), Scala Center
 
 ### Reviewers
 
