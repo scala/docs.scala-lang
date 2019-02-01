@@ -99,7 +99,7 @@ Please see the [full list here](https://docs.google.com/spreadsheets/d/1GWJUo0U3
 
 [Dependent Function Types](http://dotty.epfl.ch/docs/reference/new-types/dependent-function-types.html)
 
-[Implicit Function Types](http://dotty.epfl.ch/docs/reference/new-types/implicit-function-types.html)
+[Implicit Function Types](http://dotty.epfl.ch/docs/reference/instances/implicit-function-types.html)
 
 [Weak Conformance](https://dotty.epfl.ch/docs/reference/dropped-features/weak-conformance.html)
 

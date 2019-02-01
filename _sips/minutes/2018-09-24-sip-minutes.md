@@ -15,7 +15,7 @@ The following agenda was distributed to attendees:
 | Summary of the Contributors thread [“Proposal to remove the procedure Syntax”](https://contributors.scala-lang.org/t/proposal-to-remove-procedure-syntax/2143) | Josh Suereth | Pending |
 | [Proposal to add Intersection Types to the Language](https://dotty.epfl.ch/docs/reference/new-types/intersection-types.html) | Martin Odersky | Discussion opened until the 25th October 2018, comments welcomed [here](https://contributors.scala-lang.org/t/proposal-to-add-intersection-types-to-the-language/2351) |
 | [Proposal to Add Union Types to the Language](https://dotty.epfl.ch/docs/reference/new-types/union-types.html) | Martin Odersky | Discussion opened until the 25th October 2018, comments welcomed [here](https://contributors.scala-lang.org/t/proposal-to-add-union-types-to-the-language/2352) | 
-| [Proposal to add Implicit Function Types to the Language](https://dotty.epfl.ch/docs/reference/new-types/implicit-function-types.html) | Martin Odersky | Discussion opened until the 25th October 2018, comments welcomed [here](https://contributors.scala-lang.org/t/proposal-to-add-implicit-function-types-to-the-language/2353) |
+| [Proposal to add Implicit Function Types to the Language](https://dotty.epfl.ch/docs/reference/instances/implicit-function-types.html) | Martin Odersky | Discussion opened until the 25th October 2018, comments welcomed [here](https://contributors.scala-lang.org/t/proposal-to-add-implicit-function-types-to-the-language/2353) |
 | [Proposal to add Dependent Function Types to the Language](https://dotty.epfl.ch/docs/reference/new-types/dependent-function-types.html) | Martin Odersky | Discussion opened until the 25th October 2018, comments welcomed [here](https://contributors.scala-lang.org/t/proposal-to-add-dependent-function-types-to-the-language/2354/1) |
 | [Proposal to add Trait Parameters to the Language](https://dotty.epfl.ch/docs/reference/other-new-features/trait-parameters.html) | Martin Odersky | Discussion opened until the 25th October 2018, comments welcomed [here](https://contributors.scala-lang.org/t/proposal-to-add-trait-parameters-to-the-language/2356) |
 
@@ -154,7 +154,7 @@ There is some back-and-forth between **Sebastien** and **Josh** with
 regards to performance of union types and their boxing (especially in the
 presence of specialization). [More](https://youtu.be/tEb4UF6RJrM?t=1913)
 
-#### [Proposal to add Implicit Function Types to the Language](https://dotty.epfl.ch/docs/reference/new-types/implicit-function-types.html)
+#### [Proposal to add Implicit Function Types to the Language](https://dotty.epfl.ch/docs/reference/instances/implicit-function-types.html)
 
 ([YouTube time: 39’01’’ - 43’11’’](https://youtu.be/tEb4UF6RJrM?t=2341))
 
