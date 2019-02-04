@@ -72,11 +72,9 @@ This trait implements `foreach` by continually calling the provided function `f:
 We would like to combine the functionality of `StringIterator` and `RichIterator` into a single class.
 
 ```tut
-object StringIteratorTest extends App {
-  class RichStringIter extends StringIterator("Scala") with RichIterator
-  val richStringIter = new RichStringIter
-  richStringIter foreach println
-}
+class RichStringIter extends StringIterator("Scala") with RichIterator
+val richStringIter = new RichStringIter
+richStringIter foreach println
 ```
 The new class `RichStringIter` has `StringIterator` as a superclass and `RichIterator` as a mixin.
 
