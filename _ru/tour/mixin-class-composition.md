@@ -13,7 +13,7 @@ previous-page: tuples
 prerequisite-knowledge: inheritance, traits, abstract-classes, unified-types
 
 ---
-Примеси - это трейты, которые используются для создания класса.
+Примеси (Mixin) - это трейты, которые используются для создания класса.
 
 ```tut
 abstract class A {
