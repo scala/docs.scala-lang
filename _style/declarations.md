@@ -15,38 +15,44 @@ next-page: scaladoc
 
 Class/Object/Trait constructors should be declared all on one line,
 unless the line becomes "too long" (about 100 characters). In that case,
-put each constructor argument on its own line, indented **four** spaces:
+put each constructor argument on its own line with
+[trailing commas](https://docs.scala-lang.org/sips/completed/trailing-commas.html#motivation):
 
     class Person(name: String, age: Int) {
+      …
     }
 
     class Person(
-        name: String,
-        age: Int,
-        birthdate: Date,
-        astrologicalSign: String,
-        shoeSize: Int,
-        favoriteColor: java.awt.Color) {
-      def firstMethod: Foo = ...
+      name: String,
+      age: Int,
+      birthdate: Date,
+      astrologicalSign: String,
+      shoeSize: Int,
+      favoriteColor: java.awt.Color,
+    ) {
+      def firstMethod: Foo = …
     }
 
 If a class/object/trait extends anything, the same general rule applies,
 put it on one line unless it goes over about 100 characters, and then
-indent **four** spaces with each item being on its own line and **two**
-spaces for extensions; this provides visual separation between
-constructor arguments and extensions:
+put each item on its own line with
+[trailing commas](https://docs.scala-lang.org/sips/completed/trailing-commas.html#motivation);
+closing parenthesis provides visual separation between constructor arguments and extensions;
+empty line should be added to further separate extensions from class implementation:
 
     class Person(
-        name: String,
-        age: Int,
-        birthdate: Date,
-        astrologicalSign: String,
-        shoeSize: Int,
-        favoriteColor: java.awt.Color)
-      extends Entity
+      name: String,
+      age: Int,
+      birthdate: Date,
+      astrologicalSign: String,
+      shoeSize: Int,
+      favoriteColor: java.awt.Color,
+    ) extends Entity
       with Logging
       with Identifiable
       with Serializable {
+      
+      def firstMethod: Foo = …
     }
 
 ### Ordering Of Class Elements
