@@ -22,7 +22,7 @@ This table shows the first Scala release in each series that works with each JVM
 | 7           | 2.11.0, 2.10.0                                                                                |
 | 6           | 2.11.0, 2.10.0                                                                                |
 
- For more information on Java 11 (and 9 and 10), see [below](#jdk-9-compatibility-notes).
+ For more information on Java 11 (and 9 and 10), see [below](#jdk-11-compatibility-notes).
 
 ## Running versus compiling
 
