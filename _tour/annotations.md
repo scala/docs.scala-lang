@@ -77,7 +77,7 @@ And then apply it as follows
 ```
 @Source(URL = "http://coders.com/",
         mail = "support@coders.com")
-public class MyClass extends HisClass ...
+public class MyClass extends TheirClass ...
 ```
 
 An annotation application in Scala looks like a constructor invocation, for instantiating a Java annotation one has to use named arguments:
@@ -101,7 +101,7 @@ And then apply it as follows
 
 ```
 @SourceURL("http://coders.com/")
-public class MyClass extends HisClass ...
+public class MyClass extends TheirClass ...
 ```
 
 In this case, Scala provides the same possibility
@@ -116,7 +116,7 @@ The `mail` element was specified with a default value so we need not explicitly 
 ```
 @SourceURL(value = "http://coders.com/",
            mail = "support@coders.com")
-public class MyClass extends HisClass ...
+public class MyClass extends TheirClass ...
 ```
 
 Scala provides more flexibility in this respect
