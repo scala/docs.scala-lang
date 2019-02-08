@@ -294,27 +294,27 @@ yield x * y</code></pre>
     <tr>
       <td><span class="label important">Bad</span><br>
       <pre class="highlight"><code>val v42 = 42
-Some(3) match {
-  case Some(v42) =&gt; println("42")
-  case _ =&gt; println("Not 42")
+3 match {
+  case v42 =&gt; println("42")
+  case _   =&gt; println("Not 42")
 }</code></pre></td>
       <td>“v42” is interpreted as a name matching any Int value, and “42” is printed.</td>
     </tr>
     <tr>
       <td><span class="label success">Good</span><br>
       <pre class="highlight"><code>val v42 = 42
-Some(3) match {
-  case Some(`v42`) =&gt; println("42")
-  case _ =&gt; println("Not 42")
+3 match {
+  case `v42` =&gt; println("42")
+  case _     =&gt; println("Not 42")
 }</code></pre></td>
       <td>”`v42`” with backticks is interpreted as the existing val <pre class="highlight"><code>v42</code></pre>, and “Not 42” is printed.</td>
     </tr>
     <tr>
       <td><span class="label success">Good</span><br>
       <pre class="highlight"><code>val UppercaseVal = 42
-Some(3) match {
-  case Some(UppercaseVal) =&gt; println("42")
-  case _ =&gt; println("Not 42")
+3 match {
+  case UppercaseVal =&gt; println("42")
+  case _            =&gt; println("Not 42")
 }</code></pre></td>
       <td><pre class="highlight"><code>UppercaseVal</code></pre> is treated as an existing val, rather than a new pattern variable, because it starts with an uppercase letter. Thus, the value contained within <pre class="highlight"><code>UppercaseVal</code></pre> is checked against <pre class="highlight"><code>3</code></pre>, and “Not 42” is printed.</td>
     </tr>
@@ -397,6 +397,231 @@ Some(3) match {
     <tr>
       <td><pre class="highlight"><code>x: String</code></pre></td>
       <td>ascription (compile time)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><span id="options" class="h2">options</span></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><pre class="highlight"><code>Some(42)</code></pre></td>
+      <td>Construct a non empty optional value</td>
+    </tr>
+    <tr>
+      <td><pre class="highlight"><code>None</code></pre></td>
+      <td>The singleton empty optional value</td>
+    </tr>
+    <tr>
+      <td><pre class="highlight"><code>Option(null) == None
+Option(obj.unsafeMethod)</code></pre></td>
+      <td>Null-safe optional value factory</td>
+    </tr>
+    <tr>
+      <td><pre class="highlight"><code>val optStr: Option[String] = None</code></pre>
+      <em><strong>same as</strong></em>
+      <pre class="highlight"><code>val optStr = Option.empty[String]</code></pre></td>
+      <td>Explicit type for empty optional value.<br /> Factory for empty optional value.</td>
+    </tr>
+    <tr>
+      <td><pre class="highlight"><code>val name: Option[String] =
+  request.getParameter("name")
+val upper = name.map {
+  _.trim
+}
+.filter {
+  _.length != 0
+}
+.map {
+  _.toUpperCase
+}
+println(upper.getOrElse(""))
+</code></pre></td>
+      <td>Pipeline style</td>
+    </tr>
+    <tr>
+      <td><pre class="highlight"><code>val upper = for {
+  name <- request.getParameter("name")
+  trimmed <- Some(name.trim)
+    if trimmed.length != 0
+  upper <- Some(trimmed.toUpperCase)
+} yield upper
+println(upper.getOrElse(""))</code></pre></td>
+      <td>for-comprehension syntax</td>
+    </tr>
+    <tr>
+      <td><pre class="highlight"><code>option.map(f(_))</code></pre>
+      <em><strong>same as</strong></em>
+      <pre class="highlight"><code>option match {
+  case Some(x) =&gt; Some(f(x))
+  case None    =&gt; None
+}</code></pre></td>
+      <td>Apply a function on the optional value</td>
+    </tr>
+    <tr>
+      <td><pre class="highlight"><code>option.flatMap(f(_))</code></pre>
+      <em><strong>same as</strong></em>
+      <pre class="highlight"><code>option match {
+  case Some(x) =&gt; f(x)
+  case None    =&gt; None
+}</code></pre></td>
+      <td>Same as map but function must return an optional value</td>
+    </tr>
+    <tr>
+      <td><pre class="highlight"><code>optionOfOption.flatten</code></pre>
+      <em><strong>same as</strong></em>
+      <pre class="highlight"><code>optionOfOption match {
+  case Some(Some(x)) =&gt; Some(x)
+  case _             =&gt; None
+}</code></pre></td>
+      <td>Extract nested option</td>
+    </tr>
+    <tr>
+      <td><pre class="highlight"><code>option.foreach(f(_))</code></pre>
+      <em><strong>same as</strong></em>
+      <pre class="highlight"><code>option match {
+  case Some(x) =&gt; f(x)
+  case None    =&gt; ()
+}</code></pre></td>
+      <td>Apply a procedure on optional value</td>
+    </tr>
+    <tr>
+      <td><pre class="highlight"><code>option.fold(y)(f(_))</code></pre>
+      <em><strong>same as</strong></em>
+      <pre class="highlight"><code>option match {
+  case Some(x) =&gt; f(x)
+  case None    =&gt; y
+}</code></pre></td>
+      <td>Apply function on optional value, return default if empty</td>
+    </tr>
+    <tr>
+      <td><pre class="highlight"><code>option.collect {
+  case x =&gt; ...
+}</code></pre>
+      <em><strong>same as</strong></em>
+      <pre class="highlight"><code>option match {
+  case Some(x)
+    if f.isDefinedAt(x) =&gt; ...
+  case Some(_)          =&gt; None
+  case None             =&gt; None
+}</code></pre></td>
+      <td>Apply partial pattern match on optional value</td>
+    </tr>
+    <tr>
+      <td><pre class="highlight"><code>option.isDefined</code></pre>
+      <em><strong>same as</strong></em>
+      <pre class="highlight"><code>option match {
+  case Some(_) =&gt; true
+  case None    =&gt; false
+}</code></pre></td>
+      <td>True if not empty</td>
+    </tr>
+    <tr>
+      <td><pre class="highlight"><code>option.isEmpty</code></pre>
+      <em><strong>same as</strong></em>
+      <pre class="highlight"><code>option match {
+  case Some(_) =&gt; false
+  case None    =&gt; true
+}</code></pre></td>
+      <td>True if empty</td>
+    </tr>
+    <tr>
+      <td><pre class="highlight"><code>option.nonEmpty</code></pre>
+      <em><strong>same as</strong></em>
+      <pre class="highlight"><code>option match {
+  case Some(_) =&gt; true
+  case None    =&gt; false
+}</code></pre></td>
+      <td>True if not empty</td>
+    </tr>
+    <tr>
+      <td><pre class="highlight"><code>option.size</code></pre>
+      <em><strong>same as</strong></em>
+      <pre class="highlight"><code>option match {
+  case Some(_) =&gt; 1
+  case None    =&gt; 0
+}</code></pre></td>
+      <td>Zero if empty, otherwise one</td>
+    </tr>
+    <tr>
+      <td><pre class="highlight"><code>option.orElse(Some(y))</code></pre>
+      <em><strong>same as</strong></em>
+      <pre class="highlight"><code>option match {
+  case Some(x) =&gt; Some(x)
+  case None    =&gt; Some(y)
+}</code></pre></td>
+      <td>Evaluate and return alternate optional value if empty</td>
+    </tr>
+    <tr>
+      <td><pre class="highlight"><code>option.getOrElse(y)</code></pre>
+      <em><strong>same as</strong></em>
+      <pre class="highlight"><code>option match {
+  case Some(x) =&gt; x
+  case None    =&gt; y
+}</code></pre></td>
+      <td>Evaluate and return default value if empty</td>
+    </tr>
+    <tr>
+      <td><pre class="highlight"><code>option.get</code></pre>
+      <em><strong>same as</strong></em>
+      <pre class="highlight"><code>option match {
+  case Some(x) =&gt; x
+  case None    =&gt; throw new Exception
+}</code></pre></td>
+      <td>Return value, throw exception if empty</td>
+    </tr>
+    <tr>
+      <td><pre class="highlight"><code>option.orNull</code></pre>
+      <em><strong>same as</strong></em>
+      <pre class="highlight"><code>option match {
+  case Some(x) =&gt; x
+  case None    =&gt; null
+}</code></pre></td>
+      <td>Return value, null if empty</td>
+    </tr>
+    <tr>
+      <td><pre class="highlight"><code>option.filter(f)</code></pre>
+      <em><strong>same as</strong></em>
+      <pre class="highlight"><code>option match {
+  case Some(x) if f(x) =&gt; Some(x)
+  case _               =&gt; None
+}</code></pre></td>
+      <td>Optional value satisfies predicate</td>
+    </tr>
+    <tr>
+      <td><pre class="highlight"><code>option.filterNot(f(_))</code></pre>
+      <em><strong>same as</strong></em>
+      <pre class="highlight"><code>option match {
+  case Some(x) if !f(x) =&gt; Some(x)
+  case _                =&gt; None
+}</code></pre></td>
+      <td>Optional value doesn't satisfy predicate</td>
+    </tr>
+    <tr>
+      <td><pre class="highlight"><code>option.exists(f(_))</code></pre>
+      <em><strong>same as</strong></em>
+      <pre class="highlight"><code>option match {
+  case Some(x) if f(x) =&gt; true
+  case _               =&gt; false
+}</code></pre></td>
+      <td>Apply predicate on optional value or false if empty</td>
+    </tr>
+    <tr>
+      <td><pre class="highlight"><code>option.forall(f(_))</code></pre>
+      <em><strong>same as</strong></em>
+      <pre class="highlight"><code>option match {
+  case Some(x) if f(x) =&gt; true
+  case None            =&gt; false
+}</code></pre></td>
+      <td>Apply predicate on optional value or true if empty</td>
+    </tr>
+    <tr>
+      <td><pre class="highlight"><code>option.contains(y)</code></pre>
+      <em><strong>same as</strong></em>
+      <pre class="highlight"><code>option match {
+  case Some(x) =&gt; x == y
+  case None    =&gt; false
+}</code></pre></td>
+      <td>Checks if value equals optional value or false if empty</td>
     </tr>
   </tbody>
 </table>
