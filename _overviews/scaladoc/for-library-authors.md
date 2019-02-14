@@ -94,12 +94,39 @@ include:
 
 
 ### Member grouping tags
+
+These tags are well-suited to larger types or packages, with many members.
+They allow you to organize the Scaladoc page into distinct sections, with
+each one shown separately, in the order that you choose.
+
+These tags are *not* enabled by default! You must pass the `-groups`
+flag to Scaladoc in order to turn them on. Typically the sbt for this
+will look something like:
+```
+scalacOptions in (Compile, doc) ++= Seq(
+  "-groups"
+)
+```
+
+Each section should have a single-word identifier that is used in all of
+these tags, shown as `<group>` below. By default, that identifier is 
+shown as the title of that documentation section, but you can use 
+`@groupname` to provide a longer title.
+
+Typically, you should put `@groupprio` (and optionally `@groupname` and
+`@groupdesc`) in the Scaladoc for the package/trait/class/object itself,
+describing what all the groups are, and their order. Then put `@group` 
+in the Scaladoc for each member, saying which group it is in.
+
+Members that do not have a `@group` tag will be listed as "Ungrouped" in
+the resulting documentation.
+
 - `@group <group>` - mark the entity as a member of the `<group>` group.
 - `@groupname <group> <name>` - provide an optional name for the group. `<name>` is displayed as the group header
--  before the group description.
+  before the group description.
 - `@groupdesc <group> <description>` - add optional descriptive text to display under the group name. Supports multiline
-   formatted text.
-- `@groupprio` <priority> - control the order of the group on the page. Defaults to 0. Ungrouped elements have
+  formatted text.
+- `@groupprio <group> <priority>` - control the order of the group on the page. Defaults to 0. Ungrouped elements have
   an implicit priority of 1000. Use a value between 0 and 999 to set a relative position to other groups. Low values
   will appear before high values.
 
