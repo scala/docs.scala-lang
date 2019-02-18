@@ -970,7 +970,7 @@ two futures `f` and `g` and produces a third future which is completed by either
 Here is an example of how to do it:
 
     def first[T](f: Future[T], g: Future[T]): Future[T] = {
-      val p = promise[T]
+      val p = Promise[T]
 
       f foreach { x =>
         p.trySuccess(x)
