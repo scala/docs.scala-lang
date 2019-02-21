@@ -86,6 +86,15 @@
       icon: diamond
       url: "core/value-classes.html"
 
+- category: Authoring Libraries
+  description: "Guides for contributing open source libraries to the Scala ecosystem."
+  overviews:
+    - title: Library Author Guide
+      by: "Julien Richard-Foy"
+      icon: tasks
+      url: "contributors/index.html"
+      description: "Lists all the tools that library authors should setup to publish and document their libraries."
+
 - category: Parallel and Concurrent Programming
   description: "Complete guides covering some of Scala's libraries for parallel and concurrent programming."
   overviews:
