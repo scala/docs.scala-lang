@@ -24,7 +24,7 @@ However, if you just want to jump directly into Scala without installing anythin
 
 ## Setting up and getting started with Scala
 
-### If prefer working in an IDE...
+### If you prefer working in an IDE...
 
 IntelliJ is the most commonly-used IDE by Scala developers. In this tutorial,
 we'll walk you through downloading and setting up IntelliJ with the Scala
