@@ -17,12 +17,11 @@ This table shows the first Scala release in each series that works with each JVM
 
 | JVM version | Minimum Scala versions                                                                        |
 |:-----------:|:----------------------------------------------------------------------------------------------|
-| 11          | 2.12.4, 2.11.12, 2.10.7                                                                       |
+| 12          | see [below](#jdk-12-compatibility-notes)                                                      |
+| 11          | 2.12.4, 2.11.12, 2.10.7 (but also, see [below](#jdk-11-compatibility-notes))                  |
 | 8           | 2.12.0, 2.11.0, 2.10.2                                                                        |
 | 7           | 2.11.0, 2.10.0                                                                                |
 | 6           | 2.11.0, 2.10.0                                                                                |
-
- For more information on Java 11 (and 9 and 10), see [below](#jdk-11-compatibility-notes).
 
 ## Running versus compiling
 
@@ -48,4 +47,31 @@ As of Scala 2.12.8 and 2.11.12, **JDK 11 support is incomplete**. Notably, `scal
 
 JDK 11 support requires minimum sbt version 1.1.0, or 0.13.17 in the 0.13.x series.
 
-For more information on JDK 11 compatibility, watch the ["Support JDK 11"](https://github.com/scala/scala-dev/issues/139 "scala/scala-dev #139") issue on GitHub. To help with testing on Java 11, see [scala/scala-dev#559](https://github.com/scala/scala-dev/issues/559).
+To track progress on JDK 11 compatibility, watch:
+
+* the ["Support JDK 11"](https://github.com/scala/scala-dev/issues/139 "scala/scala-dev #139") issue
+* the [jdk11 label](https://github.com/scala/bug/labels/jdk11) in scala/bug
+
+To help with testing on JDK 11, see [scala/scala-dev#559](https://github.com/scala/scala-dev/issues/559).
+
+## JDK 12 compatibility notes
+
+As of February 2019, JDK 12 is not in full release, but early-access builds are available.  Note that even the final JDK 12 release will not be an LTS release, so the remarks above about non-LTS releases apply.
+
+Scala has not yet been extensively tested on JDK 12.
+
+However, the Scala 2.12 community build is [up and running](https://scala-ci.typesafe.com/view/scala-2.12.x/job/scala-2.12.x-jdk12-integrate-community-build/) on an early-access JDK 12 build, and most projects are green.
+
+Two significant known issues with Scala 2.12.8 on JDK 12 are:
+
+* the `-release` flag doesn't work ([scala/bug#11403](https://github.com/scala/bug/issues/11403))
+* the optimizer doesn't work ([scala/bug#11372](https://github.com/scala/bug/issues/11372))
+
+Both issues have already been fixed.  The fixes will be included in [Scala 2.12.9](https://github.com/scala/scala/milestone/77).  A release date for 2.12.9 has not been set.  In the meantime, consider using a [Scala nightly build](https://stackoverflow.com/questions/40622878/how-do-i-tell-sbt-to-use-a-nightly-build-of-scala-2-12-or-2-13) to test the fixes.
+
+In other respects, so far it appears that 12 is similar to 11 with respect to Scala compatibility.
+
+To track progress on JDK 12 compatibility, watch:
+
+* the [jdk12 label](https://github.com/scala/bug/labels/jdk12) in scala/bug (as well as the [jdk11 label](https://github.com/scala/bug/labels/jdk11))
+* the JDK 11 and 12 community build ticket ([scala/community-builds#796](https://github.com/scala/community-builds/issues/796))
