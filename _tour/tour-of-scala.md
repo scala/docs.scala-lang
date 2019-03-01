@@ -33,7 +33,7 @@ Scala is also a functional language in the sense that [every function is a value
 Furthermore, Scala's notion of pattern matching naturally extends to the [processing of XML data](https://github.com/scala/scala-xml/wiki/XML-Processing) with the help of [right-ignoring sequence patterns](regular-expression-patterns.html), by way of general extension via [extractor objects](extractor-objects.html). In this context, [for comprehensions](for-comprehensions.html) are useful for formulating queries. These features make Scala ideal for developing applications like web services.
 
 ## Scala is statically typed ##
-Scala is equipped with an expressive type system that enforces statically that abstractions are used in a safe and coherent manner. In particular, the type system supports:
+Scala is equipped with an expressive type system that enforces at compile-time that abstractions are used in a safe and coherent manner. In particular, the type system supports:
 
 * [generic classes](generic-classes.html)
 * [variance annotations](variances.html)
