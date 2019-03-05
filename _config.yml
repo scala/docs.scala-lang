@@ -15,7 +15,7 @@ keywords:
 - Document
 - Guide
 
-scala-version: 2.12.2
+scala-version: 2.12.8
 
 collections:
   style:
