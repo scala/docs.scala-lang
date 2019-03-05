@@ -16,6 +16,7 @@ keywords:
 - Guide
 
 scala-version: 2.12.8
+scala-213-version: 2.13.0-M5
 
 collections:
   style:

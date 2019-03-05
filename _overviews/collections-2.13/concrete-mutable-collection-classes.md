@@ -16,7 +16,7 @@ You've now seen the most commonly used immutable collection classes that Scala p
 
 ## Array Buffers
 
-An [ArrayBuffer](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/ArrayBuffer.html) buffer holds an array and a size. Most operations on an array buffer have the same speed as for an array, because the operations simply access and modify the underlying array. Additionally, array buffers can have data efficiently added to the end. Appending an item to an array buffer takes amortized constant time. Thus, array buffers are useful for efficiently building up a large collection whenever the new items are always added to the end.
+An [ArrayBuffer](http://www.scala-lang.org/api/{{ site.scala-213-version }}/scala/collection/mutable/ArrayBuffer.html) buffer holds an array and a size. Most operations on an array buffer have the same speed as for an array, because the operations simply access and modify the underlying array. Additionally, array buffers can have data efficiently added to the end. Appending an item to an array buffer takes amortized constant time. Thus, array buffers are useful for efficiently building up a large collection whenever the new items are always added to the end.
 
     scala> val buf = scala.collection.mutable.ArrayBuffer.empty[Int]
     buf: scala.collection.mutable.ArrayBuffer[Int] = ArrayBuffer()
@@ -29,7 +29,7 @@ An [ArrayBuffer](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/co
 
 ## List Buffers
 
-A [ListBuffer](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/ListBuffer.html) is like an array buffer except that it uses a linked list internally instead of an array. If you plan to convert the buffer to a list once it is built up, use a list buffer instead of an array buffer.
+A [ListBuffer](http://www.scala-lang.org/api/{{ site.scala-213-version }}/scala/collection/mutable/ListBuffer.html) is like an array buffer except that it uses a linked list internally instead of an array. If you plan to convert the buffer to a list once it is built up, use a list buffer instead of an array buffer.
 
     scala> val buf = scala.collection.mutable.ListBuffer.empty[Int]
     buf: scala.collection.mutable.ListBuffer[Int] = ListBuffer()
@@ -42,7 +42,7 @@ A [ListBuffer](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/coll
 
 ## StringBuilders
 
-Just like an array buffer is useful for building arrays, and a list buffer is useful for building lists, a [StringBuilder](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/StringBuilder.html) is useful for building strings. String builders are so commonly used that they are already imported into the default namespace. Create them with a simple `new StringBuilder`, like this:
+Just like an array buffer is useful for building arrays, and a list buffer is useful for building lists, a [StringBuilder](http://www.scala-lang.org/api/{{ site.scala-213-version }}/scala/collection/mutable/StringBuilder.html) is useful for building strings. String builders are so commonly used that they are already imported into the default namespace. Create them with a simple `new StringBuilder`, like this:
 
     scala> val buf = new StringBuilder
     buf: StringBuilder =
@@ -55,7 +55,7 @@ Just like an array buffer is useful for building arrays, and a list buffer is us
 
 ## ArrayDeque
 
-An [ArrayDeque](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/ArrayDeque.html)
+An [ArrayDeque](http://www.scala-lang.org/api/{{ site.scala-213-version }}/scala/collection/mutable/ArrayDeque.html)
 is a sequence that supports efficient addition of elements in the front and in the end.
 It internally uses a resizable array.
 
@@ -81,7 +81,7 @@ Scala provides mutable queues in addition to immutable ones. You use a `mQueue` 
 
 ## Stacks
 
-You saw immutable stacks earlier. There is also a mutable version, supported by class [mutable.Stack](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/Stack.html). It works exactly the same as the immutable version except that modifications happen in place.
+You saw immutable stacks earlier. There is also a mutable version, supported by class [mutable.Stack](http://www.scala-lang.org/api/{{ site.scala-213-version }}/scala/collection/mutable/Stack.html). It works exactly the same as the immutable version except that modifications happen in place.
 
     scala> val stack = new scala.collection.mutable.Stack[Int]           
     stack: scala.collection.mutable.Stack[Int] = Stack()
@@ -104,13 +104,13 @@ You saw immutable stacks earlier. There is also a mutable version, supported by 
 
 ## Mutable ArraySeqs
 
-Array sequences are mutable sequences of fixed size which store their elements internally in an `Array[Object]`. They are implemented in Scala by class [ArraySeq](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/ArraySeq.html).
+Array sequences are mutable sequences of fixed size which store their elements internally in an `Array[Object]`. They are implemented in Scala by class [ArraySeq](http://www.scala-lang.org/api/{{ site.scala-213-version }}/scala/collection/mutable/ArraySeq.html).
 
 You would typically use an `ArraySeq` if you want an array for its performance characteristics, but you also want to create generic instances of the sequence where you do not know the type of the elements and you do not have a `ClassTag` to provide it at run-time. These issues are explained in the section on [arrays]({{ site.baseurl }}/overviews/collections/arrays.html).
 
 ## Hash Tables
 
-A hash table stores its elements in an underlying array, placing each item at a position in the array determined by the hash code of that item. Adding an element to a hash table takes only constant time, so long as there isn't already another element in the array that has the same hash code. Hash tables are thus very fast so long as the objects placed in them have a good distribution of hash codes. As a result, the default mutable map and set types in Scala are based on hash tables. You can access them also directly under the names [mutable.HashSet](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/HashSet.html) and [mutable.HashMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/HashMap.html).
+A hash table stores its elements in an underlying array, placing each item at a position in the array determined by the hash code of that item. Adding an element to a hash table takes only constant time, so long as there isn't already another element in the array that has the same hash code. Hash tables are thus very fast so long as the objects placed in them have a good distribution of hash codes. As a result, the default mutable map and set types in Scala are based on hash tables. You can access them also directly under the names [mutable.HashSet](http://www.scala-lang.org/api/{{ site.scala-213-version }}/scala/collection/mutable/HashSet.html) and [mutable.HashMap](http://www.scala-lang.org/api/{{ site.scala-213-version }}/scala/collection/mutable/HashMap.html).
 
 Hash sets and maps are used just like any other set or map. Here are some simple examples:
 
@@ -129,11 +129,11 @@ Iteration over a hash table is not guaranteed to occur in any particular order. 
 
 ## Weak Hash Maps
 
-A weak hash map is a special kind of hash map where the garbage collector does not follow links from the map to the keys stored in it. This means that a key and its associated value will disappear from the map if there is no other reference to that key. Weak hash maps are useful for tasks such as caching, where you want to re-use an expensive function's result if the function is called again on the same key. If keys and function results are stored in a regular hash map, the map could grow without bounds, and no key would ever become garbage. Using a weak hash map avoids this problem. As soon as a key object becomes unreachable, it's entry is removed from the weak hashmap. Weak hash maps in Scala are implemented by class [WeakHashMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/WeakHashMap.html) as a wrapper of an underlying Java implementation `java.util.WeakHashMap`.
+A weak hash map is a special kind of hash map where the garbage collector does not follow links from the map to the keys stored in it. This means that a key and its associated value will disappear from the map if there is no other reference to that key. Weak hash maps are useful for tasks such as caching, where you want to re-use an expensive function's result if the function is called again on the same key. If keys and function results are stored in a regular hash map, the map could grow without bounds, and no key would ever become garbage. Using a weak hash map avoids this problem. As soon as a key object becomes unreachable, it's entry is removed from the weak hashmap. Weak hash maps in Scala are implemented by class [WeakHashMap](http://www.scala-lang.org/api/{{ site.scala-213-version }}/scala/collection/mutable/WeakHashMap.html) as a wrapper of an underlying Java implementation `java.util.WeakHashMap`.
 
 ## Concurrent Maps
 
-A concurrent map can be accessed by several threads at once. In addition to the usual [Map](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Map.html) operations, it provides the following atomic operations:
+A concurrent map can be accessed by several threads at once. In addition to the usual [Map](http://www.scala-lang.org/api/{{ site.scala-213-version }}/scala/collection/Map.html) operations, it provides the following atomic operations:
 
 ### Operations in Class concurrent.Map
 
@@ -144,11 +144,11 @@ A concurrent map can be accessed by several threads at once. In addition to the 
 |  `m.replace(k, old, new)`  	  |Replaces value associated with key `k` to `new`, if it was previously bound to `old`. |
 |  `m.replace (k, v)`  	        |Replaces value associated with key `k` to `v`, if it was previously bound to some value.|
 
-`concurrent.Map` is a trait in the Scala collections library. Currently, it has two implementations. The first one is Java's `java.util.concurrent.ConcurrentMap`, which can be converted automatically into a Scala map using the [standard Java/Scala collection conversions]({{ site.baseurl }}/overviews/collections/conversions-between-java-and-scala-collections.html). The second implementation is [TrieMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/concurrent/TrieMap.html), which is a lock-free implementation of a hash array mapped trie.
+`concurrent.Map` is a trait in the Scala collections library. Currently, it has two implementations. The first one is Java's `java.util.concurrent.ConcurrentMap`, which can be converted automatically into a Scala map using the [standard Java/Scala collection conversions]({{ site.baseurl }}/overviews/collections/conversions-between-java-and-scala-collections.html). The second implementation is [TrieMap](http://www.scala-lang.org/api/{{ site.scala-213-version }}/scala/collection/concurrent/TrieMap.html), which is a lock-free implementation of a hash array mapped trie.
 
 ## Mutable Bitsets
 
-A mutable bit of type [mutable.BitSet](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/BitSet.html) set is just like an immutable one, except that it is modified in place. Mutable bit sets are slightly more efficient at updating than immutable ones, because they don't have to copy around `Long`s that haven't changed.
+A mutable bit of type [mutable.BitSet](http://www.scala-lang.org/api/{{ site.scala-213-version }}/scala/collection/mutable/BitSet.html) set is just like an immutable one, except that it is modified in place. Mutable bit sets are slightly more efficient at updating than immutable ones, because they don't have to copy around `Long`s that haven't changed.
 
     scala> val bits = scala.collection.mutable.BitSet.empty
     bits: scala.collection.mutable.BitSet = BitSet()
