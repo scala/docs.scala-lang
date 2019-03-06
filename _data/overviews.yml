@@ -49,6 +49,39 @@
       url: "core/architecture-of-scala-collections.html"
       by: Martin Odersky and Lex Spoon
       description: "These pages describe the architecture of the Scala collections framework in detail. Compared to the Collections API you will find out more about the internal workings of the framework. You will also learn how this architecture helps you define your own collections in a few lines of code, while reusing the overwhelming part of collection functionality from the framework."
+    - title: Scala 2.13’s Collections
+      by: Martin Odersky and Julien Richard-Foy
+      icon: sitemap
+      url: "collections-2.13/introduction.html"
+      description: "Scala's Collection Library."
+      subdocs:
+        - title: Introduction
+          url: "collections-2.13/introduction.html"
+        - title: Mutable and Immutable Collections
+          url: "collections-2.13/overview.html"
+        - title: Trait Iterable
+          url: "collections-2.13/trait-iterable.html"
+        - title: The sequence traits Seq, IndexedSeq, and LinearSeq
+        - title: Concrete Immutable Collection Classes
+          url: "collections-2.13/concrete-immutable-collection-classes.html"
+        - title: Concrete Mutable Collection Classes
+          url: "collections-2.13/concrete-mutable-collection-classes.html"
+        - title: Arrays
+          url: "collections-2.13/arrays.html"
+        - title: Strings
+          url: "collections-2.13/strings.html"
+        - title: Performance Characteristics
+          url: "collections-2.13/performance-characteristics.html"
+        - title: Equality
+          url: "collections-2.13/equality.html"
+        - title: Views
+          url: "collections-2.13/views.html"
+        - title: Iterators
+          url: "collections-2.13/iterators.html"
+        - title: Creating Collections From Scratch
+          url: "collections-2.13/creating-collections-from-scratch.html"
+        - title: Conversions Between Java and Scala Collections
+          url: "collections-2.13/conversions-between-java-and-scala-collections.html"
     - title: The Architecture of Scala 2.13’s Collections
       icon: sitemap
       url: "core/architecture-of-scala-213-collections.html"
