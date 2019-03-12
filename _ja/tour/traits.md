@@ -27,7 +27,6 @@ trait HairColor
 ```
 
 トレイトはジェネリック型として、抽象メソッドとあわせて使うと特に便利です。
-Traits become especially useful as generic types and with abstract methods.
 ```tut
 trait Iterator[A] {
   def hasNext: Boolean
