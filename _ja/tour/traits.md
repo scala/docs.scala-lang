@@ -20,7 +20,7 @@ redirect_from: "/tutorials/tour/traits.html"
 クラスとオブジェクトはトレイトを継承することができますが、トレイトはインスタンス化ができません、したがってパラメータを持ちません。
 
 ## トレイトを定義する
-最小のトレイトはキーワード `trait` と識別子とだけのものです。
+最小のトレイトはキーワード `trait` と識別子だけというものです。
 A minimal trait is simply the keyword `trait` and an identifier:
 
 ```tut
