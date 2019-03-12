@@ -21,7 +21,6 @@ redirect_from: "/tutorials/tour/traits.html"
 
 ## トレイトを定義する
 最小のトレイトはキーワード `trait` と識別子だけというものです。
-A minimal trait is simply the keyword `trait` and an identifier:
 
 ```tut
 trait HairColor
