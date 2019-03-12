@@ -65,7 +65,7 @@ iterator.next()  // returns 1
 `extends Iterator[Int]` は `next` メソッドは Int を返さなければならないことを意味します。
 
 ## サブタイピング
-トレイトは必要があれば、代りにトレイトのサブタイプを使うことができます。
+あるトレイトが必要とされている場所に、代りにそのトレイトのサブタイプを使うことができます。
 
 ```tut
 import scala.collection.mutable.ArrayBuffer
