@@ -1,6 +1,7 @@
 ---
 layout: tour
-title: Traits
+title: トレイト
+language: ja
 
 discourse: true
 
@@ -15,15 +16,18 @@ prerequisite-knowledge: expressions, classes, generics, objects, companion-objec
 redirect_from: "/tutorials/tour/traits.html"
 ---
 
-Traits are used to share interfaces and fields between classes. They are similar to Java 8's interfaces. Classes and objects can extend traits but traits cannot be instantiated and therefore have no parameters.
+トレイトはクラス間でインターフェースとフィールドを共有するために使います。それらはJava8のインターフェースと似ています。
+クラスとオブジェクトはトレイトを継承することができますが、トレイトはインスタンス化ができません、したがってパラメータを持ちません。
 
-## Defining a trait
+## トレイトを定義する
+最小のトレイトはキーワード `trait` と識別子とだけのものです。
 A minimal trait is simply the keyword `trait` and an identifier:
 
 ```tut
 trait HairColor
 ```
 
+トレイトはジェネリック型として抽象メソッドと共に特に役立ちます。
 Traits become especially useful as generic types and with abstract methods.
 ```tut
 trait Iterator[A] {
@@ -32,10 +36,10 @@ trait Iterator[A] {
 }
 ```
 
-Extending the `trait Iterator[A]` requires a type `A` and implementations of the methods `hasNext` and `next`.
+`trait Iterator[A]` を継承することは `A` 型と、`hasNext` と `next` メソッドの実装を必要とします。
 
-## Using traits
-Use the `extends` keyword to extend a trait. Then implement any abstract members of the trait using the `override` keyword:
+## トレイトの使い方
+トレイトを継承するには `extends` キーワードを使います。その際に、 `override` キーワードを利用しすべての抽象メンバーを実装します。
 ```tut
 trait Iterator[A] {
   def hasNext: Boolean
@@ -59,10 +63,12 @@ val iterator = new IntIterator(10)
 iterator.next()  // returns 0
 iterator.next()  // returns 1
 ```
-This `IntIterator` class takes a parameter `to` as an upper bound. It `extends Iterator[Int]` which means that the `next` method must return an Int.
+ここでの  `IntIterator` クラスは上限として引数 `to` を取ります。
+`extends Iterator[Int]` は `next` メソッドは Int を返さなければならないことを意味します。
 
-## Subtyping
-Where a given trait is required, a subtype of the trait can be used instead.
+## サブタイピング
+トレイトは必要があれば、代りにトレイトのサブタイプを使うことができます。
+
 ```tut
 import scala.collection.mutable.ArrayBuffer
 
@@ -81,4 +87,5 @@ animals.append(dog)
 animals.append(cat)
 animals.foreach(pet => println(pet.name))  // Prints Harry Sally
 ```
-The `trait Pet` has an abstract field `name` which gets implemented by Cat and Dog in their constructors. On the last line, we call `pet.name` which must be implemented in any subtype of the trait `Pet`.
+`trait Pet` はCat と Dogそれらのコンストラクタの中で実装された抽象フィールド `name`を持ちます。
+最終行では、`Pet` トレイトの全てのサブタイプの中で実装される必要がある `pet.name` を呼んでいます。
