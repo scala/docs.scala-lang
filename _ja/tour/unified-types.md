@@ -27,15 +27,15 @@ Anyは `equals`、` hashCode`、そして `toString`のようないくつかの�
 
 `AnyVal` は値型に相当します。
 事前に定義された9つの値型が存在し、それら`Double`, `Float`, `Long`, `Int`, `Short`, `Byte`, `Char`, `Unit`,`Boolean`は
-ヌラブル(nullable)ではありません。
+null非許容です。
 
-`Unit`は意味のない情報を返す値型です。明確に`Unit`のインスタンスがあり、`()`のような形で宣言されることがあります。
+`Unit`は意味のある情報をもたない値型です。`Unit`型のインスタンスはただ1つだけあり、`()`というリテラルで宣言することができます。
 全ての関数は必ず何かを返さなければなりません。そのため`Unit`は戻り値の型として時々役立ちます。
 
 `AnyRef` は参照型を意味します。全ての値型でない型は参照型として定義されます。Scalaでは全てのユーザー定義型は`AnyRef`のサブタイプになります。
 もしScalaがJava実行環境上で利用されるなら、`AnyRef` は `java.lang.Object` に相当します。
 
-ここにstring値、integer値、character値、boolean値と関数が他のオブジェクトと同様に全てオブジェクトであるという例があります。
+以下にstring、integer、character、boolean、関数が他のオブジェクトと同様に全てオブジェクトであるという例を示します。
 
 ```tut
 val list: List[Any] = List(
@@ -50,8 +50,7 @@ list.foreach(element => println(element))
 ```
 
 これは`List[Any]`型の`list`という値を定義します。
-このlistは様々な型の要素で初期化されますが、それら全ては `scala.Any` のインスタンスです。
-そのため、ここではlistにそれらの値を追加することができます。
+このlistは様々な型の要素で初期化されています。しかしそれらは全て `scala.Any` のインスタンスなのでlistに追加することができています。
 
 こちらは先程のプログラムの出力です。
 
@@ -63,8 +62,8 @@ true
 <function>
 ```
 
-## 型変換
-値型は以下の順序で変換することができます。
+## 型キャスト
+値型は以下の順序でキャストできます。
 
 Value types can be cast in the following way:
 <a href="{{ site.baseurl }}/resources/images/tour/type-casting-diagram.svg"><img  style="width:100%" src="{{ site.baseurl }}/resources/images/tour/type-casting-diagram.svg" alt="Scalaの型階層"></a>
@@ -91,9 +90,10 @@ val z: Long = y  // 一致しない
 
 ## Nothing と Null
 `Nothing`は全ての型のサブタイプであり、ボトム型とも呼ばれます。`Nothing`型を持つ値は存在しません。
-一般的にスローされた例外、プログラム終了、無限ループのような終了していない信号として使われます。
-(例えば、値を評価しない表現や正常に返されないメソッド)
+一般的に例外のスロー、プログラム終了、無限ループなど終了していないことを示すのに使われます。
+(すなわち、値として評価されない式や正常に返らないメソッドなどです。)
 
-`Null` は全ての参照型(例えば、全てのAnyRefのサブタイプ)です。`null`というキーワード表記によって単一の値が識別されます。
-`Null` は多くの場合、他のJVM言語との相互運用性のため提供され、Scalaのコード内では決して使われるべきではありません。
-以降のツアーでは`null`の代替手段について説明します。
+
+`Null` は全ての参照型のサブタイプ(すなわち、全てのAnyRefのサブタイプ)です。`null`というキーワードリテラルが指す値を1つだけもちます。
+`Null` は、ほぼ他のJVM言語との相互運用性のためだけに提供されているので、Scalaのコード内ではほとんどの場合、使われるべきではありません。
+`null`の代替手段については、後のツアーで説明します。
