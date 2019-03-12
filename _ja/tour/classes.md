@@ -16,7 +16,7 @@ prerequisite-knowledge: no-return-keyword, type-declaration-syntax, string-inter
 redirect_from: "/tutorials/tour/classes.html"
 ---
 
-Scalaにおけるクラスはオブジェクトを作るための設計図となります。
+Scalaにおけるクラスはオブジェクトを作るための設計図です。
 それらはメソッド、値、変数、型、オブジェクト、トレイト、クラスを持ち、まとめて _メンバー_ と呼ばれます。
 型、オブジェクト、トレイトはツアーで後ほど取り扱います。
 
