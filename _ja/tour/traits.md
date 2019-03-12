@@ -27,7 +27,7 @@ A minimal trait is simply the keyword `trait` and an identifier:
 trait HairColor
 ```
 
-トレイトはジェネリック型として抽象メソッドと共に特に役立ちます。
+トレイトはジェネリック型として、抽象メソッドとあわせて使うと特に便利です。
 Traits become especially useful as generic types and with abstract methods.
 ```tut
 trait Iterator[A] {
