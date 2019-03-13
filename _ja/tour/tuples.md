@@ -1,6 +1,7 @@
 ---
 layout: tour
-title: Tuples
+title: タプル
+language: ja
 
 discourse: true
 
@@ -14,27 +15,28 @@ topics: tuples
 redirect_from: "/tutorials/tour/tuples.html"
 ---
 
-In Scala, a tuple is a class that can hold elements of different types.
-Tuples are immutable.
+Scalaではタプルは異なる型の要素を持つことができるクラスです。
+タプルは不変です。
 
-Tuples come in handy when we have to return multiple values from a function.
+タプルは関数から複数の値を返す際に役立ちます。
 
-A tuple can be created as:
+タプルは以下のように作ることができます
 
 ```tut
 val ingredient = ("Sugar" , 25):Tuple2[String, Int]
 ```
-This creates a tuple containing a String element and an Int element.
+ここではString要素とInt要素を含むタプルを作っています。
 
-Tuple in Scala is a series of classes: Tuple2, Tuple3, etc., through Tuple22.
-So when we create a tuple with n elements(n lying between 2 and 22), Scala basically instantiates
-one of the corresponding classes from the group, parameterized with types of constituent elements.
-For eg., ingredient is of type Tuple2[String, Int].
+Scalaではタプルは Tuple2, Tuple3, とTuple22までのクラスの連続です。
+そのためn個の要素（nは2から22）でタプルを作成する時、
 
-## Accessing the elements
+Scalaは基本的に構成要素の型でパラメーター化されたグループに対応するクラスを1つインスタンス化します。
+例えば、 値 ingredient は Tuple2 [String, Int]型です。
 
-Tuple elements are accessed using underscore syntax.
-'tuple._n' gives nth element(given there are that many elements).
+## 要素へのアクセス
+
+タプル要素にはアンダースコア記法を用いてアクセスします。
+（要素がたくさんあることを考えると）'tuple._n' はn番目の要素を与えます。
 
 ```tut
 println(ingredient._1) // Sugar
@@ -42,9 +44,9 @@ println(ingredient._1) // Sugar
 println(ingredient._2) // 25
 ```
 
-## Destructuring tuple data
+## タプルのデータの構造化
 
-Scala tuple also supports destructuring.
+Scalaのタプルは構造化にも対応しています。
 
 ```tut
 val (name, quantity) = ingredient
@@ -54,7 +56,7 @@ println(name) // Sugar
 println(quantity) // 25
 ```
 
-Tuple destructuring can be used in pattern matching too.
+タプルの構造化はパターンマッチングでも使われます。
 
 ```tut
 val planetDistanceFromSun = List(("Mercury", 57.9), ("Venus", 108.2), ("Earth", 149.6 ), ("Mars", 227.9), ("Jupiter", 778.3))
@@ -78,7 +80,7 @@ planetDistanceFromSun.foreach{ tuple => {
 }
 ```
 
-Or, in 'for' comprehension.
+また、for内包表記においては、
 
 ```tut
 val numPairs = List((2, 5), (3, -7), (20, 56))
@@ -90,6 +92,8 @@ for ((a, b) <- numPairs) {
 }
 ```
 
-The value () of type Unit is conceptually the same as the value () of type Tuple0. There can only be one value of this type since it has no elements.
+Unit型の値 () は概念的には Tuple0 型の () の値と同じです。
+要素が無いため、この型の値は1つだけになりえます。
 
-Users may sometimes find hard to choose between Tuples and case classes. As a rule, case classes are preferred choice if elements carry more meaning.
+ユーザーは時々タプルとケースクラスを選ぶのが難しいと感じる時があるかもしれません。
+ルールの通理、ケースクラスは要素がより多くの意味を持つような時に好まれます。
