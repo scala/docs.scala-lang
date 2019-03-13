@@ -46,7 +46,7 @@ println(ingredient._2) // 25
 
 ## タプルのデータの分割代入
 
-Scalaのタプルは構造化にも対応しています。
+Scalaのタプルは分割代入にも対応しています。
 
 ```tut
 val (name, quantity) = ingredient
