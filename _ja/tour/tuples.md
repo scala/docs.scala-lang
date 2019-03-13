@@ -30,7 +30,7 @@ val ingredient = ("Sugar" , 25):Tuple2[String, Int]
 Scalaではタプルは Tuple2, Tuple3, … Tuple22 までの一連のクラス群です。
 そのためn個の要素（nは2から22）でタプルを作成する時、
 
-Scalaは基本的に構成要素の型でパラメーター化されたグループに対応するクラスを1つインスタンス化します。
+Scalaは基本的にそれらのクラスの中から構成要素の型に対応するクラスを1つインスタンス化します。
 例えば、 値 ingredient は Tuple2 [String, Int]型です。
 
 ## 要素へのアクセス
