@@ -25,7 +25,7 @@ Scalaではタプルは異なる型の要素を複数持つことができるク
 ```tut
 val ingredient = ("Sugar" , 25):Tuple2[String, Int]
 ```
-ここではString要素とInt要素を含むタプルを作っています。
+ここではString要素を1つとInt要素を1つ含むタプルを作っています。
 
 Scalaではタプルは Tuple2, Tuple3, とTuple22までのクラスの連続です。
 そのためn個の要素（nは2から22）でタプルを作成する時、
