@@ -44,7 +44,7 @@ println(ingredient._1) // Sugar
 println(ingredient._2) // 25
 ```
 
-## タプルのデータの構造化
+## タプルのデータの分割代入
 
 Scalaのタプルは構造化にも対応しています。
 
