@@ -484,7 +484,7 @@ $('#filter').focus();
       var filter = $(this).val(), count = 0;
 
       // Loop through the comment list
-      $(".glossary > .inner-box > ul li").each(function(){
+      $(".glossary .toc-context > ul li").each(function(){
             // If the name of the glossary term does not contain the text phrase fade it out
           if (jQuery(this).find("h4").text().search(new RegExp(filter, "i")) < 0) {
               $(this).fadeOut();
