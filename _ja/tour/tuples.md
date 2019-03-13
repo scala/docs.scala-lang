@@ -15,7 +15,7 @@ topics: tuples
 redirect_from: "/tutorials/tour/tuples.html"
 ---
 
-Scalaではタプルは異なる型の要素を持つことができるクラスです。
+Scalaではタプルは異なる型の要素を複数持つことができるクラスです。
 タプルは不変です。
 
 タプルは関数から複数の値を返す際に役立ちます。
