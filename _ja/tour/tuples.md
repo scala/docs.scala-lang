@@ -56,7 +56,7 @@ println(name) // Sugar
 println(quantity) // 25
 ```
 
-タプルの構造化はパターンマッチングでも使われます。
+タプルの分割代入はパターンマッチングでも使われます。
 
 ```tut
 val planetDistanceFromSun = List(("Mercury", 57.9), ("Venus", 108.2), ("Earth", 149.6 ), ("Mars", 227.9), ("Jupiter", 778.3))
