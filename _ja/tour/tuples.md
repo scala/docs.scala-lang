@@ -27,7 +27,7 @@ val ingredient = ("Sugar" , 25):Tuple2[String, Int]
 ```
 ここではString要素を1つとInt要素を1つ含むタプルを作っています。
 
-Scalaではタプルは Tuple2, Tuple3, とTuple22までのクラスの連続です。
+Scalaではタプルは Tuple2, Tuple3, … Tuple22 までの一連のクラス群です。
 そのためn個の要素（nは2から22）でタプルを作成する時、
 
 Scalaは基本的に構成要素の型でパラメーター化されたグループに対応するクラスを1つインスタンス化します。
