@@ -9,7 +9,7 @@ title: Glossary
   <div class="icon-search">
     <i class="fa fa-search"></i>
   </div>
-  <input type="text" id="filter" placeholder="Look up a term...">
+  <input type="text" id="filter-glossary-terms" placeholder="Look up a term...">
   <!-- <input class="field" id="filter" type="text" /> -->
   <span id="filter-count">&nbsp;</span>
 </div>

@@ -476,9 +476,9 @@ function updatePointer() {
 // Glossary search
 $(document).ready(function() {
 
-$('#filter').focus();
+$('#filter-glossary-terms').focus();
 
-  $("#filter").keyup(function(){
+  $("#filter-glossary-terms").keyup(function(){
 
       // Retrieve the input field text and reset the count to zero
       var filter = $(this).val(), count = 0;
