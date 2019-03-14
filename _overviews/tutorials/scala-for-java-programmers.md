@@ -642,9 +642,11 @@ inferiority, as follows. It makes use of another method,
         sys.error("cannot compare " + that + " and a Date")
 
       val o = that.asInstanceOf[Date]
-      (year < o.year) ||
-      (year == o.year && (month < o.month ||
-                         (month == o.month && day < o.day)))
+      (year < o.year) || {
+        (year == o.year && (month < o.month || {
+          (month == o.month && day < o.day)
+        })
+      }
     }
 
 This completes the definition of the `Date` class. Instances of
