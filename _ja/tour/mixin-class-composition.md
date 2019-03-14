@@ -1,6 +1,7 @@
 ---
 layout: tour
-title: Class Composition with Mixins
+title: ミックスインを用いたクラス合成
+language: ja
 
 discourse: true
 
@@ -13,7 +14,7 @@ prerequisite-knowledge: inheritance, traits, abstract-classes, unified-types
 
 redirect_from: "/tutorials/tour/mixin-class-composition.html"
 ---
-Mixins are traits which are used to compose a class.
+ミックスインは複数のトレイトを利用し1つのクラスを構成することです。
 
 ```tut
 abstract class A {
@@ -31,9 +32,11 @@ val d = new D
 println(d.message)  // I'm an instance of class B
 println(d.loudMessage)  // I'M AN INSTANCE OF CLASS B
 ```
-Class `D` has a superclass `B` and a mixin `C`. Classes can only have one superclass but many mixins (using the keywords `extends` and `with` respectively). The mixins and the superclass may have the same supertype.
+クラス`D`は スーパークラスを`B` とし、 ミックスイン`C`を持ちます。
+クラスは1つだけしかスーパークラスを持つことができませんが、ミックスインは(`extends`とそれぞれに応じた`with`キーワードを利用し)複数持つことができます。
+ミックスインとスーパークラスは同じスーパータイプを持つことができます。
 
-Now let's look at a more interesting example starting with an abstract class:
+それでは抽象クラスから始まる興味深い例を見てみましょう。
 
 ```tut
 abstract class AbsIterator {
@@ -42,9 +45,8 @@ abstract class AbsIterator {
   def next(): T
 }
 ```
-The class has an abstract type `T` and the standard iterator methods.
-
-Next, we'll implement a concrete class (all abstract members `T`, `hasNext`, and `next` have implementations):
+クラスは抽象型`T`と標準的なイテレーターのメソッドを持ちます。
+次に、（全ての抽象メンバー`T`, `hasNext`, `next`が実装を持つ）具象クラスを実装します。
 
 ```tut
 class StringIterator(s: String) extends AbsIterator {
@@ -58,19 +60,20 @@ class StringIterator(s: String) extends AbsIterator {
   }
 }
 ```
-`StringIterator` takes a `String` and can be used to iterate over the String (e.g. to see if a String contains a certain character).
+`StringIterator`は`String`を受け取り、Stringを反復処理するために使うことができます。
+（例：Stringに特定の文字列が含まれているかを確認するために）
 
-Now let's create a trait which also extends `AbsIterator`.
+それでは`AbsIterator`を継承したトレイトも作ってみましょう。
 
 ```tut
 trait RichIterator extends AbsIterator {
   def foreach(f: T => Unit): Unit = while (hasNext) f(next())
 }
 ```
-This trait implements `foreach` by continually calling the provided function `f: T => Unit` on the next element (`next()`) as long as there are further elements (`while (hasNext)`). Because `RichIterator` is a trait, it doesn't need to implement the abstract members of AbsIterator.
+このトレイトは(`while (hasNext)`で)要素がある限り、与えられた関数 `f: T => Unit`を次の要素(`next()`)に対し連続して呼び出す`foreach`メソッドのみを実装します。
+なぜなら`RichIterator`はトレイトであり、`RichIterator`はAbsIteratorの抽象メンバーを実装する必要がないからです。
 
-We would like to combine the functionality of `StringIterator` and `RichIterator` into a single class.
-
+`StringIterator`と`RichIterator`の機能を1つのクラスに組み合わせたい場合、
 ```tut
 object StringIteratorTest extends App {
   class RichStringIter extends StringIterator("Scala") with RichIterator
@@ -78,6 +81,6 @@ object StringIteratorTest extends App {
   richStringIter foreach println
 }
 ```
-The new class `RichStringIter` has `StringIterator` as a superclass and `RichIterator` as a mixin.
+新しいクラス`RichStringIter`は`StringIterator`をスーパークラスとし、`RichIterator`をミックスインします。
 
-With single inheritance we would not be able to achieve this level of flexibility.
+単一継承ではこのレベルの柔軟性を達成することはできないでしょう。
