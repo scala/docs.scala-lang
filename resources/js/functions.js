@@ -304,26 +304,8 @@ $(document).ready(function() {
       autoId: true,
       numerate: false
     });
-    toggleStickyToc();
   }
 });
-
-$(window).resize(function() {
-  toggleStickyToc();
-});
-
-var toggleStickyToc = function() {
-  if ($("#sidebar-toc").length) {
-    if ($(window).width() <= 992) {
-      $(".sidebar-toc-wrapper").unstick();
-    } else {
-      $(".sidebar-toc-wrapper").sticky({
-        topSpacing: 0,
-        bottomSpacing: 500
-      });
-    }
-  }
-}
 
 // Language dropdown
 function DropDown(el) {

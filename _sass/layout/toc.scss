@@ -3,6 +3,14 @@
 //------------------------------------------------
 
 .sidebar-toc-wrapper {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+
+  @include bp(large) {
+    position: relative;
+  }
+
   @include bp(medium) {
     display: none;
   }
