@@ -12,6 +12,15 @@
   }
 }
 
+.inner-toc {
+  max-height: 60vh;
+  overflow-y: auto;
+
+  @include bp(large) {
+    max-height: none;
+  }
+}
+
 #toc {
   ul {
     list-style: none;
