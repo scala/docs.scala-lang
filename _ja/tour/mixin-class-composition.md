@@ -60,7 +60,7 @@ class StringIterator(s: String) extends AbsIterator {
   }
 }
 ```
-`StringIterator`は`String`を受け取り、Stringを反復処理するために使うことができます。
+`StringIterator`は`String`を受け取り、そのStringを反復処理するために使われます。
 （例：Stringに特定の文字列が含まれているかを確認するために）
 
 それでは`AbsIterator`を継承したトレイトも作ってみましょう。
