@@ -81,6 +81,6 @@ object StringIteratorTest extends App {
   richStringIter foreach println
 }
 ```
-新しいクラス`RichStringIter`は`StringIterator`をスーパークラスとし、`RichIterator`をミックスインします。
+新しいクラス`RichStringIter`は`StringIterator`をスーパークラスとし、`RichIterator`をミックスインとしています。
 
 単一継承ではこのレベルの柔軟性を達成することはできないでしょう。
