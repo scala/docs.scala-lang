@@ -14,7 +14,7 @@ prerequisite-knowledge: inheritance, traits, abstract-classes, unified-types
 
 redirect_from: "/tutorials/tour/mixin-class-composition.html"
 ---
-ミックスインは複数のトレイトを利用し1つのクラスを構成することです。
+ミックスインはクラスを構成するのに使われるトレイトです。
 
 ```tut
 abstract class A {
