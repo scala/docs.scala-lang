@@ -73,7 +73,7 @@ trait RichIterator extends AbsIterator {
 このトレイトは(`while (hasNext)`で)要素がある限り、与えられた関数 `f: T => Unit`を次の要素(`next()`)に対し連続して呼び出す`foreach`メソッドを実装しています。
 `RichIterator`はトレイトなので、`RichIterator`はAbsIteratorの抽象メンバーを実装する必要がありません。
 
-`StringIterator`と`RichIterator`の機能を1つのクラスに組み合わせたい場合、
+`StringIterator`と`RichIterator`の機能を1つのクラスに組み合わせてみましょう。
 ```tut
 object StringIteratorTest extends App {
   class RichStringIter extends StringIterator("Scala") with RichIterator
