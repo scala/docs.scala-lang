@@ -1,6 +1,7 @@
 ---
 layout: tour
-title: Higher-order Functions
+title: 高階関数
+language: ja
 
 discourse: true
 
@@ -13,57 +14,53 @@ previous-page: mixin-class-composition
 redirect_from: "/tutorials/tour/higher-order-functions.html"
 ---
 
-Higher order functions take other functions as parameters or return a function as
-a result. This is possible because functions are first-class values in Scala.
-The terminology can get a bit confusing at this point, and we use the phrase
-"higher order function" for both methods and functions that take functions as parameters
-or that return a function.
+高階関数は他の関数をパラメーターとして受け取る、もしくは結果として関数を返します。
+Scalaでは関数は第一級の値であるため、高階関数が可能となります。
+この時点でその用語は少し混乱を招くことがあります。
+ここでは"高階関数"というフレーズを関数をパラメーターとして受け取る、または関数を返すメソッドと関数の両方に対して使います。
 
-One of the most common examples is the higher-order
-function `map` which is available for collections in Scala.
+もっとも一般的な例の1つは、Scalaのコレクションで利用可能な高階関数`map`です。
 ```tut
 val salaries = Seq(20000, 70000, 40000)
 val doubleSalary = (x: Int) => x * 2
 val newSalaries = salaries.map(doubleSalary) // List(40000, 140000, 80000)
 ```
-`doubleSalary` is a function which takes a single Int, `x`, and returns `x * 2`. In general, the tuple on the left of the arrow `=>` is a parameter list and the value of the expression on the right is what gets returned. On line 3, the function `doubleSalary` gets applied to each element in the
-list of salaries.
+`doubleSalary`はInt`x`を1つだけ受け取り、`x * 2`を返す関数です。
+一般的に、アロー`=>`の左側のタプルは引数リストであり、右側の値が返されます。
+3行目は給与のリストになります。
 
-To shrink the code, we could make the function anonymous and pass it directly as
-an argument to map:
+コードを減らすため、以下のように無名関数を作ることができ、引数として直接mapに渡すことができます
 ```
 val salaries = Seq(20000, 70000, 40000)
 val newSalaries = salaries.map(x => x * 2) // List(40000, 140000, 80000)
 ```
-Notice how `x` is not declared as an Int in the above example. That's because the
-compiler can infer the type based on the type of function map expects. An even more idiomatic way to write the same piece of code would be:
+上記例では`x`をIntとして宣言していないことに注意してください。
+それはmapが期待する関数の型を基にコンパイラーが型を推論できるからです。
+さらに言えば、慣用的には同じコードを以下のように書きます。
 
 ```tut
 val salaries = Seq(20000, 70000, 40000)
 val newSalaries = salaries.map(_ * 2)
 ```
-Since the Scala compiler already knows the type of the parameters (a single Int),
- you just need to provide the right side of the function. The only
-caveat is that you need to use `_` in place of a parameter name (it was `x` in
-the previous example).
+Scalaコンパイラはパラメーターの型を（Intが1つだけと）既に知っているため、関数の右側だけを提供する必要があります。
+唯一の注意点はパラメータ名の代わりに`_`を使う必要があるということです（先の例では`x`でした）。
 
-## Coercing methods into functions
-It is also possible to pass methods as arguments to higher-order functions because
-the Scala compiler will coerce the method into a function.
+## メソッドを関数に強制変換
+高階関数には引数としてとしてメソッドを渡すことも可能で、それはScalaコンパイラがメソッドを関数に強制変換するからです。
 ```
 case class WeeklyWeatherForecast(temperatures: Seq[Double]) {
 
   private def convertCtoF(temp: Double) = temp * 1.8 + 32
 
-  def forecastInFahrenheit: Seq[Double] = temperatures.map(convertCtoF) // <-- passing the method convertCtoF
+  def forecastInFahrenheit: Seq[Double] = temperatures.map(convertCtoF) // <-- convertCtoFメソッドが渡されます
 }
 ```
-Here the method `convertCtoF` is passed to `forecastInFahrenheit`. This is possible because the compiler coerces `convertCtoF` to the function `x => convertCtoF(x)` (note: `x` will
-  be a generated name which is guaranteed to be unique within its scope).
+ここではメソッド`convertCtoF`は`forecastInFahrenheit`に渡されます。
+これはコンパイラが`convertCtoF`を関数`x => convertCtoF(x)`(注意点：`x`はスコープ内でユニークであること保証された名前になります)に強制変換することで実現します。
 
-## Functions that accept functions
-One reason to use higher-order functions is to reduce redundant code. Let's say you wanted some methods that could raise someone's salaries by various factors. Without creating a higher-order function,
-it might look something like this:
+## 関数を受け取る関数
+高階関数を使う理由の1つは冗長なコードを削減することです。
+いくつかの倍増率から人の給料を上げることができるメソッドが欲しいとすれば、こんな感じになるかもしれません。
 
 ```tut
 object SalaryRaiser {
@@ -79,8 +76,8 @@ object SalaryRaiser {
 }
 ```
 
-Notice how each of the three methods vary only by the multiplication factor. To simplify,
-you can extract the repeated code into a higher-order function like so:
+3つのメソッドはそれぞれ掛け算の倍増率のみ異なることに気をつけてください。
+簡潔にするため、以下のように繰り返されているコードを高階関数に抽出することができます。
 
 ```tut
 object SalaryRaiser {
@@ -98,14 +95,12 @@ object SalaryRaiser {
     promotion(salaries, salary => salary * salary)
 }
 ```
+新しいメソッド`promotion`はsalariesと`Double => Double`型の関数(すなわち、Doubleを受け取り、Doubleを返す関数)を受け取り、積を返します。
 
-The new method, `promotion`, takes the salaries plus a function of type `Double => Double`
-(i.e. a function that takes a Double and returns a Double) and returns the product.
+## 関数を返す関数
 
-## Functions that return functions
-
-There are certain cases where you want to generate a function. Here's an example
-of a method that returns a function.
+関数を生成したい場合がいくつかあります。
+こちらは関数を返すメソッドの例になります。
 
 ```tut
 def urlBuilder(ssl: Boolean, domainName: String): (String, String) => String = {
@@ -120,6 +115,6 @@ val query = "id=1"
 val url = getURL(endpoint, query) // "https://www.example.com/users?id=1": String
 ```
 
-Notice the return type of urlBuilder `(String, String) => String`. This means that
-the returned anonymous function takes two Strings and returns a String. In this case,
-the returned anonymous function is `(endpoint: String, query: String) => s"https://www.example.com/$endpoint?$query"`.
+urlBuilderの戻り値型`(String, String) => String`に注意してください。
+これは返される無名関数はStringを2つ受け取り、Stringを1つ返すことを意味します。
+このケースでは返される無名関数は`(endpoint: String, query: String) => s"https://www.example.com/$endpoint?$query"`です。
