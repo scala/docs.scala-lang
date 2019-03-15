@@ -1,6 +1,7 @@
 ---
 layout: tour
-title: Nested Methods
+title: ネストしたメソッド
+language: ja
 
 discourse: true
 
@@ -13,7 +14,8 @@ previous-page: higher-order-functions
 redirect_from: "/tutorials/tour/nested-functions.html"
 ---
 
-In Scala it is possible to nest method definitions. The following object provides a `factorial` method for computing the factorial of a given number:
+Scalaではネストメソッドの定義ができます。
+以下のオブジェクトは与えられた数値の階乗を演算するための`factorial`メソッドを提供します。
 
 {% scalafiddle %}
 ```tut
@@ -30,7 +32,7 @@ In Scala it is possible to nest method definitions. The following object provide
 ```
 {% endscalafiddle %}
 
-The output of this program is:
+このプログラムの出力は以下の通りです。
 
 ```
 Factorial of 2: 2
