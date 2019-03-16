@@ -1,6 +1,7 @@
 ---
 layout: tour
-title: Case Classes
+title: ケースクラス
+language: ja
 
 discourse: true
 
@@ -14,29 +15,34 @@ prerequisite-knowledge: classes, basics, mutability
 redirect_from: "/tutorials/tour/case-classes.html"
 ---
 
-Case classes are like regular classes with a few key differences which we will go over. Case classes are good for modeling immutable data. In the next step of the tour, we'll see how they are useful in [pattern matching](pattern-matching.html).
+ケースクラスはこれから論じるいくつかの差異はあるものの普通のクラスと似ています。
+ケースクラスはイミュータブルなデータを作ることができます。
+このツアーの次のステップでは、[パターンマッチング](pattern-matching.html)でのそれらの有用性を解説します。
 
 ## Defining a case class
-A minimal case class requires the keywords `case class`, an identifier, and a parameter list (which may be empty):
+
+最小のケースクラスにはキーワード`case class`、識別子、パラメータリスト(空かもしれません)が必要です。
 ```tut
 case class Book(isbn: String)
 
 val frankenstein = Book("978-0486282114")
 ```
-Notice how the keyword `new` was not used to instantiate the `Book` case class. This is because case classes have an `apply` method by default which takes care of object construction.
+ケースクラス`Book`をインスタンス化する時キーワード`new`が使われていないことに気をつけてください。
+これはケースクラスが標準でオブジェクトの建造を処理する`apply`メソッドを保有するためです。
 
-When you create a case class with parameters, the parameters are public `val`s.
+パラメータを利用しケースクラスを作る時は、パラメータはパブリック定数となります。
 ```
 case class Message(sender: String, recipient: String, body: String)
 val message1 = Message("guillaume@quebec.ca", "jorge@catalonia.es", "Ça va ?")
 
-println(message1.sender)  // prints guillaume@quebec.ca
-message1.sender = "travis@washington.us"  // this line does not compile
+println(message1.sender)  // guillaume@quebec.ca が出力されます
+message1.sender = "travis@washington.us"  // この行はコンパイルされません
 ```
-You can't reassign `message1.sender` because it is a `val` (i.e. immutable). It is possible to use `var`s in case classes but this is discouraged.
+`message1.sender` に再代入することはできません、なぜなら`val`（つまりイミュータブル）だからです。
+ケースクラスでは`var`も使うことができますが、お勧めできません。
 
-## Comparison
-Case classes are compared by structure and not by reference:
+## 比較
+ケースクラスは参照ではなく、構造で比較されます。
 ```
 case class Message(sender: String, recipient: String, body: String)
 
@@ -44,10 +50,11 @@ val message2 = Message("jorge@catalonia.es", "guillaume@quebec.ca", "Com va?")
 val message3 = Message("jorge@catalonia.es", "guillaume@quebec.ca", "Com va?")
 val messagesAreTheSame = message2 == message3  // true
 ```
-Even though `message2` and `message3` refer to different objects, the value of each object is equal.
+たとえ`message2`と`message3`が異なるオブジェクトを参照していたとしても、それぞれのオブジェクトの値は等価となります。
 
-## Copying
-You can create a (shallow) copy of an instance of a case class simply by using the `copy` method. You can optionally change the constructor arguments.
+## コピー
+`copy`メソッドを使うことで簡単にケースクラスのインスタンスの（浅い）コピーを作ることができます。
+必要に応じて、コンストラクタ引数を変更することもできます。
 ```
 case class Message(sender: String, recipient: String, body: String)
 val message4 = Message("julien@bretagne.fr", "travis@washington.us", "Me zo o komz gant ma amezeg")
@@ -56,4 +63,4 @@ message5.sender  // travis@washington.us
 message5.recipient // claire@bourgogne.fr
 message5.body  // "Me zo o komz gant ma amezeg"
 ```
-The recipient of `message4` is used as the sender of `message5` but the `body` of `message4` was copied directly.
+`message4`の定数recipientは`message5`の定数senderとして使われますが、`message4`の定数`body`は直接コピーされます。
