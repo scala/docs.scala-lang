@@ -1,6 +1,7 @@
 ---
 layout: tour
-title: Multiple Parameter Lists (Currying)
+title: 複数パラメータリスト(カリー化)
+language: ja
 
 discourse: true
 
@@ -13,39 +14,44 @@ previous-page: nested-functions
 redirect_from: "/tutorials/tour/multiple-parameter-lists.html"
 ---
 
-Methods may define multiple parameter lists. When a method is called with a fewer number of parameter lists, then this will yield a function taking the missing parameter lists as its arguments. This is formally known as [partial application](https://en.wikipedia.org/wiki/Partial_application).
+メソッドは複数パラメータリストを定義できます。
+メソッドが少ない数のパラメータリストで呼び出された時、不足しているパラメータリストを引数として受け取る関数が生成されます。
+これは一般的に[部分適用](https://en.wikipedia.org/wiki/Partial_application)として知られています。
 
-Here is an example, defined in [Traversable](/overviews/collections/trait-traversable.html) trait from Scala collections:
+こちらはScalaのコレクションのドキュメントの[走査可能トレイト](/overviews/collections/trait-traversable.html) で定義された例になります。
 
 ```
 def foldLeft[B](z: B)(op: (B, A) => B): B
 ```
+`foldLeft`は初期値`z`とこの走査可能な全ての要素に対し左から右に二項演算子`op`を適用していきます。
+以下はその使い方の例です。
 
-`foldLeft` applies a binary operator `op` to an initial value `z` and all elements of this traversable, going left to right. Shown below is an example of its usage. 
-
-Starting with an initial value of 0, `foldLeft` here applies the function `(m, n) => m + n` to each element in the List and the previous accumulated value.
+初期値0から始まり、`foldLeft`はここではリスト内の各要素とその一つ前の累積値に関数`(m, n) => m + n`を適用します。
 
 ```tut
 val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 val res = numbers.foldLeft(0)((m, n) => m + n)
 print(res) // 55
 ```
+複数パラメータリストにはより冗長な読み出し構文があり、それゆえ控えめに使う必要があります。
+推奨されるユースケースは次の通りです。
 
-Multiple parameter lists have a more verbose invocation syntax; and hence should be used sparingly. Suggested use cases include:
-
-#### Single functional parameter
-   In case of a single functional parameter, like `op` in the case of `foldLeft` above, multiple parameter lists allow a concise syntax to pass an anonymous function to the method. Without multiple parameter lists, the code would look like this:
+#### 単一機能パラメータ
+   単一機能パラメータの場合、上記の`foldLeft`のケースでの`op`のように、複数パラメータリストを使うと簡潔な構文でメソッドに無名関数を渡すことができます。
+   複数パラメータリストがない場合、このコードは以下のようになります。
 
 ```
 numbers.foldLeft(0, {(m: Int, n: Int) => m + n})
 ```
-    
-   Note that the use of multiple parameter lists here also allows us to take advantage of Scala type inference to make the code more concise as shown below; which would not be possible in a non-curried definition.
+
+   複数パラメータリストを使うことで、以下のようにコードをより簡潔にすることができ、Scalaの型インターフェースの利点を享受できることに注意してください。
+   それはカリー化されていない定義ではできません。
     
 ```
 numbers.foldLeft(0)(_ + _)
 ```
-   Above statement `numbers.foldLeft(0)(_ + _)` allows us to fix the parameter `z` and pass around a partial function and reuse it as shown below:
+   上記の`numbers.foldLeft(0)(_ + _)`はパラーメーター`z`を固定し、以下のように部分函数を渡し、再利用することができます。
+
 ```tut
 val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 val numberFunc = numbers.foldLeft(List[Int]())_
@@ -57,24 +63,25 @@ val cubes = numberFunc((xs, x) => xs:+ x*x*x)
 print(cubes.toString())  // List(1, 8, 27, 64, 125, 216, 343, 512, 729, 1000)
 ```
 
-   Finally, `foldLeft` and `foldRight` can be used in any of the following terms,
+   最後に、`foldLeft`と`foldRight`は以下のいずれかの表現で使うことができます。
+
 ```tut
 val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 
-numbers.foldLeft(0)((sum, item) => sum + item) // Generic Form
-numbers.foldRight(0)((sum, item) => sum + item) // Generic Form
+numbers.foldLeft(0)((sum, item) => sum + item) // 一般形式
+numbers.foldRight(0)((sum, item) => sum + item) // 一般形式
 
-numbers.foldLeft(0)(_+_) // Curried Form
-numbers.foldRight(0)(_+_) // Curried Form
+numbers.foldLeft(0)(_+_) // カリー化形式
+numbers.foldRight(0)(_+_) // カリー化形式
 
-(0 /: numbers)(_+_) // Used in place of foldLeft
-(numbers :\ 0)(_+_) // Used in place of foldRight
+(0 /: numbers)(_+_) // foldLeft内での利用
+(numbers :\ 0)(_+_) // foldRight内での利用
 ```   
 
    
-#### Implicit parameters
-   To specify certain parameters in a parameter list as `implicit`, multiple parameter lists should be used. An example of this is:
-
+#### 暗黙のパラメータ
+   `implicit`としてパラメータリストの中の特定のパラメータを指定するには、複数パラメータリストが使えます。
+   こちらの例は以下のようになります。
 ```
 def execute(arg: Int)(implicit ec: ExecutionContext) = ???
 ```
