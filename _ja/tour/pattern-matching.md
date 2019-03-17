@@ -1,6 +1,7 @@
 ---
 layout: tour
-title: Pattern Matching
+title: パターンマッチング
+language: ja
 
 discourse: true
 
@@ -15,10 +16,13 @@ prerequisite-knowledge: case-classes, string-interpolation, subtyping
 redirect_from: "/tutorials/tour/pattern-matching.html"
 ---
 
-Pattern matching is a mechanism for checking a value against a pattern. A successful match can also deconstruct a value into its constituent parts. It is a more powerful version of the `switch` statement in Java and it can likewise be used in place of a series of if/else statements.
+パターンマッチングはパターンに対応した値をチェックするための機能です。
+マッチに成功すれば、はその構成要素のパーツを一つの値に分解することもできます。
+Javaの`switch`文の強化バージョンで、if/else文の連続の代わりとして同様に使うことができます。
 
-## Syntax
-A match expression has a value, the `match` keyword, and at least one `case` clause.
+## 構文
+
+マッチ表現は値、キーワード`match`と最低でも1つの`case`句を持ちます。
 ```tut
 import scala.util.Random
 
@@ -31,9 +35,11 @@ x match {
   case _ => "many"
 }
 ```
-The `val x` above is a random integer between 0 and 10. `x` becomes the left operand of the `match` operator and on the right is an expression with four cases. The last case `_` is a "catch all" case for any number greater than 2. Cases are also called _alternatives_.
+上記の`val x`は0から10の間のランダムな整数です。`x`は`match`演算子の左側被演算子となり、右側被演算子は4つのケースで表現されます。
+最後のケース`_`は 2より大きい全ての数字のための"全てを捕捉する"ケースです。
+ケースは*オルタナティブ*とも呼ばれます。
 
-Match expressions have a value.
+マッチ表現は値を持ちます。
 ```tut
 def matchTest(x: Int): String = x match {
   case 1 => "one"
@@ -43,11 +49,12 @@ def matchTest(x: Int): String = x match {
 matchTest(3)  // many
 matchTest(1)  // one
 ```
-This match expression has a type String because all of the cases return String. Therefore, the function `matchTest` returns a String.
+このマッチ表現はString型を持ちます、なぜなら全てのケースはStringを返します。
+そのため関数`matchTest`はStringを返します。
 
-## Matching on case classes
+## ケースクラスでのマッチング
 
-Case classes are especially useful for pattern matching.
+ケースクラスはパターンマッチングで特に役立ちます。
 
 ```tut
 abstract class Notification
@@ -58,9 +65,9 @@ case class SMS(caller: String, message: String) extends Notification
 
 case class VoiceRecording(contactName: String, link: String) extends Notification
 
-
 ```
-`Notification` is an abstract super class which has three concrete Notification types implemented with case classes `Email`, `SMS`, and `VoiceRecording`. Now we can do pattern matching on these case classes:
+`Notification`はケースクラスで実装された`Email`、 `SMS`、 そして`VoiceRecording`3つの具体的なお知らせの種類を持つ抽象スーパークラスです。
+今、これらのケースクラスでパターンマッチングをすることができます。
 
 ```
 def showNotification(notification: Notification): String = {
@@ -76,14 +83,17 @@ def showNotification(notification: Notification): String = {
 val someSms = SMS("12345", "Are you there?")
 val someVoiceRecording = VoiceRecording("Tom", "voicerecording.org/id/123")
 
-println(showNotification(someSms))  // prints You got an SMS from 12345! Message: Are you there?
+println(showNotification(someSms))  // You got an SMS from 12345! Message: Are you there? が出力されます。
 
-println(showNotification(someVoiceRecording))  // you received a Voice Recording from Tom! Click the link to hear it: voicerecording.org/id/123
+println(showNotification(someVoiceRecording))  // you received a Voice Recording from Tom! Click the link to hear it: voicerecording.org/id/123 が出力されます。
 ```
-The function `showNotification` takes as a parameter the abstract type `Notification` and matches on the type of `Notification` (i.e. it figures out whether it's an `Email`, `SMS`, or `VoiceRecording`). In the `case Email(email, title, _)` the fields `email` and `title` are used in the return value but the `body` field is ignored with `_`.
+関数`showNotification`は抽象型`Notification`のパラメータとして受け取り、`Notification` の種類とマッチします（すなわち`Email`、`SMS`、または `VoiceRecording`のいずれであるかを解決します）。
+`case Email(email, title, _)` ではフィールド`email`と`title`が戻り値として使われますが、`_`を使うことでフィールド`body`は無視されます。
 
-## Pattern guards
-Pattern guards are simply boolean expressions which are used to make cases more specific. Just add `if <boolean expression>` after the pattern.
+## パターンガード
+パターンガードはケースをより特別にするために使われる簡単な真偽表現です。
+ただ`if <boolean expression>`をパターンの後ろに追加するだけです。
+
 ```
 
 def showImportantNotification(notification: Notification, importantPeopleInfo: Seq[String]): String = {
@@ -93,7 +103,7 @@ def showImportantNotification(notification: Notification, importantPeopleInfo: S
     case SMS(number, _) if importantPeopleInfo.contains(number) =>
       "You got an SMS from special someone!"
     case other =>
-      showNotification(other) // nothing special, delegate to our original showNotification function
+      showNotification(other) // 特別なものではなく、オリジナルのshowNotification関数に委任します。
   }
 }
 
@@ -110,10 +120,11 @@ println(showImportantNotification(importantEmail, importantPeopleInfo))
 println(showImportantNotification(importantSms, importantPeopleInfo))
 ```
 
-In the `case Email(email, _, _) if importantPeopleInfo.contains(email)`, the pattern is matched only if the `email` is in the list of important people.
+`case Email(email, _, _) if importantPeopleInfo.contains(email)`では、パターンは`email`が重要な人のリストに存在して初めてマッチします。
 
-## Matching on type only
-You can match on the type like so:
+## 型のみでのマッチング
+
+以下のように型のみでマッチすることができます。
 ```tut
 abstract class Device
 case class Phone(model: String) extends Device{
@@ -128,10 +139,13 @@ def goIdle(device: Device) = device match {
   case c: Computer => c.screenSaverOn
 }
 ```
-`def goIdle` has a different behavior depending on the type of `Device`. This is useful when the case needs to call a method on the pattern. It is a convention to use the first letter of the type as the case identifier (`p` and `c` in this case).
+`def goIdle`は`Device`のタイプによって異なる振る舞いをします。
+これはケースがパターン内でメソッドを呼び出す必要がある時に役立ちます。
+ケースの識別子には型の最初の一文字（この場合に`p`と`c`）を利用する慣習があります。
 
-## Sealed classes
-Traits and classes can be marked `sealed` which means all subtypes must be declared in the same file. This assures that all subtypes are known.
+## シールドクラス
+トレイトとクラスは全てのサブタイプは同一ファイル内で宣言されているべきとする`sealed`でマークすることができます。
+これは全てのサブタイプは既知であると保証します。
 
 ```tut
 sealed abstract class Furniture
@@ -143,9 +157,10 @@ def findPlaceToSit(piece: Furniture): String = piece match {
   case b: Chair => "Sit on the chair"
 }
 ```
-This is useful for pattern matching because we don't need a "catch all" case.
+これは"全てに対応する"ケースを必要としなくて済むので、パターンマッチングで役立ちます。
 
-## Notes
+## 注意
+Scalaのパターンマッチング文は[ケース型](case-classes.html)を通して代数型の表現のマッチングの際に最も役立ちます。
 
-Scala's pattern matching statement is most useful for matching on algebraic types expressed via [case classes](case-classes.html).
-Scala also allows the definition of patterns independently of case classes, using `unapply` methods in [extractor objects](extractor-objects.html).
+
+Scalaは[抽出子オブジェクト](extractor-objects.html)で`unapply`メソッドを利用した独立したケースクラスのパターン定義ができます。
