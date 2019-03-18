@@ -171,8 +171,8 @@ Traversible objects can be finite or infinite. An example of an infinite
 traversable object is the stream of natural numbers `Stream.from(0)`. The
 method `hasDefiniteSize` indicates whether a collection is possibly infinite.
 If `hasDefiniteSize` returns true, the collection is certainly finite. If it
-returns false, the collection has not been not fully elaborated yet, so it
-might be infinite or finite.
+returns false, the collection has not been fully elaborated yet, so it might
+be infinite or finite.
 
 This class defines methods which can be efficiently implemented in terms of
 `foreach` (over 40 of them).
