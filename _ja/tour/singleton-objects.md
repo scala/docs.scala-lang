@@ -1,6 +1,7 @@
 ---
 layout: tour
-title: Singleton Objects
+title: シングルトンオブジェクト
+language: ja
 
 discourse: true
 
@@ -13,18 +14,18 @@ previous-page: pattern-matching
 redirect_from: "/tutorials/tour/singleton-objects.html"
 prerequisite-knowledge: classes, methods, private-methods, packages, option
 ---
-An object is a class that has exactly one instance. It is created lazily when it is referenced, like a lazy val.
+オブジェクトは丁度1つのインスタンスを持つクラスです。
+それは遅延評価valのように参照された際に遅れて作られます。
 
-As a top-level value, an object is a singleton.
+オブジェクトはトップレベルの値のようにシングルトンです。
+エンクロージングクラス（外部クラス）のメンバーやローカルの値のように、オブジェクトはまるで遅延評価valのように振る舞います。
 
-As a member of an enclosing class or as a local value, it behaves exactly like a lazy val.
-# Defining a singleton object
-An object is a value. The definition of an object looks like a class, but uses the keyword `object`:
+# シングルトンオブジェクトの定義
+オブジェクトは値です。オブジェクトの定義はクラスのように見えますが、キーワード`object`を使います。
 ```tut
 object Box
 ```
-
-Here's an example of an object with a method:
+これはメソッドを持つオブジェクトの例です。
 ```
 package logging
 
@@ -32,9 +33,10 @@ object Logger {
   def info(message: String): Unit = println(s"INFO: $message")
 }
 ```
-The method `info` can be imported from anywhere in the program. Creating utility methods like this is a common use case for singleton objects.
+`info`メソッドはプログラム上のどこからでもimportすることができます。
+このように便利なメソッドを作ることはシングルトンオブジェクトのユースケースと同じです。
 
-Let's see how to use `info` in another package:
+他のパッケージで`info`がどのように使われるか見てみましょう。
 
 ```
 import logging.Logger.info
@@ -48,15 +50,21 @@ class Test {
 }
 ```
 
-The `info` method is visible because of the import statement, `import logging.Logger.info`.
+import文`import logging.Logger.info`により、`info`メソッドが見えるようになります。
 
-Imports require a "stable path" to the imported symbol, and an object is a stable path.
+import文には取り込むシンボルへの"変動しないパス"が必要であり、オブジェクトは変動しないパスとなります。
 
-Note: If an `object` is not top-level but is nested in another class or object, then the object is "path-dependent" like any other member. This means that given two kinds of beverages, `class Milk` and `class OrangeJuice`, a class member `object NutritionInfo` "depends" on the enclosing instance, either milk or orange juice. `milk.NutritionInfo` is entirely distinct from `oj.NutritionInfo`.
+注意：`オブジェクト`がトップレベルではないが、他のクラスやオブジェクトを必要とする時、オブジェクトは他のメンバーのように"経路依存性"があります。
+これは2種類の飲み物`牛乳 クラス`と`オレンジジュース クラス`が与えられた場合、クラスメンバーの`栄養素 object`はエンクロージングクラス、すなわち牛乳またはオレンジジュースのいずれかのインスタンスに依存することを意味します。
+`milk.NutritionInfo`は`oj.NutritionInfo`とは全く異なります。
 
-## Companion objects
+## コンパニオンオブジェクト
 
-An object with the same name as a class is called a _companion object_. Conversely, the class is the object's companion class. A companion class or object can access the private members of its companion. Use a companion object for methods and values which are not specific to instances of the companion class.
+クラスと同じ名前のオブジェクトは*コンパニオンオブジェクト*と呼ばれます。
+逆にクラスはオブジェクトのコンパニオンクラスとなります。
+コンパニオンクラスやコンパニオンオブジェクトは自身のコンパニオンのプライベートメンバーにアクセスできます。
+コンパニオンクラスのインスタンスの固有ではないメソッドや値にはコンパニオンオブジェクトを使います。
+
 ```
 import scala.math._
 
@@ -74,9 +82,9 @@ val circle1 = new Circle(5.0)
 circle1.area
 ```
 
-The `class Circle` has a member `area` which is specific to each instance, and the singleton `object Circle` has a method `calculateArea` which is available to every instance.
+`class Circle`は各インスタンスの固有のメンバー`area`を持ち、シングルトンオブジェクト`object Circle`は全てのインスタンスで利用できる`calculateArea`メソッドを持ちます。
 
-The companion object can also contain factory methods:
+コンパニオンオブジェクトはファクトリーメソッドを含むことができます。
 ```tut
 class Email(val username: String, val domainName: String)
 
@@ -99,12 +107,16 @@ scalaCenterEmail match {
   case None => println("Error: could not parse email")
 }
 ```
-The `object Email` contains a factory `fromString` which creates an `Email` instance from a String. We return it as an `Option[Email]` in case of parsing errors.
+`object Email`はファクトリー`fromString`を持ち、Stringから`Email`インスタンスを作ります。
+エラー解析のケース内では`Email`インスタンスを`Option[Email]`として返します。
 
-Note: If a class or object has a companion, both must be defined in the same file. To define companions in the REPL, either define them on the same line or enter `:paste` mode.
+注意：クラスまたはオブジェクトがコンパニオンを持つ場合、クラス、オブジェクトの両方は同じファイルの中に定義されている必要があります。
+REPL内でコンパニオンを定義する場合は、それらを同じ行で定義するか、`:paste`モードに入ります。
 
-## Notes for Java programmers ##
+## Javaプログラマのための注意事項 ##
 
-`static` members in Java are modeled as ordinary members of a companion object in Scala.
+Javaにおける`static`メンバーはScalaではコンパニオンオブジェクトの一般メンバーとして作られています。
 
-When using a companion object from Java code, the members will be defined in a companion class with a `static` modifier. This is called _static forwarding_. It occurs even if you haven't defined a companion class yourself.
+Javaのコードからコンパニオンオブジェクトを使う場合、メンバーはコンパニオンクラス内で`static`識別子を用いて定義されます。
+これを*static forwarding*と呼ばれます。
+これはコンパニオンクラスを定義していなかったとしても起きます。
