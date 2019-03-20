@@ -16,7 +16,7 @@ prerequisite-knowledge: case-classes, string-interpolation, subtyping
 redirect_from: "/tutorials/tour/pattern-matching.html"
 ---
 
-パターンマッチングはパターンに対応した値をチェックするための機能です。
+パターンマッチングはパターンに対応させて値をチェックするための機能です。
 マッチに成功すれば、はその構成要素のパーツを一つの値に分解することもできます。
 Javaの`switch`文の強化バージョンで、if/else文の連続の代わりとして同様に使うことができます。
 
