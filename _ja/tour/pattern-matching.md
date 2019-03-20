@@ -163,4 +163,4 @@ def findPlaceToSit(piece: Furniture): String = piece match {
 Scalaのパターンマッチング文は[ケースクラス](case-classes.html)で表現される代数型のマッチングに最も役立ちます。
 
 
-Scalaは[抽出子オブジェクト](extractor-objects.html)で`unapply`メソッドを利用した独立したケースクラスのパターン定義ができます。
+Scalaでは[抽出子オブジェクト](extractor-objects.html)の`unapply`メソッドを使うと、ケースクラスのパターンを独自に定義することもできます。
