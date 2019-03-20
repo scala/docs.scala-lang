@@ -103,7 +103,7 @@ def showImportantNotification(notification: Notification, importantPeopleInfo: S
     case SMS(number, _) if importantPeopleInfo.contains(number) =>
       "You got an SMS from special someone!"
     case other =>
-      showNotification(other) // 特別なものではなく、オリジナルのshowNotification関数に委任します。
+      showNotification(other) // 特別なものではなく、オリジナルのshowNotification関数に委譲します。
   }
 }
 
