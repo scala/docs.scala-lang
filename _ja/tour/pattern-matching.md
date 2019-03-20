@@ -160,7 +160,7 @@ def findPlaceToSit(piece: Furniture): String = piece match {
 これは"全てに対応する"ケースを必要としなくて済むので、パターンマッチングで役立ちます。
 
 ## 注意
-Scalaのパターンマッチング文は[ケース型](case-classes.html)を通して代数型の表現のマッチングの際に最も役立ちます。
+Scalaのパターンマッチング文は[ケースクラス](case-classes.html)で表現される代数型のマッチングに最も役立ちます。
 
 
 Scalaは[抽出子オブジェクト](extractor-objects.html)で`unapply`メソッドを利用した独立したケースクラスのパターン定義ができます。
