@@ -145,7 +145,7 @@ def goIdle(device: Device) = device match {
 
 ## シールドクラス
 トレイトとクラスは全てのサブタイプは同一ファイル内で宣言されているべきとする`sealed`でマークすることができます。
-これは全てのサブタイプは既知であると保証します。
+これは全てのサブタイプは既知であることを保証します。
 
 ```tut
 sealed abstract class Furniture
