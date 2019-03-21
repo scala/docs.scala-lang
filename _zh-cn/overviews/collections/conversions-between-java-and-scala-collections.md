@@ -25,20 +25,20 @@ language: zh-cn
     mutable.Map <=> java.util.Map
     mutable.ConcurrentMap <=> java.util.concurrent.ConcurrentMap
 
-使用这些转换很简单，只需从JavaConversions对象中import它们即可。
+使用这些转换很简单，只需从JavaConverters对象中import它们即可。
 
-    scala> import collection.JavaConversions._
-    import collection.Java.Conversions._
+    scala> import collection.JavaConverters._
+    import collection.JavaConverters._
 
-import之后，就可以在Scala容器和与之对应的Java容器之间进行隐式转换了
+import之后，通过扩展方法 asScala 和 asJava 就可以在Scala容器和与之对应的Java容器之间进行隐式转换了
 
     scala> import collection.mutable._
     import collection.mutable._
-    scala> val jul: java.util.List[Int] = ArrayBuffer(1, 2, 3)
+    scala> val jul: java.util.List[Int] = ArrayBuffer(1, 2, 3).asJava
     jul: java.util.List[Int] = [1, 2, 3]
-    scala> val buf: Seq[Int] = jul
+    scala> val buf: Seq[Int] = jul.asScala
     buf: scala.collection.mutable.Seq[Int] = ArrayBuffer(1, 2, 3)
-    scala> val m: java.util.Map[String, Int] = HashMap("abc" -> 1, "hello" -> 2)
+    scala> val m: java.util.Map[String, Int] = HashMap("abc" -> 1, "hello" -> 2).asJava
     m: java.util.Map[String, Int] = {hello=2, abc=1}
 
 在Scala内部，这些转换是通过一系列“包装”对象完成的，这些对象会将相应的方法调用转发至底层的容器对象。所以容器不会在Java和Scala之间拷贝来拷贝去。一个值得注意的特性是，如果你将一个Java容器转换成其对应的Scala容器，然后再将其转换回同样的Java容器，最终得到的是一个和一开始完全相同的容器对象（译注：这里的相同意味着这两个对象实际上是指向同一片内存区域的引用，容器转换过程中没有任何的拷贝发生）。
@@ -52,7 +52,7 @@ import之后，就可以在Scala容器和与之对应的Java容器之间进行�
 
 因为Java并未区分可变容器不可变容器类型，所以，虽然能将`scala.immutable.List`转换成`java.util.List`，但所有的修改操作都会抛出“UnsupportedOperationException”。参见下例：
 
-    scala> jul = List(1, 2, 3)
+    scala> jul = List(1, 2, 3).asJava
     jul: java.util.List[Int] = [1, 2, 3]
     scala> jul.add(7)
     java.lang.UnsupportedOperationException
