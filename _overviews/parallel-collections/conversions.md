@@ -66,16 +66,16 @@ into a `ParX` collection.
 
 Here is a summary of all conversion methods:
 
-| Method         | Return Type    |
-| -------------- | -------------- |
-| `toArray`      | `Array`        |
-| `toList`       | `List`         |
-| `toIndexedSeq` | `IndexedSeq`   |
-| `toStream`     | `Stream`       |
-| `toIterator`   | `Iterator`     |
-| `toBuffer`     | `Buffer`       |
-| `toTraversable`| `GenTraverable`|
-| `toIterable`   | `ParIterable`  |
-| `toSeq`        | `ParSeq`       |
-| `toSet`        | `ParSet`       |
-| `toMap`        | `ParMap`       |
+| Method         | Return Type     |
+| -------------- | --------------- |
+| `toArray`      | `Array`         |
+| `toList`       | `List`          |
+| `toIndexedSeq` | `IndexedSeq`    |
+| `toStream`     | `Stream`        |
+| `toIterator`   | `Iterator`      |
+| `toBuffer`     | `Buffer`        |
+| `toTraversable`| `GenTraversable`|
+| `toIterable`   | `ParIterable`   |
+| `toSeq`        | `ParSeq`        |
+| `toSet`        | `ParSet`        |
+| `toMap`        | `ParMap`        |

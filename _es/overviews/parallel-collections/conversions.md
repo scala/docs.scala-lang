@@ -61,16 +61,16 @@ en una colección `ParX`
 
 A continuación se muestra un resumen de todos los métodos de conversión:
 
-| método     	 | Tipo de Retorno|
-| -------------- | -------------- |
-| `toArray`      | `Array`        |
-| `toList`       | `List`         |
-| `toIndexedSeq` | `IndexedSeq`   |
-| `toStream`     | `Stream`       |
-| `toIterator`   | `Iterator`     |
-| `toBuffer`     | `Buffer`       |
-| `toTraversable`| `GenTraverable`|
-| `toIterable`   | `ParIterable`  |
-| `toSeq`        | `ParSeq`       |
-| `toSet`        | `ParSet`       |
-| `toMap`        | `ParMap`       |
+| método     	   | Tipo de Retorno |
+| -------------- | --------------- |
+| `toArray`      | `Array`         |
+| `toList`       | `List`          |
+| `toIndexedSeq` | `IndexedSeq`    |
+| `toStream`     | `Stream`        |
+| `toIterator`   | `Iterator`      |
+| `toBuffer`     | `Buffer`        |
+| `toTraversable`| `GenTraversable`|
+| `toIterable`   | `ParIterable`   |
+| `toSeq`        | `ParSeq`        |
+| `toSet`        | `ParSet`        |
+| `toMap`        | `ParMap`        |
