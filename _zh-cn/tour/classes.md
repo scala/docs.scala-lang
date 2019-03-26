@@ -95,7 +95,7 @@ point1.y = 101 // prints the warning
 ```
 在这个版本的`Point`类中，数据存在私有变量`_x`和`_y`中。`def x`和`def y`方法用于访问私有数据。`def x_=`和`def y_=`是为了验证和给`_x`和`_y`赋值。注意下对于setter方法的特殊语法：这个方法在getter方法的后面加上`_=`，后面跟着参数。
 
-主构造方法中带有`val`和`var`的参数时公有的。然而由于`val`是不可变的，所以不能像下面这样去使用。
+主构造方法中带有`val`和`var`的参数是公有的。然而由于`val`是不可变的，所以不能像下面这样去使用。
 ```
 class Point(val x: Int, val y: Int)
 val point = new Point(1, 2)

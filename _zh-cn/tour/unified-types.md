@@ -42,7 +42,7 @@ val list: List[Any] = List(
 list.foreach(element => println(element))
 ```
 
-这里定义了一个类型`List<Ant>`的变量`list`。这个列表里由多种类型进行初始化，但是它们都是`scala.Any`的实例，所以可以把它们加入到列表中。
+这里定义了一个类型`List<Any>`的变量`list`。这个列表里由多种类型进行初始化，但是它们都是`scala.Any`的实例，所以可以把它们加入到列表中。
 
 下面是程序的输出：
 
