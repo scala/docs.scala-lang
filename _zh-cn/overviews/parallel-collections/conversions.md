@@ -46,7 +46,7 @@ language: zh-cn
 |toStream | Stream |
 |toIterator | Iterator |
 |toBuffer | Buffer |
-|toTraversable | GenTraverable |
+|toTraversable | GenTraversable |
 |toIterable | ParIterable |
 |toSeq | ParSeq |
 |toSet | ParSet |
