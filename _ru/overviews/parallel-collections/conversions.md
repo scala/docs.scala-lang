@@ -38,16 +38,16 @@ num: 3
 
 Ниже приведена сводная таблица всех методов преобразования:
 
-| Метод          | Тип возвращаемого значения |
-| -------------- | -------------------------- |
-| `toArray`      | `Array`                    |
-| `toList`       | `List`                     |
-| `toIndexedSeq` | `IndexedSeq`               |
-| `toStream`     | `Stream`                   |
-| `toIterator`   | `Iterator`                 |
-| `toBuffer`     | `Buffer`                   |
-| `toTraversable`| `GenTraverable`            |
-| `toIterable`   | `ParIterable`              |
-| `toSeq`        | `ParSeq`                   |
-| `toSet`        | `ParSet`                   |
-| `toMap`        | `ParMap`                   |
+| Метод          | Тип возвращаемого значения  |
+| -------------- | --------------------------- |
+| `toArray`      | `Array`                     |
+| `toList`       | `List`                      |
+| `toIndexedSeq` | `IndexedSeq`                |
+| `toStream`     | `Stream`                    |
+| `toIterator`   | `Iterator`                  |
+| `toBuffer`     | `Buffer`                    |
+| `toTraversable`| `GenTraversable`            |
+| `toIterable`   | `ParIterable`               |
+| `toSeq`        | `ParSeq`                    |
+| `toSet`        | `ParSet`                    |
+| `toMap`        | `ParMap`                    |
