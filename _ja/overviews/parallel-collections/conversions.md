@@ -47,16 +47,16 @@ language: ja
 
 以下の表に全ての変換をまとめる:
 
-| メソッド         | 戻り値の型      |
-| -------------- | -------------- |
-| `toArray`      | `Array`        |
-| `toList`       | `List`         |
-| `toIndexedSeq` | `IndexedSeq`   |
-| `toStream`     | `Stream`       |
-| `toIterator`   | `Iterator`     |
-| `toBuffer`     | `Buffer`       |
-| `toTraversable`| `GenTraverable`|
-| `toIterable`   | `ParIterable`  |
-| `toSeq`        | `ParSeq`       |
-| `toSet`        | `ParSet`       |
-| `toMap`        | `ParMap`       |
+| メソッド         | 戻り値の型       |
+| -------------- | --------------- |
+| `toArray`      | `Array`         |
+| `toList`       | `List`          |
+| `toIndexedSeq` | `IndexedSeq`    |
+| `toStream`     | `Stream`        |
+| `toIterator`   | `Iterator`      |
+| `toBuffer`     | `Buffer`        |
+| `toTraversable`| `GenTraversable`|
+| `toIterable`   | `ParIterable`   |
+| `toSeq`        | `ParSeq`        |
+| `toSet`        | `ParSet`        |
+| `toMap`        | `ParMap`        |
