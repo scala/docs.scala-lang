@@ -33,6 +33,7 @@ val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 val res = numbers.foldLeft(0)((m, n) => m + n)
 print(res) // 55
 ```
+### ユースケース
 推奨されるユースケースは次の通りです。
 
 #### 単一機能パラメータ
