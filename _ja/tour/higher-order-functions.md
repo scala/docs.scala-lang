@@ -55,7 +55,7 @@ case class WeeklyWeatherForecast(temperatures: Seq[Double]) {
   def forecastInFahrenheit: Seq[Double] = temperatures.map(convertCtoF) // <-- convertCtoFメソッドが渡されます
 }
 ```
-ここではメソッド`convertCtoF`は`forecastInFahrenheit`に渡されます。
+ここで、メソッド`convertCtoF`が`forecastInFahrenheit`に渡されています。
 これはコンパイラが`convertCtoF`を関数`x => convertCtoF(x)`(注意点：`x`はスコープ内でユニークであること保証された名前になります)に変換することで実現します。
 
 ## 関数を受け取る関数
