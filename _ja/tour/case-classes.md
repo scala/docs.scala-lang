@@ -16,7 +16,7 @@ redirect_from: "/tutorials/tour/case-classes.html"
 ---
 
 ケースクラスはこれから論じるいくつかの差異はあるものの普通のクラスと似ています。
-ケースクラスはイミュータブルなデータを作ることができます。
+ケースクラスは不変なデータを作るのに適しています。
 このツアーの次のステップでは、[パターンマッチング](pattern-matching.html)でのそれらの有用性を解説します。
 
 ## Defining a case class
