@@ -15,7 +15,7 @@ redirect_from: "/tutorials/tour/singleton-objects.html"
 prerequisite-knowledge: classes, methods, private-methods, packages, option
 ---
 オブジェクトは丁度1つのインスタンスを持つクラスです。
-それは遅延評価valのように参照された際に遅れて作られます。
+それはlazy valのように参照された際に遅れて作られます。
 
 オブジェクトはトップレベルの値のようにシングルトンです。
 エンクロージングクラス（外部クラス）のメンバーやローカルの値のように、オブジェクトはまるで遅延評価valのように振る舞います。
