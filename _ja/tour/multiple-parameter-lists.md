@@ -23,7 +23,7 @@ redirect_from: "/tutorials/tour/multiple-parameter-lists.html"
 ```
 def foldLeft[B](z: B)(op: (B, A) => B): B
 ```
-`foldLeft`は初期値`z`とこの走査可能な全ての要素に対し左から右に二項演算子`op`を適用していきます。
+`foldLeft`は初期値`z`とこのtraversableの全ての要素に対し左から右に二項演算子`op`を適用していきます。
 以下はその使い方の例です。
 
 初期値0から始まり、`foldLeft`はここではリスト内の各要素とその一つ前の累積値に関数`(m, n) => m + n`を適用します。
