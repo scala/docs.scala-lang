@@ -19,7 +19,7 @@ redirect_from: "/tutorials/tour/case-classes.html"
 ケースクラスは不変なデータを作るのに適しています。
 このツアーの次のステップでは、[パターンマッチング](pattern-matching.html)でのそれらの有用性を解説します。
 
-## Defining a case class
+## ケースクラスの宣言
 
 最小のケースクラスにはキーワード`case class`、識別子、パラメータリスト(空かもしれません)が必要です。
 ```tut
