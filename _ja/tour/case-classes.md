@@ -63,4 +63,4 @@ message5.sender  // travis@washington.us
 message5.recipient // claire@bourgogne.fr
 message5.body  // "Me zo o komz gant ma amezeg"
 ```
-`message4`の定数recipientは`message5`の定数senderとして使われますが、`message4`の定数`body`は直接コピーされます。
+`message4`のrecipientは`message5`のsenderとして使われますが、`message4`の定数`body`は直接コピーされます。
