@@ -18,7 +18,7 @@ redirect_from: "/tutorials/tour/multiple-parameter-lists.html"
 メソッドが少ない数のパラメータリストで呼び出された時、不足しているパラメータリストを引数として受け取る関数が生成されます。
 これは一般的に[部分適用](https://en.wikipedia.org/wiki/Partial_application)として知られています。
 
-こちらはScalaのコレクションのドキュメントの[走査可能トレイト](/overviews/collections/trait-traversable.html) で定義された例になります。
+こちらはScalaのコレクションの[Traversable](/overviews/collections/trait-traversable.html) トレイトで定義されている実例です。
 
 ```
 def foldLeft[B](z: B)(op: (B, A) => B): B
