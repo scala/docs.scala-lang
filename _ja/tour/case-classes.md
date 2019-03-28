@@ -30,7 +30,7 @@ val frankenstein = Book("978-0486282114")
 ケースクラス`Book`をインスタンス化する時キーワード`new`が使われていないことに気をつけてください。
 これはケースクラスがオブジェクトの生成を行う`apply`メソッドを標準で保有するためです。
 
-パラメータを利用しケースクラスを作る時は、パラメータはパブリック定数となります。
+パラメータ有りでケースクラスを作ると、パラメータはパブリックの`val`となります。
 ```
 case class Message(sender: String, recipient: String, body: String)
 val message1 = Message("guillaume@quebec.ca", "jorge@catalonia.es", "Ça va ?")
