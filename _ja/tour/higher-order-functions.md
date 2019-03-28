@@ -56,7 +56,7 @@ case class WeeklyWeatherForecast(temperatures: Seq[Double]) {
 }
 ```
 ここではメソッド`convertCtoF`は`forecastInFahrenheit`に渡されます。
-これはコンパイラが`convertCtoF`を関数`x => convertCtoF(x)`(注意点：`x`はスコープ内でユニークであること保証された名前になります)に強制変換することで実現します。
+これはコンパイラが`convertCtoF`を関数`x => convertCtoF(x)`(注意点：`x`はスコープ内でユニークであること保証された名前になります)に変換することで実現します。
 
 ## 関数を受け取る関数
 高階関数を使う理由の1つは冗長なコードを削減することです。
