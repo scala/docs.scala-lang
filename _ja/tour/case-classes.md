@@ -39,7 +39,7 @@ println(message1.sender)  // guillaume@quebec.ca が出力されます
 message1.sender = "travis@washington.us"  // この行はコンパイルされません
 ```
 `message1.sender` に再代入することはできません、なぜなら`val`（つまりイミュータブル）だからです。
-ケースクラスでは`var`も使うことができますが、お勧めできません。
+ケースクラスでは`var`も使うことができますが、推奨されません。
 
 ## 比較
 ケースクラスは参照ではなく、構造で比較されます。
