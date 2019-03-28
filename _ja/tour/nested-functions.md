@@ -15,7 +15,7 @@ redirect_from: "/tutorials/tour/nested-functions.html"
 ---
 
 Scalaではメソッドの定義をネストすることができます。
-以下のオブジェクトは与えられた数値の階乗を演算するための`factorial`メソッドを提供します。
+以下のコードは与えられた数値の階乗を計算するための`factorial`メソッドを提供します。
 
 {% scalafiddle %}
 ```tut
