@@ -34,7 +34,7 @@ abstract class SeqBuffer extends Buffer {
   def length = element.length
 }
 ```
-Notice how we can use yet another abstract `type U` as an upper-type-bound. This `class SeqBuffer` allows us to store only sequences in the buffer by stating that type `T` has to be a subtype of `Seq[U]` for a new abstract type `U`.
+Notice how we can use yet another abstract type `U` in the specification of an upper-type-bound for `T`. This `class SeqBuffer` allows us to store only sequences in the buffer by stating that type `T` has to be a subtype of `Seq[U]` for a new abstract type `U`.
 
 Traits or [classes](classes.html) with abstract type members are often used in combination with anonymous class instantiations. To illustrate this, we now look at a program which deals with a sequence buffer that refers to a list of integers:
 
@@ -53,7 +53,7 @@ val buf = newIntSeqBuf(7, 8)
 println("length = " + buf.length)
 println("content = " + buf.element)
 ```
-Here the factory `newIntSeqBuf` uses an anonymous class implementation of `IntSeqBuf` (i.e. `new IntSeqBuffer`), setting `type T` to a `List[Int]`.
+Here the factory `newIntSeqBuf` uses an anonymous class implementation of `IntSeqBuf` (i.e. `new IntSeqBuffer`) to set the abstract type `T` to the concrete type `List[Int]`.
 
 It is also possible to turn abstract type members into type parameters of classes and vice versa. Here is a version of the code above which only uses type parameters:
 
@@ -75,4 +75,4 @@ println("length = " + buf.length)
 println("content = " + buf.element)
 ```
 
-Note that we have to use [variance annotations](variances.html) here (`+T <: Seq[U]`) in order to hide the concrete sequence implementation type of the object returned from method `newIntSeqBuf`.  Furthermore, there are cases where it is not possible to replace abstract types with type parameters.
+Note that we have to use [variance annotations](variances.html) here (`+T <: Seq[U]`) in order to hide the concrete sequence implementation type of the object returned from method `newIntSeqBuf`.  Furthermore, there are cases where it is not possible to replace abstract type members with type parameters.
