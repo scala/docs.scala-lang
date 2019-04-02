@@ -1,6 +1,7 @@
 ---
 layout: tour
-title: Regular Expression Patterns
+title: 正規表現パターン
+language: ja
 
 discourse: true
 
@@ -13,8 +14,8 @@ previous-page: singleton-objects
 
 redirect_from: "/tutorials/tour/regular-expression-patterns.html"
 ---
-
-Regular expressions are strings which can be used to find patterns (or lack thereof) in data. Any string can be converted to a regular expression using the `.r` method.
+正規表現はデータの中からパターン（またはその欠如）を探すために使うことができる文字列です。
+どんな文字列も`.r`メソッドを使うことで、正規表現に変換できます。
 
 ```tut
 import scala.util.matching.Regex
@@ -26,11 +27,9 @@ numberPattern.findFirstMatchIn("awesomepassword") match {
   case None => println("Password must contain a number")
 }
 ```
+上記の例では、`numberPattern`は`Regex`(正規表現)型で、パスワードに数字が含まれていることを確認に使います。
 
-In the above example, the `numberPattern` is a `Regex`
-(regular expression) which we use to make sure a password contains a number.
-
-You can also search for groups of regular expressions using parentheses.
+括弧を使うことで、正規表現のグループを探すこともできます。
 
 ```tut
 import scala.util.matching.Regex
@@ -50,7 +49,8 @@ val input: String =
 for (patternMatch <- keyValPattern.findAllMatchIn(input))
   println(s"key: ${patternMatch.group(1)} value: ${patternMatch.group(2)}")
 ```
-Here we parse out the keys and values of a String. Each match has a group of sub-matches. Here is the output:
+ここでは、文字列のキーとバリューを解析しています。
+それぞれの合致はサブマッチのグループを持ちます。こちらが出力結果になります。
 ```
 key: background-color value: #A03300
 key: background-image value: url(img
