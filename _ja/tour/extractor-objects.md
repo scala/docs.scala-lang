@@ -1,6 +1,7 @@
 ---
 layout: tour
-title: Extractor Objects
+title: エクストラクタオブジェクト
+language: ja
 
 discourse: true
 
@@ -13,7 +14,9 @@ previous-page: regular-expression-patterns
 redirect_from: "/tutorials/tour/extractor-objects.html"
 ---
 
-An extractor object is an object with an `unapply` method. Whereas the `apply` method is like a constructor which takes arguments and creates an object, the `unapply` takes an object and tries to give back the arguments. This is most often used in pattern matching and partial functions.
+エクストラクタオブジェクトは`unapply`メソッドを持つオブジェクトです。
+`apply`メソッドが引数を取り、オブジェクトを作るコンストラクタであるように、`unapply`は1つのオブジェクトを受け取り、引数を返そうとします。
+これはパターンマッチングと部分関数で最も頻繁に使われます。
 
 ```tut
 import scala.util.Random
@@ -35,32 +38,37 @@ customer1ID match {
 }
 ```
 
-The `apply` method creates a `CustomerID` string from a `name`. The `unapply` does the inverse to get the `name` back. When we call `CustomerID("Sukyoung")`, this is shorthand syntax for calling `CustomerID.apply("Sukyoung")`. When we call `case CustomerID(name) => println(name)`, we're calling the unapply method.
+`apply`メソッドは`name`から`CustomerID`文字列を作ります。`unapply`は逆に`name`を返します。
+ `CustomerID("Sukyoung")`を呼び出すとき、これは`CustomerID.apply("Sukyoung")`を呼び出す速記構文になります。
+ `case CustomerID(name) => println(name)`を呼び出すとき、unapplyメソッドを呼び出しています。
 
-Since a value definition can use a pattern to introduce a new variable, an extractor can be used to initialize the variable, where the unapply method supplies the value.
+unapplyメソッドが値を供給する場合、新しい変数を導くパターンを使うことで値定義ができるので、エクストラクタは変数の初期化に使うことができます。
 
 ```tut
 val customer2ID = CustomerID("Nico")
 val CustomerID(name) = customer2ID
 println(name)  // prints Nico
 ```
-
-This is equivalent to `val name = CustomerID.unapply(customer2ID).get`.
+これは `val name = CustomerID.unapply(customer2ID).get`.と同じです。
 
 ```tut
 val CustomerID(name2) = "--asdfasdfasdf"
 ```
-
-If there is no match, a `scala.MatchError` is thrown:
+もし一致しない場合`scala.MatchError`が投げられます。
 
 ```tut:fail
 val CustomerID(name3) = "-asdfasdfasdf"
 ```
 
+`unapply`の戻り値型は以下のように選ばれなければなりません。
 The return type of an `unapply` should be chosen as follows:
 
-* If it is just a test, return a `Boolean`. For instance `case even()`.
-* If it returns a single sub-value of type T, return an `Option[T]`.
-* If you want to return several sub-values `T1,...,Tn`, group them in an optional tuple `Option[(T1,...,Tn)]`.
+* ただのテストであれば、`Boolean`を返します。例えば`case even()`。
+* T型のサブバリュー1つを返すのであれば、`Option[T]`を返します。
+* いくつかのサブバリュー`T1,...,Tn`を返したいのであれば、オプショナルタプル`Option[(T1,...,Tn)]`でグループ化します。
 
-Sometimes, the number of values to extract isn't fixed and we would like to return an arbitrary number of values, depending on the input. For this use case, you can define extractors with an `unapplySeq` method which returns an `Option[Seq[T]]`. Common examples of these patterns include deconstructing a `List` using `case List(x, y, z) =>` and decomposing a `String` using a regular expression `Regex`, such as `case r(name, remainingFields @ _*) =>`.
+時々、抽出する値の数が確定せず、入力に応じて任意の数の値を返したいことがあります。
+このユースケースとして、`Option[Seq[T]]`を返す`unapplySeq`メソッドを持つエキストラクターを定義することができます。
+これらのパターンと同様の例として以下のものがあります。
+`case List(x, y, z) =>`を使って`List`を分解する。
+`case r(name, remainingFields @ _*) =>`.のように正規表現`Regex`を使って`String`を分解する。
