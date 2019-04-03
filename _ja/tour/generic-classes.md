@@ -1,6 +1,7 @@
 ---
 layout: tour
-title: Generic Classes
+title: ジェネリッククラス
+language: ja
 
 discourse: true
 
@@ -13,10 +14,11 @@ assumed-knowledge: classes unified-types
 
 redirect_from: "/tutorials/tour/generic-classes.html"
 ---
-Generic classes are classes which take a type as a parameter. They are particularly useful for collection classes.
+ジェネリッククラスはパラメータとして型を1つ受け取るクラスです。それらはコレクションクラスで特に役立ちます。
 
-## Defining a generic class
-Generic classes take a type as a parameter within square brackets `[]`. One convention is to use the letter `A` as type parameter identifier, though any parameter name may be used.
+## ジェネリッククラスの定義
+ジェネリッククラスは角カッコの中に`[]`パラメータとして型を1つ受け取ります。
+型引数の識別子として文字`A`を使う習慣がありますが、パラメータ名は任意のものを使うことができます。
 ```tut
 class Stack[A] {
   private var elements: List[A] = Nil
@@ -29,11 +31,14 @@ class Stack[A] {
   }
 }
 ```
-This implementation of a `Stack` class takes any type `A` as a parameter. This means the underlying list, `var elements: List[A] = Nil`, can only store elements of type `A`. The procedure `def push` only accepts objects of type `A` (note: `elements = x :: elements` reassigns `elements` to a new list created by prepending `x` to the current `elements`).
+この`Stack`クラスの実装はパラメータとして任意の型`A`を受け取ります。
+これは基礎となるリスト`var elements: List[A] = Nil`は型`A`の要素のみを格納できることを意味します。
+手続き`def push`は型`A`のオブジェクトのみを受け取ります
+(注意: `elements = x :: elements`は`elements`に`x`を現在の`elements`の先頭に追加した新しいリストを割り当て直します。)。
 
-## Usage
+## 使い方
 
-To use a generic class, put the type in the square brackets in place of `A`.
+ジェネリッククラスの使うには、`A`代わりに角カッコの中に型を入れます。
 ```
 val stack = new Stack[Int]
 stack.push(1)
@@ -41,6 +46,8 @@ stack.push(2)
 println(stack.pop)  // prints 2
 println(stack.pop)  // prints 1
 ```
+インスタンス`stack`はIntのみを受け取ることができます。
+しかしながら、型がサブタイプを持つ場合、それらは以下のように通すことができます。
 The instance `stack` can only take Ints. However, if the type argument had subtypes, those could be passed in:
 ```
 class Fruit
@@ -54,6 +61,5 @@ val banana = new Banana
 stack.push(apple)
 stack.push(banana)
 ```
-Class `Apple` and `Banana` both extend `Fruit` so we can push instances `apple` and `banana` onto the stack of `Fruit`.
-
-_Note: subtyping of generic types is *invariant*. This means that if we have a stack of characters of type `Stack[Char]` then it cannot be used as an integer stack of type `Stack[Int]`. This would be unsound because it would enable us to enter true integers into the character stack. To conclude, `Stack[A]` is only a subtype of `Stack[B]` if and only if `B = A`. Since this can be quite restrictive, Scala offers a [type parameter annotation mechanism](variances.html) to control the subtyping behavior of generic types._
+クラス`Apple`と`Banana`は共に`Fruit`を継承しています。そのため`Fruit`のスタックには`apple`と`banana`のインスタンスを追加できます。
+_注意: ジェネリック型のサブタイプは不変です。もし`Stack[Char]`型の文字スタックがあったとしても、それを`Stack[Int]`型の整数スタックとしては使うことができません。文字スタックに真の整数は入力できるので、このことは不合理に聞こえるかもしれません。最後に、`B = A`の場合に限り、`Stack[A]`はただの`Stack[B]`のサブタイプとなります。これは非常に制限的である場合があり、ジェネリックタイプのサブタイプの振る舞いをコントロールするために、Scalaは[型引数アノテーションの仕組み](variances.html)を提供します。_
