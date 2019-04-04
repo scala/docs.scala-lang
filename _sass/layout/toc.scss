@@ -3,12 +3,29 @@
 //------------------------------------------------
 
 .sidebar-toc-wrapper {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+
+  @include bp(large) {
+    position: relative;
+  }
+
   @include bp(medium) {
     display: none;
   }
 
   .contents {
     font-weight: 700;
+  }
+}
+
+.inner-toc {
+  max-height: 60vh;
+  overflow-y: auto;
+
+  @include bp(large) {
+    max-height: none;
   }
 }
 
