@@ -35,7 +35,7 @@ val twentySomethings = for (user <- userBase if (user.age >=20 && user.age < 30)
 twentySomethings.foreach(name => println(name))  // prints Travis Dennis
 ```
 この`yield`文と一緒に使われている`for`ループは実際には`List`を生成します。
-`yield user.name`と言ったので、それは`List[String]`です。
+`yield user.name`を返しているので、型は`List[String]`になります。
 `user <- userBase`はジェネレータであり、`if (user.age >=20 && user.age < 30)`は20代ではないユーザーをフィルターするガードです。
 
 こちらは2つのジェネレータを使ったより複雑な例です。
