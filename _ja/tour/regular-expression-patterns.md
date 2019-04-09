@@ -27,7 +27,7 @@ numberPattern.findFirstMatchIn("awesomepassword") match {
   case None => println("Password must contain a number")
 }
 ```
-上記の例では、`numberPattern`は`Regex`(正規表現)型で、パスワードに数字が含まれていることを確認に使います。
+上記の例では、`numberPattern`は`Regex`(正規表現)型で、パスワードに数字が含まれていることを確認するのに使います。
 
 括弧を使うことで、正規表現のグループを探すこともできます。
 
