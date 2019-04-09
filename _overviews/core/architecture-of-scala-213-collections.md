@@ -280,13 +280,13 @@ implementations of `filter` and `map`:
 trait IterableOps[+A, +CC[_], +C] {
 
   def filter(pred: A => Boolean): C =
-    fromSpecificIterable(new View.Filter(this, pred))
+    fromSpecific(new View.Filter(this, pred))
 
   def map[B](f: A => B): CC[B] = 
-    fromIterable(new View.Map(this, f))
+    from(new View.Map(this, f))
 
-  protected def fromSpecificIterable(coll: Iterable[A]): C
-  protected def fromIterable[E](it: Iterable[E]): CC[E]
+  protected def fromSpecific(coll: IterableOnce[A]): C
+  protected def from[E](it: IterableOnce[E]): CC[E]
 }
 ~~~
 
@@ -294,25 +294,25 @@ Let’s detail the implementation of `filter`, step by step:
 
 - the instantiation of `View.Filter` creates a (non-strict) `View` that filters the elements
   of the underlying collection ;
-- the call to `fromSpecificIterable` turns the `View` into a concrete
-  collection `C`. The implementation of `fromSpecificIterable` is left to
+- the call to `fromSpecific` turns the `View` into a concrete
+  collection `C`. The implementation of `fromSpecific` is left to
   concrete collections: they can decide to evaluate in a strict or non-strict way
   the elements resulting from the operation.
 
 The implementation of `map` is similar, excepted that instead of using
-`fromSpecificIterable` it uses `fromIterable` which takes as parameter an
+`fromSpecific` it uses `from` which takes as parameter an
 iterable whose element type `E` is arbitrary.
 
-Actually, `fromIterable` is not abstract in `IterableOps`: it delegates to an
-`iterableFactory` member (which is abstract):
+Actually, the `from` operation is not defined directly in `IterableOps` but is accessed via
+an (abstract) `iterableFactory` member:
 
 ~~~ scala
 trait IterableOps[+A, +CC[_], +C] {
 
-  protected def fromIterable[E](it: Iterable[E]): CC[E] =
-    iterableFactory.from(it)
-
   def iterableFactory: IterableFactory[CC]
+  
+  def map[B](f: A => B): CC[B] = 
+    iterableFactory.from(new View.Map(this, f))  
 
 }
 ~~~
@@ -336,12 +336,9 @@ trait MapOps[K, +V, +CC[_, _], +C]
   extends IterableOps[(K, V), Iterable, C] {
 
   def map[K2, V2](f: ((K, V)) => (K2, V2)): CC[K2, V2] =
-    mapFromIterable(new View.Map(this, f))
+    mapFactory.from(new View.Map(this, f))
 
-  // Similar to fromIterable, but returns a Map collection type
-  protected def mapFromIterable[K2, V2](it: Iterable[(K2, V2)]): CC[K2, V2] =
-    mapFactory.from(it)
-
+  // Similar to iterableFactory, but for Map collection types
   def mapFactory: MapFactory[CC]
 
 }
@@ -387,7 +384,7 @@ type of elements. The following code shows the relevant parts of `IterableOps` a
 ~~~ scala
 trait IterableOps[+A, +CC[_], +C] {
   def iterableFactory: IterableFactory[CC]
-  protected def fromSpecificIterable(coll: Iterable[A]): C
+  protected def fromSpecific(coll: IterableOnce[A]): C
   protected def newSpecificBuilder: Builder[A, C]
 }
 

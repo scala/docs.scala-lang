@@ -279,7 +279,7 @@ trait BuildFrom[-From, -A, +C] {
   /** @return a collection of type `C` containing the same elements
     * (of type `A`) as the source collection `it`.
     */
-  def fromSpecificIterable(from: From)(it: Iterable[A]): C
+  def fromSpecific(from: From)(it: IterableOnce[A]): C
 
   /** @return a Builder for the collection type `C`, containing
     * elements of type `A`.

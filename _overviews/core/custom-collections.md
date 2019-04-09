@@ -72,6 +72,8 @@ class Capped1[A] private (val capacity: Int, val length: Int, offset: Int, elems
       elem
     }
   }
+  
+  override def className = "Capped1"
 
 }
 ~~~
@@ -100,6 +102,9 @@ behavior of the `Capped1` collection type. In addition to them, we have
 to implement `iterator` to make the generic collection operations
 (such as `foldLeft`, `count`, etc.) work on `Capped` collections.
 Here we implement it by using indexed access.
+
+Last, we override `className` to return the name of the collection,
+“Capped1”. This name is used by the `toString` operation.
 
 Here are some interactions with the `Capped1` collection:
 
@@ -165,7 +170,11 @@ class Capped2[A] private (val capacity: Int, val length: Int, offset: Int, elems
 
   def iterator: Iterator[A] = // as before
 
+  override def className = "Capped2"
   override val iterableFactory: IterableFactory[Capped2] = new Capped2Factory(capacity)
+  override protected def fromSpecific(coll: IterableOnce[A]): Capped2[A] = iterableFactory.from(coll)
+  override protected def newSpecificBuilder: mutable.Builder[A, Capped2[A]] = iterableFactory.newBuilder
+  override def empty: Capped2[A] = iterableFactory.empty
 
 }
 
@@ -199,14 +208,22 @@ type of methods like `map`, `flatMap` or `concat` is defined
 by the second type parameter passed to class `IterableOps`,
 i.e., in class `Capped2`, it is `Capped2` itself.
 
-To construct a `Capped2`, the `fromSpecificIterable` and
-`newSpecificBuilder` implementations inherited from `immutable.Iterable`
-delegate to the `iterableFactory` member, which is overridden here to
-return an instance of `Capped2Factory`. This class
-provides convenient factory methods to build collections. Eventually,
-these methods delegate to `empty`, which builds an empty `Capped2`
-instance, and `newBuilder`, which uses the `appended` operation
-to grow a `Capped2` collection.
+Operations returning `Capped2[A]` collections are implemented in `IterableOps`
+in terms of the `fromSpecific` and `newSpecificBuilder` operations. The
+`immutable.Iterable[A]` parent class implements the `fromSpecific` and
+`newSpecificBuilder` such that they only return `immutable.Iterable[A]`
+collections instead of the expected `Capped2[A]` collections. Consequently,
+we override the `fromSpecific` and `newSpecificBuilder` operations to
+make them return a `Capped2[A]` collection. Another inherited operation
+returning a too general type is `empty`. We override it to return a
+`Capped2[A]` collection too. All these overrides simply forward to the
+collection factory referred to by the `iterableFactory` member, whose value
+is an instance of class `Capped2Factory`.
+
+The `Capped2Factory` class provides convenient factory methods to build
+collections. Eventually, these methods delegate to the `empty` operation,
+which builds an empty `Capped2` instance, and `newBuilder`, which uses the
+`appended` operation to grow a `Capped2` collection.
 
 With the refined implementation of the [`Capped2` class](#second-version-of-capped-class),
 the transformation operations work now as expected, and the
@@ -233,9 +250,15 @@ res4: Capped2[Int] = Capped2(2, 3, 4, 5)
 ~~~
 
 This implementation now behaves correctly, but we can still improve
-a few things. Since our collection is strict, we can take advantage
-of the better performance offered by 
-strict implementations of transformation operations.
+a few things:
+
+- since our collection is strict, we can take advantage
+  of the better performance offered by 
+  strict implementations of transformation operations,
+- since our `fromSpecific`, `newSpecificBuilder` and `empty`
+  operation just forward to the `iterableFactory` member,
+  we can use the `IterableFactoryDefaults` trait that provides
+  such implementations.
 
 ### Final version of `Capped` class ###
 
@@ -245,6 +268,7 @@ import scala.collection._
 final class Capped[A] private (val capacity: Int, val length: Int, offset: Int, elems: Array[Any])
   extends immutable.Iterable[A]
     with IterableOps[A, Capped, Capped[A]]
+    with IterableFactoryDefaults[A, Capped]
     with StrictOptimizedIterableOps[A, Capped, Capped[A]] { self =>
 
   def this(capacity: Int) =
@@ -277,6 +301,8 @@ final class Capped[A] private (val capacity: Int, val length: Int, offset: Int, 
 
   override def knownSize: Int = length
 
+  override def className = "Capped"
+
   override val iterableFactory: IterableFactory[Capped] = new CappedFactory(capacity)
 
 }
@@ -303,6 +329,9 @@ That is it. The final [`Capped` class](#final-version-of-capped-class):
 
 - extends the `StrictOptimizedIterableOps` trait, which overrides all
   transformation operations to take advantage of strict builders,
+- extends the `IterableFactoryDefaults` trait, which overrides the
+  `fromSpecific`, `newSpecificBuilder` and `empty` operations to forward
+  to the `iterableFactory`,
 - overrides a few operations for performance: the `view` now uses
   indexed access, and the `iterator` delegates to the view. The
   `knownSize` operation is also overridden because the size is always
@@ -371,10 +400,12 @@ representation.
         Base.fromInt(groups(idx / N) >> (idx % N * S) & M)
       }
 
-      override protected def fromSpecificIterable(coll: Iterable[Base]): RNA1 =
-        fromSeq(coll.toSeq)
+      override protected def fromSpecific(coll: IterableOnce[Base]): RNA1 =
+        fromSeq(coll.iterator.toSeq)
       override protected def newSpecificBuilder: mutable.Builder[Base, RNA1] =
         iterableFactory.newBuilder[Base].mapResult(fromSeq)
+      override def empty: RNA1 = fromSeq(Seq.empty)
+      override def className = "RNA1"
     }
 
     object RNA1 {
@@ -422,7 +453,7 @@ abstract methods:
 We also override the following members used by transformation operations
 such as `filter` and `take`:
 
-- `fromSpecificIterable`, implemented by the `fromSeq` method of the `RNA1`
+- `fromSpecific`, implemented by the `fromSeq` method of the `RNA1`
   companion object,
 - `newSpecificBuilder`, implemented by using the default `IndexedSeq` builder
   and transforming its result into an `RNA1` with the `mapResult` method.
@@ -554,26 +585,28 @@ this is why we always get a `Vector` as a result.
       import RNA2._
 
       def apply(idx: Int): Base = // as before
-      override protected def fromSpecificIterable(coll: Iterable[Base]): RNA2 = // as before
+      override protected def fromSpecific(coll: IterableOnce[Base]): RNA2 = // as before
       override protected def newSpecificBuilder: mutable.Builder[Base, RNA2] = // as before
       
       // Overloading of `appended`, `prepended`, `appendedAll`,
       // `prependedAll`, `map`, `flatMap` and `concat` to return an `RNA2`
       // when possible
+      def concat(suffix: IterableOnce[Base]): RNA2 =
+        fromSpecific(iterator ++ suffix.iterator)
+      // symbolic alias for `concat`
+      @inline final def ++ (suffix: IterableOnce[Base]): RNA2 = concat(suffix)
       def appended(base: Base): RNA2 =
-        fromSpecificIterable(new View.Append(this, base))
-      def appendedAll(suffix: Iterable[Base]): RNA2 =
-        fromSpecificIterable(new View.Concat(this, suffix))
+        fromSpecific(new View.Append(this, base))
+      def appendedAll(suffix: IterableOnce[Base]): RNA2 =
+        concat(suffix)
       def prepended(base: Base): RNA2 = 
-        fromSpecificIterable(new View.Prepend(base, this))
-      def prependedAll(prefix: Iterable[Base]): RNA2 =
-        fromSpecificIterable(new View.Concat(prefix, this))
+        fromSpecific(new View.Prepend(base, this))
+      def prependedAll(prefix: IterableOnce[Base]): RNA2 =
+        fromSpecific(prefix.iterator ++ iterator)
       def map(f: Base => Base): RNA2 =
-        fromSpecificIterable(new View.Map(this, f))
+        fromSpecific(new View.Map(this, f))
       def flatMap(f: Base => IterableOnce[Base]): RNA2 =
-        fromSpecificIterable(new View.FlatMap(this, f))
-      def concat(suffix: Iterable[Base]): RNA2 =
-        fromSpecificIterable(new View.Concat(this, suffix))
+        fromSpecific(new View.FlatMap(this, f))
     }
 
 To address this shortcoming, you need to overload the methods that
@@ -581,7 +614,7 @@ return an `IndexedSeq[B]` for the case where `B` is known to be `Base`,
 to return an `RNA2` instead.
 
 Compared to [class `RNA1`](#first-version-of-rna-strands-class)
-we added overloads for methods `appended`, `appendedAll`, `prepended`,
+we added overloads for methods `concat`, `appended`, `appendedAll`, `prepended`,
 `prependedAll`, `map` and `flatMap`.
 
 This implementation now behaves correctly, but we can still improve a few things. Since our
@@ -622,43 +655,31 @@ final class RNA private (
     Base.fromInt(groups(idx / N) >> (idx % N * S) & M)
   }
 
-  // Mandatory implementation of `fromSpecificIterable` and
-  // `newSpecificBuilder`, from `IterableOps`
-  override protected def fromSpecificIterable(coll: Iterable[Base]): RNA =
+  // Mandatory overrides of `fromSpecific`, `newSpecificBuilder`,
+  // and `empty`, from `IterableOps`
+  override protected def fromSpecific(coll: IterableOnce[Base]): RNA =
     RNA.fromSpecific(coll)
   override protected def newSpecificBuilder: mutable.Builder[Base, RNA] =
     RNA.newBuilder
+  override def empty: RNA = RNA.empty
 
   // Overloading of `appended`, `prepended`, `appendedAll`, `prependedAll`,
   // `map`, `flatMap` and `concat` to return an `RNA` when possible
+  def concat(suffix: IterableOnce[Base]): RNA =
+    strictOptimizedConcat(suffix, newSpecificBuilder)
+  @inline final def ++ (suffix: IterableOnce[Base]): RNA = concat(suffix)
   def appended(base: Base): RNA =
     (newSpecificBuilder ++= this += base).result()
   def appendedAll(suffix: Iterable[Base]): RNA =
-    (newSpecificBuilder ++= this ++= suffix).result()
+    strictOptimizedConcat(suffix, newSpecificBuilder)
   def prepended(base: Base): RNA =
     (newSpecificBuilder += base ++= this).result()
   def prependedAll(prefix: Iterable[Base]): RNA =
     (newSpecificBuilder ++= prefix ++= this).result()
-  def map(f: Base => Base): RNA = {
-    var b = newSpecificBuilder
-    for (base <- this) {
-      b += f(base)
-    }
-    b.result()
-  }
-  def flatMap(f: Base => IterableOnce[Base]): RNA = {
-    var b = newSpecificBuilder
-    for (base <- this) {
-      b ++= f(base)
-    }
-    b.result()
-  }
-  def concat(suffix: IterableOnce[Base]): RNA = {
-    val b = newSpecificBuilder
-    b ++= this
-    b ++= suffix
-    b.result()
-  }
+  def map(f: Base => Base): RNA =
+    strictOptimizedMap(newSpecificBuilder, f)
+  def flatMap(f: Base => IterableOnce[Base]): RNA =
+    strictOptimizedFlatMap(newSpecificBuilder, f)
 
   // Optional re-implementation of iterator,
   // to make it more efficient.
@@ -673,6 +694,7 @@ final class RNA private (
     }
   }
 
+  override def className = "RNA"
 }
 
 object RNA extends SpecificIterableFactory[Base, RNA] {
@@ -706,12 +728,13 @@ The final [`RNA` class](#final-version-of-rna-strands-class):
 
 - extends the `StrictOptimizedSeqOps` trait, which overrides all transformation
   operations to take advantage of strict builders,
-- uses a strict mode for overloads of transformation operations that return
-  an `RNA`,
+- uses utility operations provided by the `StrictOptimizedSeqOps` trait such as
+  `strictOptimizedConcat` to implement overload of transformation operations that
+  return an `RNA` collection,
 - has a companion object that extends `SpecificIterableFactory[Base, RNA]`, which makes
   it possible to use it as a parameter of a `to` call (to convert any collection
   of bases to an `RNA`, e.g. `List(U, A, G, C).to(RNA)`),
-- moves the `newSpecificBuilder` and `fromSpecificIterable` implementations
+- moves the `newSpecificBuilder` and `fromSpecific` implementations
   to the companion object.
 
 The discussion so far centered on the minimal amount of definitions
@@ -826,35 +849,23 @@ class PrefixMap[A]
   }
 
   // Overloading of transformation methods that should return a PrefixMap
-  def map[B](f: ((String, A)) => (String, B)): PrefixMap[B] = {
-    val b = PrefixMap.newBuilder[B]
-    for (kv <- this) {
-      b += f(kv)
-    }
-    b.result()
-  }
-  def flatMap[B](f: ((String, A)) => IterableOnce[(String, B)]): PrefixMap[B] = {
-    val b = PrefixMap.newBuilder[B]
-    for (kv <- this) {
-      b ++= f(kv)
-    }
-    b.result()
-  }
+  def map[B](f: ((String, A)) => (String, B)): PrefixMap[B] =
+    strictOptimizedMap(PrefixMap.newBuilder, f)
+  def flatMap[B](f: ((String, A)) => IterableOnce[(String, B)]): PrefixMap[B] =
+    strictOptimizedFlatMap(PrefixMap.newBuilder, f)
 
   // Override `concat` and `empty` methods to refine their return type
-  override def concat[B >: A](suffix: Iterable[(String, B)]): PrefixMap[B] = {
-    val b = PrefixMap.newBuilder[B]
-    b ++= this
-    b ++= suffix
-    b.result()
-  }
+  override def concat[B >: A](suffix: IterableOnce[(String, B)]): PrefixMap[B] =
+    strictOptimizedConcat(suffix, PrefixMap.newBuilder)
   override def empty: PrefixMap[A] = new PrefixMap
 
   // Members declared in scala.collection.mutable.Clearable
-  def clear(): Unit = suffixes = immutable.Map.empty
+  override def clear(): Unit = suffixes = immutable.Map.empty
   // Members declared in scala.collection.IterableOps
-  override protected def fromSpecificIterable(coll: Iterable[(String, A)]): PrefixMap[A] = PrefixMap.from(coll)
+  override protected def fromSpecific(coll: IterableOnce[(String, A)]): PrefixMap[A] = PrefixMap.from(coll)
   override protected def newSpecificBuilder: mutable.Builder[(String, A), PrefixMap[A]] = PrefixMap.newBuilder
+  
+  override def className = "PrefixMap"
 }
 
 object PrefixMap {
@@ -870,6 +881,8 @@ object PrefixMap {
 
   def newBuilder[A]: mutable.Builder[(String, A), PrefixMap[A]] =
     new mutable.GrowableBuilder[(String, A), PrefixMap[A]](empty)
+
+  import scala.language.implicitConversions
 
   implicit def toFactory[A](self: this.type): Factory[(String, A), PrefixMap[A]] =
     new Factory[(String, A), PrefixMap[A]] {
@@ -953,8 +966,7 @@ exactly one element `x`, if the option value is `Some(x)`.
 
 However, in all these cases, to build the right kind of collection
 you need to start with an empty collection of that kind. This is
-provided by the `empty` method, which is the last method defined in
-`PrefixMap`. This method simply returns a fresh `PrefixMap`.
+provided by the `empty` method, which simply returns a fresh `PrefixMap`.
 
 We'll now turn to the companion object `PrefixMap`. In fact it is not
 strictly necessary to define this companion object, as class `PrefixMap`
