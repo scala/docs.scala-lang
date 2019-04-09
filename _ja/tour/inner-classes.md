@@ -1,6 +1,7 @@
 ---
 layout: tour
-title: Inner Classes
+title: 内部クラス
+language: ja
 
 discourse: true
 
@@ -13,9 +14,12 @@ previous-page: lower-type-bounds
 redirect_from: "/tutorials/tour/inner-classes.html"
 ---
 
-In Scala it is possible to let classes have other classes as members. As opposed to Java-like languages where such inner classes are members of the enclosing class, in Scala such inner classes are bound to the outer object. Suppose we want the compiler to prevent us, at compile time, from mixing up which nodes belong to what graph. Path-dependent types provide a solution.
+Scalaではクラスが他のクラスをメンバーとして保持することが可能です。
+Javaのような言語とは対照的に、内部クラスは外側のクラスのメンバーとなる場合、Scalaではそのような内部クラスは外側のオブジェクトに束縛されます。
+コンパイルの際、コンパイラにどのノードがなんのグラフに属しているのか混同することを防いでほしいのです。
+パス依存型はその解決策の1つです。
 
-To illustrate the difference, we quickly sketch the implementation of a graph datatype:
+その違いを図示するために、グラフデータ型の実装をさっと書きます。
 
 ```tut
 class Graph {
@@ -35,7 +39,8 @@ class Graph {
   }
 }
 ```
-This program represents a graph as a list of nodes (`List[Node]`). Each node has a list of other nodes it's connected to (`connectedNodes`). The `class Node` is a _path-dependent type_ because it is nested in the `class Graph`. Therefore, all nodes in the `connectedNodes` must be created using the `newNode` from the same instance of `Graph`.
+このプログラムはグラフをノードのリスト(`List[Node]`)で表現しています。いずれのノードも接続している他のノードへのリスト(`connectedNodes`)を保持します。`class Node`は `class Graph`の中にネストしているので、 _パス依存型_ です。
+そのため`connectedNodes`の中にある全てのノードは同じ`Graph`インスタンスから`newNode`を使用し作る必要があります。
 
 ```tut
 val graph1: Graph = new Graph
@@ -45,10 +50,12 @@ val node3: graph1.Node = graph1.newNode
 node1.connectTo(node2)
 node3.connectTo(node1)
 ```
-We have explicitly declared the type of `node1`, `node2`, and `node3` as `graph1.Node` for clarity but the compiler could have inferred it. This is because when we call `graph1.newNode` which calls `new Node`, the method is using the instance of `Node` specific to the instance `graph1`.
+`node1`、`node2`、そして `node3`の型が`graph1.Node`であることを明確にするために、明示的に宣言しています。
+これは`graph1.newNode`を呼び出す時、`new Node`を呼び出し、そのメソッドがインスタンス`graph1`特有の`Node`のインスタンスを使用しているからです。
 
-If we now have two graphs, the type system of Scala does not allow us to mix nodes defined within one graph with the nodes of another graph, since the nodes of the other graph have a different type.
-Here is an illegal program:
+今2つのグラフがあれば、Scalaの型システムは1つのグラフの中でノードと別のグラフのノードを混ぜることを許しません。
+それは他のグラフのノードは別の型だからです。
+こちらは不正なプログラムです。
 
 ```
 val graph1: Graph = new Graph
@@ -59,7 +66,10 @@ val graph2: Graph = new Graph
 val node3: graph2.Node = graph2.newNode
 node1.connectTo(node3)      // illegal!
 ```
-The type `graph1.Node` is distinct from the type `graph2.Node`. In Java, the last line in the previous example program would have been correct. For nodes of both graphs, Java would assign the same type `Graph.Node`; i.e. `Node` is prefixed with class `Graph`. In Scala such a type can be expressed as well, it is written `Graph#Node`. If we want to be able to connect nodes of different graphs, we have to change the definition of our initial graph implementation in the following way:
+型`graph1.Node`は`graph2.Node`とは異なります。Javaでは先のプログラム例の最後の行は正しいでしょう。
+2つのグラフのノードに対して、Javaは同じ型`Graph.Node`を指定します。つまりクラス`Graph`は`Node`の接頭辞です。
+Scalaではそのような型も同様に表現することができ、`Graph#Node`と書きます。
+もし他のグラフのノードに接続できるようにしたければ、以下の方法で最初のグラフ実装の定義を変える必要があります。
 
 ```tut
 class Graph {
