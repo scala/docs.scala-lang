@@ -1,6 +1,7 @@
 ---
 layout: tour
-title: Upper Type Bounds
+title: 上限型境界
+language: ja
 
 discourse: true
 
@@ -13,8 +14,11 @@ previous-page: variances
 redirect_from: "/tutorials/tour/upper-type-bounds.html"
 ---
 
-In Scala, [type parameters](generic-classes.html) and [abstract type members](abstract-type-members.html) may be constrained by a type bound. Such type bounds limit the concrete values of the type variables and possibly reveal more information about the members of such types. An _upper type bound_ `T <: A` declares that type variable `T` refers to a subtype of type `A`.
-Here is an example that demonstrates upper type bound for a type parameter of class `PetContainer`:
+Scalaでは [型パラメータ](generic-classes.html)と[抽象型メンバー](abstract-type-members.html) は型境界により制約されることがあります。
+型境界は具体的な値を制限し、そのような型のメンバーに関するより多くの情報を明らかにするかもしれません。
+_上限型境界_ は型変数`T`が型`A`のサブタイプを参照することを宣言します。
+
+こちらはクラス`PetContainer`の型パラメータの上限型境界を実演する例です。
 
 ```tut
 abstract class Animal {
@@ -44,11 +48,13 @@ val catContainer = new PetContainer[Cat](new Cat)
 ```
 
 ```tut:fail
-// this would not compile
+// これはコンパイルされません
 val lionContainer = new PetContainer[Lion](new Lion)
 ```
-The `class PetContainer` take a type parameter `P` which must be a subtype of `Pet`. `Dog` and `Cat` are subtypes of `Pet` so we can create a new `PetContainer[Dog]` and `PetContainer[Cat]`. However, if we tried to create a `PetContainer[Lion]`, we would get the following Error:
+`class PetContainer`は型パラメータ`P`を受け取ります。それは`Pet`のサブタイプである必要があります。
+ `Dog`と`Cat`は`Pet`のサブタイプです。そのため新たな`PetContainer[Dog]`と`PetContainer[Cat]`を作ることができます。
+ しかしながら、もし`PetContainer[Lion]`を作ろうとすると、以下のエラーが返ってきます。
 
 `type arguments [Lion] do not conform to class PetContainer's type parameter bounds [P <: Pet]`
 
-This is because `Lion` is not a subtype of `Pet`.
+これは`Lion`は`Pet`のサブタイプではないからです。
