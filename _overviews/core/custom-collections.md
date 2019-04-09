@@ -1010,7 +1010,7 @@ methods without having to reimplement them all over again.
 
 ### Acknowledgement ###
 
-These pages contain material adapted from the 2nd edition of
+This page contains material adapted from the book
 [Programming in Scala](http://www.artima.com/shop/programming_in_scala) by
 Odersky, Spoon and Venners. We thank Artima for graciously agreeing to its
 publication.
