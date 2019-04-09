@@ -49,7 +49,7 @@ val input: String =
 for (patternMatch <- keyValPattern.findAllMatchIn(input))
   println(s"key: ${patternMatch.group(1)} value: ${patternMatch.group(2)}")
 ```
-ここでは、文字列のキーとバリューを解析しています。
+ここでは、文字列のキーと値を解析しています。
 それぞれの合致はサブマッチのグループを持ちます。こちらが出力結果になります。
 ```
 key: background-color value: #A03300
