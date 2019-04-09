@@ -1,6 +1,7 @@
 ---
 layout: tour
-title: Self-type
+title: 自己型
+language: ja
 
 discourse: true
 
@@ -14,27 +15,28 @@ prerequisite-knowledge: nested-classes, mixin-class-composition
 
 redirect_from: "/tutorials/tour/self-types.html"
 ---
-Self-types are a way to declare that a trait must be mixed into another trait, even though it doesn't directly extend it. That makes the members of the dependency available without imports.
+自己型はたとえ直接継承していなくても、トレイトが他のトレイトにミックスインさせることを宣言する方法です。
+それはimportなしに、依存関係のメンバーを利用可能とします。
 
-A self-type is a way to narrow the type of `this` or another identifier that aliases `this`. The syntax looks like normal function syntax but means something entirely different.
+自己型は`this`の型、または`this`の別名となる別の識別子を絞り込む方法です。
+その構文は普通の関数構文のように見えますが、全く異なる意味があります。
 
-To use a self-type in a trait, write an identifier, the type of another trait to mix in, and a `=>` (e.g. `someIdentifier: SomeOtherTrait =>`).
+トレイトで自己型を使うために、識別子とミックスインする他のトレイトの型、`=>`を書きます(例えば `someIdentifier: SomeOtherTrait =>`)。
 ```tut
 trait User {
   def username: String
 }
 
 trait Tweeter {
-  this: User =>  // reassign this
+  this: User =>  // thisが再割り当てされます
   def tweet(tweetText: String) = println(s"$username: $tweetText")
 }
 
-class VerifiedTweeter(val username_ : String) extends Tweeter with User {  // We mixin User because Tweeter required it
+class VerifiedTweeter(val username_ : String) extends Tweeter with User {  // TweeterがUserを必要とするためミックスインします。
 	def username = s"real $username_"
 }
 
 val realBeyoncé = new VerifiedTweeter("Beyoncé")
-realBeyoncé.tweet("Just spilled my glass of lemonade")  // prints "real Beyoncé: Just spilled my glass of lemonade"
+realBeyoncé.tweet("Just spilled my glass of lemonade")  // "real Beyoncé: Just spilled my glass of lemonade"とプリントします。
 ```
-
-Because we said `this: User =>` in `trait Tweeter`, now the variable `username` is in scope for the `tweet` method. This also means that since `VerifiedTweeter` extends `Tweeter`, it must also mix-in `User` (using `with User`).
+`trait Tweeter`の中で`this: User =>`と記述したので、今は変数`username`は`tweet`メソッドのスコープ内にあります。これは更に`VerifiedTweeter`は`Tweeter`を継承し、(`with User`を使って)`User`もミックスインしなければならいことを意味します。
