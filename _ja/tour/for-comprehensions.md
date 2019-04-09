@@ -15,7 +15,7 @@ redirect_from: "/tutorials/tour/for-comprehensions.html"
 ---
 
 Scalaは*シーケンス内包表記*を表現するための軽量な記法を提供します。
-`enumerators`がセミコロンで区切られたEnumeratorのリストを参照する場合、内含表記には`for (enumerators) yield e`の形式があります。
+内含表記は`for (enumerators) yield e`という形をとります。`enumerators`はセミコロンで区切られたEnumeratorのリストを指します。
 1つの*enumerator*は新しい変数を導き出すジェネレータかフィルタのどちらかです。
 内包表記は本体`e`をenumeratorsにより生成された各バインディングとして評価され、これら値の列を返します。
 
