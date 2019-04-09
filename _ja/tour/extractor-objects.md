@@ -40,7 +40,7 @@ customer1ID match {
 
 `apply`メソッドは`name`から`CustomerID`文字列を作ります。`unapply`は逆に`name`を返します。
  `CustomerID("Sukyoung")`は、`CustomerID.apply("Sukyoung")`を短く書く構文です。
- `case CustomerID(name) => println(name)`を呼び出すとき、unapplyメソッドを呼び出しています。
+ `case CustomerID(name) => println(name)`では、unapplyメソッドを呼んでいます。
 
 unapplyメソッドが値を供給する場合、新しい変数を導くパターンを使うことで値定義ができるので、エクストラクタは変数の初期化に使うことができます。
 
