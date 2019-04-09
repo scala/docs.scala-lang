@@ -32,7 +32,7 @@ class Stack[A] {
 }
 ```
 この`Stack`クラスの実装はパラメータとして任意の型`A`を受け取ります。
-これは基礎となるリスト`var elements: List[A] = Nil`は型`A`の要素のみを格納できることを意味します。
+これはメンバーのリスト`var elements: List[A] = Nil`が型`A`の要素のみを格納できることを意味します。
 手続き`def push`は型`A`のオブジェクトのみを受け取ります
 (注意: `elements = x :: elements`は`elements`に`x`を現在の`elements`の先頭に追加した新しいリストを割り当て直します。)。
 
