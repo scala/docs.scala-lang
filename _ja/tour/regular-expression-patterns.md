@@ -50,7 +50,7 @@ for (patternMatch <- keyValPattern.findAllMatchIn(input))
   println(s"key: ${patternMatch.group(1)} value: ${patternMatch.group(2)}")
 ```
 ここでは、文字列のキーと値を解析しています。
-それぞれの合致はサブマッチのグループを持ちます。こちらが出力結果になります。
+それぞれのマッチはサブマッチのグループを持ちます。こちらが出力結果です。
 ```
 key: background-color value: #A03300
 key: background-image value: url(img
