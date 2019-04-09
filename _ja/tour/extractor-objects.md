@@ -42,7 +42,7 @@ customer1ID match {
  `CustomerID("Sukyoung")`は、`CustomerID.apply("Sukyoung")`を短く書く構文です。
  `case CustomerID(name) => println(name)`では、unapplyメソッドを呼んでいます。
 
-unapplyメソッドが値を供給する場合、新しい変数を導くパターンを使うことで値定義ができるので、エクストラクタは変数の初期化に使うことができます。
+値を定義する文で、パターン中に新しい変数を使うことができるので、エクストラクタは変数を初期化するのに使えます。この場合unapplyメソッドが初期値を与えます。
 
 ```tut
 val customer2ID = CustomerID("Nico")
