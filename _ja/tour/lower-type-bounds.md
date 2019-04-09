@@ -1,6 +1,7 @@
 ---
 layout: tour
-title: Lower Type Bounds
+title: 下限型境界
+language: ja
 
 discourse: true
 
@@ -14,9 +15,9 @@ prerequisite-knowledge: upper-type-bounds, generics, variance
 redirect_from: "/tutorials/tour/lower-type-bounds.html"
 ---
 
-While [upper type bounds](upper-type-bounds.html) limit a type to a subtype of another type, *lower type bounds* declare a type to be a supertype of another type. The term `B >: A` expresses that the type parameter `B` or the abstract type `B` refer to a supertype of type `A`. In most cases, `A` will be the type parameter of the class and `B` will be the type parameter of a method.
+ [上限型境界](upper-type-bounds.html) が型を別の型のサブタイプに制限する一方で、*下限型境界*は型が別の型のスーパータイプになるよう宣言します。表現`B >: A`はパラメータ`B`または抽象型`B`が型`A`のスーパータイプを指すことを表します。ほとんどのケースで`A`はそのクラスの型パラメータであり、`B`はメソッドの型パラメータになります。
 
-Here is an example where this is useful:
+以下はこれが役立つ場合の例です。 
 
 ```tut:fail
 trait Node[+B] {
@@ -34,11 +35,15 @@ case class Nil[+B]() extends Node[B] {
 }
 ```
 
-This program implements a singly-linked list. `Nil` represents an empty element (i.e. an empty list). `class ListNode` is a node which contains an element of type `B` (`head`) and a reference to the rest of the list (`tail`). The `class Node` and its subtypes are covariant because we have `+B`.
+このプログラムは片方向リストを実装します。`Nil`は空の要素（すなわち空のリスト）を意味します。
+`class ListNode`は型`B` (`head`)の要素を含むノードであり、リストの残りの部分(`tail`)への参照です。
+`class Node`とそのスーパータイプは共変であるので、`+B`としています。
 
-However, this program does _not_ compile because the parameter `elem` in `prepend` is of type `B`, which we declared *co*variant. This doesn't work because functions are *contra*variant in their parameter types and *co*variant in their result types.
+しかしながら、このプログラムはコンパイル _されません_。`prepend`の中のパラメータ`elem`が *共* 変と宣言した型`B`だからです。
+これは動きません、なぜなら関数はそれらの型パラメータの中では*反*変であり、それらの結果型の中では*共*変だからです。
 
-To fix this, we need to flip the variance of the type of the parameter `elem` in `prepend`. We do this by introducing a new type parameter `U` that has `B` as a lower type bound.
+これを解決するためには、`prepend`の中でパラメータ`elem`の型の変位指定を弾く必要があります。
+これを実現するには、下限型境界として`B`を持つ新しい型パラメータ`U`を導入します。
 
 ```tut
 trait Node[+B] {
@@ -56,7 +61,7 @@ case class Nil[+B]() extends Node[B] {
 }
 ```
 
-Now we can do the following:
+今、以下のようなことができます。
 ```tut
 trait Bird
 case class AfricanSwallow() extends Bird
@@ -67,4 +72,5 @@ val africanSwallowList= ListNode[AfricanSwallow](AfricanSwallow(), Nil())
 val birdList: Node[Bird] = africanSwallowList
 birdList.prepend(new EuropeanSwallow)
 ```
-The `Node[Bird]` can be assigned the `africanSwallowList` but then accept `EuropeanSwallow`s.
+`Node[Bird]`は`africanSwallowList`アサインできますが、その際`EuropeanSwallow`を受け取ります。
+
