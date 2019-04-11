@@ -172,7 +172,7 @@ abstract class SmallAnimal extends Animal
 case class Mouse(name: String) extends SmallAnimal
 ```
 
-動物の種類を受け取り、それらが食べる食料の種類を返す関数を使うとした場合。
+動物の種類を受け取り、それらが食べる食料の種類を返す関数について考えましょう。
 
 仮に（猫は小動物を食べるので）`Cat => SmallAnimal`が欲しいとします。
 しかし`Animal => Mouse`を代わりに与えられたとしても、私たちのプログラムはまだ動きます。
