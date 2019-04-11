@@ -1,6 +1,7 @@
 ---
 layout: tour
-title: Annotations
+title: アノテーション
+language: ja
 
 discourse: true
 
@@ -13,7 +14,7 @@ previous-page: by-name-parameters
 redirect_from: "/tutorials/tour/annotations.html"
 ---
 
-Annotations associate meta-information with definitions. For example, the annotation `@deprecated` before a method causes the compiler to print a warning if the method is used.
+アノテーションはメタ情報と定義を関連づけます。例えば、メソッドの前のアノテーション`@deprecated`はメソッドが使われたらコンパイラに警告を出力させます。
 ```
 object DeprecationDemo extends App {
   @deprecated("deprecation message", "release # which deprecates method")
@@ -22,13 +23,13 @@ object DeprecationDemo extends App {
   hello  
 }
 ```
-This will compile but the compiler will print a warning: "there was one deprecation warning".
+これはコンパイルされますが、コンパイラは警告"there was one deprecation warning"を出力します。
 
-An annotation clause applies to the first definition or declaration following it. More than one annotation clause may precede a definition and declaration. The order in which these clauses are given does not matter.
+アノテーション句はそれに続くに最初の定義か宣言に適用されます。定義と宣言の前には1つ以上のアノテーション句を置くことができます。与えられたこれらの句の中での順番は重要ではありません。
 
 
-## Annotations that ensure correctness of encodings
-Certain annotations will actually cause compilation to fail if a condition(s) is not met. For example, the annotation `@tailrec` ensures that a method is [tail-recursive](https://en.wikipedia.org/wiki/Tail_call). Tail-recursion can keep memory requirements constant. Here's how it's used in a method which calculates the factorial:
+## エンコーディングの正確性を保証するアノテーション
+確かにいくつかのアノテーションは条件が一致すればコンパイルを失敗させます。例えば、アノテーション`@tailrec`はメソッドは[末尾再帰](https://en.wikipedia.org/wiki/Tail_call)であると保証します。末尾再帰は必須メモリを一定に維持します。こちらは階乗を計算するメソッドの中での使われ方です。
 ```tut
 import scala.annotation.tailrec
 
@@ -41,7 +42,7 @@ def factorial(x: Int): Int = {
   factorialHelper(x, 1)
 }
 ```
-The `factorialHelper` method has the `@tailrec` which ensures the method is indeed tail-recursive. If we were to change the implementation of `factorialHelper` to the following, it would fail:
+`factorialHelper`メソッドは`@tailrec`を持ちます。`@tailrec`はメソッドが実際に末尾再帰であることを保証します。もし`factorialHelper`の実装を以下のように変更すれば、失敗し
 ```
 import scala.annotation.tailrec
 
@@ -53,17 +54,18 @@ def factorial(x: Int): Int = {
   factorialHelper(x)
 }
 ```
-We would get the message "Recursive call not in tail position".
+"Recursive call not in tail position"というメッセージを受け取ります。
 
 
-## Annotations affecting code generation
-Some annotations like `@inline` affect the generated code (i.e. your jar file might have different bytes than if you hadn't used the annotation). Inlining means inserting the code in a method's body at the call site. The resulting bytecode is longer, but hopefully runs faster. Using the annotation `@inline` does not ensure that a method will be inlined, but it will cause the compiler to do it if and only if some heuristics about the size of the generated code are met.
+## コード生成に影響するアノテーション
+`@inline`のようなアノテーションは生成されたコードに影響します。(つまり、アノテーションを使わなかった場合とでjarファイルのバイト数が異なる場合があります。)インライン化は呼び出し時にメソッドの本体へのコード挿入を意味します。結果のバイトコードはより長くなりますが、上手くいけば実行が早くなります。アノテーション`@inline`を使ってもメソッドのインライン化はされません。しかし、生成されたコードのサイズに関するヒューリスティックスが満たされた場合に限りコンパイラにインライン化をさせます。
 
-### Java Annotations ###
-When writing Scala code which interoperates with Java, there are a few differences in annotation syntax to note.
-**Note:** Make sure you use the `-target:jvm-1.8` option with Java annotations.
+### Javaのアノテーション ###
+Javaと相互運用するScalaのコードを書いている時、記述するアノテーション構文は少し違います。
 
-Java has user-defined metadata in the form of [annotations](https://docs.oracle.com/javase/tutorial/java/annotations/). A key feature of annotations is that they rely on specifying name-value pairs to initialize their elements. For instance, if we need an annotation to track the source of some class we might define it as
+**注:** Javaアノテーションを使う場合、`-target:jvm-1.8`オプションを使ってください。
+
+Javaには[アノテーション](https://docs.oracle.com/javase/tutorial/java/annotations/)の形をしたユーザー定義メタデータがあります。アノテーションの主な機能は要所の初期化にのために名前と値のペアを指定する必要があります。例えば、あるクラスのソースを追いかけるためにアノテーションが必要な場合、以下のようにそれを定義します。
 
 ```
 @interface Source {
@@ -72,7 +74,7 @@ Java has user-defined metadata in the form of [annotations](https://docs.oracle.
 }
 ```
 
-And then apply it as follows
+そして、それは以下のように適用されます。
 
 ```
 @Source(URL = "http://coders.com/",
@@ -80,7 +82,7 @@ And then apply it as follows
 public class MyClass extends TheirClass ...
 ```
 
-An annotation application in Scala looks like a constructor invocation, for instantiating a Java annotation one has to use named arguments:
+Scalaでのアノテーションの適用はコンストラクタの呼び出しと似ています。Javaのアノテーションをインスタンス化するためには名前付き引数を使う必要があります。
 
 ```
 @Source(URL = "http://coders.com/",
@@ -88,7 +90,7 @@ An annotation application in Scala looks like a constructor invocation, for inst
 class MyScalaClass ...
 ```
 
-This syntax is quite tedious if the annotation contains only one element (without default value) so, by convention, if the name is specified as `value` it can be applied in Java using a constructor-like syntax:
+アノテーションが(デフォルト値を除き)要素を1つだけ含む場合、この構文はかなり退屈です。そのため慣例により、名前が`value`と指定されていれば、コンストラクタっぽい構文でJavaに適用できます。
 
 ```
 @interface SourceURL {
@@ -97,21 +99,21 @@ This syntax is quite tedious if the annotation contains only one element (withou
 }
 ```
 
-And then apply it as follows
+そして以下のように適用します。
 
 ```
 @SourceURL("http://coders.com/")
 public class MyClass extends TheirClass ...
 ```
 
-In this case, Scala provides the same possibility
+この場合、Scalaは同じ可能性を提供します。
 
 ```
-@SourceURL("http://coders.com/")
+@SourceURL("http://coders.com/")1
 class MyScalaClass ...
 ```
 
-The `mail` element was specified with a default value so we need not explicitly provide a value for it. However, if we need to do it we can not mix-and-match the two styles in Java:
+`mail`要素はデフォルト値で指定されます。そのためはっきりとそれに値を与える必要がありません。しかしながら、もしそれをする必要があるなら、Javaでは2つのスタイルを混ぜて組み合わせることはできません。
 
 ```
 @SourceURL(value = "http://coders.com/",
@@ -119,7 +121,7 @@ The `mail` element was specified with a default value so we need not explicitly 
 public class MyClass extends TheirClass ...
 ```
 
-Scala provides more flexibility in this respect
+Scalaはこの点においてより多くの柔軟性を提供します。
 
 ```
 @SourceURL("http://coders.com/",
