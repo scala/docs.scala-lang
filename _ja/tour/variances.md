@@ -165,7 +165,7 @@ val cat: Cat = catContainer.getValue // おっと、犬に猫に割り当てて�
 `Function1`はその引数の型に対して反変であり、戻り値の型に対して共変です。
 この例では`Function1[A, B]`を表現するために`A => B`という文字での表記をします。
 
-先ほど利用されたものと同様に`Cat`, `Dog`, `Animal`の継承ツリーは以下のものを考えてください。
+先ほど利用された`Cat`, `Dog`, `Animal`の継承ツリーに、以下のものを加えましょう：
 
 ```tut
 abstract class SmallAnimal extends Animal
