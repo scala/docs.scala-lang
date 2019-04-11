@@ -1,6 +1,7 @@
 ---
 layout: tour
-title: Packages and Imports
+title: パッケージとインポート
+language: ja
 
 discourse: true
 
@@ -11,18 +12,19 @@ previous-page: named-arguments
 next-page: package-objects
 ---
 
-# Packages and Imports
-Scala uses packages to create namespaces which allow you to modularize programs.
+# パッケージとインポート
+Scalaは名前空間を作るためにパッケージを使います。名前空間によりプログラムをモジュール化できます。
 
-## Creating a package
-Packages are created by declaring one or more package names at the top of a Scala file.
+## パッケージの作成
+Scalaファイルの先頭で1つ以上のパッケージ名を宣言することでパッケージは作られます。
 
 ```
 package users
 
 class User
 ```
-One convention is to name the package the same as the directory containing the Scala file. However, Scala is agnostic to file layout. The directory structure of an sbt project for `package users` might look like this:
+パッケージとScalaファイルが含まれるディレクトリは同じ名前をつける習慣があります。しかし、Scalaはファイルのレイアウトを認知できません。`package users`のsbtプロジェクトのディレクトリ構成はこのように見えます。
+
 ```
 - ExampleProject
   - build.sbt
@@ -36,7 +38,8 @@ One convention is to name the package the same as the directory containing the S
           UserPreferences.scala
     - test
 ```
-Notice how the `users` directory is within the `scala` directory and how there are multiple Scala files within the package. Each Scala file in the package could have the same package declaration. The other way to declare packages is by using braces:
+`users`ディレクトリがどのように`scala`ディレクトリの中にあり、Scalaファイルがどのようにパッケージ内にあるのかに注意してください。パッケージ内のいずれのScalaファイルも同じパッケージ宣言がされます。他のパッケージ宣言の方法は波括弧を使います。
+
 ```
 package users {
   package administrators {
@@ -47,26 +50,25 @@ package users {
   }
 }
 ```
-As you can see, this allows for package nesting and provides greater control for scope and encapsulation.
+見ての通り、この方法はパッケージのネストができ、より大きいスコープとカプセル化のコントロールができます。
 
-The package name should be all lower case and if the code is being developed within an organization which has a website, it should be the following format convention: `<top-level-domain>.<domain-name>.<project-name>`. For example, if Google had a project called `SelfDrivingCar`, the package name would look like this:
+パッケージ名は全て小文字で書き、もしコードがwebサイトを持つ組織によって開発される場合、慣習として次のフォーマットであるべきです。`<トップレベルドメイン>.<ドメイン名>.<プロジェクト名>`。例えば、Googleが`SelfDrivingCar`と呼ばれるプロジェクトを持っている場合、パッケージ名はこんな風になるでしょう。
 ```
 package com.google.selfdrivingcar.camera
 
 class Lens
 ```
-This could correspond to the following directory structure: `SelfDrivingCar/src/main/scala/com/google/selfdrivingcar/camera/Lens.scala`.
+これは次のディレクトリ構成に対応します。`SelfDrivingCar/src/main/scala/com/google/selfdrivingcar/camera/Lens.scala`
 
-## Imports
-`import` clauses are for accessing members (classes, traits, functions, etc.) in other packages. An `import` clause is not required for accessing members of the same package. Import clauses are selective:
+## インポート
+`import`句は他パッケージのメンバー（クラス、トレイト、関数など）にアクセスするためのものです。同じパッケージのメンバーにアクセスするには`import`句は必要ありません。import句は選択的です。
 ```
-import users._  // import everything from the users package
-import users.User  // import the class User
-import users.{User, UserPreferences}  // Only imports selected members
-import users.{UserPreferences => UPrefs}  // import and rename for convenience
+import users._  // usersパッケージから全てをインポートする
+import users.User  // クラスUserをインポートする
+import users.{User, UserPreferences}  // 選択されたメンバーのみインポートする
+import users.{UserPreferences => UPrefs}  // インポートし利便性のために名前を変更する
 ```
-
-One way in which Scala is different from Java is that imports can be used anywhere:
+ScalaのJavaと異なる利用方法の1つはインポートがどこでも使える点です。
 
 ```tut
 def sqrtplus1(x: Int) = {
@@ -74,7 +76,7 @@ def sqrtplus1(x: Int) = {
   sqrt(x) + 1.0
 }
 ```
-In the event there is a naming conflict and you need to import something from the root of the project, prefix the package name with `_root_`:
+名前競合があり、プロジェクトのルートから何かをインポートする必要がある時、パッケージ名の前に`_root_`をつけます。
 ```
 package accounts
 
@@ -82,4 +84,4 @@ import _root_.users._
 ```
 
 
-Note: The `scala` and `java.lang` packages as well as `object Predef` are imported by default.
+注：`scala`と`java.lang` パッケージは`object Predef`と同じように標準でインポートされています。
