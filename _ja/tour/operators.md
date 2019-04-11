@@ -1,6 +1,7 @@
 ---
 layout: tour
-title: Operators
+title: オペレータ
+language: ja
 
 discourse: true
 
@@ -13,18 +14,21 @@ prerequisite-knowledge: case-classes
 
 redirect_from: "/tutorials/tour/operators.html"
 ---
-In Scala, operators are methods. Any method with a single parameter can be used as an _infix operator_. For example, `+` can be called with dot-notation:
+Scalaではオペレーターはメソッドです。1つのパラメータを持つメソッドであれば*中置オペレータ*として使えます。例えば、`+`はドット記法で呼び出せます。
+
 ```
 10.+(1)
 ```
 
-However, it's easier to read as an infix operator:
+しかしながら、中置オペレータの方が読みやすいです。
+
 ```
 10 + 1
 ```
 
-## Defining and using operators
-You can use any legal identifier as an operator. This includes a name like `add` or a symbol(s) like `+`.
+## オペレータの定義方法と使い方
+
+有効な識別子であればオペレータとして使用できます。これは `add`のような名前と`+`のようなシンボルも含みます。
 ```tut
 case class Vec(val x: Double, val y: Double) {
   def +(that: Vec) = new Vec(this.x + that.x, this.y + that.y)
@@ -37,7 +41,8 @@ val vector3 = vector1 + vector2
 vector3.x  // 3.0
 vector3.y  // 3.0
 ```
-The class Vec has a method `+` which we used to add `vector1` and `vector2`. Using parentheses, you can build up complex expressions with readable syntax. Here is the definition of class `MyBool` which includes methods `and` and `or`:
+クラスVecはメソッド`+`を持ち、 `vector1`と`vector2`を足しわせるのに使います。丸括弧を使えば、読みやすい構文の複雑な式を作れます。
+こちらはクラス`MyBool`の定義です。クラス`MyBool`はメソッド`and`と`or`を含みます。
 
 ```tut
 case class MyBool(x: Boolean) {
@@ -47,19 +52,20 @@ case class MyBool(x: Boolean) {
 }
 ```
 
-It is now possible to use `and` and `or` as infix operators:
+この時、`and`と`or`を中置オペレータとして使えます。
 
 ```tut
 def not(x: MyBool) = x.negate
 def xor(x: MyBool, y: MyBool) = (x or y) and not(x and y)
 ```
 
-This helps to make the definition of `xor` more readable.
+これにより`xor`の定義をより読みやすくします。
 
-## Precedence
-When an expression uses multiple operators, the operators are evaluated based on the priority of the first character:
+## 優先順位
+
+式が複数のオペレータを使う時、最初の記号の優先度に基づきオペレータは評価されます。
 ```
-(characters not shown below)
+(以下に表示されていない記号)
 * / %
 + -
 :
@@ -68,14 +74,14 @@ When an expression uses multiple operators, the operators are evaluated based on
 &
 ^
 |
-(all letters)
+(全ての文字)
 ```
-This applies to functions you define. For example, the following expression:
+これはあなたが定義した関数にも適用できます。
 ```
 a + b ^? c ?^ d less a ==> b | c
 ```
-Is equivalent to
+は以下と同じ意味です。
 ```
 ((a + b) ^? (c ?^ d)) less ((a ==> b) | c)
 ```
-`?^` has the highest precedence because it starts with the character `?`. `+` has the second highest precedence, followed by `==>`, `^?`, `|`, and `less`.
+`?^`は最も高い優先順位を持ちます。`?^`は`?`から始まるからです。`+`は二番目に高い優先順位を持ち、その後に`==>`、 `^?`、 `|`、 そして`less`が続きます。
