@@ -1,6 +1,6 @@
 ---
 layout: tour
-title: By-name Parameters
+title: 名前付きパラメータ
 
 discourse: true
 
@@ -13,13 +13,14 @@ previous-page: operators
 redirect_from: "/tutorials/tour/by-name-parameters.html"
 ---
 
-_By-name parameters_ are only evaluated when used. They are in contrast to _by-value parameters_. To make a parameter called by-name, simply prepend `=>` to its type.
+*名前付きパラメータ*は使用された時に評価されます。それらは*値つきパラメータ*とは対照的です。名前で呼び出せるパラメータを作るには、単純に`=>`を型の前につけます。
 ```tut
 def calculate(input: => Int) = input * 37
 ```
-By-name parameters have the advantage that they are not evaluated if they aren't used in the function body. On the other hand, by-value parameters have the advantage that they are evaluated only once.
 
-Here's an example of how we could implement a while loop:
+名前付きパラメータの利点は関数本体の中で使わなければ評価されない点です。一方で、値付きパラメータの利点は1度だけ評価される点です。
+
+こちらはwhileループをどのように実装するかの例です。
 
 ```tut
 def whileLoop(condition: => Boolean)(body: => Unit): Unit =
@@ -35,8 +36,9 @@ whileLoop (i > 0) {
   i -= 1
 }  // prints 2 1
 ```
-The method `whileLoop` uses multiple parameter lists to take a condition and a body of the loop. If the `condition` is true, the `body` is executed and then a recursive call to whileLoop is made. If the `condition` is false, the body is never evaluated because we prepended `=>` to the type of `body`.
 
-Now when we pass `i > 0` as our `condition` and `println(i); i-= 1` as the `body`, it behaves like the standard while loop in many languages.
+メソッド`whileLoop`は条件とループの本体を受け取るために複数パラメータリストを使います。もし`condition`がtrueならば、`body`は実行され、そしてwhileループの再帰呼び出しがされます。`condition`がfalseならば、bodyは決して評価されません。それは`body`の型の前に`=>`をつけたからです。
 
-This ability to delay evaluation of a parameter until it is used can help performance if the parameter is computationally intensive to evaluate or a longer-running block of code such as fetching a URL.
+ここで、`condition`に`i > 0`、`body`に`println(i); i-= 1`を渡した場合、多くの言語では一般的なwhileループと同じ振る舞いをします。
+
+パラメータが使われるまで評価を遅延させる機能はパフォーマンスを助けます。それはパラメータを評価するための計算が集約的な場合やURLの取得のような時間がかかるコードブロックの場合です。
