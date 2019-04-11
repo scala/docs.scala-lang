@@ -1,6 +1,6 @@
 ---
 layout: tour
-title: Named Arguments
+title: 名前付き引数
 
 discourse: true
 
@@ -14,6 +14,7 @@ prerequisite-knowledge: function-syntax
 redirect_from: "/tutorials/tour/named-arguments.html"
 ---
 
+メソッドを呼ぶ時、以下のように引数にパラメータ名でラベル付が可能です。
 When calling methods, you can label the arguments with their parameter names like so:
 
 ```tut
@@ -25,10 +26,11 @@ printName("John", "Smith")  // Prints "John Smith"
 printName(first = "John", last = "Smith")  // Prints "John Smith"
 printName(last = "Smith", first = "John")  // Prints "John Smith"
 ```
-Notice how the order of named arguments can be rearranged. However, if some arguments are named and others are not, the unnamed arguments must come first and in the order of their parameters in the method signature.
+
+名前付き引数の順序はどのように並び替えられるかに気をつけましょう。ただし、ある引数は名前をつけられ、他の引数には名前がつけられなかった場合、名前が付いていない引数は最初かつメソッドの署名の中にあるパラメーター並び順でなければなりません。
 
 ```tut:fail
 printName(last = "Smith", "john") // error: positional after named argument
 ```
 
-Note that named arguments do not work with calls to Java methods.
+名前付き引数はJavaメソッドを呼び出す時は動きません。
