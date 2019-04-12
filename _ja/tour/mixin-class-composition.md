@@ -75,11 +75,9 @@ trait RichIterator extends AbsIterator {
 
 `StringIterator`と`RichIterator`の機能を1つのクラスに組み合わせてみましょう。
 ```tut
-object StringIteratorTest extends App {
-  class RichStringIter extends StringIterator("Scala") with RichIterator
-  val richStringIter = new RichStringIter
-  richStringIter foreach println
-}
+class RichStringIter extends StringIterator("Scala") with RichIterator
+val richStringIter = new RichStringIter
+richStringIter foreach println
 ```
 新しいクラス`RichStringIter`は`StringIterator`をスーパークラスとし、`RichIterator`をミックスインとしています。
 
