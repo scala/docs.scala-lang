@@ -1,6 +1,7 @@
 ---
 layout: tour
-title: Package Objects
+title: パッケージオブジェクト
+language: ja
 
 discourse: true
 
@@ -10,25 +11,22 @@ num: 36
 previous-page: packages-and-imports
 ---
 
-# Package objects
+# パッケージオブジェクト
 
-Scala provides package objects as a convenient container shared across an entire package.
+Scalaはパッケージ全体を通して共有される便利なコンテナとしてパッケージオブジェクトを提供します。
 
-Package objects
-can contain arbitrary definitions, not just variable and method definitions. For instance, they are frequently
-used to hold package-wide type aliases and implicit conversions. Package objects can even inherit
-Scala classes and traits.
+パッケージオブジェクトは任意の定義を含むことができます。それは変数だけではなくメソッド定義も含みます。
+例えば、それらはパッケージ全体の型エイリアスと暗黙の変換を保有するために頻繁に使われます。
+パッケージオブジェクトはScalaクラスとトレイトさえ受け継げます。
 
-By convention, the source code for a package object is usually put in a source file named `package.scala`.
+習慣として、パッケージオブジェクトのソースコードは通常`package.scala`という名のソースファイルに設置されます。
 
-Each package is allowed to have one package object. Any definitions placed in a package object are considered
-members of the package itself.
+いずれのパッケージもパッケージオブジェクトを1つ持てます。パッケージオブジェクト内の全ての定義はパッケージのメンバーであるか検討されます。
 
-See example below. Assume first a class `Fruit` and three `Fruit` objects in a package
-`gardening.fruits`:
+以下の例を見てみましょう。まず1つのクラス`Fruit`と3つの`Fruit`オブジェクトがパッケージ`gardening.fruits`にあるとします。
 
 ```
-// in file gardening/fruits/Fruit.scala
+// ファイル gardening/fruits/Fruit.scala の中
 package gardening.fruits
 
 case class Fruit(name: String, color: String)
@@ -37,11 +35,11 @@ object Plum extends Fruit("Plum", "blue")
 object Banana extends Fruit("Banana", "yellow")
 ```
 
-Now assume you want to place a variable `planted` and a method `showFruit` directly into package `gardening.fruits`.
-Here's how this is done:
+ここで、変数`planted`とメソッド`showFruit`を直接パッケージ`gardening.fruits`内に置きたいとします。
+こちらがその方法になります。
 
 ```
-// in file gardening/fruits/package.scala
+// ファイル gardening/fruits/package.scala の中
 package gardening
 package object fruits {
   val planted = List(Apple, Plum, Banana)
@@ -51,11 +49,11 @@ package object fruits {
 }
 ```
 
-As an example of how the use site looks, the following object `PrintPlanted` imports `planted` and `showFruit` in exactly the same
-way it imports class `Fruit`, using a wildcard import on package gardening.fruits:
+利用方法で見た例の通り、以下のオブジェクト`PrintPlanted`は`planted`と`showFruit`をインポートします。
+それはをクラス`Fruit`をインポートするのと全く同じ方法で、パッケージgardening.fruitsでワイルドカードインポートしています。
 
 ```
-// in file PrintPlanted.scala
+// ファイル PrintPlanted.scala の中
 import gardening.fruits._
 object PrintPlanted {
   def main(args: Array[String]): Unit = {
@@ -66,12 +64,11 @@ object PrintPlanted {
 }
 ```
 
-Package objects are like other objects, which means you can use inheritance for building them. For example, one might mix in a couple of traits:
+パッケージオブジェクトは他のオブジェクトと似ています。それはビルドのために継承を利用できるという意味です。例えば、一対のトレイトの中でパッケージオブジェクトをミックスします。
 
 ```
 package object fruits extends FruitAliases with FruitHelpers {
-  // helpers and variables follows here
+  // ヘルパーと変数がここに続きます。
 }
 ```
-
-Note that method overloading doesn't work in package objects.
+メソッドオーバーライドはパッケージオブジェクト内では動作しないので気をつけましょう。
