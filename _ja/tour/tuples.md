@@ -15,85 +15,65 @@ topics: tuples
 redirect_from: "/tutorials/tour/tuples.html"
 ---
 
-Scalaではタプルは異なる型の要素を複数持つことができるクラスです。
-タプルは不変です。
+Scalaではタプルは決まった数の要素を含む値であり、それぞれの要素は明確な型を持ちます。
+タプルは不変です
 
-タプルは関数から複数の値を返す際に役立ちます。
+タプルはメソッドから複数の値を返す際に特に役立ちます。
 
-タプルは以下のように作ることができます
+2つの要素を持つタプルは以下のように作ることができます。
 
 ```tut
-val ingredient = ("Sugar" , 25):Tuple2[String, Int]
+val ingredient = ("Sugar" , 25)
 ```
-ここではString要素を1つとInt要素を1つ含むタプルを作っています。
+ここでは`String`要素を1つと`Int`要素を1つ含むタプルを作っています。
 
-Scalaではタプルは Tuple2, Tuple3, … Tuple22 までの一連のクラス群です。
-そのためn個の要素（nは2から22）でタプルを作成する時、
+`ingredient`の推論型は`(String, Int)`であり、これは`Tuple2[String, Int]`の簡単な表記法です。
 
-Scalaは基本的にそれらのクラスの中から構成要素の型に対応するクラスを1つインスタンス化します。
-例えば、 値 ingredient は Tuple2 [String, Int]型です。
+タプルを表すためには、Scalaは`Tuple2`, `Tuple3`,から `Tuple22`までのクラス群を使います。
+それぞれのクラスは要素の数と同じ数の型パラメータを持ちます。
 
 ## 要素へのアクセス
 
-タプル要素にはアンダースコア記法を用いてアクセスします。
-（要素がたくさんあることを考えると）'tuple._n' はn番目の要素を与えます。
+タプル要素へのアクセス方法の1つは位置の利用です。
+個々の要素は`_1`、`_2`などと名付けられます。
 
 ```tut
 println(ingredient._1) // Sugar
-
 println(ingredient._2) // 25
 ```
-
-## タプルのデータの分割代入
-
-Scalaのタプルは分割代入にも対応しています。
+## タプルでのパターンマッチング
+タプルはパターンマッチングを使って分解することもできます。
 
 ```tut
 val (name, quantity) = ingredient
-
 println(name) // Sugar
-
 println(quantity) // 25
 ```
 
-タプルの分割代入はパターンマッチングでも使われます。
+ここでは`name`の型推論は`String`で、`quantity`の型推論は`Int`です。
+
+こちらはタプルのパターンマッチングの他の例です。
 
 ```tut
-val planetDistanceFromSun = List(("Mercury", 57.9), ("Venus", 108.2), ("Earth", 149.6 ), ("Mars", 227.9), ("Jupiter", 778.3))
-
-planetDistanceFromSun.foreach{ tuple => {
-  
-  tuple match {
-    
-      case ("Mercury", distance) => println(s"Mercury is $distance millions km far from Sun")
-      
-      case p if(p._1 == "Venus") => println(s"Venus is ${p._2} millions km far from Sun")
-      
-      case p if(p._1 == "Earth") => println(s"Blue planet is ${p._2} millions km far from Sun")
-      
-      case _ => println("Too far....")
-      
-    }
-    
-  }
-  
+val planets =
+  List(("Mercury", 57.9), ("Venus", 108.2), ("Earth", 149.6),
+       ("Mars", 227.9), ("Jupiter", 778.3))
+planets.foreach{
+  case ("Earth", distance) =>
+    println(s"Our planet is $distance million kilometers from the sun")
+  case _ =>
 }
 ```
 
-また、for内包表記においては、
+または、`for`の中では
 
 ```tut
 val numPairs = List((2, 5), (3, -7), (20, 56))
-
 for ((a, b) <- numPairs) {
-
   println(a * b)
-  
 }
 ```
 
-Unit型の値 () は概念的には Tuple0 型の () の値と同じです。
-要素が無いため、この型の値は1つだけしかありません。
-
-ユーザーは時々タプルとケースクラスを選ぶのが難しいと感じる時があるかもしれません。
-原則として、要素に意味をもたせる場合にはケースクラスが好まれます。
+## タプルとケースクラス
+ユーザーは時々、タプルとケースクラスの選択を難しいと思うかもしれません。ケースクラスには名前付き要素があります。その名前はある種のコードの可読性改善します。
+上記の惑星の例ではタプルを使うのではなく、`case class Planet(name: String, distance: Double)`の定義もできます。
