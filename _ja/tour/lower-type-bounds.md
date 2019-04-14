@@ -72,5 +72,5 @@ val africanSwallowList= ListNode[AfricanSwallow](AfricanSwallow(), Nil())
 val birdList: Node[Bird] = africanSwallowList
 birdList.prepend(new EuropeanSwallow)
 ```
-`Node[Bird]`は`africanSwallowList`アサインできますが、その際`EuropeanSwallow`を受け取ります。
+`Node[Bird]`は`africanSwallowList`をアサインできますが、その後`EuropeanSwallow`を受け入れられます。
 
