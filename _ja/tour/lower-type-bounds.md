@@ -61,7 +61,7 @@ case class Nil[+B]() extends Node[B] {
 }
 ```
 
-今、以下のようなことができます。
+すると、以下のようなことができます。
 ```tut
 trait Bird
 case class AfricanSwallow() extends Bird
