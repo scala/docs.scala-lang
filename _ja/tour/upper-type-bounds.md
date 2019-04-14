@@ -15,7 +15,7 @@ redirect_from: "/tutorials/tour/upper-type-bounds.html"
 ---
 
 Scalaでは [型パラメータ](generic-classes.html)と[抽象型メンバー](abstract-type-members.html) は型境界により制約されることがあります。
-型境界は具体的な値を制限し、そのような型のメンバーに関するより多くの情報を明らかにするかもしれません。
+型境界は型変数に入れられる値を制限して、時にはそれらの型についてより多くの情報を与えます。
 _上限型境界_ `T <: A` は型変数`T`が型`A`のサブタイプであることを宣言します。
 
 こちらはクラス`PetContainer`の型パラメータの上限型境界を実演する例です。
