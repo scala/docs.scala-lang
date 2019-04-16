@@ -35,7 +35,7 @@ concrete examples. Slides and accompanying code can be found at [https://github.
 ## Introduction
 
 Type providers are a strongly-typed type-bridging mechanism, which enables information-rich programming in F# 3.0.
-A type provider is a compile-time facility, which is capable of generating definitions and their implementations
+A type provider is a compile-time facility which is capable of generating definitions and their implementations
 based on static parameters describing datasources. Type providers can operate in two modes: non-erased and erased.
 The former is similar to textual code generation in the sense that every generated type becomes bytecode, while
 in the latter case generated types only manifest themselves during type checking, but before bytecode generation
@@ -70,7 +70,7 @@ takes a connection string and generates a module that encapsulates the given dat
       new Db {}
     }
 
-It is true that noone outside the macro expansion block would be able to refer to the `Coffee` class directly,
+It is true that no one outside the macro expansion block would be able to refer to the `Coffee` class directly,
 however if we inspect the type of `db`, we will find something fascinating.
 
     scala> val db = h2db("jdbc:h2:coffees.h2.db")
