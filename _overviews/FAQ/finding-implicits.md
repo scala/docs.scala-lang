@@ -124,7 +124,7 @@ Context bounds are more useful when you just need to _pass_ them to other
 methods that use them. For example, the method `sorted` on `Seq` needs an
 implicit `Ordering`. To create a method `reverseSort`, one could write:
 
-    def reverseSort[T : Ordering](seq: Seq[T]) = seq.reverse.sorted
+    def reverseSort[T : Ordering](seq: Seq[T]) = seq.sorted.reverse
 
 Because `Ordering[T]` was implicitly passed to `reverseSort`, it can then pass
 it implicitly to `sorted`.
