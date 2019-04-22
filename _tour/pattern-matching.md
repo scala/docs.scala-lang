@@ -65,8 +65,8 @@ case class VoiceRecording(contactName: String, link: String) extends Notificatio
 ```
 def showNotification(notification: Notification): String = {
   notification match {
-    case Email(email, title, _) =>
-      s"You got an email from $email with title: $title"
+    case Email(sender, title, _) =>
+      s"You got an email from $sender with title: $title"
     case SMS(number, message) =>
       s"You got an SMS from $number! Message: $message"
     case VoiceRecording(name, link) =>
@@ -80,7 +80,7 @@ println(showNotification(someSms))  // prints You got an SMS from 12345! Message
 
 println(showNotification(someVoiceRecording))  // you received a Voice Recording from Tom! Click the link to hear it: voicerecording.org/id/123
 ```
-The function `showNotification` takes as a parameter the abstract type `Notification` and matches on the type of `Notification` (i.e. it figures out whether it's an `Email`, `SMS`, or `VoiceRecording`). In the `case Email(email, title, _)` the fields `email` and `title` are used in the return value but the `body` field is ignored with `_`.
+The function `showNotification` takes as a parameter the abstract type `Notification` and matches on the type of `Notification` (i.e. it figures out whether it's an `Email`, `SMS`, or `VoiceRecording`). In the `case Email(sender, title, _)` the fields `sender` and `title` are used in the return value but the `body` field is ignored with `_`.
 
 ## Pattern guards
 Pattern guards are simply boolean expressions which are used to make cases more specific. Just add `if <boolean expression>` after the pattern.
@@ -88,7 +88,7 @@ Pattern guards are simply boolean expressions which are used to make cases more 
 
 def showImportantNotification(notification: Notification, importantPeopleInfo: Seq[String]): String = {
   notification match {
-    case Email(email, _, _) if importantPeopleInfo.contains(email) =>
+    case Email(sender, _, _) if importantPeopleInfo.contains(sender) =>
       "You got an email from special someone!"
     case SMS(number, _) if importantPeopleInfo.contains(number) =>
       "You got an SMS from special someone!"
@@ -110,7 +110,7 @@ println(showImportantNotification(importantEmail, importantPeopleInfo))
 println(showImportantNotification(importantSms, importantPeopleInfo))
 ```
 
-In the `case Email(email, _, _) if importantPeopleInfo.contains(email)`, the pattern is matched only if the `email` is in the list of important people.
+In the `case Email(sender, _, _) if importantPeopleInfo.contains(sender)`, the pattern is matched only if the `sender` is in the list of important people.
 
 ## Matching on type only
 You can match on the type like so:
