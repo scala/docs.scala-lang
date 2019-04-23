@@ -50,7 +50,7 @@ val node3: graph1.Node = graph1.newNode
 node1.connectTo(node2)
 node3.connectTo(node1)
 ```
-`node1`、`node2`、そして `node3`の型が`graph1.Node`であることを明確にするために、明示的に宣言しています。
+わかりやすくするため`node1`、`node2`、`node3`の型を`graph1.Node`と明示的に宣言しましたが、なくてもコンパイラは推論できます。
 これは`graph1.newNode`を呼び出す時、`new Node`を呼び出し、そのメソッドがインスタンス`graph1`特有の`Node`のインスタンスを使用しているからです。
 
 今2つのグラフがあれば、Scalaの型システムは1つのグラフの中でノードと別のグラフのノードを混ぜることを許しません。
