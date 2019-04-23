@@ -13,7 +13,7 @@ previous-page: abstract-type-members
 
 redirect_from: "/tutorials/tour/compound-types.html"
 ---
-オブジェクトの型がいくつかの他の型のサブタイプであることを表現する必要がある時があります。
+オブジェクトの型が複数の他の型のサブタイプであることを表現する必要がある時があります。
 Scalaでは*複合型*の助けにより表現することができます。それはオブジェクト型の交点です。
 
 2つのトレイト`Cloneable`と`Resetable`があると考えてください。
