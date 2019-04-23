@@ -51,4 +51,4 @@ def cloneAndReset(obj: Cloneable with Resetable): Cloneable = {
 複合型は複数のオブジェクトの型からなり、一つだけの細別型(refinement)を持てます。細別型は既存オブジェクトのメンバーのシグネチャを絞り込むのに使えます。
 一般的な形は`A with B with C ... { refinement }`です。
 
-改良点の使い方の例は[ミックスインを用いたクラス合成](mixin-class-composition.html)のページにあります。
+細別の使い方の例は[ミックスインを用いたクラス合成](mixin-class-composition.html)のページにあります。
