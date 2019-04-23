@@ -57,7 +57,7 @@ val buf = newIntSeqBuf(7, 8)
 println("length = " + buf.length)
 println("content = " + buf.element)
 ```
-こちらでは抽象型`T`を具体的な型`List[Int]`に設定するために、ファクトリー`newIntSeqBuf`は`IntSeqBuf`(つまり`new IntSeqBuffer`)の無名クラスの実装を使います。
+ここで、ファクトリー`newIntSeqBuf`は抽象型`T`を具体的な型`List[Int]`に設定するために、`IntSeqBuf`(つまり`new IntSeqBuffer`)を無名クラスで実装します。
 
 これにより抽象型メンバーをクラスの型パラメータに変換したり、その逆も可能となります。以下は上記コードの型パラメータのみを使うバージョンです。
 
