@@ -41,7 +41,7 @@ implicit def list2ordered[A](x: List[A])
     def compare(that: List[A]): Int = 1
   }
 ```
-implicitなインポートされたオブジェクト`scala.Predef`は度々使われる型(例えば`scala.collection.immutable.Map`は`Map`と別名づけられます)とメソッド（例えば`assert`）にいくつかの別名を宣言しますが、暗黙のうちにいくつかの変換もします。
+暗黙にインポートされているオブジェクト`scala.Predef`は頻繁に使われる型（例えば`scala.collection.immutable.Map`は`Map`と別名づけられます）とメソッド（例えば`assert`）といくつかの暗黙の型変換を宣言しています。
 
 例えば、`java.lang.Integer`を期待してJavaのメソッドを呼び出す時、自由に`scala.Int`を代わりに渡すことができます。それはPredefオブジェクトが以下の暗黙の変換をを含んでいるからです。
 
