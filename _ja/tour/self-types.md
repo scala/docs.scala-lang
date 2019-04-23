@@ -39,4 +39,4 @@ class VerifiedTweeter(val username_ : String) extends Tweeter with User {  // Tw
 val realBeyoncé = new VerifiedTweeter("Beyoncé")
 realBeyoncé.tweet("Just spilled my glass of lemonade")  // "real Beyoncé: Just spilled my glass of lemonade"と出力します。
 ```
-`trait Tweeter`の中で`this: User =>`と記述したので、今は変数`username`は`tweet`メソッドのスコープ内にあります。これは更に`VerifiedTweeter`は`Tweeter`を継承し、(`with User`を使って)`User`もミックスインしなければならいことを意味します。
+`trait Tweeter`の中で`this: User =>`と記述したので、今は変数`username`は`tweet`メソッドのスコープ内にあります。これはさらに、`VerifiedTweeter`が`Tweeter`を継承する際、(`with User`を使って)`User`もミックスインしなければならいことを意味します。
