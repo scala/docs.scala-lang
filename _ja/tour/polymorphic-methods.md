@@ -18,7 +18,7 @@ redirect_from: "/tutorials/tour/polymorphic-methods.html"
 Scalaのメソッドは値と同様に型によってパラメータ化することができます。構文はジェネリッククラスの構文と似ています。
 値パラメータは丸括弧で囲まれるのに対して、型パラメータは角カッコで囲まれます。
 
-こちらが例になります。
+こちらが例です。
 
 ```tut
 def listOfDuplicates[A](x: A, length: Int): List[A] = {
