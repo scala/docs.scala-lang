@@ -15,7 +15,7 @@ prerequisite-knowledge: nested-classes, mixin-class-composition
 
 redirect_from: "/tutorials/tour/self-types.html"
 ---
-自己型はたとえ直接継承していなくても、トレイトが他のトレイトにミックスインさせることを宣言する方法です。
+自己型はたとえ直接継承していなくても、トレイトが他のトレイトにミックスインされていることを宣言する方法です。
 それはimportなしに、依存関係のメンバーを利用可能とします。
 
 自己型は`this`の型、または`this`の別名となる別の識別子を絞り込む方法です。
