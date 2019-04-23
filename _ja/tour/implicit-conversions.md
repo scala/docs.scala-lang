@@ -24,7 +24,7 @@ redirect_from: "/tutorials/tour/implicit-conversions.html"
 最初のケースでは、`e`を渡せて、戻り値の型が`T`に適合するような変換`c`を検索します。
 2つ目のケースでは、`e`を渡せて、戻り値が`m`というメンバーを持つような変換`c`を検索します。
 
-implicitなメソッド`List[A] => Ordered[List[A]]`がスコープの中にあれば、implicitなメソッド`Int => Ordered[Int]`と同様に、`List[Int]`型の2つのリストにおける以下の処理は正当なものになります。
+implicitなメソッド`List[A] => Ordered[List[A]]`と`Int => Ordered[Int]`がスコープの中にあれば、`List[Int]`型の2つのリストにおける以下の処理は正当なものになります。
 
 ```
 List(1, 2, 3) <= List(4, 5)
