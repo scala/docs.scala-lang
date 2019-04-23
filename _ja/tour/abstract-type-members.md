@@ -35,7 +35,7 @@ abstract class SeqBuffer extends Buffer {
   def length = element.length
 }
 ```
-`T`の上限型境界の仕様において、更に別の抽象型`U`の使い方に気をつけてください。
+`T`の上限型境界の定義に出てきた、更に別の抽象型`U`の使い方に気をつけてください。
 
 この`class SeqBuffer`はバッファーの中のシーケンスのみを保存することができます。それは新しい抽象型`U`により型`T`は`Seq[U]`のサブタイプである必要があることを明言しているからです。
 
