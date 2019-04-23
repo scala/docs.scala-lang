@@ -21,7 +21,7 @@ redirect_from: "/tutorials/tour/self-types.html"
 自己型は`this`の型、または`this`の別名となる別の識別子を絞り込む方法です。
 その構文は普通の関数構文のように見えますが、全く異なる意味があります。
 
-トレイトで自己型を使うために、識別子とミックスインする他のトレイトの型、`=>`を書きます(例えば `someIdentifier: SomeOtherTrait =>`)。
+トレイトで自己型を使うには、識別子、ミックスインする他のトレイトの型、`=>`を書きます(例えば `someIdentifier: SomeOtherTrait =>`)。
 ```tut
 trait User {
   def username: String
