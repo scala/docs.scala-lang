@@ -16,7 +16,7 @@ redirect_from: "/tutorials/tour/compound-types.html"
 オブジェクトの型が複数の他の型のサブタイプであることを表現する必要がある時があります。
 Scalaでは*複合型*の助けにより表現できます。複合型とはオブジェクトの型同士を重ねることです。
 
-2つのトレイト`Cloneable`と`Resetable`があると考えてください。
+2つのトレイト`Cloneable`と`Resetable`があるとしましょう。
 
 ```tut
 trait Cloneable extends java.lang.Cloneable {
