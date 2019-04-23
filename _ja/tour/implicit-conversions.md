@@ -15,7 +15,6 @@ redirect_from: "/tutorials/tour/implicit-conversions.html"
 ---
 
 型`S`から型`T`への暗黙の変換は`S => T`という型のimplicit値や、その型に一致するimplicitメソッドで定義されます。
-implicitな値は`S => T`な関数を持ち、implicitなメソッドはその型の値に変換できます。
 
 暗黙の変換は2つの状況で適用されます。
 
