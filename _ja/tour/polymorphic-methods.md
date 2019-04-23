@@ -1,6 +1,6 @@
 ---
 layout: tour
-title: ポリモフィズムメソッド
+title: ポリモーフフィックメソッド
 
 discourse: true
 
