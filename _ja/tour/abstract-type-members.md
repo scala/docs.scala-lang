@@ -16,7 +16,7 @@ redirect_from: "/tutorials/tour/abstract-types.html"
 redirect_from: "/tour/abstract-types.html"
 ---
 
-トレイトと抽象クラスのような抽象型は順番に抽象型メンバーを持つことができます。
+トレイトや抽象クラスのような抽象型は抽象型メンバーを持つことができます。
 これは具体的な実装が明確に型を定義することを意味します。
 こちらが例になります。
 
