@@ -15,7 +15,7 @@ prerequisite-knowledge: unified-types
 redirect_from: "/tutorials/tour/polymorphic-methods.html"
 ---
 
-Scalaのメソッドは値と同様に型によってパラメータ化することができます。構文はジェネリッククラスの構文と同じです。
+Scalaのメソッドは値と同様に型によってパラメータ化することができます。構文はジェネリッククラスの構文と似ています。
 型パラメータは角カッコで囲まれますが、値パラメータは丸括弧で囲まれます。
 
 こちらが例になります。
