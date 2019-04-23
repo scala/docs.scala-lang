@@ -29,7 +29,7 @@ trait Resetable {
 }
 ```
 
-今、関数`cloneAndReset`を書きたいとします。それはオブジェクトを受け取り、それをクローンしオリジナルのオブジェクトをリセットします。
+今、関数`cloneAndReset`を書きたいとします。それはオブジェクトを受け取り、それをクローンして、元のオブジェクトをリセットします。
 
 ```
 def cloneAndReset(obj: ?): Cloneable = {
