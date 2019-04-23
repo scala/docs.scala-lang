@@ -39,7 +39,7 @@ def cloneAndReset(obj: ?): Cloneable = {
 }
 ```
 
-パラメータ`obj`の型は何かという疑問が上がります。もし`Cloneable`であれば、オブジェクトを`clone`することができますが、`reset`することはできません。もし`Resetable`であれば、`reset`することができますが、`clone`の操作はできません。そのような状態で型キャストを回避するために`obj`の型を`Cloneable`と`Resetable`の両方であると明示することができます。Scalaではこの複合型は`Cloneable with Resetable`のように書くことができます。
+パラメータ`obj`の型は何かという疑問が上がります。もし`Cloneable`であれば、オブジェクトを`clone`することができますが、`reset`することはできません。もし`Resetable`であれば、`reset`することができますが、`clone`の操作はできません。そのような状態で型キャストを回避するために`obj`の型を`Cloneable`と`Resetable`の両方であると指定することができます。Scalaではこの複合型は`Cloneable with Resetable`のように書くことができます。
 
 こちらが書き変えた関数です。
 
