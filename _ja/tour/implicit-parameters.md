@@ -25,6 +25,7 @@ Scalaがこれらのパラメータを探す場合は2つのカテゴリに分�
 Scalaがimplicitをどこから見つけるかについてのより詳しいガイドは[FAQ](//docs.scala-lang.org/tutorials/FAQ/finding-implicits.html)で見ることができます。
 
 以下の例では、モノイドの`add`と`unit`の演算を使い、要素のリストの合計を計算するメソッド`sum`を定義しています。
+implicitの値がトップレベルでないことに注意してください。
 
 ```tut
 abstract class Monoid[A] {
