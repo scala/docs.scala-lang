@@ -22,7 +22,7 @@ Scalaがこれらのパラメータを探す場合は2つのカテゴリに分�
 * Scalaは暗黙のパラメータブロックを持つメソッドが呼び出されている箇所で、直接(プレフィックスなしに)アクセスできる暗黙の定義と暗黙のパラメータをまず最初に探します。
 * 次に、候補となる型に関連づけられた全てのコンパニオンオブジェクトの中でimplicitと宣言されているメンバーを探します。
 
-より詳しいScalaがimplicitを探すガイドは[FAQ](//docs.scala-lang.org/tutorials/FAQ/finding-implicits.html)で見ることができます。
+Scalaがimplicitをどこから見つけるかについてのより詳しいガイドは[FAQ](//docs.scala-lang.org/tutorials/FAQ/finding-implicits.html)で見ることができます。
 
 以下の例では、モノイドの`add`と`unit`の演算を使い、要素のリストの合計を計算するメソッド`sum`を定義しています。
 
