@@ -19,7 +19,7 @@ redirect_from: "/tutorials/tour/implicit-parameters.html"
 
 Scalaがこれらのパラメータを探す場合は2つのカテゴリに分かれます。
 
-* Scalaは暗黙のパラメータブロックを持つメソッドが呼び出された時点で、まず(プレフィックスなしに)に直接アクセスできる暗黙の定義と暗黙のパラメータを探します。
+* Scalaは暗黙のパラメータブロックを持つメソッドが呼び出されている箇所で、直接(プレフィックスなしに)アクセスできる暗黙の定義と暗黙のパラメータをまず最初に探します。
 * そして全てのコンパニオンオブジェクトの中でimplicitで印をつけられ、暗黙に候補となる型と関連づけられたメンバーを探します。
 
 より詳しいScalaがimplicitを探すガイドは[FAQ](//docs.scala-lang.org/tutorials/FAQ/finding-implicits.html)で見ることができます。
