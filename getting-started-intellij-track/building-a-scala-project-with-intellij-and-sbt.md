@@ -73,7 +73,7 @@ to see if sbt can run your project on the command line.
 1. In the **Tasks** field, type `~run`. The `~` causes SBT to rebuild and rerun the project
 when you save changes to a file in the project.
 1. Click **OK**.
-1. On the **Run** menu. Click **Run 'Run the program'**.
+1. On the **Run** menu. Click **Run 'Run the program'**. (If you happen to run into `sbt Error: Could not find or load main class` error, try deleting the `target` folder and try rerun)
 1. In the code, change `75` to `61`
 and look at the updated output in the console.
 
