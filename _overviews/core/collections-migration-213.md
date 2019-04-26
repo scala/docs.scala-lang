@@ -27,35 +27,35 @@ The following table summarizes the breaking changes:
 | `zip` on `Map[K, V]` now returns an `Iterable` | `map.zip(iterable)` | `map.zip(iterable).toMap` | `Experimental` |
 | `ArrayBuilder.make` does not accept parens anymore | `ArrayBuilder.make[Int]()` | `ArrayBuilder.make[Int]` | `NewCollections`, `CrossCompat` |
 
-The “Automatic Migration Rule” column gives the name of the migration rule that can be used to automatically update old code to the new expected form. See https://github.com/scala/scala-collection-compat/ for more
+The “Automatic Migration Rule” column gives the name of the migration rule that can be used to automatically update old code to the new expected form. See [scala-collection-compat](https://github.com/scala/scala-collection-compat) for more
 details on how to use it.
 
 Some classes have been removed, made private or have no equivalent in the new design:
 
-- `ArrayStack`,
-- `mutable.FlatHashTable`,
-- `mutable.HashTable`,
-- `History`,
-- `Immutable`,
-- `IndexedSeqOptimized`,
-- `LazyBuilder`,
-- `mutable.LinearSeq`,
-- `LinkedEntry`,
-- `MapBuilder`,
-- `Mutable`,
-- `MutableList`,
-- `Publisher`,
-- `ResizableArray`,
-- `RevertibleHistory`,
-- `SeqForwarder`,
-- `SetBuilder`,
-- `Sizing`,
-- `SliceInterval`,
-- `StackBuilder`,
-- `StreamView`,
-- `Subscriber`,
-- `Undoable`,
-- `WrappedArrayBuilder`.
+- `ArrayStack`
+- `mutable.FlatHashTable`
+- `mutable.HashTable`
+- `History`
+- `Immutable`
+- `IndexedSeqOptimized`
+- `LazyBuilder`
+- `mutable.LinearSeq`
+- `LinkedEntry`
+- `MapBuilder`
+- `Mutable`
+- `MutableList`
+- `Publisher`
+- `ResizableArray`
+- `RevertibleHistory`
+- `SeqForwarder`
+- `SetBuilder`
+- `Sizing`
+- `SliceInterval`
+- `StackBuilder`
+- `StreamView`
+- `Subscriber`
+- `Undoable`
+- `WrappedArrayBuilder`
 
 Other notable changes are:
 
@@ -299,7 +299,7 @@ This pattern makes the `intersperse` operation available to any `Seq` _like_ typ
 
 ## How do I integrate my collection in the new design?
 
-See the [online documentation](https://docs.scala-lang.org/overviews/core/custom-collections.html)
+See the [online documentation]({{ site.baseurl }}/overviews/core/custom-collections.html)
 
 The API of the template traits has changed:
 - they used to be suffixed by “Like” (e.g. `SeqLike`), whereas they are now suffixed by “Ops” (e.g. `SeqOps`),
