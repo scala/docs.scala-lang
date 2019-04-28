@@ -12,7 +12,7 @@ next-page: operators
 previous-page: polymorphic-methods
 ---
 
-Scalaコンパイラはしばしば式の型推論するので、明示的に型を宣言する必要はありません。
+Scalaコンパイラが式の型を推論できることが多いので、明示的に型を宣言する必要はありません。
 
 ## 型の省略
 
