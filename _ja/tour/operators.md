@@ -14,7 +14,7 @@ prerequisite-knowledge: case-classes
 
 redirect_from: "/tutorials/tour/operators.html"
 ---
-Scalaではオペレーターはメソッドです。1つのパラメータを持つメソッドであれば*中置オペレータ*として使えます。例えば、`+`はドット記法で呼び出せます。
+Scalaではオペレーターはメソッドです。1つのパラメータを持つメソッドであれば*中置演算子*として使えます。例えば、`+`はドット記法で呼び出せます。
 
 ```
 10.+(1)
