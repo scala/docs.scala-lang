@@ -109,7 +109,7 @@ public class MyClass extends TheirClass ...
 この場合、Scalaでも同じことができます。
 
 ```
-@SourceURL("http://coders.com/")1
+@SourceURL("http://coders.com/")
 class MyScalaClass ...
 ```
 
