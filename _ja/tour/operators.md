@@ -28,7 +28,7 @@ Scalaではオペレーターはメソッドです。1つのパラメータを�
 
 ## 演算子の定義方法と使い方
 
-有効な識別子であればオペレータとして使用できます。これは `add`のような名前と`+`のようなシンボルも含みます。
+有効な識別子であれば演算子として使用できます。これは `add`のような名前と`+`のような記号も含みます。
 ```tut
 case class Vec(val x: Double, val y: Double) {
   def +(that: Vec) = new Vec(this.x + that.x, this.y + that.y)
