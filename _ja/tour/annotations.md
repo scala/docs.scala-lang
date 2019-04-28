@@ -121,7 +121,7 @@ class MyScalaClass ...
 public class MyClass extends TheirClass ...
 ```
 
-Scalaはこの点においてより多くの柔軟性を提供します。
+Scalaはこの点においてより柔軟です。
 
 ```
 @SourceURL("http://coders.com/",
