@@ -1,6 +1,6 @@
 ---
 layout: tour
-title: 名前付きパラメータ
+title: 名前渡しパラメータ
 
 discourse: true
 
