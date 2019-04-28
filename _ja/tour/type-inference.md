@@ -1,6 +1,6 @@
 ---
 layout: tour
-title: 型インターフェイス
+title: 型推論
 language: ja
 
 discourse: true
