@@ -52,7 +52,7 @@ case class MyBool(x: Boolean) {
 }
 ```
 
-この時、`and`と`or`を中置オペレータとして使えます。
+この時、`and`と`or`を中置演算子として使えます。
 
 ```tut
 def not(x: MyBool) = x.negate
