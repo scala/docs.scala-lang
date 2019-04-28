@@ -13,7 +13,7 @@ previous-page: operators
 redirect_from: "/tutorials/tour/by-name-parameters.html"
 ---
 
-*名前付きパラメータ*は使用された時に評価されます。それらは*値つきパラメータ*とは対照的です。名前で呼び出せるパラメータを作るには、単純に`=>`を型の前につけます。
+*名前渡しのパラメータ*は使用された時に評価されます。それらは*値渡しパラメータ*とは対照的です。名前渡しのパラメータを作るには、単純に`=>`を型の前につけます。
 ```tut
 def calculate(input: => Int) = input * 37
 ```
