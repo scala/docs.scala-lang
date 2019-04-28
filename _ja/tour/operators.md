@@ -1,6 +1,6 @@
 ---
 layout: tour
-title: オペレータ
+title: 演算子
 language: ja
 
 discourse: true
