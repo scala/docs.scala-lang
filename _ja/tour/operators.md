@@ -59,7 +59,7 @@ def not(x: MyBool) = x.negate
 def xor(x: MyBool, y: MyBool) = (x or y) and not(x and y)
 ```
 
-これにより`xor`の定義をより読みやすくします。
+これにより`xor`の定義がより読みやすくなります。
 
 ## 優先順位
 
