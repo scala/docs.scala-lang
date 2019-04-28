@@ -37,7 +37,7 @@ whileLoop (i > 0) {
 }  // prints 2 1
 ```
 
-メソッド`whileLoop`は条件とループの本体を受け取るために複数パラメータリストを使います。もし`condition`がtrueならば、`body`は実行され、そしてwhileループの再帰呼び出しがされます。`condition`がfalseならば、bodyは決して評価されません。それは`body`の型の前に`=>`をつけたからです。
+このメソッド`whileLoop`は条件とループの本体を受け取るために複数パラメータリストを使います。もし`condition`がtrueならば、`body`が実行され、次にwhileLoopが再帰的に呼ばれます。`condition`がfalseならば、bodyは決して評価されません。それは`body`の型の前に`=>`をつけたからです。
 
 ここで、`condition`に`i > 0`、`body`に`println(i); i-= 1`を渡した場合、多くの言語では一般的なwhileループと同じ振る舞いをします。
 
