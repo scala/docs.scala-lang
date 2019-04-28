@@ -77,6 +77,7 @@ def xor(x: MyBool, y: MyBool) = (x or y) and not(x and y)
 (全ての文字)
 ```
 これはあなたが定義した関数にも適用できます。
+たとえば、以下の式
 ```
 a + b ^? c ?^ d less a ==> b | c
 ```
