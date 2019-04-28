@@ -29,7 +29,7 @@ object DeprecationDemo extends App {
 
 
 ## エンコーディングの正確性を保証するアノテーション
-確かにいくつかのアノテーションは条件が一致すればコンパイルを失敗させます。例えば、アノテーション`@tailrec`はメソッドは[末尾再帰](https://en.wikipedia.org/wiki/Tail_call)であると保証します。末尾再帰は必須メモリを一定に維持します。こちらは階乗を計算するメソッドの中での使われ方です。
+条件が一致しない場合にコンパイルを失敗させるアノテーションもあります。例えば、アノテーション`@tailrec`はメソッドは[末尾再帰](https://en.wikipedia.org/wiki/Tail_call)であると保証します。末尾再帰ではメモリ使用量が一定になります。こちらは階乗を計算するメソッドの中での使われ方です。
 ```tut
 import scala.annotation.tailrec
 
