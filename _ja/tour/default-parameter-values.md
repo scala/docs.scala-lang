@@ -15,7 +15,7 @@ prerequisite-knowledge: named-arguments, function syntax
 redirect_from: "/tutorials/tour/default-parameter-values.html"
 ---
 
-Scalaはパラメータのデフォルト値を与えることができ、呼び出し者はこれらのパラメータを省略できます。
+Scalaはパラメータのデフォルト値を与えることができ、呼び出す側はこれらのパラメータを省略できます。
 
 ```tut
 def log(message: String, level: String = "INFO") = println(s"$level: $message")
