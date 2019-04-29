@@ -31,7 +31,7 @@ class Point(val x: Double = 0, val y: Double = 0)
 
 val point1 = new Point(y = 1)
 ```
-ここで、`y = 1`と明示しなければなりません。
+ここでは、`y = 1`と書かなければなりません。
 
 Javaのコードから呼び出された時、Sclaにおけるデフォルトパラメータはオプショナルではありません。
 
