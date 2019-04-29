@@ -32,4 +32,4 @@ printName(last = "Smith", first = "John")  // Prints "John Smith"
 printName(last = "Smith", "john") // error: positional after named argument
 ```
 
-名前付き引数はJavaメソッドを呼び出す時は動きません。
+名前付き引数はJavaメソッドを呼び出す時には使えません。
