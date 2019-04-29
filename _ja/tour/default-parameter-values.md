@@ -24,7 +24,7 @@ log("System starting")  // prints INFO: System starting
 log("User not found", "WARNING")  // prints WARNING: User not found
 ```
 
-パラメータ`level`はデフォルト値を持ちつので、オプショナルです。最終行では、引数`"WARNING"`はデフォルト値`"INFO"`を上書きます。Javaでオーバーロードされたメソッドを実行する場合、同じ効果を得るためオプショナルなパラメーターでメソッドを使えます。しかしながら呼び出し者が引数を省略すれば、全ての後ろに続く引数に名前が必要です。
+パラメータ`level`はデフォルト値を持つので、省略可能です。最終行では、引数`"WARNING"`はデフォルト値`"INFO"`を上書きします。Javaで同じ効果を得るのに、省略可能なパラメータをもつメソッドを複数使ってメソッドのオーバーロードをしたようなものです。しかしながら呼び出す側が引数をひとつ省略すると、以降全ての引数は名前つきにする必要があります。
 
 ```tut
 class Point(val x: Double = 0, val y: Double = 0)
