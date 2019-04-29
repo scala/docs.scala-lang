@@ -61,7 +61,7 @@ class Lens
 これは次のディレクトリ構成に対応します。`SelfDrivingCar/src/main/scala/com/google/selfdrivingcar/camera/Lens.scala`
 
 ## インポート
-`import`句は他パッケージのメンバー（クラス、トレイト、関数など）にアクセスするためのものです。同じパッケージのメンバーにアクセスするには`import`句は必要ありません。import句は選択的です。
+`import`句は他パッケージのメンバー（クラス、トレイト、関数など）にアクセスするためのものです。同じパッケージのメンバーにアクセスするには`import`句は必要ありません。import句は以下のどれでも使えます。
 ```
 import users._  // usersパッケージから全てをインポートする
 import users.User  // クラスUserをインポートする
