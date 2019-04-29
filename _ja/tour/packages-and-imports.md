@@ -68,7 +68,7 @@ import users.User  // クラスUserをインポートする
 import users.{User, UserPreferences}  // 選択されたメンバーのみインポートする
 import users.{UserPreferences => UPrefs}  // インポートし利便性のために名前を変更する
 ```
-ScalaのJavaと異なる利用方法の1つはインポートがどこでも使える点です。
+ScalaのJavaと異なる点の1つはインポートがどこでも使える点です。
 
 ```tut
 def sqrtplus1(x: Int) = {
