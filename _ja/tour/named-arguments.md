@@ -15,7 +15,6 @@ redirect_from: "/tutorials/tour/named-arguments.html"
 ---
 
 メソッドを呼ぶ時、以下のように引数にパラメータ名でラベル付が可能です。
-When calling methods, you can label the arguments with their parameter names like so:
 
 ```tut
 def printName(first: String, last: String): Unit = {
