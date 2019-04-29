@@ -165,10 +165,11 @@ def filterInPlace(p: A => Boolean): this.type
 def patchInPlace(from: Int, patch: scala.collection.Seq[A], replaced: Int): this.type
 ~~~
 
-Another new operation is `distinctBy`:
+Other new operations are `distinctBy` and `partitionMap`
 
 ~~~ scala
-def distinctBy[B](f: A => B): C // (Where `C` can be `List[Int]`, for instance)
+def distinctBy[B](f: A => B): C // `C` can be `List[Int]`, for instance
+def partitionMap[A1, A2](f: A => Either[A1, A2]): (CC[A1], CC[A2]) // `CC` can be `List`, for instance
 ~~~
 
 Last, additional operations are provided by the `scala-collection-contrib` module. You can
