@@ -34,6 +34,8 @@ The module also provides [migratrion rules](https://github.com/scala/scala-colle
 
 The following table summarizes the breaking changes. The "Automatic Migration Rule" column gives the name of the migration rule that can be used to automatically update old code to the new expected form.
 
+<div style="overflow:auto;" markdown="block">
+
 | Description | Old Code | New Code | Automatic Migration Rule |
 | ----------- | -------- | -------- | ------------------------ |
 | Method `to[C[_]]` has been removed (it might be reintroduced but deprecated, though) | `xs.to[List]` | `xs.to(List)` | `Collection213Upgrade`, `Collections213CrossCompat` |
@@ -42,6 +44,8 @@ The following table summarizes the breaking changes. The "Automatic Migration Ru
 | `collection.breakOut` no longer exists | `val xs: List[Int] = ys.map(f)(collection.breakOut)` | `val xs = ys.iterator.map(f).to(List)` | `Collection213Upgrade` |
 | `zip` on `Map[K, V]` now returns an `Iterable` | `map.zip(iterable)` | `map.zip(iterable).toMap` | `Collection213Experimental` |
 | `ArrayBuilder.make` does not accept parens anymore | `ArrayBuilder.make[Int]()` | `ArrayBuilder.make[Int]` | `Collection213Upgrade`, `Collections213CrossCompat` |
+
+</div>
 
 Some classes have been removed, made private or have no equivalent in the new design:
 
@@ -101,6 +105,8 @@ Other notable changes are:
 
 The following table lists the changes that continue to work with a deprecation warning.
 
+<div style="overflow:auto;" markdown="block">
+
 | Description | Old Code | New Code | Automatic Migration Rule |
 | ----------- | -------- | -------- | ------------------------ |
 | `collection.Set/Map` no longer have `+` and `-` operations | `xs + 1 - 2` | `xs ++ Set(1) -- Set(2)` | `Collection213Experimental` |
@@ -119,7 +125,9 @@ The following table lists the changes that continue to work with a deprecation w
 | `retain` has been renamed to `filterInPlace` | `xs.retain(f)` | `xs.filterInPlace(f.tupled)` | `Collection213Upgrade` |
 | `:/` and `/:` operators have been deprecated | `(xs :\ y)(f)` | `xs.foldRight(y)(f)` | `Collection213Upgrade`, `Collections213CrossCompat` |
 | `companion` operation has been renamed to `iterableFactory` | `xs.companion` | `xs.iterableFactory` |  |
- 
+
+</div>
+
 ## Deprecated things in 2.12 that have been removed in 2.13
 
 - `collection.convert.JavaConversions`. Use `collection.convert.JavaConverters` instead ;
