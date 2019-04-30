@@ -190,8 +190,9 @@ Committee members should be either individuals responsible for a specific part
 of the Scala codebase, committers or contributors of the Scala compiler.
 Exceptionally, members may also be important representatives of the community
 with a high technical knowledge to understand the implications of every proposal
-and participate into the discussions. The members are elected by the Process
-Lead based on their expertise and implication in the community.
+and participate into the discussions. New members are elected by existing
+members of the SIP Committee, based on their expertise and involvement in the
+community.
 
 The current committee members are:
 
