@@ -82,6 +82,11 @@
           url: "collections-2.13/creating-collections-from-scratch.html"
         - title: Conversions Between Java and Scala Collections
           url: "collections-2.13/conversions-between-java-and-scala-collections.html"
+    - title: Migrating a Project to Scala 2.13's Collections
+      icon: sitemap
+      url: "core/collections-migration-213.html"
+      description: "This page describes the main changes for collection users that migrate to Scala
+      2.13 and shows how to cross-build projects with Scala 2.11 / 2.12 and 2.13."
     - title: The Architecture of Scala 2.13’s Collections
       icon: sitemap
       url: "core/architecture-of-scala-213-collections.html"
