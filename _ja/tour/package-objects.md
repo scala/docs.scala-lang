@@ -49,7 +49,7 @@ package object fruits {
 }
 ```
 
-利用方法で見た例の通り、以下のオブジェクト`PrintPlanted`は`planted`と`showFruit`をインポートします。
+利用側がどのようになるかの例としては、以下のオブジェクト`PrintPlanted`は、ワイルドカードインポートでクラス`Fruit`と全く同様に`planted`と`showFruit`をインポートしています。
 それはをクラス`Fruit`をインポートするのと全く同じ方法で、パッケージgardening.fruitsでワイルドカードインポートしています。
 
 ```
