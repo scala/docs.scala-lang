@@ -29,7 +29,7 @@ val ingredient = ("Sugar" , 25)
 
 推論される`ingredient`の型は`(String, Int)`であり、これは`Tuple2[String, Int]`の簡単な表記法です。
 
-タプルを表すためには、Scalaは`Tuple2`, `Tuple3`,から `Tuple22`までのクラス群を使います。
+タプルを表すために、Scalaは`Tuple2`, `Tuple3` … `Tuple22`までのクラス群を使います。
 それぞれのクラスは要素の数と同じ数の型パラメータを持ちます。
 
 ## 要素へのアクセス
