@@ -76,4 +76,4 @@ for ((a, b) <- numPairs) {
 
 ## タプルとケースクラス
 ユーザーは時々、タプルとケースクラスの選択を難しいと思うかもしれません。ケースクラスには名前付き要素があります。それらの名前によってコードの可読性を改善できる場合があります。
-上記の惑星の例ではタプルを使うのではなく、`case class Planet(name: String, distance: Double)`の定義もできます。
+上記の惑星の例ではタプルを使うより、`case class Planet(name: String, distance: Double)`を定義したほうがいいかもしれません。
