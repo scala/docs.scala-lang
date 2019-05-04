@@ -50,7 +50,7 @@ println(name) // Sugar
 println(quantity) // 25
 ```
 
-ここでは`name`の型推論は`String`で、`quantity`の型推論は`Int`です。
+ここでは`name`に推論される型は`String`で、`quantity`に推論される型は`Int`です。
 
 こちらはタプルのパターンマッチングの他の例です。
 
