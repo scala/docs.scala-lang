@@ -65,7 +65,7 @@ planets.foreach{
 }
 ```
 
-または、`for`の中では
+また、`for`内包表記では以下のようになります。
 
 ```tut
 val numPairs = List((2, 5), (3, -7), (20, 56))
