@@ -287,6 +287,7 @@ trait Greeter {
   def greet(name: String): Unit =
     println("Hello, " + name + "!")
 }
+```
 
 También puedes extender traits con la palabra clave `extends` y sobrescribir una implementación con la palabra clave `override` .
 
