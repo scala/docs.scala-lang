@@ -1,6 +1,6 @@
 ---
 layout: tour
-title: Unified型
+title: 統合された型
 language: ja
 
 discourse: true
@@ -65,20 +65,19 @@ true
 ## 型キャスト
 値型は以下の順序でキャストできます。
 
-Value types can be cast in the following way:
 <a href="{{ site.baseurl }}/resources/images/tour/type-casting-diagram.svg"><img  style="width:100%" src="{{ site.baseurl }}/resources/images/tour/type-casting-diagram.svg" alt="Scalaの型階層"></a>
 
 例えば、
 
 ```tut
 val x: Long = 987654321
-val y: Float = x  // 9.8765434E8 (この場合精度が落ちることにが注意してください)
+val y: Float = x  // 9.8765434E8 (この場合精度が落ちることに注意してください)
 
 val face: Char = '☺'
 val number: Int = face  // 9786
 ```
 
-型変換は一方向になります。これはコンパイルができないでしょう。
+型変換は一方向です。これはコンパイルができないでしょう。
 
 ```
 val x: Long = 987654321
