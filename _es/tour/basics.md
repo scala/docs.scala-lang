@@ -24,13 +24,11 @@ Puedes ejecutar Scala en tu navegador con ScalaFiddle.
 
 Así, de manera fácil y sin preparación, puedes probar fragmentos de código Scala.
 
-Many of the code examples in this documentation are also integrated with ScalaFiddle, so you
-can directly experiment with them simply by clicking the Run-button.
 Muchos ejemplos de código en esta documentación están integrados con ScalaFiddle, y así puedes probarlos directamente solo con pulsar el botón "Run".
 
 ## Expresiones
 
-En Scala todo es una expresión (cada sentencia "devuelve" un valor).
+Las expresiones son sentencias computables.
 
 ```tut
 1 + 1
@@ -105,7 +103,7 @@ println({
 
 Una función es una expresión que acepta parámetros.
 
-Se pueden definir funciones anónimas, por ejemplo, una que retorne x + 1 para x entero:
+Una función se puede declarar anónima, sin nombre. Por ejemplo, ésta es una función que acepta un número entero `x`, y devuelve el resultado de incrementarlo `x+1`:
 
 ```tut
 (x: Int) => x + 1
@@ -244,7 +242,7 @@ Hay mucho mas sobre las case classes que queremos presentar, y estamos convencid
 
 Los objetos son instancias de una sola clase de su propia definición. Puedes pensar en ellos como singleton de sus propias clases
 
-Puedes definir objectos con la palabra clave `object`.
+Un objeto se define usando la palabra reservada `object`.
 
 ```tut
 object IdFactory {
