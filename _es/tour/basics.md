@@ -19,14 +19,14 @@ En esta página, cubriremos lo básico de Scala.
 Puedes ejecutar Scala en tu navegador con ScalaFiddle.
 
 1. Ve a [https://scalafiddle.io](https://scalafiddle.io).
-2. Pega `println("Hello, world!")` en el panel izquierdo.
-3. Presiona el botón de "Run". El resultado aparece en el panel de la derecha.
+2. Escribe `println("Hello, world!")` en el panel a la izquierda.
+3. Presiona el botón "Run". En el panel de la derecha aparecerá el resultado.
 
-Esta es una forma simple y con cero configuración de experimentar con piezas de código en Scala.
+Así, de manera fácil y sin preparación, puedes probar fragmentos de código Scala.
 
 Many of the code examples in this documentation are also integrated with ScalaFiddle, so you
 can directly experiment with them simply by clicking the Run-button.
-Muchos de los ejemplos de código en esta documentación están integrados también con ScalaFiddle, para que puedas experimentar directamente con ellos simplemente presionando el botón de "Run".
+Muchos ejemplos de código en esta documentación están integrados con ScalaFiddle, y así puedes probarlos directamente solo con pulsar el botón "Run".
 
 ## Expresiones
 
@@ -49,7 +49,7 @@ println("Hello," + " world!") // Hello, world!
 
 ## Valores
 
-Se puede nombrar el resultado de expresiones con la palabra clave `val`.
+Se puede dar un nombre al resultado de una expresión usando la palabra reservada `val`.
 
 ```tut
 val x = 1 + 1
@@ -74,7 +74,7 @@ Noten como la declaración de tipo `Int` va después del identificador `x`. Tamb
 
 ## Variables
 
-Las variables son como los valores, excepto que no es posible re-asignarlos. Las variables se definen con la palabra clave `var`.
+Una variable es como un valor, excepto que a una variable se le puede re-asignar un valor después de declararla. Una variable se declara con la palabra reservada `var`.
 
 ```tut
 var x = 1 + 1
@@ -82,7 +82,7 @@ x = 3 // This compiles because "x" is declared with the "var" keyword.
 println(x * x) // 9
 ```
 
-Igual que con los valores, si queremos se puede especificar el tipo:
+Como con los valores, si se quiere se puede especificar el tipo de una variable mutable:
 
 ```tut
 var x: Int = 1 + 1
@@ -103,7 +103,7 @@ println({
 
 ## Funciones
 
-Las funciones son expresiones que reciben parámetros.
+Una función es una expresión que acepta parámetros.
 
 Se pueden definir funciones anónimas, por ejemplo, una que retorne x + 1 para x entero:
 
@@ -111,7 +111,7 @@ Se pueden definir funciones anónimas, por ejemplo, una que retorne x + 1 para x
 (x: Int) => x + 1
 ```
 
-A la izquierda de => esta la lista de parámetros. A la derecha esta el cuerpo de la función
+La lista de parámetros de la función está a la izquierda de la flecha `=>`, y a su derecha está el cuerpo de la función.
 
 También podemos asignarle un nombre a la función.
 
@@ -140,9 +140,9 @@ println(getTheAnswer()) // 42
 
 ## Métodos
 
-Los métodos se parecen y se comportan de forma muy similar a las funciones, pero hay un par de diferencias clave entre ellos.
+Los métodos se parecen y comportan casi como a las funciones, pero se diferencian en dos aspectos clave: 
 
-Los métodos se definen con la palabra clave `def`, seguida por un nombre, una lista de parámetros, un tipo de retorno, y el cuerpo del método.
+Un método se define con la palabra reservada `def`, seguida por el nombre del método, la lista de parámetros, el tipo de valores que el método devuelve, y el cuerpo del método.
 
 {% scalafiddle %}
 ```tut
@@ -151,9 +151,9 @@ println(add(1, 2)) // 3
 ```
 {% endscalafiddle %}
 
-Notar como el tipo de retorno es declarado _después_ de la lista de parámetros y con dos puntos `: Int`.
+Observe que el tipo de retorno se declara _después_ de la lista de parámetros, y separado con dos puntos, e.g. `: Int`.
 
-Los métodos pueden tener mutiles listas de parámetros.
+Un método puede tener varias listas de parámetros
 
 {% scalafiddle %}
 ```tut
@@ -181,11 +181,11 @@ def getSquareString(input: Double): String = {
 ```
 
 La ultima expresión en el cuerpo del método es el valor de retorno del mismo.
-(Scala tiene la palabra clave `return` pero raramente se usa)
+(Scala tiene una palabra reservada `return`, pero se usa raramente, y no se aconseja usarla)
 
 ## Clases
 
-Se puede definir clases con la palabra clave `class` seguida del nombre y los parámetros del constructor.
+Una clase se define con la palabra reservada `class`, seguida del nombre, y la lista de parámetros del constructor.
 
 ```tut
 class Greeter(prefix: String, suffix: String) {
@@ -194,27 +194,27 @@ class Greeter(prefix: String, suffix: String) {
 }
 ```
 
-El tipo de retorno del método `greet` es `Unit`, que dice que no hay nada significativo que retornar. Se usa de forma similar al `void` de Java y C (Con la diferencia de que como toda expresión en Scala debe retornar un valor, existe un valor singleton para el tipo Unit que se escribe () y no lleva información )
+El método `greet` tiene un tipo de retorno `Unit`, que indica que el método no tiene nada significativo que devolver. Esto es similar al tipo `void` en C, C++, o Java. La diferencia con estos lenguajes es que, dado que en Scala toda  expresión debe devuelvor un valor, se usa un tipo `Unit`, con un solo valor, que se escribe `()` y no lleva información.
 
-Puedes crear una instancia de una clase con la palabra clave *new*.
+Se puede crear una instancia de una clase con la palabra reservada *new*.
 
 ```tut
 val greeter = new Greeter("Hello, ", "!")
 greeter.greet("Scala developer") // Hello, Scala developer!
 ```
 
-Cubriremos las clases en profundidad [mas adelante](classes.html).
+Las clases se tratan en profundidad [mas adelante](classes.html).
 
 ## Case Classes
 
-Scala tiene un tipo especial de clases llamadas "case" classes. Por defecto, las case classes son inmutables y son comparadas por valor.
-Las case classes se definen usando las palabras clave `case class`.
+Hay un tipo especial de clases en Scala, las llamadas "case" classes. Por defecto, las instancias de una case class  son inmutables, y se comparan con otras solo por los valores que contienen en cada campo.
+Una case class se define con las palabras reservadas  `case class`:
 
 ```tut
 case class Point(x: Int, y: Int)
 ```
 
-Se pueden instanciar sin necesidad de usar la palabra clave `new`.
+Se puede crear una instancia de una `case class`, sin usar la palabra reservada `new`.  
 
 ```tut
 val point = Point(1, 2)
@@ -238,7 +238,7 @@ if (point == yetAnotherPoint) {
 } // Point(1,2) and Point(2,2) are different.
 ```
 
-Hay mucho mas sobre las case classes que queremos presentar, y estamos convencidos de que te vas a enamorar de ellas. Las cubriremos en profundidad [mas adelante](case-classes.html).
+Hay mucho mas sobre las case classes que queremos presentar, y estamos convencidos de que te vas a enamorar de ellas. Se tratan con más detalle [mas adelante](case-classes.html).
 
 ## Objetos
 
@@ -271,7 +271,7 @@ Cubriremos los objetos en profundidad [mas adelante](singleton-objects.html).
 
 Los traits son tipos que contienen campos y métodos. Se pueden combinar múltiples traits.
 
-Los traits se definen con la palabra clave `trait`.
+Un trait se define usando la palabra reservada `trait`.
 
 ```tut
 trait Greeter {
@@ -310,11 +310,11 @@ customGreeter.greet("Scala developer") // How are you, Scala developer?
 
 Aquí, `DefaultGreeter` extiende un solo trait, pero puede extender múltiples traits.
 
-Cubriremos los traits en profundidad [mas adelante](traits.html).
+Los `traits` se tratan con detalle [en otra página](traits.html).
 
 ## Método principal (Main Method)
 
-El método principal (main) es el punto de entrada de un programa. La maquina virtual de java (JVM) requiere que el método principal sea llamado `main` y que tome un solo argumento: un arrray de Strings.
+El método principal (main) es el punto donde comienza la ejecución de un programa en Scala. La máquina virtual de java (_Java Virtual Machine_ or JVM) requiere, para ejecutar un código Scala, que éste tenga un método principal llamado `main` cuyo único parámetro sea un arrray de Strings.
 
 Usando un objeto, puedes definir el método principal de la siguiente forma:
 
