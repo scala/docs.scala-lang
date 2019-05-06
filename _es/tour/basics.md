@@ -62,7 +62,7 @@ Los valores no pueden ser reasignados.
 x = 3 // Producirá un error de compilación.
 ```
 
-Los tipos de los valores pueden ser inferidos, pero también se pueden anotar explícitamente de la siguiente forma:
+Scala es capaz de inferir el tipo de un valor. Aun asi, también se puede indicar el tipo usando una anotación:
 
 ```tut
 val x: Int = 1 + 1
@@ -103,7 +103,7 @@ println({
 
 Una función es una expresión que acepta parámetros.
 
-Una función se puede declarar anónima, sin nombre. Por ejemplo, ésta es una función que acepta un número entero `x`, y devuelve el resultado de incrementarlo `x+1`:
+Una función se puede declarar anónima, sin nombre. Por ejemplo, ésta es una función que acepta un número entero `x`, y devuelve el resultado de incrementarlo:
 
 ```tut
 (x: Int) => x + 1
@@ -192,7 +192,7 @@ class Greeter(prefix: String, suffix: String) {
 }
 ```
 
-El método `greet` tiene un tipo de retorno `Unit`, que indica que el método no tiene nada significativo que devolver. Esto es similar al tipo `void` en C, C++, o Java. La diferencia con estos lenguajes es que en Scala toda expresión debe devolver un valor. Se usa un tipo `Unit` que tiene con un solo valor que se escribe `()` y no lleva información.
+El método `greet` tiene un tipo de retorno `Unit`, que indica que el método no tiene nada significativo que devolver. Esto es similar al tipo `void` en C, C++, o Java. La diferencia con estos lenguajes es que en Scala toda expresión debe devolver un valor. Por ello, se usa un tipo `Unit` que tiene con un solo valor que se escribe `()` y no lleva información.
 
 Se puede crear una instancia de una clase con la palabra reservada *new*.
 
@@ -277,7 +277,7 @@ trait Greeter {
 }
 ```
 
-Los traits pueden también tener implementación por defecto.
+Un `trait` también puede definit un método, o un valor, con una implementación por defecto.
 
 {% scalafiddle %}
 ```tut
@@ -287,7 +287,7 @@ trait Greeter {
 }
 ```
 
-También puedes extender traits con la palabra clave `extends` y sobrescribir una implementación con la palabra clave `override`.
+Un `trait` también puede extender otros traits, usando la palabra clave `extends`. Asimismo, en un `trait` se puede redefinir la implementación de un método heredado, usando la palabra reservada `override`.
 
 ```tut
 class DefaultGreeter extends Greeter
