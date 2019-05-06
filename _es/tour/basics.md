@@ -12,7 +12,7 @@ next-page: unified-types
 previous-page: tour-of-scala
 ---
 
-En esta página, cubriremos lo básico de Scala.
+En esta página, practicaremos conceptos básicos de Scala.
 
 ## Probando Scala en el navegador
 
@@ -59,10 +59,10 @@ Los resultados con nombre, como `x` en el ejemplo, son llamados valores. Referen
 Los valores no pueden ser reasignados.
 
 ```tut:fail
-x = 3 // This does not compile.
+x = 3 // Producirá un error de compilación.
 ```
 
-Los tipos de los valores pueden ser inferidos, pero también se pueden anotar explicitamente de la siguiente forma:
+Los tipos de los valores pueden ser inferidos, pero también se pueden anotar explícitamente de la siguiente forma:
 
 ```tut
 val x: Int = 1 + 1
@@ -90,7 +90,7 @@ var x: Int = 1 + 1
 
 Se pueden combinar expresiones rodeándolas con `{}` . A esto le llamamos un bloque.
 
-El resultado de la ultima expresión del bloque es también el resultado total del bloque.
+El resultado de la última expresión del bloque es también el resultado total del bloque.
 
 ```tut
 println({
@@ -120,7 +120,7 @@ println(addOne(1)) // 2
 ```
 {% endscalafiddle %}
 
-Las funciones pueden tomar muchos parámetros.
+Las funciones pueden tomar varios parámetros.
 
 {% scalafiddle %}
 ```tut
@@ -149,9 +149,9 @@ println(add(1, 2)) // 3
 ```
 {% endscalafiddle %}
 
-Observe que el tipo de retorno se declara _después_ de la lista de parámetros, y separado con dos puntos, e.g. `: Int`.
+Observe que el tipo de retorno se declara _después_ de la lista de parámetros, y separado con dos puntos, p.ej. `: Int`.
 
-Un método puede tener varias listas de parámetros
+Un método puede tener varias listas de parámetros.
 
 {% scalafiddle %}
 ```tut
@@ -179,7 +179,7 @@ def getSquareString(input: Double): String = {
 ```
 
 La ultima expresión en el cuerpo del método es el valor de retorno del mismo.
-(Scala tiene una palabra reservada `return`, pero se usa raramente, y no se aconseja usarla)
+(Scala tiene una palabra reservada `return`, pero se usa raramente y no se aconseja usarla)
 
 ## Clases
 
@@ -192,7 +192,7 @@ class Greeter(prefix: String, suffix: String) {
 }
 ```
 
-El método `greet` tiene un tipo de retorno `Unit`, que indica que el método no tiene nada significativo que devolver. Esto es similar al tipo `void` en C, C++, o Java. La diferencia con estos lenguajes es que, dado que en Scala toda  expresión debe devuelvor un valor, se usa un tipo `Unit`, con un solo valor, que se escribe `()` y no lleva información.
+El método `greet` tiene un tipo de retorno `Unit`, que indica que el método no tiene nada significativo que devolver. Esto es similar al tipo `void` en C, C++, o Java. La diferencia con estos lenguajes es que en Scala toda expresión debe devolver un valor. Se usa un tipo `Unit` que tiene con un solo valor que se escribe `()` y no lleva información.
 
 Se puede crear una instancia de una clase con la palabra reservada *new*.
 
@@ -201,7 +201,7 @@ val greeter = new Greeter("Hello, ", "!")
 greeter.greet("Scala developer") // Hello, Scala developer!
 ```
 
-Las clases se tratan en profundidad [mas adelante](classes.html).
+Las clases se tratan en profundidad [más adelante](classes.html).
 
 ## Case Classes
 
@@ -236,11 +236,11 @@ if (point == yetAnotherPoint) {
 } // Point(1,2) and Point(2,2) are different.
 ```
 
-Hay mucho mas sobre las case classes que queremos presentar, y estamos convencidos de que te vas a enamorar de ellas. Se tratan con más detalle [mas adelante](case-classes.html).
+Hay mucho más sobre las case classes que queremos presentar, y estamos convencidos de que te vas a enamorar de ellas. Se tratan con más detalle [mas adelante](case-classes.html).
 
 ## Objetos
 
-Los objetos son instancias de una sola clase de su propia definición. Puedes pensar en ellos como singleton de sus propias clases
+Los objetos son instancias de una sola clase de su propia definición. Puedes pensar en ellos como _singleton_ de sus propias clases.
 
 Un objeto se define usando la palabra reservada `object`.
 
@@ -263,7 +263,7 @@ val newerId: Int = IdFactory.create()
 println(newerId) // 2
 ```
 
-Cubriremos los objetos en profundidad [mas adelante](singleton-objects.html).
+Cubriremos los objetos en profundidad [más adelante](singleton-objects.html).
 
 ## Traits
 
@@ -287,7 +287,7 @@ trait Greeter {
 }
 ```
 
-También puedes extender traits con la palabra clave `extends` y sobrescribir una implementación con la palabra clave `override` .
+También puedes extender traits con la palabra clave `extends` y sobrescribir una implementación con la palabra clave `override`.
 
 ```tut
 class DefaultGreeter extends Greeter
