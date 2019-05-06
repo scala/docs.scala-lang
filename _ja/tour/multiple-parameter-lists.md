@@ -14,7 +14,7 @@ previous-page: nested-functions
 redirect_from: "/tutorials/tour/multiple-parameter-lists.html"
 ---
 
-メソッドは複数パラメータリストを持てます。
+メソッドは複数のパラメータリストを持てます。
 
 # 例
 
