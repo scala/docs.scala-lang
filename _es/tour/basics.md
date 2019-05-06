@@ -59,16 +59,16 @@ Los resultados con nombre, como `x` en el ejemplo, son llamados valores. Referen
 Los valores no pueden ser reasignados.
 
 ```tut:fail
-x = 3 // Producirá un error de compilación.
+x = 3  // This does not compile.
 ```
 
-Scala es capaz de inferir el tipo de un valor. Aun asi, también se puede indicar el tipo usando una anotación:
+Scala es capaz de inferir el tipo de un valor. Aun así, también se puede indicar el tipo usando una anotación:
 
 ```tut
 val x: Int = 1 + 1
 ```
 
-Noten como la declaración de tipo `Int` va después del identificador `x`. También necesitas un `:`.
+Nótese que la anotación del tipo `Int` sigue al identificador `x` de la variable, separado por dos puntos `:`.
 
 ## Variables
 
@@ -160,7 +160,7 @@ println(addThenMultiply(1, 2)(3)) // 9
 ```
 {% endscalafiddle %}
 
-O ninguna lista de parametros.
+O ninguna lista de parámetros.
 
 ```tut
 def name: String = System.getProperty("user.name")
@@ -277,7 +277,7 @@ trait Greeter {
 }
 ```
 
-Un `trait` también puede definit un método, o un valor, con una implementación por defecto.
+Un `trait` también puede definir un método, o un valor, con una implementación por defecto.
 
 {% scalafiddle %}
 ```tut
