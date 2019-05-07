@@ -1,6 +1,6 @@
 ---
 layout: tour
-title: エクストラクタオブジェクト
+title: 抽出子オブジェクト
 language: ja
 
 discourse: true
@@ -14,7 +14,7 @@ previous-page: regular-expression-patterns
 redirect_from: "/tutorials/tour/extractor-objects.html"
 ---
 
-エクストラクタオブジェクトは`unapply`メソッドを持つオブジェクトです。
+抽出子オブジェクトは`unapply`メソッドを持つオブジェクトです。
 `apply`メソッドが引数を取り、オブジェクトを作るコンストラクタであるように、`unapply`は1つのオブジェクトを受け取り、引数を返そうとします。
 これはパターンマッチングと部分関数で最も頻繁に使われます。
 
@@ -42,7 +42,7 @@ customer1ID match {
  `CustomerID("Sukyoung")`は、`CustomerID.apply("Sukyoung")`を短く書く構文です。
  `case CustomerID(name) => println(name)`では、unapplyメソッドを呼んでいます。
 
-値を定義する文で、パターン中に新しい変数を使うことができるので、エクストラクタは変数を初期化するのに使えます。この場合unapplyメソッドが初期値を与えます。
+値を定義する文で、パターン中に新しい変数を使うことができるので、抽出子は変数を初期化するのに使えます。この場合unapplyメソッドが初期値を与えます。
 
 ```tut
 val customer2ID = CustomerID("Nico")
@@ -61,14 +61,12 @@ val CustomerID(name3) = "-asdfasdfasdf"
 ```
 
 `unapply`の戻り値型は以下のように選ばれなければなりません。
-The return type of an `unapply` should be chosen as follows:
 
 * ただのテストであれば、`Boolean`を返します。例えば`case even()`。
 * T型のサブバリュー1つを返すのであれば、`Option[T]`を返します。
 * いくつかのサブバリュー`T1,...,Tn`を返したいのであれば、オプショナルタプル`Option[(T1,...,Tn)]`でグループ化します。
 
 時々、抽出する値の数が確定せず、入力に応じて任意の数の値を返したいことがあります。
-このユースケースとして、`Option[Seq[T]]`を返す`unapplySeq`メソッドを持つエキストラクターを定義することができます。
+この場合は、`Option[Seq[T]]`を返す`unapplySeq`メソッドを持つ抽出子を定義することができます。
 これらのパターンと同様の例として以下のものがあります。
-`case List(x, y, z) =>`を使って`List`を分解する。
-`case r(name, remainingFields @ _*) =>`.のように正規表現`Regex`を使って`String`を分解する。
+`case List(x, y, z) =>`を使って`List`を分解する例や`case r(name, remainingFields @ _*) =>`.のように正規表現`Regex`を使って`String`を分解する例です。
