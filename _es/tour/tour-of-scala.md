@@ -9,7 +9,8 @@ partof: scala-tour
 num: 1
 language: es
 
-next-page: abstract-type-members
+next-page: basics
+
 ---
 
 Scala es un lenguaje de programación moderno multi-paradigma diseñado para expresar patrones de programación comunes de una forma concisa, elegante, y de tipado seguro. Integra fácilmente características de lenguajes orientados a objetos y funcionales.
