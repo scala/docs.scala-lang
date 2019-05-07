@@ -49,7 +49,7 @@ def matchTest(x: Int): String = x match {
 matchTest(3)  // many
 matchTest(1)  // one
 ```
-このマッチ表現はString型を持ちます、なぜなら全てのケースはStringを返します。
+全てのケースでStringを返しているので、このマッチ式はString型を持ちます。
 そのため関数`matchTest`はStringを返します。
 
 ## ケースクラスでのマッチング
@@ -66,14 +66,14 @@ case class SMS(caller: String, message: String) extends Notification
 case class VoiceRecording(contactName: String, link: String) extends Notification
 
 ```
-`Notification`はケースクラスで実装された`Email`、 `SMS`、 そして`VoiceRecording`3つの具体的なお知らせの種類を持つ抽象スーパークラスです。
+`Notification`は抽象スーパークラスで、ケースクラスの実装`Email`、 `SMS`、 `VoiceRecording`3つの具象クラスがあります。
 今、これらのケースクラスでパターンマッチングをすることができます。
 
 ```
 def showNotification(notification: Notification): String = {
   notification match {
-    case Email(email, title, _) =>
-      s"You got an email from $email with title: $title"
+    case Email(sender, title, _) =>
+      s"You got an email from $sender with title: $title"
     case SMS(number, message) =>
       s"You got an SMS from $number! Message: $message"
     case VoiceRecording(name, link) =>
@@ -87,18 +87,18 @@ println(showNotification(someSms))  // You got an SMS from 12345! Message: Are y
 
 println(showNotification(someVoiceRecording))  // you received a Voice Recording from Tom! Click the link to hear it: voicerecording.org/id/123 が出力されます。
 ```
-関数`showNotification`は抽象型`Notification`のパラメータとして受け取り、`Notification` の種類とマッチします（すなわち`Email`、`SMS`、または `VoiceRecording`のいずれであるかを解決します）。
-`case Email(email, title, _)` ではフィールド`email`と`title`が戻り値として使われますが、`_`を使うことでフィールド`body`は無視されます。
+関数`showNotification`は抽象型`Notification`をパラメータとして受け取り、`Notification`の型でマッチします（すなわち`Email`、`SMS`、または `VoiceRecording`のいずれであるかを解決します）。
+`case Email(sender, title, _)` ではフィールド`sender`と`title`が戻り値として使われますが、`_`を使うことでフィールド`body`は無視されます。
 
 ## パターンガード
 パターンガードはケースをより特別にするために使われる簡単な真偽表現です。
-ただ`if <boolean expression>`をパターンの後ろに追加するだけです。
+ただ`if <boolean式>`をパターンの後ろに追加するだけです。
 
 ```
 
 def showImportantNotification(notification: Notification, importantPeopleInfo: Seq[String]): String = {
   notification match {
-    case Email(email, _, _) if importantPeopleInfo.contains(email) =>
+    case Email(sender, _, _) if importantPeopleInfo.contains(sender) =>
       "You got an email from special someone!"
     case SMS(number, _) if importantPeopleInfo.contains(number) =>
       "You got an SMS from special someone!"
@@ -120,7 +120,7 @@ println(showImportantNotification(importantEmail, importantPeopleInfo))
 println(showImportantNotification(importantSms, importantPeopleInfo))
 ```
 
-`case Email(email, _, _) if importantPeopleInfo.contains(email)`では、パターンは`email`が重要な人のリストに存在して初めてマッチします。
+`case Email(sender, _, _) if importantPeopleInfo.contains(sender)`では、パターンは`sender`が重要な人のリストに存在して初めてマッチします。
 
 ## 型のみでのマッチング
 
@@ -145,7 +145,7 @@ def goIdle(device: Device) = device match {
 
 ## シールドクラス
 トレイトとクラスに`sealed`をつけると、全てのサブタイプは同一ファイル内で宣言されなければならないという意味になります。
-これは全てのサブタイプは既知であることを保証します。
+これは全てのサブタイプが既知であることを保証します。
 
 ```tut
 sealed abstract class Furniture
