@@ -6,128 +6,70 @@ discourse: false
 
 partof: scala-tour
 
-num: 10
+num: 11
 language: pl
 next-page: pattern-matching
 previous-page: multiple-parameter-lists
 ---
 
-Scala wspiera mechanizm _klas przypadków_. Klasy przypadków są zwykłymi klasami z dodatkowymi założeniami:
+Scala wspiera mechanizm _klas przypadków_ (ang. case class).
+Są one zwykłymi klasami z dodatkowymi założeniami, przez które przejdziemy.
+Klasy przypadków idealnie nadają się do modelowania niezmiennych (niemutowalnych) danych.
+W dalszych rozdziałach przyjrzymy się jak przydają się w [dopasowywaniu wzorców (ang. pattern matching)](pattern-matching.html).
 
-* Domyślnie niemutowalne
-* Można je dekomponować poprzez [dopasowanie wzorca](pattern-matching.html)
-* Porównywane poprzez podobieństwo strukturalne zamiast przez referencje
-* Zwięzła składnia tworzenia obiektów i operacji na nich
+## Definiowanie klas przypadków
 
-Poniższy przykład obrazuje hierarchię typów powiadomień, która składa się z abstrakcyjnej klasy `Notification` oraz trzech konkretnych rodzajów zaimplementowanych jako klasy przypadków `Email`, `SMS` i `VoiceRecording`:
-
-```tut
-abstract class Notification
-case class Email(sourceEmail: String, title: String, body: String) extends Notification
-case class SMS(sourceNumber: String, message: String) extends Notification
-case class VoiceRecording(contactName: String, link: String) extends Notification
-```
-
-Tworzenie obiektu jest bardzo proste: (Zwróć uwagę na to, że słowo `new` nie jest wymagane)
+Minimalna definicja klasy przypadku wymaga słów kluczowych `case class`, identyfikatora oraz listy parametrów (może być pusta):
 
 ```tut
-val emailFromJohn = Email("john.doe@mail.com", "Greetings From John!", "Hello World!")
+case class Book(isbn: String)
+
+val frankenstein = Book("978-0486282114")
 ```
 
-Parametry konstruktora klasy przypadków są traktowane jako publiczne wartości i można się do nich odwoływać bezpośrednio:
+Zauważ, że słowo kluczowe `new` nie było konieczne do stworzenia instancji klasy przypadku `Book`.
+Jest tak, ponieważ klasy przypadków posiadają domyślnie zdefiniowaną metodę `apply`, która zajmuje się tworzeniem obiektu klasy.
+
+W przypadku, kiedy tworzymy klasę przypadku zawierającą parametry, są one publiczne i stałe (`val`).
+
+```
+case class Message(sender: String, recipient: String, body: String)
+val message1 = Message("guillaume@quebec.ca", "jorge@catalonia.es", "Ça va ?")
+
+println(message1.sender)  // wypisze guillaume@quebec.ca
+message1.sender = "travis@washington.us"  // ten wiersz nie skompiluje się
+```
+
+Nie można ponownie przydzielić wartości do `message1.sender`, ponieważ jest to `val` (stała).
+Alternatywnie, w klasach przypadków można też używać `var`, jednak stanowczo tego odradzamy.
+
+## Porównywanie
+
+Klasy przypadków są porównywane według ich struktury, a nie przez referencje:
 
 ```tut
-val title = emailFromJohn.title
-println(title) // wypisuje "Greetings From John!"
+case class Message(sender: String, recipient: String, body: String)
+
+val message2 = Message("jorge@catalonia.es", "guillaume@quebec.ca", "Com va?")
+val message3 = Message("jorge@catalonia.es", "guillaume@quebec.ca", "Com va?")
+val messagesAreTheSame = message2 == message3  // true
 ```
 
-W klasach przypadków nie można modyfikować wartości pól. (Z wyjątkiem sytuacji kiedy dodasz `var` przed nazwą pola)
+Mimo, że `message1` oraz `message2` odnoszą się do innych obiektów, to ich wartości są identyczne.
 
-```tut:fail
-emailFromJohn.title = "Goodbye From John!" // Jest to błąd kompilacji, gdyż pola klasy przypadku są domyślnie niezmienne
-```
+## Kopiowanie
 
-Zamiast tego możesz utworzyć kopię używając metody `copy`:
+Możliwe jest stworzenie płytkiej kopii (ang. shallow copy) instancji klasy przypadku używając metody `copy`.
+Opcjonalnie można zmienić jeszcze wybrane parametry konstruktora.
 
 ```tut
-val editedEmail = emailFromJohn.copy(title = "I am learning Scala!", body = "It's so cool!")
-
-println(emailFromJohn) // wypisuje "Email(john.doe@mail.com,Greetings From John!,Hello World!)"
-println(editedEmail) // wypisuje "Email(john.doe@mail.com,I am learning Scala,It's so cool!)"
+case class Message(sender: String, recipient: String, body: String)
+val message4 = Message("julien@bretagne.fr", "travis@washington.us", "Me zo o komz gant ma amezeg")
+val message5 = message4.copy(sender = message4.recipient, recipient = "claire@bourgogne.fr")
+message5.sender  // travis@washington.us
+message5.recipient // claire@bourgogne.fr
+message5.body  // "Me zo o komz gant ma amezeg"
 ```
 
-Dla każdej klasy przypadku kompilator Scali wygeneruje metodę `equals` implementującą strukturalne porównanie obiektów oraz metodę `toString`. Przykład:
-
-```tut
-val firstSms = SMS("12345", "Hello!")
-val secondSms = SMS("12345", "Hello!")
-
-if (firstSms == secondSms) {
-  println("They are equal!")
-}
-
-println("SMS is: " + firstSms)
-```
-
-Wypisze:
-
-```
-They are equal!
-SMS is: SMS(12345, Hello!)
-```
-
-Jednym z najważniejszych zastosowań klas przypadków (skąd też się wzięła ich nazwa) jest **dopasowanie wzorca**. Poniższy przykład pokazuje działanie funkcji, która zwraca różne komunikaty w zależności od rodzaju powiadomienia:
-
-```tut
-def showNotification(notification: Notification): String = {
-  notification match {
-    case Email(email, title, _) =>
-      "You got an email from " + email + " with title: " + title
-    case SMS(number, message) =>
-      "You got an SMS from " + number + "! Message: " + message
-    case VoiceRecording(name, link) =>
-      "you received a Voice Recording from " + name + "! Click the link to hear it: " + link
-  }
-}
-
-val someSms = SMS("12345", "Are you there?")
-val someVoiceRecording = VoiceRecording("Tom", "voicerecording.org/id/123")
-
-println(showNotification(someSms)) // Wypisuje "You got an SMS from 12345! Message: Are you there?"
-println(showNotification(someVoiceRecording)) // Wypisuje "you received a Voice Recording from Tom! Click the link to hear it: voicerecording.org/id/123"
-```
-
-Poniżej bardziej skomplikowany przykład używający `if` w celu określenia dodatkowych warunków dopasowania:
-
-```tut
-def showNotificationSpecial(notification: Notification, specialEmail: String, specialNumber: String): String = {
-  notification match {
-    case Email(email, _, _) if email == specialEmail =>
-      "You got an email from special someone!"
-    case SMS(number, _) if number == specialNumber =>
-      "You got an SMS from special someone!"
-    case other =>
-      showNotification(other) // nic szczególnego, wywołaj domyślną metodę showNotification
-  }
-}
-
-val SPECIAL_NUMBER = "55555"
-val SPECIAL_EMAIL = "jane@mail.com"
-val someSms = SMS("12345", "Are you there?")
-val someVoiceRecording = VoiceRecording("Tom", "voicerecording.org/id/123")
-val specialEmail = Email("jane@mail.com", "Drinks tonight?", "I'm free after 5!")
-val specialSms = SMS("55555", "I'm here! Where are you?")
-
-println(showNotificationSpecial(someSms, SPECIAL_EMAIL, SPECIAL_NUMBER)) // Wypisuje "You got an SMS from 12345! Message: Are you there?"
-println(showNotificationSpecial(someVoiceRecording, SPECIAL_EMAIL, SPECIAL_NUMBER)) // Wypisuje "you received a Voice Recording from Tom! Click the link to hear it: voicerecording.org/id/123"
-println(showNotificationSpecial(specialEmail, SPECIAL_EMAIL, SPECIAL_NUMBER)) // Wypisuje "You got an email from special someone!"
-println(showNotificationSpecial(specialSms, SPECIAL_EMAIL, SPECIAL_NUMBER)) // Wypisuje "You got an SMS from special someone!"
-```
-
-Programując w Scali zachęca się, abyś jak najszerzej używał klas przypadków do modelowania danych, jako że kod, który je wykorzystuje, jest bardziej ekspresywny i łatwiejszy do utrzymania:
-
-* Obiekty niemutowalne uwalniają cię od potrzeby śledzenia zmian stanu
-* Porównanie przez wartość pozwala na porównywanie instancji tak, jakby były prymitywnymi wartościami
-* Dopasowanie wzorca znacząco upraszcza logikę rozgałęzień, co prowadzi do mniejszej ilości błędów i czytelniejszego kodu
-
+Odbiorca wiadomości 4 `message4.recipient` jest użyty jako nadawca wiadomości 5 `message5.sender`, ciało wiadomości 5 zostało skopiowane bez zmian z wiadomości 4.
 
