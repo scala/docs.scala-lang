@@ -53,7 +53,7 @@ In the future when your API is able to break the source compatibility, it might 
 import scala.collection.immutable.Seq
 ~~~
 
-Note that in Scala 2.13 the sequence passed into a vararg as `orderFood(xs: _*)` must also be immutable. This is because the sequence passed into a vararg must conform to`scala.Seq` acoording to [Specification](https://www.scala-lang.org/files/archive/spec/2.12/06-expressions.html#function-applications). Thus if your API exposes varargs, it will be an unavoidable breaking change. This might affect Java interoperability.
+Note that in Scala 2.13 the sequence passed into as a varargs as `orderFood(xs: _*)` must also be immutable. This is because the sequence passed in as a varargs must conform to `scala.Seq` according to [SLS 6.6](https://www.scala-lang.org/files/archive/spec/2.12/06-expressions.html#function-applications). Thus, if your API exposes varargs it will be an unavoidable breaking change. This might affect Java interoperability.
 
 ## What are the breaking changes?
 
