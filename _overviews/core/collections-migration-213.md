@@ -36,7 +36,7 @@ In Scala 2.13 `scala.Seq[+A]` is an alias for `scala.collection.immutable.Seq[A]
 
 If you're making an application, and simply migrating a Scala 2.12 code base to 2.13, it might be ok to keep using `scala.Seq` in your code.
 
-If you're making a library intended to be used by other programmers, then using `scala.Seq` or vararg is going to be a breaking change in the API semantics. For example, if there was a function `def orderFood(order: Seq[Order]): Seq[Food]`, previously the library user would have been able to pass in an array of `Order`, but it won't work for 2.13.
+If you're making a library intended to be used by other programmers, then using `scala.Seq` or varargs is going to be a breaking change in the API semantics. For example, if there was a function `def orderFood(order: Seq[Order]): Seq[Food]`, previously the library user would have been able to pass in an array of `Order`, but it won't work for 2.13.
 
 - if you cross build with Scala 2.12 and want to maintain the API semantics for 2.13 version of your library, or
 - if your library users frequently uses mutable collections such as `Array`
