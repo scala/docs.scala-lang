@@ -28,19 +28,19 @@ x match {
   case 0 => "zero"
   case 1 => "one"
   case 2 => "two"
-  case _ => "many"
+  case _ => "other"
 }
 ```
-The `val x` above is a random integer between 0 and 10. `x` becomes the left operand of the `match` operator and on the right is an expression with four cases. The last case `_` is a "catch all" case for any number greater than 2. Cases are also called _alternatives_.
+The `val x` above is a random integer between 0 and 10. `x` becomes the left operand of the `match` operator and on the right is an expression with four cases. The last case `_` is a "catch all" case for any other possible `Int` values. Cases are also called _alternatives_.
 
 Match expressions have a value.
 ```tut
 def matchTest(x: Int): String = x match {
   case 1 => "one"
   case 2 => "two"
-  case _ => "many"
+  case _ => "other"
 }
-matchTest(3)  // many
+matchTest(3)  // other
 matchTest(1)  // one
 ```
 This match expression has a type String because all of the cases return String. Therefore, the function `matchTest` returns a String.
