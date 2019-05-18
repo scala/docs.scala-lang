@@ -16,7 +16,7 @@ redirect_from: "/tutorials/tour/variances.html"
 
 変位指定は複合型の間の継承関係とそれらの型パラメータ間の継承関係の相関です。
 Scalaは[ジェネリッククラス](generic-classes.html)の型パラメータの変位指定アノテーションをサポートしています。
-変位指定アノテーションにより共変、反変にでき、アノテーション無しなら不変になります。
+変位指定アノテーションにより共変、反変にでき、アノテーション無しなら非変になります。
 型システム上で変位指定を利用すると複合型間の直感的な繋がりを作ることができます。
 その一方で変位指定が無いと、クラスを抽象化して再利用しにくくなります。
 
@@ -24,7 +24,7 @@ Scalaは[ジェネリッククラス](generic-classes.html)の型パラメータ
 ```tut
 class Foo[+A] // 共変クラス
 class Bar[-A] // 反変クラス
-class Baz[A]  // 不変クラス
+class Baz[A]  // 非変クラス
 ```
 
 ### 共変
@@ -130,11 +130,11 @@ The cat's name is: Boots
 The animal's name is: Boots
 ```
 
-### 不変
+### 非変
 
-Scalaのジェネリッククラスは標準では不変です。
+Scalaのジェネリッククラスは標準では非変です。
 これは共変でも反変でもないことを意味します。
-以下の例の状況では、`Container`クラスは不変です。`Container[Cat]`は`Container[Animal]`_ではなく_、逆もまた真ではありません。
+以下の例の状況では、`Container`クラスは非変です。`Container[Cat]`は`Container[Animal]`_ではなく_、逆もまた真ではありません。
 
 ```tut
 class Container[A](value: A) {
