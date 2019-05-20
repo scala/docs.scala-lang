@@ -32,28 +32,82 @@ The module also provides [migratrion rules](https://github.com/scala/scala-colle
 
 ## scala.Seq migration
 
-In Scala 2.13 `scala.Seq[+A]` is an alias for `scala.collection.immutable.Seq[A]`, instead of `scala.collection.Seq[A]`. This change requires some planning depending on how your code is going to be used.
-
-If you're making an application, and simply migrating a Scala 2.12 code base to 2.13, it might be ok to keep using `scala.Seq` in your code.
+In Scala 2.13 `scala.Seq[+A]` is an alias for `scala.collection.immutable.Seq[A]` ("ISeq"), instead of `scala.collection.Seq[A]` ("CSeq"). This change requires some planning depending on how your code is going to be used.
 
 If you're making a library intended to be used by other programmers, then using `scala.Seq` or varargs is going to be a breaking change in the API semantics. For example, if there was a function `def orderFood(order: Seq[Order]): Seq[Food]`, previously the library user would have been able to pass in an array of `Order`, but it won't work for 2.13.
 
 - if you cross build with Scala 2.12 and want to maintain the API semantics for 2.13 version of your library, or
 - if your library users frequently uses mutable collections such as `Array`
 
-you can import `scala.collection.Seq` ("CSeq") explicitly in your code.
+you can import collection Seq explicitly in your code.
 
 ~~~ scala
 import scala.collection.Seq
+
+object FoodToGo {
+  def orderFood(order: Seq[Order]): Seq[Food]
+}
 ~~~
 
-In the future when your API is able to break the source compatibility, it might also make sense to migrate towards the `scala.collection.immutable.Seq` ("ISeq") for both Scala 2.12 and Scala 2.13.
+Note that this might still break the source compatibility if `scala.Seq` (or just `Seq`) appears in the source code.
 
 ~~~ scala
-import scala.collection.immutable.Seq
+val food: Seq[Food] = FoodToGo.orderFood(order) // won't compile
 ~~~
 
+Since `Seq`, an alias for ISeq in 2.13, is narrower than CSeq, the above code will no longer compile. One workaround would be to ask your users to add `toSeq`, which returns ISeq.
+
+~~~ scala
+val food: Seq[Food] = FoodToGo.orderFood(order).toSeq // add .toSeq
+~~~
+
+Another workaround might be to accept CSeq, but return ISeq.
+
+~~~ scala
+import scala.collection.{ Seq => CSeq }
+import scala.collection.immutable.{ Seq => ISeq }
+
+object FoodToGo {
+  def orderFood(order: CSeq[Order]): ISeq[Food]
+}
+~~~
+
+In the future when your API is able to break the source compatibility, it might also make sense to migrate towards ISeq for both Scala 2.12 and Scala 2.13.
+
+~~~ scala
+import scala.collection.immutable.{ Seq => ISeq }
+
+object FoodToGo {
+  def orderFood(order: ISeq[Order]): ISeq[Food]
+}
+~~~
+
+Similarly, if you're making an end-user application, unifying to CSeq might be the easier and safer initial path especially for a larger and complex code base. Switching to ISeq will be a more advanced refactoring.
+
 Note that in Scala 2.13 the sequence passed into as a varargs as `orderFood(xs: _*)` must also be immutable. This is because the sequence passed in as a varargs must conform to `scala.Seq` according to [SLS 6.6](https://www.scala-lang.org/files/archive/spec/2.12/06-expressions.html#function-applications). Thus, if your API exposes varargs it will be an unavoidable breaking change. This might affect Java interoperability.
+
+### Masking scala.Seq
+
+To use the compiler to bad the use of plain `Seq`, you can declare your own `Seq` to mask `scala.Seq`.
+
+~~~ scala
+package example
+
+import scala.annotation.compileTimeOnly
+
+/**
+  * In Scala 2.13, scala.Seq moved from scala.collection.Seq to scala.collection.immutable.Seq.
+  * In this code base, we'll require you to name ISeq or CSeq.
+  *
+  * import scala.collection.{ Seq => CSeq }
+  * import scala.collection.immutable.{ Seq => ISeq }
+  *
+  * This Seq trait is a dummy type to prevent the use of `Seq`.
+  */
+@compileTimeOnly("Use ISeq or CSeq") private[example] trait Seq[A1, F1[A2], A3]
+~~~
+
+This might be useful during the transition period where you have to remember to import CSeq.
 
 ## What are the breaking changes?
 
