@@ -11,6 +11,7 @@ For an in-depth overview of the Scala 2.13 collections library, see the [collect
 
 The most important changes in the Scala 2.13 collections library are:
   - `scala.Seq[+A]` is now an alias for `scala.collection.immutable.Seq[A]` (instead of `scala.collection.Seq[A]`). Note that this also changes the type of Scala varargs methods.
+  - `scala.IndexedSeq[+A]` is now an alias for `scala.collection.immutable.IndexedSeq[A]` (instead of `scala.collection.IndexedSeq[A]`).
   - Transformation methods no longer have an implicit `CanBuildFrom` parameter. This makes the library easier to understand (in source code, Scaladoc, and IDE code completion). It also makes compiling user code more efficient.
   - The type hierarchy is simplified. `Traversable` no longer exists, only `Iterable`.
   - The `to[Collection]` method was replaced by the `to(Collection)` method.
@@ -30,11 +31,11 @@ The [scala-collection-compat](https://github.com/scala/scala-collection-compat) 
 
 The module also provides [migratrion rules](https://github.com/scala/scala-collection-compat#migration-tool) for [scalafix](https://scalacenter.github.io/scalafix/docs/users/installation.html) that can update a project's source code to work with the 2.13 collections library.
 
-## scala.Seq migration
+## scala.Seq and scala.IndexedSeq migration
 
-In Scala 2.13 `scala.Seq[+A]` is an alias for `scala.collection.immutable.Seq[A]` ("ISeq"), instead of `scala.collection.Seq[A]` ("CSeq"). This change requires some planning depending on how your code is going to be used.
+In Scala 2.13 `scala.Seq[+A]` is an alias for `scala.collection.immutable.Seq[A]` ("ISeq"), instead of `scala.collection.Seq[A]` ("CSeq"). Similarly, `scala.IndexedSeq[+A]` is an alias for `scala.collection.immutable.IndexedSeq[A]`. These changes require some planning depending on how your code is going to be used.
 
-If you're making a library intended to be used by other programmers, then using `scala.Seq` or varargs is going to be a breaking change in the API semantics. For example, if there was a function `def orderFood(order: Seq[Order]): Seq[Food]`, previously the library user would have been able to pass in an array of `Order`, but it won't work for 2.13.
+If you're making a library intended to be used by other programmers, then using `scala.Seq`, `scala.IndexedSeq`, or vararg is going to be a breaking change in the API semantics. For example, if there was a function `def orderFood(order: Seq[Order]): Seq[Food]`, previously the library user would have been able to pass in an array of `Order`, but it won't work for 2.13.
 
 - if you cross build with Scala 2.12 and want to maintain the API semantics for 2.13 version of your library, or
 - if your library users frequently uses mutable collections such as `Array`
@@ -105,6 +106,17 @@ import scala.annotation.compileTimeOnly
   * This Seq trait is a dummy type to prevent the use of `Seq`.
   */
 @compileTimeOnly("Use ISeq or CSeq") private[example] trait Seq[A1, F1[A2], A3]
+
+/**
+  * In Scala 2.13, scala.IndexedSeq moved from scala.collection.IndexedSeq to scala.collection.immutable.IndexedSeq.
+  * In this code base, we'll require you to name ISeq or CSeq.
+  *
+  * import scala.collection.{ IndexedSeq => CIndexedSeq }
+  * import scala.collection.immutable.{ IndexedSeq => IIndexedSeq }
+  *
+  * This IndexedSeq trait is a dummy type to prevent the use of `IndexedSeq`.
+  */
+@compileTimeOnly("Use IIndexedSeq or CIndexedSeq") private[example] trait IndexedSeq[A1, F1[A2], A3]
 ~~~
 
 This might be useful during the transition period where you have to remember to import CSeq.
