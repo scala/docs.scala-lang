@@ -56,7 +56,7 @@ object ImplicitTest {
 
 To show how implicit parameters work, we first define monoids `stringMonoid` and `intMonoid` for strings and integers, respectively. The `implicit` keyword indicates that the corresponding object can be used implicitly.
 
-The method `sum` takes a `List[A]` and returns an `A`, which takes the initial `A` from `unit`, and combines each next `A` in the list to that with the `add` method. Making the parameter `m` implicit here means we only have to provide the `xs` parameter when we call the method if Scala can find a an implict `Monoid[A]` to use for the implicit `m` parameter.
+The method `sum` takes a `List[A]` and returns an `A`, which takes the initial `A` from `unit`, and combines each next `A` in the list to that with the `add` method. Making the parameter `m` implicit here means we only have to provide the `xs` parameter when we call the method if Scala can find an implict `Monoid[A]` to use for the implicit `m` parameter.
 
 In our `main` method we call `sum` twice, and only provide the `xs` parameter. Scala will now look for an implicit in the scope mentioned above. The first call to `sum` passes a `List[Int]` for `xs`, which means that `A` is `Int`. The implicit parameter list with `m` is left out, so Scala will look for an implicit of type `Monoid[Int]`. The first lookup rule reads
 
