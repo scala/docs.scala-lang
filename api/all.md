@@ -28,10 +28,10 @@ includeTOC: true
 
 ## Prereleases
 
-* Scala 2.13.0-RC1
-  * [Library API](https://www.scala-lang.org/api/2.13.0-RC1/)
-  * [Compiler API](https://www.scala-lang.org/api/2.13.0-RC1/scala-compiler/scala/)
-  * [Reflection API](https://www.scala-lang.org/api/2.13.0-RC1/scala-reflect/scala/reflect/)
+* Scala 2.13.0-RC2
+  * [Library API](https://www.scala-lang.org/api/2.13.0-RC2/)
+  * [Compiler API](https://www.scala-lang.org/api/2.13.0-RC2/scala-compiler/scala/)
+  * [Reflection API](https://www.scala-lang.org/api/2.13.0-RC2/scala-reflect/scala/reflect/)
 
 ## Nightly builds
 
