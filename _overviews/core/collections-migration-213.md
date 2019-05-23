@@ -31,65 +31,106 @@ The [scala-collection-compat](https://github.com/scala/scala-collection-compat) 
 
 The module also provides [migratrion rules](https://github.com/scala/scala-collection-compat#migration-tool) for [scalafix](https://scalacenter.github.io/scalafix/docs/users/installation.html) that can update a project's source code to work with the 2.13 collections library.
 
-## scala.Seq and scala.IndexedSeq migration
+## scala.Seq, varargs and scala.IndexedSeq migration
 
-In Scala 2.13 `scala.Seq[+A]` is an alias for `scala.collection.immutable.Seq[A]` ("ISeq"), instead of `scala.collection.Seq[A]` ("CSeq"). Similarly, `scala.IndexedSeq[+A]` is an alias for `scala.collection.immutable.IndexedSeq[A]`. These changes require some planning depending on how your code is going to be used.
+In Scala 2.13 `scala.Seq[+A]` is an alias for `scala.collection.immutable.Seq[A]`, instead of `scala.collection.Seq[A]`, and `scala.IndexedSeq[+A]` is an alias for `scala.collection.immutable.IndexedSeq[A]`. These changes require some planning depending on how your code is going to be used.
 
-If you're making a library intended to be used by other programmers, then using `scala.Seq`, `scala.IndexedSeq`, or vararg is going to be a breaking change in the API semantics. For example, if there was a function `def orderFood(order: Seq[Order]): Seq[Food]`, previously the library user would have been able to pass in an array of `Order`, but it won't work for 2.13.
+The change in definition of `scala.Seq` also has the effect of making the type of varargs parameters immutable sequences, due to [SLS 6.6][], so in
+a method such as `orderFood(xs: _*)` the varargs parameter `xs` must be an immutable sequence.
 
-- if you cross build with Scala 2.12 and want to maintain the API semantics for 2.13 version of your library, or
-- if your library users frequently uses mutable collections such as `Array`
+[SLS 6.6]: https://www.scala-lang.org/files/archive/spec/2.12/06-expressions.html#function-applications
 
-you can import collection Seq explicitly in your code.
+Therefore any method signature in Scala 2.13 which includes `scala.Seq`, varargs, or `scala.IndexedSeq` is going
+to have a breaking change in API semantics (as the immutable sequence types require more &mdash; immutability &mdash; than the
+not-immutable types).  For example, users of a method like `def orderFood(order: Seq[Order]): Seq[Food]` would
+previously have been able to pass in an `ArrayBuffer` of `Order`, but cannot in 2.13.
+
+### Migrating varargs
+
+The change for varargs is unavoidable, as you cannot change the type used at definition site.  The options
+available for migrating the usage sites are the following:
+
+- change the value to already be an immutable sequence, which allows for direct varargs usage: `xs: _*`,
+- change the value to be an immutable sequence on the fly by calling `.toSeq`: `xs.toSeq: _*`, which will only
+    copy data if the sequence wasn't already immutable
+- use `scala.collection.immutable.ArraySeq.unsafeWrapArray` to wrap your array and avoid copying, but see its
+  scaladoc
+
+### Option 1: migrate back to scala.collection.Seq
+
+The first, in some ways simplest, migration strategy for all non-varargs usages of `scala.Seq` is to replace
+them with `scala.collection.Seq` (and require users to call `.toSeq` or `unsafeWrapArray` when passing such
+sequences to varargs methods).
+
+We recommend using `import scala.collection`/`import scala.collection.immutable` and
+`collection.Seq`/`immutable.Seq`.
+
+We recommend against using `import scala.collection.Seq`, which shadows the automatically imported `scala.Seq`,
+because even if it's a oneline change it causes name confusion.  For code generation or macros the safest option
+is using the fully-qualified `_root_.scala.collection.Seq`.
+
+As an example, the migration would look something like this:
 
 ~~~ scala
-import scala.collection.Seq
+import scala.collection
 
 object FoodToGo {
-  def orderFood(order: Seq[Order]): Seq[Food]
+  def orderFood(order: collection.Seq[Order]): collection.Seq[Food]
 }
 ~~~
 
-Note that this might still break the source compatibility if `scala.Seq` (or just `Seq`) appears in the source code.
+However users of this code in Scala 2.13 would also have to migrate, as the result type is source-incompatible
+with any `scala.Seq` (or just `Seq`) usage in their code:
 
 ~~~ scala
 val food: Seq[Food] = FoodToGo.orderFood(order) // won't compile
 ~~~
 
-Since `Seq`, an alias for ISeq in 2.13, is narrower than CSeq, the above code will no longer compile. One workaround would be to ask your users to add `toSeq`, which returns ISeq.
+The simplest workaround is to ask your users to call `.toSeq` on the result which will return an immutable Seq,
+and only copy data if the sequence wasn't immutable:
 
 ~~~ scala
 val food: Seq[Food] = FoodToGo.orderFood(order).toSeq // add .toSeq
 ~~~
 
-Another workaround might be to accept CSeq, but return ISeq.
+### Option 2: use scala.collection.Seq for parameters and scala.collection.immutable.Seq for result types
+
+The second, intermediate, migration strategy would be to change all methods to accept not-immutable Seq but
+return immutable Seq, following the [robustness principle][] (also known as "Postel's law"):
+
+[robustness principle]: https://en.wikipedia.org/wiki/Robustness_principle
 
 ~~~ scala
-import scala.collection.{ Seq => CSeq }
-import scala.collection.immutable.{ Seq => ISeq }
+import scala.collection
+import scala.collection.immutable
 
 object FoodToGo {
-  def orderFood(order: CSeq[Order]): ISeq[Food]
+  def orderFood(order: collection.Seq[Order]): immutable.Seq[Food]
 }
 ~~~
 
-In the future when your API is able to break the source compatibility, it might also make sense to migrate towards ISeq for both Scala 2.12 and Scala 2.13.
+### Option 3: use immutable sequences
+
+The third migration strategy is to change your API to use immutable sequences for both parameter and result
+types.  When cross-building your library for Scala 2.12 and 2.13 this could either mean:
+
+- continuing to use `scala.Seq` which means it stays source and binary-compatible in 2.12, but would have to
+    have immutable sequence semantics (but that might already be the case).
+- switch to explicitly using immutable Seq in both Scala 2.12 and 2.13, which means breaking source, binary and
+    (possibly) semantic compatibility in 2.12:
 
 ~~~ scala
-import scala.collection.immutable.{ Seq => ISeq }
+import scala.collection.immutable
 
 object FoodToGo {
-  def orderFood(order: ISeq[Order]): ISeq[Food]
+  def orderFood(order: immutable.Seq[Order]): immutable.Seq[Food]
 }
 ~~~
 
-Similarly, if you're making an end-user application, unifying to CSeq might be the easier and safer initial path especially for a larger and complex code base. Switching to ISeq will be a more advanced refactoring.
+### Shadowing scala.Seq and scala.IndexedSeq
 
-Note that in Scala 2.13 the sequence passed into as a varargs as `orderFood(xs: _*)` must also be immutable. This is because the sequence passed in as a varargs must conform to `scala.Seq` according to [SLS 6.6](https://www.scala-lang.org/files/archive/spec/2.12/06-expressions.html#function-applications). Thus, if your API exposes varargs it will be an unavoidable breaking change. This might affect Java interoperability.
-
-### Masking scala.Seq
-
-To use the compiler to bad the use of plain `Seq`, you can declare your own `Seq` to mask `scala.Seq`.
+You maybe be interested in entirely banning plain `Seq` usage.  You can use the compiler to do so by declaring
+your own package-level (and package private) `Seq` type which will mask `scala.Seq`.
 
 ~~~ scala
 package example
@@ -97,29 +138,33 @@ package example
 import scala.annotation.compileTimeOnly
 
 /**
-  * In Scala 2.13, scala.Seq moved from scala.collection.Seq to scala.collection.immutable.Seq.
-  * In this code base, we'll require you to name ISeq or CSeq.
+  * In Scala 2.13, `scala.Seq` changed from aliasing `scala.collection.Seq` to aliasing
+  * `scala.collection.immutable.Seq`.  In this code base usage of unqualified `Seq` is banned: use
+  * `immutable.Seq` or `collection.Seq` instead.
   *
-  * import scala.collection.{ Seq => CSeq }
-  * import scala.collection.immutable.{ Seq => ISeq }
+  * import scala.collection
+  * import scala.collection.immutable
   *
-  * This Seq trait is a dummy type to prevent the use of `Seq`.
+  * This `Seq` trait is a dummy type to prevent the use of `Seq`.
   */
-@compileTimeOnly("Use ISeq or CSeq") private[example] trait Seq[A1, F1[A2], A3]
+@compileTimeOnly("Use immutable.Seq or collection.Seq")
+private[example] trait Seq[A1]
 
 /**
-  * In Scala 2.13, scala.IndexedSeq moved from scala.collection.IndexedSeq to scala.collection.immutable.IndexedSeq.
-  * In this code base, we'll require you to name ISeq or CSeq.
+  * In Scala 2.13, `scala.IndexedSeq` changed from aliasing `scala.collection.IndexedSeq` to aliasing
+  * `scala.collection.immutable.IndexedSeq`.  In this code base usage of unqualified `IndexedSeq` is
+  * banned: use `immutable.IndexedSeq` or `collection.IndexedSeq`.
   *
-  * import scala.collection.{ IndexedSeq => CIndexedSeq }
-  * import scala.collection.immutable.{ IndexedSeq => IIndexedSeq }
+  * import scala.collection
+  * import scala.collection.immutable
   *
-  * This IndexedSeq trait is a dummy type to prevent the use of `IndexedSeq`.
+  * This `IndexedSeq` trait is a dummy type to prevent the use of `IndexedSeq`.
   */
-@compileTimeOnly("Use IIndexedSeq or CIndexedSeq") private[example] trait IndexedSeq[A1, F1[A2], A3]
+@compileTimeOnly("Use immutable.IndexedSeq or collection.IndexedSeq")
+private[example] trait IndexedSeq[A1]
 ~~~
 
-This might be useful during the transition period where you have to remember to import CSeq.
+This might be useful during the migration to catch usages of unqualified `Seq` and `IndexedSeq`.
 
 ## What are the breaking changes?
 
