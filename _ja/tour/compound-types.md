@@ -13,8 +13,8 @@ previous-page: abstract-type-members
 
 redirect_from: "/tutorials/tour/compound-types.html"
 ---
-オブジェクトの型が複数の他の型のサブタイプであることを表現する必要がある時があります。
-Scalaでは*複合型*の助けにより表現できます。複合型とはオブジェクトの型同士を重ねることです。
+ときどき、あるオブジェクトの型が、複数の他の型のサブタイプであると表現する必要が生じます。
+Scalaでは、これは*複合型*を用いて表現できます。複合型とはオブジェクトの型同士を重ねることです。
 
 2つのトレイト`Cloneable`と`Resetable`があるとしましょう。
 
@@ -39,7 +39,7 @@ def cloneAndReset(obj: ?): Cloneable = {
 }
 ```
 
-パラメータ`obj`の型は何かという疑問が上がります。もし`Cloneable`であれば、オブジェクトを`clone`することができますが、`reset`することはできません。もし`Resetable`であれば、`reset`することができますが、`clone`の操作はできません。そのような状態で型キャストを回避するために`obj`の型を`Cloneable`と`Resetable`の両方であると指定することができます。Scalaではこの複合型は`Cloneable with Resetable`のように書くことができます。
+パラメータ`obj`の型は何かという疑問が生じます。もし`Cloneable`であれば、オブジェクトを`clone`することができますが、`reset`することはできません。もし`Resetable`であれば、`reset`することができますが、`clone`の操作はできません。そのような状態で型キャストを回避するために`obj`の型を`Cloneable`と`Resetable`の両方であると指定することができます。Scalaではこの複合型は`Cloneable with Resetable`のように書くことができます。
 
 こちらが書き変えた関数です。
 
