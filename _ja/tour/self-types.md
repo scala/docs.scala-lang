@@ -1,6 +1,6 @@
 ---
 layout: tour
-title: 自己型
+title: 自分型
 language: ja
 
 discourse: true
@@ -15,13 +15,13 @@ prerequisite-knowledge: nested-classes, mixin-class-composition
 
 redirect_from: "/tutorials/tour/self-types.html"
 ---
-自己型はたとえ直接継承していなくても、トレイトが他のトレイトにミックスインされていることを宣言する方法です。
-それはimportなしに、依存先のメンバーを利用可能とします。
+自分型は、直接継承していなくてもトレイトが他のトレイトにミックスインされていることを宣言する方法です。
+これにより依存先のメンバーをimportなしで利用できます。
 
-自己型は`this`の型、または`this`の別名となる別の識別子を絞り込む方法です。
+自分型は`this`、または`this`の別名となる別の識別子の型を絞り込む方法です。
 その構文は普通の関数構文のように見えますが、全く異なる意味があります。
 
-トレイトで自己型を使うには、識別子、ミックスインする他のトレイトの型、`=>`を書きます(例えば `someIdentifier: SomeOtherTrait =>`)。
+トレイトで自分型を使うには、識別子、ミックスインする他のトレイトの型、`=>`を書きます(例えば `someIdentifier: SomeOtherTrait =>`)。
 ```tut
 trait User {
   def username: String
