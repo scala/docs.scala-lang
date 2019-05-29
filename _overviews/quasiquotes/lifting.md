@@ -49,7 +49,7 @@ To define tree representation for your own data type just provide an implicit in
 
     package points
 
-    import scala.universe._
+    import scala.reflect.runtime.universe._
 
     case class Point(x: Int, y: Int)
     object Point {
