@@ -32,11 +32,11 @@ x match {
   case 0 => "zero"
   case 1 => "one"
   case 2 => "two"
-  case _ => "many"
+  case _ => "other"
 }
 ```
 上記の`val x`は0から10の間のランダムな整数です。`x`は`match`演算子の左オペランドで、右側は4つのケースを持つ式です。
-最後のケース`_`は 2より大きい全ての数字のための"全てを捕捉する"ケースです。
+最後のケース`_`は その他の取りうる整数値のための"全てを捕捉する"ケースです。
 ケースは*オルタナティブ*とも呼ばれます。
 
 マッチ式は値を持ちます。
@@ -44,9 +44,9 @@ x match {
 def matchTest(x: Int): String = x match {
   case 1 => "one"
   case 2 => "two"
-  case _ => "many"
+  case _ => "other"
 }
-matchTest(3)  // many
+matchTest(3)  // other
 matchTest(1)  // one
 ```
 全てのケースでStringを返しているので、このマッチ式はString型を持ちます。
