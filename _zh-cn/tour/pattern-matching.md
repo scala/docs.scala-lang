@@ -28,19 +28,19 @@ x match {
   case 0 => "zero"
   case 1 => "one"
   case 2 => "two"
-  case _ => "many"
+  case _ => "other"
 }
 ```
-上述代码中的`val x`是一个0到10之间的随机整数，将它放在`match`运算符的左侧对其进行模式匹配，`match`的右侧是包含4条`case`的表达式，其中最后一个`case _`表示匹配其余所有情况，在这里即是`x`大于2的情况。
+上述代码中的`val x`是一个0到10之间的随机整数，将它放在`match`运算符的左侧对其进行模式匹配，`match`的右侧是包含4条`case`的表达式，其中最后一个`case _`表示匹配其余所有情况，在这里就是其他可能的整型值。
 
 `match`表达式具有一个结果值
 ```tut
 def matchTest(x: Int): String = x match {
   case 1 => "one"
   case 2 => "two"
-  case _ => "many"
+  case _ => "other"
 }
-matchTest(3)  // many
+matchTest(3)  // other
 matchTest(1)  // one
 ```
 这个`match`表达式是String类型的，因为所有的情况（case）均返回String，所以`matchTest`函数的返回值是String类型。
