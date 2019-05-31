@@ -66,8 +66,8 @@ case class VoiceRecording(contactName: String, link: String) extends Notificatio
 ```
 def showNotification(notification: Notification): String = {
   notification match {
-    case Email(email, title, _) =>
-      s"You got an email from $email with title: $title"
+    case Email(sender, title, _) =>
+      s"You got an email from $sender with title: $title"
     case SMS(number, message) =>
       s"You got an SMS from $number! Message: $message"
     case VoiceRecording(name, link) =>
@@ -81,7 +81,7 @@ println(showNotification(someSms))  // prints You got an SMS from 12345! Message
 
 println(showNotification(someVoiceRecording))  // you received a Voice Recording from Tom! Click the link to hear it: voicerecording.org/id/123
 ```
-`showNotification`函数接受一个抽象类`Notification`对象作为输入参数，然后匹配其具体类型。（也就是判断它是一个`Email`，`SMS`，还是`VoiceRecording`）。在`case Email(email, title, _)`中，对象的`email`和`title`属性在返回值中被使用，而`body`属性则被忽略，故使用`_`代替。
+`showNotification`函数接受一个抽象类`Notification`对象作为输入参数，然后匹配其具体类型。（也就是判断它是一个`Email`，`SMS`，还是`VoiceRecording`）。在`case Email(sender, title, _)`中，对象的`sender`和`title`属性在返回值中被使用，而`body`属性则被忽略，故使用`_`代替。
 
 ## 模式守卫（Pattern gaurds）
 为了让匹配更加具体，可以使用模式守卫，也就是在模式后面加上`if <boolean expression>`。
@@ -89,7 +89,7 @@ println(showNotification(someVoiceRecording))  // you received a Voice Recording
 
 def showImportantNotification(notification: Notification, importantPeopleInfo: Seq[String]): String = {
   notification match {
-    case Email(email, _, _) if importantPeopleInfo.contains(email) =>
+    case Email(sender, _, _) if importantPeopleInfo.contains(sender) =>
       "You got an email from special someone!"
     case SMS(number, _) if importantPeopleInfo.contains(number) =>
       "You got an SMS from special someone!"
@@ -111,7 +111,7 @@ println(showImportantNotification(importantEmail, importantPeopleInfo))
 println(showImportantNotification(importantSms, importantPeopleInfo))
 ```
 
-在`case Email(email, _, _) if importantPeopleInfo.contains(email)`中，除了要求`notification`是`Email`类型外，还需要`email`在重要人物列表`importantPeopleInfo`中，才会匹配到该模式。
+在`case Email(sender, _, _) if importantPeopleInfo.contains(sender)`中，除了要求`notification`是`Email`类型外，还需要`sender`在重要人物列表`importantPeopleInfo`中，才会匹配到该模式。
  
 
 ## 仅匹配类型
