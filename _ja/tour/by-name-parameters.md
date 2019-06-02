@@ -1,6 +1,7 @@
 ---
 layout: tour
 title: 名前渡しパラメータ
+language: ja
 
 discourse: true
 
