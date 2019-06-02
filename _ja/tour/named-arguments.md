@@ -1,6 +1,7 @@
 ---
 layout: tour
 title: 名前付き引数
+language: ja
 
 discourse: true
 
