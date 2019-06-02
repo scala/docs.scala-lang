@@ -226,7 +226,7 @@ value class不能将惰性val或val作为成员，也不能有嵌套类、trait�
 value类不能继承non-universal trait，并且其本身不能被继承：
 
     trait NotUniversal
-    class Value(val x: Int) extends AnyVal with notUniversal
+    class Value(val x: Int) extends AnyVal with NotUniversal
     class Extend(x: Int) extends Value(x)
 
     Extend.scala:2: error: illegal inheritance; superclass AnyVal
