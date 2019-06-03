@@ -27,7 +27,7 @@ language: zh-cn
 
 如果一个序列是可变的，它提供了另一种更新序列中的元素的，但有副作用的update方法，Scala中常有这样的语法，如seq(idx) = elem。它只是seq.update(idx, elem)的简写，所以update 提供了方便的赋值语法。应注意update 和updated之间的差异。update 再原来基础上更改序列中的元素，并且仅适用于可变序列。而updated 适用于所有的序列，它总是返回一个新序列，而不会修改原序列。  
 
-## Seq类的操作
+### Seq类的操作
 
 | WHAT IT IS | WHAT IT DOES   |
 |------------------ | -------------------|
@@ -79,13 +79,13 @@ language: zh-cn
 
 常用线性序列有 `scala.collection.immutable.List`和`scala.collection.immutable.Stream`。常用索引序列有 `scala.Array scala.collection.mutable.ArrayBuffer`。Vector 类提供一个在索引访问和线性访问之间有趣的折中。它同时具有高效的恒定时间的索引开销，和恒定时间的线性访问开销。正因为如此，对于混合访问模式，vector是一个很好的基础。后面将详细介绍vector。
 
-## 缓冲器
+### 缓冲器
 
 Buffers是可变序列一个重要的种类。它们不仅允许更新现有的元素，而且允许元素的插入、移除和在buffer尾部高效地添加新元素。buffer 支持的主要新方法有：用于在尾部添加元素的 `+=` 和 `++=`；用于在前方添加元素的`+=: `和` ++=:` ；用于插入元素的 `insert`和`insertAll`；以及用于删除元素的` remove` 和 `-=`。如下表所示。  
 
 ListBuffer和ArrayBuffer是常用的buffer实现 。顾名思义，ListBuffer依赖列表（List），支持高效地将它的元素转换成列表。而ArrayBuffer依赖数组（Array），能快速地转换成数组。  
 
-## Buffer类的操作
+#### Buffer类的操作
 
 | WHAT IT IS | WHAT IT DOES |
 |--------------------- | -----------------------|
