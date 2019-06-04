@@ -15,8 +15,8 @@ permalink: /overviews/collections-2.13/:title.html
 **Martin Odersky, and Lex Spoon**
 
 In the eyes of many, the new collections framework is the most significant
-change in the Scala 2.8 release. Scala had collections before (and in fact the new
-framework is largely compatible with them). But it's only 2.8 that
+change in the Scala 2.13 release. Scala had collections before (and in fact the new
+framework is largely compatible with them). But it's only 2.13 that
 provides a common, uniform, and all-encompassing framework for
 collection types.
 
