@@ -99,7 +99,7 @@ French-speaking part of Switzerland use the same conventions.)
 
 Java's class libraries define powerful utility classes, such as
 `Date` and `DateFormat`. Since Scala interoperates
-seemlessly with Java, there is no need to implement equivalent
+seamlessly with Java, there is no need to implement equivalent
 classes in the Scala class library--we can simply import the classes
 of the corresponding Java packages:
 
