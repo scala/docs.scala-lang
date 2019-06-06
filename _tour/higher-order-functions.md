@@ -58,7 +58,7 @@ case class WeeklyWeatherForecast(temperatures: Seq[Double]) {
   def forecastInFahrenheit: Seq[Double] = temperatures.map(convertCtoF) // <-- passing the method convertCtoF
 }
 ```
-Here the method `convertCtoF` is passed to `forecastInFahrenheit`. This is possible because the compiler coerces `convertCtoF` to the function `x => convertCtoF(x)` (note: `x` will
+Here the method `convertCtoF` is passed to the higher order function `map`. This is possible because the compiler coerces `convertCtoF` to the function `x => convertCtoF(x)` (note: `x` will
   be a generated name which is guaranteed to be unique within its scope).
 
 ## Functions that accept functions
@@ -123,3 +123,5 @@ val url = getURL(endpoint, query) // "https://www.example.com/users?id=1": Strin
 Notice the return type of urlBuilder `(String, String) => String`. This means that
 the returned anonymous function takes two Strings and returns a String. In this case,
 the returned anonymous function is `(endpoint: String, query: String) => s"https://www.example.com/$endpoint?$query"`.
+
+Methods and functions usually express behaviours or data transformations, therefore having functions that compose based on other functions just means that one can build higher order abstract mechanisms, deferring to hardcode the internal function logic and giving the consumers the chance to customize how the overall mechanism should behave.
