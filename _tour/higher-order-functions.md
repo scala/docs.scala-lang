@@ -60,6 +60,8 @@ case class WeeklyWeatherForecast(temperatures: Seq[Double]) {
 ```
 Here the method `convertCtoF` is passed to `forecastInFahrenheit`. This is possible because the compiler coerces `convertCtoF` to the function `x => convertCtoF(x)` (note: `x` will
   be a generated name which is guaranteed to be unique within its scope).
+  
+In a pure Object Oriented world a good practice is to avoid exposing methods that are parameterized with functions that might escape the internal state of the objects. Leaking internal state might break the invariants of the object itself.
 
 ## Functions that accept functions
 One reason to use higher-order functions is to reduce redundant code. Let's say you wanted some methods that could raise someone's salaries by various factors. Without creating a higher-order function,
