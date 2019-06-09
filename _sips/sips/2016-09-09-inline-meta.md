@@ -26,9 +26,6 @@ We did our best to extensively evaluate the design space and comprehensively doc
 As a result, this is going to be a very long read. If you're just interested in getting a quick idea
 of the proposal, you can read just the ["Intuition"][Intuition] section.
 
-If you have any questions, feedback or ideas regarding this document, use the link provided
-in the ["Feedback"][FeedbackSection] section to join the public discussion.
-
 ## Motivation
 
 Def macros and macro annotations have become an integral
@@ -71,7 +68,6 @@ and coming up with a lightweight declaration syntax. In this document, we presen
     * [Out of scope](#out-of-scope)
   * [Conclusion](#conclusion)
   * [Credits](#credits)
-  * [Feedback](#feedback)
 
 ## Intuition
 
@@ -983,12 +979,6 @@ Tamer Mohammed Abdul-Radi, David Dudson, Takeshi D. Itoh, Oleksandr Olgashko and
 
 The prototype of IntelliJ integration was developed by Mikhail Mutcianko.
 
-## Feedback
-
-In order to centralize the discussion, post your feedback and ideas to [http://gitter.im/scalameta/sips][FeedbackWebsite].
-Once we submit this document as a full-fledged SIP, we will update this section to include the official discussion forum
-mandated by the SIP process.
-
 ## References
 
   1. [Prototype of scalac integration][PrototypeScalac]
@@ -1019,8 +1009,6 @@ mandated by the SIP process.
 [AnonymousTypeProviders]: http://docs.scala-lang.org/overviews/macros/typeproviders.html#anonymous-type-providers
 [ExtractorMacros]: https://docs.scala-lang.org/overviews/macros/extractors.html
 [AnnotationsTypecheck]: https://github.com/scalamacros/paradise/issues/75
-[FeedbackSection]: #feedback
-[FeedbackWebsite]: http://gitter.im/scalameta/sips
 [AppendixInteraction]: https://gist.github.com/xeno-by/e26a904051a171e4bc8b9096630220a7
 [AppendixExpansion]: https://gist.github.com/xeno-by/5dde62aedcc23afc85ecf4d795ac67c2
 [AppendixMeta]: https://gist.github.com/xeno-by/9741ce7532cb30368b3753521bbfce4e
