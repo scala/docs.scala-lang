@@ -21,7 +21,7 @@ There are two ways to generate API documentation in HTML from your Scala code.  
 
 The easiest and most commonly used way to generate API documentation from your Scala code is with the build tool [sbt](https://www.scala-sbt.org).
 
-From the sbt console, run Scaladoc by simply running the `doc` task:
+In the sbt shell, generate Scaladoc by running `doc`:
 
     > doc
     [info] Main Scala API documentation to target/scala-2.12/api...
