@@ -42,7 +42,7 @@ If you use Scala commands directly to start a console with `scala` or compile wi
     $ scaladoc src/main/scala/App.scala
     model contains 1 documentable templates
 
-This will put the HTML in the current directory.  This is probably not what you want.  It's preferable to output to a subdirectory.   To specify a different target directory, use the `-d` commmand-line option:
+This will put the HTML in the current directory.  This is probably not what you want.  It's preferable to output to a subdirectory.   To specify a different target directory, use the `-d` command-line option:
 
     $ scaladoc -d build/ src/main/scala/App.scala
 
@@ -50,6 +50,6 @@ For more information on the `scaladoc` command and what other command-line optio
 
 This command is harder to operate with more complex projects containing both multiple Scala source files and library dependencies.  This is why using sbt (see above) is easier and better suited for generating Scaladoc.
 
-The Scaladoc command exists because it precedied the development of sbt, but also because it is useful to the Scala development team with studying bug reports for Scaladoc.
+The Scaladoc command exists because it preceded the development of sbt, but also because it is useful to the Scala development team with studying bug reports for Scaladoc.
 
 More information on directly using the Scala commands, like `scaladoc`, is discussed at [your first lines of Scala](https://www.scala-lang.org/documentation/your-first-lines-of-scala.html).
