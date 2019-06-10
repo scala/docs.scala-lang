@@ -167,7 +167,7 @@ The operation is meant to traverse all elements of the collection, and apply
 the given operation f to each element. The application is done for its side
 effect only; in fact any function result of f is discarded by foreach.
 
-Traversible objects can be finite or infinite. An example of an infinite
+Traversable objects can be finite or infinite. An example of an infinite
 traversable object is the stream of natural numbers `Stream.from(0)`. The
 method `hasDefiniteSize` indicates whether a collection is possibly infinite.
 If `hasDefiniteSize` returns true, the collection is certainly finite. If it
@@ -250,7 +250,7 @@ it. Also available are some traits with further refinements, such as
 	* `LinearSeq` -- A trait for linear sequences, with efficient time for `isEmpty`, `head` and `tail`.
 
 		* `immutable.LinearSeq`
-			* `immutable.List` -- An immutable, singlely-linked, list implementation.
+			* `immutable.List` -- An immutable, singly-linked, list implementation.
 			* `immutable.Stream` -- A lazy-list. Its elements are only computed on-demand, but memoized (kept in memory) afterwards. It can be theoretically infinite.
 		* `mutable.LinearSeq`
 			* `mutable.DoublyLinkedList` -- A list with mutable `prev`, `head` (`elem`) and `tail` (`next`).
@@ -343,7 +343,7 @@ it. Also available are some traits with further refinements, such as
 This was done to achieve maximum code reuse. The concrete *generic*
 implementation for classes with a certain structure (a traversable, a map, etc)
 is done in the Like classes. The classes intended for general consumption,
-then, override selected methods that can be optmized.
+then, override selected methods that can be optimized.
 
 * What the companion methods are for (e.g. List.companion)?
 

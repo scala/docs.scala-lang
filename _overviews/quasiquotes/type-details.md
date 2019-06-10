@@ -92,7 +92,7 @@ Lastly and [similarly to expressions](expression-details.html#super-and-this) on
 
 ## Applied Type
 
-Instantiations of parametized types can be expressed with the help of applied types (type-level equivalent of type application):
+Instantiations of parameterized types can be expressed with the help of applied types (type-level equivalent of type application):
 
     scala> val applied = tq"Foo[A, B]"
     applied: universe.Tree = Foo[A, B]
@@ -151,7 +151,7 @@ Existential types consist of a type tree and a list of definitions:
     tpt: universe.Tree = List[T]
     defns: List[universe.MemberDef] = List(type T)
 
-Alternatively there is also an underscrore notation:
+Alternatively there is also an underscore notation:
 
     scala> val tq"$tpt forSome { ..$defns }" = tq"List[_]"
     tpt: universe.Tree = List[_$1]

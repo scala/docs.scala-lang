@@ -29,7 +29,7 @@ The most important changes in the Scala 2.13 collections library are:
 
 The [scala-collection-compat](https://github.com/scala/scala-collection-compat) is a library released for 2.11, 2.12 and 2.13 that provides some of the new APIs from Scala 2.13 for the older versions. This simplifies cross-building projects.
 
-The module also provides [migratrion rules](https://github.com/scala/scala-collection-compat#migration-tool) for [scalafix](https://scalacenter.github.io/scalafix/docs/users/installation.html) that can update a project's source code to work with the 2.13 collections library.
+The module also provides [migration rules](https://github.com/scala/scala-collection-compat#migration-tool) for [scalafix](https://scalacenter.github.io/scalafix/docs/users/installation.html) that can update a project's source code to work with the 2.13 collections library.
 
 ## scala.Seq, varargs and scala.IndexedSeq migration
 

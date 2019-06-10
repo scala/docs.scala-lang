@@ -665,16 +665,16 @@ multiple `andThen` calls are ordered, as in the following example
 which stores the recent posts from a social network to a mutable set
 and then renders all the posts to the screen:
 
-	val allposts = mutable.Set[String]()
+	val allPosts = mutable.Set[String]()
 
 	Future {
 	  session.getRecentPosts
 	} andThen {
-	  case Success(posts) => allposts ++= posts
+	  case Success(posts) => allPosts ++= posts
 	} andThen {
 	  case _ =>
 	  clearAll()
-	  for (post <- allposts) render(post)
+	  for (post <- allPosts) render(post)
 	}
 
 In summary, the combinators on futures are purely functional.

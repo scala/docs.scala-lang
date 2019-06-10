@@ -97,7 +97,7 @@ object O {
 }
 {% endhighlight %}
 
-Under the proposed scheme users will be able to opt-in to have the field `f` defined in the inner object `I` emited as a static field.
+Under the proposed scheme users will be able to opt-in to have the field `f` defined in the inner object `I` emitted as a static field.
 In case `O.d` is annotated with `@static` the field will be created as a static field `d` in `class O`.
 If not annotated, it will be created in the companion module with a static forwarder `d` in `class O`.
 
@@ -109,7 +109,7 @@ The following rules ensure that methods can be correctly compiled into static me
 
 2. The fields annotated with `@static` should precede any non-`@static` fields. This ensures that we do not introduce surprises for users in initialization order of this class.
 
-3. The right hand side of a method or field annotated with `@static` can only refer to top-level classes, members of globally accessible objects and `@static` members. In particular, for non-static objects `this` is not accesible. `super` is never accessible.
+3. The right hand side of a method or field annotated with `@static` can only refer to top-level classes, members of globally accessible objects and `@static` members. In particular, for non-static objects `this` is not accessible. `super` is never accessible.
 
 4. If a member `foo` of an `object C` is annotated with `@static`, the companion class `C` is not allowed to define term members with name `foo`.
 
@@ -153,7 +153,7 @@ This means that no code precedes the `@static` field initialization which makes 
 since fields are initialized in the order `as written`, similar to how normal fields are initialized.
 
 The `@static` proposal is similar to `@tailrec` in a sense that it fails compilation in the case where the user did not write code that follows the aforementioned rules.
-These rules exist to enforce the unlikelyhood of an observable difference in semantics if `@static` annotations are dropped;
+These rules exist to enforce the unlikelihood of an observable difference in semantics if `@static` annotations are dropped;
 The restrictions in this SIP make it hard to observe changes in initialization within the same object.
 It is still possible to observe those changes using multiple classes and side effects within initializers:
 

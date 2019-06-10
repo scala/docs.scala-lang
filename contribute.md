@@ -79,7 +79,7 @@ If you have something you're thinking about contributing, or that you're thinkin
 
 ### Guides/Overviews
 
-A guide or an overview that can be logically placed on **one** page must be placed in the directory `overviews/RELEVANT-CATEGORY/_posts` with the file name in the format `YYYY-MM-dd-title-separarted-by-dashes.md`, and header:
+A guide or an overview that can be logically placed on **one** page must be placed in the directory `overviews/RELEVANT-CATEGORY/_posts` with the file name in the format `YYYY-MM-dd-title-separated-by-dashes.md`, and header:
 
     ---
     layout: overview

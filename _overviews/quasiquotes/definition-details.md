@@ -216,7 +216,7 @@ Abstract type definitions have the following shape:
     low: universe.Tree = <empty>
     high: universe.Tree = List[T]
 
-Whenever one of the bounds isn\'t available, it gets represented as an [empty tree](expression-details.html#empty). Here each of the type arguments is a type definition itself.
+Whenever one of the bounds isn't available, it gets represented as an [empty tree](expression-details.html#empty). Here each of the type arguments is a type definition itself.
 
 Another form of type definition is a type alias:
 
@@ -259,7 +259,7 @@ Alternatively you can also deconstruct arguments, separating implicit and non-im
     implparams: List[universe.ValDef] = List(implicit val y: Int = _)
     body: universe.Tree = x.$plus(y)
 
-This way of handling parameters will still work if the method doesn\'t have any implicit parameters and `implparams` will get extracted as an empty list:
+This way of handling parameters will still work if the method doesn't have any implicit parameters and `implparams` will get extracted as an empty list:
 
     scala> val q"def g(...$paramss)(implicit ..$implparams) = $rhs" =
                q"def g(x: Int)(y: Int) = x + y"
@@ -344,7 +344,7 @@ Packages are a fundamental primitive to organize source code. You can express th
       }
     })
 
-Quasiquotes don\'t support the inline package definition syntax that is usually used in the header of the source file (but it's equivalent to the supported one in terms of ASTs).
+Quasiquotes don't support the inline package definition syntax that is usually used in the header of the source file (but it's equivalent to the supported one in terms of ASTs).
 
 ## Package Object Definition
 
@@ -352,7 +352,7 @@ Package objects are a cross between packages and object:
 
     q"package object $tname extends { ..$earlydefns } with ..$parents { $self => ..$stats }"
 
-All of the handling properties are equivalent to those of objects apart from the fact that they don\'t have [modifiers](#modifiers).
+All of the handling properties are equivalent to those of objects apart from the fact that they don't have [modifiers](#modifiers).
 
 Even though package and regular objects seem to be quite similar syntactically, they don't match one another:
 

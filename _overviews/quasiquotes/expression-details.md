@@ -290,7 +290,7 @@ At the moment, tuples are only supported up to an arity of 22, but this is just 
     scala> val `tuple 23 supported?` = definitions.TupleClass(23) != NoSymbol
     tuple 23 supported?: Boolean = false
 
-Despited the fact that `Tuple1` class exists there is no built-in syntax for it. Single parens around expression do not change its meaning:
+Despite the fact that `Tuple1` class exists there is no built-in syntax for it. Single parens around expression do not change its meaning:
 
     scala> val inparens = q"(a)"
     inparens: universe.Ident = a

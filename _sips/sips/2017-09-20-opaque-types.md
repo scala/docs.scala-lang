@@ -885,7 +885,7 @@ there will certainly be an impact on the bytecode produced (and
 possibly the runtime performance).
 
 By contrast, replacing `String` with `Digits` is guaranteed to have no
-impact (all occurances of `Digits` are guaranteed to be erased to
+impact (all occurrences of `Digits` are guaranteed to be erased to
 `String`). Aside from the ergonomics of calling the `fromString` and
 `asString` methods, there's no runtime impact versus using the
 underlying type.
@@ -953,7 +953,7 @@ but it is *not* a `List[AnyVal]`.
 
 Since value classes do have a runtime representation, they do increase
 the size of runtime artifacts produced (whether a JAR file, a
-javascript file, or something else). Their methods are also compiled
+JavaScript file, or something else). Their methods are also compiled
 to multiple representations (i.e. they support both the boxed and
 unboxed forms via extensions methods). Again, this comes at a cost.
 

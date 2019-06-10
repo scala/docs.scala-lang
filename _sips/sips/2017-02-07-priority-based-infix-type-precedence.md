@@ -104,7 +104,7 @@ val fails : 1 + 2 * 3 + 4 = 11 //left associative:(((1+2)*3)+4))) = 13
 ```
 
 #### Developer issues example
-[This](http://stackoverflow.com/questions/23333882/scala-infix-type-aliasing-for-2-type-parameters) stackoverflow question demonstrate developers are 'surprised' by the difference in infix precedence, expecting infix type precedence to act the same as expression operations.
+[This](http://stackoverflow.com/questions/23333882/scala-infix-type-aliasing-for-2-type-parameters) Stack Overflow question demonstrate developers are 'surprised' by the difference in infix precedence, expecting infix type precedence to act the same as expression operations.
 
 ---
 

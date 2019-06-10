@@ -37,7 +37,7 @@ terms of two core abstractions-- `Splitter`s and `Combiner`s.
 ### Splitters
 
 The job of a `Splitter`, as its name suggests, is to split a parallel
-collection into a non-trival partition of its elements. The basic idea is to
+collection into a non-trivial partition of its elements. The basic idea is to
 split the collection into smaller parts until they are small enough to be
 operated on sequentially.
 
@@ -55,7 +55,7 @@ subsets of elements of the whole parallel collection. And similar to normal
 `Iterator`s, a `Splitter` is invalidated after its `split` method is invoked.
 
 In general, collections are partitioned using `Splitter`s into subsets of
-roughly the same size. In cases where more arbitrarily-sized partions are
+roughly the same size. In cases where more arbitrarily-sized partitions are
 required, in particular on parallel sequences, a `PreciseSplitter` is used,
 which inherits `Splitter` and additionally implements a precise split method,
 `psplit`.
@@ -82,7 +82,7 @@ and the type of the resulting collection, respectively.
 
 _Note:_ Given two `Combiner`s, `c1` and `c2` where `c1 eq c2` is `true`
 (meaning they're the same `Combiner`), invoking `c1.combine(c2)` always does
-nothing and simpy returns the receiving `Combiner`, `c1`.
+nothing and simply returns the receiving `Combiner`, `c1`.
 
 ## Hierarchy
 
