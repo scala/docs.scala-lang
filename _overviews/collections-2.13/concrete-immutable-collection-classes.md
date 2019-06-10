@@ -16,11 +16,11 @@ Scala provides many concrete immutable collection classes for you to choose from
 
 ## Lists
 
-A [List](http://www.scala-lang.org/api/{{ site.scala-213-version }}/scala/collection/immutable/List.html) is a finite immutable sequence. They provide constant-time access to their first element as well as the rest of the list, and they have a constant-time cons operation for adding a new element to the front of the list. Many other operations take linear time.
+A [List](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/List.html) is a finite immutable sequence. They provide constant-time access to their first element as well as the rest of the list, and they have a constant-time cons operation for adding a new element to the front of the list. Many other operations take linear time.
 
 ## LazyLists
 
-A [LazyList](http://www.scala-lang.org/api/{{ site.scala-213-version }}/scala/collection/immutable/LazyList.html) is like a list except that its elements are computed lazily. Because of this, a lazy list can be infinitely long. Only those elements requested are computed. Otherwise, lazy lists have the same performance characteristics as lists.
+A [LazyList](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/LazyList.html) is like a list except that its elements are computed lazily. Because of this, a lazy list can be infinitely long. Only those elements requested are computed. Otherwise, lazy lists have the same performance characteristics as lists.
 
 Whereas lists are constructed with the `::` operator, lazy lists are constructed with the similar-looking `#::`. Here is a simple example of a lazy list containing the integers 1, 2, and 3:
 
@@ -48,7 +48,7 @@ Here are the first few elements of the Fibonacci sequence starting with two ones
 
 Lists are very efficient when the algorithm processing them is careful to only process their heads. Accessing, adding, and removing the head of a list takes only constant time, whereas accessing or modifying elements later in the list takes time linear in the depth into the list.
 
-[ArraySeq](http://www.scala-lang.org/api/{{ site.scala-213-version }}/scala/collection/immutable/ArraySeq.html) is a
+[ArraySeq](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/ArraySeq.html) is a
 collection type (introduced in Scala 2.13) that addresses the inefficiency for random access on lists. ArraySeqs
 allow accessing any element of the collection in constant time. As a result, algorithms using ArraySeqs do not
 have to be careful about accessing just the head of the collection. They can access elements at arbitrary locations,
@@ -87,7 +87,7 @@ We have seen in the previous sections that `List` and `ArraySeq` are efficient d
 use cases but they are also inefficient in other use cases: for instance, prepending an element is constant for `List`,
 but linear for `ArraySeq`, and, conversely, indexed access is constant for `ArraySeq` but linear for `List`.
 
-[Vector](http://www.scala-lang.org/api/{{ site.scala-213-version }}/scala/collection/immutable/Vector.html) is a collection type that provides good performance for all its operations. Vectors allow accessing any element of the sequence in "effectively" constant time. It's a larger constant than for access to the head of a List or for reading an element of an ArraySeq, but it's a constant nonetheless. As a result, algorithms using vectors do not have to be careful about accessing just the head of the sequence. They can access and modify elements at arbitrary locations, and thus they can be much more convenient to write.
+[Vector](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Vector.html) is a collection type that provides good performance for all its operations. Vectors allow accessing any element of the sequence in "effectively" constant time. It's a larger constant than for access to the head of a List or for reading an element of an ArraySeq, but it's a constant nonetheless. As a result, algorithms using vectors do not have to be careful about accessing just the head of the sequence. They can access and modify elements at arbitrary locations, and thus they can be much more convenient to write.
 
 Vectors are built and modified just like any other sequence.
 
@@ -112,7 +112,7 @@ Because vectors strike a good balance between fast random selections and fast ra
 
 ## Immutable Queues
 
-A [Queue](http://www.scala-lang.org/api/{{ site.scala-213-version }}/scala/collection/immutable/Queue.html) is a first-in-first-out sequence. You enqueue an element onto a queue with `enqueue`, and dequeue an element with `dequeue`. These operations are constant time.
+A [Queue](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Queue.html) is a first-in-first-out sequence. You enqueue an element onto a queue with `enqueue`, and dequeue an element with `dequeue`. These operations are constant time.
 
 Here's how you can create an empty immutable queue:
 
@@ -140,7 +140,7 @@ Note that `dequeue` returns a pair consisting of the element removed and the res
 
 ## Ranges
 
-A [Range](http://www.scala-lang.org/api/{{ site.scala-213-version }}/scala/collection/immutable/Range.html) is an ordered sequence of integers that are equally spaced apart. For example, "1, 2, 3," is a range, as is "5, 8, 11, 14." To create a range in Scala, use the predefined methods `to` and `by`.
+A [Range](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Range.html) is an ordered sequence of integers that are equally spaced apart. For example, "1, 2, 3," is a range, as is "5, 8, 11, 14." To create a range in Scala, use the predefined methods `to` and `by`.
 
     scala> 1 to 3
     res2: scala.collection.immutable.Range.Inclusive = Range(1, 2, 3)
@@ -156,7 +156,7 @@ Ranges are represented in constant space, because they can be defined by just th
 
 ## Compressed Hash-Array Mapped Prefix-trees
 
-Hash tries are a standard way to implement immutable sets and maps efficiently. [Compressed Hash-Array Mapped Prefix-trees](https://github.com/msteindorfer/oopsla15-artifact/) are a design for hash tries on the JVM which improves locality and makes sure the trees remain in a canonical and compact representation. They are supported by class [immutable.HashMap](http://www.scala-lang.org/api/{{ site.scala-213-version }}/scala/collection/immutable/HashMap.html). Their representation is similar to vectors in that they are also trees where every node has 32 elements or 32 subtrees. But the selection of these keys is now done based on hash code. For instance, to find a given key in a map, one first takes the hash code of the key. Then, the lowest 5 bits of the hash code are used to select the first subtree, followed by the next 5 bits and so on. The selection stops once all elements stored in a node have hash codes that differ from each other in the bits that are selected up to this level.
+Hash tries are a standard way to implement immutable sets and maps efficiently. [Compressed Hash-Array Mapped Prefix-trees](https://github.com/msteindorfer/oopsla15-artifact/) are a design for hash tries on the JVM which improves locality and makes sure the trees remain in a canonical and compact representation. They are supported by class [immutable.HashMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/HashMap.html). Their representation is similar to vectors in that they are also trees where every node has 32 elements or 32 subtrees. But the selection of these keys is now done based on hash code. For instance, to find a given key in a map, one first takes the hash code of the key. Then, the lowest 5 bits of the hash code are used to select the first subtree, followed by the next 5 bits and so on. The selection stops once all elements stored in a node have hash codes that differ from each other in the bits that are selected up to this level.
 
 Hash tries strike a nice balance between reasonably fast lookups and reasonably efficient functional insertions (`+`) and deletions (`-`). That's why they underly Scala's default implementations of immutable maps and sets. In fact, Scala has a further optimization for immutable sets and maps that contain less than five elements. Sets and maps with one to four elements are stored as single objects that just contain the elements (or key/value pairs in the case of a map) as fields. The empty immutable set and the empty immutable map is in each case a single object - there's no need to duplicate storage for those because an empty immutable set or map will always stay empty.
 
@@ -164,7 +164,7 @@ Hash tries strike a nice balance between reasonably fast lookups and reasonably 
 
 Red-black trees are a form of balanced binary tree where some nodes are designated "red" and others designated "black." Like any balanced binary tree, operations on them reliably complete in time logarithmic to the size of the tree.
 
-Scala provides implementations of immutable sets and maps that use a red-black tree internally. Access them under the names [TreeSet](http://www.scala-lang.org/api/{{ site.scala-213-version }}/scala/collection/immutable/TreeSet.html) and [TreeMap](http://www.scala-lang.org/api/{{ site.scala-213-version }}/scala/collection/immutable/TreeMap.html).
+Scala provides implementations of immutable sets and maps that use a red-black tree internally. Access them under the names [TreeSet](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/TreeSet.html) and [TreeMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/TreeMap.html).
 
 
     scala> scala.collection.immutable.TreeSet.empty[Int]
@@ -176,7 +176,7 @@ Red-black trees are the standard implementation of `SortedSet` in Scala, because
 
 ## Immutable BitSets
 
-A [BitSet](http://www.scala-lang.org/api/{{ site.scala-213-version }}/scala/collection/immutable/BitSet.html) represents a collection of small integers as the bits of a larger integer. For example, the bit set containing 3, 2, and 0 would be represented as the integer 1101 in binary, which is 13 in decimal.
+A [BitSet](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/BitSet.html) represents a collection of small integers as the bits of a larger integer. For example, the bit set containing 3, 2, and 0 would be represented as the integer 1101 in binary, which is 13 in decimal.
 
 Internally, bit sets use an array of 64-bit `Long`s. The first `Long` in the array is for integers 0 through 63, the second is for 64 through 127, and so on. Thus, bit sets are very compact so long as the largest integer in the set is less than a few hundred or so.
 
@@ -193,7 +193,7 @@ Operations on bit sets are very fast. Testing for inclusion takes constant time.
 
 ## VectorMaps
 
-A [VectorMap](http://www.scala-lang.org/api/{{ site.scala-213-version }}/scala/collection/immutable/VectorMap.html) represents
+A [VectorMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/VectorMap.html) represents
 a map using both a `Vector` of keys and a `HashMap`. It provides an iterator that returns all the entries in their
 insertion order.
 
@@ -217,7 +217,7 @@ order of elements into account.
 
 ## ListMaps
 
-A [ListMap](http://www.scala-lang.org/api/{{ site.scala-213-version }}/scala/collection/immutable/ListMap.html) represents a map as a linked list of key-value pairs. In general, operations on a list map might have to iterate through the entire list. Thus, operations on a list map take time linear in the size of the map. In fact there is little usage for list maps in Scala because standard immutable maps are almost always faster. The only possible exception to this is if the map is for some reason constructed in such a way that the first elements in the list are selected much more often than the other elements.
+A [ListMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/ListMap.html) represents a map as a linked list of key-value pairs. In general, operations on a list map might have to iterate through the entire list. Thus, operations on a list map take time linear in the size of the map. In fact there is little usage for list maps in Scala because standard immutable maps are almost always faster. The only possible exception to this is if the map is for some reason constructed in such a way that the first elements in the list are selected much more often than the other elements.
 
     scala> val map = scala.collection.immutable.ListMap(1->"one", 2->"two")
     map: scala.collection.immutable.ListMap[Int,java.lang.String] =

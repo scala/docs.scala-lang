@@ -6,6 +6,10 @@ includeTOC: true
 
 ## Latest releases
 
+* Scala 2.13.0
+  * [Library API](https://www.scala-lang.org/api/2.13.0/)
+  * [Compiler API](https://www.scala-lang.org/api/2.13.0/scala-compiler/scala/)
+  * [Reflection API](https://www.scala-lang.org/api/2.13.0/scala-reflect/scala/reflect/)
 * Scala 2.12.8
   * [Library API](https://www.scala-lang.org/api/2.12.8/)
   * [Compiler API](https://www.scala-lang.org/api/2.12.8/scala-compiler/scala/)
@@ -26,12 +30,14 @@ includeTOC: true
     * [Continuations API](https://www.scala-lang.org/files/archive/api/2.11.12/scala-continuations-library/#scala.util.continuations.package)
 * [Scala 2.10.7](https://www.scala-lang.org/api/2.10.7/)
 
+<!--
 ## Prereleases
 
 * Scala 2.13.0-RC3
   * [Library API](https://www.scala-lang.org/api/2.13.0-RC3/)
   * [Compiler API](https://www.scala-lang.org/api/2.13.0-RC3/scala-compiler/scala/)
   * [Reflection API](https://www.scala-lang.org/api/2.13.0-RC3/scala-reflect/scala/reflect/)
+-->
 
 ## Nightly builds
 
