@@ -25,7 +25,7 @@ A [LazyList](http://www.scala-lang.org/api/{{ site.scala-213-version }}/scala/co
 Whereas lists are constructed with the `::` operator, lazy lists are constructed with the similar-looking `#::`. Here is a simple example of a lazy list containing the integers 1, 2, and 3:
 
     scala> val lazyList = 1 #:: 2 #:: 3 #:: LazyList.empty
-    lazyList: scala.collection.immutable.LazyList[Int] = LazyList(?)
+    lazyList: scala.collection.immutable.LazyList[Int] = LazyList(<not computed>)
 
 The head of this lazy list is 1, and the tail of it has 2 and 3. None of the elements are printed here, though, because the list
 hasn’t been computed yet! Lazy lists are specified to compute lazily, and the `toString` method of a lazy list is careful not to force any extra evaluation.
@@ -40,7 +40,7 @@ This function is deceptively simple. The first element of the sequence is clearl
 Here are the first few elements of the Fibonacci sequence starting with two ones:
 
     scala> val fibs = fibFrom(1, 1).take(7)
-    fibs: scala.collection.immutable.LazyList[Int] = LazyList(?)
+    fibs: scala.collection.immutable.LazyList[Int] = LazyList(<not computed>)
     scala> fibs.toList
     res9: List[Int] = List(1, 1, 2, 3, 5, 8, 13)
 
