@@ -46,20 +46,20 @@ In the last statement, the expression `v map (_ + 1)` constructs a new vector wh
 Let's do this sequence of operations again, one by one:
 
     scala> val vv = v.view
-    vv: scala.collection.IndexedSeqView[Int] = View(?)
+    vv: scala.collection.IndexedSeqView[Int] = IndexedSeqView(<not computed>)
 
 The application `v.view` gives you an `IndexedSeqView[Int]`, i.e. a lazily evaluated `IndexedSeq[Int]`. Like with `LazyList`,
-the `toString` operation of views does not force the view elements, that’s why the content of `vv` is shown as `View(?)`.
+the `toString` operation of views does not force the view elements, that’s why the content of `vv` is shown as `IndexedSeqView(<not computed>)`.
 
 Applying the first `map` to the view gives:
 
     scala> vv map (_ + 1)
-    res13: scala.collection.IndexedSeqView[Int] = View(?)
+    res13: scala.collection.IndexedSeqView[Int] = IndexedSeqView(<not computed>)
 
 The result of the `map` is another `IndexedSeqView[Int]` value. This is in essence a wrapper that *records* the fact that a `map` with function `(_ + 1)` needs to be applied on the vector `v`. It does not apply that map until the view is forced, however. Let's now apply the second `map` to the last result.
 
     scala> res13 map (_ * 2)
-    res14: scala.collection.IndexedSeqView[Int] = View(?)
+    res14: scala.collection.IndexedSeqView[Int] = IndexedSeqView(<not computed>)
 
 Finally, forcing the last result gives:
 
