@@ -12,22 +12,15 @@ num: 1
 permalink: /overviews/collections-2.13/:title.html
 ---
 
-**Martin Odersky, and Lex Spoon**
+The collections framework is the heart of the Scala 2.13 standard
+library.  It provides a common, uniform, and all-encompassing
+framework for collection types.  This framework enables you to work
+with data in memory at a high level, with the basic building blocks of
+a program being whole collections, instead of individual elements.
 
-In the eyes of many, the new collections framework is the most significant
-change in the Scala 2.8 release. Scala had collections before (and in fact the new
-framework is largely compatible with them). But it's only 2.8 that
-provides a common, uniform, and all-encompassing framework for
-collection types.
-
-Even though the additions to collections are subtle at first glance,
-the changes they can provoke in your programming style can be
-profound.  In fact, quite often it's as if you work on a higher-level
-with the basic building blocks of a program being whole collections
-instead of their elements. This new style of programming requires some
-adaptation. Fortunately, the adaptation is helped by several nice
-properties of the new Scala collections. They are easy to use,
-concise, safe, fast, universal.
+This style of programming requires some learning. Fortunately,
+the adaptation is helped by several nice properties of the Scala
+collections. They are easy to use, concise, safe, fast, universal.
 
 **Easy to use:** A small vocabulary of 20-50 methods is
 enough to solve most collection problems in a couple of operations. No
@@ -40,7 +33,7 @@ collection updates is eliminated.
 **Concise:** You can achieve with a single word what used to
 take one or several loops. You can express functional operations with
 lightweight syntax and combine operations effortlessly, so that the result
-feels like a custom algebra.  
+feels like a custom algebra.
 
 **Safe:** This one has to be experienced to sink in. The
 statically typed and functional nature of Scala's collections means
@@ -59,10 +52,13 @@ libraries. As a result, using collections is typically quite
 efficient. You might be able to do a little bit better with carefully
 hand-tuned data structures and operations, but you might also do a lot
 worse by making some suboptimal implementation decisions along the
-way.  What's more, collections have been recently adapted to parallel
-execution on multi-cores. Parallel collections support the same
-operations as sequential ones, so no new operations need to be learned
-and no code needs to be rewritten. You can turn a sequential collection into a
+way.
+
+**Parallel**: The
+[`scala-parallel-collections` module](https://index.scala-lang.org/scala/scala-parallel-collections/scala-parallel-collections)
+provides parallel execution of collections operations across multiple cores.
+Parallel collections generally support the same
+operations as sequential ones.  You can turn a sequential collection into a
 parallel one simply by invoking the `par` method.
 
 **Universal:** Collections provide the same operations on
@@ -89,10 +85,10 @@ traditional collection processing (three loops for an array, because
 the intermediate results need to be buffered somewhere else).  Once
 you have learned the basic collection vocabulary you will also find
 writing this code is much easier and safer than writing explicit
-loops. Furthermore, the `partition` operation is quite fast, and can
-be even faster on parallel collections on multi-cores. (Parallel
-collections are available as a
-[separate library](https://index.scala-lang.org/scala/scala-parallel-collections/scala-parallel-collections))
+loops.
+
+Furthermore, the `partition` operation is quite fast, and can
+be even faster on parallel collections on multiple cores.
 
 This document provides an in depth discussion of the APIs of the
 Scala collections classes from a user perspective.  It takes you on
