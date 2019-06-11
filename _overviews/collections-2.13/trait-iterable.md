@@ -64,7 +64,7 @@ Two more methods exist in `Iterable` that return iterators: `grouped` and `slidi
 |  `xs grouped size`   	    |An iterator that yields fixed-sized "chunks" of this collection.|
 |  `xs sliding size`   	    |An iterator that yields a sliding fixed-sized window of elements in this collection.|
 |  **Addition:**     	    |						     |
-|  `xs concat ys`<br>(or `xs ++ ys`)	    |A collection consisting of the elements of both `xs` and `ys`. `ys` is a [IterableOnce](http://www.scala-lang.org/api/{{ site.scala-213-version }}/scala/collection/IterableOnce.html) collection, i.e., either an [Iterable](http://www.scala-lang.org/api/{{ site.scala-213-version }}/scala/collection/Iterable.html) or an [Iterator](http://www.scala-lang.org/api/{{ site.scala-213-version }}/scala/collection/Iterator.html).|
+|  `xs concat ys`<br>(or `xs ++ ys`)	    |A collection consisting of the elements of both `xs` and `ys`. `ys` is a [IterableOnce](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/IterableOnce.html) collection, i.e., either an [Iterable](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterable.html) or an [Iterator](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterator.html).|
 |  **Maps:**     	    |						     |
 |  `xs map f`		    |The collection obtained from applying the function f to every element in `xs`.|
 |  `xs flatMap f`	    |The collection obtained from applying the collection-valued function `f` to every element in `xs` and concatenating the results.|
@@ -141,7 +141,7 @@ Two more methods exist in `Iterable` that return iterators: `grouped` and `slidi
 |  **Views:**               |						     |
 |  `xs.view`	    	    |Produces a view over `xs`.|
 
-In the inheritance hierarchy below `Iterable` you find three traits: [Seq](https://www.scala-lang.org/api/{{ site.scala-213-version }}/scala/collection/Seq.html), [Set](https://www.scala-lang.org/api/{{ site.scala-213-version }}/scala/collection/Set.html), and [Map](https://www.scala-lang.org/api/{{ site.scala-213-version }}/scala/collection/Map.html). `Seq` and `Map` implement the [PartialFunction](https://www.scala-lang.org/api/{{ site.scala-213-version }}/scala/PartialFunction.html) trait with its `apply` and `isDefinedAt` methods, each implemented differently. `Set` gets its `apply` method from [SetOps](https://www.scala-lang.org/api/{{ site.scala-213-version }}/scala/collection/SetOps.html).
+In the inheritance hierarchy below `Iterable` you find three traits: [Seq](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Seq.html), [Set](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Set.html), and [Map](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Map.html). `Seq` and `Map` implement the [PartialFunction](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/PartialFunction.html) trait with its `apply` and `isDefinedAt` methods, each implemented differently. `Set` gets its `apply` method from [SetOps](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/SetOps.html).
 
 For sequences, `apply` is positional indexing, where elements are always numbered from `0`. That is, `Seq(1, 2, 3)(1)` gives `2`. For sets, `apply` is a membership test. For instance, `Set('a', 'b', 'c')('b')` gives `true` whereas `Set()('a')` gives `false`. Finally for maps, `apply` is a selection. For instance, `Map('a' -> 1, 'b' -> 10, 'c' -> 100)('b')` gives `10`.
 
