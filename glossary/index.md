@@ -195,7 +195,7 @@ Meta-programming software is software whose input is itself software. Compilers 
 A _method_ is a function that is a member of some class, trait, or singleton object.
 
 * #### mixin
-_Mixin_ is what a trait is called when it is being used in a mixin composition. In other words, in “`trait Hat`,” `Hat` is just a trait, but in “`new Cat extends AnyRef with Hat`,” `Hat` can be called a mixin. When used as a verb, “mix in” is two words. For example, you can _mix_ traits _in_to classes or other traits.
+_Mixin_ is what a trait is called when it is being used in a mixin composition. In other words, in “`trait Hat`,” `Hat` is just a trait, but in “`new Cat extends AnyRef with Hat`,” `Hat` can be called a mixin. When used as a verb, “mix in” is two words. For example, you can _mix_ traits _in_ to classes or other traits.
 
 * #### mixin composition
 The process of mixing traits into classes or other traits. _Mixin composition_ differs from traditional multiple inheritance in that the type of the super reference is not known at the point the trait is defined, but rather is determined anew each time the trait is mixed into a class or other trait.
