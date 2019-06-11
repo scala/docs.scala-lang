@@ -216,7 +216,7 @@ In Scala, every _operation_ is a method call. Methods may be invoked in _operato
 Functions may take zero to many _parameters_. Each parameter has a name and a type. The distinction between parameters and arguments is that arguments refer to the actual objects passed when a function is invoked. Parameters are the variables that refer to those passed arguments.
 
 * #### parameterless function
-A function that takes no parameters, which is de- fined without any empty parentheses. Invocations of parameterless functions may not supply parentheses. This supports the [uniform access principle](#uniform-access-principle), which enables the `def` to be changed into a `val` without requiring a change to client code.
+A function that takes no parameters, which is defined without any empty parentheses. Invocations of parameterless functions may not supply parentheses. This supports the [uniform access principle](#uniform-access-principle), which enables the `def` to be changed into a `val` without requiring a change to client code.
 
 * #### parameterless method
 A _parameterless method_ is a parameterless function that is a member of a class, trait, or singleton object.
