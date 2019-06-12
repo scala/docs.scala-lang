@@ -19,7 +19,7 @@ prerequisite-knowledge: no-return-keyword, type-declaration-syntax, string-inter
 Scala中的类是用于创建对象的蓝图，其中包含了方法、常量、变量、类型、对象、特质、类，这些统称为成员。类型、对象和特质将在后面的文章中介绍。
 
 ## 类定义
-一个最简的类的定义就是关键字`class`+标识符，类名必须是大写。
+一个最简的类的定义就是关键字`class`+标识符，类名首字母应大写。
 ```tut
 class User
 
@@ -69,7 +69,7 @@ println(point2.y)  // prints 2
 这样的做法在实践中有利于使得表达明确无误。
 
 ## 私有成员和Getter/Setter语法
-成员默认是公有（`public`）的。使用`private`访问修饰符可以在函数外部隐藏它们。
+成员默认是公有（`public`）的。使用`private`访问修饰符可以在类外部隐藏它们。
 ```tut
 class Point {
   private var _x = 0
