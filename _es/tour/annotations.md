@@ -27,7 +27,6 @@ El significado de las anotaciones _depende de la implementación_. En la platafo
 |  [`scala.deprecated`](https://www.scala-lang.org/api/current/scala/deprecated.html)   |  [`java.lang.Deprecated`](http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Deprecated.html) |
 |  [`scala.inline`](https://www.scala-lang.org/api/current/scala/inline.html) (desde 2.6.0)  |  sin equivalente |
 |  [`scala.native`](https://www.scala-lang.org/api/current/scala/native.html) (desde 2.6.0)  |  [`native`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (palabra clave) |
-|  [`scala.remote`](https://www.scala-lang.org/api/current/scala/remote.html) |  [`java.rmi.Remote`](http://java.sun.com/j2se/1.5.0/docs/api/java/rmi/Remote.html) |
 |  [`scala.throws`](https://www.scala-lang.org/api/current/scala/throws.html) |  [`throws`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (palabra clave) |
 |  [`scala.transient`](https://www.scala-lang.org/api/current/scala/transient.html) |  [`transient`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (palabra clave) |
 |  [`scala.unchecked`](https://www.scala-lang.org/api/current/scala/unchecked.html) (desde 2.4.0) |  sin equivalente |
