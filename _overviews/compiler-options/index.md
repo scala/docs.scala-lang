@@ -49,6 +49,11 @@ scalac [ <options> ] <source files>
 
 E.g. `scalac -encoding utf8 -Xfatal-warnings Hello.scala`
 
+Default paths can be listed by running a command line tool:
+```
+scala scala.tools.util.PathResolver [ <options> ]
+```
+
 
 
 ### Use compiler options with sbt
