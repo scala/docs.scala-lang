@@ -81,7 +81,8 @@ Scala provides mutable queues in addition to immutable ones. You use a `mQueue` 
 
 ## Stacks
 
-You saw immutable stacks earlier. There is also a mutable version, supported by class [mutable.Stack](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/Stack.html). It works exactly the same as the immutable version except that modifications happen in place.
+A stack implements a data structure which allows to store and retrieve objects in a last-in-first-out (LIFO) fashion.
+It is supported by class [mutable.Stack](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/Stack.html).
 
     scala> val stack = new scala.collection.mutable.Stack[Int]           
     stack: scala.collection.mutable.Stack[Int] = Stack()
