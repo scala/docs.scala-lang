@@ -11,6 +11,7 @@ num: 7
 previous-page: sets
 next-page: concrete-immutable-collection-classes
 
+languages: [ru]
 permalink: /overviews/collections-2.13/:title.html
 ---
 

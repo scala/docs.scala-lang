@@ -10,6 +10,7 @@ overview-name: Collections
 num: 1
 next-page: overview
 
+languages: [ru]
 permalink: /overviews/collections-2.13/:title.html
 ---
 

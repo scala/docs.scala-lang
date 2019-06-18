@@ -11,6 +11,7 @@ num: 15
 previous-page: views
 next-page: creating-collections-from-scratch
 
+languages: [ru]
 permalink: /overviews/collections-2.13/:title.html
 ---
 

@@ -11,6 +11,7 @@ num: 4
 previous-page: overview
 next-page: seqs
 
+languages: [ru]
 permalink: /overviews/collections-2.13/:title.html
 ---
 

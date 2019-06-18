@@ -11,6 +11,7 @@ num: 8
 previous-page: maps
 next-page: concrete-mutable-collection-classes
 
+languages: [ru]
 permalink: /overviews/collections-2.13/:title.html
 ---
 

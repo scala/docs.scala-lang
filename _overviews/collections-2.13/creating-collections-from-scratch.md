@@ -11,6 +11,7 @@ num: 16
 previous-page: iterators
 next-page: conversions-between-java-and-scala-collections
 
+languages: [ru]
 permalink: /overviews/collections-2.13/:title.html
 ---
 
