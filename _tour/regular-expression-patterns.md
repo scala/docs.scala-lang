@@ -35,7 +35,7 @@ You can also search for groups of regular expressions using parentheses.
 ```tut
 import scala.util.matching.Regex
 
-val keyValPattern: Regex = "([0-9a-zA-Z-#() ]+): ([0-9a-zA-Z-#() ]+)".r
+val keyValPattern: Regex = "([0-9a-zA-Z- ]+): ([0-9a-zA-Z-#()/. ]+)".r
 
 val input: String =
   """background-color: #A03300;
@@ -53,7 +53,7 @@ for (patternMatch <- keyValPattern.findAllMatchIn(input))
 Here we parse out the keys and values of a String. Each match has a group of sub-matches. Here is the output:
 ```
 key: background-color value: #A03300
-key: background-image value: url(img
+key: background-image value: url(img/header100.png)
 key: background-position value: top center
 key: background-repeat value: repeat-x
 key: background-size value: 2160px 108px
