@@ -219,7 +219,7 @@ by a `t` that is not implicit, so no implicit `T` is in scope.
 
 The invocation of `f` was enabled by importing from `Y.X.`. But it is
 not convenient to require an import to access implicit values
-providied by a package.
+provided by a package.
 
 If an implicit value is not found in lexical scope, implicit search
 continues in implicit scope.

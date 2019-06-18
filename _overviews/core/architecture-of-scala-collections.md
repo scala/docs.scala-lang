@@ -907,7 +907,7 @@ return with `None`. The combined selection over an option value `opt` is
 elegantly expressed using `opt.flatMap(x => f(x))`. When applied to an
 optional value that is `None`, it returns `None`. Otherwise `opt` is
 `Some(x)` and the function `f` is applied to the encapsulated value `x`,
-yielding a new option, which is returned by the flatmap.
+yielding a new option, which is returned by the flatMap.
 
 The next two methods to implement for a mutable map are `+=` and `-=`. In
 the implementation of `PrefixMap`, these are defined in terms of two
@@ -948,7 +948,7 @@ using the map's `+=` method. For immutable maps, the non-destructive
 element addition method `+` is used instead of method `+=`. Sets work
 in the same way.
 
-However, in all these cases, to build the right kind of colletion
+However, in all these cases, to build the right kind of collection
 you need to start with an empty collection of that kind. This is
 provided by the `empty` method, which is the last method defined in
 `PrefixMap`. This method simply returns a fresh `PrefixMap`.

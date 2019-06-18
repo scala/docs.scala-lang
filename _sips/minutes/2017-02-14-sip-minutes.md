@@ -147,7 +147,7 @@ The current SIP tries to make it behave as expected by the users in common cases
 
 **Jorge** We have to pass here both on this proposal as is right now but I think this could be dangerous in the case where we don't have an implementation for Scalac because maybe the details change and assume something in Scalac that the SIP is not able to predict or guard against it. Let's wait until next month and I will double check whether this is possible or not. Then I will get in touch with the Lightbend team to see whether this can be implemented or not. We'll decide in a month whether it should be accepted.
 
-**Sébastien** ScalaJS already implemented it under another name but it's supposed to be conservative with respect to the aesthetic SIP in the sense that things that are allowed now with @jsstatic will also be allowed with @static. @static might open up a little bit more.
+**Sébastien** Scala.js already implemented it under another name but it's supposed to be conservative with respect to the aesthetic SIP in the sense that things that are allowed now with @jsstatic will also be allowed with @static. @static might open up a little bit more.
 
 **Conclusion**  The static SIP proposal has to be implemented in Scala, as it's already present in Dotty. Triplequote (Iulian Dragos and Mirco Dotta) has offered to provide an implementation targeting 2.12.3.
 
@@ -221,7 +221,7 @@ There are multiple use cases covered by this SIP. I think the two most important
 
 **Martin** If you don't emit a Scala signature then you can't have a co- or contravariant type parameter because they are only expressed in Scala signatures, in Java it's not there. I don't see how that follows from the current proposal. Also, isn't it platform dependent?
 
-**Sébastien** We do have a Java signature. Scala-JS doesn't disable classfile emission. When you say quickly compile, it uses the classfiles to quickly compile. when you use macros, it will extend from those classfiles. When you use an IDE it reduces the classfiles to identify things. When you use sbt, it uses classfiles to detect the changes. However, they aren't used by the ScalaJS linker.
+**Sébastien** We do have a Java signature. Scala.js doesn't disable classfile emission. When you say quickly compile, it uses the classfiles to quickly compile. when you use macros, it will extend from those classfiles. When you use an IDE it reduces the classfiles to identify things. When you use sbt, it uses classfiles to detect the changes. However, they aren't used by the Scala.js linker.
 
 **Seth** Does this need to be part of the compiler or can it move forward as a plugin or just as a check performed in MiMa? MiMa just compares two different APIs. Can it have this other job as well: seeing if it does anything outside of the boundaries.
 

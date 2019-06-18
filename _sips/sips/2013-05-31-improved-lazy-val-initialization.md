@@ -529,7 +529,7 @@ Note that this class is extracted from other place in standard library that uses
 - it requires usage of `identityHashCode` that is stored for every object inside object header.
 - as global arrays are used to store monitors, seemingly unrelated things may create contention. This is addressed in detail in evaluation section.
 
-Both absence of monitor expansion and usage of `idetityHashCode` interact with
+Both absence of monitor expansion and usage of `identityHashCode` interact with
 each other, as both of them operate on the object header. \[[12][12]\] presents
 the complete graph of transitions between possible states of the object header.
 What can be seen from this transition graph is that in the contended case,
@@ -679,7 +679,7 @@ For those wishing to reproduce the results, the benchmarking suite takes 90 minu
 
 The final result of those benchmarks is that amount proposed versions, the two that worth considering are (V4-general) and (V6).
 They both perform better than the current implementation in all the contended case.
-Specifically, in the contended case, V6 is 2 times fater than V1, while V4-general is 4 times faster.
+Specifically, in the contended case, V6 is 2 times faster than V1, while V4-general is 4 times faster.
 Unfortunately V4-general is 30% slower in the uncontended case than current implementation(V1), while V6 is in the same ballpark, being up to 5% slower or faster depending on the setup of the benchmark.
 
 Based on this, we propose V6 to be used as default in future versions of Scala.
@@ -699,7 +699,7 @@ Both Dotty and released Scala 2.12 already implement "Elegant Local lazy vals". 
 
 ### Unsafe ###
 The proposed version, V6 relies on `sun.misc.Unsafe` in order to implement it's behaviour.
-While `sun.misc.Unsafe` will remain availabe in Java9 there's an intention to deprecate it and replace it with VarHandles.\[[20][20]\].
+While `sun.misc.Unsafe` will remain available in Java9 there's an intention to deprecate it and replace it with VarHandles.\[[20][20]\].
 The proposed version V6 can be implemented with using functionality present in Var Handles.
 
 ## Acknowledgements ##

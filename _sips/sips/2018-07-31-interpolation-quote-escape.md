@@ -21,7 +21,7 @@ rather passes the raw string to the interpolator, which then has the option to
 process escapes itself as it sees fit. That means there are no lexing rules that
 process the escape, and the sequence `\"` simply terminates the interpolation.
 
-Interpolations have a different meta-charcter -- the `$` character -- which is
+Interpolations have a different meta-character -- the `$` character -- which is
 treated specially. Interpolations use this escape to splice in arguments, and it
 can also be used to escape itself as the sequence `$$` to represent a literal
 `$` character.
@@ -90,7 +90,7 @@ on the original ticket
 ## Implementation
 
 The implementation is simple to the point of being trivial: see
-[the implementation][5] for the actual change in functonality and the rest of
+[the implementation][5] for the actual change in functionality and the rest of
 that PR for the spec and test changes.
 
 ## Drawbacks
@@ -101,12 +101,12 @@ the language. An argument could be made that this change makes that worse rather
 than better.
 
 Because it affects parsing, this change may affect syntax highlighters. Syntax
-highlighters tend to already stuggle around "funky" strings and interpolations.
+highlighters tend to already struggle around "funky" strings and interpolations.
 
 ## Alternatives
 
 More ambitious proposals around interpolations are possible, and have been
-propsed in different forms before. [This PR][6] in particular shows more options
+proposed in different forms before. [This PR][6] in particular shows more options
 around using `\` as a meta character in interpolations. It stranded somewhere
 between red tape, ambition and changing processes.
 

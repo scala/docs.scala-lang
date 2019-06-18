@@ -79,23 +79,23 @@ Two library versions are **Binary Compatible** with each other if the compiled b
 ### Relationship between source and binary compatibility
 While breaking source compatibility often results in binary incompatibilities as well, they are actually orthogonal -- breaking one does not imply breaking the other.
 
-#### Forwards and Backwards Compatibility
+#### Forward and Backward Compatibility
 
 There are two "directions" when we describe compatibility of a library release:
 
-**Backwards Compatible** means that a newer library version can be used in an environment where an older version is expected. When talking about binary and source compatibility,
+**Backward Compatible** means that a newer library version can be used in an environment where an older version is expected. When talking about binary and source compatibility,
 this is the common and implied direction.
 
-**Forwards Compatible** means that an older library can be used in an environment where a newer version is expected.
+**Forward Compatible** means that an older library can be used in an environment where a newer version is expected.
 Forward compatibility is generally not upheld for libraries.
 
 Let's look at an example where library `A v1.0.0` is compiled with library `C v1.1.0`.
 
-![Forwards and Backwards Compatibility]({{ site.baseurl }}/resources/images/library-author-guide/fowards_backwards_compatibility.png){: style="width: 65%; margin: auto; display: block"}
+![Forward and Backward Compatibility]({{ site.baseurl }}/resources/images/library-author-guide/forward_backward_compatibility.png){: style="width: 65%; margin: auto; display: block"}
 
 `C v1.1.0 ` is **Forwards Binary Compatible** with `v1.0.0` if we can use `v1.0.0`'s JAR at runtime instead of `v1.1.0`'s JAR without any linkage errors.
 
-`C v1.2.0 ` is **Backwards Binary Compatible** with `v1.1.0` if we can use `v1.2.0`'s JAR at runtime instead of `v1.1.0`'s JAR without any linkage errors.
+`C v1.2.0 ` is **Backward Binary Compatible** with `v1.1.0` if we can use `v1.2.0`'s JAR at runtime instead of `v1.1.0`'s JAR without any linkage errors.
 
 ## Why binary compatibility matters
 

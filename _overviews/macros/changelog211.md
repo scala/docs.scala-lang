@@ -60,7 +60,7 @@ Quasiquotes is the single most impressive upgrade for reflection and macros in S
 
 16) **[knownDirectSubclasses is deemed to be officially broken](https://issues.scala-lang.org/browse/SI-7046)**. A lot of users who tried to traverse sealed hierarchies of classes have noticed that `ClassSymbol.knownDirectSubclasses` only works if invocations of their macros come after the definitions of those hierarchies in Scala's compilation order. For instance, if a sealed hierarchy is defined in the bottom of a source file, and a macro application is written in the top of the file, then knownDirectSubclasses will return an empty list. This is an issue that is deeply rooted in Scala's internal architecture, and we can't provide a fix for it in the near future.
 
-17) **showCode**. Along with `Tree.toString` that prints Scala-ish source code and `showRaw(tree)` that prints internal structures of trees, we now have `showCode` that prints compileable Scala source code corresponding to the provided tree, courtesy of Vladimir Nikolaev, who's done an amazing work of bringing this to life. We plan to eventually replace `Tree.toString` with `showCode`, but in Scala 2.11.0 these are two different methods.
+17) **showCode**. Along with `Tree.toString` that prints Scala-ish source code and `showRaw(tree)` that prints internal structures of trees, we now have `showCode` that prints compilable Scala source code corresponding to the provided tree, courtesy of Vladimir Nikolaev, who's done an amazing work of bringing this to life. We plan to eventually replace `Tree.toString` with `showCode`, but in Scala 2.11.0 these are two different methods.
 
 18) **[It is now possible to typecheck in type and pattern modes](https://issues.scala-lang.org/browse/SI-6814)**. A very convenient `Context.typeCheck` and `ToolBox.typeCheck` functionality of Scala 2.10.x had a significant inconvenience - it only worked for expressions, and typechecking something as a type or as a pattern required building dummy expressions. Now `typeCheck` has the mode parameter that take case of that difficulty.
 
@@ -170,7 +170,7 @@ Quasiquotes is the single most impressive upgrade for reflection and macros in S
     // provides a source compatibility stub
     // in Scala 2.10.x, it will make `import compat._` compile just fine,
     // even though `c.universe` doesn't have `compat`
-    // in Scala 2.11.0, it will be ignored, becase `import c.universe._`
+    // in Scala 2.11.0, it will be ignored, because `import c.universe._`
     // brings its own `compat` in scope and that one takes precedence
     private object HasCompat { val compat = ??? }; import HasCompat._
 

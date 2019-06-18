@@ -73,7 +73,7 @@ Each of these contexts is covered by a separate interpolator:
  tq | [types]({{ site.baseurl }}/overviews/quasiquotes/syntax-summary.html#types)
  pq | [patterns]({{ site.baseurl }}/overviews/quasiquotes/syntax-summary.html#patterns)
 
-Syntactical similarity between different contexts doesn\'t imply similarity between underlying trees:
+Syntactical similarity between different contexts doesn't imply similarity between underlying trees:
 
     scala> println(q"List[Int]" equalsStructure tq"List[Int]")
     false
@@ -110,7 +110,7 @@ Unquote splicing is a way to unquote a variable number of elements:
     scala> val fab = q"f(..$ab)"
     fab: universe.Tree = f(a, b)
 
-Dots before the unquotee annotate indicate a degree of flattenning and are called a *splicing rank*. `..$` expects the argument to be an `Iterable[Tree]` and `...$` expects an `Iterable[Iterable[Tree]]`.
+Dots before the unquotee annotate indicate a degree of flattening and are called a *splicing rank*. `..$` expects the argument to be an `Iterable[Tree]` and `...$` expects an `Iterable[Iterable[Tree]]`.
 
 Splicing can easily be combined with regular unquotation:
 
