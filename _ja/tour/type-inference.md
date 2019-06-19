@@ -32,16 +32,16 @@ def squareOf(x: Int) = x * x
 def fac(n: Int) = if (n == 0) 1 else n * fac(n - 1)
 ```
 
-次のような場合は型パラメータを指定することは強制されません。[ポリモーフフィックメソッド](polymorphic-methods.html)が呼ばれる時や[ジェネリッククラス](generic-classes.html) がインスタンス化される時です。Scalaコンパイラは文脈あるいはメソッドやコンストラクタの実際の引数から、指定されていない型パラメータを推論します。
+[ポリモーフフィックメソッド](polymorphic-methods.html)が呼ばれる時や[ジェネリッククラス](generic-classes.html) がインスタンス化される場合も型パラメータの指定は強制ではありません。Scalaコンパイラは文脈あるいはメソッドやコンストラクタの実際の引数から、指定されていない型パラメータを推論します。
 
 こちらは2つの例です。
 
 ```tut
 case class MyPair[A, B](x: A, y: B);
-val p = MyPair(1, "scala") // type: MyPair[Int, String]
+val p = MyPair(1, "scala") // 型: MyPair[Int, String]
 
 def id[T](x: T) = x
-val q = id(1)              // type: Int
+val q = id(1)              // 型: Int
 ```
 コンパイラは型`A`と`B`が何であるかを見つけ出すために`MyPair`の引数の型を使用します。`x`の型も同様です。
 
