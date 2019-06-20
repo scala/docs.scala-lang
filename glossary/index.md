@@ -381,7 +381,7 @@ See [unreachable](#unreachable).
 The result of any computation or expression in Scala is a _value_, and in Scala, every value is an object. The term value essentially means the image of an object in memory (on the JVM’s heap or stack).
 
 * #### value type
-A _value type_ is any subclass of `AnyVal`, such as `Int`, `Double`, or `Unit`. This term has meaning at the level of Scala source code. At runtime, instances of value types that correspond to Java primitive types may be implemented in terms of primitive type values or instances of wrapper types, such as `java.lang.Integer`. Over the lifetime of a value type instance, the runtime may transform it back and forth be- tween primitive and wrapper types (_i.e._, to box and unbox it).
+A _value type_ is any subclass of `AnyVal`, such as `Int`, `Double`, or `Unit`. This term has meaning at the level of Scala source code. At runtime, instances of value types that correspond to Java primitive types may be implemented in terms of primitive type values or instances of wrapper types, such as `java.lang.Integer`. Over the lifetime of a value type instance, the runtime may transform it back and forth between primitive and wrapper types (_i.e._, to box and unbox it).
 
 * #### variable
 A named entity that refers to an object. A variable is either a `val` or a `var`. Both `val`s and `var`s must be initialized when defined, but only `var`s can be later reassigned to refer to a different object.
