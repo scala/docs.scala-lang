@@ -276,7 +276,7 @@ An expression in a Scala program yields a _result_. The result of every expressi
 A method’s _result type_ is the type of the value that results from calling the method. (In Java, this concept is called the return type.)
 
 * #### return
-A function in a Scala program `returns` a value. You can call this value the [result](#result) of the function. You can also say the function _results in_ the value. The result of every function in Scala is an object.
+A function in a Scala program _returns_ a value. You can call this value the [result](#result) of the function. You can also say the function _results in_ the value. The result of every function in Scala is an object.
 
 * #### runtime
 The Java Virtual Machine, or [JVM](#jvm), that hosts a running Scala program. Runtime encompasses both the virtual machine, as defined by the Java Virtual Machine Specification, and the runtime libraries of the Java API and the standard Scala API. The phrase at run time (with a space between run and time) means when the program is running, and contrasts with compile time.
