@@ -267,7 +267,7 @@ A property of functions that are independent of temporal context and have no sid
 A variable in a running Scala program always _refers_ to some object. Even if that variable is assigned to `null`, it conceptually refers to the `Null` object. At runtime, an object may be implemented by a Java object or a value of a primitive type, but Scala allows programmers to think at a higher level of abstraction about their code as they imagine it running. See also [reference](#reference).
 
 * #### refinement type
-A type formed by supplying a base type a number of members inside curly braces. The members in the curly braces refine the types that are present in the base type. For example, the type of “animal that eats grass” is `Animal { type SuitableFood = Grass }`.
+A type formed by supplying a base type with a number of members inside curly braces. The members in the curly braces refine the types that are present in the base type. For example, the type of “animal that eats grass” is `Animal { type SuitableFood = Grass }`.
 
 * #### result
 An expression in a Scala program yields a _result_. The result of every expression in Scala is an object.
