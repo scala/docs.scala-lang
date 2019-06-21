@@ -1,6 +1,6 @@
 # Scala Documentation #
 
-[![Build Status](https://platform-ci.scala-lang.org/api/badges/scala/docs.scala-lang/status.svg)](https://platform-ci.scala-lang.org/scala/docs.scala-lang)
+[![Build Status](https://ci.scala-lang.org/api/badges/scala/docs.scala-lang/status.svg)](https://platform-ci.scala-lang.org/scala/docs.scala-lang)
 
 This repository contains the source for the Scala documentation website, as well as the source for "Scala Improvement Process" (SIP) documents.
 
