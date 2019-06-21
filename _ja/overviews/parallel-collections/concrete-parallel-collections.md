@@ -13,7 +13,7 @@ language: ja
 
 ## 並列配列
 
-並列配列 ([`ParArray`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/mutable/ParArray.html)) は、線形で連続的な要素の配列を保持する列だ。
+並列配列 ([`ParArray`](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/parallel/mutable/ParArray.html)) は、線形で連続的な要素の配列を保持する列だ。
 そのため、内部の配列を変更することで効率的な要素の読み込みや更新ができるようになる。
 また、要素の走査も非常に効率的だ。
 並列配列は、サイズが一定であるという意味で配列と似ている。
@@ -38,7 +38,7 @@ language: ja
 
 ## 並列ベクトル
 
-並列ベクトル ([`ParVector`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/immutable/ParVector.html))
+並列ベクトル ([`ParVector`](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/parallel/immutable/ParVector.html))
 は、低い定数係数の対数時間で読み込みと書き込みを行う不変列だ。
 
     scala> val pv = scala.collection.parallel.immutable.ParVector.tabulate(1000)(x => x)
@@ -52,13 +52,13 @@ language: ja
 このため、変換メソッドは並列配列のそれに比べてスケーラビリティが低い。
 ベクトルの連結が将来の Scala リリースで提供されるようになれば、コンバイナは連結を用いて合成できるようになり、変換メソッドはより効率的になる。
 
-並列ベクトルは、順次[ベクトル](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Vector.html)の並列版で、定数時間で一方から他方へと変換できる。
+並列ベクトルは、順次[ベクトル](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/immutable/Vector.html)の並列版で、定数時間で一方から他方へと変換できる。
 
 ## 並列範囲
 
-並列範囲 ([`ParRange`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/immutable/ParRange.html))
+並列範囲 ([`ParRange`](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/parallel/immutable/ParRange.html))
 は、順序付けされた等間隔の要素の列だ。
-並列範囲は、逐次版の [Range](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Range.html) と同様に作成される:
+並列範囲は、逐次版の [Range](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/immutable/Range.html) と同様に作成される:
 
     scala> 1 to 3 par
     res0: scala.collection.parallel.immutable.ParRange = ParRange(1, 2, 3)
@@ -74,8 +74,8 @@ language: ja
 
 並列ハッシュテーブルは要素を内部の配列に格納し、各要素のハッシュコードにより格納する位置を決定する。
 並列可変ハッシュ集合 (
-[mutable.ParHashSet](http://www.scala-lang.org/api/{{ site.scala-version}}/scala/collection/parallel/mutable/ParHashSet.html))
-と並列可変ハッシュマップ ([mutable.ParHashMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/mutable/ParHashMap.html))
+[mutable.ParHashSet](http://www.scala-lang.org/api/{{ site.scala-212-version}}/scala/collection/parallel/mutable/ParHashSet.html))
+と並列可変ハッシュマップ ([mutable.ParHashMap](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/parallel/mutable/ParHashMap.html))
 はハッシュテーブルに基づいている。
 
     scala> val phs = scala.collection.parallel.mutable.ParHashSet(1 until 2000: _*)
@@ -100,8 +100,8 @@ language: ja
 ## 並列ハッシュトライ
 
 並列ハッシュトライは、不変集合と不変マップを効率的に表す不変ハッシュトライの並列版だ。
-これらは、[immutable.ParHashSet](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/immutable/ParHashSet.html) クラスと
-[immutable.ParHashMap](http://www.scala-lang.org/api/{{ site.scala-version}}/scala/collection/parallel/immutable/ParHashMap.html) クラスにより提供される。
+これらは、[immutable.ParHashSet](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/parallel/immutable/ParHashSet.html) クラスと
+[immutable.ParHashMap](http://www.scala-lang.org/api/{{ site.scala-212-version}}/scala/collection/parallel/immutable/ParHashMap.html) クラスにより提供される。
 
     scala> val phs = scala.collection.parallel.immutable.ParHashSet(1 until 1000: _*)
     phs: scala.collection.parallel.immutable.ParHashSet[Int] = ParSet(645, 892, 69, 809, 629, 365, 138, 760, 101, 479,...
@@ -115,9 +115,9 @@ language: ja
 
 ## 並列並行トライ
 
-[concurrent.TrieMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/concurrent/TrieMap.html)
+[concurrent.TrieMap](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/concurrent/TrieMap.html)
 は、複数のスレッドから同時にアクセスできる (concurrent thread-safe) マップだが、
-[mutable.ParTrieMap](http://www.scala-lang.org/api/{{ site.scala-version}}/scala/collection/parallel/mutable/ParTrieMap.html)
+[mutable.ParTrieMap](http://www.scala-lang.org/api/{{ site.scala-212-version}}/scala/collection/parallel/mutable/ParTrieMap.html)
 は、その並列版だ。
 並列データ構造の多くは、走査時にデータ構造が変更された場合に一貫性のある走査を保証しないが、並行トライは更新が次回の走査まで見えないことを保証する。
 つまり以下の 1 から 99 の数の平方根を出力する例のように、並行トライを走査中に変更できるようになる:
