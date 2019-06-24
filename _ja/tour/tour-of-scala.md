@@ -56,7 +56,7 @@ Scalaは抽象化が安全で首尾一貫した方法で使われることをコ
 * [暗黙パラメーター](implicit-parameters.html) と [暗黙の変換](implicit-conversions.html) 
 * [多態性メソッド](polymorphic-methods.html) 
 
-[型推論](type-inference.html) はユーザーはコードに冗長な型情報の注釈をつける必要はないことを意味します。
+[型推論](type-inference.html) は、ユーザーがコードに冗長な型情報の注釈をつける必要はないことを意味します。
 これらの機能を組み合わせることにより、プログラミングの抽象化を安全に再利用でき、ソフトウェアを型安全に拡張できる強力な基盤となります。
 
 ## Scalaは拡張可能 ##
