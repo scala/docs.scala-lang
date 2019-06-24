@@ -53,7 +53,7 @@ for (patternMatch <- keyValPattern.findAllMatchIn(input))
 それぞれのマッチはサブマッチのグループを持ちます。こちらが出力結果です。
 ```
 key: background-color value: #A03300
-key: background-image value: url(img
+key: background-image value: url(img/header100.png)
 key: background-position value: top center
 key: background-repeat value: repeat-x
 key: background-size value: 2160px 108px
