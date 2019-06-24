@@ -22,7 +22,7 @@ Javaの`switch`文の強化バージョンで、if/else文の連続の代わり�
 
 ## 構文
 
-マッチ式は値、キーワード`match`と最低でも1つの`case`句を持ちます。
+マッチ式は値、キーワード`match`と少なくとも1つの`case`句を持ちます。
 ```tut
 import scala.util.Random
 
