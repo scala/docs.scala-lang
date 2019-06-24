@@ -91,7 +91,7 @@ println(showNotification(someVoiceRecording))  // you received a Voice Recording
 `case Email(sender, title, _)` ではフィールド`sender`と`title`が戻り値として使われますが、`_`を使うことでフィールド`body`は無視されます。
 
 ## パターンガード
-パターンガードはケースをより特別にするために使われる簡単な真偽表現です。
+パターンガードはケースをより具体的にするために使われる簡単な真偽表現です。
 `if <boolean式>`をパターンの後ろに追加するだけです。
 
 ```
