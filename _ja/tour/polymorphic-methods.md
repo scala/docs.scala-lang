@@ -1,6 +1,6 @@
 ---
 layout: tour
-title: ポリモーフフィックメソッド
+title: ポリモーフィックメソッド
 language: ja
 
 discourse: true
