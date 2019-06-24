@@ -41,10 +41,10 @@ mutable collection means you need to understand which code changes
 which collection when.
 
 A collection in package `scala.collection` can be either mutable or
-immutable. For instance, [collection.IndexedSeq\[T\]](http://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html)
-is a superclass of both [collection.immutable.IndexedSeq\[T\]](http://www.scala-lang.org/api/current/scala/collection/immutable/IndexedSeq.html)
+immutable. For instance, [collection.IndexedSeq\[T\]](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/IndexedSeq.html)
+is a superclass of both [collection.immutable.IndexedSeq\[T\]](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/immutable/IndexedSeq.html)
 and
-[collection.mutable.IndexedSeq\[T\]](http://www.scala-lang.org/api/current/scala/collection/mutable/IndexedSeq.html)
+[collection.mutable.IndexedSeq\[T\]](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/mutable/IndexedSeq.html)
 Generally, the root collections in
 package `scala.collection` define the same interface as the immutable
 collections, and the mutable collections in package
@@ -94,7 +94,7 @@ can be accessed alternatively as
                                       // is always automatically imported
 
 Other types aliased are
-[Traversable](http://www.scala-lang.org/api/current/scala/collection/Traversable.html), [Iterable](http://www.scala-lang.org/api/current/scala/collection/Iterable.html), [Seq](http://www.scala-lang.org/api/current/scala/collection/Seq.html), [IndexedSeq](http://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html), [Iterator](http://www.scala-lang.org/api/current/scala/collection/Iterator.html), [Stream](http://www.scala-lang.org/api/current/scala/collection/immutable/Stream.html), [Vector](http://www.scala-lang.org/api/current/scala/collection/immutable/Vector.html), [StringBuilder](http://www.scala-lang.org/api/current/scala/collection/mutable/StringBuilder.html), and [Range](http://www.scala-lang.org/api/current/scala/collection/immutable/Range.html).
+[Traversable](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/Traversable.html), [Iterable](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/Iterable.html), [Seq](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/Seq.html), [IndexedSeq](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/IndexedSeq.html), [Iterator](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/Iterator.html), [Stream](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/immutable/Stream.html), [Vector](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/immutable/Vector.html), [StringBuilder](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/mutable/StringBuilder.html), and [Range](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/immutable/Range.html).
 
 The following figure shows all collections in package
 `scala.collection`.  These are all high-level abstract classes or traits, which
