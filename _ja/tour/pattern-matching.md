@@ -92,7 +92,7 @@ println(showNotification(someVoiceRecording))  // you received a Voice Recording
 
 ## パターンガード
 パターンガードはケースをより特別にするために使われる簡単な真偽表現です。
-ただ`if <boolean式>`をパターンの後ろに追加するだけです。
+`if <boolean式>`をパターンの後ろに追加するだけです。
 
 ```
 
