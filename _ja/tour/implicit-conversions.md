@@ -54,7 +54,7 @@ implicit def int2Integer(x: Int) =
 
 暗黙の変換は見境なく使われると落とし穴になり得るため、暗黙の変換の定義をコンパイルしている時にコンパイラは警告を出します。
 
-警告をオフにするには、次のいずれかの操作を行います。
+警告をオフにするには、次のいずれかの措置を講じてください。
 
 * 暗黙の変換定義のスコープに`scala.language.implicitConversions`をインポートする。
 * コンパイラを`-language:implicitConversions`をつけて起動する
