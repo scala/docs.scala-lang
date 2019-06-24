@@ -43,7 +43,7 @@ Like the 2.12.x series, the Scala 2.13.x series will support Java 8 and higher. 
 
 Although the table above jumps from 8 to 11, JDK 9 and 10 will probably also work wherever 11 does. But unlike 9 and 10, 11 is an LTS release, so 11 is what we actually test on and recommend.
 
-As of Scala 2.12.8 and 2.11.12, **JDK 11 support is incomplete**. Notably, `scalac` will not enforce the restrictions of the Java Platform Module System, which means that code that typechecks may incur linkage errors at runtime. Scala 2.13.x will eventually provide [rudimentary support](https://github.com/scala/scala/pull/7218) for this, but likely only in nightlies built on Java 11.
+As of Scala 2.13.0, 2.12.8 and 2.11.12, **JDK 11 support is incomplete**. Notably, `scalac` will not enforce the restrictions of the Java Platform Module System, which means that code that typechecks may incur linkage errors at runtime. Scala 2.13.x will eventually provide [rudimentary support](https://github.com/scala/scala/pull/7218) for this, but likely only in nightlies built on Java 11.
 
 JDK 11 support requires minimum sbt version 1.1.0, or 0.13.17 in the 0.13.x series.
 
