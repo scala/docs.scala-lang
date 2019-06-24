@@ -18,7 +18,7 @@ redirect_from: "/tutorials/tour/multiple-parameter-lists.html"
 
 # 例
 
-こちらはScalaのコレクションの[Traversable](/overviews/collections/trait-traversable.html) トレイトで定義されている実例です。
+こちらはScalaのコレクションAPIの `TraversableOnce`トレイトで定義されている実例です。
 
 ```
 def foldLeft[B](z: B)(op: (B, A) => B): B
