@@ -139,7 +139,7 @@ def goIdle(device: Device) = device match {
   case c: Computer => c.screenSaverOn
 }
 ```
-`def goIdle`は`Device`のタイプによって異なる振る舞いをします。
+`def goIdle`は`Device`の型によって異なる振る舞いをします。
 これはケースがそのパターンのメソッドを呼び出す必要がある時に役立ちます。
 ケースの識別子には型の最初の一文字（この場合に`p`と`c`）を利用する慣習があります。
 
