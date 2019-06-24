@@ -19,21 +19,6 @@ previous-page: automatic-closures
 
 어노테이션 절은 첫 번째 정의나, 그 다음에 이어지는 선언에 적용된다. 정의와 선언에는 하나 이상의 어노테이션 절이 붙을 수 있다. 이런 절이 표현되는 순서는 영향을 미치지 않는다.
 
-어노테이션 절의 의미는 _구현 종속적_ 이다. 자바 플랫폼에선 다음의 스칼라 어노테이션이 표준에 해당하는 의미를 갖고 있다.
-
-|           Scala           |           Java           |
-|           ------          |          ------          |
-|  [`scala.SerialVersionUID`](https://www.scala-lang.org/api/current/scala/SerialVersionUID.html)   |  [`serialVersionUID`](http://java.sun.com/j2se/1.5.0/docs/api/java/io/Serializable.html#navbar_bottom) (필드)  |
-|  [`scala.deprecated`](https://www.scala-lang.org/api/current/scala/deprecated.html)   |  [`java.lang.Deprecated`](http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Deprecated.html) |
-|  [`scala.inline`](https://www.scala-lang.org/api/current/scala/inline.html) (2.6.0 부터)  |  해당 없음 |
-|  [`scala.native`](https://www.scala-lang.org/api/current/scala/native.html) (2.6.0 부터)  |  [`native`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (키워드) |
-|  [`scala.remote`](https://www.scala-lang.org/api/current/scala/remote.html) |  [`java.rmi.Remote`](http://java.sun.com/j2se/1.5.0/docs/api/java/rmi/Remote.html) |
-|  [`scala.throws`](https://www.scala-lang.org/api/current/scala/throws.html) |  [`throws`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (키워드) |
-|  [`scala.transient`](https://www.scala-lang.org/api/current/scala/transient.html) |  [`transient`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (키워드) |
-|  [`scala.unchecked`](https://www.scala-lang.org/api/current/scala/unchecked.html) (2.4.0 부터) |  해당 없음 |
-|  [`scala.volatile`](https://www.scala-lang.org/api/current/scala/volatile.html) |  [`volatile`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (키워드) |
-|  [`scala.beans.BeanProperty`](https://www.scala-lang.org/api/current/scala/beans/BeanProperty.html) |  [`디자인 패턴`](http://docs.oracle.com/javase/tutorial/javabeans/writing/properties.html) |
-
 다음 예제에선 자바의 메인 프로그램에서 던지는 예외를 잡기 위해, `read` 메소드에 `throws` 어노테이션을 추가했다.
 
 > 자바 컴파일러는 메소드나 생성자를 실행할 때 어떤 확인 예외가 발생할 수 있는지 분석해, 프로그램이 확인이 필요한 예외를 처리할 핸들러를 포함하고 있는지 검사한다. 메소드나 생성자의 **throws** 절에선 발생할 가능성이 있는 확인 예외마다, 해당 예외의 클래스나 해당 예외 클래스의 상위 클래스를 반드시 명시해야 한다.
