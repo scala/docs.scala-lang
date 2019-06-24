@@ -14,7 +14,7 @@ previous-page: higher-order-functions
 redirect_from: "/tutorials/tour/nested-functions.html"
 ---
 
-Scalaではメソッドの定義をネストすることができます。
+Scalaではメソッドの定義をネストする（_訳注：入れ子にする_）ことができます。
 以下のコードは与えられた数値の階乗を計算するための`factorial`メソッドを提供します。
 
 {% scalafiddle %}
