@@ -16,7 +16,7 @@ prerequisite-knowledge: expressions, classes, generics, objects, companion-objec
 redirect_from: "/tutorials/tour/traits.html"
 ---
 
-トレイトはクラス間でインターフェースとフィールドを共有するために使います。それらはJava8のインターフェースと似ています。
+トレイトはクラス間でインターフェースとフィールドを共有するために使います。それらはJava 8のインターフェースと似ています。
 クラスとオブジェクトはトレイトを継承することができますが、トレイトはインスタンス化ができません、したがってパラメータを持ちません。
 
 ## トレイトを定義する
