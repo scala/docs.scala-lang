@@ -18,8 +18,8 @@ This table shows the first Scala release in each series that works with each JVM
 | JVM version | Minimum Scala versions                                                                        |
 |:-----------:|:----------------------------------------------------------------------------------------------|
 | 12          | see [below](#jdk-12-compatibility-notes)                                                      |
-| 11          | 2.12.4, 2.11.12, 2.10.7 (but also, see [below](#jdk-11-compatibility-notes))                  |
-| 8           | 2.12.0, 2.11.0, 2.10.2                                                                        |
+| 11          | 2.13.0, 2.12.4, 2.11.12, 2.10.7 (but also, see [below](#jdk-11-compatibility-notes))          |
+| 8           | 2.13.0, 2.12.0, 2.11.0, 2.10.2                                                                |
 | 7           | 2.11.0, 2.10.0                                                                                |
 | 6           | 2.11.0, 2.10.0                                                                                |
 
