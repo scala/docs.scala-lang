@@ -44,7 +44,7 @@ The `foreach` method is meant to traverse all elements of the collection, and ap
 |  **Abstract Method:**     |						     |
 |  `xs foreach f`	    |Executes function `f` for every element of `xs`.|
 |  **Addition:**     	    |						     |
-|  `xs ++ ys`	    	    |A collection consisting of the elements of both `xs` and `ys`. `ys` is a [TraversableOnce](http://www.scala-lang.org/api/current/scala/collection/TraversableOnce.html) collection, i.e., either a [Traversable](http://www.scala-lang.org/api/current/scala/collection/Traversable.html) or an [Iterator](http://www.scala-lang.org/api/current/scala/collection/Iterator.html).|
+|  `xs ++ ys`	    	    |A collection consisting of the elements of both `xs` and `ys`. `ys` is a [TraversableOnce](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/TraversableOnce.html) collection, i.e., either a [Traversable](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/Traversable.html) or an [Iterator](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/Iterator.html).|
 |  **Maps:**     	    |						     |
 |  `xs map f`		    |The collection obtained from applying the function f to every element in `xs`.|
 |  `xs flatMap f`	    |The collection obtained from applying the collection-valued function `f` to every element in `xs` and concatenating the results.|

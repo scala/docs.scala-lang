@@ -27,7 +27,6 @@ previous-page: automatic-closures
 |  [`scala.deprecated`](https://www.scala-lang.org/api/current/scala/deprecated.html)   |  [`java.lang.Deprecated`](http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Deprecated.html) |
 |  [`scala.inline`](https://www.scala-lang.org/api/current/scala/inline.html) (2.6.0 부터)  |  해당 없음 |
 |  [`scala.native`](https://www.scala-lang.org/api/current/scala/native.html) (2.6.0 부터)  |  [`native`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (키워드) |
-|  [`scala.remote`](https://www.scala-lang.org/api/current/scala/remote.html) |  [`java.rmi.Remote`](http://java.sun.com/j2se/1.5.0/docs/api/java/rmi/Remote.html) |
 |  [`scala.throws`](https://www.scala-lang.org/api/current/scala/throws.html) |  [`throws`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (키워드) |
 |  [`scala.transient`](https://www.scala-lang.org/api/current/scala/transient.html) |  [`transient`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (키워드) |
 |  [`scala.unchecked`](https://www.scala-lang.org/api/current/scala/unchecked.html) (2.4.0 부터) |  해당 없음 |
