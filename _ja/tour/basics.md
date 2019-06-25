@@ -123,7 +123,7 @@ println(addOne(1)) // 2
 ```
 {% endscalafiddle %}
 
-関数は複数の引数をとることもできます。
+関数は複数のパラメーターをとることもできます。
 
 {% scalafiddle %}
 ```tut
