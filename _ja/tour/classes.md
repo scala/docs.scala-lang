@@ -54,7 +54,7 @@ println(point1)  // prints (2, 3)
 この`Point`クラスは4つのメンバーを持ちます。
 変数`x` と `y` そしてメソッド `move` と `toString`です。
 多くの他の言語とは異なり、プライマリコンストラクタはクラスのシグネチャ`(var x: Int, var y: Int)`です。
-`move`メソッドは2つのInteger引数を受け取り、意味を持たないUnitの値である`()` を返します。
+`move` メソッドは2つの整数の引数を受け取り、情報を持たない Unit 値 `()` を返します。
 これは乱暴に言えば、Javaのような言語における`void`に対応します。
 その一方で`toString`は引数を受け取りませんが、`String`の値を返します。
 `toString`は[`AnyRef`](unified-types.html)の`toString`をオーバーライドしているので、`override`キーワードのタグが付いています。
