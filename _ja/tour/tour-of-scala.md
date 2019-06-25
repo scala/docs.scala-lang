@@ -34,7 +34,7 @@ Scalaは[全ての値がオブジェクトである](unified-types.html) とい�
 ## Scalaは関数型 ##
 Scalaは[すべての関数が値である](unified-types.html) という意味で関数型言語でもあります。
 Scalaは無名関数を定義するために[軽量な構文](basics.html#関数)を提供し、
-[高階関数](higher-order-functions.html) をサポートし、関数の[ネスト](nested-functions.html) を許可し、[カリー化](multiple-parameter-lists.html) をサポートします。  
+[高階関数](higher-order-functions.html) をサポートし、関数は[ネスト](nested-functions.html)しても良く、[カリー化](multiple-parameter-lists.html) をサポートします。  
 Scalaの[ケースクラス](case-classes.html)には[パターンマッチング](pattern-matching.html)が組み込まれていることにより、多くの関数型プログラミング言語で使われる代数型を作ることができます。
 [シングルトンオブジェクト](singleton-objects.html) はクラスのメンバーではない関数をグループ化する便利な方法を提供します。
 
