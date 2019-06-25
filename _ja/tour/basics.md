@@ -182,7 +182,7 @@ def getSquareString(input: Double): String = {
 
 ## クラス
 
-`class` キーワードとその後ろに名前、コンストラクタ引数を続けることで、クラスを定義することができます。
+`class` キーワードとその後ろに名前、コンストラクタパラメーターを続けることで、クラスを定義することができます。
 
 ```tut
 class Greeter(prefix: String, suffix: String) {
