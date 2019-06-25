@@ -132,7 +132,7 @@ println(add(1, 2)) // 3
 ```
 {% endscalafiddle %}
 
-また引数を取らないこともありえます。
+またパラメーターを取らないこともありえます。
 
 ```tut
 val getTheAnswer = () => 42
