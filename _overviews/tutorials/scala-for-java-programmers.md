@@ -155,7 +155,7 @@ Scala is a pure object-oriented language in the sense that
 *everything* is an object, including numbers or functions. It
 differs from Java in that respect, since Java distinguishes
 primitive types (such as `boolean` and `int`) from reference
-types, and does not enable one to manipulate functions as values.
+types.
 
 ### Numbers are objects
 
@@ -190,7 +190,7 @@ prevents `1` from being interpreted as a `Double`.
 
 ### Functions are objects
 
-Perhaps more surprising for the Java programmer, functions are also
+Functions are also
 objects in Scala. It is therefore possible to pass functions as
 arguments, to store them in variables, and to return them from other
 functions. This ability to manipulate functions as values is one of
