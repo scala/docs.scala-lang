@@ -13,7 +13,7 @@ num: 2
 
 ## Параллельный Массив
 
-Последовательность [ParArray](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/mutable/ParArray.html) хранит линейный массив смежно хранимых элементов. Это означает, что получение доступа и обновление элементов эффективно, так как происходит путем изменения массива, лежащего в основе. По этой причине наиболее эффективна последовательная обработка элементов одного за другим. Параллельные массивы похожи на обычные в том отношении, что их размер постоянен.
+Последовательность [ParArray](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/parallel/mutable/ParArray.html) хранит линейный массив смежно хранимых элементов. Это означает, что получение доступа и обновление элементов эффективно, так как происходит путем изменения массива, лежащего в основе. По этой причине наиболее эффективна последовательная обработка элементов одного за другим. Параллельные массивы похожи на обычные в том отношении, что их размер постоянен.
 
     scala> val pa = scala.collection.parallel.mutable.ParArray.tabulate(1000)(x => 2 * x + 1)
     pa: scala.collection.parallel.mutable.ParArray[Int] = ParArray(1, 3, 5, 7, 9, 11, 13,...
@@ -30,7 +30,7 @@ num: 2
 
 ## Параллельный вектор
 
-[ParVector](http://www.scala-lang.org/api/{{ site.scala-version}}/scala/collection/parallel/immutable/ParVector.html) является неизменяемой последовательностью, временная сложность доступа и обновления которой является логарифмической с низкой константой-множителем.
+[ParVector](http://www.scala-lang.org/api/{{ site.scala-212-version}}/scala/collection/parallel/immutable/ParVector.html) является неизменяемой последовательностью, временная сложность доступа и обновления которой является логарифмической с низкой константой-множителем.
 
     scala> val pv = scala.collection.parallel.immutable.ParVector.tabulate(1000)(x => x)
     pv: scala.collection.parallel.immutable.ParVector[Int] = ParVector(0, 1, 2, 3, 4, 5, 6, 7, 8, 9,...
@@ -41,11 +41,11 @@ num: 2
 Неизменяемые векторы представлены 32-ичными деревьями (32-way trees), поэтому [разделители]({{ site.baseurl }}/ru/overviews/parallel-collections/architecture.html) разбивают их, назначая по поддереву каждому новому разделителю.
 [Компоновщики]({{ site.baseurl }}/ru/overviews/parallel-collections/architecture.html) в настоящий момент хранят вектор из элементов и компонуют путем отложенного копирования. По этой причине методы трансформации менее масштабируемы по сравнению с теми же методами параллельного массива. Как только в будущем релизе Scala станет доступной операция конкатенации векторов, компоновщики станут образовываться путем конкатенации, и от этого методы трансформации станут гораздо более эффективными.
 
-Параллельный вектор является параллельным аналогом последовательной коллекции [Vector](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Vector.html), и преобразования одного в другое занимают постоянное время.
+Параллельный вектор является параллельным аналогом последовательной коллекции [Vector](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/immutable/Vector.html), и преобразования одного в другое занимают постоянное время.
 
 ## Параллельный диапазон
 
-[ParRange](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/immutable/ParRange.html) представляет собой упорядоченную последовательность элементов, отстоящих друг от друга на одинаковые промежутки. Параллельный диапазон создается подобно последовательному [Range](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Range.html):
+[ParRange](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/parallel/immutable/ParRange.html) представляет собой упорядоченную последовательность элементов, отстоящих друг от друга на одинаковые промежутки. Параллельный диапазон создается подобно последовательному [Range](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/immutable/Range.html):
 
     scala> 1 to 3 par
     res0: scala.collection.parallel.immutable.ParRange = ParRange(1, 2, 3)
@@ -57,7 +57,7 @@ num: 2
 
 ## Параллельные хэш-таблицы
 
-В основе параллельной хэш-таблицы лежит массив, причем место элемента таблицы в этом массиве определяется хэш-кодом элемента. На хэш-таблицах основаны параллельные изменяемые хэш-множества ([mutable.ParHashSet](http://www.scala-lang.org/api/{{ site.scala-version}}/scala/collection/parallel/mutable/ParHashSet.html)) и параллельные изменяемые ассоциативные хэш-массивы (хэш-отображения) ([mutable.ParHashMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/mutable/ParHashMap.html)).
+В основе параллельной хэш-таблицы лежит массив, причем место элемента таблицы в этом массиве определяется хэш-кодом элемента. На хэш-таблицах основаны параллельные изменяемые хэш-множества ([mutable.ParHashSet](http://www.scala-lang.org/api/{{ site.scala-212-version}}/scala/collection/parallel/mutable/ParHashSet.html)) и параллельные изменяемые ассоциативные хэш-массивы (хэш-отображения) ([mutable.ParHashMap](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/parallel/mutable/ParHashMap.html)).
 
     scala> val phs = scala.collection.parallel.mutable.ParHashSet(1 until 2000: _*)
     phs: scala.collection.parallel.mutable.ParHashSet[Int] = ParHashSet(18, 327, 736, 1045, 773, 1082,...
@@ -71,7 +71,7 @@ num: 2
 
 ## Параллельные префиксные хэш-деревья (Hash Tries)
 
-Параллельные префиксные хэш-деревья являются параллельным аналогом неизменяемых префиксных хэш-деревьев, которые используются для эффективного представления неизменяемых множеств и ассоциативных массивов. Последние представлены классами [immutable.ParHashSet](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/parallel/immutable/ParHashSet.html) и [immutable.ParHashMap](http://www.scala-lang.org/api/{{ site.scala-version}}/scala/collection/parallel/immutable/ParHashMap.html).
+Параллельные префиксные хэш-деревья являются параллельным аналогом неизменяемых префиксных хэш-деревьев, которые используются для эффективного представления неизменяемых множеств и ассоциативных массивов. Последние представлены классами [immutable.ParHashSet](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/parallel/immutable/ParHashSet.html) и [immutable.ParHashMap](http://www.scala-lang.org/api/{{ site.scala-212-version}}/scala/collection/parallel/immutable/ParHashMap.html).
 
     scala> val phs = scala.collection.parallel.immutable.ParHashSet(1 until 1000: _*)
     phs: scala.collection.parallel.immutable.ParHashSet[Int] = ParSet(645, 892, 69, 809, 629, 365, 138, 760, 101, 479,...
@@ -85,7 +85,7 @@ num: 2
 
 ## Параллельные многопоточные префиксные деревья (Concurrent Tries)
 
-Параллельным аналогом коллекции [concurrent.TrieMap](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/concurrent/TrieMap.html), представляющей собой многопоточный и потокозащищеный ассоциативный массив, является коллекция [mutable.ParTrieMap](http://www.scala-lang.org/api/{{ site.scala-version}}/scala/collection/parallel/mutable/ParTrieMap.html). В то время, как большинство многопоточных структур данных не гарантируют правильного перебора элементов в случае, если эта структура данных была изменена во время ее прохождения, многопоточные деревья `Ctries` гарантируют, что обновленные данные станут видны только при следующем прохождении. Это означает, что можно изменять многопоточное дерево прямо во время прохождения, как в следующем примере, в котором выводятся квадратные корни от 1 до 99:
+Параллельным аналогом коллекции [concurrent.TrieMap](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/concurrent/TrieMap.html), представляющей собой многопоточный и потокозащищеный ассоциативный массив, является коллекция [mutable.ParTrieMap](http://www.scala-lang.org/api/{{ site.scala-212-version}}/scala/collection/parallel/mutable/ParTrieMap.html). В то время, как большинство многопоточных структур данных не гарантируют правильного перебора элементов в случае, если эта структура данных была изменена во время ее прохождения, многопоточные деревья `Ctries` гарантируют, что обновленные данные станут видны только при следующем прохождении. Это означает, что можно изменять многопоточное дерево прямо во время прохождения, как в следующем примере, в котором выводятся квадратные корни от 1 до 99:
 
     scala> val numbers = scala.collection.parallel.mutable.ParTrieMap((1 until 100) zip (1 until 100): _*) map { case (k, v) => (k.toDouble, v.toDouble) }
     numbers: scala.collection.parallel.mutable.ParTrieMap[Double,Double] = ParTrieMap(0.0 -> 0.0, 42.0 -> 42.0, 70.0 -> 70.0, 2.0 -> 2.0,...

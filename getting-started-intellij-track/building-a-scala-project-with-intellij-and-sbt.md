@@ -19,11 +19,11 @@ Started with Scala and sbt on the Command Line]({{site.baseurl}}/getting-started
  here to the section "Writing Scala code".
 
 1. If you didn't create the project from the command line, open up IntelliJ and select "Create New Project"
-  * On the left panel, select Scala and on the right panel, select SBT
+  * On the left panel, select Scala and on the right panel, select sbt
   * Click **Next**
-  * Name the project "SBTExampleProject"
+  * Name the project "SbtExampleProject"
 1. If you already created the project on the command line, open up IntelliJ, select *Import Project* and open the `build.sbt` file for your project
-1. Make sure the **JDK Version** is 1.8 and the **SBT Version** is at least 0.13.13
+1. Make sure the **JDK version** is 1.8 and the **sbt version** is at least 0.13.13
 1. Select **Use auto-import** so dependencies are automatically downloaded when available
 1. Select **Finish**
 
@@ -47,7 +47,7 @@ but here's a glance at what everything is for:
 
 
 ## Writing Scala code
-1. On the **Project** panel on the left, expand `SBTExampleProject` => `src`
+1. On the **Project** panel on the left, expand `SbtExampleProject` => `src`
 => `main`
 1. Right-click `scala` and select **New** => **Package**
 1. Name the package `example` and click **OK**.
@@ -68,9 +68,9 @@ to see if sbt can run your project on the command line.
 
 ## Running the project
 1. From the **Run** menu, select **Edit configurations**
-1. Click the **+** button and select **SBT Task**.
+1. Click the **+** button and select **sbt Task**.
 1. Name it `Run the program`.
-1. In the **Tasks** field, type `~run`. The `~` causes SBT to rebuild and rerun the project
+1. In the **Tasks** field, type `~run`. The `~` causes sbt to rebuild and rerun the project
 when you save changes to a file in the project.
 1. Click **OK**.
 1. On the **Run** menu. Click **Run 'Run the program'**.

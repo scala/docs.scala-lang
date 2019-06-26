@@ -71,7 +71,7 @@ For while loops:
 
     To write a `do-while` inside a `while` loop you will need braces, like this:
 
-        while (expression1) { do expression2 while epression3 }
+        while (expression1) { do expression2 while expression3 }
 
 3.  In Scala 2.11: Disallow
 

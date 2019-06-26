@@ -62,7 +62,7 @@ Given the short time and amount of decisions that need to be made, the Committee
 *Structure*
 
 a) Have a **list of changes**, grouped in batches that would be decided within the next year, meeting once a month
-b) **Plan** - full and strucutured list of changes that need to be implemented consolidated between the Committee members using a shared a Google doc
+b) **Plan** - full and structured list of changes that need to be implemented consolidated between the Committee members using a shared a Google doc
 c) **Public comments** - each batch should be published on the Contributors thread, for a month at a time in order to have community involved, share their opinion and contribute. Advise was proposed - each thread should clearly point out start and end date of collecting the comments/suggestions.
 
 *Organisation*
@@ -80,10 +80,10 @@ The above mentioned structure and organisation was gathered throughout the meeti
 
 4. Other: spec, quorum
 
-**Heather** bings up an important question "What about Scala spec" ([YouTube time: 4'49''](https://youtu.be/q2LVmTe9qmU?t=289)) to which **Martin** responds within the next year we should know which features are included as a first priority but that spec should not be left for the last minute.
+**Heather** brings up an important question "What about Scala spec" ([YouTube time: 4'49''](https://youtu.be/q2LVmTe9qmU?t=289)) to which **Martin** responds within the next year we should know which features are included as a first priority but that spec should not be left for the last minute.
 
 **Miles** ([YouTube time: 8'45](https://youtu.be/q2LVmTe9qmU?t=525))suggested that SIP proposals should include draft specification changes to save time and effort pulling the eventual spec update together.
 
 **Martin** ([YouTube time: 37'59''](https://youtu.be/q2LVmTe9qmU?t=2279)) also raised a question about the decision making process, asking if it would be better to change to simple majority when it comes to voting. This was rejected by most of the Members and agreed it should be discussed in a different meeting or time.
 
-**Conclusion** The first batch should be agreed upon, posted on the Contributors thread for public comments. Such discussion should be summaraized and included in the next meeting (22nd June 2018, after ScalaDays NewYork). 
+**Conclusion** The first batch should be agreed upon, posted on the Contributors thread for public comments. Such discussion should be summarized and included in the next meeting (22nd June 2018, after ScalaDays NewYork).

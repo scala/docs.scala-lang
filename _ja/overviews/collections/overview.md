@@ -22,8 +22,8 @@ Scala のコレクションは、体系的に可変および不変コレクシ�
 `scala.collection.mutable` パッケージのコレクションは、コレクションを上書き変更する演算がある。
 だから可変コレクションを扱うということは、どのコードが、何時どのコレクションを変更したのかということを理解する必要があることを意味する。
 
-`scala.collection` パッケージのコレクションは、可変か不変かのどちらでもありうる。例えば [`collection.IndexedSeq[T]`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/IndexedSeq.html)
-は、[`collection.immutable.IndexedSeq[T]`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/IndexedSeq.html) と [`collection.mutable.IndexedSeq[T]`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/IndexedSeq.html) 両方の親クラスだ。一般的に、`scala.collection`パッケージの基底コレクションは不変コレクションと同じインターフェイスを定義し、`scala.collection.mutable` パッケージ内の可変コレクションは、副作用を伴う変更演算を不変インターフェイスに加える。
+`scala.collection` パッケージのコレクションは、可変か不変かのどちらでもありうる。例えば [`collection.IndexedSeq[T]`](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/IndexedSeq.html)
+は、[`collection.immutable.IndexedSeq[T]`](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/immutable/IndexedSeq.html) と [`collection.mutable.IndexedSeq[T]`](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/mutable/IndexedSeq.html) 両方の親クラスだ。一般的に、`scala.collection`パッケージの基底コレクションは不変コレクションと同じインターフェイスを定義し、`scala.collection.mutable` パッケージ内の可変コレクションは、副作用を伴う変更演算を不変インターフェイスに加える。
 
 基底コレクションと不変コレクションの違いは、不変なコレクションのクライアントは、他の誰もコレクションを変更しないという保証があるのに対し、基底コレクションのクライアントは自分ではコレクションを変更しなかったという約束しかできない。たとえ静的な型がコレクションを変更するような演算を提供していなくても、実行時の型は他のクライアントが手を加えることができる可変コレクションである可能性がある。
 
@@ -40,7 +40,7 @@ Scala のコレクションは、体系的に可変および不変コレクシ�
 このパッケージには、コレクションを実装するための基本的なパーツが含まれている。
 コレクションクラスがいくつかの演算を `generic` 内のクラスに委譲することはよくあるが、 フレームワークのユーザーが `generic` 内のクラスが必要になることは普通はありえない。
 
-利便性と後方互換性のために、いくつかの重要な型は `scala` パッケージ内に別名を定義してあるため、インポート無しで単純な名前でコレクションを使うことができる。[`List`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/List.html) 型が良い例で、以下の名前でもアクセスすることができる
+利便性と後方互換性のために、いくつかの重要な型は `scala` パッケージ内に別名を定義してあるため、インポート無しで単純な名前でコレクションを使うことができる。[`List`](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/immutable/List.html) 型が良い例で、以下の名前でもアクセスすることができる
 
     scala.collection.immutable.List   // 定義元
     scala.List                        // scala パッケージのエイリアス経由
@@ -48,7 +48,7 @@ Scala のコレクションは、体系的に可変および不変コレクシ�
                                       // 常に自動的にインポートされるため
 
 エイリアスされているその他の型は次のとおり:
-[`Traversable`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Traversable.html)、[`Iterable`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterable.html)、[`Seq`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Seq.html)、[`IndexedSeq`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/IndexedSeq.html)、[`Iterator`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterator.html)、[`Stream`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Stream.html)、[`Vector`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Vector.html)、[`StringBuilder`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/StringBuilder.html)、[`Range`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Range.html)。
+[`Traversable`](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/Traversable.html)、[`Iterable`](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/Iterable.html)、[`Seq`](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/Seq.html)、[`IndexedSeq`](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/IndexedSeq.html)、[`Iterator`](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/Iterator.html)、[`Stream`](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/immutable/Stream.html)、[`Vector`](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/immutable/Vector.html)、[`StringBuilder`](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/mutable/StringBuilder.html)、[`Range`](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/immutable/Range.html)。
 
 次の図は `scala.collection` パッケージ内の全てのコレクションを示す。
 これらはすべて、高レベルの抽象クラスやトレイトで一般に可変と不変の両方の実装を持っている。

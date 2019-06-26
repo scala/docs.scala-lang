@@ -160,7 +160,7 @@ object of type that is receiving the method. For example, consider `"a" -> 1`. W
 to look for an implicit which works on `"a"`, and so it can take `String`, one of its
 supertypes (`AnyRef` or `Any`) or a type parameter. In this case, we find
 `implicit final class ArrowAssoc[A](private val self: A)` which makes this implicit
-avaialable on all types.
+available on all types.
 
 Other implicit conversions may be visible in your scope depending on imports, extended types or
 self-type annotations. See [Finding implicits](finding-implicits.html) for details.

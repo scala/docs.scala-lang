@@ -154,7 +154,7 @@ chain, we find that the types passed to `TraversableLike`, and, thus, used by
 
 Going back to the example, the first map is receiving a function of type
 `((Int, String)) => (Int, Int)` and the second map is receiving a function of
-type `((Int, String)) => Int`. I use the double parenthesis to emphasize it is
+type `((Int, String)) => String`. I use the double parenthesis to emphasize it is
 a tuple being received, as that's the type of `A` as we saw.
 
 With that information, let's consider the other types.
@@ -163,7 +163,7 @@ With that information, let's consider the other types.
     B = (Int, Int)
 
     map (_._2):
-    B = Int
+    B = String
 
 We can see that the type returned by the first `map` is `Map[Int,Int]`, and the
 second is `Iterable[String]`. Looking at `map`'s definition, it is easy to see

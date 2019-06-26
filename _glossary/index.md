@@ -269,7 +269,7 @@ A property of functions that are independent of temporal context and have no sid
 A variable in a running Scala program always _refers_ to some object. Even if that variable is assigned to `null`, it conceptually refers to the `Null` object. At runtime, an object may be implemented by a Java object or a value of a primitive type, but Scala allows programmers to think at a higher level of abstraction about their code as they imagine it running. See also [reference](#reference).
 
 * #### refinement type
-A type formed by supplying a base type a number of members inside curly braces. The members in the curly braces refine the types that are present in the base type. For example, the type of “animal that eats grass” is `Animal { type SuitableFood = Grass }`.
+A type formed by supplying a base type with a number of members inside curly braces. The members in the curly braces refine the types that are present in the base type. For example, the type of “animal that eats grass” is `Animal { type SuitableFood = Grass }`.
 
 * #### result
 An expression in a Scala program yields a _result_. The result of every expression in Scala is an object.
@@ -278,7 +278,7 @@ An expression in a Scala program yields a _result_. The result of every expressi
 A method’s _result type_ is the type of the value that results from calling the method. (In Java, this concept is called the return type.)
 
 * #### return
-A function in a Scala program `returns` a value. You can call this value the [result](#result) of the function. You can also say the function _results in_ the value. The result of every function in Scala is an object.
+A function in a Scala program _returns_ a value. You can call this value the [result](#result) of the function. You can also say the function _results in_ the value. The result of every function in Scala is an object.
 
 * #### runtime
 The Java Virtual Machine, or [JVM](#jvm), that hosts a running Scala program. Runtime encompasses both the virtual machine, as defined by the Java Virtual Machine Specification, and the runtime libraries of the Java API and the standard Scala API. The phrase at run time (with a space between run and time) means when the program is running, and contrasts with compile time.
@@ -293,7 +293,7 @@ A file containing top level definitions and statements, which can be run directl
 The value being matched on in a `match` expression. For example, in “`s match { case _ => }`”, the selector is `s`.
 
 * #### self type
-A _self type_ of a trait is the assumed type of `this`, the receiver, to be used within the trait. Any concrete class that mixes in the trait must ensure that its type conforms to the trait’s self type. The most common use of self types is for dividing a large class into several traits (as described in Chapter 29 of [Programming in Scala](http://www.artima.com/shop/programming_in_scala).
+A _self type_ of a trait is the assumed type of `this`, the receiver, to be used within the trait. Any concrete class that mixes in the trait must ensure that its type conforms to the trait’s self type. The most common use of self types is for dividing a large class into several traits (as described in Chapter 29 of [Programming in Scala](http://www.artima.com/shop/programming_in_scala)).
 
 * #### semi-structured data
 XML data is semi-structured. It is more structured than a flat binary file or text file, but it does not have the full structure of a programming language’s data structures.
@@ -374,7 +374,7 @@ A method’s _type signature_ comprises its name, the number, order, and types o
 The _uniform access principle_ states that variables and parameterless functions should be accessed using the same syntax. Scala supports this principle by not allowing parentheses to be placed at call sites of parameterless functions. As a result, a parameterless function definition can be changed to a `val`, or _vice versa_, without affecting client code.
 
 * #### unreachable
-At the Scala level, objects can become _unreachable_, at which point the memory they occupy may be reclaimed by the runtime. Unreachable does not necessarily mean unreferenced. Reference types (instances of `AnyRef`) are implemented as objects that reside on the JVM’s heap. When an instance of a reference type becomes unreachable, it indeed becomes unreferenced, and is available for garbage collection. Value types (instances of `AnyVal`) are implemented as both primitive type values and as instances of Java wrapper types (such as `java.lang.Integer`), which reside on the heap. Value type instances can be boxed (converted from a primitive value to a wrapper object) and unboxed (converted from a wrapper object to a primitive value) throughout the lifetime of the variables that refer to them. If a value type instance currently represented as a wrapper object on the JVM’s heap becomes unreachable, it indeed becomes unreferenced, and is available for garbage collection. But if a value type currently represented as a primitive value becomes unreachable, then it does not become unreferenced, because it does not exist as an object on the JVM’s heap at that point in time. The runtime may reclaim memory occupied by unreachable objects, but if an Int, for example, is implemented at run time by a primitive Java int that occupies some memory in the stack frame of an executing method, then the memory for that object is “reclaimed” when the stack frame is popped as the method completes. Memory for reference types, such as `Strings`, may be reclaimed by the JVM’s garbage collector after they become unreachable.
+At the Scala level, objects can become _unreachable_, at which point the memory they occupy may be reclaimed by the runtime. Unreachable does not necessarily mean unreferenced. Reference types (instances of `AnyRef`) are implemented as objects that reside on the JVM’s heap. When an instance of a reference type becomes unreachable, it indeed becomes unreferenced, and is available for garbage collection. Value types (instances of `AnyVal`) are implemented as both primitive type values and as instances of Java wrapper types (such as `java.lang.Integer`), which reside on the heap. Value type instances can be boxed (converted from a primitive value to a wrapper object) and unboxed (converted from a wrapper object to a primitive value) throughout the lifetime of the variables that refer to them. If a value type instance currently represented as a wrapper object on the JVM’s heap becomes unreachable, it indeed becomes unreferenced, and is available for garbage collection. But if a value type currently represented as a primitive value becomes unreachable, then it does not become unreferenced, because it does not exist as an object on the JVM’s heap at that point of time. The runtime may reclaim memory occupied by unreachable objects, but if an Int, for example, is implemented at run time by a primitive Java int that occupies some memory in the stack frame of an executing method, then the memory for that object is “reclaimed” when the stack frame is popped as the method completes. Memory for reference types, such as `Strings`, may be reclaimed by the JVM’s garbage collector after they become unreachable.
 
 * #### unreferenced
 See [unreachable](#unreachable).
@@ -383,7 +383,7 @@ See [unreachable](#unreachable).
 The result of any computation or expression in Scala is a _value_, and in Scala, every value is an object. The term value essentially means the image of an object in memory (on the JVM’s heap or stack).
 
 * #### value type
-A _value type_ is any subclass of `AnyVal`, such as `Int`, `Double`, or `Unit`. This term has meaning at the level of Scala source code. At runtime, instances of value types that correspond to Java primitive types may be implemented in terms of primitive type values or instances of wrapper types, such as `java.lang.Integer`. Over the lifetime of a value type instance, the runtime may transform it back and forth be- tween primitive and wrapper types (_i.e._, to box and unbox it).
+A _value type_ is any subclass of `AnyVal`, such as `Int`, `Double`, or `Unit`. This term has meaning at the level of Scala source code. At runtime, instances of value types that correspond to Java primitive types may be implemented in terms of primitive type values or instances of wrapper types, such as `java.lang.Integer`. Over the lifetime of a value type instance, the runtime may transform it back and forth between primitive and wrapper types (_i.e._, to box and unbox it).
 
 * #### variable
 A named entity that refers to an object. A variable is either a `val` or a `var`. Both `val`s and `var`s must be initialized when defined, but only `var`s can be later reassigned to refer to a different object.

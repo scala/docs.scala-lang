@@ -29,7 +29,7 @@ In fact, macros became an important part of our ecosystem so quickly that just a
 Macro flavors are plentiful, so we decided to carefully examine them to figure out which ones should be put in the standard. This entails answering a few important questions. Why are macros working so well? Why do people use them?
 
 Our hypothesis is that this happens because the hard to comprehend notion of metaprogramming expressed in def macros piggybacks on the familiar concept of a typed method call. Thanks to that, the code that users write can absorb more meaning without becoming bloated or losing
-compehensibility.
+comprehensibility.
 
 ## Blackbox and whitebox macros
 

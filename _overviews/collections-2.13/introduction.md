@@ -91,5 +91,5 @@ Furthermore, the `partition` operation is quite fast, and can
 be even faster on parallel collections on multiple cores.
 
 This document provides an in depth discussion of the APIs of the
-Scala collections classes from a user perspective.  It takes you on
+Scala collections classes from a user's perspective.  It takes you on
 a tour of all the fundamental classes and the methods they define.

@@ -154,12 +154,12 @@ issue, two things are required:
 The second option is not feasible because unsigned numbers are AnyVals, and they
 can only extend `Object`. Working around this in the backend is, in Sébastien's
 opinion, not an exciting adventure to embark on: a lot of patches and quirky
-fixes are required in the compiler. Sébastien, recognizing his unability to fix
+fixes are required in the compiler. Sébastien, recognizing his inability to fix
 the issue, recommends to reject the proposal.
 
 Josh needs to leave. Eugene wonders if these problems are only JVM-specific.
 Sébastien replies that both yes and no, and he confirms that unsigned integers
-will be implemented in Scalajs alone, so the implementation won't be
+will be implemented in Scala.js alone, so the implementation won't be
 platform-independent. Eugene is interested in knowing if there will be any code
 duplication in the implementation, and Sébastien doesn't think so, since Scala
 Native implements unsigned integer in a different way.

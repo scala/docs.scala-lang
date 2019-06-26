@@ -16,13 +16,13 @@ The second language feature discussed in this document, default arguments, in ge
 
 ## Named Arguments
 
-In Scala 2.8, method arguments can be speciﬁed in _named style_ using the same syntax as variable assignments:
+In Scala 2.8, method arguments can be specified in _named style_ using the same syntax as variable assignments:
 
     def f[T](a: Int, b: T)
     f(b = getT(), a = getInt())
 
 
-The argument expressions are evaluated in call-site order, so in the above example `getT()` is executed before `getInt()`f. Mixing named and positional arguments is allowed as long as the positional part forms a preﬁx of the argument list:
+The argument expressions are evaluated in call-site order, so in the above example `getT()` is executed before `getInt()`f. Mixing named and positional arguments is allowed as long as the positional part forms a prefix of the argument list:
 
     f(0, b = "1")     // valid
     f(b = "1", a = 0) // valid
@@ -51,7 +51,7 @@ The following list shows how named arguments interfere with other language featu
 
 **By-Name Parameters** continue to work as expected when using named arguments. The expression is only (and repeatedly) evaluated when the body of the method accesses the parameter.
 
-**Repeated Parameters** When an application uses named arguments, the repeated parameter has to be speciﬁed exactly once. Using the same parameter name multiple times is disallowed.
+**Repeated Parameters** When an application uses named arguments, the repeated parameter has to be specified exactly once. Using the same parameter name multiple times is disallowed.
 
 **Functional values** A functional value in Scala is an instance of a class which implements a method called apply. One can use the parameter names of that apply method for a named application. For functional values whose static type is scala.FunctionN, the parameter names of that apply method can be used.
 
@@ -68,17 +68,17 @@ The following list shows how named arguments interfere with other language featu
     val a: A = new B
     a.f(a = 1) // OK
 
-**Overloading Resolution** When a method application refers to an overloaded method, ﬁrst the set of applicable alternatives is determined and then the most speciﬁc alternative is chosen (see [1], Chapter 6.26.3).
+**Overloading Resolution** When a method application refers to an overloaded method, first the set of applicable alternatives is determined and then the most specific alternative is chosen (see [1], Chapter 6.26.3).
 
-The presence of named argument inﬂuences the set of applicable alternatives, the argument types have to be matched against the corresponding parameter types based on the names. In the following example, the second alternative is applicable:
+The presence of named argument influences the set of applicable alternatives, the argument types have to be matched against the corresponding parameter types based on the names. In the following example, the second alternative is applicable:
 
     def f() // #1
     def f(a: Int, b: String) // #2
     f(b = "someString", a = 1) // using #2
 
-If multiple alternatives are applicable, the most speciﬁc one is determined. This process is independent of the argument names used in a speciﬁc application and only looks at the method signature (for a detailed description, see [1], Chapter 6.26.3).
+If multiple alternatives are applicable, the most specific one is determined. This process is independent of the argument names used in a specific application and only looks at the method signature (for a detailed description, see [1], Chapter 6.26.3).
 
-In the following example, both alternatives are applicable, but none of them is more speciﬁc than the other because the argument types are compared based on their position, not on the argument name:
+In the following example, both alternatives are applicable, but none of them is more specific than the other because the argument types are compared based on their position, not on the argument name:
 
     def f(a: Int, b: String)   // #1
     def f(b: Object, a: Int)   // #2
@@ -113,7 +113,7 @@ A default argument may be an arbitrary expression. Since the scope of a paramete
     // def f(a: Int = 0, b: Int = a + 1) // "error: not found: value a"
     f(10)() // returns 11 (not 1)
 
-A special expected type is used for type-checking the default argument `expr` of a method parameter `”x: T = expr”`: it is obtained by replacing all occurrences of type parameters of the method (type parameters of the class for constructors) with the undeﬁned type. This allows specifying default arguments for polymorphic methods and classes:
+A special expected type is used for type-checking the default argument `expr` of a method parameter `”x: T = expr”`: it is obtained by replacing all occurrences of type parameters of the method (type parameters of the class for constructors) with the undefined type. This allows specifying default arguments for polymorphic methods and classes:
 
     def f[T](a: T = 1) = a
     f()    // returns 1: Int
@@ -157,7 +157,7 @@ During type-checking, the static type is used to determine whether a parameter h
     def f(a: String, b: Int = 1) // #2
     f("str") // both are applicable, #1 is selected
 
-**Case Classes** For every case class, a method named `”copy”` is now generated which allows to easily create modiﬁed copies of the class’s instances. The copy method takes the same type and value parameters as the primary constructor of the case class, and every parameter defaults to the corresponding constructor parameter.
+**Case Classes** For every case class, a method named `”copy”` is now generated which allows to easily create modified copies of the class’s instances. The copy method takes the same type and value parameters as the primary constructor of the case class, and every parameter defaults to the corresponding constructor parameter.
 
     case class A[T](a: T, b: Int) {
     // def copy[T’](a’: T’ = a, b’: Int = b): A[T’] =
@@ -215,4 +215,4 @@ For constructor defaults, these methods are added to the companion object of the
     // }
 
 ## References
-1. Odersky, M. _The Scala Language Speciﬁcation, Version 2.11_. Available online at [http://www.scala-lang.org/files/archive/spec/2.11/](http://www.scala-lang.org/files/archive/spec/2.11/)
+1. Odersky, M. _The Scala Language Specification, Version 2.11_. Available online at [http://www.scala-lang.org/files/archive/spec/2.11/](http://www.scala-lang.org/files/archive/spec/2.11/)

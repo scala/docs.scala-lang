@@ -141,7 +141,7 @@ Comments
 + Interaction with nullary constructors. Currently `class Foo` is interpreted as
   `class Foo()`. Mutatis mutandis for case class `apply` methods.
 
-**Martin** ([Youtube time: 11.37](https://youtu.be/gnlL4PlstFY?t=688)) mentiones that this proposal also came about due to New collection usecases that surfaced in recent work - showing that without a strict rule there is a high amount of "un-disciplined" use of (). But he agrees with Miles about merging the two proposals together.
+**Martin** ([Youtube time: 11.37](https://youtu.be/gnlL4PlstFY?t=688)) mentioned that this proposal also came about due to New collection usecases that surfaced in recent work - showing that without a strict rule there is a high amount of "un-disciplined" use of (). But he agrees with Miles about merging the two proposals together.
 
 **Conclusion** **Jorge** takes the task to merge the proposals and extend the motivation.  
 
@@ -210,7 +210,7 @@ Discussion:
 
 **Josh** ([YouTube time: 27’16’’](https://youtu.be/gnlL4PlstFY?t=1636)) clarifies that in order to replace the libraries one would need a proof of concept, and currently there is none.
 
-**Adriaan** ([YouTube time 30’](https://youtu.be/gnlL4PlstFY?t=1796)) summarises the discussion, pointing out that Committee needs to answer a question *will we support XML in some way* and *waht would be the most "Scala-like" way to do so* and *who will be maintaing it*.  
+**Adriaan** ([YouTube time 30’](https://youtu.be/gnlL4PlstFY?t=1796)) summarises the discussion, pointing out that Committee needs to answer a question *will we support XML in some way* and *what would be the most "Scala-like" way to do so* and *who will be maintaining it*.
 
 **Seth** ([YouTube time 35’57’’](https://youtu.be/gnlL4PlstFY?t=2157)) is under the impression that large portion of XML user base are the ones using it to do generation and rarer to be reading in XML using the existing Scala XML support and asks others to share their impressions.
 **Martin** re-phrases it as “using XML for pattern matching”.
@@ -269,7 +269,7 @@ Counter Proposals
 - Multiple "def" keywords, one which would mean side-effecting function
 := for side effects 
 
-**Josh** concludes: big point to debate would the language consistency be worth the change to more verbose expresion.   
+**Josh** concludes: big point to debate would the language consistency be worth the change to more verbose expression.
 
 **Iulian** ([You/tube time: ]( https://youtu.be/gnlL4PlstFY?t=2928)) adds that 1. last 5 years Syntax procedure was anyway deprecated; 2. going forward we should consider Scala 3 in a light of next 15 years, now is the right moment to clean up the language and 3. this is “the easiest refactoring to automate the code base” that could be a “zero cost migration” 
 

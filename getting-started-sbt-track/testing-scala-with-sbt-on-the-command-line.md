@@ -20,9 +20,9 @@ We assume you know [how to create a Scala project with sbt](getting-started-with
 
 ```
 sbt test
-[info] Loading global plugins from /Users/travislee/.sbt/0.13/plugins
-[info] Loading project definition from /Users/travislee/workspace/sandbox/my-something-project/project
-[info] Set current project to scalatest-example (in build file:/Users/travislee/workspace/sandbox/my-something-project/)
+[info] Loading global plugins from /Users/username/.sbt/0.13/plugins
+[info] Loading project definition from /Users/username/workspace/sandbox/my-something-project/project
+[info] Set current project to scalatest-example (in build file:/Users/username/workspace/sandbox/my-something-project/)
 [info] CubeCalculatorTest:
 [info] - CubeCalculator.cube
 [info] Run completed in 267 milliseconds.

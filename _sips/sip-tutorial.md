@@ -10,8 +10,8 @@ This tutorial details of how to write a new SIP and adding it to the website.
 The process to submit is simple:
 
 * Fork the [Scala documentation repository](http://github.com/scala/docs.scala-lang) and clone it.
-* Create a new SIP file in the `sips/pending/_posts/`. Use the [S(L)IP template](https://github.com/scala/docs.scala-lang/blob/master/_sips/sip-template.md)
-  * Make sure the new file follows the format:  `YYYY-MM-dd-{title}.md`.  Use the proposal date for `YYYY-MM-dd`.
+* Create a new SIP file in the `sips/pending/_posts/`. Use the [SIP template](https://github.com/scala/docs.scala-lang/blob/master/_sips/sip-template.md)
+  * Make sure the new file follows the format: `YYYY-MM-dd-{title}.md`. Use the proposal date for `YYYY-MM-dd`.
   * Use the [Markdown Syntax](http://daringfireball.net/projects/markdown/syntax) to write your SIP.
   * Follow the instructions in the [README](https://github.com/scala/docs.scala-lang/blob/master/README.md) to build your SIP locally so you can ensure that it looks correct on the website.
 * Create a link to your SIP in the "pending sips" section of `index.md`.
@@ -21,7 +21,7 @@ The process to submit is simple:
 
 ## SIP Post Format ##
 
-First, create a new SIP file in the `pending/_posts` directory.  Make sure the new file follows the format:  `YYYY-MM-dd-{title}.md`.  Where:
+First, create a new SIP file in the `pending/_posts` directory. Make sure the new file follows the format: `YYYY-MM-dd-{title}.md`. Where:
 * `YYYY` is the current year when the proposal originated.
 * `MM` is the current month (`01` = January, `12` = December) when the proposal originated.
 * `dd` is the day of the month when the proposal originated.

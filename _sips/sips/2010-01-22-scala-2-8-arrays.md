@@ -26,8 +26,8 @@ First, there’s actually not a single array type representation in Java but
 nine different ones: One representation for arrays of reference type and
 another eight for arrays of each of the primitive types `byte`, `char`,
 `short`, `int`, `long`, `float`, `double`, and `boolean`. There is no common
-type for these different representations which is more speciﬁc than just
-`java.lang.Object`, even though there are some reﬂective methods to deal with
+type for these different representations which is more specific than just
+`java.lang.Object`, even though there are some reflective methods to deal with
 arrays of arbitrary type in `java.lang.reflect.Array`. Second, there’s no way
 to create an array of a generic type; only monomorphic array creations are
 allowed. Third, the only operations supported by arrays are indexing, updates,
@@ -35,14 +35,14 @@ and get length.
 
 Contrast this with what we would like to have in Scala: Arrays should slot
 into the collections hierarchy, supporting the hundred or so methods that are
-deﬁned on sequences. And they should certainly be generic, so that one can
+defined on sequences. And they should certainly be generic, so that one can
 create an `Array[T]` where `T` is a type variable.
 
 ### The Past
 
 How to combine these desirables with the representation restrictions imposed
 by Java interoperability and performance? There’s no easy answer, and I
-believe we got it wrong the ﬁrst time when we designed Scala. The Scala
+believe we got it wrong the first time when we designed Scala. The Scala
 language up to 2.7.x “magically” wrapped and unwrapped arrays when required in
 a process called boxing and unboxing, similarly to what is done to treat
 primitive numeric types as objects. “Magically” means: the compiler generated
@@ -89,7 +89,7 @@ proposal is that one would not normally refer to Scala native arrays in user
 code, just as one rarely referred to RichString in Scala. One would only rely
 on the implicit conversion to add the necessary methods and traits to Java
 arrays. Unfortunately, the String/RichString experience has shown that this is
-also problematic. In par- ticular, in pre 2.8 versions of Scala, one had the
+also problematic. In particular, in pre 2.8 versions of Scala, one had the
 non-intuitive property that
 
     "abc".reverse.reverse == "abc"          //, yet

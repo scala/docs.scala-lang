@@ -40,7 +40,7 @@ Another very common example in the library is a bit more complex:
 
     def f[A : Ordering](a: A, b: A) = implicitly[Ordering[A]].compare(a, b)
 
-Here, `implicitly` is used to retrive the implicit value we want, one of type
+Here, `implicitly` is used to retrieve the implicit value we want, one of type
 `Ordering[A]`, which class defines the method `compare(a: A, b: A): Int`.
 
 We'll see another way of doing this below.

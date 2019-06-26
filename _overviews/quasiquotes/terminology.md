@@ -19,6 +19,6 @@ permalink: /overviews/quasiquotes/:title.html
 * **Tree deconstruction** refers to usages of quasiquotes as patterns to structurally tear apart trees.
 * **Unquoting** is a way of either putting things in or extracting things out of quasiquotes. Can be performed with `$` syntax within a quasiquote.
 * **Unquote splicing** (or just splicing) is another form of unquoting that flattens contents of the unquotee into a tree. Can be performed with either `..$` or `...$` syntax.
-* **Rank** is a degree of flattenning of unquotee: `rank($) == 0`, `rank(..$) == 1`, `rank(...$) == 2`.
+* **Rank** is a degree of flattening of unquotee: `rank($) == 0`, `rank(..$) == 1`, `rank(...$) == 2`.
 * [**Lifting**](lifting.html) is a way to unquote non-tree values and transform them into trees with the help of the `Liftable` typeclass.
 * [**Unlifting**](unlifting.html) is a way to unquote non-tree values out of quasiquote patterns with the help of the `Unliftable` typeclass.
