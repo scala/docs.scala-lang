@@ -6,7 +6,7 @@ discourse: false
 
 partof: scala-tour
 
-num: 6
+num: 7
 language: ko
 
 next-page: higher-order-functions

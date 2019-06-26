@@ -6,7 +6,7 @@ discourse: false
 
 partof: scala-tour
 
-num: 9
+num: 10
 language: ko
 
 next-page: case-classes

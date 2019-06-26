@@ -6,7 +6,7 @@ discourse: false
 
 partof: scala-tour
 
-num: 7
+num: 8
 language: ko
 
 next-page: nested-functions

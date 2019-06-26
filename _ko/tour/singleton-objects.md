@@ -6,7 +6,7 @@ discourse: false
 
 partof: scala-tour
 
-num: 12
+num: 13
 language: ko
 
 next-page: regular-expression-patterns
