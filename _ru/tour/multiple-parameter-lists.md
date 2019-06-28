@@ -78,3 +78,20 @@ numbers.foldRight(0)(_+_) // Форма с каррированием
 def execute(arg: Int)(implicit ec: ExecutionContext) = ???
 ```
     
+#### Частичное применение
+  Когда метод вызывается с меньшим количеством списков параметров, то результатом будет функция, 
+  которая принимает в качестве параметров недостающие списки. Это официально известно как 
+  [частичное применение](https://ru.wikipedia.org/wiki/%D0%A7%D0%B0%D1%81%D1%82%D0%B8%D1%87%D0%BD%D0%BE%D0%B5_%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5).
+  
+  Например,
+  
+  ```tut
+  val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+  val numberFunc = numbers.foldLeft(List[Int]()) _
+  
+  val squares = numberFunc((xs, x) => xs :+ x*x)
+  print(squares) // List(1, 4, 9, 16, 25, 36, 49, 64, 81, 100)
+  
+  val cubes = numberFunc((xs, x) => xs :+ x*x*x)
+  print(cubes)  // List(1, 8, 27, 64, 125, 216, 343, 512, 729, 1000)
+  ```
