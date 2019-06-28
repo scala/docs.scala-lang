@@ -99,11 +99,6 @@ There are several steps to making the plugin. First you need to write
 and compile the source of the plugin itself. Here is the source code for
 it:
 
-    // IMPORTANT:
-    // this code was written for Scala 2.8.
-    // it needs to be updated for Scala 2.12.
-    // the changes required are modest.
-
     package localhost
 
     import scala.tools.nsc
@@ -126,11 +121,11 @@ it:
         def newPhase(_prev: Phase) = new DivByZeroPhase(_prev)
         class DivByZeroPhase(prev: Phase) extends StdPhase(prev) {
           override def name = DivByZero.this.name
-          def apply(unit: CompilationUnit) {
+          def apply(unit: CompilationUnit): Unit = {
             for ( tree @ Apply(Select(rcvr, nme.DIV), List(Literal(Constant(0)))) <- unit.body
                  if rcvr.tpe <:< definitions.IntClass.tpe)
               {
-                unit.error(tree.pos, "definitely division by zero")
+                global.reporter.error(tree.pos, "definitely division by zero")
               }
           }
         }
@@ -276,11 +271,6 @@ sure you got the help string looking right.
 Here is a complete plugin that has an option. This plugin has no
 behavior other than to print out its option.
 
-    // IMPORTANT:
-    // this code was written for Scala 2.8.
-    // it needs to be updated for Scala 2.12.
-    // the changes required are modest.
-
     package localhost
 
     import scala.tools.nsc
@@ -298,7 +288,7 @@ behavior other than to print out its option.
 
       var level = 1000000
 
-      override def processOptions(options: List[String], error: String => Unit) {
+      override def processOptions(options: List[String], error: String => Unit): Unit = {
         for (option <- options) {
           if (option.startsWith("level:")) {
             level = option.substring("level:".length).toInt
@@ -313,15 +303,13 @@ behavior other than to print out its option.
 
       private object Component extends PluginComponent {
         val global: Silly.this.global.type = Silly.this.global
-        val runsAfter = "refchecks"
-        // Using the Scala Compiler 2.8.x the runsAfter should be written as shown below
-        // val runsAfter = List[String]("refchecks");
+        val runsAfter = List[String]("refchecks");
         val phaseName = Silly.this.name
         def newPhase(_prev: Phase) = new SillyPhase(_prev)
 
         class SillyPhase(prev: Phase) extends StdPhase(prev) {
           override def name = Silly.this.name
-          def apply(unit: CompilationUnit) {
+          def apply(unit: CompilationUnit): Unit = {
             println("Silliness level: " + level)
           }
         }
