@@ -309,7 +309,7 @@ XML数据就是半结构化的，因其相比于普通的二进制文件或文�
 _签名_ 是[类型签名](#类型签名type-signature)的简写。
 
 * #### 单例对象（singleton object）
-由object关键字定义的对象。每个单例对象有且仅有一个实例。与某个类共享名称且与这个类定义在同一源文件中的单例对象，叫这个类的[伴随对象](#伴随对象companion-object)，类则叫单列对象的[伴随类](#伴随类companion-class)。无伴随类的单例对象叫[独立对象](#独立对象standalone-object)。
+由object关键字定义的对象。每个单例对象有且仅有一个实例。与某个类共享名称且与这个类定义在同一源文件中的单例对象，叫这个类的[伴生对象](#伴生对象companion-object)，类则叫单列对象的[伴生类](#伴生类companion-class)。无伴随类的单例对象叫[独立对象](#独立对象standalone-object)。
 
 * #### 独立对象（standalone object）
 没有[伴生类](#伴生类companion-class)的[单例对象](#单例对象singleton-object)。
