@@ -19,7 +19,7 @@ previous-page: unified-types
     class Point(xc: Int, yc: Int) {
       var x: Int = xc
       var y: Int = yc
-      def move(dx: Int, dy: Int) {
+      def move(dx: Int, dy: Int): Unit = {
         x = x + dx
         y = y + dy
       }
@@ -33,7 +33,7 @@ previous-page: unified-types
 클래스들은 아래의 예제가 보여주는 것처럼 새로운 기본형으로 초기화된다.
 
     object Classes {
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         val pt = new Point(1, 2)
         println(pt)
         pt.move(10, 10)
