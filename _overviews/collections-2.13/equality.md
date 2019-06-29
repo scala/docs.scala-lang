@@ -31,4 +31,4 @@ It does not matter for the equality check whether a collection is mutable or imm
     java.util.NoSuchElementException: key not found:
     ArrayBuffer(2, 2, 3)
 
-In this example, the selection in the last line will most likely fail because the hash-code of the array `xs` has changed in the second-to-last line. Therefore, the hash-code-based lookup will look at a different place than the one where `xs` was stored.
+In this example, the selection in the last line will most likely fail because the hash-code of the array `buf` has changed in the second-to-last line. Therefore, the hash-code-based lookup will look at a different place than the one where `buf` was stored.
