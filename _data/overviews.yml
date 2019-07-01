@@ -2,7 +2,7 @@
 - category: Standard Library
   description: "Guides and overviews covering the Scala standard library."
   overviews:
-    - title: Scala 2.13’s Collections
+    - title: Scala Collections
       by: Martin Odersky and Julien Richard-Foy
       icon: sitemap
       url: "collections-2.13/introduction.html"
@@ -40,68 +40,21 @@
       url: "core/collections-migration-213.html"
       description: "This page describes the main changes for collection users that migrate to Scala
       2.13 and shows how to cross-build projects with Scala 2.11 / 2.12 and 2.13."
-    - title: The Architecture of Scala 2.13’s Collections
+    - title: The Architecture of Scala Collections
       icon: sitemap
       url: "core/architecture-of-scala-213-collections.html"
       by: Julien Richard-Foy
       description: "These pages describe the architecture of the collections framework introduced in Scala 2.13. Compared to the Collections API you will find out more about the internal workings of the framework."
-    - title: Implementing Custom Collections (Scala 2.13)
+    - title: Implementing Custom Collections
       icon: building
       url: "core/custom-collections.html"
       by: Martin Odersky, Lex Spoon and Julien Richard-Foy
       description: "In this document you will learn how the collections framework helps you define your own collections in a few lines of code, while reusing the overwhelming part of collection functionality from the framework."
-    - title: Adding Custom Collection Operations (Scala 2.13)
+    - title: Adding Custom Collection Operations
       icon: building
       url: "core/custom-collection-operations.html"
       by: Julien Richard-Foy
       description: "This guide shows how to write operations that can be applied to any collection type and return the same collection type, and how to write operations that can be parameterized by the type of collection to build."
-    - title: Scala 2.8 to 2.12’s Collections
-      by: Martin Odersky
-      icon: sitemap
-      url: "collections/introduction.html"
-      description: "Scala's Collection Library."
-      subdocs:
-        - title: Introduction
-          url: "collections/introduction.html"
-        - title: Mutable and Immutable Collections
-          url: "collections/overview.html"
-        - title: Trait Traversable
-          url: "collections/trait-traversable.html"
-        - title: Trait Iterable
-          url: "collections/trait-iterable.html"
-        - title: The sequence traits Seq, IndexedSeq, and LinearSeq
-          url: "collections/seqs.html"
-        - title: Sets
-          url: "collections/sets.html"
-        - title: Maps
-          url: "collections/maps.html"
-        - title: Concrete Immutable Collection Classes
-          url: "collections/concrete-immutable-collection-classes.html"
-        - title: Concrete Mutable Collection Classes
-          url: "collections/concrete-mutable-collection-classes.html"
-        - title: Arrays
-          url: "collections/arrays.html"
-        - title: Strings
-          url: "collections/strings.html"
-        - title: Performance Characteristics
-          url: "collections/performance-characteristics.html"
-        - title: Equality
-          url: "collections/equality.html"
-        - title: Views
-          url: "collections/views.html"
-        - title: Iterators
-          url: "collections/iterators.html"
-        - title: Creating Collections From Scratch
-          url: "collections/creating-collections-from-scratch.html"
-        - title: Conversions Between Java and Scala Collections
-          url: "collections/conversions-between-java-and-scala-collections.html"
-        - title: Migrating from Scala 2.7
-          url: "collections/migrating-from-scala-27.html"
-    - title: The Architecture of Scala 2.8 to 2.12’s Collections
-      icon: building
-      url: "core/architecture-of-scala-collections.html"
-      by: Martin Odersky and Lex Spoon
-      description: "These pages describe the architecture of the Scala collections framework in detail. Compared to the Collections API you will find out more about the internal workings of the framework. You will also learn how this architecture helps you define your own collections in a few lines of code, while reusing the overwhelming part of collection functionality from the framework."
 
 - category: Language
   description: "Guides and overviews covering features in the Scala language."
@@ -303,7 +256,7 @@
 
 
 - category: Legacy
-  description: "Guides covering features no longer relevant to recent Scala versions (2.11+)."
+  description: "Guides covering features no longer relevant to recent Scala versions (2.12+)."
   overviews:
     - title: The Scala Actors Migration Guide
       by: Vojin Jovanovic and Philipp Haller
@@ -317,3 +270,50 @@
       description: "This guide describes the API of the scala.actors package of Scala 2.8/2.9. The organization follows groups of types that logically belong together. The trait hierarchy is taken into account to structure the individual sections. The focus is on the run-time behavior of the various methods that these traits define, thereby complementing the existing Scaladoc-based API documentation."
       label-color: "#899295"
       label-text: deprecated
+    - title: Scala 2.8 to 2.12’s Collections
+      by: Martin Odersky
+      icon: sitemap
+      url: "collections/introduction.html"
+      description: "Scala's Collection Library."
+      subdocs:
+        - title: Introduction
+          url: "collections/introduction.html"
+        - title: Mutable and Immutable Collections
+          url: "collections/overview.html"
+        - title: Trait Traversable
+          url: "collections/trait-traversable.html"
+        - title: Trait Iterable
+          url: "collections/trait-iterable.html"
+        - title: The sequence traits Seq, IndexedSeq, and LinearSeq
+          url: "collections/seqs.html"
+        - title: Sets
+          url: "collections/sets.html"
+        - title: Maps
+          url: "collections/maps.html"
+        - title: Concrete Immutable Collection Classes
+          url: "collections/concrete-immutable-collection-classes.html"
+        - title: Concrete Mutable Collection Classes
+          url: "collections/concrete-mutable-collection-classes.html"
+        - title: Arrays
+          url: "collections/arrays.html"
+        - title: Strings
+          url: "collections/strings.html"
+        - title: Performance Characteristics
+          url: "collections/performance-characteristics.html"
+        - title: Equality
+          url: "collections/equality.html"
+        - title: Views
+          url: "collections/views.html"
+        - title: Iterators
+          url: "collections/iterators.html"
+        - title: Creating Collections From Scratch
+          url: "collections/creating-collections-from-scratch.html"
+        - title: Conversions Between Java and Scala Collections
+          url: "collections/conversions-between-java-and-scala-collections.html"
+        - title: Migrating from Scala 2.7
+          url: "collections/migrating-from-scala-27.html"
+    - title: The Architecture of Scala 2.8 to 2.12’s Collections
+      icon: building
+      url: "core/architecture-of-scala-collections.html"
+      by: Martin Odersky and Lex Spoon
+      description: "These pages describe the architecture of the Scala collections framework in detail. Compared to the Collections API you will find out more about the internal workings of the framework. You will also learn how this architecture helps you define your own collections in a few lines of code, while reusing the overwhelming part of collection functionality from the framework."
