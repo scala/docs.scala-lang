@@ -1,6 +1,6 @@
 ---
 layout: tour
-title: Automatic Type-Dependent Closure Construction
+title: 型依存クロージャの自動構築
 language: ja
 
 discourse: true
@@ -8,9 +8,9 @@ discourse: true
 partof: scala-tour
 ---
 
-Scala allows parameterless function names as parameters of methods. When such a method is called, the actual parameters for parameterless function names are not evaluated and a nullary function is passed instead which encapsulates the computation of the corresponding parameter (so-called *call-by-name* evaluation).
+Scalaはメソッドのパラメータとしてパラメータ無しの関数名を渡せます。そのようなメソッドが呼ばれると、パラメータ無しの関数名は実際に評価されず、代わりに対応するパラメーターの処理をカプセル化した、引数無しの関数が渡されます(いわゆる *名前渡し*評価です)。
 
-The following code demonstrates this mechanism:
+以下のコードはこの仕組みを説明しています。
 
     object TargetTest1 extends Application {
       def whileLoop(cond: => Boolean)(body: => Unit): Unit =
@@ -25,11 +25,11 @@ The following code demonstrates this mechanism:
       }
     }
 
-The function whileLoop takes two parameters `cond` and `body`. When the function is applied, the actual parameters do not get evaluated. But whenever the formal parameters are used in the body of `whileLoop`, the implicitly created nullary functions will be evaluated instead. Thus, our method `whileLoop` implements a Java-like while-loop with a recursive implementation scheme.
+関数 whileLoop は2つのパラメータ`cond`と`body`を受け取ります。関数が適用される時、実際のパラメータは評価されません。しかし形式上のパラメータが`whileLoop`の本体内で使われる度に、暗黙に生成された引数の無い関数が代わりに評価されます。このようにメソッド`whileLoop`はJavaのようなwhileループを再帰的な方法で実装しています。
 
-We can combine the use of [infix/postfix operators](operators.html) with this mechanism to create more complex statements (with a nice syntax).
+[中置/後置 演算子](operators.html)とこのメカニズムを組み合わせ利用し、より複雑な式を(より良い構文で)作れます。
 
-Here is the implementation of a loop-unless statement:
+こちらがloop-unless式の実装です。
 
     object TargetTest2 extends Application {
       def loop(body: => Unit): LoopUnlessCond =
@@ -46,9 +46,9 @@ Here is the implementation of a loop-unless statement:
         i -= 1
       } unless (i == 0)
     }
-The `loop` function just accepts a body of a loop and returns an instance of class `LoopUnlessCond` (which encapsulates this body object). Note that the body didn't get evaluated yet. Class `LoopUnlessCond` has a method `unless` which we can use as a *infix operator*. This way, we achieve a quite natural syntax for our new loop: `loop { < stats > } unless ( < cond > )`.
+この`loop`関数はループ処理の本体を受け取り、クラス`LoopUnlessCond`(この処理の本体をカプセル化する)のインスタンスを返すだけです。処理の本体はまだ評価されていないことに気をつけてください。クラス`LoopUnlessCond`は *中置演算子* として使えるメソッド`unless`を持ちます。このように、新しいループ処理: `loop { < stats > } unless ( < cond > )`のとても自然な構文を作れます。
 
-Here's the output when `TargetTest2` gets executed:
+こちらが`TargetTest2`を実行した時の出力です。
 
     i = 10
     i = 9
