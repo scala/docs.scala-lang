@@ -19,9 +19,7 @@ previous-page: traits
 
 두 개의 엘리먼트를 가진 튜플을 다음처럼 만들 수 있다.
 
-```tut
-val ingredient = ("Sugar" , 25)
-```
+    val ingredient = ("Sugar" , 25)
 
 `String` 엘리먼트와 `Int` 엘리먼트로 이루어진 튜플이 생성된다.
 
@@ -34,40 +32,35 @@ val ingredient = ("Sugar" , 25)
 
 엘리먼트에 접근하는 한 가지 방법은 위치 정보를 이용하는 것이다. 각각의 엘리먼트들은 `_1`, `_2` 와 같은 명칭을 갖는다.
 
-```tut
-println(ingredient._1) // Sugar
-println(ingredient._2) // 25
-```
+    println(ingredient._1) // Sugar
+    println(ingredient._2) // 25
+
 ## 튜플의 패턴 매칭
 [패턴 매칭](pattern-matching.html)을 이용하여 튜플을 분리할 수 있다.
 
-```tut
-val (name, quantity) = ingredient
-println(name) // Sugar
-println(quantity) // 25
-```
+    val (name, quantity) = ingredient
+    println(name) // Sugar
+    println(quantity) // 25
+
 여기서 `name`의 추론 타입은 `String`이고, `quantity`의 추론 타입은 `Int`이다.
 
 튜플 패턴 매칭의 또 다른 예는 다음과 같다.
 
-```tut
-val planets =
-  List(("Mercury", 57.9), ("Venus", 108.2), ("Earth", 149.6),
-       ("Mars", 227.9), ("Jupiter", 778.3))
-planets.foreach{
-  case ("Earth", distance) =>
-    println(s"Our planet is $distance million kilometers from the sun")
-  case _ =>
-}
-```
+    val planets =
+      List(("Mercury", 57.9), ("Venus", 108.2), ("Earth", 149.6),
+           ("Mars", 227.9), ("Jupiter", 778.3))
+    planets.foreach{
+      case ("Earth", distance) =>
+        println(s"Our planet is $distance million kilometers from the sun")
+      case _ =>
+    }
+    
 혹은, `for` 구문 안에서 다음처럼 사용할 수 있다.
 
-```tut
-val numPairs = List((2, 5), (3, -7), (20, 56))
-for ((a, b) <- numPairs) {
-  println(a * b)
-}
-```
+    val numPairs = List((2, 5), (3, -7), (20, 56))
+    for ((a, b) <- numPairs) {
+      println(a * b)
+    }
 
 ## 튜플과 케이스 클래스
 사용자들은 때때로 튜플과 [케이스 클래스](case-classes.html) 중 하나를 선택하는 것이 어려울 수 있다.
