@@ -841,7 +841,7 @@ for a more precise description of the semantics.
 ## Promises
 
 So far we have only considered `Future` objects created by
-asynchronous computations started using the `future` method.
+asynchronous computations started using the `Future` method.
 However, futures can also be created using *promises*.
 
 While futures are defined as a type of read-only placeholder object
@@ -935,7 +935,7 @@ has not been completed yet (e.g., there are several HTTP requests being
 executed from several different futures and the client is interested only
 in the first HTTP response - corresponding to the first future to
 complete the promise). For these reasons methods `tryComplete`,
-`trySuccess` and `tryFailure` exist on future. The client should be
+`trySuccess` and `tryFailure` exist on promise. The client should be
 aware that using these methods results in programs which are not
 deterministic, but depend on the execution schedule.
 
