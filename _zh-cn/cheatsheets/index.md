@@ -1,6 +1,6 @@
 ---
 layout: cheatsheet
-title: Scalacheat
+title: Scala Cheatsheet
 
 partof: cheatsheet
 
