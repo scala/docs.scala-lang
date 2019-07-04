@@ -46,7 +46,7 @@ The other operations that `Iterator` has in common with `Iterable` have the same
     res4: Boolean = false
 
 As you can see, after the call to `it.map`, the `it` iterator hasn’t advanced to its end, but traversing the iterator
-resulting from the call to `it.map` also traverses `it` and advances it to its end.
+resulting from the call to `res1.foreach` also traverses `it` and advances it to its end.
 
 Another example is the `dropWhile` method, which can be used to find the first elements of an iterator that has a certain property. For instance, to find the first word in the iterator above that has at least two characters you could write:
 
@@ -92,7 +92,7 @@ All operations on iterators are summarized below.
 |  **Variations:**          |						         |
 |  `it.buffered`      	    | A buffered iterator returning all elements of `it`. |
 |  `it grouped size`      	| An iterator that yields the elements returned by `it` in fixed-sized sequence "chunks". |
-|  `xs sliding size`      	| An iterator that yields the elements returned by `it` in sequences representing a sliding fixed-sized window. |
+|  `it sliding size`      	| An iterator that yields the elements returned by `it` in sequences representing a sliding fixed-sized window. |
 |  **Duplication:**         |						         |
 |  `it.duplicate`           | A pair of iterators that each independently return all elements of `it`. |
 |  **Additions:**           |						         |
@@ -100,7 +100,7 @@ All operations on iterators are summarized below.
 |  `it.padTo(len, x)`      | The iterator that first returns all elements of `it` and then follows that by copies of `x` until length `len` elements are returned overall. |
 |  **Maps:**                |						         |
 |  `it map f`               | The iterator obtained from applying the function `f` to every element returned from `it`. |
-|  `it flatMap f`           | The iterator obtained from applying the iterator-valued function f to every element in `it` and appending the results. |
+|  `it flatMap f`           | The iterator obtained from applying the iterator-valued function `f` to every element in `it` and appending the results. |
 |  `it collect f`           | The iterator obtained from applying the partial function `f` to every element in `it` for which it is defined and collecting the results. |
 |  **Conversions:**         |						         |
 |  `it.toArray`             | Collects the elements returned by `it` in an array. |
@@ -118,7 +118,7 @@ All operations on iterators are summarized below.
 |  `it.nonEmpty`            | Test whether the collection contains elements (alias of `hasNext`). |
 |  `it.size`                | The number of elements returned by `it`. Note: `it` will be at its end after this operation! |
 |  `it.length`              | Same as `it.size`. |
-|  `xs.knownSize`	    	    |The number of elements, if this one is known without modifying the iterator’s state, otherwise `-1`.	     |
+|  `it.knownSize`	    	    |The number of elements, if this one is known without modifying the iterator’s state, otherwise `-1`.	     |
 |  **Element Retrieval Index Search:**|						         |
 |  `it find p`              | An option containing the first element returned by `it` that satisfies `p`, or `None` is no element qualifies. Note: The iterator advances to after the element, or, if none is found, to the end. |
 |  `it indexOf x`           | The index of the first element returned by `it` that equals `x`. Note: The iterator advances past the position of this element. |
@@ -157,7 +157,7 @@ All operations on iterators are summarized below.
 |  **Update:**              |						         |
 |  `it.patch(i, jt, r)`    | The iterator resulting from `it` by replacing `r` elements starting with `i` by the patch iterator `jt`. |
 |  **Comparison:**          |						         |
-|  `it sameElements jt`     | A test whether iterators it and `jt` return the same elements in the same order. Note: Using the iterators after this operation is undefined and subject to change. |
+|  `it sameElements jt`     | A test whether iterators `it` and `jt` return the same elements in the same order. Note: Using the iterators after this operation is undefined and subject to change. |
 |  **Strings:**             |						         |
 |  `it.addString(b, start, sep, end)`| Adds a string to `StringBuilder` `b` which shows all elements returned by `it` between separators `sep` enclosed in strings `start` and `end`. `start`, `sep`, `end` are all optional. |
 |  `it.mkString(start, sep, end)` | Converts the collection to a string which shows all elements returned by `it` between separators `sep` enclosed in strings `start` and `end`. `start`, `sep`, `end` are all optional. |
