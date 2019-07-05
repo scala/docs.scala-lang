@@ -21,7 +21,7 @@ To illustrate the difference, we quickly sketch the implementation of a graph da
 class Graph {
   class Node {
     var connectedNodes: List[Node] = Nil
-    def connectTo(node: Node) {
+    def connectTo(node: Node): Unit = {
       if (connectedNodes.find(node.equals).isEmpty) {
         connectedNodes = node :: connectedNodes
       }
@@ -65,7 +65,7 @@ The type `graph1.Node` is distinct from the type `graph2.Node`. In Java, the las
 class Graph {
   class Node {
     var connectedNodes: List[Graph#Node] = Nil
-    def connectTo(node: Graph#Node) {
+    def connectTo(node: Graph#Node): Unit = {
       if (connectedNodes.find(node.equals).isEmpty) {
         connectedNodes = node :: connectedNodes
       }
