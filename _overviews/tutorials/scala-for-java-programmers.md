@@ -6,7 +6,7 @@ partof: scala-for-java-programmers
 
 discourse: true
 
-languages: [es, ko, de, it, zh-tw]
+languages: [es, ko, de, it, ja, zh-tw]
 permalink: /tutorials/:title.html
 ---
 
