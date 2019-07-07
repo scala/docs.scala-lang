@@ -11,7 +11,6 @@ num: 22
 next-page: abstract-type-members
 previous-page: lower-type-bounds
 
-redirect_from: "/tutorials/tour/inner-classes.html"
 ---
 
 Scalaではクラスが他のクラスをメンバーとして保持することが可能です。

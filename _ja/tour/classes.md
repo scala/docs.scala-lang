@@ -13,7 +13,6 @@ previous-page: unified-types
 topics: classes
 prerequisite-knowledge: no-return-keyword, type-declaration-syntax, string-interpolation, procedures
 
-redirect_from: "/tutorials/tour/classes.html"
 ---
 
 Scalaにおけるクラスはオブジェクトを作るための設計図です。

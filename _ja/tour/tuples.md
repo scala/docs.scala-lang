@@ -12,7 +12,6 @@ next-page: mixin-class-composition
 previous-page: traits
 topics: tuples
 
-redirect_from: "/tutorials/tour/tuples.html"
 ---
 
 Scalaではタプルは決まった数の要素を含む値であり、各要素はそれぞれの型を持ちます。

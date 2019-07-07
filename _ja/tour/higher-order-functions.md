@@ -11,7 +11,6 @@ num: 8
 next-page: nested-functions
 previous-page: mixin-class-composition
 
-redirect_from: "/tutorials/tour/higher-order-functions.html"
 ---
 
 高階関数は他の関数をパラメーターとして受け取る、もしくは結果として関数を返します。

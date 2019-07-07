@@ -11,7 +11,6 @@ num: 10
 next-page: case-classes
 previous-page: nested-functions
 
-redirect_from: "/tutorials/tour/multiple-parameter-lists.html"
 ---
 
 メソッドは複数のパラメータリストを持てます。

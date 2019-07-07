@@ -12,7 +12,6 @@ num: 15
 next-page: extractor-objects
 previous-page: singleton-objects
 
-redirect_from: "/tutorials/tour/regular-expression-patterns.html"
 ---
 正規表現はデータの中からパターン（またはその欠如）を探すために使うことができる文字列です。
 どんな文字列も`.r`メソッドを使うことで、正規表現に変換できます。

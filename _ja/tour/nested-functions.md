@@ -11,7 +11,6 @@ num: 9
 next-page: multiple-parameter-lists
 previous-page: higher-order-functions
 
-redirect_from: "/tutorials/tour/nested-functions.html"
 ---
 
 Scalaではメソッドの定義をネストする（_訳注：入れ子にする_）ことができます。

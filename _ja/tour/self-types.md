@@ -13,7 +13,6 @@ previous-page: compound-types
 topics: self-types
 prerequisite-knowledge: nested-classes, mixin-class-composition
 
-redirect_from: "/tutorials/tour/self-types.html"
 ---
 自分型は、直接継承していなくてもトレイトが他のトレイトにミックスインされていることを宣言する方法です。
 これにより依存先のメンバーをimportなしで利用できます。

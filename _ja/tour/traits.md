@@ -13,7 +13,6 @@ previous-page: classes
 topics: traits
 prerequisite-knowledge: expressions, classes, generics, objects, companion-objects
 
-redirect_from: "/tutorials/tour/traits.html"
 ---
 
 トレイトはクラス間でインターフェースとフィールドを共有するために使います。それらはJava 8のインターフェースと似ています。

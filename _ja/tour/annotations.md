@@ -11,7 +11,6 @@ num: 32
 next-page: default-parameter-values
 previous-page: by-name-parameters
 
-redirect_from: "/tutorials/tour/annotations.html"
 ---
 
 アノテーションはメタ情報と定義を関連づけます。例えば、メソッドの前のアノテーション`@deprecated`はメソッドが使われたらコンパイラに警告を出力させます。

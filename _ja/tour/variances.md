@@ -11,7 +11,6 @@ num: 19
 next-page: upper-type-bounds
 previous-page: generic-classes
 
-redirect_from: "/tutorials/tour/variances.html"
 ---
 
 変位指定は複合型の間の継承関係とそれらの型パラメータ間の継承関係の相関です。

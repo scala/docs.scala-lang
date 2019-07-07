@@ -11,7 +11,6 @@ num: 17
 next-page: generic-classes
 previous-page: extractor-objects
 
-redirect_from: "/tutorials/tour/for-comprehensions.html"
 ---
 
 Scalaは*シーケンス内包表記*を表現するための軽量な記法を提供します。

@@ -12,8 +12,6 @@ previous-page: inner-classes
 topics: abstract type members
 prerequisite-knowledge: variance, upper-type-bound
 
-redirect_from: "/tutorials/tour/abstract-types.html"
-redirect_from: "/tour/abstract-types.html"
 ---
 
 トレイトや抽象クラスのような抽象型は抽象型メンバーを持つことができます。
