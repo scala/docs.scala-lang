@@ -29,6 +29,9 @@ collections:
   tutorials:
     output: true
     permalink: /:collection/:path.html
+  glossary:
+    output: true
+    permalink: /:collection/:path.html
   sips:
     output: true
     permalink: /:collection/:path.html

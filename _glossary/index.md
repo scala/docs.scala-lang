@@ -1,6 +1,8 @@
 ---
 layout: glossary
 title: Glossary
+
+languages: [zh-cn]
 ---
 
 <h5>Glossary from the definitive book on Scala, <a href="http://www.artima.com/shop/programming_in_scala">Programming in Scala</a>.</h5>
