@@ -11,7 +11,6 @@ num: 13
 
 next-page: regular-expression-patterns
 previous-page: pattern-matching
-redirect_from: "/tutorials/tour/singleton-objects.html"
 prerequisite-knowledge: classes, methods, private-methods, packages, option
 ---
 オブジェクトは丁度1つのインスタンスを持つクラスです。

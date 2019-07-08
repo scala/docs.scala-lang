@@ -12,7 +12,6 @@ next-page: variances
 previous-page: for-comprehensions
 assumed-knowledge: classes unified-types
 
-redirect_from: "/tutorials/tour/generic-classes.html"
 ---
 ジェネリッククラスはパラメータとして型を1つ受け取るクラスです。それらはコレクションクラスで特に役立ちます。
 

@@ -13,7 +13,6 @@ next-page: singleton-objects
 previous-page: case-classes
 prerequisite-knowledge: case-classes, string-interpolation, subtyping
 
-redirect_from: "/tutorials/tour/pattern-matching.html"
 ---
 
 パターンマッチングは値をパターンに照合するための仕組みです。

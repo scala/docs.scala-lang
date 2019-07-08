@@ -11,7 +11,6 @@ num: 16
 next-page: for-comprehensions
 previous-page: regular-expression-patterns
 
-redirect_from: "/tutorials/tour/extractor-objects.html"
 ---
 
 抽出子オブジェクトは`unapply`メソッドを持つオブジェクトです。

@@ -11,7 +11,6 @@ num: 1
 
 next-page: basics
 
-redirect_from: "/tutorials/tour/tour-of-scala.html"
 ---
 
 ## ようこそツアーへ

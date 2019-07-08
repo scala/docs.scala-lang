@@ -11,7 +11,6 @@ num: 20
 next-page: lower-type-bounds
 previous-page: variances
 
-redirect_from: "/tutorials/tour/upper-type-bounds.html"
 ---
 
 Scalaでは [型パラメータ](generic-classes.html)と[抽象型メンバー](abstract-type-members.html) は型境界による制約をかけることができます。

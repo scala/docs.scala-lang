@@ -11,7 +11,6 @@ num: 26
 next-page: implicit-conversions
 previous-page: self-types
 
-redirect_from: "/tutorials/tour/implicit-parameters.html"
 ---
 
 メソッドは _暗黙の_ パラメータのリストを持つことができ、パラメータリストの先頭には _implicit_ キーワードで印をつけます。

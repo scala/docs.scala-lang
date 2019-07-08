@@ -12,7 +12,6 @@ next-page: inner-classes
 previous-page: upper-type-bounds
 prerequisite-knowledge: upper-type-bounds, generics, variance
 
-redirect_from: "/tutorials/tour/lower-type-bounds.html"
 ---
 
  [上限型境界](upper-type-bounds.html) は型を別の型のサブタイプに制限しますが、*下限型境界*は型が別の型のスーパータイプであることを宣言します。表現`B >: A`はパラメータ`B`または抽象型`B`が型`A`のスーパータイプであることを表します。ほとんどのケースで`A`はそのクラスの型パラメータであり、`B`はメソッドの型パラメータになります。

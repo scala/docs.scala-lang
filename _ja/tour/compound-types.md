@@ -11,7 +11,6 @@ num: 24
 next-page: self-types
 previous-page: abstract-type-members
 
-redirect_from: "/tutorials/tour/compound-types.html"
 ---
 ときどき、あるオブジェクトの型が、複数の他の型のサブタイプであると表現する必要が生じます。
 Scalaでは、これは*複合型*を用いて表現できます。複合型とはオブジェクトの型同士を重ねることです。

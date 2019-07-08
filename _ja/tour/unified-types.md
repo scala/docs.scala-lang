@@ -12,7 +12,6 @@ next-page: classes
 previous-page: basics
 prerequisite-knowledge: classes, basics
 
-redirect_from: "/tutorials/tour/unified-types.html"
 ---
 Scalaでは数値や関数を含め、全ての値は型を持ちます。
 以下の図は型階層の一部を説明しています。

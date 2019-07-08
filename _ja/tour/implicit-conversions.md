@@ -11,7 +11,6 @@ num: 27
 next-page: polymorphic-methods
 previous-page: implicit-parameters
 
-redirect_from: "/tutorials/tour/implicit-conversions.html"
 ---
 
 型`S`から型`T`への暗黙の変換は`S => T`という型のimplicit値や、その型に一致するimplicitメソッドで定義されます。

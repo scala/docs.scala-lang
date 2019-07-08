@@ -12,7 +12,6 @@ next-page: by-name-parameters
 previous-page: type-inference
 prerequisite-knowledge: case-classes
 
-redirect_from: "/tutorials/tour/operators.html"
 ---
 Scalaでは演算子はメソッドです。パラメータを1つだけ持つメソッドであれば*中置演算子*として使えます。例えば、`+`はドット記法で呼び出せます。
 

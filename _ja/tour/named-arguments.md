@@ -12,7 +12,6 @@ next-page: packages-and-imports
 previous-page: default-parameter-values
 prerequisite-knowledge: function-syntax
 
-redirect_from: "/tutorials/tour/named-arguments.html"
 ---
 
 メソッドを呼ぶ時、以下のように引数にパラメータ名でラベル付が可能です。

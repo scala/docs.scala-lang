@@ -13,7 +13,6 @@ next-page: type-inference
 previous-page: implicit-conversions
 prerequisite-knowledge: unified-types
 
-redirect_from: "/tutorials/tour/polymorphic-methods.html"
 ---
 
 Scalaのメソッドは値と同様に型によってパラメータ化することができます。構文はジェネリッククラスの構文と似ています。

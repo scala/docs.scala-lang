@@ -12,7 +12,6 @@ next-page: pattern-matching
 previous-page: multiple-parameter-lists
 prerequisite-knowledge: classes, basics, mutability
 
-redirect_from: "/tutorials/tour/case-classes.html"
 ---
 
 ケースクラスはこれから論じるいくつかの差異はあるものの普通のクラスと似ています。
