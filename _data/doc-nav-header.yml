@@ -18,6 +18,8 @@
       url: "/tutorials/scala-for-java-programmers.html"
     - title: Online Resources
       url: "/learn.html"
+    - title: “Hello, Scala” Book
+      url: "/overviews/hello-scala/introduction.html"
 - title: Reference
   url: "#"
   submenu:
