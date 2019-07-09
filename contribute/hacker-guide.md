@@ -10,7 +10,7 @@ This guide is intended to help you get from an idea of fixing a bug or implement
 
 This guide covers the entire process, from the conception of your idea or bugfix to the point where it is merged into Scala. Throughout, we will use a running example of an idea or bugfix one might wish to contribute.
 
-Other good starting points for first-time contributors include the [Scala README](https://github.com/scala/scala#get-in-touch) and [contributor's guidelines](https://github.com/scala/scala/blob/2.12.x/CONTRIBUTING.md).
+Other good starting points for first-time contributors include the [Scala README](https://github.com/scala/scala#get-in-touch) and [contributor's guidelines](https://github.com/scala/scala/blob/2.13.x/CONTRIBUTING.md).
 
 ## The Running Example
 
