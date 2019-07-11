@@ -15,6 +15,19 @@ previous-page: nested-functions
 
 Методы могут объявляться с несколькими списками параметров. При этом когда такой метод вызывается с меньшим количеством списков параметров, это приводит к созданию новой функции, которая ожидает на вход не достающий список параметров. Формально это называется [частичное применение](https://en.wikipedia.org/wiki/Partial_application).
 
+Например,
+  
+  ```tut
+  val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+  val numberFunc = numbers.foldLeft(List[Int]()) _
+  
+  val squares = numberFunc((xs, x) => xs :+ x*x)
+  print(squares) // List(1, 4, 9, 16, 25, 36, 49, 64, 81, 100)
+  
+  val cubes = numberFunc((xs, x) => xs :+ x*x*x)
+  print(cubes)  // List(1, 8, 27, 64, 125, 216, 343, 512, 729, 1000)
+  ```
+
 Рассмотрим такие примеры из класса [Traversable](/overviews/collections/trait-traversable.html) коллекции Scala:
 
 ```
@@ -77,4 +90,3 @@ numbers.foldRight(0)(_+_) // Форма с каррированием
 ```
 def execute(arg: Int)(implicit ec: ExecutionContext) = ???
 ```
-    
