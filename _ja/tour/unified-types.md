@@ -25,7 +25,7 @@ Anyは `equals`、` hashCode`、そして `toString`のようないくつかの�
 そして`AnyVal`と`AnyRef` という2つの直系のサブクラスを持ちます。
 
 `AnyVal` は値型に相当します。
-事前に定義された9つの値型が存在し、それら`Double`, `Float`, `Long`, `Int`, `Short`, `Byte`, `Char`, `Unit`,`Boolean`は
+事前に定義された9つの値型が存在し、それら`Double`、`Float`、`Long`、`Int`、`Short`、`Byte`、`Char`、`Unit`、`Boolean`は
 null非許容です。
 `Unit`は意味のある情報をもたない値型です。`Unit`型のインスタンスはただ1つだけあり、`()`というリテラルで宣言することができます。
 全ての関数は必ず何かを返さなければなりません。そのため`Unit`は戻り値の型として時々役立ちます。
