@@ -222,15 +222,15 @@ val yetAnotherPoint = Point(2, 2)
 
 ```tut
 if (point == anotherPoint) {
-  println(point + " and " + anotherPoint + " are the same.")
+  println(point + " と " + anotherPoint + " は同じです。")
 } else {
-  println(point + " and " + anotherPoint + " are different.")
+  println(point + " と " + anotherPoint + " は異なります。")
 } // Point(1,2) と Point(1,2) は同じです。
 
 if (point == yetAnotherPoint) {
-  println(point + " and " + yetAnotherPoint + " are the same.")
+  println(point + " と " + yetAnotherPoint + " は同じです。")
 } else {
-  println(point + " and " + yetAnotherPoint + " are different.")
+  println(point + " と " + yetAnotherPoint + " は異なります。")
 } // Point(1,2) と Point(2,2) は異なります。
 ```
 
