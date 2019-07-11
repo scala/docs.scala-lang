@@ -21,11 +21,11 @@ Scalaでは数値や関数を含め、全ての値は型を持ちます。
 ## Scalaの型階層 ##
 
 [`Any`](http://www.scala-lang.org/api/2.12.1/scala/Any.html) は全ての型のスーパータイプであり、トップ型とも呼ばれます。
-Anyは `equals`、` hashCode`、そして `toString`のようないくつかの普遍的なメソッドを定義しています。
+Anyは `equals`、`hashCode`、そして `toString`のようないくつかの普遍的なメソッドを定義しています。
 そして`AnyVal`と`AnyRef` という2つの直系のサブクラスを持ちます。
 
 `AnyVal` は値型に相当します。
-事前に定義された9つの値型が存在し、それら`Double`, `Float`, `Long`, `Int`, `Short`, `Byte`, `Char`, `Unit`,`Boolean`は
+事前に定義された9つの値型が存在し、それら`Double`、`Float`、`Long`、`Int`、`Short`、`Byte`、`Char`、`Unit`、`Boolean`は
 null非許容です。
 `Unit`は意味のある情報をもたない値型です。`Unit`型のインスタンスはただ1つだけあり、`()`というリテラルで宣言することができます。
 全ての関数は必ず何かを返さなければなりません。そのため`Unit`は戻り値の型として時々役立ちます。
