@@ -7,7 +7,7 @@ discourse: true
 partof: scaladoc
 overview-name: Scaladoc
 
-num: 2
+num: 3
 
 permalink: /overviews/scaladoc/:title.html
 ---
