@@ -36,7 +36,7 @@ It is also not compulsory to specify type parameters when [polymorphic methods](
 Here are two examples:
 
 ```tut
-case class MyPair[A, B](x: A, y: B);
+case class MyPair[A, B](x: A, y: B)
 val p = MyPair(1, "scala") // type: MyPair[Int, String]
 
 def id[T](x: T) = x
