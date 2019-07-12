@@ -73,6 +73,6 @@ for ((a, b) <- numPars) {
 
 ## Tuplas e classes case
 
-Desenvolvedores às vezes acham dificil escolher entre tuplas e classes case. Classes case tem elementos nomeados, e esses podem melhorar a leitura de alguns tipos de códigos. No planeta exemplo abaixo, nós poderiamos definir uma `case class Planeta(nome: String, distancia: Double)` ao invés de usar tuplas.
+Desenvolvedores às vezes acham dificil escolher entre tuplas e classes case. Classes case têm elementos nomeados, e esses podem melhorar a leitura de alguns tipos de códigos. No exemplo dos planetas acima, nós poderiamos definir uma `case class Planeta(nome: String, distancia: Double)` ao invés de usar tuplas.
 
 
