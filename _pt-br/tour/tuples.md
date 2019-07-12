@@ -12,7 +12,7 @@ previous-page: traits
 language: pt-br
 ---
 
-Em Scala, uma tupla é um valor que contém um número fixo de elementos, cada um com tipos distintos e as tuplas são imutaveis.
+Em Scala, uma tupla é um valor que contém um número fixo de elementos, cada um com tipos distintos e as tuplas são imutáveis.
 
 Tuplas são sobretudo úteis para retornar múltiplos valores de um método.
 
