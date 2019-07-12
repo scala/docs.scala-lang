@@ -53,7 +53,7 @@ Outro exemplo de correspondência de padrões em uma tupla:
 
 ```tut
 val planetas =
-  List(("Mercurio", 57.9), ("Vénus", 108.2), ("Terra", 149.6),
+ List(("Mercúrio", 57.9), ("Vênus", 108.2), ("Terra", 149.6),
        ("Marte", 227.9), ("Júpiter", 778.3))
 planetas.foreach{
   case ("Terra", distancia) =>
