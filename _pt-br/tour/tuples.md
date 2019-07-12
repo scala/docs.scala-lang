@@ -62,7 +62,7 @@ planetas.foreach{
 }
 ```
 
-ou, um exemplo com `for` :
+Ou, um exemplo com `for` :
 
 ```tut
 val numPars = List((2, 5), (3, -7), (20, 56))
