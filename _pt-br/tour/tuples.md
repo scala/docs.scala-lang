@@ -39,7 +39,7 @@ println(ingrediente._2) // 25
 
 ## Correspondência de padrões em tuplas
 
-Uma tupla pode tambem ser desmembrada usando correspondência de padrões:
+Uma tupla pode também ser desmembrada usando correspondência de padrões:
 
 ```tut
 val (nome, quantidade) = ingrediente
