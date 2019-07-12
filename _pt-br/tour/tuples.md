@@ -47,7 +47,7 @@ println(nome) // Açucar
 println(quantidade) // 25
 ```
 
-Aqui `nome` é um tipo inferido `String` e `quantidade` é um tipo inferido `Int` .
+Aqui o tipo inferido para `nome` é `String` e para `quantidade` o tipo inferido é `Int`.
 
 Outro exemplo de correspondência de padrões em uma tupla:
 
