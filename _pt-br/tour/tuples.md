@@ -16,7 +16,7 @@ Em Scala, uma tupla é um valor que contém um número fixo de elementos, cada u
 
 Tuplas são sobretudo úteis para retornar múltiplos valores de um método.
 
-Uma Tupla com dois lementos pode ser criada dessa forma:
+Uma Tupla com dois elementos pode ser criada dessa forma:
 
 ```tut
 val ingrediente = ("Açucar" , 25)
@@ -26,7 +26,7 @@ Isto cria uma tupla contendo dois elementos um `String` e o outro `Int`.
 
 O tipo inferido de `ingrediente` é `(String, Int)`, que é uma forma abreviada para `Tuple2[String, Int]` .
 
-Para representar tuplas, Scala usa uma serie de classes: `Tuple2`, `Tuple3`, etc., até `Tuple22` . Cada classe tem tantos parâmetros quanto elementos
+Para representar tuplas, Scala usa uma serie de classes: `Tuple2`, `Tuple3`, etc., até `Tuple22` . Cada classe tem tantos parâmetros quanto elementos.
 
 ## Acessando os Elementos
 
