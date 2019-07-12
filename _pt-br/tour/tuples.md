@@ -30,7 +30,7 @@ Para representar tuplas, Scala usa uma serie de classes: `Tuple2`, `Tuple3`, etc
 
 ## Acessando os Elementos
 
-Uma maneira de acessar os elementos da tupla é pela sua respectiva posição. Os elementos individuais são nomeados _1 , _2 , e assim por diante.
+Uma maneira de acessar os elementos da tupla é pela sua respectiva posição. Os elementos individuais são nomeados `_1` , `_2` , e assim por diante.
 
 ```tut
 println(ingrediente._1) // Açucar
