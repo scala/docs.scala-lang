@@ -39,7 +39,7 @@ Também não é obrigatório especificar os tipos dos parâmetros quando [métod
 Por exemplo:
 
 ```
-case class MyPair[A, B](x: A, y: B);
+case class MyPair[A, B](x: A, y: B)
 object InferenceTest3 extends App {
   def id[T](x: T) = x
   val p = MyPair(1, "scala") // type: MyPair[Int, String]

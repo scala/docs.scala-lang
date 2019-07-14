@@ -39,7 +39,7 @@ def fac(n: Int) = if (n == 0) 1 else n * fac(n - 1)
 看下面两个例子：
 
 ```tut
-case class MyPair[A, B](x: A, y: B);
+case class MyPair[A, B](x: A, y: B)
 val p = MyPair(1, "scala") // type: MyPair[Int, String]
 
 def id[T](x: T) = x

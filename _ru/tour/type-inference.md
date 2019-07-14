@@ -37,7 +37,7 @@ def fac(n: Int) = if (n == 0) 1 else n * fac(n - 1)
 Вот два примера:
 
 ```tut
-case class MyPair[A, B](x: A, y: B);
+case class MyPair[A, B](x: A, y: B)
 val p = MyPair(1, "scala") // тип: MyPair[Int, String]
 
 def id[T](x: T) = x
