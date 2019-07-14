@@ -1,6 +1,6 @@
 ---
 layout: tour
-title: Tuples
+title: 튜플
 
 discourse: true
 
