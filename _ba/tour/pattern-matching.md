@@ -123,7 +123,7 @@ U `case Email(email, _, _) if importantPeopleInfo.contains(email)`, uzorak se po
 Možete podudarati samo tip ovako:
 ```tut
 abstract class Device
-case class Phone(model: String) extends Device{
+case class Phone(model: String) extends Device {
   def screenOff = "Turning screen off"
 }
 case class Computer(model: String) extends Device {
