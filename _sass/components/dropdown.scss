@@ -18,12 +18,23 @@
   // }
   float: right;
 
+  .table-of-content & {
+    margin-top: 0;
+    margin-right: 0;
+  }
+
   .wrapper-dropdown {
     padding: 8px 18px 8px 40px;
     appearance: none;
     font-size: $base-font-size;
     border-radius: $border-radius-base;
     box-sizing: border-box;
+
+    .table-of-content & {
+      border: 1px solid rgba(128, 128, 128, 0.5);
+    }
+    .table-of-content &:focus {
+    }
 
     &:focus {
       outline: none;
