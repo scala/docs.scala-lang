@@ -97,19 +97,9 @@ Ya que los números son objetos, estos también tienen métodos. De hecho, una e
 
 Consiste exclusivamente de llamadas a métodos, porque es equivalente a la siguiente expresión, como vimos en la sección anterior:
 
-    (1).+(((2).*(3))./(x))
+    1.+(2.*(3)./(x))
 
 Esto también indica que `+`, `*`, etc. son identificadores válidos en Scala.
-
-Los paréntesis alrededor de los números en la segunda versión son necesarios porque el analizador léxico de Scala usa la regla de "mayor coincidencia". Por lo tanto partiría la siguiente expresión:
-
-    1.+(2)
-
-En estas partes: `1.`, `+`, y `2`. La razón que esta regla es elegida es porque `1.` es una coincidencia válida y es mayor que `1`, haciendo a este un `Double` en vez de un `Int`. Al escribir la expresión así:
-
-    (1).+(2)
-
-previene que el `1` sea tomado como un `Double`.
 
 ### Las funciones son objetos
 

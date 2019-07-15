@@ -168,25 +168,10 @@ un’espressione aritmetica come la seguente:
 consiste esclusivamente di chiamate a metodi e risulta equivalente alla
 seguente espressione, come visto nella sezione precedente:
 
-    (1).+(((2).*(3))./(x))
+    1.+(2.*(3)./(x))
 
 Questo significa anche che `+`, `*`, etc. sono identificatori validi in
 in Scala.
-
-Le parentesi intorno ai numeri nella seconda versione sono necessarie
-perché l’analizzatore lessicale di Scala usa le regole di match più
-lunghe per i token quindi, dovrebbe dividere la seguente espressione:
-
-    1.+(2)
-
-nei token `1.`, `+`, and `2`. La ragione per cui si è scelto questo tipo
-di assegnazione di significato è perché `1.` è un match più lungo e valido
-di `1`. Il token `1.` è interpretato come `1.0` rendendolo un `Double` e
-non più un `Int`. Scrivendo l’espressione come:
-
-    (1).+(2)
-
-si evita che `1` sia interpretato come un `Double`.
 
 ### Le funzioni sono oggetti
 
