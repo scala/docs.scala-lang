@@ -33,7 +33,7 @@ previous-page: polymorphic-methods
 
 다음 예제는 이를 나타낸 예제다.
 
-    case class MyPair[A, B](x: A, y: B);
+    case class MyPair[A, B](x: A, y: B)
     object InferenceTest3 extends App {
       def id[T](x: T) = x
       val p = MyPair(1, "scala") // 타입: MyPair[Int, String]

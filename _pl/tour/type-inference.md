@@ -37,7 +37,7 @@ Nie jest też konieczne określenie parametrów typu, kiedy są wywoływane [met
 Oto ilustrujący to przykład:
 
 ```
-case class MyPair[A, B](x: A, y: B);
+case class MyPair[A, B](x: A, y: B)
 object InferenceTest3 extends App {
   def id[T](x: T) = x
   val p = MyPair(1, "scala") // typ: MyPair[Int, String]
