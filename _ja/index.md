@@ -61,7 +61,7 @@ sections:
       - title: "SIP"
         description: "Scala Improvement Process（Scala 改善プロセス）。言語とコンパイラの進化（英語のみ）"
         icon: "fa fa-cogs"
-        link: sips/index.html
+        link: /sips/index.html
       - title: "SPP"
         description: "Scala Platform Process（Scala プラットフォームプロセス）。コミュニティ主導型のライブラリの進化（英語のみ）"
         icon: "fa fa-users"

@@ -61,7 +61,7 @@ sections:
       - title: "SIPs"
         description: "The Scala Improvement Process. Language & compiler evolution."
         icon: "fa fa-cogs"
-        link: sips/index.html
+        link: /sips/index.html
       - title: "SPP"
         description: "The Scala Platform Process. Community-driven library evolution."
         icon: "fa fa-users"
