@@ -1,9 +1,10 @@
 ---
 layout: inner-page-documentation
 title: Documentation
-#redirect_from:
-#  - /what-is-scala/
-#includeTOC: true
+languages: [ja]
+namespace: root
+partof: documentation
+discourse: true
 
 # Content masthead links
 sections:
