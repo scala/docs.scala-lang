@@ -8,6 +8,8 @@ partof: collections-213
 overview-name: Collections
 
 num: 2
+previous-page: introduction
+next-page: trait-iterable
 
 permalink: /overviews/collections-2.13/:title.html
 ---

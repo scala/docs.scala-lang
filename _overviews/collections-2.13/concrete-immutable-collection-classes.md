@@ -8,6 +8,8 @@ partof: collections-213
 overview-name: Collections
 
 num: 8
+previous-page: maps
+next-page: concrete-mutable-collection-classes
 
 permalink: /overviews/collections-2.13/:title.html
 ---

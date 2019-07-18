@@ -8,6 +8,8 @@ partof: collections-213
 overview-name: Collections
 
 num: 16
+previous-page: iterators
+next-page: conversions-between-java-and-scala-collections
 
 permalink: /overviews/collections-2.13/:title.html
 ---

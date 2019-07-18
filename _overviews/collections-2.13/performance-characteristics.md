@@ -8,6 +8,8 @@ partof: collections-213
 overview-name: Collections
 
 num: 12
+previous-page: strings
+next-page: equality
 
 permalink: /overviews/collections-2.13/:title.html
 ---
