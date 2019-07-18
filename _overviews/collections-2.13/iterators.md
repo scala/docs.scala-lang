@@ -8,6 +8,8 @@ partof: collections-213
 overview-name: Collections
 
 num: 15
+previous-page: views
+next-page: creating-collections-from-scratch
 
 permalink: /overviews/collections-2.13/:title.html
 ---

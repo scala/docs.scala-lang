@@ -8,8 +8,10 @@ partof: collections-213
 overview-name: Collections
 
 num: 7
+previous-page: sets
+next-page: concrete-immutable-collection-classes
 
-permalink: /overviews/collections2.13/:title.html
+permalink: /overviews/collections-2.13/:title.html
 ---
 
 A [Map](http://www.scala-lang.org/api/current/scala/collection/Map.html) is an [Iterable](http://www.scala-lang.org/api/current/scala/collection/Iterable.html) consisting of pairs of keys and values (also named _mappings_ or _associations_). Scala's [Predef](http://www.scala-lang.org/api/current/scala/Predef$.html) object offers an implicit conversion that lets you write `key -> value` as an alternate syntax for the pair `(key, value)`. For instance `Map("x" -> 24, "y" -> 25, "z" -> 26)` means exactly the same as `Map(("x", 24), ("y", 25), ("z", 26))`, but reads better.

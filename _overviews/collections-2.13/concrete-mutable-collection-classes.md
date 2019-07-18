@@ -8,6 +8,8 @@ partof: collections-213
 overview-name: Collections
 
 num: 9
+previous-page: concrete-immutable-collection-classes
+next-page: arrays
 
 permalink: /overviews/collections-2.13/:title.html
 ---
