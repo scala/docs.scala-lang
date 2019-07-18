@@ -429,7 +429,7 @@
   - option: "-Xno-uescape"
     schema:
       type: "Boolean"
-    description: "Disable handling of \u unicode escapes."
+    description: "Disable handling of \\u unicode escapes."
   - option: "-Xnojline"
     schema:
       type: "Boolean"
@@ -812,7 +812,7 @@
       type: "String"
       arg: "path"
       default:
-    description: "Write repl-generated classfiles to given output directory (use "" to generate a temporary dir)"
+    description: "Write repl-generated classfiles to given output directory (use \"\" to generate a temporary dir)"
   - option: "-Yrepl-sync"
     schema:
       type: "Boolean"
