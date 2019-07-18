@@ -46,7 +46,7 @@ This will put the HTML in the current directory.  This is probably not what you 
 
     $ scaladoc -d build/ src/main/scala/App.scala
 
-For more information on the `scaladoc` command and what other command-line options it supports, see the [scaladoc man page](https://www.scala-lang.org/files/archive/nightly/docs/manual/html/scaladoc.html).
+For more information on the `scaladoc` command and what other command-line options it supports, see the `scaladoc --help`.
 
 This command is harder to operate with more complex projects containing both multiple Scala source files and library dependencies.  This is why using sbt (see above) is easier and better suited for generating Scaladoc.
 
