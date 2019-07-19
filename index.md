@@ -1,9 +1,10 @@
 ---
 layout: inner-page-documentation
 title: Documentation
-#redirect_from:
-#  - /what-is-scala/
-#includeTOC: true
+languages: [ja]
+namespace: root
+partof: documentation
+discourse: true
 
 # Content masthead links
 sections:
@@ -60,7 +61,7 @@ sections:
       - title: "SIPs"
         description: "The Scala Improvement Process. Language & compiler evolution."
         icon: "fa fa-cogs"
-        link: sips/index.html
+        link: /sips/index.html
       - title: "SPP"
         description: "The Scala Platform Process. Community-driven library evolution."
         icon: "fa fa-users"

@@ -1,6 +1,34 @@
 <section class="table-of-content">
 	<div class="wrap">
 		<div class="inner-box">
+
+			<div class="language-dropdown inverted">
+				<div id="dd" class="wrapper-dropdown" tabindex="1">
+					<span>Language</span>
+					<ul class="dropdown"></ul>
+				</div>
+			</div>
+
+			<ul id="available-languages" style="display: none;">
+				{% if page.languages %}
+					<li><a href="{{ site.baseurl }}{{ page.url }}">English</a></li>
+					{% for l in page.languages %}
+						{% capture intermediate %}{{ page.url }}{% endcapture %}
+						{% capture rootTutorialURL %}{{ intermediate | remove_first: '/' }}{% endcapture %}
+						{% assign lang = site.data.languages[l] %}
+						<li><a href="{{ site.baseurl }}/{{ l }}/{{ rootTutorialURL }}" class="lang">{{ lang.name }}</a></li>
+					{% endfor %}
+				{% elsif page.language %}
+					{% assign engPath = page.url | remove_first: "/" | remove_first: page.language | remove_first: "index.html" %}
+					{% assign engPg = site.pages | where: 'partof', page.partof | first %}
+					<li><a href="{{ site.baseurl }}{{ engPath }}">English</a></li>
+					{% for l in engPg.languages %}
+						{% assign lang = site.data.languages[l] %}
+						<li><a href="{{ site.baseurl }}/{{ l }}{{ engPath }}" class="lang">{{ lang.name }}</a></li>
+					{% endfor %}
+				{% endif %}
+			</ul>
+
 			<div class="documentation">
 				{% for section in page.sections %}
           <div class="section">
