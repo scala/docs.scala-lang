@@ -40,6 +40,12 @@ Classes should be named in upper camel case:
 
 This mimics the Java naming convention for classes.
 
+Sometimes traits and classes as well as their members are used to describe
+formats, documentation or protocols and generate/derive them. 
+In these cases it is desirable to be close to a 1:1 relation to the output format
+and the naming conventions don't apply. In this case, they should only be used
+for that specific purpose and not throughout the rest of the code.
+
 ## Objects
 
 Object names are like class names (upper camel case).
