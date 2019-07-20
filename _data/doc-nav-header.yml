@@ -11,7 +11,7 @@
   url: "#"
   submenu:
     - title: Getting Started
-      url: "/getting-started.html"
+      url: "/getting-started/index.html"
     - title: Tour of Scala
       url: "/tour/tour-of-scala.html"
     - title: Scala for Java Programmers

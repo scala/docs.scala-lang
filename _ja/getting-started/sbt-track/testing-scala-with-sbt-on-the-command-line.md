@@ -9,7 +9,7 @@ previous-page: /ja/getting-started-with-scala-and-sbt-on-the-command-line
 
 Scala には複数のライブラリとテスト方法がありますが、このチュートリアルでは、ScalaTest フレームワークから [FunSuite](http://www.scalatest.org/getting_started_with_fun_suite) という人気のある選択肢を実演します。
 
-[sbt での Scala プロジェクト作成方法](/getting-started-sbt-track/getting-started-with-scala-and-sbt-on-the-command-line.html)を知っている前提とします。
+[sbt での Scala プロジェクト作成方法](/getting-started/sbt-track/getting-started-with-scala-and-sbt-on-the-command-line.html)を知っている前提とします。
 
 ## セットアップ
 1. コマンドラインで、どこかに新しいディレクトリを作成します。

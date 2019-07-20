@@ -5,6 +5,8 @@ partof: getting-started-with-scala-in-intellij
 languages: [ja]
 disqus: true
 next-page: building-a-scala-project-with-intellij-and-sbt
+
+redirect_from: "/getting-started-intellij-track/getting-started-with-scala-in-intellij.html"
 ---
 
 In this tutorial, we'll see how to build a minimal Scala project using IntelliJ

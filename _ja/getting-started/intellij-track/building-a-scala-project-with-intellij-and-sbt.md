@@ -4,7 +4,7 @@ layout: singlepage-overview
 partof: building-a-scala-project-with-intellij-and-sbt
 language: ja
 disqus: true
-previous-page: /ja/getting-started-intellij-track/getting-started-with-scala-in-intellij
+previous-page: /ja/getting-started/intellij-track/getting-started-with-scala-in-intellij
 next-page: /ja/testing-scala-in-intellij-with-scalatest
 ---
 
@@ -16,7 +16,7 @@ sbt（または Maven や Gradle）のようなビルドツールの使用は、
 ## プロジェクトを作成
 このでは、Intellij でプロジェクトの作り方をお見せします。
 ですが、コマンドラインのほうが快適でしたら、[Getting
-コマンドラインの sbt で Scala を始める](/ja/getting-started-sbt-track/getting-started-with-scala-and-sbt-on-the-command-line.html) を試して、「Scala コードを記述」節に戻ってくるのをおすすめします。
+コマンドラインの sbt で Scala を始める](/ja/getting-started/sbt-track/getting-started-with-scala-and-sbt-on-the-command-line.html) を試して、「Scala コードを記述」節に戻ってくるのをおすすめします。
 
 1. コマンドラインからプロジェクトを作っていなければ、Intellij を開き、"Create New Project" を選びます。
     * 左パネルで Scala を選び、右パネルで sbt を選びます。

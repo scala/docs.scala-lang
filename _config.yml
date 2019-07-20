@@ -37,6 +37,9 @@ collections:
     permalink: /:collection/:path.html
   books:
     output: false
+  getting-started:
+    output: true
+    permalink: /:collection/:path.html
   ja: # Japanese translations
     output: true
     permalink: /:collection/:path.html

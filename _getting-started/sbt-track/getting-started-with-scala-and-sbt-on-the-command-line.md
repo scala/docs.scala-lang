@@ -5,6 +5,8 @@ partof: getting-started-with-scala-and-sbt-on-the-command-line
 languages: [ja]
 disqus: true
 next-page: testing-scala-with-sbt-on-the-command-line
+
+redirect_from: "/getting-started-sbt-track/getting-started-with-scala-and-sbt-on-the-command-line.html"
 ---
 
 In this tutorial, you'll see how to create a Scala project from

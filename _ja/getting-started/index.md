@@ -25,17 +25,17 @@ includeTOC: true
 Intellij は、Scala 開発者にもっともよく使われている IDE です。
 このチュートリアルでは、Intellij をダウンロードして Scala プラグインをセットアップするまでを通して行い、それから初めての Scala プロジェクトを開始して、ユニットテストを完了させます！
 
-* [Intellij で Scala を始める](/ja/getting-started-intellij-track/getting-started-with-scala-in-intellij.html)
-* [Intellij で sbt を使って Scala プロジェクトをビルドする](/ja/getting-started-intellij-track/building-a-scala-project-with-intellij-and-sbt.html)
-* [Intelij で ScalaTest を使って Scala をテストする](/ja/getting-started-intellij-track/testing-scala-in-intellij-with-scalatest.html)
+* [Intellij で Scala を始める](/ja/getting-started/intellij-track/getting-started-with-scala-in-intellij.html)
+* [Intellij で sbt を使って Scala プロジェクトをビルドする](/ja/getting-started/intellij-track/building-a-scala-project-with-intellij-and-sbt.html)
+* [Intelij で ScalaTest を使って Scala をテストする](/ja/getting-started/intellij-track/testing-scala-in-intellij-with-scalatest.html)
 
 
 ### コマンドラインで取り組むのをお好みの場合
 
 emacs、Vim、Atom、Sublime Text のようなテキストエディターの使用がお好みでしたら、Scala コードをコンパイル、テスト、実行する最良の方法は、**sbt**（Scala build tool） を使うことです。
 
-* [コマンドラインの sbt で Scala を始める](/ja/getting-started-sbt-track/getting-started-with-scala-and-sbt-on-the-command-line.html)
-* [コマンドラインで ScalaTest を使って Scala をテストする](/ja/getting-started-sbt-track/testing-scala-with-sbt-on-the-command-line.html)
+* [コマンドラインの sbt で Scala を始める](/ja/getting-started/sbt-track/getting-started-with-scala-and-sbt-on-the-command-line.html)
+* [コマンドラインで ScalaTest を使って Scala をテストする](/ja/getting-started/sbt-track/testing-scala-with-sbt-on-the-command-line.html)
 
 ## 次のステップ
 

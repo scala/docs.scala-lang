@@ -15,7 +15,7 @@
       </ul>
       {% elsif page.language %}
          {% assign engPath = page.id | remove_first: "/" | remove_first: page.language | append: '.html' %}
-         {% assign engPg = site.overviews | where: 'partof', page.partof | first %}
+         {% assign engPg = site.documents | where: 'partof', page.partof | first %}
         <ul id="available-languages" style="display: none;">
           <li><a href="{{ site.baseurl }}{{ engPath }}">English</a></li>
           {% for l in engPg.languages %}
