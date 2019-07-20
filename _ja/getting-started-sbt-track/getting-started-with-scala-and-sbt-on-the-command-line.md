@@ -1,29 +1,28 @@
 ---
-title: Getting Started with Scala and sbt on the Command Line
+title: コマンドラインの sbt で Scala を始める
 layout: singlepage-overview
 partof: getting-started-with-scala-and-sbt-on-the-command-line
-languages: [ja]
+language: ja
 disqus: true
-next-page: testing-scala-with-sbt-on-the-command-line
+next-page: /ja/testing-scala-with-sbt-on-the-command-line
 ---
 
-In this tutorial, you'll see how to create a Scala project from
-a template. You can use this as a starting point for your own
-projects. We'll use [sbt](http://www.scala-sbt.org/1.x/docs/index.html), the de facto build tool for Scala. sbt compiles,
-runs, and tests your projects among other related tasks.
-We assume you know how to use a terminal.
+このチュートリアルでは、テンプレートから Scala プロジェクトを作成する方法を見ていきます。
+あなた自身のプロジェクトを始めるスタート地点として使えます。
+Scala のデファクトのビルドツール [sbt](http://www.scala-sbt.org/1.x/docs/index.html) を用います。
+sbt はあなたのプロジェクトに関連した様々なタスク、とりわけコンパイル、実行、テストをしてくれます。
+ターミナルの使い方を知っていることを前提とします。
 
-## Installation
-1. Make sure you have the Java 8 JDK (also known as 1.8)
-    * Run `javac -version` in the command line and make sure you see
-    `javac 1.8.___`
-    * If you don't have version 1.8 or higher, [install the JDK](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
-1. Install sbt
+## インストール
+1. Java 8 JDK（別名 1.8）がインストールされていることを確認します。
+    * コマンドラインで `javac -version` を実行し、`javac 1.8.___` と表示されるのを確認します。
+    * バージョン 1.8 かそれ以上がなければ、[JDK をインストールします](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)。
+1. sbt をインストールします。
     * [Mac](http://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Mac.html)
     * [Windows](http://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Windows.html)
     * [Linux](http://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Linux.html)
 
-## Create the project
+## プロジェクトを作成
 1. `cd` to an empty folder.
 1. Run the following command `sbt new scala/hello-world.g8`.
 This pulls the 'hello-world' template from GitHub.

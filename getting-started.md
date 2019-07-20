@@ -1,6 +1,8 @@
 ---
 layout: singlepage-overview
 title: Getting Started
+partof: getting-started
+languages: [ja]
 includeTOC: true
 ---
 
