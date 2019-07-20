@@ -56,46 +56,7 @@ readability and will make it much easier to understand at a glance the
 most basic operation of any given method. Resist the urge to omit
 parentheses simply to save two characters!
 
-## Infix notation
-
-Scala has a special punctuation-free syntax for invoking methods that
-take one argument. Many Scala programmers use this notation for
-symbolic-named methods:
-
-    // recommended
-    a + b
-
-    // legal, but less readable
-    a+b
-
-    // legal, but definitely strange
-    a.+(b)
-
-but avoid it for almost all alphabetic-named methods:
-
-    // recommended
-    names.mkString(",")
-
-    // also sometimes seen; controversial
-    names mkString ","
-
-A gray area is short, operator-like methods like `max`,
-especially if commutative:
-
-    // fairly common
-    a max b
-
-Symbolic methods which take more than one parameter (they do exist!)
-may still be invoked using infix notation, delimited by spaces:
-
-    foo ** (bar, baz)
-
-Such methods are fairly rare, however, and should normally be avoided
-during API design.  For example, the use of the `/:` and `:\` methods
-should be avoided in preference to their better-known names,
-`foldLeft` and `foldRight`.
-
-## Postfix Notation
+### Postfix Notation
 
 Scala allows methods that take no arguments to be invoked using postfix notation:
 
@@ -105,7 +66,7 @@ Scala allows methods that take no arguments to be invoked using postfix notation
     // discourage
     names toList
 
-This style is unsafe, and should not be used.  Since semicolons are
+This style is unsafe, and should not be used. Since semicolons are
 optional, the compiler will attempt to treat it as an infix method
 if it can, potentially taking a term from the next line.
 
@@ -113,8 +74,77 @@ if it can, potentially taking a term from the next line.
     val answer = 42        // will not compile!
 
 This may result in unexpected compile errors at best, and happily
-compiled faulty code at worst.  Although the syntax is used by some
+compiled faulty code at worst. Although the syntax is used by some
 DSLs, it should be considered deprecated, and avoided.
 
 Since Scala 2.10, using postfix operator notation will result in a
 compiler warning.
+
+## Arity-1 (Infix Notation)
+
+Scala has a special punctuation-free syntax for invoking methods of arity-1
+(one argument). This should generally be avoided, but with the following
+exceptions for operators and higher-order functions. In these cases it should
+only be used for purely-functional methods (methods with no side-effects).
+
+    // recommended
+    names.mkString(",")
+
+    // also sometimes seen; controversial
+    names mkString ","
+
+    // wrong - has side-effects
+    javaList add item
+
+### Symbolic Methods/Operators
+
+Symbolic methods (operators) should always be invoked using infix notation with
+spaces separating the target, the operator, and the parameter:
+
+    // right!
+    "daniel" + " " + "spiewak"
+    a + b
+
+    // wrong!
+    "daniel"+" "+"spiewak"
+    a+b
+    a.+(b)
+
+For the most part, this idiom follows Java and Haskell syntactic conventions. A
+gray area is short, operator-like methods like `max`, especially if commutative:
+
+    // fairly common
+    a max b
+
+Symbolic methods which take more than one parameter (they do exist!)
+may still be invoked using infix notation, delimited by spaces:
+
+    foo ** (bar, baz)
+
+Such methods are fairly rare, however, and should normally be avoided during API
+design. For example, the use of the `/:` and `:\` methods should be avoided in
+preference to their better-known names, `foldLeft` and `foldRight`.
+
+### Higher-Order Functions
+
+As noted, methods which take functions as parameters (such as `map` or
+`foreach`) should be invoked using infix notation. It is also *possible* to
+invoke such methods in the following way:
+
+    // wrong!
+    names.map { _.toUpperCase }
+
+This style is *not* the accepted standard! The reason to avoid this style is for
+situations where more than one invocation must be chained together:
+
+    // wrong!
+    names.map { _.toUpperCase }.filter { _.length > 5 }
+
+    // right!
+    names map { _.toUpperCase } filter { _.length > 5 }
+
+Both of these work, but the former can easily lead to confusion. The
+sub-expression `{ _.toUpperCase }.filter` when taken in isolation looks like we
+are invoking the `filter` method on a function value. However, we are actually
+invoking `filter` on the result of the `map` method, which takes the function
+value as a parameter.
