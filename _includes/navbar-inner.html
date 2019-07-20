@@ -20,7 +20,8 @@
 <header id="doc-header">
   <div class="wrap" style="padding: 0px;">
     <nav class="doc-navigation" role="menu">
-      <a href="{{ site.baseurl }}/" class="navigation-bdand">
+      {% assign docsRootTranslated = site[page.language] | where: 'partof', 'documentation' | first %}
+      <a href="{{ site.baseurl }}/{{ docsRootTranslated.language }}" class="navigation-bdand" >
         <img src="{{ site.baseurl }}/resources/img/documentation-logo@2x.png" alt="">
       </a>
       <div class="navigation-ellipsis">
@@ -29,12 +30,16 @@
       <ul class="navigation-menu">
         {% for navItem in site.data.doc-nav-header %}
             <li class="navigation-menu-item">
-              <a href="{% if navItem.url contains '://' or navItem.url == '#'  %}{{navItem.url}}{% else %}{{site.baseurl}}{{navItem.url}}{% endif %}" id="{{ navItem.title | downcase | strip }}" {% if page.url contains navItem.url %}class="active"{% endif %}>{{navItem.title}}</a>
+              {% capture translatedPageId %}/{{page.language}}{{navItem.url | remove_first: '.html' }}{% endcapture %}
+              {% assign navItemTranslated = site.documents | where: 'id', translatedPageId | first %}
+              <a href="{% if navItemTranslated.url %}{{navItemTranslated.url}}{% elsif navItem.url contains '://' or navItem.url == '#' %}{{navItem.url}}{% else %}{{site.baseurl}}{{navItem.url}}{% endif %}" id="{{ navItem.title | downcase | strip }}" {% if page.url contains navItem.url %}class="active"{% endif %}>{{navItem.title}}</a>
                 {% if navItem.submenu %}
                 <ul class="navigation-dropdown">
                 {% for subItem in navItem.submenu %}
                   <li>
-                    <a href="{% if subItem.url contains '://' %}{{ subItem.url }}{% else %}{{ site.baseurl }}{{ subItem.url }}{% endif %}">{{ subItem.title }}</a>
+                    {% capture translatedPageId %}/{{page.language}}{{subItem.url | remove_first: '.html' }}{% endcapture %}
+                    {% assign subItemTranslated = site.documents | where: 'id', translatedPageId | first %}
+                    <a href="{% if subItemTranslated.url %}{{subItemTranslated.url}}{% elsif subItem.url contains '://' %}{{ subItem.url }}{% else %}{{ site.baseurl }}{{ subItem.url }}{% endif %}">{{ subItem.title }}</a>
                   </li>
                 {% endfor %}
                 </ul>
