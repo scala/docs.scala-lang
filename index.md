@@ -1,7 +1,7 @@
 ---
 layout: inner-page-documentation
 title: Documentation
-languages: [ja]
+languages: [ja, zh-cn]
 namespace: root
 partof: documentation
 discourse: true
