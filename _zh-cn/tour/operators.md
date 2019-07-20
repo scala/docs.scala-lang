@@ -26,8 +26,8 @@ previous-page: type-inference
 ## 定义和使用运算符
 你可以使用任何合法标识符作为运算符。 包括像 `add` 这样的名字或像 `+` 这样的符号。
 ```tut
-case class Vec(val x: Double, val y: Double) {
-  def +(that: Vec) = new Vec(this.x + that.x, this.y + that.y)
+case class Vec(x: Double, y: Double) {
+  def +(that: Vec) = Vec(this.x + that.x, this.y + that.y)
 }
 
 val vector1 = Vec(1.0, 1.0)

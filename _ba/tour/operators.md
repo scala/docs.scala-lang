@@ -29,8 +29,8 @@ Međutim, lakše je čitati kada se napiše kao infiksni operator:
 Možete koristiti bilo koji legalni identifikator kao operator. 
 To uključuje i imena kao `add` ili simbole kao `+`.
 ```tut
-case class Vec(val x: Double, val y: Double) {
-  def +(that: Vec) = new Vec(this.x + that.x, this.y + that.y)
+case class Vec(x: Double, y: Double) {
+  def +(that: Vec) = Vec(this.x + that.x, this.y + that.y)
 }
 
 val vector1 = Vec(1.0, 1.0)
