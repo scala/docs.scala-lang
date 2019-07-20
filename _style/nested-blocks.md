@@ -8,7 +8,7 @@ overview-name: "Style Guide"
 num: 5
 
 previous-page: types
-next-page: files
+next-page: declarations
 ---
 
 ## Curly Braces

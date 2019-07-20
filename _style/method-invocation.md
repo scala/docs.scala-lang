@@ -8,7 +8,7 @@ overview-name: "Style Guide"
 num: 8
 
 previous-page: control-structures
-next-page: declarations
+next-page: files
 ---
 
 Generally speaking, method invocation in Scala follows Java conventions.
