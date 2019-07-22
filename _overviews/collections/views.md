@@ -13,6 +13,12 @@ languages: [ja, zh-cn]
 permalink: /overviews/collections/:title.html
 ---
 
+<a class="link-to-newer-version" 
+  href="{{ page.url | replace_first: '/collections/', '/collections-2.13/'}}" >
+  See this in Scala 2.13
+  <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+</a>
+
 Collections have quite a few methods that construct new collections. Examples are `map`, `filter` or `++`. We call such methods transformers because they take at least one collection as their receiver object and produce another collection as their result.
 
 There are two principal ways to implement transformers. One is _strict_, that is a new collection with all its elements is constructed as a result of the transformer. The other is non-strict or _lazy_, that is one constructs only a proxy for the result collection, and its elements get constructed only as one demands them.

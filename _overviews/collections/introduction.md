@@ -13,6 +13,11 @@ languages: [ja, zh-cn, ru]
 permalink: /overviews/collections/:title.html
 ---
 
+<a class="link-to-newer-version"  href="{{ page.url | replace_first: '/collections/', '/collections-2.13/'}}" >
+  See this in Scala 2.13
+  <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+</a>
+
 **Martin Odersky, and Lex Spoon**
 
 In the eyes of many, the new collections framework is the most significant

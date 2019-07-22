@@ -13,6 +13,11 @@ languages: [ja, zh-cn]
 permalink: /overviews/collections/:title.html
 ---
 
+<a class="link-to-newer-version"  href="{{ page.url | replace_first: '/collections/', '/collections-2.13/'}}" >
+  See this in Scala 2.13
+  <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+</a>
+
 An iterator is not a collection, but rather a way to access the elements of a collection one by one. The two basic operations on an iterator `it` are `next` and `hasNext`. A call to `it.next()` will return the next element of the iterator and advance the state of the iterator. Calling `next` again on the same iterator will then yield the element one beyond the one returned previously. If there are no more elements to return, a call to `next` will throw a `NoSuchElementException`. You can find out whether there are more elements to return using [Iterator](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/Iterator.html)'s `hasNext` method.
 
 The most straightforward way to "step through" all the elements returned by an iterator `it` uses a while-loop:

@@ -13,6 +13,11 @@ languages: [ja, zh-cn]
 permalink: /overviews/collections/:title.html
 ---
 
+<a class="link-to-newer-version"  href="{{ page.url | replace_first: '/collections/', '/collections-2.13/'}}" >
+  See this in Scala 2.13
+  <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+</a>
+
 The next trait from the top in the collections hierarchy is `Iterable`. All methods in this trait are defined in terms of an abstract method, `iterator`, which yields the collection's elements one by one. The `foreach` method from trait `Traversable` is implemented in `Iterable` in terms of `iterator`. Here is the actual implementation:
 
     def foreach[U](f: Elem => U): Unit = {

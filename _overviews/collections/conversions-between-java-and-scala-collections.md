@@ -13,6 +13,11 @@ languages: [zh-cn]
 permalink: /overviews/collections/:title.html
 ---
 
+<a class="link-to-newer-version"  href="{{ page.url | replace_first: '/collections/', '/collections-2.13/'}}" >
+  See this in Scala 2.13
+  <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+</a>
+
 Like Scala, Java also has a rich collections library. There are many similarities between the two. For instance, both libraries know iterators, iterables, sets, maps, and sequences. But there are also important differences. In particular, the Scala libraries put much more emphasis on immutable collections, and provide many more operations that transform a collection into a new one.
 
 Sometimes you might need to pass from one collection framework to the other. For instance, you might want to access an existing Java collection as if it were a Scala collection. Or you might want to pass one of Scala's collections to a Java method that expects its Java counterpart. It is quite easy to do this, because Scala offers implicit conversions between all the major collection types in the [JavaConverters](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/JavaConverters$.html) object. In particular, you will find bidirectional conversions between the following types.
