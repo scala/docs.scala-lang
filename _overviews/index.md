@@ -35,8 +35,7 @@ permalink: /overviews/:title.html
           </div>
         </div>      
         <div class="card-footer">
-          <div class="expand-btn"><i class="fa fa-plus" aria-hidden="true"></i> Expand</div>
-          <div class="go-btn" style="display: none;" href="{{ overview.url }}"><i class="fa fa-arrow-right" aria-hidden="true"></i> Read</div>          
+          <a class="go-btn" href="{{ overview.url }}"><i class="fa fa-arrow-right" aria-hidden="true"></i> Read</a>          
         </div>        
       </div>
     {% endfor %}  

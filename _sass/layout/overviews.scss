@@ -47,12 +47,10 @@
       position: relative;
       flex: 0 1 calc(50% - 1em);
       margin-bottom: 2em;
-      transition: max-height .3s ease-out;
       text-decoration: none;
       border-radius: 2px;
       box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12);
       background: #fff;
-      max-height: 400px;
       overflow: hidden;
 
       @include bp(medium) {
@@ -76,7 +74,7 @@
         .card-content {
           padding: 20px;
           padding-top: 0px;
-          padding-bottom: 0px;
+          padding-bottom: 60px;
         }
 
         h2 {
@@ -160,25 +158,23 @@
       position: absolute;
       bottom: 0;
       width: 100%;
-      padding: 20px;
-      height: 66px;
-      background: #fff;
-      border-top: 1px solid lighten($base-font-color-light, 35%);
 
-      &:hover {
-        cursor: pointer;
-        background: $brand-primary;
-        .expand-btn,
-        .go-btn {
-          color: #fff;
-        }
-      }
-
-      .expand-btn,
       .go-btn {
-        color: lighten($base-font-color-light, 15%);
+        display: block;
+        padding: 20px;
+        height: 66px;
+        background: #fff;
+        border-top: 1px solid lighten($base-font-color-light, 35%);
+        color: lighten($base-font-color-light, 10%);
         font-weight: $font-regular;
         font-size: $font-regular;
+        text-decoration: none;
+
+        &:hover {
+          cursor: pointer;
+          background: $brand-primary;
+          color: #fff;
+        }
       }
     }
 }
