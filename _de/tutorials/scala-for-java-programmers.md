@@ -147,23 +147,9 @@ der folgende
 exklusiv aus Methoden-Aufrufen, da es äquivalent zu folgendem Ausdruck ist, wie in vorhergehenden
 Abschnitt gezeigt wurde:
 
-    (1).+(((2).*(3))./(x))
+    1.+(2.*(3)./(x))
 
 Dies bedeutet außerdem, dass `+`, `*`, etc. in Scala gültige Bezeichner sind.
-
-Die Zahlen umschließenden Klammern der zweiten Variante sind notwendig, weil Scalas lexikalischer
-Scanner eine Regel zur längsten Übereinstimmung der Token verwendet. Daher würde der folgende
-Ausdruck:
-
-    1.+(2)
-
-in die Token `1.`, `+`, und `2` zerlegt werden. Der Grund für diese Zerlegung ist, dass `1.` eine
-längere, gültige Übereinstimmung ist, als `1`. Daher würde das Token `1.` als das Literal `1.0`
-interpretiert, also als Gleitkommazahl anstatt als Ganzzahl. Den Ausdruck als
-
-    (1).+(2)
-
-zu schreiben, verhindert also, dass `1.` als Gleitkommazahl interpretiert wird.
 
 ### Funktionen sind Objekte
 
