@@ -13,11 +13,6 @@ languages: [ja, zh-cn]
 permalink: /overviews/collections/:title.html
 ---
 
-<a class="link-to-newer-version"  href="{{ page.url | replace_first: '/collections/', '/collections-2.13/'}}" >
-  See this in Scala 2.13
-  <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-</a>
-
 Porting your existing Scala applications to use the new collections should be almost automatic. There are only a couple of possible issues to take care of.
 
 Generally, the old functionality of Scala 2.7 collections has been left in place. Some features have been deprecated, which means they will removed in some future release. You will get a _deprecation warning_ when you compile code that makes use of these features in Scala 2.8. In a few places deprecation was unfeasible, because the operation in question was retained in 2.8, but changed in meaning or performance characteristics. These cases will be flagged with _migration warnings_ when compiled under 2.8. To get full deprecation and migration warnings with suggestions how to change your code, pass the `-deprecation` and `-Xmigration` flags to `scalac` (note that `-Xmigration` is an extended option, so it starts with an `X`). You can also pass the same options to the `scala` REPL to get the warnings in an interactive session. Example:

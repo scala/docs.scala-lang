@@ -13,11 +13,6 @@ languages: [ja, zh-cn]
 permalink: /overviews/collections/:title.html
 ---
 
-<a class="link-to-newer-version"  href="{{ page.url | replace_first: '/collections/', '/collections-2.13/'}}" >
-  See this in Scala 2.13
-  <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-</a>
-
 At the top of the collection hierarchy is trait `Traversable`. Its only abstract operation is `foreach`:
 
     def foreach[U](f: Elem => U)
