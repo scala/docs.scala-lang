@@ -6,7 +6,7 @@ discourse: false
 
 partof: scala-tour
 
-num: 10
+num: 11
 language: ko
 
 next-page: pattern-matching

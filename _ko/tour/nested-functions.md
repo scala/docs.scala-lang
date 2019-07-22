@@ -6,7 +6,7 @@ discourse: false
 
 partof: scala-tour
 
-num: 8
+num: 9
 language: ko
 
 next-page: multiple-parameter-lists

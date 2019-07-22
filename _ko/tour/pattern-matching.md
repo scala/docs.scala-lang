@@ -6,7 +6,7 @@ discourse: false
 
 partof: scala-tour
 
-num: 11
+num: 12
 language: ko
 
 next-page: singleton-objects
