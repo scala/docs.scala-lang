@@ -12,6 +12,19 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <meta property="og:site_name" content="{{ site.title }}"/>
+    <meta property="og:type" content="{% if page.url == '/' %}website{% else %}article{% endif %}"/>
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}"/>
+    <meta property="og:image" content="{{ site.url }}/resources/img/scala-spiral-3d-2-toned-down.png"/>
+    <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{site.title}}{% endif %}"/>
+    {% if page.description %}<meta property="og:description" content="{{ page.description }}"/>{% endif %}
+
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@scala_lang"/>
+    <meta name="twitter:creator" content="@scala_lang"/>
+    {% if page.title %}<meta property="twitter:title" content="{{ page.title }}"/>{% endif %}
+    {% if page.description %}<meta property="twitter:description" content="{{ page.description }}"/>{% endif %}
+
     <link rel="icon" type="image/png" href="{{ site.baseurl }}/resources/favicon.ico">
     <link rel="shortcut icon" type="image/png" href="{{ site.baseurl }}/resources/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ site.baseurl }}/resources/apple-touch-icon.png">
