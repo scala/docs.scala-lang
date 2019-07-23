@@ -22,7 +22,7 @@ layout: inner-page-parent-dropdown
           </ul>
         {% elsif page.language %}
            {% assign engPath = page.id | remove_first: "/" | remove_first: page.language | append: '.html' %}
-           {% assign engPg = site.overviews | where: 'partof', page.partof | first %}
+           {% assign engPg = site.cheatsheets | where: 'partof', page.partof | first %}
            {{ engPg.languages }}
           <ul id="available-languages" style="display: none;">
             <li><a href="{{ site.baseurl }}{{ engPath }}">English</a></li>

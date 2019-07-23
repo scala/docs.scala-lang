@@ -35,6 +35,9 @@ collections:
   sips:
     output: true
     permalink: /:collection/:path.html
+  cheatsheets:
+    output: true
+    permalink: /:collection/:path.html
   books:
     output: false
   ja: # Japanese translations
