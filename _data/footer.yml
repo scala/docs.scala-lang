@@ -8,7 +8,7 @@
     - title: Overviews/Guides
       url: "/overviews"
     - title: Language Specification
-      url: "http://scala-lang.org/files/archive/spec/2.12/"
+      url: "http://scala-lang.org/files/archive/spec/2.13/"
 - title: Download
   class: download
   links:
