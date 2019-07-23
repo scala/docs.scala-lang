@@ -58,7 +58,9 @@
   }
 }
 
-.link-to-newer-version {
-  float: right;
-  padding: 0 0 1em 1em;
+a.new-version-notice {
+  display: block;
+  background: rgb(255, 255, 200);
+  font-size: large;
+  text-align: center;
 }

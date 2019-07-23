@@ -6,17 +6,13 @@ discourse: true
 
 partof: collections
 overview-name: Collections (Scala 2.8 - 2.12)
+new-version: /overviews/collections-2.13/introduction.html
 
 num: 1
 
 languages: [ja, zh-cn, ru]
 permalink: /overviews/collections/:title.html
 ---
-
-<a class="link-to-newer-version"  href="{{ page.url | replace_first: '/collections/', '/collections-2.13/'}}" >
-  See this in Scala 2.13
-  <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-</a>
 
 **Martin Odersky, and Lex Spoon**
 

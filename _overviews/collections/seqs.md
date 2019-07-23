@@ -6,17 +6,13 @@ discourse: true
 
 partof: collections
 overview-name: Collections (Scala 2.8 - 2.12)
+new-version: /overviews/collections-2.13/seqs.html
 
 num: 5
 
 languages: [ja, zh-cn]
 permalink: /overviews/collections/:title.html
 ---
-
-<a class="link-to-newer-version"  href="{{ page.url | replace_first: '/collections/', '/collections-2.13/'}}" >
-  See this in Scala 2.13
-  <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-</a>
 
 The [Seq](http://www.scala-lang.org/api/current/scala/collection/Seq.html) trait represents sequences. A sequence is a kind of iterable that has a `length` and whose elements have fixed index positions, starting from `0`.
 

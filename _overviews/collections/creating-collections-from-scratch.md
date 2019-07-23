@@ -6,17 +6,13 @@ discourse: true
 
 partof: collections
 overview-name: Collections (Scala 2.8 - 2.12)
+new-version: /overviews/collections-2.13/creating-collections-from-scratch.html
 
 num: 16
 
 languages: [ja, zh-cn]
 permalink: /overviews/collections/:title.html
 ---
-
-<a class="link-to-newer-version"  href="{{ page.url | replace_first: '/collections/', '/collections-2.13/'}}" >
-  See this in Scala 2.13
-  <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-</a>
 
 You have syntax `List(1, 2, 3)` to create a list of three integers and `Map('A' -> 1, 'C' -> 2)` to create a map with two bindings. This is actually a universal feature of Scala collections. You can take any collection name and follow it by a list of elements in parentheses. The result will be a new collection with the given elements. Here are some more examples:
 

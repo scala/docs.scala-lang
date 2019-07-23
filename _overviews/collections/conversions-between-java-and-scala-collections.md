@@ -6,17 +6,13 @@ discourse: true
 
 partof: collections
 overview-name: Collections (Scala 2.8 - 2.12)
+new-version: /overviews/collections-2.13/conversions-between-java-and-scala-collections.html
 
 num: 17
 
 languages: [zh-cn]
 permalink: /overviews/collections/:title.html
 ---
-
-<a class="link-to-newer-version"  href="{{ page.url | replace_first: '/collections/', '/collections-2.13/'}}" >
-  See this in Scala 2.13
-  <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-</a>
 
 Like Scala, Java also has a rich collections library. There are many similarities between the two. For instance, both libraries know iterators, iterables, sets, maps, and sequences. But there are also important differences. In particular, the Scala libraries put much more emphasis on immutable collections, and provide many more operations that transform a collection into a new one.
 

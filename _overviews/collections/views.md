@@ -6,18 +6,13 @@ discourse: true
 
 partof: collections
 overview-name: Collections (Scala 2.8 - 2.12)
+new-version: /overviews/collections-2.13/views.html
 
 num: 14
 
 languages: [ja, zh-cn]
 permalink: /overviews/collections/:title.html
 ---
-
-<a class="link-to-newer-version" 
-  href="{{ page.url | replace_first: '/collections/', '/collections-2.13/'}}" >
-  See this in Scala 2.13
-  <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-</a>
 
 Collections have quite a few methods that construct new collections. Examples are `map`, `filter` or `++`. We call such methods transformers because they take at least one collection as their receiver object and produce another collection as their result.
 
