@@ -7,7 +7,7 @@ overview-name: "Style Guide"
 
 num: 7
 
-previous-page: files
+previous-page: declarations
 next-page: method-invocation
 ---
 

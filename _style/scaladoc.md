@@ -7,7 +7,7 @@ overview-name: "Style Guide"
 
 num: 10
 
-previous-page: declarations
+previous-page: files
 ---
 
 It is important to provide documentation for all packages, classes,

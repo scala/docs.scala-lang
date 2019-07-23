@@ -5,10 +5,10 @@ title: Files
 partof: style
 overview-name: "Style Guide"
 
-num: 6
+num: 9
 
-previous-page: nested-blocks
-next-page: control-structures
+previous-page: method-invocation
+next-page: scaladoc
 ---
 
 As a rule, files should contain a *single* logical compilation unit. By

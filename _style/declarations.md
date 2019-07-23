@@ -5,10 +5,10 @@ title: Declarations
 partof: style
 overview-name: "Style Guide"
 
-num: 9
+num: 6
 
-previous-page: method-invocation
-next-page: scaladoc
+previous-page: nested-blocks
+next-page: control-structures
 ---
 
 ## Classes
@@ -51,7 +51,7 @@ empty line should be added to further separate extensions from class implementat
       with Logging
       with Identifiable
       with Serializable {
-      
+
       def firstMethod: Foo = …
     }
 
@@ -286,11 +286,11 @@ function value.
 
 When styles (1) and (4) are used exclusively, it becomes very easy to
 distinguish places in the source code where function values are used.
-Both styles make use of parentheses, since they look clean on a single line.  
+Both styles make use of parentheses, since they look clean on a single line.
 
 ### Spacing
 
-There should be no space between parentheses and the code they contain.  
+There should be no space between parentheses and the code they contain.
 Curly braces should be separated from the code within them by a one-space gap,
 to give the visually busy braces "breathing room".
 
