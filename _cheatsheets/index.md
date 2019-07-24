@@ -413,7 +413,10 @@ breakable {
     </tr>
     <tr>
       <td><pre class="highlight"><code>Option(null) == None
-Option(obj.unsafeMethod)</code></pre></td>
+Option(obj.unsafeMethod)</code></pre>
+      <em><strong>but</strong></em>
+      <pre class="highlight"><code>Some(null) != None</code></pre>
+</td>
       <td>Null-safe optional value factory.</td>
     </tr>
     <tr>
