@@ -25,16 +25,16 @@ languages: [ba, fr, ja, pl, pt-br, zh-cn, th, ru]
       <td> </td>
     </tr>
     <tr>
-      <td><pre class="highlight"><code>var x = 5</code></pre><br /> <span class="label success">Good</span><br><pre class="highlight"><code>x=6</code></pre></td>
-      <td>variable</td>
+      <td><pre class="highlight"><code>var x = 5</code></pre><br /> <span class="label success">Good</span><br><pre class="highlight"><code>x = 6</code></pre></td>
+      <td>variable.</td>
     </tr>
     <tr>
-      <td><pre class="highlight"><code>val x = 5</code></pre><br /> <span class="label important">Bad</span><br><pre class="highlight"><code>x=6</code></pre></td>
-      <td>constant</td>
+      <td><pre class="highlight"><code>val x = 5</code></pre><br /> <span class="label important">Bad</span><br><pre class="highlight"><code>x = 6</code></pre></td>
+      <td>constant.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>var x: Double = 5</code></pre></td>
-      <td>explicit type</td>
+      <td>explicit type.</td>
     </tr>
     <tr>
       <td><span id="functions" class="h2">functions</span></td>
@@ -57,15 +57,15 @@ languages: [ba, fr, ja, pl, pt-br, zh-cn, th, ru]
       <td>call-by-value <br /> call-by-name (lazy parameters)</td>
     </tr>
     <tr>
-      <td><pre class="highlight"><code>(x:R) =&gt; x * x</code></pre></td>
+      <td><pre class="highlight"><code>(x: R) =&gt; x * x</code></pre></td>
       <td>anonymous function</td>
     </tr>
     <tr>
-      <td><pre class="highlight"><code>(1 to 5).map(_ * 2)</code></pre> vs.<br /> <pre class="highlight"><code>(1 to 5).reduceLeft( _ + _ )</code></pre></td>
+      <td><pre class="highlight"><code>(1 to 5).map(_ * 2)</code></pre> vs.<br /> <pre class="highlight"><code>(1 to 5).reduceLeft(_ + _)</code></pre></td>
       <td>anonymous function: underscore is positionally matched arg.</td>
     </tr>
     <tr>
-      <td><pre class="highlight"><code>(1 to 5).map( x =&gt; x * x )</code></pre></td>
+      <td><pre class="highlight"><code>(1 to 5).map(x =&gt; x * x)</code></pre></td>
       <td>anonymous function: to use an arg twice, have to name it.</td>
     </tr>
     <tr>
@@ -94,15 +94,15 @@ languages: [ba, fr, ja, pl, pt-br, zh-cn, th, ru]
       <td>anonymous functions: to pass in multiple blocks, need outer parens.</td>
     </tr>
     <tr>
-      <td><pre class="highlight"><code>val zscore = 
+      <td><pre class="highlight"><code>val zscore =
   (mean: R, sd: R) =&gt;
-    (x:R) =&gt; 
+    (x:R) =&gt;
       (x - mean) / sd</code></pre></td>
       <td>currying, obvious syntax.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>def zscore(mean:R, sd:R) =
-  (x:R) =&gt; 
+  (x:R) =&gt;
     (x - mean) / sd</code></pre></td>
       <td>currying, obvious syntax</td>
     </tr>
@@ -126,7 +126,7 @@ languages: [ba, fr, ja, pl, pt-br, zh-cn, th, ru]
       <td>infix sugar.</td>
     </tr>
     <tr>
-      <td><pre class="highlight"><code>def sum(args: Int*) = 
+      <td><pre class="highlight"><code>def sum(args: Int*) =
   args.reduceLeft(_+_)</code></pre></td>
       <td>varargs.</td>
     </tr>
@@ -209,7 +209,7 @@ languages: [ba, fr, ja, pl, pt-br, zh-cn, th, ru]
       <td>conditional sugar.</td>
     </tr>
     <tr>
-      <td><pre class="highlight"><code>while (x &lt; 5) { 
+      <td><pre class="highlight"><code>while (x &lt; 5) {
   println(x)
   x += 1
 }</code></pre></td>
@@ -224,59 +224,60 @@ languages: [ba, fr, ja, pl, pt-br, zh-cn, th, ru]
     </tr>
     <tr>
       <td><pre class="highlight"><code>import scala.util.control.Breaks._
+
 breakable {
-  for (x <- xs) {
-    if (Math.random < 0.1)
+  for (x &lt;- xs) {
+    if (Math.random &lt; 0.1)
       break
   }
 }</code></pre></td>
       <td>break. (<a href="http://www.slideshare.net/Odersky/fosdem-2009-1013261/21">slides</a>)</td>
     </tr>
     <tr>
-      <td><pre class="highlight"><code>for (x &lt;- xs if x%2 == 0)
-yield x * 10</code></pre>
+      <td><pre class="highlight"><code>for (x &lt;- xs if x % 2 == 0)
+  yield x * 10</code></pre>
       <br><em><strong>same as</strong></em><br>
-      <pre class="highlight"><code>xs.filter(_%2 == 0).map( _ * 10)</code></pre></td>
-      <td>for comprehension: filter/map</td>
+      <pre class="highlight"><code>xs.filter(_ % 2 == 0).map(_ * 10)</code></pre></td>
+      <td>for comprehension: filter/map.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>for ((x, y) &lt;- xs zip ys)
-yield x * y</code></pre>
+  yield x * y</code></pre>
       <br><em><strong>same as</strong></em><br>
       <pre class="highlight"><code>(xs zip ys) map {
   case (x, y) =&gt; x * y
 }</code></pre></td>
-      <td>for comprehension: destructuring bind</td>
+      <td>for comprehension: destructuring bind.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>for (x &lt;- xs; y &lt;- ys)
-yield x * y</code></pre>
+  yield x * y</code></pre>
       <br><em><strong>same as</strong></em><br>
       <pre class="highlight"><code>xs flatMap { x =&gt;
   ys map { y =&gt;
     x * y
   }
 }</code></pre></td>
-      <td>for comprehension: cross product</td>
+      <td>for comprehension: cross product.</td>
     </tr>
     <tr>
-      <td><pre class="highlight"><code>for (x <- xs; y <- ys) {
+      <td><pre class="highlight"><code>for (x &lt;- xs; y &lt;- ys) {
   val div = x / y.toFloat
   println("%d/%d = %.1f".format(x, y, div))
 }</code></pre></td>
-      <td>for comprehension: imperative-ish<br /><a href="http://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax">sprintf-style</a></td>
+      <td>for comprehension: imperative-ish.<br /><a href="http://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax">sprintf-style</a>.</td>
     </tr>
     <tr>
-      <td><pre class="highlight"><code>for (i <- 1 to 5) {
+      <td><pre class="highlight"><code>for (i &lt;- 1 to 5) {
   println(i)
 }</code></pre></td>
-      <td>for comprehension: iterate including the upper bound</td>
+      <td>for comprehension: iterate including the upper bound.</td>
     </tr>
     <tr>
-      <td><pre class="highlight"><code>for (i <- 1 until 5) {
+      <td><pre class="highlight"><code>for (i &lt;- 1 until 5) {
   println(i)
 }</code></pre></td>
-      <td>for comprehension: iterate omitting the upper bound</td>
+      <td>for comprehension: iterate omitting the upper bound.</td>
     </tr>
     <tr>
       <td><span id="pattern_matching" class="h2">pattern matching</span></td>
@@ -284,7 +285,7 @@ yield x * y</code></pre>
     </tr>
     <tr>
       <td><span class="label success">Good</span><br> <pre class="highlight"><code>(xs zip ys) map {
-  case (x, y) =&gt; x * y 
+  case (x, y) =&gt; x * y
 }</code></pre><br /> <span class="label important">Bad</span><br> <pre class="highlight"><code>(xs zip ys) map {
   (x, y) =&gt; x * y
 }</code></pre></td>
@@ -306,7 +307,7 @@ yield x * y</code></pre>
   case `v42` =&gt; println("42")
   case _     =&gt; println("Not 42")
 }</code></pre></td>
-      <td>”`v42`” with backticks is interpreted as the existing val <pre class="highlight"><code>v42</code></pre>, and “Not 42” is printed.</td>
+      <td>”`v42`” with backticks is interpreted as the existing val <code>v42</code>, and “Not 42” is printed.</td>
     </tr>
     <tr>
       <td><span class="label success">Good</span><br>
@@ -379,7 +380,7 @@ yield x * y</code></pre>
     </tr>
     <tr>
       <td><span class="label important">Bad</span><br> <pre class="highlight"><code>new List[Int]</code></pre><br /> <span class="label success">Good</span><br> <pre class="highlight"><code>List(1, 2, 3)</code></pre></td>
-      <td>type error: abstract type<br />instead, convention: callable factory shadowing the type</td>
+      <td>type error: abstract type<br />instead, convention: callable factory shadowing the type.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>classOf[String]</code></pre></td>
@@ -387,15 +388,15 @@ yield x * y</code></pre>
     </tr>
     <tr>
       <td><pre class="highlight"><code>x.isInstanceOf[String]</code></pre></td>
-      <td>type check (runtime)</td>
+      <td>type check (runtime).</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>x.asInstanceOf[String]</code></pre></td>
-      <td>type cast (runtime)</td>
+      <td>type cast (runtime).</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>x: String</code></pre></td>
-      <td>ascription (compile time)</td>
+      <td>ascription (compile time).</td>
       <td> </td>
     </tr>
     <tr>
@@ -404,16 +405,16 @@ yield x * y</code></pre>
     </tr>
     <tr>
       <td><pre class="highlight"><code>Some(42)</code></pre></td>
-      <td>Construct a non empty optional value</td>
+      <td>Construct a non empty optional value.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>None</code></pre></td>
-      <td>The singleton empty optional value</td>
+      <td>The singleton empty optional value.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>Option(null) == None
 Option(obj.unsafeMethod)</code></pre></td>
-      <td>Null-safe optional value factory</td>
+      <td>Null-safe optional value factory.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>val optStr: Option[String] = None</code></pre>
@@ -426,26 +427,23 @@ Option(obj.unsafeMethod)</code></pre></td>
   request.getParameter("name")
 val upper = name.map {
   _.trim
-}
-.filter {
+} filter {
   _.length != 0
-}
-.map {
+} map {
   _.toUpperCase
 }
-println(upper.getOrElse(""))
-</code></pre></td>
-      <td>Pipeline style</td>
+println(upper.getOrElse(""))</code></pre></td>
+      <td>Pipeline style.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>val upper = for {
-  name <- request.getParameter("name")
-  trimmed <- Some(name.trim)
+  name &lt;- request.getParameter("name")
+  trimmed &lt;- Some(name.trim)
     if trimmed.length != 0
-  upper <- Some(trimmed.toUpperCase)
+  upper &lt;- Some(trimmed.toUpperCase)
 } yield upper
 println(upper.getOrElse(""))</code></pre></td>
-      <td>for-comprehension syntax</td>
+      <td>for-comprehension syntax.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>option.map(f(_))</code></pre>
@@ -454,7 +452,7 @@ println(upper.getOrElse(""))</code></pre></td>
   case Some(x) =&gt; Some(f(x))
   case None    =&gt; None
 }</code></pre></td>
-      <td>Apply a function on the optional value</td>
+      <td>Apply a function on the optional value.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>option.flatMap(f(_))</code></pre>
@@ -463,7 +461,7 @@ println(upper.getOrElse(""))</code></pre></td>
   case Some(x) =&gt; f(x)
   case None    =&gt; None
 }</code></pre></td>
-      <td>Same as map but function must return an optional value</td>
+      <td>Same as map but function must return an optional value.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>optionOfOption.flatten</code></pre>
@@ -472,7 +470,7 @@ println(upper.getOrElse(""))</code></pre></td>
   case Some(Some(x)) =&gt; Some(x)
   case _             =&gt; None
 }</code></pre></td>
-      <td>Extract nested option</td>
+      <td>Extract nested option.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>option.foreach(f(_))</code></pre>
@@ -490,7 +488,7 @@ println(upper.getOrElse(""))</code></pre></td>
   case Some(x) =&gt; f(x)
   case None    =&gt; y
 }</code></pre></td>
-      <td>Apply function on optional value, return default if empty</td>
+      <td>Apply function on optional value, return default if empty.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>option.collect {
