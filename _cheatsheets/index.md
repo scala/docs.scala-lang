@@ -70,7 +70,7 @@ languages: [ba, fr, ja, pl, pt-br, zh-cn, th, ru]
     </tr>
     <tr>
       <td><span class="label success">Good</span><br> <pre class="highlight"><code>(1 to 5).map(2 *)</code></pre><br /> <span class="label important">Bad</span><br> <pre class="highlight"><code>(1 to 5).map(* 2)</code></pre></td>
-      <td>anonymous function: bound infix method.<br /> Use <code class="highlighter-rouge">2 * _</code> for sanity’s sake instead.</td>
+      <td>anonymous function: bound infix method.<br /> Use <code class="highlighter-rouge">2 * _</code> for sanity’s sake instead.<br />Will require <code>import scala.language.postfixOps</code> in the future.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>(1 to 5).map { x =&gt;
