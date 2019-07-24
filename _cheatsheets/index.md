@@ -610,8 +610,8 @@ println(upper.getOrElse(""))</code></pre></td>
       <td><pre class="highlight"><code>option.forall(f(_))</code></pre>
       <em><strong>same as</strong></em>
       <pre class="highlight"><code>option match {
-  case Some(x) if f(x) =&gt; true
-  case None            =&gt; false
+  case Some(x) =&gt; f(x)
+  case None    =&gt; true
 }</code></pre></td>
       <td>Apply predicate on optional value or true if empty</td>
     </tr>
