@@ -600,8 +600,8 @@ println(upper.getOrElse(""))</code></pre></td>
       <td><pre class="highlight"><code>option.exists(f(_))</code></pre>
       <em><strong>same as</strong></em>
       <pre class="highlight"><code>option match {
-  case Some(x) if f(x) =&gt; true
-  case _               =&gt; false
+  case Some(x) =&gt; f(x)
+  case None    =&gt; false
 }</code></pre></td>
       <td>Apply predicate on optional value or false if empty</td>
     </tr>
