@@ -261,7 +261,7 @@ breakable {
   val div = x / y.toFloat
   println("%d/%d = %.1f".format(x, y, div))
 }</code></pre></td>
-      <td>For-comprehension: imperative-ish.<br /><a href="http://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax">Sprintf-style</a>.</td>
+      <td>For-comprehension: imperative-ish.<br /><a href="http://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax"><code>sprintf</code> style</a>.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>for (i &lt;- 1 to 5) {
