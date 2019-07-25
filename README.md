@@ -26,7 +26,7 @@ It will incrementally build and serve site at `http://localhost:8080`
 
 ## Contributing ##
 
-Please have a look at [http://docs.scala-lang.org/contribute.html](http://docs.scala-lang.org/contribute.html) before making a contribution.
+Please have a look at [https://docs.scala-lang.org/contribute.html](https://docs.scala-lang.org/contribute.html) before making a contribution.
 This document gives an overview of the type of documentation contained within the Scala Documentation repository and the repository's structure.
 
 Small changes, or corrected typos will generally be pulled in right away. Large changes, like the addition of new documents, or the rewriting of
@@ -35,7 +35,7 @@ in order to be accepted.
 
 ## Dependencies ##
 
-This site uses a Jekyll, a Ruby framework. You'll need Ruby and Bundler installed; see [Jekyll installation instructions](http://jekyllrb.com/docs/installation/) for the details.
+This site uses a Jekyll, a Ruby framework. You'll need Ruby and Bundler installed; see [Jekyll installation instructions](https://jekyllrb.com/docs/installation/) for the details.
 
 ## Building & Viewing ##
 
@@ -53,12 +53,12 @@ If you add `--watch` at the end of the command line above, Jekyll will automatic
 
 If you get `incompatible encoding` errors when generating the site under Windows, then ensure that the
 console in which you are running jekyll can work with UTF-8 characters. As described in the blog
-[Solving UTF problem with Jekyll on Windows](http://joseoncode.com/2011/11/27/solving-utf-problem-with-jekyll-on-windows/)
+[Solving UTF problem with Jekyll on Windows](https://joseoncode.com/2011/11/27/solving-utf-problem-with-jekyll-on-windows/)
 you have to execute `chcp 65001`. This command is best added to the `jekyll.bat`-script.
 
 ## Markdown ##
 
-The markdown used in this site uses [kramdown](http://kramdown.gettalong.org/) extensions.
+The markdown used in this site uses [kramdown](https://kramdown.gettalong.org/) extensions.
 
 ### Markdown Editor for OSX ###
 
@@ -68,4 +68,4 @@ There's a free markdown editor for OSX called [Mou](http://25.io/mou/). It's qui
 
 ## License ##
 
-All documentation contained in this repository is licensed by EPFL under a Creative Commons Attribution-Share Alike 3.0 Unported license ("CC-BY-SA"), unless otherwise noted. By submitting a "pull request," or otherwise contributing to this repository, you implicitly agree to license your contribution under the above CC-BY-SA license. The source code of this website is licensed to EPFL under the [Scala License](http://www.scala-lang.org/node/146), unless otherwise noted.
+All documentation contained in this repository is licensed by EPFL under a Creative Commons Attribution-Share Alike 3.0 Unported license ("CC-BY-SA"), unless otherwise noted. By submitting a "pull request," or otherwise contributing to this repository, you implicitly agree to license your contribution under the above CC-BY-SA license. The source code of this website is licensed to EPFL under the [Scala License](https://www.scala-lang.org/node/146), unless otherwise noted.
