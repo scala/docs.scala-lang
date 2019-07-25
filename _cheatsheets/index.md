@@ -92,18 +92,18 @@ languages: [ba, fr, ja, pl, pt-br, zh-cn, th, ru]
     <tr>
       <td><pre class="highlight"><code>val zscore =
   (mean: R, sd: R) =&gt;
-    (x:R) =&gt;
+    (x: R) =&gt;
       (x - mean) / sd</code></pre></td>
       <td>Currying, obvious syntax.</td>
     </tr>
     <tr>
-      <td><pre class="highlight"><code>def zscore(mean:R, sd:R) =
-  (x:R) =&gt;
+      <td><pre class="highlight"><code>def zscore(mean: R, sd: R) =
+  (x: R) =&gt;
     (x - mean) / sd</code></pre></td>
       <td>Currying, obvious syntax.</td>
     </tr>
     <tr>
-      <td><pre class="highlight"><code>def zscore(mean:R, sd:R)(x:R) =
+      <td><pre class="highlight"><code>def zscore(mean: R, sd: R)(x: R) =
   (x - mean) / sd</code></pre></td>
       <td>Currying, sugar syntax. But then:</td>
     </tr>
