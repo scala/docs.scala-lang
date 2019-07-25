@@ -42,7 +42,7 @@ languages: [ba, fr, ja, pl, pt-br, zh-cn, th, ru]
     </tr>
     <tr>
       <td><span class="label success">Good</span><br> <pre class="highlight"><code>def f(x: Int) = { x * x }</code></pre><br /> <span class="label important">Bad</span><br> <pre class="highlight"><code>def f(x: Int)   { x * x }</code></pre></td>
-      <td>Define function.<br />Hidden error: without <code>=</code> it’s a <code>Unit</code>-returning procedure; causes havoc.</td>
+      <td>Define function.<br />Hidden error: without <code>=</code> it’s a procedure returning <code>Unit</code>; causes havoc.</td>
     </tr>
     <tr>
       <td><span class="label success">Good</span><br> <pre class="highlight"><code>def f(x: Any) = println(x)</code></pre><br /> <span class="label important">Bad</span><br> <pre class="highlight"><code>def f(x) = println(x)</code></pre></td>
