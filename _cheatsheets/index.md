@@ -234,7 +234,7 @@ breakable {
   yield x * 10</code></pre>
       <br><em><strong>same as</strong></em><br>
       <pre class="highlight"><code>xs.filter(_ % 2 == 0).map(_ * 10)</code></pre></td>
-      <td>For comprehension: filter/map.</td>
+      <td>For-comprehension: filter/map.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>for ((x, y) &lt;- xs zip ys)
