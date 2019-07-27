@@ -495,9 +495,9 @@ println(upper.getOrElse(""))</code></pre></td>
 }</code></pre>
       <em><strong>same as</strong></em>
       <pre class="highlight"><code>option match {
-  case Some(x)
-    if f.isDefinedAt(x) =&gt; ...
-  case _                =&gt; None
+  case Some(x) if f.isDefinedAt(x) =&gt; ...
+  case Some(_)                     =&gt; None
+  case None                        =&gt; None
 }</code></pre></td>
       <td>Apply partial pattern match on optional value.</td>
     </tr>
@@ -595,8 +595,9 @@ println(upper.getOrElse(""))</code></pre></td>
       <td><pre class="highlight"><code>option.exists(f(_))</code></pre>
       <em><strong>same as</strong></em>
       <pre class="highlight"><code>option match {
-  case Some(x) =&gt; f(x)
-  case None    =&gt; false
+  case Some(x) if f(x) =&gt; true
+  case Some(_)         =&gt; false
+  case None            =&gt; false
 }</code></pre></td>
       <td>Apply predicate on optional value or <code>false</code> if empty.</td>
     </tr>
@@ -604,8 +605,9 @@ println(upper.getOrElse(""))</code></pre></td>
       <td><pre class="highlight"><code>option.forall(f(_))</code></pre>
       <em><strong>same as</strong></em>
       <pre class="highlight"><code>option match {
-  case Some(x) =&gt; f(x)
-  case None    =&gt; true
+  case Some(x) if f(x) =&gt; true
+  case Some(_)         =&gt; false
+  case None            =&gt; true
 }</code></pre></td>
       <td>Apply predicate on optional value or <code>true</code> if empty.</td>
     </tr>
