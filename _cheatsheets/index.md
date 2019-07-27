@@ -465,8 +465,8 @@ println(upper.getOrElse(""))</code></pre></td>
       <td><pre class="highlight"><code>optionOfOption.flatten</code></pre>
       <em><strong>same as</strong></em>
       <pre class="highlight"><code>optionOfOption match {
-  case Some(x: Option[_]) =&gt; x
-  case None               =&gt; None
+  case Some(Some(x)) =&gt; Some(x)
+  case _             =&gt; None
 }</code></pre></td>
       <td>Extract nested option.</td>
     </tr>
