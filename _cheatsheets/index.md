@@ -42,7 +42,7 @@ languages: [ba, fr, ja, pl, pt-br, zh-cn, th, ru]
     </tr>
     <tr>
       <td><span class="label success">Good</span><br> <pre class="highlight"><code>def f(x: Int) = { x * x }</code></pre><br /> <span class="label important">Bad</span><br> <pre class="highlight"><code>def f(x: Int)   { x * x }</code></pre></td>
-      <td>Define function.<br />Hidden error: without <code>=</code> it’s a procedure returning <code>Unit</code>; causes havoc.</td>
+      <td>Define function.<br />Hidden error: without <code>=</code> it’s a procedure returning <code>Unit</code>; causes havoc. <a href="https://github.com/scala/scala/pull/6325">Deprecated</a> in Scala 2.13.</td>
     </tr>
     <tr>
       <td><span class="label success">Good</span><br> <pre class="highlight"><code>def f(x: Any) = println(x)</code></pre><br /> <span class="label important">Bad</span><br> <pre class="highlight"><code>def f(x) = println(x)</code></pre></td>
