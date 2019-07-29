@@ -5,7 +5,8 @@ title: Views
 discourse: true
 
 partof: collections
-overview-name: Collections
+overview-name: Collections (Scala 2.8 - 2.12)
+new-version: /overviews/collections-2.13/views.html
 
 num: 14
 

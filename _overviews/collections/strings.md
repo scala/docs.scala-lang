@@ -5,7 +5,8 @@ title: Strings
 discourse: true
 
 partof: collections
-overview-name: Collections
+overview-name: Collections (Scala 2.8 - 2.12)
+new-version: /overviews/collections-2.13/strings.html
 
 num: 11
 

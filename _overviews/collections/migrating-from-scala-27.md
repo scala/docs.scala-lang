@@ -5,7 +5,7 @@ title: Migrating from Scala 2.7
 discourse: true
 
 partof: collections
-overview-name: Collections
+overview-name: Collections (Scala 2.8 - 2.12)
 
 num: 18
 
