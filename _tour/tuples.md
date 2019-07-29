@@ -64,7 +64,7 @@ val planets =
        ("Mars", 227.9), ("Jupiter", 778.3))
 planets.foreach{
   case ("Earth", distance) =>
-    println(s"Our planet is $distance million kilometers from the sun")
+    println("Our planet is $distance million kilometers from the sun")
   case _ =>
 }
 ```
