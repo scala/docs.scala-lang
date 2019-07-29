@@ -7,7 +7,7 @@ title: Contribute
 
 ## A Place to Build Documentation Together
 
-[docs.scala-lang.org](http://docs.scala-lang.org) was intended to make it easier for the Scala team and the community at large to easily collect, organize, and "make public" many different types of documentation while making it easy for users to find, interact, and help us improve that documentation.
+[docs.scala-lang.org](https://docs.scala-lang.org) was intended to make it easier for the Scala team and the community at large to easily collect, organize, and "make public" many different types of documentation while making it easy for users to find, interact, and help us improve that documentation.
 
 This website is an open-source repository of official Scala documentation, hosted on [github](https://github.com/scala/docs.scala-lang), that is always ready for contributions.
 
@@ -15,7 +15,7 @@ This website is an open-source repository of official Scala documentation, hoste
 
 The availability, depth, and quality of documentation is considered by many to be a huge issue.
 
-As Scala continues to mature, it continues to attract more and more interested newcomers and potential adopters who are well accustomed to easy-to-find, abundant, quality documentation (found in other languages, like Java). For many, the learning curve becomes unnecessarily steep, and [people sometimes get frustrated](http://groups.google.com/group/scala-user/browse_thread/thread/29996782cb8428cd/5ade8462ba30b177).
+As Scala continues to mature, it continues to attract more and more interested newcomers and potential adopters who are well accustomed to easy-to-find, abundant, quality documentation (found in other languages, like Java). For many, the learning curve becomes unnecessarily steep, and [people sometimes get frustrated](https://groups.google.com/group/scala-user/browse_thread/thread/29996782cb8428cd/5ade8462ba30b177).
 
 If we want Scala to be accessible to more programmers, clear, easy-to-find documentation is essential.
 
@@ -35,7 +35,7 @@ Currently, the _types_ of documentation supported in this repository are:
 
 This documentation repository is open-source, it lives in [github repository](https://github.com/scala/docs.scala-lang), and is always contribution-ready.
 
-It's statically generated from [Markdown](http://en.wikipedia.org/wiki/Markdown) source using [Jekyll](https://github.com/mojombo/jekyll), and hosted on [GitHub Pages](http://pages.github.com/). This workflow was chosen so as to make it as easy as possible for core committers and the community alike to produce HTML documentation, and as easy as possible to publish it in a central location.
+It's statically generated from [Markdown](https://en.wikipedia.org/wiki/Markdown) source using [Jekyll](https://github.com/mojombo/jekyll), and hosted on [GitHub Pages](https://pages.github.com/). This workflow was chosen so as to make it as easy as possible for core committers and the community alike to produce HTML documentation, and as easy as possible to publish it in a central location.
 
 The markdown syntax being used supports [Maruku](https://github.com/bhollis/maruku) extensions, and has automatic syntax highlighting, without the need for any tags.
 
@@ -46,7 +46,7 @@ Additionally [tut](https://github.com/tpolecat/tut) is used during pull requests
 For one to contribute a document, one must simply
 [fork](https://help.github.com/articles/fork-a-repo/) the
 [repo](https://github.com/scala/docs.scala-lang), write their article in
-[Markdown](http://daringfireball.net/projects/markdown/syntax) (example below), and submit a pull request. That's it. Likely after some edits and discussion, your document will be made live on [docs.scala-lang.org](http://docs.scala-lang.org).
+[Markdown](https://daringfireball.net/projects/markdown/syntax) (example below), and submit a pull request. That's it. Likely after some edits and discussion, your document will be made live on [docs.scala-lang.org](https://docs.scala-lang.org).
 
     ---
     layout: overview
@@ -55,7 +55,7 @@ For one to contribute a document, one must simply
 
     ## An h2 Header in Markdown
 
-    And a paragraph, with a [link](http://www.scala-lang.org).
+    And a paragraph, with a [link](https://www.scala-lang.org).
 
 	One can contribute code by indenting it 4 spaces, or in-line by putting backticks around it like so, `def foo`
 
@@ -63,7 +63,7 @@ Everything else is automatically generated for you; tables of contents, and most
 
 ### Criteria for Docs to be Accepted
 
-The goal of this documentation repository is to be tighter and more organized than other community-driven documentation platforms, like wikis. As such, any document pulled in for inclusion on [http://docs.scala-lang.org](http://docs.scala-lang.org) must:
+The goal of this documentation repository is to be tighter and more organized than other community-driven documentation platforms, like wikis. As such, any document pulled in for inclusion on [https://docs.scala-lang.org](https://docs.scala-lang.org) must:
 
 - **"fit in"** to the repository ( _i.e.,_ it should not be a complete duplicate of another article),
 - **be polished** it must be thorough, complete, correct, organized, and "article-like" (personal programming notes don't quite fit.)
@@ -86,7 +86,7 @@ A guide or an overview that can be logically placed on **one** page must be plac
     title: YOUR TITLE
     ---
 
-The rest of the document should, of course, be written in [Markdown](http://en.wikipedia.org/wiki/Markdown).
+The rest of the document should, of course, be written in [Markdown](https://en.wikipedia.org/wiki/Markdown).
 
 At the moment, `RELEVANT-CATEGORY` corresponds to only a single category, "core," because we are currently focusing on building up documentation of core libraries. However, expect more categories here in the future.
 
@@ -113,7 +113,7 @@ A **single** document in the collection must contain a tag in the header, `outof
 
 Any overview document may also include comments. To include comments, just add the tag `discourse: true` to your header.
 
-Index pages, such as [http://docs.scala-lang.org/overviews/index.html](http://docs.scala-lang.org/overviews/index.html) are automatically generated, assuming documents are properly placed under the correct `RELEVANT-CATEGORY`. So, simply drop your document into the correct folder, and you're done.
+Index pages, such as [https://docs.scala-lang.org/overviews/index.html](https://docs.scala-lang.org/overviews/index.html) are automatically generated, assuming documents are properly placed under the correct `RELEVANT-CATEGORY`. So, simply drop your document into the correct folder, and you're done.
 
 ### Tutorials
 
