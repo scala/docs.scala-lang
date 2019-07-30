@@ -7,33 +7,33 @@
       url: "collections-2.13/introduction.html"
       description: "Scala のコレクションライブラリ"
       subdocs:
-        - title: Introduction
+        - title: はじめに
           url: "collections-2.13/introduction.html"
-        - title: Mutable and Immutable Collections
+        - title: 可変コレクションおよび不変コレクション
           url: "collections-2.13/overview.html"
-        - title: Trait Iterable
+        - title: Iterable トレイト
           url: "collections-2.13/trait-iterable.html"
-        - title: The sequence traits Seq, IndexedSeq, and LinearSeq
+        - title: 列トレイト Seq、IndexedSeq、および LinearSeq
           url: "collections-2.13/seqs.html"
-        - title: Concrete Immutable Collection Classes
+        - title: 具象不変コレクションクラス
           url: "collections-2.13/concrete-immutable-collection-classes.html"
-        - title: Concrete Mutable Collection Classes
+        - title: 具象可変コレクションクラス
           url: "collections-2.13/concrete-mutable-collection-classes.html"
-        - title: Arrays
+        - title: 配列
           url: "collections-2.13/arrays.html"
-        - title: Strings
+        - title: 文字列
           url: "collections-2.13/strings.html"
-        - title: Performance Characteristics
+        - title: 性能特性
           url: "collections-2.13/performance-characteristics.html"
-        - title: Equality
+        - title: 等価性
           url: "collections-2.13/equality.html"
-        - title: Views
+        - title: ビュー
           url: "collections-2.13/views.html"
-        - title: Iterators
+        - title: イテレータ
           url: "collections-2.13/iterators.html"
-        - title: Creating Collections From Scratch
+        - title: コレクションの作成
           url: "collections-2.13/creating-collections-from-scratch.html"
-        - title: Conversions Between Java and Scala Collections
+        - title: Java と Scala 間のコレクションの変換
           url: "collections-2.13/conversions-between-java-and-scala-collections.html"
     - title: プロジェクトを Scala 2.13 コレクションへ移行する
       icon: sitemap
