@@ -23,67 +23,62 @@ sbt はあなたのプロジェクトに関連した様々なタスク、とり�
     * [Linux](http://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Linux.html)
 
 ## プロジェクトを作成
-1. `cd` to an empty folder.
-1. Run the following command `sbt new scala/hello-world.g8`.
-This pulls the 'hello-world' template from GitHub.
-It will also create a `target` folder, which you can ignore.
-1. When prompted, name the application `hello-world`. This will
-create a project called "hello-world".
-1. Let's take a look at what just got generated:
+1. 空のフォルダーに `cd` 。
+1. コマンド `sbt new scala/hello-world.g8` を実行します。
+これは GitHub から 'hello-world' というテンプレートを取ってきます。
+`target` フォルダーも作成しますが、無視してください。
+1. 入力をうながされたら、アプリを `hello-world` と名付けます。
+これで "hello-world" というプロジェクトが作成されます。
+1. 生成されたばかりのものを見てみましょう。
 
 ```
 - hello-world
-    - project (sbt uses this to install manage plugins and dependencies)
+    - project （sbt はこのディレクトリを管理プラグインや依存関係のインストールに使います）
         - build.properties
     - src
         - main
-            - scala (All of your scala code goes here)
-                -Main.scala (Entry point of program) <-- this is all we need for now
-    build.sbt (sbt's build definition file)
+            - scala （Scala コードはここに来ます)
+                -Main.scala (プログラムの入口） <-- 今のところこれこそが欲しいものです
+    build.sbt （sbt のビルド定義ファイル）
 ```
 
-After you build your project, sbt will create more `target` directories
-for generated files. You can ignore these.
+プロジェクトをビルドしたら、sbt は生成されるファイルのための `target` をもっと作るでしょう。
+これらは無視してください。
 
-## Running the project
-1. `cd` into `hello-world`.
-1. Run `sbt`. This will open up the sbt console.
-1. Type `~run`. The `~` is optional and causes sbt to re-run on every file save,
-allowing for a fast edit/run/debug cycle. sbt will also generate a `target` directory
-which you can ignore.
+## プロジェクトを実行
+1. `hello-world` に `cd` 。
+1. `sbt` を実行します。sbt コンソールが開くでしょう。
+1. `~run` と入力します。`~` はオプションで、ファイルが保存されるたびに sbt にコマンドを再実行させるので、すばやい編集/実行/デバッグサイクルを回せます。
+sbt は `target` ディレクトリを作成しますが、無視してください。
 
-## Modifying the code
-1. Open the file `src/main/scala/Main.scala` in your favorite text editor.
-1. Change "Hello, World!" to "Hello, New York!"
-1. If you haven't stopped the sbt command, you should see "Hello, New York!"
-printed to the console.
-1. You can continue to make changes and see the results in the console.
+## コードを修正
+1. お好きなテキストディタでファイル `src/main/scala/Main.scala` を開きます。
+1. "Hello, World!" を "Hello, New York!" に変更します。
+1. sbt コマンドを停止していなければ、コンソールに "Hello, New York!" と印字されるのが見えるでしょう。
+1. 繰り返し変更してみてコンソールが変化するのを見てみましょう。
 
-## Adding a dependency
-Changing gears a bit, let's look at how to use published libraries to add
-extra functionality to our apps.
+## 依存関係を追加
+趣向を少し変えて、アプリに追加機能を加えるために公開ライブラリの使い方を見てみましょう。
 
-1. Open up `build.sbt` and add the following line:
+`build.sbt` を開き、以下のファイルを追加します。
+
+1. `build.sbt` を開き、以下の行を追加します。
 
 ```
 libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % "1.1.0"
 ```
-Here, `libraryDependencies` is a set of dependencies, and by using `+=`,
-we're adding the [scala-parser-combinators](https://github.com/scala/scala-parser-combinators) dependency to the set of dependencies that sbt will go
-and fetch when it starts up. Now, in any Scala file, you can import classes,
-objects, etc, from scala-parser-combinators with a regular import.
 
-You can find more published libraries on
-[Scaladex](https://index.scala-lang.org/), the Scala library index, where you
-can also copy the above dependency information for pasting into your `build.sbt`
-file.
+ここで `libraryDependencies` は依存関係の集合であり、`+=` を使うことにより、[scala-parser-combinators](https://github.com/scala/scala-parser-combinators) への依存を、sbt が起動時に取得してくる依存関係の集合に加えています。
+これで、どの Scala ファイルでも、`scala-parser-combinator` にあるクラスやオブジェクトなどを通常のインポートでインポートできます。
 
-## Next steps
+さらなる公開ライブラリは、Scala ライブラリインデックス [Scaladex](https://index.scala-lang.org/) で見つけられます。
+そこでは上述のような依存関係情報をコピーでき、`build.sbt` ファイルにペーストできます。
 
-Continue to the next tutorial in the _getting started with sbt_ series, and learn about [testing Scala code with sbt in the command line](testing-scala-with-sbt-on-the-command-line.html).
+## 次のステップ
 
-**or**
+**sbt で入門** シリーズの次のチュートリアルに進み、[コマンドライン で sbt を使って Scala をテストする](testing-scala-with-sbt-on-the-command-line.html)方法を学びます。
 
-- Continue learning Scala interactively online on
- [Scala Exercises](https://www.scala-exercises.org/scala_tutorial).
-- Learn about Scala's features in bite-sized pieces by stepping through our [Tour of Scala]({{ site.baseurl }}/tour/tour-of-scala.html).
+**あるいは**
+
+- インタラクティブなオンラインコース [Scala Exercises](https://www.scala-exercises.org/scala_tutorial) で Scala を学習します。
+- [Scala ツアー](/ja//tour/tour-of-scala.html) で Scala の特徴を一口大のサイズでステップバイステップに学びます。
