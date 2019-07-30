@@ -8,7 +8,6 @@ by: Brendan O'Connor
 about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheatsheet aims to be a quick reference of Scala syntactic constructions. Licensed by Brendan O'Connor under a CC-BY-SA 3.0 license.
 
 languages: [ba, fr, ja, pl, pt-br, zh-cn, th, ru]
-permalink: /cheatsheets/index.html
 ---
 
 <!-- ###### Contributed by {{ page.by }} -->
