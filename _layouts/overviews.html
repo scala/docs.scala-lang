@@ -2,11 +2,85 @@
 layout: inner-page-parent
 ---
 
+{% if page.language %}
+	{% capture dataName %}overviews-{{page.language}}{% endcapture %}
+{% else %}
+	{% capture dataName %}overviews{% endcapture %}
+{% endif %}
 <section class="full-width">
 	<div class="wrap">
+
+		<div class="language-dropdown inverted">
+			<div id="dd" class="wrapper-dropdown" tabindex="1">
+				<span>Language</span>
+				<ul class="dropdown"></ul>
+			</div>
+		</div>
+
+		<ul id="available-languages" style="display: none;">
+		{% if page.languages %}
+			<li><a href="{{ site.baseurl }}{{ page.url }}">English</a></li>
+			{% for l in page.languages %}
+			{% capture intermediate %}{{ page.url }}{% endcapture %}
+			{% capture rootTutorialURL %}{{ intermediate | remove_first: '/' }}{% endcapture %}
+			{% assign lang = site.data.languages[l] %}
+			<li><a href="{{ site.baseurl }}/{{ l }}/{{ rootTutorialURL }}" class="lang">{{ lang.name }}</a></li>
+			{% endfor %}
+		{% elsif page.language %}
+			{% assign engPath = page.id | remove_first: "/" | remove_first: page.language | append: '.html' %}
+			{% assign engPg = site.documents | where: 'partof', page.partof | first %}
+				<li><a href="{{ site.baseurl }}{{ engPath }}">English</a></li>
+				{% for l in engPg.languages %}
+				{% assign lang = site.data.languages[l] %}
+				<li><a href="{{ site.baseurl }}/{{ l }}{{ engPath }}" class="lang">{{ lang.name }}</a></li>
+				{% endfor %}
+		{% endif %}
+		</ul>
+
 		<div class="content-primary overviews">
 			<div class="inner-box toc-context">
-				{{content}}
+				{% for category in site.data[dataName] %}
+				<h2>{{ category.category }}</h2>
+				{% if category.description %}<p>{{ category.description }}</p>{% endif %}
+				<div class="card-group">
+					{% for overview in category.overviews %}
+					<div class="white-card">
+						<div class="card-wrap">
+							<div class="card-header">
+								{% if overview.icon %}
+								<div class="card-avatar">
+									<div class="icon"><i class="fa fa-{{ overview.icon }}" aria-hidden="true"></i></div>
+								</div>
+								{% endif %}
+								{% capture originalOverviewUrl %}/overviews/{{ overview.url }}{% endcapture %}
+								{% capture translatedOverviewId %}/{{page.language}}/overviews/{{ overview.url | remove_first: '.html' }}{% endcapture %}
+								{% assign translatedOverview = site.documents | where: 'id', translatedOverviewId | first %}
+								<a href="{{ translatedOverview.url | default: originalOverviewUrl }}"><h3>{{ overview.title }}</h3></a>
+							</div>
+							<div class="card-content">
+								{% if overview.label-text %}<div class="tag" {% if overview.label-color %}style ="background: {{ overview.label-color }}"{% endif %}>{{ overview.label-text }}</div>{% endif %}
+								{% if overview.by %}<div class="by">By {{ overview.by }}</div>{% endif %}
+								{% if overview.description %}<p>{{ overview.description }}</p>{% endif %}
+								{% if overview.subdocs %}
+								<strong>Contents</strong>
+								<ul class="subdocs">
+									{% for doc in overview.subdocs %}
+									{% capture originalDocUrl %}/overviews/{{ doc.url }}{% endcapture %}
+									{% capture translatedDocId %}/{{page.language}}/overviews/{{ doc.url | remove_first: '.html' }}{% endcapture %}
+									{% assign translatedDoc = site.documents | where: 'id', translatedDocId | first %}
+									<li><a href="{{ translatedDoc.url | default: originalDocUrl }}">{{ doc.title }}</a></li>
+									{% endfor %}
+								</ul>
+								{% endif %}
+							</div>
+						</div>
+						<div class="card-footer">
+							<a class="go-btn" href="{{ translatedOverview.url | default: originalOverviewUrl }}"><i class="fa fa-arrow-right" aria-hidden="true"></i> Read</a>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+				{% endfor %}
 			</div>
 		</div>
 	</div>
