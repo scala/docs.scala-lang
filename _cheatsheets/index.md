@@ -477,7 +477,7 @@ println(upper.getOrElse(""))</code></pre></td>
   case Some(x) =&gt; f(x)
   case None    =&gt; ()
 }</code></pre></td>
-      <td>Apply a procedure on optional value. Returns <code>Unit</code>.</td>
+      <td>Apply a procedure on optional value.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>option.fold(y)(f(_))</code></pre>
