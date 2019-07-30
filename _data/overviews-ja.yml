@@ -1,0 +1,319 @@
+- category: 標準ライブラリ
+  description: "Scala 標準ライブラリをカバーするガイドと概要"
+  overviews:
+    - title: Scala コレクション
+      by: Martin Odersky and Julien Richard-Foy
+      icon: sitemap
+      url: "collections-2.13/introduction.html"
+      description: "Scala のコレクションライブラリ"
+      subdocs:
+        - title: Introduction
+          url: "collections-2.13/introduction.html"
+        - title: Mutable and Immutable Collections
+          url: "collections-2.13/overview.html"
+        - title: Trait Iterable
+          url: "collections-2.13/trait-iterable.html"
+        - title: The sequence traits Seq, IndexedSeq, and LinearSeq
+          url: "collections-2.13/seqs.html"
+        - title: Concrete Immutable Collection Classes
+          url: "collections-2.13/concrete-immutable-collection-classes.html"
+        - title: Concrete Mutable Collection Classes
+          url: "collections-2.13/concrete-mutable-collection-classes.html"
+        - title: Arrays
+          url: "collections-2.13/arrays.html"
+        - title: Strings
+          url: "collections-2.13/strings.html"
+        - title: Performance Characteristics
+          url: "collections-2.13/performance-characteristics.html"
+        - title: Equality
+          url: "collections-2.13/equality.html"
+        - title: Views
+          url: "collections-2.13/views.html"
+        - title: Iterators
+          url: "collections-2.13/iterators.html"
+        - title: Creating Collections From Scratch
+          url: "collections-2.13/creating-collections-from-scratch.html"
+        - title: Conversions Between Java and Scala Collections
+          url: "collections-2.13/conversions-between-java-and-scala-collections.html"
+    - title: プロジェクトを Scala 2.13 コレクションへ移行する
+      icon: sitemap
+      url: "core/collections-migration-213.html"
+      description: "このページは Scala 2.13 へ移行するコレクションユーザーにとっての主な変更を説明し、Scala 2.11、2.12、2.13 向けにクロスビルドする方法をお見せする。"
+    - title: Scala コレクションのアーキテクチャー
+      icon: sitemap
+      url: "core/architecture-of-scala-213-collections.html"
+      by: Julien Richard-Foy
+      description: "このページは Scala 2.13 で導入されたコレクションフレームワークのアーキテクチャーを説明する。コレクション API というよりはフレームワークの内部の動きがもっと分かるだろう。"
+    - title: カスタムコレクションを実装する
+      icon: building
+      url: "core/custom-collections.html"
+      by: Martin Odersky, Lex Spoon and Julien Richard-Foy
+      description: "このドキュメントでは、コレクションフレームワークがどのようにして数行のコードであなた自身が独自コレクションを定義でき、しかもフレームワークの圧倒的な量の機能を再利用できる助けをしているかを学べるだろう。"
+    - title: カスタムのコレクション操作を追加する
+      icon: building
+      url: "core/custom-collection-operations.html"
+      by: Julien Richard-Foy
+      description: "このガイドでは、どのようなコレクション型にも適用できて元のコレクション型を返すことができる操作の書き方、さらに組み立てるコレクション型によってパラメータ化された操作の書き方もお見せする。"
+
+- category: 言語
+  description: "Scala 言語の機能をカバーするガイドと概要"
+  overviews:
+    - title: 文字列補間
+      icon: usd
+      url: "core/string-interpolation.html"
+      description: >
+        文字列補間は、ユーザーが加工文字列リテラル（processed string literal）に変数参照を直接埋め込めるようにしてくれる。以下例。
+          <pre><code>val name = "James"
+        println(s"Hello, $name")  // Hello, James</code></pre>
+        上記例では、リテラル <code>s"Hello, $name"</code> は加工文字列リテラルだ。これはコンパイラーがこのリテラルに追加の仕事をしていることを意味する。加工文字列リテラルは <code>"</code> に先行するいくつかの文字で示される。文字列補間は <a href="/sips/string-interpolation.html">SIP-11</a> で導入され、そこには実装の全詳細が含まれる。
+    - title: 暗黙クラス
+      by: Josh Suereth
+      description: "Scala 2.10 は暗黙クラス（implicit class）と呼ばれる新しい機能を導入した。暗黙クラスは implicit キーワードでマークされたクラスだ。このキーワードはそのクラスがスコープ内にあるとき、そのプライマリコンストラクターが暗黙変換に利用可能にする。"
+      url: "core/implicit-classes.html"
+    - title: 値クラスと汎用トレイト
+      by: Mark Harrah
+      description: "値クラスは Scala で実行時のオブジェクトアロケーションを避ける新しい仕組みだ。これは新しい AnyVal サブクラスを定義することで達成できる。"
+      icon: diamond
+      url: "core/value-classes.html"
+
+- category: ライブラリの作成
+  description: "Scala エコシステム向けのオープンソースライブラリの貢献方法のガイド"
+  overviews:
+    - title: ライブラリ作者へのガイド
+      by: "Julien Richard-Foy"
+      icon: tasks
+      url: "contributors/index.html"
+      description: "ライブラリ作者がライブラリを公開したりドキュメントしたりするのにセットアップすべき全ツールをリストにする。"
+
+- category: 並列並行プログラミング
+  description: "並列並行プログラミングのための Scala のライブラリをカバーする完全ガイド"
+  overviews:
+    - title: Future と Promise
+      by: "Philipp Haller, Aleksandar Prokopec, Heather Miller, Viktor Klang, Roland Kuhn, and Vojin Jovanovic"
+      icon: tasks
+      url: "core/futures.html"
+      description: "Futures は多くの処理を並列で、効率的かつノンブロッキングに実行する考え方を提供する。Future はまだ存在しない値のプレースホルダーオブジェクトだ。一般に Future の値は並行で供給され、その後で使うことができる。このようなやり方で並行タスクを組み立てると、高速、ノンブロッキングで並列なコードにつなげるのに役立つ。"
+    - title: 並行コレクション
+      by: Aleksandar Prokopec and Heather Miller
+      icon: rocket
+      url: "parallel-collections/overview.html"
+      description: "Scala の並行コレクションライブラリ"
+      subdocs:
+        - title: 概要
+          url: "parallel-collections/overview.html"
+        - title: 具象並列コレクションクラス
+          url: "parallel-collections/concrete-parallel-collections.html"
+        - title: 並列コレクションへの変換
+          url: "parallel-collections/conversions.html"
+        - title: 並行トライ
+          url: "parallel-collections/ctries.html"
+        - title: 並列コレクションライブラリのアーキテクチャ
+          url: "parallel-collections/architecture.html"
+        - title: カスタム並列コレクションの作成
+          url: "parallel-collections/custom-parallel-collections.html"
+        - title: 並列コレクションの設定
+          url: "parallel-collections/configuration.html"
+        - title: 性能の測定
+          url: "parallel-collections/performance.html"
+
+- category: 互換性
+  description: "何が何と動くか動かないか"
+  overviews:
+    - title: JDK バージョン互換性
+      description: "どの Scala バージョンがどの JDK バージョンで動くか"
+      icon: coffee
+      url: "jdk-compatibility/overview.html"
+    - title: Scala リリースのバイナリ互換性
+      description: "Scala の2つのバージョンがバイナリ互換であるとき、一方の Scala バージョンでプロジェクトをコンパイルし、実行時にもう一方の Scala バージョンにリンクするのは安全だ。安全な実行時リンクとは、同じバージョンの Scala でコンパイルや実行するときでは起こり得ないだろう複雑なシナリオでプログラムを実行しても、JVM が LinkageError（かそのサブクラス）を発生させないということ（のみ！）を意味する。具体的には、バイナリ互換である限り、コンパイル時とは異なる Scala バージョンの外部依存関係を実行時クラスパスに持つことができるということだ。言い換えると、異なるバイナリ互換バージョンでの分離コンパイルは、すべて Scala の同じバージョンでコンパイルも実行もすることと同様、問題ない。"
+      icon: puzzle-piece
+      url: "core/binary-compatibility-of-scala-releases.html"
+    - title: ライブラリ作者のためのバイナリ互換
+      description: "多種多様なライブラリは生産性の高いソフトウェアエコシステムにとって重要だ。Scala ライブラリを開発・頒布するのはたやすいが、良いライブラリ作者はコードを書いて公開する以上のことをする。このガイドではライブラリのバイナリ互換という重要なトピックをカバーする。"
+      icon: puzzle-piece
+      url: "core/binary-compatibility-for-library-authors.html"
+
+- category: "ツール"
+  description: "Scala REPL や Scaladoc 生成のようなコアの Scala ツールの参考資料"
+  overviews:
+    - title: Scala REPL
+      icon: terminal
+      url: "repl/overview.html"
+      description: |
+        Scala REPL は Scala の式を評価するツール（<code>scala</code>）だ。
+        <br><br>
+        <code>scala</code> コマンドはソーススクリプトをテンプレートでラップし、コンパイルし、できあがったプログラムを実行することで実行する。
+    - title: Scaladoc
+      url: "scaladoc/overview.html"
+      icon: book
+      description: "Scala の API ドキュメント生成ツール"
+      subdocs:
+        - title: 概要
+          url: "scaladoc/overview.html"
+        - title: ライブラリ作者のための Scaladoc
+          url: "scaladoc/for-library-authors.html"
+        - title: Scaladoc インターフェースを使う
+          url: "scaladoc/interface.html"
+
+- category: コンパイラー
+  description: "Scala コンパイラーをカバーするガイドと概要。コンパイラプラグイン、リフレクション、マクロのようなメタプログラミング。"
+  overviews:
+    - title: リフレクション
+      by: Heather Miller, Eugene Burmako, and Philipp Haller
+      icon: binoculars
+      url: "reflection/overview.html"
+      description: Scala の実行時/コンパイル時のリフレクションフレームワーク。
+      label-text: experimental
+      subdocs:
+        - title: 概要
+          url: "reflection/overview.html"
+        - title: 環境、ユニバース、ミラー
+          url: "reflection/environment-universes-mirrors.html"
+        - title: シンボル、構文木、型
+          url: "reflection/symbols-trees-types.html"
+        - title: アノテーション、名前、スコープ、その他
+          url: "reflection/annotations-names-scopes.html"
+        - title: 型タグとマニフェスト
+          url: "reflection/typetags-manifests.html"
+        - title: スレッドセーフティ
+          url: "reflection/thread-safety.html"
+        - title: Scala 2.11 での変更
+          url: "reflection/changelog211.html"
+    - title: マクロ
+      by: Eugene Burmako
+      icon: magic
+      url: "macros/usecases.html"
+      description: "Scala のメタプログラミングフレームワーク"
+      label-text: experimental
+      subdocs:
+        - title: ユースケース
+          url: "macros/usecases.html"
+        - title: Blackbox vs Whitebox
+          url: "macros/blackbox-whitebox.html"
+        - title: def マクロ
+          url: "macros/overview.html"
+        - title: 準クォート
+          url: "quasiquotes/intro.html"
+        - title: マクロバンドル
+          url: "macros/bundles.html"
+        - title: implicit マクロ
+          url: "macros/implicits.html"
+        - title: 抽出子マクロ
+          url: "macros/extractors.html"
+        - title: 型プロバイダ
+          url: "macros/typeproviders.html"
+        - title: マクロアノテーション
+          url: "macros/annotations.html"
+        - title: マクロパラダイス
+          url: "macros/paradise.html"
+        - title: ロードマップ
+          url: "macros/roadmap.html"
+        - title: Scala 2.11 での変更
+          url: "macros/changelog211.html"
+    - title: 準クォート
+      by: Denys Shabalin
+      icon: quote-left
+      url: "quasiquotes/setup.html"
+      description: "準クォートは Scala の構文木を操作する便利な方法だ。"
+      label-text: experimental
+      subdocs:
+        - title: 依存関係とセットアップ
+          url: "quasiquotes/setup.html"
+        - title: はじめに
+          url: "quasiquotes/intro.html"
+        - title: リフト
+          url: "quasiquotes/lifting.html"
+        - title: アンリフト
+          url: "quasiquotes/unlifting.html"
+        - title: 健全性
+          url: "quasiquotes/hygiene.html"
+        - title: ユースケース
+          url: "quasiquotes/usecases.html"
+        - title: 構文の概要
+          url: "quasiquotes/syntax-summary.html"
+        - title: 式の詳細
+          url: "quasiquotes/expression-details.html"
+        - title: 型の詳細
+          url: "quasiquotes/type-details.html"
+        - title: パターンの詳細
+          url: "quasiquotes/pattern-details.html"
+        - title: 定義とインポートの詳細
+          url: "quasiquotes/definition-details.html"
+        - title: 専門用語の概要
+          url: "quasiquotes/terminology.html"
+        - title: 将来の見通し
+          url: "quasiquotes/future.html"
+    - title: コンパイラープラグイン
+      by: Lex Spoon and Seth Tisue
+      icon: puzzle-piece
+      url: "plugins/index.html"
+      description: "コンパイラープラグインは Scala コンパイラーのカスタマイズと拡張を可能にする。このチュートリアルはプラグインの仕組みを説明し、かんたんなプラグインの作成をウォークスルーする。"
+    - title: コンパイラーオプション
+      by: Community
+      icon: cog
+      url: "compiler-options/index.html"
+      description: >
+        <code>scalac</code> がどのようにコードをコンパイルするかの様々な設定。
+
+
+- category: レガシー
+  description: "最近の Scala バージョン（2.12以上）には関係なくなった機能をカバーするガイド。"
+  overviews:
+    - title: Scala アクター移行ガイド
+      by: Vojin Jovanovic and Philipp Haller
+      icon: truck
+      url: "core/actors-migration-guide.html"
+      description: "Scala アクターから Akka への移行を容易にするため、Actor Migration Kit（AMK）を用意した。AMK は、Scala アクターの拡張から構成され、プロジェクトのクラスパスに scala-actors-migration.jar を含めることで有効になる。加えて、Akka 2.1 はアクター DSL シングルトンのような機能を導入し、Scala アクターを使ったコードを Akka へ容易に変換することを可能にしている。このドキュメントの目的はユーザーに移行プロセスを案内し、AMK の使い方を説明することだ。"
+    - title: Scala アクター API
+      by: Philipp Haller and Stephen Tu
+      icon: users
+      url: "core/actors.html"
+      description: "このガイドは Scala 2.8/2.9 の scala.actors パッケージの API を説明する。組織は論理的に同類の型のグループに従う。トレイト階層は個々のセクションを構造化することを考慮している。既存の Scaladoc ベースの API ドキュメントを補間するため、これらトレイトが定義する様々なメソッドの実行時の挙動にフォーカスする。"
+      label-color: "#899295"
+      label-text: deprecated
+    - title: Scala 2.8 から 2.12 までのコレクション
+      by: Martin Odersky
+      icon: sitemap
+      url: "collections/introduction.html"
+      description: "Scala's Collection Library."
+      subdocs:
+        - title: はじめに
+          url: "collections/introduction.html"
+        - title: 可変コレクションおよび不変コレクション
+          url: "collections/overview.html"
+        - title: Traversable トレイト
+          url: "collections/trait-traversable.html"
+        - title: Iterable トレイト
+          url: "collections/trait-iterable.html"
+        - title: 列トレイト Seq、IndexedSeq、および LinearSeq
+          url: "collections/seqs.html"
+        - title: 集合
+          url: "collections/sets.html"
+        - title: マップ
+          url: "collections/maps.html"
+        - title: 具象不変コレクションクラス
+          url: "collections/concrete-immutable-collection-classes.html"
+        - title: 具象可変コレクションクラス
+          url: "collections/concrete-mutable-collection-classes.html"
+        - title: 配列
+          url: "collections/arrays.html"
+        - title: 文字列
+          url: "collections/strings.html"
+        - title: 性能特性
+          url: "collections/performance-characteristics.html"
+        - title: 等価性
+          url: "collections/equality.html"
+        - title: ビュー
+          url: "collections/views.html"
+        - title: イテレータ
+          url: "collections/iterators.html"
+        - title: コレクションの作成
+          url: "collections/creating-collections-from-scratch.html"
+        - title: Java と Scala 間のコレクションの変換
+          url: "collections/conversions-between-java-and-scala-collections.html"
+        - title: Scala 2.7 からの移行
+          url: "collections/migrating-from-scala-27.html"
+    - title: Scala 2.8 から 2.12 までのコレクションのアーキテクチャ
+      icon: building
+      url: "core/architecture-of-scala-collections.html"
+      by: Martin Odersky and Lex Spoon
+      description: "これらのページは Scala コレクションフレームワークのアーキテクチャを詳細に説明する。コレクション API というよりはフレームワークの内部の動きがもっとよく分かるだろう。また、コレクションフレームワークがどのようにして数行のコードであなた自身が独自コレクションを定義でき、しかもフレームワークの圧倒的な量の機能を再利用できる助けをしているかを学べるだろう。"
