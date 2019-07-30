@@ -1,8 +1,12 @@
 ---
 title: Testing Scala in IntelliJ with ScalaTest
 layout: singlepage-overview
+partof: testing-scala-in-intellij-with-scalatest
+languages: [ja]
 disqus: true
 previous-page: building-a-scala-project-with-intellij-and-sbt
+
+redirect_from: "/getting-started-intellij-track/testing-scala-in-intellij-with-scalatest.html"
 ---
 
 There are multiple libraries and testing methodologies for Scala,

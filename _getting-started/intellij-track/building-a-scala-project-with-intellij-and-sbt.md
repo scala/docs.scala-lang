@@ -1,9 +1,13 @@
 ---
 title: Building a Scala Project with IntelliJ and sbt
 layout: singlepage-overview
+partof: building-a-scala-project-with-intellij-and-sbt
+languages: [ja]
 disqus: true
-previous-page: getting-started-intellij-track/getting-started-with-scala-in-intellij
+previous-page: getting-started/intellij-track/getting-started-with-scala-in-intellij
 next-page: testing-scala-in-intellij-with-scalatest
+
+redirect_from: "/getting-started-intellij-track/building-a-scala-project-with-intellij-and-sbt.html"
 ---
 
 In this tutorial, we'll see how to build a Scala project using [sbt](http://www.scala-sbt.org/1.x/docs/index.html). sbt is a popular tool for compiling, running, and testing Scala projects of any
@@ -15,7 +19,7 @@ or more than one code file.
 ## Creating the project
 In this section, we'll show you how to create the project in IntelliJ. However, if you're
 comfortable with the command line, we recommend you try [Getting
-Started with Scala and sbt on the Command Line]({{site.baseurl}}/getting-started-sbt-track/getting-started-with-scala-and-sbt-on-the-command-line.html) and then come back
+Started with Scala and sbt on the Command Line]({{site.baseurl}}/getting-started/sbt-track/getting-started-with-scala-and-sbt-on-the-command-line.html) and then come back
  here to the section "Writing Scala code".
 
 1. If you didn't create the project from the command line, open up IntelliJ and select "Create New Project"

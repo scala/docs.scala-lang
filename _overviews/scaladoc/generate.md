@@ -31,7 +31,7 @@ In the sbt shell, generate Scaladoc by running `doc`:
 
 The HTML documentation will show up in the respective `target/` directory (or directories for builds with multiple projects) that sbt prints to the console output.
 
-For more information on using sbt on your system, see the [download instructions](https://www.scala-lang.org/download/) for [getting started with Scala and sbt on the command line]({{site.baseurl}}/getting-started-sbt-track/getting-started-with-scala-and-sbt-on-the-command-line.html).
+For more information on using sbt on your system, see the [download instructions](https://www.scala-lang.org/download/) for [getting started with Scala and sbt on the command line]({{site.baseurl}}/getting-started/sbt-track/getting-started-with-scala-and-sbt-on-the-command-line.html).
 
 For additional information about configuring Scaladoc in sbt, see the [Generate API documentation](https://www.scala-sbt.org/1.x/docs/Howto-Scaladoc.html) section of the sbt reference manual.
 
