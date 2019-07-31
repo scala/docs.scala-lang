@@ -16,8 +16,7 @@ permalink: /overviews/macros/:title.html
 
 **Eugene Burmako**
 
-Macro annotations are available in Scala 2.13 with the `-Ymacro-annotations` flag, but only with the macro paradise 
-plugin from Scala 2.10.x to Scala 2.12.x.
+Macro annotations are available in Scala 2.13 with the `-Ymacro-annotations` flag, and with the macro paradise plugin from Scala 2.10.x to Scala 2.12.x.
 Follow the instructions at the ["Macro Paradise"](paradise.html) page to download and use our compiler plugin if using
 those older Scala versions.
 
