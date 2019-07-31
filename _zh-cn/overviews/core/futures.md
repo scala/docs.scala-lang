@@ -13,7 +13,7 @@ discourse: false
 
 ## 简介
 
-Future 提供了一组高效、便捷的非阻塞并行操作方案。所谓 Future，其本质上指的是一类占位符对象，用于指代某些尚未完成的计算的结果。一般来说，由 Future 指代的计算都是并行执行的，计算完毕后可另行获取相关计算结果。以这种方式组织并行任务，便可以写出高效、异步、非阻塞的并行代码。
+Future提供了一种合理执行并行操作（高效非阻塞）的方式，Future就是代表某个可能尚不存在的值的占位对象。一般来说，Future的值的填充方式都是并发的，而取用则是顺序的。以这种方式来编排并发任务，很容易写出更快的异步非阻塞的并行代码。
 
 默认情况下，future 和 promise 是非阻塞的，其使用 callback 回调来替代传统的阻塞操作。为了在语法和概念层面更加简明扼要地使用这些回调，Scala 还提供了 flatMap、foreach 和 filter 等算子，使得我们能够以非阻塞的方式对 future 进行组合。当然，future 仍然支持阻塞操作——必要时，可以阻塞等待future（不过并不鼓励这样做）。
 
@@ -32,7 +32,7 @@ Future 提供了一组高效、便捷的非阻塞并行操作方案。所谓 Fut
     
 两段代码都将 `fatMatrix.inverse()` 的执行委托给 `ExecutionContext`，并且在 `inverseFuture` 中获取计算结果。
 
-## Execution Context (执行上下文)
+## 执行上下文 (Execution Context)
 
 Future 和 Promises 都依赖 `ExecutionContext` 执行上下文，后者负责执行计算。
 
@@ -40,9 +40,7 @@ Future 和 Promises 都依赖 `ExecutionContext` 执行上下文，后者负责�
 
 `scala.concurrent` 包带有开箱即用的 `ExecutionContext` 实现，这是一个全局的静态线程池。除此之外，你也可以将一个 `Executor` 转型为 `ExecutionContext` 来获得它。最后，用户可以自由的扩展 `ExecutionContext` 特质来实现自己的执行上下文，尽管这种需求可能非常少见。
 
-### 使用全局 Execution Context
-
-`ExecutionContext.global` 是一个由 [ForkJoinPool](http://docs.oracle.com/javase/tutorial/essential/concurrency/forkjoin.html) 支持的 `ExecutionContext`，它应该可以满足大多数情况下的使用，但是需要小心。`ForkJoinPool` 管理着有限数量的线程（线程的最大数量参照并行度级别）。仅当每个任务都被 `blocking` 调用阻塞时，并发数才会超过并行度级别（下面将详细介绍），否则，存在全局执行上下文中的线程池中资源不足的风险，造成没有计算可以被处理的问题。
+### 全局执行上下文（The Global Execution Context）
 
 `ExecutionContext.global` 是一个由 [ForkJoinPool](http://docs.oracle.com/javase/tutorial/essential/concurrency/forkjoin.html) 支持的 `ExecutionContext`，它应该可以满足大多数情况下的使用，但是需要小心。`ForkJoinPool` 管理着有限数量的线程（线程的最大数量参照并行度级别(parallelism level)）。仅当每个任务都被 `blocking` 调用阻塞时，并发数才会超过并行度级别（下面将详细介绍），否则，存在全局执行上下文中的线程池中资源不足的风险，造成没有计算可以被处理的问题。
 
@@ -107,7 +105,7 @@ Future 和 Promises 都依赖 `ExecutionContext` 执行上下文，后者负责�
 
 如果需要长时间阻塞操作，我们建议使用专门的 `ExecutionContext`，这是对于 Java `Executor` 的一个包装。
 
-### 从 Java Executor 获取上下文
+### 从 Java Executor 获取上下文（Adapting a Java Executor）
 
 使用 `ExecutionContext.fromExecutor` 方法可以将一个 Java `Executor` 包装成 `ExecutionContext`，比如：
 
@@ -185,7 +183,7 @@ Future的一个重要属性在于它只能被赋值一次。一旦给定了某�
       source.toSeq.indexOfSlice("myKeyword")
     }
 
-### Callbacks (回调函数)
+### 回调函数（Callbacks）
 
 现在我们知道如何开始一个异步计算来创建一个新的future值，但是我们没有展示一旦此结果变得可用后如何来使用，以便我们能够用它来做一些有用的事。我们经常对计算结果感兴趣而不仅仅是它的副作用。
 
@@ -610,7 +608,7 @@ completeWith方法将用另外一个future完成promise计算。当该future结�
 
 注意，在这种实现方式中，如果f与g都不是成功的，那么`first(f, g)`将不会实现（即返回一个值或者返回一个异常）。
 
-## 实用工具
+## 实用工具（Utilities）
 
 为了简化在并发应用中处理时序(time)的问题，`scala.concurrent`引入了 Duration 抽象类。Duration 并无意成为另外一个表示时间的类，它是为了配合并发库使用的，其位于`scala.concurrent`包中。
 
