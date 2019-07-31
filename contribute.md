@@ -27,7 +27,7 @@ If you're interested in contributing to the Scala project in general, I argue th
 
 Currently, the _types_ of documentation supported in this repository are:
 
-- **Guides/Overviews**: Definitive guides/overviews of specific language features. Often long, detailed documents, often produced by members of the Scala team. An example is the excellent [Collections]({{ site.baseurl }}/overviews/collections/introduction.html) overview.
+- **Guides/Overviews**: Definitive guides/overviews of specific language features. Often long, detailed documents, often produced by members of the Scala team. An example is the excellent [Collections]({{ site.baseurl }}/overviews/collections-2.13/introduction.html) overview.
 - **Tutorials**: Bite-size, example-rich, and concise articles meant to get a developer up to speed quickly.
 - **Cheatsheets**: Quick reference of Scala syntax and behaviors.
 
@@ -90,7 +90,7 @@ The rest of the document should, of course, be written in [Markdown](https://en.
 
 At the moment, `RELEVANT-CATEGORY` corresponds to only a single category, "core," because we are currently focusing on building up documentation of core libraries. However, expect more categories here in the future.
 
-If your document consists of **multiple** pages, like the [Collections]({{ site.baseurl }}/overviews/collections/introduction.html) overview, an ordering must be specified, by numbering documents in their logical order with `num`, and a name must be assigned to the collection of pages using `partof`. For example, the following header might be used for a document in the collections overview:
+If your document consists of **multiple** pages, like the [Collections]({{ site.baseurl }}/overviews/collections-2.13/introduction.html) overview, an ordering must be specified, by numbering documents in their logical order with `num`, and a name must be assigned to the collection of pages using `partof`. For example, the following header might be used for a document in the collections overview:
 
     ---
     layout: overview
