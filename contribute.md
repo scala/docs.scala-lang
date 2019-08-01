@@ -7,9 +7,9 @@ title: Contribute
 
 ## A Place to Build Documentation Together
 
-[docs.scala-lang.org](https://docs.scala-lang.org) was intended to make it easier for the Scala team and the community at large to easily collect, organize, and "make public" many different types of documentation while making it easy for users to find, interact, and help us improve that documentation.
+[docs.scala-lang.org][docs.scala-lang] was intended to make it easier for the Scala team and the community at large to easily collect, organize, and "make public" many different types of documentation while making it easy for users to find, interact, and help us improve that documentation.
 
-This website is an open-source repository of official Scala documentation, hosted on [github](https://github.com/scala/docs.scala-lang), that is always ready for contributions.
+This website is an open-source repository of official Scala documentation, hosted on [github][github], that is always ready for contributions.
 
 ### A Need for Better Documentation
 
@@ -27,15 +27,16 @@ If you're interested in contributing to the Scala project in general, I argue th
 
 Currently, the _types_ of documentation supported in this repository are:
 
-- **Guides/Overviews**: Definitive guides/overviews of specific language features. Often long, detailed documents, often produced by members of the Scala team. An example is the excellent [Collections]({{ site.baseurl }}/overviews/collections-2.13/introduction.html) overview.
+- **Guides/Overviews**: Definitive guides/overviews of specific language features. Often long, detailed documents, often produced by members of the Scala team. An example is the excellent [Collections][collections] overview.
+
 - **Tutorials**: Bite-size, example-rich, and concise articles meant to get a developer up to speed quickly.
 - **Cheatsheets**: Quick reference of Scala syntax and behaviors.
 
 ### Implementation
 
-This documentation repository is open-source, it lives in [github repository](https://github.com/scala/docs.scala-lang), and is always contribution-ready.
+This documentation repository is open-source, it lives in [github repository][github], and is always contribution-ready.
 
-It's statically generated from [Markdown](https://en.wikipedia.org/wiki/Markdown) source using [Jekyll](https://github.com/mojombo/jekyll), and hosted on [GitHub Pages](https://pages.github.com/). This workflow was chosen so as to make it as easy as possible for core committers and the community alike to produce HTML documentation, and as easy as possible to publish it in a central location.
+It's statically generated from [Markdown][markdown-wiki] source using [Jekyll](https://github.com/mojombo/jekyll), and hosted on [GitHub Pages](https://pages.github.com/). This workflow was chosen so as to make it as easy as possible for core committers and the community alike to produce HTML documentation, and as easy as possible to publish it in a central location.
 
 The markdown syntax being used supports [Maruku](https://github.com/bhollis/maruku) extensions, and has automatic syntax highlighting, without the need for any tags.
 
@@ -45,8 +46,8 @@ Additionally [tut](https://github.com/tpolecat/tut) is used during pull requests
 
 For one to contribute a document, one must simply
 [fork](https://help.github.com/articles/fork-a-repo/) the
-[repo](https://github.com/scala/docs.scala-lang), write their article in
-[Markdown](https://daringfireball.net/projects/markdown/syntax) (example below), and submit a pull request. That's it. Likely after some edits and discussion, your document will be made live on [docs.scala-lang.org](https://docs.scala-lang.org).
+[repo][github], write their article in
+[Markdown](https://daringfireball.net/projects/markdown/syntax) (example below), and submit a pull request. That's it. Likely after some edits and discussion, your document will be made live on [docs.scala-lang.org][docs.scala-lang].
 
     ---
     layout: overview
@@ -63,7 +64,7 @@ Everything else is automatically generated for you; tables of contents, and most
 
 ### Criteria for Docs to be Accepted
 
-The goal of this documentation repository is to be tighter and more organized than other community-driven documentation platforms, like wikis. As such, any document pulled in for inclusion on [https://docs.scala-lang.org](https://docs.scala-lang.org) must:
+The goal of this documentation repository is to be tighter and more organized than other community-driven documentation platforms, like wikis. As such, any document pulled in for inclusion on [https://docs.scala-lang.org][docs.scala-lang] must:
 
 - **"fit in"** to the repository ( _i.e.,_ it should not be a complete duplicate of another article),
 - **be polished** it must be thorough, complete, correct, organized, and "article-like" (personal programming notes don't quite fit.)
@@ -86,11 +87,11 @@ A guide or an overview that can be logically placed on **one** page must be plac
     title: YOUR TITLE
     ---
 
-The rest of the document should, of course, be written in [Markdown](https://en.wikipedia.org/wiki/Markdown).
+The rest of the document should, of course, be written in [Markdown][markdown-wiki].
 
 At the moment, `RELEVANT-CATEGORY` corresponds to only a single category, "core," because we are currently focusing on building up documentation of core libraries. However, expect more categories here in the future.
 
-If your document consists of **multiple** pages, like the [Collections]({{ site.baseurl }}/overviews/collections-2.13/introduction.html) overview, an ordering must be specified, by numbering documents in their logical order with `num`, and a name must be assigned to the collection of pages using `partof`. For example, the following header might be used for a document in the collections overview:
+If your document consists of **multiple** pages, like the [Collections][collections] overview, an ordering must be specified, by numbering documents in their logical order with `num`, and a name must be assigned to the collection of pages using `partof`. For example, the following header might be used for a document in the collections overview:
 
     ---
     layout: overview
@@ -148,3 +149,11 @@ For now, cheatsheets are assumed to be in the form of tables. To contribute a ch
     by: YOUR NAME
     about: SOME TEXT ABOUT THE CHEAT SHEET.
     ---
+
+[github]:https://github.com/scala/docs.scala-lang
+
+[collections]:{{ site.baseurl }}/overviews/collections-2.13/introduction.html
+
+[docs.scala-lang]:https://docs.scala-lang.org
+
+[markdown-wiki]:https://en.wikipedia.org/wiki/Markdown
