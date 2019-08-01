@@ -235,7 +235,8 @@ Other notable changes are:
     You can read more about the new design [here](http://scala-lang.org/blog/2017/11/28/view-based-collections.html).
   - `mutable.ArraySeq` (which wraps an `Array[AnyRef]` in 2.12, meaning that primitives were boxed in the array) can now wrap boxed and unboxed arrays. `mutable.ArraySeq` in 2.13 is in fact equivalent to `WrappedArray` in 2.12, there are specialized subclasses for primitive arrays. Note that a `mutable.ArraySeq` can be used either way for primitive arrays (TODO: document how). `WrappedArray` is deprecated.
   - There is no "default" `Factory` (previously known as `[A, C] => CanBuildFrom[Nothing, A, C]`): use `Factory[A, Vector[A]]` explicitly instead.
-
+ - `Array.deep` has been removed.
+ 
 ## Breaking changes with old syntax still supported
 
 The following table lists the changes that continue to work with a deprecation warning.
