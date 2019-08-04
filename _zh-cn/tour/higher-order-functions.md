@@ -91,7 +91,7 @@ object SalaryRaiser {
 
 ```tut
 def urlBuilder(ssl: Boolean, domainName: String): (String, String) => String = {
-  val schema = if (ssl) "https://" else "http://"
+  val schema = if (ssl) "https://" else "https://"
   (endpoint: String, query: String) => s"$schema$domainName/$endpoint?$query"
 }
 

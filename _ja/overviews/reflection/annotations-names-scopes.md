@@ -17,7 +17,7 @@ title: アノテーション、名前、スコープ、その他
 ## アノテーション
 
 Scala において宣言は `scala.annotation.Annotation` のサブタイプを用いて注釈を付けることができる。
-さらに、Scala は [Java のアノテーションシステム](http://docs.oracle.com/javase/7/docs/technotes/guides/language/annotations.html#_top)に統合するため、標準 Java コンパイラによって生成されたアノテーションを取り扱うこともできる。
+さらに、Scala は [Java のアノテーションシステム](https://docs.oracle.com/javase/7/docs/technotes/guides/language/annotations.html#_top)に統合するため、標準 Java コンパイラによって生成されたアノテーションを取り扱うこともできる。
 
 アノテーションは、それが永続化されていればリフレクションを使ってインスペクトすることができるため、アノテーション付きの宣言を含むクラスファイルから読み込むことができる。カスタムアノテーション型は
 `scala.annotation.StaticAnnotation` か
@@ -56,7 +56,7 @@ Scala または Java アノテーションに対しては `scalaArgs` は空で
 ## 名前
 
 **名前** (name) は文字列の簡単なラッパーだ。
-[`Name`](http://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/Names$NameApi.html)
+[`Name`](https://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/Names$NameApi.html)
 には 2つのサブタイプ `TermName` と `TypeName` があり (オブジェクトやメンバーのような) 項の名前と
 (クラス、トレイト、型メンバのような) 型の名前を区別する。同じオブジェクト内に同名の項と型が共存することができる。別の言い方をすると、型と項は別の名前空間を持つ。
 
@@ -99,19 +99,19 @@ Scala のプログラムにおいて、「`_root_`」のような特定の名前
 
 「`package`」のようないくつかの名前は型名と項名の両方が存在する。
 標準名は `Universe` クラスの `termNames` と `typeNames` というメンバとして公開されている。
-全ての標準名の仕様は [API doc](http://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/StandardNames.html) を参照。
+全ての標準名の仕様は [API doc](https://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/StandardNames.html) を参照。
 
 ## スコープ
 
 **スコープ** (scope) は一般にある構文スコープ内の名前をシンボルに関連付ける。
 スコープは入れ子にすることもできる。リフレクション API
-で公開されているスコープの基底型は [Symbol](http://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/Symbols$Symbol.html) の iterable という最小限のインターフェイスのみを公開する。
+で公開されているスコープの基底型は [Symbol](https://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/Symbols$Symbol.html) の iterable という最小限のインターフェイスのみを公開する。
 
 追加機能は
-[scala.reflect.api.Types#TypeApi](http://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/Types$TypeApi.html)
+[scala.reflect.api.Types#TypeApi](https://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/Types$TypeApi.html)
 内で定義されている `member` と `decls`
 が返す**メンバスコープ** (member scope) にて公開される。
-[scala.reflect.api.Scopes#MemberScope](http://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/Scopes$MemberScope.html)
+[scala.reflect.api.Scopes#MemberScope](https://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/Scopes$MemberScope.html)
 は `sorted` メソッドをサポートしており、これはメンバを**宣言順に**ソートする。
 
 以下に `List` クラスでオーバーライドされている全てのシンボルのリストを宣言順に返す具体例をみてみよう:
@@ -122,11 +122,11 @@ Scala のプログラムにおいて、「`_root_`」のような特定の名前
 ## Expr
 
 構文木の基底型である `scala.reflect.api.Trees#Tree` の他に、型付けされた構文木は
-[`scala.reflect.api.Exprs#Expr`](http://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/Exprs$Expr.html) 型によっても表すことができる。
+[`scala.reflect.api.Exprs#Expr`](https://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/Exprs$Expr.html) 型によっても表すことができる。
 `Expr` は構文木と、その構文木の型に対するアクセスを提供するための型タグをラッピングする。
 `Expr` は主にマクロのために便宜的に型付けられた構文木を作るために使われる。多くの場合、これは
 `reify` と `splice` メソッドが関わってくる。
-(詳細は[マクロ](http://docs.scala-lang.org/ja/overviews/macros/overview.html)を参照)
+(詳細は[マクロ](https://docs.scala-lang.org/ja/overviews/macros/overview.html)を参照)
 
 ## フラグとフラグ集合
 
@@ -174,12 +174,12 @@ Scala のプログラムにおいて、「`_root_`」のような特定の名前
 Scala の仕様において**定数式** (constant expression) と呼ばれる式は
 Scala コンパイラによってコンパイル時に評価することができる。
 以下に挙げる式の種類はコンパイル時定数だ。
-([Scala 言語仕様 の 6.24](http://scala-lang.org/files/archive/spec/2.11/06-expressions.html#constant-expressions) 参照):
+([Scala 言語仕様 の 6.24](https://scala-lang.org/files/archive/spec/2.11/06-expressions.html#constant-expressions) 参照):
 
-1. プリミティブ値クラスのリテラル ([Byte](http://www.scala-lang.org/api/current/index.html#scala.Byte)、 [Short](http://www.scala-lang.org/api/current/index.html#scala.Short)、 [Int](http://www.scala-lang.org/api/current/index.html#scala.Int)、 [Long](http://www.scala-lang.org/api/current/index.html#scala.Long)、 [Float](http://www.scala-lang.org/api/current/index.html#scala.Float)、 [Double](http://www.scala-lang.org/api/current/index.html#scala.Double)、 [Char](http://www.scala-lang.org/api/current/index.html#scala.Char)、 [Boolean](http://www.scala-lang.org/api/current/index.html#scala.Boolean) および [Unit](http://www.scala-lang.org/api/current/index.html#scala.Unit))。これは直接対応する型で表される。
+1. プリミティブ値クラスのリテラル ([Byte](https://www.scala-lang.org/api/current/index.html#scala.Byte)、 [Short](https://www.scala-lang.org/api/current/index.html#scala.Short)、 [Int](https://www.scala-lang.org/api/current/index.html#scala.Int)、 [Long](https://www.scala-lang.org/api/current/index.html#scala.Long)、 [Float](https://www.scala-lang.org/api/current/index.html#scala.Float)、 [Double](https://www.scala-lang.org/api/current/index.html#scala.Double)、 [Char](https://www.scala-lang.org/api/current/index.html#scala.Char)、 [Boolean](https://www.scala-lang.org/api/current/index.html#scala.Boolean) および [Unit](https://www.scala-lang.org/api/current/index.html#scala.Unit))。これは直接対応する型で表される。
 2. 文字列リテラル。これは文字列のインスタンスとして表される。
-3. 一般に [scala.Predef#classOf](http://www.scala-lang.org/api/current/index.html#scala.Predef$@classOf[T]:Class[T]) で構築されるクラスへの参照。[型](http://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/Types$Type.html)として表される。
-4. Java の列挙要素。[シンボル](http://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/Symbols$Symbol.html)として表される。
+3. 一般に [scala.Predef#classOf](https://www.scala-lang.org/api/current/index.html#scala.Predef$@classOf[T]:Class[T]) で構築されるクラスへの参照。[型](https://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/Types$Type.html)として表される。
+4. Java の列挙要素。[シンボル](https://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/Symbols$Symbol.html)として表される。
 
 定数式の用例としては
 
@@ -267,8 +267,8 @@ Java の列挙要素への参照はシンボル (`scala.reflect.api.Symbols#Symb
 
 ## プリティプリンタ
 
-[`Trees`](http://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/Trees.html) と
-[`Types`](http://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/Types.html)
+[`Trees`](https://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/Trees.html) と
+[`Types`](https://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/Types.html)
 を整形して表示するユーティリティを説明しよう。
 
 ### 構文木の表示
@@ -383,7 +383,7 @@ Java の列挙要素への参照はシンボル (`scala.reflect.api.Symbols#Symb
 
 ## 位置情報
 
-**位置情報** ([`Position`](http://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/Position.html))
+**位置情報** ([`Position`](https://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/Position.html))
 はシンボルや構文木のノードの出処を追跡するのに使われる。警告やエラーの表示でよく使われ、プログラムのどこが間違ったのかを正確に表示することができる。位置情報はソースファイルの列と行を表す。
 (ソースファイルの初めからのオフセットは「ポイント」と呼ばれるが、これは便利ではないことがある)
 位置情報はそれが指す行の内容も保持する。全ての構文木やシンボルが位置情報を持つわけではなく、ない場合は

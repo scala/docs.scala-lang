@@ -12,7 +12,7 @@ num: 15
 language: ja
 ---
 
-イテレータ ([`Iterator`](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/Iterator.html)) はコレクションではなく、コレクションから要素を1つづつアクセスするための方法だ。イテレータ `it` に対する基本的な演算として `next` と `hasNext` の2つがある。 `it.next()` を呼び出すことで、次の要素が返り、イテレータの内部状態が前進する。よって、同じイテレータに対して `next` を再び呼び出すと、前回返したものの次の要素が得られる。返す要素が無くなると、`next` の呼び出しは `NoSuchElementException` を発生させる。返す要素が残っているかは [`Iterator`](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/Iterator.html) の `hasNext` メソッドを使って調べることができる。
+イテレータ ([`Iterator`](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/Iterator.html)) はコレクションではなく、コレクションから要素を1つづつアクセスするための方法だ。イテレータ `it` に対する基本的な演算として `next` と `hasNext` の2つがある。 `it.next()` を呼び出すことで、次の要素が返り、イテレータの内部状態が前進する。よって、同じイテレータに対して `next` を再び呼び出すと、前回返したものの次の要素が得られる。返す要素が無くなると、`next` の呼び出しは `NoSuchElementException` を発生させる。返す要素が残っているかは [`Iterator`](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/Iterator.html) の `hasNext` メソッドを使って調べることができる。
 
 イテレータ `it` が返す全ての要素を渡り歩くのに最も率直な方法は while ループを使うことだ:
 
@@ -64,7 +64,7 @@ language: ja
 への呼び出しはイテレータ `it` と全く同じ要素を返すイテレータを**2つ**返す。この2つのイテレータは独立して作動するため、片方を前進しても他方は影響を受けない。一方、元のイテレータ `it` は `duplicate` により終端まで前進したため、使いものにならない。
 
 要約すると、イテレータは**メソッドを呼び出した後、絶対にアクセスしなければ**コレクションのように振る舞う。Scala
-コレクションライブラリは、[`Traversable`](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/Traversable.html) と [`Iterator`](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/Iterator.html) に共通の親クラスである [`TraversableOnce`](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/TraversableOnce.html) を提供することで、明示的にこれを示す。名前が示す通り、 `TraversableOnce` は `foreach` を用いて一度だけ探索することができるが、探索後のそのオブジェクトの状態は指定されていない。`TraversableOnce` オブジェクトが `Iterator` ならば、探索後はその終端にあるし、もし `Traversable` ならば、そのオブジェクトは今まで通り存在する。 `TraversableOnce` のよく使われる事例としては、イテレータか `Traversable` を受け取ることができるメソッドの引数の型だ。その例として、 `Traversable` クラスの追加メソッド `++` がある。`TraversableOnce` パラメータを受け取るため、イテレータか `Traversable` なコレクションの要素を追加することができる。
+コレクションライブラリは、[`Traversable`](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/Traversable.html) と [`Iterator`](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/Iterator.html) に共通の親クラスである [`TraversableOnce`](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/TraversableOnce.html) を提供することで、明示的にこれを示す。名前が示す通り、 `TraversableOnce` は `foreach` を用いて一度だけ探索することができるが、探索後のそのオブジェクトの状態は指定されていない。`TraversableOnce` オブジェクトが `Iterator` ならば、探索後はその終端にあるし、もし `Traversable` ならば、そのオブジェクトは今まで通り存在する。 `TraversableOnce` のよく使われる事例としては、イテレータか `Traversable` を受け取ることができるメソッドの引数の型だ。その例として、 `Traversable` クラスの追加メソッド `++` がある。`TraversableOnce` パラメータを受け取るため、イテレータか `Traversable` なコレクションの要素を追加することができる。
 
 イテレータの全演算は次の表にまとめられている。
 
@@ -158,7 +158,7 @@ language: ja
 
 しかし、このコードを慎重に見ると間違っていることが分かるはずだ。コードは確かに先頭の空白文字列の続きを読み飛ばすが、`it` は最初の非空白文字列も追い越してしまっているのだ。
 
-この問題はバッファ付きイテレータを使うことで解決できる。[`BufferedIterator`](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/BufferedIterator.html) トレイトは、`head` というメソッドを追加で提供する [`Iterator`](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/Iterator.html) の子トレイトだ。バッファ付きイテレータに対して `head` を呼び出すことで、イテレータを前進させずに最初の要素を返すことができる。バッファ付きイテレータを使うと、空白文字列を読み飛ばすのは以下のように書ける。
+この問題はバッファ付きイテレータを使うことで解決できる。[`BufferedIterator`](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/BufferedIterator.html) トレイトは、`head` というメソッドを追加で提供する [`Iterator`](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/Iterator.html) の子トレイトだ。バッファ付きイテレータに対して `head` を呼び出すことで、イテレータを前進させずに最初の要素を返すことができる。バッファ付きイテレータを使うと、空白文字列を読み飛ばすのは以下のように書ける。
 
     def skipEmptyWords(it: BufferedIterator[String]) =
       while (it.head.isEmpty) { it.next() }

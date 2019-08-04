@@ -15,7 +15,7 @@ permalink: /overviews/macros/:title.html
 
 Type macros used to be available in previous versions of ["Macro Paradise"](paradise.html),
 but are not supported anymore in macro paradise 2.0.
-Visit [the paradise 2.0 announcement](http://scalamacros.org/news/2013/08/05/macro-paradise-2.0.0-snapshot.html)
+Visit [the paradise 2.0 announcement](https://scalamacros.org/news/2013/08/05/macro-paradise-2.0.0-snapshot.html)
 for an explanation and suggested migration strategy.
 
 ## Intuition
@@ -93,4 +93,4 @@ For example, a type macro used as `TM(2)(3)` in `class C extends TM(2)(3)` can e
 
 ### Generating classes and objects
 
-With type macros you might increasingly find yourself in a zone where `reify` is not applicable, as explained [at StackOverflow](http://stackoverflow.com/questions/13795490/how-to-use-type-calculated-in-scala-macro-in-a-reify-clause). In that case consider using [quasiquotes]({{ site.baseurl }}/overviews/quasiquotes/intro.html), another experimental feature from macro paradise, as an alternative to manual tree construction.
+With type macros you might increasingly find yourself in a zone where `reify` is not applicable, as explained [at StackOverflow](https://stackoverflow.com/questions/13795490/how-to-use-type-calculated-in-scala-macro-in-a-reify-clause). In that case consider using [quasiquotes]({{ site.baseurl }}/overviews/quasiquotes/intro.html), another experimental feature from macro paradise, as an alternative to manual tree construction.

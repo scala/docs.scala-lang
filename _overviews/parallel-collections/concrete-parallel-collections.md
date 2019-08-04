@@ -15,7 +15,7 @@ permalink: /overviews/parallel-collections/:title.html
 
 ## Parallel Array
 
-A [ParArray](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/parallel/mutable/ParArray.html)
+A [ParArray](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/parallel/mutable/ParArray.html)
 sequence holds a linear,
 contiguous array of elements. This means that the elements can be accessed and
 updated efficiently by modifying the underlying array. Traversing the
@@ -54,7 +54,7 @@ parallel array it was obtained from.
 
 ## Parallel Vector
 
-A [ParVector](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/parallel/immutable/ParVector.html)
+A [ParVector](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/parallel/immutable/ParVector.html)
 is an immutable sequence with a low-constant factor logarithmic access and
 update time.
 
@@ -76,16 +76,16 @@ combiners will be combined using concatenation and transformer methods will
 become much more efficient.
 
 Parallel vector is a parallel counterpart of the sequential
-[Vector](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/immutable/Vector.html),
+[Vector](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/immutable/Vector.html),
 so conversion between the two takes constant time.
 
 
 ## Parallel Range
 
-A [ParRange](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/parallel/immutable/ParRange.html)
+A [ParRange](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/parallel/immutable/ParRange.html)
 is an ordered sequence of elements equally spaced apart. A parallel range is
 created in a similar way as the sequential
-[Range](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/immutable/Range.html):
+[Range](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/immutable/Range.html):
 
     scala> 1 to 3 par
     res0: scala.collection.parallel.immutable.ParRange = ParRange(1, 2, 3)
@@ -105,9 +105,9 @@ another using the `seq` and `par` methods.
 Parallel hash tables store their elements in an underlying array and place
 them in the position determined by the hash code of the respective element.
 Parallel mutable hash sets
-([mutable.ParHashSet](http://www.scala-lang.org/api/{{ site.scala-212-version}}/scala/collection/parallel/mutable/ParHashSet.html))
+([mutable.ParHashSet](https://www.scala-lang.org/api/{{ site.scala-212-version}}/scala/collection/parallel/mutable/ParHashSet.html))
 and parallel mutable hash maps
-([mutable.ParHashMap](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/parallel/mutable/ParHashMap.html))
+([mutable.ParHashMap](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/parallel/mutable/ParHashMap.html))
 are based on hash tables.
 
     scala> val phs = scala.collection.parallel.mutable.ParHashSet(1 until 2000: _*)
@@ -142,9 +142,9 @@ versa.
 Parallel hash tries are a parallel counterpart of the immutable hash tries,
 which are used to represent immutable sets and maps efficiently. They are
 supported by classes
-[immutable.ParHashSet](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/parallel/immutable/ParHashSet.html)
+[immutable.ParHashSet](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/parallel/immutable/ParHashSet.html)
 and
-[immutable.ParHashMap](http://www.scala-lang.org/api/{{ site.scala-212-version}}/scala/collection/parallel/immutable/ParHashMap.html).
+[immutable.ParHashMap](https://www.scala-lang.org/api/{{ site.scala-212-version}}/scala/collection/parallel/immutable/ParHashMap.html).
 
     scala> val phs = scala.collection.parallel.immutable.ParHashSet(1 until 1000: _*)
     phs: scala.collection.parallel.immutable.ParHashSet[Int] = ParSet(645, 892, 69, 809, 629, 365, 138, 760, 101, 479,...
@@ -165,9 +165,9 @@ by using the `seq` and `par` method in constant time.
 
 ## Parallel Concurrent Tries
 
-A [concurrent.TrieMap](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/concurrent/TrieMap.html)
+A [concurrent.TrieMap](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/concurrent/TrieMap.html)
 is a concurrent thread-safe map, whereas a
-[mutable.ParTrieMap](http://www.scala-lang.org/api/{{ site.scala-212-version}}/scala/collection/parallel/mutable/ParTrieMap.html)
+[mutable.ParTrieMap](https://www.scala-lang.org/api/{{ site.scala-212-version}}/scala/collection/parallel/mutable/ParTrieMap.html)
 is its parallel counterpart. While most concurrent data structures do not guarantee
 consistent traversal if the data structure is modified during traversal,
 Ctries guarantee that updates are only visible in the next iteration. This

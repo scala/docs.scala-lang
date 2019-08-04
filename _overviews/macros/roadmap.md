@@ -19,7 +19,7 @@ The functionality and APIs provided by Scala macros has remained mostly
 unchanged since 2.11. There are no plans to extend current def macros with new
 functionality. There is ongoing work to develop a macro system for Dotty, which
 is planned to be released as Scala 3 by early 2020. Read the announcement of
-Scala 3 [here](http://www.scala-lang.org/blog/2018/04/19/scala-3.html).
+Scala 3 [here](https://www.scala-lang.org/blog/2018/04/19/scala-3.html).
 
 If you need to write macros today, it is recommended to use the def macros that
 are documented

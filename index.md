@@ -54,7 +54,7 @@ sections:
       - title: "Language Spec"
         description: "Scala's formal language specification."
         icon: "fa fa-book"
-        link: http://scala-lang.org/files/archive/spec/2.12/
+        link: https://scala-lang.org/files/archive/spec/2.12/
 
   - title: "Scala Evolution"      
     links:

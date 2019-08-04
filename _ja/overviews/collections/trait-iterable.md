@@ -12,7 +12,7 @@ num: 4
 language: ja
 ---
 
-反復可能 ([`Iterable`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterable.html) トレイトはコレクション階層の上から2番目に位置する。このトレイトの全メソッドは、コレクション内の要素を1つずつ返す抽象メソッド `iterator` に基づいている。`Iterable` では、`Traversable` トレイトの `foreach` メソッドも `iterator`に基づいて実装されている。以下が実際の実装だ:
+反復可能 ([`Iterable`](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterable.html) トレイトはコレクション階層の上から2番目に位置する。このトレイトの全メソッドは、コレクション内の要素を1つずつ返す抽象メソッド `iterator` に基づいている。`Iterable` では、`Traversable` トレイトの `foreach` メソッドも `iterator`に基づいて実装されている。以下が実際の実装だ:
 
     def foreach[U](f: Elem => U): Unit = {
       val it = iterator

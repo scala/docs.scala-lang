@@ -11,7 +11,7 @@ redirect_from: "/getting-started-intellij-track/testing-scala-in-intellij-with-s
 
 There are multiple libraries and testing methodologies for Scala,
 but in this tutorial, we'll demonstrate one popular option from the ScalaTest framework
-called [FunSuite](http://www.scalatest.org/getting_started_with_fun_suite).
+called [FunSuite](https://www.scalatest.org/getting_started_with_fun_suite).
 
 This assumes you know [how to build a project in IntelliJ](building-a-scala-project-with-intellij-and-sbt.html).
 
@@ -78,4 +78,4 @@ indeed 27. The `===` is part of ScalaTest and provides clean error messages.
 
 ## Conclusion
 You've seen one way to test your Scala code. You can learn more about ScalaTest's
-FunSuite on the [official website](http://www.scalatest.org/getting_started_with_fun_suite).
+FunSuite on the [official website](https://www.scalatest.org/getting_started_with_fun_suite).

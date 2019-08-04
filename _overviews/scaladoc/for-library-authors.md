@@ -194,8 +194,8 @@ Some of the standard markup available:
     ^superscript^
     ,,subscript,,
     [[entity link]], e.g. [[scala.collection.Seq]]
-    [[http://external.link External Link]],
-      e.g. [[http://scala-lang.org Scala Language Site]]
+    [[https://external.link External Link]],
+      e.g. [[https://scala-lang.org Scala Language Site]]
 
 ### Other formatting notes
 

@@ -27,7 +27,7 @@ Metoda `sum` jest dostępna globalnie i można się do niej odwołać lub import
 
 Obiekty singleton są swego rodzaju skrótem do definiowania pojedynczej instancji klasy, która nie powinna być bezpośrednio tworzona i która sama w sobie stanowi referencję do tego obiektu, jakby była określona jako `val`.
 
-Obiekt singleton może rozszerzać klasę lub cechę. Przykładowo [klasa przypadku](case-classes.html) bez [parametrów typu](generic-classes.html) domyślnie generuje obiekt singleton o tej samej nazwie, który implementuje cechę [`Function*`](http://www.scala-lang.org/api/current/scala/Function1.html).
+Obiekt singleton może rozszerzać klasę lub cechę. Przykładowo [klasa przypadku](case-classes.html) bez [parametrów typu](generic-classes.html) domyślnie generuje obiekt singleton o tej samej nazwie, który implementuje cechę [`Function*`](https://www.scala-lang.org/api/current/scala/Function1.html).
 
 ## Obiekt towarzyszący ##
 

@@ -11,10 +11,10 @@ The following agenda was distributed to attendees:
 
 |Topic|Reviewers| Accepted/Rejected |
 | --- | --- | --- |
-| [SIP-NN: Right-Associative By-Name Operators](http://docs.scala-lang.org/sips/right-associative-by-name-operators.html) | Adriaan Moors | Pending |
-| [SIP-ZZ: Opaque types](http://docs.scala-lang.org/sips/opaque-types.html) | Sébastien Doeraene | Pending |
-| [SIP-33: Match infix and prefix types to meet expression rules](http://docs.scala-lang.org/sips/make-types-behave-like-expressions.html)| Josh Suereth | Pending |
-|[SIP-28 and SIP-29: Inline meta](http://docs.scala-lang.org/sips/inline-meta.html)|Josh Suereth and Iulian Dragos| Pending |
+| [SIP-NN: Right-Associative By-Name Operators](https://docs.scala-lang.org/sips/right-associative-by-name-operators.html) | Adriaan Moors | Pending |
+| [SIP-ZZ: Opaque types](https://docs.scala-lang.org/sips/opaque-types.html) | Sébastien Doeraene | Pending |
+| [SIP-33: Match infix and prefix types to meet expression rules](https://docs.scala-lang.org/sips/make-types-behave-like-expressions.html)| Josh Suereth | Pending |
+|[SIP-28 and SIP-29: Inline meta](https://docs.scala-lang.org/sips/inline-meta.html)|Josh Suereth and Iulian Dragos| Pending |
 
 Jorge Vicente Cantero was the Process Lead and Darja Jovanovic as secretary.
 
@@ -47,7 +47,7 @@ Minutes were taken by Darja Jovanovic.
 **Darja** introduces herself as a Scala Center's Communication Manager to the Committee and the Community.
 [YouTube time: 00 - 2'50''](https://youtu.be/yzTpVbTUj18)
 
-### [SIP-NN: Right-Associative By-Name Operators](http://docs.scala-lang.org/sips/right-associative-by-name-operators.html) (Numbered: SIP-34)
+### [SIP-NN: Right-Associative By-Name Operators](https://docs.scala-lang.org/sips/right-associative-by-name-operators.html) (Numbered: SIP-34)
 [YouTube time: 2'50''- 8'26''](https://youtu.be/yzTpVbTUj18?t=169)
 
 **Jorge** opens the meeting and gives the word to **Adriaan**, the the reviewer.
@@ -61,7 +61,7 @@ After a short discussion about the protocol, mainly about skipping the numbering
 
 **Conclusion**: The SIP is numbered as "SIP-34", by unanimity and it will be at disposal for a month for the community comments.
 
-### [SIP-ZZ: Opaque types](http://docs.scala-lang.org/sips/opaque-types.html) (Numbered: SIP-35)
+### [SIP-ZZ: Opaque types](https://docs.scala-lang.org/sips/opaque-types.html) (Numbered: SIP-35)
 [YouTube time: 8'27''-51'13''](https://youtu.be/yzTpVbTUj18?t=507)
 
 **Sébastien**, as a reviewer, is asked to present the SIP to the Committee and Public.
@@ -83,11 +83,11 @@ Syntax "new" "type"
 **Conclusion**: The SIP is numbered as "SIP 35" by unanimous vote. The above mentioned should to be addressed for the next meeting.
 
 
-### [SIP-33: Match infix and prefix types to meet expression rules](http://docs.scala-lang.org/sips/make-types-behave-like-expressions.html)
+### [SIP-33: Match infix and prefix types to meet expression rules](https://docs.scala-lang.org/sips/make-types-behave-like-expressions.html)
 
 Still waiting on the implementation updates, therefore this item will be discussed in the next SIP Meeting.
 
-### [SIP-28 and SIP-29: Inline and meta](http://docs.scala-lang.org/sips/inline-meta.html)
+### [SIP-28 and SIP-29: Inline and meta](https://docs.scala-lang.org/sips/inline-meta.html)
 [YouTube time: 51'40'' until the end](https://youtu.be/yzTpVbTUj18?t=3100)
 
 **Eugene** gives a brief history of this SIP development, shares the good news and suggests how to proceed.

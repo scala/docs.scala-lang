@@ -15,7 +15,7 @@ language: ja
 Scala と同様に、Java
 にも豊富なコレクションライブラリがある。両者には多くの共通点がある。例えば、両方のライブラリともイテレータ、`Iterable`、集合、マップ、そして列を提供する。しかし、両者には重要な違いもある。特に、Scala では不変コレクションに要点を置き、コレクションを別のものに変換する演算も多く提供している。
 
-時として、コレクションを一方のフレームワークから他方へと渡す必要がある。例えば、既存の Java のコレクションを Scala のコレクションであるかのようにアクセスしたいこともあるだろう。もしくは、Scala のコレクションを Java のコレクションを期待している Java メソッドに渡したいと思うかもしれない。Scala は [JavaConverters](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/JavaConverters$.html) オブジェクトにより主要なコレクション間の暗黙の変換を提供するため、簡単に相互運用できる。特に以下の型に関しては、双方向変換を提供する。
+時として、コレクションを一方のフレームワークから他方へと渡す必要がある。例えば、既存の Java のコレクションを Scala のコレクションであるかのようにアクセスしたいこともあるだろう。もしくは、Scala のコレクションを Java のコレクションを期待している Java メソッドに渡したいと思うかもしれない。Scala は [JavaConverters](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/JavaConverters$.html) オブジェクトにより主要なコレクション間の暗黙の変換を提供するため、簡単に相互運用できる。特に以下の型に関しては、双方向変換を提供する。
 
     Iterator               <=>     java.util.Iterator
     Iterator               <=>     java.util.Enumeration
@@ -26,7 +26,7 @@ Scala と同様に、Java
     mutable.Map            <=>     java.util.Map
     mutable.ConcurrentMap  <=>     java.util.concurrent.ConcurrentMap
 
-このような変換を作動させるには、[JavaConverters](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/JavaConverters$.html) オブジェクトからインポートするだけでいい:
+このような変換を作動させるには、[JavaConverters](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/JavaConverters$.html) オブジェクトからインポートするだけでいい:
 
     scala> import collection.JavaConverters._
     import collection.JavaConverters._

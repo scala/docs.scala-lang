@@ -11,7 +11,7 @@ num: 10
 language: zh-cn
 ---
 
-在Scala中，[数组](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/Array.html)是一种特殊的collection。一方面，Scala数组与Java数组是一一对应的。即Scala数组Array[Int]可看作Java的Int[]，Array[Double]可看作Java的double[]，以及Array[String]可看作Java的String[]。但Scala数组比Java数组提供了更多内容。首先，Scala数组是一种泛型。即可以定义一个Array[T]，T可以是一种类型参数或抽象类型。其次，Scala数组与Scala序列是兼容的 - 在需要Seq[T]的地方可由Array[T]代替。最后，Scala数组支持所有的序列操作。这里有个实际的例子：
+在Scala中，[数组](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/Array.html)是一种特殊的collection。一方面，Scala数组与Java数组是一一对应的。即Scala数组Array[Int]可看作Java的Int[]，Array[Double]可看作Java的double[]，以及Array[String]可看作Java的String[]。但Scala数组比Java数组提供了更多内容。首先，Scala数组是一种泛型。即可以定义一个Array[T]，T可以是一种类型参数或抽象类型。其次，Scala数组与Scala序列是兼容的 - 在需要Seq[T]的地方可由Array[T]代替。最后，Scala数组支持所有的序列操作。这里有个实际的例子：
 
     scala> val a1 = Array(1, 2, 3)
     a1: Array[Int] = Array(1, 2, 3)

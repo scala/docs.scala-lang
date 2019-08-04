@@ -730,22 +730,22 @@ We would like to thank Peter Levart and the other members of the concurrency-int
 20. [JEP 193: Variable Handles][20]
 
   [1]: https://groups.google.com/forum/#!topic/scala-internals/cCgBMp5k8R8 "scala-internals"
-  [2]: http://cs.oswego.edu/pipermail/concurrency-interest/2013-May/011354.html "concurrency-interest"
-  [3]: http://stackoverflow.com/questions/15176199/scala-parallel-collection-in-object-initializer-causes-a-program-to-hang "pc-object-hang"
-  [4]: http://stackoverflow.com/questions/7517964/program-hangs-if-thread-is-created-in-static-initializer-block "static-init-hang"
-  [5]: http://docs.oracle.com/javase/specs/jls/se7/html/jls-12.html#jls-12.4.2 "jls-spec"
+  [2]: https://cs.oswego.edu/pipermail/concurrency-interest/2013-May/011354.html "concurrency-interest"
+  [3]: https://stackoverflow.com/questions/15176199/scala-parallel-collection-in-object-initializer-causes-a-program-to-hang "pc-object-hang"
+  [4]: https://stackoverflow.com/questions/7517964/program-hangs-if-thread-is-created-in-static-initializer-block "static-init-hang"
+  [5]: https://docs.oracle.com/javase/specs/jls/se7/html/jls-12.html#jls-12.4.2 "jls-spec"
   [6]: https://github.com/DarkDimius/lazy-val-bench/blob/CallSites/src/test/scala/example/package.scala "lazy-val-bench-code"
   [7]: https://d-d.me/tnc/30/lazy-sip-perf/report/#config=%7B%22filterConfig%22%3A%7B%22curves%22%3A%5B%220%22%2C%221%22%2C%225%22%2C%226%22%2C%227%22%2C%228%22%2C%2210%22%2C%2212%22%5D%2C%22order%22%3A%5B%22param-size%22%2C%22date%22%5D%2C%22filters%22%3A%5B%5B%22100000%22%2C%22300000%22%2C%22500000%22%2C%221000000%22%2C%223000000%22%2C%225000000%22%5D%2C%5B%221477397877000%22%5D%5D%7D%2C%22chartConfig%22%3A%7B%22type%22%3A0%2C%22showCI%22%3Afalse%7D%7D "lazy-val-bench-report"
-  [8]: http://axel22.github.io/scalameter/ "scalameter-code"
+  [8]: https://axel22.github.io/scalameter/ "scalameter-code"
   [9]: https://groups.google.com/forum/#!msg/scala-internals/4sjw8pcKysg/GlXYDDzCgI0J "scala-internals"
   [10]: https://groups.google.com/forum/#!topic/dotty-internals/soWIWr3bRk8 "dotty-internals"
   [11]: https://github.com/lampepfl/dotty/blob/5cbd2fbc8409b446f8751792b006693e1d091055/src/dotty/runtime/LazyVals.scala
   [12]: https://wiki.openjdk.java.net/display/HotSpot/Synchronization
   [13]: https://groups.google.com/d/msg/scala-internals/4sjw8pcKysg/gD0au4dmTAsJ
   [14]: https://github.com/scala/scala-dev/issues/133
-  [15]: http://scala-lang.org/blog/2016/10/24/scalafix.html
+  [15]: https://scala-lang.org/blog/2016/10/24/scalafix.html
   [16]: https://github.com/scala/docs.scala-lang/pull/491
   [17]: https://github.com/lampepfl/dotty/blob/f92f278ab686ab218e841082dcb026c6c8ef89b7/library/src/dotty/runtime/LazyHolders.scala
   [18]: https://d-d.me/tnc/30/lazy-mem/report/#config=%7B%22filterConfig%22%3A%7B%22curves%22%3A%5B%22-1%22%2C%220%22%2C%221%22%2C%222%22%2C%223%22%2C%224%22%2C%225%22%2C%226%22%2C%227%22%2C%228%22%5D%2C%22order%22%3A%5B%22param-size%22%2C%22date%22%5D%2C%22filters%22%3A%5B%5B%221000000%22%2C%222000000%22%2C%223000000%22%2C%224000000%22%2C%225000000%22%5D%2C%5B%221477396691000%22%5D%5D%7D%2C%22chartConfig%22%3A%7B%22type%22%3A0%2C%22showCI%22%3Afalse%7D%7D
   [19]: https://d-d.me/tnc/30/lazy-sip-perf/report/#config=%7B%22filterConfig%22%3A%7B%22curves%22%3A%5B%2216%22%2C%2217%22%2C%2218%22%2C%2219%22%2C%2221%22%2C%2222%22%2C%2223%22%5D%2C%22order%22%3A%5B%22param-size%22%2C%22date%22%5D%2C%22filters%22%3A%5B%5B%22100000%22%2C%22300000%22%2C%22500000%22%2C%221000000%22%2C%223000000%22%2C%225000000%22%5D%2C%5B%221477397877000%22%5D%5D%7D%2C%22chartConfig%22%3A%7B%22type%22%3A0%2C%22showCI%22%3Afalse%7D%7D
-  [20]: http://openjdk.java.net/jeps/193
+  [20]: https://openjdk.java.net/jeps/193

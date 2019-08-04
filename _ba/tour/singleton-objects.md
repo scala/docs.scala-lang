@@ -34,7 +34,7 @@ Kao i `val`, singlton objekti mogu biti definisani kao članovi [trejta](traits.
 Singlton objekt može naslijediti klase i trejtove.
 Ustvari, [case klasa](case-classes.html) bez [tipskih parametara](generic-classes.html) 
 će podrazumijevano kreirati singlton objekt s istim imenom,
-i implementiranim [`Function*`](http://www.scala-lang.org/api/current/scala/Function1.html) trejtom.
+i implementiranim [`Function*`](https://www.scala-lang.org/api/current/scala/Function1.html) trejtom.
 
 ## Kompanjoni (prijatelji) ##
 

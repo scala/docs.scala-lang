@@ -156,4 +156,4 @@ Scala 2.7 and Scala 2.8.
 
 This answer was originally submitted in response to [this question on Stack Overflow][1].
 
-  [1]: http://stackoverflow.com/questions/1052476/can-someone-explain-scalas-yield/1052510#1052510
+  [1]: https://stackoverflow.com/questions/1052476/can-someone-explain-scalas-yield/1052510#1052510

@@ -4,7 +4,7 @@ discourse: true
 title: SIP-28 and SIP-29 - Inline meta
 
 vote-status: "under-revision"
-vote-text: The following proposal has been split and numbered as SIP-28 (Inline) and SIP-29 (Meta). For more information on this decision, check the <a href="http://docs.scala-lang.org/sips/minutes/sip-20th-september-minutes.html">minutes</a>. The authors need to split the proposal and update it.
+vote-text: The following proposal has been split and numbered as SIP-28 (Inline) and SIP-29 (Meta). For more information on this decision, check the <a href="https://docs.scala-lang.org/sips/minutes/sip-20th-september-minutes.html">minutes</a>. The authors need to split the proposal and update it.
 permalink: /sips/:title.html
 redirect_from: /sips/pending/inline-meta.html
 ---
@@ -988,8 +988,8 @@ The prototype of IntelliJ integration was developed by Mikhail Mutcianko.
   1. [(Appendix C) Scala.meta: high-level overview][AppendixMeta]
 
 [ScalaMetaSection]: #scalameta
-[ScalaMetaWebsite]: http://scalameta.org/
-[MacroUsecases]: http://scalamacros.org/paperstalks/2014-02-04-WhatAreMacrosGoodFor.pdf
+[ScalaMetaWebsite]: https://scalameta.org/
+[MacroUsecases]: https://scalamacros.org/paperstalks/2014-02-04-WhatAreMacrosGoodFor.pdf
 [PrototypeScalac]: https://github.com/scalameta/paradise
 [PrototypeIntellij]: https://www.youtube.com/watch?v=IPnd_SZJ1nM&feature=youtu.be&t=1360
 [Intuition]: #intuition
@@ -1003,10 +1003,10 @@ The prototype of IntelliJ integration was developed by Mikhail Mutcianko.
 [CompilerInternals]: #losing-compiler-internals
 [Hygiene]: #hygiene
 [SeparateCompilation]: #separate-compilation-restriction
-[Linq]: http://dl.acm.org/citation.cfm?id=1142552
-[Materialization]: http://docs.scala-lang.org/overviews/macros/implicits.html
+[Linq]: https://dl.acm.org/citation.cfm?id=1142552
+[Materialization]: https://docs.scala-lang.org/overviews/macros/implicits.html
 [SbtMacroSupport]: https://github.com/sbt/sbt/issues/1729
-[AnonymousTypeProviders]: http://docs.scala-lang.org/overviews/macros/typeproviders.html#anonymous-type-providers
+[AnonymousTypeProviders]: https://docs.scala-lang.org/overviews/macros/typeproviders.html#anonymous-type-providers
 [ExtractorMacros]: https://docs.scala-lang.org/overviews/macros/extractors.html
 [AnnotationsTypecheck]: https://github.com/scalamacros/paradise/issues/75
 [AppendixInteraction]: https://gist.github.com/xeno-by/e26a904051a171e4bc8b9096630220a7

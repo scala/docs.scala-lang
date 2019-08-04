@@ -5,7 +5,7 @@ title: Scala Cheatsheet
 partof: cheatsheet
 
 by: Dima Kotobotov
-about: Эта шпаргалка создана благодаря <a href="http://brenocon.com/">Brendan O'Connor</a> и предназначена для быстрого ознакомления с синтаксическими конструкциями Scala. Лицензия выдана Brendan O'Connor по лицензии CC-BY-SA 3.0.
+about: Эта шпаргалка создана благодаря <a href="https://brenocon.com/">Brendan O'Connor</a> и предназначена для быстрого ознакомления с синтаксическими конструкциями Scala. Лицензия выдана Brendan O'Connor по лицензии CC-BY-SA 3.0.
 
 language: ru
 ---
@@ -157,7 +157,7 @@ language: ru
     </tr>
     <tr>
       <td><code class="highlighter-rouge">xs(2)</code></td>
-      <td>получение элемента по индексу в скобках. (<a href="http://www.slideshare.net/Odersky/fosdem-2009-1013261/27">примеры</a>)</td>
+      <td>получение элемента по индексу в скобках. (<a href="https://www.slideshare.net/Odersky/fosdem-2009-1013261/27">примеры</a>)</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">1 :: List(2,3)</code></td>
@@ -201,7 +201,7 @@ breakable {
       break
   }
 }</code></pre></td>
-      <td>выход из цикла с использованием break. (<a href="http://www.slideshare.net/Odersky/fosdem-2009-1013261/21">примеры</a>)</td>
+      <td>выход из цикла с использованием break. (<a href="https://www.slideshare.net/Odersky/fosdem-2009-1013261/21">примеры</a>)</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">for (x &lt;- xs if x%2 == 0) yield x*10</code>
@@ -225,7 +225,7 @@ breakable {
       <td><pre class="highlight"><code>for (x <- xs; y <- ys) {
   println("%d/%d = %.1f".format(x, y, x/y.toFloat))
 }</code></pre></td>
-      <td>for-выражение: императивно<br /><a href="http://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax">sprintf-style</a></td>
+      <td>for-выражение: императивно<br /><a href="https://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax">sprintf-style</a></td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>for (i <- 1 to 5) {

@@ -13,7 +13,7 @@ language: es
 
 ## Array Paralelo
 
-Una secuencia [ParArray](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/parallel/mutable/ParArray.html) contiene un conjunto de elementos contiguos lineales. Esto significa que los elementos pueden ser accedidos y actualizados (modificados) eficientemente al modificar la estructura subyacente (un array). El iterar sobre sus elementos es también muy eficiente por esta misma razón. Los Arrays Paralelos son como arrays en el sentido de que su tamaño es constante.
+Una secuencia [ParArray](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/parallel/mutable/ParArray.html) contiene un conjunto de elementos contiguos lineales. Esto significa que los elementos pueden ser accedidos y actualizados (modificados) eficientemente al modificar la estructura subyacente (un array). El iterar sobre sus elementos es también muy eficiente por esta misma razón. Los Arrays Paralelos son como arrays en el sentido de que su tamaño es constante.
 
     scala> val pa = scala.collection.parallel.mutable.ParArray.tabulate(1000)(x => 2 * x + 1)
     pa: scala.collection.parallel.mutable.ParArray[Int] = ParArray(1, 3, 5, 7, 9, 11, 13,...
@@ -31,7 +31,7 @@ Al invocar el método `seq`, los arrays paralelos son convertidos al tipo de col
 
 ## Vector Paralelo
 
-Un [ParVector](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/parallel/immutable/ParVector.html) es una secuencia inmutable con un tiempo de acceso y modificación logarítimico bajo a constante.
+Un [ParVector](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/parallel/immutable/ParVector.html) es una secuencia inmutable con un tiempo de acceso y modificación logarítimico bajo a constante.
 
     scala> val pv = scala.collection.parallel.immutable.ParVector.tabulate(1000)(x => x)
     pv: scala.collection.parallel.immutable.ParVector[Int] = ParVector(0, 1, 2, 3, 4, 5, 6, 7, 8, 9,...
@@ -41,11 +41,11 @@ Un [ParVector](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/
 
 Los vectores inmutables son representados por árboles, por lo que los splitters dividen pasándose subárboles entre ellos. Los combiners concurrentemente mantienen un vector de elementos y son combinados al copiar dichos elementos de forma "retardada". Es por esta razón que los métodos tranformadores son menos escalables que sus contrapartes en arrays paralelos. Una vez que las operaciones de concatenación de vectores estén disponibles en una versión futura de Scala, los combiners podrán usar dichas características y hacer más eficientes los métodos transformadores.
 
-Un vector paralelo es la contraparte paralela de un [Vector](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/immutable/Vector.html) secuencial, por lo tanto la conversión entre estas dos estructuras se efectúa en tiempo constante.
+Un vector paralelo es la contraparte paralela de un [Vector](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/immutable/Vector.html) secuencial, por lo tanto la conversión entre estas dos estructuras se efectúa en tiempo constante.
 
 ## Rango (Range) Paralelo
 
-Un [ParRange](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/parallel/immutable/ParRange.html) es una secuencia ordenada separada por intervalos iguales (ej: 1, 2, 3 o 1, 3, 5, 7). Un rango paralelo es creado de forma similar al [Rango](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/immutable/Range.html) secuencial:
+Un [ParRange](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/parallel/immutable/ParRange.html) es una secuencia ordenada separada por intervalos iguales (ej: 1, 2, 3 o 1, 3, 5, 7). Un rango paralelo es creado de forma similar al [Rango](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/immutable/Range.html) secuencial:
 
     scala> 1 to 3 par
     res0: scala.collection.parallel.immutable.ParRange = ParRange(1, 2, 3)
@@ -61,7 +61,7 @@ Tal como los rangos secuenciales no tienen constructores, los rangos paralelos n
 
 ## Tablas Hash Paralelas
 
-Las tablas hash paralelas almacenan sus elementos en un array subyacente y los almacenan en una posición determinada por el código hash del elemento respectivo. Las versiones mutables de los hash sets paralelos ([mutable.ParHashSet](http://www.scala-lang.org/api/{{ site.scala-212-version}}/scala/collection/parallel/mutable/ParHashSet.html)) y los hash maps paraleos ([mutable.ParHashMap](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/parallel/mutable/ParHashMap.html)) están basados en tablas hash.
+Las tablas hash paralelas almacenan sus elementos en un array subyacente y los almacenan en una posición determinada por el código hash del elemento respectivo. Las versiones mutables de los hash sets paralelos ([mutable.ParHashSet](https://www.scala-lang.org/api/{{ site.scala-212-version}}/scala/collection/parallel/mutable/ParHashSet.html)) y los hash maps paraleos ([mutable.ParHashMap](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/parallel/mutable/ParHashMap.html)) están basados en tablas hash.
 
     scala> val phs = scala.collection.parallel.mutable.ParHashSet(1 until 2000: _*)
     phs: scala.collection.parallel.mutable.ParHashSet[Int] = ParHashSet(18, 327, 736, 1045, 773, 1082,...
@@ -75,9 +75,9 @@ Los "Mapas Hash" (Hash Maps) y los "Conjuntos Hash" (Hash Sets) secuenciales pue
 
 ## Hash Tries Paralelos
 
-Los Hash Tries paralelos son la contraparte paralela de los hash tries inmutables, que son usados para representar conjuntos y mapas inmutables de forma eficiente. Las clases involucradas son: [immutable.ParHashSet](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/parallel/immutable/ParHashSet.html)
+Los Hash Tries paralelos son la contraparte paralela de los hash tries inmutables, que son usados para representar conjuntos y mapas inmutables de forma eficiente. Las clases involucradas son: [immutable.ParHashSet](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/parallel/immutable/ParHashSet.html)
 y
-[immutable.ParHashMap](http://www.scala-lang.org/api/{{ site.scala-212-version}}/scala/collection/parallel/immutable/ParHashMap.html).
+[immutable.ParHashMap](https://www.scala-lang.org/api/{{ site.scala-212-version}}/scala/collection/parallel/immutable/ParHashMap.html).
 
     scala> val phs = scala.collection.parallel.immutable.ParHashSet(1 until 1000: _*)
     phs: scala.collection.parallel.immutable.ParHashSet[Int] = ParSet(645, 892, 69, 809, 629, 365, 138, 760, 101, 479,...
@@ -92,7 +92,7 @@ Los hash tries paralelos pueden ser convertidos hacia y desde hash tries secuenc
 
 ## Tries Paralelos Concurrentes
 
-Un [concurrent.TrieMap](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/concurrent/TrieMap.html) es un mapa thread-safe (seguro ante la utilización de múltiples hilos concurrentes) mientras que [mutable.ParTrieMap](http://www.scala-lang.org/api/{{ site.scala-212-version}}/scala/collection/parallel/mutable/ParTrieMap.html) es su contraparte paralela. Si bien la mayoría de las estructuras de datos no garantizan una iteración consistente si la estructura es modificada en medio de dicha iteración, los tries concurrentes garantizan que las actualizaciones sean solamente visibles en la próxima iteración. Esto significa que es posible mutar el trie concurrente mientras se está iterando sobre este, como en el siguiente ejemplo, que computa e imprime las raíces cuadradas de los números entre 1 y 99:
+Un [concurrent.TrieMap](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/concurrent/TrieMap.html) es un mapa thread-safe (seguro ante la utilización de múltiples hilos concurrentes) mientras que [mutable.ParTrieMap](https://www.scala-lang.org/api/{{ site.scala-212-version}}/scala/collection/parallel/mutable/ParTrieMap.html) es su contraparte paralela. Si bien la mayoría de las estructuras de datos no garantizan una iteración consistente si la estructura es modificada en medio de dicha iteración, los tries concurrentes garantizan que las actualizaciones sean solamente visibles en la próxima iteración. Esto significa que es posible mutar el trie concurrente mientras se está iterando sobre este, como en el siguiente ejemplo, que computa e imprime las raíces cuadradas de los números entre 1 y 99:
 
     scala> val numbers = scala.collection.parallel.mutable.ParTrieMap((1 until 100) zip (1 until 100): _*) map { case (k, v) => (k.toDouble, v.toDouble) }
     numbers: scala.collection.parallel.mutable.ParTrieMap[Double,Double] = ParTrieMap(0.0 -> 0.0, 42.0 -> 42.0, 70.0 -> 70.0, 2.0 -> 2.0,...

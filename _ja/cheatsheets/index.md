@@ -5,7 +5,7 @@ title: Scala Cheatsheet
 partof: cheatsheet
 
 by: Kenji Ohtsuka
-about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>. このチートシートは Scala 構文 のクイックリファレンスとして作成されました。 Licensed by Brendan O'Connor under a CC-BY-SA 3.0 license.
+about: Thanks to <a href="https://brenocon.com/">Brendan O'Connor</a>. このチートシートは Scala 構文 のクイックリファレンスとして作成されました。 Licensed by Brendan O'Connor under a CC-BY-SA 3.0 license.
 
 language: ja
 ---
@@ -48,7 +48,7 @@ language: ja
 |  `var (x,y,z) = (1,2,3)`                                                                                 |  構造化代入: パターンマッチによるタプルの展開。   |
 |  <span class="label important">Bad</span>`var x,y,z = (1,2,3)`                                           |  隠れたエラー: 各変数にタプル全体が代入されます。 |
 |  `var xs = List(1,2,3)`                                                                                  |  リスト (イミュータブル)            |
-|  `xs(2)`                                                                                                 |  括弧を使って添字を書きます。 ([slides](http://www.slideshare.net/Odersky/fosdem-2009-1013261/27)) |
+|  `xs(2)`                                                                                                 |  括弧を使って添字を書きます。 ([slides](https://www.slideshare.net/Odersky/fosdem-2009-1013261/27)) |
 |  `1 :: List(2,3)`                                                                                        |  先頭に要素を追加             |
 |  `1 to 5` _(_ `1 until 6` <br> `1 to 10 by 2` _と同じ)_                                                  |  Range の糖衣構文             |
 |  `()` _(中身のない括弧)_                                                                                 |  Unit 型 の唯一の値(C/Java でいう void) 。 |
@@ -57,11 +57,11 @@ language: ja
 |  `if (check) happy` <br> _(_ `if (check) happy else ()` _と同じ)_                                          |  条件分岐の省略形             |
 |  `while (x < 5) { println(x); x += 1}`                                                                   |  while ループ                 |
 |  `do { println(x); x += 1} while (x < 5)`                                                                |  do while ループ              |
-|  `import scala.util.control.Breaks._`<br>`breakable {`<br>`    for (x <- xs) {`<br>`        if (Math.random < 0.1) break`<br>`    }`<br>`}`|  break ([slides](http://www.slideshare.net/Odersky/fosdem-2009-1013261/21)) |
+|  `import scala.util.control.Breaks._`<br>`breakable {`<br>`    for (x <- xs) {`<br>`        if (Math.random < 0.1) break`<br>`    }`<br>`}`|  break ([slides](https://www.slideshare.net/Odersky/fosdem-2009-1013261/21)) |
 |  `for (x <- xs if x%2 == 0) yield x*10` <br>_(_ `xs.filter(_%2 == 0).map(_*10)`  _と同じ)_               |  for 内包表記: filter/map             |
 |  `for ((x,y) <- xs zip ys) yield x*y` <br>_(_ `(xs zip ys) map { case (x,y) => x*y }` _と同じ)_          |  for 内包表記: 構造化代入             |
 |  `for (x <- xs; y <- ys) yield x*y` <br>_(_ `xs flatMap {x => ys map {y => x*y}}` _と同じ)_              |  for 内包表記: 直積                   |
-|  `for (x <- xs; y <- ys) {`<br>    `println("%d/%d = %.1f".format(x, y, x/y.toFloat))`<br>`}`                     |  for 内包表記: 命令型の記述<br>[sprintf-style](http://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax) |
+|  `for (x <- xs; y <- ys) {`<br>    `println("%d/%d = %.1f".format(x, y, x/y.toFloat))`<br>`}`                     |  for 内包表記: 命令型の記述<br>[sprintf-style](https://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax) |
 |  `for (i <- 1 to 5) {`<br>    `println(i)`<br>`}`                                                        |  for 内包表記: 上限を含んだ走査       |
 |  `for (i <- 1 until 5) {`<br>    `println(i)`<br>`}`                                                     |  for 内包表記: 上限を除いた走査       |
 |  <span id="pattern_matching" class="h2">パターンマッチング</span>                                        |                                       |

@@ -12,7 +12,7 @@ num: 6
 language: ja
 ---
 
-集合 ([`Set`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Set.html)) は要素の重複の無い `Iterable` だ。集合一般に定義される演算は次の表にまとめてあり、可変集合に関してはその次の表も見てほしい。これらの演算は以下のカテゴリーに分類される:
+集合 ([`Set`](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Set.html)) は要素の重複の無い `Iterable` だ。集合一般に定義される演算は次の表にまとめてあり、可変集合に関してはその次の表も見てほしい。これらの演算は以下のカテゴリーに分類される:
 
 * **条件演算**である `contains`、`apply`、`subsetOf`。`contains` メソッドは集合が任意の要素を含むかを調べる。集合での `apply` メソッドは `contains` と同じであるため、`set(elem)` は `set contains elem` と同じだ。これは集合が要素を含んでいれば `true` を返す関数として使えることを意味する。
 
@@ -115,10 +115,10 @@ language: ja
 
 ### 整列済み集合 ###
 
-整列済み集合は ([`SortedSet`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/SortedSet.html))
-は (集合の作成時に指定された) 任意の順序で要素を (`iterator` や `foreach` を使って) 返す事ができる集合だ。[`SortedSet`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/SortedSet.html) クラスのデフォルトの表現は、左の子ツリー内の全ての要素が右の子ツリーの全ての要素よりも小さいという恒常条件を満たす順序付けされた二分木だ。これにより、通りがけ順 (in-order) で探索するだけで、木の全ての要素を昇順に返すことができる。Scala の[`immutable.TreeSet`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/TreeSet.html) クラスは **赤黒木** を使ってこの恒常条件を実装している。また、この木構造は、**平衡木**であり、ルートから全て葉のまでの長さの違いは最大で1要素しかない。
+整列済み集合は ([`SortedSet`](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/SortedSet.html))
+は (集合の作成時に指定された) 任意の順序で要素を (`iterator` や `foreach` を使って) 返す事ができる集合だ。[`SortedSet`](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/SortedSet.html) クラスのデフォルトの表現は、左の子ツリー内の全ての要素が右の子ツリーの全ての要素よりも小さいという恒常条件を満たす順序付けされた二分木だ。これにより、通りがけ順 (in-order) で探索するだけで、木の全ての要素を昇順に返すことができる。Scala の[`immutable.TreeSet`](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/TreeSet.html) クラスは **赤黒木** を使ってこの恒常条件を実装している。また、この木構造は、**平衡木**であり、ルートから全て葉のまでの長さの違いは最大で1要素しかない。
 
-空の [`TreeSet`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/TreeSet.html) を作成するには、まず順序付けを指定する:
+空の [`TreeSet`](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/TreeSet.html) を作成するには、まず順序付けを指定する:
 
     scala> val myOrdering = Ordering.fromLessThan[String](_ > _)
     myOrdering: scala.math.Ordering[String] = ...
@@ -148,6 +148,6 @@ language: ja
 
 ### ビット集合 ###
 
-ビット集合 ([`BitSet`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/BitSet.html)) は非負整数の要素の集合で、何ワードかのパックされたビットにより実装されている。[`BitSet`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/BitSet.html) クラスは、内部で `Long` の配列を用いている。最初の `Long` は第0 〜 63 の要素を受け持ち、次のは第64 〜 127 の要素という具合だ。全ての `Long` の、それぞれの 64ビットは、対応する要素が集合に含まれる場合は 1 にセットされ、含まれない場合は 0 になる。このため、ビット集合のサイズは格納されている整数の最大値に依存する。`N` がその最大の整数値の場合、集合のサイズは `N/64` `Long` ワード、または `N/8` バイト、にステータス情報のためのバイトを追加したものだ。
+ビット集合 ([`BitSet`](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/BitSet.html)) は非負整数の要素の集合で、何ワードかのパックされたビットにより実装されている。[`BitSet`](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/BitSet.html) クラスは、内部で `Long` の配列を用いている。最初の `Long` は第0 〜 63 の要素を受け持ち、次のは第64 〜 127 の要素という具合だ。全ての `Long` の、それぞれの 64ビットは、対応する要素が集合に含まれる場合は 1 にセットされ、含まれない場合は 0 になる。このため、ビット集合のサイズは格納されている整数の最大値に依存する。`N` がその最大の整数値の場合、集合のサイズは `N/64` `Long` ワード、または `N/8` バイト、にステータス情報のためのバイトを追加したものだ。
 
 このため、たくさんの小さい要素を含む場合、ビット集合は他の集合に比べてコンパクトである。ビット集合のもう一つの利点は `contains` を使った所属判定や、`+=` や `-=` を使った要素の追加や削除が非常に効率的であることだ。

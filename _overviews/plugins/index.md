@@ -161,7 +161,7 @@ phase.
 
 More information on how phase ordering is controlled can be
 found in the [Compiler Phase and Plug-in Initialization
-SID](http://www.scala-lang.org/old/sid/2).  (This document was last
+SID](https://www.scala-lang.org/old/sid/2).  (This document was last
 updated in 2009, so may be outdated in some details.)
 
 The simplest way to specify an order is to implement `runsRightAfter`.

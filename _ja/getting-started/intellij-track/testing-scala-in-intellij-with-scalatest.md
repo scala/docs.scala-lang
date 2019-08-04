@@ -7,7 +7,7 @@ disqus: true
 previous-page: /ja/building-a-scala-project-with-intellij-and-sbt
 ---
 
-Scala には複数のライブラリとテスト方法がありますが、このチュートリアルでは、ScalaTest フレームワークから [FunSuite](http://www.scalatest.org/getting_started_with_fun_suite) という人気のある選択肢を実演します。
+Scala には複数のライブラリとテスト方法がありますが、このチュートリアルでは、ScalaTest フレームワークから [FunSuite](https://www.scalatest.org/getting_started_with_fun_suite) という人気のある選択肢を実演します。
 
 [Intellij で sbt を使って Scala プロジェクトをビルドする方法](./building-a-scala-project-with-intellij-and-sbt.html)を知っている前提とします。
 
@@ -68,4 +68,4 @@ Scala には複数のライブラリとテスト方法がありますが、こ�
 
 ## 結び
 Scala コードのテスト方法のひとつを見ました。
-ScalaTest の FunSuite については[公式ウェブサイト](http://www.scalatest.org/getting_started_with_fun_suite)で詳しく学べます。
+ScalaTest の FunSuite については[公式ウェブサイト](https://www.scalatest.org/getting_started_with_fun_suite)で詳しく学べます。

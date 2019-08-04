@@ -23,15 +23,15 @@ previous-page: automatic-closures
 
 |           Scala           |           Java           |
 |           ------          |          ------          |
-|  [`scala.SerialVersionUID`](https://www.scala-lang.org/api/current/scala/SerialVersionUID.html)   |  [`serialVersionUID`](http://java.sun.com/j2se/1.5.0/docs/api/java/io/Serializable.html#navbar_bottom) (필드)  |
-|  [`scala.deprecated`](https://www.scala-lang.org/api/current/scala/deprecated.html)   |  [`java.lang.Deprecated`](http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Deprecated.html) |
+|  [`scala.SerialVersionUID`](https://www.scala-lang.org/api/current/scala/SerialVersionUID.html)   |  [`serialVersionUID`](https://java.sun.com/j2se/1.5.0/docs/api/java/io/Serializable.html#navbar_bottom) (필드)  |
+|  [`scala.deprecated`](https://www.scala-lang.org/api/current/scala/deprecated.html)   |  [`java.lang.Deprecated`](https://java.sun.com/j2se/1.5.0/docs/api/java/lang/Deprecated.html) |
 |  [`scala.inline`](https://www.scala-lang.org/api/current/scala/inline.html) (2.6.0 부터)  |  해당 없음 |
-|  [`scala.native`](https://www.scala-lang.org/api/current/scala/native.html) (2.6.0 부터)  |  [`native`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (키워드) |
-|  [`scala.throws`](https://www.scala-lang.org/api/current/scala/throws.html) |  [`throws`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (키워드) |
-|  [`scala.transient`](https://www.scala-lang.org/api/current/scala/transient.html) |  [`transient`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (키워드) |
+|  [`scala.native`](https://www.scala-lang.org/api/current/scala/native.html) (2.6.0 부터)  |  [`native`](https://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (키워드) |
+|  [`scala.throws`](https://www.scala-lang.org/api/current/scala/throws.html) |  [`throws`](https://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (키워드) |
+|  [`scala.transient`](https://www.scala-lang.org/api/current/scala/transient.html) |  [`transient`](https://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (키워드) |
 |  [`scala.unchecked`](https://www.scala-lang.org/api/current/scala/unchecked.html) (2.4.0 부터) |  해당 없음 |
-|  [`scala.volatile`](https://www.scala-lang.org/api/current/scala/volatile.html) |  [`volatile`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (키워드) |
-|  [`scala.beans.BeanProperty`](https://www.scala-lang.org/api/current/scala/beans/BeanProperty.html) |  [`디자인 패턴`](http://docs.oracle.com/javase/tutorial/javabeans/writing/properties.html) |
+|  [`scala.volatile`](https://www.scala-lang.org/api/current/scala/volatile.html) |  [`volatile`](https://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (키워드) |
+|  [`scala.beans.BeanProperty`](https://www.scala-lang.org/api/current/scala/beans/BeanProperty.html) |  [`디자인 패턴`](https://docs.oracle.com/javase/tutorial/javabeans/writing/properties.html) |
 
 다음 예제에선 자바의 메인 프로그램에서 던지는 예외를 잡기 위해, `read` 메소드에 `throws` 어노테이션을 추가했다.
 
@@ -76,7 +76,7 @@ Reader 클래스의 `throws` 어노테이션을 주석으로 처리하면 자바
 
 **주의:** 자바 어노테이션과 함께 `-target:jvm-1.5` 옵션을 사용해야 한다.
 
-자바 1.5에선 [어노테이션](http://java.sun.com/j2se/1.5.0/docs/guide/language/annotations.html)이란 형태로 사용자 지정 메타데이터가 추가됐다. 어노테이션의 핵심 기능은 키와 값의 쌍을 지정해 자신의 항목을 초기화하는 데 기반하고 있다. 예를 들어 클래스의 출처를 추적하고 싶다면 다음과 같이 정의할 수 있다.
+자바 1.5에선 [어노테이션](https://java.sun.com/j2se/1.5.0/docs/guide/language/annotations.html)이란 형태로 사용자 지정 메타데이터가 추가됐다. 어노테이션의 핵심 기능은 키와 값의 쌍을 지정해 자신의 항목을 초기화하는 데 기반하고 있다. 예를 들어 클래스의 출처를 추적하고 싶다면 다음과 같이 정의할 수 있다.
 
     @interface Source {
       public String URL();
@@ -85,13 +85,13 @@ Reader 클래스의 `throws` 어노테이션을 주석으로 처리하면 자바
 
 그리고 이를 다음과 같이 적용한다.
 
-    @Source(URL = "http://coders.com/",
+    @Source(URL = "https://coders.com/",
             mail = "support@coders.com")
     public class MyClass extends HisClass ...
 
 스칼라에선 어노테이션을 적용하는 방식은 생성자 호출과 비슷한 모습을 갖고 있으며 자바 어노테이션을 인스턴스화 하기 위해선 이름을 지정한 인수를 사용해야 한다.
 
-    @Source(URL = "http://coders.com/",
+    @Source(URL = "https://coders.com/",
             mail = "support@coders.com")
     class MyScalaClass ...
 
@@ -104,23 +104,23 @@ Reader 클래스의 `throws` 어노테이션을 주석으로 처리하면 자바
 
 그리고 이를 다음과 같이 적용한다.
 
-    @SourceURL("http://coders.com/")
+    @SourceURL("https://coders.com/")
     public class MyClass extends HisClass ...
 
 이 경우엔 스칼라도 같은 기능을 제공한다.
 
-    @SourceURL("http://coders.com/")
+    @SourceURL("https://coders.com/")
     class MyScalaClass ...
 
 `mail` 항목은 기본 값과 함께 설정됐기 때문에 이 항목에 반드시 값을 명시적으로 할당할 필요는 없다. 하지만 만약 해야만 한다면, 자바의 두 스타일을 함께 섞어서 사용할 순 없다.
 
-    @SourceURL(value = "http://coders.com/",
+    @SourceURL(value = "https://coders.com/",
                mail = "support@coders.com")
     public class MyClass extends HisClass ...
 
 스칼라에선 이를 사용하는 더 유연한 방법을 제공한다.
 
-    @SourceURL("http://coders.com/",
+    @SourceURL("https://coders.com/",
                mail = "support@coders.com")
         class MyScalaClass ...
 

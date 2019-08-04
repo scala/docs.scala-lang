@@ -37,7 +37,7 @@ the paid version delivers a certificate of completion. Learn more about
 
 ## Dr.Mark C Lewis's Lectures from Trinity University
 
- * [Dr.Mark C Lewis](http://www.cs.trinity.edu/~mlewis/) from Trinity University, San Antonio, TX, teaches programming courses using the Scala language. Course videos are available in YouTube for free. Some of the courses below.
+ * [Dr.Mark C Lewis](https://www.cs.trinity.edu/~mlewis/) from Trinity University, San Antonio, TX, teaches programming courses using the Scala language. Course videos are available in YouTube for free. Some of the courses below.
    * [Introduction to Programming and Problem Solving Using Scala](https://www.youtube.com/playlist?list=PLLMXbkbDbVt9MIJ9DV4ps-_trOzWtphYO)
    * [Object-Orientation, Abstraction, and Data Structures Using Scala](https://www.youtube.com/playlist?list=PLLMXbkbDbVt8JLumqKj-3BlHmEXPIfR42)
 
@@ -45,13 +45,13 @@ the paid version delivers a certificate of completion. Learn more about
 
 
 ## Try Scala In Your Browser!
-There are a handful of websites where you can interactively run Scala code in your browser! Have a look at [ScalaFiddle](https://scalafiddle.io/) and [Scastie](http://scastie.org/).
+There are a handful of websites where you can interactively run Scala code in your browser! Have a look at [ScalaFiddle](https://scalafiddle.io/) and [Scastie](https://scastie.org/).
 
 ## allaboutscala
-[allaboutscala](http://allaboutscala.com/) provides detailed tutorials for beginners.
+[allaboutscala](https://allaboutscala.com/) provides detailed tutorials for beginners.
 
 ## ScalaCourses
-[Independent Courseware](http://getscala.com), online self-study or instructor-led Scala and Play courses for a fee.
+[Independent Courseware](https://getscala.com), online self-study or instructor-led Scala and Play courses for a fee.
 
 ## Visual Scala Reference
 [Visual Scala Reference](https://superruzafa.github.com/visual-scala-reference/), a guide to visually learn about Scala concepts and functions.

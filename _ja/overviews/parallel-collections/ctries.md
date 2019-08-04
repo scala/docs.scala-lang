@@ -140,6 +140,6 @@ language: ja
 2. [Concurrent Tries with Efficient Non-Blocking Snapshots][2]
 3. [Methods of computing square roots][3]
 
-  [1]: http://infoscience.epfl.ch/record/166908/files/ctries-techreport.pdf "Ctries-techreport"
+  [1]: https://infoscience.epfl.ch/record/166908/files/ctries-techreport.pdf "Ctries-techreport"
   [2]: http://lampwww.epfl.ch/~prokopec/ctries-snapshot.pdf "Ctries-snapshot"
-  [3]: http://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Babylonian_method "babylonian-method"
+  [3]: https://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Babylonian_method "babylonian-method"

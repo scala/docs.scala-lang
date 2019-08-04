@@ -19,7 +19,7 @@ redirect_from: /sips/pending/priority-based-infix-type-precedence.html
 | Feb 10th 2017 | Updates from feedback                    |
 | Aug 8th 2017  | Numbered SIP, improve view, fixed example, and added related issues |
 | Oct 20th 2017 | Added implementation link                |
-| Oct 25th 2017 | Moved prefix types to [another SIP](http://docs.scala-lang.org/sips/adding-prefix-types.html), changed title and PR |
+| Oct 25th 2017 | Moved prefix types to [another SIP](https://docs.scala-lang.org/sips/adding-prefix-types.html), changed title and PR |
 | Nov 29th 2017 | Updated SIP according to feedback in the PR |
 
 
@@ -29,7 +29,7 @@ Your feedback is welcome! If you're interested in discussing this proposal, head
 
 ## Introduction
 Currently scala allows symbol operators (`-`, `*`, `~~>`, etc.) for both type names and definition names.
-Unfortunately, there is a 'surprise' element since the two differ in behavior. While infix types are 'mostly' left-associative, the expression operation precedence is determined by the operator's first character (e.g., `/` is precedent to `+`). Please see [Infix Types](http://scala-lang.org/files/archive/spec/2.12/03-types.html#infix-types) and [Infix Operations](http://scala-lang.org/files/archive/spec/2.12/06-expressions.html#infix-operations) sections of the Scala specifications for more details.
+Unfortunately, there is a 'surprise' element since the two differ in behavior. While infix types are 'mostly' left-associative, the expression operation precedence is determined by the operator's first character (e.g., `/` is precedent to `+`). Please see [Infix Types](https://scala-lang.org/files/archive/spec/2.12/03-types.html#infix-types) and [Infix Operations](https://scala-lang.org/files/archive/spec/2.12/06-expressions.html#infix-operations) sections of the Scala specifications for more details.
 
 **Infix expression precedence vs. infix type precedence example**:
 
@@ -76,7 +76,7 @@ No documentation available to prove this, but the infix example above works perf
 Dotty has no prefix types, same as Scalac.
 
 #### Singleton-ops library example
-The [singleton-ops library](https://github.com/fthomas/singleton-ops) with [Typelevel Scala](https://github.com/typelevel/scala) (which implemented [SIP-23](http://docs.scala-lang.org/sips/pending/42.type.html)) enable developers to express literal type operations more intuitively. For example:
+The [singleton-ops library](https://github.com/fthomas/singleton-ops) with [Typelevel Scala](https://github.com/typelevel/scala) (which implemented [SIP-23](https://docs.scala-lang.org/sips/pending/42.type.html)) enable developers to express literal type operations more intuitively. For example:
 
 ```scala
 import singleton.ops._
@@ -104,7 +104,7 @@ val fails : 1 + 2 * 3 + 4 = 11 //left associative:(((1+2)*3)+4))) = 13
 ```
 
 #### Developer issues example
-[This](http://stackoverflow.com/questions/23333882/scala-infix-type-aliasing-for-2-type-parameters) Stack Overflow question demonstrate developers are 'surprised' by the difference in infix precedence, expecting infix type precedence to act the same as expression operations.
+[This](https://stackoverflow.com/questions/23333882/scala-infix-type-aliasing-for-2-type-parameters) Stack Overflow question demonstrate developers are 'surprised' by the difference in infix precedence, expecting infix type precedence to act the same as expression operations.
 
 ---
 

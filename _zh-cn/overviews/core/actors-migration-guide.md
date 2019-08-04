@@ -25,7 +25,7 @@ discourse: false
 
 由于Akka和Scala的actor模型的完整功能不尽相同导致两者之间不能平滑地迁移。下面的列表解释了很难迁移的部分行为：
 
-1. 依靠终止原因和双向行为链接方法 - Scala和Akka actors有不同的故障处理和actor monitoring模型。在Scala actors模型中，如果一个相关联部分异常终止，相关联的actors终止。如果终止是显式跟踪(通过self.trapExit)，actor可以从失败的actor收到终止的原因。通过Akka这个功能不能迁移到AMK。AMK允许迁移的只是[Akka monitoring](http://doc.akka.io/docs/akka/2.1.0/general/supervision.html#What_Lifecycle_Monitoring_Means)机制。Monitoring不同于连接,因为它是单向(unindirectional)的并且终止的原因是现在已知的。如果仅仅是monitoring机制是无法满足需求的,迁移的链接必须推迟到最后一刻(步骤5的迁移)。然后,当迁移到Akka,用户必须创建一个[监督层次(supervision hierarchy)](http://doc.akka.io/docs/akka/2.1.0/general/supervision.html),处理故障。
+1. 依靠终止原因和双向行为链接方法 - Scala和Akka actors有不同的故障处理和actor monitoring模型。在Scala actors模型中，如果一个相关联部分异常终止，相关联的actors终止。如果终止是显式跟踪(通过self.trapExit)，actor可以从失败的actor收到终止的原因。通过Akka这个功能不能迁移到AMK。AMK允许迁移的只是[Akka monitoring](https://doc.akka.io/docs/akka/2.1.0/general/supervision.html#What_Lifecycle_Monitoring_Means)机制。Monitoring不同于连接,因为它是单向(unindirectional)的并且终止的原因是现在已知的。如果仅仅是monitoring机制是无法满足需求的,迁移的链接必须推迟到最后一刻(步骤5的迁移)。然后,当迁移到Akka,用户必须创建一个[监督层次(supervision hierarchy)](https://doc.akka.io/docs/akka/2.1.0/general/supervision.html),处理故障。
 
 2. 使用restart方法——Akka不提供显式的重启actors，因此上述例子我们不能提供平滑迁移。用户必须更改系统,所以没有使用重启方法(restart method)。
 
@@ -39,9 +39,9 @@ discourse: false
 
 ### 迁移工具
 
-在Scal 2.10.0 actors 是在[Scala distribution](http://www.scala-lang.org/downloads)中作为一个单独包（scala-actors.jar）存在的，并且他们的接口已被弃用。这种分布也包含在Akka actors的akka-actor.jar里。AMK同时存在Scala actors 和 akka-actor.jar之中。未来的主要版本的Scala将不包含Scala actors和AMK。
+在Scal 2.10.0 actors 是在[Scala distribution](https://www.scala-lang.org/downloads)中作为一个单独包（scala-actors.jar）存在的，并且他们的接口已被弃用。这种分布也包含在Akka actors的akka-actor.jar里。AMK同时存在Scala actors 和 akka-actor.jar之中。未来的主要版本的Scala将不包含Scala actors和AMK。
 
-开始迁移，用户需要添加scala-actors.jar和scala-actors-migration.jar来构建他们的项目。添加scala-actors.jar和scala-actors-migration.jar允许使用下面描述的AMK。这些jar位于Scala Tools库和[Scala distribution](http://www.scala-lang.org/downloads)库中。
+开始迁移，用户需要添加scala-actors.jar和scala-actors-migration.jar来构建他们的项目。添加scala-actors.jar和scala-actors-migration.jar允许使用下面描述的AMK。这些jar位于Scala Tools库和[Scala distribution](https://www.scala-lang.org/downloads)库中。
 
 ### 一步一步来迁移
 
@@ -387,9 +387,9 @@ PFCatch并不包含在AMK之中，所以它可以保留在移植代码中，AMK�
 
 3. reply(msg) - 需要由 sender ! msg 替换
 
-4. link(actor) - 在Akka中，控制器之间的链接一部分由[supervision](http://doc.akka.io/docs/akka/2.1.0/general/supervision.html#What_Supervision_Means)来完成，一部分由[actor monitoring](http://doc.akka.io/docs/akka/2.1.0/general/supervision.html#What_Lifecycle_Monitoring_Means)来完成。在AMK中，我们只支持监测方法。因此，这部分Scala功能可以被完整的移植。
+4. link(actor) - 在Akka中，控制器之间的链接一部分由[supervision](https://doc.akka.io/docs/akka/2.1.0/general/supervision.html#What_Supervision_Means)来完成，一部分由[actor monitoring](https://doc.akka.io/docs/akka/2.1.0/general/supervision.html#What_Lifecycle_Monitoring_Means)来完成。在AMK中，我们只支持监测方法。因此，这部分Scala功能可以被完整的移植。
 
-linking 和 watching 之间的区别在于：watching actor总是接受结束通知。然而，不像Scala的Exit消息包含结束的原因，Akka的watching 返回Terminated(a: ActorRef)消息，只包含ActorRef。获取结束原因的功能无法被移植。在Akka中，这一步骤可以在第4步之后，通过组织控制器的监管层级 [supervision hierarchy](http://doc.akka.io/docs/akka/2.1.0/general/supervision.html)来完成。
+linking 和 watching 之间的区别在于：watching actor总是接受结束通知。然而，不像Scala的Exit消息包含结束的原因，Akka的watching 返回Terminated(a: ActorRef)消息，只包含ActorRef。获取结束原因的功能无法被移植。在Akka中，这一步骤可以在第4步之后，通过组织控制器的监管层级 [supervision hierarchy](https://doc.akka.io/docs/akka/2.1.0/general/supervision.html)来完成。
 
 如果watching actors收到的消息不撇陪结束消息，控制器会被终止并抛出DeathPactException异常。注意就算watching actors正常的结束，也会发生这种情况。在Scala中，linked actors只要一方不正常的终止，另一方就会以相同的原因终止。
 
@@ -407,7 +407,7 @@ linking 和 watching 之间的区别在于：watching actor总是接受结束通
 
 ### 第5步 - Akka后端的移植
 
-到目前为止，用户代码已经做好了移植到Akka actors的准备工作。现在我们可以把Scala actors迁移到Akka actor上。为了完成这一目标，需要配置build，去掉scala-actors.jar 和 scala-actors-migration.jar，把 akka-actor.jar 和 typesafe-config.jar加进来。AMK只能在Akka actor 2.1下正常工作，Akka actor 2.1已经包含在分发包 [Scala distribution](http://www.scala-lang.org/downloads)中， 可以用这样的方法配置。
+到目前为止，用户代码已经做好了移植到Akka actors的准备工作。现在我们可以把Scala actors迁移到Akka actor上。为了完成这一目标，需要配置build，去掉scala-actors.jar 和 scala-actors-migration.jar，把 akka-actor.jar 和 typesafe-config.jar加进来。AMK只能在Akka actor 2.1下正常工作，Akka actor 2.1已经包含在分发包 [Scala distribution](https://www.scala-lang.org/downloads)中， 可以用这样的方法配置。
 
 经过这一步骤以后，因为包名的不同和API之间的细微差别，编译会失败。我们必须将每一个导入的actor从scala 修改为Akka。下列是部分需要修改的包名：
 
@@ -434,7 +434,7 @@ linking 和 watching 之间的区别在于：watching actor总是接受结束通
 
 #### 添加Actor System
 
-Akka actor 组织在[Actor systems](http://doc.akka.io/docs/akka/2.1.0/general/actor-systems.html)系统中。每一个被实例化的actor必须属于某一个ActorSystem。因此，要添加一个ActorSystem 实例作为每个actor 实例调用的第一个参数。下面给出了例子。
+Akka actor 组织在[Actor systems](https://doc.akka.io/docs/akka/2.1.0/general/actor-systems.html)系统中。每一个被实例化的actor必须属于某一个ActorSystem。因此，要添加一个ActorSystem 实例作为每个actor 实例调用的第一个参数。下面给出了例子。
 
 为了完成该转换，你需要有一个actor system 实例。例如：
 
@@ -454,12 +454,12 @@ Akka actor 组织在[Actor systems](http://doc.akka.io/docs/akka/2.1.0/general/a
 
 #### 远程 Actors
 
-当代码迁移到Akka，远程actors就不再工作了。 registerActorFor 和 alive 方法需要被移除。 在Akka中，远程控制通过配置独立的完成。更多细节请参考[Akka remoting documentation](http://doc.akka.io/docs/akka/2.1.0/scala/remoting.html)。
+当代码迁移到Akka，远程actors就不再工作了。 registerActorFor 和 alive 方法需要被移除。 在Akka中，远程控制通过配置独立的完成。更多细节请参考[Akka remoting documentation](https://doc.akka.io/docs/akka/2.1.0/scala/remoting.html)。
 
 #### 样例和问题
 
-这篇文档中的所有程序片段可以在[Actors Migration test suite](http://github.com/scala/actors-migration/tree/master/src/test/)中找到，这些程序做为测试文件，前缀为actmig。
+这篇文档中的所有程序片段可以在[Actors Migration test suite](https://github.com/scala/actors-migration/tree/master/src/test/)中找到，这些程序做为测试文件，前缀为actmig。
 
-这篇文档和Actor移植组件由 [Vojin Jovanovic](http://people.epfl.ch/vojin.jovanovic)和[Philipp Haller](http://lampwww.epfl.ch/~phaller/)编写。
+这篇文档和Actor移植组件由 [Vojin Jovanovic](https://people.epfl.ch/vojin.jovanovic)和[Philipp Haller](https://lampwww.epfl.ch/~phaller/)编写。
 
 如果你发现任何问题或不完善的地方，请把它们报告给 [Scala Bugtracker](https://github.com/scala/actors-migration/issues)。

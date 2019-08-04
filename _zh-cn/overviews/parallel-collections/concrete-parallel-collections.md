@@ -24,7 +24,7 @@ language: zh-cn
     scala> pa map (x => (x - 1) / 2)
     res1: scala.collection.parallel.mutable.ParArray[Int] = ParArray(0, 1, 2, 3, 4, 5, 6, 7,...
 
-在内部，分离一个并行数组[分离器](http://docs.scala-lang.org/overviews/parallel-collections/architecture.html)相当于使用它们的下标迭代器更新来创建两个分离器。[组合](http://docs.scala-lang.org/overviews/parallel-collections/architecture.html)稍微负责一点。因为大多数的分离方法(如：flatmap, filter, takeWhile等)我们不能预先知道元素的个数（或者数组的大小），每一次组合本质上来说是一个数组缓冲区的一种变量根据分摊时间来进行加减的操作。不同的处理器进行元素相加操作，对每个独立并列数组进行组合，然后根据其内部连结在再进行组合。在并行数组中的基础数组只有在知道元素的总数之后才能被分配和填充。基于此，变换方法比存取方法要稍微复杂一些。另外，请注意，最终数组分配在JVM上的顺序进行，如果映射操作本身是很便宜，这可以被证明是一个序列瓶颈。
+在内部，分离一个并行数组[分离器](https://docs.scala-lang.org/overviews/parallel-collections/architecture.html)相当于使用它们的下标迭代器更新来创建两个分离器。[组合](https://docs.scala-lang.org/overviews/parallel-collections/architecture.html)稍微负责一点。因为大多数的分离方法(如：flatmap, filter, takeWhile等)我们不能预先知道元素的个数（或者数组的大小），每一次组合本质上来说是一个数组缓冲区的一种变量根据分摊时间来进行加减的操作。不同的处理器进行元素相加操作，对每个独立并列数组进行组合，然后根据其内部连结在再进行组合。在并行数组中的基础数组只有在知道元素的总数之后才能被分配和填充。基于此，变换方法比存取方法要稍微复杂一些。另外，请注意，最终数组分配在JVM上的顺序进行，如果映射操作本身是很便宜，这可以被证明是一个序列瓶颈。
 
 通过调用seq方法，并行数组(parallel arrays)被转换为对应的顺序容器(sequential collections) ArraySeq。这种转换是非常高效的，因为新创建的ArraySeq 底层是通过并行数组(parallel arrays)获得的。
 
@@ -55,7 +55,7 @@ language: zh-cn
 
 ### 并行哈希表(Parallel Hash Tables)
 
-并行哈希表存储在底层数组的元素，并将它们放置在由各自元素的哈希码的位置。并行不变的哈希集(set)（[mutable.ParHashSet](http://www.scala-lang.org/api/2.10.0/scala/collection/parallel/mutable/ParHashSet.html)）和并行不变的哈希映射([mutable.ParHashMap](http://www.scala-lang.org/api/2.10.0/scala/collection/parallel/mutable/ParHashMap.html)) 是基于哈希表的。
+并行哈希表存储在底层数组的元素，并将它们放置在由各自元素的哈希码的位置。并行不变的哈希集(set)（[mutable.ParHashSet](https://www.scala-lang.org/api/2.10.0/scala/collection/parallel/mutable/ParHashSet.html)）和并行不变的哈希映射([mutable.ParHashMap](https://www.scala-lang.org/api/2.10.0/scala/collection/parallel/mutable/ParHashMap.html)) 是基于哈希表的。
 
     scala> val phs = scala.collection.parallel.mutable.ParHashSet(1 until 2000: _*)
     phs: scala.collection.parallel.mutable.ParHashSet[Int] = ParHashSet(18, 327, 736, 1045, 773, 1082,...
@@ -69,7 +69,7 @@ language: zh-cn
 
 ### 并行散列Tries(Parallel Hash Tries)
 
-并行hash tries是不可变(immutable)hash tries的并行版本，这种结果可以用来高效的维护不可变集合(immutable set)和不可变关联数组(immutable map)。他们都支持类[immutable.ParHashSet](http://www.scala-lang.org/api/2.10.0/scala/collection/parallel/immutable/ParHashSet.html)和[immutable.ParHashMap](http://www.scala-lang.org/api/2.10.0/scala/collection/parallel/immutable/ParHashMap.html)。
+并行hash tries是不可变(immutable)hash tries的并行版本，这种结果可以用来高效的维护不可变集合(immutable set)和不可变关联数组(immutable map)。他们都支持类[immutable.ParHashSet](https://www.scala-lang.org/api/2.10.0/scala/collection/parallel/immutable/ParHashSet.html)和[immutable.ParHashMap](https://www.scala-lang.org/api/2.10.0/scala/collection/parallel/immutable/ParHashMap.html)。
 
     scala> val phs = scala.collection.parallel.immutable.ParHashSet(1 until 1000: _*)
     phs: scala.collection.parallel.immutable.ParHashSet[Int] = ParSet(645, 892, 69, 809, 629, 365, 138, 760, 101, 479,...
@@ -83,7 +83,7 @@ language: zh-cn
 
 ### 并行并发tries(Parallel Concurrent Tries)
 
-[ concurrent.triemap ](http://www.scala-lang.org/api/2.10.0/scala/collection/concurrent/TrieMap.html)是竞争对手的线程安全的地图，而[ mutable.partriemap ](http://www.scala-lang.org/api/2.10.0/scala/collection/parallel/mutable/ParTrieMap.html) 是他的并行副本。如果这个数据结构在遍历的过程中被修改了，大多数竞争对手的数据结构不能确保一致遍历，尝试确保在下一次迭代中更新是可见的。这意味着，你可以在尝试遍历的时候改变这些一致性，如下例子所示输出1到99的平方根。
+[ concurrent.triemap ](https://www.scala-lang.org/api/2.10.0/scala/collection/concurrent/TrieMap.html)是竞争对手的线程安全的地图，而[ mutable.partriemap ](https://www.scala-lang.org/api/2.10.0/scala/collection/parallel/mutable/ParTrieMap.html) 是他的并行副本。如果这个数据结构在遍历的过程中被修改了，大多数竞争对手的数据结构不能确保一致遍历，尝试确保在下一次迭代中更新是可见的。这意味着，你可以在尝试遍历的时候改变这些一致性，如下例子所示输出1到99的平方根。
 
     scala> val numbers = scala.collection.parallel.mutable.ParTrieMap((1 until 100) zip (1 until 100): _*) map { case (k, v) => (k.toDouble, v.toDouble) }
     numbers: scala.collection.parallel.mutable.ParTrieMap[Double,Double] = ParTrieMap(0.0 -> 0.0, 42.0 -> 42.0, 70.0 -> 70.0, 2.0 -> 2.0,...

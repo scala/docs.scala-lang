@@ -20,7 +20,7 @@ previous-page: basics
 
 ## โครงสร้างของ Type ใน Scala ##
 
-[`Any`](http://www.scala-lang.org/api/2.12.1/scala/Any.html) เป็น supertype ของ type ทั้งหมด และยังเรียกว่า type บนสุด มันจะกำหนด method ที่ใช้งานร่วมกันอย่างเช่น `equals`, `hashCode` และ `toString` ซึ่ง `Any` มี subclass โดยตรง 2 subclass คือ `AnyVal` และ `AnyRef`
+[`Any`](https://www.scala-lang.org/api/2.12.1/scala/Any.html) เป็น supertype ของ type ทั้งหมด และยังเรียกว่า type บนสุด มันจะกำหนด method ที่ใช้งานร่วมกันอย่างเช่น `equals`, `hashCode` และ `toString` ซึ่ง `Any` มี subclass โดยตรง 2 subclass คือ `AnyVal` และ `AnyRef`
 
 `AnyVal` แทน value type หรือชนิดข้อมูลที่มีค่า ซึ่งมี 9 value type และเป็นค่าที่ไม่สามารถเป็น null (non-nullable): `Double`, `Float`, `Long`, `Int`, `Short`, `Byte`, `Char`, `Unit` และ `Boolean` ซึ่ง `Unit` เป็น value type ที่แทนค่าที่ไม่มีข้อมูล โดยที่มีหนึ่งค่า instance ของ `Unit` ซึ่งสามารถประกาศด้วย `()` ทุก function จำเป็นต้องมีการ return บางสิ่งบางอย่าง ซึ่งก็ `Unit` ก็เป็นค่าที่ใช้เป็น return type
 

@@ -27,7 +27,7 @@ This code runs successfully because `Int` is considered to be `Liftable` by defa
       def apply(value: T): Tree
     }
 
-Whenever there is an implicit value of `Liftable[T]` available, one can unquote `T` in quasiquotes. This design pattern is known as a *type class*. You can read more about it in ["Type Classes as Objects and Implicits"](http://ropas.snu.ac.kr/~bruno/papers/TypeClasses.pdf).
+Whenever there is an implicit value of `Liftable[T]` available, one can unquote `T` in quasiquotes. This design pattern is known as a *type class*. You can read more about it in ["Type Classes as Objects and Implicits"](https://ropas.snu.ac.kr/~bruno/papers/TypeClasses.pdf).
 
 A number of data types that are supported natively by quasiquotes will never trigger the usage of a `Liftable` representation, even if it\'s available: subtypes of `Tree`, `Symbol`, `Name`, `Modifiers` and `FlagSet`.
 

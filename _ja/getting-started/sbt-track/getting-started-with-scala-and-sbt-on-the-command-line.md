@@ -9,7 +9,7 @@ next-page: /ja/testing-scala-with-sbt-on-the-command-line
 
 このチュートリアルでは、テンプレートから Scala プロジェクトを作成する方法を見ていきます。
 あなた自身のプロジェクトを始めるスタート地点として使えます。
-Scala のデファクトのビルドツール [sbt](http://www.scala-sbt.org/1.x/docs/index.html) を用います。
+Scala のデファクトのビルドツール [sbt](https://www.scala-sbt.org/1.x/docs/index.html) を用います。
 sbt はあなたのプロジェクトに関連した様々なタスク、とりわけコンパイル、実行、テストをしてくれます。
 ターミナルの使い方を知っていることを前提とします。
 
@@ -18,9 +18,9 @@ sbt はあなたのプロジェクトに関連した様々なタスク、とり�
     * コマンドラインで `javac -version` を実行し、`javac 1.8.___` と表示されるのを確認します。
     * バージョン 1.8 かそれ以上がなければ、[JDK をインストールします](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)。
 1. sbt をインストールします。
-    * [Mac](http://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Mac.html)
-    * [Windows](http://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Windows.html)
-    * [Linux](http://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Linux.html)
+    * [Mac](https://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Mac.html)
+    * [Windows](https://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Windows.html)
+    * [Linux](https://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Linux.html)
 
 ## プロジェクトを作成
 1. 空のフォルダーに `cd` 。

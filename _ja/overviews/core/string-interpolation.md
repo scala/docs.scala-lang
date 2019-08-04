@@ -20,7 +20,7 @@ Scala 2.10.0 より、Scala は文字列の補間 (string interpolation) とい�
     val name = "James"
     println(s"Hello, $name")  // Hello, James
 
-上の例において、リテラル `s"Hello, $name"` は加工文字列リテラルだ。これはコンパイラがこのリテラルに対して何らかの追加処理を実行するということだ。加工文字リテラルは `"` の前にいくつかの文字を書くことで表記される。文字列の補間は [SIP-11](http://docs.scala-lang.org/sips/pending/string-interpolation.html) によって導入され、実装の詳細もそこに書かれている。
+上の例において、リテラル `s"Hello, $name"` は加工文字列リテラルだ。これはコンパイラがこのリテラルに対して何らかの追加処理を実行するということだ。加工文字リテラルは `"` の前にいくつかの文字を書くことで表記される。文字列の補間は [SIP-11](https://docs.scala-lang.org/sips/pending/string-interpolation.html) によって導入され、実装の詳細もそこに書かれている。
 
 ## 用例
 
@@ -60,7 +60,7 @@ Scala は `s`、`f`、そして `raw` という 3つの補間子 (interpolator) 
                f"$height%4d"
                   ^
 
-`f` 補間子は Java にある文字列の書式付き出力ユーティリティを利用している。`%` 文字の後に書くことが許されている書式は [Formatter の javadoc](http://docs.oracle.com/javase/jp/1.5.0/api/java/util/Formatter.html#detail) に説明されている。変数の後に `%` 文字が無い場合は、`%s` 書式 (`String`) だと仮定される。
+`f` 補間子は Java にある文字列の書式付き出力ユーティリティを利用している。`%` 文字の後に書くことが許されている書式は [Formatter の javadoc](https://docs.oracle.com/javase/jp/1.5.0/api/java/util/Formatter.html#detail) に説明されている。変数の後に `%` 文字が無い場合は、`%s` 書式 (`String`) だと仮定される。
 
 ### `raw` 補間子
 
@@ -86,7 +86,7 @@ Scala では、全ての加工文字列リテラルは簡単なコード変換�
 
     id"string content"
 
-これは [`StringContext`](http://www.scala-lang.org/api/current/index.html#scala.StringContext) のインスタンスへのメソッドの呼び出し (`id`) へと変換される。このメソッドは implicit スコープ内で提供することもできる。独自の文字列の補間を定義するには、`StringContext` に新しいメソッドを追加する implicit クラスを作るだけでいい。以下に具体例で説明する:
+これは [`StringContext`](https://www.scala-lang.org/api/current/index.html#scala.StringContext) のインスタンスへのメソッドの呼び出し (`id`) へと変換される。このメソッドは implicit スコープ内で提供することもできる。独自の文字列の補間を定義するには、`StringContext` に新しいメソッドを追加する implicit クラスを作るだけでいい。以下に具体例で説明する:
 
     // 注意: 実行時のインスタンス化を避けるために AnyVal を継承する。
     // これに関しては値クラスのガイドを参照。

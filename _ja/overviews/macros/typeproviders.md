@@ -77,8 +77,8 @@ def マクロによって展開された定義群のスコープは展開され�
 これはプロダクションで使えるバージョンの Scala で実現できるため、便利な型プロバイダの方法だと言えるが、
 構造的部分型のメンバにアクセスするのに Scala はリフレクションをつかった呼び出しを生成するので、性能に問題がある。
 これにもいくつかの対策があるが、この余白はそれを書くには狭すぎるので Travis Brown 氏の驚くべきブログシリーズを紹介する:
-[その1](http://meta.plasm.us/posts/2013/06/19/macro-supported-dsls-for-schema-bindings/)、[その2](http://meta.plasm.us/posts/2013/07/11/fake-type-providers-part-2/)、
-[その3](http://meta.plasm.us/posts/2013/07/12/vampire-methods-for-structural-types/)。
+[その1](https://meta.plasm.us/posts/2013/06/19/macro-supported-dsls-for-schema-bindings/)、[その2](https://meta.plasm.us/posts/2013/07/11/fake-type-providers-part-2/)、
+[その3](https://meta.plasm.us/posts/2013/07/12/vampire-methods-for-structural-types/)。
 
 ## public 型プロバイダ
 
@@ -102,9 +102,9 @@ def マクロによって展開された定義群のスコープは展開され�
 このテクニックは匿名と public の両方の型プロバイダにあてはまる。
 
     object Netflix {
-      type Title = XmlEntity["http://.../Title".type]
+      type Title = XmlEntity["https://.../Title".type]
       def Titles: List[Title] = ...
-      type Director = XmlEntity["http://.../Director".type]
+      type Director = XmlEntity["https://.../Director".type]
       def Directors: List[Director] = ...
       ...
     }

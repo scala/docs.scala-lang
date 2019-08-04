@@ -722,13 +722,13 @@ Examples:
 4. [Scala Actors Futures][4]
 5. [Scalaz Futures][5]
 
-  [1]: http://www.microsoft.com/download/en/details.aspx?id=19957 "NETAsync"
-  [2]: http://twitter.github.com/scala_school/finagle.html "Finagle"
+  [1]: https://www.microsoft.com/download/en/details.aspx?id=19957 "NETAsync"
+  [2]: https://twitter.github.com/scala_school/finagle.html "Finagle"
   [3]: https://doc.akka.io/docs/akka/current/futures.html "AkkaFutures"
-  [4]: http://www.scala-lang.org/api/2.9.3/scala/actors/Future.html "SActorsFutures"
-  [5]: http://code.google.com/p/scalaz/ "Scalaz"
+  [4]: https://www.scala-lang.org/api/2.9.3/scala/actors/Future.html "SActorsFutures"
+  [5]: https://code.google.com/p/scalaz/ "Scalaz"
 
 
 ## Appendix A: API Traits
 
-An implementation is available at [http://github.com/phaller/scala](https://github.com/phaller/scala/tree/execution-context/src/library/scala/concurrent). (Reasonably stable implementation, though possibility of flux.)
+An implementation is available at [https://github.com/phaller/scala](https://github.com/phaller/scala/tree/execution-context/src/library/scala/concurrent). (Reasonably stable implementation, though possibility of flux.)

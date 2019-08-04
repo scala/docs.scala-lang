@@ -25,7 +25,7 @@ Este método `sum` está disponible de manera global, y puede ser referenciado, 
 
 Los objetos singleton son una especie de mezcla entre la definición de una clase de utilización única, la cual no pueden ser instanciada directamente, y un miembro `val`. De hecho, de la misma menera que los `val`, los objetos singleton pueden ser definidos como miembros de un [trait](traits.html) o de una clase, aunque esto no es muy frecuente.
 
-Un objeto singleton puede extender clases y _traits_. De hecho, una [clase Case](case-classes.html) sin [parámetros de tipo](generic-classes.html) generará por defecto un objeto singleton del mismo nombre, con una [`Función*`](http://www.scala-lang.org/api/current/scala/Function1.html) trait implementada.
+Un objeto singleton puede extender clases y _traits_. De hecho, una [clase Case](case-classes.html) sin [parámetros de tipo](generic-classes.html) generará por defecto un objeto singleton del mismo nombre, con una [`Función*`](https://www.scala-lang.org/api/current/scala/Function1.html) trait implementada.
 
 ## Acompañantes ##
 

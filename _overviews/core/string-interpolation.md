@@ -23,7 +23,7 @@ String Interpolation allows users to embed variable references directly in *proc
 
 In the above, the literal `s"Hello, $name"` is a *processed* string literal.  This means that the compiler does some additional
 work to this literal.  A processed string literal is denoted by a set of characters preceding the `"`. String interpolation
-was introduced by [SIP-11](http://docs.scala-lang.org/sips/pending/string-interpolation.html), which contains all details of the implementation.
+was introduced by [SIP-11](https://docs.scala-lang.org/sips/pending/string-interpolation.html), which contains all details of the implementation.
 
 ## Usage
 
@@ -68,7 +68,7 @@ error.  For example:
                   ^
 
 The `f` interpolator makes use of the string format utilities available from Java.   The formats allowed after the `%` character are outlined in the
-[Formatter javadoc](http://docs.oracle.com/javase/1.6.0/docs/api/java/util/Formatter.html#detail).   If there is no `%` character after a variable
+[Formatter javadoc](https://docs.oracle.com/javase/1.6.0/docs/api/java/util/Formatter.html#detail).   If there is no `%` character after a variable
 definition a formatter of `%s` (`String`) is assumed.
 
 
