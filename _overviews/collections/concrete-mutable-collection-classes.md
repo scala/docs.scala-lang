@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Concrete Mutable Collection Classes
-
-discourse: true
-
 partof: collections
 overview-name: Collections (Scala 2.8 - 2.12)
 new-version: /overviews/collections-2.13/concrete-mutable-collection-classes.html

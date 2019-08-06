@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Def Macros
-
-discourse: true
-
 partof: macros
 overview-name: Macros
 

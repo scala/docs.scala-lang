@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 싱글톤 객체
-
-discourse: false
-
 partof: scala-tour
 
 num: 13

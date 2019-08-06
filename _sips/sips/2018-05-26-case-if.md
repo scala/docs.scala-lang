@@ -1,8 +1,6 @@
 ---
 layout: sips
-discourse: true
 title: SIP-NN - Uncluttering Abuse of Match
-
 vote-status: new
 vote-text:
 permalink: /sips/:title.html

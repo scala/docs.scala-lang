@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Type Inference
-
-discourse: false
-
 partof: scala-tour
 
 num: 27

@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 模式匹配
-
-discourse: false
-
 partof: scala-tour
 
 num: 11

@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Funciones Anidadas
-
-discourse: false
-
 partof: scala-tour
 
 num: 13

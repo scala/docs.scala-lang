@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Wzorce wyrażeń regularnych
-
-discourse: false
-
 partof: scala-tour
 
 num: 14

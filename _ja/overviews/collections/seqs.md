@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: 列トレイト Seq、IndexedSeq、および LinearSeq
-
-discourse: false
-
 partof: collections
 overview-name: Collections
 

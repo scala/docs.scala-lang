@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: 视图
-
-discourse: false
-
 partof: collections
 overview-name: Collections
 

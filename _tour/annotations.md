@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Annotations
-
-discourse: true
-
 partof: scala-tour
 
 num: 32

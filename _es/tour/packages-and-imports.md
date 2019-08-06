@@ -2,9 +2,6 @@
 layout: tour
 title: Packages and Imports
 language: es
-
-discourse: true
-
 partof: scala-tour
 
 num: 35

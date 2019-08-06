@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 패턴 매칭
-
-discourse: false
-
 partof: scala-tour
 
 num: 12

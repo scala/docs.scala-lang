@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: 具体的不可变集实体类
-
-discourse: false
-
 partof: collections
 overview-name: Collections
 

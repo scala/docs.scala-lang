@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Nested Methods
-
-discourse: false
-
 partof: scala-tour
 
 num: 8

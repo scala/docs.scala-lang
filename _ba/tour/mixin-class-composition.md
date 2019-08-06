@@ -2,9 +2,6 @@
 layout: tour
 title: Kompozicija mixin klasa
 language: ba
-
-discourse: true
-
 partof: scala-tour
 
 num: 6

@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: 性能特性
-
-discourse: false
-
 partof: collections
 overview-name: Collections
 

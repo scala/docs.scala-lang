@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: By-name Parameters
-
-discourse: true
-
 partof: scala-tour
 
 num: 31

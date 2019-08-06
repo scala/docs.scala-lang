@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 特质
-
-discourse: false
-
 partof: scala-tour
 
 num: 5

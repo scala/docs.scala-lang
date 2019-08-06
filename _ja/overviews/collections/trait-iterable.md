@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Iterable トレイト
-
-discourse: false
-
 partof: collections
 overview-name: Collections
 

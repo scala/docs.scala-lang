@@ -5,8 +5,6 @@ title: Implicit Classes
 partof: implicit-classes
 
 language: zh-cn
-
-discourse: false
 ---
 
 **Josh Suereth 著**

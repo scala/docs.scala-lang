@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 연산자
-
-discourse: false
-
 partof: scala-tour
 
 num: 29

@@ -5,8 +5,6 @@ title: 値クラスと汎用トレイト
 partof: value-classes
 
 language: ja
-
-discourse: false
 ---
 
 **Mark Harrah 著**<br>

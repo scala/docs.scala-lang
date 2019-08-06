@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Implicit Macros
-
-discourse: true
-
 partof: macros
 overview-name: Macros
 

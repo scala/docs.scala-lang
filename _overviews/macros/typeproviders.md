@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Type Providers
-
-discourse: true
-
 partof: macros
 overview-name: Macros
 

@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Dependencies and setup
-
-discourse: true
-
 partof: quasiquotes
 overview-name: Quasiquotes
 

@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Multiple Parameter Lists (Currying)
-
-discourse: true
-
 partof: scala-tour
 
 num: 10

@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Conversões Implícitas
-
-discourse: false
-
 partof: scala-tour
 
 num: 26

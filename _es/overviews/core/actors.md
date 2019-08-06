@@ -5,8 +5,6 @@ title: API de actores en Scala
 partof: actors
 
 language: es
-
-discourse: false
 ---
 
 **Philipp Haller and Stephen Tu**

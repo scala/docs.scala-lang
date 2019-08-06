@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 默认参数值
-
-discourse: false
-
 partof: scala-tour
 
 num: 31

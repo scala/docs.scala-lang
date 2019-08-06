@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Macro Paradise
-
-discourse: true
-
 partof: macros
 overview-name: Macros
 

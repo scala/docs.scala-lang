@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 嵌套方法
-
-discourse: false
-
 partof: scala-tour
 
 num: 8

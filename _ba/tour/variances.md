@@ -2,9 +2,6 @@
 layout: tour
 title: Varijanse
 language: ba
-
-discourse: true
-
 partof: scala-tour
 
 num: 19

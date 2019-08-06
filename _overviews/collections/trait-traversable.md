@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Trait Traversable
-
-discourse: true
-
 partof: collections
 overview-name: Collections (Scala 2.8 - 2.12)
 

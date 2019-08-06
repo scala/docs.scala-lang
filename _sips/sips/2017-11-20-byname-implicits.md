@@ -1,8 +1,6 @@
 ---
 layout: sip
-discourse: true
 title: SIP-NN - Byname implicit arguments
-
 vote-status: pending
 permalink: /sips/:title.html
 redirect_from: /sips/pending/byname-implicits.html

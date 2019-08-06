@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 중첩 함수
-
-discourse: false
-
 partof: scala-tour
 
 num: 9

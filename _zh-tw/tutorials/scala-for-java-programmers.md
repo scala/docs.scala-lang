@@ -3,8 +3,6 @@ layout: singlepage-overview
 title: 給 Java 程式設計師的 Scala 入門教學
 
 partof: scala-for-java-programmers
-
-discourse: false
 language: zh-tw
 ---
 

@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 多参数列表（柯里化）
-
-discourse: false
-
 partof: scala-tour
 
 num: 9

@@ -1,8 +1,5 @@
 ---
 layout: multipage-overview
-
-discourse: false
-
 partof: reflection
 overview-name: Reflection
 

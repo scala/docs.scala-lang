@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Correspondência de Padrões
-
-discourse: false
-
 partof: scala-tour
 
 num: 11

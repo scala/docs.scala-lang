@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: 等价性
-
-discourse: false
-
 partof: collections
 overview-name: Collections
 

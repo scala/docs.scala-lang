@@ -1,7 +1,6 @@
 ---
 layout: singlepage-overview
 title: JDK Compatibility
-discourse: true
 permalink: /overviews/jdk-compatibility/overview.html
 ---
 

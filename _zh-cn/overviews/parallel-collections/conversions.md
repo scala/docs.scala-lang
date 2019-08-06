@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: 并行容器的转换
-
-discourse: false
-
 partof: parallel-collections
 overview-name: Parallel Collections
 

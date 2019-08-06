@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 기초
-
-discourse: false
-
 partof: scala-tour
 
 num: 2

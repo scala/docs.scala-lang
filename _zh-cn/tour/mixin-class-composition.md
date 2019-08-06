@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 通过混入（mixin）来组合类
-
-discourse: false
-
 partof: scala-tour
 
 num: 6

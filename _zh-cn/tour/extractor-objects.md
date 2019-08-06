@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 提取器对象
-
-discourse: false
-
 partof: scala-tour
 
 num: 14

@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Iterators
-
-discourse: false
-
 partof: collections
 overview-name: Collections
 

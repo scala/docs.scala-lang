@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Padrões de Expressões Regulares
-
-discourse: false
-
 partof: scala-tour
 
 num: 14

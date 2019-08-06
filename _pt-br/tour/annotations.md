@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Anotações
-
-discourse: false
-
 partof: scala-tour
 
 num: 31

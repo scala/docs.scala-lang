@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Inference-Driving Macros
-
-discourse: true
-
 overview-name: Macros
 
 languages: [ja]

@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Funciones de orden superior
-
-discourse: false
-
 partof: scala-tour
 
 num: 18

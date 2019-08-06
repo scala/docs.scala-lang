@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Automatyczna konstrukcja domknięć
-
-discourse: false
-
 partof: scala-tour
 
 num: 30

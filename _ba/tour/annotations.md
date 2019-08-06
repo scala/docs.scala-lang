@@ -2,9 +2,6 @@
 layout: tour
 title: Anotacije
 language: ba
-
-discourse: true
-
 partof: scala-tour
 
 num: 32

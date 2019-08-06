@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Clases genéricas
-
-discourse: false
-
 partof: scala-tour
 
 num: 9

@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Inferencia de tipos Local
-
-discourse: false
-
 partof: scala-tour
 
 num: 29

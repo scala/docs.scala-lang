@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: How can I chain/nest implicit conversions?
-
-discourse: true
-
 overview-name: FAQ
 partof: FAQ
 

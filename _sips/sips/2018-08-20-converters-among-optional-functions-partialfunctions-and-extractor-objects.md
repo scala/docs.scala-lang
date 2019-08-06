@@ -1,6 +1,5 @@
 ---
 layout: sips
-discourse: true
 title: SIP-NN - Converters among optional Functions, PartialFunctions and extractor objects
 ---
 

@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Equality
-
-discourse: true
-
 partof: collections-213
 overview-name: Collections
 

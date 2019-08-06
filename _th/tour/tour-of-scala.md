@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: บทนำ
-
-discourse: false
-
 partof: scala-tour
 
 num: 1

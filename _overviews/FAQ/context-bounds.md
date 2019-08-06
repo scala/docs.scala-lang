@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: What are Scala context bounds?
-
-discourse: true
-
 overview-name: FAQ
 partof: FAQ
 

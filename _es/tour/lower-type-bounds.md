@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Límite de tipado inferior
-
-discourse: false
-
 partof: scala-tour
 
 num: 26

@@ -4,8 +4,6 @@ title: A Scala Tutorial for Java Programmers
 
 partof: scala-for-java-programmers
 
-discourse: true
-
 languages: [es, ko, de, it, ja, zh-tw]
 permalink: /tutorials/:title.html
 ---

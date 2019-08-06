@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Parâmetros Implícitos
-
-discourse: false
-
 partof: scala-tour
 
 num: 25

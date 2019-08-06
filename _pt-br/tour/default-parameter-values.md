@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Parâmetro com Valor Padrão
-
-discourse: false
-
 partof: scala-tour
 
 num: 32

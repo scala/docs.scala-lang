@@ -2,9 +2,6 @@
 layout: tour
 title: Podudaranje uzoraka (pattern matching)
 language: ba
-
-discourse: true
-
 partof: scala-tour
 
 num: 12

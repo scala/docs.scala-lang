@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Kompozycja klas przez domieszki
-
-discourse: false
-
 partof: scala-tour
 
 num: 7

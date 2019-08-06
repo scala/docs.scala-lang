@@ -5,8 +5,6 @@ title: Future和Promise
 partof: futures
 
 language: zh-cn
-
-discourse: false
 ---
 
 **Philipp Haller, Aleksandar Prokopec, Heather Miller, Viktor Klang, Roland Kuhn, and Vojin Jovanovic 著**

@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Regular Expression Patterns
-
-discourse: true
-
 partof: scala-tour
 
 num: 15

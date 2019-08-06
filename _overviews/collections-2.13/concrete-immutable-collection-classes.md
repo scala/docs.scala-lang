@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Concrete Immutable Collection Classes
-
-discourse: true
-
 partof: collections-213
 overview-name: Collections
 

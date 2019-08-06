@@ -2,9 +2,6 @@
 layout: tour
 title: Funkcije višeg reda
 language: ba
-
-discourse: true
-
 partof: scala-tour
 
 num: 8

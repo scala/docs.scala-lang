@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Hierarchia typów
-
-discourse: false
-
 partof: scala-tour
 
 num: 3

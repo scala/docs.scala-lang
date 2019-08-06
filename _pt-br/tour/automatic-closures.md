@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Construção Automática de Closures de Tipo-Dependente
-
-discourse: false
-
 partof: scala-tour
 
 num: 30

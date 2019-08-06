@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Creating Collections From Scratch
-
-discourse: true
-
 partof: collections-213
 overview-name: Collections
 

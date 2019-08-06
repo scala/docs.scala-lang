@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Configuring Parallel Collections
-
-discourse: true
-
 partof: parallel-collections
 overview-name: Parallel Collections
 

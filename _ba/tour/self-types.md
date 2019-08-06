@@ -2,9 +2,6 @@
 layout: tour
 title: Self-tipovi
 language: ba
-
-discourse: true
-
 partof: scala-tour
 
 num: 25

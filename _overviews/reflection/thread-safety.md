@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Thread Safety
-
-discourse: true
-
 partof: reflection
 overview-name: Reflection
 

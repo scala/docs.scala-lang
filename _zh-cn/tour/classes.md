@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 类
-
-discourse: true
-
 partof: scala-tour
 
 num: 4

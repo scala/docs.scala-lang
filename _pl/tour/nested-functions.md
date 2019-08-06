@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Funkcje zagnieżdżone
-
-discourse: false
-
 partof: scala-tour
 
 num: 9

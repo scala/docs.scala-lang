@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: 具象不変コレクションクラス
-
-discourse: false
-
 partof: collections
 overview-name: Collections
 

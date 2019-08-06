@@ -2,9 +2,6 @@
 layout: tour
 title: Klase
 language: ba
-
-discourse: true
-
 partof: scala-tour
 
 num: 4

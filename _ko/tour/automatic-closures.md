@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 타입 의존 클로저의 자동 구성
-
-discourse: false
-
 partof: scala-tour
 
 num: 30

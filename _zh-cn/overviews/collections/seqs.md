@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: 序列trait：Seq、IndexedSeq及LinearSeq
-
-discourse: false
-
 partof: collections
 overview-name: Collections
 

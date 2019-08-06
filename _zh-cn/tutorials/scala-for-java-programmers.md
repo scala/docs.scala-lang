@@ -3,8 +3,6 @@ layout: singlepage-overview
 title: 给 Java 工程师的 Scala 入门教学
 
 partof: scala-for-java-programmers
-
-discourse: false
 language: zh-cn
 ---
 

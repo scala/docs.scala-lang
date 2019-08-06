@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Self-type
-
-discourse: true
-
 partof: scala-tour
 
 num: 25

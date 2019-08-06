@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Automatic Type-Dependent Closure Construction
-
-discourse: true
-
 partof: scala-tour
 ---
 

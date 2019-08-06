@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Named Arguments
-
-discourse: true
-
 partof: scala-tour
 
 num: 34

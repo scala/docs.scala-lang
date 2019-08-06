@@ -5,8 +5,6 @@ title: Scala Actors迁移指南
 partof: actor-migration
 
 language: zh-cn
-
-discourse: false
 ---
 
 **Vojin Jovanovic 和 Philipp Haller 著**

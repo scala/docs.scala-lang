@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: 字符串
-
-discourse: false
-
 partof: collections
 overview-name: Collections
 

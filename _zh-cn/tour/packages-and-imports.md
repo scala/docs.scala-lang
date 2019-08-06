@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 包和导入
-
-discourse: true
-
 partof: scala-tour
 
 num: 33

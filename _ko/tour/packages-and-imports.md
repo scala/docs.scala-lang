@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 패키지와 임포트
-
-discourse: false
-
 partof: scala-tour
 
 num: 35

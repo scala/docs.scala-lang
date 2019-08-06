@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Patrones basados en expresiones regulares
-
-discourse: false
-
 partof: scala-tour
 
 num: 22

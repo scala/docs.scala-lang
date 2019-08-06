@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Clases Case
-
-discourse: false
-
 partof: scala-tour
 
 num: 5

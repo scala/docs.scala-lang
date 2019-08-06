@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Tipos Compuestos
-
-discourse: false
-
 partof: scala-tour
 
 num: 6

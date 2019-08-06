@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Tipos Abstractos
-
-discourse: false
-
 partof: scala-tour
 
 num: 2

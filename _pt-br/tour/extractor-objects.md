@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Objetos Extratores
-
-discourse: false
-
 partof: scala-tour
 
 num: 15

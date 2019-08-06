@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Abstract Type Members
-
-discourse: true
-
 partof: scala-tour
 num: 23
 next-page: compound-types

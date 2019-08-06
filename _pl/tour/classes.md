@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Klasy
-
-discourse: false
-
 partof: scala-tour
 
 num: 4

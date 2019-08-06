@@ -2,9 +2,6 @@
 layout: tour
 title: Osnove
 language: ba
-
-discourse: true
-
 partof: scala-tour
 
 num: 2

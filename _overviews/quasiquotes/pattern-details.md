@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Pattern details
-
-discourse: true
-
 partof: quasiquotes
 overview-name: Quasiquotes
 

@@ -1,8 +1,6 @@
 ---
 layout: sip
-discourse: true
 title: SIP-21 - Spores
-
 vote-status: "under-review"
 vote-text: Next iteration takes place in January/February 2017 by request of the authors.
 permalink: /sips/:title.html

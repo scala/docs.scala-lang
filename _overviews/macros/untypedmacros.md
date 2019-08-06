@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Untyped Macros
-
-discourse: true
-
 overview-name: Macros
 
 languages: [ja]

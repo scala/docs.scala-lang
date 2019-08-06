@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 로컬 타입 추론
-
-discourse: false
-
 partof: scala-tour
 
 num: 28

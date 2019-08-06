@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Construcción de closures automáticas
-
-discourse: false
-
 partof: scala-tour
 
 num: 16

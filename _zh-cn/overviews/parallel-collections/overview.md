@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: 概述
-
-discourse: false
-
 partof: parallel-collections
 overview-name: Parallel Collections
 

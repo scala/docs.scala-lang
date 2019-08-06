@@ -2,9 +2,6 @@
 layout: tour
 title: Implicitne konverzije
 language: ba
-
-discourse: true
-
 partof: scala-tour
 
 num: 27

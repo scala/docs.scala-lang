@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Equality
-
-discourse: true
-
 partof: collections
 overview-name: Collections (Scala 2.8 - 2.12)
 new-version: /overviews/collections-2.13/creating-collections-from-scratch.html

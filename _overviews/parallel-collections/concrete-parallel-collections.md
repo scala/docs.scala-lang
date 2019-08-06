@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Concrete Parallel Collection Classes
-
-discourse: true
-
 partof: parallel-collections
 overview-name: Parallel Collections
 

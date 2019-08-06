@@ -5,8 +5,6 @@ title: 字符串插值
 partof: string-interpolation
 
 language: zh-cn
-
-discourse: false
 ---
 
 **Josh Suereth 著**

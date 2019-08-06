@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 추상 타입
-
-discourse: false
-
 partof: scala-tour
 
 num: 22

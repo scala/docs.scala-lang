@@ -5,8 +5,6 @@ title: Scala容器类体系结构
 partof: collections-architecture
 
 language: zh-cn
-
-discourse: false
 ---
 
 **Martin Odersky 和 Lex Spoon 著**

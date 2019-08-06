@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 케이스 클래스
-
-discourse: false
-
 partof: scala-tour
 
 num: 11

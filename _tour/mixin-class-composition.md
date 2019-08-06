@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Class Composition with Mixins
-
-discourse: true
-
 partof: scala-tour
 
 num: 7

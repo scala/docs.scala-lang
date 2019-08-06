@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Trait Iterable
-
-discourse: false
-
 partof: collections
 overview-name: Collections
 

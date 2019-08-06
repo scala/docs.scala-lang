@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: How are the collections structured? Which one should I choose?
-
-discourse: true
-
 overview-name: FAQ
 partof: FAQ
 

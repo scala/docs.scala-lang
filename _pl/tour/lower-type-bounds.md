@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Dolne ograniczenia typów
-
-discourse: false
-
 partof: scala-tour
 
 num: 20

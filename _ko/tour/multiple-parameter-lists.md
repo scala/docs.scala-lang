@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 커링
-
-discourse: false
-
 partof: scala-tour
 
 num: 10

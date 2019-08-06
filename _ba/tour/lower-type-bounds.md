@@ -2,9 +2,6 @@
 layout: tour
 title: Donja granica tipa
 language: ba
-
-discourse: true
-
 partof: scala-tour
 
 num: 21

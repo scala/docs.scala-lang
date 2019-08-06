@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: 性能の測定
-
-discourse: false
-
 partof: parallel-collections
 overview-name: Parallel Collections
 

@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: 並行トライ
-
-discourse: false
-
 partof: parallel-collections
 overview-name: Parallel Collections
 

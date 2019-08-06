@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Mutable和Immutable集合
-
-discourse: false
-
 partof: collections
 overview-name: Collections
 

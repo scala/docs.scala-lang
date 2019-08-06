@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Obiekty ekstraktorów
-
-discourse: false
-
 partof: scala-tour
 
 num: 15

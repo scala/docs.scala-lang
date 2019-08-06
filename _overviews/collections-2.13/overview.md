@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Mutable and Immutable Collections
-
-discourse: true
-
 partof: collections-213
 overview-name: Collections
 

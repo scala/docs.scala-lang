@@ -1,7 +1,6 @@
 ---
 layout: inner-page-no-masthead
 title: "Functional Programming Principles in Scala: Impressions and Statistics"
-discourse: true
 ---
 ###### By Heather Miller and Martin Odersky
 

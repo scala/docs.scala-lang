@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Klasy przypadków
-
-discourse: false
-
 partof: scala-tour
 
 num: 11

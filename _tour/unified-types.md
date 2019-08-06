@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Unified Types
-
-discourse: true
-
 partof: scala-tour
 
 num: 3

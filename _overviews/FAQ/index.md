@@ -1,9 +1,6 @@
 ---
 layout: singlepage-overview
 title: Scala FAQs
-
-discourse: true
-
 permalink: /tutorials/FAQ/index.html
 ---
 

@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Definition and import details
-
-discourse: true
-
 partof: quasiquotes
 overview-name: Quasiquotes
 

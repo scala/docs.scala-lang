@@ -1,9 +1,6 @@
 ---
 layout: singlepage-overview
 title: String Interpolation
-
-discourse: true
-
 partof: string-interpolation
 
 languages: [es, ja, zh-cn]

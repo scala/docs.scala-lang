@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 多态方法
-
-discourse: false
-
 partof: scala-tour
 
 num: 26

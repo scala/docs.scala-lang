@@ -5,8 +5,6 @@ title: Value Classes and Universal Traits
 partof: value-classes
 
 language: zh-cn
-
-discourse: false
 ---
 
 **Mark Harrah 著**

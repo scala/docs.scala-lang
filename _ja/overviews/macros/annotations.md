@@ -2,8 +2,6 @@
 layout: multipage-overview
 
 language: ja
-discourse: false
-
 partof: macros
 overview-name: Macros
 

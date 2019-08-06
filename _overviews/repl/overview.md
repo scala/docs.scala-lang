@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Overview
-
-discourse: true
-
 partof: repl
 overview-name: REPL
 

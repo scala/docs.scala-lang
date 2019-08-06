@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Implicit Parameters
-
-discourse: true
-
 partof: scala-tour
 
 num: 26

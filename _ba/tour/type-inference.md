@@ -2,9 +2,6 @@
 layout: tour
 title: Lokalno zaključivanje tipova (type inference)
 language: ba
-
-discourse: true
-
 partof: scala-tour
 
 num: 29

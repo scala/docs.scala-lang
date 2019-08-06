@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Architecture of the Parallel Collections Library
-
-discourse: true
-
 partof: parallel-collections
 overview-name: Parallel Collections
 

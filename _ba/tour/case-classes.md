@@ -2,9 +2,6 @@
 layout: tour
 title: Case klase
 language: ba
-
-discourse: true
-
 partof: scala-tour
 
 num: 11

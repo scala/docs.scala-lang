@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Extractor Objects
-
-discourse: true
-
 partof: scala-tour
 
 num: 16

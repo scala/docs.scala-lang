@@ -1,9 +1,7 @@
 ---
 layout: singlepage-overview
 title: Library Author Guide
-discourse: true
 ---
-
 This document targets developers who want to publish their work as a library that other programs can depend on.
 The document steps through the main questions that should be answered before publishing an open source library,
 and shows how a typical development environment looks like.

@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: 从头定义新容器
-
-discourse: false
-
 partof: collections
 overview-name: Collections
 

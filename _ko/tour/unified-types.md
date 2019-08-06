@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 통합된 타입
-
-discourse: false
-
 partof: scala-tour
 
 num: 3

@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Where does Scala look for implicits?
-
-discourse: true
-
 overview-name: FAQ
 partof: FAQ
 

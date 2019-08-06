@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Wariancje
-
-discourse: false
-
 partof: scala-tour
 
 num: 18

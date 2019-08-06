@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 正则表达式模式
-
-discourse: false
-
 partof: scala-tour
 
 num: 13

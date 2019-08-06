@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 类型下界
-
-discourse: false
-
 partof: scala-tour
 
 num: 19

@@ -1,8 +1,6 @@
 ---
 layout: sip
-discourse: true
 title: SIP-33 - Priority-based infix type precedence
-
 vote-status: complete
 permalink: /sips/:title.html
 redirect_from: /sips/pending/priority-based-infix-type-precedence.html

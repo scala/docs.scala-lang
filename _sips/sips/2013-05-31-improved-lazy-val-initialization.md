@@ -1,8 +1,6 @@
 ---
 layout: sip
-discourse: true
 title: SIP-20 - Improved Lazy Vals Initialization
-
 vote-status: dormant
 vote-text: This proposal lacks an implementation for Scalac and is looking for a new owner.
 permalink: /sips/:title.html

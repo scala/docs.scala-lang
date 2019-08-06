@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Higher-order Functions
-
-discourse: true
-
 partof: scala-tour
 
 num: 8

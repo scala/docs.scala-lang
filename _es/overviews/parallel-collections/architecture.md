@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Arquitectura de la librería de colecciones paralelas de Scala
-
-discourse: false
-
 partof: parallel-collections
 overview-name: Parallel Collections
 

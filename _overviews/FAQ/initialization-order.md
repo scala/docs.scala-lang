@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Why is my abstract or overridden val null?
-
-discourse: true
-
 overview-name: FAQ
 partof: FAQ
 

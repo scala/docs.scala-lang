@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Generic Classes
-
-discourse: true
-
 partof: scala-tour
 
 num: 18

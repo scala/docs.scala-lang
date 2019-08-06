@@ -2,9 +2,6 @@
 layout: tour
 title: Ugniježdene metode
 language: ba
-
-discourse: true
-
 partof: scala-tour
 
 num: 9

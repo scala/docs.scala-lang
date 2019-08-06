@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Type details
-
-discourse: true
-
 partof: quasiquotes
 overview-name: Quasiquotes
 
