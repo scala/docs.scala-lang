@@ -325,7 +325,7 @@ inherited from `Object`.
       def re = real
       def im = imaginary
       override def toString() =
-        "" + re + (if (im < 0) "-" else "+") + im + "i"
+        "" + re + (if (im >= 0) "+" else "") + im + "i"
     }
 
 
