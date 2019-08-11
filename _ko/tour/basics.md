@@ -310,7 +310,7 @@ customGreeter.greet("Scala developer") // How are you, Scala developer?
 
 ## 메인 메소드
 
-메인 메소드는 프로그램의 종료 지점이다. JVM(Java Virtual Machine)에선 `main` 이라는 메인 메소드가 필요하며 인자(argument) 하나와 문자열 배열을 가진다.
+메인 메소드는 프로그램의 진입 지점이다. JVM(Java Virtual Machine)에선 `main` 이라는 메인 메소드가 필요하며 문자열 배열 하나를 인자(argument)로 가진다.
 
 `object` 키워드를 사용하여 메인 메소드를 정의할 수 있다.
 
