@@ -26,18 +26,18 @@ Recently I was working on the implementation of [Pre SIP: name based XML literal
 
 For example, according to the proposal the XML literal `<div title="my-title">line1<br/>line2</div>` will result the following code:
 
-{% highlight scala %}
+``` scala
 xml.tags.div(
   xml.attributes.title(xml.text("my-title")),
   xml.text("line1"),
   xml.tags.br(),
   xml.text("line2")
 )
-{% endhighlight %}
+```
 
 With the help of this curried varargs proposal and `@inline`, we are able to implement an API to build a DOM tree with no additional overhead over manually written Scala code.
 
-{% highlight scala %}
+``` scala
 import org.scalajs.dom.document
 import org.scalajs.dom.raw._
 
@@ -68,10 +68,10 @@ object xml {
     @inline def br = new Builder(document.createElement("br"))
   }
 }
-{% endhighlight %}
+```
 
 Since `xml.tags.div` returns a `Builder`, which is a subtype of `Curried`, calls on `xml.tags.div` will be translated to the curried form, as shown below:
-{% highlight scala %}
+``` scala
 xml.tags.div
   .applyBegin
   .applyNext(xml.attributes.title(xml.text("my-title")))
@@ -79,25 +79,24 @@ xml.tags.div
   .applyNext(xml.tags.br.applyBegin.applyEnd)
   .applyNext(xml.text("line2"))
   .applyEnd
-{% endhighlight %}
+```
 
 When the above code is compiled in Scala.js, the builders should be eliminated entirely as a zero cost abstraction layer, and the output JavaScript is tiny as shown below:
 
-{% highlight javascript %}
-  var $$this = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().createElement("div");
-  $$this.setAttribute("title", "my-title");
-  $$this.appendChild($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().createTextNode("line1"));
-  var $$this$1 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().createElement("br");
-  $$this.appendChild($$this$1);
-  $$this.appendChild($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().createTextNode("line2"));
-
-{% endhighlight %}
+``` javascript
+var $$this = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().createElement("div");
+$$this.setAttribute("title", "my-title");
+$$this.appendChild($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().createTextNode("line1"));
+var $$this$1 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().createElement("br");
+$$this.appendChild($$this$1);
+$$this.appendChild($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().createTextNode("line2"));
+```
 
 ### Comparison Examples
 
 The `Builder` API can be also implemented in repeated parameters:
 
-{% highlight scala %}
+``` scala
 import org.scalajs.dom.document
 import org.scalajs.dom.raw._
 
@@ -125,39 +124,39 @@ object xml {
     @inline def br = new Builder(document.createElement("br"))
   }
 }
-{% endhighlight %}
+```
 
 However, the Scala compiler is unable to optimize repeated parameters, as a result, the output JavaScript from Scala.js would look like the below code.
 
-{% highlight javascript %}
-  var $$this$1 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().createElement("div");
-  var this$3 = $m_LScalaFiddle$xml$attributes$();
-  var jsx$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this, value) {
-    return (function(x$1$2) {
-      x$1$2.setAttribute("title", value)
-    })
-  })(this$3, "my-title"));
-  var $$this = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().createElement("br");
-  var array = [jsx$1, "line1", $$this, "line2"];
-  var i = 0;
-  var len = $uI(array.length);
-  while ((i < len)) {
-    var index = i;
-    var arg1 = array[index];
-    if ($is_T(arg1)) {
-      var x2 = $as_T(arg1);
-      $$this$1.appendChild($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().createTextNode(x2))
-    } else if ($uZ((arg1 instanceof $g.Node))) {
-      $$this$1.appendChild(arg1)
-    } else if ($is_F1(arg1)) {
-      var x4 = $as_F1(arg1);
-      x4.apply__O__O($$this$1)
-    } else {
-      throw new $c_s_MatchError().init___O(arg1)
-    };
-    i = ((1 + i) | 0)
+``` javascript
+var $$this$1 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().createElement("div");
+var this$3 = $m_LScalaFiddle$xml$attributes$();
+var jsx$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this, value) {
+  return (function(x$1$2) {
+    x$1$2.setAttribute("title", value)
+  })
+})(this$3, "my-title"));
+var $$this = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().createElement("br");
+var array = [jsx$1, "line1", $$this, "line2"];
+var i = 0;
+var len = $uI(array.length);
+while ((i < len)) {
+  var index = i;
+  var arg1 = array[index];
+  if ($is_T(arg1)) {
+    var x2 = $as_T(arg1);
+    $$this$1.appendChild($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().createTextNode(x2))
+  } else if ($uZ((arg1 instanceof $g.Node))) {
+    $$this$1.appendChild(arg1)
+  } else if ($is_F1(arg1)) {
+    var x4 = $as_F1(arg1);
+    x4.apply__O__O($$this$1)
+  } else {
+    throw new $c_s_MatchError().init___O(arg1)
   };
-{% endhighlight %}
+  i = ((1 + i) | 0)
+};
+```
 
 Despite of the type safety issue due to the usage of `Any`, the above code are inefficient: 
 
@@ -171,9 +170,9 @@ The similar issues can be found in many other usage of repeated parameters. For 
 
 This proposal introduces a new type `Curried` defined as following:
 
-{% highlight scala %}
+``` scala
 trait Curried extends Any
-{% endhighlight %}
+```
 
 When a function call `f(p1, p2, p3, ... pn)` is being type checked, the compiler will firstly look for `apply` method on `f`. If an applicable `apply` method is not found and `f` is a subtype of `Curried`, the compiler will convert the function call to curried form `f.applyBegin.applyNext(p1).applyNext(p2).applyNext(p3) ... .applyNext(pn).applyEnd`, and continue type checking the translated call.
 
@@ -183,7 +182,7 @@ Optionally, some arguments to a `Curried` call may be a sequence argument marked
 
 Given a call `f(p1, p2, p3, s1: _*, p4, p5, p6)`, when translating it to curried form, the sequence argument will becomes a `foldLeft` call.
 
-{% highlight scala %}
+``` scala
 s1.foldLeft(f.applyBegin
   .applyNext(p1)
   .applyNext(p2)
@@ -193,7 +192,7 @@ s1.foldLeft(f.applyBegin
   .applyNext(p5)
   .applyNext(p6)
 .applyEnd
-{% endhighlight %}
+```
 
 Unlike traditional repeated parameters, which restrict the sequence argument at the last position, sequence arguments in a curried call are allowed at any position.
 
@@ -201,7 +200,7 @@ Unlike traditional repeated parameters, which restrict the sequence argument at 
 
 The type of partially applied function might be changed during applying each argument. Given the following type signature:
 
-{% highlight scala %}
+``` scala
 class ListBuilder[A] {
   def applyNext[B >: A](b: B): ListBuilder[B] = ???
   def applyEnd: List[A] = ???
@@ -209,7 +208,7 @@ class ListBuilder[A] {
 object List extends Curried {
   def applyBegin[A]: ListBuilder[A] = ???
 }
-{% endhighlight %}
+```
 
 `List(42, "a")` should be translated to `List.applyBegin.applyNext(42).applyNext("a").applyEnd`. Then, the typer will infer type parameters as `List.applyBegin[Nothing].applyNext[Int](42).applyNext[Any]("a").applyEnd`, therefore the final return type of `applyEnd` will be `List[Any]`.
 
@@ -224,19 +223,19 @@ A more common form of curried function call would be like `f(a)(b)(c)`. We prefe
 ### Multiple curried vararg parameter lists
 
 When a `Curried` is invoked with multiple parameter lists, for example:
-{% highlight scala %}
+``` scala
 f(a, b, c)(d, e)
-{% endhighlight %}
+```
 
 Then the first parameter list should be translated to a curried call:
 
-{% highlight scala %}
+``` scala
 f.applyBegin
   .applyNext(a)
   .applyNext(b)
   .applyNext(c)
 .applyEnd(d, e)
-{% endhighlight %}
+```
 
 `(d, e)` is translated to the curried form only if `applyEnd` returns a `Curried`.
 
