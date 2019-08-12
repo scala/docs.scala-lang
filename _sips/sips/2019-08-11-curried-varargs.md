@@ -11,6 +11,7 @@ title: SIP-NN - Curried varargs
 | Date          | Version       |
 |---------------|---------------|
 | Aug 11th 2019 | Initial Draft |
+| Aug 12th 2019 | Translating sequence arguments to `applyNextSeq` calls |
 
 ## Introduction
 
@@ -178,19 +179,13 @@ When a function call `f(p1, p2, p3, ... pn)` is being type checked, the compiler
 
 ### Expanding sequence argument
 
-Optionally, some arguments to a `Curried` call may be a sequence argument marked as  `_*`.
-
-Given a call `f(p1, p2, p3, s1: _*, p4, p5, p6)`, when translating it to curried form, the sequence argument will becomes a `foldLeft` call.
+Optionally, some arguments to a `Curried` call may be a sequence argument marked as  `_*`. Those are arguments should be translated to `applyNextSeq` calls instead of `applyNext`. For example, `f(p1, s1: _*, p2)` will be translated to the following code.
 
 ``` scala
-s1.foldLeft(f.applyBegin
+f.applyBegin
   .applyNext(p1)
+  .applyNextSeq(s1)
   .applyNext(p2)
-  .applyNext(p3)
-)(_.applyNext(_))
-  .applyNext(p4)
-  .applyNext(p5)
-  .applyNext(p6)
 .applyEnd
 ```
 
@@ -203,6 +198,7 @@ The type of partially applied function might be changed during applying each arg
 ``` scala
 class ListBuilder[A] {
   def applyNext[B >: A](b: B): ListBuilder[B] = ???
+  def applyNextSeq[B >: A](seqB: Seq[B]): ListBuilder[B] = ???
   def applyEnd: List[A] = ???
 }
 object List extends Curried {
@@ -214,7 +210,7 @@ object List extends Curried {
 
 ### Explicit type parameters
 
-When a `Curried` is invoked with some type arguments, those type arguments will be moved to the `applyBegin` method. Therefore, `List[Int](1 to 3: _*)` should be translated to `(1 to 3).foldLeft(List.applyBegin[Int])(_.applyNext(_)).applyEnd`.
+When a `Curried` is invoked with some type arguments, those type arguments will be moved to the `applyBegin` method. Therefore, `List[Int](1 to 3: _*)` should be translated to `List.applyBegin[Int].applyNextSeq(1 to 3).applyEnd`.
 
 ### Implicit parameters
 
@@ -246,12 +242,6 @@ Curried varargs enables overloaded functions for each parameter. Parameters will
 ## Implementation
 
 This proposal can be implemented either in the Scala compiler or in a whitebox macro. [Curried.scala](https://github.com/Atry/Curried.scala) is an implementation of the proposal in a whitebox macro.
-
-## Drawbacks
-
-`List(1 to 3: _*)` should be translated to `(1 to 3).foldLeft(List.applyBegin)(_.applyNext(_)).applyEnd`. Unfortunately, it does not type check in Scala 2 because the `nsc` compiler cannot infer the type parameter for `List.applyBegin`. As a result, in Scala 2, the explicit type parameter, like `List[Int](1 to 3: _*)`, is required for sequence arguments.
-
-Fortunately, the problem will be solved in Scala 3, as `dotc` is able to infer the type parameter for `List.applyBegin` of the above example.
 
 ## Alternatives
 
