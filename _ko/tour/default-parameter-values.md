@@ -61,6 +61,6 @@ previous-page: annotations
     // 이름을 지정한 인수를 통해 로드 팩터만을 오버라이드
     val m4 = new HashMap[String,Int](loadFactor = 0.8)
 
-*모든* 기본 값에 [이름을 지정한 파라미터]({{ site.baseurl }}/tutorials/tour/named-arguments.html)를 활용할 수 있음을 기억하자.
+*모든* 기본 값에 [이름을 지정한 파라미터]({{ site.baseurl }}/ko/tour/named-arguments.html)를 활용할 수 있음을 기억하자.
 
 윤창석, 이한욱 옮김
