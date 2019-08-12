@@ -12,6 +12,7 @@ previous-page: default-parameter-values
 prerequisite-knowledge: function-syntax
 
 redirect_from: "/tutorials/tour/named-arguments.html"
+redirect_from: "/tutorials/tour/named-parameters.html"
 ---
 
 When calling methods, you can label the arguments with their parameter names like so:
