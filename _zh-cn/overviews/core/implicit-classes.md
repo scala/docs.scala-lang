@@ -15,7 +15,7 @@ discourse: false
 
 Scala 2.10引入了一种叫做隐式类的新特性。隐式类指的是用implicit关键字修饰的类。在对应的作用域内，带有这个关键字的类的主构造函数可用于隐式转换。
 
-隐式类型是在[SIP-13](http://docs.scala-lang.org/sips/pending/implicit-classes.html)中提出的。
+隐式类型是在[SIP-13](https://docs.scala-lang.org/sips/pending/implicit-classes.html)中提出的。
 
 ## 用法
 

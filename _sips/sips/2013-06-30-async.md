@@ -29,10 +29,10 @@ Here, `Future[T]` refers to the `Future` trait in package `scala.concurrent`. (T
 The async construct marks a block of asynchronous code, and returns a future. Depending on the execution context in the implicit scope (see \[[1][1]\]), the block of asynchronous code is either executed on the current thread or in a thread pool. The async block can contain calls to await:
 
     val futureDOY: Future[Response] =
-      WS.url("http://api.day-of-year/today").get
+      WS.url("https://api.day-of-year/today").get
 
     val futureDaysLeft: Future[Response] =
-      WS.url("http://api.days-left/today").get
+      WS.url("https://api.days-left/today").get
 
     val respFut = async {
       val dayOfYear = await(futureDOY).body
@@ -295,6 +295,6 @@ simplifications).
 2. [The Play! Framework][2]
 3. [Scala Async on GitHub][3]
 
-  [1]: http://docs.scala-lang.org/overviews/core/futures.html "ScalaFutures"
-  [2]: http://www.playframework.com/ "Play"
+  [1]: https://docs.scala-lang.org/overviews/core/futures.html "ScalaFutures"
+  [2]: https://www.playframework.com/ "Play"
   [3]: https://github.com/scala/async "ScalaAsync"

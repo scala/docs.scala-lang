@@ -6,10 +6,10 @@ discourse: true
 ###### By Heather Miller and Martin Odersky
 
 <div class="summary">
-  In this post, we discuss our experience giving the popular MOOC Functional Programming Principles in Scala, and provide some insight into who our course participants were, how, overall, students performed in the course, and how students felt about the course. We visualize a lot of these statistics in a number of interactive plots, and we go on to publicly release <a href="http://github.com/heathermiller/progfun-stats">the data and the code</a> to generate these plots within a fun Scala-based project aimed at allowing you to manipulate these statistics with functional programming in Scala, to generate HTML/JavaScript for easily visualizing and sharing them. We encourage you to share what you find with us&mdash; we'll share a number of your plots in a follow-up post!
+  In this post, we discuss our experience giving the popular MOOC Functional Programming Principles in Scala, and provide some insight into who our course participants were, how, overall, students performed in the course, and how students felt about the course. We visualize a lot of these statistics in a number of interactive plots, and we go on to publicly release <a href="https://github.com/heathermiller/progfun-stats">the data and the code</a> to generate these plots within a fun Scala-based project aimed at allowing you to manipulate these statistics with functional programming in Scala, to generate HTML/JavaScript for easily visualizing and sharing them. We encourage you to share what you find with us&mdash; we'll share a number of your plots in a follow-up post!
 </div>
 
-[_Functional Programming Principles in Scala_](https://www.coursera.org/course/progfun) is a [MOOC](http://en.wikipedia.org/wiki/Massive_open_online_course) given by [our research group](http://lamp.epfl.ch) at [EPFL](http://www.epfl.ch), whose first edition was recently completed on [Coursera](http://www.coursera.org). The certificates of completion for those who passed the course have been released, and in looking back as the dust settles&mdash; it was a great experience to have done a class like that which greatly exceeded our expectations in more than one dimension.
+[_Functional Programming Principles in Scala_](https://www.coursera.org/course/progfun) is a [MOOC](https://en.wikipedia.org/wiki/Massive_open_online_course) given by [our research group](https://lamp.epfl.ch) at [EPFL](https://www.epfl.ch), whose first edition was recently completed on [Coursera](https://www.coursera.org). The certificates of completion for those who passed the course have been released, and in looking back as the dust settles&mdash; it was a great experience to have done a class like that which greatly exceeded our expectations in more than one dimension.
 
 We had more than 50,000 registered students&mdash; an unfathomably large number in the context of traditional teaching. While large, that number doesn't tell the whole story; as is typical for a MOOC, a statistical majority of those students participate no further beyond watching a couple of videos to find out what the course is about. Of the 50,000, about 21,000 students participated in the interactive in-video quizzes that are part of the lectures, and a remarkable 18,000 unique students attempted at least one programming assignment. A whopping 9,593 students successfully completed the course and earned a certificate of completion&mdash; that's an incredible 20% of students, which blows the average 10% rate of completion for MOOCs out of the water.
 
@@ -80,7 +80,7 @@ We also collected numbers about the used programming tools. First, we were inter
 
 <div style="text-align: center;"><h6>Which editor do you normally use, and which editor did you use for the course?</h6><div id="editors">&nbsp;</div></div>
 
-The collected numbers are markedly different. In no small part this is due to the fact that the [Scala IDE for Eclipse](http://scala-ide.org) introduced a new [worksheet](https://github.com/scala-ide/scala-worksheet/wiki/Getting-Started) component used throughout the lectures.
+The collected numbers are markedly different. In no small part this is due to the fact that the [Scala IDE for Eclipse](https://scala-ide.org) introduced a new [worksheet](https://github.com/scala-ide/scala-worksheet/wiki/Getting-Started) component used throughout the lectures.
 
 We'd like to close with some fun, and partially surprising, information on the demographics of those who took the course and completed our survey. Here is a world map showing the number of participants per country&mdash; darker colors indicate a larger number of students per-country:
 
@@ -94,7 +94,7 @@ Here's that graph again, relating that population of students who enrolled in th
 
 ## Get the data and explore it with Scala!
 
-For those of you who want to have a little bit of fun with the numbers, we've made all of the data publicly available, and we've made a small Scala project out of it. In particular, we put the code that we used to produce the above plots on [github (progfun-stats)](http://www.github.com/heathermiller/progfun-stats).
+For those of you who want to have a little bit of fun with the numbers, we've made all of the data publicly available, and we've made a small Scala project out of it. In particular, we put the code that we used to produce the above plots on [github (progfun-stats)](https://www.github.com/heathermiller/progfun-stats).
 
 For those of you who have taken the course and are itching for some fun additional exercises in functional programming, one of our suggestions is to tinker with and extend this project! You'll find the code examples for generating most of these plots available in this post, in the above repository.
 

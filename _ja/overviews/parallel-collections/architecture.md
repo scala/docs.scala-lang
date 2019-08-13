@@ -77,4 +77,4 @@ Scala の並列コレクションは、Scala の（順次）コレクション�
 
 1. [On a Generic Parallel Collection Framework, Aleksandar Prokopec, Phil Bawgell, Tiark Rompf, Martin Odersky, June 2011][1]
 
-[1]: http://infoscience.epfl.ch/record/165523/files/techrep.pdf "flawed-benchmark"
+[1]: https://infoscience.epfl.ch/record/165523/files/techrep.pdf "flawed-benchmark"

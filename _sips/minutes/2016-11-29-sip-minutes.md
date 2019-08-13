@@ -11,10 +11,10 @@ The following agenda was distributed to attendees:
 
 |Topic|Reviewers| Accepted/Rejected |
 | --- | --- | --- |
-| [SIP-28 and SIP-29 - Inline and meta](http://docs.scala-lang.org/sips/inline-meta.html) | Josh Suereth and Iulian Dragos | Pending |
-| [SIP-24 - Repeated By Name Parameters](http://docs.scala-lang.org/sips/repeated-byname.html) | Heather Miller | Pending |
+| [SIP-28 and SIP-29 - Inline and meta](https://docs.scala-lang.org/sips/inline-meta.html) | Josh Suereth and Iulian Dragos | Pending |
+| [SIP-24 - Repeated By Name Parameters](https://docs.scala-lang.org/sips/repeated-byname.html) | Heather Miller | Pending |
 | [SIP-30 - Static members](https://github.com/scala/docs.scala-lang/pull/491/files) | Adriaan Moors | Pending |
-| [SIP-27 - Trailing commas](http://docs.scala-lang.org/sips/completed/trailing-commas.html) |Eugene Burkamo | Accepted |
+| [SIP-27 - Trailing commas](https://docs.scala-lang.org/sips/completed/trailing-commas.html) |Eugene Burkamo | Accepted |
 
 Jorge Vicente Cantero was the Process Lead and Travis Lee was the secretary.
 
@@ -42,7 +42,7 @@ Minutes were taken by Travis Lee.
 
 **Jorge** We'll talk about the SIPS for Scala Meta. Eugene will start.
 
-### [SIP-28 and SIP-29 - Inline and meta](http://docs.scala-lang.org/sips/inline-meta.html)
+### [SIP-28 and SIP-29 - Inline and meta](https://docs.scala-lang.org/sips/inline-meta.html)
 
 Eugene and co have been working hard for two months on inline and Scala Meta. Previously discussed new macro system with new inline and meta features. Inline provides a facility to declare methods with inline right hand side into call side (0:01:24) and meta implements compile-time function execution to do meta-programming. Martin implemented inline mechanism in Dotty. Eugene worked on macro notations. New style macros will integrate with tools. Eugene shows how it works in IntelliJ. For example, you can print the value of the parameters. Meta blocks supported by IntelliJ. So are quasi-quotes. You can also expand macros. Will greatly help debugability.
 
@@ -52,7 +52,7 @@ The spec needs to be updated based on Martin's Dotty implementation. We need to 
 
 **Conclusion** This proposal needs at least another iteration to shape up and provide concrete implementation and specification details. This proposal is therefore under revision -- Eugene, the author, will gather and address more feedback and will resubmit the proposal to analysis when it's ready.
 
-### [SIP-24 - Repeated By Name Parameters](http://docs.scala-lang.org/sips/repeated-byname.html)
+### [SIP-24 - Repeated By Name Parameters](https://docs.scala-lang.org/sips/repeated-byname.html)
 
 Heather says the debate is about the semantics or translation rules. All arguments are evaluated each time the parameter is referenced in the method. This is implemented in Dotty. Should this be implemented in Scalac?
 
@@ -84,7 +84,7 @@ Sébastien says binary compatibility is also an argument in favor of having expl
 
 **Conclusion** There are a lot of edge cases when not using annotations. The authors need time to work on the specifics of the proposal and address the Committee's feedback. We need to think about cases around initialization to simplify it. Why do statics need to go first? Show surprising results. There are different implementation strategies. Is this more like @tailrec or does it change generated code? This is the first review iteration of this proposal.
 
-### [SIP-27: Trailing commas](http://docs.scala-lang.org/sips/completed/trailing-commas.html)
+### [SIP-27: Trailing commas](https://docs.scala-lang.org/sips/completed/trailing-commas.html)
 
 Dale talks about how we wanted trailing commas for multi-line elements. Should be easy. Need to discuss which parts of the syntax can use trailing commas. There are two variants of the SIP to vote on. The first is _parameters and arguments_. The other variant is _everywhere_ for consistency. Dale implemented the first one. The second one shouldn't be more hard to implement except for tuples. It needs to fail compilation somehow.
 

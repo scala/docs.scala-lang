@@ -75,7 +75,7 @@ Java has user-defined metadata in the form of [annotations](https://docs.oracle.
 And then apply it as follows
 
 ```
-@Source(URL = "http://coders.com/",
+@Source(URL = "https://coders.com/",
         mail = "support@coders.com")
 public class MyClass extends TheirClass ...
 ```
@@ -83,7 +83,7 @@ public class MyClass extends TheirClass ...
 An annotation application in Scala looks like a constructor invocation, for instantiating a Java annotation one has to use named arguments:
 
 ```
-@Source(URL = "http://coders.com/",
+@Source(URL = "https://coders.com/",
         mail = "support@coders.com")
 class MyScalaClass ...
 ```
@@ -100,21 +100,21 @@ This syntax is quite tedious if the annotation contains only one element (withou
 And then apply it as follows
 
 ```
-@SourceURL("http://coders.com/")
+@SourceURL("https://coders.com/")
 public class MyClass extends TheirClass ...
 ```
 
 In this case, Scala provides the same possibility
 
 ```
-@SourceURL("http://coders.com/")
+@SourceURL("https://coders.com/")
 class MyScalaClass ...
 ```
 
 The `mail` element was specified with a default value so we need not explicitly provide a value for it. However, if we need to do it we can not mix-and-match the two styles in Java:
 
 ```
-@SourceURL(value = "http://coders.com/",
+@SourceURL(value = "https://coders.com/",
            mail = "support@coders.com")
 public class MyClass extends TheirClass ...
 ```
@@ -122,7 +122,7 @@ public class MyClass extends TheirClass ...
 Scala provides more flexibility in this respect
 
 ```
-@SourceURL("http://coders.com/",
+@SourceURL("https://coders.com/",
            mail = "support@coders.com")
     class MyScalaClass ...
 ```

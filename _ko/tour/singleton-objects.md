@@ -27,7 +27,7 @@ object Blah {
 
 싱글턴 객체는 직접 인스턴스화 될 수 없는 싱글턴 클래스를 정의하기 위한 축약형 같은 것이며, `object`의 정의 시점의 같은 이름을 가진 `val` 멤버 같은 것이다. 사실 `val`과 같이, 싱글턴 객체는 변칙적이긴 하지만 [트레잇](traits.html)이나 클래스의 멤버로서 정의될수 있다.
 
-하나의 싱글턴 객체는 클래스와 트레잇으로 확장할수 있다. 사실, [타입 파라미터](generic-classes.html)가 없는 [케이스 클래스](case-classes.html)는 기본적으로 같은 이름의 싱글턴 객체를 생성하며, 구현된 [`Function*`](http://www.scala-lang.org/api/current/scala/Function1.html)을 가진다.
+하나의 싱글턴 객체는 클래스와 트레잇으로 확장할수 있다. 사실, [타입 파라미터](generic-classes.html)가 없는 [케이스 클래스](case-classes.html)는 기본적으로 같은 이름의 싱글턴 객체를 생성하며, 구현된 [`Function*`](https://www.scala-lang.org/api/current/scala/Function1.html)을 가진다.
 
 ## 동반자(Companions) ##
 

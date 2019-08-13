@@ -233,4 +233,4 @@ That means `breakOut` must, necessarily, return a type or subtype of
 
 This answer was originally submitted in response to [this question on Stack Overflow][1].
 
-  [1]: http://stackoverflow.com/q/1715681/53013
+  [1]: https://stackoverflow.com/q/1715681/53013

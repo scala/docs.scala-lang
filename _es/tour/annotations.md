@@ -23,15 +23,15 @@ El significado de las anotaciones _depende de la implementación_. En la platafo
 
 |           Scala           |           Java           |
 |           ------          |          ------          |
-|  [`scala.SerialVersionUID`](https://www.scala-lang.org/api/current/scala/SerialVersionUID.html)   |  [`serialVersionUID`](http://java.sun.com/j2se/1.5.0/docs/api/java/io/Serializable.html#navbar_bottom) (campo, variable)  |
-|  [`scala.deprecated`](https://www.scala-lang.org/api/current/scala/deprecated.html)   |  [`java.lang.Deprecated`](http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Deprecated.html) |
+|  [`scala.SerialVersionUID`](https://www.scala-lang.org/api/current/scala/SerialVersionUID.html)   |  [`serialVersionUID`](https://java.sun.com/j2se/1.5.0/docs/api/java/io/Serializable.html#navbar_bottom) (campo, variable)  |
+|  [`scala.deprecated`](https://www.scala-lang.org/api/current/scala/deprecated.html)   |  [`java.lang.Deprecated`](https://java.sun.com/j2se/1.5.0/docs/api/java/lang/Deprecated.html) |
 |  [`scala.inline`](https://www.scala-lang.org/api/current/scala/inline.html) (desde 2.6.0)  |  sin equivalente |
-|  [`scala.native`](https://www.scala-lang.org/api/current/scala/native.html) (desde 2.6.0)  |  [`native`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (palabra clave) |
-|  [`scala.throws`](https://www.scala-lang.org/api/current/scala/throws.html) |  [`throws`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (palabra clave) |
-|  [`scala.transient`](https://www.scala-lang.org/api/current/scala/transient.html) |  [`transient`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (palabra clave) |
+|  [`scala.native`](https://www.scala-lang.org/api/current/scala/native.html) (desde 2.6.0)  |  [`native`](https://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (palabra clave) |
+|  [`scala.throws`](https://www.scala-lang.org/api/current/scala/throws.html) |  [`throws`](https://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (palabra clave) |
+|  [`scala.transient`](https://www.scala-lang.org/api/current/scala/transient.html) |  [`transient`](https://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (palabra clave) |
 |  [`scala.unchecked`](https://www.scala-lang.org/api/current/scala/unchecked.html) (desde 2.4.0) |  sin equivalente |
-|  [`scala.volatile`](https://www.scala-lang.org/api/current/scala/volatile.html) |  [`volatile`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (palabra clave) |
-|  [`scala.beans.BeanProperty`](https://www.scala-lang.org/api/current/scala/beans/BeanProperty.html) |  [`Design pattern`](http://docs.oracle.com/javase/tutorial/javabeans/writing/properties.html) |
+|  [`scala.volatile`](https://www.scala-lang.org/api/current/scala/volatile.html) |  [`volatile`](https://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (palabra clave) |
+|  [`scala.beans.BeanProperty`](https://www.scala-lang.org/api/current/scala/beans/BeanProperty.html) |  [`Design pattern`](https://docs.oracle.com/javase/tutorial/javabeans/writing/properties.html) |
 
 En el siguiente ejemplo agregamos la anotación `throws` a la definición del método `read` de manera de capturar la excepción lanzada en el programa principal de Java.
 
@@ -76,7 +76,7 @@ Si comentamos la anotación `throws` en la clase `Reader` se produce el siguient
 
 **Nota:** Asegurate de usar la opción `-target:jvm-1.5` con anotaciones de Java.
 
-Java 1.5 introdujo metadata definida por el usuario en la forma de [anotaciones](http://java.sun.com/j2se/1.5.0/docs/guide/language/annotations.html). Una característica fundamental de las anotaciones es que se basan en pares nombre-valor específicos para inicializar sus elementos. Por ejemplo, si necesitamos una anotación para rastrear el código de alguna clase debemos definirlo así:
+Java 1.5 introdujo metadata definida por el usuario en la forma de [anotaciones](https://java.sun.com/j2se/1.5.0/docs/guide/language/annotations.html). Una característica fundamental de las anotaciones es que se basan en pares nombre-valor específicos para inicializar sus elementos. Por ejemplo, si necesitamos una anotación para rastrear el código de alguna clase debemos definirlo así:
 
     @interface Source {
       public String URL();
@@ -85,13 +85,13 @@ Java 1.5 introdujo metadata definida por el usuario en la forma de [anotaciones]
 
 Y después utilizarlo de la siguiente manera
 
-    @Source(URL = "http://coders.com/",
+    @Source(URL = "https://coders.com/",
             mail = "support@coders.com")
     public class MyClass extends HisClass ...
 
 Una anotación en Scala se asemeja a una invocación a un constructor. Para instanciar una anotación de Java es necesario usar los argumentos nombrados:
 
-    @Source(URL = "http://coders.com/",
+    @Source(URL = "https://coders.com/",
             mail = "support@coders.com")
     class MyScalaClass ...
 
@@ -104,22 +104,22 @@ Esta sintaxis es bastante tediosa si la anotación contiene solo un elemento (si
 
 Y podemos aplicarlo así:
 
-    @SourceURL("http://coders.com/")
+    @SourceURL("https://coders.com/")
     public class MyClass extends HisClass ...
 
 En este caso, Scala provee la misma posibilidad:
 
-    @SourceURL("http://coders.com/")
+    @SourceURL("https://coders.com/")
     class MyScalaClass ...
 
 El elemento `mail` fue especificado con un valor por defecto (mediante la cláusula `default`) por lo tanto no necesitamos proveer explicitamente un valor para este. De todas maneras, si necesitamos pasarle un valor no podemos mezclar los dos estilos en Java:
 
-    @SourceURL(value = "http://coders.com/",
+    @SourceURL(value = "https://coders.com/",
                mail = "support@coders.com")
     public class MyClass extends HisClass ...
 
 Scala provee más flexibilidad en este caso:
 
-    @SourceURL("http://coders.com/",
+    @SourceURL("https://coders.com/",
                mail = "support@coders.com")
         class MyScalaClass ...

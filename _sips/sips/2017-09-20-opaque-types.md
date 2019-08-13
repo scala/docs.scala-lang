@@ -1020,10 +1020,10 @@ As a summary, opaque types are:
 
 [Appendix A]: https://failex.blogspot.ch/2017/04/the-high-cost-of-anyval-subclasses.html
 [Scala Language Specification]: https://www.scala-lang.org/files/archive/spec/2.12/
-[type alias]: http://www.scala-lang.org/files/archive/spec/2.12/04-basic-declarations-and-definitions.html#type-declarations-and-type-aliases
-[5.5. Object definitions]: http://www.scala-lang.org/files/archive/spec/2.12/05-classes-and-objects.html#object-definitions
-[3.5.1. Equivalence]: http://www.scala-lang.org/files/archive/spec/2.12/03-types.html#equivalence
+[type alias]: https://www.scala-lang.org/files/archive/spec/2.12/04-basic-declarations-and-definitions.html#type-declarations-and-type-aliases
+[5.5. Object definitions]: https://www.scala-lang.org/files/archive/spec/2.12/05-classes-and-objects.html#object-definitions
+[3.5.1. Equivalence]: https://www.scala-lang.org/files/archive/spec/2.12/03-types.html#equivalence
 [Scala.js]: https://www.scala-js.org/
 [Scala Native]: https://github.com/scala-native/scala-native
 [beta reducing]: https://en.wikipedia.org/wiki/Beta_normal_form
-[SIP-15]: http://docs.scala-lang.org/sips/value-classes.html
+[SIP-15]: https://docs.scala-lang.org/sips/value-classes.html

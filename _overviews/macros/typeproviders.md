@@ -89,7 +89,7 @@ captures the essence of the generated classes, providing a statically typed inte
 This approach to type providers is quite neat, because it can be used with production versions of Scala, however
 it has performance problems caused by the fact that Scala emits reflective calls when compiling accesses to members
 of structural types. There are several strategies of dealing with that, but this margin is too narrow to contain them
-so I refer you to an amazing blog series by Travis Brown for details: [post 1](http://meta.plasm.us/posts/2013/06/19/macro-supported-dsls-for-schema-bindings/), [post 2](http://meta.plasm.us/posts/2013/07/11/fake-type-providers-part-2/), [post 3](http://meta.plasm.us/posts/2013/07/12/vampire-methods-for-structural-types/).
+so I refer you to an amazing blog series by Travis Brown for details: [post 1](https://meta.plasm.us/posts/2013/06/19/macro-supported-dsls-for-schema-bindings/), [post 2](https://meta.plasm.us/posts/2013/07/11/fake-type-providers-part-2/), [post 3](https://meta.plasm.us/posts/2013/07/12/vampire-methods-for-structural-types/).
 
 ## Public type providers
 
@@ -115,9 +115,9 @@ would still incur the overhead of additional bytecode to the metadata of type al
 than bytecode of a full-fledged class. This technique applies to both anonymous and public type providers.
 
     object Netflix {
-      type Title = XmlEntity["http://.../Title".type]
+      type Title = XmlEntity["https://.../Title".type]
       def Titles: List[Title] = ...
-      type Director = XmlEntity["http://.../Director".type]
+      type Director = XmlEntity["https://.../Director".type]
       def Directors: List[Director] = ...
       ...
     }

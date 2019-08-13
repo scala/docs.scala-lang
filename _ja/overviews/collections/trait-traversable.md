@@ -12,7 +12,7 @@ num: 3
 language: ja
 ---
 
-走査可能 ([`Traversable`](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/Traversable.html))トレイトはコレクション階層の最上位に位置する。訳注: 木構造などでノードを一つづつ走査することを traverse と言う。また、-able で終わるトレイトは名詞としても使われるため、「走査可能なもの」という意味だ。 `Traversable` の抽象的な演算は `foreach` のみだ:
+走査可能 ([`Traversable`](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/Traversable.html))トレイトはコレクション階層の最上位に位置する。訳注: 木構造などでノードを一つづつ走査することを traverse と言う。また、-able で終わるトレイトは名詞としても使われるため、「走査可能なもの」という意味だ。 `Traversable` の抽象的な演算は `foreach` のみだ:
 
     def foreach[U](f: Elem => U)
 
@@ -52,7 +52,7 @@ language: ja
 |  **抽象メソッド:**          |                                                |
 |  `xs foreach f`           |`xs` 内の全ての要素に対して関数 `f` を実行する。      |
 |  **加算:**                 |                                                |
-|  `xs ++ ys`               |`xs` と `ys` の両方の要素から成るコレクション。 `ys` は [`TraversableOnce`](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/TraversableOnce.html) なコレクション、つまり [`Traversable`](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/Traversable.html) または [`Iterator`](http://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/Iterator.html) だ。|
+|  `xs ++ ys`               |`xs` と `ys` の両方の要素から成るコレクション。 `ys` は [`TraversableOnce`](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/TraversableOnce.html) なコレクション、つまり [`Traversable`](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/Traversable.html) または [`Iterator`](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/Iterator.html) だ。|
 |  **map 演算:**             |                                                |
 |  `xs map f`               |`xs` 内の全ての要素に関数 `f` を適用することによって得られるコレクション。|
 |  `xs flatMap f`           |`xs` 内の全ての要素に対してコレクション値を返す関数 `f` を適用し、その結果を連結したコレクション。|

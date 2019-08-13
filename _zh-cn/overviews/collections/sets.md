@@ -114,9 +114,9 @@ language: zh-cn
 
 ## 有序集（SortedSet）
 
- [SortedSet](http://www.scala-lang.org/api/current/scala/collection/SortedSet.html) 是指以特定的顺序（这一顺序可以在创建集合之初自由的选定）排列其元素（使用iterator或foreach）的集合。 [SortedSet](http://www.scala-lang.org/api/current/scala/collection/SortedSet.html) 的默认表示是有序二叉树，即左子树上的元素小于所有右子树上的元素。这样，一次简单的顺序遍历能按增序返回集合中的所有元素。Scala的类 `immutable.TreeSet` 使用红黑树实现，它在维护元素顺序的同时，也会保证二叉树的平衡，即叶节点的深度差最多为1。
+ [SortedSet](https://www.scala-lang.org/api/current/scala/collection/SortedSet.html) 是指以特定的顺序（这一顺序可以在创建集合之初自由的选定）排列其元素（使用iterator或foreach）的集合。 [SortedSet](https://www.scala-lang.org/api/current/scala/collection/SortedSet.html) 的默认表示是有序二叉树，即左子树上的元素小于所有右子树上的元素。这样，一次简单的顺序遍历能按增序返回集合中的所有元素。Scala的类 `immutable.TreeSet` 使用红黑树实现，它在维护元素顺序的同时，也会保证二叉树的平衡，即叶节点的深度差最多为1。
 
-创建一个空的 [TreeSet](http://www.scala-lang.org/api/current/scala/collection/immutable/TreeSet.html) ，可以先定义排序规则：
+创建一个空的 [TreeSet](https://www.scala-lang.org/api/current/scala/collection/immutable/TreeSet.html) ，可以先定义排序规则：
 
     scala> val myOrdering = Ordering.fromLessThan[String](_ > _)
     myOrdering: scala.math.Ordering[String] = ...

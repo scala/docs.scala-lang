@@ -248,7 +248,7 @@ Regular function literals can be implicitly converted to spores. This implicit
 conversion has two benefits:
 
 1. it enables the use of spores in for-comprehensions.
-2. it makes the spore syntax more lightweight, which is important in frameworks such as [Spark](http://spark.incubator.apache.org/) where users often create many small function literals.
+2. it makes the spore syntax more lightweight, which is important in frameworks such as [Spark](https://spark.incubator.apache.org/) where users often create many small function literals.
 
 This conversion is defined as a member of the `Spore` companion object, so
 it's always in the implicit scope when passing a function literal as a method

@@ -16,7 +16,7 @@ permalink: /overviews/core/:title.html
 Starting with Scala 2.11.0, the Scala
 [Actors](actors.html)
 library is deprecated. Already in Scala 2.10.0 the default actor library is
-[Akka](http://akka.io).
+[Akka](https://akka.io).
 
 To ease the migration from Scala Actors to Akka we are providing the
 Actor Migration Kit (AMK). The AMK consists of an extension to Scala
@@ -31,7 +31,7 @@ This guide has the following structure. In Section "Limitations of the
 Migration Kit" we outline the main limitations of the migration
 kit. In Section "Migration Overview" we describe the migration process
 and talk about changes in the [Scala
-distribution](http://www.scala-lang.org/downloads) that make the
+distribution](https://www.scala-lang.org/downloads) that make the
 migration possible. Finally, in Section "Step by Step Guide for
 Migrating to Akka" we show individual steps, with working examples,
 that are recommended when migrating from Scala Actors to Akka's
@@ -49,10 +49,10 @@ Due to differences in Akka and Scala actor models the complete functionality can
 1. Relying on termination reason and bidirectional behavior with `link` method - Scala and Akka actors have different fault-handling and actor monitoring models.
 In Scala linked actors terminate if one of the linked parties terminates abnormally. If termination is tracked explicitly (by `self.trapExit`) the actor receives
 the termination reason from the failed actor. This functionality can not be migrated to Akka with the AMK. The AMK allows migration only for the
-[Akka monitoring](http://doc.akka.io/docs/akka/2.1.0/general/supervision.html#What_Lifecycle_Monitoring_Means)
+[Akka monitoring](https://doc.akka.io/docs/akka/2.1.0/general/supervision.html#What_Lifecycle_Monitoring_Means)
 mechanism. Monitoring is different than linking because it is unidirectional and the termination reason is now known. If monitoring support is not enough, the migration
 of `link` must be postponed until the last possible moment (Step 5 of migration).
-Then, when moving to Akka, users must create an [supervision hierarchy](http://doc.akka.io/docs/akka/2.1.0/general/supervision.html) that will handle faults.
+Then, when moving to Akka, users must create an [supervision hierarchy](https://doc.akka.io/docs/akka/2.1.0/general/supervision.html) that will handle faults.
 
 2. Usage of the `restart` method - Akka does not provide explicit restart of actors so we can not provide the smooth migration for this use-case.
 The user must change the system so there are no usages of the `restart` method.
@@ -69,7 +69,7 @@ reshape their system so it starts all the actors right after their instantiation
 ## Migration Overview
 
 ### Migration Kit
-In Scala 2.10.0 actors reside inside the [Scala distribution](http://www.scala-lang.org/downloads) as a separate jar ( *scala-actors.jar* ), and
+In Scala 2.10.0 actors reside inside the [Scala distribution](https://www.scala-lang.org/downloads) as a separate jar ( *scala-actors.jar* ), and
 the their interface is deprecated. The distribution also includes Akka actors in the *akka-actor.jar*.
 The AMK resides both in the Scala actors and in the *akka-actor.jar*. Future major releases of Scala will not contain Scala actors and the AMK.
 
@@ -473,7 +473,7 @@ should be moved to the `preStart` method.
 
    `PFCatch` is not included in the AMK as it can stay as the permanent feature in the migrated code
    and the AMK will be removed with the next major release. Once the whole migration is complete fault-handling
-    can also be converted to the Akka [supervision](http://doc.akka.io/docs/akka/2.1.0/general/supervision.html#What_Supervision_Means).
+    can also be converted to the Akka [supervision](https://doc.akka.io/docs/akka/2.1.0/general/supervision.html#What_Supervision_Means).
 
 
 
@@ -488,14 +488,14 @@ the list of differences and their translation:
 
 3. `reply(msg)` - should be replaced with `sender ! msg`
 
-4. `link(actor)` - In Akka, linking of actors is done partially by [supervision](http://doc.akka.io/docs/akka/2.1.0/general/supervision.html#What_Supervision_Means)
-and partially by [actor monitoring](http://doc.akka.io/docs/akka/2.1.0/general/supervision.html#What_Lifecycle_Monitoring_Means). In the AMK we support
+4. `link(actor)` - In Akka, linking of actors is done partially by [supervision](https://doc.akka.io/docs/akka/2.1.0/general/supervision.html#What_Supervision_Means)
+and partially by [actor monitoring](https://doc.akka.io/docs/akka/2.1.0/general/supervision.html#What_Lifecycle_Monitoring_Means). In the AMK we support
 only the monitoring method so the complete Scala functionality can not be migrated.
 
    The difference between linking and watching is that watching actors always receive the termination notification.
 However, instead of matching on the Scala `Exit` message that contains the reason of termination the Akka watching
 returns the `Terminated(a: ActorRef)` message that contains only the `ActorRef`. The functionality of getting the reason
- for termination is not supported by the migration. It can be done in Akka, after the Step 4, by organizing the actors in a [supervision hierarchy](http://doc.akka.io/docs/akka/2.1.0/general/supervision.html).
+ for termination is not supported by the migration. It can be done in Akka, after the Step 4, by organizing the actors in a [supervision hierarchy](https://doc.akka.io/docs/akka/2.1.0/general/supervision.html).
 
    If the actor that is watching does not match the `Terminated` message, and this message arrives, it will be terminated with the `DeathPactException`.
 Note that this will happen even when the watched actor terminated normally. In Scala linked actors terminate, with the same termination reason, only if
@@ -521,8 +521,8 @@ In Akka, watching the already dead actor will result in sending the `Terminated`
 
 At this point user code is ready to operate on Akka actors. Now we can switch the actors library from Scala to
 Akka actors. To do this configure the build to exclude the `scala-actors.jar` and the `scala-actors-migration.jar`,
- and to include *akka-actor.jar* and *typesafe-config.jar*. The AMK is built to work only with Akka actors version 2.1 which are included in the [Scala distribution](http://www.scala-lang.org/downloads)
-  and can be configured by these [instructions](http://doc.akka.io/docs/akka/2.1.0/intro/getting-started.html#Using_a_build_tool).
+ and to include *akka-actor.jar* and *typesafe-config.jar*. The AMK is built to work only with Akka actors version 2.1 which are included in the [Scala distribution](https://www.scala-lang.org/downloads)
+  and can be configured by these [instructions](https://doc.akka.io/docs/akka/2.1.0/intro/getting-started.html#Using_a_build_tool).
 
 After this change the compilation will fail due to different package names and slight differences in the API. We will have to change each imported actor
 from scala to Akka. Following is the non-exhaustive list of package names that need to be changed:
@@ -550,7 +550,7 @@ In Akka only the currently processed message can be stashed. Therefore replace t
 
 #### Adding Actor Systems
 
-The Akka actors are organized in [Actor systems](http://doc.akka.io/docs/akka/2.1.0/general/actor-systems.html).
+The Akka actors are organized in [Actor systems](https://doc.akka.io/docs/akka/2.1.0/general/actor-systems.html).
  Each actor that is instantiated must belong to one `ActorSystem`. To achieve this add an `ActorSystem` instance to each actor instantiation call as a first argument. The following example shows the transformation.
 
 To achieve this transformation you need to have an actor system instantiated. The actor system is usually instantiated in Scala objects or configuration classes that are global to your system. For example:
@@ -573,11 +573,11 @@ Finally, Scala programs are terminating when all the non-daemon threads and acto
 #### Remote Actors
 
 Once the code base is moved to Akka remoting will not work any more. The methods `registerActorFor` and `alive` need to be removed. In Akka, remoting is done solely by configuration and
-for further details refer to the [Akka remoting documentation](http://doc.akka.io/docs/akka/2.1.0/scala/remoting.html).
+for further details refer to the [Akka remoting documentation](https://doc.akka.io/docs/akka/2.1.0/scala/remoting.html).
 
 #### Examples and Issues
-All of the code snippets presented in this document can be found in the [Actors Migration test suite](http://github.com/scala/actors-migration/tree/master/src/test/) as test files with the prefix `actmig`.
+All of the code snippets presented in this document can be found in the [Actors Migration test suite](https://github.com/scala/actors-migration/tree/master/src/test/) as test files with the prefix `actmig`.
 
-This document and the Actor Migration Kit were designed and implemented by: [Vojin Jovanovic](http://people.epfl.ch/vojin.jovanovic) and [Philipp Haller](http://lampwww.epfl.ch/~phaller/)
+This document and the Actor Migration Kit were designed and implemented by: [Vojin Jovanovic](https://people.epfl.ch/vojin.jovanovic) and [Philipp Haller](https://lampwww.epfl.ch/~phaller/)
 
 If you find any issues or rough edges please report them at the [Scala Bugtracker](https://github.com/scala/actors-migration/issues).

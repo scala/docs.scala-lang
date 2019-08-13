@@ -54,7 +54,7 @@ sections:
       - title: "言語仕様"
         description: "Scala の形式的言語仕様（英語のみ）"
         icon: "fa fa-book"
-        link: http://scala-lang.org/files/archive/spec/2.12/
+        link: https://scala-lang.org/files/archive/spec/2.13/
 
   - title: "Scala の進化"
     links:

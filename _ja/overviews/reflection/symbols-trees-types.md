@@ -170,7 +170,7 @@ title: シンボル、構文木、型
     scala> val intTpe = universe.definitions.IntTpe
     intTpe: scala.reflect.runtime.universe.Type = Int
 
-標準型のリストは [`scala.reflect.api.StandardDefinitions`](http://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/StandardDefinitions$StandardTypes.html) 内の `StandardTypes`
+標準型のリストは [`scala.reflect.api.StandardDefinitions`](https://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/StandardDefinitions$StandardTypes.html) 内の `StandardTypes`
 トレイトにて定義されている。
 
 ### 型の一般的な演算

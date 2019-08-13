@@ -175,7 +175,7 @@ Again, we recommend using MiMa to double check that you have not broken binary c
 
 ## Versioning Scheme - Communicating compatibility breakages
 
-Library authors use versioning schemes to communicate compatibility guarantees between library releases to their users. Versioning schemes like [Semantic Versioning](http://semver.org/) (SemVer) allow
+Library authors use versioning schemes to communicate compatibility guarantees between library releases to their users. Versioning schemes like [Semantic Versioning](https://semver.org/) (SemVer) allow
 users to easily reason about the impact of updating a library, without needing to read the detailed release notes.
 
 In the following section, we will outline a versioning scheme based on Semantic Versioning that we **strongly encourage** you to adopt for your libraries. The rules listed below are **in addition** to 
@@ -204,7 +204,7 @@ Some examples:
   End users and library maintainers need to update all their dependency graph to remove all dependency on `v0.4.0`.
 * `v0.4.0 -> v0.4.1` is <span style="color: #2b2bd4">binary compatible</span>. Classpath can safely contain both `v0.4.0` and `v0.4.1`. End user may need to fix minor source breaking changes introduced
 
-Many libraries in the Scala ecosystem has adopted this versioning scheme. A few examples are [Akka](http://doc.akka.io/docs/akka/2.5/scala/common/binary-compatibility-rules.html),
+Many libraries in the Scala ecosystem has adopted this versioning scheme. A few examples are [Akka](https://doc.akka.io/docs/akka/2.5/scala/common/binary-compatibility-rules.html),
 [Cats](https://github.com/typelevel/cats#binary-compatibility-and-versioning) and [Scala.js](https://www.scala-js.org/).
 
 ## Conclusion

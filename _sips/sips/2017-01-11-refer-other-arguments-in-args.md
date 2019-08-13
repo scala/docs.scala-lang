@@ -99,8 +99,8 @@ def codec(codec: Codec, in: codec.Input, out: codec.Output) // Legal !!!
 
 ### Other languages
 The following languages allow referring to previously declared arguments in the function signature:
-* [CoffeeScript](http://coffeescript.org/)
-* [Kotlin](http://kotlinlang.org)
+* [CoffeeScript](https://coffeescript.org/)
+* [Kotlin](https://kotlinlang.org)
 * [TypeScript](https://www.typescriptlang.org/)
 
 AFAIK, there are no major languages where referring to parameters declared to the ***right*** is allowed.

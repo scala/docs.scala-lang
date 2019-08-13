@@ -16,7 +16,7 @@ language: zh-cn
 
 并行集合是以操作调度的方式建模的。每一个并行集合都有一个任务支持对象作为参数，该对象负责处理器任务的调度和负载均衡。
 
-任务支持对象内部有一个线程池实例的引用，并且决定着任务细分成更小任务的方式和时机。更多关于这方面的实现细节，请参考技术手册 [[1](http://infoscience.epfl.ch/record/165523/files/techrep.pdf)]。
+任务支持对象内部有一个线程池实例的引用，并且决定着任务细分成更小任务的方式和时机。更多关于这方面的实现细节，请参考技术手册 [[1](https://infoscience.epfl.ch/record/165523/files/techrep.pdf)]。
 
 并行集合的任务支持现在已经有一些可用的实现。ForkJoinTaskSupport内部使用fork-join池，并被默认用与JVM1.6以及更高的版本。ThreadPoolTaskSupport 效率更低，是JVM1.5和不支持fork-join池的JVM的回退。ExecutionContextTaskSupport 使用在scala.concurrent中默认的执行上下文实现，并且它重用在scala.concurrent使用的线程池（根据JVM版本，可能是fork join 池或线程池执行器）。执行上下文的任务支持被默认地设置到每个并行集合中，所以并行集合重用相同的fork-join池。
 
@@ -56,4 +56,4 @@ execute方法异步调度任务并且返回等待计算结果的未来状态。e
 
 **引用**
 
-1. [On a Generic Parallel Collection Framework, June 2011](http://infoscience.epfl.ch/record/165523/files/techrep.pdf)
+1. [On a Generic Parallel Collection Framework, June 2011](https://infoscience.epfl.ch/record/165523/files/techrep.pdf)

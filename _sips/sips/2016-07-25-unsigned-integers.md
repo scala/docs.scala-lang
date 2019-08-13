@@ -62,7 +62,7 @@ On the JVM, interoperability is not an issue. However, it is still sometimes
 useful to manipulate unsigned integers. An evidence of this fact is that Java 8
 has added methods in the JDK to *manipulate* signed integers *as if* they were
 unsigned. One example is
-[`java.lang.Integer.divideUnsigned`](http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html#divideUnsigned-int-int-).
+[`java.lang.Integer.divideUnsigned`](https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html#divideUnsigned-int-int-).
 Using signed integer types but interpreting them as unsigned is an obvious lack
 of type safety, however. Java cannot decently add new primitive types for
 compatibility reasons, but Scala has custom-made `AnyVal`s and other
@@ -170,7 +170,7 @@ def decodeISO88591(buffer: Array[UByte]): String = {
 ### Comparison Examples
 
 The blog post
-[Unsigned int considered harmful for Java](http://www.nayuki.io/page/unsigned-int-considered-harmful-for-java)
+[Unsigned int considered harmful for Java](https://www.nayuki.io/page/unsigned-int-considered-harmful-for-java)
 explains in detail how to correctly manipulate signed integer types to make
 them behave as unsigned.
 
@@ -589,7 +589,7 @@ ScalaNative.
 ## Previous discussions and implementations
 
 When
-[Value Classes (SIP-15)](http://docs.scala-lang.org/sips/completed/value-classes.html)
+[Value Classes (SIP-15)](https://docs.scala-lang.org/sips/completed/value-classes.html)
 were first introduced, the possibility to have new numeric types such as
 unsigned integers was mentioned as a motivation. Subsequently, several people
 [came up with implementations](https://groups.google.com/forum/#!topic/scala-sips/xtmUjsY9gTY)

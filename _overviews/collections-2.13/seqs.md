@@ -14,7 +14,7 @@ next-page: sets
 permalink: /overviews/collections-2.13/:title.html
 ---
 
-The [Seq](http://www.scala-lang.org/api/current/scala/collection/Seq.html) trait represents sequences. A sequence is a kind of iterable that has a `length` and whose elements have fixed index positions, starting from `0`.
+The [Seq](https://www.scala-lang.org/api/current/scala/collection/Seq.html) trait represents sequences. A sequence is a kind of iterable that has a `length` and whose elements have fixed index positions, starting from `0`.
 
 The operations on sequences, summarized in the table below, fall into the following categories:
 
@@ -77,7 +77,7 @@ If a sequence is mutable, it offers in addition a side-effecting `update` method
 |  `xs.distinct`	    |A subsequence of `xs` that contains no duplicated element.|
 |  `xs distinctBy f`	    |A subsequence of `xs` that contains no duplicated element after applying the transforming function `f`. For instance, `List("foo", "bar", "quux").distinctBy(_.length) == List("foo", "quux")`|
 
-Trait [Seq](http://www.scala-lang.org/api/current/scala/collection/Seq.html) has two subtraits [LinearSeq](http://www.scala-lang.org/api/current/scala/collection/LinearSeq.html), and [IndexedSeq](http://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html). These do not add any new operations to the immutable branch, but each offers different performance characteristics: A linear sequence has efficient `head` and `tail` operations, whereas an indexed sequence has efficient `apply`, `length`, and (if mutable) `update` operations. Frequently used linear sequences are `scala.collection.immutable.List` and `scala.collection.immutable.LazyList`. Frequently used indexed sequences are `scala.Array` and `scala.collection.mutable.ArrayBuffer`. The `Vector` class provides an interesting compromise between indexed and linear access. It has both effectively constant time indexing overhead and constant time linear access overhead. Because of this, vectors are a good foundation for mixed access patterns where both indexed and linear accesses are used. You'll learn more on vectors [later](concrete-immutable-collection-classes.html).
+Trait [Seq](https://www.scala-lang.org/api/current/scala/collection/Seq.html) has two subtraits [LinearSeq](https://www.scala-lang.org/api/current/scala/collection/LinearSeq.html), and [IndexedSeq](https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html). These do not add any new operations to the immutable branch, but each offers different performance characteristics: A linear sequence has efficient `head` and `tail` operations, whereas an indexed sequence has efficient `apply`, `length`, and (if mutable) `update` operations. Frequently used linear sequences are `scala.collection.immutable.List` and `scala.collection.immutable.LazyList`. Frequently used indexed sequences are `scala.Array` and `scala.collection.mutable.ArrayBuffer`. The `Vector` class provides an interesting compromise between indexed and linear access. It has both effectively constant time indexing overhead and constant time linear access overhead. Because of this, vectors are a good foundation for mixed access patterns where both indexed and linear accesses are used. You'll learn more on vectors [later](concrete-immutable-collection-classes.html).
 
 On the mutable branch, `IndexedSeq` adds operations for transforming its elements in place (by contrast with
 transformation operations such as `map` and `sort`, available on the root `Seq`, which return a new collection

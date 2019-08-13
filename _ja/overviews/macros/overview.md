@@ -132,7 +132,7 @@ def マクロ機能の一部が、徹底した仕様が書かれることを条�
     val Literal(Constant(s_format: String)) = format.tree
 
 典型的なマクロは Scala のコードを表す AST (抽象構文木) を作成する必要がある。(このマクロも例に漏れない)
-Scala コードの生成については[リフレクションの概要](http://docs.scala-lang.org/ja/overviews/reflection/overview.html)を参照してほしい。AST の作成の他に以下のコードは型の操作も行う。
+Scala コードの生成については[リフレクションの概要](https://docs.scala-lang.org/ja/overviews/reflection/overview.html)を参照してほしい。AST の作成の他に以下のコードは型の操作も行う。
 `Int` と `String` に対応する Scala 型をどうやって取得しているのかに注目してほしい。
 リンクしたリフレクションの概要で型の操作の詳細を説明する。
 コード生成の最終ステップでは、全ての生成されたコードを `Block` へと組み合わせる。

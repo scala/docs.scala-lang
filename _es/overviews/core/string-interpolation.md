@@ -21,7 +21,7 @@ Este nuevo mecanismo permite a los usuarios incluir referencias a variables de m
     val name = "James"
     println(s"Hello, $name")  // Hello, James
 
-En el ejemplo anterior, el literal `s"Hello, $name"` es una cadena "procesada". Esto significa que el compilador debe realizar un trabajo adicional durante el tratamiento de dicha cadena. Una cadena "procesada" se denota mediante un conjunto de caracteres que preceden al símbolo `"`. La interpolación de cadenas ha sido introducida por [SIP-11](http://docs.scala-lang.org/sips/pending/string-interpolation.html), el cual contiene todos los detalles de implementación.
+En el ejemplo anterior, el literal `s"Hello, $name"` es una cadena "procesada". Esto significa que el compilador debe realizar un trabajo adicional durante el tratamiento de dicha cadena. Una cadena "procesada" se denota mediante un conjunto de caracteres que preceden al símbolo `"`. La interpolación de cadenas ha sido introducida por [SIP-11](https://docs.scala-lang.org/sips/pending/string-interpolation.html), el cual contiene todos los detalles de implementación.
 
 ## Uso
 
@@ -61,7 +61,7 @@ El interpolador `f` es seguro respecto a tipos. Si pasamos un número real a una
                f"$height%4d"
                   ^
 
-El interpolador `f` hace uso de las utilidades de formateo de cadenas disponibles en java. Los formatos permitidos tras el carácter `%` son descritos en [Formatter javadoc](http://docs.oracle.com/javase/1.6.0/docs/api/java/util/Formatter.html#detail). Si el carácter `%` no aparece tras la definición de una variable, `%s` es utilizado por defecto.
+El interpolador `f` hace uso de las utilidades de formateo de cadenas disponibles en java. Los formatos permitidos tras el carácter `%` son descritos en [Formatter javadoc](https://docs.oracle.com/javase/1.6.0/docs/api/java/util/Formatter.html#detail). Si el carácter `%` no aparece tras la definición de una variable, `%s` es utilizado por defecto.
 
 ### Interpolador `raw`
 
@@ -87,7 +87,7 @@ En Scala, todas las cadenas "procesadas" son simples transformaciones de código
 
     id"string content"
 
-la transforma en la llamada a un método (`id`) sobre una instancia de [StringContext](http://www.scala-lang.org/api/current/index.html#scala.StringContext). Este método también puede estar disponible en un ámbito implícito. Para definiir nuestra propia cadena de interpolación simplemente necesitamos crear una clase implícita que añada un nuevo método a la clase `StringContext`. A continuación se muestra un ejemplo:
+la transforma en la llamada a un método (`id`) sobre una instancia de [StringContext](https://www.scala-lang.org/api/current/index.html#scala.StringContext). Este método también puede estar disponible en un ámbito implícito. Para definiir nuestra propia cadena de interpolación simplemente necesitamos crear una clase implícita que añada un nuevo método a la clase `StringContext`. A continuación se muestra un ejemplo:
 
     // Note: We extends AnyVal to prevent runtime instantiation.  See
     // value class guide for more info.

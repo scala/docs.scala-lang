@@ -56,8 +56,8 @@ Scala集合的层次和并行集合库
 
 为了能够获得一个序列集合或并行集合的引用（这样可以通过par和seq在并行集合和序列集合之间切换)，两种集合类型存在一个共同的超型。这是上面所示的“通用”特征的起源，GenTraversable, GenIterable, GenSeq, GenMap and GenSet，不保证按次序或挨个的遍历。相应的序列或并行特征继承于这些。例如，一个ParSeq和Seq都是一个通用GenSeq的子类型，但是他们之间没有相互公认的继承关系。
 
-更详细的讨论序列集合和并行集合器之间的层次共享，请参见技术报告。[[1](http://infoscience.epfl.ch/record/165523/files/techrep.pdf)]
+更详细的讨论序列集合和并行集合器之间的层次共享，请参见技术报告。[[1](https://infoscience.epfl.ch/record/165523/files/techrep.pdf)]
 
 引用
 
-1. [On a Generic Parallel Collection Framework, Aleksandar Prokopec, Phil Bawgell, Tiark Rompf, Martin Odersky, June 2011](http://infoscience.epfl.ch/record/165523/files/techrep.pdf)
+1. [On a Generic Parallel Collection Framework, Aleksandar Prokopec, Phil Bawgell, Tiark Rompf, Martin Odersky, June 2011](https://infoscience.epfl.ch/record/165523/files/techrep.pdf)

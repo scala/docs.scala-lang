@@ -429,6 +429,6 @@ You now have all the required knowledge to implement
 ### Acknowledgement ###
 
 This page contains material adapted from the book
-[Programming in Scala](http://www.artima.com/shop/programming_in_scala) by
+[Programming in Scala](https://www.artima.com/shop/programming_in_scala) by
 Odersky, Spoon and Venners. We thank Artima for graciously agreeing to its
 publication.

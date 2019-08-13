@@ -291,10 +291,10 @@ Thus, the authors of this SIP has decided not to allow default methods in the
 
 [1]: https://github.com/lampepfl/dotty/pull/1900 "an implementation for Dotty"
 [2]: https://github.com/typesafehub/migration-manager "MiMa"
-[3]: http://docs.scala-lang.org/overviews/core/binary-compatibility-of-scala-releases.html "Binary compatibility of Scala releases"
-[4]: http://docs.oracle.com/javase/specs/jvms/se8/html/jvms-4.html#jvms-4.3 "Descriptor definition in JVM Specification"
-[5]: http://docs.oracle.com/javase/specs/jvms/se8/html/jvms-4.html#jvms-4.6-200-A.1 "JVM access flags"
-[6]: http://www.scala-lang.org/files/archive/spec/2.11/05-classes-and-objects.html#modifiers "Scala AccessModifiers"
+[3]: https://docs.scala-lang.org/overviews/core/binary-compatibility-of-scala-releases.html "Binary compatibility of Scala releases"
+[4]: https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-4.html#jvms-4.3 "Descriptor definition in JVM Specification"
+[5]: https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-4.html#jvms-4.6-200-A.1 "JVM access flags"
+[6]: https://www.scala-lang.org/files/archive/spec/2.11/05-classes-and-objects.html#modifiers "Scala AccessModifiers"
 [7]: https://github.com/lampepfl/dotty/tree/master/interfaces/src/dotty/tools/dotc/interfaces "Dotty interfaces"
 [8]: https://github.com/sbt/zinc/tree/v1.0.0/internal/compiler-interface/src/main/java/xsbti "zinc interfaces"
 

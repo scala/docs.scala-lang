@@ -7,4 +7,4 @@ permalink: /sips/:title.html
 redirect_from: /sips/pending/scala-compiler-phase-plugin-in.html
 ---
 
-This was an older SID that can be found [here](http://www.scala-lang.org/sid/2)
+This was an older SID that can be found [here](https://www.scala-lang.org/sid/2)
