@@ -22,7 +22,7 @@ A continuación se muestra un ejemplo para una jerarquía de clases la cual cons
     case class Fun(arg: String, body: Term) extends Term
     case class App(f: Term, v: Term) extends Term
 
-Esta jerarquía de clases puede ser usada para representar términos de [cálculo lambda no tipado](http://www.ezresult.com/article/Lambda_calculus). Para facilitar la construcción de instancias de clases Case, Scala no requiere que se utilice la primitiva `new`. Simplemente es posible utilizar el nombre de la clase como una llamada a una función.
+Esta jerarquía de clases puede ser usada para representar términos de [cálculo lambda no tipado](https://www.ezresult.com/article/Lambda_calculus). Para facilitar la construcción de instancias de clases Case, Scala no requiere que se utilice la primitiva `new`. Simplemente es posible utilizar el nombre de la clase como una llamada a una función.
 
 Aquí un ejemplo:
 

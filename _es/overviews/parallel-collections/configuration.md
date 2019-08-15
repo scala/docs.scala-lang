@@ -80,4 +80,4 @@ las diferentes tareas.
 
 1. [On a Generic Parallel Collection Framework, June 2011][1]
 
-  [1]: http://infoscience.epfl.ch/record/165523/files/techrep.pdf "parallel-collections"
+  [1]: https://infoscience.epfl.ch/record/165523/files/techrep.pdf "parallel-collections"

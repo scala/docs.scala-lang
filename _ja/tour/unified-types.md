@@ -20,7 +20,7 @@ Scalaでは数値や関数を含め、全ての値は型を持ちます。
 
 ## Scalaの型階層 ##
 
-[`Any`](http://www.scala-lang.org/api/2.12.1/scala/Any.html) は全ての型のスーパータイプであり、トップ型とも呼ばれます。
+[`Any`](https://www.scala-lang.org/api/2.12.1/scala/Any.html) は全ての型のスーパータイプであり、トップ型とも呼ばれます。
 Anyは `equals`、`hashCode`、そして `toString`のようないくつかの普遍的なメソッドを定義しています。
 そして`AnyVal`と`AnyRef` という2つの直系のサブクラスを持ちます。
 

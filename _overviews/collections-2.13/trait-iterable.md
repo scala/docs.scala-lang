@@ -66,7 +66,7 @@ Two more methods exist in `Iterable` that return iterators: `grouped` and `slidi
 |  `xs grouped size`   	    |An iterator that yields fixed-sized "chunks" of this collection.|
 |  `xs sliding size`   	    |An iterator that yields a sliding fixed-sized window of elements in this collection.|
 |  **Addition:**     	    |						     |
-|  `xs concat ys`<br>(or `xs ++ ys`)	    |A collection consisting of the elements of both `xs` and `ys`. `ys` is a [IterableOnce](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/IterableOnce.html) collection, i.e., either an [Iterable](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterable.html) or an [Iterator](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterator.html).|
+|  `xs concat ys`<br>(or `xs ++ ys`)	    |A collection consisting of the elements of both `xs` and `ys`. `ys` is a [IterableOnce](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/IterableOnce.html) collection, i.e., either an [Iterable](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterable.html) or an [Iterator](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterator.html).|
 |  **Maps:**     	    |						     |
 |  `xs map f`		    |The collection obtained from applying the function f to every element in `xs`.|
 |  `xs flatMap f`	    |The collection obtained from applying the collection-valued function `f` to every element in `xs` and concatenating the results.|

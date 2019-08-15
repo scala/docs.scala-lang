@@ -5,7 +5,7 @@ title: Scala Cheatsheet
 partof: cheatsheet
 
 by: Brendan O'Connor
-about: ขอบคุณ <a href="http://brenocon.com/">Brendan O'Connor</a>, สำหรับ cheatsheet นี้มีวัตถุประสงค์เพื่ออ้างอิงอย่างง่ายสำหรับโครงสร้างประโยคของ Scala, Licensed by Brendan O'Connor under a CC-BY-SA 3.0 license.
+about: ขอบคุณ <a href="https://brenocon.com/">Brendan O'Connor</a>, สำหรับ cheatsheet นี้มีวัตถุประสงค์เพื่ออ้างอิงอย่างง่ายสำหรับโครงสร้างประโยคของ Scala, Licensed by Brendan O'Connor under a CC-BY-SA 3.0 license.
 
 language: "th"
 ---
@@ -57,11 +57,11 @@ language: "th"
 |  `if (check) happy` _เหมือนกับ_ <br> `if (check) happy else ()`                                            |  เงื่อนไข sugar |
 |  `while (x < 5) { println(x); x += 1}`                                                                   |  ทำซ้ำ while |
 |  `do { println(x); x += 1} while (x < 5)`                                                                |  ทำซ้ำ do while |
-|  `import scala.util.control.Breaks._`<br>`breakable {`<br>`    for (x <- xs) {`<br>`        if (Math.random < 0.1) break`<br>`    }`<br>`}`|  หยุด [(slides)](http://www.slideshare.net/Odersky/fosdem-2009-1013261/21) |
+|  `import scala.util.control.Breaks._`<br>`breakable {`<br>`    for (x <- xs) {`<br>`        if (Math.random < 0.1) break`<br>`    }`<br>`}`|  หยุด [(slides)](https://www.slideshare.net/Odersky/fosdem-2009-1013261/21) |
 |  `for (x <- xs if x%2 == 0) yield x*10` <br> _เหมือนกับ_ <br>`xs.filter(_%2 == 0).map(_*10)`               |  ทำความเข้าใจ for : filter/map |
 |  `for ((x,y) <- xs zip ys) yield x*y` <br> _เหมือนกับ_ <br>`(xs zip ys) map { case (x,y) => x*y }`         |  ทำความเข้าใจ for : การเชื่อมโยงโครงสร้างใหม่ |
 |  `for (x <- xs; y <- ys) yield x*y` <br>  _เหมือนกับ_ <br>`xs flatMap {x => ys map {y => x*y}}`            |  ทำความเข้าใจ for : ข้ามผลคูณ |
-|  `for (x <- xs; y <- ys) {`<br>    `println("%d/%d = %.1f".format(x, y, x/y.toFloat))`<br>`}`            |  ทำความเข้าใจ for : คำอธิบายประเภทจำเป็น  [sprintf-style](http://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax) |
+|  `for (x <- xs; y <- ys) {`<br>    `println("%d/%d = %.1f".format(x, y, x/y.toFloat))`<br>`}`            |  ทำความเข้าใจ for : คำอธิบายประเภทจำเป็น  [sprintf-style](https://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax) |
 |  `for (i <- 1 to 5) {`<br>    `println(i)`<br>`}`                                                        |  ทำความเข้าใจ for : ทำซ้ำโดยรวมขอบเขตบน |
 |  `for (i <- 1 until 5) {`<br>    `println(i)`<br>`}`                                                     |  ทำความเข้าใจ for : ทำซ้ำโดยละเว้นขอบเขตบน |
 |  <span id="pattern_matching" class="h2">จับคู่รูปแบบ</span>                                                  |                 |

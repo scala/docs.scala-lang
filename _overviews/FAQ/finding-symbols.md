@@ -200,9 +200,9 @@ And, of course, all of the above can be combined in various combinations, e.g.
 
 This answer was originally submitted in response to [this question on Stack Overflow][6].
 
-  [1]: http://scala-lang.org/files/archive/spec/2.11/
-  [2]: http://www.scala-lang.org/api/current/index.html#index.index-_
-  [3]: http://www.scala-lang.org/api/current/index.html#scala.Predef$
-  [4]: http://www.scala-lang.org/api/current/scala/Predef$$ArrowAssoc.html
-  [5]: http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.List
-  [6]: http://stackoverflow.com/q/7888944/53013
+  [1]: https://scala-lang.org/files/archive/spec/2.11/
+  [2]: https://www.scala-lang.org/api/current/index.html#index.index-_
+  [3]: https://www.scala-lang.org/api/current/index.html#scala.Predef$
+  [4]: https://www.scala-lang.org/api/current/scala/Predef$$ArrowAssoc.html
+  [5]: https://www.scala-lang.org/api/current/index.html#scala.collection.immutable.List
+  [6]: https://stackoverflow.com/q/7888944/53013

@@ -12,7 +12,7 @@ title: 型マクロ
 **Eugene Yokota 訳**
 
 型マクロ (type macro) は[マクロパラダイス](/ja/overviews/macros/paradise.html)の以前のバージョンから利用可能だったが、マクロパラダイス 2.0 ではサポートされなくなった。
-[the paradise 2.0 announcement](http://scalamacros.org/news/2013/08/05/macro-paradise-2.0.0-snapshot.html) に説明と移行のための戦略が書かれている。
+[the paradise 2.0 announcement](https://scalamacros.org/news/2013/08/05/macro-paradise-2.0.0-snapshot.html) に説明と移行のための戦略が書かれている。
 
 ## 直観
 
@@ -26,7 +26,7 @@ def マクロがコンパイラが特定をメソッドの呼び出しを見つ�
     Db.Coffees.update(brazilian.copy(price = 10))
     println(Db.Coffees.all)
 
-`H2Db` マクロの完全なソースコードは [GitHub にて](https://github.com/xeno-by/typemacros-h2db)提供して、本稿では重要な点だけをかいつまんで説明する。まず、マクロは、コンパイル時にデータベースに接続することで静的に型付けされたデータベースのラッパーを生成する。(構文木の生成に関しては[リフレクションの概要](http://docs.scala-lang.org/ja/overviews/reflection/overview.html)にて説明する) 次に、<span class="label success">NEW</span> `c.introduceTopLevel` API を用いて生成されたラッパーをコンパイラによって管理されているトップレベル定義のリストに挿入する。最後に、マクロは生成されたクラスのスーパーコンストラクタを呼び出す `Apply` ノードを返す。<span class="tag">注意</span> `c.Expr[T]` に展開される def マクロとちがって型マクロは `c.Tree` に展開されることに注意してほしい。これは、`Expr` が値を表すのに対して、型マクロは型に展開することによる。
+`H2Db` マクロの完全なソースコードは [GitHub にて](https://github.com/xeno-by/typemacros-h2db)提供して、本稿では重要な点だけをかいつまんで説明する。まず、マクロは、コンパイル時にデータベースに接続することで静的に型付けされたデータベースのラッパーを生成する。(構文木の生成に関しては[リフレクションの概要](https://docs.scala-lang.org/ja/overviews/reflection/overview.html)にて説明する) 次に、<span class="label success">NEW</span> `c.introduceTopLevel` API を用いて生成されたラッパーをコンパイラによって管理されているトップレベル定義のリストに挿入する。最後に、マクロは生成されたクラスのスーパーコンストラクタを呼び出す `Apply` ノードを返す。<span class="tag">注意</span> `c.Expr[T]` に展開される def マクロとちがって型マクロは `c.Tree` に展開されることに注意してほしい。これは、`Expr` が値を表すのに対して、型マクロは型に展開することによる。
 
     type H2Db(url: String) = macro impl
 
@@ -99,4 +99,4 @@ Scala のプログラムにおいて型マクロは、type、applied type、pare
 
 ### クラスやオブジェクトの生成
 
-[StackOverflow](http://stackoverflow.com/questions/13795490/how-to-use-type-calculated-in-scala-macro-in-a-reify-clause) でも説明したが、型マクロを作っていると `reify` がどんどん役に立たなくなっていくことに気付くだろう。その場合は、手で構文木を構築するだけではなく、マクロパラダイスにあるもう1つの実験的機能である準クォートを使うことも検討してみてほしい。
+[StackOverflow](https://stackoverflow.com/questions/13795490/how-to-use-type-calculated-in-scala-macro-in-a-reify-clause) でも説明したが、型マクロを作っていると `reify` がどんどん役に立たなくなっていくことに気付くだろう。その場合は、手で構文木を構築するだけではなく、マクロパラダイスにあるもう1つの実験的機能である準クォートを使うことも検討してみてほしい。

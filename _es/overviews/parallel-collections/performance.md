@@ -273,5 +273,5 @@ los que serían requeridos por arrays o vectores).
 1. [Anatomy of a flawed microbenchmark, Brian Goetz][1]
 2. [Dynamic compilation and performance measurement, Brian Goetz][2]
 
-  [1]: http://www.ibm.com/developerworks/java/library/j-jtp02225/index.html "flawed-benchmark"
-  [2]: http://www.ibm.com/developerworks/library/j-jtp12214/ "dynamic-compilation"
+  [1]: https://www.ibm.com/developerworks/java/library/j-jtp02225/index.html "flawed-benchmark"
+  [2]: https://www.ibm.com/developerworks/library/j-jtp12214/ "dynamic-compilation"

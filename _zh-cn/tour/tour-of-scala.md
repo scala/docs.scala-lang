@@ -50,7 +50,7 @@ Scala配备了一个拥有强大表达能力的类型系统，它可以静态地
 
 很多场景下，这些扩展可以不通过类似宏（macros）的元编程工具完成。例如：
 
-* [隐式类](http://docs.scala-lang.org/overviews/core/implicit-classes.html)允许给已有的类型添加扩展方法。
+* [隐式类](https://docs.scala-lang.org/overviews/core/implicit-classes.html)允许给已有的类型添加扩展方法。
 * [字符串插值](/overviews/core/string-interpolation.html)可以让用户使用自定义的插值器进行扩展。
 
 ## Scala的互操作性

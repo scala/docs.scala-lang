@@ -15,7 +15,7 @@ permalink: /overviews/core/:title.html
 
 Value classes are a new mechanism in Scala to avoid allocating runtime objects.
 This is accomplished through the definition of new `AnyVal` subclasses.
-They were proposed in [SIP-15](http://docs.scala-lang.org/sips/pending/value-classes.html).
+They were proposed in [SIP-15](https://docs.scala-lang.org/sips/pending/value-classes.html).
 The following shows a very minimal value class definition:
 
     class Wrapper(val underlying: Int) extends AnyVal
@@ -45,7 +45,7 @@ The remaining sections of this documentation show use cases, details on when all
 
 ## Extension methods
 
-One use case for value classes is to combine them with implicit classes ([SIP-13](http://docs.scala-lang.org/sips/pending/implicit-classes.html)) for allocation-free extension methods.  Using an implicit class provides a more convenient syntax for defining extension methods, while value classes remove the runtime overhead. A good example is the `RichInt` class in the standard library.  `RichInt` extends the `Int` type with several methods.  Because it is a value class, an instance of `RichInt` doesn't need to be created when using `RichInt` methods.
+One use case for value classes is to combine them with implicit classes ([SIP-13](https://docs.scala-lang.org/sips/pending/implicit-classes.html)) for allocation-free extension methods.  Using an implicit class provides a more convenient syntax for defining extension methods, while value classes remove the runtime overhead. A good example is the `RichInt` class in the standard library.  `RichInt` extends the `Int` type with several methods.  Because it is a value class, an instance of `RichInt` doesn't need to be created when using `RichInt` methods.
 
 The following fragment of `RichInt` shows how it extends `Int` to allow the expression `3.toHexString`:
 
@@ -78,7 +78,7 @@ will not actually allocate any `Meter` instances, but will only use primitive do
 ## When Allocation Is Necessary
 
 Because the JVM does not support value classes, Scala sometimes needs to actually instantiate a value class.
-Full details may be found in [SIP-15](http://docs.scala-lang.org/sips/pending/value-classes.html).
+Full details may be found in [SIP-15](https://docs.scala-lang.org/sips/pending/value-classes.html).
 
 ### Allocation Summary
 
@@ -134,7 +134,7 @@ Lastly, type tests such as those done in pattern matching or `asInstanceOf` requ
 ## Limitations
 
 Value classes currently have several limitations, in part because the JVM does not natively support the concept of value classes.
-Full details on the implementation of value classes and their limitations may be found in [SIP-15](http://docs.scala-lang.org/sips/pending/value-classes.html).
+Full details on the implementation of value classes and their limitations may be found in [SIP-15](https://docs.scala-lang.org/sips/pending/value-classes.html).
 
 ### Summary of Limitations
 

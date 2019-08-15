@@ -15,7 +15,7 @@ permalink: /overviews/macros/:title.html
 
 Untyped macros used to be available in previous versions of ["Macro Paradise"](paradise.html),
 but are not supported anymore in macro paradise 2.0.
-Visit [the paradise 2.0 announcement](http://scalamacros.org/news/2013/08/05/macro-paradise-2.0.0-snapshot.html)
+Visit [the paradise 2.0 announcement](https://scalamacros.org/news/2013/08/05/macro-paradise-2.0.0-snapshot.html)
 for an explanation and suggested migration strategy.
 
 ## Intuition
@@ -69,7 +69,7 @@ this restriction might also be lifted in the future: [SI-6972](https://issues.sc
 
 If a def macro has untyped return type, then the first of the two typechecks employed after its expansion will be omitted. A refresher:
 the first typecheck of a def macro expansion is performed against the return type of its definitions, the second typecheck is performed
-against the expected type of the expandee. More information can be found at Stack Overflow: [Static return type of Scala macros](http://stackoverflow.com/questions/13669974/static-return-type-of-scala-macros). Type macros never underwent the first typecheck, so
+against the expected type of the expandee. More information can be found at Stack Overflow: [Static return type of Scala macros](https://stackoverflow.com/questions/13669974/static-return-type-of-scala-macros). Type macros never underwent the first typecheck, so
 nothing changes for them (and you won't be able to specify any return type for a type macro to begin with).
 
 Finally the untyped macros patch enables using `c.Tree` instead of `c.Expr[T]` everywhere in signatures of macro implementations.

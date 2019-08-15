@@ -12,7 +12,7 @@ num: 5
 language: ja
 ---
 
-列 ([`Seq`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Seq.html)) トレイトは、長さ (`length`) があり、それぞれの要素に `0` から数えられた固定された添字 (index) がある `Iterable` の一種だ。
+列 ([`Seq`](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Seq.html)) トレイトは、長さ (`length`) があり、それぞれの要素に `0` から数えられた固定された添字 (index) がある `Iterable` の一種だ。
 
 以下の表にまとめられた列の演算は以下のカテゴリーに分けることができる:
 
@@ -75,7 +75,7 @@ Scala の他の構文の例にならって、`seq(idx) = elem` は `seq.update(i
 |  `xs union ys`            |和集合; `xs ++ ys` に同じ|
 |  `xs.distinct`            |`xs` の部分列で要素の重複を一切含まないもの。         |
 
-[`Seq`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Seq.html) トレイトには [`LinearSeq`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/IndexedSeq.html) と [`IndexedSeq`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/IndexedSeq.html)
+[`Seq`](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Seq.html) トレイトには [`LinearSeq`](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/IndexedSeq.html) と [`IndexedSeq`](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/IndexedSeq.html)
 という二つの子トレイトがある。
 これらは新しい演算を定義しないが、それぞれ異なった性能特性をもつ。
 線形列 (linear sequence) は効率的な `head` と `tail` 演算を持ち、一方添字付き列 (indexed sequence) は効率的な`apply`、`length`、および (可変の場合) `update` 演算を持つ。

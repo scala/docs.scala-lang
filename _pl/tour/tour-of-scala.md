@@ -58,7 +58,7 @@ Scala dostarcza unikalne mechanizmy, dzięki którym można łatwo dodawać nowe
 W większości przypadków można to uzyskać bez potrzeby używania technik meta-programowania takich jak np. makra.
 Oto kilka przykładów:
 
-* [Klasy domniemane](http://docs.scala-lang.org/overviews/core/implicit-classes.html) pozwalają na rozszerzanie już istniejących klas o nowe metody,
+* [Klasy domniemane](https://docs.scala-lang.org/overviews/core/implicit-classes.html) pozwalają na rozszerzanie już istniejących klas o nowe metody,
 * [Interpolacja łańcuchów znaków](/overviews/core/string-interpolation.html) jest rozszerzalna o niestandardowe interpolatory użytkownika.
 
 ## Scala współdziała z językami JVM

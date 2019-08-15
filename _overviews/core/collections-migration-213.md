@@ -215,7 +215,7 @@ Other notable changes are:
   - `Iterable.partition` invokes `iterator` twice on non-strict collections and assumes it gets two iterators over the same elements. Strict subclasses override `partition` do perform only a single traversal
   - Equality between collections is not anymore defined at the level of `Iterable`. It is defined separately in the `Set`, `Seq` and `Map` branches. Another consequence is that `Iterable` does not anymore have a `canEqual` method.
   - The new collections makes more use of overloading. You can find more information about the motivation
-    behind this choice [here](http://scala-lang.org/blog/2017/05/30/tribulations-canbuildfrom.html). For instance, `Map.map` is overloaded:
+    behind this choice [here](https://scala-lang.org/blog/2017/05/30/tribulations-canbuildfrom.html). For instance, `Map.map` is overloaded:
 
         scala> Map(1 -> "a").map
           def map[B](f: ((Int, String)) => B): scala.collection.immutable.Iterable[B]
@@ -232,7 +232,7 @@ Other notable changes are:
         scala> Map(1 -> "a").map(f _)
         res10: scala.collection.immutable.Map[Int,String] = ChampHashMap(2 -> a)
   - `View`s have been completely redesigned and we expect their usage to have a more predictable evaluation model.
-    You can read more about the new design [here](http://scala-lang.org/blog/2017/11/28/view-based-collections.html).
+    You can read more about the new design [here](https://scala-lang.org/blog/2017/11/28/view-based-collections.html).
   - `mutable.ArraySeq` (which wraps an `Array[AnyRef]` in 2.12, meaning that primitives were boxed in the array) can now wrap boxed and unboxed arrays. `mutable.ArraySeq` in 2.13 is in fact equivalent to `WrappedArray` in 2.12, there are specialized subclasses for primitive arrays. Note that a `mutable.ArraySeq` can be used either way for primitive arrays (TODO: document how). `WrappedArray` is deprecated.
   - There is no "default" `Factory` (previously known as `[A, C] => CanBuildFrom[Nothing, A, C]`): use `Factory[A, Vector[A]]` explicitly instead.
  - `Array.deep` has been removed.

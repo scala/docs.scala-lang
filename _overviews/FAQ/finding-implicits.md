@@ -409,10 +409,10 @@ Related questions of interest:
 
 This question and answer were originally submitted on [Stack Overflow][3].
 
-  [1]: http://jsuereth.com/scala/2011/02/18/2011-implicits-without-tax.html
+  [1]: https://jsuereth.com/scala/2011/02/18/2011-implicits-without-tax.html
   [2]: https://issues.scala-lang.org/browse/SI-4427
-  [3]: http://stackoverflow.com/q/5598085/53013
-  [4]: http://stackoverflow.com/questions/5512397/passing-scala-math-integral-as-implicit-parameter
-  [5]: http://scala-lang.org/files/archive/spec/2.11/06-expressions.html
-  [6]: http://scala-lang.org/files/archive/spec/2.11/07-implicits.html
+  [3]: https://stackoverflow.com/q/5598085/53013
+  [4]: https://stackoverflow.com/questions/5512397/passing-scala-math-integral-as-implicit-parameter
+  [5]: https://scala-lang.org/files/archive/spec/2.11/06-expressions.html
+  [6]: https://scala-lang.org/files/archive/spec/2.11/07-implicits.html
   [7]: https://github.com/scala/docs.scala-lang/issues

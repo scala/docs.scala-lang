@@ -26,7 +26,7 @@ may not have known about already, here are a few key points.
 ## Scaladoc Features in Brief
 
 - The latest Scaladoc for the core Scala libraries can always be found at
-  [http://www.scala-lang.org/api/current](http://www.scala-lang.org/api/current).
+  [https://www.scala-lang.org/api/current](https://www.scala-lang.org/api/current).
 - The search box on the top left narrows the list of classes to those that
   match a string search to your typing, use this to home in quickly on the class,
   trait or object you are trying to find.

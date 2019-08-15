@@ -241,7 +241,7 @@ Finally, in Eclipse, under "File" choose "Import..." and find your project.
 m2eclipse-scala is a work in progress, and their website/repository may have updated information.
 It aims to ease integration between m2eclipse and Scala IDE for Eclipse.
 
-Under "Help -> Install New Software", enter "http://alchim31.free.fr/m2e-scala/update-site" and hit enter.
+Under "Help -> Install New Software", enter "https://alchim31.free.fr/m2e-scala/update-site" and hit enter.
 You should see "Maven Integration for Eclipse -> Maven Integration for Scala IDE".
 
 After it installs, go to "New -> Project -> Other" and select "Maven Project".
@@ -265,39 +265,39 @@ Will download any new dependencies before packaging
 I'm not going to explain all of Maven in this tutorial (though I hope to add more in the future, because I do feel that the resources are a bit scattered), so here are some useful articles:
 - [Maven Lifecycle][17] (explanation of goals like clean, package, install)
 
-[1]: http://maven.apache.org
-[2]: http://maven.org
-[3]: http://maven.apache.org/download.html
-[4]: http://macports.org
+[1]: https://maven.apache.org
+[2]: https://maven.org
+[3]: https://maven.apache.org/download.html
+[4]: https://macports.org
 [5]: https://github.com/davidB/scala-maven-plugin
-[6]: http://brew.sh
-[7]: http://fink.sf.net
-[8]: http://7-zip.org
-[9]: http://unix.stackexchange.com/questions/63531/
-[10]: http://wikipedia.org/wiki/Unix_shell#Configuration_files_for_shells
-[11]: http://maven.apache.org/archetype/maven-archetype-plugin/
-[12]: http://maven.apache.org/guides/mini/guide-naming-conventions.html
-[13]: http://semver.org
-[14]: http://junit.org
-[15]: http://scalatest.org
-[16]: http://specs2.org
-[17]: http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html
-[18]: http://maven.apache.org/pom.html
-[19]: http://maven.apache.org/plugins/maven-assembly-plugin/
+[6]: https://brew.sh
+[7]: https://fink.sf.net
+[8]: https://7-zip.org
+[9]: https://unix.stackexchange.com/questions/63531/
+[10]: https://wikipedia.org/wiki/Unix_shell#Configuration_files_for_shells
+[11]: https://maven.apache.org/archetype/maven-archetype-plugin/
+[12]: https://maven.apache.org/guides/mini/guide-naming-conventions.html
+[13]: https://semver.org
+[14]: https://junit.org
+[15]: https://scalatest.org
+[16]: https://specs2.org
+[17]: https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html
+[18]: https://maven.apache.org/pom.html
+[19]: https://maven.apache.org/plugins/maven-assembly-plugin/
 [20]: https://maven.apache.org/plugins/maven-assembly-plugin/summary.html
-[21]: http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22maven-assembly-plugin%22
-[22]: http://davidb.github.io/scala-maven-plugin
-[23]: http://davidb.github.io/scala-maven-plugin/faq.html
-[24]: http://scala-ide.org
-[25]: http://scala-lang.org/api/current/index.html#scala.App
-[26]: http://docs.scala-lang.org/tutorials/tour/polymorphic-methods.html
+[21]: https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22maven-assembly-plugin%22
+[22]: https://davidb.github.io/scala-maven-plugin
+[23]: https://davidb.github.io/scala-maven-plugin/faq.html
+[24]: https://scala-ide.org
+[25]: https://scala-lang.org/api/current/index.html#scala.App
+[26]: https://docs.scala-lang.org/tutorials/tour/polymorphic-methods.html
 [27]: https://code.google.com/p/guava-libraries/
-[28]: http://search.maven.org/#artifactdetails%7Ccom.google.guava%7Cguava%7C14.0.1%7Cbundle
+[28]: https://search.maven.org/#artifactdetails%7Ccom.google.guava%7Cguava%7C14.0.1%7Cbundle
 [29]: https://github.com/scopt/scopt
-[30]: http://search.maven.org/#search%7Cga%7C1%7Cscopt
-[31]: http://mvnrepository.com
-[32]: http://docs.scala-lang.org/contribute.html
-[33]: http://maven.apache.org/plugins/maven-eclipse-plugin/
-[34]: http://www.mojohaus.org/build-helper-maven-plugin/
+[30]: https://search.maven.org/#search%7Cga%7C1%7Cscopt
+[31]: https://mvnrepository.com
+[32]: https://docs.scala-lang.org/contribute.html
+[33]: https://maven.apache.org/plugins/maven-eclipse-plugin/
+[34]: https://www.mojohaus.org/build-helper-maven-plugin/
 [35]: https://github.com/sonatype/m2eclipse-scala
 [36]: https://github.com/scala/scala-module-dependency-sample

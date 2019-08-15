@@ -78,7 +78,7 @@ but oftentimes reflection is either too imprecise because of erasure or
 too slow because of the overhead it imposes.
 
 There also exist generic programming approaches based on type-level programming, for example,
-[the `TypeClass` type class technique](http://typelevel.org/blog/2013/06/24/deriving-instances-1.html) introduced by Lars Hupel,
+[the `TypeClass` type class technique](https://typelevel.org/blog/2013/06/24/deriving-instances-1.html) introduced by Lars Hupel,
 but they also suffer a performance hit in comparison with manually written type class instances.
 
 ### Implicit materializers

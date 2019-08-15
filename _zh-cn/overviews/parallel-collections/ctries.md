@@ -39,7 +39,7 @@ language: zh-cn
       }
     }
 
-注意，在上面的计算平方根的巴比伦算法([3](http://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Babylonian_method))中，某些数据会比别的数据收敛的更快。基于这个因素，我们希望能够尽快把他们从结果中剔除，只遍历那些真正需要耗时处理的元素。
+注意，在上面的计算平方根的巴比伦算法([3](https://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Babylonian_method))中，某些数据会比别的数据收敛的更快。基于这个因素，我们希望能够尽快把他们从结果中剔除，只遍历那些真正需要耗时处理的元素。
 
 另一个例子是广度优先搜索算法，该算法迭代地在末端节点遍历，直到找到通往目标的路径，或遍历完所有周围节点。一个二维地图上的节点定义为Int的元组。map定义为二维布尔值数组，用来表示各个位置是否已经到达。然后，定义2个并行字典树映射，open和closed。其中，映射open保存接着需要被遍历的末端节点。映射closed保存所有已经被遍历过的节点。映射open使用恰当节点来初始化，用以从地图的一角开始搜索，并找到通往地图中心的路径。随后，并行地对映射open中的所有节点迭代遍历，直到没有节点可以遍历。每次一个节点被遍历时，将它从映射open中移除，并放置在映射closed中。一旦执行完成，输出从目标节点到初始节点的路径。
 （译者注：如扫雷，不断判断当前位置（末端节点）上下左右是否为地雷（二维布尔数组），从起始位置逐渐向外扩张。）
@@ -98,7 +98,7 @@ language: zh-cn
     println()
 例如，GitHub上个人生游戏的示例，就是使用Ctries去选择性地模拟人生游戏中当前活跃的机器人([4](https://github.com/axel22/ScalaDays2012-TrieMap))。它还基于Swing实现了模拟的人生游戏的视觉化，以便很直观地观察到调整参数是如何影响执行。
 
-并发字典树也支持线性化、无锁、及定时快照操作。这些操作会利用特定时间点上的所有元素来创建新并发 字典树。因此，实际上捕获了特定时间点上的字典树状态。快照操作仅仅为并发字典树生成一个新的根。子序列采用惰性更新的策略，只重建与更新相关的部分，其余部分保持原样。首先，这意味着，由于不需要拷贝元素，自动快照操作资源消耗较少。其次，写时拷贝优化策略只拷贝并发字典树的部分，后续的修改可以横向展开。readOnlySnapshot方法比Snapshot方法效率略高，但它返回的是无法修改的只读的映射。并发字典树也支持线性化，定时清除操作基于快照机制。了解更多关于并发字典树及快照的工作方式，请参阅 ([1](http://infoscience.epfl.ch/record/166908/files/ctries-techreport.pdf)) 和 ([2](http://lampwww.epfl.ch/~prokopec/ctries-snapshot.pdf)).
+并发字典树也支持线性化、无锁、及定时快照操作。这些操作会利用特定时间点上的所有元素来创建新并发 字典树。因此，实际上捕获了特定时间点上的字典树状态。快照操作仅仅为并发字典树生成一个新的根。子序列采用惰性更新的策略，只重建与更新相关的部分，其余部分保持原样。首先，这意味着，由于不需要拷贝元素，自动快照操作资源消耗较少。其次，写时拷贝优化策略只拷贝并发字典树的部分，后续的修改可以横向展开。readOnlySnapshot方法比Snapshot方法效率略高，但它返回的是无法修改的只读的映射。并发字典树也支持线性化，定时清除操作基于快照机制。了解更多关于并发字典树及快照的工作方式，请参阅 ([1](https://infoscience.epfl.ch/record/166908/files/ctries-techreport.pdf)) 和 ([2](http://lampwww.epfl.ch/~prokopec/ctries-snapshot.pdf)).
 
 并发字典树的迭代器基于快照实现。在迭代器对象被创建之前，会创建一个并发字典树的快照，所以迭代器只在字典树的快照创建时的元素中进行遍历。当然，迭代器使用只读快照。
 
@@ -106,7 +106,7 @@ size操作也基于快照。一种直接的实现方式是，size调用仅仅生
 
 **引用**
 
-[缓存感知无锁并发哈希字典树][1](http://infoscience.epfl.ch/record/166908/files/ctries-techreport.pdf)  
+[缓存感知无锁并发哈希字典树][1](https://infoscience.epfl.ch/record/166908/files/ctries-techreport.pdf)  
 [具有高效非阻塞快照的并发字典树][2](http://lampwww.epfl.ch/~prokopec/ctries-snapshot.pdf)  
-[计算平方根的方法][3](http://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Babylonian_method)  
+[计算平方根的方法][3](https://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Babylonian_method)  
 [人生游戏模拟程序][4](https://github.com/axel22/ScalaDays2012-TrieMap)（译注：类似大富翁的棋盘游戏）  

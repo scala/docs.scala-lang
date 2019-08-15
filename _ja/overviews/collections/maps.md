@@ -12,7 +12,7 @@ num: 7
 language: ja
 ---
 
-マップ ([`Map`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Map.html)) はキーと値により構成されるペアの [`Iterable`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterable.html) の一種で、**写像** (mapping) や**関連** (association) とも呼ばれる。Scala の [`Predef`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/Predef$.html) クラスは、ペアの `(key, value)` を `key -> value` と書けるような暗黙の変換を提供する。例えば、`Map("x" -> 24, "y" -> 25, "z" -> 26)` は `Map(("x", 24), ("y", 25), ("z", 26))` と全く同じことを意味するがより可読性が高い。
+マップ ([`Map`](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Map.html)) はキーと値により構成されるペアの [`Iterable`](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterable.html) の一種で、**写像** (mapping) や**関連** (association) とも呼ばれる。Scala の [`Predef`](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/Predef$.html) クラスは、ペアの `(key, value)` を `key -> value` と書けるような暗黙の変換を提供する。例えば、`Map("x" -> 24, "y" -> 25, "z" -> 26)` は `Map(("x", 24), ("y", 25), ("z", 26))` と全く同じことを意味するがより可読性が高い。
 
 マップの基本的な演算は集合のものと似ている。それらは、以下の表にまとめられており、以下のカテゴリーに分類できる:
 
@@ -51,7 +51,7 @@ language: ja
 |  `ms filterKeys p`        |キーが条件関数 `p` を満たす `ms`内の写像のみを含むマップのビュー。|
 |  `ms mapValues f`         |`ms`内のキーに関連付けられた全ての値に関数 `f` を適用して得られるマップのビュー。|
 
-可変マップ ([`mutable.Map`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/Map.html)) は他にも以下の表にまとめた演算をサポートする。
+可変マップ ([`mutable.Map`](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/Map.html)) は他にも以下の表にまとめた演算をサポートする。
 
 ### mutable.Map トレイトの演算 ###
 

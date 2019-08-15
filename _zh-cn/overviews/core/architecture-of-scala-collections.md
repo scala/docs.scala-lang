@@ -11,9 +11,9 @@ discourse: false
 
 **Martin Odersky 和 Lex Spoon 著**
 
-本篇详细的介绍了Scala 容器类(collections)框架。通过与 [Scala 2.8 的 Collection API](http://docs.scala-lang.org/overviews/collections/introduction.html) 的对比，你会了解到更多框架的内部运作方式，同时你也将学习到如何通过几行代码复用这个容器类框架的功能来定义自己的容器类。
+本篇详细的介绍了Scala 容器类(collections)框架。通过与 [Scala 2.8 的 Collection API](https://docs.scala-lang.org/overviews/collections/introduction.html) 的对比，你会了解到更多框架的内部运作方式，同时你也将学习到如何通过几行代码复用这个容器类框架的功能来定义自己的容器类。
 
-[Scala 2.8 容器API](http://docs.scala-lang.org/overviews/collections/introduction.html) 中包含了大量的 容器(collection)操作，这些操作在不同的许多容器类上表现为一致。假设，为每种 Collection 类型都用不同的方法代码实现，那么将导致代码的异常臃肿，很多代码将会仅仅是别处代码的拷贝。随着时间的推移，这些重复的代码也会带来不一致的问题，试想，相同的代码，在某个地方被修改了，而另外的地方却被遗漏了。而新的 容器类（collections）框架的设计原则目标就是尽量的避免重复，在尽可能少的地方定义操作（理想情况下，只在一处定义，当然也会有例外的情况存在）。设计中使用的方法是，在 Collection 模板中实现大部分的操作，这样就可以灵活的从独立的基类和实现中继承。后面的部分，我们会来详细阐述框架的各组成部分：模板(templates)、类(classes)以及trait(译注：类似于java里接口的概念)，也会说明他们所支持的构建原则。
+[Scala 2.8 容器API](https://docs.scala-lang.org/overviews/collections/introduction.html) 中包含了大量的 容器(collection)操作，这些操作在不同的许多容器类上表现为一致。假设，为每种 Collection 类型都用不同的方法代码实现，那么将导致代码的异常臃肿，很多代码将会仅仅是别处代码的拷贝。随着时间的推移，这些重复的代码也会带来不一致的问题，试想，相同的代码，在某个地方被修改了，而另外的地方却被遗漏了。而新的 容器类（collections）框架的设计原则目标就是尽量的避免重复，在尽可能少的地方定义操作（理想情况下，只在一处定义，当然也会有例外的情况存在）。设计中使用的方法是，在 Collection 模板中实现大部分的操作，这样就可以灵活的从独立的基类和实现中继承。后面的部分，我们会来详细阐述框架的各组成部分：模板(templates)、类(classes)以及trait(译注：类似于java里接口的概念)，也会说明他们所支持的构建原则。
 
 ## Builders
 
@@ -149,7 +149,7 @@ CanBuildFrom trait：
 
 ### 集成序列（Sequence）
 
-RNA（核糖核酸）碱基（译者注：RNA链即很多不同RNA碱基的序列，RNA参考资料：http://zh.wikipedia.org/wiki/RNA）：
+RNA（核糖核酸）碱基（译者注：RNA链即很多不同RNA碱基的序列，RNA参考资料：https://zh.wikipedia.org/wiki/RNA）：
 
     abstract class Base
     case object A extends Base
@@ -540,4 +540,4 @@ prefix map的伴生对象：
 
 ### 致谢
 
-这些页面的素材改编自，由Odersky，Spoon和Venners编写的[Scala编程](http://www.artima.com/shop/programming_in_scala)第2版 。感谢Artima 对于出版的大力支持。
+这些页面的素材改编自，由Odersky，Spoon和Venners编写的[Scala编程](https://www.artima.com/shop/programming_in_scala)第2版 。感谢Artima 对于出版的大力支持。

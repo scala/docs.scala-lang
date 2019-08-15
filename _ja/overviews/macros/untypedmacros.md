@@ -12,7 +12,7 @@ title: 型指定の無いマクロ
 **Eugene Yokota 訳**
 
 型指定の無いマクロ (untyped macro) は[マクロパラダイス](/ja/overviews/macros/paradise.html)の以前のバージョンから利用可能だったが、マクロパラダイス 2.0 ではサポートされなくなった。
-[the paradise 2.0 announcement](http://scalamacros.org/news/2013/08/05/macro-paradise-2.0.0-snapshot.html) に説明と移行のための戦略が書かれている。
+[the paradise 2.0 announcement](https://scalamacros.org/news/2013/08/05/macro-paradise-2.0.0-snapshot.html) に説明と移行のための戦略が書かれている。
 
 ## 直観
 
@@ -58,7 +58,7 @@ Scala 2.10.x においても `unapply` や `unaoolySeq` をマクロとして宣
 
 明示的に渡された型引数はそのままマクロに渡される。もし型引数が渡されなかった場合は、値引数を型検査しない範囲で可能な限り型引数を推論してマクロに渡す。つまり、型引数は型検査されるということだが、この制約は将来無くなるかもしれない: [SI-6972](https://issues.scala-lang.org/browse/SI-6972)。
 
-もし、def マクロが型指定の無い戻り値を持つ場合、マクロ展開後に実行される 2つの型検査のうち最初のものが省略される。ここで復習しておくと、def マクロが展開されるとまずその定義の戻り値の型に対して型検査され、次に展開されたものに期待される型に対して型検査が実行される。これに関しては Stack Overflow の [Static return type of Scala macros](http://stackoverflow.com/questions/13669974/static-return-type-of-scala-macros) を参照してほしい。型マクロは最初の型検査が行われないため、何も変わらない (そもそも型マクロに戻り値の型は指定できないからだ)。
+もし、def マクロが型指定の無い戻り値を持つ場合、マクロ展開後に実行される 2つの型検査のうち最初のものが省略される。ここで復習しておくと、def マクロが展開されるとまずその定義の戻り値の型に対して型検査され、次に展開されたものに期待される型に対して型検査が実行される。これに関しては Stack Overflow の [Static return type of Scala macros](https://stackoverflow.com/questions/13669974/static-return-type-of-scala-macros) を参照してほしい。型マクロは最初の型検査が行われないため、何も変わらない (そもそも型マクロに戻り値の型は指定できないからだ)。
 
 最後に、型指定のないマクロのパッチは `c.Expr[T]` の代わりにマクロ実装のシグネチャのどこでも `c.Tree` を使うことを可能とする。
 マクロ定義の型指定なし/型付きと、構文木/式によるマクロ実装の 4通りの組み合わせ全てがパラメータと戻り値の型の両方においてサポートされている。

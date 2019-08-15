@@ -11,7 +11,7 @@ redirect_from: "/getting-started-sbt-track/getting-started-with-scala-and-sbt-on
 
 In this tutorial, you'll see how to create a Scala project from
 a template. You can use this as a starting point for your own
-projects. We'll use [sbt](http://www.scala-sbt.org/1.x/docs/index.html), the de facto build tool for Scala. sbt compiles,
+projects. We'll use [sbt](https://www.scala-sbt.org/1.x/docs/index.html), the de facto build tool for Scala. sbt compiles,
 runs, and tests your projects among other related tasks.
 We assume you know how to use a terminal.
 
@@ -21,9 +21,9 @@ We assume you know how to use a terminal.
     `javac 1.8.___`
     * If you don't have version 1.8 or higher, [install the JDK](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 1. Install sbt
-    * [Mac](http://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Mac.html)
-    * [Windows](http://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Windows.html)
-    * [Linux](http://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Linux.html)
+    * [Mac](https://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Mac.html)
+    * [Windows](https://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Windows.html)
+    * [Linux](https://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Linux.html)
 
 ## Create the project
 1. `cd` to an empty folder.

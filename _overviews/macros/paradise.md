@@ -23,7 +23,7 @@ Macro paradise is a plugin for several versions of Scala compilers.
 It is designed to reliably work with production releases of <code>scalac</code>,
 making latest macro developments available way before they end up in future versions Scala.
 Refer to the roadmap for [the list of supported features and versions](roadmap.html)
-and visit [the paradise announcement](http://scalamacros.org/news/2013/08/07/roadmap-for-macro-paradise.html)
+and visit [the paradise announcement](https://scalamacros.org/news/2013/08/07/roadmap-for-macro-paradise.html)
 to learn more about our support guarantees.
 
     ~/210x $ scalac -Xplugin:paradise_*.jar -Xshow-phases
@@ -48,7 +48,7 @@ to use macros).
     resolvers += Resolver.sonatypeRepo("releases")
     addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full)
 
-To use macro paradise in Maven follow the instructions provided at Stack Overflow on the page ["Enabling the macro-paradise Scala compiler plugin in Maven projects"](http://stackoverflow.com/questions/19086241/enabling-the-macro-paradise-scala-compiler-plugin-in-maven-projects) (also make sure to add the dependency on the Sonatype snapshots repository and `scala-reflect.jar`).
+To use macro paradise in Maven follow the instructions provided at Stack Overflow on the page ["Enabling the macro-paradise Scala compiler plugin in Maven projects"](https://stackoverflow.com/questions/19086241/enabling-the-macro-paradise-scala-compiler-plugin-in-maven-projects) (also make sure to add the dependency on the Sonatype snapshots repository and `scala-reflect.jar`).
 
     <compilerPlugins>
       <compilerPlugin>

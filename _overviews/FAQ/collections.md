@@ -372,14 +372,14 @@ This answer was originally submitted in response to [this question][9] on Stack
 Overflow.
 
 
-  [1]: http://docs.scala-lang.org/overviews/collections/introduction.html
-  [2]: http://docs.scala-lang.org/overviews/core/architecture-of-scala-collections.html
-  [3]: http://www.scala-lang.org/sid/3
+  [1]: https://docs.scala-lang.org/overviews/collections/introduction.html
+  [2]: https://docs.scala-lang.org/overviews/core/architecture-of-scala-collections.html
+  [3]: https://www.scala-lang.org/sid/3
   [4]: https://github.com/sirthias/scala-collections-charts/downloads
   [5]: /resources/images/tour/collections-diagram.svg
-  [6]: http://i.stack.imgur.com/2fjoA.png
-  [7]: http://i.stack.imgur.com/Dsptl.png
+  [6]: https://i.stack.imgur.com/2fjoA.png
+  [7]: https://i.stack.imgur.com/Dsptl.png
   [8]: /resources/images/tour/collections-legend-diagram.svg
-  [9]: http://stackoverflow.com/q/1722137/53013
+  [9]: https://stackoverflow.com/q/1722137/53013
   [10]: /resources/images/tour/collections-immutable-diagram.svg
   [11]: /resources/images/tour/collections-mutable-diagram.svg

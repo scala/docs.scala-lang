@@ -11,7 +11,7 @@ num: 10
 language: ja
 ---
 
-配列 ([`Array`](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/Array.html)) は Scala のコレクションの中でも特殊なものだ。Scala 配列は、Java の配列と一対一で対応する。どういう事かと言うと、Scala の配列 `Array[Int]` は Java の `int[]` で実装されており、`Array[Double]` は Java の `double[]`、`Array[String]` は Java の `String[]` で実装されている。その一方で、Scala の配列は Java のそれに比べて多くの機能を提供する。まず、Scala の配列は**ジェネリック**であることができる。 つまり、型パラメータか抽象型の `T` に対する `Array[T]` を定義することができる。次に、Scala の配列は Scala の列と互換性があり、`Seq[T]` が期待されている所に `Array[T]` を渡すことができる。さらに、Scala の配列は列の演算の全てをサポートする。以下に具体例で説明する:
+配列 ([`Array`](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/Array.html)) は Scala のコレクションの中でも特殊なものだ。Scala 配列は、Java の配列と一対一で対応する。どういう事かと言うと、Scala の配列 `Array[Int]` は Java の `int[]` で実装されており、`Array[Double]` は Java の `double[]`、`Array[String]` は Java の `String[]` で実装されている。その一方で、Scala の配列は Java のそれに比べて多くの機能を提供する。まず、Scala の配列は**ジェネリック**であることができる。 つまり、型パラメータか抽象型の `T` に対する `Array[T]` を定義することができる。次に、Scala の配列は Scala の列と互換性があり、`Seq[T]` が期待されている所に `Array[T]` を渡すことができる。さらに、Scala の配列は列の演算の全てをサポートする。以下に具体例で説明する:
 
     scala> val a1 = Array(1, 2, 3)
     a1: Array[Int] = Array(1, 2, 3)

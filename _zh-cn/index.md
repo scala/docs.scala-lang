@@ -53,7 +53,7 @@ sections:
       - title: "语言规范"
         description: "Scala正式语言规范"
         icon: "fa fa-book"
-        link: http://scala-lang.org/files/archive/spec/2.12/
+        link: https://scala-lang.org/files/archive/spec/2.12/
 
   - title: "Scala进展"      
     links:

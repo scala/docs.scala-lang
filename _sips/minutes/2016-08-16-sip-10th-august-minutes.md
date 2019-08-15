@@ -11,11 +11,11 @@ The following agenda was distributed to attendees:
 
 | Topic | Reviewer |
 | --- | --- |
-| [SIP-12: Uncluttering Scala's syntax for control structures](http://docs.scala-lang.org/sips/uncluttering-control.html) | Seth Tisue |
-| [SIP-16: Self-cleaning macros](http://docs.scala-lang.org/sips/self-cleaning-macros.html) | Eugene Burmako |
-| [SIP-21: Spores](http://docs.scala-lang.org/sips/spores.html) | Martin Odersky |
-| [SIP-23: Literal-based singleton types](http://docs.scala-lang.org/sips/42.type.html) | Adriaan Moors |
-| [SIP-24: Repeated by-name parameters](http://docs.scala-lang.org/sips/repeated-byname.html) | Andrew Marki |
+| [SIP-12: Uncluttering Scala's syntax for control structures](https://docs.scala-lang.org/sips/uncluttering-control.html) | Seth Tisue |
+| [SIP-16: Self-cleaning macros](https://docs.scala-lang.org/sips/self-cleaning-macros.html) | Eugene Burmako |
+| [SIP-21: Spores](https://docs.scala-lang.org/sips/spores.html) | Martin Odersky |
+| [SIP-23: Literal-based singleton types](https://docs.scala-lang.org/sips/42.type.html) | Adriaan Moors |
+| [SIP-24: Repeated by-name parameters](https://docs.scala-lang.org/sips/repeated-byname.html) | Andrew Marki |
 | [SIP-27: Trailing commas](https://github.com/scala/docs.scala-lang/pull/533#issuecomment-232959066) | Eugene Burmako |
 
 Jorge Vicente Cantero was the Process Lead and acting secretary of the meeting.
@@ -116,7 +116,7 @@ overdesigned for its purpose).
 
 As these are problems present in the very foundations of macros, he proposes to
 reject the SIP and commits to write up a new proposal based on [Scala
-Meta](http://scalameta.org/), the successor of the old Scala macros, redesigned
+Meta](https://scalameta.org/), the successor of the old Scala macros, redesigned
 from the ground up to overcome the current metaprogramming shortcomings.
 
 Josh agrees that macros are very useful but, as in their existing form, not

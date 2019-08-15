@@ -13,7 +13,7 @@ language: zh-cn
 
 对JVM性能模型的评论常常令人费解，其结论也往往不易理解。由于种种原因，代码也可能不像预期的那样高性能、可扩展。在这里，我们提供了一些示例。
 
-其中一个原因是JVM应用程序的编译过程不同于静态编译语言（见[[2](http://www.ibm.com/developerworks/library/j-jtp12214/)]）。Java和Scala的编译器将源代码转换为JVM的字节码，做了非常少的优化。大多数现代JVM，运行时，会把字节码转化成相应机器架构的机器代码。这个过程被称为即时编译。由于追求运行速度，所以实时编译的代码优化程度较低。为了避免重新编译，所谓的HotSpot编译器只优化了部分经常被运行的代码。这对于基准程序作者来说，这意味着程序每次运行时的性能都可能不同。在同一个JVM实例中多次执行一段相同的代码（比如一个方法）可能会得到非常不同的性能结果，这取决于这段代码在运行过程中是否被优化。另外，在测量某些代码的执行时间时其中可能包含JIT编译器对代码进行优化的时间，因此可能得到不一致的结果。
+其中一个原因是JVM应用程序的编译过程不同于静态编译语言（见[[2](https://www.ibm.com/developerworks/library/j-jtp12214/)]）。Java和Scala的编译器将源代码转换为JVM的字节码，做了非常少的优化。大多数现代JVM，运行时，会把字节码转化成相应机器架构的机器代码。这个过程被称为即时编译。由于追求运行速度，所以实时编译的代码优化程度较低。为了避免重新编译，所谓的HotSpot编译器只优化了部分经常被运行的代码。这对于基准程序作者来说，这意味着程序每次运行时的性能都可能不同。在同一个JVM实例中多次执行一段相同的代码（比如一个方法）可能会得到非常不同的性能结果，这取决于这段代码在运行过程中是否被优化。另外，在测量某些代码的执行时间时其中可能包含JIT编译器对代码进行优化的时间，因此可能得到不一致的结果。
 
 另一个在JVM上隐藏执行的是内存自动管理。每隔一段时间，程序的运行就被阻塞并且启动垃圾收集器。如果被进行基准测试的程序分配了任何堆内存（大部分JVM程序都会分配），垃圾收集器将会工作，因此可能会影响测量结果。为了缓冲垃圾收集的影响，被测量的程序应该运行多次以便触发多次垃圾回收。
 
@@ -176,6 +176,6 @@ collection的大小所对应的实际并发消耗取决于很多因素。部分�
 
 **引用**
 
-1. [Anatomy of a flawed microbenchmark，Brian Goetz](http://www.ibm.com/developerworks/java/library/j-jtp02225/index.html)
-2. [Dynamic compilation and performance measurement, Brian Goetz](http://www.ibm.com/developerworks/library/j-jtp12214/)
+1. [Anatomy of a flawed microbenchmark，Brian Goetz](https://www.ibm.com/developerworks/java/library/j-jtp02225/index.html)
+2. [Dynamic compilation and performance measurement, Brian Goetz](https://www.ibm.com/developerworks/library/j-jtp12214/)
 

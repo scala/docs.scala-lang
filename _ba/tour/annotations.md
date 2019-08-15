@@ -82,7 +82,7 @@ Java ima korisnički definisane metapodatke u formi [anotacija](https://docs.ora
 I upotrijebiti je ovako:
 
 ```
-@Source(URL = "http://coders.com/",
+@Source(URL = "https://coders.com/",
         mail = "support@coders.com")
 public class MyClass extends HisClass ...
 ```
@@ -90,7 +90,7 @@ public class MyClass extends HisClass ...
 Primjena anotacije u Scali izgleda kao poziv konstruktora, dok se za instanciranje Javinih anotacija moraju koristiti imenovani argumenti:
 
 ```
-@Source(URL = "http://coders.com/",
+@Source(URL = "https://coders.com/",
         mail = "support@coders.com")
 class MyScalaClass ...
 ```
@@ -108,14 +108,14 @@ ako se koristi naziv `value` onda se u Javi može koristiti i konstruktor-sintak
 I upotrijebiti je kao:
 
 ```
-@SourceURL("http://coders.com/")
+@SourceURL("https://coders.com/")
 public class MyClass extends HisClass ...
 ```
 
 U ovom slučaju, Scala omogućuje istu sintaksu:
 
 ```
-@SourceURL("http://coders.com/")
+@SourceURL("https://coders.com/")
 class MyScalaClass ...
 ```
 
@@ -123,7 +123,7 @@ Element `mail` je specificiran s podrazumijevanom vrijednošću tako da ne moram
 Međutim, ako trebamo, ne možemo miješati dva Javina stila:
 
 ```
-@SourceURL(value = "http://coders.com/",
+@SourceURL(value = "https://coders.com/",
            mail = "support@coders.com")
 public class MyClass extends HisClass ...
 ```
@@ -131,7 +131,7 @@ public class MyClass extends HisClass ...
 Scala omogućuje veću fleksibilnost u ovom pogledu:
 
 ```
-@SourceURL("http://coders.com/",
+@SourceURL("https://coders.com/",
            mail = "support@coders.com")
     class MyScalaClass ...
 ```

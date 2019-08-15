@@ -11,7 +11,7 @@ redirect_from: "/getting-started-sbt-track/testing-scala-with-sbt-on-the-command
 
 There are multiple libraries and testing methodologies for Scala,
 but in this tutorial, we'll demonstrate one popular option from the ScalaTest framework
-called [FunSuite](http://www.scalatest.org/getting_started_with_fun_suite).
+called [FunSuite](https://www.scalatest.org/getting_started_with_fun_suite).
 We assume you know [how to create a Scala project with sbt](getting-started-with-scala-and-sbt-on-the-command-line.html).
 
 ## Setup
@@ -75,4 +75,4 @@ of `0`.
 
 ## Conclusion
 You've seen one way to test your Scala code. You can learn more about
-ScalaTest's FunSuite on the [official website](http://www.scalatest.org/getting_started_with_fun_suite). You can also check out other testing frameworks such as  [ScalaCheck](https://www.scalacheck.org/) and [Specs2](https://etorreborre.github.io/specs2/).
+ScalaTest's FunSuite on the [official website](https://www.scalatest.org/getting_started_with_fun_suite). You can also check out other testing frameworks such as  [ScalaCheck](https://www.scalacheck.org/) and [Specs2](https://etorreborre.github.io/specs2/).

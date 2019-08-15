@@ -12,10 +12,10 @@ The following agenda was distributed to attendees:
 |Topic|Reviewers| Accepted/Rejected |
 | --- | --- | --- |
 |Discussion and voting on Miles Sabin (Typelevel representative) joining the Committee |  | Accepted
-|[SIP 23: Literal-based singleton types](http://docs.scala-lang.org/sips/42.type.html) | Adriaan Moors | Accepted
-|[SIP-33: Priority-based infix type precedence rules](http://docs.scala-lang.org/sips/make-types-behave-like-expressions.html) | Josh Suereth | Accepted |
-|[SIP-NN: Adding prefix types](http://docs.scala-lang.org/sips/adding-prefix-types.html) | Josh Suereth | Pending |
-|[SIP-35: Opaque types](http://docs.scala-lang.org/sips/opaque-types.html) | Sébastien Doeraene | Not discussed |
+|[SIP 23: Literal-based singleton types](https://docs.scala-lang.org/sips/42.type.html) | Adriaan Moors | Accepted
+|[SIP-33: Priority-based infix type precedence rules](https://docs.scala-lang.org/sips/make-types-behave-like-expressions.html) | Josh Suereth | Accepted |
+|[SIP-NN: Adding prefix types](https://docs.scala-lang.org/sips/adding-prefix-types.html) | Josh Suereth | Pending |
+|[SIP-35: Opaque types](https://docs.scala-lang.org/sips/opaque-types.html) | Sébastien Doeraene | Not discussed |
 |Discussion about the future of Scala 2.13 and 2.14 |  | Not discussed |
 
 
@@ -45,7 +45,7 @@ Minutes were taken by Darja Jovanovic.
 
 **Jorge** opens up the meeting by announcing **Miles Sabin** as a new Committee member, **Miles** joins the Committee meeting.
 
-### [SIP 23: Literal-based singleton types](http://docs.scala-lang.org/sips/42.type.html)
+### [SIP 23: Literal-based singleton types](https://docs.scala-lang.org/sips/42.type.html)
 [YouTube time 6'44''](https://youtu.be/Mhwf15gjL9s?t=402)
 
 **Miles** introduces the SIP, giving a progress overview after taking charge of the SIP and about its implementation in Typelevel Scala.
@@ -66,14 +66,14 @@ The Committee members agree the SIP is ready to be voted for, given the track re
 *See also*:
 Brief explanation about the "The presence of an upper bound of Singleton on a formal type parameter 3rd point in the SIP [YouTube time 14' to 15'35''](https://www.youtube.com/watch?v=Mhwf15gjL9s) and [YouTube Time 17'42'' to 18'20'']( https://youtu.be/Mhwf15gjL9s?t=1069)
 
-### [SIP-33: Priority-based infix type precedence rules](http://docs.scala-lang.org/sips/make-types-behave-like-expressions.html)
+### [SIP-33: Priority-based infix type precedence rules](https://docs.scala-lang.org/sips/make-types-behave-like-expressions.html)
 [YouTube time from 1'34'' -  6'45''](https://youtu.be/Mhwf15gjL9s?t=96)
 
 **Jorge** shortly introduces the SIP and notifies the Committee that the author has amended all the changes as per Committee suggestions. The SIP-33 was split in two SIPs as follows:
 
-a) [SIP-33: Priority-based infix type precedence rules](http://docs.scala-lang.org/sips/make-types-behave-like-expressions.html)
+a) [SIP-33: Priority-based infix type precedence rules](https://docs.scala-lang.org/sips/make-types-behave-like-expressions.html)
 
-b) [SIP-NN: Adding prefix types](http://docs.scala-lang.org/sips/adding-prefix-types.html)
+b) [SIP-NN: Adding prefix types](https://docs.scala-lang.org/sips/adding-prefix-types.html)
 
 **Seth** asks about the implementation status in Dotty and if there are any crucial differences in Scala 2 and Dotty?
 **Martin** and **Sebastien** agree there are none in regards to this SIP.
@@ -82,7 +82,7 @@ The members are all in favour for this change and proceed to voting.
 **Conclusion** : The SIP-33 is accepted by unanimity.
 
 
-### [SIP-NN: Adding prefix types](http://docs.scala-lang.org/sips/adding-prefix-types.html)
+### [SIP-NN: Adding prefix types](https://docs.scala-lang.org/sips/adding-prefix-types.html)
 [YouTube time: 25'00 until the end](https://youtu.be/Mhwf15gjL9s?t=1503)
 
 **Jorge** introduces the SIP's development, based on the idea
@@ -104,7 +104,7 @@ The Committee proceeds with voting on numbering the SIP.
 
 Other announced agenda items were not discussed in this meeting because of the lack of time. They will be addressed in the next meeting.
 
-- [SIP-35: Opaque types](http://docs.scala-lang.org/sips/opaque-types.html)
+- [SIP-35: Opaque types](https://docs.scala-lang.org/sips/opaque-types.html)
 
 - Discussion about the future of Scala 2.13 and 2.14. In concrete, the following ideas that Adriaan has presented publicly in his talk, [the link](https://adriaanm.github.io/reveal.js/scala-2.13-beyond.html#/)
   Some examples of his ideas:

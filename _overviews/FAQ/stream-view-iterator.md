@@ -45,4 +45,4 @@ expected to ever be fetched, compared to the total size of the view.
 
 This answer was originally submitted in response to [this question on Stack Overflow][1].
 
-  [1]: http://stackoverflow.com/q/5159000/53013
+  [1]: https://stackoverflow.com/q/5159000/53013

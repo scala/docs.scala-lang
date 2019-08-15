@@ -16,7 +16,7 @@ discourse: false
 
 **値クラス** (value class) は実行時のオブジェクトの割り当てを回避するための Scala の新しい機構だ。
 これは新たに定義付けされる `AnyVal` のサブクラスによって実現される。
-これは [SIP-15](http://docs.scala-lang.org/sips/pending/value-classes.html) にて提案された。
+これは [SIP-15](https://docs.scala-lang.org/sips/pending/value-classes.html) にて提案された。
 以下に最小限の値クラスの定義を示す:
 
     class Wrapper(val underlying: Int) extends AnyVal
@@ -45,7 +45,7 @@ discourse: false
 
 ## 拡張メソッド
 
-値クラスの使い方の1つに implicit クラス ([SIP-13](http://docs.scala-lang.org/sips/pending/implicit-classes.html)) と組み合わせてメモリ割り当てを必要としない拡張メソッドとして使うというものがある。implicit クラスは拡張メソッドを定義するより便利な構文を提供する一方、値クラスは実行時のオーバーヘッドを無くすことができる。この良い例が標準ライブラリの `RichInt` クラスだ。これは値クラスであるため、`RichInt` のメソッドを使うのに `RichInt` のインスタンスを作る必要はない。
+値クラスの使い方の1つに implicit クラス ([SIP-13](https://docs.scala-lang.org/sips/pending/implicit-classes.html)) と組み合わせてメモリ割り当てを必要としない拡張メソッドとして使うというものがある。implicit クラスは拡張メソッドを定義するより便利な構文を提供する一方、値クラスは実行時のオーバーヘッドを無くすことができる。この良い例が標準ライブラリの `RichInt` クラスだ。これは値クラスであるため、`RichInt` のメソッドを使うのに `RichInt` のインスタンスを作る必要はない。
 
 `RichInt` から抜粋した以下のコードは、それが `Int` を拡張して `3.toHexString` という式が書けるようにしていることを示す:
 
@@ -77,7 +77,7 @@ discourse: false
 ## メモリ割り当てが必要になるとき
 
 JVM は値クラスをサポートしないため、Scala は場合によっては値クラスをインスタンス化する必要がある。
-完全な詳細は [SIP-15](http://docs.scala-lang.org/sips/pending/value-classes.html) を参照してほしい。
+完全な詳細は [SIP-15](https://docs.scala-lang.org/sips/pending/value-classes.html) を参照してほしい。
 
 ### メモリ割り当ての概要
 
@@ -135,7 +135,7 @@ JVM は値クラスをサポートしないため、Scala は場合によって�
 ## 制約
 
 JVM が値クラスという概念をサポートしていないこともあり、値クラスには現在いくつかの制約がある。
-値クラスの実装とその制約の詳細に関しては [SIP-15](http://docs.scala-lang.org/sips/pending/value-classes.html) を参照。
+値クラスの実装とその制約の詳細に関しては [SIP-15](https://docs.scala-lang.org/sips/pending/value-classes.html) を参照。
 
 ### 制約の概要
 

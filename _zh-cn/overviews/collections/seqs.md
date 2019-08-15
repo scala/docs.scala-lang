@@ -12,7 +12,7 @@ language: zh-cn
 ---
 
 
-[Seq](http://www.scala-lang.org/api/current/scala/collection/Seq.html) trait用于表示序列。所谓序列，指的是一类具有一定长度的可迭代访问的对象，其中每个元素均带有一个从0开始计数的固定索引位置。
+[Seq](https://www.scala-lang.org/api/current/scala/collection/Seq.html) trait用于表示序列。所谓序列，指的是一类具有一定长度的可迭代访问的对象，其中每个元素均带有一个从0开始计数的固定索引位置。
 
 序列的操作有以下几种，如下表所示：
 
@@ -75,7 +75,7 @@ language: zh-cn
 |            |              |  
 
 
-特性（trait) [Seq](http://www.scala-lang.org/api/current/scala/collection/Seq.html) 具有两个子特征（subtrait） [LinearSeq](http://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html)和[IndexedSeq](http://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html)。它们不添加任何新的操作，但都提供不同的性能特点：线性序列具有高效的 head 和 tail 操作，而索引序列具有高效的apply, length, 和 (如果可变) update操作。
+特性（trait) [Seq](https://www.scala-lang.org/api/current/scala/collection/Seq.html) 具有两个子特征（subtrait） [LinearSeq](https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html)和[IndexedSeq](https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html)。它们不添加任何新的操作，但都提供不同的性能特点：线性序列具有高效的 head 和 tail 操作，而索引序列具有高效的apply, length, 和 (如果可变) update操作。
 
 常用线性序列有 `scala.collection.immutable.List`和`scala.collection.immutable.Stream`。常用索引序列有 `scala.Array scala.collection.mutable.ArrayBuffer`。Vector 类提供一个在索引访问和线性访问之间有趣的折中。它同时具有高效的恒定时间的索引开销，和恒定时间的线性访问开销。正因为如此，对于混合访问模式，vector是一个很好的基础。后面将详细介绍vector。
 

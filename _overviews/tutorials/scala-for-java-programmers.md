@@ -28,7 +28,7 @@ the Scala tools without knowing too much about the language. Here is
 how it looks:
 
     object HelloWorld {
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         println("Hello, world!")
       }
     }
@@ -107,7 +107,7 @@ of the corresponding Java packages:
     import java.text.DateFormat._
 
     object FrenchDate {
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         val now = new Date
         val df = getDateInstance(LONG, Locale.FRANCE)
         println(df format now)
@@ -200,13 +200,13 @@ endlessly prints the sentence "time flies like an arrow" every
 second.
 
     object Timer {
-      def oncePerSecond(callback: () => Unit) {
+      def oncePerSecond(callback: () => Unit): Unit = {
         while (true) { callback(); Thread sleep 1000 }
       }
-      def timeFlies() {
+      def timeFlies(): Unit = {
         println("time flies like an arrow...")
       }
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         oncePerSecond(timeFlies)
       }
     }
@@ -228,10 +228,10 @@ program using an anonymous function instead of *timeFlies* looks
 like that:
 
     object TimerAnonymous {
-      def oncePerSecond(callback: () => Unit) {
+      def oncePerSecond(callback: () => Unit): Unit = {
         while (true) { callback(); Thread sleep 1000 }
       }
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         oncePerSecond(() =>
           println("time flies like an arrow..."))
       }
@@ -288,7 +288,7 @@ order to call them, one has to put an empty pair of parenthesis after
 their name, as the following example shows:
 
     object ComplexNumbers {
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         val c = new Complex(1.2, 3.4)
         println("imaginary part: " + c.im())
       }
@@ -506,7 +506,7 @@ several operations on the expression `(x+x)+(7+y)`: it first computes
 its value in the environment `{ x -> 5, y -> 7 }`, then
 computes its derivative relative to `x` and then `y`.
 
-    def main(args: Array[String]) {
+    def main(args: Array[String]): Unit = {
       val exp: Tree = Sum(Sum(Var("x"),Var("x")),Sum(Const(7),Var("y")))
       val env: Environment = { case "x" => 5 case "y" => 7 }
       println("Expression: " + exp)
@@ -692,7 +692,7 @@ contained by the cell. For example, to create and use a cell holding
 an integer, one could write the following:
 
     object IntegerReference {
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         val cell = new Reference[Int]
         cell.set(13)
         println("Reference contains the half of " + (cell.get * 2))

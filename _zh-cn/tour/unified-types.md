@@ -21,7 +21,7 @@ prerequisite-knowledge: classes, basics
 
 ## Scala类型层次结构 ##
 
-[`Any`](http://www.scala-lang.org/api/2.12.1/scala/Any.html)是所有类型的超类型，也称为顶级类
+[`Any`](https://www.scala-lang.org/api/2.12.1/scala/Any.html)是所有类型的超类型，也称为顶级类
 型。它定义了一些通用的方法如`equals`、`hashCode`和`toString`。`Any`有两个直接子类：`AnyVal`和`AnyRef`。
 
 `AnyVal`代表值类型。有9个预定义的非空的值类型分别是：`Double`、`Float`、`Long`、`Int`、`Short`、`Byte`、`Char`、`Unit`和`Boolean`。`Unit`是不带任何意义的值类型，它仅有一个实例可以像这样声明：`()`。所有的函数必须有返回，所以说有时候`Unit`也是有用的返回类型。

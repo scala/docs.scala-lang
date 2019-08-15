@@ -65,7 +65,7 @@ Scalaは言語メカニズムのユニークな組み合わせを提供します
 
 多くのケースで、これはマクロのようなメタプログラミングの機能を使わずに実現できます。例えば、
 
-* [暗黙のクラス](http://docs.scala-lang.org/overviews/core/implicit-classes.html) で既存の型に拡張メソッドを追加できます。
+* [暗黙のクラス](https://docs.scala-lang.org/overviews/core/implicit-classes.html) で既存の型に拡張メソッドを追加できます。
 
 * [文字列補間](/ja/overviews/core/string-interpolation.html) はカスタム補間を使ってユーザー拡張可能です。
 

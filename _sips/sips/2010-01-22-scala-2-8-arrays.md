@@ -7,7 +7,7 @@ permalink: /sips/:title.html
 redirect_from: /sips/pending/scala-2-8-arrays.html
 ---
 
-*(This is an older SID, its original PDF can be found [here](http://www.scala-lang.org/sid/7))*
+*(This is an older SID, its original PDF can be found [here](https://www.scala-lang.org/sid/7))*
 
 **Martin Odersky**
 
@@ -281,5 +281,5 @@ three language features will be described in more detail in separate notes.
 2. [Matt Malone. The mystery of the parameterized array. Blog, August 2009.][2]
 3. David MacIver. Refactoring scala.array. Pre-SIP (Scala Improvement Proposal), October 2008.
 
-  [1]: http://www.drmaciver.com/2008/06/scala-arrays
-  [2]: http://oldfashionedsoftware.com/2009/08/05/the-mystery-of-the-parameterized-array
+  [1]: https://www.drmaciver.com/2008/06/scala-arrays
+  [2]: https://oldfashionedsoftware.com/2009/08/05/the-mystery-of-the-parameterized-array

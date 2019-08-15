@@ -96,7 +96,7 @@ Scala的并行容器库设计创意般的同Scala的（序列）容器库（从2
 
 注意：那些天生就有序的容器（意思是元素必须一个接一个的访问），像lists，queues和streams，通过拷贝元素到类似的并行容器中被转换为它们的并行对应物。例如List--被转换为一个标准的不可变的并行序列中，就是ParVector。当然，其他容器类型不需要这些拷贝的开销，比如：Array，Vector，HashMap等等。
 
-关于并行容器的转换的更多信息请参见 [conversions](http://docs.scala-lang.org/overviews/parallel-collections/conversions.html) 和 [concrete parallel collections classes](http://docs.scala-lang.org/overviews/parallel-collections/concrete-parallel-collections.html)章节
+关于并行容器的转换的更多信息请参见 [conversions](https://docs.scala-lang.org/overviews/parallel-collections/conversions.html) 和 [concrete parallel collections classes](https://docs.scala-lang.org/overviews/parallel-collections/concrete-parallel-collections.html)章节
 
 ## 语义(semantic)
 

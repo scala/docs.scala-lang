@@ -14,7 +14,7 @@ redirect_from: /sips/pending/adding-prefix-types.html
 
 | Date          | Version                                  |
 | ------------- | ---------------------------------------- |
-| Oct 25th 2017 | Split prefix types from [SIP33](http://docs.scala-lang.org/sips/priority-based-infix-type-precedence.html), and emphasize motivation |
+| Oct 25th 2017 | Split prefix types from [SIP33](https://docs.scala-lang.org/sips/priority-based-infix-type-precedence.html), and emphasize motivation |
 | Nov 29th 2017 | Updated SIP according to feedback in the PR, and recent update to SIP23 |
 | Dec 1st 2017  | Added another use-case for prefix type `~` |
 
@@ -23,7 +23,7 @@ Your feedback is welcome! If you're interested in discussing this proposal, head
 ---
 
 ## Introduction
-Currently scala supports unary prefix operators (`-`, `+`, `~`, `!`) for expressions (e.g., `def unary_-`) and does not support prefix types.  See the Scala specification [Prefix Operations](http://scala-lang.org/files/archive/spec/2.12/06-expressions.html#prefix-operations) section.
+Currently scala supports unary prefix operators (`-`, `+`, `~`, `!`) for expressions (e.g., `def unary_-`) and does not support prefix types.  See the Scala specification [Prefix Operations](https://scala-lang.org/files/archive/spec/2.12/06-expressions.html#prefix-operations) section.
 
 **Prefix expression vs. prefix type example**:
 
@@ -66,7 +66,7 @@ A requirement for `unary_~` is described by Martin Odersky at [this proposal](ht
 
 #### Singleton-ops library example
 
-The [singleton-ops library](https://github.com/fthomas/singleton-ops) with [Typelevel Scala](https://github.com/typelevel/scala) (which implemented [SIP-23](http://docs.scala-lang.org/sips/pending/42.type.html)) enable developers to express literal type operations more intuitively. 
+The [singleton-ops library](https://github.com/fthomas/singleton-ops) with [Typelevel Scala](https://github.com/typelevel/scala) (which implemented [SIP-23](https://docs.scala-lang.org/sips/pending/42.type.html)) enable developers to express literal type operations more intuitively. 
 
 Consider the following example, where `foo` has two equivalent implementations, one using types, while the other uses terms:
 

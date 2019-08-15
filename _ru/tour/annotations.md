@@ -76,7 +76,7 @@ Java имеет определяемые пользователем метада
 А затем использовать следующим образом
 
 ```
-@Source(URL = "http://coders.com/",
+@Source(URL = "https://coders.com/",
         mail = "support@coders.com")
 public class MyClass extends HisClass ...
 ```
@@ -84,7 +84,7 @@ public class MyClass extends HisClass ...
 Использование аннотации в Scala похоже на вызов конструктора. Для создания экземпляра из Java аннотации необходимо использовать именованные аргументы:
 
 ```
-@Source(URL = "http://coders.com/",
+@Source(URL = "https://coders.com/",
         mail = "support@coders.com")
 class MyScalaClass ...
 ```
@@ -101,21 +101,21 @@ class MyScalaClass ...
 А затем можно использовать следующим образом
 
 ```
-@SourceURL("http://coders.com/")
+@SourceURL("https://coders.com/")
 public class MyClass extends HisClass ...
 ```
 
 В этом случае Scala предоставляет такую же возможность
 
 ```
-@SourceURL("http://coders.com/")
+@SourceURL("https://coders.com/")
 class MyScalaClass ...
 ```
 
 Элемент `mail` был указан со значением по умолчанию, поэтому нам не нужно явно указывать его значение. Мы не можем смешивать эти два стиля в Java:
 
 ```
-@SourceURL(value = "http://coders.com/",
+@SourceURL(value = "https://coders.com/",
            mail = "support@coders.com")
 public class MyClass extends HisClass ...
 ```
@@ -123,7 +123,7 @@ public class MyClass extends HisClass ...
 Scala обеспечивает большую гибкость в этом отношении
 
 ```
-@SourceURL("http://coders.com/",
+@SourceURL("https://coders.com/",
            mail = "support@coders.com")
     class MyScalaClass ...
 ```

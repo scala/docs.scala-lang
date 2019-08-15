@@ -74,7 +74,7 @@ Java 注解有用户自定义元数据的形式 ，参考 [annotations](https://
 并且按如下方式使用它
 
 ```
-@Source(URL = "http://coders.com/",
+@Source(URL = "https://coders.com/",
         mail = "support@coders.com")
 public class MyClass extends HisClass ...
 ```
@@ -82,7 +82,7 @@ public class MyClass extends HisClass ...
 Scala 中的注解应用看起来像构造函数调用，要实例化 Java 注解，必须使用命名参数：
 
 ```
-@Source(URL = "http://coders.com/",
+@Source(URL = "https://coders.com/",
         mail = "support@coders.com")
 class MyScalaClass ...
 ```
@@ -98,21 +98,21 @@ class MyScalaClass ...
 然后按如下方式使用
 
 ```
-@SourceURL("http://coders.com/")
+@SourceURL("https://coders.com/")
 public class MyClass extends HisClass ...
 ```
 
 在这种情况下， Scala 提供了相同的可能性
 
 ```
-@SourceURL("http://coders.com/")
+@SourceURL("https://coders.com/")
 class MyScalaClass ...
 ```
 
 `mail` 元素在定义时设有默认值，因此我们不需要显式地为它提供值。 但是，如果我们需要显示地提供值，我们则不能在 Java 中混合使用这两种方式：
 
 ```
-@SourceURL(value = "http://coders.com/",
+@SourceURL(value = "https://coders.com/",
            mail = "support@coders.com")
 public class MyClass extends HisClass ...
 ```
@@ -120,7 +120,7 @@ public class MyClass extends HisClass ...
 Scala 在这方面提供了更大的灵活性
 
 ```
-@SourceURL("http://coders.com/",
+@SourceURL("https://coders.com/",
            mail = "support@coders.com")
     class MyScalaClass ...
 ```

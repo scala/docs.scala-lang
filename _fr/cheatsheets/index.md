@@ -5,7 +5,7 @@ title: Scala Cheatsheet
 partof: cheatsheet
 
 by: Brendan O'Connor
-about: Grâce à  <a href="http://brenocon.com/">Brendan O'Connor</a>, ce memento vise à être un guide de référence rapide pour les constructions syntaxiques en Scala. Licencié par Brendan O'Connor sous licence CC-BY-SA 3.0.
+about: Grâce à  <a href="https://brenocon.com/">Brendan O'Connor</a>, ce memento vise à être un guide de référence rapide pour les constructions syntaxiques en Scala. Licencié par Brendan O'Connor sous licence CC-BY-SA 3.0.
 
 language: fr
 ---
@@ -47,7 +47,7 @@ language: fr
 |  `var (x,y,z) = (1,2,3)`                                                                                 |  liaison déstructurée : le déballage du tuple se fait par le "pattern matching". |
 |  <span class="label important">Bad</span>`var x,y,z = (1,2,3)`                                           |  erreur cachée : chaque variable est associée au tuple au complet. |
 |  `var xs = List(1,2,3)`                                                                                  |  liste (immuable). |
-|  `xs(2)`                                                                                                 |  indexe un élément par le biais des parenthèses. ([transparents](http://www.slideshare.net/Odersky/fosdem-2009-1013261/27)) |
+|  `xs(2)`                                                                                                 |  indexe un élément par le biais des parenthèses. ([transparents](https://www.slideshare.net/Odersky/fosdem-2009-1013261/27)) |
 |  `1 :: List(2,3)`                                                                                        |  créé une liste par le biais de l'opérateur "cons".|
 |  `1 to 5` _est équivalent à_ `1 until 6` <br> `1 to 10 by 2`                                             |  sucre syntaxique pour les plages de valeurs. |
 |  `()` _(parenthèses vides)_                                                                              |  l'unique membre de type Unit  (à l'instar de void en C/Java). |
@@ -56,11 +56,11 @@ language: fr
 |  `if (check) happy` _est équivalent à_ <br> `if (check) happy else ()`                                   |  sucre syntaxique pour un test conditionnel. |
 |  `while (x < 5) { println(x); x += 1}`                                                                   |  boucle while. |
 |  `do { println(x); x += 1} while (x < 5)`                                                                |  boucle do while. |
-|  `import scala.util.control.Breaks._`<br>`breakable {`<br>`    for (x <- xs) {`<br>`        if (Math.random < 0.1) break`<br>`    }`<br>`}`|  break. ([transparents](http://www.slideshare.net/Odersky/fosdem-2009-1013261/21)) |
+|  `import scala.util.control.Breaks._`<br>`breakable {`<br>`    for (x <- xs) {`<br>`        if (Math.random < 0.1) break`<br>`    }`<br>`}`|  break. ([transparents](https://www.slideshare.net/Odersky/fosdem-2009-1013261/21)) |
 |  `for (x <- xs if x%2 == 0) yield x*10` _est équivalent à_ <br>`xs.filter(_%2 == 0).map(_*10)`                    |  *for comprehension*: filter/map |
 |  `for ((x,y) <- xs zip ys) yield x*y` _est équivalent à_ <br>`(xs zip ys) map { case (x,y) => x*y }`              |  *for comprehension* : liaison déstructurée |
 |  `for (x <- xs; y <- ys) yield x*y` _est équivalent à_ <br>`xs flatMap {x => ys map {y => x*y}}`                  |  *for comprehension* : produit cartésien. |
-|  `for (x <- xs; y <- ys) {`<br>    `println("%d/%d = %.1f".format(x, y, x/y.toFloat))`<br>`}`                     |  *for comprehension* : à la manière impérative <br>[sprintf-style](http://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax) |
+|  `for (x <- xs; y <- ys) {`<br>    `println("%d/%d = %.1f".format(x, y, x/y.toFloat))`<br>`}`                     |  *for comprehension* : à la manière impérative <br>[sprintf-style](https://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax) |
 |  `for (i <- 1 to 5) {`<br>    `println(i)`<br>`}`                                                        |  *for comprehension* : itère jusqu'à la borne supérieure comprise. |
 |  `for (i <- 1 until 5) {`<br>    `println(i)`<br>`}`                                                     |  *for comprehension* : itère jusqu'à la borne supérieure non comprise. |
 |  <span id="pattern_matching" class="h2">pattern matching</span>                                                         |                 |

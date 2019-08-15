@@ -1,6 +1,6 @@
 ---
 title: "Scala for the Impatient"
-link: http://www.horstmann.com/scala/index.html
+link: https://www.horstmann.com/scala/index.html
 image: /resources/img/books/scala_for_the_impatient.png
 status: Available Now
 authors: ["Cay S. Horstmann"]

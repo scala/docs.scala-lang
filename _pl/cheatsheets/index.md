@@ -5,7 +5,7 @@ title: Scalacheat
 partof: cheatsheet
 
 by: Filip Czaplicki
-about: Podziękowania dla <a href="http://brenocon.com/">Brendan O'Connor</a>. Ten cheatsheet ma być szybkim podsumowaniem konstrukcji składniowych Scali. Licencjonowany przez Brendan O'Connor pod licencją CC-BY-SA 3.0.
+about: Podziękowania dla <a href="https://brenocon.com/">Brendan O'Connor</a>. Ten cheatsheet ma być szybkim podsumowaniem konstrukcji składniowych Scali. Licencjonowany przez Brendan O'Connor pod licencją CC-BY-SA 3.0.
 
 language: pl
 ---
@@ -47,7 +47,7 @@ language: pl
 |  `var (x,y,z) = (1,2,3)`                                                                                 |  przypisanie z podziałem: rozpakowywanie krotki przy pomocy dopasowywania wzorca. |
 |  <span class="label important">Źle</span>`var x,y,z = (1,2,3)`                                           |  ukryty błąd: do każdego przypisana cała krotka. |
 |  `var xs = List(1,2,3)`                                                                                  |  lista (niezmienna). |
-|  `xs(2)`                                                                                                 |  indeksowanie za pomocą nawiasów. ([slajdy](http://www.slideshare.net/Odersky/fosdem-2009-1013261/27)) |
+|  `xs(2)`                                                                                                 |  indeksowanie za pomocą nawiasów. ([slajdy](https://www.slideshare.net/Odersky/fosdem-2009-1013261/27)) |
 |  `1 :: List(2,3)`                                                                                        |  operator dołożenia elementu na początek listy. |
 |  `1 to 5` _to samo co_ `1 until 6` <br> `1 to 10 by 2`                                                      |  składnia dla przedziałów. |
 |  `()` _(puste nawiasy)_                                                                                   |  jedyny obiekt typu Unit (podobnie jak void w C/Java). |
@@ -56,11 +56,11 @@ language: pl
 |  `if (check) happy` _to samo co_ <br> `if (check) happy else ()`                                            |  lukier składniowy dla warunku. |
 |  `while (x < 5) { println(x); x += 1}`                                                                   |  pętla while. |
 |  `do { println(x); x += 1} while (x < 5)`                                                                |  pętla do while. |
-|  `import scala.util.control.Breaks._`<br>`breakable {`<br>`    for (x <- xs) {`<br>`        if (Math.random < 0.1) break`<br>`    }`<br>`}`|  instrukcja przerwania pętli (break). ([slides](http://www.slideshare.net/Odersky/fosdem-2009-1013261/21)) |
+|  `import scala.util.control.Breaks._`<br>`breakable {`<br>`    for (x <- xs) {`<br>`        if (Math.random < 0.1) break`<br>`    }`<br>`}`|  instrukcja przerwania pętli (break). ([slides](https://www.slideshare.net/Odersky/fosdem-2009-1013261/21)) |
 |  `for (x <- xs if x%2 == 0) yield x*10` _to samo co_ <br>`xs.filter(_%2 == 0).map(_*10)`                    |  instrukcja for: filtrowanie / mapowanie |
 |  `for ((x,y) <- xs zip ys) yield x*y` _to samo co_ <br>`(xs zip ys) map { case (x,y) => x*y }`              |  instrukcja for: przypisanie z podziałem |
 |  `for (x <- xs; y <- ys) yield x*y` _to samo co_ <br>`xs flatMap {x => ys map {y => x*y}}`                  |  instrukcja for: iloczyn kartezjański |
-|  `for (x <- xs; y <- ys) {`<br>    `println("%d/%d = %.1f".format(x, y, x/y.toFloat))`<br>`}`                     |  instrukcja for: imperatywnie<br>[sprintf-style](http://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax) |
+|  `for (x <- xs; y <- ys) {`<br>    `println("%d/%d = %.1f".format(x, y, x/y.toFloat))`<br>`}`                     |  instrukcja for: imperatywnie<br>[sprintf-style](https://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax) |
 |  `for (i <- 1 to 5) {`<br>    `println(i)`<br>`}`                                                        |  instrukcja for: iterowanie aż do górnej granicy |
 |  `for (i <- 1 until 5) {`<br>    `println(i)`<br>`}`                                                     |  instrukcja for: iterowanie poniżej górnej granicy |
 |  <span id="pattern_matching" class="h2">pattern matching (dopasowywanie wzorca)</span>                                                         |                 |

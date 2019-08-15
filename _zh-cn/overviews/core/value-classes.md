@@ -13,7 +13,7 @@ discourse: false
 
 ## 引言
 
-Value classes是在[SIP-15](http://docs.scala-lang.org/sips/pending/value-classes.html)中提出的一种通过继承AnyVal类来避免运行时对象分配的新机制。以下是一个最简的value class。
+Value classes是在[SIP-15](https://docs.scala-lang.org/sips/pending/value-classes.html)中提出的一种通过继承AnyVal类来避免运行时对象分配的新机制。以下是一个最简的value class。
 
     class Wrapper(val underlying: Int) extends AnyVal
 
@@ -37,7 +37,7 @@ Value class只能继承universal traits，但其自身不能再被继承。所�
 
 ## 扩展方法
 
-关于value类的一个用例，是将它们和隐含类联合（[SIP-13](http://docs.scala-lang.org/sips/pending/implicit-classes.html)）以获得免分配扩展方法。使用隐含类可以提供便捷的语法来定义扩展方法，同时 value 类移除运行时开销。一个好的例子是在标准库里的RichInt类。RichInt 继承自Int类型并附带一些方法。由于它是一个 value类，使用RichInt 方法时不需要创建一个RichInt 的实例。
+关于value类的一个用例，是将它们和隐含类联合（[SIP-13](https://docs.scala-lang.org/sips/pending/implicit-classes.html)）以获得免分配扩展方法。使用隐含类可以提供便捷的语法来定义扩展方法，同时 value 类移除运行时开销。一个好的例子是在标准库里的RichInt类。RichInt 继承自Int类型并附带一些方法。由于它是一个 value类，使用RichInt 方法时不需要创建一个RichInt 的实例。
 
 下面有关RichInt的代码片段示范了RichInt是如何继承Int来允许3.toHexString的表达式：
 

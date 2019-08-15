@@ -76,7 +76,7 @@ Javaには[アノテーション](https://docs.oracle.com/javase/tutorial/java/a
 そして、それは以下のように適用されます。
 
 ```
-@Source(URL = "http://coders.com/",
+@Source(URL = "https://coders.com/",
         mail = "support@coders.com")
 public class MyClass extends TheirClass ...
 ```
@@ -84,7 +84,7 @@ public class MyClass extends TheirClass ...
 Scalaでのアノテーションの適用はコンストラクタの呼び出しと似ています。Javaのアノテーションをインスタンス化するためには名前付き引数を使う必要があります。
 
 ```
-@Source(URL = "http://coders.com/",
+@Source(URL = "https://coders.com/",
         mail = "support@coders.com")
 class MyScalaClass ...
 ```
@@ -101,21 +101,21 @@ class MyScalaClass ...
 そして以下のように適用します。
 
 ```
-@SourceURL("http://coders.com/")
+@SourceURL("https://coders.com/")
 public class MyClass extends TheirClass ...
 ```
 
 この場合、Scalaでも同じことができます。
 
 ```
-@SourceURL("http://coders.com/")
+@SourceURL("https://coders.com/")
 class MyScalaClass ...
 ```
 
 `mail`要素はデフォルト値つきで定義されているので、明示的に値を指定する必要がありません。しかしながら、もし値を指定する必要がある場合、Javaでは2つのスタイルを混ぜて組み合わせることはできません。
 
 ```
-@SourceURL(value = "http://coders.com/",
+@SourceURL(value = "https://coders.com/",
            mail = "support@coders.com")
 public class MyClass extends TheirClass ...
 ```
@@ -123,7 +123,7 @@ public class MyClass extends TheirClass ...
 Scalaはこの点においてより柔軟です。
 
 ```
-@SourceURL("http://coders.com/",
+@SourceURL("https://coders.com/",
            mail = "support@coders.com")
     class MyScalaClass ...
 ```

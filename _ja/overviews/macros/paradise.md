@@ -22,7 +22,7 @@ title: マクロパラダイス
 マクロパラダイス (Macro paradise) とは Scala の複数のバージョンをサポートするコンパイラプラグインで、一般向けにリリースされている <code>scalac</code> と共に正しく動作するように設計されている。
 これによって、将来の Scala に取り込まれるよりもいち早く最新のマクロ機能を使えるようになっている。
 [サポートされている機能とバージョンの一覧](/ja/overviews/macros/roadmap.html))に関してはロードマップページを、
-動作の保証に関しては[マクロパラダイスのアナウンスメント](http://scalamacros.org/news/2013/08/07/roadmap-for-macro-paradise.html)を参照してほしい。
+動作の保証に関しては[マクロパラダイスのアナウンスメント](https://scalamacros.org/news/2013/08/07/roadmap-for-macro-paradise.html)を参照してほしい。
 
     ~/210x $ scalac -Xplugin:paradise_*.jar -Xshow-phases
         phase name  id  description
@@ -44,7 +44,7 @@ title: マクロパラダイス
 
     addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0-M4" cross CrossVersion.full)
 
-マクロパラダイスを Maven から利用するには、Stack Overflow の [Enabling the macro-paradise Scala compiler plugin in Maven projects](http://stackoverflow.com/questions/19086241/enabling-the-macro-paradise-scala-compiler-plugin-in-maven-projects) に書かれた手順に従ってほしい。
+マクロパラダイスを Maven から利用するには、Stack Overflow の [Enabling the macro-paradise Scala compiler plugin in Maven projects](https://stackoverflow.com/questions/19086241/enabling-the-macro-paradise-scala-compiler-plugin-in-maven-projects) に書かれた手順に従ってほしい。
 (Sonatype snapshots と `scala-reflect.jar` への依存性を追加することにも注意)
 
     <compilerPlugins>

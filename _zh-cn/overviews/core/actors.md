@@ -15,7 +15,7 @@ discourse: false
 
 本指南介绍了Scala 2.8和2.9中`scala.actors`包的API。这个包的内容因为逻辑上相通，所以放到了同一个类型的包内。这个trait在每个章节里面都会有所涉及。这章的重点在于这些traits所定义的各种方法在运行状态时的行为，由此来补充现有的Scala基础API。
 
-注意：在Scala 2.10版本中这个Actors库将是过时的，并且在未来Scala发布的版本中将会被移除。开发者应该使用在`akka.actor`包中[Akka](http://akka.io/) actors来替代它。想了解如何将代码从Scala actors迁移到Akka请参考[Actors 迁移指南](http://docs.scala-lang.org/overviews/core/actors-migration-guide.html)章节。
+注意：在Scala 2.10版本中这个Actors库将是过时的，并且在未来Scala发布的版本中将会被移除。开发者应该使用在`akka.actor`包中[Akka](https://akka.io/) actors来替代它。想了解如何将代码从Scala actors迁移到Akka请参考[Actors 迁移指南](https://docs.scala-lang.org/overviews/core/actors-migration-guide.html)章节。
 
 ## Actor trait：Reactor, ReplyReactor和Actor
 
