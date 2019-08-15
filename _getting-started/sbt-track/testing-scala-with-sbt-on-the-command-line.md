@@ -71,7 +71,34 @@ indeed 27. The `===` is part of ScalaTest and provides clean error messages.
 ## Adding another test case
 1. Add another `assert` statement after the first one that checks for the cube
 of `0`.
+
+    ```
+      import org.scalatest.FunSuite
+    
+      class CubeCalculatorTest extends FunSuite {
+          test("CubeCalculator.cube") {
+              assert(CubeCalculator.cube(3) === 27)
+              assert(CubeCalculator.cube(0) === 0)
+          }
+      }
+    ```
+
 1. Execute `sbt test` again to see the results.
+
+    ```
+    sbt test
+    [info] Loading global plugins from /Users/username/.sbt/0.13/plugins
+    [info] Loading project definition from /Users/username/workspace/sandbox/my-something-project/project
+    [info] Set current project to scalatest-example (in build file:/Users/username/workspace/sandbox/my-something-project/)
+    [info] CubeCalculatorTest:
+    [info] - CubeCalculator.cube
+    [info] Run completed in 267 milliseconds.
+    [info] Total number of tests run: 1
+    [info] Suites: completed 1, aborted 0
+    [info] Tests: succeeded 1, failed 0, canceled 0, ignored 0, pending 0
+    [info] All tests passed.
+    [success] Total time: 1 s, completed Feb 2, 2017 7:37:31 PM
+    ```
 
 ## Conclusion
 You've seen one way to test your Scala code. You can learn more about
