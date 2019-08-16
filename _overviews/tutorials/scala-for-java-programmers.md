@@ -38,8 +38,7 @@ it consists of one method called `main` which takes the command
 line arguments, an array of strings, as parameter; the body of this
 method consists of a single call to the predefined method `println`
 with the friendly greeting as argument. The `main` method does not
-return a value (it is a procedure method). Therefore, it is not necessary
-to declare a return type.
+return a value. Therefore, its return type is declared as `Unit`.
 
 What is less familiar to Java programmers is the `object`
 declaration containing the `main` method. Such a declaration
