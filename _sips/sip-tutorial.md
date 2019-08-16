@@ -36,9 +36,9 @@ If you would like a starting point, clone the [SIP Template](./sip-template.html
 
 See the [source](https://github.com/scala/docs.scala-lang/blob/master/_sips/sip-template.md) for this document (`sip-tutorial.md`) for how to do syntax highlighting.
 
-{% highlight scala %}
+```scala
 class Foo
-{% endhighlight %}
+```
 
 
 ## Testing changes ##

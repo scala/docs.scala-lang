@@ -42,7 +42,7 @@ want to get involved.
 
 Code heavy description of how the library functionality can be used.
 
-{% highlight scala %}
+```scala
 // here is some example scala code, highlighted nicely
 import scala.concurrent._
 
@@ -50,7 +50,7 @@ class Foo extends Bar {
   val x = 10
   def yo(name: String): String = s"hello $name"
 }
-{% endhighlight %}
+```
 
 ### Comparison Examples
 
