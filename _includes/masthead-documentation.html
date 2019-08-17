@@ -47,7 +47,7 @@
           </div>
           <div class="more-resources">&nbsp;
             {% if section.more-resources %}
-              <span class="heading">More Resources: </span>
+              <span class="heading">{{ page.more-resources-label }}: </span>
               <ul>
               {% for resource in section.more-resources %}
                 <li><a href="{{ site.baseurl }}{{ resource.url }}">{{ resource.title }}</a></li>

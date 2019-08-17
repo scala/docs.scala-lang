@@ -5,8 +5,8 @@ languages: [ja, zh-cn]
 namespace: root
 partof: documentation
 discourse: true
-
 # Content masthead links
+more-resources-label: More Resources
 sections:
 
   - title: "First Steps..."

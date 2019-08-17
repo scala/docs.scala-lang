@@ -6,6 +6,7 @@ partof: documentation
 discourse: true
 
 # Content masthead links
+more-resources-label: 更多资源
 sections:
 
   - title: "第一步..."
