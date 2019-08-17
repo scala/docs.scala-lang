@@ -4,7 +4,7 @@
     - title: Current
       url: https://www.scala-lang.org/api/current/
     - title: Nightly
-      url: https://www.scala-lang.org/files/archive/nightly/2.12.x/api/2.12.x/
+      url: https://www.scala-lang.org/files/archive/nightly/2.13.x/api/2.13.x/
     - title: All Versions
       url: "/api/all.html"
 - title: Learn
@@ -28,7 +28,7 @@
     - title: Scala FAQs
       url: "/tutorials/FAQ/index.html"
     - title: Language Spec
-      url: http://scala-lang.org/files/archive/spec/2.12/
+      url: http://scala-lang.org/files/archive/spec/2.13/
 - title: Style Guide
   url: "/style/index.html"
 - title: Cheatsheet
