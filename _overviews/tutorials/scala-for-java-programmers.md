@@ -327,6 +327,14 @@ inherited from `Object`.
         "" + re + (if (im >= 0) "+" else "") + im + "i"
     }
 
+We can call overridden `toString` method as below.
+
+    object ComplexNumbers {
+      def main(args: Array[String]) {
+        val c = new Complex(1.2, 3.4)
+        println("Overridden toString(): " + c.toString())
+      }
+    }
 
 ## Case Classes and Pattern Matching
 
