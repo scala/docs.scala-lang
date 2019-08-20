@@ -1,6 +1,5 @@
 ---
 layout: sips
-discourse: true
 title: SIP-NN - Quote escapes for interpolations
 ---
 

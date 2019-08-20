@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Programmatic Use of Scala REPL
-
-discourse: true
-
 partof: repl
 overview-name: REPL
 

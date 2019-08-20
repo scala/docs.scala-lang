@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: 具象並列コレクションクラス
-
-discourse: false
-
 partof: parallel-collections
 overview-name: Parallel Collections
 

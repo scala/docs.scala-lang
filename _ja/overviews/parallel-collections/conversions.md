@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: 並列コレクションへの変換
-
-discourse: false
-
 partof: parallel-collections
 overview-name: Parallel Collections
 

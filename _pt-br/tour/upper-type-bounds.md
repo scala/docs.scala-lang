@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Limitante Superior de Tipos
-
-discourse: false
-
 partof: scala-tour
 
 num: 19

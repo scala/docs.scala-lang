@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Blackbox Vs Whitebox
-
-discourse: true
-
 partof: macros
 overview-name: Macros
 

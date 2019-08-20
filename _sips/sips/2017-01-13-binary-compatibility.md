@@ -1,8 +1,6 @@
 ---
 layout: sip
 title: SIP-NN - Improving binary compatibility with @stableABI
-discourse: true
-
 vote-status: pending
 permalink: /sips/:title.html
 redirect_from: /sips/pending/binary-compatibility.html

@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: 创建自定义并行容器
-
-discourse: false
-
 partof: parallel-collections
 overview-name: Parallel Collections
 

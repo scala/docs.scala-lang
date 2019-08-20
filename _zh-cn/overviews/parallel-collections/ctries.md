@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: 并发字典树
-
-discourse: false
-
 partof: parallel-collections
 overview-name: Parallel Collections
 

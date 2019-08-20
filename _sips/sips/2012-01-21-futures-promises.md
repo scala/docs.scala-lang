@@ -1,8 +1,6 @@
 ---
 layout: sip
-discourse: true
 title: SIP-14 - Futures and Promises
-
 vote-status: complete
 vote-text: This SIP has already been accepted and completed.
 permalink: /sips/:title.html

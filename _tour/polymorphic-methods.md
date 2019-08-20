@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Polymorphic Methods
-
-discourse: true
-
 partof: scala-tour
 
 num: 28

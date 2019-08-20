@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Environment, Universes, and Mirrors
-
-discourse: true
-
 partof: reflection
 overview-name: Reflection
 

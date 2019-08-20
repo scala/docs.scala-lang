@@ -3,8 +3,6 @@ layout: singlepage-overview
 title: Tutorial de Scala para programadores Java
 
 partof: scala-for-java-programmers
-
-discourse: true
 language: es
 ---
 

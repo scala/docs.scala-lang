@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Tipos Unificados
-
-discourse: false
-
 partof: scala-tour
 
 num: 30

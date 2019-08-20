@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Traits
-
-discourse: false
-
 partof: scala-tour
 
 num: 5

@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Clases Concretas de las Colecciones Paralelas
-
-discourse: false
-
 partof: parallel-collections
 overview-name: Parallel Collections
 

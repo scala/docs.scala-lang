@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 하위 타입 경계
-
-discourse: false
-
 partof: scala-tour
 
 num: 20

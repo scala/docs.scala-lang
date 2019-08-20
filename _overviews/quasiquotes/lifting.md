@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Lifting
-
-discourse: true
-
 partof: quasiquotes
 overview-name: Quasiquotes
 

@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: 並列コレクションの設定
-
-discourse: false
-
 partof: parallel-collections
 overview-name: Parallel Collections
 

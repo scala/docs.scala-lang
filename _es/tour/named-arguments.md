@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Parámetros nombrados
-
-discourse: false
-
 partof: scala-tour
 
 num: 35

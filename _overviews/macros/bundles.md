@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Macro Bundles
-
-discourse: true
-
 partof: macros
 overview-name: Macros
 

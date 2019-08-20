@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Unlifting
-
-discourse: true
-
 partof: quasiquotes
 overview-name: Quasiquotes
 

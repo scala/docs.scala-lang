@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Funkcje wyższego rzędu
-
-discourse: false
-
 partof: scala-tour
 
 num: 8

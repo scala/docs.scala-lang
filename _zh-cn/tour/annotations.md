@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 注解
-
-discourse: false
-
 partof: scala-tour
 
 num: 30

@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: ชนิดข้อมูล
-
-discourse: false
-
 partof: scala-tour
 
 num: 3

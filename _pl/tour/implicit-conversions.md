@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Konwersje niejawne
-
-discourse: false
-
 partof: scala-tour
 
 num: 26

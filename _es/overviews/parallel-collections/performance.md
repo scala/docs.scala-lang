@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Midiendo el rendimiento
-
-discourse: false
-
 partof: parallel-collections
 overview-name: Parallel Collections
 

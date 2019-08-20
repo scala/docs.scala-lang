@@ -2,9 +2,6 @@
 layout: tour
 title: Ekstraktor objekti
 language: ba
-
-discourse: true
-
 partof: scala-tour
 
 num: 16

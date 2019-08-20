@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Upper Type Bounds
-
-discourse: true
-
 partof: scala-tour
 categories: tour
 num: 20

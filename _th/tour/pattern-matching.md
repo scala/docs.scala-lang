@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Pattern Matching
-
-discourse: false
-
 partof: scala-tour
 
 num: 11

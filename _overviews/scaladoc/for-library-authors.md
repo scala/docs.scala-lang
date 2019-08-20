@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Scaladoc for Library Authors
-
-discourse: true
-
 partof: scaladoc
 overview-name: Scaladoc
 

@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: TypeTags and Manifests
-
-discourse: true
-
 partof: reflection
 overview-name: Reflection
 

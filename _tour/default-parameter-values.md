@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Default Parameter Values
-
-discourse: true
-
 partof: scala-tour
 
 num: 33

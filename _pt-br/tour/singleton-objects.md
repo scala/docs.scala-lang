@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Objetos Singleton
-
-discourse: false
-
 partof: scala-tour
 
 num: 12

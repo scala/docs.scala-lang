@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Domyślne wartości parametrów
-
-discourse: false
-
 partof: scala-tour
 
 num: 32

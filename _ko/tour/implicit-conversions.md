@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 암시적 변환
-
-discourse: false
-
 partof: scala-tour
 
 num: 26

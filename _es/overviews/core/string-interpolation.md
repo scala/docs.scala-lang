@@ -5,8 +5,6 @@ title: Interpolación de cadenas
 partof: string-interpolation
 
 language: es
-
-discourse: false
 ---
 
 **Josh Suereth**

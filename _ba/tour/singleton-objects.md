@@ -2,9 +2,6 @@
 layout: tour
 title: Singlton objekti
 language: ba
-
-discourse: true
-
 partof: scala-tour
 
 num: 13

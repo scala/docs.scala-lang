@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 고차 함수
-
-discourse: false
-
 partof: scala-tour
 
 num: 8

@@ -2,9 +2,6 @@
 layout: tour
 title: Curry-jevanje
 language: ba
-
-discourse: true
-
 partof: scala-tour
 
 num: 10

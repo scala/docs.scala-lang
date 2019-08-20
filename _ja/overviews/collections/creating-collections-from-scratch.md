@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: コレクションの作成
-
-discourse: false
-
 partof: collections
 overview-name: Collections
 

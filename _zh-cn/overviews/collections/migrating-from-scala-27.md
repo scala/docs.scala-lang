@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Scala 2.7迁移指南
-
-discourse: false
-
 partof: collections
 overview-name: Collections
 

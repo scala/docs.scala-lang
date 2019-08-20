@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Operators
-
-discourse: false
-
 partof: scala-tour
 
 num: 28

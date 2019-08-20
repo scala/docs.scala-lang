@@ -2,9 +2,6 @@
 layout: tour
 title: Polimorfne metode
 language: ba
-
-discourse: true
-
 partof: scala-tour
 
 num: 28

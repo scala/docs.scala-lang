@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: 具体的可变容器类
-
-discourse: false
-
 partof: collections
 overview-name: Collections
 

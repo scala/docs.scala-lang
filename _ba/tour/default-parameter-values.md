@@ -2,9 +2,6 @@
 layout: tour
 title: Podrazumijevane vrijednosti parametara
 language: ba
-
-discourse: true
-
 partof: scala-tour
 
 num: 33

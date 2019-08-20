@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Tuples
-
-discourse: true
-
 partof: scala-tour
 
 num: 6

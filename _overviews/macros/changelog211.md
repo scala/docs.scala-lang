@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Changes in Scala 2.11
-
-discourse: true
-
 partof: macros
 overview-name: Macros
 

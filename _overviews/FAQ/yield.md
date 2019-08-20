@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: How does yield work?
-
-discourse: true
-
 partof: FAQ
 num: 2
 permalink: /tutorials/FAQ/:title.html

@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 어노테이션
-
-discourse: false
-
 partof: scala-tour
 
 num: 31

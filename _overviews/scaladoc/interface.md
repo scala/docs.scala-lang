@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Using the Scaladoc Interface
-
-discourse: true
-
 partof: scaladoc
 overview-name: Scaladoc
 

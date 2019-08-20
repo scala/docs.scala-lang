@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: 并行集合库的架构
-
-discourse: false
-
 partof: parallel-collections
 overview-name: Parallel Collections
 

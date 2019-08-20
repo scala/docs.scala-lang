@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: 数组
-
-discourse: false
-
 partof: collections
 overview-name: Collections
 

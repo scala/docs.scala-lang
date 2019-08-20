@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 隐式转换
-
-discourse: false
-
 partof: scala-tour
 
 num: 25

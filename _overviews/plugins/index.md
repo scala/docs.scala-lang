@@ -1,8 +1,6 @@
 ---
 layout: singlepage-overview
 title: Scala Compiler Plugins
-
-discourse: true
 ---
 
 **Lex Spoon (2008)**  

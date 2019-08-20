@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Quasiquotes
-
-discourse: true
-
 partof: macros
 overview-name: Macros
 

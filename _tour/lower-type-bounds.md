@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Lower Type Bounds
-
-discourse: true
-
 partof: scala-tour
 
 num: 21

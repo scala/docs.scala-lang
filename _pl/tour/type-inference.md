@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Lokalna inferencja typów
-
-discourse: false
-
 partof: scala-tour
 
 num: 28

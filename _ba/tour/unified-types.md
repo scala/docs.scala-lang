@@ -2,9 +2,6 @@
 layout: tour
 title: Sjedinjeni tipovi
 language: ba
-
-discourse: true
-
 partof: scala-tour
 
 num: 3

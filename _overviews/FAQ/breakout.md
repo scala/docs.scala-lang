@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: What is breakOut, and how does it work?
-
-discourse: true
-
 overview-name: FAQ
 partof: FAQ
 

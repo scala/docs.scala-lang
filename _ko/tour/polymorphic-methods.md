@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 다형성 메소드
-
-discourse: false
-
 partof: scala-tour
 
 num: 27

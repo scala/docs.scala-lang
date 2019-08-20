@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Creating Custom Parallel Collections
-
-discourse: false
-
 partof: parallel-collections
 overview-name: Parallel Collections
 

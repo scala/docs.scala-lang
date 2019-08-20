@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 隐式参数
- 
-discourse: false
-
 partof: scala-tour
 
 num: 24

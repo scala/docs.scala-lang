@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: イテレータ
-
-discourse: false
-
 partof: collections
 overview-name: Collections
 

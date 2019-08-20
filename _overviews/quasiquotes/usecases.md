@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Use cases
-
-discourse: true
-
 partof: quasiquotes
 overview-name: Quasiquotes
 

@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Use Cases
-
-discourse: true
-
 partof: macros
 overview-name: Macros
 

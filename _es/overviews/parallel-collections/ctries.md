@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Tries Concurrentes
-
-discourse: false
-
 partof: parallel-collections
 overview-name: Parallel Collections
 

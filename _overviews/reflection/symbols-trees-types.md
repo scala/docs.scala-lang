@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Symbols, Trees, and Types
-
-discourse: true
-
 partof: reflection
 overview-name: Reflection
 

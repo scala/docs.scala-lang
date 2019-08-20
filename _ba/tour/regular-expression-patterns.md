@@ -2,9 +2,6 @@
 layout: tour
 title: Regularni izrazi
 language: ba
-
-discourse: true
-
 partof: scala-tour
 
 num: 15

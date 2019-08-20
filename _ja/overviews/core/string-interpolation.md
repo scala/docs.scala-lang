@@ -5,8 +5,6 @@ title: 文字列の補間
 partof: string-interpolation
 
 language: ja
-
-discourse: false
 ---
 
 **Josh Suereth 著**<br>

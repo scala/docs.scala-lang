@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: The sequence traits Seq, IndexedSeq, and LinearSeq
-
-discourse: true
-
 partof: collections-213
 overview-name: Collections
 

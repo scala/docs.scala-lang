@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Concurrent Tries
-
-discourse: true
-
 partof: parallel-collections
 overview-name: Parallel Collections
 

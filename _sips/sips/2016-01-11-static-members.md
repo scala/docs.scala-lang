@@ -1,8 +1,6 @@
 ---
 layout: sip
 title: SIP-30 - @static fields and methods in Scala objects (SI-4581)
-discourse: true
-
 vote-status: "under-review"
 vote-text: Authors need to update the proposal before the next review.
 permalink: /sips/:title.html

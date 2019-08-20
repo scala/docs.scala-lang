@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Parametry domniemane
-
-discourse: false
-
 partof: scala-tour
 
 num: 25

@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 암시적 파라미터
- 
-discourse: false
-
 partof: scala-tour
 
 num: 25

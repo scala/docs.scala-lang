@@ -2,9 +2,6 @@
 layout: tour
 title: Unutarnje klase
 language: ba
-
-discourse: true
-
 partof: scala-tour
 
 num: 22

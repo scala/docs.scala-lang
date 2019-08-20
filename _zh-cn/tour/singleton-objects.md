@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 单例对象
-
-discourse: false
-
 partof: scala-tour
 
 num: 12

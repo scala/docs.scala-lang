@@ -2,8 +2,6 @@
 layout: tour
 title: 튜플
 
-discourse: true
-
 partof: scala-tour
 
 num: 6

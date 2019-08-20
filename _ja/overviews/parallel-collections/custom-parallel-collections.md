@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: カスタム並列コレクションの作成
-
-discourse: false
-
 partof: parallel-collections
 overview-name: Parallel Collections
 

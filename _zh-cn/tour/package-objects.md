@@ -2,9 +2,6 @@
 layout: tour
 title: 包对象
 language: zh-cn
-
-discourse: true
-
 partof: scala-tour
 
 num: 36

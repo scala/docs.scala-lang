@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 language: ja
-
-discourse: false
-
 title: 型指定の無いマクロ
 ---
 <span class="label important" style="float: right;">OBSOLETE</span>

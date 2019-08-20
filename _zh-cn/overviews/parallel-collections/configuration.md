@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: 配置并行集合
-
-discourse: false
-
 partof: parallel-collections
 overview-name: Parallel Collections
 

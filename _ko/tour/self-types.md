@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 명시적으로 타입이 지정된 자기 참조
-
-discourse: false
-
 partof: scala-tour
 
 num: 24

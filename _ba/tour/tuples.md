@@ -2,9 +2,6 @@
 layout: tour
 title: Tuples
 language: ba
-
-discourse: true
-
 partof: scala-tour
 num: 
 next-page: mixin-class-composition

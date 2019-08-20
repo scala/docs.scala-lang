@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Dopasowanie wzorców (Pattern matching)
-
-discourse: false
-
 partof: scala-tour
 
 num: 11

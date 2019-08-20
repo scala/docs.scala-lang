@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Upper Type Bounds
-
-discourse: false
-
 partof: scala-tour
 
 num: 18

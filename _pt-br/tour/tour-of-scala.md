@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Introdução
-
-discourse: false
-
 partof: scala-tour
 
 num: 1

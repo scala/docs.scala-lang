@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Java と Scala 間のコレクションの変換
-
-discourse: false
-
 partof: collections
 overview-name: Collections
 

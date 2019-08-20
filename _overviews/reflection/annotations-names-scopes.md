@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Annotations, Names, Scopes, and More
-
-discourse: true
-
 partof: reflection
 overview-name: Reflection
 

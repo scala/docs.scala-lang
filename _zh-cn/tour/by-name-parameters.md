@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 传名参数
-
-discourse: false
-
 partof: scala-tour
 
 num: 29

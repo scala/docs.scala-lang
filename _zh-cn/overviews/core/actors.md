@@ -5,8 +5,6 @@ title: The Scala Actors API
 partof: actors
 
 language: zh-cn
-
-discourse: false
 ---
 
 **Philipp Haller 和 Stephen Tu 著**
