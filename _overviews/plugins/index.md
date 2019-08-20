@@ -34,23 +34,23 @@ There are some times, though, where a compiler modification is the
 best choice even for Scala.  Popular compiler plugins (as of 2018)
 include:
 
-- Alternate compiler back ends such as Scala.js, Scala Native, and
-  Fortify SCA for Scala.
-- Linters such as Wartremover and Scapegoat.
+- Alternate compiler back ends such as [Scala.js](https://www.scala-js.org), [Scala Native](http://scala-native.org), and
+  [Fortify SCA for Scala](https://developer.lightbend.com/docs/fortify/current/).
+- Linters such as [Wartremover](https://www.wartremover.org) and [Scapegoat](https://github.com/sksamuel/scapegoat).
 - Plugins that support reformatting and other changes
-  to source code, such as scalafix and scalafmt (which are
-  built on the semanticdb and scalahost compiler plugins).
-- Plugins that alter Scala's syntax, such as kind-projector.
+  to source code, such as [scalafix](https://scalacenter.github.io/scalafix/) and [scalafmt](https://scalameta.org/scalafmt/) (which are
+  built on the [semanticdb](https://scalameta.org/docs/semanticdb/guide.html) and [scalahost](https://github.com/Duhemm/scalahost) compiler plugins).
+- Plugins that alter Scala's syntax, such as [kind-projector](https://github.com/typelevel/kind-projector).
 - Plugins that alter Scala's behavior around errors and warnings,
-  such as silencer.
+  such as [silencer](https://github.com/ghik/silencer).
 - Plugins that analyze the structure of source code, such as
-  Sculpt and acyclic.
+  [Sculpt](https://github.com/lightbend/scala-sculpt) and [acyclic](https://github.com/lihaoyi/acyclic).
 - Plugins that instrument user code to collect information,
-  such as the code coverage tool scoverage.
+  such as the code coverage tool [scoverage](https://github.com/scoverage/scalac-scoverage-plugin).
 - Plugins that add metaprogramming facilities to Scala,
-  such as Macro Paradise.
+  such as [Macro Paradise](https://github.com/scalamacros/paradise).
 - Plugins that add entirely new constructs to Scala by
-  restructuring user code, such as scala-continuations.
+  restructuring user code, such as [scala-continuations](https://github.com/scala/scala-continuations).
 
 Some tasks that required a compiler plugin in very early Scala
 versions can now be done using macros instead; see [Macros]({{ site.baseurl }}/overviews/macros/overview.html).
