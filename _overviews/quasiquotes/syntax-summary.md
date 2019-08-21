@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Syntax summary
-
-discourse: true
-
 partof: quasiquotes
 overview-name: Quasiquotes
 

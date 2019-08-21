@@ -2,9 +2,6 @@
 layout: tour
 title: Apstraktni tipovi
 language: ba
-
-discourse: true
-
 partof: scala-tour
 
 num: 23

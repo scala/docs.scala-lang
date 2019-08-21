@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: ビュー
-
-discourse: false
-
 partof: collections
 overview-name: Collections
 

@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Introduction
-
-discourse: true
-
 partof: scala-tour
 
 num: 1
@@ -11,6 +8,8 @@ num: 1
 next-page: basics
 
 redirect_from: "/tutorials/tour/tour-of-scala.html"
+redirect_from: "/tutorials/tour/anonymous-function-syntax.html"
+redirect_from: "/tutorials/tour/explicitly-typed-self-references.html"
 ---
 
 ## Welcome to the tour
@@ -52,7 +51,7 @@ In practice, the development of domain-specific applications often requires doma
 
 In many cases, this can be done without using meta-programming facilities such as macros. For example,
 
-* [Implicit classes](http://docs.scala-lang.org/overviews/core/implicit-classes.html) allow adding extension methods to existing types.
+* [Implicit classes](https://docs.scala-lang.org/overviews/core/implicit-classes.html) allow adding extension methods to existing types.
 * [String interpolation](/overviews/core/string-interpolation.html) is user-extensible with custom interpolators.
 
 ## Scala interoperates

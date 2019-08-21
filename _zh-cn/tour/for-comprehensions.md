@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: For 表达式
-
-discourse: false
-
 partof: scala-tour
 
 num: 15

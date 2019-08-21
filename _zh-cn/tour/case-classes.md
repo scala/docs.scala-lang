@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 案例类（Case Classes）
-
-discourse: false
-
 partof: scala-tour
 
 num: 10

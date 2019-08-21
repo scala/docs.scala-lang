@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Parâmetros Nomeados
-
-discourse: false
-
 partof: scala-tour
 
 num: 33

@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 类型推断
-
-discourse: false
-
 partof: scala-tour
 
 num: 27

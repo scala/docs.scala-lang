@@ -12,7 +12,7 @@ The following agenda was distributed to attendees:
 | Topic | Reviewer |
 | --- | --- |
 | Discussion of the voting system | N/A |
-| [SIP-20: Improved Lazy Val Initialization](http://docs.scala-lang.org/sips/improved-lazy-val-initialization.html) | Sébastien Doeraene |
+| [SIP-20: Improved Lazy Val Initialization](https://docs.scala-lang.org/sips/improved-lazy-val-initialization.html) | Sébastien Doeraene |
 | [SIP-27: Trailing commas](https://github.com/scala/docs.scala-lang/pull/533#issuecomment-232959066) | Eugene Burmako |
 
 Jorge Vicente Cantero was the Process Lead and acting secretary of the meeting.
@@ -145,9 +145,9 @@ Dotty, in which the championed scheme is already implemented.
 
 There are no clear winner in the case of local lazy vals, but there seems to be
 two clear candidates for the non-local lazy vals
-([V4](http://docs.scala-lang.org/sips/pending/improved-lazy-val-initialization.html)
+([V4](https://docs.scala-lang.org/sips/pending/improved-lazy-val-initialization.html)
 and
-[V6](http://docs.scala-lang.org/sips/pending/improved-lazy-val-initialization.html)).
+[V6](https://docs.scala-lang.org/sips/pending/improved-lazy-val-initialization.html)).
 Both are faster than the existing implementation in the contended case but V4
 general is 4x and V6 is only 2x. However, for the uncontended case V4 general is
 30% slower than the existing implementation, while V6 is on par, up to +-5%.

@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Metody polimorficzne
-
-discourse: false
-
 partof: scala-tour
 
 num: 27

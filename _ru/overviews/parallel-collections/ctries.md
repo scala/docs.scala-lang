@@ -117,7 +117,7 @@ num: 4
 3. [Методы вычисления квадратных корней][3]
 4. [Симуляция игры "Жизнь"][4]
 
-  [1]: http://infoscience.epfl.ch/record/166908/files/ctries-techreport.pdf "Ctries-techreport"
+  [1]: https://infoscience.epfl.ch/record/166908/files/ctries-techreport.pdf "Ctries-techreport"
   [2]: http://lampwww.epfl.ch/~prokopec/ctries-snapshot.pdf "Ctries-snapshot"
-  [3]: http://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Babylonian_method "babylonian-method"
+  [3]: https://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Babylonian_method "babylonian-method"
   [4]: https://github.com/axel22/ScalaDays2012-TrieMap "game-of-life-ctries"

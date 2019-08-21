@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 泛型类
-
-discourse: false
-
 partof: scala-tour
 
 num: 16

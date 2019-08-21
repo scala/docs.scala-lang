@@ -5,7 +5,7 @@ title: Scala Cheatsheet
 partof: cheatsheet
 
 by: Brendan O'Connor
-about: 感谢 <a href="http://brenocon.com/">Brendan O'Connor</a>，本速查表可以用于快速地查找Scala语法结构。Licensed by Brendan O'Connor under a CC-BY-SA 3.0 license.
+about: 感谢 <a href="https://brenocon.com/">Brendan O'Connor</a>，本速查表可以用于快速地查找Scala语法结构。Licensed by Brendan O'Connor under a CC-BY-SA 3.0 license.
 
 language: "zh-cn"
 ---
@@ -48,7 +48,7 @@ language: "zh-cn"
 |  `var (x,y,z) = (1,2,3)`                                                                                 |  解构绑定：通过模式匹配来解构元组。 |
 |  <span class="label important">Bad</span>`var x,y,z = (1,2,3)`                                           |  潜在风险：整个元组被赋值给了每一个变量。 |
 |  `var xs = List(1,2,3)`                                                                                  |  列表 (不可变)。 |
-|  `xs(2)`                                                                                                 |  用括号索引 ([slides](http://www.slideshare.net/Odersky/fosdem-2009-1013261/27)) |
+|  `xs(2)`                                                                                                 |  用括号索引 ([slides](https://www.slideshare.net/Odersky/fosdem-2009-1013261/27)) |
 |  `1 :: List(2,3)`                                                                                        |  Cons（构成） |
 |  `1 to 5` _等价于_ `1 until 6` <br> `1 to 10 by 2`                                                      |  Range类型（语法糖） |
 |  `()` _(空括号)_                                                                                   |  Unit类型的唯一成员 (相当于 C/Java 里的void). |
@@ -57,11 +57,11 @@ language: "zh-cn"
 |  `if (check) happy` _same as_ <br> `if (check) happy else ()`                                            |  条件（语法糖） |
 |  `while (x < 5) { println(x); x += 1}`                                                                   |  while循环 |
 |  `do { println(x); x += 1} while (x < 5)`                                                                |  do while循环 |
-|  `import scala.util.control.Breaks._`<br>`breakable {`<br>`    for (x <- xs) {`<br>`        if (Math.random < 0.1) break`<br>`    }`<br>`}`|  break. ([slides](http://www.slideshare.net/Odersky/fosdem-2009-1013261/21)) |
+|  `import scala.util.control.Breaks._`<br>`breakable {`<br>`    for (x <- xs) {`<br>`        if (Math.random < 0.1) break`<br>`    }`<br>`}`|  break. ([slides](https://www.slideshare.net/Odersky/fosdem-2009-1013261/21)) |
 |  `for (x <- xs if x%2 == 0) yield x*10` _等价于_ <br>`xs.filter(_%2 == 0).map(_*10)`                    |  for 表达式: filter/map |
 |  `for ((x,y) <- xs zip ys) yield x*y` _等价于_ <br>`(xs zip ys) map { case (x,y) => x*y }`              |  for 表达式: 解构绑定 |
 |  `for (x <- xs; y <- ys) yield x*y` _等价于_ <br>`xs flatMap {x => ys map {y => x*y}}`                  |  for 表达式: 叉乘 |
-|  `for (x <- xs; y <- ys) {`<br>    `println("%d/%d = %.1f".format(x, y, x/y.toFloat))`<br>`}`                     |  for 表达式: 不可避免的格式<br>[sprintf-style](http://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax) |
+|  `for (x <- xs; y <- ys) {`<br>    `println("%d/%d = %.1f".format(x, y, x/y.toFloat))`<br>`}`                     |  for 表达式: 不可避免的格式<br>[sprintf-style](https://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax) |
 |  `for (i <- 1 to 5) {`<br>    `println(i)`<br>`}`                                                        |  for 表达式: 包括上边界的遍历 |
 |  `for (i <- 1 until 5) {`<br>    `println(i)`<br>`}`                                                     |  for 表达式: 忽略上边界的遍历 |
 |  <span id="pattern_matching" class="h2">模式匹配</span>                                                         |                 |

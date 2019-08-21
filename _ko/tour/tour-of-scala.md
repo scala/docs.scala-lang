@@ -1,9 +1,7 @@
 ---
 layout: tour
 title: 들어가며
-
 discourse: true
-
 partof: scala-tour
 
 num: 1

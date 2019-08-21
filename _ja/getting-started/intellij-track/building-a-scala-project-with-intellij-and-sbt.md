@@ -8,7 +8,7 @@ previous-page: /ja/getting-started/intellij-track/getting-started-with-scala-in-
 next-page: /ja/testing-scala-in-intellij-with-scalatest
 ---
 
-このチュートリアルでは、[sbt](http://www.scala-sbt.org/1.x/docs/index.html) を使って Scala プロジェクトをビルドする方法を見ていきます。
+このチュートリアルでは、[sbt](https://www.scala-sbt.org/1.x/docs/index.html) を使って Scala プロジェクトをビルドする方法を見ていきます。
 sbtは、どのようなサイズの Scala プロジェクトでもコンパイル、実行、テストできる人気のツールです。
 sbt（または Maven や Gradle）のようなビルドツールの使用は、1つ以上のコードファイルや依存関係のあるプロジェクトを作ったら、絶対不可欠になります。
 [最初のチュートリアル](./getting-started-with-scala-in-intellij.html)を完了していることを前提とします。

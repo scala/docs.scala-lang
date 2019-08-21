@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 高阶函数
-
-discourse: false
-
 partof: scala-tour
 
 num: 7

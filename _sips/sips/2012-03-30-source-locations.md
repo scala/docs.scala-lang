@@ -1,8 +1,6 @@
 ---
 layout: sip
-discourse: true
 title: SIP-19 - Implicit Source Locations
-
 vote-status: rejected
 vote-text: The proposal is rejected. We expect this to be easily implemented using macros without going through a full SIP. A modern implementation can be found <a href="https://github.com/lihaoyi/sourcecode">here</a>.
 permalink: /sips/:title.html

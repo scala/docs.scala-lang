@@ -1037,6 +1037,6 @@ methods without having to reimplement them all over again.
 ### Acknowledgement ###
 
 These pages contain material adapted from the 2nd edition of
-[Programming in Scala](http://www.artima.com/shop/programming_in_scala) by
+[Programming in Scala](https://www.artima.com/shop/programming_in_scala) by
 Odersky, Spoon and Venners. We thank Artima for graciously agreeing to its
 publication.

@@ -5,7 +5,7 @@ title: Glossary
 language: zh-cn
 ---
 
-<h5>该术语表摘自Scala权威书籍《<a href="http://www.artima.com/shop/programming_in_scala">Programming in Scala</a>》</h5>
+<h5>该术语表摘自Scala权威书籍《<a href="https://www.artima.com/shop/programming_in_scala">Programming in Scala</a>》</h5>
 
 <div class="filterbar">
   <div class="icon-search">
@@ -294,7 +294,7 @@ Scala程序中的函数会 _返回_ 值，可把这个值叫做函数的[结果]
 `match`表达式中被匹配的值。比如，在"`s match { case _ => }`"中，选择器是`s`。
 
 * #### 自身类型（self type）
-特质的 _自身类型_ 是特质中用到的接收者`this`的假想类型。任何混入特质的具体类必须要确保其类型符合特质的自身类型。自身类型常被用来把大类分解为若干个特质（[Programming in Scala](http://www.artima.com/shop/programming_in_scala)第29章有述）。
+特质的 _自身类型_ 是特质中用到的接收者`this`的假想类型。任何混入特质的具体类必须要确保其类型符合特质的自身类型。自身类型常被用来把大类分解为若干个特质（[Programming in Scala](https://www.artima.com/shop/programming_in_scala)第29章有述）。
 
 * #### 半结构化数据（semi-structured data）
 XML数据就是半结构化的，因其相比于普通的二进制文件或文本文件更加结构化，而又不像编程语言的数据结构具备完全结构化。

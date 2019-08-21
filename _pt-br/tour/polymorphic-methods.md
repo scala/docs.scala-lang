@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Métodos Polimórficos
-
-discourse: false
-
 partof: scala-tour
 
 num: 27

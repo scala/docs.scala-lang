@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Límite de tipado superior
-
-discourse: false
-
 partof: scala-tour
 
 num: 25

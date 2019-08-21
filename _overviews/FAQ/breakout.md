@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: What is breakOut, and how does it work?
-
-discourse: true
-
 overview-name: FAQ
 partof: FAQ
 
@@ -233,4 +230,4 @@ That means `breakOut` must, necessarily, return a type or subtype of
 
 This answer was originally submitted in response to [this question on Stack Overflow][1].
 
-  [1]: http://stackoverflow.com/q/1715681/53013
+  [1]: https://stackoverflow.com/q/1715681/53013

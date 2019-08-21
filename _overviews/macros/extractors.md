@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Extractor Macros
-
-discourse: true
-
 partof: macros
 overview-name: Macros
 

@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Hygiene
-
-discourse: true
-
 partof: quasiquotes
 overview-name: Quasiquotes
 

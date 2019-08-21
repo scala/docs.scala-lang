@@ -5,7 +5,7 @@ title: Scala Cheatsheet
 partof: cheatsheet
 
 by: Brendan O'Connor
-about: Zahvaljujući <a href="http://brenocon.com/">Brendan O'Connor</a>u ovaj cheatsheet teži da bude kratki pregled sintakse Scale. Licenca pripada Brendan O'Connor-u, pod CC-BY-SA 3.0 licencom.
+about: Zahvaljujući <a href="https://brenocon.com/">Brendan O'Connor</a>u ovaj cheatsheet teži da bude kratki pregled sintakse Scale. Licenca pripada Brendan O'Connor-u, pod CC-BY-SA 3.0 licencom.
 
 language: ba
 ---
@@ -47,7 +47,7 @@ language: ba
 |  `var (x,y,z) = (1,2,3)`                                                                                 |  destrukturirajuće vezivanje: otpakivanje torke podudaranjem uzoraka (pattern matching). |
 |  <span class="label important">Loše</span>`var x,y,z = (1,2,3)`                                           |  skrivena greška: svim varijablama dodijeljena cijela torka. |
 |  `var xs = List(1,2,3)`                                                                                  |  lista (nepromjenjiva). |
-|  `xs(2)`                                                                                                 |  indeksiranje zagradama ([slajdovi](http://www.slideshare.net/Odersky/fosdem-2009-1013261/27)). |
+|  `xs(2)`                                                                                                 |  indeksiranje zagradama ([slajdovi](https://www.slideshare.net/Odersky/fosdem-2009-1013261/27)). |
 |  `1 :: List(2,3)`                                                                                        |  cons. |
 |  `1 to 5` _isto kao_ `1 until 6` <br> `1 to 10 by 2`                                                      |  šećer za raspon (range). |
 |  `()` _(prazne zagrade)_                                                                                   |  jedina instanca Unit tipa (slično kao u C/Java void). |
@@ -56,11 +56,11 @@ language: ba
 |  `if (check) happy` _isto kao_ <br> `if (check) happy else ()`                                            |  sintaksni šećer za uslov. |
 |  `while (x < 5) { println(x); x += 1}`                                                                   |  while petlja. |
 |  `do { println(x); x += 1} while (x < 5)`                                                                |  do while petlja. |
-|  `import scala.util.control.Breaks._`<br>`breakable {`<br>`    for (x <- xs) {`<br>`        if (Math.random < 0.1) break`<br>`    }`<br>`}`|  break ([slajdovi](http://www.slideshare.net/Odersky/fosdem-2009-1013261/21)). |
+|  `import scala.util.control.Breaks._`<br>`breakable {`<br>`    for (x <- xs) {`<br>`        if (Math.random < 0.1) break`<br>`    }`<br>`}`|  break ([slajdovi](https://www.slideshare.net/Odersky/fosdem-2009-1013261/21)). |
 |  `for (x <- xs if x%2 == 0) yield x*10` _isto kao_ <br>`xs.filter(_%2 == 0).map(_*10)`                    |  for komprehensija: filter/map. |
 |  `for ((x,y) <- xs zip ys) yield x*y` _isto kao_ <br>`(xs zip ys) map { case (x,y) => x*y }`              |  for komprehensija: destrukturirajuće vezivanje. |
 |  `for (x <- xs; y <- ys) yield x*y` _isto kao_ <br>`xs flatMap {x => ys map {y => x*y}}`                  |  for komprehensija: međuproizvod (vektorski proizvod). |
-|  `for (x <- xs; y <- ys) {`<br>    `println("%d/%d = %.1f".format(x, y, x/y.toFloat))`<br>`}`                     |  for komprehensija: imperativ-asto.<br>[sprintf-stil.](http://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax) |
+|  `for (x <- xs; y <- ys) {`<br>    `println("%d/%d = %.1f".format(x, y, x/y.toFloat))`<br>`}`                     |  for komprehensija: imperativ-asto.<br>[sprintf-stil.](https://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax) |
 |  `for (i <- 1 to 5) {`<br>    `println(i)`<br>`}`                                                        |  for komprehensija: iteracija uključujući gornju granicu. |
 |  `for (i <- 1 until 5) {`<br>    `println(i)`<br>`}`                                                     |  for komprehensija: iteracija ne uključujući gornju granicu. |
 |  <span id="pattern_matching" class="h2">podudaranje uzoraka (pattern matching)</span>                                                         |                 |

@@ -5,8 +5,6 @@ title: 字符串插值
 partof: string-interpolation
 
 language: zh-cn
-
-discourse: false
 ---
 
 **Josh Suereth 著**
@@ -18,7 +16,7 @@ discourse: false
     val name="James"
     println(s"Hello,$name")//Hello,James
 
-在上例中， s"Hello,$name" 是待处理字符串字面，编译器会对它做额外的工作。待处理字符串字面通过“号前的字符来标示（例如：上例中是s）。字符串插值的实现细节在 [SIP-11](http://docs.scala-lang.org/sips/pending/string-interpolation.html) 中有全面介绍。
+在上例中， s"Hello,$name" 是待处理字符串字面，编译器会对它做额外的工作。待处理字符串字面通过“号前的字符来标示（例如：上例中是s）。字符串插值的实现细节在 [SIP-11](https://docs.scala-lang.org/sips/pending/string-interpolation.html) 中有全面介绍。
 
 ## 用法
 

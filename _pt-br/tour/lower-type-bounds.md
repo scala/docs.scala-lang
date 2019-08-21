@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Limitante Inferior de Tipos
-
-discourse: false
-
 partof: scala-tour
 
 num: 20

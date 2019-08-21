@@ -2,9 +2,6 @@
 layout: tour
 title: Gornja granica tipa
 language: ba
-
-discourse: true
-
 partof: scala-tour
 categories: tour
 num: 20

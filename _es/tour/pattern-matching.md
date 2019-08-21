@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Reconocimiento de patrones
-
-discourse: false
-
 partof: scala-tour
 
 num: 20

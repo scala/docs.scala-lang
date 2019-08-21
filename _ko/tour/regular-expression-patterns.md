@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 정규 표현식 패턴
-
-discourse: false
-
 partof: scala-tour
 
 num: 14

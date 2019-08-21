@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 가변성
-
-discourse: false
-
 partof: scala-tour
 
 num: 18

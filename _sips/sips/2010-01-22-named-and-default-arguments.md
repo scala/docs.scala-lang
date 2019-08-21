@@ -215,4 +215,4 @@ For constructor defaults, these methods are added to the companion object of the
     // }
 
 ## References
-1. Odersky, M. _The Scala Language Specification, Version 2.11_. Available online at [http://www.scala-lang.org/files/archive/spec/2.11/](http://www.scala-lang.org/files/archive/spec/2.11/)
+1. Odersky, M. _The Scala Language Specification, Version 2.11_. Available online at [https://www.scala-lang.org/files/archive/spec/2.11/](https://www.scala-lang.org/files/archive/spec/2.11/)

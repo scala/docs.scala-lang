@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Variances
-
-discourse: true
-
 partof: scala-tour
 
 num: 19

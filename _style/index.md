@@ -72,4 +72,4 @@ This document is intended to outline some basic Scala stylistic guidelines which
 
 ### Thanks to ###
 
-[Daniel Spiewak](http://www.codecommit.com/) and [David Copeland](http://www.naildrivin5.com/) for putting this style guide together, and Simon Ochsenreither for converting it to Markdown.
+[Daniel Spiewak](https://www.codecommit.com/) and [David Copeland](https://www.naildrivin5.com/) for putting this style guide together, and Simon Ochsenreither for converting it to Markdown.

@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: What are Scala context bounds?
-
-discourse: true
-
 overview-name: FAQ
 partof: FAQ
 
@@ -104,4 +101,4 @@ Related questions of interest:
 
 This answer was originally submitted in response to [this question on Stack Overflow][1].
 
-  [1]: http://stackoverflow.com/q/4465948/53013
+  [1]: https://stackoverflow.com/q/4465948/53013

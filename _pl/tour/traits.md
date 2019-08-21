@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Cechy
-
-discourse: false
-
 partof: scala-tour
 
 num: 5

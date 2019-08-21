@@ -93,13 +93,13 @@ Please see the [full list here](https://docs.google.com/spreadsheets/d/1GWJUo0U3
 
 [Trait Parameters](https://dotty.epfl.ch/docs/reference/other-new-features/trait-parameters.html)
 
-[Intersection Types](http://dotty.epfl.ch/docs/reference/new-types/intersection-types.html)
+[Intersection Types](https://dotty.epfl.ch/docs/reference/new-types/intersection-types.html)
 
-[Union Types](http://dotty.epfl.ch/docs/reference/new-types/union-types.html)
+[Union Types](https://dotty.epfl.ch/docs/reference/new-types/union-types.html)
 
-[Dependent Function Types](http://dotty.epfl.ch/docs/reference/new-types/dependent-function-types.html)
+[Dependent Function Types](https://dotty.epfl.ch/docs/reference/new-types/dependent-function-types.html)
 
-Implicit Function Types (http://dotty.epfl.ch/docs/reference/instances/implicit-function-types.html)
+Implicit Function Types (https://dotty.epfl.ch/docs/reference/instances/implicit-function-types.html)
 
 [Weak Conformance](https://dotty.epfl.ch/docs/reference/dropped-features/weak-conformance.html)
 

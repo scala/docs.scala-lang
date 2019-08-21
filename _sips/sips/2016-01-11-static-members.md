@@ -1,8 +1,6 @@
 ---
 layout: sip
 title: SIP-30 - @static fields and methods in Scala objects (SI-4581)
-discourse: true
-
 vote-status: "under-review"
 vote-text: Authors need to update the proposal before the next review.
 permalink: /sips/:title.html
@@ -23,7 +21,7 @@ Some JVM and JavaScript frameworks require classes to have specific static field
 
 For example, classes extending `android.os.Parcelable` are required to have a static field named `CREATOR` of type `android.os.Parcelable$Creator`.
 
-Another example is using an [`AtomicReferenceFieldUpdater`](http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/atomic/AtomicReferenceFieldUpdater.html).
+Another example is using an [`AtomicReferenceFieldUpdater`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/atomic/AtomicReferenceFieldUpdater.html).
 
 On the JavaScript side, one example is [Relay Route Definitions](https://facebook.github.io/relay/docs/en/routing.html), whose subclasses must define static fields such as `queries`.
 Static methods and fields for JavaScript classes are one of the very few things (if not the only thing) that Scala.js "cannot do" at the moment, at least not declaratively.
@@ -131,7 +129,7 @@ If implemented in the dotty code base, the following modifications would be need
  - extend `GenBCode` to emit static fields and methods in companion classes and forwarders to them in companion modules.
 
 ## Overriding & Hiding ##
-Java allows classes to define static methods with the same name and signature as a static method of a superclass. In order to define the semantics of such cases, the Java Specification introduces the notion of [hiding](http://docs.oracle.com/javase/specs/jls/se8/html/jls-8.html#jls-8.4.8.2).
+Java allows classes to define static methods with the same name and signature as a static method of a superclass. In order to define the semantics of such cases, the Java Specification introduces the notion of [hiding](https://docs.oracle.com/javase/specs/jls/se8/html/jls-8.html#jls-8.4.8.2).
 
 This is required because in Java calling a `static` method on a class instance is supported.
 This proposal does not need to introduce this notion as we do not support such calls.

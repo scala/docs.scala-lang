@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 믹스인 클래스 컴포지션
-
-discourse: false
-
 partof: scala-tour
 
 num: 7

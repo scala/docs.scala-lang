@@ -1,6 +1,5 @@
 ---
 layout: sips
-discourse: true
 title: SIP-NN - SIP Title
 ---
 
@@ -42,7 +41,7 @@ want to get involved.
 
 Code heavy description of how the library functionality can be used.
 
-{% highlight scala %}
+```scala
 // here is some example scala code, highlighted nicely
 import scala.concurrent._
 
@@ -50,7 +49,7 @@ class Foo extends Bar {
   val x = 10
   def yo(name: String): String = s"hello $name"
 }
-{% endhighlight %}
+```
 
 ### Comparison Examples
 
@@ -110,8 +109,8 @@ process anyway so it's better to get them out up front.
 4. [Alternative Libraries/Implementations][4]
 5. [Discussion forum/post/gitter/IRC][5]
 
-[1]: http://github.com "GitHub"
-[2]: http://www.scala-lang.org/api/ "Scaladoc"
-[3]: http://en.wikipedia.org/wiki/Academic_publishing "Academic/Research"
+[1]: https://github.com "GitHub"
+[2]: https://www.scala-lang.org/api/ "Scaladoc"
+[3]: https://en.wikipedia.org/wiki/Academic_publishing "Academic/Research"
 [4]: https://github.com/dogescript/dogescript "Alternatives"
 [5]: https://gitter.im "Gitter"

@@ -5,8 +5,8 @@ languages: [ja, zh-cn]
 namespace: root
 partof: documentation
 discourse: true
-
 # Content masthead links
+more-resources-label: More Resources
 sections:
 
   - title: "First Steps..."
@@ -27,9 +27,9 @@ sections:
       - title: Online Courses, Exercises, & Blogs
         url: /learn.html
       - title: Books
-        url: /books.html        
+        url: /books.html
 
-  - title: "Returning Users"      
+  - title: "Returning Users"
     links:
       - title: "API"
         description: "API documentation for every version of Scala."
@@ -46,7 +46,7 @@ sections:
       - title: "Cheatsheet"
         description: "A handy cheatsheet covering the basics of Scala's syntax."
         icon: "fa fa-list"
-        link: /cheatsheets/index.html    
+        link: /cheatsheets/index.html
       - title: "Scala FAQs"
         description: "A list of frequently-asked questions about Scala language features and their answers."
         icon: "fa fa-question-circle"
@@ -54,9 +54,9 @@ sections:
       - title: "Language Spec"
         description: "Scala's formal language specification."
         icon: "fa fa-book"
-        link: http://scala-lang.org/files/archive/spec/2.12/
+        link: https://scala-lang.org/files/archive/spec/2.13/
 
-  - title: "Scala Evolution"      
+  - title: "Scala Evolution"
     links:
       - title: "SIPs"
         description: "The Scala Improvement Process. Language & compiler evolution."

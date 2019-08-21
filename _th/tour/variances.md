@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Variance
-
-discourse: false
-
 partof: scala-tour
 
 num: 17

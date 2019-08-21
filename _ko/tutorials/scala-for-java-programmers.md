@@ -3,8 +3,6 @@ layout: singlepage-overview
 title: 자바 프로그래머를 위한 스칼라 튜토리얼
 
 partof: scala-for-java-programmers
-
-discourse: false
 language: ko
 ---
 

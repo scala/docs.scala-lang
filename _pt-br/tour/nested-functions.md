@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Funções Aninhadas
-
-discourse: false
-
 partof: scala-tour
 
 num: 8

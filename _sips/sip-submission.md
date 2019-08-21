@@ -321,10 +321,10 @@ Scala compiler.
 
 The process to submit is simple:
 
-* Fork the Scala documentation repository, [http://github.com/scala/docs.scala-lang](http://github.com/scala/docs.scala-lang).
+* Fork the Scala documentation repository, [https://github.com/scala/docs.scala-lang](https://github.com/scala/docs.scala-lang).
 * Create a new SIP file in the `_sips/sips/`. Use the [S(L)IP template](https://github.com/scala/docs.scala-lang/blob/master/_sips/sip-template.md)
   * Make sure the new file follows the format:  `YYYY-MM-dd-{title}.md`.  Use the proposal date for `YYYY-MM-dd`.
-  * Use the [Markdown Syntax](http://daringfireball.net/projects/markdown/syntax) to write your SIP.
+  * Use the [Markdown Syntax](https://daringfireball.net/projects/markdown/syntax) to write your SIP.
   * Follow the instructions in the [README](https://github.com/scala/docs.scala-lang/) to build your SIP locally so you can ensure that it looks correct on the website.
 * Create a link to your SIP in the "pending sips" section of `index.md`
 * Commit your changes to your forked repository

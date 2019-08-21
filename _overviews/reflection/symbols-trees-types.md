@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Symbols, Trees, and Types
-
-discourse: true
-
 partof: reflection
 overview-name: Reflection
 
@@ -190,7 +187,7 @@ Standard types, such as `Int`, `Boolean`, `Any`, or `Unit`, are accessible throu
     intTpe: scala.reflect.runtime.universe.Type = Int
 
 The list of standard types is specified in trait `StandardTypes` in
-[`scala.reflect.api.StandardDefinitions`](http://www.scala-lang.org/api/current/index.html#scala.reflect.api.StandardDefinitions$StandardTypes).
+[`scala.reflect.api.StandardDefinitions`](https://www.scala-lang.org/api/current/index.html#scala.reflect.api.StandardDefinitions$StandardTypes).
 
 ### Common Operations on Types
 

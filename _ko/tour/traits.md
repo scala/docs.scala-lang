@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 트레잇
-
-discourse: false
-
 partof: scala-tour
 
 num: 5

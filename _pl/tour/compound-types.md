@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Typy złożone
-
-discourse: false
-
 partof: scala-tour
 
 num: 23

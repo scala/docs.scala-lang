@@ -3,8 +3,6 @@ layout: singlepage-overview
 title: Un'introduzione a Scala per programmatori Java
 
 partof: scala-for-java-programmers
-
-discourse: false
 language: it
 ---
 

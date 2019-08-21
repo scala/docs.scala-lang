@@ -2,9 +2,6 @@
 layout: tour
 title: Imenovani parametri
 language: ba
-
-discourse: true
-
 partof: scala-tour
 
 num: 34

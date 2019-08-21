@@ -6,6 +6,7 @@ partof: documentation
 discourse: true
 
 # Content masthead links
+more-resources-label: その他のリソース
 sections:
 
   - title: "最初のステップ"
@@ -26,9 +27,9 @@ sections:
       - title: オンラインリソース（英語のみ）
         url: /learn.html
       - title: 書籍（英語のみ）
-        url: /books.html           
+        url: /books.html
 
-  - title: "リピーター向け"      
+  - title: "リピーター向け"
     links:
       - title: "API"
         description: "Scala の全バージョンの API ドキュメント（英語のみ）"
@@ -46,7 +47,7 @@ sections:
       - title: "チートシート"
         description: "Scala 構文の基礎を網羅する便利なチートシート"
         icon: "fa fa-list"
-        link: /ja/cheatsheets/index.html    
+        link: /ja/cheatsheets/index.html
       - title: "Scala よくある質問"
         description: "Scala 言語機能についてよく聞かれる質問＆回答集（英語のみ）"
         icon: "fa fa-question-circle"
@@ -54,9 +55,9 @@ sections:
       - title: "言語仕様"
         description: "Scala の形式的言語仕様（英語のみ）"
         icon: "fa fa-book"
-        link: http://scala-lang.org/files/archive/spec/2.12/
+        link: https://scala-lang.org/files/archive/spec/2.13/
 
-  - title: "Scala の進化"      
+  - title: "Scala の進化"
     links:
       - title: "SIP"
         description: "Scala Improvement Process（Scala 改善プロセス）。言語とコンパイラの進化（英語のみ）"

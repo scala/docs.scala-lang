@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 추출자 오브젝트
-
-discourse: false
-
 partof: scala-tour
 
 num: 15

@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 제네릭 클래스
-
-discourse: false
-
 partof: scala-tour
 
 num: 17

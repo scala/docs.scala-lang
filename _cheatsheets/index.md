@@ -5,7 +5,7 @@ title: Scala Cheatsheet
 partof: cheatsheet
 
 by: Brendan O'Connor
-about: Thanks to <a href="http://brenocon.com/">Brendan O'Connor</a>, this cheatsheet aims to be a quick reference of Scala syntactic constructions. Licensed by Brendan O'Connor under a CC-BY-SA 3.0 license.
+about: Thanks to <a href="https://brenocon.com/">Brendan O'Connor</a>, this cheatsheet aims to be a quick reference of Scala syntactic constructions. Licensed by Brendan O'Connor under a CC-BY-SA 3.0 license.
 
 languages: [ba, fr, ja, pl, pt-br, zh-cn, th, ru]
 ---
@@ -176,7 +176,7 @@ languages: [ba, fr, ja, pl, pt-br, zh-cn, th, ru]
     </tr>
     <tr>
       <td><pre class="highlight"><code>xs(2)</code></pre></td>
-      <td>Paren indexing (<a href="http://www.slideshare.net/Odersky/fosdem-2009-1013261/27">slides</a>).</td>
+      <td>Paren indexing (<a href="https://www.slideshare.net/Odersky/fosdem-2009-1013261/27">slides</a>).</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>1 :: List(2, 3)</code></pre></td>
@@ -227,7 +227,7 @@ breakable {
       break
   }
 }</code></pre></td>
-      <td>Break (<a href="http://www.slideshare.net/Odersky/fosdem-2009-1013261/21">slides</a>).</td>
+      <td>Break (<a href="https://www.slideshare.net/Odersky/fosdem-2009-1013261/21">slides</a>).</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>for (x &lt;- xs if x % 2 == 0)
@@ -261,7 +261,7 @@ breakable {
   val div = x / y.toFloat
   println("%d/%d = %.1f".format(x, y, div))
 }</code></pre></td>
-      <td>For-comprehension: imperative-ish.<br /><a href="http://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax"><code>sprintf</code> style</a>.</td>
+      <td>For-comprehension: imperative-ish.<br /><a href="https://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax"><code>sprintf</code> style</a>.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>for (i &lt;- 1 to 5) {

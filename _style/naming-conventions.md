@@ -119,7 +119,7 @@ conventions are used:
 -   In some instances, it is acceptable to prepend "\`is\`" on a boolean
     accessor (e.g. `isEmpty`). This should only be the case when no
     corresponding mutator is provided. Please note that the
-    [Lift](http://liftweb.net) convention of appending "`_?`" to boolean
+    [Lift](https://liftweb.net) convention of appending "`_?`" to boolean
     accessors is non-standard and not used outside of the Lift
     framework.
 -   For mutators, the name of the method should be the name of the
@@ -197,7 +197,7 @@ getter and setter. For example:
 
 Unlike Ruby, Scala attaches significance to whether or not a method is
 *declared* with parentheses (only applicable to methods of
-[arity](http://en.wikipedia.org/wiki/Arity)-0). For example:
+[arity](https://en.wikipedia.org/wiki/Arity)-0). For example:
 
     def foo1() = ...
 
@@ -322,7 +322,7 @@ used in place of a longer, descriptive name:
 
 Higher-kinds are theoretically no different from regular type parameters
 (except that their
-[kind](http://en.wikipedia.org/wiki/Kind_(type_theory)) is at least
+[kind](https://en.wikipedia.org/wiki/Kind_(type_theory)) is at least
 `*=>*` rather than simply `*`). The naming conventions are generally
 similar, however it is preferred to use a descriptive name rather than a
 single letter, for clarity:

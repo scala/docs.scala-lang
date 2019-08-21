@@ -30,7 +30,7 @@ discuss, and eventually vote upon, proposals.
 
 A SIP is subject to a [review process](./sip-submission.html).
 Proposals normally include proposed changes to the
-[Scala language specification](http://www.scala-lang.org/files/archive/spec/2.12/).
+[Scala language specification](https://www.scala-lang.org/files/archive/spec/2.12/).
 Before reaching the committee, a proposal normally receives community
 discussion and review on the
 [Scala Contributors](https://contributors.scala-lang.org/) forum.

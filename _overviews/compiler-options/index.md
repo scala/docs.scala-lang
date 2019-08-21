@@ -1,8 +1,6 @@
 ---
 layout: singlepage-overview
 title: Scala Compiler Options
-
-discourse: true
 ---
 <style type="text/css">
 .definition-list dd { 

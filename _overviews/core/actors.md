@@ -15,7 +15,7 @@ permalink: /overviews/core/:title.html
 
 This guide describes the API of the `scala.actors` package of Scala 2.8/2.9. The organization follows groups of types that logically belong together. The trait hierarchy is taken into account to structure the individual sections. The focus is on the run-time behavior of the various methods that these traits define, thereby complementing the existing Scaladoc-based API documentation.
 
-NOTE: In Scala 2.10 the Actors library is deprecated and will be removed in future Scala releases. Users should use [Akka](http://akka.io) actors from the package `akka.actor`. For migration from Scala actors to Akka refer to the [Actors Migration Guide](actors-migration-guide.html).
+NOTE: In Scala 2.10 the Actors library is deprecated and will be removed in future Scala releases. Users should use [Akka](https://akka.io) actors from the package `akka.actor`. For migration from Scala actors to Akka refer to the [Actors Migration Guide](actors-migration-guide.html).
 
 ## The actor traits Reactor, ReplyReactor, and Actor
 
@@ -447,7 +447,7 @@ execute its by-name argument `fun`.
 ## Remote Actors
 
 This section describes the remote actors API. Its main interface is
-the [`RemoteActor`](http://www.scala-lang.org/api/2.9.1/scala/actors/remote/RemoteActor$.html) object in package `scala.actors.remote`. This object
+the [`RemoteActor`](https://www.scala-lang.org/api/2.9.1/scala/actors/remote/RemoteActor$.html) object in package `scala.actors.remote`. This object
 provides methods to create and connect to remote actor instances. In
 the code snippets shown below we assume that all members of
 `RemoteActor` have been imported; the full list of imports that we use

@@ -60,7 +60,7 @@ Both code snippets delegate the execution of `fatMatrix.inverse()` to an `Execut
 
 Future and Promises revolve around [`ExecutionContext`s](https://www.scala-lang.org/api/current/scala/concurrent/ExecutionContext.html), responsible for executing computations.
 
-An `ExecutionContext` is similar to an [Executor](http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Executor.html):
+An `ExecutionContext` is similar to an [Executor](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Executor.html):
 it is free to execute  computations in a new thread, in a pooled thread or in the current thread
 (although executing the computation in the current thread is discouraged -- more on that below).
 
@@ -72,7 +72,7 @@ although this should only be done in rare cases.
 
 ### The Global Execution Context
 
-`ExecutionContext.global` is an `ExecutionContext` backed by a [ForkJoinPool](http://docs.oracle.com/javase/tutorial/essential/concurrency/forkjoin.html).
+`ExecutionContext.global` is an `ExecutionContext` backed by a [ForkJoinPool](https://docs.oracle.com/javase/tutorial/essential/concurrency/forkjoin.html).
 It should be sufficient for most situations but requires some care.
 A `ForkJoinPool` manages a limited number of threads (the maximum number of threads being referred to as *parallelism level*).
 The number of concurrently blocking computations can exceed the parallelism level
@@ -81,7 +81,7 @@ Otherwise, there is a risk that the thread pool in the global execution context 
 and no computation can proceed.
 
 By default the `ExecutionContext.global` sets the parallelism level of its underlying fork-join pool to the number of available processors
-([Runtime.availableProcessors](http://docs.oracle.com/javase/7/docs/api/java/lang/Runtime.html#availableProcessors%28%29)).
+([Runtime.availableProcessors](https://docs.oracle.com/javase/7/docs/api/java/lang/Runtime.html#availableProcessors%28%29)).
 This configuration can be overridden by setting one (or more) of the following VM attributes:
 
   * scala.concurrent.context.minThreads - defaults to `Runtime.availableProcessors`
@@ -180,7 +180,7 @@ This should be avoided as it introduces non-determinism in the execution of your
     }(currentThreadExecutionContext)
 
 The `doSomethingElse` call might either execute in `doSomething`'s thread or in the main thread, and therefore be either asynchronous or synchronous.
-As explained [here](http://blog.ometer.com/2011/07/24/callbacks-synchronous-and-asynchronous/) a callback should not be both.
+As explained [here](https://blog.ometer.com/2011/07/24/callbacks-synchronous-and-asynchronous/) a callback should not be both.
 
 
 

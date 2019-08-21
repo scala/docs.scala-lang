@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Java和Scala容器的转换
-
-discourse: false
-
 partof: collections
 overview-name: Collections
 

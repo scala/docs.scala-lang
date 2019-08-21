@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: 이름을 지정한 파라미터
-
-discourse: false
-
 partof: scala-tour
 
 num: 33

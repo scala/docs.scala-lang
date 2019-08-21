@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Compound Types
-
-discourse: false
-
 partof: scala-tour
 
 num: 22

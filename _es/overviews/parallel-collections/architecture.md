@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Arquitectura de la librería de colecciones paralelas de Scala
-
-discourse: false
-
 partof: parallel-collections
 overview-name: Parallel Collections
 
@@ -115,4 +112,4 @@ paralelas referirse al artículo \[[1][1]\]
 
 1. [On a Generic Parallel Collection Framework, Aleksandar Prokopec, Phil Bawgell, Tiark Rompf, Martin Odersky, June 2011][1]
 
-[1]: http://infoscience.epfl.ch/record/165523/files/techrep.pdf "flawed-benchmark"
+[1]: https://infoscience.epfl.ch/record/165523/files/techrep.pdf "flawed-benchmark"

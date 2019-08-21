@@ -2,9 +2,6 @@
 layout: tour
 title: Uvod
 language: ba
-
-discourse: true
-
 partof: scala-tour
 
 num: 1

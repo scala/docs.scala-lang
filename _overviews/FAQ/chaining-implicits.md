@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: How can I chain/nest implicit conversions?
-
-discourse: true
-
 overview-name: FAQ
 partof: FAQ
 
@@ -109,4 +106,4 @@ See also:
 
 This question and answer were originally submitted on [Stack Overflow][1].
 
-  [1]: http://stackoverflow.com/questions/5332801/how-can-i-chain-implicits-in-scala/5332804
+  [1]: https://stackoverflow.com/questions/5332801/how-can-i-chain-implicits-in-scala/5332804

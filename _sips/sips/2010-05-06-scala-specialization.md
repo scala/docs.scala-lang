@@ -7,4 +7,4 @@ permalink: /sips/:title.html
 redirect_from: /sips/pending/scala-specialization.html
 ---
 
-This was an older SID that can be found [here](http://www.scala-lang.org/sid/9)
+This was an older SID that can be found [here](https://www.scala-lang.org/sid/9)

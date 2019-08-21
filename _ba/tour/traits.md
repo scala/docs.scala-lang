@@ -2,9 +2,6 @@
 layout: tour
 title: Trejtovi
 language: ba
-
-discourse: true
-
 partof: scala-tour
 
 num: 5

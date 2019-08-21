@@ -1,9 +1,7 @@
 ---
 layout: singlepage-overview
 title: Library Author Guide
-discourse: true
 ---
-
 This document targets developers who want to publish their work as a library that other programs can depend on.
 The document steps through the main questions that should be answered before publishing an open source library,
 and shows how a typical development environment looks like.
@@ -164,7 +162,7 @@ name := "library-example"
 organization := "ch.epfl.scala"
 
 // open source licenses that apply to the project
-licenses := Seq("APL2" -> url("http://www.apache.org/licenses/LICENSE-2.0.txt"))
+licenses := Seq("APL2" -> url("https://www.apache.org/licenses/LICENSE-2.0.txt"))
 
 description := "A library that does nothing useful"
 
@@ -397,7 +395,7 @@ are presented. There are various ways to ensure that this property holds. One wa
 evaluate code examples and write the result of their evaluation in the produced documentation.
 Another way consists in embedding snippets of source code coming from a real module or example.
 
-The [sbt-site](http://github.com/sbt/sbt-site) plugin can help you organize, build and preview your
+The [sbt-site](https://github.com/sbt/sbt-site) plugin can help you organize, build and preview your
 documentation. It is well integrated with other sbt plugins for generating the documentation content
 or for publishing the resulting documentation to a web server.
 
@@ -470,11 +468,11 @@ so that you can see how it looks like, and re-generate the documentation when yo
 ~~~
 sbt:library-example> previewAuto
 Embedded server listening at
-  http://127.0.0.1:4000
+  https://127.0.0.1:4000
 Press any key to stop.
 ~~~
 
-Browse the [http://localhost:4000](http://localhost:4000) URL to see the result:
+Browse the [https://localhost:4000](https://localhost:4000) URL to see the result:
 
 ![](/resources/images/documentation-preview.png)
 

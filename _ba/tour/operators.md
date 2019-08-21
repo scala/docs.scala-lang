@@ -2,9 +2,6 @@
 layout: tour
 title: Operatori
 language: ba
-
-discourse: true
-
 partof: scala-tour
 
 num: 30

@@ -2,9 +2,6 @@
 layout: tour
 title: Sjedinjeni tipovi
 language: ba
-
-discourse: true
-
 partof: scala-tour
 
 num: 3
@@ -21,7 +18,7 @@ Dijagram ispod prikazuje hijerarhiju Scala klasa.
 
 ## Hijerarhija tipova u Scali ##
 
-[`Any`](http://www.scala-lang.org/api/2.12.1/scala/Any.html) je nadtip svih tipova, zove se još i vrh-tip. 
+[`Any`](https://www.scala-lang.org/api/2.12.1/scala/Any.html) je nadtip svih tipova, zove se još i vrh-tip. 
 Definiše određene univerzalne metode kao što su `equals`, `hashCode` i `toString`.
 `Any` ima dvije direktne podklase, `AnyVal` i `AnyRef`.
 

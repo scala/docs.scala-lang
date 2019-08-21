@@ -2,9 +2,6 @@
 layout: tour
 title: Implicitni parametri
 language: ba
-
-discourse: true
-
 partof: scala-tour
 
 num: 26

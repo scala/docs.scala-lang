@@ -2,9 +2,6 @@
 layout: tour
 title: Package Objects
 language: ko
-
-discourse: true
-
 partof: scala-tour
 
 num: 36

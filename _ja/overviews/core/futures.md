@@ -5,8 +5,6 @@ title: Future と Promise
 partof: futures
 
 language: ja
-
-discourse: false
 ---
 
 **Philipp Haller, Aleksandar Prokopec, Heather Miller, Viktor Klang, Roland Kuhn, Vojin Jovanovic 著**<br>
@@ -552,7 +550,7 @@ Future が失敗した場合は、呼び出し元には Future が失敗した�
 これらの例外は非同期計算を実行するスレッド内で再び投げられる。
 この理由は、通常クライアント側で処理されないクリティカルもしくは制御フロー関連の例外が伝搬することを回避し、同時に Future の計算が失敗したことをクライアントに通知するためだ。
 
-より正確な意味論の説明は [`NonFatal`](http://www.scala-lang.org/api/current/index.html#scala.util.control.NonFatal$) を参照。
+より正確な意味論の説明は [`NonFatal`](https://www.scala-lang.org/api/current/index.html#scala.util.control.NonFatal$) を参照。
 
 ## Promise
 

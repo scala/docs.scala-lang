@@ -1,8 +1,6 @@
 ---
 layout: multipage-overview
 title: Conversiones en colecciones paralelas
-discourse: false
-
 partof: parallel-collections
 overview-name: Parallel Collections
 

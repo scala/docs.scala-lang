@@ -7,7 +7,7 @@ disqus: true
 previous-page: /ja/getting-started-with-scala-and-sbt-on-the-command-line
 ---
 
-Scala には複数のライブラリとテスト方法がありますが、このチュートリアルでは、ScalaTest フレームワークから [FunSuite](http://www.scalatest.org/getting_started_with_fun_suite) という人気のある選択肢を実演します。
+Scala には複数のライブラリとテスト方法がありますが、このチュートリアルでは、ScalaTest フレームワークから [FunSuite](https://www.scalatest.org/getting_started_with_fun_suite) という人気のある選択肢を実演します。
 
 [sbt での Scala プロジェクト作成方法](/getting-started/sbt-track/getting-started-with-scala-and-sbt-on-the-command-line.html)を知っている前提とします。
 
@@ -68,4 +68,4 @@ sbt test
 
 ## 結び
 Scala コードのテスト方法のひとつを見ました。
-ScalaTest の FunSuite については[公式ウェブサイト](http://www.scalatest.org/getting_started_with_fun_suite)で詳しく学べます。
+ScalaTest の FunSuite については[公式ウェブサイト](https://www.scalatest.org/getting_started_with_fun_suite)で詳しく学べます。

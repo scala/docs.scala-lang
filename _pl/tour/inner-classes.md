@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Klasy wewnętrzne
-
-discourse: false
-
 partof: scala-tour
 
 num: 21
