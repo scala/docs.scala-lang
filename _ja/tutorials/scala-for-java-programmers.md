@@ -24,7 +24,7 @@ language: ja
 こんな感じです:
 
     object HelloWorld {
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         println("Hello, world!")
       }
     }
@@ -87,7 +87,7 @@ Scala は Java とシームレスに相互運用できるので、Scala クラ�
     import java.text.DateFormat._
 
     object FrenchDate {
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         val now = new Date
         val df = getDateInstance(LONG, Locale.FRANCE)
         println(df format now)
@@ -161,13 +161,13 @@ Scala では関数もオブジェクトです。
 つまりこのプログラムは延々と `"time flies like an array"` という文を毎秒印字します。
 
     object Timer {
-      def oncePerSecond(callback: () => Unit) {
+      def oncePerSecond(callback: () => Unit): Unit = {
         while (true) { callback(); Thread sleep 1000 }
       }
-      def timeFlies() {
+      def timeFlies(): Unit = {
         println("time flies like an arrow...")
       }
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         oncePerSecond(timeFlies)
       }
     }
@@ -183,10 +183,10 @@ Scala では、まさにそんな名前を持たない関数、**匿名関数**�
 `timeFlies` の代わりに匿名関数を使って改正したタイマープログラムはこんな風になります。
 
     object TimerAnonymous {
-      def oncePerSecond(callback: () => Unit) {
+      def oncePerSecond(callback: () => Unit): Unit = {
         while (true) { callback(); Thread sleep 1000 }
       }
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         oncePerSecond(() =>
           println("time flies like an arrow..."))
       }
@@ -229,7 +229,7 @@ Scala におけるクラスは Java の構文に近い構文を使って宣言�
 次の例が示すように、それらを呼ぶには名前のあとに中身のない括弧を置かねばなりません。
 
     object ComplexNumbers {
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         val c = new Complex(1.2, 3.4)
         println("imaginary part: " + c.im())
       }
@@ -388,7 +388,7 @@ Scala は普通のクラスと同様にケースクラスにメソッド定義�
 そのために、式 `(x+x)+(7+y)` にいくつかの処理を実行する簡単な `main` 関数を書いてみましょう。
 まず環境における値 `{ x -> 5, y -> 7 }` を計算し、次に `x` そして `y` についての微分係数を計算します。
 
-    def main(args: Array[String]) {
+    def main(args: Array[String]): Unit = {
       val exp: Tree = Sum(Sum(Var("x"),Var("x")),Sum(Const(7),Var("y")))
       val env: Environment = { case "x" => 5 case "y" => 7 }
       println("Expression: " + exp)
@@ -528,7 +528,7 @@ Scala は、ジェネリッククラス（とメソッド）を定義できる�
 例えば、整数を保持する `cell` を作成して使うには、以下のように書くことができます。
 
     object IntegerReference {
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         val cell = new Reference[Int]
         cell.set(13)
         println("Reference contains the half of " + (cell.get * 2))
