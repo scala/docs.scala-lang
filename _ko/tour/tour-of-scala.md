@@ -1,18 +1,12 @@
 ---
 layout: tour
 title: 들어가며
-discourse: true
 partof: scala-tour
 
 num: 1
-
-next-page: basics
-
-redirect_from: "/tutorials/tour/tour-of-scala.html"
-
-next-page: basics
-
 language: ko
+
+next-page: basics
 ---
 
 ## 투어를 환영합니다
