@@ -8,6 +8,8 @@ language: ko
 
 next-page: classes
 previous-page: basics
+
+prerequisite-knowledge: classes, basics
 ---
 
 스칼라에서는 숫자 값과 함수를 포함한 모든 값이 타입을 가지고 있습니다. 다음의 도표는 타입 계층구조를 보여줍니다.
