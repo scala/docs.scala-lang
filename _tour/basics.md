@@ -110,6 +110,14 @@ You can define an anonymous function (i.e. no name) that returns a given integer
 
 On the left of `=>` is a list of parameters. On the right is an expression involving the parameters.
 
+You can give value to the anonymous function as below.
+
+{% scalafiddle %}
+```tut
+println(((x: Int) => x + 1)(5)) //6
+```
+{% endscalafiddle %}
+
 You can also name functions.
 
 {% scalafiddle %}
