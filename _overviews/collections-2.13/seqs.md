@@ -8,6 +8,7 @@ num: 5
 previous-page: trait-iterable
 next-page: sets
 
+languages: [ru]
 permalink: /overviews/collections-2.13/:title.html
 ---
 

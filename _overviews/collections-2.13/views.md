@@ -8,6 +8,7 @@ num: 14
 previous-page: equality
 next-page: iterators
 
+languages: [ru]
 permalink: /overviews/collections-2.13/:title.html
 ---
 

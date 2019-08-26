@@ -7,6 +7,7 @@ overview-name: Collections
 num: 17
 previous-page: creating-collections-from-scratch
 
+languages: [ru]
 permalink: /overviews/collections-2.13/:title.html
 ---
 

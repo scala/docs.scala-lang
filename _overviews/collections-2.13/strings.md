@@ -8,6 +8,7 @@ num: 11
 previous-page: arrays
 next-page: performance-characteristics
 
+languages: [ru]
 permalink: /overviews/collections-2.13/:title.html
 ---
 

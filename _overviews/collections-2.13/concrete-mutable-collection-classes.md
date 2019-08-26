@@ -8,6 +8,7 @@ num: 9
 previous-page: concrete-immutable-collection-classes
 next-page: arrays
 
+languages: [ru]
 permalink: /overviews/collections-2.13/:title.html
 ---
 

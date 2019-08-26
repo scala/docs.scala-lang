@@ -8,6 +8,7 @@ num: 12
 previous-page: strings
 next-page: equality
 
+languages: [ru]
 permalink: /overviews/collections-2.13/:title.html
 ---
 

@@ -8,6 +8,7 @@ num: 6
 previous-page: seqs
 next-page: maps
 
+languages: [ru]
 permalink: /overviews/collections-2.13/:title.html
 ---
 

@@ -8,6 +8,7 @@ num: 13
 previous-page: performance-characteristics
 next-page: views
 
+languages: [ru]
 permalink: /overviews/collections-2.13/:title.html
 ---
 
