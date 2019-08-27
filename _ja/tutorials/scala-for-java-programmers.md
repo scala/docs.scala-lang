@@ -259,7 +259,7 @@ Scalaでは、スーパークラスから継承されたメソッドをオーバ
       def re = real
       def im = imaginary
       override def toString() =
-        "" + re + (if (im < 0) "-" else "+") + im + "i"
+        "" + re + (if (im >= 0) "+" else "") + im + "i"
     }
 
 オーバーライドされた `toString` は以下のように呼び出せます。
