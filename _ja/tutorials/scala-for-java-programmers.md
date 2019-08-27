@@ -262,6 +262,14 @@ Scalaでは、スーパークラスから継承されたメソッドをオーバ
         "" + re + (if (im < 0) "-" else "+") + im + "i"
     }
 
+オーバーライドされた `toString` は以下のように呼び出せます。
+
+    object ComplexNumbers {
+      def main(args: Array[String]): Unit = {
+        val c = new Complex(1.2, 3.4)
+        println("Overridden toString(): " + c.toString)
+      }
+    }
 
 ## ケースクラスとパターンマッチ
 
