@@ -169,12 +169,17 @@ println("Hello, " + name + "!")
 There are some other differences, but for now, you can think of them as something similar to functions.
 
 Methods can have multi-line expressions as well.
+
+{% scalafiddle %}
 ```tut
 def getSquareString(input: Double): String = {
   val square = input * input
   square.toString
 }
+println(getSquareString(2.5)) // 6.25
 ```
+{% endscalafiddle %}
+
 The last expression in the body is the method's return value. (Scala does have a `return` keyword, but it's rarely used.)
 
 ## Classes
