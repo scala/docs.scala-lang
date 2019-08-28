@@ -564,7 +564,7 @@ libraries). Unlike a value class, we can guarantee that there will
 never be a wrapper around the raw values (or raw nulls).
 
 Notice that `Nullable[Nullable[B]]` is not a valid type, because
-`Nullalbe[B]` is not known to be `<: AnyRef`. This is a key difference
+`Nullable[B]` is not known to be `<: AnyRef`. This is a key difference
 between a type like `Option` (which is parametric and can easily wrap
 itself) and a type like `Nullable` (which only has one `null` value to
 use).
