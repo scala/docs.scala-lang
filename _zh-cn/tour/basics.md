@@ -167,12 +167,17 @@ println("Hello, " + name + "!")
 还有一些其他的区别，但是现在你可以认为方法就是类似于函数的东西。
 
 方法也可以有多行的表达式。
+
+{% scalafiddle %}
 ```tut
 def getSquareString(input: Double): String = {
   val square = input * input
   square.toString
 }
+println(getSquareString(2.5)) // 6.25
 ```
+{% endscalafiddle %}
+
 方法体的最后一个表达式就是方法的返回值。（Scala中也有一个`return`关键字，但是很少使用）
 
 ## 类
