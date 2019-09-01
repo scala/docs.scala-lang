@@ -17,7 +17,7 @@ The places Scala will look for these parameters fall into two categories:
 * Scala will first look for implicit definitions and implicit parameters that can be accessed directly (without a prefix) at the point the method with the implicit parameter block is called.
 * Then it looks for members marked implicit in all the companion objects associated with the implicit candidate type.
 
-A more detailed guide to where scala looks for implicits can be found in [the FAQ](//docs.scala-lang.org/tutorials/FAQ/finding-implicits.html)
+A more detailed guide to where Scala looks for implicits can be found in [the FAQ](//docs.scala-lang.org/tutorials/FAQ/finding-implicits.html).
 
 In the following example we define a method `sum` which computes the sum of a list of elements using the monoid's `add` and `unit` operations. Please note that implicit values can not be top-level.
 
