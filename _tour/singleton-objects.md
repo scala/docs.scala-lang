@@ -49,7 +49,7 @@ The `info` method is visible because of the import statement, `import logging.Lo
 
 Imports require a "stable path" to the imported symbol, and an object is a stable path.
 
-Note: If an `object` is not top-level but is nested in another class or object, then the object is "path-dependent" like any other member. This means that given two kinds of beverages, `class Milk` and `class OrangeJuice`, a class member `object NutritionInfo` "depends" on the enclosing instance, either milk or orange juice. `milk.NutritionInfo` is entirely distinct from `oj.NutritionInfo`.
+Note: If an `object` is not top-level but is nested in another class or object, then the object is "path-dependent" like any other member. This means that given two kinds of beverages, `class Milk` and `class OrangeJuice`, a class member `object NutritionInfo` "depends" on the enclosing instance, either milk or orange juice. `Milk.NutritionInfo` is entirely distinct from `OrangeJuice.NutritionInfo`.
 
 ## Companion objects
 
