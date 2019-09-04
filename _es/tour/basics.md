@@ -168,12 +168,15 @@ Hay otras diferencias, pero para simplificar, podemos pensar que son similares a
 
 Los métodos también pueden tener expresiones de varias lineas.
 
+{% scalafiddle %}
 ```tut
 def getSquareString(input: Double): String = {
   val square = input * input
   square.toString
 }
+println(getSquareString(2.5)) // 6.25
 ```
+{% endscalafiddle %}
 
 La ultima expresión en el cuerpo del método es el valor de retorno del mismo.
 (Scala tiene una palabra reservada `return`, pero se usa raramente y no se aconseja usarla)
