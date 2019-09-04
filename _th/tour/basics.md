@@ -168,12 +168,17 @@ println("Hello, " + name + "!")
 และยังมีบางสิ่งที่แตกต่างกัน แต่ตอนนี้เราจะคิดว่า method มีความเหมือนกับ function
 
 Method สามารถมี expression ได้หลายบรรทัด
+
+{% scalafiddle %}
 ```tut
 def getSquareString(input: Double): String = {
   val square = input * input
   square.toString
 }
+println(getSquareString(2.5)) // 6.25
 ```
+{% endscalafiddle %}
+
 expression สุดท้ายใน body เป็น expression ที่ return value ของ method (Scala ก็มี keyword `return` แต่ว่าไม่ค่อยได้ใช้)
 
 ## Classes
