@@ -168,12 +168,15 @@ println("Hello, " + name + "!")
 
 메소드는 여러 줄의 표현식을 가질 수 있다.
 
+{% scalafiddle %}
 ```tut
 def getSquareString(input: Double): String = {
   val square = input * input
   square.toString
 }
+println(getSquareString(2.5)) // 6.25
 ```
+{% endscalafiddle %}
 
 본문의 마지막 표현식은 메소드의 반환 값이다. (스칼라는 `return` 키워드가 있지만 거의 사용하지 않고 생략한다.)
 
