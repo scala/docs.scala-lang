@@ -181,12 +181,15 @@ Od funkcji odróżnia je jeszcze kilka innych rzeczy, ale na razie możesz o nic
 
 Metody mogą zawierać również wyrażenia wielowierszowe.
 
+{% scalafiddle %}
 ```tut
 def getSquareString(input: Double): String = {
   val square = input * input
   square.toString
 }
+println(getSquareString(2.5)) // 6.25
 ```
+{% endscalafiddle %}
 
 Ostatnie wyrażenie w ciele metody jest wartością, jaką zwraca cała metoda.
 Scala posiada słowo kluczowe `return`, ale jest ono wykorzystywane bardzo rzadko.
