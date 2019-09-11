@@ -61,12 +61,7 @@ Scala has not been extensively tested on JDK 12.
 
 However, the Scala 2.12 community build is [up and running](https://scala-ci.typesafe.com/view/scala-2.12.x/job/scala-2.12.x-jdk12-integrate-community-build/) on an early-access JDK 12 build, and most projects are green.
 
-Two significant known issues with Scala 2.12.8 on JDK 12 are:
-
-* the `-release` flag doesn't work ([scala/bug#11403](https://github.com/scala/bug/issues/11403))
-* the optimizer doesn't work ([scala/bug#11372](https://github.com/scala/bug/issues/11372))
-
-Both issues have already been fixed.  The fixes will be included in [Scala 2.12.9](https://github.com/scala/scala/milestone/77).  2.12.9 is tentatively planned for release in June 2019.  In the meantime, consider using a [Scala nightly build](https://stackoverflow.com/questions/40622878/how-do-i-tell-sbt-to-use-a-nightly-build-of-scala-2-12-or-2-13) to test the fixes.
+Some JDK 12 specific fixes were included in 2.12.9; you'll want to use the latest 2.12 minor release (as of September 2019, that's 2.12.10).
 
 In other respects, so far it appears that 12 is similar to 11 with respect to Scala compatibility.
 
