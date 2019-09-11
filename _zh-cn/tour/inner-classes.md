@@ -20,7 +20,7 @@ class Graph {
   class Node {
     var connectedNodes: List[Node] = Nil
     def connectTo(node: Node) {
-      if (connectedNodes.find(node.equals).isEmpty) {
+      if (!connectedNodes.exists(node.equals)) {
         connectedNodes = node :: connectedNodes
       }
     }
@@ -64,7 +64,7 @@ class Graph {
   class Node {
     var connectedNodes: List[Graph#Node] = Nil
     def connectTo(node: Graph#Node) {
-      if (connectedNodes.find(node.equals).isEmpty) {
+      if (!connectedNodes.exists(node.equals)) {
         connectedNodes = node :: connectedNodes
       }
     }

@@ -16,7 +16,7 @@ En Scala es posible que las clases tengan como miembro otras clases. A diferenci
       class Node {
         var connectedNodes: List[Node] = Nil
         def connectTo(node: Node) {
-          if (connectedNodes.find(node.equals).isEmpty) {
+          if (!connectedNodes.exists(node.equals)) {
             connectedNodes = node :: connectedNodes
           }
         }
@@ -71,7 +71,7 @@ Por favor note que en Java la última linea del ejemplo anterior hubiese sido co
       class Node {
         var connectedNodes: List[Graph#Node] = Nil   // Graph#Node en lugar de Node
         def connectTo(node: Graph#Node) {
-          if (connectedNodes.find(node.equals).isEmpty) {
+          if (!connectedNodes.exists(node.equals)) {
             connectedNodes = node :: connectedNodes
           }
         }
