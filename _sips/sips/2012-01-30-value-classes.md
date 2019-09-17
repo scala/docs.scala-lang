@@ -163,7 +163,7 @@ In our example, the `Meter` class would be expanded as follows:
         override def toString: String =
            Meter.extension$toString(this)
         override def equals(other: Any) =
-           Meter.extension$equals(this)
+           Meter.extension$equals(this, other)
         override def hashCode =
            Meter.extension$hashCode(this)
     }
@@ -333,7 +333,7 @@ After all 4 steps the `Meter` class is translated to the following code.
        override def toString: String =
          Meter.extension$toString(this.underlying)
        override def equals(other: Any) =
-         Meter.extension$equals(this)
+         Meter.extension$equals(this, other)
        override def hashCode =
          Meter.extension$hashCode(this)
     }
