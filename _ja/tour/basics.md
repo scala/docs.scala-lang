@@ -171,12 +171,17 @@ println("Hello, " + name + "!")
 メソッドと関数には他にも違いがありますが、今のところは同じようなものと考えて大丈夫です。
 
 メソッドは複数行の式も持つことができます。
+
+{% scalafiddle %}
 ```tut
 def getSquareString(input: Double): String = {
   val square = input * input
   square.toString
 }
+println(getSquareString(2.5)) // 6.25
 ```
+{% endscalafiddle %}
+
 メソッド本体にある最後の式はメソッドの戻り値になります。(Scalaには`return`キーワードはありますが、めったに使われません。)
 
 ## クラス

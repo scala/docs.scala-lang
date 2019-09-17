@@ -172,12 +172,17 @@ println("Hello, " + name + "!")
 Есть некоторые отличия от функций, но пока что их можно рассматривать как нечто похожее.
 
 Методы также могут иметь многострочные выражения.
+
+{% scalafiddle %}
 ```tut
 def getSquareString(input: Double): String = {
   val square = input * input
   square.toString
 }
+println(getSquareString(2.5)) // 6.25
 ```
+{% endscalafiddle %}
+
 Последнее выражение в теле становится возвращаемым значением метода (у Scala есть ключевое слово `return`, но оно практически не используется).
 
 ## Классы

@@ -156,12 +156,17 @@ println("Hello, " + name + "!")
 Postoje i neke druge razlike, ali zasad, možete misliti o njima kao nečemu sličnom funkcijama.
 
 Metode mogu imati višelinijske izraze također.
+
+{% scalafiddle %}
 ```tut
 def getSquareString(input: Double): String = {
   val square = input * input
   square.toString
 }
+println(getSquareString(2.5)) // 6.25
 ```
+{% endscalafiddle %}
+
 Zadnjo izraz u tijelu metode je povratna vrijednost metode. (Scala ima ključnu riječ `return`, ali se rijetko koristi.)
 
 ## Klase
