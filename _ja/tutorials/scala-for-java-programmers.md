@@ -33,7 +33,7 @@ language: ja
 `main` と呼ばれるメソッドがあり、それはパラメータとしてコマンドライン引数（文字列の配列）を受け取ります。
 このメソッドの本体は、事前に定義されたメソッド `println` に友好的な挨拶を引数にして、1回だけ呼び出しています。
 `main` メソッドは値を返しません（手続きメソッド）。
-そのため、戻り値の型を宣言する必要はありません。
+そのため、その戻り値の型は `Unit` として宣言されます。
 
 Java プログラマにあまりなじみがないのは、`main` メソッドを含む `object` という宣言です。
 Scala はそのような宣言によって、一般に**シングルトンオブジェクト**として知られる、インスタンスを１つだけ有するクラスを取り入れています。
@@ -259,9 +259,17 @@ Scalaでは、スーパークラスから継承されたメソッドをオーバ
       def re = real
       def im = imaginary
       override def toString() =
-        "" + re + (if (im < 0) "-" else "+") + im + "i"
+        "" + re + (if (im >= 0) "+" else "") + im + "i"
     }
 
+オーバーライドされた `toString` は以下のように呼び出せます。
+
+    object ComplexNumbers {
+      def main(args: Array[String]): Unit = {
+        val c = new Complex(1.2, 3.4)
+        println("Overridden toString(): " + c.toString)
+      }
+    }
 
 ## ケースクラスとパターンマッチ
 
