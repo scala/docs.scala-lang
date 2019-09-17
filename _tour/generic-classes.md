@@ -28,7 +28,7 @@ class Stack[A] {
 ```
 This implementation of a `Stack` class takes any type `A` as a parameter. This means the underlying list, `var elements: List[A] = Nil`, can only store elements of type `A`. The procedure `def push` only accepts objects of type `A` (note: `elements = x :: elements` reassigns `elements` to a new list created by prepending `x` to the current `elements`).
 
-`Nil` here is an empty `List` and is not to be confused with `Null`.
+`Nil` here is an empty `List` and is not to be confused with `null`.
 
 ## Usage
 
