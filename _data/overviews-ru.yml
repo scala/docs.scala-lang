@@ -1,0 +1,319 @@
+- category: Стандартная Библиотека
+  description: "Руководства и обзоры, охватывающие стандартную библиотеку Scala."
+  overviews:
+    - title: Scala коллекции
+      by: Martin Odersky и Julien Richard-Foy
+      icon: sitemap
+      url: "collections-2.13/introduction.html"
+      description: "Библиотека Scala коллекций."
+      subdocs:
+        - title: Введение
+          url: "collections-2.13/introduction.html"
+        - title: Изменяемые и Неизменяемые Коллекции
+          url: "collections-2.13/overview.html"
+        - title: Трейт Iterable
+          url: "collections-2.13/trait-iterable.html"
+        - title: Последовательности. Трейты Seq, IndexedSeq и LinearSeq
+          url: "collections-2.13/seqs.html"
+        - title: Реализации Неизменяемых Коллекций
+          url: "collections-2.13/concrete-immutable-collection-classes.html"
+        - title: Реализации Изменяемых Коллекций
+          url: "collections-2.13/concrete-mutable-collection-classes.html"
+        - title: Массивы
+          url: "collections-2.13/arrays.html"
+        - title: Строки
+          url: "collections-2.13/strings.html"
+        - title: Показатели производительности
+          url: "collections-2.13/performance-characteristics.html"
+        - title: Равенство
+          url: "collections-2.13/equality.html"
+        - title: Отображения
+          url: "collections-2.13/views.html"
+        - title: Итераторы
+          url: "collections-2.13/iterators.html"
+        - title: Создание коллекций с нуля
+          url: "collections-2.13/creating-collections-from-scratch.html"
+        - title: Преобразования между Java и Scala коллекциями
+          url: "collections-2.13/conversions-between-java-and-scala-collections.html"
+    - title: Перевод проекта на использование коллекций Scala 2.13
+      icon: sitemap
+      url: "core/collections-migration-213.html"
+      description: "Эта страница описывает главные изменения в коллекциях для тех кто
+      переводит проект на Scala 2.13, а также демонстрирует как собирать проект под версии Scala 2.11 / 2.12 и 2.13"
+    - title: Архитектура Scala коллекций
+      icon: sitemap
+      url: "core/architecture-of-scala-213-collections.html"
+      by: Julien Richard-Foy
+      description: "На этих страницах описывается архитектура фреймворка коллекций, представленного в Scala 2.13. По сравнению с API Коллекции вы узнаете здесь больше о внутренней работе фреймворка."
+    - title: Создание Своих Коллекций
+      icon: building
+      url: "core/custom-collections.html"
+      by: Martin Odersky, Lex Spoon и Julien Richard-Foy
+      description: "В этом документе вы узнаете, как коллекции помогают вам реализовывать собственные персональные коллекции, используя всего несколько строчек кода и переиспользуя большую часть функциональности коллекций из базового фреймворка."
+    - title: Добавление своих операций к коллекциям
+      icon: building
+      url: "core/custom-collection-operations.html"
+      by: Julien Richard-Foy
+      description: "В данном руководстве показано, как написать операции, которые могут быть применены к любому типу коллекции и которые вернут исходный тип коллекции, а также как написать операции, которые можно параметризовать по типу коллекции."
+
+- category: Язык
+  description: "Руководства и обзоры, охватывающие функционал языка Scala."
+  overviews:
+    - title: Строковая интерполяция
+      icon: usd
+      url: "core/string-interpolation.html"
+      description: >
+        Строковая интерполяция позволяет пользователям встраивать данные из переменных непосредственно в обрабатываемые строковые литералы. Вот пример:
+          <pre><code>val name = "James"
+          println(s"Hello, $name")  // Hello, James</code></pre>
+        В приведенном выше литерале <code>s"Hello, $name"</code> - это перерабатываемая строка. Такая запись указывает компилятору сделать некоторую дополнительную работу над самим литералом. Сам обрабатываемый строковый литерал обозначается набором символов, предшествующим ". Интерполяция строк была введена в SIP-11, который содержит все детали реализации.
+    - title: Неявные Классы
+      by: Josh Suereth
+      description: "В Скале 2.10 введена новая функциональность, называемая неявными классами. Неявный класс - это класс, помеченный ключевым словом implicit. Это ключевое слово позволяет использовать первичный конструктор класса в процессе неявного преобразования одного типа в другой, когда класс находится в области видимости."
+      url: "core/implicit-classes.html"
+    - title: Вычислительные Классы и Универсальные Трейты
+      by: Mark Harrah
+      description: "Вычислительные-Классы - это новый механизм в Scala, позволяющий избежать создания объектов во время выполнения, которое достигается за счет объявления класса в качестве подкласса AnyVal."
+      icon: diamond
+      url: "core/value-classes.html"
+
+- category: Создание своих библиотек
+  description: "Руководства по вкладу в создание библиотек с открытым исходным кодом в Scala экосистеме"
+  overviews:
+    - title: Справочник для автора библиотек
+      by: "Julien Richard-Foy"
+      icon: tasks
+      url: "contributors/index.html"
+      description: "Список инструментов, которые авторы библиотек должны настроить для публикации и документирования своих библиотек."
+
+- category: Параллельное и Конкурентное Программирование
+  description: "Полное руководство по параллельному и конкурентному программированию в библиотеках Scala."
+  overviews:
+    - title: Фьючерсы и Промисы
+      by: "Philipp Haller, Aleksandar Prokopec, Heather Miller, Viktor Klang, Roland Kuhn и Vojin Jovanovic"
+      icon: tasks
+      url: "core/futures.html"
+      description: "Фьючерсы дают возможность эффективно и неблокированно осуществлять многие операции в параллельной манере. Фьюче - это обертка над объектом, который может пока ещё не существовать. Как правило, вычесление Фьючи осуществляется конкурентно и может быть использовано позднее. Композиция таких конкурентных процессов приводит в итоге к более быстрому, асинхронному, неблокирующему параллельно исполняемому коду."
+    - title: Параллельные коллекции
+      by: Aleksandar Prokopec и Heather Miller
+      icon: rocket
+      url: "parallel-collections/overview.html"
+      description: "Scala's Parallel Collections Library."
+      subdocs:
+        - title: Обзор
+          url: "parallel-collections/overview.html"
+        - title: Реализация Параллельных Коллекций
+          url: "parallel-collections/concrete-parallel-collections.html"
+        - title: Преобразования Параллельных Коллекций
+          url: "parallel-collections/conversions.html"
+        - title: Многопоточные Префиксные Деревья
+          url: "parallel-collections/ctries.html"
+        - title: Архитектура Библиотеки Параллельных Коллекций
+          url: "parallel-collections/architecture.html"
+        - title: Создание Пользовательской Параллельной Коллекции
+          url: "parallel-collections/custom-parallel-collections.html"
+        - title: Конфигурирование Параллельных Коллекций
+          url: "parallel-collections/configuration.html"
+        - title: Измерение производительности
+          url: "parallel-collections/performance.html"
+
+- category: Совместимость
+  description: "Что с чем работает (или не работает)."
+  overviews:
+    - title: Совместимось с версиями JDK
+      description: "Какие версии Scala работают с какими версиями JDK"
+      icon: coffee
+      url: "jdk-compatibility/overview.html"
+    - title: Совместимость релизов Scala на уровне двоичного кода
+      description: "Когда две версии Scala совместимы на уровне двоичного кода - это означает что проект безопасно компилировать на одной версии Scala и связывать с другой версией Scala во время исполнения. Безопасное связывание во время исполнения (только!) означает, что JVM не бросит исключение (подкласса) LinkageError при выполнении вашей программы в смешанном сценарии, предполагая, что никаких исключений не возникает при компиляции и запуске на одной и той же версии Scala. В том числе, это означает, что можно иметь внешние зависимости в программе, использующие другую версию Scala, чем та, с которой вы скомпилировали проект, до тех пор пока они совместимы на уровне двоичного кода. Другими словами, раздельная компиляция на разных но совместимых на уровне двоичного кода версиях не создает новых проблем, по сравнению с компиляцией и запуском проекта на одной и той же версии Scala."
+      icon: puzzle-piece
+      url: "core/binary-compatibility-of-scala-releases.html"
+    - title: Двоичная Совместимость для Авторов Библиотек
+      description: "Для любой продуктивной экосистемы важно иметь разнообразный и исчерпывающий набор библиотек. Хотя библиотеки Scala легко разрабатывать и распространять, хорошая разработка библиотек выходит за рамки простого написания кода и его публикации. В этом руководстве мы рассматриваем важную тему двоичной совместимости."
+      icon: puzzle-piece
+      url: "core/binary-compatibility-for-library-authors.html"
+
+- category: Инструменты
+  description: "Справочный материал по основным инструментам Scala, таким как Scala REPL и генерации Scaladoc."
+  overviews:
+    - title: Scala REPL
+      icon: terminal
+      url: "repl/overview.html"
+      description: |
+        Scala REPL это инструмент (<code>scala</code>) для обработки выражений в Scala.
+        <br><br>
+        Он выполняет исходный скрипт, который в начале оборачивает в специальный блок, который затем компилирует и запускает.
+    - title: Scaladoc
+      url: "scaladoc/overview.html"
+      icon: book
+      description: "Scala API инструмента генерации документации."
+      subdocs:
+        - title: Обзор
+          url: "scaladoc/overview.html"
+        - title: Scaladoc для Авторов Библиотек
+          url: "scaladoc/for-library-authors.html"
+        - title: Использование интерфейса Scaladoc
+          url: "scaladoc/interface.html"
+
+- category: Компилятор
+  description: "Руководства и обзоры, охватывающие компилятор Scala: плагины компилятора, рефлексия и инструменты метапрограммирования такие как макросы."
+  overviews:
+    - title: Рефлексия
+      by: Heather Miller, Eugene Burmako и Philipp Haller
+      icon: binoculars
+      url: "reflection/overview.html"
+      description: Фреймворк рефлексии в Scala.
+      label-text: experimental
+      subdocs:
+        - title: Overview
+          url: "reflection/overview.html"
+        - title: Environment, Universes, and Mirrors
+          url: "reflection/environment-universes-mirrors.html"
+        - title: Symbols, Trees, and Types
+          url: "reflection/symbols-trees-types.html"
+        - title: Annotations, Names, Scopes, and More
+          url: "reflection/annotations-names-scopes.html"
+        - title: TypeTags and Manifests
+          url: "reflection/typetags-manifests.html"
+        - title: Thread Safety
+          url: "reflection/thread-safety.html"
+        - title: Changes in Scala 2.11
+          url: "reflection/changelog211.html"
+    - title: Макросы
+      by: Eugene Burmako
+      icon: magic
+      url: "macros/usecases.html"
+      description: "Фреймворк метопраграммирования в Scala."
+      label-text: experimental
+      subdocs:
+        - title: Use Cases
+          url: "macros/usecases.html"
+        - title: Blackbox Vs Whitebox
+          url: "macros/blackbox-whitebox.html"
+        - title: Def Macros
+          url: "macros/overview.html"
+        - title: Quasiquotes
+          url: "quasiquotes/intro.html"
+        - title: Macro Bundles
+          url: "macros/bundles.html"
+        - title: Implicit Macros
+          url: "macros/implicits.html"
+        - title: Extractor Macros
+          url: "macros/extractors.html"
+        - title: Type Providers
+          url: "macros/typeproviders.html"
+        - title: Macro Annotations
+          url: "macros/annotations.html"
+        - title: Macro Paradise
+          url: "macros/paradise.html"
+        - title: Roadmap
+          url: "macros/roadmap.html"
+        - title: Changes in 2.11
+          url: "macros/changelog211.html"
+    - title: Quasiquotes
+      by: Denys Shabalin
+      icon: quote-left
+      url: "quasiquotes/setup.html"
+      description: "Quasiquotes наиболее подходящий способ манипулирования синтаксическим деревом Scala."
+      label-text: experimental
+      subdocs:
+        - title: Dependencies and setup
+          url: "quasiquotes/setup.html"
+        - title: Introduction
+          url: "quasiquotes/intro.html"
+        - title: Lifting
+          url: "quasiquotes/lifting.html"
+        - title: Unlifting
+          url: "quasiquotes/unlifting.html"
+        - title: Hygiene
+          url: "quasiquotes/hygiene.html"
+        - title: Use cases
+          url: "quasiquotes/usecases.html"
+        - title: Syntax summary
+          url: "quasiquotes/syntax-summary.html"
+        - title: Expression details
+          url: "quasiquotes/expression-details.html"
+        - title: Type details
+          url: "quasiquotes/type-details.html"
+        - title: Pattern details
+          url: "quasiquotes/pattern-details.html"
+        - title: Definition and import details
+          url: "quasiquotes/definition-details.html"
+        - title: Terminology summary
+          url: "quasiquotes/terminology.html"
+        - title: Future prospects
+          url: "quasiquotes/future.html"
+    - title: Плагины Компилятора
+      by: Lex Spoon и Seth Tisue
+      icon: puzzle-piece
+      url: "plugins/index.html"
+      description: "Используя плагины можно настраивать и расширять компилятор Scala. В этом руководстве описываются возможности плагина и рассказывается о том, как создать простой плагин."
+    - title: Опции Компилятора
+      by: Сообщество
+      icon: cog
+      url: "compiler-options/index.html"
+      description: "Различные варианты управления тем, как scalac компилирует код."
+
+
+- category: Наследие
+  description: "Руководство по функционалу, которые больше не соответствуют последним версиям Scala (2.12+)."
+  overviews:
+    - title: Руководство по миграции Scala Акторов
+      by: Vojin Jovanovic и Philipp Haller
+      icon: truck
+      url: "core/actors-migration-guide.html"
+      description: "Для облегчения миграции со Скала Актеров на Акка мы предоставили Миграционный Комплект для Актеров (МКА). МКА состоит из расширения Scala Акторов, которое позволяет включить scala-actors-migration.jar в пространство классов проекта. Кроме того, Akka 2.1 включает в себя такие функции, как ActorDSL singleton, которые позволяют осуществлять простое преобразование кода с использованием Scala Actors в Akka. Цель этого документа - помочь пользователям пройти через процесс миграции и объяснить, как использовать МКА."
+    - title: API Scala Акторов
+      by: Philipp Haller и Stephen Tu
+      icon: users
+      url: "core/actors.html"
+      description: "В данном руководстве описывается API пакета scala.actors версии 2.8/2.9. Сгруппированны по типам, которые логически принадлежат друг другу. Иерархия трейтов учитывается при структурировании отдельных разделов. Основное внимание уделяется поведению во время выполнения различных методов, которое дополняет существующую документацию по API на основе Scaladoc."
+      label-color: "#899295"
+      label-text: устарело
+    - title: Scala коллекции с 2.8 по 2.12
+      by: Martin Odersky
+      icon: sitemap
+      url: "collections/introduction.html"
+      description: "Scala's Collection Library."
+      subdocs:
+        - title: Introduction
+          url: "collections/introduction.html"
+        - title: Mutable and Immutable Collections
+          url: "collections/overview.html"
+        - title: Trait Traversable
+          url: "collections/trait-traversable.html"
+        - title: Trait Iterable
+          url: "collections/trait-iterable.html"
+        - title: The sequence traits Seq, IndexedSeq, and LinearSeq
+          url: "collections/seqs.html"
+        - title: Sets
+          url: "collections/sets.html"
+        - title: Maps
+          url: "collections/maps.html"
+        - title: Concrete Immutable Collection Classes
+          url: "collections/concrete-immutable-collection-classes.html"
+        - title: Concrete Mutable Collection Classes
+          url: "collections/concrete-mutable-collection-classes.html"
+        - title: Arrays
+          url: "collections/arrays.html"
+        - title: Strings
+          url: "collections/strings.html"
+        - title: Performance Characteristics
+          url: "collections/performance-characteristics.html"
+        - title: Equality
+          url: "collections/equality.html"
+        - title: Views
+          url: "collections/views.html"
+        - title: Iterators
+          url: "collections/iterators.html"
+        - title: Creating Collections From Scratch
+          url: "collections/creating-collections-from-scratch.html"
+        - title: Conversions Between Java and Scala Collections
+          url: "collections/conversions-between-java-and-scala-collections.html"
+        - title: Migrating from Scala 2.7
+          url: "collections/migrating-from-scala-27.html"
+    - title: Архитектура Scala коллекций с 2.8 по 2.12
+      icon: building
+      url: "core/architecture-of-scala-collections.html"
+      by: Martin Odersky и Lex Spoon
+      description: "На этих страницах описывается архитектура фреймворка коллекций до версии 2.12 . По сравнению с API Коллекции вы узнаете здесь больше о внутренней работе фреймворка."

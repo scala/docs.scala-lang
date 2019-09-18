@@ -15,7 +15,7 @@ sections:
         description: "Установка Scala на ваш компьютер и написание пробного Scala кода!"
         icon: "fa fa-rocket"
         link: /getting-started.html
-      - title: "Обзорный тур"
+      - title: "Тур по Scala"
         description: "Вступительный обзор по основным возможностям языка."
         icon: "fa fa-flag"
         link: /tour/tour-of-scala.html
@@ -40,11 +40,11 @@ sections:
         icon: "fa fa-database"
         link: /overviews/index.html
       - title: "Стилистика"
-        description: "Детальное руководство по написанию эталонного Scala кода."
+        description: "Детальное руководство по написанию каноничного Scala кода."
         icon: "fa fa-bookmark"
         link: /style/index.html
       - title: "Шпаргалка"
-        description: "Удобная шпаргалка, охватывающая основы синтаксиса Scala."
+        description: "Краткий справочник, охватывающий основы синтаксиса Scala."
         icon: "fa fa-list"
         link: /cheatsheets/index.html
       - title: "Вопрос-Ответ"

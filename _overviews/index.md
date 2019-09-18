@@ -2,7 +2,7 @@
 layout: overviews
 partof: overviews
 title: Guides and Overviews
-languages: [ja, zh-cn]
+languages: [ja, zh-cn, ru]
 permalink: /overviews/:title.html
 ---
 
