@@ -19,7 +19,7 @@ sections:
         description: "Вступительный обзор по основным возможностям языка."
         icon: "fa fa-flag"
         link: /tour/tour-of-scala.html
-      - title: "для Джавистов"
+      - title: "для Java программистов"
         description: "Быстрое знакомство со Scala для тех кто уже знает Java."
         icon: "fa fa-coffee"
         link: /tutorials/scala-for-java-programmers.html
