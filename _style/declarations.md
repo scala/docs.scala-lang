@@ -220,7 +220,7 @@ There are three main reasons you should do this:
         // If, instead:
         def foldLeft[B](z: B, op: (B, A) => B): B
         // above won't work, you must specify types
-        List("").foldLeft(0, (b: Int, a: String) => a + b.length)
+        List("").foldLeft(0, (b: Int, a: String) => b + a.length)
         List("").foldLeft[Int](0, _ + _.length)
 
 For complex DSLs, or with type-names that are long, it can be difficult
