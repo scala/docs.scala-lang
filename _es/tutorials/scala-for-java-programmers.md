@@ -11,7 +11,7 @@ Traducción y arreglos Santiago Basulto.
 
 ## Introducción
 
-Este documento provee una rápida introducción al lenguaje Scala como también a su compilador. Está pensado para personas que ya poseen cierta experiencia en programación y quieren una vista rápida de lo que pueden hacer con Scala. Se asume como un conocimiento básico de programación orientada a objetos, especialmente en Java.
+Este documento provee una rápida introducción al lenguaje Scala como también a su compilador. Está pensado para personas que ya poseen cierta experiencia en programación y quieren una vista rápida de lo que pueden hacer con Scala. Se asume un conocimiento básico de programación orientada a objetos, especialmente en Java.
 
 ## Un primer ejemplo
 
@@ -33,7 +33,7 @@ El lector astuto notará que el método `main` no es declarado como `static`. Es
 
 Para compilar el ejemplo utilizaremos `scalac`, el compilador de Scala. `scalac` funciona como la mayoría de los compiladores. Toma un archivo fuente como argumento, algunas opciones y produce uno o varios archivos objeto. Los archivos objeto que produce son archivos class de Java estándar.
 
-Si guardamos el programa anterior en un archivo llamado `HolaMundo.scala`, podemos compilarlo ejecutando el siguiente comando (el símbolo mayor `>` representa el prompt del shell y no debe ser escrita):
+Si guardamos el programa anterior en un archivo llamado `HolaMundo.scala`, podemos compilarlo ejecutando el siguiente comando (el símbolo mayor `>` representa el prompt del shell y no debe ser escrito):
 
     > scalac HolaMundo.scala
 
@@ -101,7 +101,7 @@ Esto también indica que `+`, `*`, etc. son identificadores válidos en Scala.
 
 ### Las funciones son objetos
 
-Tal vez suene más sorprendente para los programadores Java, las funciones en Scala también son objetos. Por lo tanto es posible pasar funciones como argumentos, almacenarlas en variables, y retornarlas desde otras funciones. Esta habilidad de manipular funciones como valores es una de las valores fundamentales de un paradigma de programación muy interesante llamado *programación funcional*.
+Tal vez suene más sorprendente para los programadores Java, las funciones en Scala también son objetos. Por lo tanto es posible pasar funciones como argumentos, almacenarlas en variables, y retornarlas desde otras funciones. Esta habilidad de manipular funciones como valores es una de los valores fundamentales de un paradigma de programación muy interesante llamado *programación funcional*.
 
 Como un ejemplo muy simple de por qué puede ser útil usar funciones como valores consideremos una función *temporizador* (o timer, en inglés) cuyo propósito es realizar alguna acción cada un segundo. ¿Cómo pasamos al temporizador la acción a realizar? Bastante lógico, como una función. Este simple concepto de pasar funciones debería ser familiar para muchos programadores: es generalmente utilizado en código relacionado con Interfaces gráficas de usuario (GUIs) para registrar "retrollamadas" (call-back en inglés) que son invocadas cuando un evento ocurre.
 
@@ -109,7 +109,10 @@ En el siguiente programa, la función del temporizador se llama `unaVezPorSegund
 
     object Temporizador {
       def unaVezPorSegundo(callback: () => Unit) {
-        while (true) { callback(); Thread sleep 1000 }
+        while (true) {
+          callback();
+          Thread sleep 1000
+        }
       }
       def tiempoVuela() {
         println("El tiempo vuela como una flecha...")
@@ -120,8 +123,6 @@ En el siguiente programa, la función del temporizador se llama `unaVezPorSegund
     }
 
 _Nota: si nunca tuviste experiencias previas con programación funcional te recomiendo que te tomes unos segundos para analizar cuando se utilizan paréntesis y cuando no en los lugares donde aparece *callback*. Por ejemplo, dentro de la declaración de `unaVezPorSegundo` no aparece, ya que se trata de la función como un "valor", a diferencia de cómo aparece dentro del método, ya que en ese caso se la está invocando (por eso los paréntesis)._
-Note that in order to print the string, we used the predefined method
-`println` instead of using the one from `System.out`.
 
 #### Funciones anónimas
 
@@ -129,7 +130,10 @@ El programa anterior es fácil de entender, pero puede ser refinado aún más. P
 
     object TemporizadorAnonimo {
       def unaVezPorSegundo(callback: () => Unit) {
-        while (true) { callback(); Thread sleep 1000 }
+        while (true) {
+          callback();
+          Thread sleep 1000
+        }
       }
       def main(args: Array[String]) {
         unaVezPorSegundo(
