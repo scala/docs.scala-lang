@@ -56,7 +56,6 @@ Veamos un ejemplo que demuestra esto. Queremos obtener y formatear la fecha actu
 Las librerías de clases de Java definen clases de utilería poderosas, como `Date` y `DateFormat`. Ya que Scala interacciona fácilmente con Java, no es necesario implementar estas clases equivalentes en las librerías de Scala --podemos simplemente importar las clases de los correspondientes paquetes de Java:
 
     import java.util.{Date, Locale}
-    import java.text.DateFormat
     import java.text.DateFormat._
 
     object FrenchDate {
@@ -69,7 +68,7 @@ Las librerías de clases de Java definen clases de utilería poderosas, como `Da
 
 Las declaraciones de importación de Scala lucen muy similares a las de Java, sin embargo, las primeras son bastante más poderosas. Múltiples clases pueden ser importadas desde el mismo paquete al encerrarlas en llaves como se muestra en la primer línea. Otra diferencia es que podemos importar todos los nombres de un paquete o clase, utilizando el carácter guión bajo (`_`) en vez del asterisco (`*`). Eso es porque el asterisco es un identificador válido en Scala (quiere decir que por ejemplo podemos nombrar a un método `*`), como veremos más adelante.
 
-La declaración `import` en la tercer línea por lo tanto importa todos los miembros de la clase `DateFormat`. Esto hace que el método estático `getDateInstance` y el campo estático `LONG` sean directamente visibles.
+La declaración `import` en la segunda línea importa todos los miembros de la clase `DateFormat`. Esto hace que el método estático `getDateInstance` y el campo estático `LONG` sean directamente visibles.
 
 Dentro del método `main` primero creamos una instancia de la clase `Date` la cual por defecto contiene la fecha actual. A continuación definimos un formateador de fechas utilizando el método estático `getDateInstance` que importamos previamente. Finalmente, imprimimos la fecha actual formateada de acuerdo a la instancia de `DateFormat` que fue "localizada". Esta última línea muestra una propiedad interesante de la sintaxis de Scala. Los métodos que toman un solo argumento pueden ser usados con una sintaxis de infijo Es decir, la expresión
 
@@ -245,15 +244,15 @@ De ahora en más, el tipo `Entorno` puede ser usado como un alias del tipo de fu
 Ahora podemos dar la definición de la función evaluadora. Conceptualmente, es muy sencillo: el valor de una suma de dos expresiones es simplemente la suma de los valores de estas expresiones; el valor de una variable es obtenido directamente del entorno; y el valor de una constante es la constante en sí misma. Expresar esto en Scala no resulta para nada difícil:
 
     def eval(a: Arbol, ent: Entorno): Int = a match {
-      case Sum(i, d) => eval(i, ent) + eval(d, env)
+      case Sum(i, d) => eval(i, ent) + eval(d, ent)
       case Var(n)    => ent(n)
       case Const(v)  => v
     }
 
 Esta función evaluadora función realizando un *reconocimiento de patrones* (pattern matching) en el árbol `a`. Intuitivamente, el significado de la definición de arriba debería estar claro:
 
-1. Primero comprueba si el árbol `t`es una `Sum`, y si lo es, asocia el sub-arbol izquierdo a una nueva variable llamada `i` y el sub-arbol derecho a la variable `r`, y después procede con la evaluación de la expresión que sigue a la flecha (`=>`); esta expresión puede (y hace) uso de las variables asociadas por el patrón que aparece del lado izquierdo de la flecha.
-2. si la primer comprobación (la de `Sum`) no prospera, es decir que el árbol no es una `Sum`, sigue de largo y comprueba si `a` es un `Var`; si lo es, asocia el nombre contenido en el nodo `Var` a la variable `n` y procede con la parte derecha de la expresión.
+1. Primero comprueba si el árbol `t`es una `Sum`, y si lo es, asocia el sub-arbol izquierdo a una nueva variable llamada `i` y el sub-arbol derecho a la variable `d`, y después procede con la evaluación de la expresión que sigue a la flecha (`=>`); esta expresión puede (y hace) uso de las variables asociadas por el patrón que aparece del lado izquierdo de la flecha.
+2. Si la primer comprobación (la de `Sum`) no prospera, es decir que el árbol no es una `Sum`, sigue de largo y comprueba si `a` es un `Var`; si lo es, asocia el nombre contenido en el nodo `Var` a la variable `n` y procede con la parte derecha de la expresión.
 3. si la segunda comprobación también falla, resulta que `a` no es un `Sum` ni un `Var`, por lo tanto comprueba que sea un `Const`, y si lo es, asocia el valor contenido en el nodo `Const` a la variable `v`y procede con el lado derecho.
 4. finalmente, si todos las comprobaciones fallan, una excepción es lanzada para dar cuenta el fallo de la expresión; esto puede pasar solo si existen más subclases de `Arbol`.
 
@@ -271,7 +270,7 @@ Para explorar un poco más esto de pattern matching definamos otra operación ar
 2. la derivada de una variable `v` es uno (1) si `v` es la variable relativa a la cual la derivada toma lugar, y cero (0)de otra manera,
 3. la derivada de una constante es cero (0).
 
-Estas reglas pueden ser traducidas casi literalmente en código Sclaa, para obtener la siguiente definición.
+Estas reglas pueden ser traducidas casi literalmente en código Scala, para obtener la siguiente definición.
 
     def derivada(a: Arbol, v: String): Arbol = a match {
       case Sum(l, r) => Sum(derivada(l, v), derivada(r, v))
@@ -313,7 +312,7 @@ Tal vez la forma más fácil para un programador Java de entender qué son los t
 
 Para ver la utilidad de los traits, veamos un ejemplo clásico: objetos ordenados. Generalmente es útil tener la posibilidad de comparar objetos de una clase dada entre ellos, por ejemplo, para ordenarlos. En Java, los objetos que son comparables implementan la interfaz `Comparable`. En Scala, podemos hacer algo un poco mejor que en Java al definir un trait equivalente `Comparable` que invocará a `Ord`.
 
-Cuando comparamos objetos podemos utilizar seis predicados distintos: menor, menor o igual, igual, distinto, mayor o igual y mayor. De todas maneras, definir todos estos es fastidioso, especialmente que cuatro de estos pueden ser expresados en base a los otros dos. Esto es, dados los predicados "igual" y "menor" (por ejemplo), uno puede expresar los otros. En Scala, todas estas observaciones pueden ser fácilmente capturadas mediante la siguiente declaración de un Trait:
+Cuando comparamos objetos podemos utilizar seis predicados distintos: menor, menor o igual, igual, distinto, mayor o igual y mayor. De todas maneras, definir todos estos es fastidioso, especialmente cuando cuatro de éstos pueden ser expresados en base a los otros dos. Esto es, dados los predicados "igual" y "menor" (por ejemplo), uno puede expresar los otros. En Scala, todas estas observaciones pueden ser fácilmente capturadas mediante la siguiente declaración de un Trait:
 
     trait Ord {
       def < (that: Any): Boolean
@@ -350,7 +349,7 @@ Finalmente el último método para definir es el predicado que comprueba la infe
 
     def <(that: Any): Boolean = {
         if (!that.isInstanceOf[Fecha])
-          error("no se puede comparar" + that + " y una fecha")
+          sys.error("no se puede comparar" + that + " y una fecha")
 
       val o = that.asInstanceOf[Fecha]
       (anno < o.anno) ||
@@ -390,7 +389,7 @@ Para utilizar esta clase `Referencia`, uno necesita especificar qué tipo utiliz
       def main(args: Array[String]) {
         val ref = new Referencia[Int]
         ref.set(13)
-        println("La referncia tiene la mitad de " + (ref.get * 2))
+        println("La referencia tiene la mitad de " + (ref.get * 2))
       }
     }
 
