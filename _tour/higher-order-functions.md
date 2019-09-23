@@ -90,7 +90,7 @@ object SalaryRaiser {
   def smallPromotion(salaries: List[Double]): List[Double] =
     promotion(salaries, salary => salary * 1.1)
 
-  def bigPromotion(salaries: List[Double]): List[Double] =
+  def greatPromotion(salaries: List[Double]): List[Double] =
     promotion(salaries, salary => salary * math.log(salary))
 
   def hugePromotion(salaries: List[Double]): List[Double] =
