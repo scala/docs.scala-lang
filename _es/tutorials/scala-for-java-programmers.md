@@ -11,7 +11,7 @@ Traducción y arreglos Santiago Basulto.
 
 ## Introducción
 
-Este documento provee una rápida introducción al lenguaje Scala como también a su compilador. Está pensado para personas que ya poseen cierta experiencia en programación y quieren una vista rápida de lo que pueden hacer con Scala. Se asume como un conocimiento básico de programación orientada a objetos, especialmente en Java.
+Este documento provee una rápida introducción al lenguaje Scala como también a su compilador. Está pensado para personas que ya poseen cierta experiencia en programación y quieren una vista rápida de lo que pueden hacer con Scala. Se asume un conocimiento básico de programación orientada a objetos, especialmente en Java.
 
 ## Un primer ejemplo
 
@@ -33,7 +33,7 @@ El lector astuto notará que el método `main` no es declarado como `static`. Es
 
 Para compilar el ejemplo utilizaremos `scalac`, el compilador de Scala. `scalac` funciona como la mayoría de los compiladores. Toma un archivo fuente como argumento, algunas opciones y produce uno o varios archivos objeto. Los archivos objeto que produce son archivos class de Java estándar.
 
-Si guardamos el programa anterior en un archivo llamado `HolaMundo.scala`, podemos compilarlo ejecutando el siguiente comando (el símbolo mayor `>` representa el prompt del shell y no debe ser escrita):
+Si guardamos el programa anterior en un archivo llamado `HolaMundo.scala`, podemos compilarlo ejecutando el siguiente comando (el símbolo mayor `>` representa el prompt del shell y no debe ser escrito):
 
     > scalac HolaMundo.scala
 
@@ -56,7 +56,6 @@ Veamos un ejemplo que demuestra esto. Queremos obtener y formatear la fecha actu
 Las librerías de clases de Java definen clases de utilería poderosas, como `Date` y `DateFormat`. Ya que Scala interacciona fácilmente con Java, no es necesario implementar estas clases equivalentes en las librerías de Scala --podemos simplemente importar las clases de los correspondientes paquetes de Java:
 
     import java.util.{Date, Locale}
-    import java.text.DateFormat
     import java.text.DateFormat._
 
     object FrenchDate {
@@ -69,7 +68,7 @@ Las librerías de clases de Java definen clases de utilería poderosas, como `Da
 
 Las declaraciones de importación de Scala lucen muy similares a las de Java, sin embargo, las primeras son bastante más poderosas. Múltiples clases pueden ser importadas desde el mismo paquete al encerrarlas en llaves como se muestra en la primer línea. Otra diferencia es que podemos importar todos los nombres de un paquete o clase, utilizando el carácter guión bajo (`_`) en vez del asterisco (`*`). Eso es porque el asterisco es un identificador válido en Scala (quiere decir que por ejemplo podemos nombrar a un método `*`), como veremos más adelante.
 
-La declaración `import` en la tercer línea por lo tanto importa todos los miembros de la clase `DateFormat`. Esto hace que el método estático `getDateInstance` y el campo estático `LONG` sean directamente visibles.
+La declaración `import` en la segunda línea importa todos los miembros de la clase `DateFormat`. Esto hace que el método estático `getDateInstance` y el campo estático `LONG` sean directamente visibles.
 
 Dentro del método `main` primero creamos una instancia de la clase `Date` la cual por defecto contiene la fecha actual. A continuación definimos un formateador de fechas utilizando el método estático `getDateInstance` que importamos previamente. Finalmente, imprimimos la fecha actual formateada de acuerdo a la instancia de `DateFormat` que fue "localizada". Esta última línea muestra una propiedad interesante de la sintaxis de Scala. Los métodos que toman un solo argumento pueden ser usados con una sintaxis de infijo Es decir, la expresión
 
@@ -101,7 +100,7 @@ Esto también indica que `+`, `*`, etc. son identificadores válidos en Scala.
 
 ### Las funciones son objetos
 
-Tal vez suene más sorprendente para los programadores Java, las funciones en Scala también son objetos. Por lo tanto es posible pasar funciones como argumentos, almacenarlas en variables, y retornarlas desde otras funciones. Esta habilidad de manipular funciones como valores es una de las valores fundamentales de un paradigma de programación muy interesante llamado *programación funcional*.
+Tal vez suene más sorprendente para los programadores Java, las funciones en Scala también son objetos. Por lo tanto es posible pasar funciones como argumentos, almacenarlas en variables, y retornarlas desde otras funciones. Esta habilidad de manipular funciones como valores es una de los valores fundamentales de un paradigma de programación muy interesante llamado *programación funcional*.
 
 Como un ejemplo muy simple de por qué puede ser útil usar funciones como valores consideremos una función *temporizador* (o timer, en inglés) cuyo propósito es realizar alguna acción cada un segundo. ¿Cómo pasamos al temporizador la acción a realizar? Bastante lógico, como una función. Este simple concepto de pasar funciones debería ser familiar para muchos programadores: es generalmente utilizado en código relacionado con Interfaces gráficas de usuario (GUIs) para registrar "retrollamadas" (call-back en inglés) que son invocadas cuando un evento ocurre.
 
@@ -109,7 +108,10 @@ En el siguiente programa, la función del temporizador se llama `unaVezPorSegund
 
     object Temporizador {
       def unaVezPorSegundo(callback: () => Unit) {
-        while (true) { callback(); Thread sleep 1000 }
+        while (true) {
+          callback();
+          Thread sleep 1000
+        }
       }
       def tiempoVuela() {
         println("El tiempo vuela como una flecha...")
@@ -120,8 +122,6 @@ En el siguiente programa, la función del temporizador se llama `unaVezPorSegund
     }
 
 _Nota: si nunca tuviste experiencias previas con programación funcional te recomiendo que te tomes unos segundos para analizar cuando se utilizan paréntesis y cuando no en los lugares donde aparece *callback*. Por ejemplo, dentro de la declaración de `unaVezPorSegundo` no aparece, ya que se trata de la función como un "valor", a diferencia de cómo aparece dentro del método, ya que en ese caso se la está invocando (por eso los paréntesis)._
-Note that in order to print the string, we used the predefined method
-`println` instead of using the one from `System.out`.
 
 #### Funciones anónimas
 
@@ -129,7 +129,10 @@ El programa anterior es fácil de entender, pero puede ser refinado aún más. P
 
     object TemporizadorAnonimo {
       def unaVezPorSegundo(callback: () => Unit) {
-        while (true) { callback(); Thread sleep 1000 }
+        while (true) {
+          callback();
+          Thread sleep 1000
+        }
       }
       def main(args: Array[String]) {
         unaVezPorSegundo(
@@ -241,15 +244,15 @@ De ahora en más, el tipo `Entorno` puede ser usado como un alias del tipo de fu
 Ahora podemos dar la definición de la función evaluadora. Conceptualmente, es muy sencillo: el valor de una suma de dos expresiones es simplemente la suma de los valores de estas expresiones; el valor de una variable es obtenido directamente del entorno; y el valor de una constante es la constante en sí misma. Expresar esto en Scala no resulta para nada difícil:
 
     def eval(a: Arbol, ent: Entorno): Int = a match {
-      case Sum(i, d) => eval(i, ent) + eval(d, env)
+      case Sum(i, d) => eval(i, ent) + eval(d, ent)
       case Var(n)    => ent(n)
       case Const(v)  => v
     }
 
 Esta función evaluadora función realizando un *reconocimiento de patrones* (pattern matching) en el árbol `a`. Intuitivamente, el significado de la definición de arriba debería estar claro:
 
-1. Primero comprueba si el árbol `t`es una `Sum`, y si lo es, asocia el sub-arbol izquierdo a una nueva variable llamada `i` y el sub-arbol derecho a la variable `r`, y después procede con la evaluación de la expresión que sigue a la flecha (`=>`); esta expresión puede (y hace) uso de las variables asociadas por el patrón que aparece del lado izquierdo de la flecha.
-2. si la primer comprobación (la de `Sum`) no prospera, es decir que el árbol no es una `Sum`, sigue de largo y comprueba si `a` es un `Var`; si lo es, asocia el nombre contenido en el nodo `Var` a la variable `n` y procede con la parte derecha de la expresión.
+1. Primero comprueba si el árbol `t`es una `Sum`, y si lo es, asocia el sub-arbol izquierdo a una nueva variable llamada `i` y el sub-arbol derecho a la variable `d`, y después procede con la evaluación de la expresión que sigue a la flecha (`=>`); esta expresión puede (y hace) uso de las variables asociadas por el patrón que aparece del lado izquierdo de la flecha.
+2. Si la primer comprobación (la de `Sum`) no prospera, es decir que el árbol no es una `Sum`, sigue de largo y comprueba si `a` es un `Var`; si lo es, asocia el nombre contenido en el nodo `Var` a la variable `n` y procede con la parte derecha de la expresión.
 3. si la segunda comprobación también falla, resulta que `a` no es un `Sum` ni un `Var`, por lo tanto comprueba que sea un `Const`, y si lo es, asocia el valor contenido en el nodo `Const` a la variable `v`y procede con el lado derecho.
 4. finalmente, si todos las comprobaciones fallan, una excepción es lanzada para dar cuenta el fallo de la expresión; esto puede pasar solo si existen más subclases de `Arbol`.
 
@@ -267,7 +270,7 @@ Para explorar un poco más esto de pattern matching definamos otra operación ar
 2. la derivada de una variable `v` es uno (1) si `v` es la variable relativa a la cual la derivada toma lugar, y cero (0)de otra manera,
 3. la derivada de una constante es cero (0).
 
-Estas reglas pueden ser traducidas casi literalmente en código Sclaa, para obtener la siguiente definición.
+Estas reglas pueden ser traducidas casi literalmente en código Scala, para obtener la siguiente definición.
 
     def derivada(a: Arbol, v: String): Arbol = a match {
       case Sum(l, r) => Sum(derivada(l, v), derivada(r, v))
@@ -309,7 +312,7 @@ Tal vez la forma más fácil para un programador Java de entender qué son los t
 
 Para ver la utilidad de los traits, veamos un ejemplo clásico: objetos ordenados. Generalmente es útil tener la posibilidad de comparar objetos de una clase dada entre ellos, por ejemplo, para ordenarlos. En Java, los objetos que son comparables implementan la interfaz `Comparable`. En Scala, podemos hacer algo un poco mejor que en Java al definir un trait equivalente `Comparable` que invocará a `Ord`.
 
-Cuando comparamos objetos podemos utilizar seis predicados distintos: menor, menor o igual, igual, distinto, mayor o igual y mayor. De todas maneras, definir todos estos es fastidioso, especialmente que cuatro de estos pueden ser expresados en base a los otros dos. Esto es, dados los predicados "igual" y "menor" (por ejemplo), uno puede expresar los otros. En Scala, todas estas observaciones pueden ser fácilmente capturadas mediante la siguiente declaración de un Trait:
+Cuando comparamos objetos podemos utilizar seis predicados distintos: menor, menor o igual, igual, distinto, mayor o igual y mayor. De todas maneras, definir todos estos es fastidioso, especialmente cuando cuatro de éstos pueden ser expresados en base a los otros dos. Esto es, dados los predicados "igual" y "menor" (por ejemplo), uno puede expresar los otros. En Scala, todas estas observaciones pueden ser fácilmente capturadas mediante la siguiente declaración de un Trait:
 
     trait Ord {
       def < (that: Any): Boolean
@@ -346,7 +349,7 @@ Finalmente el último método para definir es el predicado que comprueba la infe
 
     def <(that: Any): Boolean = {
         if (!that.isInstanceOf[Fecha])
-          error("no se puede comparar" + that + " y una fecha")
+          sys.error("no se puede comparar" + that + " y una fecha")
 
       val o = that.asInstanceOf[Fecha]
       (anno < o.anno) ||
@@ -386,7 +389,7 @@ Para utilizar esta clase `Referencia`, uno necesita especificar qué tipo utiliz
       def main(args: Array[String]) {
         val ref = new Referencia[Int]
         ref.set(13)
-        println("La referncia tiene la mitad de " + (ref.get * 2))
+        println("La referencia tiene la mitad de " + (ref.get * 2))
       }
     }
 
