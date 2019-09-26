@@ -13,7 +13,7 @@ GEM
     eventmachine (1.2.7)
     ffi (1.11.1)
     forwardable-extended (2.6.0)
-    html-proofer (3.12.2)
+    html-proofer (3.13.0)
       addressable (~> 2.3)
       mercenary (~> 0.3)
       nokogiri (~> 1.10)
