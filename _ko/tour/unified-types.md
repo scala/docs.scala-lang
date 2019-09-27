@@ -19,9 +19,9 @@ prerequisite-knowledge: classes, basics
 
 ## 스칼라 타입 계층구조 ##
 
-[`Any`](https://www.scala-lang.org/api/2.12.1/scala/Any.html)는 모든 타입들의 슈퍼타입이며 탑타입이라고도 합니다. `Any`에는 `equals`, `hashCode`, `toString` 같은 특정 범용 메서드가 정의되어 있으며 직접적으로 두개의 서브클래스: `AnyVal`과 `AnyRef`를 가지고 있습니다.
+[`Any`](https://www.scala-lang.org/api/2.12.1/scala/Any.html)는 모든 타입들의 슈퍼타입이며 톱타입이라고도 합니다. `Any`에는 `equals`, `hashCode`, `toString` 같은 특정 범용 메서드가 정의되어 있으며 직접적으로 두 개의 서브클래스: `AnyVal`과 `AnyRef`를 가지고 있습니다.
 
-`AnyVal`은 값 타입을 대표합니다. `Double`, `Float`, `Long`, `Int`, `Short`, `Byte`, `Char`, `Unit`, `Boolean`의 미리 정의된 아홉개의 값 타입이 있으며 이 타입들은 널 값을 가질 수 없습니다. `Unit`은 의미 없는 정보를 갖는 값 타입입니다. `()`와 같이 문자 그대로 선언 할 수있는`Unit`의 인스턴스는 오직 하나만 있습니다. 모든 함수는 무언가를 반환해야하기 때문에 때때로 `Unit`은 유용한 반환 타입입니다.
+`AnyVal`은 값 타입을 대표합니다. `Double`, `Float`, `Long`, `Int`, `Short`, `Byte`, `Char`, `Unit`, `Boolean`의 미리 정의된 아홉 개의 값 타입이 있으며 이 타입들은 널 값을 가질 수 없습니다. `Unit`은 의미 없는 정보를 갖는 값 타입입니다. `()`와 같이 문자 그대로 선언 할 수있는`Unit`의 인스턴스는 오직 하나만 있습니다. 모든 함수는 무언가를 반환해야하기 때문에 때때로 `Unit`은 유용한 반환 타입입니다.
 
 `AnyRef`는 참조 타입을 대표합니다. 값 타입이 아닌 모든 타입은 참조 타입으로 정의됩니다. 스칼라에서 모든 사용자정의 타입은 `AnyRef`의 서브타입입니다. 스칼라가 자바 실행 환경에서 사용된다면 `AnyRef`는 `java.lang.Object`에 해당합니다.
 
