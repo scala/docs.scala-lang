@@ -55,7 +55,7 @@ val iterator = new IntIterator(10)
 iterator.next()  // returns 0
 iterator.next()  // returns 1
 ```
-이 `IntIterator` 클래스는 상한선으로써 매개변수 `to`를 취합니다. `extends Iterator[Int]`는 트레잇 `Iterator[A]`를 확장했으며 `next` 메서드는 Int 값을 반환해야 한다는 의미입니다.
+이 `IntIterator` 클래스는 상한선으로 매개변수 `to`를 취합니다. `extends Iterator[Int]`는 트레잇 `Iterator[A]`를 확장했으며 `next` 메서드는 Int 값을 반환해야 한다는 의미입니다.
 
 ## 서브타이핑
 특정 트레잇이 필요한 곳에 그 트레잇의 서브타입을 대신 사용할 수 있습니다.
