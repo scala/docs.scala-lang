@@ -12,7 +12,7 @@ topics: classes
 prerequisite-knowledge: no-return-keyword, type-declaration-syntax, string-interpolation, procedures
 ---
 
-스칼라의 클래스는 객체를 만들기위한 설계도입니다. 클래스에는 _멤버_ 라고 통칭할 수 있는 메서드, 값, 변수, 타입, 객체, 트레잇, 클래스를 포함할 수 있습니다. 타입, 객체, 트래잇은 투어에서 나중에 다루겠습니다. 
+스칼라의 클래스는 객체를 만들기 위한 설계도입니다. 클래스에는 _멤버_ 라고 통칭할 수 있는 메서드, 값, 변수, 타입, 객체, 트레잇, 클래스를 포함할 수 있습니다. 타입, 객체, 트레잇은 투어에서 나중에 다루겠습니다. 
 
 # 클래스 정의
 가장 단순한 클래스 정의는 예약어 `class`와 식별자만 있는 것입니다. 클래스명은 대문자로 시작하는 것이 관례입니다.
@@ -40,7 +40,7 @@ point1.x  // 2
 println(point1)  // prints (2, 3)
 ```
 
-이 `Point` 클래스에는 변수`x`, `y`와 메서드 `move`, `toString`의 네 멤버가 있습니다. 다른 많은 언어와 달리 기본 생성자는 클래스 서명부`(var x : Int, var y : Int)`에 있습니다. `move` 메소드는 두 개의 정수 인자를 취하여 정보를 전달하지 않는 Unit 값 `()`을 리턴합니다. 이것은 자바와 유사한 언어에서 'void'와 대략 일치합니다. 반면에 `toString`은 인자를 취하지 않고 `String` 값을 반환합니다. `toString`은 [`AnyRef`](unified-types.html)의 `toString`을 대체하므로 `override` 예약어로 지정됩니다.
+이 `Point` 클래스에는 네 개의 멤버가 있습니다: 변수 `x`, `y`와 메서드 `move`, `toString`. 많은 다른 언어와 달리 기본 생성자는 클래스 서명부(signature)에 있습니다 `(var x : Int, var y : Int)`. `move` 메소드는 두 개의 정수 인자를 취하여 정보를 전달하지 않는 Unit 타입의 값 `()`을 반환합니다. 이것은 자바 같은 언어의 `void`와 유사합니다. 반면에 `toString`은 인자를 취하지 않고 `String` 값을 반환합니다. `toString`은 [`AnyRef`](unified-types.html)의 `toString`을 대체하므로 `override` 예약어로 지정됩니다.
 
 ## 생성자
 
