@@ -18,7 +18,7 @@ sections:
       - title: "Тур по Scala"
         description: "Вступительный обзор по основным возможностям языка."
         icon: "fa fa-flag"
-        link: /tour/tour-of-scala.html
+        link: /ru/tour/tour-of-scala.html
       - title: "для Java программистов"
         description: "Быстрое знакомство со Scala для тех кто уже знает Java."
         icon: "fa fa-coffee"
@@ -38,7 +38,7 @@ sections:
       - title: "Обзоры"
         description: "Подробная документация, охватывающая возможности Scala."
         icon: "fa fa-database"
-        link: /overviews/index.html
+        link: /ru/overviews/index.html
       - title: "Стилистика"
         description: "Детальное руководство по написанию каноничного Scala кода."
         icon: "fa fa-bookmark"
@@ -46,7 +46,7 @@ sections:
       - title: "Шпаргалка"
         description: "Краткий справочник, охватывающий основы синтаксиса Scala."
         icon: "fa fa-list"
-        link: /cheatsheets/index.html
+        link: /ru/cheatsheets/index.html
       - title: "Вопрос-Ответ"
         description: "Список по наиболее часто задаваемых вопросов с ответами по функционалу Scala"
         icon: "fa fa-question-circle"
