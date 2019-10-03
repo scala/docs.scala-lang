@@ -42,6 +42,11 @@ String interpolators can also take arbitrary expressions.  For example:
 
 will print the string `1 + 1 = 2`.  Any arbitrary expression can be embedded in `${}`.
 
+To represent an actual dollar sign you can double it `$$`, like here:
+
+    println(s"New offers starting at $$14.99")
+    
+which will print the string `New offers starting at $14.99`.
 
 ### The `f` Interpolator
 
