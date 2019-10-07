@@ -1,6 +1,9 @@
 ---
-layout: sips
+layout: sip
 title: SIP-NN - Preprocessor for conditional compilation
+vote-status: pending
+permalink: /sips/:title.html
+redirect_from: /sips/pending/preprocessor-for-conditional-compilation.html
 ---
 
 **By: Stefan Zeiger**
