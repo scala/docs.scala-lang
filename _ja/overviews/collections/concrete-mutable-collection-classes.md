@@ -83,7 +83,7 @@ Scala は不変キューの他に可変キュー ([`mutable.Queue`](https://www.
 
 配列シーケンス ([`ArraySeq`](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/mutable/ArraySeq.html)) は、内部で要素を `Array[Object]` に格納する固定長の可変列だ。
 
-典型的には、配列の性能特性が欲しいが、要素の型が特定できず、実行時に `ClassManifest` も無く、ジェネリックな列を作成したい場合に [`ArraySeq`](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/mutable/ArraySeq.html) を使う。この問題は後ほど[配列の節](arrays.html)で説明する。
+典型的には、配列の性能特性が欲しいが、要素の型が特定できず、実行時に `ClassTag` も無く、ジェネリックな列を作成したい場合に [`ArraySeq`](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/mutable/ArraySeq.html) を使う。この問題は後ほど[配列の節](arrays.html)で説明する。
 
 ## スタック
 
