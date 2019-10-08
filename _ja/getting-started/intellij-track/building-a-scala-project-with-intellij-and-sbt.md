@@ -82,7 +82,7 @@ object Main extends App {
 `build.sbt` を開き、以下のファイルを追加します。
 
 ```
-libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % "1.1.0"
+libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % "1.1.2"
 ```
 
 ここで `libraryDependencies` は依存関係の集合であり、`+=` を使うことにより、[scala-parser-combinators](https://github.com/scala/scala-parser-combinators) への依存を、sbt が起動時に取得してくる依存関係の集合に加えています。
