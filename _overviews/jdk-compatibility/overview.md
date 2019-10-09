@@ -59,7 +59,7 @@ JDK 12 was released in March 2019.  But it is not an LTS release, so the remarks
 
 Scala has not been extensively tested on JDK 12.
 
-However, the Scala 2.12 community build is [up and running](https://scala-ci.typesafe.com/view/scala-2.12.x/job/scala-2.12.x-jdk12-integrate-community-build/) on an early-access JDK 12 build, and most projects are green.
+However, the Scala 2.12 community build is [up and running](https://scala-ci.typesafe.com/view/scala-2.12.x/job/scala-2.12.x-jdk13-integrate-community-build/) on an early-access JDK 12 build, and most projects are green.
 
 Some JDK 12 specific fixes were included in 2.12.9; you'll want to use the latest 2.12 minor release (as of September 2019, that's 2.12.10).
 
