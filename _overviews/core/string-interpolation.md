@@ -70,7 +70,7 @@ error.  For example:
                   ^
 
 The `f` interpolator makes use of the string format utilities available from Java.   The formats allowed after the `%` character are outlined in the
-[Formatter javadoc](https://docs.oracle.com/javase/1.6.0/docs/api/java/util/Formatter.html#detail).   If there is no `%` character after a variable
+[Formatter javadoc](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Formatter.html#detail).   If there is no `%` character after a variable
 definition a formatter of `%s` (`String`) is assumed.
 
 
