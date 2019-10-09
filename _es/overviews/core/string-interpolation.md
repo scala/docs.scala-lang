@@ -59,7 +59,7 @@ El interpolador `f` es seguro respecto a tipos. Si pasamos un número real a una
                f"$height%4d"
                   ^
 
-El interpolador `f` hace uso de las utilidades de formateo de cadenas disponibles en java. Los formatos permitidos tras el carácter `%` son descritos en [Formatter javadoc](https://docs.oracle.com/javase/1.6.0/docs/api/java/util/Formatter.html#detail). Si el carácter `%` no aparece tras la definición de una variable, `%s` es utilizado por defecto.
+El interpolador `f` hace uso de las utilidades de formateo de cadenas disponibles en java. Los formatos permitidos tras el carácter `%` son descritos en [Formatter javadoc](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Formatter.html#detail). Si el carácter `%` no aparece tras la definición de una variable, `%s` es utilizado por defecto.
 
 ### Interpolador `raw`
 
