@@ -16,6 +16,7 @@ This table shows the first Scala release in each series that works with each JVM
 
 | JVM version | Minimum Scala versions                                                                        |
 |:-----------:|:----------------------------------------------------------------------------------------------|
+| 13          | 2.13.1, 2.12.9, see [below](#jdk-13-compatibility-notes) for further notes                    |
 | 12          | see [below](#jdk-12-compatibility-notes)                                                      |
 | 11          | 2.13.0, 2.12.4, 2.11.12, 2.10.7 (but also, see [below](#jdk-11-compatibility-notes))          |
 | 8           | 2.13.0, 2.12.0, 2.11.0, 2.10.2                                                                |
@@ -55,17 +56,18 @@ To help with testing on JDK 11, see [scala/scala-dev#559](https://github.com/sca
 
 ## JDK 12 compatibility notes
 
-JDK 12 was released in March 2019.  But it is not an LTS release, so the remarks above about non-LTS releases apply.
+JDK 12 was released in March 2019. But it is not an LTS release, so the remarks above about non-LTS releases apply.
 
-Scala has not been extensively tested on JDK 12.
+JDK 12 is expected to work wherever JDK 13 does, and the community build for JDK 12 no longer runs (but runs JDK 13 instead).
 
-However, the Scala 2.12 community build is [up and running](https://scala-ci.typesafe.com/view/scala-2.12.x/job/scala-2.12.x-jdk13-integrate-community-build/) on an early-access JDK 12 build, and most projects are green.
+As of October 2019, the [jdk12 label](https://github.com/scala/bug/labels/jdk12) in scala/bug has no open bugs, and new issues will likely be reported against the newer non-LTS [jdk13 label](https://github.com/scala/bug/labels/jdk13) or the LTS [jdk11 label](https://github.com/scala/bug/labels/jdk11).
 
-Some JDK 12 specific fixes were included in 2.12.9; you'll want to use the latest 2.12 minor release (as of September 2019, that's 2.12.10).
+## JDK 13 compatibility notes
 
-In other respects, so far it appears that 12 is similar to 11 with respect to Scala compatibility.
+JDK 13 was released in September 2019. It requires scala 2.12.9 or later on the 2.12 series, and 2.13.1 or later on the 2.13 series. Using the latest minor release is recommended. It is not an LTS release, and the remarks about non-LTS releases apply. 
 
-To track progress on JDK 12 compatibility, watch:
+Scala has not been extensively tested on JDK 13. The [Scala 2.12](https://scala-ci.typesafe.com/view/scala-2.12.x/job/scala-2.12.x-jdk13-integrate-community-build/) and [Scala 2.13](https://scala-ci.typesafe.com/view/scala-2.13.x/job/scala-2.13.x-jdk13-integrate-community-build/) community builds show the status quo. The [add JDK 13 community build](https://github.com/scala/community-builds/issues/873) ticket on scala/community-builds repository tracks progress on these builds.
 
-* the [jdk12 label](https://github.com/scala/bug/labels/jdk12) in scala/bug (as well as the [jdk11 label](https://github.com/scala/bug/labels/jdk11))
-* the JDK 11 and 12 community build ticket ([scala/community-builds#796](https://github.com/scala/community-builds/issues/796))
+In other respects, so far it appears that 13 is similar to 12 and 11 with respect to Scala compatibility.
+
+To track progress on JDK 13 compatibility watch the [jdk13 label](https://github.com/scala/bug/labels/jdk13) in scala/bug, (as well as the [jdk11 label](https://github.com/scala/bug/labels/jdk11))
