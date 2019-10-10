@@ -1,6 +1,9 @@
 ---
-layout: sips
+layout: sip
 title: SIP-NN - Quote escapes for interpolations
+vote-status: pending
+permalink: /sips/:title.html
+redirect_from: /sips/pending/interpolation-quote-escape.html
 ---
 
 **By: Martijn Hoekstra**

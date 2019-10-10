@@ -1,7 +1,9 @@
 ---
-layout: sips
-discourse: true
+layout: sip
 title: SIP-NN - Curried varargs
+vote-status: pending
+permalink: /sips/:title.html
+redirect_from: /sips/pending/curried-varargs.html
 ---
 
 **By: Yang, Bo**
