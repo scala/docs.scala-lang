@@ -55,6 +55,6 @@ which leverages [sbt](http://www.scala-sbt.org).
 
 If you're the maintainer -- or just an interested user! -- of an
 open-source Scala library or tool, please visit the
-[community build documentation](https://github.com/scala/community-builds/wiki)
+[community build documentation](https://github.com/scala/community-build/wiki)
 for guidelines on what projects are suitable for the community build
 and how projects can be added.
