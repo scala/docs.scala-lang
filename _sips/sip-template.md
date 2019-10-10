@@ -1,6 +1,9 @@
 ---
-layout: sips
+layout: sip
 title: SIP-NN - SIP Title
+#vote-status: pending <- uncomment this line
+permalink: /sips/:title.html
+redirect_from: /sips/pending/{filename-without-md}.html
 ---
 
 **By: Author 1 and Author 2 and Author 3**

@@ -1,11 +1,9 @@
 ---
-layout: sips
+layout: sip
 title: SIP-NN - Uncluttering Abuse of Match
-vote-status: new
-vote-text:
+vote-status: pending
 permalink: /sips/:title.html
 redirect_from: /sips/pending/case-if.html
-
 ---
 
 **By: Som Snytt and A. P. Marki**

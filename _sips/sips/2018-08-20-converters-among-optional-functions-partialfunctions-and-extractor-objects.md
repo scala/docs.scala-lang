@@ -1,6 +1,9 @@
 ---
-layout: sips
+layout: sip
 title: SIP-NN - Converters among optional Functions, PartialFunctions and extractor objects
+vote-status: pending
+permalink: /sips/:title.html
+redirect_from: /sips/pending/converters-among-optional-functions-partialfunctions-and-extractor-object.html
 ---
 
 **By: Yang Bo**
