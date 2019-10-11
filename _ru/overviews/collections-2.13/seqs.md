@@ -15,7 +15,7 @@ language: ru
 
 ---
 
-Трейт [Seq](http://www.scala-lang.org/api/current/scala/collection/Seq.html) представляет из себя последовательность. Последовательность - это своего рода итерируемая сущность, у которой есть длина (`length`) и элементы с фиксированным индексом, начинающийся от `0`.
+Трейт [Seq](https://www.scala-lang.org/api/current/scala/collection/Seq.html) представляет из себя последовательность. Последовательность - это своего рода итерируемая сущность, у которой есть длина (`length`) и элементы с фиксированным индексом, начинающийся от `0`.
 
 Операции с последовательностями, подразделяются на следующие категории, которые кратко изложенные в таблице ниже:
 
@@ -78,7 +78,7 @@ language: ru
 |  `xs.distinct`	    |Подпоследовательность `xs`, которая не содержит дублирующих друг друга элементов.|
 |  `xs distinctBy f`	    |Подпоследовательность `xs`, которая не содержит дублирующего элемента после применения функции преобразования `f`. Например, `List("foo", "bar", "quux").distinctBy(_.length) == List("foo", "bar")`|
 
-У трейта [Seq](http://www.scala-lang.org/api/current/scala/collection/Seq.html) есть два дочерних трейта [LinearSeq](http://www.scala-lang.org/api/current/scala/collection/LinearSeq.html), и [IndexedSeq](http://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html). 
+У трейта [Seq](https://www.scala-lang.org/api/current/scala/collection/Seq.html) есть два дочерних трейта [LinearSeq](https://www.scala-lang.org/api/current/scala/collection/LinearSeq.html), и [IndexedSeq](https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html). 
 Они не добавляют никаких новых операций, но у каждого из них разные характеристики производительности: у LinearSeq эффективные операции `head` и `tail`, в то время как у IndexedSeq эффективные операции `apply`, `length` и (если мутабельная) `update`. Часто используемые варианты LinearSeq - это `scala.collection.immutable.List` и `scala.collection.immutable.LazyList`. А наиболее часто используемые IndexedSeq - это `scala.Array` и `scala.collection.mutable.ArrayBuffer`. Класс `Vector` представляет собой компромисс между IndexedSeq и LinearSeq. У него эффективные, как обращение по индексу, так и последовательный обход элементов. Поэтому вектора хорошая основа для смешанных моделей доступа, где используются как индексированный, так и последовательный доступ. Позже мы расскажем больше о [векторах](concrete-immutable-collection-classes.html).
 
 В мутабельном варианте `IndexedSeq` добавляет операции преобразования ее элементов в самой коллекции (в отличие от таких операций как `map` и `sort`, доступных на базовом трейте `Seq`, для которых результат - это новая коллекция).

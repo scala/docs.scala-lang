@@ -25,10 +25,10 @@ language: ru
 Известно, что у коллекции в пакете `scala.collection.mutable` есть операции, которые изменяют саму коллекцию. Поэтому, работая с изменяемой коллекцией вам нужно четко понимать, где и когда в нее вносятся изменения.
 
 Коллекция в пакете `scala.collection` может быть как изменяемой, так и неизменяемой.
-Например, [collection.IndexedSeq\[T\]](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/IndexedSeq.html)
-является _базовой_ для обоих коллекций [collection.immutable.IndexedSeq\[T\]](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/IndexedSeq.html)
+Например, [collection.IndexedSeq\[T\]](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/IndexedSeq.html)
+является _базовой_ для обоих коллекций [collection.immutable.IndexedSeq\[T\]](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/IndexedSeq.html)
 и
-[collection.mutable.IndexedSeq\[T\]](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/IndexedSeq.html)
+[collection.mutable.IndexedSeq\[T\]](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/IndexedSeq.html)
 Как правило, базовые коллекции пакета `scala.collection` поддерживают операции преобразования, затрагивающие всю коллекцию, неизменяемые коллекции пакета `scala.collection.immutable` обычно добавляют операции добавления или удаления отдельных элементов, а изменяемые коллекции пакета `scala.collection.mutable` обычно добавляют к базовому интерфейсу, операции модификации элементов основанные на побочных эфектах.
 
 Еще одним отличием базовой коллекции от неизменяемой является то, что пользователи неизменяемой коллекции имеют гарантию, что никто не сможет изменить коллекцию, а пользователи базовой коллекции лишь обещают не менять ее самостоятельно. Даже если тип такой коллекции не предоставляет никаких операций для модификации коллекции, все равно возможно, что эта коллекция, может быть изменена какими-либо сторонними пользователями.
@@ -51,7 +51,7 @@ language: ru
                                       // можно просто указать имя коллекции
 
 Другие псевдонимы для типов 
-[Iterable](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterable.html), [Seq](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Seq.html), [IndexedSeq](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/IndexedSeq.html), [Iterator](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterator.html), [LazyList](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/LazyList.html), [Vector](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Vector.html), [StringBuilder](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/StringBuilder.html), и [Range](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Range.html).
+[Iterable](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterable.html), [Seq](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Seq.html), [IndexedSeq](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/IndexedSeq.html), [Iterator](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterator.html), [LazyList](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/LazyList.html), [Vector](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Vector.html), [StringBuilder](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/StringBuilder.html), и [Range](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Range.html).
 
 На следующем рисунке показаны все коллекции из пакета `scala.collection`.  Это все абстрактные классы или трейты, у которых обычно есть, как изменяемая, так и неизменяемая реализация. 
 
