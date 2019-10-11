@@ -67,7 +67,7 @@ language: ru
 |  `xs grouped size`   	    |Итератор, который нарезает коллекцию на кусочки фиксированного размера. |
 |  `xs sliding size`   	    |Итератор, который выдает результат прохождения окна фиксированного размера над элементами исходной коллекции. |
 |  **Сложения:**     	    |						     |
-|  `xs concat ys`<br>(либо `xs ++ ys`)	    |Результат состоит из элементов обоих коллекций `xs` и `ys`. `ys` - [IterableOnce](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/IterableOnce.html) коллекция, т. е., либо [Iterable](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterable.html) либо [Iterator](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterator.html).|
+|  `xs concat ys`<br>(либо `xs ++ ys`)	    |Результат состоит из элементов обоих коллекций `xs` и `ys`. `ys` - [IterableOnce](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/IterableOnce.html) коллекция, т. е., либо [Iterable](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterable.html) либо [Iterator](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterator.html).|
 |  **Применения ко всем:**     	    |						     |
 |  `xs map f`		    |Коллекция, полученная применением функции `f` к каждому элементу в `xs`.|
 |  `xs flatMap f`	    |Коллекция, полученная применением функции производящей коллекции `f` к каждому элементу в`xs` с объединением результатов в единую коллекцию.|

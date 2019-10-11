@@ -15,7 +15,7 @@ language: ru
 
 ---
 
-Итератор (Iterator) - это не коллекция, а скорее способ поочередного доступа к элементам коллекции. Есть две основные операции у итератора - это `next` и `hasNext`. Вызов метода `it.next()` на итераторе `it`  вернет следующий элемент и изменит его состояние. Повторный вызов `next` на том же итераторе выведит следующий элемент идущий после ранее возвращённого. Если больше нет элементов для возврата, вызов команды `next` кинет исключение `NoSuchElementException`. Вы можете узнать, есть ли еще элементы для возврата с помощью метода `hasNext` у [Итератора](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterator.html).
+Итератор (Iterator) - это не коллекция, а скорее способ поочередного доступа к элементам коллекции. Есть две основные операции у итератора - это `next` и `hasNext`. Вызов метода `it.next()` на итераторе `it`  вернет следующий элемент и изменит его состояние. Повторный вызов `next` на том же итераторе выведит следующий элемент идущий после ранее возвращённого. Если больше нет элементов для возврата, вызов команды `next` кинет исключение `NoSuchElementException`. Вы можете узнать, есть ли еще элементы для возврата с помощью метода `hasNext` у [Итератора](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterator.html).
 
 Самый простой способ "обойти" все элементы, возвращаемые итератором `it` - это использование циклов с while-loop:
 
@@ -79,7 +79,7 @@ language: ru
 Может создаться впечатление что итератор подвергается двойному обходу над элементами, но это не так, результат достигается за счет внутреннего буферизации.
 Как обычно, базовый итератор `it` не пригоден для прямого использования и должен быть исключен из дальнейших операций.
 
-Обобщая вышесказанное, итераторы ведут себя как коллекции _если после вызова метода на них сам итератор больше не вызывается_. В библиотеке коллекции Scala это достигается явным образом с помощью абстракции [IterableOnce](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/IterableOnce.html), который является общим суперкласом для [Iterable](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterable.html) и [Iterator](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterator.html). У `IterableOnce[A]` только два метода: `iterator: Iterator[A]` и `knownSize: Int`.
+Обобщая вышесказанное, итераторы ведут себя как коллекции _если после вызова метода на них сам итератор больше не вызывается_. В библиотеке коллекции Scala это достигается явным образом с помощью абстракции [IterableOnce](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/IterableOnce.html), который является общим суперкласом для [Iterable](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterable.html) и [Iterator](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterator.html). У `IterableOnce[A]` только два метода: `iterator: Iterator[A]` и `knownSize: Int`.
 
 Если объект `IterableOnce` является `Iterator`, то его операция `iterator` всегда возвращает себя, в своем текущем состоянии, но если он `Iterable`, то операция `iterator` всегда возвращает новый `Iterator`. Типовой вариант использования `IterableOnce` - в качестве типа аргумента для методов, которые могут принимать или итератор или коллекцию в качестве аргумента. Примером может служить метод соединения `concat` в классе `Iterable`. Он принимает `IterableOnce` параметр, поэтому вы можете соединять элементы, поступающие или из итератора или коллекции. 
 
@@ -193,7 +193,7 @@ language: ru
 
 Но если присмотреться к этому коду внимательнее, то становится понятно, что такой код не корректен: код действительно пропустит ведущие пустые строки, но он также пропустит первую непустую строку `it`!
 
-Решение этой проблемы заключается в использовании буферизированного итератора. Класс [BufferedIterator](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/BufferedIterator.html) базирующийся на классе [Iterator](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterator.html) предоставляет один дополнительный метод, `head`. Вызов `head` на буферизированном итераторе вернет его первый элемент, но не продвинет итератор дальше. С помощью буферизированного итератора можно пропустить пустые слова следующим образом.
+Решение этой проблемы заключается в использовании буферизированного итератора. Класс [BufferedIterator](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/BufferedIterator.html) базирующийся на классе [Iterator](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterator.html) предоставляет один дополнительный метод, `head`. Вызов `head` на буферизированном итераторе вернет его первый элемент, но не продвинет итератор дальше. С помощью буферизированного итератора можно пропустить пустые слова следующим образом.
 
     def skipEmptyWords(it: BufferedIterator[String]) =
       while (it.head.isEmpty) { it.next() }

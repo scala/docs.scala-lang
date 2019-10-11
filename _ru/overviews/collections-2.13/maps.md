@@ -15,8 +15,8 @@ language: ru
 
 ---
 
-[Map](http://www.scala-lang.org/api/current/scala/collection/Map.html) это [Iterable](http://www.scala-lang.org/api/current/scala/collection/Iterable.html) состоящее из пар ключ значение (также называемых _связкой_ или _ассоциативным массивом_). 
-Scala Объект [Predef](http://www.scala-lang.org/api/current/scala/Predef$.html) предоставляет неявное преобразование, позволяющее записать пару `(ключ, значение)` используя альтернативный синтаксис вида `ключ -> значение` . Например, `Map("x" -> 24, "y" -> 25, "z" -> 26)` означает тоже самое что и `Map(("x", 24), ("y", 25), ("z", 26))`, но читается лучше.
+[Map](https://www.scala-lang.org/api/current/scala/collection/Map.html) это [Iterable](https://www.scala-lang.org/api/current/scala/collection/Iterable.html) состоящее из пар ключ значение (также называемых _связкой_ или _ассоциативным массивом_). 
+Scala Объект [Predef](https://www.scala-lang.org/api/current/scala/Predef$.html) предоставляет неявное преобразование, позволяющее записать пару `(ключ, значение)` используя альтернативный синтаксис вида `ключ -> значение` . Например, `Map("x" -> 24, "y" -> 25, "z" -> 26)` означает тоже самое что и `Map(("x", 24), ("y", 25), ("z", 26))`, но читается лучше.
 
 Основные операции на мапах аналогичны темже операциям на множества. Рассмотрим в следующей таблице обобщеный и сгруппированный по категориям список методов на мапах:
 

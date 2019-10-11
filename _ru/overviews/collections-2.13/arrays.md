@@ -14,7 +14,7 @@ language: ru
 
 ---
 
-[Массивы](http://www.scala-lang.org/api/{{ site.scala-version }}/scala/Array.html) особый вид коллекций в Scala. 
+[Массивы](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/Array.html) особый вид коллекций в Scala. 
 С одной стороны, Scala массивы соответствуют массивам из Java. Например, Scala массив `Array[Int]`  реализован в виде Java `int[]`, а `Array[Double]` как Java `double[]` и `Array[String]` как Java `String[]`
  С другой стороны, Scala массивы дают намного больше чем их Java аналоги. Во-первых Scala массивы могут быть обобщены (_generic_). То есть вы можете описать массив как `Array[T]`, где `T` дополнительный `параметр-тип` массива или же абстрактный тип. 
  Во-вторых, Scala массивы совместимы со списками (`Seq`) Scala - вы можете передавать `Array[T]` на вход туда, где требуется `Seq[T]`. Ну и наконец, Scala массивы также поддерживают все операции, которые есть у списков. Вот пример:
