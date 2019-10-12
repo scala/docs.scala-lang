@@ -46,14 +46,6 @@ projects:
     issuesLink: https://github.com/scala/scala-partest/issues
     readmeLink: https://github.com/scala/scala-partest/blob/1.1.x/README.md
     contributingLink:
-  - title: Ensime
-    description: Scala Support for Text Editors
-    icon: https://avatars0.githubusercontent.com/u/5089042?v=3&s=200
-    link: https://github.com/ensime/ensime-server
-    homeLink: http://ensime.github.io/
-    issuesLink: https://github.com/ensime/ensime-server/issues
-    readmeLink: http://ensime.github.io/
-    contributingLink: http://ensime.github.io/server/contributing/
   - title: Scoverage
     description: Scala code coverage tool
     icon: https://avatars1.githubusercontent.com/u/5998302?v=3&s=200
@@ -62,14 +54,6 @@ projects:
     issuesLink: https://github.com/scoverage/scalac-scoverage-plugin/issues
     readmeLink: https://github.com/scoverage/scalac-scoverage-plugin/blob/master/README.md
     contributingLink: https://groups.google.com/forum/#!forum/scala-code-coverage-tool
-  - title: Abide
-    description: Lint tooling for Scala
-    icon: https://avatars1.githubusercontent.com/u/57059?v=3&s=200
-    link: https://github.com/scala/scala-abide
-    homeLink: https://github.com/scala/scala-abide#abide--lint-tooling-for-scala
-    issuesLink: https://github.com/scala/scala-abide/issues
-    readmeLink: https://github.com/scala/scala-abide/blob/master/README.md
-    contributingLink: https://github.com/scala/scala-abide#extending-abide  
 
 projectsInNeed:
   - title: Scalariform
