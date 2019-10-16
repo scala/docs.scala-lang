@@ -19,7 +19,7 @@ The places Scala will look for these parameters fall into two categories:
 
 A more detailed guide to where Scala looks for implicits can be found in [the FAQ](//docs.scala-lang.org/tutorials/FAQ/finding-implicits.html).
 
-In the following example we define a method `sum` which computes the sum of a list of elements using the monoid's `add` and `unit` operations. Please note that implicit values can not be top-level.
+In the following example we define a method `sum` which computes the sum of a list of elements using the monoid's `add` and `unit` operations. Please note that implicit values cannot be top-level.
 
 ```tut
 abstract class Monoid[A] {
@@ -61,7 +61,7 @@ In our `main` method we call `sum` twice, and only provide the `xs` parameter. S
 
 `intMonoid` is an implicit definition that can be accessed directly in `main`. It is also of the correct type, so it's passed to the `sum` method automatically.
 
-The second call to `sum` passes a `List[String]`, which means that `A` is `String`. Implicit lookup will go the same way as with `Int`, but will this time find `stringMonoid`, and passes that automatically as `m`.
+The second call to `sum` passes a `List[String]`, which means that `A` is `String`. Implicit lookup will go the same way as with `Int`, but will this time find `stringMonoid`, and pass that automatically as `m`.
 
 The program will output
 ```
