@@ -78,24 +78,25 @@ Scala 2.8 の設計はより単純なものだ。ほぼ全てのコンパイラ�
       val arr = new Array[T]((arr.length + 1) / 2)
                 ^
 
-あなたがコンパイラを手伝ってあげて、`evenElems` の型パタメータの実際の型が何であるかの実行時のヒントを提供することが必要とされている。この実行時のヒントは `scala.reflect.ClassManifest`
+あなたがコンパイラを手伝ってあげて、`evenElems` の型パタメータの実際の型が何であるかの実行時のヒントを提供することが必要とされている。この実行時のヒントは `scala.reflect.ClassTag`
 型の**クラスマニフェスト**という形をとる。クラスマニフェストとは、型の最上位クラスが何であるかを記述する型記述オブジェクトだ。型に関するあらゆる事を記述する `scala.reflect.Manifest` 型の完全マニフェストというものもある。配列の作成にはクラスマニフェストで十分だ。
 
 Scala コンパイラは、指示を出すだけでクラスマニフェストを自動的に構築する。「指示を出す」とは、クラスマニフェストを以下のように暗黙のパラメータ (implicit parameter) として要求することを意味する:
 
-    def evenElems[T](xs: Vector[T])(implicit m: ClassManifest[T]): Array[T] = ...
+    def evenElems[T](xs: Vector[T])(implicit m: ClassTag[T]): Array[T] = ...
 
-**context bound** という、より短い別の構文を使うことで型がクラスマニフェストを連れてくることを要求できる。これは、型の後にコロン (:) とクラス名 `ClassManifest` を付けることを意味する:
+**context bound** という、より短い別の構文を使うことで型がクラスマニフェストを連れてくることを要求できる。これは、型の後にコロン (:) とクラス名 `ClassTag` を付けることを意味する:
 
+    import scala.reflect.ClassTag
     // これは動作する
-    def evenElems[T: ClassManifest](xs: Vector[T]): Array[T] = {
+    def evenElems[T: ClassTag](xs: Vector[T]): Array[T] = {
       val arr = new Array[T]((xs.length + 1) / 2)
       for (i <- 0 until xs.length by 2)
         arr(i / 2) = xs(i)
       arr
     }
 
-2つの `evenElems` の改訂版は全く同じことを意味する。どちらの場合も、`Array[T]` が構築されるときにコンパイラは型パラメータ `T` のクラスマニフェスト、つまり `ClassManifest[T]` 型の暗黙の値 (implicit value)、を検索する。暗黙の値が見つかれば、正しい種類の配列を構築するのにマニフェストが使用される。見つからなければ、その前の例のようにエラーが発生する。
+2つの `evenElems` の改訂版は全く同じことを意味する。どちらの場合も、`Array[T]` が構築されるときにコンパイラは型パラメータ `T` のクラスマニフェスト、つまり `ClassTag[T]` 型の暗黙の値 (implicit value)、を検索する。暗黙の値が見つかれば、正しい種類の配列を構築するのにマニフェストが使用される。見つからなければ、その前の例のようにエラーが発生する。
 
 以下に `evenElems` を使った REPL のやりとりを示す。
 
@@ -107,15 +108,15 @@ Scala コンパイラは、指示を出すだけでクラスマニフェスト�
 両者の場合とも、Scala コンパイラは要素型 (`Int`、そして `String`) のクラスマニフェストを自動的に構築して、`evenElems` メソッドの暗黙のパラメータに渡した。コンパイラは全ての具象型についてクラスマニフェストを構築できるが、引数そのものがクラスマニフェストを持たない型パラメータである場合はそれができない。以下に失敗例を示す:
 
     scala> def wrap[U](xs: Vector[U]) = evenElems(xs)
-    <console>:6: error: No ClassManifest available for U.
+    <console>:6: error: No ClassTag available for U.
          def wrap[U](xs: Vector[U]) = evenElems(xs)
                                                ^
 
 何が起こったかというと、`evenElems` は型パラメータ `U` に関するクラスマニフェストを要求するが、見つからなかったのだ。当然この場合は、`U` に関する暗黙のクラスマニフェストを要求することで解決するため、以下は成功する:
 
-    scala> def wrap[U: ClassManifest](xs: Vector[U]) = evenElems(xs)
-    wrap: [U](xs: Vector[U])(implicit evidence$1: ClassManifest[U])Array[U]
+    scala> def wrap[U: ClassTag](xs: Vector[U]) = evenElems(xs)
+    wrap: [U](xs: Vector[U])(implicit evidence$1: scala.reflect.ClassTag[U])Array[U]
 
-この例から、`U` の定義の context bound 構文は `evidence$1` と呼ばれる `ClassManifest[U]` 型の暗黙のパラメータの略記法であることが分かる。
+この例から、`U` の定義の context bound 構文は `evidence$1` と呼ばれる `ClassTag[U]` 型の暗黙のパラメータの略記法であることが分かる。
 
-要約すると、ジェネリックな配列の作成はクラスマニフェストを必要とする。型パラメータ `T` の配列を作成する場合、`T` に関する暗黙のクラスマニフェストも提供する必要がある。その最も簡単な方法は、`[T: ClassManifest]` のように、型パラメータを context bound 構文で `ClassManifest` と共に定義することだ。
+要約すると、ジェネリックな配列の作成はクラスマニフェストを必要とする。型パラメータ `T` の配列を作成する場合、`T` に関する暗黙のクラスマニフェストも提供する必要がある。その最も簡単な方法は、`[T: ClassTag]` のように、型パラメータを context bound 構文で `ClassTag` と共に定義することだ。
