@@ -568,8 +568,8 @@ nicely captured by the following trait declaration:
     trait Ord {
       def < (that: Any): Boolean
       def <=(that: Any): Boolean =  (this < that) || (this == that)
-      def > (that: Any): Boolean = !(this <= that)
-      def >=(that: Any): Boolean = !(this < that)
+      def > (that: Any): Boolean = !(this < that)
+      def >=(that: Any): Boolean = !(this < that) || (this == that)
     }
 
 This definition both creates a new type called `Ord`, which
