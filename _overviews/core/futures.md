@@ -466,7 +466,7 @@ be done using callbacks:
         else throw new Exception("not profitable")
       }
 
-      purchase foreach { _ =>
+      purchase foreach { amount =>
         println("Purchased " + amount + " USD")
       }
     }
@@ -513,7 +513,7 @@ Let's rewrite the previous example using the `map` combinator:
       else throw new Exception("not profitable")
     }
 
-    purchase foreach { _ =>
+    purchase foreach { amount =>
       println("Purchased " + amount + " USD")
     }
 
@@ -558,7 +558,7 @@ Here is an example of `flatMap` and `withFilter` usage within for-comprehensions
       if isProfitable(usd, chf)
     } yield connection.buy(amount, chf)
 
-    purchase foreach { _ =>
+    purchase foreach { amount =>
       println("Purchased " + amount + " CHF")
     }
 
