@@ -210,6 +210,13 @@ scala> "bar".tail
 res3: String = ar
 ```
 
+Note that like `head`, `tail` will also throw an exception when called on an empty collection:
+
+```scala
+scala> emptyList.tail
+java.lang.UnsupportedOperationException: tail of empty list
+```
+
 
 
 ## `take`, `takeWhile`
@@ -238,13 +245,6 @@ res4: List[Int] = List(1, 2, 3, 4)
 
 scala> names.takeWhile(_.length < 5)
 res5: List[String] = List(joel, ed)
-```
-
-Note that like `head`, `tail` will also throw an exception when called on an empty collection:
-
-```scala
-scala> emptyList.tail
-java.lang.UnsupportedOperationException: tail of empty list
 ```
 
 
