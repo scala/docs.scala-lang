@@ -69,7 +69,7 @@ square(2)
 ```
 
 As you change your code, you'll notice that it gets evaluated
-in the right pane.
+in the right pane. If you do not see a right pane, right click on your Scala worksheet in the Project pane, and click on Evaluate Worksheet.
 
 ## Next Steps
 
