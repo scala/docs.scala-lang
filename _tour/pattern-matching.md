@@ -65,7 +65,7 @@ def showNotification(notification: Notification): String = {
     case Email(sender, title, _) =>
       s"You got an email from $sender with title: $title"
     case SMS(number, message) =>
-      s"You got an SMS from $number! Message: $message"
+      s"You got a SMS from $number! Message: $message"
     case VoiceRecording(name, link) =>
       s"you received a Voice Recording from $name! Click the link to hear it: $link"
   }
@@ -73,7 +73,7 @@ def showNotification(notification: Notification): String = {
 val someSms = SMS("12345", "Are you there?")
 val someVoiceRecording = VoiceRecording("Tom", "voicerecording.org/id/123")
 
-println(showNotification(someSms))  // prints You got an SMS from 12345! Message: Are you there?
+println(showNotification(someSms))  // prints You got a SMS from 12345! Message: Are you there?
 
 println(showNotification(someVoiceRecording))  // you received a Voice Recording from Tom! Click the link to hear it: voicerecording.org/id/123
 ```
