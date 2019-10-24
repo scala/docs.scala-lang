@@ -10,7 +10,7 @@ This tutorial details of how to write a new SIP and adding it to the website.
 The process to submit is simple:
 
 * Fork the [Scala documentation repository](https://github.com/scala/docs.scala-lang) and clone it.
-* Create a new SIP file in the `sips/pending/_posts/`. Use the [SIP template](https://github.com/scala/docs.scala-lang/blob/master/_sips/sip-template.md)
+* Create a new SIP file in the `_sips/sips`. Use the [SIP template](https://github.com/scala/docs.scala-lang/blob/master/_sips/sip-template.md)
   * Make sure the new file follows the format: `YYYY-MM-dd-{title}.md`. Use the proposal date for `YYYY-MM-dd`.
   * Use the [Markdown Syntax](https://daringfireball.net/projects/markdown/syntax) to write your SIP.
   * Follow the instructions in the [README](https://github.com/scala/docs.scala-lang/blob/master/README.md) to build your SIP locally so you can ensure that it looks correct on the website.
@@ -21,7 +21,7 @@ The process to submit is simple:
 
 ## SIP Post Format ##
 
-First, create a new SIP file in the `pending/_posts` directory. Make sure the new file follows the format: `YYYY-MM-dd-{title}.md`. Where:
+First, create a new SIP file in the `_sips/sips` directory. Make sure the new file follows the format: `YYYY-MM-dd-{title}.md`. Where:
 * `YYYY` is the current year when the proposal originated.
 * `MM` is the current month (`01` = January, `12` = December) when the proposal originated.
 * `dd` is the day of the month when the proposal originated.
@@ -32,7 +32,7 @@ First, create a new SIP file in the `pending/_posts` directory. Make sure the ne
 Use the [Markdown Syntax](https://daringfireball.net/projects/markdown/syntax) to write your SIP.
 
 If you would like a starting point, clone the [SIP Template](./sip-template.html) in
-`sips/pending/sip-template.md` and use that.
+`_sips/sip-template.md` and use that.
 
 See the [source](https://github.com/scala/docs.scala-lang/blob/master/_sips/sip-template.md) for this document (`sip-tutorial.md`) for how to do syntax highlighting.
 
