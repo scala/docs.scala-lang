@@ -36,13 +36,13 @@ create a project called "hello-world".
 
 ```
 - hello-world
-    - project (sbt uses this to install manage plugins and dependencies)
+    - project (sbt uses this to install and manage plugins and dependencies)
         - build.properties
     - src
         - main
             - scala (All of your scala code goes here)
-                -Main.scala (Entry point of program) <-- this is all we need for now
-    build.sbt (sbt's build definition file)
+                - Main.scala (Entry point of program) <-- this is all we need for now
+    - build.sbt (sbt's build definition file)
 ```
 
 After you build your project, sbt will create more `target` directories
