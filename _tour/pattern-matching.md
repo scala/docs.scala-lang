@@ -88,7 +88,7 @@ def showImportantNotification(notification: Notification, importantPeopleInfo: S
     case Email(sender, _, _) if importantPeopleInfo.contains(sender) =>
       "You got an email from special someone!"
     case SMS(number, _) if importantPeopleInfo.contains(number) =>
-      "You got an SMS from special someone!"
+      "You got a SMS from special someone!"
     case other =>
       showNotification(other) // nothing special, delegate to our original showNotification function
   }
