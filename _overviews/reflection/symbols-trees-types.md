@@ -224,7 +224,7 @@ Scala's numeric types abide by the following ordering (section 3.5.3 of the Scal
 > In some situations Scala uses a more general conformance relation. A type S weakly conforms to a type T, written S <:w T, if S<:T or both S and T are primitive number types and S precedes T in the following ordering:
 
 | Weak Conformance Relations |
- ---------------------------
+| --- |
 | `Byte` `<:w` `Short` |
 | `Short` `<:w` `Int` |
 | `Char` `<:w` `Int` |
