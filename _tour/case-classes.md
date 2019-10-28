@@ -25,7 +25,7 @@ Notice how the keyword `new` was not used to instantiate the `Book` case class. 
 When you create a case class with parameters, the parameters are public `val`s.
 ```
 case class Message(sender: String, recipient: String, body: String)
-val message1 = Message("guillaume@quebec.ca", "jorge@catalonia.es", "Ça va ?")
+var message1 = Message("guillaume@quebec.ca", "jorge@catalonia.es", "Ça va ?")
 
 println(message1.sender)  // prints guillaume@quebec.ca
 message1.sender = "travis@washington.us"  // this line does not compile
