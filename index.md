@@ -19,10 +19,10 @@ sections:
         description: "Bite-sized introductions to core language features."
         icon: "fa fa-flag"
         link: /tour/tour-of-scala.html
-      - title: "Scala for Java Programmers"
-        description: "A quick introduction to Scala for those with a Java background."
-        icon: "fa fa-coffee"
-        link: /tutorials/scala-for-java-programmers.html
+      - title: "Scala Book"
+        description: "An online book introducing the main language features."
+        icon: "fa fa-book"
+        link: /overviews/scala-book/introduction.html
     more-resources:
       - title: Online Courses, Exercises, & Blogs
         url: /learn.html
