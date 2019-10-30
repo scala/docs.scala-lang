@@ -58,6 +58,7 @@ Scala project. -->
 Once you've finished these tutorials, check out
 
 * [The Tour of Scala](/tour/tour-of-scala.html) for bite-sized introductions to Scala's features.
+* [The Scala Book](/overviews/scala-book/introduction.html), which provides a set of short lessons introducing Scala’s main features.
 * [Learning Resources](/learn.html), which includes online interactive tutorials and courses.
 * [Our list of some popular Scala books](/books.html).
 
