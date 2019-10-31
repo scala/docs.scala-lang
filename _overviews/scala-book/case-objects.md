@@ -37,7 +37,7 @@ object FileUtils {
 }
 ```
 
-This is a common way way of using the Scala `object` construct.
+This is a common way of using the Scala `object` construct.
 
 
 
