@@ -202,17 +202,17 @@ count match {
 }
 ```
 
-Here’s a variation of that example that uses parentheses
+Here’s a variation of that example that uses parentheses:
 
 ```scala
 count match {
     case 1 => {
         println("one, a lonely number")
     }
-    case x if x == 2 || x == 3 => {
+    case x if (x == 2 || x == 3) => {
         println("two's company, three's a crowd")
     }
-    case x if x > 3 => {
+    case x if (x > 3) => {
         println("4+, that's a party")
     }
     case _ => {
