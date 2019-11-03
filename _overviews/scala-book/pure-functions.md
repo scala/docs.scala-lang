@@ -13,7 +13,7 @@ next-page: passing-functions-around
 
 
 
-A first feature Scala offers to help you write functional code is the ability to write pure functions. In *Functional Programming, Simplified*, Alvin Alexander defines a *pure function* like this:
+A first feature Scala offers to help you write functional code is the ability to write pure functions. In [Functional Programming, Simplified](https://alvinalexander.com/scala/functional-programming-simplified-book), Alvin Alexander defines a *pure function* like this:
 
 - The function’s output depends *only* on its input variables
 - It doesn’t mutate any hidden state
