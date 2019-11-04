@@ -81,7 +81,7 @@ set: scala.collection.mutable.Set[Int] = Set(2, 1, 4, 3, 5)
 scala> set -= 1
 res0: scala.collection.mutable.Set[Int] = Set(2, 4, 3, 5)
 
-// two or more elements (-= has a varags field)
+// two or more elements (-= has a varargs field)
 scala> set -= (2, 3)
 res1: scala.collection.mutable.Set[Int] = Set(4, 5)
 
