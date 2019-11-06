@@ -202,7 +202,7 @@ count match {
 }
 ```
 
-Here’s a variation of that example that uses parentheses
+Here’s a variation of that example that uses curly braces:
 
 ```scala
 count match {
