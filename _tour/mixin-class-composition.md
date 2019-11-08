@@ -71,7 +71,7 @@ We would like to combine the functionality of `StringIterator` and `RichIterator
 ```tut
 class RichStringIter extends StringIterator("Scala") with RichIterator
 val richStringIter = new RichStringIter
-richStringIter foreach println
+richStringIter.foreach(println)
 ```
 The new class `RichStringIter` has `StringIterator` as a superclass and `RichIterator` as a mixin.
 
