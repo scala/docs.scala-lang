@@ -179,12 +179,12 @@ val p4 = Person(Some("Wilma"), None)
 
 When you print those values you’ll see these results:
 
-...scala
+```scala
 val p1: Person = Some(Fred), None
 val p2: Person = None, None
 val p3: Person = Some(Wilma), Some(33)
 val p4: Person = Some(Wilma), None
-...
+```
 
 >When running tests like this, it’s best to clear the REPL’s memory. To do this, use the `:reset` command inside the REPL before using the `:paste` command.
 
