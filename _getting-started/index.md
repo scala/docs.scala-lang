@@ -16,7 +16,7 @@ redirect_from: "/getting-started.html"
 </ul>
 
 
-The following tutorials will walk you through the set up process for either way
+The following tutorials will walk you through the set up process for whichever way
 you prefer.
 
 However, if you just want to jump directly into Scala without installing anything, skip the guides on this page and check out:
