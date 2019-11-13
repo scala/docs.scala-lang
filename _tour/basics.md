@@ -136,7 +136,7 @@ println(getTheAnswer()) // 42
 
 Methods look and behave very similar to functions, but there are a few key differences between them.
 
-Methods are defined with the `def` keyword.  `def` is followed by a name, parameter lists, a return type, and a body:
+Methods are defined with the `def` keyword.  `def` is followed by a name, parameter list(s), a return type, and a body:
 
 {% scalafiddle %}
 ```tut
