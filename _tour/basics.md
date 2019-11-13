@@ -22,14 +22,13 @@ You can run Scala in your browser with _ScalaFiddle_. This is an easy, zero-setu
 
 _ScalaFiddle_ is integrated with some of the code examples in this documentation; if you see a __Run__ button in a code example below, click it to directly experiment with the code.
 
-
 ## Expressions
 
-Expressions are computable statements.
+Expressions are computable statements:
 ```
 1 + 1
 ```
-You can output results of expressions using `println`.
+You can output results of expressions using `println`:
 
 {% scalafiddle %}
 ```tut
@@ -42,7 +41,7 @@ println("Hello," + " world!") // Hello, world!
 
 ### Values
 
-You can name results of expressions with the `val` keyword.
+You can name results of expressions with the `val` keyword:
 
 ```tut
 val x = 1 + 1
@@ -52,7 +51,7 @@ println(x) // 2
 Named results, such as `x` here, are called values. Referencing
 a value does not re-compute it.
 
-Values cannot be re-assigned.
+Values cannot be re-assigned:
 
 ```tut:fail
 x = 3 // This does not compile.
@@ -72,7 +71,7 @@ Variables are like values, except you can re-assign them. You can define a varia
 
 ```tut
 var x = 1 + 1
-x = 3 // This compiles because "x" is declared with the "var" keyword.
+x = 3 // This compiles because "x" is declared with the "var" keyword:
 println(x * x) // 9
 ```
 
@@ -87,7 +86,7 @@ var x: Int = 1 + 1
 
 You can combine expressions by surrounding them with `{}`. We call this a block.
 
-The result of the last expression in the block is the result of the overall block, too.
+The result of the last expression in the block is the result of the overall block, too:
 
 ```tut
 println({
@@ -108,7 +107,7 @@ You can define an anonymous function (i.e. no name) that returns a given integer
 
 On the left of `=>` is a list of parameters. On the right is an expression involving the parameters.
 
-You can also name functions.
+You can also name functions:
 
 {% scalafiddle %}
 ```tut
@@ -117,7 +116,7 @@ println(addOne(1)) // 2
 ```
 {% endscalafiddle %}
 
-Functions may take multiple parameters.
+Functions may take multiple parameters:
 
 {% scalafiddle %}
 ```tut
@@ -126,7 +125,7 @@ println(add(1, 2)) // 3
 ```
 {% endscalafiddle %}
 
-Or it can take no parameters.
+Or it can take no parameters:
 
 ```tut
 val getTheAnswer = () => 42
@@ -137,7 +136,7 @@ println(getTheAnswer()) // 42
 
 Methods look and behave very similar to functions, but there are a few key differences between them.
 
-Methods are defined with the `def` keyword.  `def` is followed by a name, parameter lists, a return type, and a body.
+Methods are defined with the `def` keyword.  `def` is followed by a name, parameter lists, a return type, and a body:
 
 {% scalafiddle %}
 ```tut
@@ -148,7 +147,7 @@ println(add(1, 2)) // 3
 
 Notice how the return type is declared _after_ the parameter list and a colon `: Int`.
 
-Methods can take multiple parameter lists.
+Methods can take multiple parameter lists:
 
 {% scalafiddle %}
 ```tut
@@ -157,7 +156,7 @@ println(addThenMultiply(1, 2)(3)) // 9
 ```
 {% endscalafiddle %}
 
-Or no parameter lists at all.
+Or no parameter lists at all:
 
 ```tut
 def name: String = System.getProperty("user.name")
@@ -166,7 +165,7 @@ println("Hello, " + name + "!")
 
 There are some other differences, but for now, you can think of them as something similar to functions.
 
-Methods can have multi-line expressions as well.
+Methods can have multi-line expressions as well:
 
 {% scalafiddle %}
 ```tut
@@ -182,7 +181,7 @@ The last expression in the body is the method's return value. (Scala does have a
 
 ## Classes
 
-You can define classes with the `class` keyword followed by its name and constructor parameters.
+You can define classes with the `class` keyword followed by its name and constructor parameters:
 
 ```tut
 class Greeter(prefix: String, suffix: String) {
@@ -192,7 +191,7 @@ class Greeter(prefix: String, suffix: String) {
 ```
 The return type of the method `greet` is `Unit`, which says there's nothing meaningful to return. It's used similarly to `void` in Java and C. (A difference is that because every Scala expression must have some value, there is actually a singleton value of type Unit, written (). It carries no information.)
 
-You can make an instance of a class with the `new` keyword.
+You can make an instance of a class with the `new` keyword:
 
 ```tut
 val greeter = new Greeter("Hello, ", "!")
@@ -203,13 +202,13 @@ We will cover classes in depth [later](classes.html).
 
 ## Case Classes
 
-Scala has a special type of class called a "case" class.  By default, case classes are immutable and compared by value. You can define case classes with the `case class` keywords.
+Scala has a special type of class called a "case" class.  By default, case classes are immutable and compared by value. You can define case classes with the `case class` keywords:
 
 ```tut
 case class Point(x: Int, y: Int)
 ```
 
-You can instantiate case classes without `new` keyword.
+You can instantiate case classes without `new` keyword:
 
 ```tut
 val point = Point(1, 2)
@@ -217,7 +216,7 @@ val anotherPoint = Point(1, 2)
 val yetAnotherPoint = Point(2, 2)
 ```
 
-And they are compared by value.
+And they are compared by value:
 
 ```tut
 if (point == anotherPoint) {
@@ -239,7 +238,7 @@ There is a lot more to case classes that we'd like to introduce, and we are conv
 
 Objects are single instances of their own definitions. You can think of them as singletons of their own classes.
 
-You can define objects with the `object` keyword.
+You can define objects with the `object` keyword:
 
 ```tut
 object IdFactory {
@@ -251,7 +250,7 @@ object IdFactory {
 }
 ```
 
-You can access an object by referring to its name.
+You can access an object by referring to its name:
 
 ```tut
 val newId: Int = IdFactory.create()
@@ -266,7 +265,7 @@ We will cover objects in depth [later](singleton-objects.html).
 
 Traits are types containing certain fields and methods.  Multiple traits can be combined.
 
-You can define traits with `trait` keyword.
+You can define traits with `trait` keyword:
 
 ```tut
 trait Greeter {
@@ -274,7 +273,7 @@ trait Greeter {
 }
 ```
 
-Traits can also have default implementations.
+Traits can also have default implementations:
 
 {% scalafiddle %}
 ```tut
@@ -284,7 +283,7 @@ trait Greeter {
 }
 ```
 
-You can extend traits with the `extends` keyword and override an implementation with the `override` keyword.
+You can extend traits with the `extends` keyword and override an implementation with the `override` keyword:
 
 ```tut
 class DefaultGreeter extends Greeter
