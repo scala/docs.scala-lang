@@ -57,7 +57,7 @@ Values cannot be re-assigned:
 x = 3 // This does not compile.
 ```
 
-The type of a value can be omitted, and inferred by [type inference](https://docs.scala-lang.org/tour/type-inference.html), or it can be explicitly stated:
+The type of a value can be omitted and inferred by [type inference](https://docs.scala-lang.org/tour/type-inference.html), or it can be explicitly stated:
 
 ```tut
 val x: Int = 1 + 1
@@ -75,7 +75,7 @@ x = 3 // This compiles because "x" is declared with the "var" keyword:
 println(x * x) // 9
 ```
 
-As with values, the type of a variable can be omitted, and inferred by [type inference](https://docs.scala-lang.org/tour/type-inference.html), or it can be explicitly stated:
+As with values, the type of a variable can be omitted and inferred by [type inference](https://docs.scala-lang.org/tour/type-inference.html), or it can be explicitly stated:
 
 ```tut
 var x: Int = 1 + 1
@@ -116,7 +116,7 @@ println(addOne(1)) // 2
 ```
 {% endscalafiddle %}
 
-Functions may take multiple arguments:
+A function can take multiple arguments:
 
 {% scalafiddle %}
 ```tut
@@ -125,7 +125,7 @@ println(add(1, 2)) // 3
 ```
 {% endscalafiddle %}
 
-Or it can take no arguments:
+Or no arguments at all:
 
 ```tut
 val getTheAnswer = () => 42
@@ -147,7 +147,7 @@ println(add(1, 2)) // 3
 
 Notice how the return type is declared _after_ the parameter list and the `: Int`.
 
-Methods can take multiple parameter lists:
+A method can take multiple parameter lists:
 
 {% scalafiddle %}
 ```tut
@@ -163,7 +163,7 @@ def name: String = System.getProperty("user.name")
 println("Hello, " + name + "!")
 ```
 
-There are some other differences, but for now, you can think of them as something similar to functions.
+There are some other differences, but for now, you can think of methods as something similar to functions.
 
 Methods can have multi-line expressions as well:
 
@@ -181,7 +181,7 @@ The last expression in the body is the method's return value. (Scala does have a
 
 ## Classes
 
-You can define classes with the `class` keyword followed by its name and constructor parameters:
+You can define classes with the `class` keyword, followed by its name and constructor parameters:
 
 ```tut
 class Greeter(prefix: String, suffix: String) {
@@ -218,7 +218,7 @@ val anotherPoint = Point(1, 2)
 val yetAnotherPoint = Point(2, 2)
 ```
 
-And case classes are compared by value, not by reference:
+Case classes are compared by value, not by reference:
 
 ```tut
 if (point == anotherPoint) {
@@ -304,7 +304,7 @@ customGreeter.greet("Scala developer") // How are you, Scala developer?
 ```
 {% endscalafiddle %}
 
-Here, `DefaultGreeter` extends only a single trait, but it could extend multiple traits.
+Here, `DefaultGreeter` extends only one single trait, but it could extend multiple traits.
 
 We will cover traits in depth [later](traits.html).
 
