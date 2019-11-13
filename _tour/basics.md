@@ -202,7 +202,9 @@ We will cover classes in depth [later](classes.html).
 
 ## Case Classes
 
-Scala has a special type of class called a "case" class.  By default, case classes are immutable and compared by value. You can define case classes with the `case class` keywords:
+Scala has a special type of class called a "case" class. By default, case classes are immutable, and they are compared by value (unlike classes, which are compared by reference). This makes them particularly useful for [pattern matching](https://docs.scala-lang.org/tour/pattern-matching.html#matching-on-case-classes).
+
+You can define case classes with the `case class` keywords:
 
 ```tut
 case class Point(x: Int, y: Int)
