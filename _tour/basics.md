@@ -14,7 +14,7 @@ In this page, we will cover the basics of Scala.
 
 ## Trying Scala in the Browser
 
-You can run Scala in your browser with ScalaFiddle.
+You can run Scala in your browser with ScalaFiddle:
 
 1. Go to [https://scalafiddle.io](https://scalafiddle.io).
 2. Paste `println("Hello, world!")` in the left pane.
