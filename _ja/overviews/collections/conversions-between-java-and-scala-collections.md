@@ -44,7 +44,7 @@ Scala と同様に、Java
 他の Scala コレクションも Java に変換できるが、元の Scala 型には逆変換できない。それらは以下の通り:
 
     Seq           =>    java.util.List
-    mutable.Seq   =>    java.utl.List
+    mutable.Seq   =>    java.util.List
     Set           =>    java.util.Set
     Map           =>    java.util.Map
 
