@@ -116,7 +116,7 @@ println(addOne(1)) // 2
 ```
 {% endscalafiddle %}
 
-Functions may take multiple parameters:
+Functions may take multiple arguments:
 
 {% scalafiddle %}
 ```tut
