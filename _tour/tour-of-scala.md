@@ -49,7 +49,7 @@ Scala's expressive type system enforces, at compile-time, that abstractions are 
 
 In practice, the development of domain-specific applications often requires domain-specific language extensions. Scala provides a unique combination of language mechanisms that make it straightforward to add new language constructs in the form of libraries.
 
-In many cases, this can be done without using meta-programming facilities such as macros. For example,
+In many cases, this can be done without using meta-programming facilities such as macros. For example:
 
 * [Implicit classes](/overviews/core/implicit-classes.html) allow adding extension methods to existing types.
 * [String interpolation](/overviews/core/string-interpolation.html) is user-extensible with custom interpolators.
