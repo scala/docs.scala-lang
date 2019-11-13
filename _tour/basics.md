@@ -218,7 +218,7 @@ val anotherPoint = Point(1, 2)
 val yetAnotherPoint = Point(2, 2)
 ```
 
-And they are compared by value:
+And case classes are compared by value, not by reference:
 
 ```tut
 if (point == anotherPoint) {
