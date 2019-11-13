@@ -57,7 +57,7 @@ Values cannot be re-assigned:
 x = 3 // This does not compile.
 ```
 
-Types of values can be inferred, but you can also explicitly state the type, like this:
+The type of a value can be omitted, and inferred by [type inference](https://docs.scala-lang.org/tour/type-inference.html), or it can be explicitly stated:
 
 ```tut
 val x: Int = 1 + 1
