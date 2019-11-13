@@ -63,4 +63,4 @@ Once you've finished these tutorials, check out:
 * [Our list of some popular Scala books](/books.html).
 
 ## Getting Help
-There are a multitude of mailing lists and real-time chat channels in case you want to quickly connect with other Scala users. Check out our [community](https://scala-lang.org/community/) page a list of these resources and where to reach out for help.
+There are a multitude of mailing lists and real-time chat channels in case you want to quickly connect with other Scala users. Check out our [community](https://scala-lang.org/community/) page for a list of these resources, and for where to reach out for help.
