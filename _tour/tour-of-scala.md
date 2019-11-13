@@ -47,7 +47,7 @@ Scala's expressive type system enforces, at compile-time, that abstractions are 
 
 ## Scala is extensible ##
 
-In practice, the development of domain-specific applications often requires domain-specific language extensions. Scala provides a unique combination of language mechanisms that make it easy to smoothly add new language constructs in the form of libraries.
+In practice, the development of domain-specific applications often requires domain-specific language extensions. Scala provides a unique combination of language mechanisms that make it straightforward to add new language constructs in the form of libraries.
 
 In many cases, this can be done without using meta-programming facilities such as macros. For example,
 
