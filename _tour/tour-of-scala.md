@@ -62,4 +62,4 @@ Those Scala features without Java analogues, such as [default](default-parameter
 
 ## Enjoy the tour!
 
-Please continue to the [next page](basics.html) in the Contents menu to read more.
+Please continue to the [next page](basics.html) to read more.
