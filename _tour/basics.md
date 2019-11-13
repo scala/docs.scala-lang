@@ -267,7 +267,7 @@ We will cover objects in depth [later](singleton-objects.html).
 
 Traits are types containing certain fields and methods.  Multiple traits can be combined.
 
-You can define traits with `trait` keyword:
+You can define traits with the `trait` keyword:
 
 ```tut
 trait Greeter {
