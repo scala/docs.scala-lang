@@ -17,7 +17,7 @@ This tour contains bite-sized introductions to the most frequently used features
 of Scala. It is intended for newcomers to the language.
 
 This is just a brief tour, not a full language tutorial. If
-you want that, consider obtaining [a book](/books.html) or consulting
+you want a more detailed guide, consider obtaining [a book](/books.html) or consulting
 [other resources](/learn.html).
 
 ## What is Scala?
