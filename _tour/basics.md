@@ -125,7 +125,7 @@ println(add(1, 2)) // 3
 ```
 {% endscalafiddle %}
 
-Or it can take no parameters:
+Or it can take no arguments:
 
 ```tut
 val getTheAnswer = () => 42
