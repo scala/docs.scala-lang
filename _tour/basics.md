@@ -28,7 +28,7 @@ Expressions are computable statements:
 ```
 1 + 1
 ```
-You can output results of expressions using `println`:
+You can output the results of expressions using `println`:
 
 {% scalafiddle %}
 ```tut
@@ -41,7 +41,7 @@ println("Hello," + " world!") // Hello, world!
 
 ### Values
 
-You can name results of expressions with the `val` keyword:
+You can name the results of expressions using the `val` keyword:
 
 ```tut
 val x = 1 + 1
