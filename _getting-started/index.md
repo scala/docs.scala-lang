@@ -43,7 +43,7 @@ unit tests!
 ### If you prefer working on the command line...
 
 If you prefer using a text editor like emacs, Vim, Atom, or Sublime Text, then
-the best way to compile, test, and run Scala code is using _sbt_, Scala's build
+the best way to compile, test, and run Scala code is by using _sbt_, Scala's build
 tool.
 
 * [Getting Started with Scala and sbt on the Command Line](/getting-started/sbt-track/getting-started-with-scala-and-sbt-on-the-command-line.html)
