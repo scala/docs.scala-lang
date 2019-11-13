@@ -8,23 +8,18 @@ includeTOC: true
 redirect_from: "/getting-started.html"
 ---
 
-<div style="font-size: 1.25rem; color: #073642; font-weight: 400; font-family: 'Roboto Slab', serif; margin-bottom: 18px;"> There are <strong>two</strong> main ways people prefer to work in Scala:</div>
+There are __two__ main ways people prefer to work in Scala:
 
-<ul style="margin-bottom: 24px;">
-  <li style="margin-bottom: 4px;">Using an IDE.</li>
-  <li style="margin-bottom: 4px;">Using the command line.</li>
-</ul>
-
+* Using an IDE.
+* Using the command line.
 
 The following tutorials will walk you through the set up process for whichever way
 you prefer.
 
 However, if you just want to jump directly into Scala without installing anything, skip the guides on this page and check out:
 
-<ul style="margin-bottom: 24px;">
-  <li style="margin-bottom: 4px;"><a href="https://www.scala-exercises.org/scala_tutorial/terms_and_types">Our interactive introduction to Scala on scala-exercises.com</a>, or</li>
-  <li style="margin-bottom: 4px;"><a href="https://scastie.scala-lang.org/">Scastie</a>, Scala in the browser, with access to all Scala compilers and all published libraries!</li>
-</ul>
+* [Our interactive introduction to Scala on scala-exercises.com](https://www.scala-exercises.org/scala_tutorial/terms_and_types), or
+* [Scastie](https://scastie.scala-lang.org/), Scala in the browser, with access to all Scala compilers and all published libraries!
 
 ## Setting up and getting started with Scala
 
