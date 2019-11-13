@@ -97,7 +97,7 @@ println({
 
 ## Functions
 
-Functions are expressions that take parameters.
+Functions are expressions that have parameters, and take arguments.
 
 You can define an anonymous function (i.e. no name) that returns a given integer plus one:
 
