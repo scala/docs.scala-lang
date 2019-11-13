@@ -10,7 +10,7 @@ previous-page: tour-of-scala
 redirect_from: "/tutorials/tour/basics.html"
 ---
 
-In this page, we will cover basics of Scala.
+In this page, we will cover the basics of Scala.
 
 ## Trying Scala in the Browser
 
