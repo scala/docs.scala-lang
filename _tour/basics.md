@@ -310,11 +310,11 @@ We will cover traits in depth [later](traits.html).
 
 ## Main Method
 
-The main method is an entry point of a program.  The Java Virtual
-Machine requires a main method to be named `main` and take one
-argument, an array of strings.
+The main method is the entry point of a Scala program.  The Java Virtual
+Machine requires a main method, named `main`, that takes one
+argument: an array of strings.
 
-Using an object, you can define a main method as follows:
+Using an object, you can define the main method as follows:
 
 ```tut
 object Main {
