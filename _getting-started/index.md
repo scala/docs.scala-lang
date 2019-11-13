@@ -8,7 +8,7 @@ includeTOC: true
 redirect_from: "/getting-started.html"
 ---
 
-<div style="font-size: 1.25rem; color: #073642; font-weight: 400; font-family: 'Roboto Slab', serif; margin-bottom: 18px;"> There are <strong>two</strong> main ways people prefer to work in Scala.</div>
+<div style="font-size: 1.25rem; color: #073642; font-weight: 400; font-family: 'Roboto Slab', serif; margin-bottom: 18px;"> There are <strong>two</strong> main ways people prefer to work in Scala:</div>
 
 <ol style="margin-bottom: 24px;">
   <li style="margin-bottom: 4px;">Using an IDE.</li>
