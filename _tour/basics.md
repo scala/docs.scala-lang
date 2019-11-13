@@ -177,7 +177,7 @@ println(getSquareString(2.5)) // 6.25
 ```
 {% endscalafiddle %}
 
-The last expression in the body is the method's return value. (Scala does have a `return` keyword, but it's rarely used.)
+The last expression in the body is the method's return value. (Scala does have a `return` keyword, but it is rarely used.)
 
 ## Classes
 
@@ -189,7 +189,7 @@ class Greeter(prefix: String, suffix: String) {
     println(prefix + name + suffix)
 }
 ```
-The return type of the method `greet` is `Unit`, which signifies that there's nothing meaningful to return. It is used similarly to `void` in Java and C. (A difference is that, because every Scala expression must have some value, there is actually a singleton value of type Unit, written (). It carries no information.)
+The return type of the method `greet` is `Unit`, which signifies that there is nothing meaningful to return. It is used similarly to `void` in Java and C. (A difference is that, because every Scala expression must have some value, there is actually a singleton value of type Unit, written (). It carries no information.)
 
 You can make an instance of a class with the `new` keyword:
 
@@ -234,7 +234,7 @@ if (point == yetAnotherPoint) {
 } // Point(1,2) and Point(2,2) are different.
 ```
 
-There is a lot more to case classes that we'd like to introduce, and we are convinced you will fall in love with them! We will cover them in depth [later](case-classes.html).
+There is a lot more to case classes that we would like to introduce, and we are convinced you will fall in love with them! We will cover them in depth [later](case-classes.html).
 
 ## Objects
 
