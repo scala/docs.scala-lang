@@ -18,7 +18,7 @@ You can run Scala in your browser with ScalaFiddle:
 
 1. Go to [https://scalafiddle.io](https://scalafiddle.io).
 2. Paste `println("Hello, world!")` in the left pane.
-3. Hit "Run" button. Output appears in the right pane.
+3. Click __Run__. The output appears in the right pane.
 
 This is an easy, zero-setup way to experiment with pieces of Scala code.
 
