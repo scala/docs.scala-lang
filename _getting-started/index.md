@@ -55,7 +55,7 @@ the rest, so it's as easy as possible for someone else to compile and run your
 Scala project. -->
 
 ## Next Steps
-Once you've finished these tutorials, check out
+Once you've finished these tutorials, check out:
 
 * [The Tour of Scala](/tour/tour-of-scala.html) for bite-sized introductions to Scala's features.
 * [The Scala Book](/overviews/scala-book/introduction.html), which provides a set of short lessons introducing Scala’s main features.
