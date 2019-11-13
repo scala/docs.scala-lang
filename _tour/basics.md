@@ -265,7 +265,7 @@ We will cover objects in depth [later](singleton-objects.html).
 
 ## Traits
 
-Traits are types containing certain fields and methods.  Multiple traits can be combined.
+Traits are abstract data types containing certain fields and methods. In Scala inheritance, a class can not only inherit from a super class, but also mix in one or more traits.
 
 You can define traits with the `trait` keyword:
 
