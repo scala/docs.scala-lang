@@ -34,14 +34,14 @@ Furthermore, Scala's notion of pattern matching naturally extends to the [proces
 ## Scala is statically typed ##
 Scala's expressive type system enforces, at compile-time, that abstractions are used in a safe and coherent manner. In particular, the type system supports:
 
-* [generic classes](generic-classes.html)
-* [variance annotations](variances.html)
-* [upper](upper-type-bounds.html) and [lower](lower-type-bounds.html) type bounds,
-* [inner classes](inner-classes.html) and [abstract type members](abstract-type-members.html) as object members
-* [compound types](compound-types.html)
-* [explicitly typed self references](self-types.html)
-* [implicit parameters](implicit-parameters.html) and [conversions](implicit-conversions.html)
-* [polymorphic methods](polymorphic-methods.html)
+* [Generic classes](generic-classes.html)
+* [Variance annotations](variances.html)
+* [Upper](upper-type-bounds.html) and [lower](lower-type-bounds.html) type bounds,
+* [Inner classes](inner-classes.html) and [abstract type members](abstract-type-members.html) as object members
+* [Compound types](compound-types.html)
+* [Explicitly typed self references](self-types.html)
+* [Implicit parameters](implicit-parameters.html) and [conversions](implicit-conversions.html)
+* [Polymorphic methods](polymorphic-methods.html)
 
 [Type inference](type-inference.html) means the user is not required to annotate code with redundant type information. In combination, these features provide a powerful basis for the safe reuse of programming abstractions and for the type-safe extension of software.
 
