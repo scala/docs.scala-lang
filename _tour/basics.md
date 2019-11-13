@@ -22,8 +22,8 @@ You can run Scala in your browser with ScalaFiddle:
 
 This is an easy, zero-setup way to experiment with pieces of Scala code.
 
-Many of the code examples in this documentation are also integrated with ScalaFiddle, so you
-can directly experiment with them simply by clicking the Run-button.
+_ScalaFiddle_ is integrated with some of the code examples in this documentation; if you see a __Run__ button in a code example below, click it to directly experiment with the code.
+
 
 ## Expressions
 
