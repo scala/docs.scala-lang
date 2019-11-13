@@ -36,7 +36,7 @@ Scala's expressive type system enforces, at compile-time, that abstractions are 
 
 * [Generic classes](generic-classes.html)
 * [Variance annotations](variances.html)
-* [Upper](upper-type-bounds.html) and [lower](lower-type-bounds.html) type bounds,
+* [Upper](upper-type-bounds.html) and [lower](lower-type-bounds.html) type bounds
 * [Inner classes](inner-classes.html) and [abstract type members](abstract-type-members.html) as object members
 * [Compound types](compound-types.html)
 * [Explicitly typed self references](self-types.html)
