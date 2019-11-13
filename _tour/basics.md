@@ -210,7 +210,7 @@ You can define case classes with the `case class` keywords:
 case class Point(x: Int, y: Int)
 ```
 
-You can instantiate case classes without `new` keyword:
+You can instantiate case classes without the `new` keyword:
 
 ```tut
 val point = Point(1, 2)
