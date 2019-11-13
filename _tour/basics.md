@@ -99,7 +99,7 @@ println({
 
 Functions are expressions that have parameters, and take arguments.
 
-You can define an anonymous function (i.e. no name) that returns a given integer plus one:
+You can define an anonymous function (i.e., a function that has no name) that returns a given integer plus one:
 
 ```tut
 (x: Int) => x + 1
