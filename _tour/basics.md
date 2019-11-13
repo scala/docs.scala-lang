@@ -75,7 +75,7 @@ x = 3 // This compiles because "x" is declared with the "var" keyword:
 println(x * x) // 9
 ```
 
-As with values, you can explicitly state the type if you want:
+As with values, the type of a variable can be omitted, and inferred by [type inference](https://docs.scala-lang.org/tour/type-inference.html), or it can be explicitly stated:
 
 ```tut
 var x: Int = 1 + 1
