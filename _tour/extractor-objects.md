@@ -32,7 +32,7 @@ customer1ID match {
 }
 ```
 
-The `apply` method creates a `CustomerID` string from a `name`. The `unapply` does the inverse to get the `name` back. When we call `CustomerID("Sukyoung")`, this is shorthand syntax for calling `CustomerID.apply("Sukyoung")`. When we call `case CustomerID(name) => println(name)`, we're calling the unapply method.
+The `apply` method creates a `CustomerID` string from a `name`. The `unapply` does the inverse to get the `name` back. When we call `CustomerID("Sukyoung")`, this is shorthand syntax for calling `CustomerID.apply("Sukyoung")`. When we call `case CustomerID(name) => println(name)`, we're calling the unapply method with `CustomerID.unapply(customer1ID)`.
 
 Since a value definition can use a pattern to introduce a new variable, an extractor can be used to initialize the variable, where the unapply method supplies the value.
 
