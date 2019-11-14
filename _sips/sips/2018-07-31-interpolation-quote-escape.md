@@ -14,6 +14,7 @@ redirect_from: /sips/pending/interpolation-quote-escape.html
 |---------------|-----------------------|
 | Jul 31th 2018 | Initial Draft         |
 | Aug 1st 2018  | Process lead comments |
+| Nov 2nd 2019  | Link dotty impl       |
 
 ## Introduction
 
@@ -34,8 +35,8 @@ escape a `"` character to represent a literal `"` withing a string.
 ## Motivating Example
 
 That the `"` character can't be easily escaped in interpolations has been an
-open issue since [at least 2012][1], and how to deal with this issue is a 
-[somewhat common][2] [SO question][3]
+open issue since at least 2012[^1], and how to deal with this issue is a 
+somewhat common SO question[^2][^3]
 
 {% highlight Scala %}
 s"A common question for Scala programmers is "How can I represent a literal " character in Scala interpolations?""
@@ -86,14 +87,16 @@ interpolator.
 ## Design
 
 This is a non-breaking change. Currently the sequence `$"` within an
-interpolation is a syntax error, as [has already been noted][4]
-on the original ticket
+interpolation is a syntax error, as has already been noted[^4]
+on the original ticket.
 
 ## Implementation
 
 The implementation is simple to the point of being trivial: see
-[the implementation][5] for the actual change in functionality and the rest of
+the implementation [^5] for the actual change in functionality and the rest of
 that PR for the spec and test changes.
+
+There is also an implementation for Dotty.[^7]
 
 ## Drawbacks
 
@@ -108,8 +111,8 @@ highlighters tend to already struggle around "funky" strings and interpolations.
 ## Alternatives
 
 More ambitious proposals around interpolations are possible, and have been
-proposed in different forms before. [This PR][6] in particular shows more options
-around using `\` as a meta character in interpolations. It stranded somewhere
+proposed in different forms before. For example, there was a PR thatshows more options
+around using `\` as a meta character in interpolations[^6]. It stranded somewhere
 between red tape, ambition and changing processes.
 
 I suspect the last word about interpolations hasn't been spoken, and that later
@@ -117,9 +120,10 @@ proposals may still make interpolations more regular. This proposal is
 deliberately small, and intends not to be in the way of any potential further
 proposals.
 
-[1]: https://github.com/Scala/bug/issues/6476 "\\\" escape does not work with string interpolation"
-[2]: https://stackoverflow.com/questions/31366563/string-interpolation-escaping-quotation-mark/31366588 ""
-[3]: https://stackoverflow.com/questions/17085354/escaping-quotation-marks-in-f-string-interpolation ""
-[4]: https://github.com/scala/bug/issues/6476#issuecomment-292412577 "@retronym said: +1 to s"$"". Because it doesn't compile today, we don't risk changing the meaning of existing programs."
-[5]: https://github.com/Scala/Scala/pull/6953/files#diff-0023b3bfa053fb16603156b785efa7ad ""
-[6]: https://github.com/Scala/Scala/pull/4308 "SI-6476 Accept escaped quotes in interp strings"
+[^1]: https://github.com/Scala/bug/issues/6476 "\\\" escape does not work with string interpolation"
+[^2]: https://stackoverflow.com/questions/31366563/string-interpolation-escaping-quotation-mark/31366588 ""
+[^3]: https://stackoverflow.com/questions/17085354/escaping-quotation-marks-in-f-string-interpolation ""
+[^4]: https://github.com/scala/bug/issues/6476#issuecomment-292412577 "@retronym said: +1 to s"$"". Because it doesn't compile today, we don't risk changing the meaning of existing programs."
+[^5]: https://github.com/Scala/Scala/pull/6953/files#diff-0023b3bfa053fb16603156b785efa7ad ""
+[^6]: https://github.com/Scala/Scala/pull/4308 "SI-6476 Accept escaped quotes in interp strings"
+[^7]: https://github.com/lampepfl/dotty/pull/7486 "PR in dotty"
