@@ -20,16 +20,6 @@ If you’re coming to Scala from Java, the best thing you can do is forget about
 
 The main Scala collections classes you’ll use on a regular basis are:
 
-{::comment}
-- `ArrayBuffer` - an indexed, mutable sequence
-- `List` - a linear, immutable sequence
-- `Vector` - an indexed, immutable sequence
-- `Map` - the base `Map` class
-    - there are many variations for special needs
-- `Set` - the base `Set` class
-    - other variations for special needs
-{:/comment}
-
 | Class         | Description   |
 | ------------- | ------------- |
 | `ArrayBuffer` | an indexed, mutable sequence |
@@ -43,14 +33,6 @@ The main Scala collections classes you’ll use on a regular basis are:
 We’ll demonstrate the basics of these classes in the following lessons.
 
 >In the following lessons on Scala collections classes, whenever we use the word *immutable*, it’s safe to assume that the class is intended for use in a *functional programming* (FP) style. With these classes you don’t modify the collection; you apply functional methods to the collection to create a new result. You’ll see what this means in the examples that follow.
-
-
-<!--
-TODO: mention IndexedSeq and LinearSeq, and show an image of the class hierarchy
--->
-
-
-
 
 
 

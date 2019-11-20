@@ -37,11 +37,6 @@ case object ThickCrustType extends CrustType
 
 A nice thing about Scala is that even though we haven’t discussed sealed traits or case objects, you can probably still figure out how this code works.
 
-{::comment}
-TODO: explain that code here or elsewhere
-{:/comment}
-
-
 
 
 ## A few classes
@@ -221,11 +216,6 @@ To experiment with this on your own, please see the *PizzaOopExample* project in
 - [github.com/alvinj/HelloScalaExamples](https://github.com/alvinj/HelloScalaExamples)
 
 To compile this project it will help to either (a) use IntelliJ IDEA or Eclipse, or (b) know how to use the [Scala Build Tool](http://www.scala-sbt.org).
-
-{::comment}
-TODO: link to the sbt lessons in this book
-For information on getting started with SBT, see my tutorial, [How to compile, run, and package a Scala project with SBT](alvinalexander.com/scala/sbt-how-to-compile-run-package-scala-project).
-{:/comment}
 
 
 

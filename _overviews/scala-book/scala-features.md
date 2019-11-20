@@ -29,21 +29,4 @@ Here are a few more nuggets about Scala:
 - A great Scala benefit is that it lets you write concise, readable code. The time a programmer spends reading code compared to the time spent writing code is said to be at least a 10:1 ratio, so writing code that’s *concise and readable* is a big deal. Because Scala has these attributes, programmers say that it’s *expressive*.
 
 
-{::comment}
-## Scala levels
-
-Another way to describe the audience for this book involves looking at different levels of software developers. In the article at http://www.scala-lang.org/node/8610, Martin Odersky defines the following levels of computer programmers:
-
-- Level A1: Beginning application programmer
-- Level A2: Intermediate application programmer
-- Level A3: Expert application programmer
-- Level L1: Junior library designer
-- Level L2: Senior library designer
-- Level L3: Expert library designer
-
-This book is primarily aimed at the application developers in the A1, A2, A3, and L1 categories.
-{:/comment}
-
-
-
 

@@ -42,10 +42,6 @@ As those examples show, Scala clearly lets you pass anonymous functions and regu
 
 ## Function or method?
 
-{::comment}
-i left this link here because it’s a pretty detailed discussion
-{:/comment}
-
 Scala has [a special “function” syntax](https://alvinalexander.com/scala/fp-book-diffs-val-def-scala-functions), but as a practical matter the `def` syntax seems to be preferred. This may be because of two reasons:
 
 - The `def` syntax is more familiar to people coming from a C/Java/C# background
@@ -107,15 +103,6 @@ Those examples that use a “regular” function are equivalent to these anonymo
 List("foo", "bar").map(s => s.toUpperCase)
 List("foo", "bar").map(_.toUpperCase)
 ```
-
-
-
-{::comment}
-TODO: add this topic as a new lesson
-## How to write functions that takes functions as parameters
-
-In both the *Scala Cookbook* and *Functional Programming, Simplified* i demonstrate how to *write* methods like `map` and `filter` that take other functions as input parameters. i won’t do that in this book, but when you get to the point where you want to write functions like this, it’s a technique you’ll want to learn.
-{:/comment}
 
 
 
