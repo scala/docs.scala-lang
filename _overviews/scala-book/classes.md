@@ -85,10 +85,6 @@ public class Person {
 }
 ```
 
-{::comment}
-That Java code hasn’t been tested
-{:/comment}
-
 
 
 ## `val` makes fields read-only

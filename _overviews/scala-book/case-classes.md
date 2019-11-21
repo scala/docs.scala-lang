@@ -168,13 +168,6 @@ res1: Boolean = false
 
 These methods also let you easily use your objects in collections like sets and maps.
 
-<!-- 
-case class Person(name: String, relation: String)
-val christina = Person("Christina", "niece")
-val hannah = Person("Hannah", "niece")
-christina == hannah
--->
-
 
 
 ## `toString` methods

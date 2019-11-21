@@ -49,13 +49,6 @@ A `case object` is like an `object`, but just like a case class has more feature
 - It has a default `hashCode` implementation
 - It has an improved `toString` implementation
 
-<!--
-These features make a case object useful when you don’t know how it will be used by other developers, such as if it will be sent across a network, or even referenced in a different JVM (such as with the [Akka](https://akka.io/) actors platform, where you can send messages between JVM instances).
-
-https://doc.akka.io/docs/akka/new-docs-quickstart-snapshot/define-actors.html
-“Case classes and case objects make excellent messages since they are immutable and have support for pattern matching.”
--->
-
 Because of these features, case objects are primarily used in two places (instead of regular objects):
 
 - When creating enumerations
@@ -95,21 +88,6 @@ case class Pizza (
     toppings: Seq[Topping]
 )
 ```
-
-<!--
-// this works, implying that 'case' isn't needed for pattern-matching
-sealed trait CrustSize
-object SmallCrustSize extends CrustSize
-object MediumCrustSize extends CrustSize
-object LargeCrustSize extends CrustSize
-
-def poop(cs: CrustSize): Unit = cs match {
-    case SmallCrustSize  => println("small")
-    case MediumCrustSize => println("medium")
-    case LargeCrustSize  => println("large")
-}
--->
-
 
 
 

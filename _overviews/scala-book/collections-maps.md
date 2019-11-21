@@ -64,17 +64,6 @@ firstTwoElements: scala.collection.immutable.Map[Int,String] = Map(1 -> a, 2 -> 
 
 >Note that the last example probably only makes sense for a sorted Map.
 
-{::comment}
-for ((k,v) <- m) printf("key: %s, value: %s\n", k, v)
-val keys = m.keys
-val values = m.values
-val contains3 = m.contains(3)
-val ucMap = m.transform((k,v) => v.toUpperCase)
-val twoAndThree = m.filterKeys(Set(2,3))
-val firstTwoElements = m.take(2) 
-{:/comment}
-
-
 
 
 ## Mutable Map examples

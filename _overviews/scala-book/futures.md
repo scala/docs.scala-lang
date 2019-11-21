@@ -92,10 +92,6 @@ res1: scala.concurrent.Future[Int] = Future(Success(84))
 
 Notice that the `84` you expected is wrapped in a `Success`, which is further wrapped in a `Future`. This is a key point to know: The value in a `Future` is always an instance of one of the `Try` types: `Success` or `Failure`. Therefore, when working with the result of a future, use the usual `Try`-handling techniques, or one of the other `Future` callback methods.
 
-{::comment}
-NOTE: i couldn’t find a better Partial Function link on docs.scala-lang.org, so i kept the following link for now
-{:/comment}
-
 One commonly used callback method is `onComplete`, which takes a [partial function](https://alvinalexander.com/scala/how-to-define-use-partial-functions-in-scala-syntax-examples) in which you should handle the `Success` and `Failure` cases, like this:
 
 ```scala
