@@ -324,7 +324,7 @@ Other useful and well-named methods include:
 - `fallbackTo`
 - `recoverWith`
 
-These methods and many more details are discussed on the [“Futures and Promises” page](/overviews/core/futures.html).
+These methods and many more details are discussed on the [“Futures and Promises” page]({{site.baseurl}}/overviews/core/futures.html).
 
 
 
