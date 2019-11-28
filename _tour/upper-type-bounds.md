@@ -44,7 +44,7 @@ val catContainer = new PetContainer[Cat](new Cat)
 // this would not compile
 val lionContainer = new PetContainer[Lion](new Lion)
 ```
-The `class PetContainer` take a type parameter `P` which must be a subtype of `Pet`. `Dog` and `Cat` are subtypes of `Pet` so we can create a new `PetContainer[Dog]` and `PetContainer[Cat]`. However, if we tried to create a `PetContainer[Lion]`, we would get the following Error:
+The `class PetContainer` takes a type parameter `P` which must be a subtype of `Pet`. `Dog` and `Cat` are subtypes of `Pet` so we can create a new `PetContainer[Dog]` and `PetContainer[Cat]`. However, if we tried to create a `PetContainer[Lion]`, we would get the following Error:
 
 `type arguments [Lion] do not conform to class PetContainer's type parameter bounds [P <: Pet]`
 
