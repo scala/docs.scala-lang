@@ -74,7 +74,7 @@ In addition to the REPL there are a couple of other, similar tools you can use:
 - The Scala IDE for Eclipse also has a Worksheet plugin
 - [scalafiddle.io](https://scalafiddle.io) lets you run similar experiments in a web browser
 
-For more information on the Scala REPL, see the [Scala REPL overview](/overviews/repl/overview.html)
+For more information on the Scala REPL, see the [Scala REPL overview]({{site.baseurl}}/overviews/repl/overview.html)
 
 
 

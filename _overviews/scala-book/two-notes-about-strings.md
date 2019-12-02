@@ -62,7 +62,7 @@ A few other benefits of string interpolation are:
 - The `raw` interpolator performs no escaping of literals (such as `\n`) within the string
 - You can create your own string interpolators
 
-See the [string interpolation documentation](/overviews/core/string-interpolation.html) for more details.
+See the [string interpolation documentation]({{site.baseurl}}/overviews/core/string-interpolation.html) for more details.
 
 
 
