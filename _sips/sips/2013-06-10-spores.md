@@ -1,8 +1,8 @@
 ---
 layout: sip
 title: SIP-21 - Spores
-vote-status: "under-review"
-vote-text: Next iteration takes place in January/February 2017 by request of the authors.
+vote-status: "dormant"
+vote-text: There is an implementation for Scala 2.11. A new owner is needed to champion this proposal for the current Scala version. The proposal needs to be updated to explain how to handle transitive spores.
 permalink: /sips/:title.html
 redirect_from: /sips/pending/spores.html
 ---

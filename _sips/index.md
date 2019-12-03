@@ -40,12 +40,3 @@ Please read [Submitting a SIP](./sip-submission.html) and our
 > Historical note: The SIP replaces the older SID (Scala Improvement Document) process.
 > Completed SID documents remain available in the
 > [completed section of the SIP list](all.html).
-
-## Scala Platform Process (SPP)
-
-The Scala Platform aims to be a stable collection of libraries with widespread
-use and a low barrier to entry for beginners and intermediate users. The
-Platform consists of several independent modules that solve specific problems.
-The Scala community sets the overall direction of the Platform.
-
-<a class="button" href="https://platform.scala-lang.org">Learn more about the Scala Platform</a>

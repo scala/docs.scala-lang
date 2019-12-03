@@ -1,8 +1,8 @@
 ---
 layout: sip
 title: SIP-25 - Trait Parameters
-vote-status: "under-review"
-vote-text: The board agreed to schedule the next iteration of the evaluation process in 6 months, since there’s no implementation yet and the authors need time to produce one.
+vote-status: accepted
+vote-text: Trait parameters are implemented in Scala 3.0.
 permalink: /sips/:title.html
 redirect_from: /sips/pending/trait-parameters.html
 ---
