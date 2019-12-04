@@ -206,7 +206,7 @@ Martin: Hmm, we might not need inline on parameters
 
 [https://dotty.epfl.ch/docs/reference/metaprogramming/macros.html](https://dotty.epfl.ch/docs/reference/metaprogramming/macros.html)
 
-Presented by Oliver
+Presented by Olivier
 
 Miles: the example is too basic, no recursion: can we do typeclass derivation with this? (need recursion)
 
@@ -222,7 +222,7 @@ Adriaan/Seb: inline is simpler
 
 ### More general meta-programming talks
 
-Nicolas/Oliver present 3 "tiers" of meta-programming: inline, staging, dotty reflect
+Nicolas/Olivier present 3 "tiers" of meta-programming: inline, staging, dotty reflect
 
 At the end it becomes clear that these aren't desugarings from one to another (e.g. staging doesn't desugar
 to dotty reflect, it's its own thing, idem for inline to staging).
@@ -259,16 +259,23 @@ Martin: But we said we weren't adding anything to the standard library in 3.0
 
 Olivier: Are they necessary?
   * Yes's and No's
-  * Seb: in Scala.js I could use the
+  * Seb: in Scala.js I could use them
   * Seth: should we ask the community?
   * Miles: no, because you'll always find someone that says yes
+
 Decision: Find use cases and test performance
+
 Seth: Defer to 3.1+?
-  (Someone): Yes, it doesn't need to be in 3.0
+
+(Someone): Yes, it doesn't need to be in 3.0
+
 (Someone): Maybe it's superseded by @compileTimeOnly, that's already in 2.13?
+
 (A few): Should we delete the code or put it under a flag?
-  Guillaume: If we don't delete it it'll be in TASTY forever
-Decision (I think): delete the code, strive to make @compileTimeOnly its replacement
+
+Guillaume: If we don't delete it it'll be in TASTY forever
+
+Decision: delete the code, strive to make @compileTimeOnly its replacement
 
 ### Runtime reflection
 
@@ -284,4 +291,3 @@ Without extending it has a subset of java.lang.Enum's API.
 You use `-Xsource V` and `-migration` to help get to version V
 Martin: I'd like a way to do it file-by-file
   * (Many): having different files use different versions of Scala sounds very confusing
-
