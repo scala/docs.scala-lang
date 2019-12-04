@@ -22,7 +22,7 @@ To demonstrate this, here’s a Scala trait that has a concrete method named `sp
 
 ```scala
 trait Pet {
-    def speak { println("Yo") }   // concrete implementation of a speak method
+    def speak = println("Yo")     // concrete implementation of a speak method
     def comeToMaster(): Unit      // abstract
 }
 ```
