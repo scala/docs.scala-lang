@@ -38,7 +38,7 @@ language: zh-cn
 | xs indexOf x | 返回序列xs中等于x的第一个元素的索引（存在多种变体）。 |
 | xs lastIndexOf x | 返回序列xs中等于x的最后一个元素的索引（存在多种变体）。 |
 | xs indexOfSlice ys | 查找子序列ys，返回xs中匹配的第一个索引。 |
-| xs indexOfSlice ys | 查找子序列ys，返回xs中匹配的倒数一个索引。 |
+| xs lastIndexOfSlice ys | 查找子序列ys，返回xs中匹配的倒数一个索引。 |
 | xs indexWhere p | xs序列中满足p的第一个元素。（有多种形式） |
 | xs segmentLength (p, i) | xs中，从xs(i)开始并满足条件p的元素的最长连续片段的长度。 |
 | xs prefixLength p | xs序列中满足p条件的先头元素的最大个数。 |
