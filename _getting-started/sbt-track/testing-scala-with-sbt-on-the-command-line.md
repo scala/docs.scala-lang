@@ -69,15 +69,17 @@ one convention is "ClassName.methodName".
 indeed 27. The `===` is part of ScalaTest and provides clean error messages.
 
 ## Adding another test case
-1. Add another `assert` statement after the first one that checks for the cube
-of `0`.
+1. Add another test block with its own `assert` statement that checks for the cube of `0`.
 
     ```
       import org.scalatest.FunSuite
     
       class CubeCalculatorTest extends FunSuite {
-          test("CubeCalculator.cube") {
+          test("CubeCalculator.cube 3 should be 27") {
               assert(CubeCalculator.cube(3) === 27)
+          }
+
+          test("CubeCalculator.cube 0 should be 0") {
               assert(CubeCalculator.cube(0) === 0)
           }
       }
@@ -87,17 +89,19 @@ of `0`.
 
     ```
     sbt test
-    [info] Loading global plugins from /Users/username/.sbt/0.13/plugins
-    [info] Loading project definition from /Users/username/workspace/sandbox/my-something-project/project
-    [info] Set current project to scalatest-example (in build file:/Users/username/workspace/sandbox/my-something-project/)
+    [info] Loading project definition from C:\projects\scalaPlayground\scalatestpractice\project
+    [info] Loading settings for project root from build.sbt ...
+    [info] Set current project to scalatest-example (in build file:/C:/projects/scalaPlayground/scalatestpractice/)
+    [info] Compiling 1 Scala source to C:\projects\scalaPlayground\scalatestpractice\target\scala-2.13\test-classes ...
     [info] CubeCalculatorTest:
-    [info] - CubeCalculator.cube
-    [info] Run completed in 267 milliseconds.
-    [info] Total number of tests run: 1
+    [info] - CubeCalculator.cube 3 should be 27
+    [info] - CubeCalculator.cube 0 should be 0
+    [info] Run completed in 257 milliseconds.
+    [info] Total number of tests run: 2
     [info] Suites: completed 1, aborted 0
-    [info] Tests: succeeded 1, failed 0, canceled 0, ignored 0, pending 0
+    [info] Tests: succeeded 2, failed 0, canceled 0, ignored 0, pending 0
     [info] All tests passed.
-    [success] Total time: 1 s, completed Feb 2, 2017 7:37:31 PM
+    [success] Total time: 3 s, completed Dec 4, 2019 10:34:04 PM
     ```
 
 ## Conclusion
