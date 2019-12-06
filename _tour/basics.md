@@ -57,7 +57,7 @@ Values cannot be re-assigned:
 x = 3 // This does not compile.
 ```
 
-The type of a value can be omitted and inferred by [type inference](https://docs.scala-lang.org/tour/type-inference.html), or it can be explicitly stated:
+The type of a value can be omitted and [inferred](https://docs.scala-lang.org/tour/type-inference.html), or it can be explicitly stated:
 
 ```tut
 val x: Int = 1 + 1
@@ -71,11 +71,11 @@ Variables are like values, except you can re-assign them. You can define a varia
 
 ```tut
 var x = 1 + 1
-x = 3 // This compiles because "x" is declared with the "var" keyword:
+x = 3 // This compiles because "x" is declared with the "var" keyword.
 println(x * x) // 9
 ```
 
-As with values, the type of a variable can be omitted and inferred by [type inference](https://docs.scala-lang.org/tour/type-inference.html), or it can be explicitly stated:
+As with values, the type of a variable can be omitted and [inferred](https://docs.scala-lang.org/tour/type-inference.html), or it can be explicitly stated:
 
 ```tut
 var x: Int = 1 + 1
@@ -116,7 +116,7 @@ println(addOne(1)) // 2
 ```
 {% endscalafiddle %}
 
-A function can take multiple arguments:
+A function can have multiple parameters:
 
 {% scalafiddle %}
 ```tut
@@ -125,7 +125,7 @@ println(add(1, 2)) // 3
 ```
 {% endscalafiddle %}
 
-Or no arguments at all:
+Or it can have no parameters at all:
 
 ```tut
 val getTheAnswer = () => 42
@@ -202,7 +202,7 @@ We will cover classes in depth [later](classes.html).
 
 ## Case Classes
 
-Scala has a special type of class called a "case" class. By default, case classes are immutable, and they are compared by value (unlike classes, which are compared by reference). This makes them particularly useful for [pattern matching](https://docs.scala-lang.org/tour/pattern-matching.html#matching-on-case-classes).
+Scala has a special type of class called a "case" class. By default, case classes are immutable, and they are compared by value (unlike classes, which are compared by reference). This makes them additionally useful for [pattern matching](https://docs.scala-lang.org/tour/pattern-matching.html#matching-on-case-classes).
 
 You can define case classes with the `case class` keywords:
 
@@ -265,7 +265,7 @@ We will cover objects in depth [later](singleton-objects.html).
 
 ## Traits
 
-Traits are abstract data types containing certain fields and methods. In Scala inheritance, a class can not only inherit from a super class, but also mix in one or more traits.
+Traits are abstract data types containing certain fields and methods. In Scala inheritance, a class can only extend one other class, but it can extend multiple traits.
 
 You can define traits with the `trait` keyword:
 
