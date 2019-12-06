@@ -8,23 +8,18 @@ includeTOC: true
 redirect_from: "/getting-started.html"
 ---
 
-<div style="font-size: 1.25rem; color: #073642; font-weight: 400; font-family: 'Roboto Slab', serif; margin-bottom: 18px;"> There are <strong>two</strong> main ways people prefer to work in Scala.</div>
+There are __two__ main ways people prefer to work in Scala:
 
-<ol style="margin-bottom: 24px;">
-  <li style="margin-bottom: 4px;">Using an IDE.</li>
-  <li style="margin-bottom: 4px;">Using the command line.</li>
-</ol>
+* Using an IDE.
+* Using the command line.
 
-
-The following tutorials will walk you through the set up process for either way
+The following tutorials will walk you through the setup process for whichever way
 you prefer.
 
 However, if you just want to jump directly into Scala without installing anything, skip the guides on this page and check out:
 
-<ul style="margin-bottom: 24px;">
-  <li style="margin-bottom: 4px;"><a href="https://www.scala-exercises.org/scala_tutorial/terms_and_types">our interactive introduction to Scala on scala-exercises.com</a>, or</li>
-  <li style="margin-bottom: 4px;"><a href="https://scastie.scala-lang.org/">Scastie</a>, Scala in the browser, with access to all Scala compilers and all published libraries!</li>
-</ul>
+* [Our interactive introduction to Scala on scala-exercises.com](https://www.scala-exercises.org/scala_tutorial/terms_and_types), or
+* [Scastie](https://scastie.scala-lang.org/), Scala in the browser, with access to all Scala compilers and all published libraries!
 
 ## Setting up and getting started with Scala
 
@@ -43,7 +38,7 @@ unit tests!
 ### If you prefer working on the command line...
 
 If you prefer using a text editor like emacs, Vim, Atom, or Sublime Text, then
-the best way to compile, test, and run Scala code is using _sbt_, Scala's build
+the best way to compile, test, and run Scala code is by using _sbt_, Scala's build
 tool.
 
 * [Getting Started with Scala and sbt on the Command Line](/getting-started/sbt-track/getting-started-with-scala-and-sbt-on-the-command-line.html)
@@ -55,7 +50,7 @@ the rest, so it's as easy as possible for someone else to compile and run your
 Scala project. -->
 
 ## Next Steps
-Once you've finished these tutorials, check out
+Once you've finished these tutorials, check out:
 
 * [The Tour of Scala](/tour/tour-of-scala.html) for bite-sized introductions to Scala's features.
 * [The Scala Book](/overviews/scala-book/introduction.html), which provides a set of short lessons introducing Scala’s main features.
@@ -63,4 +58,4 @@ Once you've finished these tutorials, check out
 * [Our list of some popular Scala books](/books.html).
 
 ## Getting Help
-There are a multitude of mailing lists and real-time chat channels in case you want to quickly connect with other Scala users. Check out our [community](https://scala-lang.org/community/) page a list of these resources and where to reach out for help.
+There are a multitude of mailing lists and real-time chat channels in case you want to quickly connect with other Scala users. Check out our [community](https://scala-lang.org/community/) page for a list of these resources, and for where to reach out for help.
