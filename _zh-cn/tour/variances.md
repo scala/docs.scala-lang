@@ -145,7 +145,7 @@ abstract class SmallAnimal extends Animal
 case class Mouse(name: String) extends SmallAnimal
 ```
 
-假设我们正在处理接受动物类型的函数，并返回他们的食物类型。 如果我们想要一个 `Cat => SmallAnimal`（因为猫吃小动物），但是给它一个 `Animal => Mouse`，我们的程序仍然可以工作。 直观地看，一个 `Animal => Mouse` 的函数仍然会接受一个 `Cat` 作为参数，因为 `Cat` 即是一个 `Animal`，并且这个函数返回一个 `Mouse`，也是一个 `SmallAnimal`。 既然我们可以安全地，隐式地用前者代替后者，我们可以说 `Animal => Mouse` 是 `Cat => SmallAnimal` 的子类型。
+假设我们正在处理接受动物类型的函数，并返回他们的食物类型。 如果我们想要一个 `Cat => SmallAnimal`（因为猫吃小动物），但是给它一个 `Animal => Mouse`，我们的程序仍然可以工作。 直观地看，一个 `Animal => Mouse` 的函数仍然会接受一个 `Cat` 作为参数，因为 `Cat` 即是一个 `Animal`，并且这个函数返回一个 `Mouse`，也是一个 `SmallAnimal`。 既然我们可以安全地，隐式地用后者代替前者，我们可以说 `Animal => Mouse` 是 `Cat => SmallAnimal` 的子类型。
 
 ### 与其他语言的比较
 
