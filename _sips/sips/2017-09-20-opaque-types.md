@@ -2,7 +2,7 @@
 layout: sip
 title: SIP-35 - Opaque types
 
-vote-status: pending
+vote-status: accepted
 permalink: /sips/:title.html
 redirect_from: /sips/pending/opaque-types.html
 ---

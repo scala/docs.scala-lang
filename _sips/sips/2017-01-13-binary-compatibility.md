@@ -1,7 +1,8 @@
 ---
 layout: sip
-title: SIP-NN - Improving binary compatibility with @stableABI
-vote-status: pending
+title: SIP-34 - Improving binary compatibility with @stableABI
+vote-status: dormant
+vote-text: When the author of this proposal figures out which features should be binary compatible and has more information on the future implementation, the SIP Committee will start the review period.
 permalink: /sips/:title.html
 redirect_from: /sips/pending/binary-compatibility.html
 ---

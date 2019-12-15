@@ -1,8 +1,8 @@
 ---
 layout: sip
 title: SIP-28 and SIP-29 - Inline meta
-vote-status: "under-revision"
-vote-text: The following proposal has been split and numbered as SIP-28 (Inline) and SIP-29 (Meta). For more information on this decision, check the <a href="https://docs.scala-lang.org/sips/minutes/sip-20th-september-minutes.html">minutes</a>. The authors need to split the proposal and update it.
+vote-status: dormant
+vote-text: This proposal needs an owner.
 permalink: /sips/:title.html
 redirect_from: /sips/pending/inline-meta.html
 ---

@@ -96,7 +96,7 @@ Therefore, this example shows how to pass the constructor parameter from the `Do
 
 ```scala
 abstract class Pet (name: String) {
-    def speak { println(s"My name is $name") }
+    def speak: Unit = println(s"My name is $name")
 }
 
 class Dog(name: String) extends Pet(name)

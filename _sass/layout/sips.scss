@@ -105,6 +105,7 @@
 
   .pending,
   .completed,
+  .dormant,
   .rejected {
     .date {
       display: block;
@@ -169,6 +170,7 @@
     @include justify-content(space-between);
 
     .completed,
+    .dormant,
     .rejected {
       display: flex;
       flex-direction: column;

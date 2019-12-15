@@ -1,6 +1,6 @@
 ---
 layout: sip
-title: SIP-NN - Allow referring to other arguments in default parameters
+title: SIP-32 - Allow referring to other arguments in default parameters
 vote-status: pending
 permalink: /sips/:title.html
 redirect_from: /sips/pending/refer-other-arguments-in-args.html

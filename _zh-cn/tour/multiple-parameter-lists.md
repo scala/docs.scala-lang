@@ -13,7 +13,7 @@ previous-page: nested-functions
 
 方法可以定义多个参数列表，当使用较少的参数列表调用多参数列表的方法时，会产生一个新的函数，该函数接收剩余的参数列表作为其参数。这被称为[柯里化](https://zh.wikipedia.org/wiki/%E6%9F%AF%E9%87%8C%E5%8C%96)。
 
-下面是一个例子，在Scala集合中定义的特质[Traversable](/zh-cn/overviews/collections/trait-traversable.html)：
+下面是一个例子，在Scala集合 `trait TraversableOnce` 定义了 `foldLeft`
 
 ```
 def foldLeft[B](z: B)(op: (B, A) => B): B
@@ -33,11 +33,11 @@ print(res) // 55
 
 #### 单一的函数参数
    在某些情况下存在单一的函数参数时，例如上述例子`foldLeft`中的`op`，多参数列表可以使得传递匿名函数作为参数的语法更为简洁。如果不使用多参数列表，代码可能像这样：
-   
+
 ```
 numbers.foldLeft(0, {(m: Int, n: Int) => m + n})
 ```
-   
+
    注意使用多参数列表时，我们还可以利用Scala的类型推断来让代码更加简洁（如下所示），而如果没有多参数列表，这是不可能的。
     
 ```
@@ -68,13 +68,13 @@ numbers.foldRight(0)(_+_) // Curried Form
 
 (0 /: numbers)(_+_) // Used in place of foldLeft
 (numbers :\ 0)(_+_) // Used in place of foldRight
-```   
+```
 
-   
+
 #### 隐式（implicit）参数
    如果要指定参数列表中的某些参数为隐式（implicit），应该使用多参数列表。例如：
 
 ```
 def execute(arg: Int)(implicit ec: ExecutionContext) = ???
 ```
-    
+
