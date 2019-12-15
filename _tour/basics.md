@@ -10,28 +10,25 @@ previous-page: tour-of-scala
 redirect_from: "/tutorials/tour/basics.html"
 ---
 
-In this page, we will cover basics of Scala.
+In this page, we will cover the basics of Scala.
 
 ## Trying Scala in the Browser
 
-You can run Scala in your browser with ScalaFiddle.
+You can run Scala in your browser with _ScalaFiddle_. This is an easy, zero-setup way to experiment with pieces of Scala code:
 
 1. Go to [https://scalafiddle.io](https://scalafiddle.io).
 2. Paste `println("Hello, world!")` in the left pane.
-3. Hit "Run" button. Output appears in the right pane.
+3. Click __Run__. The output appears in the right pane.
 
-This is an easy, zero-setup way to experiment with pieces of Scala code.
-
-Many of the code examples in this documentation are also integrated with ScalaFiddle, so you
-can directly experiment with them simply by clicking the Run-button.
+_ScalaFiddle_ is integrated with some of the code examples in this documentation; if you see a __Run__ button in a code example below, click it to directly experiment with the code.
 
 ## Expressions
 
-Expressions are computable statements.
+Expressions are computable statements:
 ```
 1 + 1
 ```
-You can output results of expressions using `println`.
+You can output the results of expressions using `println`:
 
 {% scalafiddle %}
 ```tut
@@ -44,7 +41,7 @@ println("Hello," + " world!") // Hello, world!
 
 ### Values
 
-You can name results of expressions with the `val` keyword.
+You can name the results of expressions using the `val` keyword:
 
 ```tut
 val x = 1 + 1
@@ -54,13 +51,13 @@ println(x) // 2
 Named results, such as `x` here, are called values. Referencing
 a value does not re-compute it.
 
-Values cannot be re-assigned.
+Values cannot be re-assigned:
 
 ```tut:fail
 x = 3 // This does not compile.
 ```
 
-Types of values can be inferred, but you can also explicitly state the type, like this:
+The type of a value can be omitted and [inferred](https://docs.scala-lang.org/tour/type-inference.html), or it can be explicitly stated:
 
 ```tut
 val x: Int = 1 + 1
@@ -78,7 +75,7 @@ x = 3 // This compiles because "x" is declared with the "var" keyword.
 println(x * x) // 9
 ```
 
-As with values, you can explicitly state the type if you want:
+As with values, the type of a variable can be omitted and [inferred](https://docs.scala-lang.org/tour/type-inference.html), or it can be explicitly stated:
 
 ```tut
 var x: Int = 1 + 1
@@ -89,7 +86,7 @@ var x: Int = 1 + 1
 
 You can combine expressions by surrounding them with `{}`. We call this a block.
 
-The result of the last expression in the block is the result of the overall block, too.
+The result of the last expression in the block is the result of the overall block, too:
 
 ```tut
 println({
@@ -100,9 +97,9 @@ println({
 
 ## Functions
 
-Functions are expressions that take parameters.
+Functions are expressions that have parameters, and take arguments.
 
-You can define an anonymous function (i.e. no name) that returns a given integer plus one:
+You can define an anonymous function (i.e., a function that has no name) that returns a given integer plus one:
 
 ```tut
 (x: Int) => x + 1
@@ -110,7 +107,7 @@ You can define an anonymous function (i.e. no name) that returns a given integer
 
 On the left of `=>` is a list of parameters. On the right is an expression involving the parameters.
 
-You can also name functions.
+You can also name functions:
 
 {% scalafiddle %}
 ```tut
@@ -119,7 +116,7 @@ println(addOne(1)) // 2
 ```
 {% endscalafiddle %}
 
-Functions may take multiple parameters.
+A function can have multiple parameters:
 
 {% scalafiddle %}
 ```tut
@@ -128,7 +125,7 @@ println(add(1, 2)) // 3
 ```
 {% endscalafiddle %}
 
-Or it can take no parameters.
+Or it can have no parameters at all:
 
 ```tut
 val getTheAnswer = () => 42
@@ -139,7 +136,7 @@ println(getTheAnswer()) // 42
 
 Methods look and behave very similar to functions, but there are a few key differences between them.
 
-Methods are defined with the `def` keyword.  `def` is followed by a name, parameter lists, a return type, and a body.
+Methods are defined with the `def` keyword.  `def` is followed by a name, parameter list(s), a return type, and a body:
 
 {% scalafiddle %}
 ```tut
@@ -148,9 +145,9 @@ println(add(1, 2)) // 3
 ```
 {% endscalafiddle %}
 
-Notice how the return type is declared _after_ the parameter list and a colon `: Int`.
+Notice how the return type is declared _after_ the parameter list and the `: Int`.
 
-Methods can take multiple parameter lists.
+A method can take multiple parameter lists:
 
 {% scalafiddle %}
 ```tut
@@ -159,16 +156,16 @@ println(addThenMultiply(1, 2)(3)) // 9
 ```
 {% endscalafiddle %}
 
-Or no parameter lists at all.
+Or no parameter lists at all:
 
 ```tut
 def name: String = System.getProperty("user.name")
 println("Hello, " + name + "!")
 ```
 
-There are some other differences, but for now, you can think of them as something similar to functions.
+There are some other differences, but for now, you can think of methods as something similar to functions.
 
-Methods can have multi-line expressions as well.
+Methods can have multi-line expressions as well:
 
 {% scalafiddle %}
 ```tut
@@ -180,11 +177,11 @@ println(getSquareString(2.5)) // 6.25
 ```
 {% endscalafiddle %}
 
-The last expression in the body is the method's return value. (Scala does have a `return` keyword, but it's rarely used.)
+The last expression in the body is the method's return value. (Scala does have a `return` keyword, but it is rarely used.)
 
 ## Classes
 
-You can define classes with the `class` keyword followed by its name and constructor parameters.
+You can define classes with the `class` keyword, followed by its name and constructor parameters:
 
 ```tut
 class Greeter(prefix: String, suffix: String) {
@@ -192,9 +189,9 @@ class Greeter(prefix: String, suffix: String) {
     println(prefix + name + suffix)
 }
 ```
-The return type of the method `greet` is `Unit`, which says there's nothing meaningful to return. It's used similarly to `void` in Java and C. (A difference is that because every Scala expression must have some value, there is actually a singleton value of type Unit, written (). It carries no information.)
+The return type of the method `greet` is `Unit`, which signifies that there is nothing meaningful to return. It is used similarly to `void` in Java and C. (A difference is that, because every Scala expression must have some value, there is actually a singleton value of type Unit, written (). It carries no information.)
 
-You can make an instance of a class with the `new` keyword.
+You can make an instance of a class with the `new` keyword:
 
 ```tut
 val greeter = new Greeter("Hello, ", "!")
@@ -205,13 +202,15 @@ We will cover classes in depth [later](classes.html).
 
 ## Case Classes
 
-Scala has a special type of class called a "case" class.  By default, case classes are immutable and compared by value. You can define case classes with the `case class` keywords.
+Scala has a special type of class called a "case" class. By default, case classes are immutable, and they are compared by value (unlike classes, which are compared by reference). This makes them additionally useful for [pattern matching](https://docs.scala-lang.org/tour/pattern-matching.html#matching-on-case-classes).
+
+You can define case classes with the `case class` keywords:
 
 ```tut
 case class Point(x: Int, y: Int)
 ```
 
-You can instantiate case classes without `new` keyword.
+You can instantiate case classes without the `new` keyword:
 
 ```tut
 val point = Point(1, 2)
@@ -219,7 +218,7 @@ val anotherPoint = Point(1, 2)
 val yetAnotherPoint = Point(2, 2)
 ```
 
-And they are compared by value.
+Case classes are compared by value, not by reference:
 
 ```tut
 if (point == anotherPoint) {
@@ -235,13 +234,13 @@ if (point == yetAnotherPoint) {
 } // Point(1,2) and Point(2,2) are different.
 ```
 
-There is a lot more to case classes that we'd like to introduce, and we are convinced you will fall in love with them! We will cover them in depth [later](case-classes.html).
+There is a lot more to case classes that we would like to introduce, and we are convinced you will fall in love with them! We will cover them in depth [later](case-classes.html).
 
 ## Objects
 
 Objects are single instances of their own definitions. You can think of them as singletons of their own classes.
 
-You can define objects with the `object` keyword.
+You can define objects with the `object` keyword:
 
 ```tut
 object IdFactory {
@@ -253,7 +252,7 @@ object IdFactory {
 }
 ```
 
-You can access an object by referring to its name.
+You can access an object by referring to its name:
 
 ```tut
 val newId: Int = IdFactory.create()
@@ -266,9 +265,9 @@ We will cover objects in depth [later](singleton-objects.html).
 
 ## Traits
 
-Traits are types containing certain fields and methods.  Multiple traits can be combined.
+Traits are abstract data types containing certain fields and methods. In Scala inheritance, a class can only extend one other class, but it can extend multiple traits.
 
-You can define traits with `trait` keyword.
+You can define traits with the `trait` keyword:
 
 ```tut
 trait Greeter {
@@ -276,7 +275,7 @@ trait Greeter {
 }
 ```
 
-Traits can also have default implementations.
+Traits can also have default implementations:
 
 {% scalafiddle %}
 ```tut
@@ -286,7 +285,7 @@ trait Greeter {
 }
 ```
 
-You can extend traits with the `extends` keyword and override an implementation with the `override` keyword.
+You can extend traits with the `extends` keyword and override an implementation with the `override` keyword:
 
 ```tut
 class DefaultGreeter extends Greeter
@@ -305,17 +304,17 @@ customGreeter.greet("Scala developer") // How are you, Scala developer?
 ```
 {% endscalafiddle %}
 
-Here, `DefaultGreeter` extends only a single trait, but it could extend multiple traits.
+Here, `DefaultGreeter` extends only one single trait, but it could extend multiple traits.
 
 We will cover traits in depth [later](traits.html).
 
 ## Main Method
 
-The main method is an entry point of a program.  The Java Virtual
-Machine requires a main method to be named `main` and take one
-argument, an array of strings.
+The main method is the entry point of a Scala program.  The Java Virtual
+Machine requires a main method, named `main`, that takes one
+argument: an array of strings.
 
-Using an object, you can define a main method as follows:
+Using an object, you can define the main method as follows:
 
 ```tut
 object Main {
