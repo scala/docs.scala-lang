@@ -8,6 +8,9 @@ num: 24
 next-page: self-types
 previous-page: abstract-type-members
 
+redirect_from:
+  - /ba/tutorials/tour/compound-types.html
+  - /ba/tutorials/tour/compound-types.html.html
 ---
 
 Ponekad je potrebno izraziti da je tip objekta podtip nekoliko drugih tipova. 

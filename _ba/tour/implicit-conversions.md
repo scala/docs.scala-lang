@@ -8,6 +8,9 @@ num: 27
 next-page: polymorphic-methods
 previous-page: implicit-parameters
 
+redirect_from:
+  - /ba/tutorials/tour/implicit-conversions.html
+  - /ba/tutorials/tour/implicit-conversions.html.html
 ---
 
 Implicitna konverzija iz tipa `S` u tip `T` je definisana kao implicitna vrijednost koja ima tip `S => T` (funkcija), 

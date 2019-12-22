@@ -10,6 +10,9 @@ previous-page: unified-types
 topics: classes
 prerequisite-knowledge: no-return-keyword, type-declaration-syntax, string-interpolation, procedures
 
+redirect_from:
+  - /ba/tutorials/tour/classes.html
+  - /ba/tutorials/tour/classes.html.html
 ---
 
 Klase u Scali su šabloni za kreiranje objekata.

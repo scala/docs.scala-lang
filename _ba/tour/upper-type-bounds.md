@@ -8,6 +8,9 @@ num: 20
 next-page: lower-type-bounds
 previous-page: variances
 
+redirect_from:
+  - /ba/tutorials/tour/upper-type-bounds.html
+  - /ba/tutorials/tour/upper-type-bounds.html.html
 ---
 
 U Scali, [tipski parametri](generic-classes.html) i [apstraktni tipovi](abstract-type-members.html) mogu biti ograničeni granicom tipa.

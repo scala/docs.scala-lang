@@ -9,6 +9,9 @@ next-page: named-arguments
 previous-page: annotations
 prerequisite-knowledge: named-arguments, function syntax
 
+redirect_from:
+  - /ba/tutorials/tour/default-parameter-values.html
+  - /ba/tutorials/tour/default-parameter-values.html.html
 ---
 
 Scala omogućuje davanje podrazumijevanih vrijednosti parametrima koje dozvoljavaju korisniku metode da izostavi te parametre.

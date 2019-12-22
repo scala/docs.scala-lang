@@ -8,6 +8,9 @@ num: 16
 next-page: for-comprehensions
 previous-page: regular-expression-patterns
 
+redirect_from:
+  - /ba/tutorials/tour/extractor-objects.html
+  - /ba/tutorials/tour/extractor-objects.html.html
 ---
 
 Ekstraktor objekat je objekat koji ima `unapply` metodu.

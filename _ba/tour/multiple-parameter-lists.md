@@ -8,6 +8,10 @@ num: 10
 next-page: case-classes
 previous-page: nested-functions
 
+redirect_from:
+  - /ba/tour/currying.html
+  - /ba/tutorials/tour/currying.html
+  - /ba/tutorials/tour/currying.html.html
 ---
 
 Metode mogu definisati više listi parametara. 

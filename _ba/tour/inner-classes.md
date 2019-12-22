@@ -8,6 +8,9 @@ num: 22
 next-page: abstract-type-members
 previous-page: lower-type-bounds
 
+redirect_from:
+  - /ba/tutorials/tour/inner-classes.html
+  - /ba/tutorials/tour/inner-classes.html.html
 ---
 
 U Scali je moguće da klase imaju druge klase kao članove.

@@ -8,6 +8,9 @@ num: 8
 next-page: nested-functions
 previous-page: mixin-class-composition
 
+redirect_from:
+  - /ba/tutorials/tour/higher-order-functions.html
+  - /ba/tutorials/tour/higher-order-functions.html.html
 ---
 
 Scala dozvoljava definisanje funkcija višeg reda.

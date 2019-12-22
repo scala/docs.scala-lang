@@ -8,6 +8,9 @@ num: 9
 next-page: multiple-parameter-lists
 previous-page: higher-order-functions
 
+redirect_from:
+  - /ba/tutorials/tour/nested-functions.html
+  - /ba/tutorials/tour/nested-functions.html.html
 ---
 
 U Scali je moguće ugnježdavati definicije metode.

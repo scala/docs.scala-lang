@@ -8,6 +8,10 @@ num: 34
 previous-page: default-parameter-values
 prerequisite-knowledge: function-syntax
 
+redirect_from:
+  - /ba/tour/named-parameters.html
+  - /ba/tutorials/tour/named-parameters.html
+  - /ba/tutorials/tour/named-parameters.html.html
 ---
 
 Kada se pozivaju metode, možete koristiti imena varijabli eksplicitno pri pozivu:

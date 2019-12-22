@@ -8,6 +8,15 @@ num: 1
 
 next-page: basics
 
+redirect_from:
+  - /ba/tour/anonymous-function-syntax.html
+  - /ba/tutorials/tour/anonymous-function-syntax.html
+  - /ba/tutorials/tour/anonymous-function-syntax.html.html
+  - /ba/tour/explicitly-typed-self-references.html
+  - /ba/tutorials/tour/explicitly-typed-self-references.html
+  - /ba/tutorials/tour/explicitly-typed-self-references.html.html
+  - /ba/tutorials/tour/tour-of-scala.html
+  - /ba/tutorials/tour/tour-of-scala.html.html
 ---
 
 Scala je moderan programski jezik koji spaja više paradigmi,

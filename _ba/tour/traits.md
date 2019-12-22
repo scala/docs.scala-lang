@@ -9,6 +9,9 @@ next-page: tuples
 previous-page: classes
 assumed-knowledge: expressions, classes, generics, objects, companion-objects
 
+redirect_from:
+  - /ba/tutorials/tour/traits.html
+  - /ba/tutorials/tour/traits.html.html
 ---
 
 Trejtovi se koriste za dijeljenje interfejsa i polja među klasama.

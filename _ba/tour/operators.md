@@ -9,6 +9,9 @@ next-page: by-name-parameters
 previous-page: type-inference
 prerequisite-knowledge: case-classes
 
+redirect_from:
+  - /ba/tutorials/tour/operators.html
+  - /ba/tutorials/tour/operators.html.html
 ---
 
 U Scali, operatori su metode. 

@@ -10,6 +10,9 @@ next-page: type-inference
 previous-page: implicit-conversions
 prerequisite-knowledge: unified-types
 
+redirect_from:
+  - /ba/tutorials/tour/polymorphic-methods.html
+  - /ba/tutorials/tour/polymorphic-methods.html.html
 ---
 
 Metode u Scali mogu biti parametrizovane i s vrijednostima i s tipovima.

@@ -9,6 +9,9 @@ next-page: higher-order-functions
 previous-page: tuples
 prerequisite-knowledge: inheritance, traits, abstract-classes, unified-types
 
+redirect_from:
+  - /ba/tutorials/tour/mixin-class-composition.html
+  - /ba/tutorials/tour/mixin-class-composition.html.html
 ---
 
 Mixini su trejtovi koji se koriste za kompoziciju klase.

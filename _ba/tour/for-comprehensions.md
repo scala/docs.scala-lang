@@ -11,6 +11,10 @@ num: 17
 next-page: generic-classes
 previous-page: extractor-objects
 
+redirect_from:
+  - /ba/tour/sequence-comprehensions.html
+  - /ba/tutorials/tour/sequence-comprehensions.html
+  - /ba/tutorials/tour/sequence-comprehensions.html.html
 ---
 
 Scala ima skraćenu notaciju za pisanje *komprehensija sekvenci*.

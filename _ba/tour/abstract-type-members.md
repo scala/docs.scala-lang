@@ -9,6 +9,10 @@ next-page: compound-types
 previous-page: inner-classes
 prerequisite-knowledge: variance, upper-type-bound
 
+redirect_from:
+  - /ba/tutorials/tour/abstract-types.html
+  - /ba/tutorials/tour/abstract-types.html
+  - /ba/tutorials/tour/abstract-types.html.html
 ---
 
 Trejtovi i apstraktne klase mogu imati apstraktne tipove kao članove.

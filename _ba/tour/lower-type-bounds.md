@@ -9,6 +9,9 @@ next-page: inner-classes
 previous-page: upper-type-bounds
 prerequisite-knowledge: upper-type-bounds, generics, variance
 
+redirect_from:
+  - /ba/tutorials/tour/lower-type-bounds.html
+  - /ba/tutorials/tour/lower-type-bounds.html.html
 ---
 
 Dok [gornja granica tipa](upper-type-bounds.html) limitira tip na podtip nekog drugog tipa,

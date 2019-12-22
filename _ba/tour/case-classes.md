@@ -9,6 +9,9 @@ next-page: pattern-matching
 previous-page: multiple-parameter-lists
 prerequisite-knowledge: classes, basics, mutability
 
+redirect_from:
+  - /ba/tutorials/tour/case-classes.html
+  - /ba/tutorials/tour/case-classes.html.html
 ---
 
 Case klase su kao obične klase s par ključnih razlika.
