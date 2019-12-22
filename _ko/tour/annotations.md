@@ -8,6 +8,10 @@ language: ko
 
 next-page: default-parameter-values
 previous-page: automatic-closures
+
+redirect_from:
+  - /ko/tutorials/tour/annotations.html
+  - /ko/tutorials/tour/annotations.html.html
 ---
 
 어노테이션은 메타 정보와 정의 내용을 연결해준다.

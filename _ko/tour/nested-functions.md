@@ -8,6 +8,10 @@ language: ko
 
 next-page: multiple-parameter-lists
 previous-page: higher-order-functions
+
+redirect_from:
+  - /ko/tutorials/tour/nested-functions.html
+  - /ko/tutorials/tour/nested-functions.html.html
 ---
 
 스칼라에선 중첩 함수를 정의할 수 있다. 다음 오브젝트는 정수의 리스트에서 지정된 값보다 작은 값을 값을 추출해주는 `filter` 함수를 제공한다.

@@ -9,6 +9,10 @@ language: ko
 next-page: tuples
 previous-page: classes
 prerequisite-knowledge: expressions, classes, generics, objects, companion-objects
+
+redirect_from:
+  - /ko/tutorials/tour/traits.html
+  - /ko/tutorials/tour/traits.html.html
 ---
 
 트레잇은 클래스간에 인터페이스와 필드를 공유하는 데 사용됩니다. 그것들은 자바8의 인터페이스와 유사합니다. 클래스와 객체는 트레잇을 확장 할 수 있지만 트레잇을 인스턴스화 할 수 없으므로 매개 변수가 없습니다.

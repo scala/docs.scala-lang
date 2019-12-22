@@ -10,6 +10,10 @@ next-page: traits
 previous-page: unified-types
 topics: classes
 prerequisite-knowledge: no-return-keyword, type-declaration-syntax, string-interpolation, procedures
+
+redirect_from:
+  - /ko/tutorials/tour/classes.html
+  - /ko/tutorials/tour/classes.html.html
 ---
 
 스칼라의 클래스는 객체를 만들기 위한 설계도입니다. 클래스에는 _멤버_ 라고 통칭할 수 있는 메서드, 값, 변수, 타입, 객체, 트레잇, 클래스를 포함할 수 있습니다. 타입, 객체, 트레잇은 투어에서 나중에 다루겠습니다. 

@@ -8,6 +8,10 @@ language: ko
 
 next-page: pattern-matching
 previous-page: multiple-parameter-lists
+
+redirect_from:
+  - /ko/tutorials/tour/case-classes.html
+  - /ko/tutorials/tour/case-classes.html.html
 ---
 
 스칼라는 _케이스 클래스_ 개념을 지원한다. 케이스 클래스는 아래와 같은 특징을 가지는 일반 클래스이다.

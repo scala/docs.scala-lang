@@ -8,6 +8,10 @@ language: ko
 
 next-page: polymorphic-methods
 previous-page: implicit-parameters
+
+redirect_from:
+  - /ko/tutorials/tour/implicit-conversions.html
+  - /ko/tutorials/tour/implicit-conversions.html.html
 ---
 
 타입 `S`로부터 타입 `T`로의 암시적 변환는 함수 타입 `S => T`의 암시적 값이나 해당 타입으로 변환 가능한 암시적 메소드로 정의된다.

@@ -8,6 +8,10 @@ language: ko
 
 next-page: type-inference
 previous-page: implicit-conversions
+
+redirect_from:
+  - /ko/tutorials/tour/polymorphic-methods.html
+  - /ko/tutorials/tour/polymorphic-methods.html.html
 ---
 
 스칼라의 메소드는 값과 타입 모두가 파라미터화 될 수 있다. 클래스 수준에서와 같이, 값 파라미터는 괄호의 쌍으로 묶이며 타입 파라미터는 브래킷의 쌍 안에 위치한다.

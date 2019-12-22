@@ -8,6 +8,10 @@ language: ko
 
 next-page: regular-expression-patterns
 previous-page: pattern-matching
+
+redirect_from:
+  - /ko/tutorials/tour/singleton-objects.html
+  - /ko/tutorials/tour/singleton-objects.html.html
 ---
 
 [클래스](classes.html)의 각 인스턴스와 연관되지 않은 메서드와 값들은 싱글톤 객체에 속하며, `class`대신에 `object`를 사용해 표시된다.

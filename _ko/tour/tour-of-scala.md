@@ -7,6 +7,16 @@ num: 1
 language: ko
 
 next-page: basics
+
+redirect_from:
+  - /ko/tour/anonymous-function-syntax.html
+  - /ko/tour/explicitly-typed-self-references.html
+  - /ko/tutorials/tour/anonymous-function-syntax.html
+  - /ko/tutorials/tour/anonymous-function-syntax.html.html
+  - /ko/tutorials/tour/explicitly-typed-self-references.html
+  - /ko/tutorials/tour/explicitly-typed-self-references.html.html
+  - /ko/tutorials/tour/tour-of-scala.html
+  - /ko/tutorials/tour/tour-of-scala.html.html
 ---
 
 ## 투어를 환영합니다

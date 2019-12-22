@@ -8,6 +8,10 @@ language: ko
 
 next-page: variances
 previous-page: extractor-objects
+
+redirect_from:
+  - /ko/tutorials/tour/generic-classes.html
+  - /ko/tutorials/tour/generic-classes.html.html
 ---
 
 자바 5(다른 이름은 JDK 1.5와 같이, 스칼라는 타입으로 파라미터화된 클래스의 빌트인 지원을 제공한다. 이런 제네릭 클래스는 특히 컬렉션 클래스의 개발에 유용하다. 이에 관한 예제를 살펴보자.

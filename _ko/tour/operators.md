@@ -8,6 +8,10 @@ language: ko
 
 next-page: automatic-closures
 previous-page: type-inference
+
+redirect_from:
+  - /ko/tutorials/tour/operators.html
+  - /ko/tutorials/tour/operators.html.html
 ---
 
 스칼라에선 단일 파라미터를 취하는 모든 메소드를 *중위 연산자*로 사용할 수 있다. 다음은 `and`와 `or`, `negate` 등의 세 가지 메소드를 정의하고 있는 클래스 `MyBool`의 정의다.

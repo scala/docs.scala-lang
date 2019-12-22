@@ -8,6 +8,10 @@ language: ko
 
 next-page: named-arguments
 previous-page: annotations
+
+redirect_from:
+  - /ko/tutorials/tour/default-parameter-values.html
+  - /ko/tutorials/tour/default-parameter-values.html.html
 ---
 
 스칼라는 파라미터에 기본 값을 부여해서 호출자가 해당 파라미터를 생략할 수 있는 편리함을 제공한다.

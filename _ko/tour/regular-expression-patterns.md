@@ -8,6 +8,10 @@ language: ko
 
 next-page: extractor-objects
 previous-page: singleton-objects
+
+redirect_from:
+  - /ko/tutorials/tour/regular-expression-patterns.html
+  - /ko/tutorials/tour/regular-expression-patterns.html.html
 ---
 
 ## 우측 무시 시퀀스 패턴 ##
