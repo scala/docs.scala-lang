@@ -77,9 +77,9 @@ val doubledInts = ints.map((i: Int) => i * 2)
 val doubledInts = ints.map(i => i * 2)
 ```
 
-All three lines have exactly the same meaning: Double each element in `list` to create a new list, `doubledInts`.
+All three lines have exactly the same meaning: Double each element in `ints` to create a new list, `doubledInts`.
 
->The `_` character in Scala is something of a wildcard character. You’ll see it used in several different places. In this case it’s a shorthand way of saying, “An element from the list, `list`.”
+>The `_` character in Scala is something of a wildcard character. You’ll see it used in several different places. In this case it’s a shorthand way of saying, “An element from the list, `ints`.”
 
 Before going any further, it’s worth mentioning that this `map` example is the equivalent of this Java code:
 
