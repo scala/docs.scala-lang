@@ -8,6 +8,10 @@ language: es
 
 next-page: named-arguments
 previous-page: implicit-conversions
+
+redirect_from:
+  - /tutorials/tour/default-parameter-values.html
+  - /tutorials/tour/default-parameter-values.html.html
 ---
 
 Scala tiene la capacidad de dar a los parámetros valores por defecto que pueden ser usados para permitir a quien invoca el método o función que omita dichos parámetros.

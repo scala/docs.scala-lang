@@ -8,6 +8,10 @@ language: es
 
 next-page: polymorphic-methods
 previous-page: higher-order-functions
+
+redirect_from:
+  - /es/tutorials/tour/pattern-matching.html
+  - /es/tutorials/tour/pattern-matching.html.html
 ---
 
 _Nota de traducción: Es dificil encontrar en nuestro idioma una palabra que se relacione directamente con el significado de `match` en inglés. Podemos entender a `match` como "coincidir" o "concordar" con algo. En algunos lugares se utiliza la palabra `machear`, aunque esta no existe en nuestro idioma con el sentido que se le da en este texto, sino que se utiliza como traducción de `match`._

@@ -8,6 +8,10 @@ language: es
 
 next-page: singleton-objects
 previous-page: tuples
+
+redirect_from:
+  - /es/tutorials/tour/mixin-class-composition.html
+  - /es/tutorials/tour/mixin-class-composition.html.html
 ---
 _Nota de traducción: La palabra `mixin` puede ser traducida como mezcla, dando título a esta sección de: Composición de clases Mezcla, pero es preferible utilizar la notación original_
 

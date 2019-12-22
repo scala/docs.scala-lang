@@ -8,6 +8,10 @@ language: es
 
 next-page: upper-type-bounds
 previous-page: regular-expression-patterns
+
+redirect_from:
+  - /es/tutorials/tour/traits.html
+  - /es/tutorials/tour/traits.html.html
 ---
 
 _Nota de traducción: La palabra `trait` en inglés puede traducirse literalmente como `rasgo` o `caracteristica`. Preferimos la designación original trait por ser una característica muy natural de Scala._

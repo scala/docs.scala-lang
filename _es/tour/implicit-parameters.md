@@ -8,6 +8,10 @@ language: es
 
 next-page: inner-classes
 previous-page: generic-classes
+
+redirect_from:
+  - /es/tutorials/tour/implicit-parameters.html
+  - /es/tutorials/tour/implicit-parameters.html.html
 ---
 
 Un método con _parámetros implícitos_ puede ser aplicado a argumentos tal como un método normal. En este caso la etiqueta `implicit` no tiene efecto. De todas maneras, si a un método le faltan argumentos para sus parámetros implícitos, tales argumentos serán automáticamente provistos.

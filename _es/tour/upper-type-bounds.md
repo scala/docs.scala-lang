@@ -8,6 +8,10 @@ language: es
 
 next-page: lower-type-bounds
 previous-page: traits
+
+redirect_from:
+  - /es/tutorials/tour/upper-type-bounds.html
+  - /es/tutorials/tour/upper-type-bounds.html.html
 ---
 
 En Scala, los [parámetros de tipo](generic-classes.html) y los [tipos abstractos](abstract-type-members.html) pueden ser restringidos por un límite de tipado. Tales límites de tipado limitan los valores concretos de las variables de tipo y posiblemente revelan más información acerca de los miembros de tales tipos. Un _límite de tipado superior_ `T <: A` declara que la variable de tipo `T` es un subtipo del tipo `A`.

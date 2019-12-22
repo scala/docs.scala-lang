@@ -8,6 +8,10 @@ language: es
 
 next-page: nested-functions
 previous-page: mixin-class-composition
+
+redirect_from:
+  - /es/tutorials/tour/singleton-objects.html
+  - /es/tutorials/tour/singleton-objects.html.html
 ---
 
 Métodos y valores que no están asociados con instancias individuales de una [clase](classes.html) se denominan *objetos singleton* y se denotan con la palabra reservada `object` en vez de `class`.

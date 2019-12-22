@@ -8,6 +8,10 @@ language: es
 
 next-page: classes
 previous-page: abstract-type-members
+
+redirect_from:
+  - /tutorials/tour/annotations.html
+  - /tutorials/tour/annotations.html.html
 ---
 
 Las anotaciones sirven para asociar meta-información con definiciones.

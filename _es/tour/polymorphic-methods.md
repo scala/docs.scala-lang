@@ -8,6 +8,10 @@ language: es
 
 next-page: regular-expression-patterns
 previous-page: pattern-matching
+
+redirect_from:
+  - /es/tutorials/tour/polymorphic-methods.html
+  - /es/tutorials/tour/polymorphic-methods.html.html
 ---
 
 Los métodos en Scala pueden ser parametrizados tanto con valores como con tipos. Como a nivel de clase, parámetros de valores son encerrados en un par de paréntesis, mientras que los parámetros de tipo son declarados dentro de un par de corchetes.

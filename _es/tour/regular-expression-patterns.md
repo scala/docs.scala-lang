@@ -8,6 +8,10 @@ language: es
 
 next-page: traits
 previous-page: polymorphic-methods
+
+redirect_from:
+  - /es/tutorials/tour/regular-expression-patterns.html
+  - /es/tutorials/tour/regular-expression-patterns.html.html
 ---
 
 ## Patrones de secuencias que ignoran a la derecha ##

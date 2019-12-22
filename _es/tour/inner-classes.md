@@ -8,6 +8,10 @@ language: es
 
 next-page: tuples
 previous-page: implicit-parameters
+
+redirect_from:
+  - /es/tutorials/tour/inner-classes.html
+  - /es/tutorials/tour/inner-classes.html.html
 ---
 
 En Scala es posible que las clases tengan como miembro otras clases. A diferencia de lenguajes similares a Java donde ese tipo de clases internas son miembros de las clases que las envuelven, en Scala esas clases internas están ligadas al objeto externo. Para ilustrar esta diferencia, vamos a mostrar rápidamente una implementación del tipo grafo:

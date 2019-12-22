@@ -8,6 +8,10 @@ language: es
 
 next-page: extractor-objects
 previous-page: case-classes
+
+redirect_from:
+  - /tutorials/tour/compound-types.html
+  - /tutorials/tour/compound-types.html.html
 ---
 
 Algunas veces es necesario expresar que el tipo de un objeto es un subtipo de varios otros tipos. En Scala esto puede ser expresado con la ayuda de *tipos compuestos*, los cuales pueden entenderse como la intersección de otros tipos.

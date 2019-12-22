@@ -7,6 +7,11 @@ num: 35
 language: es
 
 previous-page: default-parameter-values
+
+redirect_from:
+  - /es/tour/named-parameters.html
+  - /es/tutorials/tour/named-parameters.html
+  - /es/tutorials/tour/named-parameters.html.html
 ---
 
 En la invocación de métodos y funciones se puede usar el nombre de las variables explícitamente en la llamada, de la siguiente manera:

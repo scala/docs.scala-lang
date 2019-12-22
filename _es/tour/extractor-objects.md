@@ -8,6 +8,10 @@ language: es
 
 next-page: generic-classes
 previous-page: compound-types
+
+redirect_from:
+  - /es/tutorials/tour/extractor-objects.html
+  - /es/tutorials/tour/extractor-objects.html.html
 ---
 
 En Scala pueden ser definidos patrones independientemente de las clases Caso (en inglés case classes, desde ahora clases Case). Para este fin exite un método llamado `unapply` que proveera el ya dicho extractor. Por ejemplo, en el código siguiente se define el objeto extractor `Twice`
