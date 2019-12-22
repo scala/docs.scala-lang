@@ -6,6 +6,8 @@ partof: scala-tour
 num: 35
 previous-page: named-arguments
 next-page: package-objects
+
+redirect_from: /tutorials/tour/2017-02-25-packages-and-imports.html
 ---
 
 # Packages and Imports

@@ -7,7 +7,9 @@ num: 8
 next-page: nested-functions
 previous-page: mixin-class-composition
 
-redirect_from: "/tutorials/tour/higher-order-functions.html"
+redirect_from:
+  - /tutorials/tour/higher-order-functions.html
+  - /tutorials/tour/higher-order-functions.html.html
 ---
 
 Higher order functions take other functions as parameters or return a function as

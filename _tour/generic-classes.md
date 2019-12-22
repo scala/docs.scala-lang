@@ -8,7 +8,9 @@ next-page: variances
 previous-page: for-comprehensions
 assumed-knowledge: classes unified-types
 
-redirect_from: "/tutorials/tour/generic-classes.html"
+redirect_from:
+  - /tutorials/tour/generic-classes.html
+  - /tutorials/tour/generic-classes.html.html
 ---
 Generic classes are classes which take a type as a parameter. They are particularly useful for collection classes.
 

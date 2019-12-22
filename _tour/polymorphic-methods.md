@@ -9,7 +9,9 @@ next-page: type-inference
 previous-page: implicit-conversions
 prerequisite-knowledge: unified-types
 
-redirect_from: "/tutorials/tour/polymorphic-methods.html"
+redirect_from:
+  - /tutorials/tour/polymorphic-methods.html
+  - /tutorials/tour/polymorphic-methods.html.html
 ---
 
 Methods in Scala can be parameterized by type as well as value. The syntax is similar to that of generic classes. Type parameters are enclosed in square brackets, while value parameters are enclosed in parentheses.

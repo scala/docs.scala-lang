@@ -7,8 +7,11 @@ num: 13
 
 next-page: regular-expression-patterns
 previous-page: pattern-matching
-redirect_from: "/tutorials/tour/singleton-objects.html"
 prerequisite-knowledge: classes, methods, private-methods, packages, option
+
+redirect_from: 
+  - /tutorials/tour/singleton-objects.html
+  - /tutorials/tour/singleton-objects.html.html
 ---
 An object is a class that has exactly one instance. It is created lazily when it is referenced, like a lazy val.
 

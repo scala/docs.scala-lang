@@ -6,6 +6,10 @@ partof: scala-tour
 num: 29
 next-page: operators
 previous-page: polymorphic-methods
+
+redirect_from:
+  - /tour/local-type-inference.html
+  - /tutorials/tour/local-type-inference.html.html
 ---
 
 The Scala compiler can often infer the type of an expression so you don't have to declare it explicitly.

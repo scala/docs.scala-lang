@@ -1,6 +1,8 @@
 ---
 layout: inner-page-documentation
 title: Documentation
+redirect_from:
+  - /tutorials/index.html
 languages: [ja, zh-cn, ru]
 namespace: root
 partof: documentation

@@ -7,7 +7,9 @@ num: 9
 next-page: multiple-parameter-lists
 previous-page: higher-order-functions
 
-redirect_from: "/tutorials/tour/nested-functions.html"
+redirect_from:
+  - /tutorials/tour/nested-functions.html
+  - /tutorials/tour/nested-functions.html.html
 ---
 
 In Scala it is possible to nest method definitions. The following object provides a `factorial` method for computing the factorial of a given number:

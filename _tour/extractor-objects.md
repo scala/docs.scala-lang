@@ -7,7 +7,9 @@ num: 16
 next-page: for-comprehensions
 previous-page: regular-expression-patterns
 
-redirect_from: "/tutorials/tour/extractor-objects.html"
+redirect_from:
+  - /tutorials/tour/extractor-objects.html
+  - /tutorials/tour/extractor-objects.html.html
 ---
 
 An extractor object is an object with an `unapply` method. Whereas the `apply` method is like a constructor which takes arguments and creates an object, the `unapply` takes an object and tries to give back the arguments. This is most often used in pattern matching and partial functions.

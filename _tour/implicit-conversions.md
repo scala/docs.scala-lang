@@ -7,7 +7,9 @@ num: 27
 next-page: polymorphic-methods
 previous-page: implicit-parameters
 
-redirect_from: "/tutorials/tour/implicit-conversions.html"
+redirect_from:
+  - /tutorials/tour/implicit-conversions.html
+  - /tutorials/tour/implicit-conversions.html.html
 ---
 
 An implicit conversion from type `S` to type `T` is defined by an implicit value which has function type `S => T`, or by an implicit method convertible to a value of that type.

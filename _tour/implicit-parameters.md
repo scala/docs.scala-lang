@@ -7,7 +7,9 @@ num: 26
 next-page: implicit-conversions
 previous-page: self-types
 
-redirect_from: "/tutorials/tour/implicit-parameters.html"
+redirect_from:
+  - /tutorials/tour/implicit-parameters.html
+  - /tutorials/tour/implicit-parameters.html.html
 ---
 
 A method can have an _implicit_ parameter list, marked by the _implicit_ keyword at the start of the parameter list. If the parameters in that parameter list are not passed as usual, Scala will look if it can get an implicit value of the correct type, and if it can, pass it automatically.

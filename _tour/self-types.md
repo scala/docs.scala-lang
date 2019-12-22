@@ -9,7 +9,9 @@ previous-page: compound-types
 topics: self-types
 prerequisite-knowledge: nested-classes, mixin-class-composition
 
-redirect_from: "/tutorials/tour/self-types.html"
+redirect_from: 
+  - /tutorials/tour/self-types.html
+  - /tutorials/tour/self-types.html.html
 ---
 Self-types are a way to declare that a trait must be mixed into another trait, even though it doesn't directly extend it. That makes the members of the dependency available without imports.
 

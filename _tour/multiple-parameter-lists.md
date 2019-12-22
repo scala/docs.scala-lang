@@ -7,7 +7,11 @@ num: 10
 next-page: case-classes
 previous-page: nested-functions
 
-redirect_from: "/tutorials/tour/multiple-parameter-lists.html"
+redirect_from:
+  - /tour/currying.html
+  - /tutorials/tour/currying.html
+  - /tutorials/tour/currying.html.html
+  - /tutorials/tour/multiple-parameter-lists.html
 ---
 
 Methods may have multiple parameter lists.

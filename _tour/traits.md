@@ -9,7 +9,9 @@ previous-page: classes
 topics: traits
 prerequisite-knowledge: expressions, classes, generics, objects, companion-objects
 
-redirect_from: "/tutorials/tour/traits.html"
+redirect_from: 
+  - /tutorials/tour/traits.html
+  - /tutorials/tour/traits.html.html
 ---
 
 Traits are used to share interfaces and fields between classes. They are similar to Java 8's interfaces. Classes and objects can extend traits but traits cannot be instantiated and therefore have no parameters.

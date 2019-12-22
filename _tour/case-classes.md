@@ -8,7 +8,9 @@ next-page: pattern-matching
 previous-page: multiple-parameter-lists
 prerequisite-knowledge: classes, basics, mutability
 
-redirect_from: "/tutorials/tour/case-classes.html"
+redirect_from:
+  - /tutorials/tour/case-classes.html
+  - /tutorials/tour/case-classes.html.html
 ---
 
 Case classes are like regular classes with a few key differences which we will go over. Case classes are good for modeling immutable data. In the next step of the tour, we'll see how they are useful in [pattern matching](pattern-matching.html).

@@ -8,7 +8,9 @@ num: 15
 next-page: extractor-objects
 previous-page: singleton-objects
 
-redirect_from: "/tutorials/tour/regular-expression-patterns.html"
+redirect_from:
+  - /tutorials/tour/regular-expression-patterns.html
+  - /tutorials/tour/regular-expression-patterns.html.html
 ---
 
 Regular expressions are strings which can be used to find patterns (or lack thereof) in data. Any string can be converted to a regular expression using the `.r` method.
