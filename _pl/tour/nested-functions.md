@@ -7,6 +7,10 @@ num: 9
 language: pl
 next-page: multiple-parameter-lists
 previous-page: higher-order-functions
+
+redirect_from:
+  - /pl/tutorials/tour/nested-functions.html
+  - /pl/tutorials/tour/nested-functions.html.html
 ---
 
 Scala pozwala na zagnieżdżanie definicji funkcji.

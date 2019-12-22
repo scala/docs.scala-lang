@@ -8,6 +8,10 @@ language: pl
 
 next-page: extractor-objects
 previous-page: singleton-objects
+
+redirect_from:
+  - /pl/tutorials/tour/regular-expression-patterns.html
+  - /pl/tutorials/tour/regular-expression-patterns.html.html
 ---
 
 ## Wzorce sekwencji ignorujące prawą stronę ##

@@ -7,6 +7,10 @@ num: 21
 language: pl
 next-page: abstract-type-members
 previous-page: lower-type-bounds
+
+redirect_from:
+  - /pl/tutorials/tour/inner-classes.html
+  - /pl/tutorials/tour/inner-classes.html.html
 ---
 
 W Scali możliwe jest zdefiniowanie klasy jako element innej klasy. W przeciwieństwie do języków takich jak Java, gdzie tego typu wewnętrzne klasy są elementami ujmujących ich klas, w Scali są one związane z zewnętrznym obiektem. Aby zademonstrować tę różnicę, stworzymy teraz prostą implementację grafu:

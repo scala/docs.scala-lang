@@ -8,6 +8,10 @@ language: pl
 
 next-page: regular-expression-patterns
 previous-page: pattern-matching
+
+redirect_from:
+  - /pl/tutorials/tour/singleton-objects.html
+  - /pl/tutorials/tour/singleton-objects.html.html
 ---
 
 Metody i wartości, które nie są powiązane z konkretną instancją [klasy](classes.html), należą do *obiektów singleton* określanych za pomocą słowa kluczowego `object` zamiast `class`.

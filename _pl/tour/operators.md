@@ -7,6 +7,10 @@ num: 29
 language: pl
 next-page: automatic-closures
 previous-page: type-inference
+
+redirect_from:
+  - /pl/tutorials/tour/operators.html
+  - /pl/tutorials/tour/operators.html.html
 ---
 
 Każda metoda, która przyjmuje jeden parametr, może być użyta jako *operator infiksowy*. Oto definicja klasy `MyBool` która zawiera metody `and` i `or`:

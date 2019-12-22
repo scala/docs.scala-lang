@@ -7,6 +7,10 @@ num: 32
 language: pl
 next-page: named-arguments
 previous-page: annotations
+
+redirect_from:
+  - /pl/tutorials/tour/default-parameter-values.html
+  - /pl/tutorials/tour/default-parameter-values.html.html
 ---
 
 Scala zezwala na określenie domyślnych wartości dla parametrów, co pozwala wyrażeniu wywołującemu ją na pominięcie tych parametrów.

@@ -7,6 +7,10 @@ num: 19
 language: pl
 next-page: lower-type-bounds
 previous-page: variances
+
+redirect_from:
+  - /pl/tutorials/tour/upper-type-bounds.html
+  - /pl/tutorials/tour/upper-type-bounds.html.html
 ---
 
 W Scali [parametry typów](generic-classes.html) oraz [typy abstrakcyjne](abstract-type-members.html) mogą być warunkowane przez ograniczenia typów. Tego rodzaju ograniczenia pomagają określić konkretne wartości zmiennych typu oraz odkryć więcej informacji na temat elementów tych typów. _Ograniczenie górne typu_ `T <: A` zakładają, że zmienna `T` jest podtypem typu `A`.

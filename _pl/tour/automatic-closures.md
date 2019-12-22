@@ -7,6 +7,10 @@ num: 30
 language: pl
 next-page: annotations
 previous-page: operators
+
+redirect_from:
+  - /pl/tutorials/tour/automatic-closures.html
+  - /pl/tutorials/tour/automatic-closures.html.html
 ---
 
 Scala pozwala na przekazywanie funkcji bezparametrycznych jako argumenty dla metod. Kiedy tego typu metoda jest wywołana, właściwe parametry dla funkcji bezparametrycznych nie są ewaluowane i przekazywana jest pusta funkcja, która enkapsuluje obliczenia odpowiadającego parametru (tzw. *wywołanie-przez-nazwę*).

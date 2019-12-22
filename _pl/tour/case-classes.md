@@ -7,6 +7,10 @@ num: 11
 language: pl
 next-page: pattern-matching
 previous-page: multiple-parameter-lists
+
+redirect_from:
+  - /pl/tutorials/tour/case-classes.html
+  - /pl/tutorials/tour/case-classes.html.html
 ---
 
 Scala wspiera mechanizm _klas przypadków_ (ang. case class).

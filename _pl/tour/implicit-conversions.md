@@ -7,6 +7,10 @@ num: 26
 language: pl
 next-page: polymorphic-methods
 previous-page: implicit-parameters
+
+redirect_from:
+  - /pl/tutorials/tour/implicit-conversions.html
+  - /pl/tutorials/tour/implicit-conversions.html.html
 ---
 
 Konwersja niejawna z typu `S` do `T` jest określona przez wartość domniemaną, która jest funkcją typu `S => T` lub przez metodę domniemaną odpowiadającą funkcji tego typu.

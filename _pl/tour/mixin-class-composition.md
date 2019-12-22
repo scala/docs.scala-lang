@@ -7,6 +7,10 @@ num: 7
 language: pl
 next-page: higher-order-functions
 previous-page: tuples
+
+redirect_from:
+  - /pl/tutorials/tour/mixin-class-composition.html
+  - /pl/tutorials/tour/mixin-class-composition.html.html
 ---
 
 Domieszka (ang. mixin) to cecha (trait), która używana jest do komponowania klas.

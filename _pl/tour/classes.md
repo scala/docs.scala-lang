@@ -7,6 +7,10 @@ num: 4
 language: pl
 next-page: traits
 previous-page: unified-types
+
+redirect_from:
+  - /pl/tutorials/tour/classes.html
+  - /pl/tutorials/tour/classes.html.html
 ---
 
 Klasy w Scali są wzorcami do tworzenia obiektów.

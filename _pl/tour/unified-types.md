@@ -7,6 +7,10 @@ num: 3
 language: pl
 next-page: classes
 previous-page: basics
+
+redirect_from:
+  - /pl/tutorials/tour/unified-types.html
+  - /pl/tutorials/tour/unified-types.html.html
 ---
 
 W Scali wszystkie wartości mają określony typ, włączając w to wartości numeryczne i funkcje.

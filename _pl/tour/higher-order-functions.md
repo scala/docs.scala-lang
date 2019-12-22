@@ -7,6 +7,10 @@ num: 8
 language: pl
 next-page: nested-functions
 previous-page: mixin-class-composition
+
+redirect_from:
+  - /pl/tutorials/tour/higher-order-functions.html
+  - /pl/tutorials/tour/higher-order-functions.html.html
 ---
 
 Scala pozwala na definiowanie funkcji wyższego rzędu.

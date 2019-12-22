@@ -7,6 +7,10 @@ num: 18
 language: pl
 next-page: upper-type-bounds
 previous-page: generic-classes
+
+redirect_from:
+  - /pl/tutorials/tour/variances.html
+  - /pl/tutorials/tour/variances.html.html
 ---
 
 Scala wspiera adnotacje wariancji parametrów typów [klas generycznych](generic-classes.html). W porównaniu do Javy adnotacje wariancji mogą zostać dodane podczas definiowania abstrakcji klasy, gdy w Javie adnotacje wariancji są podane przez użytkowników tych klas.

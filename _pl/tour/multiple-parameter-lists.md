@@ -7,6 +7,11 @@ num: 10
 language: pl
 next-page: case-classes
 previous-page: nested-functions
+
+redirect_from:
+  - /pl/tour/currying.html
+  - /pl/tutorials/tour/currying.html
+  - /pl/tutorials/tour/currying.html.html
 ---
 
 Metoda może określać dowolną liczbę list parametrów.

@@ -6,6 +6,16 @@ partof: scala-tour
 num: 1
 language: pl
 next-page: basics
+
+redirect_from:
+  - /pl/tour/anonymous-function-syntax.html
+  - /pl/tour/explicitly-typed-self-references.html
+  - /pl/tutorials/tour/anonymous-function-syntax.html
+  - /pl/tutorials/tour/anonymous-function-syntax.html.html
+  - /pl/tutorials/tour/explicitly-typed-self-references.html
+  - /pl/tutorials/tour/explicitly-typed-self-references.html.html
+  - /pl/tutorials/tour/tour-of-scala.html
+  - /pl/tutorials/tour/tour-of-scala.html.html
 ---
 
 ## Witaj

@@ -7,6 +7,11 @@ num: 22
 language: pl
 next-page: compound-types
 previous-page: inner-classes
+
+redirect_from:
+  - /pl/tour/abstract-types.html
+  - /pl/tutorials/tour/abstract-types.html
+  - /pl/tutorials/tour/abstract-types.html.html
 ---
 
 W Scali klasy są parametryzowane wartościami (parametry konstruktora) oraz typami (jeżeli klasa jest [generyczna](generic-classes.html)). Aby zachować regularność, zarówno typy jak i wartości są elementami klasy. Analogicznie mogą one być konkretne albo abstrakcyjne.

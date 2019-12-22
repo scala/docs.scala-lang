@@ -7,6 +7,10 @@ num: 25
 language: pl
 next-page: implicit-conversions
 previous-page: self-types
+
+redirect_from:
+  - /pl/tutorials/tour/implicit-parameters.html
+  - /pl/tutorials/tour/implicit-parameters.html.html
 ---
 
 Metodę z _parametrami domniemanymi_ można stosować tak samo jak każdą zwyczajną metodę. W takim przypadku etykieta `implicit` nie ma żadnego znaczenia. Jednak jeżeli odpowiednie argumenty dla parametrów domniemanych nie zostaną jawnie określone, to kompilator dostarczy je automatycznie.

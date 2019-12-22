@@ -7,6 +7,10 @@ num: 23
 language: pl
 next-page: self-types
 previous-page: abstract-type-members
+
+redirect_from:
+  - /pl/tutorials/tour/compound-types.html
+  - /pl/tutorials/tour/compound-types.html.html
 ---
 
 Czasami konieczne jest wyrażenie, że dany typ jest podtypem kilku innych typów. W Scali wyraża się to za pomocą *typów złożonych*, które są częścią wspólną typów obiektów.

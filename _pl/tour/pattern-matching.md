@@ -7,6 +7,10 @@ num: 11
 language: pl
 next-page: singleton-objects
 previous-page: case-classes
+
+redirect_from:
+  - /pl/tutorials/tour/pattern-matching.html
+  - /pl/tutorials/tour/pattern-matching.html.html
 ---
 
 Scala posiada wbudowany mechanizm dopasowania wzorców. Umożliwia on dopasowanie dowolnego rodzaju danych, przy czym zawsze zwracamy pierwsze dopasowanie. Przykład dopasowania liczby całkowitej:

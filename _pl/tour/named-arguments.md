@@ -6,6 +6,11 @@ partof: scala-tour
 num: 33
 language: pl
 previous-page: default-parameter-values
+
+redirect_from:
+  - /pl/tour/named-parameters.html
+  - /pl/tutorials/tour/named-parameters.html
+  - /pl/tutorials/tour/named-parameters.html.html
 ---
 
 Wywołując metody i funkcje, możesz użyć nazwy parametru jawnie podczas wywołania:

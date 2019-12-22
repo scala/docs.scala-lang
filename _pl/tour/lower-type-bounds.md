@@ -7,6 +7,10 @@ num: 20
 language: pl
 next-page: inner-classes
 previous-page: upper-type-bounds
+
+redirect_from:
+  - /pl/tutorials/tour/lower-type-bounds.html
+  - /pl/tutorials/tour/lower-type-bounds.html.html
 ---
 
 Podczas gdy [górne ograniczenia typów](upper-type-bounds.html) zawężają typ do podtypu innego typu, *dolne ograniczenia typów* określają dany typ jako typ bazowy innego typu. Sformułowanie `T >: A` wyraża, że parametr typu `T` lub typ abstrakcyjny `T` odwołuje się do typu bazowego `A`.

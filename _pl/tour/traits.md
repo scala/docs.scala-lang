@@ -7,6 +7,10 @@ num: 5
 language: pl
 next-page: tuples
 previous-page: classes
+
+redirect_from:
+  - /pl/tutorials/tour/traits.html
+  - /pl/tutorials/tour/traits.html.html
 ---
 
 Cechy (Traits) są używane, aby współdzielić interfejsy i pola pomiędzy klasami.
