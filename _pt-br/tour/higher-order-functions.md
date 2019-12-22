@@ -7,6 +7,10 @@ num: 7
 next-page: nested-functions
 previous-page: mixin-class-composition
 language: pt-br
+
+redirect_from:
+  - /pt-br/tutorials/tour/higher-order-functions.html
+  - /pt-br/tutorials/tour/higher-order-functions.html.html
 ---
 
 Scala permite definir funções de ordem superior. Tais funções _recebem outras funções como parâmetros_, ou _resultam em uma função_. Por exemplo, a função `apply` recebe outra função `f` e um valor `v` então aplica a função `f` em`v`:

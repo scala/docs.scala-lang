@@ -7,6 +7,10 @@ num: 21
 next-page: abstract-type-members
 previous-page: lower-type-bounds
 language: pt-br
+
+redirect_from:
+  - /pt-br/tutorials/tour/inner-classes.html
+  - /pt-br/tutorials/tour/inner-classes.html.html
 ---
 
 Em Scala é possível declarar classes que tenham outras classes como membros. Em contraste com a linguagenm Java, onde classes internas são membros da classe em que foram declaradas, em Scala as classes internas são ligadas ao objeto exterior. Para ilustrar essa diferença, rapidamente esboçamos a implementação de grafo como um tipo de dados:

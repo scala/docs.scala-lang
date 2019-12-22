@@ -7,6 +7,10 @@ num: 18
 next-page: upper-type-bounds
 previous-page: generic-classes
 language: pt-br
+
+redirect_from:
+  - /pt-br/tutorials/tour/variances.html
+  - /pt-br/tutorials/tour/variances.html.html
 ---
 
 Scala suporta anotações de variância de parâmetros de tipo de [classes genéricas](generic-classes.html). Em contraste com o Java 5, as anotações de variância podem ser adicionadas quando uma abstração de classe é definida, enquanto que em Java 5, as anotações de variância são fornecidas por clientes quando uma abstração de classe é usada.

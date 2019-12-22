@@ -7,6 +7,11 @@ num: 28
 next-page: operators
 previous-page: polymorphic-methods
 language: pt-br
+
+redirect_from:
+  - /pt-br/tour/local-type-inference.html
+  - /pt-br/tutorials/tour/local-type-inference.html
+  - /pt-br/tutorials/tour/local-type-inference.html.html
 ---
 
 Scala tem um mecanismo nativo de inferência de tipos que permite ao programador omitir certas anotações. Por exemplo, muitas vezes não é necessário especificar o tipo de uma variável, uma vez que o compilador pode deduzir o tipo a partir da expressão de inicialização da variável. Os tipos de retorno de métodos também podem muitas vezes ser omitidos, uma vez que correspondem ao tipo do corpo do método, que é inferido pelo compilador.

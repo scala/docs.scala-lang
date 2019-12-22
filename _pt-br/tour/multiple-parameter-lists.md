@@ -7,6 +7,11 @@ num: 9
 next-page: case-classes
 previous-page: nested-functions
 language: pt-br
+
+redirect_from:
+  - /pt-br/tour/currying.html
+  - /pt-br/tutorials/tour/currying.html
+  - /pt-br/tutorials/tour/currying.html.html
 ---
 
 _Nota de tradução: Currying é uma técnica de programação Funcional nomeada em honra ao matemático e lógico Haskell Curry. Por essa razão a palavra Currying não será traduzida. Entende-se que é uma ação, uma técnica básica de Programação Funcional._

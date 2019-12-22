@@ -7,6 +7,10 @@ num: 5
 next-page: higher-order-functions
 previous-page: tuples
 language: pt-br
+
+redirect_from:
+  - /pt-br/tutorials/tour/mixin-class-composition.html
+  - /pt-br/tutorials/tour/mixin-class-composition.html.html
 ---
 _Nota de tradução: A palavra `mixin` pode ser traduzida como mescla, porém é preferível utilizar a notação original_
 

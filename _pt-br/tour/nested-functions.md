@@ -7,6 +7,10 @@ num: 8
 next-page: multiple-parameter-lists
 previous-page: higher-order-functions
 language: pt-br
+
+redirect_from:
+  - /pt-br/tutorials/tour/nested-functions.html
+  - /pt-br/tutorials/tour/nested-functions.html.html
 ---
 
 Em scala é possível aninhar definições de funções. O objeto a seguir fornece uma função `filter` para extrair valores de uma lista de inteiros que são abaixo de um determinado valor:

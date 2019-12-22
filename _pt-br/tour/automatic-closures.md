@@ -7,6 +7,10 @@ num: 30
 next-page: annotations
 previous-page: operators
 language: pt-br
+
+redirect_from:
+  - /pt-br/tutorials/tour/automatic-closures.html
+  - /pt-br/tutorials/tour/automatic-closures.html.html
 ---
 
 _Nota de tradução: A palavra `closure` em pode ser traduzida como encerramento/fechamento, porém é preferível utilizar a notação original_

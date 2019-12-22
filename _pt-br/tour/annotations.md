@@ -7,6 +7,10 @@ num: 31
 next-page: default-parameter-values
 previous-page: automatic-closures
 language: pt-br
+
+redirect_from:
+  - /pt-br/tutorials/tour/annotations.html
+  - /pt-br/tutorials/tour/annotations.html.html
 ---
 
 Anotações associam meta-informação com definições.

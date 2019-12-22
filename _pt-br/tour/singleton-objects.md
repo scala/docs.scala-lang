@@ -8,6 +8,10 @@ num: 12
 next-page: regular-expression-patterns
 previous-page: pattern-matching
 language: pt-br
+
+redirect_from:
+  - /pt-br/tutorials/tour/singleton-objects.html
+  - /pt-br/tutorials/tour/singleton-objects.html.html
 ---
 
 Métodos e valores que não são associados com instâncias individuais de uma [classe](classes.html) são considerados *objetos singleton*, denotados através da palavra-chave `object` ao invés de `class`.

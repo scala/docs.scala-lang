@@ -7,6 +7,10 @@ num: 15
 next-page: generic-classes
 previous-page: regular-expression-patterns
 language: pt-br
+
+redirect_from:
+  - /pt-br/tutorials/tour/extractor-objects.html
+  - /pt-br/tutorials/tour/extractor-objects.html.html
 ---
 
 Em Scala, padrões podem ser definidos independentemente de classes case. Para este fim, um método chamado `unapply` é definido para retornar um extrator. Um extrator pode ser pensado como um método especial que inverte o efeito da aplicação de um determinado objeto em algumas entradas. Seu objetivo é "extrair" as entradas que estavam presentes antes da operação `apply`. Por exemplo, o código a seguir define um [objeto](singleton-objects.html) extrator chamado Twice.

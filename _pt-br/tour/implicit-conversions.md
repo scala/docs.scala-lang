@@ -7,6 +7,10 @@ num: 26
 next-page: polymorphic-methods
 previous-page: implicit-parameters
 language: pt-br
+
+redirect_from:
+  - /pt-br/tutorials/tour/implicit-conversions.html
+  - /pt-br/tutorials/tour/implicit-conversions.html.html
 ---
 
 Uma conversão implícita do tipo `S` para o tipo `T` é definida por um valor implícito que tem o tipo de função `S => T`, ou por um método implícito convertível em um valor de tal tipo.

@@ -7,6 +7,10 @@ num: 3
 next-page: traits
 previous-page: unified-types
 language: pt-br
+
+redirect_from:
+  - /pt-br/tutorials/tour/classes.html
+  - /pt-br/tutorials/tour/classes.html.html
 ---
 
 Classes em Scala são templates estáticos que podem ser instanciados como vários objetos em tempo de execução.

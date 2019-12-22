@@ -6,6 +6,11 @@ partof: scala-tour
 num: 33
 previous-page: default-parameter-values
 language: pt-br
+
+redirect_from:
+  - /pt-br/tour/named-parameters.html
+  - /pt-br/tutorials/tour/named-parameters.html
+  - /pt-br/tutorials/tour/named-parameters.html.html
 ---
 
 Ao chamar métodos e funções, você pode utilizar explicitamente o nome das variáveis nas chamadas, por exemplo:

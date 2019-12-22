@@ -7,6 +7,10 @@ num: 29
 next-page: automatic-closures
 previous-page: type-inference
 language: pt-br
+
+redirect_from:
+  - /pt-br/tutorials/tour/operators.html
+  - /pt-br/tutorials/tour/operators.html.html
 ---
 
 Qualquer método que tenha um único parâmetro pode ser usado como um *operador infix* em Scala. Aqui está a definição da classe `MyBool` que inclui os métodos `add` e `or`:

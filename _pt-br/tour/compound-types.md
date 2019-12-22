@@ -7,6 +7,10 @@ num: 23
 next-page: self-types
 previous-page: abstract-type-members
 language: pt-br
+
+redirect_from:
+  - /pt-br/tutorials/tour/compound-types.html
+  - /pt-br/tutorials/tour/compound-types.html.html
 ---
 
 Às vezes é necessário expressar que o tipo de um objeto é um subtipo de vários outros tipos. Em Scala isso pode ser expresso com a ajuda de *tipos compostos*, que são interseções de tipos de objetos.

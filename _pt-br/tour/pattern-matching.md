@@ -8,6 +8,10 @@ num: 11
 next-page: singleton-objects
 previous-page: case-classes
 language: pt-br
+
+redirect_from:
+  - /pt-br/tutorials/tour/pattern-matching.html
+  - /pt-br/tutorials/tour/pattern-matching.html.html
 ---
 
 _Nota de tradução: A palavra cujo o significado melhor corresponde a palavra `match` em inglês seria `correspondência`. Também podemos entender que `match` é como "coincidir" ou "concordar" com algo._

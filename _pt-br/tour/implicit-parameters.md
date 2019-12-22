@@ -7,6 +7,10 @@ num: 25
 next-page: implicit-conversions
 previous-page: self-types
 language: pt-br
+
+redirect_from:
+  - /pt-br/tutorials/tour/implicit-parameters.html
+  - /pt-br/tutorials/tour/implicit-parameters.html.html
 ---
 
 Um método com _parâmetros implícitos_ pode ser aplicado a argumentos como um método normal. Neste caso, o rótulo implícito não tem efeito. No entanto, se faltarem argumentos para os parâmetros implícitos declarados, tais argumentos serão automaticamente fornecidos.

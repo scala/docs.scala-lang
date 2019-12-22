@@ -7,6 +7,10 @@ num: 10
 next-page: pattern-matching
 previous-page: multiple-parameter-lists
 language: pt-br
+
+redirect_from:
+  - /pt-br/tutorials/tour/case-classes.html
+  - /pt-br/tutorials/tour/case-classes.html.html
 ---
 
 Scala suporta o conceito de _classes case_. Classes case são classes regulares que são:

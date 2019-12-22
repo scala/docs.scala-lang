@@ -7,6 +7,11 @@ num: 22
 next-page: compound-types
 previous-page: inner-classes
 language: pt-br
+
+redirect_from:
+  - /pt-br/tour/abstract-types.html
+  - /pt-br/tutorials/tour/abstract-types.html
+  - /pt-br/tutorials/tour/abstract-types.html.html
 ---
 
 Em Scala, as classes são parametrizadas com valores (os parâmetros de construtor) e com tipos (se as [classes genéricas](generic-classes.html)). Por razões de regularidade, só não é possível ter valores como membros de um objeto; tipos juntamente com valores são membros de objetos. Além disso, ambas as formas de membros podem ser concretas e abstratas.

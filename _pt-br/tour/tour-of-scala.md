@@ -7,6 +7,16 @@ num: 1
 
 next-page: unified-types
 language: pt-br
+
+redirect_from:
+  - /pt-br/tour/anonymous-function-syntax.html
+  - /pt-br/tour/explicitly-typed-self-references.html
+  - /pt-br/tutorials/tour/anonymous-function-syntax.html
+  - /pt-br/tutorials/tour/anonymous-function-syntax.html.html
+  - /pt-br/tutorials/tour/explicitly-typed-self-references.html
+  - /pt-br/tutorials/tour/explicitly-typed-self-references.html.html
+  - /pt-br/tutorials/tour/tour-of-scala.html
+  - /pt-br/tutorials/tour/tour-of-scala.html.html
 ---
 
 Scala é uma linguagem de programação moderna e multi-paradigma desenvolvida para expressar padrões de programação comuns em uma forma concisa, elegante e com tipagem segura. Integra facilmente características de linguagens orientadas a objetos e funcional.

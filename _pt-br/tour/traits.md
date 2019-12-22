@@ -7,6 +7,10 @@ num: 4
 next-page: tuples
 previous-page: classes
 language: pt-br
+
+redirect_from:
+  - /pt-br/tutorials/tour/traits.html
+  - /pt-br/tutorials/tour/traits.html.html
 ---
 
 Similar a interfaces em Java, traits são utilizadas para definir tipos de objetos apenas especificando as assinaturas dos métodos suportados. Como em Java 8, Scala permite que traits sejam parcialmente implementadas; ex. é possível definir uma implementação padrão para alguns métodos. Diferentemente de classes, traits não precisam ter construtores com parâmetros.

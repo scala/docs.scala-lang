@@ -8,6 +8,10 @@ num: 27
 next-page: type-inference
 previous-page: implicit-conversions
 language: pt-br
+
+redirect_from:
+  - /pt-br/tutorials/tour/polymorphic-methods.html
+  - /pt-br/tutorials/tour/polymorphic-methods.html.html
 ---
 
 Os métodos em Scala podem ser parametrizados com valores e tipos. Como no nível de classe, os parâmetros de valor são declarados entre parênteses, enquanto os parâmetros de tipo são declarados entre colchetes.

@@ -7,6 +7,10 @@ num: 17
 next-page: variances
 previous-page: extractor-objects
 language: pt-br
+
+redirect_from:
+  - /pt-br/tutorials/tour/generic-classes.html
+  - /pt-br/tutorials/tour/generic-classes.html.html
 ---
 
 Semelhante ao Java 5 (aka. JDK 1.5), Scala tem suporte nativo para classes parametrizadas com tipos. Essas classes genéricas são particularmente úteis para o desenvolvimento de classes que representam coleções de dados.

@@ -7,6 +7,10 @@ num: 32
 next-page: named-arguments
 previous-page: annotations
 language: pt-br
+
+redirect_from:
+  - /pt-br/tutorials/tour/default-parameter-values.html
+  - /pt-br/tutorials/tour/default-parameter-values.html.html
 ---
 
 Scala provê a capacidade de fornecer parâmetros com valores padrão que podem ser usados para permitir que um usuário possa omitir tais parâmetros se preciso.

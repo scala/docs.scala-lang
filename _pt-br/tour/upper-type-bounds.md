@@ -7,6 +7,10 @@ num: 19
 next-page: lower-type-bounds
 previous-page: variances
 language: pt-br
+
+redirect_from:
+  - /pt-br/tutorials/tour/upper-type-bounds.html
+  - /pt-br/tutorials/tour/upper-type-bounds.html.html
 ---
 
 Em Scala, [parâmetros de tipos](generic-classes.html) e [tipos abstratos](abstract-type-members.html) podem ser restringidos por um limitante de tipo. Tal limitante de tipo limita os valores concretos de uma variável de tipo e possivelmente revela mais informações sobre os membros de determinados tipos. Um _limitante superiror de tipos_ `T <: A` declare que a variável tipo `T` refere-se a um subtipo do tipo `A`.

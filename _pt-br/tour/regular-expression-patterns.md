@@ -8,6 +8,10 @@ num: 14
 next-page: extractor-objects
 previous-page: singleton-objects
 language: pt-br
+
+redirect_from:
+  - /pt-br/tutorials/tour/regular-expression-patterns.html
+  - /pt-br/tutorials/tour/regular-expression-patterns.html.html
 ---
 
 ## Padrões de sequência que ignoram a direita ##
