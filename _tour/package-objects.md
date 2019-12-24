@@ -56,7 +56,7 @@ way it imports class `Fruit`, using a wildcard import on package gardening.fruit
 import gardening.fruits._
 object PrintPlanted {
   def main(args: Array[String]): Unit = {
-    for (fruit <- fruits.planted) {
+    for (fruit <- planted) {
       showFruit(fruit)
     }
   }
