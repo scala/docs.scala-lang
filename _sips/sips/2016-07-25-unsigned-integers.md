@@ -589,7 +589,7 @@ ScalaNative.
 ## Previous discussions and implementations
 
 When
-[Value Classes (SIP-15)](https://docs.scala-lang.org/sips/completed/value-classes.html)
+[Value Classes (SIP-15)](https://docs.scala-lang.org/sips/value-classes.html)
 were first introduced, the possibility to have new numeric types such as
 unsigned integers was mentioned as a motivation. Subsequently, several people
 [came up with implementations](https://groups.google.com/forum/#!topic/scala-sips/xtmUjsY9gTY)

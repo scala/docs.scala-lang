@@ -16,7 +16,7 @@ next-page: control-structures
 Class/Object/Trait constructors should be declared all on one line,
 unless the line becomes "too long" (about 100 characters). In that case,
 put each constructor argument on its own line with
-[trailing commas](https://docs.scala-lang.org/sips/completed/trailing-commas.html#motivation):
+[trailing commas](https://docs.scala-lang.org/sips/trailing-commas.html#motivation):
 
     class Person(name: String, age: Int) {
       …
@@ -36,7 +36,7 @@ put each constructor argument on its own line with
 If a class/object/trait extends anything, the same general rule applies,
 put it on one line unless it goes over about 100 characters, and then
 put each item on its own line with
-[trailing commas](https://docs.scala-lang.org/sips/completed/trailing-commas.html#motivation);
+[trailing commas](https://docs.scala-lang.org/sips/trailing-commas.html#motivation);
 closing parenthesis provides visual separation between constructor arguments and extensions;
 empty line should be added to further separate extensions from class implementation:
 
