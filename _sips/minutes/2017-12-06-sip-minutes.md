@@ -13,7 +13,7 @@ The following agenda was distributed to attendees:
 | --- | --- | --- |
 |Discussion and voting on Miles Sabin (Typelevel representative) joining the Committee |  | Accepted
 |[SIP 23: Literal-based singleton types](https://docs.scala-lang.org/sips/42.type.html) | Adriaan Moors | Accepted
-|[SIP-33: Priority-based infix type precedence rules](https://docs.scala-lang.org/sips/make-types-behave-like-expressions.html) | Josh Suereth | Accepted |
+|[SIP-33: Priority-based infix type precedence rules](https://docs.scala-lang.org/sips/priority-based-infix-type-precedence.html) | Josh Suereth | Accepted |
 |[SIP-NN: Adding prefix types](https://docs.scala-lang.org/sips/adding-prefix-types.html) | Josh Suereth | Pending |
 |[SIP-35: Opaque types](https://docs.scala-lang.org/sips/opaque-types.html) | Sébastien Doeraene | Not discussed |
 |Discussion about the future of Scala 2.13 and 2.14 |  | Not discussed |
@@ -66,12 +66,12 @@ The Committee members agree the SIP is ready to be voted for, given the track re
 *See also*:
 Brief explanation about the "The presence of an upper bound of Singleton on a formal type parameter 3rd point in the SIP [YouTube time 14' to 15'35''](https://www.youtube.com/watch?v=Mhwf15gjL9s) and [YouTube Time 17'42'' to 18'20'']( https://youtu.be/Mhwf15gjL9s?t=1069)
 
-### [SIP-33: Priority-based infix type precedence rules](https://docs.scala-lang.org/sips/make-types-behave-like-expressions.html)
+### [SIP-33: Priority-based infix type precedence rules](https://docs.scala-lang.org/sips/priority-based-infix-type-precedence.html)
 [YouTube time from 1'34'' -  6'45''](https://youtu.be/Mhwf15gjL9s?t=96)
 
 **Jorge** shortly introduces the SIP and notifies the Committee that the author has amended all the changes as per Committee suggestions. The SIP-33 was split in two SIPs as follows:
 
-a) [SIP-33: Priority-based infix type precedence rules](https://docs.scala-lang.org/sips/make-types-behave-like-expressions.html)
+a) [SIP-33: Priority-based infix type precedence rules](https://docs.scala-lang.org/sips/priority-based-infix-type-precedence.html)
 
 b) [SIP-NN: Adding prefix types](https://docs.scala-lang.org/sips/adding-prefix-types.html)
 

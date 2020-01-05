@@ -13,7 +13,7 @@ The following agenda was distributed to attendees:
 | --- | --- | --- |
 | [SIP-34: Right-Associative By-Name Operators](https://docs.scala-lang.org/sips/right-associative-by-name-operators.html) | Adriaan Moors | Accepted |
 | [SIP-35: Opaque types](https://docs.scala-lang.org/sips/opaque-types.html) | Sébastien Doeraene | Pending |
-| [SIP-33: Match infix and prefix types to meet expression rules](https://docs.scala-lang.org/sips/make-types-behave-like-expressions.html)| Josh Suereth | Pending |
+| [SIP-33: Match infix and prefix types to meet expression rules](https://docs.scala-lang.org/sips/priority-based-infix-type-precedence.html)| Josh Suereth | Pending |
 |[SIP-28 and SIP-29: Inline meta](https://docs.scala-lang.org/sips/inline-meta.html)|Josh Suereth and Iulian Dragos| Pending |
 
 Jorge Vicente Cantero was the Process Lead and Darja Jovanovic as secretary.
@@ -62,7 +62,7 @@ They are working on updates, but don't have any to share for this meeting.
 
 **Conclusion**: The SIP-35 will be proposed on the agenda once the updates are provided.
 
-### [SIP-33: Match infix and prefix types to meet expression rules](https://docs.scala-lang.org/sips/make-types-behave-like-expressions.html)
+### [SIP-33: Match infix and prefix types to meet expression rules](https://docs.scala-lang.org/sips/priority-based-infix-type-precedence.html)
 [YouTube time: 03'12''- 10'04''](https://youtu.be/aIc-o1pcRhw?t=194)
 
 **Jorge** introduces the SIP adding that **Oron** provided the implementation for associativity of the infix type, not for the prefix type. **Martin** makes the remark that Dotty does the same thing. He continues by saying he is "skeptical" about *prefix* types, as it seems to be another feature and "a necessary compromise to the mathematical conventions". On the other hand, he believes that once the rules for  associativity are fixed then types and terms will be consistent.
