@@ -12,7 +12,7 @@ The following agenda was distributed to attendees:
 |Topic|Reviewers| Accepted/Rejected |
 | --- | --- | --- |
 | [SIP-NN - comonadic-comprehensions](https://docs.scala-lang.org/sips/comonadic-comprehensions.html) | Shimi Bandiel | Rejected |
-| [SIP-33 - Match infix & prefix types to meet expression rules](https://docs.scala-lang.org/sips/make-types-behave-like-expressions.html)| Oron Port | Pending |
+| [SIP-33 - Match infix & prefix types to meet expression rules](https://docs.scala-lang.org/sips/priority-based-infix-type-precedence.html)| Oron Port | Pending |
 |[Scala Library Changes](https://github.com/scala/scala-dev/issues/323)|Adriaan Moors| Scala-dev proposal |
 
 Jorge Vicente Cantero was the Process Lead.
@@ -56,7 +56,7 @@ Refers to the paper “Denotation” he linked in a proposal, that is not enough
 
 **Conclusion** Proposal discarded unanimously. They will send the feedback to the author.
 
-### [SIP-33 - Match infix & prefix types to meet expression rules](https://docs.scala-lang.org/sips/make-types-behave-like-expressions.html)
+### [SIP-33 - Match infix & prefix types to meet expression rules](https://docs.scala-lang.org/sips/priority-based-infix-type-precedence.html)
 
 Skipped since they are waiting for the prototype from the author of the proposal.
 
