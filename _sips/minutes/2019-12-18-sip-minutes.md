@@ -53,7 +53,7 @@ committee and/or which they will spend time investigating and trying to poke hol
 1. make sure that a good number of people exercise the feature, try to break it, refine it and raise any red
    flags about it;
 2. provide a detailed review of the feature, especially for the contentious ones; and, finally
-3. straw poll will be take on each feature, as a smoke test for the real vote
+3. straw poll will be taken on each feature, as a smoke test for the real vote
 
 Note that the feature review will still involve the community - it will not be done in a vaccum.
 
@@ -234,7 +234,7 @@ Seth: Doesn't the UncheckedNull cover the Java case?
 Martin: well, no, you might want to use A | Null in some code adjacent to some Java interop code, which wouldn't
 be terribly low level code.  So in that case you might continue to use null.
 Seb: an easier way to answer is that UncheckedNull is only to select a member.  You cannot assign a String |
-UncheckedNull to a String.  If you want to string the value in a String, it will be checked then, at runtime.
+UncheckedNull to a String.  If you want to store the value in a String, it will be checked then, at runtime.
 
 Iulian comments: UncheckedNull seems to exist to allow unsafe selection, I think the elvis operator is slightly
 better for that.  Martin shares how Kotlin went through all that.  They initially had the elvis operator but it
@@ -255,12 +255,12 @@ flag, though there are language dialect concerns with language flags.
 
 Seth then asks about the status of the -Y flag associated with this feature: is the intention of the feature to
 be on by default?  Sébastien says: hopefully, if it all works out.  Martin says maybe it could be turned on by
-by Scala 3.1.  Guillaume says he's confused what it means for some libraries to enable the flag and some not to.
-Martin summarises that, basically, we ened to get to the poin where we have it on by default.
+default by Scala 3.1.  Guillaume says he's confused what it means for some libraries to enable the flag and some not to.
+Martin summarises that, basically, we need to get to the point where we have it on by default.
 
 Sébastien, looking at the YouTube chat, shares Eugene Yokota's question: "what about `var x: String = _`?"
 Sébastien shares how it's "evil" and how it should've been removed a long time ago.  Martin counters that it's
-quite the opposite: it should be taken to mean that it's assigning null, it should be taken to meant that the
+quite the opposite: it should not be taken to mean that it's assigning null, it should be taken to mean that the
 variable is unassigned and the initialisation checker should check that before each usage.  That's better than
 assigning null.
 
@@ -280,11 +280,11 @@ Sébastien shares that there are only a few minutes left in the meeting but the 
 since we have top level functions, you can write that at the top level, which is even better and everyone is
 happy.  But there are details, of course.
 
-Maritn states it lacks a champion and asks if anyone wants to champion it.  Seth agrees and, so, Sébastien asks
+Martin states it lacks a champion and asks if anyone wants to champion it.  Seth agrees and, so, Sébastien asks
 him to open a contributors thread on it.
 
 ## Next
 
 The next meeting will be on the last week of January, at 17:00 CET.  The same will happen in February.  In March
-the Committee will meeting for a 3 day retreat but it will still come online for an hour, to provide a summary
+the Committee will meet for a 3 day retreat but it will still come online for an hour, to provide a summary
 of what happened.
