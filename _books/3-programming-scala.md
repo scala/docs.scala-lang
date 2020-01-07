@@ -2,7 +2,7 @@
 title: "Programming Scala"
 link: https://shop.oreilly.com/product/0636920033073.do
 image: /resources/img/books/ProgrammingScala-final-border.gif
-status: Updated for Scala 2.11
+status: Updated for Scala 2.12
 authors: ["Alex Payne", "Dean Wampler"]
 publisher: O’Reilly
 publisherLink: https://www.oreilly.com/
