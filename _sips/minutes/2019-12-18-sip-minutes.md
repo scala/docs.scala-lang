@@ -140,10 +140,10 @@ Guillaume has 2 comments:
    of keyword or syntax - at the extension point.  Then you wouldn't create a new language dialect, and wouldn't
    need to introduce a new import/flag.
 
-Séb: that wouldn't work for mocking library, where you would typically just enable it for the
+* Séb: that wouldn't work for mocking library, where you would typically just enable it for the
 compilation of test sources.
-Gui: if mocking libraries work with macros, then the macro can just write the right tree, with the force extends
-Séb: yeah, maybe
+* Gui: if mocking libraries work with macros, then the macro can just write the right tree, with the force extends
+* Séb: yeah, maybe
 
 Seth comments that he find the whole thing so questionable.  To him it seems like an area where everything was
 fine, and there wasn't a big pain point.  Sébastien says that this is a big pain point for him, along with
@@ -228,12 +228,12 @@ it's a bit like `.get` on Option.  Martin says he would defend .get and .nn, say
 if they don't like them.  Martin also says that maybe after the Scala 3 transition we could deprecate it and/or
 move it, but for now he thinks it's good to have universally available.
 
-Seth asks Martin: is null only for performance-critical code, or is that just one of the use cases?
-Martin: Java interop or performance-critical code
-Seth: Doesn't the UncheckedNull cover the Java case?
-Martin: well, no, you might want to use A | Null in some code adjacent to some Java interop code, which wouldn't
+* Seth asks Martin: is null only for performance-critical code, or is that just one of the use cases?
+* Martin: Java interop or performance-critical code
+* Seth: Doesn't the UncheckedNull cover the Java case?
+* Martin: well, no, you might want to use A | Null in some code adjacent to some Java interop code, which wouldn't
 be terribly low level code.  So in that case you might continue to use null.
-Seb: an easier way to answer is that UncheckedNull is only to select a member.  You cannot assign a String |
+* Seb: an easier way to answer is that UncheckedNull is only to select a member.  You cannot assign a String |
 UncheckedNull to a String.  If you want to store the value in a String, it will be checked then, at runtime.
 
 Iulian comments: UncheckedNull seems to exist to allow unsafe selection, I think the elvis operator is slightly
