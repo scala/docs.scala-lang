@@ -55,7 +55,7 @@ committee and/or which they will spend time investigating and trying to poke hol
 2. provide a detailed review of the feature, especially for the contentious ones; and, finally
 3. straw poll will be taken on each feature, as a smoke test for the real vote
 
-Note that the feature review will still involve the community - it will not be done in a vaccum.
+Note that the feature review will still involve the community; it will not be done in a vacuum.
 
 ### Quick update on the "given" redesign
 
