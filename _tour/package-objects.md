@@ -70,5 +70,3 @@ package object fruits extends FruitAliases with FruitHelpers {
   // helpers and variables follows here
 }
 ```
-
-Note that method overloading doesn't work in package objects.
