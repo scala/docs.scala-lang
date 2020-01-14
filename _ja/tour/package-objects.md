@@ -70,4 +70,3 @@ package object fruits extends FruitAliases with FruitHelpers {
   // ヘルパーと変数がここに続きます。
 }
 ```
-メソッドオーバーライドはパッケージオブジェクト内では動作しないので気をつけましょう。
