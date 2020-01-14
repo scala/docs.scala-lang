@@ -20,7 +20,7 @@ Here are a few more nuggets about Scala:
 - It’s a high-level language.
 - It’s statically typed.
 - It has a sophisticated type inference system.
-- It’s syntax is concise but still readable — we call it *expressive*.
+- Its syntax is concise but still readable — we call it *expressive*.
 - It’s a pure object-oriented programming (OOP) language. Every variable is an object, and every “operator” is a method.
 - It’s also a functional programming (FP) language, so functions are also variables, and you can pass them into other functions. You can write your code using OOP, FP, or combine them in a hybrid style.
 - Scala source code compiles to “.class” files that run on the JVM.
