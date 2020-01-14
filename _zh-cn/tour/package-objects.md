@@ -65,5 +65,3 @@ package object fruits extends FruitAliases with FruitHelpers {
   // helpers and variables follows here
 }
 ```
-
-注意，方法重载在包对象中不起作用。
