@@ -1,7 +1,8 @@
 ---
 layout: sip
-discourse: true
 title: SIP-NN - Support Binary Integer Literals
+vote-status: pending
+permalink: /sips/:title.html
 ---
 
 **By: NthPortal**
