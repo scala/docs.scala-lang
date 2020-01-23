@@ -149,7 +149,7 @@ class Container[A](value: A) {
 val catContainer: Container[Cat] = new Container(Cat("Felix"))
 val animalContainer: Container[Animal] = catContainer
 animalContainer.setValue(Dog("Spot"))
-val cat: Cat = catContainer.getValue // おっと、犬に猫に割り当ててしまった。
+val cat: Cat = catContainer.getValue // おっと、犬を猫に割り当ててしまった。
 ```
 
 幸いにも、実行する前にコンパイラが止めてくれます。
