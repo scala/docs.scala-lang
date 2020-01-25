@@ -49,15 +49,11 @@ To represent an actual dollar sign you can double it `$$`, like here:
     
 which will print the string `New offers starting at $14.99`.
 
-Double quotes also need to be escaped. This can be done on an individual basis using a backslash before the double quote, as follows:
-
-    val person = "{\"name\":\"James\"}"
-
-On longer strings, this may be time intensive. To avoid the need to escape every individual quote, triple quotes can be used as shown:
+Double quotes also need to be escaped. This can be done by using triple quotes as shown:
 
     val person = """{"name":"James"}"""
 
-Both of these strings, when printed, will produce the string `{"name":"James"}`.
+which will produce the string `{"name":"James"}` when printed.
 
 ### The `f` Interpolator
 
