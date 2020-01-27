@@ -11,8 +11,8 @@ The following agenda was distributed to attendees:
 
 Review the following SIPs:
 
-1. Open classes (aka "sealed classes by default") - Séb
-2. Explicit Nulls - Séb
+1. Open classes (aka "sealed classes by default") - Seb
+2. Explicit Nulls - Seb
 3. Main functions - needs a champion
 
 ## Date and Location
@@ -140,10 +140,10 @@ Guillaume has 2 comments:
    of keyword or syntax - at the extension point.  Then you wouldn't create a new language dialect, and wouldn't
    need to introduce a new import/flag.
 
-* Séb: that wouldn't work for mocking library, where you would typically just enable it for the
+* Seb: that wouldn't work for mocking library, where you would typically just enable it for the
 compilation of test sources.
 * Gui: if mocking libraries work with macros, then the macro can just write the right tree, with the force extends
-* Séb: yeah, maybe
+* Seb: yeah, maybe
 
 Seth comments that he find the whole thing so questionable.  To him it seems like an area where everything was
 fine, and there wasn't a big pain point.  Sébastien says that this is a big pain point for him, along with
@@ -187,7 +187,7 @@ can dot-select on it, for example.  It's something in the middle.
 
 Guillaume asks: how in thie middle?  What can you _not_ do?
 
-Séb: when it becomes something that is just String it will eagerly fail there.  So if your Scala API declares
+Seb: when it becomes something that is just String it will eagerly fail there.  So if your Scala API declares
 something is a String, and you use a Java API that returns String | UncheckedNull, it will throw in the body of
 your method.  It can't "give the null away".
 
@@ -208,7 +208,7 @@ Guillaume asks: flow typing or the elvis operator?
 Iulian mentions how he wanted to talk about the elvis operator.  He asks: what is the recommended way to call
 methods on nullable types?  What is the equivalent of the elvis operator?
 
-Séb: you don't call methods on nullable types, you have to first test if it's null.  The problem with the elvis
+Seb: you don't call methods on nullable types, you have to first test if it's null.  The problem with the elvis
 operator is that it looks like flatMap but it's not.  It's unboxed, so it confuses the equivalent of None and
 Some(None).  That seems theoretical but it's not - it boils down to practical things.  For instance, Map#get
 returns null - if the Map's value type is itself nullable you can't distinguish if the key is set in the Map to
