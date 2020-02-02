@@ -269,8 +269,8 @@ which looks at the right-hand side of these methods and deduces that
 both return a value of type `Double`.
 
 The compiler is not always able to infer types like it does here, and
-there is unfortunately no simple rule to know exactly when it will be,
-and when not. In practice, this is usually not a problem since the
+there is unfortunately no simple rule to know exactly when it will be
+able to. In practice, this is usually not a problem since the
 compiler complains when it is not able to infer a type which was not
 given explicitly. As a simple rule, beginner Scala programmers should
 try to omit type declarations which seem to be easy to deduce from the
