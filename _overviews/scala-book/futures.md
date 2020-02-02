@@ -338,7 +338,7 @@ While this was a short introduction, hopefully those examples give you an idea o
 - A benefit of futures over threads is that they come with a variety of callback methods that simplify the process of working with concurrent threads,
   including the handling of exceptions and thread management
 - Handle the result of a future with methods like `onComplete`, or combinator methods like `map`, `flatMap`, `filter`, `andThen`, etc.
-- The value in a `Future` is always an instance of one of the `Try` types: `Success` or `Failure
+- The value in a `Future` is always an instance of one of the `Try` types: `Success` or `Failure`
 - If you’re using multiple futures to yield a single result, you’ll often want to combine them in a for-expression
 
 
