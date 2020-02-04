@@ -33,7 +33,7 @@ message1.sender = "travis@washington.us"  // this line does not compile
 You can't reassign `message1.sender` because it is a `val` (i.e. immutable). It is possible to use `var`s in case classes but this is discouraged.
 
 ## Comparison
-Case classes are compared by structure and not by reference:
+Instances of case classes are compared by structure and not by reference:
 ```tut
 case class Message(sender: String, recipient: String, body: String)
 
