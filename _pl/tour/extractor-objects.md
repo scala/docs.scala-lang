@@ -5,7 +5,7 @@ partof: scala-tour
 
 num: 15
 language: pl
-next-page: generic-classes
+next-page: for-comprehensions
 previous-page: regular-expression-patterns
 ---
 
