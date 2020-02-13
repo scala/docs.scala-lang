@@ -44,7 +44,11 @@ def someTuple(n: Int) =
     j <- 0 until n if i == j
   ) yield (i, j)
 
+<<<<<<< HEAD
 someTuple(10) foreach {
+=======
+someTuple(10, 10) foreach {
+>>>>>>> faaf68be8b9015aae742750a542a60378a373edc
   case (i, j) =>
     println(s"($i, $j) ")  // drukuje (0, 0) (1, 1) (2, 2) (3, 3) (4, 4) (5, 5) (6, 6) (7, 7) (8, 8) (9, 9)
 }
@@ -82,8 +86,13 @@ Wszystkie powyższe przykłady posiadały wyrażenie `yield` na końcu _comprehe
 
 ```tut
 def count(n: Int) =
+<<<<<<< HEAD
     for (i <- 0 until n)
     println(s"$i ")
+=======
+   for (i <- 0 until n)
+   println(s"$i ")
+>>>>>>> faaf68be8b9015aae742750a542a60378a373edc
 
 count(10) // wyświetli  "0 1 2 3 4 5 6 7 8 9 "
 ```
