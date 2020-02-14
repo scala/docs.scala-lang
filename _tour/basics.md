@@ -145,7 +145,7 @@ println(add(1, 2)) // 3
 ```
 {% endscalafiddle %}
 
-Notice how the return type is declared _after_ the parameter list and the `: Int`.
+Notice how the return type `Int` is declared _after_ the parameter list and a `:`.
 
 A method can take multiple parameter lists:
 
