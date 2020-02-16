@@ -51,7 +51,7 @@ package object fruits {
 import gardening.fruits._
 object PrintPlanted {
   def main(args: Array[String]): Unit = {
-    for (fruit <- fruits.planted) {
+    for (fruit <- planted) {
       showFruit(fruit)
     }
   }
@@ -65,5 +65,3 @@ package object fruits extends FruitAliases with FruitHelpers {
   // helpers and variables follows here
 }
 ```
-
-注意，方法重载在包对象中不起作用。

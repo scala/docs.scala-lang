@@ -54,7 +54,7 @@ package object fruits {
 import gardening.fruits._
 object PrintPlanted {
   def main(args: Array[String]): Unit = {
-    for (fruit <- fruits.planted) {
+    for (fruit <- planted) {
       showFruit(fruit)
     }
   }
@@ -68,5 +68,3 @@ package object fruits extends FruitAliases with FruitHelpers {
   // здесь располагаются вспомогательные классы и переменные
 }
 ```
-
-Обратите внимание, что перегрузка метода не работает в объектах пакета.

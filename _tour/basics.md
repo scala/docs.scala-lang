@@ -145,7 +145,7 @@ println(add(1, 2)) // 3
 ```
 {% endscalafiddle %}
 
-Notice how the return type is declared _after_ the parameter list and the `: Int`.
+Notice how the return type `Int` is declared _after_ the parameter list and a `:`.
 
 A method can take multiple parameter lists:
 
@@ -202,7 +202,7 @@ We will cover classes in depth [later](classes.html).
 
 ## Case Classes
 
-Scala has a special type of class called a "case" class. By default, case classes are immutable, and they are compared by value (unlike classes, which are compared by reference). This makes them additionally useful for [pattern matching](https://docs.scala-lang.org/tour/pattern-matching.html#matching-on-case-classes).
+Scala has a special type of class called a "case" class. By default, instances of case classes are immutable, and they are compared by value (unlike classes, whose instances are compared by reference). This makes them additionally useful for [pattern matching](https://docs.scala-lang.org/tour/pattern-matching.html#matching-on-case-classes).
 
 You can define case classes with the `case class` keywords:
 
@@ -218,7 +218,7 @@ val anotherPoint = Point(1, 2)
 val yetAnotherPoint = Point(2, 2)
 ```
 
-Case classes are compared by value, not by reference:
+Instances of case classes are compared by value, not by reference:
 
 ```tut
 if (point == anotherPoint) {

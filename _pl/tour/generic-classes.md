@@ -6,7 +6,7 @@ partof: scala-tour
 num: 17
 language: pl
 next-page: variances
-previous-page: extractor-objects
+previous-page: for-comprehensions
 ---
 
 Scala posiada wbudowaną obsługą klas parametryzowanych przez typy. Tego typu klasy generyczne są szczególnie użyteczne podczas tworzenia klas kolekcji.
