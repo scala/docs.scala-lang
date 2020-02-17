@@ -25,8 +25,8 @@ Scala と同様に、Java
 
 このような変換を作動させるには、[JavaConverters](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/JavaConverters$.html) オブジェクトからインポートするだけでいい:
 
-    scala> import collection.JavaConverters._
-    import collection.JavaConverters._
+    scala> import scala.jdk.CollectionConverters._
+    import scala.jdk.CollectionConverters._
 
 これで `asScala` 及び `asJava` 拡張メソッドを呼び出すことで Scala コレクションとそれに対応する Java コレクションの変換が行われる。
 

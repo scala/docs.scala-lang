@@ -29,8 +29,8 @@ language: ru
 
 Чтобы задействовать эти неявные преобразования, просто импортируйте объект [JavaConverters](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/JavaConverters$.html) :
 
-    scala> import collection.JavaConverters._
-    import collection.JavaConverters._
+    scala> import scala.jdk.CollectionConverters._
+    import scala.jdk.CollectionConverters._
 
 Это позволит преобразовывать коллекции Scala в соответствующие коллекции Java с помощью методов расширения, называемых `asScala` и `asJava`:
 

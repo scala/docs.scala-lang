@@ -27,8 +27,8 @@ Sometimes you might need to pass from one collection framework to the other. For
 
 To enable these conversions, simply import them from the [JavaConverters](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/JavaConverters$.html) object:
 
-    scala> import collection.JavaConverters._
-    import collection.JavaConverters._
+    scala> import scala.jdk.CollectionConverters._
+    import scala.jdk.CollectionConverters._
 
 This enables conversions between Scala collections and their corresponding Java collections by way of extension methods called `asScala` and `asJava`:
 

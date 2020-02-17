@@ -25,8 +25,8 @@ language: zh-cn
 
 使用这些转换很简单，只需从JavaConverters对象中import它们即可。
 
-    scala> import collection.JavaConverters._
-    import collection.JavaConverters._
+    scala> import scala.jdk.CollectionConverters._
+    import scala.jdk.CollectionConverters._
 
 import之后，通过扩展方法 asScala 和 asJava 就可以在Scala容器和与之对应的Java容器之间进行隐式转换了
 
