@@ -42,11 +42,18 @@ String interpolators can also take arbitrary expressions.  For example:
 
 will print the string `1 + 1 = 2`.  Any arbitrary expression can be embedded in `${}`.
 
+For some special characters, it is necessary to escape them when embedded within a string.
 To represent an actual dollar sign you can double it `$$`, like here:
 
     println(s"New offers starting at $$14.99")
     
 which will print the string `New offers starting at $14.99`.
+
+Double quotes also need to be escaped. This can be done by using triple quotes as shown:
+
+    val person = """{"name":"James"}"""
+
+which will produce the string `{"name":"James"}` when printed.
 
 ### The `f` Interpolator
 
