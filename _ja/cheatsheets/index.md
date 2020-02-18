@@ -15,6 +15,7 @@ language: ja
 
 
 |  <span id="variables" class="h2">変数</span>                                                             |                 |
+|----------------------------------------------------------------------------------------------------------|-----------------|
 |  `var x = 5`                                                                                             |  変数           |
 |  <span class="label success">Good</span> `val x = 5`<br> <span class="label important">Bad</span> `x=6`  |  定数           |
 |  `var x: Double = 5`                                                                                     |  明示的な型     |
