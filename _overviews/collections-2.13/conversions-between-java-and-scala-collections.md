@@ -13,7 +13,7 @@ permalink: /overviews/collections-2.13/:title.html
 
 Like Scala, Java also has a rich collections library. There are many similarities between the two. For instance, both libraries know iterators, iterables, sets, maps, and sequences. But there are also important differences. In particular, the Scala libraries put much more emphasis on immutable collections, and provide many more operations that transform a collection into a new one.
 
-Sometimes you might need to pass from one collection framework to the other. For instance, you might want to access an existing Java collection as if it were a Scala collection. Or you might want to pass one of Scala's collections to a Java method that expects its Java counterpart. It is quite easy to do this, because Scala offers implicit conversions between all the major collection types in the [JavaConverters](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/JavaConverters$.html) object. In particular, you will find bidirectional conversions between the following types.
+Sometimes you might need to pass from one collection framework to the other. For instance, you might want to access an existing Java collection as if it were a Scala collection. Or you might want to pass one of Scala's collections to a Java method that expects its Java counterpart. It is quite easy to do this, because Scala offers implicit conversions between all the major collection types in the [CollectionConverters](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/jdk/CollectionConverters$.html) object. In particular, you will find bidirectional conversions between the following types.
 
 
     Iterator               <=>     java.util.Iterator
@@ -25,10 +25,10 @@ Sometimes you might need to pass from one collection framework to the other. For
     mutable.Map            <=>     java.util.Map
     mutable.ConcurrentMap  <=>     java.util.concurrent.ConcurrentMap
 
-To enable these conversions, simply import them from the [JavaConverters](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/JavaConverters$.html) object:
+To enable these conversions, simply import them from the [CollectionConverters](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/jdk/CollectionConverters$.html) object:
 
-    scala> import collection.JavaConverters._
-    import collection.JavaConverters._
+    scala> import scala.jdk.CollectionConverters._
+    import scala.jdk.CollectionConverters._
 
 This enables conversions between Scala collections and their corresponding Java collections by way of extension methods called `asScala` and `asJava`:
 

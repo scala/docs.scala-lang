@@ -16,7 +16,7 @@ language: ru
 
 Как и в Scala, в Java есть богатая библиотека коллекций. Между ними много общего. Например, обе библиотеки предоставляют итераторы, итерируемые сущности, множества, мапы и списки. Но есть и серьезные различия. В частности, библиотека Scala фокусируют больше внимания на неизменяемых коллекциях, предоставляя больше возможностей для преобразования исходной коллекции в новую.
 
-Иногда вам может понадобиться передать данные из одного фреймворка с коллекциями в другой. Например, вам может понадобиться доступ к существующей коллекции в Java, как если бы это была коллекция Scala. Или вы захотите передать одну из коллекций Scala методу в Java, который ожидает схожую коллекцию из Java. Сделать это довольно просто, потому что Scala предоставляет неявные преобразования всех основных типов коллекций используя [JavaConverters](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/JavaConverters$.html) объект. В частности, вы найдете двухсторннее преобразование между следующими типами:
+Иногда вам может понадобиться передать данные из одного фреймворка с коллекциями в другой. Например, вам может понадобиться доступ к существующей коллекции в Java, как если бы это была коллекция Scala. Или вы захотите передать одну из коллекций Scala методу в Java, который ожидает схожую коллекцию из Java. Сделать это довольно просто, потому что Scala предоставляет неявные преобразования всех основных типов коллекций используя [CollectionConverters](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/jdk/CollectionConverters$.html) объект. В частности, вы найдете двухсторннее преобразование между следующими типами:
 
     Iterator               <=>     java.util.Iterator
     Iterator               <=>     java.util.Enumeration
@@ -27,10 +27,10 @@ language: ru
     mutable.Map            <=>     java.util.Map
     mutable.ConcurrentMap  <=>     java.util.concurrent.ConcurrentMap
 
-Чтобы задействовать эти неявные преобразования, просто импортируйте объект [JavaConverters](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/JavaConverters$.html) :
+Чтобы задействовать эти неявные преобразования, просто импортируйте объект [CollectionConverters](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/jdk/CollectionConverters$.html) :
 
-    scala> import collection.JavaConverters._
-    import collection.JavaConverters._
+    scala> import scala.jdk.CollectionConverters._
+    import scala.jdk.CollectionConverters._
 
 Это позволит преобразовывать коллекции Scala в соответствующие коллекции Java с помощью методов расширения, называемых `asScala` и `asJava`:
 
