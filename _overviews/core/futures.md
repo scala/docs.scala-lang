@@ -374,7 +374,7 @@ means invocations
 of these methods cannot be chained. Note that this design is intentional,
 to avoid suggesting that chained
 invocations may imply an ordering on the execution of the registered
-callbacks (callbacks registered on the same future are unordered).
+callbacks (**callbacks registered on the same future are unordered**).
 
 That said, we should now comment on **when** exactly the callback
 gets called. Since it requires the value in the future to be available,
