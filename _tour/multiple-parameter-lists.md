@@ -36,7 +36,7 @@ println(res) // 55
 
 Suggested use cases for multiple parameter lists include:
 
-#### Drive type inferrence
+#### Drive type inference
 
 Say, you have the following method:
 
@@ -47,7 +47,6 @@ def foldleft1[A, B](as: List[A], b0: B, op: (B, A) => B) = ???
 Then you'd like to call it in the following way, but will find that it doesn't compile:
 
 ```tut:fail
-val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 def notpossible = foldleft1(numbers, 0, _ + _)
 ```
 
