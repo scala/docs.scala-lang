@@ -1,6 +1,6 @@
 ---
 layout: sips
-title: SIP Meeting Minutes - January 27 2019
+title: SIP Meeting Minutes - January 27 2020
 
 partof: minutes
 ---
