@@ -19,7 +19,7 @@ each word is capitalized, except possibly the first word:
 
 Acronyms should be treated as normal words:
 
-    Xhtml
+    xHtml
     maxId
 
 instead of:
