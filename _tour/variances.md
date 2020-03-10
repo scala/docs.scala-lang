@@ -38,23 +38,20 @@ In the following example, the method `printAnimalNames` will accept a list of an
 
 ```tut
 object CovarianceTest extends App {
-  def printAnimalNames(animals: List[Animal]): Unit = {
-    animals.foreach { animal =>
-      println(animal.name)
-    }
-  }
-
-  val cats: List[Cat] = List(Cat("Whiskers"), Cat("Tom"))
-  val dogs: List[Dog] = List(Dog("Fido"), Dog("Rex"))
-
-  printAnimalNames(cats)
-  // Whiskers
-  // Tom
-
-  printAnimalNames(dogs)
-  // Fido
-  // Rex
+  def printAnimalNames(animals: List[Animal]): Unit =
+    animals.foreach {
+      animal => println(animal.name) }
 }
+val cats: List[Cat] = List(Cat("Whiskers"), Cat("Tom"))
+val dogs: List[Dog] = List(Dog("Fido"), Dog("Rex"))
+
+CovarianceTest.printAnimalNames(cats)
+// Whiskers
+// Tom
+
+CovarianceTest.printAnimalNames(dogs)
+// Fido
+// Rex
 ```
 
 ### Contravariance
@@ -87,18 +84,15 @@ If a `Printer[Cat]` knows how to print any `Cat` to the console, and a `Printer[
 
 ```tut
 object ContravarianceTest extends App {
-  val myCat: Cat = Cat("Boots")
-
-  def printMyCat(printer: Printer[Cat]): Unit = {
-    printer.print(myCat)
+  def printMyCat(printer: Printer[Cat], cat: Cat): Unit = {
+    printer.print(cat)
   }
-
-  val catPrinter: Printer[Cat] = new CatPrinter
-  val animalPrinter: Printer[Animal] = new AnimalPrinter
-
-  printMyCat(catPrinter)
-  printMyCat(animalPrinter)
 }
+val catPrinter: Printer[Cat] = new CatPrinter
+val animalPrinter: Printer[Animal] = new AnimalPrinter
+
+ContravarianceTest.printMyCat(catPrinter, Cat("Boots"))
+ContravarianceTest.printMyCat(animalPrinter, Cat("Boots"))
 ```
 
 The output of this program will be:
