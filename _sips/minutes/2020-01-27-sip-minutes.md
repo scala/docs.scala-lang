@@ -33,7 +33,7 @@ Minutes were taken by Dale Wijnand.
 
 * Martin Odersky ([@odersky](https://github.com/odersky)), EPFL
 * Sébastien Doeraene ([@sjrd](https://github.com/sjrd)), Scala Center
-* Guillaume Martres ([@smarter](https://github.com/smarter), EPFL
+* Guillaume Martres ([@smarter](https://github.com/smarter)), EPFL
 * Adriaan Moors ([@adriaanm](https://github.com/adriaanm)), Lightbend
 * Seth Tisue ([@SethTisue](https://github.com/SethTisue)), Lightbend
 * Josh Suereth ([@jsuereth](https://github.com/jsuereth)), independent
