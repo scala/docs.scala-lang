@@ -15,9 +15,9 @@ includeTOC: true
   * [Compiler API](https://www.scala-lang.org/api/2.12.11/scala-compiler/scala/)
   * [Reflection API](https://www.scala-lang.org/api/2.12.11/scala-reflect/scala/reflect/)
   * Scala Modules
-    * [XML API](https://www.scala-lang.org/api/2.12.10/scala-xml/scala/xml/)
-    * [Parser Combinators API](https://www.scala-lang.org/api/2.12.10/scala-parser-combinators/scala/util/parsing/)
-    * [Swing API](https://www.scala-lang.org/api/2.12.10/scala-swing/scala/swing/)
+    * [XML API](https://www.scala-lang.org/api/2.12.11/scala-xml/scala/xml/)
+    * [Parser Combinators API](https://www.scala-lang.org/api/2.12.11/scala-parser-combinators/scala/util/parsing/)
+    * [Swing API](https://www.scala-lang.org/api/2.12.11/scala-swing/scala/swing/)
 * Scala 2.11.12
   * [Library API](https://www.scala-lang.org/api/2.11.12/)
   * [Compiler API](https://www.scala-lang.org/api/2.11.12/scala-compiler/)
@@ -61,6 +61,10 @@ includeTOC: true
   * [Library API](https://www.scala-lang.org/api/2.12.10/)
   * [Compiler API](https://www.scala-lang.org/api/2.12.10/scala-compiler/scala/)
   * [Reflection API](https://www.scala-lang.org/api/2.12.10/scala-reflect/scala/reflect/)
+  * Scala Modules
+    * [XML API](https://www.scala-lang.org/api/2.12.10/scala-xml/scala/xml/)
+    * [Parser Combinators API](https://www.scala-lang.org/api/2.12.10/scala-parser-combinators/scala/util/parsing/)
+    * [Swing API](https://www.scala-lang.org/api/2.12.10/scala-swing/scala/swing/)
 * Scala 2.12.9
   * [Library API](https://www.scala-lang.org/api/2.12.9/)
   * [Compiler API](https://www.scala-lang.org/api/2.12.9/scala-compiler/scala/)
