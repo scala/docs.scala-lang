@@ -198,13 +198,13 @@ The current committee members are:
 
 - Martin Odersky ([@odersky](https://github.com/odersky)), EPFL
 - Adriaan Moors ([@adriaanm](https://github.com/adriaanm)), Lightbend
+- Guillaume Martres ([@smarter](https://github.com/smarter)), EPFL
 - Heather Miller ([@heathermiller](https://github.com/heathermiller)), Carnegie Mellon University
+- Iulian Dragos ([@dragos](https://github.com/dragos)), Triplequote
+- Josh Suereth ([@jsuereth](https://github.com/jsuereth)), Google
+- Miles Sabin ([@milessabin](https://github.com/milessabin)), independent
 - Seth Tisue ([@SethTisue](https://github.com/SethTisue)), Lightbend
 - Sébastien Doeraene ([@sjrd](https://github.com/sjrd)), Scala Center
-- Eugene Burmako ([@xeno-by](https://github.com/xeno-by)), Twitter
-- Josh Suereth ([@jsuereth](https://github.com/jsuereth)), Google
-- Iulian Dragos ([@dragos](https://github.com/dragos)), Triplequote
-- Guillaume Martres ([@smarter](https://github.com/smarter)), EPFL
 
 The current Process Lead is:
 
