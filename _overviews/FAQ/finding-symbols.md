@@ -199,7 +199,7 @@ This answer was originally submitted in response to [this question on Stack Over
 
   [1]: https://scala-lang.org/files/archive/spec/2.11/
   [2]: https://www.scala-lang.org/api/current/index.html#index.index-_
-  [3]: https://www.scala-lang.org/api/current/index.html#scala.Predef$
+  [3]: https://www.scala-lang.org/api/current/scala/Predef$.html
   [4]: https://www.scala-lang.org/api/current/scala/Predef$$ArrowAssoc.html
-  [5]: https://www.scala-lang.org/api/current/index.html#scala.collection.immutable.List
+  [5]: https://www.scala-lang.org/api/current/scala/collection/immutable/List.html
   [6]: https://stackoverflow.com/q/7888944/53013
