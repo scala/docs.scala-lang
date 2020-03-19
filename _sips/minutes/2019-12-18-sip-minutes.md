@@ -29,7 +29,7 @@ Minutes were taken by Dale Wijnand.
 * Martin Odersky ([@odersky](https://github.com/odersky)), EPFL
 * Darja Jovanovic ([@darjutak](https://github.com/darjutak)), Process Lead
 * Sébastien Doeraene ([@sjrd](https://github.com/sjrd)), Scala Center
-* Guillaume Martres ([@smarter](https://github.com/smarter), EPFL
+* Guillaume Martres ([@smarter](https://github.com/smarter)), EPFL
 * Adriaan Moors ([@adriaanm](https://github.com/adriaanm)), Lightbend
 * Seth Tisue ([@SethTisue](https://github.com/SethTisue)), Lightbend
 * Iulian Dragos ([@dragos](https://github.com/dragos)), Triplequote
