@@ -1,6 +1,6 @@
 ---
 type: chapter
-layout: multipage-book
+layout: multipage-overview
 title: A Few Miscellaneous Items
 description: A few miscellaneous items about Scala
 partof: scala_book

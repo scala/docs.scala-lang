@@ -1,6 +1,6 @@
 ---
 type: chapter
-layout: multipage-book
+layout: multipage-overview
 title: Where To Go Next
 description: Where to go next after reading the Scala Book
 partof: scala_book

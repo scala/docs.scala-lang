@@ -1,6 +1,6 @@
 ---
 type: chapter
-layout: multipage-book
+layout: multipage-overview
 title: Preliminaries
 description: A few things to know about getting started with Scala.
 partof: scala_book

@@ -1,6 +1,6 @@
 ---
 type: section
-layout: multipage-book
+layout: multipage-overview
 title: Scala Futures
 description: This page provides an introduction to Futures in Scala, including Future callback methods.
 partof: scala_book

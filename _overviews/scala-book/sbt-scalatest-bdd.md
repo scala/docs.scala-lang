@@ -1,6 +1,6 @@
 ---
 type: section
-layout: multipage-book
+layout: multipage-overview
 title: Writing BDD Style Tests with ScalaTest and SBT
 description: This lesson shows how to write ScalaTest unit tests with SBT in a behavior-driven development (TDD) style.
 partof: scala_book

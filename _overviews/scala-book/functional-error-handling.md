@@ -1,6 +1,6 @@
 ---
 type: section
-layout: multipage-book
+layout: multipage-overview
 title: Functional Error Handling in Scala
 description: This lesson takes a look at error handling with functional programming in Scala.
 partof: scala_book

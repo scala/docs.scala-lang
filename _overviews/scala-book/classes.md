@@ -1,6 +1,6 @@
 ---
 type: chapter
-layout: multipage-book
+layout: multipage-overview
 title: Scala Classes
 description: This page shows examples of how to create Scala classes, including the basic Scala class constructor.
 partof: scala_book

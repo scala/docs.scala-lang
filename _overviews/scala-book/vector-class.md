@@ -1,6 +1,6 @@
 ---
 type: section
-layout: multipage-book
+layout: multipage-overview
 title: The Vector Class
 description: This page provides examples of the Scala 'Vector' class, including how to add and remove elements from a Vector.
 partof: scala_book

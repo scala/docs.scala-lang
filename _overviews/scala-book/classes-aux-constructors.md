@@ -1,6 +1,6 @@
 ---
 type: section
-layout: multipage-book
+layout: multipage-overview
 title: Auxiliary Class Constructors
 description: This page shows how to write auxiliary Scala class constructors, including several examples of the syntax.
 partof: scala_book

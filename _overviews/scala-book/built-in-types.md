@@ -1,6 +1,6 @@
 ---
 type: section
-layout: multipage-book
+layout: multipage-overview
 title: A Few Built-In Types
 description: A brief introduction to Scala's built-in types.
 partof: scala_book

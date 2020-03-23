@@ -1,6 +1,6 @@
 ---
 type: section
-layout: multipage-book
+layout: multipage-overview
 title: Command-Line I/O
 description: An introduction to command-line I/O in Scala.
 partof: scala_book

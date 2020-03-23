@@ -1,6 +1,6 @@
 ---
 type: section
-layout: multipage-book
+layout: multipage-overview
 title: The Type is Optional
 description: A note about explicit and implicit data type declarations in Scala.
 partof: scala_book

@@ -1,6 +1,6 @@
 ---
 type: section
-layout: multipage-book
+layout: multipage-overview
 title: Hello, World - Version 2
 description: This is a second Scala 'Hello, World' example.
 partof: scala_book

@@ -1,7 +1,7 @@
 <div class="content-nav">
 	<div class="inner-box sidebar-toc-wrapper" style="">
 		<h5 class="contents">Contents</h5>
-		<div class="inner-toc" id="sidebar-toc">
+          <div class="inner-toc" id="sidebar-toc">
 
       <ul>
         {% assign sorted = site.overviews | sort: 'num' %}
@@ -16,7 +16,13 @@
                 {% endif %}
               {% endfor %}
             {% else %} <!-- this must be English, so get the other documents' titles -->
-            <li><a {% if page.title == pg.title %}class="active"{% endif %} href="{{ site.baseurl }}{{ pg.url }}">{{ pg.title }}</a></li>
+
+              {% if pg.type %} <!-- if a type is set in a document, we add it as a class. Used in Scala book to diff between chapter and section -->
+                <li class="type-{{ pg.type }}"><a {% if page.title == pg.title %}class="active"{% endif %} href="{{ site.baseurl }}{{ pg.url }}">{{ pg.title }}</a></li>
+              {% else %}
+                <li><a {% if page.title == pg.title %}class="active"{% endif %} href="{{ site.baseurl }}{{ pg.url }}">{{ pg.title }}</a></li>
+              {% endif %}
+
             {% endif %}
             {% if pg.num == page.num %}<div id="toc"></div>{% endif %}
           {% endif %}

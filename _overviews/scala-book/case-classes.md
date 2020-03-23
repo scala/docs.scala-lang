@@ -1,6 +1,6 @@
 ---
 type: section
-layout: multipage-book
+layout: multipage-overview
 title: Case Classes
 description: This lesson provides an introduction to 'case classes' in Scala.
 partof: scala_book

@@ -1,6 +1,6 @@
 ---
 type: section
-layout: multipage-book
+layout: multipage-overview
 title: Companion Objects
 description: This lesson provides an introduction to 'companion objects' in Scala, including writing 'apply' and 'unapply' methods.
 partof: scala_book

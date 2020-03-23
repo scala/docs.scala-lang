@@ -1,6 +1,6 @@
 ---
 type: section
-layout: multipage-book
+layout: multipage-overview
 title: Using Scala Traits as Interfaces
 description: This page shows how to use Scala traits just like Java interfaces, including several examples.
 partof: scala_book
