@@ -1,4 +1,5 @@
 ---
+type: section
 layout: multipage-overview
 title: Scala Features
 description: TODO

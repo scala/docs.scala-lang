@@ -1,4 +1,5 @@
 ---
+type: section
 layout: multipage-overview
 title: Scala Futures
 description: This page provides an introduction to Futures in Scala, including Future callback methods.

@@ -1,4 +1,5 @@
 ---
+type: section
 layout: multipage-overview
 title: Using ScalaTest with SBT
 description: This lesson shows how to write ScalaTest unit tests with SBT in a test-driven development (TDD) style.

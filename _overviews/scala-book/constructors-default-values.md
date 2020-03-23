@@ -1,4 +1,5 @@
 ---
+type: section
 layout: multipage-overview
 title: Supplying Default Values for Constructor Parameters
 description: This page shows how to provide default values for Scala constructor parameters, with several examples.

@@ -1,4 +1,5 @@
 ---
+type: chapter
 layout: multipage-overview
 title: Introduction
 description: An introduction to the Scala Book

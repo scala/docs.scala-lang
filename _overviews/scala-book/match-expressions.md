@@ -1,4 +1,5 @@
 ---
+type: section
 layout: multipage-overview
 title: match Expressions
 description: This page shows examples of the Scala 'match' expression, including how to write match/case expressions.

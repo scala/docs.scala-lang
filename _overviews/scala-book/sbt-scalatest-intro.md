@@ -1,4 +1,5 @@
 ---
+type: chapter
 layout: multipage-overview
 title: SBT and ScalaTest
 description: In this lesson we'll start to introduce SBT and ScalaTest, two tools commonly used on Scala projects.

@@ -1,4 +1,5 @@
 ---
+type: section
 layout: multipage-overview
 title: Two Notes About Strings
 description: This page shares two important notes about strings in Scala.

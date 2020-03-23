@@ -1,4 +1,5 @@
 ---
+type: section
 layout: multipage-overview
 title: Anonymous Functions
 description: This page shows how to use anonymous functions in Scala, including examples with the List class 'map' and 'filter' functions.

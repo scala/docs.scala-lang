@@ -1,4 +1,5 @@
 ---
+type: section
 layout: multipage-overview
 title: Concurrency
 description: An introduction to concurrency in Scala.

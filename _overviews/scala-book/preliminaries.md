@@ -1,4 +1,5 @@
 ---
+type: chapter
 layout: multipage-overview
 title: Preliminaries
 description: A few things to know about getting started with Scala.

@@ -1,4 +1,5 @@
 ---
+type: section
 layout: multipage-overview
 title: Auxiliary Class Constructors
 description: This page shows how to write auxiliary Scala class constructors, including several examples of the syntax.

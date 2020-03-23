@@ -1,4 +1,5 @@
 ---
+type: section
 layout: multipage-overview
 title: The List Class
 description: This page provides examples of the Scala List class, including how to add and remove elements from a List.

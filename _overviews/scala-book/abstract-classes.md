@@ -1,4 +1,5 @@
 ---
+type: section
 layout: multipage-overview
 title: Abstract Classes
 description: This page shows how to use abstract classes, including when and why you should use abstract classes.

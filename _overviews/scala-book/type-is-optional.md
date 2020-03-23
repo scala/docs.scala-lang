@@ -1,4 +1,5 @@
 ---
+type: section
 layout: multipage-overview
 title: The Type is Optional
 description: A note about explicit and implicit data type declarations in Scala.

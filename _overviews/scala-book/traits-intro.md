@@ -1,4 +1,5 @@
 ---
+type: chapter
 layout: multipage-overview
 title: Scala Traits and Abstract Classes
 description: An introduction to Scala traits and abstract classes.

@@ -1,4 +1,5 @@
 ---
+type: section
 layout: multipage-overview
 title: No Null Values
 description: This lesson demonstrates the Scala Option, Some, and None classes, including how to use them instead of null values.

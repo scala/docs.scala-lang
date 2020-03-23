@@ -1,4 +1,5 @@
 ---
+type: section
 layout: multipage-overview
 title: The Scala Build Tool (SBT)
 description: This page provides an introduction to the Scala Build Tool, SBT, including a simple 'Hello, world' project.

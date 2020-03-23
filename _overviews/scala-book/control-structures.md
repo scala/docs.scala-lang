@@ -1,4 +1,5 @@
 ---
+type: chapter
 layout: multipage-overview
 title: Control Structures
 description: This page provides an introduction to Scala's control structures, including if/then/else, for loops, try/catch/finally, etc.

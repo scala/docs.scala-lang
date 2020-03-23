@@ -1,4 +1,5 @@
 ---
+type: section
 layout: multipage-overview
 title: Hello, World
 description: This page shares a Scala 'Hello, world' example.

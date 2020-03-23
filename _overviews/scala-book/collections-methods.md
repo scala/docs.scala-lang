@@ -1,4 +1,5 @@
 ---
+type: section
 layout: multipage-overview
 title: Common Sequence Methods
 description: This page shows examples of the most common methods that are available on the Scala sequences (collections classes).

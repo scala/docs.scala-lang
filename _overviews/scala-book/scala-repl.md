@@ -1,4 +1,5 @@
 ---
+type: section
 layout: multipage-overview
 title: The Scala REPL
 description: This page shares an introduction to the Scala REPL.

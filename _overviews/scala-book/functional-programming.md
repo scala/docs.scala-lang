@@ -1,4 +1,5 @@
 ---
+type: chapter
 layout: multipage-overview
 title: Functional Programming
 description: This lesson begins a second on 'An introduction to functional programming in Scala'.

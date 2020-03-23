@@ -1,4 +1,5 @@
 ---
+type: section
 layout: multipage-overview
 title: try/catch/finally Expressions
 description: This page shows how to use Scala's try/catch/finally construct, including several complete examples.

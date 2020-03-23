@@ -1,4 +1,5 @@
 ---
+type: chapter
 layout: multipage-overview
 title: Where To Go Next
 description: Where to go next after reading the Scala Book
