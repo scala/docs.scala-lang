@@ -32,14 +32,17 @@
 #toc {
   ul {
     list-style: none;
-    margin-top: 10px;
+    margin-left: 18px;
+    margin-top: 18px;
     margin-bottom: 10px;
 
     a {
       display: block;
       list-style: none;
       line-height: 1.3;
+      font-weight: $font-bold;
       font-size: $font-size-small;
+      color: $gray-dark;
       width: 100%;
 
       &:hover {
@@ -49,13 +52,12 @@
     }
 
     li {
-      margin-left: 30px;
-      margin-top: 5px;
+      margin-top: 10px;
 
       ul {
         list-style: disc;
         margin-left: 28px;
-        margin-top: 0px;
+        margin-top: -6px;
         margin-bottom: 6px;
 
         a {
@@ -65,13 +67,46 @@
 
         li {
           margin-bottom: 0;
-          margin-left: 10px;
           margin-top: 0;
           line-height: 1.2;
 
           ul {
                 margin-top: 1px;
           }
+        }
+      }
+    }
+  }
+}
+
+.book #toc {
+  ul {
+     margin-top: 5px;
+     margin-bottom: 10px;
+     margin-left: 20px;
+
+    a {
+      color: $base-link-color;
+      font-weight: normal;
+    }
+
+    li {
+      margin-left: 10px;
+      margin-top: 5px;
+
+      ul {
+        margin-left: 20px;
+        margin-top: -5px;
+        margin-bottom: 0px;
+
+        a {
+          line-height: 1;
+          font-weight: normal;
+        }
+
+        li {
+          margin-top: 0px;
+          margin-left: 10px;
         }
       }
     }
