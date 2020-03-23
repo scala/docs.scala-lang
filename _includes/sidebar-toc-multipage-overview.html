@@ -1,7 +1,12 @@
 <div class="content-nav">
 	<div class="inner-box sidebar-toc-wrapper" style="">
 		<h5 class="contents">Contents</h5>
+        {% assign type = page.type %}
+        {% if type %}
+          <div class="inner-toc book" id="sidebar-toc">
+        {% else %}
           <div class="inner-toc" id="sidebar-toc">
+        {% endif %}
 
       <ul>
         {% assign sorted = site.overviews | sort: 'num' %}
