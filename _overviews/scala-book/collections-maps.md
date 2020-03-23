@@ -1,5 +1,6 @@
 ---
-layout: multipage-overview
+type: section
+layout: multipage-book
 title: Common Map Methods
 description: This page shows examples of the most common methods that are available on Scala Maps.
 partof: scala_book

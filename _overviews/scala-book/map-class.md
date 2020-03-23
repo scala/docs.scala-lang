@@ -1,5 +1,6 @@
 ---
-layout: multipage-overview
+type: section
+layout: multipage-book
 title: The Map Class
 description: This page provides examples of the Scala 'Map' class, including how to add and remove elements from a Map, and iterate over Map elements.
 partof: scala_book

@@ -1,5 +1,6 @@
 ---
-layout: multipage-overview
+type: section
+layout: multipage-book
 title: Enumerations (and a Complete Pizza Class)
 description: This page introduces Scala enumerations, and further shows how to create a complete OOP 'Pizza' class that uses those enumerations.
 partof: scala_book

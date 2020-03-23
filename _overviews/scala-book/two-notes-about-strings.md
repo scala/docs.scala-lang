@@ -1,5 +1,6 @@
 ---
-layout: multipage-overview
+type: section
+layout: multipage-book
 title: Two Notes About Strings
 description: This page shares two important notes about strings in Scala.
 partof: scala_book

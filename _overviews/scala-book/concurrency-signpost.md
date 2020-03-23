@@ -1,5 +1,6 @@
 ---
-layout: multipage-overview
+type: section
+layout: multipage-book
 title: Concurrency
 description: An introduction to concurrency in Scala.
 partof: scala_book

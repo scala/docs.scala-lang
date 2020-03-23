@@ -1,5 +1,6 @@
 ---
-layout: multipage-overview
+type: section
+layout: multipage-book
 title: Supplying Default Values for Constructor Parameters
 description: This page shows how to provide default values for Scala constructor parameters, with several examples.
 partof: scala_book

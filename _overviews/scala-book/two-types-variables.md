@@ -1,5 +1,6 @@
 ---
-layout: multipage-overview
+type: section
+layout: multipage-book
 title: Two Types of Variables
 description: Scala has two types of variables, val and var.
 partof: scala_book

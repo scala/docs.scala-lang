@@ -1,5 +1,6 @@
 ---
-layout: multipage-overview
+type: chapter
+layout: multipage-book
 title: Prelude꞉ A Taste of Scala
 description: This page shares a Taste Of Scala example, quickly covering Scala's main features.
 partof: scala_book

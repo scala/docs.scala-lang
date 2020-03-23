@@ -1,5 +1,6 @@
 ---
-layout: multipage-overview
+type: chapter
+layout: multipage-book
 title: Functional Programming
 description: This lesson begins a second on 'An introduction to functional programming in Scala'.
 partof: scala_book

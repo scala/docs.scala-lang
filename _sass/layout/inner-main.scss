@@ -96,6 +96,15 @@
               margin-top: 10px;
               line-height: 1.2;
 
+              &.type-chapter {
+                margin-top: 15px;
+              }
+
+              &.type-section {
+                margin-top: 5px;
+                margin-left: 15px;
+              }
+
               .active {
                 font-weight: $font-black;
                 color: $hover-link-color;

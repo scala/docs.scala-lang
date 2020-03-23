@@ -1,5 +1,6 @@
 ---
-layout: multipage-overview
+type: section
+layout: multipage-book
 title: for Loops
 description: This page provides an introduction to the Scala 'for' loop, including how to iterate over Scala collections.
 partof: scala_book

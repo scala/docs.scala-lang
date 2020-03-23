@@ -1,5 +1,6 @@
 ---
-layout: multipage-overview
+type: section
+layout: multipage-book
 title: for Expressions
 description: This page shows how to use Scala 'for' expressions (also known as 'for-expressions'), including examples of how to use it with the 'yield' keyword.
 partof: scala_book

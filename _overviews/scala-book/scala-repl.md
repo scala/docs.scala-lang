@@ -1,5 +1,6 @@
 ---
-layout: multipage-overview
+type: section
+layout: multipage-book
 title: The Scala REPL
 description: This page shares an introduction to the Scala REPL.
 partof: scala_book

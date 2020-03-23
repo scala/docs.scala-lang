@@ -1,5 +1,6 @@
 ---
-layout: multipage-overview
+type: section
+layout: multipage-book
 title: Case Objects
 description: This lesson introduces Scala 'case objects', which are used to create singletons with a few additional features.
 partof: scala_book

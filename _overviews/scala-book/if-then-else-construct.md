@@ -1,5 +1,6 @@
 ---
-layout: multipage-overview
+type: section
+layout: multipage-book
 title: The if/then/else Construct
 description: This page demonstrates Scala's if/then/else construct, including several examples you can try in the REPL.
 partof: scala_book

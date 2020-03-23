@@ -1,5 +1,6 @@
 ---
-layout: multipage-overview
+type: section
+layout: multipage-book
 title: Pure Functions
 description: This lesson provides an introduction to writing pure functions in Scala.
 partof: scala_book

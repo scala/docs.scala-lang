@@ -1,5 +1,6 @@
 ---
-layout: multipage-overview
+type: section
+layout: multipage-book
 title: The ArrayBuffer Class
 description: This page provides examples of how to use the Scala ArrayBuffer class, including adding and removing elements.
 partof: scala_book

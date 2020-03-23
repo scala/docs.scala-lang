@@ -1,5 +1,6 @@
 ---
-layout: multipage-overview
+type: section
+layout: multipage-book
 title: Passing Functions Around
 description: Like a good functional programming language, Scala lets you use functions just like other variables, including passing them into other functions.
 partof: scala_book

@@ -1,5 +1,6 @@
 ---
-layout: multipage-overview
+type: chapter
+layout: multipage-book
 title: Introduction
 description: An introduction to the Scala Book
 partof: scala_book
