@@ -3,8 +3,7 @@ layout: tour
 title: Pattern Matching
 partof: scala-tour
 
-num: 12
-
+num: 14
 next-page: singleton-objects
 previous-page: case-classes
 prerequisite-knowledge: case-classes, string-interpolation, subtyping
@@ -143,7 +142,33 @@ def findPlaceToSit(piece: Furniture): String = piece match {
 ```
 This is useful for pattern matching because we don't need a "catch all" case.
 
+## Summary of pattern matching syntax
+
+```tut
+case class Point(x: Int, y: Int)
+
+val value: Any = "test"
+
+val res: String = value match {
+  case "a" => "exact match"
+  case v @ "b" => "exact match: " + v
+  case 5 => "exact match"
+  case (2, true) => "exact match"
+  case i: String => "type match: " + i
+  case _: Boolean => "type match"
+  case (false, s) => "extract tuple: " + s
+  case Point(0, y) => "extract case class: " + y
+  case x: Int if x > 1 => "condition"
+  case (true, Point(x, 3)) if x < 0 => "complex"
+  case _ => "default"
+}
+```
+
 ## Notes
 
 Scala's pattern matching statement is most useful for matching on algebraic types expressed via [case classes](case-classes.html).
 Scala also allows the definition of patterns independently of case classes, using `unapply` methods in [extractor objects](extractor-objects.html).
+
+## More resources
+
+* More details on match expressions in [Scala Book](/overviews/scala-book/match-expressions.html)

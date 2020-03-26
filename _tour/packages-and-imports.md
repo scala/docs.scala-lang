@@ -3,9 +3,9 @@ layout: tour
 title: Packages and Imports
 partof: scala-tour
 
-num: 35
-previous-page: named-arguments
+num: 34
 next-page: package-objects
+previous-page: annotations
 ---
 
 # Packages and Imports

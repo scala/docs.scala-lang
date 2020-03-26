@@ -4,7 +4,7 @@ title: Classes
 partof: scala-tour
 
 num: 4
-next-page: traits
+next-page: default-parameter-values
 previous-page: unified-types
 topics: classes
 prerequisite-knowledge: no-return-keyword, type-declaration-syntax, string-interpolation, procedures
@@ -108,3 +108,8 @@ class Point(x: Int, y: Int)
 val point = new Point(1, 2)
 point.x  // <-- does not compile
 ```
+
+## More resources
+
+* Learn more about Classes in scala in [Scala Book](/overviews/scala-book/classes.html)
+* How to use [Auxiliary Class Constructors](/overviews/scala-book/classes-aux-constructors.html)

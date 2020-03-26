@@ -3,7 +3,7 @@ layout: tour
 title: Case Classes
 partof: scala-tour
 
-num: 11
+num: 13
 next-page: pattern-matching
 previous-page: multiple-parameter-lists
 prerequisite-knowledge: classes, basics, mutability
@@ -54,3 +54,7 @@ message5.recipient // claire@bourgogne.fr
 message5.body  // "Me zo o komz gant ma amezeg"
 ```
 The recipient of `message4` is used as the sender of `message5` but the `body` of `message4` was copied directly.
+
+## More resources
+
+* Learn more about case classes in [Scala Book](/overviews/scala-book/case-classes.html)

@@ -3,7 +3,7 @@ layout: tour
 title: Extractor Objects
 partof: scala-tour
 
-num: 16
+num: 18
 next-page: for-comprehensions
 previous-page: regular-expression-patterns
 

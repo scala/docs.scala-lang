@@ -3,7 +3,7 @@ layout: tour
 title: Multiple Parameter Lists (Currying)
 partof: scala-tour
 
-num: 10
+num: 12
 next-page: case-classes
 previous-page: nested-functions
 

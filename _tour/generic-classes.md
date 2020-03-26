@@ -3,7 +3,7 @@ layout: tour
 title: Generic Classes
 partof: scala-tour
 
-num: 18
+num: 20
 next-page: variances
 previous-page: for-comprehensions
 assumed-knowledge: classes unified-types

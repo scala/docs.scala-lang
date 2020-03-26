@@ -3,7 +3,7 @@ layout: tour
 title: Regular Expression Patterns
 partof: scala-tour
 
-num: 15
+num: 17
 
 next-page: extractor-objects
 previous-page: singleton-objects

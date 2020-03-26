@@ -3,7 +3,7 @@ layout: tour
 title: Tuples
 partof: scala-tour
 
-num: 6
+num: 8
 next-page: mixin-class-composition
 previous-page: traits
 topics: tuples
@@ -79,3 +79,7 @@ for ((a, b) <- numPairs) {
 
 Users may sometimes find it hard to choose between tuples and case classes. Case classes have named elements. The names can improve the readability of some kinds of code. In the planet example above, we might define `case class Planet(name: String, distance: Double)` rather than using tuples.
 
+
+## More resources
+
+* Learn more about tuples in [Scala Book](/overviews/scala-book/tuples.html) in Scala book

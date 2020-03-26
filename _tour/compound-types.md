@@ -3,7 +3,7 @@ layout: tour
 title: Compound Types
 partof: scala-tour
 
-num: 24
+num: 26
 next-page: self-types
 previous-page: abstract-type-members
 

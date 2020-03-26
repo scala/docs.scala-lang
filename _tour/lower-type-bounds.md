@@ -3,7 +3,7 @@ layout: tour
 title: Lower Type Bounds
 partof: scala-tour
 
-num: 21
+num: 23
 next-page: inner-classes
 previous-page: upper-type-bounds
 prerequisite-knowledge: upper-type-bounds, generics, variance

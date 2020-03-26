@@ -3,7 +3,7 @@ layout: tour
 title: Self-type
 partof: scala-tour
 
-num: 25
+num: 27
 next-page: implicit-parameters
 previous-page: compound-types
 topics: self-types

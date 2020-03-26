@@ -3,7 +3,7 @@ layout: tour
 title: Inner Classes
 partof: scala-tour
 
-num: 22
+num: 24
 next-page: abstract-type-members
 previous-page: lower-type-bounds
 

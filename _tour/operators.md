@@ -3,8 +3,8 @@ layout: tour
 title: Operators
 partof: scala-tour
 
-num: 30
-next-page: by-name-parameters
+num: 32
+next-page: annotations
 previous-page: type-inference
 prerequisite-knowledge: case-classes
 

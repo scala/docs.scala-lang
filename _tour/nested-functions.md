@@ -3,7 +3,7 @@ layout: tour
 title: Nested Methods
 partof: scala-tour
 
-num: 9
+num: 11
 next-page: multiple-parameter-lists
 previous-page: higher-order-functions
 
