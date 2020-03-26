@@ -3,9 +3,9 @@ layout: tour
 title: Annotations
 partof: scala-tour
 
-num: 33
+num: 34
 next-page: packages-and-imports
-previous-page: operators
+previous-page: by-name-parameters
 
 redirect_from: "/tutorials/tour/annotations.html"
 ---

@@ -83,5 +83,5 @@ The `trait Pet` has an abstract field `name` that gets implemented by Cat and Do
 
 ## More resources
 
-* Learn more about traits in [Scala Book](/overviews/scala-book/traits-intro.html) in Scala book
+* Learn more about traits in the [Scala Book](/overviews/scala-book/traits-intro.html)
 * Use traits to define [Enum](/overviews/scala-book/enumerations-pizza-class.html)

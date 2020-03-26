@@ -4,7 +4,7 @@ title: Operators
 partof: scala-tour
 
 num: 32
-next-page: annotations
+next-page: by-name-parameters
 previous-page: type-inference
 prerequisite-knowledge: case-classes
 

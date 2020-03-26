@@ -57,4 +57,4 @@ The recipient of `message4` is used as the sender of `message5` but the `body` o
 
 ## More resources
 
-* Learn more about case classes in [Scala Book](/overviews/scala-book/case-classes.html)
+* Learn more about case classes in the [Scala Book](/overviews/scala-book/case-classes.html)

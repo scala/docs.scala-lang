@@ -111,5 +111,5 @@ point.x  // <-- does not compile
 
 ## More resources
 
-* Learn more about Classes in scala in [Scala Book](/overviews/scala-book/classes.html)
+* Learn more about Classes in the [Scala Book](/overviews/scala-book/classes.html)
 * How to use [Auxiliary Class Constructors](/overviews/scala-book/classes-aux-constructors.html)

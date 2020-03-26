@@ -3,7 +3,7 @@ layout: tour
 title: By-name Parameters
 partof: scala-tour
 
-num: 31
+num: 33
 next-page: annotations
 previous-page: operators
 

@@ -107,4 +107,4 @@ When using a companion object from Java code, the members will be defined in a c
 
 ## More resources
 
-* Learn more about Companion objects in [Scala Book](/overviews/scala-book/companion-objects.html)
+* Learn more about Companion objects in the [Scala Book](/overviews/scala-book/companion-objects.html)

@@ -65,4 +65,4 @@ foo(10, 10)
 
 ## More resources
 
-* Other examples of "For comprehension" in [Scala Book](/overviews/scala-book/for-expressions.html)
+* Other examples of "For comprehension" in the [Scala Book](/overviews/scala-book/for-expressions.html)

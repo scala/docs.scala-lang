@@ -3,7 +3,7 @@ layout: tour
 title: Package Objects
 partof: scala-tour
 
-num: 35
+num: 36
 previous-page: packages-and-imports
 ---
 
