@@ -7,7 +7,6 @@ overview-name: Scala Book
 num: 1
 outof: 54
 language: zh-cn
-next-page: prelude-taste-of-scala
 ---
 
 Scala之书的内容提供了对Scala编程语言的一个简要的介绍与概览。本书并未拘泥于正体文风，而是由50多个小课程构成。每一课都都有足够的篇幅让读者了解到课程涉及的语言特性，同时每一课也都足够精简干练，让读者可以在15分钟以内看完。
