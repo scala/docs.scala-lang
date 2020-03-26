@@ -66,7 +66,7 @@ Each of these contexts is covered by a separate interpolator:
 
     | Used for
 ----|----------------
- q  | [expressions]({{ site.baseurl }}/overviews/quasiquotes/syntax-summary.html#expressions), [definitions]({{ site.baseurl }}/overviews/quasiquotes/syntax-summary.html#definitions) and [imports](https://localhost:4000/overviews/quasiquotes/expression-details.html#import)
+ q  | [expressions]({{ site.baseurl }}/overviews/quasiquotes/syntax-summary.html#expressions), [definitions]({{ site.baseurl }}/overviews/quasiquotes/syntax-summary.html#definitions) and [imports]({{ site.baseurl }}/overviews/quasiquotes/expression-details.html#import)
  tq | [types]({{ site.baseurl }}/overviews/quasiquotes/syntax-summary.html#types)
  pq | [patterns]({{ site.baseurl }}/overviews/quasiquotes/syntax-summary.html#patterns)
 
