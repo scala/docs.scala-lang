@@ -39,33 +39,33 @@ Suggested use cases for multiple parameter lists include:
 #### Drive type inference
 
 It so happens that in Scala, type inference proceeds one parameter list at at time.
-Say, you have the following method:
+Say you have the following method:
 
 ```tut
-def foldleft1[A, B](as: List[A], b0: B, op: (B, A) => B) = ???
+def foldLeft1[A, B](as: List[A], b0: B, op: (B, A) => B) = ???
 ```
 
 Then you'd like to call it in the following way, but will find that it doesn't compile:
 
 ```tut:fail
-def notpossible = foldleft1(numbers, 0, _ + _)
+def notPossible = foldLeft1(numbers, 0, _ + _)
 ```
 
 you will have to call it like one of the below ways:
 
 ```tut
-def firstWay = foldleft1[Int, Int](numbers, 0, _ + _)
-def secondWay = foldleft1(numbers, 0, (a: Int, b: Int) => a + b)
+def firstWay = foldLeft1[Int, Int](numbers, 0, _ + _)
+def secondWay = foldLeft1(numbers, 0, (a: Int, b: Int) => a + b)
 ```
 
-That's because scala won't be able to infer the type of the function `_ + _`, as it's still inferring `A` and `B`. By moving the parameter `op` to its own parameter list, `A` and `B` are inferred in the first parameter list. These inferred types will then be available to the second parameter list and `_ + _` will match the the inferred type `(Int, Int) => Int`
+That's because Scala won't be able to infer the type of the function `_ + _`, as it's still inferring `A` and `B`. By moving the parameter `op` to its own parameter list, `A` and `B` are inferred in the first parameter list. These inferred types will then be available to the second parameter list and `_ + _` will match the the inferred type `(Int, Int) => Int`
 
 ```tut
-def foldleft2[A, B](as: List[A], b0: B)(op: (B, A) => B) = ???
-def possible = foldleft2(numbers, 0)(_ + _)
+def foldLeft2[A, B](as: List[A], b0: B)(op: (B, A) => B) = ???
+def possible = foldLeft2(numbers, 0)(_ + _)
 ```
 
-This definition doesn't need any type hints and can infer all of its parameters.
+This definition doesn't need any type hints and can infer all of its type parameters.
 
 
 #### Implicit parameters
