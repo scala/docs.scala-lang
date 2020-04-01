@@ -65,7 +65,7 @@ create a project called "hello-world".
 More documentation about sbt can be found in the [Scala Book](/overviews/scala-book/scala-build-tool-sbt.html) 
 or in the official sbt [documentation](https://www.scala-sbt.org/1.x/docs/index.html)
 
-### Without using command-line
+### Without using the command line
 You can skip the rest of this page and go directly to [Building a Scala Project with IntelliJ and sbt](/getting-started/intellij-track/building-a-scala-project-with-intellij-and-sbt.html#next-steps)
 
 
