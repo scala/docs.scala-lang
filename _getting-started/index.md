@@ -31,7 +31,7 @@ ammonite, coursier, scala, scalac, sbt-launcher, scalafmt.
 For more information, read [coursier-cli documentation](https://get-coursier.io/docs/cli-overview)
 
 ### ...Or manually
-1. if you don't have java 1.8 or 11 installed, download 
+1. if you don't have Java 1.8 or 11 installed, download 
 Java from [Oracle Java 8](https://www.oracle.com/java/technologies/javase-jdk8-downloads.html), [
 Oracle Java 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html), 
 or [AdoptOpenJDK 8/11](https://adoptopenjdk.net/). Refer [JDK Compatibility](/overviews/jdk-compatibility/overview.html) for Scala/Java compatibility detail.
