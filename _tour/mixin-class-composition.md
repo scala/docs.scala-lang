@@ -3,7 +3,7 @@ layout: tour
 title: Class Composition with Mixins
 partof: scala-tour
 
-num: 7
+num: 9
 next-page: higher-order-functions
 previous-page: tuples
 prerequisite-knowledge: inheritance, traits, abstract-classes, unified-types

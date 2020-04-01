@@ -3,7 +3,7 @@ layout: tour
 title: Upper Type Bounds
 partof: scala-tour
 categories: tour
-num: 20
+num: 22
 next-page: lower-type-bounds
 previous-page: variances
 

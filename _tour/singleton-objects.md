@@ -3,8 +3,7 @@ layout: tour
 title: Singleton Objects
 partof: scala-tour
 
-num: 13
-
+num: 15
 next-page: regular-expression-patterns
 previous-page: pattern-matching
 redirect_from: "/tutorials/tour/singleton-objects.html"
@@ -105,3 +104,7 @@ Note: If a class or object has a companion, both must be defined in the same fil
 `static` members in Java are modeled as ordinary members of a companion object in Scala.
 
 When using a companion object from Java code, the members will be defined in a companion class with a `static` modifier. This is called _static forwarding_. It occurs even if you haven't defined a companion class yourself.
+
+## More resources
+
+* Learn more about Companion objects in the [Scala Book](/overviews/scala-book/companion-objects.html)

@@ -3,7 +3,7 @@ layout: tour
 title: Polymorphic Methods
 partof: scala-tour
 
-num: 28
+num: 30
 
 next-page: type-inference
 previous-page: implicit-conversions

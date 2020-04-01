@@ -3,7 +3,7 @@ layout: tour
 title: For Comprehensions
 partof: scala-tour
 
-num: 17
+num: 19
 next-page: generic-classes
 previous-page: extractor-objects
 
@@ -62,3 +62,7 @@ def foo(n: Int, v: Int) =
 
 foo(10, 10)
 ```
+
+## More resources
+
+* Other examples of "For comprehension" in the [Scala Book](/overviews/scala-book/for-expressions.html)

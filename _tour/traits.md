@@ -3,9 +3,9 @@ layout: tour
 title: Traits
 partof: scala-tour
 
-num: 5
+num: 7
 next-page: tuples
-previous-page: classes
+previous-page: named-arguments
 topics: traits
 prerequisite-knowledge: expressions, classes, generics, objects, companion-objects
 
@@ -79,3 +79,9 @@ animals.append(cat)
 animals.foreach(pet => println(pet.name))  // Prints Harry Sally
 ```
 The `trait Pet` has an abstract field `name` that gets implemented by Cat and Dog in their constructors. On the last line, we call `pet.name`, which must be implemented in any subtype of the trait `Pet`.
+
+
+## More resources
+
+* Learn more about traits in the [Scala Book](/overviews/scala-book/traits-intro.html)
+* Use traits to define [Enum](/overviews/scala-book/enumerations-pizza-class.html)

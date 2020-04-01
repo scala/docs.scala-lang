@@ -3,7 +3,7 @@ layout: tour
 title: Type Inference
 partof: scala-tour
 
-num: 29
+num: 31
 next-page: operators
 previous-page: polymorphic-methods
 ---

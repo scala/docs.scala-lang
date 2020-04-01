@@ -2,7 +2,7 @@
 layout: tour
 title: Abstract Type Members
 partof: scala-tour
-num: 23
+num: 25
 next-page: compound-types
 previous-page: inner-classes
 topics: abstract type members

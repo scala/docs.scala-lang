@@ -3,8 +3,7 @@ layout: tour
 title: Pattern Matching
 partof: scala-tour
 
-num: 12
-
+num: 14
 next-page: singleton-objects
 previous-page: case-classes
 prerequisite-knowledge: case-classes, string-interpolation, subtyping
@@ -147,3 +146,7 @@ This is useful for pattern matching because we don't need a "catch all" case.
 
 Scala's pattern matching statement is most useful for matching on algebraic types expressed via [case classes](case-classes.html).
 Scala also allows the definition of patterns independently of case classes, using `unapply` methods in [extractor objects](extractor-objects.html).
+
+## More resources
+
+* More details on match expressions in the [Scala Book](/overviews/scala-book/match-expressions.html)

@@ -3,8 +3,8 @@ layout: tour
 title: Annotations
 partof: scala-tour
 
-num: 32
-next-page: default-parameter-values
+num: 34
+next-page: packages-and-imports
 previous-page: by-name-parameters
 
 redirect_from: "/tutorials/tour/annotations.html"

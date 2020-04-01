@@ -3,7 +3,7 @@ layout: tour
 title: Implicit Parameters
 partof: scala-tour
 
-num: 26
+num: 28
 next-page: implicit-conversions
 previous-page: self-types
 

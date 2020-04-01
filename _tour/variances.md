@@ -3,7 +3,7 @@ layout: tour
 title: Variances
 partof: scala-tour
 
-num: 19
+num: 21
 next-page: upper-type-bounds
 previous-page: generic-classes
 

@@ -322,3 +322,7 @@ object Main {
     println("Hello, Scala developer!")
 }
 ```
+
+## More resources
+
+* [Scala book](/overviews/scala-book/prelude-taste-of-scala.html) overview
