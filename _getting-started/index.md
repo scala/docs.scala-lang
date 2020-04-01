@@ -25,7 +25,7 @@ The Scala installer is a tool named `cs` that ensures that a JVM and standard Sc
 </div>
 
 
-Along with managing JVMs, it also install useful command-line tools: 
+Along with managing JVMs, it also installs useful command line tools: 
 ammonite, coursier, scala, scalac, sbt-launcher, scalafmt.
 
 For more information, read [couriser-cli documentation](https://get-coursier.io/docs/cli-overview)
