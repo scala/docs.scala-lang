@@ -72,7 +72,7 @@ You can skip the rest of this page and go directly to [Building a Scala Project 
 ## Open hello-world project
 ### Using IntelliJ
 1. Download and install [IntelliJ Community Edition](https://www.jetbrains.com/idea/download/)
-1. Install Scala plugin by following [the instructions on how to install IntelliJ plugins](https://www.jetbrains.com/help/idea/managing-plugins.html)
+1. Install the Scala plugin by following [the instructions on how to install IntelliJ plugins](https://www.jetbrains.com/help/idea/managing-plugins.html)
 1. Open the `build.sbt` file then choose *Open as a project*
 
 ### Using VSCode with metals 
