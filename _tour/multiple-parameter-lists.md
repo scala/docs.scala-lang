@@ -36,21 +36,37 @@ println(res) // 55
 
 Suggested use cases for multiple parameter lists include:
 
-#### Single functional parameter
+#### Drive type inference
 
-In case of a single functional parameter, like `op` in the case of `foldLeft` above, multiple parameter lists allow a concise syntax to pass an anonymous function to the method. Without multiple parameter lists, the code would look like this:
+It so happens that in Scala, type inference proceeds one parameter list at at time.
+Say you have the following method:
 
-```
-numbers.foldLeft(0, (m: Int, n: Int) => m + n)
-```
-
-Note that the use of multiple parameter lists here also allows us to take advantage of Scala type inference to make the code more concise, like this:
-
-```
-numbers.foldLeft(0)(_ + _)
+```tut
+def foldLeft1[A, B](as: List[A], b0: B, op: (B, A) => B) = ???
 ```
 
-this would not be possible with only a single parameter list, as the Scala compiler would not be able to infer the parameter types of the function.
+Then you'd like to call it in the following way, but will find that it doesn't compile:
+
+```tut:fail
+def notPossible = foldLeft1(numbers, 0, _ + _)
+```
+
+you will have to call it like one of the below ways:
+
+```tut
+def firstWay = foldLeft1[Int, Int](numbers, 0, _ + _)
+def secondWay = foldLeft1(numbers, 0, (a: Int, b: Int) => a + b)
+```
+
+That's because Scala won't be able to infer the type of the function `_ + _`, as it's still inferring `A` and `B`. By moving the parameter `op` to its own parameter list, `A` and `B` are inferred in the first parameter list. These inferred types will then be available to the second parameter list and `_ + _` will match the the inferred type `(Int, Int) => Int`
+
+```tut
+def foldLeft2[A, B](as: List[A], b0: B)(op: (B, A) => B) = ???
+def possible = foldLeft2(numbers, 0)(_ + _)
+```
+
+This definition doesn't need any type hints and can infer all of its type parameters.
+
 
 #### Implicit parameters
 
