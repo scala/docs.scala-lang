@@ -11,7 +11,10 @@ redirect_from: "/getting-started.html"
 You can [try Scala in your browser](https://scastie.scala-lang.org/MHc7C9iiTbGfeSAvg8CKAA), with access to all Scala compilers and 
 all published libraries.
 
-##  Installing Scala
+##  Install Scala
+Installing scala means installing various command-line tools such as the Scala compiler and build tools.
+We recommend using the Scala installer tool that automatically installs all the requirements, but you can still manually install each tool.
+
 ### Using the Scala Installer (recommended way)
 The Scala installer is a tool named `cs` that ensures that a JVM and standard Scala tools are installed on your system.  
 
@@ -26,7 +29,11 @@ The Scala installer is a tool named `cs` that ensures that a JVM and standard Sc
 
 
 Along with managing JVMs, it also installs useful command line tools: 
-ammonite, coursier, scala, scalac, sbt-launcher, scalafmt.
+[Ammonite](https://ammonite.io/), 
+[coursier](https://get-coursier.io/), 
+scala, scalac (the Scala compiler), 
+[sbt](https://www.scala-sbt.org/), 
+[scalafmt](https://scalameta.org/scalafmt/).
 
 For more information, read [coursier-cli documentation](https://get-coursier.io/docs/cli-overview)
 
@@ -39,6 +46,9 @@ or [AdoptOpenJDK 8/11](https://adoptopenjdk.net/). Refer [JDK Compatibility](/ov
 
 
 ## Create a Hello-world project with sbt
+To create a project, you can either use a command-line tool or an IDE. 
+If you are familiar with command-lines, we recommend to use the first approach.
+
 ### Using command-line
 sbt is a build tool for Scala. sbt compiles, runs, 
 and tests your projects among other related tasks.
@@ -65,11 +75,13 @@ create a project called "hello-world".
 More documentation about sbt can be found in the [Scala Book](/overviews/scala-book/scala-build-tool-sbt.html) 
 or in the official sbt [documentation](https://www.scala-sbt.org/1.x/docs/index.html)
 
-### Without using the command line
+### With an IDE
 You can skip the rest of this page and go directly to [Building a Scala Project with IntelliJ and sbt](/getting-started/intellij-track/building-a-scala-project-with-intellij-and-sbt.html#next-steps)
 
 
 ## Open hello-world project
+Let's use an IDE to open the project. The most popular ones are IntelliJ and VSCode. 
+They both offer rich IDE features, but you can still use [many other editors.](https://scalameta.org/metals/docs/editors/overview.html)
 ### Using IntelliJ
 1. Download and install [IntelliJ Community Edition](https://www.jetbrains.com/idea/download/)
 1. Install the Scala plugin by following [the instructions on how to install IntelliJ plugins](https://www.jetbrains.com/help/idea/managing-plugins.html)
