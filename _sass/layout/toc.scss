@@ -27,6 +27,10 @@
   @include bp(large) {
     max-height: none;
   }
+
+  &.book {
+    max-height: none;
+  }
 }
 
 #toc {
