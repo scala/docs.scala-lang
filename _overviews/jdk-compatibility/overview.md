@@ -32,7 +32,7 @@ If you compile on JDK 11+ but have users on JDK 8, additional care is needed to 
 
 ## Long Term Support (LTS) versions
 
-After Java 8, Oracle introducd the concept of LTS versions of the JDK. These versions will remain supported (by Oracle, and likely by the rest of the ecosystem, including Scala) for longer than the versions in between. See <https://www.oracle.com/technetwork/java/eol-135779.html>.
+After Java 8, Oracle introduced the concept of LTS versions of the JDK. These versions will remain supported (by Oracle, and likely by the rest of the ecosystem, including Scala) for longer than the versions in between. See <https://www.oracle.com/technetwork/java/eol-135779.html>.
 
 JDK 8 and 11 are LTS versions. The next LTS version will be JDK 17, planned for September 2021.
 
