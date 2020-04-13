@@ -181,11 +181,11 @@ not, in fact, nullable, in practice, in the API.  So there is a tricky balance: 
 type to String | Null and deal with it with ifs and pattern matching or some flatMap-y API/syntax, every time,
 evne when you know it's not nullable?  Or you can just say if it comes from Java then you just accept it might
 be a null, but then you don't have any checks any more in practice.  So here the proposal - and it's one of the
-more delecate points - says that things that come from Java are a bit special.  A String that comes from Java is
+more delicate points - says that things that come from Java are a bit special.  A String that comes from Java is
 neither String nor String | Null, it's String | UncheckedNull.  That type has some special properties, like you
 can dot-select on it, for example.  It's something in the middle.
 
-Guillaume asks: how in thie middle?  What can you _not_ do?
+Guillaume asks: how in the middle?  What can you _not_ do?
 
 Seb: when it becomes something that is just String it will eagerly fail there.  So if your Scala API declares
 something is a String, and you use a Java API that returns String | UncheckedNull, it will throw in the body of
