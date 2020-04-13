@@ -42,7 +42,7 @@ As already mentioned, Scala code compiled on JDK 8 should run without problems i
 
 ## JDK vendors and distributions
 
-We build and test Scala primarily on AdoptOpenJDK, but you're free to use the JDK and JVM of your choice.
+We build and test Scala primarily on [AdoptOpenJDK](https://adoptopenjdk.net), but you're free to use the JDK and JVM of your choice.
 
 JDK 8 users typically use the Oracle JDK or some flavor of OpenJDK.
 
