@@ -1,5 +1,4 @@
 ---
-type: section
 layout: multipage-overview
 title: Case Classes
 description: This lesson provides an introduction to 'case classes' in Scala.
@@ -26,30 +25,7 @@ These features are all demonstrated in the following sections.
 
 
 
-## No mutator methods
-
-Case class constructor parameters are `val` fields by default, so an *accessor* method is generated for each parameter:
-
-```scala
-scala> christina.name
-res0: String = Christina
-```
-
-But, mutator methods are not generated:
-
-```scala
-// can't mutate the `name` field
-scala> christina.name = "Fred"
-<console>:10: error: reassignment to val
-       christina.name = "Fred"
-                  ^
-```
-
-Because in FP you never mutate data structures, it makes sense that constructor fields default to `val`.
-
-
-
-## An `apply` method means you don’t need `new`
+## With `apply` you don’t need `new`
 
 When you define a class as a `case` class, you don’t have to use the `new` keyword to create a new instance:
 
@@ -66,9 +42,32 @@ As discussed in the previous lesson, this works because a method named `apply` i
 
 
 
+## No mutator methods
+
+Case class constructor parameters are `val` fields by default, so an *accessor* method is generated for each parameter:
+
+```scala
+scala> christina.name
+res0: String = Christina
+```
+
+But, *mutator* methods are not generated:
+
+```scala
+// can't mutate the `name` field
+scala> christina.name = "Fred"
+<console>:10: error: reassignment to val
+       christina.name = "Fred"
+                  ^
+```
+
+Because in FP you never mutate data structures, it makes sense that constructor fields default to `val`.
+
+
+
 ## An `unapply` method
 
-In the previous lesson on companion objects you saw how to write `unapply` methods. A great thing about case classes is that they automatically generate an `unapply` method, so you don’t have to write one.
+In the previous lesson on companion objects you saw how to write `unapply` methods. A great thing about a case class is that it automatically generates an `unapply` method for your class, so you don’t have to write one.
 
 To demonstrate this, imagine that you have this trait:
 
@@ -85,7 +84,7 @@ case class Student(name: String, year: Int) extends Person
 case class Teacher(name: String, specialty: String) extends Person
 ```
 
-Because those are defined as case classes — and a case class has a built-in `unapply` method — you can write a match expression like this:
+Because those are defined as case classes — and they have built-in `unapply` methods — you can write a match expression like this:
 
 ```scala
 def getPrintableString(p: Person): String = p match {
@@ -185,13 +184,5 @@ res0: Person = Person(Christina,niece)
 ## The biggest advantage
 
 While all of these features are great benefits to functional programming, as they write in the book, [Programming in Scala](https://www.amazon.com/Programming-Scala-Updated-2-12/dp/0981531687/) (Odersky, Spoon, and Venners), “the biggest advantage of case classes is that they support pattern matching.” Pattern matching is a major feature of FP languages, and Scala’s case classes provide a simple way to implement pattern matching in match expressions and other areas.
-
-
-
-
-
-
-
-
 
 
