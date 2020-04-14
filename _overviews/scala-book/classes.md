@@ -117,7 +117,7 @@ scala> p.lastName = "Jones"
                   ^
 ```
 
->Tip: If you use Scala to write OOP code, create your fields as `var` fields so you can mutate them. When you write FP code with Scala, you’ll general use *case classes* instead of classes like this. (More on this later.)
+>Tip: If you use Scala to write OOP code, create your fields as `var` fields so you can mutate them. When you write FP code with Scala, you’ll generally use *case classes* instead of classes like this. (More on this later.)
 
 
 
