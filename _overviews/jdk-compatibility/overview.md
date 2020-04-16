@@ -26,7 +26,7 @@ Lightbend offers [commercial support](https://www.lightbend.com/lightbend-platfo
 
 ## Running versus compiling
 
-We usually recommend JDK 8 or 11 for *compiling* Scala code. Since the JVM is usually backward compatible, it is usually safe to use a newer JVM for *running* your code, especially if you are not using JVM features designated "experimental" or "unsafe".
+We generally recommend JDK 8 or 11 for *compiling* Scala code. Since the JVM tends to be backward compatible, it is usually safe to use a newer JVM for *running* your code, especially if you are not using JVM features designated "experimental" or "unsafe".
 
 If you compile on JDK 11+ but have users on JDK 8, additional care is needed to avoid using APIs and features that don't exist in 8. Therefore, compiling on 8 may be the safer choice. Some Scala developers use JDK 11+ for their daily work but do release builds on JDK 8.
 
