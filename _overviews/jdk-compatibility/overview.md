@@ -65,7 +65,7 @@ To track progress on JDK 11 related issues, watch:
 
 To help with testing on JDK 11, see [scala/scala-dev#559](https://github.com/scala/scala-dev/issues/559).
 
-## JDK 12, 13, 14 compatibility notes
+## JDK 12, 13, and 14 compatibility notes
 
 JDK 14 was released in March 2020. But 12, 13, and 14 are not LTS releases, so the remarks above about non-LTS releases apply.
 
