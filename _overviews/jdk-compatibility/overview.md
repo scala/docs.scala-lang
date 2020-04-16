@@ -20,7 +20,7 @@ Sometimes new JVM and JDK (Java Development Kit) versions require us to update S
 
 Even when a version combination isn't listed as supported, most features may still work.  (But Scala 2.12+ definitely doesn't work at all on JDK 6 or 7.)
 
-In general, Scala works on JDK 11+, including GraalVM, but it might not take advantage of features that were added after JDK 8. See[below](#jdk-11-compatibility-notes).
+In general, Scala works on JDK 11+, including GraalVM, but it might not take advantage of features that were added after JDK 8. See [below](#jdk-11-compatibility-notes).
 
 Lightbend offers [commercial support](https://www.lightbend.com/lightbend-platform-subscription) for Scala. The linked page includes contact information for inquiring about supported and recommended versions.
 
