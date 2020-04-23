@@ -6,10 +6,10 @@ includeTOC: true
 
 ## Latest releases
 
-* Scala 2.13.1
-  * [Library API](https://www.scala-lang.org/api/2.13.1/)
-  * [Compiler API](https://www.scala-lang.org/api/2.13.1/scala-compiler/scala/)
-  * [Reflection API](https://www.scala-lang.org/api/2.13.1/scala-reflect/scala/reflect/)
+* Scala 2.13.2
+  * [Library API](https://www.scala-lang.org/api/2.13.2/)
+  * [Compiler API](https://www.scala-lang.org/api/2.13.2/scala-compiler/scala/)
+  * [Reflection API](https://www.scala-lang.org/api/2.13.2/scala-reflect/scala/reflect/)
 * Scala 2.12.11
   * [Library API](https://www.scala-lang.org/api/2.12.11/)
   * [Compiler API](https://www.scala-lang.org/api/2.12.11/scala-compiler/scala/)
@@ -53,6 +53,10 @@ includeTOC: true
 
 ## Previous releases
 
+* Scala 2.13.1
+  * [Library API](https://www.scala-lang.org/api/2.13.1/)
+  * [Compiler API](https://www.scala-lang.org/api/2.13.1/scala-compiler/scala/)
+  * [Reflection API](https://www.scala-lang.org/api/2.13.1/scala-reflect/scala/reflect/)
 * Scala 2.13.0
   * [Library API](https://www.scala-lang.org/api/2.13.0/)
   * [Compiler API](https://www.scala-lang.org/api/2.13.0/scala-compiler/scala/)
