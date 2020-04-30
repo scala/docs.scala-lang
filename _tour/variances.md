@@ -37,24 +37,19 @@ Both `Cat` and `Dog` are subtypes of `Animal`. The Scala standard library has a 
 In the following example, the method `printAnimalNames` will accept a list of animals as an argument and print their names each on a new line. If `List[A]` were not covariant, the last two method calls would not compile, which would severely limit the usefulness of the `printAnimalNames` method.
 
 ```tut
-object CovarianceTest extends App {
-  def printAnimalNames(animals: List[Animal]): Unit = {
-    animals.foreach { animal =>
-      println(animal.name)
-    }
+def printAnimalNames(animals: List[Animal]): Unit =
+  animals.foreach {
+    animal => println(animal.name)
   }
 
-  val cats: List[Cat] = List(Cat("Whiskers"), Cat("Tom"))
-  val dogs: List[Dog] = List(Dog("Fido"), Dog("Rex"))
+val cats: List[Cat] = List(Cat("Whiskers"), Cat("Tom"))
+val dogs: List[Dog] = List(Dog("Fido"), Dog("Rex"))
 
-  printAnimalNames(cats)
-  // Whiskers
-  // Tom
+// prints: Whiskers, Tom
+printAnimalNames(cats)
 
-  printAnimalNames(dogs)
-  // Fido
-  // Rex
-}
+// prints: Fido, Rex
+printAnimalNames(dogs)
 ```
 
 ### Contravariance
@@ -86,19 +81,14 @@ class CatPrinter extends Printer[Cat] {
 If a `Printer[Cat]` knows how to print any `Cat` to the console, and a `Printer[Animal]` knows how to print any `Animal` to the console, it makes sense that a `Printer[Animal]` would also know how to print any `Cat`. The inverse relationship does not apply, because a `Printer[Cat]` does not know how to print any `Animal` to the console. Therefore, we should be able to substitute a `Printer[Animal]` for a `Printer[Cat]`, if we wish, and making `Printer[A]` contravariant allows us to do exactly that.
 
 ```tut
-object ContravarianceTest extends App {
-  val myCat: Cat = Cat("Boots")
+def printMyCat(printer: Printer[Cat], cat: Cat): Unit =
+  printer.print(cat)
 
-  def printMyCat(printer: Printer[Cat]): Unit = {
-    printer.print(myCat)
-  }
+val catPrinter: Printer[Cat] = new CatPrinter
+val animalPrinter: Printer[Animal] = new AnimalPrinter
 
-  val catPrinter: Printer[Cat] = new CatPrinter
-  val animalPrinter: Printer[Animal] = new AnimalPrinter
-
-  printMyCat(catPrinter)
-  printMyCat(animalPrinter)
-}
+printMyCat(catPrinter, Cat("Boots"))
+printMyCat(animalPrinter, Cat("Boots"))
 ```
 
 The output of this program will be:
