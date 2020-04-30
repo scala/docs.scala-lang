@@ -40,18 +40,17 @@ In the following example, the method `printAnimalNames` will accept a list of an
 object CovarianceTest extends App {
   def printAnimalNames(animals: List[Animal]): Unit =
     animals.foreach {
-      animal => println(animal.name) }
+      animal => println(animal.name)
+    }
 }
 val cats: List[Cat] = List(Cat("Whiskers"), Cat("Tom"))
 val dogs: List[Dog] = List(Dog("Fido"), Dog("Rex"))
 
+// prints: Whiskers, Tom
 CovarianceTest.printAnimalNames(cats)
-// Whiskers
-// Tom
 
+// prints: Fido, Rex
 CovarianceTest.printAnimalNames(dogs)
-// Fido
-// Rex
 ```
 
 ### Contravariance
