@@ -18,17 +18,20 @@ Here's an example:
 ```tut
 case class User(name: String, age: Int)
 
-val userBase = List(User("Travis", 28),
+val userBase = List(
+  User("Travis", 28),
   User("Kelly", 33),
   User("Jennifer", 44),
   User("Dennis", 23))
 
-val twentySomethings = for (user <- userBase if (user.age >=20 && user.age < 30))
+val twentySomethings =
+  for (user <- userBase if user.age >=20 && user.age < 30)
   yield user.name  // i.e. add this to a list
 
 twentySomethings.foreach(name => println(name))  // prints Travis Dennis
 ```
-The `for` loop used with a `yield` statement actually creates a `List`. Because we said `yield user.name`, it's a `List[String]`. `user <- userBase` is our generator and `if (user.age >=20 && user.age < 30)` is a guard that filters out users who are not in their 20s.
+
+A `for` loop with a `yield` statement returns a result, the container type of which is determined by the first generator. `user <- userBase` is a `List`, and because we said `yield user.name` where `user.name` is a `String`, the overall result is a `List[String]`. And `if user.age >=20 && user.age < 30` is a guard that filters out users who are not in their twenties.
 
 Here is a more complicated example using two generators. It computes all pairs of numbers between `0` and `n-1` whose sum is equal to a given value `v`:
 
