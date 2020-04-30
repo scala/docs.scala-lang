@@ -65,9 +65,6 @@ numbers.foldRight(0)((sum, item) => sum + item) // Generic Form
 
 numbers.foldLeft(0)(_+_) // Curried Form
 numbers.foldRight(0)(_+_) // Curried Form
-
-(0 /: numbers)(_+_) // Used in place of foldLeft
-(numbers :\ 0)(_+_) // Used in place of foldRight
 ```
 
 

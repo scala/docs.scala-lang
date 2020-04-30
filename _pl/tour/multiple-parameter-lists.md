@@ -73,7 +73,4 @@ numbers.foldRight(0)((sum, item) => sum + item) // postać ogólna
 
 numbers.foldLeft(0)(_+_) // postać rozwijana (curried)
 numbers.foldRight(0)(_+_) // postać rozwijana (curried)
-
-(0 /: numbers)(_+_) // Alternatywy sposób wywołania foldLeft
-(numbers :\ 0)(_+_) // Alternatywy sposób wywołania foldRight
 ```

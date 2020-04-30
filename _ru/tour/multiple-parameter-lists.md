@@ -78,10 +78,7 @@ numbers.foldRight(0)((sum, item) => sum + item) // Общая Форма
 
 numbers.foldLeft(0)(_+_) // Форма с каррированием
 numbers.foldRight(0)(_+_) // Форма с каррированием
-
-(0 /: numbers)(_+_) // Используется вместо foldLeft
-(numbers :\ 0)(_+_) // Используется вместо foldRight
-```   
+```
 
    
 #### Неявные параметры
