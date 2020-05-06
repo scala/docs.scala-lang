@@ -22,7 +22,7 @@ Collection classes that implement `Iterable` just need to define this method; al
 
 * **Addition**, `concat`, which appends two collections together, or appends all elements of an iterator to a collection.
 * **Map** operations `map`, `flatMap`, and `collect`, which produce a new collection by applying some function to collection elements.
-* **Conversions** `toArray`, `toList`, `toIterable`, `toSeq`, `toIndexedSeq`, `toStream`, `toSet`, `toMap`, which turn an `Iterable` collection into something more specific. All these conversions return their receiver argument unchanged if the run-time type of the collection already matches the demanded collection type. For instance, applying `toList` to a list will yield the list itself.
+* **Conversions** `to`, `toList`, `toVector`, `toMap`, `toSet`, `toSeq`, `toIndexedSeq`, `toBuffer`, `toArray` which turn an `Iterable` collection into something more specific. If the destination is a mutable collection(`to(collection.mutable.X)`, `toArray`, `toBuffer`), a new collection is created by copying the original elements. All these conversions return their receiver argument unchanged if the run-time type of the collection already matches the demanded collection type. For instance, applying `toList` to a list will yield the list itself.
 * **Copying operations**  `copyToArray`. As its name implies, this copies collection elements to an array.
 * **Size info** operations `isEmpty`, `nonEmpty`, `size`, `knownSize`, `sizeIs`. The number of elements of a collections can require a traversal in some cases (e.g. `List`). In other cases the collection can have an infinite number of elements (e.g. `LazyList.from(1)`).
 * **Element retrieval** operations `head`, `last`, `headOption`, `lastOption`, and `find`. These select the first or last element of a collection, or else the first element matching a condition. Note, however, that not all collections have a well-defined meaning of what "first" and "last" means. For instance, a hash set might store elements according to their hash keys, which might change from run to run. In that case, the "first" element of a hash set could also be different for every run of a program. A collection is _ordered_ if it always yields its elements in the same order. Most collections are ordered, but some (_e.g._ hash sets) are not-- dropping the ordering gives a little bit of extra efficiency. Ordering is often essential to give reproducible tests and to help in debugging. That's why Scala collections give ordered alternatives for all collection types. For instance, the ordered alternative for `HashSet` is `LinkedHashSet`.
@@ -70,14 +70,15 @@ Two more methods exist in `Iterable` that return iterators: `grouped` and `slidi
 |  `xs flatMap f`	    |The collection obtained from applying the collection-valued function `f` to every element in `xs` and concatenating the results.|
 |  `xs collect f`	    |The collection obtained from applying the partial function `f` to every element in `xs` for which it is defined and collecting the results.|
 |  **Conversions:**         |						     |
-|  `xs.toArray`	    	    |Converts the collection to an array.	     |
+|  `xs.to(SortedSet)`       | Generic conversion operation that takes a collection factory as parameter. |
 |  `xs.toList`	    	    |Converts the collection to a list.		     |
-|  `xs.toIterable`    	    |Converts the collection to an iterable.	     |
+|  `xs.toVector`          |Converts the collection to a vector.	     |
+|  `xs.toMap`	    	    |Converts the collection of key/value pairs to a map. If the collection does not have pairs as elements, calling this operation results in a static type error.|
+|  `xs.toSet`	    	    |Converts the collection to a set.		     |
 |  `xs.toSeq`	    	    |Converts the collection to a sequence.	     |
 |  `xs.toIndexedSeq`   	    |Converts the collection to an indexed sequence. |
-|  `xs.toSet`	    	    |Converts the collection to a set.		     |
-|  `xs.toMap`	    	    |Converts the collection of key/value pairs to a map. If the collection does not have pairs as elements, calling this operation results in a static type error.|
-|  `xs.to(SortedSet)`       | Generic conversion operation that takes a collection factory as parameter. |
+|  `xs.toBuffer`        |Converts the collection to a buffer.	     |
+|  `xs.toArray`	    	    |Converts the collection to an array.	     |
 |  **Copying:**             |						     |
 |  `xs copyToArray(arr, s, n)`|Copies at most `n` elements of the collection to array `arr` starting at index `s`. The last two arguments are optional.|
 |  **Size info:**           |						     |
