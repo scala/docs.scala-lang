@@ -35,3 +35,36 @@ realBeyoncé.tweet("Just spilled my glass of lemonade")  // prints "real Beyonc�
 ```
 
 Because we said `this: User =>` in `trait Tweeter`, now the variable `username` is in scope for the `tweet` method. This also means that since `VerifiedTweeter` extends `Tweeter`, it must also mix-in `User` (using `with User`).
+
+Giving an alias to `this` can be useful in cases where there's an anonymous inner implementation of the trait that needs to access members of the outer scope. For example:
+```tut
+trait User {
+  def username: String
+}
+
+trait Tweeter {
+  self: User => // reassign this
+  def tweet(tweetText: String) = println(s"$username: $tweetText")
+
+  def withEmotion(emotion: String): Tweeter =
+    new Tweeter with User { // required to mix in User
+      // Accesses outer username
+      val username = self.username
+
+      // Accesses outer tweet method
+      override def tweet(tweetText: String): Unit =
+        self.tweet(s"I'm so $emotion! $tweetText")
+    }
+}
+
+class VerifiedTweeter(val username_ : String) extends Tweeter with User { // We mixin User because Tweeter required it
+  def username = s"real $username_"
+}
+
+val realBeyoncé = new VerifiedTweeter("Beyoncé")
+
+realBeyoncé
+  .withEmotion("embarrassed")
+  .withEmotion("sad")
+  .tweet("Just spilled my glass of lemonade")
+```
