@@ -35,10 +35,9 @@ As a first step, we define an annotation that inherits `StaticAnnotation` and de
 (the name `macroTransform` and the signature `annottees: Any*` of that macro are important as they tell the macro engine
 that the enclosing annotation is a macro annotation).
 
-    import scala.reflect.macros.Context
+    import scala.annotation.{StaticAnnotation, compileTimeOnly}
     import scala.language.experimental.macros
-    import scala.annotation.StaticAnnotation
-    import scala.annotation.compileTimeOnly
+    import scala.reflect.macros.whitebox
 
     @compileTimeOnly("enable macro paradise to expand macro annotations")
     class identity extends StaticAnnotation {
@@ -76,8 +75,17 @@ but we haven't encapsulated this boilerplate in a helper, because compiler plugi
 (By the way, this boilerplate can be abstracted away by a suitable annotation macro, and we'll probably provide such a macro
 at a later point in the future).
 
+    import scala.annotation.{StaticAnnotation, compileTimeOnly}
+    import scala.language.experimental.macros
+    import scala.reflect.macros.whitebox
+
+    @compileTimeOnly("enable macro paradise to expand macro annotations")
+    class identity extends StaticAnnotation {
+      def macroTransform(annottees: Any*): Any = macro identityMacro.impl
+    }
+
     object identityMacro {
-      def impl(c: Context)(annottees: c.Expr[Any]*): c.Expr[Any] = {
+      def impl(c: whitebox.Context)(annottees: c.Expr[Any]*): c.Expr[Any] = {
         import c.universe._
         val inputs = annottees.map(_.tree).toList
         val (annottee, expandees) = inputs match {
