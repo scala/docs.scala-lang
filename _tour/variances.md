@@ -18,6 +18,8 @@ class Bar[-A] // A contravariant class
 class Baz[A]  // An invariant class
 ```
 
+An intuitive explanation: A is a spec of a product delivered in a container. As an intelligent producer I cannot _make_ worse then spec, hence +A (i.e. whatever by spec, but maybe _plus_ some features). BTW "+" also stands for "adding", i.e. producing things, whereas "-" for "taking", i.e. consuming things. As an intelligent consumer I can not _rely_ on features beyond spec (in fact the only thing I can rely on is the obvious fact that I received _something_), hence -A.
+
 ### Covariance
 
 A type parameter `A` of a generic class can be made covariant by using the annotation `+A`. For some `class List[+A]`, making  `A` covariant implies that for two types `A` and `B` where `A` is a subtype of `B`, then `List[A]` is a subtype of `List[B]`. This allows us to make very useful and intuitive subtyping relationships using generics.
