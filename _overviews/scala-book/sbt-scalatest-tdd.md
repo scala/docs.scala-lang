@@ -38,19 +38,16 @@ name := "HelloScalaTest"
 version := "1.0"
 scalaVersion := "{{site.scala-version}}"
 
-libraryDependencies ++= Seq(
-    "org.scalactic" %% "scalactic" % "3.0.8",
-    "org.scalatest" %% "scalatest" % "3.0.8" % "test"
+libraryDependencies +=
+    "org.scalatest" %% "scalatest" % "3.0.8" % Test
 )
 ```
 
 The first three lines of this file are essentially the same as the first example, and the `libraryDependencies` lines tell SBT to include the dependencies (jar files) that are needed to run ScalaTest:
 
 ```scala
-libraryDependencies ++= Seq(
-    "org.scalactic" %% "scalactic" % "3.0.4",
-    "org.scalatest" %% "scalatest" % "3.0.4" % "test"
-)
+libraryDependencies +=
+    "org.scalatest" %% "scalatest" % "3.0.8" % Test
 ```
 
 >The ScalaTest documentation has always been good, and you can always find the up to date information on what those lines should look like on the [Installing ScalaTest](http://www.scalatest.org/install) page.
