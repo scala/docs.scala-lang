@@ -20,7 +20,7 @@ This assumes you know [how to build a project in IntelliJ](building-a-scala-proj
 1. Add the ScalaTest dependency:
     1. Add the ScalaTest dependency to your `build.sbt` file:
         ```
-        libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.8" % "test"
+        libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.8" % Test
         ```
     1. If you get a notification "build.sbt was changed", select **auto-import**.
     1. These two actions will cause `sbt` to download the ScalaTest library.

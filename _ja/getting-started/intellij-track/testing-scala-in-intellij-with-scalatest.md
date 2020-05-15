@@ -16,7 +16,7 @@ Scala には複数のライブラリとテスト方法がありますが、こ�
 1. ScalaTest への依存を追加します。
     1. `build.sbt` ファイルに ScalaTest への依存を追加します。
         ```
-        libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.8" % "test"
+        libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.8" % Test
         ```
     1. `build.sbt was changed` という通知が出たら、**auto-import** を選択します。
     1. これらの2つのアクションにより、`sbt` が ScalaTest ライブラリをダウンロードします。
