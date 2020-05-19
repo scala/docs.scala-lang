@@ -38,7 +38,7 @@ class Point(var x: Int, var y: Int) {
 }
 
 val point1 = new Point(2, 3)
-point1.x  // 2
+println(point1.x)  // 2
 println(point1)  // prints (2, 3)
 ```
 
