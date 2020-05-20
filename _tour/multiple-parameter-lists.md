@@ -58,7 +58,7 @@ def firstWay = foldLeft1[Int, Int](numbers, 0, _ + _)
 def secondWay = foldLeft1(numbers, 0, (a: Int, b: Int) => a + b)
 ```
 
-That's because Scala won't be able to infer the type of the function `_ + _`, as it's still inferring `A` and `B`. By moving the parameter `op` to its own parameter list, `A` and `B` are inferred in the first parameter list. These inferred types will then be available to the second parameter list and `_ + _` will match the the inferred type `(Int, Int) => Int`
+That's because Scala won't be able to infer the type of the function `_ + _`, as it's still inferring `A` and `B`. By moving the parameter `op` to its own parameter list, `A` and `B` are inferred in the first parameter list. These inferred types will then be available to the second parameter list and `_ + _` will match the inferred type `(Int, Int) => Int`
 
 ```tut
 def foldLeft2[A, B](as: List[A], b0: B)(op: (B, A) => B) = ???
