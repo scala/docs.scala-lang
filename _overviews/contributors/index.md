@@ -215,7 +215,7 @@ $ sbt publishSigned
 
 `sbt-sonatype` will package your project and ask your PGP passphrase to sign the files with your PGP key.
 It will then upload the files to Sonatype using your account credentials. When the task is finished, you can
-check the artifacts in the [Nexus Repository Manager](https://oss.sonatype.org) (under “Staging Repositories”).
+check the artifacts in the [Nexus Repository Manager](https://oss.sonatype.org) (in “Repositories”, select “Nexus Managed Repositories“ and look for your group name with all dots removed).
 
 Finally, perform the release with the `sonatypeRelease` sbt task:
 
