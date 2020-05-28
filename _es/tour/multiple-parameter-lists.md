@@ -16,7 +16,7 @@ Los métodos pueden definir múltiples listas de parámetros. Cuando un método 
 
 ### Ejemplos
 
-A continuación hay un ejemplo, tal y como se define en el trait `TraversableOnce` en el API de collecciones de Scala:
+A continuación hay un ejemplo, tal y como se define en el trait `TraversableOnce` en el API de colecciones de Scala:
 
 ```
 def foldLeft[B](z: B)(op: (B, A) => B): B
@@ -76,7 +76,7 @@ Suponer que se dispone del siguiente método:
 def foldLeft1[A, B](as: List[A], b0: B, op: (B, A) => B) = ???
 ```
 
-Y se desea invocarlo de la siguiente manera, pero puede comprobar que no compila:
+Si se invoca de la siguiente manera, se puede comprobar que no compila correctamente:
 
 ```tut:fail
 def notPossible = foldLeft1(numbers, 0, _ + _)
@@ -113,7 +113,7 @@ def execute(arg: Int)(implicit ec: scala.concurrent.ExecutionContext) = ???
 
 #### Aplicación parcial
 
-Cuando un método es invocado con menos parámetros que los que están declarados en la definición del método, esto generará un método que tome los parámetros faltantes como argumentos. Esto se conoce formalmente como [partial application](https://en.wikipedia.org/wiki/Partial_application).
+Cuando un método es invocado con menos parámetros que los que están declarados en la definición del método, esto generará una función que toma los parámetros faltantes como argumentos. Esto se conoce formalmente como [aplicación parcial](https://en.wikipedia.org/wiki/Partial_application).
 
 Por ejemplo,
 

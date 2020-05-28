@@ -1,4 +1,3 @@
----
 layout: tour
 title: Tuples
 partof: scala-tour
@@ -42,9 +41,9 @@ println(ingredient._1) // Sugar
 println(ingredient._2) // 25
 ```
 
-## Pattern matching en tuplas
+## Reconocimiento de patrones en tuplas
 
-Una tupla puede también ser dividida usando pattern matching:
+Una tupla también puede ser dividida/expandida usando reconocimiento de patrones (pattern matching):
 
 ```tut
 val (name, quantity) = ingredient
@@ -55,7 +54,7 @@ println(quantity) // 25
 En esta ocasión el tipo de `name` es inferido como `String` y el de
 `quantity` como `Int`.
 
-A continuación otro ejemplo de pattern-matching con tuplas:
+A continuación otro ejemplo de reconocimiento de patrones con tuplas:
 
 ```tut
 val planets =
@@ -79,8 +78,8 @@ for ((a, b) <- numPairs) {
 
 ## Tuplas y case classes
 
-A veces los usuarios encuentran difícil elegir entre tuplas y case classes. 
-Los elementos de las case classes tienen nombre. Los nombres pueden mejorar
+A veces los usuarios encuentran difícil elegir entre tuplas y clases Case. 
+Los elementos de las clases Case tienen nombre. Los nombres pueden mejorar
 la lectura en el código.
 En el ejemplo anterior de los planetas, podríamos haber definido 
 `case class Planet(name: String, distance: Double)` en vez de usar tuplas.

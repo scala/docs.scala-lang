@@ -16,7 +16,7 @@ Scala es un lenguaje de programación moderno multi-paradigma diseñado para exp
 Scala es un lenguaje puramente orientado a objetos en el sentido de que todo es un objeto. Los tipos y comportamientos de objetos son descritos por [clases](classes.html) y [traits](traits.html) (que podría ser traducido como un "rasgo"). Las clases pueden ser extendidas a través de subclases y un mecanismo flexible [de composición mezclada](mixin-class-composition.html) que provee un claro remplazo a la herencia múltiple.
 
 ## Scala es funcional ##
-Scala es también un lenguaje funcional en el sentido que toda función es un valor. Scala provee una sintaxis ligera para definir funciones anónimas. Soporta [funciones de primer orden](higher-order-functions.html), permite funciones [anidadas](nested-functions.html), y soporta [currying](multiple-parameter-lists.html). Las [case class (clases caso)](case-classes.html) de Scala y las construcciones incorporadas al lenguaje para [reconocimiento de patrones](pattern-matching.html) modelan tipos algebraicos usados en muchos lenguajes de programación funcionales.
+Scala es también un lenguaje funcional en el sentido que toda función es un valor. Scala provee una sintaxis ligera para definir funciones anónimas. Soporta [funciones de orden superior](higher-order-functions.html), permite funciones [anidadas](nested-functions.html), y soporta [currying](multiple-parameter-lists.html). Las [clases Case](case-classes.html) de Scala y las construcciones incorporadas al lenguaje para [reconocimiento de patrones](pattern-matching.html) modelan tipos algebraicos usados en muchos lenguajes de programación funcionales.
 
 Además, la noción de reconocimiento de patrones de Scala se puede extender naturalmente al procesamiento de datos XML con la ayuda de [patrones de expresiones regulares](regular-expression-patterns.html). En este contexto, la compresión de bucles `for` resultan útiles para formular consultas. Estas características hacen a Scala un lenguaje ideal para desarrollar aplicaciones como Web Services.
 
@@ -45,9 +45,9 @@ El uso conjunto de ambas características facilita la definición de nuevas sent
 
 Scala está diseñado para interoperar correctamente con la popular Java Runtime Environment (JRE).
 En particular, es posible la misma interacción con el lenguaje de programación Java.
-Nuevas características de Java como SAMs, [lambdas](higher-order-functions.html), [annotations](annotations.html), y [generics](generic-classes.html) tienen sus análogos en Scala.
+Nuevas características de Java como SAMs, [lambdas](higher-order-functions.html), [anotaciones](annotations.html), y [clases genéricas](generic-classes.html) tienen sus análogos en Scala.
 
-Aquellas características de Scala que no tienen analogías en Java, como por ejemplo [default](default-parameter-values.html) y [named parameters](named-arguments.html), compilan de una forma tan similar a Java como es razonablemente posible. 
+Aquellas características de Scala que no tienen analogías en Java, como por ejemplo [parámetros por defecto](default-parameter-values.html) y [parámetros con nombre](named-arguments.html), compilan de una forma tan similar a Java como es razonablemente posible. 
 Scala tiene el mismo modelo de compilación (compilación separada, carga de clases dinámica) que Java y permite acceder a miles de bibliotecas de alta calidad ya existentes.
 
 ## ¡Disfruta el tour!
