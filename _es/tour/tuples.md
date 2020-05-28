@@ -1,3 +1,4 @@
+---
 layout: tour
 title: Tuples
 partof: scala-tour
