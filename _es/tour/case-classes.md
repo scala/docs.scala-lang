@@ -10,7 +10,7 @@ next-page: compound-types
 previous-page: classes
 ---
 
-Scala da soporte a la noción de _clases caso_ (en inglés _case classes_, desde ahora _clases Case_). Las clases Case son clases regulares las cuales exportan sus parámetros constructores y a su vez proveen una descomposición recursiva de sí mismas a través de [reconocimiento de patrones](pattern-matching.html).
+Scala da soporte a la noción de _clases case_ (en inglés _case classes_, desde ahora _clases Case_). Las clases Case son clases regulares las cuales exportan sus parámetros constructores y a su vez proveen una descomposición recursiva de sí mismas a través de [reconocimiento de patrones](pattern-matching.html).
 
 A continuación se muestra un ejemplo para una jerarquía de clases la cual consiste de una super clase abstracta llamada `Term` y tres clases concretas: `Var`, `Fun` y `App`.
 
@@ -73,6 +73,8 @@ Solo tiene sentido definir una clase Case si el reconocimiento de patrones es us
       println(isIdentityFun(t))
     }
 
-En nuestro ejemplo, la función `printTerm` es expresada como una sentencia basada en reconocimiento de patrones, la cual comienza con la palabra reservada `match` y consiste en secuencias de sentencias tipo `case PatronBuscado => Código que se ejecuta`.
+En nuestro ejemplo, la función `printTerm` es expresada como una sentencia basada en reconocimiento de patrones, la cual comienza con la palabra reservada `match` y consiste en secuencias de sentencias tipo `case PatrónBuscado => Código que se ejecuta`.
 
-El programa de arriba también define una función `isIdentityFun` la cual comprueba si un término dado se corresponde con una función identidad simple. Ese ejemplo utiliza patrones y guardas más avanzados (obsrvese la guarda `if x==y`). Tras reconocer un patrón con un valor dado, la guarda (definida después de la palabra clave `if`) es evaluada. Si retorna `true` (verdadero), el reconocimiento es exitoso; de no ser así, falla y se intenta con el siguiente patrón.
+El programa de arriba también define una función `isIdentityFun` la cual comprueba si un término dado se corresponde con una función identidad simple. Ese ejemplo utiliza patrones y comparaciones más avanzadas (obsérvese la guarda `if x==y`). 
+Tras reconocer un patrón con un valor dado, se evalúa la comparación (definida después de la palabra clave `if`). 
+Si retorna `true` (verdadero), el reconocimiento es exitoso; de no ser así, falla y se intenta con el siguiente patrón.
