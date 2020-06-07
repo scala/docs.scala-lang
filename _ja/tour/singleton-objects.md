@@ -102,7 +102,7 @@ scalaCenterEmail match {
     s"""Registered an email
        |Username: ${email.username}
        |Domain name: ${email.domainName}
-     """)
+     """.stripMargin)
   case None => println("Error: could not parse email")
 }
 ```
