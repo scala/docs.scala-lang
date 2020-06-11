@@ -350,14 +350,14 @@ For example, to look up the `map` method of `List`, one can do:
     scala> import scala.reflect.runtime.universe._
     import scala.reflect.runtime.universe._
 
-    scala> typeOf[List[_]].member("map": TermName)
+    scala> typeOf[List[_]].member(TermName("map"))
     res0: scala.reflect.runtime.universe.Symbol = method map
 
 Note that we pass method `member` a `TermName`, since we're looking up a
 method. If we were to look up a type member, such as `List`'s self type, `Self`, we
 would pass a `TypeName`:
 
-    scala> typeOf[List[_]].member("Self": TypeName)
+    scala> typeOf[List[_]].member(TypeName("Self"))
     res1: scala.reflect.runtime.universe.Symbol = type Self
 
 We can also query all members or declarations on a type in interesting ways.
