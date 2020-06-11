@@ -15,14 +15,14 @@ Traduction et arrangements par Agnès Maury.
 Ce document présente une introduction rapide au langage Scala et à son compilateur.
 Il est destiné aux personnes ayant une expérience de programmation et qui souhaitent 
 un aperçu de ce qu'ils peuvent faire avec Scala. On part du principe que le lecteur possède
-une base de connaissance sur la programmation orientée objet, particulièrement sur Java.
+des connaissances de base sur la programmation orientée objet, particulièrement sur Java.
 
 
 ## Un premier exemple
 
-Comme premier exemple, nous utiliserons le programme standard *Hello world*.
-Il n'est pas très fascinant, mais il permet de démontrer facilement l'utilisation d'outils Scala
-sans avoir une grande connaissance du langage. Voilà à quoi il ressemble :
+Commençons par écrire le célèbre programme  *Hello world*. 
+Bien que simple, il permet de découvrir plusieurs fonctionnalités du language
+avec peu de de connaissance préalable de Scala. Voilà à quoi il ressemble :
 
     object HelloWorld {
       def main(args: Array[String]): Unit = {
@@ -44,7 +44,7 @@ la première fois qu'elle est utilisée.
 
 Le lecteur avisé a pu remarquer que la méthode `main` n'est pas déclarée en tant que `static`.
 C'est parce que les membres statiques (membres ou champs) n'existent pas en Scala. Plutôt que de définir des
-membres statiques, le développeur Scala déclarent ces membres dans un objet singleton.
+membres statiques, le développeur Scala déclare ces membres dans un objet singleton.
 
 ### Compiler l'exemple
 
@@ -66,7 +66,7 @@ en utilisant la commande `scala`, comme décrit dans la section suivante.
 ### Exécuter l'exemple
 
 Une fois compilé, le programme Scala peut être exécuté en utilisant la commande `scala`.
-Son utilisation est très similaire à la commande `java` utilisée en pour exécuter les programmes Java,
+Son utilisation est très similaire à la commande `java` utilisée pour exécuter les programmes Java,
 et qui accepte les mêmes options. L'exemple ci-dessus peut être exécuté en utilisant la commande suivante,
 ce qui produit le résultat attendu :
 
@@ -80,13 +80,12 @@ L'une des forces du Scala est qu'il rend très facile l'interaction avec le code
 Toutes les classes du paquet `java.lang` sont importées par défaut, alors que les autres
 doivent être importées explicitement.
 
-Regardons un exemple qui démontre ceci. Nous voulons obtenir et formater la date actuelle
+Prenons l'exemple suivant. Nous voulons obtenir et formater la date actuelle
 par rapport aux conventions utilisées dans un pays spécifique, par exemple la France.
 
 Les librairies de classes Java définissent des classes utilitaires très puissantes, comme `Date`
-et `DateFormat`. Comme Scala interagit avec Java, il n'y a pas besoin d'implémenter
-des classes équivalent dans la librairie de classe de Scala --nous pouvons simplement importer
-les classes des paquets correspondants de Java:
+et `DateFormat`. Comme Scala interagit avec Java, il n'y a pas besoin de ré-implémenter ces classes en Scala 
+--nous pouvons simplement importer les classes des paquets correspondants de Java :
 
     import java.util.{Date, Locale}
     import java.text.DateFormat._
@@ -129,7 +128,7 @@ dont l'une va être explorée dans la section suivante.
 Pour conclure cette section sur l'intégration avec Java, il faut noter qu'il est possible
 d'hériter de classes Java et d'implémenter des interfaces Java directement en Scala.
 
-## Tout est un object
+## Tout est objet
 
 Scala est un langage purement orienté objet dans le sens où *tout* est un objet,
 y compris les nombres ou les fonctions. Cela diffère du Java dans cet aspect, car Java
@@ -187,7 +186,7 @@ qui imprime une phrase dans le terminal. Dans d'autres termes, ce programme impr
       }
     }
 
-Notez que pour imprimer la String, nous avons utilisé la méthode prédéfinie `println` au lieu
+Notez que pour imprimer la String, nous utilisons la méthode prédéfinie `println` au lieu
 d'utiliser celle du paquet `System.out`.
 
 #### Fonctions anonymes
@@ -223,8 +222,8 @@ de cette fonction est le même que celui de `leTempsPasse` décrit plus haut.
 
 ## Classes
 
-Comme nous l'avons plus tôt, Scala est un langage orienté objet et de ce fait, possède le concept de classe
-(pour être plus exact, il existe certains langages orientés objet ne possèdent pas le concept de classe 
+Comme nous l'avons vu plus tôt, Scala est un langage orienté objet et de ce fait, possède le concept de classe
+(pour être plus exact, il existe certains langages orientés objet qui ne possèdent pas le concept de classe 
 mais Scala n'en fait pas partie). Les classes en Scala sont déclarées en utilisant une syntaxe proche de
 celle de Java. Une différence notable est que les classes en Scala peuvent avoir des paramètres.
 Ceci est illustré dans la définition suivante des nombres complexes.
@@ -235,7 +234,7 @@ Ceci est illustré dans la définition suivante des nombres complexes.
     }
 
 La classe `Complexe` prend en entrée deux arguments : la partie réelle et la partie imaginaire du
-nombre complexe. Ces arguments peuvent être passé lors de la création d'une instance de `Complexe` comme
+nombre complexe. Ces arguments peuvent être passés lors de la création d'une instance de `Complexe` comme
 ceci :
 
     new Complexe(1.5, 2.3)  
@@ -250,9 +249,9 @@ Le compilateur n'est pas toujours capable d'inférer des types comme il le fait 
 malheureusement aucune règle simple pour savoir dans quel cas il est capable de le faire. En pratique,
 ce n'est pas généralement un problème car le compilateur se plaint quand il n'est pas capable d'inférer
 un type qui n'a pas été donné explicitement. Une règle simple que les développeurs débutant en Scala
-devrait suivre est d'essayer d'omettre les déclarations de type qui semblent être faciles à
+devraient suivre est d'essayer d'omettre les déclarations de type qui semblent être faciles à
 déduire et voir si le compilateur ne renvoie pas d'erreur. Après quelques temps, le développeur devrait
-avoir un bon idée de quand il peut omettre les types et quand il faut les spécifier explicitement.
+avoir une bonne idée de quand il peut omettre les types et quand il faut les spécifier explicitement.
 
 ### Les méthodes sans arguments
 
@@ -280,7 +279,7 @@ ou lors de leur utilisation. Notre classe `Complexe` peut être réécrite de ce
 
 ### Héritage et redéfinition
 
-Toutes les classes en Scala hérite d'une super classe. Quand aucun super classe n'est spécifiée,
+Toutes les classes en Scala héritent d'une super classe. Quand aucune super classe n'est spécifiée,
 comme dans l'exemple `Complexe` de la section précédente, la classe `scala.AnyRef` est utilisée 
 implicitement.
 
@@ -310,10 +309,10 @@ Nous pouvons alors appeler la méthode `toString` redéfinie comme ci-dessus.
 L'arbre est un type de structure de données qui revient souvent.
 Par exemple, les interpréteurs et les compilateurs représentent généralement en interne les programmes
 comme des arbres ; les documents XML sont des arbres ; et beaucoup de conteneurs sont basés sur des 
-arbres, comme les arbres rouge-noire.
+arbres, comme les arbres bicolores.
 
 Nous allons maintenant examiner comment de tels arbres sont représentés et manipulés en Scala à travers
-d'un petit programme calculatrice. Le but de ce programme est de manipuler des expressions arithmétiques
+d'un petit programme de calculatrice. Le but de ce programme est de manipuler des expressions arithmétiques
 simples composées de sommes, de constantes numériques et de variables. Deux exemples de telles expressions
 sont `1+2` et `(x+x)+(7+y)`.
 
@@ -338,13 +337,13 @@ différent des classes traditionnelles en différents points :
 - le mot clé `new` n'est pas obligatoire lors de la création d'instance de ces classes (c'est-à-dire qu'on
   peut écrire `Const(5)` à la place de `new Const(5)`) ;
 - les fonctions accesseurs sont automatiquement définies pour les paramètres du constructeur
-  (c'est-à-dire qu'il est de récupérer la valeur du paramètre du constructeur `v` pour une instance `c` de 
+  (c'est-à-dire qu'il est possible de récupérer la valeur du paramètre du constructeur `v` pour une instance `c` de 
   la classe `Const` en écrivant tout simplement `c.v`) ;
 - une définition par défaut des méthodes `equals` et `hashCode` est fournie, qui se base sur la
   *structure* des instances et non pas leur identité ;
 - une définition par défaut de la méthode `toString` est fournie et imprime la valeur "à la source"
   (par exemple, l'arbre pour l'expression `x+1` s'imprime comme `Somme(Var(x),Const(1))`) ;
-- les instances de ces classes peuvent être décomposées avec un *pattern matching* (filtrage de motif)
+- les instances de ces classes peuvent être décomposées avec un *pattern matching* (filtrage par motif)
   comme nous le verrons plus bas.
   
 Maintenant que nous avons défini le type de données pour représenter nos expressions arithmétiques,
@@ -436,7 +435,7 @@ sur les expressions arithmétiques : la dérivée de fonction. Le lecteur doit
 garder à l'esprit les règles suivantes par rapport à cette opération :
 
 1. la dérivée d'une somme est la somme des dérivées ;
-2. la dérivée d'une variable `v` est un si `v` est la
+2. la dérivée d'une variable `v` est 1 si `v` est égale la
    variable utilisée pour la dérivation et zéro sinon ;
 3. la dérivée d'une constante est zéro.
 
@@ -450,13 +449,13 @@ pour obtenir la définition suivante :
     }
 
 Cette fonction introduit deux nouveaux concepts reliés au pattern matching.
-Premièrement, l'expression `case` pour les variables ont un *garde*,
-une expression suivant le mot clé `if`. Ce garde empêche le pattern matching
-de réussir à moins que l'expression est vraie. Ici, il est utilisé
+
+Premièrement, l'expression `case` qui peut être utilisé avec un *garde* qui suit le mot clé `if`.
+Ce garde empêche le pattern matching de réussir à moins que l'expression soit vraie. Ici, il est utilisé
 pour s'assurer qu'on retourne la constante `1` uniquement si le nom de 
 la variable se faisant dériver est la même que la variable de dérivation
 `v`. La seconde nouvelle fonctionnalité du pattern matching utilisée ici est 
-le motif *joker*, représentée par `_`, qui est un motif correspondant
+le motif *joker*, représenté par `_`, qui est un motif correspondant à
 n'importe quelle valeur sans lui donner un nom.
 
 Nous n'avons pas encore exploré l'étendue du pouvoir du pattern matching, mais nous
@@ -495,8 +494,8 @@ comme exercice pour le lecteur.
 Hormis le fait d'hériter du code d'une super classe, une classe Scala peut aussi
 importer du code d'un ou de plusieurs *traits*.
 
-Peut-être que le moyen le plus simple pour un développeur Java de comprendre que ce qu'est
-un trait est de le voir comme une interface qui peut aussi contenir du code. En
+Peut-être que le moyen le plus simple pour un développeur Java de comprendre les traits
+est de le voir comme une interface qui peut aussi contenir du code. En
 Scala, quand une classe hérite d'un trait, elle implémente son interface et
 hérite de tout le code contenu dans ce trait.
 
@@ -575,7 +574,7 @@ La deuxième, `asInstanceOf`, correspond à l'opérateur de conversion de type :
 si l'objet est une instance du type donné, il est vu en tant que tel,
 sinon une `ClassCastException` est levée.
 
-Enfin, la dernière méthode à définir est le prédicat qui test l'infériorité,
+Enfin, la dernière méthode à définir est le prédicat qui teste l'infériorité
 comme décrit plus loin. Elle utilise une autre méthode,
 `error` du paquet `scala.sys`, qui lève une exception avec le message d'erreur donné.
 
@@ -592,9 +591,8 @@ comme décrit plus loin. Elle utilise une autre méthode,
 Cela complète la définition de la classe `Date`. Les instances de 
 cette classe peuvent être vues soit comme des dates, soit comme des objets comparables.
 De plus, elles définissent les six prédicats de comparaison mentionnés
-au-dessus : `equals` et `<` car elles apparaissent directement dans
-la définition de la classe `Date`, mais aussi les autres car elles sont
-héritées du trait `Ord`.
+ci-dessus : `equals` et `<` car elles apparaissent directement dans
+la définition de la classe `Date`, ainsi que les autres qui sont directement héritées du trait `Ord`.
 
 Bien sûr, les traits sont utiles dans d'autres situations que celle décrite ici,
 mais discuter de leurs applications plus amplement est hors de la
@@ -636,7 +634,7 @@ qui est le type de son élément. Ce type est utilisé dans le corps de la
 classe en tant que de la variable `contenu`, l'argument de la méthode
 `set` et le type de retour de la méthode `get`.
 
-L'échantillon de code ci-dessus introduits les variables en Scala, ce qui ne devrait pas
+L'échantillon de code ci-dessus introduit les variables en Scala, ce qui ne devrait pas
 demander plus d'explications. Cependant, il est intéressant de voir que
 la valeur initiale donnée à la variable est `_` qui représente 
 une valeur par défaut. Cette valeur par défaut est 0 pour les types numériques,
