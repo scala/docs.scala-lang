@@ -28,7 +28,7 @@ which also provides a richer shell environment.
 
 Useful REPL features include:
 
-  - the REPL's IMain is bound to `$intp`.
+  - the REPL's IMain is bound to `$r.intp`.
   - the REPL's last exception is bound to `lastException`.
   - use tab for completion.
   - use `//print<tab>` to show typed desugarings.
