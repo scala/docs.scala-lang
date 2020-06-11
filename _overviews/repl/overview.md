@@ -74,7 +74,7 @@ That is analogous to importing from the runtime reflective context using `import
 
 Power mode also offers some utility methods as documented in the welcome banner.
 
-Its facilities can be witnessed using `:imports` or `-Xprint:parser`.
+Its facilities can be witnessed using `:imports` or `:settings -Xprint:parser`.
 
 ### Contributing to Scala REPL
 
