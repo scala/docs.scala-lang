@@ -61,7 +61,7 @@ println(point1.x)  // prints 1
 In this version of the `Point` class, `x` and `y` have the default value `0` so no arguments are required. However, because the constructor reads arguments left to right, if you just wanted to pass in a `y` value, you would need to name the parameter.
 ```
 class Point(var x: Int = 0, var y: Int = 0)
-val point2 = new Point(y=2)
+val point2 = new Point(y = 2)
 println(point2.y)  // prints 2
 ```
 
