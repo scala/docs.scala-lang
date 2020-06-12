@@ -86,11 +86,7 @@ the `map` method (which is a term) declared in the `List` class, one can do:
     res1: scala.reflect.runtime.universe.Symbol = method map
 
 To search for a type member, one can follow the same procedure, using
-`TypeName` instead. It is also possible to rely on implicit conversions to
-convert between strings and term or type names:
-
-    scala> listTpe.member("map": TermName)
-    res2: scala.reflect.runtime.universe.Symbol = method map
+`TypeName` instead.
 
 ### Standard Names
 
