@@ -707,7 +707,7 @@ there’s already a `parse` method built into the macro context. For example:
     scala> def impl(c: scala.reflect.macros.Context) = c.Expr[Unit](c.parse("println(2)"))
     impl: (c: scala.reflect.macros.Context)c.Expr[Unit]
 
-    scala> def test = macro impl
+    scala> def test: Unit = macro impl
     test: Unit
 
     scala> test
