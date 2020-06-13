@@ -119,11 +119,11 @@ Additional functionality is exposed in *member scopes* that are returned by
 [scala.reflect.api.Scopes#MemberScope](https://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/Scopes$MemberScope.html)
 supports the `sorted` method, which sorts members *in declaration order*.
 
-The following example returns a list of the symbols of all overridden members
+The following example returns a list of the symbols of all final members
 of the `List` class, in declaration order:
 
-    scala> val overridden = listTpe.decls.sorted.filter(_.isOverride)
-    overridden: List[scala.reflect.runtime.universe.Symbol] = List(method companion, method ++, method +:, method toList, method take, method drop, method slice, method takeRight, method splitAt, method takeWhile, method dropWhile, method span, method reverse, method stringPrefix, method toStream, method foreach)
+    scala> val overridden = listTpe.decls.sorted.filter(_.isFinal)
+    overridden: List(method isEmpty, method map, method collect, method flatMap, method takeWhile, method span, method foreach, method reverse, method foldRight, method length, method lengthCompare, method forall, method exists, method contains, method find, method mapConserve, method toList)
 
 ## Exprs
 
