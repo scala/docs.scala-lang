@@ -200,7 +200,8 @@ Constant expressions are used to represent
 
 Example:
 
-    Literal(Constant(5))
+    scala> Literal(Constant(5))
+    val res6: reflect.runtime.universe.Literal = 5
 
 The above expression creates an AST representing the integer literal `5` in
 Scala source code.
@@ -420,7 +421,7 @@ Positions can refer either to only a single character in a source file, or to
 a *range*. In the latter case, a *range position* is used (positions that are
 not range positions are also called *offset positions*). Range positions have
 in addition `start` and `end` offsets. The `start` and `end` offsets can be
-"focussed" on using the `focusStart` and `focusEnd` methods which return
+"focused" on using the `focusStart` and `focusEnd` methods which return
 positions (when called on a position which is not a range position, they just
 return `this`).
 
