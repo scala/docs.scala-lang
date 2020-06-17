@@ -76,12 +76,12 @@ That it because, for example, the following statement
 
 is translated into
 
-    c.withFiler{
+    c.withFilter{
         case (a, b) => true
         case _ => false
     }.map{case (a, b) => {...}
 
-where the `withFiler` ensures that the pattern in the subsequent function is
+where the `withFilter` ensures that the pattern in the subsequent function is
 always satisfied
 
 Clarity
