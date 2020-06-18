@@ -65,12 +65,12 @@ is translated into
 
 #### Example 5
 
-When pattern matching is used in for comprehensions on objects which do not
+When pattern matching is used in for-comprehensions on objects which do not
 implement `filter` or `withFilter` compilation fails with the following error
 
     value withFilter is not a member of ...
 
-That it because, for example, the following statement
+That is because, for example, the following statement
 
     for((a, b) <- c) yield {...}
 
@@ -79,10 +79,10 @@ is translated into
     c.withFilter{
         case (a, b) => true
         case _ => false
-    }.map{case (a, b) => {...}
+    }.map{case (a, b) => {...}}
 
 where the `withFilter` ensures that the pattern in the subsequent function is
-always satisfied
+always satisfied.
 
 Clarity
 ----------------------------------
