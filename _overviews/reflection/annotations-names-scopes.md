@@ -86,11 +86,7 @@ the `map` method (which is a term) declared in the `List` class, one can do:
     res1: scala.reflect.runtime.universe.Symbol = method map
 
 To search for a type member, one can follow the same procedure, using
-`TypeName` instead. It is also possible to rely on implicit conversions to
-convert between strings and term or type names:
-
-    scala> listTpe.member("map": TermName)
-    res2: scala.reflect.runtime.universe.Symbol = method map
+`TypeName` instead.
 
 ### Standard Names
 
@@ -123,11 +119,11 @@ Additional functionality is exposed in *member scopes* that are returned by
 [scala.reflect.api.Scopes#MemberScope](https://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/Scopes$MemberScope.html)
 supports the `sorted` method, which sorts members *in declaration order*.
 
-The following example returns a list of the symbols of all overridden members
+The following example returns a list of the symbols of all final members
 of the `List` class, in declaration order:
 
-    scala> val overridden = listTpe.decls.sorted.filter(_.isOverride)
-    overridden: List[scala.reflect.runtime.universe.Symbol] = List(method companion, method ++, method +:, method toList, method take, method drop, method slice, method takeRight, method splitAt, method takeWhile, method dropWhile, method span, method reverse, method stringPrefix, method toStream, method foreach)
+    scala> val overridden = listTpe.decls.sorted.filter(_.isFinal)
+    overridden: List(method isEmpty, method map, method collect, method flatMap, method takeWhile, method span, method foreach, method reverse, method foldRight, method length, method lengthCompare, method forall, method exists, method contains, method find, method mapConserve, method toList)
 
 ## Exprs
 
@@ -204,7 +200,8 @@ Constant expressions are used to represent
 
 Example:
 
-    Literal(Constant(5))
+    scala> Literal(Constant(5))
+    val res6: reflect.runtime.universe.Literal = 5
 
 The above expression creates an AST representing the integer literal `5` in
 Scala source code.
@@ -424,7 +421,7 @@ Positions can refer either to only a single character in a source file, or to
 a *range*. In the latter case, a *range position* is used (positions that are
 not range positions are also called *offset positions*). Range positions have
 in addition `start` and `end` offsets. The `start` and `end` offsets can be
-"focussed" on using the `focusStart` and `focusEnd` methods which return
+"focused" on using the `focusStart` and `focusEnd` methods which return
 positions (when called on a position which is not a range position, they just
 return `this`).
 
