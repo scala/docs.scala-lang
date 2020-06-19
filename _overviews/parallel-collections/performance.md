@@ -72,7 +72,7 @@ It should be run using the server version of the HotSpot JVM, which does more
 aggressive optimizations.
 
 Finally, to reduce the chance of a garbage collection occurring in the middle
-of the benchmark, ideally a garbage collection cycle should occur prior to the
+of the benchmark, ideally, a garbage collection cycle should occur prior to the
 run of the benchmark, postponing the next cycle as far as possible.
 
 For proper benchmark examples, you can see the source code inside [Scala library benchmarks][3].
