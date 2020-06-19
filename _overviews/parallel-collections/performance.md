@@ -39,7 +39,7 @@ management. Every once in a while, the execution of the program is stopped and
 a garbage collector is run. If the program being benchmarked allocates any
 heap memory at all (and most JVM programs do), the garbage collector will have
 to run, thus possibly distorting the measurement. To amortize the garbage
-collection effects, the measured program should run many times to trigger many
+collection effects, the measured program should run several times to trigger many
 garbage collections.
 
 One common cause of a performance deterioration is also boxing and unboxing
