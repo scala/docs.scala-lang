@@ -13,7 +13,7 @@ permalink: /overviews/parallel-collections/:title.html
 ## Performance on the JVM
 
 The performance model on the JVM is sometimes convoluted in commentaries about
-it, and as a result is not well understood. For various reasons, some code may
+it, and as a result, is not well understood. For various reasons, some code may
 not be as performant or as scalable as expected. Here, we provide a few
 examples.
 
@@ -25,7 +25,7 @@ is converted into machine code for the computer architecture on which it is
 being run. This is called the just-in-time compilation. The level of code
 optimization is, however, low with just-in-time compilation, since it has to
 be fast. To avoid recompiling, the so called HotSpot compiler only optimizes
-parts of the code which are executed frequently. What this means for the
+parts of the code, which are executed frequently. What this means for the
 benchmark writer is that a program might have different  performance each time
 it is run. Executing the same piece of code (e.g. a method) multiple times in
 the same JVM instance might give very different performance results depending
@@ -35,7 +35,7 @@ the time during which the JIT compiler itself was performing the optimization,
 thus giving inconsistent results.
 
 Another hidden execution that takes part on the JVM is the automatic memory
-management. Every once in a while, the execution of the program is stopped and
+management. Every once in a while, the execution of the program is stopped, and
 a garbage collector is run. If the program being benchmarked allocates any
 heap memory at all (and most JVM programs do), the garbage collector will have
 to run, thus possibly distorting the measurement. To amortize the garbage
