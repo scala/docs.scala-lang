@@ -27,7 +27,7 @@ This creates a tuple containing a `String` element and an `Int` element.
 The inferred type of `ingredient` is `(String, Int)`, which is shorthand
 for `Tuple2[String, Int]`.
 
-To represent tuples, Scala uses a series of classes: `Tuple2`, `Tuple3`, etc., through `Tuple22`.
+To represent tuples, Scala uses a series of classes: `Tuple1`, `Tuple2`, `Tuple3`, etc., through `Tuple22`.
 Each class has as many type parameters as it has elements.
 
 ## Accessing the elements
