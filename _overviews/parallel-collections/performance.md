@@ -24,7 +24,7 @@ little optimization. On most modern JVMs, once the program bytecode is run, it
 is converted into machine code for the computer architecture on which it is
 being run. This is called the just-in-time compilation. The level of code
 optimization is, however, low with just-in-time compilation, since it has to
-be fast. To avoid recompiling, the so called HotSpot compiler only optimizes
+be fast. To avoid recompiling, the so-called HotSpot compiler only optimizes
 parts of the code which are executed frequently. What this means for the
 benchmark writer is that a program might have different  performance each time
 it is run. Executing the same piece of code (e.g. a method) multiple times in
