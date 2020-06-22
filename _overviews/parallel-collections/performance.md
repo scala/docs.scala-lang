@@ -87,7 +87,7 @@ depends on many factors. Some of them, but not all, include:
 - Machine architecture. Different CPU types have different
   performance and scalability characteristics. Orthogonal to that,
   whether the machine is multicore or has multiple processors
-  communicating via motherboard.
+  communicating via the motherboard.
 - JVM vendor and version. Different VMs apply different
   optimizations to the code at runtime. They implement different memory
   management and synchronization techniques. Some do not support
