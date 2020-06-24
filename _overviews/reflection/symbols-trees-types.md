@@ -701,17 +701,21 @@ method.
 _Note:_ when using macros, one shouldn’t use `ToolBox.parse`. This is because
 there’s already a `parse` method built into the macro context. For example:
 
+    bash$ scala -Yrepl-class-based:false
+    
     scala> import scala.language.experimental.macros
     import scala.language.experimental.macros
 
-    scala> def impl(c: scala.reflect.macros.Context) = c.Expr[Unit](c.parse("println(2)"))
-    impl: (c: scala.reflect.macros.Context)c.Expr[Unit]
+    scala> def impl(c: scala.reflect.macros.whitebox.Context) = c.Expr[Unit](c.parse("println(2)"))
+    def impl(c: scala.reflect.macros.whitebox.Context): c.Expr[Unit]
 
     scala> def test: Unit = macro impl
-    test: Unit
+    def test: Unit
 
     scala> test
     2
+
+You can find more about the two `Context`s in [this Macros article]({{ site.baseurl }}/overviews/macros/blackbox-whitebox.html).
 
 ##### Typechecking with ToolBoxes
 
