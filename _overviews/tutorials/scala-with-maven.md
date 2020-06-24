@@ -58,18 +58,9 @@ The easiest way to create new projects is using an ["archetype"][11]. An archety
 
 You run the archetype plugin like this:
 
-    mvn archetype:generate
+    mvn archetype:generate -DarchetypeGroupId=net.alchim31.maven -DarchetypeArtifactId=scala-archetype-simple
 
 If this is your first time, you'll notice that Maven is downloading many jar files. Maven resolves dependencies and downloads them as needed (and only once). Right now, Maven is downloading its core plugins.
-
-Afterwards, it should give you a list of archetypes (in the hundreds).
-The Scala Maven Plugin was 339 on my list: "net.alchim31.maven:scala-archetype-simple (The maven-scala-plugin is used for compiling/testing/running/documenting scala code in maven.)".
-You can type "scala" (or something else) to filter the results.
-As of 2015 January 27, there you can choose version 3.1.4 or 3.1.5 of this plugin; you should choose the latest
-
-    Choose net.alchim31.maven:scala-archetype-simple version:
-    1: 1.4
-    2: 1.5
 
 Next, Maven will ask you for a groupId, artifactId, and package. You can read the [guide to naming conventions][12], but in short:
 

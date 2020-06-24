@@ -63,8 +63,31 @@ is translated into
 
     c.map(x => (x, ...)).map((x,y) => {...})
 
+#### Example 5
 
-When you look at very simple for comprehensions, the map/foreach alternatives
+When pattern matching is used in for-comprehensions on objects which do not
+implement `filter` or `withFilter` compilation fails with the following error
+
+    value withFilter is not a member of ...
+
+That is because, for example, the following statement
+
+    for((a, b) <- c) yield {...}
+
+is translated into
+
+    c.withFilter{
+        case (a, b) => true
+        case _ => false
+    }.map{case (a, b) => {...}}
+
+where the `withFilter` ensures that the pattern in the subsequent function is
+always satisfied.
+
+Clarity
+----------------------------------
+
+When you look at very simple for comprehensions, the `map`/`foreach` alternatives
 look, indeed, better. Once you start composing them, though, you can easily get
 lost in parenthesis and nesting levels. When that happens, for comprehensions
 are usually much clearer.

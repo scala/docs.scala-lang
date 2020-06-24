@@ -2,7 +2,7 @@
 title: "Hands-on Scala Programming"
 link: https://www.handsonscala.com/
 image: /resources/img/books/HandsOnScala.jpg
-status: Available now
+status: Covers Scala 2.13
 authors: ["Li Haoyi"]
 publisher: Li Haoyi
 publisherLink: http://www.lihaoyi.com
