@@ -1,8 +1,8 @@
 ---
 type: section
 layout: multipage-overview
-title: Using ScalaTest with SBT
-description: This lesson shows how to write ScalaTest unit tests with SBT in a test-driven development (TDD) style.
+title: Using ScalaTest with sbt
+description: This lesson shows how to write ScalaTest unit tests with sbt in a test-driven development (TDD) style.
 partof: scala_book
 overview-name: Scala Book
 discourse: true
@@ -13,12 +13,12 @@ next-page: sbt-scalatest-bdd
 ---
 
 
-[ScalaTest](http://www.scalatest.org) is one of the main testing libraries for Scala projects, and in this lesson you’ll see how to create a Scala project that uses ScalaTest. You’ll also be able to compile, test, and run the project with SBT.
+[ScalaTest](http://www.scalatest.org) is one of the main testing libraries for Scala projects, and in this lesson you’ll see how to create a Scala project that uses ScalaTest. You’ll also be able to compile, test, and run the project with sbt.
 
 
 ## Creating the project directory structure
 
-As with the previous lesson, create an SBT project directory structure for a project named *HelloScalaTest* with the following commands:
+As with the previous lesson, create an sbt project directory structure for a project named *HelloScalaTest* with the following commands:
 
 ```sh
 mkdir HelloScalaTest
@@ -43,7 +43,7 @@ libraryDependencies +=
 )
 ```
 
-The first three lines of this file are essentially the same as the first example, and the `libraryDependencies` lines tell SBT to include the dependencies (jar files) that are needed to run ScalaTest:
+The first three lines of this file are essentially the same as the first example, and the `libraryDependencies` lines tell sbt to include the dependencies (jar files) that are needed to run ScalaTest:
 
 ```scala
 libraryDependencies +=
@@ -156,7 +156,7 @@ Now you can run these tests with the `sbt test` command. Skipping the first few 
 
 ## TDD tests
 
-This example demonstrates a *Test-Driven Development* (TDD) style of testing with ScalaTest. In the next lesson you’ll see how to write *Behavior-Driven Development* (BDD) tests with ScalaTest and SBT.
+This example demonstrates a *Test-Driven Development* (TDD) style of testing with ScalaTest. In the next lesson you’ll see how to write *Behavior-Driven Development* (BDD) tests with ScalaTest and sbt.
 
 >Keep the project you just created. You’ll use it again in the next lesson.
 

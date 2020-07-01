@@ -1,8 +1,8 @@
 ---
 type: section
 layout: multipage-overview
-title: Writing BDD Style Tests with ScalaTest and SBT
-description: This lesson shows how to write ScalaTest unit tests with SBT in a behavior-driven development (TDD) style.
+title: Writing BDD Style Tests with ScalaTest and sbt
+description: This lesson shows how to write ScalaTest unit tests with sbt in a behavior-driven development (TDD) style.
 partof: scala_book
 overview-name: Scala Book
 discourse: true
@@ -16,7 +16,7 @@ next-page: functional-programming
 
 In the previous lesson you saw how to write Test-Driven Development (TDD) tests with [ScalaTest](http://www.scalatest.org). ScalaTest also supports a [Behavior-Driven Development (BDD)](https://dannorth.net/introducing-bdd/) style of testing, which we’ll demonstrate next.
 
->This lesson uses the same SBT project as the previous lesson, so you don’t have to go through the initial setup work again.
+>This lesson uses the same sbt project as the previous lesson, so you don’t have to go through the initial setup work again.
 
 
 
@@ -111,9 +111,9 @@ If you want to have a little fun with this, change one or more of the tests so t
 
 ## Where to go from here
 
-For more information about SBT and ScalaTest, see the following resources:
+For more information about sbt and ScalaTest, see the following resources:
 
-- [The main SBT documentation](http://www.scala-sbt.org/documentation.html)
+- [The main sbt documentation](http://www.scala-sbt.org/documentation.html)
 - [The ScalaTest documentation](http://www.scalatest.org/user_guide)
 
 

@@ -1,8 +1,8 @@
 ---
 type: section
 layout: multipage-overview
-title: The Scala Build Tool (SBT)
-description: This page provides an introduction to the Scala Build Tool, SBT, including a simple 'Hello, world' project.
+title: The most used scala build tool (sbt)
+description: This page provides an introduction to the Scala Build Tool, sbt, including a simple 'Hello, world' project.
 partof: scala_book
 overview-name: Scala Book
 discourse: true
@@ -14,17 +14,17 @@ next-page: sbt-scalatest-tdd
 
 
 
-You can use several different tools to build your Scala projects, including Ant, Maven, Gradle, and more. But a tool named [SBT](http://www.scala-sbt.org) was the first build tool that was specifically created for Scala, and these days it’s supported by [Lightbend](https://www.lightbend.com), the company that was co-founded by Scala creator Martin Odersky that also maintains Akka, the Play web framework, and more.
+You can use several different tools to build your Scala projects, including Ant, Maven, Gradle, and more. But a tool named [sbt](http://www.scala-sbt.org) was the first build tool that was specifically created for Scala, and these days it’s supported by [Lightbend](https://www.lightbend.com), the company that was co-founded by Scala creator Martin Odersky that also maintains Akka, the Play web framework, and more.
 
->If you haven’t already installed SBT, here’s a link to [its download page](http://www.scala-sbt.org/download.html).
+>If you haven’t already installed sbt, here’s a link to [its download page](http://www.scala-sbt.org/download.html).
 
 
 
-## The SBT directory structure
+## The sbt directory structure
 
-Like Maven, SBT uses a standard project directory structure. If you use that standard directory structure you’ll find that it’s relatively simple to build your first projects.
+Like Maven, sbt uses a standard project directory structure. If you use that standard directory structure you’ll find that it’s relatively simple to build your first projects.
 
-The first thing to know is that underneath your main project directory, SBT expects a directory structure that looks like this:
+The first thing to know is that underneath your main project directory, sbt expects a directory structure that looks like this:
 
 ```bash
 build.sbt
@@ -42,9 +42,9 @@ target/
 ```
 
 
-## Creating a “Hello, world” SBT project directory structure
+## Creating a “Hello, world” sbt project directory structure
 
-Creating this directory structure is pretty simple, and you can use a shell script like [sbtmkdirs](https://alvinalexander.com/sbtmkdirs) to create new projects. But you don’t have to use that script; assuming that you’re using a Unix/Linux system, you can just use these commands to create your first SBT project directory structure:
+Creating this directory structure is pretty simple, and you can use a shell script like [sbtmkdirs](https://alvinalexander.com/sbtmkdirs) to create new projects. But you don’t have to use that script; assuming that you’re using a Unix/Linux system, you can just use these commands to create your first sbt project directory structure:
 
 ```bash
 mkdir HelloWorld
@@ -73,7 +73,7 @@ $ find .
 
 If you see that, you’re in great shape for the next step.
 
->There are other ways to create the files and directories for an SBT project. One way is to use the `sbt new` command, [which is documented here on scala-sbt.org](http://www.scala-sbt.org/1.x/docs/Hello.html). That approach isn’t shown here because some of the files it creates are more complicated than necessary for an introduction like this.
+>There are other ways to create the files and directories for an sbt project. One way is to use the `sbt new` command, [which is documented here on scala-sbt.org](http://www.scala-sbt.org/1.x/docs/Hello.html). That approach isn’t shown here because some of the files it creates are more complicated than necessary for an introduction like this.
 
 
 
@@ -92,7 +92,7 @@ version := "1.0"
 scalaVersion := "{{ site.scala-version }}"
 ```
 
-Because SBT projects use a standard directory structure, SBT already knows everything else it needs to know.
+Because sbt projects use a standard directory structure, sbt already knows everything else it needs to know.
 
 Now you just need to add a little “Hello, world” program.
 
@@ -108,7 +108,7 @@ object HelloWorld extends App {
 }
 ```
 
-Now you can use SBT to compile your project, where in this example, your project consists of that one file. Use the `sbt run` command to compile and run your project. When you do so, you’ll see output that looks like this:
+Now you can use sbt to compile your project, where in this example, your project consists of that one file. Use the `sbt run` command to compile and run your project. When you do so, you’ll see output that looks like this:
 
 ````
 $ sbt run
@@ -131,7 +131,7 @@ Hello, world
 [success] Total time: 4 s
 ````
 
-The first time you run `sbt` it needs to download some things and can take a while to run, but after that it gets much faster. As the first comment in that output shows, it’s also faster to run SBT interactively. To do that, first run the `sbt` command by itself:
+The first time you run `sbt` it needs to download some things and can take a while to run, but after that it gets much faster. As the first comment in that output shows, it’s also faster to run sbt interactively. To do that, first run the `sbt` command by itself:
 
 ````
 > sbt
@@ -150,7 +150,7 @@ Hello, world
 
 There, that’s much faster.
 
-If you type `help` at the SBT command prompt you’ll see a bunch of other commands you can run. But for now, just type `exit` to leave the SBT shell. You can also press `CTRL-D` instead of typing `exit`.
+If you type `help` at the sbt command prompt you’ll see a bunch of other commands you can run. But for now, just type `exit` to leave the sbt shell. You can also press `CTRL-D` instead of typing `exit`.
 
 
 
