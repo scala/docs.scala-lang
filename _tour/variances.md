@@ -20,7 +20,7 @@ class Baz[A]  // An invariant class
 
 ### Covariance
 
-A type parameter `A` of a generic class can be made covariant by using the annotation `+A`. For some `class List[+A]`, making  `A` covariant implies that for two types `A` and `B` where `A` is a subtype of `B`, then `List[A]` is a subtype of `List[B]`. This allows us to make very useful and intuitive subtyping relationships using generics.
+A type parameter `A` of a generic class can be made covariant by using the annotation `+A`. For some `class List[+A]`, making  `A` covariant implies that for two types `A` and `B` where `B` is a subtype of `A`, then `List[B]` is a subtype of `List[A]`. This allows us to make very useful and intuitive subtyping relationships using generics.
 
 Consider this simple class structure:
 
