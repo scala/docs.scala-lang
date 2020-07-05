@@ -38,7 +38,7 @@ Suggested use cases for multiple parameter lists include:
 
 #### Drive type inference
 
-It so happens that in Scala, type inference proceeds one parameter list at at time.
+It so happens that in Scala, type inference proceeds one parameter list at a time.
 Say you have the following method:
 
 ```tut
