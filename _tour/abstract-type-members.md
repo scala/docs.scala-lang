@@ -50,7 +50,7 @@ val buf = newIntSeqBuf(7, 8)
 println("length = " + buf.length)
 println("content = " + buf.element)
 ```
-Here the factory `newIntSeqBuf` uses an anonymous class implementation of `IntSeqBuf` (i.e. `new IntSeqBuffer`) to set the abstract type `T` to the concrete type `List[Int]`.
+Here the factory `newIntSeqBuf` uses an anonymous class implementation of `IntSeqBuffer` (i.e. `new IntSeqBuffer`) to set the abstract type `T` to the concrete type `List[Int]`.
 
 It is also possible to turn abstract type members into type parameters of classes and vice versa. Here is a version of the code above which only uses type parameters:
 
