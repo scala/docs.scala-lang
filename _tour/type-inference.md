@@ -54,7 +54,7 @@ The parameter for map is `f: A => B`. Because we put integers in the `Seq`, the 
 
 ## When _not_ to rely on type inference
 
-It is generally considered more readable to declare the type of members exposed in a public API.  Therefore, we recommended that you make the type explicit for any APIs that will be exposed to users of your code.
+It is generally considered more readable to declare the type of members exposed in a public API.  Therefore, we recommend that you make the type explicit for any APIs that will be exposed to users of your code.
 
 Also, type inference can sometimes infer a too-specific type.  Suppose we write:
 
