@@ -75,7 +75,7 @@ println(point2.y)  // พิมพ์ 2
 
 ## Private Members และ Getter/Setter
 สมาชิกของคลาสจะเป็น public โดยค่าเริ่มต้น ใช้ access modifier `private` 
-เพื่อซ้อนสมาชิกนั้นจากภายนอกของคลาส
+เพื่อซ่อนสมาชิกนั้นจากภายนอกของคลาส
 ```tut
 class Point {
   private var _x = 0
