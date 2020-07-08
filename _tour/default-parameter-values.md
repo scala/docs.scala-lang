@@ -3,7 +3,7 @@ layout: tour
 title: Default Parameter Values
 partof: scala-tour
 
-num: 6
+num: 5
 next-page: named-arguments
 previous-page: classes
 prerequisite-knowledge: named-arguments, function syntax
