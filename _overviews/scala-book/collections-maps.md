@@ -46,7 +46,7 @@ keys: Iterable[Int] = Set(1, 2, 3, 4)
 scala> val values = m.values
 val values: Iterable[String] = MapLike.DefaultValuesIterable(a, b, c, d)
 
-// how to test if a Map contains a value
+// how to test if a Map contains a key
 scala> val contains3 = m.contains(3)
 contains3: Boolean = true
 
