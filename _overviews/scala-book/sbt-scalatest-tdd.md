@@ -40,7 +40,7 @@ scalaVersion := "{{site.scala-version}}"
 
 libraryDependencies +=
     "org.scalatest" %% "scalatest" % "3.0.8" % Test
-)
+
 ```
 
 The first three lines of this file are essentially the same as the first example, and the `libraryDependencies` lines tell sbt to include the dependencies (jar files) that are needed to run ScalaTest:
