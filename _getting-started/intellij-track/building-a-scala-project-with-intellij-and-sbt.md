@@ -27,7 +27,7 @@ Started with Scala and sbt on the Command Line]({{site.baseurl}}/getting-started
   * Click **Next**
   * Name the project "SbtExampleProject"
 1. If you already created the project on the command line, open up IntelliJ, select *Import Project* and open the `build.sbt` file for your project
-1. Make sure the **JDK version** is 1.8 and the **sbt version** is at least 0.13.13
+1. Make sure the **JDK version** is 1.8 and the **sbt version** is at least 1.3.13
 1. Select **Use auto-import** so dependencies are automatically downloaded when available
 1. Select **Finish**
 
