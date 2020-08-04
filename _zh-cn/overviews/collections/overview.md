@@ -29,30 +29,29 @@ Scala 集合类系统地区分了可变的和不可变的集合。可变集合�
 
 然而，像没有前缀的Set这样的关键字， 仍然指的是一个不可变集合，然而`mutable.Set`指的是可变的副本（可变集合）。
 
-集合树的最后一个包是`collection.generic`。这个包包含了集合的构建块。集合类延迟了`collection.generic`类中的部分操作实现，另一方面集合框架的用户需要引用`collection.generic`中类在异常情况中。
+集合树的最后一个包是`collection.generic`。这个包包含了集合的构建块。集合类延迟了`collection.generic`类中的部分操作实现，另一方面，集合框架的用户只需要在特殊情况下引用`collection.generic`。
 
-为了方便和向后兼容性，一些导入类型在包scala中有别名，所以你能通过简单的名字使用它们而不需要import。这有一个例子是List 类型，它可以用以下两种方法使用，如下：
+为了方便和向后兼容性，一些导入类型在包scala中有别名，所以你能通过简单的名字使用它们而不需要import。这有一个例子是`List`类型，它可以用以下两种方法使用，如下：
 
     scala.collection.immutable.List // 这是它的定义位置
     scala.List //通过scala 包中的别名
-    List // 因为scala._
-                                      // 总是是被自动导入。
+    List // 因为scala._ 总是被自动导入。
 
 其它类型的别名有： [Traversable](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/Traversable.html), [Iterable](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/Iterable.html), [Seq](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/Seq.html), [IndexedSeq](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/IndexedSeq.html), [Iterator](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/Iterator.html), [Stream](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/immutable/Stream.html), [Vector](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/immutable/Vector.html), [StringBuilder](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/mutable/StringBuilder.html), [Range](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/immutable/Range.html)。
 
-下面的图表显示了`scala.collection`包中所有的集合类。这些都是高级抽象类或特性，它们通常具备和不可变实现一样的可变实现。
+下图显示了`scala.collection`包中所有的集合类。这些都是高级抽象类或特质，它们通常具备和不可变实现一样的可变实现。
 
 [![General collection hierarchy][1]][1]
 
-下面的图表显示scala.collection.immutable中的所有集合类。
+下图显示了`scala.collection.immutable`中所有的集合类。
 
 [![Immutable collection hierarchy][2]][2]
 
-下面的图表显示scala.collection.mutable中的所有集合类。
+下图显示了`scala.collection.mutable`中所有的集合类。
 
 [![Mutable collection hierarchy][3]][3]
 
-图传奇:
+图例:
 
 [![Graph legend][4]][4]
 
@@ -76,7 +75,7 @@ Scala 集合类系统地区分了可变的和不可变的集合。可变集合�
 
 所有这些集合类都通过相同的途径，用toString方法展示出来。  
 
-Traversable类提供了所有集合支持的API，同时，对于特殊类型也是有意义的。例如，Traversable类 的map方法会返回另一个Traversable对象作为结果，但是这个结果类型在子类中被重写了。例如，在一个List上调用map会又生成一个List，在Set上调用会再生成一个Set，以此类推。  
+Traversable类提供了所有集合支持的API，同时，对于特殊类型也是有意义的。例如，`Traversable`类的`map`方法会返回另一个`Traversable`对象作为结果，但是这个结果的类型在子类中被重写了。例如，在一个`List`上调用`map`会又生成一个`List`，在`Set`上调用会再生成一个`Set`，以此类推。  
 
     scala> List(1, 2, 3) map (_ + 1)
     res0: List[Int] = List(2, 3, 4)
@@ -85,7 +84,7 @@ Traversable类提供了所有集合支持的API，同时，对于特殊类型也
 
 在集合类库中，这种在任何地方都实现了的行为，被称之为返回类型一致原则。  
 
-大多数类在集合树中存在这于三种变体：root, mutable 和immutable。唯一的例外是缓冲区特征，它仅在于mutable集合。  
+大多数类在集合树中存在这于三种变体：root, mutable和immutable。唯一的例外是缓冲区特质，它仅在于mutable集合。  
 
 下面我们将一个个的回顾这些类。
 
