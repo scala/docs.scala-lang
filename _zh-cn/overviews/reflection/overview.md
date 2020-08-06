@@ -15,7 +15,7 @@ permalink: /zh-cn/overviews/reflection/:title.html
 
 **Heather Miller, Eugene Burmako, Philipp Haller**
 
-*反射(Reflection)*是指程序在运行过程中可以自检并甚至修改自身的一种能力。
+*反射(Reflection)*是指程序在运行过程中可以解析并甚至修改自身的一种能力。
 在横跨面向对象、函数式编程以及逻辑编程范式方面有着悠久的历史。
 虽然一些编程语言在设计之初就引入了反射作为指导原则，但是也有一些编程语言是随着时间演化逐渐引入了反射这一能力。
 
@@ -52,9 +52,9 @@ Scala 2.10版本以前一直没有反射功能。
 和其它的JVM系语言一样，Scala的类型在编译阶段会进行类型擦除（比如泛型信息擦除）。
 这意味着如果想解析某个实例运行时类型，那些Scala编译器在编译阶段所产生的全部类型信息则不一定能访问到了。
 
-`类型标签(TypeTags)`可以理解为将编译时的类型信息全部带到运行时的一个对象。
-不过需要注意的是，一般`类型标签`都是在编译器生成。
-有隐式参数或`类型标签`与上下文绑定时被用到了，都会达成触发条件。
+`类型标签(TypeTag)`可以理解为将编译时的类型信息全部带到运行时的一个对象。
+不过需要注意的是，一般`类型标签`都是由编译器生成。
+有隐式参数或`类型标签`与上下文绑定时被用到了，都会触发编译器生成类型标签。
 这意味着通常只能在用隐式参数或上下文绑定的地方获得`类型标签`。
 
 举个上下文边界的例子：
@@ -73,7 +73,7 @@ scala> val theType = getTypeTag(l).tpe
 theType: ru.Type = List[Int]
 ```
 
-在上面的例子中，我们首先引入了`scala.reflect.runtime.universe`（通常用这个包就是想用`类型标签`），接着我们创建了一个`List[Int]`叫`l`。然后我们定义了一个`getTypeTag`方法，其中包含类型参数`T`。这个`T`就是一个上下文绑定的参数。（如REPL中所示，这个`T`等同于定义了一个隐式声明的`evidence`以此为据让编译器为`T`生成一个`类型标签`）。最终我们用`l`作为参数传入该方法，然后调用`tpe`返回了`类型标签`所包含的类型。
+在上面的例子中，我们首先引入了`scala.reflect.runtime.universe`（通常用这个包就是想用`类型标签`），接着我们创建了一个`List[Int]`叫`l`。然后我们定义了一个`getTypeTag`方法，其中包含类型参数`T`。这个`T`就是一个上下文绑定的参数。（如REPL中所示，这个`T`等同于同时定义了一个隐式声明的`evidence`，以此为据让编译器为`T`生成一个`类型标签`）。最终我们用`l`作为参数传入该方法，然后调用`tpe`返回了`类型标签`所包含的类型。
 最终我们获得了一个正确完整的类型（包含List的具体类型参数）—— `List[Int]`。
 
 一旦我们获得了所需的`类型`实例，我们就可以将它解析出来，例如：
@@ -127,7 +127,7 @@ p: Any = Person(Mike)
 
 #### 1.1.3 访问和调用运行时类型的成员
 
-通常，想访问运行时类型的成员主要是用到`"invoker"`镜像的方式。
+通常，想访问运行时类型的成员主要是用到”调用器“类似的`镜像`的方式。
 让我们通过一个REPL的示例说明：
 
 ```scala
@@ -167,7 +167,7 @@ shippingFieldMirror: scala.reflect.runtime.universe.FieldMirror = field mirror f
 ```
 
 上面这段代码中，`p`的实例镜像`im`是为了访问该实例中成员`shipped`的所要用到的反射镜像。
-通过实例镜像，我们可以为表示`p`类型字段声明的意思的`TermSymbol`对应到`FieldMirror`。
+通过实例镜像，我们可以将表示`p`类型字段声明的意思的`TermSymbol`对应到`FieldMirror`。
 
 `FieldMirror`就是代表着当前我们指定的想反射操作的字段，我们可以使用`get`和`set`方法去获取/设置对应实例里的`shipped`成员。
 此处先将`shipped`的状态设置为`true`。
@@ -184,9 +184,9 @@ res9: Any = true
 
 ### 1.2 对比Java运行时类和Scala运行时类型
 
-如果你已经熟悉Java中反射运行中的类实例，或许已经注意到我们在Scala中使用运行时类型做了相应的替代品。
+如果你已经熟悉Java中反射运行中的类实例，或许已经注意到我们在Scala中使用运行时类型做为相应的替代品。
 
-下面REPL示例了一种非常简单的使用场景，使用Java去反射Scala类可能会返回奇怪或错误的结果：
+下面REPL示例了一种非常简单的使用场景，使用Java去反射Scala类可能会返回奇怪的结果。
 
 首先，我们定义了一个带着抽象类型`T`的`E`类。然后又有两个继承了E的子类`C`和`D`。 
 
@@ -204,7 +204,7 @@ scala> class D extends C
 defined class D
 ```
 
-然后，分别创建`C`和`D`的实例，同时指给成员`T`具体类型，均为`String`。
+然后，分别创建`C`和`D`的实例，同时指给成员`T`具体类型，均声明为`String`。
 
 ```scala
 scala> val c = new C { type T = String }
@@ -222,20 +222,19 @@ scala> c.getClass.isAssignableFrom(d.getClass)
 res6: Boolean = false
 ```
 
-我们看到`D`是继承于`C`的，但是执行结果有些意外。
-在执行这样简单的运行时类型检查过程中，对于”d是否为c的子类“这一问题默认预期是`true`。
+我们明明看到`D`是继承于`C`的，但是执行结果有些意外。
+在尝试执行如此简单的运行时类型解析过程中，对于”d是否为c的子类“这一问题本来默认预期是得到`true`。
 然而如你所见，当`c`和`d`实例化后Scala编译器实际上分别为它们创建了各自的匿名子类。
 
 事实上，Scala编译器需要将Scala特有的语言功能转译成同功能的Java字节码才能上JVM去执行。
 因此，Scala编译器经常会创建运行时使用的合成类（比如自动生产类）来代替用户自定义类。
-在使用Java反射与Scala很多功能结合时候经常会发生此种情况，比如闭包、类型成员、类型优化，局部类等。
-这在Scala中非常普遍，在将Java反射与许多Scala功能结合使用时可以观察到这种情况，例如 闭包，类型成员，类型细化，局部类等。
+在使用Java反射功能与Scala一些功能结合时候经常会发生这种自动合成的情况，比如闭包、类型成员、类型优化，局部类等。
 
-在这种情况下，我们经常改用Scala反射去获取Scala对象在运行时的精确的类型信息。
-Scala运行时类将携带着编译阶段的所有类型，避免了编译时和运行时的类型不匹配问题。
+为了避开上述情况，我们改用Scala反射去获取Scala对象在运行时的精确的类型信息。
+这样的话就可以做到让Scala运行时类携带着编译阶段的所有类型，避免了编译时和运行时的类型不匹配问题。
 
-接下来我们定义了一个使用Scala反射方式的方法去判断两个运行时类型的关系，检查他们之间是否是子类的关系。
-如果第一个参数的类型是第二个参数的子类，那就返回`true`：
+接下来我们定义了一个使用Scala反射方式的方法去判断两个运行时类型的关系，检查他们之间是否是子类型的关系。
+如果第一个参数的类型是第二个参数的子类型，那就返回`true`：
 
 ```scala
 scala> import scala.reflect.runtime.{universe => ru}
@@ -257,12 +256,12 @@ res9: Boolean = true
 ## 2. 编译阶段反射
 
 Scala反射实现了允许在编译阶段就对程序进行修改的一种元编程形式。
-编译阶段反射通过宏的形式实现，使用宏提供了在编译时候对抽象语法数修改的能力。
+编译阶段反射通过宏的形式实现，宏提供了在编译时候对抽象语法数修改的能力。
 
 一个比较有趣的地方是，宏和Scala运行时反射都是通过包`scala.reflect.api`用相同的API实现。
 这样就可以用同一套代码去实现宏和运行时反射。
 
-需要注意的是[关于宏的指南](https://docs.scala-lang.org/overviews/macros/overview.html)中侧重于讲解其特性。本文档侧重于反射API方面。文中针对宏的相关概念有直述，比如在抽象语法树部分有许多关于[Symbols, Trees, and Types](https://docs.scala-lang.org/overviews/reflection/symbols-trees-types.html)有细讲。
+需要注意的是[关于宏的指南](https://docs.scala-lang.org/overviews/macros/overview.html)中侧重于讲解其特性。本文档侧重于反射API方面。本文档中针对宏与反射相关概念有所直述，比如在抽象语法树部分有许多关于[Symbols, Trees, and Types](https://docs.scala-lang.org/overviews/reflection/symbols-trees-types.html)的概念有细讲。
 
 ## 3. 反射环境
 
@@ -282,7 +281,7 @@ Scala反射实现了允许在编译阶段就对程序进行修改的一种元编
 `universe`提供了使用反射所关联的很多核心概念，比如`Types`，`Trees`，以及`Annotations`。
 更多细节请参阅指南中[Universes](https://docs.scala-lang.org/overviews/reflection/environment-universes-mirrors.html)部分，或者看`scala.reflect.api`包的[Universes API文档](https://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/Universe.html)。
 
-本指南中提供了大多数情况下Scala反射要用到的部分，一般在使用运行时反射的场景下，直接导入所有`universe`成员去用：
+本指南中提供了大多数情况下Scala反射要用到的部分，一般在使用运行时反射的场景下，直接导入所有`universe`成员去用即可：
 
 ```scala
 import scala.reflect.runtime.universe._
@@ -291,7 +290,7 @@ import scala.reflect.runtime.universe._
 ### 3.2 Mirrors
 
 `Mirrors`(镜像) 是Scala反射中的核心概念。
-反射所要提供的信息都是通过镜像去访问的。
+反射所能提供的信息都是通过镜像去访问的。
 根据不同的类型信息或不同的反射操作，必须要使用不同类型的镜像。
 
-更多细节请参阅指南中[Mirros]部分，或者看`scala.reflect.api`包的[Mirrors API文档](https://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/Mirrors.html)。
+更多细节请参阅指南中[Mirros](https://docs.scala-lang.org/overviews/reflection/environment-universes-mirrors.html)部分，或者看`scala.reflect.api`包的[Mirrors API文档](https://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/Mirrors.html)。
