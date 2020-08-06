@@ -7,7 +7,7 @@ overview-name: Reflection
 
 num: 1
 
-languages: [ja]
+languages: [ja, zh-cn]
 permalink: /overviews/reflection/:title.html
 ---
 
