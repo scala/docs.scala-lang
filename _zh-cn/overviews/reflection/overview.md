@@ -1,6 +1,6 @@
 ---
 layout: multipage-overview
-title: Overview
+title: 概览
 
 partof: reflection
 overview-name: Reflection
@@ -8,7 +8,7 @@ overview-name: Reflection
 num: 1
 language: zh-cn
 
-permalink: /overviews/reflection/:title.html
+permalink: /zh-cn/overviews/reflection/:title.html
 ---
 
 <span class="label important" style="float: right;">EXPERIMENTAL</span>
