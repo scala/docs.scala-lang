@@ -267,7 +267,7 @@ The following table lists the changes that continue to work with a deprecation w
 ## Deprecated things in 2.12 that have been removed in 2.13
 
 - `collection.JavaConversions`. Use `scala.jdk.CollectionConverters` instead. Previous advice was to use `collection.JavaConverters` which is now deprecated ;
-- `collection.mutable.MutableList` (was not deprecated in 2.12 but was considered to be an implementation detail for implementing other collections). Use an `ArrayDeque` instead, or a `List` and a `var` ;
+- `collection.mutable.MutableList` (was not deprecated in 2.12 but was considered to be an implementation detail for implementing other collections). Use an `ArrayDeque` or `mutable.ListBuffer` instead, or a `List` and a `var` ;
 - `collection.immutable.Stack`. Use a `List` instead ;
 - `StackProxy`, `MapProxy`, `SetProxy`, `SeqProxy`, etc. No replacement ;
 - `SynchronizedMap`, `SynchronizedBuffer`, etc. Use `java.util.concurrent` instead ;
