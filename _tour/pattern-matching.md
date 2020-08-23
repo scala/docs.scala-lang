@@ -36,8 +36,8 @@ def matchTest(x: Int): String = x match {
   case 2 => "two"
   case _ => "other"
 }
-matchTest(3)  // other
-matchTest(1)  // one
+matchTest(3)  // prints other
+matchTest(1)  // prints one
 ```
 This match expression has a type String because all of the cases return String. Therefore, the function `matchTest` returns a String.
 
@@ -74,7 +74,7 @@ val someVoiceRecording = VoiceRecording("Tom", "voicerecording.org/id/123")
 
 println(showNotification(someSms))  // prints You got an SMS from 12345! Message: Are you there?
 
-println(showNotification(someVoiceRecording))  // you received a Voice Recording from Tom! Click the link to hear it: voicerecording.org/id/123
+println(showNotification(someVoiceRecording))  // prints You received a Voice Recording from Tom! Click the link to hear it: voicerecording.org/id/123
 ```
 The function `showNotification` takes as a parameter the abstract type `Notification` and matches on the type of `Notification` (i.e. it figures out whether it's an `Email`, `SMS`, or `VoiceRecording`). In the `case Email(sender, title, _)` the fields `sender` and `title` are used in the return value but the `body` field is ignored with `_`.
 
@@ -100,11 +100,11 @@ val someVoiceRecording = VoiceRecording("Tom", "voicerecording.org/id/123")
 val importantEmail = Email("jenny@gmail.com", "Drinks tonight?", "I'm free after 5!")
 val importantSms = SMS("867-5309", "I'm here! Where are you?")
 
-println(showImportantNotification(someSms, importantPeopleInfo)) //prints You got an SMS from 123-4567! Message: Are you there?
-println(showImportantNotification(someVoiceRecording, importantPeopleInfo)) //prints You received a Voice Recording from Tom! Click the link to hear it: voicerecording.org/id/123
-println(showImportantNotification(importantEmail, importantPeopleInfo)) //prints You got an email from special someone!
+println(showImportantNotification(someSms, importantPeopleInfo)) // prints You got an SMS from 123-4567! Message: Are you there?
+println(showImportantNotification(someVoiceRecording, importantPeopleInfo)) // prints You received a Voice Recording from Tom! Click the link to hear it: voicerecording.org/id/123
+println(showImportantNotification(importantEmail, importantPeopleInfo)) // prints You got an email from special someone!
 
-println(showImportantNotification(importantSms, importantPeopleInfo)) //prints You got an SMS from special someone!
+println(showImportantNotification(importantSms, importantPeopleInfo)) // prints You got an SMS from special someone!
 ```
 
 In the `case Email(sender, _, _) if importantPeopleInfo.contains(sender)`, the pattern is matched only if the `sender` is in the list of important people.
