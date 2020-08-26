@@ -3,7 +3,7 @@ layout: tour
 title: Obiekty ekstraktorów
 partof: scala-tour
 
-num: 15
+num: 17
 language: pl
 next-page: for-comprehensions
 previous-page: regular-expression-patterns

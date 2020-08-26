@@ -3,7 +3,7 @@ layout: tour
 title: Klasy wewnętrzne
 partof: scala-tour
 
-num: 21
+num: 23
 language: pl
 next-page: abstract-type-members
 previous-page: lower-type-bounds

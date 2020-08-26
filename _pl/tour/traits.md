@@ -3,10 +3,10 @@ layout: tour
 title: Cechy
 partof: scala-tour
 
-num: 5
+num: 7
 language: pl
 next-page: tuples
-previous-page: classes
+previous-page: named-arguments
 ---
 
 Cechy (Traits) są używane, aby współdzielić interfejsy i pola pomiędzy klasami.

@@ -3,7 +3,7 @@ layout: tour
 title: Typy złożone
 partof: scala-tour
 
-num: 23
+num: 25
 language: pl
 next-page: self-types
 previous-page: abstract-type-members

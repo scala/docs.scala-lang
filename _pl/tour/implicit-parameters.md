@@ -3,7 +3,7 @@ layout: tour
 title: Parametry domniemane
 partof: scala-tour
 
-num: 25
+num: 27
 language: pl
 next-page: implicit-conversions
 previous-page: self-types

@@ -3,7 +3,7 @@ layout: tour
 title: Dolne ograniczenia typów
 partof: scala-tour
 
-num: 20
+num: 22
 language: pl
 next-page: inner-classes
 previous-page: upper-type-bounds

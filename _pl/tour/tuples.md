@@ -3,7 +3,7 @@ layout: tour
 title: Krotki
 partof: scala-tour
 
-num: 6
+num: 8
 language: pl
 next-page: mixin-class-composition
 previous-page: traits

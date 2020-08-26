@@ -3,7 +3,7 @@ layout: tour
 title: Klasy generyczne
 partof: scala-tour
 
-num: 17
+num: 19
 language: pl
 next-page: variances
 previous-page: for-comprehensions

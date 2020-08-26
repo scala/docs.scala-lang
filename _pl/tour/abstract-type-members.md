@@ -3,7 +3,7 @@ layout: tour
 title: Typy abstrakcyjne
 partof: scala-tour
 
-num: 22
+num: 24
 language: pl
 next-page: compound-types
 previous-page: inner-classes

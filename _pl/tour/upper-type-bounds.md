@@ -3,7 +3,7 @@ layout: tour
 title: Górne ograniczenia typów
 partof: scala-tour
 
-num: 19
+num: 21
 language: pl
 next-page: lower-type-bounds
 previous-page: variances

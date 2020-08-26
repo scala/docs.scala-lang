@@ -3,7 +3,7 @@ layout: tour
 title: Lokalna inferencja typów
 partof: scala-tour
 
-num: 28
+num: 30
 language: pl
 next-page: operators
 previous-page: polymorphic-methods

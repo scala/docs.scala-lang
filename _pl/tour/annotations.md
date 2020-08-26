@@ -3,9 +3,9 @@ layout: tour
 title: Adnotacje
 partof: scala-tour
 
-num: 31
-next-page: default-parameter-values
-previous-page: automatic-closures
+num: 33
+next-page: packages-and-imports
+previous-page: by-name-parameters
 language: pl
 ---
 

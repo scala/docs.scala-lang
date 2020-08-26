@@ -3,7 +3,7 @@ layout: tour
 title: Dopasowanie wzorców (Pattern matching)
 partof: scala-tour
 
-num: 11
+num: 14
 language: pl
 next-page: singleton-objects
 previous-page: case-classes

@@ -3,8 +3,9 @@ layout: tour
 title: Parametry nazwane
 partof: scala-tour
 
-num: 33
+num: 6
 language: pl
+next page: traits
 previous-page: default-parameter-values
 ---
 

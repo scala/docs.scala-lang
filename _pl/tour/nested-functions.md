@@ -3,7 +3,7 @@ layout: tour
 title: Funkcje zagnieżdżone
 partof: scala-tour
 
-num: 9
+num: 11
 language: pl
 next-page: multiple-parameter-lists
 previous-page: higher-order-functions
