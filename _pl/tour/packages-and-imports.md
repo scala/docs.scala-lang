@@ -1,6 +1,6 @@
 ---
 layout: tour
-title: Paczki i importy
+title: Pakiety i importy
 language: pl
 partof: scala-tour
 
@@ -10,7 +10,7 @@ next-page: package-objects
 language: pl
 ---
 
-# Paczki i importy
+# Pakiety i importy
 Scala używa pakietów do tworzenia przestrzeni nazw (namespaces), które umożliwiają modularyzację programów.
 
 ## Tworzenie pakietu
@@ -22,7 +22,7 @@ package users
 class User
 ```
 
-Jednym z założeń jest nadanie paczce takiej samej nazwy, jak katalog zawierający plik Scali. Jednak Scala jest niezależna od układu plików. Struktura katalogów projektu SBT dla użytkowników pakietu (`package users`) może wyglądać następująco:
+Jedną z konwencji jest nadawanie pakietowi takiej samej nazwy, jak nazwa katalogu zawierającego plik źródłowy. Jednak Scala jest niezależna od układu plików. Struktura katalogów projektu SBT dla `package users` może wyglądać następująco:
 
 ```
 - ExampleProject
@@ -38,7 +38,7 @@ Jednym z założeń jest nadanie paczce takiej samej nazwy, jak katalog zawieraj
     - test
 ```
 
-Zwróć uwagę, że katalog `users` znajduje się w katalogu `scala` i jak w pakiecie znajduje się wiele plików Scali. Każdy plik Scali w pakiecie może mieć tę samą deklarację pakietu. Innym sposobem deklarowania pakietów jest użycie nawiasów klamrowych:
+Zwróć uwagę, że katalog `users` znajduje się w katalogu `scala`, a w pakiecie znajduje się wiele plików Scali. Każdy plik Scali w pakiecie może mieć tę samą deklarację pakietu. Innym sposobem deklarowania pakietów jest użycie nawiasów klamrowych:
 
 ```
 package users {
@@ -51,7 +51,7 @@ package users {
 }
 ```
 
-Jak widać, pozwala to na zagnieżdżanie pakietów i zapewnia większą kontrolę nad zakresem i hermetyzacją. Nazwa pakietu powinna być zapisana małymi literami, a jeśli kod jest opracowywany w organizacji, która posiada witrynę internetową, powinna mieć następującą konwencję formatu: `<top-level-domain>.<domain-name>.<project-name>`. Na przykład, gdyby firma Google miała projekt o nazwie `SelfDrivingCar`, nazwa pakietu wyglądałaby następująco:
+Jak widać, pozwala to na zagnieżdżanie pakietów i zapewnia większą kontrolę nad zakresem i hermetyzacją. Nazwa pakietu powinna być zapisana małymi literami, a jeśli kod jest tworzony w organizacji, która posiada witrynę internetową, powinna mieć następującą konwencję formatu: `<top-level-domain>.<domain-name>.<project-name>`. Na przykład, gdyby firma Google miała projekt o nazwie `SelfDrivingCar`, nazwa pakietu wyglądałaby następująco:
 
 ```
 package com.google.selfdrivingcar.camera

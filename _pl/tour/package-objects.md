@@ -17,9 +17,9 @@ Obiekty pakietu mogą zawierać dowolne definicje, nie tylko definicje zmiennych
 
 Z założenia, kod źródłowy obiektu pakietu jest zwykle umieszczany w pliku źródłowym o nazwie `package.scala`.
 
-Każdy pakiet może mieć jeden obiekt pakietu. Uwzględniane są wszelkie definicje umieszczone w pakiecie członków samego pakietu.
+Każdy pakiet może mieć jeden obiekt pakietu. Wszelkie definicje umieszczone w obiekcie pakietu traktowane są jak członkowie samego pakietu.
 
-Zobacz przykład poniżej. Załóżmy najpierw, że w pakiecie klasa `Fruit` i trzy obiekty `Fruit` w pakiecie `gradening.fruits`:
+Zobacz przykład poniżej. Załóżmy najpierw, że w pakiecie `gradening.fruits` zdefiniowana jest klasa `Fruit` i trzy obiekty tej klasy:
 
 ```
 // in file gardening/fruits/Fruit.scala

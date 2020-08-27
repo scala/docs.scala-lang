@@ -7,7 +7,7 @@ partof: cheatsheet
 by: Filip Czaplicki, Konrad Klawikowski
 about: Podziękowania dla <a href="https://brenocon.com/">Brendan O'Connor</a>. Ten cheatsheet ma być szybkim podsumowaniem konstrukcji składniowych Scali. Licencjonowany przez Brendan O'Connor pod licencją CC-BY-SA 3.0.
 
-languages: pl
+language: pl
 ---
 
 <!-- ###### Contributed by {{ page.by }} -->
@@ -46,7 +46,7 @@ languages: pl
     </tr>
     <tr>
       <td><span class="label success">Dobrze</span><br> <pre class="highlight"><code>def f(x: Any) = println(x)</code></pre><br /> <span class="label important">Źle</span><br> <pre class="highlight"><code>def f(x) = println(x)</code></pre></td>
-      <td>Definiowanie funkcji.<br />Błąd składni: potrzebne są typy dla każdego argumentu.</td>
+      <td>Definiowanie funkcji.<br />Błąd składni: wymagane są typy dla każdego argumentu.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>type R = Double</code></pre></td>
@@ -54,7 +54,7 @@ languages: pl
     </tr>
     <tr>
       <td><pre class="highlight"><code>def f(x: R)</code></pre> vs.<br /> <pre class="highlight"><code>def f(x: =&gt; R)</code></pre></td>
-      <td>Wywołanie przez wartość.<br /><br />Wywołanie przez nazwę (parametry leniwe).</td>
+      <td>Wywoływanie przez wartość.<br /><br />Wywoływanie przez nazwę (parametr leniwy).</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>(x: R) =&gt; x * x</code></pre></td>
@@ -62,7 +62,7 @@ languages: pl
     </tr>
     <tr>
       <td><pre class="highlight"><code>(1 to 5).map(_ * 2)</code></pre> vs.<br /> <pre class="highlight"><code>(1 to 5).reduceLeft(_ + _)</code></pre></td>
-      <td>Funkcja anonimowa: podkreślenie to argument pozycjonalny</td>
+      <td>Funkcja anonimowa: podkreślenie to argument pozycyjny.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>(1 to 5).map(x =&gt; x * x)</code></pre></td>
@@ -70,7 +70,7 @@ languages: pl
     </tr>
     <tr>
       <td><span class="label success">Dobrze</span><br> <pre class="highlight"><code>(1 to 5).map(2*)</code></pre><br /> <span class="label important">Źle</span><br> <pre class="highlight"><code>(1 to 5).map(*2)</code></pre></td>
-      <td>Funkcja anonimowa: związana metoda infiksowa. Możesz użyć także <code>2*_</code>.</td>
+      <td>Funkcja anonimowa: związana metoda infiksowa. Możesz użyć także <code>2 * _</code>.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>(1 to 5).map { x =&gt;
@@ -86,7 +86,7 @@ languages: pl
 } map {
   _ * 2
 }</code></pre></td>
-      <td>Funkcja anonimowa: Styl potokowy (lub ponawiasowane).</td>
+      <td>Funkcja anonimowa: styl potokowy.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>def compose(g: R =&gt; R, h: R =&gt; R) =
@@ -104,7 +104,7 @@ languages: pl
       <td><pre class="highlight"><code>def zscore(mean: R, sd: R) =
   (x: R) =&gt;
     (x - mean) / sd</code></pre></td>
-      <td>Rozwijanie funkcji, oczywista składnia.</td>
+      <td>Rozwijanie funkcji, oczywista składnia</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>def zscore(mean: R, sd: R)(x: R) =
@@ -114,7 +114,7 @@ languages: pl
     <tr>
       <td><pre class="highlight"><code>val normer =
   zscore(7, 0.4) _</code></pre></td>
-      <td>Potrzeba wiodącego podkreślenia, aby wydobyć funkcję częściowo zaaplikowaną, tylko dla wersji z lukrem składniowym.</td>
+      <td>Potrzeba podążającego podkreślenia, aby wydobyć funkcję częściowo zaaplikowaną, tylko przy wersji z lukrem składniowym.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>def mapmake[T](g: T =&gt; T)(seq: List[T]) =
@@ -128,7 +128,7 @@ languages: pl
     <tr>
       <td><pre class="highlight"><code>def sum(args: Int*) =
   args.reduceLeft(_+_)</code></pre></td>
-      <td>Zmienna liczba argumentów funkcji.</td>
+      <td>Zmienna liczba argumentów.</td>
     </tr>
     <tr>
       <td><span id="packages" class="h2">pakiety</span></td>
@@ -151,9 +151,9 @@ languages: pl
       <td>Importowanie wszystkiego z <code>java.util</code> poza <code>Date</code>.</td>
     </tr>
     <tr>
-      <td><em>Na początku pliku:</em> <pre class="highlight"><code>package pkg</code></pre><br /> <em>Pakowanie według zakresu: </em> <pre class="highlight"><code>package pkg {
+      <td><em>Na początku pliku:</em> <pre class="highlight"><code>package pkg</code></pre><br /> <em>Definiowanie pakietu według zakresu: </em> <pre class="highlight"><code>package pkg {
   ...
-}</code></pre><br /><em>Pakiet singleton: </em> <pre class="highlight"><code>package object pkg {
+}</code></pre><br /><em>Singleton dla pakietu: </em> <pre class="highlight"><code>package object pkg {
   ...
 }</code></pre></td>
       <td>Deklaracja pakietu.</td>
@@ -187,12 +187,12 @@ languages: pl
       <td>Operator dołożenia elementu na początek listy.</td>
     </tr>
     <tr>
-      <td><pre class="highlight"><code>1 to 5</code></pre> <em>to samo co</em> <pre class="highlight"><code>1 until 6</code></pre> <br /> <pre class="highlight"><code>1 to 10 by 2</code></pre></td>
+      <td><pre class="highlight"><code>1 to 5</code></pre> <em>to samo co:</em> <pre class="highlight"><code>1 until 6</code></pre> <br /> <pre class="highlight"><code>1 to 10 by 2</code></pre></td>
       <td>Składnia dla przedziałów.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>()</code></pre></td>
-      <td>Jedyny obiekt typu Unit.<br />Identyczny do<code class="highlighter-rouge">void</code> w C i Java.</td>
+      <td>Jedyny obiekt typu Unit. <br />Identyczny do <code class="highlighter-rouge">void</code> w C i Java.</td>
     </tr>
     <tr>
       <td><span id="control_constructs" class="h2">konstrukcje kontrolne</span></td>
@@ -220,7 +220,7 @@ languages: pl
   println(x)
   x += 1
 } while (x &lt; 5)</code></pre></td>
-      <td>Pętla dowhile.</td>
+      <td>Pętla do-while.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>import scala.util.control.Breaks._
@@ -271,7 +271,7 @@ breakable {
       <td><pre class="highlight"><code>for (i &lt;- 1 to 5) {
   println(i)
 }</code></pre></td>
-      <td>Instrukcja for: iterowanie aż do górnej granicy.</td>
+      <td>Instrukcja for: iterowanie aż do górnej granicy włącznie.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>for (i &lt;- 1 until 5) {
@@ -344,11 +344,11 @@ breakable {
       <td><pre class="highlight"><code>new {
   ...
 }</code></pre></td>
-      <td>Klasa anonimowa.</td>
+      <td>Instancja klasy anonimowej.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>abstract class D { ... }</code></pre></td>
-      <td>Definicja klasy abstrakcyjnej( nie da się stworzyć obiektu tej klasy).</td>
+      <td>Defiicja klasy abstrakcyjnej (nie da się stworzyć obiektu tej klasy).</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>class C extends D { ... }</code></pre></td>
@@ -356,7 +356,7 @@ breakable {
     </tr>
     <tr>
       <td><pre class="highlight"><code>class D(var x: R)</code></pre><br /><pre class="highlight"><code>class C(x: R) extends D(x)</code></pre></td>
-      <td>IDziedziczenie i parametry konstruktora (wishlist: domyślne, automatyczne przekazywanie parametrów).</td>
+      <td>Dziedziczenie i parametry konstruktora (wishlist: domyślne, automatyczne przekazywanie parametrów).</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>object O extends D { ... }</code></pre></td>
@@ -364,7 +364,7 @@ breakable {
     </tr>
     <tr>
       <td><pre class="highlight"><code>trait T { ... }</code></pre><br /><pre class="highlight"><code>class C extends T { ... }</code></pre><br /><pre class="highlight"><code>class C extends D with T { ... }</code></pre></td>
-      <td>Cechy.<br />Interface'y z implementacją. Bez parametrów konstruktora. <a href="{{site.baseurl}}/tutorials/tour/mixin-class-composition.html">Możliwość mixin'ów (domieszek)</a>.</td>
+      <td>Cechy.<br />Interface'y z implementacją. Bez parametrów konstruktora. <a href="{{site.baseurl}}/tutorials/tour/mixin-class-composition.html">Możliwość mixin'ów</a>.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>trait T1; trait T2</code></pre><br /><pre class="highlight"><code>class C extends T1 with T2</code></pre><br /><pre class="highlight"><code>class C extends D with T1 with T2</code></pre></td>
@@ -405,7 +405,7 @@ breakable {
     </tr>
     <tr>
       <td><pre class="highlight"><code>Some(42)</code></pre></td>
-      <td>Tworzenie niepustej wartości opcjonalnej .</td>
+      <td>Tworzenie niepustej wartości opcjonalnej.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>None</code></pre></td>
@@ -420,7 +420,7 @@ Option(obj.unsafeMethod)</code></pre>
     </tr>
     <tr>
       <td><pre class="highlight"><code>val optStr: Option[String] = None</code></pre>
-      <em><strong>to samo co</strong></em>
+      <em><strong>to samo co:</strong></em>
       <pre class="highlight"><code>val optStr = Option.empty[String]</code></pre></td>
       <td>Jawny typ pustej wartości opcjonalnej<br /> Fabryka dla pustej wartości opcjonalnej.</td>
     </tr>
@@ -435,7 +435,7 @@ val upper = name.map {
   _.toUpperCase
 }
 println(upper.getOrElse(""))</code></pre></td>
-      <td>Styl "rurociągu" (pipeline).</td>
+      <td>Styl potokowy (pipeline).</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>val upper = for {
@@ -481,28 +481,28 @@ println(upper.getOrElse(""))</code></pre></td>
   case Some(x) =&gt; f(x)
   case None    =&gt; ()
 }</code></pre></td>
-      <td>Zastosuj procedurę na wartości opcjonalnej</td>
+      <td>Zastosuj procedurę na wartości opcjonalnej.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>option.fold(y)(f(_))</code></pre>
-      <em><strong>to samo co: </strong></em>
+      <em><strong>to samo co:</strong></em>
       <pre class="highlight"><code>option match {
   case Some(x) =&gt; f(x)
   case None    =&gt; y
 }</code></pre></td>
-      <td>Zastosuj funkcję do wartości opcjonalnej, zwróć wartość domyślną, jeśli pusta</td>
+      <td>Zastosuj funkcję do wartości opcjonalnej, zwróć wartość domyślną, jeśli pusta.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>option.collect {
   case x =&gt; ...
 }</code></pre>
-      <em><strong>to samo co</strong></em>
+      <em><strong>to samo co:</strong></em>
       <pre class="highlight"><code>option match {
   case Some(x) if f.isDefinedAt(x) =&gt; ...
   case Some(_)                     =&gt; None
   case None                        =&gt; None
 }</code></pre></td>
-      <td>Zastosuj częściowe dopasowanie do wzorca dla wartości opcjonalnej</td>
+      <td>Zastosuj częściowe dopasowanie do wzorca dla wartości opcjonalnej.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>option.isDefined</code></pre>
@@ -538,7 +538,7 @@ println(upper.getOrElse(""))</code></pre></td>
   case Some(_) =&gt; 1
   case None    =&gt; 0
 }</code></pre></td>
-      <td><code>0</code> jeżeli puste, w przeciwnym razie<code>1</code>.</td>
+      <td><code>0</code> jeżeli puste, w przeciwnym razie <code>1</code>.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>option.orElse(Some(y))</code></pre>
@@ -547,16 +547,16 @@ println(upper.getOrElse(""))</code></pre></td>
   case Some(x) =&gt; Some(x)
   case None    =&gt; Some(y)
 }</code></pre></td>
-      <td>Oblicz i zwróć alternatywną wartość opcjonalną, jeżeli jest pusta</td>
+      <td>Oblicz i zwróć alternatywną wartość opcjonalną, jeżeli pierwotna wartość jest pusta.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>option.getOrElse(y)</code></pre>
-      <em><strong>to samo co: </strong></em>
+      <em><strong>to samo co:</strong></em>
       <pre class="highlight"><code>option match {
   case Some(x) =&gt; x
   case None    =&gt; y
 }</code></pre></td>
-      <td>Oblicz i zwróć wartość domyślną, jeżeli jest pusta.</td>
+      <td>Oblicz i zwróć wartość domyślną, jeżeli pierwotna wartość jest pusta.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>option.get</code></pre>
@@ -569,7 +569,7 @@ println(upper.getOrElse(""))</code></pre></td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>option.orNull</code></pre>
-      <em><strong>to samo co</strong></em>
+      <em><strong>to samo co:</strong></em>
       <pre class="highlight"><code>option match {
   case Some(x) =&gt; x
   case None    =&gt; null
@@ -587,7 +587,7 @@ println(upper.getOrElse(""))</code></pre></td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>option.filterNot(f(_))</code></pre>
-      <em><strong>to samo co: </em>
+      <em><strong>to samo co:</strong></em>
       <pre class="highlight"><code>option match {
   case Some(x) if !f(x) =&gt; Some(x)
   case _                =&gt; None
@@ -602,7 +602,7 @@ println(upper.getOrElse(""))</code></pre></td>
   case Some(_)         =&gt; false
   case None            =&gt; false
 }</code></pre></td>
-      <td>Zastosuj predyktat na opcjonalnej wartości lub <code>false</code> jeżeli pusta.</td>
+      <td>Zastosuj predyktat na wartości lub <code>false</code> jeżeli pusta.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>option.forall(f(_))</code></pre>
@@ -612,7 +612,7 @@ println(upper.getOrElse(""))</code></pre></td>
   case Some(_)         =&gt; false
   case None            =&gt; true
 }</code></pre></td>
-      <td>Zastosuj predyktat dla wartości opcjonalnej lub <code>true</code> jeżeli pusta.</td>
+      <td>Zastosuj predyktat na opcjonalnej wartości lub <code>true</code> jeżeli pusta.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>option.contains(y)</code></pre>
@@ -621,7 +621,7 @@ println(upper.getOrElse(""))</code></pre></td>
   case Some(x) =&gt; x == y
   case None    =&gt; false
 }</code></pre></td>
-      <td>Sprawdza, czy wartość jest równa wartości opcjonalnej lub <code>false</code> jeżeli pusta.</td>
+      <td>Sprawdź, czy wartość jest równa wartości opcjonalnej lub <code>false</code> jeżeli pusta.</td>
     </tr>
   </tbody>
 </table>
