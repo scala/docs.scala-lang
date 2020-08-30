@@ -9,7 +9,7 @@ previous-page: operators
 language: pl
 ---
 
-_Parametry przekazywane według nazwy_ są ewaluowane za każdym razem gdy są używane. Nie zostaną w ogóle wyewaluowane jeśli nie będą używane. Jest to podobne do zastępowania parametrów według nazwy przekazanymi wyrażeniami. Są przeciwieństwem do _parametrów według wartości_. Aby utworzyć parametr wywoływany według nazwy, po prostu dodaj `=>` przed jego typem.
+_Parametry przekazywane według nazwy_ są ewaluowane za każdym razem gdy są używane. Nie zostaną w ogóle wyewaluowane jeśli nie będą używane. Jest to podobne do zastępowania parametrów w ciele funkcji wyrażeniami podanymi w miejscu jej wywołania. Są przeciwieństwem do _parametrów przekazywanych według wartości_. Aby utworzyć parametr przekazywany według nazwy, po prostu dodaj `=>` przed jego typem.
 
 ```tut
 def calculate(input: => Int) = input * 37
@@ -36,6 +36,6 @@ whileLoop (i > 0) {
 
 Metoda `whileLoop` używa wielu list parametrów do określenia warunku i treści pętli. Jeśli `condition` (warunek) jest prawdziwy, `body` (treść) jest wykonywana a następnie wykonywane jest rekurencyjne wywołanie `whileLoop`. Jeśli `condition` jest fałszywy, treść nigdy nie jest ewaluowana, ponieważ dodaliśmy `=>` do typu `body`.
 
-Teraz, kiedy przekażemy `i>0` jako nasz `condition` (warunek) i `println(i); i-= 1` jako `body`, nasze wyrażenie zachowuje się jak standardowa pętla while w wielu językach.
+Jeśli przekażemy `i>0` jako nasz `condition` (warunek) i `println(i); i-= 1` jako `body`, nasze wyrażenie zachowuje się jak standardowa pętla while w wielu językach.
 
-Ta możliwość opóźnienia ewaluacji parametru do czasu jego użycia może zwiększyć wydajność, jeśli ewaluacja parametru wymaga intensywnych obliczeń lub dłużej działającego bloku kodu, takiego jak pobieranie adresu URL.
+Ta możliwość opóźnienia ewaluacji parametru do czasu jego użycia może zwiększyć wydajność, jeśli ewaluacja parametru wymaga intensywnych obliczeń lub dłużej działającego bloku kodu, takiego jak pobieranie treści spod adresu URL.

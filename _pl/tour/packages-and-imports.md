@@ -63,16 +63,16 @@ Może to odpowiadać następującej strukturze katalogów: `SelfDrivingCar/src/m
 
 ## Import
 
-Deklaracje `import` służą do uzyskiwania dostępu do członków (members, tzn.: klasy, cechy, funkcje itp.) w innych pakietach. Aby uzyskać dostęp do członków tego samego pakietu, nie jest wymagana deklaracja `import`. Deklaracje `import` są selektywne.
+Deklaracje `import` służą do uzyskiwania dostępu do elementów składowych (members, tzn.: klasy, cechy, funkcje itp.) w innych pakietach. Aby uzyskać dostęp do elementów tego samego pakietu, nie jest wymagana deklaracja `import`. Deklaracje `import` są selektywne.
 
 ```
 import users._  // zaimportuj wszystko z pakietu użytkowników
 import users.User  // zaimportuj klasę User
-import users.{User, UserPreferences}  // zaimportuj tylko wybranych członków
+import users.{User, UserPreferences}  // zaimportuj tylko wybrane elementy
 import users.{UserPreferences => UPrefs}  // zaimportuj i zmień nazwę dla wygody
 ```
 
-Jedną z różnic w Scali od Javy jest to, że `import` można używać wszędzie:
+Jedną z różnic w Scali od Javy jest to, że deklarację `import` można umieścić w dowolnym miejscu:
 
 ```tut
 def sqrtplus1(x: Int) = {
@@ -81,7 +81,7 @@ def sqrtplus1(x: Int) = {
 }
 ```
 
-W przypadku konfliktu nazw i konieczności zaimportowania czegoś z katalogu głównego projektu, poprzedź nazwę pakietu przedrostkiem `_root_`:
+W przypadku konfliktu nazw i konieczności podania pełnej ścieżki w hierarchii nazw pakietów, poprzedź nazwę pakietu przedrostkiem `_root_`:
 
 ```
 package accounts

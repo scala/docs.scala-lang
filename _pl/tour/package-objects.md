@@ -13,9 +13,9 @@ language: pl
 
 Scala udostępnia obiekty pakietu jako wygodny kontener wspóldzielony w całym pakiecie.
 
-Obiekty pakietu mogą zawierać dowolne definicje, nie tylko definicje zmiennych i metod. Na przykład, są często używane do przechowywania aliasów typów dla całego pakietu i niejawnych konwersji. Obiekty pakietu mogą nawet dziedziczyć klasy i cechy (traits) Scali.
+Obiekty pakietu mogą zawierać dowolne definicje, nie tylko definicje zmiennych i metod. Na przykład, są często używane do przechowywania aliasów typów i niejawnych konwersji. Obiekty pakietu mogą nawet dziedziczyć klasy i cechy (traits) Scali.
 
-Z założenia, kod źródłowy obiektu pakietu jest zwykle umieszczany w pliku źródłowym o nazwie `package.scala`.
+Zgodnie z konwencją, kod źródłowy obiektu pakietu jest zwykle umieszczany w pliku źródłowym o nazwie `package.scala`.
 
 Każdy pakiet może mieć jeden obiekt pakietu. Wszelkie definicje umieszczone w obiekcie pakietu traktowane są jak członkowie samego pakietu.
 
@@ -32,7 +32,7 @@ object Banana extends Fruit("Banana", "yellow")
 ```
 
 Teraz załóżmy, że chcesz umieścić zmienną `planted` i metodę `showFruit` bezpośrednio w pakiecie `gardening.fruits`.
-Oto jak to się robi:
+Możesz zrobić to w następujący sposób:
 
 ```
 // in file gardening/fruits/package.scala
@@ -45,7 +45,7 @@ package object fruits {
 }
 ```
 
-Jako przykład tego, jak wygląda użytkowanie, obiekt `PrintPlanted` importuje `planted` i `showFruit` w ten sam sposób, w jaki importuje klasę `Fruit` - używając importu wieloznacznego w pakiecie `gardening.fruits`.
+Jako przykład tego, jak wygląda użycie definicji przygorowanych w ten sposób, obiekt `PrintPlanted` importuje `planted` i `showFruit` w ten sam sposób, w jaki importuje klasę `Fruit` - używając importu wieloznacznego w pakiecie `gardening.fruits`.
 
 ```
 // in file PrintPlanted.scala
