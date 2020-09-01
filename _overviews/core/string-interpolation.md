@@ -46,7 +46,7 @@ For some special characters, it is necessary to escape them when embedded within
 To represent an actual dollar sign you can double it `$$`, like here:
 
     println(s"New offers starting at $$14.99")
-    
+
 which will print the string `New offers starting at $14.99`.
 
 Double quotes also need to be escaped. This can be done by using triple quotes as shown:
@@ -80,7 +80,6 @@ The `f` interpolator makes use of the string format utilities available from Jav
 [Formatter javadoc](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Formatter.html#detail).   If there is no `%` character after a variable
 definition a formatter of `%s` (`String`) is assumed.
 
-
 ### The `raw` Interpolator
 
 The raw interpolator is similar to the `s` interpolator except that it performs no escaping of literals within the string.  Here's an example processed string:
@@ -96,7 +95,6 @@ Here the `s` string interpolator replaced the characters `\n` with a return char
     res1: String = a\nb
 
 The raw interpolator is useful when you want to avoid having expressions like `\n` turn into a return character.
-
 
 In addition to the three default string interpolators, users can define their own.
 
@@ -120,7 +118,7 @@ to `StringContext`.  Here's an example:
 
     giveMeSomeJson(json"{ name: $name, id: $id }")
 
-In this example, we're attempting to create a JSON literal syntax using string interpolation.   The JsonHelper implicit class must be in scope to use this syntax, and the json method would need a complete implementation.   However, the result of such a formatted string literal would not be a string, but a `JSONObject`.
+In this example, we're attempting to create a JSON literal syntax using string interpolation.   The `JsonHelper` implicit class must be in scope to use this syntax, and the json method would need a complete implementation.   However, the result of such a formatted string literal would not be a string, but a `JSONObject`.
 
 When the compiler encounters the literal `json"{ name: $name, id: $id }"` it rewrites it to the following expression:
 
@@ -136,10 +134,10 @@ So, the `json` method has access to the raw pieces of strings and each expressio
       def json(args: Any*): JSONObject = {
         val strings = sc.parts.iterator
         val expressions = args.iterator
-        var buf = new StringBuffer(strings.next)
+        var buf = new StringBuilder(strings.next())
         while(strings.hasNext) {
-          buf append expressions.next
-          buf append strings.next
+          buf.append(expressions.next())
+          buf.append(strings.next())
         }
         parseJson(buf)
       }
