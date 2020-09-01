@@ -5,7 +5,7 @@ partof: scala-tour
 
 num: 4
 language: pl
-next-page: traits
+next-page: default-parameter-values
 previous-page: unified-types
 ---
 

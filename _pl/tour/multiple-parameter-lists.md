@@ -3,7 +3,7 @@ layout: tour
 title: Rozwijanie funkcji (Currying)
 partof: scala-tour
 
-num: 10
+num: 12
 language: pl
 next-page: case-classes
 previous-page: nested-functions

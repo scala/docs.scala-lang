@@ -3,7 +3,7 @@ layout: tour
 title: Funkcje wyższego rzędu
 partof: scala-tour
 
-num: 8
+num: 10
 language: pl
 next-page: nested-functions
 previous-page: mixin-class-composition

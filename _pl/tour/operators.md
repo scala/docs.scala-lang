@@ -3,9 +3,9 @@ layout: tour
 title: Operatory
 partof: scala-tour
 
-num: 29
+num: 31
 language: pl
-next-page: automatic-closures
+next-page: by-name-parameters
 previous-page: type-inference
 ---
 

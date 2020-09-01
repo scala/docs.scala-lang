@@ -3,7 +3,7 @@ layout: tour
 title: Jawnie typowane samoreferencje
 partof: scala-tour
 
-num: 24
+num: 26
 language: pl
 next-page: implicit-parameters
 previous-page: compound-types

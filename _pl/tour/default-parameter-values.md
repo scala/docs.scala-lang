@@ -3,10 +3,10 @@ layout: tour
 title: Domyślne wartości parametrów
 partof: scala-tour
 
-num: 32
+num: 5
 language: pl
 next-page: named-arguments
-previous-page: annotations
+previous-page: classes
 ---
 
 Scala zezwala na określenie domyślnych wartości dla parametrów, co pozwala wyrażeniu wywołującemu ją na pominięcie tych parametrów.

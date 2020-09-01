@@ -3,7 +3,7 @@ layout: tour
 title: For Comprehensions
 partof: scala-tour
 
-num: 16
+num: 18
 language: pl
 next-page: generic-classes
 previous-page: extractor-objects

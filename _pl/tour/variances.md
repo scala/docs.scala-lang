@@ -3,7 +3,7 @@ layout: tour
 title: Wariancje
 partof: scala-tour
 
-num: 18
+num: 20
 language: pl
 next-page: upper-type-bounds
 previous-page: generic-classes

@@ -3,7 +3,7 @@ layout: tour
 title: Kompozycja klas przez domieszki
 partof: scala-tour
 
-num: 7
+num: 9
 language: pl
 next-page: higher-order-functions
 previous-page: tuples

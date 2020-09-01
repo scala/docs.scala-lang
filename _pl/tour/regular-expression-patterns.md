@@ -3,9 +3,8 @@ layout: tour
 title: Wzorce wyrażeń regularnych
 partof: scala-tour
 
-num: 14
+num: 16
 language: pl
-
 next-page: extractor-objects
 previous-page: singleton-objects
 ---

@@ -3,7 +3,7 @@ layout: tour
 title: Konwersje niejawne
 partof: scala-tour
 
-num: 26
+num: 28
 language: pl
 next-page: polymorphic-methods
 previous-page: implicit-parameters

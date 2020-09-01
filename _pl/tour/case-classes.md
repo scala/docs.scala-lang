@@ -3,7 +3,7 @@ layout: tour
 title: Klasy przypadków
 partof: scala-tour
 
-num: 11
+num: 13
 language: pl
 next-page: pattern-matching
 previous-page: multiple-parameter-lists

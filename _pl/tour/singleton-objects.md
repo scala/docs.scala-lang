@@ -3,9 +3,8 @@ layout: tour
 title: Obiekty singleton
 partof: scala-tour
 
-num: 12
+num: 15
 language: pl
-
 next-page: regular-expression-patterns
 previous-page: pattern-matching
 ---
