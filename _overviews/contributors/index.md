@@ -125,7 +125,8 @@ sign the binaries.
 ### Create a Sonatype Account and Project
 
 Follow the instructions given on the [OSSRH Guide](https://central.sonatype.org/pages/ossrh-guide.html#initial-setup)
-to create a new Sonatype account (unless you already have one) and to create a new project ticket. This latter
+to create a new Sonatype account (unless you already have one) and to 
+[create a new project ticket](https://issues.sonatype.org/secure/CreateIssue.jspa?issuetype=21&pid=10134). This latter
 step is where you define the `groupId` that you will release to. You can use a domain name that you already own,
 otherwise a common practice is to use `io.github.(username)` (where `(username)` is replaced with your GitHub
 username).
