@@ -28,7 +28,7 @@ trait Pet {
 }
 ```
 
-When a class extends a trait, each defined method must be implemented, so here’s a class that extends `Pet` and defines `comeToMaster`:
+When a class extends a trait, each abstract method must be implemented, so here’s a class that extends `Pet` and defines `comeToMaster`:
 
 ```scala
 class Dog(name: String) extends Pet {
