@@ -114,8 +114,8 @@ Scala では、全ての加工文字列リテラルは簡単なコード変換�
         val expressions = args.iterator
         var buf = new StringBuilder(strings.next())
         while(strings.hasNext) {
-          buf append expressions.next()
-          buf append strings.next()
+          buf.append(expressions.next())
+          buf.append(strings.next())
         }
         parseJson(buf)
       }

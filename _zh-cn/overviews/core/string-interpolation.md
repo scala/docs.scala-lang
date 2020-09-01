@@ -105,8 +105,8 @@ f 插值器利用了java中的字符串数据格式。这种以%开头的格式�
         val expressions=args.iterator
         var buf=new StringBuilder(strings.next())
         while(strings.hasNext){
-          buf append expressions.next()
-          buf append strings.next()
+          buf.append(expressions.next())
+          buf.append(strings.next())
         }
         parseJson(buf)
       }

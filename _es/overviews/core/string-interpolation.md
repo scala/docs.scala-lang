@@ -113,10 +113,10 @@ De este modo, el método `json` tiene acceso a las diferentes partes de las cade
       def json(args: Any*): JSONObject = {
         val strings = sc.parts.iterator
         val expressions = args.iterator
-        var buf = new StringBuffer(strings.next)
+        var buf = new StringBuilder(strings.next)
         while(strings.hasNext) {
-          buf append expressions.next
-          buf append strings.next
+          buf.append(expressions.next())
+          buf.append(strings.next())
         }
         parseJson(buf)
       }

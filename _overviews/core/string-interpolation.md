@@ -136,8 +136,8 @@ So, the `json` method has access to the raw pieces of strings and each expressio
         val expressions = args.iterator
         var buf = new StringBuilder(strings.next())
         while(strings.hasNext) {
-          buf append expressions.next()
-          buf append strings.next()
+          buf.append(expressions.next())
+          buf.append(strings.next())
         }
         parseJson(buf)
       }
