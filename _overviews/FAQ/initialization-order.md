@@ -124,7 +124,7 @@ Note that using multiple lazy vals creates a new risk: cycles among lazy vals ca
 
 Early definitions are a bit unwieldy, there are limitations as to what can appear and what can be referenced in an early definitions block, and they don't compose as well as lazy vals: but if a lazy val is undesirable, they present another option.  They are specified in SLS 5.1.6.
 
-Note that early definitions are deprecated in Scala 2.13 and will be removed in 2.14; they will be replaced by trait parameters in 3.0. This option is not recommended if future compatibility is a concern.
+Note that early definitions are deprecated in Scala 2.13; they will be replaced by trait parameters in Scala 3. So, early definitions are not recommended for use if future compatibility is a concern.
 
 #### Use constant value definitions ####
     abstract class A {
