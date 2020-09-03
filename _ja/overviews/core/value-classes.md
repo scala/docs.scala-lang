@@ -236,7 +236,7 @@ Scala はコンストラクタのパラメータとして `lazy val` を許さ�
 値クラスは非汎用トレイトを拡張することができない。また、値クラスを拡張することもできない。
 
     trait NotUniversal
-    class Value(val x: Int) extends AnyVal with notUniversal
+    class Value(val x: Int) extends AnyVal with NotUniversal
     class Extend(x: Int) extends Value(x)
 
     Extend.scala:2: error: illegal inheritance; superclass AnyVal
