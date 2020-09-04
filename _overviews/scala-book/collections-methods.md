@@ -24,8 +24,7 @@ Because there are so many methods available to you, they won’t all be shown he
 - `tail`
 - `take`, `takeWhile`
 - `drop`, `dropWhile`
-- `find`
-- `reduce`, `fold`
+- `reduce`
 
 The following methods will work on all of the collections “sequence” classes, including `Array`, `ArrayBuffer`, `List`, `Vector`, etc., but these examples will use a `List` unless otherwise specified.
 
