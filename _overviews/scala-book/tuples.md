@@ -76,6 +76,11 @@ scala> val(x, y, z) = (3, "Three", new Person("David"))
 x: Int = 3
 y: String = Three
 z: Person = Person(David)
+
+scala> print(x)
+3
+scala> print(y)
+Three
 ```
 
 Technically this approach involves a form of pattern-matching, and it’s a great way to assign tuple elements to variables.
