@@ -60,7 +60,7 @@ scala> val b = 0 +: a
 b: List[Int] = List(0, 1, 2, 3)
 
 scala> val b = List(-1, 0) ++: a
-b: List[Int] = List(-1, 0, 1, 2, 3)
+b: List[Int] = List(-1, 0, 0, 1, 2, 3)
 ```
 
 You can also *append* elements to a `List`, but because `List` is a singly-linked list, you should really only prepend elements to it; appending elements to it is a relatively slow operation, especially when you work with large sequences.
