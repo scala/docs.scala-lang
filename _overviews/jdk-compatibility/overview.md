@@ -12,15 +12,15 @@ Sometimes new JVM and JDK (Java Development Kit) versions require us to update S
 
 | JDK version | Minimum Scala versions           | Recommended Scala versions                                 |
 |:-----------:|:---------------------------------|:-----------------------------------------------------------|
-| 13, 14      | 2.13.2, 2.12.11                  | 2.13.3, 2.12.11                                            |
-| 12          | 2.13.1, 2.12.9                   | 2.13.3, 2.12.11                                            |
-| 11          | 2.13.0, 2.12.4, 2.11.12          | 2.13.3, 2.12.11, 2.11.12                                   |
-| 8           | 2.13.0, 2.12.0, 2.11.0, 2.10.2   | 2.13.3, 2.12.11, 2.11.12, 2.10.7                           |
+| 13, 14      | 2.13.2, 2.12.11                  | 2.13.3, 2.12.12                                            |
+| 12          | 2.13.1, 2.12.9                   | 2.13.3, 2.12.12                                            |
+| 11          | 2.13.0, 2.12.4, 2.11.12          | 2.13.3, 2.12.12, 2.11.12                                   |
+| 8           | 2.13.0, 2.12.0, 2.11.0, 2.10.2   | 2.13.3, 2.12.12, 2.11.12, 2.10.7                           |
 | 6, 7        | 2.11.0, 2.10.0                   | 2.11.12, 2.10.7                                            |
 
 Even when a version combination isn't listed as supported, most features may still work.  (But Scala 2.12+ definitely doesn't work at all on JDK 6 or 7.)
 
-In general, Scala works on JDK 11+, including GraalVM, but it might not take advantage of features that were added after JDK 8. See [below](#jdk-11-compatibility-notes).
+In general, Scala works on JDK 11+, including GraalVM, but it probably won't take special advantage of features that were added after JDK 8. See [below](#jdk-11-compatibility-notes).
 
 Lightbend offers [commercial support](https://www.lightbend.com/lightbend-platform-subscription) for Scala. The linked page includes contact information for inquiring about supported and recommended versions.
 
@@ -67,7 +67,7 @@ To help with testing on JDK 11, see [scala/scala-dev#559](https://github.com/sca
 
 ## JDK 12, 13, and 14 compatibility notes
 
-JDK 14 was released in March 2020. But 12, 13, and 14 are not LTS releases, so the remarks above about non-LTS releases apply.
+JDK 14 was released in March 2020. But 12, 13, and 14 are not LTS releases, so the remarks above about non-LTS releases apply.  The next LTS release will be JDK 17.
 
 JDK 12, 13, and 14 are expected to work wherever JDK 11 does. The Scala community build now runs on JDK 14 (as well as 11 and 8).
 
@@ -75,8 +75,12 @@ As of March 2020, the [jdk12](https://github.com/scala/bug/labels/jdk12) and [jd
 
 As far as we know, 12, 13, and 14 are similar to 11 with respect to Scala compatibility.
 
+## JDK 15
+
+As of September 2020, JDK 15 is in release candidate phase ([reference](https://openjdk.java.net/projects/jdk/15/)). We don't have any compatibility information yet.
+
 ## Scala 3
 
-Scala 3.0.x will still support JDK 8.  It is also expected to work on 11 and beyond.
+The Scala 3.0.x series will support JDK 8, as well as 11 and beyond.
 
 As Scala and the JVM continue to evolve, some eventual Scala 3.x version may drop support for JDK 8, in order to better take advantage of new JVM features.  It isn't clear yet what the new minimum supported version might become.
