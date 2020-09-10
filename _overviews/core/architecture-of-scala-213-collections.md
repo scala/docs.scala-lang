@@ -299,7 +299,7 @@ Let’s detail the implementation of `filter`, step by step:
   concrete collections: they can decide to evaluate in a strict or non-strict way
   the elements resulting from the operation.
 
-The implementation of `map` is similar, excepted that instead of using
+The implementation of `map` is similar, except that instead of using
 `fromSpecific` it uses `from` which takes as parameter an
 iterable whose element type `E` is arbitrary.
 
