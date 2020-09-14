@@ -55,7 +55,7 @@ but here's a glance at what everything is for:
 => `main`
 1. Right-click `scala` and select **New** => **Package**
 1. Name the package `example` and click **OK**.
-1. Right-click the package `example` and select **New** => **Scala class**.
+1. Right-click the package `example` and select **New** => **Scala class** (if you don't see this option, right-click the `SbtExampleProject`, click **Add Framewords Support**, select **Scala** and proceed)
 1. Name the class `Main` and change the **Kind** to `object`.
 1. Change the code in the class to the following:
 
