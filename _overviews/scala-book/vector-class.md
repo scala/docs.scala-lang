@@ -45,7 +45,7 @@ val b = a :+ 4
 and this:
 
 ```scala
-val b = a ++: Vector(4, 5)
+val b = a ++ Vector(4, 5)
 ```
 
 The REPL shows how this works:
@@ -57,7 +57,7 @@ a: Vector[Int] = Vector(1, 2, 3)
 scala> val b = a :+ 4
 b: Vector[Int] = Vector(1, 2, 3, 4)
 
-scala> val b = a ++: Vector(4, 5)
+scala> val b = a ++ Vector(4, 5)
 b: Vector[Int] = Vector(1, 2, 3, 4, 5)
 ```
 
