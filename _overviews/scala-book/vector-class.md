@@ -52,13 +52,13 @@ The REPL shows how this works:
 
 ```scala
 scala> val a = Vector(1,2,3)
-a: Vector[Int] = List(1, 2, 3)
+a: Vector[Int] = Vector(1, 2, 3)
 
 scala> val b = a :+ 4
-b: Vector[Int] = List(1, 2, 3, 4)
+b: Vector[Int] = Vector(1, 2, 3, 4)
 
 scala> val b = a ++ Vector(4, 5)
-b: Vector[Int] = List(1, 2, 3, 4, 5)
+b: Vector[Int] = Vector(1, 2, 3, 4, 5)
 ```
 
 You can also *prepend* elements like this:
@@ -77,10 +77,10 @@ Once again the REPL shows how this works:
 
 ```scala
 scala> val b = 0 +: a
-b: Vector[Int] = List(0, 1, 2, 3)
+b: Vector[Int] = Vector(0, 1, 2, 3)
 
 scala> val b = Vector(-1, 0) ++: a
-b: Vector[Int] = List(-1, 0, 1, 2, 3)
+b: Vector[Int] = Vector(-1, 0, 1, 2, 3)
 ```
 
 Because `Vector` is not a linked-list (like `List`), you can prepend and append elements to it, and the speed of both approaches should be similar.
