@@ -16,8 +16,7 @@ so-called _type class pattern_, a pattern of code that emulates the
 functionality provided by Haskell type classes, though in a more verbose
 manner.
 
-A context bound requires a _parameterized type_, such as `Ordered[A]`,
-but unlike `String`.
+A context bound requires a _parameterized type_, such as `Ordered[A]`.
 
 A context bound describes an implicit _value_. It is used to declare that for
 some type `A`, there is an
