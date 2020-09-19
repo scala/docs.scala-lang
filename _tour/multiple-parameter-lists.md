@@ -17,7 +17,7 @@ Methods may have multiple parameter lists.
 Here is an example, as defined on the `Iterable` trait in Scala's collections API:
 
 ```
-trait TraversableOnce[A] {
+trait Iterable[A] {
   ...
   def foldLeft[B](z: B)(op: (B, A) => B): B
   ...
