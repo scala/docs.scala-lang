@@ -14,10 +14,14 @@ Methods may have multiple parameter lists.
 
 ### Example
 
-Here is an example, as defined on the `TraversableOnce` trait in Scala's collections API:
+Here is an example, as defined on the `Iterable` trait in Scala's collections API:
 
 ```
-def foldLeft[B](z: B)(op: (B, A) => B): B
+trait Iterable[A] {
+  ...
+  def foldLeft[B](z: B)(op: (B, A) => B): B
+  ...
+}
 ```
 
 `foldLeft` applies a two-parameter function `op` to an initial value `z` and all elements of this collection, going left to right. Shown below is an example of its usage.
