@@ -14,7 +14,7 @@ Methods may have multiple parameter lists.
 
 ### Example
 
-Here is an example, as defined on the `TraversableOnce` trait in Scala's collections API:
+Here is an example, as defined on the `Iterable` trait in Scala's collections API:
 
 ```
 trait TraversableOnce[A] {
