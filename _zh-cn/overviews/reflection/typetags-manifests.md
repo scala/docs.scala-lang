@@ -1,13 +1,13 @@
 ---
 layout: multipage-overview
-title: TypeTags and Manifests
+title: TypeTags 和 Manifests
 partof: reflection
 overview-name: Reflection
 
 num: 5
 
-languages: [ja, zh-cn]
-permalink: /overviews/reflection/:title.html
+languages: zh-cn
+permalink: /zh-cn/overviews/reflection/:title.html
 ---
 
 与其他JVM语言一样，Scala的类型在运行时被擦除。这意味着，如果要检查某个实例的运行时类型，则可能无法访问Scala编译器在编译时可用的所有类型信息。
