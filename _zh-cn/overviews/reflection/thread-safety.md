@@ -7,7 +7,6 @@ overview-name: Reflection
 num: 6
 
 language: zh-cn
-permalink: /zh-cn/overviews/reflection/:title.html
 ---
 
 <span class="label important" style="float: right;">EXPERIMENTAL</span>
