@@ -8,31 +8,7 @@ description: This page provides a high-level overview of the main features of Sc
   - test with jekyll on my system
 -->
 
-<!--
-√ A “Hello, world,” example, demonstrating scalac, scala, @main methods
-√ Show the REPL; mention ScalaFiddle and Worksheets
-√ Two types of variables: val and var
-√ Control structures examples (if/then, for, match, etc.)
-√ Data modeling
-  √ Classes and methods
-  √ Traits
-  √ Case classes
-  - enums & ADTs
-√ Mention that there is no need for new (not mentioning explicitly, just showing)
-- Collections classes and methods
-- New control syntax
-- Optional braces, indentation
-- Top-level defs and vals
-- Note to Al: mention “code blocks” (thinking of things like parameter untupling and more generally, anonymous functions)
-√ @main methods
-- First-class functions (section from Jonathan)
-  - Lambdas
-  - Higher-order functions (HOFs)
-  - HOFs in the standard library
-- Mention Scalafix?
--->
-
-
+<!-- TODO: this is a choppy start -->
 Our hope in this Overview documentation is to demonstrate that Scala is a beautiful, expressive programming language, with a clean, modern syntax. To help with that demonstration, this “Taste of Scala” section provides a whirlwind tour of Scala’s main features. After the initial tour in this section, the rest of the Overview will provide a few more details on the these features, and the Reference documentation will provide *many* more details.
 
 >In this Overview it’s assumed that you’ve used a language like Java before, and you’re ready to see a series of Scala examples to get a feel for what the language looks like. You’ll also be able to test many of the examples directly on this page, and in addition to that, you can also test anything you’d like on [ScalaFiddle.io](https://scalafiddle.io), [Scastie](https://scastie.scala-lang.org), in Worksheets with the VS Code or Intellij IDEA editors, or in the Scala REPL, which will be demonstrated shortly.
