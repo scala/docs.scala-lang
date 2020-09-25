@@ -21,9 +21,9 @@ permalink: /overviews/reflection/:title.html
 Scala类型的完整类型描述符。例如，`TypeTag[List[String]]`包含所有类型信息，在本例中是类型`scala.List[String]`。
 
 2. `scala.reflect.ClassTag`。
-Scala类型的部分类型描述符。例如，`ClassTag[List[String]]`只包含已删除的类类型信息，在本例中为`scala.collection.immutable.List`。`ClassTag`只提供对类型的运行时类的访问。类似于`scala.reflect.ClassManifest`。
+Scala类型的部分类型描述符。例如，`ClassTag[List[String]]`只包含已擦除、关于类的类型信息，在本例中为`scala.collection.immutable.List`。`ClassTag`只提供对类型的运行时类的访问。其类似于`scala.reflect.ClassManifest`。
 
-3. `scala.reflect.api.TypeTags#WeakTypeTag`.
+3. `scala.reflect.api.TypeTags#WeakTypeTag`。
 抽象类型的类型描述符（参见下面相应的小节）。
 
 ## 获取`TypeTag`
@@ -48,7 +48,7 @@ Scala类型的部分类型描述符。例如，`ClassTag[List[String]]`只包含
 
 ### 使用类型为`TypeTag[T]`、`ClassTag[T]`或`WeakTypeTag[T]`的隐式参数
     
-与`Manifest`一样，实际上可以 _请求_ 编译器生成`TypeTag`。这只需指定一个类型为`TypeTag[T]`的隐式 _票据_ 参数即可完成。如果编译器在隐式搜索期间找不到匹配的隐式值，它将自动生成一个`TypeTag[T]`。
+与`Manifest`一样，实际上可以 _请求_ 编译器生成`TypeTag`。这只需指定一个类型为`TypeTag[T]`的隐式 _证据_ 参数即可完成。如果编译器在隐式搜索期间找不到匹配的隐式值，它将自动生成一个`TypeTag[T]`。
 
 _注意_：这通常是通过在方法上使用隐式参数来实现的，并且只能在类上。
 
