@@ -3,15 +3,18 @@ title: A Taste of Scala
 description: This page provides a high-level overview of the main features of Scala 3.
 ---
 
-<!-- TODO
+<!-- TODO/QUESTIONS
   - add ScalaFiddle at the appropriate places
-  - test with jekyll on my system
+  - which Control Syntax to use by default?
+  - demo “named parameters” with methods
+  - show a method with default parameters
+  - show package "exports"
+  - cover Option/Try/Either (functional error handling)
 -->
 
-<!-- TODO: this is a choppy start -->
-Our hope in this Overview documentation is to demonstrate that Scala is a beautiful, expressive programming language, with a clean, modern syntax. To help with that demonstration, this “Taste of Scala” section provides a whirlwind tour of Scala’s main features. After the initial tour in this section, the rest of the Overview will provide a few more details on the these features, and the Reference documentation will provide *many* more details.
+This “Taste of Scala” section provides a whirlwind tour of Scala’s main features. After the initial tour in this section, the rest of the Overview will provide a few more details on the these features, and the Reference documentation will provide *many* more details.
 
->In this Overview it’s assumed that you’ve used a language like Java before, and you’re ready to see a series of Scala examples to get a feel for what the language looks like. You’ll also be able to test many of the examples directly on this page, and in addition to that, you can also test anything you’d like on [ScalaFiddle.io](https://scalafiddle.io), [Scastie](https://scastie.scala-lang.org), in Worksheets with the VS Code or Intellij IDEA editors, or in the Scala REPL, which will be demonstrated shortly.
+>Throughout this Overview you’ll also be able to test many of the examples directly on this page. In addition to that, you can also test anything you’d like on [ScalaFiddle.io](https://scalafiddle.io), [Scastie](https://scastie.scala-lang.org), or in the Scala REPL, which is demonstrated shortly.
 
 
 
@@ -19,13 +22,13 @@ Our hope in this Overview documentation is to demonstrate that Scala is a beauti
 
 <!-- NOTE: i assume here that dotc/dotr will be renamed to scala/scala -->
 
-Ever since the book, *C Programming Language*, it’s been a tradition to begin programming books with a “Hello, world” example, and not to disappoint, this is one way to write that example in Scala:
+A “Hello, world” example in Scala goes as follows. First, Put this code in a file named *Hello.scala*:
 
 ```scala
 @main def hello = println("Hello, world")
 ```
 
-To see how this works, put that line of code in a file named *Hello.scala*, and then compile it with `scalac`:
+Next, compile the code with `scalac`:
 
 ```sh
 $ scalac Hello.scala
@@ -44,8 +47,7 @@ hello.class
 hello.tasty
 ```
 
-<!-- TODO: wording -->
-Just like Java, the *.class* files are bytecode files, and they’re ready to run in the JVM. Now you can run the main `hello` method with the `scala` command:
+Like Java, the *.class* files are bytecode files, and they’re ready to run in the JVM. Now you can run the main `hello` method with the `scala` command:
 
 ```sh
 $ scala hello
@@ -53,15 +55,12 @@ Hello, world
 ```
 
 Assuming that worked, congratulations, you just compiled and ran your first Scala application.
-<!-- TODO: more explanation on how that works? -->
 
 
 
 ## The Scala REPL
 
-The Scala REPL (“Read-Evaluate-Print-Loop”) is a command-line interpreter that you use as a “playground” area to test your Scala code. We introduce it early here so you can use it with the code examples that follow.
-
-Assuming that you’ve downloaded and installed Scala — such as from the [Scala download page](https://www.scala-lang.org/download) — you start a REPL session by running the `scala` command at your operating system command line. When you do this you’ll see a “welcome” prompt that looks like this:
+The Scala REPL (“Read-Evaluate-Print-Loop”) is a command-line interpreter that you use as a “playground” area to test your Scala code. You start a REPL session by running the `scala` command at your operating system command line. When you do so, you’ll see a “welcome” prompt like this:
 
 <!-- TODO: update this when it’s ready -->
 ```scala
@@ -72,19 +71,36 @@ Type in expressions for evaluation. Or try :help.
 scala> _
 ```
 
-Because the REPL is a command-line interpreter, it sits there waiting for you to type something. Inside the REPL you can type Scala expressions to see how they work:
+The REPL is a command-line interpreter, so it sits there waiting for you to type something. Now you can type Scala expressions to see how they work:
 
-```scala
-scala> val x = 1
-x: Int = 1
+````
+scala> 1 + 1
+val res0: Int = 2
 
-scala> val y = x + 1
-y: Int = 2
-```
+scala> 2 + 2
+val res1: Int = 4
+````
 
-As those examples show, after you type your expressions in the REPL, it shows the result of each expression on the line following the prompt.
+As shown in the output, if you don’t assign a variable to the result of an expression, the REPL creates variables named `res0`, `res1`, etc., for you. You can use these variable names in future expressions:
 
-As mentioned earlier, if you prefer a browser-based testing environment you can also use [ScalaFiddle.io](https://scalafiddle.io) or [Scastie.scala-lang.org](https://scastie.scala-lang.org).
+````
+scala> val x = res0 * 10
+val x: Int = 20
+````
+
+Notice that the REPL output also shows the result of your expressions.
+
+You can run all sorts of experiments in the REPL. This example shows how to create and then call a `sum` function:
+
+````
+scala> def sum(a: Int, b: Int): Int = a + b
+def sum(a: Int, b: Int): Int
+
+scala> sum(2, 2)
+val res2: Int = 4
+````
+
+As mentioned earlier, if you prefer a browser-based playground environment, you can also use [ScalaFiddle.io](https://scalafiddle.io) or [Scastie.scala-lang.org](https://scastie.scala-lang.org).
 
 
 
@@ -92,17 +108,20 @@ As mentioned earlier, if you prefer a browser-based testing environment you can 
 
 When you create a new variable in Scala, you declare whether the variable is immutable or mutable:
 
-- `val` is an *immutable* variable — like `final` in Java. We recommend always creating a variable with `val`, unless there’s a specific reason you need a mutable variable.
-- `var` creates a *mutable* variable, and should only be used when you have a variable whose contents will be modified over time.
+- `val` creates an *immutable* variable — like `final` in Java. You should always create a variable with `val`, unless there’s a reason you need a mutable variable.
+- `var` creates a *mutable* variable, and should only be used when a variable’s contents will change over time.
 
 These examples show how to create `val` and `var` variables:
 
 ```scala
-val x = 1   // immutable
-var y = 0   // mutable
+val a = 0         // immutable
+val b = "Hello"
+
+var c = 1         // mutable
+var d = "world"
 ```
 
-In an application, once you create a `val` field, it can’t be reassigned. The second line of code here creates an error message:
+In an application, a `val` field can’t be reassigned. You’ll generate a compiler error if you try to reassign one:
 
 ```scala
 val msg = "Hello, world"
@@ -116,21 +135,20 @@ var msg = "Hello, world"
 msg = "Hello"   // this compiles because a var can be reassigned
 ```
 
->Inside the REPL playground area you can reassign a `val` field, but this is just for convenience. In the real world a `val` field can’t be reassigned.
+>Inside the REPL playground area you can reassign a `val` field, but this is just for convenience.
 
 
 
 ## Declaring variable types
 
-In Scala you can declare variables without explicitly declaring their type:
+You can declare variables by explicitly declaring their type, or by letting the compiler infer the type:
 
 ```scala
-val x = 1
-val s = "a string"
-val p = Person("Richard")
+val x: Int = 1   // explicit
+val x = 1        // implicit; the compiler infers the type
 ```
 
-When you do this, the Scala compiler can usually infer the data type for you, as shown in the output of these REPL examples:
+The second form is known as *type inference*, and it’s a great way to help keep this type of code concise. The Scala compiler can usually infer the data type for you, as shown in the output of these examples:
 
 ```scala
 scala> val x = 1
@@ -143,7 +161,7 @@ scala> val nums = List(1,2,3)
 val nums: List[Int] = List(1, 2, 3)
 ```
 
-This feature is known as *type inference*, and it’s a great way to help keep this type of code concise. You can also *explicitly* declare a variable’s type:
+You can always explicitly declare a variable’s type if you prefer, but in simple assignments like these it isn’t necessary:
 
 ```scala
 val x: Int = 1
@@ -151,15 +169,15 @@ val s: String = "a string"
 val p: Person = new Person("Richard")
 ```
 
-However, as you can see, in simple situations this isn’t needed, and tends to feel more verbose than necessary.
+Notice that with this approach, the code feels more verbose than necessary.
 
 
 
 ## Built-in data types
 
-Scala comes with the standard numeric data types you’d expect, and all of these data types are full-blown instances of classes. In Scala, everything is an object.
+Scala comes with the standard numeric data types you’d expect, and they’re all full-blown instances of classes. In Scala, everything is an object.
 
-These examples show how to declare variables of the basic numeric types:
+These examples show how to declare variables of the numeric types:
 
 ```scala
 val b: Byte = 1
@@ -170,78 +188,48 @@ val d: Double = 2.0
 val f: Float = 3.0
 ```
 
-In the first four examples, if you don’t explicitly specify a type, the number `1` will default to an `Int`, so if you want one of the other data types — `Byte`, `Long`, or `Short` — you need to explicitly declare those types, as shown. Numbers with a decimal (like 2.0) will default to a `Double`, so if you want a `Float` you need to declare a `Float`, as shown in the last example.
-
 Because `Int` and `Double` are the default numeric types, you typically create them without explicitly declaring the data type:
 
 ```scala
 val i = 123   // defaults to Int
-val x = 1.0   // defaults to Double
+val j = 1.0   // defaults to Double
 ```
-<!-- TODO: show 1L, 1D, 1F here? -->
 
-
-### BigInt and BigDecimal
-
-When you need really large numbers, Scala also includes the types `BigInt` and `BigDecimal`:
+In your code you can also use the characters `L`, `D`, and `F` (and their lowercase equivalents) to specify `Long`, `Double`, and `Float` fields:
 
 ```scala
-var b = BigInt(1234567890)
-var b = BigDecimal(123456.789)
+val x = 1_000L   // val x: Long = 1000
+val y = 2.2D     // val y: Double = 2.2
+val z = 3.3F     // val z: Float = 3.3
 ```
 
-A great thing about `BigInt` and `BigDecimal` is that they support all the operators you’re used to using with numeric types:
+When you need really large numbers, use the `BigInt` and `BigDecimal` types:
 
 ```scala
-scala> var b = BigInt(1234567890)
-b: scala.math.BigInt = 1234567890
-
-scala> b + b
-res0: scala.math.BigInt = 2469135780
-
-scala> b * b
-res1: scala.math.BigInt = 1524157875019052100
-
-scala> b += 1
-
-scala> println(b)
-1234567891
+var a = BigInt(1_234_567_890_987_654_321L)
+var b = BigDecimal(123_456.789)
 ```
 
-While you can think of `+`, `*`, and `+=` as being “operators,” because everything in Scala is an object, they’re really methods on their classes.
-
-
-### String and Char
-
-Scala also has `String` and `Char` data types, which you can generally declare with the implicit form:
+Scala also has `String` and `Char` data types:
 
 ```scala
-val name = "Bill"
-val c = 'a'
+val name = "Bill"   // String
+val c = 'a'         // Char
 ```
-
-However, you can use the explicit form, if you prefer:
-
-```scala
-val name: String = "Bill"
-val c: Char = 'a'
-```
-
-As shown, strings are enclosed in double-quotes — or triple-quotes, as you’re about to see — and a character is enclosed in single-quotes.
 
 
 
 ## Two notes about strings
 
-Scala strings are similar to Java strings, but they have at least two great additional features:
+Scala strings are similar to Java strings, but they have two great additional features:
 
 - They support string interpolation
-- You can create multiline strings
+- It’s easy to create multiline strings
 
 
 ### String interpolation
 
-In its most basic form, string interpolation provides a great way to use variables inside strings. For instance, given these three variables:
+String interpolation provides a very readable way to use variables inside strings. For instance, given these three variables:
 
 ```scala
 val firstName = "John"
@@ -249,32 +237,25 @@ val mi = 'C'
 val lastName = "Doe"
 ```
 
-string interpolation lets you combine those variables in a string like this:
+String interpolation lets you combine those variables in a string like this:
 
 ```scala
-val name = s"$firstName $mi $lastName"
+println(s"Name: $firstName $mi $lastName")   // "Name: John C Doe"
 ```
 
-This lets you embed variables inside strings in a very readable way:
+Just precede the string with the letter `s`, and then put a `$` symbol before your variable names inside the string.
 
-```scala
-println(s"Name: $firstName $mi $lastName")
-```
-
-As shown, all you have to do is to precede the string with the letter `s`, and then put a `$` symbol before your variable names inside the string.
-
-It’s important to know that string interpolation goes well beyond this basic use. For instance, you can also access class fields and use equations inside the interpolated string by enclosing those references inside curly braces. This example shows how to reference a class field (or method) inside an interpolated string:
+To enclose class fields, class methods, or equations inside a string, enclose them in curly braces:
 
 ```scala
 class Person(var name: String)
 val p = Person("Margaret Hamilton")
-println(s"Name: ${p.name}")
-```
 
-This example shows how to use an equation:
+// a class field or method
+println(s"Name: ${p.name}")   // "Name: Margaret Hamilton"
 
-```scala
-println(s"2 + 2 = ${2 + 2}")   // prints '4'
+// an equation
+println(s"2 + 2 = ${2 + 2}")   // prints "2 + 2 = 4"
 ```
 
 #### Other interpolators
@@ -285,77 +266,57 @@ println(s"2 + 2 = ${2 + 2}")   // prints '4'
 val name = "Fred"
 val age = 33
 val weight = 200.5
+
 println(f"$name is $age years old, and weighs $weight%.1f pounds.")
 ```
+<!-- TODO: use a better example -->
 
-<!--
-TODO: use a better example than that
-val msg = f"$time | $logLevel%-5s | $classname | $msg\n"
--->
-
-Very importantly, because `s` and `f` are really just methods, other developers can write their own interpolators. For instance, Scala database libraries can create an `sql` interpolator that can have special features to support SQL:
+Beyond that, because `s` and `f` are really just methods, developers can write their own interpolators. For instance, Scala database libraries can create an `sql` interpolator that can have special features to support SQL:
 
 ```scala
 val query = sql"select * from $table"
 ```
 
-<!-- TODO: link -->
->For more details about interpolators, see the Scala Reference documentation.
-
-<!--
-See the [string interpolation documentation]({{site.baseurl}}/overviews/core/string-interpolation.html) for more details.
--->
-
 
 ### Multiline strings
 
-A second great feature of Scala strings is that you can create multiline strings by including the string inside three double-quotes:
+Multiline strings are created by including the string inside three double-quotes:
 
 ```scala
-val speech = """Four score and
-               seven years ago
-               our fathers ..."""
+val quote = """The essence of Scala: 
+               Fusion of functional and object-oriented 
+               programming in a typed setting."""
 ```
-<!-- TODO: maybe use a different quote -->
 
-That’s very helpful for when you need to work with multiline strings. One drawback of this basic approach is that the lines after the first line are indented, as you can see in the REPL:
+One drawback of this basic approach is that the lines after the first line are indented, and look like this:
 
 ```scala
-scala> val speech = """Four score and
-     |                seven years ago
-     |                our fathers ..."""
-speech: String =
-Four score and
-                   seven years ago
-                   our fathers ...
+"The essence of Scala: 
+               Fusion of functional and object-oriented
+               programming in a typed setting."
 ```
 
 A simple way to correct this problem is to put a `|` symbol in front of all lines after the first line, and call the `stripMargin` method after the string:
 
 ```scala
-val speech = """Four score and
-               |seven years ago
-               |our fathers ...""".stripMargin
+val quote = """The essence of Scala: 
+               |Fusion of functional and object-oriented 
+               |programming in a typed setting.""".stripMargin
 ```
 
-The REPL shows that when you do this, all of the lines are left-justified:
+Now all of the lines are left-justified inside the string:
 
 ```scala
-scala> val speech = """Four score and
-     |                |seven years ago
-     |                |our fathers ...""".stripMargin
-speech: String =
-Four score and
-seven years ago
-our fathers ...
+"The essence of Scala: 
+Fusion of functional and object-oriented 
+programming in a typed setting."
 ```
-
-Because this is what you generally want, this is a common way to create multiline strings.
 
 
 
 ## Control structures
 <!--
+https://dotty.epfl.ch/docs/reference/other-new-features/control-syntax.html
 The rules in detail are:
 
 - The condition of an if-expression can be written without enclosing parentheses if it is followed by a then or some indented code on a following line.
@@ -364,43 +325,39 @@ The rules in detail are:
 - A do in a for-expression expresses a for-loop.
 -->
 
-Scala has all of the basic programming language control structures you find in other languages, and also has powerful `for` expressions and `match` expressions:
+Scala has the programming language control structures you find in other languages, and also has powerful `for` expressions and `match` expressions:
 
-- if/else
-- `for` loops
+- `if`/`else`
+- `for` loops and expressions
 - `match` expressions
-- while, do/while
-- try/catch
+- `while` loops
+- `try`/`catch`
 
 These structures are demonstrated in the following examples.
 
 
 ### if/else
 
-Scala’s if/else control structure is similar to other languages. A multiline statement looks like this:
+Scala’s if/else control structure is similar to other languages:
 
 ```scala
 if x < 0 then
-    "negative"
+  println("negative")
 else if x == 0
-    "zero"
+  println("zero")
 else
-    "positive"
+  println("positive")
 ```
 
-and a single-line expression looks like this:
-
-```scala
-if x < 0 then -x else x
-```
-
-Note that this really is an *expression* — not a *statement* — meaning that it returns a value, and can therefore be used as a ternary operator:
+Note that this really is an *expression* — not a *statement* — meaning that it returns a value, so you can assign the result to a variable:
 
 ```scala
 val x = if (a < b) a else b
 ```
 
-In fact, as you’ll see throughout this Overview and in our Reference documentation, *all* Scala control structures can be used as expressions.
+As you’ll see throughout this Overview and in our Reference documentation, *all* Scala control structures can be used as expressions.
+
+>An expression returns a result, while a statement does not. Statements are typically used for their side-effects, such as using `println` to print to the console.
 
 
 ### for loops and expressions
@@ -412,88 +369,77 @@ In fact, as you’ll see throughout this Overview and in our Reference documenta
 - for/yield
 -->
 
-In its most basic use, the `for` keyword can be used to create a `for` loop. For instance, given this list:
+The `for` keyword can be used to create a `for` loop. This example shows how to print every element in a `List`:
 
 ```scala
-// TODO introduce ranges first
-val ints = (1 to 10).toList   // List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-val ints = List.range(1,10)
-```
+val ints = List(1,2,3,4,5)
 
-you can print each element in the list like this:
-
-```scala
 for (i <- ints) println(i)
 ```
 
-You can also use one or more *guards* — `if` expressions — inside a `for` loop. This example prints all of the numbers in `ints` that are greater than `5`:
+<!--
+The code `i <- ints` is referred to as a *generator*, and if you want to leave the parentheses off of the generator, the `do` keyword is required before the code that follows it.
+-->
 
+#### Guards
+
+You can also use one or more `if` expressions inside a `for` loop. These are referred to as *guards*. This example prints all of the numbers in `ints` that are greater than `2`:
+
+<!-- TODO: scalafiddle -->
+<!-- TODO: curly braces style? -->
 ```scala
-for i <- ints if i > 5
-do println(i)
-```
+val ints = List(1,2,3,4,5)
 
-That statement can be written like this if you prefer:
-
-```scala
 for
   i <- ints 
-  if i > 5
-do
-  println(i)
-```
-
-This style is commonly used, because it supports the use of multiple generators and guards. For instance, this example prints all of the even numbers in `ints` that are greater than `2`:
-
-```scala
-// prints 4,6,8, and 10 on different lines
-for
-  i <- ints
   if i > 2
-  if i % 2 == 0
 do
   println(i)
 ```
-<!--
-// SHOWS MULTIPLE GUARDS
-// prints: "i = 2, j = b"
+
+You can use multiple generators and guards. This loop iterates over the numbers `1` to `3`, and for each number it also iterates over the characters `a` to `c`. However, it also has two guards, so the only time the print statement is called is when `i` has the value `2` and `j` is the character `b`:
+
+<!-- scalafiddle -->
+```tut
 for
   i <- 1 to 3
   j <- 'a' to 'c'
   if i == 2
   if j == 'b'
 do
-  println(s"i = $i, j = $j")
--->
-
-Simple Scala `for` loops look like this:
-
-```scala
-for (arg <- args) println(arg)
-
-// "x to y" syntax
-for (i <- 0 to 5) println(i)
-
-// "x to y by" syntax
-for (i <- 0 to 10 by 2) println(i)
+  println(s"i = $i, j = $j")   // prints: "i = 2, j = b"
 ```
 
-As shown in these examples, `for` loops are used for side effects, such as printing to the console. This use of the `for` keyword is just the beginning. When you add the `yield` keyword to `for` loops, you create powerful `for` *expressions* which are used to calculate and yield results. This REPL example shows how to use the for/yield combination to double each value in the sequence `1` to `5`:
+We encourage you to make changes to that code to be sure you understand how it works.
+
+
+#### Using `for` as an expression
+
+The `for` keyword has even more power: When you add the `yield` keyword to `for` loops, you create powerful `for` *expressions* which are used to calculate and yield results.
+
+A few examples demonstrate this. Given this list:
 
 ```scala
-scala> val x = for i <- 1 to 5 yield i * 2
-val x: IndexedSeq[Int] = Vector(2, 4, 6, 8, 10)
+val nums = List(1,2,3,4,5)
 ```
 
-<!--
-// two-liner
-for x <- xs if x > 0
-yield x * x
--->
+This code creates a new list where each element in the new list is twice the amount of the elements in the original list:
 
-Here’s another `for` expression that iterates over a list of strings:
+````
+scala> val doubles = for i <- nums yield i * 2
+val doubles: List[Int] = List(2, 4, 6, 8, 10)
+````
 
-<!-- TODO: better example -->
+This example shows how to capitalize the first character in each string in the list:
+
+```scala
+val names = List("chris", "ed", "maurice")
+val capNames = for name <- names yield name.capitalize
+```
+
+Finally, this `for` expression iterates over a list of strings, and returns the length of each string, but only if that length is greater than `4`:
+
+<!-- TODO: create a better example -->
 ```scala
 val fruits = List("apple", "banana", "lime", "orange")
 
@@ -508,18 +454,8 @@ yield
 
 Because Scala code generally just makes sense, you can probably guess how this code works, even if you’ve never seen a for-expression or Scala list until now.
 
-<!-- TODO: link  -->
-`for` loops and expressions are covered in more detail in the Control Structures section.
-
-<!--
-a hard way to print the number `4`:
-for {
-    i <- 1 to 10
-    if i > 3
-    if i < 6
-    if i % 2 == 0
-} println(i)
--->
+<!-- TODO: links -->
+`for` loops and expressions are covered in more detail in the Control Structures sections of this Overview and in the Reference documentation.
 
 
 ### match expressions
@@ -530,76 +466,68 @@ Scala has a `match` expression, which in its most basic use is like a Java `swit
 val i = 1
 
 // later in the code ...
+i match
+  case 1 => println("one")
+  case 2 => println("two")
+  case _ => println("other")
+```
+
+However, a `match` expression really is an expression, meaning that it returns a result based on the pattern match:
+
+```scala
 val result = i match
-    case 1 => "one"
-    case 2 => "two"
-    case _ => "not 1 or 2"
+  case 1 => "one"
+  case 2 => "two"
+  case _ => "other"
 ```
 
 The `match` expression isn’t limited to just integers, it can be used with any data type, including booleans:
 
 ```scala
 val booleanAsString = bool match
-    case true => "true"
-    case false => "false"
+  case true => "true"
+  case false => "false"
 ```
 
-Here’s an example of `match` being used as the body of a method, and matching against many different types:
+In fact, a `match` expression can be used to test a variable against multiple patterns. This example shows (a) how to use a `match` expression as the body of a method, and (b) how to match all the different types shown:
 
+<!-- TODO use scalafiddle -->
 ```scala
 def getClassAsString(x: Any): String = x match
-    case s: String => s + " is a String"
-    case i: Int => "Int"
-    case f: Float => "Float"
-    case l: List[_] => "List"
-    case p: Person => "Person"
-    case _ => "Unknown"
+  case s: String => s"'$s' is a String"
+  case i: Int => "Int"
+  case d: Double => "Double"
+  case l: List[_] => "List"
+  case _ => "Unknown"
+
+// examples
+getClassAsString(1)             // Int
+getClassAsString("hello")       // 'hello' is a String
+getClassAsString(List(1,2,3))   // List
 ```
 
-Pattern matching is a significant feature of Scala, and you’ll see it used TODO (more here)
+Pattern matches can get as complicated as you need, and you’ll see more examples of it in the Control Structures sections of this Overview and in the Reference documentation.
 
 
-<!--
-val cmd = "stop"
-cmd match {
-    case "start" | "go" => println("starting")
-    case "stop" | "quit" | "exit" => println("stopping")
-    case _ => println("doing nothing")
-}
+### try/catch/finally
 
-val evenOrOdd = someNumber match {
-    case 1 | 3 | 5 | 7 | 9 => "odd"
-    case 2 | 4 | 6 | 8 | 10 => "even"
-    case _ => "other"
-}
+Scala’s `try`/`catch` control structure lets you catch exceptions. It’s similar to Java, but its syntax is consistent with `match` expressions:
 
-// `match` as the body of a method
-def isTrue(a: Any) = a match {
-    case 0 | "" => false
-    case _ => true
-}
--->
-
-
-
-
-### try/catch
-
-Scala’s try/catch control structure lets you catch exceptions. It’s similar to Java, but its syntax is consistent with `match` expressions:
-
-<!-- TODO: test this -->
+<!-- TODO: better example; show 'finally' -->
 ```scala
 try
-    writeToFile(text)
+  writeToFile(text)
 catch
-    case fnfe: FileNotFoundException => println(fnfe)
-    case ioe: IOException => println(ioe)
+  case fnfe: FileNotFoundException => println(fnfe)
+  case ioe: IOException => println(ioe)
 ```
 
 
 ### while loops
 
-Scala also has a `while` loop. It’s one-line syntax looks like this:
+<!-- TODO: use parens and braces? -->
+
+Scala also has a `while` loop construct. It’s one-line syntax looks like this:
 
 ```scala
 while x >= 0 do x = f(x)
@@ -609,39 +537,32 @@ And it’s multiline syntax looks like this:
 
 ```scala
 var x = 1
+
+// parentheses
 while (x < 3)
-    println(x)
-    x += 1
-```
+  println(x)
+  x += 1
 
-<!--
+// no parens
 while
-  x >= 0
+  x < 3
 do
-  x = f(x)
--->
-
-<!--
-- NOTE: dropped do/while
-- see: https://dotty.epfl.ch/docs/reference/dropped-features/do-while.html
--->
-
+  println(x)
+  x += 1
+```
 
 ### Create your own control structures!
 
-- whilst
-- doubleIfCOnditions
-  doubleif(age > 18)(numAccidents == 0) { println("Discount!") }
-  // two 'if' condition tests
-  def doubleif(test1: => Boolean)(test2: => Boolean)(codeBlock: => Unit) { if (test1 && test2) {
-    codeBlock
-  } }
+In Scala you can also create code that works just like a control structure. You can learn more about this in the Control Structures chapter in the Reference documentation.
+<!--
+NOTE: my old examples are `whilst` and `doubleIf`; `using` is a good example.
+-->
 
 
 
 ## Data Modeling
 
-Scala supports both functional programming (FP) and object-oriented programming (OOP), as well as a fusion of the two paradigms. This section provides an overview of data modeling in OOP and FP.
+Scala supports both functional programming (FP) and object-oriented programming (OOP), as well as a fusion of the two paradigms. This section provides a quick overview of data modeling in OOP and FP.
 
 
 ### OOP data modeling (traits and classes)
@@ -656,49 +577,63 @@ When writing code in an OOP style, your two main tools will be *traits* and *cla
 - traits as mixins
 -->
 
-Traits can be used like interfaces and abstract classes in other languages, and they can also be used as mixins. Traits let you break your code down into small, modular units. Traits are like interfaces in other languages, but they can also contain implemented methods. When you want to create concrete implementations of attributes and behaviors, classes and objects can extend traits.
+Traits are like interfaces in other languages, but they can also contain implemented methods. They provide a great way for you to organize behaviors into small, modular units. When you want to create concrete implementations of attributes and behaviors, classes and objects can extend traits, mixing in as many traits as needed to achieve the desired behavior.
 
-To demonstrate some things you can do with traits, here are three traits that define well-organized and modular behaviors for animals like dogs and cats:
+Here are three traits that define well-organized and modular behaviors for animals like dogs and cats:
 
 ```scala
 trait Speaker:
-    def speak(): String  // has no body, so it’s abstract
+  def speak(): String  // has no body, so it’s abstract
 
 trait TailWagger:
-    def startTail(): Unit = println("tail is wagging")
-    def stopTail(): Unit = println("tail is stopped")
+  def startTail(): Unit = println("tail is wagging")
+  def stopTail(): Unit = println("tail is stopped")
 
 trait Runner:
-    def startRunning(): Unit = println("I’m running")
-    def stopRunning(): Unit = println("Stopped running")
+  def startRunning(): Unit = println("I’m running")
+  def stopRunning(): Unit = println("Stopped running")
 ```
 
-Once you have those traits, you can create a `Dog` class that extends all three of those traits while providing a behavior for the abstract `speak` method:
+Given those traits, here’s a `Dog` class that extends all of those traits while providing a behavior for the abstract `speak` method:
 
 ```scala
 class Dog(name: String) extends Speaker with TailWagger with Runner:
-    def speak(): String = "Woof!"
+  def speak(): String = "Woof!"
 ```
 
-Similarly, here’s a `Cat` class that shows how to implement those same traits while also overriding two of the methods it inherits:
+Notice how the class extends the traits with the `extends` and `with` keywords.
+
+Similarly, here’s a `Cat` class that implements those same traits while also overriding two of the concrete methods it inherits:
 
 ```scala
-class Cat extends Speaker with TailWagger with Runner:
-    def speak(): String = "Meow"
-    override def startRunning(): Unit = println("Yeah ... I don’t run")
-    override def stopRunning(): Unit = println("No need to stop")
+class Cat(name: String) extends Speaker with TailWagger with Runner:
+  def speak(): String = "Meow"
+  override def startRunning(): Unit = println("Yeah ... I don’t run")
+  override def stopRunning(): Unit = println("No need to stop")
+```
+
+These examples show how those classes are used:
+
+```scala
+val d = Dog("Rover")
+d.speak()               // prints "Woof!"
+
+val c = Cat("Morris")
+c.speak()               // "Meow"
+c.startRunning()        // "Yeah ... I don’t run"
+c.stopRunning()         // "No need to stop"
 ```
 
 <!-- TODO: links  -->
-If that code makes sense — great, you’re comfortable with traits as interfaces. If not, don’t worry, they’re explained in more detail in the Data Modeling section of the Reference documentation.
+If that code makes sense — great, you’re comfortable with traits as interfaces. If not, don’t worry, they’re explained in more detail in the Data Modeling sections of this Overview and the Reference documentation.
 
-<!-- TODO: show traits that take parameters -->
+<!-- TODO: show traits that take parameters here? -->
 
 
 #### Classes
 
 <!--
-- TODO: update for final/open/closed?
+- TODO: update for final/open/closed
 - https://dotty.epfl.ch/docs/reference/other-new-features/open-classes.html
 - An `open` modifier on a class signals that the class is planned for extensions
 - Classes that are not open can still be extended, but only if at least one of two alternative conditions is met:
@@ -710,50 +645,26 @@ If that code makes sense — great, you’re comfortable with traits as interfac
   - Traits or abstract classes are always open, so open is redundant for them.
 -->
 
-Scala classes are used in OOP-style programming. Here’s an example of a Scala class that models a “person,” where the person’s first and last names can both be modified (mutated):
+Scala *classes* are used in OOP-style programming. Here’s an example of a class that models a “person.” The first and last names can both be modified, so they’re declared as `var` parameters:
 
 ```scala
 class Person(var firstName: String, var lastName: String):
-    def printFullName() = println(s"$firstName $lastName")
-```
+  def printFullName() = println(s"$firstName $lastName")
 
-This is how you use that class:
-
-```scala
-// TODO: update
 val p = Person("Julia", "Kern")
-println(p.firstName)
+println(p.firstName)   // "Julia"
 p.lastName = "Manes"
-p.printFullName()
+p.printFullName()      // "Julia Manes"
 ```
 
-<!-- TODO: link to correct section -->
-Notice that the first and last names can be mutated because they’re declared as `var` fields. Also, there’s no need to create “get” and “set” methods to access the fields in the class. You’ll see more details about classes in the Data Modeling section.
 
-As a more complicated example, here’s a `Pizza` class that you’ll see later in the book:
-
-```scala
-class Pizza (
-  var crustSize: CrustSize,
-  var crustType: CrustType,
-  val toppings: ArrayBuffer[Topping]
-) {
-  def addTopping(t: Topping): Unit = toppings += t
-  def removeTopping(t: Topping): Unit = toppings -= t
-  def removeAllToppings(): Unit = toppings.clear()
-}
-```
-
-In that code, an `ArrayBuffer` is a mutable sequence, like Java’s `ArrayList`. The `CrustSize`, `CrustType`, and `Topping` classes aren’t shown, but you can probably understand how that code works without needing to see those classes.
-
-
-### FP data modeling  (TODO)
+### FP data modeling 
 
 When writing code in an FP style, you’ll use these constructs:
 
-- Traits
 - Enums to define ADTs
 - Case classes
+- Traits
 
 
 #### Enums
@@ -767,182 +678,119 @@ When writing code in an FP style, you’ll use these constructs:
 - make compatible with java by extending java.lang.Enum
 -->
 
-<!-- 
-// ENUM EXAMPLE
-// attrib: example via Hermann’s slides
-object Geometry {
-  opaque type Length = Double
-  opaque type Area = Double
-  enum Shape {
-    case Circle(radius: Length)
-    case Rectangle(width: Length, height: Length)
-    def area: Area = this match
-      case Circle(r) => math.Pi * r * r
-      case Rectangle(w, h) => w * h
-    def circumference: Length = this match
-      case Circle(r) => 2 * math.Pi * r
-      case Rectangle(w, h) => 2 * w + 2 * h
-  }
-  object Length { def apply(d: Double): Length = d }
-  object Area { def apply(d: Double): Area = d }
-  // old syntax below here
-//  given (length: Length) extended with
-//    def double: Double = length
-//  given (area: Area) extended with
-//    def double: Double = area
-}
--->
+The `enum` construct is a great way to model algebraic data types (ADTs) in Scala 3. For instance, a pizza has three main attributes:
+
+- Crust size
+- Crust type
+- Toppings
+
+These are concisely modeled with enums:
 
 ```scala
 enum CrustSize:
-    case Small, Medium, Large
+  case Small, Medium, Large
 
 enum CrustType:
-    case Thin, Thick, Regular
+  case Thin, Thick, Regular
 
 enum Topping:
-    case Cheese, Pepperoni, Olives
+  case Cheese, Pepperoni, BlackOlives, GreenOlives, Onions
 ```
 
+Once you have an enum you can use it in all of the ways you normally use a trait, class, or object:
 
 ```scala
-case class Pizza:
-    crustSize: CrustSize,
-    crustType: CrustType,
-    toppings: Seq[Topping]
+import CrustSize._
+val currentCrustSize = Small
 
-@main def pizzaDemo = 
-    import CrustSize._
-    import CrustType._
-    import Topping._
-    
-    // passing enums as method parameters
-    val smallThinCheesePizza = Pizza(
-        Small, Thin, Seq(Cheese)
-    )
+// enums in a `match` expression
+currentCrustSize match 
+  case Small => println("Small crust size")
+  case Medium => println("Medium crust size")
+  case Large => println("Large crust size")
 
-    val largeThickWorks = Pizza(
-        Large, Thick, Seq(Cheese, Pepperoni, Olives)
-    )
-
-    println(smallThinCheesePizza)
-    println(largeThickWorks)
-
-    printCrustSize(Small)
-
-    // using an enum as a method parameter and in a match expression
-    def printCrustSize(cs: CrustSize) = cs match 
-        case Small  => println("small")
-        case Medium => println("medium")
-        case Large  => println("large")
+// enums in an `if` statement
+if currentCrustSize == Small then println("Small crust size")
 ```
 
-
-##### Enums (WORKING)
-
-Enums can take parameters:
+Enums can also take parameters and have user-defined members like fields and methods. Here’s a sneak-peek of those capabilities:
 
 ```scala
-// named values
-enum Color:
-  case Red, Green, Blue
-
-// parameterized
-enum Color(val rgb: Int):
-  case Red   extends Color(0xFF0000)
-  case Green extends Color(0x00FF00)
-  case Blue  extends Color(0x0000FF)
-  case Mix(mix: Int) extends Color(mix)
-
-//TODO show usage
-val red = Color.Red
-Color.valueOf("Blue")   // res0: Color = Blue
-Color.values            // Array(Red, Green, Blue)
-
-// user-defined members
 enum Planet(mass: Double, radius: Double):
   private final val G = 6.67300E-11
   def surfaceGravity = G * mass / (radius * radius)
-  def surfaceWeight(otherMass: Double) =  otherMass * surfaceGravity
 
   case Mercury extends Planet(3.303e+23, 2.4397e6)
   case Venus   extends Planet(4.869e+24, 6.0518e6)
-  case Earth   extends Planet(5.976e+24, 6.37814e6)
   // more ...
 }
 ```
 
-
-<!-- TODO: where to discuss `object` -->
-
-
-
-
+Enums are covered in detail in the Data Modeling section of this Overview, and in the Reference documentation.
 
 
 #### Case classes
 
-A *case class* is different than the base Scala class. Case classes provide support for functional programming, and they have all of the functionality of a regular class, and more. When the compiler sees the `case` keyword in front of a `class`, it generates code for you, with the following benefits:
+A *case class* is an extension of the base Scala class. Case classes provide features that make them useful for functional programming. They have all of the functionality of a regular class, and more. When the compiler sees the `case` keyword in front of a `class`, it generates code for you, with these benefits:
 
 - Case class constructor parameters are public `val` fields by default, so accessor methods are generated for each parameter.
 - An `apply` method is created in the companion object of the class, so you don’t need to use the `new` keyword to create a new instance of the class.
 - An `unapply` method is generated, which lets you use case classes in more ways in `match` expressions.
-- A `copy` method is generated in the class. You may not use this feature in Scala/OOP code, but it’s used all the time in Scala/FP.
-- `equals` and `hashCode` methods are generated, which let you compare objects and easily use them as keys in maps.
+- A `copy` method is generated in the class. This provides a way to clone an object while making updates to its values during the cloning process.
+- `equals` and `hashCode` methods are generated.
 - A default `toString` method is generated, which is helpful for debugging.
 
-// BASIC
-case class Person(name: String, relation: String)
-val christina = Person("Christina", "niece")
-christina.name
-christina.name = "Fred"   // error
+This code demonstrates several case class features:
 
-// MORE
-trait Person:
-    def name: String
-case class Student(name: String, year: Int) extends Person
-case class Teacher(name: String, specialty: String) extends Person
+```scala
+// define a case class
+case class Person(
+  name: String, 
+  vocation: String
+)
 
-def getPrintableString(p: Person): String = p match {
-    case Student(name, year) =>
-        s"$name is a student in Year $year."
-    case Teacher(name, whatTheyTeach) =>
-        s"$name teaches $whatTheyTeach."
-}
+// create an instance of the case class
+val p = Person("Reginald Kenneth Dwight", "Singer")
 
-val s = Student("Al", 1)
-val t = Teacher("Bob Donnan", "Mathematics")
-getPrintableString(s)
-getPrintableString(t)
+// a good default toString method
+p                // Person = Person(Reginald Kenneth Dwight,Singer)
 
+// can access its fields, but they are immutable
+p.name           // "Reginald Kenneth Dwight"
+p.name = "Joe"   // error: can’t reassign a val field
 
-// `copy`: “update as you copy”
-case class BaseballTeam(name: String, lastWorldSeriesWin: Int)
-val cubs1908 = BaseballTeam("Chicago Cubs", 1908)
-val cubs2016 = cubs1908.copy(lastWorldSeriesWin = 2016)
+// when you need to make a change, use the `copy` method
+// to “update as you copy”
+val p2 = p.copy(name = "Elton John")
+p2               // Person = Person(Elton John,Singer)
+```
 
-// `equals` and `hashCode`
-case class Person(name: String, relation: String)
-val christina = Person("Christina", "niece")
-val hannah = Person("Hannah", "niece")
-christina == hannah
-
-<!--
-COMMENT: ProgrammingInScala: “the biggest advantage of case classes is that they support pattern matching.” 
--->
+See the Data Modeling sections of this Overview and the Reference documentation for many more details on case classes.
 
 
 
 ## Scala methods
 
-Scala classes, case classes, and objects can all contain methods. This is what the Scala method syntax looks like:
+<!--
+TODO: review Jonathan’s notes/categories about methods
+-->
+
+Scala classes, case classes, traits, enums, and objects can all contain methods. The general method syntax looks like this:
+
+```scala
+def methodName(param1: Type1, param2: Type2): ReturnType = 
+  // the method body
+  // goes here
+```
+
+Here are a few examples of that syntax:
 
 ```scala
 def sum(a: Int, b: Int): Int = a + b
 def concatenate(s1: String, s2: String): String = s1 + s2
 ```
 
-You don’t have to declare a method’s return type, so it’s perfectly legal to write those two methods like this, if you prefer:
+You don’t have to declare a method’s return type, so you can write those methods like this, if you prefer:
 
 ```scala
 def sum(a: Int, b: Int) = a + b
@@ -956,172 +804,510 @@ val x = sum(1, 2)
 val y = concatenate("foo", "bar")
 ```
 
-There are more things you can do with methods, such as providing default values for method parameters and using named parameters when calling methods, and those are shown in TODO
+Here’s an example of a multiline method:
 
-<!-- TODO: differences between methods and functions -->
+```scala
+def getStackTraceAsString(t: Throwable): String =
+  val sw = new StringWriter
+  t.printStackTrace(new PrintWriter(sw))
+  sw.toString
+```
+
+There are more things you can do with methods, such as providing default values for method parameters and using named parameters when calling methods. Those featurs are shown in the Data Modeling section of this Overview and in the Reference documentation.
 
 
 
-## First-class functions (TODO)
+## First-class functions
 
-- top-level functions
-- functions in objects
-- lambdas / function literals / anonymous functions
-- HOFs
-- HOFs in the standard library
+Scala has first-class support for functional programming, and included in that is first-class support for everything related to functions:
 
+- Top-level functions
+- Functions in objects
+- Lambdas
+- Higher-order functions (HOFs)
+
+<!-- TODO: when to say “function” vs when to say “method” -->
+<!-- TODO: show the `val` function syntax? -->
+
+
+###  Top-level functions
+
+Functions don’t have to be in the body of a class, enum, or object. They can also exist on their own as a *top-level function*. For instance, when this code is saved in a file, the functions `add` and `double` would be called top-level functions because they exist outside the scope of a class, enum, or object:
+
+```scala
+package foo
+
+def add(a: Int, b: Int): Int = a + b
+def double(a: Int): Int = 2 * a
+
+@main def topLevelFunctions() =
+  val x = add(1, 2)
+  val y = double(x)
+  println(s"y = $y")
+```
+
+
+### Functions in objects
+
+Functions can also be placed in objects. Here are a few functions in a “string utilities” object:
+
+```scala
+object StringUtils:
+
+  // Left-trim a string: `"  foo  "` becomes `"foo  "`.
+  def leftTrim(s: String) = s.replaceAll("^\\s+", "")
+
+  // Right-trim a string: `"  foo  "` becomes `"  foo"`.
+  def rightTrim(s: String) = s.replaceAll("\\s+$", "")
+
+  def isNullOrEmpty(s: String): Boolean = 
+    if (s==null || s.trim.equals("")) true else false
+
+end StringUtils
+```
+
+Those functions can be called like this:
+
+```scala
+StringUtils.leftTrim("  hi  ")   // "hi  "
+```
+
+or this:
+
+```scala
+import StringUtils._
+leftTrim("  hi  ")   // "hi  "
+```
+
+
+### Lambdas
+
+Lambdas — also known as *anonymous functions* — are a big part of keeping your code concise but readable. These two examples are equivalent, and show how to multiply each number in a list by `2` by passing a lambda into the `map` method:
+
+```scala
+val a = List(1,2,3).map(i => i * 2)   // List(2,4,6)
+val b = List(1,2,3).map(_ * 2)        // List(2,4,6)
+```
+
+Those examples are also equivalent to that code, but they use a `double` method inside of `map` instead of a lambda:
+
+```scala
+def double(i: Int): Int = i * 2
+val a = List(1,2,3).map(i => double(i))
+val b = List(1,2,3).map(double)
+```
+
+>If you haven’t seen the `map` method before, it applies a given function to every element in a list, yielding a new list that contains the new values.
+
+
+### Higher-order functions
+
+A “higher order function” (HOF) is a function that can take a function as an input parameter, or returns a function as a return value. HOFs are extremely common in Scala, such as being used throughout the standard libraries. These examples show how to pass methods and anonymous functions into the functional methods of Scala collections:
+
+```scala
+// a sample list
+val nums = (1 to 10).toList   // List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+
+// sample methods
+def isEven(i: Int): Boolean = i % 2 == 0
+def double(i: Int): Int = i * 2
+
+// pass in a method or function
+val a = nums.filter(isEven)   // List(2, 4, 6, 8, 10)
+val b = nums.map(double)      // List(2, 4, 6, 8, 10, 12, 14, 16, 18, 20)
+
+// pass in a lambda
+val c = nums.filter(_ % 2 == 0)   // List(2, 4, 6, 8, 10)
+val d = nums.map(_ * 2)           // List(2, 4, 6, 8, 10, 12, 14, 16, 18, 20)
+
+// methods can be chained as needed
+val e = nums.filter(_ > 3)        // List(40, 50, 60)
+            .filter(_ < 7)
+            .map(_ * 10)
+```
+
+In addition to HOFs used all throughout the standard library, you can easily create your own HOFs. This is shown in the Reference documentation.
+
+<!--
+### Functions are objects
+- add this section?
+- TODO: show the types of functions?
+    - see my 'val function vs def method page'
+-->
+
+
+## Extension methods
+
+<!-- TODO: i may not be showing the latest syntax -->
+*Extension methods* let you add new methods to closed classes. For instance, if you want to add a `hello` method to the `String` class, just create an extension method:
+
+<!-- TODO: scalafiddle -->
+```scala
+def (s: String) hello: String = s"Hello, ${s.capitalize}"
+
+"world".hello    // "Hello, world"
+"friend".hello   // "Hello, friend"
+```
+
+The comments in this code explain the extension method syntax:
+
+````
+def (s: String) hello: String = s"Hello, ${s.capitalize}"
+    ----------  -----  ------   -------------------------
+        ^         ^      ^                ^
+    add method  method return         method body
+    to String    name   type
+      class
+````
+
+This next example shows how to add a `makeInt` method to the `String` class. Here, `makeInt` takes a parameter named `radix`. The code doesn’t account for possible string-to-integer conversion errors, but skipping that detail, the examples show how it works:
+
+<!-- TODO: scalafiddle -->
+```scala
+def (s: String) makeInt(radix: Int): Int = Integer.parseInt(s, radix)
+"1".makeInt(2)      // Int = 1
+"10".makeInt(2)     // Int = 2
+"100".makeInt(2)    // Int = 4
+```
 
 
 
 ## Collections classes
 
-If you’re coming to Scala from Java and you’re ready to really jump in and learn Scala, it’s possible to use the Java collections classes in Scala, and some people do so for several weeks or months while getting comfortable with Scala. But it’s highly recommended that you learn the basic Scala collections classes — `List`, `ListBuffer`, `Vector`, `ArrayBuffer`, `Map`, and `Set` — as soon as possible. A great benefit of the Scala collections classes is that they offer many powerful methods that you’ll want to start using as soon as possible to simplify your code.
+Scala has a rich set of collections classes, and those classes have a rich set of methods. Collections classes are available in both immutable and mutable forms. In alphabetical order, the basic collections classes you’ll use on a regular basis are:
 
-<!-- TODO: list the popular classes in a UL -->
+| Class         | Mutable | Immutable | Description |
+| ------------- | :-----: | :-------: | ----------- |
+| `ArrayBuffer` | √ |   | an indexed, mutable sequence |
+| `List`        |   | √ | a linear (linked list), immutable sequence |
+| `Map`         | √ | √ | the base `Map` (key/value pairs) class |
+| `Set`         | √ | √ | the base `Set` class |
+| `Vector`      |   | √ | an indexed, immutable sequence |
 
-
-### Populating lists
-
-There are times when it’s helpful to create sample lists that are populated with data, and Scala offers many ways to populate lists. Here are just a few:
+Scala also has a `Range` class which lets you create ordered sequences of integers that are equally spaced apart, such as “1, 2, 3,” and “5, 8, 11, 14.” Ranges are often used in `for` loops, and to create other sequences:
 
 ```scala
-val nums = List.range(0, 10)
-val nums = (1 to 10 by 2).toList
-val letters = ('a' to 'f').toList
-val letters = ('a' to 'f' by 2).toList
+// a range in a for-loop
+for (i <- 1 to 3) print(i)   // 123
+
+// use ranges to create other collections
+(1 to 5).toList              // List(1, 2, 3, 4, 5)
+(1 to 10 by 2).toVector      // Vector(1, 3, 5, 7, 9)
+(1 to 10).toSet              // Set[Int] = HashSet(5, 10, 1, 6, 9, 2, 7, 3, 8, 4)
+
+('a' to 'f').toList          // List[Char] = List(a, b, c, d, e, f)
+('a' to 'f' by 2).toList     // List[Char] = List(a, c, e)
+
+List.range(1, 5)             // List(1, 2, 3, 4)
+List.range(1, 5, 2)          // List(1, 3)
 ```
+
+<!--
+TODO:
+  - mention Seq?
+  - mention LazyList?
+-->
+
+
+### Immutable collections classes
+
+Some of the most-commonly used *immutable* collections classes are:
+
+| Class         | Description   |
+| ------------- | ------------- |
+| `List`        | A finite immutable linked-list. |
+| `LazyList`    | Like a `List` except that its elements are computed lazily. Because of this, a lazy list can be infinitely long. |
+| `Vector`      | A sequential collection type that provides good performance for all its operations. |
+| `Map`         | Like maps in Java, dictionaries in Python, or a `HashMap` in Rust, `Map` is an `Iterable` that contains pairs of keys and values. |
+| `Set`         | An `Iterable` sequence that contains no duplicate elements. |
+| `Stack`       | A last-in-first-out sequence. |
+| `Queue`       | A first-in-first-out sequence. |
+
+In addition to the previous `Range` examples, here are a few more ways to create immutable collections:
+
+<!-- TODO: more examples? -->
+```scala
+val a = List(1,2,3)
+val b = Vector("hello", "world")
+
+// create a List with a Range
+val c = (1 to 5).toList
+
+val m = Map(
+  1 -> "one",
+  2 -> "two"
+)
+```
+
+
+### Mutable collections classes
+
+Mutable Scala collections classes are located in the *scala.collection.mutable* package. These are some of the most commonly-used:
+
+| Class         | Description   |
+| ------------- | ------------- |
+| `ArrayBuffer` | An indexed mutable buffer backed by an array. |
+| `ListBuffer`    | A mutable buffer backed by a linked list. Use this class if you’ll use it like a `List`, or if you’ll convert it to a `List` once it’s built up. |
+| `Map`         | A mutable `Map`, contains pairs of keys and values. |
+| `Set`         | A mutable `Set`, a sequence that contains no duplicate elements. |
+| `Stack`       | A mutable, last-in-first-out sequence. |
+| `Queue`       | A mutable, first-in-first-out sequence. |
+
+These examples show a few ways to use an `ArrayBuffer`:
+
+```scala
+import scala.collection.mutable.ArrayBuffer
+
+val a = ArrayBuffer(1,2,3)          // ArrayBuffer(1, 2, 3)
+
+val b = ArrayBuffer[String]()       // ArrayBuffer[String] = ArrayBuffer()
+b += "Hello"                        // ArrayBuffer(Hello)
+b ++= List("world", "it’s", "me")   // ArrayBuffer(Hello, world, it’s, me)
+```
+
+In addition to those classes, Scala has an `Array` class, which is a special kind of collection. An `Array` corresponds one-to-one to a Java `array`, so its elements can be mutated, but its size can’t be changed. In addition to behaving like a Java `array`, (a) it can hold generic types, and (b) it supports all of the usual sequence methods (which you’re about to see).
+
 
 
 ### Sequence methods
 
-While there are many sequential collections classes you can use — `Array`, `ArrayBuffer`, `Vector`, `List`, and more — let’s look at some examples of what you can do with the `List` class. Given these two lists:
+<!-- https://alvinalexander.com/scala/how-to-choose-scala-collection-method-solve-problem-cookbook -->
+
+A great benefit of the Scala collections classes is that they offer dozens of powerful functional methods you can use to simplify your code. These are just a few of the common methods available to sequences:
+
+| Method        | Description   |
+| ------------- | ------------- |
+| `map`         | Creates a new collection by applying a function to all the elements of the collection. |
+| `filter`      | Returns all elements from the collection for which a given predicate is true. |
+| `foreach`     | Applies a function to all elements of the collection to produce a side effect. |
+| `take`, `takeWhile` | Returns elements from the beginning of the collection. |
+| `drop`, `dropWhile` | Returns all elements in the collection except the first elements that are specified. |
+| `flatten`  | Converts a sequence of sequences (such as a list of lists) to a single sequence (single list). |
+| `foldLeft`     | Applies an operation to successive elements, going from left to right, using an initial seed value |
+| `reduce`    | The same as `foldLeft`, but without an initial seed value. |
+
+There are dozens of additional methods, which you’ll see in the Collections section of this Overview, and in the Reference documentation.
+
+>A key to know about all of these methods is that they are *functional*: they don’t modify the existing sequence; they return a new collection by applying the method to the original sequence.
+
+These examples demonstrate some of the commonly-used sequence methods:
 
 ```scala
-val nums = (1 to 10).toList
-val names = List("joel", "ed", "chris", "maurice")
+// a sample list
+val a = List(10, 20, 30, 40, 10)      // List(10, 20, 30, 40, 10)
+
+a.drop(2)                             // List(30, 40, 10)
+a.dropRight(2)                        // List(10, 20, 30)
+a.dropWhile(_ < 25)                   // List(30, 40, 10)
+a.filter(_ < 25)                      // List(10, 20, 10)
+a.find(_ > 20)                        // Some(30)
+a.head                                // 10
+a.headOption                          // Some(10)
+a.last                                // 10
+a.lastOption                          // Some(10)
+a.slice(2,4)                          // List(30, 40)
+a.tail                                // List(20, 30, 40, 10)
+a.take(3)                             // List(10, 20, 30)
+a.takeRight(2)                        // List(40, 10)
+a.takeWhile(_ < 30)                   // List(10, 20)
+
+val a = List(List(1,2), List(3,4))
+a.flatten                             // List(1, 2, 3, 4)
+
+val nums = List("one", "two")
+nums.map(_.toUpperCase)             // List("ONE", "TWO")
+nums.flatMap(_.toUpperCase)         // List('O', 'N', 'E', 'T', 'W', 'O')
 ```
 
-This is the `foreach` method:
+These examples show how the “fold” and “reduce” methods are used to sum up every element in a sequence:
 
 ```scala
-scala> names.foreach(println)
-joel
-ed
-chris
-maurice
+val firstTen = (1 to 10).toList            // List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+
+firstTen.fold(100)(_ + _)                  // 155
+firstTen.foldLeft(100)(_ + _)              // 155
+firstTen.reduce(_ + _)                     // 55
+firstTen.reduceLeft(_ + _)                 // 55
 ```
 
-Here’s the `filter` method, followed by `foreach`:
+There are many (many!) more methods available to Scala collections classes, and they’re demonstrated in the Collections sections of this Overview and in the Reference documentation.
+
+
+### Tuples
+
+<!-- TODO: introduce a tuple as an alternative to a class? -->
+
+The Scala *tuple* is a type that lets you easily put a collection of different types in the same container. For example, given this `Person` case class:
 
 ```scala
-scala> nums.filter(_ < 4).foreach(println)
-1
-2
-3
+case class Person(name: String)
 ```
 
-Here are some examples of the `map` method:
+This is how you create a tuple that contains an `Int`, a `String`, and a custom `Person` value:
 
 ```scala
-scala> val doubles = nums.map(_ * 2)
-doubles: List[Int] = List(2, 4, 6, 8, 10, 12, 14, 16, 18, 20)
-
-scala> val capNames = names.map(_.capitalize)
-capNames: List[String] = List(Joel, Ed, Chris, Maurice)
-
-scala> val lessThanFive = nums.map(_ < 5)
-lessThanFive: List[Boolean] = List(true, true, true, true, false, false, false, false, false, false)
+val t = (11, "eleven", Person("Eleven"))
 ```
-
-Even without any explanation you can see how `map` works: It applies an algorithm you supply to every element in the collection, returning a new, transformed value for each element.
-
-If you’re ready to see one of the most powerful collections methods, here’s `foldLeft`:
-
-```scala
-scala> nums.foldLeft(0)(_ + _)
-res0: Int = 55
-
-scala> nums.foldLeft(1)(_ * _)
-res1: Int = 3628800
-```
-
-Once you know that the first parameter to `foldLeft` is a *seed* value, you can guess that the first example yields the *sum* of the numbers in `nums`, and the second example returns the *product* of all those numbers.
-
-There are many (many!) more methods available to Scala collections classes, and many of them will be demonstrated in the collections lessons that follow, but hopefully this gives you an idea of their power.
-
->For more details, jump to [the Scala Book collections lessons]({{site.baseurl}}/overviews/scala-book/collections-101.html), or see [the Mutable and Immutable collections overview]({{site.baseurl}}/overviews/collections-2.13/overview.html) for more details and examples.
-
-
-
-## Tuples (TODO: update this section)
-
-The Scala *tuple* is a class that lets you easily put a collection of different types in the same container. This is how you create a tuple that contains an `Int`, a `String`, and a `Boolean` value:
-
-```scala
-val t = (11, "eleven", true)
-```
-
-You can see the type in the REPL:
-
-````
-scala> val t = (11, "eleven", true)
-TODO: UPDATE
-````
 
 You can access the tuple values by number:
 
 ```scala
-t._1
-t._2
-t._3
+t._1   // 11
+t._2   // "eleven"
+t._3   // Person("Eleven")
 ```
 
-TODO: other methods:
+You can also assign the tuple fields to variables, as shown in the REPL:
 
-t.head
-t.tail
-t.drop(1)
-t.take(1)
-t.size
-t.map ...
+````
+scala> val (num, string, name) = (11, "eleven", Person("Eleven"))
+val num: Int = 11
+val string: String = eleven
+val good: Boolean = Person(Eleven)
+````
 
-Or assign the tuple fields to variables:
+Tuples are nice for those times when you want to put a collection of heterogenous types in a little collection-like structure.
+
+<!--
+TODO: state how tuples can be like an unstructured class, or for when a class is overkill?
+-->
+
+
+
+## Contextual Abstractions
+
+<!-- TODO: my earlier Extension Method syntax may be a little old now -->
+
+Implicits in Scala 2 were a main distinguishing feature. Following Haskell, Scala was the second popular language to have some form of implicits. Other languages have since followed suit.
+
+Implicits are a fundamental way to abstract over context. They represent a unified paradigm with a great variety of use cases, among them: 
+
+- Implementing type classes
+- Establishing context
+- Dependency injection
+- Expressing capabilities
+- Computing new types and proving relationships between them
+
+Even though different languages use widely different terminology, they’re all variants of the core idea of *term inference*. Given a type, the compiler synthesizes a “canonical” term that has that type. Scala embodies the idea in a purer form than most other languages: An implicit parameter directly leads to an inferred argument term that could also be written down explicitly. 
+
+In Scala 3 the syntax for these constructs has been changed significantly to make their usage more clear. Implicits are defined with the keyword `given`, and in later code they are referenced with the keyword `using`.
+
+
+### Term inference
+
+Here’s a quick example of how to use term inference in Scala 3. Imagine that you have a situation where a value is passed into a series of function calls, such as using an `ExecutionContext` when you’re working with parallel programming:
 
 ```scala
-val (num, string, good) = (11, "eleven", true)
+doX(a, executionContext)
+doY(b, c, executionContext)
+doZ(d, executionContext)
 ```
 
-````
-scala> val (num, string, person) = (11, "eleven", true)
-TODO: UPDATE
-````
+Because this type of code is repetitive and makes the code harder to read, you’d prefer to write it like this instead:
 
-Tuples are nice for those times when you need to put a little “bag” of things together for a little while.
+```scala
+doX(a)
+doY(b, c)
+doZ(d)
+```
+
+The functions still use the `executionContext` variable, but they don’t require you to explicitly state that. As shown, the shorter code is more easy to read.
+
+When you want a solution like this, Scala 3’s term inference solution is what you’re looking for. The solution involves multiple steps:
+
+1. Define the code you want the compiler to discover using the Scala 3 `given` keyword.
+1. When declaring the “implicit” parameter your function will use, put it in a separate parameter group and define it with the `using` keyword.
+1. Make sure your `given` value is in the current context when your function is called.
+
+The following example demonstrates these steps with the use of an `Adder` trait and two `given` values that implement the `Adder` trait’s `add` method.
+
+
+### Step 1: Define your “given instances”
+
+In the first step you’ll typically create a parameterized trait:
+
+```scala
+trait Adder[T]:
+  def add(a: T, b: T): T
+```
+
+Then you’ll implement the trait using one or more `given` instances, which you define like this:
+
+```scala
+given intAdder as Adder[Int]:
+  def add(a: Int, b: Int): Int = a + b
+
+given stringAdder as Adder[String]:
+  def add(a: String, b: String): String = "" + (a.toInt + b.toInt)
+```
+
+In this example, `intAdder` is an instance of `Adder[Int]`, and defines an `add` method that works with `Int` values. Similarly, `stringAdder` is an instance of `Adder[String]` and provides an `add` method that takes two strings, converts them to `Int` values, adds them together, and returns the sum as a `String`. (To keep things simple the code doesn’t account for potential string-to-integer errors.)
+
+If you’re familiar with creating implicits in Scala 2, this new approach is similar to that process. The idea is the same, it’s just that the syntax has changed.
+
+
+### Step 2: Declare the parameter your function will use with the `using` keyword
+
+Next, define your functions that use the `Adder` instances. When doing this, specify the `Adder` parameter with the `using` keyword. Put the parameter in a separate parameter group, as shown here:
+
+```scala
+def genericAdder[A](x: A, y: A)(using adder: Adder[A]): A =
+  adder.add(x, y)
+```
+
+The keys here are that the `adder` parameter is defined with the `using` keyword in that separate parameter group:
+
+```scala
+def genericAdder[A](x: A, y: A)(using adder: Adder[A]): A =
+                               -----------------------
+```
+
+Also notice that `genericAdder` declares the generic type `A`. This function doesn’t know if it will be used to add two integers or two strings — it just calls the `add` method of the `adder` parameter.
+
+>In Scala 2, parameters like this were declared using the `implicit` keyword, but now, as the entire programming industry has various implementations of this concept, this parameter is known in Scala 3 as a *context parameter*.
+
+
+### Step 3: Make sure everything is in the current context
+
+Finally, assuming that `intAdder`, `stringAdder`, and `genericAdder` are all in scope, your code can call the `genericAdder` function with `Int` and `String` values, without having to pass instances of `intAdder` and `stringAdder` into `genericAdder`:
+
+```scala
+println(genericAdder(1, 1))       // 2
+println(genericAdder("2", "2"))   // 4
+```
+
+The Scala compiler is smart enough to know that `intAdder` should be used in the first instance, and `stringAdder` should be used in the second instance. This is because the first example uses two `Int` parameters and the second example uses two `String` values.
 
 
 
+## Even more!
+
+Scala has even more features that weren’t covered in this whirlwind tour. See the remainder of this Overview and the Reference documentation for many more details.
+
+
+<!--
 ## Changes from Scala 2
+- this might be as long as this doc. i think it should be a separate page.
+
 ## New control syntax
 ## Optional braces, indentation
+## Discuss objects
+
+## Givens/using/implicits
+- i have a long example in the Cookbook, Recipe 19.9
+- see if i can make that smaller
+-->
 
 
 
+<!--
 ## TODO: Other possible topics not in the outline
 
 - Multiversal equality
 - Advanced types
-- Ranges
-```scala
-for (arg <- args) println(arg)
+-->
 
-// "x to y" syntax
-for (i <- 0 to 5) println(i)
-
-// "x to y by" syntax
-for (i <- 0 to 10 by 2) println(i)
-```
-
-
+<!--
 ## A small, sample application
 
 - “Putting it all together”
@@ -1129,7 +1315,7 @@ for (i <- 0 to 10 by 2) println(i)
 - show an sbt example
 - show several features
 - @main
-
+-->
 
 
 
