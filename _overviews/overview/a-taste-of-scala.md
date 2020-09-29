@@ -756,7 +756,7 @@ val p = Person("Reginald Kenneth Dwight", "Singer")
 // a good default toString method
 p                // Person = Person(Reginald Kenneth Dwight,Singer)
 
-// can access its fields, but they are immutable
+// can access its fields, which are immutable
 p.name           // "Reginald Kenneth Dwight"
 p.name = "Joe"   // error: can’t reassign a val field
 
@@ -1312,7 +1312,6 @@ Scala has even more features that weren’t covered in this whirlwind tour. See 
 - show several features
 - @main
 -->
-
 
 
 
