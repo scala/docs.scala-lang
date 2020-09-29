@@ -602,7 +602,7 @@ Notice how the class extends the traits with the `extends` and `with` keywords.
 Similarly, here’s a `Cat` class that implements those same traits while also overriding two of the concrete methods it inherits:
 
 ```scala
-class Cat(name: String) extends Speaker with TailWagger with Runner:
+class Cat(name: String) extends Speaker, TailWagger, Runner:
   def speak(): String = "Meow"
   override def startRunning(): Unit = println("Yeah ... I don’t run")
   override def stopRunning(): Unit = println("No need to stop")
@@ -1312,7 +1312,6 @@ Scala has even more features that weren’t covered in this whirlwind tour. See 
 - show several features
 - @main
 -->
-
 
 
 
