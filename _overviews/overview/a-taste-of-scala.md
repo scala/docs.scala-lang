@@ -247,11 +247,13 @@ println(s"Name: $firstName $mi $lastName")   // "Name: John C Doe"
 
 Just precede the string with the letter `s`, and then put a `$` symbol before your variable names inside the string.
 
-For expressions more complex than a single identifier, enclose the expression in curly braces:
+To enclose expressions inside a string, enclose them in curly braces:
 
-```scala
+~~~ scala
 println(s"2 + 2 = ${2 + 2}")   // prints "2 + 2 = 4"
-```
+val x = -1
+println(s"x.abs = ${x.abs}")   // prints "x.abs = 1"
+~~~
 
 #### Other interpolators
 
@@ -1310,7 +1312,6 @@ Scala has even more features that weren’t covered in this whirlwind tour. See 
 - show several features
 - @main
 -->
-
 
 
 
