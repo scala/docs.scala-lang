@@ -371,7 +371,7 @@ The `for` keyword can be used to create a `for` loop. This example shows how to 
 ```scala
 val ints = List(1,2,3,4,5)
 
-for (i <- ints) println(i)
+for i <- ints do println(i)
 ```
 
 <!--
@@ -1312,7 +1312,6 @@ Scala has even more features that weren’t covered in this whirlwind tour. See 
 - show several features
 - @main
 -->
-
 
 
 
