@@ -593,7 +593,7 @@ trait Runner:
 Given those traits, here’s a `Dog` class that extends all of those traits while providing a behavior for the abstract `speak` method:
 
 ```scala
-class Dog(name: String) extends Speaker with TailWagger with Runner:
+class Dog(name: String) extends Speaker, TailWagger, Runner:
   def speak(): String = "Woof!"
 ```
 
@@ -1312,7 +1312,6 @@ Scala has even more features that weren’t covered in this whirlwind tour. See 
 - show several features
 - @main
 -->
-
 
 
 
