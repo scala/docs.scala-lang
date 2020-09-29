@@ -654,7 +654,7 @@ p.printFullName()      // "Julia Manes"
 ```
 
 
-### FP data modeling 
+### Data Modeling (Functional Programming Style)
 
 When writing code in an FP style, you’ll use these constructs:
 
@@ -1312,7 +1312,6 @@ Scala has even more features that weren’t covered in this whirlwind tour. See 
 - show several features
 - @main
 -->
-
 
 
 
