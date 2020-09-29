@@ -349,7 +349,7 @@ else
 Note that this really is an *expression* — not a *statement* — meaning that it returns a value, so you can assign the result to a variable:
 
 ```scala
-val x = if (a < b) a else b
+val x = if a < b then a else b
 ```
 
 As you’ll see throughout this Overview and in our Reference documentation, *all* Scala control structures can be used as expressions.
@@ -1312,7 +1312,6 @@ Scala has even more features that weren’t covered in this whirlwind tour. See 
 - show several features
 - @main
 -->
-
 
 
 
