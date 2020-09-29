@@ -412,7 +412,7 @@ We encourage you to make changes to that code to be sure you understand how it w
 
 #### Using `for` as an expression
 
-The `for` keyword has even more power: When you add the `yield` keyword to `for` loops, you create powerful `for` *expressions* which are used to calculate and yield results.
+The `for` keyword has even more power: When you use the `yield` keyword instead of `do`, you create `for` *expressions* which are used to calculate and yield results.
 
 A few examples demonstrate this. Using the same `ints` list as the previous example, this code creates a new list, where the value of each element in the new list is twice the value of the elements in the original list:
 
@@ -1312,7 +1312,6 @@ Scala has even more features that weren’t covered in this whirlwind tour. See 
 - show several features
 - @main
 -->
-
 
 
 
