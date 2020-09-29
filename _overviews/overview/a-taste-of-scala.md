@@ -10,6 +10,10 @@ description: This page provides a high-level overview of the main features of Sc
   - show a method with default parameters
   - show package "exports"
   - cover Option/Try/Either (functional error handling)
+  - do a search/replace on the word “field,” make sure it’s only used in classes, 
+    objects, traits
+    - don’t use "field," do use "variables," "binders," or maybe something
+      like "assignment"
 -->
 
 This “Taste of Scala” section provides a whirlwind tour of Scala’s main features. After the initial tour in this section, the rest of the Overview will provide a few more details on the these features, and the Reference documentation will provide *many* more details.
@@ -22,7 +26,7 @@ This “Taste of Scala” section provides a whirlwind tour of Scala’s main fe
 
 <!-- NOTE: i assume here that dotc/dotr will be renamed to scala/scala -->
 
-A “Hello, world” example in Scala goes as follows. First, Put this code in a file named *Hello.scala*:
+A “Hello, world” example in Scala goes as follows. First, put this code in a file named *Hello.scala*:
 
 ```scala
 @main def hello = println("Hello, world")
@@ -81,7 +85,7 @@ scala> 2 + 2
 val res1: Int = 4
 ````
 
-As shown in the output, if you don’t assign a variable to the result of an expression, the REPL creates variables named `res0`, `res1`, etc., for you. You can use these variable names in future expressions:
+As shown in the output, if you don’t assign a variable to the result of an expression, the REPL creates variables named `res0`, `res1`, etc., for you. You can use these variable names in subsequent expressions:
 
 ````
 scala> val x = res0 * 10
@@ -121,21 +125,19 @@ var c = 1         // mutable
 var d = "world"
 ```
 
-In an application, a `val` field can’t be reassigned. You’ll generate a compiler error if you try to reassign one:
+In an application, a `val` can’t be reassigned. You’ll generate a compiler error if you try to reassign one:
 
 ```scala
 val msg = "Hello, world"
 msg = "Hello"   // "reassignment to val" error; this won’t compile
 ```
 
-Conversely, a `var` field can be reassigned:
+Conversely, a `var` can be reassigned:
 
 ```scala
 var msg = "Hello, world"
 msg = "Hello"   // this compiles because a var can be reassigned
 ```
-
->Inside the REPL playground area you can reassign a `val` field, but this is just for convenience.
 
 
 
@@ -245,16 +247,9 @@ println(s"Name: $firstName $mi $lastName")   // "Name: John C Doe"
 
 Just precede the string with the letter `s`, and then put a `$` symbol before your variable names inside the string.
 
-To enclose class fields, class methods, or equations inside a string, enclose them in curly braces:
+For expressions more complex than a single identifier, enclose the expression in curly braces:
 
 ```scala
-class Person(var name: String)
-val p = Person("Margaret Hamilton")
-
-// a class field or method
-println(s"Name: ${p.name}")   // "Name: Margaret Hamilton"
-
-// an equation
 println(s"2 + 2 = ${2 + 2}")   // prints "2 + 2 = 4"
 ```
 
@@ -417,18 +412,20 @@ We encourage you to make changes to that code to be sure you understand how it w
 
 The `for` keyword has even more power: When you add the `yield` keyword to `for` loops, you create powerful `for` *expressions* which are used to calculate and yield results.
 
-A few examples demonstrate this. Given this list:
-
-```scala
-val nums = List(1,2,3,4,5)
-```
-
-This code creates a new list where each element in the new list is twice the amount of the elements in the original list:
+A few examples demonstrate this. Using the same `ints` list as the previous example, this code creates a new list, where the value of each element in the new list is twice the value of the elements in the original list:
 
 ````
-scala> val doubles = for i <- nums yield i * 2
+scala> val doubles = for (i <- ints) yield i * 2
 val doubles: List[Int] = List(2, 4, 6, 8, 10)
 ````
+
+Note that Scala’s syntax is flexible, and that `for` expression can be written in several different ways to make your code more readable:
+
+```scala
+val doubles = for i <- ints yield i * 2
+val doubles = for (i <- ints) yield i * 2
+val doubles = for (i <- ints) yield (i * 2)
+```
 
 This example shows how to capitalize the first character in each string in the list:
 
@@ -506,7 +503,7 @@ getClassAsString("hello")       // 'hello' is a String
 getClassAsString(List(1,2,3))   // List
 ```
 
-Pattern matches can get as complicated as you need, and you’ll see more examples of it in the Control Structures sections of this Overview and in the Reference documentation.
+There’s much more to pattern matching in Scala. Patterns can be nested, results of patterns can be bound, and pattern matching can even be user-defined. You can find more pattern matching examples in the Control Structures section of this Overview, and in the Reference documentation.
 
 
 ### try/catch/finally
@@ -553,10 +550,7 @@ do
 
 ### Create your own control structures!
 
-In Scala you can also create code that works just like a control structure. You can learn more about this in the Control Structures chapter in the Reference documentation.
-<!--
-NOTE: my old examples are `whilst` and `doubleIf`; `using` is a good example.
--->
+Thanks to features like by-name parameters, infix notation, fluent interfaces, optional parentheses, extension methods, and higher-order functions, you can also create code that works just like a control structure. You’ll learn more about this in the Control Structures chapter in the Reference documentation.
 
 
 
@@ -645,7 +639,7 @@ If that code makes sense — great, you’re comfortable with traits as interfac
   - Traits or abstract classes are always open, so open is redundant for them.
 -->
 
-Scala *classes* are used in OOP-style programming. Here’s an example of a class that models a “person.” The first and last names can both be modified, so they’re declared as `var` parameters:
+Scala *classes* are used in OOP-style programming. Here’s an example of a class that models a “person.” In OOP, fields are typically mutable, so `firstName` and `lastName` are both declared as `var` parameters:
 
 ```scala
 class Person(var firstName: String, var lastName: String):
@@ -730,6 +724,11 @@ Enums are covered in detail in the Data Modeling section of this Overview, and i
 
 
 #### Case classes
+
+<!--
+- WIKI: includes automatic support for pattern matching
+- (From the perspective of Scala, a case class is simply a normal class for which the compiler automatically adds certain behaviors that could also be provided manually, e.g., definitions of methods providing for deep comparisons and hashing, and destructuring a case class on its constructor parameters during pattern matching.) 
+-->
 
 A *case class* is an extension of the base Scala class. Case classes provide features that make them useful for functional programming. They have all of the functionality of a regular class, and more. When the compiler sees the `case` keyword in front of a `class`, it generates code for you, with these benefits:
 
@@ -939,32 +938,27 @@ In addition to HOFs used all throughout the standard library, you can easily cre
 ## Extension methods
 
 <!-- TODO: i may not be showing the latest syntax -->
-*Extension methods* let you add new methods to closed classes. For instance, if you want to add a `hello` method to the `String` class, just create an extension method:
+*Extension methods* let you add new methods to closed classes. For instance, if you want to add two methods named `hello` and `aloha` to the `String` class, just declare them as extension methods:
 
 <!-- TODO: scalafiddle -->
 ```scala
-def (s: String) hello: String = s"Hello, ${s.capitalize}"
+extension (s: String):
+  def hello: String = s"Hello, ${s.capitalize}"
+  def aloha: String = s"Aloha, ${s.capitalize}"
 
-"world".hello    // "Hello, world"
-"friend".hello   // "Hello, friend"
+"world".hello    // "Hello, World"
+"friend".aloha   // "Aloha, Friend"
 ```
 
-The comments in this code explain the extension method syntax:
-
-````
-def (s: String) hello: String = s"Hello, ${s.capitalize}"
-    ----------  -----  ------   -------------------------
-        ^         ^      ^                ^
-    add method  method return         method body
-    to String    name   type
-      class
-````
+The `extension` keyword declares that you’re about to define one or more extension methods. As shown, the `s` parameter can then be used in your methods.
 
 This next example shows how to add a `makeInt` method to the `String` class. Here, `makeInt` takes a parameter named `radix`. The code doesn’t account for possible string-to-integer conversion errors, but skipping that detail, the examples show how it works:
 
 <!-- TODO: scalafiddle -->
 ```scala
-def (s: String) makeInt(radix: Int): Int = Integer.parseInt(s, radix)
+extension (s: String)
+  def makeInt(radix: Int): Int = Integer.parseInt(s, radix)
+
 "1".makeInt(2)      // Int = 1
 "10".makeInt(2)     // Int = 2
 "100".makeInt(2)    // Int = 4
@@ -978,11 +972,11 @@ Scala has a rich set of collections classes, and those classes have a rich set o
 
 | Class         | Mutable | Immutable | Description |
 | ------------- | :-----: | :-------: | ----------- |
-| `ArrayBuffer` | √ |   | an indexed, mutable sequence |
-| `List`        |   | √ | a linear (linked list), immutable sequence |
-| `Map`         | √ | √ | the base `Map` (key/value pairs) class |
-| `Set`         | √ | √ | the base `Set` class |
-| `Vector`      |   | √ | an indexed, immutable sequence |
+| `ArrayBuffer` | &#10003; |   | an indexed, mutable sequence |
+| `List`        |   | &#10003; | a linear (linked list), immutable sequence |
+| `Map`         | &#10003; | &#10003; | the base `Map` (key/value pairs) class |
+| `Set`         | &#10003; | &#10003; | the base `Set` class |
+| `Vector`      |   | &#10003; | an indexed, immutable sequence |
 
 Scala also has a `Range` class which lets you create ordered sequences of integers that are equally spaced apart, such as “1, 2, 3,” and “5, 8, 11, 14.” Ranges are often used in `for` loops, and to create other sequences:
 
