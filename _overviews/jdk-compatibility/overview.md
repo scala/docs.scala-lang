@@ -77,7 +77,7 @@ As far as we know, 12, 13, and 14 are similar to 11 with respect to Scala compat
 
 ## JDK 15
 
-As of September 2020, JDK 15 is in release candidate phase ([reference](https://openjdk.java.net/projects/jdk/15/)). We don't have any compatibility information yet.
+As of September 2020, JDK 15 has been released to the general public ([reference](https://openjdk.java.net/projects/jdk/15/)). We don't have any compatibility information yet.
 
 ## Scala 3
 
