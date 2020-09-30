@@ -1,4 +1,4 @@
-# Scala Documentation #
+# Scala advance care ezay Documentation #
 
 [![Build Status](https://ci.scala-lang.org/api/badges/scala/docs.scala-lang/status.svg)](https://platform-ci.scala-lang.org/scala/docs.scala-lang)
 
