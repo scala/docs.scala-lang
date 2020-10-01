@@ -20,9 +20,9 @@ des connaissances de base sur la programmation orientée objet, particulièremen
 
 ## Un premier exemple
 
-Commençons par écrire le célèbre programme  *Hello world*. 
+Commençons par écrire le célèbre programme *Hello world*. 
 Bien que simple, il permet de découvrir plusieurs fonctionnalités du language
-avec peu de de connaissance préalable de Scala. Voilà à quoi il ressemble :
+avec peu de connaissance préalable de Scala. Voilà à quoi il ressemble :
 
     object HelloWorld {
       def main(args: Array[String]): Unit = {
@@ -106,7 +106,7 @@ l'astérisque (`*`). C'est parce que l'astérisque est un identifiant valide en 
 un nom de méthode), comme nous le verrons plus tard.
 
 Par conséquent, la déclaration d'importation dans la seconde ligne importe tous les membres de la classe 
-`DateFormat`. Cela rend la méthode statique `getDateInstance` et le champ statiques `LONG` 
+`DateFormat`. Cela rend la méthode statique `getDateInstance` et le champ statique `LONG` 
 directement visibles. 
 
 Dans la méthode `main`, nous avons tout d'abord créé une instance de la classe Java `Date`
@@ -141,7 +141,7 @@ De fait, une expression arithmétique comme la suivante :
 
     1 + 2 * 3 / x
 
-consiste exclusivement en des appels de méthodes, parce qu il est équivalent à l'expression 
+consiste exclusivement en des appels de méthodes, parce qu'il est équivalent à l'expression 
 suivante, comme nous l'avons vu dans la section précédente :
 
     1.+(2.*(3)./(x)
@@ -250,7 +250,7 @@ malheureusement aucune règle simple pour savoir dans quel cas il est capable de
 ce n'est pas généralement un problème car le compilateur se plaint quand il n'est pas capable d'inférer
 un type qui n'a pas été donné explicitement. Une règle simple que les développeurs débutant en Scala
 devraient suivre est d'essayer d'omettre les déclarations de type qui semblent être faciles à
-déduire et voir si le compilateur ne renvoie pas d'erreur. Après quelques temps, le développeur devrait
+déduire et voir si le compilateur ne renvoie pas d'erreur. Après quelque temps, le développeur devrait
 avoir une bonne idée de quand il peut omettre les types et quand il faut les spécifier explicitement.
 
 ### Les méthodes sans arguments
@@ -267,7 +267,7 @@ leur nom pour les appeler, comme démontré dans l'exemple suivant :
 
 Il serait plus agréable de pouvoir accéder à la partie réelle et imaginaire comme si elles étaient des
 champs, sans ajouter une paire de parenthèses vides. C'est parfaitement faisable en Scala, simplement en
-les définissant comme des méthodes *sans argument*. De telles méthodes différents des méthodes avec
+les définissant comme des méthodes *sans argument*. De telles méthodes diffèrent des méthodes avec
 aucun argument : elles n'ont pas de parenthèses après leur nom, que ce soit dans leur déclaration
 ou lors de leur utilisation. Notre classe `Complexe` peut être réécrite de cette façon :
 
@@ -317,11 +317,11 @@ simples composées de sommes, de constantes numériques et de variables. Deux ex
 sont `1+2` et `(x+x)+(7+y)`.
 
 Nous devons d'abord décider d'une représentation pour de telles expressions.
-La manière la plus naturelle est un arbre où chaque noeud représente une opération (ici, une addition) et
+La manière la plus naturelle est un arbre où chaque nœud représente une opération (ici, une addition) et
 chaque feuille est une valeur (ici des constantes ou variables).
 
 En Java, un tel arbre serait représenté par une super classe abstraite pour les arbres et une 
-sous classe concrète pour chaque noeud et feuille. Dans un langage de programmation fonctionnelle,
+sous classe concrète pour chaque nœud et feuille. Dans un langage de programmation fonctionnelle,
 on utiliserait plutôt un type de donnée algébrique pour faire la même chose. Scala fournit le concept de
 *case class* qui est quelque part entre ces deux concepts. Voici comment elles peuvent être utilisées pour
 définir le type des arbres pour notre exemple :
@@ -347,7 +347,7 @@ différent des classes traditionnelles en différents points :
   comme nous le verrons plus bas.
   
 Maintenant que nous avons défini le type de données pour représenter nos expressions arithmétiques,
-il est temps de définir des opérations pour les manipuler. Nous allons commencer avec une fonction
+il est temps de définir des opérations pour les manipuler. Nous allons commencer par une fonction
 pour évaluer une expression dans un certain *environnement*. Le but de cet environnement est de 
 donner des valeurs aux variables. Par exemple, l'expression `x+1` évaluée dans un environnement qui
 associe la valeur `5` à la variable `x`, écrit `{ x -> 5 }`, donne comme résultat `6`.
@@ -398,11 +398,11 @@ devrait être claire :
    motif décrit à gauche de la flèche ;
 2. Si la première vérification échoue, c'est-à-dire que l'arbre n'est pas une `Somme`,
    on continue et on vérifie si `a` est une `Var`. Si c'est le cas,
-   il relie le nom contenu dans le noeud `Var` à une variable `n` et
+   il relie le nom contenu dans le nœud `Var` à une variable `n` et
    il traite l'expression à droite de la flèche ;  
 3. Si la deuxième vérification échoue, c'est-à-dire que l'arbre n'est ni
    une `Somme` ni une `Var`, on vérifie si l'arbre est un `Const`. Si
-   c'est le cas, il relie la valeur contenue dans le noeud `Const` à une
+   c'est le cas, il relie la valeur contenue dans le nœud `Const` à une
    variable `v` et il traite l'expression à droite de la flèche ;
 4. Enfin, si toutes les vérifications échouent, une exception est levée pour signaler
    l'échec de l'expression. Dans notre cas, cela pourrait arriver si
@@ -420,13 +420,13 @@ la définition de méthodes dans les case class tout comme dans les classes norm
 Décider d'utiliser un pattern matching ou des méthodes est donc une question de
 goût mais a aussi des implications importantes sur l'extensibilité :
 
-- quand on utilise des méthodes, il est facile d'ajouter un nouveau type de noeud en même temps
+- quand on utilise des méthodes, il est facile d'ajouter un nouveau type de nœud en même temps
   qu'une nouvelle sous classe de `Arbre` est définie. Par contre,
   ajouter une nouvelle opération pour manipuler un arbre est
   fastidieux car il demande de modifier toutes les sous classes de `Arbre` ;
 - quand on utilise un pattern matching, la situation est inversée : ajouter un
-  nouveau type de noeud demande la modification de toutes les fonctions qui effectuent
-  un pattern matching sur un arbre pour prendre en compte le nouveau noeud.
+  nouveau type de nœud demande la modification de toutes les fonctions qui effectuent
+  un pattern matching sur un arbre pour prendre en compte le nouveau nœud.
   Par contre, ajouter une nouvelle opération est facile en la définissant
   en tant que fonction indépendante.
 
@@ -439,7 +439,7 @@ garder à l'esprit les règles suivantes par rapport à cette opération :
    variable utilisée pour la dérivation et zéro sinon ;
 3. la dérivée d'une constante est zéro.
 
-Ces règles peut être traduites presque littéralement en du code Scala
+Ces règles peuvent presque être traduites littéralement en du code Scala
 pour obtenir la définition suivante :
 
     def derivee(a: Arbres, v: String): Arbres = a match {
@@ -503,7 +503,7 @@ Notez que depuis Java 8, les interfaces Java peut aussi contenir du code, soit
 en utilisant le mot clé `default` soit avec des méthodes statiques.
 
 Pour s'apercevoir de l'utilité des traits, regardons un exemple classique :
-les objets ordonnés. Il est souvent utile de pouvoir comparer entre eux des objets
+les objets ordonnés. Il est souvent utile de pouvoir comparer des objets
 d'une même classe, par exemple pour les trier. En Java,
 les objets qui sont comparables implémentent l'interface `Comparable`.
 En Scala, on peut faire un peu mieux qu'en Java en définissant
@@ -616,7 +616,7 @@ Les développeurs Java se retrouvent à utiliser `Object`, le super type de
 tous les objets. Cependant, cette solution est loin d'être
 idéale, puisqu'elle ne marche pas pour les types basiques (`int`,
 `long`, `float`, etc.) et cela implique que le développeur
-devra faire un certain nombre de conversion de types. 
+devra faire un certain nombre de conversions de types. 
 
 Scala rend possible la définition de classes (et de méthodes) génériques pour
 résoudre ce problème. Examinons ceci au travers d'un exemple d'une
