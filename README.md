@@ -16,7 +16,7 @@ To build and view the site locally:
 
 For more details, read on.
 
-## Quickstart with Docker ##
+## Quickstart with Docker ## 
 
 To build and view site with docker:
 
@@ -35,7 +35,7 @@ in order to be accepted.
 
 ## Dependencies ##
 
-This site uses a Jekyll, a Ruby framework. You'll need Ruby and Bundler installed; see [Jekyll installation instructions](https://jekyllrb.com/docs/installation/) for the details.
+This site uses a Jekyll, a Ruby framework. You'll need Ruby and Bundler installed; see [Jekyll installation instructions](https://jekyllrb.com/docs/installation/) for more details.
 
 ## Building & Viewing ##
 
