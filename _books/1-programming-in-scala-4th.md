@@ -1,5 +1,5 @@
 ---
-title: "Programming in Scala, 4th ed"
+title: "Programming and others in Scala, 4th ed"
 link: https://booksites.artima.com/programming_in_scala_4ed
 image: /resources/img/books/ProgrammingInScala.gif
 status: Updated for Scala 2.13
