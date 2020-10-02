@@ -122,6 +122,10 @@ scalacOptions ++= Seq(
 ### Compilation Phases
 
 <dl class="definition-list">
+<!--
+  Generated with GNU sed: 
+    scalac -Vphases | tail -n+3 | sed -rn 's|^\s*([a-z]+)\s+[0-9]+\s+([a-z@].+)$|<dt>\1</dt>\n<dd>\2</dd>\n|p'
+-->
 <dt>parser</dt>
 <dd>parse source into ASTs, perform simple desugaring</dd>
 
