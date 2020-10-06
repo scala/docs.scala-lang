@@ -20,7 +20,7 @@ log("System starting")  // prints INFO: System starting
 log("User not found", "WARNING")  // prints WARNING: User not found
 ```
 
-上面的参数level有默认值，所以是可选的。最后一行中传入的参数`"WARNING"`重写了默认值`"INFO"`。在Java中，我们可以通过带有可选参数的重载方法达到同样的效果。不过，只要调用方忽略了一个参数，其他参数就必须要带名传入。
+上面的参数level有默认值，所以是可选的。最后一行中传入的参数`"WARNING"`重写了默认值`"INFO"`。我们可以通过使用函数的可选参数来达到Java函数重载同样的效果。不过需要注意，只要调用方忽略了一个参数，其他参数就必须要带名传入。
 
 ```tut
 class Point(val x: Double = 0, val y: Double = 0)
