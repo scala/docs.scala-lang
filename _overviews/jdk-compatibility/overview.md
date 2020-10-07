@@ -12,7 +12,7 @@ Sometimes new JVM and JDK (Java Development Kit) versions require us to update S
 
 | JDK version | Minimum Scala versions           | Recommended Scala versions                                 |
 |:-----------:|:---------------------------------|:-----------------------------------------------------------|
-| 13, 14      | 2.13.2, 2.12.11                  | 2.13.3, 2.12.12                                            |
+| 13, 14, 15  | 2.13.2, 2.12.11                  | 2.13.3, 2.12.12                                            |
 | 12          | 2.13.1, 2.12.9                   | 2.13.3, 2.12.12                                            |
 | 11          | 2.13.0, 2.12.4, 2.11.12          | 2.13.3, 2.12.12, 2.11.12                                   |
 | 8           | 2.13.0, 2.12.0, 2.11.0, 2.10.2   | 2.13.3, 2.12.12, 2.11.12, 2.10.7                           |
@@ -65,19 +65,15 @@ To track progress on JDK 11 related issues, watch:
 
 To help with testing on JDK 11, see [scala/scala-dev#559](https://github.com/scala/scala-dev/issues/559).
 
-## JDK 12, 13, and 14 compatibility notes
+## JDK 12, 13, 14, and 15 compatibility notes
 
-JDK 14 was released in March 2020. But 12, 13, and 14 are not LTS releases, so the remarks above about non-LTS releases apply.  The next LTS release will be JDK 17.
+JDK 14 was released in March 2020, and JDK 15 was released in September 2020. But 12, 13, 14, 15 are not LTS releases, so the remarks above about non-LTS releases apply.  The next LTS release will be JDK 17.
 
-JDK 12, 13, and 14 are expected to work wherever JDK 11 does. The Scala community build now runs on JDK 14 (as well as 11 and 8).
+JDK 12, 13, 14, and 15 are expected to work wherever JDK 11 does. The Scala community build now runs on JDK 15 (as well as 11 and 8).
 
-As of March 2020, the [jdk12](https://github.com/scala/bug/labels/jdk12) and [jdk13](https://github.com/scala/bug/labels/jdk13) labels in scala/bug have no open bugs. New issues will likely be reported against the newer non-LTS [jdk14 label](https://github.com/scala/bug/labels/jdk14) or the LTS [jdk11 label](https://github.com/scala/bug/labels/jdk11).
+As of October 2020, the [jdk12](https://github.com/scala/bug/labels/jdk12) and [jdk13](https://github.com/scala/bug/labels/jdk13) labels in scala/bug have no open bugs. New issues will likely be reported against the newer non-LTS [jdk14 label](https://github.com/scala/bug/labels/jdk14) and [jdk15 label](https://github.com/scala/bug/labels/jdk15) or the LTS [jdk11 label](https://github.com/scala/bug/labels/jdk11).
 
-As far as we know, 12, 13, and 14 are similar to 11 with respect to Scala compatibility.
-
-## JDK 15
-
-As of September 2020, JDK 15 has been released to the general public ([reference](https://openjdk.java.net/projects/jdk/15/)). We don't have any compatibility information yet.
+As far as we know, 12, 13, 14, and 15 are similar to 11 with respect to Scala compatibility.
 
 ## Scala 3
 
