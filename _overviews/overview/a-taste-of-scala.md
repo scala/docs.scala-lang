@@ -259,7 +259,7 @@ println(s"x.abs = ${x.abs}")   // prints "x.abs = 1"
 
 #### Other interpolators
 
-The `s` that you place before the string is just one possible interpolator. If you use an `f` instead of an `s`, you can use `printf`-style formatting in the string. Furthermore, because `s` and `f` are really just methods, you can write your own interpolators, such as creating a `sql` interpolator for use in a database library. For more details, see the Strings section in this Overview and in the Reference documentation.
+The `s` that you place before the string is just one possible interpolator. If you use an `f` instead of an `s`, you can use `printf`-style formatting syntax in the string. Furthermore, because `s` and `f` are really just methods, you can write your own interpolators, such as creating a `sql` interpolator for use in a database library. For more details, see the Strings section in this Overview and in the Reference documentation (TODO:correct sections and their urls).
 
 
 ### Multiline strings
@@ -272,30 +272,7 @@ val quote = """The essence of Scala:
                programming in a typed setting."""
 ```
 
-One drawback of this basic approach is that the lines after the first line are indented, and look like this:
-
-```scala
-"The essence of Scala:
-               Fusion of functional and object-oriented
-               programming in a typed setting."
-```
-
-When spacing is important, put a `|` symbol in front of all lines after the first line, and call the `stripMargin` method after the string:
-
-```scala
-val quote = """The essence of Scala:
-               |Fusion of functional and object-oriented
-               |programming in a typed setting.""".stripMargin
-```
-
-Now all of the lines are left-justified inside the string:
-
-```scala
-"The essence of Scala:
-Fusion of functional and object-oriented
-programming in a typed setting."
-```
-<!-- TODO: If those last few paragraphs are too much detail, they can be deleted. -->
+The [“First Look at Types” section](TODO:url) provides more details on how to format multiline strings.
 
 
 
