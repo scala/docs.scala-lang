@@ -324,8 +324,6 @@ Run `sbt test` and `sbt partest` to run all of the JUnit and partest tests, resp
     testing: [...]/files/run/stringinterpolation_macro-run.scala          [  OK  ]
     All of 6 tests were successful (elapsed time: 00:00:08)
 
-`partest` was removed in 2.12.
-
 ## 4. Publish
 
 After development is finished, it's time to publish the code and submit your patch for discussion and potential inclusion into Scala.
