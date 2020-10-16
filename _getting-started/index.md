@@ -12,7 +12,7 @@ You can [try Scala in your browser](https://scastie.scala-lang.org/MHc7C9iiTbGfe
 all published libraries.
 
 ##  Install Scala
-Installing scala means installing various command-line tools such as the Scala compiler and build tools.
+Installing Scala means installing various command-line tools such as the Scala compiler and build tools.
 We recommend using the Scala installer tool that automatically installs all the requirements, but you can still manually install each tool.
 
 ### Using the Scala Installer (recommended way)
@@ -31,27 +31,26 @@ The Scala installer is a tool named `cs` that ensures that a JVM and standard Sc
 Along with managing JVMs, it also installs useful command line tools: 
 [Ammonite](https://ammonite.io/), 
 [coursier](https://get-coursier.io/), 
-scala, scalac (the Scala compiler), 
-[sbt](https://www.scala-sbt.org/), 
+scala (the Scala REPL and script runner),
+scalac (the Scala compiler), 
+[sbt](https://www.scala-sbt.org/), and
 [scalafmt](https://scalameta.org/scalafmt/).
 
-For more information, read [coursier-cli documentation](https://get-coursier.io/docs/cli-overview)
+For more information, read [coursier-cli documentation](https://get-coursier.io/docs/cli-overview).
 
 ### ...Or manually
-1. if you don't have Java 1.8 or 11 installed, download 
-Java from [Oracle Java 8](https://www.oracle.com/java/technologies/javase-jdk8-downloads.html), [
-Oracle Java 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html), 
-or [AdoptOpenJDK 8/11](https://adoptopenjdk.net/). Refer [JDK Compatibility](/overviews/jdk-compatibility/overview.html) for Scala/Java compatibility detail.
+1. if you don't have Java 8 or 11 installed, download 
+Java from [Oracle Java 8](https://www.oracle.com/java/technologies/javase-jdk8-downloads.html), [Oracle Java 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html), 
+or [AdoptOpenJDK 8/11](https://adoptopenjdk.net/). Refer to [JDK Compatibility](/overviews/jdk-compatibility/overview.html) for Scala/Java compatibility detail.
 1. Install [sbt](https://www.scala-sbt.org/download.html)
-
 
 ## Create a Hello-world project with sbt
 To create a project, you can either use a command-line tool or an IDE. 
-If you are familiar with command-lines, we recommend to use the first approach.
+If you are familiar with the command line, we recommend that approach.
 
 ### Using command-line
 sbt is a build tool for Scala. sbt compiles, runs, 
-and tests your projects among other related tasks.
+and tests your Scala code. (It can also publish libraries and do many other tasks.)
 
 1. `cd` to an empty folder.
 1. Run the following command `sbt new scala/hello-world.g8`.
@@ -63,17 +62,17 @@ create a project called "hello-world".
 
 ```
 - hello-world
-    - project (sbt uses this to install and manage plugins and dependencies)
+    - project (sbt uses this for its own files)
         - build.properties
+    - build.sbt (sbt's build definition file)
     - src
         - main
-            - scala (All of your scala code goes here)
+            - scala (all of your Scala code goes here)
                 - Main.scala (Entry point of program) <-- this is all we need for now
-    - build.sbt (sbt's build definition file)
 ```
 
 More documentation about sbt can be found in the [Scala Book](/overviews/scala-book/scala-build-tool-sbt.html) 
-or in the official sbt [documentation](https://www.scala-sbt.org/1.x/docs/index.html)
+and in the official sbt [documentation](https://www.scala-sbt.org/1.x/docs/index.html)
 
 ### With an IDE
 You can skip the rest of this page and go directly to [Building a Scala Project with IntelliJ and sbt](/getting-started/intellij-track/building-a-scala-project-with-intellij-and-sbt.html#next-steps)
@@ -102,7 +101,7 @@ which you can ignore.
 
 
 ## Next Steps
-Once you've finished these tutorials, check out:
+Once you've finished the above tutorials, consider checking out:
 
 * [The Scala Book](/overviews/scala-book/introduction.html), which provides a set of short lessons introducing Scala’s main features.
 * [The Tour of Scala](/tour/tour-of-scala.html) for bite-sized introductions to Scala's features.
@@ -110,7 +109,7 @@ Once you've finished these tutorials, check out:
 * [Our list of some popular Scala books](/books.html).
 
 ## Getting Help
-There are a multitude of mailing lists and real-time chat channels in case you want to quickly connect with other Scala users. Check out our [community](https://scala-lang.org/community/) page for a list of these resources, and for where to reach out for help.
+There are a multitude of mailing lists and real-time chat rooms in case you want to quickly connect with other Scala users. Check out our [community](https://scala-lang.org/community/) page for a list of these resources, and for where to reach out for help.
 
 <!-- Hidden elements whose content are used to provide OS-specific download instructions.
  -- This is handled in `resources/js/functions.js`.
