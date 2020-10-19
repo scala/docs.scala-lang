@@ -130,7 +130,7 @@ available that are loaded by the current classloader, including class
 
 The second step involves obtaining a `ClassMirror` for class `Person` using
 the `reflectClass` method. The `ClassMirror` provides access to the
-constructor of class `Person`.
+constructor of class `Person`. (If this step causes an exception, the easy workaround is to use these flags when starting REPL. `scala -Yrepl-class-based:false`)
 
     scala> val ctor = ru.typeOf[Person].decl(ru.termNames.CONSTRUCTOR).asMethod
     ctor: scala.reflect.runtime.universe.MethodSymbol = constructor Person
