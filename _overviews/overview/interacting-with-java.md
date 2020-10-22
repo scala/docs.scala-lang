@@ -257,7 +257,7 @@ System.out.println(jm.multiply(3,4));   // 12
 
 ## How to handle Scala methods that throw exceptions in Java code
 
-When you’re writing Scala code using Scala programming idioms, you’ll never write a method that throws an exception. But if for soem reason you have a Scala method that does throw an exception, and you want Java developers to be able to use that method, add the `@throws` annotation to your Scala method so Java consumers will know the exceptions they can throw.
+When you’re writing Scala code using Scala programming idioms, you’ll never write a method that throws an exception. But if for some reason you have a Scala method that does throw an exception, and you want Java developers to be able to use that method, add the `@throws` annotation to your Scala method so Java consumers will know the exceptions they can throw.
 
 For example, this Scala `exceptionThrower` method is annotated to declare that it throws an `Exception`:
 
@@ -284,11 +284,11 @@ public class ScalaExceptionsInJava {
 
 The compiler gives this error:
 
-....
+````
 [error] ScalaExceptionsInJava: unreported exception java.lang.Exception;
         must be caught or declared to be thrown
 [error] SExceptionThrower.exceptionThrower()
-....
+````
 
 This is good — it’s what you want: the annotation tells the Java compiler that `exceptionThrower` can throw an exception. Now when you’re writing Java code you must handle the exception with a `try` block or declare that your Java method throws an exception.
 
@@ -319,15 +319,14 @@ public class JVarargs {
     VarargsPrinter.printAll("Hello", "world");
   }
 }
-
 ```
 
 When this code is run, it results in the following output:
 
-....
+````
 Hello
 world
-....
+````
 
 
 

@@ -1,9 +1,8 @@
-<html>
-<head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<title>Scala for Java Developers</title>
-</head>
-<body>
+---
+title: Scala for Java Developers
+description: This page is for Java developers who are interested in learning about Scala 3.
+---
+
 <p> <u>Notes to reviewers:</u> <br>
 </p>
 <ol>
@@ -963,9 +962,9 @@ value:<br>
 </p>
 <pre class="brush: scala">def makeInt(s: String): Option[Int] =
 try
-Some(s.toInt)
+  Some(s.toInt)
 catch
-case e: NumberFormatException =&gt; None
+  case e: NumberFormatException =&gt; None
 </pre>
 <p>The Scala <code>Option</code> is similar to the Java <code>Optional</code>
 class. As shown, if the string-to-int conversion succeeds, the <code>Int</code>
@@ -1014,15 +1013,5 @@ in Java 11:</p>
 <li>More ...<br>
 </li>
 </ul>
-<br>
-<p><br>
-</p>
-<p> </p>
-<p> </p>
-<p> </p>
-<p><br>
-</p>
-</body>
-</html>
 
 

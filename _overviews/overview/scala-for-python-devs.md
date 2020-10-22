@@ -91,13 +91,13 @@ programming<br>
 </ul>
 <h3>Programming level similarities</h3>
 <p>This section looks at the similarities you’ll see between Python
-and Scala when you write code on an every day basis:<br>
+and Scala when you write code on an everyday basis:<br>
 </p>
 <ul>
 <li>Scala’s type inference often makes it feel like a dynamically
 typed language<br>
 </li>
-<li>Neither language uses semi-colons to end expressions<br>
+<li>Neither language uses semicolons to end expressions<br>
 </li>
 <li>Both languages support the use of significant indentation
 rather than braces and parentheses</li>

@@ -285,7 +285,7 @@ val list =
 
 After that `for` expression runs, the variable `list` is a `Vector` that contains the values shown. This is how the expression works:
 
-1. The `for` expression starts to iterate over the values in the range `(10, 11, 12)`. It first works on the value `10`, multiples it by `2`, then _yields_ that result, the value `20`.
+1. The `for` expression starts to iterate over the values in the range `(10, 11, 12)`. It first works on the value `10`, multiplies it by `2`, then _yields_ that result, the value `20`.
 2. Next, it works on the `11` — the second value in the range. It multiples it by `2`, then yields the value `22`. You can think of these yielded values as accumulating in a temporary holding place.
 3. Finally the loop gets the number `12` from the range, multiplies it by `2`, yielding the number `24`. The loop completes at this point and yields the final result, the `Vector(20,22,24)`.
 
@@ -481,7 +481,7 @@ Using a `match` expression as the body of a method is a very common use.
 - Typed
 - Default/wildcard
 
-All of these patterns are shown in the following `pattern` method, which takes an input parameter of tye `Any` and returns a `String`:
+All of these patterns are shown in the following `pattern` method, which takes an input parameter of type `Any` and returns a `String`:
 
 ```scala
 def pattern(x: Any): String = x match

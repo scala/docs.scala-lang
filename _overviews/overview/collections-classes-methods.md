@@ -38,13 +38,13 @@ The main collections classes you’ll use on a regular basis are:
 
 | Class         | Immutable | Mutable | Description  |
 | ------------- | --------- | ------- | -----------  |
-| `List`        | &check;         |         | A linear (linked list), immutable sequence |
-| `Vector`      | &check;         |         | An indexed, immutable sequence |
-| `LazyList`    | &check;         |         | A lazy immutable linked list, its elements are computed only when they’re needed; Good for large or infinite sequences. |
-| `ArrayBuffer` |           | &check;       | The go-to class for a mutable, indexed sequence |
-| `ListBuffer` |           | &check;        | Used when you want a mutable `List`; typically converted to a `List` |
-| `Map`         | &check;         | &check;       | An iterable sequence that consists of pairs of keys and values. |
-| `Set`         | &check;         | &check;       | An iterable collection with no duplicate elements |
+| `List`        | &#10003;         |         | A linear (linked list), immutable sequence |
+| `Vector`      | &#10003;         |         | An indexed, immutable sequence |
+| `LazyList`    | &#10003;         |         | A lazy immutable linked list, its elements are computed only when they’re needed; Good for large or infinite sequences. |
+| `ArrayBuffer` |           | &#10003;       | The go-to class for a mutable, indexed sequence |
+| `ListBuffer` |           | &#10003;        | Used when you want a mutable `List`; typically converted to a `List` |
+| `Map`         | &#10003;         | &#10003;       | An iterable sequence that consists of pairs of keys and values. |
+| `Set`         | &#10003;         | &#10003;       | An iterable collection with no duplicate elements |
 
 As shown, `Map` and `Set` come in both immutable and mutable versions.
 

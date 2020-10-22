@@ -1022,7 +1022,7 @@ t._2   // "eleven"
 t._3   // Person("Eleven")
 ```
 
-Tuples are nice for those times when you want to put a collection of heterogenous types in a little collection-like structure. See the Reference documentation for more tuple details.
+Tuples are nice for those times when you want to put a collection of heterogeneous types in a little collection-like structure. See the Reference documentation for more tuple details.
 
 
 
@@ -1041,7 +1041,7 @@ For more details, see the Contextual Abstractions section in this Overview, and 
 
 
 
-## Even more!
+## Even more
 
 Scala has even more features that weren’t covered in this whirlwind tour. See the remainder of this Overview and the Reference documentation for many more details.
 
