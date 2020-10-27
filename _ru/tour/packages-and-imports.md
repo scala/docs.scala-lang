@@ -8,7 +8,7 @@ partof: scala-tour
 
 num: 35
 language: ru
-previous-page: named-arguments
+previous-page: annotations
 next-page: package-objects
 ---
 
