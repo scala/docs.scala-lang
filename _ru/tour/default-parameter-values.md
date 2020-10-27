@@ -9,7 +9,7 @@ partof: scala-tour
 num: 33
 language: ru
 next-page: named-arguments
-previous-page: annotations
+previous-page: classes
 prerequisite-knowledge: named-arguments, function syntax
 
 ---
