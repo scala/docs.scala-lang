@@ -1,0 +1,320 @@
+---
+title: Scala Tools
+description: This chapter looks at two commonly-used Scala tools, sbt and ScalaTest.
+---
+
+<!-- TODO: cover migration tools here? -->
+
+In this chapter you’ll see two tools that are commonly used in Scala projects:
+
+- [The *sbt* build tool](https://www.scala-sbt.org)
+- [ScalaTest](https://www.scalatest.org), a source code testing framework
+
+We’ll start by showing how to use sbt to build your Scala projects, and then we’ll show how to use sbt and ScalaTest together to test your Scala projects.
+
+
+
+## Building Scala projects with sbt
+
+You can use several different tools to build your Scala projects, including Ant, Maven, Gradle, Mill, and more. But a tool named *sbt* was the first build tool that was specifically created for Scala, and these days it’s supported by [Lightbend](https://www.lightbend.com), the company that also maintains [Akka](https://akka.io), the [Play framework](https://www.playframework.com), the [Lagom framework](https://www.lagomframework.com), and more.
+
+>To install sbt, see [its download page](https://www.scala-sbt.org/download.html).
+
+
+### The sbt directory structure
+
+Like Maven, sbt uses a standard project directory structure. A nice benefit of that is that once you’re comfortable with its structure, it makes it easy to work on other Scala/sbt projects.
+
+The first thing to know is that underneath the root directory of your project, sbt expects a directory structure that looks like this:
+
+```bash
+build.sbt
+project/
+src/
+-- main/
+   |-- resources/
+   |-- scala/
+|-- test/
+   |-- resources/
+   |-- scala/
+target/
+```
+
+The *resources* directories are optional, and you can also add *java* directories at the same level as the *scala* directories if you want to use Java source code in your project. You can also add a *lib* directory under the root directory if you want to add unmanaged dependencies — JAR files — to your project.
+
+
+### Creating a “Hello, world” sbt project directory structure
+
+<!-- 
+  TODO: using something like `sbt new lampepfl/dotty.g8` may eventually
+        be preferable, but that seems to have a few bugs atm (creates
+        a 'target' directory above the root; renames the root dir;
+        uses 'dottyVersion'; 'name' doesn’t match the supplied name;
+        config syntax is a little hard for beginners.)
+-->
+
+Creating this directory structure is simple. There are tools to do this for you, but assuming that you’re using a Unix/Linux system, you can use these commands to create your first sbt project directory structure:
+
+```bash
+mkdir HelloWorld
+cd HelloWorld
+mkdir -p src/{main,test}/{resources,scala}
+mkdir project target
+```
+
+When you run a `find .` command after running those commands, you should see this result:
+
+```bash
+$ find .
+.
+./project
+./src
+./src/main
+./src/main/resources
+./src/main/scala
+./src/test
+./src/test/resources
+./src/test/scala
+./target
+```
+
+If you see that, you’re in great shape for the next step.
+
+>There are other ways to create the files and directories for an sbt project. One way is to use the `sbt new` command, [which is documented here on scala-sbt.org](https://www.scala-sbt.org/1.x/docs/Hello.html). That approach isn’t shown here because some of the files it creates are more complicated than necessary for an introduction like this.
+
+
+### Creating a first build.sbt file
+
+At this point you only need two more things to run a “Hello, world” project:
+
+- A *build.sbt* file
+- A *Hello.scala* file
+
+For a little project like this, the *build.sbt* file only needs to contain a few lines, like this:
+
+```scala
+name := "HelloWorld"
+version := "1.0"
+scalaVersion := "{{ site.scala-version }}"
+```
+
+Because sbt projects use a standard directory structure, sbt will be able to find everything else it needs.
+
+Now you just need to add a little “Hello, world” program.
+
+
+### A “Hello, world” program
+
+In large projects, all of your Scala source code files will go under the *src/main/scala* and *src/test/scala* directories, but for a little sample project like this, you can put your source code file in the root directory of your project. Therefore, create a file named *HelloWorld.scala* in the root directory with these contents:
+
+```scala
+@main def helloWorld = println("Hello, world")
+```
+
+Now, use the `sbt run` command to compile and run your project. When you do so, you’ll see output that looks like this:
+
+```bash
+$ sbt run
+
+[info] welcome to sbt
+[info] loading settings for project ...
+[info] loading project definition
+[info] loading settings for project root from build.sbt ...
+[info] Compiling 1 Scala source ...
+[info] running helloWorld 
+Hello, world
+[success] Total time: 4 s
+```
+
+The first time you run `sbt` it downloads everything it needs, and that can take a little while to run, but after that it gets much faster. 
+
+Also, once you get this first step working, you’ll find that it’s much faster to run sbt interactively. To do that, first run the `sbt` command by itself:
+
+```bash
+$ sbt
+
+[info] welcome to sbt
+[info] loading settings for project ...
+[info] loading project definition ...
+[info] loading settings for project root from build.sbt ...
+[info] sbt server started at local:///Users/al/.sbt/1.0/server/7d26bae825c38a31074c/sock
+sbt:hello-world> _
+```
+
+Then inside this sbt shell, execute its `run` command:
+
+````
+sbt:hello-world> run
+
+[info] running helloWorld 
+Hello, world
+[success] Total time: 0 s
+````
+
+There, that’s much faster.
+
+If you type `help` at the sbt command prompt you’ll see a list of other commands you can run. But for now, just type `exit` to leave the sbt shell. (You can also press `CTRL-D` instead of typing `exit`.)
+
+
+### Other build tools for Scala
+
+<!-- TODO: add Fury? -->
+While sbt is widely used, there are other tools you can use to build Scala projects:
+
+- [Ant](https://ant.apache.org/)
+- [Gradle](https://gradle.org/)
+- [Maven](https://maven.apache.org/)
+- [Mill](https://www.lihaoyi.com/mill/)
+
+
+
+## Using sbt with ScalaTest
+
+ScalaTest is one of the main testing libraries for Scala projects, and in this section you’ll see how to create a Scala/sbt project that uses ScalaTest.
+
+
+### Creating the project directory structure
+
+As with the previous lesson, create an sbt project directory structure for a project named *HelloScalaTest* with the following commands:
+
+```sh
+mkdir HelloScalaTest
+cd HelloScalaTest
+mkdir -p src/{main,test}/{resources,scala}
+mkdir project target
+```
+
+
+### Creating the build.sbt file
+
+Next, create a *build.sbt* file in the root directory of your project with these contents:
+
+```scala
+name := "HelloScalaTest"
+version := "1.0"
+scalaVersion := "{{site.scala-version}}"
+
+libraryDependencies ++= Seq(
+  "org.scalatest" % "scalatest-core_0.27" % "3.2.2",
+  "org.scalatest" % "scalatest_0.27" % "3.2.2" % Test
+)
+```
+
+The first three lines of this file are essentially the same as the first example. The `libraryDependencies` lines tell sbt to include the dependencies (JAR files) that are needed to include ScalaTest.
+
+>The ScalaTest documentation has always been good, and you can always find the up to date information on what those lines should look like on the [Installing ScalaTest](https://www.scalatest.org/install) page.
+
+
+### Create a Scala source code file
+
+Next, create a Scala program that you can use to demonstrate ScalaTest. First, create a directory under *src/main/scala* named *math*:
+
+```sh
+$ mkdir src/main/scala/math
+            ----
+```
+
+Then, inside that directory, create a file named *MathUtils.scala* with these contents:
+
+```scala
+package math
+
+object MathUtils:
+  def double(i: Int) = i * 2
+```
+
+There isn’t much that can go wrong with that source code, but it provides a simple way to demonstrate ScalaTest. This object doesn’t have a `main` method, so instead of trying to run the project with `sbt run`, we’ll just compile it with `sbt compile`:
+
+````
+$ sbt compile
+
+[info] welcome to sbt
+[info] loading settings for project ...
+[info] loading project definition ...
+[info] loading settings for project ...
+[info] Executing in batch mode. For better performance use sbt's shell
+[success] Total time: 1 s
+````
+
+With that compiling, let’s create a ScalaTest file to test the `double` method.
+
+
+### Your first ScalaTest tests
+
+ScalaTest is very flexible, and there are several different ways to write tests. A simple way to get started is to write tests using the ScalaTest `AnyFunSuite`. To get started, create a directory named *math* under the *src/test/scala* directory, like this:
+
+```sh
+$ mkdir src/test/scala/math
+            ----
+```
+
+Next, create a file named *MathUtilsTests.scala* in that directory with the following contents:
+
+```scala
+package math
+  
+import org.scalatest.funsuite.AnyFunSuite
+
+class MathUtilsTests extends AnyFunSuite {
+
+  // test 1
+  test("'double' should handle 0") {
+    val result = MathUtils.double(0)
+    assert(result == 0)
+  }
+
+  // test 2
+  test("'double' should handle 1") {
+    val result = MathUtils.double(1)
+    assert(result == 2)
+  }
+ 
+  test ("test with Int.MaxValue") (pending)
+
+}
+```
+
+This code demonstrates the ScalaTest `AnyFunSuite` approach. A few important points:
+
+- Your test class should extend `AnyFunSuite`
+- You create tests as shown, by giving each `test` a unique name
+- At the end of each test you should call `assert` to test that a condition has been satisfied
+- When you know you want to write a test, but you don’t want to write it right now, create the test as “pending,” with the syntax shown
+
+Using ScalaTest like this is similar to JUnit, so if you’re coming to Scala from Java, hopefully this looks similar.
+
+Now you can run these tests with the `sbt test` command. Skipping the first few lines of output, the result looks like this:
+
+````
+sbt:HelloScalaTest> test
+
+[info] Compiling 1 Scala source ...
+[info] MathUtilsTests:
+[info] - 'double' should handle 0
+[info] - 'double' should handle 1
+[info] - test with Int.MaxValue (pending)
+[info] Total number of tests run: 2
+[info] Suites: completed 1, aborted 0
+[info] Tests: succeeded 2, failed 0, canceled 0, ignored 0, pending 1
+[info] All tests passed.
+[success] Total time: 1 s
+````
+
+If everything works well, you’ll see output that looks like that. Welcome to the world of testing Scala applications with sbt and ScalaTest.
+
+
+### Multiple types of tests
+
+This example demonstrated a style of testing that is similar to xUnit testing, with a few benefits of the *Behavior-Driven Development* (BDD) style. But as mentioned, ScalaTest is flexible and you can also write tests using other styles. See the User Guide on the [ScalaTest website](https://www.scalatest.org) for more details on the different testing styles that are available.
+
+
+
+## Where to go from here
+
+For more information about sbt and ScalaTest, see the following resources:
+
+- [The sbt documentation](https://www.scala-sbt.org/1.x/docs/)
+- [The ScalaTest website](https://www.scalatest.org/)
+
+
+
