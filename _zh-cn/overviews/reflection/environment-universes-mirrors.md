@@ -47,7 +47,7 @@ language: zh-cn
 
 一个类加载器镜像可以创建多个调用者镜像（包括`scala.reflect.api.Mirrors#InstanceMirror`，`scala.reflect.api.Mirrors#MethodMirror`，`scala.reflect.api.Mirrors#FieldMirror`，`scala.reflect.api.Mirrors#ClassMirror`，和`scala.reflect.api.Mirrors#ModuleMirror`）。
 
-下面提供了这两种类型的反射镜如何相互作用的示例。
+下面提供了这两种类型的反射镜像如何相互作用的示例。
 
 ### Types of Mirrors, Their Use Cases & Examples
 
