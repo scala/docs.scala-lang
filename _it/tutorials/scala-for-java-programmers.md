@@ -694,6 +694,6 @@ poiché è stata dichiarata per memorizzare un intero.
 
 Questo documento ha fornito una veloce introduzione del linguaggio Scala e
 presentato alcuni esempi di base. Il lettore interessato può continuare, per
-esempio, leggendo il documento [*Scala By Example*](https://docs.scala-lang.org/tour/tour-of-scala.html) che contiene esempi molti più
+esempio, leggendo il documento [*Tour of Scala*](https://docs.scala-lang.org/tour/tour-of-scala.html) che contiene esempi molti più
 avanzati e consultare al bisogno la documentazione
 *Scala Language Specification*.
