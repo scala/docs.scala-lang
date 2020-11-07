@@ -29,4 +29,4 @@ Notice how the order of named arguments can be rearranged. However, if some argu
 printName(last = "Smith", "john") // error: positional after named argument
 ```
 
-Note that named arguments do not work with calls to Java methods.
+Named arguments work with calls to Java methods, but only if the Java library in question was compiled with `-parameters`.
