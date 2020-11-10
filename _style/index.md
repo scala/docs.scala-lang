@@ -55,7 +55,6 @@ This document is intended to outline some basic Scala stylistic guidelines which
   - [Trivial Conditionals](control-structures.html#trivial-conditionals)
 - [Method Invocation](method-invocation.html)
   - [Arity-0](method-invocation.html#arity-0)
-    - [Postfix Notation](method-invocation.html#postfix-notation)
   - [Arity-1 (Infix Notation)](method-invocation.html#arity-1-infix-notation)
     - [Symbolic Methods/Operators](method-invocation.html#symbolic-methodsoperators)
     - [Higher-Order Functions](method-invocation.html#higher-order-functions)
