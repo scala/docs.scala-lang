@@ -27,7 +27,7 @@ trait Tweeter {
 }
 
 class VerifiedTweeter(val username_ : String) extends Tweeter with User {  // We mixin User because Tweeter required it
-	def username = s"real $username_"
+  def username = s"real $username_"
 }
 
 val realBeyoncé = new VerifiedTweeter("Beyoncé")
