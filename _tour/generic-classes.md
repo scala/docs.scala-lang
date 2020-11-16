@@ -17,7 +17,8 @@ Generic classes take a type as a parameter within square brackets `[]`. One conv
 ```tut
 class Stack[A] {
   private var elements: List[A] = Nil
-  def push(x: A) { elements = x :: elements }
+  def push(x: A): Unit =
+    elements = x :: elements
   def peek: A = elements.head
   def pop(): A = {
     val currentTop = peek
