@@ -9,7 +9,7 @@ partof: scala-tour
 num: 5
 language: ru
 next-page: tuples
-previous-page: classes
+previous-page: named-arguments
 topics: traits
 prerequisite-knowledge: expressions, classes, generics, objects, companion-objects
 
