@@ -48,7 +48,7 @@ There are a handful of websites where you can interactively run Scala code in yo
 [Independent Courseware](https://getscala.com), online self-study or instructor-led Scala and Play courses for a fee.
 
 ## DevInsideYou
-[DevInsideYou](https://youtube.com/devinsideyou) is a YouTube channel with hundreds of hours of free, high quality Scala content.
+[DevInsideYou](https://youtube.com/devinsideyou) is a YouTube channel with hundreds of hours of free Scala content.
 
 ## Visual Scala Reference
 [Visual Scala Reference](https://superruzafa.github.com/visual-scala-reference/), a guide to visually learn about Scala concepts and functions.
