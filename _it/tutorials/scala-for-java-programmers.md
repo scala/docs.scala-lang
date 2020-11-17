@@ -73,7 +73,7 @@ avrà il nome `HelloWorld.class` e conterrà  una classe che può essere
 direttamente eseguita con il comando `scala`, come mostra la seguente
 sezione.
 
-### Eseguimo l'esempio
+### Eseguiamo l'esempio
 
 Una volta compilato il programma può esser facilmente eseguito con il
 comando scala. L'uso è molto simile al comando java ed accetta le stesse
@@ -91,13 +91,13 @@ codice Java. Tutte le classi del package `java.lang` sono importate di
 default mentre le altre richiedono l’esplicito import.
 
 Osserviamo un esempio che lo dimostra. Vogliamo ottenere la data
-corrente e formattarla in accordo con la convezione usata in uno
+corrente e formattarla in accordo con la convenzione usata in uno
 specifico paese del mondo, diciamo la Francia. (Altre regioni, come la parte
 di lingua francese della Svizzera, utilizzano le stesse convenzioni.)
 
 Le librerie delle classi Java definiscono potenti classi di utilità come
 `Date` e `DateFormat`. Poiché Scala interagisce direttamente con Java, non
-esistono le classi equivalenti nella libreria delle classi di Scala--possiamo
+esistono le classi equivalenti nella libreria delle classi di Scala; possiamo
 semplicemente importare le classi dei corrispondenti package Java:
 
     import java.util.{Date, Locale}
@@ -112,7 +112,7 @@ semplicemente importare le classi dei corrispondenti package Java:
       }
     }
 
-L’istruzione import di Scala è molto simile all’equivalente in Java
+L’istruzione `import` di Scala è molto simile all’equivalente in Java
 tuttavia, risulta essere più potente. Più classi possono essere importate
 dallo stesso package includendole in parentesi graffe come nella prima riga
 di codice precedentemente riportato. Un’altra differenza è evidente
@@ -130,7 +130,7 @@ Java che di default contiene la data corrente. Successivamente, definiamo il
 formato della data usando il metodo statico `getDateInstance` importato
 precedentemente. Infine, stampiamo la data corrente, formattata secondo la
 localizzazione scelta, con l’istanza `DateFormat`; quest’ultima linea mostra
-un’importante proprietà di Scala.I metodi che prendono un argomento possono
+un’importante proprietà di Scala. I metodi che prendono un argomento (ed uno soltanto) possono
 essere usati con una sintassi non fissa. Questa forma dell’espressione
 
     df format now
@@ -582,7 +582,7 @@ definendo la classe `Date` come segue:
 
 La parte importante qui è la dichiarazione `extends Ord` che segue il nome
 della classe e dei parametri. Dichiara che la classe `Date` eredita il
-codice dal trait `extends Ord`.
+codice dal trait `Ord`.
 
 Successivamente ridefiniamo il metodo `equals`, ereditato da `Object`,
 in modo tale che possa confrontare in modo corretto le date confrontando
@@ -694,6 +694,6 @@ poiché è stata dichiarata per memorizzare un intero.
 
 Questo documento ha fornito una veloce introduzione del linguaggio Scala e
 presentato alcuni esempi di base. Il lettore interessato può continuare, per
-esempio, leggendo il documento *Scala By Example* che contiene esempi molti più
+esempio, leggendo il documento [*Tour of Scala*](https://docs.scala-lang.org/tour/tour-of-scala.html) che contiene esempi molti più
 avanzati e consultare al bisogno la documentazione
 *Scala Language Specification*.
