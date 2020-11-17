@@ -30,7 +30,7 @@ println(d.message)  // I'm an instance of class B
 println(d.loudMessage)  // I'M AN INSTANCE OF CLASS B
 ```
 
-类`D`有一个父类`B`和一个混入`C`。一个类只能有一个父类但是可以有多个混入（分别使用关键字`extend`和`with`）。混入和某个父类可能有相同的父类。
+类`D`有一个父类`B`和一个混入`C`。一个类只能有一个父类但是可以有多个混入（分别使用关键字`extends`和`with`）。混入和某个父类可能有相同的父类。
 
 现在，让我们看一个更有趣的例子，其中使用了抽象类：
 
