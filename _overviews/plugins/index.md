@@ -17,6 +17,13 @@ compiler. It does not go into depth on how to make your plugin
 actually do something useful, but just shows the basics needed to
 write a plugin and hook it into the Scala compiler.
 
+## You can read, but you can also watch TV
+
+The contents of this guide overlaps substantially with Seth Tisue's
+talk "Scala Compiler Plugins 101" ([32 minute video](https://www.youtube.com/watch?v=h5NZjuxS5Qo)).
+Although the talk is from April 2018, nearly all of the information
+in it still applies (as of November 2020).
+
 ## When to write a plugin
 
 Plugins let you modify the behavior of the Scala compiler without
@@ -68,6 +75,7 @@ All of this is then packaged in a JAR file.
 
 To use the plugin, a user adds the JAR file to their compile-time
 classpath and enables it by invoking `scalac` with `-Xplugin:...`.
+(Some build tools provide shortcuts for this; see below.)
 
 All of this will be described in more detail below.
 
@@ -147,6 +155,12 @@ aspects of note.
     desire on the given compilation unit. Usually this involves
     examining the trees within the unit and doing some transformation on
     the tree.
+-   The pattern match inside the body of `apply` shows one way of
+    detecting certain tree shapes in user code.
+    (Quasiquotes are another way.)  `Apply` denotes a method call,
+    and `Select` denotes the "selection" of a member, such as `a.b`.
+    The details of tree processing are out of scope for this document,
+    but see "Going further", below, for links to further documentation.
 
 The `runsAfter` method gives the plugin author control over when the
 phase is executed. As seen above, it is expected to return a list of
@@ -187,6 +201,11 @@ with that file plus your compiled code:
     cp scalac-plugin.xml classes
     (cd classes; jar cf ../divbyzero.jar .)
 
+That's how it works with no build tool. If you are using sbt to build
+your plugin, then the XML file goes in `src/main/resources`.
+
+## Using a plugin with scalac
+
 Now you can use your plugin with `scalac` by adding the `-Xplugin:`
 option:
 
@@ -196,23 +215,44 @@ option:
                         ^
     one error found
 
+## Publishing your plugin
+
 When you are happy with how the plugin behaves, you may wish to
 publish the JAR to a Maven or Ivy repository where it can be resolved
-by a build tool.
+by a build tool.  (For testing purposes, you can also publish it to
+your local machine only. In sbt, this is accomplished with
+`publishLocal`.)
 
-sbt, for example, provides an `addCompilerPlugin` method you can
+In most respects, compiler plugins are ordinary Scala libraries,
+so publishing a plugin is like publishing any library.
+See the [Library Author Guide]({{site.baseurl}}/overviews/contributors/index.html)
+and/or your build tool's documentation on publishing.
+
+## Using a plugin from sbt
+
+To make it convenient for end users to use your plugin once it has
+been published, sbt provides an `addCompilerPlugin` method you can
 call in your build definition, e.g.:
 
-    addCompilerPlugin("org.divbyzero" % "divbyzero" % "1.0")
+    addCompilerPlugin("org.divbyzero" %% "divbyzero" % "1.0")
 
-Note however that `addCompilerPlugin` only adds the JAR to the
-compilation classpath; it doesn't actually enable the plugin.  To
-do that, you must customize `scalacOptions` to include the appropriate
-`-Xplugin` call.  To shield users from having to know this, it's
-relatively common for compiler plugin authors to also write an
-accompanying sbt plugin that takes of customizing the classpath and
-compiler options appropriately.  Then using your plugin only requires
-adding an `addSbtPlugin(...)` call to `project/plugins.sbt`.
+`addCompilerPlugin` performs multiple actions. It adds the JAR to the
+classpath (the compilation classpath only, not the runtime classpath)
+via `libraryDependencies`, and it also customizes `scalacOptions` to
+enable the plugin using `-Xplugin`.
+
+For more details, see [Compiler Plugin
+Support](https://www.scala-sbt.org/1.x/docs/Compiler-Plugins.html) in
+the sbt manual.
+
+## Developing compiler plugins with an IDE
+
+Internally, the use of path-dependent types in the Scala compiler
+may confuse some IDEs such as IntelliJ.  Correct plugin code may
+sometimes be highlighted as erroneous.  The IDE is usually still
+useful under these circumstances, but remember to take its feedback
+with a grain of salt.  If the error highlighting is distracting,
+the IDE may have a setting where you can disable it.
 
 ## Useful compiler options
 
@@ -317,9 +357,12 @@ behavior other than to print out its option.
 ## Going further
 
 For the details on how to make your plugin accomplish some task, you
-must consult other documentation on compiler internals (such as the
-documentation on [Symbols, Trees, and Types]({{site.baseurl
-}}/overviews/reflection/symbols-trees-types.html).
+must consult other documentation on compiler internals. Relevant
+documents include:
+
+* [Symbols, Trees, and Types]({{site.baseurl}}/overviews/reflection/symbols-trees-types.html) is the single most important reference about the data structures used inside the compiler.
+* [Quasiquotes]({{site.baseurl}}/overviews/quasiquotes/intro.html) are useful for pattern matching on ASTs.
+  * The [syntax summary]({{site.baseurl}}/overviews/quasiquotes/syntax-summary.html) in the quasiquotes guide is a useful concordance between user-level syntax and AST node types.
 
 It's also useful to look at other plugins and to study existing phases
 within the compiler source code.
