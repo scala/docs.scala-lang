@@ -1,9 +1,15 @@
-- title: API
+- title: Learn
   url: "#"
   submenu:
-    - title: Current
-      url: https://www.scala-lang.org/api/current/
-    - title: Nightly
-      url: https://www.scala-lang.org/files/archive/nightly/2.13.x/api/2.13.x/
-    - title: All Versions
-      url: "/api/all.html"
+    - title: Getting Started
+      url: "/getting-started/index.html"
+    - title: Scala 3 Book
+      url: "/overviews/overview/introduction.html"
+    - title: Macro Tutorial
+      url: "https://lampepfl.github.io/scala3-macro-tutorial/"
+- title: Migrate
+  url: "https://scalacenter.github.io/scala-3-migration-guide"
+- title: Reference
+  url: "https://dotty.epfl.ch/docs/reference/overview.html"
+- title: API
+  url: "https://dotty.epfl.ch/api/index.html"

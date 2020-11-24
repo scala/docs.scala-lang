@@ -1,6 +1,16 @@
 ---
+scala3: true
+type: chapter
+layout: multipage-overview
 title: A Taste of Scala
 description: This page provides a high-level overview of the main features of the Scala 3 programming language.
+
+partof: tour
+overview-name: Tour
+
+previous-page: introduction
+
+num: 2
 ---
 
 <!--
