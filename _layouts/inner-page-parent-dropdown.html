@@ -2,12 +2,17 @@
 {% include headerbottom.html %}
 {% if page.new-version %}<a class="new-version-notice" href="{{ page.new-version }}">This page has a new version.</a>{% endif %}
 
+
+
 <div class="navigation-fade-screen"></div>
 
 {% include navbar-inner.html %}
 
-<main id="inner-main">
-
+{% if page.scala3 %}
+  <main id="inner-main" class="scala3">
+{% else %}
+  <main id="inner-main">
+{% endif %}
   <!-- Title -->
   <section class="title-page">
     <div class="wrap">

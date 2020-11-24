@@ -1,0 +1,9 @@
+- title: API
+  url: "#"
+  submenu:
+    - title: Current
+      url: https://www.scala-lang.org/api/current/
+    - title: Nightly
+      url: https://www.scala-lang.org/files/archive/nightly/2.13.x/api/2.13.x/
+    - title: All Versions
+      url: "/api/all.html"
