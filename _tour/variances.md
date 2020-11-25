@@ -78,7 +78,7 @@ class CatPrinter extends Printer[Cat] {
 }
 ```
 
-If a `Printer[Cat]` knows how to print any `Cat` to the console, and a `Printer[Animal]` knows how to print any `Animal` to the console, it makes sense that a `Printer[Animal]` would also know how to print any `Cat`. The inverse relationship does not apply, because a `Printer[Cat]` does not know how to print any `Animal` to the console. Therefore, we should be able to substitute a `Printer[Animal]` for a `Printer[Cat]`, if we wish, and making `Printer[A]` contravariant allows us to do exactly that.
+If a `Printer[Cat]` knows how to print any `Cat` to the console, and a `Printer[Animal]` knows how to print any `Animal` to the console, it makes sense that a `Printer[Animal]` would also know how to print any `Cat`. The inverse relationship does not apply, because a `Printer[Cat]` does not know how to print any `Animal` to the console. Therefore, we should be able to substitute a `Printer[Cat]` for a `Printer[Animal]`, if we wish, and making `Printer[A]` contravariant allows us to do exactly that.
 
 ```tut
 def printMyCat(printer: Printer[Cat], cat: Cat): Unit =
