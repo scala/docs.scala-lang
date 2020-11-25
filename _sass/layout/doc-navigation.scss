@@ -18,8 +18,7 @@ $nav-height: 46px;
           display: none;
         }
       }
-      &, &:hover, &:visited {
-        text-decoration: none;
+      .doc-language-version {
         font-size: 1.6em;
         font-family: $heading-font-family;
         font-weight: bold;
