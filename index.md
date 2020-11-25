@@ -9,7 +9,7 @@ scala3-sections:
       - title: "Getting Started"
         description: "Install Scala 3 on your computer and start writing some Scala code!"
         icon: "fa fa-rocket"
-        link: /getting-started.html
+        link: /scala3/getting-started.html
       - title: "Scala 3 Book"
         description: "An online book introducing the main language features."
         icon: "fa fa-book"
@@ -21,7 +21,7 @@ scala3-sections:
       - title: "Guides"
         description: "Detailed guides about particular aspects of the language."
         icon: "fa fa-map"
-        link: /scala3/guides
+        link: /scala3/guides.html
       - title: "API"
         description: "API documentation for every version of Scala 3."
         icon: "fa fa-file-text"

@@ -3,7 +3,7 @@ scala3: true
 layout: inner-page-documentation
 title: Documentation for Scala 3
 namespace: root
-partof: documentation
+partof: scala3
 discourse: true
 # Content masthead links
 more-resources-label: More Resources
@@ -14,7 +14,7 @@ sections:
       - title: "Getting Started"
         description: "Install Scala 3 on your computer and start writing some Scala code!"
         icon: "fa fa-rocket"
-        link: /getting-started.html
+        link: /scala3/getting-started.html
       - title: "Scala 3 Book"
         description: "An online book introducing the main language features."
         icon: "fa fa-book"
