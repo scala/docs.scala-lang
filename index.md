@@ -1,16 +1,11 @@
 ---
-layout: inner-page-documentation
+layout: documentation
 title: Documentation
-languages: [ja, zh-cn, ru]
 namespace: root
 partof: documentation
-discourse: true
-# Content masthead links
-more-resources-label: More Resources
-sections:
 
-  - title: "Cutting Edge: Scala 3"
-    links:
+scala3-sections:
+  - links:
       - title: "Getting Started"
         description: "Install Scala 3 on your computer and start writing some Scala code!"
         icon: "fa fa-rocket"
@@ -36,9 +31,8 @@ sections:
         icon: "fa fa-book"
         link: https://dotty.epfl.ch/docs/reference/overview.html
 
-
-  - title: "Well Established: Scala 2"
-    links:
+scala2-sections:
+  - links:
       - title: "Getting Started"
         description: "Install Scala on your computer and start writing some Scala code!"
         icon: "fa fa-rocket"
@@ -60,38 +54,8 @@ sections:
         description: "In-depth documentation covering many of Scala's features."
         icon: "fa fa-database"
         link: /overviews/index.html
-      - title: "Style Guide"
-        description: "An in-depth guide on how to write idiomatic Scala code."
-        icon: "fa fa-bookmark"
-        link: /style/index.html
-      - title: "Cheatsheet"
-        description: "A handy cheatsheet covering the basics of Scala's syntax."
-        icon: "fa fa-list"
-        link: /cheatsheets/index.html
-      - title: "Scala FAQs"
-        description: "A list of frequently-asked questions about Scala language features and their answers."
-        icon: "fa fa-question-circle"
-        link: /tutorials/FAQ/index.html
       - title: "Language Spec"
         description: "Scala's formal language specification."
         icon: "fa fa-book"
         link: https://scala-lang.org/files/archive/spec/2.13/
-
-    more-resources:
-      - title: Online Courses, Exercises, & Blogs
-        url: /learn.html
-      - title: Books
-        url: /books.html
-
-  - title: "Scala Evolution"
-    links:
-      - title: "SIPs"
-        description: "The Scala Improvement Process. Language & compiler evolution."
-        icon: "fa fa-cogs"
-        link: /sips/index.html
-      - title: "SPP"
-        description: "The Scala Platform Process. Community-driven library evolution."
-        icon: "fa fa-users"
-        link: https://platform.scala-lang.org
-
 ---
