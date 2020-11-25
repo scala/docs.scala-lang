@@ -2,11 +2,11 @@
   url: "#"
   submenu:
     - title: Getting Started
-      url: "/getting-started/index.html"
+      url: "/scala3/getting-started/index.html"
     - title: Scala 3 Book
       url: "/overviews/overview/introduction.html"
     - title: Macro Tutorial
-      url: "https://lampepfl.github.io/scala3-macro-tutorial/"
+      url: "/overviews/scala3-macros/index.html"
 - title: Migrate
   url: "https://scalacenter.github.io/scala-3-migration-guide"
 - title: Reference
