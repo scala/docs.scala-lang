@@ -22,7 +22,7 @@ to functional programming. They are published either on [Coursera](https://www.c
     * [Parallel programming](https://www.coursera.org/learn/parprog1),
     * [Big Data Analysis with Scala and Spark](https://www.coursera.org/learn/scala-spark-big-data),
     * [Functional Programming in Scala Capstone](https://www.coursera.org/learn/scala-capstone),
- * [Programming Reactive Systems](https://www.edx.org/course/programming-reactive-systems).
+ * [Programming Reactive Systems](https://www.coursera.org/learn/scala-reactive) (also available on [edX](https://www.edx.org/course/programming-reactive-systems)).
 
 Note : On Coursera and edX, there is a paid version available. The only difference with the free version is that
 the paid version delivers a certificate of completion. Learn more about
