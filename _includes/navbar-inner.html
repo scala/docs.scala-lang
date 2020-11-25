@@ -4,25 +4,7 @@
   {% assign navdata = site.data.doc-nav-header %}
 {% endif %}
 
-<header id="site-header">
-  <div class="wrap">
-    <nav class="navigation" role="menu">
-      <a href="http://scala-lang.org" class="navigation-bdand">
-        <img src="{{ site.baseurl }}/resources/img/frontpage/scala-logo-white@2x.png" alt="">
-      </a>
-      <div class="navigation-panel-button">
-        <i class="fa fa-bars"></i>
-      </div>
-      <ul class="navigation-menu">
-        {% for navItem in site.data.nav-header %}
-            <li class="navigation-menu-item">
-              <a href="{% if navItem.url contains '://' %}{{navItem.url}}{% else %}{{site.baseurl}}{{navItem.url}}{% endif %}" {% if page.url contains navItem.url %}class="active"{% endif %}>{{navItem.title}}</a>
-            </li>
-        {% endfor %}
-      </ul>
-    </nav>
-  </div>
-</header>
+{% include site-header.html %}
 
 {% if page.scala3 %}
 <header id="doc-header" class="scala3">
@@ -32,10 +14,14 @@
   <div class="wrap" style="padding: 0px;">
     <nav class="doc-navigation" role="menu">
       {% assign docsRootTranslated = site[page.language] | where: 'partof', 'documentation' | first %}
-      <a href="{{ site.baseurl }}/{{ docsRootTranslated.language }}" class="navigation-bdand" >
+      <div class="navigation-bdand">
+      <a href="{{ site.baseurl }}/{{ docsRootTranslated.language }}">
         <img src="{{ site.baseurl }}/resources/img/documentation-logo@2x.png" alt="docs">
-        — Scala {% if page.scala3 %} 3 {% else %} 2 {% endif %}
       </a>
+      <span class="doc-language-version">
+        — Scala {% if page.scala3 %} 3 {% else %} 2 {% endif %}
+      </span>
+      </div>
       <div class="navigation-ellipsis">
         <i class="fa fa-ellipsis-v"></i>
       </div>

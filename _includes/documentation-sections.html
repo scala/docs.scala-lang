@@ -1,0 +1,28 @@
+<div class="documentation">
+  {% for section in include.sections %}
+    <div class="section">
+      <h2 class="frontpage">{{ section.title }}</h2>
+      {% for link in section.links %}
+      <a href="{% if link.link contains '://' %}{{link.link}}{% else %}{{site.baseurl}}{{link.link}}{% endif %}" class="doc-item">
+        <div class="doc-item-header">
+          <i class="{{link.icon}}"></i>
+          <h5>{{link.title}}</h5>
+        </div>
+        <div class="doc-item-main">
+          <p>{{link.description}}</p>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    <div class="more-resources">&nbsp;
+      {% if section.more-resources %}
+        <span class="heading">{{ page.more-resources-label }}: </span>
+        <ul>
+        {% for resource in section.more-resources %}
+          <li><a href="{{ site.baseurl }}{{ resource.url }}">{{ resource.title }}</a></li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
