@@ -9,7 +9,7 @@ discourse: true
 more-resources-label: More Resources
 sections:
 
-  - title: "Cutting Edge: Scala 3"
+  - title: "Cutting Edge: The Scala 3 Preview"
     links:
       - title: "Getting Started"
         description: "Install Scala 3 on your computer and start writing some Scala code!"
