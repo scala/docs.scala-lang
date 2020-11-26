@@ -6,7 +6,7 @@ partof: scala-tour
 num: 3
 language: es
 
-next-page: classes
+next-page: packages-and-imports
 previous-page: abstract-type-members
 ---
 

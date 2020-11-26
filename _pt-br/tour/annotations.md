@@ -4,7 +4,7 @@ title: Anotações
 partof: scala-tour
 
 num: 31
-next-page: default-parameter-values
+next-page: packages-and-imports
 previous-page: automatic-closures
 language: pt-br
 ---

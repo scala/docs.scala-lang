@@ -5,7 +5,7 @@ language: ba
 partof: scala-tour
 
 num: 32
-next-page: default-parameter-values
+next-page: packages-and-imports
 previous-page: by-name-parameters
 
 ---
