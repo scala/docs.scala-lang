@@ -13,7 +13,26 @@ previous-page: nested-functions
 
 方法可以定义多个参数列表，当使用较少的参数列表调用多参数列表的方法时，会产生一个新的函数，该函数接收剩余的参数列表作为其参数。这被称为[柯里化](https://zh.wikipedia.org/wiki/%E6%9F%AF%E9%87%8C%E5%8C%96)。
 
-下面是一个例子，在Scala集合 `trait TraversableOnce` 定义了 `foldLeft`
+下面是一个字符串拼接的例子：
+
+```tut
+def currying(s1: String): String => String = (s2: String) => s1.concat(s2)
+```
+
+从左到右，为了方便理解，我们可以把 `currying` 当成两个函数。第一个函数的返回值是一个函数 `(s2: String) => s1.concat(s2)`，第二个函数 `(s2: String) => s1.concat(s2)` 的返回值是 `String` 。我们可以这样使用它：
+
+```tut
+scala> def strcat(s1:String) = (s2:String) => s1.concat(s2)
+def strcat(s1: String): String => String
+
+scala> strcat("scala")("scala")
+val res2: String = scalascala
+
+scala>
+```
+
+
+另外一个例子是在Scala集合 `trait TraversableOnce` 定义了 `foldLeft`
 
 ```
 def foldLeft[B](z: B)(op: (B, A) => B): B
