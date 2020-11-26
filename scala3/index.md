@@ -18,7 +18,7 @@ sections:
       - title: "Scala 3 Book"
         description: "An online book introducing the main language features."
         icon: "fa fa-book"
-        link: /overviews/overview/introduction.html
+        link: /scala3/book/introduction.html
       - title: "Migration Guide"
         description: "A guide to help you migrate from Scala 2 to Scala 3."
         icon: "fa fa-suitcase"

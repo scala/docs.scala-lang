@@ -1,12 +1,7 @@
 ---
-scala3: true
 type: chapter
-layout: multipage-overview
 title: Introduction
 description: This page begins the overview documentation of the Scala 3 language.
-
-partof: tour
-overview-name: Tour
 
 next-page: a-taste-of-scala
 

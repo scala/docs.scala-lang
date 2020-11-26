@@ -1,13 +1,6 @@
 ---
-layout: multipage-overview
 type: section
-
 title: Scala 3 Macros
-
-partof: scala3-macros
-overview-name: Macros in Scala 3
-
-scala3: true
 num: 4
 
 previous-page: compiletime

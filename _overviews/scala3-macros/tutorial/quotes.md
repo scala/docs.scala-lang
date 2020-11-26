@@ -1,13 +1,6 @@
 ---
-layout: multipage-overview
 type: section
-
 title: Quoted Code
-
-partof: scala3-macros
-overview-name: Macros in Scala 3
-
-scala3: true
 num: 5
 
 previous-page: macros

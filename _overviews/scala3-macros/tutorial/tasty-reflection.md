@@ -1,13 +1,6 @@
 ---
-layout: multipage-overview
 type: section
-
 title: Tasty Reflection
-
-partof: scala3-macros
-overview-name: Macros in Scala 3
-
-scala3: true
 num: 6
 
 previous-page: quotes

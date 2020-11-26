@@ -12,7 +12,7 @@ guides:
   - title: Macros
     by: Nicolas Stucki
     icon: magic
-    url: "/overviews/scala3-macros"
+    url: "/scala3/guides/macros"
     description: "A detailed tutorial to cover all the features involved in writing macros in Scala 3."
     label-text: feature
 ---

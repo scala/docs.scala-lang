@@ -4,9 +4,9 @@
     - title: Getting Started
       url: "/scala3/getting-started/index.html"
     - title: Scala 3 Book
-      url: "/overviews/overview/introduction.html"
+      url: "/scala3/book/introduction.html"
     - title: Macro Tutorial
-      url: "/overviews/scala3-macros/index.html"
+      url: "/scala3/guides/macros/index.html"
 - title: Migrate
   url: "https://scalacenter.github.io/scala-3-migration-guide"
 - title: Reference

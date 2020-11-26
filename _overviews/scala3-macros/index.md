@@ -1,14 +1,7 @@
 ---
-layout: multipage-overview
 type: book
-
 title: Introduction
 description: A tutorial to cover all the features involved in writing macros in Scala 3.
-
-partof: scala3-macros
-overview-name: Macros in Scala 3
-
-scala3: true
 num: 0
 ---
 
