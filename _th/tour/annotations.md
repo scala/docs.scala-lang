@@ -7,6 +7,6 @@ num: 30
 
 language: th
 
-next-page: default-parameter-values
+next-page: packages-and-imports
 previous-page: by-name-parameters
 ---
