@@ -32,7 +32,7 @@ case class Cat(name: String) extends Animal
 case class Dog(name: String) extends Animal
 ```
 
-Both `Cat` and `Dog` are subtypes of `Animal`. The Scala standard library has a generic immutable `sealed abstract class List[+A]` class, where the type parameter `A` is covariant. This means that a `List[Cat]` is a `List[Animal]` and a `List[Dog]` is also a `List[Animal]`. Intuitively, it makes sense that a list of cats and a list of dogs are each lists of animals, and you should be able to substitute either of them for a `List[Animal]`.
+Both `Cat` and `Dog` are subtypes of `Animal`. The Scala standard library has a generic immutable `sealed abstract class List[+A]` class, where the type parameter `A` is covariant. This means that a `List[Cat]` is a `List[Animal]` and a `List[Dog]` is also a `List[Animal]`. Intuitively, it makes sense that a list of cats and a list of dogs are each lists of animals, and you should be able to use either of them for in place of `List[Animal]`.
 
 In the following example, the method `printAnimalNames` will accept a list of animals as an argument and print their names each on a new line. If `List[A]` were not covariant, the last two method calls would not compile, which would severely limit the usefulness of the `printAnimalNames` method.
 
@@ -78,7 +78,7 @@ class CatPrinter extends Printer[Cat] {
 }
 ```
 
-If a `Printer[Cat]` knows how to print any `Cat` to the console, and a `Printer[Animal]` knows how to print any `Animal` to the console, it makes sense that a `Printer[Animal]` would also know how to print any `Cat`. The inverse relationship does not apply, because a `Printer[Cat]` does not know how to print any `Animal` to the console. Therefore, we should be able to substitute a `Printer[Cat]` for a `Printer[Animal]`, if we wish, and making `Printer[A]` contravariant allows us to do exactly that.
+If a `Printer[Cat]` knows how to print any `Cat` to the console, and a `Printer[Animal]` knows how to print any `Animal` to the console, it makes sense that a `Printer[Animal]` would also know how to print any `Cat`. The inverse relationship does not apply, because a `Printer[Cat]` does not know how to print any `Animal` to the console. Therefore, we should be able to use a `Printer[Animal]` in place of `Printer[Cat]`, if we wish, and making `Printer[A]` contravariant allows us to do exactly that.
 
 ```tut
 def printMyCat(printer: Printer[Cat], cat: Cat): Unit =
@@ -134,7 +134,7 @@ abstract class SmallAnimal extends Animal
 case class Mouse(name: String) extends SmallAnimal
 ```
 
-Suppose we're working with functions that accept types of animals, and return the types of food they eat. If we would like a `Cat => SmallAnimal` (because cats eat small animals), but are given a `Animal => Mouse` instead, our program will still work. Intuitively an `Animal => Mouse` will still accept a `Cat` as an argument, because a `Cat` is an `Animal`, and it returns a `Mouse`, which is also a `SmallAnimal`. Since we can safely and invisibly substitute the former by the latter, we can say `Animal => Mouse` is a subtype of `Cat => SmallAnimal`.
+Suppose we're working with functions that accept types of animals, and return the types of food they eat. If we would like a `Cat => SmallAnimal` (because cats eat small animals), but are given a `Animal => Mouse` instead, our program will still work. Intuitively an `Animal => Mouse` will still accept a `Cat` as an argument, because a `Cat` is an `Animal`, and it returns a `Mouse`, which is also a `SmallAnimal`. Since we can safely and invisibly substitute the former with the latter, we can say `Animal => Mouse` is a subtype of `Cat => SmallAnimal`.
 
 ### Comparison With Other Languages
 
