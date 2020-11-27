@@ -29,7 +29,7 @@ Les classes peuvent être étendues à travers des sous-classes et grâce à un 
 
 ## Scala est fonctionnel ##
 Scala est également un langage fonctionnel dans le sen où [toute fonction est une valeur](unified-types.html).
-Scala propose une [syntaxe légère](basics.html#functions) pour définir des fonctions anonymes, supporte des
+Scala propose une [syntaxe légère](basics.html) pour définir des fonctions anonymes, supporte des
 [fonctions de haut niveau](higher-order-functions.html), autorise les fonctions [imbriquées](nested-functions.html) et
 supporte le [currying](multiple-parameter-lists.html).
 Les [case class](case-classes.html) de Scala et leur système intégré de [reconnaissance de motifs](pattern-matching.html)
