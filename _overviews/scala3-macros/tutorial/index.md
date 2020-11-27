@@ -29,4 +29,4 @@ abstractions and offers more fine-grained control.
 
 > 🚧 We are still in the process of writing the tutorial. You can [help us improve it][contributing] 🚧
 
-[contributing]: https://github.com/scala/docs.scala-lang/blob/master/_overviews/scala3-macros/tutorial/index.md
+[contributing]: /scala3/contribute-to-docs.html
