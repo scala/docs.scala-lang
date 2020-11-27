@@ -2,8 +2,6 @@
 layout: inner-page-parent
 title: Guides on Scala 3
 
-scala3: true
-
 guides:
   - title: "Migration from Scala 2 to Scala 3"
     icon: suitcase

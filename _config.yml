@@ -110,6 +110,11 @@ defaults:
       overview-name: "Macros in Scala 3"
       layout: multipage-overview
       permalink: "/scala3/guides/macros/:title.html"
+  -
+    scope:
+      path: "scala3"
+    values:
+      scala3: true
 
 
 highlighter: rouge

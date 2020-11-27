@@ -1,5 +1,4 @@
 ---
-scala3: true
 layout: inner-page-documentation
 title: Documentation for Scala 3
 namespace: root
