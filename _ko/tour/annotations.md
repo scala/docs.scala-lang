@@ -6,7 +6,7 @@ partof: scala-tour
 num: 31
 language: ko
 
-next-page: default-parameter-values
+next-page: packages-and-imports
 previous-page: automatic-closures
 ---
 
