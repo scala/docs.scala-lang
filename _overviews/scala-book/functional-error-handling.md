@@ -55,7 +55,7 @@ These approaches were discussed in the “No Null Values” lesson, so we won’
 Another trio of classes named `Try`, `Success`, and `Failure` work just like `Option`, `Some`, and `None`, but with two nice features:
 
 - `Try` makes it very simple to catch exceptions
-- `Failure` contains the exception message
+- `Failure` contains the exception
 
 Here’s the `toInt` method re-written to use these classes. First, import the classes into the current scope:
 
@@ -93,7 +93,7 @@ scala> val b = toInt("boo")
 b: scala.util.Try[Int] = Failure(java.lang.NumberFormatException: For input string: "boo")
 ```
 
-As that output shows, the `Failure` that’s returned by `toInt` contains the reason for the failure, i.e., the exception message.
+As that output shows, the `Failure` that’s returned by `toInt` contains the reason for the failure, i.e., the exception.
 
 There are quite a few ways to work with the results of a `Try` — including the ability to “recover” from the failure — but common approaches still involve using `match` and `for` expressions:
 
