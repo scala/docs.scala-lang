@@ -1,6 +1,9 @@
 ---
 title: Variance
 description: This section introduces and demonstrates variance in Scala 3.
+num: 21
+previous-page: types-type-classes
+next-page: types-opaque-types
 ---
 
 *Variance* is a way to express how a parameterized type on a class, trait, or enum is allowed to vary. Variance is a complicated topic, but the five-minute explanation goes as follows.

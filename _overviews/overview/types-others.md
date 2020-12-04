@@ -1,6 +1,9 @@
 ---
 title: Other Types
 description: This section mentions other advanced types in Scala 3.
+num: 25
+previous-page: types-dependent-function
+next-page: ca-contextual-abstractions-intro
 ---
 
 

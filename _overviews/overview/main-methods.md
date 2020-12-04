@@ -1,6 +1,9 @@
 ---
 title: Main Methods
 description: This page describes how 'main' methods and the '@main' annotation work in Scala 3.
+num: 45
+previous-page: higher-order-functions
+next-page: 
 ---
 
 

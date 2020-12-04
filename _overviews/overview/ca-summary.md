@@ -1,6 +1,9 @@
 ---
 title: Contextual Abstractions Summary
 description: This page provides a summary of the Contextual Abstractions lessons.
+num: 34
+previous-page: ca-implicit-conversions
+next-page: concurrency
 ---
 
 This chapter provides an introduction to most Contextual Abstractions topics, including:

@@ -1,6 +1,9 @@
 ---
 title: Why Scala 3? (i.e., The Benefits of Scala 3)
 description: This page describes the benefits of the Scala 3 programming language.
+num: 3
+previous-page: scala-features
+next-page: a-taste-of-scala
 ---
 
 There are many benefits to using Scala, and Scala 3 in particular. It might be hard to list every benefit of Scala, but a Top Ten list looks like this:

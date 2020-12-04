@@ -1,6 +1,9 @@
 ---
 title: Common Collections Classes and Methods
 description: This page demonstrates the common collections classes and their methods in Scala 3.
+num: 12
+previous-page: packaging-imports
+next-page: functional-programming
 ---
 
 <!--

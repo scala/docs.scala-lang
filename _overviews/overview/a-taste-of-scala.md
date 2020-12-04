@@ -1,6 +1,9 @@
 ---
 title: A Taste of Scala
 description: This page provides a high-level overview of the main features of the Scala 3 programming language.
+num: 4
+previous-page: why-scala-3
+next-page: first-look-at-types
 ---
 
 <!--

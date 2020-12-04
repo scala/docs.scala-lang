@@ -1,6 +1,9 @@
 ---
 title: Type Classes
 description: This section introduces type classes in Scala 3.
+num: 20
+previous-page: types-adts-gadts
+next-page: types-variance
 ---
 
 A _type class_ is an abstract, parameterized type that lets you add new behavior to any closed data type without using sub-typing. This is useful in multiple use-cases, for example:

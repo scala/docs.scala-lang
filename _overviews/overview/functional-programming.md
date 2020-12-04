@@ -1,6 +1,9 @@
 ---
 title: Functional Programming with Scala 3
 description: This section provides an introduction to functional programming in Scala 3.
+num: 13
+previous-page: collections-classes-methods
+next-page: types-introduction
 ---
 
 

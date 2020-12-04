@@ -1,6 +1,9 @@
 ---
 title: Scala for Python Developers
 description: This page is for Python developers who are interested in learning about Scala 3.
+num: 41
+previous-page: scala-for-javascript-devs
+next-page: anonymous-functions
 ---
 
 <style>

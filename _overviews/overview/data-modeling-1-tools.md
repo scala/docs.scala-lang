@@ -1,6 +1,9 @@
 ---
 title: OOP and FP Data Modeling with Scala 3
 description: This chapter provides an introduction to the available data modeling tools in Scala 3, including classes, traits, enums, and more.
+num: 7
+previous-page: control-structures
+next-page: data-modeling-2-oop
 ---
 
 <!--

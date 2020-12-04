@@ -1,6 +1,9 @@
 ---
 title: Scala Tools
 description: This chapter looks at two commonly-used Scala tools, sbt and ScalaTest.
+num: 36
+previous-page: concurrency
+next-page: interacting-with-java
 ---
 
 <!-- TODO: cover migration tools here? -->

@@ -1,6 +1,9 @@
 ---
 title: Introduction
 description: This page begins the overview documentation of the Scala 3 language.
+num: 1
+previous-page: 
+next-page: scala-features
 ---
 
 Welcome to the _Overview_ documentation for Scala 3. The goal of this documentation is to provide an informal introduction to the Scala language. It touches on all Scala topics, but as its name implies, generally just provides an overview of each feature. If at any time while you’re reading the Overview and you want more information on a specific feature, you’ll find links to our _Reference_ documentation, which covers all of the language features in detail.

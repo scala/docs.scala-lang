@@ -1,6 +1,9 @@
 ---
 title: Types and the Type System
 description: This chapter provides an introduction to Scala 3 types and the type system.
+num: 14
+previous-page: functional-programming
+next-page: types-inferred
 ---
 
 
