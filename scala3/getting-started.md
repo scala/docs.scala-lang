@@ -42,41 +42,6 @@ Coursier is an “artifact-fetching” tool written in Scala. It’s designed to
 
 The <a href="https://get-coursier.io/docs/cli-installation" target="_blank">Coursier installation page</a> shows how to install Coursier and its `cs` command on macOS, Windows, and Linux systems. See that page for how to install Coursier, and then come back to this page.
 
-<!--
-  TODO: This code is used on the Scala 2 Getting Started page.
-        I can’t test it on all of these systems, but if it works
-        it can still be used, instead of sending users to the
-        Coursier page and having them come back here.
--->
-<!-- Hidden elements whose content are used to provide OS-specific download instructions.
- -- This is handled in `resources/js/functions.js`.
- -->
-<!--
-<div style="display:none" id="stepOne-linux">
-       <code class="hljs">$ curl -Lo cs https://git.io/coursier-cli-linux && chmod +x cs && ./cs setup </code> <br>
-</div>
-
-<div style="display:none" id="stepOne-unix">
-    <p>Follow <a href="https://get-coursier.io/docs/cli-overview.html#install-native-launcher" target="_blank">the instructions to install the <code>cs</code> launcher</a> then run:</p>
-    <p><code>$ ./cs setup</code></p>
-</div>
-
-<div style="display:none" id="stepOne-osx">
-    <div class="highlight">
-        <code class="hljs">$ brew install coursier/formulas/coursier && cs setup </code> <br>
-    </div>
-    <p>Alternatively, if you don't use Homebrew</p>
-    <div class="highlight">
-        <code class="hljs">$ curl -Lo cs https://git.io/coursier-cli-macos && chmod +x cs &&  (xattr -d com.apple.quarantine cs || true) && ./cs  setup </code> <br>
-    </div>
-</div>
-
-<div style="display:none" id="stepOne-windows">
-    <p>Download and execute <a href="https://git.io/coursier-cli-windows-exe">the Scala installer for Windows</a> based on coursier</p>
-</div>
--->
-
-
 ### Run the Coursier setup command
 
 <!-- TODO: need to be more clear about what JDK is installed -->
