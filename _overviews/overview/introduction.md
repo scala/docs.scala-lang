@@ -15,8 +15,9 @@ Our hope in these pages is to demonstrate that Scala is a beautiful, expressive 
 
 The Overview begins with a whirlwind tour of many of Scala’s features in the “A Taste of Scala” section. After that tour, the sections that follow it provide more details on those language features.
 
-
-<!-- We should have a link structure on the whole tour here -->
+{% comment %}
+We should have a link structure on the whole tour here
+{% endcomment %}
 
 > We are still in the process of writing the book. You can [help us improve it][contributing]
 
