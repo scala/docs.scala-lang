@@ -1,6 +1,9 @@
 ---
 title: Anonymous Functions (and Function Variables)
 description: This page shows how to use anonymous functions in Scala, including examples with the List class 'map' and 'filter' functions.
+num: 42
+previous-page: scala-for-python-devs
+next-page: eta-expansion
 ---
 
 

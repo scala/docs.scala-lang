@@ -2,10 +2,9 @@
 type: chapter
 title: A Taste of Scala
 description: This page provides a high-level overview of the main features of the Scala 3 programming language.
-
-previous-page: introduction
-
-num: 2
+num: 4
+previous-page: why-scala-3
+next-page: first-look-at-types
 ---
 
 <!--
@@ -809,7 +808,7 @@ Because an `object` is a Singleton, its methods can be accessed like `static` me
 
 ```scala
 object StringUtils:
-  def isNullOrEmpty(s: String): Boolean = 
+  def isNullOrEmpty(s: String): Boolean =
     if (s==null || s.trim.equals("")) true else false
   def leftTrim(s: String): String = s.replaceAll("^\\s+", "")
   def rightTrim(s: String): String = s.replaceAll("\\s+$", "")
@@ -836,7 +835,7 @@ class Circle(radius: Double):
   def area: Double = calculateArea(radius)
 
 object Circle:
-  private def calculateArea(radius: Double): Double = 
+  private def calculateArea(radius: Double): Double =
     Pi * pow(radius, 2.0)
 
 val circle1 = Circle(5.0)
@@ -1049,4 +1048,3 @@ For more details, see the Contextual Abstractions section in this Overview, and 
 ## Even more
 
 Scala has even more features that weren’t covered in this whirlwind tour. See the remainder of this Overview and the Reference documentation for many more details.
-

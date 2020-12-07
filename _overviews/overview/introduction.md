@@ -2,10 +2,9 @@
 type: chapter
 title: Introduction
 description: This page begins the overview documentation of the Scala 3 language.
-
-next-page: a-taste-of-scala
-
 num: 1
+previous-page:
+next-page: scala-features
 ---
 
 ## Welcome to the Scala 3 Overview
@@ -19,6 +18,6 @@ The Overview begins with a whirlwind tour of many of Scalaâ€™s features in the â
 
 <!-- We should have a link structure on the whole tour here -->
 
-> We are still in the process of writing the book. You can [help us improve it][contributing] 
+> We are still in the process of writing the book. You can [help us improve it][contributing]
 
 [contributing]: /scala3/contribute-to-docs.html

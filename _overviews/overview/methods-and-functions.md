@@ -1,6 +1,9 @@
 ---
 title: Scala 3 Methods
 description: This section introduces methods and functions in Scala 3.
+num: 10
+previous-page: data-modeling-3-fp
+next-page: packaging-imports
 ---
 
 

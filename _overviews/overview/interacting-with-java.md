@@ -1,6 +1,9 @@
 ---
 title: Interacting with Java
 description: This page demonstrates how Scala code can interact with Java, and how Java code can interact with Scala code.
+num: 37
+previous-page: scala-tools
+next-page: scala-3-metaprogramming
 ---
 
 

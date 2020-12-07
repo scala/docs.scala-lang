@@ -1,6 +1,9 @@
 ---
 title: Concurrency with Scala Futures
 description: This page discusses how Scala concurrency works, with an emphasis on Scala Futures.
+num: 35
+previous-page: ca-summary
+next-page: scala-tools
 ---
 
 
