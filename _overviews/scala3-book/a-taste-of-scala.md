@@ -17,7 +17,7 @@ next-page: first-look-at-types
 -->
 
 
-This “Taste of Scala” section provides a whirlwind tour of the main features of the Scala 3 programming language. After the initial tour in this section, the rest of the Overview provides a few more details on these features, and the Reference documentation provides _many_ more details.
+This “Taste of Scala” section provides a whirlwind tour of the main features of the Scala 3 programming language. After the initial tour in this section, the rest of the Overview provides a few more details on these features, and the [Reference documentation]({{ site.scala3ref }}/overview.html) provides _many_ more details.
 
 >Throughout this Overview you’ll be able to test many of the examples directly on this page. In addition to that, you can also test anything you’d like on [ScalaFiddle.io](https://scalafiddle.io), [Scastie](https://scastie.scala-lang.org), or in the Scala REPL, which is demonstrated shortly.
 

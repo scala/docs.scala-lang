@@ -120,6 +120,7 @@ defaults:
 highlighter: rouge
 permalink: /:categories/:title.html:output_ext
 baseurl:
+scala3ref: "https://dotty.epfl.ch/docs/reference"
 exclude: ["vendor"]
 plugins:
   - jekyll-redirect-from
