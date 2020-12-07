@@ -92,7 +92,7 @@ defaults:
       overview-name: "Tour of Scala"
   -
     scope:
-      path: "_overviews/overview"
+      path: "_overviews/scala3-book"
     values:
       scala3: true
       num: 99 # to list them in the TOC, should be overwritten individually
