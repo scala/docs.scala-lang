@@ -29,7 +29,6 @@ To start experimenting with Scala 3 right away, use <a href="https://scastie.sca
 - The Java 8 or Java 11 JDK
 - sbt 1.1.4 or newer
 
-<!-- TODO: link to that section -->
 Once you have those two tools installed, you can jump right to the [“Creating a ‘Hello, world’ project”](#hello-world-example) section of this page.
 
 
@@ -37,34 +36,7 @@ Once you have those two tools installed, you can jump right to the [“Creating 
 
 If you don’t already have Java and sbt installed on your system, and you’d like a simple way to install them — along with other popular tools in the Scala ecosystem — a great approach is to use a tool named [Coursier](https://get-coursier.io/docs/cli-overview).
 
-Coursier is an “artifact-fetching” tool written in Scala. It’s designed to fetch dependencies and work in parallel, so the artifacts you need are downloaded as rapidly as possible.
-
-
-### What Coursier installs
-
-Once Coursier is installed, you can run this one command to set up everything you need:
-
-```sh
-$ cs setup
-```
-
-<!-- TODO: be more clear about “if it’s not already installed” -->
-That command installs all of the following software, if it’s not already installed:
-
-- A JDK
-- The [sbt](https://www.scala-sbt.org) and [mill](https://www.lihaoyi.com/mill) build tools
-- [Ammonite](https://ammonite.io), an enhanced REPL
-- [scalafmt](https://scalameta.org/scalafmt), the Scala formatter
-- The [Coursier CLI](https://get-coursier.io/docs/cli-overview), to install further Scala-based applications
-- The `scala` and `scalac` command-line tools
-<!-- TODO: be more clear about what JDK is installed -->
-
-Later, when you want to update your tools, use this command to update the installation:
-
-```sh
-cs update
-```
-
+Coursier is an “artifact-fetching” tool written in Scala. It’s designed to automatically fetch dependencies for you and works in parallel, so the artifacts you need are downloaded as rapidly as possible.
 
 ### Installing Coursier
 
@@ -128,6 +100,24 @@ The output of those commands should show that you now have Java 11 and sbt 1.4.4
 <!-- TODO: verify that it installs Java 11 -->
 
 
+### What Coursier installs
+
+<!-- TODO: be more clear about “if it’s not already installed” -->
+That command installs all of the following software, if it’s not already installed:
+
+- A JDK
+- The [sbt](https://www.scala-sbt.org) and [mill](https://www.lihaoyi.com/mill) build tools
+- [Ammonite](https://ammonite.io), an enhanced REPL
+- [scalafmt](https://scalameta.org/scalafmt), the Scala formatter
+- The [Coursier CLI](https://get-coursier.io/docs/cli-overview), to install further Scala-based applications
+- The `scala` and `scalac` command-line tools
+<!-- TODO: be more clear about what JDK is installed -->
+
+Later, when you want to update your tools, use this command to update the installation:
+
+```sh
+cs update
+```
 
 ## <a name="hello-world-example"></a>Create a “Hello, world” example with sbt
 
@@ -250,7 +240,7 @@ Furthermore, when you first create an sbt directory structure to support Scala a
 
 ### More sbt information
 
-While these commands show how to *manually* create an sbt project, you can use other commands to automate this initial setup process. Those commands are demonstrated in the [Scala Tools chapter](scala-tools.md).
+While these commands show how to *manually* create an sbt project, you can use other commands to automate this initial setup process. Those commands are demonstrated in the [Scala Tools chapter](/scala3/book/scala-tools.html) of the [Scala 3 Book](/scala3/book/introduction.html).
 
 <!-- TODO: we could show how to use `sbt new` here -->
 
@@ -262,7 +252,7 @@ Now that you’ve created a first “Hello, world” example with Scala 3, you�
 
 <!-- TODO: it would be nice to have a slightly larger application to go to that shows more about sbt, testing, and how a project is organized. like a Pizza Store application, or something more useful. -->
 
-- [The Scala Book](TODO), which provides a set of short lessons introducing Scala’s main features
-- TODO: more resources here?
+- [The Scala 3 Book](/scala3/book/introduction.html), which provides a set of short lessons introducing Scala’s main features
+- [The migration guide](https://scalacenter.github.io/scala-3-migration-guide/) helps you to migrate your existing Scala 2 code base to Scala 3.
 
 When you want to connect with other Scala users, there are several mailing lists and real-time chat rooms available. Check out our [Scala community page](https://scala-lang.org/community/) for a list of these resources, and for where to reach out for help.
