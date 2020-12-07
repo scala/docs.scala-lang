@@ -26,8 +26,8 @@ To start experimenting with Scala 3 right away, use <a href="https://scastie.sca
 
 [sbt](https://www.scala-sbt.org) is a commonly-used Scala build tool. To use it to create a Scala 3 project on your computer, you just need to install:
 
-- The Java 8 or Java 11 JDK
-- sbt 1.1.4 or newer
+- The Java 8 or newer
+- sbt 1.4 or newer
 
 Once you have those two tools installed, you can jump right to the [“Creating a ‘Hello, world’ project”](#hello-world-example) section of this page.
 
