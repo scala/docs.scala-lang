@@ -7,7 +7,7 @@ next-page: ca-contextual-abstractions-intro
 ---
 
 
-Scala has several other advanced types that are not shown in this Overview, including:
+Scala has several other advanced types that are not shown in this book, including:
 
 - Type lambdas
 - Match types
@@ -19,8 +19,9 @@ Scala has several other advanced types that are not shown in this Overview, incl
 - Abstract type members and path-dependent types
 - Dependent function types
 
-For more details on these types, see the Reference documentation.
+For more details on these types, see the [Reference documentation][reference].
 
 
 
 
+[reference]: {{ site.scala3ref }}/overview.html

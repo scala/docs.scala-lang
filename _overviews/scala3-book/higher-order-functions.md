@@ -14,7 +14,7 @@ As an important point, while we use the common industry term “higher-order fun
 
 ### From consumer to creator
 
-In the examples so far in this Overview, you’ve seen how to be a *consumer* of methods that take other functions as input parameters, such as using higher-order functions like `map` and `filter`. In this chapter you’ll see how to be a *creator* of higher-order functions, including:
+So far, in the examples of this book you’ve seen how to be a *consumer* of methods that take other functions as input parameters, such as using higher-order functions like `map` and `filter`. In this chapter you’ll see how to be a *creator* of higher-order functions, including:
 
 - How to write methods that take functions as input parameters
 - How to return a function from a method
@@ -30,7 +30,7 @@ As a beneficial side effect of this chapter, once you’re comfortable with this
 
 ## Recap: Being a consumer of higher-order functions
 
-As a quick recap, in this Overview you’ve already seen examples of how to use existing higher-order functions in the Scala collections classes, including `map` and `filter`:
+As a quick recap, in this book you’ve already seen examples of how to use existing higher-order functions in the Scala collections classes, including `map` and `filter`:
 
 ```tut
 List(1,2,3).map(_ * 10)       // List(10,20,30)

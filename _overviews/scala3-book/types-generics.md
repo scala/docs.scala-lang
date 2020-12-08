@@ -33,8 +33,9 @@ println(stack.pop)  // prints 1
 >See the [variance section](types-variance.md) for details on how to express variance with generic types.
 
 
-<!--
-This subsection is good, but maybe too detailed for an Overview.
+
+{% comment %}
+This subsection is good, but maybe too detailed for an overview.
 
 The instance `stack` can only take integers. However, if the type argument had subtypes, those could be passed in:
 
@@ -54,7 +55,7 @@ stack.push(banana)
 Class `Apple` and `Banana` both extend `Fruit` so you can push instances `apple` and `banana` onto the stack of `Fruit`.
 
 _Note: subtyping of generic types is *invariant*. This means that if we have a stack of characters of type `Stack[Char]` then it cannot be used as an integer stack of type `Stack[Int]`. This would be unsound because it would enable us to enter true integers into the character stack. To conclude, `Stack[A]` is only a subtype of `Stack[B]` if and only if `B = A`. Since this can be quite restrictive, Scala offers a [type parameter annotation mechanism](variances.html) to control the subtyping behavior of generic types._
--->
+{% endcomment %}
 
 
 

@@ -42,8 +42,10 @@ given int2Integer as Conversion[Int, java.lang.Integer] =
   java.lang.Integer.valueOf(_)
 ```
 
-<!-- TODO: this may be too much detail for an Overview -->
-<!--
+
+{% comment %}
+NOTE: I thought this was too much detail for an overview, but I left here in case anyone else thinks differently.
+
 ### More details
 
 An implicit conversion is applied automatically by the compiler in three situations:
@@ -53,7 +55,7 @@ An implicit conversion is applied automatically by the compiler in three situati
 - In an application `e.m(args)` with `e` of type `B`, if `B` does define some member(s) named `m`, but none of these members can be applied to the arguments args
 
 In the first case, the compiler looks for a given _scala.Conversion_ instance that maps an argument of type `B` to type `A`. In the second and third case, it looks for a given _scala.Conversion_ instance that maps an argument of type `B` to a type that defines a member `m` which can be applied to `args` if present. If such an instance `C` is found, the expression e is replaced by `C.apply(e)`.
--->
+{% endcomment %}
 
 
 

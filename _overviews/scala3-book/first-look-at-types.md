@@ -164,7 +164,7 @@ println(s"x.abs = ${x.abs}")   // prints "x.abs = 1"
 
 #### Other interpolators
 
-The `s` that you place before the string is just one possible interpolator. If you use an `f` instead of an `s`, you can use `printf`-style formatting in the string. Furthermore, because `s` and `f` are really just methods, you can write your own interpolators, such as creating a `sql` interpolator for use in a database library. For more details, see the Strings section in this Overview and in the Reference documentation.
+The `s` that you place before the string is just one possible interpolator. If you use an `f` instead of an `s`, you can use `printf`-style formatting in the string. Furthermore, because `s` and `f` are really just methods, you can write your own interpolators, such as creating a `sql` interpolator for use in a database library. For more details, see this [String Interpolation page][interpolation].
 
 
 ### Multiline strings
@@ -235,4 +235,9 @@ You can also cast a reference type to a subtype. This will be covered later in t
 
 `Nothing` is a subtype of all types, also called the bottom type. There is no value that has the type `Nothing`. A common use is to signal non-termination, such as a thrown exception, program exit, or an infinite loop — i.e., it is the type of an expression which does not evaluate to a value, or a method that does not return normally.
 
-`Null` is a subtype of all reference types (i.e. any subtype of `AnyRef`). It has a single value identified by the keyword literal `null`. `Null` is provided mostly for interoperability with other JVM languages and should almost never be used in Scala code. Alternatives to `null` are discussed in the TODO section of the Overview and the [API documentation](https://dotty.epfl.ch/-scala%203/-a-p-i/scala/-option.html).
+`Null` is a subtype of all reference types (i.e. any subtype of `AnyRef`). It has a single value identified by the keyword literal `null`. `Null` is provided mostly for interoperability with other JVM languages and should almost never be used in Scala code. Alternatives to `null` are discussed in the [Functional Programming chapter][fp] of this book, and the [API documentation](https://dotty.epfl.ch/-scala%203/-a-p-i/scala/-option.html).
+
+
+[reference]: {{ site.scala3ref }}/overview.html
+[interpolation]: {% link _overviews/core/string-interpolation.md %}
+[fp]: {% link _overviews/scala3-book/functional-programming.md %}

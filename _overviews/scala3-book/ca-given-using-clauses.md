@@ -133,10 +133,8 @@ With that code in place, the final end-user code is written like this:
   println(max(Nil, List(1, 2, 3)))
 ```
 
-<!-- TODO: mention "type class" here? -->
-
-Givens have other uses that are explained in this Overview, and in the Reference documentation.
+Givens have other uses that are explained in other sections of this book, and in the [Reference documentation][reference].
 
 
 
-
+[reference]: {{ site.scala3ref }}/overview.html

@@ -191,7 +191,7 @@ A second key point is that every real-world application interacts with the outsi
 
 While every programming language ever created probably lets you write pure functions, a second important Scala FP feature is that *you can create functions as values*, just like you create `String` and `Int` values.
 
-This feature has many benefits, the most common of which are (a) you can define methods to accept function parameters, and (b) you can pass functions as parameters into methods. You’ve seen this in multiple places in this Overview, whenever methods like `map` and `filter` are demonstrated:
+This feature has many benefits, the most common of which are (a) you can define methods to accept function parameters, and (b) you can pass functions as parameters into methods. You’ve seen this in multiple places in this book, whenever methods like `map` and `filter` are demonstrated:
 
 ```tut
 val nums = (1 to 10).toList
@@ -249,7 +249,7 @@ double(2)   // 4
 
 In most scenarios it doesn’t matter if `double` is a function or a method; Scala lets you treat them the same way. Behind the scenes, the Scala technology that lets you treat methods just like functions is known as [Eta Expansion](TODO:LINK).
 
-This ability to seamlessly pass functions around as variables is a distinguishing feature of functional programming languages like Scala. And as you’ve seen in the `map` and `filter` examples throughout this Overview, the ability to pass functions into other functions helps you create code that is concise and still readable — *expressive*.
+This ability to seamlessly pass functions around as variables is a distinguishing feature of functional programming languages like Scala. And as you’ve seen in the `map` and `filter` examples throughout this book, the ability to pass functions into other functions helps you create code that is concise and still readable — *expressive*.
 
 If you’re not comfortable with the process of passing functions as parameters into other functions, here are a few more examples you can experiment with:
 
@@ -357,7 +357,7 @@ In this example, if `x` can be converted to an `Int`, the first `case` statement
 
 ### Using a `for` expression
 
-Another common solution is to use a `for` expression — i.e., the `for`/`yield` combination that was shown earlier in this Overview. For instance, imagine that you want to convert three strings to integer values, and then add them together. This is how you do that with a `for` expression and `makeInt`:
+Another common solution is to use a `for` expression — i.e., the `for`/`yield` combination that was shown earlier in this book. For instance, imagine that you want to convert three strings to integer values, and then add them together. This is how you do that with a `for` expression and `makeInt`:
 
 ```scala
 val y = for
@@ -406,8 +406,8 @@ Mental models can often help us understand new situations, so if you’re not fa
 If you prefer to think of the `Option` classes as being like a box, `None` is like an empty box. It could have had something in it, but it doesn’t.
 
 
-<!--
-NOTE: I commented-out this subsection because it continues to explain Some and None, and may be too much for an Overview.
+{% comment %}
+NOTE: I commented-out this subsection because it continues to explain Some and None, and I thought it was probably too much for this book.
 
 ### Using `foreach` with `Option`
 
@@ -463,7 +463,8 @@ makeInt(x) match
 ```
 
 >There are several other ways to handle `Option` values. See the Reference documentation for more details.
--->
+{% endcomment %}
+
 
 
 ### Using `Option` to replace `null` values
@@ -559,8 +560,8 @@ This chapter provides a high-level introduction to functional programming in Sca
 - Functions are values
 - Functional error handling
 
-As mentioned, functional programming is a big topic, so all we can do in this Overview is to touch on these introductory concepts. See the Reference documentation for more details.
+As mentioned, functional programming is a big topic, so all we can do in this book is to touch on these introductory concepts. See the [Reference documentation][reference] for more details.
 
 
 
-
+[reference]: {{ site.scala3ref }}/overview.html

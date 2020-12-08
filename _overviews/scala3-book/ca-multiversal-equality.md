@@ -185,7 +185,11 @@ Currently the `PrintedBook` book doesn’t have an `equals` method, so the secon
 
 
 ## Notes and details
-<!-- TODO: this may be too much detail for an Overview -->
+
+{% comment %}
+Is this section too much detail for an overview?
+{% endcomment %}
+
 
 Here are a few more notes and details about Multiversal Equality in Scala 3:
 

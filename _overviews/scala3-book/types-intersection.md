@@ -27,8 +27,11 @@ The members of an intersection type `A & B` are all the members of `A` and all t
 
 >Note that `&` is _commutative_: `A & B` is the same type as `B & A`.
 
-<!--
-This section is good, but maybe too much detail for an Overview.
+
+
+
+{% comment %}
+This section is good, but maybe too much detail for an overview.
 
 If a member appears in both `A` and `B`, its type in `A & B` is the intersection of its type in `A` and its type in `B`. For instance, assume the definitions:
 
@@ -52,6 +55,8 @@ class C extends A with B {
   def children: List[A & B] = ???
 }
 ```
--->
+{% endcomment %}
+
+
 
 

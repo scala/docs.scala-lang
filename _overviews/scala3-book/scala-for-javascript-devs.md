@@ -104,7 +104,7 @@ At a lower level, these are some of the differences you’ll see every day when 
   - *Given* instances let you define terms that the compiler can use to synthesize code for you  
   - Type safety and *multiversal equality* let you limit equality comparisons — at compile time — to only those comparisons that make sense  
 - Thanks to features like by-name parameters, infix notation, optional parentheses, extension methods, and higher-order functions, you can create your own “control structures” and DSLs  
-- Many other goodies that you can read about in the Overview documentation: case classes, companion classes and objects, macros, union and intersection types, toplevel definitions, numeric literals, multiple parameter lists, default values for parameters, named arguments, and more  
+- Many other goodies that you can read about throughout this book: case classes, companion classes and objects, macros, union and intersection types, toplevel definitions, numeric literals, multiple parameter lists, default values for parameters, named arguments, and more  
 
 
 

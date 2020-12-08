@@ -93,12 +93,13 @@ trait HasLegs[A]:
 
 ### A real-world example
 
-For a real-world example of how type classes are used in Scala 3, see the `Eql` discussion in the Multiversal Equality section.
-<!-- TODO: link -->
+For a real-world example of how type classes are used in Scala 3, see the `Eql` discussion in the [Multiversal Equality section][multiversal].
 
 
-<!-- TODO: this may be too much detail for an Overview -->
-<!--
+
+{% comment %}
+NOTE: I thought this was too much detail for an overview, but I left here in case anyone else thinks differently.
+
 ### Discussion
 
 The definition of a type class is expressed with a parameterized type with abstract members, such as a trait.
@@ -106,6 +107,8 @@ The definition of a type class is expressed with a parameterized type with abstr
 The main difference between (a) subtype polymorphism with inheritance and (b) ad-hoc polymorphism with type classes is how the definition of the type class is implemented, in relation to the type it acts upon. As shown, a type class is expressed through a `given` instance definition. With subtype polymorphism, the implementation is mixed into the parents of a class, and only a single term is required to perform a polymorphic operation.
 
 The type class solution takes more effort to set up, but is more extensible: Adding a new interface to a class requires changing the source code of that class. By contrast, instances for type classes can be defined anywhere.
--->
+{% endcomment %}
 
 
+
+[multiversal]: {% link _overviews/scala3-book/ca-multiversal-equality.md %}

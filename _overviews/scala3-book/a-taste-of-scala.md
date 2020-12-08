@@ -17,9 +17,9 @@ next-page: first-look-at-types
 -->
 
 
-This “Taste of Scala” section provides a whirlwind tour of the main features of the Scala 3 programming language. After the initial tour in this section, the rest of the Overview provides a few more details on these features, and the [Reference documentation][reference] provides _many_ more details.
+This “Taste of Scala” section provides a whirlwind tour of the main features of the Scala 3 programming language. After the initial tour in this chapter, the rest of the book provides more details on these features, and the [Reference documentation][reference] provides _many_ more details.
 
->Throughout this Overview you’ll be able to test many of the examples directly on this page. In addition to that, you can also test anything you’d like on [ScalaFiddle.io](https://scalafiddle.io), [Scastie](https://scastie.scala-lang.org), or in the Scala REPL, which is demonstrated shortly.
+>Throughout this book you’ll be able to test many of the examples directly on this page. In addition to that, you can also test anything you’d like on [ScalaFiddle.io](https://scalafiddle.io), [Scastie](https://scastie.scala-lang.org), or in the Scala REPL, which is demonstrated shortly.
 
 
 
@@ -262,7 +262,7 @@ println(s"x.abs = ${x.abs}")   // prints "x.abs = 1"
 
 #### Other interpolators
 
-The `s` that you place before the string is just one possible interpolator. If you use an `f` instead of an `s`, you can use `printf`-style formatting syntax in the string. Furthermore, because `s` and `f` are really just methods, you can write your own interpolators, such as creating a `sql` interpolator for use in a database library. For more details, see the [Strings section][first-look] in this Overview.
+The `s` that you place before the string is just one possible interpolator. If you use an `f` instead of an `s`, you can use `printf`-style formatting syntax in the string. Furthermore, because `s` and `f` are really just methods, you can write your own interpolators, such as creating a `sql` interpolator for use in a database library.
 
 
 ### Multiline strings
@@ -275,8 +275,7 @@ val quote = """The essence of Scala:
                programming in a typed setting."""
 ```
 
-The [“First Look at Types” section][first-look] provides more details on how to format multiline strings.
-
+>For more details on string interpolators and multiline strings, see the [“First Look at Types” chapter][first-look].
 
 
 ## Control structures
@@ -311,7 +310,7 @@ Note that this really is an _expression_ — not a _statement_. This means that 
 val x = if a < b then a else b
 ```
 
-As you’ll see throughout this Overview, _all_ Scala control structures can be used as expressions.
+As you’ll see throughout this book, _all_ Scala control structures can be used as expressions.
 
 >An expression returns a result, while a statement does not. Statements are typically used for their side-effects, such as using `println` to print to the console.
 
@@ -401,7 +400,7 @@ yield
 // result: List[Int] = List(5, 6, 6)
 ```
 
-`for` loops and expressions are covered in more detail in the [Control Structures sections][control] of this Overview and in the [Reference documentation]({{ site.scala3ref }}/other-new-features/control-syntax.html).
+`for` loops and expressions are covered in more detail in the [Control Structures sections][control] of this book, and in the [Reference documentation]({{ site.scala3ref }}/other-new-features/control-syntax.html).
 
 
 ### match expressions
@@ -452,7 +451,7 @@ getClassAsString("hello")       // 'hello' is a String
 getClassAsString(List(1,2,3))   // List
 ```
 
-There’s _much_ more to pattern matching in Scala. Patterns can be nested, results of patterns can be bound, and pattern matching can even be user-defined. See the pattern matching examples in the [Control Structures sections][control] of this Overview for more details.
+There’s _much_ more to pattern matching in Scala. Patterns can be nested, results of patterns can be bound, and pattern matching can even be user-defined. See the pattern matching examples in the [Control Structures chapter][control] for more details.
 
 
 ### `try`/`catch`/`finally`
@@ -572,7 +571,7 @@ c.startRunning()        // "Yeah ... I don’t run"
 c.stopRunning()         // "No need to stop"
 ```
 
-If that code makes sense — great, you’re comfortable with traits as interfaces. If not, don’t worry, they’re explained in more detail in the [Data Modeling][data-1] sections of this Overview.
+If that code makes sense — great, you’re comfortable with traits as interfaces. If not, don’t worry, they’re explained in more detail in the [Data Modeling][data-1] chapter.
 
 
 #### Classes
@@ -599,7 +598,7 @@ class Person(var firstName: String, var lastName: String):
 val p = Person("John", "Stephens")
 ```
 
-Constructors and other class-related topics are covered in the [Data Modeling][data-1] sections in this Overview.
+Constructors and other class-related topics are covered in the [Data Modeling][data-1] chapter.
 
 
 ### Data Modeling (Functional Programming Style)
@@ -661,7 +660,7 @@ enum Nat:
   case Succ(pred: Nat)
 ```
 
-Enums are covered in detail in the [Data Modeling][data-1] section of this Overview, and in the [Reference documentation]({{ site.scala3ref }}/enums/enums.html).
+Enums are covered in detail in the [Data Modeling][data-1] section of this book, and in the [Reference documentation]({{ site.scala3ref }}/enums/enums.html).
 
 
 #### Case classes
@@ -703,7 +702,7 @@ val p2 = p.copy(name = "Elton John")
 p2               // Person = Person(Elton John,Singer)
 ```
 
-See the [Data Modeling][data-1] sections of this Overview for many more details on `case` classes.
+See the [Data Modeling][data-1] sections for many more details on `case` classes.
 
 
 
@@ -787,7 +786,7 @@ engage(
 )
 ```
 
-Methods are covered in detail in the [Data Modeling][data-1] section of this Overview.
+Methods are covered in detail in the [Data Modeling][data-1] section.
 
 
 
@@ -999,7 +998,7 @@ firstTen.fold(100)(_ + _)                  // 155 (100 is a “seed” value)
 firstTen.foldLeft(100)(_ + _)              // 155
 ```
 
-There are many more methods available to Scala collections classes, and they’re demonstrated in the Collections sections of this Overview and in the [API Documentation][api].
+There are many more methods available to Scala collections classes, and they’re demonstrated in the [Collections chapter][collections], and in the [API Documentation][api].
 
 
 
@@ -1038,13 +1037,13 @@ addresses.sortBy(address => (address.city, address.street))
 
 The sorting algorithm needs to compare addresses by first comparing their city names, and then also their street names when the city names are the same. However, with the use of contextual abstraction, you don’t need to manually define this ordering relation, because the compiler is able to summon it automatically based on an existing ordering relation for comparing string values.
 
-For more details, see the Contextual Abstractions section in this Overview, and also in the [Reference documentation][reference].
+For more details, see the [Contextual Abstractions chapter][contextual] of this book, and also in the [Reference documentation][reference].
 
 
 
 ## Even more
 
-Scala has even more features that weren’t covered in this whirlwind tour. See the remainder of this Overview and the [Reference documentation][reference] for many more details.
+Scala has even more features that weren’t covered in this whirlwind tour. See the remainder of this book and the [Reference documentation][reference] for many more details.
 
 
 [reference]: {{ site.scala3ref }}/overview.html
@@ -1053,3 +1052,7 @@ Scala has even more features that weren’t covered in this whirlwind tour. See 
 [data-1]: {% link _overviews/scala3-book/data-modeling-1-tools.md %}
 [higher-order]: {% link _overviews/scala3-book/higher-order-functions.md %}
 [api]: https://dotty.epfl.ch/api/index.html
+[contextual]: {% link _overviews/scala3-book/ca-contextual-abstractions-intro.md %}
+[collections]: {% link _overviews/scala3-book/collections-classes-methods.md %}
+
+
