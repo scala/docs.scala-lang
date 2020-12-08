@@ -40,7 +40,7 @@ However, what appears to the programmer to be a simple `List` is actually built 
 <!-- TODO: Scala 2.13 hierarchy with Scala 3 syntax -->
 ```scala
 sealed abstract class List[+A]
-  extends AbstractSeq[A], 
+  extends AbstractSeq[A],
     LinearSeq[A],
     LinearSeqOps[A, List, List[A]],
     StrictOptimizedLinearSeqOps[A, List, List[A]],
@@ -172,7 +172,7 @@ Benefits of these changes include:
 - It greatly improves the clarity of the 95% of Scala programs that use implicits
 - It has the potential to enable term inference in a principled way that is also accessible and friendly
 
-These capabilities are described in detail in other sections, so see the [Contextual Abstraction introduction](ca-01-contextual-abstractions-intro.md), and the section on [`given` and `using` clauses](ca-02-given-using-clauses.md) for more details.
+These capabilities are described in detail in other sections, so see the [Contextual Abstraction introduction]({% link _overviews/scala3-book/ca-contextual-abstractions-intro.md %}), and the section on [`given` and `using` clauses]({% link _overviews/scala3-book/ca-given-using-clauses.md %}) for more details.
 
 
 
@@ -181,7 +181,7 @@ These capabilities are described in detail in other sections, so see the [Contex
 
 Scala/Java interaction is seamless in many ways. For instance, you can use all of the thousands of Java libraries that are available in your Scala projects. A Scala `String` is essentially a Java `String`, with additional capabilities added to it. Scala seamlessly uses the date/time classes in the Java *import java.time._* package. You can also use Java collections classes in Scala, and to give them more functionality, Scala includes methods so you can transform them into Scala collections.
 
-While almost every interaction is seamless, the [“Interacting with Java” chapter](interacting-with-java.md) demonstrates how to use some features together better, including how to use:
+While almost every interaction is seamless, the [“Interacting with Java” chapter]({% link _overviews/scala3-book/interacting-with-java.md %}) demonstrates how to use some features together better, including how to use:
 
 - Java collections in Scala
 - Java `Optional` in Scala
@@ -216,7 +216,7 @@ Because you’ll rarely ever need to write a custom `for` loop again, the dozens
 Here are some examples:
 
 ```scala
-// 
+//
 List.range(1, 3)                      // List(1, 2)
 List.range(1, 6, 2)                   // List(1, 3, 5)
 List.fill(3)("foo")                   // List(foo, foo, foo)
@@ -332,7 +332,7 @@ Scala has a strong type system, and it has been improved even more in Scala 3. S
 
 *Simplification* comes about through dozens of changed and dropped features. As Martin Odersky demonstrated [in this slide](https://www.slideshare.net/Odersky/preparing-for-scala-3/13), Scala’s grammar is now smaller than most other languages, including Kotlin, Swift, Java, C++, and C#. On that list, only Python and Haskell have a smaller grammar than Scala.
 
-*Eliminating inconsistencies* is related to the dozens of [dropped features](https://dotty.epfl.ch/docs/Dropped%20Features/index.html), [changed features](https://dotty.epfl.ch/docs/Other%20Changed%20Features/index.html), and [added features](https://dotty.epfl.ch/docs/Other%20New%20Features/index.html) in Scala 3. Some of the most important features in this category are:
+*Eliminating inconsistencies* is related to the dozens of [dropped features]({{ site.scala3ref }}/Dropped%20Features/index.html), [changed features]({{ site.scala3ref }}/Other%20Changed%20Features/index.html), and [added features]({{ site.scala3ref }}/Other%20New%20Features/index.html) in Scala 3. Some of the most important features in this category are:
 
 - Intersection types
 - Union types
@@ -407,7 +407,3 @@ That’s just a Top 10 list of some of Scala’s best features. Others include:
 TODO: People can add to this list here, or change the Top 10
       if desired. I just went with my Top 10.
 -->
-
-
-
-

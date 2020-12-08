@@ -17,7 +17,7 @@ next-page: first-look-at-types
 -->
 
 
-This “Taste of Scala” section provides a whirlwind tour of the main features of the Scala 3 programming language. After the initial tour in this section, the rest of the Overview provides a few more details on these features, and the [Reference documentation]({{ site.scala3ref }}/overview.html) provides _many_ more details.
+This “Taste of Scala” section provides a whirlwind tour of the main features of the Scala 3 programming language. After the initial tour in this section, the rest of the Overview provides a few more details on these features, and the [Reference documentation][reference] provides _many_ more details.
 
 >Throughout this Overview you’ll be able to test many of the examples directly on this page. In addition to that, you can also test anything you’d like on [ScalaFiddle.io](https://scalafiddle.io), [Scastie](https://scastie.scala-lang.org), or in the Scala REPL, which is demonstrated shortly.
 
@@ -254,16 +254,15 @@ Just precede the string with the letter `s`, and then put a `$` symbol before yo
 
 To enclose expressions inside a string, put them in curly braces:
 
-<!-- TODO: Is this "~~~" syntax preferred? -->
-~~~ scala
+``` scala
 println(s"2 + 2 = ${2 + 2}")   // prints "2 + 2 = 4"
 val x = -1
 println(s"x.abs = ${x.abs}")   // prints "x.abs = 1"
-~~~
+```
 
 #### Other interpolators
 
-The `s` that you place before the string is just one possible interpolator. If you use an `f` instead of an `s`, you can use `printf`-style formatting syntax in the string. Furthermore, because `s` and `f` are really just methods, you can write your own interpolators, such as creating a `sql` interpolator for use in a database library. For more details, see the Strings section in this Overview and in the Reference documentation (TODO:correct sections and their urls).
+The `s` that you place before the string is just one possible interpolator. If you use an `f` instead of an `s`, you can use `printf`-style formatting syntax in the string. Furthermore, because `s` and `f` are really just methods, you can write your own interpolators, such as creating a `sql` interpolator for use in a database library. For more details, see the [Strings section][first-look] in this Overview.
 
 
 ### Multiline strings
@@ -276,7 +275,7 @@ val quote = """The essence of Scala:
                programming in a typed setting."""
 ```
 
-The [“First Look at Types” section](TODO:url) provides more details on how to format multiline strings.
+The [“First Look at Types” section][first-look] provides more details on how to format multiline strings.
 
 
 
@@ -312,7 +311,7 @@ Note that this really is an _expression_ — not a _statement_. This means that 
 val x = if a < b then a else b
 ```
 
-As you’ll see throughout this Overview and in our Reference documentation, _all_ Scala control structures can be used as expressions.
+As you’ll see throughout this Overview, _all_ Scala control structures can be used as expressions.
 
 >An expression returns a result, while a statement does not. Statements are typically used for their side-effects, such as using `println` to print to the console.
 
@@ -402,7 +401,7 @@ yield
 // result: List[Int] = List(5, 6, 6)
 ```
 
-`for` loops and expressions are covered in more detail in the Control Structures sections of this Overview and in the Reference documentation.
+`for` loops and expressions are covered in more detail in the [Control Structures sections][control] of this Overview and in the [Reference documentation]({{ site.scala3ref }}/other-new-features/control-syntax.html).
 
 
 ### match expressions
@@ -453,7 +452,7 @@ getClassAsString("hello")       // 'hello' is a String
 getClassAsString(List(1,2,3))   // List
 ```
 
-There’s _much_ more to pattern matching in Scala. Patterns can be nested, results of patterns can be bound, and pattern matching can even be user-defined. See the pattern matching examples in the Control Structures sections of this Overview and the Reference documentation for more details.
+There’s _much_ more to pattern matching in Scala. Patterns can be nested, results of patterns can be bound, and pattern matching can even be user-defined. See the pattern matching examples in the [Control Structures sections][control] of this Overview for more details.
 
 
 ### `try`/`catch`/`finally`
@@ -507,7 +506,7 @@ while (x < 3)
 
 ### Create your own control structures
 
-Thanks to features like by-name parameters, infix notation, fluent interfaces, optional parentheses, extension methods, and higher-order functions, you can also create your own code that works just like a control structure. You’ll learn more about this in the Control Structures chapter in the Reference documentation.
+Thanks to features like by-name parameters, infix notation, fluent interfaces, optional parentheses, extension methods, and higher-order functions, you can also create your own code that works just like a control structure. You’ll learn more about this in the [Control Structures][control] section.
 
 
 
@@ -573,7 +572,7 @@ c.startRunning()        // "Yeah ... I don’t run"
 c.stopRunning()         // "No need to stop"
 ```
 
-If that code makes sense — great, you’re comfortable with traits as interfaces. If not, don’t worry, they’re explained in more detail in the Data Modeling sections of this Overview and the Reference documentation.
+If that code makes sense — great, you’re comfortable with traits as interfaces. If not, don’t worry, they’re explained in more detail in the [Data Modeling][data-1] sections of this Overview.
 
 
 #### Classes
@@ -600,7 +599,7 @@ class Person(var firstName: String, var lastName: String):
 val p = Person("John", "Stephens")
 ```
 
-Constructors and other class-related topics are covered in the Data Modeling sections in this Overview, and in the Reference documentation.
+Constructors and other class-related topics are covered in the [Data Modeling][data-1] sections in this Overview.
 
 
 ### Data Modeling (Functional Programming Style)
@@ -662,7 +661,7 @@ enum Nat:
   case Succ(pred: Nat)
 ```
 
-Enums are covered in detail in the Data Modeling section of this Overview, and in the Reference documentation.
+Enums are covered in detail in the [Data Modeling][data-1] section of this Overview, and in the [Reference documentation]({{ site.scala3ref }}/enums/enums.html).
 
 
 #### Case classes
@@ -704,7 +703,7 @@ val p2 = p.copy(name = "Elton John")
 p2               // Person = Person(Elton John,Singer)
 ```
 
-See the Data Modeling sections of this Overview and the Reference documentation for many more details on `case` classes.
+See the [Data Modeling][data-1] sections of this Overview for many more details on `case` classes.
 
 
 
@@ -788,7 +787,7 @@ engage(
 )
 ```
 
-Methods are covered in detail in the Data Modeling section of this Overview, and in the Reference documentation.
+Methods are covered in detail in the [Data Modeling][data-1] section of this Overview.
 
 
 
@@ -912,7 +911,7 @@ val x = nums.filter(_ > 3)
 // result: x == List(40, 50, 60)
 ```
 
-In addition to higher-order functions being used throughout the standard library, you can also create your own. This is shown in the Reference documentation.
+In addition to higher-order functions being used throughout the standard library, you can also [create your own][higher-order].
 
 
 
@@ -1000,7 +999,7 @@ firstTen.fold(100)(_ + _)                  // 155 (100 is a “seed” value)
 firstTen.foldLeft(100)(_ + _)              // 155
 ```
 
-There are many more methods available to Scala collections classes, and they’re demonstrated in the Collections sections of this Overview and in the Reference documentation.
+There are many more methods available to Scala collections classes, and they’re demonstrated in the Collections sections of this Overview and in the [API Documentation][api].
 
 
 
@@ -1026,9 +1025,7 @@ t._2   // "eleven"
 t._3   // Person("Eleven")
 ```
 
-Tuples are nice for those times when you want to put a collection of heterogeneous types in a little collection-like structure. See the Reference documentation for more tuple details.
-
-
+Tuples are nice for those times when you want to put a collection of heterogeneous types in a little collection-like structure. See the [Reference documentation][reference] for more tuple details.
 
 ## Contextual Abstractions
 
@@ -1041,10 +1038,18 @@ addresses.sortBy(address => (address.city, address.street))
 
 The sorting algorithm needs to compare addresses by first comparing their city names, and then also their street names when the city names are the same. However, with the use of contextual abstraction, you don’t need to manually define this ordering relation, because the compiler is able to summon it automatically based on an existing ordering relation for comparing string values.
 
-For more details, see the Contextual Abstractions section in this Overview, and also in the Reference documentation.
+For more details, see the Contextual Abstractions section in this Overview, and also in the [Reference documentation][reference].
 
 
 
 ## Even more
 
-Scala has even more features that weren’t covered in this whirlwind tour. See the remainder of this Overview and the Reference documentation for many more details.
+Scala has even more features that weren’t covered in this whirlwind tour. See the remainder of this Overview and the [Reference documentation][reference] for many more details.
+
+
+[reference]: {{ site.scala3ref }}/overview.html
+[control]: {% link _overviews/scala3-book/control-structures.md %}
+[first-look]: {% link _overviews/scala3-book/first-look-at-types.md %}
+[data-1]: {% link _overviews/scala3-book/data-modeling-1-tools.md %}
+[higher-order]: {% link _overviews/scala3-book/higher-order-functions.md %}
+[api]: https://dotty.epfl.ch/api/index.html

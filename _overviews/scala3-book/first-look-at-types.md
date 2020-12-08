@@ -98,8 +98,8 @@ Those data types and their ranges are:
 | ------------- | --------------- |
 | Boolean       | `true` or `false` |
 | Byte          | 8-bit signed two’s complement integer (-2^7 to 2^7-1, inclusive)<br/>-128 to 127   |
-| Short         | 16-bit signed two’s complement integer (-2^15 to 2^15-1, inclusive)<br/>-32,768 to 32,767 
-| Int           | 32-bit two’s complement integer (-2^31 to 2^31-1, inclusive)<br/>-2,147,483,648 to 2,147,483,647 | 
+| Short         | 16-bit signed two’s complement integer (-2^15 to 2^15-1, inclusive)<br/>-32,768 to 32,767
+| Int           | 32-bit two’s complement integer (-2^31 to 2^31-1, inclusive)<br/>-2,147,483,648 to 2,147,483,647 |
 | Long          | 64-bit two’s complement integer (-2^63 to 2^63-1, inclusive)<br/>(-2^63 to 2^63-1, inclusive)   |
 | Float         | 32-bit IEEE 754 single-precision float<br/>1.40129846432481707e-45 to 3.40282346638528860e+38 |
 | Double        | 64-bit IEEE 754 double-precision float<br/>4.94065645841246544e-324d to 1.79769313486231570e+308d |
@@ -235,6 +235,4 @@ You can also cast a reference type to a subtype. This will be covered later in t
 
 `Nothing` is a subtype of all types, also called the bottom type. There is no value that has the type `Nothing`. A common use is to signal non-termination, such as a thrown exception, program exit, or an infinite loop — i.e., it is the type of an expression which does not evaluate to a value, or a method that does not return normally.
 
-`Null` is a subtype of all reference types (i.e. any subtype of `AnyRef`). It has a single value identified by the keyword literal `null`. `Null` is provided mostly for interoperability with other JVM languages and should almost never be used in Scala code. Alternatives to `null` are discussed in the TODO section of the Overview and the Reference documentation.
-
-
+`Null` is a subtype of all reference types (i.e. any subtype of `AnyRef`). It has a single value identified by the keyword literal `null`. `Null` is provided mostly for interoperability with other JVM languages and should almost never be used in Scala code. Alternatives to `null` are discussed in the TODO section of the Overview and the [API documentation](https://dotty.epfl.ch/-scala%203/-a-p-i/scala/-option.html).

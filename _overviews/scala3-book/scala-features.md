@@ -151,15 +151,15 @@ In this section or the next section:
 -->
 Scala’s expressive type system enforces, at compile-time, that abstractions are used in a safe and coherent manner. In particular, the type system supports:
 
-* [Generic classes](/tour/generic-classes.html)
-* [Variance annotations](/tour/variances.html)
+* [Generic classes]({% link _overviews/scala3-book/types-generics.md %})
+* [Variance annotations]({% link _overviews/scala3-book/types-variance.md %})
 * [Upper](/tour/upper-type-bounds.html) and [lower](/tour/lower-type-bounds.html) type bounds
 * [Inner classes](/tour/inner-classes.html) and [abstract type members](/tour/abstract-type-members.html) as object members
 * [Compound types](/tour/compound-types.html)
 * [Explicitly typed self references](/tour/self-types.html)
 * [Implicit parameters](/tour/implicit-parameters.html) and [conversions](/tour/implicit-conversions.html)
 * [Polymorphic methods](/tour/polymorphic-methods.html)
-* [Type inference](/tour/type-inference.html) means the user is not required to annotate code with redundant type information. 
+* [Type inference](/tour/type-inference.html) means the user is not required to annotate code with redundant type information.
 
 In combination, these features provide a powerful basis for the safe reuse of programming abstractions and for the type-safe extension of software.
 
@@ -245,7 +245,7 @@ The core idea is _term inference_: Given a type, the compiler synthesizes a “c
 
 Use cases for this concept include implementing type classes, establishing context, dependency injection, expressing capabilities, computing new types, and proving relationships between them.
 
-Scala 3 makes this process more clear than ever before. See the TODO section of the Reference documentation for more details.
+Scala 3 makes this process more clear than ever before. Read about contextual abstractions in the [Reference documentation]({{ site.scala3ref }}/contextual/motivation.html).
 
 
 ### Scala runs on the JVM (and in the browser)
@@ -493,7 +493,3 @@ Science and data analysis:
 ## Summary
 
 As this page shows, Scala has many terrific programming language features at a high level, at an everyday programming level, and through its developer ecosystem.
-
-
-
-

@@ -42,6 +42,7 @@ Coursier is an “artifact-fetching” tool written in Scala. It’s designed to
 
 The <a href="https://get-coursier.io/docs/cli-installation" target="_blank">Coursier installation page</a> shows how to install Coursier and its `cs` command on macOS, Windows, and Linux systems. See that page for how to install Coursier, and then come back to this page.
 
+
 ### Run the Coursier setup command
 
 <!-- TODO: need to be more clear about what JDK is installed -->
