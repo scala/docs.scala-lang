@@ -1,5 +1,6 @@
 ---
 title: Type Classes
+type: section
 description: This section introduces type classes in Scala 3.
 num: 20
 previous-page: types-adts-gadts

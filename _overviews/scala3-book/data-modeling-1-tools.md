@@ -1,20 +1,11 @@
 ---
-title: OOP and FP Data Modeling with Scala 3
+title: Data Modeling
+type: chapter
 description: This chapter provides an introduction to the available data modeling tools in Scala 3, including classes, traits, enums, and more.
 num: 7
 previous-page: control-structures
 next-page: data-modeling-2-oop
 ---
-
-<!--
-- Book
-- Movie
-- Stock
-- Person (social network)
-- BlogPost
-- Store
-- Pizza, Order
--->
 
 This chapter is the first of three chapters that look at how you can model the world around you with Scala 3. The three chapters are:
 
@@ -36,7 +27,7 @@ Scala 3 provides the following tools to help us model the world around us:
 - Case class
 - Case object
 
-The next sections introduce each of these tools.
+The following sections introduce each of these modeling tools.
 
 
 
@@ -44,31 +35,40 @@ The next sections introduce each of these tools.
 
 As with other languages, a Scala *class* is a template for the creation of object instances. Here are some examples of classes that have constructor parameters, but no fields or methods:
 
-    class Person(var name: String, var vocation: String)
-    class Book(var title: String, var author: String, var year: Int)
-    class Movie(var name: String, var director: String, var year: Int)
+```scala
+class Person(var name: String, var vocation: String)
+class Book(var title: String, var author: String, var year: Int)
+class Movie(var name: String, var director: String, var year: Int)
+```
 
 All of those parameters are defined as `var` fields, which means they are mutable: you can read them, and also modify them. If you want them to be immutable — read only — create them as `val` fields instead.
 
 Prior to Scala 3, you used the `new` keyword to create a new instance of a class:
 
-  val p = new Person("Robert Allen Zimmerman", "Harmonica Player")
-          ---
+```scala
+val p = new Person("Robert Allen Zimmerman", "Harmonica Player")
+        ---
+```
 
-<!-- TODO: “except for rare occasions”? -->
 However, this isn’t required in Scala 3:
 
-  val p = new Person("Robert Allen Zimmerman", "Harmonica Player")
+```scala
+val p = new Person("Robert Allen Zimmerman", "Harmonica Player")
+```
 
 Once you have an instance of a class, you can access its fields, which in this example are all constructor parameters:
 
-  p.name       // "Robert Allen Zimmerman"
-  p.vocation   // "Harmonica Player"
+```scala
+p.name       // "Robert Allen Zimmerman"
+p.vocation   // "Harmonica Player"
+```
 
 As mentioned, all of these parameters were created as `var` fields, so you can also mutate them:
 
-  p.name = "Bob Dylan"
-  p.vocation = "Musician"
+```scala
+p.name = "Bob Dylan"
+p.vocation = "Musician"
+```
 
 
 ### Classes can have fields and methods
@@ -172,9 +172,6 @@ println(MathConstants.PI)   // 3.14159
 
 ## Companion objects
 
-<!-- https://docs.scala-lang.org/overviews/scala-book/companion-objects.html -->
-<!-- https://docs.scala-lang.org/tour/singleton-objects.html -->
-
 An `object` that has the same name as a class, and is declared in the same file as the class, is called a *companion object*. Similarly, the class is called the object’s companion class. A companion class or object can access the private members of its companion.
 
 Companion objects are used for methods and values that are not specific to instances of the companion class. For instance, in the following example the class `Circle` has a member named `area` which is specific to each instance, and its companion object has a method named `calculateArea` that’s (a) not specific to an instance, and (b) is available to every instance:
@@ -206,36 +203,37 @@ Companion objects can be used for several purposes:
 - They can contain `apply` methods, which — thanks to some syntactic sugar — work as factory methods to construct new instances
 - They can contain `unapply` methods, which are used to deconstruct objects, such as with pattern matching
 
-<!-- TODO: are these used much any more -->
 Here’s a quick look at how `apply` methods that can be used as factory methods to create new objects:
 
-    class Person:
-        var name = ""
-        var age = 0
-        override def toString = s"$name is $age years old"
+```scala
+class Person:
+  var name = ""
+  var age = 0
+  override def toString = s"$name is $age years old"
 
-    object Person:
+object Person:
 
-        // a one-arg constructor
-        def apply(name: String): Person =
-            var p = new Person
-            p.name = name
-            p
+  // a one-arg constructor
+  def apply(name: String): Person =
+    var p = new Person
+    p.name = name
+    p
 
-        // a two-arg constructor
-        def apply(name: String, age: Int): Person =
-            var p = new Person
-            p.name = name
-            p.age = age
-            p
+  // a two-arg constructor
+  def apply(name: String, age: Int): Person =
+    var p = new Person
+    p.name = name
+    p.age = age
+    p
 
-    end Person
-    
-    val joe = Person("Joe")         // one-arg constructor
-    val fred = Person("Fred", 29)   // two-arg constructor
-    
-    //val joe: Person = Joe is 0 years old
-    //val fred: Person = Fred is 29 years old
+end Person
+
+val joe = Person("Joe")         // one-arg constructor
+val fred = Person("Fred", 29)   // two-arg constructor
+
+//val joe: Person = Joe is 0 years old
+//val fred: Person = Fred is 29 years old
+```
 
 The `unapply` method isn’t covered here, but it’s covered in detail in the Reference documentation.
 
@@ -243,7 +241,6 @@ The `unapply` method isn’t covered here, but it’s covered in detail in the R
 
 ## Traits
 
-<!-- TODO: compare to header files, whatever in Haskell -->
 If you’re familiar with Java, a Scala trait is similar to an interface in Java 8+. Traits can contain:
 
 - Abstract methods and fields
@@ -300,7 +297,9 @@ This is just a taste of what you can accomplish with traits. For more details, s
 
 ## Abstract classes
 
-<!-- TODO: WHEN TO USE ABSTRACT CLASSES WITH SCALA 3? -->
+{% comment %}
+TODO: I have some notes on when to use abstract classes, and can update this section.
+{% endcomment %}
 
 When you want to write a class, but you know it will have abstract members, you can either create a trait or an abstract class. In most situations you’ll use traits, but but historically there have been two situations where it’s better to use an abstract class than a trait:
 
@@ -308,7 +307,6 @@ When you want to write a class, but you know it will have abstract members, you 
 - The code will be called from Java code
 
 ### A base class that takes constructor arguments
-<!-- TODO: when to use abstract classes? -->
 
 Prior to Scala 3, when a base class needed to take constructor arguments, you’d declare it as an `abstract class`:
 
@@ -340,8 +338,9 @@ val d = Dog("Fido", 1)
 
 ### When a Scala abstract class is called from Java
 
-<!-- TODO: again, this may not apply with Scala 3 -->
-
+{% comment %}
+TODO: I need to add content here.
+{% endcomment %}
 
 
 
@@ -440,8 +439,12 @@ val res0: Int = -1
 
 A `case class` has all of the functionality of a `class`, and more. When the compiler sees the `case` keyword in front of a `class`, it generates code for you, with the following benefits:
 
+{% comment %}
+TODO: What to say about `apply` methods in the following bullet points? They’re less significant in Scala 3.
+{% endcomment %}
+
 * Case class constructor parameters are public `val` fields by default, so accessor methods are generated for each parameter
-* An `apply` method is created in the companion object of the class, so you don’t need to use the `new` keyword to create a new instance of the class <!-- TODO: update this wording -->
+* An `apply` method is created in the companion object of the class, so you don’t need to use the `new` keyword to create a new instance of the class
 * An `unapply` method is generated, which lets you use case classes in more ways in `match` expressions
 * A `copy` method is generated in the class, which is very useful in functional programming
 * `equals` and `hashCode` methods are generated, which let you compare objects, and easily use them as keys in maps
@@ -486,7 +489,10 @@ As mentioned, case classes are typically used in FP, and case class features sup
 
 As they write in the book, [Programming in Scala](https://www.amazon.com/Programming-Scala-Updated-2-12/dp/0981531687/) (Odersky, Spoon, and Venners), “the biggest advantage of case classes is that they support pattern matching.”
 
-<!-- 
+
+{% comment %}
+We can use this following text, if desired. It might need to be updated a little.
+
 ### An `unapply` method
 
 In the previous lesson on companion objects you saw how to write `unapply` methods. A great thing about a case class is that it automatically generates an `unapply` method for your class, so you don’t have to write one.
@@ -546,15 +552,11 @@ res1: String = Bob Donnan teaches Mathematics.
 ```
 
 >All of this content on `unapply` methods and extractors is a little advanced for an introductory book like this, but because case classes are an important FP topic, it seems better to cover them, rather than skipping over them.
--->
+{% endcomment %}
 
 
 
 ## Case objects
-
-- singleton
-- apply, unapply
-- equals, hashCode, toString
 
 Case objects are to objects what case classes are to classes: they provide a number of automatically-generated methods to make them more powerful. They’re particularly useful whenever you need a singleton object that needs a little extra functionality, such as being used with pattern matching in `match` expressions.
 

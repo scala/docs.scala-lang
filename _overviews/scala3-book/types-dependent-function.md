@@ -1,5 +1,6 @@
 ---
 title: Dependent Function Types
+type: section
 description: This section introduces and demonstrates dependent function types in Scala 3.
 num: 24
 previous-page: types-structural

@@ -1,5 +1,6 @@
 ---
-title: Common Collections Classes and Methods
+title: Collections Classes and Methods
+type: chapter
 description: This page demonstrates the common collections classes and their methods in Scala 3.
 num: 12
 previous-page: packaging-imports

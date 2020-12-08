@@ -1,5 +1,6 @@
 ---
 title: Scala for Python Developers
+type: chapter
 description: This page is for Python developers who are interested in learning about Scala 3.
 num: 41
 previous-page: scala-for-javascript-devs

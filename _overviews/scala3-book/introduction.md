@@ -1,6 +1,6 @@
 ---
-type: chapter
 title: Introduction
+type: chapter
 description: This page begins the overview documentation of the Scala 3 language.
 num: 1
 previous-page:

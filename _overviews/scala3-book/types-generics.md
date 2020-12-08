@@ -1,5 +1,6 @@
 ---
 title: Generics
+type: section
 description: This section introduces and demonstrates generics in Scala 3.
 num: 16
 previous-page: types-inferred

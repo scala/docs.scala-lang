@@ -1,5 +1,6 @@
 ---
-title: OOP Data Modeling with Scala 3
+title: OOP Data Modeling
+type: section
 description: This chapter provides an introduction to OOP data modeling with Scala 3.
 num: 8
 previous-page: data-modeling-1-tools

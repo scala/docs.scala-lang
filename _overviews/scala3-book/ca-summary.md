@@ -1,5 +1,6 @@
 ---
-title: Contextual Abstractions Summary
+title: Summary
+type: section
 description: This page provides a summary of the Contextual Abstractions lessons.
 num: 34
 previous-page: ca-implicit-conversions

@@ -1,5 +1,6 @@
 ---
 title: Variance
+type: section
 description: This section introduces and demonstrates variance in Scala 3.
 num: 21
 previous-page: types-type-classes

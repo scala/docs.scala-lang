@@ -1,5 +1,6 @@
 ---
 title: Opaque Types
+type: section
 description: This section introduces and demonstrates opaque types in Scala 3.
 num: 22
 previous-page: types-variance

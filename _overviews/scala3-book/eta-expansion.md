@@ -1,5 +1,6 @@
 ---
 title: Eta Expansion in Scala 3
+type: section
 description: This page discusses Eta Expansion, the Scala technology that automatically and transparently converts methods into functions.
 num: 43
 previous-page: anonymous-functions

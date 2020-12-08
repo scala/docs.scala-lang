@@ -1,5 +1,6 @@
 ---
 title: Intersection Types
+type: section
 description: This section introduces and demonstrates intersection types in Scala 3.
 num: 17
 previous-page: types-generics
