@@ -16,7 +16,7 @@ There are many benefits to using Scala, and Scala 3 in particular. It might be h
 
 1. Scala embraces a fusion of functional programming (FP) and object-oriented programming (OOP)
 2. Scala is statically typed, but it often feels like a dynamically typed language
-3. Scala’s syntax is concise, but still readable; it’s often referred to as *expressive* (Scala’s grammar is smaller than Kotlin, Swift, Java, and every other language except Python and Haskell)
+3. Scala’s syntax is concise, but still readable; it’s often referred to as *expressive*
 4. *Implicits* in Scala 2 were a defining feature, and they have been improved and simplified in Scala 3
 5. Scala integrates seamlessly with Java, so you can create projects with mixed Scala and Java code, and Scala code easily uses the thousands of existing Java libraries
 6. Scala can be used on the server, and also in the browser with Scala.js
@@ -113,7 +113,7 @@ val b: Password | Username = if (true) name else password
 ```
 
 
-## 3) Scala’s syntax is concise, but still readable; it’s often referred to as *expressive* (Scala’s grammar is smaller than Kotlin, Swift, Java, and every other language except Python and Haskell)
+## 3) Scala’s syntax is concise, but still readable; it’s often referred to as *expressive*
 
 Variable type assignment is concise:
 
@@ -336,7 +336,7 @@ Scala has a strong type system, and it has been improved even more in Scala 3. S
 - Ergonomics
 - Performance
 
-*Simplification* comes about through dozens of changed and dropped features. As Martin Odersky demonstrated [in this slide](https://www.slideshare.net/Odersky/preparing-for-scala-3/13), Scala’s grammar is now smaller than most other languages, including Kotlin, Swift, Java, C++, and C#. On that list, only Python and Haskell have a smaller grammar than Scala.
+*Simplification* comes about through dozens of changed and dropped features. For instance, the changes from the overloaded `implicit` keyword in Scala 2 to the terms `given` and `using` in Scala 3 make the language more clear, especially for beginning developers.
 
 *Eliminating inconsistencies* is related to the dozens of [dropped features]({{ site.scala3ref }}/Dropped%20Features/index.html), [changed features]({{ site.scala3ref }}/Other%20Changed%20Features/index.html), and [added features]({{ site.scala3ref }}/Other%20New%20Features/index.html) in Scala 3. Some of the most important features in this category are:
 
