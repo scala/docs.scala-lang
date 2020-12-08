@@ -15,12 +15,12 @@ next-page: anonymous-functions
 }
 .content-primary table tr:first-child,
 .content-primary table tr:last-child
-{ 
+{
   border: none;
   border-bottom: none;
 }
-.content-primary table, 
-.content-primary table th, 
+.content-primary table,
+.content-primary table th,
 .content-primary table td {
   border: none;
 }
@@ -30,7 +30,7 @@ next-page: anonymous-functions
 }
 .content-primary table td.table-desc-row {
   text-align: center;
-  padding-top: 2em;
+  padding-top: 0.6em;
 }
 .content-primary table th {
   text-align: center;
