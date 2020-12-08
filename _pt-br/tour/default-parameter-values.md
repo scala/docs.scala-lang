@@ -50,7 +50,7 @@ Enquanto isso nos impede de nos repetir, é menos do que expressivo.
 
 Scala adiciona suporte direto para isso:
 
-```tut
+```scala mdoc
 class HashMap[K,V](initialCapacity:Int = 16, loadFactor:Float = 0.75f) {
 }
 

@@ -27,7 +27,7 @@ prerequisite-knowledge: classes, basics
 
 다음 소스는 문자열 값, 정수 값, 문자 값, boolean 값과 함수 역시 모두 객체로 취급됨을 보여주는 샘플입니다:
 
-```tut
+```scala mdoc
 val list: List[Any] = List(
   "a string",
   732,  // 정수 값
@@ -57,7 +57,7 @@ true
 
 예제:
 
-```tut
+```scala mdoc
 val x: Long = 987654321
 val y: Float = x  // 9.8765434E8 (이 경우 일부 자리수가 소실되었음을 주의)
 

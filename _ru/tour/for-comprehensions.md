@@ -17,7 +17,7 @@ Scala предлагает простую запись для выражения
 
 Вот пример:
 
-```tut
+```scala mdoc
 case class User(name: String, age: Int)
 
 val userBase = List(User("Travis", 28),
@@ -34,7 +34,7 @@ twentySomethings.foreach(name => println(name))  // выводит "Travis Denni
 
 Ниже приведен более сложный пример использования двух генераторов. Он вычисляет все пары чисел между `0` и `n-1`, сумма которых равна заданному значению `v`:
 
-```tut
+```scala mdoc
 def foo(n: Int, v: Int) =
    for (i <- 0 until n;
         j <- i until n if i + j == v)
@@ -56,7 +56,7 @@ foo(10, 10) foreach {
 
 Вы можете обойтись без `yield` в for-выражении. В таком случае, результатом будет `Unit`. Это может быть полезным для выполнения кода основанного на побочных эффектах. Вот программа, эквивалентная предыдущей, но без использования `yield`:
 
-```tut
+```scala mdoc
 def foo(n: Int, v: Int) =
    for (i <- 0 until n;
         j <- i until n if i + j == v)

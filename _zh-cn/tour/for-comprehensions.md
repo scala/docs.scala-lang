@@ -15,7 +15,7 @@ Scala 提供一个轻量级的标记方式用来表示 *序列推导*。推导�
 
 看下例：
 
-```tut
+```scala mdoc
 case class User(name: String, age: Int)
 
 val userBase = List(User("Travis", 28),
@@ -32,7 +32,7 @@ twentySomethings.foreach(name => println(name))  // prints Travis Dennis
 
 下面这个例子复杂一些，使用了两个生成器。它计算了 `0` 到 `n-1` 的所有两两求和为 `v` 的数字的组合：
 
-```tut
+```scala mdoc
 def foo(n: Int, v: Int) =
    for (i <- 0 until n;
         j <- i until n if i + j == v)
@@ -54,7 +54,7 @@ foo(10, 10) foreach {
 
 你可以在使用 for 表达式时省略 `yield` 语句。此时会返回 `Unit`。当你想要执行一些副作用的时候这很有用。下面的例子输出和上面相同的结果，但是没有使用 `yield`：
 
-```tut
+```scala mdoc
 def foo(n: Int, v: Int) =
    for (i <- 0 until n;
         j <- i until n if i + j == v)

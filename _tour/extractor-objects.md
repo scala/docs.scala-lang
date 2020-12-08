@@ -12,7 +12,7 @@ redirect_from: "/tutorials/tour/extractor-objects.html"
 
 An extractor object is an object with an `unapply` method. Whereas the `apply` method is like a constructor which takes arguments and creates an object, the `unapply` takes an object and tries to give back the arguments. This is most often used in pattern matching and partial functions.
 
-```tut
+```scala mdoc
 import scala.util.Random
 
 object CustomerID {
@@ -36,7 +36,7 @@ The `apply` method creates a `CustomerID` string from a `name`. The `unapply` do
 
 Since a value definition can use a pattern to introduce a new variable, an extractor can be used to initialize the variable, where the unapply method supplies the value.
 
-```tut
+```scala mdoc
 val customer2ID = CustomerID("Nico")
 val CustomerID(name) = customer2ID
 println(name)  // prints Nico
@@ -44,13 +44,13 @@ println(name)  // prints Nico
 
 This is equivalent to `val name = CustomerID.unapply(customer2ID).get`.
 
-```tut
+```scala mdoc
 val CustomerID(name2) = "--asdfasdfasdf"
 ```
 
 If there is no match, a `scala.MatchError` is thrown:
 
-```tut:fail
+```scala mdoc:fail
 val CustomerID(name3) = "-asdfasdfasdf"
 ```
 

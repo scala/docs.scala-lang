@@ -11,7 +11,7 @@ language: pt-br
 
 Scala permite definir funções de ordem superior. Tais funções _recebem outras funções como parâmetros_, ou _resultam em uma função_. Por exemplo, a função `apply` recebe outra função `f` e um valor `v` então aplica a função `f` em`v`:
 
-```tut
+```scala mdoc
 def apply(f: Int => String, v: Int) = f(v)
 ```
 
@@ -19,7 +19,7 @@ _Nota: métodos são automaticamente convertidos em funções se o contexto dema
 
 Outro exemplo:
 
-```tut
+```scala mdoc
 class Decorator(left: String, right: String) {
   def layout[A](x: A) = left + x.toString() + right
 }

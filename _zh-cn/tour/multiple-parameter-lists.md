@@ -23,7 +23,7 @@ def foldLeft[B](z: B)(op: (B, A) => B): B
 
 从初值0开始, 这里 `foldLeft` 将函数 `(m, n) => m + n` 依次应用到列表中的每一个元素和之前累积的值上。
 
-```tut
+```scala mdoc
 val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 val res = numbers.foldLeft(0)((m, n) => m + n)
 print(res) // 55
@@ -45,7 +45,7 @@ numbers.foldLeft(0)(_ + _)
 ```
    像上述语句这样，我们可以给定多参数列表的一部分参数列表（如上述的`z`）来形成一个新的函数（partially applied function），达到复用的目的，如下所示：
 
-```tut
+```scala mdoc
 val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 val numberFunc = numbers.foldLeft(List[Int]())_
 
@@ -57,7 +57,7 @@ print(cubes.toString())  // List(1, 8, 27, 64, 125, 216, 343, 512, 729, 1000)
 ```
 
    最后，`foldLeft` 和 `foldRight` 可以按以下任意一种形式使用，
-```tut
+```scala mdoc
 val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 
 numbers.foldLeft(0)((sum, item) => sum + item) // Generic Form

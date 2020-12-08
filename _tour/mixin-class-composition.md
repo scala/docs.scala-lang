@@ -12,7 +12,7 @@ redirect_from: "/tutorials/tour/mixin-class-composition.html"
 ---
 Mixins are traits which are used to compose a class.
 
-```tut
+```scala mdoc
 abstract class A {
   val message: String
 }
@@ -32,7 +32,7 @@ Class `D` has a superclass `B` and a mixin `C`. Classes can only have one superc
 
 Now let's look at a more interesting example starting with an abstract class:
 
-```tut
+```scala mdoc
 abstract class AbsIterator {
   type T
   def hasNext: Boolean
@@ -43,7 +43,7 @@ The class has an abstract type `T` and the standard iterator methods.
 
 Next, we'll implement a concrete class (all abstract members `T`, `hasNext`, and `next` have implementations):
 
-```tut
+```scala mdoc
 class StringIterator(s: String) extends AbsIterator {
   type T = Char
   private var i = 0
@@ -59,7 +59,7 @@ class StringIterator(s: String) extends AbsIterator {
 
 Now let's create a trait which also extends `AbsIterator`.
 
-```tut
+```scala mdoc
 trait RichIterator extends AbsIterator {
   def foreach(f: T => Unit): Unit = while (hasNext) f(next())
 }
@@ -68,7 +68,7 @@ This trait implements `foreach` by continually calling the provided function `f:
 
 We would like to combine the functionality of `StringIterator` and `RichIterator` into a single class.
 
-```tut
+```scala mdoc
 class RichStringIter extends StringIterator("Scala") with RichIterator
 val richStringIter = new RichStringIter
 richStringIter.foreach(println)

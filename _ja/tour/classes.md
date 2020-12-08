@@ -24,7 +24,7 @@ Scalaにおけるクラスはオブジェクトを作るための設計図です
 最小のクラス定義は単純にキーワード`class`と識別子だけというものです。
 クラス名は大文字から始まるべきです。
 
-```tut
+```scala mdoc
 class User
 
 val user1 = new User
@@ -34,7 +34,7 @@ val user1 = new User
 しかしながら、コンストラクターとクラス本体は頻繁に欲しくなるでしょう。
 こちらは位置情報のクラス定義の例になります。
 
-```tut
+```scala mdoc
 class Point(var x: Int, var y: Int) {
 
   def move(dx: Int, dy: Int): Unit = {
@@ -62,7 +62,7 @@ println(point1)  // prints (2, 3)
 
 コンストラクターは次のようにデフォルト値を与えると省略可能なパラメーターを持つことができます。
 
-```tut
+```scala mdoc
 class Point(var x: Int = 0, var y: Int = 0)
 
 val origin = new Point  // x と y には共に0がセットされます。
@@ -84,7 +84,7 @@ println(point2.y)  // 2 が出力されます。
 メンバーはデフォルトではパブリックになります。
 クラスの外から隠したい場合は`private`アクセス修飾詞を使いましょう。
 
-```tut
+```scala mdoc
 class Point {
   private var _x = 0
   private var _y = 0

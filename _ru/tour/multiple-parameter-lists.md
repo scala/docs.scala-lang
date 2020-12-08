@@ -17,7 +17,7 @@ previous-page: nested-functions
 
 Например,
   
-  ```tut
+  ```scala mdoc
   val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
   val numberFunc = numbers.foldLeft(List[Int]()) _
   
@@ -38,7 +38,7 @@ def foldLeft[B](z: B)(op: (B, A) => B): B
 
 Начиная с начального значения 0, `foldLeft` применяет функцию `(m, n) => m + n` к каждому элементу списка и предыдущему накопленному значению.
 
-```tut
+```scala mdoc
 val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 val res = numbers.foldLeft(0)((m, n) => m + n)
 print(res) // 55
@@ -58,7 +58,7 @@ numbers.foldLeft(0, {(m: Int, n: Int) => m + n})
 numbers.foldLeft(0)(_ + _)
 ```
    Если в утверждении `numbers.foldLeft(0)(_ + _)` зафиксировать отдельный параметр `z`, мы получим частично определенную функцию, которую можно переиспользовать, как показано ниже:
-```tut
+```scala mdoc
 val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 val numberFunc = numbers.foldLeft(List[Int]())_  // z = Empty.List[Int]
 
@@ -70,7 +70,7 @@ print(cubes.toString())  // List(1, 8, 27, 64, 125, 216, 343, 512, 729, 1000)
 ```
 
    `foldLeft` и `foldRight` может быть использован в любой из следующих вариаций,
-```tut
+```scala mdoc
 val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 
 numbers.foldLeft(0)((sum, item) => sum + item) // Общая Форма

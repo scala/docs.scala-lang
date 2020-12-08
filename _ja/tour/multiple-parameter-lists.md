@@ -28,7 +28,7 @@ def foldLeft[B](z: B)(op: (B, A) => B): B
 初期値0から始まり、`foldLeft`はここではリスト内の各要素とその一つ前の累積値に関数`(m, n) => m + n`を適用します。
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 val res = numbers.foldLeft(0)((m, n) => m + n)
 println(res) // 55
@@ -68,7 +68,7 @@ def execute(arg: Int)(implicit ec: scala.concurrent.ExecutionContext) = ???
 これは一般的に[部分適用](https://en.wikipedia.org/wiki/Partial_application)として知られています。
 
 例えば
-```tut
+```scala mdoc
 val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 val numberFunc = numbers.foldLeft(List[Int]()) _
 val squares = numberFunc((xs, x) => xs :+ x*x)

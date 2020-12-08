@@ -26,7 +26,7 @@ An annotation clause applies to the first definition or declaration following it
 
 ## Annotations that ensure correctness of encodings
 Certain annotations will actually cause compilation to fail if a condition(s) is not met. For example, the annotation `@tailrec` ensures that a method is [tail-recursive](https://en.wikipedia.org/wiki/Tail_call). Tail-recursion can keep memory requirements constant. Here's how it's used in a method which calculates the factorial:
-```tut
+```scala mdoc
 import scala.annotation.tailrec
 
 def factorial(x: Int): Int = {

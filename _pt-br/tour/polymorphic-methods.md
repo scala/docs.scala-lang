@@ -14,7 +14,7 @@ Os métodos em Scala podem ser parametrizados com valores e tipos. Como no níve
 
 Por exemplo:
 
-```tut
+```scala mdoc
 def dup[T](x: T, n: Int): List[T] = {
   if (n == 0)
     Nil

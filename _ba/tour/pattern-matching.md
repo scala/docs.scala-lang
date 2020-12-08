@@ -16,7 +16,7 @@ Podudaranje uzoraka je mehanizam za provjeranje da li vrijednost odgovara uzroku
 
 ## Sintaksa
 Izraz za podudaranje ima vrijednost, `match` ključnu riječ, i bar jednu `case` klauzu.
-```tut
+```scala mdoc
 import scala.util.Random
 
 val x: Int = Random.nextInt(10)
@@ -34,7 +34,7 @@ Zadnji slučaj, `_`, je "uhvati sve" slučaj za brojeve veće od 2.
 Slučajevi se još zovu i _alternative_.
 
 Izrazi za podudaranje imaju vrijednost.
-```tut
+```scala mdoc
 def matchTest(x: Int): String = x match {
   case 1 => "one"
   case 2 => "two"
@@ -50,7 +50,7 @@ Stoga, metoda `matchTest` vraća `String`.
 
 Case klase su posebno korisne za podudaranje uzoraka.
 
-```tut
+```scala mdoc
 abstract class Notification
 
 case class Email(sender: String, title: String, body: String) extends Notification
@@ -118,7 +118,7 @@ U `case Email(email, _, _) if importantPeopleInfo.contains(email)`, uzorak se po
 
 ## Podudaranje samo tipa
 Možete podudarati samo tip ovako:
-```tut
+```scala mdoc
 abstract class Device
 case class Phone(model: String) extends Device {
   def screenOff = "Turning screen off"
@@ -140,7 +140,7 @@ Konvencija je da se koristi prvo slovo tipa kao identifikator (`p` i `c` ovdje).
 Trejtovi i klase mogu biti `sealed` što znači da svi podtipovi moraju biti reklarisani u istom fajlu. 
 Ovo osigurava da su svi podtipovi poznati.
 
-```tut
+```scala mdoc
 sealed abstract class Furniture
 case class Couch() extends Furniture
 case class Chair() extends Furniture

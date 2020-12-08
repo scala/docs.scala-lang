@@ -16,14 +16,14 @@ prerequisite-knowledge: no-return-keyword, type-declaration-syntax, string-inter
 
 # 클래스 정의
 가장 단순한 클래스 정의는 예약어 `class`와 식별자만 있는 것입니다. 클래스명은 대문자로 시작하는 것이 관례입니다.
-```tut
+```scala mdoc
 class User
 
 val user1 = new User
 ```
 예약어 `new`는 클래스의 인스턴스를 만들기위해 사용합니다. `User` 클래스는 생성자를 정의하지 않았기 때문에 인자가 없는 기본 생성자를 갖습니다. 생성자와 클래스 몸체를 정의하고자 한다면, 다음의 클래스 정의 예제를 참고하십시오:
 
-```tut
+```scala mdoc
 class Point(var x: Int, var y: Int) {
 
   def move(dx: Int, dy: Int): Unit = {
@@ -46,7 +46,7 @@ println(point1)  // prints (2, 3)
 
 생성자는 다음과 같은 기본 값을 제공하여 선택적 매개변수를 가질 수 있습니다:
 
-```tut
+```scala mdoc
 class Point(var x: Int = 0, var y: Int = 0)
 
 val origin = new Point  // x and y are both set to 0
@@ -66,7 +66,7 @@ println(point2.y)  // prints 2
 
 # Private 멤버와 Getter/Setter 문법
 멤버는 기본적으로 public으로 지정됩니다. `private` 접근 지시자를 사용함으로써 클래스 외부로부터 멤버를 숨길 수 있습니다.
-```tut
+```scala mdoc
 class Point {
   private var _x = 0
   private var _y = 0

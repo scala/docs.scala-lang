@@ -50,7 +50,7 @@ Mimo że powstrzymuje to nas od powtarzania się, to podejście nie jest zbyt wy
 
 Scala wprowadza bezpośrednie wsparcie dla domyślnych parametrów:
 
-```tut
+```scala mdoc
 class HashMap[K,V](initialCapacity: Int = 16, loadFactor: Float = 0.75f) {
 }
 

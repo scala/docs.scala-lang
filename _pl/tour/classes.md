@@ -18,7 +18,7 @@ Typy, obiekty i cechy zostaną omówione w dalszej części przewodnika.
 Minimalna definicja klasy składa się ze słowa kluczowego `class` oraz jej identyfikatora.
 Nazwy klas powinny zaczynać się z wielkiej litery.
 
-```tut
+```scala mdoc
 class User
 
 val user1 = new User
@@ -29,7 +29,7 @@ Ponieważ żaden konstruktor nie został zdefiniowany, klasa `User` posiada kons
 Zazwyczaj jednak definiujemy konstruktor i ciało klasy.
 Poniższy przykład przedstawia definicję klasy służącej do reprezentowania punktu.
 
-```tut
+```scala mdoc
 class Point(var x: Int, var y: Int) {
 
   def move(dx: Int, dy: Int): Unit = {
@@ -57,7 +57,7 @@ Ponieważ `toString` nadpisuje metodę `toString` zdefiniowaną w  [`AnyRef`](un
 
 Konstruktory mogą zawierać parametry opcjonalne - wystarczy dostarczyć wartość domyślną dla takiego parametru.
 
-```tut
+```scala mdoc
 class Point(var x: Int = 0, var y: Int = 0)
 
 val origin = new Point  // x i y są mają wartość 0
@@ -82,7 +82,7 @@ Jest to również dobra praktyka, która zwiększa przejrzystość kodu.
 Domyślnie wszystkie składniki klasy są publiczne.
 Aby ukryć je przed zewnętrznymi klientami (wszystkim co jest poza daną klasą), należy użyć słowa kluczowego `private`.
 
-```tut
+```scala mdoc
 class Point {
   private var _x = 0
   private var _y = 0

@@ -22,7 +22,7 @@ However, it's easier to read as an infix operator:
 
 ## Defining and using operators
 You can use any legal identifier as an operator. This includes a name like `add` or a symbol(s) like `+`.
-```tut
+```scala mdoc
 case class Vec(x: Double, y: Double) {
   def +(that: Vec) = Vec(this.x + that.x, this.y + that.y)
 }
@@ -36,7 +36,7 @@ vector3.y  // 3.0
 ```
 The class Vec has a method `+` which we used to add `vector1` and `vector2`. Using parentheses, you can build up complex expressions with readable syntax. Here is the definition of class `MyBool` which includes methods `and` and `or`:
 
-```tut
+```scala mdoc
 case class MyBool(x: Boolean) {
   def and(that: MyBool): MyBool = if (x) that else this
   def or(that: MyBool): MyBool = if (x) this else that
@@ -46,7 +46,7 @@ case class MyBool(x: Boolean) {
 
 It is now possible to use `and` and `or` as infix operators:
 
-```tut
+```scala mdoc
 def not(x: MyBool) = x.negate
 def xor(x: MyBool, y: MyBool) = (x or y) and not(x and y)
 ```

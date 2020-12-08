@@ -22,7 +22,7 @@ Scala 将查找这些参数的位置分为两类：
 
 在下面的例子中，我们定义了一个方法 `sum`，它使用 Monoid 类的 `add` 和 `unit` 方法计算一个列表中元素的总和。 请注意，隐式值不能是顶级值。
 
-```tut
+```scala mdoc
 abstract class Monoid[A] {
   def add(x: A, y: A): A
   def unit: A

@@ -19,7 +19,7 @@ previous-page: mixin-class-composition
 ここでは"高階関数"というフレーズを関数をパラメーターとして受け取る、または関数を返すメソッドと関数の両方に対して使います。
 
 もっとも一般的な例の1つは、Scalaのコレクションで利用可能な高階関数`map`です。
-```tut
+```scala mdoc
 val salaries = Seq(20000, 70000, 40000)
 val doubleSalary = (x: Int) => x * 2
 val newSalaries = salaries.map(doubleSalary) // List(40000, 140000, 80000)
@@ -37,7 +37,7 @@ val newSalaries = salaries.map(x => x * 2) // List(40000, 140000, 80000)
 それはmap関数が期待する型を基にコンパイラーが型を推論できるからです。
 さらに言えば、慣用的には同じコードを以下のように書きます。
 
-```tut
+```scala mdoc
 val salaries = Seq(20000, 70000, 40000)
 val newSalaries = salaries.map(_ * 2)
 ```
@@ -62,7 +62,7 @@ case class WeeklyWeatherForecast(temperatures: Seq[Double]) {
 たとえば、何通りかの係数で人の給料を上げるメソッドが欲しいとしましょう。
 高階関数を作らないなら、こんな感じになるかもしれません。
 
-```tut
+```scala mdoc
 object SalaryRaiser {
 
   def smallPromotion(salaries: List[Double]): List[Double] =
@@ -79,7 +79,7 @@ object SalaryRaiser {
 3つのメソッドはそれぞれ掛け算の係数のみ異なることに気をつけてください。
 簡潔にするため、以下のように繰り返されているコードを高階関数に抽出することができます。
 
-```tut
+```scala mdoc
 object SalaryRaiser {
 
   private def promotion(salaries: List[Double], promotionFunction: Double => Double): List[Double] =
@@ -102,7 +102,7 @@ object SalaryRaiser {
 関数を生成したい場合がいくつかあります。
 こちらは関数を返すメソッドの例になります。
 
-```tut
+```scala mdoc
 def urlBuilder(ssl: Boolean, domainName: String): (String, String) => String = {
   val schema = if (ssl) "https://" else "http://"
   (endpoint: String, query: String) => s"$schema$domainName/$endpoint?$query"

@@ -11,7 +11,7 @@ previous-page: type-inference
 
 Każda metoda, która przyjmuje jeden parametr, może być użyta jako *operator infiksowy*. Oto definicja klasy `MyBool` która zawiera metody `and` i `or`:
 
-```tut
+```scala mdoc
 case class MyBool(x: Boolean) {
   def and(that: MyBool): MyBool = if (x) that else this
   def or(that: MyBool): MyBool = if (x) this else that
@@ -21,7 +21,7 @@ case class MyBool(x: Boolean) {
 
 Można teraz użyć `and` i `or` jako operatory infiksowe:
 
-```tut
+```scala mdoc
 def not(x: MyBool) = x.negate
 def xor(x: MyBool, y: MyBool) = (x or y) and not(x and y)
 ```
@@ -30,7 +30,7 @@ Można zauważyć, że dzięki zastosowaniu operatorów infiksowych metoda `xor`
 
 Dla porównania, oto kod który nie wykorzystuje operatorów infiksowych:
 
-```tut
+```scala mdoc
 def not(x: MyBool) = x.negate
 def xor(x: MyBool, y: MyBool) = x.or(y).and(x.and(y).negate)
 ```

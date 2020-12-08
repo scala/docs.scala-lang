@@ -31,7 +31,7 @@ Expressions are computable statements:
 You can output the results of expressions using `println`:
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 println(1) // 1
 println(1 + 1) // 2
 println("Hello!") // Hello!
@@ -43,7 +43,7 @@ println("Hello," + " world!") // Hello, world!
 
 You can name the results of expressions using the `val` keyword:
 
-```tut
+```scala mdoc
 val x = 1 + 1
 println(x) // 2
 ```
@@ -53,13 +53,13 @@ a value does not re-compute it.
 
 Values cannot be re-assigned:
 
-```tut:fail
+```scala mdoc:fail
 x = 3 // This does not compile.
 ```
 
 The type of a value can be omitted and [inferred](https://docs.scala-lang.org/tour/type-inference.html), or it can be explicitly stated:
 
-```tut
+```scala mdoc
 val x: Int = 1 + 1
 ```
 
@@ -69,7 +69,7 @@ Notice how the type declaration `Int` comes after the identifier `x`. You also n
 
 Variables are like values, except you can re-assign them. You can define a variable with the `var` keyword.
 
-```tut
+```scala mdoc
 var x = 1 + 1
 x = 3 // This compiles because "x" is declared with the "var" keyword.
 println(x * x) // 9
@@ -77,7 +77,7 @@ println(x * x) // 9
 
 As with values, the type of a variable can be omitted and [inferred](https://docs.scala-lang.org/tour/type-inference.html), or it can be explicitly stated:
 
-```tut
+```scala mdoc
 var x: Int = 1 + 1
 ```
 
@@ -88,7 +88,7 @@ You can combine expressions by surrounding them with `{}`. We call this a block.
 
 The result of the last expression in the block is the result of the overall block, too:
 
-```tut
+```scala mdoc
 println({
   val x = 1 + 1
   x + 1
@@ -101,7 +101,7 @@ Functions are expressions that have parameters, and take arguments.
 
 You can define an anonymous function (i.e., a function that has no name) that returns a given integer plus one:
 
-```tut
+```scala mdoc
 (x: Int) => x + 1
 ```
 
@@ -110,7 +110,7 @@ On the left of `=>` is a list of parameters. On the right is an expression invol
 You can also name functions:
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 val addOne = (x: Int) => x + 1
 println(addOne(1)) // 2
 ```
@@ -119,7 +119,7 @@ println(addOne(1)) // 2
 A function can have multiple parameters:
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 val add = (x: Int, y: Int) => x + y
 println(add(1, 2)) // 3
 ```
@@ -127,7 +127,7 @@ println(add(1, 2)) // 3
 
 Or it can have no parameters at all:
 
-```tut
+```scala mdoc
 val getTheAnswer = () => 42
 println(getTheAnswer()) // 42
 ```
@@ -139,7 +139,7 @@ Methods look and behave very similar to functions, but there are a few key diffe
 Methods are defined with the `def` keyword.  `def` is followed by a name, parameter list(s), a return type, and a body:
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 def add(x: Int, y: Int): Int = x + y
 println(add(1, 2)) // 3
 ```
@@ -150,7 +150,7 @@ Notice how the return type `Int` is declared _after_ the parameter list and a `:
 A method can take multiple parameter lists:
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 def addThenMultiply(x: Int, y: Int)(multiplier: Int): Int = (x + y) * multiplier
 println(addThenMultiply(1, 2)(3)) // 9
 ```
@@ -158,7 +158,7 @@ println(addThenMultiply(1, 2)(3)) // 9
 
 Or no parameter lists at all:
 
-```tut
+```scala mdoc
 def name: String = System.getProperty("user.name")
 println("Hello, " + name + "!")
 ```
@@ -168,7 +168,7 @@ There are some other differences, but for now, you can think of methods as somet
 Methods can have multi-line expressions as well:
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 def getSquareString(input: Double): String = {
   val square = input * input
   square.toString
@@ -183,7 +183,7 @@ The last expression in the body is the method's return value. (Scala does have a
 
 You can define classes with the `class` keyword, followed by its name and constructor parameters:
 
-```tut
+```scala mdoc
 class Greeter(prefix: String, suffix: String) {
   def greet(name: String): Unit =
     println(prefix + name + suffix)
@@ -193,7 +193,7 @@ The return type of the method `greet` is `Unit`, which signifies that there is n
 
 You can make an instance of a class with the `new` keyword:
 
-```tut
+```scala mdoc
 val greeter = new Greeter("Hello, ", "!")
 greeter.greet("Scala developer") // Hello, Scala developer!
 ```
@@ -206,13 +206,13 @@ Scala has a special type of class called a "case" class. By default, instances o
 
 You can define case classes with the `case class` keywords:
 
-```tut
+```scala mdoc
 case class Point(x: Int, y: Int)
 ```
 
 You can instantiate case classes without the `new` keyword:
 
-```tut
+```scala mdoc
 val point = Point(1, 2)
 val anotherPoint = Point(1, 2)
 val yetAnotherPoint = Point(2, 2)
@@ -220,7 +220,7 @@ val yetAnotherPoint = Point(2, 2)
 
 Instances of case classes are compared by value, not by reference:
 
-```tut
+```scala mdoc
 if (point == anotherPoint) {
   println(point + " and " + anotherPoint + " are the same.")
 } else {
@@ -242,7 +242,7 @@ Objects are single instances of their own definitions. You can think of them as 
 
 You can define objects with the `object` keyword:
 
-```tut
+```scala mdoc
 object IdFactory {
   private var counter = 0
   def create(): Int = {
@@ -254,7 +254,7 @@ object IdFactory {
 
 You can access an object by referring to its name:
 
-```tut
+```scala mdoc
 val newId: Int = IdFactory.create()
 println(newId) // 1
 val newerId: Int = IdFactory.create()
@@ -269,7 +269,7 @@ Traits are abstract data types containing certain fields and methods. In Scala i
 
 You can define traits with the `trait` keyword:
 
-```tut
+```scala mdoc
 trait Greeter {
   def greet(name: String): Unit
 }
@@ -278,7 +278,7 @@ trait Greeter {
 Traits can also have default implementations:
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 trait Greeter {
   def greet(name: String): Unit =
     println("Hello, " + name + "!")
@@ -287,7 +287,7 @@ trait Greeter {
 
 You can extend traits with the `extends` keyword and override an implementation with the `override` keyword:
 
-```tut
+```scala mdoc
 class DefaultGreeter extends Greeter
 
 class CustomizableGreeter(prefix: String, postfix: String) extends Greeter {
@@ -316,7 +316,7 @@ argument: an array of strings.
 
 Using an object, you can define the main method as follows:
 
-```tut
+```scala mdoc
 object Main {
   def main(args: Array[String]): Unit =
     println("Hello, Scala developer!")

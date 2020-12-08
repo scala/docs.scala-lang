@@ -17,7 +17,7 @@ Scalaではメソッドの定義をネストする（_訳注：入れ子にす�
 以下のコードは与えられた数値の階乗を計算するための`factorial`メソッドを提供します。
 
 {% scalafiddle %}
-```tut
+```scala mdoc
  def factorial(x: Int): Int = {
     def fact(x: Int, accumulator: Int): Int = {
       if (x <= 1) accumulator

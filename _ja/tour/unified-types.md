@@ -35,7 +35,7 @@ null非許容です。
 
 以下にstring、integer、character、boolean、関数が他のオブジェクトと同様に全てオブジェクトであるという例を示します。
 
-```tut
+```scala mdoc
 val list: List[Any] = List(
   "a string",
   732,  // integer
@@ -67,7 +67,7 @@ true
 
 例えば、
 
-```tut
+```scala mdoc
 val x: Long = 987654321
 val y: Float = x  // 9.8765434E8 (この場合精度が落ちることに注意してください)
 

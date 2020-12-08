@@ -20,7 +20,7 @@ In a pure Object Oriented world a good practice is to avoid exposing methods par
 
 One of the most common examples is the higher-order
 function `map` which is available for collections in Scala.
-```tut
+```scala mdoc
 val salaries = Seq(20000, 70000, 40000)
 val doubleSalary = (x: Int) => x * 2
 val newSalaries = salaries.map(doubleSalary) // List(40000, 140000, 80000)
@@ -37,7 +37,7 @@ val newSalaries = salaries.map(x => x * 2) // List(40000, 140000, 80000)
 Notice how `x` is not declared as an Int in the above example. That's because the
 compiler can infer the type based on the type of function map expects (see [Currying](/tour/multiple-parameter-lists.html). An even more idiomatic way to write the same piece of code would be:
 
-```tut
+```scala mdoc
 val salaries = Seq(20000, 70000, 40000)
 val newSalaries = salaries.map(_ * 2)
 ```
@@ -64,7 +64,7 @@ Here the method `convertCtoF` is passed to the higher order function `map`. This
 One reason to use higher-order functions is to reduce redundant code. Let's say you wanted some methods that could raise someone's salaries by various factors. Without creating a higher-order function,
 it might look something like this:
 
-```tut
+```scala mdoc
 object SalaryRaiser {
 
   def smallPromotion(salaries: List[Double]): List[Double] =
@@ -81,7 +81,7 @@ object SalaryRaiser {
 Notice how each of the three methods vary only by the multiplication factor. To simplify,
 you can extract the repeated code into a higher-order function like so:
 
-```tut
+```scala mdoc
 object SalaryRaiser {
 
   private def promotion(salaries: List[Double], promotionFunction: Double => Double): List[Double] =
@@ -108,7 +108,7 @@ Methods and functions usually express behaviours or data transformations, theref
 There are certain cases where you want to generate a function. Here's an example
 of a method that returns a function.
 
-```tut
+```scala mdoc
 def urlBuilder(ssl: Boolean, domainName: String): (String, String) => String = {
   val schema = if (ssl) "https://" else "http://"
   (endpoint: String, query: String) => s"$schema$domainName/$endpoint?$query"

@@ -14,7 +14,7 @@ In Scala it is possible to let classes have other classes as members. As opposed
 
 To illustrate the difference, we quickly sketch the implementation of a graph datatype:
 
-```tut
+```scala mdoc
 class Graph {
   class Node {
     var connectedNodes: List[Node] = Nil
@@ -34,7 +34,7 @@ class Graph {
 ```
 This program represents a graph as a list of nodes (`List[Node]`). Each node has a list of other nodes it's connected to (`connectedNodes`). The `class Node` is a _path-dependent type_ because it is nested in the `class Graph`. Therefore, all nodes in the `connectedNodes` must be created using the `newNode` from the same instance of `Graph`.
 
-```tut
+```scala mdoc
 val graph1: Graph = new Graph
 val node1: graph1.Node = graph1.newNode
 val node2: graph1.Node = graph1.newNode
@@ -58,7 +58,7 @@ node1.connectTo(node3)      // illegal!
 ```
 The type `graph1.Node` is distinct from the type `graph2.Node`. In Java, the last line in the previous example program would have been correct. For nodes of both graphs, Java would assign the same type `Graph.Node`; i.e. `Node` is prefixed with class `Graph`. In Scala such a type can be expressed as well, it is written `Graph#Node`. If we want to be able to connect nodes of different graphs, we have to change the definition of our initial graph implementation in the following way:
 
-```tut
+```scala mdoc
 class Graph {
   class Node {
     var connectedNodes: List[Graph#Node] = Nil

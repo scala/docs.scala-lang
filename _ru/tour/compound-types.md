@@ -17,7 +17,7 @@ previous-page: abstract-type-members
 
 Предположим, у нас есть два трейта: `Cloneable` и `Resetable`:
 
-```tut
+```scala mdoc
 trait Cloneable extends java.lang.Cloneable {
   override def clone(): Cloneable = {
     super.clone().asInstanceOf[Cloneable]

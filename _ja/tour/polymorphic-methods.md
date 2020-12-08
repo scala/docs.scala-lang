@@ -20,7 +20,7 @@ Scalaのメソッドは値と同様に型によってパラメータ化するこ
 
 こちらが例です。
 
-```tut
+```scala mdoc
 def listOfDuplicates[A](x: A, length: Int): List[A] = {
   if (length < 1)
     Nil

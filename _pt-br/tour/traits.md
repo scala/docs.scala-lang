@@ -12,7 +12,7 @@ language: pt-br
 Similar a interfaces em Java, traits são utilizadas para definir tipos de objetos apenas especificando as assinaturas dos métodos suportados. Como em Java 8, Scala permite que traits sejam parcialmente implementadas; ex. é possível definir uma implementação padrão para alguns métodos. Diferentemente de classes, traits não precisam ter construtores com parâmetros.
 Veja o exemplo a seguir:
  
-```tut
+```scala mdoc
 trait Similaridade {
   def eSemelhante(x: Any): Boolean
   def naoESemelhante(x: Any): Boolean = !eSemelhante(x)
@@ -21,7 +21,7 @@ trait Similaridade {
  
 Tal trait consiste em dois métodos `eSemelhante` e `naoESemelhante`. Equanto `eSemelhante` não fornece um método com implementação concreta (que é semelhante ao abstract na linguagem Java), o método `naoESemelhante` define um implementação concreta. Consequentemente, classes que integram essa trait só precisam fornecer uma implementação concreta para o método `eSemelhante`. O comportamento para `naoESemelhante` é herdado diretamente da trait. Traits são tipicamente integradas a uma [classe](classes.html) (ou outras traits) utilizando a [composição mesclada de classes](mixin-class-composition.html):
  
-```tut
+```scala mdoc
 class Point(xc: Int, yc: Int) extends Similaridade {
   var x: Int = xc
   var y: Int = yc

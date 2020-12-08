@@ -15,7 +15,7 @@ Métodos podem definir múltiplas listas de parâmetros. Quando um método é ch
 
 Aqui um exemplo:
 
-```tut
+```scala mdoc
 object CurryTest extends App {
 
   def filter(xs: List[Int], p: Int => Boolean): List[Int] =

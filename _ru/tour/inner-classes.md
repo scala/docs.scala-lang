@@ -17,7 +17,7 @@ previous-page: lower-type-bounds
 
 Чтобы проиллюстрировать суть подхода, мы быстро набросаем реализацию такого графа:
 
-```tut
+```scala mdoc
 class Graph {
   class Node {
     var connectedNodes: List[Node] = Nil
@@ -37,7 +37,7 @@ class Graph {
 ```
 Данная программа представляет собой граф в составленного из списка узлов (`List[Node]`). Каждый узел имеет список других узлов, с которым он связан (`connectedNodes`). Класс `Node` является _зависимым от месторасположения типом_, поскольку он вложен в `Class Graph`. Поэтому все узлы в `connectedNodes` должны быть созданы с использованием `newNode` из одного и того же экземпляра `Graph`.
 
-```tut
+```scala mdoc
 val graph1: Graph = new Graph
 val node1: graph1.Node = graph1.newNode
 val node2: graph1.Node = graph1.newNode
@@ -61,7 +61,7 @@ node1.connectTo(node3)      // не работает!
 ```
 Тип `graph1.Node` отличается от типа `graph2.Node`. В Java последняя строка в предыдущем примере программы была бы правильной. Для узлов обоих графов Java будет присваивать один и тот же тип `Graph.Node`, т.е. `Node` имеет префикс класса `Graph`. В Скале такой тип также может быть выражен, он записывается `Graph#Node`. Если мы хотим иметь возможность соединять узлы разных графов, то вам нужно изменить описание первоначальной реализации графов следующим образом:
 
-```tut
+```scala mdoc
 class Graph {
   class Node {
     var connectedNodes: List[Graph#Node] = Nil

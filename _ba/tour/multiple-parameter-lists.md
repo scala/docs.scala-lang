@@ -16,7 +16,7 @@ onda će to vratiti funkciju koja prima preostale liste parametara kao argumente
 
 Primjer:
 
-```tut
+```scala mdoc
 object CurryTest extends App {
 
   def filter(xs: List[Int], p: Int => Boolean): List[Int] =

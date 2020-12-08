@@ -11,7 +11,7 @@ previous-page: lower-type-bounds
 
 W Scali możliwe jest zdefiniowanie klasy jako element innej klasy. W przeciwieństwie do języków takich jak Java, gdzie tego typu wewnętrzne klasy są elementami ujmujących ich klas, w Scali są one związane z zewnętrznym obiektem. Aby zademonstrować tę różnicę, stworzymy teraz prostą implementację grafu:
  
-```tut
+```scala mdoc
 class Graph {
   class Node {
     var connectedNodes: List[Node] = Nil
@@ -32,7 +32,7 @@ class Graph {
  
 W naszym programie grafy są reprezentowane przez listę wierzchołków. Wierzchołki są obiektami klasy wewnętrznej `Node`. Każdy wierzchołek zawiera listę sąsiadów, które są przechowywane w liście `connectedNodes`. Możemy teraz skonfigurować graf z kilkoma wierzchołkami i połączyć je ze sobą:
  
-```tut
+```scala mdoc
 object GraphTest extends App {
   val g = new Graph
   val n1 = g.newNode
@@ -45,7 +45,7 @@ object GraphTest extends App {
  
 Teraz wzbogacimy nasz przykład o jawne typowanie, aby można było zobaczyć powiązanie typów wierzchołków z grafem:
  
-```tut
+```scala mdoc
 object GraphTest extends App {
   val g: Graph = new Graph
   val n1: g.Node = g.newNode
@@ -60,7 +60,7 @@ Ten kod pokazuje, że typ wierzchołka jest prefiksowany przez swoją zewnętrzn
 
 Przykład niedopuszczalnego programu:
  
-```tut:fail
+```scala mdoc:fail
 object IllegalGraphTest extends App {
   val g: Graph = new Graph
   val n1: g.Node = g.newNode
@@ -74,7 +74,7 @@ object IllegalGraphTest extends App {
  
 Warto zwrócić uwagę na to, że ostatnia linia poprzedniego przykładu byłaby poprawnym programem w Javie. Dla wierzchołków obu grafów Java przypisałaby ten sam typ `Graph.Node`. W Scali także istnieje możliwość wyrażenia takiego typu, zapisując go w formie: `Graph#Node`. Jeżeli byśmy chcieli połączyć wierzchołki różnych grafów, musielibyśmy wtedy zmienić definicję implementacji naszego grafu w następujący sposób:
  
-```tut
+```scala mdoc
 class Graph {
   class Node {
     var connectedNodes: List[Graph#Node] = Nil

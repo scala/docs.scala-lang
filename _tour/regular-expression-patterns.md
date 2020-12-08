@@ -13,7 +13,7 @@ redirect_from: "/tutorials/tour/regular-expression-patterns.html"
 
 Regular expressions are strings which can be used to find patterns (or lack thereof) in data. Any string can be converted to a regular expression using the `.r` method.
 
-```tut
+```scala mdoc
 import scala.util.matching.Regex
 
 val numberPattern: Regex = "[0-9]".r
@@ -29,7 +29,7 @@ In the above example, the `numberPattern` is a `Regex`
 
 You can also search for groups of regular expressions using parentheses.
 
-```tut
+```scala mdoc
 import scala.util.matching.Regex
 
 val keyValPattern: Regex = "([0-9a-zA-Z- ]+): ([0-9a-zA-Z-#()/. ]+)".r

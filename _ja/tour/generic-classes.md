@@ -18,7 +18,7 @@ assumed-knowledge: classes unified-types
 ## ジェネリッククラスの定義
 ジェネリッククラスは角カッコ`[]`の中にパラメータとして型を1つ受け取ります。
 型パラメータの識別子として文字`A`を使う習慣がありますが、任意のパラメータ名を使うことができます。
-```tut
+```scala mdoc
 class Stack[A] {
   private var elements: List[A] = Nil
   def push(x: A) { elements = x :: elements }

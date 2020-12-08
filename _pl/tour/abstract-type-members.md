@@ -13,7 +13,7 @@ W Scali klasy są parametryzowane wartościami (parametry konstruktora) oraz typ
 
 Poniższy przykład definiuje wartość określaną przez abstrakcyjny typ będący elementem [cechy](traits.html) `Buffer`:
 
-```tut
+```scala mdoc
 trait Buffer {
   type T
   val element: T
@@ -24,7 +24,7 @@ trait Buffer {
 
 W poniższym programie definiujemy klasę `SeqBuffer`, która ogranicza możliwe typy `T` do pochodnych sekwencji `Seq[U]` dla nowego typu `U`:
 
-```tut
+```scala mdoc
 abstract class SeqBuffer extends Buffer {
   type U
   type T <: Seq[U]
@@ -34,7 +34,7 @@ abstract class SeqBuffer extends Buffer {
 
 Cechy oraz [klasy](classes.html) z abstrakcyjnymi typami są często używane w połączeniu z anonimowymi klasami. Aby to zilustrować, wykorzystamy program, w którym utworzymy bufor sekwencji ograniczony do listy liczb całkowitych:
 
-```tut
+```scala mdoc
 abstract class IntSeqBuffer extends SeqBuffer {
   type U = Int
 }
@@ -55,7 +55,7 @@ Typ zwracany przez metodę `newIntSeqBuf` nawiązuje do specjalizacji cechy `Buf
 
 Warto zwrócić uwagę, że często jest możliwa zamiana abstrakcyjnych typów w parametry typów klas i odwrotnie. Poniższy przykład stosuje wyłącznie parametry typów:
 
-```tut
+```scala mdoc
 abstract class Buffer[+T] {
   val element: T
 }

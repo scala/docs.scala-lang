@@ -18,14 +18,14 @@ values, variables, types, objects, traits, and classes which are collectively ca
 ## Defining a class
 A minimal class definition is simply the keyword `class` and
 an identifier. Class names should be capitalized.
-```tut
+```scala mdoc
 class User
 
 val user1 = new User
 ```
 The keyword `new` is used to create an instance of the class. `User` has a default constructor which takes no arguments because no constructor was defined. However, you'll often want a constructor and class body. Here is an example class definition for a point:
 
-```tut
+```scala mdoc
 class Point(var x: Int, var y: Int) {
 
   def move(dx: Int, dy: Int): Unit = {
@@ -49,7 +49,7 @@ This `Point` class has four members: the variables `x` and `y` and the methods `
 
 Constructors can have optional parameters by providing a default value like so:
 
-```tut
+```scala mdoc
 class Point(var x: Int = 0, var y: Int = 0)
 
 val origin = new Point  // x and y are both set to 0
@@ -70,7 +70,7 @@ This is also a good practice to enhance clarity.
 ## Private Members and Getter/Setter Syntax
 Members are public by default. Use the `private` access modifier
 to hide them from outside of the class.
-```tut
+```scala mdoc
 class Point {
   private var _x = 0
   private var _y = 0

@@ -14,7 +14,7 @@ Varijansa je korelacija podtipskih veza kompleksnih tipova i podtipskih veza nji
 Scala podržava anotacije varijanse tipskih parametara [generičkih klasa](generic-classes.html), dozvoljavajući im da budu kovarijantni, kontravarijantni, ili invarijantni ako se anotacije ne koriste. 
 Korištenje varijanse u sistemu tipova dozvoljava pravljenje intuitivnijih veza među kompleksnim tipovima, a nedostatak varijanse može ograničiti ponovno iskorištenje klasne apstrakcije.
 
-```tut
+```scala mdoc
 class Foo[+A] // kovarijantna klasa
 class Bar[-A] // kontravarijantna klasa
 class Baz[A]  // invarijantna klasa
@@ -28,7 +28,7 @@ Ovo dozvoljava pravljenje vrlo intuitivnih podtipskih veza koristeći generiku.
 
 Razmotrite sljedeću strukturu klasa:
 
-```tut
+```scala mdoc
 abstract class Animal {
   def name: String
 }
@@ -44,7 +44,7 @@ Intuitivno, ima smisla da su lista mačaka i lista pasa također liste životinj
 U sljedećem primjeru, metoda `printAnimalNames` prima listu životinja kao argument i ispisuje njihova imena, svako na idućoj liniji. 
 Da `List[A]` nije kovarijantna, zadnja dva poziva metode se ne bi kompajlirali, što bi značajno ograničilo korisnost `printAnimalNames` metode.
 
-```tut
+```scala mdoc
 object CovarianceTest extends App {
   def printAnimalNames(animals: List[Animal]): Unit = {
     animals.foreach { animal =>
@@ -73,7 +73,7 @@ To jest, za neku `class Writer[-A]`, kontravarijantno `A` znači da za dva tipa 
 
 Razmotrimo `Cat`, `Dog`, i `Animal` klase u sljedećem primjeru:
 
-```tut
+```scala mdoc
 abstract class Printer[-A] {
   def print(value: A): Unit
 }
@@ -81,7 +81,7 @@ abstract class Printer[-A] {
 
 `Printer[A]` je jednostavna klasa koja zna ispisati neki tip `A`. Definišimo neke podklase za specifične tipove:
 
-```tut
+```scala mdoc
 class AnimalPrinter extends Printer[Animal] {
   def print(animal: Animal): Unit =
     println("The animal's name is: " + animal.name)
@@ -99,7 +99,7 @@ Inverzna veza ne vrijedi, jer `Printer[Cat]` ne zna kako da ispiše bilo koju `A
 Stoga, terbali bismo moći zamijeniti `Printer[Animal]` za `Printer[Cat]`, ako želimo, i praveći `Printer[A]` kontravarijantnim nam to dozvoljava.
 
 
-```tut
+```scala mdoc
 object ContravarianceTest extends App {
   val myCat: Cat = Cat("Boots")
 
@@ -129,7 +129,7 @@ Ovo znač da nisu ni kovarijantne ni kontravarijantne.
 U kontekstu sljedećeg primjera, `Container` klasa je invarijantna. 
 `Container[Cat]` _nije_ `Container[Animal]`, niti obrnuto.
 
-```tut
+```scala mdoc
 class Container[A](value: A) {
   private var _value: A = value
   def getValue: A = _value
@@ -162,7 +162,7 @@ Za ovaj primjer koristićemo literal notaciju `A => B` za predstavljanje `Functi
 
 Pretpostavimo da imamo sličnu hijerarhiju klasa `Cat`, `Dog`, `Animal` otprije, plus sljedeće:
 
-```tut
+```scala mdoc
 class SmallAnimal
 class Mouse extends SmallAnimal
 ```

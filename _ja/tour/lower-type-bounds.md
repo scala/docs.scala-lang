@@ -18,7 +18,7 @@ prerequisite-knowledge: upper-type-bounds, generics, variance
 
 以下はこれが役立つ場合の例です。 
 
-```tut:fail
+```scala mdoc:fail
 trait Node[+B] {
   def prepend(elem: B): Node[B]
 }
@@ -44,7 +44,7 @@ case class Nil[+B]() extends Node[B] {
 これを解決するためには、`prepend`のパラメータ`elem`の型の変位指定を逆転させる必要があります。
 これを実現するには、下限型境界として`B`を持つ新しい型パラメータ`U`を導入します。
 
-```tut
+```scala mdoc
 trait Node[+B] {
   def prepend[U >: B](elem: U): Node[U]
 }
@@ -61,7 +61,7 @@ case class Nil[+B]() extends Node[B] {
 ```
 
 すると、以下のようなことができます。
-```tut
+```scala mdoc
 trait Bird
 case class AfricanSwallow() extends Bird
 case class EuropeanSwallow() extends Bird

@@ -13,7 +13,7 @@ Enquanto o [limitante superior de tipos](upper-type-bounds.html) limita um tipo 
 
 Aqui está um exemplo onde isso é útil:
 
-```tut
+```scala mdoc
 case class ListNode[T](h: T, t: ListNode[T]) {
   def head: T = h
   def tail: ListNode[T] = t
@@ -32,7 +32,7 @@ Infelizmente, este programa não compila, porque uma anotação de covariância 
 
 Aqui está o código correspondente:
 
-```tut
+```scala mdoc
 case class ListNode[+T](h: T, t: ListNode[T]) {
   def head: T = h
   def tail: ListNode[T] = t
@@ -45,7 +45,7 @@ _Nota:_ o novo método `prepend` tem um tipo ligeiramente menos restritivo. Perm
 
 Aqui está o código que ilustra isso:
 
-```tut
+```scala mdoc
 object LowerBoundTest extends App {
   val empty: ListNode[Null] = ListNode(null, null)
   val strList: ListNode[String] = empty.prepend("hello")

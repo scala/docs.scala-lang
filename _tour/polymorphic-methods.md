@@ -16,7 +16,7 @@ Methods in Scala can be parameterized by type as well as value. The syntax is si
 
 Here is an example:
 
-```tut
+```scala mdoc
 def listOfDuplicates[A](x: A, length: Int): List[A] = {
   if (length < 1)
     Nil

@@ -29,7 +29,7 @@ List(1, 2, 3) <= List(4, 5)
 
 在 `scala.Predef.intWrapper` 已经自动提供了一个隐式方法 `Int => Ordered[Int]`。下面提供了一个隐式方法 `List[A] => Ordered[List[A]]` 的例子。
 
-```tut
+```scala mdoc
 import scala.language.implicitConversions
 
 implicit def list2ordered[A](x: List[A])
@@ -44,7 +44,7 @@ implicit def list2ordered[A](x: List[A])
 
 例如，当调用一个接受 `java.lang.Integer` 作为参数的 Java 方法时，你完全可以传入一个 `scala.Int`。那是因为 Predef 包含了以下的隐式转换：
 
-```tut
+```scala mdoc
 import scala.language.implicitConversions
 
 implicit def int2Integer(x: Int) =

@@ -31,7 +31,7 @@ Duża część obiektów singleton nie istnieje samodzielnie, ale jest powiązan
 
 Klasa i jej obiekt towarzyszący mogą być zdefiniowane tylko w tym samym pliku, przykład:
 
-```tut
+```scala mdoc
 class IntPair(val x: Int, val y: Int)
 
 object IntPair {

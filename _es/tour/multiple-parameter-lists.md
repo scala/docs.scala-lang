@@ -27,7 +27,7 @@ def foldLeft[B](z: B)(op: (B, A) => B): B
 Comenzando con un valor inicial 0, `foldLeft` aplica la función `(m, n) => m + n` a cada uno de los elementos de la lista y al valor acumulado previo.
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 val res = numbers.foldLeft(0)((m, n) => m + n)
 println(res) // 55
@@ -38,7 +38,7 @@ println(res) // 55
 A continuación se muestra otro ejemplo:
 
 {% scalafiddle %}
-```tut
+```scala mdoc
     object CurryTest extends App {
 
       def filter(xs: List[Int], p: Int => Boolean): List[Int] =
@@ -72,19 +72,19 @@ Casos de uso sugeridos para múltiples listas de parámetros incluyen:
 En Scala, la inferencia de tipos se realiza parámetro a parámetro.
 Suponer que se dispone del siguiente método:
 
-```tut
+```scala mdoc
 def foldLeft1[A, B](as: List[A], b0: B, op: (B, A) => B) = ???
 ```
 
 Si se invoca de la siguiente manera, se puede comprobar que no compila correctamente:
 
-```tut:fail
+```scala mdoc:fail
 def notPossible = foldLeft1(numbers, 0, _ + _)
 ```
 
 Debes invocarlo de alguna de las maneras propuestas a continuación:
 
-```tut
+```scala mdoc
 def firstWay = foldLeft1[Int, Int](numbers, 0, _ + _)
 def secondWay = foldLeft1(numbers, 0, (a: Int, b: Int) => a + b)
 ```
@@ -93,7 +93,7 @@ Esto se debe a que Scala no será capaz de inferir el tipo de la función `_ + _
 Moviéndo el parámetro `op` a su propia lista de parámetros, los tipos de `A` y `B` son inferidos en la primera lista de parámetros.
 Una vez se han inferido sus tipos, estos están disponibles para la segunda lista de parámetros y `_ + _ ` podrá casar con los tipos inferidos `(Int, Int) => Int`
 
-```tut
+```scala mdoc
 def foldLeft2[A, B](as: List[A], b0: B)(op: (B, A) => B) = ???
 def possible = foldLeft2(numbers, 0)(_ + _)
 ```
@@ -117,7 +117,7 @@ Cuando un método es invocado con menos parámetros que los que están declarado
 
 Por ejemplo,
 
-```tut
+```scala mdoc
 val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 val numberFunc = numbers.foldLeft(List[Int]()) _
 

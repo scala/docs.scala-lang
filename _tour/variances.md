@@ -12,7 +12,7 @@ redirect_from: "/tutorials/tour/variances.html"
 
 Variance is the correlation of subtyping relationships of complex types and the subtyping relationships of their component types. Scala supports variance annotations of type parameters of [generic classes](generic-classes.html), to allow them to be covariant, contravariant, or invariant if no annotations are used. The use of variance in the type system allows us to make intuitive connections between complex types, whereas the lack of variance can restrict the reuse of a class abstraction.
 
-```tut
+```scala mdoc
 class Foo[+A] // A covariant class
 class Bar[-A] // A contravariant class
 class Baz[A]  // An invariant class
@@ -24,7 +24,7 @@ A type parameter `T` of a generic class can be made covariant by using the annot
 
 Consider this simple class structure:
 
-```tut
+```scala mdoc
 abstract class Animal {
   def name: String
 }
@@ -36,7 +36,7 @@ Both `Cat` and `Dog` are subtypes of `Animal`. The Scala standard library has a 
 
 In the following example, the method `printAnimalNames` will accept a list of animals as an argument and print their names each on a new line. If `List[A]` were not covariant, the last two method calls would not compile, which would severely limit the usefulness of the `printAnimalNames` method.
 
-```tut
+```scala mdoc
 def printAnimalNames(animals: List[Animal]): Unit =
   animals.foreach {
     animal => println(animal.name)
@@ -58,7 +58,7 @@ A type parameter `A` of a generic class can be made contravariant by using the a
 
 Consider the `Cat`, `Dog`, and `Animal` classes defined above for the following example:
 
-```tut
+```scala mdoc
 abstract class Printer[-A] {
   def print(value: A): Unit
 }
@@ -66,7 +66,7 @@ abstract class Printer[-A] {
 
 A `Printer[A]` is a simple class that knows how to print out some type `A`. Let's define some subclasses for specific types:
 
-```tut
+```scala mdoc
 class AnimalPrinter extends Printer[Animal] {
   def print(animal: Animal): Unit =
     println("The animal's name is: " + animal.name)
@@ -80,7 +80,7 @@ class CatPrinter extends Printer[Cat] {
 
 If a `Printer[Cat]` knows how to print any `Cat` to the console, and a `Printer[Animal]` knows how to print any `Animal` to the console, it makes sense that a `Printer[Animal]` would also know how to print any `Cat`. The inverse relationship does not apply, because a `Printer[Cat]` does not know how to print any `Animal` to the console. Therefore, we should be able to use a `Printer[Animal]` in place of `Printer[Cat]`, if we wish, and making `Printer[A]` contravariant allows us to do exactly that.
 
-```tut
+```scala mdoc
 def printMyCat(printer: Printer[Cat], cat: Cat): Unit =
   printer.print(cat)
 
@@ -102,7 +102,7 @@ The animal's name is: Boots
 
 Generic classes in Scala are invariant by default. This means that they are neither covariant nor contravariant. In the context of the following example, `Container` class is invariant. A `Container[Cat]` is _not_ a `Container[Animal]`, nor is the reverse true.
 
-```tut
+```scala mdoc
 class Container[A](value: A) {
   private var _value: A = value
   def getValue: A = _value
@@ -129,7 +129,7 @@ Another example that can help one understand variance is `trait Function1[-T, +R
 
 Assume the similar `Cat`, `Dog`, `Animal` inheritance tree used earlier, plus the following:
 
-```tut
+```scala mdoc
 abstract class SmallAnimal extends Animal
 case class Mouse(name: String) extends SmallAnimal
 ```
