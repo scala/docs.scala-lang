@@ -45,7 +45,7 @@ object GraphTest extends App {
  
 Teraz wzbogacimy nasz przykład o jawne typowanie, aby można było zobaczyć powiązanie typów wierzchołków z grafem:
  
-```scala mdoc
+```scala mdoc:nest
 object GraphTest extends App {
   val g: Graph = new Graph
   val n1: g.Node = g.newNode
@@ -74,7 +74,7 @@ object IllegalGraphTest extends App {
  
 Warto zwrócić uwagę na to, że ostatnia linia poprzedniego przykładu byłaby poprawnym programem w Javie. Dla wierzchołków obu grafów Java przypisałaby ten sam typ `Graph.Node`. W Scali także istnieje możliwość wyrażenia takiego typu, zapisując go w formie: `Graph#Node`. Jeżeli byśmy chcieli połączyć wierzchołki różnych grafów, musielibyśmy wtedy zmienić definicję implementacji naszego grafu w następujący sposób:
  
-```scala mdoc
+```scala mdoc:nest
 class Graph {
   class Node {
     var connectedNodes: List[Graph#Node] = Nil

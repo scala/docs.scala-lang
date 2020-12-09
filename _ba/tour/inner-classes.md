@@ -54,7 +54,7 @@ Da imamo dva grafa, sistem tipova Scale ne dozvoljava miješanje  čvorova defin
 jer čvorovi različitih grafova imaju različit tip.
 Ovo je primjer netačnog programa:
  
-```
+```scala mdoc:fail
 val graph1: Graph = new Graph
 val node1: graph1.Node = graph1.newNode
 val node2: graph1.Node = graph1.newNode
@@ -70,7 +70,7 @@ Za čvorove oba grafa, Java bi dodijelila isti tip `Graph.Node`; npr. `Node` bi 
 U Scali takav tip je također moguće izraziti, piše se kao `Graph#Node`.
 Ako želimo povezati čvorove različitih grafova, moramo promijeniti definiciju naše inicijalne implementacije grafa:
  
-```scala mdoc
+```scala mdoc:nest
 class Graph {
   class Node {
     var connectedNodes: List[Graph#Node] = Nil

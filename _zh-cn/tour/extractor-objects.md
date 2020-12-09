@@ -51,7 +51,7 @@ val CustomerID(name2) = "--asdfasdfasdf"
 
 如果没有匹配的值，会抛出 `scala.MatchError`：
 
-```scala mdoc:fail
+```scala
 val CustomerID(name3) = "-asdfasdfasdf"
 ```
 

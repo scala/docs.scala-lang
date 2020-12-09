@@ -55,7 +55,7 @@ val CustomerID(name2) = "--asdfasdfasdf"
 ```
 もし一致しない場合`scala.MatchError`が投げられます。
 
-```scala mdoc:fail
+```scala mdoc:crash
 val CustomerID(name3) = "-asdfasdfasdf"
 ```
 

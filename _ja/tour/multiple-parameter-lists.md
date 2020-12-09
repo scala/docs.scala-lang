@@ -19,7 +19,7 @@ previous-page: nested-functions
 
 こちらはScalaのコレクションAPIの `TraversableOnce`トレイトで定義されている実例です。
 
-```
+```scala mdoc:fail
 def foldLeft[B](z: B)(op: (B, A) => B): B
 ```
 `foldLeft`は、2つのパラメータを取る関数`op`を、初期値`z`とこのコレクションの全要素に対して左から右に適用していきます。
@@ -43,13 +43,13 @@ println(res) // 55
 複数パラメータリストがない場合、このコードは以下のようになります。
 
 
-```
+```scala mdoc:fail
 numbers.foldLeft(0, (m: Int, n: Int) => m + n)	
 ```
 
 複数パラメータリストを使うことで、Scalaの型インターフェースの利点を享受でき、以下のようにコードをより簡潔にすることができるのです。
 
-```
+```scala mdoc
 numbers.foldLeft(0)(_ + _)
 ```
 単一のパラメータリストではScalaコンパイラが関数のパラメータを型推論できないので、このようなことはできません。
@@ -58,7 +58,7 @@ numbers.foldLeft(0)(_ + _)
 特定のパラメータだけを`implicit`として指定するには、`implicit`のパラメーターリストに入れなければなりません。
 こちらが例です。
 
-```
+```scala mdoc
 def execute(arg: Int)(implicit ec: scala.concurrent.ExecutionContext) = ???
 ```
 
@@ -68,7 +68,7 @@ def execute(arg: Int)(implicit ec: scala.concurrent.ExecutionContext) = ???
 これは一般的に[部分適用](https://en.wikipedia.org/wiki/Partial_application)として知られています。
 
 例えば
-```scala mdoc
+```scala mdoc:nest
 val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 val numberFunc = numbers.foldLeft(List[Int]()) _
 val squares = numberFunc((xs, x) => xs :+ x*x)

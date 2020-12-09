@@ -22,7 +22,7 @@ imprimeNome(sobrenome = "Smith",nome = "John") // Imprime "John Smith"
 
 Perceba que a ordem não importa quando você utiliza parâmetros nomeados nas chamadas de métodos e funções, desde que todos os parâmetros sejam declarados.  Essa funcionalidade pode ser combinada com [parâmetros com valor padrão](default-parameter-values.html):
 
-```scala mdoc
+```scala mdoc:nest
 def imprimeNome(nome:String = "John", sobrenome:String = "Smith") = {
   println(nome + " " + sobrenome)
 }

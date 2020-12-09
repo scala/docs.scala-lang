@@ -61,7 +61,7 @@ Seq(1, 3, 4).map(x => x * 2)  // List(2, 6, 8)
 
 此外，类型推断有时会推断出太具体的类型。 假设我们这么写：
 
-```scala mdoc
+```scala
 var obj = null
 ```
 

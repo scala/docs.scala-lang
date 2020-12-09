@@ -39,7 +39,7 @@ Aby rozszerzyć cechę należy użyć słowa kluczowego `extends`.
 Następnie wymagane jest zaimplementowanie abstrakcyjnych składników danej cechy używając słowa kluczowego `override.`
 
 {% scalafiddle %}
-```scala mdoc
+```scala mdoc:nest
 trait Iterator[A] {
   def hasNext: Boolean
   def next(): A

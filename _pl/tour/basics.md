@@ -28,7 +28,7 @@ dzięki czemu można je wypróbować wciskając po prostu przycisk "Run".
 
 Wyrażenia są rezultatem ewaluacji fragmentów kodu.
 
-```
+```scala mdoc
 1 + 1
 ```
 
@@ -63,7 +63,7 @@ x = 3 // Nie kompiluje się.
 
 Typy wartości mogą być wywnioskowane przez kompilator, ale można również wyraźnie określić type:
 
-```scala mdoc
+```scala mdoc:nest
 val x: Int = 1 + 1
 ```
 
@@ -75,7 +75,7 @@ Zmienne są podobne do wartości, ale z tym wyjątkiem, że można je ponownie p
 Zmienną można zdefiniować używając słowa kluczowego `var`.
 
 {% scalafiddle %}
-```scala mdoc
+```scala mdoc:nest
 var x = 1 + 1
 x = 3 // Kompiluje się, ponieważ "x" jest zdefiniowane z użyciem "var".
 println(x * x) // 9
@@ -84,7 +84,7 @@ println(x * x) // 9
 
 Tak jak przy wartościach, można wyraźnie zdefiniować żądany typ:
 
-```scala mdoc
+```scala mdoc:nest
 var x: Int = 1 + 1
 ```
 
@@ -151,7 +151,7 @@ Metody są definiowane z użyciem słowa kluczowego `def`.
 Po `def` następuje nazwa metody, lista parametrów, zwracany typ i ciało metody.
 
 {% scalafiddle %}
-```scala mdoc
+```scala mdoc:nest
 def add(x: Int, y: Int): Int = x + y
 println(add(1, 2)) // 3
 ```
@@ -296,7 +296,7 @@ Wiele cech może być łączonych.
 
 Cechę (trait) można zdefiniować używając słowa kluczowego `trait`.
 
-```scala mdoc
+```scala mdoc:nest
 trait Greeter {
   def greet(name: String): Unit
 }
@@ -305,7 +305,7 @@ trait Greeter {
 Cechy mogą zawierać domyślną implementację.
 
 {% scalafiddle %}
-```scala mdoc
+```scala mdoc:reset
 trait Greeter {
   def greet(name: String): Unit =
     println("Hello, " + name + "!")

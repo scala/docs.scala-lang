@@ -30,7 +30,7 @@ Można zauważyć, że dzięki zastosowaniu operatorów infiksowych metoda `xor`
 
 Dla porównania, oto kod który nie wykorzystuje operatorów infiksowych:
 
-```scala mdoc
+```scala mdoc:nest
 def not(x: MyBool) = x.negate
 def xor(x: MyBool, y: MyBool) = x.or(y).and(x.and(y).negate)
 ```

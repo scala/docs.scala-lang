@@ -16,7 +16,7 @@ Methods may have multiple parameter lists.
 
 Here is an example, as defined on the `Iterable` trait in Scala's collections API:
 
-```
+```scala
 trait Iterable[A] {
   ...
   def foldLeft[B](z: B)(op: (B, A) => B): B
@@ -78,7 +78,7 @@ To specify only certain parameters as [`implicit`](https://docs.scala-lang.org/t
 
 An example of this is:
 
-```
+```scala mdoc
 def execute(arg: Int)(implicit ec: scala.concurrent.ExecutionContext) = ???
 ```
 
@@ -88,7 +88,7 @@ When a method is called with a fewer number of parameter lists, then this will y
 
 For example,
 
-```scala mdoc
+```scala mdoc:nest
 val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 val numberFunc = numbers.foldLeft(List[Int]()) _
 

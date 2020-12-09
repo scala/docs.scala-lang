@@ -34,7 +34,7 @@ val point1 = new Point(y = 1)
 
 Scalaで定義したデフォルトパラメータはJavaのコードから呼び出される時はオプショナルではありません。
 
-```scala mdoc
+```scala mdoc:reset
 // Point.scala
 class Point(val x: Double = 0, val y: Double = 0)
 ```

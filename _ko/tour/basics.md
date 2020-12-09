@@ -25,10 +25,10 @@ ScalaFiddle를 사용하면 브라우저에서 스칼라를 실행해 볼 수 �
 이 페이지의 많은 예제 코드가 ScalaFiddle와 통합되어 있어 간단히 실행 버튼만 눌러 직접 실험해 볼 수 있다.
 
 ## 표현식
-  
+
 표현식은 연산 가능한 명령문이다.
 
-```
+```scala mdoc
 1 + 1
 ```
 
@@ -60,7 +60,7 @@ x = 3 // This does not compile.
 
 값의 타입을 추론할 수 있지만 명시적으로 타입을 지정할 수도 있다.
 
-```scala mdoc
+```scala mdoc:nest
 val x: Int = 1 + 1
 ```
 
@@ -70,7 +70,7 @@ val x: Int = 1 + 1
 
 변수는 재할당이 가능한 것 이외에는 값과 같다. `var` 키워드로 변수를 정의한다.
 
-```scala mdoc
+```scala mdoc:nest
 var x = 1 + 1
 x = 3 // This compiles because "x" is declared with the "var" keyword.
 println(x * x) // 9
@@ -78,7 +78,7 @@ println(x * x) // 9
 
 값처럼 명시적으로 타입을 지정할 수도 있다.
 
-```scala mdoc
+```scala mdoc:nest
 var x: Int = 1 + 1
 ```
 
@@ -140,7 +140,7 @@ println(getTheAnswer()) // 42
 `def` 키워드로 메소드를 정의하고 이름, 매개변수 목록, 반환 타입 그리고 본문이 뒤따른다.
 
 {% scalafiddle %}
-```scala mdoc
+```scala mdoc:nest
 def add(x: Int, y: Int): Int = x + y
 println(add(1, 2)) // 3
 ```
@@ -269,7 +269,7 @@ println(newerId) // 2
 
 `trait` 키워드로 트레이트를 정의한다.
 
-```scala mdoc
+```scala mdoc:nest
 trait Greeter {
   def greet(name: String): Unit
 }
@@ -278,7 +278,7 @@ trait Greeter {
 또한 트레이트는 기본 구현도 가질 수 있다.
 
 {% scalafiddle %}
-```scala mdoc
+```scala mdoc:reset
 trait Greeter {
   def greet(name: String): Unit =
     println("Hello, " + name + "!")

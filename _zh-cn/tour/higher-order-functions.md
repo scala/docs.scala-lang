@@ -63,7 +63,7 @@ object SalaryRaiser {
 
 注意这三个方法的差异仅仅是提升的比例不同，为了简化代码，其实可以把重复的代码提到一个高阶函数中：
 
-```scala mdoc
+```scala mdoc:nest
 object SalaryRaiser {
 
   private def promotion(salaries: List[Double], promotionFunction: Double => Double): List[Double] =

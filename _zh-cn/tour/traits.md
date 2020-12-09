@@ -37,7 +37,7 @@ trait Iterator[A] {
 ## 使用特质
 使用 `extends` 关键字来扩展特征。然后使用 `override` 关键字来实现trait里面的任何抽象成员：
 
-```scala mdoc
+```scala mdoc:nest
 trait Iterator[A] {
   def hasNext: Boolean
   def next(): A

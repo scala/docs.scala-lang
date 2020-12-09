@@ -32,7 +32,7 @@ trait Iterator[A] {
 
 ## 트레잇 사용하기
 `extends` 예약어를 사용하여 트레잇을 확장하십시오. 그런 다음 `override` 예약어를 사용하여 트레잇의 추상 멤버를 구현하십시오:
-```scala mdoc
+```scala mdoc:nest
 trait Iterator[A] {
   def hasNext: Boolean
   def next(): A

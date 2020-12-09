@@ -25,7 +25,7 @@ class Decorator(left: String, right: String) {
 }
 
 object FunTest extends App {
-  def apply(f: Int => String, v: Int) = f(v)
+  override def apply(f: Int => String, v: Int) = f(v)
   val decorator = new Decorator("[", "]")
   println(apply(decorator.layout, 7))
 }

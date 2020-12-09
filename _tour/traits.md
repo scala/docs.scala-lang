@@ -33,7 +33,7 @@ Extending the `trait Iterator[A]` requires a type `A` and implementations of the
 
 ## Using traits
 Use the `extends` keyword to extend a trait. Then implement any abstract members of the trait using the `override` keyword:
-```scala mdoc
+```scala mdoc:nest
 trait Iterator[A] {
   def hasNext: Boolean
   def next(): A

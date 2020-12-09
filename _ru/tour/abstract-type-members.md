@@ -56,7 +56,7 @@ println("content = " + buf.element)
 
 Мы можем вывести тип класса из типа его членов и наоборот. Приведем версию кода, в которой выводится тип класса из типа его члена:
 
-```scala mdoc
+```scala mdoc:nest
 abstract class Buffer[+T] {
   val element: T
 }

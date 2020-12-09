@@ -5,8 +5,8 @@
 set -eux
 
 bundle install
-./scripts/run-tut.sh
-rm -r tut-tmp
+./scripts/run-mdoc.sh
+rm -r /tmp/mdoc-out/
 bundle exec jekyll build
 
 # Checking for docs.scala-lang/blob/master leads to a chicken and egg problem because of the edit links of new pages.

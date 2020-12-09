@@ -32,7 +32,7 @@ trait Iterator[A] {
 
 ## การใช้ traits
 ใช้ keyword `extends` เพื่อขยาย trait ดังนั้นจะ implement abstract member ใดๆ ของ trait โดยใช้ keyword `override`:
-```scala mdoc
+```scala mdoc:nest
 trait Iterator[A] {
   def hasNext: Boolean
   def next(): A

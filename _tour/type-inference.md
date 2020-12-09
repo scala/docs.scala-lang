@@ -58,7 +58,7 @@ It is generally considered more readable to declare the type of members exposed 
 
 Also, type inference can sometimes infer a too-specific type.  Suppose we write:
 
-```scala mdoc
+```scala
 var obj = null
 ```
 

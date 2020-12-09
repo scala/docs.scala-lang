@@ -18,7 +18,7 @@ Los métodos pueden definir múltiples listas de parámetros. Cuando un método 
 
 A continuación hay un ejemplo, tal y como se define en el trait `TraversableOnce` en el API de colecciones de Scala:
 
-```
+```scala mdoc:fail
 def foldLeft[B](z: B)(op: (B, A) => B): B
 ```
 
@@ -59,9 +59,10 @@ _Nota: el método `modN` está parcialmente aplicado en las dos llamadas a `filt
 
 Aquí se muestra la salida del programa anterior:
 
-    List(2,4,6,8)
-    List(3,6)
-
+```scala mdoc
+List(2,4,6,8)
+List(3,6)
+```
 
 ### Casos de uso
 
@@ -107,7 +108,7 @@ Para especificar solamente ciertos parámetros como [`implicit`](https://docs.sc
 
 Un ejemplo de esto se muestra a continuación:
 
-```
+```scala mdoc
 def execute(arg: Int)(implicit ec: scala.concurrent.ExecutionContext) = ???
 ```
 
@@ -117,7 +118,7 @@ Cuando un método es invocado con menos parámetros que los que están declarado
 
 Por ejemplo,
 
-```scala mdoc
+```scala mdoc:nest
 val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 val numberFunc = numbers.foldLeft(List[Int]()) _
 

@@ -32,7 +32,7 @@ ScalaFiddleを利用することでブラウザ上でScalaを実行すること�
 
 式は計算可能な文です。
 
-```
+```scala mdoc
 1 + 1
 ```
 `println`を使うことで、式の結果を出力できます。
@@ -66,7 +66,7 @@ x = 3 // この記述はコンパイルされません。
 
 値の型は推測可能ですが、このように型を明示的に宣言することもできます。
 
-```scala mdoc
+```scala mdoc:nest
 val x: Int = 1 + 1
 ```
 
@@ -77,7 +77,7 @@ val x: Int = 1 + 1
 再代入ができることを除けば、変数は値と似ています。
 `var`キーワードを使うことで、変数は定義できます。
 
-```scala mdoc
+```scala mdoc:nest
 var x = 1 + 1
 x = 3 // "x"は"var"キーワードで宣言されているので、これはコンパイルされます。
 println(x * x) // 9
@@ -85,7 +85,7 @@ println(x * x) // 9
 
 値と同様に、型を宣言したければ、明示的に型を宣言することができます。
 
-```scala mdoc
+```scala mdoc:nest
 var x: Int = 1 + 1
 ```
 
@@ -145,7 +145,7 @@ println(getTheAnswer()) // 42
 メソッドは `def` キーワードで定義されます。 `def` の後ろには名前、パラメーターリスト、戻り値の型、処理の内容が続きます。
 
 {% scalafiddle %}
-```scala mdoc
+```scala mdoc:nest
 def add(x: Int, y: Int): Int = x + y
 println(add(1, 2)) // 3
 ```
@@ -275,7 +275,7 @@ println(newerId) // 2
 
 `trait`キーワードでトレイトを定義することができます。
 
-```scala mdoc
+```scala mdoc:nest
 trait Greeter {
   def greet(name: String): Unit
 }
@@ -284,7 +284,7 @@ trait Greeter {
 トレイトはデフォルトの実装を持つこともできます。
 
 {% scalafiddle %}
-```scala mdoc
+```scala mdoc:reset
 trait Greeter {
   def greet(name: String): Unit =
     println("Hello, " + name + "!")

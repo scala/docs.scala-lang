@@ -30,7 +30,7 @@ Isso ajuda a tornar a definição de `xor` mais legível.
 
 Aqui está o código correspondente em uma sintaxe de linguagem de programação orientada a objetos mais tradicional:
 
-```scala mdoc
+```scala mdoc:nest
 def not(x: MyBool) = x.negate
 def xor(x: MyBool, y: MyBool) = x.or(y).and(x.and(y).negate)
 ```

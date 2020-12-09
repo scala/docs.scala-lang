@@ -37,7 +37,7 @@ trait Iterator[A] {
 
 ## トレイトの使い方
 トレイトを継承するには `extends` キーワードを使います。その際に、 `override` キーワードを利用しすべての抽象メンバーを実装します。
-```scala mdoc
+```scala mdoc:nest
 trait Iterator[A] {
   def hasNext: Boolean
   def next(): A

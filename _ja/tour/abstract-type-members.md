@@ -57,7 +57,7 @@ println("content = " + buf.element)
 
 抽象型メンバーをクラスの型パラメータに変えることも、その逆も可能です。以下は上記コードの型パラメータのみを使うバージョンです。
 
-```scala mdoc
+```scala mdoc:nest
 abstract class Buffer[+T] {
   val element: T
 }

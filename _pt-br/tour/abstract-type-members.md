@@ -55,22 +55,20 @@ O tipo de retorno do método `newIntSeqBuf` refere-se a uma especialização da 
 
 Observe que muitas vezes é possível transformar os membros de tipo abstrato em parâmetros de tipo de classes e vice-versa. Aqui está uma versão do código acima que usa apenas parâmetros de tipo:
 
-```scala mdoc
+```scala mdoc:nest
 abstract class Buffer[+T] {
   val element: T
 }
 abstract class SeqBuffer[U, +T <: Seq[U]] extends Buffer[T] {
   def length = element.length
 }
-object AbstractTypeTest2 extends App {
-  def newIntSeqBuf(e1: Int, e2: Int): SeqBuffer[Int, Seq[Int]] =
-    new SeqBuffer[Int, List[Int]] {
-      val element = List(e1, e2)
-    }
-  val buf = newIntSeqBuf(7, 8)
-  println("length = " + buf.length)
-  println("content = " + buf.element)
-}
+def newIntSeqBuf(e1: Int, e2: Int): SeqBuffer[Int, Seq[Int]] =
+  new SeqBuffer[Int, List[Int]] {
+    val element = List(e1, e2)
+  }
+val buf = newIntSeqBuf(7, 8)
+println("length = " + buf.length)
+println("content = " + buf.element)
 ```
 
 Note que temos que usar [anotação de variância](variances.html) aqui; Caso contrário, não seríamos capazes de ocultar o tipo implementado pela sequência concreta do objeto retornado pelo método `newIntSeqBuf`. Além disso, há casos em que não é possível substituir tipos abstratos com parâmetros de tipo.

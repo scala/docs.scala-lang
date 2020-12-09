@@ -27,13 +27,13 @@ val newSalaries = salaries.map(doubleSalary) // List(40000, 140000, 80000)
 `doubleSalary` - это функция, которая принимает один Int `x` и возвращает `x * 2`. В общем случае, кортеж (список имен в скобках) слева от стрелки `=>` - это список параметров, а значение выражения следует справа. Это же значение возвращается в качестве результата. В строке 3 к каждому элементу списка зарплат (salaries) применяется функция `doubleSalary`.
 
 Чтобы сократить код, мы можем сделать функцию анонимной и передать ее напрямую в качестве аргумента в map:
-```
+```scala mdoc:nest
 val salaries = Seq(20000, 70000, 40000)
 val newSalaries = salaries.map(x => x * 2) // List(40000, 140000, 80000)
 ```
 Обратите внимание, что в приведенном выше примере `x`не объявлен как `Int`. Это потому, что компилятор может вывести тип, основываясь на типе который ожидает функция map. Еще более элегантным способом написания этого же кода было бы таким:
 
-```scala mdoc
+```scala mdoc:nest
 val salaries = Seq(20000, 70000, 40000)
 val newSalaries = salaries.map(_ * 2)
 ```
@@ -41,7 +41,7 @@ val newSalaries = salaries.map(_ * 2)
 
 ## Преобразование методов в функции
 Также возможно передавать методы в качестве аргументов функциям более высокого порядка, поскольку компилятор Scala может преобразовать метод в функцию.
-```
+```scala mdoc
 case class WeeklyWeatherForecast(temperatures: Seq[Double]) {
 
   private def convertCtoF(temp: Double) = temp * 1.8 + 32
@@ -70,7 +70,7 @@ object SalaryRaiser {
 
 Обратите внимание, что каждый из этих трех методов отличается только коэффициентом умножения. Для упрощения можно перенести повторяющийся код в функцию высшего порядка:
 
-```scala mdoc
+```scala mdoc:nest
 object SalaryRaiser {
 
   private def promotion(salaries: List[Double], promotionFunction: Double => Double): List[Double] =

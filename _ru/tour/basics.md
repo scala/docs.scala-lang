@@ -31,7 +31,7 @@ previous-page: tour-of-scala
 ## Выражения
 
 Выражения — это вычислимые утверждения.
-```
+```scala mdoc
 1 + 1
 ```
 Вы можете выводить результаты выражений, используя `println`.
@@ -65,7 +65,7 @@ x = 3 // Не компилируется.
 
 Типы значений могут быть выведены автоматически, но можно и явно указать тип, как показано ниже:
 
-```scala mdoc
+```scala mdoc:nest
 val x: Int = 1 + 1
 ```
 
@@ -75,7 +75,7 @@ val x: Int = 1 + 1
 
 Переменные похожи на значения константы, за исключением того, что их можно присваивать заново. Вы можете объявить переменную с помощью ключевого слова `var`.
 
-```scala mdoc
+```scala mdoc:nest
 var x = 1 + 1
 x = 3 // Компилируется потому что "x" объявлен с ключевым словом "var".
 println(x * x) // 9
@@ -83,7 +83,7 @@ println(x * x) // 9
 
 Как и в случае со значениями, вы можете явно указать тип, если захотите:
 
-```scala mdoc
+```scala mdoc:nest
 var x: Int = 1 + 1
 ```
 
@@ -145,7 +145,7 @@ println(getTheAnswer()) // 42
 Методы задаются ключевым словом `def`.  За `def` следует имя, список параметров, возвращаемый тип и тело.
 
 {% scalafiddle %}
-```scala mdoc
+```scala mdoc:nest
 def add(x: Int, y: Int): Int = x + y
 println(add(1, 2)) // 3
 ```
@@ -273,7 +273,7 @@ println(newerId) // 2
 
 Объявить трейт можно с помощью ключевого слова `trait`.
 
-```scala mdoc
+```scala mdoc:nest
 trait Greeter {
   def greet(name: String): Unit
 }
@@ -282,7 +282,7 @@ trait Greeter {
 Трейты также могут иметь реализации методов и полей, которые предполагается использовать умолчанию.
 
 {% scalafiddle %}
-```scala mdoc
+```scala mdoc:reset
 trait Greeter {
   def greet(name: String): Unit =
     println("Hello, " + name + "!")

@@ -34,7 +34,7 @@ Nasljeđivanje `trait Iterator[A]` traži tip `A` i implementacije metoda `hasNe
 
 ## Korištenje trejtova
 Koristite `extends` za nasljeđivanje trejta. Zatim implementirajte njegove apstraktne članove koristeći `override` ključnu riječ:
-```scala mdoc
+```scala mdoc:nest
 trait Iterator[A] {
   def hasNext: Boolean
   def next(): A

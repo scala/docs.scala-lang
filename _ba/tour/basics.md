@@ -57,7 +57,7 @@ x = 3 // Ovo se ne kompajlira.
 
 Tipovi vrijednosti mogu biti (automatski) zaključeni, ali možete i eksplicitno navesti tip:
 
-```scala mdoc:reset
+```scala mdoc:nest
 val x: Int = 1 + 1
 ```
 
@@ -67,7 +67,7 @@ Primijetite da deklaracija tipa `Int` dolazi nakon identifikatora `x`. Također 
 
 Varijable su kao vrijednosti, osim što ih možete promijeniti. Varijable se definišu ključnom riječju `var`.
 
-```scala mdoc:reset
+```scala mdoc:nest
 var x = 1 + 1
 x = 3 // Ovo se kompajlira jer je "x" deklarisano s "var" ključnom riječju.
 println(x * x) // 9
@@ -75,7 +75,7 @@ println(x * x) // 9
 
 Kao i s vrijednostima, tip možete eksplicitno navesti ako želite:
 
-```scala mdoc:reset
+```scala mdoc:nest
 var x: Int = 1 + 1
 ```
 
@@ -132,7 +132,7 @@ Metode izgledaju i ponašaju se vrlo slično funkcijama, ali postoji nekoliko ra
 
 Metode se definišu ključnom riječju `def`.  Nakon `def` slijedi naziv, lista parametara, povratni tip, i tijelo.
 
-```scala mdoc:reset
+```scala mdoc:nest
 def add(x: Int, y: Int): Int = x + y
 println(add(1, 2)) // 3
 ```
@@ -262,7 +262,7 @@ Trejtovi su tipovi koji sadrže polja i metode.  Više trejtova se može kombino
 
 Definišu se pomoću `trait` ključne riječi.
 
-```scala mdoc:reset
+```scala mdoc:nest
 trait Greeter {
   def greet(name: String): Unit
 }

@@ -45,7 +45,7 @@ object GraphTest extends App {
 
 Agora melhoramos o exemplo acima com tipos, para assim declarar explicitamente qual o tipo das várias entidades definidas:
  
-```scala mdoc
+```scala mdoc:nest
 object GraphTest extends App {
   val g: Graph = new Graph
   val n1: g.Node = g.newNode
@@ -73,7 +73,7 @@ object IllegalGraphTest extends App {
 
 Observe que em Java a última linha no programa do exemplo anterior é válida. Para nós de ambos os grafos, Java atribuiria o mesmo tipo `Graph.Node`; isto é, `Node` é prefixado com a classe `Graph`. Em Scala, esse tipo também pode ser expresso, e é escrito `Graph#Node`. Se quisermos ser capazes de conectar nós de diferentes grafos, temos que mudar a definição inicial da nossa implementação do grafo da seguinte maneira:
  
-```scala mdoc
+```scala mdoc:nest
 class Graph {
   class Node {
     var connectedNodes: List[Graph#Node] = Nil

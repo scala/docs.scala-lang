@@ -27,7 +27,7 @@ previous-page: tour-of-scala
 ## 表达式
 
 表达式是可计算的语句。
-```
+```scala mdoc
 1 + 1
 ```
 你可以使用`println`来输出表达式的结果。
@@ -60,7 +60,7 @@ x = 3 // This does not compile.
 
 常量（`values`）的类型可以被推断，或者你也可以显示地声明类型，例如：
 
-```scala mdoc
+```scala mdoc:nest
 val x: Int = 1 + 1
 ```
 
@@ -70,7 +70,7 @@ val x: Int = 1 + 1
 
 除了可以重新赋值，变量和常量类似。你可以使用`var`关键字来定义一个变量。
 
-```scala mdoc
+```scala mdoc:nest
 var x = 1 + 1
 x = 3 // This compiles because "x" is declared with the "var" keyword.
 println(x * x) // 9
@@ -78,7 +78,7 @@ println(x * x) // 9
 
 和常量一样，你可以显示地声明类型：
 
-```scala mdoc
+```scala mdoc:nest
 var x: Int = 1 + 1
 ```
 
@@ -140,7 +140,7 @@ println(getTheAnswer()) // 42
 方法由`def`关键字定义。`def`后面跟着一个名字、参数列表、返回类型和方法体。
 
 {% scalafiddle %}
-```scala mdoc
+```scala mdoc:nest
 def add(x: Int, y: Int): Int = x + y
 println(add(1, 2)) // 3
 ```
@@ -268,7 +268,7 @@ println(newerId) // 2
 
 你可以使用`trait`关键字定义特质。
 
-```scala mdoc
+```scala mdoc:nest
 trait Greeter {
   def greet(name: String): Unit
 }
@@ -277,7 +277,7 @@ trait Greeter {
 特质也可以有默认的实现。
 
 {% scalafiddle %}
-```scala mdoc
+```scala mdoc:reset
 trait Greeter {
   def greet(name: String): Unit =
     println("Hello, " + name + "!")

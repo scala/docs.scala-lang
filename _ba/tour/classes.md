@@ -56,7 +56,7 @@ Pošto `toString` prebrisava metodu `toString` iz [`AnyRef`](unified-types.html)
 
 Konstruktori mogu imati opcione parametre koristeći podrazumijevane vrijednosti:
 
-```scala mdoc:reset
+```scala mdoc:nest
 class Point(var x: Int = 0, var y: Int = 0)
 
 val origin = new Point  // x and y are both set to 0
@@ -67,7 +67,7 @@ println(point1.x)  // prints 1
 
 U ovoj verziji klase `Point`, `x` i `y` imaju podrazumijevanu vrijednost `0` tako da ne morate proslijediti argumente.
 Međutim, pošto se argumenti konstruktora čitaju s lijeva na desno, ako želite proslijediti samo `y` vrijednost, morate imenovati parametar.
-```scala mdoc:reset
+```scala mdoc:nest
 class Point(var x: Int = 0, var y: Int = 0)
 val point2 = new Point(y=2)
 println(point2.y)  // prints 2
@@ -78,7 +78,7 @@ Ovo je također dobra praksa zbog poboljšanja čitljivosti.
 ## Privatni članovi i sintaksa getera/setera
 Članovi su javni (`public`) po defaultu. 
 Koristite `private` modifikator pristupa da sakrijete članove klase.
-```scala mdoc:reset
+```scala mdoc:nest
 class Point {
   private var _x = 0
   private var _y = 0

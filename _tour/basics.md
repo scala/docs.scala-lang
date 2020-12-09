@@ -25,7 +25,7 @@ _ScalaFiddle_ is integrated with some of the code examples in this documentation
 ## Expressions
 
 Expressions are computable statements:
-```
+```scala mdoc
 1 + 1
 ```
 You can output the results of expressions using `println`:
@@ -59,7 +59,7 @@ x = 3 // This does not compile.
 
 The type of a value can be omitted and [inferred](https://docs.scala-lang.org/tour/type-inference.html), or it can be explicitly stated:
 
-```scala mdoc
+```scala mdoc:nest
 val x: Int = 1 + 1
 ```
 
@@ -69,7 +69,7 @@ Notice how the type declaration `Int` comes after the identifier `x`. You also n
 
 Variables are like values, except you can re-assign them. You can define a variable with the `var` keyword.
 
-```scala mdoc
+```scala mdoc:nest
 var x = 1 + 1
 x = 3 // This compiles because "x" is declared with the "var" keyword.
 println(x * x) // 9
@@ -77,7 +77,7 @@ println(x * x) // 9
 
 As with values, the type of a variable can be omitted and [inferred](https://docs.scala-lang.org/tour/type-inference.html), or it can be explicitly stated:
 
-```scala mdoc
+```scala mdoc:nest
 var x: Int = 1 + 1
 ```
 
@@ -139,7 +139,7 @@ Methods look and behave very similar to functions, but there are a few key diffe
 Methods are defined with the `def` keyword.  `def` is followed by a name, parameter list(s), a return type, and a body:
 
 {% scalafiddle %}
-```scala mdoc
+```scala mdoc:nest
 def add(x: Int, y: Int): Int = x + y
 println(add(1, 2)) // 3
 ```
@@ -193,7 +193,7 @@ The return type of the method `greet` is `Unit`, which signifies that there is n
 
 You can make an instance of a class with the `new` keyword:
 
-```scala mdoc
+```scala mdoc:nest
 val greeter = new Greeter("Hello, ", "!")
 greeter.greet("Scala developer") // Hello, Scala developer!
 ```
@@ -269,7 +269,7 @@ Traits are abstract data types containing certain fields and methods. In Scala i
 
 You can define traits with the `trait` keyword:
 
-```scala mdoc
+```scala mdoc:nest
 trait Greeter {
   def greet(name: String): Unit
 }
@@ -278,7 +278,7 @@ trait Greeter {
 Traits can also have default implementations:
 
 {% scalafiddle %}
-```scala mdoc
+```scala mdoc:reset
 trait Greeter {
   def greet(name: String): Unit =
     println("Hello, " + name + "!")

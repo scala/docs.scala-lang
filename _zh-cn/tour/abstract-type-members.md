@@ -51,7 +51,7 @@ println("content = " + buf.element)
 
 把抽象类型成员转成类的类型参数或者反过来，也是可行的。如下面这个版本只用了类的类型参数来转换上面的代码：
 
-```scala mdoc
+```scala mdoc:nest
 abstract class Buffer[+T] {
   val element: T
 }

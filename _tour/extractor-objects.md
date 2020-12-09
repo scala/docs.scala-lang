@@ -50,7 +50,7 @@ val CustomerID(name2) = "--asdfasdfasdf"
 
 If there is no match, a `scala.MatchError` is thrown:
 
-```scala mdoc:fail
+```scala
 val CustomerID(name3) = "-asdfasdfasdf"
 ```
 

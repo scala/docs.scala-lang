@@ -31,7 +31,7 @@ Here we have to say `y = 1`.
 
 Note that default parameters in Scala are not optional when called from Java code:
 
-```scala mdoc
+```scala mdoc:reset
 // Point.scala
 class Point(val x: Double = 0, val y: Double = 0)
 ```

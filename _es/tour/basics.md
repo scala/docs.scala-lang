@@ -61,7 +61,7 @@ x = 3  // This does not compile.
 
 Scala es capaz de inferir el tipo de un valor. Aun así, también se puede indicar el tipo usando una anotación:
 
-```scala mdoc
+```scala mdoc:nest
 val x: Int = 1 + 1
 ```
 
@@ -71,7 +71,7 @@ Nótese que la anotación del tipo `Int` sigue al identificador `x` de la variab
 
 Una variable es como un valor, excepto que a una variable se le puede re-asignar un valor después de declararla. Una variable se declara con la palabra reservada `var`.
 
-```scala mdoc
+```scala mdoc:nest
 var x = 1 + 1
 x = 3 // This compiles because "x" is declared with the "var" keyword.
 println(x * x) // 9
@@ -79,7 +79,7 @@ println(x * x) // 9
 
 Como con los valores, si se quiere se puede especificar el tipo de una variable mutable:
 
-```scala mdoc
+```scala mdoc:nest
 var x: Int = 1 + 1
 ```
 
@@ -140,7 +140,7 @@ Los métodos se parecen y comportan casi como a las funciones, pero se diferenci
 Un método se define con la palabra reservada `def`, seguida por el nombre del método, la lista de parámetros, el tipo de valores que el método devuelve, y el cuerpo del método.
 
 {% scalafiddle %}
-```scala mdoc
+```scala mdoc:nest
 def add(x: Int, y: Int): Int = x + y
 println(add(1, 2)) // 3
 ```
@@ -271,7 +271,7 @@ Los traits son tipos que contienen campos y métodos. Se pueden combinar múltip
 
 Un trait se define usando la palabra reservada `trait`.
 
-```scala mdoc
+```scala mdoc:nest
 trait Greeter {
   def greet(name: String): Unit
 }
@@ -280,7 +280,7 @@ trait Greeter {
 Un `trait` también puede definir un método, o un valor, con una implementación por defecto.
 
 {% scalafiddle %}
-```scala mdoc
+```scala mdoc:reset
 trait Greeter {
   def greet(name: String): Unit =
     println("Hello, " + name + "!")

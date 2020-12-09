@@ -62,7 +62,7 @@ println(point1)  // prints (2, 3)
 
 コンストラクターは次のようにデフォルト値を与えると省略可能なパラメーターを持つことができます。
 
-```scala mdoc
+```scala mdoc:reset
 class Point(var x: Int = 0, var y: Int = 0)
 
 val origin = new Point  // x と y には共に0がセットされます。
@@ -72,7 +72,7 @@ println(point1.x)  // 1 が出力されます。
 このバージョンの`Point`クラスでは、`x` と `y` はデフォルト値0を持ち、引数が必須ではありません。
 しかしながらコンストラクタは引数を左から右に読み込むため、もし`y`の値だけを渡したい場合は、パラメーターに名前をつける必要があります。
 
-```
+```scala mdoc:reset
 class Point(var x: Int = 0, var y: Int = 0)
 val point2 = new Point(y=2)
 println(point2.y)  // 2 が出力されます。
@@ -84,7 +84,7 @@ println(point2.y)  // 2 が出力されます。
 メンバーはデフォルトではパブリックになります。
 クラスの外から隠したい場合は`private`アクセス修飾詞を使いましょう。
 
-```scala mdoc
+```scala mdoc:reset
 class Point {
   private var _x = 0
   private var _y = 0
@@ -116,14 +116,15 @@ point1.y = 101 // 警告が出力されます。
 プライマリコンストラクタの`val` と `var` を持つパラメーターはパブリックになります。
 しかしながら`val` は不変となるため、以下のように記述することはできません。
 
-```
+```scala mdoc:fail
 class Point(val x: Int, val y: Int)
 val point = new Point(1, 2)
 point.x = 3  // <-- コンパイルされません。
 ```
 
 `val` や `var` が存在しないパラメーターはクラス内でだけで参照できるプライベートな値や変数となります。
-```
+
+```scala mdoc:fail
 class Point(x: Int, y: Int)
 val point = new Point(1, 2)
 point.x  // <-- コンパイルされません。

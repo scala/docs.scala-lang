@@ -31,7 +31,7 @@ val point1 = new Point(y = 1)
 
 注意从Java代码中调用时，Scala中的默认参数则是必填的（非可选），如：
 
-```scala mdoc
+```scala mdoc:nest
 // Point.scala
 class Point(val x: Double = 0, val y: Double = 0)
 ```

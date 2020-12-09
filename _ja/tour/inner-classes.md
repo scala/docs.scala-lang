@@ -56,7 +56,7 @@ node3.connectTo(node1)
 それは別のグラフのノードは別の型を持つからです。
 こちらは不正なプログラムです。
 
-```
+```scala mdoc:fail
 val graph1: Graph = new Graph
 val node1: graph1.Node = graph1.newNode
 val node2: graph1.Node = graph1.newNode
@@ -70,7 +70,7 @@ node1.connectTo(node3)      // illegal!
 Scalaではそのような型も同様に表現することができ、`Graph#Node`と書きます。
 もし他のグラフのノードに接続できるようにしたければ、以下の方法で最初のグラフ実装の定義を変える必要があります。
 
-```scala mdoc
+```scala mdoc:nest
 class Graph {
   class Node {
     var connectedNodes: List[Graph#Node] = Nil

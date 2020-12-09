@@ -96,7 +96,7 @@ println(mostrarNotificacao(algumaMsgVoz)) // Saída "Você recebeu uma Mensagem 
 
 Aqui um exemplo mais elaborado utilizando a proteção `if`. Com a proteção `if`, o correspondência de padrão irá falhar se a condição de proteção retorna falso.
 
-```scala mdoc
+```scala mdoc:nest
 def mostrarNotificacaoEspecial(notificacao: Notification, emailEspecial: String, numeroEspecial: String): String = {
   notificacao match {
     case Email(email, _, _) if email == emailEspecial =>

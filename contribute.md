@@ -144,3 +144,52 @@ For now, cheatsheets are assumed to be in the form of tables. To contribute a ch
     by: YOUR NAME
     about: SOME TEXT ABOUT THE CHEAT SHEET.
     ---
+
+### Code blocks
+
+The site build process uses [mdoc](https://scalameta.org/mdoc/) to typecheck
+code snippets in markdown. This is a great way to ensure the code snippets that
+you're including typecheck and are valid. Here are a few quick types to get
+started.
+
+To get started, you can simply add `mdoc` behind `scala` when you are creating a
+code block. The `mdoc` modifier here will make sure that `mdoc` runs the code
+snippet and ensures that it's valid.
+
+    ```scala mdoc
+    val a = 1
+    ```
+If you have a snippet that you expect to fail, you can also account for this by
+using `mdoc:fail` for a compile error `mdoc:crash` for a runtime-error.
+
+    ```scala mdoc:fail
+    val b: String = 3 // won't compile
+    ```
+Keep in mind that a single file is all compiled as a single unit, so you can't
+redefine a variable that was defined above in another code snippet. _However_
+there are a couple ways to get around this. Firstly, you can use the `mdoc:nest`
+modifier with will wrap the snippet in a `scala.Predef.locally{...}`. This will
+essentially "hide" the snippet from the others. Another way around this is to
+use the `mdoc:reset` modifier, which _resets_ and forgets about everything up
+above. Here is an example using the various modifiers.
+
+    ```scala mdoc
+    import java.time.Instant
+
+    def now() = Instant.now()
+    object Foo {}
+    ```
+
+    ```scala mdoc:nest
+    case class Foo(a: Int) // conflicts with Foo above, but it's nested so it's fine
+    ```
+
+    ```scala mdoc
+    val a = s"The time is ${now()}" // still have access to the now method from above
+    ```
+    ```scala mdoc:reset
+    case class Foo(a: String) // forget the previous Foo's and start fresh
+    ```
+    ```scala mdoc
+    val myFoo = Foo("hi") // now we only have access to the last Foo
+    ```

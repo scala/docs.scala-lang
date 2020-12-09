@@ -47,7 +47,7 @@ println(point1)  // prints (2, 3)
 
 构造器可以通过提供一个默认值来拥有可选参数：
 
-```scala mdoc
+```scala mdoc:nest
 class Point(var x: Int = 0, var y: Int = 0)
 
 val origin = new Point  // x and y are both set to 0
@@ -57,7 +57,7 @@ println(point1.x)  // prints 1
 ```
 
 在这个版本的`Point`类中，`x`和`y`拥有默认值`0`所以没有必传参数。然而，因为构造器是从左往右读取参数，所以如果仅仅要传个`y`的值，你需要带名传参。
-```
+```scala mdoc:nest
 class Point(var x: Int = 0, var y: Int = 0)
 val point2 = new Point(y=2)
 println(point2.y)  // prints 2
@@ -67,7 +67,7 @@ println(point2.y)  // prints 2
 
 ## 私有成员和Getter/Setter语法
 成员默认是公有（`public`）的。使用`private`访问修饰符可以在类外部隐藏它们。
-```scala mdoc
+```scala mdoc:nest
 class Point {
   private var _x = 0
   private var _y = 0
@@ -93,14 +93,14 @@ point1.y = 101 // prints the warning
 在这个版本的`Point`类中，数据存在私有变量`_x`和`_y`中。`def x`和`def y`方法用于访问私有数据。`def x_=`和`def y_=`是为了验证和给`_x`和`_y`赋值。注意下对于setter方法的特殊语法：这个方法在getter方法的后面加上`_=`，后面跟着参数。
 
 主构造方法中带有`val`和`var`的参数是公有的。然而由于`val`是不可变的，所以不能像下面这样去使用。
-```
+```scala mdoc:fail
 class Point(val x: Int, val y: Int)
 val point = new Point(1, 2)
 point.x = 3  // <-- does not compile
 ```
 
 不带`val`或`var`的参数是私有的，仅在类中可见。
-```
+```scala mdoc:fail
 class Point(x: Int, y: Int)
 val point = new Point(1, 2)
 point.x  // <-- does not compile

@@ -54,7 +54,7 @@ Here the factory `newIntSeqBuf` uses an anonymous class implementation of `IntSe
 
 It is also possible to turn abstract type members into type parameters of classes and vice versa. Here is a version of the code above which only uses type parameters:
 
-```scala mdoc
+```scala mdoc:nest
 abstract class Buffer[+T] {
   val element: T
 }

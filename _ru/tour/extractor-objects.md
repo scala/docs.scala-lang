@@ -52,7 +52,7 @@ val CustomerID(name2) = "--asdfasdfasdf"
 
 Если совпадений нет, то бросается `scala.MatchError`:
 
-```scala mdoc:fail
+```scala mdoc:crash
 val CustomerID(name3) = "-asdfasdfasdf"
 ```
 

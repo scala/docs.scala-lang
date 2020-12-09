@@ -496,13 +496,13 @@ For instance, given the following `src/documentation/getting-started.md` file:
 
 First, start with the following import:
 
-```scala mdoc
+```scala
 import ch.epfl.scala.Example
 ```
 
 Then, do nothing with something:
 
-```scala mdoc
+```scala
 Example.doNothing(42)
 ```
 {% endhighlight %}

@@ -30,14 +30,14 @@ list of salaries.
 
 To shrink the code, we could make the function anonymous and pass it directly as
 an argument to map:
-```
+```scala:nest
 val salaries = Seq(20000, 70000, 40000)
 val newSalaries = salaries.map(x => x * 2) // List(40000, 140000, 80000)
 ```
 Notice how `x` is not declared as an Int in the above example. That's because the
 compiler can infer the type based on the type of function map expects (see [Currying](/tour/multiple-parameter-lists.html). An even more idiomatic way to write the same piece of code would be:
 
-```scala mdoc
+```scala mdoc:nest
 val salaries = Seq(20000, 70000, 40000)
 val newSalaries = salaries.map(_ * 2)
 ```
@@ -49,7 +49,7 @@ the previous example).
 ## Coercing methods into functions
 It is also possible to pass methods as arguments to higher-order functions because
 the Scala compiler will coerce the method into a function.
-```
+```scala mdoc
 case class WeeklyWeatherForecast(temperatures: Seq[Double]) {
 
   private def convertCtoF(temp: Double) = temp * 1.8 + 32
@@ -81,7 +81,7 @@ object SalaryRaiser {
 Notice how each of the three methods vary only by the multiplication factor. To simplify,
 you can extract the repeated code into a higher-order function like so:
 
-```scala mdoc
+```scala mdoc:nest
 object SalaryRaiser {
 
   private def promotion(salaries: List[Double], promotionFunction: Double => Double): List[Double] =

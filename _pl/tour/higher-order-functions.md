@@ -37,7 +37,7 @@ Zauważ, że w powyższym przykładzie `x` nie jest zadeklarowane jako typ `Int`
 Dzieje się tak, ponieważ kompilator może wywnioskować typ, bazując na typie funkcji oczekiwanej przez `map`.
 Poniżej jeszcze bardziej idiomatyczny sposób napisania tego kodu:
 
-```scala mdoc
+```scala mdoc:nest
 val salaries = Seq(20000, 70000, 40000)
 val newSalaries = salaries.map(_ * 2)
 ```
@@ -84,7 +84,7 @@ object SalaryRaiser {
 Zauważ, że każda z trzech metod różni się jedynie współczynnikiem z jakim zmienia wynagrodzenie.
 Aby to uprościć, możemy wydzielić powtórzony kod do funkcji wyższego rzędu:
 
-```scala mdoc
+```scala mdoc:nest
 object SalaryRaiser {
 
   private def promotion(salaries: List[Double], promotionFunction: Double => Double): List[Double] =

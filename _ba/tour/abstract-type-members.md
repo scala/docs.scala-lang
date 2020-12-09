@@ -61,7 +61,7 @@ Metoda `newIntSeqBuf` koristi anonimnu klasu kao implementaciju  `IntSeqBuf` pos
 Često je moguće pretvoriti apstraktni tip-član u tipski parametar klase i obrnuto.
 Slijedi verzija gornjeg koda koji koristi tipske parametre:
 
-```scala mdoc:reset
+```scala mdoc:nest
 abstract class Buffer[+T] {
   val element: T
 }

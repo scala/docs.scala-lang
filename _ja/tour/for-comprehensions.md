@@ -66,7 +66,7 @@ foo(10, 10) foreach {
 これは副作用をもたらす必要があるときに役立ちます。
 こちらは先に出たプログラムと同等のものですが、`yield`を使っていません。
 
-```scala mdoc
+```scala mdoc:nest
 def foo(n: Int, v: Int) =
    for (i <- 0 until n;
         j <- 0 until n if i + j == v)
