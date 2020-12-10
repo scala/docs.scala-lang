@@ -10,7 +10,7 @@ next-page: ca-extension-methods
 
 To make it more clear where givens in the current scope are coming from, a special form of the `import` statement is used to import `given` instances. The basic form is shown in this example:
 
-```tut
+```scala
 object A:
   class TC
   given tc as TC

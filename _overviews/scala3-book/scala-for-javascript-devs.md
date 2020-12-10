@@ -1009,9 +1009,9 @@ val strings = ArrayBuffer("a", "b", "c")
 
 val set = Set("a", "b", "a") // result: Set("a", "b")
 val map = Map(
- "a" -> 1, 
- "b" -> 2,
- "c" -> 3
+  "a" -> 1, 
+  "b" -> 2,
+  "c" -> 3
 )
 ```
 

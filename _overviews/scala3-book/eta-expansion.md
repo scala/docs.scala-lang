@@ -35,10 +35,11 @@ The technology behind this is known as *Eta Expansion*. It converts an expressio
 
 ### The differences between methods and functions
 
-<!--
-  TODO: I got the following “method” definition from this page (https://dotty.epfl.ch/docs/reference/changed-features/eta-expansion-spec.html), but I’m not sure it’s 100% accurate now that methods can exist outside of classes/traits/objects. I’m looking for a clear way to distinguish between methods and functions.
--->
-Technically, *methods* are part of the definition of a class, while *functions* are complete objects themselves, making them first-class entities. For example, functions can be assigned to variables.
+{% comment %}
+TODO: I got the following “method” definition from this page (https://dotty.epfl.ch/docs/reference/changed-features/eta-expansion-spec.html), but I’m not sure it’s 100% accurate now that methods can exist outside of classes/traits/objects. I’m looking for a clear way to distinguish between methods and functions.
+{% endcomment %}
+
+Technically, *methods* are part of the definition of a class, while *functions* are complete objects themselves, making them first-class entities. For example, functions can be assigned to variables, while methods cannot.
 
 Their syntax is also different. This example shows how to define a method and a function that perform the same task, determining if the given integer is even:
 

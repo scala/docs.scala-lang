@@ -52,7 +52,7 @@ aCircle.circumference
 The `extension` keyword declares that you’re about to define one or more extension methods on the type that’s put in parentheses. To define multiple extension methods on a type, use this syntax:
 
 ```scala
-extension (c: Circle):
+extension (c: Circle)
   def circumference: Double = c.radius * math.Pi * 2
   def diameter: Double = c.radius * 2
   def area: Double = math.Pi * c.radius * c.radius

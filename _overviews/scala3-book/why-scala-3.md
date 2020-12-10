@@ -9,17 +9,18 @@ next-page: a-taste-of-scala
 
 {% comment %}
 TODO: Is “Scala 3 Benefits” a better title?
+NOTE: Could mention “grammar” as a way of showing that Scala isn’t a large language; see this slide: https://www.slideshare.net/Odersky/preparing-for-scala-3#13
 {% endcomment %}
 
 
 There are many benefits to using Scala, and Scala 3 in particular. It might be hard to list every benefit of Scala, but a Top Ten list looks like this:
 
 1. Scala embraces a fusion of functional programming (FP) and object-oriented programming (OOP)
-2. Scala is statically typed, but it often feels like a dynamically typed language
+2. Scala is statically typed, but often feels like a dynamically typed language
 3. Scala’s syntax is concise, but still readable; it’s often referred to as *expressive*
 4. *Implicits* in Scala 2 were a defining feature, and they have been improved and simplified in Scala 3
 5. Scala integrates seamlessly with Java, so you can create projects with mixed Scala and Java code, and Scala code easily uses the thousands of existing Java libraries
-6. Scala can be used on the server, and also in the browser with Scala.js
+6. Scala can be used on the server, and also in the browser with [Scala.js](https://www.scala-js.org)
 7. The Scala standard library has dozens of pre-built, functional methods to save you time, and greatly reduce the need to write custom `for` loops and algorithms
 8. “Best practices” are built into Scala, which favors immutability, anonymous functions, higher-order functions, pattern matching, classes that cannot be extended by default, and more
 9. The Scala ecosystem offers the most modern FP libraries in the world
@@ -28,7 +29,7 @@ There are many benefits to using Scala, and Scala 3 in particular. It might be h
 
 
 
-## 1) Scala embraces a fusion of functional programming (FP) and object-oriented programming (OOP)
+## 1) FP/OOP fusion
 
 More than any other language, Scala supports a fusion of the FP and OOP paradigms. As Martin Odersky has stated, the essence of Scala is a fusion of functional and object-oriented programming in a typed setting:
 
@@ -72,7 +73,7 @@ In those examples, the values in the list can’t be modified. The `List` class 
 
 
 
-## 2) Scala is statically typed, but it often feels like a dynamically typed language
+## 2) A dynamic feel
 
 Scala’s *type inference* often makes the language feel dynamically typed, even though it’s statically typed. This is true with variable assignment:
 
@@ -113,7 +114,7 @@ val b: Password | Username = if (true) name else password
 ```
 
 
-## 3) Scala’s syntax is concise, but still readable; it’s often referred to as *expressive*
+## 3) Concise syntax
 
 Variable type assignment is concise:
 
@@ -153,7 +154,7 @@ All of these expressions, and many more, are concise, and still very readable: *
 
 
 
-## 4) *Implicits* in Scala 2 were a defining feature, and they have been improved and simplified in Scala 3
+## 4) Implicits, simplified
 
 Implicits in Scala 2 were a major distinguishing design feature. They represented *the* fundamental way to abstract over context, with a unified paradigm that served a great variety of use cases, among them:
 
@@ -183,7 +184,7 @@ These capabilities are described in detail in other sections, so see the [Contex
 
 
 
-## 5) Scala integrates seamlessly with Java, so you can create projects with mixed Scala and Java code, and Scala code easily uses the thousands of existing Java libraries
+## 5) Seamless Java integration
 
 Scala/Java interaction is seamless in many ways. For instance, you can use all of the thousands of Java libraries that are available in your Scala projects. A Scala `String` is essentially a Java `String`, with additional capabilities added to it. Scala seamlessly uses the date/time classes in the Java *import java.time._* package. You can also use Java collections classes in Scala, and to give them more functionality, Scala includes methods so you can transform them into Scala collections.
 
@@ -202,7 +203,7 @@ See that chapter for more details on these features.
 
 
 
-## 6) Scala can be used on the server, and also in the browser with Scala.js
+## 6) Client &amp; server
 
 Scala can be used on the server side with terrific frameworks:
 
@@ -215,14 +216,13 @@ The [Scala Native](https://github.com/scala-native/scala-native) project “is a
 
 
 
-## 7) The Scala standard library has dozens of pre-built, functional methods to save you time, and greatly reduce the need to write custom `for` loops and algorithms
+## 7) Standard library methods
 
 Because you’ll rarely ever need to write a custom `for` loop again, the dozens of pre-built functional methods in the Scala standard library will both save you time, and help make code more consistent across different applications. The following examples show some of the built-in collections methods, and there are many in addition to these. Also, while these all use the `List` class, the same methods work with other collections classes like `Seq`, `Vector`, `LazyList`, `Set`, `Map`, `Array`, and `ArrayBuffer`.
 
 Here are some examples:
 
 ```scala
-//
 List.range(1, 3)                      // List(1, 2)
 List.range(1, 6, 2)                   // List(1, 3, 5)
 List.fill(3)("foo")                   // List(foo, foo, foo)
@@ -263,9 +263,9 @@ nums.sortWith(_ > _)                  // List(10, 8, 7, 5, 1)
 
 
 
-## 8) “Best practices” are built into Scala, which favors immutability, anonymous functions, higher-order functions, pattern matching, classes that cannot be extended by default, and more
+## 8) Built-in practices
 
-Scala encourages using immutability in many ways. You’re encouraged to create `val` fields, which are immutable:
+Scala idioms encourage best practices in many ways. For immutability, you’re encouraged to create immutable `val` fields:
 
 ```scala
 val a = 1                 // immutable variable
@@ -310,15 +310,14 @@ val numAsString = i match
 Because they can return values, they’re often used as the body of a method:
 
 ```scala
-def isTrue(a: Any) = a match {
+def isTrue(a: Any) = a match
   case 0 | "" => false
   case _ => true
-}
 ```
 
 
 
-## 9) The Scala ecosystem offers the most modern FP libraries in the world
+## 9) Ecosystem libraries
 
 Scala libraries for functional programming like [Cats](https://typelevel.org/cats) and [Zio](https://zio.dev) are leading-edge libraries in the FP community. All of the buzzwords like high-performance, type safe, concurrent, asynchronous, resource-safe, testable, functional, modular, binary-compatible, efficient, effects/effectful, and more, can be said about these libraries.
 
@@ -328,7 +327,7 @@ Many other libraries can be found in the [“Awesome Scala” list](https://gith
 
 ## 10) Strong type system
 
-Scala has a strong type system, and it has been improved even more in Scala 3. Scala 3’s goals were defined early on, and those related to the type system include:
+Scala has a strong type system, and it’s been improved even more in Scala 3. Scala 3’s goals were defined early on, and those related to the type system include:
 
 - Simplification
 - Eliminate inconsistencies
@@ -347,7 +346,8 @@ Scala has a strong type system, and it has been improved even more in Scala 3. S
 - Trait parameters
 - Generic tuples
 
-<!--
+{% comment %}
+A list of types from the Dotty documentation:
 - Inferred types
 - Generics
 - Intersection types
@@ -369,7 +369,8 @@ Scala has a strong type system, and it has been improved even more in Scala 3. S
 - Abstract type members and path-dependent types
 - Dependent function types
 - Bounds
--->
+{% endcomment %}
+
 
 *Safety* is related to several new and changed features:
 
@@ -385,7 +386,7 @@ enum Color:
   case Red, Green, Blue
 
 // extension methods
-extension (c: Circle):
+extension (c: Circle)
   def circumference: Double = c.radius * math.Pi * 2
   def diameter: Double = c.radius * 2
   def area: Double = math.Pi * c.radius * c.radius
@@ -399,17 +400,14 @@ extension (c: Circle):
 
 Unfortunately all of these approaches had weaknesses, as described in the [*Opaque Types* SIP](https://docs.scala-lang.org/sips/opaque-types.html). Conversely, the goal of opaque types, as described in that SIP, is that “operations on these wrapper types must not create any extra overhead at runtime while still providing a type safe use at compile time.”
 
+For more type system details, see the [Reference documentation][reference].
+
 
 
 ## Other great features
 
-That’s just a Top 10 list of some of Scala’s best features. Others include:
-
-- The consistency of the language
-- First-class modules
+Scala has many great features, and choosing a Top 10 list can be subjective. Hopefully you’ll discover more great Scala features as you use the language.
 
 
-<!--
-TODO: People can add to this list here, or change the Top 10
-      if desired. I just went with my Top 10.
--->
+
+[reference]: {{ site.scala3ref }}/overview.html

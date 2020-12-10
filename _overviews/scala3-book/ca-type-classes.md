@@ -87,7 +87,7 @@ Note that if you want to create a type class that has multiple methods, the init
 
 ```scala
 trait HasLegs[A]:
-  extension(a: A):
+  extension(a: A)
     def walk(): Unit
     def run(): Unit
 ```

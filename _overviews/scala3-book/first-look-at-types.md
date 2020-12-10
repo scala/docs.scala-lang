@@ -28,7 +28,7 @@ In Scala, all values have a type, including numerical values and functions. The 
 
 Here’s an example that demonstrates that strings, integers, characters, boolean values, and functions are all objects just like every other object:
 
-```tut
+```scala
 val list: List[Any] = List(
   "a string",
   732,  // an integer
@@ -157,11 +157,12 @@ Just precede the string with the letter `s`, and then put a `$` symbol before yo
 
 To enclose expressions inside a string, put them in curly braces:
 
-~~~ scala
+```scala
 println(s"2 + 2 = ${2 + 2}")   // prints "2 + 2 = 4"
 val x = -1
 println(s"x.abs = ${x.abs}")   // prints "x.abs = 1"
-~~~
+```
+
 
 #### Other interpolators
 
@@ -212,7 +213,7 @@ Value types can be cast in the following way:
 
 For example:
 
-```tut
+```scala
 val x: Long = 987654321
 val y: Float = x  // 9.8765434E8 (note that some precision is lost in this case)
 

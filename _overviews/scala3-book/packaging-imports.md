@@ -40,7 +40,7 @@ Although it’s not required, package names typically follow directory structure
 
 The other way to declare packages in Scala is by using the curly brace namespace notation used in languages like C, C++, and C#:
 
-```tut
+```scala
 package users {
   package administrators {
     class AdminUser
@@ -258,7 +258,7 @@ import _root_.users._
 As you’ll see in the Contextual Abstractions chapter, a special form of the `import` statement is used to import `given` instances. The basic form is shown in this example:
 
 <!-- TODO: this code does not compile in the REPL; test it in a project -->
-```tut
+```scala
 object A:
   class TC
   given tc as TC

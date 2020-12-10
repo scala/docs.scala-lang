@@ -20,7 +20,7 @@ Here’s a description of the Scala `Future` from its Scaladoc:
 
 To help demonstrate what that means, let’s first look at single-threaded programming. In the single-threaded world you bind the result of a method call to a variable like this:
 
-```tut
+```scala
 def aShortRunningTask(): Int = 42
 val x = aShortRunningTask()
 ```
@@ -166,7 +166,7 @@ To run multiple futures in parallel and join their results when all of the futur
 
 The three steps of the correct approach are shown in the following example. A key is that you first create the futures and then join them in the `for` expression:
 
-```tut
+```scala
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.util.{Failure, Success}

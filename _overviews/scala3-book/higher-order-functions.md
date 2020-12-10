@@ -32,7 +32,7 @@ As a beneficial side effect of this chapter, once you’re comfortable with this
 
 As a quick recap, in this book you’ve already seen examples of how to use existing higher-order functions in the Scala collections classes, including `map` and `filter`:
 
-```tut
+```scala
 List(1,2,3).map(_ * 10)       // List(10,20,30)
 
 def isEven(i: Int) = i % 2 == 0
@@ -127,7 +127,7 @@ To create a method that uses a function parameter, all you have to do is:
 
 To demonstrate this, here’s a method that that takes an input parameter named `f`, where `f` is a function:
 
-```tut
+```scala
 def sayHello(f: () => Unit): Unit = f()
 ```
 
@@ -147,7 +147,7 @@ Here’s how this works:
 
 Now that we’ve defined `sayHello`, let’s create a function to match `f`’s signature so we can test it. The following function takes no input parameters and returns nothing, so it matches `f`’s type signature:
 
-```tut
+```scala
 def helloJoe(): Unit = println("Hello, Joe")
 ```
 
@@ -164,7 +164,7 @@ If you’ve never done this before, congratulations. You just defined a method n
 
 It’s important to know that the beauty of this approach is not that `sayHello` can take *one* function as an input parameter; the beauty is that it can take *any* function that matches `f`’s signature. For instance, because this next function takes no input parameters and returns nothing, it also works with `sayHello`:
 
-```tut
+```scala
 def bonjourJulien(): Unit = println("Bonjour, Julien")
 ```
 
@@ -224,7 +224,7 @@ Can you imagine what sort of functions match that signature?
 
 The answer is that any function that takes two `Int` input parameters and returns an `Int` matches that signature, so all of these functions are a match:
 
-```tut
+```scala
 def add(a: Int, b: Int): Int = a + b
 def subtract(a: Int, b: Int): Int = a - b
 def multiply(a: Int, b: Int): Int = a * b
@@ -239,14 +239,14 @@ For higher-order functions to be really useful, they also need some data to work
 
 For instance, here’s a method named `executeNTimes` that has two input parameters: a function, and an `Int`:
 
-```tut
+```scala
 def executeNTimes(f: () => Unit, n: Int): Unit =
   for i <- 1 to n do f()
 ```
 
 As the code shows, `executeNTimes` executes the `f` function `n` times. Because a simple `for` loop like this has no return value, `executeNTimes` returns `Unit`. To test `executeNTimes`, define a method that matches `f`’s signature:
 
-```tut
+```scala
 // a method of type `() => Unit`
 def helloWorld(): Unit = println("Hello, world")
 ```
@@ -264,7 +264,7 @@ Excellent. The `executeNTimes` method executes the `helloWorld` function three t
 
 Your methods can continue to get as complicated as necessary. For example, this method takes a function of type `(Int, Int) => Int`, along with two input parameters:
 
-```tut
+```scala
 def executeAndPrint(f: (Int, Int) => Int, i: Int, j: Int): Unit =
   println(f(i, j))
 ```
@@ -372,14 +372,14 @@ As with this example, `for` expressions often make code surprisingly simple, and
 
 Putting it together with the method signature, you now have a standalone `map` method that works with a `List[Int]`:
 
-```tut
+```scala
 def map[A](f: (Int) => A, xs: List[Int]): List[A] =
   for x <- xs yield f(x)
 ```
 
 As a bonus, notice that the `for` expression doesn’t do anything that depends on the type inside the `List` being `Int`. Therefore, you can replace `Int` in the type signature with a generic type parameter:
 
-```tut
+```scala
 def map[A,B](f: (B) => A, xs: List[B]): List[A] =
   for x <- xs yield f(x)
 ```
@@ -426,7 +426,7 @@ Now you just need a method body. You know that the method needs to return a func
 
 Now you just return that function from the method:
 
-```tut
+```scala
 // a method that returns a function
 def greet(): String => Unit = 
   (name: String) => println(s"Hello, $name")
@@ -453,7 +453,7 @@ Congratulations, you just created a method that returns a function, and then exe
 
 Our method would be more useful if you could pass in a greeting, so let’s do that. All you have to do is pass the greeting in as a parameter to the `greet` method, and use it in the string inside `println`:
 
-```tut
+```scala
 def greet(theGreeting: String): String => Unit = 
   (name: String) => println(s"$theGreeting, $name")
 ```
@@ -509,7 +509,7 @@ val frenchGreeting = (name: String) => println(s"Bonjour, $name")
 
 Now all you need to do is (a) return `englishGreeting` if the `desiredLanguage` is English, and (b) return `frenchGreeting` if the `desiredLanguage` is French. One way to do that is with a `match` expression:
 
-```tut
+```scala
 def createGreetingFunction(desiredLanguage: String): String => Unit =
   val englishGreeting = (name: String) => println(s"Hello, $name")
   val frenchGreeting = (name: String) => println(s"Bonjour, $name")

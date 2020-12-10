@@ -25,7 +25,7 @@ object Logarithms:
   end Logarithm
 
   // extension methods define opaque types’ public APIs
-  extension (x: Logarithm):
+  extension (x: Logarithm)
     def toDouble: Double = math.exp(x)
     def + (y: Logarithm): Logarithm = Logarithm(math.exp(x) + math.exp(y))
     def * (y: Logarithm): Logarithm = x + y

@@ -116,7 +116,7 @@ The first example runs the `doSomething` method as a side effect when `a` is equ
 
 ## `for` loops
 
-In its most simple use, a Scala `for` loop can be used to iterate over the elements in a collection. For example, given a sequence of integers, You can loop over its elements and print their values like this:
+In its most simple use, a Scala `for` loop can be used to iterate over the elements in a collection. For example, given a sequence of integers, you can loop over its elements and print their values like this:
 
 ```scala
 val ints = Seq(1,2,3)
@@ -242,7 +242,7 @@ for (name,rating) <- ratings do println(s"Movie: $name, Rating: $rating")
 Here’s what that looks like in the REPL:
 
 ```scala
-scala> for (name,rating) <- ratings do println(s"Movie: $name, Rating: $rating")
+scala> for (name, rating) <- ratings do println(s"Movie: $name, Rating: $rating")
 Movie: Lady in the Water, Rating: 3.0
 Movie: Snakes on a Plane, Rating: 4.0
 Movie: You, Me and Dupree, Rating: 3.5

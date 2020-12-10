@@ -1,5 +1,5 @@
 ---
-title: Features
+title: Scala 3 Features
 type: chapter
 description: This page discusses the main features of the Scala 3 programming language.
 num: 2
@@ -20,7 +20,7 @@ The name _Scala_ comes from the word _scalable_, and true to that name, the Scal
 I think of this section as being like an “elevator pitch.”
 {% endcomment %}
 
-## High-level language features
+## High-level features
 
 Looking at Scala from the proverbial “30,000 foot view,” you can make the following statements about it:
 
@@ -39,7 +39,7 @@ Looking at Scala from the proverbial “30,000 foot view,” you can make the fo
 The following sections take a quick look at these features.
 
 
-### A high-level programming language
+### A high-level language
 
 Scala is considered a high-level language in at least two ways. First, like Java and many other modern languages, you don’t deal with low-level concepts like pointers and memory management.
 
@@ -68,7 +68,7 @@ val newNumbers = oldNumbers.map(_ * 2)
 As you can see, that code is much more concise, easier to read, and easier to maintain.
 
 
-### A concise, readable syntax
+### Concise syntax
 
 Scala has a concise, readable syntax. For instance, variables are created concisely, and their types are clear:
 
@@ -104,7 +104,7 @@ class Dog extends Animal, HasTail:
 Studies have shown that the time a developer spends _reading_ code to _writing_ code is at least a 10:1 ratio, so writing code that is concise _and_ readable is important.
 
 
-### Statically-typed (but feels dynamic)
+### A dynamic feel
 
 Scala is a statically-typed language, but thanks to its type inference capabilities it feels dynamic. All of these expressions look like a dynamically-typed language like Python or Ruby, but they’re all Scala:
 
@@ -153,24 +153,40 @@ In this section or the next section:
 {% comment %}
 - this text comes from the current [ScalaTour](https://docs.scala-lang.org/tour/tour-of-scala.html).
 - TODO: all of the URLs will have to be updated
+
+- i removed these items until we can replace them:
+* [Compound types](/tour/compound-types.html)
+* [Implicit parameters](/tour/implicit-parameters.html) and [conversions](/tour/implicit-conversions.html)
+* [Explicitly typed self references](/tour/self-types.html)
 {% endcomment %}
 
 Scala’s expressive type system enforces, at compile-time, that abstractions are used in a safe and coherent manner. In particular, the type system supports:
 
-* [Generic classes]({% link _overviews/scala3-book/types-generics.md %})
-* [Variance annotations]({% link _overviews/scala3-book/types-variance.md %})
-* [Upper](/tour/upper-type-bounds.html) and [lower](/tour/lower-type-bounds.html) type bounds
-* [Inner classes](/tour/inner-classes.html) and [abstract type members](/tour/abstract-type-members.html) as object members
-* [Compound types](/tour/compound-types.html)
-* [Explicitly typed self references](/tour/self-types.html)
-* [Implicit parameters](/tour/implicit-parameters.html) and [conversions](/tour/implicit-conversions.html)
-* [Polymorphic methods](/tour/polymorphic-methods.html)
-* [Type inference](/tour/type-inference.html) means the user is not required to annotate code with redundant type information.
+- [Type inference](/tour/type-inference.html)
+- [Generic classes]({% link _overviews/scala3-book/types-generics.md %})
+- [Variance annotations]({% link _overviews/scala3-book/types-variance.md %})
+- [Upper](/tour/upper-type-bounds.html) and [lower](/tour/lower-type-bounds.html) type bounds
+- [Polymorphic methods](/tour/polymorphic-methods.html)
+- [Intersection types]({% link _overviews/scala3-book/types-intersection.md %})
+- [Union types]({% link _overviews/scala3-book/types-union.md %})
+- [Type lambdas]({{ site.scala3ref }}/new-types/type-lambdas.html)
+- [`given` instances and `using` clauses]({% link _overviews/scala3-book/ca-given-using-clauses.md %})
+- [Extension methods]({% link _overviews/scala3-book/ca-extension-methods.md %})
+- [Type classes]({% link _overviews/scala3-book/ca-type-classes.md %})
+- [Multiversal equality]({% link _overviews/scala3-book/ca-multiversal-equality.md %})
+- [Opaque type aliases]({% link _overviews/scala3-book/types-opaque-types.md %})
+- [Open classes]({{ site.scala3ref }}/other-new-features/open-classes.html)
+- [Match types]({{ site.scala3ref }}/new-types/match-types.html)
+- [Dependent function types]({{ site.scala3ref }}/new-types/dependent-function-types.html)
+- [Polymorphic function types]({{ site.scala3ref }}/new-types/polymorphic-function-types.html)
+- [Context bounds]({{ site.scala3ref }}/contextual/context-bounds.html)
+- [Context functions]({{ site.scala3ref }}/contextual/context-functions.html)
+- [Inner classes](/tour/inner-classes.html) and [abstract type members](/tour/abstract-type-members.html) as object members
 
 In combination, these features provide a powerful basis for the safe reuse of programming abstractions and for the type-safe extension of software.
 
 
-### A pure functional programming language
+### A pure FP language
 
 Scala is a functional programming (FP) language, meaning:
 
@@ -183,7 +199,7 @@ Scala is a functional programming (FP) language, meaning:
 - Those collections classes come with dozens of functional methods: they don’t mutate the collection, but instead return an updated copy of the data
 
 
-### A pure object-oriented programming language
+### A pure OOP language
 
 Scala is a _pure_ object-oriented programming (OOP) language. Every variable is an object, and every “operator” is a method.
 
@@ -194,7 +210,7 @@ Add the “types hierarchy” image here?
 {% endcomment %}
 
 
-### Supports the fusion of FP and OOP
+### Supports FP/OOP fusion
 
 {% comment %}
 NOTE: This text in the first line comes from this slide: https://twitter.com/alexelcu/status/996408359514525696
@@ -208,7 +224,7 @@ The essence of Scala is the fusion of functional programming and object-oriented
 As [Martin Odersky has stated](https://jaxenter.com/current-state-scala-odersky-interview-129495.html), “Scala was designed to show that a fusion of functional and object-oriented programming is possible and practical.”
 
 
-### A clear way to implement term inference
+### Term inference, made clearer
 
 Following Haskell, Scala was the second popular language to have some form of _implicits_. In Scala 3 these concepts have been completely re-thought and more clearly implemented.
 
@@ -219,7 +235,7 @@ Use cases for this concept include implementing type classes, establishing conte
 Scala 3 makes this process more clear than ever before. Read about contextual abstractions in the [Reference documentation]({{ site.scala3ref }}/contextual/motivation.html).
 
 
-### Runs on the JVM (and in the browser)
+### Client &amp; server
 
 Scala code runs on the Java Virtual Machine (JVM), so you get all of its benefits:
 
@@ -232,7 +248,7 @@ Scala code runs on the Java Virtual Machine (JVM), so you get all of its benefit
 In addition to running on the JVM, Scala also runs in the browser with Scala.js (and open source third-party tools to integrate popular JavaScript libraries), and native executables can be built with Scala Native and GraalVM.
 
 
-### Interacts seamlessly with Java
+### Seamless Java interaction
 
 You can use Java classes and libraries in your Scala applications, and you can use Scala code in your Java applications. In regards to the second point, large libraries like [Akka](https://akka.io) and the [Play Framework](https://www.playframework.com) are written in Scala, and can be used in Java applications.
 
@@ -254,7 +270,7 @@ val scalaList: Seq[Integer] = JavaClass.getJavaList().asScala.toSeq
 ```
 
 
-### Server and client development
+### Wealth of libraries
 
 As you’ll see in the third section of this page, Scala libraries and frameworks like these have been written to power busy websites and work with huge datasets:
 
@@ -286,21 +302,19 @@ At a “sea level” view of the details — i.e., the language features program
     - The `new` keyword is generally no longer needed when creating class instances
     - The formality of package objects have been dropped in favor of simpler “top level” definitions
 - A clearer grammar:
-    - Multiple different uses of the `implicit` keyword have been removed
-    - Those uses are replaced by more obvious keywords like `given`, `using`, and `extension`, focusing on intent over mechanism
-    - Extension methods replace implicit classes with a clearer and simpler mechanism
+    - Multiple different uses of the `implicit` keyword have been removed; those uses are replaced by more obvious keywords like `given`, `using`, and `extension`, focusing on intent over mechanism (see the [Givens][givens] section for details)
+    - [Extension methods][extension] replace implicit classes with a clearer and simpler mechanism
     - The addition of the `open` modifier for classes makes the developer intentionally declare that a class is open for modification, thereby limiting ad-hoc extensions to a code base
-    - Multiversal equality rules out nonsensical comparisons with `==` and `!=` (i.e., attempting to compare a `Person` to a `Planet`)
+    - [Multiversal equality][multiversal] rules out nonsensical comparisons with `==` and `!=` (i.e., attempting to compare a `Person` to a `Planet`)
     - Macros are implemented much more easily
-    - TODO: Benefits of Union and intersection types (I need help here)
     - Trait parameters replace and simplify early initializers
-    - Opaque type aliases replace most uses of value classes, while guaranteeing the absence of boxing
+    - [Opaque type aliases][opaque_types] replace most uses of value classes, while guaranteeing the absence of boxing
     - Export clauses provide a simple and general way to express aggregation, which can replace the previous facade pattern of package objects inheriting from classes
     - The procedure syntax has been dropped, and the varargs syntax has been changed, both to make the language more consistent
     - The `@infix` annotation makes it obvious how you want a method to be applied
     - The `@alpha` method annotation defines an alternate name for the method, improving Java interoperability, and letting you provide aliases for symbolic operators
 
-It would take too much space to demonstrate all of those features here, but follow the links in those items above to see those features in action.
+It would take too much space to demonstrate all of those features here, but follow the links in the items above to see those features in action. All of these features are discussed in detail in the *New*, *Changed*, and *Dropped* features pages in the [Overview documentation][reference].
 
 
 
@@ -308,7 +322,7 @@ It would take too much space to demonstrate all of those features here, but foll
 CHECKLIST OF ALL ADDED, UPDATED, AND REMOVED FEATURES
 =====================================================
 
-NEW FEATURES
+New Features
 ------------
 - trait parameters
 - super traits
@@ -370,7 +384,7 @@ DROPPED FEATURES
 
 
 
-## Scala ecosystem features
+## Scala ecosystem
 
 {% comment %}
 TODO: I didn’t put much work into this section because I don’t know if you want
@@ -380,7 +394,8 @@ TODO: I didn’t put much work into this section because I don’t know if you w
       point is to base the lists on Github stars and activity.
 {% endcomment %}
 
-Scala has a vibrant ecosystem, with libraries and frameworks for every need. The [“Awesome Scala” list](https://github.com/lauris/awesome-scala) provides a list of hundreds of open source projects that are available to Scala developers. Some of the more notable are listed below.
+Scala has a vibrant ecosystem, with libraries and frameworks for every need. The [“Awesome Scala” list](https://github.com/lauris/awesome-scala) provides a list of hundreds of open source projects that are available to Scala developers, and the [Scaladex](https://index.scala-lang.org) provides a searchable index of Scala libraries. Some of the more notable libraries are listed below.
+
 
 
 ### Web development
@@ -394,76 +409,74 @@ Scala has a vibrant ecosystem, with libraries and frameworks for every need. The
 
 HTTP(S) libraries:
 
-- Akka-http
-- Finch
-- Http4s
-- Sttp
+- [Akka-http](https://akka.io)
+- [Finch](https://github.com/finagle/finch)
+- [Http4s](https://github.com/http4s/http4s)
+- [Sttp](https://github.com/softwaremill/sttp)
 
 JSON libraries:
 
-- Argonaut
-- Circe
-- Jackson/Scala
-- Json4s
-- Jsoniter
-- Play-JSON
+- [Argonaut](https://github.com/argonaut-io/argonaut)
+- [Circe](https://github.com/circe/circe)
+- [Json4s](https://github.com/json4s/json4s)
+- [Play-JSON](https://github.com/playframework/play-json)
 
 Serialization:
 
-- ScalaPB
+- [ScalaPB](https://github.com/scalapb/ScalaPB)
 
 Science and data analysis:
 
-- Algebird
-- Spire
-- Squants
+- [Algebird](https://github.com/twitter/algebird)
+- [Spire](https://github.com/typelevel/spire)
+- [Squants](https://github.com/typelevel/squants)
 
 
 ### Big data
 
-- Spark
-- Apache Flink
-- SCIO, A Scala API for Apache Beam and Google Cloud Dataflow.
+- [Apache Spark](https://github.com/apache/spark)
+- [Apache Flink](https://github.com/apache/flink)
 
 
 ### AI, machine learning
 
-- BigDL, Distributed Deep Learning Framework for Apache Spark
-- TensorFlow- Scala
+- [BigDL](https://github.com/intel-analytics/BigDL) (Distributed Deep Learning Framework for Apache Spark) for Apache Spark
+- [TensorFlow Scala](https://github.com/eaplatanios/tensorflow_scala)
 
 
-### Concurrency
+### FP &amp; FRP
 
-- Akka
-    - Actor model
-    - Concurrency
-    - High throughput
+FP:
 
+- [Cats](https://github.com/typelevel/cats)
+- [Zio](https://github.com/zio/zio)
 
-### FP
+Functional reactive programming (FRP):
 
-- Cats
-- Zio
-
-
-### Functional reactive programming
-
-- fs2
-- monix
-- ScalaRx
+- [fs2](https://github.com/typelevel/fs2)
+- [monix](https://github.com/monix/monix)
 
 
 ### Build tools
 
-- sbt
-- Gradle
-- Mill
-- Fury?
+- [sbt](https://www.scala-sbt.org)
+- [Gradle](https://gradle.org)
+- [Mill](https://github.com/lihaoyi/mill)
 
 
 
 ## Summary
 
 As this page shows, Scala has many terrific programming language features at a high level, at an everyday programming level, and through its developer ecosystem.
+
+
+
+[reference]: {{ site.scala3ref }}/overview.html
+[multiversal]: {% link _overviews/scala3-book/ca-multiversal-equality.md %}
+[extension]: {% link _overviews/scala3-book/ca-extension-methods.md %}
+[givens]: {% link _overviews/scala3-book/ca-given-using-clauses.md %}
+[opaque_types]: {% link _overviews/scala3-book/types-opaque-types.md %}
+
+
 
 

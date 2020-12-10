@@ -10,7 +10,7 @@ next-page:
 
 Scala 3 offers a new way to define programs that can be invoked from the command line: Adding an `@main` annotation to a method turns that method into an executable program:
 
-```tut
+```scala
 @main def hello = println("Hello, world")
 ```
 

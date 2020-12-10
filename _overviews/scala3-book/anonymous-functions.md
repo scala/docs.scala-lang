@@ -255,7 +255,7 @@ In the case of our `ints` list, the compiler knows that `ints` is a list of inte
 
 The parameter `B` is whatever your custom function returns. For instance, while the anonymous function shown previously transformed one `Int` into another `Int` value, this function transforms an `Int` to a `Double`:
 
-```tut
+```scala
 val intToDouble = (i: Int) => i.toDouble
 ```
 
@@ -282,7 +282,7 @@ f: (Int) => Double
 
 Here’s another `map` example that transforms a `Seq[String]` into a `Seq[Int]`:
 
-```tut
+```scala
 Seq("hi", "there").map(_.length)   // Seq[Int] = List(2, 5)
 ```
 

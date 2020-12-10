@@ -50,7 +50,7 @@ When it comes to using collections, one answer is that you don’t mutate an exi
 <!-- TODO: a better example -->
 For example, imagine that you have a list of names — a `List[String]` — that are all in lowercase, and you want to find all the names that begin with the letter `"j"`, and then you want to capitalize those names. In FP you write this code:
 
-```tut
+```scala
 val a = List("jane", "jon", "mary", "joe")
 val b = a.filter(_.startsWith("j"))
          .map(_.capitalize)
@@ -194,7 +194,7 @@ While every programming language ever created probably lets you write pure funct
 
 This feature has many benefits, the most common of which are (a) you can define methods to accept function parameters, and (b) you can pass functions as parameters into methods. You’ve seen this in multiple places in this book, whenever methods like `map` and `filter` are demonstrated:
 
-```tut
+```scala
 val nums = (1 to 10).toList
 
 val doubles = nums.map(_ * 2)           // double each value
@@ -254,7 +254,7 @@ This ability to seamlessly pass functions around as variables is a distinguishin
 
 If you’re not comfortable with the process of passing functions as parameters into other functions, here are a few more examples you can experiment with:
 
-```tut
+```scala
 List("foo", "bar").map(_.toUpperCase)
 List("foo", "bar").map(_.capitalize)
 List("adam", "scott").map(_.length)
@@ -284,7 +284,7 @@ While this first example doesn’t deal with null values, it’s a good way to i
 
 Imagine that you want to write a method that makes it easy to convert strings to integer values, and you want an elegant way to handle the exception that’s thrown when your method gets a string like `"Hello"` instead of `"1"`. A first guess at such a method might look like this:
 
-```tut
+```scala
 def makeInt(s: String): Int =
   try
     Integer.parseInt(s.trim)
@@ -305,7 +305,7 @@ A common solution to this problem in Scala is to use a trio of classes known as 
 
 Here’s the revised version of `makeInt`:
 
-```tut
+```scala
 def makeInt(s: String): Option[Int] =
   try
     Some(Integer.parseInt(s.trim))
