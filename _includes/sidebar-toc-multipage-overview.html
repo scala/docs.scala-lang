@@ -11,25 +11,30 @@
       <ul>
         {% assign sorted = site.overviews | sort: 'num' %}
         {% for pg in sorted %}
+					{% if pg.num == page.num %}
+						{% capture toc %}
+						<div id="toc"></div>
+						{% endcapture %}
+					{% endif %}
+
           {% if pg.num and (page.partof == pg.partof) %}
             {% if page.language %} <!-- if page is a translation, get the translated title -->
               {% assign prefix = page.language | prepend: '/' %}
               {% assign localizedId = pg.id | prepend: prefix %}
               {% for lpg in site.[page.language] %}
                 {% if lpg.id == localizedId %}
-                  <li><a {% if page.title == lpg.title %}class="active"{% endif %} href="/{{ site.baseurl }}{{ page.language }}{{ pg.url }}">{{ lpg.title }}</a></li>
+                  <li><a {% if page.title == lpg.title %}class="active"{% endif %} href="/{{ site.baseurl }}{{ page.language }}{{ pg.url }}">{{ lpg.title }}</a>
+									{{ toc }}</li>
                 {% endif %}
               {% endfor %}
             {% else %} <!-- this must be English, so get the other documents' titles -->
 
               {% if pg.type %} <!-- if a type is set in a document, we add it as a class. Used in Scala book to diff between chapter and section -->
-                <li class="type-{{ pg.type }}"><a {% if page.title == pg.title %}class="active"{% endif %} href="{{ site.baseurl }}{{ pg.url }}">{{ pg.title }}</a></li>
+                <li class="type-{{ pg.type }}"><a {% if page.title == pg.title %}class="active"{% endif %} href="{{ site.baseurl }}{{ pg.url }}">{{ pg.title }}</a>{{toc}}</li>
               {% else %}
-                <li><a {% if page.title == pg.title %}class="active"{% endif %} href="{{ site.baseurl }}{{ pg.url }}">{{ pg.title }}</a></li>
+                <li><a {% if page.title == pg.title %}class="active"{% endif %} href="{{ site.baseurl }}{{ pg.url }}">{{ pg.title }}</a>{{toc}}</li>
               {% endif %}
-
             {% endif %}
-            {% if pg.num == page.num %}<div id="toc"></div>{% endif %}
           {% endif %}
         {% endfor %}
       </ul>
