@@ -1,6 +1,6 @@
 ---
 layout: singlepage-overview
-title: Scala FAQs
+title: Scala FAQ
 permalink: /tutorials/FAQ/index.html
 redirect_from: "/tutorials/FAQ/breakout.html"
 redirect_from: "/tutorials/FAQ/chaining-implicits.html"

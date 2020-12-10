@@ -505,6 +505,8 @@ $(document).ready(function () {
   let isInOverviewsFolder = overviewsFolders.some(of => thisPageUrl.startsWith(of));
   if(isRootFile) {
     thisPageUrl = thisPageUrl + '.md';
+  } else if(thisPageUrl.indexOf("tutorials/FAQ/") == 0) {
+    thisPageUrl = '_overviews/' + thisPageUrl.substring("tutorials/".length) + '.md';
   } else if(isInOverviewsFolder) {
     thisPageUrl = '_overviews/'+ thisPageUrl + '.md';
   } else {
