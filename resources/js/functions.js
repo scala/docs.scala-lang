@@ -275,7 +275,7 @@ $(document).ready(function() {
 $(document).ready(function() {
   if ($("#sidebar-toc").length) {
     $('#toc').toc({
-      exclude: 'h1, h5, h6',
+      exclude: 'h1, h4, h5, h6',
       context: '.toc-context',
       autoId: true,
       numerate: false
