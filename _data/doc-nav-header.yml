@@ -27,7 +27,7 @@
       url: "/overviews/index.html"
     - title: Books
       url: "/books.html"
-    - title: Scala FAQs
+    - title: Scala FAQ
       url: "/tutorials/FAQ/index.html"
     - title: Language Spec
       url: http://scala-lang.org/files/archive/spec/2.13/
