@@ -59,7 +59,7 @@ get poor results, try surrounding the symbol with double quotes.
 
 ### Which type of collection should I choose?
 
-see the [Scala Collections Guide](https://docs.scala-lang.org/overviews/collections/introduction.html)
+see the [Scala 2.13 Collections Guide](https://docs.scala-lang.org/overviews/collections-2.13/introduction.html)
 
 ### What are Scala context bounds (`[T : Foo]`)?
 
