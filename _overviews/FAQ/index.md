@@ -81,6 +81,17 @@ see the [Scala Collections Guide](https://docs.scala-lang.org/overviews/collecti
 
 [answer on Stack Overflow](https://stackoverflow.com/a/5598107)
 
+### Why do primitive type parameters erase to `Object`?
+
+So for example, a `List[Int]` in Scala code will appear to Java as a
+`List[Object]`.  The Java type system doesn't allow primitive types to
+appear as type parameters, but couldn't they appear as their boxed
+equivalents, such as `List[java.lang.Integer]`?
+
+One would hope so, but doing it that way was tried and it proved
+impossible.  [This SO question](https://stackoverflow.com/questions/11167430/why-are-primitive-types-such-as-int-erased-to-object-in-scala)
+sadly lacks a concise explanation, but it does link to past discussions.
+
 ## More questions
 
 {% assign overviews = site.overviews | sort: 'num' %}
