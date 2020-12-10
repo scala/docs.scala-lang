@@ -47,8 +47,8 @@ sections:
         description: "A handy cheatsheet covering the basics of Scala's syntax."
         icon: "fa fa-list"
         link: /cheatsheets/index.html
-      - title: "Scala FAQs"
-        description: "A list of frequently-asked questions about Scala language features and their answers."
+      - title: "Scala FAQ"
+        description: "Answers to frequently-asked questions about Scala."
         icon: "fa fa-question-circle"
         link: /tutorials/FAQ/index.html
       - title: "Language Spec"

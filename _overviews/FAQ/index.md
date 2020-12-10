@@ -65,6 +65,16 @@ get poor results, try surrounding the symbol with double quotes.
 
 ## Specific technical questions
 
+### Why is my (abstract or overridden) `val` null?
+
+<!-- this is left over from a previous version of the FAQ.
+so, grandfathering this in, but I suggest we not host any further FAQ
+answers here, I think it's better to provide only short answers and
+links. if something needs more space to explain, there should be
+official documentation that addresses it, not just an FAQ answer -->
+
+[answer]({{ site.baseurl }}/tutorials/FAQ/initialization-order.html)
+
 ### Which type of collection should I choose?
 
 see the [Scala 2.13 Collections Guide](https://docs.scala-lang.org/overviews/collections-2.13/introduction.html)
@@ -81,7 +91,7 @@ see the [Scala 2.13 Collections Guide](https://docs.scala-lang.org/overviews/col
 
 [answer on Stack Overflow](https://stackoverflow.com/a/5159356)
 
-### How can I chain/nest implicit conversions?
+### Can I chain or nest implicit conversions?
 
 [answer on Stack Overflow](https://stackoverflow.com/a/5332804)
 
@@ -99,14 +109,3 @@ equivalents, such as `List[java.lang.Integer]`?
 One would hope so, but doing it that way was tried and it proved
 impossible.  [This SO question](https://stackoverflow.com/questions/11167430/why-are-primitive-types-such-as-int-erased-to-object-in-scala)
 sadly lacks a concise explanation, but it does link to past discussions.
-
-## More questions
-
-{% assign overviews = site.overviews | sort: 'num' %}
-<ul>
-{% for overview in overviews %}
-  {% if overview.partof == "FAQ" %}
-    <li><a href="{{ site.baseurl }}{{ overview.url }}">{{ overview.title }}</a></li>
-  {% endif %}
-{% endfor %}
-</ul>
