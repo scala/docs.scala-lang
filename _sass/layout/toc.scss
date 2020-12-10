@@ -83,6 +83,11 @@
   }
 }
 
+// disable floating for the book, since the TOC can become very large
+.scala3 .sidebar-toc-wrapper {
+  position: relative;
+}
+
 .book #toc {
   ul {
      margin-top: 5px;
