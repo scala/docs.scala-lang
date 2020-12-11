@@ -109,3 +109,29 @@ equivalents, such as `List[java.lang.Integer]`?
 One would hope so, but doing it that way was tried and it proved
 impossible.  [This SO question](https://stackoverflow.com/questions/11167430/why-are-primitive-types-such-as-int-erased-to-object-in-scala)
 sadly lacks a concise explanation, but it does link to past discussions.
+
+### Difference between methods and functions
+
+[complete answer on Stack Overflow](https://stackoverflow.com/a/2530007/4111404)
+
+[summary with practical differences](https://tpolecat.github.io/2014/06/09/methods-functions.html)
+
+### Difference between classes and types
+
+[blog post: There are more types than classes](https://typelevel.org/blog/2017/02/13/more-types-than-classes.html)
+
+### How to return "current" type
+
+[discussion about alternatives and their trade-offs on Stack Overflow](https://stackoverflow.com/questions/59813323/advantages-of-f-bounded-polymorphism-over-typeclass-for-return-current-type-prob)
+
+### What does <:< means?
+
+[blog post: Generalized type constraints](https://blog.bruchez.name/2015/11/generalized-type-constraints-in-scala.html)
+
+### Best way to model optional arguments
+
+[answer on Stack Overflow](https://stackoverflow.com/a/65256691/4111404)
+
+### Why prfer implicit val over implicit object
+
+[answer on Stack Overflow](https://stackoverflow.com/a/65258340/4111404)
