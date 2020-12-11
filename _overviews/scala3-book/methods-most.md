@@ -1,36 +1,36 @@
 ---
-title: Methods and Functions
-type: chapter
-description: This section introduces methods and functions in Scala 3.
-num: 10
-previous-page: data-modeling-3-fp
-next-page: packaging-imports
+title: Method Features
+type: section
+description: This section introduces Scala 3 methods, including main methods, extension methods, and more.
+num: 11
+previous-page: methods-intro
+next-page: methods-main-methods
 ---
 
 
 
-In Scala 2, _methods_ can be defined inside classes, traits, objects, case classes, and case objects. But it gets better: In Scala 3 they can also be defined _outside_ any of those constructs with a new feature named Toplevel definitions. In short, methods can now be defined anywhere.
+In Scala 2, *methods* can be defined inside classes, traits, objects, case classes, and case objects. But it gets better: In Scala 3 they can also be defined _outside_ any of those constructs with a new feature named Toplevel definitions. In short, methods can now be defined anywhere.
 
-This section demonstrates many of the basic features of defining and calling methods.
+This section demonstrates many of the features of defining and calling methods.
 
 
 
 ## Defining methods
 
-Scala’s general method syntax looks like this:
+When a Scala method doesn’t use generic parameters or `using` parameters, its general syntax looks like this:
 
 ```scala
 def methodName(param1: Type1 = defaultValue1, param2: Type2 = defaultValue2): ReturnType = 
   // the method body
   // goes here
-end methodName // this is optional
+end methodName   // this is optional
 ```
 
 In that syntax:
 
 - The keyword `def` is used to define a method
 - The Scala standard is to name methods using the camel case convention
-- Method parameters are always defined with an accompanying type
+- Method parameters are always defined with their type
 - Parameters can also have default values
 - Declaring the method return type is optional
 - Methods can consist of many lines, or just one line
@@ -55,7 +55,7 @@ Invoking a method is straightforward:
 val x = add(1, 2)   // 3
 ```
 
-The Scala collections classes have dozens of built-in methods. Here are a few examples of how to call their methods:
+The Scala collections classes have dozens of built-in methods. These examples show how to call them:
 
 ```scala
 val x = List(1,2,3)
@@ -79,7 +79,7 @@ When a method is longer than one line, start the method body on the second line,
 
 ```scala
 def addThenDouble(a: Int, b: Int): Int =
-  // imagine that this takes multiple lines
+  // imagine that this body requires multiple lines
   val sum = a + b
   sum * 2
 ```
@@ -87,7 +87,7 @@ def addThenDouble(a: Int, b: Int): Int =
 In that method:
 
 - `sum` is an immutable local variable; it can’t be accessed outside of the method
-- The last line doubles the value of `sum`; this result is the value that’s yielded by the method
+- The last line doubles the value of `sum`; this value is returned from the method
 
 When you paste that code into the REPL, you’ll see that it works as desired:
 
@@ -96,7 +96,7 @@ scala> addThenDouble(1, 1)
 res0: Int = 4
 ```
 
-Notice in this example that there’s no need for a `return` statement at the end of the method. Because everything in Scala is an _expression_ — meaning that each line of code returns (or _evaluates to) a value — there’s no need to add `return` to an expression.
+Notice that there’s no need for a `return` statement at the end of the method. Because everything in Scala is an _expression_ — meaning that each line of code returns (or _evaluates to) a value — there’s no need to add `return` to an expression.
 
 This becomes more clear when you condense that method and write it on one line:
 
@@ -131,6 +131,7 @@ In that method:
 >Lines of code that don’t return values are called _statements_, and they’re used for their side-effects. Conversely, _expressions_ always return a result and generally do not have side effects. As you learn more about Scala you’ll find yourself writing more expressions and fewer statements.
 
 
+
 ## Default parameter values
 
 Method parameters can have default values. In this example, default values are given for both the `timeout` and `protocol` parameters:
@@ -159,7 +160,7 @@ Notice that by using default parameter values, it appears to the consumer that t
 
 
 
-## Using named parameters
+## Named parameters
 
 If you prefer, you can also use the names of the method parameters when calling a method. For instance, `makeConnection` can also be called in these ways:
 
@@ -213,7 +214,7 @@ While this is just a convention, following it dramatically improves code readabi
 
 
 
-## Using an `if` expression as a method body
+## Using `if` as a method body
 
 Because `if`/`else` expressions return a value, they can be used as the body of a method. Here’s a method named `isTrue` that implements the Perl definitions of `true` and `false`:
 
@@ -235,7 +236,8 @@ isTrue(1.0)    // true
 ```
 
 
-## Using a `match` expression as a method body
+
+## Using `match` as a method body
 
 A `match` expression can also be used as the entire method body, and often is. Here’s another version of `isTrue`, written with a `match` expression :
 
@@ -332,34 +334,30 @@ end StringUtils
 
 ## Extension methods
 
-Extension methods let you add methods to a type after the type is defined. This example shows how to create an extension method named `circumference` on a previously-defined `Circle` class:
+Extension methods are discussed in the [Extension methods section][extension] of the Contextual Abstraction chapter. Their main purpose is to let you add new functionality to closed classes. As shown in that section, imagine that you have a `Circle` class, but you can’t change its source code. For instance, it may be defined like this in a third-party library:
 
 ```scala
 case class Circle(x: Double, y: Double, radius: Double)
+```
 
+If you want to add methods to this class, you can define them as extension methods, like this:
+
+```scala
 extension (c: Circle)
   def circumference: Double = c.radius * math.Pi * 2
+  def diameter: Double = c.radius * 2
+  def area: Double = math.Pi * c.radius * c.radius
 ```
 
-In this example, you may have written the `Circle` class, or it might be a part of some third-party library. The important part is that this approach adds the `circumference` method to the `Circle` class, so it can be used just as though it was defined inside `Circle`:
+Now when you have a `Circle` instance named `aCircle`, you can call those methods like this:
 
 ```scala
-val circle = Circle(0, 0, 1)
-circle.circumference
+aCircle.circumference
+aCircle.diameter
+aCircle.area
 ```
 
-The `extension` keyword declares that you’re about to define one or more extension methods on the type that’s put in parentheses. As shown with this example, the parameter `c` can then be used in the body of your extension methods.
-
-Here’s another example that shows how to define methods with symbolic names — i.e., what appears to be an operator on a `String`:
-
-```scala
-extension (x: String)
-  def < (y: String): Boolean = x.length < y.length
-
-"ab" < "c"   // false
-```
-
-In this example the `<` definition overrides the default `<` on the `String` class.
+See the [Extension methods section][reference_extension_methods] of this book, and the [Extension methods Reference page][reference] for more details.
 
 
 
@@ -376,9 +374,10 @@ There’s even more to know about methods, including how to:
 - Write methods that have multiple parameter groups (partially-applied functions)
 - Create methods that have generic type parameters
 
-See the Reference documentation for more details on these features.
+See the [Reference documentation][reference] for more details on these features.
 
 
 
-
-
+[extension]: {% link _overviews/scala3-book/ca-extension-methods.md %}
+[reference_extension_methods]: {{ site.scala3ref }}/contextual/extension-methods.html
+[reference]: {{ site.scala3ref }}/overview.html

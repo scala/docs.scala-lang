@@ -2,8 +2,8 @@
 title: Packaging and Imports
 type: chapter
 description: A discussion of using packages and imports to organize your code, build related modules of code, control scope, and help prevent namespace collisions.
-num: 11
-previous-page: methods-and-functions
+num: 23
+previous-page: fun-summary
 next-page: collections-classes-methods
 ---
 

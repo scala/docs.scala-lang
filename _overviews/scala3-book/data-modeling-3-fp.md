@@ -4,7 +4,7 @@ type: section
 description: This chapter provides an introduction to FP data modeling with Scala 3.
 num: 9
 previous-page: data-modeling-2-oop
-next-page: methods-and-functions
+next-page: methods-intro
 ---
 
 This chapter provides an introduction to functional programming (FP) style data modeling in Scala 3.

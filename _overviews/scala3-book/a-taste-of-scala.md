@@ -1056,7 +1056,7 @@ Scala has even more features that weren’t covered in this whirlwind tour. See 
 [control]: {% link _overviews/scala3-book/control-structures.md %}
 [first-look]: {% link _overviews/scala3-book/first-look-at-types.md %}
 [data-1]: {% link _overviews/scala3-book/data-modeling-1-tools.md %}
-[higher-order]: {% link _overviews/scala3-book/higher-order-functions.md %}
+[higher-order]: {% link _overviews/scala3-book/fun-hofs.md %}
 [api]: https://dotty.epfl.ch/api/index.html
 [contextual]: {% link _overviews/scala3-book/ca-contextual-abstractions-intro.md %}
 [collections]: {% link _overviews/scala3-book/collections-classes-methods.md %}

@@ -2,7 +2,7 @@
 title: Scala Tools
 type: chapter
 description: This chapter looks at two commonly-used Scala tools, sbt and ScalaTest.
-num: 36
+num: 48
 previous-page: concurrency
 next-page: interacting-with-java
 ---

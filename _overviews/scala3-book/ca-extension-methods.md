@@ -2,7 +2,7 @@
 title: Extension Methods
 type: section
 description: This page demonstrates how Extension Methods work in Scala 3.
-num: 30
+num: 42
 previous-page: ca-given-imports
 next-page: ca-type-classes
 ---
@@ -57,5 +57,6 @@ extension (c: Circle)
   def diameter: Double = c.radius * 2
   def area: Double = math.Pi * c.radius * c.radius
 ```
+
 
 

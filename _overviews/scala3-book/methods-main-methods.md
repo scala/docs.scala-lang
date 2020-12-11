@@ -1,14 +1,15 @@
 ---
-title: Main Methods
+title: main Methods
+type: section
 description: This page describes how 'main' methods and the '@main' annotation work in Scala 3.
-num: 45
-previous-page: higher-order-functions
-next-page: 
+num: 12
+previous-page: methods-most
+next-page: methods-summary
 ---
 
 
 
-Scala 3 offers a new way to define programs that can be invoked from the command line: Adding an `@main` annotation to a method turns that method into an executable program:
+Scala 3 offers a new way to define programs that can be invoked from the command line: Adding a `@main` annotation to a method turns that method into an executable program:
 
 ```scala
 @main def hello = println("Hello, world")
@@ -27,7 +28,7 @@ $ scala hello
 Hello, world
 ```
 
-An `@main` annotated method can be written either at the top-level (as shown), or inside a statically accessible object. In either case, the name of the program is in each case the name of the method, without any object prefixes.
+A `@main` annotated method can be written either at the top-level (as shown), or inside a statically accessible object. In either case, the name of the program is in each case the name of the method, without any object prefixes.
 
 
 
@@ -62,7 +63,6 @@ Happy 23rd Birthday, Lisa and Peter!
 ```
 
 As shown, the `@main` method can have an arbitrary number of parameters. For each parameter type there must be an instance of the *scala.util.FromString* type class that converts an argument `String` to the required parameter type. Also as shown, a main method’s parameter list can end in a repeated parameter like `String*` that takes all remaining arguments given on the command line.
-<!-- TODO: link to the FromString docs -->
 
 The program implemented from an `@main` method checks that there are enough arguments on the command line to fill in all parameters, and that the argument strings can be converted to the required types. If a check fails, the program is terminated with an error message:
 
@@ -73,7 +73,6 @@ Illegal command line after first argument: more arguments expected
 $ scala happyBirthday sixty Fred
 Illegal command line: java.lang.NumberFormatException: For input string: "sixty"
 ```
-<!-- TODO: add a note about custom error handling? -->
 
 
 
@@ -112,8 +111,9 @@ final class happyBirthday {
 
 ```scala
 // scala 2
-object happyBirthday extends App:
+object happyBirthday extends App: {
   // needs by-hand parsing of the command line arguments ...
+}
 ```
 
 The previous functionality of `App`, which relied on the “magic” `DelayedInit` trait, is no longer available. `App` still exists in limited form for now, but it doesn’t support command line arguments and will be deprecated in the future.
