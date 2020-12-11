@@ -79,7 +79,7 @@ official documentation that addresses it, not just an FAQ answer -->
 
 see the [Scala 2.13 Collections Guide](https://docs.scala-lang.org/overviews/collections-2.13/introduction.html)
 
-### What are Scala context bounds (`[T : Foo]`)?
+### What are context bounds (`[T : Foo]`)?
 
 [answer on Stack Overflow](https://stackoverflow.com/a/4467012)
 
@@ -110,28 +110,56 @@ One would hope so, but doing it that way was tried and it proved
 impossible.  [This SO question](https://stackoverflow.com/questions/11167430/why-are-primitive-types-such-as-int-erased-to-object-in-scala)
 sadly lacks a concise explanation, but it does link to past discussions.
 
-### Difference between methods and functions
+### What's the difference between methods and functions?
+
+For example, how does a method such as:
+
+    def square(x: Int): Int = x * x
+
+differ from a function value such as:
+
+    val square: Int => Int = x => x * x
 
 [complete answer on Stack Overflow](https://stackoverflow.com/a/2530007/4111404)
 
 [summary with practical differences](https://tpolecat.github.io/2014/06/09/methods-functions.html)
 
-### Difference between classes and types
+### What's the difference between types and classes?
 
-[blog post: There are more types than classes](https://typelevel.org/blog/2017/02/13/more-types-than-classes.html)
+Types are primarily a compile-time concept. At compile time,
+every expression is assigned a type by the compiler.
 
-### How to return "current" type
+Classes are primarily a runtime concept and are platform-dependent.
+At runtime on the JVM, every value is either a primitive value
+or an instance of exactly one class.
 
-[discussion about alternatives and their trade-offs on Stack Overflow](https://stackoverflow.com/questions/59813323/advantages-of-f-bounded-polymorphism-over-typeclass-for-return-current-type-prob)
+Some type information exists only at compile time, for multiple
+reasons, most notoriously [type
+erasure](https://en.wikipedia.org/wiki/Type_erasure).
 
-### What does <:< means?
+For an in-depth treatment of types vs. classes, see the blog post
+["There are more types than classes"](https://typelevel.org/blog/2017/02/13/more-types-than-classes.html).
 
-[blog post: Generalized type constraints](https://blog.bruchez.name/2015/11/generalized-type-constraints-in-scala.html)
+### How can a method in a superclass return a value of the “current” type?
 
-### Best way to model optional arguments
+Possible solutions include F-bounded polymorphism (familiar to Java programmers),
+type members, and the typeclass pattern.
 
-[answer on Stack Overflow](https://stackoverflow.com/a/65256691/4111404)
+[discussion of alternatives on Stack Overflow](https://stackoverflow.com/questions/59813323/advantages-of-f-bounded-polymorphism-over-typeclass-for-return-current-type-prob)
 
-### Why prfer implicit val over implicit object
+[blog post](http://tpolecat.github.io/2015/04/29/f-bounds.html) arguing against F-bounds and in favor of typeclasses.
 
-[answer on Stack Overflow](https://stackoverflow.com/a/65258340/4111404)
+### What does `<:<` mean?
+
+It's a "type constraint", and it comes from the standard library,
+not from the language itself.  See [this blog
+post](https://blog.bruchez.name/2015/11/generalized-type-constraints-in-scala.html).
+
+### I dislike requiring callers to wrap optional arguments in `Some(...)`; is there a better way?
+
+Not really. See [this answer on Stack Overflow](https://stackoverflow.com/a/65256691/4111404).
+
+### Why is `implicit val` usually recommended over `implicit object`?
+
+The latter has a singleton type, which is too specific.  See [answer on Stack
+Overflow](https://stackoverflow.com/a/65258340/4111404).
