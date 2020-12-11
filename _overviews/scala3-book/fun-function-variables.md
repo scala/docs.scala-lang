@@ -23,7 +23,7 @@ We noted that this part of the expression is an anonymous function:
 
 The reason it’s called *anonymous* is because it’s not assigned to a variable, and therefore doesn’t have a name.
 
-However, you can assign this anonymous function (function literal) to a variable to create a *function variable*:
+However, an anonymous function — also known as a *function literal* — can be assigned to a variable to create a *function variable*:
 
 ```scala
 val double = (i: Int) => i * 2
@@ -50,7 +50,7 @@ val double = (i: Int) => i * 2
              --------
 ```
 
-Like the parameter list for a method, this means that the `double` function takes one parameter, an `Int` named `i`. In fact, you can see in the REPL that `double` has the type `Int => Int`, meaning that it takes a single `Int` parameter and returns an `Int`:
+Like the parameter list for a method, this means that the `double` function takes one parameter, an `Int` named `i`. You can see in the REPL that `double` has the type `Int => Int`, meaning that it takes a single `Int` parameter and returns an `Int`:
 
 ```scala
 scala> val double = (i: Int) => i * 2
@@ -72,13 +72,13 @@ You can also pass `double` into a `map` call:
 List(1, 2, 3).map(double)   // List(2, 4, 6)
 ```
 
-Furthermore, if you happen to have another function that has the `Int => Int` type:
+Furthermore, when you have other functions of the `Int => Int` type:
 
 ```scala
 val triple = (i: Int) => i * 3
 ```
 
-you can also store them in a `List` or `Map`:
+you can store them in a `List` or `Map`:
 
 ```scala
 val functionList = List(double, triple)

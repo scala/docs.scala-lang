@@ -2,7 +2,7 @@
 title: Summary
 type: section
 description: This page provides a summary of the Contextual Abstractions lessons.
-num: 46
+num: 45
 previous-page: ca-implicit-conversions
 next-page: concurrency
 ---

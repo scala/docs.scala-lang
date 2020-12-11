@@ -2,8 +2,8 @@
 title: Higher-Order Functions
 type: section
 description: This page demonstrates how to create and use higher-order functions in Scala.
-num: 19
-previous-page: fun-understanding-map-filter
+num: 18
+previous-page: fun-eta-expansion
 next-page: fun-write-map-function
 ---
 
@@ -30,7 +30,7 @@ As a beneficial side effect of this discussion, once you’re comfortable with t
 
 
 
-## Understanding `filter`’s Scaladoc
+## Understanding filter’s Scaladoc
 
 To understand how higher-order functions work, it helps to dig into an example. For instance, you can understand the type of functions `filter` accepts by looking at its Scaladoc. Here’s the `filter` definition in the `List` class:
 
@@ -58,7 +58,11 @@ Because `isEven` has this type — it transforms an input `Int` into a resulting
 
 
 
-## Writing methods that take functions as parameters
+{% comment %}
+NOTE: (A low-priority issue): The next several sections can be condensed.
+{% endcomment %}
+
+## Writing methods that take function parameters
 
 Given that background, let’s start writing methods that take functions as input parameters.
 

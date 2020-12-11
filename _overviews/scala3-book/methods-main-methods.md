@@ -49,9 +49,9 @@ With this approach your `@main` method can handle command line arguments, and th
           case _ => "th"
         }
     }
-  val bldr = new StringBuilder(s"Happy $age$suffix birthday, $name")
-  for other <- others do bldr.append(" and ").append(other)
-  bldr.toString
+  val sb = new StringBuilder(s"Happy $age$suffix birthday, $name")
+  for other <- others do sb.append(" and ").append(other)
+  sb.toString
 }
 ```
 

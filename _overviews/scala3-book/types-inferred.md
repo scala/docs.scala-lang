@@ -2,7 +2,7 @@
 title: Inferred Types
 type: section
 description: This section introduces and demonstrates inferred types in Scala 3
-num: 27
+num: 26
 previous-page: types-introduction
 next-page: types-generics
 ---

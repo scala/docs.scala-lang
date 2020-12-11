@@ -7,14 +7,8 @@ previous-page: data-modeling-2-oop
 next-page: methods-intro
 ---
 
-This chapter provides an introduction to functional programming (FP) style data modeling in Scala 3.
 
-
-
-
-# Data Modeling with functional programming
-
-When modeling the world around us with FP, you typically use these Scala constructs:
+This chapter provides an introduction to functional programming (FP) style data modeling in Scala 3. When modeling the world around us with FP, you typically use these Scala constructs:
 
 - Enumerations
 - Case classes

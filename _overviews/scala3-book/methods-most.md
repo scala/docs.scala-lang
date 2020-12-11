@@ -43,7 +43,7 @@ def add(a: Int, b: Int): Int = a + b
 def add(a: Int, b: Int) = a + b
 ```
 
-Because Scala is an expressive language, a surprising number of methods end up being only one line.
+You can use either style. For one-line methods it can be nice to leave the return type off, if you prefer. For larger methods, declaring the return type can make it easier to understand the method when you look at it months or years later, or when you look at another person’s methods.
 
 
 
@@ -212,6 +212,10 @@ speak()   // prints "hi"
 
 While this is just a convention, following it dramatically improves code readability: It makes it easier to understand at a glance that an arity-0 method has side effects.
 
+{% comment %}
+Some of that wording comes from this page: https://docs.scala-lang.org/style/method-invocation.html
+{% endcomment %}
+
 
 
 ## Using `if` as a method body
@@ -340,7 +344,7 @@ Extension methods are discussed in the [Extension methods section][extension] of
 case class Circle(x: Double, y: Double, radius: Double)
 ```
 
-If you want to add methods to this class, you can define them as extension methods, like this:
+When you want to add methods to this class, you can define them as extension methods, like this:
 
 ```scala
 extension (c: Circle)
@@ -357,7 +361,7 @@ aCircle.diameter
 aCircle.area
 ```
 
-See the [Extension methods section][reference_extension_methods] of this book, and the [Extension methods Reference page][reference] for more details.
+See the [Extension methods section][reference_extension_methods] of this book, and the [“Extension methods” Reference page][reference] for more details.
 
 
 

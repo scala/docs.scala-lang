@@ -2,7 +2,7 @@
 title: Scala for Python Developers
 type: chapter
 description: This page is for Python developers who are interested in learning about Scala 3.
-num: 53
+num: 52
 previous-page: scala-for-javascript-devs
 next-page: 
 ---
@@ -39,7 +39,12 @@ next-page:
 </style>
 
 
-<!-- TODO: hopefully someone with more Python experience can give this a thorough review -->
+{% comment %}
+NOTE: Hopefully someone with more Python experience can give this a thorough review 
+
+NOTE: On this page (https://contributors.scala-lang.org/t/feedback-sought-optional-braces/4702/10), Li Haoyi comments: “Python’s success also speaks for itself; beginners certainly don’t pick Python because of performance, ease of installation, packaging, IDE support, or simplicity of the language’s runtime semantics!” I’m not a Python expert, so these points are good to know, though I don’t want to go negative in any comparisons. It’s more like thinking, “Python developers will appreciate Scala’s performance, ease of installation, packaging, IDE support, etc.”
+{% endcomment %}
+
 
 This section provides a comparison between the Python and Scala programming languages. It’s intended for programmers who know Python and want to learn about Scala, specifically by seeing examples of how Python language features compare to Scala.
 

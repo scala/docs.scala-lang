@@ -4,7 +4,7 @@ type: section
 description: This page discusses Eta Expansion, the Scala technology that automatically and transparently converts methods into functions.
 num: 17
 previous-page: fun-function-variables
-next-page: fun-understanding-map-filter
+next-page: fun-hofs
 ---
 
 
@@ -23,10 +23,6 @@ List(1, 2, 3).map(times10)     // List(10,20,30)
 ```
 
 Have you ever wondered how this works — how you can pass a *method* into `map`, which expects a *function*?
-
-
-
-## Eta Expansion
 
 The technology behind this is known as *Eta Expansion*. It converts an expression of *method type* to an equivalent expression of *function type*, and it does so seamlessly and quietly.
 

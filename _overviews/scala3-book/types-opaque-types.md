@@ -2,15 +2,13 @@
 title: Opaque Types
 type: section
 description: This section introduces and demonstrates opaque types in Scala 3.
-num: 34
+num: 33
 previous-page: types-variance
 next-page: types-structural
 ---
 
 
-# Opaque types
-
-Opaque types aliases provide type abstraction without any overhead. For example, this introduces `Logarithm` as a new abstract type, which is implemented as `Double`:
+Opaque type aliases provide type abstraction without any overhead. For example, this introduces `Logarithm` as a new abstract type, which is implemented as `Double`:
 
 ```scala
 object Logarithms:

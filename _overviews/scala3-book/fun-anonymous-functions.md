@@ -8,11 +8,10 @@ next-page: fun-function-variables
 ---
 
 
-{% comment %}
-TODO: Use a more technical term than “little mini-function.”
-{% endcomment %}
 
-An anonymous function is like a little mini-function. For example, given a list like this:
+An anonymous function — also referred to as a *lambda* — is a block of code that’s passed as an argument to a higher-order function. Wikipedia defines an [anonymous function](https://en.wikipedia.org/wiki/Anonymous_function) as, “a function definition that is not bound to an identifier.”
+
+For example, given a list like this:
 
 ```scala
 val ints = List(1, 2, 3)
@@ -126,7 +125,7 @@ Because `i` is used only once in the body of the function, the expression can be
 ints.foreach(println(_))
 ```
 
-Finally, if a function literal consists of one statement that takes a single argument, you don’t need to explicitly name and specify the argument, so the statement can finally be reduced to this:
+Finally, if an anonymous function consists of one statement that takes a single argument, you don’t need to explicitly name and specify the argument, so the statement can finally be reduced to this:
 
 ```scala
 ints.foreach(println)
