@@ -81,14 +81,13 @@ See the [Scala 2.13 Collections Guide](https://docs.scala-lang.org/overviews/col
 
 ### What are context bounds (`[T : Foo]`)?
 
-Basically is sugar syntax for an `implicit` argument of type `Foo[T]`.
+It's syntactic sugar for an `implicit` parameter of type `Foo[T]`.
 
-More deatils in this [Stack Overflow answer](https://stackoverflow.com/a/4467012).
+More details in this [Stack Overflow answer](https://stackoverflow.com/a/4467012).
 
 ### How does `for / yield` work?
 
-In short it is sugar syntax for nested
-`map`, `flatMap` & `withFilter` calls.
+It is syntactic sugar for nested `map`, `flatMap`, and `withFilter` calls.
 
 For an in-depth explanation
 see this [Stack Overflow answer](https://stackoverflow.com/a/1059501).
@@ -99,8 +98,8 @@ see this [Stack Overflow answer](https://stackoverflow.com/a/1059501).
 
 ### Can I chain or nest implicit conversions?
 
-Not really, but you can [make it work](https://stackoverflow.com/a/5332804)
-_(although implicit conversions are, in general, discouraged)_.
+Not really, but you can [make it work](https://stackoverflow.com/a/5332804).
+But note that implicit conversions are, in general, discouraged.
 
 ### Where does Scala look for implicits?
 
@@ -155,7 +154,7 @@ and the [typeclass pattern](http://tpolecat.github.io/2013/10/12/typeclass.html)
 
 This [blog post](http://tpolecat.github.io/2015/04/29/f-bounds.html)
 argues against F-bounds and in favor of typeclasses.
-Which is revisited with a discussion about the trade-offs of alternatives
+Another discussions of trade-offs and alternatives is
 in [this Stack Overflow post](https://stackoverflow.com/questions/59813323/advantages-of-f-bounded-polymorphism-over-typeclass-for-return-current-type-prob).
 
 ### What does `<:<` mean?
