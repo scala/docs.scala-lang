@@ -2,7 +2,7 @@
 title: Contextual Abstractions
 type: section
 description: This page demonstrates Context Bounds in Scala 3.
-num: 39
+num: 42
 previous-page: ca-given-using-clauses
 next-page: ca-given-imports
 ---

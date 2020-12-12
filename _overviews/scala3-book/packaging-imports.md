@@ -4,7 +4,7 @@ type: chapter
 description: A discussion of using packages and imports to organize your code, build related modules of code, control scope, and help prevent namespace collisions.
 num: 22
 previous-page: fun-summary
-next-page: collections-classes-methods
+next-page: collections-intro
 ---
 
 
