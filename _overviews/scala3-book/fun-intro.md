@@ -2,7 +2,7 @@
 title: Functions
 type: chapter
 description: This chapter looks at all topics related to functions in Scala 3.
-num: 14
+num: 23
 previous-page: methods-summary
 next-page: fun-anonymous-functions
 ---

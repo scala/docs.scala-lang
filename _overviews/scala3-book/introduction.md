@@ -21,4 +21,4 @@ We should have a link structure on the whole tour here
 
 [contributing]: {% link scala3/contribute-to-docs.md %}
 [reference]: {{ site.scala3ref }}/overview.html
-[taste]: {% link _overviews/scala3-book/a-taste-of-scala.md %}
+[taste]: {% link _overviews/scala3-book/taste-intro.md %}

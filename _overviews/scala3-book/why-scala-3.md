@@ -4,7 +4,7 @@ type: chapter
 description: This page describes the benefits of the Scala 3 programming language.
 num: 3
 previous-page: scala-features
-next-page: a-taste-of-scala
+next-page: taste-intro
 ---
 
 {% comment %}

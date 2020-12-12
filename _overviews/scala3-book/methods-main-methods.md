@@ -2,7 +2,7 @@
 title: main Methods
 type: section
 description: This page describes how 'main' methods and the '@main' annotation work in Scala 3.
-num: 12
+num: 21
 previous-page: methods-most
 next-page: methods-summary
 ---

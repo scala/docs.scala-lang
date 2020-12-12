@@ -2,7 +2,7 @@
 title: FP Data Modeling
 type: section
 description: This chapter provides an introduction to FP data modeling with Scala 3.
-num: 9
+num: 18
 previous-page: data-modeling-2-oop
 next-page: methods-intro
 ---

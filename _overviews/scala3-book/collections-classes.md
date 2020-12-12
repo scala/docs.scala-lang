@@ -2,7 +2,7 @@
 title: Collections Classes
 type: section
 description: This page introduces the common Scala 3 collections classes.
-num: 24
+num: 33
 previous-page: collections-intro
 next-page: collections-methods
 ---

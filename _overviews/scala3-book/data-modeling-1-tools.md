@@ -2,7 +2,7 @@
 title: Data Modeling
 type: chapter
 description: This chapter provides an introduction to the available data modeling tools in Scala 3, including classes, traits, enums, and more.
-num: 7
+num: 16
 previous-page: control-structures
 next-page: data-modeling-2-oop
 ---
