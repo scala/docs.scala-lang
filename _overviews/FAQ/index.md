@@ -153,9 +153,8 @@ _(familiar to Java programmers)_, type members,
 and the [typeclass pattern](http://tpolecat.github.io/2013/10/12/typeclass.html).
 
 This [blog post](http://tpolecat.github.io/2015/04/29/f-bounds.html)
-argues against F-bounds and in favor of typeclasses.
-Another discussions of trade-offs and alternatives is
-in [this Stack Overflow post](https://stackoverflow.com/questions/59813323/advantages-of-f-bounded-polymorphism-over-typeclass-for-return-current-type-prob).
+argues against F-bounds and in favor of typeclasses;
+see also [this Stack Overflow post](https://stackoverflow.com/questions/59813323/advantages-of-f-bounded-polymorphism-over-typeclass-for-return-current-type-prob) for some counterpoint.
 
 ### What does `<:<` mean?
 
