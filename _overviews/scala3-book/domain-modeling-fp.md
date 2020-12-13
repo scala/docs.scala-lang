@@ -1,14 +1,14 @@
 ---
-title: FP Data Modeling
+title: FP Modeling
 type: section
-description: This chapter provides an introduction to FP data modeling with Scala 3.
-num: 18
-previous-page: data-modeling-2-oop
+description: This chapter provides an introduction to FP domain modeling with Scala 3.
+num: 19
+previous-page: domain-modeling-oop
 next-page: methods-intro
 ---
 
 
-This chapter provides an introduction to functional programming (FP) style data modeling in Scala 3. When modeling the world around us with FP, you typically use these Scala constructs:
+This chapter provides an introduction to functional programming (FP) style domain modeling in Scala 3. When modeling the world around us with FP, you typically use these Scala constructs:
 
 - Enumerations
 - Case classes
@@ -137,7 +137,7 @@ These solutions are shown in the next three sections.
 
 
 
-## (1) Handling behavior in FP with a companion object
+## (1) Handling behavior with a companion object
 
 A first approach is to put the behaviors — the methods — in a companion object. With this approach, you put the data model in a `case` class, and then put the methods in a companion object of the `case` class.
 
@@ -195,7 +195,7 @@ val pizza3 = updateCrustSize(pizza2, Large)
 
 
 
-## (2) Using a modular approach
+## (2) Handling behavior with a modular approach
 
 A second way to organize behaviors in an FP style is to use a “modular” approach. The book, *Programming in Scala*, defines a *module* as, “a ‘smaller program piece’ with a well defined interface and a hidden implementation.” Let’s look at what this means.
 
@@ -393,7 +393,7 @@ Just like the `Pizza` class, you can say these things about the `List` class:
 
 
 
-## Summary of the FP domain modeling approaches
+## Summary of the approaches
 
 Defining a data model in Scala/FP tends to be simple: Just model the data with enumerations and `case` classes with immutable fields. This approach is similar to creating a relational database design, and it becomes a blueprint of the classes, their fields, and their relationships.
 

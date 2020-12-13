@@ -2,7 +2,7 @@
 title: Anonymous Functions
 type: section
 description: This page shows how to use anonymous functions in Scala, including examples with the List class 'map' and 'filter' functions.
-num: 24
+num: 25
 previous-page: fun-intro
 next-page: fun-function-variables
 ---

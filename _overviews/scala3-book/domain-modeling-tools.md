@@ -1,21 +1,13 @@
 ---
-title: Data Modeling
-type: chapter
-description: This chapter provides an introduction to the available data modeling tools in Scala 3, including classes, traits, enums, and more.
-num: 16
-previous-page: control-structures
-next-page: data-modeling-2-oop
+title: Tools
+type: section
+description: This chapter provides an introduction to the available domain modeling tools in Scala 3, including classes, traits, enums, and more.
+num: 17
+previous-page: domain-modeling-intro
+next-page: domain-modeling-oop
 ---
 
-This chapter is the first of three chapters that look at how you can model the world around you with Scala 3. The three chapters are:
 
-- This chapter introduces the tools that are available to you, including classes, traits, enums, and more
-- The next chapter looks at modeling attributes and behaviors in an object-oriented programming (OOP) style
-- The third chapter looks at modeling in a functional programming (FP) style
-
-
-
-## Scala 3 modeling tools
 
 Scala 3 provides the following tools to help us model the world around us:
 
@@ -71,7 +63,7 @@ p.vocation = "Musician"
 ```
 
 
-### Classes can have fields and methods
+### Fields and methods
 
 In addition to constructor parameters, classes can also have fields and methods. They are defined in the body of the class, which also serves as the class constructor:
 
@@ -192,7 +184,7 @@ circle1.area
 
 In this example the `area` method that’s available to each instance uses the `calculateArea` method that’s defined in the companion object. If you’re familiar with Java, `calculateArea` is similar to a static method. Also, because `calculateArea` is private, it can’t be accessed by other code, but as shown, it can be seen by instances of the `Circle` class.
 
-### Other companion object uses
+### Other uses
 
 Companion objects can be used for several purposes:
 

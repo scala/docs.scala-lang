@@ -2,7 +2,7 @@
 title: Collections Methods
 type: section
 description: This page demonstrates the common methods on the Scala 3 collections classes.
-num: 34
+num: 35
 previous-page: collections-classes
 next-page: collections-summary
 ---

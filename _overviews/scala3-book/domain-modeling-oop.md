@@ -1,17 +1,17 @@
 ---
-title: OOP Data Modeling
+title: OOP Modeling
 type: section
-description: This chapter provides an introduction to OOP data modeling with Scala 3.
-num: 17
-previous-page: data-modeling-1-tools
-next-page: data-modeling-3-fp
+description: This chapter provides an introduction to OOP domain modeling with Scala 3.
+num: 18
+previous-page: domain-modeling-tools
+next-page: domain-modeling-fp
 ---
 
-This chapter provides an introduction to object-oriented programming (OOP) style data modeling in Scala 3.
+This chapter provides an introduction to object-oriented programming (OOP) style domain modeling in Scala 3.
 
 
 
-## OOP Data Modeling
+## Introduction
 
 The “big three” concepts in OOP are encapsulation, polymorphism, and inheritance:
 
@@ -31,7 +31,7 @@ This chapter focuses on two main concepts:
 
 ## Classes
 
-As shown in the [Modeling Tools chapter](data-modeling-1-tools.md), these examples show how to define classes that only have constructor parameters:
+As shown in the [Modeling Tools section](domain-modeling-tools.md), these examples show how to define classes that only have constructor parameters:
 
 ```scala
 class Person(var name: String, var vocation: String)
@@ -224,7 +224,7 @@ Scala classes have other features to support OOP-style programming:
 
 - You can define methods and fields to be `private` or `protected`, to control how they are accessed and overridden
 - Classes can have multiple constructors
-- As shown in the [Modeling Tools chapter](data-modeling-1-tools.md), class constructor parameters can have default values
+- As shown in the [Modeling Tools section](domain-modeling-tools.md), class constructor parameters can have default values
 - A class can be marked as `open`, signaling that it’s planned for extensions:
 
 ```scala

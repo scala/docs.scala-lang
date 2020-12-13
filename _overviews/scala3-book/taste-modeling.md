@@ -1,5 +1,5 @@
 ---
-title: Modeling
+title: Domain Modeling
 type: section
 description: This section provides an introduction to data modeling in Scala 3.
 num: 7
@@ -17,7 +17,7 @@ Scala supports both functional programming (FP) and object-oriented programming 
 
 
 
-## OOP Data Modeling
+## OOP Domain Modeling
 
 When writing code in an OOP style, your two main tools for data encapsulation are _traits_ and _classes_.
 
@@ -110,7 +110,7 @@ val p = Person("John", "Stephens")
 Constructors and other class-related topics are covered in the [Data Modeling][data-1] chapter.
 
 
-## FP Data Modeling
+## FP Domain Modeling
 
 {% comment %}
 NOTE: Julien had a note about expecting to see sealed traits here.
@@ -219,4 +219,4 @@ See the [Data Modeling][data-1] sections for many more details on `case` classes
 
 
 
-[data-1]: {% link _overviews/scala3-book/data-modeling-1-tools.md %}
+[data-1]: {% link _overviews/scala3-book/domain-modeling-tools.md %}

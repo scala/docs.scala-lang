@@ -2,7 +2,7 @@
 title: Collections Summary
 type: section
 description: This page provides a summary of the Collections chapter.
-num: 35
+num: 36
 previous-page: collections-methods
 next-page: functional-programming
 ---
