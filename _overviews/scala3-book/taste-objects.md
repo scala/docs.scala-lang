@@ -66,12 +66,12 @@ Objects can also be used to implement traits to create modules. This technique t
 
 ```scala
 trait AddService:
-    def add(a: Int, b: Int) = a + b
+  def add(a: Int, b: Int) = a + b
 
 trait MultiplyService:
-    def multiply(a: Int, b: Int) = a * b
+  def multiply(a: Int, b: Int) = a * b
 
-// reify those traits into a concrete object
+// implement those traits as a concrete object
 object MathService extends AddService, MultiplyService
 
 // use the object
@@ -80,7 +80,11 @@ println(add(1,1))        // 2
 println(multiply(2,2))   // 4
 ```
 
+{% comment %}
+NOTE: I don’t know if this is worth keeping, but I’m leaving it here as a comment for now.
+
 >You may read that objects are used to *reify* traits into modules. *Reify* means, “to take an abstract concept and turn it into something concrete.” This is what happens in these examples, but “implement” is a more familiar word for most people than “reify.”
+{% endcomment %}
 
 
 

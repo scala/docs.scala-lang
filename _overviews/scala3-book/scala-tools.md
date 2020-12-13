@@ -162,7 +162,6 @@ If you type `help` at the sbt command prompt you’ll see a list of other comman
 
 ### Other build tools for Scala
 
-<!-- TODO: add Fury? -->
 While sbt is widely used, there are other tools you can use to build Scala projects:
 
 - [Ant](https://ant.apache.org/)
@@ -192,6 +191,10 @@ mkdir project target
 ### Creating the build.sbt file
 
 Next, create a *build.sbt* file in the root directory of your project with these contents:
+
+{% comment %}
+TODO: Update these references to Scala 3 when they’re available.
+{% endcomment %}
 
 ```scala
 name := "HelloScalaTest"
@@ -253,6 +256,10 @@ $ mkdir src/test/scala/math
 ```
 
 Next, create a file named *MathUtilsTests.scala* in that directory with the following contents:
+
+{% comment %}
+TODO: update to indentation syntax
+{% endcomment %}
 
 ```scala
 package math

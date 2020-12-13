@@ -100,9 +100,6 @@ p.printFullName()      // "John Legend"
 Notice that the class declaration creates a constructor:
 
 ```scala
-class Person(var firstName: String, var lastName: String):
-  // more code here
-
 // this code uses that constructor
 val p = Person("John", "Stephens")
 ```

@@ -15,10 +15,6 @@ Scala has most features you’d expect in a functional programming language, inc
 - Higher-order functions (HOFs)
 - Higher-order functions in the standard library
 
-{% comment %}
-TODO: Jonathan had a note here about higher-order function definitions. How to resolve?
-{% endcomment %}
-
 Lambdas, also known as _anonymous functions_, are a big part of keeping your code concise but readable. These two examples — which show how to call higher-order functions (HOFs) on a Scala `List` — are equivalent, and show how to multiply each number in a list by `2` by passing a lambda into the `map` method:
 
 ```scala
