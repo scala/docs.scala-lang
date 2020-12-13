@@ -22,7 +22,7 @@ over again in Scala chat rooms and forums.
 
 ### Where can I ask Scala questions?
 
-see our [Community page](https://scala-lang.org/community/)
+See our [Community page](https://scala-lang.org/community/).
 
 ### Should I learn Scala 2, or Scala 3?
 
@@ -73,31 +73,37 @@ answers here, I think it's better to provide only short answers and
 links. if something needs more space to explain, there should be
 official documentation that addresses it, not just an FAQ answer -->
 
-[answer]({{ site.baseurl }}/tutorials/FAQ/initialization-order.html)
+See [this]({{ site.baseurl }}/tutorials/FAQ/initialization-order.html).
 
 ### Which type of collection should I choose?
 
-see the [Scala 2.13 Collections Guide](https://docs.scala-lang.org/overviews/collections-2.13/introduction.html)
+See the [Scala 2.13 Collections Guide](https://docs.scala-lang.org/overviews/collections-2.13/introduction.html).
 
 ### What are context bounds (`[T : Foo]`)?
 
-[answer on Stack Overflow](https://stackoverflow.com/a/4467012)
+It's syntactic sugar for an `implicit` parameter of type `Foo[T]`.
 
-### How does `yield` work?
+More details in this [Stack Overflow answer](https://stackoverflow.com/a/4467012).
 
-[answer on Stack Overflow](https://stackoverflow.com/a/1059501)
+### How does `for / yield` work?
+
+It is syntactic sugar for nested `map`, `flatMap`, and `withFilter` calls.
+
+For an in-depth explanation
+see this [Stack Overflow answer](https://stackoverflow.com/a/1059501).
 
 ### What is the difference between view, stream and iterator?
 
-[answer on Stack Overflow](https://stackoverflow.com/a/5159356)
+[Answer on Stack Overflow](https://stackoverflow.com/a/5159356).
 
 ### Can I chain or nest implicit conversions?
 
-[answer on Stack Overflow](https://stackoverflow.com/a/5332804)
+Not really, but you can [make it work](https://stackoverflow.com/a/5332804).
+But note that implicit conversions are, in general, discouraged.
 
 ### Where does Scala look for implicits?
 
-[answer on Stack Overflow](https://stackoverflow.com/a/5598107)
+See this [answer on Stack Overflow](https://stackoverflow.com/a/5598107).
 
 ### Why do primitive type parameters erase to `Object`?
 
@@ -106,8 +112,8 @@ So for example, a `List[Int]` in Scala code will appear to Java as a
 appear as type parameters, but couldn't they appear as their boxed
 equivalents, such as `List[java.lang.Integer]`?
 
-One would hope so, but doing it that way was tried and it proved
-impossible.  [This SO question](https://stackoverflow.com/questions/11167430/why-are-primitive-types-such-as-int-erased-to-object-in-scala)
+One would hope so, but doing it that way was tried and it proved impossible.
+[This SO question](https://stackoverflow.com/questions/11167430/why-are-primitive-types-such-as-int-erased-to-object-in-scala)
 sadly lacks a concise explanation, but it does link to past discussions.
 
 ### What's the difference between methods and functions?
@@ -120,9 +126,9 @@ differ from a function value such as:
 
     val square: Int => Int = x => x * x
 
-[complete answer on Stack Overflow](https://stackoverflow.com/a/2530007/4111404)
+[Complete answer on Stack Overflow](https://stackoverflow.com/a/2530007/4111404).
 
-[summary with practical differences](https://tpolecat.github.io/2014/06/09/methods-functions.html)
+[Summary with practical differences](https://tpolecat.github.io/2014/06/09/methods-functions.html).
 
 ### What's the difference between types and classes?
 
@@ -133,27 +139,28 @@ Classes are primarily a runtime concept and are platform-dependent.
 At runtime on the JVM, every value is either a primitive value
 or an instance of exactly one class.
 
-Some type information exists only at compile time, for multiple
-reasons, most notoriously [type
-erasure](https://en.wikipedia.org/wiki/Type_erasure).
+Some type information exists only at compile time,
+for multiple reasons, most notoriously
+[type erasure](https://en.wikipedia.org/wiki/Type_erasure).
 
 For an in-depth treatment of types vs. classes, see the blog post
 ["There are more types than classes"](https://typelevel.org/blog/2017/02/13/more-types-than-classes.html).
 
 ### How can a method in a superclass return a value of the “current” type?
 
-Possible solutions include F-bounded polymorphism (familiar to Java programmers),
-type members, and the typeclass pattern.
+Possible solutions include F-bounded polymorphism
+_(familiar to Java programmers)_, type members,
+and the [typeclass pattern](http://tpolecat.github.io/2013/10/12/typeclass.html).
 
-[discussion of alternatives on Stack Overflow](https://stackoverflow.com/questions/59813323/advantages-of-f-bounded-polymorphism-over-typeclass-for-return-current-type-prob)
-
-[blog post](http://tpolecat.github.io/2015/04/29/f-bounds.html) arguing against F-bounds and in favor of typeclasses.
+This [blog post](http://tpolecat.github.io/2015/04/29/f-bounds.html)
+argues against F-bounds and in favor of typeclasses;
+see also [this Stack Overflow post](https://stackoverflow.com/questions/59813323/advantages-of-f-bounded-polymorphism-over-typeclass-for-return-current-type-prob) for some counterpoint.
 
 ### What does `<:<` mean?
 
 It's a "type constraint", and it comes from the standard library,
-not from the language itself.  See [this blog
-post](https://blog.bruchez.name/2015/11/generalized-type-constraints-in-scala.html).
+not from the language itself.
+See [this blog post](https://blog.bruchez.name/2015/11/generalized-type-constraints-in-scala.html).
 
 ### I dislike requiring callers to wrap optional arguments in `Some(...)`; is there a better way?
 
@@ -161,5 +168,5 @@ Not really. See [this answer on Stack Overflow](https://stackoverflow.com/a/6525
 
 ### Why is `implicit val` usually recommended over `implicit object`?
 
-The latter has a singleton type, which is too specific.  See [answer on Stack
-Overflow](https://stackoverflow.com/a/65258340/4111404).
+The latter has a singleton type, which is too specific.
+See [answer on Stack Overflow](https://stackoverflow.com/a/65258340/4111404).
