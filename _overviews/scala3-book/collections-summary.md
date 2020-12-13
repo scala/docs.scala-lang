@@ -4,7 +4,7 @@ type: section
 description: This page provides a summary of the Collections chapter.
 num: 36
 previous-page: collections-methods
-next-page: functional-programming
+next-page: fp-intro
 ---
 
 This chapter provides a summary of the common Scala 3 collections classes and their accompanying methods. As shown, Scala comes with a wealth of collections classes and methods.

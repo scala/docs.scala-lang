@@ -240,6 +240,7 @@ You can also cast a reference type to a subtype. This will be covered later in t
 `Null` is a subtype of all reference types (i.e. any subtype of `AnyRef`). It has a single value identified by the keyword literal `null`. `Null` is provided mostly for interoperability with other JVM languages and should almost never be used in Scala code. Alternatives to `null` are discussed in the [Functional Programming chapter][fp] of this book, and the [API documentation](https://dotty.epfl.ch/-scala%203/-a-p-i/scala/-option.html).
 
 
+
 [reference]: {{ site.scala3ref }}/overview.html
 [interpolation]: {% link _overviews/core/string-interpolation.md %}
-[fp]: {% link _overviews/scala3-book/functional-programming.md %}
+[fp]: {% link _overviews/scala3-book/fp-intro.md %}

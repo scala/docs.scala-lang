@@ -2,7 +2,7 @@
 title: Variance
 type: section
 description: This section introduces and demonstrates variance in Scala 3.
-num: 45
+num: 51
 previous-page: types-type-classes
 next-page: types-opaque-types
 ---
