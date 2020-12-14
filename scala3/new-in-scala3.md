@@ -1,0 +1,99 @@
+---
+layout: singlepage-overview
+title: That's new in Scala 3
+---
+The upcoming, exciting new version of Scala 3 brings many improvements and
+new features. Here we provide you with a quick overview of the most important
+changes. If you want to dig deeper, there are a few references at your disposal:
+
+- The [Scala 3 Book]({% link _overviews/scala3-book/introduction.md %}) targets developers new to the Scala language.
+- The [Syntax Summary][syntax-summary] provides you with a formal description of the new syntax.
+- The [Language Reference][reference] gives a detailed description of the changes from Scala 2 to Scala 3.
+- The [Migration Guide][migration] provides you with all of the information, necessary to move from Scala 2 to Scala 3.
+
+## That's new in Scala 3
+Scala 3 is a complete overhaul of the Scala language. At its core, many aspects
+of the type-system have been change to be more principled. While this also
+brings exciting new features along (like union types), first and foremost, it
+means that the type-system gets (even) less in your way and for instance
+[type-inference][type-inference] and overload resolution are much improved.
+
+### New and Shiny: The Syntax
+Besides many (minor) cleanups, the Scala 3 syntax offers the following  improvements:
+
+- A new "quiet" syntax for control structures like `if`, `while`, and `for` ([new control syntax][syntax-control])
+- The `new` keyword is optional (_aka_ [creator applications][creator])
+- [Optional braces][syntax-indentation] that supports a distraction-free, indentation sensitive style of programming
+- Change of [type-level wildcards][syntax-wildcard] from `_` to `?`.
+- Implicits (and their syntax) have been [heavily revised][implicits].
+
+### Opinionated: Contextual Abstractions
+One underlying core concept of Scala was (and still is to some degree) to
+provide users with a small set of powerful features that can be combined to
+great (and sometimes even unforeseen) expressivity. For example, the feature of _implicits_
+has been used to model contextual abstraction, to express type-level
+computation, model type-classes, perform implicit coercions, encode
+extension methods, and many more.
+Learning from these use cases, Scala 3 takes a slightly different approach
+and focuses on **intent** rather than **mechanism**.
+Instead of offering one very powerful feature, Scala 3 offers multiple
+tailored language features, allowing programmers to directly express their intent:
+
+- **Abtracting over contextual information**. [Using clauses][contextual-using] allow programmers to abstract over information that is available in the calling context and should be passed implicitly. As an improvement over Scala 2 implicits, using clauses can be specified by type, freeing function signatures from term variable names that are never explicitly referred to.
+
+- **Providing Type-class instances**. [Given instances][contextual-givens] allow programmers to define the _canonical value_ of a certain type. This makes programming with type-classes more straightforward without leaking implementation details.
+
+- **Retroactively extending classes**. In Scala 2, extension methods had to be encoded using implicit conversions or implicit classes. In contrast, in Scala 3 [extension methods][contextual-extension] are now directly built into the language, leading to better error messages and improved type inference.
+
+- **Viewing one type as another**. Implicit conversion have been [redesigned][contextual-conversions] from the ground up as instances of a type-class `Conversion`.
+
+- **Higher-order contextual abstractions**. The _all-new_ feature of [context functions][contextual-functions] makes contextual abstractions a first-class citizen. They are an important tool for library authors and allow to express concise domain specific languages.
+
+### Say What You Mean: Type System Improvements
+Besides greatly improved type inference, the Scala 3 type system also offers many new features, giving you powerful tools to statically express invariants in the types:
+
+- **Enumerations**. [Enums][enums] have been redesigned to blend well with case classes and form the new standard to express [algebraic data types][enums-adts].
+
+- **Intersection and union types**. Basing the type system on new foundations led to the introduction of new type system features: instances of a [intersection types][types-intersection], like `A & B`, are instances of _both_ `A` and of `B`. Instances of [union types][types-union], like `A | B`, are instances of _either_ `A` or `B`. Both constructs allow programmers to flexibly express type constraints outside of the inheritance hierarchy.
+
+- **Dependent function types**. Scala 2 already allowed return types to depend on (value) arguments. In Scala 3 it is now possible to abstract over this pattern and express [dependent function types][types-dependent]. In the type `type F = (e: Entry) => e.Key`  the result type _depends_ on the argument!
+
+- **Polymorphic function types**. Like with dependent function types, Scala 2 supported methods that allow type parameters, but does not allow programmers to abstract over those methods. In Scala 3, [polymorphic function types][types-polymorphic] like `[A] => List[A] => List[A]` can abstract over functions that take _type arguments_ in addition to their value arguments.
+
+- **Type lambdas**. What needed to be expressed using a [compiler plugin](https://github.com/typelevel/kind-projector) in Scala 2 is now a first-class feature in Scala 3: Type lambdas are type level functions that can be pass as (higher-kinded) type arguments without requiring an auxiliary type definition.
+
+- **Match types**. Instead of encoding type-level computation using implicit resolution, Scala 3 offers direct support for [matching on types][types-match]. Integrating type-level computation into the type checker enables improved error messages and removes the need for complicated encodings.
+
+
+### Batteries Included: Metaprogramming
+While macros in Scala 2 were an experimental feature only, Scala 3 comes with a powerful arsenal of tools for metaprogramming.
+
+
+
+[enums]: {{ site.scala3ref }}/enums/enums.html
+[enums-adts]: {{ site.scala3ref }}/enums/adts.html
+
+[types-intersection]: {{ site.scala3ref }}/new-types/intersection-types.html
+[types-union]: {{ site.scala3ref }}/new-types/union-types.html
+[types-dependent]: {{ site.scala3ref }}/new-types/dependent-function-types.html
+[types-lambdas]: {{ site.scala3ref }}/new-types/type-lambdas.html
+[types-polymorphic]: {{ site.scala3ref }}/new-types/polymorphic-function-types.html
+[types-match]: {{ site.scala3ref }}/new-types/match-types.html
+
+[type-inference]: {{ site.scala3ref }}/changed-features/type-inference.html
+[overload-resolution]: {{ site.scala3ref }}/changed-features/overload-resolution.html
+[reference]: {{ site.scala3ref }}/overview.html
+[creator]: {{ site.scala3ref }}/other-new-features/creator-applications.html
+[migration]: https://scalacenter.github.io/scala-3-migration-guide
+
+[implicits]: {{ site.scala3ref }}/contextual/motivation.html
+[contextual-using]: {{ site.scala3ref }}/contextual/using-clauses.html
+[contextual-givens]: {{ site.scala3ref }}/contextual/givens.html
+[contextual-extension]: {{ site.scala3ref }}/contextual/extension-methods.html
+[contextual-conversions]: {{ site.scala3ref }}/contextual/conversions.html
+[contextual-functions]: {{ site.scala3ref }}/contextual/context-functions.html
+
+[syntax-summary]: {{ site.scala3ref }}/syntax.html
+[syntax-control]: {{ site.scala3ref }}/other-new-features/control-syntax.html
+[syntax-indentation]: {{ site.scala3ref }}/other-new-features/indentation.html
+[syntax-wildcard]: {{ site.scala3ref }}/changed-features/wildcards.html
