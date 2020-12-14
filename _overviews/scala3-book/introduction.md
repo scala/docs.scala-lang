@@ -3,11 +3,11 @@ title: Introduction
 type: chapter
 description: This page begins the overview documentation of the Scala 3 language.
 num: 1
-previous-page: 
+previous-page:
 next-page: scala-features
 ---
 
-Welcome to the Scala 3 Book. The goal of this book is to provide an informal introduction to the Scala language. It touches on all Scala topics, in a relatively light manner. If at any time while you’re reading this book and want more information on a specific feature, you’ll find links to our [_Reference_ documentation][reference], which covers all of the language features in detail.
+Welcome to the Scala 3 Book. The goal of this book is to provide an informal introduction to the Scala language. It touches on all Scala topics, in a relatively light manner. If at any time while you’re reading this book and want more information on a specific feature, you’ll find links to our [_Reference_ documentation][reference], which covers many new features of the Scala language in more detail.
 
 Over the course of this book, we hope to demonstrate that Scala is a beautiful, expressive programming language, with a clean, modern syntax, and supports functional programming (FP), object-oriented programming (OOP), and a fusion of FP and OOP in a typed setting. Scala’s syntax, grammar, and features have been re-thought, debated in an open process, and updated in 2020 to be more clear and easier to understand than ever before.
 
