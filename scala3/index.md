@@ -22,6 +22,10 @@ sections:
         description: "A guide to help you migrate from Scala 2 to Scala 3."
         icon: "fa fa-suitcase"
         link: https://scalacenter.github.io/scala-3-migration-guide/
+      - title: "New in Scala 3"
+        description: "An overview of the exciting new features in Scala 3."
+        icon: "fa fa-star"
+        link: /scala3/new-in-scala3.html
       - title: "Guides"
         description: "Detailed guides about particular aspects of the language."
         icon: "fa fa-map"

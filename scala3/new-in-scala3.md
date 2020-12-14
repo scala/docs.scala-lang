@@ -18,7 +18,7 @@ brings exciting new features along (like union types), first and foremost, it
 means that the type-system gets (even) less in your way and for instance
 [type-inference][type-inference] and overload resolution are much improved.
 
-### New and Shiny: The Syntax
+### New & Shiny: The Syntax
 Besides many (minor) cleanups, the Scala 3 syntax offers the following  improvements:
 
 - A new "quiet" syntax for control structures like `if`, `while`, and `for` ([new control syntax][syntax-control])
@@ -97,3 +97,8 @@ While macros in Scala 2 were an experimental feature only, Scala 3 comes with a 
 [syntax-control]: {{ site.scala3ref }}/other-new-features/control-syntax.html
 [syntax-indentation]: {{ site.scala3ref }}/other-new-features/indentation.html
 [syntax-wildcard]: {{ site.scala3ref }}/changed-features/wildcards.html
+
+[meta-inline]: {% link _overviews/scala3-macros/tutorial/inline.md %}
+[meta-compiletime]: {% link _overviews/scala3-macros/tutorial/compiletime.md %}
+[meta-quotes]: {% link _overviews/scala3-macros/tutorial/quotes.md %}
+[meta-reflection]: {% link _overviews/scala3-macros/tutorial/tasty-reflection.md %}
