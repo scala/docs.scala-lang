@@ -2,7 +2,7 @@
 title: Methods Summary
 type: section
 description: This section summarizes the previous sections on Scala 3 methods.
-num: 23
+num: 26
 previous-page: methods-main-methods
 next-page: fun-intro
 ---

@@ -2,7 +2,7 @@
 title: FP Summary
 type: section
 description: This section summarizes the previous functional programming sections.
-num: 43
+num: 46
 previous-page: fp-functional-error-handling
 next-page: types-introduction
 ---

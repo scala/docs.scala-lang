@@ -2,7 +2,7 @@
 title: Method Features
 type: section
 description: This section introduces Scala 3 methods, including main methods, extension methods, and more.
-num: 21
+num: 24
 previous-page: methods-intro
 next-page: methods-main-methods
 ---

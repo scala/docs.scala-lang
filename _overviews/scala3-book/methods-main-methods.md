@@ -2,7 +2,7 @@
 title: main Methods
 type: section
 description: This page describes how 'main' methods and the '@main' annotation work in Scala 3.
-num: 22
+num: 25
 previous-page: methods-most
 next-page: methods-summary
 ---
@@ -17,13 +17,13 @@ Scala 3 offers a new way to define programs that can be invoked from the command
 
 Just save that line of code in a file named something like *Hello.scala* — the filename doesn’t have to match the method name — and compile it with `scalac`:
 
-```sh
+```bash
 $ scalac Hello.scala
 ```
 
 Then run it with `scala`:
 
-```sh
+```bash
 $ scala hello
 Hello, world
 ```
@@ -127,7 +127,7 @@ object happyBirthday:
 
 If you place that code in a file named *happyBirthday.scala*, you can then compile it with `scalac` and run it with `scala`, as shown previously:
 
-```sh
+```bash
 $ scalac happyBirthday.scala
 
 $ scala happyBirthday

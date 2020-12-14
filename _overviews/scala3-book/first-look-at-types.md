@@ -2,7 +2,7 @@
 title: A First Look at Types
 type: chapter
 description: This page provides a brief introduction to Scala's built-in data types, including Int, Double, String, Long, Any, AnyRef, Nothing, and Null.
-num: 14
+num: 17
 previous-page: taste-summary
 next-page: control-structures
 ---

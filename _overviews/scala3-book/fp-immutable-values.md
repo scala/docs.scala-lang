@@ -2,7 +2,7 @@
 title: Immutable Values
 type: section
 description: This section looks at the use of immutable values in functional programming.
-num: 39
+num: 42
 previous-page: fp-what-is-fp
 next-page: fp-pure-functions
 ---

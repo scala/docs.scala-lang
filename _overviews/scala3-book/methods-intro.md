@@ -2,7 +2,7 @@
 title: Methods
 type: chapter
 description: This section introduces methods in Scala 3.
-num: 20
+num: 23
 previous-page: domain-modeling-fp
 next-page: methods-most
 ---

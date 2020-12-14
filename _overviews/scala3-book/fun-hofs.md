@@ -2,7 +2,7 @@
 title: Higher-Order Functions
 type: section
 description: This page demonstrates how to create and use higher-order functions in Scala.
-num: 28
+num: 31
 previous-page: fun-eta-expansion
 next-page: fun-write-map-function
 ---

@@ -2,7 +2,7 @@
 title: Collections Summary
 type: section
 description: This page provides a summary of the Collections chapter.
-num: 36
+num: 39
 previous-page: collections-methods
 next-page: fp-intro
 ---

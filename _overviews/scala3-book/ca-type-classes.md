@@ -2,7 +2,7 @@
 title: Implementing Type Classes
 type: section
 description: This page demonstrates how to create and use type classes in Scala 3.
-num: 61
+num: 64
 previous-page: ca-extension-methods
 next-page: ca-multiversal-equality
 ---

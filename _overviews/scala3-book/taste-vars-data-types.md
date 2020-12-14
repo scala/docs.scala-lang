@@ -2,8 +2,8 @@
 title: Variables and Data Types
 type: section
 description: This section demonstrates val and var variables, and some common Scala data types.
-num: 5
-previous-page: taste-intro
+num: 7
+previous-page: taste-repl
 next-page: taste-control-structures
 ---
 
@@ -40,11 +40,9 @@ These examples show how to create `val` and `var` variables:
 ```scala
 // immutable
 val a = 0
-val b = "Hello"
 
 // mutable
-var c = 1
-c = 2
+var b = 1
 ```
 
 In an application, a `val` can’t be reassigned. You’ll generate a compiler error if you try to reassign one:
@@ -65,14 +63,14 @@ msg = "Aloha"   // this compiles because a var can be reassigned
 
 ## Declaring variable types
 
-When you create a variable you can (a) explicitly declare its type, or (b) let the compiler infer the type:
+When you create a variable you can explicitly declare its type, or let the compiler infer the type:
 
 ```scala
 val x: Int = 1   // explicit
 val x = 1        // implicit; the compiler infers the type
 ```
 
-The second form is known as _type inference_, and it’s a great way to help keep this type of code concise. The Scala compiler can usually infer the data type for you, as shown in the output of these examples:
+The second form is known as _type inference_, and it’s a great way to help keep this type of code concise. The Scala compiler can usually infer the data type for you, as shown in the output of these REPL examples:
 
 ```scala
 scala> val x = 1
@@ -177,6 +175,7 @@ To embed arbitrary expressions inside a string, enclose them in curly braces:
 
 ``` scala
 println(s"2 + 2 = ${2 + 2}")   // prints "2 + 2 = 4"
+
 val x = -1
 println(s"x.abs = ${x.abs}")   // prints "x.abs = 1"
 ```

@@ -2,7 +2,7 @@
 title: Scala Tools
 type: chapter
 description: This chapter looks at two commonly-used Scala tools, sbt and ScalaTest.
-num: 66
+num: 69
 previous-page: concurrency
 next-page: interacting-with-java
 ---
@@ -34,7 +34,7 @@ You can use several different tools to build your Scala projects, including Ant,
 
 You can create an sbt “Hello, world” project in just a few steps. First, create a directory to work in, and move into that directory:
 
-```sh
+```bash
 $ mkdir hello
 $ cd hello
 ```
@@ -53,13 +53,13 @@ Now create a file named something like *Hello.scala* — the first part of the n
 
 That’s all you have to do. Now run the project with this `sbt` command:
 
-```sh
+```bash
 $ sbt run
 ```
 
 You should see output that looks like this, including the `"Hello, world"` from your program:
 
-```sh
+```bash
 $ sbt run
 [info] welcome to sbt 1.4.4 (AdoptOpenJDK Java 11.x)
 [info] loading project definition from project ...
@@ -271,7 +271,7 @@ See Coursier’s [launch page](https://get-coursier.io/docs/cli-launch) for more
 
 As with the previous lesson, create an sbt project directory structure for a project named *HelloScalaTest* with the following commands:
 
-```sh
+```bash
 $ mkdir HelloScalaTest
 $ cd HelloScalaTest
 $ mkdir -p src/{main,test}/scala
@@ -302,7 +302,7 @@ The first three lines of this file are essentially the same as the first example
 
 Next, create a Scala program that you can use to demonstrate ScalaTest. First, create a directory under *src/main/scala* named *math*:
 
-```sh
+```bash
 $ mkdir src/main/scala/math
             ----
 ```
@@ -341,7 +341,7 @@ With that compiled, let’s create a ScalaTest file to test the `double` method.
 
 ScalaTest is very flexible, and offers several different ways to write tests. A simple way to get started is to write tests using the ScalaTest `AnyFunSuite`. To get started, create a directory named *math* under the *src/test/scala* directory:
 
-```sh
+```bash
 $ mkdir src/test/scala/math
             ----
 ```

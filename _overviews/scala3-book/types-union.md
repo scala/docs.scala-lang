@@ -2,7 +2,7 @@
 title: Union Types
 type: section
 description: This section introduces and demonstrates union types in Scala 3.
-num: 48
+num: 51
 previous-page: types-intersection
 next-page: types-adts-gadts
 ---

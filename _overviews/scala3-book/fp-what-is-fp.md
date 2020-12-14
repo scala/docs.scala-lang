@@ -2,7 +2,7 @@
 title: What is Functional Programming?
 type: section
 description: This section provides an answer to the question, what is functional programming?
-num: 38
+num: 41
 previous-page: fp-intro
 next-page: fp-immutable-values
 ---

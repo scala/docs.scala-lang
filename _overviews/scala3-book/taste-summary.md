@@ -2,8 +2,8 @@
 title: Tour Summary
 type: section
 description: This page provides a summary of the previous 'Taste of Scala' sections.
-num: 13
-previous-page: taste-contextual-abstractions
+num: 16
+previous-page: taste-toplevel-definitions
 next-page: first-look-at-types
 ---
 
