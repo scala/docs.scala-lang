@@ -7,11 +7,15 @@ previous-page: concurrency
 next-page: interacting-with-java
 ---
 
-<!-- TODO: cover migration tools here? -->
+
+{% comment %}
+TODO: cover any migration tools/commands here?
+{% endcomment %}
+
 
 In this chapter you’ll see two tools that are commonly used in Scala projects:
 
-- [The *sbt* build tool](https://www.scala-sbt.org)
+- The [sbt](https://www.scala-sbt.org) build tool
 - [ScalaTest](https://www.scalatest.org), a source code testing framework
 
 We’ll start by showing how to use sbt to build your Scala projects, and then we’ll show how to use sbt and ScalaTest together to test your Scala projects.
@@ -22,7 +26,63 @@ We’ll start by showing how to use sbt to build your Scala projects, and then w
 
 You can use several different tools to build your Scala projects, including Ant, Maven, Gradle, Mill, and more. But a tool named *sbt* was the first build tool that was specifically created for Scala, and these days it’s supported by [Lightbend](https://www.lightbend.com), the company that also maintains [Akka](https://akka.io), the [Play framework](https://www.playframework.com), the [Lagom framework](https://www.lagomframework.com), and more.
 
->To install sbt, see [its download page](https://www.scala-sbt.org/download.html).
+>To install sbt, see [its download page](https://www.scala-sbt.org/download.html), or our [Getting Started][getting_started] page.
+
+
+
+### Creating a “Hello, world” project
+
+You can create an sbt “Hello, world” project in just a few steps. First, create a directory to work in, and move into that directory:
+
+```sh
+mkdir hello
+cd hello
+```
+
+Then create a file named *build.sbt* that contains this line:
+
+```scala
+scalaVersion := "{{ site.scala-version }}"
+```
+
+Now create a file named something like *Hello.scala* — the first part of the name doesn’t matter — with this line:
+
+```scala
+@main def helloWorld = println("Hello, world")
+```
+
+That’s all you have to do. Now run the project with this `sbt` command:
+
+```sh
+sbt run
+```
+
+You should see output that looks like this, including the `"Hello, world"` from your program:
+
+```sh
+> sbt run
+[info] welcome to sbt 1.4.4 (AdoptOpenJDK Java 11.x)
+[info] loading project definition from project ...
+[info] loading settings for project from build.sbt ...
+[info] compiling 1 Scala source to target/scala-3.0.0/classes ...
+[info] running helloWorld
+Hello, world
+[success] Total time: 2 s
+```
+
+When you look at your directory, you’ll see that sbt has created two directories named *project* and *target*. These are working directories that sbt uses.
+
+As you can see, creating and running a little Scala project with sbt takes just a few simple steps. 
+
+{% comment %}
+NOTE: This currently requires this line in a *project/plugins.sbt* file:
+addSbtPlugin("ch.epfl.lamp" % "sbt-dotty" % "0.4.6")
+{% endcomment %}
+
+
+### Using sbt with larger projects
+
+For little projects, that’s all that sbt requires to run. For larger projects that require dependencies or sbt plugins, you’ll want to create an organized directory structure. The rest of this section demonstrates that structure.
 
 
 ### The sbt directory structure
@@ -47,22 +107,22 @@ target/
 The *resources* directories are optional, and you can also add *java* directories at the same level as the *scala* directories if you want to use Java source code in your project. You can also add a *lib* directory under the root directory if you want to add unmanaged dependencies — JAR files — to your project.
 
 
-### Creating a “Hello, world” sbt project directory structure
+### “Hello, world” with an sbt directory structure
 
-<!-- 
-  TODO: using something like `sbt new lampepfl/dotty.g8` may eventually
-        be preferable, but that seems to have a few bugs atm (creates
-        a 'target' directory above the root; renames the root dir;
-        uses 'dottyVersion'; 'name' doesn’t match the supplied name;
-        config syntax is a little hard for beginners.)
--->
+{% comment %}
+TODO: using something like `sbt new scala/scala3.g8` may eventually
+      be preferable, but that seems to have a few bugs atm (creates
+      a 'target' directory above the root; renames the root dir;
+      uses 'dottyVersion'; 'name' doesn’t match the supplied name;
+      config syntax is a little hard for beginners.)
+{% endcomment %}
 
 Creating this directory structure is simple. There are tools to do this for you, but assuming that you’re using a Unix/Linux system, you can use these commands to create your first sbt project directory structure:
 
 ```bash
 mkdir HelloWorld
 cd HelloWorld
-mkdir -p src/{main,test}/{resources,scala}
+mkdir -p src/{main,test}/{scala,resources}
 mkdir project target
 ```
 
@@ -94,11 +154,11 @@ At this point you only need two more things to run a “Hello, world” project:
 - A *build.sbt* file
 - A *Hello.scala* file
 
-For a little project like this, the *build.sbt* file only needs to contain a few lines, like this:
+For a little project like this, the *build.sbt* file only needs a `scalaVersion` entry, but we’ll add three lines that you’ll commonly see:
 
 ```scala
 name := "HelloWorld"
-version := "1.0"
+version := "0.1"
 scalaVersion := "{{ site.scala-version }}"
 ```
 
@@ -141,7 +201,8 @@ $ sbt
 [info] loading settings for project ...
 [info] loading project definition ...
 [info] loading settings for project root from build.sbt ...
-[info] sbt server started at local:///Users/al/.sbt/1.0/server/7d26bae825c38a31074c/sock
+[info] sbt server started at
+       local:///${HOME}/.sbt/1.0/server/7d26bae822c36a31071c/sock
 sbt:hello-world> _
 ```
 
@@ -169,6 +230,22 @@ While sbt is widely used, there are other tools you can use to build Scala proje
 - [Maven](https://maven.apache.org/)
 - [Mill](https://www.lihaoyi.com/mill/)
 
+#### Coursier
+
+In a related note, [Coursier](https://get-coursier.io/docs/overview) is a “dependency resolver,” similar to Maven and Ivy in function. It’s written from scratch in Scala, “embraces functional programming principles,” and downloads artifacts in parallel for rapid downloads. sbt uses it to handle most dependency resolutions, and as a command-line tool, it can be used to easily install tools like sbt, Java, and Scala on your system, as shown in our [Getting Started][getting_started] page
+
+See the [`cs launch` page](https://get-coursier.io/docs/cli-launch) for details on how Coursier can be used to launch applications from dependencies, as shown in this example from the `launch` web page:
+
+```scala
+$ cs launch org.scalameta::scalafmt-cli:2.4.2 -- --help
+scalafmt 2.4.2
+Usage: scalafmt [options] [<file>...]
+
+  -h, --help               prints this usage text
+  -v, --version            print version
+  more ...
+```
+
 
 
 ## Using sbt with ScalaTest
@@ -183,9 +260,11 @@ As with the previous lesson, create an sbt project directory structure for a pro
 ```sh
 mkdir HelloScalaTest
 cd HelloScalaTest
-mkdir -p src/{main,test}/{resources,scala}
+mkdir -p src/{main,test}/scala
 mkdir project target
 ```
+
+(Because the *resources* folder isn’t needed, we don’t create it.)
 
 
 ### Creating the build.sbt file
@@ -202,8 +281,7 @@ version := "1.0"
 scalaVersion := "{{site.scala-version}}"
 
 libraryDependencies ++= Seq(
-  "org.scalatest" % "scalatest-core_0.27" % "3.2.2",
-  "org.scalatest" % "scalatest_0.27" % "3.2.2" % Test
+  "org.scalatest" % "scalatest_3.0.0-M2" % "3.3.0-SNAP3" % Test
 )
 ```
 
@@ -230,7 +308,7 @@ object MathUtils:
   def double(i: Int) = i * 2
 ```
 
-There isn’t much that can go wrong with that source code, but it provides a simple way to demonstrate ScalaTest. This object doesn’t have a `main` method, so instead of trying to run the project with `sbt run`, we’ll just compile it with `sbt compile`:
+That method provides a simple way to demonstrate ScalaTest. Because this project doesn’t have a `main` method, we don’t try to run it with `sbt run`; we just compile it with `sbt compile`:
 
 ````
 $ sbt compile
@@ -243,12 +321,12 @@ $ sbt compile
 [success] Total time: 1 s
 ````
 
-With that compiling, let’s create a ScalaTest file to test the `double` method.
+With that compiled, let’s create a ScalaTest file to test the `double` method.
 
 
 ### Your first ScalaTest tests
 
-ScalaTest is very flexible, and there are several different ways to write tests. A simple way to get started is to write tests using the ScalaTest `AnyFunSuite`. To get started, create a directory named *math* under the *src/test/scala* directory, like this:
+ScalaTest is very flexible, and there are several different ways to write tests. A simple way to get started is to write tests using the ScalaTest `AnyFunSuite`. To get started, create a directory named *math* under the *src/test/scala* directory:
 
 ```sh
 $ mkdir src/test/scala/math
@@ -257,16 +335,12 @@ $ mkdir src/test/scala/math
 
 Next, create a file named *MathUtilsTests.scala* in that directory with the following contents:
 
-{% comment %}
-TODO: update to indentation syntax
-{% endcomment %}
-
 ```scala
 package math
   
 import org.scalatest.funsuite.AnyFunSuite
 
-class MathUtilsTests extends AnyFunSuite {
+class MathUtilsTests extends AnyFunSuite:
 
   // test 1
   test("'double' should handle 0") {
@@ -282,7 +356,7 @@ class MathUtilsTests extends AnyFunSuite {
  
   test ("test with Int.MaxValue") (pending)
 
-}
+end MathUtilsTests
 ```
 
 This code demonstrates the ScalaTest `AnyFunSuite` approach. A few important points:
@@ -329,3 +403,4 @@ For more information about sbt and ScalaTest, see the following resources:
 
 
 
+[getting_started]: {{ site.baseurl }}/scala3/getting-started.html

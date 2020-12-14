@@ -93,6 +93,17 @@ t._2   // "eleven"
 t._3   // Person("Eleven")
 ```
 
+You can also use this *extractor* approach to assign the tuple fields to variable names:
+
+```scala
+val (num, str, person) = t
+
+// result:
+// val num: Int = 11
+// val str: String = eleven
+// val person: Person = Person(Eleven)
+```
+
 Tuples are nice for those times when you want to put a collection of heterogeneous types in a little collection-like structure. See the [Reference documentation][reference] for more tuple details.
 
 

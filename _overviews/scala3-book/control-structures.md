@@ -7,10 +7,10 @@ previous-page: first-look-at-types
 next-page: domain-modeling-intro
 ---
 
-<!--
-- TODO: Introduce multiversal equality in this section?
+
+{% comment %}
 - TODO: Should this section show (a) general control structure syntax and (b) syntax rules, such as when `do` is required? I currently assumed this should be in the Reference.
--->
+{% endcomment %}
 
 Scala has the control structures you expect to find in a programming language, including:
 
@@ -236,7 +236,7 @@ val ratings = Map(
 You can print the movie names and ratings using `for` like this:
 
 ```scala
-for (name,rating) <- ratings do println(s"Movie: $name, Rating: $rating")
+for (name, rating) <- ratings do println(s"Movie: $name, Rating: $rating")
 ```
 
 Here’s what that looks like in the REPL:
@@ -251,22 +251,22 @@ Movie: You, Me and Dupree, Rating: 3.5
 As the `for` loop iterates over the map, each rating is bound to the variables `name` and `rating`, which are in a tuple:
 
 ```scala
-(name,rating) <- ratings
+(name, rating) <- ratings
 ```
 
 As the loop runs, the variable `name` is assigned to the current _key_ in the map, and the variable `rating` is assigned to the current map _value_.
 
 <!-- TODO: show other possible uses/styles here?
-for (name,rating) <- ratings
+for (name, rating) <- ratings
 do println(s"Movie: $name, Rating: $rating")
 
 for
-  (name,rating) <- ratings
+  (name, rating) <- ratings
 do
   println(s"Movie: $name, Rating: $rating")
 
-for (name,rating) <- ratings do { println(s"Movie: $name, Rating: $rating") }
-for ((name,rating) <- ratings) println(s"Movie: $name, Rating: $rating")
+for (name, rating) <- ratings do { println(s"Movie: $name, Rating: $rating") }
+for ((name, rating) <- ratings) println(s"Movie: $name, Rating: $rating")
 -->
 
 
@@ -293,12 +293,22 @@ After that `for` expression runs, the variable `list` is a `Vector` that contain
 2. Next, it works on the `11` — the second value in the range. It multiples it by `2`, then yields the value `22`. You can think of these yielded values as accumulating in a temporary holding place.
 3. Finally the loop gets the number `12` from the range, multiplies it by `2`, yielding the number `24`. The loop completes at this point and yields the final result, the `Vector(20,22,24)`.
 
+{% comment %}
+NOTE: This is a place where it would be great to have a TIP or NOTE block:
+{% endcomment %}
+
+While the intent of this section is to demonstrate `for` expressions, it can help to know that the `for` expression shown is equivalent to this `map` method call:
+
+```scala
+val list = (10 to 12).map { i => i * 2}
+```
+
 `for` expressions can be used any time you need to traverse all of the elements in a collection and apply an algorithm to those elements to create a new list.
 
 Here’s an example that shows how to use a block of code after the `yield`:
 
 ```scala
-val names = List("_adam", "_david", "_frank")
+val names = List("_olivia", "_walter", "_peter")
 
 val capNames = for name <- names yield
   // imagine this algorithm requires multiple lines
@@ -306,8 +316,9 @@ val capNames = for name <- names yield
   val capName = nameWithoutUnderscore.capitalize
   capName
 
-// result: List(Adam, David, Frank)
+// result: List[String] = List(Olivia, Walter, Peter)
 ```
+
 
 
 ### Using a `for` expression as the body of a method

@@ -301,12 +301,13 @@ At a “sea level” view of the details — i.e., the language features program
         - Fewer symbols in the code creates less visual noise, making it easier to read
     - The `new` keyword is generally no longer needed when creating class instances
     - The formality of package objects have been dropped in favor of simpler “top level” definitions
-- A clearer grammar:
+- A grammar that’s more clear:
     - Multiple different uses of the `implicit` keyword have been removed; those uses are replaced by more obvious keywords like `given`, `using`, and `extension`, focusing on intent over mechanism (see the [Givens][givens] section for details)
     - [Extension methods][extension] replace implicit classes with a clearer and simpler mechanism
     - The addition of the `open` modifier for classes makes the developer intentionally declare that a class is open for modification, thereby limiting ad-hoc extensions to a code base
     - [Multiversal equality][multiversal] rules out nonsensical comparisons with `==` and `!=` (i.e., attempting to compare a `Person` to a `Planet`)
     - Macros are implemented much more easily
+    - Union and intersection offer a flexible way to model types
     - Trait parameters replace and simplify early initializers
     - [Opaque type aliases][opaque_types] replace most uses of value classes, while guaranteeing the absence of boxing
     - Export clauses provide a simple and general way to express aggregation, which can replace the previous facade pattern of package objects inheriting from classes
