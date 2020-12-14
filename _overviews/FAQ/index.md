@@ -89,8 +89,8 @@ More details in this [Stack Overflow answer](https://stackoverflow.com/a/4467012
 
 It is syntactic sugar for nested `map`, `flatMap`, and `withFilter` calls.
 
-For an in-depth explanation
-see this [Stack Overflow answer](https://stackoverflow.com/a/1059501).
+For an in-depth explanation see this
+[Stack Overflow answer](https://stackoverflow.com/a/1059501).
 
 ### What is the difference between view, stream and iterator?
 
@@ -99,7 +99,8 @@ see this [Stack Overflow answer](https://stackoverflow.com/a/1059501).
 ### Can I chain or nest implicit conversions?
 
 Not really, but you can [make it work](https://stackoverflow.com/a/5332804).
-But note that implicit conversions are, in general, discouraged.
+
+Nevertheless note that implicit conversions are, in general, discouraged.
 
 ### Where does Scala look for implicits?
 
@@ -170,3 +171,16 @@ Not really. See [this answer on Stack Overflow](https://stackoverflow.com/a/6525
 
 The latter has a singleton type, which is too specific.
 See [answer on Stack Overflow](https://stackoverflow.com/a/65258340/4111404).
+
+### How to control the accessibility scope of methods and fields?
+
+By default, all methods and fields are `public` _(unless the `class`/`object` is not)_.
+However, similar to **Java** you can make them `private` or only accessible to the `package`.
+Actually, **Scala** supports even more fined grained control
+like only accessible in the same instance, or only accessible by this and subclasses.
+
+For a detailed explanation please see
+[this blog post](https://alvinalexander.com/scala/how-to-control-scala-method-scope-object-private-package/).
+
+Also note that most of those modifiers are also applicable to classes, objects and traits.
+Depending on if they are top-level or embedded inside another entity.
