@@ -8,9 +8,9 @@ includeTOC: true
 projects:
   - title: sbt
     description: Interactive build tool.
-    icon: http://www.scala-sbt.org/assets/typesafe_sbt_svg.svg
+    icon: https://www.scala-sbt.org/assets/typesafe_sbt_svg.svg
     link: https://github.com/sbt/sbt
-    homeLink: http://www.scala-sbt.org/
+    homeLink: https://www.scala-sbt.org/
     issuesLink: https://github.com/sbt/sbt#issues-and-pull-requests
     readmeLink: https://github.com/sbt/sbt/blob/0.13/README.md
     contributingLink: https://github.com/sbt/sbt/blob/0.13/CONTRIBUTING.md
@@ -18,23 +18,23 @@ projects:
     description: (Contribute through scala/scala)
     icon: https://avatars1.githubusercontent.com/u/57059?v=3&s=200
     link: https://github.com/scala/scala
-    homeLink: http://www.scala-lang.org/api
+    homeLink: https://www.scala-lang.org/api
     issuesLink: https://github.com/scala/bug/labels/scaladoc
     readmeLink: https://github.com/scala/scala#welcome
-    contributingLink: http://scala-lang.org/contribute/guide.html
+    contributingLink: https://scala-lang.org/contribute/guide.html
   - title: Scala IDE
     description: Interactive build tool.
     icon: https://avatars2.githubusercontent.com/u/1026788?v=3&s=200
     link: https://github.com/scala-ide/scala-ide
     homeLink: http://scala-ide.org/
-    issuesLink: http://scala-ide-portfolio.assembla.com/spaces/scala-ide/support/tickets
+    issuesLink: https://scala-ide-portfolio.assembla.com/spaces/scala-ide/support/tickets
     readmeLink: https://github.com/scala-ide/scala-ide/blob/master/README.md
     contributingLink: https://github.com/scala-ide/scala-ide/blob/master/CONTRIBUTING.md
   - title: DBuild
     description: Multi-project build tool.
     icon: https://avatars3.githubusercontent.com/u/784923?v=3&s=200
     link: https://github.com/lightbend/dbuild
-    homeLink: http://lightbend.github.io/dbuild
+    homeLink: https://lightbend.github.io/dbuild
     issuesLink: https://github.com/lightbend/dbuild/issues
     readmeLink: https://github.com/lightbend/dbuild/blob/master/README.md
     contributingLink: https://github.com/lightbend/dbuild/blob/master/README.md#get-involved
@@ -42,7 +42,7 @@ projects:
     description: Scala Compiler/Library Testing
     icon: https://avatars1.githubusercontent.com/u/57059?v=3&s=200
     link: https://github.com/scala/scala-partest
-    homeLink: http://docs.scala-lang.org/tutorials/partest-guide.html
+    homeLink: https://docs.scala-lang.org/tutorials/partest-guide.html
     issuesLink: https://github.com/scala/scala-partest/issues
     readmeLink: https://github.com/scala/scala-partest/blob/1.1.x/README.md
     contributingLink:

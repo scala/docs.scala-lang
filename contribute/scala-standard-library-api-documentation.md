@@ -7,12 +7,12 @@ includeTOC: true
 
 This page is specific to API documentation contributions – that is, API
 documentation for
-[Scala's standard library](http://scala-lang.org/api/current/#package) –
+[Scala's standard library](https://scala-lang.org/api/current/#package) –
 sometimes referred to as Scaladoc contributions.
 
 For contributions to tutorial and guide-style documentation on
-[docs.scala-lang.org](http://docs.scala-lang.org),
-see the ["doc-site"'s contribution guide](http://docs.scala-lang.org/contribute.html).
+[docs.scala-lang.org](https://docs.scala-lang.org),
+see the ["doc-site"'s contribution guide](https://docs.scala-lang.org/contribute.html).
 
 *Please note, these instructions cover documentation contributions Scala core
 libraries only. For other Scala projects please check those projects for the
@@ -37,7 +37,7 @@ If you want to contribute new API documentation,
 ## Contribute API Documentation Bug Reports
 
 One good way to contribute is by helping us to identify missing documentation. To do
-this, [browse the current API documentation](http://www.scala-lang.org/api/current/)
+this, [browse the current API documentation](https://www.scala-lang.org/api/current/)
 and identify missing, incorrect or inadequate documentation. A good place to start is
 package objects for important packages (these often get overlooked for documentation
 and are a good place for API overviews).
@@ -81,14 +81,14 @@ new API documentation to save time, effort, mistakes and repetition.
   the Branch section. If providing new documentation related to an existing GitHub issue, use `issue/NNNN`
   or `ticket/NNNN` as the guide states. If providing API documentation with no associated
   GitHub issue, use `scaladoc/xxxx` instead.
-* [Scaladoc for library authors](http://docs.scala-lang.org/overviews/scaladoc/for-library-authors.html)
+* [Scaladoc for library authors](https://docs.scala-lang.org/overviews/scaladoc/for-library-authors.html)
   covers the use of scaladoc tags, markdown and other features.
-* [Scaladoc's interface](http://docs.scala-lang.org/overviews/scaladoc/interface.html)
+* [Scaladoc's interface](https://docs.scala-lang.org/overviews/scaladoc/interface.html)
   covers all of the features of Scaladoc's interface, e.g. switching between
   companions, browsing package object documentation, searching, token searches
   and so on.
 * Prior to commit, be sure to read
-  [A note about git commit messages](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html) and the [Scala Project & Developer Guidelines](https://github.com/scala/scala/blob/2.11.x/CONTRIBUTING.md).
+  [A note about git commit messages](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html) and the [Scala Project & Developer Guidelines](https://github.com/scala/scala/blob/2.11.x/CONTRIBUTING.md).
   Some of this latter document will clearly not apply (like the sections on providing tests,
   however see below for some special requirements for documentation). Do still read
   the whole document though, and pay close attention to the title and commit

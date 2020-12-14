@@ -39,7 +39,7 @@ A list of language features/libraries along with their maintainer's full names a
 In our running example, since Martin is the person who submitted the string interpolation Scala Improvement Proposal and implemented this language feature for Scala 2.10.0, he might be interested in learning of new bugfixes to that feature.
 
 As alluded to earlier, one must also choose an appropriate mailing list. Typically, one would use the [Scala Contributors](https://contributors.scala-lang.org/) mailing list, as it is devoted to discussions about the core internal design and implementation of the Scala system. However, since this issue has been discussed previously on the scala-user mailing list,
-in this example, we post to the [the scala-user mailing list](http://groups.google.com/group/scala-user) about our issue.
+in this example, we post to the [the scala-user mailing list](https://groups.google.com/group/scala-user) about our issue.
 
 <img src="{{ site.baseurl }}/resources/img/01-post.png" alt="Posting to scala-user" class="centerclear" />
 <img src="{{ site.baseurl }}/resources/img/02-post.png" alt="Response from Martin" class="centerclear" />
@@ -48,17 +48,17 @@ Now that we have the approval of the feature's author, we can get to work!
 
 ## 2. Set up
 
-Hacking Scala begins with creating a branch for your work item. To develop Scala we use [Git](http://git-scm.com/)
-and [GitHub](http://github.com/). This section of the guide provides a short walkthrough, but if you are new to Git,
+Hacking Scala begins with creating a branch for your work item. To develop Scala we use [Git](https://git-scm.com/)
+and [GitHub](https://github.com/). This section of the guide provides a short walkthrough, but if you are new to Git,
 it probably makes sense to familiarize yourself with Git first. We recommend
 
-* the [Git Pro](http://git-scm.com/book/en/) online book.
+* the [Git Pro](https://git-scm.com/book/en/) online book.
 * the help page on [Forking a Git Repository](https://help.github.com/articles/fork-a-repo).
-* this great training tool [LearnGitBranching](http://pcottle.github.io/learnGitBranching/). One hour hands-on training helps more than 1000 hours reading.
+* this great training tool [LearnGitBranching](https://pcottle.github.io/learnGitBranching/). One hour hands-on training helps more than 1000 hours reading.
 
 ### Fork
 
-Log into [GitHub](http://github.com/), go to [https://github.com/scala/scala](https://github.com/scala/scala) and click the `Fork`
+Log into [GitHub](https://github.com/), go to [https://github.com/scala/scala](https://github.com/scala/scala) and click the `Fork`
 button in the top right corner of the page. This will create your own copy of our repository that will serve as a scratchpad for your work.
 
 If you're new to Git, don't be afraid of messing up-- there is no way you can corrupt our repository.
@@ -68,7 +68,7 @@ If you're new to Git, don't be afraid of messing up-- there is no way you can co
 ### Clone
 
 If everything went okay, you will be redirected to your own fork at `https://github.com/user-name/scala`, where `username`
-is your github user name. You might find it helpful to read [http://help.github.com/fork-a-repo/](http://help.github.com/fork-a-repo/),
+is your github user name. You might find it helpful to read [https://help.github.com/fork-a-repo/](https://help.github.com/fork-a-repo/),
 which covers some of the things that will follow below. Then, _clone_ your repository (i.e. pull a copy from GitHub to your local machine) by running the following on the command line:
 
     16:35 ~/Projects$ git clone https://github.com/xeno-by/scala
@@ -96,7 +96,7 @@ Since in our example, we're going to fix an existing bug [6725](https://github.c
     16:39 ~/Projects/scala (master)$ git checkout -b ticket/6725
     Switched to a new branch 'ticket/6725'
 
-If you are new to Git and branching, read the [Branching Chapter](http://git-scm.com/book/en/Git-Branching) in the Git Pro book.
+If you are new to Git and branching, read the [Branching Chapter](https://git-scm.com/book/en/Git-Branching) in the Git Pro book.
 
 ### Build
 
@@ -198,19 +198,19 @@ Contributing to the Scala standard library is about the same as working on one o
 
 If documentation is necessary for some trait/class/object/method/etc in the Scala standard library, typically maintainers will include inline comments describing their design decisions or rationale for implementing things the way they have, if it is not straightforward.
 
-If you intend on contributing to Scala collections, please make sure you're familiar with the design of the Scala collections library. It can be easy to put an implementation in the wrong location if you are unfamiliar with the collections architecture. There is an excellent and very detailed guide covering [the Architecture of Scala Collections](http://docs.scala-lang.org/overviews/core/architecture-of-scala-collections.html), as well as a larger more general [Scala collections Guide](http://docs.scala-lang.org/overviews/collections/introduction.html) covering the sequential portion of collections. For parallel collections, there also exists a detailed [Scala Parallel Collections Guide](http://docs.scala-lang.org/overviews/parallel-collections/overview.html).
+If you intend on contributing to Scala collections, please make sure you're familiar with the design of the Scala collections library. It can be easy to put an implementation in the wrong location if you are unfamiliar with the collections architecture. There is an excellent and very detailed guide covering [the Architecture of Scala Collections](https://docs.scala-lang.org/overviews/core/architecture-of-scala-collections.html), as well as a larger more general [Scala collections Guide](https://docs.scala-lang.org/overviews/collections/introduction.html) covering the sequential portion of collections. For parallel collections, there also exists a detailed [Scala Parallel Collections Guide](https://docs.scala-lang.org/overviews/parallel-collections/overview.html).
 
 ##### The Scala Compiler
 
 Documentation about the internal workings of the Scala compiler is scarce, and most of the knowledge is passed around by email ([Scala Contributors](https://contributors.scala-lang.org/) mailing list), ticket, or word of mouth. However the situation is steadily improving. Here are the resources that might help:
 
-* [Compiler internals videos by Martin Odersky](http://www.scala-lang.org/old/node/598.html) are quite dated, but still very useful. In this three-video
+* [Compiler internals videos by Martin Odersky](https://www.scala-lang.org/old/node/598.html) are quite dated, but still very useful. In this three-video
   series Martin explains the general architecture of the compiler, and the basics of the front-end, which has recently become Scala reflection API.
-* [Reflection documentation](http://docs.scala-lang.org/overviews/reflection/overview.html) describes fundamental data structures (like `Tree`s, `Symbol`s, and `Types`) that
+* [Reflection documentation](https://docs.scala-lang.org/overviews/reflection/overview.html) describes fundamental data structures (like `Tree`s, `Symbol`s, and `Types`) that
   are used to represent Scala programs and operations defined on then. Since much of the compiler has been factored out and made accessible via the Reflection API, all of the fundamentals needed for reflection are the same for the compiler.
-* [Reflection and Compilers by Martin Odersky](http://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2012/Reflection-and-Compilers), a talk
+* [Reflection and Compilers by Martin Odersky](https://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2012/Reflection-and-Compilers), a talk
   at Lang.NEXT 2012 in which Martin elaborates on the design of scalac and the architecture of the reflection API.
-* [Scala compiler corner](http://lampwww.epfl.ch/~magarcia/ScalaCompilerCornerReloaded/) contains extensive documentation about
+* [Scala compiler corner](https://lampwww.epfl.ch/~magarcia/ScalaCompilerCornerReloaded/) contains extensive documentation about
   most of the post-typer phases (i.e. the backend) in the Scala compiler.
 * [Scala Contributors](https://contributors.scala-lang.org/), a mailing list which hosts discussions about the core
   internal design and implementation of the Scala system.
@@ -264,7 +264,7 @@ Adding tests to the test suite is as easy as moving them to the appropriate dire
 
 * Code which should compile successfully, but doesn't need to be executed, needs to go into the [“pos” directory](https://github.com/scala/scala/tree/2.12.x/test/files/pos).
 * Code which should not compile needs to go into the [“neg” directory](https://github.com/scala/scala/tree/2.12.x/test/files/neg).
-* Code which should compile and get executed by the test suite needs to go into the [“run” directory](https://github.com/scala/scala/tree/2.12.x/test/files/run) and have a corresponding `.check` file with the expected output. You will get test failures if the content of a `.check` file is different from what the test produces while running. If the change in the output is an expected product of your work, you might not want to change the `.check` file by hand. To make partest change the `.check` file, run it with a `--update-check` flag, like so `./test/partest --update-check path/to/test.scala`. For more information on partest, please refer to its [documentation](http://docs.scala-lang.org/tutorials/partest-guide.html).
+* Code which should compile and get executed by the test suite needs to go into the [“run” directory](https://github.com/scala/scala/tree/2.12.x/test/files/run) and have a corresponding `.check` file with the expected output. You will get test failures if the content of a `.check` file is different from what the test produces while running. If the change in the output is an expected product of your work, you might not want to change the `.check` file by hand. To make partest change the `.check` file, run it with a `--update-check` flag, like so `./test/partest --update-check path/to/test.scala`. For more information on partest, please refer to its [documentation](https://docs.scala-lang.org/tutorials/partest-guide.html).
 * Everything that can be unit-tested should go to ["junit" directory](https://github.com/scala/scala/tree/2.12.x/test/junit)
 * Property-based tests go to the ["scalacheck" directory](https://github.com/scala/scala/tree/2.12.x/test/scalacheck)
 
@@ -309,7 +309,7 @@ This means your change is backward or forward binary incompatible with the speci
 
 ### Verify
 
-Now to make sure that my fix doesn't break anything I need to run the test suite. The Scala test suite uses [JUnit](http://junit.org/junit4/) and [partest](partest-guide.html), a tool we wrote for testing Scala.
+Now to make sure that my fix doesn't break anything I need to run the test suite. The Scala test suite uses [JUnit](https://junit.org/junit4/) and [partest](partest-guide.html), a tool we wrote for testing Scala.
 Run `sbt test` and `sbt partest` to run all of the JUnit and partest tests, respectively.
 `partest` (not `sbt partest`) also allows you to run a subset of the tests using wildcards:
 
@@ -337,11 +337,11 @@ Let's go into each of these points in more detail.
 
 ### Commit
 
-The [Git Basics](http://git-scm.com/book/en/Git-Basics) chapter in the Git online book covers most of the basic workflow during this stage.
+The [Git Basics](https://git-scm.com/book/en/Git-Basics) chapter in the Git online book covers most of the basic workflow during this stage.
 There are two things you should know here:
 
 1. Commit messages are often the only way to understand the intentions of authors of code written a few years ago. Thus, writing a quality is of utmost importance. The more context you provide for the change you've introduced, the larger the chance that some future maintainer understand your intentions. Consult [the pull request policies](https://github.com/scala/scala/blob/2.12.x/CONTRIBUTING.md) for more information about the desired style of your commits.
-2. Keeping Scala's git history clean is also important. Therefore we won't accept pull requests for bug fixes that have more than one commit. For features, it is okay to have several commits, but all tests need to pass after every single commit. To clean up your commit structure, you want to [rewrite history](http://git-scm.com/book/en/Git-Branching-Rebasing) using `git rebase` so that your commits are against the latest revision of `master`.
+2. Keeping Scala's git history clean is also important. Therefore we won't accept pull requests for bug fixes that have more than one commit. For features, it is okay to have several commits, but all tests need to pass after every single commit. To clean up your commit structure, you want to [rewrite history](https://git-scm.com/book/en/Git-Branching-Rebasing) using `git rebase` so that your commits are against the latest revision of `master`.
 
 Once you are satisfied with your work, synced with `master` and cleaned up your commits you are ready to submit a patch to the central Scala repository. Before proceeding make sure you have pushed all of your local changes to your fork on GitHub.
 
@@ -364,7 +364,7 @@ Once you are satisfied with your work, synced with `master` and cleaned up your 
 
 Now, we must simply submit our proposed patch. Navigate to your branch in GitHub (for me it was `https://github.com/xeno-by/scala/tree/ticket/6725`)
 and click the pull request button to submit your patch as a pull request to Scala. If you've never submitted patches to Scala, you will
-need to sign the contributor license agreement, which [can be done online](http://www.lightbend.com/contribute/cla/scala) within a few minutes.
+need to sign the contributor license agreement, which [can be done online](https://www.lightbend.com/contribute/cla/scala) within a few minutes.
 
 <img src="{{ site.baseurl }}/resources/img/04-submit.png" alt="Submit a pull request" class="centerclear" />
 
