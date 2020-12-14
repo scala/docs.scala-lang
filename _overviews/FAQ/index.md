@@ -24,16 +24,6 @@ over again in Scala chat rooms and forums.
 
 See our [Community page](https://scala-lang.org/community/).
 
-### Should I learn Scala 2, or Scala 3?
-
-The default choice remains Scala 2 for now.  Most Scala jobs are Scala
-2 jobs; most Scala books and online learning materials cover Scala 2;
-tooling and library support is strongest in Scala 2; and so on.
-
-Scala 3.0 is planned for release in early 2021, and a number of
-Scala 3 books will come out in 2021 as well.  In time, there will
-be more and more Scala 3 jobs as well.
-
 ### What's a good book about Scala?
 
 Our [Books page](https://docs.scala-lang.org/books.html) lists a few
@@ -47,6 +37,52 @@ Gitter](https://gitter.im/scala/scala) or another community forum and
 ask for book recommendations, but note that you'll get more helpful
 answers if you provide some information about your background and your
 reasons for wanting to learn Scala.
+
+### Should I learn Scala 2, or Scala 3?
+
+The default choice remains Scala 2 for now.  Most Scala jobs are Scala
+2 jobs; most Scala books and online learning materials cover Scala 2;
+tooling and library support is strongest in Scala 2; and so on.
+
+Scala 3.0.0 is planned for release in 2021, and a number of
+Scala 3 books will come out in 2021 as well.  In time, there will
+be more and more Scala 3 jobs as well.
+
+### When is Scala 3 coming out?
+
+In 2021.  Watch the [Scala blog](https://www.scala-lang.org/blog/)
+for announcements.  For a more detailed view of how work is progressing,
+see the [Dotty milestones](https://github.com/lampepfl/dotty/milestones).
+
+### Where are Scala jobs advertised?
+
+This is addressed on our [Community page](https://scala-lang.org/community/#scala-jobs).
+
+In short, the only officially sanctioned place is the [scala/job-board
+room on Gitter](https://gitter.im/scala/job-board).
+
+### Can I use the Scala logo?
+
+See [scala/scala-lang#1040](https://github.com/scala/scala-lang/issues/1040).
+
+## Technical questions
+
+### What compiler flags are recommended?
+
+The list of available options is
+[here](https://docs.scala-lang.org/overviews/compiler-options/index.html).
+
+What flags people choose varies widely from shop to shop and from
+individual to individual.  `-Xlint` is valuable to enable.  Some brave
+people enable `-Werror` (formerly `-Xfatal-warnings`) to make warnings
+fatal.
+
+[sbt-tpolecat](https://github.com/DavidGregory084/sbt-tpolecat) is an
+opinionated sbt plugin that sets many options automatically, depending
+on Scala version; you can see
+[here](https://github.com/DavidGregory084/sbt-tpolecat/blob/master/src/main/scala/io/github/davidgregory084/TpolecatPlugin.scala)
+what it sets.  Some of the choices it makes are oriented towards
+pure-functional programmers.
 
 ### How do I find what some symbol means or does?
 
@@ -63,7 +99,14 @@ You can search for symbols on Google.  For example, if you want to
 know what `<:<` means, searching for `scala <:<` works fine.  If you
 get poor results, try surrounding the symbol with double quotes.
 
-## Specific technical questions
+### I want Scala 2.13 (or some other version); why does sbt say it's using Scala 2.12?
+
+sbt 1.x always uses Scala 2.12 to compile build definitions.
+Your sbt 1.x build definition is always a Scala 2.12 program.
+
+Regardless, in your `build.sbt` you can set `scalaVersion` to anything
+you want and your actual program code will be compiled with that
+version.
 
 ### Why is my (abstract or overridden) `val` null?
 
