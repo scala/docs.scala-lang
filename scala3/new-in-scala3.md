@@ -1,6 +1,6 @@
 ---
 layout: singlepage-overview
-title: That's new in Scala 3
+title: New in Scala 3
 ---
 The upcoming, exciting new version of Scala 3 brings many improvements and
 new features. Here we provide you with a quick overview of the most important
