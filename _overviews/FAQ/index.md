@@ -142,7 +142,9 @@ see this [Stack Overflow answer](https://stackoverflow.com/a/1059501).
 ### Can I chain or nest implicit conversions?
 
 Not really, but you can [make it work](https://stackoverflow.com/a/5332804).
-But note that implicit conversions are, in general, discouraged.
+
+However, note that implicit conversions are, in general,
+[discouraged](https://contributors.scala-lang.org/t/can-we-wean-scala-off-implicit-conversions/4388).
 
 ### Where does Scala look for implicits?
 
@@ -172,6 +174,16 @@ differ from a function value such as:
 [Complete answer on Stack Overflow](https://stackoverflow.com/a/2530007/4111404).
 
 [Summary with practical differences](https://tpolecat.github.io/2014/06/09/methods-functions.html).
+
+Note that in **Scala 3** most of the differences will go;
+for example, they will be able to
+[accept implicit parameters](https://dotty.epfl.ch/docs/reference/contextual/context-functions.html)
+as well as [type parameterts](https://dotty.epfl.ch/docs/reference/new-types/polymorphic-function-types.html).
+
+Nevertheless, it is still recommended to use methods most of the time,
+unless you absolutely need a function. And, thanks to
+[eta-expansion](https://stackoverflow.com/questions/39445018/what-is-the-eta-expansion-in-scala)
+you rarely would need to define a function over a method.
 
 ### What's the difference between types and classes?
 
