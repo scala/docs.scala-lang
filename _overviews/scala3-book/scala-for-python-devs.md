@@ -368,7 +368,7 @@ This section compares control structures in Python and Scala. Both languages hav
       </td>
       <td valign="top"><code>if x &lt; 0 then
         <br>&nbsp; println("negative")
-        <br>else if x == 0
+        <br>else if x == 0 then
         <br>&nbsp; println("zero")
         <br>else
         <br>&nbsp; println("positive")</code>
@@ -858,7 +858,7 @@ Those lists are used in the following table, that shows how to apply mapping and
     </tr>
     <tr>
       <td valign="top"><code>def times_10(n): return n * 10
-        <br>x = map(times_10, list)</code>
+        <br>x = map(lambda x: x * 10, list)</code>
       </td>
       <td valign="top"><code>val x = list.map(_ * 10)</code></td>
     </tr>
@@ -1036,6 +1036,5 @@ There are other concepts in Scala which currently don’t have equivalent functi
 - Multiversal equality: the ability to control at compile time what equality comparisons make sense  
 - Infix methods
 - Macros and metaprogramming
-
 
 
