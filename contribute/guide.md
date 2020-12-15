@@ -52,7 +52,7 @@ unencumbered by copyrights or patents.
 
 ### Bug-fix Check List
 
-This is the impatient developer's checklist for the steps to submit a bug-fix pull request to the Scala project. For more information, description and justification for the steps, follow the links in that step. Further specific instructions for the release of Scala you are targeting can be found in the `CONTRIBUTING.md` file for that [github branch](https://github.com/scala/scala)
+This is the impatient developer's checklist for the steps to submit a bug-fix pull request to the Scala project. For more information, description and justification for the steps, follow the links in that step. Further specific instructions for the release of Scala you are targeting can be found in the `CONTRIBUTING.md` file for that [GitHub branch](https://github.com/scala/scala)
 
 1. [Select a bug to fix from GitHub](/contribute/#community-tickets), or if you found the bug yourself and want to fix it, [create a GitHub issue](/contribute/bug-reporting-guide.html) (but please
 [make sure it's not a duplicate](/contribute/bug-reporting-guide.html#reporting-confirmed-bugs-is-a-sin)).

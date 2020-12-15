@@ -68,7 +68,7 @@ If you're new to Git, don't be afraid of messing up-- there is no way you can co
 ### Clone
 
 If everything went okay, you will be redirected to your own fork at `https://github.com/user-name/scala`, where `username`
-is your github user name. You might find it helpful to read [https://help.github.com/fork-a-repo/](https://help.github.com/fork-a-repo/),
+is your GitHub user name. You might find it helpful to read [https://help.github.com/fork-a-repo/](https://help.github.com/fork-a-repo/),
 which covers some of the things that will follow below. Then, _clone_ your repository (i.e. pull a copy from GitHub to your local machine) by running the following on the command line:
 
     16:35 ~/Projects$ git clone https://github.com/xeno-by/scala

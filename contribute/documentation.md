@@ -31,7 +31,7 @@ without creating an issue, but please look to see if there is an issue already s
 
 ### The Main Scala Documentation Site
 
-[docs.scala-lang.org](https://docs.scala-lang.org/) houses the primary source of written, non-API documentation for Scala. It's a github project that you can fork and submit pull requests from. It includes:
+[docs.scala-lang.org](https://docs.scala-lang.org/) houses the primary source of written, non-API documentation for Scala. It's a GitHub project that you can fork and submit pull requests from. It includes:
 
 * Overviews
 * Tutorials
@@ -51,7 +51,7 @@ the [Jekyll](https://jekyllrb.com/) markdown engine so you will need to follow t
 Additional high-level documentation (including documentation on contributing
 to Scala and related projects) is provided on the main
 [Scala Language site](https://scala-lang.org), and is also kept in the
-[scala-lang github project](https://github.com/scala/scala-lang) which may be forked to create pull requests.
+[scala-lang GitHub project](https://github.com/scala/scala-lang) which may be forked to create pull requests.
 
 Please read both the
-[docs.scala-lang.org contribution](https://docs.scala-lang.org/contribute.html) document and the [scala-lang.org github README](https://github.com/scala/scala-lang#scala-langorg) before embarking on any changes to the Scala language site, as it uses the same Jekyll markdown tool and many of the same conventions as the Scala documentation site.
+[docs.scala-lang.org contribution](https://docs.scala-lang.org/contribute.html) document and the [scala-lang.org GitHub README](https://github.com/scala/scala-lang#scala-langorg) before embarking on any changes to the Scala language site, as it uses the same Jekyll markdown tool and many of the same conventions as the Scala documentation site.
