@@ -9,7 +9,7 @@ changes. If you want to dig deeper, there are a few references at your disposal:
 - The [Scala 3 Book]({% link _overviews/scala3-book/introduction.md %}) targets developers new to the Scala language.
 - The [Syntax Summary][syntax-summary] provides you with a formal description of the new syntax.
 - The [Language Reference][reference] gives a detailed description of the changes from Scala 2 to Scala 3.
-- The [Migration Guide][migration] provides you with all of the information, necessary to move from Scala 2 to Scala 3.
+- The [Migration Guide][migration] provides you with all of the information necessary to move from Scala 2 to Scala 3.
 
 ## That's new in Scala 3
 Scala 3 is a complete overhaul of the Scala language. At its core, many aspects
@@ -54,6 +54,8 @@ Besides greatly improved type inference, the Scala 3 type system also offers man
 
 - **Enumerations**. [Enums][enums] have been redesigned to blend well with case classes and form the new standard to express [algebraic data types][enums-adts].
 
+- **Opaque Types**. Hide implementation details behind [opaque type aliases][types-opaque] without paying for it in performance! Opaque types supersede value classes and allow you to set up an abstraction barrier without causing additional boxing overhead.
+
 - **Intersection and union types**. Basing the type system on new foundations led to the introduction of new type system features: instances of a [intersection types][types-intersection], like `A & B`, are instances of _both_ `A` and of `B`. Instances of [union types][types-union], like `A | B`, are instances of _either_ `A` or `B`. Both constructs allow programmers to flexibly express type constraints outside of the inheritance hierarchy.
 
 - **Dependent function types**. Scala 2 already allowed return types to depend on (value) arguments. In Scala 3 it is now possible to abstract over this pattern and express [dependent function types][types-dependent]. In the type `type F = (e: Entry) => e.Key`  the result type _depends_ on the argument!
@@ -65,12 +67,24 @@ Besides greatly improved type inference, the Scala 3 type system also offers man
 - **Match types**. Instead of encoding type-level computation using implicit resolution, Scala 3 offers direct support for [matching on types][types-match]. Integrating type-level computation into the type checker enables improved error messages and removes the need for complicated encodings.
 
 
+### Re-envisioned: Object-Oriented Programming
+Scala has always been at the frontier between functional programming and object-oriented programming --
+and Scala 3 pushes boundaries in both directions! The above mentioned type system changes and the redesign of contextual abstractions make _functional programming_ easier than before.
+At the same time, the following novel features enable well-structured _object-oriented designs_ and support best practices.
+
+- **Pass it on**. Traits move closer to classes and now can also take [parameters][oo-trait-parameters], making them even more powerful as a tool for modular software decomposition.
+- **Plan for extension**. Extending classes that are not intended for extension is a long standing problem in object-oriented design. To address this issue, [open classes][oo-open] require library designers to _explicitly_ mark classes as open.
+- **Hide implementation details**. Utility traits that implement behavior sometimes should not be part of inferred types. In Scala 3, those traits can be marked as [transparent][oo-transparent] hiding the inheritance from the user (in inferred types).
+- **Composition over inheritance**. This phrase is often cited, but tedious to implement. Not so with Scala 3's [export clauses][oo-export]: symmetric to imports, export clauses allow to define aliases for selected members of an object.
+- **No more NPEs**. Scala 3 is safer than ever: [explicit null][oo-explicit-null] moves `null` out of the type hierarchy, helping you to catch errors statically; additional checks for [safe initialization][oo-safe-init] detect access to uninitialized objects.
+
+
 ### Batteries Included: Metaprogramming
 While macros in Scala 2 were an experimental feature only, Scala 3 comes with a powerful arsenal of tools for metaprogramming.
 The [macro tutorial]({% link _overviews/scala3-macros/index.md %}) contains detailed information on the different facilities. In particular, Scala 3 offers the following features for metaprogramming.
 
 - **Inline**. As the basic starting point, the [inline feature][meta-inline] allows values and methods to be reduced at compile time. This simple feature already covers many use-cases and at the same time provides the entry point for more advanced features.
-- **Compile-time operations**. The package [`cala.compiletime`][meta-compiletime] contains additional functionality that can be used to implement inline methods.
+- **Compile-time operations**. The package [`scala.compiletime`][meta-compiletime] contains additional functionality that can be used to implement inline methods.
 - **Quoted code blocks**. Scala 3 adds the new feature of [quasi-quotation][meta-quotes] for code, providing a convenient high-level interface to construct and analyse code. Constructing code for adding one and one is as easy as `'{ 1 + 1 }`.
 - **Reflection API**. For more advanced use cases [TASTy reflect][meta-reflection] provides more detailed control to inspect and generate program trees.
 
@@ -86,6 +100,7 @@ If you want to learn more about meta programming in Scala 3, we invite you to ta
 [types-lambdas]: {{ site.scala3ref }}/new-types/type-lambdas.html
 [types-polymorphic]: {{ site.scala3ref }}/new-types/polymorphic-function-types.html
 [types-match]: {{ site.scala3ref }}/new-types/match-types.html
+[types-opaque]: {{ site.scala3ref }}/other-new-features/opaques.html
 
 [type-inference]: {{ site.scala3ref }}/changed-features/type-inference.html
 [overload-resolution]: {{ site.scala3ref }}/changed-features/overload-resolution.html
@@ -110,3 +125,10 @@ If you want to learn more about meta programming in Scala 3, we invite you to ta
 [meta-compiletime]: {% link _overviews/scala3-macros/tutorial/compiletime.md %}
 [meta-quotes]: {% link _overviews/scala3-macros/tutorial/quotes.md %}
 [meta-reflection]: {% link _overviews/scala3-macros/tutorial/tasty-reflection.md %}
+
+[oo-explicit-null]: {{ site.scala3ref }}/other-new-features/explicit-nulls.html
+[oo-safe-init]: {{ site.scala3ref }}/other-new-features/safe-initialization.html
+[oo-trait-parameters]: {{ site.scala3ref }}/other-new-features/trait-parameters.html
+[oo-open]: {{ site.scala3ref }}/other-new-features/open-classes.html
+[oo-transparent]: {{ site.scala3ref }}/other-new-features/transparent-traits.html
+[oo-export]: {{ site.scala3ref }}/other-new-features/export.html
