@@ -7,13 +7,13 @@ previous-page: domain-modeling-tools
 next-page: domain-modeling-fp
 ---
 
-This chapter provides an introduction to object-oriented programming (OOP) style domain modeling in Scala 3.
+This chapter provides an introduction to domain modeling using object-oriented programming (OOP) in Scala 3.
 
 
 
 ## Introduction
 
-The “big three” concepts in OOP are encapsulation, polymorphism, and inheritance:
+The three core concepts in OOP are encapsulation, polymorphism, and inheritance:
 
 - *Encapsulation* consists of grouping related concepts — attributes and behaviors — into a logical unit, and then hiding the implementation details from the outside world.
 - *Inheritance* refers to the ability of a class to inherit behavior from a parent class (superclass), and then override the default behavior as needed.
@@ -64,7 +64,7 @@ p.vocation   // "Musician"
 
 ### Classes with attributes and behaviors
 
-Of course OOP style classes can have attributes and behaviors, and they should allow for information hiding.
+Classes can have attributes and behaviors, and allow for information hiding.
 
 #### A smaller example
 
@@ -234,7 +234,6 @@ open class MyOpenClass:
 
 For more details on working with classes, see the Reference documentation.
 <!-- TODO: link to the Reference docs -->
-
 
 
 

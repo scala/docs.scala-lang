@@ -8,7 +8,7 @@ next-page: scala-tools
 ---
 
 
-When you want to write parallel and concurrent applications in Scala, you *can* use the native Java `Thread` — but the Scala [Future](https://www.scala-lang.org/api/current/scala/concurrent/Future$.html) makes parallel/concurrent programming much simpler, so it’s preferred, and covered in this chapter.
+When you want to write parallel and concurrent applications in Scala, you *can* use the native Java `Thread` — but the Scala [Future](https://www.scala-lang.org/api/current/scala/concurrent/Future$.html) offers a more high level and idiomatic approach so it’s preferred, and covered in this chapter.
 
 
 
@@ -62,7 +62,7 @@ def longRunningAlgorithm =
   42
 ```
 
-That fancy algorithm returns the integer value `42` after a ten second delay. Now call that algorithm by passing it into the `Future` constructor, and assigning the result to a variable:
+That fancy algorithm returns the integer value `42` after a ten second delay. Now call that algorithm by wrapping it into the `Future` constructor, and assigning the result to a variable:
 
 ```scala
 scala> val f = Future(longRunningAlgorithm)
@@ -85,13 +85,13 @@ val res2: scala.concurrent.Future[Int] = Future(Success(42))
 
 While that’s a relatively simple example, it shows the basic approach: Just construct a new `Future` with your long-running algorithm.
 
-One thing to notice is that the `42` you expected is wrapped in a `Success`, which is further wrapped in a `Future`. This is a key concept to understand: The value in a `Future` is always an instance of one of the *scala.util.Try* types: `Success` or `Failure`. Therefore, when you work with the result of a future, you use the usual `Try`-handling techniques.
+One thing to notice is that the `42` you expected is wrapped in a `Success`, which is further wrapped in a `Future`. This is a key concept to understand: the value in a `Future` is always an instance of one of the *scala.util.Try* types: `Success` or `Failure`. Therefore, when you work with the result of a future, you use the usual `Try`-handling techniques.
 <!-- TODO: link to the Try/Success/Failure docs -->
 
 
 ### Using `map` with futures
 
-`Future` has a `map` method, which you use just like the `map` method on the collections classes. This is what the result looks like when you call `map` right after creating the variable `f`:
+`Future` has a `map` method, which you use just like the `map` method on collections. This is what the result looks like when you call `map` right after creating the variable `f`:
 
 ```scala
 scala> val a = f.map(_ * 2)
@@ -264,7 +264,6 @@ Hopefully those examples give you an idea of how Scala futures work. To summariz
 - If you’re using multiple futures to yield a single result, combine them in a `for` expression
 
 Also, as you saw with the `import` statements in these examples, the Scala `Future` depends on an `ExecutionContext`. This relationship, and many more details about futures, are explained in the Reference documentation.
-
 
 
 

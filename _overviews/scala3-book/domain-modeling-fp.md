@@ -42,10 +42,10 @@ In this chapter we’ll model the data and operations for a “pizza” in a piz
 
 ## Modeling the data
 
-Modeling the “data” portion of a domain model in Scala is simple:
+In Scala, describing the data model of a programming problem is simple:
 
 - Create ADTs and GADTs with the `enum` construct
-- Use `case` classes for more complicated systems
+- Use `case` classes if product types are sufficient or if you need more fine-grained control
 <!-- TODO: wording on that last line? -->
 
 
@@ -401,6 +401,5 @@ Then, to model the behaviors (methods) in an FP-style design, there are several 
 - Put your methods in companion objects
 - Use a modular programming style
 - Use a “functional objects” approach
-
 
 

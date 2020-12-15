@@ -9,7 +9,7 @@ next-page: collections-summary
 
 
 
-A great strength of Scala’s collections classes is that they come with dozens of pre-built methods, and those methods are consistently available across the immutable and mutable classes. The benefits of this are that you no longer need to write custom `for` loops every time you need to work on a collection, and when you move from one project to another, you’ll find these same methods used, rather than more custom `for` loops.
+A great strength of Scala collections is that they come with dozens of methods out of the box, and those methods are consistently available across the immutable and mutable classes. The benefits of this are that you no longer need to write custom `for` loops every time you need to work on a collection, and when you move from one project to another, you’ll find these same methods used, rather than more custom `for` loops.
 
 There are *dozens* of methods available to you, so they aren’t all shown here. Instead, only some of the most commonly-used methods will be shown, including:
 
@@ -22,7 +22,7 @@ There are *dozens* of methods available to you, so they aren’t all shown here.
 - `drop`, `dropWhile`
 - `reduce`
 
-The following methods work on all of the sequence classes, including `List`, `Vector`, `ArrayBuffer`, etc., but these examples use a `List` unless otherwise specified.
+The following methods work on all of the sequence types, including `List`, `Vector`, `ArrayBuffer`, etc., but these examples use a `List` unless otherwise specified.
 
 >As a very important note, none of these methods mutate the collection that they’re called on. They all work in a functional style, meaning that they return a new collection with the modified results.
 
@@ -71,7 +71,7 @@ val names = List("adam", "brandy", "chris", "david")
 
 ## `map`
 
-The `map` method steps through each element in the existing list, applying the algorithm you supply to each element, one at a time; it then returns a new list with all of the modified elements.
+The `map` method steps through each element in the existing list, applying the function you supply to each element, one at a time; it then returns a new list with all of the modified elements.
 
 Here’s an example of the `map` method being applied to the `oneToTen` list:
 
@@ -108,7 +108,7 @@ As shown in the last two examples, it’s perfectly legal (and common) to use `m
 
 ## `filter`
 
-The `filter` method creates a new, filtered list from the given list. Here are a few examples:
+The `filter` method creates a new list containing the element that satisfy the provided predicate. A predicate, or condition, is a function that returns a `Boolean` (`true` or `false`).  Here are a few examples:
 
 ```scala
 scala> val lessThanFive = oneToTen.filter(_ < 5)
@@ -161,7 +161,7 @@ oneToTen.head   // Int = 1
 names.head      // adam
 ```
 
-Because a `String` is a sequence of characters, you can also treat it like a list. This is how `head` works on these strings:
+Because a `String` can be seen as a sequence of characters, you can also treat it like a list. This is how `head` works on these strings:
 
 ```scala
 "foo".head   // f

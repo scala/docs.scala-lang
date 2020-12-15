@@ -131,7 +131,7 @@ val s = Socket(
 
 ## Objects
 
-An object is a class that has exactly one instance. It’s created lazily when it is referenced, like a `lazy val`. If you’re familiar with Java, methods and fields in an object are accessed like `static` members in Java.
+An object is a class that has exactly one instance. It’s initialized lazily when its members are referenced, similar to a `lazy val`. Objects in Scala allow grouping methods and fields under one namespace, similar to how can use `static` members on a class in Java, Javascript (ES6) or `@staticmethod` in Python
 
 Declaring an `object` is similar to declaring a `class`. Here’s an example of a “string utilities” object that contains a set of methods for working with strings:
 
@@ -571,4 +571,3 @@ def handleMessages(msg: Message) = message match
   case DecreaseVolume(amt) => changeVolume(-amt)
   case StopPlaying         => stopPlayingMusic
 ```
-

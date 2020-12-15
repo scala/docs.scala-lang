@@ -21,25 +21,25 @@ Therefore, this section introduces and demonstrates the most common classes and 
 
 ## Three main categories of collections classes
 
-Looking at the Scala collections classes from a high level, there are three main categories to choose from:
+Looking at Scala collections from a high level, there are three main categories to choose from:
 
 - Sequences
 - Maps
 - Sets
 
-A _sequence_ is a linear collection of elements and may be _indexed_ (like an array) or _linear_ (like a linked list). A _map_ contains a collection of key/value pairs, like a Java `Map`, Python dictionary, or Ruby `Hash`. A _set_ is a sequence that contains no duplicate elements. All of those classes have basic types, as well as subsets of those types for specific purposes, such as concurrency, caching, and streaming.
+A _sequence_ is a linear collection of elements and may be _indexed_ (like an array) or _linear_ (like a linked list). A _map_ contains a collection of key/value pairs, like a Java `Map`, Python dictionary, or Ruby `Hash`. A _set_ is an unordered sequence of unique elements. All of those classes have basic types, as well as subsets of those types for specific purposes, such as concurrency, caching, and streaming.
 
 In addition to these three main categories, there are other useful collection types, including ranges, stacks, and queues. Ranges are demonstrated later in this section.
 
-The following sections introduce the basic classes you’ll use on a regular basis.
+The following sections introduce the common types you’ll use on a regular basis.
 
 There are a few other classes that act like collections, including tuples, enumerations, and the `Option`, `Try`, and `Either` families of classes. See the TODO section(s) for more details on these classes.
 
 
 
-## Common collections classes
+## Common collections
 
-The main collections classes you’ll use on a regular basis are:
+The main collections you’ll use on a regular basis are:
 
 | Class         | Immutable | Mutable | Description  |
 | ------------- | --------- | ------- | -----------  |
@@ -234,7 +234,7 @@ Given that definition, collections can also be thought of in terms of being stri
 
 ## The Vector class
 
-[The Vector class](https://www.scala-lang.org/api/current/scala/collection/immutable/Vector.html) is an indexed, immutable sequence. The “indexed” part of the description means that it provides random access and updates in effectively constant time, so you can access `Vector` elements rapidly by their index value, such as accessing `listOfPeople(123_456_789)`.
+[The Vector class](https://www.scala-lang.org/api/current/scala/collection/immutable/Vector.html) is an indexed, immutable sequence. The “indexed” part of the description means that it provides random access and update in effectively constant time, so you can access `Vector` elements rapidly by their index value, such as accessing `listOfPeople(123_456_789)`.
 
 In general, except for the difference that (a) `Vector` is indexed and `List` is not, and (b) the `List` class has the `::` method, the two classes work the same, so we’ll quickly run through the following examples.
 
@@ -327,7 +327,7 @@ val people = ArrayBuffer(
 
 ### Adding elements to an ArrayBuffer
 
-Append new elements to an `ArrayBuffer` with the `+=` and `++=` methods. Or if you prefer methods with names you can also use `append`, `appendAll`, `insert`, `insertAll`, `prepend`, and `prependAll`.
+Append new elements to an `ArrayBuffer` with the `+=` and `++=` methods. Or if you prefer methods with textual names you can also use `append`, `appendAll`, `insert`, `insertAll`, `prepend`, and `prependAll`.
 
 Here are some examples of `+=` and `++=`:
 
@@ -589,7 +589,6 @@ val doubles = (1 to 5).map(_ * 2.0)   // Vector(2.0, 4.0, 6.0, 8.0, 10.0)
 val map = (1 to 3).map(e => (e,s"$e")).toMap
     // map: Map[Int, String] = Map(1 -> "1", 2 -> "2", 3 -> "3")
 ```
-
 
 
 
