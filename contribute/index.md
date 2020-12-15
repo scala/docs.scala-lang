@@ -51,7 +51,7 @@ against development versions of the Scala compiler and standard
 library in order to discover regressions prior to releases.
 The build uses Lightbend's
 [dbuild](https://github.com/typesafehub/dbuild) tool,
-which leverages [sbt](http://www.scala-sbt.org).
+which leverages [sbt](https://www.scala-sbt.org).
 
 If you're the maintainer -- or just an interested user! -- of an
 open-source Scala library or tool, please visit the

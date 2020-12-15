@@ -46,13 +46,13 @@ Typically the scaladoc tool provides a low entry point for new committers, so it
 On the [Scala bug tracker](https://github.com/scala/bug) you will find the bugs that you could pick up. Once you decided on a ticket to look at, see the next step on how to proceed further.
 
 If you are interested in contributing code, we ask you to sign the
-[Scala Contributor License Agreement](http://www.lightbend.com/contribute/cla/scala),
+[Scala Contributor License Agreement](https://www.lightbend.com/contribute/cla/scala),
 which allows us to ensure that all code submitted to the project is
 unencumbered by copyrights or patents.
 
 ### Bug-fix Check List
 
-This is the impatient developer's checklist for the steps to submit a bug-fix pull request to the Scala project. For more information, description and justification for the steps, follow the links in that step. Further specific instructions for the release of Scala you are targeting can be found in the `CONTRIBUTING.md` file for that [github branch](https://github.com/scala/scala)
+This is the impatient developer's checklist for the steps to submit a bug-fix pull request to the Scala project. For more information, description and justification for the steps, follow the links in that step. Further specific instructions for the release of Scala you are targeting can be found in the `CONTRIBUTING.md` file for that [GitHub branch](https://github.com/scala/scala)
 
 1. [Select a bug to fix from GitHub](/contribute/#community-tickets), or if you found the bug yourself and want to fix it, [create a GitHub issue](/contribute/bug-reporting-guide.html) (but please
 [make sure it's not a duplicate](/contribute/bug-reporting-guide.html#reporting-confirmed-bugs-is-a-sin)).
@@ -63,7 +63,7 @@ This is the impatient developer's checklist for the steps to submit a bug-fix pu
 5. [Fix the bug, or implement the new small feature](/contribute/hacker-guide.html#implement), include new tests (yes, for bug fixes too).
 6. [Test, rinse](/contribute/hacker-guide.html#test) and [test some more](/contribute/partest-guide.html) until [all the tests pass](/contribute/hacker-guide.html#verify).
 7. [Commit your changes](/contribute/hacker-guide.html#commit) to your feature branch in your fork. Please choose your commit message based on the [Git Hygiene](https://github.com/scala/scala#user-content-git-hygiene) section of the Scala project README.
-8. If necessary [re-write git history](http://git-scm.com/book/en/Git-Branching-Rebasing) so that [commits are organized by major steps to the fix/feature](
+8. If necessary [re-write git history](https://git-scm.com/book/en/Git-Branching-Rebasing) so that [commits are organized by major steps to the fix/feature](
 https://github.com/scala/scala#git-hygiene). For bug fixes, a single commit is requested, for features several commits may be desirable (but each separate commit must compile and pass all tests)
 9. [Submit a pull request](./hacker-guide.html#submit).
 10. [Work with a reviewer](https://github.com/scala/scala#reviewing) to [get your pull request merged in](/contribute/hacker-guide.html#review).
@@ -75,7 +75,7 @@ Need more information or a little more hand-holding for the first one? We got yo
 
 For larger, more ambitious changes (e.g. new language features), the first step to making a change is to discuss it with the community at large, to make sure everyone agrees on the idea
 and on the implementation plan. Announce the change
-on the [Scala Contributors](https://contributors.scala-lang.org/) mailing list and get developer feedback. For really complex changes, a [Scala Improvement Process (SIP)](http://docs.scala-lang.org/sips/) document might be required, but the first step is always to discuss it on the mailing list and if a SIP is required, that will be discussed on the mailing list.
+on the [Scala Contributors](https://contributors.scala-lang.org/) mailing list and get developer feedback. For really complex changes, a [Scala Improvement Process (SIP)](https://docs.scala-lang.org/sips/) document might be required, but the first step is always to discuss it on the mailing list and if a SIP is required, that will be discussed on the mailing list.
 
 Contributions, big or small, simple or complex, controversial or undisputed, need to materialize as patches against
 the Scala project source tree. The [hacker guide](/contribute/hacker-guide.html) will explain how to materialize your idea into a full-fledged pull request against the Scala code base.

@@ -18,9 +18,9 @@ The first step in identifying a bug is to identify which component of the Scala 
 
 If your issue is related to any of the following external projects, make sure to use its appropriate issue tracker:
 
- - [Akka](http://doc.akka.io/docs/akka/current/project/issue-tracking.html)
- - [Play!](http://github.com/playframework/Play20/issues)
- - [Slick](http://github.com/slick/slick/issues)
+ - [Akka](https://doc.akka.io/docs/akka/current/project/issue-tracking.html)
+ - [Play!](https://github.com/playframework/Play20/issues)
+ - [Slick](https://github.com/slick/slick/issues)
  - [Scala IDE](https://scala-ide-portfolio.assembla.com/spaces/scala-ide/support/tickets)
  - [sbt](https://github.com/sbt/sbt/issues)
 
@@ -44,7 +44,7 @@ If you have a code snippet that is resulting in bytecode which you believe is be
 
    5. If you want to file an improvement in the issue tracker please discuss it first on one of the mailing lists. They offer much bigger audience than issue tracker. The latter is not suitable for long discussions.
 
-* Keep in mind that the behavior you are witnessing could be intended. Good formal resources for verifying whether or not the language behavior is intended is either in the [Scala Improvement Proposal Documents](https://docs.scala-lang.org/sips/) or in the [Scala Language Specification](http://www.scala-lang.org/files/archive/spec/2.13/). If in doubt, you may always ask on the [Community Category](https://contributors.scala-lang.org/c/community) or [Stack Overflow](https://stackoverflow.com/questions/tagged/scala).
+* Keep in mind that the behavior you are witnessing could be intended. Good formal resources for verifying whether or not the language behavior is intended is either in the [Scala Improvement Proposal Documents](https://docs.scala-lang.org/sips/) or in the [Scala Language Specification](https://www.scala-lang.org/files/archive/spec/2.13/). If in doubt, you may always ask on the [Community Category](https://contributors.scala-lang.org/c/community) or [Stack Overflow](https://stackoverflow.com/questions/tagged/scala).
 
 In general, if you find yourself stuck on any of these steps, asking on [Scala Contributors](https://contributors.scala-lang.org/) can be helpful:
 
