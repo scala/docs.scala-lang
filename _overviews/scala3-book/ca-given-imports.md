@@ -38,7 +38,7 @@ These rules have two main benefits:
 - It’s more clear where givens in the current scope are coming from. In particular, it’s not possible to hide imported givens in a long list of other wildcard imports.
 - It enables importing all givens without importing anything else. This is important because givens can be anonymous, so the usual use of named imports is not practical.
 
-More examples of the “import given” syntax are shown in the [Packaging and Imports chapter](packaging-imports.md).
+More examples of the “import given” syntax are shown in the [Packaging and Imports chapter][imports].
 
 
-
+[imports]: {% link _overviews/scala3-book/packaging-imports.md %}

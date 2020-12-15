@@ -34,17 +34,17 @@ Scala 3 introduces four fundamental changes:
 
 <!-- TODO: link Using Clauses to its subsection -->
 
-- [Given Instances](ca-02-given-using-clauses.md) are a new way to define terms that can be synthesized. If you used implicit definitions in Scala 2, *givens* replace those, and represent a single way to define terms that can be synthesized for types.
-- [Using Clauses](ca-02-given-using-clauses.md) are the new syntax for implicit parameters and their arguments. They unambiguously align parameters and arguments, and let you have several `using` clauses in a definition.
-- [Given Imports](ca-04-given-imports.md) are a new class of `import` selectors that import givens and nothing else. This lets you make it more clear where `given` instances in a scope are coming from.
-- [Implicit Conversions](ca-08-implicit-conversions.md) are now expressed as `given` instances of a standard `Conversion` class. All other forms of implicit conversions will be phased out.
+- [Given Instances][givens] are a new way to define terms that can be synthesized. If you used implicit definitions in Scala 2, *givens* replace those, and represent a single way to define terms that can be synthesized for types.
+- [Using Clauses][givens] are the new syntax for implicit parameters and their arguments. They unambiguously align parameters and arguments, and let you have several `using` clauses in a definition.
+- [Given Imports][given-imports] are a new class of `import` selectors that import givens and nothing else. This lets you make it more clear where `given` instances in a scope are coming from.
+- [Implicit Conversions][implicit-conversions] are now expressed as `given` instances of a standard `Conversion` class. All other forms of implicit conversions will be phased out.
 
 This chapter also contains sections that describe other language features related to *contextual abstraction*. These are:
 
-- [Context Bounds](ca-03-context-bounds.md), which carry over unchanged from Scala 2.
-- [Extension Methods](ca-05-extension-methods.md) replace implicit classes in a way that integrates better with type classes.
-- [Implementing Type Classes](ca-06-type-classes.md) shows an example of how type classes are implemented with the new language constructs.
-- [Multiversal Equality](ca-07-multiversal-equality.md) introduces a special type class to support type safe equality.
+- [Context Bounds][context-bounds], which carry over unchanged from Scala 2.
+- [Extension Methods][extension-methods] replace implicit classes in a way that integrates better with type classes.
+- [Implementing Type Classes][type-classes] shows an example of how type classes are implemented with the new language constructs.
+- [Multiversal Equality][equality] introduces a special type class to support type safe equality.
 
 
 
@@ -66,5 +66,10 @@ Benefits of these changes include:
 
 This chapter introduces many of these new features in the following sections.
 
-
-
+[givens]: {% link _overviews/scala3-book/ca-given-using-clauses.md %}
+[given-imports]: {% link _overviews/scala3-book/ca-given-imports.md %}
+[implicit-conversions]: {% link _overviews/scala3-book/ca-implicit-conversions.md %}
+[extension-methods]: {% link _overviews/scala3-book/ca-extension-methods.md %}
+[context-bounds]: {% link _overviews/scala3-book/ca-context-bounds.md %}
+[type-classes]: {% link _overviews/scala3-book/ca-type-classes.md %}
+[equality]: {% link _overviews/scala3-book/ca-multiversal-equality.md %}
