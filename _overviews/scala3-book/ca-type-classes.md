@@ -52,8 +52,8 @@ class Person(val firstName: String, val lastName: String)
 you’ll define a `given` value for `Person`. This code provides a concrete instance of `Show` for the `Person` class:
 
 ```scala
-given Show[Person]:
-  extension(p: Person) def show(): String = 
+given Show[Person] with
+  extension(p: Person) def show(): String =
     s"${p.firstName} ${p.lastName}"
 ```
 
@@ -94,7 +94,7 @@ trait HasLegs[A]:
 
 ### A real-world example
 
-For a real-world example of how type classes are used in Scala 3, see the `Eql` discussion in the [Multiversal Equality section][multiversal].
+For a real-world example of how type classes are used in Scala 3, see the `CanEqual` discussion in the [Multiversal Equality section][multiversal].
 
 
 
