@@ -78,6 +78,10 @@ a.new-version-notice {
 
   position: relative;
 
+  h5 {
+    margin: 0;
+  }
+
   .language-header {
     padding: 30px;
     background: $brand-tertiary;
