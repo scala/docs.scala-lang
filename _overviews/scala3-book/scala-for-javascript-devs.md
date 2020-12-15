@@ -44,38 +44,38 @@ This page provides a comparison between the JavaScript and Scala programming lan
 
 
 
-## Overview 
+## Overview
 
 This section provides a relatively brief introduction and summary of the sections that follow. It presents the similarities and differences between JavaScript and Scala at a high level, and then introduces the differences you’ll experience every day as you write code.
 
-### High-level similarities 
+### High-level similarities
 
-- At a high level, Scala shares these similarities with JavaScript:  
+- At a high level, Scala shares these similarities with JavaScript:
 - Both are considered high-level programming languages, where you don’t have to concern yourself with low-level concepts like pointers and manual memory management
 - Both have a relatively simple, concise syntax
-- Both support a C/C++/Java style curly-brace syntax for writing methods and other block of code  
+- Both support a C/C++/Java style curly-brace syntax for writing methods and other block of code
 - Both are object-oriented programming (OOP) languages
 - Both are functional programming (FP) languages, with support for lambdas and higher-order functions
-  - Functions are first-class citizens in both languages  
+  - Functions are first-class citizens in both languages
 - JavaScript runs in the browser, and thanks to [the *Scala.js* project](https://www.scala-js.org/), Scala can be compiled to JavaScript to run in the browser
 - [Node.js](https://nodejs.org/) lets you write server-side code in JavaScript; projects like the [Play Framework](https://www.playframework.com/) let you write server-side applications in Scala
 - Both languages have similar `if` statements, `while` loops, and `for` loops
-- Starting [at this Scala.js page](https://www.scala-js.org/libraries/index.html), you’ll find dozens of libraries to support React, Angular, jQuery, and many other JavaScript and Scala libraries  
+- Starting [at this Scala.js page](https://www.scala-js.org/libraries/index.html), you’ll find dozens of libraries to support React, Angular, jQuery, and many other JavaScript and Scala libraries
 - JavaScript objects are mutable; Scala objects can be mutable when writing in an OOP style
-- Both JavaScript and Scala support *promises* as a way of running parallel code (Scala uses futures and promises)  
+- Both JavaScript and Scala support *promises* as a way of running parallel code (Scala uses futures and promises)
 
-### High-level differences 
+### High-level differences
 
-Also at a high level, some of the differences between JavaScript and Scala are:  
+Also at a high level, some of the differences between JavaScript and Scala are:
 
 - JavaScript is weakly typed, and Scala is statically typed
-  - Although Scala is statically typed, features like type inference make it feel like a dynamic language (as you’ll see in the examples that follow)  
-- Scala idioms favor immutability by default: you’re encouraged to use immutable variables and immutable collections  
-- Scala has a concise but readable syntax; we call it *expressive*  
-- Scala is a pure OOP language, so every object is an instance of a class, and symbols like `+` and `+=` that look like operators are really methods; this means that you can create your own methods that work as operators  
+  - Although Scala is statically typed, features like type inference make it feel like a dynamic language (as you’ll see in the examples that follow)
+- Scala idioms favor immutability by default: you’re encouraged to use immutable variables and immutable collections
+- Scala has a concise but readable syntax; we call it *expressive*
+- Scala is a pure OOP language, so every object is an instance of a class, and symbols like `+` and `+=` that look like operators are really methods; this means that you can create your own methods that work as operators
 - As a pure OOP language and a pure FP language, Scala encourages a fusion of OOP and FP, with functions for the logic and objects for modularity
 - Scala has state of the art, third-party, open source functional programming libraries
-- Everything in Scala is an *expression*: constructs like `if` statements, `for` loops, `match` expressions, and even `try`/`catch` expressions all have return values  
+- Everything in Scala is an *expression*: constructs like `if` statements, `for` loops, `match` expressions, and even `try`/`catch` expressions all have return values
 - The [Scala Native](https://scala-native.readthedocs.io/en/v0.3.9-docs) project lets you write “systems” level code, and also compiles to native executables
 - Scala is an extremely consistent language, JavaScript has a few quirks you need to know to avoid
   - One JavaScript quirk: `"123" + 1 == "1231"`, but `"123" - 1 == 122`
@@ -88,24 +88,24 @@ Also at a high level, some of the differences between JavaScript and Scala are:
 - JavaScript objects are prototype-based; Scala objects are class-based
 
 
-### Programming level differences 
+### Programming level differences
 
-At a lower level, these are some of the differences you’ll see every day when writing code:  
+At a lower level, these are some of the differences you’ll see every day when writing code:
 
 - Scala variables and parameters are defined with `val` (immutable) or `var` (mutable) (compared to JavaScript’s `var`, `const`, and `let`)
 - Scala does not use semi-colons at the end of lines
 - Scala is statically-typed, though in many situations you don’t need to declare the type
-- Scala emphasizes a modular development style, and you’ll use constructs like traits, classes, case classes, enums, and objects to develop and organize your code  
-- Scala uses traits as interfaces and to create *mixins*  
-- In addition to simple `for` loops, Scala has powerful `for` comprehensions that yield results based on your algorithms  
-- Pattern matching and `match` expressions will change the way you write code  
-- *Toplevel definitions* let you put method, field, and other definitions anywhere, also leading to concise, expressive code  
-- Scala’s *contextual abstractions* and *term inference* provide a collection of features:  
+- Scala emphasizes a modular development style, and you’ll use constructs like traits, classes, case classes, enums, and objects to develop and organize your code
+- Scala uses traits as interfaces and to create *mixins*
+- In addition to simple `for` loops, Scala has powerful `for` comprehensions that yield results based on your algorithms
+- Pattern matching and `match` expressions will change the way you write code
+- *Toplevel definitions* let you put method, field, and other definitions anywhere, also leading to concise, expressive code
+- Scala’s *contextual abstractions* and *term inference* provide a collection of features:
   - *Extension methods* let you add new functionality to closed classes
-  - *Given* instances let you define terms that the compiler can use to synthesize code for you  
-  - Type safety and *multiversal equality* let you limit equality comparisons — at compile time — to only those comparisons that make sense  
-- Thanks to features like by-name parameters, infix notation, optional parentheses, extension methods, and higher-order functions, you can create your own “control structures” and DSLs  
-- Many other goodies that you can read about throughout this book: case classes, companion classes and objects, macros, union and intersection types, toplevel definitions, numeric literals, multiple parameter lists, default values for parameters, named arguments, and more  
+  - *Given* instances let you define terms that the compiler can use to synthesize code for you
+  - Type safety and *multiversal equality* let you limit equality comparisons — at compile time — to only those comparisons that make sense
+- Thanks to features like by-name parameters, infix notation, optional parentheses, extension methods, and higher-order functions, you can create your own “control structures” and DSLs
+- Many other goodies that you can read about throughout this book: case classes, companion classes and objects, macros, union and intersection types, toplevel definitions, numeric literals, multiple parameter lists, default values for parameters, named arguments, and more
 
 
 
@@ -113,7 +113,7 @@ At a lower level, these are some of the differences you’ll see every day when 
 
 ### Comments
 
-Both JavaScript and Scala use the C/C++/Java style comment syntax:  
+Both JavaScript and Scala use the C/C++/Java style comment syntax:
 
 <table>
   <tr>
@@ -133,9 +133,9 @@ Both JavaScript and Scala use the C/C++/Java style comment syntax:
 </table>
 
 
-### Variables 
+### Variables
 
-JavaScript variables are typically defined with `let` and `const`. Scala variables are defined with `var` and `val`.  
+JavaScript variables are typically defined with `let` and `const`. Scala variables are defined with `var` and `val`.
 
 <table>
   <tr>
@@ -154,13 +154,13 @@ JavaScript variables are typically defined with `let` and `const`. Scala variabl
   </tr>
 </table>
 
-The rule of thumb in Scala is to declare variables using `val`, unless there’s a specific reason you need a mutable variable.  
+The rule of thumb in Scala is to declare variables using `val`, unless there’s a specific reason you need a mutable variable.
 
-### Naming standards 
+### Naming standards
 
-JavaScript and Scala generally use the same *CamelCase* naming standards. Variables are named like `myVariableName`, methods are named like `lastIndexOf`, and classes and object are named like `Animal` and `PrintedBook`.  
+JavaScript and Scala generally use the same *CamelCase* naming standards. Variables are named like `myVariableName`, methods are named like `lastIndexOf`, and classes and object are named like `Animal` and `PrintedBook`.
 
-### Strings 
+### Strings
 
 Many uses of strings are similar in JavaScript and Scala, though Scala only uses double-quotes for simple strings, and triple-quotes for multiline strings:
 
@@ -208,13 +208,13 @@ Many uses of strings are similar in JavaScript and Scala, though Scala only uses
     </tr>
 </table>
 
-Scala lets you create multiline strings, which also support interpolation:  
+Scala lets you create multiline strings, which also support interpolation:
 
 ```scala
 val name = "Martin Odersky"
 
 val quote = s"""
-  |$name says 
+  |$name says
   |Scala is a fusion of
   |OOP and FP.
 """.stripMargin.replaceAll("\n", " ").trim
@@ -223,12 +223,12 @@ val quote = s"""
 // "Martin Odersky says Scala is a fusion of OOP and FP."
 ```
 
-JavaScript and Scala also have similar methods to work with strings, including `charAt`, `concat`, `indexOf`, and many more. Escape characters like `\n`, `\f`, `\t` are also the same in both languages.  
+JavaScript and Scala also have similar methods to work with strings, including `charAt`, `concat`, `indexOf`, and many more. Escape characters like `\n`, `\f`, `\t` are also the same in both languages.
 
 
-### Numbers and arithmetic 
+### Numbers and arithmetic
 
-Numeric operators are similar between JavaScript and Scala. The biggest difference is that Scala doesn’t offer `++` and `--` operators:  
+Numeric operators are similar between JavaScript and Scala. The biggest difference is that Scala doesn’t offer `++` and `--` operators:
 
 <table>
   <tbody>
@@ -278,7 +278,7 @@ Numeric operators are similar between JavaScript and Scala. The biggest differen
   </tbody>
 </table>
 
-Perhaps the biggest difference is that “operators” like `+=` and `-=` are really *methods* in Scala, not operators. Scala numbers also have these additional methods:  
+Perhaps the biggest difference is that “operators” like `+=` and `-=` are really *methods* in Scala, not operators. Scala numbers also have these additional methods:
 
 ```scala
 var a = 2
@@ -307,7 +307,7 @@ val x = BigInt(1_234_456_789)
 val y = BigDecimal(1_234_456.890)
 ```
 
-Boolean values are the same in both languages:  
+Boolean values are the same in both languages:
 
 <table>
   <tbody>
@@ -328,7 +328,7 @@ Boolean values are the same in both languages:
 
 ### Dates
 
-Dates are another commonly used type in both languages. Here are a few examples of how they work:  
+Dates are another commonly used type in both languages. Here are a few examples of how they work:
 
 <table>
   <tbody>
@@ -342,7 +342,7 @@ Dates are another commonly used type in both languages. Here are a few examples 
     <tr>
       <td valign="top"><code>let d = new Date();<br>
         <br>// result:
-        <br>// Sun Nov 29 2020 18:47:57 
+        <br>// Sun Nov 29 2020 18:47:57
         <br>// GMT-0700 (Mountain Standard Time)</code>
       </td>
       <td valign="top"><code>// different ways to get the current
@@ -384,15 +384,15 @@ Dates are another commonly used type in both languages. Here are a few examples 
   </tbody>
 </table>
 
-In this case, Scala uses the date and time classes that come with Java. Many date/time methods are similar between JavaScript and Scala. See [the *java.time* package](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/time/package-summary.html) for more details.  
-  
+In this case, Scala uses the date and time classes that come with Java. Many date/time methods are similar between JavaScript and Scala. See [the *java.time* package](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/time/package-summary.html) for more details.
+
 
 
 ## Functions
 
-In both JavaScript and Scala, functions are objects, so their functionality is similar, but their syntax and terminology is a little different.  
+In both JavaScript and Scala, functions are objects, so their functionality is similar, but their syntax and terminology is a little different.
 
-Simple “named” functions look like this:  
+Simple “named” functions look like this:
 
 <table>
   <tbody>
@@ -436,7 +436,7 @@ Simple “named” functions look like this:
   </tbody>
 </table>
 
-In Scala, showing the `Int` return type is optional. It’s not shown in the `add` example, and is shown in the `addThenDouble` example, so you can see both approaches.  
+In Scala, showing the `Int` return type is optional. It’s not shown in the `add` example, and is shown in the `addThenDouble` example, so you can see both approaches.
 
 
 ### Anonymous functions
@@ -469,7 +469,7 @@ Both JavaScript and Scala let you define anonymous functions, which you can pass
         <br>&nbsp; log(a);
         <br>}</code>
       </td>
-      <td valign="top"><code>// an anonymous function assigned 
+      <td valign="top"><code>// an anonymous function assigned
         <br>// to a variable
         <br>val log = (s: String) =&gt; console.log(s)
         <br>
@@ -489,7 +489,7 @@ Both JavaScript and Scala let you define anonymous functions, which you can pass
   </tbody>
 </table>
 
-In Scala you rarely define a function using the first syntax shown, and often define anonymous functions right at the point of use. Also, many of the methods on the collections classes accept function parameters, so you write code like this:  
+In Scala you rarely define a function using the first syntax shown, and often define anonymous functions right at the point of use. Also, many of the methods on the collections classes accept function parameters, so you write code like this:
 
 ```scala
 // map method, long form
@@ -509,9 +509,9 @@ List(1,2,3,4,5).filter(_ < 3).map(_ * 10)   // List(10, 20)
 
 ## Classes
 
-Scala has both classes and case classes. A *class* is similar to a JavaScript class, and is generally intended for use in OOP style applications (though they can also be used in FP code), and *case classes* have additional features that make them very useful in FP style applications.  
+Scala has both classes and case classes. A *class* is similar to a JavaScript class, and is generally intended for use in OOP style applications (though they can also be used in FP code), and *case classes* have additional features that make them very useful in FP style applications.
 
-The following example shows how to create several types as enumerations, and then defines an OOP-style `Pizza` class. At the end a `Pizza` instance is created and used:  
+The following example shows how to create several types as enumerations, and then defines an OOP-style `Pizza` class. At the end a `Pizza` instance is created and used:
 
 ```scala
 // create some enumerations that the Pizza class will use
@@ -539,13 +539,13 @@ class Pizza(
 
   private val toppings = ArrayBuffer[Topping]()
 
-  def addTopping(t: Topping): Unit = 
+  def addTopping(t: Topping): Unit =
     toppings += t
 
-  def removeTopping(t: Topping): Unit = 
+  def removeTopping(t: Topping): Unit =
     toppings -= t
 
-  def removeAllToppings(): Unit = 
+  def removeAllToppings(): Unit =
     toppings.clear()
 
   override def toString(): String =
@@ -581,7 +581,7 @@ println(p)
 
 Scala uses traits as interfaces, and also to create mixins. Traits can have both abstract and concrete members, including methods and fields.
 
-This example shows how to define two traits, create a class that extends and implements those traits, and then create and use an instance of that class:  
+This example shows how to define two traits, create a class that extends and implements those traits, and then create and use an instance of that class:
 
 ```scala
 trait HasLegs:
@@ -611,9 +611,9 @@ d.walk()             // "I’m walking"
 
 
 
-## Control Structures 
+## Control Structures
 
-Except for the use of `===` and `!==` in JavaScript, comparison and logical operators are almost identical in JavaScript and Scala:  
+Except for the use of `===` and `!==` in JavaScript, comparison and logical operators are almost identical in JavaScript and Scala:
 
 <table>
   <tbody>
@@ -674,9 +674,9 @@ Except for the use of `===` and `!==` in JavaScript, comparison and logical oper
 </table>
 
 
-### if/then/else expressions 
+### if/then/else expressions
 
-JavaScript and Scala if/then/else statements are similar. In Scala 2 they were almost identical, but with Scala 3, curly braces are no longer necessary (though they can still be used):  
+JavaScript and Scala if/then/else statements are similar. In Scala 2 they were almost identical, but with Scala 3, curly braces are no longer necessary (though they can still be used):
 
 <table>
   <tbody>
@@ -750,7 +750,7 @@ JavaScript and Scala if/then/else statements are similar. In Scala 2 they were a
   </tbody>
 </table>
 
-In Scala 3 you can still use the “curly brace” style, if you prefer. For instance, you can write an if/else-if/else expression like this:  
+In Scala 3 you can still use the “curly brace” style, if you prefer. For instance, you can write an if/else-if/else expression like this:
 
 ```scala
 // scala
@@ -766,9 +766,9 @@ if (i == 0) {
 ```
 
 
-### Loops 
+### Loops
 
-Both JavaScript and Scala have `while` loops and `for` loops. Scala used to have do/while loops, but they have been removed from the language. `while` loops look like this:  
+Both JavaScript and Scala have `while` loops and `for` loops. Scala used to have do/while loops, but they have been removed from the language. `while` loops look like this:
 
 <table>
   <tbody>
@@ -792,7 +792,7 @@ Both JavaScript and Scala have `while` loops and `for` loops. Scala used to have
   </tbody>
 </table>
 
-The Scala code can also be written like this, if you prefer:  
+The Scala code can also be written like this, if you prefer:
 
 ```scala
 var i = 0
@@ -812,7 +812,7 @@ let nums = [1, 2, 3];
 val nums = List(1, 2, 3)
 ```
 
-The examples:  
+The examples:
 
 <table>
   <tbody>
@@ -932,7 +932,7 @@ The examples:
       <td valign="top">N/A</td>
       <td valign="top"><code>// a for-comprehension is a for-loop
         <br>// that returns/yields a value
-        <br>val list = 
+        <br>val list =
         <br>&nbsp; for
         <br>&nbsp;&nbsp;&nbsp; i &lt;- 1 to 3
         <br>&nbsp; yield
@@ -944,7 +944,7 @@ The examples:
 </table>
 
 
-### switch & match 
+### switch & match
 
 Where JavaScript has `switch` statements, Scala has `match` expressions. Like everything else in Scala, these truly are *expressions*, meaning they return a result.
 
@@ -959,7 +959,7 @@ val monthAsString = day match
   case _ => "Other"
 ```
 
-`match` expressions can handle multiple matches in each `case` statement:  
+`match` expressions can handle multiple matches in each `case` statement:
 
 ```scala
 val numAsString = i match
@@ -980,7 +980,7 @@ case p: Person => true
 case _ => false
 ```
 
-`match` expressions have many other pattern-matching options.  
+`match` expressions have many other pattern-matching options.
 
 
 
@@ -1000,7 +1000,7 @@ Common *mutable* sequences are:
 
 Scala also has mutable and immutable Maps and Sets.
 
-This is how you create the common Scala collection types:  
+This is how you create the common Scala collection types:
 
 ```scala
 val strings = List("a", "b", "c")
@@ -1009,7 +1009,7 @@ val strings = ArrayBuffer("a", "b", "c")
 
 val set = Set("a", "b", "a") // result: Set("a", "b")
 val map = Map(
-  "a" -> 1, 
+  "a" -> 1,
   "b" -> 2,
   "c" -> 3
 )
@@ -1019,7 +1019,7 @@ val map = Map(
 
 The following examples show many different ways to work with Scala collections classes.
 
-#### Populating lists 
+#### Populating lists
 
 ```scala
 // to, until
@@ -1043,7 +1043,7 @@ List.tabulate(3)(n => n * n)      // List(0, 1, 4)
 List.tabulate(4)(n => n * n)      // List(0, 1, 4, 9)
 ```
 
-#### Functional methods on sequence classes 
+#### Functional methods on sequence classes
 
 ```scala
 // these examples use a List, but they are the same with Vector
@@ -1089,7 +1089,7 @@ val couples = women.zip(men)          // List((Wilma,Fred), (Betty,Barney))
 Scala has *many* more methods that are available to you. The benefits of all these methods are:
 
 - You don’t have to write custom `for` loops to solve problems
-- When you read someone else’s code, you won’t have to read their custom `for` loops; you’ll just find common methods like these, so it’s easier to read code from different projects  
+- When you read someone else’s code, you won’t have to read their custom `for` loops; you’ll just find common methods like these, so it’s easier to read code from different projects
 
 
 ### Tuples
@@ -1100,7 +1100,7 @@ When you want to put multiple data types in the same list, JavaScript lets you d
 let stuff = ["Joe", 42, 1.0]
 ```
 
-In Scala you do this:  
+In Scala you do this:
 
 ```scala
 val a = ("eleven")
@@ -1109,7 +1109,7 @@ val c = ("eleven", 11, 11.0)
 val d = ("eleven", 11, 11.0, Person("Eleven"))
 ```
 
-In Scala these types are called tuples, and as shown, they can contain one or more elements, and the elements can have different types. You access their elements just like you access elements of a `List`, `Vector`, or `Array`:  
+In Scala these types are called tuples, and as shown, they can contain one or more elements, and the elements can have different types. You access their elements just like you access elements of a `List`, `Vector`, or `Array`:
 
 ```scala
 d(0)   // "eleven"
@@ -1136,7 +1136,7 @@ enum Color:
   case Red, Green, Blue
 ```
 
-You can create a parameterized enum:  
+You can create a parameterized enum:
 
 ```scala
 enum Color(val rgb: Int):
@@ -1163,9 +1163,9 @@ enum Planet(mass: Double, radius: Double):
 
 ## Scala.js DOM Code
 
-Scala.js is a project that lets you write Scala code that is compiled to JavaScript code that can then be used in the browser. The approach is similar to CoffeeScript, TypeScript, and other languages that are compiled (“transpiled”) to JavaScript.  
+Scala.js is a project that lets you write Scala code that is compiled to JavaScript code that can then be used in the browser. The approach is similar to CoffeeScript, TypeScript, and other languages that are compiled (“transpiled”) to JavaScript.
 
-Once you include the necessary libraries, and import the necessary packages in your project, writing Scala.js code looks very similar to writing JavaScript code:  
+Once you include the necessary libraries, and import the necessary packages in your project, writing Scala.js code looks very similar to writing JavaScript code:
 
 ```scala
 // show an alert dialog on a button click
@@ -1195,26 +1195,26 @@ root.innerHTML = ""
 root.appendChild(content.render)
 ```
 
-Notice that although Scala is a type-safe language, no types are declared in that code. Scala’s strong type inference capabilites often make Scala code look like it’s dynamically-typed. But it is type-safe, so you catch many classes of errors early in the development cycle.  
+Notice that although Scala is a type-safe language, no types are declared in that code. Scala’s strong type inference capabilites often make Scala code look like it’s dynamically-typed. But it is type-safe, so you catch many classes of errors early in the development cycle.
 
 
 
 ## Other Scala.js resources
 
-The Scala.js website has an excellent collection of tutorials from JavaScript developers interested in using Scala.js. Here are some of their initial tutorials:  
+The Scala.js website has an excellent collection of tutorials from JavaScript developers interested in using Scala.js. Here are some of their initial tutorials:
 
-- [Basic tutorial (creating a first Scala.js project)](https://www.scala-js.org/doc/tutorial/basic/)  
+- [Basic tutorial (creating a first Scala.js project)](https://www.scala-js.org/doc/tutorial/basic/)
 - [Scala.js for JavaScript developers](https://www.scala-js.org/doc/sjs-for-js/)
-- [From ES6 to Scala: Basics  
+- [From ES6 to Scala: Basics
     ](https://www.scala-js.org/doc/sjs-for-js/es6-to-scala-part1.html)
 - [From ES6 to Scala: Collections](https://www.scala-js.org/doc/sjs-for-js/es6-to-scala-part2.html)
-- [From ES6 to Scala: Advanced](https://www.scala-js.org/doc/sjs-for-js/es6-to-scala-part3.html)  
+- [From ES6 to Scala: Advanced](https://www.scala-js.org/doc/sjs-for-js/es6-to-scala-part3.html)
 
 
 
-## Concepts that are unique to Scala 
+## Concepts that are unique to Scala
 
-There are other concepts in Scala which currently have no equivalent in JavaScript:  
+There are other concepts in Scala which currently have no equivalent in JavaScript:
 
 - Almost everything related to contextual abstractions
 - Method features:
@@ -1231,8 +1231,3 @@ There are other concepts in Scala which currently have no equivalent in JavaScri
 - Infix methods
 - Macros and metaprogramming
 - More ...
-
-
-
-
-
