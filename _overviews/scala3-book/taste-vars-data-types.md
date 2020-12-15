@@ -45,7 +45,7 @@ val a = 0
 var b = 1
 ```
 
-In an application, a `val` can’t be reassigned. You’ll generate a compiler error if you try to reassign one:
+In an application, a `val` can’t be reassigned. You’ll cause a compiler error if you try to reassign one:
 
 ```scala
 val msg = "Hello, world"
@@ -198,4 +198,3 @@ val quote = """The essence of Scala:
 
 
 [first-look]: {% link _overviews/scala3-book/first-look-at-types.md %}
-
