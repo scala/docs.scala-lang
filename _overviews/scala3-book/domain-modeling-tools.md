@@ -9,7 +9,7 @@ next-page: domain-modeling-oop
 
 
 
-Scala 3 provides the following tools to help us model the world around us:
+Scala 3 provides us with the following tools to model the world around us:
 
 - Class
 - Companion object
@@ -45,7 +45,7 @@ val p = new Person("Robert Allen Zimmerman", "Harmonica Player")
 However, this isn’t required in Scala 3:
 
 ```scala
-val p = new Person("Robert Allen Zimmerman", "Harmonica Player")
+val p = Person("Robert Allen Zimmerman", "Harmonica Player")
 ```
 
 Once you have an instance of a class, you can access its fields, which in this example are all constructor parameters:
@@ -338,7 +338,7 @@ TODO: I need to add content here.
 
 ## Enums
 
-An enumeration is used to define a type that consists of a set of named values. Basic enumerations are used to define sets of constants, like the months in a year, the days in a week, directions like north/south/east/west, and more.
+An enumeration is used to define a type that consists of a finite set of named values. Basic enumerations are used to define sets of constants, like the months in a year, the days in a week, directions like north/south/east/west, and more.
 
 As an example, these enumerations define sets of attributes related to pizzas:
 
@@ -394,7 +394,7 @@ enum Color(val rgb: Int):
   case Blue  extends Color(0x0000FF)
 ```
 
-And they can also have user-defined members:
+And they can also have members:
 
 ```scala
 enum Planet(mass: Double, radius: Double):
@@ -571,5 +571,4 @@ def handleMessages(msg: Message) = message match
   case DecreaseVolume(amt) => changeVolume(-amt)
   case StopPlaying         => stopPlayingMusic
 ```
-
 
