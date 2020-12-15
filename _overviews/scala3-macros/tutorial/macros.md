@@ -21,7 +21,7 @@ For now, it suffices to know that macros are metaprograms that manipulate expres
 
 The following macro implementation simply prints the expression of the provided argument:
 ```scala
-def inspectCode(x: Expr[Any])(using QuoteContext): Expr[Any] =
+def inspectCode(x: Expr[Any])(using Quotes): Expr[Any] =
   println(x.show)
   x
 ```
@@ -37,7 +37,7 @@ The implementation of this entry point always has the same shape:
 
 - they only contain a single [splice][quotes] `${ ... }`
 - the splice contains a single call to the method that implements the macro (for example `inspectCode`).
-- the call to the macro implementation receives the _quoted_ parameters (that is `'x` instead of `x`) and a contextual `QuoteContext`.
+- the call to the macro implementation receives the _quoted_ parameters (that is `'x` instead of `x`) and a contextual `Quotes`.
 
 We will dig deeper into these concepts later in this and the following sections.
 
@@ -55,9 +55,9 @@ Just like `scala.quoted.Expr[T]` represents a Scala expression of type `T`, we u
 ```scala
 inline def logged[T](inline x: T): T = ${ loggedCode('x)  }
 
-def loggedCode[T](x: Expr[T])(using Type[T], QuoteContext): Expr[T] = ...
+def loggedCode[T](x: Expr[T])(using Type[T], Quotes): Expr[T] = ...
 ```
-Both the instance of `Type[T]` and the contextual `QuoteContext` are automatically provided by the splice in the corresponding inline method (that is, `logged`) and can be used by the macro implementation.
+Both the instance of `Type[T]` and the contextual `Quotes` are automatically provided by the splice in the corresponding inline method (that is, `logged`) and can be used by the macro implementation.
 
 
 ### Defining and Using Macros
@@ -99,7 +99,7 @@ inline def power(inline x: Double, inline n: Int) =
 def powerCode(
   x: Expr[Double],
   n: Expr[Int]
-)(using QuoteContext): Expr[Double] = ...
+)(using Quotes): Expr[Double] = ...
 ```
 
 ## Simple Expressions
@@ -112,7 +112,7 @@ def pow(x: Double, n: Int): Double =
 def powerCode(
   x: Expr[Double],
   n: Expr[Int]
-)(using QuoteContext): Expr[Double] =
+)(using Quotes): Expr[Double] =
   val value: Double = pow(x.unliftOrError, n.unliftOrError)
   Expr(value)
 ```
@@ -171,7 +171,7 @@ This can be useful to perform debugging on macro implementations:
 def debugPowerCode(
   x: Expr[Double],
   n: Expr[Int]
-)(using QuoteContext): Expr[Double] =
+)(using Quotes): Expr[Double] =
   println(
     s"""powerCode
        |  x := ${x.show}
@@ -191,7 +191,7 @@ It is possible to recover each individual argument (of type `Expr[T]`) using the
 inline def sumNow(inline nums: Int*): Int =
   ${ sumCode('nums)  }
 
-def sumCode(nums: Expr[Seq[Int]])(using QuoteContext): Expr[Int] =
+def sumCode(nums: Expr[Seq[Int]])(using Quotes): Expr[Int] =
   nums match
     case  Varargs(numberExprs) => // numberExprs: Seq[Expr[Int]]
       val numbers: Seq[Int] = numberExprs.map(_.unliftOrError)
@@ -241,7 +241,7 @@ Its first arguments is a list with all the statements and the second argument is
 inline def test(inline ignore: Boolean, computation: => Unit): Boolean =
   ${ testCode('ignore, 'computation) }
 
-def testCode(ignore: Expr[Boolean], computation: Expr[Unit])(using QuoteContext) =
+def testCode(ignore: Expr[Boolean], computation: Expr[Unit])(using Quotes) =
   if ignore.unliftOrError then Expr(false)
   else Expr.block(List(computation), Expr(true))
 ```

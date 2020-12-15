@@ -30,13 +30,13 @@ If `error` is called outside an inline method the error will be emitted when com
 If the `error` is written inside an inline method, the error will be emitted only if after inlining the call in not removed as part of a dead branch.
 In the previous example we used the value of `mode` is know we would only keep one of the first two branches.
 
-If we want to include part the source code of the arguments in the error message we can use the `code` string interpolator.
+If we want to include part the source code of the arguments in the error message we can use the `codeOf` method.
 
 ```scala
 inline def doSomething(inline mode: Boolean): Unit =
   if mode then ...
   else if !mode then ...
-  else error(code"Mode must be a known value but got: $mode")
+  else error("Mode must be a known value but got: " + codeOf(mode))
 
 val bool: Boolean = ...
 doSomething(bool) // error: Mode must be a known value but got: bool
@@ -70,6 +70,7 @@ Summon all provides a way to summon multiple values at the same time from a tupl
 
 ## Ops (scala.compiletime.ops)
 *Coming soon*
+
 
 
 [best-practices]: ../best-practices

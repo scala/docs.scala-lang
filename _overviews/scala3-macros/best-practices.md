@@ -41,14 +41,14 @@ Consider the following code:
 
 ```scala
 val y: Expr[Int] = ...
-def body(x: Expr[Int])(using qctx.Nested) =  '{ $x + $y }
+def body(x: Expr[Int])(using quotes.Nested) =  '{ $x + $y }
 '{ (x: Int) => ${ body('x) } }
 ```
 
 Instead, use a normal context and pass all needed expressions.
 This has also the advantage of allowing the function to not be defined locally.
 ```scala
-def body(x: Expr[Int], y: Expr[Int])(using QuoteContext) =
+def body(x: Expr[Int], y: Expr[Int])(using Quotes) =
   '{ $x + $y }
 
 val y: Expr[Int] = ...

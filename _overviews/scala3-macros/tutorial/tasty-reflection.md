@@ -11,12 +11,12 @@ It provides a view on the *Typed Abstract Syntax Trees* **TASTy** and their prop
 
 ## How to use the API
 
-Accessing this API need and import that depends the current `QuoteContext`.
-We can use `scala.quoted.qctx` to import it.
+Accessing this API need and import that depends the current `Quotes`.
+We can use `scala.quoted.quotes` to import it.
 
 ```scala
-def pow(x: Expr[Int])(using QuoteContext): Expr[Int] = {
-  import qctx.tasty._ // Import Tree, Type, Symbol, Position, .....
+def pow(x: Expr[Int])(using Quotes): Expr[Int] = {
+  import quotes.tasty._ // Import Tree, Type, Symbol, Position, .....
   ...
 }
 ```

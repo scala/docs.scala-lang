@@ -8,7 +8,7 @@ next-page: tasty-reflection
 ---
 
 ## Code blocks
-A quoted code block `'{ ... }` is syntactically similar to a string quote `" ... "` with the difference that the fist contains typed code.
+A quoted code block `'{ ... }` is syntactically similar to a string quote `" ... "` with the difference that the first contains typed code.
 To insert a code into other code we use the `$expr` or `${ expr }` where `expr` is of type `Expr[T]`.
 Intuitively, the code directly within the quote is not executed now, while the code within the splices is evaluated and their results are then spliced into the surrounding expression.
 
@@ -30,7 +30,7 @@ A part of the program will live at compile-time and the other will live at runti
 Consider the following ill-constructed code.
 
 ```scala
-def myBadCounter1(using QuoteContext): Expr[Int] = {
+def myBadCounter1(using Quotes): Expr[Int] = {
   var x = 0
   '{ x += 1; x }
 }
@@ -40,7 +40,7 @@ Clearly it would be impossible to access its value and update it.
 
 Now consider the dual version, where we define the variable at runtime and try to access it at compile-time.
 ```scala
-def myBadCounter2(using QuoteContext): Expr[Int] = '{
+def myBadCounter2(using Quotes): Expr[Int] = '{
   var x = 0
   ${ x += 1; 'x }
 }
@@ -85,14 +85,14 @@ def evalAndUse[T](x: Expr[T]) = '{
 Here we will get an error telling us that we are missing a contextual `Type[T]`.
 Therefore we can easily fix it by writing
 ```scala
-def evalAndUse[X](x: Expr[X])(using Type[X])(using QuoteContext) = '{
+def evalAndUse[X](x: Expr[X])(using Type[X])(using Quotes) = '{
   val x2: X = $x
   ... // use x2
 }
 ```
 This code will be equivalent to the more verbose
 ```scala
-def evalAndUse[X](x: Expr[X])(using t: Type[X])(using QuoteContext) = '{
+def evalAndUse[X](x: Expr[X])(using t: Type[X])(using Quotes) = '{
   val x2: t.T = $x
   ... // use x2
 }
@@ -114,7 +114,7 @@ evalAndUse[Int](Expr(3))(using Type[Int])
 As you may have guessed, not every type is can be used in this `Type[..]` out of the box.
 We cannot recover abstract types that have already been erased.
 ```scala
-def evalAndUse[T](x: Expr[T])(using QuoteContext) =
+def evalAndUse[T](x: Expr[T])(using Quotes) =
   given Type[T] = Type[T] // error
   '{
     val x2: T = $x
@@ -133,14 +133,14 @@ Explicit use is useful while debugging at the cost of conciseness and clarity.
 The `Expr.apply` method uses intances of `Liftable` to perform the lifting.
 ```scala
 object Expr:
-  def apply[T](x: T)(using QuoteContext, Liftable[T]): Expr[T] =
+  def apply[T](x: T)(using Quotes, Liftable[T]): Expr[T] =
     summon[Liftable[T]].toExpr(x)
 ```
 
 `Liftable` is defined as follows:
 ```scala
 trait Liftable[T]:
-  def toExpr(x: T): QuoteContext ?=> Expr[T]
+  def toExpr(x: T): Quotes ?=> Expr[T]
 ```
 
 The `toExpr` method will take a value `T` and generate code that will construct a copy of this value at runtime.
@@ -172,13 +172,13 @@ The simples thing we can do is to check if an expression matches another know ex
 Bellow we show how we can match some expressions using `case '{...} =>`
 
 ```scala
-def valueOfBoolean(x: Expr[Boolean])(using QuoteContext): Option[Boolean] =
+def valueOfBoolean(x: Expr[Boolean])(using Quotes): Option[Boolean] =
   x match
     case '{ true } => Some(true)
     case '{ false } => Some(false)
     case _ => None
 
-def valueOfBooleanOption(x: Expr[Option[Boolean]])(using QuoteContext): Option[Option[Boolean]] =
+def valueOfBooleanOption(x: Expr[Option[Boolean]])(using Quotes): Option[Option[Boolean]] =
   x match
     case '{ Some(true) } => Some(Some(true))
     case '{ Some(false) } => Some(Some(false))
@@ -191,7 +191,7 @@ def valueOfBooleanOption(x: Expr[Option[Boolean]])(using QuoteContext): Option[O
 To make thing more compact, we can also match patially the expression using a `$` to match arbitrarry code and extract it.
 
 ```scala
-def valueOfBooleanOption(x: Expr[Option[Boolean]])(using QuoteContext): Option[Option[Boolean]] =
+def valueOfBooleanOption(x: Expr[Option[Boolean]])(using Quotes): Option[Option[Boolean]] =
   x match
     case '{ Some($boolExpr) } => Some(valueOfBoolean(boolExpr))
     case '{ None } => Some(None)
@@ -204,7 +204,7 @@ We can also match agains code of an arbitrary type `T`.
 Bellow we match agains `$x` of type `T` and we get out an `x` of type `Expr[T]`.
 
 ```scala
-def exprOfOption[T: Type](x: Expr[Option[T]])(using QuoteContext): Option[Expr[T]] =
+def exprOfOption[T: Type](x: Expr[Option[T]])(using Quotes): Option[Expr[T]] =
   x match
     case '{ Some($x) } => Some(x) // x: Expr[T]
     case '{ None } => Some(None)
@@ -214,7 +214,7 @@ def exprOfOption[T: Type](x: Expr[Option[T]])(using QuoteContext): Option[Expr[T
 We can also check for the type of an expression
 
 ```scala
-def valueOf(x: Expr[Any])(using QuoteContext): Option[Any] =
+def valueOf(x: Expr[Any])(using Quotes): Option[Any] =
   x match
     case '{ $x: Boolean } => valueOfBoolean(x) // x: Expr[Boolean]
     case '{ $x: Option[Boolean] }  => valueOfBooleanOption(x) // x: Expr[Option[Boolean]]
@@ -256,22 +256,22 @@ case ...
 The `Expr.unlift`, `Expr.unlift.orError` `Unlifted.unapply` method uses intances of `Unliftable` to perform the unlifting.
 ```scala
 extension [T](expr: Expr[T]):
-  def unlift(using QuoteContext)(using unlift: Unliftable[T]): Option[T] =
+  def unlift(using Quotes)(using unlift: Unliftable[T]): Option[T] =
     unlift(expr)
 
-  def unliftOrError(using QuoteContext)(using unlift: Unliftable[T]): T =
+  def unliftOrError(using Quotes)(using unlift: Unliftable[T]): T =
     unlift(expr).getOrElse(eport.throwError("...", expr))
 end extension
 
 object Unlifted:
-  def unapply[T](expr: Expr[T])(using QuoteContext)(using unlift: Unliftable[T]): Option[T] =
+  def unapply[T](expr: Expr[T])(using Quotes)(using unlift: Unliftable[T]): Option[T] =
     unlift(expr)
 ```
 
 `Unliftable` is defined as follows:
 ```scala
 trait Unliftable[T]:
-  def fromExpr(x: Expr[T])(using QuoteContext): Option[T]
+  def fromExpr(x: Expr[T])(using Quotes): Option[T]
 ```
 
 The `toExpr` method will take a value `T` and generate code that will construct a copy of this value at runtime.
@@ -279,7 +279,7 @@ The `toExpr` method will take a value `T` and generate code that will construct 
 We can define our own `Uniftable`s like:
 ```scala
 given Unliftable[Boolean] = new Unliftable[Boolean] {
-  def fromExpr(x: Expr[Boolean])(using QuoteContext): Option[Boolean] =
+  def fromExpr(x: Expr[Boolean])(using Quotes): Option[Boolean] =
     x match
       case '{ true } => Some(true)
       case '{ false } => Some(false)
@@ -287,9 +287,9 @@ given Unliftable[Boolean] = new Unliftable[Boolean] {
 }
 
 given Unliftable[StringContext] = new Unliftable[StringContext] {
-  def fromExpr(x: Expr[StringContext])(using qctx: QuoteContext): Option[StringContext] = x match {
-    case '{ new StringContext(${Varargs(Consts(args))}: _*) } => Some(StringContext(args: _*))
-    case '{     StringContext(${Varargs(Consts(args))}: _*) } => Some(StringContext(args: _*))
+  def fromExpr(x: Expr[StringContext])(using Quotes): Option[StringContext] = x match {
+    case '{ new StringContext(${Varargs(Unlifted(args))}: _*) } => Some(StringContext(args: _*))
+    case '{     StringContext(${Varargs(Unlifted(args))}: _*) } => Some(StringContext(args: _*))
     case _ => None
   }
 }
@@ -297,39 +297,40 @@ given Unliftable[StringContext] = new Unliftable[StringContext] {
 Note that we handled two cases for the `StringContext`.
 As it is a `case class` it can be created with the `new StringContext` or with the `StringContext.apply` in the companion object.
 We also used the `Varargs` extractor to match the arguments of type `Expr[Seq[String]]` into a `Seq[Expr[String]]`.
-Then we used the `Consts` to match known constants in the `Seq[Expr[String]]` to get a `Seq[String]`.
+Then we used the `Unlifted` to match known constants in the `Seq[Expr[String]]` to get a `Seq[String]`.
 
 
-## The QuoteContext
-The `QuoteContext` is the main entry point for the creation of all quotes.
+## The Quotes
+The `Quotes` is the main entry point for the creation of all quotes.
 This context is usually just passed around through contextual abstractions (`using` and `?=>`).
-Each quote scope will provide have its own `QuoteContext`.
+Each quote scope will provide have its own `Quotes`.
 New scopes are introduced each time a splice is introduced `${...}`.
-Though it looks like a splice takes an expression as argument, it actually takes a `QuoteContext ?=> Expr[T]`.
+Though it looks like a splice takes an expression as argument, it actually takes a `Quotes ?=> Expr[T]`.
 Therefore we could actually write it explicitly as `${ (using q) => ... }`, this might be useful when debugging to avoid generated names for these scopes.
 
-The method `scala.quoted.qctx` provides a simple way to use the current `QuoteContext` without naming it.
-It is usually imported along with the `QuoteContext` using `import scala.quoted._`.
+The method `scala.quoted.quotes` provides a simple way to use the current `Quotes` without naming it.
+It is usually imported along with the `Quotes` using `import scala.quoted._`.
 
 ```scala
 ${ (using q1) => body(using q1) }
 // equivalent to
-${ body(using qctx) }
+${ body(using quotes) }
 ```
-If you explicitly name a `QuoteContext` `qctx` you will shadow this definition.
+If you explicitly name a `Quotes` `quotes` you will shadow this definition.
 
 When we write a top level splice in a macro we are calling something similar to the following definition.
-This splice will provide the initial `QuoteContext` associated with the macro expansion.
+This splice will provide the initial `Quotes` associated with the macro expansion.
 ```scala
-def $[T](x: QuoteContext ?=> Expr[T]): T = ...
+def $[T](x: Quotes ?=> Expr[T]): T = ...
 ```
 
 When we have a splice within a quote, the inner quote context will depend on the outer one.
-This link is represented using the `QuoteContext.Nested` type.
-This relation tells us that it is safe to use expressions created with `q1` within the scope of `q2` but not the other way around (this constraint is statically checked yet).
+This link is represented using the `Quotes.Nested` type.
+Users of quotes will almost never need to use `Quotes.Nested`.
+These details are only useful for advanced macros that will inspect code and may encounter details of quotes and splices.
 
 ```scala
-def f(using q1: QuoteContext) = '{
+def f(using q1: Quotes) = '{
   ${ (using q2: q1.Nested) ?=>
       ...
   }
@@ -338,7 +339,7 @@ def f(using q1: QuoteContext) = '{
 
 We can imagine that a nested splice is like the following method, where `ctx` is the context received by the surrounding quote.
 ```scala
-def $[T](using ctx: QuoteContext)(x: ctx.Nested ?=> Expr[T]): T = ...
+def $[T](using q: Quotes)(x: q.Nested ?=> Expr[T]): T = ...
 ```
 
 ## β-reduction
@@ -362,7 +363,7 @@ The first is to have a `using` parameter in the inline method that is passed exp
 inline def setFor[T](using ord: Ordering[T]): Set[T] =
   ${ setForCode[T]('ord) }
 
-def setForCode[T: Type](ord: Expr[Ordering[T]])(using QuoteContext): Expr[Set[T]] =
+def setForCode[T: Type](ord: Expr[Ordering[T]])(using Quotes): Expr[Set[T]] =
   '{ TreeSet.empty[T](using $ord) }
 ```
 
@@ -377,7 +378,7 @@ The following example is similar to the previous example.
 inline def setFor[T]: Set[T] =
   ${ setForCode[T] }
 
-def setForCode[T: Type](using QuoteContext): Expr[Set[T]] =
+def setForCode[T: Type](using Quotes): Expr[Set[T]] =
   import scala.collection.immutable._
   Expr.summon[Ordering[T]] match
     case Some(ord) => '{ TreeSet.empty[T](using $ord) }

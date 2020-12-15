@@ -487,7 +487,7 @@ Macros provide a way to control the code generation and analysis after the call 
 inline def power(x: Double, inline n: Int) =
   ${ powerCode('x, 'n)  }
 
-def powerCode(x: Expr[Double], n: Expr[Int])(using QuoteContext): Expr[Double] = ...
+def powerCode(x: Expr[Double], n: Expr[Int])(using Quotes): Expr[Double] = ...
 ```
 
 [best-practices]: ../best-practices
