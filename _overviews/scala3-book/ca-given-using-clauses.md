@@ -91,15 +91,15 @@ object Orderings:
   // three specific implementations for the Int, Double, and
   // List[A] types:
 
-  given intOrd as Ord[Int]:
+  given intOrd: Ord[Int] with
     def compare(x: Int, y: Int) =
       if (x < y) -1 else if (x > y) +1 else 0
 
-  given doubleOrd as Ord[Double]:
+  given doubleOrd: Ord[Double] with
     def compare(x: Double, y: Double) =
       if (x < y) -1 else if (x > y) +1 else 0
 
-  given listOrd[A](using ord: Ord[A]) as Ord[List[A]]:
+  given listOrd[A](using ord: Ord[A]): Ord[List[A]] with
     def compare(xs: List[A], ys: List[A]): Int =
       // more code here ...
 
@@ -110,7 +110,7 @@ Then you import the givens into your code:
 
 ```scala
 import Orderings._
-import Orderings.{given Ord[?]}
+import Orderings.{ given Ord[?] }
 ```
 
 

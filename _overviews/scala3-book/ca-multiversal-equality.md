@@ -20,7 +20,7 @@ x == y        // typechecks, will always yield false
 
 If `y` gets compared to other values of type `T`, the program will still typecheck, since values of all types can be compared with each other. But it will probably give unexpected results and fail at runtime.
 
-A type-safe programming language can do better, and multiversal equality is an opt-in way to make universal equality safer. It uses the binary type class `Eql` to indicate that values of two given types can be compared with each other.
+A type-safe programming language can do better, and multiversal equality is an opt-in way to make universal equality safer. It uses the binary type class `CanEqual` to indicate that values of two given types can be compared with each other.
 
 
 ## Allowing the comparison of class instances
@@ -52,11 +52,11 @@ println(rover == fido)   // compiler error
 
 ## Enabling comparisons
 
-There are two ways to enable this comparison using the Scala 3 `Eql` type class. For simple cases like this, your class can *derive* the `Eql` class:
+There are two ways to enable this comparison using the Scala 3 `CanEqual` type class. For simple cases like this, your class can *derive* the `CanEqual` class:
 
 ```scala
 // Option 1
-case class Dog(name: String) derives Eql
+case class Dog(name: String) derives CanEqual
 ```
 
 As you’ll see in a few moments, when you need more flexibility you can also use this syntax:
@@ -64,7 +64,7 @@ As you’ll see in a few moments, when you need more flexibility you can also us
 ```scala
 // Option 2
 case class Dog(name: String)
-given Eql[Dog, Dog] = Eql.derived
+given CanEqual[Dog, Dog] = CanEqual.derived
 ```
 
 Either of those two approaches now let `Dog` instances to be compared to each other.
@@ -89,28 +89,28 @@ trait Book:
     def year: Int
 
 case class PrintedBook(
-    author: String, 
-    title: String, 
+    author: String,
+    title: String,
     year: Int,
     pages: Int
 ) extends Book
 
 case class AudioBook(
-    author: String, 
-    title: String, 
+    author: String,
+    title: String,
     year: Int,
     lengthInMinutes: Int
 ) extends Book
 ```
 
-Finally, use `Eql` to define which comparisons you want to allow:
+Finally, use `CanEqual` to define which comparisons you want to allow:
 
 ```scala
 // [3] create type class instances to define the allowed comparisons.
 //     allow `PrintedBook == PrintedBook`
 //     allow `AudioBook == AudioBook`
-given Eql[PrintedBook, PrintedBook] = Eql.derived
-given Eql[AudioBook, AudioBook] = Eql.derived
+given CanEqual[PrintedBook, PrintedBook] = CanEqual.derived
+given CanEqual[AudioBook, AudioBook] = CanEqual.derived
 
 // [4a] comparing two printed books works as desired
 val p1 = PrintedBook("1984", "George Orwell", 1961, 328)
@@ -138,8 +138,8 @@ That works as desired, but in some situations you may want to allow the comparis
 
 ```scala
 // allow `PrintedBook == AudioBook`, and `AudioBook == PrintedBook`
-given Eql[PrintedBook, AudioBook] = Eql.derived
-given Eql[AudioBook, PrintedBook] = Eql.derived
+given CanEqual[PrintedBook, AudioBook] = CanEqual.derived
+given CanEqual[AudioBook, PrintedBook] = CanEqual.derived
 ```
 
 Now you can compare physical books to audiobooks without a compiler error:
@@ -195,7 +195,7 @@ Is this section too much detail for an overview?
 Here are a few more notes and details about Multiversal Equality in Scala 3:
 
 - As mentioned, you can enable multiversal equality for an entire project with the `-language:strictEquality` compiler command line flag
-- The `Eql` object has predefined instances that allow for comparisons of some types in the standard library:
+- The `CanEqual` object has predefined instances that allow for comparisons of some types in the standard library:
   - The primitive numeric types can all be compared to each other
   - The primitive numeric types can be compared with subtypes of _java.lang.Number_, and vice-versa
   - `Boolean` can be compared with _java.lang.Boolean_ (and vice versa)

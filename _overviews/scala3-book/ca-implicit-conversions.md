@@ -11,7 +11,7 @@ next-page: ca-summary
 Implicit conversions are defined by `given` instances of the _scala.Conversion_ class. For example, not accounting for possible conversion errors, this code defines an an implicit conversion from `String` to `Int`:
 
 ```scala
-given Conversion[String, Int]:
+given Conversion[String, Int] with
   def apply(s: String): Int = Integer.parseInt(s)
 ```
 
@@ -39,7 +39,7 @@ plus1("1")
 The Predef package contains “auto-boxing” conversions that map primitive number types to subclasses of _java.lang.Number_. For instance, the conversion from `Int` to _java.lang.Integer_ can be defined as follows:
 
 ```scala
-given int2Integer as Conversion[Int, java.lang.Integer] =
+given int2Integer: Conversion[Int, java.lang.Integer] =
   java.lang.Integer.valueOf(_)
 ```
 
@@ -57,7 +57,3 @@ An implicit conversion is applied automatically by the compiler in three situati
 
 In the first case, the compiler looks for a given _scala.Conversion_ instance that maps an argument of type `B` to type `A`. In the second and third case, it looks for a given _scala.Conversion_ instance that maps an argument of type `B` to a type that defines a member `m` which can be applied to `args` if present. If such an instance `C` is found, the expression e is replaced by `C.apply(e)`.
 {% endcomment %}
-
-
-
-
