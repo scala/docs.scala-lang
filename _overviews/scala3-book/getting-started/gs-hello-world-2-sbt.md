@@ -24,7 +24,7 @@ Next, sbt’s main configuration file is named *build.sbt*, so create that file 
 ```scala
 name := "HelloWorld"
 version := "0.1"
-scalaVersion := "3.0.0-M2"
+scalaVersion := "{{ site.scala-3-version }}"
 ```
 
 With the current Scala 3 “milestone” releases, using Scala 3 with sbt currently requires a “helper” file in a directory named *project*, so create that directory:
@@ -36,7 +36,7 @@ $ mkdir project
 Then create a file named *project/plugins.sbt*, and put this configuration line in that file:
 
 ```scala
-addSbtPlugin("ch.epfl.lamp" % "sbt-dotty" % "0.4.6")
+addSbtPlugin("ch.epfl.lamp" % "sbt-dotty" % "{{ site.scala-3-plugin-version }}")
 ```
 
 <!-- TODO: update this when it’s no longer needed -->

@@ -76,7 +76,7 @@ As you can see, creating and running a little Scala project with sbt takes just 
 
 {% comment %}
 NOTE: This currently requires this line in a *project/plugins.sbt* file:
-addSbtPlugin("ch.epfl.lamp" % "sbt-dotty" % "0.4.6")
+addSbtPlugin("ch.epfl.lamp" % "sbt-dotty" % "{{ site.scala-3-plugin-version }}")
 {% endcomment %}
 
 
@@ -289,7 +289,7 @@ version := "0.1"
 scalaVersion := "{{site.scala-3-version}}"
 
 libraryDependencies ++= Seq(
-  "org.scalatest" % "scalatest_3.0.0-M2" % "3.3.0-SNAP3" % Test
+  "org.scalatest" %% "scalatest" % "3.3.0-SNAP3" % Test
 )
 ```
 
