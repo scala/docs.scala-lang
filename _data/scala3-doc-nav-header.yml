@@ -1,6 +1,8 @@
 - title: Learn
   url: "#"
   submenu:
+    - title: New in Scala 3
+      url: "/scala3/new-in-scala3.html"
     - title: Getting Started
       url: "/scala3/getting-started/index.html"
     - title: Scala 3 Book
