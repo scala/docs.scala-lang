@@ -40,8 +40,7 @@ Statically-typed programming languages offer a number of benefits, including:
 
 ## Introducing features of Scala’s type system
 
-Gien that brief introduction, the following sections provide an overview of the features of Scala’s type system. 
-
+Given that brief introduction, the following sections provide an overview of the features of Scala’s type system. 
 
 
 

@@ -24,7 +24,7 @@ class Stack[A]:
 This implementation of a `Stack` class takes any type as a parameter. The beauty of generics is that you can now create a `Stack[Int]`, `Stack[String]`, and so on. This is how you create and use a `Stack[Int]`:
 
 ```
-val stack = new Stack[Int]
+val stack = Stack[Int]
 stack.push(1)
 stack.push(2)
 println(stack.pop)  // prints 2
@@ -57,6 +57,5 @@ Class `Apple` and `Banana` both extend `Fruit` so you can push instances `apple`
 
 _Note: subtyping of generic types is *invariant*. This means that if we have a stack of characters of type `Stack[Char]` then it cannot be used as an integer stack of type `Stack[Int]`. This would be unsound because it would enable us to enter true integers into the character stack. To conclude, `Stack[A]` is only a subtype of `Stack[B]` if and only if `B = A`. Since this can be quite restrictive, Scala offers a [type parameter annotation mechanism](variances.html) to control the subtyping behavior of generic types._
 {% endcomment %}
-
 
 

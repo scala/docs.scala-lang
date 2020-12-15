@@ -26,9 +26,10 @@ class Record(elems: (String, Any)*) extends Selectable:
   private val fields = elems.toMap
   def selectDynamic(name: String): Any = fields(name)
 
-type Person = Record:
+type Person = Record {
   val name: String
   val age: Int
+}
 ```
 
 The `Person` type adds a _refinement_ to its parent type `Record` that defines `name` and `age` fields. We say the refinement is _structural_ since  `name` and `age` are not defined in the parent type. But they exist nevertheless as members of class `Person`. For instance, the following program would print `"Emma is 42 years old."`:
@@ -82,5 +83,4 @@ Besides `selectDynamic`, a `Selectable` class sometimes also defines a method `a
 ```scala
 a.applyDynamic("f")(b, c)
 ```
-
 

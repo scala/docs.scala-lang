@@ -8,7 +8,7 @@ next-page: types-generics
 ---
 
 
-As with other strongly-typed programming languages, in Scala you *can* declare a type when creating a new variable:
+As with other strongly-typed programming languages, in Scala you can *declare* a type when creating a new variable:
 
 ```scala
 val x: Int = 1
@@ -37,5 +37,4 @@ val m: Map[Int, String] = Map(1 -> one, 2 -> two)
 ```
 
 Indeed, most variables are created this way, and Scala’s ability to automatically infer data types is one feature that makes it feel like a dynamically typed language.
-
 
