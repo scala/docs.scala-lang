@@ -52,7 +52,7 @@ def add(a: Int, b: Int): Int = a + b
 def add(a: Int, b: Int) = a + b
 ```
 
-You can use either style. For one-line methods it can be nice to leave the return type off, if you prefer. For larger methods, declaring the return type can make it easier to understand the method when you look at it months or years later, or when you look at another person’s methods.
+You can use either style. For one-line methods it can be nice to leave the return type off, if you prefer. For larger methods, declaring the return type can make it easier to understand it when you look at it months or years later, or when you look at another person’s code.
 
 
 
@@ -180,7 +180,7 @@ makeConnection(timeout=10_000, protocol="https")
 makeConnection(protocol="https", timeout=10_000)
 ```
 
-In some frameworks named parameters heavily used. They’re also very useful when multiple method parameters have the same type:
+In some frameworks named parameters are heavily used. They’re also very useful when multiple method parameters have the same type:
 
 ```scala
 engage(true, true, true, false)

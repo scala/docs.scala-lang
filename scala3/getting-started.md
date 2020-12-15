@@ -40,13 +40,13 @@ Coursier is an “artifact-fetching” tool written in Scala. It’s designed to
 
 ### Installing Coursier
 
-The <a href="https://get-coursier.io/docs/cli-installation" target="_blank">Coursier installation page</a> shows how to install Coursier and its `cs` command on macOS, Windows, and Linux systems. See that page for how to install Coursier, and then come back to this page.
+The <a href="https://get-coursier.io/docs/cli-installation" target="_blank">Coursier installation page</a> shows how to install Coursier and its `cs` command on macOS, Windows, and Linux systems. See that page for how to install Coursier, and then come back to this guide.
 
 
 ### Run the Coursier setup command
 
 <!-- TODO: need to be more clear about what JDK is installed -->
-With Coursier’s `cs` command-line tool installed, run this `cs setup` command to install a JDK, sbt, and the other tools mentioned above:
+With Coursier’s `cs` command-line tool installed, run `cs setup` command to install a JDK, sbt, and the other tools mentioned above:
 
 ```sh
 $ cs setup
@@ -79,7 +79,7 @@ That command installs all of the following software, if it’s not already insta
 - The `scala` and `scalac` command-line tools
 <!-- TODO: be more clear about what JDK is installed -->
 
-Later, when you want to update your tools, use this command to update the installation:
+Later, when you want to update your tools, Coursier can update all the installations with a single command :
 
 ```sh
 cs update

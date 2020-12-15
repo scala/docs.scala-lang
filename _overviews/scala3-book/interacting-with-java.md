@@ -157,7 +157,7 @@ class Dog extends Animal, Wagging, Running:
 
 ## How to use Scala collections in Java
 
-When you need to use a Scala collection class in your Java code, use the methods of Scala’s _scala.javaapi.CollectionConverters_ object in your Java code to make the conversions work. For example, if you have a `List[String]` like this in a Scala class:
+When you need to use a Scala collection class in your Java code, use the methods of Scala’s _scala.jdk.javaapi.CollectionConverters_ object in your Java code to make the conversions work. For example, if you have a `List[String]` like this in a Scala class:
 
 <!-- verified -->
 ```scala
@@ -241,7 +241,7 @@ trait ScalaMultiplyTrait:
   def multiply(x: Int, y: Int): Int   // abstract
 ```
 
-A Java class can implement both of those interfaces, and implement the `multiply` method:
+A Java class can implement both of those interfaces, and define the `multiply` method:
 
 <!-- verified -->
 ```java
@@ -302,7 +302,7 @@ Conversely, if you leave the annotation off of the Scala `exceptionThrower` meth
 
 ## How to use Scala varargs parameters in Java
 
-When a Scala method has a varargs parameter and you want to use that method in Java, mark the Scala method with the `@varargs` annotation. For example, the `printAll` method in this Scala class declares a `String*` varargs field, and the method is marked with the `@varargs` annotation:
+When a Scala method has a varargs parameter and you want to use that method in Java, mark the Scala method with the `@varargs` annotation. For example, the `printAll` method in this Scala class declares a `String*` varargs field:
 
 <!-- verified -->
 ```scala
@@ -366,6 +366,5 @@ System.out.printf("x = %d\n", x);
 ## More information
 
 This section highlights some of the main topics to know when integrating Scala and Java code bases. For more details, including a few other topics not covered here, see the _Interacting with Java_ section in the Reference documentation.
-
 
 

@@ -9,7 +9,7 @@ next-page: methods-summary
 
 
 
-Scala 3 offers a new way to define programs that can be invoked from the command line: Adding a `@main` annotation to a method turns that method into an executable program:
+Scala 3 offers a new way to define programs that can be invoked from the command line: Adding a `@main` annotation to a method turns it into entry point of an executable program:
 
 ```scala
 @main def hello = println("Hello, world")
@@ -133,7 +133,6 @@ $ scalac happyBirthday.scala
 $ scala happyBirthday
 Hello, world
 ```
-
 
 
 
