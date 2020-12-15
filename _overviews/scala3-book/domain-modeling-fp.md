@@ -8,7 +8,7 @@ next-page: methods-intro
 ---
 
 
-This chapter provides an introduction to functional programming (FP) style domain modeling in Scala 3. When modeling the world around us with FP, you typically use these Scala constructs:
+This chapter provides an introduction to domain modeling using functional programming (FP) in Scala 3. When modeling the world around us with FP, you typically use these Scala constructs:
 
 - Enumerations
 - Case classes
@@ -19,7 +19,7 @@ This chapter provides an introduction to functional programming (FP) style domai
 
 In FP, the *data* and the *operators on that data* are two separate things; you aren’t forced to encapsulate them together like you do with OOP.
 
-The concept is like numerical algebra. When you think about whole numbers whose values are greater than or equal to zero, you have a *set* of possible values that looks like this:
+The concept is similar to numerical algebra. When you think about whole numbers whose values are greater than or equal to zero, you have a *set* of possible values that looks like this:
 
 ````
 0, 1, 2 ... Int.MaxInt
@@ -83,11 +83,10 @@ case class Pizza(
 
 And that’s it. That’s the data model for an FP-style pizza system. This solution is very concise because it doesn’t require the operations on a pizza to be combined with the data model. The data model is easy to read, like declaring the design for a relational database.
 
-<!-- TODO: compare this with C-style structs and others? -->
 
 #### More of the data model
 
-Because that was very short, you may prefer to see more of the data model for an entire pizza-ordering system. Here are a few other `case` classes that are used to model such a system:
+Because that was very short, you might consider this data modeling approach for the entire pizza-ordering system. Here are a few other `case` classes that are used to model such a system:
 
 ```scala
 case class Address(
@@ -112,18 +111,18 @@ case class Order(
 
 #### “Skinny domain objects”
 
-In his book, *Functional and Reactive Domain Modeling*, Debasish Ghosh states that where OOP practitioners describe their classes as “rich domain models” that encapsulate data and behaviors, FP data models can be thought of as “skinny domain objects.” This is because — as this lesson shows — the data models are defined as `case` classes with attributes, but no behaviors.
+In his book, *Functional and Reactive Domain Modeling*, Debasish Ghosh states that where OOP practitioners describe their classes as “rich domain models” that encapsulate data and behaviors, FP data models can be thought of as “skinny domain objects.” This is because — as this lesson shows — the data models are defined as `case` classes with attributes, but no behaviors, resulting in short and concise data structures.
 
 
 
 
 ## What about the operations?
 
-This leads to an interesting question: Because FP separates the data from the operations on that data, how do you implement those operations in Scala/FP?
+This leads to an interesting question: Because FP separates the data from the operations on that data, how do you implement those operations in Scala?
 
-There are several different ways to handle behaviors:
+There are several different ways to implement and organize behaviors:
 
-- Put your methods in companion objects
+- Put your functions in companion objects
 - Use a modular programming style
 - Use a “functional objects” approach
 
@@ -402,7 +401,6 @@ Then, to model the behaviors (methods) in an FP-style design, there are several 
 - Put your methods in companion objects
 - Use a modular programming style
 - Use a “functional objects” approach
-
 
 
 
