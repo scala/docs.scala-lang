@@ -320,7 +320,6 @@ val capNames = for name <- names yield
 ```
 
 
-
 ### Using a `for` expression as the body of a method
 
 Because a `for` expression yields a result, it can be used as the body of a method that returns a useful value. This method returns all of the values in a given list of integers that are between `3` and `10`:

@@ -35,7 +35,13 @@ val b = List(1, 2, 3).map(double)           // List(2,4,6)
 
 Passing lambdas to higher-order functions on collections classes (like `List`) is a part of the Scala experience, something you’ll do every day.
 
-It’s important to know that these functions don’t mutate the collection they’re called on; instead, they return a new collection with the updated data. As a result, it’s also common to chain them together in a “fluent” style to solve problems. This example shows how to filter a collection twice, and then multiply each element in the remaining collection:
+
+
+## Immutable collections
+
+When you work with immutable collections like `List`, `Vector`, and the immutable `Map` and `Set` classes, it’s important to know that these functions don’t mutate the collection they’re called on; instead, they return a new collection with the updated data. As a result, it’s also common to chain them together in a “fluent” style to solve problems.
+
+For instance, this example shows how to filter a collection twice, and then multiply each element in the remaining collection:
 
 ```scala
 // a sample list

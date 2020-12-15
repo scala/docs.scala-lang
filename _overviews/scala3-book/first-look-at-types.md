@@ -13,18 +13,23 @@ next-page: control-structures
 
 In Scala, all values have a type, including numerical values and functions. The diagram below illustrates a subset of the type hierarchy.
 
-<!-- TODO: add this image in -->
 <a href="{{ site.baseurl }}/resources/images/tour/unified-types-diagram.svg"><img  style="width:100%" src="{{ site.baseurl }}/resources/images/tour/unified-types-diagram.svg" alt="Scala Type Hierarchy"></a>
 
 
 
 ## Scala type hierarchy
 
-[`Any`](https://www.scala-lang.org/api/2.12.1/scala/Any.html) is the supertype of all types, also called the top type. It defines certain universal methods such as `equals`, `hashCode`, and `toString`. `Any` has two direct subclasses: `AnyVal` and `AnyRef`.
+[`Any`](https://www.scala-lang.org/api/current/scala/Any.html) is the supertype of all types, also called the top type. It defines certain universal methods such as `equals`, `hashCode`, and `toString`. `Any` has two direct subclasses: `AnyVal` and `AnyRef`.
 
 *`AnyVal`* represents value types. There are nine predefined value types and they are non-nullable: `Double`, `Float`, `Long`, `Int`, `Short`, `Byte`, `Char`, `Unit`, and `Boolean`. `Unit` is a value type which carries no meaningful information. There is exactly one instance of `Unit` which can be declared literally like so: `()`. All functions must return something so sometimes `Unit` is a useful return type.
 
 *`AnyRef`* represents reference types. All non-value types are defined as reference types. Every user-defined type in Scala is a subtype of `AnyRef`. If Scala is used in the context of a Java runtime environment, `AnyRef` corresponds to `java.lang.Object`.
+
+In statement-based languages, `void` is used for methods that don’t return anything. If you write methods in Scala that have no return value, such as the following method, `Unit` is used for the same purpose:
+
+```scala
+def printIt(a: Any): Unit = println(a)
+```
 
 Here’s an example that demonstrates that strings, integers, characters, boolean values, and functions are all objects just like every other object:
 
@@ -51,6 +56,10 @@ c
 true
 <function>
 ```
+{% comment %}
+TODO: with Scala 3.0.0-M2, the REPL currently prints something like “rs$line$24$$$Lambda...” instead of `<function>`.
+{% endcomment %}
+
 
 
 

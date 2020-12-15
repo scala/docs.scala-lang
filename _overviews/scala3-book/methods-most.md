@@ -17,10 +17,20 @@ This section demonstrates many of the features of defining and calling methods.
 
 ## Defining methods
 
-When a Scala method doesn’t use generic parameters or `using` parameters, its general syntax looks like this:
+Scala methods have many features, including these:
+
+- Generic parameters
+- `using` parameters
+- Default parameter values
+- Multiple parameter groups
+- By-name parameters
+- Function parameters
+- Potentially more ...
+
+Some of these features are demonstrated later in this section, but when you’re defining a “simple” method that doesn’t use those features, the syntax looks like this:
 
 ```scala
-def methodName(param1: Type1 = defaultValue1, param2: Type2 = defaultValue2): ReturnType = 
+def methodName(param1: Type1, param2: Type2): ReturnType = 
   // the method body
   // goes here
 end methodName   // this is optional
@@ -31,7 +41,6 @@ In that syntax:
 - The keyword `def` is used to define a method
 - The Scala standard is to name methods using the camel case convention
 - Method parameters are always defined with their type
-- Parameters can also have default values
 - Declaring the method return type is optional
 - Methods can consist of many lines, or just one line
 - Providing the `end methodName` portion after the method body is also optional, and is only recommended for long methods
