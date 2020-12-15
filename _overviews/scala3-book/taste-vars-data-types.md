@@ -180,7 +180,7 @@ val x = -1
 println(s"x.abs = ${x.abs}")   // prints "x.abs = 1"
 ```
 
-The `s` that you place before the string is just one possible interpolator. If you use an `f` instead of an `s`, you can use `printf`-style formatting syntax in the string. Furthermore, because `s` and `f` are really just methods, you can write your own interpolators, such as creating a `sql` interpolator for use in a database library.
+The `s` that you place before the string is just one possible interpolator. If you use an `f` instead of an `s`, you can use `printf`-style formatting syntax in the string. Furthermore, a string interpolator is a just special method and it is possible to define your own. For instance, some database libraries define the very powerful `sql` interpolator.
 
 #### Multiline strings
 

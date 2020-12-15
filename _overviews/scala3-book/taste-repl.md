@@ -10,7 +10,7 @@ next-page: taste-vars-data-types
 
 The Scala REPL (“Read-Evaluate-Print-Loop”) is a command-line interpreter that you use as a “playground” area to test your Scala code. You start a REPL session by running the `scala` command at your operating system command line, where you’ll see a “welcome” prompt like this:
 
-```scala
+```bash
 $ scala
 Welcome to Scala 3.0.0 (OpenJDK 64-Bit Server VM, Java 11.0.9).
 Type in expressions for evaluation. Or try :help.
@@ -47,7 +47,6 @@ scala> sum(2, 2)
 val res2: Int = 4
 ````
 
-If you prefer a browser-based playground environment, you can also use [ScalaFiddle.io](https://scalafiddle.io) or [Scastie.scala-lang.org](https://scastie.scala-lang.org).
-
+If you prefer a browser-based playground environment, you can also use [scastie.scala-lang.org](https://scastie.scala-lang.org).
 
 

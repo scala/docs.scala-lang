@@ -8,7 +8,7 @@ next-page: taste-modeling
 ---
 
 
-Scala has the programming language control structures you find in other languages, and also has powerful `for` expressions and `match` expressions:
+Scala has the control structures you find in other programming languages, and also has powerful `for` expressions and `match` expressions:
 
 - `if`/`else`
 - `for` loops and expressions
@@ -22,7 +22,7 @@ These structures are demonstrated in the following examples.
 
 ## `if`/`else`
 
-Scala’s `if`/`else` control structure is similar to other languages:
+Scala’s `if`/`else` control structure looks similar to other languages:
 
 ```scala
 if x < 0 then
@@ -55,11 +55,12 @@ val ints = List(1, 2, 3, 4, 5)
 for i <- ints do println(i)
 ```
 
-The code `i <- ints` is referred to as a _generator_, and if you leave the parentheses off of the generator, the `do` keyword is required before the code that follows it. Otherwise you can write the code like this:
+The code `i <- ints` is referred to as a _generator_, and the code that follows the `do` keyword is the _body_ of the loop.
+
+The old syntax for this control structure was:
 
 ```scala
 for (i <- ints) println(i)
-```
 
 
 ### Guards
@@ -160,7 +161,10 @@ val result = i match
 `match` isn’t limited to working with just integer values, it can be used with any data type:
 
 ```scala
-def speak(p: Person) = p match
+val p = Person("Fred")
+
+// later in the code
+p match
   case Person(name) if name == "Fred" => 
     println(s"$name says, Yubba dubba doo")
 
@@ -168,11 +172,11 @@ def speak(p: Person) = p match
     println(s"$name says, Bam bam!")
 
   case _ => println("Watch the Flintstones!")
-```
 
 In fact, a `match` expression can be used to test a variable against many different types of patterns. This example shows (a) how to use a `match` expression as the body of a method, and (b) how to match all the different types shown:
 
 ```scala
+// getClassAsString is a method that takes a single argument of any type.
 def getClassAsString(x: Any): String = x match
   case s: String => s"'$s' is a String"
   case i: Int => "Int"
@@ -214,7 +218,7 @@ Scala also has a `while` loop construct. It’s one-line syntax looks like this:
 while x >= 0 do x = f(x)
 ```
 
-If you leave the parentheses off of the test condition, the `do` keyword is required before the code that follows it. Again, Scala’s control structure syntax is flexible, and you can write this code in different ways depending on your preferences:
+Again, Scala’s control structure syntax is flexible, and you can write this code in different ways depending on your preferences:
 
 ```scala
 while (x >= 0) do x = f(x)
