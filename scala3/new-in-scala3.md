@@ -49,6 +49,8 @@ tailored language features, allowing programmers to directly express their inten
 
 - **Higher-order contextual abstractions**. The _all-new_ feature of [context functions][contextual-functions] makes contextual abstractions a first-class citizen. They are an important tool for library authors and allow to express concise domain specific languages.
 
+- **Actionable feedback from the compiler**. In case an implicit parameter can not be resolved by the compiler, it now provides you [import suggestions](https://www.scala-lang.org/blog/2020/05/05/scala-3-import-suggestions.html) that may fix the problem.
+
 ### Say What You Mean: Type System Improvements
 Besides greatly improved type inference, the Scala 3 type system also offers many new features, giving you powerful tools to statically express invariants in the types:
 
