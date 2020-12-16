@@ -13,13 +13,12 @@ next-page: control-structures
 
 In Scala, all values have a type, including numerical values and functions. The diagram below illustrates a subset of the type hierarchy.
 
-<a href="{{ site.baseurl }}/resources/images/tour/unified-types-diagram.svg"><img  style="width:100%" src="{{ site.baseurl }}/resources/images/tour/unified-types-diagram.svg" alt="Scala Type Hierarchy"></a>
-
+<a href="{{ site.baseurl }}/resources/images/scala3-book/hierarchy.svg"><img  style="width:100%" src="{{ site.baseurl }}/resources/images/scala3-book/hierarchy.svg" alt="Scala 3 Type Hierarchy"></a>
 
 
 ## Scala type hierarchy
 
-[`Any`](https://www.scala-lang.org/api/current/scala/Any.html) is the supertype of all types, also called the top type. It defines certain universal methods such as `equals`, `hashCode`, and `toString`. `Any` has two direct subclasses: `AnyVal` and `AnyRef`.
+`Any` is the supertype of all types, also called the top type. It defines certain universal methods such as `equals`, `hashCode`, and `toString`. `Any` has two direct subclasses: `AnyVal` and `AnyRef`.
 
 *`AnyVal`* represents value types. There are nine predefined value types and they are non-nullable: `Double`, `Float`, `Long`, `Int`, `Short`, `Byte`, `Char`, `Unit`, and `Boolean`. `Unit` is a value type which carries no meaningful information. There is exactly one instance of `Unit` which can be declared literally like so: `()`. All functions must return something so sometimes `Unit` is a useful return type.
 
