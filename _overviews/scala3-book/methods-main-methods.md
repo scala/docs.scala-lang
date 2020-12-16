@@ -37,22 +37,18 @@ A `@main` annotated method can be written either at the top-level (as shown), or
 With this approach your `@main` method can handle command line arguments, and those arguments can have different types. For example, given this `@main` method that takes an `Int`, a `String`, and a varargs `String*` parameter:
 
 ```scala
-@main def happyBirthday(age: Int, name: String, others: String*) = {
-  val suffix =
-    (age % 100) match {
-      case 11 | 12 | 13 => "th"
-      case _ =>
-        (age % 10) match {
-          case 1 => "st"
-          case 2 => "nd"
-          case 3 => "rd"
-          case _ => "th"
-        }
-    }
-  val sb = new StringBuilder(s"Happy $age$suffix birthday, $name")
+@main def happyBirthday(age: Int, name: String, others: String*) =
+  val suffix = (age % 100) match
+    case 11 | 12 | 13 => "th"
+    case _ => (age % 10) match
+      case 1 => "st"
+      case 2 => "nd"
+      case 3 => "rd"
+      case _ => "th"
+
+  val sb = StringBuilder(s"Happy $age$suffix birthday, $name")
   for other <- others do sb.append(" and ").append(other)
   sb.toString
-}
 ```
 
 When you compile that code, it creates a main program named `happyBirthday` that’s called like this:
@@ -82,7 +78,7 @@ The Scala compiler generates a program from an `@main` method `f` as follows:
 
 - It creates a class named `f` in the package where the `@main` method was found.
 - The class has a static method `main` with the usual signature: It takes an `Array[String]` as argument and returns `Unit`.
-- The generated `main` method calls method `f` with arguments converted using methods in the *scala.util.CommandLineParser* object.
+- The generated `main` method calls method `f` with arguments converted using methods in the `scala.util.CommandLineParser` object.
 
 For instance, the `happyBirthday` method above generates additional code equivalent to the following class:
 
@@ -133,6 +129,3 @@ $ scalac happyBirthday.scala
 $ scala happyBirthday
 Hello, world
 ```
-
-
-

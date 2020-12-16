@@ -7,30 +7,23 @@ previous-page: methods-intro
 next-page: methods-main-methods
 ---
 
+This section introduces the various aspects of how to define and call methods in Scala 2.
 
-
-In Scala 2, *methods* can be defined inside classes, traits, objects, case classes, and case objects. But it gets better: In Scala 3 they can also be defined _outside_ any of those constructs with a new feature named Toplevel definitions. In short, methods can now be defined anywhere.
-
-This section demonstrates many of the features of defining and calling methods.
-
-
-
-## Defining methods
+## Defining Methods
 
 Scala methods have many features, including these:
 
-- Generic parameters
-- `using` parameters
+- Generic (type) parameters
+- Automatically provided `using` parameters
 - Default parameter values
 - Multiple parameter groups
 - By-name parameters
-- Function parameters
-- Potentially more ...
+- ...
 
-Some of these features are demonstrated later in this section, but when you’re defining a “simple” method that doesn’t use those features, the syntax looks like this:
+Some of these features are demonstrated in this section, but when you’re defining a “simple” method that doesn’t use those features, the syntax looks like this:
 
 ```scala
-def methodName(param1: Type1, param2: Type2): ReturnType = 
+def methodName(param1: Type1, param2: Type2): ReturnType =
   // the method body
   // goes here
 end methodName   // this is optional
@@ -52,7 +45,8 @@ def add(a: Int, b: Int): Int = a + b
 def add(a: Int, b: Int) = a + b
 ```
 
-You can use either style. For one-line methods it can be nice to leave the return type off, if you prefer. For larger methods, declaring the return type can make it easier to understand it when you look at it months or years later, or when you look at another person’s code.
+It is recommended to annotate publically visible methods with their return type.
+Declaring the return type can make it easier to understand it when you look at it months or years later, or when you look at another person’s code.
 
 
 
@@ -105,7 +99,7 @@ scala> addThenDouble(1, 1)
 res0: Int = 4
 ```
 
-Notice that there’s no need for a `return` statement at the end of the method. Because everything in Scala is an _expression_ — meaning that each line of code returns (or _evaluates to) a value — there’s no need to add `return` to an expression.
+Notice that there’s no need for a `return` statement at the end of the method. Because almost everything in Scala is an _expression_ — meaning that each line of code returns (or _evaluates to) a value — there’s no need to use `return`.
 
 This becomes more clear when you condense that method and write it on one line:
 
@@ -113,7 +107,7 @@ This becomes more clear when you condense that method and write it on one line:
 def addThenDouble(a: Int, b: Int): Int = (a + b) * 2
 ```
 
-Methods can contain any lines of code you desire:
+The body of a method can use all the different features of the language:
 
 - `if`/`else` expressions
 - `match` expressions
@@ -126,19 +120,16 @@ As an example of a real-world multiline method, this `getStackTraceAsString` met
 
 ```scala
 def getStackTraceAsString(t: Throwable): String =
-  val sw = new StringWriter
-  t.printStackTrace(new PrintWriter(sw))
+  val sw = StringWriter()
+  t.printStackTrace(PrintWriter(sw))
   sw.toString
 ```
 
 In that method:
 
-- The first line is a variable-assignment expression
-- The second line is a statement; it puts the stack trace content into the `StringWriter`
+- The first line assigns a new instance of `StringWriter` to the value binder `sw`
+- The second line stores the stack trace content into the `StringWriter`
 - The third line yields the `String` representation of the stack trace
-
->Lines of code that don’t return values are called _statements_, and they’re used for their side-effects. Conversely, _expressions_ always return a result and generally do not have side effects. As you learn more about Scala you’ll find yourself writing more expressions and fewer statements.
-
 
 
 ## Default parameter values
@@ -229,10 +220,10 @@ Some of that wording comes from this page: https://docs.scala-lang.org/style/met
 
 ## Using `if` as a method body
 
-Because `if`/`else` expressions return a value, they can be used as the body of a method. Here’s a method named `isTrue` that implements the Perl definitions of `true` and `false`:
+Because `if`/`else` expressions return a value, they can be used as the body of a method. Here’s a method named `isTruthy` that implements the Perl definitions of `true` and `false`:
 
 ```scala
-def isTrue(a: Any) = 
+def isTruthy(a: Any) =
   if a == 0 || a == ""
     false
   else
@@ -242,20 +233,20 @@ def isTrue(a: Any) =
 These examples show how that method works:
 
 ```scala
-isTrue(0)      // false
-isTrue("")     // false
-isTrue("hi")   // true
-isTrue(1.0)    // true
+isTruthy(0)      // false
+isTruthy("")     // false
+isTruthy("hi")   // true
+isTruthy(1.0)    // true
 ```
 
 
 
 ## Using `match` as a method body
 
-A `match` expression can also be used as the entire method body, and often is. Here’s another version of `isTrue`, written with a `match` expression :
+A `match` expression can also be used as the entire method body, and often is. Here’s another version of `isTruthy`, written with a `match` expression :
 
 ```scala
-def isTrue(a: Any) = a match
+def isTruthy(a: Any) = a match
   case 0 | "" => false
   case _ => true
 ```
@@ -264,7 +255,7 @@ This method works just like the previous method that used an `if`/`else` express
 
 
 
-## Controlling method scope in classes
+## Controlling visibility in classes
 
 In classes, objects, and traits, Scala methods are public by default, so the `Dog` instance created here can access the `speak` method:
 
@@ -292,7 +283,7 @@ If you want to make a method private to the current class and also allow subclas
 ```scala
 class Animal:
   private def breathe() = println("I’m breathing")
-  def walk() = 
+  def walk() =
     breathe()
     println("I’m walking")
   protected def speak() = println("Hello?")
@@ -312,13 +303,10 @@ The `protected` setting means:
 - It is not visible by other code in the current package
 - It is available to subclasses
 
-For more details on controlling the scope of methods in classes, traits, and objects, see the Reference documentation.
-
-
 
 ## Objects can contain methods
 
-Earlier you saw that traits and classes can have methods. The Scala `object` keyword is used to create a singleton class, and an object can also contain methods. This is a nice way to create a set of “utility” methods. For instance, this object contains a collection of methods that work on strings:
+Earlier you saw that traits and classes can have methods. The Scala `object` keyword is used to create a singleton class, and an object can also contain methods. This is a nice way to group a set of “utility” methods. For instance, this object contains a collection of methods that work on strings:
 
 ```scala
 object StringUtils:
@@ -328,17 +316,19 @@ object StringUtils:
    * truncated to the specified length.
    */
   def truncate(s: String, length: Int): String = s.take(length)
-  
+
   /**
     * Returns true if the string contains only letters and numbers.
     */
-  def lettersAndNumbersOnly_?(s: String): Boolean = s.matches("[a-zA-Z0-9]+")
+  def lettersAndNumbersOnly_?(s: String): Boolean =
+    s.matches("[a-zA-Z0-9]+")
 
   /**
-   * Returns true if the given string contains any whitespace at all.
-   * Assumes that `s` is not null.
+   * Returns true if the given string contains any whitespace
+   * at all. Assumes that `s` is not null.
    */
-  def containsWhitespace(s: String): Boolean = s.matches(".*\\s.*")
+  def containsWhitespace(s: String): Boolean =
+    s.matches(".*\\s.*")
 
 end StringUtils
 ```
