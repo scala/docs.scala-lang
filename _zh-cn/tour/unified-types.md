@@ -27,7 +27,7 @@ prerequisite-knowledge: classes, basics
 
 这里有一个例子，说明了字符串、整型、布尔值和函数都是对象，这一点和其他对象一样：
 
-```tut
+```scala mdoc
 val list: List[Any] = List(
   "a string",
   732,  // an integer
@@ -57,7 +57,7 @@ true
 
 例如：
 
-```tut
+```scala mdoc
 val x: Long = 987654321
 val y: Float = x  // 9.8765434E8 (note that some precision is lost in this case)
 

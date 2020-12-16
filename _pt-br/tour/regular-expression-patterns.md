@@ -20,7 +20,7 @@ Elem(prefix:String, label:String, attrs:MetaData, scp:NamespaceBinding, children
 Em tais casos, Scala permite que padrões tenham o curinga `_*` na posição mais à direita para ter lugar para sequências arbitrariamente longas.
 O exemplo a seguir demonstra um padrão que faz o match de um prefixo de uma sequência e vincula o resto à variável `rest`.
 
-```tut
+```scala mdoc
 object RegExpTest1 extends App {
   def containsScala(x: String): Boolean = {
     val z: Seq[Char] = x

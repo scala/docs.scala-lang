@@ -18,7 +18,7 @@ topics: tuples
 
 두개의 엘리먼트를 갖는 튜플은 다음과 같이 생성할 수 있다:
 
-```tut
+```scala mdoc
 val ingredient = ("Sugar" , 25)
 ```
 
@@ -33,7 +33,7 @@ val ingredient = ("Sugar" , 25)
 
 튜플의 엘리먼트에 접근하기 위한 한가지 방법은 위치로 접근하는 것이다. 각 요소들은 `_1`, `_2`, ... 와 같은 이름을 갖는다.
 
-```tut
+```scala mdoc
 println(ingredient._1) // Sugar
 println(ingredient._2) // 25
 ```
@@ -42,7 +42,7 @@ println(ingredient._2) // 25
 
 하나의 튜플은 패턴 매칭을 사용하여 분리할 수 있다:
 
-```tut
+```scala mdoc
 val (name, quantity) = ingredient
 println(name) // Sugar
 println(quantity) // 25
@@ -52,7 +52,7 @@ println(quantity) // 25
 
 여기 튜플을 패턴 매칭한 또 다른 예제가 있다:
 
-```tut
+```scala mdoc
 val planets =
   List(("Mercury", 57.9), ("Venus", 108.2), ("Earth", 149.6),
        ("Mars", 227.9), ("Jupiter", 778.3))
@@ -65,7 +65,7 @@ planets.foreach{
 
 또는 `for` comprehension에서:
 
-```tut
+```scala mdoc
 val numPairs = List((2, 5), (3, -7), (20, 56))
 for ((a, b) <- numPairs) {
   println(a * b)

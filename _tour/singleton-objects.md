@@ -16,7 +16,7 @@ As a top-level value, an object is a singleton.
 As a member of an enclosing class or as a local value, it behaves exactly like a lazy val.
 # Defining a singleton object
 An object is a value. The definition of an object looks like a class, but uses the keyword `object`:
-```tut
+```scala mdoc
 object Box
 ```
 
@@ -73,7 +73,7 @@ circle1.area
 The `class Circle` has a member `area` which is specific to each instance, and the singleton `object Circle` has a method `calculateArea` which is available to every instance.
 
 The companion object can also contain factory methods:
-```tut
+```scala mdoc
 class Email(val username: String, val domainName: String)
 
 object Email {

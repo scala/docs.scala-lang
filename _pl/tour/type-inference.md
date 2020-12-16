@@ -13,7 +13,7 @@ Scala posiada wbudowany mechanizm inferencji typów, który pozwala programiści
 
 Oto przykład:
 
-```tut
+```scala mdoc
 object InferenceTest1 extends App {
   val x = 1 + 2 * 3         // typem x jest Int
   val y = x.toString()      // typem y jest String
@@ -23,7 +23,7 @@ object InferenceTest1 extends App {
 
 Dla metod rekurencyjnych kompilator nie jest w stanie określić zwracanego typu. Oto przykład programu, który zakończy się niepowodzeniem kompilacji z tego powodu:
 
-```tut:fail
+```scala mdoc:fail
 object InferenceTest2 {
   def fac(n: Int) = if (n == 0) 1 else n * fac(n - 1)
 }
@@ -51,7 +51,7 @@ val y: Int = id[Int](1)
 
 W niektórych sytuacjach poleganie na inferencji typów w Scali może być niebezpieczne, tak jak demonstruje to poniższy program:
 
-```tut:fail
+```scala mdoc:fail
 object InferenceTest4 {
   var obj = null
   obj = new Object()

@@ -20,7 +20,7 @@ Elem(prefix:String, label:String, attrs:MetaData, scp:NamespaceBinding, children
 W tych przypadkach Scala pozwala wzorcom na zastosowanie symbolu `_*` w ostatniej pozycji, aby dopasować sekwencje dowolnej długości.
 Poniższy przykład demonstruje dopasowanie wzorca, który rozpoznaje początek sekwencji i wiąże resztę do zmiennej `rest`:
 
-```tut
+```scala mdoc
 object RegExpTest1 extends App {
   def containsScala(x: String): Boolean = {
     val z: Seq[Char] = x

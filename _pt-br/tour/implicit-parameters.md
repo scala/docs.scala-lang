@@ -19,7 +19,7 @@ Os argumentos reais que são elegíveis para serem passados para um parâmetro i
 
 No exemplo a seguir, definimos um método `sum` que calcula a soma de uma lista de elementos usando as operações `add` e `unit` do monoide. Observe que valores implícitos não podem ser *top-level*, eles precisam ser membros de um modelo.
 
-```tut
+```scala mdoc
 /** Este exemplo usa uma estrutura da álgebra abstrata para mostrar como funcionam os parâmetros implícitos. Um semigrupo é uma estrutura algébrica em um conjunto A com uma operação (associativa), chamada add, que combina um par de A's e retorna um outro A. */
 abstract class SemiGroup[A] {
   def add(x: A, y: A): A

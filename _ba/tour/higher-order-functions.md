@@ -14,7 +14,7 @@ Scala dozvoljava definisanje funkcija višeg reda.
 To su funkcije koje _primaju druge funkcije kao parametre_, ili čiji je _rezultat funkcija_.
 Ovo je funkcija `apply` koja uzima drugu funkciju `f` i vrijednost `v` i primjenjuje funkciju `f` na `v`:
 
-```tut
+```scala mdoc
 def apply(f: Int => String, v: Int) = f(v)
 ```
 
@@ -22,13 +22,13 @@ _Napomena: metode se automatski pretvaraju u funkcije ako to kontekst zahtijeva.
 
 Ovo je još jedan primjer:
  
-```tut
+```scala mdoc
 class Decorator(left: String, right: String) {
   def layout[A](x: A) = left + x.toString() + right
 }
 
 object FunTest extends App {
-  def apply(f: Int => String, v: Int) = f(v)
+  override def apply(f: Int => String, v: Int) = f(v)
   val decorator = new Decorator("[", "]")
   println(apply(decorator.layout, 7))
 }

@@ -13,7 +13,7 @@ Dążąc do tego, aby nasze oprogramowanie było rozszerzalne, często przydatne
 
 Oto definicja opisująca grafy:
 
-```tut
+```scala mdoc
 abstract class Graph {
   type Edge
   type Node <: NodeIntf
@@ -30,7 +30,7 @@ Grafy składają się z listy węzłów oraz krawędzi, gdzie zarówno typ węz�
 
 Przykład implementacji klasy `Graph`:
 
-```tut:fail
+```scala mdoc:fail
 abstract class DirectedGraph extends Graph {
   type Edge <: EdgeImpl
   class EdgeImpl(origin: Node, dest: Node) {
@@ -64,7 +64,7 @@ Jeżeli przyjrzymy się bliżej implementacji metody `connectWith`, możemy dost
 
 Scala rozwiązuje ten problem pozwalając na powiązanie klasy z innym typem poprzez jawne typowanie samoreferencji. Możemy użyć tego mechanizmu, aby naprawić powyższy kod:
 
-```tut
+```scala mdoc
     abstract class DirectedGraph extends Graph {
       type Edge <: EdgeImpl
       class EdgeImpl(origin: Node, dest: Node) {
@@ -95,7 +95,7 @@ W nowej definicji klasy `NodeImpl` referencja `this` jest typu `Node`. Ponieważ
 
 Oto konkretna specjalizacja `DirectedGraph`, gdzie abstrakcyjne elementy klasy mają ustalone ścisłe znaczenie:
 
-```tut
+```scala mdoc
 class ConcreteDirectedGraph extends DirectedGraph {
   type Edge = EdgeImpl
   type Node = NodeImpl
@@ -109,7 +109,7 @@ Należy dodać, że w tej klasie możemy utworzyć `NodeImpl`, ponieważ wiemy j
 
 Poniżej przykład zastosowania klasy `ConcreteDirectedGraph`:
 
-```tut
+```scala mdoc
 object GraphTest extends App {
   val g: Graph = new ConcreteDirectedGraph
   val n1 = g.addNode

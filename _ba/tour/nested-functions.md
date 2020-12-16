@@ -13,7 +13,7 @@ previous-page: higher-order-functions
 U Scali je moguće ugnježdavati definicije metode.
 Sljedeći objekt sadrži metodu `factorial` za računanje faktorijela datog broja:
 
-```tut
+```scala mdoc
  def factorial(x: Int): Int = {
     def fact(x: Int, accumulator: Int): Int = {
       if (x <= 1) accumulator

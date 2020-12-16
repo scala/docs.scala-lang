@@ -15,7 +15,7 @@ prerequisite-knowledge: inheritance, traits, abstract-classes, unified-types
 ---
 Примеси (Mixin) - это трейты, которые используются для создания класса.
 
-```tut
+```scala mdoc
 abstract class A {
   val message: String
 }
@@ -35,7 +35,7 @@ println(d.loudMessage)  // I'M AN INSTANCE OF CLASS B
 
 Теперь давайте рассмотрим более интересный пример, начиная с абстрактного класса:
 
-```tut
+```scala mdoc
 abstract class AbsIterator {
   type T
   def hasNext: Boolean
@@ -46,7 +46,7 @@ abstract class AbsIterator {
 
 Далее создаем конкретную реализацию класса (все абстрактные члены `T`, `hasNext`, и `next` должны быть реализованы):
 
-```tut
+```scala mdoc
 class StringIterator(s: String) extends AbsIterator {
   type T = Char
   private var i = 0
@@ -62,7 +62,7 @@ class StringIterator(s: String) extends AbsIterator {
 
 Теперь давайте создадим трейт который тоже наследуется от `AbsIterator`.
 
-```tut
+```scala mdoc
 trait RichIterator extends AbsIterator {
   def foreach(f: T => Unit): Unit = while (hasNext) f(next())
 }
@@ -71,7 +71,7 @@ trait RichIterator extends AbsIterator {
 
 Мы бы хотели объединить функциональность `StringIterator` и `RichIterator` в один класс. 
 
-```tut
+```scala mdoc
 object StringIteratorTest extends App {
   class RichStringIter extends StringIterator("Scala") with RichIterator
   val richStringIter = new RichStringIter

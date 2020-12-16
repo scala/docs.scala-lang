@@ -17,7 +17,7 @@ Scalaでは、これは*複合型*を用いて表現できます。複合型と�
 
 2つのトレイト`Cloneable`と`Resetable`があるとしましょう。
 
-```tut
+```scala mdoc
 trait Cloneable extends java.lang.Cloneable {
   override def clone(): Cloneable = {
     super.clone().asInstanceOf[Cloneable]

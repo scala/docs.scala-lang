@@ -20,7 +20,7 @@ Scalaは[ジェネリッククラス](generic-classes.html)の型パラメータ
 もし変位指定が無ければ、クラスを抽象化して再利用しにくくなるでしょう。
 
 
-```tut
+```scala mdoc
 class Foo[+A] // 共変クラス
 class Bar[-A] // 反変クラス
 class Baz[A]  // 非変クラス
@@ -34,7 +34,7 @@ class Baz[A]  // 非変クラス
 
 このシンプルなクラス構成を考えてみましょう。
 
-```tut
+```scala mdoc
 abstract class Animal {
   def name: String
 }
@@ -49,7 +49,7 @@ Scala標準ライブラリにはイミュータブルなジェネリッククラ
 以下の例では、メソッド`printAnimalNames`は引数に動物のリストを受け取り、新しい行にそれらの名前をプリントします。
 もし`List[A]`が共変でなければ、最後の2つのメソッド呼び出しはコンパイルされず、`printAnimalNames`メソッドの使い勝手はひどく制限されます。
 
-```tut
+```scala mdoc
 object CovarianceTest extends App {
   def printAnimalNames(animals: List[Animal]): Unit = {
     animals.foreach { animal =>
@@ -79,7 +79,7 @@ object CovarianceTest extends App {
 
 先に定義された`Cat`、`Dog`、`Animal`クラスを以下の例で検討してみます。
 
-```tut
+```scala mdoc
 abstract class Printer[-A] {
   def print(value: A): Unit
 }
@@ -87,7 +87,7 @@ abstract class Printer[-A] {
 `Printer[A]`はある型`A`をどのようにプリントするかを知っている簡単なクラスです。
 特定の型でいくつかのサブクラスを定義してみましょう。
 
-```tut
+```scala mdoc
 class AnimalPrinter extends Printer[Animal] {
   def print(animal: Animal): Unit =
     println("The animal's name is: " + animal.name)
@@ -104,7 +104,7 @@ class CatPrinter extends Printer[Cat] {
 逆の関係性は適用されません、それは`Printer[Cat]`がコンソールに任意の`Animal`をプリントする方法を知らないからです。
 したがって、私達は必要であれば`Printer[Animal]`を`Printer[Cat]`代わりに使うことができます。これは`Printer[A]`が反変であるからこそ可能なのです。
 
-```tut
+```scala mdoc
 object ContravarianceTest extends App {
   val myCat: Cat = Cat("Boots")
 
@@ -133,7 +133,7 @@ Scalaのジェネリッククラスは標準では非変です。
 これは共変でも反変でもないことを意味します。
 以下の例の状況では、`Container`クラスは非変です。`Container[Cat]`は`Container[Animal]`_ではなく_、逆もまた同様です。
 
-```tut
+```scala mdoc
 class Container[A](value: A) {
   private var _value: A = value
   def getValue: A = _value
@@ -164,7 +164,7 @@ val cat: Cat = catContainer.getValue // おっと、犬を猫に割り当てて�
 
 先ほど利用された`Cat`, `Dog`, `Animal`の継承ツリーに、以下のものを加えましょう：
 
-```tut
+```scala mdoc
 abstract class SmallAnimal extends Animal
 case class Mouse(name: String) extends SmallAnimal
 ```

@@ -13,7 +13,7 @@ Metody w Scali mogą być parametryzowane zarówno przez wartości, jak i typy. 
 
 Przykład poniżej:
 
-```tut
+```scala mdoc
 def dup[T](x: T, n: Int): List[T] = {
   if (n == 0)
     Nil

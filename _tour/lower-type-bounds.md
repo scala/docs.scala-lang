@@ -15,7 +15,7 @@ While [upper type bounds](upper-type-bounds.html) limit a type to a subtype of a
 
 Here is an example where this is useful:
 
-```tut:fail
+```scala mdoc:fail
 trait Node[+B] {
   def prepend(elem: B): Node[B]
 }
@@ -37,7 +37,7 @@ However, this program does _not_ compile because the parameter `elem` in `prepen
 
 To fix this, we need to flip the variance of the type of the parameter `elem` in `prepend`. We do this by introducing a new type parameter `U` that has `B` as a lower type bound.
 
-```tut
+```scala mdoc
 trait Node[+B] {
   def prepend[U >: B](elem: U): Node[U]
 }
@@ -54,7 +54,7 @@ case class Nil[+B]() extends Node[B] {
 ```
 
 Now we can do the following:
-```tut
+```scala mdoc
 trait Bird
 case class AfricanSwallow() extends Bird
 case class EuropeanSwallow() extends Bird

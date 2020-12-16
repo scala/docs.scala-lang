@@ -15,19 +15,19 @@ Scala 编译器通常可以推断出表达式的类型，因此你不必显式�
 
 ## 省略类型
 
-```tut
+```scala mdoc
 val businessName = "Montreux Jazz Café"
 ```
 编译器可以发现 `businessName` 是 String 类型。 它的工作原理和方法类似：
 
-```tut
+```scala mdoc
 def squareOf(x: Int) = x * x
 ```
 编译器可以推断出方法的返回类型为 `Int`，因此不需要明确地声明返回类型。
 
 对于递归方法，编译器无法推断出结果类型。 下面这个程序就是由于这个原因而编译失败：
 
-```tut:fail
+```scala mdoc:fail
 def fac(n: Int) = if (n == 0) 1 else n * fac(n - 1)
 ```
 
@@ -35,7 +35,7 @@ def fac(n: Int) = if (n == 0) 1 else n * fac(n - 1)
 
 看下面两个例子：
 
-```tut
+```scala mdoc
 case class MyPair[A, B](x: A, y: B)
 val p = MyPair(1, "scala") // type: MyPair[Int, String]
 
@@ -49,7 +49,7 @@ val q = id(1)              // type: Int
 
 编译器从不推断方法形式参数的类型。 但是，在某些情况下，当函数作为参数传递时，编译器可以推断出匿名函数形式参数的类型。
 
-```tut
+```scala mdoc
 Seq(1, 3, 4).map(x => x * 2)  // List(2, 6, 8)
 ```
 
@@ -61,13 +61,13 @@ Seq(1, 3, 4).map(x => x * 2)  // List(2, 6, 8)
 
 此外，类型推断有时会推断出太具体的类型。 假设我们这么写：
 
-```tut
+```scala
 var obj = null
 ```
 
 我们就不能进行重新赋值：
 
-```tut:fail
+```scala mdoc:fail
 obj = new AnyRef
 ```
 

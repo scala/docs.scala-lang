@@ -30,7 +30,7 @@ List(1, 2, 3) <= List(4, 5)
 ```
 implicitなメソッド`Int => Ordered[Int]`は`scala.Predef.intWrapper`を通じて自動的に提供されます。implicitなメソッドの例`List[A] => Ordered[List[A]]`は以下にあります。
 
-```tut
+```scala mdoc
 import scala.language.implicitConversions
 
 implicit def list2ordered[A](x: List[A])
@@ -44,7 +44,7 @@ implicit def list2ordered[A](x: List[A])
 
 例えば、`java.lang.Integer`を受け取るようなJavaのメソッドを呼び出す時、自由に`scala.Int`を代わりに渡すことができます。それはPredefオブジェクトが以下の暗黙の変換をを含んでいるからです。
 
-```tut
+```scala mdoc
 import scala.language.implicitConversions
 
 implicit def int2Integer(x: Int) =

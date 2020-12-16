@@ -36,7 +36,7 @@ Jeżeli Scala użyta jest w kontekście środowiska uruchomieniowego Javy, to `A
 Poniższy przykład pokazuje, że łańcuchy znakowe, liczby całkowite, znaki, wartości logiczne oraz funkcje są obiektami tak samo jak każdy inny obiekt:
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 val list: List[Any] = List(
   "Łancuch znaków",
   732,  // liczba całkowita
@@ -70,7 +70,7 @@ Typy wartości mogą być rzutowane w następujący sposób:
 
 Dla przykładu:
 
-```tut
+```scala mdoc
 val x: Long = 987654321
 val y: Float = x  // 9.8765434E8 (w tym wypadku tracimy część precyzji)
 

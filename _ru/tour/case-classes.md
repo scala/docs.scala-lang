@@ -18,7 +18,7 @@ prerequisite-knowledge: classes, basics, mutability
 
 ## Объявление класса образца
 Минимальный вариант объявления класса образца: указание ключевого слова `case class`, название и список параметров (которые могут быть пустыми). Пример:
-```tut
+```scala mdoc
 case class Book(isbn: String)
 
 val frankenstein = Book("978-0486282114")

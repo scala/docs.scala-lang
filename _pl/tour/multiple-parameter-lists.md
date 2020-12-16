@@ -24,7 +24,7 @@ Poniżej omówiony jest przykład użycia.
 Zaczynając od początkowej wartości 0, funkcja `foldLeft` stosuje funkcję `(m, n) => m + n` na każdym elemencie listy oraz poprzedniej zakumulowanej wartości.
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 val res = numbers.foldLeft(0)((m, n) => m + n)
 println(res) // 55
@@ -52,7 +52,7 @@ numbers.foldLeft(0)(_ + _)
 
 Powyższe wyrażenie `numbers.foldLeft(0)(_ + _)` pozwala trwale ustawić parametr `z` i przekazywać dalej częściową funkcję (partial function), tak jak pokazano to poniżej:
 
-```tut
+```scala mdoc:nest
 val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 val numberFunc = numbers.foldLeft(List[Int]())_
 
@@ -65,7 +65,7 @@ print(cubes.toString())  // List(1, 8, 27, 64, 125, 216, 343, 512, 729, 1000)
 
 Podsumowując, `foldLeft` oraz `foldRight` mogą być używane w dowolnej z poniższych postaci:
 
-```tut
+```scala mdoc:nest
 val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 
 numbers.foldLeft(0)((sum, item) => sum + item) // postać ogólna

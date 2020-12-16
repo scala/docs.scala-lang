@@ -19,7 +19,7 @@ _上限型境界_ `T <: A` は型変数`T`が型`A`のサブタイプである�
 
 こちらはクラス`PetContainer`の型パラメータの上限型境界を実演する例です。
 
-```tut
+```scala mdoc
 abstract class Animal {
  def name: String
 }
@@ -46,7 +46,7 @@ val dogContainer = new PetContainer[Dog](new Dog)
 val catContainer = new PetContainer[Cat](new Cat)
 ```
 
-```tut:fail
+```scala mdoc:fail
 // これはコンパイルされません
 val lionContainer = new PetContainer[Lion](new Lion)
 ```

@@ -32,13 +32,13 @@ ScalaFiddleを利用することでブラウザ上でScalaを実行すること�
 
 式は計算可能な文です。
 
-```
+```scala mdoc
 1 + 1
 ```
 `println`を使うことで、式の結果を出力できます。
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 println(1) // 1
 println(1 + 1) // 2
 println("Hello!") // Hello!
@@ -50,7 +50,7 @@ println("Hello," + " world!") // Hello, world!
 
 `val`キーワードを利用することで、式の結果に名前を付けることができます。
 
-```tut
+```scala mdoc
 val x = 1 + 1
 println(x) // 2
 ```
@@ -60,13 +60,13 @@ println(x) // 2
 
 値は再代入することができません。
 
-```tut:fail
+```scala mdoc:fail
 x = 3 // この記述はコンパイルされません。
 ```
 
 値の型は推測可能ですが、このように型を明示的に宣言することもできます。
 
-```tut
+```scala mdoc:nest
 val x: Int = 1 + 1
 ```
 
@@ -77,7 +77,7 @@ val x: Int = 1 + 1
 再代入ができることを除けば、変数は値と似ています。
 `var`キーワードを使うことで、変数は定義できます。
 
-```tut
+```scala mdoc:nest
 var x = 1 + 1
 x = 3 // "x"は"var"キーワードで宣言されているので、これはコンパイルされます。
 println(x * x) // 9
@@ -85,7 +85,7 @@ println(x * x) // 9
 
 値と同様に、型を宣言したければ、明示的に型を宣言することができます。
 
-```tut
+```scala mdoc:nest
 var x: Int = 1 + 1
 ```
 
@@ -96,7 +96,7 @@ var x: Int = 1 + 1
 
 ブロックの最後の式の結果はブロック全体の結果にもなります。
 
-```tut
+```scala mdoc
 println({
   val x = 1 + 1
   x + 1
@@ -108,7 +108,7 @@ println({
 関数はパラメーターを受け取る式です。
 ここでは与えられた数値に1を足す無名関数（すなわち名前が無い関数）を宣言しています。
 
-```tut
+```scala mdoc
 (x: Int) => x + 1
 ```
 `=>` の左側はパラメーターのリストです。右側はパラメーターを含む式です。
@@ -116,7 +116,7 @@ println({
 関数には名前をつけることもできます。
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 val addOne = (x: Int) => x + 1
 println(addOne(1)) // 2
 ```
@@ -125,7 +125,7 @@ println(addOne(1)) // 2
 関数は複数のパラメーターをとることもできます。
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 val add = (x: Int, y: Int) => x + y
 println(add(1, 2)) // 3
 ```
@@ -133,7 +133,7 @@ println(add(1, 2)) // 3
 
 またパラメーターを取らないこともありえます。
 
-```tut
+```scala mdoc
 val getTheAnswer = () => 42
 println(getTheAnswer()) // 42
 ```
@@ -145,7 +145,7 @@ println(getTheAnswer()) // 42
 メソッドは `def` キーワードで定義されます。 `def` の後ろには名前、パラメーターリスト、戻り値の型、処理の内容が続きます。
 
 {% scalafiddle %}
-```tut
+```scala mdoc:nest
 def add(x: Int, y: Int): Int = x + y
 println(add(1, 2)) // 3
 ```
@@ -156,7 +156,7 @@ println(add(1, 2)) // 3
 メソッドは複数のパラメーターリストを受け取ることができます。
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 def addThenMultiply(x: Int, y: Int)(multiplier: Int): Int = (x + y) * multiplier
 println(addThenMultiply(1, 2)(3)) // 9
 ```
@@ -164,7 +164,7 @@ println(addThenMultiply(1, 2)(3)) // 9
 
 また、パラメーターリストを一切受け取らないこともあります。
 
-```tut
+```scala mdoc
 def name: String = System.getProperty("user.name")
 println("Hello, " + name + "!")
 ```
@@ -173,7 +173,7 @@ println("Hello, " + name + "!")
 メソッドは複数行の式も持つことができます。
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 def getSquareString(input: Double): String = {
   val square = input * input
   square.toString
@@ -188,7 +188,7 @@ println(getSquareString(2.5)) // 6.25
 
 `class` キーワードとその後ろに名前、コンストラクタパラメーターを続けることで、クラスを定義することができます。
 
-```tut
+```scala mdoc
 class Greeter(prefix: String, suffix: String) {
   def greet(name: String): Unit =
     println(prefix + name + suffix)
@@ -200,7 +200,7 @@ class Greeter(prefix: String, suffix: String) {
 
 `new` キーワードを使うことで、クラスのインスタンスを生成することができます。
 
-```tut
+```scala mdoc
 val greeter = new Greeter("Hello, ", "!")
 greeter.greet("Scala developer") // Hello, Scala developer!
 ```
@@ -212,12 +212,12 @@ greeter.greet("Scala developer") // Hello, Scala developer!
 Scalaには"ケース"クラスという特別な種類のクラスがあります。デフォルトでケースクラスは不変であり、値で比較されます。
 `case class` キーワードを利用して、ケースクラスを定義できます。
 
-```tut
+```scala mdoc
 case class Point(x: Int, y: Int)
 ```
 ケースクラスは、`new` キーワードなしでインスタンス化できます。
 
-```tut
+```scala mdoc
 val point = Point(1, 2)
 val anotherPoint = Point(1, 2)
 val yetAnotherPoint = Point(2, 2)
@@ -225,7 +225,7 @@ val yetAnotherPoint = Point(2, 2)
 
 ケースクラスは値で比較されます。
 
-```tut
+```scala mdoc
 if (point == anotherPoint) {
   println(point + " と " + anotherPoint + " は同じです。")
 } else {
@@ -248,7 +248,7 @@ if (point == yetAnotherPoint) {
 
 `object`キーワードを利用してオブジェクトを定義することができます。
 
-```tut
+```scala mdoc
 object IdFactory {
   private var counter = 0
   def create(): Int = {
@@ -260,7 +260,7 @@ object IdFactory {
 
 名前を参照してオブジェクトにアクセスすることができます。
 
-```tut
+```scala mdoc
 val newId: Int = IdFactory.create()
 println(newId) // 1
 val newerId: Int = IdFactory.create()
@@ -275,7 +275,7 @@ println(newerId) // 2
 
 `trait`キーワードでトレイトを定義することができます。
 
-```tut
+```scala mdoc:nest
 trait Greeter {
   def greet(name: String): Unit
 }
@@ -284,7 +284,7 @@ trait Greeter {
 トレイトはデフォルトの実装を持つこともできます。
 
 {% scalafiddle %}
-```tut
+```scala mdoc:reset
 trait Greeter {
   def greet(name: String): Unit =
     println("Hello, " + name + "!")
@@ -293,7 +293,7 @@ trait Greeter {
 
 `extends`キーワードでトレイトを継承することも、`override` キーワードで実装をオーバーライドすることもできます。
 
-```tut
+```scala mdoc
 class DefaultGreeter extends Greeter
 
 class CustomizableGreeter(prefix: String, postfix: String) extends Greeter {
@@ -321,7 +321,7 @@ customGreeter.greet("Scala developer") // How are you, Scala developer?
 
 オブジェクトを使い、以下のようにメインメソッドを定義することができます。
 
-```tut
+```scala mdoc
 object Main {
   def main(args: Array[String]): Unit =
     println("Hello, Scala developer!")

@@ -28,13 +28,13 @@ In this page, we will cover basics of Scala.
 ## Expressions
 
 Expression หรือ นิพจน์ เป็นโค้ดที่ทำการคำนวนได้
-```
+```scala mdoc
 1 + 1
 ```
 เราสามารถแสดงผลลัพธ์ของ Expression ด้วยการใช้ `println`
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 println(1) // 1
 println(1 + 1) // 2
 println("Hello!") // Hello!
@@ -46,7 +46,7 @@ println("Hello," + " world!") // Hello, world!
 
 เราสามารถตั้งชื่อของผลลัพธ์ของ expression ด้วย keyword `val`
 
-```tut
+```scala mdoc
 val x = 1 + 1
 println(x) // 2
 ```
@@ -55,13 +55,13 @@ println(x) // 2
 
 Value ไม่สามารถกำหนดค่าใหม่ได้
 
-```tut:fail
+```scala mdoc:fail
 x = 3 // ตรงนี้ไม่ compile.
 ```
 
 type (ชนิด) ของ value สามารถ inferred (อนุมาน) ได้ แต่เราสามารถกำหนดชนิดของ type อย่างชัดเจนได้ แบบนี้
 
-```tut
+```scala mdoc:nest
 val x: Int = 1 + 1
 ```
 
@@ -71,7 +71,7 @@ val x: Int = 1 + 1
 
 ตัวแปรเหมือนกับ value ยกเว้นแต่ว่าเราสามารถกำหนดค่าใหม่ได้ เราสามารถกำหนดตัวแปรด้วย keyword `var`
 
-```tut
+```scala mdoc:nest
 var x = 1 + 1
 x = 3 // ตรงนี้ compile เพราะว่า "x" ถูกประกาศด้วย keyword "var"
 println(x * x) // 9
@@ -79,7 +79,7 @@ println(x * x) // 9
 
 เราสามารถกำหนด type ได้ตามที่เราต้องการ:
 
-```tut
+```scala mdoc:nest
 var x: Int = 1 + 1
 ```
 
@@ -90,7 +90,7 @@ var x: Int = 1 + 1
 
 ผลลัพธ์ของ expression สุดท้ายใน block จะเป็นผลลัพธ์ของ block ทั้งหมดด้วย
 
-```tut
+```scala mdoc
 println({
   val x = 1 + 1
   x + 1
@@ -103,7 +103,7 @@ function เป็น expression ที่รับ parameter ได้
 
 เราสามารถกำหนด anonymous function (เป็น function ที่ไม่มีชื่อ) ที่ return ค่าตัวเลขบวกหนึ่ง:
 
-```tut
+```scala mdoc
 (x: Int) => x + 1
 ```
 
@@ -112,7 +112,7 @@ function เป็น expression ที่รับ parameter ได้
 เราสามารถตั้งชื่อของ function ได้ดังนี้
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 val addOne = (x: Int) => x + 1
 println(addOne(1)) // 2
 ```
@@ -121,7 +121,7 @@ println(addOne(1)) // 2
 function สามารถรับ parameter ได้หลายตัว
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 val add = (x: Int, y: Int) => x + y
 println(add(1, 2)) // 3
 ```
@@ -129,7 +129,7 @@ println(add(1, 2)) // 3
 
 หรือ เราจะไม่รับ parameter เลยก็ได้
 
-```tut
+```scala mdoc
 val getTheAnswer = () => 42
 println(getTheAnswer()) // 42
 ```
@@ -141,7 +141,7 @@ Method มีลักษณะเหมือนกับ function มาก �
 Method จะประกาศได้ด้วย keyword `def` ตามด้วยชื่อของ function, รายการ parameter, return type และ body ของ function
 
 {% scalafiddle %}
-```tut
+```scala mdoc:nest
 def add(x: Int, y: Int): Int = x + y
 println(add(1, 2)) // 3
 ```
@@ -152,7 +152,7 @@ println(add(1, 2)) // 3
 Method ยังสามารถรับรายการ parameter ได้หลายรายการ
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 def addThenMultiply(x: Int, y: Int)(multiplier: Int): Int = (x + y) * multiplier
 println(addThenMultiply(1, 2)(3)) // 9
 ```
@@ -160,7 +160,7 @@ println(addThenMultiply(1, 2)(3)) // 9
 
 หรือ ไม่มีรายการ parameter เลยก็ได้ อย่างเช่น
 
-```tut
+```scala mdoc
 def name: String = System.getProperty("user.name")
 println("Hello, " + name + "!")
 ```
@@ -170,7 +170,7 @@ println("Hello, " + name + "!")
 Method สามารถมี expression ได้หลายบรรทัด
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 def getSquareString(input: Double): String = {
   val square = input * input
   square.toString
@@ -185,7 +185,7 @@ expression สุดท้ายใน body เป็น expression ที่ re
 
 เราสามารถประกาศ class ได้ด้วย keyword `class` ตามด้วยชื่อของ class และ constructor parameters
 
-```tut
+```scala mdoc
 class Greeter(prefix: String, suffix: String) {
   def greet(name: String): Unit =
     println(prefix + name + suffix)
@@ -195,7 +195,7 @@ return type ของ method `greet` เป็น `Unit` ซึ่งอาจ�
 
 เราสามารถสร้าง instance ของ class ได้ด้วย keyword `new`
 
-```tut
+```scala mdoc
 val greeter = new Greeter("Hello, ", "!")
 greeter.greet("Scala developer") // Hello, Scala developer!
 ```
@@ -206,13 +206,13 @@ greeter.greet("Scala developer") // Hello, Scala developer!
 
 Scala มี type ชนิดพิเศษของ class เรียกว่า "case" class โดยเริ่มต้นแล้ว case class เป็นค่าที่เปลี่ยนแปลงไม่ได้ (immutable) และสามารถเปลียบเทียบด้วย value เราสามารถประกาศ case class ด้วย keyword `case class`
 
-```tut
+```scala mdoc
 case class Point(x: Int, y: Int)
 ```
 
 เราสามารถสร้าง instant ของ case class โดยไม่ต้องใช้ keyword `new`
 
-```tut
+```scala mdoc
 val point = Point(1, 2)
 val anotherPoint = Point(1, 2)
 val yetAnotherPoint = Point(2, 2)
@@ -220,7 +220,7 @@ val yetAnotherPoint = Point(2, 2)
 
 และสามารถเปรียบเทียบค่าของ case class ได้
 
-```tut
+```scala mdoc
 if (point == anotherPoint) {
   println(point + " and " + anotherPoint + " are the same.")
 } else {
@@ -242,7 +242,7 @@ Object เป็น instance เดี่ยวของ definition ของม
 
 เราสามารถประกาศ object ได้ด้วย keyword `object`
 
-```tut
+```scala mdoc
 object IdFactory {
   private var counter = 0
   def create(): Int = {
@@ -254,7 +254,7 @@ object IdFactory {
 
 เราสามารถเข้าถึง object ด้วยการอ้างอิงถึงชื่อของมัน
 
-```tut
+```scala mdoc
 val newId: Int = IdFactory.create()
 println(newId) // 1
 val newerId: Int = IdFactory.create()
@@ -269,7 +269,7 @@ Trait เป็น type ที่บรรจุ field และ method ที�
 
 เราสามารถประกาศ trait ได้ด้วย keyword `trait`
 
-```tut
+```scala mdoc:nest
 trait Greeter {
   def greet(name: String): Unit
 }
@@ -278,7 +278,7 @@ trait Greeter {
 Trait สามารถมี default implementation ได้
 
 {% scalafiddle %}
-```tut
+```scala mdoc:reset
 trait Greeter {
   def greet(name: String): Unit =
     println("Hello, " + name + "!")
@@ -287,7 +287,7 @@ trait Greeter {
 
 เราสามารถขยาย traint ได้ด้วย keyword `extents` และ overrid implementation ด้วย keyword `override`
 
-```tut
+```scala mdoc
 class DefaultGreeter extends Greeter
 
 class CustomizableGreeter(prefix: String, postfix: String) extends Greeter {
@@ -315,7 +315,7 @@ main method เป็น entry point หรือจุดเริ่มต้�
 
 ใช้ object เราสามารถประกาศ main method ได้ดังนี้:
 
-```tut
+```scala mdoc
 object Main {
   def main(args: Array[String]): Unit =
     println("Hello, Scala developer!")

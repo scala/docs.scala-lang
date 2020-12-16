@@ -25,7 +25,7 @@ prerequisite-knowledge: case-classes
 
 ## Создание и использование операторов
 В качестве оператора можно использовать любой допустимый символ. Включая имена на подобии `add` или символ (символы) типа `+`.
-```tut
+```scala mdoc
 case class Vec(x: Double, y: Double) {
   def +(that: Vec) = Vec(this.x + that.x, this.y + that.y)
 }
@@ -39,7 +39,7 @@ vector3.y  // 3.0
 ```
 У класса Vec есть метод `+`, который мы использовали для добавления `vector1` и `vector2`. Используя круглые скобки, можно строить сложные выражения с читаемым синтаксисом. Пример создания класса `MyBool`, которое включает в себя методы `and` и `or`
 
-```tut
+```scala mdoc
 case class MyBool(x: Boolean) {
   def and(that: MyBool): MyBool = if (x) that else this
   def or(that: MyBool): MyBool = if (x) this else that
@@ -49,7 +49,7 @@ case class MyBool(x: Boolean) {
 
 Теперь можно использовать операторы `and` и `or` в качестве инфиксных операторов:
 
-```tut
+```scala mdoc
 def not(x: MyBool) = x.negate
 def xor(x: MyBool, y: MyBool) = (x or y) and not(x and y)
 ```

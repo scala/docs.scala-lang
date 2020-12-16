@@ -15,7 +15,7 @@ Takve granice tipa ograničavaju konkretne vrijednosti tipskih varijabli i ponek
   _Gornja granica tipa_ `T <: A` kaže da se tipska varijabla `T` odnosi na podtip tipa `A`.
 Slijedi primjer koji demonstrira gornju granicu tipa za tipski parametar klase `PetContainer`:
 
-```tut
+```scala mdoc
 abstract class Animal {
  def name: String
 }
@@ -42,7 +42,7 @@ val dogContainer = new PetContainer[Dog](new Dog)
 val catContainer = new PetContainer[Cat](new Cat)
 ```
 
-```tut:fail
+```scala mdoc:fail
 val lionContainer = new PetContainer[Lion](new Lion) // this would not compile
 ```
 Klasa `PetContainer` prima tipski parametar `P` koji mora biti podtip od `Pet`. 

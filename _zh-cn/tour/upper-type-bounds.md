@@ -13,7 +13,7 @@ previous-page: variances
 
 在Scala中，[类型参数](generic-classes.html)和[抽象类型](abstract-type-members.html)都可以有一个类型边界约束。这种类型边界在限制类型变量实际取值的同时还能展露类型成员的更多信息。比如像`T <: A`这样声明的类型上界表示类型变量`T`应该是类型`A`的子类。下面的例子展示了类`PetContainer`的一个类型参数的类型上界。
 
-```tut
+```scala mdoc
 abstract class Animal {
  def name: String
 }
@@ -40,7 +40,7 @@ val dogContainer = new PetContainer[Dog](new Dog)
 val catContainer = new PetContainer[Cat](new Cat)
 ```
 
-```tut:fail
+```scala mdoc:fail
 // this would not compile
 val lionContainer = new PetContainer[Lion](new Lion)
 ```

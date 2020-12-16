@@ -19,7 +19,7 @@ A superclass de todas as classes `scala.Any` tem duas subclasses diretas `scala.
 Observe que o diagrama acima mostra implicitamente as conversões entre as classes de valores.
 Este exemplo demonstra que números numbers, caracteres, valores booleanos, e funções são objetos como qualquer outro objeto:
  
-```tut
+```scala
 object TiposUnificados extends App {
   val set = new scala.collection.mutable.LinkedHashSet[Any]
   set += "Sou uma string"     // adiciona uma string ao set

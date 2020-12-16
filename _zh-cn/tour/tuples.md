@@ -19,7 +19,7 @@ topics: tuples
 
 元组可以创建如下：
 
-```tut
+```scala mdoc
 val ingredient = ("Sugar" , 25):Tuple2[String, Int]
 ```
 这将创建一个包含一个 String 元素和一个 Int 元素的元组。
@@ -34,7 +34,7 @@ Scala 中的元组包含一系列类：Tuple2，Tuple3等，直到 Tuple22。
 使用下划线语法来访问元组中的元素。
 'tuple._n' 取出了第 n 个元素（假设有足够多元素）。
 
-```tut
+```scala mdoc
 println(ingredient._1) // Sugar
 
 println(ingredient._2) // 25
@@ -44,7 +44,7 @@ println(ingredient._2) // 25
 
 Scala 元组也支持解构。
 
-```tut
+```scala mdoc
 val (name, quantity) = ingredient
 
 println(name) // Sugar
@@ -54,7 +54,7 @@ println(quantity) // 25
 
 元组解构也可用于模式匹配。
 
-```tut
+```scala mdoc
 val planetDistanceFromSun = List(("Mercury", 57.9), ("Venus", 108.2), ("Earth", 149.6 ), ("Mars", 227.9), ("Jupiter", 778.3))
 
 planetDistanceFromSun.foreach{ tuple => {
@@ -78,7 +78,7 @@ planetDistanceFromSun.foreach{ tuple => {
 
 或者，在 'for' 表达式中。
 
-```tut
+```scala mdoc
 val numPairs = List((2, 5), (3, -7), (20, 56))
 
 for ((a, b) <- numPairs) {

@@ -21,7 +21,7 @@ prerequisite-knowledge: classes, basics, mutability
 ## ケースクラスの宣言
 
 最小のケースクラスにはキーワード`case class`、識別子、パラメータリスト(空かもしれません)が必要です。
-```tut
+```scala mdoc
 case class Book(isbn: String)
 
 val frankenstein = Book("978-0486282114")

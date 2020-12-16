@@ -27,13 +27,13 @@ previous-page: tour-of-scala
 ## 表达式
 
 表达式是可计算的语句。
-```
+```scala mdoc
 1 + 1
 ```
 你可以使用`println`来输出表达式的结果。
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 println(1) // 1
 println(1 + 1) // 2
 println("Hello!") // Hello!
@@ -45,7 +45,7 @@ println("Hello," + " world!") // Hello, world!
 
 你可以使用`val`关键字来给表达式的结果命名。
 
-```tut
+```scala mdoc
 val x = 1 + 1
 println(x) // 2
 ```
@@ -54,13 +54,13 @@ println(x) // 2
 
 常量（`values`）不能重新被赋值。
 
-```tut:fail
+```scala mdoc:fail
 x = 3 // This does not compile.
 ```
 
 常量（`values`）的类型可以被推断，或者你也可以显示地声明类型，例如：
 
-```tut
+```scala mdoc:nest
 val x: Int = 1 + 1
 ```
 
@@ -70,7 +70,7 @@ val x: Int = 1 + 1
 
 除了可以重新赋值，变量和常量类似。你可以使用`var`关键字来定义一个变量。
 
-```tut
+```scala mdoc:nest
 var x = 1 + 1
 x = 3 // This compiles because "x" is declared with the "var" keyword.
 println(x * x) // 9
@@ -78,7 +78,7 @@ println(x * x) // 9
 
 和常量一样，你可以显示地声明类型：
 
-```tut
+```scala mdoc:nest
 var x: Int = 1 + 1
 ```
 
@@ -89,7 +89,7 @@ var x: Int = 1 + 1
 
 代码块中最后一个表达式的结果，也正是整个块的结果。
 
-```tut
+```scala mdoc
 println({
   val x = 1 + 1
   x + 1
@@ -102,7 +102,7 @@ println({
 
 你可以定义一个匿名函数（即没有名字），来返回一个给定整数加一的结果。
 
-```tut
+```scala mdoc
 (x: Int) => x + 1
 ```
 
@@ -111,7 +111,7 @@ println({
 你也可以给函数命名。
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 val addOne = (x: Int) => x + 1
 println(addOne(1)) // 2
 ```
@@ -120,7 +120,7 @@ println(addOne(1)) // 2
 函数可带有多个参数。
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 val add = (x: Int, y: Int) => x + y
 println(add(1, 2)) // 3
 ```
@@ -128,7 +128,7 @@ println(add(1, 2)) // 3
 
 或者不带参数。
 
-```tut
+```scala mdoc
 val getTheAnswer = () => 42
 println(getTheAnswer()) // 42
 ```
@@ -140,7 +140,7 @@ println(getTheAnswer()) // 42
 方法由`def`关键字定义。`def`后面跟着一个名字、参数列表、返回类型和方法体。
 
 {% scalafiddle %}
-```tut
+```scala mdoc:nest
 def add(x: Int, y: Int): Int = x + y
 println(add(1, 2)) // 3
 ```
@@ -151,7 +151,7 @@ println(add(1, 2)) // 3
 方法可以接受多个参数列表。
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 def addThenMultiply(x: Int, y: Int)(multiplier: Int): Int = (x + y) * multiplier
 println(addThenMultiply(1, 2)(3)) // 9
 ```
@@ -159,7 +159,7 @@ println(addThenMultiply(1, 2)(3)) // 9
 
 或者没有参数列表。
 
-```tut
+```scala mdoc
 def name: String = System.getProperty("user.name")
 println("Hello, " + name + "!")
 ```
@@ -169,7 +169,7 @@ println("Hello, " + name + "!")
 方法也可以有多行的表达式。
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 def getSquareString(input: Double): String = {
   val square = input * input
   square.toString
@@ -184,7 +184,7 @@ println(getSquareString(2.5)) // 6.25
 
 你可以使用`class`关键字定义一个类，后面跟着它的名字和构造参数。
 
-```tut
+```scala mdoc
 class Greeter(prefix: String, suffix: String) {
   def greet(name: String): Unit =
     println(prefix + name + suffix)
@@ -194,7 +194,7 @@ class Greeter(prefix: String, suffix: String) {
 
 你可以使用`new`关键字创建一个类的实例。
 
-```tut
+```scala mdoc
 val greeter = new Greeter("Hello, ", "!")
 greeter.greet("Scala developer") // Hello, Scala developer!
 ```
@@ -205,13 +205,13 @@ greeter.greet("Scala developer") // Hello, Scala developer!
 
 Scala有一种特殊的类叫做样例类（case class）。默认情况下，样例类一般用于不可变对象，并且可作值比较。你可以使用`case class`关键字来定义样例类。
 
-```tut
+```scala mdoc
 case class Point(x: Int, y: Int)
 ```
 
 你可以不用`new`关键字来实例化样例类。
 
-```tut
+```scala mdoc
 val point = Point(1, 2)
 val anotherPoint = Point(1, 2)
 val yetAnotherPoint = Point(2, 2)
@@ -219,7 +219,7 @@ val yetAnotherPoint = Point(2, 2)
 
 并且它们的值可以进行比较。
 
-```tut
+```scala mdoc
 if (point == anotherPoint) {
   println(point + " and " + anotherPoint + " are the same.")
 } else {
@@ -241,7 +241,7 @@ if (point == yetAnotherPoint) {
 
 你可以使用`object`关键字定义对象。
 
-```tut
+```scala mdoc
 object IdFactory {
   private var counter = 0
   def create(): Int = {
@@ -253,7 +253,7 @@ object IdFactory {
 
 你可以通过引用它的名字来访问一个对象。
 
-```tut
+```scala mdoc
 val newId: Int = IdFactory.create()
 println(newId) // 1
 val newerId: Int = IdFactory.create()
@@ -268,7 +268,7 @@ println(newerId) // 2
 
 你可以使用`trait`关键字定义特质。
 
-```tut
+```scala mdoc:nest
 trait Greeter {
   def greet(name: String): Unit
 }
@@ -277,7 +277,7 @@ trait Greeter {
 特质也可以有默认的实现。
 
 {% scalafiddle %}
-```tut
+```scala mdoc:reset
 trait Greeter {
   def greet(name: String): Unit =
     println("Hello, " + name + "!")
@@ -286,7 +286,7 @@ trait Greeter {
 
 你可以使用`extends`关键字来继承特质，使用`override`关键字来覆盖默认的实现。
 
-```tut
+```scala mdoc
 class DefaultGreeter extends Greeter
 
 class CustomizableGreeter(prefix: String, postfix: String) extends Greeter {
@@ -313,7 +313,7 @@ customGreeter.greet("Scala developer") // How are you, Scala developer?
 
 通过使用对象，你可以如下所示来定义一个主方法。
 
-```tut
+```scala mdoc
 object Main {
   def main(args: Array[String]): Unit =
     println("Hello, Scala developer!")

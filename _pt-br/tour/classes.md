@@ -12,7 +12,7 @@ language: pt-br
 Classes em Scala são templates estáticos que podem ser instanciados como vários objetos em tempo de execução.
 Aqui uma definição de classe que define a classe `Ponto`:
 
-```tut
+```scala mdoc
 class Ponto(var x: Int, var y: Int) {
   def move(dx: Int, dy: Int): Unit = {
     x = x + dx
@@ -31,7 +31,7 @@ Perceba que em Scala, não é necessário declarar `return` para então retornar
 
 Classes são instânciadas com a primitiva `new`, por exemplo:
 
-```tut
+```scala mdoc
 object Classes {
   def main(args: Array[String]) {
     val pt = new Ponto(1, 2)

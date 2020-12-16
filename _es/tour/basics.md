@@ -27,14 +27,14 @@ Muchos ejemplos de código en esta documentación están integrados con ScalaFid
 
 Las expresiones son sentencias computables.
 
-```tut
+```scala mdoc
 1 + 1
 ```
 
 Se puede ver el resultado de evaluar expresiones usando `println`.
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 println(1) // 1
 println(1 + 1) // 2
 println("Hello!") // Hello!
@@ -46,7 +46,7 @@ println("Hello," + " world!") // Hello, world!
 
 Se puede dar un nombre al resultado de una expresión usando la palabra reservada `val`.
 
-```tut
+```scala mdoc
 val x = 1 + 1
 println(x) // 2
 ```
@@ -55,13 +55,13 @@ Los resultados con nombre, como `x` en el ejemplo, son llamados valores. Referen
 
 Los valores no pueden ser reasignados.
 
-```tut:fail
+```scala mdoc:fail
 x = 3  // This does not compile.
 ```
 
 Scala es capaz de inferir el tipo de un valor. Aun así, también se puede indicar el tipo usando una anotación:
 
-```tut
+```scala mdoc:nest
 val x: Int = 1 + 1
 ```
 
@@ -71,7 +71,7 @@ Nótese que la anotación del tipo `Int` sigue al identificador `x` de la variab
 
 Una variable es como un valor, excepto que a una variable se le puede re-asignar un valor después de declararla. Una variable se declara con la palabra reservada `var`.
 
-```tut
+```scala mdoc:nest
 var x = 1 + 1
 x = 3 // This compiles because "x" is declared with the "var" keyword.
 println(x * x) // 9
@@ -79,7 +79,7 @@ println(x * x) // 9
 
 Como con los valores, si se quiere se puede especificar el tipo de una variable mutable:
 
-```tut
+```scala mdoc:nest
 var x: Int = 1 + 1
 ```
 
@@ -89,7 +89,7 @@ Se pueden combinar expresiones rodeándolas con `{}` . A esto le llamamos un blo
 
 El resultado de la última expresión del bloque es también el resultado total del bloque.
 
-```tut
+```scala mdoc
 println({
   val x = 1 + 1
   x + 1
@@ -102,7 +102,7 @@ Una función es una expresión que acepta parámetros.
 
 Una función se puede declarar anónima, sin nombre. Por ejemplo, ésta es una función que acepta un número entero `x`, y devuelve el resultado de incrementarlo:
 
-```tut
+```scala mdoc
 (x: Int) => x + 1
 ```
 
@@ -111,7 +111,7 @@ La lista de parámetros de la función está a la izquierda de la flecha `=>`, y
 También podemos asignarle un nombre a la función.
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 val addOne = (x: Int) => x + 1
 println(addOne(1)) // 2
 ```
@@ -120,7 +120,7 @@ println(addOne(1)) // 2
 Las funciones pueden tomar varios parámetros.
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 val add = (x: Int, y: Int) => x + y
 println(add(1, 2)) // 3
 ```
@@ -128,7 +128,7 @@ println(add(1, 2)) // 3
 
 O ninguno.
 
-```tut
+```scala mdoc
 val getTheAnswer = () => 42
 println(getTheAnswer()) // 42
 ```
@@ -140,7 +140,7 @@ Los métodos se parecen y comportan casi como a las funciones, pero se diferenci
 Un método se define con la palabra reservada `def`, seguida por el nombre del método, la lista de parámetros, el tipo de valores que el método devuelve, y el cuerpo del método.
 
 {% scalafiddle %}
-```tut
+```scala mdoc:nest
 def add(x: Int, y: Int): Int = x + y
 println(add(1, 2)) // 3
 ```
@@ -151,7 +151,7 @@ Observe que el tipo de retorno se declara _después_ de la lista de parámetros,
 Un método puede tener varias listas de parámetros.
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 def addThenMultiply(x: Int, y: Int)(multiplier: Int): Int = (x + y) * multiplier
 println(addThenMultiply(1, 2)(3)) // 9
 ```
@@ -159,7 +159,7 @@ println(addThenMultiply(1, 2)(3)) // 9
 
 O ninguna lista de parámetros.
 
-```tut
+```scala mdoc
 def name: String = System.getProperty("user.name")
 println("Hello, " + name + "!")
 ```
@@ -169,7 +169,7 @@ Hay otras diferencias, pero para simplificar, podemos pensar que son similares a
 Los métodos también pueden tener expresiones de varias lineas.
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 def getSquareString(input: Double): String = {
   val square = input * input
   square.toString
@@ -185,7 +185,7 @@ La ultima expresión en el cuerpo del método es el valor de retorno del mismo.
 
 Una clase se define con la palabra reservada `class`, seguida del nombre, y la lista de parámetros del constructor.
 
-```tut
+```scala mdoc
 class Greeter(prefix: String, suffix: String) {
   def greet(name: String): Unit =
     println(prefix + name + suffix)
@@ -196,7 +196,7 @@ El método `greet` tiene un tipo de retorno `Unit`, que indica que el método no
 
 Se puede crear una instancia de una clase con la palabra reservada *new*.
 
-```tut
+```scala mdoc
 val greeter = new Greeter("Hello, ", "!")
 greeter.greet("Scala developer") // Hello, Scala developer!
 ```
@@ -208,13 +208,13 @@ Las clases se tratan en profundidad [más adelante](classes.html).
 Hay un tipo especial de clases en Scala, las llamadas "case" classes. Por defecto, las instancias de una case class  son inmutables, y se comparan con otras solo por los valores que contienen en cada campo.
 Una case class se define con las palabras reservadas  `case class`:
 
-```tut
+```scala mdoc
 case class Point(x: Int, y: Int)
 ```
 
 Se puede crear una instancia de una `case class`, sin usar la palabra reservada `new`.  
 
-```tut
+```scala mdoc
 val point = Point(1, 2)
 val anotherPoint = Point(1, 2)
 val yetAnotherPoint = Point(2, 2)
@@ -222,7 +222,7 @@ val yetAnotherPoint = Point(2, 2)
 
 Y son comparadas por valor.
 
-```tut
+```scala mdoc
 if (point == anotherPoint) {
   println(point + " and " + anotherPoint + " are the same.")
 } else {
@@ -244,7 +244,7 @@ Los objetos son instancias de una sola clase de su propia definición. Puedes pe
 
 Un objeto se define usando la palabra reservada `object`.
 
-```tut
+```scala mdoc
 object IdFactory {
   private var counter = 0
   def create(): Int = {
@@ -256,7 +256,7 @@ object IdFactory {
 
 Para acceder al objeto, lo referencias por su nombre.
 
-```tut
+```scala mdoc
 val newId: Int = IdFactory.create()
 println(newId) // 1
 val newerId: Int = IdFactory.create()
@@ -271,7 +271,7 @@ Los traits son tipos que contienen campos y métodos. Se pueden combinar múltip
 
 Un trait se define usando la palabra reservada `trait`.
 
-```tut
+```scala mdoc:nest
 trait Greeter {
   def greet(name: String): Unit
 }
@@ -280,7 +280,7 @@ trait Greeter {
 Un `trait` también puede definir un método, o un valor, con una implementación por defecto.
 
 {% scalafiddle %}
-```tut
+```scala mdoc:reset
 trait Greeter {
   def greet(name: String): Unit =
     println("Hello, " + name + "!")
@@ -289,7 +289,7 @@ trait Greeter {
 
 Un `trait` también puede extender otros traits, usando la palabra clave `extends`. Asimismo, en un `trait` se puede redefinir la implementación de un método heredado, usando la palabra reservada `override`.
 
-```tut
+```scala mdoc
 class DefaultGreeter extends Greeter
 
 class CustomizableGreeter(prefix: String, postfix: String) extends Greeter {
@@ -316,7 +316,7 @@ El método principal (main) es el punto donde comienza la ejecución de un progr
 
 Usando un objeto, puedes definir el método principal de la siguiente forma:
 
-```tut
+```scala mdoc
 object Main {
   def main(args: Array[String]): Unit =
     println("Hello, Scala developer!")

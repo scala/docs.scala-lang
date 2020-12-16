@@ -17,7 +17,7 @@ Self-tip je način da se suzi tip `this` ili drugi identifikator koji je alijas 
 Sintaksa izgleda kao obična funkcija ali znači nešto sasvim drugačije.
 
 Da bi koristili self-tip u trejtu, napišite identifikator, tip drugog trejta za umiksavanje, i `=>` (tj. `someIdentifier: SomeOtherTrait =>`).
-```tut
+```scala mdoc
 trait User {
   def username: String
 }

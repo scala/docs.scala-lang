@@ -18,7 +18,7 @@ un método.
 
 Una tupla con dos elementos puede ser creada del siguiente modo:
 
-```tut
+```scala mdoc
 val ingredient = ("Sugar", 25)
 ```
 
@@ -37,7 +37,7 @@ Cada clase tiene tantos parámetros como número de elementos.
 Una forma de acceder a los elementos de una tupla es por posición.
 Los elementos concretos se llaman `_1`, `_2`, y así sucesivamente.
 
-```tut
+```scala mdoc
 println(ingredient._1) // Sugar
 println(ingredient._2) // 25
 ```
@@ -46,7 +46,7 @@ println(ingredient._2) // 25
 
 Una tupla también puede ser dividida/expandida usando reconocimiento de patrones (pattern matching):
 
-```tut
+```scala mdoc
 val (name, quantity) = ingredient
 println(name)     // Sugar
 println(quantity) // 25
@@ -57,7 +57,7 @@ En esta ocasión el tipo de `name` es inferido como `String` y el de
 
 A continuación otro ejemplo de reconocimiento de patrones con tuplas:
 
-```tut
+```scala mdoc
 val planets =
   List(("Mercury", 57.9), ("Venus", 108.2), ("Earth", 149.6),
        ("Mars", 227.9), ("Jupiter", 778.3))
@@ -70,7 +70,7 @@ planets.foreach{
 
 O en compresión de bucles `for`:
 
-```tut
+```scala mdoc
 val numPairs = List((2, 5), (3, -7), (20, 56))
 for ((a, b) <- numPairs) {
   println(a * b)

@@ -11,7 +11,7 @@ previous-page: case-classes
 
 Scala posiada wbudowany mechanizm dopasowania wzorców. Umożliwia on dopasowanie dowolnego rodzaju danych, przy czym zawsze zwracamy pierwsze dopasowanie. Przykład dopasowania liczby całkowitej:
 
-```tut
+```scala mdoc
 object MatchTest1 extends App {
   def matchTest(x: Int): String = x match {
     case 1 => "one"
@@ -26,7 +26,7 @@ Blok kodu z wyrażeniami `case` definiuje funkcję, która przekształca liczby 
 
 Wzorce można także dopasowywać do różnych typów wartości:
 
-```tut
+```scala mdoc
 object MatchTest2 extends App {
   def matchTest(x: Any): Any = x match {
     case 1 => "one"

@@ -15,7 +15,7 @@ Tuplas são sobretudo úteis para retornar múltiplos valores de um método.
 
 Uma Tupla com dois elementos pode ser criada dessa forma:
 
-```tut
+```scala mdoc
 val ingrediente = ("Açucar" , 25)
 ```
 
@@ -29,7 +29,7 @@ Para representar tuplas, Scala usa uma serie de classes: `Tuple2`, `Tuple3`, etc
 
 Uma maneira de acessar os elementos da tupla é pela sua respectiva posição. Os elementos individuais são nomeados `_1` , `_2` , e assim por diante.
 
-```tut
+```scala mdoc
 println(ingrediente._1) // Açucar
 println(ingrediente._2) // 25
 ```
@@ -38,7 +38,7 @@ println(ingrediente._2) // 25
 
 Uma tupla pode também ser desmembrada usando correspondência de padrões:
 
-```tut
+```scala mdoc
 val (nome, quantidade) = ingrediente
 println(nome) // Açucar
 println(quantidade) // 25
@@ -48,7 +48,7 @@ Aqui o tipo inferido para `nome` é `String` e para `quantidade` o tipo inferido
 
 Outro exemplo de correspondência de padrões em uma tupla:
 
-```tut
+```scala mdoc
 val planetas =
  List(("Mercúrio", 57.9), ("Vênus", 108.2), ("Terra", 149.6),
        ("Marte", 227.9), ("Júpiter", 778.3))
@@ -61,7 +61,7 @@ planetas.foreach{
 
 Ou, um exemplo com `for` :
 
-```tut
+```scala mdoc
 val numPars = List((2, 5), (3, -7), (20, 56))
 for ((a, b) <- numPars) {
   println(a * b)

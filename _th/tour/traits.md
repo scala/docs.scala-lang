@@ -17,11 +17,11 @@ Trait ใช้เพื่อแชร์ interface และ field ระห�
 ## การกำหนด trait
 วิธีที่ง่ายที่สุดในการกำหนด trait คือการประกาศด้วย keyword `trait` และ indentifier:
 
-```tut
+```scala mdoc
 trait HairColor
 ```
 trait จะมีประโยชน์อย่างยิ่งด้วยการเป็น generic type และเป็น abstract method
-```tut
+```scala mdoc
 trait Iterator[A] {
   def hasNext: Boolean
   def next(): A
@@ -32,7 +32,7 @@ trait Iterator[A] {
 
 ## การใช้ traits
 ใช้ keyword `extends` เพื่อขยาย trait ดังนั้นจะ implement abstract member ใดๆ ของ trait โดยใช้ keyword `override`:
-```tut
+```scala mdoc:nest
 trait Iterator[A] {
   def hasNext: Boolean
   def next(): A
@@ -59,7 +59,7 @@ iterator.next()  // returns 1
 
 ## Subtyping
 ในเมื่อ trait ที่ให้มานั้น required, subtype ของ trait สามารถถูกใช้แทนที่ได้
-```tut
+```scala mdoc
 import scala.collection.mutable.ArrayBuffer
 
 trait Pet {

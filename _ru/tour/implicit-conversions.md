@@ -31,7 +31,7 @@ List(1, 2, 3) <= List(4, 5)
 
 Неявный метод `Int => Ordered[Int]` предоставляется автоматически через `scala.Predef.intWrapper`. Ниже приведен пример объявления неявного метода `List[A] => Ordered[List[A]]`.
 
-```tut
+```scala mdoc
 import scala.language.implicitConversions
 
 implicit def list2ordered[A](x: List[A])
@@ -46,7 +46,7 @@ implicit def list2ordered[A](x: List[A])
 
 Например, при вызове Java метода, который ожидает `java.lang.Integer`, вместо него вы можете свободно использовать `scala.Int`. Потому что Predef включает в себя следующие неявные преобразования:
 
-```tut
+```scala mdoc
 import scala.language.implicitConversions
 
 implicit def int2Integer(x: Int) =

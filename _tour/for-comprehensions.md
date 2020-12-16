@@ -15,7 +15,7 @@ Scala offers a lightweight notation for expressing *sequence comprehensions*. Co
 
 Here's an example:
 
-```tut
+```scala mdoc
 case class User(name: String, age: Int)
 
 val userBase = List(
@@ -35,7 +35,7 @@ A `for` loop with a `yield` statement returns a result, the container type of wh
 
 Here is a more complicated example using two generators. It computes all pairs of numbers between `0` and `n-1` whose sum is equal to a given value `v`:
 
-```tut
+```scala mdoc
 def foo(n: Int, v: Int) =
    for (i <- 0 until n;
         j <- 0 until n if i + j == v)
@@ -48,8 +48,7 @@ foo(10, 10) foreach {
 
 ```
 Here `n == 10` and `v == 10`. On the first iteration, `i == 0` and `j == 0` so `i + j != v` and therefore nothing is yielded. `j` gets incremented 9 more times before `i` gets incremented to `1`. Without the `if` guard, this would simply print the following:
-```
-
+```scala
 (0, 0) (0, 1) (0, 2) (0, 3) (0, 4) (0, 5) (0, 6) (0, 7) (0, 8) (0, 9) (1, 0) ...
 ```
 
@@ -57,7 +56,7 @@ Note that comprehensions are not restricted to lists. Every datatype that suppor
 
 You can omit `yield` in a comprehension. In that case, comprehension will return `Unit`. This can be useful in case you need to perform side-effects. Here's a program equivalent to the previous one, but without using `yield`:
 
-```tut
+```scala mdoc:nest
 def foo(n: Int, v: Int) =
    for (i <- 0 until n;
         j <- 0 until n if i + j == v)

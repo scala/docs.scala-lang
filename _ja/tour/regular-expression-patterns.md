@@ -16,7 +16,7 @@ previous-page: singleton-objects
 正規表現はデータの中からパターン（またはその欠如）を探すために使うことができる文字列です。
 どんな文字列も`.r`メソッドを使うことで、正規表現に変換できます。
 
-```tut
+```scala mdoc
 import scala.util.matching.Regex
 
 val numberPattern: Regex = "[0-9]".r
@@ -30,7 +30,7 @@ numberPattern.findFirstMatchIn("awesomepassword") match {
 
 括弧を使うことで、正規表現のグループを探すこともできます。
 
-```tut
+```scala mdoc
 import scala.util.matching.Regex
 
 val keyValPattern: Regex = "([0-9a-zA-Z-#() ]+): ([0-9a-zA-Z-#() ]+)".r

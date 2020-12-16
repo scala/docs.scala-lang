@@ -16,19 +16,19 @@ Scalaコンパイラが式の型を推論できることが多いので、明示
 
 ## 型の省略
 
-```tut
+```scala mdoc
 val businessName = "Montreux Jazz Café"
 ```
 コンパイラは`businessName`がStringだと検知できます。これはメソッドでも同様に動きます。
 
-```tut
+```scala mdoc
 def squareOf(x: Int) = x * x
 ```
 コンパイラは戻り値の型が`Int`だと推論できるので、明示的な戻り値の型は必要ありません。
 
 再帰的メソッドでは、コンパイラは結果の型を推論できません。こちらはこの理由でコンパイラが失敗するプログラムです。
 
-```tut:fail
+```scala mdoc:fail
 def fac(n: Int) = if (n == 0) 1 else n * fac(n - 1)
 ```
 
@@ -36,7 +36,7 @@ def fac(n: Int) = if (n == 0) 1 else n * fac(n - 1)
 
 こちらは2つの例です。
 
-```tut
+```scala mdoc
 case class MyPair[A, B](x: A, y: B)
 val p = MyPair(1, "scala") // 型: MyPair[Int, String]
 
@@ -49,7 +49,7 @@ val q = id(1)              // 型: Int
 
 コンパイラはメソッドのパラメータ型を決して推論しません。しかし、関数が引数として渡されている場合は、無名関数のパラメータ型を推論できます。
 
-```tut
+```scala mdoc
 Seq(1, 3, 4).map(x => x * 2)  // List(2, 6, 8)
 ```
 
@@ -61,13 +61,13 @@ mapのパラメータは`f: A => B`です。`Seq`の中に整数が入ってい�
 
 また、型推論は特定の型を推論することがあります。次のように書いたとします。
 
-```tut
+```scala
 var obj = null
 ```
 
 これ以上進められず、再割り当てができません。
 
-```tut:fail
+```scala mdoc:fail
 obj = new AnyRef
 ```
 

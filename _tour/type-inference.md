@@ -12,19 +12,19 @@ The Scala compiler can often infer the type of an expression so you don't have t
 
 ## Omitting the type
 
-```tut
+```scala mdoc
 val businessName = "Montreux Jazz Café"
 ```
 The compiler can detect that `businessName` is a String. It works similarly with methods:
 
-```tut
+```scala mdoc
 def squareOf(x: Int) = x * x
 ```
 The compiler can infer that the return type is an `Int`, so no explicit return type is required.
 
 For recursive methods, the compiler is not able to infer a result type. Here is a program which will fail the compiler for this reason:
 
-```tut:fail
+```scala mdoc:fail
 def fac(n: Int) = if (n == 0) 1 else n * fac(n - 1)
 ```
 
@@ -32,7 +32,7 @@ It is also not compulsory to specify type parameters when [polymorphic methods](
 
 Here are two examples:
 
-```tut
+```scala mdoc
 case class MyPair[A, B](x: A, y: B)
 val p = MyPair(1, "scala") // type: MyPair[Int, String]
 
@@ -46,7 +46,7 @@ The compiler uses the types of the arguments of `MyPair` to figure out what type
 
 The compiler never infers method parameter types. However, in certain cases, it can infer anonymous function parameter types when the function is passed as argument.
 
-```tut
+```scala mdoc
 Seq(1, 3, 4).map(x => x * 2)  // List(2, 6, 8)
 ```
 
@@ -58,13 +58,13 @@ It is generally considered more readable to declare the type of members exposed 
 
 Also, type inference can sometimes infer a too-specific type.  Suppose we write:
 
-```tut
+```scala
 var obj = null
 ```
 
 We can't then go on and make this reassignment:
 
-```tut:fail
+```scala mdoc:fail
 obj = new AnyRef
 ```
 

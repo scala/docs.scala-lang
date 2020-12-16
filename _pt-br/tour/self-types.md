@@ -13,7 +13,7 @@ Ao desenvolver um software extensível, às vezes é útil declarar explicitamen
 
 Aqui está uma definição que descreve um grafo:
 
-```tut
+```scala mdoc
 abstract class Graph {
   type Edge
   type Node <: NodeIntf
@@ -30,7 +30,7 @@ Um grafo consiste em uma lista de nós e arestas onde o nó e o tipo de aresta s
 
 Uma possível implementação de `Graph` é ilustrada na classe a seguir:
 
-```tut:fail
+```scala mdoc:fail
 abstract class DirectedGraph extends Graph {
   type Edge <: EdgeImpl
   class EdgeImpl(origin: Node, dest: Node) {
@@ -62,7 +62,7 @@ Em Scala é possível vincular uma classe a outro tipo (que será implementado n
 
 Aqui está o programa já corrigido:
 
-```tut
+```scala mdoc
 abstract class DirectedGraph extends Graph {
   type Edge <: EdgeImpl
   class EdgeImpl(origin: Node, dest: Node) {
@@ -93,7 +93,7 @@ Nesta nova definição de classe `NodeImpl`, `this` tem o tipo `Node`. Como o ti
 
 Aqui está uma especialização concreta de `DirectedGraph` onde todos os membros da classe abstrata são definidos:
 
-```tut
+```scala mdoc
 class ConcreteDirectedGraph extends DirectedGraph {
   type Edge = EdgeImpl
   type Node = NodeImpl
@@ -107,7 +107,7 @@ Observe que nesta classe, podemos instanciar `NodeImpl` porque agora sabemos que
 
 Aqui está um exemplo de uso da classe `ConcreteDirectedGraph`:
 
-```tut
+```scala mdoc
 object GraphTest extends App {
   val g: Graph = new ConcreteDirectedGraph
   val n1 = g.addNode

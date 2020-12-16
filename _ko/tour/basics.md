@@ -25,17 +25,17 @@ ScalaFiddle를 사용하면 브라우저에서 스칼라를 실행해 볼 수 �
 이 페이지의 많은 예제 코드가 ScalaFiddle와 통합되어 있어 간단히 실행 버튼만 눌러 직접 실험해 볼 수 있다.
 
 ## 표현식
-  
+
 표현식은 연산 가능한 명령문이다.
 
-```
+```scala mdoc
 1 + 1
 ```
 
 `println` 표현식을 사용해 결과를 출력할 수 있다.
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 println(1) // 1
 println(1 + 1) // 2
 println("Hello!") // Hello!
@@ -47,20 +47,20 @@ println("Hello," + " world!") // Hello, world!
 
 `val` 키워드로 표현식의 결과에 이름을 붙인다.
 
-```tut
+```scala mdoc
 val x = 1 + 1
 println(x) // 2
 ```
 
 `x` 같이 이름이 붙여진 결과를 값이라고 부른다. 참조된 값은 재연산하지 않으며 값을 재할당할 수 없다.
 
-```tut:fail
+```scala mdoc:fail
 x = 3 // This does not compile.
 ```
 
 값의 타입을 추론할 수 있지만 명시적으로 타입을 지정할 수도 있다.
 
-```tut
+```scala mdoc:nest
 val x: Int = 1 + 1
 ```
 
@@ -70,7 +70,7 @@ val x: Int = 1 + 1
 
 변수는 재할당이 가능한 것 이외에는 값과 같다. `var` 키워드로 변수를 정의한다.
 
-```tut
+```scala mdoc:nest
 var x = 1 + 1
 x = 3 // This compiles because "x" is declared with the "var" keyword.
 println(x * x) // 9
@@ -78,7 +78,7 @@ println(x * x) // 9
 
 값처럼 명시적으로 타입을 지정할 수도 있다.
 
-```tut
+```scala mdoc:nest
 var x: Int = 1 + 1
 ```
 
@@ -89,7 +89,7 @@ var x: Int = 1 + 1
 
 블록 안 마지막 표현식의 결과는 블록 전체의 결과이기도 하다.
 
-```tut
+```scala mdoc
 println({
   val x = 1 + 1
   x + 1
@@ -102,7 +102,7 @@ println({
 
 주어진 정수에 1을 더하는 익명 함수(이름이 없는 함수)를 정의할 수 있다.
 
-```tut
+```scala mdoc
 (x: Int) => x + 1
 ```
 
@@ -111,7 +111,7 @@ println({
 함수에 이름을 지정할 수 있다.
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 val addOne = (x: Int) => x + 1
 println(addOne(1)) // 2
 ```
@@ -120,7 +120,7 @@ println(addOne(1)) // 2
 함수는 여러 매개변수를 가질 수 있다.
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 val add = (x: Int, y: Int) => x + y
 println(add(1, 2)) // 3
 ```
@@ -128,7 +128,7 @@ println(add(1, 2)) // 3
 
 또는 매개변수를 가지지 않을 수도 있다.
 
-```tut
+```scala mdoc
 val getTheAnswer = () => 42
 println(getTheAnswer()) // 42
 ```
@@ -140,7 +140,7 @@ println(getTheAnswer()) // 42
 `def` 키워드로 메소드를 정의하고 이름, 매개변수 목록, 반환 타입 그리고 본문이 뒤따른다.
 
 {% scalafiddle %}
-```tut
+```scala mdoc:nest
 def add(x: Int, y: Int): Int = x + y
 println(add(1, 2)) // 3
 ```
@@ -151,7 +151,7 @@ println(add(1, 2)) // 3
 메소드는 여러 매개변수 목록을 가질 수 있다.
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 def addThenMultiply(x: Int, y: Int)(multiplier: Int): Int = (x + y) * multiplier
 println(addThenMultiply(1, 2)(3)) // 9
 ```
@@ -159,7 +159,7 @@ println(addThenMultiply(1, 2)(3)) // 9
 
 또는 매개변수 목록을 가지지 않을 수도 있다.
 
-```tut
+```scala mdoc
 def name: String = System.getProperty("user.name")
 println("Hello, " + name + "!")
 ```
@@ -169,7 +169,7 @@ println("Hello, " + name + "!")
 메소드는 여러 줄의 표현식을 가질 수 있다.
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 def getSquareString(input: Double): String = {
   val square = input * input
   square.toString
@@ -184,7 +184,7 @@ println(getSquareString(2.5)) // 6.25
 
 `class` 키워드로 클래스를 정의하고 이름과 생성자 매개변수가 뒤따른다.
 
-```tut
+```scala mdoc
 class Greeter(prefix: String, suffix: String) {
   def greet(name: String): Unit =
     println(prefix + name + suffix)
@@ -195,7 +195,7 @@ class Greeter(prefix: String, suffix: String) {
 
 `new` 키워드로 클래스의 인스턴스를 만든다.
 
-```tut
+```scala mdoc
 val greeter = new Greeter("Hello, ", "!")
 greeter.greet("Scala developer") // Hello, Scala developer!
 ```
@@ -206,13 +206,13 @@ greeter.greet("Scala developer") // Hello, Scala developer!
 
 스칼라는 케이스 클래스라고 불리는 특별한 타입의 클래스를 가지고 있다. 기본적으로, 케이스 클래스는 변하지 않으며 값으로 비교한다. `case class` 키워드로 케이스 클래스를 정의한다.
 
-```tut
+```scala mdoc
 case class Point(x: Int, y: Int)
 ```
 
 `new` 키워드 없이 케이스 클래스를 인스턴스화 할 수 있다.
 
-```tut
+```scala mdoc
 val point = Point(1, 2)
 val anotherPoint = Point(1, 2)
 val yetAnotherPoint = Point(2, 2)
@@ -220,7 +220,7 @@ val yetAnotherPoint = Point(2, 2)
 
 그리고 값으로 비교한다.
 
-```tut
+```scala mdoc
 if (point == anotherPoint) {
   println(point + " and " + anotherPoint + " are the same.")
 } else {
@@ -242,7 +242,7 @@ if (point == yetAnotherPoint) {
 
 `object` 키워드로 객체를 정의한다.
 
-```tut
+```scala mdoc
 object IdFactory {
   private var counter = 0
   def create(): Int = {
@@ -254,7 +254,7 @@ object IdFactory {
 
 객체 이름을 참조하여 객체에 접근할 수 있다.
 
-```tut
+```scala mdoc
 val newId: Int = IdFactory.create()
 println(newId) // 1
 val newerId: Int = IdFactory.create()
@@ -269,7 +269,7 @@ println(newerId) // 2
 
 `trait` 키워드로 트레이트를 정의한다.
 
-```tut
+```scala mdoc:nest
 trait Greeter {
   def greet(name: String): Unit
 }
@@ -278,7 +278,7 @@ trait Greeter {
 또한 트레이트는 기본 구현도 가질 수 있다.
 
 {% scalafiddle %}
-```tut
+```scala mdoc:reset
 trait Greeter {
   def greet(name: String): Unit =
     println("Hello, " + name + "!")
@@ -287,7 +287,7 @@ trait Greeter {
 
 `extends` 키워드로 트레이트를 상속할 수 있고 `override` 키워드로 구현을 오버라이드할 수 있다.
 
-```tut
+```scala mdoc
 class DefaultGreeter extends Greeter
 
 class CustomizableGreeter(prefix: String, postfix: String) extends Greeter {
@@ -314,7 +314,7 @@ customGreeter.greet("Scala developer") // How are you, Scala developer?
 
 `object` 키워드를 사용하여 메인 메소드를 정의할 수 있다.
 
-```tut
+```scala mdoc
 object Main {
   def main(args: Array[String]): Unit =
     println("Hello, Scala developer!")
