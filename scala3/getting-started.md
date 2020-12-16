@@ -68,15 +68,14 @@ create a project called "hello-world".
 1. Let’s take a look at what just got generated:
 
 ```
-- hello-world
-    - project (sbt uses this for its own files)
-        - build.properties
-    - build.sbt (sbt’s build definition file)
-    - src
-        - main
-            - scala (all of your Scala code goes here)
-                - Main.scala (Entry point of program) <-- this is all we need for now
+hello-world/
+  project/           (sbt uses this for its own files)
+    build.properties
+  src/main/scala/    (all of your Scala code goes here)
+    Main.scala       (entry point of program)
+  build.sbt          (sbt’s build definition file)
 ```
+The scala file `Main.scala` in `src/main/scala` is all we need for now.
 
 More documentation about sbt can be found in the [Scala Book](/scala3/book/scala-tools.html) and in the official sbt [documentation](https://www.scala-sbt.org/1.x/docs/index.html)
 
