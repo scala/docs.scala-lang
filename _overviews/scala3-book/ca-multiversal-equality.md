@@ -155,8 +155,8 @@ While these comparisons are now allowed, they will always be `false` because the
 
 ```scala
 case class AudioBook(
-    author: String, 
-    title: String, 
+    author: String,
+    title: String,
     year: Int,
     lengthInMinutes: Int
 ) extends Book:
@@ -203,6 +203,3 @@ Here are a few more notes and details about Multiversal Equality in Scala 3:
   - Two sequences of arbitrary subtypes of _scala.collection.Seq_ can be compared with each other if their element types can be compared
   - Two sets of arbitrary subtypes of _scala.collection.Set_ can be compared with each other if their element types can be compared; the two set types need not be the same
   - Any subtype of `AnyRef` can be compared with `Null` (and vice versa)
-
-
-

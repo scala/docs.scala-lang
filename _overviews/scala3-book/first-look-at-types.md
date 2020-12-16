@@ -18,9 +18,13 @@ In Scala, all values have a type, including numerical values and functions. The 
 
 ## Scala type hierarchy
 
-`Any` is the supertype of all types, also called the top type. It defines certain universal methods such as `equals`, `hashCode`, and `toString`. `Any` has two direct subclasses: `AnyVal` and `AnyRef`.
+`Any` is the supertype of all types, also called the **top type**. It defines certain universal methods such as `equals`, `hashCode`, and `toString`.
 
-*`AnyVal`* represents value types. There are nine predefined value types and they are non-nullable: `Double`, `Float`, `Long`, `Int`, `Short`, `Byte`, `Char`, `Unit`, and `Boolean`. `Unit` is a value type which carries no meaningful information. There is exactly one instance of `Unit` which can be declared literally like so: `()`. All functions must return something so sometimes `Unit` is a useful return type.
+The top-type `Any` has a subtype [`Matchable`][matchable], which is used to mark all types that we can perform pattern matching on. It is important to guarantee a property call _"parametricity"_. We will not go into details here, but in summary, it means that we cannot pattern match on values of type `Any`, but only on values that are a subtype of `Matchable`. The [reference documentation][matchable] contains more information about `Matchable`.
+
+`Matchable` has two important subtypes: `AnyVal` and `AnyRef`.
+
+*`AnyVal`* represents value types. There are a couple of predefined value types and they are non-nullable: `Double`, `Float`, `Long`, `Int`, `Short`, `Byte`, `Char`, `Unit`, and `Boolean`. `Unit` is a value type which carries no meaningful information. There is exactly one instance of `Unit` which we can refer to as: `()`.
 
 *`AnyRef`* represents reference types. All non-value types are defined as reference types. Every user-defined type in Scala is a subtype of `AnyRef`. If Scala is used in the context of a Java runtime environment, `AnyRef` corresponds to `java.lang.Object`.
 
@@ -30,7 +34,7 @@ In statement-based languages, `void` is used for methods that don’t return any
 def printIt(a: Any): Unit = println(a)
 ```
 
-Here’s an example that demonstrates that strings, integers, characters, boolean values, and functions are all objects just like every other object:
+Here’s an example that demonstrates that strings, integers, characters, boolean values, and functions are all instances of `Any` and can be treated just like every other object:
 
 ```scala
 val list: List[Any] = List(
@@ -44,7 +48,7 @@ val list: List[Any] = List(
 list.foreach(element => println(element))
 ```
 
-It defines a value `list` of type `List[Any]`. The list is initialized with elements of various types, but each is an instance of `scala.Any`, so you can add them to the list.
+The code defines a value `list` of type `List[Any]`. The list is initialized with elements of various types, but each is an instance of `scala.Any`, so we can add them to the list.
 
 Here’s the output of the program:
 
@@ -55,12 +59,6 @@ c
 true
 <function>
 ```
-{% comment %}
-TODO: with Scala 3.0.0-M2, the REPL currently prints something like “rs$line$24$$$Lambda...” instead of `<function>`.
-{% endcomment %}
-
-
-
 
 ## Scala’s “value types”
 
@@ -122,8 +120,8 @@ Those data types and their ranges are:
 When you need really large numbers, use the `BigInt` and `BigDecimal` types:
 
 ```scala
-var a = BigInt(1_234_567_890_987_654_321L)
-var b = BigDecimal(123_456.789)
+val a = BigInt(1_234_567_890_987_654_321L)
+val b = BigDecimal(123_456.789)
 ```
 
 Where `Double` and `Float` are approximate decimal numbers, `BigDecimal` is used for precise arithmetic, such as when working with currency.
@@ -163,7 +161,7 @@ println(s"Name: $firstName $mi $lastName")   // "Name: John C Doe"
 
 Just precede the string with the letter `s`, and then put a `$` symbol before your variable names inside the string.
 
-To enclose expressions inside a string, put them in curly braces:
+To enclose potentially larger expressions inside a string, put them in curly braces:
 
 ```scala
 println(s"2 + 2 = ${2 + 2}")   // prints "2 + 2 = 4"
@@ -243,12 +241,13 @@ You can also cast a reference type to a subtype. This will be covered later in t
 
 ## `Nothing` and `null`
 
-`Nothing` is a subtype of all types, also called the bottom type. There is no value that has the type `Nothing`. A common use is to signal non-termination, such as a thrown exception, program exit, or an infinite loop — i.e., it is the type of an expression which does not evaluate to a value, or a method that does not return normally.
+`Nothing` is a subtype of all types, also called the **bottom type**. There is no value that has the type `Nothing`. A common use is to signal non-termination, such as a thrown exception, program exit, or an infinite loop — i.e., it is the type of an expression which does not evaluate to a value, or a method that does not return normally.
 
 `Null` is a subtype of all reference types (i.e. any subtype of `AnyRef`). It has a single value identified by the keyword literal `null`. `Null` is provided mostly for interoperability with other JVM languages and should almost never be used in Scala code. Alternatives to `null` are discussed in the [Functional Programming chapter][fp] of this book, and the [API documentation](https://dotty.epfl.ch/-scala%203/-a-p-i/scala/-option.html).
 
 
 
 [reference]: {{ site.scala3ref }}/overview.html
+[matchable]: {{ site.scala3ref }}/other-new-features/matchable.html
 [interpolation]: {% link _overviews/core/string-interpolation.md %}
 [fp]: {% link _overviews/scala3-book/fp-intro.md %}
