@@ -106,11 +106,11 @@ val minValue = if a < b then a else b
 Conversely, lines of code that don’t return values are called _statements_, and they’re used for their _side-effects_. For example, these lines of code don’t return values, so they’re used for their side effects:
 
 ```scala
-if a == b then doSomething()
+if a == b then action()
 println("Hello")
 ```
 
-The first example runs the `doSomething` method as a side effect when `a` is equal to `b`. The second example is used for the side effect of printing a string to STDOUT. As you learn more about Scala you’ll find yourself writing more _expressions_ and fewer _statements_.
+The first example runs the `action` method as a side effect when `a` is equal to `b`. The second example is used for the side effect of printing a string to STDOUT. As you learn more about Scala you’ll find yourself writing more _expressions_ and fewer _statements_.
 
 
 
@@ -119,7 +119,7 @@ The first example runs the `doSomething` method as a side effect when `a` is equ
 In its most simple use, a Scala `for` loop can be used to iterate over the elements in a collection. For example, given a sequence of integers, you can loop over its elements and print their values like this:
 
 ```scala
-val ints = Seq(1,2,3)
+val ints = Seq(1, 2, 3)
 for i <- ints do println(i)
 ```
 
@@ -152,7 +152,7 @@ do
   println(s"i = $i, x = $x")
 
 // option 2
-for (i <- ints) 
+for (i <- ints)
   val x = i * 2
   println(s"i = $i, x = $x")
 
@@ -227,8 +227,8 @@ You can also use `for` loops with a `Map`. For example, given this `Map` of movi
 <!-- TODO: use a different example -->
 ```scala
 val ratings = Map(
-  "Lady in the Water"  -> 3.0, 
-  "Snakes on a Plane"  -> 4.0, 
+  "Lady in the Water"  -> 3.0,
+  "Snakes on a Plane"  -> 4.0,
   "You, Me and Dupree" -> 3.5
 )
 ```
@@ -278,13 +278,13 @@ In the previous `for` loop examples, those loops were all used for _side effects
 It’s important to know that you can also create `for` _expressions_ that return values. You create a `for` expression by adding the `yield` keyword and an expression to return, like this:
 
 ```scala
-val list = 
+val list =
   for
     i <- 10 to 12
   yield
     i * 2
 
-// result: list == Vector(20,22,24)
+// result: list == Vector(20, 22, 24)
 ```
 
 After that `for` expression runs, the variable `list` is a `Vector` that contains the values shown. This is how the expression works:
@@ -311,7 +311,6 @@ Here’s an example that shows how to use a block of code after the `yield`:
 val names = List("_olivia", "_walter", "_peter")
 
 val capNames = for name <- names yield
-  // imagine this algorithm requires multiple lines
   val nameWithoutUnderscore = name.drop(1)
   val capName = nameWithoutUnderscore.capitalize
   capName
@@ -325,14 +324,14 @@ val capNames = for name <- names yield
 Because a `for` expression yields a result, it can be used as the body of a method that returns a useful value. This method returns all of the values in a given list of integers that are between `3` and `10`:
 
 ```scala
-def between3and10(xs: List[Int]): List[Int] = 
+def between3and10(xs: List[Int]): List[Int] =
   for
     x <- xs
     if x >= 3
     if x <= 10
   yield x
 
-between3and10(List(1,3,7,11))   // result: List(3, 7)
+between3and10(List(1, 3, 7, 11))   // result: List(3, 7)
 ```
 
 <!-- TODO: add a summary?
@@ -406,7 +405,7 @@ i match
   case what => println(s"You gave me: $what" )
 ```
 
-In this example the variable is named `what` to show that it can be given any legal name, but it’s more commonly given a name like `default`.
+In this example the variable is named `what` to show that it can be given any legal name. You can also use `_` as a name to ignore the value.
 
 
 ### Handling multiple possible matches on one line
@@ -423,7 +422,7 @@ val evenOrOdd = i match
 
 ### Using `if` expressions in `case` statements
 
-You can also use `if` expressions in the `case` statements of `match` expressions. In this example the second and third `case` statements both use `if` expressions to match multiple integer values:
+You can also use guards in the `case`s of a match expression. In this example the second and third `case` both use guards to match multiple integer values:
 
 ```scala
 i match
@@ -433,7 +432,7 @@ i match
   case _ => println("i’m guessing your number is zero or less")
 ```
 
-Here’s another example that shows how you can use `if` expressions in `case` statements. This example shows how to match a given value against ranges of numbers:
+Here’s another example, which shows how to match a given value against ranges of numbers:
 
 ```scala
 i match
@@ -466,39 +465,39 @@ speak(Person("Bam Bam"))   // "Bam Bam says, Bam bam!"
 Because `match` expressions return a value, they can be used as the body of a method. This method takes a `Boolean` value as an input parameter, and returns a `String`, based on the result of the `match` expression:
 
 ```scala
-def isTrue(a: Any) = a match
+def isTruthy(a: Matchable) = a match
   case 0 | "" => false
   case _ => true
 ```
 
-Because the input parameter `a` is defined to be the `Any` type — which is the root of all Scala classes, like `Object` in Java — this method works with any data type that’s passed in. After that, the body of the method is just two `case` statements, one that equates `0` or an empty string to `false`, and a default case that returns `true` for any other value. These examples show how this method works:
+The input parameter `a` is defined to be the [`Matchable` type][matchable] — which is the root of all Scala types that pattern matching can be performed on. The method is implemented by matching on the input, providing two cases:
+The first one checks whether the given value is either the integer `0` or an empty string and returns `false` in this case. In the default case, we return `true` for any other value. These examples show how this method works:
 
 ```scala
-isTrue(0)      // false
-isTrue("")     // false
-isTrue(1)      // true
-isTrue(" ")    // true
-isTrue(2F)     // true
+isTruthy(0)      // false
+isTruthy("")     // false
+isTruthy(1)      // true
+isTruthy(" ")    // true
+isTruthy(2F)     // true
 ```
 
 Using a `match` expression as the body of a method is a very common use.
 
 
 #### Match expressions support many different types of patterns
+There are many different forms of patterns that can be used to write `match` expressions.
+Examples includes:
 
-`match` expressions can work with many different types of patterns. The pattern types that can be matched are:
+- Constant patterns (such as `case 3 => `)
+- Sequence patterns (such as `case List(els : _*) =>`)
+- Tuple patterns (such as `case (x, y) =>`)
+- Constructor pattern (such as `case Person(first, last) =>`)
+- Type test patterns (such as `case p: Person =>`)
 
-- Constant
-- Sequence
-- Tuple
-- Constructor
-- Typed
-- Default/wildcard
-
-All of these patterns are shown in the following `pattern` method, which takes an input parameter of type `Any` and returns a `String`:
+All of these kinds of patterns are shown in the following `pattern` method, which takes an input parameter of type `Matchable` and returns a `String`:
 
 ```scala
-def pattern(x: Any): String = x match
+def pattern(x: Matchable): String = x match
 
   // constant patterns
   case 0 => "zero"
@@ -511,7 +510,7 @@ def pattern(x: Any): String = x match
   case List(1, _*) => "list, starts with 1, has any number of elements"
   case Vector(1, _*) => "vector, starts w/ 1, has any number of elements"
 
-  // tuples
+  // tuple patterns
   case (a, b) => s"got $a and $b"
   case (a, b, c) => s"got $a, $b, and $c"
 
@@ -519,7 +518,7 @@ def pattern(x: Any): String = x match
   case Person(first, "Alexander") => s"Alexander, first name = $first"
   case Dog("Zeus") => "found a dog named Zeus"
 
-  // typed patterns
+  // type test patterns
   case s: String => s"got a string: $s"
   case i: Int => s"got an int: $i"
   case f: Float => s"got a float: $f"
@@ -533,15 +532,13 @@ def pattern(x: Any): String = x match
   case _ => "Unknown"
 ```
 
-`match` expressions and patterns are discussed in more detail in the Reference documentation.
-
-
 
 ## try/catch/finally
 
-Like Java, Scala has a `try`/`catch`/`finally` construct to let you catch and manage exceptions. For consistency, Scala uses the same syntax that `match` expressions use: `case` statements to match the different possible exceptions that can occur.
+Like Java, Scala has a `try`/`catch`/`finally` construct to let you catch and manage exceptions.
+For consistency, Scala uses the same syntax that `match` expressions use and supports pattern matching on the different possible exceptions that can occur.
 
-Here’s an example of Scala’s `try`/`catch`/`finally` syntax. In this example, `openAndReadAFile` is a method that does what its name implies: it opens a file and reads the text in it, assigning the result to the mutable variable `text`:
+In the following example, `openAndReadAFile` is a method that does what its name implies: it opens a file and reads the text in it, assigning the result to the mutable variable `text`:
 
 ```scala
 var text = ""
@@ -555,15 +552,7 @@ finally
   println("Came to the 'finally' clause.")
 ```
 
-Assuming that the `openAndReadAFile` method uses the Java _java.io.*_ classes to read a file and doesn’t catch its exceptions, attempting to open and read a file can result in both a `FileNotFoundException` and an `IOException`, and those two exceptions are caught in the `catch` block of this example.
+Assuming that the `openAndReadAFile` method uses the Java `java.io._` classes to read a file and doesn’t catch its exceptions, attempting to open and read a file can result in both a `FileNotFoundException` and an `IOException`, and those two exceptions are caught in the `catch` block of this example.
 
 
-
-## More information
-
-That covers the basics of Scala control structures. For more details, see the Reference documentation.
-
-
-
-
-
+[matchable]: {{ site.scala3ref }}/other-new-features/matchable.html
