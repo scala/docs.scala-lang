@@ -61,7 +61,7 @@ The old syntax for this control structure was:
 
 ```scala
 for (i <- ints) println(i)
-
+```
 
 ### Guards
 
@@ -165,14 +165,14 @@ val p = Person("Fred")
 
 // later in the code
 p match
-  case Person(name) if name == "Fred" => 
+  case Person(name) if name == "Fred" =>
     println(s"$name says, Yubba dubba doo")
 
-  case Person(name) if name == "Bam Bam" => 
+  case Person(name) if name == "Bam Bam" =>
     println(s"$name says, Bam bam!")
 
   case _ => println("Watch the Flintstones!")
-
+```
 In fact, a `match` expression can be used to test a variable against many different types of patterns. This example shows (a) how to use a `match` expression as the body of a method, and (b) how to match all the different types shown:
 
 ```scala
