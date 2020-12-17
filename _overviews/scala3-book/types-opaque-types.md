@@ -77,7 +77,13 @@ Within the implementation of `LogarithmsImpl` the equation `Logarithm = Double` 
 
 #### Leaky Abstractions
 However, this abstraction is slightly leaky. We have to make sure to _only_ ever program against the abstract interface `Logarithms` and never directly use `LogarithmsImpl` because otherwise.
-Directly using `LogarithmsImpl` would make the equality `Logarithm = Double` visible for the user, who might accidentaly use a `Double` where a logarithmic double is expected.
+Directly using `LogarithmsImpl` would make the equality `Logarithm = Double` visible for the user, who might accidentaly use a `Double` where a logarithmic double is expected. For example:
+
+```scala
+import LogarithmsImpl._
+val l: Logarithm = make(1.0)
+val d: Double = l // type checks AND leaks the equality!
+```
 
 Having to separate the module into an abstract interface and implementation can be useful, but is also a lot of effort, just to hide the implementation detail of `Logarithm`.
 Programming against the abstract module `Logarithms` can be very tedious and often requires the use of advanced features like path-dependent types as in the following example:
