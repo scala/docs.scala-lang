@@ -41,7 +41,6 @@ When you’re writing Scala code and need to use a Java collection class, you _c
 
 Here’s an example of how this works. Given this Java `ArrayList`:
 
-<!-- verified -->
 ```java
 // java
 public class JavaClass {
@@ -53,7 +52,6 @@ public class JavaClass {
 
 You can convert that Java list to a Scala `Seq`, using the conversion utilities in the Scala _scala.jdk.CollectionConverters_ package:
 
-<!-- verified -->
 ```scala
 // scala
 import scala.jdk.CollectionConverters._
@@ -77,7 +75,6 @@ When you need to use the Java `Optional` class in your Scala code, import the _s
 
 To demonstrate this, here’s a Java class with two `Optional<String>` values, one containing a string and the other one empty:
 
-<!-- verified -->
 ```java
 // java
 import java.util.Optional;
@@ -90,7 +87,6 @@ public class JavaClass {
 
 Now in your Scala code you can access those fields. If you just access them directly, they’ll both be `Optional` values:
 
-<!-- verified -->
 ```scala
 // scala
 import java.util.Optional
@@ -101,7 +97,6 @@ val eOptionalString = JavaClass.oEmptyString   // Optional.empty
 
 But by using the _scala.jdk.OptionConverters_ methods, you can convert them to Scala `Option` values:
 
-<!-- verified -->
 ```scala
 import java.util.Optional
 import scala.jdk.OptionConverters._
@@ -119,7 +114,6 @@ val eOptionString = eOptionalString.toScala    // None
 
 If you need to use Java interfaces in your Scala code, extend them just as though they are Scala traits. For example, given these three Java interfaces:
 
-<!-- verified -->
 ```java
 // java
 interface Animal {
@@ -140,7 +134,6 @@ interface Running {
 
 you can create a `Dog` class in Scala just as though you were using traits. All you have to do is implement the `speak` and `wag` methods:
 
-<!-- verified -->
 ```scala
 // scala
 class Dog extends Animal, Wagging, Running:
@@ -159,7 +152,6 @@ class Dog extends Animal, Wagging, Running:
 
 When you need to use a Scala collection class in your Java code, use the methods of Scala’s _scala.jdk.javaapi.CollectionConverters_ object in your Java code to make the conversions work. For example, if you have a `List[String]` like this in a Scala class:
 
-<!-- verified -->
 ```scala
 // scala
 class ScalaClass:
@@ -168,7 +160,6 @@ class ScalaClass:
 
 You can access that Scala `List` in your Java code like this:
 
-<!-- verified -->
 ```java
 // java
 import scala.jdk.javaapi.CollectionConverters;
@@ -197,7 +188,6 @@ When you need to use a Scala `Option` in your Java code, you can convert the `Op
 
 To demonstrate this, create a Scala class with two `Option[String]` values, one containing a string and the other one empty:
 
-<!-- verified -->
 ```scala
 // scala
 object ScalaObject:
@@ -207,7 +197,6 @@ object ScalaObject:
 
 Then in your Java code, convert those `Option[String]` values into `java.util.Optional[String]` using the `toJava` method from the _scala.jdk.javaapi.OptionConverters_ object:
 
-<!-- verified -->
 ```java
 // java
 import java.util.Optional;
@@ -231,7 +220,6 @@ The two Scala `Option` fields are now available as Java `Optional` values.
 
 With Java 11 you can use a Scala trait just like a Java interface, even if the trait has implemented methods. For example, given these two Scala traits, one with an implemented method and one with only an interface:
 
-<!-- verified -->
 ```scala
 // scala
 trait ScalaAddTrait:
@@ -243,7 +231,6 @@ trait ScalaMultiplyTrait:
 
 A Java class can implement both of those interfaces, and define the `multiply` method:
 
-<!-- verified -->
 ```java
 // java
 class JavaMath implements ScalaAddTrait, ScalaMultiplyTrait {
@@ -265,7 +252,6 @@ When you’re writing Scala code using Scala programming idioms, you’ll never 
 
 For example, this Scala `exceptionThrower` method is annotated to declare that it throws an `Exception`:
 
-<!-- verified -->
 ```scala
 // scala
 object SExceptionThrower:
@@ -276,7 +262,6 @@ object SExceptionThrower:
 
 As a result, you’ll need to handle the exception in your Java code. For instance, this code won’t compile because I don’t handle the exception:
 
-<!-- verified -->
 ```java
 // java: won’t compile because the exception isn’t handled
 public class ScalaExceptionsInJava {
@@ -304,7 +289,6 @@ Conversely, if you leave the annotation off of the Scala `exceptionThrower` meth
 
 When a Scala method has a varargs parameter and you want to use that method in Java, mark the Scala method with the `@varargs` annotation. For example, the `printAll` method in this Scala class declares a `String*` varargs field:
 
-<!-- verified -->
 ```scala
 // scala
 import scala.annotation.varargs
@@ -315,7 +299,6 @@ object VarargsPrinter:
 
 Because `printAll` is declared with the `@varargs` annotation, it can be called from a Java program with a variable number of parameters, as shown in this example:
 
-<!-- verified -->
 ```scala
 // java
 public class JVarargs {
@@ -338,14 +321,12 @@ world
 
 In Scala you might want to create a method name using a symbolic character:
 
-<!-- verified -->
 ```scala
 def +(a: Int, b: Int) = a + b
 ```
 
 That method name won’t work well in Java, but what you can do in Scala 3 is provide an “alternate” name for the method — an alias — that will work in Java:
 
-<!-- verified -->
 ```scala
 import scala.annotation.alpha
 

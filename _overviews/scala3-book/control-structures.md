@@ -345,8 +345,6 @@ while (i < 3) {
 }
 ```
 
-<!-- NOTE: I had a do/while example here, but it’s used so rarely I didn’t think it should be included in an overview. -->
-
 
 
 ## `match` expressions
