@@ -425,7 +425,8 @@ After defining `Color` like that, you can use it like you would a Java enum:
 scala> Color.Red.compareTo(Color.Green)
 val res0: Int = -1
 ````
-The reference documentation covers [enumerations in more detail][ref-enums].
+
+The section on [algebraic datatypes][adts] and the [reference documentation][ref-enums] cover enumerations in more detail.
 
 
 ## Case classes
@@ -570,6 +571,7 @@ def handleMessages(msg: Message) = message match
   case StopPlaying         => stopPlayingMusic
 ```
 [ref-enums]: {{ site.scala3ref }}/enums/enums.html
+[adts]: {% link _overviews/scala3-book/types-adts-gadts.md %}
 [fp-modeling]: {% link _overviews/scala3-book/domain-modeling-fp.md %}
 [creator]: {{ site.scala3ref }}/other-new-features/creator-applications.html
 [unapply]: {{ site.scala3ref }}/changed-features/pattern-matching.html
