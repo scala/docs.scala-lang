@@ -8,9 +8,9 @@ next-page: types-type-classes
 ---
 
 
-Algebraic Data Types (ADTs) are created with the `enum` construct, so we’ll review enumerations before looking at ADTs.
+Algebraic Data Types (ADTs) can be created with the `enum` construct, so we’ll briefly review enumerations before looking at ADTs.
 
-### Enumerations
+## Enumerations
 
 An *enumeration* is used to define a type consisting of a set of named values:
 
@@ -18,7 +18,14 @@ An *enumeration* is used to define a type consisting of a set of named values:
 enum Color:
   case Red, Green, Blue
 ```
-
+which can be seen as a shorthand for:
+```scala
+enum Color:
+  case Red   extends Color
+  case Green extends Color
+  case Blue  extends Color
+```
+#### Parameters
 Enums can be parameterized:
 
 ```scala
@@ -27,11 +34,17 @@ enum Color(val rgb: Int):
   case Green extends Color(0x00FF00)
   case Blue  extends Color(0x0000FF)
 ```
+This way, each of the different variants has a value member `rgb` which is assigned the corresponding value.
+```scala
+println(Color.Green.rgb) // prints 65280
+```
 
+#### Custom Definitions
 They can also have custom definitions:
 
 ```scala
 enum Planet(mass: Double, radius: Double):
+
   private final val G = 6.67300E-11
   def surfaceGravity = G * mass / (radius * radius)
   def surfaceWeight(otherMass: Double) =  otherMass * surfaceGravity
@@ -53,9 +66,9 @@ object Planet:
       println(s"Your weight on $p is ${p.surfaceWeight(mass)}")
 ```
 
-### ADTs and GADTs
+## Algebraic Datatypes (ADTs)
 
-The `enum` concept is general enough to also support algebraic data types (ADTs) and their generalized version (GADTs). Here’s an example how an `Option` type can be represented as an ADT:
+The `enum` concept is general enough to also support _algebraic data types_ (ADTs) and their generalized version (GADTs). Here’s an example how an `Option` type can be represented as an ADT:
 
 ```scala
 enum Option[+T]:
@@ -63,7 +76,7 @@ enum Option[+T]:
   case None
 ```
 
-This example creates an `Option` enum with a covariant type parameter `T` consisting of two cases, `Some` and `None`. `Some` is parameterized with a value parameter `x`; this is a shorthand for writing a `case` class that extends `Option`. Since `None` is not parameterized, it’s treated as a normal `enum` value.
+This example creates an `Option` enum with a covariant type parameter `T` consisting of two cases, `Some` and `None`. `Some` is _parameterized_ with a value parameter `x`; this is a shorthand for writing a `case` class that extends `Option`. Since `None` is not parameterized, it’s treated as a normal `enum` value.
 
 The `extends` clauses that were omitted in the example above can also be given explicitly:
 
@@ -72,12 +85,6 @@ enum Option[+T]:
   case Some(x: T) extends Option[T]
   case None       extends Option[Nothing]
 ```
-
-<!--Note that the parent type of the `None` value is inferred as
-`Option[Nothing]`. Generally, all covariant type parameters of the enum
-class are minimized in a compiler-generated extends clause whereas all
-contravariant type parameters are maximized. If `Option` was non-variant,
-you would need to give the extends clause of `None` explicitly.-->
 
 As with normal `enum` values, the cases of an `enum` are defined in the `enum`s companion object. So they’re referred to as `Option.Some` and `Option.None`, unless the definitions are “pulled out” with an import:
 
@@ -89,17 +96,7 @@ scala> Option.None
 val res2: t2.Option[Nothing] = None
 ```
 
-<!-- Note that the type of the expressions above is always `Option`. Generally, the type of an `enum` case constructor application will be widened to the underlying enum type, unless a more specific type is expected. This is a subtle difference with respect to normal case classes. The classes making up the cases do exist, and can be unveiled, either by constructing them directly with a `new`, or by explicitly providing an expected type.
-
-```scala
-scala> new Option.Some(2)
-val res3: Option.Some[Int] = Some(2)
-scala> val x: Option.Some[Int] = Option.Some(3)
-val res4: Option.Some[Int] = Some(3)
-```
--->
-
-As with other enumeration uses, ADTs can define methods. For instance, here’s `Option` again, with an `isDefined` method and an `Option(...)` constructor in its companion object.
+As with other enumeration uses, ADTs can define additional methods. For instance, here’s `Option` again, with an `isDefined` method and an `Option(...)` constructor in its companion object.
 
 ```scala
 enum Option[+T]:
@@ -108,7 +105,7 @@ enum Option[+T]:
 
   def isDefined: Boolean = this match
     case None => false
-    case some => true
+    case Some(_) => true
 
 object Option:
   def apply[T >: Null](x: T): Option[T] =
@@ -129,4 +126,58 @@ enum Color(val rgb: Int):
   case Mix(mix: Int) extends Color(mix)
 ```
 
+#### Recursive Enumerations
+So far all the enumerations that we defined consisted of different variants of values or case classes. Enumerations can also be recursive as illustrated in the below example of encoding natural numbers.
+```scala
+enum Nat:
+  case Zero
+  case Succ(n: Nat)
+```
+For example the value `Succ(Succ(Zero))` represents the number `2` in an unary encoding. Lists can be defined in a very similar way:
 
+```scala
+enum List[+A]:
+  case Nil
+  case Cons(head: A, tail: List[A])
+```
+
+## Generalized Algebraic Datatypes (GADTs)
+The above notation for enumerations is very concise and serves as the perfect starting point for modeling your data types. Since we always can be more explicit, it is also possible to express types that are much more powerful: generalized algebraic datatypes (GADTs).
+
+Here is an example of a GADT where the type parameter (`T`) specifies the contents stored in the box:
+```scala
+enum Box[T](contents: T):
+  case IntBox(n: Int) extends Box[Int](n)
+  case BoolBox(b: Boolean) extends Box[Boolean](b)
+```
+Pattern matching on the particular constructor (`IntBox` or `BoolBox`) recovers the type information:
+```scala
+def extract[T](b: Box[T]): T = b match
+  case IntBox(n)  => n + 1
+  case BoolBox(b) => !b
+```
+It is only safe to return an `Int` in the first case since we know from pattern matching that the input was an `IntBox`.
+
+
+## Desugaring Enumerations
+_Conceptually_, enums can be thought of as defining a sealed class together with an companion object. Let's look at the desugaring of our `Color` enum above:
+```scala
+sealed abstract class Color(val rgb: Int) extends scala.reflect.Enum
+object Color:
+  case object Red extends Color(0xFF0000) { def ordinal = 0 }
+  case object Green extends Color(0x00FF00) { def ordinal = 1 }
+  case object Blue extends Color(0x0000FF) { def ordinal = 2 }
+  case class Mix(mix: Int) extends Color(mix) { def ordinal = 3 }
+
+  def fromOrdinal(ordinal: Int): Color = ordinal match
+    case 0 => Red
+    case 1 => Green
+    case 2 => Blue
+    case _ => throw new NoSuchElementException(ordinal.toString)
+```
+Note that the above desugaring is simplified and we purposefully leave out [some details][desugar-enums].
+
+While enums could be manually encoded using other constructs, using enumerations is more concise and also comes with a few additional utilities (such as the `fromOrdinal` method).
+
+
+[desugar-enums]: {{ site.scala3-ref }}/enums/desugarEnums.html
