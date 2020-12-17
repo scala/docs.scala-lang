@@ -7,8 +7,10 @@ previous-page: types-opaque-types
 next-page: types-dependent-function
 ---
 
+{% comment %}
+NOTE: It would be nice to simplify this more.
+{% endcomment %}
 
-<!-- TODO: I’d still like to simplify this more. -->
 Some use cases, such as modeling database access, are more awkward in statically typed languages than in dynamically typed languages. With dynamically typed languages, it’s natural to model a row as a record or object, and to select entries with simple dot notation, e.g. `row.columnName`.
 
 Achieving the same experience in a statically typed language requires defining a class for every possible row arising from database manipulation — including rows arising from joins and projections — and setting up a scheme to map between a row and the class representing it.

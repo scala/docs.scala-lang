@@ -86,7 +86,6 @@ val res2: scala.concurrent.Future[Int] = Future(Success(42))
 While that’s a relatively simple example, it shows the basic approach: Just construct a new `Future` with your long-running algorithm.
 
 One thing to notice is that the `42` you expected is wrapped in a `Success`, which is further wrapped in a `Future`. This is a key concept to understand: the value in a `Future` is always an instance of one of the *scala.util.Try* types: `Success` or `Failure`. Therefore, when you work with the result of a future, you use the usual `Try`-handling techniques.
-<!-- TODO: link to the Try/Success/Failure docs -->
 
 
 ### Using `map` with futures
@@ -149,7 +148,6 @@ Other transformation methods include:
 
 
 See the `Future` class Scaladoc for a list of additional methods. Also, see the Concurrency section in the Reference documentation for more details on how futures work.
-<!-- TODO: Link to those two documents -->
 
 
 

@@ -20,7 +20,9 @@ Givens have many different applications, and this section demonstrates two use c
 
 ## Eliminate the need to manually specify a repeated parameter
 
-<!-- https://www.scala-lang.org/2020/11/06/explicit-term-inference-in-scala-3.html -->
+{% comment %}
+REFERENCE: https://www.scala-lang.org/2020/11/06/explicit-term-inference-in-scala-3.html
+{% endcomment %}
 
 If givens didn’t exist, you’d have to write code like this:
 
@@ -50,7 +52,12 @@ With givens in Scala 3, the same code can be written like this:
 In this use, `given` contextual parameters simplify the code. The `executor` parameter is still passed into the future’s second parameter group, but it’s passed in *implicitly* by the compiler, rather than *explicitly* (or manually) in your code. Once you know that the second parameter group of `Future` is designed to enable this, there’s no need to see this parameter repeated in the code.
 
 >The second parameter group of `Future` is designed to take an `implicit` parameter in Scala 2, and a `using` parameter in Scala 3.
-<!-- TODO: verify that statement -->
+
+{% comment %}
+TODO: verify that `executor` is defined to use `using`
+SEE:  https://dotty.epfl.ch/api/scala/concurrent/Future$.html
+      apply[T](body: => T)(executor: ExecutionContext)
+{% endcomment %}
 
 
 

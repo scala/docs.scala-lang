@@ -254,10 +254,8 @@ import _root_.users._
 
 ## Importing `given` instances
 
-<!-- TODO: link to the Contextual Abstractions chapter -->
-As you’ll see in the Contextual Abstractions chapter, a special form of the `import` statement is used to import `given` instances. The basic form is shown in this example:
+As you’ll see in the [Contextual Abstractions][contextual] chapter, a special form of the `import` statement is used to import `given` instances. The basic form is shown in this example:
 
-<!-- TODO: this code does not compile in the REPL; test it in a project -->
 ```scala
 object A:
   class TC
@@ -380,3 +378,4 @@ While that covers almost all of the features of packing and imports, see the Ref
 
 
 
+[contextual]: {% link _overviews/scala3-book/ca-contextual-abstractions-intro.md %}

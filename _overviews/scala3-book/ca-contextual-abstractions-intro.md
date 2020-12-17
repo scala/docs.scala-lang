@@ -8,8 +8,10 @@ next-page: ca-given-using-clauses
 ---
 
 
-<!-- TODO: Personally, I’m not comfortable with terms like “contextual abstractions” and “context parameters”. (For instance, in my original Dotty notes I have the question, “What is a context parameter?”) I’d like to add some definitions of the main concepts/terms, either here or in the sections where they are used.
--->
+{% comment %}
+TODO: Personally, I’m not comfortable with terms like “contextual abstractions” and “context parameters”. (For instance, in my original Dotty notes I have the question, “What is a context parameter?”) I’d like to add some definitions of the main concepts/terms, either here or in the sections where they are used.
+{% endcomment %}
+
 
 ## Background
 
@@ -31,8 +33,6 @@ Even though these designs use different terminology, they’re all variants of t
 Scala 3 includes a redesign of contextual abstractions in Scala. While these concepts were gradually “discovered” in Scala 2, they’re now well known and understood, and the redesign takes advantage of that knowledge.
 
 Scala 3 introduces four fundamental changes:
-
-<!-- TODO: link Using Clauses to its subsection -->
 
 - [Given Instances][givens] are a new way to define terms that can be synthesized. If you used implicit definitions in Scala 2, *givens* replace those, and represent a single way to define terms that can be synthesized for types.
 - [Using Clauses][givens] are the new syntax for implicit parameters and their arguments. They unambiguously align parameters and arguments, and let you have several `using` clauses in a definition.

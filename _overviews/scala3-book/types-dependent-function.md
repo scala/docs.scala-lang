@@ -8,7 +8,9 @@ next-page: types-others
 ---
 
 
-<!-- TODO: Simplify more. -->
+{% comment %}
+TODO: Simplify this example, if possible.
+{% endcomment %}
 
 A *dependent function type* describes functions where the result type may depend on the function’s parameter values. For example:
 

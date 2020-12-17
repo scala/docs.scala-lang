@@ -7,8 +7,11 @@ previous-page: ca-given-using-clauses
 next-page: ca-given-imports
 ---
 
-<!-- TODO: define "context parameter" -->
-<!-- TODO: define "synthesized" and "synthesized arguments" -->
+
+{% comment %}
+- TODO: define "context parameter"
+- TODO: define "synthesized" and "synthesized arguments"
+{% endcomment %}
 
 
 In many situations the name of a *context parameter* doesn’t have to be mentioned explicitly, since it’s only used in synthesized arguments for other context parameters. In that case you don’t have to define a parameter name, and can just provide the parameter type.

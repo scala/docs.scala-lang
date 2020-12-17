@@ -16,7 +16,10 @@ A *type class* is an abstract, parameterized type that lets you add new behavior
 In Scala 3, type classes are just traits with one or more parameters whose implementations are not defined through the `extends` keyword, but by `given` instances.
 
 
-<!-- TODO: discuss where the name "type class" comes from -->
+{% comment %}
+TODO: As background, discuss where the name "type class" comes from.
+{% endcomment %}
+
 ## Example
 
 For example, `Show` is a well-known type class in Haskell, and the following code shows one way to implement it in Scala 3. If you imagine that Scala classes don’t have a `toString` method, you can define a `Show` type class to add that sort of behavior to any class that you want to be able to convert to a custom string.

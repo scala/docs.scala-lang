@@ -213,7 +213,6 @@ programming in a typed setting."
 
 ## Type casting
 
-<!-- TODO: add this image in -->
 Value types can be cast in the following way:
 <a href="{{ site.baseurl }}/resources/images/tour/type-casting-diagram.svg"><img  style="width:100%" src="{{ site.baseurl }}/resources/images/tour/type-casting-diagram.svg" alt="Scala Type Hierarchy"></a>
 

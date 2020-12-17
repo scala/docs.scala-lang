@@ -45,8 +45,7 @@ In this chapter we’ll model the data and operations for a “pizza” in a piz
 In Scala, describing the data model of a programming problem is simple:
 
 - Create ADTs and GADTs with the `enum` construct
-- Use `case` classes if product types are sufficient or if you need more fine-grained control
-<!-- TODO: wording on that last line? -->
+- Use `case` classes if product types are sufficient, or if you need more fine-grained control
 
 
 ### Crust size, crust type, and toppings
@@ -127,12 +126,12 @@ There are several different ways to implement and organize behaviors:
 - Use a “functional objects” approach
 
 These solutions are shown in the next three sections.
-<!-- TODO: is there ONE preferred solution? -->
 
 
 >An important point about all of the following solutions is that the methods and functions shown are *pure functions*. They don’t mutate any data; they receive an object, and apply transformation functions to that data to return new data.
-<!-- TODO: link to "pure function" definition -->
-
+{% comment %}
+TODO: link to the “pure function” definition
+{% endcomment %}
 
 
 

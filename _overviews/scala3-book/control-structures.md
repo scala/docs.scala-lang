@@ -222,52 +222,38 @@ do
 
 ### Using `for` with Maps
 
-You can also use `for` loops with a `Map`. For example, given this `Map` of movie names and ratings:
+You can also use `for` loops with a `Map`. For example, given this `Map` of state abbreviations and their full names:
 
-<!-- TODO: use a different example -->
 ```scala
-val ratings = Map(
-  "Lady in the Water"  -> 3.0,
-  "Snakes on a Plane"  -> 4.0,
-  "You, Me and Dupree" -> 3.5
+val states = Map(
+  "AK" -> "Alaska",
+  "AL" -> "Alabama", 
+  "AR" -> "Arizona"
 )
 ```
 
-You can print the movie names and ratings using `for` like this:
+You can print the keys and values using `for`, like this:
 
 ```scala
-for (name, rating) <- ratings do println(s"Movie: $name, Rating: $rating")
+for (abbrev, fullName) <- states do println(s"$abbrev: $fullName")
 ```
 
 Here’s what that looks like in the REPL:
 
 ```scala
-scala> for (name, rating) <- ratings do println(s"Movie: $name, Rating: $rating")
-Movie: Lady in the Water, Rating: 3.0
-Movie: Snakes on a Plane, Rating: 4.0
-Movie: You, Me and Dupree, Rating: 3.5
+scala> for (abbrev, fullName) <- states do println(s"$abbrev: $fullName")
+AK: Alaska
+AL: Alabama
+AR: Arizona
 ```
 
-As the `for` loop iterates over the map, each rating is bound to the variables `name` and `rating`, which are in a tuple:
+As the `for` loop iterates over the map, each key/value pair is bound to the variables `abbrev` and `fullName`, which are in a tuple:
 
 ```scala
-(name, rating) <- ratings
+(abbrev, fullName) <- states
 ```
 
-As the loop runs, the variable `name` is assigned to the current _key_ in the map, and the variable `rating` is assigned to the current map _value_.
-
-<!-- TODO: show other possible uses/styles here?
-for (name, rating) <- ratings
-do println(s"Movie: $name, Rating: $rating")
-
-for
-  (name, rating) <- ratings
-do
-  println(s"Movie: $name, Rating: $rating")
-
-for (name, rating) <- ratings do { println(s"Movie: $name, Rating: $rating") }
-for ((name, rating) <- ratings) println(s"Movie: $name, Rating: $rating")
--->
+As the loop runs, the variable `abbrev` is assigned to the current _key_ in the map, and the variable `fullName` is assigned to the current map _value_.
 
 
 
@@ -333,11 +319,6 @@ def between3and10(xs: List[Int]): List[Int] =
 
 between3and10(List(1, 3, 7, 11))   // result: List(3, 7)
 ```
-
-<!-- TODO: add a summary?
-- they are commonly used
-- a for-expression without a guard is the same as `map()`
--->
 
 
 

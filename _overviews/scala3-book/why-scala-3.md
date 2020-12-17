@@ -44,7 +44,10 @@ val x = List(1,2,3)
 
 However, what appears to the programmer to be a simple `List` is actually built from a combination of many specialized traits:
 
-<!-- TODO: Scala 2.13 hierarchy with Scala 3 syntax -->
+{% comment %}
+TODO: Update this. It shows the Scala 2.13 hierarchy with Scala 3 syntax.
+{% endcomment %}
+
 ```scala
 sealed abstract class List[+A]
   extends AbstractSeq[A],

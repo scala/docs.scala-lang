@@ -78,15 +78,20 @@ Also at a high level, the differences between Java and Scala are:
 - In addition to running on the JVM, the [Scala.js](https://www.scala-js.org) project lets you use Scala as a JavaScript replacement
 - The [Scala Native](http://www.scala-native.org) project adds low-level constructs to let you write “systems” level code, and also compiles to native executables
 
-<!-- TODO: Need a good, simple way to state that Scala has a sound type system -->
+{% comment %}
+TODO: Need a good, simple way to state that Scala has a sound type system
+{% endcomment %}
 
 
 ### Programming level differences
 
 Finally, these are some of the differences you’ll see every day when writing code:
 
-<!-- TODO: points to make about Scala’s consistency? -->
-<!-- TODO: add a point about how the type system lets you express details as desired -->
+{% comment %}
+TODO: points to make about Scala’s consistency?
+TODO: add a point about how the type system lets you express details as desired
+{% endcomment %}
+
 - Scala’s syntax is extremely consistent
 - Variables and parameters are defined as `val` (immutable, like `final` in Java) or `var` (mutable)
 - *Type inference* makes your code feel dynamically typed, and helps to keep your code brief
@@ -1032,8 +1037,8 @@ makeInt(aString) match
 
 `Option` is commonly used in Scala, and it’s built into many classes in the standard library. Other similar sets of classes like Try/Success/Failure and Either/Left/Right offer even more flexibility.
 
-For more information on dealing with errors and exceptions in Scala, see the Functional Error Handling section in the Reference documentation.
-<!-- TODO: link to that section when it’s available -->
+For more information on dealing with errors and exceptions in Scala, see the [Functional Error Handling][error-handling] section.
+
 
 
 ## Concepts that are unique to Scala
@@ -1050,20 +1055,20 @@ Currently there are other concepts in Scala which currently have no equal in Jav
 - Case classes (like “records” in Java 14) and case objects
 - Companion classes and objects
 - The ability to create your own control structures and DSLs
-- Toplevel definitions
+- [Toplevel definitions][toplevel]
 - Pattern matching
 - Advanced features of `match` expressions
 - Type lambdas
 - Trait parameters
-- Opaque type aliases
-- Multiversal equality
-- Type classes
+- [Opaque type aliases][opaque]
+- [Multiversal equality][equality]
+- [Type classes][type-classes]
 - Infix methods
 - Macros and metaprogramming
 
-<!-- TODO: link to those sections as they become available -->
-<!-- “Follow those links for more details on each feature.” -->
 
-
-
-
+[toplevel]: {% link _overviews/scala3-book/taste-toplevel-definitions.md %}
+[opaque]: {% link _overviews/scala3-book/types-opaque-types.md %}
+[equality]: {% link _overviews/scala3-book/ca-multiversal-equality.md %}
+[type-classes]: {% link _overviews/scala3-book/ca-type-classes.md %}
+[error-handling]: {% link _overviews/scala3-book/fp-functional-error-handling.md %}
