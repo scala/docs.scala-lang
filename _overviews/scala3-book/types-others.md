@@ -17,8 +17,6 @@ Scala has several other advanced types that are not shown in this book, includin
 - Singleton types
 - Refinement types
 - Kind polymorphism
-- Abstract type members and path-dependent types
-- Dependent function types
 
 For more details on these types, see the [Reference documentation][reference].
 
