@@ -7,8 +7,10 @@ previous-page: types-intersection
 next-page: types-adts-gadts
 ---
 
+Used on types, the `|` operator creates a so called _union type_.
+The type `A | B` represents values that are **either** of the type `A` and **or** of the type `B`.
 
-A union type `A | B` has as values all values of type `A` and also all values of type `B`. In this example, the `help` method accepts a union type parameter named `id`, which is then used in the subsequent `match` expression:
+In the following example, the `help` method accepts a parameter named `id` of union type `Username | Password`, that can be either a `Username` or a `Password`.
 
 ```scala
 case class Username(name: String)
@@ -20,10 +22,9 @@ def help(id: Username | Password) =
     case Password(hash) => lookupPassword(hash)
   // more code here ...
 ```
+We implement the method `help` by distinguishing between the two alternatives using pattern matching.
 
-As shown, a union type can represent one of several different types, without requiring those types to be part of a custom-crafted class hierarchy.
-
-This code is flexible, and it’s also a type-safe solution. If you attempt to pass in a type other than a `Username` or `Password`, the compiler flags it as an error:
+This code is a flexible and type-safe solution. If you attempt to pass in a type other than a `Username` or `Password`, the compiler flags it as an error:
 
 ```scala
 help("hi")   // error: Found: ("hi" : String)
@@ -36,9 +37,32 @@ You’ll also get an error if you attempt to add a `case` to the `match` express
 case 1.0 = > ???   // ERROR: this line won’t compile
 ```
 
->Union types are duals of intersection types. And like `&` with intersection types, `|` is also commutative: `A | B` is the same type as `B | A`.
+### Alternative to Union Types
+As shown, union types can be used to represent alternatives of several different types, without requiring those types to be part of a custom-crafted class hierarchy or requireing explicit wrapping.
 
-The compiler will assign a union type to an expression only if such a type is explicitly given. For instance, given these values:
+#### Preplanning the Class Hierarchy
+Other languages would require pre-planning of the class hierarchy like the following example illustrates:
+
+```scala
+trait UsernameOrPassword
+case class Username(name: String) extends UsernameOrPassword
+case class Password(hash: Hash) extends UsernameOrPassword
+def help(id: UsernameOrPassword) = ...
+```
+Preplanning does not scale very well, since for example requirements of API users might not be foreseeable. Additionaly, cluttering the type hierarchy with marker traits like `UsernameOrPassword` also makes the original code more difficult to read.
+
+#### Tagged Unions
+Another alternative would be to define a separate enumeration type like:
+
+```scala
+enum UsernameOrPassword:
+  case IsUsername(u: Username)
+  case IsPassword(p: Password)
+```
+The enumeration `UsernameOrPassword` represents a _tagged_ union of `Username` and `Password`. However, this way of modeling the union requires _explicit wrapping and unwrapping_ and for instance `Username` is **not** a subtype of `UsernameOrPassword`.
+
+### Inference of Union Types
+The compiler will assign a union type to an expression _only if_ such a type is explicitly given. For instance, given these values:
 
 ```scala
 val name = Username("Eve")     // name: Username = Username(Eve)
@@ -58,4 +82,4 @@ val b: Password | Username = Username(Eve)
 The type of `a` is `Object`, which is a supertype of `Username` and `Password`, but not the *least* supertype, `Password | Username`. If you want the least supertype you have to give it explicitly, as is done for `b`.
 
 
-
+> Union types are duals of intersection types. And like `&` with intersection types, `|` is also commutative: `A | B` is the same type as `B | A`.

@@ -8,56 +8,29 @@ next-page: types-union
 ---
 
 
-Used on types, the `&` operator creates an intersection type. The type `A & B` represents values that are of the type `A` and `B` at the same time. For instance, this example uses the type `Resettable & Growable[String]`:
+Used on types, the `&` operator creates a so called _intersection type_. The type `A & B` represents values that are **both** of the type `A` and of the type `B` at the same time. For instance, the following example uses the intersection type `Resettable & Growable[String]`:
 
 ```scala
 trait Resettable:
   def reset(): Unit
 
-trait Growable[B]:
+trait Growable[A]:
   def add(a: A): Unit
 
-def f(x: Resettable & Growable[String]) =
+def f(x: Resettable & Growable[String]): Unit =
   x.reset()
   x.add("first")
 ```
 
 In the method `f` in this example, the parameter `x` is required to be *both* a `Resettable` and a `Growable[String]`.
 
-The members of an intersection type `A & B` are all the members of `A` and all the members of `B`. Therefore, as shown, `Resettable & Growable[String]` has member methods `reset` and `add`.
+The _members_ of an intersection type `A & B` are all the members of `A` and all the members of `B`. Therefore, as shown, `Resettable & Growable[String]` has member methods `reset` and `add`.
 
->Note that `&` is _commutative_: `A & B` is the same type as `B & A`.
-
-
-
-
-{% comment %}
-This section is good, but maybe too much detail for an overview.
-
-If a member appears in both `A` and `B`, its type in `A & B` is the intersection of its type in `A` and its type in `B`. For instance, assume the definitions:
-
+Intersection types can be useful to describe requirements _structurally_. That is, in our example `f` we directly express that we are happy with any value for `x` as long as it a subtype of both `Resettable` and `Growable`. We **did not** have to create a _nominal_ helper trait like the following:
 ```scala
-trait A {
-  def children: List[A]
-}
-trait B {
-  def children: List[B]
-}
-val x: A & B = new C
-val ys: List[A & B] = x.children
+trait Both[A] extends Resettable, Growable[A]
+def f(x: Both): Unit
 ```
+There is an important difference between the two alternatives of defining `f`: While both allow `f` to be called with instances of `Both`, only the former would allow passing instances that are subtypes of `Resettable` and `Growable[String]`, but _not of_ `Both`.
 
-The type of `children` in `A & B` is the intersection of `children`'s type in `A` and its type in `B`, which is `List[A] & List[B]`. This can be further simplified to `List[A & B]` because `List` is covariant.
-
-One might wonder how the compiler could come up with a definition for `children` of type `List[A & B]` since what is given are `children` definitions of type `List[A]` and `List[B]`. The answer is the compiler does not need to. `A & B` is just a type that represents a set of requirements for values of the type. At the point where a value is _constructed_, one must make sure that all inherited members are correctly defined. So if one defines a class `C` that inherits `A` and `B`, one needs to give at that point a definition of a `children` method with the required type.
-
-```scala
-class C extends A with B {
-  def children: List[A & B] = ???
-}
-```
-{% endcomment %}
-
-
-
-
+> Note that `&` is _commutative_: `A & B` is the same type as `B & A`.
