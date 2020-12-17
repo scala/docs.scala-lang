@@ -9,7 +9,7 @@ next-page: fp-intro
 
 This chapter provides a summary of the common Scala 3 collections and their accompanying methods. As shown, Scala comes with a wealth of collections and methods.
 
-When you need to see more details about the types and methods, see the Scaladoc for the classes mentioned in this chapter:
+When you need to see more details about the collections types shown in this chapter, see their Scaladoc pages:
 
 - [List]({{ site.scaladocref }}/scala/collection/immutable/List.html)
 - [Vector]({{ site.scaladocref }}/scala/collection/immutable/Vector.html)
@@ -25,13 +25,5 @@ and the mutable `Map` and `Set`:
 
 - [Map]({{ site.scaladocref }}/scala/collection/mutable/Map.html)
 - [Set]({{ site.scaladocref }}/scala/collection/mutable/Set.html)
-
-
-{% comment %}
-TODO: put one of these in _config.yml to make the above links work:
-  scaladocref: "https://www.scala-lang.org/api/current"
-  scaladocref: "https://dotty.epfl.ch/-scala 3/-a-p-i"
-{% endcomment %}
-
 
 

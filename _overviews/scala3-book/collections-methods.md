@@ -9,9 +9,9 @@ next-page: collections-summary
 
 
 
-A great strength of Scala collections is that they come with dozens of methods out of the box, and those methods are consistently available across the immutable and mutable classes. The benefits of this are that you no longer need to write custom `for` loops every time you need to work on a collection, and when you move from one project to another, you’ll find these same methods used, rather than more custom `for` loops.
+A great strength of Scala collections is that they come with dozens of methods out of the box, and those methods are consistently available across the immutable and mutable collections types. The benefits of this are that you no longer need to write custom `for` loops every time you need to work with a collection, and when you move from one project to another, you’ll find these same methods used, rather than more custom `for` loops.
 
-There are *dozens* of methods available to you, so they aren’t all shown here. Instead, only some of the most commonly-used methods will be shown, including:
+There are *dozens* of methods available to you, so they aren’t all shown here. Instead, only some of the most commonly-used methods are shown, including:
 
 - `map`
 - `filter`
@@ -24,7 +24,7 @@ There are *dozens* of methods available to you, so they aren’t all shown here.
 
 The following methods work on all of the sequence types, including `List`, `Vector`, `ArrayBuffer`, etc., but these examples use a `List` unless otherwise specified.
 
->As a very important note, none of these methods mutate the collection that they’re called on. They all work in a functional style, meaning that they return a new collection with the modified results.
+>As a very important note, none of the methods on `List` mutate the list. They all work in a functional style, meaning that they return a new collection with the modified results.
 
 
 
@@ -135,7 +135,7 @@ chris
 david
 ```
 
-A great thing about the functional methods on the collections classes is that you can chain them together to solve problems. For example, this is one way to print the first three elements from `oneToTen`:
+A great thing about the functional methods on the collections is that you can chain them together to solve problems. For example, this is one way to print the first three elements from `oneToTen`:
 
 ```scala
 oneToTen.filter(_ < 4).foreach(println)
@@ -301,7 +301,7 @@ res1: Int = 24
 
 ## Even more
 
-There are literally dozens of additional methods on the Scala collections classes that will keep you from ever needing to write another `for` loop. See the Reference documentation for more details and examples.
+There are literally dozens of additional methods on the Scala collections types that will keep you from ever needing to write another `for` loop. See the Reference documentation for more details and examples.
 
 >As a final note, if you’re using Java code in a Scala project, you can convert Java collections to Scala collections. By doing this you can use those collections in `for` expressions, and can also take advantage of Scala’s functional collections methods. See the [Interacting with Java][interacting] section for more details.
 
