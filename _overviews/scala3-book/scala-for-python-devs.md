@@ -45,6 +45,10 @@ NOTE: Hopefully someone with more Python experience can give this a thorough rev
 NOTE: On this page (https://contributors.scala-lang.org/t/feedback-sought-optional-braces/4702/10), Li Haoyi comments: “Python’s success also speaks for itself; beginners certainly don’t pick Python because of performance, ease of installation, packaging, IDE support, or simplicity of the language’s runtime semantics!” I’m not a Python expert, so these points are good to know, though I don’t want to go negative in any comparisons. It’s more like thinking, “Python developers will appreciate Scala’s performance, ease of installation, packaging, IDE support, etc.”
 {% endcomment %}
 
+{% comment %}
+TODO: We should probably go through this document and add links to our other detail pages, when time permits.
+{% endcomment %}
+
 
 This section provides a comparison between the Python and Scala programming languages. It’s intended for programmers who know Python and want to learn about Scala, specifically by seeing examples of how Python language features compare to Scala.
 
@@ -60,6 +64,7 @@ At a high level, Scala shares these *similarities* with Python:
 
 - Both are high-level programming languages, where you don’t have to concern yourself with low-level concepts like pointers and manual memory management
 - Both have a relatively simple, concise syntax  
+- Both are functional programming (FP) languages
 - Both are object-oriented programming (OOP) languages
 - Both have comprehensions: Python has list comprehensions and Scala has `for` comprehensions
 - Both languages have support for lambdas and higher-order functions
@@ -72,7 +77,6 @@ Also at a high level, the *differences* between Python and Scala are:
   
 - Python is dynamically typed, and Scala is statically typed  
   - Though it’s statically typed, Scala features like type inference make it feel like a dynamic language
-- In addition to being an OOP language, Scala is also a pure FP language
 - Python is interpreted, and Scala code is compiled to *.class* files, and runs on the Java Virtual Machine (JVM)
 - In addition to running on the JVM, the [Scala.js](https://www.scala-js.org) project lets you use Scala as a JavaScript replacement
 - The [Scala Native](https://scala-native.readthedocs.io/en/v0.3.9-docs) project lets you write “systems” level code, and compiles to native executables
@@ -91,6 +95,8 @@ This section looks at the similarities you’ll see between Python and Scala whe
 - Both have lists, dictionaries (maps), sets, and tuples
 - Both have comprehensions for mapping and filtering
 - Both have higher-order functions and strong support for lambdas
+- With Scala 3’s toplevel definitions you can put method, field, and other definitions anywhere
+  - One difference is that Python can operate without even declaring a single method, while Scala 3 can’t do _everything_ at the toplevel; for instance, a `@main def` method is required to start a Scala application
 
 ### Programming level differences
 
@@ -108,17 +114,15 @@ Also at a programming level, these are some of the differences you’ll see ever
 - Naming conventions: The Python standard is to use underscores like `my_list`; Scala uses `myList`
 - Scala is statically typed, so you declare types for method parameters, method return values, and in other places
 - Pattern matching and `match` expressions are used extensively in Scala  (and will change the way you write code)
-- *Toplevel definitions* let you put method, field, and other definitions anywhere, also leading to concise, expressive code  
 - Traits are used heavily in Scala; interfaces and abstract classes are used less often in Python
 - Scala’s *contextual abstractions* and *term inference* provide a collection of different features:
-  - *Extension methods* let you add new functionality to closed classes
-  - *Multiversal equality* lets you limit equality comparisons — at compile time — to only those comparisons that make sense  
+  - *Extension methods* let you easily add new functionality to classes using a clear syntax
+  - *Multiversal equality* lets you limit equality comparisons — at compile time — to only those comparisons that make sense
 - Scala has state-of-the-art open source functional programming libraries
-- You can create your own “control structures” and DSLs, thanks to features like objects, by-name parameters, infix notation, optional parentheses, extension methods, higher-order functions, and more  
+- You can create your own “control structures” and DSLs, thanks to features like objects, by-name parameters, infix notation, optional parentheses, extension methods, higher-order functions, and more
+- Scala code can run in the JVM and even be compiled to native images (using Scala Native and GraalVM) for high performance
 - Many other goodies: case classes, companion classes and objects, macros, union and intersection types, toplevel definitions, numeric literals, multiple parameter lists, and more
 
-<!-- TODO: mention compiling code, performance? -->
-<!-- TODO: add links above when those sections are ready -->
 
 
 ### Features compared with examples
@@ -441,11 +445,7 @@ This section compares control structures in Python and Scala. Both languages hav
         <br>for i in ints:
         <br>&nbsp; print(i)</code>
       </td>
-      <td valign="top"><code>// preferred
-        <br>for i &lt;- ints do println(i)
-        <br>
-        <br>// also available
-        <br>for (i &lt;- ints) println(i)</code>
+      <td valign="top"><code>for i &lt;- ints do println(i)</code>
       </td>
     </tr>
 
@@ -675,7 +675,7 @@ Scala’s main sequence classes are `List`, `Vector`, and `ArrayBuffer`. `List` 
 
 ### Dictionary/Map
 
-The Python dictionary is like the mutable Scala `Map` class.
+The Python dictionary is like the _mutable_ Scala `Map` class. However, the default Scala map is _immutable_, and has a number of transformation methods to let you easily create new maps.
 
 <table cellspacing="1" cellpadding="2" border="1">
   <tbody>
@@ -770,7 +770,7 @@ Scala has other specialized `Set` classes for different needs.
 
 ### Tuples 
 
-The Python and Scala tuples are also similar:
+Python and Scala tuples are also similar:
 
 <table cellspacing="1" cellpadding="2" border="1">
   <tbody>
@@ -814,8 +814,8 @@ Python and Scala have several of the same common functional methods available to
 If you’re used to using these methods with lambda expressions in Python, you’ll see that Scala has a similar approach with methods on its collections classes. To demonstrate this functionality, here are two sample lists:  
 
 ```scala
-list = (1,2,3)           // python
-val list = List(1,2,3)   // scala
+numbers = (1,2,3)           // python
+val numbers = List(1,2,3)   // scala
 ```
 
 Those lists are used in the following table, that shows how to apply mapping and filtering algorithms to it:
@@ -831,24 +831,24 @@ Those lists are used in the following table, that shows how to apply mapping and
       <td colspan="2" class="table-desc-row">Mapping with a comprehension</td>
     </tr>
     <tr>
-      <td valign="top"><code>x = [i*10 for i in list]</code></td>
-      <td valign="top"><code>val x = for i &lt;- list yield i * 10</code></td>
+      <td valign="top"><code>x = [i*10 for i in numbers]</code></td>
+      <td valign="top"><code>val x = for i &lt;- numbers yield i * 10</code></td>
     </tr>
 
     <tr>
       <td colspan="2" class="table-desc-row">Filtering with a comprehension</td>
     </tr>
     <tr>
-      <td valign="top"><code>evens = [i for i in list if i % 2 == 0]</code></td>
-      <td valign="top"><code>val evens = list.filter(_ % 2 == 0)</code></td>
+      <td valign="top"><code>evens = [i for i in numbers if i % 2 == 0]</code></td>
+      <td valign="top"><code>val evens = numbers.filter(_ % 2 == 0)</code></td>
     </tr>
 
     <tr>
       <td colspan="2" class="table-desc-row">Mapping and filtering with a comprehension</td>
     </tr>
     <tr>
-      <td valign="top"><code>x = [i * 10 for i in list if i % 2 == 0]</code></td>
-      <td valign="top"><code>val x = xs.filter(_ % 2 == 0)
+      <td valign="top"><code>x = [i * 10 for i in numbers if i % 2 == 0]</code></td>
+      <td valign="top"><code>val x = numbers.filter(_ % 2 == 0)
         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.map(_ * 10)</code>
       </td>
     </tr>
@@ -858,9 +858,9 @@ Those lists are used in the following table, that shows how to apply mapping and
     </tr>
     <tr>
       <td valign="top"><code>def times_10(n): return n * 10
-        <br>x = map(lambda x: x * 10, list)</code>
+        <br>x = map(lambda x: x * 10, numbers)</code>
       </td>
-      <td valign="top"><code>val x = list.map(_ * 10)</code></td>
+      <td valign="top"><code>val x = numbers.map(_ * 10)</code></td>
     </tr>
 
     <tr>
@@ -868,54 +868,67 @@ Those lists are used in the following table, that shows how to apply mapping and
     </tr>
     <tr>
       <td valign="top"><code>f = lambda x: x if x &gt; 1 else 1
-        <br>x = filter(f, list)</code>
+        <br>x = filter(f, numbers)</code>
       </td>
-      <td valign="top"><code>val x = list.filter(_ &gt; 1)</code></td>
+      <td valign="top"><code>val x = numbers.filter(_ &gt; 1)</code></td>
     </tr>
   </tbody>
 </table>
 
-Scala collections classes have over 100 functional methods to simplify your code. In addition to `map`, `filter`, and `reduce`, other commonly-used methods are listed below.
 
-Filtering methods:
+#### Scala collections methods
 
-- `diff`
-- `distinct`
-- `drop`  
-- `filter`
-- `head`
-- `slice`  
-- `tail`  
+Scala collections classes have over 100 functional methods to simplify your code. In addition to `map`, `filter`, and `reduce`, other commonly-used methods are listed below. In those method examples:
 
-Transformer methods:
+- `c` refers to a collection
+- `p` is a predicate
+- `f` is a function, anonymous function, or method
+- `n` refers to an integer value
 
-- `collect`
-- `flatten`
-- `flatMap`
-- `fold`
-- `map`
-- `reduce`
-- `sortWith`  
+These are some of the filtering methods that are available:
 
-Grouping methods:
+| Method         | Description   |
+| -------------- | ------------- |
+| `c1.diff(c2)`  | Returns the difference of the elements in `c1` and `c2`. |
+| `c.distinct`   | Returns the unique elements in `c`. |
+| `c.drop(n)`    | Returns all elements in the collection except the first `n` elements. |
+| `c.filter(p)`  | Returns all elements from the collection for which the predicate is `true`. |
+| `c.head`       | Returns the first element of the collection. (Throws a `NoSuchElementException` if the collection is empty.) |
+| `c.tail`       | Returns all elements from the collection except the first element. (Throws a `UnsupportedOperationException` if the collection is empty.) |
+| `c.take(n)`    | Returns the first `n` elements of the collection `c`. |
 
-- `groupBy`
-- `partition`
-- `sliding`
-- `span`
-- `splitAt`  
+Here are a few transformer methods:
 
-Informational and mathematical methods:  
+| Method          | Description   |
+| --------------- | ------------- |
+| `c.flatten`     | Converts a collection of collections (such as a list of lists) to a single collection (single list). |
+| `c.flatMap(f)`  | Returns a new collection by applying `f` to all elements of the collection `c` (like `map`), and then flattening the elements of the resulting collections. |
+| `c.map(f)`      | Creates a new collection by applying `f` to all elements of the collection `c`. |
+| `c.reduce(f)`   | Applies the “reduction” function `f` to successive elements in `c` to yield a single value. |
+| `c.sortWith(f)` | Returns a version of `c` that’s sorted by the comparison function `f`. |
 
-- `containsSlice`  
-- `count`
-- `distinct`
-- `exists`
-- `find`
-- `min`
-- `max`
-- `slice`
-- `sum`
+Some common grouping methods:
+
+| Method           | Description   |
+| ---------------- | ------------- |
+| `c.groupBy(f)`   | Partitions the collection into a `Map` of collections according to `f`. |
+| `c.partition(p)` | Returns two collections according to the predicate `p`. |
+| `c.span(p)`      | Returns a collection of two collections, the first created by `c.takeWhile(p)`, and the second created by `c.dropWhile(p)`. |
+| `c.splitAt(n)`   | Returns a collection of two collections by splitting the collection `c` at element `n`. |
+
+Some informational and mathematical methods:  
+
+| Method         | Description   |
+| -------------- | ------------- |
+| `c1.containsSlice(c2)` | Returns `true` if `c1` contains the sequence `c2`. |
+| `c.count(p)`   | Counts the number of elements in `c` where `p` is `true`. |
+| `c.distinct`   | Returns the unique elements in `c`. |
+| `c.exists(p)`  | Returns `true` if `p` is `true` for any element in the collection. |
+| `c.find(p)`    | Returns the first element that matches `p`. The element is returned as `Option[A]`. |
+| `c.min`        | Returns the smallest element from the collection. (Can throw _java.lang.UnsupportedOperationException_.) |
+| `c.max`        | Returns the largest element from the collection. (Can throw _java.lang.UnsupportedOperationException_.) |
+|`c slice(from, to)` | Returns the interval of elements beginning at element `from`, and ending at element `to`. |
+| `c.sum`        | Returns the sum of all elements in the collection. (Requires an `Ordering` be defined for the elements in the collection.) |
 
 Here are a few examples that demonstrate how these methods work on a list:
 
@@ -942,6 +955,10 @@ a.takeWhile(_ < 30)                   // List(10, 20)
 ```
 
 These methods show a common pattern in Scala: Functional methods that are available on objects. None of these methods mutate the initial list `a`; instead, they all return the data shown after the comments.  
+
+There are many more methods available, but hopefully these descriptions and examples give you a taste of the power that’s available in the pre-built collections methods.
+
+
 
 ## Enums
 
@@ -1023,18 +1040,19 @@ This section compares enums (enumerations) in Python and Scala 3.
 ## Concepts that are unique to Scala
 
 There are other concepts in Scala which currently don’t have equivalent functionality in Python. Follow the links below for more details: 
-<!-- TODO: add links to other pages here -->
 
-- Most concepts related to contextual abstractions
-  - Extension methods, type classes, implicit values  
-- Scala allows multiple parameter lists
-  - This enables features like partially-applied functions, and the ability to create your own DSL  
-- Case classes
-  - Useful for functional programming and pattern matching
+- Most concepts related to [contextual abstractions][contextual], such as [extension methods][extension], [type classes][type_classes], implicit values
+- Scala allows multiple parameter lists, which enables features like partially-applied functions, and the ability to create your own DSLs
+- Case classes, which are extremely useful for functional programming and pattern matching
 - The ability to create your own control structures and DSLs
-- Pattern matching and `match` expressions  
-- Multiversal equality: the ability to control at compile time what equality comparisons make sense  
+- Pattern matching and `match` expressions
+- [Multiversal equality][multiversal]: the ability to control at compile time what equality comparisons make sense
 - Infix methods
 - Macros and metaprogramming
 
 
+[toplevel]: {% link _overviews/scala3-book/taste-toplevel-definitions.md %}
+[contextual]: {% link _overviews/scala3-book/ca-contextual-abstractions-intro.md %}
+[extension]: {% link _overviews/scala3-book/ca-extension-methods.md %}
+[type_classes]: {% link _overviews/scala3-book/types-type-classes.md %}
+[multiversal]: {% link _overviews/scala3-book/ca-multiversal-equality.md %}
