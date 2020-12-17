@@ -7,120 +7,127 @@ previous-page: types-type-classes
 next-page: types-opaque-types
 ---
 
-*Variance* is a way to express how a parameterized type on a class, trait, or enum is allowed to vary. Variance is a complicated topic, but the five-minute explanation goes as follows.
+Type parameter *variance* controls the subtyping of parameterized types (like classes or traits).
 
-
-## Rule 1: Use `+A` for immutable containers
-
-If you’re creating a construct like an immutable container — such as a `List` or `Vector` — specify the container with the generic type `A` preceded by a `+` symbol:
-
+To explain variance, let us assume the following type definitions:
 ```scala
-class Container[+A]
+trait Item { def productNumber: String }
+trait Buyable extends Item { def price: Int }
+trait Book extends CartItem { def isbn: String }
 ```
 
-This is exactly how `List` and `Vector` are defined:
+Let us also assume the following parametrized types:
+```scala
+// an example of an invariant type
+class Pipeline[T]:
+  def process(t: T): T
+
+// an example of an covariant type
+class Producer[+T]:
+  def make: T
+
+// an example of an contravariant type
+class Consumer[-T]:
+  def take(t: T): Unit
+```
+In general there are three modes of variance:
+
+- **invariant** -- the default, written like `Pipeline[T]`
+- **covariant** -- annotated with a `+` such as `Producer[+T]`
+- **contravariant** -- annotated with a `-` like in `Consumer[-T]`
+
+We will now go into detail on what this annotation means and why we use it.
+
+### Invariant Types
+By default, types like `Pipeline` are invariant in their type argument (`T` in this case).
+This means that types like `Pipeline[Item]`, `Pipeline[Buyable]`, and `Pipeline[Item]` are in  *no subtyping relationship* to each other.
+
+And rightfully so! Assume the following method that consumes two values of type `Pipeline[Buyable]` that passes its argument `b` to one of them, based on the price:
 
 ```scala
-sealed abstract class List[+A] ...
-sealed abstract class Vector[+A] extends ...
+def oneOf(
+  p1: Pipeline[Buyable],
+  p2: Pipeline[Buyable],
+  b: Buyable
+): Buyable =
+  if p1.price < p2.price then p1.process(b) else p2.process(b)
 ```
+Now, recall that we have the following _subtyping relationship_ between our types:
+```scala
+Book <: Buyable <: Item
+```
+We cannot pass a `Pipeline[Book]` to method `oneOf` because in its implementation, we call `p1` and `p2` with a value of type `Buyable`. A `Pipeline[Book]` would expect a `Book` which would potentially cause a runtime error.
 
-This provides for maximum flexibility in how the container can later be used. For example, given this type hierarchy and list of cats:
+We cannot pass a `Pipeline[Item]` because calling `process` on it only promises to return an `Item`, however, we are supposed to return a `Buyable`.
+
+#### Why Invariant?
+In fact, type `Pipeline` needs to be invariant since it uses its type parameter `T` _both_ as an argument _and_ as a return type. For the same reason some types in the Scala collection library, like `Array` or `Set`, are also _invariant_.
+
+
+### Covariant Types
+In contrast to `Pipeline`, which is invariant, the type `Producer` is marked as **covariant** by prefixing the type parameter with a `+`. This is valid, since the type parameter is only used in a _return position_.
+
+Marking it as covariant means that we can pass (or return) a `Producer[Book]` where a `Producer[Buyable]` is expected.
+And in fact, this is sound: The type of `Producer[Buyable].make` only promises us to _return_ a `Buyable`. As a caller of `make`, we will be happy to also accept a `Book`, which is a subtype of `Buyable` -- that is, it is _at least_ a `Buyable`.
+
+This is illustrated by the following example, where the function `makeTwo` expects a `Producer[Buyable]`.
+```scala
+def makeTwo(p: Producer[Buyable]): Double =
+  p.make.price + p.make.price
+```
+It is perfectly fine to pass a producer for books:
+```
+val bookProducer: Producer[Book] = ???
+makeTwo(bookProducer)
+```
+The call to `price` within `makeTwo` is still valid also for books.
+
+
+#### Covariant Types for Immutable Containers
+You will encounter covariant types a lot when dealing with immutable containers, like those that can be found in the standard library (like `List`, `Seq`, `Vector`, etc.).
+
+For example, `List` and `Vector` are approximately defined as:
 
 ```scala
-sealed trait Pet:
-    def name: String
-    override def toString = name
-class Dog(val name: String) extends Pet
-class Cat(val name: String) extends Pet
-
-val cats = List(Cat("Garfield"), Cat("Sylvester"))
+class List[+A] ...
+class Vector[+A] ...
 ```
-<!-- val dogs = List(Dog("Fido"), Dog("Rover")) -->
 
-You can assign a `List[Pet]` reference to the `List[Cat]`:
+This way, you can use a `List[Book]` where a `List[Buyable]` is expected. This also intuitively makes sense: If you are expecting a collection of things that can be bought, it should be fine to give you a collection of books. They have an additional ISBN method in our example, but you are free to ignore this additional capabilities.
+
+
+### Contravariant Types
+In contrast to the type `Producer`, which is marked as covariant, the type `Consumer` is marked as **contravariant** by prefixing the type parameter with a `-`. This is valid, since the type parameter is only used in an _argument position_.
+
+Marking it as contravariant means that we can pass (or return) a `Producer[Item]` where a `Producer[Buyable]` is expected. That is, we have the subtyping relationship `Producer[Item] <: Producer[Buyable]`. Remember, for type `Consumer`, it was the other way around and we had `Consumer[Buyable] <: Consumer[Item]`.
+
+And in fact, this is sound: The type of `Producer[Buyable].make` only promises us to _return_ a `Buyable`. As a caller of `make`, we will be happy to also accept a `Book`, which is a subtype of `Buyable` -- that is, it is _at least_ a `Buyable`.
+
+
+#### Contravariant Types for Consumers
+Contravariant types are much less common than covariant types. Like in our example, you can think of them as "consumers". The most important type that you might come across that is marked contravariant is the one of functions:
 
 ```scala
-// this is allowed, it compiles
-val pets: List[Pet] = cats
+trait Function[-A, +B]:
+  def apply(a: A): B
 ```
+its argument type `A` is marked as contravariant `A` -- it consumes values of type `A`. In contrast, its result type `B` is marked as covariant -- it produces values of type `B`.
 
-This works because the `+A` tells the compiler that a `List[Pet]` is allowed to contain a `List[Cat]`. This type of variance is allowed.
-
-You know that this is allowed because `List` is immutable, and you can’t later do this:
+Here are some examples that illustrate the subtyping relationships induced by variance annotations on functions:
 
 ```scala
-// compiler error. you can’t mutate `pets`.
-pets(0) = Dog("Balto")
+val f: Function[Buyable, Buyable] = b => b
+
+// OK to return a Buyable where a Item is expected
+val g: Function[Buyable, Item] = f
+
+// OK to provide a Book where a Buyable is expected
+val h: Function[Book, Buyable] = g
 ```
-
-Allowing this would be bad, because `pets` is a reference that points to `cats`, which has the type `List[Cat]`. This line of code attempts to put a `Dog` as the first element of `cats`. This can’t be allowed, so the compiler generates an error at this point.
-
-However, note that these examples are allowed, a new `List[Pet]` is allowed to contain both `Cat` and `Dog` types:
-
-```scala
-val dogsAndCats: List[Pet] = dogs ++ cats
-val pets: List[Pet] = cats.updated(0, Dog("Fido"))
-```
-
-### Summary
-
-The compiler doesn’t know that `List` is immutable, but when you define it as `List[+A]`, it knows:
-
-- You can’t point a `List[Pet]` reference at an *existing* `List[Cat]`
-- That it’s safe for a *new* `List[Pet]` to contain both `Cat` and `Dog` types
-
-Technically the type `+A` is known as a *covariant* type, which means that a collection that contains the type `A` is also allowed to contain subtypes of `A`, just as a new `List[Pet]` is allowed to contain both `Cat` and `Dog` types. You can say that types are allowed to vary in the direction of subtypes.
-
-
-
-## Rule 2: Use `A` for mutable containers
-
-Conversely, an `ArrayBuffer`, which is mutable, is defined with the type `A`, like this:
-
-```scala
-class ArrayBuffer[A] extends ...
-```
-
-Next, you can create an `ArrayBuffer` that contains the type `Cat`:
-
-```scala
-import scala.collection.mutable.ArrayBuffer
-val cats = ArrayBuffer(Cat("Garfield"), Cat("Sylvester"))
-```
-
-However, now when you attempt to point an `ArrayBuffer[Pet]` at `cats`, the compiler doesn’t allow this:
-
-```scala
-// this won’t compile
-val pets: ArrayBuffer[Pet] = cats
-```
-
-The compiler sees that `ArrayBuffer` is defined to take the type `A` — not `+A` — so it stops you here. The compiler doesn’t know that an `ArrayBuffer` is mutable, but it does know that the type `A` is not allowed to vary.
-
-The issue is that if the compiler allows this step, you could now write code like this:
-
-```scala
-pets(0) = Dog("Balto")   // this won’t compile
-```
-
-In theory, if the compiler allowed the previous step, `pets` would be an `ArrayBuffer[Pet]` reference that points to an `ArrayBuffer[Cat]`; if any of these steps were allowed, you could put a `Dog` into an `ArrayBuffer[Cat]`. Because that can’t be allowed, the compiler stops you here:
-
-```scala
-// this won’t compile
-val pets: ArrayBuffer[Pet] = cats
-```
-
-### Summary
-
-The compiler doesn’t know that `ArrayBuffer` is mutable, but when you define it as `ArrayBuffer[A]`, it knows that it’s *not* safe for an `ArrayBuffer[Pet]` should not be allowed to contain the `Cat` and `Dog` types. The type `A` is not allowed to vary, and technically it’s known as an *invariant* type.
-
-
 
 ## Summary
+In this section, we have encountered three different kinds of variance:
 
-As it’s written in the PDF, *Scala By Example*, in a purely functional world, you’d only use immutable collections like `List` and `Vector`, and all types could be considered covariant. However, in a world where mutability is allowed, you need to be able to express the concept of *variance*.
-
->Types can also be expressed as *contravariant* by marking them as `-A`. For instance, in Scala 2 the `Function1` trait is defined as `trait Function1[-T1, +R]`. This type is used much less often. You can find more details about it — along with more information about variance — in the Reference documentation.
-
-
+- **Producers** are typically covariant and mark their type parameter with `+`. This also holds for immutable collections.
+- **Consumers** are typically contravariant and mark their type parameter with `-`.
+- Types that are **both** producers and consumers have to be invariant and do not require any marking on their type parameter. Immutable collections like `Array` fall into this category.
