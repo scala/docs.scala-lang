@@ -1,7 +1,7 @@
 ---
-title: Collections Classes
+title: Collections Types
 type: section
-description: This page introduces the common Scala 3 collections classes.
+description: This page introduces the common Scala 3 collections types and some of their methods.
 num: 37
 previous-page: collections-intro
 next-page: collections-methods
@@ -10,16 +10,19 @@ next-page: collections-methods
 
 {% comment %}
 TODO: add a correct hierarchy image
+TODO: mention Array, ArrayDeque, ListBuffer, Queue, Stack, StringBuilder?
+LATER: note that methods like `+`, `++`, etc., are aliases for other methods
+LATER: add links to the Scaladoc for the major types shown here
 {% endcomment %}
 
 
-This page demonstrates the common Scala 3 collections classes and their accompanying methods. Scala comes with a wealth of collections classes, but you can go a long way by starting with just a few classes, and using the others as needed. Similarly, each class has dozens of functional methods to make your life easier, but you can achieve a lot by starting with just a handful of them.
+This page demonstrates the common Scala 3 collections and their accompanying methods. Scala comes with a wealth of collections types, but you can go a long way by starting with just a few of them, and later using the others as needed. Similarly, each collection type has dozens of methods to make your life easier, but you can achieve a lot by starting with just a handful of them.
 
-Therefore, this section introduces and demonstrates the most common classes and methods that you’ll need to get started. When you need to understand more classes or more methods, see the Reference documentation for all the details.
+Therefore, this section introduces and demonstrates the most common types and methods that you’ll need to get started. When you need more flexibility, see these pages at the end of this section for more details.
 
 
 
-## Three main categories of collections classes
+## Three main categories of collections
 
 Looking at Scala collections from a high level, there are three main categories to choose from:
 
@@ -27,13 +30,11 @@ Looking at Scala collections from a high level, there are three main categories 
 - Maps
 - Sets
 
-A _sequence_ is a linear collection of elements and may be _indexed_ (like an array) or _linear_ (like a linked list). A _map_ contains a collection of key/value pairs, like a Java `Map`, Python dictionary, or Ruby `Hash`. A _set_ is an unordered sequence of unique elements. All of those classes have basic types, as well as subsets of those types for specific purposes, such as concurrency, caching, and streaming.
+A _sequence_ is a linear collection of elements and may be _indexed_ (like an array) or _linear_ (like a linked list). A _map_ contains a collection of key/value pairs, like a Java `Map`, Python dictionary, or Ruby `Hash`. A _set_ is an unordered sequence of unique elements. All of those are basic types, and have subtypes for specific purposes, such as concurrency, caching, and streaming.
 
 In addition to these three main categories, there are other useful collection types, including ranges, stacks, and queues. Ranges are demonstrated later in this section.
 
 The following sections introduce the common types you’ll use on a regular basis.
-
-There are a few other classes that act like collections, including tuples, enumerations, and the `Option`, `Try`, and `Either` families of classes. See the TODO section(s) for more details on these classes.
 
 
 
@@ -41,36 +42,32 @@ There are a few other classes that act like collections, including tuples, enume
 
 The main collections you’ll use on a regular basis are:
 
-| Class         | Immutable | Mutable | Description  |
+| Collection Type | Immutable | Mutable | Description  |
 | ------------- | --------- | ------- | -----------  |
 | `List`        | &#10003;         |         | A linear (linked list), immutable sequence |
 | `Vector`      | &#10003;         |         | An indexed, immutable sequence |
 | `LazyList`    | &#10003;         |         | A lazy immutable linked list, its elements are computed only when they’re needed; Good for large or infinite sequences. |
-| `ArrayBuffer` |           | &#10003;       | The go-to class for a mutable, indexed sequence |
+| `ArrayBuffer` |           | &#10003;       | The go-to type for a mutable, indexed sequence |
 | `ListBuffer` |           | &#10003;        | Used when you want a mutable `List`; typically converted to a `List` |
 | `Map`         | &#10003;         | &#10003;       | An iterable sequence that consists of pairs of keys and values. |
 | `Set`         | &#10003;         | &#10003;       | An iterable collection with no duplicate elements |
 
 As shown, `Map` and `Set` come in both immutable and mutable versions.
 
-The basics of each class are demonstrated in the following sections.
+The basics of each type are demonstrated in the following sections.
 
 >In Scala, a _buffer_ — such as `ArrayBuffer` and `ListBuffer` — is a sequence that can grow and shrink.
-
-{% comment %}
-TODO: mention Array, ArrayDeque, ListBuffer, Queue, Stack, StringBuilder?
-{% endcomment %}
 
 
 ### A note about immutable collections
 
-In the sections that follow, whenever the word _immutable_ is used, it’s safe to assume that the class is intended for use in a _functional programming_ (FP) style. With these classes you don’t modify the collection; you apply functional methods to the collection to create a new result.
+In the sections that follow, whenever the word _immutable_ is used, it’s safe to assume that the type is intended for use in a _functional programming_ (FP) style. With these types you don’t modify the collection; you apply functional methods to the collection to create a new result.
 
 
 
-## Choosing a sequence class
+## Choosing a sequence
 
-When choosing a _sequence_ class — a sequential collection of elements — you have two main decisions:
+When choosing a _sequence_ — a sequential collection of elements — you have two main decisions:
 
 - Should the sequence be indexed (like an array), allowing rapid access to any element, or should it be implemented as a linear linked list?
 - Do you want a mutable or immutable collection?
@@ -86,13 +83,13 @@ For example, if you need an immutable, indexed collection, in general you should
 
 >`List` and `Vector` are often used when writing code in a functional style. `ArrayBuffer` is commonly used when writing code in a mutable style. `ListBuffer` is used when you’re mixing styles, such as building a list
 
-The next several sections briefly demonstrate the `List`, `Vector`, and `ArrayBuffer` classes.
+The next several sections briefly demonstrate the `List`, `Vector`, and `ArrayBuffer` types.
 
 
 
-## The `List` class
+## `List`
 
-[The List class](https://www.scala-lang.org/api/current/scala/collection/immutable/List.html) is a linear, immutable sequence. This just means that it’s a linked-list that you can’t modify. Any time you want to add or remove `List` elements, you create a new `List` from an existing `List`.
+[The List type](https://www.scala-lang.org/api/current/scala/collection/immutable/List.html) is a linear, immutable sequence. This just means that it’s a linked-list that you can’t modify. Any time you want to add or remove `List` elements, you create a new `List` from an existing `List`.
 
 ### Creating Lists
 
@@ -101,6 +98,9 @@ This is how you create an initial `List`:
 ```scala
 val ints = List(1, 2, 3)
 val names = List("Joel", "Chris", "Ed")
+
+// another way to construct a List
+val namesAgain = "Joel" :: "Chris" :: "Ed" :: Nil
 ```
 
 You can also declare the `List`’s type, if you prefer, though it generally isn’t necessary:
@@ -121,21 +121,21 @@ val things: List[Any] = List(1, "two", 3.0)
 Because `List` is immutable, you can’t add new elements to it. Instead you create a new list by prepending or appending elements to an existing `List`. For instance, given this `List`:
 
 ```scala
-val a = List(1,2,3)
+val a = List(1, 2, 3)
 ```
 
-You _prepend_ one element with `+:`, and multiple elements with `++:`, as shown here:
+When working with a `List`, _prepend_ one element with `::`, and prepend another `List` with `:::`, as shown here:
 
 ```scala
-val b = 0 +: a              // List(0, 1, 2, 3)
-val c = List(-1, 0) ++: a   // List(-1, 0, 1, 2, 3)
+val b = 0 :: a              // List(0, 1, 2, 3)
+val c = List(-1, 0) ::: a   // List(-1, 0, 1, 2, 3)
 ```
 
-You can also _append_ elements to a `List`, but because `List` is a singly-linked list, you should really only prepend elements to it; appending elements to it is a relatively slow operation, especially when you work with large sequences.
+You can also _append_ elements to a `List`, but because `List` is a singly-linked list, you should generally only prepend elements to it; appending elements to it is a relatively slow operation, especially when you work with large sequences.
 
 >Tip: If you want to prepend and append elements to an immutable sequence, use `Vector` instead.
 
-Because `List` is a linked-list class, you shouldn’t try to access the elements of large lists by their index value. For instance, if you have a `List` with one million elements in it, accessing an element like `myList(999_999)` will take a relatively long time, because that request has to traverse all those elements. If you have a large collection and want to access elements by their index, use a `Vector` or `ArrayBuffer` instead.
+Because `List` is a linked-list, you shouldn’t try to access the elements of large lists by their index value. For instance, if you have a `List` with one million elements in it, accessing an element like `myList(999_999)` will take a relatively long time, because that request has to traverse all those elements. If you have a large collection and want to access elements by their index, use a `Vector` or `ArrayBuffer` instead.
 
 ### How to remember the method names
 
@@ -153,7 +153,7 @@ a :+ 4
 
 As explained in the Reference documentation, there are more technical ways to think about this, but this can be a helpful way to remember the method names.
 
-Also, a good thing about these symbolic method names is that they’re consistent. The same method names are used with other immutable sequence classes, such as `Seq` and `Vector`. You can also use non-symbolic method names to append and prepend elements, if you prefer.
+Also, a good thing about these symbolic method names is that they’re consistent. The same method names are used with other immutable sequences, such as `Seq` and `Vector`. You can also use non-symbolic method names to append and prepend elements, if you prefer.
 
 ### How to loop over lists
 
@@ -178,11 +178,11 @@ Chris
 Ed
 ```
 
-A great thing about using `for` loops with collections is that Scala is consistent, and the same approach works with all sequence classes, including `Array`, `ArrayBuffer`, `List`, `Seq`, `Vector`, `Map`, `Set`, etc.
+A great thing about using `for` loops with collections is that Scala is consistent, and the same approach works with all sequences, including `Array`, `ArrayBuffer`, `List`, `Seq`, `Vector`, `Map`, `Set`, etc.
 
 ### A little bit of history
 
-For those interested in a little bit of history, the `List` class is similar to the `List` from [the Lisp programming language](https://en.wikipedia.org/wiki/Lisp_(programming_language)), which was originally specified in 1958. Indeed, in addition to creating a `List` like this:
+For those interested in a little bit of history, the Scala `List` is similar to the `List` from [the Lisp programming language](https://en.wikipedia.org/wiki/Lisp_(programming_language)), which was originally specified in 1958. Indeed, in addition to creating a `List` like this:
 
 ```scala
 val ints = List(1, 2, 3)
@@ -201,7 +201,7 @@ scala> val list = 1 :: 2 :: 3 :: Nil
 list: List[Int] = List(1, 2, 3)
 ```
 
-This works because a `List` is a singly-linked list that ends with the `Nil` element, and `::` is a `List` class method that works like Lisp’s “cons” operator. For more details on lists, see the Reference documentation.
+This works because a `List` is a singly-linked list that ends with the `Nil` element, and `::` is a `List` method that works like Lisp’s “cons” operator.
 
 
 ### Aside: The LazyList
@@ -232,11 +232,11 @@ Given that definition, collections can also be thought of in terms of being stri
 
 
 
-## The Vector class
+## Vector
 
-[The Vector class](https://www.scala-lang.org/api/current/scala/collection/immutable/Vector.html) is an indexed, immutable sequence. The “indexed” part of the description means that it provides random access and update in effectively constant time, so you can access `Vector` elements rapidly by their index value, such as accessing `listOfPeople(123_456_789)`.
+[Vector](https://www.scala-lang.org/api/current/scala/collection/immutable/Vector.html) is an indexed, immutable sequence. The “indexed” part of the description means that it provides random access and update in effectively constant time, so you can access `Vector` elements rapidly by their index value, such as accessing `listOfPeople(123_456_789)`.
 
-In general, except for the difference that (a) `Vector` is indexed and `List` is not, and (b) the `List` class has the `::` method, the two classes work the same, so we’ll quickly run through the following examples.
+In general, except for the difference that (a) `Vector` is indexed and `List` is not, and (b) `List` has the `::` method, the two types work the same, so we’ll quickly run through the following examples.
 
 Here are a few ways you can create a `Vector`:
 
@@ -271,7 +271,7 @@ val c = Vector(-1, 0) ++: a   // Vector(-1, 0, 1, 2, 3)
 
 In addition to fast random access and updates, `Vector` provides fast append and prepend times, so you can use these features as desired.
 
->See the Reference documentation for performance details about `Vector` and other collections classes.
+>See the [Collections Performance Characteristics](https://docs.scala-lang.org/overviews/collections-2.13/performance-characteristics.html) for performance details about `Vector` and other collections.
 
 Finally, you use a `Vector` in a `for` loop just like a `List`, `ArrayBuffer`, or any other sequence:
 
@@ -287,7 +287,7 @@ Ed
 
 
 
-## The ArrayBuffer class
+## ArrayBuffer
 
 Use `ArrayBuffer` when you need a general-purpose, mutable indexed sequence in your Scala applications. It’s mutable so you can change its elements, and also resize it. Because it’s indexed, random access of elements is fast.
 
@@ -363,9 +363,9 @@ See the Reference documentation for more `ArrayBuffer` information and examples.
 
 
 
-## Working with Maps
+## Maps
 
-A `Map` is an iterable sequence that consists of pairs of keys and values. Scala has both mutable and immutable `Map` classes, and this section demonstrates how to use the _immutable_ `Map` class.
+A `Map` is an iterable sequence that consists of pairs of keys and values. Scala has both mutable and immutable `Map` types, and this section demonstrates how to use the _immutable_ `Map`.
 
 ### Creating an immutable Map
 
@@ -419,7 +419,7 @@ val c = b + (
 // c: Map(1 -> one, 2 -> two, 3 -> three, 4 -> four)
 ```
 
-## Removing elements from a Map
+### Removing elements from a Map
 
 Remove elements from an immutable map using `-` or `--` and the key values to remove, remembering to assign the result to a new variable:
 
@@ -435,7 +435,7 @@ a - 4         // Map(1 -> one, 2 -> two, 3 -> three)
 a - 4 - 3     // Map(1 -> one, 2 -> two)
 ```
 
-## Updating Map elements
+### Updating Map elements
 
 To update elements in an immutable map, use the `updated` method while assigning the result to a new variable:
 
@@ -449,7 +449,7 @@ val a = Map(
 val b = a.updated(3, "THREE!")   // Map(1 -> one, 2 -> two, 3 -> THREE!)
 ```
 
-## Traversing a Map
+### Traversing a Map
 
 As shown earlier, this is a common way to manually traverse elements in a map using a `for` loop:
 
@@ -465,86 +465,65 @@ for ((k,v) <- states) println(s"key: $k, value: $v")
 
 That being said, there are _many_ ways to work with the keys and values in a map. Common `Map` methods include `foreach`, `map`, `keys`, and `values`. 
 
-Scala has many more specialized `Map` classes available, including `CollisionProofHashMap`, `HashMap`, `LinkedHashMap`, `ListMap`, `SortedMap`, `TreeMap`, `WeakHashMap`, and more. See the Reference documentation for more details on `Map` methods and these specialized subclasses.
+Scala has many more specialized `Map` types, including `CollisionProofHashMap`, `HashMap`, `LinkedHashMap`, `ListMap`, `SortedMap`, `TreeMap`, `WeakHashMap`, and more.
 
 
 
 ## Working with Sets
 
-{% comment %}
-Types of Set classes:
-- BitSet, HashSet, LinkedHashSet, ListSet, TreeSet, SortedSet
-{% endcomment %}
+The Scala [Set]({{site.baseurl}}/overviews/collections-2.13/sets.html) is an iterable collection with no duplicate elements.
 
-The [Scala Set class]({{site.baseurl}}/overviews/collections-2.13/sets.html) is an iterable collection with no duplicate elements.
+Scala has both mutable and immutable `Set` types. This section demonstrates the _immutable_ `Set`.
 
-Scala has both mutable and immutable `Set` classes. This section demonstrates the _mutable_ `Set` class.
+
+### Creating a Set
+
+Create new empty sets like this:
+
+```scala
+val nums = Set[Int]()
+val letters = Set[Char]()
+```
+
+Create sets with initial data like this:
+
+```scala
+val nums = Set(1, 2, 3, 3, 3)           // Set(1, 2, 3)
+val letters = Set('a', 'b', 'c', 'c')   // Set('a', 'b', 'c')
+```
+
 
 ### Adding elements to a Set
 
-The mutable `Set` class isn’t in scope by default, so first you need to import it:
+Add elements to an immutable `Set` using `+` and `++`, remembering to assign the result to a new variable:
 
 ```scala
-val set = scala.collection.mutable.Set[Int]()
+val a = Set(1, 2)                // Set(1, 2)
+val b = a + 3                    // Set(1, 2, 3)
+val c = b ++ Seq(4, 1, 5, 5)     // HashSet(5, 1, 2, 3, 4)
 ```
 
-Once in scope, add elements to a mutable `Set` with the `+=`, `++=`, and `add` methods. Here are a few examples:
+Notice that when you attempt to add duplicate elements, they’re quietly dropped.
+
+
+### Deleting elements from a Set
+
+Remove elements from an immutable set using `-` and `--`, again assigning the result to a new variable:
 
 ```scala
-set += 1               // Set(1)
-set += 2 += 3          // Set(1, 2, 3)
-set ++= Vector(4, 5)   // Set(1, 5, 2, 3, 4)
-```
-
-Notice that if you add a value that’s already in the set, the attempt is quietly ignored:
-
-```scala
-set += 2               // Set(1, 5, 2, 3, 4)  (no warning message is shown)
-```
-
-`Set` also has an `add` method that returns `true` if an element is successfully added to a set, and `false` if it wasn’t added:
-
-```scala
-set.add(6)             // true
-set.add(5)             // false
-```
-
-## Deleting elements from a Set
-
-Remove elements from a set using the `-=` and `--=` methods, as shown in the following examples:
-
-```scala
-val set = scala.collection.mutable.Set(1, 2, 3, 4, 5)
-// set: mutable.Set[Int] = HashSet(1, 2, 3, 4, 5)
-
-// remove one element
-set -= 1              // HashSet(2, 3, 4, 5)
-
-// remove multiple elements defined in another sequence
-set --= Array(4,5)   // HashSet(2, 3)
-```
-
-There are more methods for working with sets, including `clear` and `remove`, as shown in these examples:
-
-```scala
-// clear
-val set1 = scala.collection.mutable.Set(1, 2, 3, 4, 5)
-set1.clear()      // HashSet()
-
-// remove
-val set2 = scala.collection.mutable.Set(1, 2, 3, 4, 5)
-set2.remove(2)    // Boolean = true
-set2              // HashSet(1, 3, 4, 5)
-set2.remove(40)   // false
+val a = Set(1, 2, 3, 4, 5)   // HashSet(5, 1, 2, 3, 4)
+val b = a - 5                // HashSet(1, 2, 3, 4)
+val c = b -- Seq(3, 4)       // HashSet(1, 2)
 ```
 
 
-## The Range class
 
-The `Range` class is often used to populate data structures and to iterate over `for` loops. These REPL examples demonstrate how to create ranges:
+## Range
+
+The Scala `Range` is often used to populate data structures and to iterate over `for` loops. These REPL examples demonstrate how to create ranges:
 
 {% comment %}
-TODO: the dotty repl currently shows results differently
+LATER: the dotty repl currently shows results differently
 {% endcomment %}
 
 ```scala
@@ -570,12 +549,12 @@ scala> for i <- 1 to 3 do println(i)
 3
 ````
 
-There are also `range` methods on collections classes:
+There are also `range` methods on :
 
 ```scala
-Vector.range(1,5)      // Vector(1, 2, 3, 4)
-Vector.range(1,10,2)   // Vector(1, 3, 5, 7, 9)
-Set.range(1,10)        // HashSet(5, 1, 6, 9, 2, 7, 3, 8, 4)
+Vector.range(1, 5)       // Vector(1, 2, 3, 4)
+List.range(1, 10, 2)     // List(1, 3, 5, 7, 9)
+Set.range(1, 10)         // HashSet(5, 1, 6, 9, 2, 7, 3, 8, 4)
 ```
 
 When you’re running tests, ranges are also useful for generating test collections:
@@ -591,8 +570,13 @@ val map = (1 to 3).map(e => (e,s"$e")).toMap
 ```
 
 
+## More details
 
+When you need more information about specialized collections, see the following resources:
 
+- [Concrete Immutable Collection Classes](https://docs.scala-lang.org/overviews/collections-2.13/concrete-immutable-collection-classes.html)
+- [Concrete Mutable Collection Classes](https://docs.scala-lang.org/overviews/collections-2.13/concrete-mutable-collection-classes.html)
+- [How are the collections structured? Which one should I choose?](https://docs.scala-lang.org/tutorials/FAQ/collections.html)
 
 
 
