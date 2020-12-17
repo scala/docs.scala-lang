@@ -28,9 +28,9 @@ The following methods work on all of the sequence types, including `List`, `Vect
 
 
 
-## Examples of some common methods
+## Examples of common methods
 
-To give you an overview of what you’ll see in the following sections, these examples show some of the most commonly used methods:
+To give you an overview of what you’ll see in the following sections, these examples show some of the most commonly used collections methods. First, here are some methods don’t use lambdas:
 
 ```scala
 val a = List(10, 20, 30, 40, 10)      // List(10, 20, 30, 40, 10)
@@ -38,11 +38,6 @@ val a = List(10, 20, 30, 40, 10)      // List(10, 20, 30, 40, 10)
 a.distinct                            // List(10, 20, 30, 40)
 a.drop(2)                             // List(30, 40, 10)
 a.dropRight(2)                        // List(10, 20, 30)
-a.dropWhile(_ < 25)                   // List(30, 40, 10)
-a.filter(_ < 25)                      // List(10, 20, 10)
-a.filter(_ > 100)                     // List()
-a.filterNot(_ < 25)                   // List(30, 40)
-a.find(_ > 20)                        // Some(30)
 a.head                                // 10
 a.headOption                          // Some(10)
 a.init                                // List(10, 20, 30, 40)
@@ -53,14 +48,69 @@ a.slice(2,4)                          // List(30, 40)
 a.tail                                // List(20, 30, 40, 10)
 a.take(3)                             // List(10, 20, 30)
 a.takeRight(2)                        // List(40, 10)
-a.takeWhile(_ < 30)                   // List(10, 20)
+```
+
+
+### Lambdas and HOFs
+
+Next, we’ll show some commonly used higher-order functions (HOFs) that accept _lambda_ methods. To get started, here are several variations of the lambda syntax, starting with the longest form, working in steps towards the most concise form:
+
+```scala
+// these functions are all equivalent and return
+// the same data: List(10, 20, 10)
+
+a.filter((i: Int) => i < 25)   // 1. most explicit form
+a.filter((i) => i < 25)        // 2. `Int` is not required
+a.filter(i => i < 25)          // 3. the parens are not required
+a.filter(_ < 25)               // 4. `i` is not required
+```
+
+In those numbered examples:
+
+1. The first example shows the longest form. This much verbosity is _rarely_ required, and only needed in the most complex usages.
+2. The compiler knows that `a` contains `Int`, so it’s not necessary to restate that here.
+3. Parentheses aren’t needed when you have only one parameter, such as `i`.
+4. When you have a single parameter and it appears only once in your anonymous function, you can replace the parameter with `_`.
+
+The [Anonymous Function][lambdas] provides more details and examples of the rules related to shortening lambda expressions.
+
+Now that you’ve seen the concise form, here are examples of other HOFs that use the short-form lambda syntax:
+
+```scala
+a.dropWhile(_ < 25)   // List(30, 40, 10)
+a.filter(_ > 100)     // List()
+a.filterNot(_ < 25)   // List(30, 40)
+a.find(_ > 20)        // Some(30)
+a.takeWhile(_ < 30)   // List(10, 20)
+```
+
+It’s important to note that HOFs also accept methods and functions as parameters — not just lambda expressions. Here are some examples of the `map` HOF that uses a method named `double`. Several variations of the lambda syntax are shown again:
+
+```scala
+def double(i: Int) = i * 2
+
+// these all return `List(20, 40, 60, 80, 20)`
+a.map(i => double(i))
+a.map(double(_))
+a.map(double)
+```
+
+In the last example, when an anonymous function consists of one statement that takes a single argument, you don’t have to name the argument, so even `-` isn’t required.
+
+Finally, you can combine HOFs as desired to solve problems:
+
+```scala
+// yields `List(100, 200)`
+a.filter(_ < 40)
+ .takeWhile(_ < 30)
+ .map(_ * 10)
 ```
 
 
 
-## Sample lists
+## Sample data
 
-The following examples use these lists:
+The examples in the following sections use these lists:
 
 ```scala
 val oneToTen = (1 to 10).toList
@@ -164,8 +214,8 @@ names.head      // adam
 Because a `String` can be seen as a sequence of characters, you can also treat it like a list. This is how `head` works on these strings:
 
 ```scala
-"foo".head   // f
-"bar".head   // b
+"foo".head   // Char = 'f'
+"bar".head   // Char = 'b'
 ```
 
 `head` is a great method to work with, but as a word of caution it can also throw an exception when called on an empty collection:
@@ -204,7 +254,27 @@ Just like `head`, `tail` also works on strings:
 "bar".tail   // "ar"
 ```
 
-Like `head` and `headOption`, there’s also a `tailOption` method, which is preferred in functional programming.
+`tail` throws an _java.lang.UnsupportedOperationException_ if the list is empty, so just like `head` and `headOption`, there’s also a `tailOption` method, which is preferred in functional programming.
+
+A list can also be matched, so you can write expressions like this:
+
+```scala
+val x :: xs = names
+```
+
+Putting that code in the REPL shows that `x` is assigned to the head of the list, and `xs` is assigned to the tail:
+
+scala> val x :: xs = names
+val x: String = adam
+val xs: List[String] = List(brandy, chris, david)
+
+Pattern matching like this is useful in many situations, such as writing a `sum` method using recursion:
+
+```scala
+def sum(list: List[Int]): Int = list match
+  case Nil => 0
+  case x :: xs => x + sum(xs)
+```
 
 
 
@@ -220,13 +290,21 @@ oneToTen.takeRight(1)   // List(10)
 oneToTen.takeRight(2)   // List(9, 10)
 ```
 
+Notice how these methods work with “edge” cases, where we ask for more elements than are in the sequence, or ask for zero elements:
+
+```scala
+oneToTen.take(Int.MaxValue)        // List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+oneToTen.takeRight(Int.MaxValue)   // List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+oneToTen.take(0)                   // List()
+oneToTen.takeRight(0)              // List()
+```
+
 And this is `takeWhile`, which works with a predicate function:
 
 ```scala
 oneToTen.takeWhile(_ < 5)       // List(1, 2, 3, 4)
 names.takeWhile(_.length < 5)   // List(adam)
 ```
-
 
 
 ## `drop`, `dropRight`, `dropWhile`
@@ -239,6 +317,15 @@ oneToTen.drop(5)        // List(6, 7, 8, 9, 10)
 
 oneToTen.dropRight(8)   // List(1, 2)
 oneToTen.dropRight(7)   // List(1, 2, 3)
+```
+
+Again notice how these methods work with edge cases:
+
+```scala
+oneToTen.drop(Int.MaxValue)        // List()
+oneToTen.dropRight(Int.MaxValue)   // List()
+oneToTen.drop(0)                   // List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+oneToTen.dropRight(0)              // List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 ```
 
 And this is `dropWhile`, which works with a predicate function:
@@ -308,3 +395,5 @@ There are literally dozens of additional methods on the Scala collections types 
 
 
 [interacting]: {% link _overviews/scala3-book/interacting-with-java.md %}
+[lambdas]: {% link _overviews/scala3-book/fun-anonymous-functions.md %}
+
