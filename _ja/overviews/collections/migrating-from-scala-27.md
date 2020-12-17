@@ -37,7 +37,7 @@ language: ja
 
 旧ライブラリより完全に置き換えられ、廃止予定警告を出すのが無理だったものが 2つある。
 
-1. 以前の `scala.collection.jcl` パッケージは撤廃された。 このパッケージは Scala 上で Java コレクションライブラリの設計を真似しようとしたが、それは多くの対称性を壊してしまった。Java コレクションが欲しい人の多くは `jcl` を飛ばして `java.util` を直接使用していた。Scala 2.8 は、`jcl` パッケージの代わりに、[`JavaConversions`](conversions-between-java-and-scala-collections.html) オブジェクトにて両方のライブラリ間の自動変換機構を提供する。</li>
+1. 以前の `scala.collection.jcl` パッケージは撤廃された。 このパッケージは Scala 上で Java コレクションライブラリの設計を真似しようとしたが、それは多くの対称性を壊してしまった。Java コレクションが欲しい人の多くは `jcl` を飛ばして `java.util` を直接使用していた。Scala 2.8 は、`jcl` パッケージの代わりに、[`JavaConversions`](conversions-between-java-and-scala-collections.html) オブジェクトにて両方のライブラリ間の自動変換機構を提供する。
 2. 投射 (projection) は一般化され、きれいにされ、現在はビューとして提供される。投射はほとんど使われていなかったようなので、この変更に影響を受けるコードは少ないはずだ。
 
 よって、`jcl` か投射を使っている場合は多少コードの書き換えが必要になるかもしれない。
