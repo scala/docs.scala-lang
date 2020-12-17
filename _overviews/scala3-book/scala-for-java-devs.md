@@ -2,8 +2,8 @@
 title: Scala for Java Developers
 type: chapter
 description: This page is for Java developers who are interested in learning about Scala 3.
-num: 72
-previous-page: scala-3-metaprogramming
+num: 71
+previous-page: interacting-with-java
 next-page: scala-for-javascript-devs
 ---
 
