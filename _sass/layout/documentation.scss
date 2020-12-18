@@ -17,9 +17,11 @@
       max-height: 160px;
       margin-top: 30px;
       margin-bottom: 100px;
-      @include bp(medium) {
-         margin-bottom: 0;
-      }
+      // this causes issues on mobile with the header being hidden behind
+      // the contents:
+      // @include bp(medium) {
+      //   margin-bottom: 0;
+      //}
 
       .supertitle {
         text-transform: uppercase;
