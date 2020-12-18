@@ -58,7 +58,7 @@ At a high level, Scala shares these similarities with JavaScript:
 - Both include features (like classes) for object-oriented programming (OOP)
 - Both include features (like lambdas) for functional programming (FP)
 - JavaScript runs in the browser and other environments like Node.js. The [Scala.js](https://www.scala-js.org) flavor of Scala targets JavaScript and Scala programs can thus run in the same environments.
-- [Node.js](https://nodejs.org/) lets you write server-side code in JavaScript; projects like the [Play Framework](https://www.playframework.com/) let you write server-side applications in Scala
+- Developers write server-side applications in JavaScript and Scala using [Node.js](https://nodejs.org); projects like the [Play Framework](https://www.playframework.com/) also let you write server-side applications in Scala
 - Both languages have similar `if` statements, `while` loops, and `for` loops
 - Starting [at this Scala.js page](https://www.scala-js.org/libraries/index.html), you’ll find dozens of libraries to support React, Angular, jQuery, and many other JavaScript and Scala libraries
 - JavaScript objects are mutable; Scala objects _can_ be mutable when writing in an imperative style
@@ -848,9 +848,7 @@ The examples:
         <br>}</code>
       </td>
       <td valign="top"><code>// preferred
-        <br>for
-        <br>&nbsp; i &lt;- ints
-        <br>do
+        <br>for i &lt;- ints do
         <br>&nbsp; val i = i * 2
         <br>&nbsp; println(j)
         <br>
@@ -876,13 +874,23 @@ The examples:
         use it.
       </td>
     </tr>
+
+    <!-- 
+      TODO: please remove these comments and show this code when this 
+            page is reformatted.
+    -->
+    <!--
     <tr>
       <td rowspan="1" colspan="2" class="table-desc-row">Multiple generators</td>
     </tr>
     <tr>
-      <td valign="top"><code>for (let i = 0; i &lt; 2; i++) {
-        <br>&nbsp; for (let j = 0; j &lt; 3; j++) {
-        <br>&nbsp;&nbsp;&nbsp; console.log(`i: ${i} j: ${j}`);
+      <td valign="top"><code>let str = &quot;ab&quot;;
+        <br>for (let i = 1; i &lt; 3; i++) {
+        <br>&nbsp; for (var j = 0; j &lt; str.length; j++) {
+        <br>&nbsp;&nbsp;&nbsp; for (let k = 1; k &lt; 11; k++) {
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; let c = str.charAt(j);
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; console.log(`i: ${i} j: ${c} k: ${k}`);
+        <br>&nbsp;&nbsp;&nbsp; }
         <br>&nbsp; }
         <br>}</code>
       </td>
@@ -894,6 +902,8 @@ The examples:
         <br>&nbsp; println(s"i: $i, j: $j, k: $k")</code>
       </td>
     </tr>
+    -->
+
     <tr>
       <td rowspan="1" colspan="2" class="table-desc-row">Generator with guards
         (<code>if</code> expressions)</td>
