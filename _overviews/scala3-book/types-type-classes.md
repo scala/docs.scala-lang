@@ -7,7 +7,8 @@ previous-page: ca-given-using-clauses
 next-page: ca-context-bounds
 ---
 
-A _type class_ is an abstract, parameterized type that lets you add new behavior to any closed data type without using sub-typing. If you are coming from Java, you can think of type classes as something like [`java.util.Comparator[T]`][comparator].
+A _type class_ is an abstract, parameterized type that lets you add new behavior to any closed data type without using sub-typing.
+If you are coming from Java, you can think of type classes as something like [`java.util.Comparator[T]`][comparator].
 
 > The paper [“Type Classes as Objects and Implicits”][typeclasses-paper] (2010) by Oliveira et al. discusses the basic ideas behind type classes in Scala.
 > Even though the paper uses an older version of Scala, the ideas still hold to the current day.

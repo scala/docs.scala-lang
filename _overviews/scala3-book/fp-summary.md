@@ -8,8 +8,8 @@ next-page: types-introduction
 ---
 
 
-
-This chapter provides a high-level introduction to functional programming in Scala. The topics covered are:
+This chapter provides a high-level introduction to functional programming in Scala.
+The topics covered are:
 
 - What is functional programming?
 - Immutable values
@@ -17,7 +17,8 @@ This chapter provides a high-level introduction to functional programming in Sca
 - Functions are values
 - Functional error handling
 
-As mentioned, functional programming is a big topic, so all we can do in this book is to touch on these introductory concepts. See the [Reference documentation][reference] for more details.
+As mentioned, functional programming is a big topic, so all we can do in this book is to touch on these introductory concepts.
+See the [Reference documentation][reference] for more details.
 
 
 

@@ -45,7 +45,8 @@ val a = 0
 var b = 1
 ```
 
-In an application, a `val` can’t be reassigned. You’ll cause a compiler error if you try to reassign one:
+In an application, a `val` can’t be reassigned.
+You’ll cause a compiler error if you try to reassign one:
 
 ```scala
 val msg = "Hello, world"
@@ -70,7 +71,8 @@ val x: Int = 1   // explicit
 val x = 1        // implicit; the compiler infers the type
 ```
 
-The second form is known as _type inference_, and it’s a great way to help keep this type of code concise. The Scala compiler can usually infer the data type for you, as shown in the output of these REPL examples:
+The second form is known as _type inference_, and it’s a great way to help keep this type of code concise.
+The Scala compiler can usually infer the data type for you, as shown in the output of these REPL examples:
 
 ```scala
 scala> val x = 1
@@ -101,7 +103,8 @@ TODO: Jonathan had an early comment on the text below: “While it might feel li
 
 ## Built-in data types
 
-Scala comes with the standard numeric data types you’d expect, and they’re all full-blown instances of classes. In Scala, everything is an object.
+Scala comes with the standard numeric data types you’d expect, and they’re all full-blown instances of classes.
+In Scala, everything is an object.
 
 These examples show how to declare variables of the numeric types:
 
@@ -155,7 +158,8 @@ Scala strings are similar to Java strings, but they have two great additional fe
 
 #### String interpolation
 
-String interpolation provides a very readable way to use variables inside strings. For instance, given these three variables:
+String interpolation provides a very readable way to use variables inside strings.
+For instance, given these three variables:
 
 ```scala
 val firstName = "John"
@@ -180,7 +184,10 @@ val x = -1
 println(s"x.abs = ${x.abs}")   // prints "x.abs = 1"
 ```
 
-The `s` that you place before the string is just one possible interpolator. If you use an `f` instead of an `s`, you can use `printf`-style formatting syntax in the string. Furthermore, a string interpolator is a just special method and it is possible to define your own. For instance, some database libraries define the very powerful `sql` interpolator.
+The `s` that you place before the string is just one possible interpolator.
+If you use an `f` instead of an `s`, you can use `printf`-style formatting syntax in the string.
+Furthermore, a string interpolator is a just special method and it is possible to define your own.
+For instance, some database libraries define the very powerful `sql` interpolator.
 
 #### Multiline strings
 

@@ -77,7 +77,8 @@ end if
 
 ### `if`/`else` expressions always return a result
 
-Note that `if`/`else` comparisons form _expressions_, meaning that they return a value which you can assign to a variable. Because of this, there’s no need for a special ternary operator:
+Note that `if`/`else` comparisons form _expressions_, meaning that they return a value which you can assign to a variable.
+Because of this, there’s no need for a special ternary operator:
 
 ```scala
 val minValue = if a < b then a else b
@@ -97,33 +98,39 @@ def compare(a: Int, b: Int): Int =
 
 ### Aside: Expression-oriented programming
 
-As a brief note about programming in general, when every expression you write returns a value, that style is referred to as _expression-oriented programming_, or EOP. For example, this is an _expression_:
+As a brief note about programming in general, when every expression you write returns a value, that style is referred to as _expression-oriented programming_, or EOP.
+For example, this is an _expression_:
 
 ```scala
 val minValue = if a < b then a else b
 ```
 
-Conversely, lines of code that don’t return values are called _statements_, and they’re used for their _side-effects_. For example, these lines of code don’t return values, so they’re used for their side effects:
+Conversely, lines of code that don’t return values are called _statements_, and they’re used for their _side-effects_.
+For example, these lines of code don’t return values, so they’re used for their side effects:
 
 ```scala
 if a == b then action()
 println("Hello")
 ```
 
-The first example runs the `action` method as a side effect when `a` is equal to `b`. The second example is used for the side effect of printing a string to STDOUT. As you learn more about Scala you’ll find yourself writing more _expressions_ and fewer _statements_.
+The first example runs the `action` method as a side effect when `a` is equal to `b`.
+The second example is used for the side effect of printing a string to STDOUT.
+As you learn more about Scala you’ll find yourself writing more _expressions_ and fewer _statements_.
 
 
 
 ## `for` loops
 
-In its most simple use, a Scala `for` loop can be used to iterate over the elements in a collection. For example, given a sequence of integers, you can loop over its elements and print their values like this:
+In its most simple use, a Scala `for` loop can be used to iterate over the elements in a collection.
+For example, given a sequence of integers, you can loop over its elements and print their values like this:
 
 ```scala
 val ints = Seq(1, 2, 3)
 for i <- ints do println(i)
 ```
 
-The code `i <- ints` is referred to as a _generator_, and if you leave the parentheses off of the generator, the `do` keyword is required before the code that follows it. Otherwise you can write the code like this:
+The code `i <- ints` is referred to as a _generator_, and if you leave the parentheses off of the generator, the `do` keyword is required before the code that follows it.
+Otherwise you can write the code like this:
 
 ```scala
 for (i <- ints) println(i)
@@ -208,7 +215,8 @@ The output of that loop is:
 4
 ````
 
-A `for` loop can have as many guards as needed. This example shows one way to print the number `4`:
+A `for` loop can have as many guards as needed.
+This example shows one way to print the number `4`:
 
 ```scala
 for
@@ -222,7 +230,8 @@ do
 
 ### Using `for` with Maps
 
-You can also use `for` loops with a `Map`. For example, given this `Map` of state abbreviations and their full names:
+You can also use `for` loops with a `Map`.
+For example, given this `Map` of state abbreviations and their full names:
 
 ```scala
 val states = Map(
@@ -261,7 +270,8 @@ As the loop runs, the variable `abbrev` is assigned to the current _key_ in the 
 
 In the previous `for` loop examples, those loops were all used for _side effects_, specifically to print those values to STDOUT using `println`.
 
-It’s important to know that you can also create `for` _expressions_ that return values. You create a `for` expression by adding the `yield` keyword and an expression to return, like this:
+It’s important to know that you can also create `for` _expressions_ that return values.
+You create a `for` expression by adding the `yield` keyword and an expression to return, like this:
 
 ```scala
 val list =
@@ -273,11 +283,16 @@ val list =
 // result: list == Vector(20, 22, 24)
 ```
 
-After that `for` expression runs, the variable `list` is a `Vector` that contains the values shown. This is how the expression works:
+After that `for` expression runs, the variable `list` is a `Vector` that contains the values shown.
+This is how the expression works:
 
-1. The `for` expression starts to iterate over the values in the range `(10, 11, 12)`. It first works on the value `10`, multiplies it by `2`, then _yields_ that result, the value `20`.
-2. Next, it works on the `11` — the second value in the range. It multiples it by `2`, then yields the value `22`. You can think of these yielded values as accumulating in a temporary holding place.
-3. Finally the loop gets the number `12` from the range, multiplies it by `2`, yielding the number `24`. The loop completes at this point and yields the final result, the `Vector(20,22,24)`.
+1. The `for` expression starts to iterate over the values in the range `(10, 11, 12)`.
+   It first works on the value `10`, multiplies it by `2`, then _yields_ that result, the value `20`.
+2. Next, it works on the `11` — the second value in the range.
+   It multiples it by `2`, then yields the value `22`.
+   You can think of these yielded values as accumulating in a temporary holding place.
+3. Finally the loop gets the number `12` from the range, multiplies it by `2`, yielding the number `24`.
+  The loop completes at this point and yields the final result, the `Vector(20,22,24)`.
 
 {% comment %}
 NOTE: This is a place where it would be great to have a TIP or NOTE block:
@@ -307,7 +322,8 @@ val capNames = for name <- names yield
 
 ### Using a `for` expression as the body of a method
 
-Because a `for` expression yields a result, it can be used as the body of a method that returns a useful value. This method returns all of the values in a given list of integers that are between `3` and `10`:
+Because a `for` expression yields a result, it can be used as the body of a method that returns a useful value.
+This method returns all of the values in a given list of integers that are between `3` and `10`:
 
 ```scala
 def between3and10(xs: List[Int]): List[Int] =
@@ -351,7 +367,8 @@ while (i < 3) {
 
 Pattern matching is a major feature of functional programming languages, and Scala includes a `match` expression that has many capabilities.
 
-In the most simple case you can use a `match` expression like a Java `switch` statement, matching cases based on an integer value. Notice that this really is an expression, as it evaluates to a result:
+In the most simple case you can use a `match` expression like a Java `switch` statement, matching cases based on an integer value.
+Notice that this really is an expression, as it evaluates to a result:
 
 ```scala
 import scala.annotation.switch
@@ -368,9 +385,13 @@ val day = i match
   case _ => "invalid day"   // the default, catch-all
 ```
 
-In this example the variable `i` is tested against the cases shown. If it’s between `0` and `6`, `day` is bound to a string that represents one of the days of the week. Otherwise, the catch-all case is represented by the `_` character, and `day` is bound to the string, `"invalid day"`.
+In this example the variable `i` is tested against the cases shown.
+If it’s between `0` and `6`, `day` is bound to a string that represents one of the days of the week.
+Otherwise, the catch-all case is represented by the `_` character, and `day` is bound to the string, `"invalid day"`.
 
->When writing simple `match` expressions like this, it’s recommended to use the `@switch` annotation on the variable `i`. This annotation provides a compile time warning if the switch can’t be compiled to a `tableswitch` or `lookupswitch`, which are better for performance. See the Reference documentation for more details.
+>When writing simple `match` expressions like this, it’s recommended to use the `@switch` annotation on the variable `i`.
+This annotation provides a compile time warning if the switch can’t be compiled to a `tableswitch` or `lookupswitch`, which are better for performance.
+See the Reference documentation for more details.
 
 
 ### Using the default value
@@ -384,12 +405,14 @@ i match
   case what => println(s"You gave me: $what" )
 ```
 
-In this example the variable is named `what` to show that it can be given any legal name. You can also use `_` as a name to ignore the value.
+In this example the variable is named `what` to show that it can be given any legal name.
+You can also use `_` as a name to ignore the value.
 
 
 ### Handling multiple possible matches on one line
 
-As mentioned, `match` expressions have many capabilities. This example shows how to use multiple possible pattern matches in each `case` statement:
+As mentioned, `match` expressions have many capabilities.
+This example shows how to use multiple possible pattern matches in each `case` statement:
 
 ```scala
 val evenOrOdd = i match
@@ -401,7 +424,8 @@ val evenOrOdd = i match
 
 ### Using `if` expressions in `case` statements
 
-You can also use guards in the `case`s of a match expression. In this example the second and third `case` both use guards to match multiple integer values:
+You can also use guards in the `case`s of a match expression.
+In this example the second and third `case` both use guards to match multiple integer values:
 
 ```scala
 i match
@@ -424,7 +448,8 @@ i match
 
 #### Case classes and match expressions
 
-You can also extract fields from `case` classes — and classes that have properly written `apply`/`unapply` methods — and use those in your guard conditions. Here’s an example using a simple `Person` case class:
+You can also extract fields from `case` classes — and classes that have properly written `apply`/`unapply` methods — and use those in your guard conditions.
+Here’s an example using a simple `Person` case class:
 
 ```scala
 case class Person(name: String)
@@ -441,7 +466,8 @@ speak(Person("Bam Bam"))   // "Bam Bam says, Bam bam!"
 
 ### Using a `match` expression as the body of a method
 
-Because `match` expressions return a value, they can be used as the body of a method. This method takes a `Boolean` value as an input parameter, and returns a `String`, based on the result of the `match` expression:
+Because `match` expressions return a value, they can be used as the body of a method.
+This method takes a `Boolean` value as an input parameter, and returns a `String`, based on the result of the `match` expression:
 
 ```scala
 def isTruthy(a: Matchable) = a match
@@ -449,8 +475,11 @@ def isTruthy(a: Matchable) = a match
   case _ => true
 ```
 
-The input parameter `a` is defined to be the [`Matchable` type][matchable] — which is the root of all Scala types that pattern matching can be performed on. The method is implemented by matching on the input, providing two cases:
-The first one checks whether the given value is either the integer `0` or an empty string and returns `false` in this case. In the default case, we return `true` for any other value. These examples show how this method works:
+The input parameter `a` is defined to be the [`Matchable` type][matchable] — which is the root of all Scala types that pattern matching can be performed on.
+The method is implemented by matching on the input, providing two cases:
+The first one checks whether the given value is either the integer `0` or an empty string and returns `false` in this case.
+In the default case, we return `true` for any other value.
+These examples show how this method works:
 
 ```scala
 isTruthy(0)      // false

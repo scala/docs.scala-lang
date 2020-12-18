@@ -7,10 +7,12 @@ previous-page: types-structural
 next-page: types-others
 ---
 
-A *dependent function type* describes function types, where the result type may depend on the function’s parameter values. The concept of dependent types, and of dependent function types is more advanced and you would typically only come across it when designing your own libraries or using advanced libraries.
+A *dependent function type* describes function types, where the result type may depend on the function’s parameter values.
+The concept of dependent types, and of dependent function types is more advanced and you would typically only come across it when designing your own libraries or using advanced libraries.
 
 ## Dependent Method Types
-Let's consider the following example of a heterogenous database that can store values of different types. The key contains the information about what's the type of the corresponding value:
+Let's consider the following example of a heterogenous database that can store values of different types.
+The key contains the information about what's the type of the corresponding value:
 
 ```scala
 trait Key { type Value }
@@ -19,7 +21,8 @@ trait DB {
   def get(k: Key): Option[k.Value] // a dependent method
 }
 ```
-Given a key, the method `get` let's us access the map and potentially returns the stored value of type `k.Value`. We can read this _path-dependent type_ as: "depending on the concrete type of the argument `k`, we return a matching value".
+Given a key, the method `get` let's us access the map and potentially returns the stored value of type `k.Value`.
+We can read this _path-dependent type_ as: "depending on the concrete type of the argument `k`, we return a matching value".
 
 For example, we could have the following keys:
 ```scala
@@ -32,10 +35,12 @@ val db: DB = ...
 val res1: Option[String] = db.get(Name)
 val res2: Option[String] = db.get(Age)
 ```
-Calling the method `db.get(Name)` returns a value of type `Option[String]`, while calling `db.get(Age)` returns a value of type `Option[Int]`. The return type _depends_ on the concrete type of the argument passed to `get` -- hence the name _dependent type_.
+Calling the method `db.get(Name)` returns a value of type `Option[String]`, while calling `db.get(Age)` returns a value of type `Option[Int]`.
+The return type _depends_ on the concrete type of the argument passed to `get` -- hence the name _dependent type_.
 
 ## Dependent Function Types
-As seen above, Scala 2 already had support for dependent method types. However, creating values of type `DB` is quite cumbersome:
+As seen above, Scala 2 already had support for dependent method types.
+However, creating values of type `DB` is quite cumbersome:
 ```scala
 // a user of a DB
 def user(db: DB): Unit =
@@ -46,7 +51,8 @@ user(new DB {
   def get(k: Key): Option[k.Value] = ... // implementation of DB
 })
 ```
-We manually need to create an anonymous inner class of `DB`, implementing the `get` method. For code that relies on creating many different instances of `DB` this is very tedious.
+We manually need to create an anonymous inner class of `DB`, implementing the `get` method.
+For code that relies on creating many different instances of `DB` this is very tedious.
 
 The trait `DB` only has a single abstract method `get`.
 Wouldn't it be nice, if we could use lambda syntax instead?
@@ -66,7 +72,8 @@ Given this definition of `DB` the above call to `user` type checks, as is.
 You can read more about the interals of dependent function types in the [reference documentation][ref].
 
 ## Case Study: Numerical Expressions
-Let us assume we want to define a module that abstracts over the internal represention of numbers. This can be useful, for instance, to implement libraries for automatic derivation.
+Let us assume we want to define a module that abstracts over the internal represention of numbers.
+This can be useful, for instance, to implement libraries for automatic derivation.
 
 We start by defining our module for numbers:
 ```scala

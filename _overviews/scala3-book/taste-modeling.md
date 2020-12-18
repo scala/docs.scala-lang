@@ -13,7 +13,8 @@ NOTE: I kept the OOP section first, assuming that most readers will be coming fr
 {% endcomment %}
 
 
-Scala supports both functional programming (FP) and object-oriented programming (OOP), as well as a fusion of the two paradigms. This section provides a quick overview of data modeling in OOP and FP.
+Scala supports both functional programming (FP) and object-oriented programming (OOP), as well as a fusion of the two paradigms.
+This section provides a quick overview of data modeling in OOP and FP.
 
 
 
@@ -22,14 +23,17 @@ Scala supports both functional programming (FP) and object-oriented programming 
 When writing code in an OOP style, your two main tools for data encapsulation are _traits_ and _classes_.
 
 {% comment %}
-NOTE: Julien had a comment, “in OOP we don’t really model data. It’s more about modeling operations, imho.”
+NOTE: Julien had a comment, “in OOP we don’t really model data.
+It’s more about modeling operations, imho.”
 
 How to resolve? Is there a good DDD term to use here?
 {% endcomment %}
 
 ### Traits
 
-Scala traits can be used as simple interfaces, but they can also contain abstract and concrete methods and fields, and they can have parameters, just like classes. They provide a great way for you to organize behaviors into small, modular units. Later, when you want to create concrete implementations of attributes and behaviors, classes and objects can extend traits, mixing in as many traits as needed to achieve the desired behavior.
+Scala traits can be used as simple interfaces, but they can also contain abstract and concrete methods and fields, and they can have parameters, just like classes.
+They provide a great way for you to organize behaviors into small, modular units.
+Later, when you want to create concrete implementations of attributes and behaviors, classes and objects can extend traits, mixing in as many traits as needed to achieve the desired behavior.
 
 {% comment %}
 TODO: Need a better example. This one shows behaviors, not data.
@@ -80,12 +84,14 @@ c.startRunning()        // "Yeah ... I don’t run"
 c.stopRunning()         // "No need to stop"
 ```
 
-If that code makes sense — great, you’re comfortable with traits as interfaces. If not, don’t worry, they’re explained in more detail in the [Data Modeling][data-1] chapter.
+If that code makes sense — great, you’re comfortable with traits as interfaces.
+If not, don’t worry, they’re explained in more detail in the [Data Modeling][data-1] chapter.
 
 
 ### Classes
 
-Scala _classes_ are used in OOP-style programming. Here’s an example of a class that models a “person.” In OOP fields are typically mutable, so `firstName` and `lastName` are both declared as `var` parameters:
+Scala _classes_ are used in OOP-style programming.
+Here’s an example of a class that models a “person.” In OOP fields are typically mutable, so `firstName` and `lastName` are both declared as `var` parameters:
 
 ```scala
 class Person(var firstName: String, var lastName: String):
@@ -124,7 +130,8 @@ When writing code in an FP style, you’ll use these constructs:
 
 ### Enums
 
-The `enum` construct is a great way to model algebraic data types (ADTs) in Scala 3. For instance, a pizza has three main attributes:
+The `enum` construct is a great way to model algebraic data types (ADTs) in Scala 3.
+For instance, a pizza has three main attributes:
 
 - Crust size
 - Crust type
@@ -172,11 +179,14 @@ Enums are covered in detail in the [Data Modeling][data-1] section of this book,
 
 ### Case classes
 
-The Scala `case` class lets you model concepts with immutable data structures. A `case` class has all of the functionality of a `class`, and also has additional features baked in that make them useful for functional programming. When the compiler sees the `case` keyword in front of a `class` it has these effects and benefits:
+The Scala `case` class lets you model concepts with immutable data structures.
+A `case` class has all of the functionality of a `class`, and also has additional features baked in that make them useful for functional programming.
+When the compiler sees the `case` keyword in front of a `class` it has these effects and benefits:
 
 - Case class constructor parameters are public `val` fields by default, so the fields are immutable, and accessor methods are generated for each parameter.
 - An `unapply` method is generated, which lets you use case classes in more ways in `match` expressions.
-- A `copy` method is generated in the class. This provides a way to create updated copies of the object without changing the original object.
+- A `copy` method is generated in the class.
+  This provides a way to create updated copies of the object without changing the original object.
 - `equals` and `hashCode` methods are generated.
 - A default `toString` method is generated, which is helpful for debugging.
 

@@ -56,19 +56,23 @@ Now, recall that we have the following _subtyping relationship_ between our type
 ```scala
 Book <: Buyable <: Item
 ```
-We cannot pass a `Pipeline[Book]` to the method `oneOf` because in its implementation, we call `p1` and `p2` with a value of type `Buyable`. A `Pipeline[Book]` expects a `Book`, which can potentially cause a runtime error.
+We cannot pass a `Pipeline[Book]` to the method `oneOf` because in its implementation, we call `p1` and `p2` with a value of type `Buyable`.
+A `Pipeline[Book]` expects a `Book`, which can potentially cause a runtime error.
 
 We cannot pass a `Pipeline[Item]` because calling `process` on it only promises to return an `Item`; however, we are supposed to return a `Buyable`.
 
 #### Why Invariant?
-In fact, type `Pipeline` needs to be invariant since it uses its type parameter `T` _both_ as an argument _and_ as a return type. For the same reason, some types in the Scala collection library -- like `Array` or `Set` -- are also _invariant_.
+In fact, type `Pipeline` needs to be invariant since it uses its type parameter `T` _both_ as an argument _and_ as a return type.
+For the same reason, some types in the Scala collection library -- like `Array` or `Set` -- are also _invariant_.
 
 
 ### Covariant Types
-In contrast to `Pipeline`, which is invariant, the type `Producer` is marked as **covariant** by prefixing the type parameter with a `+`. This is valid, since the type parameter is only used in a _return position_.
+In contrast to `Pipeline`, which is invariant, the type `Producer` is marked as **covariant** by prefixing the type parameter with a `+`.
+This is valid, since the type parameter is only used in a _return position_.
 
 Marking it as covariant means that we can pass (or return) a `Producer[Book]` where a `Producer[Buyable]` is expected.
-And in fact, this is sound: The type of `Producer[Buyable].make` only promises to _return_ a `Buyable`. As a caller of `make`, we will be happy to also accept a `Book`, which is a subtype of `Buyable` -- that is, it is _at least_ a `Buyable`.
+And in fact, this is sound: The type of `Producer[Buyable].make` only promises to _return_ a `Buyable`.
+As a caller of `make`, we will be happy to also accept a `Book`, which is a subtype of `Buyable` -- that is, it is _at least_ a `Buyable`.
 
 This is illustrated by the following example, where the function `makeTwo` expects a `Producer[Buyable]`:
 ```scala
@@ -93,25 +97,33 @@ class List[+A] ...
 class Vector[+A] ...
 ```
 
-This way, you can use a `List[Book]` where a `List[Buyable]` is expected. This also intuitively makes sense: If you are expecting a collection of things that can be bought, it should be fine to give you a collection of books. They have an additional ISBN method in our example, but you are free to ignore these additional capabilities.
+This way, you can use a `List[Book]` where a `List[Buyable]` is expected.
+This also intuitively makes sense: If you are expecting a collection of things that can be bought, it should be fine to give you a collection of books.
+They have an additional ISBN method in our example, but you are free to ignore these additional capabilities.
 
 
 ### Contravariant Types
-In contrast to the type `Producer`, which is marked as covariant, the type `Consumer` is marked as **contravariant** by prefixing the type parameter with a `-`. This is valid, since the type parameter is only used in an _argument position_.
+In contrast to the type `Producer`, which is marked as covariant, the type `Consumer` is marked as **contravariant** by prefixing the type parameter with a `-`.
+This is valid, since the type parameter is only used in an _argument position_.
 
-Marking it as contravariant means that we can pass (or return) a `Producer[Item]` where a `Producer[Buyable]` is expected. That is, we have the subtyping relationship `Producer[Item] <: Producer[Buyable]`. Remember, for type `Consumer`, it was the other way around, and we had `Consumer[Buyable] <: Consumer[Item]`.
+Marking it as contravariant means that we can pass (or return) a `Producer[Item]` where a `Producer[Buyable]` is expected.
+That is, we have the subtyping relationship `Producer[Item] <: Producer[Buyable]`.
+Remember, for type `Consumer`, it was the other way around, and we had `Consumer[Buyable] <: Consumer[Item]`.
 
-And in fact, this is sound: The type of `Producer[Buyable].make` only promises us to _return_ a `Buyable`. As a caller of `make`, we will be happy to also accept a `Book`, which is a subtype of `Buyable` -- that is, it is _at least_ a `Buyable`.
+And in fact, this is sound: The type of `Producer[Buyable].make` only promises us to _return_ a `Buyable`.
+As a caller of `make`, we will be happy to also accept a `Book`, which is a subtype of `Buyable` -- that is, it is _at least_ a `Buyable`.
 
 
 #### Contravariant Types for Consumers
-Contravariant types are much less common than covariant types. As in our example, you can think of them as “consumers.” The most important type that you might come across that is marked contravariant is the one of functions:
+Contravariant types are much less common than covariant types.
+As in our example, you can think of them as “consumers.” The most important type that you might come across that is marked contravariant is the one of functions:
 
 ```scala
 trait Function[-A, +B]:
   def apply(a: A): B
 ```
-Its argument type `A` is marked as contravariant `A` -- it consumes values of type `A`. In contrast, its result type `B` is marked as covariant -- it produces values of type `B`.
+Its argument type `A` is marked as contravariant `A` -- it consumes values of type `A`.
+In contrast, its result type `B` is marked as covariant -- it produces values of type `B`.
 
 Here are some examples that illustrate the subtyping relationships induced by variance annotations on functions:
 
@@ -128,6 +140,8 @@ val h: Function[Book, Buyable] = g
 ## Summary
 In this section, we have encountered three different kinds of variance:
 
-- **Producers** are typically covariant, and mark their type parameter with `+`. This also holds for immutable collections.
+- **Producers** are typically covariant, and mark their type parameter with `+`.
+  This also holds for immutable collections.
 - **Consumers** are typically contravariant, and mark their type parameter with `-`.
-- Types that are **both** producers and consumers have to be invariant, and do not require any marking on their type parameter. Immutable collections like `Array` fall into this category.
+- Types that are **both** producers and consumers have to be invariant, and do not require any marking on their type parameter.
+  Immutable collections like `Array` fall into this category.

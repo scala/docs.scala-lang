@@ -29,7 +29,8 @@ However, an anonymous function — also known as a *function literal* — can be
 val double = (i: Int) => i * 2
 ```
 
-This creates a function variable named `double`. In this expression, the original function literal is on the right side of the `=` symbol:
+This creates a function variable named `double`.
+In this expression, the original function literal is on the right side of the `=` symbol:
 
 ```scala
 val double = (i: Int) => i * 2
@@ -50,7 +51,8 @@ val double = (i: Int) => i * 2
              --------
 ```
 
-Like the parameter list for a method, this means that the `double` function takes one parameter, an `Int` named `i`. You can see in the REPL that `double` has the type `Int => Int`, meaning that it takes a single `Int` parameter and returns an `Int`:
+Like the parameter list for a method, this means that the `double` function takes one parameter, an `Int` named `i`.
+You can see in the REPL that `double` has the type `Int => Int`, meaning that it takes a single `Int` parameter and returns an `Int`:
 
 ```scala
 scala> val double = (i: Int) => i * 2

@@ -38,14 +38,15 @@ In that syntax:
 - Methods can consist of many lines, or just one line
 - Providing the `end methodName` portion after the method body is also optional, and is only recommended for long methods
 
-Here are two examples of a one-line method named `add` that takes two `Int` input parameters. The first version explicitly shows the method’s `Int` return type, and the second does not:
+Here are two examples of a one-line method named `add` that takes two `Int` input parameters.
+The first version explicitly shows the method’s `Int` return type, and the second does not:
 
 ```scala
 def add(a: Int, b: Int): Int = a + b
 def add(a: Int, b: Int) = a + b
 ```
 
-It is recommended to annotate publically visible methods with their return type.
+It is recommended to annotate publicly visible methods with their return type.
 Declaring the return type can make it easier to understand it when you look at it months or years later, or when you look at another person’s code.
 
 
@@ -58,7 +59,8 @@ Invoking a method is straightforward:
 val x = add(1, 2)   // 3
 ```
 
-The Scala collections classes have dozens of built-in methods. These examples show how to call them:
+The Scala collections classes have dozens of built-in methods.
+These examples show how to call them:
 
 ```scala
 val x = List(1,2,3)
@@ -99,7 +101,8 @@ scala> addThenDouble(1, 1)
 res0: Int = 4
 ```
 
-Notice that there’s no need for a `return` statement at the end of the method. Because almost everything in Scala is an _expression_ — meaning that each line of code returns (or _evaluates to) a value — there’s no need to use `return`.
+Notice that there’s no need for a `return` statement at the end of the method.
+Because almost everything in Scala is an _expression_ — meaning that each line of code returns (or _evaluates to) a value — there’s no need to use `return`.
 
 This becomes more clear when you condense that method and write it on one line:
 
@@ -134,7 +137,8 @@ In that method:
 
 ## Default parameter values
 
-Method parameters can have default values. In this example, default values are given for both the `timeout` and `protocol` parameters:
+Method parameters can have default values.
+In this example, default values are given for both the `timeout` and `protocol` parameters:
 
 ```scala
 def makeConnection(timeout: Int = 5_000, protocol: String = "http") =
@@ -162,7 +166,8 @@ Notice that by using default parameter values, it appears to the consumer that t
 
 ## Named parameters
 
-If you prefer, you can also use the names of the method parameters when calling a method. For instance, `makeConnection` can also be called in these ways:
+If you prefer, you can also use the names of the method parameters when calling a method.
+For instance, `makeConnection` can also be called in these ways:
 
 ```scala
 makeConnection(timeout=10_000)
@@ -171,7 +176,8 @@ makeConnection(timeout=10_000, protocol="https")
 makeConnection(protocol="https", timeout=10_000)
 ```
 
-In some frameworks named parameters are heavily used. They’re also very useful when multiple method parameters have the same type:
+In some frameworks named parameters are heavily used.
+They’re also very useful when multiple method parameters have the same type:
 
 ```scala
 engage(true, true, true, false)
@@ -192,7 +198,9 @@ engage(
 
 ## A suggestion about methods that take no parameters
 
-When a method takes no parameters, it’s said to have an _arity_ level of _arity-0_. Similarly, when a method takes one parameter it’s an _arity-1_ method. When you create arity-0 methods:
+When a method takes no parameters, it’s said to have an _arity_ level of _arity-0_.
+Similarly, when a method takes one parameter it’s an _arity-1_ method.
+When you create arity-0 methods:
 
 - If the method has side effects, such as calling `println`, declare the method with empty parentheses
 - If the method does not have side effects — such as getting the size of a collection, which is similar to accessing a field on the collection — leave the parentheses off
@@ -220,7 +228,8 @@ Some of that wording comes from this page: https://docs.scala-lang.org/style/met
 
 ## Using `if` as a method body
 
-Because `if`/`else` expressions return a value, they can be used as the body of a method. Here’s a method named `isTruthy` that implements the Perl definitions of `true` and `false`:
+Because `if`/`else` expressions return a value, they can be used as the body of a method.
+Here’s a method named `isTruthy` that implements the Perl definitions of `true` and `false`:
 
 ```scala
 def isTruthy(a: Any) =
@@ -243,7 +252,8 @@ isTruthy(1.0)    // true
 
 ## Using `match` as a method body
 
-A `match` expression can also be used as the entire method body, and often is. Here’s another version of `isTruthy`, written with a `match` expression :
+A `match` expression can also be used as the entire method body, and often is.
+Here’s another version of `isTruthy`, written with a `match` expression :
 
 ```scala
 def isTruthy(a: Any) = a match
@@ -267,7 +277,8 @@ val d = new Dog
 d.speak()   // prints "Woof"
 ```
 
-Methods can also be marked as `private`. This makes them private to the current class, and they can’t be overridden in subclasses:
+Methods can also be marked as `private`.
+This makes them private to the current class, and they can’t be overridden in subclasses:
 
 ```scala
 class Animal:
@@ -306,7 +317,10 @@ The `protected` setting means:
 
 ## Objects can contain methods
 
-Earlier you saw that traits and classes can have methods. The Scala `object` keyword is used to create a singleton class, and an object can also contain methods. This is a nice way to group a set of “utility” methods. For instance, this object contains a collection of methods that work on strings:
+Earlier you saw that traits and classes can have methods.
+The Scala `object` keyword is used to create a singleton class, and an object can also contain methods.
+This is a nice way to group a set of “utility” methods.
+For instance, this object contains a collection of methods that work on strings:
 
 ```scala
 object StringUtils:
@@ -337,7 +351,10 @@ end StringUtils
 
 ## Extension methods
 
-Extension methods are discussed in the [Extension methods section][extension] of the Contextual Abstraction chapter. Their main purpose is to let you add new functionality to closed classes. As shown in that section, imagine that you have a `Circle` class, but you can’t change its source code. For instance, it may be defined like this in a third-party library:
+Extension methods are discussed in the [Extension methods section][extension] of the Contextual Abstraction chapter.
+Their main purpose is to let you add new functionality to closed classes.
+As shown in that section, imagine that you have a `Circle` class, but you can’t change its source code.
+For instance, it may be defined like this in a third-party library:
 
 ```scala
 case class Circle(x: Double, y: Double, radius: Double)

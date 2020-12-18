@@ -15,7 +15,8 @@ Scala has most features you’d expect in a functional programming language, inc
 - Higher-order functions (HOFs)
 - Higher-order functions in the standard library
 
-Lambdas, also known as _anonymous functions_, are a big part of keeping your code concise but readable. These two examples — which show how to call higher-order functions (HOFs) on a Scala `List` — are equivalent, and show how to multiply each number in a list by `2` by passing a lambda into the `map` method:
+Lambdas, also known as _anonymous functions_, are a big part of keeping your code concise but readable.
+These two examples — which show how to call higher-order functions (HOFs) on a Scala `List` — are equivalent, and show how to multiply each number in a list by `2` by passing a lambda into the `map` method:
 
 ```scala
 val a = List(1, 2, 3).map(i => i * 2)   // List(2,4,6)
@@ -39,7 +40,8 @@ Passing lambdas to higher-order functions on collections classes (like `List`) i
 
 ## Immutable collections
 
-When you work with immutable collections like `List`, `Vector`, and the immutable `Map` and `Set` classes, it’s important to know that these functions don’t mutate the collection they’re called on; instead, they return a new collection with the updated data. As a result, it’s also common to chain them together in a “fluent” style to solve problems.
+When you work with immutable collections like `List`, `Vector`, and the immutable `Map` and `Set` classes, it’s important to know that these functions don’t mutate the collection they’re called on; instead, they return a new collection with the updated data.
+As a result, it’s also common to chain them together in a “fluent” style to solve problems.
 
 For instance, this example shows how to filter a collection twice, and then multiply each element in the remaining collection:
 

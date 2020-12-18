@@ -15,7 +15,8 @@ def map[B](f: (A) => B): List[B]
            -----------
 ```
 
-Indeed, the Scaladoc clearly states, “`f` is the *function* to apply to each element.” But despite that, somehow you can pass a *method* into `map`, and it still works:
+Indeed, the Scaladoc clearly states, “`f` is the *function* to apply to each element.”
+But despite that, somehow you can pass a *method* into `map`, and it still works:
 
 ```scala
 def times10(i: Int) = i * 10   // a method
@@ -24,14 +25,16 @@ List(1, 2, 3).map(times10)     // List(10,20,30)
 
 Have you ever wondered how this works — how you can pass a *method* into `map`, which expects a *function*?
 
-The technology behind this is known as *Eta Expansion*. It converts an expression of *method type* to an equivalent expression of *function type*, and it does so seamlessly and quietly.
+The technology behind this is known as *Eta Expansion*.
+It converts an expression of *method type* to an equivalent expression of *function type*, and it does so seamlessly and quietly.
 
 
 
 ## The differences between methods and functions
 
 {% comment %}
-NOTE: I got the following “method” definition from this page (https://dotty.epfl.ch/docs/reference/changed-features/eta-expansion-spec.html), but I’m not sure it’s 100% accurate now that methods can exist outside of classes/traits/objects. I’ve made a few changes to that description that I hope are more accurate and up to date.
+NOTE: I got the following “method” definition from this page (https://dotty.epfl.ch/docs/reference/changed-features/eta-expansion-spec.html), but I’m not sure it’s 100% accurate now that methods can exist outside of classes/traits/objects.
+I’ve made a few changes to that description that I hope are more accurate and up to date.
 {% endcomment %}
 
 
@@ -43,7 +46,8 @@ Historically, *methods* have been a part of the definition of a class, although 
 
 Unlike methods, *functions* are complete objects themselves, making them first-class entities.
 
-Their syntax is also different. This example shows how to define a method and a function that perform the same task, determining if the given integer is even:
+Their syntax is also different.
+This example shows how to define a method and a function that perform the same task, determining if the given integer is even:
 
 ```scala
 def isEvenMethod(i: Int) = i % 2 == 0         // a method

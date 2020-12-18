@@ -8,15 +8,18 @@ next-page: fun-write-map-function
 ---
 
 
-A higher-order function (HOF) is often defined as a function that (a) takes other functions as input parameters or (b) returns a function as a result. In Scala, HOFs are possible because functions are first-class values.
+A higher-order function (HOF) is often defined as a function that (a) takes other functions as input parameters or (b) returns a function as a result.
+In Scala, HOFs are possible because functions are first-class values.
 
-As an important note, while we use the common industry term “higher-order function” in this document, in Scala this phrase applies to both *methods* and *functions*. Thanks to Scala’s [Eta Expansion technology][eta_expansion], they can generally be used in the same places.
+As an important note, while we use the common industry term “higher-order function” in this document, in Scala this phrase applies to both *methods* and *functions*.
+Thanks to Scala’s [Eta Expansion technology][eta_expansion], they can generally be used in the same places.
 
 
 
 ## From consumer to creator
 
-In the examples so far in this book you’ve seen how to be a *consumer* of methods that take other functions as input parameters, such as using HOFs like `map` and `filter`. In the next few sections you’ll see how to be a *creator* of HOFs, including:
+In the examples so far in this book you’ve seen how to be a *consumer* of methods that take other functions as input parameters, such as using HOFs like `map` and `filter`.
+In the next few sections you’ll see how to be a *creator* of HOFs, including:
 
 - How to write methods that take functions as input parameters
 - How to return a function from a method
@@ -32,13 +35,17 @@ As a beneficial side effect of this discussion, once you’re comfortable with t
 
 ## Understanding filter’s Scaladoc
 
-To understand how higher-order functions work, it helps to dig into an example. For instance, you can understand the type of functions `filter` accepts by looking at its Scaladoc. Here’s the `filter` definition in the `List` class:
+To understand how higher-order functions work, it helps to dig into an example.
+For instance, you can understand the type of functions `filter` accepts by looking at its Scaladoc.
+Here’s the `filter` definition in the `List` class:
 
 ```scala
 def filter(p: (A) => Boolean): List[A]
 ```
 
-This states that `filter` is a method that takes a function parameter named `p`. By convention, `p` stands for a *predicate*, which is just a function that returns a `Boolean` value. So `filter` takes a predicate `p` as an input parameter, and returns a `List[A]`, where `A` is the type held in the list; if you call `filter` on a `List[Int]`, `A` is the type `Int`.
+This states that `filter` is a method that takes a function parameter named `p`.
+By convention, `p` stands for a *predicate*, which is just a function that returns a `Boolean` value.
+So `filter` takes a predicate `p` as an input parameter, and returns a `List[A]`, where `A` is the type held in the list; if you call `filter` on a `List[Int]`, `A` is the type `Int`.
 
 At this point, if you don’t know the purpose of the `filter` method, all you’d know is that its algorithm somehow uses the predicate `p` to create and return the `List[A]`.
 
@@ -48,7 +55,8 @@ Looking specifically at the function parameter `p`, this part of `filter`’s de
 p: (A) => Boolean
 ```
 
-means that whatever function you pass in must take the type `A` as an input parameter and return a `Boolean`. So if your list is a `List[Int]`, you can replace the generic type `A` with `Int`, and read that signature like this:
+means that whatever function you pass in must take the type `A` as an input parameter and return a `Boolean`.
+So if your list is a `List[Int]`, you can replace the generic type `A` with `Int`, and read that signature like this:
 
 ```scala
 p: (Int) => Boolean
@@ -90,13 +98,15 @@ f: () => Unit
 
 Here’s how this works:
 
-- `f` is the name of the function input parameter. It’s just like naming a `String` parameter `s` or an `Int` parameter `i`.
+- `f` is the name of the function input parameter.
+  It’s just like naming a `String` parameter `s` or an `Int` parameter `i`.
 - The type signature of `f` specifies the *type* of the functions this method will accept.
 - The `()` portion of `f`’s signature (on the left side of the `=>` symbol) states that `f` takes no input parameters.
 - The `Unit` portion of the signature (on the right side of the `=>` symbol) indicates that `f` should return nothing.
 - Looking back at the body of the `sayHello` method (on the right side of the `=` symbol), the `f()` statement there invokes the function that’s passed in.
 
-Now that we’ve defined `sayHello`, let’s create a function to match `f`’s signature so we can test it. The following function takes no input parameters and returns nothing, so it matches `f`’s type signature:
+Now that we’ve defined `sayHello`, let’s create a function to match `f`’s signature so we can test it.
+The following function takes no input parameters and returns nothing, so it matches `f`’s type signature:
 
 ```scala
 def helloJoe(): Unit = println("Hello, Joe")
@@ -108,12 +118,14 @@ Because the type signatures match, you can pass `helloJoe` into `sayHello`:
 sayHello(helloJoe)   // prints "Hello, Joe"
 ```
 
-If you’ve never done this before, congratulations. You just defined a method named `sayHello` that takes a function as an input parameter, and then invokes that function in its method body.
+If you’ve never done this before, congratulations:
+You just defined a method named `sayHello` that takes a function as an input parameter, and then invokes that function in its method body.
 
 
 ### sayHello can take many functions
 
-It’s important to know that the beauty of this approach is not that `sayHello` can take *one* function as an input parameter; the beauty is that it can take *any* function that matches `f`’s signature. For instance, because this next function takes no input parameters and returns nothing, it also works with `sayHello`:
+It’s important to know that the beauty of this approach is not that `sayHello` can take *one* function as an input parameter; the beauty is that it can take *any* function that matches `f`’s signature.
+For instance, because this next function takes no input parameters and returns nothing, it also works with `sayHello`:
 
 ```scala
 def bonjourJulien(): Unit = println("Bonjour, Julien")
@@ -126,7 +138,8 @@ scala> sayHello(bonjourJulien)
 Bonjour, Julien
 ````
 
-This is a good start. The only thing to do now is see a few more examples of how to define different type signatures for function parameters.
+This is a good start.
+The only thing to do now is see a few more examples of how to define different type signatures for function parameters.
 
 
 
@@ -152,7 +165,8 @@ To demonstrate more type signature examples, here’s a function that takes a `S
 f: (String) => Int
 ```
 
-What kinds of functions take a string and return an integer? Functions like “string length” and checksum are two examples.
+What kinds of functions take a string and return an integer?
+Functions like “string length” and checksum are two examples.
 
 Similarly, this function takes two `Int` parameters and returns an `Int`:
 
@@ -176,13 +190,16 @@ As you can infer from these examples, the general syntax for defining function p
 variableName: (parameterTypes ...) => returnType
 ```
 
->Because functional programming is like creating and combining a series of algebraic equations, it’s common to think about types a *lot* when designing functions and applications. You might say that you “think in types.”
+>Because functional programming is like creating and combining a series of algebraic equations, it’s common to think about types a *lot* when designing functions and applications.
+You might say that you “think in types.”
 
 
 
 ## Taking a function parameter along with other parameters
 
-For HOFs to be really useful, they also need some data to work on. For a class like `List`, its `map` method already has data to work on: the data in the `List`. But for a standalone HOF that doesn’t have its own data, it should also accept data as other input parameters.
+For HOFs to be really useful, they also need some data to work on.
+For a class like `List`, its `map` method already has data to work on: the data in the `List`.
+But for a standalone HOF that doesn’t have its own data, it should also accept data as other input parameters.
 
 For instance, here’s a method named `executeNTimes` that has two input parameters: a function, and an `Int`:
 
@@ -191,7 +208,8 @@ def executeNTimes(f: () => Unit, n: Int): Unit =
   for i <- 1 to n do f()
 ```
 
-As the code shows, `executeNTimes` executes the `f` function `n` times. Because a simple `for` loop like this has no return value, `executeNTimes` returns `Unit`.
+As the code shows, `executeNTimes` executes the `f` function `n` times.
+Because a simple `for` loop like this has no return value, `executeNTimes` returns `Unit`.
 
 To test `executeNTimes`, define a method that matches `f`’s signature:
 
@@ -209,12 +227,14 @@ Hello, world
 Hello, world
 ````
 
-Excellent. The `executeNTimes` method executes the `helloWorld` function three times.
+Excellent.
+The `executeNTimes` method executes the `helloWorld` function three times.
 
 
 ### As many parameters as needed
 
-Your methods can continue to get as complicated as necessary. For example, this method takes a function of type `(Int, Int) => Int`, along with two input parameters:
+Your methods can continue to get as complicated as necessary.
+For example, this method takes a function of type `(Int, Int) => Int`, along with two input parameters:
 
 ```scala
 def executeAndPrint(f: (Int, Int) => Int, i: Int, j: Int): Unit =

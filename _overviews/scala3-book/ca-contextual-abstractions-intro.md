@@ -10,7 +10,9 @@ next-page: ca-given-using-clauses
 
 ## Background
 
-Implicits in Scala 2 were a major distinguishing design feature. They are *the* fundamental way to abstract over context. They represent a unified paradigm with a great variety of use cases, among them:
+Implicits in Scala 2 were a major distinguishing design feature.
+They are *the* fundamental way to abstract over context.
+They represent a unified paradigm with a great variety of use cases, among them:
 
 - Implementing type classes
 - Establishing context
@@ -18,29 +20,43 @@ Implicits in Scala 2 were a major distinguishing design feature. They are *the* 
 - Expressing capabilities
 - Computing new types, and proving relationships between them
 
-Since then, other languages have followed suit, e.g., Rust’s traits or Swift’s protocol extensions. Design proposals are also on the table for Kotlin as compile time dependency resolution, for C# as Shapes and Extensions or for F# as Traits. Implicits are also a common feature of theorem provers such as Coq or Agda.
+Since then, other languages have followed suit, e.g., Rust’s traits or Swift’s protocol extensions.
+Design proposals are also on the table for Kotlin as compile time dependency resolution, for C# as Shapes and Extensions or for F# as Traits.
+Implicits are also a common feature of theorem provers such as Coq or Agda.
 
-Even though these designs use different terminology, they’re all variants of the core idea of *term inference*: Given a type, the compiler synthesizes a “canonical” term that has that type.
+Even though these designs use different terminology, they’re all variants of the core idea of *term inference*:
+Given a type, the compiler synthesizes a “canonical” term that has that type.
 
 
 ## Redesign
 
-Scala 3 includes a redesign of contextual abstractions in Scala. While these concepts were gradually “discovered” in Scala 2, they’re now well known and understood, and the redesign takes advantage of that knowledge.
+Scala 3 includes a redesign of contextual abstractions in Scala.
+While these concepts were gradually “discovered” in Scala 2, they’re now well known and understood, and the redesign takes advantage of that knowledge.
 
 The design of Scala 3 focuses on **intent** rather than **mechanism**.
 Instead of offering one very powerful feature of implicits, Scala 3 offers several use-case oriented features:
 
-- **Abtracting over contextual information**. [Using clauses][givens] allow programmers to abstract over information that is available in the calling context and should be passed implicitly. As an improvement over Scala 2 implicits, using clauses can be specified by type, freeing function signatures from term variable names that are never explicitly referred to.
+- **Abtracting over contextual information**.
+  [Using clauses][givens] allow programmers to abstract over information that is available in the calling context and should be passed implicitly.
+  As an improvement over Scala 2 implicits, using clauses can be specified by type, freeing function signatures from term variable names that are never explicitly referred to.
 
-- **Providing Type-class instances**. [Given instances][type-classes] allow programmers to define the _canonical value_ of a certain type. This makes programming with type-classes more straightforward without leaking implementation details.
+- **Providing Type-class instances**.
+  [Given instances][type-classes] allow programmers to define the _canonical value_ of a certain type.
+  This makes programming with type-classes more straightforward without leaking implementation details.
 
-- **Retroactively extending classes**. In Scala 2, extension methods had to be encoded using implicit conversions or implicit classes. In contrast, in Scala 3 [extension methods][extension-methods] are now directly built into the language, leading to better error messages and improved type inference.
+- **Retroactively extending classes**.
+  In Scala 2, extension methods had to be encoded using implicit conversions or implicit classes.
+  In contrast, in Scala 3 [extension methods][extension-methods] are now directly built into the language, leading to better error messages and improved type inference.
 
-- **Viewing one type as another**. Implicit conversion have been [redesigned][implicit-conversions] from the ground up as instances of a type-class `Conversion`.
+- **Viewing one type as another**.
+  Implicit conversion have been [redesigned][implicit-conversions] from the ground up as instances of a type-class `Conversion`.
 
-- **Higher-order contextual abstractions**. The _all-new_ feature of [context functions][contextual-functions] makes contextual abstractions a first-class citizen. They are an important tool for library authors and allow to express concise domain specific languages.
+- **Higher-order contextual abstractions**.
+  The _all-new_ feature of [context functions][contextual-functions] makes contextual abstractions a first-class citizen.
+  They are an important tool for library authors and allow to express concise domain specific languages.
 
-- **Actionable feedback from the compiler**. In case an implicit parameter can not be resolved by the compiler, it now provides you [import suggestions](https://www.scala-lang.org/blog/2020/05/05/scala-3-import-suggestions.html) that may fix the problem.
+- **Actionable feedback from the compiler**.
+  In case an implicit parameter can not be resolved by the compiler, it now provides you [import suggestions](https://www.scala-lang.org/blog/2020/05/05/scala-3-import-suggestions.html) that may fix the problem.
 
 
 ## Benefits

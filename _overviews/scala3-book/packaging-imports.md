@@ -8,10 +8,11 @@ next-page: collections-intro
 ---
 
 
+Scala uses *packages* to create namespaces that let you modularize programs and help prevent namespace collisions.
+Scala supports the package-naming style used by Java, and also the “curly brace” namespace notation used by languages like C++ and C#.
 
-Scala uses *packages* to create namespaces that let you modularize programs and help prevent namespace collisions. Scala supports the package-naming style used by Java, and also the “curly brace” namespace notation used by languages like C++ and C#.
-
-The Scala approach to importing members is also similar to Java, and more flexible. With Scala you can:
+The Scala approach to importing members is also similar to Java, and more flexible.
+With Scala you can:
 
 - Import packages, classes, objects, traits, and methods
 - Place import statements anywhere
@@ -23,7 +24,8 @@ These features are demonstrated in the following examples.
 
 ## Creating a package
 
-Packages are created by declaring one or more package names at the top of a Scala file. For example, when your domain name is _acme.com_ and you’re working in the _model_ package of an application named _myapp_, your package declaration looks like this:
+Packages are created by declaring one or more package names at the top of a Scala file.
+For example, when your domain name is _acme.com_ and you’re working in the _model_ package of an application named _myapp_, your package declaration looks like this:
 
 ```scala
 package com.acme.myapp.model
@@ -55,15 +57,16 @@ The advantages of this approach are that it allows for package nesting, and prov
 
 
 
-
 ## Import statements, Part 1
 
-Import statements are used to access entities in other packages. Import statements fall into two main categories:
+Import statements are used to access entities in other packages.
+Import statements fall into two main categories:
 
 - Importing classes, traits, objects, functions, and methods
 - Importing `given` clauses
 
-If you’re used to a language like Java, the first class of import statements is similar to what Java uses, with a slightly different syntax that allows for more flexibility. These examples demonstrate some of that flexibility:
+If you’re used to a language like Java, the first class of import statements is similar to what Java uses, with a slightly different syntax that allows for more flexibility.
+These examples demonstrate some of that flexibility:
 
 ````
 import users._                            // import everything from the `users` package
@@ -72,14 +75,17 @@ import users.{User, UserPreferences}      // only import the selected members
 import users.{UserPreferences => UPrefs}  // rename a member as you import it
 ````
 
-Those examples are meant to give you a taste of how the first class of `import` statements work. They’re explained more in the subsections that follow.
+Those examples are meant to give you a taste of how the first class of `import` statements work.
+They’re explained more in the subsections that follow.
 
-Import statements are also used to import `given` instances into scope. Those are discussed at the end of this chapter.
+Import statements are also used to import `given` instances into scope.
+Those are discussed at the end of this chapter.
 
 Two notes before moving on:
 
 - Import clauses are not required for accessing members of the same package.
-- When the `_` character is used in Scala import statements, it’s similar to the `*` character in Java. One reason for this difference is that in Scala, the `*` character can be used for method names.
+- When the `_` character is used in Scala import statements, it’s similar to the `*` character in Java.
+  One reason for this difference is that in Scala, the `*` character can be used for method names.
 
 
 ### Importing one or more members
@@ -113,7 +119,8 @@ import java.io._
 
 ### Renaming members on import
 
-Sometimes it can help to rename entities when you import them to avoid name collisions. For instance, if you want to use the Scala `List` class and also the *java.util.List* class at the same time, you can rename the *java.util.List* class when you import it:
+Sometimes it can help to rename entities when you import them to avoid name collisions.
+For instance, if you want to use the Scala `List` class and also the *java.util.List* class at the same time, you can rename the *java.util.List* class when you import it:
 
 ```scala
 import java.util.{List => JavaList}
@@ -132,7 +139,8 @@ That line of code says, “Rename the `Date` and `HashMap` classes as shown, and
 
 ### Hiding members on import
 
-You can also *hide* members during the import process. This `import` statement hides the *java.util.Random* class, while importing everything else in the *java.util* package:
+You can also *hide* members during the import process.
+This `import` statement hides the *java.util.Random* class, while importing everything else in the *java.util* package:
 
 ```scala
 import java.util.{Random => _, _}
@@ -177,7 +185,8 @@ val c: Map[Int, Int] = Map(1 -> 1, 2 -> 2)
 
 ### Use imports anywhere
 
-In Scala, `import` statements can be anywhere. They can be used at the top of a source code file:
+In Scala, `import` statements can be anywhere.
+They can be used at the top of a source code file:
 
 ```scala
 package foo
@@ -254,7 +263,8 @@ import _root_.users._
 
 ## Importing `given` instances
 
-As you’ll see in the [Contextual Abstractions][contextual] chapter, a special form of the `import` statement is used to import `given` instances. The basic form is shown in this example:
+As you’ll see in the [Contextual Abstractions][contextual] chapter, a special form of the `import` statement is used to import `given` instances.
+The basic form is shown in this example:
 
 ```scala
 object A:
@@ -267,7 +277,9 @@ object B:
   import A.given   // import the given instance
 ```
 
-In this code, the `import A._` clause of object `B` imports all members of `A` *except* the `given` instance `tc`. Conversely, the second import, `import A.given`, imports *only* that `given` instance. The two `import` clauses can also be merged into one:
+In this code, the `import A._` clause of object `B` imports all members of `A` *except* the `given` instance `tc`.
+Conversely, the second import, `import A.given`, imports *only* that `given` instance.
+The two `import` clauses can also be merged into one:
 
 ```scala
 object B:
@@ -280,25 +292,30 @@ The wildcard selector `_` brings all definitions other than givens or extensions
 
 These rules have two main benefits:
 
-- It’s more clear where givens in scope are coming from. In particular, it’s not possible to hide imported givens in a long list of other wildcard imports.
-- It enables importing all givens without importing anything else. This is particularly important since givens can be anonymous, so the usual use of named imports is not practical.
+- It’s more clear where givens in scope are coming from.
+  In particular, it’s not possible to hide imported givens in a long list of other wildcard imports.
+- It enables importing all givens without importing anything else.
+  This is particularly important since givens can be anonymous, so the usual use of named imports is not practical.
 
 
 ### By-type imports
 
-Since givens can be anonymous, it’s not always practical to import them by their name, and wildcard imports are typically used instead. *By-type imports* provide a more specific alternative to wildcard imports, which makes it more clear what is imported:
+Since givens can be anonymous, it’s not always practical to import them by their name, and wildcard imports are typically used instead.
+*By-type imports* provide a more specific alternative to wildcard imports, which makes it more clear what is imported:
 
 ```scala
 import A.{given TC}
 ```
 
-This imports any `given` in `A` that has a type which conforms to `TC`. Importing givens of several types `T1,...,Tn` is expressed by multiple `given` selectors:
+This imports any `given` in `A` that has a type which conforms to `TC`.
+Importing givens of several types `T1,...,Tn` is expressed by multiple `given` selectors:
 
 ```scala
 import A.{given T1, ..., given Tn}
 ```
 
-Importing all `given` instances of a parameterized type is expressed by wildcard arguments. For example, when you have this `object`:
+Importing all `given` instances of a parameterized type is expressed by wildcard arguments.
+For example, when you have this `object`:
 
 ```scala
 object Instances:
@@ -314,7 +331,9 @@ This import statement imports the `intOrd`, `listOrd`, and `ec` instances, but l
 import Instances.{given Ordering[?], given ExecutionContext}
 ```
 
-By-type imports can be mixed with by-name imports. If both are present in an import clause, by-type imports come last. For instance, this import clause imports `im`, `intOrd`, and `listOrd`, but leaves out `ec`:
+By-type imports can be mixed with by-name imports.
+If both are present in an import clause, by-type imports come last.
+For instance, this import clause imports `im`, `intOrd`, and `listOrd`, but leaves out `ec`:
 
 ```scala
 import Instances.{im, given Ordering[?]}

@@ -8,7 +8,9 @@ next-page: types-intersection
 ---
 
 
-Generic classes (or traits) take a type as _a parameter_ within square brackets `[...]`. The Scala convention is to use a single letter (like `A`) to name those type parameters. The type can then be used inside the class as needed for method instance parameters, or on return types:
+Generic classes (or traits) take a type as _a parameter_ within square brackets `[...]`.
+The Scala convention is to use a single letter (like `A`) to name those type parameters.
+The type can then be used inside the class as needed for method instance parameters, or on return types:
 
 ```scala
 // here we delare the type parameter A
@@ -26,7 +28,8 @@ class Stack[A]:
     currentTop
 ```
 
-This implementation of a `Stack` class takes any type as a parameter. The beauty of generics is that you can now create a `Stack[Int]`, `Stack[String]`, and so on, allowing you to reuse your implementation of a `Stack` for arbitrary element types.
+This implementation of a `Stack` class takes any type as a parameter.
+The beauty of generics is that you can now create a `Stack[Int]`, `Stack[String]`, and so on, allowing you to reuse your implementation of a `Stack` for arbitrary element types.
 
 This is how you create and use a `Stack[Int]`:
 

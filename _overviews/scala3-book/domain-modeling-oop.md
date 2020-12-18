@@ -23,7 +23,8 @@ Scala provides all the necessary tools for object-oriented design:
 - **Access modifiers** lets you control which members of a class can be accessed by which part of the code.
 
 ## Traits
-Perhaps different than other languages with support for OOP, such as Java, the primary tool of decomposition in Scala is not classes, but traits. They can serve to describe abstract interfaces like:
+Perhaps different than other languages with support for OOP, such as Java, the primary tool of decomposition in Scala is not classes, but traits.
+They can serve to describe abstract interfaces like:
 
 ```scala
 trait Showable:
@@ -50,7 +51,8 @@ class Document(text: String) extends Showable:
   def show = text
 ```
 #### Abstract Members
-Abstract methods are not the only thing that can be left abstract in a trait. A trait can contain:
+Abstract methods are not the only thing that can be left abstract in a trait.
+A trait can contain:
 
 - abstract methods (`def m(): T`)
 - abstract value definitions (`val x: T`)
@@ -75,11 +77,13 @@ To compose the two services, we can simply create a new trait extending them:
 ```scala
 trait ComposedService extends GreetingService, TranslationService
 ```
-Abstract members in one trait (such as `translate` in `GreetingService`) are automatically matched with concrete members in another trait. This not only works with methods as in this example, but also with all of the other abstract members mentioned above (that is, types, value definitions, etc.).
+Abstract members in one trait (such as `translate` in `GreetingService`) are automatically matched with concrete members in another trait.
+This not only works with methods as in this example, but also with all of the other abstract members mentioned above (that is, types, value definitions, etc.).
 
 ## Classes
 Traits are great to modularize components and describe interfaces (required and provided).
-But at some point we’ll want to create instances of them. When designing software in Scala, it’s often helpful to only consider using classes at the leafs of your inheritance model:
+But at some point we’ll want to create instances of them.
+When designing software in Scala, it’s often helpful to only consider using classes at the leafs of your inheritance model:
 
 {% comment %}
 NOTE: I think “leaves” may technically be the correct word to use, but I prefer “leafs.”
@@ -129,7 +133,9 @@ Having to explicitly mark classes as open avoids many common pitfalls in OO desi
 In particular, it requires library designers to explicitly plan for extension and for instance document the classes that are marked as open with additional extension contracts.
 
 {% comment %}
-NOTE/FWIW: In his book, “Effective Java,” Joshua Bloch describes this as “Item 19: Design and document for inheritance or else prohibit it.” Unfortunately I can’t find any good links to this on the internet. I only mention this because I think that book and phrase is pretty well known in the Java world.
+NOTE/FWIW: In his book, “Effective Java,” Joshua Bloch describes this as “Item 19: Design and document for inheritance or else prohibit it.”
+Unfortunately I can’t find any good links to this on the internet.
+I only mention this because I think that book and phrase is pretty well known in the Java world.
 {% endcomment %}
 
 
@@ -155,16 +161,22 @@ c1.count // 2
 
 #### Access Modifiers
 By default, all member definitions in Scala are publicly visible.
-To hide implementation details, it’s possible to define members (methods, fields, types, etc.) to be `private` or `protected`. This way you can control how they are accessed or overridden. Private members are only visible to the class/trait itself and to its companion object. Protected members are also visible to subclasses of the class.
+To hide implementation details, it’s possible to define members (methods, fields, types, etc.) to be `private` or `protected`.
+This way you can control how they are accessed or overridden.
+Private members are only visible to the class/trait itself and to its companion object.
+Protected members are also visible to subclasses of the class.
 
 
 ## Advanced Example: Service Oriented Design
-In the following, we illustrate some advanced features of Scala and show how they can be used to structure larger software components. The examples are adapted from the paper ["Scalable Component Abstractions"][scalable] by Martin Odersky and Matthias Zenger. Don’t worry if you don’t understand all the details of the example; it’s primarily intended to demonstrate how to use several type features to construct larger components.
+In the following, we illustrate some advanced features of Scala and show how they can be used to structure larger software components.
+The examples are adapted from the paper ["Scalable Component Abstractions"][scalable] by Martin Odersky and Matthias Zenger.
+Don’t worry if you don’t understand all the details of the example; it’s primarily intended to demonstrate how to use several type features to construct larger components.
 {% comment %}
 TODO: I’m not sure what I added in that last sentence is accurate or helpful, but I wanted to add a note about why readers shouldn’t worry about understanding the example.
 {% endcomment %}
 
-Our goal is to define a software component with a _family of types_ that can be refined later in implementations of the component. Concretely, the following code defines the component `SubjectObserver` as a trait with two abstract type members, `S` (for subjects) and `O` (for observers):
+Our goal is to define a software component with a _family of types_ that can be refined later in implementations of the component.
+Concretely, the following code defines the component `SubjectObserver` as a trait with two abstract type members, `S` (for subjects) and `O` (for observers):
 
 ```scala
 trait SubjectObserver:
@@ -187,16 +199,26 @@ trait SubjectObserver:
 There are a few things that need explanation.
 
 #### Abstract Type Members
-The declaration `type S <: Subject` says that within the trait `SubjectObserver` we can refer to some _unknown_ (that is, abstract) type that we call `S`. However, the type is not completely unknown: we know at least that it is _some subtype_ of the trait `Subject`.
-All traits and classes extending `SubjectObserer` are free to chose any type for `S` as long as the chosen type is a subtype of `Subject`. The `<: Subject` part of the declaration is also referred to as an _upper bound on `S`_.
+The declaration `type S <: Subject` says that within the trait `SubjectObserver` we can refer to some _unknown_ (that is, abstract) type that we call `S`.
+However, the type is not completely unknown: we know at least that it is _some subtype_ of the trait `Subject`.
+All traits and classes extending `SubjectObserer` are free to chose any type for `S` as long as the chosen type is a subtype of `Subject`.
+The `<: Subject` part of the declaration is also referred to as an _upper bound on `S`_.
 
 #### Nested Traits
-_Within_ trait `SubjectObserver`, we define two other traits. Let us begin with trait `Observer`, which only defines one abstract method `notify` that takes an argument of type `S`. As we will see momentarily, it is important that the argument has type `S` and not type `Subject`.
+_Within_ trait `SubjectObserver`, we define two other traits.
+Let us begin with trait `Observer`, which only defines one abstract method `notify` that takes an argument of type `S`.
+As we will see momentarily, it is important that the argument has type `S` and not type `Subject`.
 
-The second trait, `Subject`, defines one private field `observers` to store all observers that subscribed to this particular subject. Subscribing to a subject simply stores the object into this list. Again, the type of parameter `obs` is `O`, not `Observer`.
+The second trait, `Subject`, defines one private field `observers` to store all observers that subscribed to this particular subject.
+Subscribing to a subject simply stores the object into this list.
+Again, the type of parameter `obs` is `O`, not `Observer`.
 
 #### Selftype Annotations
-Finally, you might have wondered what the `self: S =>` on trait `Subject` is supposed to mean. This is called a _selftype annotation_. It requires subtypes of `Subject` to also be subtypes of `S`. This is necessary to be able to call `obs.notify` with `this` as an argument, since it requires a value of type `S`. If `S` was a _concrete_ type, the selftype annotation could be replaced by `trait Subject extends S`.
+Finally, you might have wondered what the `self: S =>` on trait `Subject` is supposed to mean.
+This is called a _selftype annotation_.
+It requires subtypes of `Subject` to also be subtypes of `S`.
+This is necessary to be able to call `obs.notify` with `this` as an argument, since it requires a value of type `S`.
+If `S` was a _concrete_ type, the selftype annotation could be replaced by `trait Subject extends S`.
 
 ### Implementing the Component
 We can now implement the above component and define the abstract type members to be concrete types:
@@ -218,7 +240,8 @@ object SensorReader extends SubjectObserver:
       println(s"${sub.label} has value ${sub.value}")
 ```
 Specifically, we define a _singleton_ object `SensorReader` that extends `SubjectObserver`.
-In the implementation of `SensorReader`, we say that type `S` is now defined as type `Sensor`, and type `O` is defined to be equal to type `Display`. Both `Sensor` and `Display` are defined as nested classes within `SensorReader`, implementing the traits `Subject` and `Observer`, correspondingly.
+In the implementation of `SensorReader`, we say that type `S` is now defined as type `Sensor`, and type `O` is defined to be equal to type `Display`.
+Both `Sensor` and `Display` are defined as nested classes within `SensorReader`, implementing the traits `Subject` and `Observer`, correspondingly.
 
 Besides being an example of a service oriented design, this code also highlights many aspects of object-oriented programming:
 

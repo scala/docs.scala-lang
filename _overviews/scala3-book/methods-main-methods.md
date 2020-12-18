@@ -28,13 +28,15 @@ $ scala hello
 Hello, world
 ```
 
-A `@main` annotated method can be written either at the top-level (as shown), or inside a statically accessible object. In either case, the name of the program is in each case the name of the method, without any object prefixes.
+A `@main` annotated method can be written either at the top-level (as shown), or inside a statically accessible object.
+In either case, the name of the program is in each case the name of the method, without any object prefixes.
 
 
 
 ### Command line arguments
 
-With this approach your `@main` method can handle command line arguments, and those arguments can have different types. For example, given this `@main` method that takes an `Int`, a `String`, and a varargs `String*` parameter:
+With this approach your `@main` method can handle command line arguments, and those arguments can have different types.
+For example, given this `@main` method that takes an `Int`, a `String`, and a varargs `String*` parameter:
 
 ```scala
 @main def happyBirthday(age: Int, name: String, others: String*) =
@@ -58,9 +60,12 @@ $ scala happyBirthday 23 Lisa Peter
 Happy 23rd Birthday, Lisa and Peter!
 ```
 
-As shown, the `@main` method can have an arbitrary number of parameters. For each parameter type there must be an instance of the *scala.util.FromString* type class that converts an argument `String` to the required parameter type. Also as shown, a main method’s parameter list can end in a repeated parameter like `String*` that takes all remaining arguments given on the command line.
+As shown, the `@main` method can have an arbitrary number of parameters.
+For each parameter type there must be an instance of the *scala.util.FromString* type class that converts an argument `String` to the required parameter type.
+Also as shown, a main method’s parameter list can end in a repeated parameter like `String*` that takes all remaining arguments given on the command line.
 
-The program implemented from an `@main` method checks that there are enough arguments on the command line to fill in all parameters, and that the argument strings can be converted to the required types. If a check fails, the program is terminated with an error message:
+The program implemented from an `@main` method checks that there are enough arguments on the command line to fill in all parameters, and that the argument strings can be converted to the required types.
+If a check fails, the program is terminated with an error message:
 
 ```
 $ scala happyBirthday 22
@@ -97,13 +102,16 @@ final class happyBirthday {
 }
 ```
 
->**Note**: In this generated code, the `<static>` modifier expresses that the `main` method is generated as a static method of class `happyBirthday`. This feature is not available for user programs in Scala. Regular “static” members are generated in Scala using objects instead.
+>**Note**: In this generated code, the `<static>` modifier expresses that the `main` method is generated as a static method of class `happyBirthday`.
+This feature is not available for user programs in Scala.
+Regular “static” members are generated in Scala using objects instead.
 
 
 
 ## Scala 3 compared to Scala 2
 
-`@main` methods are the recommended way to generate programs that can be invoked from the command line in Scala 3. They replace the previous approach in Scala 2, which was to create an `object` that extends the `App` class:
+`@main` methods are the recommended way to generate programs that can be invoked from the command line in Scala 3.
+They replace the previous approach in Scala 2, which was to create an `object` that extends the `App` class:
 
 ```scala
 // scala 2
@@ -112,7 +120,8 @@ object happyBirthday extends App: {
 }
 ```
 
-The previous functionality of `App`, which relied on the “magic” `DelayedInit` trait, is no longer available. `App` still exists in limited form for now, but it doesn’t support command line arguments and will be deprecated in the future.
+The previous functionality of `App`, which relied on the “magic” `DelayedInit` trait, is no longer available.
+`App` still exists in limited form for now, but it doesn’t support command line arguments and will be deprecated in the future.
 
 If programs need to cross-build between Scala 2 and Scala 3, it’s recommended to use an explicit `main` method with an `Array[String]` argument instead:
 

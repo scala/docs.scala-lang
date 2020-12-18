@@ -24,7 +24,8 @@ def help(id: Username | Password) =
 ```
 We implement the method `help` by distinguishing between the two alternatives using pattern matching.
 
-This code is a flexible and type-safe solution. If you attempt to pass in a type other than a `Username` or `Password`, the compiler flags it as an error:
+This code is a flexible and type-safe solution.
+If you attempt to pass in a type other than a `Username` or `Password`, the compiler flags it as an error:
 
 ```scala
 help("hi")   // error: Found: ("hi" : String)
@@ -49,7 +50,8 @@ case class Username(name: String) extends UsernameOrPassword
 case class Password(hash: Hash) extends UsernameOrPassword
 def help(id: UsernameOrPassword) = ...
 ```
-Pre-planning does not scale very well since, for example, requirements of API users might not be foreseeable. Additionally, cluttering the type hierarchy with marker traits like `UsernameOrPassword` also makes the code more difficult to read.
+Pre-planning does not scale very well since, for example, requirements of API users might not be foreseeable.
+Additionally, cluttering the type hierarchy with marker traits like `UsernameOrPassword` also makes the code more difficult to read.
 
 #### Tagged Unions
 Another alternative is to define a separate enumeration type like:
@@ -59,10 +61,12 @@ enum UsernameOrPassword:
   case IsUsername(u: Username)
   case IsPassword(p: Password)
 ```
-The enumeration `UsernameOrPassword` represents a _tagged_ union of `Username` and `Password`. However, this way of modeling the union requires _explicit wrapping and unwrapping_ and, for instance, `Username` is **not** a subtype of `UsernameOrPassword`.
+The enumeration `UsernameOrPassword` represents a _tagged_ union of `Username` and `Password`.
+However, this way of modeling the union requires _explicit wrapping and unwrapping_ and, for instance, `Username` is **not** a subtype of `UsernameOrPassword`.
 
 ### Inference of Union Types
-The compiler assigns a union type to an expression _only if_ such a type is explicitly given. For instance, given these values:
+The compiler assigns a union type to an expression _only if_ such a type is explicitly given.
+For instance, given these values:
 
 ```scala
 val name = Username("Eve")     // name: Username = Username(Eve)
@@ -79,7 +83,9 @@ scala> val b: Password | Username = if (true) name else password
 val b: Password | Username = Username(Eve)
 ````
 
-The type of `a` is `Object`, which is a supertype of `Username` and `Password`, but not the *least* supertype, `Password | Username`. If you want the least supertype you have to give it explicitly, as is done for `b`.
+The type of `a` is `Object`, which is a supertype of `Username` and `Password`, but not the *least* supertype, `Password | Username`.
+If you want the least supertype you have to give it explicitly, as is done for `b`.
 
 
-> Union types are duals of intersection types. And like `&` with intersection types, `|` is also commutative: `A | B` is the same type as `B | A`.
+> Union types are duals of intersection types.
+And like `&` with intersection types, `|` is also commutative: `A | B` is the same type as `B | A`.

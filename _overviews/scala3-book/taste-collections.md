@@ -9,13 +9,15 @@ next-page: taste-contextual-abstractions
 
 
 
-Scala has a rich set of collections classes, and those classes have a rich set of methods. Collections classes are available in both immutable and mutable forms.
+Scala has a rich set of collections classes, and those classes have a rich set of methods.
+Collections classes are available in both immutable and mutable forms.
 
 
 
 ## Creating lists
 
-To give you a taste of how these work, here are some examples that use the `List` class, which is an immutable, linked-list class. These examples show different ways to create a populated `List`:
+To give you a taste of how these work, here are some examples that use the `List` class, which is an immutable, linked-list class.
+These examples show different ways to create a populated `List`:
 
 ```scala
 val a = List(1, 2, 3)           // a: List[Int] = List(1, 2, 3)
@@ -32,7 +34,9 @@ val g = List.range(1, 10, 3)    // g: List[Int] = List(1, 4, 7)
 
 ## `List` methods
 
-Once you have a populated list, the following examples show some of the methods you can call on it. Notice that these are all functional methods, meaning that they don’t mutate the collection they’re called on, but instead return a new collection with the updated elements. The result that’s returned by each expression is shown in the comment on each line:
+Once you have a populated list, the following examples show some of the methods you can call on it.
+Notice that these are all functional methods, meaning that they don’t mutate the collection they’re called on, but instead return a new collection with the updated elements.
+The result that’s returned by each expression is shown in the comment on each line:
 
 ```scala
 // a sample list
@@ -73,7 +77,8 @@ There are many more methods available to Scala collections classes, and they’r
 
 ## Tuples
 
-The Scala _tuple_ is a type that lets you easily put a collection of different types in the same container. For example, given this `Person` case class:
+The Scala _tuple_ is a type that lets you easily put a collection of different types in the same container.
+For example, given this `Person` case class:
 
 ```scala
 case class Person(name: String)
@@ -104,7 +109,8 @@ val (num, str, person) = t
 // val person: Person = Person(Eleven)
 ```
 
-Tuples are nice for those times when you want to put a collection of heterogeneous types in a little collection-like structure. See the [Reference documentation][reference] for more tuple details.
+Tuples are nice for those times when you want to put a collection of heterogeneous types in a little collection-like structure.
+See the [Reference documentation][reference] for more tuple details.
 
 
 

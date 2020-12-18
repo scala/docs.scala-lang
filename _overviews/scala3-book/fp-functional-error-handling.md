@@ -9,9 +9,11 @@ next-page: fp-summary
 
 
 
-Functional programming is like writing a series of algebraic equations, and because algebra doesn’t have null values or throw exceptions, you don’t use these features in FP. This brings up an interesting question: In the situations where you might normally use a null value or exception in OOP code, what do you do?
+Functional programming is like writing a series of algebraic equations, and because algebra doesn’t have null values or throw exceptions, you don’t use these features in FP.
+This brings up an interesting question: In the situations where you might normally use a null value or exception in OOP code, what do you do?
 
-Scala’s solution is to use constructs like the `Option`/`Some`/`None` classes. This lesson provides an introduction to using these techniques.
+Scala’s solution is to use constructs like the `Option`/`Some`/`None` classes.
+This lesson provides an introduction to using these techniques.
 
 Two notes before we jump in:
 
@@ -24,7 +26,8 @@ Two notes before we jump in:
 
 While this first example doesn’t deal with null values, it’s a good way to introduce the `Option` classes, so we’ll start with it.
 
-Imagine that you want to write a method that makes it easy to convert strings to integer values, and you want an elegant way to handle the exception that’s thrown when your method gets a string like `"Hello"` instead of `"1"`. A first guess at such a method might look like this:
+Imagine that you want to write a method that makes it easy to convert strings to integer values, and you want an elegant way to handle the exception that’s thrown when your method gets a string like `"Hello"` instead of `"1"`.
+A first guess at such a method might look like this:
 
 ```scala
 def makeInt(s: String): Int =
@@ -34,13 +37,18 @@ def makeInt(s: String): Int =
     case e: Exception => 0
 ```
 
-If the conversion works, this method returns the correct `Int` value, but if it fails, the method returns `0`. This might be okay for some purposes, but it’s not really accurate. For instance, the method might have received `"0"`, but it may have also received `"foo"`, `"bar"`, or an infinite number of other strings that will throw an exception. This is a real problem: How do you know when the method really received a `"0"`, or when it received something else? The answer is that with this approach, there’s no way to know.
+If the conversion works, this method returns the correct `Int` value, but if it fails, the method returns `0`.
+This might be okay for some purposes, but it’s not really accurate.
+For instance, the method might have received `"0"`, but it may have also received `"foo"`, `"bar"`, or an infinite number of other strings that will throw an exception.
+This is a real problem: How do you know when the method really received a `"0"`, or when it received something else?
+The answer is that with this approach, there’s no way to know.
 
 
 
 ## Using Option/Some/None
 
-A common solution to this problem in Scala is to use a trio of classes known as `Option`, `Some`, and `None`. The `Some` and `None` classes are subclasses of `Option`, so the solution works like this:
+A common solution to this problem in Scala is to use a trio of classes known as `Option`, `Some`, and `None`.
+The `Some` and `None` classes are subclasses of `Option`, so the solution works like this:
 
 - You declare that `makeInt` returns an `Option` type
 - If `makeInt` receives a string it *can* convert to an `Int`, the answer is wrapped inside a `Some`
@@ -56,7 +64,8 @@ def makeInt(s: String): Option[Int] =
     case e: Exception => None
 ```
 
-This code can be read as, “When the given string converts to an integer, return the `Int` wrapped inside a `Some`, such as `Some(1)`. When the string can’t be converted to an integer, an exception is thrown and caught, and the method returns a `None` value.”
+This code can be read as, “When the given string converts to an integer, return the `Int` wrapped inside a `Some`, such as `Some(1)`.
+When the string can’t be converted to an integer, an exception is thrown and caught, and the method returns a `None` value.”
 
 These examples show how `makeInt` works:
 
@@ -65,7 +74,10 @@ val a = makeInt("1")     // Some(1)
 val b = makeInt("one")   // None
 ```
 
-As shown, the string `"1"` results in a `Some(1)`, and the string `"one"` results in a `None`. This is the essence of the `Option` approach to error handling. As shown, this technique is used so methods can return *values* instead of *exceptions*. In other situations, `Option` values are also used to replace `null` values.
+As shown, the string `"1"` results in a `Some(1)`, and the string `"one"` results in a `None`.
+This is the essence of the `Option` approach to error handling.
+As shown, this technique is used so methods can return *values* instead of *exceptions*.
+In other situations, `Option` values are also used to replace `null` values.
 
 Two notes:
 
@@ -76,14 +88,16 @@ Two notes:
 
 ## Being a consumer of makeInt
 
-Now imagine that you’re a consumer of the `makeInt` method. You know that it returns a subclass of `Option[Int]`, so the question becomes, how do you work with these return types?
+Now imagine that you’re a consumer of the `makeInt` method.
+You know that it returns a subclass of `Option[Int]`, so the question becomes, how do you work with these return types?
 
 There are two common answers, depending on your needs:
 
 - Use a `match` expression
 - Use a `for` expression
 
->There are other approaches that can be used. See the [Reference documentation][reference] for details on those approaches.
+>There are other approaches that can be used.
+See the [Reference documentation][reference] for details on those approaches.
 
 
 
@@ -103,7 +117,9 @@ In this example, if `x` can be converted to an `Int`, the first `case` statement
 
 ## Using a `for` expression
 
-Another common solution is to use a `for` expression — i.e., the `for`/`yield` combination that was shown earlier in this book. For instance, imagine that you want to convert three strings to integer values, and then add them together. This is how you do that with a `for` expression and `makeInt`:
+Another common solution is to use a `for` expression — i.e., the `for`/`yield` combination that was shown earlier in this book.
+For instance, imagine that you want to convert three strings to integer values, and then add them together.
+This is how you do that with a `for` expression and `makeInt`:
 
 ```scala
 val y = for
@@ -136,7 +152,8 @@ yield
 
 With that sample data, the variable `y` will have the value `Some(6)`.
 
-To see the failure case, change any of those strings to something that won’t convert to an integer. When you do that, you’ll see that `y` is a `None`:
+To see the failure case, change any of those strings to something that won’t convert to an integer.
+When you do that, you’ll see that `y` is a `None`:
 
 ```scala
 y: Option[Int] = None
@@ -150,7 +167,8 @@ Mental models can often help us understand new situations, so if you’re not fa
 - `Some` is a container with one item in it
 - `None` is a container, but it has nothing in it
 
-If you prefer to think of the `Option` classes as being like a box, `None` is like an empty box. It could have had something in it, but it doesn’t.
+If you prefer to think of the `Option` classes as being like a box, `None` is like an empty box.
+It could have had something in it, but it doesn’t.
 
 
 {% comment %}
@@ -160,7 +178,8 @@ NOTE: I commented-out this subsection because it continues to explain Some and N
 
 ## Using `foreach` with `Option`
 
-Because `Some` and `None` can be thought of containers, they’re also like collections classes. They have many of the methods you’d expect from a collection class, including `map`, `filter`, `foreach`, etc.
+Because `Some` and `None` can be thought of containers, they’re also like collections classes.
+They have many of the methods you’d expect from a collection class, including `map`, `filter`, `foreach`, etc.
 
 This raises an interesting question: What will these two values print, if anything?
 
@@ -169,7 +188,8 @@ makeInt("1").foreach(println)
 makeInt("x").foreach(println)
 ```
 
-Answer: The first example prints the number `1`, and the second example doesn’t print anything. The first example prints `1` because:
+Answer: The first example prints the number `1`, and the second example doesn’t print anything.
+The first example prints `1` because:
 
 - `makeInt("1")` evaluates to `Some(1)`
 - The expression becomes `Some(1).foreach(println)`
@@ -185,7 +205,9 @@ In this regard, `None` is similar to an empty `List`.
 
 ### The happy and unhappy paths
 
-Somewhere in Scala’s history, someone noted that the first example (the `Some`) represents the “Happy Path” of the `Option` approach, and the second example (the `None`) represents the “Unhappy Path.” *But* despite having two different possible outcomes, the great thing with `Option` is that there’s really just one path: The code you write to handle the `Some` and `None` possibilities is the same in both cases. The `foreach` examples look like this:
+Somewhere in Scala’s history, someone noted that the first example (the `Some`) represents the “Happy Path” of the `Option` approach, and the second example (the `None`) represents the “Unhappy Path.”
+*But* despite having two different possible outcomes, the great thing with `Option` is that there’s really just one path: The code you write to handle the `Some` and `None` possibilities is the same in both cases.
+The `foreach` examples look like this:
 
 ```scala
 makeInt(aString).foreach(println)
@@ -212,7 +234,8 @@ makeInt(x) match
   case None => println("That didn't work.")
 ```
 
->There are several other ways to handle `Option` values. See the Reference documentation for more details.
+>There are several other ways to handle `Option` values.
+See the Reference documentation for more details.
 {% endcomment %}
 
 
@@ -230,7 +253,8 @@ class Address:
   var zip: String
 ```
 
-While every address on Earth has a `street1` value, the `street2` value is optional. As a result, the `street2` field can be assigned a `null` value:
+While every address on Earth has a `street1` value, the `street2` value is optional.
+As a result, the `street2` field can be assigned a `null` value:
 
 ```scala
 val santa = new Address(
@@ -242,7 +266,8 @@ val santa = new Address(
 )
 ```
 
-Historically, developers have used blank strings and null values in this situation, both of which are hacks to work around the root problem: `street2` is an *optional* field. In Scala — and other modern languages — the correct solution is to declare up front that `street2` is optional:
+Historically, developers have used blank strings and null values in this situation, both of which are hacks to work around the root problem: `street2` is an *optional* field.
+In Scala — and other modern languages — the correct solution is to declare up front that `street2` is optional:
 
 ```scala
 class Address:
@@ -281,9 +306,10 @@ val santa = new Address(
 
 ## `Option` isn’t the only solution
 
-While this section focuses on the `Option` classes, Scala has a few other alternatives. 
+While this section focuses on the `Option` classes, Scala has a few other alternatives.
 
-For example, a trio of classes known as `Try`/`Success`/`Failure` work in the same manner, but (a) you primarily use these classes when your code can throw exceptions, and (b) you want to use the `Failure` class because it gives you access to the exception message. For example, these `Try` classes are commonly used when writing methods that interact with files, databases, and internet services, as those functions can easily throw exceptions.
+For example, a trio of classes known as `Try`/`Success`/`Failure` work in the same manner, but (a) you primarily use these classes when your code can throw exceptions, and (b) you want to use the `Failure` class because it gives you access to the exception message.
+For example, these `Try` classes are commonly used when writing methods that interact with files, databases, and internet services, as those functions can easily throw exceptions.
 
 You can learn more about the `Try` classes and the similar `Either`/`Right`/`Left` classes in the Reference documentation.
 

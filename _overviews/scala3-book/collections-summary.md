@@ -7,7 +7,8 @@ previous-page: collections-methods
 next-page: fp-intro
 ---
 
-This chapter provides a summary of the common Scala 3 collections and their accompanying methods. As shown, Scala comes with a wealth of collections and methods.
+This chapter provides a summary of the common Scala 3 collections and their accompanying methods.
+As shown, Scala comes with a wealth of collections and methods.
 
 When you need to see more details about the collections types shown in this chapter, see their Scaladoc pages:
 

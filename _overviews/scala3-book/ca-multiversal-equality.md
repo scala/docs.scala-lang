@@ -8,9 +8,11 @@ next-page: ca-implicit-conversions
 ---
 
 
-Previously, Scala had *universal equality*: Two values of any types could be compared with each other using `==` and `!=`. This came from the fact that `==` and `!=` are implemented in terms of Java’s `equals` method, which can also compare values of any two reference types.
+Previously, Scala had *universal equality*: Two values of any types could be compared with each other using `==` and `!=`.
+This came from the fact that `==` and `!=` are implemented in terms of Java’s `equals` method, which can also compare values of any two reference types.
 
-Universal equality is convenient, but it’s also dangerous since it undermines type safety. For instance, let’s assume that after some refactoring, you’re left with an erroneous program where a value `y` has type `S` instead of the correct type `T`:
+Universal equality is convenient, but it’s also dangerous since it undermines type safety.
+For instance, let’s assume that after some refactoring, you’re left with an erroneous program where a value `y` has type `S` instead of the correct type `T`:
 
 ```scala
 val x = ...   // of type T
@@ -18,9 +20,11 @@ val y = ...   // of type S, but should be T
 x == y        // typechecks, will always yield false
 ```
 
-If `y` gets compared to other values of type `T`, the program will still typecheck, since values of all types can be compared with each other. But it will probably give unexpected results and fail at runtime.
+If `y` gets compared to other values of type `T`, the program will still typecheck, since values of all types can be compared with each other.
+But it will probably give unexpected results and fail at runtime.
 
-A type-safe programming language can do better, and multiversal equality is an opt-in way to make universal equality safer. It uses the binary type class `CanEqual` to indicate that values of two given types can be compared with each other.
+A type-safe programming language can do better, and multiversal equality is an opt-in way to make universal equality safer.
+It uses the binary type class `CanEqual` to indicate that values of two given types can be compared with each other.
 
 
 ## Allowing the comparison of class instances
@@ -36,7 +40,8 @@ val c = Cat("Morris")
 d == c  // false, but it compiles
 ```
 
-But with Scala 3 you can disable such comparisons. By (a) importing `scala.language.strictEquality` or (b) using the `-language:strictEquality` compiler flag, this comparison no longer compiles:
+But with Scala 3 you can disable such comparisons.
+By (a) importing `scala.language.strictEquality` or (b) using the `-language:strictEquality` compiler flag, this comparison no longer compiles:
 
 ```scala
 import scala.language.strictEquality
@@ -52,7 +57,8 @@ println(rover == fido)   // compiler error
 
 ## Enabling comparisons
 
-There are two ways to enable this comparison using the Scala 3 `CanEqual` type class. For simple cases like this, your class can *derive* the `CanEqual` class:
+There are two ways to enable this comparison using the Scala 3 `CanEqual` type class.
+For simple cases like this, your class can *derive* the `CanEqual` class:
 
 ```scala
 // Option 1
@@ -72,7 +78,8 @@ Either of those two approaches now let `Dog` instances to be compared to each ot
 
 ## A more real-world example
 
-In a more real-world example, imagine you have an online bookstore and want to allow or disallow the comparison of physical, printed books, and audiobooks. With Scala 3 you start by enabling multiversal equality as shown in the previous example:
+In a more real-world example, imagine you have an online bookstore and want to allow or disallow the comparison of physical, printed books, and audiobooks.
+With Scala 3 you start by enabling multiversal equality as shown in the previous example:
 
 ```scala
 // [1] add this import, or this command line flag: -language:strictEquality
@@ -134,7 +141,8 @@ This is how multiversal equality catches illegal type comparisons at compile tim
 
 ### Enabling “PrintedBook == AudioBook”
 
-That works as desired, but in some situations you may want to allow the comparison of physical books to audiobooks. When you want this, create these two additional equality comparisons:
+That works as desired, but in some situations you may want to allow the comparison of physical books to audiobooks.
+When you want this, create these two additional equality comparisons:
 
 ```scala
 // allow `PrintedBook == AudioBook`, and `AudioBook == PrintedBook`
@@ -151,7 +159,9 @@ println(aBook == pBook)   // false
 
 #### Implement “equals” to make them really work
 
-While these comparisons are now allowed, they will always be `false` because their `equals` methods don’t know how to make these comparisons. Therefore, the solution is to override the `equals` methods for each class. For instance, when you override the `equals` method for `AudioBook`:
+While these comparisons are now allowed, they will always be `false` because their `equals` methods don’t know how to make these comparisons.
+Therefore, the solution is to override the `equals` methods for each class.
+For instance, when you override the `equals` method for `AudioBook`:
 
 ```scala
 case class AudioBook(
@@ -182,7 +192,8 @@ println(aBook == pBook)   // true (works because of `equals` in `AudioBook`)
 println(pBook == aBook)   // false
 ```
 
-Currently the `PrintedBook` book doesn’t have an `equals` method, so the second comparison returns `false`. To enable that comparison, just override the `equals` method in `PrintedBook`.
+Currently the `PrintedBook` book doesn’t have an `equals` method, so the second comparison returns `false`.
+To enable that comparison, just override the `equals` method in `PrintedBook`.
 
 You can find additional information on [multiversal equality][ref-equal] in the reference documentation.
 

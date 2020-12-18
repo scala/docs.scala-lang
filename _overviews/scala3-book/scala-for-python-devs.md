@@ -42,7 +42,8 @@ next-page:
 {% comment %}
 NOTE: Hopefully someone with more Python experience can give this a thorough review 
 
-NOTE: On this page (https://contributors.scala-lang.org/t/feedback-sought-optional-braces/4702/10), Li Haoyi comments: “Python’s success also speaks for itself; beginners certainly don’t pick Python because of performance, ease of installation, packaging, IDE support, or simplicity of the language’s runtime semantics!” I’m not a Python expert, so these points are good to know, though I don’t want to go negative in any comparisons. It’s more like thinking, “Python developers will appreciate Scala’s performance, ease of installation, packaging, IDE support, etc.”
+NOTE: On this page (https://contributors.scala-lang.org/t/feedback-sought-optional-braces/4702/10), Li Haoyi comments: “Python’s success also speaks for itself; beginners certainly don’t pick Python because of performance, ease of installation, packaging, IDE support, or simplicity of the language’s runtime semantics!” I’m not a Python expert, so these points are good to know, though I don’t want to go negative in any comparisons.
+It’s more like thinking, “Python developers will appreciate Scala’s performance, ease of installation, packaging, IDE support, etc.”
 {% endcomment %}
 
 {% comment %}
@@ -50,13 +51,15 @@ TODO: We should probably go through this document and add links to our other det
 {% endcomment %}
 
 
-This section provides a comparison between the Python and Scala programming languages. It’s intended for programmers who know Python and want to learn about Scala, specifically by seeing examples of how Python language features compare to Scala.
+This section provides a comparison between the Python and Scala programming languages.
+It’s intended for programmers who know Python and want to learn about Scala, specifically by seeing examples of how Python language features compare to Scala.
 
 
 
 ## Introduction 
 
-Before getting into the examples, this first section provides a relatively brief introduction and summary of the sections that follow. The two languages are first compared at a high level, and then at an everyday programming level.
+Before getting into the examples, this first section provides a relatively brief introduction and summary of the sections that follow.
+The two languages are first compared at a high level, and then at an everyday programming level.
 
 ### High level similarities 
 
@@ -129,7 +132,8 @@ Also at a programming level, these are some of the differences you’ll see ever
 
 Given that introduction, the following sections provide side-by-side comparisons of Python and Scala programming language features.
 
->The general Python standard is to indent code with four spaces, but in the following examples only two spaces are used. This is only done so the examples can be shown side by side.
+>The general Python standard is to indent code with four spaces, but in the following examples only two spaces are used.
+This is only done so the examples can be shown side by side.
 
 
 ## Comments
@@ -306,7 +310,9 @@ This section provides comparisons of features related to OOP-style classes and m
 
 ## Interfaces, traits, and inheritance
 
-If you’re familiar with Java 8 and newer, Scala traits are similar to those Java interfaces. Traits are used all the time in Scala, while Python interfaces and abstract classes are used much less often. Therefore, rather than attempt to compare the two side by side, this example shows how to use Scala traits to build a small solution to a simulated math problem:
+If you’re familiar with Java 8 and newer, Scala traits are similar to those Java interfaces.
+Traits are used all the time in Scala, while Python interfaces and abstract classes are used much less often.
+Therefore, rather than attempt to compare the two side by side, this example shows how to use Scala traits to build a small solution to a simulated math problem:
 
 ```scala
 trait Adder:
@@ -322,13 +328,15 @@ sm.add(1,1)        // 2
 sm.multiply(2,2)   // 4
 ```
 
-There are many other ways to use traits with classes and objects, but this gives you a little idea of how they can be used to organize concepts into logical groups of behavior, and then merge them as needed to create a complete solution.  
+There are many other ways to use traits with classes and objects, but this gives you a little idea of how they can be used to organize concepts into logical groups of behavior, and then merge them as needed to create a complete solution.
 
   
 
 ## Control structures
 
-This section compares control structures in Python and Scala. Both languages have constructs like `if`/`else`, `while`, `for` loops, and `try`. Scala also has `match` expressions.
+This section compares control structures in Python and Scala.
+Both languages have constructs like `if`/`else`, `while`, `for` loops, and `try`.
+Scala also has `match` expressions.
 
 <table cellspacing="1" cellpadding="2" border="1">
   <tbody>
@@ -595,11 +603,12 @@ Scala has many more `match` expression features; only a few are shown here.
 
 ## Collections classes
 
-This section compares the collections classes that are available in Python and Scala, including lists, dictionaries/maps, sets, and tuples.  
+This section compares the collections classes that are available in Python and Scala, including lists, dictionaries/maps, sets, and tuples.
 
 ### Lists 
 
-Where Python has its list, Scala has several different specialized mutable and immutable sequence classes, depending on your needs. Because the Python list is mutable, it most directly compares to Scala’s `ArrayBuffer`.  
+Where Python has its list, Scala has several different specialized mutable and immutable sequence classes, depending on your needs.
+Because the Python list is mutable, it most directly compares to Scala’s `ArrayBuffer`.
 
 <table cellspacing="1" cellpadding="2" border="1">
   <tbody>
@@ -669,13 +678,16 @@ Where Python has its list, Scala has several different specialized mutable and i
   </tbody>
 </table>
 
-Scala’s main sequence classes are `List`, `Vector`, and `ArrayBuffer`. `List` and `Vector` are the main classes to use when you want an immutable sequence, and `ArrayBuffer` is the main class to use when you want a mutable sequence. (A “buffer” in Scala is a sequence that can grow and shrink.)
+Scala’s main sequence classes are `List`, `Vector`, and `ArrayBuffer`.
+`List` and `Vector` are the main classes to use when you want an immutable sequence, and `ArrayBuffer` is the main class to use when you want a mutable sequence.
+(A “buffer” in Scala is a sequence that can grow and shrink.)
 
   
 
 ### Dictionary/Map
 
-The Python dictionary is like the _mutable_ Scala `Map` class. However, the default Scala map is _immutable_, and has a number of transformation methods to let you easily create new maps.
+The Python dictionary is like the _mutable_ Scala `Map` class.
+However, the default Scala map is _immutable_, and has a number of transformation methods to let you easily create new maps.
 
 <table cellspacing="1" cellpadding="2" border="1">
   <tbody>
@@ -729,7 +741,7 @@ The Python dictionary is like the _mutable_ Scala `Map` class. However, the defa
   </tbody>
 </table>
 
-Scala has other specialized `Map` classes for different needs.  
+Scala has other specialized `Map` classes for different needs.
 
 
 ### Sets
@@ -811,7 +823,8 @@ Python and Scala have several of the same common functional methods available to
 - `filter`
 - `reduce`  
 
-If you’re used to using these methods with lambda expressions in Python, you’ll see that Scala has a similar approach with methods on its collections classes. To demonstrate this functionality, here are two sample lists:  
+If you’re used to using these methods with lambda expressions in Python, you’ll see that Scala has a similar approach with methods on its collections classes.
+To demonstrate this functionality, here are two sample lists:  
 
 ```scala
 numbers = (1,2,3)           // python
@@ -878,7 +891,9 @@ Those lists are used in the following table, that shows how to apply mapping and
 
 #### Scala collections methods
 
-Scala collections classes have over 100 functional methods to simplify your code. In addition to `map`, `filter`, and `reduce`, other commonly-used methods are listed below. In those method examples:
+Scala collections classes have over 100 functional methods to simplify your code.
+In addition to `map`, `filter`, and `reduce`, other commonly-used methods are listed below.
+In those method examples:
 
 - `c` refers to a collection
 - `p` is a predicate
@@ -954,7 +969,8 @@ a.takeRight(2)                        // List(40, 10)
 a.takeWhile(_ < 30)                   // List(10, 20)
 ```
 
-These methods show a common pattern in Scala: Functional methods that are available on objects. None of these methods mutate the initial list `a`; instead, they all return the data shown after the comments.  
+These methods show a common pattern in Scala: Functional methods that are available on objects.
+None of these methods mutate the initial list `a`; instead, they all return the data shown after the comments.
 
 There are many more methods available, but hopefully these descriptions and examples give you a taste of the power that’s available in the pre-built collections methods.
 
@@ -962,7 +978,7 @@ There are many more methods available, but hopefully these descriptions and exam
 
 ## Enums
 
-This section compares enums (enumerations) in Python and Scala 3.  
+This section compares enums (enumerations) in Python and Scala 3.
 
 <table cellspacing="1" cellpadding="2" border="1">
   <tbody>
@@ -1039,7 +1055,8 @@ This section compares enums (enumerations) in Python and Scala 3.
 
 ## Concepts that are unique to Scala
 
-There are other concepts in Scala which currently don’t have equivalent functionality in Python. Follow the links below for more details: 
+There are other concepts in Scala which currently don’t have equivalent functionality in Python.
+Follow the links below for more details: 
 
 - Most concepts related to [contextual abstractions][contextual], such as [extension methods][extension], [type classes][type_classes], implicit values
 - Scala allows multiple parameter lists, which enables features like partially-applied functions, and the ability to create your own DSLs

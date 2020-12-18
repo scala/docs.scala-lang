@@ -12,7 +12,8 @@ next-page: scala-for-java-devs
 
 This section looks at how to use Java code in Scala, and the opposite, how to use Scala code in Java.
 
-In general, using Java code in Scala is pretty seamless. There are only a few points where you’ll want to use Scala utilities to convert Java concepts to Scala, including:
+In general, using Java code in Scala is pretty seamless.
+There are only a few points where you’ll want to use Scala utilities to convert Java concepts to Scala, including:
 
 - Java collections classes
 - The Java `Optional` class
@@ -37,9 +38,11 @@ Note that the Java examples in this section assume that you’re using Java 11 o
 
 ## How to use Java collections in Scala
 
-When you’re writing Scala code and need to use a Java collection class, you _can_ just use the class as-is. However, if you want to use the class in a Scala `for` loop, or want to take advantage of the higher-order functions on the Scala collections classes, you’ll want to convert the Java collection to a Scala collection.
+When you’re writing Scala code and need to use a Java collection class, you _can_ just use the class as-is.
+However, if you want to use the class in a Scala `for` loop, or want to take advantage of the higher-order functions on the Scala collections classes, you’ll want to convert the Java collection to a Scala collection.
 
-Here’s an example of how this works. Given this Java `ArrayList`:
+Here’s an example of how this works.
+Given this Java `ArrayList`:
 
 ```java
 // java
@@ -85,7 +88,8 @@ public class JavaClass {
 }
 ```
 
-Now in your Scala code you can access those fields. If you just access them directly, they’ll both be `Optional` values:
+Now in your Scala code you can access those fields.
+If you just access them directly, they’ll both be `Optional` values:
 
 ```scala
 // scala
@@ -112,7 +116,8 @@ val eOptionString = eOptionalString.toScala    // None
 
 ## Extending Java interfaces in Scala
 
-If you need to use Java interfaces in your Scala code, extend them just as though they are Scala traits. For example, given these three Java interfaces:
+If you need to use Java interfaces in your Scala code, extend them just as though they are Scala traits.
+For example, given these three Java interfaces:
 
 ```java
 // java
@@ -132,7 +137,8 @@ interface Running {
 }
 ```
 
-you can create a `Dog` class in Scala just as though you were using traits. All you have to do is implement the `speak` and `wag` methods:
+you can create a `Dog` class in Scala just as though you were using traits.
+All you have to do is implement the `speak` and `wag` methods:
 
 ```scala
 // scala
@@ -150,7 +156,8 @@ class Dog extends Animal, Wagging, Running:
 
 ## How to use Scala collections in Java
 
-When you need to use a Scala collection class in your Java code, use the methods of Scala’s _scala.jdk.javaapi.CollectionConverters_ object in your Java code to make the conversions work. For example, if you have a `List[String]` like this in a Scala class:
+When you need to use a Scala collection class in your Java code, use the methods of Scala’s _scala.jdk.javaapi.CollectionConverters_ object in your Java code to make the conversions work.
+For example, if you have a `List[String]` like this in a Scala class:
 
 ```scala
 // scala
@@ -175,7 +182,8 @@ java.util.List<String> listOfStrings = CollectionConverters.asJava(xs);
 listOfStrings.forEach(System.out::println);
 ```
 
-That code can be shortened, but the full steps are shown to demonstrate how the process works. Here are a few things to notice in that code:
+That code can be shortened, but the full steps are shown to demonstrate how the process works.
+Here are a few things to notice in that code:
 
 - In your Java code, you create an instance of `ScalaClass` just like an instance of a Java class
 - `ScalaClass` has a field named `strings`, but from Java you access that field as a method, i.e., as `sc.strings()`
@@ -218,7 +226,8 @@ The two Scala `Option` fields are now available as Java `Optional` values.
 
 ## How to use Scala traits in Java
 
-With Java 11 you can use a Scala trait just like a Java interface, even if the trait has implemented methods. For example, given these two Scala traits, one with an implemented method and one with only an interface:
+With Java 11 you can use a Scala trait just like a Java interface, even if the trait has implemented methods.
+For example, given these two Scala traits, one with an implemented method and one with only an interface:
 
 ```scala
 // scala
@@ -248,7 +257,8 @@ System.out.println(jm.multiply(3,4));   // 12
 
 ## How to handle Scala methods that throw exceptions in Java code
 
-When you’re writing Scala code using Scala programming idioms, you’ll never write a method that throws an exception. But if for some reason you have a Scala method that does throw an exception, and you want Java developers to be able to use that method, add the `@throws` annotation to your Scala method so Java consumers will know the exceptions they can throw.
+When you’re writing Scala code using Scala programming idioms, you’ll never write a method that throws an exception.
+But if for some reason you have a Scala method that does throw an exception, and you want Java developers to be able to use that method, add the `@throws` annotation to your Scala method so Java consumers will know the exceptions they can throw.
 
 For example, this Scala `exceptionThrower` method is annotated to declare that it throws an `Exception`:
 
@@ -260,7 +270,8 @@ object SExceptionThrower:
     throw new Exception("Idiomatic Scala methods don’t throw exceptions")
 ```
 
-As a result, you’ll need to handle the exception in your Java code. For instance, this code won’t compile because I don’t handle the exception:
+As a result, you’ll need to handle the exception in your Java code.
+For instance, this code won’t compile because I don’t handle the exception:
 
 ```java
 // java: won’t compile because the exception isn’t handled
@@ -279,15 +290,18 @@ The compiler gives this error:
 [error] SExceptionThrower.exceptionThrower()
 ````
 
-This is good — it’s what you want: the annotation tells the Java compiler that `exceptionThrower` can throw an exception. Now when you’re writing Java code you must handle the exception with a `try` block or declare that your Java method throws an exception.
+This is good — it’s what you want: the annotation tells the Java compiler that `exceptionThrower` can throw an exception.
+Now when you’re writing Java code you must handle the exception with a `try` block or declare that your Java method throws an exception.
 
-Conversely, if you leave the annotation off of the Scala `exceptionThrower` method, the Java code _will compile_. This is probably not what you want, because the Java code may not account for the Scala method throwing the exception.
+Conversely, if you leave the annotation off of the Scala `exceptionThrower` method, the Java code _will compile_.
+This is probably not what you want, because the Java code may not account for the Scala method throwing the exception.
 
 
 
 ## How to use Scala varargs parameters in Java
 
-When a Scala method has a varargs parameter and you want to use that method in Java, mark the Scala method with the `@varargs` annotation. For example, the `printAll` method in this Scala class declares a `String*` varargs field:
+When a Scala method has a varargs parameter and you want to use that method in Java, mark the Scala method with the `@varargs` annotation.
+For example, the `printAll` method in this Scala class declares a `String*` varargs field:
 
 ```scala
 // scala
@@ -346,6 +360,7 @@ System.out.printf("x = %d\n", x);
 
 ## More information
 
-This section highlights some of the main topics to know when integrating Scala and Java code bases. For more details, including a few other topics not covered here, see the _Interacting with Java_ section in the Reference documentation.
+This section highlights some of the main topics to know when integrating Scala and Java code bases.
+For more details, including a few other topics not covered here, see the _Interacting with Java_ section in the Reference documentation.
 
 

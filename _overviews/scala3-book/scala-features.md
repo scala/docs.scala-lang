@@ -8,7 +8,9 @@ next-page: why-scala-3
 ---
 
 
-The name _Scala_ comes from the word _scalable_, and true to that name, the Scala language is used to power busy websites and analyze huge data sets. This section introduces the features that make Scala a scalable language. These features are split into three sections:
+The name _Scala_ comes from the word _scalable_, and true to that name, the Scala language is used to power busy websites and analyze huge data sets.
+This section introduces the features that make Scala a scalable language.
+These features are split into three sections:
 
 - High-level language features
 - Lower-level language features
@@ -41,9 +43,12 @@ The following sections take a quick look at these features.
 
 ### A high-level language
 
-Scala is considered a high-level language in at least two ways. First, like Java and many other modern languages, you don’t deal with low-level concepts like pointers and memory management.
+Scala is considered a high-level language in at least two ways.
+First, like Java and many other modern languages, you don’t deal with low-level concepts like pointers and memory management.
 
-Second, with the use of lambdas and higher-order functions, you write your code at a very high level. As the functional programming saying goes, in Scala you write _what_ you want, not _how_ to achieve it. That is, we don’t write imperative code like this:
+Second, with the use of lambdas and higher-order functions, you write your code at a very high level.
+As the functional programming saying goes, in Scala you write _what_ you want, not _how_ to achieve it.
+That is, we don’t write imperative code like this:
 
 ```scala
 def double(ints: List[Int]): List[Int] = {
@@ -59,7 +64,8 @@ def double(ints: List[Int]): List[Int] = {
 val newNumbers = double(oldNumbers)
 ```
 
-That code instructs the compiler what to do on a step-by-step basis. Instead, we write high-level, functional code using higher-order functions and lambdas like this to achieve the same effect:
+That code instructs the compiler what to do on a step-by-step basis.
+Instead, we write high-level, functional code using higher-order functions and lambdas like this to achieve the same effect:
 
 ```scala
 val newNumbers = oldNumbers.map(_ * 2)
@@ -70,7 +76,8 @@ As you can see, that code is much more concise, easier to read, and easier to ma
 
 ### Concise syntax
 
-Scala has a concise, readable syntax. For instance, variables are created concisely, and their types are clear:
+Scala has a concise, readable syntax.
+For instance, variables are created concisely, and their types are clear:
 
 ```scala
 val nums = List(1,2,3)
@@ -106,7 +113,8 @@ Studies have shown that the time a developer spends _reading_ code to _writing_ 
 
 ### A dynamic feel
 
-Scala is a statically-typed language, but thanks to its type inference capabilities it feels dynamic. All of these expressions look like a dynamically-typed language like Python or Ruby, but they’re all Scala:
+Scala is a statically-typed language, but thanks to its type inference capabilities it feels dynamic.
+All of these expressions look like a dynamically-typed language like Python or Ruby, but they’re all Scala:
 
 ```scala
 val s = "Hello"
@@ -160,7 +168,8 @@ In this section or the next section:
 * [Explicitly typed self references](/tour/self-types.html)
 {% endcomment %}
 
-Scala’s expressive type system enforces, at compile-time, that abstractions are used in a safe and coherent manner. In particular, the type system supports:
+Scala’s expressive type system enforces, at compile-time, that abstractions are used in a safe and coherent manner.
+In particular, the type system supports:
 
 - [Type inference](/tour/type-inference.html)
 - [Generic classes]({% link _overviews/scala3-book/types-generics.md %})
@@ -201,9 +210,12 @@ Scala is a functional programming (FP) language, meaning:
 
 ### A pure OOP language
 
-Scala is a _pure_ object-oriented programming (OOP) language. Every variable is an object, and every “operator” is a method.
+Scala is a _pure_ object-oriented programming (OOP) language.
+Every variable is an object, and every “operator” is a method.
 
-In Scala, all types inherit from a top-level class `Any`, whose immediate children are `AnyVal` (_value types_, such as `Int` and `Boolean`) and `AnyRef` (_reference types_, as in Java). This means that the Java distinction between primitive types and boxed types (e.g. `int` vs. `Integer`) isn’t present in Scala. Boxing and unboxing is completely transparent to the user.
+In Scala, all types inherit from a top-level class `Any`, whose immediate children are `AnyVal` (_value types_, such as `Int` and `Boolean`) and `AnyRef` (_reference types_, as in Java).
+This means that the Java distinction between primitive types and boxed types (e.g. `int` vs. `Integer`) isn’t present in Scala.
+Boxing and unboxing is completely transparent to the user.
 
 {% comment %}
 Add the “types hierarchy” image here?
@@ -226,13 +238,16 @@ As [Martin Odersky has stated](https://jaxenter.com/current-state-scala-odersky-
 
 ### Term inference, made clearer
 
-Following Haskell, Scala was the second popular language to have some form of _implicits_. In Scala 3 these concepts have been completely re-thought and more clearly implemented.
+Following Haskell, Scala was the second popular language to have some form of _implicits_.
+In Scala 3 these concepts have been completely re-thought and more clearly implemented.
 
-The core idea is _term inference_: Given a type, the compiler synthesizes a “canonical” term that has that type. In Scala, an implicit parameter directly leads to an inferred argument term that could also be written down explicitly.
+The core idea is _term inference_: Given a type, the compiler synthesizes a “canonical” term that has that type.
+In Scala, an implicit parameter directly leads to an inferred argument term that could also be written down explicitly.
 
 Use cases for this concept include implementing type classes, establishing context, dependency injection, expressing capabilities, computing new types, and proving relationships between them.
 
-Scala 3 makes this process more clear than ever before. Read about contextual abstractions in the [Reference documentation]({{ site.scala3ref }}/contextual/motivation.html).
+Scala 3 makes this process more clear than ever before.
+Read about contextual abstractions in the [Reference documentation]({{ site.scala3ref }}/contextual/motivation.html).
 
 
 ### Client &amp; server
@@ -250,9 +265,11 @@ In addition to running on the JVM, Scala also runs in the browser with Scala.js 
 
 ### Seamless Java interaction
 
-You can use Java classes and libraries in your Scala applications, and you can use Scala code in your Java applications. In regards to the second point, large libraries like [Akka](https://akka.io) and the [Play Framework](https://www.playframework.com) are written in Scala, and can be used in Java applications.
+You can use Java classes and libraries in your Scala applications, and you can use Scala code in your Java applications.
+In regards to the second point, large libraries like [Akka](https://akka.io) and the [Play Framework](https://www.playframework.com) are written in Scala, and can be used in Java applications.
 
-In regards to the first point, Java classes and libraries are used in Scala applications every day. For instance, in Scala you can read files with a Java `BufferedReader` and `FileReader`:
+In regards to the first point, Java classes and libraries are used in Scala applications every day.
+For instance, in Scala you can read files with a Java `BufferedReader` and `FileReader`:
 
 ```scala
 import java.io._
@@ -285,12 +302,14 @@ In addition to server-side programming, [Scala.js](https://www.scala-js.org) is 
 
 
 {% comment %}
-The Lower-Level Features section is like the second part of an elevator pitch. Assuming you told someone about the previous high-level features and then they say, “Tell me more,” this is what you might tell them.
+The Lower-Level Features section is like the second part of an elevator pitch.
+Assuming you told someone about the previous high-level features and then they say, “Tell me more,” this is what you might tell them.
 {% endcomment %}
 
 ## Lower-level language features
 
-Where the previous section covered high-level features of Scala 3, it’s interesting to note that at a high level you can make the same statements about both Scala 2 and Scala 3. A decade ago Scala started with a strong foundation of desirable features, and as you’ll see in this section, those benefits have been improved with Scala 3.
+Where the previous section covered high-level features of Scala 3, it’s interesting to note that at a high level you can make the same statements about both Scala 2 and Scala 3.
+A decade ago Scala started with a strong foundation of desirable features, and as you’ll see in this section, those benefits have been improved with Scala 3.
 
 At a “sea level” view of the details — i.e., the language features programmers use everyday — Scala 3 has significant advantages over Scala 2:
 
@@ -315,7 +334,8 @@ At a “sea level” view of the details — i.e., the language features program
     - The `@infix` annotation makes it obvious how you want a method to be applied
     - The `@alpha` method annotation defines an alternate name for the method, improving Java interoperability, and letting you provide aliases for symbolic operators
 
-It would take too much space to demonstrate all of those features here, but follow the links in the items above to see those features in action. All of these features are discussed in detail in the *New*, *Changed*, and *Dropped* features pages in the [Overview documentation][reference].
+It would take too much space to demonstrate all of those features here, but follow the links in the items above to see those features in action.
+All of these features are discussed in detail in the *New*, *Changed*, and *Dropped* features pages in the [Overview documentation][reference].
 
 
 
@@ -395,7 +415,9 @@ TODO: I didn’t put much work into this section because I don’t know if you w
       point is to base the lists on Github stars and activity.
 {% endcomment %}
 
-Scala has a vibrant ecosystem, with libraries and frameworks for every need. The [“Awesome Scala” list](https://github.com/lauris/awesome-scala) provides a list of hundreds of open source projects that are available to Scala developers, and the [Scaladex](https://index.scala-lang.org) provides a searchable index of Scala libraries. Some of the more notable libraries are listed below.
+Scala has a vibrant ecosystem, with libraries and frameworks for every need.
+The [“Awesome Scala” list](https://github.com/lauris/awesome-scala) provides a list of hundreds of open source projects that are available to Scala developers, and the [Scaladex](https://index.scala-lang.org) provides a searchable index of Scala libraries.
+Some of the more notable libraries are listed below.
 
 
 

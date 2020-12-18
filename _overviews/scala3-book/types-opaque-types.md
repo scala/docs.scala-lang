@@ -11,7 +11,8 @@ Scala 3 _Opaque type aliases_ provide type abstractions without any **overhead**
 
 ## Abstraction Overhead
 
-Let us assume we want to define a module that offers arithmetic on numbers, which are represented by their logarithm. This can be useful to improve precision when the numerical values involved tend to be very large, or close to zero.
+Let us assume we want to define a module that offers arithmetic on numbers, which are represented by their logarithm.
+This can be useful to improve precision when the numerical values involved tend to be very large, or close to zero.
 
 Since it is important to distinguish “regular” double values from numbers stored as their logarithm, we introduce a class `Logarithm`:
 
@@ -38,7 +39,9 @@ While the class `Logarithm` offers a nice abstraction for `Double` values that a
 
 
 ## Preventing the Overhead
-Let us consider another approach to implement the same library. This time instead of defining `Logarithm` as a class, we define it using a _type alias_. First, we define an abstract interface of our module:
+Let us consider another approach to implement the same library.
+This time instead of defining `Logarithm` as a class, we define it using a _type alias_.
+First, we define an abstract interface of our module:
 
 ```scala
 trait Logarithms:
@@ -73,11 +76,14 @@ object LogarithmsImpl extends Logarithms:
   def make(d: Double): Logarithm = math.log(d)
   def extract(x: Logarithm): Double = math.exp(x)
 ```
-Within the implementation of `LogarithmsImpl`, the equation `Logarithm = Double` allows us to implement the various methods. And all of this without any performance overhead of boxing the double values.
+Within the implementation of `LogarithmsImpl`, the equation `Logarithm = Double` allows us to implement the various methods.
+And all of this without any performance overhead of boxing the double values.
 
 #### Leaky Abstractions
-However, this abstraction is slightly leaky. We have to make sure to _only_ ever program against the abstract interface `Logarithms` and never directly use `LogarithmsImpl`.
-Directly using `LogarithmsImpl` would make the equality `Logarithm = Double` visible for the user, who might accidentally use a `Double` where a logarithmic double is expected. For example:
+However, this abstraction is slightly leaky.
+We have to make sure to _only_ ever program against the abstract interface `Logarithms` and never directly use `LogarithmsImpl`.
+Directly using `LogarithmsImpl` would make the equality `Logarithm = Double` visible for the user, who might accidentally use a `Double` where a logarithmic double is expected.
+For example:
 
 ```scala
 import LogarithmsImpl._

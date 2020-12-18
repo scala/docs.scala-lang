@@ -24,14 +24,16 @@ This section briefly introduces each of these language features.
 
 ## Classes
 
-As with other languages, a _class_ in Scala is a template for the creation of object instances. Here are some examples of classes:
+As with other languages, a _class_ in Scala is a template for the creation of object instances.
+Here are some examples of classes:
 
 ```scala
 class Person(var name: String, var vocation: String)
 class Book(var title: String, var author: String, var year: Int)
 class Movie(var name: String, var director: String, var year: Int)
 ```
-The examples above show that Scala has a very lightweight way to declare classes. The definition of the class `Person` roughly corresponds to the following, more explicit, version
+The examples above show that Scala has a very lightweight way to declare classes.
+The definition of the class `Person` roughly corresponds to the following, more explicit, version
 
 ```scala
 class Person:
@@ -49,7 +51,8 @@ class Person:
 ```
 defining the two fields `name` and `vocation` together with a constructor that accepts values for the two fields and assigns them.
 
-All of the parameters of our example classes are defined as `var` fields, which means they are mutable: you can read them, and also modify them. If you want them to be immutable — read only — create them as `val` fields instead.
+All of the parameters of our example classes are defined as `var` fields, which means they are mutable: you can read them, and also modify them.
+If you want them to be immutable — read only — create them as `val` fields instead.
 
 Prior to Scala 3, you used the `new` keyword to create a new instance of a class:
 
@@ -80,7 +83,9 @@ p.vocation = "Musician"
 
 ### Fields and methods
 
-Classes can have also have methods and additional fields that are not part of constructors. They are defined in the body of the class. The body is initialized as part of the default constructor:
+Classes can have also have methods and additional fields that are not part of constructors.
+They are defined in the body of the class.
+The body is initialized as part of the default constructor:
 
 ```scala
 class Person(var firstName: String, var lastName: String):
@@ -131,7 +136,8 @@ val s = Socket(timeout = 10_000)  // timeout: 10000, linger: 5000
 val s = Socket(linger = 10_000)   // timeout: 5000, linger: 10000
 ```
 
-When creating a new instance of a class, you can also use named parameters. This is particularly helpful when many of the parameters have the same type, as shown in this comparison:
+When creating a new instance of a class, you can also use named parameters.
+This is particularly helpful when many of the parameters have the same type, as shown in this comparison:
 
 ```scala
 // option 1
@@ -146,7 +152,9 @@ val s = Socket(
 
 ### Auxiliary constructors
 
-You can define a class to have multiple constructors so consumers of your class can build it in different ways. For example, let’s assume that you need to write some code to model students in a college admission system. While analyzing the requirements you’ve seen that you need to be able to construct a `Student` instance in three ways:
+You can define a class to have multiple constructors so consumers of your class can build it in different ways.
+For example, let’s assume that you need to write some code to model students in a college admission system.
+While analyzing the requirements you’ve seen that you need to be able to construct a `Student` instance in three ways:
 
 - With a name and government ID, for when they first start the admissions process
 - With a name, government ID, and an additional application date, for when they submit their application
@@ -210,15 +218,19 @@ val s2 = Student("Mary", "123", LocalDate.now)
 val s3 = Student("Mary", "123", 456)
 ```
 
-While this technique can be used, bear in mind that constructor parameters can also have default values, which make it seem that a class has multiple constructors. This is shown in the previous `Socket` example.
+While this technique can be used, bear in mind that constructor parameters can also have default values, which make it seem that a class has multiple constructors.
+This is shown in the previous `Socket` example.
 
 
 
 ## Objects
 
-An object is a class that has exactly one instance. It’s initialized lazily when its members are referenced, similar to a `lazy val`. Objects in Scala allow grouping methods and fields under one namespace, similar to how can use `static` members on a class in Java, Javascript (ES6) or `@staticmethod` in Python.
+An object is a class that has exactly one instance.
+It’s initialized lazily when its members are referenced, similar to a `lazy val`.
+Objects in Scala allow grouping methods and fields under one namespace, similar to how can use `static` members on a class in Java, Javascript (ES6) or `@staticmethod` in Python.
 
-Declaring an `object` is similar to declaring a `class`. Here’s an example of a “string utilities” object that contains a set of methods for working with strings:
+Declaring an `object` is similar to declaring a `class`.
+Here’s an example of a “string utilities” object that contains a set of methods for working with strings:
 
 ```scala
 object StringUtils:
@@ -254,9 +266,12 @@ println(MathConstants.PI)   // 3.14159
 
 ## Companion objects
 
-An `object` that has the same name as a class, and is declared in the same file as the class, is called a _"companion object"_. Similarly, the corresponding class is called the object’s companion class. A companion class or object can access the private members of its companion.
+An `object` that has the same name as a class, and is declared in the same file as the class, is called a _"companion object"_.
+Similarly, the corresponding class is called the object’s companion class.
+A companion class or object can access the private members of its companion.
 
-Companion objects are used for methods and values that are not specific to instances of the companion class. For instance, in the following example the class `Circle` has a member named `area` which is specific to each instance, and its companion object has a method named `calculateArea` that’s (a) not specific to an instance, and (b) is available to every instance:
+Companion objects are used for methods and values that are not specific to instances of the companion class.
+For instance, in the following example the class `Circle` has a member named `area` which is specific to each instance, and its companion object has a method named `calculateArea` that’s (a) not specific to an instance, and (b) is available to every instance:
 
 ```scala
 import scala.math._
@@ -271,7 +286,9 @@ val circle1 = Circle(5.0)
 circle1.area
 ```
 
-In this example the `area` method that’s available to each instance uses the `calculateArea` method that’s defined in the companion object. If you’re familiar with Java, `calculateArea` is similar to a static method. Also, because `calculateArea` is private, it can’t be accessed by other code, but as shown, it can be seen by instances of the `Circle` class.
+In this example the `area` method that’s available to each instance uses the `calculateArea` method that’s defined in the companion object.
+If you’re familiar with Java, `calculateArea` is similar to a static method.
+Also, because `calculateArea` is private, it can’t be accessed by other code, but as shown, it can be seen by instances of the `Circle` class.
 
 ### Other uses
 
@@ -334,7 +351,8 @@ trait Employee:
   def firstName: String
   def lastName: String
 ```
-However, traits can also contain concrete members. For instance, the following trait defines two abstract members — `numLegs` and `walk()` — and also has a concrete implementation of a `stop()` method:
+However, traits can also contain concrete members.
+For instance, the following trait defines two abstract members — `numLegs` and `walk()` — and also has a concrete implementation of a `stop()` method:
 
 ```scala
 trait HasLegs:
@@ -352,7 +370,8 @@ trait HasTail:
   def stopTail() = println("Tail is stopped")
 ```
 
-Notice how each trait only handles very specific attributes and behaviors: `HasLegs` deals only with legs, and `HasTail` deals only with tail-related functionality. Traits let you build small modules like this.
+Notice how each trait only handles very specific attributes and behaviors: `HasLegs` deals only with legs, and `HasTail` deals only with tail-related functionality.
+Traits let you build small modules like this.
 
 Later in your code, classes can mix multiple traits to build larger components:
 
@@ -364,13 +383,15 @@ class IrishSetter(name: String) extends HasLegs, HasTail:
   override def toString = s"$name is a Dog"
 ```
 
-Notice that the `IrishSetter` class implements the abstract members that are defined in `HasLegs` and `HasTail`. Now you can create new `IrishSetter` instances:
+Notice that the `IrishSetter` class implements the abstract members that are defined in `HasLegs` and `HasTail`.
+Now you can create new `IrishSetter` instances:
 
 ```scala
 val d = IrishSetter("Big Red")   // "Big Red is a Dog"
 ```
 
-This is just a taste of what you can accomplish with traits. For more details, see the remainder of these modeling lessons.
+This is just a taste of what you can accomplish with traits.
+For more details, see the remainder of these modeling lessons.
 
 
 
@@ -380,7 +401,8 @@ This is just a taste of what you can accomplish with traits. For more details, s
 TODO: I have some notes on when to use abstract classes, and can update this section.
 {% endcomment %}
 
-When you want to write a class, but you know it will have abstract members, you can either create a trait or an abstract class. In most situations you’ll use traits, but but historically there have been two situations where it’s better to use an abstract class than a trait:
+When you want to write a class, but you know it will have abstract members, you can either create a trait or an abstract class.
+In most situations you’ll use traits, but but historically there have been two situations where it’s better to use an abstract class than a trait:
 
 - You want to create a base class that takes constructor arguments
 - The code will be called from Java code
@@ -414,12 +436,14 @@ class Dog(name: String, var age: Int) extends Pet(name):
 
 val d = Dog("Fido", 1)
 ```
-Traits are more flexible to compose (you can mix in multiple traits, but only extend one class) and should most of the time be preferred to classes. The rule of thumb is to use classes whenever you want to create instances of a particular type and traits when you want to decompose and reuse behaviour.
+Traits are more flexible to compose (you can mix in multiple traits, but only extend one class) and should most of the time be preferred to classes.
+The rule of thumb is to use classes whenever you want to create instances of a particular type and traits when you want to decompose and reuse behaviour.
 
 
 ## Enums
 
-An enumeration can be used to define a type that consists of a finite set of named values (in the section on [FP modeling][fp-modeling], we will see that enums are much more flexible than this). Basic enumerations are used to define sets of constants, like the months in a year, the days in a week, directions like north/south/east/west, and more.
+An enumeration can be used to define a type that consists of a finite set of named values (in the section on [FP modeling][fp-modeling], we will see that enums are much more flexible than this).
+Basic enumerations are used to define sets of constants, like the months in a year, the days in a week, directions like north/south/east/west, and more.
 
 
 As an example, these enumerations define sets of attributes related to pizzas:
@@ -489,7 +513,8 @@ If you want to use Scala-defined enums as Java enums, you can do so by extending
 enum Color extends Enum[Color] { case Red, Green, Blue }
 ```
 
-The type parameter comes from the Java `enum` definition, and should be the same as the type of the enum. There’s no need to provide constructor arguments (as defined in the Java API docs) to `java.lang.Enum` when extending it — the compiler generates them automatically.
+The type parameter comes from the Java `enum` definition, and should be the same as the type of the enum.
+There’s no need to provide constructor arguments (as defined in the Java API docs) to `java.lang.Enum` when extending it — the compiler generates them automatically.
 
 After defining `Color` like that, you can use it like you would a Java enum:
 
@@ -503,12 +528,13 @@ The section on [algebraic datatypes][adts] and the [reference documentation][ref
 
 ## Case classes
 
-Case classes are used to model immutable data structures. Take the following example,
+Case classes are used to model immutable data structures.
+Take the following example,
 ```scala
 case class Person(name: String, relation: String)
 ```
 Since we declared `Person` as a case class, the fields `name` and `relation` are public and immutable by default.
-We can instances of case classes as follows:
+We can create instances of case classes as follows:
 ```scala
 val christina = Person("Christina", "niece")
 ```
@@ -548,9 +574,11 @@ val cubs2016 = cubs1908.copy(lastWorldSeriesWin = 2016)
 
 As mentioned, case classes support functional programming (FP):
 
-- In FP you try to avoid mutating data structures. It thus makes sense that constructor fields default to `val`.
+- In FP you try to avoid mutating data structures.
+  It thus makes sense that constructor fields default to `val`.
   Since instances of case classes are not changed, they can easily be shared without fearing mutation or race conditions.
-- Instead of mutating one instance, you can use the `copy` method as a template to create a new (potentially changed) instance. This process can be referred to as “update as you copy.”
+- Instead of mutating one instance, you can use the `copy` method as a template to create a new (potentially changed) instance.
+  This process can be referred to as “update as you copy.”
 - Having an `unapply` method auto-generated for you also lets case classes be used in advanced ways with pattern matching.
 
 
@@ -592,9 +620,11 @@ case Student(name, year) =>
 case Teacher(name, whatTheyTeach) =>
 ```
 
-Those patterns work because `Student` and `Teacher` are defined as case classes that have `unapply` methods whose type signature conforms to a certain standard. Technically, the specific type of pattern matching shown in these examples is known as a *constructor pattern*.
+Those patterns work because `Student` and `Teacher` are defined as case classes that have `unapply` methods whose type signature conforms to a certain standard.
+Technically, the specific type of pattern matching shown in these examples is known as a *constructor pattern*.
 
->The Scala standard is that an `unapply` method returns the case class constructor fields in a tuple that’s wrapped in an `Option`. The “tuple” part of the solution was shown in the previous lesson.
+>The Scala standard is that an `unapply` method returns the case class constructor fields in a tuple that’s wrapped in an `Option`.
+The “tuple” part of the solution was shown in the previous lesson.
 
 To show how that code works, create an instance of `Student` and `Teacher`:
 
@@ -617,7 +647,8 @@ res1: String = Bob Donnan teaches Mathematics.
 
 #### Add pattern matching to any type with unapply
 
-A great Scala feature is that you can add pattern matching to any type by writing your own `unapply` method. As an example, this class defines an `unapply` method in its companion object:
+A great Scala feature is that you can add pattern matching to any type by writing your own `unapply` method.
+As an example, this class defines an `unapply` method in its companion object:
 
 ```scala
 class Person(var name: String, var age: Int)
@@ -642,9 +673,11 @@ p match
 
 ## Case objects
 
-Case objects are to objects what case classes are to classes: they provide a number of automatically-generated methods to make them more powerful. They’re particularly useful whenever you need a singleton object that needs a little extra functionality, such as being used with pattern matching in `match` expressions.
+Case objects are to objects what case classes are to classes: they provide a number of automatically-generated methods to make them more powerful.
+They’re particularly useful whenever you need a singleton object that needs a little extra functionality, such as being used with pattern matching in `match` expressions.
 
-Case objects are useful when you need to pass immutable messages around. For instance, if you’re working on a music player project, you’ll create a set of commands or messages like this:
+Case objects are useful when you need to pass immutable messages around.
+For instance, if you’re working on a music player project, you’ll create a set of commands or messages like this:
 
 ```scala
 sealed trait Message

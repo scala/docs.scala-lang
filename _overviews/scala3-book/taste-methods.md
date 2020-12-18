@@ -10,7 +10,8 @@ next-page: taste-functions
 
 ## Scala methods
 
-Scala classes, case classes, traits, enums, and objects can all contain methods. When a method isn’t declared to use a generic type or accept `using` parameters, its general syntax looks like this:
+Scala classes, case classes, traits, enums, and objects can all contain methods.
+When a method isn’t declared to use a generic type or accept `using` parameters, its general syntax looks like this:
 
 ```scala
 def methodName(param1: Type1, param2: Type2): ReturnType =
@@ -48,7 +49,8 @@ def getStackTraceAsString(t: Throwable): String =
   sw.toString
 ```
 
-Method parameters can also have default values. In this example, if the `timeout` parameter isn’t specified, it defaults to `5000`:
+Method parameters can also have default values.
+In this example, if the `timeout` parameter isn’t specified, it defaults to `5000`:
 
 ```scala
 def makeConnection(url: String, timeout: Int = 5000): Unit =
@@ -71,7 +73,8 @@ makeConnection(
 )
 ```
 
-Named parameters are particularly useful when multiple method parameters have the same type. At a glance, with this method you may wonder which parameters are set to `true` or `false`:
+Named parameters are particularly useful when multiple method parameters have the same type.
+At a glance, with this method you may wonder which parameters are set to `true` or `false`:
 
 ```scala
 engage(true, true, true, false)
@@ -92,7 +95,8 @@ engage(
 
 ## Extension methods
 
-_Extension methods_ let you add new methods to closed classes. For instance, if you want to add two methods named `hello` and `aloha` to the `String` class, declare them as extension methods:
+_Extension methods_ let you add new methods to closed classes.
+For instance, if you want to add two methods named `hello` and `aloha` to the `String` class, declare them as extension methods:
 
 ```scala
 extension (s: String)
@@ -103,9 +107,12 @@ extension (s: String)
 "friend".aloha   // "Aloha, Friend"
 ```
 
-The `extension` keyword declares that you’re about to define one or more extension methods on the type that’s put in parentheses. As shown with this `String` example, the parameter `s` can then be used in the body of your extension methods.
+The `extension` keyword declares that you’re about to define one or more extension methods on the type that’s put in parentheses.
+As shown with this `String` example, the parameter `s` can then be used in the body of your extension methods.
 
-This next example shows how to add a `makeInt` method to the `String` class. Here, `makeInt` takes a parameter named `radix`. The code doesn’t account for possible string-to-integer conversion errors, but skipping that detail, the examples show how it works:
+This next example shows how to add a `makeInt` method to the `String` class.
+Here, `makeInt` takes a parameter named `radix`.
+The code doesn’t account for possible string-to-integer conversion errors, but skipping that detail, the examples show how it works:
 
 ```scala
 extension (s: String)

@@ -13,7 +13,8 @@ NOTE: Could mention “grammar” as a way of showing that Scala isn’t a large
 {% endcomment %}
 
 
-There are many benefits to using Scala, and Scala 3 in particular. It might be hard to list every benefit of Scala, but a Top Ten list looks like this:
+There are many benefits to using Scala, and Scala 3 in particular.
+It might be hard to list every benefit of Scala, but a Top Ten list looks like this:
 
 1. Scala embraces a fusion of functional programming (FP) and object-oriented programming (OOP)
 2. Scala is statically typed, but often feels like a dynamically typed language
@@ -31,12 +32,14 @@ There are many benefits to using Scala, and Scala 3 in particular. It might be h
 
 ## 1) FP/OOP fusion
 
-More than any other language, Scala supports a fusion of the FP and OOP paradigms. As Martin Odersky has stated, the essence of Scala is a fusion of functional and object-oriented programming in a typed setting:
+More than any other language, Scala supports a fusion of the FP and OOP paradigms.
+As Martin Odersky has stated, the essence of Scala is a fusion of functional and object-oriented programming in a typed setting:
 
 - Functions for the logic
 - Objects for the modularity
 
-Possibly some of the best examples of this are the classes in the standard library. For instance, a `List` is defined as a `class`, and a new instance is created like this:
+Possibly some of the best examples of this are the classes in the standard library.
+For instance, a `List` is defined as a `class`, and a new instance is created like this:
 
 ```scala
 val x = List(1,2,3)
@@ -72,13 +75,15 @@ xs.find(_ > 3)        // Some(4)
 xs.takeWhile(_ < 3)   // List(1, 2)
 ```
 
-In those examples, the values in the list can’t be modified. The `List` class is immutable, so all of those methods return new values, as shown by the data in each comment.
+In those examples, the values in the list can’t be modified.
+The `List` class is immutable, so all of those methods return new values, as shown by the data in each comment.
 
 
 
 ## 2) A dynamic feel
 
-Scala’s *type inference* often makes the language feel dynamically typed, even though it’s statically typed. This is true with variable assignment:
+Scala’s *type inference* often makes the language feel dynamically typed, even though it’s statically typed.
+This is true with variable assignment:
 
 ```scala
 val a = 1
@@ -159,7 +164,8 @@ All of these expressions, and many more, are concise, and still very readable: *
 
 ## 4) Implicits, simplified
 
-Implicits in Scala 2 were a major distinguishing design feature. They represented *the* fundamental way to abstract over context, with a unified paradigm that served a great variety of use cases, among them:
+Implicits in Scala 2 were a major distinguishing design feature.
+They represented *the* fundamental way to abstract over context, with a unified paradigm that served a great variety of use cases, among them:
 
 - Implementing type classes
 - Establishing context
@@ -189,7 +195,11 @@ These capabilities are described in detail in other sections, so see the [Contex
 
 ## 5) Seamless Java integration
 
-Scala/Java interaction is seamless in many ways. For instance, you can use all of the thousands of Java libraries that are available in your Scala projects. A Scala `String` is essentially a Java `String`, with additional capabilities added to it. Scala seamlessly uses the date/time classes in the Java *import java.time._* package. You can also use Java collections classes in Scala, and to give them more functionality, Scala includes methods so you can transform them into Scala collections.
+Scala/Java interaction is seamless in many ways.
+For instance, you can use all of the thousands of Java libraries that are available in your Scala projects.
+A Scala `String` is essentially a Java `String`, with additional capabilities added to it.
+Scala seamlessly uses the date/time classes in the Java *import java.time._* package.
+You can also use Java collections classes in Scala, and to give them more functionality, Scala includes methods so you can transform them into Scala collections.
 
 While almost every interaction is seamless, the [“Interacting with Java” chapter]({% link _overviews/scala3-book/interacting-with-java.md %}) demonstrates how to use some features together better, including how to use:
 
@@ -213,7 +223,8 @@ Scala can be used on the server side with terrific frameworks:
 - The [Play Framework](https://www.playframework.com) lets you build highly scalable server-side applications and microservices
 - [Akka Actors](https://akka.io) let you use the actor model to greatly simplify parallel and concurrent software applications
 
-Scala can also be used in the browser with the [Scala.js project](https://www.scala-js.org), which is a type-safe replacement for JavaScript. The Scala.js ecosystem [has dozens of libraries](https://www.scala-js.org/libraries) to let you use React, Angular, jQuery, and many other JavaScript and Scala libraries in the browser.
+Scala can also be used in the browser with the [Scala.js project](https://www.scala-js.org), which is a type-safe replacement for JavaScript.
+The Scala.js ecosystem [has dozens of libraries](https://www.scala-js.org/libraries) to let you use React, Angular, jQuery, and many other JavaScript and Scala libraries in the browser.
 
 The [Scala Native](https://github.com/scala-native/scala-native) project “is an optimizing ahead-of-time compiler and lightweight managed runtime designed specifically for Scala.” It lets you build “systems” style binary executable applications with plain Scala code, and also lets you use lower-level primitives.
 
@@ -221,7 +232,9 @@ The [Scala Native](https://github.com/scala-native/scala-native) project “is a
 
 ## 7) Standard library methods
 
-Because you’ll rarely ever need to write a custom `for` loop again, the dozens of pre-built functional methods in the Scala standard library will both save you time, and help make code more consistent across different applications. The following examples show some of the built-in collections methods, and there are many in addition to these. Also, while these all use the `List` class, the same methods work with other collections classes like `Seq`, `Vector`, `LazyList`, `Set`, `Map`, `Array`, and `ArrayBuffer`.
+Because you’ll rarely ever need to write a custom `for` loop again, the dozens of pre-built functional methods in the Scala standard library will both save you time, and help make code more consistent across different applications.
+The following examples show some of the built-in collections methods, and there are many in addition to these.
+Also, while these all use the `List` class, the same methods work with other collections classes like `Seq`, `Vector`, `LazyList`, `Set`, `Map`, `Array`, and `ArrayBuffer`.
 
 Here are some examples:
 
@@ -268,7 +281,8 @@ nums.sortWith(_ > _)                  // List(10, 8, 7, 5, 1)
 
 ## 8) Built-in practices
 
-Scala idioms encourage best practices in many ways. For immutability, you’re encouraged to create immutable `val` fields:
+Scala idioms encourage best practices in many ways.
+For immutability, you’re encouraged to create immutable `val` fields:
 
 ```scala
 val a = 1                 // immutable variable
@@ -322,7 +336,8 @@ def isTrue(a: Any) = a match
 
 ## 9) Ecosystem libraries
 
-Scala libraries for functional programming like [Cats](https://typelevel.org/cats) and [Zio](https://zio.dev) are leading-edge libraries in the FP community. All of the buzzwords like high-performance, type safe, concurrent, asynchronous, resource-safe, testable, functional, modular, binary-compatible, efficient, effects/effectful, and more, can be said about these libraries.
+Scala libraries for functional programming like [Cats](https://typelevel.org/cats) and [Zio](https://zio.dev) are leading-edge libraries in the FP community.
+All of the buzzwords like high-performance, type safe, concurrent, asynchronous, resource-safe, testable, functional, modular, binary-compatible, efficient, effects/effectful, and more, can be said about these libraries.
 
 Many other libraries can be found in the [“Awesome Scala” list](https://github.com/lauris/awesome-scala).
 
@@ -330,7 +345,8 @@ Many other libraries can be found in the [“Awesome Scala” list](https://gith
 
 ## 10) Strong type system
 
-Scala has a strong type system, and it’s been improved even more in Scala 3. Scala 3’s goals were defined early on, and those related to the type system include:
+Scala has a strong type system, and it’s been improved even more in Scala 3.
+Scala 3’s goals were defined early on, and those related to the type system include:
 
 - Simplification
 - Eliminate inconsistencies
@@ -338,9 +354,11 @@ Scala has a strong type system, and it’s been improved even more in Scala 3. S
 - Ergonomics
 - Performance
 
-*Simplification* comes about through dozens of changed and dropped features. For instance, the changes from the overloaded `implicit` keyword in Scala 2 to the terms `given` and `using` in Scala 3 make the language more clear, especially for beginning developers.
+*Simplification* comes about through dozens of changed and dropped features.
+For instance, the changes from the overloaded `implicit` keyword in Scala 2 to the terms `given` and `using` in Scala 3 make the language more clear, especially for beginning developers.
 
-*Eliminating inconsistencies* is related to the dozens of [dropped features]({{ site.scala3ref }}/Dropped%20Features/index.html), [changed features]({{ site.scala3ref }}/Other%20Changed%20Features/index.html), and [added features]({{ site.scala3ref }}/Other%20New%20Features/index.html) in Scala 3. Some of the most important features in this category are:
+*Eliminating inconsistencies* is related to the dozens of [dropped features]({{ site.scala3ref }}/Dropped%20Features/index.html), [changed features]({{ site.scala3ref }}/Other%20Changed%20Features/index.html), and [added features]({{ site.scala3ref }}/Other%20New%20Features/index.html) in Scala 3.
+Some of the most important features in this category are:
 
 - Intersection types
 - Union types
@@ -395,13 +413,17 @@ extension (c: Circle)
   def area: Double = math.Pi * c.radius * c.radius
 ```
 
-*Performance* relates to several areas. One of those is [opaque types](types-opaque-types.md). In Scala 2 there were several attempts to create solutions to keep with the Domain-driven design (DDD) practice of giving values more meaningful types. These attempts included:
+*Performance* relates to several areas.
+One of those is [opaque types](types-opaque-types.md).
+In Scala 2 there were several attempts to create solutions to keep with the Domain-driven design (DDD) practice of giving values more meaningful types.
+These attempts included:
 
 - Type aliases
 - Value classes
 - Case classes
 
-Unfortunately all of these approaches had weaknesses, as described in the [*Opaque Types* SIP](https://docs.scala-lang.org/sips/opaque-types.html). Conversely, the goal of opaque types, as described in that SIP, is that “operations on these wrapper types must not create any extra overhead at runtime while still providing a type safe use at compile time.”
+Unfortunately all of these approaches had weaknesses, as described in the [*Opaque Types* SIP](https://docs.scala-lang.org/sips/opaque-types.html).
+Conversely, the goal of opaque types, as described in that SIP, is that “operations on these wrapper types must not create any extra overhead at runtime while still providing a type safe use at compile time.”
 
 For more type system details, see the [Reference documentation][reference].
 
@@ -409,7 +431,8 @@ For more type system details, see the [Reference documentation][reference].
 
 ## Other great features
 
-Scala has many great features, and choosing a Top 10 list can be subjective. Hopefully you’ll discover more great Scala features as you use the language.
+Scala has many great features, and choosing a Top 10 list can be subjective.
+Hopefully you’ll discover more great Scala features as you use the language.
 
 
 

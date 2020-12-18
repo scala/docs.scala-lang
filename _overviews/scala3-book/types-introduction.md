@@ -8,7 +8,8 @@ next-page: types-inferred
 ---
 
 
-Scala is a unique language in that it’s statically typed, but often _feels_ flexible and dynamic. For instance, thanks to type inference you can write code like this without explicitly specifying the variable types:
+Scala is a unique language in that it’s statically typed, but often _feels_ flexible and dynamic.
+For instance, thanks to type inference you can write code like this without explicitly specifying the variable types:
 
 ```scala
 val a = 1
@@ -16,7 +17,8 @@ val b = 2.0
 val c = "Hi!"
 ```
 
-That makes the code feel dynamically typed. And thanks to new features, like [union types][union-types] in Scala 3, you can also write code like the following that expresses very concisely which values are expected as arguments and which types are returned:
+That makes the code feel dynamically typed.
+And thanks to new features, like [union types][union-types] in Scala 3, you can also write code like the following that expresses very concisely which values are expected as arguments and which types are returned:
 
 ```scala
 def isTruthy(a: Boolean | Int | String): Boolean = ???
@@ -25,7 +27,9 @@ def dogCatOrWhatever(): Dog | Plant | Car | Sun = ???
 
 As the example suggests, when using union types, thetypes don’t have to share a common hierarchy, and you can still accept them as arguments or return them from a method.
 
-If you’re an application developer, you’ll use features like type inference every day and generics every week. When you read the Scaladoc for classes and methods, you’ll also need to have some understanding of _variance_. Hopefully you’ll see that using types can be relatively simple and also offers a lot of expressive power, flexibility, and control for library developers.
+If you’re an application developer, you’ll use features like type inference every day and generics every week.
+When you read the Scaladoc for classes and methods, you’ll also need to have some understanding of _variance_.
+Hopefully you’ll see that using types can be relatively simple and also offers a lot of expressive power, flexibility, and control for library developers.
 
 
 ## Benefits of types

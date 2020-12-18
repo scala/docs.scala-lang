@@ -11,24 +11,36 @@ next-page: control-structures
 
 ## All values have a type
 
-In Scala, all values have a type, including numerical values and functions. The diagram below illustrates a subset of the type hierarchy.
+In Scala, all values have a type, including numerical values and functions.
+The diagram below illustrates a subset of the type hierarchy.
 
 <a href="{{ site.baseurl }}/resources/images/scala3-book/hierarchy.svg"><img  style="width:100%" src="{{ site.baseurl }}/resources/images/scala3-book/hierarchy.svg" alt="Scala 3 Type Hierarchy"></a>
 
 
 ## Scala type hierarchy
 
-`Any` is the supertype of all types, also called the **top type**. It defines certain universal methods such as `equals`, `hashCode`, and `toString`.
+`Any` is the supertype of all types, also called the **top type**.
+It defines certain universal methods such as `equals`, `hashCode`, and `toString`.
 
-The top-type `Any` has a subtype [`Matchable`][matchable], which is used to mark all types that we can perform pattern matching on. It is important to guarantee a property call _"parametricity"_. We will not go into details here, but in summary, it means that we cannot pattern match on values of type `Any`, but only on values that are a subtype of `Matchable`. The [reference documentation][matchable] contains more information about `Matchable`.
+The top-type `Any` has a subtype [`Matchable`][matchable], which is used to mark all types that we can perform pattern matching on.
+It is important to guarantee a property call _"parametricity"_.
+We will not go into details here, but in summary, it means that we cannot pattern match on values of type `Any`, but only on values that are a subtype of `Matchable`.
+The [reference documentation][matchable] contains more information about `Matchable`.
 
 `Matchable` has two important subtypes: `AnyVal` and `AnyRef`.
 
-*`AnyVal`* represents value types. There are a couple of predefined value types and they are non-nullable: `Double`, `Float`, `Long`, `Int`, `Short`, `Byte`, `Char`, `Unit`, and `Boolean`. `Unit` is a value type which carries no meaningful information. There is exactly one instance of `Unit` which we can refer to as: `()`.
+*`AnyVal`* represents value types.
+There are a couple of predefined value types and they are non-nullable: `Double`, `Float`, `Long`, `Int`, `Short`, `Byte`, `Char`, `Unit`, and `Boolean`.
+`Unit` is a value type which carries no meaningful information.
+There is exactly one instance of `Unit` which we can refer to as: `()`.
 
-*`AnyRef`* represents reference types. All non-value types are defined as reference types. Every user-defined type in Scala is a subtype of `AnyRef`. If Scala is used in the context of a Java runtime environment, `AnyRef` corresponds to `java.lang.Object`.
+*`AnyRef`* represents reference types.
+All non-value types are defined as reference types.
+Every user-defined type in Scala is a subtype of `AnyRef`.
+If Scala is used in the context of a Java runtime environment, `AnyRef` corresponds to `java.lang.Object`.
 
-In statement-based languages, `void` is used for methods that don’t return anything. If you write methods in Scala that have no return value, such as the following method, `Unit` is used for the same purpose:
+In statement-based languages, `void` is used for methods that don’t return anything.
+If you write methods in Scala that have no return value, such as the following method, `Unit` is used for the same purpose:
 
 ```scala
 def printIt(a: Any): Unit = println(a)
@@ -48,7 +60,8 @@ val list: List[Any] = List(
 list.foreach(element => println(element))
 ```
 
-The code defines a value `list` of type `List[Any]`. The list is initialized with elements of various types, but each is an instance of `scala.Any`, so we can add them to the list.
+The code defines a value `list` of type `List[Any]`.
+The list is initialized with elements of various types, but each is an instance of `scala.Any`, so we can add them to the list.
 
 Here’s the output of the program:
 
@@ -62,7 +75,8 @@ true
 
 ## Scala’s “value types”
 
-As shown above, Scala’s numeric types extend `AnyVal`, and they’re all full-blown objects. These examples show how to declare variables of these numeric types:
+As shown above, Scala’s numeric types extend `AnyVal`, and they’re all full-blown objects.
+These examples show how to declare variables of these numeric types:
 
 ```scala
 val b: Byte = 1
@@ -73,7 +87,8 @@ val d: Double = 2.0
 val f: Float = 3.0
 ```
 
-In the first four examples, if you don’t explicitly specify a type, the number `1` will default to an `Int`, so if you want one of the other data types — `Byte`, `Long`, or `Short` — you need to explicitly declare those types, as shown. Numbers with a decimal (like 2.0) will default to a `Double`, so if you want a `Float` you need to declare a `Float`, as shown in the last example.
+In the first four examples, if you don’t explicitly specify a type, the number `1` will default to an `Int`, so if you want one of the other data types — `Byte`, `Long`, or `Short` — you need to explicitly declare those types, as shown.
+Numbers with a decimal (like 2.0) will default to a `Double`, so if you want a `Float` you need to declare a `Float`, as shown in the last example.
 
 Because `Int` and `Double` are the default numeric types, you typically create them without explicitly declaring the data type:
 
@@ -145,7 +160,8 @@ Scala strings are similar to Java strings, but they have two great additional fe
 
 ### String interpolation
 
-String interpolation provides a very readable way to use variables inside strings. For instance, given these three variables:
+String interpolation provides a very readable way to use variables inside strings.
+For instance, given these three variables:
 
 ```scala
 val firstName = "John"
@@ -172,7 +188,10 @@ println(s"x.abs = ${x.abs}")   // prints "x.abs = 1"
 
 #### Other interpolators
 
-The `s` that you place before the string is just one possible interpolator. If you use an `f` instead of an `s`, you can use `printf`-style formatting syntax in the string. Furthermore, a string interpolator is a just special method and it is possible to define your own. For instance, some database libraries define the very powerful `sql` interpolator.
+The `s` that you place before the string is just one possible interpolator.
+If you use an `f` instead of an `s`, you can use `printf`-style formatting syntax in the string.
+Furthermore, a string interpolator is a just special method and it is possible to define your own.
+For instance, some database libraries define the very powerful `sql` interpolator.
 
 
 ### Multiline strings
@@ -226,7 +245,8 @@ val face: Char = '☺'
 val number: Int = face  // 9786
 ```
 
-Casting is unidirectional. This will not compile:
+Casting is unidirectional.
+This will not compile:
 
 ```
 val x: Long = 987654321
@@ -234,15 +254,21 @@ val y: Float = x  // 9.8765434E8
 val z: Long = y  // Does not conform
 ```
 
-You can also cast a reference type to a subtype. This will be covered later in the tour.
+You can also cast a reference type to a subtype.
+This will be covered later in the tour.
 
 
 
 ## `Nothing` and `null`
 
-`Nothing` is a subtype of all types, also called the **bottom type**. There is no value that has the type `Nothing`. A common use is to signal non-termination, such as a thrown exception, program exit, or an infinite loop — i.e., it is the type of an expression which does not evaluate to a value, or a method that does not return normally.
+`Nothing` is a subtype of all types, also called the **bottom type**.
+There is no value that has the type `Nothing`.
+A common use is to signal non-termination, such as a thrown exception, program exit, or an infinite loop — i.e., it is the type of an expression which does not evaluate to a value, or a method that does not return normally.
 
-`Null` is a subtype of all reference types (i.e. any subtype of `AnyRef`). It has a single value identified by the keyword literal `null`. `Null` is provided mostly for interoperability with other JVM languages and should almost never be used in Scala code. Alternatives to `null` are discussed in the [Functional Programming chapter][fp] of this book, and the [API documentation](https://dotty.epfl.ch/-scala%203/-a-p-i/scala/-option.html).
+`Null` is a subtype of all reference types (i.e. any subtype of `AnyRef`).
+It has a single value identified by the keyword literal `null`.
+`Null` is provided mostly for interoperability with other JVM languages and should almost never be used in Scala code.
+Alternatives to `null` are discussed in the [Functional Programming chapter][fp] of this book, and the [API documentation](https://dotty.epfl.ch/-scala%203/-a-p-i/scala/-option.html).
 
 
 

@@ -33,7 +33,8 @@ else
   println("positive")
 ```
 
-Note that this really is an _expression_ — not a _statement_. This means that it returns a value, so you can assign the result to a variable:
+Note that this really is an _expression_ — not a _statement_.
+This means that it returns a value, so you can assign the result to a variable:
 
 ```scala
 val x = if a < b then a else b
@@ -41,13 +42,15 @@ val x = if a < b then a else b
 
 As you’ll see throughout this book, _all_ Scala control structures can be used as expressions.
 
->An expression returns a result, while a statement does not. Statements are typically used for their side-effects, such as using `println` to print to the console.
+>An expression returns a result, while a statement does not.
+Statements are typically used for their side-effects, such as using `println` to print to the console.
 
 
 
 ## `for` loops and expressions
 
-The `for` keyword is used to create a `for` loop. This example shows how to print every element in a `List`:
+The `for` keyword is used to create a `for` loop.
+This example shows how to print every element in a `List`:
 
 ```scala
 val ints = List(1, 2, 3, 4, 5)
@@ -65,7 +68,9 @@ for (i <- ints) println(i)
 
 ### Guards
 
-You can also use one or more `if` expressions inside a `for` loop. These are referred to as _guards_. This example prints all of the numbers in `ints` that are greater than `2`:
+You can also use one or more `if` expressions inside a `for` loop.
+These are referred to as _guards_.
+This example prints all of the numbers in `ints` that are greater than `2`:
 
 ```scala
 for
@@ -75,7 +80,9 @@ do
   println(i)
 ```
 
-You can use multiple generators and guards. This loop iterates over the numbers `1` to `3`, and for each number it also iterates over the characters `a` to `c`. However, it also has two guards, so the only time the print statement is called is when `i` has the value `2` and `j` is the character `b`:
+You can use multiple generators and guards.
+This loop iterates over the numbers `1` to `3`, and for each number it also iterates over the characters `a` to `c`.
+However, it also has two guards, so the only time the print statement is called is when `i` has the value `2` and `j` is the character `b`:
 
 ```scala
 for
@@ -92,7 +99,8 @@ do
 
 The `for` keyword has even more power: When you use the `yield` keyword instead of `do`, you create `for` _expressions_ which are used to calculate and yield results.
 
-A few examples demonstrate this. Using the same `ints` list as the previous example, this code creates a new list, where the value of each element in the new list is twice the value of the elements in the original list:
+A few examples demonstrate this.
+Using the same `ints` list as the previous example, this code creates a new list, where the value of each element in the new list is twice the value of the elements in the original list:
 
 ````
 scala> val doubles = for i <- nums yield i * 2
@@ -173,7 +181,8 @@ p match
 
   case _ => println("Watch the Flintstones!")
 ```
-In fact, a `match` expression can be used to test a variable against many different types of patterns. This example shows (a) how to use a `match` expression as the body of a method, and (b) how to match all the different types shown:
+In fact, a `match` expression can be used to test a variable against many different types of patterns.
+This example shows (a) how to use a `match` expression as the body of a method, and (b) how to match all the different types shown:
 
 ```scala
 // getClassAsString is a method that takes a single argument of any type.
@@ -190,13 +199,16 @@ getClassAsString("hello")         // 'hello' is a String
 getClassAsString(List(1, 2, 3))   // List
 ```
 
-There’s _much_ more to pattern matching in Scala. Patterns can be nested, results of patterns can be bound, and pattern matching can even be user-defined. See the pattern matching examples in the [Control Structures chapter][control] for more details.
+There’s _much_ more to pattern matching in Scala.
+Patterns can be nested, results of patterns can be bound, and pattern matching can even be user-defined.
+See the pattern matching examples in the [Control Structures chapter][control] for more details.
 
 
 
 ## `try`/`catch`/`finally`
 
-Scala’s `try`/`catch`/`finally` control structure lets you catch exceptions. It’s similar to Java, but its syntax is consistent with `match` expressions:
+Scala’s `try`/`catch`/`finally` control structure lets you catch exceptions.
+It’s similar to Java, but its syntax is consistent with `match` expressions:
 
 ```scala
 try
@@ -212,7 +224,8 @@ finally
 
 ## `while` loops
 
-Scala also has a `while` loop construct. It’s one-line syntax looks like this:
+Scala also has a `while` loop construct.
+It’s one-line syntax looks like this:
 
 ```scala
 while x >= 0 do x = f(x)
@@ -247,7 +260,8 @@ while (x < 3)
 
 ## Custom control structures
 
-Thanks to features like by-name parameters, infix notation, fluent interfaces, optional parentheses, extension methods, and higher-order functions, you can also create your own code that works just like a control structure. You’ll learn more about this in the [Control Structures][control] section.
+Thanks to features like by-name parameters, infix notation, fluent interfaces, optional parentheses, extension methods, and higher-order functions, you can also create your own code that works just like a control structure.
+You’ll learn more about this in the [Control Structures][control] section.
 
 
 

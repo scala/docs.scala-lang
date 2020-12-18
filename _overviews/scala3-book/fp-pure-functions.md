@@ -13,13 +13,15 @@ next-page: fp-functions-are-values
 TODO: Use someone else’s definition?
 {% endcomment %}
 
-Another feature that Scala offers to help you write functional code is the ability to write pure functions. In his book, *Functional Programming, Simplified*, Alvin Alexander defines a *pure function* like this:
+Another feature that Scala offers to help you write functional code is the ability to write pure functions.
+In his book, *Functional Programming, Simplified*, Alvin Alexander defines a *pure function* like this:
 
 - A function’s output depends *only* on its input variables and its internal algorithm
 - It doesn’t mutate any hidden state
 - It doesn’t have any “back doors”: It doesn’t read data from the outside world (including the console, web services, databases, files, etc.), or write data to the outside world
 
-As a result of this definition, any time you call a pure function with the same input value(s), you’ll always get the same result. For example, you can call a `double` function an infinite number of times with the input value `2`, and you’ll always get the result `4`.
+As a result of this definition, any time you call a pure function with the same input value(s), you’ll always get the same result.
+For example, you can call a `double` function an infinite number of times with the input value `2`, and you’ll always get the result `4`.
 
 
 
@@ -39,7 +41,8 @@ These `String` methods are also pure functions:
 
 Most methods on the Scala collections classes also work as pure functions, including `drop`, `filter`, `map`, and many more.
 
->In Scala, *functions* and *methods* are almost completely interchangeable, so even though we use the common industry term “pure function,” this term can be used to describe both functions and methods. If you’re interested in how methods can be used like functions, see the [Eta Expansion][eta] discussion.
+>In Scala, *functions* and *methods* are almost completely interchangeable, so even though we use the common industry term “pure function,” this term can be used to describe both functions and methods.
+If you’re interested in how methods can be used like functions, see the [Eta Expansion][eta] discussion.
 
 
 
@@ -49,9 +52,12 @@ Conversely, the following functions are *impure* because they violate the defini
 
 The `foreach` method on collections classes is impure because it’s only used for its side effects, such as printing to STDOUT.
 
->A great hint that `foreach` is impure is that it’s method signature declares that it returns the type `Unit`. Because it doesn’t return anything, logically the only reason you ever call it is to achieve some side effect. Similarly, *any* method that returns `Unit` is going to be an impure function.
+>A great hint that `foreach` is impure is that it’s method signature declares that it returns the type `Unit`.
+Because it doesn’t return anything, logically the only reason you ever call it is to achieve some side effect.
+Similarly, *any* method that returns `Unit` is going to be an impure function.
 
-Date and time related methods like `getDayOfWeek`, `getHour`, and `getMinute` are all impure because their output depends on something other than their input parameters. Their results rely on some form of hidden I/O; *hidden inputs,* in these examples.
+Date and time related methods like `getDayOfWeek`, `getHour`, and `getMinute` are all impure because their output depends on something other than their input parameters.
+Their results rely on some form of hidden I/O; *hidden inputs,* in these examples.
 
 Additionally, methods that interact with the console, files, databases, web services, sensors, etc., are all impure.
 
@@ -68,9 +74,12 @@ In general, impure functions do one or more of these things:
 
 Of course an application isn’t very useful if it can’t read or write to the outside world, so people make this recommendation:
 
->Write the core of your application using pure functions, and then write an impure “wrapper” around that core to interact with the outside world. As someone once said, this is like putting a layer of impure icing on top of a pure cake.
+>Write the core of your application using pure functions, and then write an impure “wrapper” around that core to interact with the outside world.
+As someone once said, this is like putting a layer of impure icing on top of a pure cake.
 
-It’s important to note that there are ways to make impure interactions with the outside world feel more pure. For instance, you’ll hear about using an `IO` Monad to deal with input and output. These topics are beyond the scope of this document, so to keep things simple it can help to think that FP applications have a core of pure functions that are wrapped with other functions to interact with the outside world.
+It’s important to note that there are ways to make impure interactions with the outside world feel more pure.
+For instance, you’ll hear about using an `IO` Monad to deal with input and output.
+These topics are beyond the scope of this document, so to keep things simple it can help to think that FP applications have a core of pure functions that are wrapped with other functions to interact with the outside world.
 
 
 
@@ -78,7 +87,8 @@ It’s important to note that there are ways to make impure interactions with th
 
 **Note**: In this section the common industry term “pure function” is often used to refer to Scala methods.
 
-To write pure functions in Scala, just write them using Scala’s method syntax (though you can also use Scala’s function syntax, as well). For instance, here’s a pure function that doubles the input value it’s given:
+To write pure functions in Scala, just write them using Scala’s method syntax (though you can also use Scala’s function syntax, as well).
+For instance, here’s a pure function that doubles the input value it’s given:
 
 ```scala
 def double(i: Int): Int = i * 2
@@ -100,9 +110,11 @@ If you understand that code, you’ll see that it meets the pure function defini
 
 The first key point of this section is the definition of a pure function:
 
->A *pure function* is a function that depends only on its declared inputs and its internal algorithm to produce its output. It does not read any other values from “the outside world” — the world outside of the function’s scope — and it doesn’t modify any values in the outside world.
+>A *pure function* is a function that depends only on its declared inputs and its internal algorithm to produce its output.
+It does not read any other values from “the outside world” — the world outside of the function’s scope — and it doesn’t modify any values in the outside world.
 
-A second key point is that every real-world application interacts with the outside world. Therefore, a simplified way to think about functional programs is that they consist of a core of pure functions that are wrapped with other functions that interact with the outside world.
+A second key point is that every real-world application interacts with the outside world.
+Therefore, a simplified way to think about functional programs is that they consist of a core of pure functions that are wrapped with other functions that interact with the outside world.
 
 
 

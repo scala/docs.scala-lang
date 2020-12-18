@@ -8,13 +8,16 @@ next-page: taste-repl
 ---
 
 
-A Scala 3 “Hello, world!” example goes as follows. First, put this code in a file named _Hello.scala_:
+A Scala 3 “Hello, world!” example goes as follows.
+First, put this code in a file named _Hello.scala_:
 
 ```scala
 @main def hello = println("Hello, world!")
 ```
 
-In this code, `hello` is a method. It’s defined with `def`, and declared to be a “main” method with the `@main` annotation. It prints the `"Hello, world!"` string to standard output (STDOUT) using the `println` method.
+In this code, `hello` is a method.
+It’s defined with `def`, and declared to be a “main” method with the `@main` annotation.
+It prints the `"Hello, world!"` string to standard output (STDOUT) using the `println` method.
 
 Next, compile the code with `scalac`:
 

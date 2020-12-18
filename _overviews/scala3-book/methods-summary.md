@@ -8,7 +8,6 @@ next-page: fun-intro
 ---
 
 
-
 There’s even more to know about methods, including how to:
 
 - Call methods on superclasses

@@ -10,7 +10,8 @@ next-page: fp-functional-error-handling
 
 While every programming language ever created probably lets you write pure functions, a second important Scala FP feature is that *you can create functions as values*, just like you create `String` and `Int` values.
 
-This feature has many benefits, the most common of which are (a) you can define methods to accept function parameters, and (b) you can pass functions as parameters into methods. You’ve seen this in multiple places in this book, whenever methods like `map` and `filter` are demonstrated:
+This feature has many benefits, the most common of which are (a) you can define methods to accept function parameters, and (b) you can pass functions as parameters into methods.
+You’ve seen this in multiple places in this book, whenever methods like `map` and `filter` are demonstrated:
 
 ```scala
 val nums = (1 to 10).toList
@@ -36,7 +37,8 @@ val doubles = nums.filter(underFive).map(double)
 
 This ability to treat methods and functions as values is a powerful feature that functional programming languages provide.
 
->Technically, a a function that takes another function as an input parameter is known as a *Higher-Order Function*. (If you like humor, as someone once wrote, that’s like saying that a class that takes an instance of another class as a constructor parameter is a Higher-Order Class.)
+>Technically, a a function that takes another function as an input parameter is known as a *Higher-Order Function*.
+(If you like humor, as someone once wrote, that’s like saying that a class that takes an instance of another class as a constructor parameter is a Higher-Order Class.)
 
 
 
@@ -54,21 +56,25 @@ As shown in the [higher-order functions][hofs] discussion, that’s a shorthand 
 (i: Int) => i * 2
 ```
 
-Functions like these are called “anonymous” because they don’t have names. If you want to give one a name, just assign it to a variable:
+Functions like these are called “anonymous” because they don’t have names.
+If you want to give one a name, just assign it to a variable:
 
 ```scala
 val double = (i: Int) => i * 2
 ```
 
-Now you have a named function, one that’s assigned to a variable. You can use this function just like you use a method:
+Now you have a named function, one that’s assigned to a variable.
+You can use this function just like you use a method:
 
 ```scala
 double(2)   // 4
 ```
 
-In most scenarios it doesn’t matter if `double` is a function or a method; Scala lets you treat them the same way. Behind the scenes, the Scala technology that lets you treat methods just like functions is known as [Eta Expansion][eta].
+In most scenarios it doesn’t matter if `double` is a function or a method; Scala lets you treat them the same way.
+Behind the scenes, the Scala technology that lets you treat methods just like functions is known as [Eta Expansion][eta].
 
-This ability to seamlessly pass functions around as variables is a distinguishing feature of functional programming languages like Scala. And as you’ve seen in the `map` and `filter` examples throughout this book, the ability to pass functions into other functions helps you create code that is concise and still readable — *expressive*.
+This ability to seamlessly pass functions around as variables is a distinguishing feature of functional programming languages like Scala.
+And as you’ve seen in the `map` and `filter` examples throughout this book, the ability to pass functions into other functions helps you create code that is concise and still readable — *expressive*.
 
 If you’re not comfortable with the process of passing functions as parameters into other functions, here are a few more examples you can experiment with:
 

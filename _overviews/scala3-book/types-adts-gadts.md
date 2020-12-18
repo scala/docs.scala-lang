@@ -68,7 +68,8 @@ object Planet:
 
 ## Algebraic Datatypes (ADTs)
 
-The `enum` concept is general enough to also support _algebraic data types_ (ADTs) and their generalized version (GADTs). Here’s an example that shows how an `Option` type can be represented as an ADT:
+The `enum` concept is general enough to also support _algebraic data types_ (ADTs) and their generalized version (GADTs).
+Here’s an example that shows how an `Option` type can be represented as an ADT:
 
 ```scala
 enum Option[+T]:
@@ -76,7 +77,9 @@ enum Option[+T]:
   case None
 ```
 
-This example creates an `Option` enum with a covariant type parameter `T` consisting of two cases, `Some` and `None`. `Some` is _parameterized_ with a value parameter `x`; this is a shorthand for writing a `case` class that extends `Option`. Since `None` is not parameterized, it’s treated as a normal `enum` value.
+This example creates an `Option` enum with a covariant type parameter `T` consisting of two cases, `Some` and `None`.
+`Some` is _parameterized_ with a value parameter `x`; this is a shorthand for writing a `case` class that extends `Option`.
+Since `None` is not parameterized, it’s treated as a normal `enum` value.
 
 The `extends` clauses that were omitted in the previous example can also be given explicitly:
 
@@ -96,7 +99,8 @@ scala> Option.None
 val res2: t2.Option[Nothing] = None
 ```
 
-As with other enumeration uses, ADTs can define additional methods. For instance, here’s `Option` again, with an `isDefined` method and an `Option(...)` constructor in its companion object:
+As with other enumeration uses, ADTs can define additional methods.
+For instance, here’s `Option` again, with an `isDefined` method and an `Option(...)` constructor in its companion object:
 
 ```scala
 enum Option[+T]:
@@ -114,7 +118,8 @@ object Option:
 
 Enumerations and ADTs share the same syntactic construct, so they can
 be seen simply as two ends of a spectrum, and it’s perfectly possible
-to construct hybrids. For instance, the code below gives an
+to construct hybrids.
+For instance, the code below gives an
 implementation of `Color`, either with three enum values or with a
 parameterized case that takes an RGB value:
 
@@ -127,13 +132,15 @@ enum Color(val rgb: Int):
 ```
 
 #### Recursive Enumerations
-So far all the enumerations that we defined consisted of different variants of values or case classes. Enumerations can also be recursive, as illustrated in the below example of encoding natural numbers:
+So far all the enumerations that we defined consisted of different variants of values or case classes.
+Enumerations can also be recursive, as illustrated in the below example of encoding natural numbers:
 ```scala
 enum Nat:
   case Zero
   case Succ(n: Nat)
 ```
-For example the value `Succ(Succ(Zero))` represents the number `2` in an unary encoding. Lists can be defined in a very similar way:
+For example the value `Succ(Succ(Zero))` represents the number `2` in an unary encoding.
+Lists can be defined in a very similar way:
 
 ```scala
 enum List[+A]:
@@ -142,7 +149,8 @@ enum List[+A]:
 ```
 
 ## Generalized Algebraic Datatypes (GADTs)
-The above notation for enumerations is very concise and serves as the perfect starting point for modeling your data types. Since we can always be more explicit, it is also possible to express types that are much more powerful: generalized algebraic datatypes (GADTs).
+The above notation for enumerations is very concise and serves as the perfect starting point for modeling your data types.
+Since we can always be more explicit, it is also possible to express types that are much more powerful: generalized algebraic datatypes (GADTs).
 
 Here is an example of a GADT where the type parameter (`T`) specifies the contents stored in the box:
 ```scala
@@ -160,7 +168,8 @@ It is only safe to return an `Int` in the first case, since we know from pattern
 
 
 ## Desugaring Enumerations
-_Conceptually_, enums can be thought of as defining a sealed class together with an companion object. Let’s look at the desugaring of our `Color` enum above:
+_Conceptually_, enums can be thought of as defining a sealed class together with an companion object.
+Let’s look at the desugaring of our `Color` enum above:
 ```scala
 sealed abstract class Color(val rgb: Int) extends scala.reflect.Enum
 object Color:

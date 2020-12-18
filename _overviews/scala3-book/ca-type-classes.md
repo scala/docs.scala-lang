@@ -8,7 +8,8 @@ next-page: ca-multiversal-equality
 ---
 
 
-A *type class* is an abstract, parameterized type that lets you add new behavior to any closed data type without using sub-typing. This is useful in multiple use-cases, for example:
+A *type class* is an abstract, parameterized type that lets you add new behavior to any closed data type without using sub-typing.
+This is useful in multiple use-cases, for example:
 
 - Expressing how a type you don’t own — from the standard library or a third-party library — conforms to such behavior
 - Expressing such a behavior for multiple types without involving sub-typing relationships between those types
@@ -22,11 +23,13 @@ TODO: As background, discuss where the name "type class" comes from.
 
 ## Example
 
-For example, `Show` is a well-known type class in Haskell, and the following code shows one way to implement it in Scala 3. If you imagine that Scala classes don’t have a `toString` method, you can define a `Show` type class to add this behavior to any class that you want to be able to convert to a custom string.
+For example, `Show` is a well-known type class in Haskell, and the following code shows one way to implement it in Scala 3.
+If you imagine that Scala classes don’t have a `toString` method, you can define a `Show` type class to add this behavior to any class that you want to be able to convert to a custom string.
 
 ### The type class
 
-The first step in creating a type class is to declare a parameterized trait that has one or more abstract methods. Because `Showable` only has one method named `show`, it’s written like this:
+The first step in creating a type class is to declare a parameterized trait that has one or more abstract methods.
+Because `Showable` only has one method named `show`, it’s written like this:
 
 ```scala
 // a type class
@@ -34,7 +37,8 @@ trait Showable[A]:
   extension(a: A) def show: String
 ```
 
-This is the Scala 3 way of saying that any type that implements this trait must define how the `show` method works. Notice that the syntax is very close to a normal trait:
+This is the Scala 3 way of saying that any type that implements this trait must define how the `show` method works.
+Notice that the syntax is very close to a normal trait:
 
 ```scala
 // a trait
@@ -46,17 +50,19 @@ There are a few important things to point out:
 
 1. Type-classes like `Showable` take a type parameter `A` to say which type we provide the implementation of `show` for; in contrast, normal traits like `Show` do not.
 2. To add the show functionality to a certain type `A`, the normal trait requires that `A extends Show`, while for type-classes we require to have an implementation of `Showable[A]`.
-2. To allow the same method calling syntax in both `Showable` that mimics the one of `Show`, we define `Showable.show` as an extension method.
+3. To allow the same method calling syntax in both `Showable` that mimics the one of `Show`, we define `Showable.show` as an extension method.
 
 ### Implement concrete instances
 
-The next step is to determine what classes in your application `Showable` should work for, and then implement that behavior for them. For instance, to implement `Showable` for this `Person` class:
+The next step is to determine what classes in your application `Showable` should work for, and then implement that behavior for them.
+For instance, to implement `Showable` for this `Person` class:
 
 ```scala
 case class Person(firstName: String, lastName: String)
 ```
 
-you’ll define a `given` value for `Showable[Person]`. This code provides a concrete instance of `Showable` for the `Person` class:
+you’ll define a `given` value for `Showable[Person]`.
+This code provides a concrete instance of `Showable` for the `Person` class:
 
 ```scala
 given Showable[Person] with

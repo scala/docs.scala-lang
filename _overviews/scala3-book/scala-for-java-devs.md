@@ -39,13 +39,15 @@ next-page: scala-for-javascript-devs
 </style>
 
 
-This page provides a comparison between the Java and Scala programming languages by sharing side-by-sde examples of each language. It’s intended for programmers who know Java and want to learn about Scala, specifically by seeing how Scala features compare to Java.
+This page provides a comparison between the Java and Scala programming languages by sharing side-by-sde examples of each language.
+It’s intended for programmers who know Java and want to learn about Scala, specifically by seeing how Scala features compare to Java.
 
 
 
 ## Overview
 
-Before getting into the examples, this first section provides a relatively brief introduction and summary of the sections that follow. It presents the similarities and differences between Java and Scala at a high level, and then introduces the differences you’ll experience every day as you write code.
+Before getting into the examples, this first section provides a relatively brief introduction and summary of the sections that follow.
+It presents the similarities and differences between Java and Scala at a high level, and then introduces the differences you’ll experience every day as you write code.
 
 ### High level similarities
 
@@ -310,7 +312,7 @@ This section provides comparisons of features related to OOP-style classes and m
 
 ## Interfaces, traits, and inheritance
 
-This section compares Java interfaces to Scala traits, including how classes extend interfaces and traits.  
+This section compares Java interfaces to Scala traits, including how classes extend interfaces and traits.
 
 <table>
   <tbody>
@@ -786,9 +788,12 @@ Examples of how to create instances of immutable collections:
 
 ### Mutable collections classes
 
-Scala has mutable collections classes like `ArrayBuffer`, `Map`, and `Set`, in its *scala.collection.mutable* package. After importing them into the current scope, they’re created just like the immutable `List`, `Vector`, `Map`, and `Set` examples just shown.
+Scala has mutable collections classes like `ArrayBuffer`, `Map`, and `Set`, in its *scala.collection.mutable* package.
+After importing them into the current scope, they’re created just like the immutable `List`, `Vector`, `Map`, and `Set` examples just shown.
 
-You can also convert between Java and Scala collections classes with the Scala `CollectionConverters` objects. There are two objects in different packages, one for converting from Java to Scala, and another for converting from Scala to Java. This table shows the possible conversions:
+You can also convert between Java and Scala collections classes with the Scala `CollectionConverters` objects.
+There are two objects in different packages, one for converting from Java to Scala, and another for converting from Scala to Java.
+This table shows the possible conversions:
 
 <table>
   <tbody>
@@ -837,9 +842,11 @@ With the ability to treat Java collections as streams, Java and Scala now have m
 
 If you’re used to using these methods with lambda expressions in Java, you’ll find it easy to use the same methods on Scala’s collection classes.
 
-Scala also has *dozens* of other collections methods, including `head`, `tail`, `drop`, `take`, `distinct`, `flatten`, and many more. At first you may wonder why there are so many methods, but after working with Scala you’ll realize that because of these methods, you rarely ever need to write custom `for` loops any more.
+Scala also has *dozens* of other collections methods, including `head`, `tail`, `drop`, `take`, `distinct`, `flatten`, and many more.
+At first you may wonder why there are so many methods, but after working with Scala you’ll realize that because of these methods, you rarely ever need to write custom `for` loops any more.
 
-(This also means that you rarely need to *read* custom `for` loops, as well. Because developers tend to spend on the order of ten times as much time *reading* code as *writing* code, this is significant.)
+(This also means that you rarely need to *read* custom `for` loops, as well.
+Because developers tend to spend on the order of ten times as much time *reading* code as *writing* code, this is significant.)
 
 
 
@@ -868,7 +875,7 @@ val d = ("eleven", 11, 11.0, Person("Eleven"))
 
 ## Enums
 
-This section compares enumerations in Java and Scala.  
+This section compares enumerations in Java and Scala.
 
 <table>
   <tbody>
@@ -1001,9 +1008,11 @@ throws NumberFormatException {
 
 ### Scala doesn’t use checked exceptions
 
-The Scala idiom is to *not* use checked exceptions like this. When working with code that can throw exceptions, you can use `try`/`catch`/`finally` blocks to catch exceptions from code that throws them, but how you proceed from there is different.
+The Scala idiom is to *not* use checked exceptions like this.
+When working with code that can throw exceptions, you can use `try`/`catch`/`finally` blocks to catch exceptions from code that throws them, but how you proceed from there is different.
 
-The best way to explain this is that Scala code consists of *expressions*, which return values. As a result, you end up writing your code as a series of algebraic expressions:
+The best way to explain this is that Scala code consists of *expressions*, which return values.
+As a result, you end up writing your code as a series of algebraic expressions:
 
 ```scala
 val a = f(x)
@@ -1011,11 +1020,14 @@ val b = g(a,z)
 val c = h(b,y)
 ```
 
-This is nice, it’s just algebra. You create equations to solve small problems, and then combine equations to solve larger problems.
+This is nice, it’s just algebra.
+You create equations to solve small problems, and then combine equations to solve larger problems.
 
 And very importantly — as you remember from algebra courses — algebraic expressions don’t short circuit — they don’t throw exceptions that blow up a series of equations.
 
-Therefore, in Scala our methods don’t throw exceptions. Instead, they return types like `Option`. For example, this `makeInt` method catches a possible exception and returns an `Option` value:
+Therefore, in Scala our methods don’t throw exceptions.
+Instead, they return types like `Option`.
+For example, this `makeInt` method catches a possible exception and returns an `Option` value:
 
 ```scala
 def makeInt(s: String): Option[Int] =
@@ -1025,9 +1037,12 @@ def makeInt(s: String): Option[Int] =
     case e: NumberFormatException => None
 ```
 
-The Scala `Option` is similar to the Java `Optional` class. As shown, if the string-to-int conversion succeeds, the `Int` is returned inside a `Some` value, and if it fails, a `None` value is returned. `Some` and `None` are subtypes of `Option`, so the method is declared to return the `Option[Int]` type.
+The Scala `Option` is similar to the Java `Optional` class.
+As shown, if the string-to-int conversion succeeds, the `Int` is returned inside a `Some` value, and if it fails, a `None` value is returned.
+`Some` and `None` are subtypes of `Option`, so the method is declared to return the `Option[Int]` type.
 
-When you have an `Option` value, such as the one returned by `makeInt`, there are many ways to work with it, depending on your needs. This code shows one possible approach:
+When you have an `Option` value, such as the one returned by `makeInt`, there are many ways to work with it, depending on your needs.
+This code shows one possible approach:
 
 ```scala
 makeInt(aString) match
@@ -1035,7 +1050,8 @@ makeInt(aString) match
   case None => println(s"Could not convert $aString to an Int.")
 ```
 
-`Option` is commonly used in Scala, and it’s built into many classes in the standard library. Other similar sets of classes like Try/Success/Failure and Either/Left/Right offer even more flexibility.
+`Option` is commonly used in Scala, and it’s built into many classes in the standard library.
+Other similar sets of classes like Try/Success/Failure and Either/Left/Right offer even more flexibility.
 
 For more information on dealing with errors and exceptions in Scala, see the [Functional Error Handling][error-handling] section.
 
@@ -1045,7 +1061,8 @@ For more information on dealing with errors and exceptions in Scala, see the [Fu
 
 That concludes are comparison of the Java and Scala languages.
 
-Currently there are other concepts in Scala which currently have no equal in Java 11. This includes:
+Currently there are other concepts in Scala which currently have no equal in Java 11.
+This includes:
 
 - Everything related to Scala’s contextual abstractions
 - Several Scala method features:

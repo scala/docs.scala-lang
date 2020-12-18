@@ -22,7 +22,8 @@ In the previous sections you saw:
 
 We also mentioned that if you prefer using a browser-based playground environment instead of the Scala REPL, you can also use [Scastie.scala-lang.org](https://scastie.scala-lang.org/?target=dotty) or [ScalaFiddle.io](https://scalafiddle.io).
 
-Scala has even more features that aren’t covered in this whirlwind tour. See the remainder of this book and the [Reference documentation][reference] for many more details.
+Scala has even more features that aren’t covered in this whirlwind tour.
+See the remainder of this book and the [Reference documentation][reference] for many more details.
 
 
 

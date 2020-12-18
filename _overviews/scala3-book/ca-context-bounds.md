@@ -14,7 +14,8 @@ next-page: ca-given-imports
 {% endcomment %}
 
 
-In many situations the name of a *context parameter* doesn’t have to be mentioned explicitly, since it’s only used in synthesized arguments for other context parameters. In that case you don’t have to define a parameter name, and can just provide the parameter type.
+In many situations the name of a *context parameter* doesn’t have to be mentioned explicitly, since it’s only used in synthesized arguments for other context parameters.
+In that case you don’t have to define a parameter name, and can just provide the parameter type.
 
 
 ## Background

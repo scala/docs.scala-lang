@@ -9,7 +9,8 @@ next-page: fun-function-variables
 
 
 
-An anonymous function — also referred to as a *lambda* — is a block of code that’s passed as an argument to a higher-order function. Wikipedia defines an [anonymous function](https://en.wikipedia.org/wiki/Anonymous_function) as, “a function definition that is not bound to an identifier.”
+An anonymous function — also referred to as a *lambda* — is a block of code that’s passed as an argument to a higher-order function.
+Wikipedia defines an [anonymous function](https://en.wikipedia.org/wiki/Anonymous_function) as, “a function definition that is not bound to an identifier.”
 
 For example, given a list like this:
 
@@ -23,7 +24,8 @@ You can create a new list by doubling each element in `ints`, using the `List` c
 val doubledInts = ints.map(_ * 2)   // List(2, 4, 6)
 ```
 
-As the comment shows, `doubledInts` contains the list, `List(2, 4, 6)`. In that example, this portion of the code is an anonymous function:
+As the comment shows, `doubledInts` contains the list, `List(2, 4, 6)`.
+In that example, this portion of the code is an anonymous function:
 
 ```scala
 _ * 2
@@ -35,7 +37,8 @@ This is a shorthand way of saying, “Multiply a given element by 2.”
 
 ## Longer forms
 
-Once you’re comfortable with Scala, you’ll use that form all the time to write anonymous functions that use one variable at one spot in the function. But if you prefer, you can also write them using longer forms, so in addition to writing this code:
+Once you’re comfortable with Scala, you’ll use that form all the time to write anonymous functions that use one variable at one spot in the function.
+But if you prefer, you can also write them using longer forms, so in addition to writing this code:
 
 ```scala
 val doubledInts = ints.map(_ * 2)
@@ -49,7 +52,8 @@ val doubledInts = ints.map((i) => i * 2)
 val doubledInts = ints.map(i => i * 2)
 ```
 
-All of these lines have the exact same meaning: Double each element in `ints` to create a new list, `doubledInts`. (The syntax of each form is explained in a few moments.)
+All of these lines have the exact same meaning: Double each element in `ints` to create a new list, `doubledInts`.
+(The syntax of each form is explained in a few moments.)
 
 If you’re familiar with Java, it may help to know that those `map` examples are the equivalent of this Java code:
 
@@ -81,7 +85,8 @@ If you’re not familiar with this syntax, it helps to think of the `=>` symbol 
 
 ### Shortening that expression
 
-This long form can be shortened, as will be shown in the following steps. First, here’s that longest and most explicit form again:
+This long form can be shortened, as will be shown in the following steps.
+First, here’s that longest and most explicit form again:
 
 ```scala
 val doubledInts = ints.map((i: Int) => i * 2)
@@ -107,7 +112,8 @@ val doubledInts = ints.map(_ * 2)
 
 ### Going even shorter
 
-In other examples, you can simplify your anonymous functions further. For instance, beginning with the most explicit form, you can print each element in `ints` using this anonymous function with the `List` class `foreach` method:
+In other examples, you can simplify your anonymous functions further.
+For instance, beginning with the most explicit form, you can print each element in `ints` using this anonymous function with the `List` class `foreach` method:
 
 ```scala
 ints.foreach((i:Int) => println(i))
