@@ -45,7 +45,7 @@ val person = Record(
 println(s"${person.name} is ${person.age} years old.")
 ```
 
-The parent type `Record` in this example is a generic class that can represent arbitrary records in its `elems` argument. This argument is a sequence of pairs of labels of type `String` and values of type `Any`. When you create a `Person` as a `Record` you have to assert with a typecast that the record defines the right fields of the right types. `Record` itself is too weakly typed so the compiler cannot know this without help from the user. In practice, the connection between a structural type and its underlying generic representation would most likely be done by a database layer, and therefore would not be a concern of the end user.
+The parent type `Record` in this example is a generic class that can represent arbitrary records in its `elems` argument. This argument is a sequence of pairs of labels of type `String` and values of type `Any`. When you create a `Person` as a `Record` you have to assert with a typecast that the record defines the right fields of the right types. `Record` itself is too weakly typed, so the compiler cannot know this without help from the user. In practice, the connection between a structural type and its underlying generic representation would most likely be done by a database layer, and therefore would not be a concern of the end user.
 
 `Record` extends the marker trait `scala.Selectable` and defines a method `selectDynamic`, which maps a field name to its value. Selecting a structural type member is done by calling this method. The `person.name` and `person.age` selections are translated by the Scala compiler to:
 
@@ -80,7 +80,7 @@ val book = Record(
 
 ## Selectable class
 
-Besides `selectDynamic`, a `Selectable` class sometimes also defines a method `applyDynamic`. This can then be used to translate function calls of structural members. So, if `a` is an instance of `Selectable`, a structural call like `a.f(b, c)` will translate to:
+Besides `selectDynamic`, a `Selectable` class sometimes also defines a method `applyDynamic`. This can then be used to translate function calls of structural members. So, if `a` is an instance of `Selectable`, a structural call like `a.f(b, c)` translates to:
 
 ```scala
 a.applyDynamic("f")(b, c)

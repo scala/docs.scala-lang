@@ -8,14 +8,14 @@ next-page: types-generics
 ---
 
 
-As with other statically typed programming languages, in Scala you can *declare* a type when creating a new variable:
+As with other statically typed programming languages, in Scala you can _declare_ a type when creating a new variable:
 
 ```scala
 val x: Int = 1
 val x: Double = 1
 ```
 
-In those examples the types are *explicitly* declared to be `Int` and `Double`, respectively. However, in Scala you generally don’t have to declare the type when defining value binders:
+In those examples the types are _explicitly_ declared to be `Int` and `Double`, respectively. However, in Scala you generally don’t have to declare the type when defining value binders:
 
 ```scala
 val a = 1
@@ -23,7 +23,7 @@ val b = List(1, 2, 3)
 val m = Map(1 -> "one", 2 -> "two")
 ```
 
-When you do this, Scala *infers* the types, as shown in the following REPL interaction:
+When you do this, Scala _infers_ the types, as shown in the following REPL interaction:
 
 ```scala
 scala> val a = 1

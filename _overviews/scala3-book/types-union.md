@@ -7,10 +7,10 @@ previous-page: types-intersection
 next-page: types-adts-gadts
 ---
 
-Used on types, the `|` operator creates a so called _union type_.
-The type `A | B` represents values that are **either** of the type `A` and **or** of the type `B`.
+Used on types, the `|` operator creates a so-called _union type_.
+The type `A | B` represents values that are **either** of the type `A` **or** of the type `B`.
 
-In the following example, the `help` method accepts a parameter named `id` of union type `Username | Password`, that can be either a `Username` or a `Password`.
+In the following example, the `help` method accepts a parameter named `id` of the union type `Username | Password`, that can be either a `Username` or a `Password`:
 
 ```scala
 case class Username(name: String)
@@ -38,10 +38,10 @@ case 1.0 = > ???   // ERROR: this line won’t compile
 ```
 
 ### Alternative to Union Types
-As shown, union types can be used to represent alternatives of several different types, without requiring those types to be part of a custom-crafted class hierarchy or requireing explicit wrapping.
+As shown, union types can be used to represent alternatives of several different types, without requiring those types to be part of a custom-crafted class hierarchy, or requiring explicit wrapping.
 
-#### Preplanning the Class Hierarchy
-Other languages would require pre-planning of the class hierarchy like the following example illustrates:
+#### Pre-planning the Class Hierarchy
+Other languages would require pre-planning of the class hierarchy, like the following example illustrates:
 
 ```scala
 trait UsernameOrPassword
@@ -49,20 +49,20 @@ case class Username(name: String) extends UsernameOrPassword
 case class Password(hash: Hash) extends UsernameOrPassword
 def help(id: UsernameOrPassword) = ...
 ```
-Preplanning does not scale very well, since for example requirements of API users might not be foreseeable. Additionaly, cluttering the type hierarchy with marker traits like `UsernameOrPassword` also makes the original code more difficult to read.
+Pre-planning does not scale very well since, for example, requirements of API users might not be foreseeable. Additionally, cluttering the type hierarchy with marker traits like `UsernameOrPassword` also makes the code more difficult to read.
 
 #### Tagged Unions
-Another alternative would be to define a separate enumeration type like:
+Another alternative is to define a separate enumeration type like:
 
 ```scala
 enum UsernameOrPassword:
   case IsUsername(u: Username)
   case IsPassword(p: Password)
 ```
-The enumeration `UsernameOrPassword` represents a _tagged_ union of `Username` and `Password`. However, this way of modeling the union requires _explicit wrapping and unwrapping_ and for instance `Username` is **not** a subtype of `UsernameOrPassword`.
+The enumeration `UsernameOrPassword` represents a _tagged_ union of `Username` and `Password`. However, this way of modeling the union requires _explicit wrapping and unwrapping_ and, for instance, `Username` is **not** a subtype of `UsernameOrPassword`.
 
 ### Inference of Union Types
-The compiler will assign a union type to an expression _only if_ such a type is explicitly given. For instance, given these values:
+The compiler assigns a union type to an expression _only if_ such a type is explicitly given. For instance, given these values:
 
 ```scala
 val name = Username("Eve")     // name: Username = Username(Eve)

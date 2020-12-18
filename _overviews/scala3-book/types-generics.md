@@ -8,7 +8,7 @@ next-page: types-intersection
 ---
 
 
-Generic classes (or traits) take a type as _a parameter_ within square brackets `[...]`. The Scala convention is to use a single letter (like `A`) to name those type parameters. The type can then be used inside the class as needed for intance in parameters of methods or on return types:
+Generic classes (or traits) take a type as _a parameter_ within square brackets `[...]`. The Scala convention is to use a single letter (like `A`) to name those type parameters. The type can then be used inside the class as needed for method instance parameters, or on return types:
 
 ```scala
 // here we delare the type parameter A
@@ -34,11 +34,11 @@ This is how you create and use a `Stack[Int]`:
 val stack = Stack[Int]
 stack.push(1)
 stack.push(2)
-println(stack.pop)  // prints 2
-println(stack.pop)  // prints 1
+println(stack.pop())  // prints 2
+println(stack.pop())  // prints 1
 ```
 
-> See the [variance section][variance] for details on how to express variance with generic types.
+> See the [Variance section][variance] for details on how to express variance with generic types.
 
 
 [variance]: {% link _overviews/scala3-book/types-variance.md %}
