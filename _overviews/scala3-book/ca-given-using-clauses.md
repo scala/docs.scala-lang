@@ -10,7 +10,7 @@ next-page: ca-context-bounds
 Scala 3 offers two important feature for contextual abstraction:
 
 - **Using Clauses** allow you to specify parameters that, at the call site, can be omitted by the programmer and should be automatically provided by the context.
-- **Given Instanes** let you define terms that can be used by the Scala compiler to fill in the missing arguments.
+- **Given Instances** let you define terms that can be used by the Scala compiler to fill in the missing arguments.
 
 ## Using Clauses
 When designing a system, often context information like _configuration_ or settings need to be provided to the different components of your system. One common way to achieve this is by passing the configuration as additional argument to your methods.
@@ -64,7 +64,7 @@ Explicitly providing contextual parameters can be useful if we have multiple dif
 
 For all other cases, as we will see in the next Section, there is also another way to bring contextual values into scope.
 
-## Givens
+## Given Instances
 We have seen that we can explicitly pass arguments as contextual parameters by marking the argument section of the _call_ with `using`. However, if there is _a single canonical value_ for a particular type, there is another preferred way to make it available to the Scala compiler: by marking it as `given`.
 
 ```scala

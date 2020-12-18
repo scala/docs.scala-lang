@@ -47,6 +47,3 @@ def maximum[A: Ord](xs: List[A]): A = xs.reduceLeft(max)
 A bound like `: Ord` on a type parameter `A` of a method or class indicates a context parameter with `Ord[A]`.
 
 For more information about context bounds, see the [“What are context bounds?”](https://docs.scala-lang.org/tutorials/FAQ/context-bounds.html) section of the Scala FAQ.
-
-
-
