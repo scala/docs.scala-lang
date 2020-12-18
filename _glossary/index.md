@@ -122,25 +122,25 @@ A _free variable_ of an expression is a variable that’s used inside the expres
 A _function_ can be [invoked](#invoke) with a list of arguments to produce a result. A function has a parameter list, a body, and a result type. Functions that are members of a class, trait, or singleton object are called [methods](#method). Functions defined inside other functions are called [local functions](#local-function). Functions with the result type of `Unit` are called [procedures](#procedure). Anonymous functions in source code are called [function literals](#function-literal). At run time, function literals are instantiated into objects called [function values](#function-value).
 
 * #### function literal
-A function with no name in Scala source code, specified with function literal syntax. For example, `(x: Int, y: Int) => x + y`.
+A function with no name in Scala source code, specified with _function literal_ syntax. For example, `(x: Int, y: Int) => x + y`.
 
 * #### function value
-A function object that can be invoked just like any other function. A function value’s class extends one of the `FunctionN` traits (e.g., `Function0`, `Function1`) from package `scala`, and is usually expressed in source code via [function literal](#function-literal) syntax. A function value is “invoked” when its apply method is called. A function value that captures free variables is a [closure](#closure).
+A function object that can be invoked just like any other function. A _function value_’s class extends one of the `FunctionN` traits (e.g., `Function0`, `Function1`) from package `scala`, and is usually expressed in source code via [function literal](#function-literal) syntax. A function value is “invoked” when its apply method is called. A function value that captures free variables is a [closure](#closure).
 
 * #### functional style
 The _functional style_ of programming emphasizes functions and evaluation results and deemphasizes the order in which operations occur. The style is characterized by passing function values into looping methods, immutable data, methods with no side effects. It is the dominant paradigm of languages such as Haskell and Erlang, and contrasts with the [imperative style](#imperative-style).
 
 * #### generator
-A generator defines a named val and assigns to it a series of values in a [for expression](#for-expression). For example, in `for(i <- 1 to 10)`, the generator is “`i <- 1 to 10`”. The value to the right of the `<-` is the [generator expression](#generator-expression).
+A _generator_ defines a named val and assigns to it a series of values in a [for expression](#for-expression). For example, in `for(i <- 1 to 10)`, the generator is “`i <- 1 to 10`”. The value to the right of the `<-` is the [generator expression](#generator-expression).
 
 * #### generator expression
-A generator expression generates a series of values in a [for expression](#for-expression). For example, in `for(i <- 1 to 10)`, the generator expression is “`1 to 10`”.
+A _generator expression_ generates a series of values in a [for expression](#for-expression). For example, in `for(i <- 1 to 10)`, the generator expression is “`1 to 10`”.
 
 * #### generic class
-A class that takes type parameters. For example, because `scala.List` takes a type parameter, `scala.List` is a generic class.
+A class that takes type parameters. For example, because `scala.List` takes a type parameter, `scala.List` is a _generic class_.
 
 * #### generic trait
-A trait that takes type parameters. For example, because trait `scala.collection.Set` takes a type parameter, it is a generic trait.
+A trait that takes type parameters. For example, because trait `scala.collection.Set` takes a type parameter, it is a _generic trait_.
 
 * #### guard
 See [filter](#filter).
@@ -158,7 +158,7 @@ An object is _immutable_ if its value cannot be changed after it is created in a
 The _imperative style_ of programming emphasizes careful sequencing of operations so that their effects happen in the right order. The style is characterized by iteration with loops, mutating data in place, and methods with side effects. It is the dominant paradigm of languages such as C, C++, C# and Java, and contrasts with the [functional style](#functional-style).
 
 * #### initialize
-When a variable is defined in Scala source code, you must initialize it with an object.
+When a variable is defined in Scala source code, you must _initialize_ it with an object.
 
 * #### instance
 An _instance_, or class instance, is an object, a concept that exists only at run time.
