@@ -51,9 +51,9 @@ a.takeRight(2)                        // List(40, 10)
 ```
 
 
-### Lambdas and HOFs
+### Higher-order functions and lambdas
 
-Next, we’ll show some commonly used higher-order functions (HOFs) that accept _lambda_ methods. To get started, here are several variations of the lambda syntax, starting with the longest form, working in steps towards the most concise form:
+Next, we’ll show some commonly used higher-order functions (HOFs) that accept lambdas (anonymous functions). To get started, here are several variations of the lambda syntax, starting with the longest form, working in steps towards the most concise form:
 
 ```scala
 // these functions are all equivalent and return
@@ -171,6 +171,19 @@ scala> val shortNames = names.filter(_.length <= 4)
 shortNames: List[String] = List(adam)
 ```
 
+A great thing about the functional methods on collections is that you can chain them together to solve problems. For instance, this example shows how to chain `filter` and `map`:
+
+```scala
+oneToTen.filter(_ < 4).map(_ * 10)
+```
+
+The REPL shows the result:
+
+```scala
+scala> oneToTen.filter(_ < 4).map(_ * 10)
+val res1: List[Int] = List(10, 20, 30)
+```
+
 
 
 ## `foreach`
@@ -183,21 +196,6 @@ adam
 brandy
 chris
 david
-```
-
-A great thing about the functional methods on the collections is that you can chain them together to solve problems. For example, this is one way to print the first three elements from `oneToTen`:
-
-```scala
-oneToTen.filter(_ < 4).foreach(println)
-```
-
-The REPL shows the result:
-
-```scala
-scala> oneToTen.filter(_ < 4).foreach(println)
-1
-2
-3
 ```
 
 

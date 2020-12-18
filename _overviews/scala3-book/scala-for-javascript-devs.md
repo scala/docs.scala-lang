@@ -196,7 +196,17 @@ Many uses of strings are similar in JavaScript and Scala, though Scala only uses
     </tr>
 </table>
 
-Scala lets you create multiline strings, which also support interpolation:
+JavaScript lets you create multiline strings with backticks, and supports interpolation:
+
+```javascript
+let name = "joe";
+let str = `
+Hello, ${name}.
+This is a multiline string.
+`;
+```
+
+Scala lets you create multiline strings with string interpolation:
 
 ```scala
 val name = "Martin Odersky"

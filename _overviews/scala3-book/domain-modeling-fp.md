@@ -14,6 +14,9 @@ This chapter provides an introduction to domain modeling using functional progra
 - Case classes
 - Traits
 
+>If you’re not familiar with algebraic data types (ADTs) and their generalized version (GADTs), you may want to read the [Algebraic Data Types][adts] section before reading this section.
+
+
 
 ## Introduction
 
@@ -156,7 +159,7 @@ def crustPrice(s: CrustSize, t: CrustType): Double =
     case (Large, Regular) => 0.75
     case (Large, Thick) => 1.00
 ```
-To compute the price of the crust we simultanously pattern match on both the size and the type of the crust.
+To compute the price of the crust we simultaneously pattern match on both the size and the type of the crust.
 
 > An important point about all functions shown above is that they are *pure functions*: they do not mutate any data or have other side-effects (like throwing exceptions or writing to a file). All they do is simply receive values and compute the result.
 
@@ -174,7 +177,11 @@ These different solutions are shown in the remainder of this section.
 
 ### Companion Object
 
-A first approach is to define the behavior — the functions — in a companion object. With this approach, in addition to the enumeration or case class you also define an equally named companion object that contains the behavior.
+A first approach is to define the behavior — the functions — in a companion object.
+
+>As discussed in the Domain Modeling [Tools section][modeling-tools], a _companion object_ is an `object` that has the same name as a class, and is declared in the same file as the class.
+
+With this approach, in addition to the enumeration or case class you also define an equally named companion object that contains the behavior.
 
 ```scala
 case class Pizza(
@@ -410,3 +417,7 @@ Then, to model the behavior define functions that operate on values of your data
 - You can use a modular programming style, separating interface and implementation
 - You can use a “functional objects” approach and store the methods on the defined data type
 - You can use extension methods to equip your data model with functionality
+
+
+[adts]: {% link _overviews/scala3-book/types-adts-gadts.md %}
+[modeling-tools]: {% link _overviews/scala3-book/domain-modeling-tools.md %}
