@@ -61,7 +61,7 @@ To create a new Scala project with sbt:
 
 1. `cd` to an empty folder.
 1. Run this command `sbt new scala/hello-world.g8`.
-This pulls the 'hello-world' template from GitHub.
+This pulls the ['hello-world' template][template-url] from GitHub.
 It also creates a *target* folder, which you can ignore.
 1. When prompted, name the application `hello-world`. This will
 create a project called "hello-world".
@@ -80,13 +80,14 @@ The scala file `Main.scala` in `src/main/scala` is all we need for now.
 More documentation about sbt can be found in the [Scala Book](/scala3/book/scala-tools.html) and in the official sbt [documentation](https://www.scala-sbt.org/1.x/docs/index.html)
 
 
+{% comment %}
 ### With IntelliJ IDEA
 
 You can skip the rest of this page and go directly to [Building a Scala Project with IntelliJ and sbt](/getting-started/intellij-track/building-a-scala-project-with-intellij-and-sbt.html)
+{% endcomment %}
 
 
-
-## Open the Hello, World project
+## Open the “Hello, world” project
 
 Let’s use an IDE to open the project. The most popular ones are IntelliJ IDEA and VS Code. They both offer rich IDE features, but you can still use [many other editors.](https://scalameta.org/metals/docs/editors/overview.html)
 
@@ -117,7 +118,7 @@ When you run your project in the next step, the configuration in *build.sbt* wil
 
 
 
-## Run Hello, World
+## Run the “Hello, world” project
 
 If you’re comfortable using your IDE, you can run the code in *Main.scala* from your IDE.
 
@@ -137,24 +138,22 @@ Now that you’ve created a first “Hello, world” example with Scala 3, you�
 
 - [The Scala 3 Book](/scala3/book/introduction.html), which provides a set of short lessons introducing Scala’s main features
 - [The migration guide](https://scalacenter.github.io/scala-3-migration-guide/) helps you to migrate your existing Scala 2 code base to Scala 3.
-- [Learning Resources](/learn.html), which includes online interactive tutorials and courses.
-- [Our list of some popular Scala books](/books.html).
 
 When you want to connect with other Scala users, there are several mailing lists and real-time chat rooms available. Check out our [Scala community page](https://scala-lang.org/community/) for a list of these resources, and for where to reach out for help.
 
 
 <!-- Hidden elements whose content are used to provide OS-specific download instructions.
  -- This is handled in `resources/js/functions.js`.
- --> 
+ -->
 <div style="display:none" id="stepOne-linux">
        <code class="hljs">$ curl -Lo cs https://git.io/coursier-cli-linux && chmod +x cs && ./cs setup </code> <br>
 </div>
- 
+
 <div style="display:none" id="stepOne-unix">
     <p>Follow <a href="https://get-coursier.io/docs/cli-overview.html#install-native-launcher" target="_blank">the instructions to install the <code>cs</code> launcher</a> then run:</p>
     <p><code>$ ./cs setup</code></p>
 </div>
- 
+
 <div style="display:none" id="stepOne-osx">
     <p>If you use Homebrew:</p>
     <div class="highlight">
@@ -165,9 +164,9 @@ When you want to connect with other Scala users, there are several mailing lists
         <code class="hljs">$ curl -Lo cs https://git.io/coursier-cli-macos && chmod +x cs &&  (xattr -d com.apple.quarantine cs || true) && ./cs  setup </code> <br>
     </div>
 </div>
-  
+
 <div style="display:none" id="stepOne-windows">
     <p>Download and execute <a href="https://git.io/coursier-cli-windows-exe">the Scala installer for Windows</a> based on coursier</p>
 </div>
 
-
+[template-url]: https://github.com/scala/hello-world.g8
