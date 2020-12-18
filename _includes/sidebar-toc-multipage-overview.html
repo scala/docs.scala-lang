@@ -30,9 +30,9 @@
             {% else %} <!-- this must be English, so get the other documents' titles -->
 
               {% if pg.type %} <!-- if a type is set in a document, we add it as a class. Used in Scala book to diff between chapter and section -->
-                <li class="type-{{ pg.type }}"><a {% if page.title == pg.title %}class="active"{% endif %} href="{{ site.baseurl }}{{ pg.url }}">{{ pg.title }}</a>{{toc}}</li>
+                <li class="type-{{ pg.type }}"><a {% if page.num == pg.num %}class="active"{% endif %} href="{{ site.baseurl }}{{ pg.url }}">{{ pg.title }}</a>{{toc}}</li>
               {% else %}
-                <li><a {% if page.title == pg.title %}class="active"{% endif %} href="{{ site.baseurl }}{{ pg.url }}">{{ pg.title }}</a>{{toc}}</li>
+                <li><a {% if page.num == pg.num %}class="active"{% endif %} href="{{ site.baseurl }}{{ pg.url }}">{{ pg.title }}</a>{{toc}}</li>
               {% endif %}
             {% endif %}
           {% endif %}
