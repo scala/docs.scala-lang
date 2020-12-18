@@ -139,6 +139,15 @@ see this [Stack Overflow answer](https://stackoverflow.com/a/1059501).
 
 [Answer on Stack Overflow](https://stackoverflow.com/a/5159356).
 
+### What does `_` mean?
+
+Many things really, depending on the context.
+[This answer on Stack Overflow](https://stackoverflow.com/a/8001065/4111404)
+has a good summary of all the meanings it has.
+
+Note that, even if the specific meaning is different,
+according to the situation, it usually means _"anything"_.
+
 ### Can I chain or nest implicit conversions?
 
 Not really, but you can [make it work](https://stackoverflow.com/a/5332804).
