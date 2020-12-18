@@ -8,10 +8,10 @@ next-page: domain-modeling-oop
 ---
 
 
-
 Scala 3 provides us with many different tools to model the world around us:
 
 - Classes
+- Objects
 - Companion objects
 - Traits
 - Abstract classes
@@ -78,7 +78,6 @@ p.name = "Bob Dylan"
 p.vocation = "Musician"
 ```
 
-
 ### Fields and methods
 
 Classes can have also have methods and additional fields that are not part of constructors. They are defined in the body of the class. The body is initialized as part of the default constructor:
@@ -119,26 +118,99 @@ As a quick look at a few other features, class constructor parameters can also h
 
 ```scala
 class Socket(val timeout: Int = 5_000, val linger: Int = 5_000):
-    override def toString = s"timeout: $timeout, linger: $linger"
+  override def toString = s"timeout: $timeout, linger: $linger"
 ```
 
 A great thing about this feature is that it lets consumers of your code create classes in a variety of different ways, as though the class had alternate constructors:
 
 ```scala
-val s1 = Socket()                 // timeout: 5000, linger: 5000
-val s2 = Socket(2_500)            // timeout: 2500, linger: 5000
-val s3 = Socket(10_000, 10_000)   // timeout: 10000, linger: 10000
-val s4 = Socket(timeout = 10_000) // timeout: 10000, linger: 5000
+val s = Socket()                  // timeout: 5000, linger: 5000
+val s = Socket(2_500)             // timeout: 2500, linger: 5000
+val s = Socket(10_000, 10_000)    // timeout: 10000, linger: 10000
+val s = Socket(timeout = 10_000)  // timeout: 10000, linger: 5000
+val s = Socket(linger = 10_000)   // timeout: 5000, linger: 10000
 ```
 
-When creating a new instance of a class, you can also use named parameters. This is particularly helpful when many of the parameters have the same type:
+When creating a new instance of a class, you can also use named parameters. This is particularly helpful when many of the parameters have the same type, as shown in this comparison:
 
 ```scala
+// option 1
+val s = Socket(10_000, 10_000)
+
+// option 2
 val s = Socket(
   timeout = 10_000,
   linger = 10_000
 )
 ```
+
+### Auxiliary constructors
+
+You can define a class to have multiple constructors so consumers of your class can build it in different ways. For example, let’s assume that you need to write some code to model students in a college admission system. While analyzing the requirements you’ve seen that you need to be able to construct a `Student` instance in three ways:
+
+- With a name and government ID, for when they first start the admissions process
+- With a name, government ID, and an additional application date, for when they submit their application
+- With a name, government ID, and their student ID, for after they’ve been admitted
+
+One way to handle this situation in an OOP style is with this code:
+
+```scala
+import java.time._
+
+// [1] the primary constructor
+class Student(
+  var name: String,
+  var govtId: String
+):
+  private var _applicationDate: Option[LocalDate] = None
+  private var _studentId: Int = 0
+
+  // [2] a constructor for when the student has completed
+  // their application
+  def this(
+    name: String,
+    govtId: String,
+    applicationDate: LocalDate
+  ) =
+    this(name, govtId)
+    _applicationDate = Some(applicationDate)
+
+  // [3] a constructor for when the student is approved
+  // and now has a student id
+  def this(
+    name: String,
+    govtId: String,
+    studentId: Int
+  ) =
+    this(name, govtId)
+    _studentId = studentId
+```
+
+{% comment %}
+// for testing that code
+override def toString = s"""
+|Name: $name
+|GovtId: $govtId
+|StudentId: $_studentId
+|Date Applied: $_applicationDate
+""".trim.stripMargin
+{% endcomment %}
+
+The class has three constructors, given by the numbered comments in the code:
+
+1. The primary constructor, given by the `name` and `govtId` in the class definition
+2. An auxiliary constructor with the parameters `name`, `govtId`, and `applicationDate`
+3. Another auxiliary constructor with the parameters `name`, `govtId`, and `studentId`
+
+Those constructors can be called like this:
+
+```scala
+val s1 = Student("Mary", "123")
+val s2 = Student("Mary", "123", LocalDate.now)
+val s3 = Student("Mary", "123", 456)
+```
+
+While this technique can be used, bear in mind that constructor parameters can also have default values, which make it seem that a class has multiple constructors. This is shown in the previous `Socket` example.
 
 
 
@@ -481,19 +553,19 @@ As mentioned, case classes support functional programming (FP):
 - Instead of mutating one instance, you can use the `copy` method as a template to create a new (potentially changed) instance. This process can be referred to as “update as you copy.”
 - Having an `unapply` method auto-generated for you also lets case classes be used in advanced ways with pattern matching.
 
+
 {% comment %}
-We can use this following text, if desired. It might need to be updated a little.
+NOTE: We can use this following text, if desired. If it’s used, it needs to be updated a little bit.
 
 ### An `unapply` method
 
-In the previous lesson on companion objects you saw how to write `unapply` methods. A great thing about a case class is that it automatically generates an `unapply` method for your class, so you don’t have to write one.
+A great thing about a case class is that it automatically generates an `unapply` method for your class, so you don’t have to write one.
 
 To demonstrate this, imagine that you have this trait:
 
 ```scala
-trait Person {
-    def name: String
-}
+trait Person:
+  def name: String
 ```
 
 Then, create these case classes to extend that trait:
@@ -506,12 +578,11 @@ case class Teacher(name: String, specialty: String) extends Person
 Because those are defined as case classes — and they have built-in `unapply` methods — you can write a match expression like this:
 
 ```scala
-def getPrintableString(p: Person): String = p match {
-    case Student(name, year) =>
-        s"$name is a student in Year $year."
-    case Teacher(name, whatTheyTeach) =>
-        s"$name teaches $whatTheyTeach."
-}
+def getPrintableString(p: Person): String = p match
+  case Student(name, year) =>
+    s"$name is a student in Year $year."
+  case Teacher(name, whatTheyTeach) =>
+    s"$name teaches $whatTheyTeach."
 ```
 
 Notice these two patterns in the `case` statements:
@@ -543,6 +614,28 @@ res1: String = Bob Donnan teaches Mathematics.
 ```
 
 >All of this content on `unapply` methods and extractors is a little advanced for an introductory book like this, but because case classes are an important FP topic, it seems better to cover them, rather than skipping over them.
+
+#### Add pattern matching to any type with unapply
+
+A great Scala feature is that you can add pattern matching to any type by writing your own `unapply` method. As an example, this class defines an `unapply` method in its companion object:
+
+```scala
+class Person(var name: String, var age: Int)
+object Person:
+  def unapply(p: Person): Tuple2[String, Int] = (p.name, p.age)
+```
+
+Because it defines an `unapply` method, and because that method returns a tuple, you can now use `Person` with a `match` expression:
+
+```scala
+val p = Person("Astrid", 33)
+
+p match
+  case Person(n,a) => println(s"name: $n, age: $a")
+  case null => println("No match")
+
+// that code prints: "name: Astrid, age: 33"
+```
 {% endcomment %}
 
 
