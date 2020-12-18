@@ -28,6 +28,14 @@ $nav-height: 46px;
           display: none;
         }
       }
+      a,
+      a:hover,
+      a:active,
+      a:focus,
+      a:hover,
+      a.active {
+        text-decoration: none;
+      }
     }
     .navigation-ellipsis {
         display: none;
