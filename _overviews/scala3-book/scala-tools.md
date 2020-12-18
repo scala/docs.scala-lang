@@ -8,17 +8,14 @@ next-page: interacting-with-java
 ---
 
 
-{% comment %}
-TODO: cover any migration tools/commands here?
-{% endcomment %}
-
-
 In this chapter you’ll see two tools that are commonly used in Scala projects:
 
 - The [sbt](https://www.scala-sbt.org) build tool
 - [ScalaTest](https://www.scalatest.org), a source code testing framework
 
 We’ll start by showing how to use sbt to build your Scala projects, and then we’ll show how to use sbt and ScalaTest together to test your Scala projects.
+
+>If you want to learn about tools to help you migrate your Scala 2 code to Scala 3, see our [Scala 3 Migration Guide](https://scalacenter.github.io/scala-3-migration-guide/).
 
 
 
