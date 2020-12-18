@@ -8,7 +8,6 @@ next-page: fp-pure-functions
 ---
 
 
-
 In pure functional programming, only immutable values are used.
 In Scala this means:
 
@@ -68,8 +67,8 @@ val elton = p.copy(
 
 There are other techniques for working with immutable collections and variables, but hopefully these examples give you a taste of the techniques.
 
->Depending on your needs, you may create enums, traits, or classes instead of `case` classes.
-See the [Data Modeling][modeling] chapter for more details.
+> Depending on your needs, you may create enums, traits, or classes instead of `case` classes.
+> See the [Data Modeling][modeling] chapter for more details.
 
 
 

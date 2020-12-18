@@ -389,9 +389,9 @@ In this example the variable `i` is tested against the cases shown.
 If it’s between `0` and `6`, `day` is bound to a string that represents one of the days of the week.
 Otherwise, the catch-all case is represented by the `_` character, and `day` is bound to the string, `"invalid day"`.
 
->When writing simple `match` expressions like this, it’s recommended to use the `@switch` annotation on the variable `i`.
-This annotation provides a compile time warning if the switch can’t be compiled to a `tableswitch` or `lookupswitch`, which are better for performance.
-See the Reference documentation for more details.
+> When writing simple `match` expressions like this, it’s recommended to use the `@switch` annotation on the variable `i`.
+> This annotation provides a compile time warning if the switch can’t be compiled to a `tableswitch` or `lookupswitch`, which are better for performance.
+> See the Reference documentation for more details.
 
 
 ### Using the default value

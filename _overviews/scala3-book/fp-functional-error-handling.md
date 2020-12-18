@@ -96,8 +96,8 @@ There are two common answers, depending on your needs:
 - Use a `match` expression
 - Use a `for` expression
 
->There are other approaches that can be used.
-See the [Reference documentation][reference] for details on those approaches.
+> There are other approaches that can be used.
+> See the [Reference documentation][reference] for details on those approaches.
 
 
 
@@ -234,8 +234,8 @@ makeInt(x) match
   case None => println("That didn't work.")
 ```
 
->There are several other ways to handle `Option` values.
-See the Reference documentation for more details.
+> There are several other ways to handle `Option` values.
+> See the Reference documentation for more details.
 {% endcomment %}
 
 

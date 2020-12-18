@@ -12,9 +12,9 @@ Thanks to Scala’s consistency, writing a method that returns a function is sim
 For example, imagine that you want to write a `greet` method that returns a function.
 Once again we start with a problem statement:
 
->I want to create a `greet` method that returns a function.
-That function will take a string parameter and print it using `println`.
-To simplify this first example, `greet` won’t take any input parameters; it will just build a function and return it.
+> I want to create a `greet` method that returns a function.
+> That function will take a string parameter and print it using `println`.
+> To simplify this first example, `greet` won’t take any input parameters; it will just build a function and return it.
 
 Given that statement, you can start building `greet`.
 You know it’s going to be a method:

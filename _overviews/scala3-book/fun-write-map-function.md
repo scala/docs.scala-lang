@@ -14,7 +14,7 @@ Imagine for a moment that the `List` class doesn’t have its own `map` method, 
 A good first step when creating functions is to accurately state the problem.
 Focusing only on a `List[Int]`, you state:
 
->I want to write a `map` method that can be used to a function to each element in a `List[Int]` that it’s given, returning the transformed elements as a new list.
+> I want to write a `map` method that can be used to a function to each element in a `List[Int]` that it’s given, returning the transformed elements as a new list.
 
 Given that statement, you start to write the method signature.
 First, you know that you want to accept a function as a parameter, and that function should transform an `Int` into some generic type `A`, so you write:

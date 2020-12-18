@@ -22,7 +22,7 @@ val lessThanFive = nums.filter(_ < 5)   // List(1,2,3,4)
 
 In those examples, anonymous functions are passed into `map` and `filter`.
 
->Anonymous functions are also known as *lambdas*.
+> Anonymous functions are also known as *lambdas*.
 
 In addition to passing anonymous functions into `filter` and `map`, you can also supply them with *methods*:
 
@@ -37,8 +37,8 @@ val doubles = nums.filter(underFive).map(double)
 
 This ability to treat methods and functions as values is a powerful feature that functional programming languages provide.
 
->Technically, a a function that takes another function as an input parameter is known as a *Higher-Order Function*.
-(If you like humor, as someone once wrote, that’s like saying that a class that takes an instance of another class as a constructor parameter is a Higher-Order Class.)
+> Technically, a a function that takes another function as an input parameter is known as a *Higher-Order Function*.
+> (If you like humor, as someone once wrote, that’s like saying that a class that takes an instance of another class as a constructor parameter is a Higher-Order Class.)
 
 
 

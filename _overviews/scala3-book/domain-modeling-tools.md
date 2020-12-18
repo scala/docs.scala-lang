@@ -623,8 +623,8 @@ case Teacher(name, whatTheyTeach) =>
 Those patterns work because `Student` and `Teacher` are defined as case classes that have `unapply` methods whose type signature conforms to a certain standard.
 Technically, the specific type of pattern matching shown in these examples is known as a *constructor pattern*.
 
->The Scala standard is that an `unapply` method returns the case class constructor fields in a tuple that’s wrapped in an `Option`.
-The “tuple” part of the solution was shown in the previous lesson.
+> The Scala standard is that an `unapply` method returns the case class constructor fields in a tuple that’s wrapped in an `Option`.
+> The “tuple” part of the solution was shown in the previous lesson.
 
 To show how that code works, create an instance of `Student` and `Teacher`:
 
@@ -643,7 +643,7 @@ scala> getPrintableString(t)
 res1: String = Bob Donnan teaches Mathematics.
 ```
 
->All of this content on `unapply` methods and extractors is a little advanced for an introductory book like this, but because case classes are an important FP topic, it seems better to cover them, rather than skipping over them.
+> All of this content on `unapply` methods and extractors is a little advanced for an introductory book like this, but because case classes are an important FP topic, it seems better to cover them, rather than skipping over them.
 
 #### Add pattern matching to any type with unapply
 

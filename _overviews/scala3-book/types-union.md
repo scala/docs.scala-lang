@@ -86,6 +86,6 @@ val b: Password | Username = Username(Eve)
 The type of `a` is `Object`, which is a supertype of `Username` and `Password`, but not the *least* supertype, `Password | Username`.
 If you want the least supertype you have to give it explicitly, as is done for `b`.
 
-
 > Union types are duals of intersection types.
-And like `&` with intersection types, `|` is also commutative: `A | B` is the same type as `B | A`.
+> And like `&` with intersection types, `|` is also commutative: `A | B` is the same type as `B | A`.
+

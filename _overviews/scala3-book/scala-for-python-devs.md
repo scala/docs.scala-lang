@@ -132,8 +132,8 @@ Also at a programming level, these are some of the differences you’ll see ever
 
 Given that introduction, the following sections provide side-by-side comparisons of Python and Scala programming language features.
 
->The general Python standard is to indent code with four spaces, but in the following examples only two spaces are used.
-This is only done so the examples can be shown side by side.
+> The general Python standard is to indent code with four spaces, but in the following examples only two spaces are used.
+> This is only done so the examples can be shown side by side.
 
 
 ## Comments

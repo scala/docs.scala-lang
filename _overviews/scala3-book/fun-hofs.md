@@ -190,8 +190,8 @@ As you can infer from these examples, the general syntax for defining function p
 variableName: (parameterTypes ...) => returnType
 ```
 
->Because functional programming is like creating and combining a series of algebraic equations, it’s common to think about types a *lot* when designing functions and applications.
-You might say that you “think in types.”
+> Because functional programming is like creating and combining a series of algebraic equations, it’s common to think about types a *lot* when designing functions and applications.
+> You might say that you “think in types.”
 
 
 

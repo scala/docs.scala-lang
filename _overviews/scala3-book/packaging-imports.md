@@ -245,7 +245,7 @@ Two packages are implicitly imported into the scope of all of your source code f
 
 The Scala `Predef` object is also imported by default.
 
->If you ever wondered why you can use classes like `List`, `Vector`, `Map`, etc., without importing them, they’re available because of definitions in the `Predef` object.
+> If you ever wondered why you can use classes like `List`, `Vector`, `Map`, etc., without importing them, they’re available because of definitions in the `Predef` object.
 
 
 

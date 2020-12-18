@@ -8,7 +8,6 @@ next-page: fp-functions-are-values
 ---
 
 
-
 {% comment %}
 TODO: Use someone else’s definition?
 {% endcomment %}
@@ -41,8 +40,8 @@ These `String` methods are also pure functions:
 
 Most methods on the Scala collections classes also work as pure functions, including `drop`, `filter`, `map`, and many more.
 
->In Scala, *functions* and *methods* are almost completely interchangeable, so even though we use the common industry term “pure function,” this term can be used to describe both functions and methods.
-If you’re interested in how methods can be used like functions, see the [Eta Expansion][eta] discussion.
+> In Scala, *functions* and *methods* are almost completely interchangeable, so even though we use the common industry term “pure function,” this term can be used to describe both functions and methods.
+> If you’re interested in how methods can be used like functions, see the [Eta Expansion][eta] discussion.
 
 
 
@@ -52,9 +51,9 @@ Conversely, the following functions are *impure* because they violate the defini
 
 The `foreach` method on collections classes is impure because it’s only used for its side effects, such as printing to STDOUT.
 
->A great hint that `foreach` is impure is that it’s method signature declares that it returns the type `Unit`.
-Because it doesn’t return anything, logically the only reason you ever call it is to achieve some side effect.
-Similarly, *any* method that returns `Unit` is going to be an impure function.
+> A great hint that `foreach` is impure is that it’s method signature declares that it returns the type `Unit`.
+> Because it doesn’t return anything, logically the only reason you ever call it is to achieve some side effect.
+> Similarly, *any* method that returns `Unit` is going to be an impure function.
 
 Date and time related methods like `getDayOfWeek`, `getHour`, and `getMinute` are all impure because their output depends on something other than their input parameters.
 Their results rely on some form of hidden I/O; *hidden inputs,* in these examples.
@@ -74,8 +73,8 @@ In general, impure functions do one or more of these things:
 
 Of course an application isn’t very useful if it can’t read or write to the outside world, so people make this recommendation:
 
->Write the core of your application using pure functions, and then write an impure “wrapper” around that core to interact with the outside world.
-As someone once said, this is like putting a layer of impure icing on top of a pure cake.
+> Write the core of your application using pure functions, and then write an impure “wrapper” around that core to interact with the outside world.
+> As someone once said, this is like putting a layer of impure icing on top of a pure cake.
 
 It’s important to note that there are ways to make impure interactions with the outside world feel more pure.
 For instance, you’ll hear about using an `IO` Monad to deal with input and output.
@@ -110,8 +109,8 @@ If you understand that code, you’ll see that it meets the pure function defini
 
 The first key point of this section is the definition of a pure function:
 
->A *pure function* is a function that depends only on its declared inputs and its internal algorithm to produce its output.
-It does not read any other values from “the outside world” — the world outside of the function’s scope — and it doesn’t modify any values in the outside world.
+> A *pure function* is a function that depends only on its declared inputs and its internal algorithm to produce its output.
+> It does not read any other values from “the outside world” — the world outside of the function’s scope — and it doesn’t modify any values in the outside world.
 
 A second key point is that every real-world application interacts with the outside world.
 Therefore, a simplified way to think about functional programs is that they consist of a core of pure functions that are wrapped with other functions that interact with the outside world.

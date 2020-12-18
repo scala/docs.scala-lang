@@ -32,7 +32,7 @@ val a = List(1, 2, 3).map(i => double(i))   // List(2,4,6)
 val b = List(1, 2, 3).map(double)           // List(2,4,6)
 ```
 
->If you haven’t seen the `map` method before, it applies a given function to every element in a list, yielding a new list that contains the resulting values.
+> If you haven’t seen the `map` method before, it applies a given function to every element in a list, yielding a new list that contains the resulting values.
 
 Passing lambdas to higher-order functions on collections classes (like `List`) is a part of the Scala experience, something you’ll do every day.
 

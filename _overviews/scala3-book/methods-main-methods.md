@@ -8,7 +8,6 @@ next-page: methods-summary
 ---
 
 
-
 Scala 3 offers a new way to define programs that can be invoked from the command line: Adding a `@main` annotation to a method turns it into entry point of an executable program:
 
 ```scala
@@ -102,9 +101,9 @@ final class happyBirthday {
 }
 ```
 
->**Note**: In this generated code, the `<static>` modifier expresses that the `main` method is generated as a static method of class `happyBirthday`.
-This feature is not available for user programs in Scala.
-Regular “static” members are generated in Scala using objects instead.
+> **Note**: In this generated code, the `<static>` modifier expresses that the `main` method is generated as a static method of class `happyBirthday`.
+> This feature is not available for user programs in Scala.
+> Regular “static” members are generated in Scala using objects instead.
 
 
 

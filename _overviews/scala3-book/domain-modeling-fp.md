@@ -15,7 +15,7 @@ When modeling the world around us with FP, you typically use these Scala constru
 - Case classes
 - Traits
 
->If you’re not familiar with algebraic data types (ADTs) and their generalized version (GADTs), you may want to read the [Algebraic Data Types][adts] section before reading this section.
+> If you’re not familiar with algebraic data types (ADTs) and their generalized version (GADTs), you may want to read the [Algebraic Data Types][adts] section before reading this section.
 
 
 
@@ -42,7 +42,7 @@ An FP design is implemented in a similar way:
 - You describe operations that work on those values (your functions)
 
 > As we will see, reasoning about programs in this style is quite different from the object-oriented programming.
-Data in FP simply **is**:
+> Data in FP simply **is**:
 > Separating functionality from your data let's you inspect your data without having to worry about behavior.
 
 In this chapter we’ll model the data and operations for a “pizza” in a pizza store.
@@ -175,7 +175,7 @@ def crustPrice(s: CrustSize, t: CrustType): Double =
 To compute the price of the crust we simultaneously pattern match on both the size and the type of the crust.
 
 > An important point about all functions shown above is that they are *pure functions*: they do not mutate any data or have other side-effects (like throwing exceptions or writing to a file).
-All they do is simply receive values and compute the result.
+> All they do is simply receive values and compute the result.
 
 ## How to Organize Functionality
 When implementing the `pizzaPrice` function above, we did not say _where_ we would define it.
@@ -195,7 +195,7 @@ These different solutions are shown in the remainder of this section.
 
 A first approach is to define the behavior — the functions — in a companion object.
 
->As discussed in the Domain Modeling [Tools section][modeling-tools], a _companion object_ is an `object` that has the same name as a class, and is declared in the same file as the class.
+> As discussed in the Domain Modeling [Tools section][modeling-tools], a _companion object_ is an `object` that has the same name as a class, and is declared in the same file as the class.
 
 With this approach, in addition to the enumeration or case class you also define an equally named companion object that contains the behavior.
 
@@ -284,9 +284,9 @@ val p4 = updateCrustSize(p3, Large)
 If that code seems okay, you’ll typically start sketching another API — such as an API for orders — but since we’re only looking at pizzas right now, we’ll stop thinking about interfaces and create a concrete implementation of this interface.
 
 > Notice that this is usually a two-step process.
-In the first step, you sketch the contract of your API as an *interface*.
-In the second step you create a concrete *implementation* of that interface.
-In some cases you’ll end up creating multiple concrete implementations of the base interface.
+> In the first step, you sketch the contract of your API as an *interface*.
+> In the second step you create a concrete *implementation* of that interface.
+> In some cases you’ll end up creating multiple concrete implementations of the base interface.
 
 
 ### Creating a concrete implementation

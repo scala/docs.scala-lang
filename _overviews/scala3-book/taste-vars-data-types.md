@@ -199,7 +199,7 @@ val quote = """The essence of Scala:
                programming in a typed setting."""
 ```
 
->For more details on string interpolators and multiline strings, see the [“First Look at Types” chapter][first-look].
+> For more details on string interpolators and multiline strings, see the [“First Look at Types” chapter][first-look].
 
 
 

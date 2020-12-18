@@ -26,8 +26,8 @@ Instead, only some of the most commonly-used methods are shown, including:
 
 The following methods work on all of the sequence types, including `List`, `Vector`, `ArrayBuffer`, etc., but these examples use a `List` unless otherwise specified.
 
->As a very important note, none of the methods on `List` mutate the list.
-They all work in a functional style, meaning that they return a new collection with the modified results.
+> As a very important note, none of the methods on `List` mutate the list.
+> They all work in a functional style, meaning that they return a new collection with the modified results.
 
 
 
@@ -402,7 +402,7 @@ scala> a.reduce(_ * _)
 res1: Int = 24
 ```
 
->An important concept to know about `reduce` is that — as its name implies — it’s used to _reduce_ a collection down to a single value.
+> An important concept to know about `reduce` is that — as its name implies — it’s used to _reduce_ a collection down to a single value.
 
 
 
@@ -411,9 +411,9 @@ res1: Int = 24
 There are literally dozens of additional methods on the Scala collections types that will keep you from ever needing to write another `for` loop.
 See the Reference documentation for more details and examples.
 
->As a final note, if you’re using Java code in a Scala project, you can convert Java collections to Scala collections.
-By doing this you can use those collections in `for` expressions, and can also take advantage of Scala’s functional collections methods.
-See the [Interacting with Java][interacting] section for more details.
+> As a final note, if you’re using Java code in a Scala project, you can convert Java collections to Scala collections.
+> By doing this you can use those collections in `for` expressions, and can also take advantage of Scala’s functional collections methods.
+> See the [Interacting with Java][interacting] section for more details.
 
 
 

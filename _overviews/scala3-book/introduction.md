@@ -23,7 +23,7 @@ We should have a link structure on the whole tour here
 {% endcomment %}
 
 > We are still in the process of writing the book.
-You can [help us improve it][contributing]
+> You can [help us improve it][contributing]
 
 [contributing]: {% link scala3/contribute-to-docs.md %}
 [reference]: {{ site.scala3ref }}/overview.html

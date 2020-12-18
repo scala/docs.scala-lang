@@ -15,7 +15,7 @@ In this chapter you’ll see two tools that are commonly used in Scala projects:
 
 We’ll start by showing how to use sbt to build your Scala projects, and then we’ll show how to use sbt and ScalaTest together to test your Scala projects.
 
->If you want to learn about tools to help you migrate your Scala 2 code to Scala 3, see our [Scala 3 Migration Guide](https://scalacenter.github.io/scala-3-migration-guide/).
+> If you want to learn about tools to help you migrate your Scala 2 code to Scala 3, see our [Scala 3 Migration Guide](https://scalacenter.github.io/scala-3-migration-guide/).
 
 
 
@@ -24,7 +24,7 @@ We’ll start by showing how to use sbt to build your Scala projects, and then w
 You can use several different tools to build your Scala projects, including Ant, Maven, Gradle, Mill, and more.
 But a tool named *sbt* was the first build tool that was specifically created for Scala, and these days it’s supported by [Lightbend](https://www.lightbend.com), the company that also maintains [Akka](https://akka.io), the [Play framework](https://www.playframework.com), the [Lagom framework](https://www.lagomframework.com), and more.
 
->To install sbt, see [its download page](https://www.scala-sbt.org/download.html) or our [Getting Started][getting_started] page.
+> To install sbt, see [its download page](https://www.scala-sbt.org/download.html) or our [Getting Started][getting_started] page.
 
 
 
@@ -159,9 +159,9 @@ $ find .
 
 If you see that, you’re in great shape for the next step.
 
->There are other ways to create the files and directories for an sbt project.
-One way is to use the `sbt new` command, [which is documented here on scala-sbt.org](https://www.scala-sbt.org/1.x/docs/Hello.html).
-That approach isn’t shown here because some of the files it creates are more complicated than necessary for an introduction like this.
+> There are other ways to create the files and directories for an sbt project.
+> One way is to use the `sbt new` command, [which is documented here on scala-sbt.org](https://www.scala-sbt.org/1.x/docs/Hello.html).
+> That approach isn’t shown here because some of the files it creates are more complicated than necessary for an introduction like this.
 
 
 ### Creating a first build.sbt file
@@ -308,7 +308,7 @@ libraryDependencies ++= Seq(
 The first three lines of this file are essentially the same as the first example.
 The `libraryDependencies` lines tell sbt to include the dependencies (JAR files) that are needed to include ScalaTest.
 
->The ScalaTest documentation has always been good, and you can always find the up to date information on what those lines should look like on the [Installing ScalaTest](https://www.scalatest.org/install) page.
+> The ScalaTest documentation has always been good, and you can always find the up to date information on what those lines should look like on the [Installing ScalaTest](https://www.scalatest.org/install) page.
 
 
 ### Create a Scala source code file

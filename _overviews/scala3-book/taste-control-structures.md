@@ -42,8 +42,8 @@ val x = if a < b then a else b
 
 As you’ll see throughout this book, _all_ Scala control structures can be used as expressions.
 
->An expression returns a result, while a statement does not.
-Statements are typically used for their side-effects, such as using `println` to print to the console.
+> An expression returns a result, while a statement does not.
+> Statements are typically used for their side-effects, such as using `println` to print to the console.
 
 
 

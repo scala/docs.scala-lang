@@ -16,7 +16,7 @@ When you want to write parallel and concurrent applications in Scala, you _can_ 
 
 Here’s a description of the Scala `Future` from its Scaladoc:
 
->“A `Future` represents a value which may or may not _currently_ be available, but will be available at some point, or an exception if that value could not be made available.”
+> “A `Future` represents a value which may or may not _currently_ be available, but will be available at some point, or an exception if that value could not be made available.”
 
 To demonstrate what that means, let’s first look at single-threaded programming.
 In the single-threaded world you bind the result of a method call to a variable like this:
@@ -53,9 +53,9 @@ Conversely, if `aShortRunningTask` is created as a `Future`, the `println` state
 In this chapter you’ll see how to use futures, including how to run multiple futures in parallel and combine their results in a `for` expression.
 You’ll also see examples of methods that are used to handle the value in a future once it returns.
 
->When you think about futures, it’s important to know that they’re intended as a one-shot, “Handle this relatively slow computation on some other thread, and call me back with a result when you’re done” construct.
-As a point of contrast, [Akka](https://akka.io) actors are intended to run for a long time and respond to many requests during their lifetime.
-While an actor may live forever, a future is intended to be run only once.
+> When you think about futures, it’s important to know that they’re intended as a one-shot, “Handle this relatively slow computation on some other thread, and call me back with a result when you’re done” construct.
+> As a point of contrast, [Akka](https://akka.io) actors are intended to run for a long time and respond to many requests during their lifetime.
+> While an actor may live forever, a future is intended to be run only once.
 
 
 

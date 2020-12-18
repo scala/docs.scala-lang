@@ -88,8 +88,8 @@ println(multiply(2,2))   // 4
 {% comment %}
 NOTE: I don’t know if this is worth keeping, but I’m leaving it here as a comment for now.
 
->You may read that objects are used to *reify* traits into modules.
-*Reify* means, “to take an abstract concept and turn it into something concrete.” This is what happens in these examples, but “implement” is a more familiar word for most people than “reify.”
+> You may read that objects are used to *reify* traits into modules.
+> *Reify* means, “to take an abstract concept and turn it into something concrete.” This is what happens in these examples, but “implement” is a more familiar word for most people than “reify.”
 {% endcomment %}
 
 

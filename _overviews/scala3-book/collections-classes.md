@@ -63,7 +63,7 @@ As shown, `Map` and `Set` come in both immutable and mutable versions.
 
 The basics of each type are demonstrated in the following sections.
 
->In Scala, a _buffer_ — such as `ArrayBuffer` and `ListBuffer` — is a sequence that can grow and shrink.
+> In Scala, a _buffer_ — such as `ArrayBuffer` and `ListBuffer` — is a sequence that can grow and shrink.
 
 
 ### A note about immutable collections
@@ -90,9 +90,9 @@ The recommended, general-purpose, “go to” sequential collections for the com
 For example, if you need an immutable, indexed collection, in general you should use a `Vector`.
 Conversely, if you need a mutable, indexed collection, use an `ArrayBuffer`.
 
->`List` and `Vector` are often used when writing code in a functional style.
-`ArrayBuffer` is commonly used when writing code in a mutable style.
-`ListBuffer` is used when you’re mixing styles, such as building a list.
+> `List` and `Vector` are often used when writing code in a functional style.
+> `ArrayBuffer` is commonly used when writing code in a mutable style.
+> `ListBuffer` is used when you’re mixing styles, such as building a list.
 
 The next several sections briefly demonstrate the `List`, `Vector`, and `ArrayBuffer` types.
 
@@ -149,7 +149,7 @@ val c = List(-1, 0) ::: a   // List(-1, 0, 1, 2, 3)
 You can also _append_ elements to a `List`, but because `List` is a singly-linked list, you should generally only prepend elements to it;
 appending elements to it is a relatively slow operation, especially when you work with large sequences.
 
->Tip: If you want to prepend and append elements to an immutable sequence, use `Vector` instead.
+> Tip: If you want to prepend and append elements to an immutable sequence, use `Vector` instead.
 
 Because `List` is a linked-list, you shouldn’t try to access the elements of large lists by their index value.
 For instance, if you have a `List` with one million elements in it, accessing an element like `myList(999_999)` will take a relatively long time, because that request has to traverse all those elements.
@@ -297,7 +297,7 @@ val c = Vector(-1, 0) ++: a   // Vector(-1, 0, 1, 2, 3)
 
 In addition to fast random access and updates, `Vector` provides fast append and prepend times, so you can use these features as desired.
 
->See the [Collections Performance Characteristics](https://docs.scala-lang.org/overviews/collections-2.13/performance-characteristics.html) for performance details about `Vector` and other collections.
+> See the [Collections Performance Characteristics](https://docs.scala-lang.org/overviews/collections-2.13/performance-characteristics.html) for performance details about `Vector` and other collections.
 
 Finally, you use a `Vector` in a `for` loop just like a `List`, `ArrayBuffer`, or any other sequence:
 
