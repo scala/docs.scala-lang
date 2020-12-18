@@ -105,17 +105,17 @@ In some cases, we will not know statically the type within the `Type` and will n
 When do we need this extra `Type` parameter?
 * When a type is abstract and it is used in a level that is larger than the current level.
 
-When you add a `Type` contextual parameter to a method you will either get it from another context parameter or implicitly with a call to `Type.apply`.
+When you add a `Type` contextual parameter to a method you will either get it from another context parameter or implicitly with a call to `Type.of`.
 ```scala
 evalAndUse(Expr(3))
 // is equivalent to
-evalAndUse[Int](Expr(3))(using Type[Int])
+evalAndUse[Int](Expr(3))(using Type.of[Int])
 ```
-As you may have guessed, not every type is can be used in this `Type[..]` out of the box.
+As you may have guessed, not every type is can be used in this `Type.of[..]` out of the box.
 We cannot recover abstract types that have already been erased.
 ```scala
 def evalAndUse[T](x: Expr[T])(using Quotes) =
-  given Type[T] = Type[T] // error
+  given Type[T] = Type.of[T] // error
   '{
     val x2: T = $x
     ... // use x2
@@ -129,32 +129,32 @@ Good code should only add `Type` to the context parameters and never use them ex
 Explicit use is useful while debugging at the cost of conciseness and clarity.
 
 
-## Liftables
-The `Expr.apply` method uses intances of `Liftable` to perform the lifting.
+## ToExpr
+The `Expr.apply` method uses intances of `ToExpr` to generate an expression that will create a copy of the value.
 ```scala
 object Expr:
-  def apply[T](x: T)(using Quotes, Liftable[T]): Expr[T] =
-    summon[Liftable[T]].toExpr(x)
+  def apply[T](x: T)(using Quotes, ToExpr[T]): Expr[T] =
+    summon[ToExpr[T]].apply(x)
 ```
 
-`Liftable` is defined as follows:
+`ToExpr` is defined as follows:
 ```scala
-trait Liftable[T]:
-  def toExpr(x: T): Quotes ?=> Expr[T]
+trait ToExpr[T]:
+  def apply(x: T)(using Quotes): Expr[T]
 ```
 
-The `toExpr` method will take a value `T` and generate code that will construct a copy of this value at runtime.
+The `ToExpr.apply` method will take a value `T` and generate code that will construct a copy of this value at runtime.
 
-We can define our own `Liftable`s like:
+We can define our own `ToExpr`s like:
 ```scala
-given Liftable[Boolean] = new Liftable[Boolean] {
-  def toExpr(x: Boolean) =
+given ToExpr[Boolean] with {
+  def apply(x: Boolean)(using Quotes) =
     if x then '{true}
     else '{false}
 }
 
-given Liftable[StringContext] = new Liftable[StringContext] {
-  def toExpr(x: StringContext) =
+given ToExpr[StringContext] with {
+  def apply(x: StringContext)(using Quotes) =
     val parts = Varargs(stringContext.parts.map(Expr(_)))
     '{ StringContext($parts: _*) }
 }
@@ -251,45 +251,45 @@ case ...
 
 *Coming soon*
 
-## Unliftables
+## FromExpr
 
-The `Expr.unlift`, `Expr.unlift.orError` `Unlifted.unapply` method uses intances of `Unliftable` to perform the unlifting.
+The `Expr.value`, `Expr.valueOrError` `Expr.unapply` method uses intances of `FromExpr` to to extract the value if possible.
 ```scala
 extension [T](expr: Expr[T]):
-  def unlift(using Quotes)(using unlift: Unliftable[T]): Option[T] =
-    unlift(expr)
+  def value(using Quotes)(using fromExpr: FromExpr[T]): Option[T] =
+    fromExpr.unapply(expr)
 
-  def unliftOrError(using Quotes)(using unlift: Unliftable[T]): T =
-    unlift(expr).getOrElse(eport.throwError("...", expr))
+  def valueOrError(using Quotes)(using fromExpr: FromExpr[T]): T =
+    fromExpr.unapply(expr).getOrElse(eport.throwError("...", expr))
 end extension
 
-object Unlifted:
-  def unapply[T](expr: Expr[T])(using Quotes)(using unlift: Unliftable[T]): Option[T] =
-    unlift(expr)
+object Expr:
+  def unapply[T](expr: Expr[T])(using Quotes)(using fromExpr: FromExpr[T]): Option[T] =
+    fromExpr.unapply(expr)
 ```
 
-`Unliftable` is defined as follows:
+`FromExpr` is defined as follows:
 ```scala
-trait Unliftable[T]:
-  def fromExpr(x: Expr[T])(using Quotes): Option[T]
+trait FromExpr[T]:
+  def unapply(x: Expr[T])(using Quotes): Option[T]
 ```
 
-The `toExpr` method will take a value `T` and generate code that will construct a copy of this value at runtime.
+The `FromExpr.unapply` method will take a value `T` and generate code that will construct a copy of this value at runtime.
 
-We can define our own `Uniftable`s like:
+We can define our own `FromExpr`s like:
 ```scala
-given Unliftable[Boolean] = new Unliftable[Boolean] {
-  def fromExpr(x: Expr[Boolean])(using Quotes): Option[Boolean] =
+given FromExpr[Boolean] with {
+  def unapply(x: Expr[Boolean])(using Quotes): Option[Boolean] =
     x match
       case '{ true } => Some(true)
       case '{ false } => Some(false)
       case _ => None
 }
 
-given Unliftable[StringContext] = new Unliftable[StringContext] {
-  def fromExpr(x: Expr[StringContext])(using Quotes): Option[StringContext] = x match {
-    case '{ new StringContext(${Varargs(Unlifted(args))}: _*) } => Some(StringContext(args: _*))
-    case '{     StringContext(${Varargs(Unlifted(args))}: _*) } => Some(StringContext(args: _*))
+given FromExpr[StringContext] with {
+  def unapply(x: Expr[StringContext])(using Quotes): Option[StringContext] = x match {
+    case '{ new StringContext(${Varargs(Exprs(args))}: _*) } => Some(StringContext(args: _*))
+    case '{     StringContext(${Varargs(Exprs(args))}: _*) } => Some(StringContext(args: _*))
     case _ => None
   }
 }
@@ -297,7 +297,7 @@ given Unliftable[StringContext] = new Unliftable[StringContext] {
 Note that we handled two cases for the `StringContext`.
 As it is a `case class` it can be created with the `new StringContext` or with the `StringContext.apply` in the companion object.
 We also used the `Varargs` extractor to match the arguments of type `Expr[Seq[String]]` into a `Seq[Expr[String]]`.
-Then we used the `Unlifted` to match known constants in the `Seq[Expr[String]]` to get a `Seq[String]`.
+Then we used the `Exprs` to match known constants in the `Seq[Expr[String]]` to get a `Seq[String]`.
 
 
 ## The Quotes

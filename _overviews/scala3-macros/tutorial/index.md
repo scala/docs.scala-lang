@@ -26,7 +26,7 @@ abstractions and offers more fine-grained control.
 
   - Macros can also be defined in terms of a more _low-level_ API of [TASTy Reflection](tasty-reflection), that allows detailed inspection of programs.
 
-> The tutorial uses the API of Scala 3.0.0-M2. The API had many small changes in this revision.
+> The tutorial uses the API of Scala 3.0.0-M3. The API had many small changes in this revision.
 
 > 🚧 We are still in the process of writing the tutorial. You can [help us improve it][contributing] 🚧
 

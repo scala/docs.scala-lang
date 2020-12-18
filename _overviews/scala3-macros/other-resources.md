@@ -22,7 +22,6 @@ num: 9
 * [Shapeless 3](https://github.com/dotty-staging/shapeless/tree/shapeless-3)
 * *More Coming soon*
 
-
 [contributing]: contributing
 [best-practices]: best-practices
 [compiletime]: tutorial/compiletime
@@ -33,4 +32,4 @@ num: 9
 [migration-status]: https://scalacenter.github.io/scala-3-migration-guide/docs/macros/migration-status.html
 [quotes]: tutorial/quotes
 [references]: references
-[tasty]: tutorial/tasty-reflection
+[tasty]: tutorial/reflection

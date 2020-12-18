@@ -13,7 +13,7 @@ All quotes containing a value of a primitive type is optimised to an `Expr.apply
 Choose one in your project and stick with a single notation to avoid confusion.
 
 ## How do I get a value out of an `Expr`?
-If the expression represents a value, you can use `.unlift`, `.unliftOrError` or `Unlifted.unapply`
+If the expression represents a value, you can use `.value`, `.valueOrError` or `Expr.unapply`
 
 ## How can I get the precise type of an `Expr`?
 We can get the precise type (`Type`) of an `Expr` using the following pattern match:

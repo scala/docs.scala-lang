@@ -126,7 +126,7 @@ If you want to learn more about meta programming in Scala 3, we invite you to ta
 [meta-inline]: {% link _overviews/scala3-macros/tutorial/inline.md %}
 [meta-compiletime]: {% link _overviews/scala3-macros/tutorial/compiletime.md %}
 [meta-quotes]: {% link _overviews/scala3-macros/tutorial/quotes.md %}
-[meta-reflection]: {% link _overviews/scala3-macros/tutorial/tasty-reflection.md %}
+[meta-reflection]: {% link _overviews/scala3-macros/tutorial/reflection.md %}
 
 [oo-explicit-null]: {{ site.scala3ref }}/other-new-features/explicit-nulls.html
 [oo-safe-init]: {{ site.scala3ref }}/other-new-features/safe-initialization.html

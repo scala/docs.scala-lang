@@ -81,5 +81,5 @@ Summon all provides a way to summon multiple values at the same time from a tupl
 [migration-status]: https://scalacenter.github.io/scala-3-migration-guide/docs/macros/migration-status.html
 [quotes]: quotes
 [references]: ../other-resources
-[tasty]: tasty-reflection
+[tasty]: reflection
 [compiletime-api]: https://dotty.epfl.ch/api/scala/compiletime/index.html
