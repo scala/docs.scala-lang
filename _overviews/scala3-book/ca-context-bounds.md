@@ -3,7 +3,7 @@ title: Context Bounds
 type: section
 description: This page demonstrates Context Bounds in Scala 3.
 num: 61
-previous-page: ca-given-using-clauses
+previous-page: types-type-classes
 next-page: ca-given-imports
 ---
 

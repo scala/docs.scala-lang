@@ -2,9 +2,9 @@
 title: Type Classes
 type: section
 description: This section introduces type classes in Scala 3.
-num: 53
-previous-page: types-adts-gadts
-next-page: types-variance
+num: 60
+previous-page: ca-given-using-clauses
+next-page: ca-context-bounds
 ---
 
 A _type class_ is an abstract, parameterized type that lets you add new behavior to any closed data type without using sub-typing. If you are coming from Java, you can think of type classes as something like [`java.util.Comparator[T]`][comparator].

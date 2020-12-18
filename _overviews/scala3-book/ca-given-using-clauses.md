@@ -2,9 +2,9 @@
 title: Given Instances and Using Clauses
 type: section
 description: This page demonstrates how to use 'given' instances and 'using' clauses in Scala 3.
-num: 60
+num: 59
 previous-page: ca-contextual-abstractions-intro
-next-page: ca-context-bounds
+next-page: types-type-classes
 ---
 
 Scala 3 offers two important feature for contextual abstraction:
