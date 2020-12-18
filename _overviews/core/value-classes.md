@@ -141,9 +141,9 @@ Full details on the implementation of value classes and their limitations may be
 A value class ...
 
 1. ... must have only a primary constructor with exactly one public, val parameter whose type is not a user-defined value class. (From Scala 2.11.0, the parameter may be non-public.)
-2. ... may not have specialized type parameters.
+2. ... may not have `@specialized` type parameters.
 3. ... may not have nested or local classes, traits, or objects
-4. ... may not define a equals or hashCode method.
+4. ... may not define concrete `equals` or `hashCode` methods.
 5. ... must be a top-level class or a member of a statically accessible object
 6. ... can only have defs as members.  In particular, it cannot have lazy vals, vars, or vals as members.
 7. ... cannot be extended by another class.
