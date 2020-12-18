@@ -8,7 +8,7 @@ next-page: scala-tools
 ---
 
 
-When you want to write parallel and concurrent applications in Scala, you *can* use the native Java `Thread` — but the Scala [Future](https://www.scala-lang.org/api/current/scala/concurrent/Future$.html) offers a more high level and idiomatic approach so it’s preferred, and covered in this chapter.
+When you want to write parallel and concurrent applications in Scala, you _can_ use the native Java `Thread` — but the Scala [Future](https://www.scala-lang.org/api/current/scala/concurrent/Future$.html) offers a more high level and idiomatic approach so it’s preferred, and covered in this chapter.
 
 
 
@@ -16,16 +16,16 @@ When you want to write parallel and concurrent applications in Scala, you *can* 
 
 Here’s a description of the Scala `Future` from its Scaladoc:
 
->“A `Future` represents a value which may or may not *currently* be available, but will be available at some point, or an exception if that value could not be made available.” 
+>“A `Future` represents a value which may or may not _currently_ be available, but will be available at some point, or an exception if that value could not be made available.”
 
-To help demonstrate what that means, let’s first look at single-threaded programming. In the single-threaded world you bind the result of a method call to a variable like this:
+To demonstrate what that means, let’s first look at single-threaded programming. In the single-threaded world you bind the result of a method call to a variable like this:
 
 ```scala
 def aShortRunningTask(): Int = 42
 val x = aShortRunningTask()
 ```
 
-In this code, the value `42` is immediately bound to the variable `x`.
+In this code, the value `42` is immediately bound to `x`.
 
 When you’re working with a `Future`, the assignment process looks similar:
 
@@ -34,11 +34,23 @@ def aLongRunningTask(): Future[Int] = ???
 val x = aLongRunningTask()
 ```
 
-The main difference in this case is that because `aLongRunningTask` takes an indeterminate amount of time to return, the value in `x` may or may not be *currently* available, but it will be available at some point — in the future.
+But the main difference in this case is that because `aLongRunningTask` takes an indeterminate amount of time to return, the value in `x` may or may not be _currently_ available, but it will be available at some point -- in the future.
 
-In this chapter you’ll see how to use futures, including how to run multiple futures in parallel and combine their results in a `for` expression. You’ll also see other methods that are used to handle the value in a future once it returns.
+Another way to look at this is in terms of blocking. In this single-threaded example, the `println` statement isn’t printed until `aShortRunningTask` completes:
 
->An important point to know about futures is that they’re intended as a one-shot, “Handle this relatively slow computation on some other thread, and call me back with a result when you’re done” construct. As a point of contrast, [Akka](https://akka.io) actors are intended to run for a long time and respond to many requests during their lifetime. While an actor may live forever, a future is intended to be run only once.
+```scala
+def aShortRunningTask(): Int =
+  Thread.sleep(500)
+  42
+val x = aShortRunningTask()
+println("Here")
+```
+
+Conversely, if `aShortRunningTask` is created as a `Future`, the `println` statement is printed almost immediately because `aShortRunningTask` is spawned off on some other thread -- it doesn’t block.
+
+In this chapter you’ll see how to use futures, including how to run multiple futures in parallel and combine their results in a `for` expression. You’ll also see examples of methods that are used to handle the value in a future once it returns.
+
+>When you think about futures, it’s important to know that they’re intended as a one-shot, “Handle this relatively slow computation on some other thread, and call me back with a result when you’re done” construct. As a point of contrast, [Akka](https://akka.io) actors are intended to run for a long time and respond to many requests during their lifetime. While an actor may live forever, a future is intended to be run only once.
 
 
 
@@ -173,7 +185,7 @@ val startTime = System.currentTimeMillis
 def delta() = System.currentTimeMillis - startTime
 def sleep(millis: Long) = Thread.sleep(millis)
 
-@main def multipleFutures1 = 
+@main def multipleFutures1 =
 
   println(s"creating the futures:   ${delta()}")
 
@@ -183,7 +195,7 @@ def sleep(millis: Long) = Thread.sleep(millis)
   val f3 = Future { sleep(400); 3 }   // eventually returns 3
 
   // (2) run them simultaneously in a `for` expression
-  val result = 
+  val result =
     for
       r1 <- f1
       r2 <- f2
@@ -197,7 +209,7 @@ def sleep(millis: Long) = Thread.sleep(millis)
     case Success(x) =>
       println(s"in the Success case: ${delta()}")
       println(s"result = $x")
-    case Failure(e) => 
+    case Failure(e) =>
       e.printStackTrace
   }
 
@@ -237,7 +249,8 @@ def slowlyDouble(x: Int, delay: Long): Future[Int] = Future {
 As with the previous examples, just assign the result of the method call to a new variable. Then when you check the result right away you’ll see that it’s not completed, but after the delay time the future will have a result:
 
 ````
-scala> val f = slowlyDouble(2, 5_000L)                                       val f: concurrent.Future[Int] = Future(<not completed>)
+scala> val f = slowlyDouble(2, 5_000L)
+val f: concurrent.Future[Int] = Future(<not completed>)
 
 scala> f
 val res0: concurrent.Future[Int] = Future(<not completed>)
@@ -261,8 +274,7 @@ Hopefully those examples give you an idea of how Scala futures work. To summariz
 - The value inside a `Future` is always an instance of one of the `Try` types: `Success` or `Failure`
 - If you’re using multiple futures to yield a single result, combine them in a `for` expression
 
-Also, as you saw with the `import` statements in these examples, the Scala `Future` depends on an `ExecutionContext`. This relationship, and many more details about futures, are explained in the Reference documentation.
+Also, as you saw with the `import` statements in these examples, the Scala `Future` depends on an `ExecutionContext`.
 
-
-
+For more details about futures, see [Futures and Promises](https://docs.scala-lang.org/overviews/core/futures.html), an article that discusses futures, promises, and execution contexts. It also provides a discussion of how a `for` expression is translated into a `flatMap` operation.
 
