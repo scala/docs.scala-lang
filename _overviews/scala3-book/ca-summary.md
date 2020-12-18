@@ -24,10 +24,7 @@ A few more advanced topics aren’t covered here, including:
 - By-Name Context Parameters
 - Relationship with Scala 2 Implicits
 
-Those topics are discussed in detail in the Reference documentation.
+Those topics are discussed in detail in the [Reference documentation][ref].
 
 
-
-
-
-
+[ref]: {{ site.scala3ref }}/contextual/motivation.html

@@ -1,5 +1,5 @@
 ---
-title: Contextual Abstractions
+title: Context Bounds
 type: section
 description: This page demonstrates Context Bounds in Scala 3.
 num: 61

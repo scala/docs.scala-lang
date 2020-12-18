@@ -36,7 +36,7 @@ val c = Cat("Morris")
 d == c  // false, but it compiles
 ```
 
-But with Scala 3 you can disable such comparisons. By (a) importing *scala.language.strictEquality* or (b) using the `-language:strictEquality` compiler flag, this comparison no longer compiles:
+But with Scala 3 you can disable such comparisons. By (a) importing `scala.language.strictEquality` or (b) using the `-language:strictEquality` compiler flag, this comparison no longer compiles:
 
 ```scala
 import scala.language.strictEquality
@@ -47,7 +47,7 @@ println(rover == fido)   // compiler error
 
 // compiler error message:
 // Values of types Dog and Dog cannot be compared with == or !=
-````
+```
 
 
 ## Enabling comparisons
@@ -184,22 +184,7 @@ println(pBook == aBook)   // false
 
 Currently the `PrintedBook` book doesn’t have an `equals` method, so the second comparison returns `false`. To enable that comparison, just override the `equals` method in `PrintedBook`.
 
-
-## Notes and details
-
-{% comment %}
-Is this section too much detail for an overview?
-{% endcomment %}
+You can find additional information on [multiversal equality][ref-equal] in the reference documentation.
 
 
-Here are a few more notes and details about Multiversal Equality in Scala 3:
-
-- As mentioned, you can enable multiversal equality for an entire project with the `-language:strictEquality` compiler command line flag
-- The `CanEqual` object has predefined instances that allow for comparisons of some types in the standard library:
-  - The primitive numeric types can all be compared to each other
-  - The primitive numeric types can be compared with subtypes of _java.lang.Number_, and vice-versa
-  - `Boolean` can be compared with _java.lang.Boolean_ (and vice versa)
-  - `Char` can be compared with _java.lang.Character_ (and vice versa)
-  - Two sequences of arbitrary subtypes of _scala.collection.Seq_ can be compared with each other if their element types can be compared
-  - Two sets of arbitrary subtypes of _scala.collection.Set_ can be compared with each other if their element types can be compared; the two set types need not be the same
-  - Any subtype of `AnyRef` can be compared with `Null` (and vice versa)
+[ref-equal]: {{ site.scala3ref }}/contextual/multiversal-equality.html

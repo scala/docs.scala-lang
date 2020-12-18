@@ -7,142 +7,85 @@ previous-page: ca-contextual-abstractions-intro
 next-page: ca-context-bounds
 ---
 
+Scala 3 offers two important feature for contextual abstraction:
 
-*Given Instances* let you define terms that can be synthesized by the compiler. They replace “implicit definitions,” which were used in Scala 2. Called “givens,” they’re a single way to define terms that can be synthesized for types.
+- **Using Clauses** allow you to specify parameters that, at the call site, can be omitted by the programmer and should be automatically provided by the context.
+- **Given Instanes** let you define terms that can be used by the Scala compiler to fill in the missing arguments.
 
-*Using Clauses* are a new syntax for using “given” parameters and their arguments. They unambiguously align parameters and arguments, and let you have several `using` clauses in a definition.
+## Using Clauses
+When designing a system, often context information like _configuration_ or settings need to be provided to the different components of your system. One common way to achieve this is by passing the configuration as additional argument to your methods.
 
-Givens have many different applications, and this section demonstrates two use cases:
+In the following example, we define a case class `Config` to model some website configuration and pass it around in the different methods.
+```scala
+case class Config(port: Int, baseUrl: String)
 
-- Eliminating the need to manually specify a repeated parameter
-- Eliminating the need to name one of several possible alternative resources
+def renderWebsite(path: String, c: Config): String =
+    "<html>" + renderWidget(List("cart"), c)  + "</html>"
 
+def renderWidget(items: List[String], c: Config): String = ???
 
-## Eliminate the need to manually specify a repeated parameter
+val config = Config(8080, "docs.scala-lang.org")
+renderWebsite("/home")(config)
+```
+Let us assume that the configuration does not change throughout most of our code base. Passing `c` to each and every method call (like `renderWidget`) becomes very tedious and makes our program more difficult to read, since we need to ignore the `c` argument.
 
-{% comment %}
-REFERENCE: https://www.scala-lang.org/2020/11/06/explicit-term-inference-in-scala-3.html
-{% endcomment %}
+#### Using `using` to mark parameters as contextual
+In Scala 3, we can mark some of the parameters of our methods as _contextual_.
+```scala
+def renderWebsite(path: String)(using c: Config): String =
+    "<html>" + renderWidget(List("cart"))    + "</html>"
+    //                                   ^^^
+    //                   no argument c required anymore
 
-If givens didn’t exist, you’d have to write code like this:
+def renderWidget(items: List[String])(using c: Config): String = ???
+```
+By starting a parameter section with the keyword `using`, we tell the Scala compiler that at the callsite it should automatically find an argument with the correct type. The Scala compiler thus performs **term inference**.
+
+In our call to `renderWidget(List("cart"))` the Scala compiler will see that there is a term of type `Config` in scope (the `c`) and automatically provide it to `renderWidget`. So the program is equivalent to the one above.
+
+In fact, since we do not need to refer to `c` in our implementation of `renderWebsite` anymore, we can even omit it in the signature:
 
 ```scala
-import scala.concurrent._
-
-def factorial(n: Int): Int = ???
-def fibonacci(n: Int): Int = ???
-
-@main def main =
-  val executor: ExecutionContext = ExecutionContext.global
-  val fact100 = Future(factorial(100))(executor)
-  val fibo100 = Future(fibonacci(100))(executor)
+//        no need to come up with a parameter name
+//                             vvvvvvvvvvvvv
+def renderWebsite(path: String)(using Config): String =
+    "<html>" + renderWidget(List("cart")) + "</html>"
 ```
 
-Notice how passing in the `executor` parameter makes the code in the `main` method verbose and repetitive.
+#### Explicitly providing contextual arguments
+We have seen how to _abstract_ over contextual parameters and that the Scala compiler can provide arguments automatically for us. But how can we specify which configuration to use for our call to `renderWebsite`?
 
-With givens in Scala 3, the same code can be written like this:
+Like we specified our parameter section with `using`, we can also explicitly provide contextual arguments with `using:`
 
 ```scala
-@main def main =
-  given executor as ExecutionContext = ExecutionContext.global
-  val fact100 = Future(factorial(100))
-  val fibo100 = Future(fibonacci(100))
+renderWebsite("/home")(using config)
 ```
+Explicitly providing contextual parameters can be useful if we have multiple different values in scope that would make sense and we want to make sure that the correct one is passed to the function.
 
-In this use, `given` contextual parameters simplify the code. The `executor` parameter is still passed into the future’s second parameter group, but it’s passed in *implicitly* by the compiler, rather than *explicitly* (or manually) in your code. Once you know that the second parameter group of `Future` is designed to enable this, there’s no need to see this parameter repeated in the code.
+For all other cases, as we will see in the next Section, there is also another way to bring contextual values into scope.
 
->The second parameter group of `Future` is designed to take an `implicit` parameter in Scala 2, and a `using` parameter in Scala 3.
-
-{% comment %}
-TODO: verify that `executor` is defined to use `using`
-SEE:  https://dotty.epfl.ch/api/scala/concurrent/Future$.html
-      apply[T](body: => T)(executor: ExecutionContext)
-{% endcomment %}
-
-
-
-## Eliminate the need to specify different possible resources
-
-In another uses of givens, imagine that you want to write some code like this, where the `max` function uses `intOrd`, `doubleOrd`, and `listOrd` to determine the maximum of the values it’s given:
+## Givens
+We have seen that we can explicitly pass arguments as contextual parameters by marking the argument section of the _call_ with `using`. However, if there is _a single canonical value_ for a particular type, there is another preferred way to make it available to the Scala compiler: by marking it as `given`.
 
 ```scala
-println(max(2, 3)(using intOrd))
-println(max(2.0, 3.0)(using doubleOrd))
-println(max(Nil, List(1, 2, 3))(using listOrd))
+val config = Config(8080, "docs.scala-lang.org")
+//  this is the type that we want to provide the
+//  canonical value for
+//    vvvvvv
+given Config = config
+//             ^^^^^^
+// this is the value the Scala compiler will infer
+// as argument to contextual parameters of type Config
 ```
+In the above example we specify that whenever a contextual parameter of type `Config` is omitted in the current scope, the compiler should infer `config` as an argument.
 
-Once again this code appears repetitive. It can be cleaner if the second parameter group isn’t used:
+Having defined a given for `Config`, we can simply call `renderWebsite`:
 
 ```scala
-println(max(2, 3))
-println(max(2.0, 3.0))
-println(max(Nil, List(1, 2, 3)))
+renderWebsite("/home")
+//                    ^^^^^
+//   again  no argument
 ```
-
-That requires the compiler to know where to use `intOrd`, `doubleOrd`, and `listOrd`, and thanks to strong typing, Scala 3 can do this work for you, reducing the verbosity of your code.
-
-
-### Defining givens
-
-*Givens* let you write code like this last example. For this use case, the formula is to first define the givens as follows, first defining a base trait, and then specific `given` instances of that trait for each type you want to support:
-
-```scala
-object Orderings:
-
-  // a base trait for the generic type A
-  trait Ord[A]:
-    def compare(x: A, y: A): Int
-    extension (x: A) def < (y: A) = compare(x, y) < 0
-    extension (x: A) def > (y: A) = compare(x, y) > 0
-
-  // three specific implementations for the Int, Double, and
-  // List[A] types:
-
-  given intOrd: Ord[Int] with
-    def compare(x: Int, y: Int) =
-      if (x < y) -1 else if (x > y) +1 else 0
-
-  given doubleOrd: Ord[Double] with
-    def compare(x: Double, y: Double) =
-      if (x < y) -1 else if (x > y) +1 else 0
-
-  given listOrd[A](using ord: Ord[A]): Ord[List[A]] with
-    def compare(xs: List[A], ys: List[A]): Int =
-      // more code here ...
-
-end Orderings
-```
-
-Then you import the givens into your code:
-
-```scala
-import Orderings._
-import Orderings.{ given Ord[?] }
-```
-
-
-### Defining “using” clauses
-
-Then you define your `max` method, *using* a parameter of the `Ord` type in the second parameter group:
-
-```scala
-def max[A](x: A, y: A)(using ord: Ord[A]): A =
-  if ord.compare(x, y) < 0 then y else x
-```
-
-The `using` keyword in the second parameter group is like a magnet that pulls in the correct `given` value when `max` is used: If, for example, (a) `A` is an `Int` and (b) `intOrd` is in scope, then (c) the compiler automatically pulls `intOrd` in at this point.
-
-With that code in place, the final end-user code is written like this:
-
-```scala
-@main def ordMain =
-  println(max(2, 3))
-  println(max(2.0, 3.0))
-  println(max(Nil, List(1, 2, 3)))
-```
-
-Givens have other uses that are explained in other sections of this book, and in the [Reference documentation][reference].
-
-
 
 [reference]: {{ site.scala3ref }}/overview.html
+[blog-post]: /2020/11/06/explicit-term-inference-in-scala-3.html
