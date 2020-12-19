@@ -174,9 +174,7 @@ Other transformation methods include:
 - `recover`
 - `recoverWith`
 
-
-See the `Future` class Scaladoc for a list of additional methods.
-Also, see the Concurrency section in the Reference documentation for more details on how futures work.
+See the [Futures and Promises][futures] page for a discussion of additional methods available to futures.
 
 
 
@@ -303,6 +301,9 @@ To summarize, a few key points about futures are:
 
 Also, as you saw with the `import` statements in these examples, the Scala `Future` depends on an `ExecutionContext`.
 
-For more details about futures, see [Futures and Promises](https://docs.scala-lang.org/overviews/core/futures.html), an article that discusses futures, promises, and execution contexts.
+For more details about futures, see [Futures and Promises][futures], an article that discusses futures, promises, and execution contexts.
 It also provides a discussion of how a `for` expression is translated into a `flatMap` operation.
 
+
+
+[futures]: {% link _overviews/core/futures.md %}

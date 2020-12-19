@@ -357,10 +357,3 @@ System.out.printf("x = %d\n", x);
 ```
 
 
-
-## More information
-
-This section highlights some of the main topics to know when integrating Scala and Java code bases.
-For more details, including a few other topics not covered here, see the _Interacting with Java_ section in the Reference documentation.
-
-

@@ -391,10 +391,4 @@ As mentioned, one of the key design benefits of the “import given” syntax is
 
 
 
-## Summary
-
-While that covers almost all of the features of packing and imports, see the Reference documentation for a few more details and features.
-
-
-
 [contextual]: {% link _overviews/scala3-book/ca-contextual-abstractions-intro.md %}

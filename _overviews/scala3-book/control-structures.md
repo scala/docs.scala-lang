@@ -8,10 +8,6 @@ next-page: domain-modeling-intro
 ---
 
 
-{% comment %}
-- TODO: Should this section show (a) general control structure syntax and (b) syntax rules, such as when `do` is required? I currently assumed this should be in the Reference.
-{% endcomment %}
-
 Scala has the control structures you expect to find in a programming language, including:
 
 - `if`/`then`/`else`
@@ -391,7 +387,6 @@ Otherwise, the catch-all case is represented by the `_` character, and `day` is 
 
 > When writing simple `match` expressions like this, it’s recommended to use the `@switch` annotation on the variable `i`.
 > This annotation provides a compile time warning if the switch can’t be compiled to a `tableswitch` or `lookupswitch`, which are better for performance.
-> See the Reference documentation for more details.
 
 
 ### Using the default value
@@ -539,6 +534,12 @@ def pattern(x: Matchable): String = x match
   // the default wildcard pattern
   case _ => "Unknown"
 ```
+
+{% comment %}
+TODO: Add in the new Scala 3 syntax shown on this page:
+http://dotty.epfl.ch/docs/reference/changed-features/match-syntax.html
+{% endcomment %}
+
 
 
 ## try/catch/finally

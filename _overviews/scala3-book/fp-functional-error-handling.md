@@ -235,7 +235,7 @@ makeInt(x) match
 ```
 
 > There are several other ways to handle `Option` values.
-> See the Reference documentation for more details.
+> See the reference documentation for more details.
 {% endcomment %}
 
 
@@ -310,8 +310,6 @@ While this section focuses on the `Option` classes, Scala has a few other altern
 
 For example, a trio of classes known as `Try`/`Success`/`Failure` work in the same manner, but (a) you primarily use these classes when your code can throw exceptions, and (b) you want to use the `Failure` class because it gives you access to the exception message.
 For example, these `Try` classes are commonly used when writing methods that interact with files, databases, and internet services, as those functions can easily throw exceptions.
-
-You can learn more about the `Try` classes and the similar `Either`/`Right`/`Left` classes in the Reference documentation.
 
 
 

@@ -169,7 +169,11 @@ Similarly, when you use `:+` you know the list needs to be on the left:
 a :+ 4
 ```
 
-As explained in the Reference documentation, there are more technical ways to think about this, but this can be a helpful way to remember the method names.
+There are more technical ways to think about this, but this can be a helpful way to remember the method names.
+
+{% comment %}
+LATER: Add a discussion of `:` on method names, right-associativity, and infix operators.
+{% endcomment %}
 
 Also, a good thing about these symbolic method names is that they’re consistent.
 The same method names are used with other immutable sequences, such as `Seq` and `Vector`.
@@ -247,7 +251,7 @@ scala> x.take(1).foreach(println)
 1
 ````
 
-For more information on the uses, benefits, and drawbacks of strict and non-strict (lazy) collections, see the Reference documentation.
+For more information on the uses, benefits, and drawbacks of strict and non-strict (lazy) collections, see the “strict” and “non-strict” discussions on the [The Architecture of Scala 2.13’s Collections][strict] page.
 
 <!--
 Given that definition, collections can also be thought of in terms of being strict or lazy. In a _strict_ collection, memory for the elements is allocated immediately, and all of its elements are immediately evaluated when a transformer method is invoked. In a _lazy_ collection, memory for the elements is not allocated immediately, and transformer methods do not construct new elements until they are demanded.
@@ -388,8 +392,6 @@ val a = ArrayBuffer.range(1,5)        // ArrayBuffer(1, 2, 3, 4)
 a(2) = 50                             // ArrayBuffer(1, 2, 50, 4)
 a.update(0, 10)                       // ArrayBuffer(10, 2, 50, 4)
 ```
-
-See the Reference documentation for more `ArrayBuffer` information and examples.
 
 
 
@@ -614,4 +616,4 @@ When you need more information about specialized collections, see the following 
 
 
 
-
+[strict]: {% link _overviews/core/architecture-of-scala-213-collections.md %}

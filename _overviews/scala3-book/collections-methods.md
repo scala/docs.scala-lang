@@ -246,7 +246,7 @@ emptyList.headOption          // Option[Int] = None
 ```
 
 As shown, it doesn’t throw an exception, it simply returns the type `Option` that has the value `None`.
-You can learn more about this programming style in the Reference documentation.
+You can learn more about this programming style in the [Functional Programming][fp-intro] chapter.
 
 
 
@@ -408,8 +408,7 @@ res1: Int = 24
 
 ## Even more
 
-There are literally dozens of additional methods on the Scala collections types that will keep you from ever needing to write another `for` loop.
-See the Reference documentation for more details and examples.
+There are literally dozens of additional methods on the Scala collections types that will keep you from ever needing to write another `for` loop. See [Mutable and Immutable Collections][mut-immut-colls] and [The Architecture of Scala Collections][architecture] for many more details on the Scala collections.
 
 > As a final note, if you’re using Java code in a Scala project, you can convert Java collections to Scala collections.
 > By doing this you can use those collections in `for` expressions, and can also take advantage of Scala’s functional collections methods.
@@ -419,4 +418,7 @@ See the Reference documentation for more details and examples.
 
 [interacting]: {% link _overviews/scala3-book/interacting-with-java.md %}
 [lambdas]: {% link _overviews/scala3-book/fun-anonymous-functions.md %}
+[fp-intro]: {% link _overviews/scala3-book/fp-intro.md %}
+[mut-immut-colls]: {% link _overviews/collections-2.13/overview.md %}
+[architecture]: {% link _overviews/core/architecture-of-scala-213-collections.md %}
 
