@@ -1,5 +1,5 @@
 ---
-title: Methods Summary
+title: Summary
 type: section
 description: This section summarizes the previous sections on Scala 3 methods.
 num: 26

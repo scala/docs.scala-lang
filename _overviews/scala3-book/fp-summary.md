@@ -1,5 +1,5 @@
 ---
-title: FP Summary
+title: Summary
 type: section
 description: This section summarizes the previous functional programming sections.
 num: 46

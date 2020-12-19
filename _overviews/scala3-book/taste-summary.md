@@ -1,5 +1,5 @@
 ---
-title: Tour Summary
+title: Summary
 type: section
 description: This page provides a summary of the previous 'Taste of Scala' sections.
 num: 16
