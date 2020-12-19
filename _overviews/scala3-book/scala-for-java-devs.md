@@ -9,34 +9,13 @@ next-page: scala-for-javascript-devs
 
 <style>
 .content-primary td code {
-  font-size: 13px;
+/*  font-size: 13px;*/
   margin: 0;
   padding: 0;
   background: none;
 }
-.content-primary table tr:first-child,
-.content-primary table tr:last-child
-{
-  border: none;
-  border-bottom: none;
-}
-.content-primary table,
-.content-primary table th,
-.content-primary table td {
-  border: none;
-}
-.content-primary table td {
-  width: 45%;
-  background-color: white;
-}
-.content-primary table td.table-desc-row {
-  text-align: center;
-  padding-top: 0.6em;
-}
-.content-primary table th {
-  text-align: center;
-}
 </style>
+
 
 
 This page provides a comparison between the Java and Scala programming languages by sharing side-by-sde examples of each language.
@@ -121,63 +100,78 @@ Given that introduction, the following sections provide side-by-side comparisons
 
 ## OOP style classes and methods
 
-This section provides comparisons of features related to OOP-style classes and methods.
+This section provides comparisons of features related to OOP-style classes and methods. First, these are comments in the two languages:
 
 <table>
   <tbody>
     <tr>
-      <th>Java</th>
-      <th>Scala</th>
-    </tr>
-
-    <tr>
-      <td colspan="2" class="table-desc-row">Comments</td>
+      <th>JAVA</th>
     </tr>
     <tr>
-      <td valign="top"><code>//
-        <br>/* ... */
-        <br>/** ... */</code>
-      </td>
-      <td valign="top"><code>//
+      <td><code>//
         <br>/* ... */
         <br>/** ... */</code>
       </td>
     </tr>
-
     <tr>
-      <td colspan="2" class="table-desc-row">OOP style class, primary constructor</td>
+      <th>SCALA</th>
     </tr>
     <tr>
-      <td valign="top"><code>class Person {
-        <br>&nbsp; private String firstName;
-        <br>&nbsp; private String lastName;
-        <br>&nbsp; private int age;
-        <br>&nbsp; public Person(
-        <br>&nbsp;&nbsp;&nbsp; String firstName, 
-        <br>&nbsp;&nbsp;&nbsp; String lastName, int age
-        <br>&nbsp; ) {
-        <br>&nbsp;&nbsp;&nbsp; this.firstName = firstName;
-        <br>&nbsp;&nbsp;&nbsp; this.lastName = lastName;
-        <br>&nbsp;&nbsp;&nbsp; this.age = age;
-        <br>&nbsp; }
-        <br>&nbsp; override String toString() {
-        <br>&nbsp;&nbsp;&nbsp; return String.format("%s %s is %d years old.", firstName, lastName, age);
-        <br>&nbsp; }
-        <br>}</code></td>
-      <td valign="top"><code>class Person (
-        <br>&nbsp; var firstName: String,
-        <br>&nbsp; var lastName: String,
-        <br>&nbsp; var age: Int
-        <br>):&nbsp;&nbsp; 
-        <br>&nbsp; override def toString = s"$firstName $lastName is $age years old."</code>
+      <td><code>//
+        <br>/* ... */
+        <br>/** ... */</code>
       </td>
     </tr>
+  </tbody>
+</table>
 
+<br>Next, OOP style class, primary constructor:
+
+<table>
+  <tbody>
+    <tr><th>JAVA</th></tr>
     <tr>
-      <td colspan="2" class="table-desc-row">Auxiliary constructors</td>
+      <td>
+        <code>class Person {
+          <br>&nbsp; private String firstName;
+          <br>&nbsp; private String lastName;
+          <br>&nbsp; private int age;
+          <br>&nbsp; public Person(
+          <br>&nbsp;&nbsp;&nbsp; String firstName, 
+          <br>&nbsp;&nbsp;&nbsp; String lastName, int age
+          <br>&nbsp; ) {
+          <br>&nbsp;&nbsp;&nbsp; this.firstName = firstName;
+          <br>&nbsp;&nbsp;&nbsp; this.lastName = lastName;
+          <br>&nbsp;&nbsp;&nbsp; this.age = age;
+          <br>&nbsp; }
+          <br>&nbsp; override String toString() {
+          <br>&nbsp;&nbsp;&nbsp; return String.format("%s %s is %d years old.", firstName, lastName, age);
+          <br>&nbsp; }
+        <br>}</code>
+      </td>
     </tr>
+    <tr><th>SCALA</th></tr>
     <tr>
-      <td valign="top">
+      <td>
+        <code>class Person (
+          <br>&nbsp; var firstName: String,
+          <br>&nbsp; var lastName: String,
+          <br>&nbsp; var age: Int
+          <br>):&nbsp;&nbsp; 
+          <br>&nbsp; override def toString = s"$firstName $lastName is $age years old."
+        </code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<br>Auxiliary constructors:
+
+<table>
+  <tbody>
+    <tr><th>JAVA</th></tr>
+    <tr>
+      <td>
         <code>public class Person {
         <br>&nbsp; private String firstName;
         <br>&nbsp; private String lastName;
@@ -218,7 +212,10 @@ This section provides comparisons of features related to OOP-style classes and m
         <br>
         <br>}</code>
       </td>
-      <td valign="top">
+    </tr>
+    <tr><th>SCALA</th></tr>
+    <tr>
+      <td>
         <code>class Person (
         <br>&nbsp; var firstName: String,
         <br>&nbsp; var lastName: String,
@@ -241,114 +238,190 @@ This section provides comparisons of features related to OOP-style classes and m
         <br>end Person</code>
       </td>
     </tr>
+  </tbody>
+</table>
 
-    <tr>
-      <td colspan="2" class="table-desc-row">Classes closed by default<br>(“Plan for inheritance or else forbid it”)</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>final class Person</code></td>
-      <td valign="top"><code>class Person</code></td>
-    </tr>
 
-    <tr>
-      <td colspan="2" class="table-desc-row">Create a class that’s open for extension</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>class Person</code></td>
-      <td valign="top"><code>open class Person</code></td>
-    </tr>
+<br>Classes closed by default (“Plan for inheritance or else forbid it”):
 
+<table>
+  <tbody>
+    <tr><th>JAVA</th></tr>
     <tr>
-      <td colspan="2" class="table-desc-row">Method, one line</td>
+      <td><code>final class Person</code></td>
     </tr>
+    <tr><th>SCALA</th></tr>
     <tr>
-      <td valign="top">
+      <td><code>class Person</code></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<br>Create a class that’s open for extension:
+
+<table>
+  <tbody>
+    <tr><th>JAVA</th></tr>
+    <tr>
+      <td>
+        <code>class Person</code>
+      </td>
+    </tr>
+    <tr><th>SCALA</th></tr>
+    <tr>
+      <td>
+        <code>open class Person</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<br>Method, one line:
+
+<table>
+  <tbody>
+    <tr><th>JAVA</th></tr>
+    <tr>
+      <td>
         <code>public int add(int a, int b) {
         <br>&nbsp; return a + b;
         <br>}</code>
       </td>
-      <td valign="top"><code>def add(a: Int, b: Int): Int = a + b</code></td>
     </tr>
+    <tr><th>SCALA</th></tr>
+    <tr>
+      <td>
+        <code>def add(a: Int, b: Int): Int = a + b</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
+
+<br>Method syntax, multiple lines:
+
+<table>
+  <tbody>
+    <tr><th>JAVA</th></tr>
     <tr>
-      <td colspan="2" class="table-desc-row">Method, multiple lines</td>
-    </tr>
-    <tr>
-      <td valign="top">
+      <td>
         <code>public void walkThenRun() {
         <br>&nbsp; System.out.println("walk");
         <br>&nbsp; System.out.println("run");
         <br>}</code>
       </td>
-      <td valign="top">
+    </tr>
+    <tr><th>SCALA</th></tr>
+    <tr>
+      <td>
         <code>def walkThenRun() =
         <br>&nbsp; println("walk")
         <br>&nbsp; println("run")</code>
       </td>
     </tr>
+  </tbody>
+</table>
 
-    <tr>
-      <td colspan="2" class="table-desc-row">Immutable fields</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>final int i = 1;</code></td>
-      <td valign="top"><code>val i = 1</code></td>
-    </tr>
 
+<br>Immutable fields:
+
+<table>
+  <tbody>
+    <tr><th>JAVA</th></tr>
     <tr>
-      <td colspan="2" class="table-desc-row">Mutable fields</td>
-    </tr>
-    <tr>
-      <td valign="top">
-        <code>int i = 1;
-        <br>var i = 1;</code>
+      <td>
+        <code>final int i = 1;</code>
       </td>
-      <td valign="top"><code>var i = 1</code></td>
+    </tr>
+    <tr><th>SCALA</th></tr>
+    <tr>
+      <td>
+        <code>val i = 1</code>
+      </td>
     </tr>
   </tbody>
 </table>
 
-  
+
+<br>Mutable fields:
+
+<table>
+  <tbody>
+    <tr><th>JAVA</th></tr>
+    <tr>
+      <td>
+        <code>int i = 1;
+        <br>var i = 1;</code>
+      </td>
+    </tr>
+    <tr><th>SCALA</th></tr>
+    <tr>
+      <td>
+        <code>var i = 1</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
 
 ## Interfaces, traits, and inheritance
 
 This section compares Java interfaces to Scala traits, including how classes extend interfaces and traits.
 
+
+<br>Interfaces/Traits:
+
 <table>
   <tbody>
+    <tr><th>JAVA</th></tr>
     <tr>
-      <th>Java</th>
-      <th>Scala</th>
+      <td>
+        <code>public interface Marker;</code>
+      </td>
     </tr>
+    <tr><th>SCALA</th></tr>
+    <tr>
+      <td>
+        <code>trait Marker</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-    <tr>
-      <td colspan="2" class="table-desc-row">Interfaces/Traits</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>public interface Marker;</code></td>
-      <td valign="top"><code>trait Marker</code></td>
-    </tr>
 
+<br>Simple interface:
+
+<table>
+  <tbody>
+    <tr><th>JAVA</th></tr>
     <tr>
-      <td colspan="2" class="table-desc-row">Simple interface</td>
-    </tr>
-    <tr>
-      <td valign="top">
+      <td>
         <code>public interface Adder {
         <br>&nbsp; public int add(int a, int b);
         <br>}</code>
       </td>
-      <td valign="top">
+    </tr>
+    <tr><th>SCALA</th></tr>
+    <tr>
+      <td>
         <code>trait Adder:
         <br>&nbsp; def add(a: Int, b: Int): Int</code>
       </td>
     </tr>
+  </tbody>
+</table>
 
+
+<br>Interface with a concrete method:
+
+<table>
+  <tbody>
+    <tr><th>JAVA</th></tr>
     <tr>
-      <td colspan="2" class="table-desc-row">Interface with a concrete method</td>
-    </tr>
-    <tr>
-      <td valign="top">
+      <td>
         <code>public interface Adder {
         <br>&nbsp; int add(int a, int b);
         <br>&nbsp; default int multiply(
@@ -358,29 +431,47 @@ This section compares Java interfaces to Scala traits, including how classes ext
         <br>&nbsp; }
         <br>}</code>
       </td>
-      <td valign="top">
+    </tr>
+    <tr><th>SCALA</th></tr>
+    <tr>
+      <td>
         <code>trait Adder:
         <br>&nbsp; def add(a: Int, b: Int): Int
         <br>&nbsp; def multiply(a: Int, b: Int): Int =
         <br>&nbsp;&nbsp;&nbsp; a * b</code>
       </td>
     </tr>
+  </tbody>
+</table>
 
-    <tr>
-      <td colspan="2" class="table-desc-row">Inheritance</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>class Dog extends Animal,HasLegs,HasTail</code></td>
-      <td valign="top"><code>class Dog extends Animal,HasLegs,HasTail</code></td>
-    </tr>
 
+<br>Inheritance:
+
+<table>
+  <tbody>
+    <tr><th>JAVA</th></tr>
     <tr>
-      <td colspan="2" class="table-desc-row">Extending multiple interfaces/traits that have implemented methods
-      <br>(default methods)
+      <td>
+        <code>class Dog extends Animal,HasLegs,HasTail</code>
       </td>
     </tr>
+    <tr><th>SCALA</th></tr>
     <tr>
-      <td valign="top">
+      <td>
+        <code>class Dog extends Animal,HasLegs,HasTail</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<br>Extending multiple interfaces/traits that have implemented methods (default methods):
+
+<table>
+  <tbody>
+    <tr><th>JAVA</th></tr>
+    <tr>
+      <td>
         <code>interface Adder {
         <br>&nbsp; default int add(int a, int b) {
         <br>&nbsp;&nbsp;&nbsp; return a + b;
@@ -402,7 +493,10 @@ This section compares Java interfaces to Scala traits, including how classes ext
         <br>jm.add(1,1);
         <br>jm.multiply(2,2);</code>
       </td>
-      <td valign="top">
+    </tr>
+    <tr><th>SCALA</th></tr>
+    <tr>
+      <td>
         <code>trait Adder:
         <br>&nbsp; def add(a: Int, b: Int) = a + b
         <br>
@@ -416,13 +510,23 @@ This section compares Java interfaces to Scala traits, including how classes ext
         <br>sm.multiply(2,2)</code>
       </td>
     </tr>
+  </tbody>
+</table>
 
+
+<br>Mixins:
+
+<table>
+  <tbody>
+    <tr><th>JAVA</th></tr>
     <tr>
-      <td colspan="2" class="table-desc-row">Mixins</td>
+      <td>
+        N/A
+      </td>
     </tr>
+    <tr><th>SCALA</th></tr>
     <tr>
-      <td valign="top">N/A</td>
-      <td valign="top">
+      <td>
         <code>class DavidBanner
         <br>
         <br>trait Angry:
@@ -443,50 +547,66 @@ This section compares Java interfaces to Scala traits, including how classes ext
     </tr>
   </tbody>
 </table>
-  
+
 
 
 ## Control structures
 
 This section compares control structures in Java and Scala.
 
+
+<code>if</code> statement, one line:
+
 <table>
   <tbody>
+    <tr><th>JAVA</th></tr>
     <tr>
-      <th>Java</th>
-      <th>Scala</th>
+      <td>
+        <code>if (x == 1) { System.out.println(1); }</code>
+      </td>
     </tr>
+    <tr><th>SCALA</th></tr>
+    <tr>
+      <td>
+        <code>if x == 1 then println(x)</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-    <tr>
-      <td colspan="2" class="table-desc-row"><code>if</code> statement, one line</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>if (x == 1) { System.out.println(1); }</code></td>
-      <td valign="top"><code>if x == 1 then println(x)</code></td>
-    </tr>
 
+<br><code>if</code> statement, multiline:
+
+<table>
+  <tbody>
+    <tr><th>JAVA</th></tr>
     <tr>
-      <td colspan="2" class="table-desc-row"><code>if</code> statement, multiline</td>
-    </tr>
-    <tr>
-      <td valign="top">
+      <td>
         <code>if (x == 1) {
         <br>&nbsp; System.out.println("x is 1, as you can see:")
         <br>&nbsp; System.out.println(x)
         <br>}</code>
       </td>
-      <td valign="top">
+    </tr>
+    <tr><th>SCALA</th></tr>
+    <tr>
+      <td>
         <code>if x == 1 then
         <br>&nbsp; println("x is 1, as you can see:")
         <br>&nbsp; println(x)</code>
       </td>
     </tr>
+  </tbody>
+</table>
 
+
+<br><code>if/else if/else</code>:
+
+<table>
+  <tbody>
+    <tr><th>JAVA</th></tr>
     <tr>
-      <td colspan="2" class="table-desc-row"><code>if/else if/else</code></td>
-    </tr>
-    <tr>
-      <td valign="top">
+      <td>
         <code>if (x &lt; 0) {
         <br>&nbsp; System.out.println("negative")
         <br>} else if (x == 0) {
@@ -495,7 +615,10 @@ This section compares control structures in Java and Scala.
         <br>&nbsp; System.out.println("positive")
         <br>}</code>
       </td>
-      <td valign="top">
+    </tr>
+    <tr><th>SCALA</th></tr>
+    <tr>
+      <td>
         <code>if x &lt; 0 then
         <br>&nbsp; println("negative")
         <br>else if x == 0
@@ -504,57 +627,93 @@ This section compares control structures in Java and Scala.
         <br>&nbsp; println("positive")</code>
       </td>
     </tr>
+  </tbody>
+</table>
 
+
+<br><code>if</code> as method body:
+
+<table>
+  <tbody>
+    <tr><th>JAVA</th></tr>
     <tr>
-      <td colspan="2" class="table-desc-row"><code>if</code> as method body</td>
-    </tr>
-    <tr>
-      <td valign="top">
+      <td>
         <code>public int min(int a, int b) {
         <br>&nbsp; return (a &lt; b) ? a : b;
         <br>}</code>
       </td>
-      <td valign="top">
+    </tr>
+    <tr><th>SCALA</th></tr>
+    <tr>
+      <td>
         <code>def min(a: Int, b: Int): Int =
         <br>&nbsp; if a &lt; b then a else b</code>
       </td>
     </tr>
+  </tbody>
+</table>
 
-    <tr>
-      <td colspan="2" class="table-desc-row">Returning a value from <code>if</code></td>
-    </tr>
-    <tr>
-      <td valign="top"><code>int minVal = (a &lt; b) ? a : b;</code></td>
-      <td valign="top"><code>val minValue = if a &lt; b then a else b</code></td>
-    </tr>
 
+<br>Returning a value from <code>if</code>:
+
+<table>
+  <tbody>
+    <tr><th>JAVA</th></tr>
     <tr>
-      <td colspan="2" class="table-desc-row"><code>while</code> loop</td>
+      <td>
+        <code>int minVal = (a &lt; b) ? a : b;</code>
+      </td>
     </tr>
+    <tr><th>SCALA</th></tr>
     <tr>
-      <td valign="top">
+      <td>
+        <code>val minValue = if a &lt; b then a else b</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<br><code>while</code> loop:
+
+<table>
+  <tbody>
+    <tr><th>JAVA</th></tr>
+    <tr>
+      <td>
         <code>while (i &lt; 3) {
         <br>&nbsp; System.out.println(i);
         <br>&nbsp; i++;
         <br>}</code>
       </td>
-      <td valign="top">
+    </tr>
+    <tr><th>SCALA</th></tr>
+    <tr>
+      <td>
         <code>while i &lt; 3 do
         <br>&nbsp; println(i)
         <br>&nbsp; i += 1</code>
       </td>
     </tr>
+  </tbody>
+</table>
 
+
+<br><code>for</code> loop, single line:
+
+<table>
+  <tbody>
+    <tr><th>JAVA</th></tr>
     <tr>
-      <td colspan="2" class="table-desc-row"><code>for</code> loop, single line</td>
-    </tr>
-    <tr>
-      <td valign="top">
+      <td>
         <code>for (int i: ints) {
         <br>&nbsp; System.out.println(i);
         <br>}</code>
       </td>
-      <td valign="top">
+    </tr>
+    <tr><th>SCALA</th></tr>
+    <tr>
+      <td>
         <code>//preferred
         <br>for i &lt;- ints do println(i)
         <br>
@@ -562,18 +721,26 @@ This section compares control structures in Java and Scala.
         <br>for (i &lt;- ints) println(i)</code>
       </td>
     </tr>
+  </tbody>
+</table>
 
+
+<br><code>for</code> loop, multiple lines:
+
+<table>
+  <tbody>
+    <tr><th>JAVA</th></tr>
     <tr>
-      <td colspan="2" class="table-desc-row"><code>for</code> loop, multiple lines</td>
-    </tr>
-    <tr>
-      <td valign="top">
+      <td>
         <code>for (int i: ints) {
         <br>&nbsp; int x = i * 2;
         <br>&nbsp; System.out.println(x);
         <br>}</code>
       </td>
-      <td valign="top">
+    </tr>
+    <tr><th>SCALA</th></tr>
+    <tr>
+      <td>
         <code>for
         <br>&nbsp; i &lt;- ints
         <br>do
@@ -581,12 +748,17 @@ This section compares control structures in Java and Scala.
         <br>&nbsp; println(s"i = $i, x = $x")</code>
       </td>
     </tr>
+  </tbody>
+</table>
 
+
+<br>Multiple generators:
+
+<table>
+  <tbody>
+    <tr><th>JAVA</th></tr>
     <tr>
-      <td colspan="2" class="table-desc-row">Multiple generators</td>
-    </tr>
-    <tr>
-      <td valign="top">
+      <td>
         <code>for (int i: ints1) {
         <br>&nbsp; for (int j: chars) {
         <br>&nbsp;&nbsp;&nbsp; for (int k: ints2) {
@@ -595,7 +767,10 @@ This section compares control structures in Java and Scala.
         <br>&nbsp; }
         <br>}</code>
       </td>
-      <td valign="top">
+    </tr>
+    <tr><th>SCALA</th></tr>
+    <tr>
+      <td>
         <code>for
         <br>&nbsp; i &lt;- 1 to 2
         <br>&nbsp; j &lt;- 'a' to 'b'
@@ -604,12 +779,17 @@ This section compares control structures in Java and Scala.
         <br>&nbsp; println(s"i = $i, j = $j, k = $k")</code>
       </td>
     </tr>
+  </tbody>
+</table>
 
+
+<br>Generator with guards (<code>if</code> expressions):
+
+<table>
+  <tbody>
+    <tr><th>JAVA</th></tr>
     <tr>
-      <td colspan="2" class="table-desc-row">Generator with guards (<code>if</code> expressions)</td>
-    </tr>
-    <tr>
-      <td valign="top">
+      <td>
         <code>List ints = 
         <br>&nbsp; ArrayList(1,2,3,4,5,6,7,8,9,10);
         <br>
@@ -619,7 +799,10 @@ This section compares control structures in Java and Scala.
         <br>&nbsp; }
         <br>}</code>
       </td>
-      <td valign="top">
+    </tr>
+    <tr><th>SCALA</th></tr>
+    <tr>
+      <td>
         <code>for
         <br>&nbsp; i &lt;- 1 to 10
         <br>&nbsp; if i % 2 == 0
@@ -628,13 +811,23 @@ This section compares control structures in Java and Scala.
         <br>&nbsp; println(i)</code>
       </td>
     </tr>
+  </tbody>
+</table>
 
+
+<br><code>for</code> comprehension:
+
+<table>
+  <tbody>
+    <tr><th>JAVA</th></tr>
     <tr>
-      <td colspan="2" class="table-desc-row"><code>for</code> comprehension</td>
+      <td>
+        N/A
+      </td>
     </tr>
+    <tr><th>SCALA</th></tr>
     <tr>
-      <td valign="top">N/A</td>
-      <td valign="top">
+      <td>
         <code>val list = 
         <br>&nbsp; for
         <br>&nbsp;&nbsp;&nbsp; i &lt;- 1 to 3
@@ -643,12 +836,17 @@ This section compares control structures in Java and Scala.
         <br>// list: Vector(10, 20, 30)</code>
       </td>
     </tr>
+  </tbody>
+</table>
 
+
+<br>switch/match:
+
+<table>
+  <tbody>
+    <tr><th>JAVA</th></tr>
     <tr>
-      <td colspan="2" class="table-desc-row">switch/match</td>
-    </tr>
-    <tr>
-      <td valign="top">
+      <td>
         <code>String monthAsString = "";
         <br>switch(day) {
         <br>&nbsp; case 1: monthAsString = "January";
@@ -659,7 +857,10 @@ This section compares control structures in Java and Scala.
         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;
         <br>}</code>
       </td>
-      <td valign="top">
+    </tr>
+    <tr><th>SCALA</th></tr>
+    <tr>
+      <td>
         <code>val monthAsString = day match
         <br>&nbsp; case 1 =&gt; "January"
         <br>&nbsp; case 2 =&gt; "February"
@@ -667,13 +868,17 @@ This section compares control structures in Java and Scala.
         </code>
       </td>
     </tr>
+  </tbody>
+</table>
 
+
+<br>switch/match, handling multiple conditions per case:
+
+<table>
+  <tbody>
+    <tr><th>JAVA</th></tr>
     <tr>
-      <td colspan="2" class="table-desc-row">switch/match:
-        handling multiple conditions per case</td>
-    </tr>
-    <tr>
-      <td valign="top">
+      <td>
         <code>String numAsString = "";
         <br>switch (i) {
         <br>&nbsp; case 1: case 3:
@@ -689,7 +894,10 @@ This section compares control structures in Java and Scala.
         <br>&nbsp;&nbsp;&nbsp; break;
         <br>}</code>
       </td>
-      <td valign="top">
+    </tr>
+    <tr><th>SCALA</th></tr>
+    <tr>
+      <td>
         <code>val numAsString = i match
         <br>&nbsp; case 1 | 3 | 5 | 7 | 9 =&gt; "odd"
         <br>&nbsp; case 2 | 4 | 6 | 8 | 10 =&gt; "even"
@@ -697,12 +905,17 @@ This section compares control structures in Java and Scala.
         </code>
       </td>
     </tr>
+  </tbody>
+</table>
 
+
+<br>try/catch/finally:
+
+<table>
+  <tbody>
+    <tr><th>JAVA</th></tr>
     <tr>
-      <td colspan="2" class="table-desc-row">try/catch/finally</td>
-    </tr>
-    <tr>
-      <td valign="top">
+      <td>
         <code>try {
         <br>&nbsp; writeTextToFile(text);
         <br>} catch (IOException ioe) {
@@ -713,7 +926,10 @@ This section compares control structures in Java and Scala.
         <br>&nbsp; println("Clean up resources here.")
         <br>}</code>
       </td>
-      <td valign="top">
+    </tr>
+    <tr><th>SCALA</th></tr>
+    <tr>
+      <td>
         <code>try
         <br>&nbsp; writeTextToFile(text)
         <br>catch
@@ -728,7 +944,7 @@ This section compares control structures in Java and Scala.
   </tbody>
 </table>
 
-  
+
 
 ## Collections classes
 
@@ -737,50 +953,72 @@ This section compares the collections classes that are available in Java and Sca
 
 ### Immutable collections classes
 
-Examples of how to create instances of immutable collections:
+Examples of how to create instances of immutable collections.
+
+<br>Sequences:
 
 <table>
   <tbody>
-
+    <tr><th>JAVA</th></tr>
     <tr>
-      <th>Java</th>
-      <th>Scala</th>
+      <td>
+        <code>List strings = List.of("a", "b", "c");</code>
+      </td>
     </tr>
-
+    <tr><th>SCALA</th></tr>
     <tr>
-      <td colspan="2" class="table-desc-row">Sequences</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>List strings = 
-        <br>&nbsp; List.of("a", "b", "c");</code></td>
-      <td valign="top">
+      <td>
         <code>val strings = List("a", "b", "c")
         <br>val strings = Vector("a", "b", "c")</code>
       </td>
     </tr>
+  </tbody>
+</table>
 
-    <tr>
-      <td colspan="2" class="table-desc-row">Set</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>Set set = Set.of("a", "b", "c");</code></td>
-      <td valign="top"><code>val set = Set("a", "b", "c")</code></td>
-    </tr>
 
+<br>Sets:
+
+<table>
+  <tbody>
+    <tr><th>JAVA</th></tr>
     <tr>
-      <td colspan="2" class="table-desc-row">Map</td>
+      <td>
+        <code>Set set = Set.of("a", "b", "c");</code>
+      </td>
     </tr>
+    <tr><th>SCALA</th></tr>
     <tr>
-      <td valign="top"><code>Map map = Map.of(
+      <td>
+        <code>val set = Set("a", "b", "c")</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<br>Maps:
+
+<table>
+  <tbody>
+    <tr><th>JAVA</th></tr>
+    <tr>
+      <td>
+        <code>Map map = Map.of(
         <br>&nbsp; "a", 1, 
         <br>&nbsp; "b", 2,
         <br>&nbsp; "c", 3
-        <br>);</code></td>
-      <td valign="top"><code>val map = Map(
+        <br>);</code>
+      </td>
+    </tr>
+    <tr><th>SCALA</th></tr>
+    <tr>
+      <td>
+        <code>val map = Map(
         <br>&nbsp; "a" -&gt; 1, 
         <br>&nbsp; "b" -&gt; 2, 
         <br>&nbsp; "c" -&gt; 3
-        <br>)</code></td>
+        <br>)</code>
+      </td>
     </tr>
   </tbody>
 </table>
@@ -877,33 +1115,36 @@ val d = ("eleven", 11, 11.0, Person("Eleven"))
 
 This section compares enumerations in Java and Scala.
 
+<br>Basic enum:
+
 <table>
   <tbody>
+    <tr><th>JAVA</th></tr>
     <tr>
-      <th>Java</th>
-      <th>Scala</th>
-    </tr>
-
-    <tr>
-      <td colspan="2" class="table-desc-row">Basic enum</td>
-    </tr>
-    <tr>
-      <td valign="top">
+      <td>
         <code>enum Color {
         <br>&nbsp; RED, GREEN, BLUE
         <br>}</code>
       </td>
-      <td valign="top">
+    </tr>
+    <tr><th>SCALA</th></tr>
+    <tr>
+      <td>
         <code>enum Color:
         <br>&nbsp; case Red, Green, Blue</code>
       </td>
     </tr>
+  </tbody>
+</table>
 
+
+<br>Parameterized enum:
+
+<table>
+  <tbody>
+    <tr><th>JAVA</th></tr>
     <tr>
-      <td colspan="2" class="table-desc-row">Parameterized enum</td>
-    </tr>
-    <tr>
-      <td valign="top">
+      <td>
         <code>enum Color {
         <br>&nbsp; Red(0xFF0000),
         <br>&nbsp; Green(0x00FF00),
@@ -916,19 +1157,27 @@ This section compares enumerations in Java and Scala.
         <br>&nbsp; }
         <br>}</code>
       </td>
-      <td valign="top">
+    </tr>
+    <tr><th>SCALA</th></tr>
+    <tr>
+      <td>
         <code>enum Color(val rgb: Int):
         <br>&nbsp; case Red&nbsp;&nbsp; extends Color(0xFF0000)
         <br>&nbsp; case Green extends Color(0x00FF00)
         <br>&nbsp; case Blue&nbsp; extends Color(0x0000FF)</code>
       </td>
     </tr>
+  </tbody>
+</table>
 
+
+<br>User-defined enum members:
+
+<table>
+  <tbody>
+    <tr><th>JAVA</th></tr>
     <tr>
-      <td colspan="2" class="table-desc-row">User-defined enum members</td>
-    </tr>
-    <tr>
-      <td valign="top">
+      <td>
         <code>enum Planet {
         <br>&nbsp; MERCURY (3.303e+23, 2.4397e6),
         <br>&nbsp; VENUS&nbsp;&nbsp; (4.869e+24, 6.0518e6),
@@ -968,7 +1217,10 @@ This section compares enumerations in Java and Scala.
         <br>
         <br>}</code>
       </td>
-      <td valign="top">
+    </tr>
+    <tr><th>SCALA</th></tr>
+    <tr>
+      <td>
         <code>enum Planet(
           <br>&nbsp; mass: Double, 
           <br>&nbsp; radius: Double
