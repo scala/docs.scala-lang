@@ -8,18 +8,48 @@ next-page: scala-for-javascript-devs
 ---
 
 <style>
-.content-primary td code {
+.content-primary td code
+{
   margin: 0;
   padding: 0;
   background: none;
 }
-.content-primary table td.java-block {
-  background: none;
-  background: url('/resources/images/scala3-book/java-code-block.png') top right no-repeat;
+.content-primary table
+{
+  background: #fdfdf7;
+  border-collapse: collapse;
 }
-.content-primary table td.scala-block {
-  background: none;
-  background: url('/resources/images/scala3-book/scala-code-block.png') top right no-repeat;
+.content-primary th,
+.content-primary td
+{
+  border-top: 1px solid #E5EAEA;
+  border-bottom: 1px solid #E5EAEA;
+}
+.content-primary table td.java-block,
+.content-primary table td.scala-block
+{
+  position: relative;
+  padding-bottom: 20px;
+}
+.content-primary table td.java-block:after,
+.content-primary table td.scala-block:after
+{
+  color: #ccc;
+  display: block;
+  font-size: 17px;
+  line-height: 1;
+  position: absolute;
+  top: 8px;
+  right: 2px;
+  z-index: 1;
+}
+.content-primary table td.java-block:after
+{
+  content: "java";
+}
+.content-primary table td.scala-block:after
+{
+  content: "scala";
 }
 </style>
 
@@ -107,7 +137,9 @@ Given that introduction, the following sections provide side-by-side comparisons
 
 ## OOP style classes and methods
 
-This section provides comparisons of features related to OOP-style classes and methods. First, these are comments in the two languages:
+This section provides comparisons of features related to OOP-style classes and methods.
+
+### Comments:
 
 <table>
   <tbody>
@@ -128,7 +160,7 @@ This section provides comparisons of features related to OOP-style classes and m
   </tbody>
 </table>
 
-<br>Next, OOP style class, primary constructor:
+### OOP style class, primary constructor:
 
 <table>
   <tbody>
@@ -166,7 +198,7 @@ This section provides comparisons of features related to OOP-style classes and m
   </tbody>
 </table>
 
-<br>Auxiliary constructors:
+### Auxiliary constructors:
 
 <table>
   <tbody>
@@ -241,7 +273,8 @@ This section provides comparisons of features related to OOP-style classes and m
 </table>
 
 
-<br>Classes closed by default (“Plan for inheritance or else forbid it”):
+### Classes closed by default:
+“Plan for inheritance or else forbid it.”
 
 <table>
   <tbody>
@@ -259,7 +292,7 @@ This section provides comparisons of features related to OOP-style classes and m
 </table>
 
 
-<br>Create a class that’s open for extension:
+### A class that’s open for extension:
 
 <table>
   <tbody>
@@ -277,7 +310,7 @@ This section provides comparisons of features related to OOP-style classes and m
 </table>
 
 
-<br>Method, one line:
+### One-line method:
 
 <table>
   <tbody>
@@ -297,7 +330,7 @@ This section provides comparisons of features related to OOP-style classes and m
 </table>
 
 
-<br>Method syntax, multiple lines:
+### Multiline method:
 
 <table>
   <tbody>
@@ -320,7 +353,7 @@ This section provides comparisons of features related to OOP-style classes and m
 </table>
 
 
-<br>Immutable fields:
+### Immutable fields:
 
 <table>
   <tbody>
@@ -338,7 +371,7 @@ This section provides comparisons of features related to OOP-style classes and m
 </table>
 
 
-<br>Mutable fields:
+### Mutable fields:
 
 <table>
   <tbody>
@@ -363,7 +396,7 @@ This section provides comparisons of features related to OOP-style classes and m
 This section compares Java interfaces to Scala traits, including how classes extend interfaces and traits.
 
 
-<br>Interfaces/Traits:
+### Interfaces/traits:
 
 <table>
   <tbody>
@@ -381,7 +414,7 @@ This section compares Java interfaces to Scala traits, including how classes ext
 </table>
 
 
-<br>Simple interface:
+### Simple interface:
 
 <table>
   <tbody>
@@ -402,7 +435,7 @@ This section compares Java interfaces to Scala traits, including how classes ext
 </table>
 
 
-<br>Interface with a concrete method:
+### Interface with a concrete method:
 
 <table>
   <tbody>
@@ -430,25 +463,27 @@ This section compares Java interfaces to Scala traits, including how classes ext
 </table>
 
 
-<br>Inheritance:
+### Inheritance:
 
 <table>
   <tbody>
     <tr>
       <td class="java-block">
-        <code>class Dog extends Animal,HasLegs,HasTail</code>
+        <code>class Dog extends Animal, HasLegs, HasTail</code>
       </td>
     </tr>
     <tr>
       <td class="scala-block">
-        <code>class Dog extends Animal,HasLegs,HasTail</code>
+        <code>class Dog extends Animal, HasLegs, HasTail</code>
       </td>
     </tr>
   </tbody>
 </table>
 
 
-<br>Extending multiple interfaces/traits that have implemented methods (default methods):
+### Extend multiple interfaces
+
+These interfaces and traits have concrete, implemented methods (default methods):
 
 <table>
   <tbody>
@@ -495,7 +530,7 @@ This section compares Java interfaces to Scala traits, including how classes ext
 </table>
 
 
-<br>Mixins:
+### Mixins:
 
 <table>
   <tbody>
@@ -533,8 +568,7 @@ This section compares Java interfaces to Scala traits, including how classes ext
 
 This section compares control structures in Java and Scala.
 
-
-<code>if</code> statement, one line:
+### `if` statement, one line:
 
 <table>
   <tbody>
@@ -552,7 +586,7 @@ This section compares control structures in Java and Scala.
 </table>
 
 
-<br><code>if</code> statement, multiline:
+### `if` statement, multiline:
 
 <table>
   <tbody>
@@ -575,7 +609,7 @@ This section compares control structures in Java and Scala.
 </table>
 
 
-<br><code>if/else if/else</code>:
+### if, else if, else:
 
 <table>
   <tbody>
@@ -604,7 +638,7 @@ This section compares control structures in Java and Scala.
 </table>
 
 
-<br><code>if</code> as method body:
+### `if` as the method body:
 
 <table>
   <tbody>
@@ -625,7 +659,9 @@ This section compares control structures in Java and Scala.
 </table>
 
 
-<br>Returning a value from <code>if</code>:
+### Return a value from `if`:
+
+Called a _ternary operator_ in Java:
 
 <table>
   <tbody>
@@ -643,7 +679,7 @@ This section compares control structures in Java and Scala.
 </table>
 
 
-<br><code>while</code> loop:
+### `while` loop:
 
 <table>
   <tbody>
@@ -666,7 +702,7 @@ This section compares control structures in Java and Scala.
 </table>
 
 
-<br><code>for</code> loop, single line:
+### `for` loop, single line:
 
 <table>
   <tbody>
@@ -690,7 +726,7 @@ This section compares control structures in Java and Scala.
 </table>
 
 
-<br><code>for</code> loop, multiple lines:
+### `for` loop, multiple lines:
 
 <table>
   <tbody>
@@ -715,7 +751,7 @@ This section compares control structures in Java and Scala.
 </table>
 
 
-<br>Multiple generators:
+### `for` loop, multiple generators:
 
 <table>
   <tbody>
@@ -744,7 +780,7 @@ This section compares control structures in Java and Scala.
 </table>
 
 
-<br>Generator with guards (<code>if</code> expressions):
+### Generator with guards (`if`) expressions:
 
 <table>
   <tbody>
@@ -774,7 +810,7 @@ This section compares control structures in Java and Scala.
 </table>
 
 
-<br><code>for</code> comprehension:
+### `for` comprehension:
 
 <table>
   <tbody>
@@ -797,7 +833,7 @@ This section compares control structures in Java and Scala.
 </table>
 
 
-<br>switch/match:
+### switch/match:
 
 <table>
   <tbody>
@@ -827,7 +863,7 @@ This section compares control structures in Java and Scala.
 </table>
 
 
-<br>switch/match, handling multiple conditions per case:
+### switch/match, multiple conditions per case:
 
 <table>
   <tbody>
@@ -862,7 +898,7 @@ This section compares control structures in Java and Scala.
 </table>
 
 
-<br>try/catch/finally:
+### try/catch/finally:
 
 <table>
   <tbody>
@@ -906,7 +942,8 @@ This section compares the collections classes that are available in Java and Sca
 
 Examples of how to create instances of immutable collections.
 
-<br>Sequences:
+
+### Sequences:
 
 <table>
   <tbody>
@@ -925,7 +962,7 @@ Examples of how to create instances of immutable collections.
 </table>
 
 
-<br>Sets:
+### Sets:
 
 <table>
   <tbody>
@@ -943,7 +980,7 @@ Examples of how to create instances of immutable collections.
 </table>
 
 
-<br>Maps:
+### Maps:
 
 <table>
   <tbody>
@@ -1038,9 +1075,13 @@ Because developers tend to spend on the order of ten times as much time *reading
 Java tuples are created like this:  
 
 ```scala
-Pair<String, Integer> pair = new Pair<String, Integer>("Eleven", 11);
-Triplet<String, Integer, Double> triplet = Triplet.with("Eleven", 11, 11.0);
-Quartet<String, Integer, Double,Person> triplet = Triplet.with("Eleven", 11, 11.0, new Person("Eleven"));
+Pair<String, Integer> pair =
+  new Pair<String, Integer>("Eleven", 11);
+
+Triplet<String, Integer, Double> triplet =
+  Triplet.with("Eleven", 11, 11.0);
+Quartet<String, Integer, Double,Person> triplet =
+  Triplet.with("Eleven", 11, 11.0, new Person("Eleven"));
 ```
 
 Other Java tuple names are Quintet, Sextet, Septet, Octet, Ennead, Decade.
@@ -1060,7 +1101,8 @@ val d = ("eleven", 11, 11.0, Person("Eleven"))
 
 This section compares enumerations in Java and Scala.
 
-<br>Basic enum:
+
+### Basic enum:
 
 <table>
   <tbody>
@@ -1081,7 +1123,7 @@ This section compares enumerations in Java and Scala.
 </table>
 
 
-<br>Parameterized enum:
+### Parameterized enum:
 
 <table>
   <tbody>
@@ -1112,7 +1154,7 @@ This section compares enumerations in Java and Scala.
 </table>
 
 
-<br>User-defined enum members:
+### User-defined enum members:
 
 <table>
   <tbody>
