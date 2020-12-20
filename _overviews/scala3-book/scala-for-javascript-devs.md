@@ -7,37 +7,7 @@ previous-page: scala-for-java-devs
 next-page: scala-for-python-devs
 ---
 
-<style>
-.content-primary td code {
-  font-size: 13px;
-  margin: 0;
-  padding: 0;
-  background: none;
-}
-.content-primary table tr:first-child,
-.content-primary table tr:last-child
-{
-  border: none;
-  border-bottom: none;
-}
-.content-primary table,
-.content-primary table th,
-.content-primary table td {
-  border: none;
-}
-.content-primary table td {
-  width: 45%;
-  background-color: white;
-}
-.content-primary table td.table-desc-row {
-  text-align: center;
-  padding-top: 0.6em;
-}
-.content-primary table th {
-  text-align: center;
-}
-</style>
-
+{% include_relative scala4x.css %}
 
 
 This page provides a comparison between the JavaScript and Scala programming languages.
@@ -104,179 +74,225 @@ At a lower level, these are some of the differences you’ll see every day when 
 
 ### Comments
 
-Both JavaScript and Scala use the C/C++/Java style comment syntax:
-
 <table>
-  <tr>
-    <th valign="top">JavaScript</th>
-    <th valign="top">Scala</th>
-  </tr>
-  <tr>
-    <td valign="top"><code>//
-      <br>/* ... */
-      <br>/** ... */</code>
-    </td>
-    <td valign="top"><code>//
-      <br>/* ... */
-      <br>/** ... */</code>
-    </td>
-  </tr>
+  <tbody>
+    <tr>
+      <td class="javascript-block">
+          <code>//
+        <br>/* ... */
+        <br>/** ... */</code>
+      </td>
+    </tr>
+    <tr>
+      <td class="scala-block">
+          <code>//
+        <br>/* ... */
+        <br>/** ... */</code>
+      </td>
+    </tr>
+  </tbody>
 </table>
 
 
-### Variables
-
-JavaScript variables are typically defined with `let` and `const`.
-Scala variables are defined with `var` and `val`.
+### Mutable variables
 
 <table>
-  <tr>
-    <th valign="top">JavaScript</th>
-    <th valign="top">Scala</th>
-  </tr>
-  <tr>
-    <td valign="top"><code>let&nbsp;&nbsp; // now preferred for mutable
-      <br>var&nbsp;&nbsp; // old mutable style</code>
-    </td>
-    <td valign="top"><code>var&nbsp; // used for mutable variables</code></td>
-  </tr>
-  <tr>
-    <td valign="top"><code>const</code></td>
-    <td valign="top"><code>val&nbsp; // used for immutable variables</code></td>
-  </tr>
+  <tbody>
+    <tr>
+      <td class="javascript-block">
+          <code>let&nbsp;&nbsp; // now preferred for mutable
+        <br>var&nbsp;&nbsp; // old mutable style</code>
+      </td>
+    </tr>
+    <tr>
+      <td class="scala-block">
+          <code>var&nbsp; // used for mutable variables</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+### Immutable values
+
+<table>
+  <tbody>
+    <tr>
+      <td class="javascript-block">
+          <code>const</code>
+      </td>
+    </tr>
+    <tr>
+      <td class="scala-block">
+          <code>val</code>
+      </td>
+    </tr>
+  </tbody>
 </table>
 
 The rule of thumb in Scala is to declare variables using `val`, unless there’s a specific reason you need a mutable variable.
 
-### Naming standards
+
+
+## Naming standards
 
 JavaScript and Scala generally use the same *CamelCase* naming standards.
 Variables are named like `myVariableName`, methods are named like `lastIndexOf`, and classes and object are named like `Animal` and `PrintedBook`.
 
-### Strings
 
-Many uses of strings are similar in JavaScript and Scala, though Scala only uses double-quotes for simple strings, and triple-quotes for multiline strings:
+
+## Strings
+
+Many uses of strings are similar in JavaScript and Scala, though Scala only uses double-quotes for simple strings, and triple-quotes for multiline strings.
+
+
+### String basics
 
 <table>
+  <tbody>
     <tr>
-      <th valign="top">JavaScript</th>
-      <th valign="top">Scala</th>
-    </tr>
-    <tr>
-      <td rowspan="1" colspan="2" class="table-desc-row">String basics</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>// can use single- or double-quotes
+      <td class="javascript-block">
+          <code>// use single- or double-quotes
         <br>let msg = 'Hello, world';
         <br>let msg = "Hello, world";</code>
       </td>
-      <td valign="top"><code>// use only double-quotes
+    </tr>
+    <tr>
+      <td class="scala-block">
+          <code>// use only double-quotes
         <br>val msg = "Hello, world"</code>
       </td>
     </tr>
+  </tbody>
+</table>
+
+
+### Interpolation
+
+<table>
+  <tbody>
     <tr>
-      <td rowspan="1" colspan="2" class="table-desc-row">Interpolation</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>let name = 'Joe';
+      <td class="javascript-block">
+          <code>let name = 'Joe';
         <br>
         <br>// JavaScript uses backticks
         <br>let msg = `Hello, ${name}`;</code>
       </td>
-      <td valign="top"><code>val name = "Joe"
+    </tr>
+    <tr>
+      <td class="scala-block">
+          <code>val name = "Joe"
         <br>val age = 42
         <br>val weight = 180.5
         <br>
-        <br>// use `s` before a string for
-        <br>// simple interpolation
+        <br>// use `s` before a string for simple interpolation
         <br>println(s"Hi, $name")&nbsp;&nbsp; // "Hi, Joe"
         <br>println(s"${1 + 1}")&nbsp;&nbsp;&nbsp; // "2"
         <br>
-        <br>// `f` allows printf-style formatting.
+        <br>// `f` before a string allows printf-style formatting.
         <br>// this example prints:
         <br>// "Joe is 42 years old, and weighs"
         <br>// "180.5 pounds."
         <br>println(f"$name is $age years old, and weighs $weight%.1f pounds.")</code>
       </td>
     </tr>
+  </tbody>
 </table>
 
-JavaScript lets you create multiline strings with backticks, and supports interpolation:
 
-```javascript
-let name = "joe";
-let str = `
-Hello, ${name}.
-This is a multiline string.
-`;
-```
+### Multiline strings with interpolation
 
-Scala lets you create multiline strings with string interpolation:
-
-```scala
-val name = "Martin Odersky"
-
-val quote = s"""
-  |$name says
-  |Scala is a fusion of
-  |OOP and FP.
-""".stripMargin.replaceAll("\n", " ").trim
-
-// result:
-// "Martin Odersky says Scala is a fusion of OOP and FP."
-```
+<table>
+  <tbody>
+    <tr>
+      <td class="javascript-block">
+          <code>let name = "joe";
+        <br>let str = `
+        <br>Hello, ${name}.
+        <br>This is a multiline string.
+        <br>`;
+        </code>
+      </td>
+    </tr>
+    <tr>
+      <td class="scala-block">
+          <code>val name = "Martin Odersky"
+        <br>
+        <br>val quote = s"""
+        <br>  |$name says
+        <br>  |Scala is a fusion of
+        <br>  |OOP and FP.
+        <br>""".stripMargin.replaceAll("\n", " ").trim
+        <br>
+        <br>// result:
+        <br>// "Martin Odersky says Scala is a fusion of OOP and FP."
+        </code>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 JavaScript and Scala also have similar methods to work with strings, including `charAt`, `concat`, `indexOf`, and many more.
 Escape characters like `\n`, `\f`, `\t` are also the same in both languages.
 
 
-### Numbers and arithmetic
+
+## Numbers and arithmetic
 
 Numeric operators are similar between JavaScript and Scala.
-The biggest difference is that Scala doesn’t offer `++` and `--` operators:
+The biggest difference is that Scala doesn’t offer `++` and `--` operators.
+
+
+### Numeric operators:
 
 <table>
   <tbody>
     <tr>
-      <th valign="top">JavaScript</th>
-      <th valign="top">Scala</th>
-    </tr>
-    <tr>
-      <td rowspan="1" colspan="2" class="table-desc-row">Numeric operators</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>let x = 1;
-        <br>let y = 2.0;</code>
-      </td>
-      <td valign="top"><code>val x = 1
-        <br>val y = 2.0</code>
-      </td>
-    </tr>
-    <tr>
-      <td valign="top"><code>let a = 1 + 1;
+      <td class="javascript-block">
+          <code>let x = 1;
+        <br>let y = 2.0;
+        <br>&nbsp;
+        <br>let a = 1 + 1;
         <br>let b = 2 - 1;
         <br>let c = 2 * 2;
         <br>let d = 4 / 2;
-        <br>let e = 5 % 2;</code>
+        <br>let e = 5 % 2;
+        </code>
       </td>
-      <td valign="top"><code>val a = 1 + 1
+    </tr>
+    <tr>
+      <td class="scala-block">
+          <code>val x = 1
+        <br>val y = 2.0
+        <br>&nbsp;
+        <br>val a = 1 + 1
         <br>val b = 2 - 1
         <br>val c = 2 * 2
         <br>val d = 4 / 2
-        <br>val e = 5 % 2</code>
+        <br>val e = 5 % 2
+        </code>
       </td>
     </tr>
+  </tbody>
+</table>
+
+
+### Increment and decrement:
+
+<table>
+  <tbody>
     <tr>
-      <td rowspan="1" colspan="2" class="table-desc-row">Increment and decrement</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>i++;
+      <td class="javascript-block">
+          <code>i++;
         <br>i += 1;
         <br>
         <br>i--;
         <br>i -= 1;</code>
       </td>
-      <td valign="top"><code>i += 1;
+    </tr>
+    <tr>
+      <td class="scala-block">
+          <code>i += 1;
         <br>i -= 1;</code>
       </td>
     </tr>
@@ -284,7 +300,7 @@ The biggest difference is that Scala doesn’t offer `++` and `--` operators:
 </table>
 
 Perhaps the biggest difference is that “operators” like `+` and `-` are really *methods* in Scala, not operators.
-Scala numbers also have these additional methods:
+Scala numbers also have these related methods:
 
 ```scala
 var a = 2
@@ -292,9 +308,11 @@ a *= 2      // 4
 a /= 2      // 2
 ```
 
-Scala's `Double` type most closely corresponds to JavaScripts default `number` type,
-`Int` represents signed 32-bit integer values, and `BigInt` corresponds to JavaScript's `bigint`s.
-Here are a few examples:
+Scala's `Double` type most closely corresponds to JavaScript’s default `number` type,
+`Int` represents signed 32-bit integer values, and `BigInt` corresponds to JavaScript's `bigint`.
+
+These are Scala `Int` and `Double` values.
+Notice that the type doesn’t have to be explicitly declared:
 
 ```scala
 val i = 1     // Int
@@ -315,79 +333,84 @@ val x = BigInt(1_234_456_789)
 val y = BigDecimal(1_234_456.890)
 ```
 
-Boolean values are the same in both languages:
+
+### Boolean values
+
+Both languages use `true` and `false` for boolean values:
 
 <table>
   <tbody>
     <tr>
-      <th valign="top">JavaScript</th>
-      <th valign="top">Scala</th>
-    </tr>
-    <tr>
-      <td valign="top"><code>let a = true;
+      <td class="javascript-block">
+          <code>let a = true;
         <br>let b = false;</code>
       </td>
-      <td valign="top"><code>val a = true
+    </tr>
+    <tr>
+      <td class="scala-block">
+          <code>val a = true
         <br>val b = false</code>
       </td>
     </tr>
   </tbody>
 </table>
 
-### Dates
+
+
+## Dates
 
 Dates are another commonly used type in both languages.
-Here are a few examples of how they work:
+
+### Get the current date:
 
 <table>
   <tbody>
     <tr>
-      <th valign="top">JavaScript</th>
-      <th valign="top">Scala</th>
-    </tr>
-    <tr>
-      <td rowspan="1" colspan="2" class="table-desc-row">Get the current date</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>let d = new Date();<br>
+      <td class="javascript-block">
+          <code>let d = new Date();<br>
         <br>// result:
-        <br>// Sun Nov 29 2020 18:47:57
-        <br>// GMT-0700 (Mountain Standard Time)</code>
+        <br>// Sun Nov 29 2020 18:47:57 GMT-0700 (Mountain Standard Time)
+        </code>
       </td>
-      <td valign="top"><code>// different ways to get the current
-        <br>// date and time
+    </tr>
+    <tr>
+      <td class="scala-block">
+          <code>// different ways to get the current date and time
         <br>import java.time._
         <br>
         <br>val a = LocalDate.now
         <br>&nbsp;&nbsp;&nbsp; // 2020-11-29
-
         <br>val b = LocalTime.now
         <br>&nbsp;&nbsp;&nbsp; // 18:46:38.563737
-
         <br>val c = LocalDateTime.now
         <br>&nbsp;&nbsp;&nbsp; // 2020-11-29T18:46:38.563750
-
         <br>val d = Instant.now
         <br>&nbsp;&nbsp;&nbsp; // 2020-11-30T01:46:38.563759Z</code>
       </td>
     </tr>
+  </tbody>
+</table>
+
+
+### Specify a different date:
+
+<table>
+  <tbody>
     <tr>
-      <td rowspan="1" colspan="2" class="table-desc-row">Specify a different date</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>let d = Date(2020, 1, 21, 1, 0, 0, 0);
+      <td class="javascript-block">
+          <code>let d = Date(2020, 1, 21, 1, 0, 0, 0);
         <br>let d = Date(2020, 1, 21, 1, 0, 0);
         <br>let d = Date(2020, 1, 21, 1, 0);
         <br>let d = Date(2020, 1, 21, 1);
         <br>let d = Date(2020, 1, 21);</code>
       </td>
-      <td valign="top"><code>val d = LocalDate.of(2020, 1, 21)
-        <br>val d = LocalDate.of(
-        <br>&nbsp;&nbsp;2020, Month.JANUARY, 21
-        <br>)
-        <br>val d = LocalDate.of(
-        <br>&nbsp;&nbsp;2020, 1, 1
-        <br>).plusDays(20)</code>
+    </tr>
+    <tr>
+      <td class="scala-block">
+          <code>val d = LocalDate.of(2020, 1, 21)
+        <br>val d = LocalDate.of(2020, Month.JANUARY, 21)
+        <br>val d = LocalDate.of(2020, 1, 1).plusDays(20)
+        </code>
       </td>
     </tr>
   </tbody>
@@ -403,42 +426,44 @@ See [the *java.time* package](https://docs.oracle.com/en/java/javase/11/docs/api
 
 In both JavaScript and Scala, functions are objects, so their functionality is similar, but their syntax and terminology is a little different.
 
-Simple “named” functions look like this:
+### Named functions, one line:
 
 <table>
   <tbody>
     <tr>
-      <th valign="top">JavaScript</th>
-      <th valign="top">Scala</th>
-    </tr>
-    <tr>
-      <td rowspan="1" colspan="2" class="table-desc-row">Named functions, one line</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>function add(a, b) {
+      <td class="javascript-block">
+          <code>function add(a, b) {
         <br>&nbsp; return a + b;
         <br>}
-        <br>
         <br>add(2, 2);&nbsp;&nbsp; // 4</code>
       </td>
-      <td valign="top"><code>// technically this is a “method,”
-        <br>// not a function
+    </tr>
+    <tr>
+      <td class="scala-block">
+          <code>// technically this is a “method,” not a function
         <br>def add(a: Int, b: Int) = a + b
-        <br>
         <br>add(2, 2)&nbsp;&nbsp; // 4</code>
       </td>
     </tr>
+  </tbody>
+</table>
+
+### Named functions, multiline:
+
+<table>
+  <tbody>
     <tr>
-      <td rowspan="1" colspan="2" class="table-desc-row">Named functions, multiline</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>function addAndDouble(a, b) {
+      <td class="javascript-block">
+          <code>function addAndDouble(a, b) {
         <br>&nbsp; // imagine this requires
         <br>&nbsp; // multiple lines
         <br>&nbsp; return (a + b) * 2
         <br>}</code>
       </td>
-      <td valign="top"><code>def addAndDouble(a: Int, b: Int): Int =
+    </tr>
+    <tr>
+      <td class="scala-block">
+          <code>def addAndDouble(a: Int, b: Int): Int =
         <br>&nbsp; // imagine this requires
         <br>&nbsp; // multiple lines
         <br>&nbsp; (a + b) * 2</code>
@@ -448,26 +473,21 @@ Simple “named” functions look like this:
 </table>
 
 In Scala, showing the `Int` return type is optional.
-It’s not shown in the `add` example, and is shown in the `addThenDouble` example, so you can see both approaches.
+It’s _not_ shown in the `add` example and _is_ shown in the `addThenDouble` example, so you can see both approaches.
 
 
-### Anonymous functions
 
-Both JavaScript and Scala let you define anonymous functions, which you can pass into other functions and methods:
+## Anonymous functions
+
+Both JavaScript and Scala let you define anonymous functions, which you can pass into other functions and methods.
+
+### Arrow and anonymous functions
 
 <table>
   <tbody>
     <tr>
-      <th valign="top">JavaScript</th>
-      <th valign="top">Scala</th>
-    </tr>
-    <tr>
-      <td rowspan="1" colspan="2" class="table-desc-row">Define an arrow
-        function and pass it to another function
-      </td>
-    </tr>
-    <tr>
-      <td valign="top"><code>// arrow function
+      <td class="javascript-block">
+        <code>// arrow function
         <br>let log = (s) =&gt; console.log(s)
         <br>
         <br>// anonymous function
@@ -475,34 +495,33 @@ Both JavaScript and Scala let you define anonymous functions, which you can pass
         <br>&nbsp; console.log(s);
         <br>}
         <br>
-        <br>// use either of those
-        <br>// functions here
+        <br>// use either of those functions here
         <br>function printA(a, log) {
         <br>&nbsp; log(a);
         <br>}</code>
       </td>
-      <td valign="top"><code>// an anonymous function assigned
-        <br>// to a variable
+    </tr>
+    <tr>
+      <td class="scala-block">
+        <code>// a function (an anonymous function assigned to a variable)
         <br>val log = (s: String) =&gt; console.log(s)
         <br>
-        <br>// a scala method. methods tend to be
-        <br>// used much more often, probably
-        <br>// because they’re easier to read.
+        <br>// a scala method. methods tend to be used much more often,
+        <br>// probably because they’re easier to read.
         <br>def log(a: Any) = console.log(a)
         <br>
-        <br>// a function or a method can be passed
-        <br>// into another function or method
-        <br>def printA(
-        <br>&nbsp; a: Any,
-        <br>&nbsp; f: log: Any =&gt; Unit
-        <br>) = log(a)</code>
+        <br>// a function or a method can be passed into another
+        <br>// function or method
+        <br>def printA(a: Any, f: log: Any =&gt; Unit) = log(a)
+        </code>
       </td>
     </tr>
   </tbody>
 </table>
 
-In Scala you rarely define a function using the first syntax shown, and often define anonymous functions right at the point of use.
-Also, many of the methods on the collections classes accept function parameters, so you write code like this:
+In Scala you rarely define a function using the first syntax shown.
+Instead, you often define anonymous functions right at the point of use.
+Many collections methods are higher-order functions and accept function parameters, so you write code like this:
 
 ```scala
 // map method, long form
@@ -526,7 +545,7 @@ Scala has both classes and case classes.
 A *class* is similar to a JavaScript class, and is generally intended for use in OOP style applications (though they can also be used in FP code), and *case classes* have additional features that make them very useful in FP style applications.
 
 The following example shows how to create several types as enumerations, and then defines an OOP-style `Pizza` class.
-At the end a `Pizza` instance is created and used:
+At the end, a `Pizza` instance is created and used:
 
 ```scala
 // create some enumerations that the Pizza class will use
@@ -629,7 +648,13 @@ d.walk()             // "I’m walking"
 
 ## Control Structures
 
-Except for the use of `===` and `!==` in JavaScript, comparison and logical operators are almost identical in JavaScript and Scala:
+Except for the use of `===` and `!==` in JavaScript, comparison and logical operators are almost identical in JavaScript and Scala.
+
+{% comment %}
+TODO: Sébastien mentioned that `===` is closest to `eql` in Scala. Update this area.
+{% endcomment %}
+
+### Comparison operators
 
 <table>
   <tbody>
@@ -638,50 +663,72 @@ Except for the use of `===` and `!==` in JavaScript, comparison and logical oper
       <th valign="top">Scala</th>
     </tr>
     <tr>
-      <td rowspan="1" colspan="2" class="table-desc-row">Comparison operators</td>
+      <td valign="top">
+        <code>==</code></td>
+      <td valign="top">
+        <code>==</code></td>
     </tr>
     <tr>
-      <td valign="top"><code>==</code></td>
-      <td valign="top"><code>==</code></td>
+      <td valign="top">
+        <code>===</code></td>
+      <td valign="top">
+        <code>==</code></td>
     </tr>
     <tr>
-      <td valign="top"><code>===</code></td>
-      <td valign="top"><code>==</code></td>
+      <td valign="top">
+        <code>!=</code></td>
+      <td valign="top">
+        <code>!=</code></td>
     </tr>
     <tr>
-      <td valign="top"><code>!=</code></td>
-      <td valign="top"><code>!=</code></td>
+      <td valign="top">
+        <code>!==</code></td>
+      <td valign="top">
+        <code>!=</code></td>
     </tr>
     <tr>
-      <td valign="top"><code>!==</code></td>
-      <td valign="top"><code>!=</code></td>
+      <td valign="top">
+        <code>&gt;</code></td>
+      <td valign="top">
+        <code>&gt;</code></td>
     </tr>
     <tr>
-      <td valign="top"><code>&gt;</code></td>
-      <td valign="top"><code>&gt;</code></td>
+      <td valign="top">
+        <code>&lt;</code></td>
+      <td valign="top">
+        <code>&lt;</code></td>
     </tr>
     <tr>
-      <td valign="top"><code>&lt;</code></td>
-      <td valign="top"><code>&lt;</code></td>
+      <td valign="top">
+        <code>&gt;=</code></td>
+      <td valign="top">
+        <code>&gt;=</code></td>
     </tr>
     <tr>
-      <td valign="top"><code>&gt;=</code></td>
-      <td valign="top"><code>&gt;=</code></td>
+      <td valign="top">
+        <code>&lt;=</code></td>
+      <td valign="top">
+        <code>&lt;=</code></td>
+    </tr>
+  </tbody>
+</table>
+
+### Logical operators
+
+<table>
+  <tbody>
+    <tr>
+      <th valign="top">JavaScript</th>
+      <th valign="top">Scala</th>
     </tr>
     <tr>
-      <td valign="top"><code>&lt;=</code></td>
-      <td valign="top"><code>&lt;=</code></td>
-    </tr>
-    <tr>
-      <td rowspan="1" colspan="2" class="table-desc-row">Logical operators (<i>and</i>,
-        <i>or</i>, and <i>not</i>)</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>&amp;&amp;
+      <td valign="top">
+        <code>&amp;&amp;
         <br>||
         <br>!</code>
       </td>
-      <td valign="top"><code>&amp;&amp;
+      <td valign="top">
+        <code>&amp;&amp;
         <br>||
         <br>!</code>
       </td>
@@ -690,44 +737,58 @@ Except for the use of `===` and `!==` in JavaScript, comparison and logical oper
 </table>
 
 
-### if/then/else expressions
+
+## if/then/else expressions
 
 JavaScript and Scala if/then/else statements are similar.
-In Scala 2 they were almost identical, but with Scala 3, curly braces are no longer necessary (though they can still be used):
+In Scala 2 they were almost identical, but with Scala 3, curly braces are no longer necessary (though they can still be used).
+
+### `if` statement, one line:
 
 <table>
   <tbody>
     <tr>
-      <th valign="top">JavaScript</th>
-      <th valign="top">Scala</th>
+      <td class="javascript-block">
+        <code>if (x == 1) { console.log(1); }</code>
+      </td>
     </tr>
     <tr>
-      <td rowspan="1" colspan="2" class="table-desc-row"><code>if</code> statement, one line</td>
+      <td class="scala-block">
+        <code>if x == 1 then println(x)</code>
+      </td>
     </tr>
+  </tbody>
+</table>
+
+### `if` statement, multiline:
+
+<table>
+  <tbody>
     <tr>
-      <td valign="top"><code>if (x == 1) { console.log(1); }</code></td>
-      <td valign="top"><code>if x == 1 then println(x)</code></td>
-    </tr>
-    <tr>
-      <td rowspan="1" colspan="2" class="table-desc-row"><code>if</code> statement, multiline</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>if (x == 1) {
+      <td class="javascript-block">
+        <code>if (x == 1) {
         <br>&nbsp; console.log("x is 1, as you can see:")
         <br>&nbsp; console.log(x)
         <br>}</code>
       </td>
-      <td valign="top"><code>if x == 1 then
+    </tr>
+    <tr>
+      <td class="scala-block">
+        <code>if x == 1 then
         <br>&nbsp; println("x is 1, as you can see:")
         <br>&nbsp; println(x)</code>
       </td>
     </tr>
+  </tbody>
+</table>
+
+### if, else if, else:
+
+<table>
+  <tbody>
     <tr>
-      <td rowspan="1" colspan="2" class="table-desc-row">if/else if/else</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>// verified
-        <br>if (x &lt; 0) {
+      <td class="javascript-block">
+        <code>if (x &lt; 0) {
         <br>&nbsp; console.log("negative")
         <br>} else if (x == 0) {
         <br>&nbsp; console.log("zero")
@@ -735,7 +796,10 @@ In Scala 2 they were almost identical, but with Scala 3, curly braces are no lon
         <br>&nbsp; console.log("positive")
         <br>}</code>
       </td>
-      <td valign="top"><code>if x &lt; 0 then
+    </tr>
+    <tr>
+      <td class="scala-block">
+        <code>if x &lt; 0 then
         <br>&nbsp; println("negative")
         <br>else if x == 0
         <br>&nbsp; println("zero")
@@ -743,24 +807,44 @@ In Scala 2 they were almost identical, but with Scala 3, curly braces are no lon
         <br>&nbsp; println("positive")</code>
       </td>
     </tr>
+  </tbody>
+</table>
+
+### Returning a value from `if`:
+
+JavaScript uses a ternary operator, and Scala uses its `if` expression as usual:
+
+<table>
+  <tbody>
     <tr>
-      <td rowspan="1" colspan="2" class="table-desc-row">Returning a value from if (i.e., ternary use)</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>let minVal = a &lt; b ? a : b;</code></td>
-      <td valign="top"><code>// no special syntax
-        <br>val minValue = if a &lt; b then a else b</code>
+      <td class="javascript-block">
+        <code>let minVal = a &lt; b ? a : b;</code>
       </td>
     </tr>
     <tr>
-      <td rowspan="1" colspan="2" class="table-desc-row"><code>if</code> as the body of a method</td>
+      <td class="scala-block">
+        <code>val minValue = if a &lt; b then a else b</code>
+      </td>
     </tr>
+  </tbody>
+</table>
+
+### `if` as the body of a method:
+
+Scala methods tend to be very short, and you can easily use `if` as the body of a method:
+
+<table>
+  <tbody>
     <tr>
-      <td valign="top"><code>function min(a, b) {
+      <td class="javascript-block">
+        <code>function min(a, b) {
         <br>&nbsp; return (a &lt; b) ? a : b;
         <br>}</code>
       </td>
-      <td valign="top"><code>def min(a: Int, b: Int): Int =
+    </tr>
+    <tr>
+      <td class="scala-block">
+        <code>def min(a: Int, b: Int): Int =
         <br>&nbsp; if a &lt; b then a else b</code>
       </td>
     </tr>
@@ -771,9 +855,6 @@ In Scala 3 you can still use the “curly brace” style, if you prefer.
 For instance, you can write an if/else-if/else expression like this:
 
 ```scala
-// scala
-val i = 1
-
 if (i == 0) {
   println(0)
 } else if (i == 1) {
@@ -784,26 +865,28 @@ if (i == 0) {
 ```
 
 
-### Loops
+
+## Loops
 
 Both JavaScript and Scala have `while` loops and `for` loops.
 Scala used to have do/while loops, but they have been removed from the language.
-`while` loops look like this:
+
+### `while` loop:
 
 <table>
   <tbody>
     <tr>
-      <th valign="top">JavaScript</th>
-      <th valign="top">Scala</th>
-    </tr>
-    <tr>
-      <td valign="top"><code>let i = 0;
+      <td class="javascript-block">
+        <code>let i = 0;
         <br>while (i &lt; 3) {
         <br>&nbsp; console.log(i);
         <br>&nbsp; i++;
         <br>}</code>
       </td>
-      <td valign="top"><code>var i = 0;
+    </tr>
+    <tr>
+      <td class="scala-block">
+        <code>var i = 0;
         <br>while i &lt; 3 do
         <br>&nbsp; println(i)
         <br>&nbsp; i += 1</code>
@@ -833,19 +916,13 @@ let nums = [1, 2, 3];
 val nums = List(1, 2, 3)
 ```
 
-The examples:
+### `for` loop, single line
 
 <table>
   <tbody>
     <tr>
-      <th valign="top">JavaScript</th>
-      <th valign="top">Scala</th>
-    </tr>
-    <tr>
-      <td rowspan="1" colspan="2" class="table-desc-row"><code>for</code> loop, single line</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>// newer syntax
+      <td class="javascript-block">
+        <code>// newer syntax
         <br>for (let i of nums) {
         <br>&nbsp; console.log(i);
         <br>}
@@ -855,19 +932,26 @@ The examples:
         <br>&nbsp; console.log(nums[i]);
         <br>}</code>
       </td>
-      <td valign="top"><code>// preferred
+    </tr>
+    <tr>
+      <td class="scala-block">
+        <code>// preferred
         <br>for i &lt;- ints do println(i)
         <br>
         <br>// also available
         <br>for (i &lt;- ints) println(i)</code>
       </td>
     </tr>
+  </tbody>
+</table>
+
+### `for` loop, multiple lines in the body
+
+<table>
+  <tbody>
     <tr>
-      <td rowspan="1" colspan="2" class="table-desc-row"><code>for</code>
-        loop, multiple lines in the body</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>// preferred
+      <td class="javascript-block">
+        <code>// preferred
         <br>for (let i of nums) {
         <br>&nbsp; let j = i * 2;
         <br>&nbsp; console.log(j);
@@ -879,7 +963,10 @@ The examples:
         <br>&nbsp; console.log(j);
         <br>}</code>
       </td>
-      <td valign="top"><code>// preferred
+    </tr>
+    <tr>
+      <td class="scala-block">
+        <code>// preferred
         <br>for i &lt;- ints do
         <br>&nbsp; val i = i * 2
         <br>&nbsp; println(j)
@@ -891,32 +978,16 @@ The examples:
         <br>}</code>
       </td>
     </tr>
-    <tr>
-      <td rowspan="1" colspan="2" class="table-desc-row">Breaking a <code>for</code>
-        loop</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>for (let i=0; i&lt;10; i++) {
-        <br>&nbsp; if (i &gt; 5) break;
-        <br>&nbsp; console.log(i);
-        <br>}</code>
-      </td>
-      <td valign="top">A <code>break</code> statement is very rarely
-        used in Scala. If you need it, you can import it and then
-        use it.
-      </td>
-    </tr>
+  </tbody>
+</table>
 
-    <!-- 
-      TODO: please remove these comments and show this code when this 
-            page is reformatted.
-    -->
-    <!--
+### Multiple generators in a `for` loop
+
+<table>
+  <tbody>
     <tr>
-      <td rowspan="1" colspan="2" class="table-desc-row">Multiple generators</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>let str = &quot;ab&quot;;
+      <td class="javascript-block">
+        <code>let str = &quot;ab&quot;;
         <br>for (let i = 1; i &lt; 3; i++) {
         <br>&nbsp; for (var j = 0; j &lt; str.length; j++) {
         <br>&nbsp;&nbsp;&nbsp; for (let k = 1; k &lt; 11; k++) {
@@ -926,7 +997,10 @@ The examples:
         <br>&nbsp; }
         <br>}</code>
       </td>
-      <td valign="top"><code>for
+    </tr>
+    <tr>
+      <td class="scala-block">
+        <code>for
         <br>&nbsp; i &lt;- 1 to 2
         <br>&nbsp; j &lt;- 'a' to 'b'
         <br>&nbsp; k &lt;- 1 to 10 by 5
@@ -934,20 +1008,27 @@ The examples:
         <br>&nbsp; println(s"i: $i, j: $j, k: $k")</code>
       </td>
     </tr>
-    -->
+  </tbody>
+</table>
 
+### Generator with guards
+
+A _guard_ is a name for an `if` expression inside a `for` expression.
+
+<table>
+  <tbody>
     <tr>
-      <td rowspan="1" colspan="2" class="table-desc-row">Generator with guards
-        (<code>if</code> expressions)</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>for (let i = 0; i &lt; 10; i++) {
+      <td class="javascript-block">
+        <code>for (let i = 0; i &lt; 10; i++) {
         <br>&nbsp; if (i % 2 == 0 &amp;&amp; i &lt; 5) {
         <br>&nbsp;&nbsp;&nbsp; console.log(i);
         <br>&nbsp; }
         <br>}</code>
       </td>
-      <td valign="top"><code>for
+    </tr>
+    <tr>
+      <td class="scala-block">
+        <code>for
         <br>&nbsp; i &lt;- 1 to 10
         <br>&nbsp; if i % 2 == 0
         <br>&nbsp; if i &lt; 5
@@ -955,15 +1036,23 @@ The examples:
         <br>&nbsp; println(i)</code>
       </td>
     </tr>
+  </tbody>
+</table>
+
+### `for` comprehension
+
+A `for` comprehension is a `for` loop that uses `yield` to return (yield) a value. They’re used often in Scala.
+
+<table>
+  <tbody>
     <tr>
-      <td rowspan="1" colspan="2" class="table-desc-row"><code>for</code>
-        comprehension</td>
+      <td class="javascript-block">
+        N/A
+      </td>
     </tr>
     <tr>
-      <td valign="top">N/A</td>
-      <td valign="top"><code>// a for-comprehension is a for-loop
-        <br>// that returns/yields a value
-        <br>val list =
+      <td class="scala-block">
+        <code>val list =
         <br>&nbsp; for
         <br>&nbsp;&nbsp;&nbsp; i &lt;- 1 to 3
         <br>&nbsp; yield
@@ -975,13 +1064,13 @@ The examples:
 </table>
 
 
-### switch & match
+
+## switch & match
 
 Where JavaScript has `switch` statements, Scala has `match` expressions.
-Like everything else in Scala, these truly are *expressions*, meaning they return a result.
+Like everything else in Scala, these truly are *expressions*, meaning they return a result:
 
 ```scala
-// a sample match expression that returns a result
 val day = 1
 
 // later in the code ...
@@ -1000,16 +1089,16 @@ val numAsString = i match
   case _ => "too big"
 ```
 
-`match` expressions can be used as the body of a method:
+They can also be used as the body of a method:
 
 ```scala
-def isTrue(a: Any) = a match
+def isTruthy(a: Matchable) = a match
   case 0 | "" => false
   case _ => true
 
-def isPerson(x: Any): Boolean = x match
-case p: Person => true
-case _ => false
+def isPerson(x: Matchable): Boolean = x match
+  case p: Person => true
+  case _ => false
 ```
 
 `match` expressions have many other pattern-matching options.
@@ -1047,11 +1136,11 @@ val map = Map(
 )
 ```
 
-### Methods on collections classes
+### Methods on collections
 
-The following examples show many different ways to work with Scala collections classes.
+The following examples show many different ways to work with Scala collections.
 
-#### Populating lists
+### Populating lists:
 
 ```scala
 // to, until
@@ -1075,10 +1164,10 @@ List.tabulate(3)(n => n * n)      // List(0, 1, 4)
 List.tabulate(4)(n => n * n)      // List(0, 1, 4, 9)
 ```
 
-#### Functional methods on sequence classes
+### Functional methods on sequences:
 
 ```scala
-// these examples use a List, but they are the same with Vector
+// these examples use a List, but they’re the same with Vector
 val a = List(10, 20, 30, 40, 10)      // List(10, 20, 30, 40, 10)
 a.contains(20)                        // true
 a.distinct                            // List(10, 20, 30, 40)
@@ -1130,7 +1219,7 @@ The benefits of all these methods are:
 When you want to put multiple data types in the same list, JavaScript lets you do this:
 
 ```scala
-let stuff = ["Joe", 42, 1.0]
+let stuff = ["Joe", 42, 1.0];
 ```
 
 In Scala you do this:
@@ -1254,17 +1343,20 @@ Here are some of their initial tutorials:
 
 There are other concepts in Scala which currently have no equivalent in JavaScript:
 
-- Almost everything related to contextual abstractions
+- Almost everything related to [contextual abstractions][contextual]
 - Method features:
-  -   Multiple parameter lists
-  -   Using named arguments when calling methods
+  - Multiple parameter lists
+  - Using named arguments when calling methods
 - Using traits as interfaces
 - Case classes
 - Companion classes and objects
 - The ability to create your own control structures and DSLs
-- Pattern matching
-- Advanced features of `match` expressions
+- Advanced features of `match` expressions and pattern matching
 - `for` comprehensions
 - Infix methods
 - Macros and metaprogramming
 - More ...
+
+
+[contextual]: {% link _overviews/scala3-book/ca-contextual-abstractions-intro.md %}
+

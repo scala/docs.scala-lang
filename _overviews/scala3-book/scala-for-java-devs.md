@@ -7,52 +7,7 @@ previous-page: interacting-with-java
 next-page: scala-for-javascript-devs
 ---
 
-<style>
-.content-primary td code
-{
-  margin: 0;
-  padding: 0;
-  background: none;
-}
-.content-primary table
-{
-  background: #fdfdf7;
-  border-collapse: collapse;
-}
-.content-primary th,
-.content-primary td
-{
-  border-top: 1px solid #E5EAEA;
-  border-bottom: 1px solid #E5EAEA;
-}
-.content-primary table td.java-block,
-.content-primary table td.scala-block
-{
-  position: relative;
-  padding-bottom: 20px;
-}
-.content-primary table td.java-block:after,
-.content-primary table td.scala-block:after
-{
-  color: #ccc;
-  display: block;
-  font-size: 17px;
-  line-height: 1;
-  position: absolute;
-  top: 8px;
-  right: 2px;
-  z-index: 1;
-}
-.content-primary table td.java-block:after
-{
-  content: "java";
-}
-.content-primary table td.scala-block:after
-{
-  content: "scala";
-}
-</style>
-
+{% include_relative scala4x.css %}
 
 
 This page provides a comparison between the Java and Scala programming languages by sharing side-by-sde examples of each language.
