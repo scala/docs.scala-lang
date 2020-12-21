@@ -30,4 +30,4 @@ abstractions and offers more fine-grained control.
 
 > 🚧 We are still in the process of writing the tutorial. You can [help us improve it][contributing] 🚧
 
-[contributing]: /scala3/contribute-to-docs.html
+[contributing]: {% link scala3/contribute-to-docs.md %}
