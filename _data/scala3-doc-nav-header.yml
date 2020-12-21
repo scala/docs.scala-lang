@@ -4,7 +4,7 @@
     - title: New in Scala 3
       url: "/scala3/new-in-scala3.html"
     - title: Getting Started
-      url: "/scala3/getting-started/index.html"
+      url: "/scala3/getting-started.html"
     - title: Scala 3 Book
       url: "/scala3/book/introduction.html"
     - title: Macro Tutorial
