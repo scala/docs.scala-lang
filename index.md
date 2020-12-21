@@ -1,7 +1,9 @@
 ---
 layout: documentation
+languages: [ja, zh-cn, ru]
 title: Documentation
 namespace: root
+discourse: true
 partof: documentation
 more-resources-label: More Resources
 
