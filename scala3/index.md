@@ -31,7 +31,7 @@ sections:
       - title: "Guides"
         description: "Detailed guides about particular aspects of the language."
         icon: "fa fa-map"
-        link: /scala3/guides
+        link: /scala3/guides.html
       - title: "API"
         description: "API documentation for every version of Scala 3."
         icon: "fa fa-file-text"

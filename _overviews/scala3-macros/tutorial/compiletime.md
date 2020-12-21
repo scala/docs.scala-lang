@@ -72,4 +72,4 @@ Summon all provides a way to summon multiple values at the same time from a tupl
 *Coming soon*
 
 
-[compiletime-api]: https://dotty.epfl.ch/api/scala/compiletime/index.html
+[compiletime-api]: https://dotty.epfl.ch/api/scala/compiletime.html
