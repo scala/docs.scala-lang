@@ -26,7 +26,7 @@ In general, there is many different ways you could help us:
 Typically, each of the different documentation projects contain links (and so does this document, in the table-of-contents pane) to edit and improve them. Additionally, below we provide you with the necessary information to get started.
 
 ## Scala 3 Book
-The [Scala 3 Book](/scala3/book) is being written by Alvin Alexander and provides an overview over all the important features of Scala 3. It targets readers, which are new to Scala.
+The [Scala 3 Book][scala3-book] is being written by Alvin Alexander and provides an overview over all the important features of Scala 3. It targets readers, which are new to Scala.
 
 - [Sources](https://github.com/scala/docs.scala-lang/tree/master/_overviews/scala3-book)
 - [Issues](https://github.com/scala/docs.scala-lang/issues)
@@ -67,18 +67,21 @@ a tour presenting the migration tools, and detailed migration guides.
 - [Issues](https://github.com/scalacenter/scala-3-migration-guide/issues)
 
 
-[best-practices]: /scala3/guides/macros/best-practices
-[compiletime]: /scala3/guides/macros/tutorial/compiletime
-[cross-compilation]: https://scalacenter.github.io/scala-3-migration-guide/docs/macros/migration-tutorial.html#cross-building
-[inline]: /scala3/guides/macros/tutorial/inline
-[macros]: /scala3/guides/macros/tutorial/macros
-[migration-status]: https://scalacenter.github.io/scala-3-migration-guide/docs/macros/macro-libraries.html
-[quotes]: /scala3/guides/macros/tutorial/quotes
-[tasty]: /scala3/guides/macros/tutorial/tasty-reflection
-[reflection-api]: https://dotty.epfl.ch/api/scala/quoted.html
-
 ## Scala 3 Language Reference
 The [Dotty reference](https://dotty.epfl.ch/docs/reference/overview.html) will evolve into the Scala 3 language, containing  a formal presentation and detailed technical information about the various features of the language.
 
 - [Sources](https://github.com/lampepfl/dotty/tree/master/docs/docs/reference)
 - [Issues](https://github.com/lampepfl/dotty/issues)
+
+
+[scala3-book]: {% link _overviews/scala3-book/introduction.md %}
+
+[best-practices]: {% link _overviews/scala3-macros/best-practices.md %}
+[compiletime]: {% link _overviews/scala3-macros/tutorial/compiletime.md %}
+[cross-compilation]: https://scalacenter.github.io/scala-3-migration-guide/docs/macros/migration-tutorial.html#cross-building
+[inline]: {% link _overviews/scala3-macros/tutorial/inline.md %}
+[macros]: {% link _overviews/scala3-macros/tutorial/macros.md %}
+[migration-status]: https://scalacenter.github.io/scala-3-migration-guide/docs/macros/migration-status.html
+[quotes]: {% link _overviews/scala3-macros/tutorial/quotes.md %}
+[tasty]: {% link _overviews/scala3-macros/tutorial/reflection.md %}
+[reflection-api]: https://dotty.epfl.ch/api/scala/quoted.html

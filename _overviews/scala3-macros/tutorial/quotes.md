@@ -4,7 +4,7 @@ title: Quoted Code
 num: 5
 
 previous-page: macros
-next-page: tasty-reflection
+next-page: reflection
 ---
 
 ## Code blocks
@@ -388,5 +388,5 @@ def setForCode[T: Type](using Quotes): Expr[Set[T]] =
 The difference is that in this scenario we do start expanding the macro before the implicit search failure and we can write arbitrary code to handle the case where it is not found.
 Here we used `HashSet` and another valid implementation that does not need the `Ordering`.
 
-[macros]: {% link _overviews/scala3-macros/tutorial/macros.md %} 
+[macros]: {% link _overviews/scala3-macros/tutorial/macros.md %}
 [quotes]: {% link _overviews/scala3-macros/tutorial/quotes.md %}
