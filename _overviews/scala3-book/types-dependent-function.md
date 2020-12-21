@@ -142,5 +142,5 @@ derive { x => x * x + const(2.0) }
 ```
 
 
-[ref]: {{ site.scala3-ref }}/new-types/dependent-function-types.html
-[ctx-fun]: {{ site.scala3-ref }}/contextual/context-functions.html
+[ref]: {{ site.scala3ref }}/new-types/dependent-function-types.html
+[ctx-fun]: {{ site.scala3ref }}/contextual/context-functions.html

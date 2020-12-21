@@ -107,7 +107,7 @@ When defining methods:
 def add(a: Int, b: Int) = a + b
 ```
 
-And in Scala 3, when using [union types](types-union.md):
+And in Scala 3, when using [union types][union-types]:
 
 ```scala
 // union type parameter
@@ -188,7 +188,7 @@ Benefits of these changes include:
 - It greatly improves the clarity of the 95% of Scala programs that use implicits
 - It has the potential to enable term inference in a principled way that is also accessible and friendly
 
-These capabilities are described in detail in other sections, so see the [Contextual Abstraction introduction]({% link _overviews/scala3-book/ca-contextual-abstractions-intro.md %}), and the section on [`given` and `using` clauses]({% link _overviews/scala3-book/ca-given-using-clauses.md %}) for more details.
+These capabilities are described in detail in other sections, so see the [Contextual Abstraction introduction][contextual], and the section on [`given` and `using` clauses][given] for more details.
 
 
 
@@ -201,7 +201,7 @@ A Scala `String` is essentially a Java `String`, with additional capabilities ad
 Scala seamlessly uses the date/time classes in the Java *import java.time._* package.
 You can also use Java collections classes in Scala, and to give them more functionality, Scala includes methods so you can transform them into Scala collections.
 
-While almost every interaction is seamless, the [“Interacting with Java” chapter]({% link _overviews/scala3-book/interacting-with-java.md %}) demonstrates how to use some features together better, including how to use:
+While almost every interaction is seamless, the [“Interacting with Java” chapter][java] demonstrates how to use some features together better, including how to use:
 
 - Java collections in Scala
 - Java `Optional` in Scala
@@ -357,7 +357,7 @@ Scala 3’s goals were defined early on, and those related to the type system in
 *Simplification* comes about through dozens of changed and dropped features.
 For instance, the changes from the overloaded `implicit` keyword in Scala 2 to the terms `given` and `using` in Scala 3 make the language more clear, especially for beginning developers.
 
-*Eliminating inconsistencies* is related to the dozens of [dropped features]({{ site.scala3ref }}/Dropped%20Features/index.html), [changed features]({{ site.scala3ref }}/Other%20Changed%20Features/index.html), and [added features]({{ site.scala3ref }}/Other%20New%20Features/index.html) in Scala 3.
+*Eliminating inconsistencies* is related to the dozens of [dropped features][dropped], [changed features][changed], and [added features][added] in Scala 3.
 Some of the most important features in this category are:
 
 - Intersection types
@@ -414,7 +414,7 @@ extension (c: Circle)
 ```
 
 *Performance* relates to several areas.
-One of those is [opaque types](types-opaque-types.md).
+One of those is [opaque types][opaque-types].
 In Scala 2 there were several attempts to create solutions to keep with the Domain-driven design (DDD) practice of giving values more meaningful types.
 These attempts included:
 
@@ -434,6 +434,13 @@ For more type system details, see the [Reference documentation][reference].
 Scala has many great features, and choosing a Top 10 list can be subjective.
 Hopefully you’ll discover more great Scala features as you use the language.
 
-
-
+[java]: {% link _overviews/scala3-book/interacting-with-java.md %}
+[given]: {% link _overviews/scala3-book/ca-given-using-clauses.md %}
+[contextual]: {% link _overviews/scala3-book/ca-contextual-abstractions-intro.md %}
 [reference]: {{ site.scala3ref }}/overview.html
+[dropped]: https://dotty.epfl.ch/docs/Dropped%20Features/index.html
+[changed]: https://dotty.epfl.ch/docs/Other%20Changed%20Features/index.html
+[added]: https://dotty.epfl.ch/docs/Other%20New%20Features/index.html
+
+[union-types]: {% link _overviews/scala3-book/types-union.md %}
+[opaque-types]: {% link _overviews/scala3-book/types-opaque-types.md %}

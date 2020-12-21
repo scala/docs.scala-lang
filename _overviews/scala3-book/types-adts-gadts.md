@@ -189,4 +189,4 @@ Note that the above desugaring is simplified and we purposefully leave out [some
 While enums could be manually encoded using other constructs, using enumerations is more concise and also comes with a few additional utilities (such as the `fromOrdinal` method).
 
 
-[desugar-enums]: {{ site.scala3-ref }}/enums/desugarEnums.html
+[desugar-enums]: {{ site.scala3ref }}/enums/desugarEnums.html

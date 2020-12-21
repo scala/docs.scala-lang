@@ -75,7 +75,7 @@ a tour presenting the migration tools, and detailed migration guides.
 [migration-status]: https://scalacenter.github.io/scala-3-migration-guide/docs/macros/macro-libraries.html
 [quotes]: /scala3/guides/macros/tutorial/quotes
 [tasty]: /scala3/guides/macros/tutorial/tasty-reflection
-[reflection-api]: https://dotty.epfl.ch/-scala%203/-a-p-i/scala/quoted/-quotes/-reflection.html
+[reflection-api]: https://dotty.epfl.ch/api/scala/quoted.html
 
 ## Scala 3 Language Reference
 The [Dotty reference](https://dotty.epfl.ch/docs/reference/overview.html) will evolve into the Scala 3 language, containing  a formal presentation and detailed technical information about the various features of the language.
