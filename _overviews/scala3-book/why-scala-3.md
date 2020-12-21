@@ -45,11 +45,10 @@ For instance, a `List` is defined as a `class`, and a new instance is created li
 val x = List(1,2,3)
 ```
 
-However, what appears to the programmer to be a simple `List` is actually built from a combination of many specialized traits:
+However, what appears to the programmer to be a simple `List` is actually built from a combination of many specialized traits.
 
 {% comment %}
 TODO: Update this. It shows the Scala 2.13 hierarchy with Scala 3 syntax.
-{% endcomment %}
 
 ```scala
 sealed abstract class List[+A]
@@ -63,6 +62,7 @@ sealed abstract class List[+A]
 ```
 
 Those traits are also composed of other smaller, modular traits.
+{% endcomment %}
 
 In addition to building a class like `List` from a series of small, modular traits, the `List` API also consists of a series of dozens of functional methods, many of which are higher-order functions:
 
