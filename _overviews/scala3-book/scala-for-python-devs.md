@@ -7,37 +7,8 @@ previous-page: scala-for-javascript-devs
 next-page: 
 ---
 
-<style>
-.content-primary td code {
-  font-size: 13px;
-  margin: 0;
-  padding: 0;
-  background: none;
-}
-.content-primary table tr:first-child,
-.content-primary table tr:last-child
-{
-  border: none;
-  border-bottom: none;
-}
-.content-primary table,
-.content-primary table th,
-.content-primary table td {
-  border: none;
-}
-.content-primary table td {
-  width: 45%;
-  background-color: white;
-}
-.content-primary table td.table-desc-row {
-  text-align: center;
-  padding-top: 0.6em;
-}
-.content-primary table th {
-  text-align: center;
-}
-</style>
-
+{% include_relative scala4x.css %}
+<div markdown="1" class="scala3-comparison-page">
 
 {% comment %}
 NOTE: Hopefully someone with more Python experience can give this a thorough review 
@@ -138,92 +109,124 @@ Given that introduction, the following sections provide side-by-side comparisons
 
 ## Comments
 
-The Scala comment syntax is the same as languages like C, C++, and Java:
+Python uses `#` for comments, while the Scala comment syntax is the same as languages like C, C++, and Java:
 
 <table>
-<tbody>
-  <tr>
-    <th valign="top">Python<br></th>
-    <th valign="top">Scala<br></th>
-  </tr>
-  <tr>
-    <td colspan="2" class="table-desc-row">Comments</td>
-  </tr>
-  <tr>
-    <td valign="top"><code>#</code></td>
-    <td valign="top"><code>//
-      <br>/* ... */
-      <br>/** ... */</code>
-    </td>
-  </tr>
-</tbody>
+  <tbody>
+    <tr>
+      <td class="python-block">
+        <code># a comment</code>
+      </td>
+    </tr>
+    <tr>
+      <td class="scala-block">
+        <code>// a comment
+        <br>/* ... */
+        <br>/** ... */</code>
+      </td>
+    </tr>
+  </tbody>
 </table>
+
   
 
 ## Variable assignment
 
-These examples demonstrate how to create variables in Python and Scala:
+These examples demonstrate how to create variables in Python and Scala.
+
+### Create integer and string variables:
 
 <table>
-<tbody>
-  <tr>
-    <th valign="top">Python</th>
-    <th valign="top">Scala</th>
-  </tr>
+  <tbody>
+    <tr>
+      <td class="python-block">
+        <code>x = 1
+        <br>x = "Hi"</code>
+      </td>
+    </tr>
+    <tr>
+      <td class="scala-block">
+        <code>val x = 1
+        <br>val x = "Hi"</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-  <tr>
-    <td colspan="2" class="table-desc-row">Create integer and string variables</td>
-  </tr>
-  <tr>
-    <td valign="top"><code>x = 1
-      <br>x = "Hi"</code>
-    </td>
-    <td valign="top"><code>val x = 1
-      <br>val x = "Hi"</code>
-    </td>
-  </tr>
+### Lists:
 
-  <tr>
-    <td colspan="2" class="table-desc-row">Lists</td>
-  </tr>
-  <tr>
-    <td valign="top"><code>x = [1,2,3]</code></td>
-    <td valign="top"><code>val x = List(1,2,3)</code></td>
-  </tr>
-  <tr>
-    <td colspan="2" class="table-desc-row">Dictionary/Map</td>
-  </tr>
-  <tr>
-    <td valign="top"><code>x = {
-      <br>&nbsp; "Toy Story": 8.3,
-      <br>&nbsp; "Forrest Gump": 8.8,
-      <br>&nbsp; "Cloud Atlas": 7.4
-      <br>}</code>
-    </td>
-    <td valign="top"><code>val movies = Map(
-      <br>&nbsp; "Toy Story" -&gt; 8.3,
-      <br>&nbsp; "Forrest Gump" -&gt; 8.8,
-      <br>&nbsp; "Cloud Atlas" -&gt; 7.4
-      <br>)</code>
-    </td>
-  </tr>
+<table>
+  <tbody>
+    <tr>
+      <td class="python-block">
+      <code>x = [1,2,3]</code>
+      </td>
+    </tr>
+    <tr>
+      <td class="scala-block">
+      <code>val x = List(1,2,3)</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-  <tr>
-    <td colspan="2" class="table-desc-row">Set</td>
-  </tr>
-  <tr>
-    <td valign="top"><code>x = {1,2,3}</code></td>
-    <td valign="top"><code>val x = Set(1,2,3)</code></td>
-  </tr>
+### Dictionary/Map:
 
-  <tr>
-    <td colspan="2" class="table-desc-row">Tuple</td>
-  </tr>
-  <tr>
-    <td valign="top"><code>x = (11, "Eleven")</code></td>
-    <td valign="top"><code>val x = (11, "Eleven")</code></td>
-  </tr>
-</tbody>
+<table>
+  <tbody>
+    <tr>
+      <td class="python-block">
+        <code>x = {
+        <br>&nbsp; "Toy Story": 8.3,
+        <br>&nbsp; "Forrest Gump": 8.8,
+        <br>&nbsp; "Cloud Atlas": 7.4
+        <br>}</code>
+      </td>
+    </tr>
+    <tr>
+      <td class="scala-block">
+        <code>val movies = Map(
+        <br>&nbsp; "Toy Story" -&gt; 8.3,
+        <br>&nbsp; "Forrest Gump" -&gt; 8.8,
+        <br>&nbsp; "Cloud Atlas" -&gt; 7.4
+        <br>)</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+### Set:
+
+<table>
+  <tbody>
+    <tr>
+      <td class="python-block">
+      <code>x = {1,2,3}</code>
+      </td>
+    </tr>
+    <tr>
+      <td class="scala-block">
+      <code>val x = Set(1,2,3)</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+### Tuple:
+
+<table>
+  <tbody>
+    <tr>
+      <td class="python-block">
+        <code>x = (11, "Eleven")</code>
+      </td>
+    </tr>
+    <tr>
+      <td class="scala-block">
+      <code>val x = (11, "Eleven")</code>
+      </td>
+    </tr>
+  </tbody>
 </table>
 
 If a Scala field is going to be mutable, use `var` instead of `val` for variable assignment:
@@ -233,7 +236,7 @@ var x = 1
 x += 1
 ```
 
-However, the rule of thumb is to always use `val` unless the variable specifically needs to be mutated.
+However, the rule of thumb in Scala is to always use `val` unless the variable specifically needs to be mutated.
 
   
 
@@ -241,69 +244,90 @@ However, the rule of thumb is to always use `val` unless the variable specifical
 
 This section provides comparisons of features related to OOP-style classes and methods.
 
+### OOP style class, primary constructor:
+
 <table>
-<tbody>
-  <tr>
-    <th valign="top">Python</th>
-    <th valign="top">Scala</th>
-  </tr>
+  <tbody>
+    <tr>
+      <td class="python-block">
+        <code>class Person(object):
+        <br>&nbsp; def __init__(self, name):
+        <br>&nbsp;&nbsp;&nbsp; self.name = name
+        <br>
+        <br>&nbsp; def speak(self):
+        <br>&nbsp;&nbsp;&nbsp; print('Hello, my name is %s' % self.name)</code>
+      </td>
+    </tr>
+    <tr>
+      <td class="scala-block">
+        <code>class Person (var name: String):
+        <br>&nbsp; def speak() = println(s"Hello, my name is $name")</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-  <tr>
-    <td colspan="2" class="table-desc-row">OOP style class, primary constructor</td>
-  </tr>
-  <tr>
-    <td valign="top"><code>class Person(object):
-      <br>&nbsp; def __init__(self, name):
-      <br>&nbsp;&nbsp;&nbsp; self.name = name
-      <br>
-      <br>&nbsp; def speak(self):
-      <br>&nbsp;&nbsp;&nbsp; print('Hello, my name is %s' % self.name)</code>
-    </td>
-    <td valign="top"><code>class Person (var name: String):
-      <br>&nbsp; def speak() = println(s"Hello, my name is $name")</code>
-    </td>
-  </tr>
+### Create and use an instance:
 
-  <tr>
-    <td colspan="2" class="table-desc-row">Create and use an instance</td>
-  </tr>
-  <tr>
-    <td valign="top"><code>p = Person("John")
-      <br>p.name&nbsp;&nbsp; # John
-      <br>p.name = 'Fred'
-      <br>p.name&nbsp;&nbsp; # Fred
-      <br>p.speak()</code>
-    </td>
-    <td valign="top"><code>val p = Person("John")
-      <br>p.name&nbsp;&nbsp; // John
-      <br>p.name = "Fred"
-      <br>p.name&nbsp;&nbsp; // Fred
-      <br>p.speak()</code>
-    </td>
-  </tr>
+<table>
+  <tbody>
+    <tr>
+      <td class="python-block">
+        <code>p = Person("John")
+        <br>p.name&nbsp;&nbsp; # John
+        <br>p.name = 'Fred'
+        <br>p.name&nbsp;&nbsp; # Fred
+        <br>p.speak()</code>
+      </td>
+    </tr>
+    <tr>
+      <td class="scala-block">
+        <code>val p = Person("John")
+        <br>p.name&nbsp;&nbsp; // John
+        <br>p.name = "Fred"
+        <br>p.name&nbsp;&nbsp; // Fred
+        <br>p.speak()</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-  <tr>
-    <td colspan="2" class="table-desc-row">Method, on one line</td>
-  </tr>
-  <tr>
-    <td valign="top"><code>def add(a,b) = a + b</code></td>
-    <td valign="top"><code>def add(a: Int, b: Int): Int = a + b</code></td>
-  </tr>
+### One-line method:
 
-  <tr>
-    <td colspan="2" class="table-desc-row">Method, on multiple lines</td>
-  </tr>
-  <tr>
-    <td valign="top"><code>def walkThenRun():
-      <br>&nbsp; print('walk')
-      <br>&nbsp; print('run')</code>
-    </td>
-    <td valign="top"><code>def walkThenRun() =
-      <br>&nbsp; println("walk")
-      <br>&nbsp; println("run")</code>
-    </td>
-  </tr>
-</tbody>
+<table>
+  <tbody>
+    <tr>
+      <td class="python-block">
+        <code>def add(a,b) = a + b</code>
+      </td>
+    </tr>
+    <tr>
+      <td class="scala-block">
+        <code>def add(a: Int, b: Int): Int = a + b</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+### Multiline method:
+
+<table>
+  <tbody>
+    <tr>
+      <td class="python-block">
+        <code>def walkThenRun():
+        <br>&nbsp; print('walk')
+        <br>&nbsp; print('run')</code>
+      </td>
+    </tr>
+    <tr>
+      <td class="scala-block">
+        <code>def walkThenRun() =
+        <br>&nbsp; println("walk")
+        <br>&nbsp; println("run")</code>
+      </td>
+    </tr>
+  </tbody>
 </table>
 
 
@@ -338,47 +362,61 @@ This section compares control structures in Python and Scala.
 Both languages have constructs like `if`/`else`, `while`, `for` loops, and `try`.
 Scala also has `match` expressions.
 
-<table cellspacing="1" cellpadding="2" border="1">
+### `if` statement, one line:
+
+<table>
   <tbody>
     <tr>
-      <th valign="top">Python</th>
-      <th valign="top">Scala</th>
+      <td class="python-block">
+        <code>if x == 1: print(x)</code>
+      </td>
     </tr>
+    <tr>
+      <td class="scala-block">
+        <code>if x == 1 then println(x)</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-    <tr>
-      <td colspan="2" class="table-desc-row"><code>if</code> statement, one line</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>if x == 1: print(x)</code></td>
-      <td valign="top"><code>if x == 1 then println(x)</code></td>
-    </tr>
+### `if` statement, multiline:
 
+<table>
+  <tbody>
     <tr>
-      <td colspan="2" class="table-desc-row"><code>if</code> statement, multiline</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>if x == 1:
+      <td class="python-block">
+        <code>if x == 1:
         <br>&nbsp; print("x is 1, as you can see:")
         <br>&nbsp; print(x)</code>
       </td>
-      <td valign="top"><code>if x == 1 then
+    </tr>
+    <tr>
+      <td class="scala-block">
+        <code>if x == 1 then
         <br>&nbsp; println("x is 1, as you can see:")
         <br>&nbsp; println(x)</code>
       </td>
     </tr>
+  </tbody>
+</table>
 
+### if, else if, else:
+
+<table>
+  <tbody>
     <tr>
-      <td colspan="2" class="table-desc-row">if/else-if/else</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>if x &lt; 0:
+      <td class="python-block">
+        <code>if x &lt; 0:
         <br>&nbsp; print("negative")
         <br>elif x == 0:
         <br>&nbsp; print("zero")
         <br>else:
         <br>&nbsp; print("positive")</code>
       </td>
-      <td valign="top"><code>if x &lt; 0 then
+    </tr>
+    <tr>
+      <td class="scala-block">
+        <code>if x &lt; 0 then
         <br>&nbsp; println("negative")
         <br>else if x == 0 then
         <br>&nbsp; println("zero")
@@ -386,51 +424,81 @@ Scala also has `match` expressions.
         <br>&nbsp; println("positive")</code>
       </td>
     </tr>
+  </tbody>
+</table>
 
-    <tr>
-      <td colspan="2" class="table-desc-row">Returning a value from <code>if</code></td>
-    </tr>
-    <tr>
-      <td valign="top"><code>min_val = a if a &lt; b else b</code></td>
-      <td valign="top"><code>val minValue = if a &lt; b then a else b</code></td>
-    </tr>
+### Returning a value from `if`:
 
+<table>
+  <tbody>
     <tr>
-      <td colspan="2" class="table-desc-row"><code>if</code> as the body of a method</td>
+      <td class="python-block">
+        <code>min_val = a if a &lt; b else b</code>
+      </td>
     </tr>
     <tr>
-      <td valign="top"><code>def min(a, b):
+      <td class="scala-block">
+        <code>val minValue = if a &lt; b then a else b</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+### `if` as the body of a method:
+
+<table>
+  <tbody>
+    <tr>
+      <td class="python-block">
+        <code>def min(a, b):
         <br>&nbsp; return a if a &lt; b else b</code>
       </td>
-      <td valign="top"><code>def min(a: Int, b: Int): Int =
+    </tr>
+    <tr>
+      <td class="scala-block">
+        <code>def min(a: Int, b: Int): Int =
         <br>&nbsp; if a &lt; b then a else b</code>
       </td>
     </tr>
+  </tbody>
+</table>
 
+### `while` loop:
+
+<table>
+  <tbody>
     <tr>
-      <td colspan="2" class="table-desc-row"><code>while</code> loops</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>i = 1
+      <td class="python-block">
+        <code>i = 1
         <br>while i &lt; 3:
         <br>&nbsp; print(i)
         <br>&nbsp; i += 1</code>
       </td>
-      <td valign="top"><code>var i = 1
+    </tr>
+    <tr>
+      <td class="scala-block">
+        <code>var i = 1
         <br>while i &lt; 3 do
         <br>&nbsp; println(i)
         <br>&nbsp; i += 1</code>
       </td>
     </tr>
+  </tbody>
+</table>
 
+### `for` loop with range:
+
+<table>
+  <tbody>
     <tr>
-      <td colspan="2" class="table-desc-row"><code>for</code> loop with range</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>for i in range(0,3):
+      <td class="python-block">
+        <code>for i in range(0,3):
         <br>&nbsp; print(i)</code>
       </td>
-      <td valign="top"><code>// preferred
+    </tr>
+    <tr>
+      <td class="scala-block">
+        <code>// preferred
         <br>for i &lt;- 0 until 3 do println(i)
         <br>
         <br>// also available
@@ -443,48 +511,69 @@ Scala also has `match` expressions.
         <br>&nbsp; println(i)</code>
       </td>
     </tr>
+  </tbody>
+</table>
 
+### `for` loop with a list:
+
+<table>
+  <tbody>
     <tr>
-      <td colspan="2" class="table-desc-row"><code>for</code> loop with a list</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>for i in ints: print(i)
+      <td class="python-block">
+        <code>for i in ints: print(i)
         <br>
         <br>for i in ints:
         <br>&nbsp; print(i)</code>
       </td>
-      <td valign="top"><code>for i &lt;- ints do println(i)</code>
+    </tr>
+    <tr>
+      <td class="scala-block">
+      <code>for i &lt;- ints do println(i)</code>
       </td>
     </tr>
+  </tbody>
+</table>
 
+### `for` loop, multiple lines:
+
+<table>
+  <tbody>
     <tr>
-      <td colspan="2" class="table-desc-row"><code>for</code> loop, multiple lines</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>for i in ints:
+      <td class="python-block">
+        <code>for i in ints:
         <br>&nbsp; x = i * 2
         <br>&nbsp; s = "i = {}, x = {}"
         <br>&nbsp; print(s.format(i,x))</code>
       </td>
-      <td valign="top"><code>for
+    </tr>
+    <tr>
+      <td class="scala-block">
+        <code>for
         <br>&nbsp; i &lt;- ints
         <br>do
         <br>&nbsp; val x = i * 2
         <br>&nbsp; println(s"i = $i, x = $x")</code>
       </td>
     </tr>
+  </tbody>
+</table>
 
+### Multiple “range” generators:
+
+<table>
+  <tbody>
     <tr>
-      <td colspan="2" class="table-desc-row">Multiple range generators</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>for i in range(1,3):
+      <td class="python-block">
+        <code>for i in range(1,3):
         <br>&nbsp; for j in range(4,6):
         <br>&nbsp;&nbsp;&nbsp; for k in range(1,10,3):
         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; s= "i = {}, j = {}, k = {}"
         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print(s.format(i,j,k))</code>
-        </td>
-      <td valign="top"><code>for
+      </td>
+    </tr>
+    <tr>
+      <td class="scala-block">
+        <code>for
         <br>&nbsp; i &lt;- 1 to 2
         <br>&nbsp; j &lt;- 4 to 5
         <br>&nbsp; k &lt;- 1 until 10 by 3
@@ -492,17 +581,24 @@ Scala also has `match` expressions.
         <br>&nbsp; println(s"i = $i, j = $j, k = $k")</code>
       </td>
     </tr>
+  </tbody>
+</table>
 
+### Generator with guards (`if` expressions):
+
+<table>
+  <tbody>
     <tr>
-      <td colspan="2" class="table-desc-row">Generator with guards (<code>if</code> expressions)</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>for i in range(1,11):
+      <td class="python-block">
+        <code>for i in range(1,11):
         <br>&nbsp; if i % 2 == 0:
         <br>&nbsp;&nbsp;&nbsp; if i &lt; 5:
         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print(i)</code>
       </td>
-      <td valign="top"><code>for
+    </tr>
+    <tr>
+      <td class="scala-block">
+        <code>for
         <br>&nbsp; i &lt;- 1 to 10
         <br>&nbsp; if i % 2 == 0
         <br>&nbsp; if i &lt; 5
@@ -510,32 +606,45 @@ Scala also has `match` expressions.
         <br>&nbsp; println(i)</code>
       </td>
     </tr>
+  </tbody>
+</table>
 
+### Multiple `if` conditions per line:
+
+<table>
+  <tbody>
     <tr>
-      <td colspan="2" class="table-desc-row">Same as previous, with the <code>if</code> statements condensed to one line</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>for i in range(1,11):
+      <td class="python-block">
+        <code>for i in range(1,11):
         <br>&nbsp; if i % 2 == 0 and i &lt; 5:
         <br>&nbsp;&nbsp;&nbsp; print(i)</code>
       </td>
-      <td valign="top"><code>for
+    </tr>
+    <tr>
+      <td class="scala-block">
+        <code>for
         <br>&nbsp; i &lt;- 1 to 10
         <br>&nbsp; if i % 2 == 0 &amp;&amp; i &lt; 5
         <br>do
         <br>&nbsp; println(i)</code>
       </td>
     </tr>
+  </tbody>
+</table>
 
+### Comprehensions:
+
+<table>
+  <tbody>
     <tr>
-      <td colspan="2" class="table-desc-row">Comprehensions: list comprehension in
-        Python, <code>for</code> comprehension in Scala</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>x = [i*10 for i in range(1,4)]
+      <td class="python-block">
+        <code>x = [i*10 for i in range(1,4)]
         <br># x: [10,20,30]</code>
       </td>
-      <td valign="top"><code>val x = 
+    </tr>
+    <tr>
+      <td class="scala-block">
+        <code>val x = 
         <br>&nbsp; for
         <br>&nbsp;&nbsp;&nbsp; i &lt;- 1 to 3
         <br>&nbsp; yield
@@ -543,38 +652,56 @@ Scala also has `match` expressions.
         <br>// x: Vector(10, 20, 30)</code>
       </td>
     </tr>
+  </tbody>
+</table>
 
+### `match` expressions:
+
+<table>
+  <tbody>
     <tr>
-      <td colspan="2" class="table-desc-row"><code>match</code> expressions</td>
+      <td class="python-block">
+        N/A (but you can use dictionaries for basic “switch” functionality)
+      </td>
     </tr>
     <tr>
-      <td valign="top">N/A (but you can use dictionaries
-        <br>for basic “switch” functionality)</td>
-      <td valign="top"><code>val monthAsString = day match
+      <td class="scala-block">
+        <code>val monthAsString = day match
         <br>&nbsp; case 1 =&gt; "January"
         <br>&nbsp; case 2 =&gt; "February"
         <br>&nbsp; _ =&gt; "Other"</code>
       </td>
     </tr>
+  </tbody>
+</table>
 
+### switch/match:
+
+<table>
+  <tbody>
     <tr>
-      <td colspan="2" class="table-desc-row"><code>switch</code>/<code>match</code>:
-        handling multiple conditions per case</td>
+      <td class="python-block">
+        N/A
+      </td>
     </tr>
     <tr>
-      <td valign="top">N/A</td>
-      <td valign="top"><code>val numAsString = i match
+      <td class="scala-block">
+        <code>val numAsString = i match
         <br>&nbsp; case 1 | 3 | 5 | 7 | 9 =&gt; "odd"
         <br>&nbsp; case 2 | 4 | 6 | 8 | 10 =&gt; "even"
         <br>&nbsp; case _ =&gt; "too big"</code>
       </td>
     </tr>
+  </tbody>
+</table>
 
+### try, catch, finally:
+
+<table>
+  <tbody>
     <tr>
-      <td colspan="2" class="table-desc-row"><code>try</code>/<code>catch</code>/<code>finally</code></td>
-    </tr>
-    <tr>
-      <td valign="top"><code>try:
+      <td class="python-block">
+        <code>try:
         <br>&nbsp; print(a)
         <br>except NameError:
         <br>&nbsp; print("NameError")
@@ -583,7 +710,10 @@ Scala also has `match` expressions.
         <br>finally:
         <br>&nbsp; print("Finally")</code>
       </td>
-      <td valign="top"><code>try
+    </tr>
+    <tr>
+      <td class="scala-block">
+        <code>try
         <br>&nbsp; writeTextToFile(text)
         <br>catch
         <br>&nbsp; case ioe: IOException =&gt;
@@ -597,7 +727,7 @@ Scala also has `match` expressions.
   </tbody>
 </table>
 
-Scala has many more `match` expression features; only a few are shown here.
+Match expressions and pattern matching are a big part of the Scala programming experience, but only a few `match` expression features are shown here. See the [Control Structures][control_structures] page for many more examples.
 
 
 
@@ -610,65 +740,96 @@ This section compares the collections classes that are available in Python and S
 Where Python has its list, Scala has several different specialized mutable and immutable sequence classes, depending on your needs.
 Because the Python list is mutable, it most directly compares to Scala’s `ArrayBuffer`.
 
-<table cellspacing="1" cellpadding="2" border="1">
+### Python list &amp; Scala sequences:
+
+<table>
   <tbody>
     <tr>
-      <th valign="top">Python</th>
-      <th valign="top">Scala</th>
-    </tr>
-
-    <tr>
-      <td colspan="2" class="table-desc-row">Python list, Scala sequences</td>
+      <td class="python-block">
+      <code>a = [1,2,3]</code>
+      </td>
     </tr>
     <tr>
-      <td valign="top"><code>a = [1,2,3]</code></td>
-      <td valign="top"><code>// use different sequence classes
+      <td class="scala-block">
+        <code>// use different sequence classes
         <br>// as needed
         <br>val a = List(1,2,3)
         <br>val a = Vector(1,2,3)
         <br>val a = ArrayBuffer(1,2,3)</code>
       </td>
     </tr>
+  </tbody>
+</table>
 
-    <tr>
-      <td colspan="2" class="table-desc-row">Access elements</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>a[0]<br>a[1]</code></td>
-      <td valign="top"><code>a(0)<br>a(1)</code></td>
-    </tr>
+### Accessing list elements:
 
+<table>
+  <tbody>
     <tr>
-      <td colspan="2" class="table-desc-row">Update list elements</td>
+      <td class="python-block">
+      <code>a[0]<br>a[1]</code>
+      </td>
     </tr>
     <tr>
-      <td valign="top"><code>a[0] = 10
+      <td class="scala-block">
+      <code>a(0)<br>a(1)</code>   // just like all other method calls
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+### Update list elements:
+
+<table>
+  <tbody>
+    <tr>
+      <td class="python-block">
+        <code>a[0] = 10
         <br>a[1] = 20</code>
       </td>
-      <td valign="top"><code>// ArrayBuffer is mutable
+    </tr>
+    <tr>
+      <td class="scala-block">
+        <code>// ArrayBuffer is mutable
         <br>a(0) = 10
         <br>a(1) = 20</code>
       </td>
     </tr>
+  </tbody>
+</table>
 
-    <tr>
-      <td colspan="2" class="table-desc-row">Combine two lists</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>c = a + b</code></td>
-      <td valign="top"><code>val c = a ++ b</code></td>
-    </tr>
+### Combine two lists:
 
+<table>
+  <tbody>
     <tr>
-      <td colspan="2" class="table-desc-row">Iterate over a list with a <code>for</code> loop</td>
+      <td class="python-block">
+      <code>c = a + b</code>
+      </td>
     </tr>
     <tr>
-      <td valign="top"><code>for i in ints: print(i)
+      <td class="scala-block">
+      <code>val c = a ++ b</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+### Iterate over a list:
+
+<table>
+  <tbody>
+    <tr>
+      <td class="python-block">
+        <code>for i in ints: print(i)
         <br>
         <br>for i in ints:
         <br>&nbsp; print(i)</code>
       </td>
-      <td valign="top"><code>// preferred
+    </tr>
+    <tr>
+      <td class="scala-block">
+        <code>// preferred
         <br>for i &lt;- ints do println(i)
         <br>
         <br>// also available
@@ -682,56 +843,67 @@ Scala’s main sequence classes are `List`, `Vector`, and `ArrayBuffer`.
 `List` and `Vector` are the main classes to use when you want an immutable sequence, and `ArrayBuffer` is the main class to use when you want a mutable sequence.
 (A “buffer” in Scala is a sequence that can grow and shrink.)
 
-  
-
 ### Dictionary/Map
 
 The Python dictionary is like the _mutable_ Scala `Map` class.
 However, the default Scala map is _immutable_, and has a number of transformation methods to let you easily create new maps.
 
-<table cellspacing="1" cellpadding="2" border="1">
+#### Dictionary/Map creation:
+
+<table>
   <tbody>
-
     <tr>
-      <th valign="top">Python</th>
-      <th valign="top">Scala</th>
-    </tr>
-
-    <tr>
-      <td colspan="2" class="table-desc-row">Creation</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>my_dict = {
+      <td class="python-block">
+        <code>my_dict = {
         <br>&nbsp; 'a': 1,
         <br>&nbsp; 'b': 2,
         <br>&nbsp; 'c': 3
         <br>}</code>
       </td>
-      <td valign="top"><code>val myMap = Map(
+    </tr>
+    <tr>
+      <td class="scala-block">
+        <code>val myMap = Map(
         <br>&nbsp; "a" -&gt; 1,
         <br>&nbsp; "b" -&gt; 2,
         <br>&nbsp; "c" -&gt; 3
         <br>)</code>
       </td>
     </tr>
+  </tbody>
+</table>
 
-    <tr>
-      <td colspan="2" class="table-desc-row">Access elements</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>my_dict['a']&nbsp;&nbsp; # 1</code></td>
-      <td valign="top"><code>myMap("a")&nbsp;&nbsp; // 1</code></td>
-    </tr>
+#### Accessing dictionary/map elements:
 
+<table>
+  <tbody>
     <tr>
-      <td colspan="2" class="table-desc-row">Dictionary/Map with a <code>for</code> loop</td>
+      <td class="python-block">
+      <code>my_dict['a']&nbsp;&nbsp; # 1</code>
+      </td>
     </tr>
     <tr>
-      <td valign="top"><code>for key, value in my_dict.items():
+      <td class="scala-block">
+      <code>myMap("a")&nbsp;&nbsp; // 1</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+#### Dictionary/Map with a `for` loop:
+
+<table>
+  <tbody>
+    <tr>
+      <td class="python-block">
+        <code>for key, value in my_dict.items():
         <br>&nbsp; print(key)
         <br>&nbsp; print(value)</code>
       </td>
-      <td valign="top"><code>for
+    </tr>
+    <tr>
+      <td class="scala-block">
+        <code>for
         <br>&nbsp; (key,value) &lt;- myMap
         <br>do
         <br>&nbsp; println(key)
@@ -743,34 +915,40 @@ However, the default Scala map is _immutable_, and has a number of transformatio
 
 Scala has other specialized `Map` classes for different needs.
 
-
 ### Sets
 
-The Python set is like the mutable Scala `Set` class.
+The Python set is similar to the _mutable_ Scala `Set` class.
 
-<table cellspacing="1" cellpadding="2" border="1">
+#### Set creation:
+
+<table>
   <tbody>
+    <tr>
+      <td class="python-block">
+      <code>set = {"a", "b", "c"}</code>
+      </td>
+    </tr>
+    <tr>
+      <td class="scala-block">
+      <code>val set = Set(1,2,3)</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-    <tr>
-      <th valign="top">Python</th>
-      <th valign="top">Scala</th>
-    </tr>
+#### Duplicate elements:
 
+<table>
+  <tbody>
     <tr>
-      <td colspan="2" class="table-desc-row">Creation</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>set = {"a", "b", "c"}</code></td>
-      <td valign="top"><code>val set = Set(1,2,3)</code></td>
-    </tr>
-
-    <tr>
-      <td colspan="2" class="table-desc-row">Duplicate elements</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>set = {1,2,1}
+      <td class="python-block">
+        <code>set = {1,2,1}
         <br># set: {1,2}</code></td>
-      <td valign="top"><code>val set = Set(1,2,1)
+      </td>
+    </tr>
+    <tr>
+      <td class="scala-block">
+        <code>val set = Set(1,2,1)
         <br>// set: Set(1,2)</code>
       </td>
     </tr>
@@ -779,34 +957,40 @@ The Python set is like the mutable Scala `Set` class.
 
 Scala has other specialized `Set` classes for different needs.
 
-
 ### Tuples 
 
-Python and Scala tuples are also similar:
+Python and Scala tuples are also similar.
 
-<table cellspacing="1" cellpadding="2" border="1">
+#### Tuple creation:
+
+<table>
   <tbody>
     <tr>
-      <th valign="top">Python</th>
-      <th valign="top">Scala</th>
+      <td class="python-block">
+      <code>t = (11, 11.0, "Eleven")</code>
+      </td>
     </tr>
+    <tr>
+      <td class="scala-block">
+      <code>val t = (11, 11.0, "Eleven")</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-    <tr>
-      <td colspan="2" class="table-desc-row">Creation</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>t = (11, 11.0, "Eleven")</code></td>
-      <td valign="top"><code>val t = (11, 11.0, "Eleven")</code></td>
-    </tr>
+#### Accessing tuple elements:
 
+<table>
+  <tbody>
     <tr>
-      <td colspan="2" class="table-desc-row">Access elements</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>t[0]&nbsp;&nbsp; # 11
+      <td class="python-block">
+        <code>t[0]&nbsp;&nbsp; # 11
         <br>t[1]&nbsp;&nbsp; # 11.0</code>
       </td>
-      <td valign="top"><code>t(0)&nbsp;&nbsp; // 11
+    </tr>
+    <tr>
+      <td class="scala-block">
+        <code>t(0)&nbsp;&nbsp; // 11
         <br>t(1)&nbsp;&nbsp; // 11.0</code>
       </td>
     </tr>
@@ -831,65 +1015,98 @@ numbers = (1,2,3)           // python
 val numbers = List(1,2,3)   // scala
 ```
 
-Those lists are used in the following table, that shows how to apply mapping and filtering algorithms to it:
+Those lists are used in the following table, that shows how to apply mapping and filtering algorithms to it.
 
-<table cellspacing="1" cellpadding="2" border="1">
+### Mapping with a comprehension:
+
+<table>
   <tbody>
     <tr>
-      <th valign="top">Python</th>
-      <th valign="top">Scala</th>
+      <td class="python-block">
+      <code>x = [i*10 for i in numbers]</code>
+      </td>
     </tr>
+    <tr>
+      <td class="scala-block">
+      <code>val x = for i &lt;- numbers yield i * 10</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-    <tr>
-      <td colspan="2" class="table-desc-row">Mapping with a comprehension</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>x = [i*10 for i in numbers]</code></td>
-      <td valign="top"><code>val x = for i &lt;- numbers yield i * 10</code></td>
-    </tr>
+### Filtering with a comprehension:
 
+<table>
+  <tbody>
     <tr>
-      <td colspan="2" class="table-desc-row">Filtering with a comprehension</td>
+      <td class="python-block">
+      <code>evens = [i for i in numbers if i % 2 == 0]</code>
+      </td>
     </tr>
     <tr>
-      <td valign="top"><code>evens = [i for i in numbers if i % 2 == 0]</code></td>
-      <td valign="top"><code>val evens = numbers.filter(_ % 2 == 0)</code></td>
+      <td class="scala-block">
+      <code>val evens = numbers.filter(_ % 2 == 0)</code>
+      </td>
     </tr>
+  </tbody>
+</table>
 
+### Mapping &amp; filtering with a comprehension:
+
+<table>
+  <tbody>
     <tr>
-      <td colspan="2" class="table-desc-row">Mapping and filtering with a comprehension</td>
+      <td class="python-block">
+      <code>x = [i * 10 for i in numbers if i % 2 == 0]</code>
+      </td>
     </tr>
     <tr>
-      <td valign="top"><code>x = [i * 10 for i in numbers if i % 2 == 0]</code></td>
-      <td valign="top"><code>val x = numbers.filter(_ % 2 == 0)
+      <td class="scala-block">
+        <code>val x = numbers.filter(_ % 2 == 0)
         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.map(_ * 10)</code>
       </td>
     </tr>
+  </tbody>
+</table>
 
+### Mapping:
+
+<table>
+  <tbody>
     <tr>
-      <td colspan="2" class="table-desc-row">Mapping with <code>map</code></td>
-    </tr>
-    <tr>
-      <td valign="top"><code>def times_10(n): return n * 10
+      <td class="python-block">
+        <code>def times_10(n): return n * 10
         <br>x = map(lambda x: x * 10, numbers)</code>
       </td>
-      <td valign="top"><code>val x = numbers.map(_ * 10)</code></td>
     </tr>
+    <tr>
+      <td class="scala-block">
+      <code>val x = numbers.map(_ * 10)</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
+### Filtering:
+
+<table>
+  <tbody>
     <tr>
-      <td colspan="2" class="table-desc-row">Filtering with <code>filter</code></td>
-    </tr>
-    <tr>
-      <td valign="top"><code>f = lambda x: x if x &gt; 1 else 1
+      <td class="python-block">
+        <code>f = lambda x: x if x &gt; 1 else 1
         <br>x = filter(f, numbers)</code>
       </td>
-      <td valign="top"><code>val x = numbers.filter(_ &gt; 1)</code></td>
+    </tr>
+    <tr>
+      <td class="scala-block">
+      <code>val x = numbers.filter(_ &gt; 1)</code>
+      </td>
     </tr>
   </tbody>
 </table>
 
 
-#### Scala collections methods
+### Scala collections methods
 
 Scala collections classes have over 100 functional methods to simplify your code.
 In addition to `map`, `filter`, and `reduce`, other commonly-used methods are listed below.
@@ -980,55 +1197,77 @@ There are many more methods available, but hopefully these descriptions and exam
 
 This section compares enums (enumerations) in Python and Scala 3.
 
-<table cellspacing="1" cellpadding="2" border="1">
+### Creating enums:
+
+<table>
   <tbody>
-
     <tr>
-      <th valign="top">Python</th>
-      <th valign="top">Scala</th>
-    </tr>
-
-    <tr>
-      <td colspan="2" class="table-desc-row">Basic creation</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>from enum import Enum, auto
+      <td class="python-block">
+        <code>from enum import Enum, auto
         <br>class Color(Enum):
         <br>&nbsp;&nbsp;&nbsp; RED = auto()
         <br>&nbsp;&nbsp;&nbsp; GREEN = auto()
         <br>&nbsp;&nbsp;&nbsp; BLUE = auto()</code>
       </td>
-      <td valign="top"><code>enum Color:
+    </tr>
+    <tr>
+      <td class="scala-block">
+        <code>enum Color:
         <br>&nbsp; case Red, Green, Blue</code>
       </td>
     </tr>
+  </tbody>
+</table>
 
-    <tr>
-      <td colspan="2" class="table-desc-row">Values and comparison</td>
-    </tr>
-    <tr>
-      <td valign="top"><code>Color.RED == Color.BLUE&nbsp; # False</code></td>
-      <td valign="top"><code>Color.Red == Color.Blue&nbsp; // false</code></td>
-    </tr>
+### Values and comparison:
 
+<table>
+  <tbody>
     <tr>
-      <td colspan="2" class="table-desc-row">Parameterized enum</td>
+      <td class="python-block">
+      <code>Color.RED == Color.BLUE&nbsp; # False</code>
+      </td>
     </tr>
     <tr>
-      <td valign="top">N/A</td>
-      <td valign="top"><code>enum Color(val rgb: Int):
+      <td class="scala-block">
+      <code>Color.Red == Color.Blue&nbsp; // false</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+### Parameterized enums:
+
+<table>
+  <tbody>
+    <tr>
+      <td class="python-block">
+        N/A
+      </td>
+    </tr>
+    <tr>
+      <td class="scala-block">
+        <code>enum Color(val rgb: Int):
         <br>&nbsp; case Red&nbsp;&nbsp; extends Color(0xFF0000)
         <br>&nbsp; case Green extends Color(0x00FF00)
         <br>&nbsp; case Blue&nbsp; extends Color(0x0000FF)</code>
       </td>
     </tr>
+  </tbody>
+</table>
 
+### User-defined enum members:
+
+<table>
+  <tbody>
     <tr>
-      <td colspan="2" class="table-desc-row">User-defined enum members</td>
+      <td class="python-block">
+        N/A
+      </td>
     </tr>
     <tr>
-      <td valign="top">N/A</td>
-      <td valign="top"><code>enum Planet(
+      <td class="scala-block">
+        <code>enum Planet(
         <br>&nbsp;&nbsp;&nbsp; mass: Double,
         <br>&nbsp;&nbsp;&nbsp; radius: Double
         <br>&nbsp; ):
@@ -1073,3 +1312,7 @@ Follow the links below for more details:
 [extension]: {% link _overviews/scala3-book/ca-extension-methods.md %}
 [type_classes]: {% link _overviews/scala3-book/types-type-classes.md %}
 [multiversal]: {% link _overviews/scala3-book/ca-multiversal-equality.md %}
+[control_structures]: {% link _overviews/scala3-book/control-structures.md %}
+
+</div>
+

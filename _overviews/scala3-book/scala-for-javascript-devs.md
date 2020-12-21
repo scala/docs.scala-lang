@@ -8,6 +8,7 @@ next-page: scala-for-python-devs
 ---
 
 {% include_relative scala4x.css %}
+<div markdown="1" class="scala3-comparison-page">
 
 
 This page provides a comparison between the JavaScript and Scala programming languages.
@@ -1359,4 +1360,6 @@ There are other concepts in Scala which currently have no equivalent in JavaScri
 
 
 [contextual]: {% link _overviews/scala3-book/ca-contextual-abstractions-intro.md %}
+
+</div>
 

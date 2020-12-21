@@ -8,6 +8,7 @@ next-page: scala-for-javascript-devs
 ---
 
 {% include_relative scala4x.css %}
+<div markdown="1" class="scala3-comparison-page">
 
 
 This page provides a comparison between the Java and Scala programming languages by sharing side-by-sde examples of each language.
@@ -1277,3 +1278,6 @@ This includes:
 [equality]: {% link _overviews/scala3-book/ca-multiversal-equality.md %}
 [type-classes]: {% link _overviews/scala3-book/ca-type-classes.md %}
 [error-handling]: {% link _overviews/scala3-book/fp-functional-error-handling.md %}
+
+</div>
+
