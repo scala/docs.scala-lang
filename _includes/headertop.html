@@ -1,5 +1,9 @@
 <!DOCTYPE html>
+{% if page.scala3 %}
+<html class="scala3">
+{% else %}
 <html>
+{% endif %}
   <head>
     <title>
       {% if page.title %}{{ page.title }} | {% endif %}

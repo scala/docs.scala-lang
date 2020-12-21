@@ -17,15 +17,17 @@
       max-height: 160px;
       margin-top: 30px;
       margin-bottom: 100px;
-      @include bp(medium) {
-         margin-bottom: 0;
-      }
+      // this causes issues on mobile with the header being hidden behind
+      // the contents:
+      // @include bp(medium) {
+      //   margin-bottom: 0;
+      //}
 
       .supertitle {
         text-transform: uppercase;
         font-weight: $font-black;
         font-size: 20px;
-        color: darken(#53b6d3, 15%);
+        color: rgba(0, 0, 0, 0.2);
       }
 
       h1 {
@@ -63,4 +65,68 @@ a.new-version-notice {
   background: rgb(255, 255, 200);
   font-size: large;
   text-align: center;
+}
+
+// Styles for the index of docs.scala-lang.org
+.landing-page .title-page {
+  background: $gray-li;
+
+  h1 {
+    color: rgb(134,161,166);
+  }
+}
+
+.landing-page .table-of-content .wrap {
+
+  position: relative;
+
+  h5 {
+    margin: 0;
+  }
+
+  .language-header {
+    padding: 30px;
+    background: $brand-tertiary;
+
+    h1 {
+      font-size: 1.875rem;
+      font-family: $base-font-family;
+      text-transform: uppercase;
+      text-shadow: $text-shadow;
+      color: #fff;
+    }
+  }
+
+  .language-footer {
+    bottom: 0;
+    width: 100%;
+
+    .go-btn {
+      display: block;
+      padding: 20px;
+      height: 66px;
+      background: #fff;
+      border-top: 1px solid lighten($base-font-color-light, 35%);
+      color: lighten($base-font-color-light, 10%);
+      font-weight: $font-regular;
+      font-size: $font-regular;
+      text-decoration: none;
+
+      &:hover {
+        cursor: pointer;
+        background: #E5EAEA;
+        color: rgba(0, 0, 0, 0.4);
+      }
+    }
+  }
+
+  &:first-of-type {
+    margin-bottom: 20px;
+  }
+}
+
+.landing-page .table-of-content .wrap.scala3 {
+  .language-header {
+    background: $brand-tertiary-dotty;
+  }
 }
