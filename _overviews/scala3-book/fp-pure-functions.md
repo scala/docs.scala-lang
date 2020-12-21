@@ -13,9 +13,11 @@ TODO: Use someone else’s definition?
 {% endcomment %}
 
 Another feature that Scala offers to help you write functional code is the ability to write pure functions.
-In his book, *Functional Programming, Simplified*, Alvin Alexander defines a *pure function* like this:
+A _pure function_ can be defined like this:
 
-- A function’s output depends *only* on its input variables and its internal algorithm
+- A function `f` is pure if, given the same input `x`, it always returns the same output `f(x)`
+- The function’s output depends *only* on its input variables and its internal algorithm
+- It doesn’t modify its input parameters
 - It doesn’t mutate any hidden state
 - It doesn’t have any “back doors”: It doesn’t read data from the outside world (including the console, web services, databases, files, etc.), or write data to the outside world
 

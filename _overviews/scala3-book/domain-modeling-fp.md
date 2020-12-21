@@ -177,6 +177,34 @@ To compute the price of the crust we simultaneously pattern match on both the si
 > An important point about all functions shown above is that they are *pure functions*: they do not mutate any data or have other side-effects (like throwing exceptions or writing to a file).
 > All they do is simply receive values and compute the result.
 
+{% comment %}
+I’ve added this comment per [this Github comment](https://github.com/scalacenter/docs.scala-lang/pull/3#discussion_r543372428).
+To that point, I’ve added these definitions here from our Slack conversation, in case anyone wants to update the “pure function” definition. If not, please delete this comment.
+
+Sébastien:
+----------
+A function `f` is pure if, given the same input `x`, it will always return the same output `f(x)`, and it never modifies any state outside of it (therefore potentially causing other functions to behave differently in the future).
+
+Jonathan:
+---------
+We say a function is 'pure' if it does not depend on or modify the context it is called in.
+
+Wikipedia
+---------
+The function always evaluates to the same result value given the same argument value(s). It cannot depend on any hidden state or value, and it cannot depend on any I/O.
+Evaluation of the result does not cause any semantically observable side effect or output, such as mutation of mutable objects or output to I/O devices.
+
+Mine (Alvin, now modified, from fp-pure-functions.md):
+------------------------------------------------------
+- A function `f` is pure if, given the same input `x`, it always returns the same output `f(x)`
+- The function’s output depends *only* on its input variables and its internal algorithm
+- It doesn’t modify its input parameters
+- It doesn’t mutate any hidden state
+- It doesn’t have any “back doors”: It doesn’t read data from the outside world (including the console, web services, databases, files, etc.), or write data to the outside world
+{% endcomment %}
+
+
+
 ## How to Organize Functionality
 When implementing the `pizzaPrice` function above, we did not say _where_ we would define it.
 In Scala 3, it would be perfectly valid to define it on the toplevel of your file.
