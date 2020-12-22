@@ -52,7 +52,7 @@ class Person:
 defining the two fields `name` and `vocation` together with a constructor that accepts values for the two fields and assigns them.
 
 All of the parameters of our example classes are defined as `var` fields, which means they are mutable: you can read them, and also modify them.
-If you want them to be immutable — read only — create them as `val` fields instead.
+If you want them to be immutable --- read only --- create them as `val` fields instead.
 
 Prior to Scala 3, you used the `new` keyword to create a new instance of a class:
 
@@ -297,7 +297,7 @@ Companion objects can be used for several purposes:
 - As shown, they can be used to group “static” methods under a namespace
   - These methods can be public or private
   - If `calculateArea` was public, it would be accessed as `Circle.calculateArea`
-- They can contain `apply` methods, which — thanks to some syntactic sugar — work as factory methods to construct new instances
+- They can contain `apply` methods, which --- thanks to some syntactic sugar --- work as factory methods to construct new instances
 - They can contain `unapply` methods, which are used to deconstruct objects, such as with pattern matching
 
 Here’s a quick look at how `apply` methods that can be used as factory methods to create new objects:
@@ -352,7 +352,7 @@ trait Employee:
   def lastName: String
 ```
 However, traits can also contain concrete members.
-For instance, the following trait defines two abstract members — `numLegs` and `walk()` — and also has a concrete implementation of a `stop()` method:
+For instance, the following trait defines two abstract members --- `numLegs` and `walk()` --- and also has a concrete implementation of a `stop()` method:
 
 ```scala
 trait HasLegs:
@@ -514,7 +514,7 @@ enum Color extends Enum[Color] { case Red, Green, Blue }
 ```
 
 The type parameter comes from the Java `enum` definition, and should be the same as the type of the enum.
-There’s no need to provide constructor arguments (as defined in the Java API docs) to `java.lang.Enum` when extending it — the compiler generates them automatically.
+There’s no need to provide constructor arguments (as defined in the Java API docs) to `java.lang.Enum` when extending it --- the compiler generates them automatically.
 
 After defining `Color` like that, you can use it like you would a Java enum:
 
@@ -603,7 +603,7 @@ case class Student(name: String, year: Int) extends Person
 case class Teacher(name: String, specialty: String) extends Person
 ```
 
-Because those are defined as case classes — and they have built-in `unapply` methods — you can write a match expression like this:
+Because those are defined as case classes --- and they have built-in `unapply` methods --- you can write a match expression like this:
 
 ```scala
 def getPrintableString(p: Person): String = p match

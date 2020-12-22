@@ -14,7 +14,7 @@ Scala 3 offers a new way to define programs that can be invoked from the command
 @main def hello = println("Hello, world")
 ```
 
-Just save that line of code in a file named something like *Hello.scala* — the filename doesn’t have to match the method name — and compile it with `scalac`:
+Just save that line of code in a file named something like *Hello.scala* --- the filename doesn’t have to match the method name --- and compile it with `scalac`:
 
 ```bash
 $ scalac Hello.scala

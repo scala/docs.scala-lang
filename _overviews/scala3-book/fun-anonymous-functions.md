@@ -9,7 +9,7 @@ next-page: fun-function-variables
 
 
 
-An anonymous function — also referred to as a *lambda* — is a block of code that’s passed as an argument to a higher-order function.
+An anonymous function --- also referred to as a *lambda* --- is a block of code that’s passed as an argument to a higher-order function.
 Wikipedia defines an [anonymous function](https://en.wikipedia.org/wiki/Anonymous_function) as, “a function definition that is not bound to an identifier.”
 
 For example, given a list like this:

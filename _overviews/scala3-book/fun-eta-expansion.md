@@ -23,7 +23,7 @@ def times10(i: Int) = i * 10   // a method
 List(1, 2, 3).map(times10)     // List(10,20,30)
 ```
 
-Have you ever wondered how this works — how you can pass a *method* into `map`, which expects a *function*?
+Have you ever wondered how this works --- how you can pass a *method* into `map`, which expects a *function*?
 
 The technology behind this is known as *Eta Expansion*.
 It converts an expression of *method type* to an equivalent expression of *function type*, and it does so seamlessly and quietly.
@@ -71,7 +71,7 @@ Unapplied methods are only converted to functions when a function type is expect
 You can make this conversion explicit by writing `isEvenMethod _` or `isEvenMethod(_)` instead of `isEvenMethod`.
 ```
 
-As shown in that error message, there is a manual way to convert a method into a function in Scala 2, but the important part for Scala 3 is that the Eta Expansion technology is improved, so now when you attempt to use a method as a variable, it just works — you don’t have to handle the manual conversion yourself:
+As shown in that error message, there is a manual way to convert a method into a function in Scala 2, but the important part for Scala 3 is that the Eta Expansion technology is improved, so now when you attempt to use a method as a variable, it just works --- you don’t have to handle the manual conversion yourself:
 
 ```scala
 val functions = List(isEvenFunction)   // works

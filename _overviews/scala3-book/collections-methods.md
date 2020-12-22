@@ -90,7 +90,7 @@ a.find(_ > 20)        // Some(30)
 a.takeWhile(_ < 30)   // List(10, 20)
 ```
 
-It’s important to note that HOFs also accept methods and functions as parameters — not just lambda expressions.
+It’s important to note that HOFs also accept methods and functions as parameters --- not just lambda expressions.
 Here are some examples of the `map` HOF that uses a method named `double`.
 Several variations of the lambda syntax are shown again:
 
@@ -402,7 +402,7 @@ scala> a.reduce(_ * _)
 res1: Int = 24
 ```
 
-> An important concept to know about `reduce` is that — as its name implies — it’s used to _reduce_ a collection down to a single value.
+> An important concept to know about `reduce` is that --- as its name implies --- it’s used to _reduce_ a collection down to a single value.
 
 
 

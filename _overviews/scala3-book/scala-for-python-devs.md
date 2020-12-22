@@ -91,7 +91,7 @@ Also at a programming level, these are some of the differences you’ll see ever
 - Traits are used heavily in Scala; interfaces and abstract classes are used less often in Python
 - Scala’s *contextual abstractions* and *term inference* provide a collection of different features:
   - *Extension methods* let you easily add new functionality to classes using a clear syntax
-  - *Multiversal equality* lets you limit equality comparisons — at compile time — to only those comparisons that make sense
+  - *Multiversal equality* lets you limit equality comparisons --- at compile time --- to only those comparisons that make sense
 - Scala has state-of-the-art open source functional programming libraries
 - You can create your own “control structures” and DSLs, thanks to features like objects, by-name parameters, infix notation, optional parentheses, extension methods, higher-order functions, and more
 - Scala code can run in the JVM and even be compiled to native images (using Scala Native and GraalVM) for high performance

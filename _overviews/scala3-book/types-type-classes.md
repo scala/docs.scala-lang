@@ -15,7 +15,7 @@ If you are coming from Java, you can think of type classes as something like [`j
 
 This style of programming is useful in multiple use-cases, for example:
 
-- Expressing how a type you don’t own — such as from the standard library or a third-party library — conforms to such behavior
+- Expressing how a type you don’t own --- such as from the standard library or a third-party library --- conforms to such behavior
 - Adding behavior to multiple types without introducing sub-typing relationships between those types (i.e., one `extends` another)
 
 In Scala 3, _type classes_ are just _traits_ with one or more type parameters, like the following:

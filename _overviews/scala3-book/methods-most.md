@@ -102,7 +102,7 @@ res0: Int = 4
 ```
 
 Notice that there’s no need for a `return` statement at the end of the method.
-Because almost everything in Scala is an _expression_ — meaning that each line of code returns (or _evaluates to) a value — there’s no need to use `return`.
+Because almost everything in Scala is an _expression_ --- meaning that each line of code returns (or _evaluates to) a value --- there’s no need to use `return`.
 
 This becomes more clear when you condense that method and write it on one line:
 
@@ -203,7 +203,7 @@ Similarly, when a method takes one parameter it’s an _arity-1_ method.
 When you create arity-0 methods:
 
 - If the method has side effects, such as calling `println`, declare the method with empty parentheses
-- If the method does not have side effects — such as getting the size of a collection, which is similar to accessing a field on the collection — leave the parentheses off
+- If the method does not have side effects --- such as getting the size of a collection, which is similar to accessing a field on the collection --- leave the parentheses off
 
 For example, this method has a side effect, so it’s declared with empty parentheses:
 

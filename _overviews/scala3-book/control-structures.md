@@ -284,7 +284,7 @@ This is how the expression works:
 
 1. The `for` expression starts to iterate over the values in the range `(10, 11, 12)`.
    It first works on the value `10`, multiplies it by `2`, then _yields_ that result, the value `20`.
-2. Next, it works on the `11` — the second value in the range.
+2. Next, it works on the `11` --- the second value in the range.
    It multiples it by `2`, then yields the value `22`.
    You can think of these yielded values as accumulating in a temporary holding place.
 3. Finally the loop gets the number `12` from the range, multiplies it by `2`, yielding the number `24`.
@@ -443,7 +443,7 @@ i match
 
 #### Case classes and match expressions
 
-You can also extract fields from `case` classes — and classes that have properly written `apply`/`unapply` methods — and use those in your guard conditions.
+You can also extract fields from `case` classes --- and classes that have properly written `apply`/`unapply` methods --- and use those in your guard conditions.
 Here’s an example using a simple `Person` case class:
 
 ```scala
@@ -470,7 +470,7 @@ def isTruthy(a: Matchable) = a match
   case _ => true
 ```
 
-The input parameter `a` is defined to be the [`Matchable` type][matchable] — which is the root of all Scala types that pattern matching can be performed on.
+The input parameter `a` is defined to be the [`Matchable` type][matchable] --- which is the root of all Scala types that pattern matching can be performed on.
 The method is implemented by matching on the input, providing two cases:
 The first one checks whether the given value is either the integer `0` or an empty string and returns `false` in this case.
 In the default case, we return `true` for any other value.

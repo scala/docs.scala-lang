@@ -84,7 +84,7 @@ c.startRunning()        // "Yeah ... I don’t run"
 c.stopRunning()         // "No need to stop"
 ```
 
-If that code makes sense — great, you’re comfortable with traits as interfaces.
+If that code makes sense --- great, you’re comfortable with traits as interfaces.
 If not, don’t worry, they’re explained in more detail in the [Data Modeling][data-1] chapter.
 
 

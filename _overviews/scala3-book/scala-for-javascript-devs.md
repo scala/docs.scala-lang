@@ -65,7 +65,7 @@ At a lower level, these are some of the differences you’ll see every day when 
 - Scala’s *contextual abstractions* and *term inference* provide a collection of features:
   - *Extension methods* let you add new functionality to closed classes without breaking modularity, by being available only in specific scopes (as opposed to monkey-patching, which can pollute other areas of the code)
   - *Given* instances let you define terms that the compiler can use to synthesize code for you
-  - Type safety and *multiversal equality* let you limit equality comparisons — at compile time — to only those comparisons that make sense
+  - Type safety and *multiversal equality* let you limit equality comparisons --- at compile time --- to only those comparisons that make sense
 - Thanks to features like by-name parameters, infix notation, optional parentheses, extension methods, and higher-order functions, you can create your own “control structures” and DSLs
 - Many other goodies that you can read about throughout this book: case classes, companion classes and objects, macros, union and intersection types, multiple parameter lists, named arguments, and more...
 

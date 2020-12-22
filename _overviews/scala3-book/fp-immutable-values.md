@@ -23,7 +23,7 @@ This is where higher-order functions like `map` and `filter` come in.
 TODO: need a better example
 {% endcomment %}
 
-For example, imagine that you have a list of names — a `List[String]` — that are all in lowercase, and you want to find all the names that begin with the letter `"j"`, and then you want to capitalize those names.
+For example, imagine that you have a list of names --- a `List[String]` --- that are all in lowercase, and you want to find all the names that begin with the letter `"j"`, and then you want to capitalize those names.
 In FP you write this code:
 
 ```scala

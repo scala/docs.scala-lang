@@ -8,7 +8,7 @@ next-page: fp-what-is-fp
 ---
 
 
-Scala lets you write code in an object-oriented programming (OOP) style, a functional programming (FP) style, and also in a hybrid style — using both approaches in combination.
+Scala lets you write code in an object-oriented programming (OOP) style, a functional programming (FP) style, and also in a hybrid style --- using both approaches in combination.
 [As Martin Odersky has stated](https://twitter.com/alexelcu/status/996408359514525696), the essence of Scala is a fusion of functional and object-oriented programming in a typed setting:
 
 - Functions for the logic

@@ -311,7 +311,7 @@ Assuming you told someone about the previous high-level features and then they s
 Where the previous section covered high-level features of Scala 3, it’s interesting to note that at a high level you can make the same statements about both Scala 2 and Scala 3.
 A decade ago Scala started with a strong foundation of desirable features, and as you’ll see in this section, those benefits have been improved with Scala 3.
 
-At a “sea level” view of the details — i.e., the language features programmers use everyday — Scala 3 has significant advantages over Scala 2:
+At a “sea level” view of the details --- i.e., the language features programmers use everyday --- Scala 3 has significant advantages over Scala 2:
 
 - The ability to create algebraic data types (ADTs) more concisely with enums
 - An even more concise and readable syntax:
