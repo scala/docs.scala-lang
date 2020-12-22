@@ -136,7 +136,7 @@ yield
   // of code here
   f.length
 
-// result: List[Int] = List(5, 6, 6)
+// fruitLengths: List[Int] = List(5, 6, 6)
 ```
 
 `for` loops and expressions are covered in more detail in the [Control Structures sections][control] of this book, and in the [Reference documentation]({{ site.scala3ref }}/other-new-features/control-syntax.html).

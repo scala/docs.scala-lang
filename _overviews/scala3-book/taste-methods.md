@@ -11,7 +11,7 @@ next-page: taste-functions
 ## Scala methods
 
 Scala classes, case classes, traits, enums, and objects can all contain methods.
-When a method isn’t declared to use a generic type or accept `using` parameters, its general syntax looks like this:
+The syntax of a simple method looks like this:
 
 ```scala
 def methodName(param1: Type1, param2: Type2): ReturnType =
@@ -19,7 +19,7 @@ def methodName(param1: Type1, param2: Type2): ReturnType =
   // goes here
 ```
 
-Here are a few examples of that syntax:
+Here are a few examples:
 
 ```scala
 def sum(a: Int, b: Int): Int = a + b
@@ -50,7 +50,7 @@ def getStackTraceAsString(t: Throwable): String =
 ```
 
 Method parameters can also have default values.
-In this example, if the `timeout` parameter isn’t specified, it defaults to `5000`:
+In this example, the `timeout` parameter has a default value of `5000`:
 
 ```scala
 def makeConnection(url: String, timeout: Int = 5000): Unit =
@@ -100,15 +100,15 @@ For instance, if you want to add two methods named `hello` and `aloha` to the `S
 
 ```scala
 extension (s: String)
-  def hello: String = s"Hello, ${s.capitalize}"
-  def aloha: String = s"Aloha, ${s.capitalize}"
+  def hello: String = s"Hello, ${s.capitalize}!"
+  def aloha: String = s"Aloha, ${s.capitalize}!"
 
-"world".hello    // "Hello, World"
-"friend".aloha   // "Aloha, Friend"
+"world".hello    // "Hello, World!"
+"friend".aloha   // "Aloha, Friend!"
 ```
 
-The `extension` keyword declares that you’re about to define one or more extension methods on the type that’s put in parentheses.
-As shown with this `String` example, the parameter `s` can then be used in the body of your extension methods.
+The `extension` keyword declares that you’re about to define one or more extension methods on the parameter that’s put in parentheses.
+As shown with this example, the parameter `s` of type `String` can then be used in the body of your extension methods.
 
 This next example shows how to add a `makeInt` method to the `String` class.
 Here, `makeInt` takes a parameter named `radix`.
@@ -127,7 +127,8 @@ extension (s: String)
 
 ## See also
 
-Methods are covered in detail in the [Data Modeling][data-1] section.
+Scala Methods can be much more powerful: they can take type parameters and context parameters.
+They are covered in detail in the [Data Modeling][data-1] section.
 
 
 

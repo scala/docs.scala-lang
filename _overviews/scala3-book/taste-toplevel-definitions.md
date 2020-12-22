@@ -9,7 +9,7 @@ next-page: taste-summary
 
 
 In Scala 3, all kinds of definitions can be written at the “top level” of your source code files.
-For instance, you can create a file named *MyCoolApp.scala* and put these contents into it:
+For instance, you can create a file named _MyCoolApp.scala_ and put these contents into it:
 
 ```scala
 import scala.collection.mutable.ArrayBuffer
@@ -42,8 +42,8 @@ As shown, there’s no need to put those definitions inside a `package`, `class`
 
 ## Replaces package objects
 
-If you’re familiar with Scala 2, this approach replaces *package objects*.
-But while being much easier to use, they work similarly: When you place a definition in a package named *foo*, you can then access that definition under all other packages under *foo*, such as within the *foo.bar* package in this example:
+If you’re familiar with Scala 2, this approach replaces _package objects_.
+But while being much easier to use, they work similarly: When you place a definition in a package named _foo_, you can then access that definition under all other packages under _foo_, such as within the _foo.bar_ package in this example:
 
 ```scala
 package foo {
@@ -60,6 +60,6 @@ package foo {
 
 Curly braces are used in this example to put an emphasis on the package nesting.
 
-The benefit of this approach is that you can place definitions under a package named *com.acme.myapp*, and then those definitions can be referenced within *com.acme.myapp.model*, *com.acme.myapp.controller*, etc.
+The benefit of this approach is that you can place definitions under a package named _com.acme.myapp_, and then those definitions can be referenced within _com.acme.myapp.model_, _com.acme.myapp.controller_, etc.
 
 
