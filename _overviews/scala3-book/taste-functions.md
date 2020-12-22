@@ -13,17 +13,20 @@ Scala has most features you’d expect in a functional programming language, inc
 
 - Lambdas
 - Higher-order functions (HOFs)
-- Higher-order functions in the standard library
+- Immutable collections in the standard library
 
 Lambdas, also known as _anonymous functions_, are a big part of keeping your code concise but readable.
-These two examples---which show how to call higher-order functions (HOFs) on a Scala `List`---are equivalent, and show how to multiply each number in a list by `2` by passing a lambda into the `map` method:
+
+The `map` method of the `List` class is a typical example of a higher-order function---a function that takes a lambda as parameter.
+
+These two examples are equivalent, and show how to multiply each number in a list by `2` by passing a lambda into the `map` method:
 
 ```scala
 val a = List(1, 2, 3).map(i => i * 2)   // List(2,4,6)
 val b = List(1, 2, 3).map(_ * 2)        // List(2,4,6)
 ```
 
-Those examples are also equivalent to the following code, which uses a `double` method inside of `map` instead of a lambda:
+Those examples are also equivalent to the following code, which uses a `double` method instead of a lambda:
 
 ```scala
 def double(i: Int): Int = i * 2

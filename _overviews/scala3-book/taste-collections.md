@@ -9,7 +9,7 @@ next-page: taste-contextual-abstractions
 
 
 
-Scala has a rich set of collections classes, and those classes have a rich set of methods.
+The Scala library has a rich set of collection classes, and those classes have a rich set of methods.
 Collections classes are available in both immutable and mutable forms.
 
 
@@ -98,7 +98,7 @@ t._2   // "eleven"
 t._3   // Person("Eleven")
 ```
 
-You can also use this *extractor* approach to assign the tuple fields to variable names:
+You can also use this _extractor_ approach to assign the tuple fields to variable names:
 
 ```scala
 val (num, str, person) = t

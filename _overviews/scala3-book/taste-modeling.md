@@ -76,10 +76,10 @@ These examples show how those classes are used:
 
 ```scala
 val d = Dog("Rover")
-d.speak()               // prints "Woof!"
+println(d.speak())      // prints "Woof!"
 
 val c = Cat("Morris")
-c.speak()               // "Meow"
+println(c.speak())      // "Meow"
 c.startRunning()        // "Yeah ... I don’t run"
 c.stopRunning()         // "No need to stop"
 ```
