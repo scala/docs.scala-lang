@@ -98,7 +98,7 @@ def someComputation(L: Logarithms)(init: L.Logarithm): L.Logarithm = ...
 ```
 
 #### Boxing Overhead
-Type abstractions, such as `type Logarithm` erase to their bound (which is `Any` in our case).
+Type abstractions, such as `type Logarithm` [erase](https://www.scala-lang.org/files/archive/spec/2.13/03-types.html#type-erasure) to their bound (which is `Any` in our case).
 That is, although we do not need to manually wrap and unwrap the `Double` value, there will be still some boxing overhead related to boxing the primitive type `Double`.
 
 ## Opaque Types
