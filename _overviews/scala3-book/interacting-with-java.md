@@ -290,7 +290,7 @@ The compiler gives this error:
 [error] SExceptionThrower.exceptionThrower()
 ````
 
-This is good --- it’s what you want: the annotation tells the Java compiler that `exceptionThrower` can throw an exception.
+This is good---it’s what you want: the annotation tells the Java compiler that `exceptionThrower` can throw an exception.
 Now when you’re writing Java code you must handle the exception with a `try` block or declare that your Java method throws an exception.
 
 Conversely, if you leave the annotation off of the Scala `exceptionThrower` method, the Java code _will compile_.
@@ -339,7 +339,7 @@ In Scala you might want to create a method name using a symbolic character:
 def +(a: Int, b: Int) = a + b
 ```
 
-That method name won’t work well in Java, but what you can do in Scala 3 is provide an “alternate” name for the method --- an alias --- that will work in Java:
+That method name won’t work well in Java, but what you can do in Scala 3 is provide an “alternate” name for the method---an alias---that will work in Java:
 
 ```scala
 import scala.annotation.alpha

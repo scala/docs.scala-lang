@@ -162,7 +162,7 @@ val greetInEnglish = createGreetingFunction("english")
 greetInEnglish("Joe")   // prints "Hello, Joe"
 ```
 
-If you’re comfortable with that code --- congratulations --- you now know how to write methods that return functions.
+If you’re comfortable with that code---congratulations---you now know how to write methods that return functions.
 
 
 

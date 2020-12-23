@@ -8,7 +8,7 @@ next-page: scala-tools
 ---
 
 
-When you want to write parallel and concurrent applications in Scala, you _can_ use the native Java `Thread` --- but the Scala [Future](https://www.scala-lang.org/api/current/scala/concurrent/Future$.html) offers a more high level and idiomatic approach so it’s preferred, and covered in this chapter.
+When you want to write parallel and concurrent applications in Scala, you _can_ use the native Java `Thread`---but the Scala [Future](https://www.scala-lang.org/api/current/scala/concurrent/Future$.html) offers a more high level and idiomatic approach so it’s preferred, and covered in this chapter.
 
 
 
@@ -35,7 +35,7 @@ def aLongRunningTask(): Future[Int] = ???
 val x = aLongRunningTask()
 ```
 
-But the main difference in this case is that because `aLongRunningTask` takes an indeterminate amount of time to return, the value in `x` may or may not be _currently_ available, but it will be available at some point --- in the future.
+But the main difference in this case is that because `aLongRunningTask` takes an indeterminate amount of time to return, the value in `x` may or may not be _currently_ available, but it will be available at some point---in the future.
 
 Another way to look at this is in terms of blocking.
 In this single-threaded example, the `println` statement isn’t printed until `aShortRunningTask` completes:
@@ -48,7 +48,7 @@ val x = aShortRunningTask()
 println("Here")
 ```
 
-Conversely, if `aShortRunningTask` is created as a `Future`, the `println` statement is printed almost immediately because `aShortRunningTask` is spawned off on some other thread --- it doesn’t block.
+Conversely, if `aShortRunningTask` is created as a `Future`, the `println` statement is printed almost immediately because `aShortRunningTask` is spawned off on some other thread---it doesn’t block.
 
 In this chapter you’ll see how to use futures, including how to run multiple futures in parallel and combine their results in a `for` expression.
 You’ll also see examples of methods that are used to handle the value in a future once it returns.
@@ -62,7 +62,7 @@ You’ll also see examples of methods that are used to handle the value in a fut
 ## An example in the REPL
 
 A future is used to create a temporary pocket of concurrency.
-For instance, you use a future when you need to call an algorithm that runs an indeterminate amount of time --- such as calling a remote microservice --- so you want to run it off of the main thread.
+For instance, you use a future when you need to call an algorithm that runs an indeterminate amount of time---such as calling a remote microservice---so you want to run it off of the main thread.
 
 To demonstrate how this works, let’s start with a `Future` example in the REPL.
 First, paste in these required `import` statements:
@@ -252,7 +252,7 @@ Then, at 806 ms, the three futures complete and the code in the `yield` block is
 Then the code immediately goes to the `Success` case in the `onComplete` method.
 
 The 806 ms output is a key to seeing that the three futures are run in parallel.
-If they were run sequentially, the total time would be about 1,400 ms --- the sum of the sleep times of the three futures.
+If they were run sequentially, the total time would be about 1,400 ms---the sum of the sleep times of the three futures.
 But because they’re run in parallel, the total time is just slightly longer than the longest-running future: `f1`, which is 800 ms.
 
 

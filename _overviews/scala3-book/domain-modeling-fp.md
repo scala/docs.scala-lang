@@ -133,7 +133,7 @@ case class Order(
 #### “Skinny domain objects”
 
 In his book, *Functional and Reactive Domain Modeling*, Debasish Ghosh states that where OOP practitioners describe their classes as “rich domain models” that encapsulate data and behaviors, FP data models can be thought of as “skinny domain objects.”
-This is because --- as this lesson shows --- the data models are defined as `case` classes with attributes, but no behaviors, resulting in short and concise data structures.
+This is because---as this lesson shows---the data models are defined as `case` classes with attributes, but no behaviors, resulting in short and concise data structures.
 
 
 
@@ -221,7 +221,7 @@ These different solutions are shown in the remainder of this section.
 
 ### Companion Object
 
-A first approach is to define the behavior --- the functions --- in a companion object.
+A first approach is to define the behavior---the functions---in a companion object.
 
 > As discussed in the Domain Modeling [Tools section][modeling-tools], a _companion object_ is an `object` that has the same name as a class, and is declared in the same file as the class.
 
@@ -292,7 +292,7 @@ trait PizzaServiceInterface:
   def updateCrustType(p: Pizza, ct: CrustType): Pizza
 ```
 
-As shown, each method takes a `Pizza` as an input parameter --- along with other parameters --- and then returns a `Pizza` instance as a result
+As shown, each method takes a `Pizza` as an input parameter---along with other parameters---and then returns a `Pizza` instance as a result
 
 When you write a pure interface like this, you can think of it as a contract that states, “all non-abstract classes that extend this trait *must* provide an implementation of these services.”
 
@@ -309,7 +309,7 @@ val p3 = updateCrustType(p2, Thick)
 val p4 = updateCrustSize(p3, Large)
 ```
 
-If that code seems okay, you’ll typically start sketching another API --- such as an API for orders --- but since we’re only looking at pizzas right now, we’ll stop thinking about interfaces and create a concrete implementation of this interface.
+If that code seems okay, you’ll typically start sketching another API---such as an API for orders---but since we’re only looking at pizzas right now, we’ll stop thinking about interfaces and create a concrete implementation of this interface.
 
 > Notice that this is usually a two-step process.
 > In the first step, you sketch the contract of your API as an *interface*.

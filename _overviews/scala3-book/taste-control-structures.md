@@ -33,7 +33,7 @@ else
   println("positive")
 ```
 
-Note that this really is an _expression_ --- not a _statement_.
+Note that this really is an _expression_---not a _statement_.
 This means that it returns a value, so you can assign the result to a variable:
 
 ```scala

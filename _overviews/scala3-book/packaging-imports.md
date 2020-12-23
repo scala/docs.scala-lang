@@ -218,7 +218,7 @@ class ClassB:
 
 ### “Static” imports
 
-When you want to import members in a way similar to the Java “static import” approach --- so you can refer to the member names directly, without having to prefix them with their class name --- use the following approach.
+When you want to import members in a way similar to the Java “static import” approach---so you can refer to the member names directly, without having to prefix them with their class name---use the following approach.
 
 Use this syntax to import all static members of the Java `Math` class:
 
@@ -288,7 +288,7 @@ object B:
 
 ### Discussion
 
-The wildcard selector `_` brings all definitions other than givens or extensions into scope, whereas a `given` selector brings all *givens* --- including those resulting from extensions --- into scope.
+The wildcard selector `_` brings all definitions other than givens or extensions into scope, whereas a `given` selector brings all *givens*---including those resulting from extensions---into scope.
 
 These rules have two main benefits:
 

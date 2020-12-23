@@ -14,7 +14,7 @@ NOTE: It would be nice to simplify this more.
 Some use cases, such as modeling database access, are more awkward in statically typed languages than in dynamically typed languages.
 With dynamically typed languages, it’s natural to model a row as a record or object, and to select entries with simple dot notation, e.g. `row.columnName`.
 
-Achieving the same experience in a statically typed language requires defining a class for every possible row arising from database manipulation --- including rows arising from joins and projections --- and setting up a scheme to map between a row and the class representing it.
+Achieving the same experience in a statically typed language requires defining a class for every possible row arising from database manipulation---including rows arising from joins and projections---and setting up a scheme to map between a row and the class representing it.
 
 This requires a large amount of boilerplate, which leads developers to trade the advantages of static typing for simpler schemes where column names are represented as strings and passed to other operators, e.g. `row.select("columnName")`.
 This approach forgoes the advantages of static typing, and is still not as natural as the dynamically typed version.

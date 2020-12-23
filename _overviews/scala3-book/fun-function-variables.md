@@ -23,7 +23,7 @@ We noted that this part of the expression is an anonymous function:
 
 The reason it’s called *anonymous* is because it’s not assigned to a variable, and therefore doesn’t have a name.
 
-However, an anonymous function --- also known as a *function literal* --- can be assigned to a variable to create a *function variable*:
+However, an anonymous function---also known as a *function literal*---can be assigned to a variable to create a *function variable*:
 
 ```scala
 val double = (i: Int) => i * 2

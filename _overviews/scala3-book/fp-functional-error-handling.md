@@ -117,7 +117,7 @@ In this example, if `x` can be converted to an `Int`, the first `case` statement
 
 ## Using a `for` expression
 
-Another common solution is to use a `for` expression --- i.e., the `for`/`yield` combination that was shown earlier in this book.
+Another common solution is to use a `for` expression---i.e., the `for`/`yield` combination that was shown earlier in this book.
 For instance, imagine that you want to convert three strings to integer values, and then add them together.
 This is how you do that with a `for` expression and `makeInt`:
 
@@ -267,7 +267,7 @@ val santa = new Address(
 ```
 
 Historically, developers have used blank strings and null values in this situation, both of which are hacks to work around the root problem: `street2` is an *optional* field.
-In Scala --- and other modern languages --- the correct solution is to declare up front that `street2` is optional:
+In Scala---and other modern languages---the correct solution is to declare up front that `street2` is optional:
 
 ```scala
 class Address:

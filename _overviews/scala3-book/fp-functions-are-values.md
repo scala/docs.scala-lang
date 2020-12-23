@@ -74,7 +74,7 @@ In most scenarios it doesn’t matter if `double` is a function or a method; Sca
 Behind the scenes, the Scala technology that lets you treat methods just like functions is known as [Eta Expansion][eta].
 
 This ability to seamlessly pass functions around as variables is a distinguishing feature of functional programming languages like Scala.
-And as you’ve seen in the `map` and `filter` examples throughout this book, the ability to pass functions into other functions helps you create code that is concise and still readable --- *expressive*.
+And as you’ve seen in the `map` and `filter` examples throughout this book, the ability to pass functions into other functions helps you create code that is concise and still readable---*expressive*.
 
 If you’re not comfortable with the process of passing functions as parameters into other functions, here are a few more examples you can experiment with:
 
