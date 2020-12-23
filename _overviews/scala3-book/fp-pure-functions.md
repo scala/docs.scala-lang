@@ -112,7 +112,7 @@ If you understand that code, you’ll see that it meets the pure function defini
 The first key point of this section is the definition of a pure function:
 
 > A *pure function* is a function that depends only on its declared inputs and its internal algorithm to produce its output.
-> It does not read any other values from “the outside world” — the world outside of the function’s scope — and it doesn’t modify any values in the outside world.
+> It does not read any other values from “the outside world”---the world outside of the function’s scope---and it doesn’t modify any values in the outside world.
 
 A second key point is that every real-world application interacts with the outside world.
 Therefore, a simplified way to think about functional programs is that they consist of a core of pure functions that are wrapped with other functions that interact with the outside world.

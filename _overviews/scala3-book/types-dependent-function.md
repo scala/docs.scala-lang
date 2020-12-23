@@ -36,7 +36,7 @@ val res1: Option[String] = db.get(Name)
 val res2: Option[String] = db.get(Age)
 ```
 Calling the method `db.get(Name)` returns a value of type `Option[String]`, while calling `db.get(Age)` returns a value of type `Option[Int]`.
-The return type _depends_ on the concrete type of the argument passed to `get` -- hence the name _dependent type_.
+The return type _depends_ on the concrete type of the argument passed to `get`---hence the name _dependent type_.
 
 ## Dependent Function Types
 As seen above, Scala 2 already had support for dependent method types.

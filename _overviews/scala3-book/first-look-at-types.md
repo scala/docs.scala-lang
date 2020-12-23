@@ -87,7 +87,7 @@ val d: Double = 2.0
 val f: Float = 3.0
 ```
 
-In the first four examples, if you don’t explicitly specify a type, the number `1` will default to an `Int`, so if you want one of the other data types — `Byte`, `Long`, or `Short` — you need to explicitly declare those types, as shown.
+In the first four examples, if you don’t explicitly specify a type, the number `1` will default to an `Int`, so if you want one of the other data types---`Byte`, `Long`, or `Short`---you need to explicitly declare those types, as shown.
 Numbers with a decimal (like 2.0) will default to a `Double`, so if you want a `Float` you need to declare a `Float`, as shown in the last example.
 
 Because `Int` and `Double` are the default numeric types, you typically create them without explicitly declaring the data type:
@@ -112,7 +112,7 @@ val s = "Bill"
 val c = 'a'
 ```
 
-As shown, enclose strings in double-quotes — or triple-quotes for multiline strings — and enclose a character in single-quotes.
+As shown, enclose strings in double-quotes---or triple-quotes for multiline strings---and enclose a character in single-quotes.
 
 Those data types and their ranges are:
 
@@ -263,7 +263,7 @@ This will be covered later in the tour.
 
 `Nothing` is a subtype of all types, also called the **bottom type**.
 There is no value that has the type `Nothing`.
-A common use is to signal non-termination, such as a thrown exception, program exit, or an infinite loop — i.e., it is the type of an expression which does not evaluate to a value, or a method that does not return normally.
+A common use is to signal non-termination, such as a thrown exception, program exit, or an infinite loop---i.e., it is the type of an expression which does not evaluate to a value, or a method that does not return normally.
 
 `Null` is a subtype of all reference types (i.e. any subtype of `AnyRef`).
 It has a single value identified by the keyword literal `null`.

@@ -62,7 +62,7 @@ So if your list is a `List[Int]`, you can replace the generic type `A` with `Int
 p: (Int) => Boolean
 ```
 
-Because `isEven` has this type — it transforms an input `Int` into a resulting `Boolean` — it can be used with `filter`.
+Because `isEven` has this type---it transforms an input `Int` into a resulting `Boolean`---it can be used with `filter`.
 
 
 
@@ -90,7 +90,7 @@ To demonstrate this, here’s a method that that takes an input parameter named 
 def sayHello(f: () => Unit): Unit = f()
 ```
 
-This portion of the code — the *type signature* — states that `f` is a function, and defines the types of functions the `sayHello` method will accept:
+This portion of the code---the *type signature*---states that `f` is a function, and defines the types of functions the `sayHello` method will accept:
 
 ```scala
 f: () => Unit

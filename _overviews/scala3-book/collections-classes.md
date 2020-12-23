@@ -63,7 +63,7 @@ As shown, `Map` and `Set` come in both immutable and mutable versions.
 
 The basics of each type are demonstrated in the following sections.
 
-> In Scala, a _buffer_ — such as `ArrayBuffer` and `ListBuffer` — is a sequence that can grow and shrink.
+> In Scala, a _buffer_---such as `ArrayBuffer` and `ListBuffer`---is a sequence that can grow and shrink.
 
 
 ### A note about immutable collections
@@ -75,7 +75,7 @@ With these types you don’t modify the collection; you apply functional methods
 
 ## Choosing a sequence
 
-When choosing a _sequence_ — a sequential collection of elements — you have two main decisions:
+When choosing a _sequence_---a sequential collection of elements---you have two main decisions:
 
 - Should the sequence be indexed (like an array), allowing rapid access to any element, or should it be implemented as a linear linked list?
 - Do you want a mutable or immutable collection?
@@ -232,7 +232,7 @@ This works because a `List` is a singly-linked list that ends with the `Nil` ele
 ### Aside: The LazyList
 
 The Scala collections also include a [LazyList](https://www.scala-lang.org/api/current/scala/collection/immutable/LazyList.html), which is a _lazy_ immutable linked list.
-It’s called “lazy” — or non-strict — because it computes its elements only when they are needed.
+It’s called “lazy”---or non-strict---because it computes its elements only when they are needed.
 
 You can see how lazy a `LazyList` is in the REPL:
 

@@ -26,7 +26,7 @@ When you create a new variable in Scala, you declare whether the variable is imm
   <tbody>
     <tr>
       <td valign="top"><code>val</code></td>
-      <td valign="top">Creates an <em>immutable</em> variable — like <code>final</code> in Java. You should always create a variable with <code>val</code>, unless there’s a reason you need a mutable variable.</td>
+      <td valign="top">Creates an <em>immutable</em> variable&mdash;like <code>final</code> in Java. You should always create a variable with <code>val</code>, unless there’s a reason you need a mutable variable.</td>
     </tr>
     <tr>
       <td><code>var</code></td>

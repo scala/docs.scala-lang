@@ -44,7 +44,7 @@ Then create a file named *build.sbt* that contains this line:
 scalaVersion := "{{ site.scala-3-version }}"
 ```
 
-Now create a file named something like *Hello.scala* — the first part of the name doesn’t matter — with this line:
+Now create a file named something like *Hello.scala*---the first part of the name doesn’t matter---with this line:
 
 ```scala
 @main def helloWorld = println("Hello, world")
@@ -110,9 +110,9 @@ src/
 target/
 ```
 
-You can also add a *lib* directory under the root directory if you want to add unmanaged dependencies — JAR files — to your project.
+You can also add a *lib* directory under the root directory if you want to add unmanaged dependencies---JAR files---to your project.
 
-If you’re going to create a project that has Scala source code files and tests, but won’t be using any Java source code files, and doesn’t need any “resources” — such as embedded images, configuration files, etc. — this is all you really need under the *src* directory:
+If you’re going to create a project that has Scala source code files and tests, but won’t be using any Java source code files, and doesn’t need any “resources”---such as embedded images, configuration files, etc.---this is all you really need under the *src* directory:
 
 ```bash
 src/

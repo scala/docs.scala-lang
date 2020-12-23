@@ -78,7 +78,7 @@ TODO: add a point about how the type system lets you express details as desired
 - Scala’s *contextual abstractions* and *term inference* provide a collection of features:
   - *Extension methods* let you add new functionality to closed classes
   - *Given* instances let you define terms that the compiler can synthesize at *using* points, making your code less verbose and essentially letting the compiler write code for you
-  - *Multiversal equality* lets you limit equality comparisons — at compile time — to only those comparisons that make sense
+  - *Multiversal equality* lets you limit equality comparisons---at compile time---to only those comparisons that make sense
 - Scala has state of the art, third-party, open source functional programming libraries
 - Scala case classes are like records in Java 14; they help you model data when writing FP code, with built-in support for concepts like pattern matching and cloning
 - Thanks to features like by-name parameters, infix notation, optional parentheses, extension methods, and higher-order functions, you can create your own “control structures” and DSLs
@@ -1212,7 +1212,7 @@ val c = h(b,y)
 This is nice, it’s just algebra.
 You create equations to solve small problems, and then combine equations to solve larger problems.
 
-And very importantly — as you remember from algebra courses — algebraic expressions don’t short circuit — they don’t throw exceptions that blow up a series of equations.
+And very importantly---as you remember from algebra courses---algebraic expressions don’t short circuit---they don’t throw exceptions that blow up a series of equations.
 
 Therefore, in Scala our methods don’t throw exceptions.
 Instead, they return types like `Option`.
