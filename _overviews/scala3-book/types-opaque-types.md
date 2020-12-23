@@ -38,7 +38,7 @@ println((l2 + l3).toDouble) // prints 4.999...
 While the class `Logarithm` offers a nice abstraction for `Double` values that are stored in this particular logarithmic form, it imposes severe performance overhead: For every single mathematical operation, we need to extract the underlying value and then wrap it again in a new instance of `Logarithm`.
 
 
-## Preventing the Overhead
+## Module Abstractions
 Let us consider another approach to implement the same library.
 This time instead of defining `Logarithm` as a class, we define it using a _type alias_.
 First, we define an abstract interface of our module:
@@ -77,7 +77,6 @@ object LogarithmsImpl extends Logarithms:
   def extract(x: Logarithm): Double = math.exp(x)
 ```
 Within the implementation of `LogarithmsImpl`, the equation `Logarithm = Double` allows us to implement the various methods.
-And all of this without any performance overhead of boxing the double values.
 
 #### Leaky Abstractions
 However, this abstraction is slightly leaky.
@@ -98,8 +97,12 @@ Programming against the abstract module `Logarithms` can be very tedious and oft
 def someComputation(L: Logarithms)(init: L.Logarithm): L.Logarithm = ...
 ```
 
+#### Boxing Overhead
+Type abstractions, such as `type Logarithm` erase to their bound (which is `Any` in our case).
+That is, although we do not need to manually wrap and unwrap the `Double` value, there will be still some boxing overhead related to boxing the primitive type `Double`.
+
 ## Opaque Types
-Instead of manually splitting our `Logarithms` component into an abstract part and into a concrete implementation, we can simply use opaque types in Scala 3 to achieve the same effect:
+Instead of manually splitting our `Logarithms` component into an abstract part and into a concrete implementation, we can simply use opaque types in Scala 3 to achieve a similar effect:
 
 ```scala
 object Logarithms:
@@ -128,6 +131,10 @@ println((l2 + l3).toDouble) // prints 4.999...
 
 val d: Double = l2 // ERROR: Found Logarithm required Double
 ```
+
+Even though we abstracted over `Logarithm`, the abstraction comes for free:
+Since there is only one implementation, at runtime there will be _no boxing overhead_ for primitive types like `Double`.
+
 ### Summary of Opaque Types
 Opaque types offer a sound abstraction over implementation details, without imposing performance overhead.
 As illustrated above, opaque types are convenient to use, and integrate very well with the [Extension Methods][extension] feature.
