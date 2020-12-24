@@ -7,7 +7,6 @@ previous-page: domain-modeling-intro
 next-page: domain-modeling-oop
 ---
 
-
 Scala 3 provides us with many different tools to model the world around us:
 
 - Classes
@@ -398,7 +397,12 @@ For more details, see the remainder of these modeling lessons.
 ## Abstract classes
 
 {% comment %}
-TODO: I have some notes on when to use abstract classes, and can update this section.
+LATER: If anyone wants to update this section, our comments about abstract classes and traits are on Slack. The biggest points seem to be:
+- The `super` of a trait is dynamic
+- At the use site, people can mix in traits but not classes
+- It remains easier to extend a class than a trait from Java, if the trait has at least a field
+- Similarly, in Scala.js, a class can be imported from or exported to JavaScript. A trait cannot
+- There are also some point that unrelated classes can’t be mixed together, and this can be a modeling advantage
 {% endcomment %}
 
 When you want to write a class, but you know it will have abstract members, you can either create a trait or an abstract class.

@@ -53,18 +53,16 @@ Also at a high level, the differences between Java and Scala are:
 - The [Scala Native](http://www.scala-native.org) project adds low-level constructs to let you write “systems” level code, and also compiles to native executables
 
 {% comment %}
+These are several notes that came up early in the writing process, and I (Alvin) can’t really address them:
 TODO: Need a good, simple way to state that Scala has a sound type system
+TODO: Points to make about Scala’s consistency?
+TODO: Add a point about how the type system lets you express details as desired
 {% endcomment %}
 
 
 ### Programming level differences
 
 Finally, these are some of the differences you’ll see every day when writing code:
-
-{% comment %}
-TODO: points to make about Scala’s consistency?
-TODO: add a point about how the type system lets you express details as desired
-{% endcomment %}
 
 - Scala’s syntax is extremely consistent
 - Variables and parameters are defined as `val` (immutable, like `final` in Java) or `var` (mutable)
