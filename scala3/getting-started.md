@@ -8,7 +8,7 @@ title: Getting Started with Scala 3
 ## Try Scala without installing anything
 
 To start experimenting with Scala 3 right away, use <a href="https://scastie.scala-lang.org/?target=dotty" target="_blank">“Scastie” in your browser</a>.
-*Scastie* is an online “playground” where you can experiment with Scala examples to see how things work, with access to all Scala compilers and published libraries.
+_Scastie_ is an online “playground” where you can experiment with Scala examples to see how things work, with access to all Scala compilers and published libraries.
 
 
 
@@ -25,10 +25,10 @@ It ensures that a JVM and standard Scala tools are installed on your system.
 Install it on your system with the following instructions.
 
 <div class="main-download">
-    <div id="download-step-one">
-        <p>Follow <a href="https://get-coursier.io/docs/cli-overview.html#install-native-launcher" target="_blank">the instructions to install the <code>cs</code> launcher</a> then run:</p>
-        <p><code>$ ./cs setup</code></p>
-    </div>
+  <div id="download-step-one">
+    <p>Follow <a href="https://get-coursier.io/docs/cli-overview.html#install-native-launcher" target="_blank">the instructions to install the <code>cs</code> launcher</a> then run:</p>
+    <p><code>$ ./cs setup</code></p>
+  </div>
 </div>
 
 Along with managing JVMs, `cs setup` also installs useful command line tools:
@@ -70,7 +70,7 @@ To create a new Scala project with sbt:
 1. `cd` to an empty folder.
 1. Run this command `sbt new scala/hello-world.g8`.
 This pulls the ['hello-world' template][template-url] from GitHub.
-It also creates a *target* folder, which you can ignore.
+It also creates a _target_ folder, which you can ignore.
 1. When prompted, name the application `hello-world`.
    This will create a project called "hello-world".
 1. Let’s take a look at what just got generated:
@@ -105,14 +105,14 @@ They both offer rich IDE features, but you can still use [many other editors.](h
 
 1. Download and install [IntelliJ Community Edition](https://www.jetbrains.com/idea/download/)
 1. Install the Scala plugin by following [the instructions on how to install IntelliJ plugins](https://www.jetbrains.com/help/idea/managing-plugins.html)
-1. Open the *build.sbt* file, then choose *Open as a project*
+1. Open the _build.sbt_ file, then choose _Open as a project_
 
 ### Using VS Code with Metals
 
 1. Download [VS Code](https://code.visualstudio.com/Download)
 1. Install the Metals extension from [the Marketplace](https://marketplace.visualstudio.com/items?itemName=scalameta.metals)
-1. Next, open the directory containing your *build.sbt* file.
-   When prompted to do so, select *Import build*.
+1. Next, open the directory containing your _build.sbt_ file.
+   When prompted to do so, select _Import build_.
 
 >[Metals](https://scalameta.org/metals) is a “Scala language server” that provides support for writing Scala code in VS Code and other editors like [Atom, Sublime Text, and more](https://scalameta.org/metals/docs/editors/overview.html), using the Language Server Protocol.
 (For details on how Metals works, see, [“Write Scala in VS Code, Vim, Emacs, Atom and Sublime Text with Metals”](https://www.scala-lang.org/2019/04/16/metals.html).)
@@ -123,20 +123,20 @@ They both offer rich IDE features, but you can still use [many other editors.](h
 
 View these two files in your IDE:
 
-- *build.sbt*
-- *src/main/scala/Main.scala*
+- _build.sbt_
+- _src/main/scala/Main.scala_
 
-When you run your project in the next step, the configuration in *build.sbt* will be used to run the code in *src/main/scala/Main.scala*.
+When you run your project in the next step, the configuration in _build.sbt_ will be used to run the code in _src/main/scala/Main.scala_.
 
 
 
 ## Run the “Hello, world” project
 
-If you’re comfortable using your IDE, you can run the code in *Main.scala* from your IDE.
+If you’re comfortable using your IDE, you can run the code in _Main.scala_ from your IDE.
 
 Otherwise, you can run the application from a terminal with these steps:
 
-1. `cd` into *hello-world*.
+1. `cd` into _hello-world_.
 1. Run `sbt`.
    This opens up the sbt console.
 1. Type `~run`.
