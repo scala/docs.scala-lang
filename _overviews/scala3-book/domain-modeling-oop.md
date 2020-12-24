@@ -171,9 +171,6 @@ Protected members are also visible to subclasses of the class.
 In the following, we illustrate some advanced features of Scala and show how they can be used to structure larger software components.
 The examples are adapted from the paper ["Scalable Component Abstractions"][scalable] by Martin Odersky and Matthias Zenger.
 Don’t worry if you don’t understand all the details of the example; it’s primarily intended to demonstrate how to use several type features to construct larger components.
-{% comment %}
-TODO: I’m not sure what I added in that last sentence is accurate or helpful, but I wanted to add a note about why readers shouldn’t worry about understanding the example.
-{% endcomment %}
 
 Our goal is to define a software component with a _family of types_ that can be refined later in implementations of the component.
 Concretely, the following code defines the component `SubjectObserver` as a trait with two abstract type members, `S` (for subjects) and `O` (for observers):

@@ -8,7 +8,7 @@ next-page: ca-multiversal-equality
 ---
 
 
-A *type class* is an abstract, parameterized type that lets you add new behavior to any closed data type without using sub-typing.
+A _type class_ is an abstract, parameterized type that lets you add new behavior to any closed data type without using sub-typing.
 This is useful in multiple use-cases, for example:
 
 - Expressing how a type you don’t own---from the standard library or a third-party library---conforms to such behavior
@@ -17,9 +17,6 @@ This is useful in multiple use-cases, for example:
 In Scala 3, type classes are just traits with one or more parameters whose implementations are provided by `given` instances.
 
 
-{% comment %}
-TODO: As background, discuss where the name "type class" comes from.
-{% endcomment %}
 
 ## Example
 
