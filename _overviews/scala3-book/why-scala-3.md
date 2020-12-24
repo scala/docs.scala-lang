@@ -18,8 +18,8 @@ It’s hard to list every benefit of Scala, but a “Top Ten” list might look 
 
 1. Scala embraces a fusion of functional programming (FP) and object-oriented programming (OOP)
 2. Scala is statically typed, but often feels like a dynamically typed language
-3. Scala’s syntax is concise, but still readable; it’s often referred to as *expressive*
-4. *Implicits* in Scala 2 were a defining feature, and they have been improved and simplified in Scala 3
+3. Scala’s syntax is concise, but still readable; it’s often referred to as _expressive_
+4. _Implicits_ in Scala 2 were a defining feature, and they have been improved and simplified in Scala 3
 5. Scala integrates seamlessly with Java, so you can create projects with mixed Scala and Java code, and Scala code easily uses the thousands of existing Java libraries
 6. Scala can be used on the server, and also in the browser with [Scala.js](https://www.scala-js.org)
 7. The Scala standard library has dozens of pre-built, functional methods to save you time, and greatly reduce the need to write custom `for` loops and algorithms
@@ -38,26 +38,17 @@ As Martin Odersky has stated, the essence of Scala is a fusion of functional and
 - Functions for the logic, and
 - Objects for the modularity
 
-Possibly some of the best examples of this are the classes in the standard library.
+Possibly some of the best examples of modularity are the classes in the standard library.
 For instance, a `List` is defined as a class---technically it’s an abstract class---and a new instance is created like this:
 
 ```scala
 val x = List(1, 2, 3)
 ```
 
-However, what appears to the programmer to be a simple `List` is actually built from a combination of several specialized traits:
+However, what appears to the programmer to be a simple `List` is actually built from a combination of several specialized types, including an abstract class named `AbstractSeq`, traits like `LinearSeq` and `LinearSeq`, and more.
+Those types are similarly composed of other small, modular units of code.
 
-```scala
-sealed abstract class List[+A]
-  extends AbstractSeq[A] with LinearSeq[A] with LinearSeqOps[A, [A] =>> List[A],
-  List[A]] with StrictOptimizedLinearSeqOps[A, [A] =>> List[A], List[A]] with StrictOptimizedSeqOps[A, [A] =>> List[A],
-  List[A]] with IterableFactoryDefaults[A, [A] =>> List[A]]
-  with DefaultSerializable
-```
-
-Those traits are similarly composed of other smaller, modular traits.
-
-In addition to building a class like `List` from a series of small, modular traits, the `List` API also consists of dozens of other methods, many of which are higher-order functions:
+In addition to building a type like `List` from a series of modular traits, the `List` API also consists of dozens of other methods, many of which are higher-order functions:
 
 ```scala
 val xs = List(1, 2, 3, 4, 5)
@@ -75,7 +66,7 @@ The `List` class is immutable, so all of those methods return new values, as sho
 
 ## 2) A dynamic feel
 
-Scala’s *type inference* often makes the language feel dynamically typed, even though it’s statically typed.
+Scala’s _type inference_ often makes the language feel dynamically typed, even though it’s statically typed.
 This is true with variable assignment:
 
 ```scala
