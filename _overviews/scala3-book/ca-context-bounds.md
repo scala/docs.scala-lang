@@ -13,14 +13,13 @@ next-page: ca-given-imports
 - TODO: define "synthesized" and "synthesized arguments"
 {% endcomment %}
 
-
-In many situations the name of a *context parameter* doesn’t have to be mentioned explicitly, since it’s only used in synthesized arguments for other context parameters.
+In many situations the name of a _context parameter_ doesn’t have to be mentioned explicitly, since it’s only used in synthesized arguments for other context parameters.
 In that case you don’t have to define a parameter name, and can just provide the parameter type.
 
 
 ## Background
 
-For example, this `maximum` method takes a *context parameter* of type `Ord`, only to pass it on as an argument to `max`:
+For example, this `maximum` method takes a _context parameter_ of type `Ord`, only to pass it on as an argument to `max`:
 
 ```scala
 def maximum[T](xs: List[A])(using ord: Ord[A]): A =
@@ -37,7 +36,7 @@ def maximum[T](xs: List[A])(using Ord[A]): A =
 
 ## Context bounds
 
-Given that background, a *context bound* is a shorthand syntax for expressing the pattern of, “a context parameter that depends on a type parameter.”
+Given that background, a _context bound_ is a shorthand syntax for expressing the pattern of, “a context parameter that depends on a type parameter.”
 
 Using a context bound, the `maximum` method can be written like this:
 
