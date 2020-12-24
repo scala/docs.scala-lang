@@ -39,7 +39,7 @@ As Martin Odersky has stated, the essence of Scala is a fusion of functional and
 - Objects for the modularity
 
 Possibly some of the best examples of this are the classes in the standard library.
-For instance, a `List` is defined as a class — technically it’s an abstract class — and a new instance is created like this:
+For instance, a `List` is defined as a class---technically it’s an abstract class---and a new instance is created like this:
 
 ```scala
 val x = List(1, 2, 3)
