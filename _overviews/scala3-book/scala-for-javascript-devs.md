@@ -29,14 +29,14 @@ At a high level, Scala shares these similarities with JavaScript:
 - Both have a relatively simple, concise syntax
 - Both support a C/C++/Java style curly-brace syntax for writing methods and other block of code
 - Both include features (like classes) for object-oriented programming (OOP)
-- Both include features (like lambdas) for functional programming (FP)
+- Both include features (like lambdas) for [functional programming][fp-intro] (FP)
 - JavaScript runs in the browser and other environments like Node.js.
   The [Scala.js](https://www.scala-js.org) flavor of Scala targets JavaScript and Scala programs can thus run in the same environments.
 - Developers write server-side applications in JavaScript and Scala using [Node.js](https://nodejs.org); projects like the [Play Framework](https://www.playframework.com/) also let you write server-side applications in Scala
 - Both languages have similar `if` statements, `while` loops, and `for` loops
 - Starting [at this Scala.js page](https://www.scala-js.org/libraries/index.html), you’ll find dozens of libraries to support React, Angular, jQuery, and many other JavaScript and Scala libraries
 - JavaScript objects are mutable; Scala objects _can_ be mutable when writing in an imperative style
-- Both JavaScript and Scala support *promises* as a way of running asynchronous computations (Scala uses futures and promises)
+- Both JavaScript and Scala support _promises_ as a way of running asynchronous computations ([Scala concurrency][concurrency] uses futures and promises)
 
 ### High-level differences
 
@@ -45,11 +45,11 @@ Also at a high level, some of the differences between JavaScript and Scala are:
 - JavaScript is dynamically typed, and Scala is statically typed
   - Although Scala is statically typed, features like type inference make it feel like a dynamic language (as you’ll see in the examples that follow)
 - Scala idioms favor immutability by default: you’re encouraged to use immutable variables and immutable collections
-- Scala has a concise but readable syntax; we call it *expressive*
+- Scala has a concise but readable syntax; we call it _expressive_
 - Scala is a pure OOP language, so every object is an instance of a class, and symbols like `+` and `+=` that look like operators are really methods; this means that you can create your own methods that work as operators
 - As a pure OOP language and a pure FP language, Scala encourages a fusion of OOP and FP, with functions for the logic and immutable objects for modularity
 - Scala has state of the art, third-party, open source functional programming libraries
-- Everything in Scala is an *expression*: constructs like `if` statements, `for` loops, `match` expressions, and even `try`/`catch` expressions all have return values
+- Everything in Scala is an _expression_: constructs like `if` statements, `for` loops, `match` expressions, and even `try`/`catch` expressions all have return values
 - The [Scala Native](https://scala-native.readthedocs.io/en/v0.3.9-docs) project lets you write “systems” level code, and also compiles to native executables
 
 ### Programming level differences
@@ -59,15 +59,15 @@ At a lower level, these are some of the differences you’ll see every day when 
 - Scala variables and parameters are defined with `val` (immutable, like a JavaScript `const`) or `var` (mutable, like a JavaScript `var` or `let`)
 - Scala does not use semi-colons at the end of lines
 - Scala is statically-typed, though in many situations you don’t need to declare the type
-- Scala uses traits as interfaces and to create *mixins*
+- Scala uses traits as interfaces and to create _mixins_
 - In addition to simple `for` loops, Scala has powerful `for` comprehensions that yield results based on your algorithms
 - Pattern matching and `match` expressions will change the way you write code
-- Scala’s *contextual abstractions* and *term inference* provide a collection of features:
-  - *Extension methods* let you add new functionality to closed classes without breaking modularity, by being available only in specific scopes (as opposed to monkey-patching, which can pollute other areas of the code)
-  - *Given* instances let you define terms that the compiler can use to synthesize code for you
-  - Type safety and *multiversal equality* let you limit equality comparisons---at compile time---to only those comparisons that make sense
-- Thanks to features like by-name parameters, infix notation, optional parentheses, extension methods, and higher-order functions, you can create your own “control structures” and DSLs
-- Many other goodies that you can read about throughout this book: case classes, companion classes and objects, macros, union and intersection types, multiple parameter lists, named arguments, and more...
+- Scala’s [contextual abstractions][contextual] and _term inference_ provide a collection of features:
+  - [Extension methods][extension-methods] let you add new functionality to closed classes without breaking modularity, by being available only in specific scopes (as opposed to monkey-patching, which can pollute other areas of the code)
+  - [Given instances][givens] let you define terms that the compiler can use to synthesize code for you
+  - Type safety and [multiversal equality][multiversal] let you limit equality comparisons---at compile time---to only those comparisons that make sense
+- Thanks to features like by-name parameters, infix notation, optional parentheses, extension methods, and [higher-order functions][hofs], you can create your own “control structures” and DSLs
+- Many other goodies that you can read about throughout this book: case classes, companion classes and objects, macros, [union][union-types] and [intersection][intersection-types] types, multiple parameter lists, named arguments, and more
 
 
 
@@ -137,7 +137,7 @@ The rule of thumb in Scala is to declare variables using `val`, unless there’s
 
 ## Naming standards
 
-JavaScript and Scala generally use the same *CamelCase* naming standards.
+JavaScript and Scala generally use the same _CamelCase_ naming standards.
 Variables are named like `myVariableName`, methods are named like `lastIndexOf`, and classes and object are named like `Animal` and `PrintedBook`.
 
 
@@ -300,7 +300,7 @@ The biggest difference is that Scala doesn’t offer `++` and `--` operators.
   </tbody>
 </table>
 
-Perhaps the biggest difference is that “operators” like `+` and `-` are really *methods* in Scala, not operators.
+Perhaps the biggest difference is that “operators” like `+` and `-` are really _methods_ in Scala, not operators.
 Scala numbers also have these related methods:
 
 ```scala
@@ -419,7 +419,7 @@ Dates are another commonly used type in both languages.
 
 In this case, Scala uses the date and time classes that come with Java.
 Many date/time methods are similar between JavaScript and Scala.
-See [the *java.time* package](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/time/package-summary.html) for more details.
+See [the _java.time_ package](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/time/package-summary.html) for more details.
 
 
 
@@ -522,7 +522,7 @@ Both JavaScript and Scala let you define anonymous functions, which you can pass
 
 In Scala you rarely define a function using the first syntax shown.
 Instead, you often define anonymous functions right at the point of use.
-Many collections methods are higher-order functions and accept function parameters, so you write code like this:
+Many collections methods are [higher-order functions][hofs] and accept function parameters, so you write code like this:
 
 ```scala
 // map method, long form
@@ -543,7 +543,7 @@ List(1,2,3,4,5).filter(_ < 3).map(_ * 10)   // List(10, 20)
 ## Classes
 
 Scala has both classes and case classes.
-A *class* is similar to a JavaScript class, and is generally intended for use in OOP style applications (though they can also be used in FP code), and *case classes* have additional features that make them very useful in FP style applications.
+A _class_ is similar to a JavaScript class, and is generally intended for use in [OOP style applications][modeling-oop] (though they can also be used in FP code), and _case classes_ have additional features that make them very useful in [FP style applications][modeling-fp].
 
 The following example shows how to create several types as enumerations, and then defines an OOP-style `Pizza` class.
 At the end, a `Pizza` instance is created and used:
@@ -1069,7 +1069,7 @@ A `for` comprehension is a `for` loop that uses `yield` to return (yield) a valu
 ## switch & match
 
 Where JavaScript has `switch` statements, Scala has `match` expressions.
-Like everything else in Scala, these truly are *expressions*, meaning they return a result:
+Like everything else in Scala, these truly are _expressions_, meaning they return a result:
 
 ```scala
 val day = 1
@@ -1108,14 +1108,14 @@ def isPerson(x: Matchable): Boolean = x match
 
 ## Collections classes
 
-Scala has different collections classes for different needs.
+Scala has different [collections classes][collections-classes] for different needs.
 
-Common *immutable* sequences are:
+Common _immutable_ sequences are:
 
 - `List`
 - `Vector`
 
-Common *mutable* sequences are:
+Common _mutable_ sequences are:
 
 - `Array`
 - `ArrayBuffer`
@@ -1208,7 +1208,7 @@ val men = List("Fred", "Barney")      // List(Fred, Barney)
 val couples = women.zip(men)          // List((Wilma,Fred), (Betty,Barney))
 ```
 
-Scala has *many* more methods that are available to you.
+Scala has _many_ more methods that are available to you.
 The benefits of all these methods are:
 
 - You don’t have to write custom `for` loops to solve problems
@@ -1351,7 +1351,7 @@ There are other concepts in Scala which currently have no equivalent in JavaScri
 - Using traits as interfaces
 - Case classes
 - Companion classes and objects
-- The ability to create your own control structures and DSLs
+- The ability to create your own [control structures][control] and DSLs
 - Advanced features of `match` expressions and pattern matching
 - `for` comprehensions
 - Infix methods
@@ -1359,7 +1359,19 @@ There are other concepts in Scala which currently have no equivalent in JavaScri
 - More ...
 
 
+[collections-classes]: {% link _overviews/scala3-book/collections-classes.md %}
+[concurrency]: {% link _overviews/scala3-book/concurrency.md %}
 [contextual]: {% link _overviews/scala3-book/ca-contextual-abstractions-intro.md %}
+[control]: {% link _overviews/scala3-book/control-structures.md %}
+[extension-methods]: {% link _overviews/scala3-book/ca-extension-methods.md %}
+[fp-intro]: {% link _overviews/scala3-book/fp-intro.md %}
+[givens]: {% link _overviews/scala3-book/ca-given-using-clauses.md %}
+[hofs]: {% link _overviews/scala3-book/fun-hofs.md %}
+[intersection-types]: {% link _overviews/scala3-book/types-intersection.md %}
+[modeling-fp]: {% link _overviews/scala3-book/domain-modeling-fp.md %}
+[modeling-oop]: {% link _overviews/scala3-book/domain-modeling-oop.md %}
+[multiversal]: {% link _overviews/scala3-book/ca-multiversal-equality.md %}
+[union-types]: {% link _overviews/scala3-book/types-union.md %}
 
 </div>
 
