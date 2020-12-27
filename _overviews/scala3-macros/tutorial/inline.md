@@ -135,7 +135,7 @@ logged(new RefinedLogger, "✔️")
 It expands to:
 
 ```
-val loggeer = new RefinedLogger
+val logger = new RefinedLogger
 val x = "✔️"
 logger.log(x)
 ```
