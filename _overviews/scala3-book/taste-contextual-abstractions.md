@@ -45,8 +45,8 @@ addresses.sortBy(address => (address.city, address.street))(using Ordering.Tuple
 In this case, the `Ordering.Tuple2(Ordering.String, Ordering.String)` instance is exactly the one that is otherwise inferred by the compiler.
 In other words both examples produce the same program.
 
-_Contextual Abstractions_ is used to avoid repetition of code.
-It helps developers write pieces of code that are extensible and concise at the same time.
+_Contextual Abstractions_ are used to avoid repetition of code.
+They help developers write pieces of code that are extensible and concise at the same time.
 
 For more details, see the [Contextual Abstractions chapter][contextual] of this book, and also the [Reference documentation][reference].
 
