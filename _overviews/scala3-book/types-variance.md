@@ -13,21 +13,21 @@ To explain variance, let us assume the following type definitions:
 ```scala
 trait Item { def productNumber: String }
 trait Buyable extends Item { def price: Int }
-trait Book extends CartItem { def isbn: String }
+trait Book extends Buyable { def isbn: String }
 ```
 
 Let us also assume the following parameterized types:
 ```scala
 // an example of an invariant type
-class Pipeline[T]:
+trait Pipeline[T]:
   def process(t: T): T
 
 // an example of an covariant type
-class Producer[+T]:
+trait Producer[+T]:
   def make: T
 
 // an example of an contravariant type
-class Consumer[-T]:
+trait Consumer[-T]:
   def take(t: T): Unit
 ```
 In general there are three modes of variance:
@@ -50,7 +50,9 @@ def oneOf(
   p2: Pipeline[Buyable],
   b: Buyable
 ): Buyable =
-  if p1.price < p2.price then p1.process(b) else p2.process(b)
+  val b1 = p1.process(b)
+  val b2 = p2.process(b)
+  if b1.price < b2.price then b1 else b2
 ```
 Now, recall that we have the following _subtyping relationship_ between our types:
 ```scala
@@ -76,7 +78,7 @@ As a caller of `make`, we will be happy to also accept a `Book`, which is a subt
 
 This is illustrated by the following example, where the function `makeTwo` expects a `Producer[Buyable]`:
 ```scala
-def makeTwo(p: Producer[Buyable]): Double =
+def makeTwo(p: Producer[Buyable]): Int =
   p.make.price + p.make.price
 ```
 It is perfectly fine to pass a producer for books:
