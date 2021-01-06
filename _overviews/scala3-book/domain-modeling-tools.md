@@ -449,7 +449,7 @@ class Dog(name: String, var age: Int) extends Pet(name):
 
 val d = Dog("Fido", 1)
 ```
-Traits are more flexible to compose --- you can mix in multiple traits, but only extend one class --- and should be preferred to classes and abstract classes most of the time.
+Traits are more flexible to compose---you can mix in multiple traits, but only extend one class---and should be preferred to classes and abstract classes most of the time.
 The rule of thumb is to use classes whenever you want to create instances of a particular type, and traits when you want to decompose and reuse behaviour.
 
 
