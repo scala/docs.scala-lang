@@ -14,8 +14,8 @@ _Scastie_ is an online “playground” where you can experiment with Scala exam
 
 ## Install Scala on your computer
 
-Installing Scala means installing various command-line tools such as the Scala compiler and build tools.
-We recommend using the Scala installer tool that automatically installs all the requirements, but you can still manually install each tool.
+Installing Scala means installing various command-line tools and build tools.
+We recommend using the Scala installer tool "Coursier" that automatically installs all the requirements, but you can still manually install each tool.
 
 
 ### Using the Scala Installer (recommended way)
@@ -38,7 +38,7 @@ Along with managing JVMs, `cs setup` also installs useful command line tools:
 - [Ammonite](https://ammonite.io), an enhanced REPL
 - [scalafmt](https://scalameta.org/scalafmt), the Scala formatter
 - The [Coursier CLI](https://get-coursier.io/docs/cli-overview), to install further Scala-based applications
-- The `scala` and `scalac` command-line tools
+- (the `scala` and `scalac` command-line tools for Scala 2.13 -- not Scala 3).
 
 For more information, read the [coursier-cli documentation](https://get-coursier.io/docs/cli-overview).
 
@@ -49,7 +49,7 @@ You only need two tools to compile, run, test, and package a Scala project: Java
 To install these manually:
 
 1. Download Java from [Oracle Java 8](https://www.oracle.com/java/technologies/javase-jdk8-downloads.html), [Oracle Java 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html), or [AdoptOpenJDK 8/11](https://adoptopenjdk.net/). Refer to [JDK Compatibility](/overviews/jdk-compatibility/overview.html) for Scala/Java compatibility detail.
-1. Install [sbt](https://www.scala-sbt.org/download.html)
+2. Install [sbt](https://www.scala-sbt.org/download.html)
 
 
 
