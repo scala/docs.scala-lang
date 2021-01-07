@@ -13,6 +13,11 @@ guides:
     url: "/scala3/guides/macros"
     description: "A detailed tutorial to cover all the features involved in writing macros in Scala 3."
     label-text: feature
+  - title: An Overview of TASTy
+    by: Alvin Alexander
+    icon: birthday-cake
+    url: "/scala3/guides/tasty-overview.html"
+    description: "An overview over the TASTy format aimed at end-users of the Scala language."
 ---
 
 <section class="full-width">

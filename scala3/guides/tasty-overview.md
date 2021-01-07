@@ -1,3 +1,7 @@
+---
+layout: singlepage-overview
+title: An Overview of TASTy
+---
 If you create a Scala 3 source code file named _Hello.scala_:
 
 ```scala
@@ -39,12 +43,12 @@ In Scala 3, the compilation process looks like this:
          ┌─────────────┐     ┌─────────────┐     ┌─────────────┐
 $ scalac │ Pizza.scala │ ──> │ Pizza.tasty │ ──> │ Pizza.class │
          └─────────────┘     └─────────────┘     └─────────────┘
-                ▲                   ▲                   ▲      
-                │                   │                   │      
-                                                               
-           Your source          TASTy file          Class file  
-               code             for scalac         for the JVM  
-                                (contains          (incomplete  
+                ▲                   ▲                   ▲
+                │                   │                   │
+
+           Your source          TASTy file          Class file
+               code             for scalac         for the JVM
+                                (contains          (incomplete
                                  complete          information)
                                information)
 ```
@@ -144,7 +148,6 @@ These articles provide more information about Scala 3 macros:
 
 
 
-[binary]: {% link _overviews/core/binary-compatibility-for-library-authors.md %}
+[binary]: {% link _overviews/tutorials/binary-compatibility-for-library-authors.md %}
 [tasty-reflect]: {{ site.scala3ref }}/metaprogramming/tasty-reflect.html
 [macros]: {{ site.scala3ref }}/metaprogramming/macros.html
-
