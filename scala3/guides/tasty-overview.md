@@ -54,7 +54,8 @@ $ scalac | Hello.scala | -> | Hello.tasty | -> | Hello.class |
 
 ### The issue with _.class_ files
 
-Because of issues such as type erasure, _.class_ files are actually an incomplete representation of your code. A simple way to demonstrate this is with a `List` example.
+Because of issues such as [type erasure][erasure], _.class_ files are actually an incomplete representation of your code.
+A simple way to demonstrate this is with a `List` example.
 
 _Type erasure_ means that when you write Scala code like this that’s supposed to run on the JVM:
 
@@ -83,10 +84,13 @@ int x = (Int) xs.get(0)               // Java-ish
 val x = xs.get(0).asInstanceOf[Int]   // more Scala-like
 ```
 
-Again, this is done for compatibility, so your Scala code can run on the JVM.
+Again, this is done for compatibility, so your Scala code can run on the JVM. However, the information that we already had a list of integers is lost in the class files.
+This imposes problems when trying to compile a Scala program against an already compiled library. For this, we need more information than usually available in class files.
 
 And this discussion only covers the topic of type erasure. There are similar issues for every other Scala construct that the JVM isn’t aware of, including constructs like unions, intersections, traits with parameters, and many more Scala 3 features.
 
+### TASTy for the Rescue
+So, instead of having no information about the original types in _.class_ files, or only the public API (as with the Scala 2.13 “Pickle” format), the TASTy format stores the complete abstract syntax tree (AST), after type checking. Storing the whole AST has a lot of advantages: it enables separate compilation, recompilation for a different JVM version, static analysis of programs, and many more.
 
 ### Key points
 
@@ -100,31 +104,23 @@ A second key point is to understand that there are differences between the infor
 
 With Scala 3 and Tasty, here’s another important note about compile time:
 
-- When you write Scala 3 code that uses other Scala 3 libraries, `scalac` doesn’t have to read their _.class_ files any more; it can read their _.tasty_ files, which, as mentioned, are an _exact_ representation of your code. This helps in many ways.
-
-{% comment %}
-NOTE: In regards to the previous paragraphs, I’ve read that there’s also metadata in the class files, but I don’t know those details.
-{% endcomment %}
+- When you write Scala 3 code that uses other Scala 3 libraries, `scalac` doesn’t have to read their _.class_ files any more; it can read their _.tasty_ files, which, as mentioned, are an _exact_ representation of your code. This is important to enable separate compilation and compatiblity between Scala 2.13 and Scala 3.
 
 
 
 ## Tasty benefits
 
-As you can imagine, having a complete representation of your code in a platform-neutral form has many benefits:
-
-{% comment %}
-TODO: These lines mostly come from https://www.scala-lang.org/blog/2018/04/30/in-a-nutshell.html, and I don’t know exactly what the first bullet point means:
-{% endcomment %}
+As you can imagine, having a complete representation of your code has [many benefits][benefits]:
 
 - The compiler uses it to support separate compilation.
 - The Scala _Language Server Protocol_-based language server uses it to support hyperlinking, command completion, documentation, and also for global operations such as find-references and renaming.
-- Tasty makes an excellent foundation for a new generation of reflection-based macros.
+- Tasty makes an excellent foundation for a new generation of [reflection-based macros][macros].
 - Optimizers and analyzers can use it for deep code analysis and advanced code generation.
 
 In a related note, Scala 2.13.4 has a TASTy reader, and the Scala 3 compiler can also read the 2.13 “Pickle” format. The [Compatibility Reference](https://scalacenter.github.io/scala-3-migration-guide/docs/compatibility.html) in the Scala 3 Migration Guide summarizes the benefits of this cross-compiling capability:
 
->“You can have a Scala `2.13.4` module that depends on a Scala `3.0.0-M1` module, and the latter can even depend on another Scala `2.13.4` module. >Cross-compatibility will not restrain you from using the exciting new features of Scala 3.0.
->In short, we have backward and forward compatibility and so migration can happen gradually and in any order.”
+> “You can have a Scala `2.13.4` module that depends on a Scala `3.0.0-M1` module, and the latter can even depend on another Scala `2.13.4` module. >Cross-compatibility will not restrain you from using the exciting new features of Scala 3.0.
+> In short, we have backward and forward compatibility and so migration can happen gradually and in any order.”
 
 
 
@@ -145,8 +141,8 @@ These articles provide more information about Scala 3 macros:
 - [The reference documentation on TASTy Reflect][tasty-reflect]
 - [The reference documentation on macros](macros)
 
-
-
+[benefits]: https://www.scala-lang.org/blog/2018/04/30/in-a-nutshell.html
+[erasure]: https://www.scala-lang.org/files/archive/spec/2.13/03-types.html#type-erasure
 [binary]: {% link _overviews/tutorials/binary-compatibility-for-library-authors.md %}
 [tasty-reflect]: {{ site.scala3ref }}/metaprogramming/tasty-reflect.html
 [macros]: {{ site.scala3ref }}/metaprogramming/macros.html
