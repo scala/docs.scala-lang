@@ -85,11 +85,11 @@ val x = xs.get(0).asInstanceOf[Int]   // more Scala-like
 ```
 
 Again, this is done for compatibility, so your Scala code can run on the JVM. However, the information that we already had a list of integers is lost in the class files.
-This imposes problems when trying to compile a Scala program against an already compiled library. For this, we need more information than usually available in class files.
+This poses problems when trying to compile a Scala program against an already compiled library. For this, we need more information than usually available in class files.
 
 And this discussion only covers the topic of type erasure. There are similar issues for every other Scala construct that the JVM isn’t aware of, including constructs like unions, intersections, traits with parameters, and many more Scala 3 features.
 
-### TASTy for the Rescue
+### TASTy to the Rescue
 So, instead of having no information about the original types in _.class_ files, or only the public API (as with the Scala 2.13 “Pickle” format), the TASTy format stores the complete abstract syntax tree (AST), after type checking. Storing the whole AST has a lot of advantages: it enables separate compilation, recompilation for a different JVM version, static analysis of programs, and many more.
 
 ### Key points
