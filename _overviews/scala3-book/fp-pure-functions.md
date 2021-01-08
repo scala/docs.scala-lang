@@ -12,7 +12,7 @@ Another feature that Scala offers to help you write functional code is the abili
 A _pure function_ can be defined like this:
 
 - A function `f` is pure if, given the same input `x`, it always returns the same output `f(x)`
-- The function’s output depends _only_ on its input variables and its internal algorithm
+- The function’s output depends _only_ on its input variables and its implementation
 - It doesn’t modify its input parameters
 - It doesn’t mutate any hidden state
 - It doesn’t have any “back doors”: It doesn’t read data from the outside world (including the console, web services, databases, files, etc.), or write data to the outside world
