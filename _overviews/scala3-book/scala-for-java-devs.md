@@ -28,7 +28,7 @@ At a high level, Scala shares these similarities with Java:
 - Scala code is compiled to _.class_ files, packaged in JAR files, and runs on the JVM
 - It’s an [object-oriented programming][modeling-oop] (OOP) language
 - It’s statically typed
-- Both languages have support for immutable collections, lambdas, and [higher-order functions][hofs]
+- Both languages have support for lambdas and [higher-order functions][hofs]
 - They can both be used with IDEs like IntelliJ IDEA and Microsoft VS Code
 - Projects can be built with build tools like Gradle, Ant, and Maven
 - It has terrific libraries and frameworks for building server-side, network-intensive applications, including web server applications, microservices, machine learning, and more (see the [“Awesome Scala” list](https://github.com/lauris/awesome-scala))
@@ -46,6 +46,7 @@ Also at a high level, the differences between Java and Scala are:
 - Though it’s statically typed, Scala often feels like a dynamic language
 - Scala is a pure OOP language, so every object is an instance of a class, and symbols like `+` and `+=` that look like operators are really methods; this means that you can create your own operators
 - In addition to being a pure OOP language, Scala is also a pure FP language; in fact, it encourages a fusion of OOP and FP, with functions for the logic and objects for modularity
+- Scala has a full suite of immutable collections, including `List`, `Vector`, and immutable `Map` and `Set` implementations
 - Everything in Scala is an _expression_: constructs like `if` statements, `for` loops, `match` expressions, and even `try`/`catch` expressions all have return values
 - Scala idioms favor immutability by default: you’re encouraged to use immutable (`final`) variables and immutable collections
 - The Scala ecosystem has other [build tools][tools] in sbt, Mill, and others
@@ -83,7 +84,7 @@ TODO: add a point about how the type system lets you express details as desired
 - Scala case classes are like records in Java 14; they help you model data when writing FP code, with built-in support for concepts like pattern matching and cloning
 - Thanks to features like by-name parameters, infix notation, optional parentheses, extension methods, and [higher-order functions][hofs], you can create your own “control structures” and DSLs
 - Scala files do not have to be named according to the classes or traits they contain
-- Many other goodies: companion classes and objects, macros, [union][union-types] and [intersection][intersection-types], [toplevel definitions][toplevel], numeric literals, multiple parameter lists, default values for parameters, named arguments, and more
+- Many other goodies: companion classes and objects, macros, [union][union-types] and [intersection][intersection-types], numeric literals, multiple parameter lists, default values for parameters, named arguments, and more
 
 ### Features compared with examples
 
@@ -966,6 +967,29 @@ Examples of how to create instances of immutable collections.
 
 Scala has mutable collections classes like `ArrayBuffer`, `Map`, and `Set` in its _scala.collection.mutable_ package.
 After [importing them][imports] into the current scope, they’re created just like the immutable `List`, `Vector`, `Map`, and `Set` examples just shown.
+
+Scala also has an `Array` class, which you can think of as being a wrapper around the Java `array` primitive type.
+A Scala `Array[A]` maps to a Java `A[]`, so you can think of this Scala `Array[String]`:
+
+```scala
+val a = Array("a", "b")
+```
+
+as being backed by this Java `String[]`:
+
+```scala
+String[] a = ["a", "b"]
+```
+
+However, a Scala `Array` also has all of the functional methods you expect in a Scala collection, including `map` and `filter`:
+
+```scala
+val nums = Array(1, 2, 3, 4, 5)
+val doubledNums = nums.map(_ * 2)
+val filteredNums = nums.filter(_ > 2)
+```
+
+Because the Scala `Array` is represented in the same way as the Java `array`, you can easily use Java methods that return arrays in your Scala code.
 
 You can also convert between Java and Scala collections classes with the Scala `CollectionConverters` objects.
 There are two objects in different packages, one for converting from Java to Scala, and another for converting from Scala to Java.

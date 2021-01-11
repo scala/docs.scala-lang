@@ -37,8 +37,8 @@ The two languages are first compared at a high level, and then at an everyday pr
 At a high level, Scala shares these *similarities* with Python:  
 
 - Both are high-level programming languages, where you don’t have to concern yourself with low-level concepts like pointers and manual memory management
-- Both have a relatively simple, concise syntax  
-- Both are [functional programming][fp-intro] (FP) languages
+- Both have a relatively simple, concise syntax
+- Both support a [functional style of programming][fp-intro]
 - Both are object-oriented programming (OOP) languages
 - Both have comprehensions: Python has list comprehensions and Scala has `for` comprehensions
 - Both languages have support for lambdas and [higher-order functions][hofs]
