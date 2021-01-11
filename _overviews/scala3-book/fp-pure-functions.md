@@ -13,7 +13,7 @@ A _pure function_ can be defined like this:
 
 - A function `f` is pure if, given the same input `x`, it always returns the same output `f(x)`
 - The function’s output depends _only_ on its input variables and its implementation
-- it only computes the output and does not modify the world around it.
+- It only computes the output and does not modify the world around it
 
 This implies:
 - It doesn’t modify its input parameters
