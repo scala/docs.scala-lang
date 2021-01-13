@@ -37,26 +37,6 @@ The [Macros Tutorial](/scala3/guides/macros) is being written by Nicolas Stucki 
 - [Sources](https://github.com/scala/docs.scala-lang/tree/master/_overviews/scala3-macros)
 - [Issues](https://github.com/scala/docs.scala-lang/issues)
 
-### Status
-
-This tutorial will cover all that is needed to start writing macros.
-The first part (M-1) will cover `inline`, the second part (M-2) will cover macros and quoted expressions and the third part (M-3) will cover how to use the TASTy reflection API.
-Additionally, we will include a cross-compilation/migration guide (M-A).
-
-- **M-A Cross-compilation** (in progress)
-  * Update/complete [migration status][migration-status] (help needed)
-  * Write [cross-compilation][cross-compilation]
-  * Create simple example projects in SBT and Mill
-- **M-1 Inline tutorial**
-  * Write [inline tutorial][inline] (in progress)
-  * Write [scala.compiletime tutorial][compiletime]: Each feature or group of featurs will need a section
-- **M-2 Macro tutorial** (not started)
-  * Write [macros tutorial][macros]: Understanding relation between inline and quoted expressions
-  * Write [quoted expressions tutorial][quotes]: Dive deep into all quoted expression features
-- **M-3 TASTy reflect API** (not started)
-  * Write [TASTy reflection tutorial][tasty] (not started): How to access it and the relation with quoted expressions
-  * Complete [TASTy reflect API][reflection-api] docs (help needed)
-
 ## Migration Guide
 The [Scala 3 Migration Guide](https://scalacenter.github.io/scala-3-migration-guide/)
 contains an comprehensive overview over compatibility between Scala 2 and Scala 3,
