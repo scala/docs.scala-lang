@@ -75,11 +75,12 @@ This section looks at the similarities you’ll see between Python and Scala whe
 
 Also at a programming level, these are some of the differences you’ll see every day when writing code:  
 
-- Scala’s syntax is extremely consistent:
-  - Lists, maps, sets, and tuples are all created and accessed similarly
-  - [Collections classes][collections-classes] generally have most of the same higher-order functions
+- Programming in Scala feels very consistent:
   - `val` and `var` fields are used consistently to define fields and parameters
+  - Lists, maps, sets, and tuples are all created and accessed similarly; for instance, parentheses are used to create all types---`List(1,2,3)`, `Set(1,2,3)`, `Map(1->"one")`---just like creating any other Scala class
+  - [Collections classes][collections-classes] generally have most of the same higher-order functions
   - Pattern matching is used consistently throughout the language
+  - The syntax that’s used to define functions that are passed into methods is the same syntax that’s used to define anonymous functions
 - Scala variables and parameters are defined with the `val` (immutable) or `var` (mutable) keywords
 - Scala idioms prefer immutable data structures
 - Scala has terrific IDE support with IntelliJ IDEA and Microsoft VS Code
