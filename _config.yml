@@ -16,7 +16,7 @@ keywords:
 - Guide
 
 scala-version: 2.13.4
-scala-212-version: 2.12.12
+scala-212-version: 2.12.13
 scala-3-version: 3.0.0-M3
 scala-3-plugin-version: 0.5.1
 
