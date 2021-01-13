@@ -16,6 +16,6 @@ bundle exec htmlproofer ./_site/\
   --http-status-ignore "400,401,429"\
   --empty-alt-ignore\
   --allow-hash-href\
-  --url-ignore '/https://github.com/scala/docs.scala-lang/blob/master/.*/,/www.oracle.com/,/.*dotty.epfl.ch\/api\/scala\/tasty\/Reflection.*/'
+  --url-ignore '/https://github.com/scala/docs.scala-lang/blob/master/.*/,/www.oracle.com/'
 
 exit 0

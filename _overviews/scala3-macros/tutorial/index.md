@@ -20,19 +20,19 @@ abstractions and offers more fine-grained control.
 
 - [Compile-time operations][compiletime] offer additional metaprogramming utilities that can be used within `inline` methods (for example to improve error reporting), without having to define a macro.
 
-- Starting from `inline`-methods, [macros][macros] are programs that explicitly operate on programs.
+- Starting from `inline` methods, [macros][macros] are programs that explicitly operate on programs.
 
   - Macros can be defined in terms of a _high-level_ API of [quoted expressions][quotes], that admits simple construction and deconstruction of programs expressions.
 
-  - Macros can also be defined in terms of a more _low-level_ API of [TASTy Reflection][tasty], that allows detailed inspection of programs.
+  - Macros can also be defined in terms of a more _low-level_ API of [Reflection][reflection], that allows detailed inspection of programs.
 
 > The tutorial uses the API of Scala 3.0.0-M3. The API had many small changes in this revision.
 
-> 🚧 We are still in the process of writing the tutorial. You can [help us improve it][contributing] 🚧
+> 🚧 We are still in the process of writing the tutorial. You can [help us][contributing] 🚧
 
 [contributing]: {% link scala3/contribute-to-docs.md %}
 [compiletime]: {% link _overviews/scala3-macros/tutorial/compiletime.md %}
 [inline]: {% link _overviews/scala3-macros/tutorial/inline.md %}
 [macros]: {% link _overviews/scala3-macros/tutorial/macros.md %}
 [quotes]: {% link _overviews/scala3-macros/tutorial/quotes.md %}
-[tasty]: {% link _overviews/scala3-macros/tutorial/reflection.md %}
+[reflection]: {% link _overviews/scala3-macros/tutorial/reflection.md %}
