@@ -15,7 +15,7 @@ previous-page: multiple-parameter-lists
  
 ## 定义一个案例类
 一个最简单的案例类定义由关键字`case class`，类名，参数列表（可为空）组成：
-```tut
+```scala mdoc
 case class Book(isbn: String)
 
 val frankenstein = Book("978-0486282114")

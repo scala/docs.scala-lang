@@ -15,7 +15,7 @@ previous-page: lower-type-bounds
 
 为了说明差异，我们简单描述了一个图形数据类型的实现：
 
-```tut
+```scala mdoc
 class Graph {
   class Node {
     var connectedNodes: List[Node] = Nil
@@ -35,7 +35,7 @@ class Graph {
 ```
 该程序将图形表示为节点列表 (`List[Node]`)。 每个节点都有一个用来存储与其相连的其他节点的列表 (`connectedNodes`)。 类 `Node` 是一个 _路径依赖类型_，因为它嵌套在类 `Graph` 中。 因此，`connectedNodes` 中存储的所有节点必须使用同一个 `Graph` 的实例对象的 `newNode` 方法来创建。
 
-```tut
+```scala mdoc
 val graph1: Graph = new Graph
 val node1: graph1.Node = graph1.newNode
 val node2: graph1.Node = graph1.newNode
@@ -48,7 +48,7 @@ node3.connectTo(node1)
 如果我们现在有两个图形，Scala 的类型系统不允许我们将一个图形中定义的节点与另一个图形的节点混合，因为另一个图形的节点具有不同的类型。
 下例是一个非法的程序：
 
-```
+```scala mdoc:fail
 val graph1: Graph = new Graph
 val node1: graph1.Node = graph1.newNode
 val node2: graph1.Node = graph1.newNode
@@ -59,7 +59,7 @@ node1.connectTo(node3)      // illegal!
 ```
 类型 `graph1.Node` 与类型 `graph2.Node` 完全不同。 在 Java 中，上一个示例程序中的最后一行是正确的。 对于两个图形的节点，Java 将分配相同的类型 `Graph.Node`; 即 `Node` 以类 `Graph` 为前缀。 在Scala中也可以表示出这种类型，它写成了 `Graph#Node`。 如果我们希望能够连接不同图形的节点，我们必须通过以下方式更改图形类的初始实现的定义：
 
-```tut
+```scala mdoc:nest
 class Graph {
   class Node {
     var connectedNodes: List[Graph#Node] = Nil

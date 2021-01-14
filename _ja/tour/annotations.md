@@ -8,7 +8,7 @@ discourse: true
 partof: scala-tour
 
 num: 32
-next-page: default-parameter-values
+next-page: packages-and-imports
 previous-page: by-name-parameters
 
 ---
@@ -29,7 +29,7 @@ object DeprecationDemo extends App {
 
 ## エンコーディングの正確性を保証するアノテーション
 条件が一致しない場合にコンパイルを失敗させるアノテーションもあります。例えば、アノテーション`@tailrec`はメソッドが[末尾再帰](https://en.wikipedia.org/wiki/Tail_call)であると保証します。末尾再帰ではメモリ使用量が一定になります。こちらは階乗を計算するメソッドの中での使われ方です。
-```tut
+```scala mdoc
 import scala.annotation.tailrec
 
 def factorial(x: Int): Int = {

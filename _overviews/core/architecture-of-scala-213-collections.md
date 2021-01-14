@@ -329,7 +329,7 @@ trait IterableFactory[+CC[_]] {
 
 Last but not least, as explained in the above sections, since we have four branches
 of template traits, we have four corresponding branches of factories. For instance,
-here are the relevant parts of code of the `map` operation implementation in `Map`:
+here are the relevant parts of code of the `map` operation implementation in `MapOps`:
 
 ~~~ scala
 trait MapOps[K, +V, +CC[_, _], +C]

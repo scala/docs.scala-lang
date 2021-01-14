@@ -18,7 +18,7 @@ Argumenty, które mogą być przekazywane jako parametry domniemane, można podz
 
 W poniższym przykładzie zdefiniujemy metodę `sum`, która oblicza sumę listy elementów wykorzystując operacje `add` i `unit` obiektu `Monoid`. Należy dodać, że wartości domniemane nie mogą być zdefiniowane globalnie, tylko muszą być elementem pewnego modułu.
  
-```tut
+```scala mdoc
 /** Ten przykład wykorzystuje strukturę z algebry abstrakcyjnej aby zilustrować działanie parametrów domniemanych. Półgrupa jest strukturą algebraiczną na zbiorze A z łączną operacją (czyli taką, która spełnia warunek: add(x, add(y, z)) == add(add(x, y), z)) nazwaną add, która łączy parę obiektów A by zwrócić inny obiekt A. */
 abstract class SemiGroup[A] {
   def add(x: A, y: A): A

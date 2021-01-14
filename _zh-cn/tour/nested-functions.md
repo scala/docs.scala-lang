@@ -13,7 +13,7 @@ previous-page: higher-order-functions
 
 在Scala中可以嵌套定义方法。例如以下对象提供了一个`factorial`方法来计算给定数值的阶乘：
 
-```tut
+```scala mdoc
  def factorial(x: Int): Int = {
     def fact(x: Int, accumulator: Int): Int = {
       if (x <= 1) accumulator

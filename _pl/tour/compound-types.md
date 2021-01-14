@@ -13,7 +13,7 @@ Czasami konieczne jest wyrażenie, że dany typ jest podtypem kilku innych typó
 
 Załóżmy, że mamy dwie cechy `Cloneable` i `Resetable`:
 
-```tut
+```scala mdoc
 trait Cloneable extends java.lang.Cloneable {
   override def clone(): Cloneable = { 
     super.clone().asInstanceOf[Cloneable]

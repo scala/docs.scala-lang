@@ -2,16 +2,29 @@
 {% include headerbottom.html %}
 {% if page.new-version %}<a class="new-version-notice" href="{{ page.new-version }}">This page has a new version.</a>{% endif %}
 
+
+
 <div class="navigation-fade-screen"></div>
 
 {% include navbar-inner.html %}
 
 <main id="inner-main">
-
   <!-- Title -->
   <section class="title-page">
     <div class="wrap">
       <div class="content-title-documentation">
+        {% if page.scala3 %}
+          <div class="wip-notice">
+            <h4>Work in Progress</h4>
+            <p>
+              Scala 3 has not been released, yet.
+              We are still in the process of writing the documentation for Scala 3.
+              You can <a  href="/scala3/contribute-to-docs.html">help us</a> to improve the documentation.
+            </p>
+            <p>Are you searching for the <a href="/">Scala 2 documentation</a>?</p>
+          </div>
+        {% endif %}
+
         <div class="titles">
           {% if page.overview-name %}
             <div class="supertitle">{{ page.overview-name }}</div>

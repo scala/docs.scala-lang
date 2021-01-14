@@ -1,34 +1,32 @@
-<header id="site-header">
-  <div class="wrap">
-    <nav class="navigation" role="menu">
-      <a href="http://scala-lang.org" class="navigation-bdand">
-        <img src="{{ site.baseurl }}/resources/img/frontpage/scala-logo-white@2x.png" alt="">
-      </a>
-      <div class="navigation-panel-button">
-        <i class="fa fa-bars"></i>
-      </div>
-      <ul class="navigation-menu">
-        {% for navItem in site.data.nav-header %}
-            <li class="navigation-menu-item">
-              <a href="{% if navItem.url contains '://' %}{{navItem.url}}{% else %}{{site.baseurl}}{{navItem.url}}{% endif %}" {% if page.url contains navItem.url %}class="active"{% endif %}>{{navItem.title}}</a>
-            </li>
-        {% endfor %}
-      </ul>
-    </nav>
-  </div>
-</header>
+{% if page.scala3 %}
+  {% assign navdata = site.data.scala3-doc-nav-header %}
+{% else %}
+  {% assign navdata = site.data.doc-nav-header %}
+{% endif %}
+
+{% include site-header.html %}
+
+{% if page.scala3 %}
+<header id="doc-header" class="scala3">
+{% else %}
 <header id="doc-header">
+{% endif %}
   <div class="wrap" style="padding: 0px;">
     <nav class="doc-navigation" role="menu">
       {% assign docsRootTranslated = site[page.language] | where: 'partof', 'documentation' | first %}
-      <a href="{{ site.baseurl }}/{{ docsRootTranslated.language }}" class="navigation-bdand" >
-        <img src="{{ site.baseurl }}/resources/img/documentation-logo@2x.png" alt="">
+      <div class="navigation-bdand">
+      <a href="{{ site.baseurl }}/{{ docsRootTranslated.language }}">
+        <img src="{{ site.baseurl }}/resources/img/documentation-logo@2x.png" alt="docs">
       </a>
+      <span class="doc-language-version">
+        — Scala {% if page.scala3 %} 3 {% else %} 2 {% endif %}
+      </span>
+      </div>
       <div class="navigation-ellipsis">
         <i class="fa fa-ellipsis-v"></i>
       </div>
       <ul class="navigation-menu">
-        {% for navItem in site.data.doc-nav-header %}
+        {% for navItem in navdata %}
             <li class="navigation-menu-item">
               {% capture translatedPageId %}/{{page.language}}{{navItem.url | remove_first: '.html' }}{% endcapture %}
               {% assign navItemTranslated = site.documents | where: 'id', translatedPageId | first %}
@@ -49,7 +47,7 @@
       </ul>
     </nav>
     <nav class="doc-navigation-submenus">
-      {% for navItem in site.data.doc-nav-header %}
+      {% for navItem in navdata %}
         {% if navItem.submenu %}
           <ul class="navigation-submenu" id="{{ navItem.title | downcase | strip }}" style="display: none;">
             {% for subItem in navItem.submenu %}
@@ -61,7 +59,7 @@
         {% endif %}
       {% endfor %}
       <ul class="navigation-submenu ellipsis-menu" style="display: none;">
-        {% for navItem in site.data.doc-nav-header %}
+        {% for navItem in navdata %}
           {% if forloop.index > 3 %}
             <li><a href="{% if navItem.url contains '://' %}{{navItem.url}}{% else %}{{site.baseurl}}{{navItem.url}}{% endif %}">{{ navItem.title }}</a></li>
           {% endif %}

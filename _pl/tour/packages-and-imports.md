@@ -74,7 +74,7 @@ import users.{UserPreferences => UPrefs}  // zaimportuj i zmień nazwę dla wygo
 
 Jedną z różnic w Scali od Javy jest to, że deklarację `import` można umieścić w dowolnym miejscu:
 
-```tut
+```scala mdoc
 def sqrtplus1(x: Int) = {
   import scala.math.sqrt
   sqrt(x) + 1.0

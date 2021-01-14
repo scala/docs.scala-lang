@@ -13,7 +13,7 @@ previous-page: default-parameter-values
 
 当调用方法时，实际参数可以通过其对应的形式参数的名称来标记：
 
-```tut
+```scala mdoc
 def printName(first: String, last: String): Unit = {
   println(first + " " + last)
 }
@@ -24,7 +24,7 @@ printName(last = "Smith", first = "John")  // Prints "John Smith"
 ```
 注意使用命名参数时，顺序是可以重新排列的。 但是，如果某些参数被命名了，而其他参数没有，则未命名的参数要按照其方法签名中的参数顺序放在前面。
 
-```tut:fail
+```scala mdoc:fail
 printName(last = "Smith", "john") // error: positional after named argument
 ```
 

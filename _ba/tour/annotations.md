@@ -5,7 +5,7 @@ language: ba
 partof: scala-tour
 
 num: 32
-next-page: default-parameter-values
+next-page: packages-and-imports
 previous-page: by-name-parameters
 
 ---
@@ -30,7 +30,7 @@ Redoslijed anotacijskih klauza nije bitan.
 Određene anotacije će uzrokovati pad kompajliranja ako određeni uslovi nisu ispunjeni. 
 Npr, anotacija `@tailrec` osigurava da je metoda [tail-rekurzivna](https://en.wikipedia.org/wiki/Tail_call). Tail-rekurzija može zadržati memorijske zahtjeve konstantnim. 
 Evo kako se koristi na metodi koja izračunava faktorijel:
-```tut
+```scala mdoc
 import scala.annotation.tailrec
 
 def factorial(x: Int): Int = {

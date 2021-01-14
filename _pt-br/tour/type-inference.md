@@ -13,7 +13,7 @@ Scala tem um mecanismo nativo de inferência de tipos que permite ao programador
 
 Por exemplo:
 
-```tut
+```scala mdoc
 object InferenceTest1 extends App {
   val x = 1 + 2 * 3         // o tipo de x é Int
   val y = x.toString()      // o tipo de y é String
@@ -25,7 +25,7 @@ Para métodos recursivos, o compilador não é capaz de inferir o tipo de retorn
 
 Exemplo de um método que não irá compilar por este motivo:
 
-```tut:fail
+```scala mdoc:fail
 object InferenceTest2 {
   def fac(n: Int) = if (n == 0) 1 else n * fac(n - 1)
 }
@@ -54,7 +54,7 @@ val y: Int = id[Int](1)
 Em algumas situações, pode ser muito perigoso confiar no mecanismo de inferência de tipos de Scala como mostra o seguinte programa:
 
 
-```tut:fail
+```scala mdoc:fail
 object InferenceTest4 {
   var obj = null
   obj = new Object()

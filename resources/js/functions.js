@@ -275,7 +275,7 @@ $(document).ready(function() {
 $(document).ready(function() {
   if ($("#sidebar-toc").length) {
     $('#toc').toc({
-      exclude: 'h1, h5, h6',
+      exclude: 'h1, h4, h5, h6',
       context: '.toc-context',
       autoId: true,
       numerate: false
@@ -505,12 +505,16 @@ $(document).ready(function () {
   let isInOverviewsFolder = overviewsFolders.some(of => thisPageUrl.startsWith(of));
   if(isRootFile) {
     thisPageUrl = thisPageUrl + '.md';
+  } else if(thisPageUrl.indexOf("tutorials/FAQ/") == 0) {
+    thisPageUrl = '_overviews/' + thisPageUrl.substring("tutorials/".length) + '.md';
   } else if(isInOverviewsFolder) {
     thisPageUrl = '_overviews/'+ thisPageUrl + '.md';
+  } else if (thisPageUrl.startsWith('scala3/book')) {
+    thisPageUrl = '_overviews/scala3-book/' + thisPageUrl.substring("scala3/book/".length) + '.md';
   } else {
     thisPageUrl = '_' + thisPageUrl + '.md';
   }
-  
+
   let url = githubApiUrl + '?path=' + thisPageUrl;
   $.get(url, function (data, status) {
     if(!data || data.length < 1) {

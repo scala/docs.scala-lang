@@ -1,0 +1,19 @@
+<header id="site-header">
+  <div class="wrap">
+    <nav class="navigation" role="menu">
+      <a href="http://scala-lang.org" class="navigation-bdand">
+        <img src="{{ site.baseurl }}/resources/img/frontpage/scala-logo-white@2x.png" alt="">
+      </a>
+      <div class="navigation-panel-button">
+        <i class="fa fa-bars"></i>
+      </div>
+      <ul class="navigation-menu">
+        {% for navItem in site.data.nav-header %}
+            <li class="navigation-menu-item">
+              <a href="{% if navItem.url contains '://' %}{{navItem.url}}{% else %}{{site.baseurl}}{{navItem.url}}{% endif %}" {% if page.url contains navItem.url %}class="active"{% endif %}>{{navItem.title}}</a>
+            </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>

@@ -17,12 +17,12 @@ Traits are used to share interfaces and fields between classes. They are similar
 ## Defining a trait
 A minimal trait is simply the keyword `trait` and an identifier:
 
-```tut
+```scala mdoc
 trait HairColor
 ```
 
 Traits become especially useful as generic types and with abstract methods.
-```tut
+```scala mdoc
 trait Iterator[A] {
   def hasNext: Boolean
   def next(): A
@@ -33,7 +33,7 @@ Extending the `trait Iterator[A]` requires a type `A` and implementations of the
 
 ## Using traits
 Use the `extends` keyword to extend a trait. Then implement any abstract members of the trait using the `override` keyword:
-```tut
+```scala mdoc:nest
 trait Iterator[A] {
   def hasNext: Boolean
   def next(): A
@@ -60,7 +60,7 @@ This `IntIterator` class takes a parameter `to` as an upper bound. It `extends I
 
 ## Subtyping
 Where a given trait is required, a subtype of the trait can be used instead.
-```tut
+```scala mdoc
 import scala.collection.mutable.ArrayBuffer
 
 trait Pet {

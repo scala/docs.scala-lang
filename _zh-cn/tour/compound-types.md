@@ -15,7 +15,7 @@ previous-page: abstract-type-members
 
 假设我们有两个特质 `Cloneable` 和 `Resetable`：
 
-```tut
+```scala mdoc
 trait Cloneable extends java.lang.Cloneable {
   override def clone(): Cloneable = {
     super.clone().asInstanceOf[Cloneable]

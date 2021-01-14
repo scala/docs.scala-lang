@@ -18,7 +18,7 @@ Tipovi, objekti i trejtovi biće pokriveni kasnije.
 
 ## Definisanje klase
 Minimalna definicija klase sastoji se od riječi `class` i identifikatora. Imena klasa bi trebala počinjati velikim slovom.
-```tut
+```scala mdoc
 class User
 
 val user1 = new User
@@ -28,7 +28,7 @@ Ključna riječ `new` koristi se za kreiranje instance klase.
 Međutim, često ćete imati konstruktor i tijelo klase.
 Slijedi definicija klase `Point` (en. tačka):
 
-```tut
+```scala mdoc
 class Point(var x: Int, var y: Int) {
 
   def move(dx: Int, dy: Int): Unit = {
@@ -56,7 +56,7 @@ Pošto `toString` prebrisava metodu `toString` iz [`AnyRef`](unified-types.html)
 
 Konstruktori mogu imati opcione parametre koristeći podrazumijevane vrijednosti:
 
-```tut
+```scala mdoc:nest
 class Point(var x: Int = 0, var y: Int = 0)
 
 val origin = new Point  // x and y are both set to 0
@@ -67,7 +67,7 @@ println(point1.x)  // prints 1
 
 U ovoj verziji klase `Point`, `x` i `y` imaju podrazumijevanu vrijednost `0` tako da ne morate proslijediti argumente.
 Međutim, pošto se argumenti konstruktora čitaju s lijeva na desno, ako želite proslijediti samo `y` vrijednost, morate imenovati parametar.
-```
+```scala mdoc:nest
 class Point(var x: Int = 0, var y: Int = 0)
 val point2 = new Point(y=2)
 println(point2.y)  // prints 2
@@ -78,7 +78,7 @@ Ovo je također dobra praksa zbog poboljšanja čitljivosti.
 ## Privatni članovi i sintaksa getera/setera
 Članovi su javni (`public`) po defaultu. 
 Koristite `private` modifikator pristupa da sakrijete članove klase.
-```tut
+```scala mdoc:nest
 class Point {
   private var _x = 0
   private var _y = 0
@@ -108,14 +108,14 @@ Primijetite specijalnu sintaksu za setere: metoda ima `_=` nadodano na identifik
 
 Parametri primarnog konstruktora s `val` i `var` su javni. 
 Međutim, pošto su `val` nepromjenjivi, ne možete napisati sljedeće.
-```
+```scala mdoc:fail
 class Point(val x: Int, val y: Int)
 val point = new Point(1, 2)
 point.x = 3  // <-- does not compile
 ```
 
 Parametri bez `val` ili `var` su privatne vrijednosti, vidljive samo unutar klase.
-```
+```scala mdoc:fail
 class Point(x: Int, y: Int)
 val point = new Point(1, 2)
 point.x  // <-- does not compile

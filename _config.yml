@@ -15,8 +15,10 @@ keywords:
 - Document
 - Guide
 
-scala-version: 2.13.3
-scala-212-version: 2.12.12
+scala-version: 2.13.4
+scala-212-version: 2.12.13
+scala-3-version: 3.0.0-M3
+scala-3-plugin-version: 0.5.1
 
 collections:
   style:
@@ -90,10 +92,37 @@ defaults:
       type: "tour"
     values:
       overview-name: "Tour of Scala"
+  -
+    scope:
+      path: "_overviews/scala3-book"
+    values:
+      scala3: true
+      # num: 99 # to list them in the TOC, should be overwritten individually
+      partof: scala3-book
+      type: section
+      overview-name: "Scala 3 — Book"
+      layout: multipage-overview
+      permalink: "/scala3/book/:title.html"
+  -
+    scope:
+      path: "_overviews/scala3-macros"
+    values:
+      scala3: true
+      partof: scala3-macros
+      overview-name: "Macros in Scala 3"
+      layout: multipage-overview
+      permalink: "/scala3/guides/macros/:title.html"
+  -
+    scope:
+      path: "scala3"
+    values:
+      scala3: true
+
 
 highlighter: rouge
 permalink: /:categories/:title.html:output_ext
 baseurl:
+scala3ref: "https://dotty.epfl.ch/docs/reference"
 exclude: ["vendor"]
 plugins:
   - jekyll-redirect-from

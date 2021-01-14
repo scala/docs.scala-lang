@@ -14,10 +14,11 @@ Generic classes are classes which take a type as a parameter. They are particula
 
 ## Defining a generic class
 Generic classes take a type as a parameter within square brackets `[]`. One convention is to use the letter `A` as type parameter identifier, though any parameter name may be used.
-```tut
+```scala mdoc
 class Stack[A] {
   private var elements: List[A] = Nil
-  def push(x: A) { elements = x :: elements }
+  def push(x: A): Unit =
+    elements = x :: elements
   def peek: A = elements.head
   def pop(): A = {
     val currentTop = peek

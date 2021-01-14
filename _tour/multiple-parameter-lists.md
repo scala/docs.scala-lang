@@ -14,10 +14,14 @@ Methods may have multiple parameter lists.
 
 ### Example
 
-Here is an example, as defined on the `TraversableOnce` trait in Scala's collections API:
+Here is an example, as defined on the `Iterable` trait in Scala's collections API:
 
-```
-def foldLeft[B](z: B)(op: (B, A) => B): B
+```scala
+trait Iterable[A] {
+  ...
+  def foldLeft[B](z: B)(op: (B, A) => B): B
+  ...
+}
 ```
 
 `foldLeft` applies a two-parameter function `op` to an initial value `z` and all elements of this collection, going left to right. Shown below is an example of its usage.
@@ -25,7 +29,7 @@ def foldLeft[B](z: B)(op: (B, A) => B): B
 Starting with an initial value of 0, `foldLeft` here applies the function `(m, n) => m + n` to each element in the List and the previous accumulated value.
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 val res = numbers.foldLeft(0)((m, n) => m + n)
 println(res) // 55
@@ -41,26 +45,26 @@ Suggested use cases for multiple parameter lists include:
 It so happens that in Scala, type inference proceeds one parameter list at a time.
 Say you have the following method:
 
-```tut
+```scala mdoc
 def foldLeft1[A, B](as: List[A], b0: B, op: (B, A) => B) = ???
 ```
 
 Then you'd like to call it in the following way, but will find that it doesn't compile:
 
-```tut:fail
+```scala mdoc:fail
 def notPossible = foldLeft1(numbers, 0, _ + _)
 ```
 
 you will have to call it like one of the below ways:
 
-```tut
+```scala mdoc
 def firstWay = foldLeft1[Int, Int](numbers, 0, _ + _)
 def secondWay = foldLeft1(numbers, 0, (a: Int, b: Int) => a + b)
 ```
 
 That's because Scala won't be able to infer the type of the function `_ + _`, as it's still inferring `A` and `B`. By moving the parameter `op` to its own parameter list, `A` and `B` are inferred in the first parameter list. These inferred types will then be available to the second parameter list and `_ + _` will match the inferred type `(Int, Int) => Int`
 
-```tut
+```scala mdoc
 def foldLeft2[A, B](as: List[A], b0: B)(op: (B, A) => B) = ???
 def possible = foldLeft2(numbers, 0)(_ + _)
 ```
@@ -74,7 +78,7 @@ To specify only certain parameters as [`implicit`](https://docs.scala-lang.org/t
 
 An example of this is:
 
-```
+```scala mdoc
 def execute(arg: Int)(implicit ec: scala.concurrent.ExecutionContext) = ???
 ```
 
@@ -84,7 +88,7 @@ When a method is called with a fewer number of parameter lists, then this will y
 
 For example,
 
-```tut
+```scala mdoc:nest
 val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 val numberFunc = numbers.foldLeft(List[Int]()) _
 

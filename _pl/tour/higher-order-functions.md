@@ -16,7 +16,7 @@ Terminologia może w tym momencie wydawać się niejasna, pojęcie "funkcja wyż
 
 Jednym z najczęściej spotykanych przykładów funkcji wyższego rzędu jest funkcja `map`, która dostępna jest dla kolekcji w Scali. 
 
-```tut
+```scala mdoc
 val salaries = Seq(20000, 70000, 40000)
 val doubleSalary = (x: Int) => x * 2
 val newSalaries = salaries.map(doubleSalary) // List(40000, 140000, 80000)
@@ -37,7 +37,7 @@ Zauważ, że w powyższym przykładzie `x` nie jest zadeklarowane jako typ `Int`
 Dzieje się tak, ponieważ kompilator może wywnioskować typ, bazując na typie funkcji oczekiwanej przez `map`.
 Poniżej jeszcze bardziej idiomatyczny sposób napisania tego kodu:
 
-```tut
+```scala mdoc:nest
 val salaries = Seq(20000, 70000, 40000)
 val newSalaries = salaries.map(_ * 2)
 ```
@@ -67,7 +67,7 @@ Jednym z powodów użycia funkcji wyższego rzędu jest zredukowanie nadmiaroweg
 Powiedzmy, że chcemy stworzyć metody, które potrafią zwiększyć czyjeś wynagrodzenie wg. jakiegoś współczynnika.
 Bez użycia funkcji wyższego rzędu mogłoby to wyglądać w następujący sposób:
 
-```tut
+```scala mdoc
 object SalaryRaiser {
 
   def smallPromotion(salaries: List[Double]): List[Double] =
@@ -84,7 +84,7 @@ object SalaryRaiser {
 Zauważ, że każda z trzech metod różni się jedynie współczynnikiem z jakim zmienia wynagrodzenie.
 Aby to uprościć, możemy wydzielić powtórzony kod do funkcji wyższego rzędu:
 
-```tut
+```scala mdoc:nest
 object SalaryRaiser {
 
   private def promotion(salaries: List[Double], promotionFunction: Double => Double): List[Double] =
@@ -108,7 +108,7 @@ Nowa metoda, `promotion`, przyjmuje jako parametr listę wynagrodzeń oraz funkc
 Istnieją pewne sytuacje, kiedy chcemy wygenerować jakieś funkcje.
 Oto przykład funkcji zwracającej inną funkcję.
 
-```tut
+```scala mdoc
 def urlBuilder(ssl: Boolean, domainName: String): (String, String) => String = {
   val schema = if (ssl) "https://" else "http://"
   (endpoint: String, query: String) => s"$schema$domainName/$endpoint?$query"

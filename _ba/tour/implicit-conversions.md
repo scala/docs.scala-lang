@@ -43,7 +43,7 @@ Implicitno importovani objekt `scala.Predef` deklariše nekoliko predefinisanih 
 Naprimjer, kada se pozivaju Javine metode koje očekuju `java.lang.Integer`, možete proslijediti `scala.Int`.
 Možete, zato što `Predef` uključuje slj. implicitnu konverziju:
 
-```tut
+```scala mdoc
 import scala.language.implicitConversions
 
 implicit def int2Integer(x: Int) =

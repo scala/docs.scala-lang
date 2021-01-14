@@ -8,7 +8,7 @@ partof: scala-tour
 
 num: 32
 language: ru
-next-page: default-parameter-values
+next-page: packages-and-imports
 previous-page: by-name-parameters
 
 ---
@@ -29,7 +29,7 @@ object DeprecationDemo extends App {
 ## Аннотации, обеспечивающие корректность работы кода
 Некоторые аннотации приводят к невозможности компиляции, если условие (условия) не выполняется. Например, аннотация `@tailrec` гарантирует, что метод является [хвостовой рекурсией](https://ru.wikipedia.org/wiki/%D0%A5%D0%B2%D0%BE%D1%81%D1%82%D0%BE%D0%B2%D0%B0%D1%8F_%D1%80%D0%B5%D0%BA%D1%83%D1%80%D1%81%D0%B8%D1%8F). Хвостовая рекурсия помогает держать потребление памяти на постоянном уровне. Вот как она используется в методе, который вычисляет факториал:
 
-```tut
+```scala mdoc
 import scala.annotation.tailrec
 
 def factorial(x: Int): Int = {

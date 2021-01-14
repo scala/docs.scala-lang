@@ -31,13 +31,13 @@ previous-page: tour-of-scala
 ## Выражения
 
 Выражения — это вычислимые утверждения.
-```
+```scala mdoc
 1 + 1
 ```
 Вы можете выводить результаты выражений, используя `println`.
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 println(1) // 1
 println(1 + 1) // 2
 println("Hello!") // Hello!
@@ -49,7 +49,7 @@ println("Hello," + " world!") // Hello, world!
 
 Результаты выражений можно присваивать именам с помощью ключевого слова `val`.
 
-```tut
+```scala mdoc
 val x = 1 + 1
 println(x) // 2
 ```
@@ -59,13 +59,13 @@ println(x) // 2
 
 Значения не изменяемы и не могут быть переназначены.
 
-```tut:fail
+```scala mdoc:fail
 x = 3 // Не компилируется.
 ```
 
 Типы значений могут быть выведены автоматически, но можно и явно указать тип, как показано ниже:
 
-```tut
+```scala mdoc:nest
 val x: Int = 1 + 1
 ```
 
@@ -75,7 +75,7 @@ val x: Int = 1 + 1
 
 Переменные похожи на значения константы, за исключением того, что их можно присваивать заново. Вы можете объявить переменную с помощью ключевого слова `var`.
 
-```tut
+```scala mdoc:nest
 var x = 1 + 1
 x = 3 // Компилируется потому что "x" объявлен с ключевым словом "var".
 println(x * x) // 9
@@ -83,7 +83,7 @@ println(x * x) // 9
 
 Как и в случае со значениями, вы можете явно указать тип, если захотите:
 
-```tut
+```scala mdoc:nest
 var x: Int = 1 + 1
 ```
 
@@ -94,7 +94,7 @@ var x: Int = 1 + 1
 
 Результат последнего выражения в блоке будет результатом всего блока в целом.
 
-```tut
+```scala mdoc
 println({
   val x = 1 + 1
   x + 1
@@ -107,7 +107,7 @@ println({
 
 Вы можете определить анонимную функцию (т.е. без имени), которая возвращает переданное число, прибавив к нему единицу:
 
-```tut
+```scala mdoc
 (x: Int) => x + 1
 ```
 
@@ -116,7 +116,7 @@ println({
 Вы также можете назвать функции.
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 val addOne = (x: Int) => x + 1
 println(addOne(1)) // 2
 ```
@@ -125,7 +125,7 @@ println(addOne(1)) // 2
 Функции могут принимать множество параметров.
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 val add = (x: Int, y: Int) => x + y
 println(add(1, 2)) // 3
 ```
@@ -133,7 +133,7 @@ println(add(1, 2)) // 3
 
 Или вообще не принимать никаких параметров.
 
-```tut
+```scala mdoc
 val getTheAnswer = () => 42
 println(getTheAnswer()) // 42
 ```
@@ -145,7 +145,7 @@ println(getTheAnswer()) // 42
 Методы задаются ключевым словом `def`.  За `def` следует имя, список параметров, возвращаемый тип и тело.
 
 {% scalafiddle %}
-```tut
+```scala mdoc:nest
 def add(x: Int, y: Int): Int = x + y
 println(add(1, 2)) // 3
 ```
@@ -156,7 +156,7 @@ println(add(1, 2)) // 3
 Методы могут принимать несколько списков параметров.
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 def addThenMultiply(x: Int, y: Int)(multiplier: Int): Int = (x + y) * multiplier
 println(addThenMultiply(1, 2)(3)) // 9
 ```
@@ -164,7 +164,7 @@ println(addThenMultiply(1, 2)(3)) // 9
 
 Или вообще ни одного списка параметров.
 
-```tut
+```scala mdoc
 def name: String = System.getProperty("user.name")
 println("Hello, " + name + "!")
 ```
@@ -174,7 +174,7 @@ println("Hello, " + name + "!")
 Методы также могут иметь многострочные выражения.
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 def getSquareString(input: Double): String = {
   val square = input * input
   square.toString
@@ -189,7 +189,7 @@ println(getSquareString(2.5)) // 6.25
 
 Вы можете объявлять классы используя ключевое слово `class`, за которым следует его имя и параметры конструктора.
 
-```tut
+```scala mdoc
 class Greeter(prefix: String, suffix: String) {
   def greet(name: String): Unit =
     println(prefix + name + suffix)
@@ -199,7 +199,7 @@ class Greeter(prefix: String, suffix: String) {
 
 Вы можете создать экземпляр класса, используя ключевое слово `new`.
 
-```tut
+```scala mdoc
 val greeter = new Greeter("Hello, ", "!")
 greeter.greet("Scala developer") // Hello, Scala developer!
 ```
@@ -210,13 +210,13 @@ greeter.greet("Scala developer") // Hello, Scala developer!
 
 В Scala есть специальный тип класса, который называется классом-образцом (case class). По умолчанию такие классы неизменны и сравниваются по значению из конструктора. Вы можете объявлять классы-образцы с помощью ключевых слов `case class`.
 
-```tut
+```scala mdoc
 case class Point(x: Int, y: Int)
 ```
 
 Можно создавать экземпляры класса-образца без использования ключевого слова `new`.
 
-```tut
+```scala mdoc
 val point = Point(1, 2)
 val anotherPoint = Point(1, 2)
 val yetAnotherPoint = Point(2, 2)
@@ -224,7 +224,7 @@ val yetAnotherPoint = Point(2, 2)
 
 Они сравниваются по значению.
 
-```tut
+```scala mdoc
 if (point == anotherPoint) {
   println(point + " and " + anotherPoint + " are the same.")
 } else {
@@ -246,7 +246,7 @@ if (point == yetAnotherPoint) {
 
 Вы можете задать объекты при помощи ключевого слова `object`.
 
-```tut
+```scala mdoc
 object IdFactory {
   private var counter = 0
   def create(): Int = {
@@ -258,7 +258,7 @@ object IdFactory {
 
 Вы можете сразу получить доступ к объекту, ссылаясь на его имя.
 
-```tut
+```scala mdoc
 val newId: Int = IdFactory.create()
 println(newId) // 1
 val newerId: Int = IdFactory.create()
@@ -273,7 +273,7 @@ println(newerId) // 2
 
 Объявить трейт можно с помощью ключевого слова `trait`.
 
-```tut
+```scala mdoc:nest
 trait Greeter {
   def greet(name: String): Unit
 }
@@ -282,7 +282,7 @@ trait Greeter {
 Трейты также могут иметь реализации методов и полей, которые предполагается использовать умолчанию.
 
 {% scalafiddle %}
-```tut
+```scala mdoc:reset
 trait Greeter {
   def greet(name: String): Unit =
     println("Hello, " + name + "!")
@@ -291,7 +291,7 @@ trait Greeter {
 
 Вы можете наследовать свойства трейтов, используя ключевое слово `extends` и переопределять реализацию с помощью ключевого слова `override`.
 
-```tut
+```scala mdoc
 class DefaultGreeter extends Greeter
 
 class CustomizableGreeter(prefix: String, postfix: String) extends Greeter {
@@ -319,7 +319,7 @@ customGreeter.greet("Scala developer") // How are you, Scala developer?
 
 Используя объект, можно задать главный метод следующим образом:
 
-```tut
+```scala mdoc
 object Main {
   def main(args: Array[String]): Unit =
     println("Hello, Scala developer!")

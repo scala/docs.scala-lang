@@ -44,7 +44,7 @@ ako krug s velikim “C” ili “O” ima savijenu ivicu (kao papir), možete k
 
 Klasa i njen kompanjon objekt, ako ga ima, moraju biti definisani u istom izvornom fajlu:
 
-```tut
+```scala mdoc
 class IntPair(val x: Int, val y: Int)
 
 object IntPair {

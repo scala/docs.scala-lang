@@ -18,7 +18,7 @@ prerequisite-knowledge: upper-type-bounds, generics, variance
 
 Вот пример, где это полезно:
 
-```tut:fail
+```scala mdoc:fail
 trait Node[+B] {
   def prepend(elem: B): Node[B]
 }
@@ -40,7 +40,7 @@ case class Nil[+B]() extends Node[B] {
 
 Чтобы исправить это, необходимо перевернуть вариантность типа параметра `elem` в `prepend`. Для этого мы вводим новый тип для параметра `U`, у которого тип `B` указан в качестве нижней границы типа.
 
-```tut
+```scala mdoc
 trait Node[+B] {
   def prepend[U >: B](elem: U): Node[U]
 }
@@ -57,7 +57,7 @@ case class Nil[+B]() extends Node[B] {
 ```
 
 Теперь мы можем сделать следующее:
-```tut
+```scala mdoc
 trait Bird
 case class AfricanSwallow() extends Bird
 case class EuropeanSwallow() extends Bird

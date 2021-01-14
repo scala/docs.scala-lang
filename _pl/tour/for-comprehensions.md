@@ -16,7 +16,7 @@ _For comprehensions_ przedstawione jest w formie `for (enumerators) yield e`, gd
 
 Poniżej znajduje się przykład, który przekształca listę osób na listę imion osób, których wiek mieści się w przedziale od 30 do 40 lat.
 
-```tut
+```scala mdoc
 case class Person(name: String, age: Int)
 
 val people = List(
@@ -37,7 +37,7 @@ Na początku `for` znajduje się generator `person <- people`. Następujące po 
 
 Poniżej znajduje się bardziej złożony przykład, który używa dwóch generatorów. Jego zadaniem jest sprawdzenie wszystkich par liczb od `0` do `n-1` i wybór tylko tych par, których wartości są sobie równe.
 
-```tut
+```scala mdoc
 def someTuple(n: Int) =
   for (
     i <- 0 until n;
@@ -63,7 +63,7 @@ Załóżmy, że mamy dwie wartości `Option[String]` i chcielibyśmy zwrócić o
 
 Spójrzmy poniżej:
 
-```tut
+```scala mdoc
 case class Student(name: String, surname: String)
 
 val nameOpt: Option[String] = Some("John")
@@ -80,7 +80,7 @@ Jeżeli `name` lub `surname` nie byłyby określone, np. przyjmowałyby wartoś�
 Wszystkie powyższe przykłady posiadały wyrażenie `yield` na końcu _comprehensions_, jednak nie jest to obligatoryjne. Gdy `yield` nie zostanie dodanie zwrócony zostanie `Unit`. Takie rozwiązanie może być przydatne gdy chcemy uzyskać jakieś skutki uboczne. Poniższy przykład wypisuje liczby od 0 do 9 bez użycia `yield`.
 
 
-```tut
+```scala mdoc
 def count(n: Int) =
     for (i <- 0 until n)
     println(s"$i ")

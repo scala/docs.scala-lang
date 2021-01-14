@@ -1,0 +1,83 @@
+---
+---
+{% include headertop.html %} {% include headerbottom.html %}
+{% if page.new-version %}<a class="new-version-notice" href="{{ page.new-version }}">This page has a new version.</a>{% endif %}
+
+<div class="navigation-fade-screen"></div>
+
+{% include site-header.html %}
+
+<main id="inner-main" class="landing-page">
+
+ <section class="title-page">
+   <div class="wrap">
+     <div class="content-title-documentation">
+
+       <h1>{{page.title}}</h1>
+       <div class="search-container">
+         <div class="icon-search">
+           <i class="fa fa-search"></i>
+         </div>
+         <input type="text" class="doc-search" id="doc-search-bar" placeholder="Search in doc...">
+         <ul class="result-container" id="result-container" style="display: none;"></ul>
+       </div>
+     </div>
+   </div>
+ </section>
+
+  <section class="table-of-content">
+    <div class="wrap scala2">
+      <div class="language-header">
+        <h1>Scala 2</h1>
+      </div>
+      <div class="inner-box">
+        <div class="language-dropdown inverted">
+          <div id="dd" class="wrapper-dropdown" tabindex="1">
+            <span>Language</span>
+            <ul class="dropdown"></ul>
+          </div>
+        </div>
+
+        <ul id="available-languages" style="display: none;">
+          {% if page.languages %}
+            <li><a href="{{ site.baseurl }}{{ page.url }}">English</a></li>
+            {% for l in page.languages %}
+              {% capture intermediate %}{{ page.url }}{% endcapture %}
+              {% capture rootTutorialURL %}{{ intermediate | remove_first: '/' }}{% endcapture %}
+              {% assign lang = site.data.languages[l] %}
+              <li><a href="{{ site.baseurl }}/{{ l }}/{{ rootTutorialURL }}" class="lang">{{ lang.name }}</a></li>
+            {% endfor %}
+          {% elsif page.language %}
+            {% assign engPath = page.url | remove_first: "/" | remove_first: page.language | remove_first: "index.html" %}
+            {% assign engPg = site.pages | where: 'partof', page.partof | first %}
+            <li><a href="{{ site.baseurl }}{{ engPath }}">English</a></li>
+            {% for l in engPg.languages %}
+              {% assign lang = site.data.languages[l] %}
+              <li><a href="{{ site.baseurl }}/{{ l }}{{ engPath }}" class="lang">{{ lang.name }}</a></li>
+            {% endfor %}
+          {% endif %}
+        </ul>
+
+        {% include documentation-sections.html sections=page.scala2-sections %}
+      </div>
+    </div>
+
+    <div class="wrap scala3">
+      <div class="language-header">
+        <h1>Scala 3 (Preview)</h1>
+      </div>
+      <div class="inner-box">
+        <blockquote>
+          Scala 3 has not been released, yet. We are still in the process of writing the documentation for Scala 3.<br/>
+          You can <a href="/scala3/contribute-to-docs.html">help us to improve the documentation</a>.
+        </blockquote>
+        {% include documentation-sections.html sections=page.scala3-sections %}
+      </div>
+    </div>
+  </section>
+
+  {{content}}
+
+</main>
+
+{% include footer.html %}

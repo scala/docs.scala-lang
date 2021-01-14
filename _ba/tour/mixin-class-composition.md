@@ -13,7 +13,7 @@ prerequisite-knowledge: inheritance, traits, abstract-classes, unified-types
 
 Mixini su trejtovi koji se koriste za kompoziciju klase.
 
-```tut
+```scala mdoc
 abstract class A {
   val message: String
 }
@@ -34,7 +34,7 @@ Klase mogu imati samo jednu nadklasu alid mogu imati više mixina (koristeći kl
 
 Pogledajmo sada zanimljiviji primjer počevši od apstraktne klase:
  
-```tut
+```scala mdoc
 abstract class AbsIterator {
   type T
   def hasNext: Boolean
@@ -45,7 +45,7 @@ abstract class AbsIterator {
 Klasa ima apstraktni tip `T` i standardne metode iteratora.
 Dalje, implementiraćemo konkretnu klasu (svi apstraktni članovi `T`, `hasNext`, i `next` imaju implementacije):
 
-```tut
+```scala mdoc
 class StringIterator(s: String) extends AbsIterator {
   type T = Char
   private var i = 0
@@ -66,7 +66,7 @@ class StringIterator(s: String) extends AbsIterator {
 
 Kreirajmo sada trejt koji također nasljeđuje `AbsIterator`.
 
-```tut
+```scala mdoc
 trait RichIterator extends AbsIterator {
   def foreach(f: T => Unit): Unit = while (hasNext) f(next())
 }
@@ -76,7 +76,7 @@ Pošto je `RichIterator` trejt, on ne mora implementirati apstraktne članove `A
 
 Željeli bismo iskombinirati funkcionalnosti `StringIterator`a i `RichIterator`a u jednoj klasi.  
 
-```tut
+```scala mdoc
 object StringIteratorTest extends App {
   class Iter extends StringIterator("Scala") with RichIterator
   val iter = new Iter

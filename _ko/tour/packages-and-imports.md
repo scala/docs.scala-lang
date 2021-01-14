@@ -78,7 +78,7 @@ import users.{UserPreferences => UPrefs}  // 편의를 위해 이름을 바꾸�
 
 스칼라가 자바와 한가지 다른 점은 어디서든 임포트를 할 수 있다는 것이다.
 
-```tut
+```scala mdoc
 def sqrtplus1(x: Int) = {
   import scala.math.sqrt
   sqrt(x) + 1.0

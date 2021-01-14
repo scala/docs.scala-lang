@@ -7,7 +7,7 @@ num: 30
 
 language: zh-cn
 
-next-page: default-parameter-values
+next-page: packages-and-imports
 previous-page: by-name-parameters
 ---
 
@@ -26,7 +26,7 @@ object DeprecationDemo extends App {
 
 ## 确保编码正确性的注解
 如果不满足条件，某些注解实际上会导致编译失败。 例如，注解 `@tailrec` 确保方法是 [尾递归](https://en.wikipedia.org/wiki/Tail_call)。 尾递归可以保持内存需求不变。 以下是它在计算阶乘的方法中的用法：
-```tut
+```scala mdoc
 import scala.annotation.tailrec
 
 def factorial(x: Int): Int = {

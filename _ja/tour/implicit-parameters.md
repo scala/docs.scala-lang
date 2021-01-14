@@ -26,7 +26,7 @@ Scalaがimplicitをどこから見つけるかについてのより詳しいガ�
 以下の例では、モノイドの`add`と`unit`の演算を使い、要素のリストの合計を計算するメソッド`sum`を定義しています。
 implicitの値をトップレベルには置けないことに注意してください。
 
-```tut
+```scala mdoc
 abstract class Monoid[A] {
   def add(x: A, y: A): A
   def unit: A

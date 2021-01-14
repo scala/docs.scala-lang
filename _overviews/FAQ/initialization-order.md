@@ -2,13 +2,11 @@
 layout: multipage-overview
 title: Why is my abstract or overridden val null?
 overview-name: FAQ
-partof: FAQ
-
-num: 9
 permalink: /tutorials/FAQ/:title.html
 ---
 
 ## Example
+
 To understand the problem, let's pick the following concrete example.
 
     abstract class A {

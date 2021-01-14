@@ -15,7 +15,7 @@ U Scali ovo može biti izraženo pomoću *složenih tipova*, koji su presjeci ti
 
 Pretpostavimo da imamo dva trejta: `Cloneable` i `Resetable`:
 
-```tut
+```scala mdoc
 trait Cloneable extends java.lang.Cloneable {
   override def clone(): Cloneable = {
     super.clone().asInstanceOf[Cloneable]

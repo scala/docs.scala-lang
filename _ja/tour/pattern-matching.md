@@ -22,7 +22,7 @@ Javaの`switch`文の強化バージョンで、if/else文の連続の代わり�
 ## 構文
 
 マッチ式は値、キーワード`match`と少なくとも1つの`case`句を持ちます。
-```tut
+```scala mdoc
 import scala.util.Random
 
 val x: Int = Random.nextInt(10)
@@ -39,7 +39,7 @@ x match {
 ケースは*オルタナティブ*とも呼ばれます。
 
 マッチ式は値を持ちます。
-```tut
+```scala mdoc
 def matchTest(x: Int): String = x match {
   case 1 => "one"
   case 2 => "two"
@@ -55,7 +55,7 @@ matchTest(1)  // one
 
 ケースクラスはパターンマッチングで特に役立ちます。
 
-```tut
+```scala mdoc
 abstract class Notification
 
 case class Email(sender: String, title: String, body: String) extends Notification
@@ -124,7 +124,7 @@ println(showImportantNotification(importantSms, importantPeopleInfo))
 ## 型のみでのマッチング
 
 以下のように型のみでマッチすることができます。
-```tut
+```scala mdoc
 abstract class Device
 case class Phone(model: String) extends Device {
   def screenOff = "Turning screen off"
@@ -146,7 +146,7 @@ def goIdle(device: Device) = device match {
 トレイトとクラスに`sealed`をつけると、全てのサブタイプは同一ファイル内で宣言されなければならないという意味になります。
 これは全てのサブタイプが既知であることを保証します。
 
-```tut
+```scala mdoc
 sealed abstract class Furniture
 case class Couch() extends Furniture
 case class Chair() extends Furniture

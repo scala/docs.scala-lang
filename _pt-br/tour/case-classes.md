@@ -18,7 +18,7 @@ Scala suporta o conceito de _classes case_. Classes case são classes regulares 
 
 Aqui temos um exemplo de hierarquia de tipos para *Notification* que consiste em uma super classe abstrata `Notification` e três tipos concretos de notificação implementados com classes case `Email`, `SMS`, e `VoiceRecording`.
 
-```tut
+```scala mdoc
 abstract class Notification
 case class Email(sourceEmail: String, title: String, body: String) extends Notification
 case class SMS(sourceNumber: String, message: String) extends Notification
@@ -27,26 +27,26 @@ case class VoiceRecording(contactName: String, link: String) extends Notificatio
 
 Instânciar uma classe case é fácil: (Perceba que nós não precisamos da palavra-chave `new`)
 
-```tut
+```scala mdoc
 val emailDeJohn = Email("john.doe@mail.com", "Saudações do John!", "Olá Mundo")
 ```
 
 Os parâmetros do construtor de uma classe case são tratados como valores públicos e podem ser acessados diretamente.
 
-```tut
+```scala mdoc
 val titulo = emailDeJohn.title
 println(titulo) // prints "Saudações do John!"
 ```
 
 Com classes case, você não pode alterar seus campos diretamente. (ao menos que você declare `var` antes de um campo, mas fazê-lo geralmente é desencorajado). 
 
-```tut:fail
+```scala mdoc:fail
 emailDeJohn.title = "Adeus do John!" // Erro the compilação. Não podemos atribuir outro valor para um campo que foi declarado como val, lembrando que todos os campos de classes case são val por padrão.
 ```
 
 Ao invés disso, faça uma cópia utilizando o método `copy`. Como descrito abaixo, então você poderá substituir alguns dos campos:
 
-```tut
+```scala mdoc
 val emailEditado = emailDeJohn.copy(title = "Estou aprendendo Scala!", body = "É muito legal!")
 
 println(emailDeJohn) // prints "Email(john.doe@mail.com,Saudações do John!,Hello World!)"
@@ -55,7 +55,7 @@ println(emailEditado) // prints "Email(john.doe@mail.com,Estou aprendendo Scala,
 
 Para cada classe case em Scala o compilador gera um método `equals` que implementa a igualdade estrutural e um método `toString`. Por exemplo:
 
-```tut
+```scala mdoc
 val primeiroSMS = SMS("12345", "Hello!")
 val segundoSMS = SMS("12345", "Hello!")
 
@@ -75,7 +75,7 @@ SMS é: SMS(12345, Hello!)
 
 Com classes case, você pode utilizar **correspondência de padrões** para manipular seus dados. Aqui temos um exemplo de uma função que escreve como saída diferente mensagens dependendo do tipo de notificação recebida:
 
-```tut
+```scala mdoc
 def mostrarNotificacao(notificacao: Notification): String = {
   notificacao match {
     case Email(email, title, _) =>
@@ -96,7 +96,7 @@ println(mostrarNotificacao(algumaMsgVoz)) // Saída "Você recebeu uma Mensagem 
 
 Aqui um exemplo mais elaborado utilizando a proteção `if`. Com a proteção `if`, o correspondência de padrão irá falhar se a condição de proteção retorna falso.
 
-```tut
+```scala mdoc:nest
 def mostrarNotificacaoEspecial(notificacao: Notification, emailEspecial: String, numeroEspecial: String): String = {
   notificacao match {
     case Email(email, _, _) if email == emailEspecial =>

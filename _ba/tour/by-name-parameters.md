@@ -13,7 +13,7 @@ previous-page: operators
 _By-name parametri_ (u slobodnom prevodu "po-imenu parametri") se izračunavaju samo kada se koriste. 
 Oni su kontrastu sa _by-value parametrima_ ("po-vrijednosti parametri"). 
 Da bi parametar bio pozivan by-name, dodajte `=>` prije njegovog tipa.
-```tut
+```scala mdoc
 def calculate(input: => Int) = input * 37
 ```
 By-name parametri imaju prednost da se ne izračunavaju ako se ne koriste u tijelu funkcije. 
@@ -21,7 +21,7 @@ U drugu ruku, by-value parametri imaju prednost da se izračunavaju samo jednom.
 
 Ovo je primjer kako bi mogli implementirati while petlju:
 
-```tut
+```scala mdoc
 def whileLoop(condition: => Boolean)(body: => Unit): Unit =
   if (condition) {
     body

@@ -15,7 +15,7 @@ previous-page: regular-expression-patterns
 
 Объект Экстрактор (объект распаковщик или extractor object) - это объект с методом `unapply`. В то время как метод `apply` обычно действует как конструктор, который принимает аргументы и создает объект, метод `unapply` действует обратным образом, он принимает объект и пытается извлечь и вернуть аргументы из которых он (возможно) был создан. Чаще всего этот метод используется в функциях сопоставления с примером и в частично определенных функциях.
 
-```tut
+```scala mdoc
 import scala.util.Random
 
 object CustomerID {
@@ -38,7 +38,7 @@ customer1ID match {
 
 При объявлении нового значения можно использовать пример, в котором значение для инициализации переменной получается через извлечение, используя метод `unapply`.
 
-```tut
+```scala mdoc
 val customer2ID = CustomerID("Nico")
 val CustomerID(name) = customer2ID
 println(name)  // выведет Nico
@@ -46,13 +46,13 @@ println(name)  // выведет Nico
 
 Что эквивалентно `val name = CustomerID.unapply(customer2ID).get`.
 
-```tut
+```scala mdoc
 val CustomerID(name2) = "--asdfasdfasdf"
 ```
 
 Если совпадений нет, то бросается `scala.MatchError`:
 
-```tut:fail
+```scala mdoc:crash
 val CustomerID(name3) = "-asdfasdfasdf"
 ```
 

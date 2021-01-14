@@ -1,0 +1,59 @@
+<style>
+.content-primary .scala3-comparison-page td code
+{
+  margin: 0;
+  padding: 0;
+  background: none;
+}
+.content-primary .scala3-comparison-page table
+{
+  background: #fdfdf7;
+  border-collapse: collapse;
+}
+.content-primary .scala3-comparison-page th,
+.content-primary .scala3-comparison-page td
+{
+  border-top: 1px solid #E5EAEA;
+  border-bottom: 1px solid #E5EAEA;
+}
+.content-primary .scala3-comparison-page table td.python-block,
+.content-primary .scala3-comparison-page table td.java-block,
+.content-primary .scala3-comparison-page table td.javascript-block,
+.content-primary .scala3-comparison-page table td.scala-block
+{
+  position: relative;
+  padding-bottom: 20px;
+}
+.content-primary .scala3-comparison-page table td.python-block:after,
+.content-primary .scala3-comparison-page table td.java-block:after,
+.content-primary .scala3-comparison-page table td.javascript-block:after,
+.content-primary .scala3-comparison-page table td.scala-block:after
+{
+  color: #ccc;
+  display: block;
+  font-size: 17px;
+  line-height: 1;
+  position: absolute;
+  top: 8px;
+  right: 2px;
+  z-index: 1;
+}
+.content-primary .scala3-comparison-page table td.python-block:after {
+  content: "python";
+}
+.content-primary .scala3-comparison-page table td.java-block:after {
+  content: "java";
+}
+.content-primary .scala3-comparison-page table td.javascript-block:after {
+  content: "javascript";
+}
+.content-primary .scala3-comparison-page table td.scala-block:after {
+  content: "scala";
+}
+.content-primary .scala3-comparison-page h4 {
+  font-weight: normal;
+  font-variant-caps: all-small-caps;
+}
+</style>
+
+

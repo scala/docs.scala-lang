@@ -15,7 +15,7 @@ prerequisite-knowledge: inheritance, traits, abstract-classes, unified-types
 ---
 ミックスインはクラスを構成するのに使われるトレイトです。
 
-```tut
+```scala mdoc
 abstract class A {
   val message: String
 }
@@ -37,7 +37,7 @@ println(d.loudMessage)  // I'M AN INSTANCE OF CLASS B
 
 それでは抽象クラスから始まる興味深い例を見てみましょう。
 
-```tut
+```scala mdoc
 abstract class AbsIterator {
   type T
   def hasNext: Boolean
@@ -47,7 +47,7 @@ abstract class AbsIterator {
 クラスは抽象型`T`と標準的なイテレーターのメソッドを持ちます。
 次に、（全ての抽象メンバー`T`, `hasNext`, `next`が実装を持つ）具象クラスを実装します。
 
-```tut
+```scala mdoc
 class StringIterator(s: String) extends AbsIterator {
   type T = Char
   private var i = 0
@@ -64,7 +64,7 @@ class StringIterator(s: String) extends AbsIterator {
 
 それでは`AbsIterator`を継承したトレイトも作ってみましょう。
 
-```tut
+```scala mdoc
 trait RichIterator extends AbsIterator {
   def foreach(f: T => Unit): Unit = while (hasNext) f(next())
 }
@@ -73,7 +73,7 @@ trait RichIterator extends AbsIterator {
 `RichIterator`はトレイトなので、`RichIterator`はAbsIteratorの抽象メンバーを実装する必要がありません。
 
 `StringIterator`と`RichIterator`の機能を1つのクラスに組み合わせてみましょう。
-```tut
+```scala mdoc
 class RichStringIter extends StringIterator("Scala") with RichIterator
 val richStringIter = new RichStringIter
 richStringIter foreach println

@@ -26,7 +26,7 @@ Scala 언어를 다루는데 필요한 도구들의 사용법을 쉽게 보여 �
 아래를 보자:
 
     object HelloWorld {
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         println("Hello, world!")
       }
     }
@@ -97,11 +97,10 @@ Java의 클래스 라이브러리는 `Date`와 `DateFormat`과 같은
 이용하자.
 
     import java.util.{Date, Locale}
-    import java.text.DateFormat
     import java.text.DateFormat._
 
     object FrenchDate {
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         val now = new Date
         val df = getDateInstance(LONG, Locale.FRANCE)
         println(df format now)
@@ -116,7 +115,7 @@ Scala의 임포트 구문은 Java의 그것과 매우 비슷해 보이지만 사
 합법적인 식별자(함수명 등에 사용 가능한)로 사용된다. 나중에 자세히 살펴
 볼 것이다.
 
-따라서 세번째 줄의 임포트 구문은 `DateFormat` 클래스의 모든 멤버를
+따라서 두번째 줄의 임포트 구문은 `DateFormat` 클래스의 모든 멤버를
 불러온다. 이렇게 함으로써 정적 함수 `getDateInstance`와 정적 필드
 `LONG`이 바로 사용 가능하게 된다.
 
@@ -188,13 +187,13 @@ Java 프로그래머들에게는 놀라운 일이겠지만 Scala에서는 함수
 화면에 출력하는 것이 된다.
 
     object Timer {
-      def oncePerSecond(callback: () => Unit) {
+      def oncePerSecond(callback: () => Unit): Unit = {
         while (true) { callback(); Thread sleep 1000 }
       }
-      def timeFlies() {
+      def timeFlies(): Unit = {
         println("time flies like an arrow...")
       }
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         oncePerSecond(timeFlies)
       }
     }
@@ -215,10 +214,10 @@ Java 프로그래머들에게는 놀라운 일이겠지만 Scala에서는 함수
 대신에 무명함수를 사용한 새로운 버전의 타이머 프로그램은 아래와 같다:
 
     object TimerAnonymous {
-      def oncePerSecond(callback: () => Unit) {
+      def oncePerSecond(callback: () => Unit): Unit = {
         while (true) { callback(); Thread sleep 1000 }
       }
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         oncePerSecond(() =>
           println("time flies like an arrow..."))
       }
@@ -270,7 +269,7 @@ Scala 클래스의 경우 파라미터들을 가질 수 있다는 것인데 아�
 뒤에 빈 괄호를 붙여 주어야 한다는 것이다. 아래를 보자:
 
     object ComplexNumbers {
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         val c = new Complex(1.2, 3.4)
         println("imaginary part: " + c.im())
       }
@@ -306,7 +305,7 @@ Scala에서는 물론 상위 클래스에 정의된 함수를 오버라이드 �
       def re = real
       def im = imaginary
       override def toString() =
-        "" + re + (if (im < 0) "" else "+") + im + "i"
+        "" + re + (if (im >= 0) "+" else "") + im + "i"
     }
 
 
@@ -314,7 +313,7 @@ Scala에서는 물론 상위 클래스에 정의된 함수를 오버라이드 �
 
 프로그램에 자주 등장하는 데이터 구조 중의 하나는 트리이다.
 인터프리터와 컴파일러는 흔히 트리를 사용하여 내부 표현을 저장하고,
-XML 문서도 트리이며, 레드블랙 트리와 같은 저장구조 들도 트리에
+XML 문서도 트리이며, 레드-블랙 트리와 같은 저장구조들도 트리에
 기반을 두고 있다.
 
 작은 계산기 프로그램을 통해 Scala에서 이러한 트리들을 어떻게
@@ -473,7 +472,7 @@ Scala로 나타내는 것은 어렵지 않다:
 그 값을 계산 할 것이고, 다음으로 `x`와 `y`에 대한 심볼 추출을 수행 할
 것이다.
 
-    def main(args: Array[String]) {
+    def main(args: Array[String]): Unit = {
       val exp: Tree = Sum(Sum(Var("x"),Var("x")),Sum(Const(7),Var("y")))
       val env: Environment = { case "x" => 5 case "y" => 7 }
       println("Expression: " + exp)
@@ -645,7 +644,7 @@ Scala는 이 문제를 해결하기 위한 제네릭 클래스와 제네릭 함�
 사용하기 위해서는 다음과 같이 쓴다:
 
     object IntegerReference {
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         val cell = new Reference[Int]
         cell.set(13)
         println("Reference contains the half of " + (cell.get * 2))
@@ -658,7 +657,6 @@ Scala는 이 문제를 해결하기 위한 제네릭 클래스와 제네릭 함�
 
 ## 마치며
 
-우리는 지금까지 Scala 언어의 간략한 소개와 몇가지의 예제를 살펴
-보았다. 흥미가 생겼다면 *Scala By Example*도 함께 읽어보자. 더 수준
-높고 다양한 예제를 만날 수 있다. 필요 할 때마다 *Scala Language
-Specification*을 참고하는 것도 좋다.
+우리는 지금까지 Scala 언어의 간략한 소개와 몇가지의 예제를 살펴 보았다.
+흥미가 생겼다면 *[Tour of Scala](https://docs.scala-lang.org/tour/tour-of-scala.html)*도 함께 읽어보자.
+더 수준 높고 다양한 예제를 만날 수 있다. 필요 할 때마다 *Scala Language Specification*을 참고하는 것도 좋다.

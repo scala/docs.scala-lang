@@ -28,7 +28,7 @@ Scalaでは演算子はメソッドです。パラメータを1つだけ持つ�
 ## 演算子の定義方法と使い方
 
 有効な識別子であれば演算子として使用できます。これは `add`のような名前も`+`のような記号も含みます。
-```tut
+```scala mdoc
 case class Vec(x: Double, y: Double) {
   def +(that: Vec) = Vec(this.x + that.x, this.y + that.y)
 }
@@ -43,7 +43,7 @@ vector3.y  // 3.0
 クラスVecはメソッド`+`を持ち、 `vector1`と`vector2`を足しわせるのに使います。丸括弧を用いて、複雑な式を読みやすい構文で作ることができます。
 こちらはクラス`MyBool`の定義です。クラス`MyBool`はメソッド`and`と`or`を含みます。
 
-```tut
+```scala mdoc
 case class MyBool(x: Boolean) {
   def and(that: MyBool): MyBool = if (x) that else this
   def or(that: MyBool): MyBool = if (x) this else that
@@ -53,7 +53,7 @@ case class MyBool(x: Boolean) {
 
 この時、`and`と`or`を中置演算子として使えます。
 
-```tut
+```scala mdoc
 def not(x: MyBool) = x.negate
 def xor(x: MyBool, y: MyBool) = (x or y) and not(x and y)
 ```

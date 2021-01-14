@@ -16,7 +16,7 @@ Povratni tipovi metoda također mogu biti izostavljeni jer oni odgovaraju tipu t
 
 Slijedi jedan primjer:
 
-```tut
+```scala mdoc
 object InferenceTest1 extends App {
   val x = 1 + 2 * 3         // the type of x is Int
   val y = x.toString()      // the type of y is String
@@ -27,7 +27,7 @@ object InferenceTest1 extends App {
 Za rekurzivne metode, kompajler nije u mogućnosti da zaključi tip rezultata.
 Ovo je program koji se ne može kompajlirati iz ovog razloga:
 
-```tut:fail
+```scala mdoc:fail
 object InferenceTest2 {
   def fac(n: Int) = if (n == 0) 1 else n * fac(n - 1)
 }
@@ -58,7 +58,7 @@ val y: Int = id[Int](1)
 
 U nekim situacijama može biti vrlo opasno osloniti se na Scalin mehanizam zaključivanja tipova:
 
-```tut:fail
+```scala mdoc:fail
 object InferenceTest4 {
   var obj = null
   obj = new Object()

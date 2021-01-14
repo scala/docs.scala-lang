@@ -56,30 +56,6 @@ readability and will make it much easier to understand at a glance the
 most basic operation of any given method. Resist the urge to omit
 parentheses simply to save two characters!
 
-### Postfix Notation
-
-Scala allows methods that take no arguments to be invoked using postfix notation:
-
-    // recommended
-    names.toList
-
-    // discourage
-    names toList
-
-This style is unsafe, and should not be used. Since semicolons are
-optional, the compiler will attempt to treat it as an infix method
-if it can, potentially taking a term from the next line.
-
-    names toList
-    val answer = 42        // will not compile!
-
-This may result in unexpected compile errors at best, and happily
-compiled faulty code at worst. Although the syntax is used by some
-DSLs, it should be considered deprecated, and avoided.
-
-Since Scala 2.10, using postfix operator notation will result in a
-compiler warning.
-
 ## Arity-1 (Infix Notation)
 
 Scala has a special punctuation-free syntax for invoking methods of arity-1

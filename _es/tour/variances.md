@@ -14,7 +14,7 @@ Scala soporta anotaciones de varianza para parámetros de tipo para [clases gen�
 
 En el artículo sobre clases genéricas dimos un ejemplo de una pila mutable. Explicamos que el tipo definido por la clase `Stack[T]` es objeto de subtipos invariantes con respecto al parámetro de tipo. Esto puede restringir el reuso de la abstracción (la clase). Ahora derivaremos una implementación funcional (es decir, inmutable) para pilas que no tienen esta restricción. Nótese que este es un ejemplo avanzado que combina el uso de [métodos polimórficos](polymorphic-methods.html), [límites de tipado inferiores](lower-type-bounds.html), y anotaciones de parámetros de tipo covariante de una forma no trivial. Además hacemos uso de [clases internas](inner-classes.html) para encadenar los elementos de la pila sin enlaces explícitos.
 
-```tut
+```scala mdoc
 class Stack[+T] {
   def push[S >: T](elem: S): Stack[S] = new Stack[S] {
     override def top: S = elem

@@ -4,6 +4,7 @@
 
 $nav-height: 46px;
 
+
 .doc-navigation {
     padding: 10px 20px;
     @include display(flex);
@@ -17,6 +18,23 @@ $nav-height: 46px;
         @include bp(large) {
           display: none;
         }
+      }
+      .doc-language-version {
+        font-size: 1.6em;
+        font-family: $heading-font-family;
+        font-weight: bold;
+        color: rgb(134,161,166);
+        @include bp(large) {
+          display: none;
+        }
+      }
+      a,
+      a:hover,
+      a:active,
+      a:focus,
+      a:hover,
+      a.active {
+        text-decoration: none;
       }
     }
     .navigation-ellipsis {

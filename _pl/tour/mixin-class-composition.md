@@ -12,7 +12,7 @@ previous-page: tuples
 Domieszka (ang. mixin) to cecha (trait), która używana jest do komponowania klas.
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 abstract class A {
   val message: String
 }
@@ -36,7 +36,7 @@ Domieszki i nadklasy mogą posiadać tą samą nadklasę (typ bazowy).
 
 Spójrzmy teraz na trochę ciekawszy przykład zawierający klasę abstrakcyjną.
 
-```tut
+```scala mdoc
 abstract class AbsIterator {
   type T
   def hasNext: Boolean
@@ -46,7 +46,7 @@ abstract class AbsIterator {
 
 Klasa ta zawiera abstrakcyjny typ `type T` oraz standardowe metody iteracyjne `hasNext` i `next`.
 
-```tut
+```scala mdoc
 class StringIterator(s: String) extends AbsIterator {
   type T = Char
   private var i = 0
@@ -63,7 +63,7 @@ Klasa `StringIterator` przyjmuje parametr typu `String`, może być ona użyta d
 
 Stwórzmy teraz cechę, która również rozszerza `AbsIterator`.
 
-```tut
+```scala mdoc
 trait RichIterator extends AbsIterator {
   def foreach(f: T => Unit): Unit = while (hasNext) f(next())
 }
@@ -74,7 +74,7 @@ Ponieważ `RichIterator` jest cechą, nie musi implementować abstrakcyjnych sk�
 
 Spróbujmy teraz połączyć funkcjonalności `StringIterator` oraz `RichIterator` w jednej klasie.
 
-```tut
+```scala mdoc
 object StringIteratorTest extends App {
   class RichStringIter extends StringIterator("Scala") with RichIterator
   val richStringIter = new RichStringIter

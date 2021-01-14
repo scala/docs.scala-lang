@@ -18,7 +18,7 @@ prerequisite-knowledge: classes, basics, mutability
 
 ## Объявление класса образца
 Минимальный вариант объявления класса образца: указание ключевого слова `case class`, название и список параметров (которые могут быть пустыми). Пример:
-```tut
+```scala mdoc
 case class Book(isbn: String)
 
 val frankenstein = Book("978-0486282114")
@@ -33,7 +33,7 @@ val message1 = Message("guillaume@quebec.ca", "jorge@catalonia.es", "Ça va ?")
 println(message1.sender)  // prints guillaume@quebec.ca
 message1.sender = "travis@washington.us"  // эта строка не компилируется
 ```
-Вы не можете переназначить `message1.sender`, потому что это `val` (т.е. константа). Возможно использовать `var`s в классах образцах, но это не рекомендуется.
+Вы не можете переназначить `message1.sender`, потому что это `val` (т.е. константа). Возможно использовать `var` в классах образцах, но это не рекомендуется.
 
 ## Сравнение
 Классы образцы сравниваются по структуре, а не по ссылкам:
@@ -44,7 +44,7 @@ val message2 = Message("jorge@catalonia.es", "guillaume@quebec.ca", "Com va?")
 val message3 = Message("jorge@catalonia.es", "guillaume@quebec.ca", "Com va?")
 val messagesAreTheSame = message2 == message3  // true
 ```
-Даже если `message2` и `message3` ссылаются на разные объекты, значения каждого из них равна.
+Даже если `message2` и `message3` ссылаются на разные объекты, значения каждого из них равны.
 
 ## Копирование
 Вы можете создать копию экземпляра класса образца, просто воспользовавшись методом `copy`. При этом по желанию можно изменить аргументы конструктора.

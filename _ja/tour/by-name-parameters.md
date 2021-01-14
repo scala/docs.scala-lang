@@ -14,7 +14,7 @@ previous-page: operators
 ---
 
 *名前渡しのパラメータ*は使用された時に評価されます。それらは*値渡しパラメータ*とは対照的です。名前渡しのパラメータを作るには、単純に`=>`を型の前につけます。
-```tut
+```scala mdoc
 def calculate(input: => Int) = input * 37
 ```
 
@@ -22,7 +22,7 @@ def calculate(input: => Int) = input * 37
 
 こちらはwhileループをどのように実装するかの例です。
 
-```tut
+```scala mdoc
 def whileLoop(condition: => Boolean)(body: => Unit): Unit =
   if (condition) {
     body

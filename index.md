@@ -1,14 +1,47 @@
 ---
-layout: inner-page-documentation
-title: Documentation
+layout: documentation
 languages: [ja, zh-cn, ru]
+title: Documentation
 namespace: root
-partof: documentation
 discourse: true
-# Content masthead links
+partof: documentation
 more-resources-label: More Resources
-sections:
 
+scala3-sections:
+  - title: "First steps"
+    links:
+      - title: "New in Scala 3"
+        description: "An overview of the exciting new features in Scala 3."
+        icon: "fa fa-star"
+        link: /scala3/new-in-scala3.html
+      - title: "Getting Started"
+        description: "Install Scala 3 on your computer and start writing some Scala code!"
+        icon: "fa fa-rocket"
+        link: /scala3/getting-started.html
+      - title: "Scala 3 Book"
+        description: "An online book introducing the main language features."
+        icon: "fa fa-book"
+        link: /scala3/book/introduction.html
+  - title: "More detailed information"
+    links:
+      - title: "Migration Guide"
+        description: "A guide to help you migrate from Scala 2 to Scala 3."
+        icon: "fa fa-suitcase"
+        link: https://scalacenter.github.io/scala-3-migration-guide/
+      - title: "Guides"
+        description: "Detailed guides about particular aspects of the language."
+        icon: "fa fa-map"
+        link: /scala3/guides.html
+      - title: "API"
+        description: "API documentation for every version of Scala 3."
+        icon: "fa fa-file-text"
+        link: https://dotty.epfl.ch/api/index.html
+      - title: "Language Reference"
+        description: "The Scala 3 language reference."
+        icon: "fa fa-book"
+        link: https://dotty.epfl.ch/docs/reference/overview.html
+
+scala2-sections:
   - title: "First Steps..."
     links:
       - title: "Getting Started"
@@ -47,8 +80,8 @@ sections:
         description: "A handy cheatsheet covering the basics of Scala's syntax."
         icon: "fa fa-list"
         link: /cheatsheets/index.html
-      - title: "Scala FAQs"
-        description: "A list of frequently-asked questions about Scala language features and their answers."
+      - title: "Scala FAQ"
+        description: "Answers to frequently-asked questions about Scala."
         icon: "fa fa-question-circle"
         link: /tutorials/FAQ/index.html
       - title: "Language Spec"
@@ -66,5 +99,4 @@ sections:
         description: "The Scala Platform Process. Community-driven library evolution."
         icon: "fa fa-users"
         link: https://platform.scala-lang.org
-
 ---

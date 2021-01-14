@@ -14,7 +14,7 @@ Sometimes it is necessary to express that the type of an object is a subtype of 
 
 Suppose we have two traits `Cloneable` and `Resetable`:
 
-```tut
+```scala mdoc
 trait Cloneable extends java.lang.Cloneable {
   override def clone(): Cloneable = {
     super.clone().asInstanceOf[Cloneable]

@@ -15,7 +15,7 @@ Scala permite funções sem parâmetros como parâmetros de métodos. Quando um 
 
 O código a seguir demonstra esse mecanismo:
 
-```tut
+```scala mdoc
 object TargetTest1 extends App {
   def whileLoop(cond: => Boolean)(body: => Unit): Unit =
     if (cond) {
@@ -36,7 +36,7 @@ Podemos combinar o uso de [operadores infix/postfix](operators.html) com este me
 
 Aqui está a implementação de uma instrução que executa loop a menos que uma condição seja satisfeita:
 
-```tut
+```scala mdoc
 object TargetTest2 extends App {
   def loop(body: => Unit): LoopUnlessCond =
     new LoopUnlessCond(body)

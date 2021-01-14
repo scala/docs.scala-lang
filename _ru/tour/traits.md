@@ -9,7 +9,7 @@ partof: scala-tour
 num: 5
 language: ru
 next-page: tuples
-previous-page: classes
+previous-page: named-arguments
 topics: traits
 prerequisite-knowledge: expressions, classes, generics, objects, companion-objects
 
@@ -20,12 +20,12 @@ prerequisite-knowledge: expressions, classes, generics, objects, companion-objec
 ## Объявление трейта
 Минимальное объявление трейта - это просто ключевое слово `trait` и его имя:
 
-```tut
+```scala mdoc
 trait HairColor
 ```
 
 Трейты наиболее полезны в качестве обобщенного типа с абстрактными методами.
-```tut
+```scala mdoc
 trait Iterator[A] {
   def hasNext: Boolean
   def next(): A
@@ -36,7 +36,7 @@ trait Iterator[A] {
 
 ## Использование трейтов
 Чтоб использовать трейты, необходимо наследовать класс от него используя ключевое слово `extends`. Затем необходимо реализовать все абстрактные члены трейта, используя ключевое слово `override`:
-```tut
+```scala mdoc:nest
 trait Iterator[A] {
   def hasNext: Boolean
   def next(): A
@@ -63,7 +63,7 @@ iterator.next()  // вернет 1
 
 ## Подтипы
 Туда где требуется определенный тип трейта, мы можем передавать любой наследованный от требуемого трейта класс 
-```tut
+```scala mdoc
 import scala.collection.mutable.ArrayBuffer
 
 trait Pet {

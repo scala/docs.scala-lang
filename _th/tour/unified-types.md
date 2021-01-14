@@ -25,7 +25,7 @@ previous-page: basics
 
 นี่เป็นตัวอย่างที่แสดงให้เห็นการใช้งาน string, integer, charecter, boolean value และ function เป็น object ทั้งหมดที่เหมือนกับ obejct อื่น:
 
-```tut
+```scala mdoc
 val list: List[Any] = List(
   "a string",
   732,  // an integer
@@ -55,7 +55,7 @@ Value type สามารถแปลได้ด้วยวิธีดัง
 
 ตัวอย่างเช่น:
 
-```tut
+```scala mdoc
 val x: Long = 987654321
 val y: Float = x  // 9.8765434E8 (หมายเหตุว่าค่าความละเอียดจะสูญหายไปในกรณีนี้)
 

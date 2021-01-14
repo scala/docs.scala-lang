@@ -15,7 +15,7 @@ previous-page: compound-types
 自类型是一种细化 `this` 或 `this` 别名之类型的方法。 语法看起来像普通函数语法，但是意义完全不一样。
 
 要在特质中使用自类型，写一个标识符，跟上要混入的另一个特质，以及 `=>`（例如 `someIdentifier: SomeOtherTrait =>`）。
-```tut
+```scala mdoc
 trait User {
   def username: String
 }

@@ -15,7 +15,7 @@ previous-page: upper-type-bounds
 
 下面看一个适合用类型下界的例子：
 
-```tut:fail
+```scala mdoc:fail
 trait Node[+B] {
   def prepend(elem: B): Node[B]
 }
@@ -37,7 +37,7 @@ case class Nil[+B]() extends Node[B] {
 
 要解决这个问题，我们需要将方法 `prepend` 的参数 `elem` 的型变翻转。 我们通过引入一个新的类型参数 `U` 来实现这一点，该参数具有 `B` 作为类型下界。
 
-```tut
+```scala mdoc
 trait Node[+B] {
   def prepend[U >: B](elem: U): Node[U]
 }
@@ -54,7 +54,7 @@ case class Nil[+B]() extends Node[B] {
 ```
 
 现在我们像下面这么做：
-```tut
+```scala mdoc
 trait Bird
 case class AfricanSwallow() extends Bird
 case class EuropeanSwallow() extends Bird

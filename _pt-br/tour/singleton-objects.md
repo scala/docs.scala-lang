@@ -34,7 +34,7 @@ A maioria dos objetos singleton não estão sozinhos, mas sim associados com uma
 
 Se houver um objeto acompanhante para uma classe, ambos devem ser definidos no mesmo aquivo fonte. Por exemplo:
 
-```tut
+```scala mdoc
 class IntPair(val x: Int, val y: Int)
 
 object IntPair {

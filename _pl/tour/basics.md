@@ -28,14 +28,14 @@ dzięki czemu można je wypróbować wciskając po prostu przycisk "Run".
 
 Wyrażenia są rezultatem ewaluacji fragmentów kodu.
 
-```
+```scala mdoc
 1 + 1
 ```
 
 Wyniki wyrażeń można wyświetlić za pomocą funkcji `println`.
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 println(1) // 1
 println(1 + 1) // 2
 println("Hello!") // Hello!
@@ -47,7 +47,7 @@ println("Hello," + " world!") // Hello, world!
 
 Rezultaty wyrażeń mogą zostać nazwane za pomocą słowa kluczowego `val`.
 
-```tut
+```scala mdoc
 val x = 1 + 1
 println(x) // 2
 ```
@@ -57,13 +57,13 @@ Odniesienie się do wartości nie powoduje jej ponownego obliczenia.
 
 Wartości nie można przypisać ponownie.
 
-```tut:fail
+```scala mdoc:fail
 x = 3 // Nie kompiluje się.
 ```
 
 Typy wartości mogą być wywnioskowane przez kompilator, ale można również wyraźnie określić type:
 
-```tut
+```scala mdoc:nest
 val x: Int = 1 + 1
 ```
 
@@ -75,7 +75,7 @@ Zmienne są podobne do wartości, ale z tym wyjątkiem, że można je ponownie p
 Zmienną można zdefiniować używając słowa kluczowego `var`.
 
 {% scalafiddle %}
-```tut
+```scala mdoc:nest
 var x = 1 + 1
 x = 3 // Kompiluje się, ponieważ "x" jest zdefiniowane z użyciem "var".
 println(x * x) // 9
@@ -84,7 +84,7 @@ println(x * x) // 9
 
 Tak jak przy wartościach, można wyraźnie zdefiniować żądany typ:
 
-```tut
+```scala mdoc:nest
 var x: Int = 1 + 1
 ```
 
@@ -95,7 +95,7 @@ Taką konstrukcję nazywamy blokiem.
 Wynikiem całego bloku kodu jest wynik ostatniego wyrażenia w tym bloku.
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 println({
   val x = 1 + 1
   x + 1
@@ -109,7 +109,7 @@ Funkcje to wyrażenia, które przyjmują pewne parametry.
 
 Poniżej zdefiniowana jest funkcja anonimowa (nieposiadająca nazwy), która zwraca liczbę całkowitą przekazaną jako parametr, zwiększoną o 1.
 
-```tut
+```scala mdoc
 (x: Int) => x + 1
 ```
 
@@ -119,7 +119,7 @@ Po prawej stronie - wyrażenie wykorzystujące te parametry.
 Funkcje można również nazywać.
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 val addOne = (x: Int) => x + 1
 println(addOne(1)) // 2
 ```
@@ -128,7 +128,7 @@ println(addOne(1)) // 2
 Funkcje mogą przyjmować wiele parametrów.
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 val add = (x: Int, y: Int) => x + y
 println(add(1, 2)) // 3
 ```
@@ -137,7 +137,7 @@ println(add(1, 2)) // 3
 Mogą też wcale nie mieć parametrow.
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 val getTheAnswer = () => 42
 println(getTheAnswer()) // 42
 ```
@@ -151,7 +151,7 @@ Metody są definiowane z użyciem słowa kluczowego `def`.
 Po `def` następuje nazwa metody, lista parametrów, zwracany typ i ciało metody.
 
 {% scalafiddle %}
-```tut
+```scala mdoc:nest
 def add(x: Int, y: Int): Int = x + y
 println(add(1, 2)) // 3
 ```
@@ -162,7 +162,7 @@ Zauważ, że zwracany typ jest zadeklarowany _po_ liście parametrów i dwukropk
 Metody mogą mieć wiele list parametrów.
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 def addThenMultiply(x: Int, y: Int)(multiplier: Int): Int = (x + y) * multiplier
 println(addThenMultiply(1, 2)(3)) // 9
 ```
@@ -171,7 +171,7 @@ println(addThenMultiply(1, 2)(3)) // 9
 Mogą również wcale ich nie posiadać.
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 def name: String = System.getProperty("user.name")
 println("Hello, " + name + "!")
 ```
@@ -182,7 +182,7 @@ Od funkcji odróżnia je jeszcze kilka innych rzeczy, ale na razie możesz o nic
 Metody mogą zawierać również wyrażenia wielowierszowe.
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 def getSquareString(input: Double): String = {
   val square = input * input
   square.toString
@@ -199,7 +199,7 @@ Scala posiada słowo kluczowe `return`, ale jest ono wykorzystywane bardzo rzadk
 Klasy są definiowane za pomocą słowa kluczowego `class`, po którym następuje nazwa klasy i parametry konstruktora.
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 class Greeter(prefix: String, suffix: String) {
   def greet(name: String): Unit =
     println(prefix + name + suffix)
@@ -212,7 +212,7 @@ Różnica polega na tym, że w Scali każde wyrażenie musi zwracać jakąś war
 
 Nowe instancje klasy tworzy się za pomocą słowa kluczowego `new`.
 
-```tut
+```scala mdoc
 val greeter = new Greeter("Hello, ", "!")
 greeter.greet("Scala developer") // Hello, Scala developer!
 ```
@@ -227,13 +227,13 @@ Klasy przypadku są domyślnie niezmienne i porównywane przez wartości.
 Klasy te można definiować używająć słów kluczowych `case class`.
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 case class Point(x: Int, y: Int)
 ```
 
 Do utworzenia nowej instacji klasy przypadku nie jest konieczne używanie słowa kluczowego `new`.
 
-```tut
+```scala mdoc
 val point = Point(1, 2)
 val anotherPoint = Point(1, 2)
 val yetAnotherPoint = Point(2, 2)
@@ -241,7 +241,7 @@ val yetAnotherPoint = Point(2, 2)
 
 Są one porównywane przez wartości - _nie_ przez referencje.
 
-```tut
+```scala mdoc
 if (point == anotherPoint) {
   println(point + " i " + anotherPoint + " są jednakowe.")
 } else {
@@ -267,7 +267,7 @@ Można o nich myśleć jak o instancjach ich własnych klas - singletonach.
 Objekty definiuje się z użyciem słowa kluczowego `object`.
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 object IdFactory {
   private var counter = 0
   def create(): Int = {
@@ -279,7 +279,7 @@ object IdFactory {
 
 Aby uzyskać dostęp do obiektu używa się jego nazwy.
 
-```tut
+```scala mdoc
 val newId: Int = IdFactory.create()
 println(newId) // 1
 val newerId: Int = IdFactory.create()
@@ -296,7 +296,7 @@ Wiele cech może być łączonych.
 
 Cechę (trait) można zdefiniować używając słowa kluczowego `trait`.
 
-```tut
+```scala mdoc:nest
 trait Greeter {
   def greet(name: String): Unit
 }
@@ -305,7 +305,7 @@ trait Greeter {
 Cechy mogą zawierać domyślną implementację.
 
 {% scalafiddle %}
-```tut
+```scala mdoc:reset
 trait Greeter {
   def greet(name: String): Unit =
     println("Hello, " + name + "!")
@@ -314,7 +314,7 @@ trait Greeter {
 
 Cechy można rozszerzać używając słowa kluczowego `extends` i nadpisać implementację z użyciem `override`.
 
-```tut
+```scala mdoc
 class DefaultGreeter extends Greeter
 
 class CustomizableGreeter(prefix: String, postfix: String) extends Greeter {
@@ -342,7 +342,7 @@ Maszyna Wirtalna Javy (Java Virtual Machine / JVM) wymaga, aby metoda ta nazywa�
 
 Z użyciem obiektu można zdefiniować metodę `main` w następujący sposób:
 
-```tut
+```scala mdoc
 object Main {
   def main(args: Array[String]): Unit =
     println("Hello, Scala developer!")

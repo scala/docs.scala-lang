@@ -20,12 +20,12 @@ prerequisite-knowledge: expressions, classes, generics, objects, companion-objec
 ## 定义一个特质
 最简化的特质就是关键字trait+标识符：
 
-```tut
+```scala mdoc
 trait HairColor
 ```
 
 特征作为泛型类型和抽象方法非常有用。
-```tut
+```scala mdoc
 trait Iterator[A] {
   def hasNext: Boolean
   def next(): A
@@ -37,7 +37,7 @@ trait Iterator[A] {
 ## 使用特质
 使用 `extends` 关键字来扩展特征。然后使用 `override` 关键字来实现trait里面的任何抽象成员：
 
-```tut
+```scala mdoc:nest
 trait Iterator[A] {
   def hasNext: Boolean
   def next(): A
@@ -64,7 +64,7 @@ iterator.next()  // returns 1
 
 ## 子类型
 凡是需要特质的地方，都可以由该特质的子类型来替换。
-```tut
+```scala mdoc
 import scala.collection.mutable.ArrayBuffer
 
 trait Pet {

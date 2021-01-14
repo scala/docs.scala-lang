@@ -21,7 +21,7 @@ prerequisite-knowledge: nested-classes, mixin-class-composition
 その構文は普通の関数構文のように見えますが、全く異なる意味があります。
 
 トレイトで自分型を使うには、識別子、ミックスインする他のトレイトの型、`=>`を書きます(例えば `someIdentifier: SomeOtherTrait =>`)。
-```tut
+```scala mdoc
 trait User {
   def username: String
 }

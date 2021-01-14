@@ -122,67 +122,80 @@ scalacOptions ++= Seq(
 ### Compilation Phases
 
 <dl class="definition-list">
-<dt>initial</dt>
-<dd>initializing compiler</dd>
-
-<dt>parse</dt>
-<dd>parse source files</dd>
+<!--
+  Generated with GNU sed: 
+    scalac -Vphases | tail -n+3 | sed -rn 's|^\s*([a-z]+)\s+[0-9]+\s+([a-z@].+)$|<dt>\1</dt>\n<dd>\2</dd>\n|p'
+-->
+<dt>parser</dt>
+<dd>parse source into ASTs, perform simple desugaring</dd>
 
 <dt>namer</dt>
-<dd>create symbols</dd>
+<dd>resolve names, attach symbols to named trees</dd>
 
-<dt>analyze</dt>
-<dd>name and type analysis</dd>
+<dt>packageobjects</dt>
+<dd>load package objects</dd>
 
-<dt>refcheck</dt>
-<dd>reference checking</dd>
+<dt>typer</dt>
+<dd>the meat and potatoes: type the trees</dd>
+
+<dt>superaccessors</dt>
+<dd>add super accessors in traits and nested classes</dd>
+
+<dt>extmethods</dt>
+<dd>add extension methods for inline classes</dd>
+
+<dt>pickler</dt>
+<dd>serialize symbol tables</dd>
+
+<dt>refchecks</dt>
+<dd>reference/override checking, translate nested objects</dd>
+
+<dt>patmat</dt>
+<dd>translate match expressions</dd>
 
 <dt>uncurry</dt>
-<dd>uncurry function types and applications</dd>
+<dd>uncurry, translate function values to anonymous classes</dd>
 
-<dt>lambdalift</dt>
-<dd>lambda lifter</dd>
+<dt>fields</dt>
+<dd>synthesize accessors and fields, add bitmaps for lazy vals</dd>
 
-<dt>typesasvalues</dt>
-<dd>represent types as values</dd>
+<dt>tailcalls</dt>
+<dd>replace tail calls by jumps</dd>
 
-<dt>addaccessors</dt>
-<dd>add accessors for constructor arguments</dd>
+<dt>specialize</dt>
+<dd>@specialized-driven class and method specialization</dd>
 
-<dt>explicitouterclasses</dt>
-<dd>make links from inner classes to enclosing one explicit</dd>
-
-<dt>addconstructors</dt>
-<dd>add explicit constructor for each class</dd>
-
-<dt>tailcall</dt>
-<dd>add tail-calls</dd>
-
-<dt>wholeprog</dt>
-<dd>perform whole program analysis</dd>
-
-<dt>addinterfaces</dt>
-<dd>add one interface per class</dd>
-
-<dt>expandmixins</dt>
-<dd>expand mixins by code copying</dd>
-
-<dt>boxing</dt>
-<dd>makes boxing explicit</dd>
+<dt>explicitouter</dt>
+<dd>this refs to outer pointers</dd>
 
 <dt>erasure</dt>
-<dd>type eraser</dd>
+<dd>erase types, add interfaces for traits</dd>
 
-<dt>icode</dt>
-<dd>generate icode</dd>
+<dt>posterasure</dt>
+<dd>clean up erased inline classes</dd>
 
-<dt>codegen</dt>
-<dd>enable code generation</dd>
+<dt>lambdalift</dt>
+<dd>move nested functions to top level</dd>
+
+<dt>constructors</dt>
+<dd>move field definitions into constructors</dd>
+
+<dt>flatten</dt>
+<dd>eliminate inner classes</dd>
+
+<dt>mixin</dt>
+<dd>mixin composition</dd>
+
+<dt>cleanup</dt>
+<dd>platform-specific cleanups, generate reflective calls</dd>
+
+<dt>delambdafy</dt>
+<dd>remove lambdas</dd>
+
+<dt>jvm</dt>
+<dd>generate JVM bytecode</dd>
 
 <dt>terminal</dt>
-<dd>compilation terminated</dd>
-
-<dt>all</dt>
-<dd>matches all phases</dd>
+<dd>the last phase during a compilation run</dd>
 </dl>
     

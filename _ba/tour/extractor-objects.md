@@ -14,7 +14,7 @@ Ekstraktor objekat je objekat koji ima `unapply` metodu.
 Dok je `apply` metoda kao konstruktor koji uzima argumente i kreira objekat, `unapply` metoda prima objekat i pokušava vratiti argumente. 
 Ovo se najčešće koristi u podudaranju uzoraka i parcijalnim funkcijama.
 
-```tut
+```scala mdoc
 import scala.util.Random
 
 object CustomerID {
@@ -41,7 +41,7 @@ Kada pozovemo `case CustomerID(name) => customer1ID`, ustvari pozivamo `unapply`
 
 Metoda `unapply` se može koristiti i za dodjelu vrijednosti.
 
-```tut
+```scala mdoc
 val customer2ID = CustomerID("Nico")
 val CustomerID(name) = customer2ID
 println(name)  // prints Nico
@@ -49,7 +49,7 @@ println(name)  // prints Nico
 
 Ovo je ekvivalentno `val name = CustomerID.unapply(customer2ID).get`. Ako se uzorak ne podudari, baciće se  `scala.MatchError` izuzetak:
 
-```tut:fail
+```scala mdoc:crash
 val CustomerID(name2) = "--asdfasdfasdf"
 ```
 

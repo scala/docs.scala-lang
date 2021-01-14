@@ -14,7 +14,7 @@ previous-page: singleton-objects
 Regularni izrazi su stringovi koji se mogu koristiti za traženje uzoraka u podacima.
 Bilo koji string se može pretvoriti u regularni izraz pozivom `.r` metode.
 
-```tut
+```scala mdoc
 import scala.util.matching.Regex
 
 val numberPattern: Regex = "[0-9]".r
@@ -30,7 +30,7 @@ U gornjem primjeru, `numberPattern` je `Regex`
 
 Također, možete tražiti grupe regularnih izraza koristeći zagrade.
 
-```tut
+```scala mdoc
 import scala.util.matching.Regex
 
 val keyValPattern: Regex = "([0-9a-zA-Z-#() ]+): ([0-9a-zA-Z-#() ]+)".r

@@ -17,7 +17,7 @@ previous-page: regular-expression-patterns
 `apply`メソッドが引数を取り、オブジェクトを作るコンストラクタであるように、`unapply`は1つのオブジェクトを受け取り、引数を返そうとします。
 これはパターンマッチングと部分関数で最も頻繁に使われます。
 
-```tut
+```scala mdoc
 import scala.util.Random
 
 object CustomerID {
@@ -43,19 +43,19 @@ customer1ID match {
 
 値を定義する文で、パターン中に新しい変数を使うことができるので、抽出子は変数を初期化するのに使えます。この場合unapplyメソッドが初期値を与えます。
 
-```tut
+```scala mdoc
 val customer2ID = CustomerID("Nico")
 val CustomerID(name) = customer2ID
 println(name)  // prints Nico
 ```
 これは `val name = CustomerID.unapply(customer2ID).get`.と同じです。
 
-```tut
+```scala mdoc
 val CustomerID(name2) = "--asdfasdfasdf"
 ```
 もし一致しない場合`scala.MatchError`が投げられます。
 
-```tut:fail
+```scala mdoc:crash
 val CustomerID(name3) = "-asdfasdfasdf"
 ```
 

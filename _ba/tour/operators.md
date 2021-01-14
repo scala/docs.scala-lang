@@ -25,7 +25,7 @@ Međutim, lakše je čitati kada se napiše kao infiksni operator:
 ## Definisanje i korištenje operatora
 Možete koristiti bilo koji legalni identifikator kao operator. 
 To uključuje i imena kao `add` ili simbole kao `+`.
-```tut
+```scala mdoc
 case class Vec(x: Double, y: Double) {
   def +(that: Vec) = Vec(this.x + that.x, this.y + that.y)
 }
@@ -42,7 +42,7 @@ Koristeći zagrade, možete pisati kompleksne izraze s čitljivom sintaksom.
 
 Slijedi definicija klase `MyBool` koja definiše tri metode `and`, `or`, i `negate`.
 
-```tut
+```scala mdoc
 case class MyBool(x: Boolean) {
   def and(that: MyBool): MyBool = if (x) that else this
   def or(that: MyBool): MyBool = if (x) this else that
@@ -52,7 +52,7 @@ case class MyBool(x: Boolean) {
 
 Sada je moguće koristiti `and` i `or` kao infiksne operatore:
 
-```tut
+```scala mdoc
 def not(x: MyBool) = x.negate
 def xor(x: MyBool, y: MyBool) = (x or y) and not(x and y)
 ```
