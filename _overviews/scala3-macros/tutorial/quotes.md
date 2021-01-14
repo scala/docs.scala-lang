@@ -249,7 +249,106 @@ case ...
 
 ### Matching types
 
-*Coming soon*
+So far we assumed that we knew statically the type within the quote patterns.
+Quote patterns also allow for generic types and existential types which we will see in this section.
+
+#### Generic types in patterns
+
+Consider the `exprOfOption` that we have already seen
+```scala
+def exprOfOption[T: Type](x: Expr[Option[T]])(using Quotes): Option[Expr[T]] =
+  x match
+    case '{ Some($x: T) } => Some(x) // x: Expr[T]
+    ...
+```
+
+Note that this time we have added the `T` explicitly in the pattern even though it can be inferred.
+The pattern is using a generic type `T` which requires a given `Type[T]` in scope.
+This implies that `$x: T` will only match if `x` is of type `Expr[T]`.
+In this particular case this condition will always be true.
+
+Now consider the following variant where we do not know statically the type within the option in `x`.
+
+```scala
+def exprOfOptionOf[T: Type](x: Expr[Option[Any]])(using Quotes): Option[Expr[T]] =
+  x match
+    case '{ Some($x: T) } => Some(x) // x: Expr[T]
+    case _ => None
+```
+This time the pattern ` Some($x: T)` will only match if the type of the option is `Some[T]`.
+
+```scala
+exprOfOptionOf[Int]('{ Some(3) })   // Some('{3})
+exprOfOptionOf[Int]('{ Some("a") }) // None
+```
+
+#### Type variables in patterns
+
+Quoted code may contain types that are not known outside of the quote.
+We can match on them using pattern type variables.
+Just as in a normal pattern, the type variables are written using lower case names.
+
+```scala
+def exprOptionToList(x: Expr[Option[Any]])(using Quotes): Option[Expr[List[Any]]] =
+  x match
+    case '{ Some($x: t) } =>
+      Some('{ List[t]($x) }) // x: Expr[List[t]]
+    case '{ None } =>
+      Some('{ Nil })
+    case _ => None
+```
+
+The pattern `$x: t` will match an expression of any type and `t` will be bound to the type of the pattern.
+This type is only valid in the right-hand side of the `case`, in the example we can use it to construct the list `List[t]($x)` (`List($x)` would also work).
+As this is a type that is not statically known we need a given `Type[t]` in scope, luckily the quoted pattern will automatically provide this.
+
+The simple `case '{ $expr: tpe } =>` pattern is extramlely useful if we want to konw the precise type of the expression.
+```scala
+val expr: Expr[Option[Int]] = ...
+expr match
+  case '{ $expr: tpe } =>
+    Type.show[tpe] // could be: Option[Int], Some[Int], None, Option[1], Option[2], ...
+    '{ val x: tpe = $expr; x } // binds the value without widening the type
+    ...
+```
+
+In some cases we need to define a pattern variable that is referenced several times or has some bounds.
+To achieve this it is possible to create pattern variables at the start of the pattern using `type t` with a type pattern variable.
+
+```scala
+def fuseMap[T: Type](x: Expr[List[T]])(using Quotes): Expr[List[T]] = x match {
+  case '{ type u; type v; ($ls: List[`u`]).map($f: `u` => `v`).map($g: `v` => T) } =>
+    '{ $ls.map(x => $g($f(x))) }
+  case _ => x
+}
+```
+
+Here we define two type variables `u` and `v` and then refer to them using `` `u` `` and `` `v` ``.
+We do not refer to them using `u` or `v` because those would be interpreted as new type variables and hence duplicates.
+If the type variable needs to be constrained we can add bounds directly on the type definition `case '{ type u <: AnyRef; ... } =>`.
+
+Note that the previous case could also be written as `case '{ ($ls: List[u]).map[v]($f).map[T]($g) =>`.
+
+#### Quote types patterns
+
+Type represented with `Type[T]` can be matched on using the patten `case '[...] =>`.
+
+```scala
+def mirrorFields[T: Type](using Quotes): List[String] =
+  Type.of[T] match
+    case '[field *: fields] =>
+      Type.show[field] :: mirrorFields[fields]
+    case '[EmptyTuple] =>
+      Nil
+    case _ =>
+      compiletime.error("Expected known tuple but got: " + Type.show[T])
+
+mirrorFields[EmptyTuple]         // Nil
+mirrorFields[(Int, String, Int)] // List("Int", "String", "Int")
+mirrorFields[Tuple]              // error: Expected known tuple but got: Tuple
+```
+
+As with expression quote patterns type variables are represented using lower case names.
 
 ## FromExpr
 
