@@ -34,7 +34,7 @@ That is, in our example `f`, we directly express that we are happy with any valu
 We **did not** have to create a _nominal_ helper trait like the following:
 ```scala
 trait Both[A] extends Resettable, Growable[A]
-def f(x: Both): Unit
+def f(x: Both[String]): Unit
 ```
 There is an important difference between the two alternatives of defining `f`: While both allow `f` to be called with instances of `Both`, only the former allows passing instances that are subtypes of `Resettable` and `Growable[String]`, but _not of_ `Both`.
 
