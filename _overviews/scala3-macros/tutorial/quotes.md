@@ -249,25 +249,26 @@ case ...
 
 ### Matching types
 
-So far we assumed that we knew statically the type within the quote patterns.
-Quote patterns also allow for generic types and existential types which we will see in this section.
+So far, we assumed that the types within quote patterns would be statically known.
+Quote patterns also allow for generic types and existential types, which we will see in this section.
 
 #### Generic types in patterns
 
-Consider the `exprOfOption` that we have already seen
+Consider the function `exprOfOption` that we have already seen:
 ```scala
 def exprOfOption[T: Type](x: Expr[Option[T]])(using Quotes): Option[Expr[T]] =
   x match
     case '{ Some($x: T) } => Some(x) // x: Expr[T]
+                // ^^^ type ascription with generic type T
     ...
 ```
 
-Note that this time we have added the `T` explicitly in the pattern even though it can be inferred.
-The pattern is using a generic type `T` which requires a given `Type[T]` in scope.
+Note that this time we have added the `T` explicitly in the pattern, even though it could be inferred.
+By referring to the generic type `T` in the pattern, we are required to have a given `Type[T]` in scope.
 This implies that `$x: T` will only match if `x` is of type `Expr[T]`.
 In this particular case this condition will always be true.
 
-Now consider the following variant where we do not know statically the type within the option in `x`.
+Now consider the following variant where `x` is an optional value with a (statically) unknown element type.
 
 ```scala
 def exprOfOptionOf[T: Type](x: Expr[Option[Any]])(using Quotes): Option[Expr[T]] =
@@ -282,7 +283,7 @@ exprOfOptionOf[Int]('{ Some(3) })   // Some('{3})
 exprOfOptionOf[Int]('{ Some("a") }) // None
 ```
 
-#### Type variables in patterns
+#### Type variables in quoted patterns
 
 Quoted code may contain types that are not known outside of the quote.
 We can match on them using pattern type variables.
@@ -292,6 +293,7 @@ Just as in a normal pattern, the type variables are written using lower case nam
 def exprOptionToList(x: Expr[Option[Any]])(using Quotes): Option[Expr[List[Any]]] =
   x match
     case '{ Some($x: t) } =>
+                // ^^^ this binds the type `t` in the body of the case
       Some('{ List[t]($x) }) // x: Expr[List[t]]
     case '{ None } =>
       Some('{ Nil })
@@ -302,7 +304,7 @@ The pattern `$x: t` will match an expression of any type and `t` will be bound t
 This type is only valid in the right-hand side of the `case`, in the example we can use it to construct the list `List[t]($x)` (`List($x)` would also work).
 As this is a type that is not statically known we need a given `Type[t]` in scope, luckily the quoted pattern will automatically provide this.
 
-The simple `case '{ $expr: tpe } =>` pattern is extramlely useful if we want to konw the precise type of the expression.
+The simple `case '{ $expr: tpe } =>` pattern is very useful if we want to know the precise type of the expression.
 ```scala
 val expr: Expr[Option[Int]] = ...
 expr match
@@ -312,12 +314,18 @@ expr match
     ...
 ```
 
-In some cases we need to define a pattern variable that is referenced several times or has some bounds.
+In some cases we need to define a pattern variable that is referenced several times or has some type bounds.
 To achieve this it is possible to create pattern variables at the start of the pattern using `type t` with a type pattern variable.
 
 ```scala
 def fuseMap[T: Type](x: Expr[List[T]])(using Quotes): Expr[List[T]] = x match {
-  case '{ type u; type v; ($ls: List[`u`]).map($f: `u` => `v`).map($g: `v` => T) } =>
+  case '{ 
+    type u
+    type v
+    ($ls: List[`u`])
+      .map($f: `u` => `v`)
+      .map($g: `v` => T) 
+    } =>
     '{ $ls.map(x => $g($f(x))) }
   case _ => x
 }
