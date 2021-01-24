@@ -11,7 +11,7 @@ changes. If you want to dig deeper, there are a few references at your disposal:
 - The [Language Reference][reference] gives a detailed description of the changes from Scala 2 to Scala 3.
 - The [Migration Guide][migration] provides you with all of the information necessary to move from Scala 2 to Scala 3.
 
-## That's new in Scala 3
+## What's new in Scala 3
 Scala 3 is a complete overhaul of the Scala language. At its core, many aspects
 of the type-system have been change to be more principled. While this also
 brings exciting new features along (like union types), first and foremost, it
