@@ -319,12 +319,12 @@ To achieve this it is possible to create pattern variables at the start of the p
 
 ```scala
 def fuseMap[T: Type](x: Expr[List[T]])(using Quotes): Expr[List[T]] = x match {
-  case '{ 
+  case '{
     type u
     type v
     ($ls: List[`u`])
       .map($f: `u` => `v`)
-      .map($g: `v` => T) 
+      .map($g: `v` => T)
     } =>
     '{ $ls.map(x => $g($f(x))) }
   case _ => x
@@ -333,7 +333,8 @@ def fuseMap[T: Type](x: Expr[List[T]])(using Quotes): Expr[List[T]] = x match {
 
 Here we define two type variables `u` and `v` and then refer to them using `` `u` `` and `` `v` ``.
 We do not refer to them using `u` or `v` because those would be interpreted as new type variables and hence duplicates.
-If the type variable needs to be constrained we can add bounds directly on the type definition `case '{ type u <: AnyRef; ... } =>`.
+This notation follows the normal [stable identifier patterns](https://www.scala-lang.org/files/archive/spec/2.13/08-pattern-matching.html#stable-identifier-patterns) syntax.
+Furthermore, if the type variable needs to be constrained we can add bounds directly on the type definition `case '{ type u <: AnyRef; ... } =>`.
 
 Note that the previous case could also be written as `case '{ ($ls: List[u]).map[v]($f).map[T]($g) =>`.
 
