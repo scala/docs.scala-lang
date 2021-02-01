@@ -5,15 +5,11 @@ redirect_from:
   - /documentation/books.html
 ---
 
-## Quick Online Exercises
-[Scala Exercises](https://www.scala-exercises.org/) is a series of lessons and exercises created by [47 Degrees](https://www.47deg.com/). It's a great way to get a brief introduction to Scala while testing your knowledge along the way.
+## Try Scala in your browser!
 
-[Tour of Scala](https://tourofscala.com) gives you an introduction to Scala, step by step, from begineer to expert.
+There are a handful of websites where you can interactively run Scala code in your browser! Have a look at [ScalaFiddle](https://scalafiddle.io/) and [Scastie](https://scastie.org/).
 
-## Scala Learning Communities
-[Scala Learning Community on Discord](http://sca.la/learning-community), a growing online community connecting learners with online resources to learn Scala together.
-
-## Online Courses from EPFL
+## Online courses from the Scala Center
 
 The following courses are available for free. They teach you the main features of the Scala language and introduce you
 to functional programming. They are published either on [Coursera](https://www.coursera.org) or [edX](https://www.edx.org).
@@ -34,17 +30,23 @@ the paid version delivers a certificate of completion. Learn more about
 [Coursera certificates](https://learner.coursera.help/hc/en-us/articles/209819053-Get-a-Course-Certificate) or
 [edX certificates](https://support.edx.org/hc/en-us/categories/115002269627-Certificates).
 
-## Dr.Mark C Lewis's Lectures from Trinity University
+## Scala Exercises
 
- * [Dr.Mark C Lewis](https://www.cs.trinity.edu/~mlewis/) from Trinity University, San Antonio, TX, teaches programming courses using the Scala language. Course videos are available in YouTube for free. Some of the courses below.
+[Scala Exercises](https://www.scala-exercises.org/) is a series of lessons and exercises created by [47 Degrees](https://www.47deg.com/). It's a great way to get a brief introduction to Scala while testing your knowledge along the way.
+
+[Tour of Scala](https://tourofscala.com) gives you an introduction to Scala, step by step, from begineer to expert.
+
+## Dr. Mark C Lewis's lectures from Trinity University
+
+[Dr. Mark C Lewis](https://www.cs.trinity.edu/~mlewis/) from Trinity University, San Antonio, TX, teaches programming courses using the Scala language. Course videos are available in YouTube for free. Some of the courses below.
+
    * [Introduction to Programming and Problem Solving Using Scala](https://www.youtube.com/playlist?list=PLLMXbkbDbVt9MIJ9DV4ps-_trOzWtphYO)
    * [Object-Orientation, Abstraction, and Data Structures Using Scala](https://www.youtube.com/playlist?list=PLLMXbkbDbVt8JLumqKj-3BlHmEXPIfR42)
 
- You can visit his [YouTube channel](https://www.youtube.com/user/DrMarkCLewis/featured) for more videos.
+You can visit his [YouTube channel](https://www.youtube.com/user/DrMarkCLewis/featured) for more videos.
 
-
-## Try Scala In Your Browser!
-There are a handful of websites where you can interactively run Scala code in your browser! Have a look at [ScalaFiddle](https://scalafiddle.io/) and [Scastie](https://scastie.org/).
+## Scala Learning Community
+[Scala Learning Community on Discord](http://sca.la/learning-community), a growing online community connecting learners with online resources to learn Scala together.
 
 ## allaboutscala
 [allaboutscala](https://allaboutscala.com/) provides detailed tutorials for beginners.
