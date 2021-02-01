@@ -8,6 +8,11 @@ redirect_from:
 ## Quick Online Exercises
 [Scala Exercises](https://www.scala-exercises.org/) is a series of lessons and exercises created by [47 Degrees](https://www.47deg.com/). It's a great way to get a brief introduction to Scala while testing your knowledge along the way.
 
+[Tour of Scala](https://tourofscala.com) gives you an introduction to Scala, step by step, from begineer to expert.
+
+## Scala Learning Communities
+[Scala Learning Community on Discord](http://sca.la/learning-community), a growing online community connecting learners with online resources to learn Scala together.
+
 ## Online Courses from EPFL
 
 The following courses are available for free. They teach you the main features of the Scala language and introduce you
