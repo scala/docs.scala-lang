@@ -11,7 +11,7 @@ redirect_from:
 [Tour of Scala](https://tourofscala.com) gives you an introduction to Scala, step by step, from begineer to expert.
 
 ## Scala Learning Communities
-[Scala Learning Community on Discord](http://sca.la/learning-community), a growing online community connecting online learning resources in one cohesive flow of learning.
+[Scala Learning Community on Discord](http://sca.la/learning-community), a growing online community connecting learners with online resources to learn Scala together.
 
 ## Online Courses from EPFL
 
