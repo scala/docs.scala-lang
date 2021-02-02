@@ -12,6 +12,7 @@ Sometimes new JVM and JDK (Java Development Kit) versions require us to update S
 
 | JDK version | Minimum Scala versions           | Recommended Scala versions                                 |
 |:-----------:|:---------------------------------|:-----------------------------------------------------------|
+| 16          | see below                        | see below
 | 13, 14, 15  | 2.13.2, 2.12.11                  | 2.13.4, 2.12.13                                            |
 | 12          | 2.13.1, 2.12.9                   | 2.13.4, 2.12.13                                            |
 | 11          | 2.13.0, 2.12.4, 2.11.12          | 2.13.4, 2.12.13, 2.11.12                                   |
@@ -71,9 +72,15 @@ JDK 14 was released in March 2020, and JDK 15 was released in September 2020. Bu
 
 JDK 12, 13, 14, and 15 are expected to work wherever JDK 11 does. The Scala community build now runs on JDK 15 (as well as 11 and 8).
 
-As of October 2020, the [jdk12](https://github.com/scala/bug/labels/jdk12) and [jdk13](https://github.com/scala/bug/labels/jdk13) labels in scala/bug have no open bugs. New issues will likely be reported against the newer non-LTS [jdk14 label](https://github.com/scala/bug/labels/jdk14) and [jdk15 label](https://github.com/scala/bug/labels/jdk15) or the LTS [jdk11 label](https://github.com/scala/bug/labels/jdk11).
+As of October 2020, the [jdk12](https://github.com/scala/bug/labels/jdk12) and [jdk13](https://github.com/scala/bug/labels/jdk13) labels in scala/bug have no open bugs. New issues will likely be reported against the newer non-LTS [jdk14 label](https://github.com/scala/bug/labels/jdk14) and [jdk15 label](https://github.com/scala/bug/labels/jdk15) and [jdk16 label](https://github.com/scala/bug/labels/jdk15) or the LTS [jdk11 label](https://github.com/scala/bug/labels/jdk11).
 
 As far as we know, 12, 13, 14, and 15 are similar to 11 with respect to Scala compatibility.
+
+## JDK 16 compatibility notes
+
+JDK 16 prereleases are now available. The final release is [targeted](https://openjdk.java.net/projects/jdk/16/) for March 2021.
+
+The Scala community build now runs on JDK 16.  As of February 1, there are known issues on the [jdk16](https://github.com/scala/bug/labels/jdk16) label.  We are working on it.  We intend to ship improved JDK 16 support in Scala 2.12.14 ([release timing thread](https://contributors.scala-lang.org/t/scala-2-12-14-planning/4852/2)) and 2.13.5 ([release timing thread](https://contributors.scala-lang.org/t/scala-2-13-5-planning/4825/6)).
 
 ## Scala 3
 
