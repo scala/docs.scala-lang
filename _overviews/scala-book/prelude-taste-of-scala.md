@@ -485,7 +485,7 @@ t._3
 Or assign the tuple fields to variables:
 
 ```scala
-val (num, string, person) = (11, "Eleven", new Person("Eleven"))
+val (num, string, person) = t
 ```
 
 Tuples are nice for those times when you need to put a little “bag” of things together for a little while.
