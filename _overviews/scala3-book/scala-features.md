@@ -57,8 +57,6 @@ def double(ints: List[Int]): List[Int] = {
       buffer += i * 2
   }
   buffer.toList
-  foo
-  bar
 }
 
 val newNumbers = double(oldNumbers)
