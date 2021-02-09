@@ -23,7 +23,7 @@ In general, there is many different ways you could help us:
 - **Typos and other small text enhancements?** Create a PR.
 - **Want to add something new or make larger changes?** Great! Please open an issue and let us discuss this.
 
-Typically, each of the different documentation projects contain links (and so does this document, in the table-of-contents pane) to edit and improve them. Additionally, below we provide you with the necessary information to get started.
+Typically, each of the different documentation projects contain links (and so does this document, in the table-of-contents pane - so far only visible in the desktop view) to edit and improve them. Additionally, below we provide you with the necessary information to get started.
 
 ## Scala 3 Book
 The [Scala 3 Book][scala3-book] is being written by Alvin Alexander and provides an overview over all the important features of Scala 3. It targets readers, which are new to Scala.
