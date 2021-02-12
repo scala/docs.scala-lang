@@ -3,7 +3,6 @@ layout: singlepage-overview
 language: ja
 title: New in Scala 3
 scala3: true
-discourse: true
 ---
 
 Scala 3 はScala 2 から大幅な改善が行われ、さまざまな新機能が追加されています。

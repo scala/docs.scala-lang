@@ -2,8 +2,6 @@
 layout: documentation
 title: ドキュメント
 language: ja
-partof: documentation
-discourse: true
 more-resources-label: その他のリソース
 
 
@@ -23,7 +21,7 @@ scala3-sections:
       - title: "Scala 3 Book"
         description: "主要な言語仕様のイントロダクションをオンラインブックで読む"
         icon: "fa fa-book"
-        link: ja/scala3/book/introduction.html
+        link: /scala3/book/introduction.html
   - title: "More detailed information"
     links:
       - title: "Migration Guide"
