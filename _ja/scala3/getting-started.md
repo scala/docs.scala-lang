@@ -16,7 +16,7 @@ _Scastie_ はScalaのコードがどのように動作するか試せるオン�
 ## Scala をインストールする
 
 Scala をインストールするということはつまりさまざまなコマンドラインツールやビルドツールをインストールするということです。
-Scalaのインストーラツールの"Coursier"を使うのがおすすめです。Coursierを使えばインストールが必要なものすべてを自動でインストールできます。 もちろん、手動でそれぞれのツールをインストールすることもできます。
+Scalaのインストーラツールの"Coursier"を使うのがおすすめです。Coursierを使えばインストールが必要なものすべてを自動でインストールできます。 もちろん、手動でそれぞれのツールをインストールすることもできます。最低限 Java、sbt があれば Scala のコードを書き始められます。
 
 ### Scala インストーラ を使う (推奨)
 
@@ -39,10 +39,17 @@ JVMs の管理に加えて、 `cs setup` コマンドは次のような便利な
 - [Ammonite](https://ammonite.io), 高機能 REPL
 - [scalafmt](https://scalameta.org/scalafmt), the Scala formatter
 - [Coursier CLI](https://get-coursier.io/docs/cli-overview), Scala で書かれたアプリケーションをインストールできます
-- (Scala 2.13 向けの `scala` コマンドと `scalac` コマンド)
+- (**Scala 2.13** 向けの `scala` コマンドと `scalac` コマンド。Scala 3 用ではありません。)
+
+
+`cs setup`を実行したら以下のコマンドで Java, Scala がインストールされているかどうか確認してください。
+
+```shell
+java --version
+scala --version
+```
 
 詳しくは、 [coursier-cli documentation](https://get-coursier.io/docs/cli-overview)を読んでください。
-
 
 ### ... または、手動でインストールする
 
@@ -52,11 +59,13 @@ Scala プロジェクトをコンパイル、実行、テストやパッケー�
 1. Java を [Oracle Java 8](https://www.oracle.com/java/technologies/javase-jdk8-downloads.html), [Oracle Java 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html), か [AdoptOpenJDK 8/11](https://adoptopenjdk.net/)からダウンロードしてください。 Scala/Java の互換性の詳細については [JDK Compatibility](/overviews/jdk-compatibility/overview.html) を参照してください。
 2.  [sbt](https://www.scala-sbt.org/download.html) をインストールしてください。
 
-
-
 ## sbtで “Hello, world” プロジェクトを作成する
 
-コマンドライン、IDEのどちらからでもプロジェクトを作成できます。
+Scala 3 をインストールする前に、Scala を使ったことがない開発者に向けて sbt を使ってプロジェクトを作成、実行する方法について解説します。
+
+もし sbt でプロジェクトを作成する方法を既に知っているなら 「Scala 3 のインストール」 の章まで読み飛ばしてください。
+
+コマンドライン、IDEのどちらからでも sbt プロジェクトを作成できます。
 
 もし慣れているならコマンドラインツールを使うアプローチを推奨します。
 
@@ -74,7 +83,7 @@ sbt で新しくプロジェクトを作成するには次の手順に従って�
 1. `sbt new scala/hello-world.g8` コマンドを実行してください。
 このコマンドを実行すると ['hello-world' template][template-url] を GitHub から pull します。
 また、無視できる _target_ フォルダを作成します。
-1. アプリケーションを `hello-world` と名付けてください。
+1. ターミナルでアプリケーション名の入力を促されたら `hello-world` と入力してください。
   "hello-world"と言う名前のプロジェクトが作成されます。
 1. 次のようなファイル、ディレクトリが作成されるはずです:
 
@@ -121,9 +130,9 @@ IDE を使ってプロジェクトを開きます。
 
 
 
-### View the source code
+### ソースコードを見る
 
-以下の2つのファイルをIDEで見てください。:
+以下の2つのファイルをIDEで開いてください:
 
 - _build.sbt_
 - _src/main/scala/Main.scala_
@@ -133,8 +142,7 @@ IDE を使ってプロジェクトを開きます。
 
 ##  “Hello, world” プロジェクトを実行する
 
-If you’re comfortable using your IDE, you can run the code in _Main.scala_ from your IDE.
-IDEを快適に使用できるなら、 _Main.scala_ に書かれたコードをIDEから実行してください。
+IDEを使ってコードを書くのに特に抵抗がないなら、 _Main.scala_ に書かれたコードをIDEから実行してください。
 
 そうでないなら、次のような手順でターミナルからアプリケーションを実行することもできます。
 
@@ -146,6 +154,57 @@ IDEを快適に使用できるなら、 _Main.scala_ に書かれたコードを
 このプロジェクトを試し終わったら、エンターキーを押して `run` コマンドの実行を停止してください。
 
 `exit`と入力するか `[Ctrl][d]` ショートカットをおすと sbt から出てコマンドプロンプトに戻ります。
+
+### Scala 3 のインストール
+
+Scala 3 を始めるには以下のような方法があります。詳しくは[こちら](https://dotty.epfl.ch/)も参照してください。
+
+1. sbt をインストールし sbt で`sbt new lampepfl/dotty.g8` を実行して Scala 3 プロジェクトを始めることができます。
+1. 先に説明した通り、`cs setup` コマンドを使って Java、Scala(2.**)の環境をセットアップすることができます。 また、`cs install scala3-compiler`、`cs install scala3-repl`コマンドでそれぞれ Scala 3 のコンパイラ、 Scala 3 の REPL をインストールできます。
+1. Scala 3 のソースを[ここ](https://github.com/lampepfl/dotty/releases)から手動でインストールすることができます。
+
+#### sbt を使って Scala 3 プロジェクトをはじめる(オプショナル)
+
+上の手順で`cs setup` をすでに実行しているなら `sbt`コマンドが使えるようになっているはずです。 以下のコマンドを実行することで Scala 3 のテンプレートプロジェクトを作れます。
+```shell
+sbt new lampepfl/dotty.g8
+```
+
+Scala 2 とクロスコンパイル可能なプロジェクトテンプレートを利用する場合は以下のコマンドを実行してください。
+
+```shell
+sbt new lampepfl/dotty-cross.g8
+```
+#### Coursierを使ってScala 3 用のコンパイラと REPL をインストールする(オプショナル)
+
+以下では Scala 3 のコンパイラ、REPLと Scala 3 をインストールする手順を説明します。
+
+```shell
+cs install scala3-compiler
+cs install scala3-repl
+```
+
+インストールしたコンパイラ、REPL は`cs launch <name>` で実行できます。
+```shell
+cs launch scala3-compiler -- Hello.scala
+```
+
+```shell
+cs launch scala3-repl
+```
+
+
+
+#### Scala 3 を手動でインストールする(オプショナル)
+
+Scala 3 はまだリリースされていないので Github から最新のソース(2021/02時点で scala3-3.0.0-M3 )を直接ダウンロードしてpathを通してください。
+
+```shell
+wget https://github.com/lampepfl/dotty/releases/download/3.0.0-M3/scala3-3.0.0-M3.tar.gz
+tar -zxvf scala3-3.0.0-M3.tar.gz
+```
+
+
 
 
 
