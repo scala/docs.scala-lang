@@ -1,6 +1,7 @@
 ---
 layout: singlepage-overview
 title: Getting Started with Scala 3
+languages: ["ja"]
 ---
 
 

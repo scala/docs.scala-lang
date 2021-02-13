@@ -1,6 +1,5 @@
 ---
 layout: singlepage-overview
-language: ja
 title: New in Scala 3
 scala3: true
 ---
