@@ -27,7 +27,8 @@ Install it on your system with the following instructions.
 <div class="main-download">
   <div id="download-step-one">
     <p>Follow <a href="https://get-coursier.io/docs/cli-overview.html#install-native-launcher" target="_blank">the instructions to install the <code>cs</code> launcher</a> then run:</p>
-    <p><code>$ ./cs setup</code></p>
+    <p><code>$ cs install scala3-repl</code></p>
+    <p><code>$ cs install scala3-compiler</code></p>
   </div>
 </div>
 
