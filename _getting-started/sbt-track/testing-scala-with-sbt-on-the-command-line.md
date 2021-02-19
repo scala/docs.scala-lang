@@ -71,10 +71,8 @@ indeed 27. The `===` is part of ScalaTest and provides clean error messages.
 ## Adding another test case
 1. Add another test block with its own `assert` statement that checks for the cube of `0`.
 
-    ```
-      import org.scalatest.FunSuite
-    
-      class CubeCalculatorTest extends FunSuite {
+    ```    
+      class CubeCalculatorTest extends org.scalatest.funsuite.AnyFunSuite {
           test("CubeCalculator.cube 3 should be 27") {
               assert(CubeCalculator.cube(3) === 27)
           }
