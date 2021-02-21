@@ -61,7 +61,7 @@ class Dog(name: String) extends Speaker, TailWagger, Runner:
   def speak(): String = "Woof!"
 ```
 
-Notice how the class extends the traits with the `extends` and `with` keywords.
+Notice how the class extends the traits with the `extends` keyword.
 
 Similarly, here’s a `Cat` class that implements those same traits while also overriding two of the concrete methods it inherits:
 
