@@ -250,7 +250,7 @@ While sbt is widely used, there are other tools you can use to build Scala proje
 - [Ant](https://ant.apache.org/)
 - [Gradle](https://gradle.org/)
 - [Maven](https://maven.apache.org/)
-- [Mill](https://www.lihaoyi.com/mill/)
+- [Mill](https://com-lihaoyi.github.io/mill/)
 
 #### Coursier
 
