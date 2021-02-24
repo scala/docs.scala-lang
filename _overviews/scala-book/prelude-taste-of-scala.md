@@ -462,19 +462,30 @@ There are many (many!) more methods available to Scala collections classes, and 
 
 ## Tuples
 
-Tuples let you put a heterogenous collection of elements in a little container. Tuples can contain between two and 22 values, and they can all be different types. For example, given a `Person` class like this:
+Tuples let you put a heterogenous collection of elements in a little container. A tuple can contain between two and 22 values, and all of the values can have different types. For example, this is a tuple that holds three different types, an `Int`, a `Double`, and a `String`:
 
 ```scala
-class Person(var name: String)
+(11, 11.0, "Eleven")
 ```
 
-You can create a tuple that contains three different types like this:
+This is known as a `Tuple3`, because it contains three elements.
+
+Tuples are convenient in many places, such as where you might use an ad-hoc class in other languages. For instance, you can return a tuple from a method instead of returning a class:
 
 ```scala
-val t = (11, "Eleven", new Person("Eleven"))
+def getAaplInfo() = {
+    // get the stock symbol, price, and volume
+    ("AAPL", BigDecimal(123.45), 101202303L)
+}
 ```
 
-You can access the tuple values by number:
+Then you can assign the result of the method to a variable:
+
+```scala
+val t = getAaplInfo()
+```
+
+Once you have a tuple variable, you can access its values by number, preceded by an underscore:
 
 ```scala
 t._1
@@ -482,13 +493,35 @@ t._2
 t._3
 ```
 
-Or assign the tuple fields to variables:
+The REPL demonstrates the results of accessing those fields:
 
 ```scala
-val (num, string, person) = (11, "Eleven", new Person("Eleven"))
+scala> t._1
+res0: String = AAPL
+
+scala> t._2
+res1: scala.math.BigDecimal = 123.45
+
+scala> t._3
+res2: Long = 101202303
 ```
 
-Tuples are nice for those times when you need to put a little “bag” of things together for a little while.
+The values of a tuple can also be extracted using pattern matching. In this next example, the fields inside the tuple are assigned to the variables `symbol`, `price`, and `volume`:
+
+```scala
+val (symbol, price, volume) = getAaplInfo()
+```
+
+Once again, the REPL shows the result:
+
+```scala
+scala> val (symbol, price, volume) = getAaplInfo()
+symbol: String = AAPL
+price: scala.math.BigDecimal = 123.45
+volume: Long = 101202303
+```
+
+Tuples are nice for those times when you want to put a little “bag” of things together for a little while.
 
 
 
