@@ -415,7 +415,7 @@ TODO: I have some notes on when to use abstract classes, and can update this sec
 {% endcomment %}
 
 When you want to write a class, but you know it will have abstract members, you can either create a trait or an abstract class.
-In most situations you’ll use traits, but but historically there have been two situations where it’s better to use an abstract class than a trait:
+In most situations you’ll use traits, but historically there have been two situations where it’s better to use an abstract class than a trait:
 
 - You want to create a base class that takes constructor arguments
 - The code will be called from Java code
