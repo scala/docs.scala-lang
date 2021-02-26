@@ -123,7 +123,7 @@ class Person(name: String)
 class SoftwareDeveloper(name: String, favoriteLang: String)
   extends Person(name)
 ```
-However, since _traits_ are designed as the primary means of decomposition,
+However, since _classes_ are designed as the primary means of decomposition,
 a class that is defined in one file _cannot_ be extended in another file.
 In order to allow this, the base class needs to be [marked as `open`][open]:
 ```scala
