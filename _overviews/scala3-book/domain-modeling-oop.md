@@ -125,11 +125,11 @@ class SoftwareDeveloper(name: String, favoriteLang: String)
 ```
 However, since _traits_ are designed as the primary means of decomposition,
 a class that is defined in one file _cannot_ be extended in another file.
-In order to allow this, the base class needs to be [marked as `open`][open]:
+In order to allow this, the base class needs to be marked as `open`:
 ```scala
 open class Person(name: String)
 ```
-Having to explicitly mark classes as open avoids many common pitfalls in OO design.
+[`open`](open) is a new feature of Sala 3. Having to explicitly mark classes as open avoids many common pitfalls in OO design.
 In particular, it requires library designers to explicitly plan for extension and for instance document the classes that are marked as open with additional extension contracts.
 
 {% comment %}
