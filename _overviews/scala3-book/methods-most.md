@@ -267,7 +267,7 @@ This method works just like the previous method that used an `if`/`else` express
 
 ## Controlling visibility in classes
 
-In classes, objects, and traits, Scala methods are public by default, so the `Dog` instance created here can access the `speak` method:
+In classes, objects, traits and enums Scala methods are public by default, so the `Dog` instance created here can access the `speak` method:
 
 ```scala
 class Dog:
