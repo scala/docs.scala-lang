@@ -28,7 +28,7 @@ Scala 3 の高品質なドキュメンテーションを作るためのいくつ
 通常、ドキュメントプロジェクトのそれぞれには編集・改善用のリンクが含まれています。(このドキュメントについても同様で、目次の領域にあります。) また、コントリビューションをはじめるために必要な情報は以下に記載されています。
 
 ## Scala 3 Book
-[Scala 3 Book][scala3-book] は Alvin Alexander 氏 が書いています。 この本はScala 3 のすべての重要な機能の概説書です。これから Scala を使いはじめる読者を対象にしています。
+[Scala 3 Book][scala3-book] は Alvin Alexander 氏 が書いています。 この本は Scala 3 のすべての重要な機能の概説書です。これから Scala を使いはじめる読者を対象にしています。
 
 - [Sources](https://github.com/scala/docs.scala-lang/tree/master/_overviews/scala3-book)
 - [Issues](https://github.com/scala/docs.scala-lang/issues)

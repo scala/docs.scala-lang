@@ -10,13 +10,13 @@ language: ja
 ## Try Scala without installing anything
 
 いますぐ Scala 3 を試してみたいなら <a href="https://scastie.scala-lang.org/?target=dotty" target="_blank">ブラウザ上で動作する“Scastie” </a> を使ってみてください。
-_Scastie_ はScalaのコードがどのように動作するか試せるオンラインのプレイグラウンドです。全ての Scala のコンパイラと公開されているライブラリを使うこともできます。
+_Scastie_ は Scala のコードがどのように動作するか試せるオンラインのプレイグラウンドです。全ての Scala のコンパイラと公開されているライブラリを使うこともできます。
 
 
 ## Scala をインストールする
 
-Scala をインストールするということはつまりさまざまなコマンドラインツールやビルドツールをインストールするということです。
-Scalaのインストーラツールの"Coursier"を使うのがおすすめです。Coursierを使えばインストールが必要なものすべてを自動でインストールできます。 もちろん、手動でそれぞれのツールをインストールすることもできます。最低限 Java、sbt があれば Scala のコードを書き始められます。
+Scala をインストールするということはつまり、さまざまなコマンドラインツールやビルドツールをインストールするということです。
+Scalaのインストーラツールの"Coursier"を使うのがおすすめです。Coursier を使えばインストールが必要なものすべてを自動でインストールできます。 もちろん、手動でそれぞれのツールをインストールすることもできます。最低限 Java、sbt があれば Scala のコードを書き始められます。
 
 ### Scala インストーラ を使う (推奨)
 
@@ -53,7 +53,7 @@ scala --version
 
 ### ... または、手動でインストールする
 
-Scala プロジェクトをコンパイル、実行、テストやパッケージングするには次の二つのツールだけで十分です。Java 8 または 11、そしてsbtです。
+Scala プロジェクトをコンパイル、実行、テストやパッケージングするには次の二つのツールだけで十分です。Java 8 または 11、そして sbt です。
 これらのツールを手動でインストールするには、以下の手順に従ってください。
 
 1. Java を [Oracle Java 8](https://www.oracle.com/java/technologies/javase-jdk8-downloads.html), [Oracle Java 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html), か [AdoptOpenJDK 8/11](https://adoptopenjdk.net/)からダウンロードしてください。 Scala/Java の互換性の詳細については [JDK Compatibility](/overviews/jdk-compatibility/overview.html) を参照してください。
@@ -65,7 +65,7 @@ Scala 3 をインストールする前に、Scala を使ったことがない開
 
 もし sbt でプロジェクトを作成する方法を既に知っているなら 「Scala 3 のインストール」 の章まで読み飛ばしてください。
 
-コマンドライン、IDEのどちらからでも sbt プロジェクトを作成できます。
+コマンドライン、IDE のどちらからでも sbt プロジェクトを作成できます。
 
 もし慣れているならコマンドラインツールを使うアプローチを推奨します。
 
@@ -177,7 +177,7 @@ sbt new lampepfl/dotty-cross.g8
 ```
 #### Coursierを使ってScala 3 用のコンパイラと REPL をインストールする(オプショナル)
 
-以下では Scala 3 のコンパイラ、REPLと Scala 3 をインストールする手順を説明します。
+以下では Scala 3 のコンパイラ、REPL と Scala 3 をインストールする手順を説明します。
 
 ```shell
 cs install scala3-compiler
