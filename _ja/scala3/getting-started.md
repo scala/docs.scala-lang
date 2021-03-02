@@ -197,11 +197,11 @@ cs launch scala3-repl
 
 #### Scala 3 を手動でインストールする(オプショナル)
 
-Scala 3 はまだリリースされていないので Github から最新のソース(2021/02時点で scala3-3.0.0-M3 )を直接ダウンロードしてpathを通してください。
+Scala 3 はまだリリースされていないので Github から最新のソース(2021/03時点で scala3-3.0.0-RC1 )を直接ダウンロードしてpathを通してください。
 
 ```shell
-wget https://github.com/lampepfl/dotty/releases/download/3.0.0-M3/scala3-3.0.0-M3.tar.gz
-tar -zxvf scala3-3.0.0-M3.tar.gz
+wget https://github.com/lampepfl/dotty/releases/download/3.0.0-RC1/scala3-3.0.0-RC1.tar.gz
+tar -zxvf scala3-3.0.0-RC1.tar.gz
 ```
 
 
