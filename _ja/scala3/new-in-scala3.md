@@ -61,8 +61,8 @@ Scala3 ではひとつの強力な機能として`implicit`を提供するので
 
 
 ### 再構想: オブジェクト指向プログラミング
-Scala has always been at the frontier between functional programming and object-oriented programming --
-and Scala 3 pushes boundaries in both directions! 先に言及した型システムの変更とcontextual abtstractions の再設計によって、関数型プログラミングを以前にも増して簡単に書けるようになりました。
+Scala は常に関数型プログラミングとオブジェクト指向プログラミングの間のフロンティアにあります。そしてScala 3 はその境界を両方に広げます。
+先に言及した型システムの変更とcontextual abtstractions の再設計によって、関数型プログラミングを以前にも増して簡単に書けるようになりました。
 同時に、次に掲げる新機能を使うと _オブジェクト指向設計_ をうまく構造化してベストプラクティスを実践しやすくなります。
 - **Pass it on**. Traits は class のように 引数をとれるようになりました。詳しくは [parameters][oo-trait-parameters] をご覧ください。 これによってtraitはソフトウェアをモジュールに分解するツールとしてよりいっそうパワフルになりました。
 - **Plan for extension**.  継承を意図していないクラスが継承されてしまうことはオブジェクト指向設計において長年の問題でした。この問題に対処するためScala 3 では [open classes][oo-open]の概念を導入することによって _明示的に_ クラスを継承可能であるとしめすようライブラリ作者に要求するようにしました。
