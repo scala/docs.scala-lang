@@ -38,7 +38,7 @@ sections:
         icon: "fa fa-file-text"
         link: https://dotty.epfl.ch/api/index.html
       - title: "Language Reference"
-        description: "Scala 3 の言語使用"
+        description: "Scala 3 の言語仕様"
         icon: "fa fa-book"
         link: https://dotty.epfl.ch/docs/reference/overview.html
 ---
