@@ -21,7 +21,7 @@ Scalaのインストーラツールの"Coursier"を使うのがおすすめで�
 ### Scala インストーラ を使う (推奨)
 
 Scala インストーラは [Coursier](https://get-coursier.io/docs/cli-overview)という名前のツールで、メインコマンドは`cs`です。
-Coursier はシステムにJVMとScala のツールがインストールされているかどうか確認します。
+Coursier はシステムに JVM と Scala のツールがインストールされているかどうか確認します。
 
 次の手順に従って Coursier をインストールしてください。
 
@@ -79,10 +79,10 @@ sbt を使って Scala のコードをコンパイル、実行やテストでき
 
 sbt で新しくプロジェクトを作成するには次の手順に従ってください。:
 
-1. `cd` コマンドでからのディレクトリに移動してください。
+1. `cd` コマンドで新しいディレクトリに移動してください。
 1. `sbt new scala/hello-world.g8` コマンドを実行してください。
 このコマンドを実行すると ['hello-world' template][template-url] を GitHub から pull します。
-また、無視できる _target_ フォルダを作成します。
+また、無視してよい _target_ フォルダを作成します。
 1. ターミナルでアプリケーション名の入力を促されたら `hello-world` と入力してください。
   "hello-world"と言う名前のプロジェクトが作成されます。
 1. 次のようなファイル、ディレクトリが作成されるはずです:
@@ -95,7 +95,7 @@ hello-world/
     Main.scala       (プログラムのエントリーポイントです。)
   build.sbt          (sbt の ビルド定義ファイルです。)
 ```
-今のところ `src/main/scala` にある`Main.scala` しか必要ありません。
+今のところ `src/main/scala` にある `Main.scala` しか必要ありません。
 
 sbt の詳しいドキュメントは [Scala Book](/scala3/book/scala-tools.html) と  sbt 公式 [documentation](https://www.scala-sbt.org/1.x/docs/index.html) にあります。
 
@@ -113,19 +113,19 @@ IDE を使ってプロジェクトを開きます。
 最も人気なエディタは IntelliJ IDEA と VS Code です。
 どちらも 高度な IDE 機能を提供しています。しかし、 [その他のエディタ](https://scalameta.org/metals/docs/editors/overview.html)を使うこともできます。
 
-### Using IntelliJ IDEA
+### IntelliJ IDEA を利用する
 
 1. [IntelliJ Community Edition](https://www.jetbrains.com/idea/download/) をダウンロード、インストールしてください。
 1. リンク先の手順に従って Scala プラグインをインストールしてください。 [the instructions on how to install IntelliJ plugins](https://www.jetbrains.com/help/idea/managing-plugins.html)
 1.  _build.sbt_ ファイルを開いて、 _Open as a project_ を選択してください。
 
-### Using VS Code with Metals
+### VS Code と Metals を利用する
 
 1. [VS Code](https://code.visualstudio.com/Download) をダウンロードしてください。
 1. [Marketplace](https://marketplace.visualstudio.com/items?itemName=scalameta.metals) から 拡張機能 Metals をインストールしてください。
 1. 次に、_build.sbt_ ファイルが置いてあるディレクトリを開いてください。ダイアログが表示されたら _Import build_ をおしてください。
 
->[Metals](https://scalameta.org/metals) は Scala の lauguage server です。Metals は Lauguage Server Protocol を使ってVS Code やその他のエディタ、たとえば[Atom, Sublime Text, and more](https://scalameta.org/metals/docs/editors/overview.html)、で Scala を書くための機能を提供します。
+>[Metals](https://scalameta.org/metals) は Scala の lauguage server です。Metals は Lauguage Server Protocol を使ってVS Code やその他のエディタ、たとえば[Atom, Sublime Text, and more](https://scalameta.org/metals/docs/editors/overview.html)、で Scala を書くための補助機能を提供します。
 (Metals の仕組みについて詳しく知りたい方は、以下のリンクをご覧ください。 [“Write Scala in VS Code, Vim, Emacs, Atom and Sublime Text with Metals”](https://www.scala-lang.org/2019/04/16/metals.html).)
 
 
@@ -144,7 +144,7 @@ IDE を使ってプロジェクトを開きます。
 
 IDEを使ってコードを書くのに特に抵抗がないなら、 _Main.scala_ に書かれたコードをIDEから実行してください。
 
-そうでないなら、次のような手順でターミナルからアプリケーションを実行することもできます。
+そうでないなら、次の手順でターミナルからアプリケーションを実行することもできます。
 
 1. `cd` コマンドで _hello-world_ に移動してください。
 1. `sbt` コマンドを実行してください。sbt console が開きます。
