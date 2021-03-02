@@ -15,7 +15,7 @@ scala3-sections:
         icon: "fa fa-star"
         link: /ja/scala3/new-in-scala3.html
       - title: "Scala 3 をはじめる"
-        description: "あなたのコンピューターにScala 3 をインストールしてScalaコードを書きはじめよう!"
+        description: "あなたのコンピューターに Scala 3 をインストールしてScalaコードを書きはじめよう!"
         icon: "fa fa-rocket"
         link: /ja/scala3/getting-started.html
       - title: "Scala 3 Book"

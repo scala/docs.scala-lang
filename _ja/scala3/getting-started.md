@@ -32,7 +32,7 @@ Coursier はシステムに JVM と Scala のツールがインストールさ�
   </div>
 </div>
 
-JVMs の管理に加えて、 `cs setup` コマンドは次のような便利なコマンドラインツールもインストールします。:
+JVM の管理に加えて、 `cs setup` コマンドは次のような便利なコマンドラインツールもインストールします。:
 
 - JDK
 - ビルドツール [sbt](https://www.scala-sbt.org) と [mill](https://www.lihaoyi.com/mill) 
