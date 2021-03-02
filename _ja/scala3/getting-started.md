@@ -16,7 +16,7 @@ _Scastie_ は Scala のコードがどのように動作するか試せるオン
 ## Scala をインストールする
 
 Scala をインストールするということはつまり、さまざまなコマンドラインツールやビルドツールをインストールするということです。
-Scalaのインストーラツールの"Coursier"を使うのがおすすめです。Coursier を使えばインストールが必要なものすべてを自動でインストールできます。 もちろん、手動でそれぞれのツールをインストールすることもできます。最低限 Java、sbt があれば Scala のコードを書き始められます。
+Scala のインストーラツールの"Coursier"を使うのがおすすめです。Coursier を使えばインストールが必要なものすべてを自動でインストールできます。 もちろん、手動でそれぞれのツールをインストールすることもできます。最低限 Java、sbt があれば Scala のコードを書き始められます。
 
 ### Scala インストーラ を使う (推奨)
 
@@ -103,7 +103,7 @@ sbt の詳しいドキュメントは [Scala Book](/scala3/book/scala-tools.html
 {% comment %}
 ### With IntelliJ IDEA
 
-You can skip the rest of this page and go directly to [Building a Scala Project with IntelliJ and sbt](/getting-started/intellij-track/building-a-scala-project-with-intellij-and-sbt.html)
+これ以降は読み飛ばしてそのまま [Building a Scala Project with IntelliJ and sbt](/getting-started/intellij-track/building-a-scala-project-with-intellij-and-sbt.html)を見てもいいです。
 {% endcomment %}
 
 
