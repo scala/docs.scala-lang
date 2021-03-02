@@ -63,7 +63,7 @@ Scala3 ではひとつの強力な機能として`implicit`を提供するので
 Scala は常に関数型プログラミングとオブジェクト指向プログラミングの間のフロンティアにあります。そしてScala 3 はその境界を両方に広げます。
 先に言及した型システムの変更とcontextual abtstractions の再設計によって、関数型プログラミングを以前にも増して簡単に書けるようになりました。
 同時に、次に掲げる新機能を使うと _オブジェクト指向設計_ をうまく構造化してベストプラクティスを実践しやすくなります。
-- **Pass it on**. Traits は class のように 引数をとれるようになりました。詳しくは [parameters][oo-trait-parameters] をご覧ください。 これによってtraitはソフトウェアをモジュールに分解するツールとしてよりいっそうパワフルになりました。
+- **Pass it on**. Trait は class のように 引数をとれるようになりました。詳しくは [parameters][oo-trait-parameters] をご覧ください。 これによって trait はソフトウェアをモジュールに分解するツールとしてよりいっそうパワフルになりました。
 - **Plan for extension**.  継承を意図していないクラスが継承されてしまうことはオブジェクト指向設計において長年の問題でした。この問題に対処するため Scala 3 では [open classes][oo-open]の概念を導入することで _明示的に_ クラスを継承可能であるとしめすようライブラリ作者に要求するようにしました。
 - **Hide implementation details**. ふるまいを実装した Utility traits は推論される型に含まれるべきでない場合があります。Scala 3 ではそのようなtraitsに [transparent][oo-transparent] とマークすることで継承をユーザーに公開しないようにすることができます。
 - **Composition over inheritance**. このフレーズはしばしば引用されますが、実装するのは面倒です。 しかしScala 3 の [export clauses][oo-export]を使えば楽になります。imports と対称的に、 export clauses はオブジェクトの特定のメンバーへアクセスするためのエイリアスを定義します。
