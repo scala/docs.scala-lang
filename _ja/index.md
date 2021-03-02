@@ -25,7 +25,7 @@ scala3-sections:
   - title: "More detailed information"
     links:
       - title: "Migration Guide"
-        description: "Scala 2 からScala 3 へ移行するためのガイド"
+        description: "Scala 2 から Scala 3 へ移行するためのガイド"
         icon: "fa fa-suitcase"
         link: https://scalacenter.github.io/scala-3-migration-guide/
       - title: "Guides"
