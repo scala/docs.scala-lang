@@ -10,7 +10,7 @@ language: ja
 ## Try Scala without installing anything
 
 いますぐ Scala 3 を試してみたいなら <a href="https://scastie.scala-lang.org/?target=dotty" target="_blank">ブラウザ上で動作する“Scastie” </a> を使ってみてください。
-_Scastie_ はScalaのコードがどのように動作するか試せるオンラインのプレイグラウンドです。全ての Scala のコンパイラと公開されているライブラリを使うこともできます。
+_Scastie_ は Scala のコードがどのように動作するか試せるオンラインのプレイグラウンドです。全ての Scala のコンパイラと公開されているライブラリを使うこともできます。
 
 
 ## Scala をインストールする
