@@ -22,10 +22,10 @@ Scala 3 の高品質なドキュメンテーションを作るためのいくつ
 一般に、 多くの異なった方法で私たちを支援することができます :
 - **Confused about something in any of the docs?** Issue をたててください。
 - **最新の状態を反映していないドキュメントがある** Issueをたてるか、PR をつくってください。
-- **タイポの修正やその他ちょっとした文章の改善** Create a PR.
-- **なにかを新しく追加したり大きな変更を加えたい** Great! Please open an issue and let us discuss this.
+- **タイポの修正やその他ちょっとした文章の改善** PRをつくってください。
+- **なにかを新しく追加したり大きな変更を加えたい**  議論できるようIssueをたててください。
 
-Typically, each of the different documentation projects contain links (and so does this document, in the table-of-contents pane) to edit and improve them. Additionally, below we provide you with the necessary information to get started.
+通常、ドキュメントプロジェクトのそれぞれには編集・改善用のリンクが含まれています。(このドキュメントについても同様で、目次の領域にあります。) また、コントリビューションをはじめるために必要な情報は以下に記載されています。
 
 ## Scala 3 Book
 [Scala 3 Book][scala3-book] は Alvin Alexander 氏 が書いています。 この本はScala 3 のすべての重要な機能の概説書です。これから Scala を使いはじめる読者を対象にしています。
@@ -48,7 +48,7 @@ Typically, each of the different documentation projects contain links (and so do
 
 
 ## Scala 3 Language Reference
-The [Dotty reference](https://dotty.epfl.ch/docs/reference/overview.html) will evolve into the Scala 3 language, containing  a formal presentation and detailed technical information about the various features of the language.
+The [Dotty reference](https://dotty.epfl.ch/docs/reference/overview.html) は Scala 3 になる予定です。これにはさまざまな言語仕様に関する公式のプレゼンテーションや技術的情報が含まれています。
 
 - [Sources](https://github.com/lampepfl/dotty/tree/master/docs/docs/reference)
 - [Issues](https://github.com/lampepfl/dotty/issues)
