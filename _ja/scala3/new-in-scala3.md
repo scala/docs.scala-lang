@@ -53,7 +53,7 @@ Scala 3 ではひとつの強力な機能として`implicit`を提供するの�
 
 - **Dependent function types**. Scala 2 ではすでに引数の型に応じて返り値の型を変化させることができました。Scala 3 ではこのパターンをさらに抽象化することができ、[dependent function types][types-dependent]を表現することができます。 つまり `type F = (e: Entry) => e.Key` というふうに、返り値の型が引数によって変化するように書けます。
 
-- **Polymorphic function types**. dependent function types のように Scala 2 では型パラメタを受け取るメソッドを定義することができました。 しかし、開発者はこれらのメソッドをさらに抽象化することはできませんでした。Scala 3 では、`[A] => List[A] => List[A]` といった書き方をする[polymorphic function types][types-polymorphic] を使って引数に加えて型引数をとるような関数を抽象化できます。
+- **Polymorphic function types**. dependent function types のように Scala 2 では型パラメータを受け取るメソッドを定義することができました。 しかし、開発者はこれらのメソッドをさらに抽象化することはできませんでした。Scala 3 では、`[A] => List[A] => List[A]` といった書き方をする[polymorphic function types][types-polymorphic] を使って引数に加えて型引数をとるような関数を抽象化できます。
 
 - **Type lambdas**. Scala 2 で[compiler plugin](https://github.com/typelevel/kind-projector)を使わないと表現できなかった型ラムダは Scala 3 では第一級の機能としてサポートされています。: 型ラムダは補助的な型を定義しないでも高階型引数として引数を受け渡せる型レベルの関数です。
 - **Match types**. 暗黙の型解決を使って型レベル演算をエンコードする代わりに、Scala 3 では型のパターンマッチング[matching on types][types-match]をサポートしています。 型レベルの演算を型チェックと統合することでエラーメッセージをわかりやすく改善し、また複雑なエンコーディングをしなくていいようにしています。
