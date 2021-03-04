@@ -69,10 +69,10 @@ If you’re used to a language like Java, the first class of import statements i
 These examples demonstrate some of that flexibility:
 
 ````
-import users._                            // import everything from the `users` package
+import users.*                            // import everything from the `users` package
 import users.User                         // import only the `User` class
-import users.{User, UserPreferences}      // only import the selected members
-import users.{UserPreferences => UPrefs}  // rename a member as you import it
+import users.{User, UserPreferences}      // import only two selected members
+import users.{UserPreferences as UPrefs}  // rename a member as you import it
 ````
 
 Those examples are meant to give you a taste of how the first class of `import` statements work.
