@@ -81,12 +81,9 @@ They’re explained more in the subsections that follow.
 Import statements are also used to import `given` instances into scope.
 Those are discussed at the end of this chapter.
 
-Two notes before moving on:
+A note before moving on:
 
 - Import clauses are not required for accessing members of the same package.
-- When the `_` character is used in Scala import statements, it’s similar to the `*` character in Java.
-  One reason for this difference is that in Scala, the `*` character can be used for method names.
-
 
 ### Importing one or more members
 
