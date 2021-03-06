@@ -96,11 +96,6 @@ There are two common answers, depending on your needs:
 - Use a `match` expression
 - Use a `for` expression
 
-> There are other approaches that can be used.
-> See the [Reference documentation][reference] for details on those approaches.
-
-
-
 ## Using a `match` expression
 
 One possible solution is to use a `match` expression:
