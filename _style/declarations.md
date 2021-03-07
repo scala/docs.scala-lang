@@ -241,6 +241,15 @@ lists:
       ...
     }
 
+Other possibility is to align the open-paren of the parameter lists,
+one list per line:
+
+    protected def forResource(resourceInfo: Any)
+                             (f: (JsonNode) => Any)
+                             (implicit urlCreator: URLCreator, configurer: OAuthConfiguration): Any = {
+      ...
+    }
+
 #### Higher-Order Functions
 
 It's worth keeping in mind when declaring higher-order functions the
