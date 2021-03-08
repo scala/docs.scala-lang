@@ -347,7 +347,7 @@ While this two-step process of creating an interface followed by an implementati
 With everything in place you can use your `Pizza` class and `PizzaService`:
 
 ```scala
-import PizzaService._
+import PizzaService.*
 
 val p = Pizza(Small, Thin, Seq(Cheese))
 
