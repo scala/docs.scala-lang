@@ -41,12 +41,20 @@ includeTOC: true
 
 ## Nightly builds
 
+API documentation for nightly builds is not currently available in browsable form.
+
+Jars of nightly builds, including scaladoc jars, are available from
+https://scala-ci.typesafe.com/artifactory/scala-integration/org/scala-lang/
+
+<!-- https://github.com/scala/scala-dev/issues/759
+
 * Scala 2.13.x
   * [Library API](https://www.scala-lang.org/files/archive/nightly/2.13.x/api/2.13.x/)
   * [Compiler API](https://www.scala-lang.org/files/archive/nightly/2.13.x/api/2.13.x/scala-compiler/)
 * Scala 2.12.x
   * [Library API](https://www.scala-lang.org/files/archive/nightly/2.12.x/api/2.12.x/)
   * [Compiler API](https://www.scala-lang.org/files/archive/nightly/2.12.x/api/2.12.x/scala-compiler/)
+-->
 
 ## Previous releases
 
