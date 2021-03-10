@@ -436,11 +436,10 @@ la ejecución del argumento por nombre `fun`.
 ## Actores remotos
 
 Esta sección describe el API de los actores remotos. Su principal interfaz es el objecto
-[`RemoteActor`](https://www.scala-lang.org/api/2.9.1/scala/actors/remote/RemoteActor$.html) definido
-en el paquete `scala.actors.remote`. Este objeto facilita el conjunto de métodos necesarios para crear
-y establecer conexiones a instancias de actores remotos. En los fragmentos de código que se muestran a
-continuación se asume que todos los miembros de `RemoteActor` han sido importados; la lista completa
-de importaciones utilizadas es la siguiente:
+`RemoteActor` definido en el paquete `scala.actors.remote`. Este objeto facilita el conjunto
+de métodos necesarios para crear y establecer conexiones a instancias de actores remotos. En los
+fragmentos de código que se muestran a continuación se asume que todos los miembros de
+`RemoteActor` han sido importados; la lista completa de importaciones utilizadas es la siguiente:
 
     import scala.actors._
     import scala.actors.Actor._
@@ -449,10 +448,10 @@ de importaciones utilizadas es la siguiente:
 
 ### Iniciando actores remotos
 
-Un actore remot es identificado de manera unívoca por un
-[`Symbol`](https://www.scala-lang.org/api/2.9.1/scala/Symbol.html). Este símbolo es único para la instancia
-de la máquina virual en la que se está ejecutando un actor. Un actor remoto identificado con el nombre
-`myActor` puede ser creado del siguiente modo.
+Un actore remot es identificado de manera unívoca por un `Symbol`. Este símbolo
+es único para la instancia de la máquina virual en la que se está ejecutando un
+actor. Un actor remoto identificado con el nombre `myActor` puede ser creado del
+siguiente modo.
 
     class MyActor extends Actor {
       def act() {
