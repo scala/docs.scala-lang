@@ -35,7 +35,7 @@ Install it on your system with the following instructions.
 Along with managing JVMs, `cs setup` also installs useful command line tools:
 
 - A JDK
-- The [sbt](https://www.scala-sbt.org) and [mill](https://www.lihaoyi.com/mill) build tools
+- The [sbt](https://www.scala-sbt.org) and [mill](https://com-lihaoyi.github.io/mill/) build tools
 - [Ammonite](https://ammonite.io), an enhanced REPL
 - [scalafmt](https://scalameta.org/scalafmt), the Scala formatter
 - The [Coursier CLI](https://get-coursier.io/docs/cli-overview), to install further Scala-based applications
