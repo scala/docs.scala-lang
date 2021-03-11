@@ -26,6 +26,8 @@ object CircleHelpers:
 Then you’d use that method like this:
 
 ```scala
+val aCircle = Circle(2,3,5)
+
 // without extension methods
 CircleHelpers.circumference(aCircle)
 ```
