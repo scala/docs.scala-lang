@@ -70,15 +70,15 @@ sbt compiles, runs, and tests your Scala code.
 To create a new Scala project with sbt:
 
 1. `cd` to an empty folder.
-1. Run this command `sbt new scala/hello-world.g8`.
+1. Run this command `sbt new scala/scala3.g8`.
 This pulls the ['hello-world' template][template-url] from GitHub.
 It also creates a _target_ folder, which you can ignore.
-1. When prompted, name the application `hello-world`.
-   This will create a project called "hello-world".
+1. When prompted, name the application `scala-3-project-template`.
+   This will create a project called "scala-3-project-template".
 1. Let’s take a look at what just got generated:
 
 ```
-hello-world/
+scala-3-project-template/
   project/           (sbt uses this for its own files)
     build.properties
   src/main/scala/    (all of your Scala code goes here)
@@ -189,4 +189,4 @@ Check out our [Scala community page](https://scala-lang.org/community/) for a li
     <p>Download and execute <a href="https://git.io/coursier-cli-windows-exe">the Scala installer for Windows</a> based on coursier</p>
 </div>
 
-[template-url]: https://github.com/scala/hello-world.g8
+[template-url]: https://github.com/scala/scala3.g8
