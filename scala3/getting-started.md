@@ -72,12 +72,12 @@ To create a new Scala project with sbt:
 1. Run this command `sbt new scala/scala3.g8`.
 This pulls the ['hello-world' template][template-url] from GitHub.
 It also creates a _target_ folder, which you can ignore.
-1. When prompted, name the application `scala-3-project-template`.
-   This will create a project called "scala-3-project-template".
+1. When prompted, name the application `hello world`.
+   This will create a project called "hello-world".
 1. Let’s take a look at what just got generated:
 
 ```
-scala-3-project-template/
+hello-world/
   project/           (sbt uses this for its own files)
     build.properties
   src/main/scala/    (all of your Scala code goes here)
