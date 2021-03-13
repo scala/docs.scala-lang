@@ -75,10 +75,7 @@ These are working directories that sbt uses.
 
 As you can see, creating and running a little Scala project with sbt takes just a few simple steps.
 
-{% comment %}
-NOTE: For sbt version < 1.5.0, it is required to have the following line in a *project/plugins.sbt* file:
-addSbtPlugin("ch.epfl.lamp" % "sbt-dotty" % "{{ site.scala-3-plugin-version }}")
-{% endcomment %}
+>For sbt version < 1.5.0, it is required to have the following line in a *project/plugins.sbt* file: `addSbtPlugin("ch.epfl.lamp" % "sbt-dotty" % "`{{ site.scala-3-plugin-version }}`")`
 
 
 ### Using sbt with larger projects
