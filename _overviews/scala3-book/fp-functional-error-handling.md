@@ -320,5 +320,3 @@ This section was long, so let’s give it a quick review:
 - Options can also be used for optional constructor or method parameters
 
 
-
-[reference]: {{ site.scala3ref }}/overview.html
