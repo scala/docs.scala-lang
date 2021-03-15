@@ -81,11 +81,10 @@ They’re explained more in the subsections that follow.
 Import statements are also used to import `given` instances into scope.
 Those are discussed at the end of this chapter.
 
-Two notes before moving on:
+A note before moving on:
 
-- Import clauses are not required for accessing members of the same package.
-- When the `_` character is used in Scala import statements, it’s similar to the `*` character in Java.
-  One reason for this difference is that in Scala, the `*` character can be used for method names.
+> Import clauses are not required for accessing members of the same package.
+
 
 
 ### Importing one or more members
@@ -113,7 +112,7 @@ import java.io.{File, IOException, FileNotFoundException}
 When you want to import everything from the *java.io* package, use this syntax:
 
 ```scala
-import java.io._
+import java.io.*
 ```
 
 
@@ -123,7 +122,7 @@ Sometimes it can help to rename entities when you import them to avoid name coll
 For instance, if you want to use the Scala `List` class and also the *java.util.List* class at the same time, you can rename the *java.util.List* class when you import it:
 
 ```scala
-import java.util.{List => JavaList}
+import java.util.{List as JavaList}
 ```
 
 Now you use the name `JavaList` to refer to that class, and use `List` to refer to the Scala list class.
@@ -131,7 +130,7 @@ Now you use the name `JavaList` to refer to that class, and use `List` to refer 
 You can also rename multiple members at one time using this syntax:
 
 ```scala
-import java.util.{Date => JDate, HashMap => JHashMap, _}
+import java.util.{Date as JDate, HashMap as JHashMap, *}
 ```
 
 That line of code says, “Rename the `Date` and `HashMap` classes as shown, and import everything else in the _java.util_ package without renaming any other members.”
@@ -143,7 +142,7 @@ You can also *hide* members during the import process.
 This `import` statement hides the *java.util.Random* class, while importing everything else in the *java.util* package:
 
 ```scala
-import java.util.{Random => _, _}
+import java.util.{Random as _, *}
 ```
 
 If you try to access the `Random` class it won’t work, but you can access all other members from that package:
@@ -158,8 +157,7 @@ new ArrayList        // works
 To hide multiple members during the import process, list them before using the final wildcard import:
 
 ```scala
-scala> import java.util.{List => _, Map => _, Set => _, _}
-import java.util.{List=>_, Map=>_, Set=>_, _}
+scala> import java.util.{List as _, Map as _, Set as _, *}
 ```
 
 Once again those classes are hidden, but you can use all other classes in *java.util*:
@@ -223,13 +221,13 @@ When you want to import members in a way similar to the Java “static import”
 Use this syntax to import all static members of the Java `Math` class:
 
 ```scala
-import java.lang.Math._
+import java.lang.Math.*
 ```
 
 Now you can access static `Math` class methods like `sin` and `cos` without having to precede them with the class name:
 
 ```scala
-import java.lang.Math._
+import java.lang.Math.*
 
 val a = sin(0)    // 0.0
 val b = cos(PI)   // -1.0
@@ -240,8 +238,8 @@ val b = cos(PI)   // -1.0
 
 Two packages are implicitly imported into the scope of all of your source code files:
 
-- java.lang._
-- scala._
+- java.lang.*
+- scala.*
 
 The Scala `Predef` object is also imported by default.
 
@@ -256,7 +254,7 @@ In the rare event there’s a naming conflict and you need to import something f
 ```
 package accounts
 
-import _root_.users._
+import _root_.accounts.*
 ```
 
 
@@ -273,22 +271,22 @@ object A:
   def f(using TC) = ???
 
 object B:
-  import A._       // import all non-given members
+  import A.*       // import all non-given members
   import A.given   // import the given instance
 ```
 
-In this code, the `import A._` clause of object `B` imports all members of `A` *except* the `given` instance `tc`.
+In this code, the `import A.*` clause of object `B` imports all members of `A` *except* the `given` instance `tc`.
 Conversely, the second import, `import A.given`, imports *only* that `given` instance.
 The two `import` clauses can also be merged into one:
 
 ```scala
 object B:
-  import A.{given, _}
+  import A.{given, *}
 ```
 
 ### Discussion
 
-The wildcard selector `_` brings all definitions other than givens or extensions into scope, whereas a `given` selector brings all *givens*---including those resulting from extensions---into scope.
+The wildcard selector `*` brings all definitions other than givens or extensions into scope, whereas a `given` selector brings all *givens*---including those resulting from extensions---into scope.
 
 These rules have two main benefits:
 
@@ -368,7 +366,7 @@ object MonthConversions:
 To import those givens into the current scope, use these two `import` statements:
 
 ```scala
-import MonthConversions._
+import MonthConversions.*
 import MonthConversions.{given MonthConverter[?]}
 ```
 

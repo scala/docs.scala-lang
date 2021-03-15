@@ -270,7 +270,7 @@ In regards to the first point, Java classes and libraries are used in Scala appl
 For instance, in Scala you can read files with a Java `BufferedReader` and `FileReader`:
 
 ```scala
-import java.io._
+import java.io.*
 val br = BufferedReader(FileReader(filename))
 // read the file with `br` ...
 ```
@@ -280,7 +280,7 @@ Using Java code in Scala is generally seamless.
 Java collections can also be used in Scala, and if you want to use Scala’s rich collection class methods with them, you can convert them with just a few lines of code:
 
 ```scala
-import scala.jdk.CollectionConverters._
+import scala.jdk.CollectionConverters.*
 val scalaList: Seq[Integer] = JavaClass.getJavaList().asScala.toSeq
 ```
 
