@@ -26,7 +26,7 @@ object CircleHelpers:
 Then you’d use that method like this:
 
 ```scala
-val aCircle = Circle(2,3,5)
+val aCircle = Circle(2, 3, 5)
 
 // without extension methods
 CircleHelpers.circumference(aCircle)
@@ -62,6 +62,5 @@ extension (c: Circle)
   def diameter: Double = c.radius * 2
   def area: Double = math.Pi * c.radius * c.radius
 ```
-
 
 
