@@ -254,7 +254,7 @@ It is important to point out that the implementation of `notify` can only safely
 ### Using the Component
 Finally, the following code illustrates how to use our `SensorReader` component:
 ```scala
-import SensorReader._
+import SensorReader.*
 
 // setting up a network
 val s1 = Sensor("sensor1")

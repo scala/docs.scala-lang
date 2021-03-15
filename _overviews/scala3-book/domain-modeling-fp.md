@@ -80,9 +80,9 @@ A pizza can be thought of as a _compound_ container of the different attributes 
 We can use a `case` class to describe that a `Pizza` consists of a `crustSize`, `crustType`, and potentially multiple `Topping`s:
 
 ```scala
-import CrustSize._
-import CrustType._
-import Topping._
+import CrustSize.*
+import CrustType.*
+import Topping.*
 
 case class Pizza(
   crustSize: CrustSize,
