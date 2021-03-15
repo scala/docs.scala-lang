@@ -83,7 +83,7 @@ Those are discussed at the end of this chapter.
 
 A note before moving on:
 
-- Import clauses are not required for accessing members of the same package.
+> Import clauses are not required for accessing members of the same package.
 
 ### Importing one or more members
 
