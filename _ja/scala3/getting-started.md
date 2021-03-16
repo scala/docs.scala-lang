@@ -35,7 +35,7 @@ Coursier はシステムに JVM と Scala のツールがインストールさ�
 JVM の管理に加えて、 `cs setup` コマンドは次のような便利なコマンドラインツールもインストールする。:
 
 - JDK
-- ビルドツール [sbt](https://www.scala-sbt.org) と [mill](https://www.lihaoyi.com/mill) 
+- ビルドツール [sbt](https://www.scala-sbt.org) と [mill](https://com-lihaoyi.github.io/mill/) 
 - [Ammonite](https://ammonite.io), 高機能 REPL
 - [scalafmt](https://scalameta.org/scalafmt), the Scala formatter
 - [Coursier CLI](https://get-coursier.io/docs/cli-overview), Scala で書かれたアプリケーションをインストールできる
