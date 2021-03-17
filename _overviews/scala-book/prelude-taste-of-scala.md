@@ -521,7 +521,11 @@ price: scala.math.BigDecimal = 123.45
 volume: Long = 101202303
 ```
 
-Tuples are nice for those times when you want to put a little “bag” of things together for a little while.
+Tuples are nice for those times when you want to quickly (and temporarily) group some things together.
+If you notice that you are using the same tuples multiple times, it could be useful to declare a dedicated case class, such as:
+```scala
+case class StockInfo(symbol: String, price: BigDecimal, volume: Long)
+```
 
 
 
@@ -549,7 +553,6 @@ If you like what you’ve seen so far, we hope you’ll like the rest of the boo
 ## A bit of background
 
 Scala was created by [Martin Odersky](https://en.wikipedia.org/wiki/Martin_Odersky), who studied under [Niklaus Wirth](https://en.wikipedia.org/wiki/Niklaus_Wirth), who created Pascal and several other languages. Mr. Odersky is one of the co-designers of Generic Java, and is also known as the “father” of the `javac` compiler.
-
 
 
 
