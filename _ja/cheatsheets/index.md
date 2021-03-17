@@ -5,7 +5,7 @@ title: Scala Cheatsheet
 partof: cheatsheet
 
 by: Kenji Ohtsuka
-about: Thanks to <a href="https://brenocon.com/">Brendan O'Connor</a>. このチートシートは Scala 構文 のクイックリファレンスとして作成されました。 Licensed by Brendan O'Connor under a CC-BY-SA 3.0 license.
+about: Thanks to <a href="https://brenocon.com/">Brendan O'Connor</a>. このチートシートは Scala 構文 のクイックリファレンスとして作成された。 Licensed by Brendan O'Connor under a CC-BY-SA 3.0 license.
 
 language: ja
 ---

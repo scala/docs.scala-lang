@@ -153,7 +153,7 @@ enum Topping:
 Once you have an enum you can use it in all of the ways you normally use a trait, class, or object:
 
 ```scala
-import CrustSize._
+import CrustSize.*
 val currentCrustSize = Small
 
 // enums in a `match` expression

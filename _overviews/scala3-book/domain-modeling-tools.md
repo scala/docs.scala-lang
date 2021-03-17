@@ -165,7 +165,7 @@ While analyzing the requirements you’ve seen that you need to be able to const
 One way to handle this situation in an OOP style is with this code:
 
 ```scala
-import java.time._
+import java.time.*
 
 // [1] the primary constructor
 class Student(
@@ -250,7 +250,7 @@ StringUtil.truncate("Chuck Bartowski", 5)  // "Chuck"
 Importing in Scala is very flexible, and allows us to import _all_ members of an object:
 
 ```scala
-import StringUtils._
+import StringUtils.*
 truncate("Chuck Bartowski", 5)       // "Chuck"
 containsWhitespace("Sarah Walker")   // true
 isNullOrEmpty("John Casey")          // false
@@ -287,7 +287,7 @@ Companion objects are used for methods and values that are not specific to insta
 For instance, in the following example the class `Circle` has a member named `area` which is specific to each instance, and its companion object has a method named `calculateArea` that’s (a) not specific to an instance, and (b) is available to every instance:
 
 ```scala
-import scala.math._
+import scala.math.*
 
 case class Circle(radius: Double):
   def area: Double = Circle.calculateArea(radius)
@@ -475,7 +475,7 @@ enum Topping:
 To use them in other code, first import them, and then use them:
 
 ```scala
-import CrustSize._
+import CrustSize.*
 val currentCrustSize = Small
 ```
 

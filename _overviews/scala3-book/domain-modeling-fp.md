@@ -80,9 +80,9 @@ A pizza can be thought of as a _compound_ container of the different attributes 
 We can use a `case` class to describe that a `Pizza` consists of a `crustSize`, `crustType`, and potentially multiple `Topping`s:
 
 ```scala
-import CrustSize._
-import CrustType._
-import Topping._
+import CrustSize.*
+import CrustType.*
+import Topping.*
 
 case class Pizza(
   crustSize: CrustSize,
@@ -347,7 +347,7 @@ While this two-step process of creating an interface followed by an implementati
 With everything in place you can use your `Pizza` class and `PizzaService`:
 
 ```scala
-import PizzaService._
+import PizzaService.*
 
 val p = Pizza(Small, Thin, Seq(Cheese))
 

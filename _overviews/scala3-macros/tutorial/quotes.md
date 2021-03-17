@@ -417,7 +417,7 @@ Though it looks like a splice takes an expression as argument, it actually takes
 Therefore we could actually write it explicitly as `${ (using q) => ... }`, this might be useful when debugging to avoid generated names for these scopes.
 
 The method `scala.quoted.quotes` provides a simple way to use the current `Quotes` without naming it.
-It is usually imported along with the `Quotes` using `import scala.quoted._`.
+It is usually imported along with the `Quotes` using `import scala.quoted.*`.
 
 ```scala
 ${ (using q1) => body(using q1) }
@@ -487,7 +487,7 @@ inline def setFor[T]: Set[T] =
   ${ setForCode[T] }
 
 def setForCode[T: Type](using Quotes): Expr[Set[T]] =
-  import scala.collection.immutable._
+  import scala.collection.immutable.*
   Expr.summon[Ordering[T]] match
     case Some(ord) => '{ TreeSet.empty[T](using $ord) }
     case _ => '{ HashSet.empty[T] }

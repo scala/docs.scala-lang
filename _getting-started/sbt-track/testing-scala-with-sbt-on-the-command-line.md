@@ -11,7 +11,7 @@ redirect_from: "/getting-started-sbt-track/testing-scala-with-sbt-on-the-command
 
 There are multiple libraries and testing methodologies for Scala,
 but in this tutorial, we'll demonstrate one popular option from the ScalaTest framework
-called [FunSuite](https://www.scalatest.org/getting_started_with_fun_suite).
+called [AnyFunSuite](https://www.scalatest.org/scaladoc/3.2.2/org/scalatest/funsuite/AnyFunSuite.html).
 We assume you know [how to create a Scala project with sbt](getting-started-with-scala-and-sbt-on-the-command-line.html).
 
 ## Setup
@@ -46,9 +46,9 @@ sbt test
 named after the object we're testing.
 
 ```
-  import org.scalatest.FunSuite
+  import org.scalatest.funsuite.AnyFunSuite
 
-  class CubeCalculatorTest extends FunSuite {
+  class CubeCalculatorTest extends AnyFunSuite {
       test("CubeCalculator.cube") {
           assert(CubeCalculator.cube(3) === 27)
       }
@@ -58,9 +58,9 @@ named after the object we're testing.
 Let's go over this line by line.
 
 * `class CubeCalculatorTest` means we are testing the object `CubeCalculator`
-* `extends FunSuite` lets us use functionality of ScalaTest's FunSuite class
+* `extends AnyFunSuite` lets us use functionality of ScalaTest's AnyFunSuite class
 such as the `test` function
-* `test` is function that comes from FunSuite that collects
+* `test` is function that comes from AnyFunSuite that collects
 results from assertions within the function body.
 * `"CubeCalculator.cube"` is a name for the test. You can call it anything but
 one convention is "ClassName.methodName".
@@ -72,9 +72,9 @@ indeed 27. The `===` is part of ScalaTest and provides clean error messages.
 1. Add another test block with its own `assert` statement that checks for the cube of `0`.
 
     ```
-      import org.scalatest.FunSuite
+      import org.scalatest.funsuite.AnyFunSuite
     
-      class CubeCalculatorTest extends FunSuite {
+      class CubeCalculatorTest extends AnyFunSuite {
           test("CubeCalculator.cube 3 should be 27") {
               assert(CubeCalculator.cube(3) === 27)
           }

@@ -75,10 +75,7 @@ These are working directories that sbt uses.
 
 As you can see, creating and running a little Scala project with sbt takes just a few simple steps.
 
-{% comment %}
-NOTE: This currently requires this line in a *project/plugins.sbt* file:
-addSbtPlugin("ch.epfl.lamp" % "sbt-dotty" % "{{ site.scala-3-plugin-version }}")
-{% endcomment %}
+>For sbt version < 1.5.0, it is required to have the following line in a *project/plugins.sbt* file: `addSbtPlugin("ch.epfl.lamp" % "sbt-dotty" % "{{ site.scala-3-plugin-version }}")`
 
 
 ### Using sbt with larger projects
@@ -250,7 +247,7 @@ While sbt is widely used, there are other tools you can use to build Scala proje
 - [Ant](https://ant.apache.org/)
 - [Gradle](https://gradle.org/)
 - [Maven](https://maven.apache.org/)
-- [Mill](https://www.lihaoyi.com/mill/)
+- [Mill](https://com-lihaoyi.github.io/mill/)
 
 #### Coursier
 

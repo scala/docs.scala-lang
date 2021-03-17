@@ -17,7 +17,7 @@ import scala.collection.mutable.ArrayBuffer
 enum Topping:
   case Cheese, Pepperoni, Mushrooms
 
-import Topping._
+import Topping.*
 class Pizza:
   val toppings = ArrayBuffer[Topping]()
 

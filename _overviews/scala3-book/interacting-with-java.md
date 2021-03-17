@@ -57,7 +57,7 @@ You can convert that Java list to a Scala `Seq`, using the conversion utilities 
 
 ```scala
 // scala
-import scala.jdk.CollectionConverters._
+import scala.jdk.CollectionConverters.*
 import java.util.List
 
 def testList = 
@@ -103,7 +103,7 @@ But by using the _scala.jdk.OptionConverters_ methods, you can convert them to S
 
 ```scala
 import java.util.Optional
-import scala.jdk.OptionConverters._
+import scala.jdk.OptionConverters.*
 
 val optionalString = JavaClass.oString         // Optional[foo]
 val optionString = optionalString.toScala      // Some(foo)

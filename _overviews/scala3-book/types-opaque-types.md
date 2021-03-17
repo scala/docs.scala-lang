@@ -85,7 +85,7 @@ Directly using `LogarithmsImpl` would make the equality `Logarithm = Double` vis
 For example:
 
 ```scala
-import LogarithmsImpl._
+import LogarithmsImpl.*
 val l: Logarithm = make(1.0)
 val d: Double = l // type checks AND leaks the equality!
 ```
@@ -123,7 +123,7 @@ The type equality `Logarithm = Double` can be used to implement the methods (lik
 However, outside of the module the type `Logarithm` is completely encapsulated, or “opaque.” To users of `Logarithm` it is not possible to discover that `Logarithm` is actually implemented as a `Double`:
 
 ```scala
-import Logarithms._
+import Logarithms.*
 val l2 = Logarithm(2.0)
 val l3 = Logarithm(3.0)
 println((l2 * l3).toDouble) // prints 6.0

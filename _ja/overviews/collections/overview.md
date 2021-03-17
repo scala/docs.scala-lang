@@ -60,7 +60,7 @@ Scala のコレクションは、体系的に可変および不変コレクシ�
 
 [![Mutable collection hierarchy][3]][3]
 
-図の伝説:
+図の凡例:
 
 [![Graph legend][4]][4]
 
