@@ -129,7 +129,7 @@ In order to allow this, the base class needs to be marked as `open`:
 ```scala
 open class Person(name: String)
 ```
-Marking classes with [`open`](open) is a new feature of Sala 3. Having to explicitly mark classes as open avoids many common pitfalls in OO design.
+Marking classes with [`open`][open] is a new feature of Sala 3. Having to explicitly mark classes as open avoids many common pitfalls in OO design.
 In particular, it requires library designers to explicitly plan for extension and for instance document the classes that are marked as open with additional extension contracts.
 
 {% comment %}
