@@ -150,10 +150,11 @@ the formal evaluation phase.
 
 ### Merging the proposal
 
-If the SIP is accepted, the committee will propose a release date to the
-compiler maintainers, where the role of the committee ends. Accepted SIPs will
-then be merged under a flag. When SIPs introduce intricate changes and they
-cannot be merged under a flag, the compiler maintainers will merge it directly.
+If the SIP is accepted, the committee will propose a release date to
+the compiler maintainers, where the role of the committee ends.
+(Compiler maintainers may choose to merge changes under a flag
+initially, for testing, or directly, as they deem appropriate,
+taking committee and community feedback into consideration.)
 
 ## Structure of the process
 
