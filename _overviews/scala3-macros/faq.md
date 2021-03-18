@@ -27,9 +27,9 @@ x match
 ## How do I summon all types of a tuple type?
 If I have a type `(T1, T2, ...)` how do I generate the term for `(summon[T1], summon[T2], ...)` or get the individual expressions with the summoned values?
 
-Depending on you use case the way you will summon them will vary.
-The code you will need will depend on the kind of output you want (`Expr[Tuple]`, `List[Expr[Any]]`, or something else) and how you need errors to be reported.
-Here are two examples that should give you the basic skeleton for your variant of this code.
+Depending on your use case the way you will summon them will vary.
+In particular, the code you will need depends on the kind of output you want (`Expr[Tuple]`, `List[Expr[Any]]`, or something else) and how you need errors to be reported.
+Here are two examples that should give you the basic skeleton for two different variant of this code.
 
 ```scala
   def summonAllInList[T](using Type[T])(using Quotes): List[Expr[Any]] = {
@@ -55,9 +55,11 @@ Here are two examples that should give you the basic skeleton for your variant o
   }
 ```
 
-## How do I summon an expression for statically unknown type
+## How do I summon an expression for statically unknown types?
 
-If you have a `TypeRepr` use
+You can summon an expression from either a `TypeRepr` or a `Type` as shown below.
+
+If you have a `TypeRepr` use:
 ```scala
 val tpe: TypeRepr = ...
 Implicits.search(tpe) match
@@ -65,7 +67,7 @@ Implicits.search(tpe) match
   case _ =>
 ```
 
-If there you have a `Type[_]` use
+Instead, if you have a `Type[_]` use:
 ```scala
 val tpe: Type[_] = ...
 tpe match
