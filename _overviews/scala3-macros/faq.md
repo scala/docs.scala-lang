@@ -54,3 +54,21 @@ Here are two examples that should give you the basic skeleton for your variant o
       case _ => None
   }
 ```
+
+## How do I summon an expression for statically unknown type
+
+If you have a `TypeRepr` use
+```scala
+val tpe: TypeRepr = ...
+Implicits.search(tpe) match
+  case result: ImplicitSearchSuccess => result.tree
+  case _ =>
+```
+
+If there you have a `Type[_]` use
+```scala
+val tpe: Type[_] = ...
+tpe match
+  // Given the name `a` to the type in tpe and provide a given `Type[a]`
+  case '[a] => Expr.summon[a]
+```
