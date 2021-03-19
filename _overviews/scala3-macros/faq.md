@@ -71,6 +71,6 @@ Instead, if you have a `Type[_]` use:
 ```scala
 val tpe: Type[_] = ...
 tpe match
-  // Given the name `a` to the type in tpe and provide a given `Type[a]`
+  // (1) Use `a` as the name of the unknown type and (2) bring a given `Type[a]` into scope
   case '[a] => Expr.summon[a]
 ```
