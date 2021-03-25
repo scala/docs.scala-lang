@@ -13,7 +13,7 @@ The Scala convention is to use a single letter (like `A`) to name those type par
 The type can then be used inside the class as needed for method instance parameters, or on return types:
 
 ```scala
-// here we delare the type parameter A
+// here we declare the type parameter A
 //          v
 class Stack[A]:
   private var elements: List[A] = Nil
