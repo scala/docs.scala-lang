@@ -28,7 +28,7 @@ The full imported API can be found here: [Reflection](https://dotty.epfl.ch/api/
 For example to find what is a `Term`, we can see in the hierarchy that it is a subtype of `Statement` which is a subtype of `Tree`.
 If we look into `TermMethods` we will find all the extension methods that are defined for `Term` such as `Term.tpe` which returns a `Type`.
 As it is a subtype of `Tree` we can also look into the `TreeMethods` to find more methods such as `Tree.pos`.
-Each type also a module with some _static-ish_ methods, for example in the [`TypeReprModule`](https://dotty.epfl.ch/api/scala/quoted/Quotes$reflectModule$TypeReprModule.html) we can find the method `TypeRepr.of[T]` with will create an instance of `Type` containing `T`.
+Each type is also a module with some _static-ish_ methods, for example in the [`TypeReprModule`](https://dotty.epfl.ch/api/scala/quoted/Quotes$reflectModule$TypeReprModule.html) we can find the method `TypeRepr.of[T]` with will create an instance of `Type` containing `T`.
 
 
 ## Relation with expressions
