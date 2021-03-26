@@ -11,7 +11,7 @@ It provides a view on the *Typed Abstract Syntax Trees* and their properties suc
 
 ## How to use the API
 
-Accessing this API need and import that depends the current `Quotes`.
+Accessing this API needs an import that depends the current `Quotes`.
 We can use `scala.quoted.quotes` to import it.
 
 ```scala
