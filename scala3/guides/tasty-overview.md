@@ -117,7 +117,7 @@ As you can imagine, having a complete representation of your code has [many bene
 - Tasty makes an excellent foundation for a new generation of [reflection-based macros][macros].
 - Optimizers and analyzers can use it for deep code analysis and advanced code generation.
 
-In a related note, Scala 2.13.5 has a TASTy reader, and the Scala 3 compiler can also read the 2.13 “Pickle” format. The [Compatibility Reference](https://scalacenter.github.io/scala-3-migration-guide/docs/compatibility.html) in the Scala 3 Migration Guide summarizes the benefits of this cross-compiling capability:
+In a related note, Scala 2.13.5 has a TASTy reader, and the Scala 3 compiler can also read the 2.13 “Pickle” format. The [Compatibility Reference](https://scalacenter.github.io/scala-3-migration-guide/docs/general/compatibility.html) in the Scala 3 Migration Guide summarizes the benefits of this cross-compiling capability:
 
 > “You can have a Scala `2.13` module that depends on a Scala `3.0.0-RC1` module, and the latter can even depend on another Scala `2.13` module. >Cross-compatibility will not restrain you from using the exciting new features of Scala 3.0.
 > In short, we have backward and forward compatibility and so migration can happen gradually and in any order.”
