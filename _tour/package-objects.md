@@ -48,7 +48,7 @@ package object fruits {
 }
 ```
 
-As an example of how the use site looks, the following object `PrintPlanted` imports `planted` and `showFruit` in exactly the same
+As an example of how to use this, the following object `PrintPlanted` imports `planted` and `showFruit` in exactly the same
 way it imports class `Fruit`, using a wildcard import on package gardening.fruits:
 
 ```
