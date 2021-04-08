@@ -135,8 +135,8 @@ This step has to be performed only once per `groupId` you want to have.
 
 ### Create a PGP Key Pair
 
-Sonatype [requires](https://central.sonatype.org/pages/requirements.html) that you sign the published files
-with PGP. Follow the instructions [here](https://central.sonatype.org/pages/working-with-pgp-signatures.html)
+Sonatype [requires](https://central.sonatype.org/publish/requirements) that you sign the published files
+with PGP. Follow the instructions [here](https://central.sonatype.org/publish/requirements/gpg)
 to generate a key pair and to distribute your public key to a key server.
 
 This step has to be performed only once per person.
@@ -152,7 +152,7 @@ addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "2.4")
 addSbtPlugin("com.jsuereth" % "sbt-pgp" % "1.1.0")
 ~~~
 
-And make sure your build fulfills the [Sonatype requirements](https://central.sonatype.org/pages/requirements.html)
+And make sure your build fulfills the [Sonatype requirements](https://central.sonatype.org/publish/requirements)
 by defining the following settings:
 
 ~~~ scala
