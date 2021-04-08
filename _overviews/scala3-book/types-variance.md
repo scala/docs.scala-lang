@@ -146,4 +146,4 @@ In this section, we have encountered three different kinds of variance:
   This also holds for immutable collections.
 - **Consumers** are typically contravariant, and mark their type parameter with `-`.
 - Types that are **both** producers and consumers have to be invariant, and do not require any marking on their type parameter.
-  Immutable collections like `Array` fall into this category.
+  Mutable collections like `Array` fall into this category.
