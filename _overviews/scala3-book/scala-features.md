@@ -209,14 +209,16 @@ Scala is a functional programming (FP) language, meaning:
 ### A pure OOP language
 
 Scala is a _pure_ object-oriented programming (OOP) language.
-Every variable is an object, and every “operator” is a method.
+Every variable is an object and every “operator” is a method.
 
 In Scala, all types inherit from a top-level class `Any`, whose immediate children are `AnyVal` (_value types_, such as `Int` and `Boolean`) and `AnyRef` (_reference types_, as in Java).
 This means that the Java distinction between primitive types and boxed types (e.g. `int` vs. `Integer`) isn’t present in Scala.
 Boxing and unboxing is completely transparent to the user.
 
 {% comment %}
-Add the “types hierarchy” image here?
+- AnyRef above is wrong in case of strict null checking, no? On the other hand, maybe too much information to state this here
+- probably not worth to mention (too advanced at this point) there is AnyKind
+- Add the “types hierarchy” image here?
 {% endcomment %}
 
 
@@ -226,7 +228,7 @@ Add the “types hierarchy” image here?
 NOTE: This text in the first line comes from this slide: https://twitter.com/alexelcu/status/996408359514525696
 {% endcomment %}
 
-The essence of Scala is the fusion of functional programming and object-oriented programming in a typed settings:
+The essence of Scala is the fusion of functional programming and object-oriented programming in a typed setting:
 
 - Functions for the logic
 - Objects for the modularity
