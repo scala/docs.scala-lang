@@ -202,8 +202,8 @@ Scala is a functional programming (FP) language, meaning:
 - Lambdas are built in
 - Everything in Scala is an expression that returns a value
 - Syntactically it’s easy to use immutable variables, and their use is encouraged
-- It has a wealth of immutable collections classes in the standard library
-- Those collections classes come with dozens of functional methods: they don’t mutate the collection, but instead return an updated copy of the data
+- It has a wealth of immutable collection classes in the standard library
+- Those collection classes come with dozens of functional methods: they don’t mutate the collection, but instead return an updated copy of the data
 
 
 ### A pure OOP language
