@@ -332,7 +332,7 @@ At a “sea level” view of the details---i.e., the language features programme
     - Export clauses provide a simple and general way to express aggregation, which can replace the previous facade pattern of package objects inheriting from classes
     - The procedure syntax has been dropped, and the varargs syntax has been changed, both to make the language more consistent
     - The `@infix` annotation makes it obvious how you want a method to be applied
-    - The `@targetName` method annotation defines an alternate name for the method, improving Java interoperability, and letting you provide aliases for symbolic operators
+    - The [`@targetName`]({{ site.scala3ref }}/other-new-features/targetName.html) method annotation defines an alternate name for the method, improving Java interoperability, and letting you provide aliases for symbolic operators
 
 It would take too much space to demonstrate all of those features here, but follow the links in the items above to see those features in action.
 All of these features are discussed in detail in the *New*, *Changed*, and *Dropped* features pages in the [Overview documentation][reference].
