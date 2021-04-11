@@ -136,7 +136,7 @@ Because Scala is considered to be a [strong, statically-typed language](https://
 - Method type declarations tell readers what the method does, and help serve as documentation
 - Types make your code easier to maintain
 - Scalability: types help ensure correctness across arbitrarily large applications and development teams
-- Strong typing enables features like [contextual abstraction]({{ site.scala3ref }}/contextual/motivation.html) where the compiler kind of writes code for you based on type definitions and a given context.
+- Strong typing in combination with excellent inference enables mechanisms like [contextual abstraction]({{ site.scala3ref }}/contextual/motivation.html) that allows you to omit boilerplate code which can be inferred by the compiler based on type definitions and a given context (e.g. method arguments for implicit parameters).
 
 {% comment %}
 In that list:
