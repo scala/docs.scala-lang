@@ -85,7 +85,7 @@ The Scala community build now runs on JDK 16.  We shipped improved JDK 16 suppor
 
 ## JDK 17 compatibility notes
 
-JDK 17 prereleases are already available. The final release is [targeted](https://openjdk.java.net/projects/jdk/16/) for September 2021.  JDK 17 will be an LTS release.
+JDK 17 prereleases are already available. The final release is [targeted](https://openjdk.java.net/projects/jdk/17/) for September 2021.  JDK 17 will be an LTS release.
 
 The Scala community build doesn't run on JDK 17 yet. We will add it once 17 is closer to release.
 
