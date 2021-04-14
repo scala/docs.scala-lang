@@ -39,7 +39,7 @@ It's statically generated from [Markdown](https://en.wikipedia.org/wiki/Markdown
 
 The markdown syntax being used supports [Maruku](https://github.com/bhollis/maruku) extensions, and has automatic syntax highlighting, without the need for any tags.
 
-Additionally [tut](https://github.com/tpolecat/tut) is used during pull requests to validate Scala code blocks. To use this feature you must use the backtick notation as documented by tut. Note that only validation is done. The output files from tut are not used in the building of the tutorial. Either use `tut` or `tut:fail` for your code blocks.
+Additionally [mdoc](https://github.com/scalameta/mdoc) is used during pull requests to validate Scala code blocks. To use this feature you must use the backtick notation as documented by mdoc. Note that only validation is done. The output files from mdoc are not used in the building of the tutorial. Use `mdoc` or `mdoc:fail` for your code blocks.
 
 ## Submitting Docs
 
