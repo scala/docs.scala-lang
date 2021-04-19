@@ -721,7 +721,7 @@ Examples:
 5. [Scalaz Futures][5]
 
   [1]: https://www.microsoft.com/download/en/details.aspx?id=19957 "NETAsync"
-  [2]: https://twitter.github.com/scala_school/finagle.html "Finagle"
+  [2]: https://twitter.github.io/scala_school/finagle.html "Finagle"
   [3]: https://doc.akka.io/docs/akka/current/futures.html "AkkaFutures"
   [4]: https://web.archive.org/web/20140814211520/https://www.scala-lang.org/api/2.9.3/scala/actors/Future.html "SActorsFutures"
   [5]: https://code.google.com/p/scalaz/ "Scalaz"

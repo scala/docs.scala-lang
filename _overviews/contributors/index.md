@@ -106,7 +106,7 @@ For reference, here is our complete
 ## Publish a Release
 
 Most build tools resolve third-party dependencies by looking them up on public repositories such as
-[Maven Central](https://search.maven.org/) or [Bintray](https://bintray.com/). These repositories host
+[Maven Central](https://search.maven.org/). These repositories host
 the library binaries as well as additional information such as the library authors, the open source
 license, and the dependencies of the library itself. Each release of a library is identified by
 a `groupId`, an `artifactId`, and a `version` number. For instance, consider the following dependency
