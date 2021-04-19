@@ -22,7 +22,7 @@ Sometimes new JVM and JDK (Java Development Kit) versions require us to update S
 
 Even when a version combination isn't listed as supported, most features may still work.  (But Scala 2.12+ definitely doesn't work at all on JDK 6 or 7.)
 
-In general, Scala works on JDK 11+, including GraalVM, but it probably won't take special advantage of features that were added after JDK 8. See [below](#jdk-11-compatibility-notes).
+In general, Scala works on JDK 11+, including [GraalVM](https://www.graalvm.org/docs/reference-manual/scala/), but it probably won't take special advantage of features that were added after JDK 8. See [below](#jdk-11-compatibility-notes).
 
 Lightbend offers [commercial support](https://www.lightbend.com/lightbend-platform-subscription) for Scala. The linked page includes contact information for inquiring about supported and recommended versions.
 
@@ -31,6 +31,8 @@ Lightbend offers [commercial support](https://www.lightbend.com/lightbend-platfo
 We generally recommend JDK 8 or 11 for *compiling* Scala code. Since the JVM tends to be backward compatible, it is usually safe to use a newer JVM for *running* your code, especially if you are not using JVM features designated "experimental" or "unsafe".
 
 If you compile on JDK 11+ but have users on JDK 8, additional care is needed to avoid using APIs and features that don't exist in 8. Therefore, compiling on 8 may be the safer choice. Some Scala developers use JDK 11+ for their daily work but do release builds on JDK 8.
+
+Additionally, you can also run your scala application on [GraalVM](https://www.graalvm.org/docs/reference-manual/scala/) which is a JVM. GraalVM performs well on the Scala benchmarks, and it benefits from GraalVM runtime and runs faster too.
 
 ## Long Term Support (LTS) versions
 
@@ -48,7 +50,7 @@ In almost every case, you're free to use the JDK and JVM of your choice.
 
 JDK 8 users typically use the Oracle JDK or some flavor of OpenJDK.
 
-Most JDK 11+ users are using either OpenJDK or GraalVM.
+Most JDK 11+ users are using either OpenJDK or [GraalVM](https://www.graalvm.org/docs/reference-manual/scala/) which can run in the context of OpenJDK. Developers can take advantage of the [sbt-native-image](https://github.com/scalameta/sbt-native-image) which takes advantage of GraalVM under the hood.
 
 OpenJDK comes in various flavors, offered by different providers.  We build and test Scala using [AdoptOpenJDK](https://adoptopenjdk.net) in particular, but the differences are unlikely to matter to most users.
 
