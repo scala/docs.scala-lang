@@ -11,7 +11,7 @@ redirect_from: /sips/pending/implicit-classes.html
 
 This SIP is based on [this pre-draft](https://docs.google.com/document/d/1k-aGAGmbrDB-2pJ3uDPpHVKno6p-XbnkVHDc07zPrzQ/edit?hl=en_US).
 
-Material adapted from [https://jorgeortiz85.github.com/ImplicitClassSIP.xhtml](https://jorgeortiz85.github.com/ImplicitClassSIP.xhtml)  which is Copyright © 2009, Jorge Ortiz and David Hall
+Material adapted from [https://jorgeortiz85.github.io/ImplicitClassSIP.xhtml](https://jorgeortiz85.github.io/ImplicitClassSIP.xhtml)  which is Copyright © 2009, Jorge Ortiz and David Hall
 
 ## Abstract ##
 

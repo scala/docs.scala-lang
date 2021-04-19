@@ -58,4 +58,4 @@ You can visit his [YouTube channel](https://www.youtube.com/user/DrMarkCLewis/fe
 [DevInsideYou](https://youtube.com/devinsideyou) is a YouTube channel with hundreds of hours of free Scala content.
 
 ## Visual Scala Reference
-[Visual Scala Reference](https://superruzafa.github.com/visual-scala-reference/), a guide to visually learn about Scala concepts and functions.
+[Visual Scala Reference](https://superruzafa.github.io/visual-scala-reference/), a guide to visually learn about Scala concepts and functions.
