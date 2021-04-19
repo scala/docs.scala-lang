@@ -50,7 +50,7 @@ In almost every case, you're free to use the JDK and JVM of your choice.
 
 JDK 8 users typically use the Oracle JDK or some flavor of OpenJDK.
 
-Most JDK 11+ users are using either OpenJDK or [GraalVM](https://www.graalvm.org/docs/reference-manual/scala/) which can run in the context of OpenJDK. Developers can take advantage of the [sbt-native-image](https://github.com/scalameta/sbt-native-image) which takes advantage of GraalVM under the hood.
+Most JDK 11+ users are using either OpenJDK or [GraalVM](https://www.graalvm.org/docs/reference-manual/scala/) which runs in the context of OpenJDK. Developers can use [sbt-native-image](https://github.com/scalameta/sbt-native-image) which uses GraalVM under the hood.
 
 OpenJDK comes in various flavors, offered by different providers.  We build and test Scala using [AdoptOpenJDK](https://adoptopenjdk.net) in particular, but the differences are unlikely to matter to most users.
 
