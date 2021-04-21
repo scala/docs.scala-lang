@@ -44,9 +44,9 @@ This assumes you know [how to build a project in IntelliJ](building-a-scala-proj
 1. Name the class `CubeCalculatorTest` and click **OK**.
 1. Replace the code with the following:
     ```
-    import org.scalatest.FunSuite
+    import org.scalatest.funsuite.AnyFunSuite
     
-    class CubeCalculatorTest extends FunSuite {
+    class CubeCalculatorTest extends AnyFunSuite {
       test("CubeCalculator.cube") {
         assert(CubeCalculator.cube(3) === 27)
       }
