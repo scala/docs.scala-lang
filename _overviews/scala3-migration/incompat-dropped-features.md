@@ -35,12 +35,12 @@ val abc = values('abc) // Migration Warning: symbol literal 'abc is no longer su
 
 The [Scala 3 migration compilation](tooling-migration-mode.html) rewrites the code into:
 
-```diff
+{% highlight diff %}
 val values: Map[Symbol, Int] = Map(Symbol("abc") -> 1)
 
 -val abc = values('abc)
 +val abc = values(Symbol("abc"))
-```
+{% endhighlight %}
 
 Although the `Symbol` class is useful during the transition, beware that it is deprecated and will be removed from the `scala-library` in a future version.
 You are recommended, as a second step, to replace every use of `Symbol` with a plain string literals `"abc"` or a custom dedicated class.
@@ -85,14 +85,14 @@ println(Hello.message) // Migration Warning: method message must be called with 
 
 The [Scala 3 migration compilation](tooling-migration-mode.html) rewrites it into:
 
-```diff
+{% highlight diff %}
 object Hello {
   def message(): String = "Hello"
 }
 
 -println(Hello.message)
 +println(Hello.message())
-```
+{% endhighlight %}
 
 Auto-application is covered in detail in [this page](https://dotty.epfl.ch/docs/reference/dropped-features/auto-apply.html) of the Scala 3 reference documentation.
 
@@ -110,11 +110,11 @@ val f: () => Int = x _ // Migration Warning: The syntax `<function> _` is no lon
 
 The [Scala 3 migration compilation](tooling-migration-mode.html) rewrites it into:
 
-```diff
+{% highlight diff %}
 val x = 1
 -val f: () => Int = x _
 +val f: () => Int = (() => x)
-```
+{% endhighlight %}
 
 ## `any2stringadd` conversion
 
@@ -128,10 +128,10 @@ val str = new AnyRef + "foo" // Error: value + is not a member of Object
 
 The conversion to `String` must be applied explicitly, for instance with `String.valueOf`.
 
-```diff
+{% highlight diff %}
 -val str = new AnyRef + "foo"
 +val str = String.valueOf(new AnyRef) + "foo"
-```
+{% endhighlight %}
 
 This rewrite can be applied by the `fix.scala213.Any2StringAdd` Scalafix rule in [`scala/scala-rewrites`](https://index.scala-lang.org/scala/scala-rewrites/scala-rewrites/0.1.2?target=_2.13).
 
@@ -155,19 +155,19 @@ object Foo extends {
 
 The Scala 3 compiler produces two error messages:
 
-```text
+{% highlight text %}
 -- Error: src/main/scala/early-initializer.scala:6:19 
 6 |object Foo extends {
   |                   ^
   |                   `extends` must be followed by at least one parent
-```
+{% endhighlight %}
 
-```text
+{% highlight text %}
 -- [E009] Syntax Error: src/main/scala/early-initializer.scala:8:2 
 8 |} with Bar
   |  ^^^^
   |  Early definitions are not supported; use trait parameters instead
-```
+{% endhighlight %}
 
 It suggests to use trait parameters which would give us:
 

@@ -56,12 +56,13 @@ In some rare cases involving implicit conversions and runtime casting it could e
 
 The solution is to make the return type of the override method explicit:
 
-```diff
+{% highlight diff %}
 class Child extends Parent {
 -  override def foo = new RichFoo(super.foo)
 +  override def foo: RichFoo = new RichFoo(super.foo)
 }
-```
+{% endhighlight %}
+
 ## Reflective Type
 
 Scala 2 reflective calls are dropped and replaced by the broader [Programmatic Structural Types](https://dotty.epfl.ch/docs/reference/changed-features/structural-types.html).
@@ -81,7 +82,7 @@ foo.bar // Error: value bar is not a member of Object
 
 The straightforward solution is to write down the structural type.
 
-```diff
+{% highlight diff %}
 import scala.language.reflectiveCalls
 
 - val foo = new {
@@ -90,4 +91,4 @@ import scala.language.reflectiveCalls
 }
 
 foo.bar
-```
+{% endhighlight %}

@@ -21,7 +21,7 @@ Let's start with showing the compiler options we have available to achieve our g
 If we simply type `scalac` on the command line it prints all the options we have at our disposal.
 For our purposes we will use the following five options:
 
-```text
+{% highlight text %}
 $ scalac
 Usage: scalac <options> <source files>
 where possible standard options include:
@@ -37,7 +37,7 @@ where possible standard options include:
                        rewrites sources to migrate to new version.
 ...
 
-```
+{% endhighlight %}
 
 Each of the first four options corresponds to a specific syntax:
 
@@ -248,12 +248,12 @@ A better approach is to choose one style and to consistently apply it to the ent
 
 For instance, with the `-new-syntax` option, the compiler issues an error when it encounters enclosing parentheses around an `if`-condition. 
 
-```text
+{% highlight text %}
 -- Error: /home/piquerez/scalacenter/syntax/example.scala:6:7 ------------------
 6 |    if (n == maxValue)
   |       ^^^^^^^^^^^^^^^
   |This construct is not allowed under -new-syntax.
   |This construct can be rewritten automatically under -new-syntax -rewrite -source 3.0-migration.
-```
+{% endhighlight %}
 
 > The `-indent` syntax is always optional, it cannot be enforced by the compiler.

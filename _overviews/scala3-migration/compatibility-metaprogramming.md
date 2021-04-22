@@ -21,13 +21,13 @@ While this is an uncontested improvement, it also means that all Scala 2.13 macr
 A Scala 3 module can depend on a Scala 2.13 artifact even if it contains a macro definition but the compiler will not be able to expand its macros.
 When you try to, it simply returns an error.
 
-```text
+{% highlight text %}
  -- Error: /src/main/scala/example/Example.scala:10:45 
  10 |  val documentFormat = Json.format[Document]
     |                            ^
     |Scala 2 macro cannot be used in Scala 3. See https://dotty.epfl.ch/docs/reference/dropped-features/macros.html
     |To turn this error into a warning, pass -Xignore-scala2-macros to the compiler
-```
+{% endhighlight %}
 
 Let's note that using `-Xignore-scala2-macros` is helpful to type check the code but it produces incomplete class files.
 

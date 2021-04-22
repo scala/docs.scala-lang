@@ -62,11 +62,12 @@ The resolved conversion depends on the compiler mode:
 
 One simple fix is to supply the right conversion explicitly:
 
-```diff
+{% highlight diff %}
 def pretty[A](a: A)(implicit ev: A => Pretty): String =
 -  a.print
 +  ev(a).print
-```
+{% endhighlight %}
+
 ## View Bounds
 
 View bounds have been deprecated for a long time but they are still supported in Scala 2.13.
@@ -78,12 +79,12 @@ def foo[A <% Long](a: A): Long = a
 
 In this example we get:
 
-```text
+{% highlight text %}
 -- Error: src/main/scala/view-bound.scala:2:12 
 2 |  def foo[A <% Long](a: A): Long = a
   |            ^
   |          view bounds `<%' are deprecated, use a context bound `:' instead
-```
+{% endhighlight %}
 
 The message suggests to use a context bound instead of a view bound but it would change the signature of the method.
 It is probably easier and safer to preserve the binary compatibility.
@@ -91,10 +92,10 @@ To do so the implicit conversion must be declared and called explicitly.
 
 Be careful not to fall in the runtime incompatibility described above, in [Implicit Views](#implicit-views).
 
-```diff
+{% highlight diff %}
 -def foo[A <% Long](a: A): Long = a
 +def foo[A](a: A)(implicit ev: A => Long): Long = ev(a)
-```
+{% endhighlight %}
 
 ## Ambiguous Conversion On `A` And `=> A`
 
@@ -112,7 +113,7 @@ true.foo()
 
 The Scala 2.13 compiler chooses the `boolFoo` conversion but the Scala 3 compiler fails to compile.
 
-```text
+{% highlight text %}
 -- Error: src/main/scala/ambiguous-conversion.scala:4:19
 9 |  true.foo()
   |  ^^^^
@@ -120,14 +121,14 @@ The Scala 2.13 compiler chooses the `boolFoo` conversion but the Scala 3 compile
   |Required: ?{ foo: ? }
   |Note that implicit extension methods cannot be applied because they are ambiguous;
   |both method boolFoo in object Foo and method lazyBoolFoo in object Foo provide an extension method `foo` on (true : Boolean)
-```
+{% endhighlight %}
 
 A temporary solution is to write the conversion explicitly.
 
-```diff
+{% highlight diff %}
 implicit def boolFoo(bool: Boolean): Foo = ???
 implicit def lazyBoolFoo(lazyBool:  => Boolean): Foo = ???
 
 -true.foo()
 +boolFoo(true).foo()
-```
+{% endhighlight %}

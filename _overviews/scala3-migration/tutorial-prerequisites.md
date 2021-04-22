@@ -67,13 +67,13 @@ Some compiler plugins may also be automatically added by an sbt plugin.
 
 You can find all configured compiler plugins by looking at the compiler options of your project.
 
-```text
+{% highlight text %}
 sbt:example> show example / Compile / scalacOptions
 [info] * -Xplugin:target/compiler_plugins/wartremover_2.13.5-2.4.12.jar
 [info] * -Xplugin:target/compiler_plugins/semanticdb-scalac_2.13.5-4.3.20.jar
 [info] * -Yrangepos
 [info] * -P:semanticdb:targetroot:/example/target/scala-2.13/meta
-```
+{% endhighlight %}
 
 In the above example we can see that two compiler plugins are used: wartremover and semanticdb.
 For each of these plugins, we need to check that there is an alternative solution, or we need to disable it.

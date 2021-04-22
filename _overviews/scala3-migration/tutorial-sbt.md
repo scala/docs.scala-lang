@@ -87,14 +87,15 @@ Or for a Scala.js dependencies:
 ```
 
 Once you have fixed all the unresolved dependencies, you can check that the tests are still passing in Scala 2.13:
-```text
+
+{% highlight text %}
 sbt:example> ++2.13.5
 [info] Setting Scala version to 2.13.5 on 1 project.
 ...
 sbt:example> example / test
 ...
 [success]
-```
+{% endhighlight %}
 
 ## 5. Configure the Scala 3 Compiler
 
@@ -136,14 +137,14 @@ Also you should disable `-Xfatal-warnings` to take full advantage of the migrati
 
 It is now time to try compiling in Scala 3:
 
-```text
+{% highlight text %}
 sbt:example> ++3.0.0-RC3
 [info] Setting Scala version to 3.0.0-RC3 on 1 project.
 ...
 sbt:example> example / compile
 ...
 sbt:example> example / Test / compile
-```
+{% endhighlight %}
 
 > `example / compile` compiles the `main` sources of the example project.
 > It is strictly equivalent to `example / Compile / compile`.
@@ -169,14 +170,14 @@ This is particularly crucial if your project is a published library.
 
 After fixing an incompatibility, you can validate the solution by running the tests in Scala 2.13.
 
-```text
+{% highlight text %}
 sbt:example> ++2.13.5
 [info] Setting Scala version to 2.13.5 on 1 project.
 ...
 sbt:example> example / test
 ...
 [success]
-```
+{% endhighlight %}
 
 Consider committing your changes regularly.
 
@@ -184,7 +185,7 @@ Once you have fixed all the errors you should be able to compile successfully in
 Only the migration warnings are remaining.
 You can patch them automatically by compiling with the `-source:3.0-migration -rewrite` options.
 
-```text
+{% highlight text %}
 sbt:example> ++3.0.0-RC3
 sbt:example> set example / scalacOptions += "-rewrite"
 sbt:example> example / compile
@@ -192,7 +193,7 @@ sbt:example> example / compile
 [info] [patched file /example/src/main/scala/app/Main.scala]
 [warn] two warnings found
 [success]
-```
+{% endhighlight %}
 
 You should now remove the `-source:3.0-migration` option, and you can also add the `-Xfatal-warnings` option again.
 Do not forget to reload.
@@ -204,7 +205,7 @@ Good tests are the only guarantee to prevent such bugs from going unnoticed.
 
 Make sure that the tests are passing in both Scala 2.13 and Scala 3.
 
-```text
+{% highlight text %}
 sbt:example> ++2.13.5
 sbt:example> example / test
 ...
@@ -213,7 +214,7 @@ sbt:example> ++3.0.0-RC3
 sbt:example> example / test
 ...
 [success]
-```
+{% endhighlight %}
 
 If you have a continuous integration pipeline, it is time to set it up for Scala 3.
 

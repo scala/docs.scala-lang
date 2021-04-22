@@ -41,26 +41,25 @@ It is composed of:
 For instance, the following piece of code can be compiled with Scala 2.13 but not wtih Scala 3.
 
 ```scala
-object given { // Error: given is now a keyword, write `given` instead of given to keep it as an identifier
-  val enum = ??? // Error: enum is now a keyword, write `enum` instead of given to keep it as an identifier
+object given { // Error: given is now a keyword
+  val enum = ??? // Error: enum is now a keyword
 
-  println(enum) // Error: enum is now a keyword, write `enum` instead of given to keep it as an identifier
+  println(enum) // Error: enum is now a keyword
 }
 ```
 
 The [Scala 3 migration compilation](tooling-migration-mode.html) rewrites the code into:
 
-```diff
+{% highlight diff %}
 -object given {
--  val enum = ???
-
--  println(enum)
 +object `given` {
+-  val enum = ???
 +  val `enum` = ???
 
+-  println(enum)
 +  println(`enum`)
 }
-```
+{% endhighlight %}
 
 ## Procedure Syntax
 
@@ -77,14 +76,14 @@ object Bar {
 
 The [Scala 3 migration compilation](tooling-migration-mode.html) rewrites the code into.
 
-```diff
+{% highlight diff %}
 object Bar {
 -  def print() {
 +  def print(): Unit = {
     println("bar")
   }
 }
-```
+{% endhighlight %}
 
 ## Parentheses Around Lambda Parameter
 
@@ -97,10 +96,10 @@ val f = { x: Int => x * x } // Error: parentheses are required around the parame
 
 The [Scala 3 migration compilation](tooling-migration-mode.html) rewrites the code into:
 
-```diff
+{% highlight diff %}
 -val f = { x: Int => x * x }
 +val f = { (x: Int) => x * x }
-```
+{% endhighlight %}
 
 ## Open Brace Indentation For Passing An Argument
 
@@ -117,33 +116,33 @@ test("my test")
 
 The [Scala 3 migration compiler](tooling-migration-mode.html) indents the first line of the block.
 
-```diff
+{% highlight diff %}
 test("my test")
 -{
 +  {
   assert(1 == 1)
 }
-```
+{% endhighlight %}
 
 This migration rule applies to other patterns as well, such as refining a type after a new line.
 
-```diff
+{% highlight diff %}
 type Bar = Foo
 - {
 +   {
   def bar(): Int
 }
-```
+{% endhighlight %}
 
 A preferable solution is to write:
 
-``` diff
+{% highlight diff %}
 -test("my test")
 -{
 +test("my test") {
   assert(1 == 1)
 }
-```
+{% endhighlight %}
 
 ## Wrong indentation
 
@@ -160,14 +159,14 @@ def bar: (Int, Int) = {
 
 The indentation must be fixed.
 
-```diff
+{% highlight diff %}
 def bar: (Int, Int) = {
   val foo = 1.0
   val bar = foo
 -    (1, 1)
 +  (1, 1)
 }
-```
+{% endhighlight %}
 
 These errors can be prevented by using a Scala formatting tool such as [scalafmt](https://scalameta.org/scalafmt/) or the [IntelliJ Scala formatter](https://www.jetbrains.com/help/idea/reformat-and-rearrange-code.html).
 Beware that these tools may change the entire code style of your project.
@@ -177,7 +176,8 @@ Beware that these tools may change the entire code style of your project.
 The usage of the `_` identifier as a type parameter is permitted in Scala 2.13, even if it has never been mentioned in the Scala 2 specification.
 It is used in the API of [fastparse](https://index.scala-lang.org/lihaoyi/fastparse), in combination with a context bound, to declare an implicit parameter.
 
-```sala
+
+```scala
 def foo[_: Foo]: Unit = ???
 ```
 
@@ -187,20 +187,20 @@ Martin Odersky described this pattern as a "clever exploit of a scalac compiler 
 
 The Scala 3 compiler does not permit this pattern anymore: 
 
-```text
+{% highlight text %}
 -- [E040] Syntax Error: src/main/scala/anonymous-type-param.scala:4:10
 4 |  def foo[_: Foo]: Unit = ()
   |          ^
   |          an identifier expected, but '_' found
-```
+{% endhighlight %}
 
 The solution is to give the parameter a valid identifier name, for instance `T`.
 This will not break the binary compatibility.
 
-```diff
+{% highlight diff %}
 -def foo[_: Foo]: Unit = ???
 +def foo[T: Foo]: Unit = ???
-```
+{% endhighlight %}
 
 ## `+` And `-` As Type Parameters
 
@@ -208,12 +208,12 @@ This will not break the binary compatibility.
 
 You cannot write `def foo[+]` or `def foo[-]` anymore.
 
-```
+{% highlight text %}
 -- Error: src/main/scala/type-param-identifier.scala:2:10 
 2 |  def foo[+]: +
   |          ^
   |          no `+/-` variance annotation allowed here
-```
+{% endhighlight %}
 
 The solution is to choose another valid identifier, for instance `T`.
 
