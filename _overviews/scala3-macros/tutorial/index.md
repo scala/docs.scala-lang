@@ -7,8 +7,6 @@ num: 1
 next-page: inline
 ---
 
-## Introduction
-
 This tutorial covers all the features involved in writing macros in Scala 3.
 
 The metaprogramming API of Scala 3 is designed in layers to gradually

@@ -84,7 +84,7 @@ At the same time, the following novel features enable well-structured _object-or
 
 ### Batteries Included: Metaprogramming
 While macros in Scala 2 were an experimental feature only, Scala 3 comes with a powerful arsenal of tools for metaprogramming.
-The [macro tutorial]({% link _overviews/scala3-macros/index.md %}) contains detailed information on the different facilities. In particular, Scala 3 offers the following features for metaprogramming:
+The [macro tutorial]({% link _overviews/scala3-macros/tutorial/index.md %}) contains detailed information on the different facilities. In particular, Scala 3 offers the following features for metaprogramming:
 
 - **Inline**. As the basic starting point, the [inline feature][meta-inline] allows values and methods to be reduced at compile time. This simple feature already covers many use-cases and at the same time provides the entry point for more advanced features.
 - **Compile-time operations**. The package [`scala.compiletime`][meta-compiletime] contains additional functionality that can be used to implement inline methods.
@@ -123,7 +123,7 @@ If you want to learn more about metaprogramming in Scala 3, we invite you to tak
 [syntax-indentation]: {{ site.scala3ref }}/other-new-features/indentation.html
 [syntax-wildcard]: {{ site.scala3ref }}/changed-features/wildcards.html
 
-[meta-tutorial]: {% link _overviews/scala3-macros/index.md %}
+[meta-tutorial]: {% link _overviews/scala3-macros/tutorial/index.md %}
 [meta-inline]: {% link _overviews/scala3-macros/tutorial/inline.md %}
 [meta-compiletime]: {% link _overviews/scala3-macros/tutorial/compiletime.md %}
 [meta-quotes]: {% link _overviews/scala3-macros/tutorial/quotes.md %}
