@@ -156,7 +156,7 @@ Now that you’ve created a first “Hello, world” example with Scala 3, you�
 Consider checking out:
 
 - [The Scala 3 Book](/scala3/book/introduction.html), which provides a set of short lessons introducing Scala’s main features
-- [The migration guide](https://scalacenter.github.io/scala-3-migration-guide/) helps you to migrate your existing Scala 2 code base to Scala 3.
+- [The migration guide](/scala3/guides/migration/compatibility-intro.html) helps you to migrate your existing Scala 2 code base to Scala 3.
 
 When you want to connect with other Scala users, there are several mailing lists and real-time chat rooms available.
 Check out our [Scala community page](https://scala-lang.org/community/) for a list of these resources, and for where to reach out for help.

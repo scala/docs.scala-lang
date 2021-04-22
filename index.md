@@ -25,9 +25,9 @@ scala3-sections:
   - title: "More detailed information"
     links:
       - title: "Migration Guide"
-        description: "A guide to help you migrate from Scala 2 to Scala 3."
+        description: "A guide to help you move from Scala 2 to Scala 3."
         icon: "fa fa-suitcase"
-        link: https://scalacenter.github.io/scala-3-migration-guide/
+        link: /scala3/guides/migration/compatibility-intro.html
       - title: "Guides"
         description: "Detailed guides about particular aspects of the language."
         icon: "fa fa-map"

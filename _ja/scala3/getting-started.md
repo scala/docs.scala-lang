@@ -216,7 +216,7 @@ Scala 3 を使った 最初の “Hello world” プロジェクトを作れた�
 以下の記事をチェックしよう:
 
 - [The Scala 3 Book](/scala3/book/introduction.html), Scala の主要な機能の導入となる一連の短いレッスンが用意されている。
-- [The migration guide](https://scalacenter.github.io/scala-3-migration-guide/) 既にある Scala 2 で書かれたコードベースを Scala 3 に移行する際に役立つ情報がまとめてある。
+- [The migration guide](/scala3/guides/migration/compatibility-intro.html) 既にある Scala 2 で書かれたコードベースを Scala 3 に移行する際に役立つ情報がまとめてある。
 
 他の Scala ユーザーと交流したいなら、いくつかのメーリングリストやリアルタイムチャットルームがある。
 これらのリソースのリストや助けを求める場所を探すには、[Scala community page](https://scala-lang.org/community/) をチェックしよう。

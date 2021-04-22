@@ -38,7 +38,7 @@ The [Macros Tutorial](/scala3/guides/macros) is being written by Nicolas Stucki 
 - [Issues](https://github.com/scala/docs.scala-lang/issues)
 
 ## Migration Guide
-The [Scala 3 Migration Guide](https://scalacenter.github.io/scala-3-migration-guide/)
+The [Scala 3 Migration Guide](/scala3/guides/migration/compatibility-intro.html)
 contains an comprehensive overview over compatibility between Scala 2 and Scala 3,
 a tour presenting the migration tools, and detailed migration guides.
 
@@ -55,13 +55,3 @@ The [Dotty reference](https://dotty.epfl.ch/docs/reference/overview.html) will e
 
 
 [scala3-book]: {% link _overviews/scala3-book/introduction.md %}
-
-[best-practices]: {% link _overviews/scala3-macros/best-practices.md %}
-[compiletime]: {% link _overviews/scala3-macros/tutorial/compiletime.md %}
-[cross-compilation]: https://scalacenter.github.io/scala-3-migration-guide/docs/macros/migration-tutorial.html#cross-building
-[inline]: {% link _overviews/scala3-macros/tutorial/inline.md %}
-[macros]: {% link _overviews/scala3-macros/tutorial/macros.md %}
-[migration-status]: https://scalacenter.github.io/scala-3-migration-guide/docs/macros/macro-libraries.html#macro-libraries
-[quotes]: {% link _overviews/scala3-macros/tutorial/quotes.md %}
-[tasty]: {% link _overviews/scala3-macros/tutorial/reflection.md %}
-[reflection-api]: https://dotty.epfl.ch/api/scala/quoted.html

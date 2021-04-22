@@ -40,7 +40,7 @@ Scala 3 の高品質なドキュメンテーションを作るためのいくつ
 - [Issues](https://github.com/scala/docs.scala-lang/issues)
 
 ## Migration Guide
-[Scala 3 Migration Guide](https://scalacenter.github.io/scala-3-migration-guide/) は Scala 2 と Scala 3 の互換性、移行に役立つツールの紹介、そして詳しい移行のガイドを含んだ包括的なドキュメントである。
+[Scala 3 Migration Guide](/scala3/guides/migration/compatibility-intro.html) は Scala 2 と Scala 3 の互換性、移行に役立つツールの紹介、そして詳しい移行のガイドを含んだ包括的なドキュメントである。
 
 - [Contribution Overview](https://scalacenter.github.io/scala-3-migration-guide/docs/contributing.html)
 - [Source](https://github.com/scalacenter/scala-3-migration-guide)
@@ -56,12 +56,3 @@ The [Dotty reference](https://dotty.epfl.ch/docs/reference/overview.html) は Sc
 
 [scala3-book]: {% link _overviews/scala3-book/introduction.md %}
 
-[best-practices]: {% link _overviews/scala3-macros/best-practices.md %}
-[compiletime]: {% link _overviews/scala3-macros/tutorial/compiletime.md %}
-[cross-compilation]: https://scalacenter.github.io/scala-3-migration-guide/docs/macros/migration-tutorial.html#cross-building
-[inline]: {% link _overviews/scala3-macros/tutorial/inline.md %}
-[macros]: {% link _overviews/scala3-macros/tutorial/macros.md %}
-[migration-status]: https://scalacenter.github.io/scala-3-migration-guide/docs/macros/macro-libraries.html#macro-libraries
-[quotes]: {% link _overviews/scala3-macros/tutorial/quotes.md %}
-[tasty]: {% link _overviews/scala3-macros/tutorial/reflection.md %}
-[reflection-api]: https://dotty.epfl.ch/api/scala/quoted.html

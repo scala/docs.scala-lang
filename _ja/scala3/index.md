@@ -28,7 +28,7 @@ sections:
       - title: "Migration Guide"
         description: "Scala 2 から Scala 3 へ移行するためのガイド"
         icon: "fa fa-suitcase"
-        link: https://scalacenter.github.io/scala-3-migration-guide/
+        link: /scala3/guides/migration/compatibility-intro.html
       - title: "Guides"
         description: "Scala 3 の言語仕様からピックアップして解説"
         icon: "fa fa-map"
