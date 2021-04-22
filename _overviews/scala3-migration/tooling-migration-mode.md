@@ -15,7 +15,7 @@ Try running `scalac` to have a glimpse of those utilities:
 > 
 > It can also be installed using Coursier with `cs install scala3-compiler`, in which case `scalac` is aliased `scala3-compiler`.
 
-```text
+{% highlight text %}
 $ scalac
 Usage: scalac <options> <source files>
 where possible standard options include:
@@ -30,7 +30,7 @@ where possible standard options include:
                    Default: 3.0.
                    Choices: 3.0, future, 3.0-migration, future-migration.
 ...
-```
+{% endhighlight %}
 
 ## Migration mode
 

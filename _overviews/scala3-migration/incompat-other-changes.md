@@ -56,14 +56,14 @@ object B {
 }
 ```
 
-```text
+{% highlight text %}
 -- [E049] Reference Error: src/main/scala/inheritance-shadowing.scala:9:14 
 9 |      println(x)
   |              ^
   |              Reference to x is ambiguous,
   |              it is both defined in object B
   |              and inherited subsequently in class C
-```
+{% endhighlight %}
 
 The [Scala 3 migration compilation](tooling-migration-mode.html) can automatically disambiguate the code by replacing `println(x)` with `println(this.x)`.
 
@@ -130,13 +130,13 @@ Foo.tupled((2, false))
 
 A cross-compiling solution is to explicitly eta-expand the method `Foo.apply`.
 
-```diff
+{% highlight diff %}
 -Foo.curried(1)(true)
 +(Foo.apply _).curried(1)(true)
 
 -Foo.tupled((2, false))
 +(Foo.apply _).tupled((2, false))
-```
+{% endhighlight %}
 
 Or, for performance reasons, you can introduce an intermediate function value.
 
@@ -187,13 +187,13 @@ def tuple(location: Location): (Int, Int) = {
 
 A possible solution is to use pattern binding:
 
-```diff
+{% highlight diff %}
 def tuple(location: Location): (Int, Int) = {
 -  Location.unapply(location).get
 +  val Location(lat, lon) = location
 +  (lat, lon)
 }
-```
+{% endhighlight %}
 
 ## Invisible Bean Property
 
@@ -215,7 +215,7 @@ println(pojo.getFooBar()) // [E008] Not Found Error: value getFooBar is not a me
 
 The solution is to call the more idiomatic `pojo.fooBar` getter and setter.
 
-```diff
+{% highlight diff %}
 val pojo = new Pojo()
 
 -pojo.setFooBar("hello")
@@ -223,7 +223,7 @@ val pojo = new Pojo()
 
 -println(pojo.getFooBar())
 +println(pojo.fooBar)
-```
+{% endhighlight %}
 
 ## `=> T` as Type Argument
 
@@ -267,10 +267,10 @@ trait Example {
 
 We can fix this by using a type parameter:
 
-```diff
+{% highlight diff %}
 -def f(foo: Foo[_]): Unit
 +def f[A](foo: Foo[A]): Unit
-```
+{% endhighlight %}
 
 But this simple solution does not work when `Foo` is itself used as a type argument.
 
@@ -280,9 +280,9 @@ def g(foos: Seq[Foo[_]]): Unit`
 
 In such case, we can use a wrapper class around `Foo`:
 
-```diff
+{% highlight diff %}
 +class FooWrapper[A](foo: Foo[A])
 
 -def g(foos: Seq[Foo[_]]): Unit`
 +def g(foos: Seq[FooWrapper[_]]): Unit
-```
+{% endhighlight %}

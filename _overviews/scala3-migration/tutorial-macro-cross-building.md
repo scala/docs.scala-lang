@@ -94,7 +94,7 @@ At any point you can go back to the Scala 2.13 context by running `++2.13.5`.
 
 If you try to compile with Scala 3 you should see some errors of the same kind as:
 
-```text
+{% highlight text %}
 sbt:example> ++3.0.0-RC3
 sbt:example> example / compile
 [error] -- Error: /example/src/main/scala/location/Location.scala:15:35 
@@ -106,7 +106,7 @@ sbt:example> example / compile
 [error]    |    ^
 [error]    |Scala 2 macro cannot be used in Dotty. See https://dotty.epfl.ch/docs/reference/dropped-features/macros.html
 [error]    |To turn this error into a warning, pass -Xignore-scala2-macros to the compiler
-```
+{% endhighlight %}
 
 To provide a Scala 3 alternative while preserving the Scala 2 implementation, we are going to rearrange the code in version-specific source directories.
 All the code that cannot be compiled by the Scala 3 compiler goes to the `src/main/scala-2` folder.
@@ -197,7 +197,7 @@ class MacrosSpec extends munit.FunSuite {
 
 You should now be able to run the tests in both versions.
 
-```text
+{% highlight text %}
 sbt:example> ++2.13.5
 sbt:example> example / test
 location.MacrosSpec:
@@ -210,7 +210,7 @@ location.MacrosSpec:
   + location
 [info] Passed: Total 1, Failed 0, Errors 0, Passed 1
 [success]
-```
+{% endhighlight %}
 
 ## Final overview
 

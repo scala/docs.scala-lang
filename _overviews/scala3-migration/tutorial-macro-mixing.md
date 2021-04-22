@@ -162,7 +162,7 @@ class MacrosSpec extends munit.FunSuite {
 
 You should now be able to run the tests in both versions.
 
-```text
+{% highlight text %}
 sbt:example> ++2.13.5
 sbt:example> example-test / test
 location.MacrosSpec:
@@ -175,7 +175,7 @@ location.MacrosSpec:
   + location
 [info] Passed: Total 1, Failed 0, Errors 0, Passed 1
 [success]
-```
+{% endhighlight %}
 
 ## Final Overview
 

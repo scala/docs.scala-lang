@@ -28,7 +28,7 @@ class Outer[+A](x: A) {
 }
 ```
 
-```text
+{% highlight text %}
 -- Error: src/main/scala/variance.scala:2:8 
 2 |  def f[B](y: List[B] = x): Unit = y
   |        ^^^^^^^^^^^^^^^^^
@@ -37,7 +37,7 @@ class Outer[+A](x: A) {
 6 |  class Inner(y: A)
   |              ^^^^
   |covariant type A occurs in contravariant position in type A of parameter y
-```
+{% endhighlight %}
 
 Each problem of this kind needs a specific care.
 You can try the following options on a case-by-case basis:
@@ -47,7 +47,7 @@ You can try the following options on a case-by-case basis:
 
 In our example, we can opt for these two solutions:
 
-```diff
+{% highlight diff %}
 class Foo[-A](x: List[A]) {
 -  def f[B](y: List[B] = x): Unit = ???
 +  def f[B](y: List[B]): Unit = ???
@@ -58,16 +58,16 @@ class Outer[+A](x: A) {
 -  class Inner(y: A)
 +  class Inner[B >: A](y: B)
 }
-```
+{% endhighlight %}
 
 Or, as a temporary solution, you can also use the `uncheckedVariance` annotation:
 
-```diff
+{% highlight diff %}
 class Outer[+A](x: A) {
 -  class Inner(y: A)
 +  class Inner(y: A @uncheckedVariance)
 }
-```
+{% endhighlight %}
 
 ## Unsoundness Fixes in Pattern Matching
 
@@ -92,13 +92,13 @@ object Request {
 
 The error message is:
 
-```text
+{% highlight text %}
 -- [E007] Type Mismatch Error: src/main/scala/pattern-match.scala:9:59 
 9 |      case (x @ Fetch(_), y @ Fetch(_)) => combineFetch(x, y)
   |                                                           ^
   |                                                Found:    (y : Fetch[A$2])
   |                                                Required: Fetch[A$1]
-```
+{% endhighlight %}
 
 Which is right, there is no proof that `x` and `y` have the same type paramater `A`.
 
