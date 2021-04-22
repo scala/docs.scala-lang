@@ -105,6 +105,17 @@ defaults:
       permalink: "/scala3/book/:title.html"
   -
     scope:
+      path: "_overviews/scala3-migration"
+    values:
+      scala3: true
+      # num: 99 # to list them in the TOC, should be overwritten individually
+      partof: scala3-migration
+      type: section
+      overview-name: "Scala 3 Migration Guide"
+      layout: multipage-overview
+      permalink: "/scala3/guides/migration/:title.html"
+  -
+    scope:
       path: "_overviews/scala3-macros"
     values:
       scala3: true
