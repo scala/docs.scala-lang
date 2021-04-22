@@ -72,7 +72,7 @@ Scala は常に関数型プログラミングとオブジェクト指向プロ�
 ### Batteries Included: メタプログラミング
 Scala 2 のマクロはあくまで実験的な機能という位置づけだが、Scala 3 ではメタプログラミングに役立つ強力なツールが標準ライブラリに入っている。
 
- [macro tutorial]({% link _overviews/scala3-macros/index.md %}) のページに異なった機能についての詳しい情報がある。特に Scala 3 は次のようなメタプログラミングのための機能を提供している。
+ [macro tutorial]({% link _overviews/scala3-macros/tutorial/index.md %}) のページに異なった機能についての詳しい情報がある。特に Scala 3 は次のようなメタプログラミングのための機能を提供している。
 
 - **Inline**. [inline][meta-inline] を使うことで値やメソッドをコンパイル時に評価できる。 このシンプルな機能はさまざまなユースケースに対応している。また同時に`inline`はより高度な機能のエントリーポイントとしても使える。
 - **Compile-time operations**. [`scala.compiletime`][meta-compiletime] パッケージには inline method を実装するのに役立つ追加的な機能が含まれている。
@@ -112,7 +112,7 @@ Scala 3 のメタプログラミングについてもっと知りたいかたは
 [syntax-indentation]: {{ site.scala3ref }}/other-new-features/indentation.html
 [syntax-wildcard]: {{ site.scala3ref }}/changed-features/wildcards.html
 
-[meta-tutorial]: {% link _overviews/scala3-macros/index.md %}
+[meta-tutorial]: {% link _overviews/scala3-macros/tutorial/index.md %}
 [meta-inline]: {% link _overviews/scala3-macros/tutorial/inline.md %}
 [meta-compiletime]: {% link _overviews/scala3-macros/tutorial/compiletime.md %}
 [meta-quotes]: {% link _overviews/scala3-macros/tutorial/quotes.md %}

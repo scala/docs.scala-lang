@@ -83,4 +83,4 @@ Early-adopter projects:
 [macros]: {% link _overviews/scala3-macros/tutorial/macros.md %}
 [quotes]: {% link _overviews/scala3-macros/tutorial/quotes.md %}
 [reflection]: {% link _overviews/scala3-macros/tutorial/reflection.md %}
-[scala3-macros]: {% link _overviews/scala3-macros/index.md %}
+[scala3-macros]: {% link _overviews/scala3-macros/tutorial/index.md %}
