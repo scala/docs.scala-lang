@@ -496,10 +496,8 @@ def powerCode(x: Expr[Double], n: Expr[Int])(using Quotes): Expr[Double] = ...
 [contributing]: {% link scala3/contribute-to-docs.md %}
 [best-practices]: {% link _overviews/scala3-macros/best-practices.md %}
 [compiletime]: {% link _overviews/scala3-macros/tutorial/compiletime.md %}
-[migration]: https://scalacenter.github.io/scala-3-migration-guide/docs/macros/macro-libraries.html
 [faq]: {% link _overviews/scala3-macros/faq.md %}
 [inline]: {% link _overviews/scala3-macros/tutorial/inline.md %}
 [macros]: {% link _overviews/scala3-macros/tutorial/macros.md %}
-[migration-status]: https://scalacenter.github.io/scala-3-migration-guide/docs/macros/migration-status.html
 [quotes]: {% link _overviews/scala3-macros/tutorial/quotes.md %}
 [tasty]: {% link _overviews/scala3-macros/tutorial/reflection.md %}

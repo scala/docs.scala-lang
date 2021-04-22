@@ -277,6 +277,5 @@ The subsequent section on [Quoted Code][quotes] presents quotes in more detail.
 [faq]: {% link _overviews/scala3-macros/faq.md %}
 [inline]: {% link _overviews/scala3-macros/tutorial/inline.md %}
 [macros]: {% link _overviews/scala3-macros/tutorial/macros.md %}
-[migration-status]: https://scalacenter.github.io/scala-3-migration-guide/docs/macros/migration-status.html
 [quotes]: {% link _overviews/scala3-macros/tutorial/quotes.md %}
 [tasty]: {% link _overviews/scala3-macros/tutorial/reflection.md %}

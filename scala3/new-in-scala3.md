@@ -109,7 +109,7 @@ If you want to learn more about metaprogramming in Scala 3, we invite you to tak
 [overload-resolution]: {{ site.scala3ref }}/changed-features/overload-resolution.html
 [reference]: {{ site.scala3ref }}/overview.html
 [creator]: {{ site.scala3ref }}/other-new-features/creator-applications.html
-[migration]: https://scalacenter.github.io/scala-3-migration-guide
+[migration]: {% link _overviews/scala3-migration/compatibility-intro.md %}
 
 [implicits]: {{ site.scala3ref }}/contextual/motivation.html
 [contextual-using]: {{ site.scala3ref }}/contextual/using-clauses.html

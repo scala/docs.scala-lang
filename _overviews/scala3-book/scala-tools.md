@@ -15,7 +15,7 @@ In this chapter you’ll see two tools that are commonly used in Scala projects:
 
 We’ll start by showing how to use sbt to build your Scala projects, and then we’ll show how to use sbt and ScalaTest together to test your Scala projects.
 
-> If you want to learn about tools to help you migrate your Scala 2 code to Scala 3, see our [Scala 3 Migration Guide](https://scalacenter.github.io/scala-3-migration-guide/).
+> If you want to learn about tools to help you migrate your Scala 2 code to Scala 3, see our [Scala 3 Migration Guide](/scala3/guides/migration/compatibility-intro.html).
 
 
 
