@@ -9,13 +9,13 @@ permalink: /overviews/core/:title.html
 
 This document describes the architecture of the Scala collections
 framework in detail. Compared to
-[the Collections Introduction]({{ site.baseurl }}/overviews/collections/introduction.html) you
+[the Collections Introduction]({{ site.baseurl }}/overviews/collections-2.13/introduction.html) you
 will find out more about the internal workings of the framework. You
 will also learn how this architecture helps you define your own
 collections in a few lines of code, while reusing the overwhelming
 part of collection functionality from the framework.
 
-[The Collections API]({{ site.baseurl }}/overviews/collections/introduction.html)
+[The Collections API]({{ site.baseurl }}/overviews/collections-2.13/trait-iterable.html)
 contains a large number of collection
 operations, which exist uniformly on many different collection
 implementations. Implementing every collection operation anew for
