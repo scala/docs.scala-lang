@@ -40,7 +40,7 @@ We will now go into detail on what this annotation means and why we use it.
 
 ### Invariant Types
 By default, types like `Pipeline` are invariant in their type argument (`T` in this case).
-This means that types like `Pipeline[Item]`, `Pipeline[Buyable]`, and `Pipeline[Item]` are in _no subtyping relationship_ to each other.
+This means that types like `Pipeline[Item]`, `Pipeline[Buyable]`, and `Pipeline[Book]` are in _no subtyping relationship_ to each other.
 
 And rightfully so! Assume the following method that consumes two values of type `Pipeline[Buyable]`, and passes its argument `b` to one of them, based on the price:
 
