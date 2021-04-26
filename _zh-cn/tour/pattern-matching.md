@@ -80,7 +80,7 @@ println(showNotification(someVoiceRecording))  // you received a Voice Recording
 ```
 `showNotification`函数接受一个抽象类`Notification`对象作为输入参数，然后匹配其具体类型。（也就是判断它是一个`Email`，`SMS`，还是`VoiceRecording`）。在`case Email(sender, title, _)`中，对象的`sender`和`title`属性在返回值中被使用，而`body`属性则被忽略，故使用`_`代替。
 
-## 模式守卫（Pattern gaurds）
+## 模式守卫（Pattern guards）
 为了让匹配更加具体，可以使用模式守卫，也就是在模式后面加上`if <boolean expression>`。
 ```
 
