@@ -13,9 +13,8 @@ permalink: /overviews/core/:title.html
 
 ## Introduction
 
-Value classes are a new mechanism in Scala to avoid allocating runtime objects.
-This is accomplished through the definition of new `AnyVal` subclasses.
-They were proposed in [SIP-15](https://docs.scala-lang.org/sips/pending/value-classes.html).
+First proposed in [SIP-15](https://docs.scala-lang.org/sips/pending/value-classes.html), value classes are a mechanism in Scala to avoid allocating runtime objects. This is accomplished through the definition of new `AnyVal` subclasses.
+
 The following shows a very minimal value class definition:
 
     class Wrapper(val underlying: Int) extends AnyVal
