@@ -13,7 +13,7 @@ permalink: /overviews/core/:title.html
 
 ## Introduction
 
-First proposed in [SIP-15](https://docs.scala-lang.org/sips/pending/value-classes.html), value classes are a mechanism in Scala to avoid allocating runtime objects. This is accomplished through the definition of new `AnyVal` subclasses.
+First proposed in [SIP-15](https://docs.scala-lang.org/sips/pending/value-classes.html) and introduced in Scala 2.10.0, value classes are a mechanism in Scala to avoid allocating runtime objects. This is accomplished through the definition of new `AnyVal` subclasses.
 
 The following shows a very minimal value class definition:
 
