@@ -97,7 +97,7 @@ def evalAndUse[X](x: Expr[X])(using t: Type[X])(using Quotes) = '{
   ... // use x2
 }
 ```
-Note that `Type` has a type member called `T` that refers to the type held within the `Type`, in this case `t.Underlying` is `X`.
+Note that `Type` has a type member called `Underlying` that refers to the type held within the `Type`, in this case `t.Underlying` is `X`.
 Note that even if we used it implicitly is better to keep it contextual as some changes inside the quote may require it.
 The less verbose version is usually the best way to write the types as it is much simpler to read.
 In some cases, we will not know statically the type within the `Type` and will need to use the `.T` to refer to it.
