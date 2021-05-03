@@ -89,7 +89,7 @@ The [macro tutorial]({% link _overviews/scala3-macros/index.md %}) contains deta
 - **Inline**. As the basic starting point, the [inline feature][meta-inline] allows values and methods to be reduced at compile time. This simple feature already covers many use-cases and at the same time provides the entry point for more advanced features.
 - **Compile-time operations**. The package [`scala.compiletime`][meta-compiletime] contains additional functionality that can be used to implement inline methods.
 - **Quoted code blocks**. Scala 3 adds the new feature of [quasi-quotation][meta-quotes] for code, providing a convenient high-level interface to construct and analyse code. Constructing code for adding one and one is as easy as `'{ 1 + 1 }`.
-- **Reflection API**. For more advanced use cases [TASTy reflect][meta-reflection] provides more detailed control to inspect and generate program trees.
+- **Reflection API**. For more advanced use cases [quotes.reflect][meta-reflection] provides more detailed control to inspect and generate program trees.
 
 If you want to learn more about meta programming in Scala 3, we invite you to take our [tutorial][meta-tutorial].
 

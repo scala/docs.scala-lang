@@ -138,11 +138,11 @@ These articles provide more information about Scala 3 macros:
 
 - [Scala Macro Libraries](https://scalacenter.github.io/scala-3-migration-guide/docs/macros/macro-libraries.html)
 - [Macros: The Plan for Scala 3](https://www.scala-lang.org/blog/2018/04/30/in-a-nutshell.html)
-- [The reference documentation on TASTy Reflect][tasty-reflect]
+- [The reference documentation on Quotes Reflect][quotes-reflect]
 - [The reference documentation on macros](macros)
 
 [benefits]: https://www.scala-lang.org/blog/2018/04/30/in-a-nutshell.html
 [erasure]: https://www.scala-lang.org/files/archive/spec/2.13/03-types.html#type-erasure
 [binary]: {% link _overviews/tutorials/binary-compatibility-for-library-authors.md %}
-[tasty-reflect]: {{ site.scala3ref }}/metaprogramming/reflection.html
+[quotes-reflect]: {{ site.scala3ref }}/metaprogramming/reflection.html
 [macros]: {{ site.scala3ref }}/metaprogramming/macros.html
