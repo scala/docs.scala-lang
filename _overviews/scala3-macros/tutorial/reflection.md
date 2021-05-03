@@ -50,7 +50,7 @@ Expressions `Expr[T]` can be seen as wrappers around a `Term`, where `T` is the 
 Below we use the extension method `asTerm` to transform the expression into a term.
 This extension method is only available after importing `quotes.reflect.asTerm`.
 Then we use `asExprOf[Int]` to transform the term back into `Expr[Int]`.
-This operation will fail if the term does not have provided type or if the term is not a valid expression.
+This operation will fail if the term does not have the provided type (here `Int`) or if the term is not a valid expression.
 For example, a `Ident(fn)` is non-valid term if the method `fn` takes type parameters, in which case we would need an `Apply(Ident(fn), args)`.
 
 ```scala
