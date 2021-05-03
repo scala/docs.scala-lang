@@ -77,7 +77,7 @@ Scala 2 のマクロはあくまで実験的な機能という位置づけだが
 - **Inline**. [inline][meta-inline] を使うことで値やメソッドをコンパイル時に評価できる。 このシンプルな機能はさまざまなユースケースに対応している。また同時に`inline`はより高度な機能のエントリーポイントとしても使える。
 - **Compile-time operations**. [`scala.compiletime`][meta-compiletime] パッケージには inline method を実装するのに役立つ追加的な機能が含まれている。
 - **Quoted code blocks**. Scala 3 には [quasi-quotation][meta-quotes]という新機能がある。この機能を使えば扱いやすい高レベルなインターフェースを介してコードを組み立てたり分析したりすることができる。  `'{ 1 + 1 }` と書くだけで1 と 1 を足すASTを組み立てられる。
-- **Reflection API**. もっと高度なユースケースでは [TASTy reflect][meta-reflection]を使ってより細かくプログラムツリーを操作したり生成したりすることができる。
+- **Reflection API**. もっと高度なユースケースでは [quotes.reflect][meta-reflection]を使ってより細かくプログラムツリーを操作したり生成したりすることができる。
 
 
 Scala 3 のメタプログラミングについてもっと知りたいかたは、 こちらの[tutorial][meta-tutorial]を参照。
