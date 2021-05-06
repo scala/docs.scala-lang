@@ -36,7 +36,7 @@ Scala 3 ではひとつの強力な機能として`implicit`を提供するの�
 - **Abtracting over contextual information**. [Using clauses][contextual-using]を使って呼び出し時に利用可能で、暗黙に引き渡されるべき情報を抽象化することができる。Scala 2 からの改善としては、`using` 節が型だけで指定できるようになったことが挙げられる。 これによって明示的に参照されることのない関数の引数に命名する必要がなくなった。
 - **Providing Type-class instances**. [Given instances][contextual-givens] を使ってある型に対応する _canonical value_ を定義することができる。実装を公開することなく、型クラスを使ったプログラミングをよりわかりやすく書ける。
 
-- **Retroactively extending classes**. Scala 2 では拡張メソッドは暗黙の変換か implicit classを使って書くことができた. 一方 Scala 3 では [extension methods][contextual-extension] が直接的に言語使用に含まれているのでよりわかりやすいエラーメッセージを表示できる。型推論も改善された。
+- **Retroactively extending classes**. Scala 2 では拡張メソッドは暗黙の変換か implicit classを使って書くことができた. 一方 Scala 3 では [extension methods][contextual-extension] が直接的に言語仕様に含まれているのでよりわかりやすいエラーメッセージを表示できる。型推論も改善された。
 - **Viewing one type as another**. 暗黙の変換は型クラス`Conversion`のインスタンスとしてゼロから [再設計][contextual-conversions]された。 
 - **Higher-order contextual abstractions**. 全く新しい機能である  [context functions][contextual-functions] は暗黙の引数をとる関数型を第一級オブジェクトとして扱う。この機能はライブラリ作者にとって重要である。また、簡潔なドメイン特化言語(DSL)を記述するのにも役立つ。
 
