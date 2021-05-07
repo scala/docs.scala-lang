@@ -9,6 +9,8 @@ previous-page: quotes
 The reflection API provides a more complex and comprehensive view on the structure of the code.
 It provides a view on the *Typed Abstract Syntax Trees* and their properties such as types, symbols, positions and comments.
 
+The API can be used in macros as well as for [inspecting TASTy files][tasty inspection].
+
 ## How to use the API
 
 The reflection API is defined in the type `Quotes` as `reflect`.
@@ -36,15 +38,34 @@ def f(x: Expr[Int])(using Quotes): Expr[Int] =
 
 This will import all the types and modules (with extension methods) of the API.
 
-The full imported API can be found here: [Reflection](https://dotty.epfl.ch/api/scala/quoted/Quotes$reflectModule.html?query=trait%20reflectModule)
+## How to navigate the API
 
-For example to find what is a `Term`, we can see in the hierarchy that it is a subtype of `Statement` which is a subtype of `Tree`.
-If we look into `TermMethods` we will find all the extension methods that are defined for `Term` such as `Term.tpe` which returns a `Type`.
-As it is a subtype of `Tree` we can also look into the `TreeMethods` to find more methods such as `Tree.pos`.
-Each type is also a module with some _static-ish_ methods, for example in the [`TypeReprModule`](https://dotty.epfl.ch/api/scala/quoted/Quotes$reflectModule$TypeReprModule.html) we can find the method `TypeRepr.of[T]` which will create an instance of `Type` containing `T`.
+The full imported API can be found here: [Reflection][reflection doc].
+Unfortunately, at this stage, this automatically generated documentation is not very easy to navigate.
 
+The most important element on the page is the hierarchy tree which provides a syntethic overview of the subtyping relationships of
+the types in the API. For each type `Type` in the tree:
+
+ - the object `TypeMethods` contains the methods available for `Type`
+ - the object `TypeModule` contains some _static-ish_ methods, most notably eventual constructors (`apply/copy`) and the `unapply` method which provides the extractor(s) required for pattern matching.
+ - For all types `Upper` such that `Type <: Upper`, the methods defined in `UpperMethods` are available on `Type` as well.
+
+For example `TypeBounds`, a subtype of `TypeRepr`, represents a type tree of the form `T >: L <: U`: a type `T` which is a super type of `L`
+and a subtype of `U`. In `TypeBoundsMethods` you will find the methods `low` and `hi` which allow you to access the
+representations of `L` and `U`. In `TypeBoundsModule` you will find the `unapply` method which enables you to write:
+
+```scala
+def f(tb: TypeBounds) =
+  tb match 
+    case TypeBounds(l, u) =>
+```
+
+Remember also that `TypeBounds <: TypeRepr`, therefore all the methods defined in `TypeReprMethods` are
+avaialble on `TypeBounds` values.
 
 ## Relation with Expr/Type
+
+### Expr and Term
 
 Expressions `Expr[T]` can be seen as wrappers around a `Term`, where `T` is the statically known type of the term.
 Below we use the extension method `asTerm` to transform the expression into a term.
@@ -61,6 +82,8 @@ def f(x: Expr[Int])(using Quotes): Expr[Int] =
   expr
 ```
 
+### Type and TypeRepr
+
 Similarly, we can also see `Type[T]` as a wrapper over `TypeRepr`, with `T` being the statically known type.
 To get a `TypeRepr` we use `TypeRepr.of[X]` which expects a given `Type[X]` in scope (similar to `Type.of[X]`).
 We can also transform it back into a `Type[?]` using the `asType` method.
@@ -74,6 +97,47 @@ def g[T: Type](using Quotes) =
     case '[t] => '{ val x: t = ${...} }
   ...
 ```
+
+## Symbols
+
+The APIs of `Term` and `TypeTree` are relatively *closed* in the sense that methods produce and accept values
+whose types are defined in the API. You might notice however the presence of `Symbol`s which identify definitions.
+
+Each `Term` or `TypeRepr` (therefore `Expr` and `Type`) have an associated symbol.
+`Symbol` exposes and is used by many useful methods for example:
+
+ - `declaredFields` and `declaredMethods` allow you to iterate on the fields and members defined inside a symbol
+ - `flags` allow you to check multiple properties of a symbol
+ - `companionObject` and `companionModule` provide a way to jump to and from the companion object/class.
+ - `TypeRepr.baseClasses` returns the list of symbols of classes extended by a type. 
+ - `Symbol.pos` gives you access to the position where the symbol is defined, the source code of the definition
+ and even the filename where the symbol is defined.
+ - and many useful others that you can find in `SymbolMethods`
+
+### To Symbol and back
+
+ - `TypeRepr.typeSymbol` returns the symbol of the type
+ - `TypeRepr.termSymbol` returns the symbol of the term associated to the type.
+ - `TypeRepr.memberType(symbol)` returns the `TypeRepr` of the provided symbol
+ - `TypeRepr.of[T].typeSymbol` is the recommended way to obtain a `Symbol` given a `Type[T]`
+ - `Tree.symbol` returns the symbol associated to a tree. Given that `Term <: Tree`,
+ `Expr.asTerm.symbol` is the best way to obtain the symbol associated to an `Expr[T]`
+
+ - `Symbol.tree` returns the `Tree` associated to the symbol. Be extremely careful when using this
+ method as the tree for a symbol might not be defined. When the code associated to the symbol
+ is defined in a different moment than this access, if the `Yretain-trees` compilation option
+ is not used, then the `tree` of the symbol will not be available. Symbols originated from
+ Java code do not have an associated `tree`.
+
+## Suggestion and anti-patterns
+
+ - Avoid using `TypeTree`s (therefore `TypeTree.of`) when you could use `TypeRepr`
+ - Avoid using `Symbol.tree` for the reasons mentioned [here](#symbols) and because of
+ the performance penalty that retrieving an entire tree could cause.
+ - Pattern matching is a very ergonomic approach to the API. Always have a look at
+ the `unapply` defined in `*Module` objects.
+ - `Symbol` and `Flags` offer handy predicates to know more about a definition
+ - `Expr.summon` is a convenient wrapper around `Implicits.search`
 
 ## Macro API design
 
@@ -168,3 +232,6 @@ We can make this printer the default if needed
 
 ## More
 *Coming soon*
+
+[tasty inspection]: {{ site.scala3ref }}/metaprogramming/tasty-inspect.html
+[reflection doc]: https://dotty.epfl.ch/api/scala/quoted/Quotes$reflectModule.html?query=trait%20reflectModule
