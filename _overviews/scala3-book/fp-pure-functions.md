@@ -50,24 +50,20 @@ Most methods on the Scala collections classes also work as pure functions, inclu
 
 Conversely, the following functions are _impure_ because they violate the definition.
 
-The `foreach` method on collections classes is impure because it’s only used for its side effects, such as printing to STDOUT.
+- `println` -- methods that interact with the console, files, databases, web services, sensors, etc., are all impure.
+- `currentTimeMillis ` -- date and time related methods are all impure because their output depends on something other than their input parameters 
+- `sys.error` -- exception throwing methods are impure because they do not simply return a result
 
-> A great hint that `foreach` is impure is that it’s method signature declares that it returns the type `Unit`.
-> Because it doesn’t return anything, logically the only reason you ever call it is to achieve some side effect.
-> Similarly, _any_ method that returns `Unit` is going to be an impure function.
+Impure functions often do one or more of these things:
 
-Date and time related methods like `getDayOfWeek`, `getHour`, and `getMinute` are all impure because their output depends on something other than their input parameters.
-Their results rely on some form of hidden I/O; _hidden inputs,_ in these examples.
-
-Additionally, methods that interact with the console, files, databases, web services, sensors, etc., are all impure.
-
-In general, impure functions do one or more of these things:
-
-- Read hidden inputs, i.e., they access variables and data not explicitly passed into the function as input parameters
-- Write hidden outputs
+- Read from hidden state, i.e., they access variables and data not explicitly passed into the function as input parameters
+- Write to hidden state
 - Mutate the parameters they’re given, or mutate hidden variables, such as fields in their containing class
 - Perform some sort of I/O with the outside world
 
+> In general, you should watch out for functions with a return type of `Unit`.
+> Because those functions do not return anything, logically the only reason you ever call it is to achieve some side effect.
+> In consequence, often the usage of those functions is impure.
 
 
 ## But impure functions are needed ...
