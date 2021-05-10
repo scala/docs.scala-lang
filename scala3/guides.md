@@ -5,7 +5,7 @@ title: Guides on Scala 3
 guides:
   - title: "Migration from Scala 2 to Scala 3"
     icon: suitcase
-    url: "https://scalacenter.github.io/scala-3-migration-guide"
+    url: "/scala3/guides/migration/compatibility-intro.html"
     description: "Everything you need to know about compatibility and migration to Scala 3."
   - title: Macros
     by: Nicolas Stucki
@@ -13,6 +13,11 @@ guides:
     url: "/scala3/guides/macros"
     description: "A detailed tutorial to cover all the features involved in writing macros in Scala 3."
     label-text: feature
+  - title: An Overview of TASTy
+    by: Alvin Alexander
+    icon: birthday-cake
+    url: "/scala3/guides/tasty-overview.html"
+    description: "An overview over the TASTy format aimed at end-users of the Scala language."
 ---
 
 <section class="full-width">

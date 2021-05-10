@@ -8,25 +8,25 @@ next-page: fun-hofs
 ---
 
 
-When you look at the Scaladoc for the `map` method on Scala collections classes, you see that it’s defined to accept a *function*:
+When you look at the Scaladoc for the `map` method on Scala collections classes, you see that it’s defined to accept a _function_:
 
 ```scala
 def map[B](f: (A) => B): List[B]
            -----------
 ```
 
-Indeed, the Scaladoc clearly states, “`f` is the *function* to apply to each element.”
-But despite that, somehow you can pass a *method* into `map`, and it still works:
+Indeed, the Scaladoc clearly states, “`f` is the _function_ to apply to each element.”
+But despite that, somehow you can pass a _method_ into `map`, and it still works:
 
 ```scala
 def times10(i: Int) = i * 10   // a method
 List(1, 2, 3).map(times10)     // List(10,20,30)
 ```
 
-Have you ever wondered how this works---how you can pass a *method* into `map`, which expects a *function*?
+Have you ever wondered how this works---how you can pass a _method_ into `map`, which expects a _function_?
 
-The technology behind this is known as *Eta Expansion*.
-It converts an expression of *method type* to an equivalent expression of *function type*, and it does so seamlessly and quietly.
+The technology behind this is known as _Eta Expansion_.
+It converts an expression of _method type_ to an equivalent expression of _function type_, and it does so seamlessly and quietly.
 
 
 
@@ -37,14 +37,9 @@ NOTE: I got the following “method” definition from this page (https://dotty.
 I’ve made a few changes to that description that I hope are more accurate and up to date.
 {% endcomment %}
 
+Historically, _methods_ have been a part of the definition of a class, although in Scala 3 you can now have methods outside of classes, such as [Toplevel definitions][toplevel] and [extension methods][extension].
 
-{% comment %}
-TODO: link to Toplevel definitions
-{% endcomment %}
-
-Historically, *methods* have been a part of the definition of a class, although in Scala 3 you can now have methods outside of classes, such as Toplevel definitions and [extension methods][extension].
-
-Unlike methods, *functions* are complete objects themselves, making them first-class entities.
+Unlike methods, _functions_ are complete objects themselves, making them first-class entities.
 
 Their syntax is also different.
 This example shows how to define a method and a function that perform the same task, determining if the given integer is even:
@@ -89,3 +84,4 @@ For more details on how this works, see the [Eta Expansion page][eta_expansion] 
 
 [eta_expansion]: {{ site.scala3ref }}/changed-features/eta-expansion.html
 [extension]: {% link _overviews/scala3-book/ca-extension-methods.md %}
+[toplevel]: {% link _overviews/scala3-book/taste-toplevel-definitions.md %}

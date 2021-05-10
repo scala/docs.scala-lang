@@ -15,7 +15,7 @@ In this chapter you’ll see two tools that are commonly used in Scala projects:
 
 We’ll start by showing how to use sbt to build your Scala projects, and then we’ll show how to use sbt and ScalaTest together to test your Scala projects.
 
-> If you want to learn about tools to help you migrate your Scala 2 code to Scala 3, see our [Scala 3 Migration Guide](https://scalacenter.github.io/scala-3-migration-guide/).
+> If you want to learn about tools to help you migrate your Scala 2 code to Scala 3, see our [Scala 3 Migration Guide](/scala3/guides/migration/compatibility-intro.html).
 
 
 
@@ -75,10 +75,7 @@ These are working directories that sbt uses.
 
 As you can see, creating and running a little Scala project with sbt takes just a few simple steps.
 
-{% comment %}
-NOTE: This currently requires this line in a _project/plugins.sbt_ file:
-addSbtPlugin("ch.epfl.lamp" % "sbt-dotty" % "{{ site.scala-3-plugin-version }}")
-{% endcomment %}
+> For sbt version < 1.5.0, it is required to have the following line in a *project/plugins.sbt* file: `addSbtPlugin("ch.epfl.lamp" % "sbt-dotty" % "{{ site.scala-3-plugin-version }}")`
 
 
 ### Using sbt with larger projects
@@ -250,7 +247,7 @@ While sbt is widely used, there are other tools you can use to build Scala proje
 - [Ant](https://ant.apache.org/)
 - [Gradle](https://gradle.org/)
 - [Maven](https://maven.apache.org/)
-- [Mill](https://www.lihaoyi.com/mill/)
+- [Mill](https://com-lihaoyi.github.io/mill/)
 
 #### Coursier
 

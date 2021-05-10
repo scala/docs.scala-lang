@@ -8,5 +8,4 @@ _site
 vendor/bundle
 .idea/
 /coursier
-/tut-tmp/
 .sass-cache/

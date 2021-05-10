@@ -23,7 +23,7 @@ Performance characteristics of sequence types:
 | `LazyList`    | C    | C    | L     | L     |  C      | L      |  -     |
 | `ArraySeq`    | C    | L    | C     | L     |  L      | L      |  -     |
 | `Vector`      | eC   | eC   | eC    | eC    |  eC     | eC     |  -     |
-| `Queue`       | aC   | aC   | L     | L     |  C      | C      |  -     |
+| `Queue`       | aC   | aC   | L     | L     |  L      | C      |  -     |
 | `Range`       | C    | C    | C     | -     |  -      | -      |  -     |
 | `String`      | C    | L    | C     | L     |  L      | L      |  -     |
 | **mutable**   |      |      |       |       |         |        |        |

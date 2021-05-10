@@ -46,7 +46,7 @@ Then an optimization called "constant folding" is applied by the compiler, which
 > However, this form of constant propagation is _best-effort_ and not guaranteed.
 > Scala 3.0 also supports `final val`-inlining as _best-effort_ inlining for migration purposes.
 
-Currently, only constant expression may appear on the right-hand side of an inline value definition.
+Currently, only constant expressions may appear on the right-hand side of an inline value definition.
 Therefore, the following code is invalid, though the compiler knows that the right-hand side is a compile-time constant value:
 
 ```Scala
@@ -75,7 +75,7 @@ Therefore, the compiler inlines the following call
 
 ```scala
 logged(logLevel, getMessage()) {
-  computeSomthing()
+  computeSomething()
 }
 ```
 
@@ -86,8 +86,8 @@ val level   = logLevel
 def message = getMessage()
 
 println(s"[$level]Computing $message")
-val res = computeSomthing()
-println(s"[$level]Result of $tag: $res")
+val res = computeSomething()
+println(s"[$level]Result of $message: $res")
 res
 ```
 
@@ -135,7 +135,7 @@ logged(new RefinedLogger, "✔️")
 It expands to:
 
 ```
-val loggeer = new RefinedLogger
+val logger = new RefinedLogger
 val x = "✔️"
 logger.log(x)
 ```
@@ -213,7 +213,7 @@ assert1(x, "error1")
 val cond = x
 def msg = "error1"
 if !cond then
-    throw new Exception("error1")
+    throw new Exception(msg)
 ```
 In the above example, we can see that the use of a by-name parameter leads to a local definition `msg`, which allocates a closure before the condition is checked.
 
@@ -379,17 +379,17 @@ It is also possible to create _abstract inline definitions_.
 trait InlineLogger:
   inline def log(inline x: Any): Unit
 
-class PrintLogger inline InlineLogger:
+class PrintLogger extends InlineLogger:
   inline def log(inline x: Any): Unit = println(x)
 ```
 
 This forces the implementation of `log` to be an inline method and also allows `inline` parameters.
 Counterintuitively, the `log` on the interface `InlineLogger` cannot be directly called. The method implementation is not statically known and we thus do not know what to inline.
-Calling an abstract inline methods thus results in an error.
+Calling an abstract inline method thus results in an error.
 The usefuleness of abstract inline methods becomes apparent when used in another inline method:
 
 ```scala
-inline def logged(logger: Logger, x: Any) =
+inline def logged(logger: InlineLogger, x: Any) =
   logger.log(x)
 ```
 Let us assume a call to `logged` on a concrete instance of `PrintLogger`:
@@ -496,10 +496,8 @@ def powerCode(x: Expr[Double], n: Expr[Int])(using Quotes): Expr[Double] = ...
 [contributing]: {% link scala3/contribute-to-docs.md %}
 [best-practices]: {% link _overviews/scala3-macros/best-practices.md %}
 [compiletime]: {% link _overviews/scala3-macros/tutorial/compiletime.md %}
-[migration]: https://scalacenter.github.io/scala-3-migration-guide/docs/macros/macro-libraries.html
 [faq]: {% link _overviews/scala3-macros/faq.md %}
 [inline]: {% link _overviews/scala3-macros/tutorial/inline.md %}
 [macros]: {% link _overviews/scala3-macros/tutorial/macros.md %}
-[migration-status]: https://scalacenter.github.io/scala-3-migration-guide/docs/macros/migration-status.html
 [quotes]: {% link _overviews/scala3-macros/tutorial/quotes.md %}
 [tasty]: {% link _overviews/scala3-macros/tutorial/reflection.md %}

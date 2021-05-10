@@ -93,11 +93,11 @@ def evalAndUse[X](x: Expr[X])(using Type[X])(using Quotes) = '{
 This code will be equivalent to the more verbose
 ```scala
 def evalAndUse[X](x: Expr[X])(using t: Type[X])(using Quotes) = '{
-  val x2: t.T = $x
+  val x2: t.Underlying = $x
   ... // use x2
 }
 ```
-Note that `Type` has a type member called `T` that refers to the type held within the `Type`, in this case `t.T` is `X`.
+Note that `Type` has a type member called `Underlying` that refers to the type held within the `Type`, in this case `t.Underlying` is `X`.
 Note that even if we used it implicitly is better to keep it contextual as some changes inside the quote may require it.
 The less verbose version is usually the best way to write the types as it is much simpler to read.
 In some cases, we will not know statically the type within the `Type` and will need to use the `.T` to refer to it.
@@ -249,7 +249,115 @@ case ...
 
 ### Matching types
 
-*Coming soon*
+So far, we assumed that the types within quote patterns would be statically known.
+Quote patterns also allow for generic types and existential types, which we will see in this section.
+
+#### Generic types in patterns
+
+Consider the function `exprOfOption` that we have already seen:
+```scala
+def exprOfOption[T: Type](x: Expr[Option[T]])(using Quotes): Option[Expr[T]] =
+  x match
+    case '{ Some($x: T) } => Some(x) // x: Expr[T]
+                // ^^^ type ascription with generic type T
+    ...
+```
+
+Note that this time we have added the `T` explicitly in the pattern, even though it could be inferred.
+By referring to the generic type `T` in the pattern, we are required to have a given `Type[T]` in scope.
+This implies that `$x: T` will only match if `x` is of type `Expr[T]`.
+In this particular case this condition will always be true.
+
+Now consider the following variant where `x` is an optional value with a (statically) unknown element type.
+
+```scala
+def exprOfOptionOf[T: Type](x: Expr[Option[Any]])(using Quotes): Option[Expr[T]] =
+  x match
+    case '{ Some($x: T) } => Some(x) // x: Expr[T]
+    case _ => None
+```
+This time the pattern ` Some($x: T)` will only match if the type of the option is `Some[T]`.
+
+```scala
+exprOfOptionOf[Int]('{ Some(3) })   // Some('{3})
+exprOfOptionOf[Int]('{ Some("a") }) // None
+```
+
+#### Type variables in quoted patterns
+
+Quoted code may contain types that are not known outside of the quote.
+We can match on them using pattern type variables.
+Just as in a normal pattern, the type variables are written using lower case names.
+
+```scala
+def exprOptionToList(x: Expr[Option[Any]])(using Quotes): Option[Expr[List[Any]]] =
+  x match
+    case '{ Some($x: t) } =>
+                // ^^^ this binds the type `t` in the body of the case
+      Some('{ List[t]($x) }) // x: Expr[List[t]]
+    case '{ None } =>
+      Some('{ Nil })
+    case _ => None
+```
+
+The pattern `$x: t` will match an expression of any type and `t` will be bound to the type of the pattern.
+This type is only valid in the right-hand side of the `case`, in the example we can use it to construct the list `List[t]($x)` (`List($x)` would also work).
+As this is a type that is not statically known we need a given `Type[t]` in scope, luckily the quoted pattern will automatically provide this.
+
+The simple `case '{ $expr: tpe } =>` pattern is very useful if we want to know the precise type of the expression.
+```scala
+val expr: Expr[Option[Int]] = ...
+expr match
+  case '{ $expr: tpe } =>
+    Type.show[tpe] // could be: Option[Int], Some[Int], None, Option[1], Option[2], ...
+    '{ val x: tpe = $expr; x } // binds the value without widening the type
+    ...
+```
+
+In some cases we need to define a pattern variable that is referenced several times or has some type bounds.
+To achieve this it is possible to create pattern variables at the start of the pattern using `type t` with a type pattern variable.
+
+```scala
+def fuseMap[T: Type](x: Expr[List[T]])(using Quotes): Expr[List[T]] = x match {
+  case '{
+    type u
+    type v
+    ($ls: List[`u`])
+      .map($f: `u` => `v`)
+      .map($g: `v` => T)
+    } =>
+    '{ $ls.map(x => $g($f(x))) }
+  case _ => x
+}
+```
+
+Here we define two type variables `u` and `v` and then refer to them using `` `u` `` and `` `v` ``.
+We do not refer to them using `u` or `v` because those would be interpreted as new type variables and hence duplicates.
+This notation follows the normal [stable identifier patterns](https://www.scala-lang.org/files/archive/spec/2.13/08-pattern-matching.html#stable-identifier-patterns) syntax.
+Furthermore, if the type variable needs to be constrained we can add bounds directly on the type definition `case '{ type u <: AnyRef; ... } =>`.
+
+Note that the previous case could also be written as `case '{ ($ls: List[u]).map[v]($f).map[T]($g) =>`.
+
+#### Quote types patterns
+
+Type represented with `Type[T]` can be matched on using the patten `case '[...] =>`.
+
+```scala
+def mirrorFields[T: Type](using Quotes): List[String] =
+  Type.of[T] match
+    case '[field *: fields] =>
+      Type.show[field] :: mirrorFields[fields]
+    case '[EmptyTuple] =>
+      Nil
+    case _ =>
+      compiletime.error("Expected known tuple but got: " + Type.show[T])
+
+mirrorFields[EmptyTuple]         // Nil
+mirrorFields[(Int, String, Int)] // List("Int", "String", "Int")
+mirrorFields[Tuple]              // error: Expected known tuple but got: Tuple
+```
+
+As with expression quote patterns type variables are represented using lower case names.
 
 ## FromExpr
 
@@ -309,7 +417,7 @@ Though it looks like a splice takes an expression as argument, it actually takes
 Therefore we could actually write it explicitly as `${ (using q) => ... }`, this might be useful when debugging to avoid generated names for these scopes.
 
 The method `scala.quoted.quotes` provides a simple way to use the current `Quotes` without naming it.
-It is usually imported along with the `Quotes` using `import scala.quoted._`.
+It is usually imported along with the `Quotes` using `import scala.quoted.*`.
 
 ```scala
 ${ (using q1) => body(using q1) }
@@ -379,7 +487,7 @@ inline def setFor[T]: Set[T] =
   ${ setForCode[T] }
 
 def setForCode[T: Type](using Quotes): Expr[Set[T]] =
-  import scala.collection.immutable._
+  import scala.collection.immutable.*
   Expr.summon[Ordering[T]] match
     case Some(ord) => '{ TreeSet.empty[T](using $ord) }
     case _ => '{ HashSet.empty[T] }

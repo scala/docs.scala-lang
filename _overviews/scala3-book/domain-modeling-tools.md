@@ -7,8 +7,7 @@ previous-page: domain-modeling-intro
 next-page: domain-modeling-oop
 ---
 
-
-Scala 3 provides us with many different tools to model the world around us:
+Scala 3 provides many different constructs so we can model the world around us:
 
 - Classes
 - Objects
@@ -32,8 +31,9 @@ class Person(var name: String, var vocation: String)
 class Book(var title: String, var author: String, var year: Int)
 class Movie(var name: String, var director: String, var year: Int)
 ```
-The examples above show that Scala has a very lightweight way to declare classes.
-The definition of the class `Person` roughly corresponds to the following, more explicit, version
+
+These examples show that Scala has a very lightweight way to declare classes.
+The definition of the class `Person` roughly corresponds to the following, more explicit, version:
 
 ```scala
 class Person:
@@ -49,7 +49,8 @@ class Person:
     name = _name
     vocation = _vocation
 ```
-defining the two fields `name` and `vocation` together with a constructor that accepts values for the two fields and assigns them.
+
+This version defines the two fields `name` and `vocation`, together with a constructor that accepts values for those two fields and assigns them.
 
 All of the parameters of our example classes are defined as `var` fields, which means they are mutable: you can read them, and also modify them.
 If you want them to be immutable---read only---create them as `val` fields instead.
@@ -67,7 +68,7 @@ However, with [creator applications][creator] this isn’t required in Scala 3:
 val p = Person("Robert Allen Zimmerman", "Harmonica Player")
 ```
 
-Once you have an instance of a class, you can access its fields, which in this example are all constructor parameters:
+Once you have an instance of a class such as `p`, you can access its fields, which in this example are all constructor parameters:
 
 ```scala
 p.name       // "Robert Allen Zimmerman"
@@ -163,7 +164,7 @@ While analyzing the requirements you’ve seen that you need to be able to const
 One way to handle this situation in an OOP style is with this code:
 
 ```scala
-import java.time._
+import java.time.*
 
 // [1] the primary constructor
 class Student(
@@ -227,7 +228,7 @@ This is shown in the previous `Socket` example.
 
 An object is a class that has exactly one instance.
 It’s initialized lazily when its members are referenced, similar to a `lazy val`.
-Objects in Scala allow grouping methods and fields under one namespace, similar to how can use `static` members on a class in Java, Javascript (ES6) or `@staticmethod` in Python.
+Objects in Scala allow grouping methods and fields under one namespace, similar to how you use `static` members on a class in Java, Javascript (ES6), or `@staticmethod` in Python.
 
 Declaring an `object` is similar to declaring a `class`.
 Here’s an example of a “string utilities” object that contains a set of methods for working with strings:
@@ -245,11 +246,22 @@ We can use the object as follows:
 StringUtil.truncate("Chuck Bartowski", 5)  // "Chuck"
 ```
 
-Importing in Scala is very flexible and allows us to import all members of an object:
+Importing in Scala is very flexible, and allows us to import _all_ members of an object:
 
 ```scala
-import StringUtils._
-truncate("Chuck Bartowski", 5)   // "Chuck"
+import StringUtils.*
+truncate("Chuck Bartowski", 5)       // "Chuck"
+containsWhitespace("Sarah Walker")   // true
+isNullOrEmpty("John Casey")          // false
+```
+
+or just _some_ members:
+
+```scala
+import StringUtils.{truncate, containsWhitespace}
+truncate("Charles Carmichael", 7)       // "Charles"
+containsWhitespace("Captain Awesome")   // true
+isNullOrEmpty("Morgan Grimes")          // Not found: isNullOrEmpty (error)
 ```
 
 Objects can also contain fields, which are also accessed like static members:
@@ -266,7 +278,7 @@ println(MathConstants.PI)   // 3.14159
 
 ## Companion objects
 
-An `object` that has the same name as a class, and is declared in the same file as the class, is called a _"companion object"_.
+An `object` that has the same name as a class, and is declared in the same file as the class, is called a _"companion object_."
 Similarly, the corresponding class is called the object’s companion class.
 A companion class or object can access the private members of its companion.
 
@@ -274,7 +286,7 @@ Companion objects are used for methods and values that are not specific to insta
 For instance, in the following example the class `Circle` has a member named `area` which is specific to each instance, and its companion object has a method named `calculateArea` that’s (a) not specific to an instance, and (b) is available to every instance:
 
 ```scala
-import scala.math._
+import scala.math.*
 
 case class Circle(radius: Double):
   def area: Double = Circle.calculateArea(radius)
@@ -287,7 +299,7 @@ circle1.area
 ```
 
 In this example the `area` method that’s available to each instance uses the `calculateArea` method that’s defined in the companion object.
-If you’re familiar with Java, `calculateArea` is similar to a static method.
+Once again, `calculateArea` is similar to a static method in Java.
 Also, because `calculateArea` is private, it can’t be accessed by other code, but as shown, it can be seen by instances of the `Circle` class.
 
 ### Other uses
@@ -300,7 +312,7 @@ Companion objects can be used for several purposes:
 - They can contain `apply` methods, which---thanks to some syntactic sugar---work as factory methods to construct new instances
 - They can contain `unapply` methods, which are used to deconstruct objects, such as with pattern matching
 
-Here’s a quick look at how `apply` methods that can be used as factory methods to create new objects:
+Here’s a quick look at how `apply` methods can be used as factory methods to create new objects:
 
 ```scala
 class Person:
@@ -398,11 +410,16 @@ For more details, see the remainder of these modeling lessons.
 ## Abstract classes
 
 {% comment %}
-TODO: I have some notes on when to use abstract classes, and can update this section.
+LATER: If anyone wants to update this section, our comments about abstract classes and traits are on Slack. The biggest points seem to be:
+- The `super` of a trait is dynamic
+- At the use site, people can mix in traits but not classes
+- It remains easier to extend a class than a trait from Java, if the trait has at least a field
+- Similarly, in Scala.js, a class can be imported from or exported to JavaScript. A trait cannot
+- There are also some point that unrelated classes can’t be mixed together, and this can be a modeling advantage
 {% endcomment %}
 
 When you want to write a class, but you know it will have abstract members, you can either create a trait or an abstract class.
-In most situations you’ll use traits, but but historically there have been two situations where it’s better to use an abstract class than a trait:
+In most situations you’ll use traits, but historically there have been two situations where it’s better to use an abstract class than a trait:
 
 - You want to create a base class that takes constructor arguments
 - The code will be called from Java code
@@ -436,8 +453,8 @@ class Dog(name: String, var age: Int) extends Pet(name):
 
 val d = Dog("Fido", 1)
 ```
-Traits are more flexible to compose (you can mix in multiple traits, but only extend one class) and should most of the time be preferred to classes.
-The rule of thumb is to use classes whenever you want to create instances of a particular type and traits when you want to decompose and reuse behaviour.
+Traits are more flexible to compose---you can mix in multiple traits, but only extend one class---and should be preferred to classes and abstract classes most of the time.
+The rule of thumb is to use classes whenever you want to create instances of a particular type, and traits when you want to decompose and reuse behaviour.
 
 
 ## Enums
@@ -462,11 +479,11 @@ enum Topping:
 To use them in other code, first import them, and then use them:
 
 ```scala
-import CrustSize._
+import CrustSize.*
 val currentCrustSize = Small
 ```
 
-Enum values can be compared using equals (`==`) and matched on:
+Enum values can be compared using equals (`==`), and also matched on:
 
 ```scala
 // if/then
@@ -529,11 +546,11 @@ The section on [algebraic datatypes][adts] and the [reference documentation][ref
 ## Case classes
 
 Case classes are used to model immutable data structures.
-Take the following example,
+Take the following example:
 ```scala
 case class Person(name: String, relation: String)
 ```
-Since we declared `Person` as a case class, the fields `name` and `relation` are public and immutable by default.
+Since we declare `Person` as a case class, the fields `name` and `relation` are public and immutable by default.
 We can create instances of case classes as follows:
 ```scala
 val christina = Person("Christina", "niece")
@@ -544,9 +561,9 @@ christina.name = "Fred"   // error: reassignment to val
 ```
 Since the fields of a case class are assumed to be immutable, the Scala compiler can generate many helpful methods for you:
 * An `unapply` method is generated, which allows you to perform pattern matching on a case class (that is, `case Person(n, r) => ...`).
-* A `copy` method is generated in the class, which is very useful to create modified copies of an instance
+* A `copy` method is generated in the class, which is very useful to create modified copies of an instance.
 * `equals` and `hashCode` methods using structural equality are generated, allowing you to use instances of case classes in `Map`s.
-* A default `toString` method is generated, which is helpful for debugging
+* A default `toString` method is generated, which is helpful for debugging.
 
 These additional features are demonstrated in the below example:
 ```scala
@@ -576,8 +593,8 @@ As mentioned, case classes support functional programming (FP):
 
 - In FP you try to avoid mutating data structures.
   It thus makes sense that constructor fields default to `val`.
-  Since instances of case classes are not changed, they can easily be shared without fearing mutation or race conditions.
-- Instead of mutating one instance, you can use the `copy` method as a template to create a new (potentially changed) instance.
+  Since instances of case classes can’t be changed, they can easily be shared without fearing mutation or race conditions.
+- Instead of mutating an instance, you can use the `copy` method as a template to create a new (potentially changed) instance.
   This process can be referred to as “update as you copy.”
 - Having an `unapply` method auto-generated for you also lets case classes be used in advanced ways with pattern matching.
 
@@ -621,7 +638,7 @@ case Teacher(name, whatTheyTeach) =>
 ```
 
 Those patterns work because `Student` and `Teacher` are defined as case classes that have `unapply` methods whose type signature conforms to a certain standard.
-Technically, the specific type of pattern matching shown in these examples is known as a *constructor pattern*.
+Technically, the specific type of pattern matching shown in these examples is known as a _constructor pattern_.
 
 > The Scala standard is that an `unapply` method returns the case class constructor fields in a tuple that’s wrapped in an `Option`.
 > The “tuple” part of the solution was shown in the previous lesson.

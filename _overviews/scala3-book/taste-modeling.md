@@ -57,7 +57,7 @@ class Dog(name: String) extends Speaker, TailWagger, Runner:
   def speak(): String = "Woof!"
 ```
 
-Notice how the class extends the traits with the `extends` and `with` keywords.
+Notice how the class extends the traits with the `extends` keyword.
 
 Similarly, here’s a `Cat` class that implements those same traits while also overriding two of the concrete methods it inherits:
 
@@ -72,10 +72,10 @@ These examples show how those classes are used:
 
 ```scala
 val d = Dog("Rover")
-d.speak()               // prints "Woof!"
+println(d.speak())      // prints "Woof!"
 
 val c = Cat("Morris")
-c.speak()               // "Meow"
+println(c.speak())      // "Meow"
 c.startRunning()        // "Yeah ... I don’t run"
 c.stopRunning()         // "No need to stop"
 ```
@@ -149,7 +149,7 @@ enum Topping:
 Once you have an enum you can use it in all of the ways you normally use a trait, class, or object:
 
 ```scala
-import CrustSize._
+import CrustSize.*
 val currentCrustSize = Small
 
 // enums in a `match` expression

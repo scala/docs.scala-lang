@@ -57,8 +57,6 @@ def double(ints: List[Int]): List[Int] = {
       buffer += i * 2
   }
   buffer.toList
-  foo
-  bar
 }
 
 val newNumbers = double(oldNumbers)
@@ -126,7 +124,7 @@ val z = nums.filter(_ > 100)
             .map(_ * 2)
 ```
 
-Because Scala is considered to be a [strong, statically-typed language](https://heather.miller.am/blog/types-in-scala.html), you get all the benefits of static types:
+As Heather Miller states, Scala is considered to be a [strong, statically-typed language](https://heather.miller.am/blog/types-in-scala.html), and you get all the benefits of static types:
 
 - Correctness: you catch most errors at compile-time
 - Great IDE support
@@ -138,7 +136,7 @@ Because Scala is considered to be a [strong, statically-typed language](https://
 - Method type declarations tell readers what the method does, and help serve as documentation
 - Types make your code easier to maintain
 - Scalability: types help ensure correctness across arbitrarily large applications and development teams
-- Strong types enable Scala features like implicits (TODO: I need help on this wording and description)
+- Strong typing in combination with excellent inference enables mechanisms like [contextual abstraction]({{ site.scala3ref }}/contextual/motivation.html) that allows you to omit boilerplate code. Often, this boilerplate code can be inferred by the compiler, based on type definitions and a given context (e.g. method arguments for implicit parameters).
 
 {% comment %}
 In that list:
@@ -147,12 +145,6 @@ In that list:
   - catch most errors in the IDE
   - Easy and reliable refactoring
   - Reliable code completion
-{% endcomment %}
-
-{% comment %}
-In this section or the next section:
-- TODO: Add a note about the benefits of the DOT calculus
-- TODO: Also add a note about TASTy?
 {% endcomment %}
 
 
@@ -204,21 +196,23 @@ Scala is a functional programming (FP) language, meaning:
 - Lambdas are built in
 - Everything in Scala is an expression that returns a value
 - Syntactically it’s easy to use immutable variables, and their use is encouraged
-- It has a wealth of immutable collections classes in the standard library
-- Those collections classes come with dozens of functional methods: they don’t mutate the collection, but instead return an updated copy of the data
+- It has a wealth of immutable collection classes in the standard library
+- Those collection classes come with dozens of functional methods: they don’t mutate the collection, but instead return an updated copy of the data
 
 
 ### A pure OOP language
 
 Scala is a _pure_ object-oriented programming (OOP) language.
-Every variable is an object, and every “operator” is a method.
+Every variable is an object and every “operator” is a method.
 
 In Scala, all types inherit from a top-level class `Any`, whose immediate children are `AnyVal` (_value types_, such as `Int` and `Boolean`) and `AnyRef` (_reference types_, as in Java).
 This means that the Java distinction between primitive types and boxed types (e.g. `int` vs. `Integer`) isn’t present in Scala.
 Boxing and unboxing is completely transparent to the user.
 
 {% comment %}
-Add the “types hierarchy” image here?
+- AnyRef above is wrong in case of strict null checking, no? On the other hand, maybe too much information to state this here
+- probably not worth to mention (too advanced at this point) there is AnyKind
+- Add the “types hierarchy” image here?
 {% endcomment %}
 
 
@@ -228,7 +222,7 @@ Add the “types hierarchy” image here?
 NOTE: This text in the first line comes from this slide: https://twitter.com/alexelcu/status/996408359514525696
 {% endcomment %}
 
-The essence of Scala is the fusion of functional programming and object-oriented programming in a typed settings:
+The essence of Scala is the fusion of functional programming and object-oriented programming in a typed setting:
 
 - Functions for the logic
 - Objects for the modularity
@@ -272,7 +266,7 @@ In regards to the first point, Java classes and libraries are used in Scala appl
 For instance, in Scala you can read files with a Java `BufferedReader` and `FileReader`:
 
 ```scala
-import java.io._
+import java.io.*
 val br = BufferedReader(FileReader(filename))
 // read the file with `br` ...
 ```
@@ -282,7 +276,7 @@ Using Java code in Scala is generally seamless.
 Java collections can also be used in Scala, and if you want to use Scala’s rich collection class methods with them, you can convert them with just a few lines of code:
 
 ```scala
-import scala.jdk.CollectionConverters._
+import scala.jdk.CollectionConverters.*
 val scalaList: Seq[Integer] = JavaClass.getJavaList().asScala.toSeq
 ```
 
@@ -332,7 +326,7 @@ At a “sea level” view of the details---i.e., the language features programme
     - Export clauses provide a simple and general way to express aggregation, which can replace the previous facade pattern of package objects inheriting from classes
     - The procedure syntax has been dropped, and the varargs syntax has been changed, both to make the language more consistent
     - The `@infix` annotation makes it obvious how you want a method to be applied
-    - The `@alpha` method annotation defines an alternate name for the method, improving Java interoperability, and letting you provide aliases for symbolic operators
+    - The [`@targetName`]({{ site.scala3ref }}/other-new-features/targetName.html) method annotation defines an alternate name for the method, improving Java interoperability, and letting you provide aliases for symbolic operators
 
 It would take too much space to demonstrate all of those features here, but follow the links in the items above to see those features in action.
 All of these features are discussed in detail in the *New*, *Changed*, and *Dropped* features pages in the [Overview documentation][reference].
@@ -499,7 +493,6 @@ As this page shows, Scala has many terrific programming language features at a h
 [extension]: {% link _overviews/scala3-book/ca-extension-methods.md %}
 [givens]: {% link _overviews/scala3-book/ca-given-using-clauses.md %}
 [opaque_types]: {% link _overviews/scala3-book/types-opaque-types.md %}
-
 
 
 

@@ -1,0 +1,32 @@
+name: Build
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.5.8
+          bundler-cache: true
+      - name: Set up coursier
+        uses: laughedelic/coursier-setup@v1
+        with:
+          jvm: adopt:11
+      - name: Run mdoc
+        run: |
+          ./scripts/run-mdoc.sh
+          rm -r /tmp/mdoc-out/
+      - name: Jekyll build
+        run: bundle exec jekyll build
+      - name: HTMLProofer
+        run: |
+          # # Checking for docs.scala-lang/blob/master leads to a chicken and egg problem because of the edit links of new pages.
+          bundle exec htmlproofer ./_site/\
+             --only-4xx\
+             --http-status-ignore "400,401,429"\
+             --empty-alt-ignore\
+             --allow-hash-href\
+             --url-ignore '/https://github.com/scala/docs.scala-lang/blob/master/.*/,/www.oracle.com/'
+

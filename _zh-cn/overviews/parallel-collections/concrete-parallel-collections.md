@@ -52,7 +52,7 @@ language: zh-cn
 
 ### 并行哈希表(Parallel Hash Tables)
 
-并行哈希表存储在底层数组的元素，并将它们放置在由各自元素的哈希码的位置。并行不变的哈希集(set)（[mutable.ParHashSet](https://www.scala-lang.org/api/2.10.0/scala/collection/parallel/mutable/ParHashSet.html)）和并行不变的哈希映射([mutable.ParHashMap](https://www.scala-lang.org/api/2.10.0/scala/collection/parallel/mutable/ParHashMap.html)) 是基于哈希表的。
+并行哈希表存储在底层数组的元素，并将它们放置在由各自元素的哈希码的位置。并行不变的哈希集(set)（[mutable.ParHashSet](https://www.scala-lang.org/api/{{ site.scala-212-version}}/scala/collection/parallel/mutable/ParHashSet.html)）和并行不变的哈希映射([mutable.ParHashMap](https://www.scala-lang.org/api/{{ site.scala-212-version}}/scala/collection/parallel/mutable/ParHashMap.html)) 是基于哈希表的。
 
     scala> val phs = scala.collection.parallel.mutable.ParHashSet(1 until 2000: _*)
     phs: scala.collection.parallel.mutable.ParHashSet[Int] = ParHashSet(18, 327, 736, 1045, 773, 1082,...
@@ -66,7 +66,7 @@ language: zh-cn
 
 ### 并行散列Tries(Parallel Hash Tries)
 
-并行hash tries是不可变(immutable)hash tries的并行版本，这种结果可以用来高效的维护不可变集合(immutable set)和不可变关联数组(immutable map)。他们都支持类[immutable.ParHashSet](https://www.scala-lang.org/api/2.10.0/scala/collection/parallel/immutable/ParHashSet.html)和[immutable.ParHashMap](https://www.scala-lang.org/api/2.10.0/scala/collection/parallel/immutable/ParHashMap.html)。
+并行hash tries是不可变(immutable)hash tries的并行版本，这种结果可以用来高效的维护不可变集合(immutable set)和不可变关联数组(immutable map)。他们都支持类[immutable.ParHashSet](https://www.scala-lang.org/api/{{ site.scala-212-version}}/scala/collection/parallel/immutable/ParHashSet.html)和[immutable.ParHashMap](https://www.scala-lang.org/api/{{ site.scala-212-version}}/scala/collection/parallel/immutable/ParHashMap.html)。
 
     scala> val phs = scala.collection.parallel.immutable.ParHashSet(1 until 1000: _*)
     phs: scala.collection.parallel.immutable.ParHashSet[Int] = ParSet(645, 892, 69, 809, 629, 365, 138, 760, 101, 479,...
@@ -80,7 +80,7 @@ language: zh-cn
 
 ### 并行并发tries(Parallel Concurrent Tries)
 
-[ concurrent.triemap ](https://www.scala-lang.org/api/2.10.0/scala/collection/concurrent/TrieMap.html)是竞争对手的线程安全的地图，而[ mutable.partriemap ](https://www.scala-lang.org/api/2.10.0/scala/collection/parallel/mutable/ParTrieMap.html) 是他的并行副本。如果这个数据结构在遍历的过程中被修改了，大多数竞争对手的数据结构不能确保一致遍历，尝试确保在下一次迭代中更新是可见的。这意味着，你可以在尝试遍历的时候改变这些一致性，如下例子所示输出1到99的平方根。
+[ concurrent.triemap ](https://www.scala-lang.org/api/{{ site.scala-212-version}}/scala/collection/concurrent/TrieMap.html)是竞争对手的线程安全的地图，而[ mutable.partriemap ](https://www.scala-lang.org/api/{{ site.scala-212-version}}/scala/collection/parallel/mutable/ParTrieMap.html) 是他的并行副本。如果这个数据结构在遍历的过程中被修改了，大多数竞争对手的数据结构不能确保一致遍历，尝试确保在下一次迭代中更新是可见的。这意味着，你可以在尝试遍历的时候改变这些一致性，如下例子所示输出1到99的平方根。
 
     scala> val numbers = scala.collection.parallel.mutable.ParTrieMap((1 until 100) zip (1 until 100): _*) map { case (k, v) => (k.toDouble, v.toDouble) }
     numbers: scala.collection.parallel.mutable.ParTrieMap[Double,Double] = ParTrieMap(0.0 -> 0.0, 42.0 -> 42.0, 70.0 -> 70.0, 2.0 -> 2.0,...

@@ -28,7 +28,7 @@ val twentySomethings =
   for (user <- userBase if user.age >=20 && user.age < 30)
   yield user.name  // i.e. add this to a list
 
-twentySomethings.foreach(name => println(name))  // prints Travis Dennis
+twentySomethings.foreach(println)  // prints Travis Dennis
 ```
 
 A `for` loop with a `yield` statement returns a result, the container type of which is determined by the first generator. `user <- userBase` is a `List`, and because we said `yield user.name` where `user.name` is a `String`, the overall result is a `List[String]`. And `if user.age >=20 && user.age < 30` is a guard that filters out users who are not in their twenties.

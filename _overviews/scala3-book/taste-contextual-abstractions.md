@@ -12,19 +12,43 @@ next-page: taste-toplevel-definitions
 TODO: Now that this is a separate section, it needs a little more content.
 {% endcomment %}
 
+Under certain circumstances, you can omit some parameters of method calls that are considered repetitive.
 
-Under certain circumstances, the Scala compiler can “write” some parts of your programs.
-For instance, consider a program that sorts a list of addresses by two criteria, city name and then street name:
+Those parameters are called _Context Parameters_ because they are inferred by the compiler from the context surrounding the method call.
+
+For instance, consider a program that sorts a list of addresses by two criteria: the city name and then street name.
 
 ```scala
 val addresses: List[Address] = ...
+
 addresses.sortBy(address => (address.city, address.street))
 ```
 
-The sorting algorithm needs to compare addresses by first comparing their city names, and then also their street names when the city names are the same.
-However, with the use of contextual abstraction, you don’t need to manually define this ordering relation, because the compiler is able to summon it automatically based on an existing ordering relation for comparing string values.
+The `sortBy` method takes a function that returns, for every address, the value to compare it with the other addresses.
+In this case, we pass a function that returns a pair containing the city name and the street name.
 
-For more details, see the [Contextual Abstractions chapter][contextual] of this book, and also in the [Reference documentation][reference].
+Note that we only indicate _what_ to compare, but not _how_ to perform the comparison.
+How does the sorting algorithm know how to compare pairs of `String`?
+
+Actually, the `sortBy` method takes a second parameter---a context parameter---that is inferred by the compiler.
+It does not appear in the above example because it is supplied by the compiler.
+
+This second parameter implements the _how_ to compare.
+It is convenient to omit it because we know `String`s are generally compared using the lexicographic order.
+
+However, it is also possible to pass it explicitly:
+
+```scala
+addresses.sortBy(address => (address.city, address.street))(using Ordering.Tuple2(Ordering.String, Ordering.String))
+```
+
+In this case, the `Ordering.Tuple2(Ordering.String, Ordering.String)` instance is exactly the one that is otherwise inferred by the compiler.
+In other words both examples produce the same program.
+
+_Contextual Abstractions_ are used to avoid repetition of code.
+They help developers write pieces of code that are extensible and concise at the same time.
+
+For more details, see the [Contextual Abstractions chapter][contextual] of this book, and also the [Reference documentation][reference].
 
 
 

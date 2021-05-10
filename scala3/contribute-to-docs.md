@@ -23,7 +23,7 @@ In general, there is many different ways you could help us:
 - **Typos and other small text enhancements?** Create a PR.
 - **Want to add something new or make larger changes?** Great! Please open an issue and let us discuss this.
 
-Typically, each of the different documentation projects contain links (and so does this document, in the table-of-contents pane) to edit and improve them. Additionally, below we provide you with the necessary information to get started.
+Typically, each of the different documentation projects contain links (and so does this document, in the table-of-contents pane - so far only visible in the desktop view) to edit and improve them. Additionally, below we provide you with the necessary information to get started.
 
 ## Scala 3 Book
 The [Scala 3 Book][scala3-book] is being written by Alvin Alexander and provides an overview over all the important features of Scala 3. It targets readers, which are new to Scala.
@@ -37,28 +37,8 @@ The [Macros Tutorial](/scala3/guides/macros) is being written by Nicolas Stucki 
 - [Sources](https://github.com/scala/docs.scala-lang/tree/master/_overviews/scala3-macros)
 - [Issues](https://github.com/scala/docs.scala-lang/issues)
 
-### Status
-
-This tutorial will cover all that is needed to start writing macros.
-The first part (M-1) will cover `inline`, the second part (M-2) will cover macros and quoted expressions and the third part (M-3) will cover how to use the TASTy reflection API.
-Additionally, we will include a cross-compilation/migration guide (M-A).
-
-- **M-A Cross-compilation** (in progress)
-  * Update/complete [migration status][migration-status] (help needed)
-  * Write [cross-compilation][cross-compilation]
-  * Create simple example projects in SBT and Mill
-- **M-1 Inline tutorial**
-  * Write [inline tutorial][inline] (in progress)
-  * Write [scala.compiletime tutorial][compiletime]: Each feature or group of featurs will need a section
-- **M-2 Macro tutorial** (not started)
-  * Write [macros tutorial][macros]: Understanding relation between inline and quoted expressions
-  * Write [quoted expressions tutorial][quotes]: Dive deep into all quoted expression features
-- **M-3 TASTy reflect API** (not started)
-  * Write [TASTy reflection tutorial][tasty] (not started): How to access it and the relation with quoted expressions
-  * Complete [TASTy reflect API][reflection-api] docs (help needed)
-
 ## Migration Guide
-The [Scala 3 Migration Guide](https://scalacenter.github.io/scala-3-migration-guide/)
+The [Scala 3 Migration Guide](/scala3/guides/migration/compatibility-intro.html)
 contains an comprehensive overview over compatibility between Scala 2 and Scala 3,
 a tour presenting the migration tools, and detailed migration guides.
 
@@ -75,13 +55,3 @@ The [Dotty reference](https://dotty.epfl.ch/docs/reference/overview.html) will e
 
 
 [scala3-book]: {% link _overviews/scala3-book/introduction.md %}
-
-[best-practices]: {% link _overviews/scala3-macros/best-practices.md %}
-[compiletime]: {% link _overviews/scala3-macros/tutorial/compiletime.md %}
-[cross-compilation]: https://scalacenter.github.io/scala-3-migration-guide/docs/macros/migration-tutorial.html#cross-building
-[inline]: {% link _overviews/scala3-macros/tutorial/inline.md %}
-[macros]: {% link _overviews/scala3-macros/tutorial/macros.md %}
-[migration-status]: https://scalacenter.github.io/scala-3-migration-guide/docs/macros/macro-libraries.html#macro-libraries
-[quotes]: {% link _overviews/scala3-macros/tutorial/quotes.md %}
-[tasty]: {% link _overviews/scala3-macros/tutorial/reflection.md %}
-[reflection-api]: https://dotty.epfl.ch/api/scala/quoted.html

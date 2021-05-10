@@ -22,7 +22,7 @@ The Scala installer is a tool named `cs` that ensures that a JVM and standard Sc
 
 <div class="main-download">
     <div id="download-step-one">
-        <p>Follow <a href="https://get-coursier.io/docs/cli-overview.html#install-native-launcher" target="_blank">the instructions to install the <code>cs</code> launcher</a> then run:</p>
+        <p>Follow <a href="https://get-coursier.io/docs/cli-installation.html#native-launcher" target="_blank">the instructions to install the <code>cs</code> launcher</a> then run:</p>
         <p><code>$ ./cs setup</code></p>
     </div>
 </div>

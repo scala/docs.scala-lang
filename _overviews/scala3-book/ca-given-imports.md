@@ -18,23 +18,23 @@ object A:
   def f(using TC) = ???
 
 object B:
-  import A._       // import all non-given members
+  import A.*       // import all non-given members
   import A.given   // import the given instance
 ```
 
-In this code the `import A._` clause of object `B` imports all members of `A` *except* the `given` instance, `tc`.
+In this code the `import A.*` clause of object `B` imports all members of `A` *except* the `given` instance, `tc`.
 Conversely, the second import, `import A.given`, imports *only* that `given` instance.
 The two `import` clauses can also be merged into one:
 
 ```scala
 object B:
-  import A.{given, _}
+  import A.{given, *}
 ```
 
 
 ## Discussion
 
-The wildcard selector `_` brings all definitions other than givens or extensions into scope, whereas a `given` selector brings all *givens*---including those resulting from extensions---into scope.
+The wildcard selector `*` brings all definitions other than givens or extensions into scope, whereas a `given` selector brings all *givens*---including those resulting from extensions---into scope.
 
 These rules have two main benefits:
 

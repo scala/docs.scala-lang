@@ -25,7 +25,7 @@ def isTruthy(a: Boolean | Int | String): Boolean = ???
 def dogCatOrWhatever(): Dog | Plant | Car | Sun = ???
 ```
 
-As the example suggests, when using union types, thetypes don’t have to share a common hierarchy, and you can still accept them as arguments or return them from a method.
+As the example suggests, when using union types, the types don’t have to share a common hierarchy, and you can still accept them as arguments or return them from a method.
 
 If you’re an application developer, you’ll use features like type inference every day and generics every week.
 When you read the Scaladoc for classes and methods, you’ll also need to have some understanding of _variance_.

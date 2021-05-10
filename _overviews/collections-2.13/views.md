@@ -18,8 +18,8 @@ There are two principal ways to implement transformers. One is _strict_, that is
 
 As an example of a non-strict transformer consider the following implementation of a lazy map operation:
 
-    def lazyMap[T, U](coll: Iterable[T], f: T => U) = new Iterable[U] {
-      def iterator = coll.iterator map f
+    def lazyMap[T, U](iter: Iterable[T], f: T => U) = new Iterable[U] {
+      def iterator = iter.iterator map f
     }
 
 Note that `lazyMap` constructs a new `Iterable` without stepping through all elements of the given collection `coll`. The given function `f` is instead applied to the elements of the new collection's `iterator` as they are demanded.

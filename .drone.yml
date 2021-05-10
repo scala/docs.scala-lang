@@ -1,5 +1,0 @@
-pipeline:
-  build:
-    image: scalacenter/scala-rvm-jvm-coursier:2.0
-    commands:
-      - ./scripts/ci.sh

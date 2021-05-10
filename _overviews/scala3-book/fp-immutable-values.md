@@ -19,10 +19,6 @@ Using only immutable variables raises an interesting question: If everything is 
 When it comes to using collections, one answer is that you don’t mutate an existing collection; instead, you apply a function to an existing collection to create a new collection.
 This is where higher-order functions like `map` and `filter` come in.
 
-{% comment %}
-TODO: need a better example
-{% endcomment %}
-
 For example, imagine that you have a list of names---a `List[String]`---that are all in lowercase, and you want to find all the names that begin with the letter `"j"`, and then you want to capitalize those names.
 In FP you write this code:
 
@@ -59,7 +55,7 @@ val reginald = Person("Reginald", "Dwight")
 Then, when you need to make a change to the data, you use the `copy` method that comes with a `case` class to “update the data as you make a copy,” like this:
 
 ```scala
-val elton = p.copy(
+val elton = reginald.copy(
   firstName = "Elton",   // update the first name
   lastName = "John"      // update the last name
 )
