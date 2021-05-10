@@ -11,7 +11,7 @@ next-page: scala-for-javascript-devs
 <div markdown="1" class="scala3-comparison-page">
 
 
-This page provides a comparison between the Java and Scala programming languages by sharing side-by-sde examples of each language.
+This page provides a comparison between the Java and Scala programming languages by sharing side-by-side examples of each language.
 It’s intended for programmers who know Java and want to learn about Scala, specifically by seeing how Scala features compare to Java.
 
 
@@ -25,13 +25,13 @@ It presents the similarities and differences between Java and Scala at a high le
 
 At a high level, Scala shares these similarities with Java:
 
-- Scala code is compiled to *.class* files, packaged in JAR files, and runs on the JVM
-- It’s an object-oriented programming (OOP) language
+- Scala code is compiled to _.class_ files, packaged in JAR files, and runs on the JVM
+- It’s an [object-oriented programming][modeling-oop] (OOP) language
 - It’s statically typed
-- Both languages have support for immutable collections, lambdas, and higher-order functions
+- Both languages have support for lambdas and [higher-order functions][hofs]
 - They can both be used with IDEs like IntelliJ IDEA and Microsoft VS Code
 - Projects can be built with build tools like Gradle, Ant, and Maven
-- It has terrific libraries and frameworks for building server-side, network-intensive applications, including web server applications, microservices, machine learning, and more
+- It has terrific libraries and frameworks for building server-side, network-intensive applications, including web server applications, microservices, machine learning, and more (see the [“Awesome Scala” list](https://github.com/lauris/awesome-scala))
 - Both Java and Scala can use Scala libraries:
    - They can use the [Akka actors library](https://akka.io) to build actor-based concurrent systems, and Apache Spark to build data-intensive applications
    - They can use the [Play Framework](https://www.playframework.com) to develop server-side applications
@@ -42,13 +42,14 @@ At a high level, Scala shares these similarities with Java:
 
 Also at a high level, the differences between Java and Scala are:
 
-- Scala has a concise but readable syntax; we call it *expressive*
+- Scala has a concise but readable syntax; we call it _expressive_
 - Though it’s statically typed, Scala often feels like a dynamic language
 - Scala is a pure OOP language, so every object is an instance of a class, and symbols like `+` and `+=` that look like operators are really methods; this means that you can create your own operators
 - In addition to being a pure OOP language, Scala is also a pure FP language; in fact, it encourages a fusion of OOP and FP, with functions for the logic and objects for modularity
-- Everything in Scala is an *expression*: constructs like `if` statements, `for` loops, `match` expressions, and even `try`/`catch` expressions all have return values
+- Scala has a full suite of immutable collections, including `List`, `Vector`, and immutable `Map` and `Set` implementations
+- Everything in Scala is an _expression_: constructs like `if` statements, `for` loops, `match` expressions, and even `try`/`catch` expressions all have return values
 - Scala idioms favor immutability by default: you’re encouraged to use immutable (`final`) variables and immutable collections
-- The Scala ecosystem has other build tools in sbt, Mill, and others
+- The Scala ecosystem has other [build tools][tools] in sbt, Mill, and others
 - In addition to running on the JVM, the [Scala.js](https://www.scala-js.org) project lets you use Scala as a JavaScript replacement
 - The [Scala Native](http://www.scala-native.org) project adds low-level constructs to let you write “systems” level code, and also compiles to native executables
 
@@ -66,22 +67,22 @@ Finally, these are some of the differences you’ll see every day when writing c
 
 - Scala’s syntax is extremely consistent
 - Variables and parameters are defined as `val` (immutable, like `final` in Java) or `var` (mutable)
-- *Type inference* makes your code feel dynamically typed, and helps to keep your code brief
+- _Type inference_ makes your code feel dynamically typed, and helps to keep your code brief
 - In addition to simple `for` loops, Scala has powerful `for` comprehensions that yield results based on your algorithms
 - Pattern matching and `match` expressions will change the way you write code
-- Writing immutable code by default leads to writing *expressions* rather than *statements*; in time you see that writing expressions simplifies your code (and your tests)
-- *Toplevel definitions* let you put method, field, and other definitions anywhere, also leading to concise, expressive code
-- You can create *mixins* by “mixing” multiple traits into classes and objects (traits are similar to interfaces in Java 8 and newer)
-- Classes are closed by default, supporting Joshua Bloch’s *Effective Java* idiom, “Design and document for inheritance or else forbid it”
-- Scala’s *contextual abstractions* and *term inference* provide a collection of features:
-  - *Extension methods* let you add new functionality to closed classes
-  - *Given* instances let you define terms that the compiler can synthesize at *using* points, making your code less verbose and essentially letting the compiler write code for you
-  - *Multiversal equality* lets you limit equality comparisons---at compile time---to only those comparisons that make sense
+- Writing immutable code by default leads to writing _expressions_ rather than _statements_; in time you see that writing expressions simplifies your code (and your tests)
+- [Toplevel definitions][toplevel] let you put method, field, and other definitions anywhere, also leading to concise, expressive code
+- You can create _mixins_ by “mixing” multiple traits into classes and objects (traits are similar to interfaces in Java 8 and newer)
+- Classes are closed by default, supporting Joshua Bloch’s _Effective Java_ idiom, “Design and document for inheritance or else forbid it”
+- Scala’s [contextual abstractions][contextual] and _term inference_ provide a collection of features:
+  - [Extension methods][extension-methods] let you add new functionality to closed classes
+  - [_Given_ instances][givens] let you define terms that the compiler can synthesize at _using_ points, making your code less verbose and essentially letting the compiler write code for you
+  - [Multiversal equality][multiversal] lets you limit equality comparisons---at compile time---to only those comparisons that make sense
 - Scala has state of the art, third-party, open source functional programming libraries
 - Scala case classes are like records in Java 14; they help you model data when writing FP code, with built-in support for concepts like pattern matching and cloning
-- Thanks to features like by-name parameters, infix notation, optional parentheses, extension methods, and higher-order functions, you can create your own “control structures” and DSLs
+- Thanks to features like by-name parameters, infix notation, optional parentheses, extension methods, and [higher-order functions][hofs], you can create your own “control structures” and DSLs
 - Scala files do not have to be named according to the classes or traits they contain
-- Many other goodies: companion classes and objects, macros, union and intersection types, toplevel definitions, numeric literals, multiple parameter lists, default values for parameters, named arguments, and more
+- Many other goodies: companion classes and objects, macros, [union][union-types] and [intersection][intersection-types], numeric literals, multiple parameter lists, default values for parameters, named arguments, and more
 
 ### Features compared with examples
 
@@ -520,7 +521,7 @@ These interfaces and traits have concrete, implemented methods (default methods)
 
 ## Control structures
 
-This section compares control structures in Java and Scala.
+This section compares [control structures][control] in Java and Scala.
 
 ### `if` statement, one line:
 
@@ -889,7 +890,7 @@ Called a _ternary operator_ in Java:
 
 ## Collections classes
 
-This section compares the collections classes that are available in Java and Scala.
+This section compares the [collections classes][collections-classes] that are available in Java and Scala.
 
 
 ### Immutable collections classes
@@ -962,8 +963,34 @@ Examples of how to create instances of immutable collections.
 
 ### Mutable collections classes
 
-Scala has mutable collections classes like `ArrayBuffer`, `Map`, and `Set`, in its *scala.collection.mutable* package.
-After importing them into the current scope, they’re created just like the immutable `List`, `Vector`, `Map`, and `Set` examples just shown.
+Scala has mutable collections classes like `ArrayBuffer`, `Map`, and `Set` in its _scala.collection.mutable_ package.
+After [importing them][imports] into the current scope, they’re created just like the immutable `List`, `Vector`, `Map`, and `Set` examples just shown.
+
+Scala also has an `Array` class, which you can think of as being a wrapper around the Java `array` primitive type.
+A Scala `Array[A]` maps to a Java `A[]`, so you can think of this Scala `Array[String]`:
+
+```scala
+val a = Array("a", "b")
+```
+
+as being backed by this Java `String[]`:
+
+```scala
+String[] a = ["a", "b"]
+```
+
+However, a Scala `Array` also has all of the functional methods you expect in a Scala collection, including `map` and `filter`:
+
+```scala
+val nums = Array(1, 2, 3, 4, 5)
+val doubledNums = nums.map(_ * 2)
+val filteredNums = nums.filter(_ > 2)
+```
+
+Because the Scala `Array` is represented in the same way as the Java `array`, you can easily use Java methods that return arrays in your Scala code.
+
+> Despite that discussion of `Array`, bear in mind that often in Scala there are alternatives to `Array` that might be better suited.
+> Arrays are useful for interoperating with other languages (Java, JavaScript) and they may also be useful when writing low-level code that needs to squeeze maximum performance out of the underlying platform. But in general, when you need to use a sequence, the Scala idiom is to prefer immutable sequences like `Vector` and `List`, and then use `ArrayBuffer` if and when when you really need a mutable sequence.
 
 You can also convert between Java and Scala collections classes with the Scala `CollectionConverters` objects.
 There are two objects in different packages, one for converting from Java to Scala, and another for converting from Scala to Java.
@@ -1014,13 +1041,13 @@ With the ability to treat Java collections as streams, Java and Scala now have m
 - `findFirst`/`find`
 - `reduce`  
 
-If you’re used to using these methods with lambda expressions in Java, you’ll find it easy to use the same methods on Scala’s collection classes.
+If you’re used to using these methods with lambda expressions in Java, you’ll find it easy to use the same methods on Scala’s [collection classes][collections-classes].
 
-Scala also has *dozens* of other collections methods, including `head`, `tail`, `drop`, `take`, `distinct`, `flatten`, and many more.
-At first you may wonder why there are so many methods, but after working with Scala you’ll realize that because of these methods, you rarely ever need to write custom `for` loops any more.
+Scala also has _dozens_ of other [collections methods][collections-methods], including `head`, `tail`, `drop`, `take`, `distinct`, `flatten`, and many more.
+At first you may wonder why there are so many methods, but after working with Scala you’ll realize that _because_ of these methods, you rarely ever need to write custom `for` loops any more.
 
-(This also means that you rarely need to *read* custom `for` loops, as well.
-Because developers tend to spend on the order of ten times as much time *reading* code as *writing* code, this is significant.)
+(This also means that you rarely need to _read_ custom `for` loops, as well.
+Because developers tend to spend on the order of ten times as much time _reading_ code as _writing_ code, this is significant.)
 
 
 
@@ -1195,10 +1222,10 @@ throws NumberFormatException {
 
 ### Scala doesn’t use checked exceptions
 
-The Scala idiom is to *not* use checked exceptions like this.
+The Scala idiom is to _not_ use checked exceptions like this.
 When working with code that can throw exceptions, you can use `try`/`catch`/`finally` blocks to catch exceptions from code that throws them, but how you proceed from there is different.
 
-The best way to explain this is that Scala code consists of *expressions*, which return values.
+The best way to explain this is that Scala code consists of _expressions_, which return values.
 As a result, you end up writing your code as a series of algebraic expressions:
 
 ```scala
@@ -1251,13 +1278,12 @@ That concludes are comparison of the Java and Scala languages.
 Currently there are other concepts in Scala which currently have no equal in Java 11.
 This includes:
 
-- Everything related to Scala’s contextual abstractions
+- Everything related to Scala’s [contextual abstractions][contextual]
 - Several Scala method features:
   - Multiple parameter lists
   - Default parameter values
   - Using named arguments when calling methods
-- Case classes (like “records” in Java 14) and case objects
-- Companion classes and objects
+- Case classes (like “records” in Java 14), case objects, and companion classes and objects (see the [Domain Modeling][modeling-intro]) chapter
 - The ability to create your own control structures and DSLs
 - [Toplevel definitions][toplevel]
 - Pattern matching
@@ -1271,11 +1297,33 @@ This includes:
 - Macros and metaprogramming
 
 
-[toplevel]: {% link _overviews/scala3-book/taste-toplevel-definitions.md %}
-[opaque]: {% link _overviews/scala3-book/types-opaque-types.md %}
+[collections-classes]: {% link _overviews/scala3-book/collections-classes.md %}
+[collections-methods]: {% link _overviews/scala3-book/collections-methods.md %}
+[control]: {% link _overviews/scala3-book/control-structures.md %}
 [equality]: {% link _overviews/scala3-book/ca-multiversal-equality.md %}
-[type-classes]: {% link _overviews/scala3-book/ca-type-classes.md %}
 [error-handling]: {% link _overviews/scala3-book/fp-functional-error-handling.md %}
+[extension-methods]: {% link _overviews/scala3-book/ca-extension-methods.md %}
+[givens]: {% link _overviews/scala3-book/ca-given-using-clauses.md %}
+[hofs]: {% link _overviews/scala3-book/fun-hofs.md %}
+[imports]: {% link _overviews/scala3-book/packaging-imports.md %}
+[modeling-intro]: {% link _overviews/scala3-book/domain-modeling-intro.md %}
+[modeling-oop]: {% link _overviews/scala3-book/domain-modeling-oop.md %}
+[opaque]: {% link _overviews/scala3-book/types-opaque-types.md %}
+[tools]: {% link _overviews/scala3-book/scala-tools.md %}
+[toplevel]: {% link _overviews/scala3-book/taste-toplevel-definitions.md %}
+[type-classes]: {% link _overviews/scala3-book/ca-type-classes.md %}
+
+
+
+
+
+[concurrency]: {% link _overviews/scala3-book/concurrency.md %}
+[contextual]: {% link _overviews/scala3-book/ca-contextual-abstractions-intro.md %}
+[control]: {% link _overviews/scala3-book/control-structures.md %}
+[fp-intro]: {% link _overviews/scala3-book/fp-intro.md %}
+[intersection-types]: {% link _overviews/scala3-book/types-intersection.md %}
+[modeling-fp]: {% link _overviews/scala3-book/domain-modeling-fp.md %}
+[multiversal]: {% link _overviews/scala3-book/ca-multiversal-equality.md %}
+[union-types]: {% link _overviews/scala3-book/types-union.md %}
 
 </div>
-

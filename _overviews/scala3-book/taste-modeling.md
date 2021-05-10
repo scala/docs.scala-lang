@@ -35,10 +35,6 @@ Scala traits can be used as simple interfaces, but they can also contain abstrac
 They provide a great way for you to organize behaviors into small, modular units.
 Later, when you want to create concrete implementations of attributes and behaviors, classes and objects can extend traits, mixing in as many traits as needed to achieve the desired behavior.
 
-{% comment %}
-TODO: Need a better example. This one shows behaviors, not data.
-{% endcomment %}
-
 As an example of how to use traits as interfaces, here are three traits that define well-organized and modular behaviors for animals like dogs and cats:
 
 ```scala
