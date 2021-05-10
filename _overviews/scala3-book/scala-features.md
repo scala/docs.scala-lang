@@ -124,7 +124,7 @@ val z = nums.filter(_ > 100)
             .map(_ * 2)
 ```
 
-Because Scala is considered to be a [strong, statically-typed language](https://heather.miller.am/blog/types-in-scala.html), you get all the benefits of static types:
+As Heather Miller states, Scala is considered to be a [strong, statically-typed language](https://heather.miller.am/blog/types-in-scala.html), and you get all the benefits of static types:
 
 - Correctness: you catch most errors at compile-time
 - Great IDE support
@@ -145,12 +145,6 @@ In that list:
   - catch most errors in the IDE
   - Easy and reliable refactoring
   - Reliable code completion
-{% endcomment %}
-
-{% comment %}
-In this section or the next section:
-- TODO: Add a note about the benefits of the DOT calculus
-- TODO: Also add a note about TASTy?
 {% endcomment %}
 
 
