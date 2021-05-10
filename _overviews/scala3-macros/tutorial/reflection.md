@@ -43,16 +43,16 @@ This will import all the types and modules (with extension methods) of the API.
 The full imported API can be found here: [Reflection][reflection doc].
 Unfortunately, at this stage, this automatically generated documentation is not very easy to navigate.
 
-The most important element on the page is the hierarchy tree which provides a syntethic overview of the subtyping relationships of
+The most important element on the page is the hierarchy tree which provides a synthetic overview of the subtyping relationships of
 the types in the API. For each type `Type` in the tree:
 
  - the object `TypeMethods` contains the methods available for `Type`
- - the object `TypeModule` contains some _static-ish_ methods, most notably eventual constructors (`apply/copy`) and the `unapply` method which provides the extractor(s) required for pattern matching.
+ - the object `TypeModule` contains some _static-ish_ methods, most notably constructors (`apply/copy`) and the `unapply` method which provides the extractor(s) required for pattern matching.
  - For all types `Upper` such that `Type <: Upper`, the methods defined in `UpperMethods` are available on `Type` as well.
 
 For example `TypeBounds`, a subtype of `TypeRepr`, represents a type tree of the form `T >: L <: U`: a type `T` which is a super type of `L`
-and a subtype of `U`. In `TypeBoundsMethods` you will find the methods `low` and `hi` which allow you to access the
-representations of `L` and `U`. In `TypeBoundsModule` you will find the `unapply` method which enables you to write:
+and a subtype of `U`. In `TypeBoundsMethods`, you will find the methods `low` and `hi`, which allow you to access the
+representations of `L` and `U`. In `TypeBoundsModule`, you will find the `unapply` method, which allows you to write:
 
 ```scala
 def f(tb: TypeBounds) =
@@ -104,10 +104,10 @@ The APIs of `Term` and `TypeTree` are relatively *closed* in the sense that meth
 whose types are defined in the API. You might notice however the presence of `Symbol`s which identify definitions.
 
 Each `Term` or `TypeRepr` (therefore `Expr` and `Type`) have an associated symbol.
-`Symbol` exposes and is used by many useful methods for example:
+`Symbol` exposes and is used by many useful methods. For example:
 
  - `declaredFields` and `declaredMethods` allow you to iterate on the fields and members defined inside a symbol
- - `flags` allow you to check multiple properties of a symbol
+ - `flags` allows you to check multiple properties of a symbol
  - `companionObject` and `companionModule` provide a way to jump to and from the companion object/class.
  - `TypeRepr.baseClasses` returns the list of symbols of classes extended by a type. 
  - `Symbol.pos` gives you access to the position where the symbol is defined, the source code of the definition
@@ -123,7 +123,7 @@ Each `Term` or `TypeRepr` (therefore `Expr` and `Type`) have an associated symbo
  - `Tree.symbol` returns the symbol associated to a tree. Given that `Term <: Tree`,
  `Expr.asTerm.symbol` is the best way to obtain the symbol associated to an `Expr[T]`
 
- - `Symbol.tree` returns the `Tree` associated to the symbol. Be extremely careful when using this
+ - `Symbol.tree` returns the `Tree` associated to the symbol. Be careful when using this
  method as the tree for a symbol might not be defined. When the code associated to the symbol
  is defined in a different moment than this access, if the `Yretain-trees` compilation option
  is not used, then the `tree` of the symbol will not be available. Symbols originated from
