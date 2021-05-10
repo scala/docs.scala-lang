@@ -115,24 +115,21 @@ There are a multitude of mailing lists and real-time chat rooms in case you want
  -- This is handled in `resources/js/functions.js`.
  --> 
 <div style="display:none" id="stepOne-linux">
-       <code class="hljs">$ curl -Lo cs https://git.io/coursier-cli-linux && chmod +x cs && ./cs setup </code> <br>
-</div>
- 
-<div style="display:none" id="stepOne-unix">
-    <p>Follow <a href="https://get-coursier.io/docs/cli-overview.html#install-native-launcher" target="_blank">the instructions to install the <code>cs</code> launcher</a> then run:</p>
+    <p>Follow <a href="https://get-coursier.io/docs/cli-installation.html#linux-macos" target="_blank">the instructions to install the <code>cs</code> launcher</a> then run:</p>
     <p><code>$ ./cs setup</code></p>
 </div>
- 
-<div style="display:none" id="stepOne-osx">
-    <div class="highlight">
-        <code class="hljs">$ brew install coursier/formulas/coursier && cs setup </code> <br>
-    </div>
-    <p>Alternatively, if you don't use Homebrew</p>
-    <div class="highlight">
-        <code class="hljs">$ curl -Lo cs https://git.io/coursier-cli-macos && chmod +x cs &&  (xattr -d com.apple.quarantine cs || true) && ./cs  setup </code> <br>
-    </div>
-</div>
   
+<div style="display:none" id="stepOne-unix">
+    <p>Follow <a href="https://get-coursier.io/docs/cli-installation.html#linux-macos" target="_blank">the instructions to install the <code>cs</code> launcher</a> then run:</p>
+    <p><code>$ ./cs setup</code></p>
+</div>
+
+<div style="display:none" id="stepOne-unix">
+    <p>Follow <a href="https://get-coursier.io/docs/cli-installation.html#linux-macos" target="_blank">the instructions to install the <code>cs</code> launcher</a> then run:</p>
+    <p><code>$ ./cs setup</code></p>
+</div>
+
 <div style="display:none" id="stepOne-windows">
-    <p>Download and execute <a href="https://git.io/coursier-cli-windows-exe">the Scala installer for Windows</a> based on coursier</p>
+    <p>Download and execute the <a href="https://get-coursier.io/docs/cli-installation.html#windows"><code>cs</code> launcher for Windows</a> then run: </p>
+    <p><code>$ .\cs setup</code></p>
 </div>

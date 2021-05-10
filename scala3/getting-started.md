@@ -27,7 +27,7 @@ Install it on your system with the following instructions.
 
 <div class="main-download">
   <div id="download-step-one">
-    <p>Follow <a href="https://get-coursier.io/docs/cli-overview.html#install-native-launcher" target="_blank">the instructions to install the <code>cs</code> launcher</a> then run:</p>
+    <p>Follow <a href="https://get-coursier.io/docs/cli-installation.html#native-launcher" target="_blank">the instructions to install the <code>cs</code> launcher</a> then run:</p>
     <p><code>$ cs install scala3-repl</code></p>
     <p><code>$ cs install scala3-compiler</code></p>
   </div>
@@ -166,27 +166,22 @@ Check out our [Scala community page](https://scala-lang.org/community/) for a li
  -- This is handled in `resources/js/functions.js`.
  -->
 <div style="display:none" id="stepOne-linux">
-       <code class="hljs">$ curl -Lo cs https://git.io/coursier-cli-linux && chmod +x cs && ./cs setup </code> <br>
+    <p>Follow <a href="https://get-coursier.io/docs/cli-installation.html#linux-macos" target="_blank">the instructions to install the <code>cs</code> launcher</a> then run:</p>
+    <p><code>$ ./cs setup</code></p>
 </div>
-
+  
 <div style="display:none" id="stepOne-unix">
-    <p>Follow <a href="https://get-coursier.io/docs/cli-overview.html#install-native-launcher" target="_blank">the instructions to install the <code>cs</code> launcher</a> then run:</p>
+    <p>Follow <a href="https://get-coursier.io/docs/cli-installation.html#linux-macos" target="_blank">the instructions to install the <code>cs</code> launcher</a> then run:</p>
     <p><code>$ ./cs setup</code></p>
 </div>
 
-<div style="display:none" id="stepOne-osx">
-    <p>If you use Homebrew:</p>
-    <div class="highlight">
-        <code class="hljs">$ brew install coursier/formulas/coursier && cs setup </code> <br>
-    </div>
-    <p>Alternatively, if you don’t use Homebrew:</p>
-    <div class="highlight">
-        <code class="hljs">$ curl -Lo cs https://git.io/coursier-cli-macos && chmod +x cs &&  (xattr -d com.apple.quarantine cs || true) && ./cs  setup </code> <br>
-    </div>
-</div>
 
 <div style="display:none" id="stepOne-windows">
-    <p>Download and execute <a href="https://git.io/coursier-cli-windows-exe">the Scala installer for Windows</a> based on coursier</p>
+    <p>Download and execute the <a href="https://get-coursier.io/docs/cli-installation.html#windows"><code>cs</code> launcher for Windows</a> then run: </p>
+    <p><code>$ .\cs setup</code></p>
+</div>
+<div style="display:none" id="stepOne-linux">
+       <code class="hljs">$ curl -Lo cs https://git.io/coursier-cli-linux && chmod +x cs && ./cs setup </code> <br>
 </div>
 
 [template-url]: https://github.com/scala/scala3.g8
