@@ -88,7 +88,7 @@ For instance, the `happyBirthday` method above generates additional code equival
 
 ```scala
 final class happyBirthday {
-  import scala.util.{CommandLineParser => CLP}
+  import scala.util.{CommandLineParser as CLP}
   <static> def main(args: Array[String]): Unit =
     try
       happyBirthday(

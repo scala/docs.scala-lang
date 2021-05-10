@@ -96,11 +96,6 @@ There are two common answers, depending on your needs:
 - Use a `match` expression
 - Use a `for` expression
 
-> There are other approaches that can be used.
-> See the [Reference documentation][reference] for details on those approaches.
-
-
-
 ## Using a `match` expression
 
 One possible solution is to use a `match` expression:
@@ -325,5 +320,3 @@ This section was long, so let’s give it a quick review:
 - Options can also be used for optional constructor or method parameters
 
 
-
-[reference]: {{ site.scala3ref }}/overview.html

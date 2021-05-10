@@ -377,7 +377,7 @@ Dates are another commonly used type in both languages.
     <tr>
       <td class="scala-block">
           <code>// different ways to get the current date and time
-        <br>import java.time._
+        <br>import java.time.*
         <br>
         <br>val a = LocalDate.now
         <br>&nbsp;&nbsp;&nbsp; // 2020-11-29
@@ -561,9 +561,9 @@ enum Topping:
 
 // import those enumerations and the ArrayBuffer,
 // so the Pizza class can use them
-import CrustSize._
-import CrustType._
-import Topping._
+import CrustSize.*
+import CrustType.*
+import Topping.*
 import scala.collection.mutable.ArrayBuffer
 
 // define an OOP style Pizza class

@@ -48,3 +48,8 @@ Hello, world!
 
 Assuming that worked, congratulations, you just compiled and ran your first Scala application.
 
+> More information about sbt and other tools that make Scala development easier can be found in the [Scala Tools][scala_tools] chapter.
+
+[scala_tools]: {% link _overviews/scala3-book/scala-tools.md %}
+
+

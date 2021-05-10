@@ -15,9 +15,9 @@ keywords:
 - Document
 - Guide
 
-scala-version: 2.13.4
-scala-212-version: 2.12.12
-scala-3-version: 3.0.0-M3
+scala-version: 2.13.5
+scala-212-version: 2.12.13
+scala-3-version: 3.0.0-RC1
 scala-3-plugin-version: 0.5.1
 
 collections:
@@ -103,6 +103,17 @@ defaults:
       overview-name: "Scala 3 — Book"
       layout: multipage-overview
       permalink: "/scala3/book/:title.html"
+  -
+    scope:
+      path: "_overviews/scala3-migration"
+    values:
+      scala3: true
+      # num: 99 # to list them in the TOC, should be overwritten individually
+      partof: scala3-migration
+      type: section
+      overview-name: "Scala 3 Migration Guide"
+      layout: multipage-overview
+      permalink: "/scala3/guides/migration/:title.html"
   -
     scope:
       path: "_overviews/scala3-macros"

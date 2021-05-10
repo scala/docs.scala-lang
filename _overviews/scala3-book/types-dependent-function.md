@@ -33,7 +33,7 @@ The following calls to method `get` would now type check:
 ```scala
 val db: DB = ...
 val res1: Option[String] = db.get(Name)
-val res2: Option[String] = db.get(Age)
+val res2: Option[Int] = db.get(Age)
 ```
 Calling the method `db.get(Name)` returns a value of type `Option[String]`, while calling `db.get(Age)` returns a value of type `Option[Int]`.
 The return type _depends_ on the concrete type of the argument passed to `get`---hence the name _dependent type_.

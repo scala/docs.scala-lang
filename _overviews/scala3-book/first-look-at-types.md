@@ -124,7 +124,7 @@ Those data types and their ranges are:
 | Int           | 32-bit two’s complement integer (-2^31 to 2^31-1, inclusive)<br/>-2,147,483,648 to 2,147,483,647 |
 | Long          | 64-bit two’s complement integer (-2^63 to 2^63-1, inclusive)<br/>(-2^63 to 2^63-1, inclusive)   |
 | Float         | 32-bit IEEE 754 single-precision float<br/>1.40129846432481707e-45 to 3.40282346638528860e+38 |
-| Double        | 64-bit IEEE 754 double-precision float<br/>4.94065645841246544e-324d to 1.79769313486231570e+308d |
+| Double        | 64-bit IEEE 754 double-precision float<br/>4.94065645841246544e-324 to 1.79769313486231570e+308 |
 | Char          | 16-bit unsigned Unicode character (0 to 2^16-1, inclusive)<br/>0 to 65,535 |
 | String        | a sequence of `Char` |
 

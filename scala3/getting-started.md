@@ -1,6 +1,7 @@
 ---
 layout: singlepage-overview
 title: Getting Started with Scala 3
+languages: ["ja"]
 ---
 
 
@@ -8,14 +9,14 @@ title: Getting Started with Scala 3
 ## Try Scala without installing anything
 
 To start experimenting with Scala 3 right away, use <a href="https://scastie.scala-lang.org/?target=dotty" target="_blank">“Scastie” in your browser</a>.
-*Scastie* is an online “playground” where you can experiment with Scala examples to see how things work, with access to all Scala compilers and published libraries.
+_Scastie_ is an online “playground” where you can experiment with Scala examples to see how things work, with access to all Scala compilers and published libraries.
 
 
 
 ## Install Scala on your computer
 
-Installing Scala means installing various command-line tools such as the Scala compiler and build tools.
-We recommend using the Scala installer tool that automatically installs all the requirements, but you can still manually install each tool.
+Installing Scala means installing various command-line tools and build tools.
+We recommend using the Scala installer tool "Coursier" that automatically installs all the requirements, but you can still manually install each tool.
 
 
 ### Using the Scala Installer (recommended way)
@@ -25,20 +26,21 @@ It ensures that a JVM and standard Scala tools are installed on your system.
 Install it on your system with the following instructions.
 
 <div class="main-download">
-    <div id="download-step-one">
-        <p>Follow <a href="https://get-coursier.io/docs/cli-overview.html#install-native-launcher" target="_blank">the instructions to install the <code>cs</code> launcher</a> then run:</p>
-        <p><code>$ ./cs setup</code></p>
-    </div>
+  <div id="download-step-one">
+    <p>Follow <a href="https://get-coursier.io/docs/cli-overview.html#install-native-launcher" target="_blank">the instructions to install the <code>cs</code> launcher</a> then run:</p>
+    <p><code>$ cs install scala3-repl</code></p>
+    <p><code>$ cs install scala3-compiler</code></p>
+  </div>
 </div>
 
 Along with managing JVMs, `cs setup` also installs useful command line tools:
 
 - A JDK
-- The [sbt](https://www.scala-sbt.org) and [mill](https://www.lihaoyi.com/mill) build tools
+- The [sbt](https://www.scala-sbt.org) and [mill](https://com-lihaoyi.github.io/mill/) build tools
 - [Ammonite](https://ammonite.io), an enhanced REPL
 - [scalafmt](https://scalameta.org/scalafmt), the Scala formatter
 - The [Coursier CLI](https://get-coursier.io/docs/cli-overview), to install further Scala-based applications
-- The `scala` and `scalac` command-line tools
+- (the `scala` and `scalac` command-line tools for Scala 2.13 -- not Scala 3).
 
 For more information, read the [coursier-cli documentation](https://get-coursier.io/docs/cli-overview).
 
@@ -49,7 +51,7 @@ You only need two tools to compile, run, test, and package a Scala project: Java
 To install these manually:
 
 1. Download Java from [Oracle Java 8](https://www.oracle.com/java/technologies/javase-jdk8-downloads.html), [Oracle Java 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html), or [AdoptOpenJDK 8/11](https://adoptopenjdk.net/). Refer to [JDK Compatibility](/overviews/jdk-compatibility/overview.html) for Scala/Java compatibility detail.
-1. Install [sbt](https://www.scala-sbt.org/download.html)
+2. Install [sbt](https://www.scala-sbt.org/download.html)
 
 
 
@@ -68,10 +70,10 @@ sbt compiles, runs, and tests your Scala code.
 To create a new Scala project with sbt:
 
 1. `cd` to an empty folder.
-1. Run this command `sbt new scala/hello-world.g8`.
+1. Run this command `sbt new scala/scala3.g8`.
 This pulls the ['hello-world' template][template-url] from GitHub.
-It also creates a *target* folder, which you can ignore.
-1. When prompted, name the application `hello-world`.
+It also creates a _target_ folder, which you can ignore.
+1. When prompted, name the application `hello world`.
    This will create a project called "hello-world".
 1. Let’s take a look at what just got generated:
 
@@ -105,14 +107,14 @@ They both offer rich IDE features, but you can still use [many other editors.](h
 
 1. Download and install [IntelliJ Community Edition](https://www.jetbrains.com/idea/download/)
 1. Install the Scala plugin by following [the instructions on how to install IntelliJ plugins](https://www.jetbrains.com/help/idea/managing-plugins.html)
-1. Open the *build.sbt* file, then choose *Open as a project*
+1. Open the _build.sbt_ file, then choose _Open as a project_
 
 ### Using VS Code with Metals
 
 1. Download [VS Code](https://code.visualstudio.com/Download)
 1. Install the Metals extension from [the Marketplace](https://marketplace.visualstudio.com/items?itemName=scalameta.metals)
-1. Next, open the directory containing your *build.sbt* file.
-   When prompted to do so, select *Import build*.
+1. Next, open the directory containing your _build.sbt_ file.
+   When prompted to do so, select _Import build_.
 
 >[Metals](https://scalameta.org/metals) is a “Scala language server” that provides support for writing Scala code in VS Code and other editors like [Atom, Sublime Text, and more](https://scalameta.org/metals/docs/editors/overview.html), using the Language Server Protocol.
 (For details on how Metals works, see, [“Write Scala in VS Code, Vim, Emacs, Atom and Sublime Text with Metals”](https://www.scala-lang.org/2019/04/16/metals.html).)
@@ -123,20 +125,20 @@ They both offer rich IDE features, but you can still use [many other editors.](h
 
 View these two files in your IDE:
 
-- *build.sbt*
-- *src/main/scala/Main.scala*
+- _build.sbt_
+- _src/main/scala/Main.scala_
 
-When you run your project in the next step, the configuration in *build.sbt* will be used to run the code in *src/main/scala/Main.scala*.
+When you run your project in the next step, the configuration in _build.sbt_ will be used to run the code in _src/main/scala/Main.scala_.
 
 
 
 ## Run the “Hello, world” project
 
-If you’re comfortable using your IDE, you can run the code in *Main.scala* from your IDE.
+If you’re comfortable using your IDE, you can run the code in _Main.scala_ from your IDE.
 
 Otherwise, you can run the application from a terminal with these steps:
 
-1. `cd` into *hello-world*.
+1. `cd` into _hello-world_.
 1. Run `sbt`.
    This opens up the sbt console.
 1. Type `~run`.
@@ -154,7 +156,7 @@ Now that you’ve created a first “Hello, world” example with Scala 3, you�
 Consider checking out:
 
 - [The Scala 3 Book](/scala3/book/introduction.html), which provides a set of short lessons introducing Scala’s main features
-- [The migration guide](https://scalacenter.github.io/scala-3-migration-guide/) helps you to migrate your existing Scala 2 code base to Scala 3.
+- [The migration guide](/scala3/guides/migration/compatibility-intro.html) helps you to migrate your existing Scala 2 code base to Scala 3.
 
 When you want to connect with other Scala users, there are several mailing lists and real-time chat rooms available.
 Check out our [Scala community page](https://scala-lang.org/community/) for a list of these resources, and for where to reach out for help.
@@ -187,4 +189,4 @@ Check out our [Scala community page](https://scala-lang.org/community/) for a li
     <p>Download and execute <a href="https://git.io/coursier-cli-windows-exe">the Scala installer for Windows</a> based on coursier</p>
 </div>
 
-[template-url]: https://github.com/scala/hello-world.g8
+[template-url]: https://github.com/scala/scala3.g8

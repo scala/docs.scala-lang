@@ -49,10 +49,10 @@ Use a companion object for methods and values which aren’t specific to instanc
 This example demonstrates how the `area` method in the companion class can access the private `calculateArea` method in its companion object:
 
 ```scala
-import scala.math._
+import scala.math.*
 
 class Circle(radius: Double):
-  import Circle._
+  import Circle.*
   def area: Double = calculateArea(radius)
 
 object Circle:
@@ -80,7 +80,7 @@ trait MultiplyService:
 object MathService extends AddService, MultiplyService
 
 // use the object
-import MathService._
+import MathService.*
 println(add(1,1))        // 2
 println(multiply(2,2))   // 4
 ```
@@ -88,8 +88,8 @@ println(multiply(2,2))   // 4
 {% comment %}
 NOTE: I don’t know if this is worth keeping, but I’m leaving it here as a comment for now.
 
-> You may read that objects are used to *reify* traits into modules.
-> *Reify* means, “to take an abstract concept and turn it into something concrete.” This is what happens in these examples, but “implement” is a more familiar word for most people than “reify.”
+> You may read that objects are used to _reify_ traits into modules.
+> _Reify_ means, “to take an abstract concept and turn it into something concrete.” This is what happens in these examples, but “implement” is a more familiar word for most people than “reify.”
 {% endcomment %}
 
 

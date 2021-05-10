@@ -23,7 +23,7 @@ In Scala, all values have a type, including numerical values and functions. The 
 
 `AnyRef` represents reference types. All non-value types are defined as reference types. Every user-defined type in Scala is a subtype of `AnyRef`. If Scala is used in the context of a Java runtime environment, `AnyRef` corresponds to `java.lang.Object`.
 
-Here is an example that demonstrates that strings, integers, characters, boolean values, and functions are all objects just like every other object:
+Here is an example that demonstrates that strings, integers, characters, boolean values, and functions are all of type `Any` just like every other object:
 
 ```scala mdoc
 val list: List[Any] = List(

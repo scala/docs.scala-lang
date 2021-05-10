@@ -509,10 +509,12 @@ $(document).ready(function () {
     thisPageUrl = '_overviews/' + thisPageUrl.substring("tutorials/".length) + '.md';
   } else if(isInOverviewsFolder) {
     thisPageUrl = '_overviews/'+ thisPageUrl + '.md';
+  } else if (thisPageUrl.startsWith('scala3/book')) {
+    thisPageUrl = '_overviews/scala3-book/' + thisPageUrl.substring("scala3/book/".length) + '.md';
   } else {
     thisPageUrl = '_' + thisPageUrl + '.md';
   }
-  
+
   let url = githubApiUrl + '?path=' + thisPageUrl;
   $.get(url, function (data, status) {
     if(!data || data.length < 1) {

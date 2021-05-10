@@ -125,11 +125,11 @@ class SoftwareDeveloper(name: String, favoriteLang: String)
 ```
 However, since _traits_ are designed as the primary means of decomposition,
 a class that is defined in one file _cannot_ be extended in another file.
-In order to allow this, the base class needs to be [marked as `open`][open]:
+In order to allow this, the base class needs to be marked as `open`:
 ```scala
 open class Person(name: String)
 ```
-Having to explicitly mark classes as open avoids many common pitfalls in OO design.
+Marking classes with [`open`][open] is a new feature of Sala 3. Having to explicitly mark classes as open avoids many common pitfalls in OO design.
 In particular, it requires library designers to explicitly plan for extension and for instance document the classes that are marked as open with additional extension contracts.
 
 {% comment %}
@@ -171,9 +171,6 @@ Protected members are also visible to subclasses of the class.
 In the following, we illustrate some advanced features of Scala and show how they can be used to structure larger software components.
 The examples are adapted from the paper ["Scalable Component Abstractions"][scalable] by Martin Odersky and Matthias Zenger.
 Don’t worry if you don’t understand all the details of the example; it’s primarily intended to demonstrate how to use several type features to construct larger components.
-{% comment %}
-TODO: I’m not sure what I added in that last sentence is accurate or helpful, but I wanted to add a note about why readers shouldn’t worry about understanding the example.
-{% endcomment %}
 
 Our goal is to define a software component with a _family of types_ that can be refined later in implementations of the component.
 Concretely, the following code defines the component `SubjectObserver` as a trait with two abstract type members, `S` (for subjects) and `O` (for observers):
@@ -257,7 +254,7 @@ It is important to point out that the implementation of `notify` can only safely
 ### Using the Component
 Finally, the following code illustrates how to use our `SensorReader` component:
 ```scala
-import SensorReader._
+import SensorReader.*
 
 // setting up a network
 val s1 = Sensor("sensor1")
@@ -288,7 +285,6 @@ NOTE: One thing I occasionally do is flip things like this around, so I first sh
 [scalable]: https://doi.org/10.1145/1094811.1094815
 [open]: {{ site.scala3ref }}/other-new-features/open-classes.html
 [trait-params]: {{ site.scala3ref }}/other-new-features/trait-parameters.html
-
 
 
 

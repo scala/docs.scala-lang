@@ -255,7 +255,7 @@ Martin: But we said we weren't adding anything to the standard library in 3.0
 
 ### Erased Terms
 
-[https://dotty.epfl.ch/docs/reference/metaprogramming/erased-terms.html](https://dotty.epfl.ch/docs/reference/metaprogramming/erased-terms.html)
+[https://dotty.epfl.ch/docs/reference/experimental/erased-defs.html](https://dotty.epfl.ch/docs/reference/experimental/erased-defs.html)
 
 Olivier: Are they necessary?
   * Yes's and No's

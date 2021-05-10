@@ -280,9 +280,11 @@ val x :: xs = names
 
 Putting that code in the REPL shows that `x` is assigned to the head of the list, and `xs` is assigned to the tail:
 
+```scala
 scala> val x :: xs = names
 val x: String = adam
 val xs: List[String] = List(brandy, chris, david)
+```
 
 Pattern matching like this is useful in many situations, such as writing a `sum` method using recursion:
 

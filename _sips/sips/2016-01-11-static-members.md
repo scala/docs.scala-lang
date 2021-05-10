@@ -23,7 +23,7 @@ For example, classes extending `android.os.Parcelable` are required to have a st
 
 Another example is using an [`AtomicReferenceFieldUpdater`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/atomic/AtomicReferenceFieldUpdater.html).
 
-On the JavaScript side, one example is [Relay Route Definitions](https://facebook.github.io/relay/docs/en/routing.html), whose subclasses must define static fields such as `queries`.
+On the JavaScript side, one example is [Relay Route Definitions](https://web.archive.org/web/20180718024336/https://facebook.github.io/relay/docs/en/routing.html), whose subclasses must define static fields such as `queries`.
 Static methods and fields for JavaScript classes are one of the very few things (if not the only thing) that Scala.js "cannot do" at the moment, at least not declaratively.
 
 ## Overview ##

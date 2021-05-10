@@ -9,7 +9,6 @@ next-page: collections-methods
 
 
 {% comment %}
-TODO: add a correct hierarchy image
 TODO: mention Array, ArrayDeque, ListBuffer, Queue, Stack, StringBuilder?
 LATER: note that methods like `+`, `++`, etc., are aliases for other methods
 LATER: add links to the Scaladoc for the major types shown here
@@ -29,19 +28,38 @@ When you need more flexibility, see these pages at the end of this section for m
 
 Looking at Scala collections from a high level, there are three main categories to choose from:
 
-- Sequences
-- Maps
-- Sets
+- **Sequences** are a linear collection of elements and may be _indexed_ (like an array) or _linear_ (like a linked list)
+- **Maps** contain a collection of key/value pairs, like a Java `Map`, Python dictionary, or Ruby `Hash`
+- **Sets** are an unordered sequence of unique elements
 
-A _sequence_ is a linear collection of elements and may be _indexed_ (like an array) or _linear_ (like a linked list).
-A _map_ contains a collection of key/value pairs, like a Java `Map`, Python dictionary, or Ruby `Hash`.
-A _set_ is an unordered sequence of unique elements.
 All of those are basic types, and have subtypes for specific purposes, such as concurrency, caching, and streaming.
+In addition to those three main categories, there are other useful collection types, including ranges, stacks, and queues.
 
-In addition to these three main categories, there are other useful collection types, including ranges, stacks, and queues.
-Ranges are demonstrated later in this section.
 
-The following sections introduce the common types you’ll use on a regular basis.
+### Collections hierarchy
+
+As a brief overview, the next three figures show the hierarchy of classes and traits in the Scala collections.
+
+This first figure shows the collections types in package
+_scala.collection_.
+These are all high-level abstract classes or traits, which
+generally have _immutable_ and _mutable_ implementations.
+
+![General collection hierarchy][collections1]
+
+This figure shows all collections in package _scala.collection.immutable_:
+
+![Immutable collection hierarchy][collections2]
+
+And this figure shows all collections in package _scala.collection.mutable_:
+
+![Mutable collection hierarchy][collections3]
+
+Having seen that detailed view of all of the collections types, the following sections introduce some of the common types you’ll use on a regular basis.
+
+{% comment %}
+NOTE: those images come from this page: https://docs.scala-lang.org/overviews/collections-2.13/overview.html
+{% endcomment %}
 
 
 
@@ -617,3 +635,6 @@ When you need more information about specialized collections, see the following 
 
 
 [strict]: {% link _overviews/core/architecture-of-scala-213-collections.md %}
+[collections1]: /resources/images/tour/collections-diagram-213.svg
+[collections2]: /resources/images/tour/collections-immutable-diagram-213.svg
+[collections3]: /resources/images/tour/collections-mutable-diagram-213.svg

@@ -106,7 +106,7 @@ For reference, here is our complete
 ## Publish a Release
 
 Most build tools resolve third-party dependencies by looking them up on public repositories such as
-[Maven Central](https://search.maven.org/) or [Bintray](https://bintray.com/). These repositories host
+[Maven Central](https://search.maven.org/). These repositories host
 the library binaries as well as additional information such as the library authors, the open source
 license, and the dependencies of the library itself. Each release of a library is identified by
 a `groupId`, an `artifactId`, and a `version` number. For instance, consider the following dependency
@@ -135,8 +135,8 @@ This step has to be performed only once per `groupId` you want to have.
 
 ### Create a PGP Key Pair
 
-Sonatype [requires](https://central.sonatype.org/pages/requirements.html) that you sign the published files
-with PGP. Follow the instructions [here](https://central.sonatype.org/pages/working-with-pgp-signatures.html)
+Sonatype [requires](https://central.sonatype.org/publish/requirements) that you sign the published files
+with PGP. Follow the instructions [here](https://central.sonatype.org/publish/requirements/gpg)
 to generate a key pair and to distribute your public key to a key server.
 
 This step has to be performed only once per person.
@@ -152,7 +152,7 @@ addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "2.4")
 addSbtPlugin("com.jsuereth" % "sbt-pgp" % "1.1.0")
 ~~~
 
-And make sure your build fulfills the [Sonatype requirements](https://central.sonatype.org/pages/requirements.html)
+And make sure your build fulfills the [Sonatype requirements](https://central.sonatype.org/publish/requirements)
 by defining the following settings:
 
 ~~~ scala
@@ -392,7 +392,7 @@ jobs:
 
 An important property of documentation is that the code examples should compile and behave as they
 are presented. There are various ways to ensure that this property holds. One way, supported by
-[tut](https://github.com/tpolecat/tut) and [mdoc](https://github.com/olafurpg/mdoc), is to actually
+[mdoc](https://github.com/scalameta/mdoc), is to actually
 evaluate code examples and write the result of their evaluation in the produced documentation.
 Another way consists in embedding snippets of source code coming from a real module or example.
 
@@ -484,70 +484,10 @@ and behave as they are presented.
 
 #### Using a Markdown Preprocessor
 
-One approach consists in using a Markdown preprocessor, such as [tut](https://github.com/tpolecat/tut) or
-[mdoc](https://github.com/olafurpg/mdoc). These tools read your Markdown source files, search for code fences,
+One approach consists in using a Markdown preprocessor such as
+[mdoc](https://github.com/scalameta/mdoc). These tools read your Markdown source files, search for code fences,
 evaluate them (throwing an error if they don’t compile), and produce a copy of your Markdown files where
 code fences have been updated to also include the result of evaluating the Scala expressions.
-
-For instance, given the following `src/documentation/getting-started.md` file:
-
-{% highlight markdown %}
-# Getting Started
-
-First, start with the following import:
-
-```scala
-import ch.epfl.scala.Example
-```
-
-Then, do nothing with something:
-
-```scala
-Example.doNothing(42)
-```
-{% endhighlight %}
-
-The tut tool will produce the following Markdown file:
-
-{% highlight markdown %}
-# Getting Started
-
-First, start with the following import:
-
-```scala
-scala> import ch.epfl.scala.Example
-import ch.epfl.scala.Example
-```
-
-Then, do nothing with something:
-
-```scala
-scala> Example.doNothing(42)
-res0: Int = 42
-```
-{% endhighlight %}
-
-You can see that `tut` code fences have been replaced with `scala` code fences, and the result of
-evaluating their content is shown, as it would look like from a REPL.
-
-To enable tut, add the following line to your `project/plugins.sbt` file:
-
-~~~ scala
-addSbtPlugin("org.tpolecat" % "tut-plugin" % "0.6.10")
-~~~
-
-And apply the following changes to your `build.sbt` file:
-
-{% highlight diff %}
-+enablePlugins(TutPlugin)
--Paradox / sourceDirectory := sourceDirectory.value / "documentation"
-+tutSourceDirectory := sourceDirectory.value / "documentation"
-+Paradox / sourceDirectory := tutTargetDirectory.value
-+makeSite := makeSite.dependsOn(tut).value
-{% endhighlight %}
-
-These changes add the `TutPlugin`, configure it to read sources from the `src/documentation` directory,
-configure Paradox to read the output of tut, and make sure tut is run before the site is built.
 
 #### Embedding Snippets
 

@@ -55,7 +55,7 @@ val reginald = Person("Reginald", "Dwight")
 Then, when you need to make a change to the data, you use the `copy` method that comes with a `case` class to “update the data as you make a copy,” like this:
 
 ```scala
-val elton = p.copy(
+val elton = reginald.copy(
   firstName = "Elton",   // update the first name
   lastName = "John"      // update the last name
 )
