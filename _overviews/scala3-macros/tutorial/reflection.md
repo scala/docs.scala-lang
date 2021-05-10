@@ -117,7 +117,7 @@ Each `Term` or `TypeRepr` (therefore `Expr` and `Type`) have an associated symbo
 ### To Symbol and back
 
  - `TypeRepr.typeSymbol` returns the symbol of the type
- - `TypeRepr.termSymbol` returns the symbol of the term associated to the type.
+ - For a singleton type, `TypeRepr.termSymbol` returns the symbol of the underlying object or value.
  - `TypeRepr.memberType(symbol)` returns the `TypeRepr` of the provided symbol
  - `TypeRepr.of[T].typeSymbol` is the recommended way to obtain a `Symbol` given a `Type[T]`
  - `Tree.symbol` returns the symbol associated to a tree. Given that `Term <: Tree`,
