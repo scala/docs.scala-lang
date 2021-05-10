@@ -51,7 +51,7 @@ Most methods on the Scala collections classes also work as pure functions, inclu
 Conversely, the following functions are _impure_ because they violate the definition.
 
 - `println` -- methods that interact with the console, files, databases, web services, sensors, etc., are all impure.
-- `getHour` -- date and time related methods are all impure because their output depends on something other than their input parameters 
+- `currentTimeMillis ` -- date and time related methods are all impure because their output depends on something other than their input parameters 
 - `sys.error` -- exception throwing methods are impure because they do not simply return a result
 
 Impure functions often do one or more of these things:
