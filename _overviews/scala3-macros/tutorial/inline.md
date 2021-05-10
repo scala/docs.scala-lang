@@ -281,6 +281,7 @@ val x = 2
 val x2 = x * x
 x2 * 1.0
 ```
+
 </details>
 
 In contrast, let us imagine we do not know the value of `n`:
@@ -317,6 +318,7 @@ else {
 // Oops this will never finish compiling
 ...
 ```
+
 </details>
 
 To guarantee that the branching can indeed be performed at compile-time, we can use the `inline if` variant of `if`.
