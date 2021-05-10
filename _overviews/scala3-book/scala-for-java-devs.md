@@ -989,8 +989,8 @@ val filteredNums = nums.filter(_ > 2)
 
 Because the Scala `Array` is represented in the same way as the Java `array`, you can easily use Java methods that return arrays in your Scala code.
 
-> Despite that discussion of `Array`, bear in mind that normal Scala code doesn’t use `Array`.
-> It’s primarily useful for interoperating with other languages (Java, JavaScript), and it may also be useful when writing low-level code that needs to squeeze maximum performance out of the underlying platform. But in general, when you need to use a sequence, the Scala idiom is to prefer immutable sequences like `Vector` and `List`, and then use `ArrayBuffer` if and when when you really need a mutable sequence.
+> Despite that discussion of `Array`, bear in mind that often in Scala there are alternatives to `Array` that might be better suited.
+> Arrays are useful for interoperating with other languages (Java, JavaScript) and they may also be useful when writing low-level code that needs to squeeze maximum performance out of the underlying platform. But in general, when you need to use a sequence, the Scala idiom is to prefer immutable sequences like `Vector` and `List`, and then use `ArrayBuffer` if and when when you really need a mutable sequence.
 
 You can also convert between Java and Scala collections classes with the Scala `CollectionConverters` objects.
 There are two objects in different packages, one for converting from Java to Scala, and another for converting from Scala to Java.
@@ -1327,4 +1327,3 @@ This includes:
 [union-types]: {% link _overviews/scala3-book/types-union.md %}
 
 </div>
-
