@@ -44,15 +44,15 @@ The full imported API can be found in the [API documentation for `scala.quoted.Q
 Unfortunately, at this stage, this automatically generated documentation is not very easy to navigate.
 
 The most important element on the page is the hierarchy tree which provides a synthetic overview of the subtyping relationships of
-the types in the API. For each type `Type` in the tree:
+the types in the API. For each type `Foo` in the tree:
 
- - the object `TypeMethods` contains the methods available for `Type`
- - the object `TypeModule` contains some _static-ish_ methods, most notably constructors (`apply/copy`) and the `unapply` method which provides the extractor(s) required for pattern matching.
- - For all types `Upper` such that `Type <: Upper`, the methods defined in `UpperMethods` are available on `Type` as well.
+ - the object `FooMethods` contains the methods available for `Foo`
+ - the object `FooModule` contains some _static-ish_ methods, most notably constructors (`apply/copy`) and the `unapply` method which provides the extractor(s) required for pattern matching.
+ - For all types `Upper` such that `Foo <: Upper`, the methods defined in `UpperMethods` are available on `Foo` as well.
 
-For example `TypeBounds`, a subtype of `TypeRepr`, represents a type tree of the form `T >: L <: U`: a type `T` which is a super type of `L`
-and a subtype of `U`. In `TypeBoundsMethods`, you will find the methods `low` and `hi`, which allow you to access the
-representations of `L` and `U`. In `TypeBoundsModule`, you will find the `unapply` method, which allows you to write:
+For example [`TypeBounds`](https://dotty.epfl.ch/api/scala/quoted/Quotes$reflectModule.html#TypeBounds-0), a subtype of `TypeRepr`, represents a type tree of the form `T >: L <: U`: a type `T` which is a super type of `L`
+and a subtype of `U`. In [`TypeBoundsMethods`](https://dotty.epfl.ch/api/scala/quoted/Quotes$reflectModule$TypeBoundsMethods.html), you will find the methods `low` and `hi`, which allow you to access the
+representations of `L` and `U`. In [`TypeBoundsModule`](https://dotty.epfl.ch/api/scala/quoted/Quotes$reflectModule$TypeBoundsModule.html), you will find the `unapply` method, which allows you to write:
 
 ```scala
 def f(tb: TypeBounds) =
@@ -104,7 +104,8 @@ The APIs of `Term` and `TypeTree` are relatively *closed* in the sense that meth
 whose types are defined in the API. You might notice however the presence of `Symbol`s which identify definitions.
 
 Both `Term` or `TypeRepr` (therefore `Expr` and `Type`) have an associated symbol.
-`Symbol` exposes and is used by many useful methods. For example:
+`Symbol`s make it possible to compare two definitions using `==` to know if they are the same.
+In addition `Symbol` exposes and is used by many useful methods. For example:
 
  - `declaredFields` and `declaredMethods` allow you to iterate on the fields and members defined inside a symbol
  - `flags` allows you to check multiple properties of a symbol
@@ -112,17 +113,15 @@ Both `Term` or `TypeRepr` (therefore `Expr` and `Type`) have an associated symbo
  - `TypeRepr.baseClasses` returns the list of symbols of classes extended by a type. 
  - `Symbol.pos` gives you access to the position where the symbol is defined, the source code of the definition
  and even the filename where the symbol is defined.
- - and many useful others that you can find in `SymbolMethods`
+ - and many useful others that you can find in [`SymbolMethods`](https://dotty.epfl.ch/api/scala/quoted/Quotes$reflectModule$SymbolMethods.html)
 
 ### To Symbol and back
 
- - `TypeRepr.typeSymbol` returns the symbol of the type
+ - `TypeRepr.typeSymbol` returns the symbol of the type represented by `TypeRepr`. The recommended way to obtain a `Symbol` given a `Type[T]` is `TypeRepr.of[T].typeSymbol`
  - For a singleton type, `TypeRepr.termSymbol` returns the symbol of the underlying object or value.
  - `TypeRepr.memberType(symbol)` returns the `TypeRepr` of the provided symbol
- - `TypeRepr.of[T].typeSymbol` is the recommended way to obtain a `Symbol` given a `Type[T]`
  - `Tree.symbol` returns the symbol associated to a tree. Given that `Term <: Tree`,
  `Expr.asTerm.symbol` is the best way to obtain the symbol associated to an `Expr[T]`
-
  - `Symbol.tree` returns the `Tree` associated to the symbol. Be careful when using this
  method as the tree for a symbol might not be defined. When the code associated to the symbol
  is defined in a different moment than this access, if the `Yretain-trees` compilation option
