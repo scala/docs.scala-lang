@@ -44,7 +44,7 @@ include:
 - Linters such as [Wartremover](https://www.wartremover.org) and [Scapegoat](https://github.com/sksamuel/scapegoat).
 - Plugins that alter Scala's syntax, such as [kind-projector](https://github.com/typelevel/kind-projector).
 - Plugins that alter Scala's behavior around errors and warnings,
-  such as [silencer](https://github.com/ghik/silencer).
+  such as [silencer](https://github.com/ghik/silencer), [splain](https://github.com/tek/splain) and [clippy](https://scala-clippy.org/).
 - Plugins that analyze the structure of source code, such as
   [Sculpt](https://github.com/lightbend/scala-sculpt) and [acyclic](https://github.com/lihaoyi/acyclic).
 - Plugins that instrument user code to collect information,
