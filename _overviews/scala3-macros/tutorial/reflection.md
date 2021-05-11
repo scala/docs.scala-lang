@@ -103,7 +103,7 @@ def g[T: Type](using Quotes) =
 The APIs of `Term` and `TypeTree` are relatively *closed* in the sense that methods produce and accept values
 whose types are defined in the API. You might notice however the presence of `Symbol`s which identify definitions.
 
-Each `Term` or `TypeRepr` (therefore `Expr` and `Type`) have an associated symbol.
+Both `Term` or `TypeRepr` (therefore `Expr` and `Type`) have an associated symbol.
 `Symbol` exposes and is used by many useful methods. For example:
 
  - `declaredFields` and `declaredMethods` allow you to iterate on the fields and members defined inside a symbol
