@@ -260,7 +260,7 @@
       type: "String"
       arg: "release"
       default:
-    description: "Compile for a specific version of the Java platform. Supported targets: 6, 7, 8, 9"
+    description: "Compile for a specific version of the Java platform. Supported targets: 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16"
     abbreviations:
     - "--release"
   - option: "-sourcepath"
@@ -282,6 +282,10 @@
       - choice: "10"
       - choice: "11"
       - choice: "12"
+      - choice: "13"
+      - choice: "14"
+      - choice: "15"
+      - choice: "16"
     description: "Target platform for object files. ([8],9,10,11,12)"
     abbreviations:
     - "--target"
