@@ -40,7 +40,7 @@ This will import all the types and modules (with extension methods) of the API.
 
 ## How to navigate the API
 
-The full imported API can be found here: [Reflection][reflection doc].
+The full imported API can be found in the [API documentation for `scala.quoted.Quotes.reflectModule`][reflection doc].
 Unfortunately, at this stage, this automatically generated documentation is not very easy to navigate.
 
 The most important element on the page is the hierarchy tree which provides a synthetic overview of the subtyping relationships of
