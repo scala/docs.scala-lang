@@ -61,6 +61,16 @@ and Spark.
 teaches how to write responsive, scalable, and resilient systems with the
 library Akka.
 
+### Scala 2 Courses
+
+The above courses use Scala 3 (except the Spark courses). If needed, you can find
+the (legacy) Scala 2 version of our courses here:
+
+- [Functional Programming Principles in Scala (Scala 2 version)](https://www.coursera.org/learn/scala2-functional-programming)
+- [Functional Program Design (Scala 2 version)](https://www.coursera.org/learn/scala2-functional-program-design)
+- [Parallel Programming (Scala 2 version)](https://www.coursera.org/learn/scala2-parallel-programming)
+- [Programming Reactive Systems (Scala 2 version)](https://www.coursera.org/learn/scala2-akka-reactive)
+
 [Scala Specialization]: https://www.coursera.org/specializations/scala
 [Effective Programming in Scala]: https://www.coursera.org/learn/effective-scala
 [Functional Programming Principles in Scala]: https://www.coursera.org/learn/progfun1
