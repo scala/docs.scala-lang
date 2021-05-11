@@ -8,15 +8,14 @@ next-page: fp-functions-are-values
 ---
 
 
-{% comment %}
-TODO: Use someone else’s definition?
-{% endcomment %}
-
 Another feature that Scala offers to help you write functional code is the ability to write pure functions.
 A _pure function_ can be defined like this:
 
 - A function `f` is pure if, given the same input `x`, it always returns the same output `f(x)`
-- The function’s output depends *only* on its input variables and its internal algorithm
+- The function’s output depends _only_ on its input variables and its implementation
+- It only computes the output and does not modify the world around it
+
+This implies:
 - It doesn’t modify its input parameters
 - It doesn’t mutate any hidden state
 - It doesn’t have any “back doors”: It doesn’t read data from the outside world (including the console, web services, databases, files, etc.), or write data to the outside world
@@ -42,33 +41,29 @@ These `String` methods are also pure functions:
 
 Most methods on the Scala collections classes also work as pure functions, including `drop`, `filter`, `map`, and many more.
 
-> In Scala, *functions* and *methods* are almost completely interchangeable, so even though we use the common industry term “pure function,” this term can be used to describe both functions and methods.
+> In Scala, _functions_ and _methods_ are almost completely interchangeable, so even though we use the common industry term “pure function,” this term can be used to describe both functions and methods.
 > If you’re interested in how methods can be used like functions, see the [Eta Expansion][eta] discussion.
 
 
 
 ## Examples of impure functions
 
-Conversely, the following functions are *impure* because they violate the definition.
+Conversely, the following functions are _impure_ because they violate the definition.
 
-The `foreach` method on collections classes is impure because it’s only used for its side effects, such as printing to STDOUT.
+- `println` -- methods that interact with the console, files, databases, web services, sensors, etc., are all impure.
+- `currentTimeMillis ` -- date and time related methods are all impure because their output depends on something other than their input parameters 
+- `sys.error` -- exception throwing methods are impure because they do not simply return a result
 
-> A great hint that `foreach` is impure is that it’s method signature declares that it returns the type `Unit`.
-> Because it doesn’t return anything, logically the only reason you ever call it is to achieve some side effect.
-> Similarly, *any* method that returns `Unit` is going to be an impure function.
+Impure functions often do one or more of these things:
 
-Date and time related methods like `getDayOfWeek`, `getHour`, and `getMinute` are all impure because their output depends on something other than their input parameters.
-Their results rely on some form of hidden I/O; *hidden inputs,* in these examples.
-
-Additionally, methods that interact with the console, files, databases, web services, sensors, etc., are all impure.
-
-In general, impure functions do one or more of these things:
-
-- Read hidden inputs, i.e., they access variables and data not explicitly passed into the function as input parameters
-- Write hidden outputs
+- Read from hidden state, i.e., they access variables and data not explicitly passed into the function as input parameters
+- Write to hidden state
 - Mutate the parameters they’re given, or mutate hidden variables, such as fields in their containing class
 - Perform some sort of I/O with the outside world
 
+> In general, you should watch out for functions with a return type of `Unit`.
+> Because those functions do not return anything, logically the only reason you ever call it is to achieve some side effect.
+> In consequence, often the usage of those functions is impure.
 
 
 ## But impure functions are needed ...
@@ -111,8 +106,8 @@ If you understand that code, you’ll see that it meets the pure function defini
 
 The first key point of this section is the definition of a pure function:
 
-> A *pure function* is a function that depends only on its declared inputs and its internal algorithm to produce its output.
-> It does not read any other values from “the outside world”---the world outside of the function’s scope---and it doesn’t modify any values in the outside world.
+> A _pure function_ is a function that depends only on its declared inputs and its implementation to produce its output.
+> It only computes its output and does not depend on or modify the outside world.
 
 A second key point is that every real-world application interacts with the outside world.
 Therefore, a simplified way to think about functional programs is that they consist of a core of pure functions that are wrapped with other functions that interact with the outside world.
