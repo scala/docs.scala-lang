@@ -124,7 +124,7 @@ In addition `Symbol` exposes and is used by many useful methods. For example:
  `Expr.asTerm.symbol` is the best way to obtain the symbol associated to an `Expr[T]`
  - `Symbol.tree` returns the `Tree` associated to the symbol. Be careful when using this
  method as the tree for a symbol might not be defined. When the code associated to the symbol
- is defined in a different moment than this access, if the `Yretain-trees` compilation option
+ is defined in a different moment than this access, if the `-Yretain-trees` compilation option
  is not used, then the `tree` of the symbol will not be available. Symbols originated from
  Java code do not have an associated `tree`.
 
