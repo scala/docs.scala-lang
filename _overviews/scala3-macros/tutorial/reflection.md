@@ -61,7 +61,15 @@ def f(tpe: TypeRepr) =
 ```
 
 Remember also that `TypeBounds <: TypeRepr`, therefore all the methods defined in `TypeReprMethods` are
-avaialble on `TypeBounds` values.
+available on `TypeBounds` values as in:
+
+```scala
+def f(tpe: TypeRepr) =
+  tpe match
+    case tpe: TypeBounds =>
+      val low = tpe.low
+      val hi  = tpe.hi
+```
 
 ## Relation with Expr/Type
 
