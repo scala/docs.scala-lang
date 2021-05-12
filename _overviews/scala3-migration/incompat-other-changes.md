@@ -255,7 +255,6 @@ The solution depends on the situation. In the given example, you can either:
 Scala 3 cannot reduce the application of a higher-kinded abstract type member to the wildcard argument.
 
 For instance, the following example does not compile.
-For instance, the following example does not compile.
 
 ```scala
 trait Example {
@@ -275,7 +274,7 @@ We can fix this by using a type parameter:
 But this simple solution does not work when `Foo` is itself used as a type argument.
 
 ```scala
-def g(foos: Seq[Foo[_]]): Unit`
+def g(foos: Seq[Foo[_]]): Unit
 ```
 
 In such case, we can use a wrapper class around `Foo`:
@@ -283,6 +282,6 @@ In such case, we can use a wrapper class around `Foo`:
 {% highlight diff %}
 +class FooWrapper[A](foo: Foo[A])
 
--def g(foos: Seq[Foo[_]]): Unit`
+-def g(foos: Seq[Foo[_]]): Unit
 +def g(foos: Seq[FooWrapper[_]]): Unit
 {% endhighlight %}
