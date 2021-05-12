@@ -29,7 +29,7 @@ where possible standard options include:
 -indent</b>            Allow significant indentation
 ...
 -new-syntax</b>        Require `then` and `do` in control expressions.
--noindent</b>          Require classical {...} syntax, indentation is not significant.
+-no-indent</b>          Require classical {...} syntax, indentation is not significant.
 ...
 -old-syntax</b>        Require `(...)` around conditions.
 ...
@@ -244,7 +244,7 @@ It is possible to mix the old and new syntax in a single code base.
 Although we would advise against it, since it would reduce the readability and make the code harder to maintain.
 A better approach is to choose one style and to consistently apply it to the entire code base.
 
-`-noindent`, `-new-syntax` and `-old-syntax` can be used as standalone options to enforce a consistent syntax.
+`-no-indent`, `-new-syntax` and `-old-syntax` can be used as standalone options to enforce a consistent syntax.
 
 For instance, with the `-new-syntax` option, the compiler issues an error when it encounters enclosing parentheses around an `if`-condition. 
 
