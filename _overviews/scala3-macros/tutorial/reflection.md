@@ -56,7 +56,7 @@ representations of `L` and `U`. In [`TypeBoundsModule`](https://dotty.epfl.ch/ap
 
 ```scala
 def f(tpe: TypeRepr) =
-  tb match 
+  tpe match 
     case TypeBounds(l, u) =>
 ```
 
