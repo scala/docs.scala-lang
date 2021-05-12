@@ -42,10 +42,8 @@ The [Scala 3 Migration Guide](/scala3/guides/migration/compatibility-intro.html)
 contains an comprehensive overview over compatibility between Scala 2 and Scala 3,
 a tour presenting the migration tools, and detailed migration guides.
 
-- [Contribution Overview](https://scalacenter.github.io/scala-3-migration-guide/docs/contributing.html)
-- [Source](https://github.com/scalacenter/scala-3-migration-guide)
-- [Issues](https://github.com/scalacenter/scala-3-migration-guide/issues)
-
+- [Source](https://github.com/scala/docs.scala-lang/tree/master/_overviews/scala3-migration)
+- [Issues](https://github.com/scalacenter/docs.scala-lang/issues)
 
 ## Scala 3 Language Reference
 The [Dotty reference](https://dotty.epfl.ch/docs/reference/overview.html) will evolve into the Scala 3 language, containing  a formal presentation and detailed technical information about the various features of the language.

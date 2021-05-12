@@ -8,7 +8,7 @@ scala3: true
 guides:
   - title: "Scala 2 から Scala 3 への移行"
     icon: suitcase
-    url: "https://scalacenter.github.io/scala-3-migration-guide"
+    url: "/scala3/guides/migration/compatibility-intro.html"
     description: "Scala 3 との互換性と移行について知っておくべきことすべて"
   - title: マクロ
     by: Nicolas Stucki
