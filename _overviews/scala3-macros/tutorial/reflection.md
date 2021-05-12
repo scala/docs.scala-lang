@@ -100,7 +100,7 @@ def g[T: Type](using Quotes) =
 
 ## Symbols
 
-The APIs of `Term` and `TypeTree` are relatively *closed* in the sense that methods produce and accept values
+The APIs of `Term` and `TypeRepr` are relatively *closed* in the sense that methods produce and accept values
 whose types are defined in the API. You might notice however the presence of `Symbol`s which identify definitions.
 
 Both `Term` or `TypeRepr` (therefore `Expr` and `Type`) have an associated symbol.
