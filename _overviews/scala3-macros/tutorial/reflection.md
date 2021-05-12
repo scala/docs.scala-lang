@@ -55,7 +55,7 @@ and a subtype of `U`. In [`TypeBoundsMethods`](https://dotty.epfl.ch/api/scala/q
 representations of `L` and `U`. In [`TypeBoundsModule`](https://dotty.epfl.ch/api/scala/quoted/Quotes$reflectModule$TypeBoundsModule.html), you will find the `unapply` method, which allows you to write:
 
 ```scala
-def f(tb: TypeBounds) =
+def f(tpe: TypeRepr) =
   tb match 
     case TypeBounds(l, u) =>
 ```
