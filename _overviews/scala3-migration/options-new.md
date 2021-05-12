@@ -19,7 +19,7 @@ The current page only contains the options that were added in Scala 3.0.x.
 | `-from-tasty` | Compile classes from tasty files. The arguments are .tasty or .jar files. |
 | `-indent` | Together with -rewrite, remove {...} syntax when possible due to significant indentation. |
 | `-new-syntax` | Require `then` and `do` in control expressions. |
-| `-noindent` | Require classical {...} syntax, indentation is not significant. |
+| `-no-indent` | Require classical {...} syntax, indentation is not significant. |
 | `-old-syntax` | Require `(...)` around conditions. |
 | `-pagewidth` | Set page width Default: 80. |
 | `-print-lines` | Show source code line numbers. |
