@@ -131,20 +131,7 @@ In addition `Symbol` exposes and is used by many useful methods. For example:
  - `Tree.symbol` returns the symbol associated to a tree. Given that `Term <: Tree`,
  `Expr.asTerm.symbol` is the best way to obtain the symbol associated to an `Expr[T]`
  - `Symbol.tree` returns the `Tree` associated to the symbol. Be careful when using this
- method as the tree for a symbol might not be defined. When the code associated to the symbol
- is defined in a different moment than this access, if the `-Yretain-trees` compilation option
- is not used, then the `tree` of the symbol will not be available. Symbols originated from
- Java code do not have an associated `tree`.
-
-## Suggestion and anti-patterns
-
- - Avoid using `TypeTree`s (therefore `TypeTree.of`) when you could use `TypeRepr`
- - Avoid using `Symbol.tree` for the reasons mentioned [here](#symbols) and because of
- the performance penalty that retrieving an entire tree could cause.
- - Pattern matching is a very ergonomic approach to the API. Always have a look at
- the `unapply` defined in `*Module` objects.
- - `Symbol` and `Flags` offer handy predicates to know more about a definition
- - `Expr.summon` is a convenient wrapper around `Implicits.search`
+ method as the tree for a symbol might not be defined. Read more on the [best practices page][best practices]
 
 ## Macro API design
 
@@ -242,3 +229,5 @@ We can make this printer the default if needed
 
 [tasty inspection]: {{ site.scala3ref }}/metaprogramming/tasty-inspect.html
 [reflection doc]: https://dotty.epfl.ch/api/scala/quoted/Quotes$reflectModule.html?query=trait%20reflectModule
+
+[best practices]: {% link _overviews/scala-macros/best-practices.md %}
