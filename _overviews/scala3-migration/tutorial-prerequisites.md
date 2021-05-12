@@ -115,6 +115,8 @@ AdditionalLy, we now have the following features that make `kind-projector` not 
 - [Polymorphic Functions](http://dotty.epfl.ch/docs/reference/new-types/polymorphic-function-types.html)
 - [Kind Polymorphism](http://dotty.epfl.ch/docs/reference/other-new-features/kind-polymorphism.html)
 
+You can learn more about the Kind Projector migration in its [dedicated page](plugin-kind-projector.html).
+
 ## Runtime reflection
 
 `scala-reflect` will not be ported to Scala 3 because it exposes Scala 2 compiler internals that do not exist in Scala 3.
