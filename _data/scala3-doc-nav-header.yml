@@ -10,7 +10,7 @@
     - title: Macro Tutorial
       url: "/scala3/guides/macros/index.html"
 - title: Migrate
-  url: "https://scalacenter.github.io/scala-3-migration-guide"
+  url: "/scala3/guides/migration/compatibility-intro.html"
 - title: Reference
   url: "https://dotty.epfl.ch/docs/reference/overview.html"
 - title: API
