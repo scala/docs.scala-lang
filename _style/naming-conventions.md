@@ -266,7 +266,7 @@ advanced feature in Scala, to be used only by those most well-versed in
 its pitfalls. Without care, excessive use of symbolic method names can
 easily transform even the simplest code into symbolic soup.
 
-## Constants, Values, Variable and Methods
+## Constants, Values and Variable
 
 Constant names should be in upper camel case. Similar to Java's `static final`
 members, if the member is final, immutable and it belongs to a package
@@ -278,10 +278,9 @@ object or an object, it may be considered a constant:
 
 The value: `Pi` in `scala.math` package is another example of such a constant.
 
-Method, Value and variable names should be in lower camel case:
+Value and variable names should be in lower camel case:
 
     val myValue = ...
-    def myMethod = ...
     var myVariable
 
 ## Type Parameters (generics)
