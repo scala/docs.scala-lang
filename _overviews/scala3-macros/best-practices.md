@@ -89,7 +89,7 @@ to use `TypeRepr.memberType`
 
 We can obtain the `TypeRepr` of `Leaf` in two ways:
   1. `TypeRepr.of[Box.Leaf]`
-  2 `boxTpe.memberType(leafSym)`, in other words we request
+  2. `boxTpe.memberType(leafSym)`, in other words we request
   the `TypeRepr` of the member of `Box` whose symbol is equal to the symbol of sym
 
 ### Use `Symbol`s to compare definitions
