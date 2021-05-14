@@ -108,11 +108,13 @@ boxTpe.memberType(baseSym.children.head) == leafTpe // Is false
 
 ### Obtaining a Symbol for a type
 
-Because `Symbol.tree` should be avoided (read more above),
-you should not use `TypeTree.of[T].tpe.typeSymbol` to get the symbol of
-the definition of `T`.
+There is a handy shortcut to get the symbol of the definition of `T`.
+Instead of 
 
-Instead use
+```scala
+TypeTree.of[T].tpe.typeSymbol
+```
+you can use
 
 ```scala
 TypeRepr.of[T].typeSymbol
@@ -143,13 +145,10 @@ If you are writing and prefer to handle `Expr`, `Expr.summon` is a
 convient wrapper around `Implicits.search`:
 
 ```scala
-val exprImpl: Expr[Mirror.ProductOf[Box.Leaf]] =
-  Expr.summon[Mirror.ProductOf[Box.Leaf]] match
+def summoned[T: Type]: Expr[T] = 
+  Expr.summon[T] match
     case Some(imp) => imp
-    case None => throw Exception("Could not find implicit")
+    case None => reflect.report.throwError("Could not find an implicit for " + Type.show[T])
 ```
-
-
-**Coming soon**
 
 [symbol]: {% link _overviews/scala-macros/tutorial/reflection.md %}
