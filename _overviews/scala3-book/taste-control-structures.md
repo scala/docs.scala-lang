@@ -27,7 +27,7 @@ Scala’s `if`/`else` control structure looks similar to other languages:
 ```scala
 if x < 0 then
   println("negative")
-else if x == 0
+else if x == 0 then
   println("zero")
 else
   println("positive")
