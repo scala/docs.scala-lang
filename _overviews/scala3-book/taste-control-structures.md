@@ -103,17 +103,17 @@ A few examples demonstrate this.
 Using the same `ints` list as the previous example, this code creates a new list, where the value of each element in the new list is twice the value of the elements in the original list:
 
 ````
-scala> val doubles = for i <- nums yield i * 2
+scala> val doubles = for i <- ints yield i * 2
 val doubles: List[Int] = List(2, 4, 6, 8, 10)
 ````
 
 Scala’s control structure syntax is flexible, and that `for` expression can be written in several other ways, depending on your preference:
 
 ```scala
-val doubles = for i <- nums yield i * 2     // style shown above
-val doubles = for (i <- nums) yield i * 2
-val doubles = for (i <- nums) yield (i * 2)
-val doubles = for { i <- nums } yield (i * 2)
+val doubles = for i <- ints yield i * 2     // style shown above
+val doubles = for (i <- ints) yield i * 2
+val doubles = for (i <- ints) yield (i * 2)
+val doubles = for { i <- ints } yield (i * 2)
 ```
 
 This example shows how to capitalize the first character in each string in the list:
