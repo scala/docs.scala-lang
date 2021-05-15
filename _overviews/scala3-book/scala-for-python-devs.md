@@ -299,7 +299,7 @@ This section provides comparisons of features related to OOP-style classes and m
   <tbody>
     <tr>
       <td class="python-block">
-        <code>def add(a,b) = a + b</code>
+        <code>def add(a, b): return a + b</code>
       </td>
     </tr>
     <tr>
