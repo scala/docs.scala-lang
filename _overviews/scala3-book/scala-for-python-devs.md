@@ -719,7 +719,7 @@ Scala also has `match` expressions.
         <br>catch
         <br>&nbsp; case ioe: IOException =&gt;
         <br>&nbsp;&nbsp;&nbsp; println(ioe.getMessage)
-        <br>&nbsp; case nfe: FileNotFoundException =&gt; 
+        <br>&nbsp; case fnf: FileNotFoundException =&gt; 
         <br>&nbsp;&nbsp;&nbsp; println(fnf.getMessage)
         <br>finally
         <br>&nbsp; println("Finally")</code>
