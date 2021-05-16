@@ -256,7 +256,7 @@ This section provides comparisons of features related to OOP-style classes and m
         <br>&nbsp;&nbsp;&nbsp; self.name = name
         <br>
         <br>&nbsp; def speak(self):
-        <br>&nbsp;&nbsp;&nbsp; print('Hello, my name is %s' % self.name)</code>
+        <br>&nbsp;&nbsp;&nbsp; print(f'Hello, my name is {self.name}')</code>
       </td>
     </tr>
     <tr>
@@ -543,8 +543,7 @@ Scala also has `match` expressions.
       <td class="python-block">
         <code>for i in ints:
         <br>&nbsp; x = i * 2
-        <br>&nbsp; s = "i = {}, x = {}"
-        <br>&nbsp; print(s.format(i,x))</code>
+        <br>&nbsp; print(f"i = {i}, x = {x}")</code>
       </td>
     </tr>
     <tr>
@@ -568,8 +567,7 @@ Scala also has `match` expressions.
         <code>for i in range(1,3):
         <br>&nbsp; for j in range(4,6):
         <br>&nbsp;&nbsp;&nbsp; for k in range(1,10,3):
-        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; s= "i = {}, j = {}, k = {}"
-        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print(s.format(i,j,k))</code>
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print(f"i = {i}, j = {j}, k = {k}")</code>
       </td>
     </tr>
     <tr>
