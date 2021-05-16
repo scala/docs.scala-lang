@@ -8,10 +8,12 @@ next-page:
 ---
 
 {% include_relative scala4x.css %}
+
 <div markdown="1" class="scala3-comparison-page">
 
 {% comment %}
-NOTE: Hopefully someone with more Python experience can give this a thorough review 
+
+NOTE: Hopefully someone with more Python experience can give this a thorough review
 
 NOTE: On this page (https://contributors.scala-lang.org/t/feedback-sought-optional-braces/4702/10), Li Haoyi comments: “Python’s success also speaks for itself; beginners certainly don’t pick Python because of performance, ease of installation, packaging, IDE support, or simplicity of the language’s runtime semantics!” I’m not a Python expert, so these points are good to know, though I don’t want to go negative in any comparisons.
 It’s more like thinking, “Python developers will appreciate Scala’s performance, ease of installation, packaging, IDE support, etc.”
@@ -21,18 +23,15 @@ It’s more like thinking, “Python developers will appreciate Scala’s perfor
 TODO: We should probably go through this document and add links to our other detail pages, when time permits.
 {% endcomment %}
 
-
 This section provides a comparison between the Python and Scala programming languages.
 It’s intended for programmers who know Python and want to learn about Scala, specifically by seeing examples of how Python language features compare to Scala.
 
-
-
-## Introduction 
+## Introduction
 
 Before getting into the examples, this first section provides a relatively brief introduction and summary of the sections that follow.
 The two languages are first compared at a high level, and then at an everyday programming level.
 
-### High level similarities 
+### High level similarities
 
 At a high level, Scala shares these *similarities* with Python:  
 
@@ -45,7 +44,7 @@ At a high level, Scala shares these *similarities* with Python:
 - Both can be used with [Apache Spark](https://spark.apache.org) for big data processing
 - Both have a wealth of terrific libraries
 
-### High level differences 
+### High level differences
 
 Also at a high level, the _differences_ between Python and Scala are:
   
@@ -97,7 +96,6 @@ Also at a programming level, these are some of the differences you’ll see ever
 - Scala code can run in the JVM and even be compiled to native images (using [Scala Native](https://github.com/scala-native/scala-native) and [GraalVM](https://www.graalvm.org)) for high performance
 - Many other goodies: case classes, companion classes and objects, macros, [union][union-types] and [intersection][intersection-types] types, [toplevel definitions][toplevel], numeric literals, multiple parameter lists, and more
 
-
 ### Features compared with examples
 
 Given that introduction, the following sections provide side-by-side comparisons of Python and Scala programming language features.
@@ -105,8 +103,6 @@ Given that introduction, the following sections provide side-by-side comparisons
 {% comment %}
 TODO: Update the Python examples to use four spaces. I started to do this, but then thought it would be better to do that in a separate PR.
 {% endcomment %}
-
-
 
 ## Comments
 
@@ -128,8 +124,6 @@ Python uses `#` for comments, while the Scala comment syntax is the same as lang
     </tr>
   </tbody>
 </table>
-
-  
 
 ## Variable assignment
 
@@ -239,8 +233,6 @@ x += 1
 
 However, the rule of thumb in Scala is to always use `val` unless the variable specifically needs to be mutated.
 
-  
-
 ## OOP style classes and methods
 
 This section provides comparisons of features related to OOP-style classes and methods.
@@ -331,8 +323,6 @@ This section provides comparisons of features related to OOP-style classes and m
   </tbody>
 </table>
 
-
-
 ## Interfaces, traits, and inheritance
 
 If you’re familiar with Java 8 and newer, Scala traits are similar to those Java interfaces.
@@ -354,8 +344,6 @@ sm.multiply(2,2)   // 4
 ```
 
 There are [many other ways to use traits with classes and objects][modeling-intro], but this gives you a little idea of how they can be used to organize concepts into logical groups of behavior, and then merge them as needed to create a complete solution.
-
-  
 
 ## Control structures
 
@@ -717,7 +705,7 @@ Scala also has `match` expressions.
         <br>catch
         <br>&nbsp; case ioe: IOException =&gt;
         <br>&nbsp;&nbsp;&nbsp; println(ioe.getMessage)
-        <br>&nbsp; case fnf: FileNotFoundException =&gt; 
+        <br>&nbsp; case fnf: FileNotFoundException =&gt;
         <br>&nbsp;&nbsp;&nbsp; println(fnf.getMessage)
         <br>finally
         <br>&nbsp; println("Finally")</code>
@@ -728,13 +716,11 @@ Scala also has `match` expressions.
 
 Match expressions and pattern matching are a big part of the Scala programming experience, but only a few `match` expression features are shown here. See the [Control Structures][control-structures] page for many more examples.
 
-
-
 ## Collections classes
 
 This section compares the [collections classes][collections-classes] that are available in Python and Scala, including lists, dictionaries/maps, sets, and tuples.
 
-### Lists 
+### Lists
 
 Where Python has its list, Scala has several different specialized mutable and immutable sequence classes, depending on your needs.
 Because the Python list is mutable, it most directly compares to Scala’s `ArrayBuffer`.
@@ -956,7 +942,7 @@ The Python set is similar to the _mutable_ Scala `Set` class.
 
 Scala has other specialized `Set` classes for different needs.
 
-### Tuples 
+### Tuples
 
 Python and Scala tuples are also similar.
 
@@ -995,8 +981,6 @@ Python and Scala tuples are also similar.
     </tr>
   </tbody>
 </table>
-
-
 
 ## Methods on collections classes
 
@@ -1190,8 +1174,6 @@ None of these methods mutate the initial list `a`; instead, they all return the 
 
 There are many more methods available, but hopefully these descriptions and examples give you a taste of the power that’s available in the pre-built collections methods.
 
-
-
 ## Enums
 
 This section compares enums (enumerations) in Python and Scala 3.
@@ -1289,8 +1271,6 @@ This section compares enums (enumerations) in Python and Scala 3.
   </tbody>
 </table>
 
-
-
 ## Concepts that are unique to Scala
 
 There are other concepts in Scala which currently don’t have equivalent functionality in Python.
@@ -1304,7 +1284,6 @@ Follow the links below for more details:
 - [Multiversal equality][multiversal]: the ability to control at compile time what equality comparisons make sense
 - Infix methods
 - Macros and metaprogramming
-
 
 [collections-classes]: {% link _overviews/scala3-book/collections-classes.md %}
 [concurrency]: {% link _overviews/scala3-book/concurrency.md %}
@@ -1320,7 +1299,4 @@ Follow the links below for more details:
 [toplevel]: {% link _overviews/scala3-book/taste-toplevel-definitions.md %}
 [type-classes]: {% link _overviews/scala3-book/types-type-classes.md %}
 [union-types]: {% link _overviews/scala3-book/types-union.md %}
-
-
 </div>
-
