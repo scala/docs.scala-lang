@@ -52,7 +52,7 @@ include:
 - Plugins that add metaprogramming facilities to Scala,
   such as [Macro Paradise](https://github.com/scalamacros/paradise), [semanticdb](https://scalameta.org/docs/semanticdb/guide.html).
 - Plugins that modify existing Scala constructs in user code,
-  such as [better-monadic-for](https://github.com/oleg-py/better-monadic-for) and [better-tostring](https://github.com/kubukoz/better-tostring).
+  such as [better-monadic-for](https://github.com/oleg-py/better-monadic-for) and [better-tostring](https://github.com/polyvariant/better-tostring).
 - Plugins that add entirely new constructs to Scala by
   restructuring user code, such as [scala-continuations](https://github.com/scala/scala-continuations).
 
