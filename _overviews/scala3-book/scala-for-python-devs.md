@@ -13,7 +13,7 @@ next-page:
 
 {% comment %}
 
-NOTE: Hopefully someone with more Python experience can give this a thorough review
+NOTE: Hopefully someone with more Python experience can give this a thorough review.
 
 NOTE: On this page (https://contributors.scala-lang.org/t/feedback-sought-optional-braces/4702/10), Li Haoyi comments: “Python’s success also speaks for itself; beginners certainly don’t pick Python because of performance, ease of installation, packaging, IDE support, or simplicity of the language’s runtime semantics!” I’m not a Python expert, so these points are good to know, though I don’t want to go negative in any comparisons.
 It’s more like thinking, “Python developers will appreciate Scala’s performance, ease of installation, packaging, IDE support, etc.”
