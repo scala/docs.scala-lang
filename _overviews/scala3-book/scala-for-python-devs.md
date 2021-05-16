@@ -4,7 +4,7 @@ type: chapter
 description: This page is for Python developers who are interested in learning about Scala 3.
 num: 73
 previous-page: scala-for-javascript-devs
-next-page: 
+next-page:
 ---
 
 {% include_relative scala4x.css %}
@@ -33,7 +33,7 @@ The two languages are first compared at a high level, and then at an everyday pr
 
 ### High level similarities
 
-At a high level, Scala shares these *similarities* with Python:  
+At a high level, Scala shares these *similarities* with Python:
 
 - Both are high-level programming languages, where you don’t have to concern yourself with low-level concepts like pointers and manual memory management
 - Both have a relatively simple, concise syntax
@@ -47,8 +47,8 @@ At a high level, Scala shares these *similarities* with Python:
 ### High level differences
 
 Also at a high level, the _differences_ between Python and Scala are:
-  
-- Python is dynamically typed, and Scala is statically typed  
+
+- Python is dynamically typed, and Scala is statically typed
   - Though it’s statically typed, Scala features like type inference make it feel like a dynamic language
 - Python is interpreted, and Scala code is compiled to _.class_ files, and runs on the Java Virtual Machine (JVM)
 - In addition to running on the JVM, the [Scala.js](https://www.scala-js.org) project lets you use Scala as a JavaScript replacement
@@ -59,7 +59,7 @@ Also at a high level, the _differences_ between Python and Scala are:
 
 ### Programming level similarities
 
-This section looks at the similarities you’ll see between Python and Scala when you write code on an everyday basis:  
+This section looks at the similarities you’ll see between Python and Scala when you write code on an everyday basis:
 
 - Scala’s type inference often makes it feel like a dynamically typed language
 - Neither language uses semicolons to end expressions
@@ -72,7 +72,7 @@ This section looks at the similarities you’ll see between Python and Scala whe
 
 ### Programming level differences
 
-Also at a programming level, these are some of the differences you’ll see every day when writing code:  
+Also at a programming level, these are some of the differences you’ll see every day when writing code:
 
 - Programming in Scala feels very consistent:
   - `val` and `var` fields are used consistently to define fields and parameters
@@ -83,7 +83,7 @@ Also at a programming level, these are some of the differences you’ll see ever
 - Scala variables and parameters are defined with the `val` (immutable) or `var` (mutable) keywords
 - Scala idioms prefer immutable data structures
 - Scala has terrific IDE support with IntelliJ IDEA and Microsoft VS Code
-- Comments: Python uses `#` for comments; Scala uses the C, C++, and Java style: `//`, `/*...*/`, and `/**...*/`  
+- Comments: Python uses `#` for comments; Scala uses the C, C++, and Java style: `//`, `/*...*/`, and `/**...*/`
 - Naming conventions: The Python standard is to use underscores like `my_list`; Scala uses `myList`
 - Scala is statically typed, so you declare types for method parameters, method return values, and in other places
 - Pattern matching and `match` expressions are used extensively in Scala  (and will change the way you write code)
@@ -631,7 +631,7 @@ Scala also has `match` expressions.
     </tr>
     <tr>
       <td class="scala-block">
-        <code>val x = 
+        <code>val x =
         <br>&nbsp; for
         <br>&nbsp;&nbsp;&nbsp; i &lt;- 1 to 3
         <br>&nbsp; yield
@@ -988,10 +988,10 @@ Python and Scala have several of the same common functional methods available to
 
 - `map`
 - `filter`
-- `reduce`  
+- `reduce`
 
 If you’re used to using these methods with lambda expressions in Python, you’ll see that Scala has a similar approach with methods on its collections classes.
-To demonstrate this functionality, here are two sample lists:  
+To demonstrate this functionality, here are two sample lists:
 
 ```scala
 numbers = (1,2,3)           // python
@@ -1131,7 +1131,7 @@ Some common grouping methods:
 | `c.span(p)`      | Returns a collection of two collections, the first created by `c.takeWhile(p)`, and the second created by `c.dropWhile(p)`. |
 | `c.splitAt(n)`   | Returns a collection of two collections by splitting the collection `c` at element `n`. |
 
-Some informational and mathematical methods:  
+Some informational and mathematical methods:
 
 | Method         | Description   |
 | -------------- | ------------- |
@@ -1274,7 +1274,7 @@ This section compares enums (enumerations) in Python and Scala 3.
 ## Concepts that are unique to Scala
 
 There are other concepts in Scala which currently don’t have equivalent functionality in Python.
-Follow the links below for more details: 
+Follow the links below for more details:
 
 - Most concepts related to [contextual abstractions][contextual], such as [extension methods][extension-methods], [type classes][type-classes], implicit values
 - Scala allows multiple parameter lists, which enables features like partially-applied functions, and the ability to create your own DSLs
