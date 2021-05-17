@@ -40,14 +40,14 @@ This will import all the types and modules (with extension methods) of the API.
 
 ## How to navigate the API
 
-The full imported API can be found in the [API documentation for `scala.quoted.Quotes.reflectModule`][reflection doc].
+The full API can be found in the [API documentation for `scala.quoted.Quotes.reflectModule`][reflection doc].
 Unfortunately, at this stage, this automatically generated documentation is not very easy to navigate.
 
 The most important element on the page is the hierarchy tree which provides a synthetic overview of the subtyping relationships of
 the types in the API. For each type `Foo` in the tree:
 
- - the object `FooMethods` contains the methods available for `Foo`
- - the object `FooModule` contains some _static-ish_ methods, most notably constructors (`apply/copy`) and the `unapply` method which provides the extractor(s) required for pattern matching.
+ - the trait `FooMethods` contains the methods available on the type `Foo`
+ - the trait `FooModule` contains the static methods available on the object `Foo`. Most notably, constructors (`apply/copy`) and the `unapply` method which provides the extractor(s) required for pattern matching.
  - For all types `Upper` such that `Foo <: Upper`, the methods defined in `UpperMethods` are available on `Foo` as well.
 
 For example [`TypeBounds`](https://dotty.epfl.ch/api/scala/quoted/Quotes$reflectModule.html#TypeBounds-0), a subtype of `TypeRepr`, represents a type tree of the form `T >: L <: U`: a type `T` which is a super type of `L`
