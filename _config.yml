@@ -15,9 +15,9 @@ keywords:
 - Document
 - Guide
 
-scala-version: 2.13.5
+scala-version: 2.13.6
 scala-212-version: 2.12.13
-scala-3-version: 3.0.0-RC1
+scala-3-version: 3.0.0
 scala-3-plugin-version: 0.5.1
 
 collections:

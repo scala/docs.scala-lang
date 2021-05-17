@@ -13,11 +13,11 @@ Sometimes new JVM and JDK (Java Development Kit) versions require us to update S
 | JDK version | Minimum Scala versions           | Recommended Scala versions                                 |
 |:-----------:|:---------------------------------|:-----------------------------------------------------------|
 | 17          | see below                        | see below
-| 16          | 2.13.5, 2.12.14 (forthcoming)    | 2.13.5, 2.12.14 (forthcoming)
-| 13, 14, 15  | 2.13.2, 2.12.11                  | 2.13.5, 2.12.13                                            |
-| 12          | 2.13.1, 2.12.9                   | 2.13.5, 2.12.13                                            |
-| 11          | 2.13.0, 2.12.4, 2.11.12          | 2.13.5, 2.12.13, 2.11.12                                   |
-| 8           | 2.13.0, 2.12.0, 2.11.0, 2.10.2   | 2.13.5, 2.12.13, 2.11.12, 2.10.7                           |
+| 16          | 2.13.5, 2.12.14 (forthcoming)    | 2.13.6, 2.12.14 (forthcoming)
+| 13, 14, 15  | 2.13.2, 2.12.11                  | 2.13.6, 2.12.13                                            |
+| 12          | 2.13.1, 2.12.9                   | 2.13.6, 2.12.13                                            |
+| 11          | 2.13.0, 2.12.4, 2.11.12          | 2.13.6, 2.12.13, 2.11.12                                   |
+| 8           | 2.13.0, 2.12.0, 2.11.0, 2.10.2   | 2.13.6, 2.12.13, 2.11.12, 2.10.7                           |
 | 6, 7        | 2.11.0, 2.10.0                   | 2.11.12, 2.10.7                                            |
 
 Even when a version combination isn't listed as supported, most features may still work.  (But Scala 2.12+ definitely doesn't work at all on JDK 6 or 7.)
@@ -81,7 +81,7 @@ As far as we know, 12, 13, 14, and 15 are similar to 11 with respect to Scala co
 
 JDK 16 was released in March 2021. It is not an LTS release, so the remarks above about non-LTS releases apply.  The next LTS release will be JDK 17.
 
-The Scala community build now runs on JDK 16.  We shipped improved JDK 16 support in [Scala 2.13.5](https://github.com/scala/scala/releases/tag/v2.13.5) and intend to ship the same improvements soon in Scala 2.12.14 ([release timing thread](https://contributors.scala-lang.org/t/scala-2-12-14-planning/4852/2)).
+The Scala community build and the Scala build and test suite run on JDK 16.  We shipped improved JDK 16 support in [Scala 2.13.5](https://github.com/scala/scala/releases/tag/v2.13.5) and intend to ship the same improvements soon in Scala 2.12.14 ([release timing thread](https://contributors.scala-lang.org/t/scala-2-12-14-planning/4852/2)).
 
 ## JDK 17 compatibility notes
 
