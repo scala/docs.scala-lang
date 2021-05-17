@@ -125,12 +125,14 @@ In addition `Symbol` exposes and is used by many useful methods. For example:
 
 ### To Symbol and back
 
- - `TypeRepr.typeSymbol` returns the symbol of the type represented by `TypeRepr`. The recommended way to obtain a `Symbol` given a `Type[T]` is `TypeRepr.of[T].typeSymbol`
- - For a singleton type, `TypeRepr.termSymbol` returns the symbol of the underlying object or value.
- - `TypeRepr.memberType(symbol)` returns the `TypeRepr` of the provided symbol
- - `Tree.symbol` returns the symbol associated to a tree. Given that `Term <: Tree`,
+Consider an instance of the type `TypeRepr` named `val tpe: TypeRepr = ...`. Then:
+
+ - `tpe.typeSymbol` returns the symbol of the type represented by `TypeRepr`. The recommended way to obtain a `Symbol` given a `Type[T]` is `TypeRepr.of[T].typeSymbol`
+ - For a singleton type, `tpe.termSymbol` returns the symbol of the underlying object or value.
+ - `tpe.memberType(symbol)` returns the `TypeRepr` of the provided symbol
+ - On objects `t: Tree`, `t.symbol` returns the symbol associated to a tree. Given that `Term <: Tree`,
  `Expr.asTerm.symbol` is the best way to obtain the symbol associated to an `Expr[T]`
- - `Symbol.tree` returns the `Tree` associated to the symbol. Be careful when using this
+ - On objects `sym : Symbol`, `sym.tree` returns the `Tree` associated to the symbol. Be careful when using this
  method as the tree for a symbol might not be defined. Read more on the [best practices page][best practices]
 
 ## Macro API design
@@ -230,4 +232,4 @@ We can make this printer the default if needed
 [tasty inspection]: {{ site.scala3ref }}/metaprogramming/tasty-inspect.html
 [reflection doc]: https://dotty.epfl.ch/api/scala/quoted/Quotes$reflectModule.html?query=trait%20reflectModule
 
-[best practices]: {% link _overviews/scala-macros/best-practices.md %}
+[best practices]: {% link _overviews/scala3-macros/best-practices.md %}
