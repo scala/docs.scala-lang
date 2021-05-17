@@ -151,4 +151,4 @@ def summoned[T: Type]: Expr[T] =
     case None => reflect.report.throwError("Could not find an implicit for " + Type.show[T])
 ```
 
-[symbol]: {% link _overviews/scala-macros/tutorial/reflection.md %}
+[symbol]: {% link _overviews/scala3-macros/tutorial/reflection.md %}
