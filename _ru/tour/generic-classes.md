@@ -17,10 +17,11 @@ assumed-knowledge: classes unified-types
 
 ## Объявление обобщенного класса
 Для объявления обобщенного класса необходимо после имени добавить тип в квадратных скобках `[]` как еще один параметр класса. По соглашению обычно используют заглавные буквы `A`, хотя можно использовать любые имена.
-```tut
+```scala mdoc
 class Stack[A] {
   private var elements: List[A] = Nil
-  def push(x: A) { elements = x :: elements }
+  def push(x: A): Unit =
+    elements = x :: elements
   def peek: A = elements.head
   def pop(): A = {
     val currentTop = peek

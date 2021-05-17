@@ -16,7 +16,7 @@ previous-page: variances
 В Scala [параметры типа](generic-classes.html) и [члены абстрактного типа](abstract-type-members.html) могут быть ограничены определенными диапазонами. Такие диапазоны ограничивают конкретные значение типа и, возможно, предоставляют больше информации о членах таких типов. _Верхнее ограничение типа_ `T <: A` указывает на то что тип `T` относится к подтипу типа `A`.
 Приведем пример, демонстрирующий верхнее ограничение для типа класса `PetContainer`:
 
-```tut
+```scala mdoc
 abstract class Animal {
  def name: String
 }
@@ -43,7 +43,7 @@ val dogContainer = new PetContainer[Dog](new Dog)
 val catContainer = new PetContainer[Cat](new Cat)
 ```
 
-```tut:fail
+```scala mdoc:fail
 // это не скомпилируется
 val lionContainer = new PetContainer[Lion](new Lion)
 ```

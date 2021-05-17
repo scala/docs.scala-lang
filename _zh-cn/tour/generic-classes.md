@@ -14,10 +14,11 @@ previous-page: extractor-objects
 
 ## 定义一个泛型类
 泛型类使用方括号 `[]` 来接受类型参数。一个惯例是使用字母 `A` 作为参数标识符，当然你可以使用任何参数名称。
-```tut
+```scala mdoc
 class Stack[A] {
   private var elements: List[A] = Nil
-  def push(x: A) { elements = x :: elements }
+  def push(x: A): Unit =
+    elements = x :: elements 
   def peek: A = elements.head
   def pop(): A = {
     val currentTop = peek

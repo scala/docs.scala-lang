@@ -10,7 +10,7 @@ language: pt-br
 
 Ao chamar métodos e funções, você pode utilizar explicitamente o nome das variáveis nas chamadas, por exemplo:
 
-```tut
+```scala mdoc
 def imprimeNome(nome:String, sobrenome:String) = {
   println(nome + " " + sobrenome)
 }
@@ -22,7 +22,7 @@ imprimeNome(sobrenome = "Smith",nome = "John") // Imprime "John Smith"
 
 Perceba que a ordem não importa quando você utiliza parâmetros nomeados nas chamadas de métodos e funções, desde que todos os parâmetros sejam declarados.  Essa funcionalidade pode ser combinada com [parâmetros com valor padrão](default-parameter-values.html):
 
-```tut
+```scala mdoc:nest
 def imprimeNome(nome:String = "John", sobrenome:String = "Smith") = {
   println(nome + " " + sobrenome)
 }

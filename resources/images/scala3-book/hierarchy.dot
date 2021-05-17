@@ -1,0 +1,37 @@
+digraph unix {
+  rankdir = BT;
+	size="6,6";
+	node [color=lightblue2, style=filled, fontname="Consolas"];
+
+
+  {rank=same; "AnyVal"; "AnyRef / Object"}
+
+  {rank=same;
+    "Unit"; "Boolean"; "Int"; "... (value types)";
+    "String"; "List[Int]"; "... (reference types)"
+  }
+
+	"Matchable" -> "Any";
+  "AnyVal" -> "Matchable";
+  "AnyRef / Object" -> "Matchable";
+
+  "Unit" -> "AnyVal";
+  "Boolean" -> "AnyVal";
+  "Int" -> "AnyVal";
+  "... (value types)" -> "AnyVal";
+
+  "String" -> "AnyRef / Object";
+  "List[Int]" -> "AnyRef / Object";
+  "... (reference types)" -> "AnyRef / Object";
+
+  "Null" -> "String";
+  "Null" -> "List[Int]";
+  "Null" -> "... (reference types)";
+
+  "Nothing" -> "Null";
+  "Nothing" -> "Unit";
+  "Nothing" -> "Boolean";
+  "Nothing" -> "Int";
+  "Nothing" -> "... (value types)";
+
+}

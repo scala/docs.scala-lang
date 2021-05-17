@@ -40,7 +40,7 @@ Domyślnie importowany obiekt `scala.Predef` deklaruje kilka predefiniowanych ty
 
 Przykładowo, kiedy wywołujemy metodę Javy, która wymaga typu `java.lang.Integer`, dopuszczalne jest przekazanie typu `scala.Int`. Dzieje się tak ponieważ `Predef` definiuje poniższe konwersje niejawne:
 
-```tut
+```scala mdoc
 import scala.language.implicitConversions
 
 implicit def int2Integer(x: Int) =

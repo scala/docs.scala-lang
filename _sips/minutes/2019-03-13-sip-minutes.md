@@ -346,7 +346,7 @@ Seb: there are two widely different things in this proposal that are mixed toget
 
 Martin: avoiding the word implicit was something of an exercise, to avoid confusing the old system and new system in the minds of people who know the old system. In the long run, it might be better to just go ahead and talk about "implicits".
 
-Seth: how will we teach this from scratch? Martin: pages like [https://dotty.epfl.ch/docs/reference/contextual/instance-defs.html](https://dotty.epfl.ch/docs/reference/contextual/instance-defs.html) actually are an attempt at this.
+Seth: how will we teach this from scratch? Martin: pages like [https://dotty.epfl.ch/docs/reference/contextual/givens.html](https://dotty.epfl.ch/docs/reference/contextual/givens.html) actually are an attempt at this.
 
 Miles: in the `ListOrd[T]` example, it's essentially a function definition, a function from `Ord[T]` to `Ord[List[T]]`, why doesn't it look like I'm writing a function?
 

@@ -12,7 +12,7 @@ prerequisite-knowledge: function-syntax
 
 Kada se pozivaju metode, možete koristiti imena varijabli eksplicitno pri pozivu:
 
-```tut
+```scala mdoc
   def printName(first: String, last: String): Unit = {
     println(first + " " + last)
   }

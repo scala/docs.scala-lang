@@ -17,7 +17,7 @@ U sljedećem koraku turneje, vidjećemo kako su korisne u [podudaranju uzoraka (
 
 ## Definisanje case klase
 Minimalna case klasa se sastoji iz ključnih riječi `case class`,  identifikatora, i liste parametara (koja može biti prazna):
-```tut
+```scala mdoc
 case class Book(isbn: String)
 
 val frankenstein = Book("978-0486282114")

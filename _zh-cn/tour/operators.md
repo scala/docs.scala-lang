@@ -22,7 +22,7 @@ previous-page: type-inference
 
 ## 定义和使用运算符
 你可以使用任何合法标识符作为运算符。 包括像 `add` 这样的名字或像 `+` 这样的符号。
-```tut
+```scala mdoc
 case class Vec(x: Double, y: Double) {
   def +(that: Vec) = Vec(this.x + that.x, this.y + that.y)
 }
@@ -36,7 +36,7 @@ vector3.y  // 3.0
 ```
 类 Vec 有一个方法 `+`，我们用它来使 `vector1` 和 `vector2` 相加。 使用圆括号，你可以使用易读的语法来构建复杂表达式。 这是 `MyBool` 类的定义，其中有方法 `and` 和 `or`：
 
-```tut
+```scala mdoc
 case class MyBool(x: Boolean) {
   def and(that: MyBool): MyBool = if (x) that else this
   def or(that: MyBool): MyBool = if (x) this else that
@@ -46,7 +46,7 @@ case class MyBool(x: Boolean) {
 
 现在可以使用 `and` 和 `or` 作为中缀运算符：
 
-```tut
+```scala mdoc
 def not(x: MyBool) = x.negate
 def xor(x: MyBool, y: MyBool) = (x or y) and not(x and y)
 ```

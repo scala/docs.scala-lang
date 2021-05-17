@@ -18,7 +18,7 @@ W dalszych rozdziałach przyjrzymy się jak przydają się w [dopasowywaniu wzor
 
 Minimalna definicja klasy przypadku wymaga słów kluczowych `case class`, identyfikatora oraz listy parametrów (może być pusta):
 
-```tut
+```scala mdoc
 case class Book(isbn: String)
 
 val frankenstein = Book("978-0486282114")
@@ -44,7 +44,7 @@ Alternatywnie, w klasach przypadków można też używać `var`, jednak stanowc
 
 Klasy przypadków są porównywane według ich struktury, a nie przez referencje:
 
-```tut
+```scala mdoc
 case class Message(sender: String, recipient: String, body: String)
 
 val message2 = Message("jorge@catalonia.es", "guillaume@quebec.ca", "Com va?")
@@ -59,7 +59,7 @@ Mimo, że `message1` oraz `message2` odnoszą się do innych obiektów, to ich w
 Możliwe jest stworzenie płytkiej kopii (ang. shallow copy) instancji klasy przypadku używając metody `copy`.
 Opcjonalnie można zmienić jeszcze wybrane parametry konstruktora.
 
-```tut
+```scala mdoc:nest
 case class Message(sender: String, recipient: String, body: String)
 val message4 = Message("julien@bretagne.fr", "travis@washington.us", "Me zo o komz gant ma amezeg")
 val message5 = message4.copy(sender = message4.recipient, recipient = "claire@bourgogne.fr")

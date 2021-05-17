@@ -15,7 +15,7 @@ Pattern matching is a mechanism for checking a value against a pattern. A succes
 
 ## Syntax
 A match expression has a value, the `match` keyword, and at least one `case` clause.
-```tut
+```scala mdoc
 import scala.util.Random
 
 val x: Int = Random.nextInt(10)
@@ -30,7 +30,7 @@ x match {
 The `val x` above is a random integer between 0 and 10. `x` becomes the left operand of the `match` operator and on the right is an expression with four cases. The last case `_` is a "catch all" case for any other possible `Int` values. Cases are also called _alternatives_.
 
 Match expressions have a value.
-```tut
+```scala mdoc
 def matchTest(x: Int): String = x match {
   case 1 => "one"
   case 2 => "two"
@@ -45,7 +45,7 @@ This match expression has a type String because all of the cases return String. 
 
 Case classes are especially useful for pattern matching.
 
-```tut
+```scala mdoc
 abstract class Notification
 
 case class Email(sender: String, title: String, body: String) extends Notification
@@ -111,7 +111,7 @@ In the `case Email(sender, _, _) if importantPeopleInfo.contains(sender)`, the p
 
 ## Matching on type only
 You can match on the type like so:
-```tut
+```scala mdoc
 abstract class Device
 case class Phone(model: String) extends Device {
   def screenOff = "Turning screen off"
@@ -130,7 +130,7 @@ def goIdle(device: Device) = device match {
 ## Sealed classes
 Traits and classes can be marked `sealed` which means all subtypes must be declared in the same file. This assures that all subtypes are known.
 
-```tut
+```scala mdoc
 sealed abstract class Furniture
 case class Couch() extends Furniture
 case class Chair() extends Furniture

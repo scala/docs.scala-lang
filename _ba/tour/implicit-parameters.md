@@ -22,7 +22,7 @@ Argumenti koji se mogu proslijediti kao implicitni parametri spadaju u dvije kat
 U sljedećem primjeru definisaćemo metodu `sum` koja izračunava sumu liste elemenata koristeći `add` i `unit` operacije monoida.
 Molimo primijetite da implicitne vrijednosti ne mogu biti top-level, već moraju biti članovi templejta.
  
-```tut
+```scala mdoc
 abstract class SemiGroup[A] {
   def add(x: A, y: A): A
 }

@@ -13,7 +13,7 @@ previous-page: inner-classes
 
 特质和抽象类可以包含一个抽象类型成员，意味着实际类型可由具体实现来确定。例如：
 
-```tut
+```scala mdoc
 trait Buffer {
   type T
   val element: T
@@ -21,7 +21,7 @@ trait Buffer {
 ```
 这里定义的抽象类型`T`是用来描述成员`element`的类型的。通过抽象类来扩展这个特质后，就可以添加一个类型上边界来让抽象类型`T`变得更加具体。
 
-```tut
+```scala mdoc
 abstract class SeqBuffer extends Buffer {
   type U
   type T <: Seq[U]
@@ -32,7 +32,7 @@ abstract class SeqBuffer extends Buffer {
 
 含有抽象类型成员的特质或类（[classes](classes.html)）经常和匿名类的初始化一起使用。为了能够阐明问题，下面看一段程序，它处理一个涉及整型列表的序列缓冲区。
 
-```tut
+```scala mdoc
 abstract class IntSeqBuffer extends SeqBuffer {
   type U = Int
 }
@@ -51,7 +51,7 @@ println("content = " + buf.element)
 
 把抽象类型成员转成类的类型参数或者反过来，也是可行的。如下面这个版本只用了类的类型参数来转换上面的代码：
 
-```tut
+```scala mdoc:nest
 abstract class Buffer[+T] {
   val element: T
 }

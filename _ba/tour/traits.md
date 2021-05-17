@@ -18,12 +18,12 @@ Klase i objekti mogu naslijediti trejtove ali trejtovi ne mogu biti instancirani
 ## Definisanje trejta
 Minimalni trejt je samo ključna riječ `trait` i identifikator:
 
-```tut
+```scala mdoc
 trait HairColor
 ```
 
 Trejtovi su vrlo korisni s generičkim tipovima i apstraktnim metodama.
-```tut
+```scala mdoc
 trait Iterator[A] {
   def hasNext: Boolean
   def next(): A
@@ -34,7 +34,7 @@ Nasljeđivanje `trait Iterator[A]` traži tip `A` i implementacije metoda `hasNe
 
 ## Korištenje trejtova
 Koristite `extends` za nasljeđivanje trejta. Zatim implementirajte njegove apstraktne članove koristeći `override` ključnu riječ:
-```tut
+```scala mdoc:nest
 trait Iterator[A] {
   def hasNext: Boolean
   def next(): A
@@ -62,7 +62,7 @@ Ona nasljeđuje `Iterator[Int]` što znači da `next` mora vraćati `Int`.
 
 ## Podtipovi
 Podtipovi trejtova mogu se koristiti gdje se trejt traži.
-```tut
+```scala mdoc
 import scala.collection.mutable.ArrayBuffer
 
 trait Pet {

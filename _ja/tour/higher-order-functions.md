@@ -14,12 +14,12 @@ previous-page: mixin-class-composition
 ---
 
 高階関数は他の関数をパラメーターとして受け取る、もしくは結果として関数を返します。
-このようなことができるのは、Scalaでは関数が第一級値 (first-classs value) だからです。
+このようなことができるのは、Scalaでは関数が第一級値 (first-class value) だからです。
 用語が少し紛らわしいかもしれませんが、
 ここでは"高階関数"というフレーズを関数をパラメーターとして受け取る、または関数を返すメソッドと関数の両方に対して使います。
 
 もっとも一般的な例の1つは、Scalaのコレクションで利用可能な高階関数`map`です。
-```tut
+```scala mdoc
 val salaries = Seq(20000, 70000, 40000)
 val doubleSalary = (x: Int) => x * 2
 val newSalaries = salaries.map(doubleSalary) // List(40000, 140000, 80000)
@@ -29,7 +29,7 @@ val newSalaries = salaries.map(doubleSalary) // List(40000, 140000, 80000)
 3行目で、給与のリストのそれぞれの値に`doubleSalary`が適用されます。
 
 コードを減らすため、以下のように無名関数を作ることができ、引数として直接mapに渡すことができます
-```
+```scala mdoc:nest
 val salaries = Seq(20000, 70000, 40000)
 val newSalaries = salaries.map(x => x * 2) // List(40000, 140000, 80000)
 ```
@@ -37,7 +37,7 @@ val newSalaries = salaries.map(x => x * 2) // List(40000, 140000, 80000)
 それはmap関数が期待する型を基にコンパイラーが型を推論できるからです。
 さらに言えば、慣用的には同じコードを以下のように書きます。
 
-```tut
+```scala mdoc:nest
 val salaries = Seq(20000, 70000, 40000)
 val newSalaries = salaries.map(_ * 2)
 ```
@@ -46,7 +46,7 @@ Scalaコンパイラはパラメーターの型を（Intが1つだけと）既�
 
 ## メソッドを関数に強制変換
 高階関数には引数としてとしてメソッドを渡すことも可能で、それはScalaコンパイラがメソッドを関数に強制変換するからです。
-```
+```scala mdoc
 case class WeeklyWeatherForecast(temperatures: Seq[Double]) {
 
   private def convertCtoF(temp: Double) = temp * 1.8 + 32
@@ -62,7 +62,7 @@ case class WeeklyWeatherForecast(temperatures: Seq[Double]) {
 たとえば、何通りかの係数で人の給料を上げるメソッドが欲しいとしましょう。
 高階関数を作らないなら、こんな感じになるかもしれません。
 
-```tut
+```scala mdoc
 object SalaryRaiser {
 
   def smallPromotion(salaries: List[Double]): List[Double] =
@@ -79,7 +79,7 @@ object SalaryRaiser {
 3つのメソッドはそれぞれ掛け算の係数のみ異なることに気をつけてください。
 簡潔にするため、以下のように繰り返されているコードを高階関数に抽出することができます。
 
-```tut
+```scala mdoc:nest
 object SalaryRaiser {
 
   private def promotion(salaries: List[Double], promotionFunction: Double => Double): List[Double] =
@@ -102,7 +102,7 @@ object SalaryRaiser {
 関数を生成したい場合がいくつかあります。
 こちらは関数を返すメソッドの例になります。
 
-```tut
+```scala mdoc
 def urlBuilder(ssl: Boolean, domainName: String): (String, String) => String = {
   val schema = if (ssl) "https://" else "http://"
   (endpoint: String, query: String) => s"$schema$domainName/$endpoint?$query"

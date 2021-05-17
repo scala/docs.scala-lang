@@ -13,7 +13,7 @@ Scala suporta anotações de variância de parâmetros de tipo de [classes gené
 
 Na página sobre [classes genéricas](generic-classes.html) foi dado um exemplo de uma pilha de estado mutável. Explicamos que o tipo definido pela classe `Stack [T]` está sujeito a subtipos invariantes em relação ao parâmetro de tipo. Isso pode restringir a reutilização da abstração de classe. Derivamos agora uma implementação funcional (isto é, imutável) para pilhas que não tem esta restrição. Por favor, note que este é um exemplo avançado que combina o uso de [métodos polimórficos](polymorphic-methods.html), [limites de tipo inferiores](lower-type-bounds.html) e anotações de parâmetros de tipos covariantes em um estilo não trivial. Além disso, fazemos uso de [classes internas](inner-classes.html) para encadear os elementos da pilha sem links explícitos.
 
-```tut
+```scala mdoc
 class Stack[+T] {
   def push[S >: T](elem: S): Stack[S] = new Stack[S] {
     override def top: S = elem

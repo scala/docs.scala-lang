@@ -15,7 +15,7 @@ _Nota de tradução: A palavra cujo o significado melhor corresponde a palavra `
 Scala possui mecanismo de correspondência de padrão embutido. Isso permite realizar o match de qualquer tipo de dados com a política de primeiro match. 
 Aqui um pequeno exemplo que mostrar como realizar o match de um número inteiro:
 
-```tut
+```scala mdoc
 object MatchTest1 extends App {
   def matchTest(x: Int): String = x match {
     case 1 => "um"
@@ -30,7 +30,7 @@ O bloco com a declaração `case` define a função que mapeia inteiros para str
 
 Aqui um segundo exemplo no qual o match é realizado em valores de diferentes tipos:
 
-```tut
+```scala mdoc
 object MatchTest2 extends App {
   def matchTest(x: Any): Any = x match {
     case 1 => "um"

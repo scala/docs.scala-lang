@@ -15,7 +15,7 @@ Scala 中的方法可以按类型和值进行参数化。 语法和泛型类类�
 
 看下面的例子：
 
-```tut
+```scala mdoc
 def listOfDuplicates[A](x: A, length: Int): List[A] = {
   if (length < 1)
     Nil

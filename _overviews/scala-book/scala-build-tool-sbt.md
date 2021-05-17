@@ -82,7 +82,7 @@ If you see that, you’re in great shape for the next step.
 At this point you only need two more things to run a “Hello, world” project:
 
 - A *build.sbt* file
-- A *Hello.scala* file
+- A *HelloWorld.scala* file
 
 For a little project like this, the *build.sbt* file only needs to contain a few lines, like this:
 
@@ -161,8 +161,8 @@ Here’s a list of other build tools you can use to build Scala projects are:
 - [Ant](http://ant.apache.org/)
 - [Gradle](https://gradle.org/)
 - [Maven](https://maven.apache.org/)
-- [Fury](https://fury.build)
-- [Mill](http://www.lihaoyi.com/mill)
+- [Fury](https://propensive.com/opensource/fury)
+- [Mill](https://com-lihaoyi.github.io/mill/)
 
 
 

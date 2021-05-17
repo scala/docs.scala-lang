@@ -15,7 +15,7 @@ previous-page: singleton-objects
 
 Регулярные выражения (Regular expression) - это специальный шаблон для поиска данных задаваемый в виде текстовой строки. Любая строка может быть преобразована в регулярное выражение методом `.r`.
 
-```tut
+```scala mdoc
 import scala.util.matching.Regex
 
 val numberPattern: Regex = "[0-9]".r
@@ -30,7 +30,7 @@ numberPattern.findFirstMatchIn("awesomepassword") match {
 
 Используя круглые скобки можно объединять сразу несколько групп регулярных выражений.
 
-```tut
+```scala mdoc
 import scala.util.matching.Regex
 
 val keyValPattern: Regex = "([0-9a-zA-Z-#() ]+): ([0-9a-zA-Z-#() ]+)".r

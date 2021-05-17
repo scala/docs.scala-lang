@@ -12,10 +12,11 @@ language: pt-br
 Semelhante ao Java 5 (aka. JDK 1.5), Scala tem suporte nativo para classes parametrizadas com tipos. Essas classes genéricas são particularmente úteis para o desenvolvimento de classes que representam coleções de dados.
 Aqui temos um exemplo que demonstra isso:
 
-```tut
+```scala mdoc
 class Stack[T] {
   var elems: List[T] = Nil
-  def push(x: T) { elems = x :: elems }
+  def push(x: T): Unit =
+    elems = x :: elems
   def top: T = elems.head
   def pop() { elems = elems.tail }
 }
@@ -25,7 +26,7 @@ A classe `Stack` modela uma pilha mutável que contém elementos de um tipo arbi
 
 Aqui temos mais alguns exemplos de uso:
 
-```tut
+```scala mdoc
 object GenericsTest extends App {
   val stack = new Stack[Int]
   stack.push(1)

@@ -21,7 +21,7 @@ A more detailed guide to where Scala looks for implicits can be found in [the FA
 
 In the following example we define a method `sum` which computes the sum of a list of elements using the monoid's `add` and `unit` operations. Please note that implicit values cannot be top-level.
 
-```tut
+```scala mdoc
 abstract class Monoid[A] {
   def add(x: A, y: A): A
   def unit: A

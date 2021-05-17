@@ -18,7 +18,7 @@ prerequisite-knowledge: variance, upper-type-bound
 Абстрактный означает, что только конкретный экземпляр определяет, каким именно будет тип.
 Вот пример:
 
-```tut
+```scala mdoc
 trait Buffer {
   type T
   val element: T
@@ -26,7 +26,7 @@ trait Buffer {
 ```
 Здесь мы определили абстрактный тип `T`, который используется для описания типа члена `element`. Мы можем расширить его в абстрактном классе, добавив верхнюю границу нового типа `U` связанного с `T`, делая описание типа более конкретным.
 
-```tut
+```scala mdoc
 abstract class SeqBuffer extends Buffer {
   type U
   type T <: Seq[U]
@@ -37,7 +37,7 @@ abstract class SeqBuffer extends Buffer {
 
 [Трейты](traits.html) или [классы](classes.html) с членами абстрактного типа часто используются в сочетании с анонимными экземплярами классов. Чтобы проиллюстрировать это рассмотрим программу, которая имеет дело с буфером, который ссылается на список целых чисел:
 
-```tut
+```scala mdoc
 abstract class IntSeqBuffer extends SeqBuffer {
   type U = Int
 }
@@ -56,7 +56,7 @@ println("content = " + buf.element)
 
 Мы можем вывести тип класса из типа его членов и наоборот. Приведем версию кода, в которой выводится тип класса из типа его члена:
 
-```tut
+```scala mdoc:nest
 abstract class Buffer[+T] {
   val element: T
 }

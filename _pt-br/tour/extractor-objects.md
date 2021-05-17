@@ -11,7 +11,7 @@ language: pt-br
 
 Em Scala, padrões podem ser definidos independentemente de classes case. Para este fim, um método chamado `unapply` é definido para retornar um extrator. Um extrator pode ser pensado como um método especial que inverte o efeito da aplicação de um determinado objeto em algumas entradas. Seu objetivo é "extrair" as entradas que estavam presentes antes da operação `apply`. Por exemplo, o código a seguir define um [objeto](singleton-objects.html) extrator chamado Twice.
 
-```tut
+```scala mdoc
 object Twice {
   def apply(x: Int): Int = x * 2
   def unapply(z: Int): Option[Int] = if (z%2 == 0) Some(z/2) else None

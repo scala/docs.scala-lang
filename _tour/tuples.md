@@ -18,7 +18,7 @@ Tuples are especially handy for returning multiple values from a method.
 
 A tuple with two elements can be created as follows:
 
-```tut
+```scala mdoc
 val ingredient = ("Sugar" , 25)
 ```
 
@@ -35,7 +35,7 @@ Each class has as many type parameters as it has elements.
 One way of accessing tuple elements is by position.  The individual
 elements are named `_1`, `_2`, and so forth.
 
-```tut
+```scala mdoc
 println(ingredient._1) // Sugar
 println(ingredient._2) // 25
 ```
@@ -44,7 +44,7 @@ println(ingredient._2) // 25
 
 A tuple can also be taken apart using pattern matching:
 
-```tut
+```scala mdoc
 val (name, quantity) = ingredient
 println(name) // Sugar
 println(quantity) // 25
@@ -55,7 +55,7 @@ is `Int`.
 
 Here is another example of pattern-matching a tuple:
 
-```tut
+```scala mdoc
 val planets =
   List(("Mercury", 57.9), ("Venus", 108.2), ("Earth", 149.6),
        ("Mars", 227.9), ("Jupiter", 778.3))
@@ -68,7 +68,7 @@ planets.foreach{
 
 Or, in `for` comprehension:
 
-```tut
+```scala mdoc
 val numPairs = List((2, 5), (3, -7), (20, 56))
 for ((a, b) <- numPairs) {
   println(a * b)

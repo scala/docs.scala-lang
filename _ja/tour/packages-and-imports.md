@@ -70,7 +70,7 @@ import users.{UserPreferences => UPrefs}  // インポートし利便性のた�
 ```
 ScalaのJavaと異なる点の1つはインポートがどこでも使える点です。
 
-```tut
+```scala mdoc
 def sqrtplus1(x: Int) = {
   import scala.math.sqrt
   sqrt(x) + 1.0

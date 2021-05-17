@@ -13,7 +13,7 @@ Scala wspiera adnotacje wariancji parametrów typów [klas generycznych](generic
 
 Na stronie o [klasach generycznych](generic-classes.html) omówiliśmy przykład zmiennego stosu. Wyjaśniliśmy, że typ definiowany przez klasę `Stack[T]` jest poddany niezmiennemu podtypowaniu w stosunku do parametru typu. Może to ograniczyć możliwość ponownego wykorzystania abstrakcji tej klasy. Spróbujemy teraz opracować funkcyjną (tzn. niemutowalną) implementację dla stosów, które nie posiadają tego ograniczenia. Warto zwrócić uwagę, że jest to zaawansowany przykład łączący w sobie zastosowanie [funkcji polimorficznych](polymorphic-methods.html), [dolnych ograniczeń typu](lower-type-bounds.html) oraz kowariantnych adnotacji parametru typu. Dodatkowo stosujemy też [klasy wewnętrzne](inner-classes.html), aby połączyć ze sobą elementy stosu bez jawnych powiązań.
 
-```tut
+```scala mdoc
 class Stack[+T] {
   def push[S >: T](elem: S): Stack[S] = new Stack[S] {
     override def top: S = elem

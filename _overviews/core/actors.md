@@ -447,7 +447,7 @@ execute its by-name argument `fun`.
 ## Remote Actors
 
 This section describes the remote actors API. Its main interface is
-the [`RemoteActor`](https://www.scala-lang.org/api/2.9.1/scala/actors/remote/RemoteActor$.html) object in package `scala.actors.remote`. This object
+the `RemoteActor` object in package `scala.actors.remote`. This object
 provides methods to create and connect to remote actor instances. In
 the code snippets shown below we assume that all members of
 `RemoteActor` have been imported; the full list of imports that we use

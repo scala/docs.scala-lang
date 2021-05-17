@@ -20,7 +20,7 @@ Javaのような、内部クラスが外側のクラスのメンバーとなる�
 
 その違いを示すために、グラフデータ型の実装をさっと書きます。
 
-```tut
+```scala mdoc
 class Graph {
   class Node {
     var connectedNodes: List[Node] = Nil
@@ -41,7 +41,7 @@ class Graph {
 このプログラムはグラフをノードのリスト(`List[Node]`)で表現しています。いずれのノードも接続している他のノードへのリスト(`connectedNodes`)を保持します。`class Node`は `class Graph`の中にネストしているので、 _パス依存型_ です。
 そのため`connectedNodes`の中にある全てのノードは同じ`Graph`インスタンスから`newNode`を使用して作る必要があります。
 
-```tut
+```scala mdoc
 val graph1: Graph = new Graph
 val node1: graph1.Node = graph1.newNode
 val node2: graph1.Node = graph1.newNode
@@ -56,7 +56,7 @@ node3.connectTo(node1)
 それは別のグラフのノードは別の型を持つからです。
 こちらは不正なプログラムです。
 
-```
+```scala mdoc:fail
 val graph1: Graph = new Graph
 val node1: graph1.Node = graph1.newNode
 val node2: graph1.Node = graph1.newNode
@@ -70,7 +70,7 @@ node1.connectTo(node3)      // illegal!
 Scalaではそのような型も同様に表現することができ、`Graph#Node`と書きます。
 もし他のグラフのノードに接続できるようにしたければ、以下の方法で最初のグラフ実装の定義を変える必要があります。
 
-```tut
+```scala mdoc:nest
 class Graph {
   class Node {
     var connectedNodes: List[Graph#Node] = Nil

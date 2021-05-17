@@ -40,7 +40,7 @@ previous-page: implicit-parameters
 
 예를 들면, `java.lang.Integer`를 기대하는 자바 메서드를 호출할 때, `scala.Int`를 대신 넘겨도 된다. 그 이유는 Predef가 아래 암시적 변환을 포함하기 때문이다.
 
-```tut
+```scala mdoc
 import scala.language.implicitConversions
 
 implicit def int2Integer(x: Int) =

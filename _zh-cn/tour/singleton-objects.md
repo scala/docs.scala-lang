@@ -19,7 +19,7 @@ previous-page: pattern-matching
 
 # 定义一个单例对象
 一个单例对象是就是一个值。单例对象的定义方式很像类，但是使用关键字 `object`：
-```tut
+```scala mdoc
 object Box
 ```
 
@@ -76,7 +76,7 @@ circle1.area
 这里的 `class Circle` 有一个成员 `area` 是和具体的实例化对象相关的，单例对象 `object Circle` 包含一个方法 `calculateArea` ，它在每一个实例化对象中都是可见的。
 
 伴生对象也可以包含工厂方法：
-```tut
+```scala mdoc
 class Email(val username: String, val domainName: String)
 
 object Email {

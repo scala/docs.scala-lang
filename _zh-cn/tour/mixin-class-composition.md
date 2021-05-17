@@ -13,7 +13,7 @@ previous-page: tuples
 
 当某个特质被用于组合类时，被称为混入。
 
-```tut
+```scala mdoc
 abstract class A {
   val message: String
 }
@@ -34,7 +34,7 @@ println(d.loudMessage)  // I'M AN INSTANCE OF CLASS B
 
 现在，让我们看一个更有趣的例子，其中使用了抽象类：
 
-```tut
+```scala mdoc
 abstract class AbsIterator {
   type T
   def hasNext: Boolean
@@ -46,7 +46,7 @@ abstract class AbsIterator {
 
 接下来，我们将实现一个具体的类（所有的抽象成员`T`、`hasNext`和`next`都会被实现）：
 
-```tut
+```scala mdoc
 class StringIterator(s: String) extends AbsIterator {
   type T = Char
   private var i = 0
@@ -63,7 +63,7 @@ class StringIterator(s: String) extends AbsIterator {
 
 现在我们创建一个特质，也继承于`AbsIterator`。
 
-```tut
+```scala mdoc
 trait RichIterator extends AbsIterator {
   def foreach(f: T => Unit): Unit = while (hasNext) f(next())
 }
@@ -73,7 +73,7 @@ trait RichIterator extends AbsIterator {
 
 下面我们要把`StringIterator`和`RichIterator` 中的功能组合成一个类。
 
-```tut
+```scala mdoc
 object StringIteratorTest extends App {
   class RichStringIter extends StringIterator("Scala") with RichIterator
   val richStringIter = new RichStringIter

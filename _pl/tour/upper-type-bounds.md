@@ -13,7 +13,7 @@ W Scali [parametry typów](generic-classes.html) oraz [typy abstrakcyjne](abstra
 
 Poniższy przykład demonstruje zastosowanie ograniczeń górnych typu dla parametru typu klasy `Cage`:
 
-```tut
+```scala mdoc
 abstract class Animal {
  def name: String
 }

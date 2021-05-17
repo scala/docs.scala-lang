@@ -16,12 +16,12 @@ prerequisite-knowledge: expressions, classes, generics, objects, companion-objec
 # 트레잇 정의
 가장 단순한 트레잇 정의는 예약어 `trait`과 식별자만 있는 것입니다:
 
-```tut
+```scala mdoc
 trait HairColor
 ```
 
 트레잇은 제네릭 타입과 추상 메서드로 특히 유용합니다.
-```tut
+```scala mdoc
 trait Iterator[A] {
   def hasNext: Boolean
   def next(): A
@@ -32,7 +32,7 @@ trait Iterator[A] {
 
 ## 트레잇 사용하기
 `extends` 예약어를 사용하여 트레잇을 확장하십시오. 그런 다음 `override` 예약어를 사용하여 트레잇의 추상 멤버를 구현하십시오:
-```tut
+```scala mdoc:nest
 trait Iterator[A] {
   def hasNext: Boolean
   def next(): A
@@ -59,7 +59,7 @@ iterator.next()  // returns 1
 
 ## 서브타이핑
 특정 트레잇이 필요한 곳에 그 트레잇의 서브타입을 대신 사용할 수 있습니다.
-```tut
+```scala mdoc
 import scala.collection.mutable.ArrayBuffer
 
 trait Pet {

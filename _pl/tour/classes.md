@@ -18,7 +18,7 @@ Typy, obiekty i cechy zostaną omówione w dalszej części przewodnika.
 Minimalna definicja klasy składa się ze słowa kluczowego `class` oraz jej identyfikatora.
 Nazwy klas powinny zaczynać się z wielkiej litery.
 
-```tut
+```scala mdoc
 class User
 
 val user1 = new User
@@ -29,7 +29,7 @@ Ponieważ żaden konstruktor nie został zdefiniowany, klasa `User` posiada kons
 Zazwyczaj jednak definiujemy konstruktor i ciało klasy.
 Poniższy przykład przedstawia definicję klasy służącej do reprezentowania punktu.
 
-```tut
+```scala mdoc
 class Point(var x: Int, var y: Int) {
 
   def move(dx: Int, dy: Int): Unit = {
@@ -57,7 +57,7 @@ Ponieważ `toString` nadpisuje metodę `toString` zdefiniowaną w  [`AnyRef`](un
 
 Konstruktory mogą zawierać parametry opcjonalne - wystarczy dostarczyć wartość domyślną dla takiego parametru.
 
-```tut
+```scala mdoc:nest
 class Point(var x: Int = 0, var y: Int = 0)
 
 val origin = new Point  // x i y są mają wartość 0
@@ -69,7 +69,7 @@ println(point1.x)  // wyświetla 1
 W tej wersji klasy `Point`, `x` oraz `y` mają domyślną wartość `0` - dlatego nie jest wymagane przekazanie żadnych parametrów.
 Jednak z powodu tego, że konstruktor jest ewaluowany od lewej do prawej strony, jeżeli chcesz przekazać parametr tylko do argumentu `y`, musisz określić nazwę tego parametru.
 
-```
+```scala mdoc:nest
 class Point(var x: Int = 0, var y: Int = 0)
 val point2 = new Point(y = 2)
 println(point2.y)  // wyświetla 2
@@ -82,7 +82,7 @@ Jest to również dobra praktyka, która zwiększa przejrzystość kodu.
 Domyślnie wszystkie składniki klasy są publiczne.
 Aby ukryć je przed zewnętrznymi klientami (wszystkim co jest poza daną klasą), należy użyć słowa kluczowego `private`.
 
-```tut
+```scala mdoc:nest
 class Point {
   private var _x = 0
   private var _y = 0
@@ -114,7 +114,7 @@ Zwróć uwagę na specyficzną składnię dla setterów: posiadają one `_=` do�
 Parametry głównego konstruktora oznaczone przez `val` i `var` są publiczne.
 Ponieważ `val` jest niezmienne, poniższy kod nie jest prawidłowy
 
-```
+```scala mdoc:fail
 class Point(val x: Int, val y: Int)
 val point = new Point(1, 2)
 point.x = 3  // <-- nie kompiluje się
@@ -122,7 +122,7 @@ point.x = 3  // <-- nie kompiluje się
 
 Parametry konstruktora __nie__ zawierające `val` lub `var` są prywatne - widoczne jedynie we wnętrzu klasy.
 
-```
+```scala mdoc:fail
 class Point(x: Int, y: Int)
 val point = new Point(1, 2)
 point.x  // <-- nie kompiluje się

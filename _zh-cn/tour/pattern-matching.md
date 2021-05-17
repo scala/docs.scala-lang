@@ -16,7 +16,7 @@ previous-page: case-classes
 ## 语法
 一个模式匹配语句包括一个待匹配的值，`match`关键字，以及至少一个`case`语句。
 
-```tut
+```scala mdoc
 import scala.util.Random
 
 val x: Int = Random.nextInt(10)
@@ -31,7 +31,7 @@ x match {
 上述代码中的`val x`是一个0到10之间的随机整数，将它放在`match`运算符的左侧对其进行模式匹配，`match`的右侧是包含4条`case`的表达式，其中最后一个`case _`表示匹配其余所有情况，在这里就是其他可能的整型值。
 
 `match`表达式具有一个结果值
-```tut
+```scala mdoc
 def matchTest(x: Int): String = x match {
   case 1 => "one"
   case 2 => "two"
@@ -46,7 +46,7 @@ matchTest(1)  // one
 
 案例类非常适合用于模式匹配。
 
-```tut
+```scala mdoc
 abstract class Notification
 
 case class Email(sender: String, title: String, body: String) extends Notification
@@ -80,7 +80,7 @@ println(showNotification(someVoiceRecording))  // you received a Voice Recording
 ```
 `showNotification`函数接受一个抽象类`Notification`对象作为输入参数，然后匹配其具体类型。（也就是判断它是一个`Email`，`SMS`，还是`VoiceRecording`）。在`case Email(sender, title, _)`中，对象的`sender`和`title`属性在返回值中被使用，而`body`属性则被忽略，故使用`_`代替。
 
-## 模式守卫（Pattern gaurds）
+## 模式守卫（Pattern guards）
 为了让匹配更加具体，可以使用模式守卫，也就是在模式后面加上`if <boolean expression>`。
 ```
 
@@ -113,7 +113,7 @@ println(showImportantNotification(importantSms, importantPeopleInfo))
 
 ## 仅匹配类型
 也可以仅匹配类型，如下所示：
-```tut
+```scala mdoc
 abstract class Device
 case class Phone(model: String) extends Device {
   def screenOff = "Turning screen off"
@@ -133,7 +133,7 @@ def goIdle(device: Device) = device match {
 
 特质（trait）和类（class）可以用`sealed`标记为密封的，这意味着其所有子类都必须与之定义在相同文件中，从而保证所有子类型都是已知的。
 
-```tut
+```scala mdoc
 sealed abstract class Furniture
 case class Couch() extends Furniture
 case class Chair() extends Furniture

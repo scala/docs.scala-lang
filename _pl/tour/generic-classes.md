@@ -13,10 +13,11 @@ Scala posiada wbudowaną obsługą klas parametryzowanych przez typy. Tego typu 
 
 Poniższy przykład demonstruje zastosowanie parametrów generycznych:
 
-```tut
+```scala mdoc
 class Stack[T] {
   var elems: List[T] = Nil
-  def push(x: T) { elems = x :: elems }
+  def push(x: T): Unit =
+    elems = x :: elems 
   def top: T = elems.head
   def pop() { elems = elems.tail }
 }
@@ -26,7 +27,7 @@ Klasa `Stack` modeluje zmienny stos zawierający elementy dowolnego typu `T`. Pa
 
 Przykłady zastosowania:
 
-```tut
+```scala mdoc
 object GenericsTest extends App {
   val stack = new Stack[Int]
   stack.push(1)

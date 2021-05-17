@@ -68,7 +68,7 @@ import users.{UserPreferences => UPrefs}  // 导入类并且设置别名
 
 Scala 不同于 Java 的一点是 Scala 可以在任何地方使用导入：
 
-```tut
+```scala mdoc
 def sqrtplus1(x: Int) = {
   import scala.math.sqrt
   sqrt(x) + 1.0

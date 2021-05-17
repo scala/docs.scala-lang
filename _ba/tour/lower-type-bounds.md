@@ -17,7 +17,7 @@ Izraz `B >: A` izražava tipski parametar `B` ili apstraktni tip `B` koji je nad
 
 Kroz sljedeći primjer vidjećemo zašto je ovo korisno:
 
-```tut:fail
+```scala mdoc:fail
 trait Node[+B] {
   def prepend(elem: B): Node[B]
 }
@@ -43,7 +43,7 @@ Ovo ne radi jer su funkcije *kontra*varijantne u svojim tipovima parametara i *k
 Da bismo popravili ovo, moramo zamijeniti varijansu tipskog parametra `elem` u `prepend`. 
 Ovo radimo uvođenjem novog tipskog parametra `U` koji ima `B` kao svoju donju granicu tipa.
 
-```tut
+```scala mdoc
 trait Node[+B] {
   def prepend[U >: B](elem: U): Node[U]
 }
@@ -60,7 +60,7 @@ case class Nil[+B]() extends Node[B] {
 ```
 
 Sada možemo uraditi sljedeće:
-```tut
+```scala mdoc
 trait Bird
 case class AfricanSwallow() extends Bird
 case class EuropeanSwallow() extends Bird

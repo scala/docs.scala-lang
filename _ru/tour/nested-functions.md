@@ -16,7 +16,7 @@ previous-page: higher-order-functions
 В Scala возможно объявление метода вкладывать в тело другого метода. Это реализовано в следующем примере, в котором метод `factorial` используется для вычисления факториала заданного числа:
 
 {% scalafiddle %}
-```tut
+```scala mdoc
  def factorial(x: Int): Int = {
     def fact(x: Int, accumulator: Int): Int = {
       if (x <= 1) accumulator

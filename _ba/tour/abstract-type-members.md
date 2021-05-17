@@ -15,7 +15,7 @@ Trejtovi i apstraktne klase mogu imati apstraktne tipove kao članove.
 To znači da konkretne implementacije definišu stvarni tip.
 Slijedi primjer:
 
-```tut
+```scala mdoc
 trait Buffer {
   type T
   val element: T
@@ -26,7 +26,7 @@ U gornjem primjeru smo definisali apstraktni tip `T`.
 On se koristi za opis člana `element`.
 Ovaj trejt možemo naslijediti u apstraktnoj klasi i dodati gornju granicu tipa za `T` da bi ga učinili preciznijim.
 
-```tut
+```scala mdoc
 abstract class SeqBuffer extends Buffer {
   type U
   type T <: Seq[U]
@@ -40,7 +40,7 @@ mora biti podtip `Seq[U]` za neki novi apstraktni tip `U`.
 Trejtovi ili [klase](classes.html) s apstraktnim tip-članovima se često koriste u kombinaciji s instanciranjem anonimnih klasa.
 Radi ilustracije, pogledaćemo program koji radi s sekvencijalnim baferom koji sadrži listu integera:
 
-```tut
+```scala mdoc
 abstract class IntSeqBuffer extends SeqBuffer {
   type U = Int
 }
@@ -61,7 +61,7 @@ Metoda `newIntSeqBuf` koristi anonimnu klasu kao implementaciju  `IntSeqBuf` pos
 Često je moguće pretvoriti apstraktni tip-član u tipski parametar klase i obrnuto.
 Slijedi verzija gornjeg koda koji koristi tipske parametre:
 
-```tut
+```scala mdoc:nest
 abstract class Buffer[+T] {
   val element: T
 }

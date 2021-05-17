@@ -21,7 +21,7 @@ prerequisite-knowledge: classes, methods, private-methods, packages, option
 
 # シングルトンオブジェクトの定義
 オブジェクトは値です。オブジェクトの定義はクラスのように見えますが、キーワード`object`を使います。
-```tut
+```scala mdoc
 object Box
 ```
 これはメソッドを持つオブジェクトの例です。
@@ -84,7 +84,7 @@ circle1.area
 `class Circle`は各インスタンスの固有のメンバー`area`を持ち、シングルトンオブジェクト`object Circle`は全てのインスタンスで利用できる`calculateArea`メソッドを持ちます。
 
 コンパニオンオブジェクトはファクトリーメソッドを含むことができます。
-```tut
+```scala mdoc
 class Email(val username: String, val domainName: String)
 
 object Email {

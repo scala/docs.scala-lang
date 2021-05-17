@@ -1,0 +1,11 @@
+version: 2
+updates:
+- package-ecosystem: bundler
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: html-proofer
+    versions:
+    - "> 3.15.3"

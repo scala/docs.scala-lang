@@ -12,13 +12,13 @@ previous-page: operators
 ---
 
 _传名参数_ 仅在被使用时触发实际参数的求值运算。 它们与 _传值参数_ 正好相反。 要将一个参数变为传名参数，只需在它的类型前加上 `=>`。
-```tut
+```scala mdoc
 def calculate(input: => Int) = input * 37
 ```
 传名参数的优点是，如果它们在函数体中未被使用，则不会对它们进行求值。 另一方面，传值参数的优点是它们仅被计算一次。
 以下是我们如何实现一个 while 循环的例子：
 
-```tut
+```scala mdoc
 def whileLoop(condition: => Boolean)(body: => Unit): Unit =
   if (condition) {
     body

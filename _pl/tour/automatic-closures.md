@@ -13,7 +13,7 @@ Scala pozwala na przekazywanie funkcji bezparametrycznych jako argumenty dla met
 
 Poniższy kod demonstruje działanie tego mechanizmu:
 
-```tut
+```scala mdoc
 object TargetTest1 extends App {
   def whileLoop(cond: => Boolean)(body: => Unit): Unit =
     if (cond) {
@@ -34,7 +34,7 @@ Możemy połączyć ze sobą wykorzystanie [operatorów infiksowych/postfiksowyc
 
 Oto implementacja pętli w stylu wykonaj-dopóki:
 
-```tut
+```scala mdoc
 object TargetTest2 extends App {
   def loop(body: => Unit): LoopUnlessCond =
     new LoopUnlessCond(body)

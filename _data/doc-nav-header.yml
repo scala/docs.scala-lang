@@ -3,8 +3,6 @@
   submenu:
     - title: Current
       url: https://www.scala-lang.org/api/current/
-    - title: Nightly
-      url: https://www.scala-lang.org/files/archive/nightly/2.13.x/api/2.13.x/
     - title: All Versions
       url: "/api/all.html"
 - title: Learn
@@ -27,7 +25,7 @@
       url: "/overviews/index.html"
     - title: Books
       url: "/books.html"
-    - title: Scala FAQs
+    - title: Scala FAQ
       url: "/tutorials/FAQ/index.html"
     - title: Language Spec
       url: http://scala-lang.org/files/archive/spec/2.13/

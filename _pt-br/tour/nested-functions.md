@@ -11,7 +11,7 @@ language: pt-br
 
 Em scala é possível aninhar definições de funções. O objeto a seguir fornece uma função `filter` para extrair valores de uma lista de inteiros que são abaixo de um determinado valor:
 
-```tut
+```scala mdoc
 object FilterTest extends App {
   def filter(xs: List[Int], threshold: Int) = {
     def process(ys: List[Int]): List[Int] =

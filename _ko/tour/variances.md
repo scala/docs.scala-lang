@@ -14,7 +14,7 @@ previous-page: generic-classes
 
 [제네릭 클래스](generic-classes.html)에 관한 페이지에선 변경 가능한 스택의 예제를 살펴보면서, 클래스 `Stack[T]`에서 정의한 타입은 타입 파라미터의 서브타입이 불변자여야 함을 설명했었다. 이는 추상화된 클래스의 재사용을 제한할 수 있다. 지금부턴 이런 제약이 없는 함수형(즉, 변경이 불가능한) 스택의 구현을 알아본다. 이 구현은 [다형성 메소드](polymorphic-methods.html), [하위 타입 경계](lower-type-bounds.html), 순가변 타입 파라미터 어노테이션 등의 중요 개념을 조합한 좀 더 어려운 예제임을 알아두자. 또한 [내부 클래스](inner-classes.html)를 사용해 명시적인 연결 없이도 스택의 항목을 서로 묶을 수 있도록 만들었다.
 
-```tut
+```scala mdoc
 class Stack[+T] {
   def push[S >: T](elem: S): Stack[S] = new Stack[S] {
     override def top: S = elem

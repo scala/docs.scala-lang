@@ -18,7 +18,7 @@ Vrijednosni parameteri ("obični") su ograđeni parom zagrada, dok su tipski par
 
 Slijedi primjer:
 
-```tut
+```scala mdoc
 def listOfDuplicates[A](x: A, length: Int): List[A] = {
     if (length < 1)
         Nil

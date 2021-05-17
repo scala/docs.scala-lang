@@ -13,7 +13,7 @@ language: pt-br
 
 Suponha que temos duas traits `Cloneable` and `Resetable`:
 
-```tut
+```scala mdoc
 trait Cloneable extends java.lang.Cloneable {
   override def clone(): Cloneable = { 
     super.clone().asInstanceOf[Cloneable]

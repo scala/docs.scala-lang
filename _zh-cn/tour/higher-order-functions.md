@@ -27,7 +27,7 @@ val salaries = Seq(20000, 70000, 40000)
 val newSalaries = salaries.map(x => x * 2) // List(40000, 140000, 80000)
 ```
 注意在上述示例中`x`没有被显式声明为Int类型，这是因为编译器能够根据map函数期望的类型推断出`x`的类型。对于上述代码，一种更惯用的写法为：
-```tut
+```scala mdoc
 val salaries = Seq(20000, 70000, 40000)
 val newSalaries = salaries.map(_ * 2)
 ```
@@ -47,7 +47,7 @@ case class WeeklyWeatherForecast(temperatures: Seq[Double]) {
 
 ## 接收函数作为参数的函数
 使用高阶函数的一个原因是减少冗余的代码。比方说需要写几个方法以通过不同方式来提升员工工资，若不使用高阶函数，代码可能像这样：
-```tut
+```scala mdoc
 object SalaryRaiser {
 
   def smallPromotion(salaries: List[Double]): List[Double] =
@@ -63,7 +63,7 @@ object SalaryRaiser {
 
 注意这三个方法的差异仅仅是提升的比例不同，为了简化代码，其实可以把重复的代码提到一个高阶函数中：
 
-```tut
+```scala mdoc:nest
 object SalaryRaiser {
 
   private def promotion(salaries: List[Double], promotionFunction: Double => Double): List[Double] =
@@ -86,7 +86,7 @@ object SalaryRaiser {
 
 有一些情况你希望生成一个函数， 比如：
 
-```tut
+```scala mdoc
 def urlBuilder(ssl: Boolean, domainName: String): (String, String) => String = {
   val schema = if (ssl) "https://" else "http://"
   (endpoint: String, query: String) => s"$schema$domainName/$endpoint?$query"

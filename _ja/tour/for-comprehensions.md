@@ -20,7 +20,7 @@ Scalaは*シーケンス内包表記*を表現するための軽量な記法を�
 
 こちらは例です。
 
-```tut
+```scala mdoc
 case class User(name: String, age: Int)
 
 val userBase = List(User("Travis", 28),
@@ -40,7 +40,7 @@ twentySomethings.foreach(name => println(name))  // prints Travis Dennis
 こちらは2つのジェネレータを使ったより複雑な例です。
 合計が与えられた値`v`と等しくなる、`0`から`n-1`の全てのペアを計算します。
 
-```tut
+```scala mdoc
 def foo(n: Int, v: Int) =
    for (i <- 0 until n;
         j <- 0 until n if i + j == v)
@@ -66,7 +66,7 @@ foo(10, 10) foreach {
 これは副作用をもたらす必要があるときに役立ちます。
 こちらは先に出たプログラムと同等のものですが、`yield`を使っていません。
 
-```tut
+```scala mdoc:nest
 def foo(n: Int, v: Int) =
    for (i <- 0 until n;
         j <- 0 until n if i + j == v)

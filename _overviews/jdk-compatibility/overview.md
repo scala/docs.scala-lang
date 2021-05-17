@@ -12,10 +12,12 @@ Sometimes new JVM and JDK (Java Development Kit) versions require us to update S
 
 | JDK version | Minimum Scala versions           | Recommended Scala versions                                 |
 |:-----------:|:---------------------------------|:-----------------------------------------------------------|
-| 13, 14, 15  | 2.13.2, 2.12.11                  | 2.13.4, 2.12.12                                            |
-| 12          | 2.13.1, 2.12.9                   | 2.13.4, 2.12.12                                            |
-| 11          | 2.13.0, 2.12.4, 2.11.12          | 2.13.4, 2.12.12, 2.11.12                                   |
-| 8           | 2.13.0, 2.12.0, 2.11.0, 2.10.2   | 2.13.4, 2.12.12, 2.11.12, 2.10.7                           |
+| 17          | see below                        | see below
+| 16          | 2.13.5, 2.12.14 (forthcoming)    | 2.13.6, 2.12.14 (forthcoming)
+| 13, 14, 15  | 2.13.2, 2.12.11                  | 2.13.6, 2.12.13                                            |
+| 12          | 2.13.1, 2.12.9                   | 2.13.6, 2.12.13                                            |
+| 11          | 2.13.0, 2.12.4, 2.11.12          | 2.13.6, 2.12.13, 2.11.12                                   |
+| 8           | 2.13.0, 2.12.0, 2.11.0, 2.10.2   | 2.13.6, 2.12.13, 2.11.12, 2.10.7                           |
 | 6, 7        | 2.11.0, 2.10.0                   | 2.11.12, 2.10.7                                            |
 
 Even when a version combination isn't listed as supported, most features may still work.  (But Scala 2.12+ definitely doesn't work at all on JDK 6 or 7.)
@@ -38,7 +40,7 @@ JDK 8 and 11 are LTS versions. The next LTS version will be JDK 17, planned for 
 
 Scala provides experimental support for running the Scala compiler on non-LTS versions of the JDK. The current LTS versions are normally tested in our CI matrix and by the Scala community build. We may also test non-LTS versions, but any issues found there are considered lower priority, and will not be considered release blockers. (Lightbend may be able to offer faster resolution of issues like this under commercial support.)
 
-As already mentioned, Scala code compiled on JDK 8 should run without problems in later JVMs. We will give higher priority to bugs that break this property. (For example, in the 2.13.x series we intend to provide support for JPMS module access checks, to ensure your code won't incur `LinkageErrors` due to module access violations.)
+As already mentioned, Scala code compiled on JDK 8 should run without problems in later JVMs. We will give higher priority to bugs that break this property. (For example, later in the 2.13.x series we hope to provide support for JPMS module access checks, to ensure your code won't incur `LinkageErrors` due to module access violations.)
 
 ## JDK vendors and distributions
 
@@ -71,12 +73,24 @@ JDK 14 was released in March 2020, and JDK 15 was released in September 2020. Bu
 
 JDK 12, 13, 14, and 15 are expected to work wherever JDK 11 does. The Scala community build now runs on JDK 15 (as well as 11 and 8).
 
-As of October 2020, the [jdk12](https://github.com/scala/bug/labels/jdk12) and [jdk13](https://github.com/scala/bug/labels/jdk13) labels in scala/bug have no open bugs. New issues will likely be reported against the newer non-LTS [jdk14 label](https://github.com/scala/bug/labels/jdk14) and [jdk15 label](https://github.com/scala/bug/labels/jdk15) or the LTS [jdk11 label](https://github.com/scala/bug/labels/jdk11).
+As of October 2020, the [jdk12](https://github.com/scala/bug/labels/jdk12) and [jdk13](https://github.com/scala/bug/labels/jdk13) labels in scala/bug have no open bugs. New issues will likely be reported against the newer non-LTS [jdk14 label](https://github.com/scala/bug/labels/jdk14) and [jdk15 label](https://github.com/scala/bug/labels/jdk15) and [jdk16 label](https://github.com/scala/bug/labels/jdk15) or the LTS [jdk11 label](https://github.com/scala/bug/labels/jdk11).
 
 As far as we know, 12, 13, 14, and 15 are similar to 11 with respect to Scala compatibility.
 
+## JDK 16 compatibility notes
+
+JDK 16 was released in March 2021. It is not an LTS release, so the remarks above about non-LTS releases apply.  The next LTS release will be JDK 17.
+
+The Scala community build and the Scala build and test suite run on JDK 16.  We shipped improved JDK 16 support in [Scala 2.13.5](https://github.com/scala/scala/releases/tag/v2.13.5) and intend to ship the same improvements soon in Scala 2.12.14 ([release timing thread](https://contributors.scala-lang.org/t/scala-2-12-14-planning/4852/2)).
+
+## JDK 17 compatibility notes
+
+JDK 17 prereleases are already available. The final release is [targeted](https://openjdk.java.net/projects/jdk/17/) for September 2021.  JDK 17 will be an LTS release.
+
+The Scala community build doesn't run on JDK 17 yet. We will add it once 17 is closer to release.
+
 ## Scala 3
 
-The Scala 3.0.x series will support JDK 8, as well as 11 and beyond.
+The Scala 3.0.x series supports JDK 8, as well as 11 and beyond.
 
 As Scala and the JVM continue to evolve, some eventual Scala 3.x version may drop support for JDK 8, in order to better take advantage of new JVM features.  It isn't clear yet what the new minimum supported version might become.

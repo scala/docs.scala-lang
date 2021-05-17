@@ -11,7 +11,7 @@ language: pl
 
 _Parametry przekazywane według nazwy_ są ewaluowane za każdym razem gdy są używane. Nie zostaną w ogóle wyewaluowane jeśli nie będą używane. Jest to podobne do zastępowania parametrów w ciele funkcji wyrażeniami podanymi w miejscu jej wywołania. Są przeciwieństwem do _parametrów przekazywanych według wartości_. Aby utworzyć parametr przekazywany według nazwy, po prostu dodaj `=>` przed jego typem.
 
-```tut
+```scala mdoc
 def calculate(input: => Int) = input * 37
 ```
 
@@ -19,7 +19,7 @@ Parametry przekazywane według nazwy mają tę zaletę że nie są ewaluowane je
 
 Oto przykład, jak możemy zaimplementować pętlę while:
 
-```tut
+```scala mdoc
 def whileLoop(condition: => Boolean)(body: => Unit): Unit =
   if (condition) {
     body

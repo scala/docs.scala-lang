@@ -18,7 +18,7 @@ prerequisite-knowledge: variance, upper-type-bound
 これは具体的な実装で実際の型を定義するという意味です。
 こちらが例です。
 
-```tut
+```scala mdoc
 trait Buffer {
   type T
   val element: T
@@ -26,7 +26,7 @@ trait Buffer {
 ```
 こちらでは、抽象型`type T`を定義しています。それは`element`の型を記述するために使われます。このトレイトを抽象クラスで継承し、より具体的にするために上限型境界を`T`に追加することができます。
 
-```tut
+```scala mdoc
 abstract class SeqBuffer extends Buffer {
   type U
   type T <: Seq[U]
@@ -38,7 +38,7 @@ abstract class SeqBuffer extends Buffer {
 抽象型メンバーを持つトレイトと[クラス](classes.html)は無名クラスのインスタンス化と組み合わせてよく使われます。
 これを説明するために、今から整数のリストを参照するシーケンスバッファーを扱うプログラムを見てみます。
 
-```tut
+```scala mdoc
 abstract class IntSeqBuffer extends SeqBuffer {
   type U = Int
 }
@@ -57,7 +57,7 @@ println("content = " + buf.element)
 
 抽象型メンバーをクラスの型パラメータに変えることも、その逆も可能です。以下は上記コードの型パラメータのみを使うバージョンです。
 
-```tut
+```scala mdoc:nest
 abstract class Buffer[+T] {
   val element: T
 }

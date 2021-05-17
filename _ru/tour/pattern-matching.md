@@ -18,7 +18,7 @@ prerequisite-knowledge: case-classes, string-interpolation, subtyping
 
 ## Синтаксис
 Синтаксис сопоставления с примером состоит из значения, ключевого слова `match` (сопоставить) и по крайней мере, одного пункта с примером `case`, с которым мы хотим сопоставить наше значение.
-```tut
+```scala mdoc
 import scala.util.Random
 
 val x: Int = Random.nextInt(10)
@@ -33,7 +33,7 @@ x match {
 Значение константы `x` выше представляет собой случайное целое число от 0 до 10. `x` становится левым операндом оператора `match`, а справа - выражением с четырьмя примерами (называемые еще _вариантами_). Последний вариант `_` - позволяет "поймать все оставшиеся варианты" т. е. для любого числа больше 2. 
 
 Сопоставление с примером возвращает значение.
-```tut
+```scala mdoc
 def matchTest(x: Int): String = x match {
   case 1 => "one"
   case 2 => "two"
@@ -48,7 +48,7 @@ matchTest(1)  // one
 
 Классы образцы особенно полезны для сопоставления. 
 
-```tut
+```scala mdoc
 abstract class Notification
 
 case class Email(sender: String, title: String, body: String) extends Notification
@@ -114,7 +114,7 @@ println(showImportantNotification(importantSms, importantPeopleInfo))
 
 ## Сопоставление только с типом
 Вы можете сопоставлять только по типу как в примере:
-```tut
+```scala mdoc
 abstract class Device
 case class Phone(model: String) extends Device {
   def screenOff = "Turning screen off"
@@ -133,7 +133,7 @@ def goIdle(device: Device) = device match {
 ## Запечатанные классы
 Трейты и классы могут быть помечены как `sealed` это означает, что подтипы должны быть объявлены в одном файле, гарантируя тем самым, что все подтипы будут известны.
 
-```tut
+```scala mdoc
 sealed abstract class Furniture
 case class Couch() extends Furniture
 case class Chair() extends Furniture

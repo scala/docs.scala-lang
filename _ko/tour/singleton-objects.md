@@ -34,7 +34,7 @@ object Blah {
 
 하나의 클래스와 그 동반자 객체는 어떤 경우라도, 아래와 같이 *같은* 소스파일에 정의되어야 한다.
 
-```tut
+```scala mdoc
 class IntPair(val x: Int, val y: Int)
 
 object IntPair {

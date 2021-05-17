@@ -17,7 +17,7 @@ Krotki przydają się, gdy chcemy, żeby funkcja zwróciła jednocześnie wiele 
 
 Krotki tworzy się w następujący sposób:
 
-```tut
+```scala mdoc
 val ingredient = ("Sugar" , 25): Tuple2[String, Int]
 ```
 
@@ -32,7 +32,7 @@ W ww. przykładzie jest to `Tuple2[String, Int]`.
 Krotka zapewnia dostęp do swoich elementów z użyciem składni podkreślnika (underscore).
 `tuple._n` odwołuje się do n-tego elementu w kolejności (pod warunkiem, że dana krotka zawiera tyle elementów).
 
-```tut
+```scala mdoc
 println(ingredient._1) // wyświetli Sugar
 
 println(ingredient._2) // wyświetli 25
@@ -42,7 +42,7 @@ println(ingredient._2) // wyświetli 25
 
 Krotki w Scali wspierają dekonstrukcję
 
-```tut
+```scala mdoc
 val (name, quantity) = ingredient
 
 println(name) // wyświetli Sugar
@@ -53,7 +53,7 @@ println(quantity) // wyświetli 25
 Dekonstrukcja krotek może być bardzo przydatna w dopasowywaniu wzorców (ang. pattern matching)
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 val planetDistanceFromSun = List(
   ("Mercury", 57.9),
   ("Venus", 108.2),
@@ -74,7 +74,7 @@ planetDistanceFromSun.foreach {
 Ma ona też zastosowanie w wyrażeniach 'for'.
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 val numPairs = List((2, 5), (3, -7), (20, 56))
 
 for ((a, b) <- numPairs) {

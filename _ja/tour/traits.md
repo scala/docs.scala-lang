@@ -21,12 +21,12 @@ prerequisite-knowledge: expressions, classes, generics, objects, companion-objec
 ## トレイトを定義する
 最小のトレイトはキーワード `trait` と識別子だけというものです。
 
-```tut
+```scala mdoc
 trait HairColor
 ```
 
 トレイトはジェネリック型として、抽象メソッドとあわせて使うと特に便利です。
-```tut
+```scala mdoc
 trait Iterator[A] {
   def hasNext: Boolean
   def next(): A
@@ -37,7 +37,7 @@ trait Iterator[A] {
 
 ## トレイトの使い方
 トレイトを継承するには `extends` キーワードを使います。その際に、 `override` キーワードを利用しすべての抽象メンバーを実装します。
-```tut
+```scala mdoc:nest
 trait Iterator[A] {
   def hasNext: Boolean
   def next(): A
@@ -66,7 +66,7 @@ iterator.next()  // returns 1
 ## サブタイピング
 あるトレイトが必要とされている場所に、代りにそのトレイトのサブタイプを使うことができます。
 
-```tut
+```scala mdoc
 import scala.collection.mutable.ArrayBuffer
 
 trait Pet {
@@ -84,5 +84,5 @@ animals.append(dog)
 animals.append(cat)
 animals.foreach(pet => println(pet.name))  // Prints Harry Sally
 ```
-`trait Pet` が持つ抽象フィールド `name`は、Cat と Dog のコンストラクタで実装されました。
+`trait Pet` が持つ抽象フィールド `name`は、Cat と Dog のコンストラクタで実装された。
 最終行では、`Pet` トレイトの全てのサブタイプの中で実装される必要がある `pet.name` を呼んでいます。

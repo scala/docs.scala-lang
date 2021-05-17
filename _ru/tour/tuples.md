@@ -21,7 +21,7 @@ topics: tuples
 
 Кортеж может быть создан как:
 
-```tut
+```scala mdoc
 val ingredient = ("Sugar" , 25):Tuple2[String, Int]
 ```
 Такая запись создает кортеж размерности 2, содержащий пару элементов String и Int.
@@ -36,7 +36,7 @@ val ingredient = ("Sugar" , 25):Tuple2[String, Int]
 Доступ к элементам кортежа осуществляется при помощи синтаксиса подчеркивания.
 'tuple._n' дает n-ый элемент (столько, сколько существует элементов).
 
-```tut
+```scala mdoc
 println(ingredient._1) // Sugar
 
 println(ingredient._2) // 25
@@ -46,7 +46,7 @@ println(ingredient._2) // 25
 
 Scala кортежи также поддерживают [распаковку](extractor-objects.html).
 
-```tut
+```scala mdoc
 val (name, quantity) = ingredient
 
 println(name) // Sugar
@@ -56,7 +56,7 @@ println(quantity) // 25
 
 Распаковка данных кортежа может быть использована в [сопоставлении с примером](pattern-matching.html)
 
-```tut
+```scala mdoc
 val planetDistanceFromSun = List(("Mercury", 57.9), ("Venus", 108.2), ("Earth", 149.6 ), ("Mars", 227.9), ("Jupiter", 778.3))
 
 planetDistanceFromSun.foreach{ tuple => {
@@ -80,7 +80,7 @@ planetDistanceFromSun.foreach{ tuple => {
 
 Или в ['for' выражении](for-comprehensions.html).
 
-```tut
+```scala mdoc
 val numPairs = List((2, 5), (3, -7), (20, 56))
 
 for ((a, b) <- numPairs) {

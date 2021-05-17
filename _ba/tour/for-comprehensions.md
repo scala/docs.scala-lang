@@ -21,7 +21,7 @@ Komprehensija evaluira tijelo `e` za svako vezivanje varijable generisano od str
 
 Slijedi primjer:
 
-```tut
+```scala mdoc
 case class User(name: String, age: Int)
 
 val userBase = List(User("Travis", 28),
@@ -38,7 +38,7 @@ twentySomethings.foreach(name => println(name))  // prints Travis Dennis
 
 Slijedi malo komplikovaniji primjer koji s dva generatora. Izračunava sve parove brojeva između `0` i `n-1` čija je suma jednaka vrijednosti `v`:
 
-```tut
+```scala mdoc
 def foo(n: Int, v: Int) =
    for (i <- 0 until n;
         j <- i until n if i + j == v)
@@ -54,5 +54,5 @@ Ovdje je `n == 10` i `v == 10`. U prvoj iteraciji, `i == 0` i `j == 0` tako da `
 Bez `if` čuvara, ovo bi ispisalo sljedeće:
 ```
 
-(0, 0) (0, 1) (0, 2) (0, 3) (0, 4) (0, 5) (0, 6) (0, 7) (0, 8) (0, 9) (1, 1) ...
+(0, 0) (0, 1) (0, 2) (0, 3) (0, 4) (0, 5) (0, 6) (0, 7) (0, 8) (0, 9) (1, 0) ...
 ```

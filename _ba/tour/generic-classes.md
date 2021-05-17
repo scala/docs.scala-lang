@@ -19,10 +19,11 @@ Vrlo su korisne za implementiranje kolekcija.
 Generičke klase primaju tip kao parametar u uglastim zagradama `[]`. 
 Konvencija je da se koristi slovo `A` kao identifikator tipa, mada se može koristiti bilo koje ime.
 
-```tut
+```scala mdoc
 class Stack[A] {
   private var elements: List[A] = Nil
-  def push(x: A) { elements = x :: elements }
+  def push(x: A): Unit =
+    elements = x :: elements
   def peek: A = elements.head
   def pop(): A = {
     val currentTop = peek

@@ -482,7 +482,7 @@ opaque type `Fix`:
 
 ```scala
 package object fixed {
-  opaque type Fix[F_]] = F[Fix[F]]
+  opaque type Fix[F[_]] = F[Fix[F]]
 
   object Fix {
     def fix[F[_]](unfixed: F[Fix[F]]): Fix[F] = unfixed

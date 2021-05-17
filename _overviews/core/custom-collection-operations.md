@@ -118,7 +118,7 @@ res2: Set[Int] = HashSet(-1775377531, -1376640531, -1009522404, 526943297, 14318
 
 A very basic definition of `Gen[A]` could be the following:
 
-```tut
+```scala mdoc
 trait Gen[A] {
   /** Get a generated value of type `A` */
   def get: A
@@ -127,7 +127,7 @@ trait Gen[A] {
 
 And the following instances can be defined:
 
-```tut
+```scala mdoc
 import scala.util.Random
 
 object Gen {

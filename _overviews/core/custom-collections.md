@@ -596,11 +596,11 @@ this is why we always get a `Vector` as a result.
       // symbolic alias for `concat`
       @inline final def ++ (suffix: IterableOnce[Base]): RNA2 = concat(suffix)
       def appended(base: Base): RNA2 =
-        fromSpecific(new View.Append(this, base))
+        fromSpecific(new View.Appended(this, base))
       def appendedAll(suffix: IterableOnce[Base]): RNA2 =
         concat(suffix)
       def prepended(base: Base): RNA2 = 
-        fromSpecific(new View.Prepend(base, this))
+        fromSpecific(new View.Prepended(base, this))
       def prependedAll(prefix: IterableOnce[Base]): RNA2 =
         fromSpecific(prefix.iterator ++ iterator)
       def map(f: Base => Base): RNA2 =
