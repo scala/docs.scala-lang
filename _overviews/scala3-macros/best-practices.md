@@ -83,15 +83,19 @@ from Java code do not have an associated `tree`.
 
 ### Obtaining a `TypeRepr` from a `Symbol`
 
-In the previous paragraph we saw that `Symbol.tree` should be avoided and therefore
-you should not use `sym.tree.tpe` on `sym: Symbol`.
-Thus to obtain the `TypeRepr` corresponding to a `Symbol`, it is recommended
-to use `tpe.memberType` on objects `tpe: TypeRepr`.
+In the previous paragraph we saw that `Symbol.tree` should be avoided and
+therefore you should not use `sym.tree.tpe` on `sym: Symbol`.  Thus to obtain
+the `TypeRepr` corresponding to a `Symbol`, it is recommended to use
+`tpe.memberType` on objects `tpe: TypeRepr`.
 
 We can obtain the `TypeRepr` of `Leaf` in two ways:
   1. `TypeRepr.of[Box.Leaf]`
-  2. `boxTpe.memberType(leafSym)`, in other words we request
-  the `TypeRepr` of the member of `Box` whose symbol is equal to the symbol of sym
+  2. `boxTpe.memberType(leafSym)`, in other words we request the `TypeRepr` of
+     the member of `Box` whose symbol is equal to the symbol of sym
+
+while the two approaches are equivalent, the first is possible only if you
+already know that you are looking for `Box.Leaf`. The second approach allows
+you to explore an uknown API.
 
 ### Use `Symbol`s to compare definitions
 
@@ -143,7 +147,7 @@ def summonOrFail[T: Type]: Expr[T] =
       reflect.report.throwError("Could not find an implicit for " + Type.show[T])
 ```
 
-If you are writing and prefer to handle `Expr`, `Expr.summon` is a
+If you are writing a macro and prefer to handle `Expr`s, `Expr.summon` is a
 convient wrapper around `Implicits.search`:
 
 ```scala
