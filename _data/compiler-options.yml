@@ -611,9 +611,22 @@
   - option: "-Vimplicits"
     schema:
       type: "Boolean"
-    description: "Show more detail on why some implicits are not applicable."
+    description: "Print dependent missing implicits."
     abbreviations:
     - "-Xlog-implicits"
+  - option: "-Vimplicits-verbose-tree"
+    schema:
+      type: "Boolean"
+    description: "Display all intermediate implicits in a chain."
+  - option: "-Vimplicits-max-refined"
+    schema:
+      type: "Int"
+      default: "0"
+    description: "max chars for printing refined types, abbreviate to `F {...}`"
+  - option: "-Vtype-diffs"
+    schema:
+      type: "Boolean"
+    description: "Print found/required error messages as colored diffs."
   - option: "-Vinline"
     schema:
       type: "String"
