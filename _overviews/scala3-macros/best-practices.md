@@ -65,27 +65,28 @@ object Box:
   case class Leaf(x: Int) extends Base
 
 // Quotes in contextual scope
-val boxTpe = TypeRepr.of[Box.type]
-val baseTpe = TypeRepr.of[Box.Base]
-val baseSym = baseTpe.typeSymbol
-val leafTpe = TypeRepr.of[Box.Leaf]
-val leafSym = leafTpe.typeSymbol
+val boxTpe : TypeRepr = TypeRepr.of[Box.type]
+val baseTpe: TypeRepr = TypeRepr.of[Box.Base]
+val baseSym: Symbol   = baseTpe.typeSymbol
+val leafTpe: TypeRepr = TypeRepr.of[Box.Leaf]
+val leafSym: Symbol   = leafTpe.typeSymbol
 ```
 
 ### Avoid `Symbol.tree`
 
-`Symbol.tree` returns the `Tree` associated to the symbol. Be careful when using this
-method as the tree for a symbol might not be defined. When the code associated to the symbol
-is defined in a different moment than this access, if the `-Yretain-trees` compilation option
-is not used, then the `tree` of the symbol will not be available. Symbols originated from
-Java code do not have an associated `tree`.
+On an object `sym: Symbol`, `sym.tree` returns the `Tree` associated to the
+symbol. Be careful when using this method as the tree for a symbol might not be
+defined. When the code associated to the symbol is defined in a different
+moment than this access, if the `-Yretain-trees` compilation option is not
+used, then the `tree` of the symbol will not be available. Symbols originated
+from Java code do not have an associated `tree`.
 
 ### Obtaining a `TypeRepr` from a `Symbol`
 
 In the previous paragraph we saw that `Symbol.tree` should be avoided and therefore
-you should not use `Symbol.tree.tpe`.
+you should not use `sym.tree.tpe` on `sym: Symbol`.
 Thus to obtain the `TypeRepr` corresponding to a `Symbol`, it is recommended
-to use `TypeRepr.memberType`
+to use `tpe.memberType` on objects `tpe: TypeRepr`.
 
 We can obtain the `TypeRepr` of `Leaf` in two ways:
   1. `TypeRepr.of[Box.Leaf]`
@@ -109,7 +110,7 @@ boxTpe.memberType(baseSym.children.head) == leafTpe // Is false
 ### Obtaining a Symbol for a type
 
 There is a handy shortcut to get the symbol of the definition of `T`.
-Instead of 
+Instead of
 
 ```scala
 TypeTree.of[T].tpe.typeSymbol
@@ -120,32 +121,33 @@ you can use
 TypeRepr.of[T].typeSymbol
 ```
 
-### Use pattern match your way into the API
+### Pattern match your way into the API
 
 Pattern matching is a very ergonomic approach to the API. Always have a look at
-the `unapply` defined in `*Module` objects.
+the `unapply` method defined in `*Module` objects.
 
 ### Search the contextual scope in your macros
 
-You can search for implicits instances using `Implicits.search`.
+You can search for given instances using `Implicits.search`.
 
 For example:
 
 ```scala
-val leafMirrorTpe = TypeRepr.of[Mirror.ProductOf[Box.Leaf]]
-
-Implicits.search(leafMirrorTpe) match
-  case success: ImplicitSearchSuccess => 
-    val implicitTerm = success.tree
-    // ...
-  case faliure: ImplicitSearchFailure =>
+def summonOrFail[T: Type]: Expr[T] =
+  val tpe = TypeRepr.of[T]
+  Implicits.search(tpe) match
+    case success: ImplicitSearchSuccess =>
+      val implicitTerm = success.tree
+      implicitTerm.asExprOf[T]
+    case failure: ImplicitSearchFailure =>
+      reflect.report.throwError("Could not find an implicit for " + Type.show[T])
 ```
 
 If you are writing and prefer to handle `Expr`, `Expr.summon` is a
 convient wrapper around `Implicits.search`:
 
 ```scala
-def summoned[T: Type]: Expr[T] = 
+def summonOrFail[T: Type]: Expr[T] =
   Expr.summon[T] match
     case Some(imp) => imp
     case None => reflect.report.throwError("Could not find an implicit for " + Type.show[T])
