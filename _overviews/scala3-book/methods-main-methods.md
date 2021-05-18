@@ -114,7 +114,7 @@ They replace the previous approach in Scala 2, which was to create an `object` t
 
 ```scala
 // scala 2
-object happyBirthday extends App: {
+object happyBirthday extends App {
   // needs by-hand parsing of the command line arguments ...
 }
 ```
