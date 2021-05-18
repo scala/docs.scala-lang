@@ -224,15 +224,32 @@ There are three main reasons you should do this:
         List("").foldLeft[Int](0, _ + _.length)
 
 For complex DSLs, or with type-names that are long, it can be difficult
-to fit the entire signature on one line. In those cases, align the
-open-paren of the parameter lists, one list per line (i.e. if you can't
-put them all on one line, put one each per line):
+to fit the entire signature on one line. For those cases there are several
+different styles in use:
 
-    protected def forResource(resourceInfo: Any)
-                             (f: (JsonNode) => Any)
-                             (implicit urlCreator: URLCreator, configurer: OAuthConfiguration): Any = {
-      ...
-    }
+1. Split the parameter lists, one parameter per line with
+[trailing commas](https://docs.scala-lang.org/sips/trailing-commas.html#motivation)
+and parentheses being on separate lines adding to visual separation between
+the lists:
+
+        protected def forResource(
+          resourceInfo: Any,
+        )(
+          f: (JsonNode) => Any,
+        )(implicit
+          urlCreator: URLCreator,
+          configurer: OAuthConfiguration,
+        ): Any = {
+          ...
+        }
+
+2. Or align the open-paren of the parameter lists, one list per line:
+
+        protected def forResource(resourceInfo: Any)
+                                 (f: (JsonNode) => Any)
+                                 (implicit urlCreator: URLCreator, configurer: OAuthConfiguration): Any = {
+          ...
+        }
 
 #### Higher-Order Functions
 
