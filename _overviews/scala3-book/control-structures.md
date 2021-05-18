@@ -144,7 +144,7 @@ scala> for i <- ints do println(i)
 3
 ````
 
-When you need a multiline block of code following the `if` condition, use either of these approaches:
+When you need a multiline block of code following the `for` generator, use either of these approaches:
 
 ```scala
 // option 1
