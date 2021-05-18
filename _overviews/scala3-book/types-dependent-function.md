@@ -136,8 +136,8 @@ type Prog = (n: NumsDSL) ?=> n.Num => n.Num
 def derivative(input: Prog): Double = ...
 
 // notice how we do not need to mention Nums in the examples below?
-derive { x => const(1.0) + x }
-derive { x => x * x + const(2.0) }
+derivative { x => const(1.0) + x }
+derivative { x => x * x + const(2.0) }
 // ...
 ```
 
