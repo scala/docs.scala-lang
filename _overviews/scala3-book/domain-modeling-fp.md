@@ -27,7 +27,7 @@ The concept is similar to numerical algebra.
 When you think about whole numbers whose values are greater than or equal to zero, you have a *set* of possible values that looks like this:
 
 ````
-0, 1, 2 ... Int.MaxInt
+0, 1, 2 ... Int.MaxValue
 ````
 
 Ignoring the division of whole numbers, the possible *operations* on those values are:
