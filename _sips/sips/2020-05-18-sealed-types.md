@@ -107,7 +107,7 @@ and the sealed type `Num` to be tested against the subtypes and singleton subtyp
 given TypeTest[Int, Zero.type] = (n: Int) => if ((n: Num).ordinal == 0) Some(n) else None
 given TypeTest[Int, Pos]       = (n: Int) => if ((n: Num).ordinal == 1) Some(n) else None
 given TypeTest[Int, Neg]       = (n: Int) => if ((n: Num).ordinal == 2) Some(n) else None
-given TypeTest[Int, Num]       = (n: Int) => if ((n: Num).ordinal == -1) None else Some(n)
+given TypeTest[Int, Num]       = (n: Int) => Some(n)
 given [T <: Num](using t: TypeTest[Int, T]): TypeTest[Num, T] = (n: Num) => t.unapply(n)
 ```
 
