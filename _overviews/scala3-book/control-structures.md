@@ -55,7 +55,7 @@ And this is the `if`/`else if`/`else` syntax:
 ```scala
 if x < 0 then
   println("negative")
-else if x == 0
+else if x == 0 then
   println("zero")
 else
   println("positive")
