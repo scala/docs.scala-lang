@@ -204,7 +204,7 @@ Finally, it is constant folded to
 A useful application of inline parameters is to avoid the creation of _closures_, incurred by the use of by-name parameters.
 
 ```scala
-def assert1(cond: Boolean, msg: => String) =
+inline def assert1(cond: Boolean, msg: => String) =
   if !cond then
     throw new Exception(msg)
 
