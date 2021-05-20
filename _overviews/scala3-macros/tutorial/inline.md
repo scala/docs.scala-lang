@@ -125,7 +125,7 @@ inline def logged[T](logger: Logger, x: T): Unit =
   logger.log(x)
 ```
 
-The separate type checking of `logger.log(x)` will resolve the call to the method `Log.log` which takes an argument of the type `Any`.
+The separate type checking of `logger.log(x)` will resolve the call to the method `Logger.log` which takes an argument of the type `Any`.
 Now, given the following code:
 
 ```scala
@@ -139,7 +139,7 @@ val logger = new RefinedLogger
 val x = "✔️"
 logger.log(x)
 ```
-Even though now we know that `x` is a `String`, the call `logger.log(x)` still resolves to the method `Log.log` which takes an argument of the type `Any`.
+Even though now we know that `x` is a `String`, the call `logger.log(x)` still resolves to the method `Logger.log` which takes an argument of the type `Any`. Note that because of late-binding, the actual method called at runtime will be the overridden method `RefinedLogger.log`.
 
 > ##### Inlining preserves semantics
 > Regardless of whether `logged` is defined as a `def` or `inline def`, it performs the same operations with only some differences in performance.
