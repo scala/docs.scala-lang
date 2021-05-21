@@ -40,7 +40,7 @@ and focuses on **intent** rather than **mechanism**.
 Instead of offering one very powerful feature, Scala 3 offers multiple
 tailored language features, allowing programmers to directly express their intent:
 
-- **Abtracting over contextual information**. [Using clauses][contextual-using] allow programmers to abstract over information that is available in the calling context and should be passed implicitly. As an improvement over Scala 2 implicits, using clauses can be specified by type, freeing function signatures from term variable names that are never explicitly referred to.
+- **Abstracting over contextual information**. [Using clauses][contextual-using] allow programmers to abstract over information that is available in the calling context and should be passed implicitly. As an improvement over Scala 2 implicits, using clauses can be specified by type, freeing function signatures from term variable names that are never explicitly referred to.
 
 - **Providing Type-class instances**. [Given instances][contextual-givens] allow programmers to define the _canonical value_ of a certain type. This makes programming with type-classes more straightforward without leaking implementation details.
 
