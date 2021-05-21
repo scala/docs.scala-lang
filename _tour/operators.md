@@ -65,7 +65,7 @@ When an expression uses multiple operators, the operators are evaluated based on
 &
 ^
 |
-(all letters)
+(all letters, $, _)
 ```
 This applies to functions you define. For example, the following expression:
 ```

@@ -65,7 +65,7 @@ def xor(x: MyBool, y: MyBool) = (x or y) and not(x and y)
 &
 ^
 |
-(all letters)
+(all letters, $, _)
 ```
 这也适用于你自定义的方法。 例如，以下表达式：
 ```
