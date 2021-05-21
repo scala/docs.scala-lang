@@ -12,7 +12,7 @@ These operation do cover some common use cases of macros without you needing to 
 
 ## Reporting
 
-It is possible to emmit error messages when inlining code.
+It is possible to emit error messages when inlining code.
 
 ```scala
 inline def doSomething(inline mode: Boolean): Unit =
