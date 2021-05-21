@@ -32,7 +32,7 @@ lazy val foo = project.in(file("foo"))
   .dependsOn(bar)
 
 lazy val bar = project.in(file("bar"))
-  .settings(scalaVersion := "2.13.6)
+  .settings(scalaVersion := "2.13.6")
 ```
 
 Or, in case bar is a published Scala 2.13 library, we can have:
