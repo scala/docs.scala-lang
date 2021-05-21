@@ -28,11 +28,11 @@ As an sbt build it can be illustrated by (sbt 1.5.0 or higher is required):
 
 ```scala
 lazy val foo = project.in(file("foo"))
-  .settings(scalaVersion := "3.0.0-RC3")
+  .settings(scalaVersion := "3.0.0")
   .dependsOn(bar)
 
 lazy val bar = project.in(file("bar"))
-  .settings(scalaVersion := "2.13.5)
+  .settings(scalaVersion := "2.13.6)
 ```
 
 Or, in case bar is a published Scala 2.13 library, we can have:
@@ -40,7 +40,7 @@ Or, in case bar is a published Scala 2.13 library, we can have:
 ```scala
 lazy val foo = project.in(file("foo"))
   .settings(
-    scalaVersion := "3.0.0-RC3",
+    scalaVersion := "3.0.0",
     libraryDependencies += ("org.bar" %% "bar" % "1.0.0").cross(CrossVersion.for3Use2_13)
   )
 ```
@@ -56,7 +56,7 @@ Let's note that the standard library is automatically provided by the build tool
 
 ## The Scala 2.13 TASTy Reader
 
-The second piece of good news is that the Scala 2.13 TASTy reader, which enables consuming Scala 3 libraries has been shipped into Scala 2.13.5.
+The second piece of good news is that the Scala 2.13 TASTy reader, which enables consuming Scala 3 libraries has been shipped since Scala 2.13.4.
 
 > The TASTy reader is very new. That's why it is  only available under the `-Ytasty-reader` flag.
 
@@ -99,13 +99,13 @@ As an sbt build it can be illustrated by:
 ```scala
 lazy val foo = project.in.file("foo")
   .settings(
-    scalaVersion := "2.13.5",
+    scalaVersion := "2.13.6",
     scalacOptions += "-Ytasty-reader"
   )
   .dependsOn(bar)
 
 lazy val bar = project.in(file("bar"))
-  .settings(scalaVersion := "3.0.0-RC3")
+  .settings(scalaVersion := "3.0.0")
 ```
 
 Or, in case `bar` is a published Scala 3 library:
@@ -113,7 +113,7 @@ Or, in case `bar` is a published Scala 3 library:
 ```scala
 lazy val foo = project.in.file("foo")
   .settings(
-    scalaVersion := "3.0.0-RC3",
+    scalaVersion := "3.0.0",
     scalacOptions += "-Ytasty-reader",
     libraryDependencies += ("org.bar" %% "bar" % "1.0.0").cross(CrossVersion.for2_13Use3)
   )
