@@ -286,7 +286,7 @@ x2 * 1.0
 In contrast, let us imagine we do not know the value of `n`:
 
 ```scala
-power(2, unkownNumber)
+power(2, unknownNumber)
 ```
 Driven by the inline annotation on the parameter, the compiler will try to unroll the recursion.
 But without any success, since the parameter is not statically known.
@@ -297,22 +297,22 @@ But without any success, since the parameter is not statically known.
 ```scala
 // first inlines as
 val x = 2
-if (unkownNumber == 0) 1.0
-else if (unkownNumber % 2 == 1) x * power(x, unkownNumber - 1)
-else power(x * x, unkownNumber / 2)
+if (unknownNumber == 0) 1.0
+else if (unknownNumber % 2 == 1) x * power(x, unknownNumber - 1)
+else power(x * x, unknownNumber / 2)
 // then inlined as
 val x = 2
-if (unkownNumber == 0) 1.0
-else if (unkownNumber % 2 == 1) x * {
-  if (unkownNumber - 1 == 0) 1.0
-  else if ((unkownNumber - 1) % 2 == 1) x2 * power(x2, unkownNumber - 1 - 1)
-  else power(x2 * x2, (unkownNumber - 1) / 2)
+if (unknownNumber == 0) 1.0
+else if (unknownNumber % 2 == 1) x * {
+  if (unknownNumber - 1 == 0) 1.0
+  else if ((unknownNumber - 1) % 2 == 1) x2 * power(x2, unknownNumber - 1 - 1)
+  else power(x2 * x2, (unknownNumber - 1) / 2)
 }
 else {
   val x2 = x * x
-  if (unkownNumber / 2 == 0) 1.0
-  else if ((unkownNumber / 2) % 2 == 1) x2 * power(x2, unkownNumber / 2 - 1)
-  else power(x2 * x2, unkownNumber / 2 / 2)
+  if (unknownNumber / 2 == 0) 1.0
+  else if ((unknownNumber / 2) % 2 == 1) x2 * power(x2, unknownNumber / 2 - 1)
+  else power(x2 * x2, unknownNumber / 2 / 2)
 }
 // Oops this will never finish compiling
 ...
@@ -331,7 +331,7 @@ inline def power(x: Double, inline n: Int): Double =
 
 ```scala
 power(2, 2) // Ok
-power(2, unkownNumber) // error
+power(2, unknownNumber) // error
 ```
 
 We will come back to this example later and see how we can get more control on how code is generated.
