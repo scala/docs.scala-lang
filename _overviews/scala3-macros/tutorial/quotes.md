@@ -14,7 +14,7 @@ Intuitively, the code directly within the quote is not executed now, while the c
 
 ```scala
 val msg = Expr("Hello")
-val printHello = '{ print($hello) }
+val printHello = '{ print($msg) }
 println(printHello.show) // print("Hello")
 ```
 
@@ -45,8 +45,8 @@ def myBadCounter2(using Quotes): Expr[Int] = '{
   ${ x += 1; 'x }
 }
 ```
-Clearly, this should work as the variable does not exist yet.
-To make sure you can only write programs that do not contain these kinds of problems we restrict the set of references to variable and other definitions.
+Clearly, this should not work as the variable does not exist yet.
+To make sure you cannot write programs that contain these kinds of problems, we restrict the set of references to variable and other definitions.
 
 We introduce _levels_ as a count of the number of quotes minus the number of splices surrounding an expression or definition.
 
