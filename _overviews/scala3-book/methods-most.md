@@ -256,7 +256,7 @@ A `match` expression can also be used as the entire method body, and often is.
 Here’s another version of `isTruthy`, written with a `match` expression :
 
 ```scala
-def isTruthy(a: Any) = a match
+def isTruthy(a: Matchable) = a match
   case 0 | "" => false
   case _ => true
 ```
