@@ -233,7 +233,7 @@ Here’s a method named `isTruthy` that implements the Perl definitions of `true
 
 ```scala
 def isTruthy(a: Any) =
-  if a == 0 || a == ""
+  if a == 0 || a == "" then
     false
   else
     true
