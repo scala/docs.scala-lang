@@ -89,6 +89,16 @@ JDK 17 prereleases are already available. The final release is [targeted](https:
 
 The Scala community build doesn't run on JDK 17 yet. We will add it once 17 is closer to release.
 
+## GraalVM Native Image compatibility notes
+
+There are several records of successfully using Scala with [GraalVM](https://www.graalvm.org) Native Image(i.e.: ahead of time compiler) to produce directly executable binaries.
+Beware that, even using solely the Scala standard library, Native Image compilation have some heavy requirements in terms of [reflective access](https://www.graalvm.org/reference-manual/native-image/Reflection/), and it very likely require additional configuration steps to be performed.
+
+A few sbt plugins are offering support for GraalVM Native Image compilation:
+
+- [sbt-native-packager](https://www.scala-sbt.org/sbt-native-packager/formats/graalvm-native-image.html)
+- [sbt-native-image](https://github.com/scalameta/sbt-native-image)
+
 ## Scala 3
 
 The Scala 3.0.x series supports JDK 8, as well as 11 and beyond.
