@@ -74,7 +74,7 @@ The first table treats sequence types--both immutable and mutable--with the foll
 | **apply**  | Indexing. |
 | **update** | Functional update (with `updated`) for immutable sequences, side-effecting update (with `update` for mutable sequences). |
 | **prepend**| Adding an element to the front of the sequence. For immutable sequences, this produces a new sequence. For mutable sequences it modifies the existing sequence. |
-| **append** | Adding an element and the end of the sequence. For immutable sequences, this produces a new sequence. For mutable sequences it modifies the existing sequence. |
+| **append** | Adding an element to the end of the sequence. For immutable sequences, this produces a new sequence. For mutable sequences it modifies the existing sequence. |
 | **insert** | Inserting an element at an arbitrary position in the sequence. This is only supported directly for mutable sequences. |
 
 The second table treats mutable and immutable sets and maps with the following operations:
