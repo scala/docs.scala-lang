@@ -28,7 +28,7 @@ scala3-sections:
     - title: "迁移指引"
       description: "一份帮你从 Scala 2 迁移到 Scala 3 的指引"
       icon: "fa fa-suitcase"
-      link: https://scalacenter.github.io/scala-3-migration-guide/
+      link: /scala3/guides/migration/compatibility-intro.html
     - title: "导览"
       description: "关于语言特别之处的详细导览"
       icon: "fa fa-map"
