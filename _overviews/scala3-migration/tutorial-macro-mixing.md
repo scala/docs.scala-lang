@@ -87,13 +87,13 @@ However, in many cases you will have to move the Scala 2.13 macro implementation
 
 lazy val example = project.in(file("example"))
   .settings(
-    scalaVersion := "3.0.0-RC1"
+    scalaVersion := "3.0.0"
   )
   .dependsOn(`example-compat`)
 
 lazy val `example-compat` = project.in(file("example-compat"))
   .settings(
-    scalaVersion := "2.13.5",
+    scalaVersion := "2.13.6",
     libraryDependency += "org.scala-lang" % "scala-reflect" % scalaVersion.value
   )
 ```
@@ -133,15 +133,15 @@ Since we want to execute the tests in Scala 2.13 and Scala 3, we create a cross-
 // build.sbt
 lazy val `example-test` = project.in(file("example-test"))
   .settings(
-    scalaVersion := "3.0.0-RC1",
-    crossScalaVersions := Seq("3.0.0-RC1", "2.13.5"),
+    scalaVersion := "3.0.0",
+    crossScalaVersions := Seq("3.0.0", "2.13.6"),
     scalacOptions ++= {
       CrossVersion.partialVersion(scalaVersion.value) match {
         case Some((2, 13)) => Seq("-Ytasty-reader")
         case _ => Seq.empty
       }
     },
-    libraryDependencies += "org.scalameta" %% "munit" % "0.7.23" % Test
+    libraryDependencies += "org.scalameta" %% "munit" % "0.7.26" % Test
   )
   .dependsOn(example)
 ```
@@ -163,13 +163,13 @@ class MacrosSpec extends munit.FunSuite {
 You should now be able to run the tests in both versions.
 
 {% highlight text %}
-sbt:example> ++2.13.5
+sbt:example> ++2.13.6
 sbt:example> example-test / test
 location.MacrosSpec:
   + location
 [info] Passed: Total 1, Failed 0, Errors 0, Passed 1
 [success]
-sbt:example> ++3.0.0-RC1
+sbt:example> ++3.0.0
 sbt:example> example-test / test
 location.MacrosSpec:
   + location
@@ -191,7 +191,7 @@ You are now ready to publish your library.
 It can be used in Scala 3 projects, or in Scala 2.13 projects with these settings:
 
 ```scala
-scalaVersion := "2.13.5"
+scalaVersion := "2.13.6"
 libraryDependencies += ("org" %% "example" % "x.y.z").cross(CrossVersion.for2_13Use3)
 scalacOptions += "-Ytasty-reader"
 ```
