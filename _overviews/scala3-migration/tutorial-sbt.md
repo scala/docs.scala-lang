@@ -43,16 +43,16 @@ This is crucial to avoid bugs that could happen when fixing the incompatibilitie
 Configuring cross-building ins sbt is as short as:
 
 ```scala
-scalaVersion := "3.0.0-RC3"
-crossScalaVersions ++= Seq("2.13.5", "3.0.0-RC3")
+scalaVersion := "3.0.0"
+crossScalaVersions ++= Seq("2.13.6", "3.0.0")
 ```
 
 This configuration means:
-- The default version is `3.0.0-RC3`.
-- 2.13.5 can be loaded by running the `++2.13.5` command.
-- 3.0.0-RC3 can be loaded by running the `++3.0.0-RC3` command.
+- The default version is `3.0.0`.
+- 2.13.6 can be loaded by running the `++2.13.6` command.
+- 3.0.0 can be loaded by running the `++3.0.0` command.
 
-Beware that the `reload` command will always load the default version---here it is 3.0.0-RC3.
+Beware that the `reload` command will always load the default version---here it is 3.0.0.
 
 ## 4. Prepare the dependencies
 
@@ -77,20 +77,20 @@ Make sure the one you choose does not bring any breaking change.
 You can use the Scala 2.13 version of the library. The syntax is:
 
 ```scala
-("com.lihaoyi" %% "os-lib" % "0.7.3").cross(CrossVersion.for3Use2_13)
+("com.lihaoyi" %% "os-lib" % "0.7.7").cross(CrossVersion.for3Use2_13)
 ```
 
 Or for a Scala.js dependencies:
 
 ```scala
-("com.lihaoyi" %%% "os-lib" % "0.7.3").cross(CrossVersion.for3Use2_13)
+("com.lihaoyi" %%% "os-lib" % "0.7.7").cross(CrossVersion.for3Use2_13)
 ```
 
 Once you have fixed all the unresolved dependencies, you can check that the tests are still passing in Scala 2.13:
 
 {% highlight text %}
-sbt:example> ++2.13.5
-[info] Setting Scala version to 2.13.5 on 1 project.
+sbt:example> ++2.13.6
+[info] Setting Scala version to 2.13.6 on 1 project.
 ...
 sbt:example> example / test
 ...
@@ -138,8 +138,8 @@ Also you should disable `-Xfatal-warnings` to take full advantage of the migrati
 It is now time to try compiling in Scala 3:
 
 {% highlight text %}
-sbt:example> ++3.0.0-RC3
-[info] Setting Scala version to 3.0.0-RC3 on 1 project.
+sbt:example> ++3.0.0
+[info] Setting Scala version to 3.0.0 on 1 project.
 ...
 sbt:example> example / compile
 ...
@@ -171,8 +171,8 @@ This is particularly crucial if your project is a published library.
 After fixing an incompatibility, you can validate the solution by running the tests in Scala 2.13.
 
 {% highlight text %}
-sbt:example> ++2.13.5
-[info] Setting Scala version to 2.13.5 on 1 project.
+sbt:example> ++2.13.6
+[info] Setting Scala version to 2.13.6 on 1 project.
 ...
 sbt:example> example / test
 ...
@@ -186,7 +186,7 @@ Only the migration warnings are remaining.
 You can patch them automatically by compiling with the `-source:3.0-migration -rewrite` options.
 
 {% highlight text %}
-sbt:example> ++3.0.0-RC3
+sbt:example> ++3.0.0
 sbt:example> set example / scalacOptions += "-rewrite"
 sbt:example> example / compile
 ...
@@ -206,11 +206,11 @@ Good tests are the only guarantee to prevent such bugs from going unnoticed.
 Make sure that the tests are passing in both Scala 2.13 and Scala 3.
 
 {% highlight text %}
-sbt:example> ++2.13.5
+sbt:example> ++2.13.6
 sbt:example> example / test
 ...
 [success]
-sbt:example> ++3.0.0-RC3
+sbt:example> ++3.0.0
 sbt:example> example / test
 ...
 [success]

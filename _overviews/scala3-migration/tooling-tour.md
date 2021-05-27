@@ -82,7 +82,7 @@ Full-fledged support is being worked on by the team at JetBrains.
 
 ### Scalafmt
 
-[Scalafmt](https://scalameta.org/scalafmt/) v3.0.0-RC1 supports both Scala 2.13 and Scala 3.
+[Scalafmt](https://scalameta.org/scalafmt/) v3.0.0-RC3 supports both Scala 2.13 and Scala 3.
 
 To enable Scala 3 formatting you must set the `runner.dialect = scala3` in your `.scalafmt.conf` file.
 
