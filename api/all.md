@@ -10,14 +10,14 @@ includeTOC: true
   * [Library API](https://www.scala-lang.org/api/2.13.6/)
   * [Compiler API](https://www.scala-lang.org/api/2.13.6/scala-compiler/scala/)
   * [Reflection API](https://www.scala-lang.org/api/2.13.6/scala-reflect/scala/reflect/)
-* Scala 2.12.13
-  * [Library API](https://www.scala-lang.org/api/2.12.13/)
-  * [Compiler API](https://www.scala-lang.org/api/2.12.13/scala-compiler/scala/)
-  * [Reflection API](https://www.scala-lang.org/api/2.12.13/scala-reflect/scala/reflect/)
+* Scala 2.12.14
+  * [Library API](https://www.scala-lang.org/api/2.12.14/)
+  * [Compiler API](https://www.scala-lang.org/api/2.12.14/scala-compiler/scala/)
+  * [Reflection API](https://www.scala-lang.org/api/2.12.14/scala-reflect/scala/reflect/)
   * Scala Modules
-    * [XML API](https://www.scala-lang.org/api/2.12.13/scala-xml/scala/xml/)
-    * [Parser Combinators API](https://www.scala-lang.org/api/2.12.13/scala-parser-combinators/scala/util/parsing/)
-    * [Swing API](https://www.scala-lang.org/api/2.12.13/scala-swing/scala/swing/)
+    * [XML API](https://www.scala-lang.org/api/2.12.14/scala-xml/scala/xml/)
+    * [Parser Combinators API](https://www.scala-lang.org/api/2.12.14/scala-parser-combinators/scala/util/parsing/)
+    * [Swing API](https://www.scala-lang.org/api/2.12.14/scala-swing/scala/swing/)
 * Scala 2.11.12
   * [Library API](https://www.scala-lang.org/api/2.11.12/)
   * [Compiler API](https://www.scala-lang.org/api/2.11.12/scala-compiler/)
@@ -82,6 +82,10 @@ https://scala-ci.typesafe.com/artifactory/scala-integration/org/scala-lang/
   * [Library API](https://www.scala-lang.org/api/2.13.0/)
   * [Compiler API](https://www.scala-lang.org/api/2.13.0/scala-compiler/scala/)
   * [Reflection API](https://www.scala-lang.org/api/2.13.0/scala-reflect/scala/reflect/)
+* Scala 2.12.13
+  * [Library API](https://www.scala-lang.org/api/2.12.13/)
+  * [Compiler API](https://www.scala-lang.org/api/2.12.13/scala-compiler/scala/)
+  * [Reflection API](https://www.scala-lang.org/api/2.12.13/scala-reflect/scala/reflect/)
 * Scala 2.12.12
   * [Library API](https://www.scala-lang.org/api/2.12.12/)
   * [Compiler API](https://www.scala-lang.org/api/2.12.12/scala-compiler/scala/)
