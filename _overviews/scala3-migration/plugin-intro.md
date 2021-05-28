@@ -2,7 +2,7 @@
 title: Compiler Plugins
 type: chapter
 description: This section shows how to migrate from using Scala 2 compiler plugins
-num: 24
+num: 25
 previous-page: options-new
 next-page: plugin-kind-projector
 ---
