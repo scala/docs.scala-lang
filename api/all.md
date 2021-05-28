@@ -82,6 +82,10 @@ https://scala-ci.typesafe.com/artifactory/scala-integration/org/scala-lang/
   * [Library API](https://www.scala-lang.org/api/2.13.0/)
   * [Compiler API](https://www.scala-lang.org/api/2.13.0/scala-compiler/scala/)
   * [Reflection API](https://www.scala-lang.org/api/2.13.0/scala-reflect/scala/reflect/)
+* Scala 2.12.13
+  * [Library API](https://www.scala-lang.org/api/2.12.13/)
+  * [Compiler API](https://www.scala-lang.org/api/2.12.13/scala-compiler/scala/)
+  * [Reflection API](https://www.scala-lang.org/api/2.12.13/scala-reflect/scala/reflect/)
 * Scala 2.12.12
   * [Library API](https://www.scala-lang.org/api/2.12.12/)
   * [Compiler API](https://www.scala-lang.org/api/2.12.12/scala-compiler/scala/)
