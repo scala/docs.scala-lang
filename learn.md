@@ -36,7 +36,7 @@ this course in the following video:
   <iframe width="560" height="315" src="https://www.youtube.com/embed/MSDJ7ehjrqo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-After taking this course, you might be interested in growing further your
+After taking this course, you might be interested in improving your
 skills in specific areas by taking the courses [Parallel Programming],
 [Big Data Analysis with Scala and Spark], or [Programming Reactive Systems].
 
