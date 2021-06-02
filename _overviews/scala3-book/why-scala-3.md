@@ -45,7 +45,7 @@ For instance, a `List` is defined as a class---technically it’s an abstract cl
 val x = List(1, 2, 3)
 ```
 
-However, what appears to the programmer to be a simple `List` is actually built from a combination of several specialized types, including an abstract class named `AbstractSeq`, traits like `LinearSeq` and `LinearSeqOps`, and more.
+However, what appears to the programmer to be a simple `List` is actually built from a combination of several specialized types, including abstract classes named `Iterable`, `Seq`, and `LinearSeq`.
 Those types are similarly composed of other small, modular units of code.
 
 In addition to building a type like `List` from a series of modular traits, the `List` API also consists of dozens of other methods, many of which are higher-order functions:
@@ -67,7 +67,7 @@ The `List` class is immutable, so all of those methods return new values, as sho
 ## 2) A dynamic feel
 
 Scala’s _type inference_ often makes the language feel dynamically typed, even though it’s statically typed.
-This is true with variable assignment:
+This is true with variable declaration:
 
 ```scala
 val a = 1
@@ -108,7 +108,7 @@ val b: Password | Username = if (true) name else password
 
 ## 3) Concise syntax
 
-Scala is a low ceremony, “concise but still readable” language. For instance, variable type assignment is concise:
+Scala is a low ceremony, “concise but still readable” language. For instance, variable declaration is concise:
 
 ```scala
 val a = 1
@@ -120,8 +120,8 @@ Creating types like traits, classes, and enumerations are concise:
 
 ```scala
 trait Tail:
-  def wagTail: Unit
-  def stopTail: Unit
+  def wagTail(): Unit
+  def stopTail(): Unit
 
 enum Topping:
   case Cheese, Pepperoni, Sausage, Mushrooms, Onions
@@ -151,7 +151,7 @@ All of these expressions and many more are concise, and still very readable: wha
 Implicits in Scala 2 were a major distinguishing design feature.
 They represented _the_ fundamental way to abstract over context, with a unified paradigm that served a great variety of use cases, among them:
 
-- Implementing type classes
+- Implementing [type classes]({% link _overviews/scala3-book/ca-type-classes.md %})
 - Establishing context
 - Dependency injection
 - Expressing capabilities
@@ -208,7 +208,7 @@ See that chapter for more details on these features.
 Scala can be used on the server side with terrific frameworks:
 
 - The [Play Framework](https://www.playframework.com) lets you build highly scalable server-side applications and microservices
-- [Akka Actors](https://akka.io) let you use the actor model to greatly simplify parallel and concurrent software applications
+- [Akka Actors](https://akka.io) let you use the actor model to greatly simplify distributed and concurrent software applications
 
 Scala can also be used in the browser with the [Scala.js project](https://www.scala-js.org), which is a type-safe replacement for JavaScript.
 The Scala.js ecosystem [has dozens of libraries](https://www.scala-js.org/libraries) to let you use React, Angular, jQuery, and many other JavaScript and Scala libraries in the browser.
@@ -227,50 +227,50 @@ While these all use the `List` class, the same methods work with other collectio
 Here are some examples:
 
 ```scala
-List.range(1, 3)                      // List(1, 2)
-List.range(1, 6, 2)                   // List(1, 3, 5)
-List.fill(3)("foo")                   // List(foo, foo, foo)
-List.tabulate(3)(n => n * n)          // List(0, 1, 4)
-List.tabulate(4)(n => n * n)          // List(0, 1, 4, 9)
+List.range(1, 3)                          // List(1, 2)
+List.range(start = 1, end = 6, step = 2)  // List(1, 3, 5)
+List.fill(3)("foo")                       // List(foo, foo, foo)
+List.tabulate(3)(n => n * n)              // List(0, 1, 4)
+List.tabulate(4)(n => n * n)              // List(0, 1, 4, 9)
 
-val a = List(10, 20, 30, 40, 10)      // List(10, 20, 30, 40, 10)
-a.distinct                            // List(10, 20, 30, 40)
-a.drop(2)                             // List(30, 40, 10)
-a.dropRight(2)                        // List(10, 20, 30)
-a.dropWhile(_ < 25)                   // List(30, 40, 10)
-a.filter(_ < 25)                      // List(10, 20, 10)
-a.filter(_ > 100)                     // List()
-a.find(_ > 20)                        // Some(30)
-a.head                                // 10
-a.headOption                          // Some(10)
-a.init                                // List(10, 20, 30, 40)
-a.intersect(List(19,20,21))           // List(20)
-a.last                                // 10
-a.lastOption                          // Some(10)
-a.map(_ * 2)                          // List(20, 40, 60, 80, 20)
-a.slice(2,4)                          // List(30, 40)
-a.tail                                // List(20, 30, 40, 10)
-a.take(3)                             // List(10, 20, 30)
-a.takeRight(2)                        // List(40, 10)
-a.takeWhile(_ < 30)                   // List(10, 20)
-a.filter(_ < 30).map(_ * 10)          // List(100, 200)
+val a = List(10, 20, 30, 40, 10)          // List(10, 20, 30, 40, 10)
+a.distinct                                // List(10, 20, 30, 40)
+a.drop(2)                                 // List(30, 40, 10)
+a.dropRight(2)                            // List(10, 20, 30)
+a.dropWhile(_ < 25)                       // List(30, 40, 10)
+a.filter(_ < 25)                          // List(10, 20, 10)
+a.filter(_ > 100)                         // List()
+a.find(_ > 20)                            // Some(30)
+a.head                                    // 10
+a.headOption                              // Some(10)
+a.init                                    // List(10, 20, 30, 40)
+a.intersect(List(19,20,21))               // List(20)
+a.last                                    // 10
+a.lastOption                              // Some(10)
+a.map(_ * 2)                              // List(20, 40, 60, 80, 20)
+a.slice(2, 4)                             // List(30, 40)
+a.tail                                    // List(20, 30, 40, 10)
+a.take(3)                                 // List(10, 20, 30)
+a.takeRight(2)                            // List(40, 10)
+a.takeWhile(_ < 30)                       // List(10, 20)
+a.filter(_ < 30).map(_ * 10)              // List(100, 200)
 
 val fruits = List("apple", "pear")
-fruits.map(_.toUpperCase)             // List(APPLE, PEAR)
-fruits.flatMap(_.toUpperCase)         // List(A, P, P, L, E, P, E, A, R)
+fruits.map(_.toUpperCase)                 // List(APPLE, PEAR)
+fruits.flatMap(_.toUpperCase)             // List(A, P, P, L, E, P, E, A, R)
 
 val nums = List(10, 5, 8, 1, 7)
-nums.sorted                           // List(1, 5, 7, 8, 10)
-nums.sortWith(_ < _)                  // List(1, 5, 7, 8, 10)
-nums.sortWith(_ > _)                  // List(10, 8, 7, 5, 1)
+nums.sorted                               // List(1, 5, 7, 8, 10)
+nums.sortWith(_ < _)                      // List(1, 5, 7, 8, 10)
+nums.sortWith(_ > _)                      // List(10, 8, 7, 5, 1)
 ```
 
 
 
-## 8) Built-in practices
+## 8) Built-in best practices
 
 Scala idioms encourage best practices in many ways.
-For immutability, you’re encouraged to create immutable `val` fields:
+For immutability, you’re encouraged to create immutable `val` declarations:
 
 ```scala
 val a = 1                 // immutable variable
@@ -283,7 +283,7 @@ val b = List(1,2,3)       // List is immutable
 val c = Map(1 -> "one")   // Map is immutable
 ```
 
-Case classes are primarily intended for use in functional programming, and their parameters are immutable:
+Case classes are primarily intended for use in [domain modeling]({% link _overviews/scala3-book/domain-modeling-intro.md %}), and their parameters are immutable:
 
 ```scala
 case class Person(name: String)
@@ -386,6 +386,7 @@ _Safety_ is related to several new and changed features:
 - Multiversal equality
 - Restricting implicit conversions
 - Null safety
+- Safe initialization
 
 Good examples of _ergonomics_ are enumerations and extension methods, which have been added to Scala 3 in a very readable manner:
 

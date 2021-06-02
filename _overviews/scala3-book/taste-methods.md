@@ -128,7 +128,7 @@ extension (s: String)
 ## See also
 
 Scala Methods can be much more powerful: they can take type parameters and context parameters.
-They are covered in detail in the [Data Modeling][data-1] section.
+They are covered in detail in the [Domain Modeling][data-1] section.
 
 
 

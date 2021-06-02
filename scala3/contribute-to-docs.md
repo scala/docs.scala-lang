@@ -16,7 +16,7 @@ We welcome contributions from the community to every aspect of the documentation
 
 
 ### How can I contribute?
-In general, there is many different ways you could help us:
+In general, there are many ways you can help us:
 
 - **Confused about something in any of the docs?** Open an issue.
 - **Found something not up-to-date?** Open an issue or create a PR.

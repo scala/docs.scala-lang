@@ -186,7 +186,7 @@ This example shows (a) how to use a `match` expression as the body of a method, 
 
 ```scala
 // getClassAsString is a method that takes a single argument of any type.
-def getClassAsString(x: Any): String = x match
+def getClassAsString(x: Matchable): String = x match
   case s: String => s"'$s' is a String"
   case i: Int => "Int"
   case d: Double => "Double"
@@ -198,6 +198,10 @@ getClassAsString(1)               // Int
 getClassAsString("hello")         // 'hello' is a String
 getClassAsString(List(1, 2, 3))   // List
 ```
+
+The method `getClassAsString` takes as a parameter a value of type [Matchable]({{ site.scala3ref }}/other-new-features/matchable.html), which can be
+any type supporting pattern matching (some types don’t support pattern matching because this could
+break encapsulation).
 
 There’s _much_ more to pattern matching in Scala.
 Patterns can be nested, results of patterns can be bound, and pattern matching can even be user-defined.
@@ -231,27 +235,24 @@ It’s one-line syntax looks like this:
 while x >= 0 do x = f(x)
 ```
 
-Again, Scala’s control structure syntax is flexible, and you can write this code in different ways depending on your preferences:
+In Scala 2, the syntax was a bit different. The condition was surrounded by parentheses, and
+there was no `do` keyword:
 
 ```scala
 while (x >= 0) do x = f(x)
 while (x >= 0) { x = f(x) }
 ```
 
+Scala 3 still supports the Scala 2 syntax for the sake of compatibility.
+
 The `while` loop multiline syntax looks like this:
 
 ```scala
 var x = 1
 
-// without parentheses
 while
   x < 3
 do
-  println(x)
-  x += 1
-
-// with parentheses
-while (x < 3)
   println(x)
   x += 1
 ```
