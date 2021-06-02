@@ -94,7 +94,7 @@ While this is also possible purely with `inline`, implementing it with macros wi
 
 ```scala
 inline def power(inline x: Double, inline n: Int) =
-  ${ evalPower('x, 'n)  }
+  ${ powerCode('x, 'n)  }
 
 def powerCode(
   x: Expr[Double],
