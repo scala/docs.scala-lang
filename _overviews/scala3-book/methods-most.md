@@ -261,8 +261,9 @@ def isTruthy(a: Matchable) = a match
   case _ => true
 ```
 
-This method works just like the previous method that used an `if`/`else` expression.
+This method works just like the previous method that used an `if`/`else` expression. We use `Matchable` instead of `Any` as the parameter's type because it's a safer alternative that will still admit any concrete value or reference.
 
+For more details on the `Matchable` trait, see the [Reference documentation][reference_matchable].
 
 
 ## Controlling visibility in classes
@@ -401,3 +402,4 @@ See the [Reference documentation][reference] for more details on these features.
 [extension]: {% link _overviews/scala3-book/ca-extension-methods.md %}
 [reference_extension_methods]: {{ site.scala3ref }}/contextual/extension-methods.html
 [reference]: {{ site.scala3ref }}/overview.html
+[reference_matchable]: {{ site.scala3ref }}/other-new-features/matchable.html
