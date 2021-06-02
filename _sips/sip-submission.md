@@ -76,7 +76,7 @@ a SIP or needs more work.
 After receiving the green light from the Process Lead, you can write up your
 idea and submit it as a SIP.
 
-A SIP is a Markdown document written in conformance with the [process template](https://github.com/scala/docs.scala-lang/blob/master/_sips/sip-template.md).
+A SIP is a Markdown document written in conformance with the [process template](https://github.com/scala/docs.scala-lang/blob/main/_sips/sip-template.md).
 It ought to contain a clear specification of the proposed changes. When such
 changes significantly alter the compiler internals, the author is invited to
 provide a proof of concept. Delivering a basic implementation can speed up the
@@ -323,7 +323,7 @@ Scala compiler.
 The process to submit is simple:
 
 * Fork the Scala documentation repository, [https://github.com/scala/docs.scala-lang](https://github.com/scala/docs.scala-lang).
-* Create a new SIP file in the `_sips/sips/`. Use the [S(L)IP template](https://github.com/scala/docs.scala-lang/blob/master/_sips/sip-template.md)
+* Create a new SIP file in the `_sips/sips/`. Use the [S(L)IP template](https://github.com/scala/docs.scala-lang/blob/main/_sips/sip-template.md)
   * Make sure the new file follows the format:  `YYYY-MM-dd-{title}.md`.  Use the proposal date for `YYYY-MM-dd`.
   * Use the [Markdown Syntax](https://daringfireball.net/projects/markdown/syntax) to write your SIP.
   * Follow the instructions in the [README](https://github.com/scala/docs.scala-lang/) to build your SIP locally so you can ensure that it looks correct on the website.
