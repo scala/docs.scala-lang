@@ -28,13 +28,13 @@ Typically, each of the different documentation projects contain links (and so do
 ## Scala 3 Book
 The [Scala 3 Book][scala3-book] is being written by Alvin Alexander and provides an overview over all the important features of Scala 3. It targets readers, which are new to Scala.
 
-- [Sources](https://github.com/scala/docs.scala-lang/tree/master/_overviews/scala3-book)
+- [Sources](https://github.com/scala/docs.scala-lang/tree/main/_overviews/scala3-book)
 - [Issues](https://github.com/scala/docs.scala-lang/issues)
 
 ## Macros Tutorial
 The [Macros Tutorial](/scala3/guides/macros) is being written by Nicolas Stucki and contains detailed information about macros in Scala 3 and best-practices.
 
-- [Sources](https://github.com/scala/docs.scala-lang/tree/master/_overviews/scala3-macros)
+- [Sources](https://github.com/scala/docs.scala-lang/tree/main/_overviews/scala3-macros)
 - [Issues](https://github.com/scala/docs.scala-lang/issues)
 
 ## Migration Guide
@@ -42,7 +42,7 @@ The [Scala 3 Migration Guide](/scala3/guides/migration/compatibility-intro.html)
 contains an comprehensive overview over compatibility between Scala 2 and Scala 3,
 a tour presenting the migration tools, and detailed migration guides.
 
-- [Source](https://github.com/scala/docs.scala-lang/tree/master/_overviews/scala3-migration)
+- [Source](https://github.com/scala/docs.scala-lang/tree/main/_overviews/scala3-migration)
 - [Issues](https://github.com/scalacenter/docs.scala-lang/issues)
 
 ## Scala 3 Language Reference

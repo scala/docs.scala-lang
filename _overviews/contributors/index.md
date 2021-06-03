@@ -742,7 +742,7 @@ Last, add the following job to the “test” stage, in the `.travis.yml` file:
 This will check that pull requests don’t make changes that are binary incompatible with the
 previous stable version.
 
-We suggest working with the following Git workflow: the `master` branch always receives pull requests
+We suggest working with the following Git workflow: the `main` branch always receives pull requests
 for the next major version (so, binary compatibility checks are disabled, by setting the `mimaPreviousArtifacts`
 value to `Set.empty`), and each major version `N` has a corresponding `N.x` branch (e.g., `1.x`, `2.x`, etc.) branch
 where the binary compatibility checks are enabled.

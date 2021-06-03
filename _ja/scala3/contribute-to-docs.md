@@ -30,19 +30,19 @@ Scala 3 の高品質なドキュメンテーションを作るためのいくつ
 ## Scala 3 Book
 [Scala 3 Book][scala3-book] は Alvin Alexander 氏 が書いている。 この本は Scala 3 のすべての重要な機能の概説書である。これから Scala を使いはじめる読者を対象にしている。
 
-- [Sources](https://github.com/scala/docs.scala-lang/tree/master/_overviews/scala3-book)
+- [Sources](https://github.com/scala/docs.scala-lang/tree/main/_overviews/scala3-book)
 - [Issues](https://github.com/scala/docs.scala-lang/issues)
 
 ## Macros Tutorial
 [Macros Tutorial](/scala3/guides/macros)は Nicolas Stucki 氏 が書いている。この本では Scala 3 のマクロとそのベストプラクティスについて詳しく説明している。 
 
-- [Sources](https://github.com/scala/docs.scala-lang/tree/master/_overviews/scala3-macros)
+- [Sources](https://github.com/scala/docs.scala-lang/tree/main/_overviews/scala3-macros)
 - [Issues](https://github.com/scala/docs.scala-lang/issues)
 
 ## Migration Guide
 [Scala 3 Migration Guide](/scala3/guides/migration/compatibility-intro.html) は Scala 2 と Scala 3 の互換性、移行に役立つツールの紹介、そして詳しい移行のガイドを含んだ包括的なドキュメントである。
 
-- [Source](https://github.com/scala/docs.scala-lang/tree/master/_overviews/scala3-migration)
+- [Source](https://github.com/scala/docs.scala-lang/tree/main/_overviews/scala3-migration)
 - [Issues](https://github.com/scalacenter/docs.scala-lang/issues)
 
 
