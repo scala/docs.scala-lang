@@ -233,7 +233,7 @@ Here’s a method named `isTruthy` that implements the Perl definitions of `true
 
 ```scala
 def isTruthy(a: Any) =
-  if a == 0 || a == ""
+  if a == 0 || a == "" then
     false
   else
     true
@@ -256,13 +256,14 @@ A `match` expression can also be used as the entire method body, and often is.
 Here’s another version of `isTruthy`, written with a `match` expression :
 
 ```scala
-def isTruthy(a: Any) = a match
+def isTruthy(a: Matchable) = a match
   case 0 | "" => false
   case _ => true
 ```
 
-This method works just like the previous method that used an `if`/`else` expression.
+This method works just like the previous method that used an `if`/`else` expression. We use `Matchable` instead of `Any` as the parameter's type to accept any value that supports pattern matching.
 
+For more details on the `Matchable` trait, see the [Reference documentation][reference_matchable].
 
 
 ## Controlling visibility in classes
@@ -401,3 +402,4 @@ See the [Reference documentation][reference] for more details on these features.
 [extension]: {% link _overviews/scala3-book/ca-extension-methods.md %}
 [reference_extension_methods]: {{ site.scala3ref }}/contextual/extension-methods.html
 [reference]: {{ site.scala3ref }}/overview.html
+[reference_matchable]: {{ site.scala3ref }}/other-new-features/matchable.html
