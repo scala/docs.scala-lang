@@ -50,6 +50,25 @@ Then in your code you use `circumference` just as though it was originally defin
 aCircle.circumference
 ```
 
+### Import extension method
+
+Imagine, that `circumference` is defined in package `lib`, you can import it by
+
+```scala
+import lib.circumference
+
+aCircle.circumference
+```
+
+The compiler also support you if the import is missing by showing a detailed compilation error message such as the following:
+
+```text
+value circumference is not a member of Circle, but could be made available as an extension method.
+
+The following import might fix the problem:
+
+   import lib.circumference
+```
 
 ## Discussion
 
