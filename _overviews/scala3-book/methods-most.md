@@ -261,7 +261,7 @@ def isTruthy(a: Matchable) = a match
   case _ => true
 ```
 
-This method works just like the previous method that used an `if`/`else` expression. We use `Matchable` instead of `Any` as the parameter's type because it's a safer alternative that will still admit any concrete value or reference.
+This method works just like the previous method that used an `if`/`else` expression. We use `Matchable` instead of `Any` as the parameter's type to accept any value that supports pattern matching.
 
 For more details on the `Matchable` trait, see the [Reference documentation][reference_matchable].
 
