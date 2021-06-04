@@ -2,8 +2,9 @@
 layout: sips
 title: List of All SIPs
 
-redirect_from: "/sips/sip-list.html"
-redirect_from: "/sips/pending/index.html"
+redirect_from: 
+  - "/sips/sip-list.html"
+  - "/sips/pending/index.html"
 ---
 
 
