@@ -2,14 +2,15 @@
 layout: singlepage-overview
 title: Scala FAQ
 permalink: /tutorials/FAQ/index.html
-redirect_from: "/tutorials/FAQ/breakout.html"
-redirect_from: "/tutorials/FAQ/chaining-implicits.html"
-redirect_from: "/tutorials/FAQ/collections.html"
-redirect_from: "/tutorials/FAQ/context-bounds.html"
-redirect_from: "/tutorials/FAQ/finding-implicits.html"
-redirect_from: "/tutorials/FAQ/finding-symbols.html"
-redirect_from: "/tutorials/FAQ/stream-view.html"
-redirect_from: "/tutorials/FAQ/yield.html"
+redirect_from: 
+  - "/tutorials/FAQ/breakout.html"
+  - "/tutorials/FAQ/chaining-implicits.html"
+  - "/tutorials/FAQ/collections.html"
+  - "/tutorials/FAQ/context-bounds.html"
+  - "/tutorials/FAQ/finding-implicits.html"
+  - "/tutorials/FAQ/finding-symbols.html"
+  -  "/tutorials/FAQ/stream-view.html"
+  - "/tutorials/FAQ/yield.html"
 ---
 
 Frequently asked questions, with _brief_ answers and/or links to
