@@ -14,7 +14,7 @@ Intuitively, the code directly within the quote is not executed now, while the c
 
 ```scala
 val msg = Expr("Hello")
-val printHello = '{ print($hello) }
+val printHello = '{ print($msg) }
 println(printHello.show) // print("Hello")
 ```
 
