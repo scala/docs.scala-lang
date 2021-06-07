@@ -144,26 +144,14 @@ scala> for i <- ints do println(i)
 3
 ````
 
-When you need a multiline block of code following the `for` generator, use either of these approaches:
+When you need a multiline block of code following the `for` generator, use the following syntax:
 
 ```scala
-// option 1
 for
   i <- ints
 do
   val x = i * 2
   println(s"i = $i, x = $x")
-
-// option 2
-for (i <- ints)
-  val x = i * 2
-  println(s"i = $i, x = $x")
-
-// option 3
-for (i <- ints) {
-  val x = i * 2
-  println(s"i = $i, x = $x")
-}
 ```
 
 ### Multiple generators
@@ -276,7 +264,7 @@ val list =
   yield
     i * 2
 
-// result: list == Vector(20, 22, 24)
+// list: IndexedSeq[Int] = Vector(20, 22, 24)
 ```
 
 After that `for` expression runs, the variable `list` is a `Vector` that contains the values shown.
@@ -288,7 +276,7 @@ This is how the expression works:
    It multiples it by `2`, then yields the value `22`.
    You can think of these yielded values as accumulating in a temporary holding place.
 3. Finally the loop gets the number `12` from the range, multiplies it by `2`, yielding the number `24`.
-  The loop completes at this point and yields the final result, the `Vector(20,22,24)`.
+  The loop completes at this point and yields the final result, the `Vector(20, 22, 24)`.
 
 {% comment %}
 NOTE: This is a place where it would be great to have a TIP or NOTE block:
@@ -297,7 +285,7 @@ NOTE: This is a place where it would be great to have a TIP or NOTE block:
 While the intent of this section is to demonstrate `for` expressions, it can help to know that the `for` expression shown is equivalent to this `map` method call:
 
 ```scala
-val list = (10 to 12).map { i => i * 2}
+val list = (10 to 12).map(i => i * 2)
 ```
 
 `for` expressions can be used any time you need to traverse all of the elements in a collection and apply an algorithm to those elements to create a new list.
@@ -312,7 +300,7 @@ val capNames = for name <- names yield
   val capName = nameWithoutUnderscore.capitalize
   capName
 
-// result: List[String] = List(Olivia, Walter, Peter)
+// capNames: List[String] = List(Olivia, Walter, Peter)
 ```
 
 
@@ -329,7 +317,7 @@ def between3and10(xs: List[Int]): List[Int] =
     if x <= 10
   yield x
 
-between3and10(List(1, 3, 7, 11))   // result: List(3, 7)
+between3and10(List(1, 3, 7, 11))   // : List[Int] = List(3, 7)
 ```
 
 
@@ -386,7 +374,7 @@ If it’s between `0` and `6`, `day` is bound to a string that represents one of
 Otherwise, the catch-all case is represented by the `_` character, and `day` is bound to the string, `"invalid day"`.
 
 > When writing simple `match` expressions like this, it’s recommended to use the `@switch` annotation on the variable `i`.
-> This annotation provides a compile time warning if the switch can’t be compiled to a `tableswitch` or `lookupswitch`, which are better for performance.
+> This annotation provides a compile-time warning if the switch can’t be compiled to a `tableswitch` or `lookupswitch`, which are better for performance.
 
 
 ### Using the default value
@@ -417,7 +405,7 @@ val evenOrOdd = i match
 ```
 
 
-### Using `if` expressions in `case` statements
+### Using `if` guards in `case` clauses
 
 You can also use guards in the `case`s of a match expression.
 In this example the second and third `case` both use guards to match multiple integer values:
@@ -528,8 +516,8 @@ def pattern(x: Matchable): String = x match
   case a: Array[Int] => s"array of int: ${a.mkString(",")}"
   case as: Array[String] => s"string array: ${as.mkString(",")}"
   case d: Dog => s"dog: ${d.name}"
-  case list: List[_] => s"got a List: $list"
-  case m: Map[_, _] => m.toString
+  case list: List[?] => s"got a List: $list"
+  case m: Map[?, ?] => m.toString
 
   // the default wildcard pattern
   case _ => "Unknown"
@@ -561,7 +549,7 @@ finally
   println("Came to the 'finally' clause.")
 ```
 
-Assuming that the `openAndReadAFile` method uses the Java `java.io._` classes to read a file and doesn’t catch its exceptions, attempting to open and read a file can result in both a `FileNotFoundException` and an `IOException`, and those two exceptions are caught in the `catch` block of this example.
+Assuming that the `openAndReadAFile` method uses the Java `java.io.*` classes to read a file and doesn’t catch its exceptions, attempting to open and read a file can result in both a `FileNotFoundException` and an `IOException`, and those two exceptions are caught in the `catch` block of this example.
 
 
 [matchable]: {{ site.scala3ref }}/other-new-features/matchable.html

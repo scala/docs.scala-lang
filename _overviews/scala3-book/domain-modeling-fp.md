@@ -43,7 +43,7 @@ An FP design is implemented in a similar way:
 
 > As we will see, reasoning about programs in this style is quite different from the object-oriented programming.
 > Data in FP simply **is**:
-> Separating functionality from your data let's you inspect your data without having to worry about behavior.
+> Separating functionality from your data lets you inspect your data without having to worry about behavior.
 
 In this chapter we’ll model the data and operations for a “pizza” in a pizza store.
 You’ll see how to implement the “data” portion of the Scala/FP model, and then you’ll see several different ways you can organize the operations on that data.

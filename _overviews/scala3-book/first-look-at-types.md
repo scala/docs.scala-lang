@@ -267,13 +267,14 @@ A common use is to signal non-termination, such as a thrown exception, program e
 
 `Null` is a subtype of all reference types (i.e. any subtype of `AnyRef`).
 It has a single value identified by the keyword literal `null`.
-`Null` is provided mostly for interoperability with other JVM languages and should almost never be used in Scala code.
+Currently, the usage of `null` is considered bad practice. It should be used mostly for interoperability with other JVM languages. An opt-in compiler option changes the status of `Null` to fix the caveats related to its usage. This option might become the default in a future version of Scala. You can learn more about it [here][safe-null].
+
+In the meantime, `null` should almost never be used in Scala code.
 Alternatives to `null` are discussed in the [Functional Programming chapter][fp] of this book, and the [API documentation][option-api].
-
-
 
 [reference]: {{ site.scala3ref }}/overview.html
 [matchable]: {{ site.scala3ref }}/other-new-features/matchable.html
 [interpolation]: {% link _overviews/core/string-interpolation.md %}
 [fp]: {% link _overviews/scala3-book/fp-intro.md %}
 [option-api]: https://dotty.epfl.ch/api/scala/Option.html
+[safe-null]: {{ site.scala3ref }}/other-new-features/explicit-nulls.html
