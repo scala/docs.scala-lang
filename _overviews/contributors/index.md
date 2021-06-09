@@ -50,7 +50,9 @@ Examples of CI servers that are free for open source projects are [GitHub Action
 [Travis CI](https://travis-ci.com), [Drone](https://drone.io) or [AppVeyor](https://appveyor.com).
 
 Our example uses Github Actions. This feature is enabled by default on GitHub repositories. You can verify if that is
-the case and enable them in the *Actions* section of the *Settings* tab of the repository.
+the case in the *Actions* section of the *Settings* tab of the repository.
+If *Disable all actions* is checked, then Actions are not enabled and you can activate them
+by selecting *Allow all actions*, *Allow local actions only* or *Allow select actions*.
 
 With Actions enabled, you can create a *workflow definition file*. A **workflow** is an automated procedure,
 composed of one or more jobs. A **job** is a set of sequential steps that are executed on the same runner.
@@ -66,7 +68,7 @@ name: Continuous integration
 on: push
 
 jobs:
-  Tests:
+  ci:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2 # Retrieve the content of the repository
@@ -75,18 +77,23 @@ jobs:
         run: sbt +test
 ~~~
 
-This workflow is called *Continuous integration* and it will run every time one or more commits are pushed to
-the repository. It contains only one job called *Tests*, which will run on an Ubuntu runner and that is composed
-of three actions. `setup-scala` uses the sbt version specified in `project/build.properties` and the Scala
-version defined in your `build.sbt`.
+This workflow is called *Continuous integration* and it will run every time one
+or more commits are pushed to the repository. It contains only one job called
+*ci*, which will run on an Ubuntu runner and that is composed of three
+actions.  The action `setup-scala` installs the sbt launcher in the runner. Then
+the job runs `sbt +test`, which loads the sbt version specified in
+`project/build.properties`, and runs the project tests using the Scala version
+defined in the file `build.sbt`.
 
-The worfklow above will run at any push to any branch of the repository. You can
-specify the branch or add more triggers such as pull requests, releases, tags or
-schedules. More information about workflow triggers is available [here](https://docs.github.com/en/actions/reference/events-that-trigger-workflows).
-while the `setup-scala` action is hosted [in this repository](https://github.com/olafurpg/setup-scala).
+The workflow above will run at any push to any branch of the repository. You
+can specify the branch or add more triggers such as pull requests, releases,
+tags or schedules. More information about workflow triggers is available
+[here](https://docs.github.com/en/actions/reference/events-that-trigger-workflows).
+while the `setup-scala` action is hosted [in this
+repository](https://github.com/olafurpg/setup-scala).
 
-For reference, here is our complete
-[workflow example file](https://github.com/scalacenter/library-example/blob/master/.github/.workflows/ci.yml).
+For reference, here is our complete [workflow example
+file](https://github.com/scalacenter/library-example/blob/master/.github/.workflows/ci.yml).
 
 ## Publish a Release
 
@@ -156,7 +163,7 @@ import xerial.sbt.Sonatype._
 sonatypeProjectHosting := Some(GitHubHosting("scalacenter", "library-example", "julien.richard-foy@epfl.ch"))
 
 // publish to the sonatype repository
-publishTo := sonatypePublishTo.value
+publishTo := sonatypePublishToBundle.value
 ~~~
 
 Put your Sonatype credentials in a `$HOME/.sbt/1.0/sonatype.sbt` file:
@@ -289,7 +296,7 @@ gpg --armor --export %LONG_ID%
 On GitHub Actions, you can define a workflow to publish the library when a tag is pushed:
 
 ~~~ yaml
-# .github/workflows/release.yml
+# .github/workflows/publish.yml
 name: Continuous publication
 on:
   push:
@@ -332,7 +339,7 @@ If you have written a library, you probably want it to be usable from several Sc
 Define the versions you want to support in the `crossScalaVersions` setting, in your `build.sbt` file:
 
 ~~~ scala
-crossScalaVersions := Seq("2.12.8", "2.11.12")
+crossScalaVersions := Seq("2.13.6", "2.12.8")
 scalaVersion := crossScalaVersions.value.head
 ~~~
 
@@ -540,11 +547,11 @@ can browse it at [https://scalacenter.github.io/library-example/](https://scalac
 
 ### Continuous Publication
 
-You can extend `.github/workflows/release.yml` to automatically publish documentation to GitHub pages.
+You can extend `.github/workflows/publish.yml` to automatically publish documentation to GitHub pages.
 To do so, add another job:
 
 ```yml
-# .github/workflows/release.yml
+# .github/workflows/publish.yml
 name: Continuous publication
 
 jobs:
