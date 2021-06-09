@@ -101,9 +101,6 @@ You can visit his [YouTube channel](https://www.youtube.com/user/DrMarkCLewis/fe
 ## allaboutscala
 [allaboutscala](https://allaboutscala.com/) provides detailed tutorials for beginners.
 
-## ScalaCourses
-[Independent Courseware](https://getscala.com), online self-study or instructor-led Scala and Play courses for a fee.
-
 ## DevInsideYou
 [DevInsideYou](https://youtube.com/devinsideyou) is a YouTube channel with hundreds of hours of free Scala content.
 
