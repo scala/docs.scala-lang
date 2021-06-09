@@ -7,16 +7,16 @@ previous-page: methods-intro
 next-page: methods-main-methods
 ---
 
-This section introduces the various aspects of how to define and call methods in Scala 2.
+This section introduces the various aspects of how to define and call methods in Scala 3.
 
 ## Defining Methods
 
 Scala methods have many features, including these:
 
 - Generic (type) parameters
-- Automatically provided `using` parameters
 - Default parameter values
 - Multiple parameter groups
+- Context-provided parameters
 - By-name parameters
 - ...
 
@@ -63,7 +63,7 @@ The Scala collections classes have dozens of built-in methods.
 These examples show how to call them:
 
 ```scala
-val x = List(1,2,3)
+val x = List(1, 2, 3)
 
 x.size          // 3
 x.contains(1)   // true
@@ -102,7 +102,7 @@ res0: Int = 4
 ```
 
 Notice that there’s no need for a `return` statement at the end of the method.
-Because almost everything in Scala is an _expression_---meaning that each line of code returns (or _evaluates to) a value---there’s no need to use `return`.
+Because almost everything in Scala is an _expression_---meaning that each line of code returns (or _evaluates to_) a value---there’s no need to use `return`.
 
 This becomes more clear when you condense that method and write it on one line:
 
@@ -118,6 +118,7 @@ The body of a method can use all the different features of the language:
 - `for` loops and `for` expressions
 - Variable assignments
 - Calls to other methods
+- Definitions of other methods
 
 As an example of a real-world multiline method, this `getStackTraceAsString` method converts its `Throwable` input parameter into a well-formatted `String`:
 
@@ -202,10 +203,10 @@ When a method takes no parameters, it’s said to have an _arity_ level of _arit
 Similarly, when a method takes one parameter it’s an _arity-1_ method.
 When you create arity-0 methods:
 
-- If the method has side effects, such as calling `println`, declare the method with empty parentheses
-- If the method does not have side effects---such as getting the size of a collection, which is similar to accessing a field on the collection---leave the parentheses off
+- If the method performs side effects, such as calling `println`, declare the method with empty parentheses
+- If the method does not perform side effects---such as getting the size of a collection, which is similar to accessing a field on the collection---leave the parentheses off
 
-For example, this method has a side effect, so it’s declared with empty parentheses:
+For example, this method performs a side effect, so it’s declared with empty parentheses:
 
 ```scala
 def speak() = println("hi")
@@ -218,7 +219,7 @@ speak     // error: "method speak must be called with () argument"
 speak()   // prints "hi"
 ```
 
-While this is just a convention, following it dramatically improves code readability: It makes it easier to understand at a glance that an arity-0 method has side effects.
+While this is just a convention, following it dramatically improves code readability: It makes it easier to understand at a glance that an arity-0 method performs side effects.
 
 {% comment %}
 Some of that wording comes from this page: https://docs.scala-lang.org/style/method-invocation.html
@@ -233,7 +234,7 @@ Here’s a method named `isTruthy` that implements the Perl definitions of `true
 
 ```scala
 def isTruthy(a: Any) =
-  if a == 0 || a == "" then
+  if a == 0 || a == "" || a == false then
     false
   else
     true
@@ -257,7 +258,7 @@ Here’s another version of `isTruthy`, written with a `match` expression :
 
 ```scala
 def isTruthy(a: Matchable) = a match
-  case 0 | "" => false
+  case 0 | "" | false => false
   case _ => true
 ```
 
@@ -279,7 +280,7 @@ d.speak()   // prints "Woof"
 ```
 
 Methods can also be marked as `private`.
-This makes them private to the current class, and they can’t be overridden in subclasses:
+This makes them private to the current class, so they can’t be called nor overridden in subclasses:
 
 ```scala
 class Animal:
@@ -290,7 +291,7 @@ class Cat extends Animal:
   override def breathe() = println("Yo, I’m totally breathing")
 ```
 
-If you want to make a method private to the current class and also allow subclasses to override it, mark the method as `protected`, as shown with the `speak` method in this example:
+If you want to make a method private to the current class and also allow subclasses to call it or override it, mark the method as `protected`, as shown with the `speak` method in this example:
 
 ```scala
 class Animal:

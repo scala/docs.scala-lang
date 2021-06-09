@@ -116,7 +116,7 @@ In other examples, you can simplify your anonymous functions further.
 For instance, beginning with the most explicit form, you can print each element in `ints` using this anonymous function with the `List` class `foreach` method:
 
 ```scala
-ints.foreach((i:Int) => println(i))
+ints.foreach((i: Int) => println(i))
 ```
 
 As before, the `Int` declaration isn’t required, and because there’s only one argument, the parentheses around `i` aren’t needed:
@@ -131,7 +131,7 @@ Because `i` is used only once in the body of the function, the expression can be
 ints.foreach(println(_))
 ```
 
-Finally, if an anonymous function consists of one statement that takes a single argument, you don’t need to explicitly name and specify the argument, so the statement can finally be reduced to this:
+Finally, if an anonymous function consists of one method call that takes a single argument, you don’t need to explicitly name and specify the argument, so you can finally write only the name of the method (here, `println`):
 
 ```scala
 ints.foreach(println)
