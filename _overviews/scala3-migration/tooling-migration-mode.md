@@ -37,7 +37,7 @@ where possible standard options include:
 The `-source:3.0-migration` option makes the compiler forgiving on most of the dropped features, printing warnings in place of errors.
 Each warning is a strong indication that the compiler is even capable of safely rewriting the deprecated pieces of code into their cross-compiling counterparts.
 
-We call this the **Scala 3 migration compialtion**.
+We call this the **Scala 3 migration compilation**.
 
 ## Automatic rewrites
 
