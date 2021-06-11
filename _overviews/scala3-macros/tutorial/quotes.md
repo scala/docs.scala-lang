@@ -25,7 +25,7 @@ Due to some technical considerations we only allow it directly within `inline` d
 It is possible to write a quote within a quote, but usually when we write macros we do not encounter such code.
 
 ## Level consistency
-One cannot simple write any arbitrary code within quotes and within splices.
+One cannot simply write any arbitrary code within quotes and within splices.
 A part of the program will live at compile-time and the other will live at runtime.
 Consider the following ill-constructed code.
 
@@ -46,7 +46,8 @@ def myBadCounter2(using Quotes): Expr[Int] = '{
 }
 ```
 Clearly, this should not work as the variable does not exist yet.
-To make sure you cannot write programs that contain these kinds of problems, we restrict the set of references to variable and other definitions.
+
+To make sure you cannot write programs that contain these kinds of problems, we restrict the kinds of references allowed in quote environments.
 
 We introduce _levels_ as a count of the number of quotes minus the number of splices surrounding an expression or definition.
 

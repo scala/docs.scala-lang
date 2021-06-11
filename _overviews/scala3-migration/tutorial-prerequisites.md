@@ -69,8 +69,8 @@ You can find all configured compiler plugins by looking at the compiler options 
 
 {% highlight text %}
 sbt:example> show example / Compile / scalacOptions
-[info] * -Xplugin:target/compiler_plugins/wartremover_2.13.5-2.4.12.jar
-[info] * -Xplugin:target/compiler_plugins/semanticdb-scalac_2.13.5-4.3.20.jar
+[info] * -Xplugin:target/compiler_plugins/wartremover_2.13.6-2.4.15.jar
+[info] * -Xplugin:target/compiler_plugins/semanticdb-scalac_2.13.6-4.4.18.jar
 [info] * -Yrangepos
 [info] * -P:semanticdb:targetroot:/example/target/scala-2.13/meta
 {% endhighlight %}

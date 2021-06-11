@@ -1,5 +1,5 @@
 ---
-layout: inner-page-documentation
+layout: documentation
 title: 文档
 language: zh-cn
 partof: documentation
@@ -7,7 +7,42 @@ discourse: true
 
 # Content masthead links
 more-resources-label: 更多资源
-sections:
+
+scala3-sections:
+- title: "第一步"
+  links:
+    - title: "Scala 3 中的新东西"
+      description: "Scala 3 现存新特性概览"
+      icon: "fa fa-star"
+      link: /scala3/new-in-scala3.html
+    - title: "快速开始"
+      description: "安装 Scala 3 并开始写些 Scala 代码"
+      icon: "fa fa-rocket"
+      link: /scala3/getting-started.html
+    - title: "Scala 3 书籍"
+      description: "一部介绍主要语言特性的线上书"
+      icon: "fa fa-book"
+      link: /scala3/book/introduction.html
+- title: "更多细节"
+  links:
+    - title: "迁移指引"
+      description: "一份帮你从 Scala 2 迁移到 Scala 3 的指引"
+      icon: "fa fa-suitcase"
+      link: /scala3/guides/migration/compatibility-intro.html
+    - title: "导览"
+      description: "关于语言特别之处的详细导览"
+      icon: "fa fa-map"
+      link: /scala3/guides.html
+    - title: "API"
+      description: "Scala 3 各个版本的API"
+      icon: "fa fa-file-text"
+      link: https://dotty.epfl.ch/api/index.html
+    - title: "语言参考手册"
+      description: "Scala 3 语言参考手册"
+      icon: "fa fa-book"
+      link: https://dotty.epfl.ch/docs/reference/overview.html
+
+scala2-sections:
 
   - title: "第一步..."
     links:

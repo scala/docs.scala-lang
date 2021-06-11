@@ -7,9 +7,10 @@ num: 1
 
 next-page: basics
 
-redirect_from: "/tutorials/tour/tour-of-scala.html"
-redirect_from: "/tutorials/tour/anonymous-function-syntax.html"
-redirect_from: "/tutorials/tour/explicitly-typed-self-references.html"
+redirect_from: 
+  - "/tutorials/tour/tour-of-scala.html"
+  - "/tutorials/tour/anonymous-function-syntax.html"
+  - "/tutorials/tour/explicitly-typed-self-references.html"
 ---
 
 ## Welcome to the tour

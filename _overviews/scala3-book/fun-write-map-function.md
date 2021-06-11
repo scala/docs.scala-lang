@@ -20,13 +20,13 @@ Given that statement, you start to write the method signature.
 First, you know that you want to accept a function as a parameter, and that function should transform an `Int` into some generic type `A`, so you write:
 
 ```scala
-def map(f: (Int) => A
+def map(f: (Int) => A)
 ```
 
 The syntax for using a generic type requires declaring that type symbol before the parameter list, so you add that:
 
 ```scala
-def map[A](f: (Int) => A
+def map[A](f: (Int) => A)
 ```
 
 Next, you know that `map` should also accept a `List[Int]`:

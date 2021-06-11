@@ -4,7 +4,7 @@ type: section
 description: This chapter lists all the new compiler options in Scala 3
 num: 23
 previous-page: options-lookup
-next-page: plugin-intro
+next-page: scaladoc-settings-compatibility
 ---
 
 The current page only contains the options that were added in Scala 3.0.x.

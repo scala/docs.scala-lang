@@ -94,7 +94,7 @@ While this is also possible purely with `inline`, implementing it with macros wi
 
 ```scala
 inline def power(inline x: Double, inline n: Int) =
-  ${ evalPower('x, 'n)  }
+  ${ powerCode('x, 'n)  }
 
 def powerCode(
   x: Expr[Double],
@@ -188,6 +188,8 @@ Varargs in Scala are represented with `Seq`, hence when we write a macro with a 
 It is possible to recover each individual argument (of type `Expr[T]`) using the `scala.quoted.Varargs` extractor.
 
 ```scala
+import scala.quoted.Varargs
+
 inline def sumNow(inline nums: Int*): Int =
   ${ sumCode('nums)  }
 
