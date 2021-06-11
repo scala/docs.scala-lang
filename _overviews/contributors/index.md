@@ -72,7 +72,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2 # Retrieve the content of the repository
-      - uses: olafurpg/setup-scala@v11 # Set up a jdk and sbt
+      - uses: olafurpg/setup-scala@v12 # Set up a jdk and sbt
       - name: unit tests # Custom action consisting of a shell command
         run: sbt +test
 ~~~
@@ -140,8 +140,8 @@ and [sbt-pgp](https://www.scala-sbt.org/sbt-pgp/) plugins to publish your artifa
 dependencies to your `project/plugins.sbt` file:
 
 ~~~ scala
-addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "2.4")
-addSbtPlugin("com.jsuereth" % "sbt-pgp" % "1.1.0")
+addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "3.9.7")
+addSbtPlugin("com.jsuereth" % "sbt-pgp" % "2.1.1")
 ~~~
 
 And make sure your build fulfills the [Sonatype requirements](https://central.sonatype.org/publish/requirements)
@@ -183,7 +183,7 @@ Last, we recommend using the [sbt-dynver](https://github.com/dwijnand/sbt-dynver
 of your releases. Add the following dependency to your `project/plugins.sbt` file:
 
 ~~~ scala
-addSbtPlugin("com.dwijnand" % "sbt-dynver" % "3.1.0")
+addSbtPlugin("com.dwijnand" % "sbt-dynver" % "4.1.1")
 ~~~
 
 And make sure your build does **not** define the `version` setting.
@@ -310,7 +310,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
 	  fetch-depth: 0 # fetch all tags, required for sbt-dynver
-      - uses: olafurpg/setup-scala@v11
+      - uses: olafurpg/setup-scala@v12
       - run: sbt ci-release
         env:
           PGP_PASSPHRASE: ${{ secrets.PGP_PASSPHRASE }}
@@ -339,7 +339,7 @@ If you have written a library, you probably want it to be usable from several Sc
 Define the versions you want to support in the `crossScalaVersions` setting, in your `build.sbt` file:
 
 ~~~ scala
-crossScalaVersions := Seq("2.13.6", "2.12.8")
+crossScalaVersions := Seq("2.13.6", "2.12.14")
 scalaVersion := crossScalaVersions.value.head
 ~~~
 
@@ -372,8 +372,8 @@ most other documentation generators, which are based on Ruby, Node.js or Python)
 To install Paradox and sbt-site, add the following lines to your `project/plugins.sbt` file:
 
 ~~~ scala
-addSbtPlugin("com.typesafe.sbt" % "sbt-site" % "1.3.2")
-addSbtPlugin("com.lightbend.paradox" % "sbt-paradox" % "0.4.4")
+addSbtPlugin("com.typesafe.sbt" % "sbt-site" % "1.4.1")
+addSbtPlugin("com.lightbend.paradox" % "sbt-paradox" % "0.9.2")
 ~~~
 
 And then add the following configuration to your `build.sbt` file:
@@ -560,7 +560,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: olafurpg/setup-scala@v11
+      - uses: olafurpg/setup-scala@v12
       - name: Generate site
         run: sbt makeSite
       - uses: JamesIves/github-pages-deploy-action@4.1.3
@@ -601,7 +601,7 @@ For instance, to use [scalafmt](https://scalameta.org/scalafmt/), add the follow
 file:
 
 ~~~ scala
-addSbtPlugin("com.geirsson" % "sbt-scalafmt" % "1.5.1")
+addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.4.2")
 ~~~
 
 In the `CONTRIBUTING.md` file, mention that you use that code formatter and encourage users to use the “format
@@ -636,7 +636,7 @@ break this versioning policy. Add the `sbt-mima-plugin` to your build with the f
 `project/plugins.sbt` file:
 
 ~~~ scala
-addSbtPlugin("com.typesafe" % "sbt-mima-plugin" % "0.3.0")
+addSbtPlugin("com.typesafe" % "sbt-mima-plugin" % "0.9.2")
 ~~~
 
 Configure it as follow, in `build.sbt`:
