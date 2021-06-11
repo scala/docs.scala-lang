@@ -46,62 +46,54 @@ use the correct sbt version.
 ## Setup Continuous Integration
 
 The first reason for setting up a continuous integration (CI) server is to systematically run tests on pull requests.
-Examples of CI servers that are free for open source projects are [Travis CI](https://travis-ci.org),
-[Drone](https://drone.io) or [AppVeyor](https://appveyor.com).
+Examples of CI servers that are free for open source projects are [GitHub Actions](https://github.com/features/actions),
+[Travis CI](https://travis-ci.com), [Drone](https://drone.io) or [AppVeyor](https://appveyor.com).
 
-Our example uses Travis CI. To enable Travis CI on your project, go to [travis-ci.org](https://travis-ci.org/),
-sign up using your GitHub account, and enable your project repository. Then, add a `.travis.yml` file to your
-repository with the following content:
+Our example uses Github Actions. This feature is enabled by default on GitHub repositories. You can verify if that is
+the case in the *Actions* section of the *Settings* tab of the repository.
+If *Disable all actions* is checked, then Actions are not enabled and you can activate them
+by selecting *Allow all actions*, *Allow local actions only* or *Allow select actions*.
 
-~~~ yaml
-language: scala
-~~~
+With Actions enabled, you can create a *workflow definition file*. A **workflow** is an automated procedure,
+composed of one or more jobs. A **job** is a set of sequential steps that are executed on the same runner.
+A **step** is an individual task that can run commands; a step can be either an *action* or a shell command.
+An **action** is the smallest building block of a workflow, it is possible to reuse community actions or to
+define new ones.
 
-Push your changes and check that Travis CI triggers a build for your repository.
-
-Travis CI tries to guess which build tool your project uses and executes a default command to run the project tests.
-For instance, if your repository contains a `build.sbt` file in the root directory, Travis CI executes the
-`sbt ++$TRAVIS_SCALA_VERSION test` command, where the `TRAVIS_SCALA_VERSION` variable is, by default, set to an
-arbitrary Scala version (`2.12.8`, at the time these lines are written), which could be inconsistent with the
-`scalaVersion` defined in your `build.sbt` file.
-
-To avoid this potential inconsistency, you want to use one Scala version definition as a single source of truth.
-For instance, the [sbt-travisci](https://github.com/dwijnand/sbt-travisci) plugin lets you define the Scala version
-in the `.travis.yml` file, and then forwards this version to your sbt build definition. Alternatively, you can
-override the default command run by Travis CI to use the Scala version defined by the `scalaVersion` settings of
-your build.
-
-The latter approach is the one used in this guide. Override the command run by Travis CI by adding the folliwng
-lines to your `.travis.yml` file:
+To create a workflow, create a *yaml* file in the directory `.github/workflows/` in the repository, for example
+`.github/workflows/ci.yml` with the following content:
 
 ~~~ yaml
+name: Continuous integration
+on: push
+
 jobs:
-  include:
-    - stage: test
-      script: sbt test
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2 # Retrieve the content of the repository
+      - uses: olafurpg/setup-scala@v12 # Set up a jdk and sbt
+      - name: unit tests # Custom action consisting of a shell command
+        run: sbt +test
 ~~~
 
-Travis CI will now execute the `sbt test` command, which uses the Scala version from the build definition.
+This workflow is called *Continuous integration* and it will run every time one
+or more commits are pushed to the repository. It contains only one job called
+*ci*, which will run on an Ubuntu runner and that is composed of three
+actions.  The action `setup-scala` installs the sbt launcher in the runner. Then
+the job runs `sbt +test`, which loads the sbt version specified in
+`project/build.properties`, and runs the project tests using the Scala version
+defined in the file `build.sbt`.
 
-Last, an important thing to setup is caching, to avoid the CI server to re-download your project dependencies each
-time it runs. For instance, in case you use sbt, you can instruct Travis CI to save the content of the `~/.ivy2/`
-and `~/.sbt/` directories across builds by adding the following lines to your `.travis.yml` file:
+The workflow above will run at any push to any branch of the repository. You
+can specify the branch or add more triggers such as pull requests, releases,
+tags or schedules. More information about workflow triggers is available
+[here](https://docs.github.com/en/actions/reference/events-that-trigger-workflows).
+while the `setup-scala` action is hosted [in this
+repository](https://github.com/olafurpg/setup-scala).
 
-~~~ yaml
-# These directories are cached at the end of the build
-cache:
-  directories:
-    - $HOME/.ivy2/cache
-    - $HOME/.sbt
-before_cache:
-  # Cleanup the cached directories to avoid unnecessary cache updates
-  - rm -fv $HOME/.ivy2/.sbt.ivy.lock
-  - find $HOME/.ivy2/cache -name "ivydata-*.properties" -print -delete
-  - find $HOME/.sbt        -name "*.lock"               -print -delete
-~~~
-
-For reference, here is our complete
-[.travis.yml example file](https://github.com/scalacenter/library-example/blob/master/.travis.yml).
+For reference, here is our complete [workflow example
+file](https://github.com/scalacenter/library-example/blob/master/.github/.workflows/ci.yml).
 
 ## Publish a Release
 
@@ -125,7 +117,7 @@ sign the binaries.
 ### Create a Sonatype Account and Project
 
 Follow the instructions given on the [OSSRH Guide](https://central.sonatype.org/pages/ossrh-guide.html#initial-setup)
-to create a new Sonatype account (unless you already have one) and to 
+to create a new Sonatype account (unless you already have one) and to
 [create a new project ticket](https://issues.sonatype.org/secure/CreateIssue.jspa?issuetype=21&pid=10134). This latter
 step is where you define the `groupId` that you will release to. You can use a domain name that you already own,
 otherwise a common practice is to use `io.github.(username)` (where `(username)` is replaced with your GitHub
@@ -143,13 +135,13 @@ This step has to be performed only once per person.
 
 ### Setup Your Project
 
-In case you use sbt, we recommend using the [sbt-sonatype](https://github.com/xerial/sbt-sonatype) 
+In case you use sbt, we recommend using the [sbt-sonatype](https://github.com/xerial/sbt-sonatype)
 and [sbt-pgp](https://www.scala-sbt.org/sbt-pgp/) plugins to publish your artifacts. Add the following
 dependencies to your `project/plugins.sbt` file:
 
 ~~~ scala
-addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "2.4")
-addSbtPlugin("com.jsuereth" % "sbt-pgp" % "1.1.0")
+addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "3.9.7")
+addSbtPlugin("com.jsuereth" % "sbt-pgp" % "2.1.1")
 ~~~
 
 And make sure your build fulfills the [Sonatype requirements](https://central.sonatype.org/publish/requirements)
@@ -171,7 +163,7 @@ import xerial.sbt.Sonatype._
 sonatypeProjectHosting := Some(GitHubHosting("scalacenter", "library-example", "julien.richard-foy@epfl.ch"))
 
 // publish to the sonatype repository
-publishTo := sonatypePublishTo.value
+publishTo := sonatypePublishToBundle.value
 ~~~
 
 Put your Sonatype credentials in a `$HOME/.sbt/1.0/sonatype.sbt` file:
@@ -191,7 +183,7 @@ Last, we recommend using the [sbt-dynver](https://github.com/dwijnand/sbt-dynver
 of your releases. Add the following dependency to your `project/plugins.sbt` file:
 
 ~~~ scala
-addSbtPlugin("com.dwijnand" % "sbt-dynver" % "3.1.0")
+addSbtPlugin("com.dwijnand" % "sbt-dynver" % "4.1.1")
 ~~~
 
 And make sure your build does **not** define the `version` setting.
@@ -201,7 +193,7 @@ And make sure your build does **not** define the `version` setting.
 With this setup, the process for cutting a release is the following.
 
 Create a Git tag whose name begins with a lowercase `v` followed by the version number:
- 
+
 ~~~ bash
 $ git tag v0.1.0
 ~~~
@@ -236,9 +228,8 @@ Continuous publication addresses these issues by delegating the publication proc
 follows: any contributor with write access to the repository can cut a release by pushing a Git tag, the CI server
 first checks that the tests pass and then runs the publication commands.
 
-The remaining sections show how to setup Travis CI for continuous publication on Sonatype. You can find instructions
-for other CI servers and repositories in the [sbt-release-early](https://github.com/scalacenter/sbt-release-early)
-plugin documentation.
+The remaining sections show how to setup GitHub Actions for continuous publication on Sonatype. You can find instructions
+for Travis CI in the [sbt-ci-release](https://github.com/olafurpg/sbt-ci-release) plugin documentation.
 
 ### Setup the CI Server
 
@@ -247,28 +238,14 @@ it is possible to securely give this information by using the secret management 
 
 #### Export Your Sonatype Account Credentials
 
-The `SONATYPE_USERNAME` and `SONATYPE_PASSWORD` environment variables are recognized by the `sbt-sonatype`
-plugin, as documented [here](https://github.com/xerial/sbt-sonatype#homesbtsbt-version-013-or-10sonatypesbt-1).
+Create two [GitHub Encrypted secrets](https://docs.github.com/en/actions/reference/encrypted-secrets)
+for your Sonatype account credentials: `SONATYPE_USERNAME` and `SONATYPE_PASSWORD`.
+To do so, go to the *Settings* tab of the repository and select *Secrets* on the left panel.
+You can then use the button *New repository secret* to open the secret creation menu where you will enter
+the name of the secret and its content.
 
-With Travis CI, you will have to install the [Travis CLI](https://github.com/travis-ci/travis.rb#installation).
-
-Then, run the following commands from your project root directory to add your Sonatype credentials as
-environment variables to your `.travis.yml` file in an encrypted form:
-
-~~~ bash
-$ travis encrypt SONATYPE_USERNAME="(Sonatype user name)" --add
-$ travis encrypt SONATYPE_PASSWORD="(Sonatype password)" --add
-~~~
-
-(Put your actual user name and password in place of `(Sonatype user name)` and `(Sonatype password)`)
-
-The `--add` option updates your `.travis.yml` file with entries like the following:
-
-~~~ yaml
-env:
-  global:
-    - secure: "dllL1w+pZT6yTBYwy5hX07t8r0JL5Cqer6YgYnXJ+q3OhSGUs7ul2fDUiqVxGIgUpTij1cGwBmoJOTbRk2V/be4+3Ua4ZNrAxjNF2ehqUcV5KdC3ufTTTXX0ZoL9MqEIb+GKzKtPqbzR4uly/5q5NbV7J1GeZRhummnx87POl6yH4kmXTpahig7vvnwN5dLanMshRb2Z8tO8kF4SnC31QuNBDQLnS89PEajHQu+LRAJloYvcikm+NeUj79m64CYg9JZdrHvZpIYKOMY1twT+lYoerqzG+asiNE1WrDs/We1RFVgcrKLpEThcvuIxuuPKhu24+0KteAX+7z/ulT0lndyBRfuuDjHV844LrNbjhnTB64V1uF7aEdaEZRLTsFQnFZqzpoqYqxzgfow9LN/kU5CMJX1R4wwf3YgR1VC9ZfjZnu0Pbt24g48I+72ZDNk3oRZoPsN9AtovwdZcg7TgU/iPcHNKSNhEZRP6ryhv/9aX3URLkfhnDaJmTXAnC3YCYt5cGo0FBUHARA+AHcas14Dx95bFSbH7EBivb2LiDmi44goRCWR4p+vNSBJ6Ak1NZz/+paai0pXDG6S/VdqwGSmmfjn7m9H3L5c8X5xNich9qtZbWz0fj2baZGq/doA8KE91JCzX11p/9fKNzbVivQZdsw3C3ZWDjkMZM+hl++0="
-~~~
+Repository Secrets allow us to safely store confidential information and to expose
+it to Actions workflows without the risk of committing them to git history.
 
 #### Export Your PGP Key Pair
 
@@ -285,72 +262,65 @@ uid                  Julien Richard-Foy <julien.richard-foy@epfl.ch>
 
 In my case, I have one key pair, whose ID is `BE614499`.
 
-Export your public and private keys into files, in a `ci` directory:
 
-~~~ bash
-$ mkdir ci
-$ gpg -a --export (key ID) > ci/pubring.asc
-$ gpg -a --export-secret-keys (key ID) > ci/secring.asc
-~~~
+Then:
 
+ 1. Create a new Secret containing the passphrase of your PGP key named `PGP_PASSPHRASE`.
+ 2. Create a new Secret containing the base64 encoded secret of your private key, which you can obtain
+ by running:
+```
+# macOS
+gpg --armor --export-secret-keys $LONG_ID | base64
+# Ubuntu (assuming GNU base64)
+gpg --armor --export-secret-keys $LONG_ID | base64 -w0
+# Arch
+gpg --armor --export-secret-keys $LONG_ID | base64 | sed -z 's;\n;;g'
+# FreeBSD (assuming BSD base64)
+gpg --armor --export-secret-keys $LONG_ID | base64
+# Windows
+gpg --armor --export-secret-keys %LONG_ID% | openssl base64
+```
+ 3. Publish your public key signature to a public server, for example [http://keyserver.ubuntu.com:11371](http://keyserver.ubuntu.com:11371/).
+ You can obtain the signature by running:
+```
+# macOS and linux
+gpg --armor --export $LONG_ID
+# Windows
+gpg --armor --export %LONG_ID%
+```
 (Replace `(key ID)` with **your** key ID)
 
-Add the `ci/pubring.asc` file (which contains your public key) to your repository. The `secring.asc` file
-(which contains your private key) should **not** be added as it is to the repository, so make sure it will
-be ignored by Git by adding it to the `.gitignore` file:
-
-~~~
-ci/secring.asc
-~~~
-
-Encrypt it with the `travis` tool:
-
-~~~ bash
-$ travis encrypt-file ci/secring.asc ci/secring.asc.enc --add
-~~~
-
-As advised in the command output, make sure to add the `secring.asc.enc` to the git repository.
-
-The `--add` option above adds a line like the following to your `.travis.yml` file:
-
-~~~ diff
-before_install:
-  - openssl aes-256-cbc -K $encrypted_602f530300eb_key -iv $encrypted_602f530300eb_iv -in ci/secring.asc.enc -out ci/secring.asc -d
-~~~
-
-Finally, add export your PGP passphrase to the `.travis.yml` file:
-
-~~~ 
-$ travis encrypt PGP_PASSPHRASE="(your passphrase)" --add
-~~~
-
-(Replace `(your passphrase)` with your actual passphrase)
 
 #### Publish From the CI Server
 
-On Travis CI, you can define a
-[conditional stage](https://docs.travis-ci.com/user/build-stages/#specifying-stage-order-and-conditions)
-publishing the library when a tag is pushed:
+On GitHub Actions, you can define a workflow to publish the library when a tag is pushed:
 
 ~~~ yaml
+# .github/workflows/publish.yml
+name: Continuous publication
+on:
+  push:
+    branches: ['**']
+    tags: [v*]
+
 jobs:
-  include:
-    - stage: test
-      script: sbt test
-    - stage: deploy
-      if: tag =~ ^v
-      script: sbt publishSigned sonatypeRelease
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+	  fetch-depth: 0 # fetch all tags, required for sbt-dynver
+      - uses: olafurpg/setup-scala@v12
+      - run: sbt ci-release
+        env:
+          PGP_PASSPHRASE: ${{ secrets.PGP_PASSPHRASE }}
+          PGP_SECRET: ${{ secrets.PGP_SECRET }}
+          SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
+          SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
 ~~~
 
-The last step is to tell your build definition how to retrieve the PGP passphrase from the `PGP_PASSPHRASE`
-environment variable and to use the `pubring.asc` and `secring.asc` files as the PGP key pair.
-Include the following settings in your `build.sbt` file:
-
-~~~ scala
-pgpPublicRing := file("ci/pubring.asc")
-pgpSecretRing := file("ci/secring.asc")
-pgpPassphrase := sys.env.get("PGP_PASSPHRASE").map(_.toArray)
-~~~
+The `env` statement exposes the secrets you defined earlier to the publication process through
+environment variables.
 
 ### Cut a Release
 
@@ -369,24 +339,12 @@ If you have written a library, you probably want it to be usable from several Sc
 Define the versions you want to support in the `crossScalaVersions` setting, in your `build.sbt` file:
 
 ~~~ scala
-crossScalaVersions := Seq("2.12.8", "2.11.12")
+crossScalaVersions := Seq("2.13.6", "2.12.14")
 scalaVersion := crossScalaVersions.value.head
 ~~~
 
 The second line makes sbt use by default the first Scala version of the `crossScalaVersions`.
-
-Modify the CI jobs to use all the Scala versions of your build definition by using the `+` prefix, 
-when appropriate:
-
-~~~ yaml
-jobs:
-  include:
-    - stage: test
-      script: sbt +test
-    - stage: deploy
-      if: tag =~ ^v
-      script: sbt +publishSigned sonatypeRelease
-~~~
+The CI job will use all the Scala versions of your build definition.
 
 ## Publish Online Documentation
 
@@ -414,8 +372,8 @@ most other documentation generators, which are based on Ruby, Node.js or Python)
 To install Paradox and sbt-site, add the following lines to your `project/plugins.sbt` file:
 
 ~~~ scala
-addSbtPlugin("com.typesafe.sbt" % "sbt-site" % "1.3.2")
-addSbtPlugin("com.lightbend.paradox" % "sbt-paradox" % "0.4.4")
+addSbtPlugin("com.typesafe.sbt" % "sbt-site" % "1.4.1")
+addSbtPlugin("com.lightbend.paradox" % "sbt-paradox" % "0.9.2")
 ~~~
 
 And then add the following configuration to your `build.sbt` file:
@@ -589,78 +547,28 @@ can browse it at [https://scalacenter.github.io/library-example/](https://scalac
 
 ### Continuous Publication
 
-You need to grant the CI job write access to the Git repository hosting the documentation. This can be achieved
-by creating an SSH key that the CI job can use to push the website to GitHub.
+You can extend `.github/workflows/publish.yml` to automatically publish documentation to GitHub pages.
+To do so, add another job:
 
-Create an SSH key:
+```yml
+# .github/workflows/publish.yml
+name: Continuous publication
 
-~~~ bash
-$ ssh-keygen -t rsa -b 4096 -C "sbt-site@travis" -f ci/travis-key
-~~~
-
-Make sure to **not** define a passphrase (just leave it empty and press enter), and to add the private
-key (the `ci/travis-key` file) to your `.gitignore`:
-
-~~~
-ci/secring.asc
-ci/travis-key
-~~~
-
-Add the public key, `ci/travis-key.pub`, in the Deploy Keys section of your GitHub project’s settings page:
-
-![](/resources/images/travis-publishing-key.png)
-
-Make sure you “allow write access” by checking the box.
-
-The private key has to be added to the repository, like we did with the PGP private key. Unfortunately, due
-to a limitation of Travis CI, you can not add several encrypted files. The
-[workaround](https://docs.travis-ci.com/user/encrypting-files/#encrypting-multiple-files) consists in
-creating an archive containing all the files to encrypt. In your case, you want to encrypt the PGP
-key and the SSH key into a single `ci/secrets.tar` file:
-
-~~~ bash
-$ tar cvf ci/secrets.tar ci/secring.asc ci/travis-key
-$ travis encrypt-file ci/secrets.tar ci/secrets.tar.enc --add
-~~~
-
-Make sure to add the `ci/secrets.tar` file to your `.gitignore`:
-
-~~~
-ci/secring.asc
-ci/travis-key
-ci/secrets.tar
-~~~
-
-Finally, update the `.travis.yml` file to unpack the archive and push the documentation website
-on releases:
-
-~~~ yaml
 jobs:
-  include:
-    - stage: test
-      # Run tests for all Scala versions
-      script: sbt +test
-      name: "Tests"
-      # Check that the documentation can be built
-    - script: sbt makeSite
-      name: "Documentation"
+  release: # The release job is not changed, you can find it above
+  publishSite:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: olafurpg/setup-scala@v12
+      - name: Generate site
+        run: sbt makeSite
+      - uses: JamesIves/github-pages-deploy-action@4.1.3
+        with:
+          branch: gh-pages
+          folder: target/site
 
-    - stage: deploy
-      if: tag =~ ^v
-      script:
-        # decrypt PGP secret key and GitHub SSH key
-        - openssl aes-256-cbc -K $encrypted_602f530300eb_key -iv $encrypted_602f530300eb_iv -in ci/secrets.tar.enc -out ci/secrets.tar -d
-        - tar xvf ci/secrets.tar
-        # load the key in the ssh-agent
-        - chmod 600 ci/travis-key
-        - eval "$(ssh-agent -s)"
-        - ssh-add ci/travis-key
-        # perform deployment
-        - sbt makeSite +publishSigned sonatypeRelease ghpagesPushSite
-~~~
-
-(Replace the `$encrypted_602f530300eb_key` and `$encrypted_602f530300eb_iv` variables with the ones produced by the
-`travis encrypt-file` command)
+```
 
 As usual, cut a release by pushing a Git tag. The CI server will run the tests, publish the binaries and update the
 online documentation.
@@ -693,20 +601,25 @@ For instance, to use [scalafmt](https://scalameta.org/scalafmt/), add the follow
 file:
 
 ~~~ scala
-addSbtPlugin("com.geirsson" % "sbt-scalafmt" % "1.5.1")
+addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.4.2")
 ~~~
 
 In the `CONTRIBUTING.md` file, mention that you use that code formatter and encourage users to use the “format
 on save” feature of their editor.
 
-In your `.travis.yml` file, add a first stage checking that the code has been properly formatted:
+In your `.github/workflows/ci.yml` file, add a step checking that the code has been properly formatted:
 
 ~~~ yaml
+# .github/workflows/ci.yml
+# The three periods `...` indicate the parts of file that do not change
+# from the snippets above and they are omitted for brevity
 jobs:
-  include:
-
-    - stage: style
-      script: sbt scalafmtCheck
+  ci:
+    # ...
+    steps:
+      # ...
+      - name: Code style
+        run: sbt scalafmtCheck
 ~~~
 
 ## Evolve
@@ -723,7 +636,7 @@ break this versioning policy. Add the `sbt-mima-plugin` to your build with the f
 `project/plugins.sbt` file:
 
 ~~~ scala
-addSbtPlugin("com.typesafe" % "sbt-mima-plugin" % "0.3.0")
+addSbtPlugin("com.typesafe" % "sbt-mima-plugin" % "0.9.2")
 ~~~
 
 Configure it as follow, in `build.sbt`:
@@ -732,11 +645,21 @@ Configure it as follow, in `build.sbt`:
 mimaPreviousArtifacts := previousStableVersion.value.map(organization.value %% name.value % _).toSet
 ~~~
 
-Last, add the following job to the “test” stage, in the `.travis.yml` file:
+Last, add the following step to the job `ci` of the `Continuous integration` workflow, in the `.github/workflows/ci.yml` file:
 
 ~~~ yaml
-  - script: sbt mimaReportBinaryIssues
-    name: "Binary compatibility"
+# .github/workflows/ci.yml
+# The three periods `...` indicate the parts of file that do not change
+# from the snippets above and they are omitted for brevity
+
+# ...
+jobs:
+  ci:
+    # ...
+    steps:
+      # ...
+      - name: Binary compatibility
+        run: sbt mimaReportBinaryIssues
 ~~~
 
 This will check that pull requests don’t make changes that are binary incompatible with the
