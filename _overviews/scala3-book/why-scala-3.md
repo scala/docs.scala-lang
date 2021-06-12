@@ -45,7 +45,7 @@ For instance, a `List` is defined as a class---technically it’s an abstract cl
 val x = List(1, 2, 3)
 ```
 
-However, what appears to the programmer to be a simple `List` is actually built from a combination of several specialized types, including an abstract class named `AbstractSeq`, traits like `LinearSeq` and `LinearSeq`, and more.
+However, what appears to the programmer to be a simple `List` is actually built from a combination of several specialized types, including an abstract class named `AbstractSeq`, traits like `LinearSeq` and `LinearSeqOps`, and more.
 Those types are similarly composed of other small, modular units of code.
 
 In addition to building a type like `List` from a series of modular traits, the `List` API also consists of dozens of other methods, many of which are higher-order functions:
