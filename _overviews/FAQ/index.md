@@ -188,7 +188,7 @@ differ from a function value such as:
 Note that in **Scala 3** most of the differences will go;
 for example, they will be able to
 [accept implicit parameters](https://dotty.epfl.ch/docs/reference/contextual/context-functions.html)
-as well as [type parameterts](https://dotty.epfl.ch/docs/reference/new-types/polymorphic-function-types.html).
+as well as [type parameters](https://dotty.epfl.ch/docs/reference/new-types/polymorphic-function-types.html).
 
 Nevertheless, it is still recommended to use methods most of the time,
 unless you absolutely need a function. And, thanks to
