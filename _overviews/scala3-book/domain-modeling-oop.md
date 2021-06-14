@@ -89,12 +89,11 @@ When designing software in Scala, it’s often helpful to only consider using cl
 NOTE: I think “leaves” may technically be the correct word to use, but I prefer “leafs.”
 {% endcomment %}
 
-```text
-traits               T1   T2           ...  T3
-composed traits      S extends T1, T2  ...  S extends T2, T3
-classes              C extends S, T3
-instances            new C
-```
+| Traits          | `T1`, `T2`, `T3`
+| Composed traits | `S extends T1, T2`, `S extends T2, T3`
+| Classes         | `C extends S, T3`
+| Instances       | `C()`
+
 This is even more the case in Scala 3, where traits now can also take parameters, further eliminating the need for classes.
 
 #### Defining Classes
@@ -147,7 +146,7 @@ class Counter:
   // can only be observed by the method `count`
   private var currentCount = 0
 
-  def tick() = currentCount += 1
+  def tick(): Unit = currentCount += 1
   def count: Int = currentCount
 ```
 Every instance of the class `Counter` has its own private state that can only be observed through the method `count`, as the following interaction illustrates:
@@ -198,7 +197,7 @@ There are a few things that need explanation.
 #### Abstract Type Members
 The declaration `type S <: Subject` says that within the trait `SubjectObserver` we can refer to some _unknown_ (that is, abstract) type that we call `S`.
 However, the type is not completely unknown: we know at least that it is _some subtype_ of the trait `Subject`.
-All traits and classes extending `SubjectObserer` are free to chose any type for `S` as long as the chosen type is a subtype of `Subject`.
+All traits and classes extending `SubjectObserer` are free to choose any type for `S` as long as the chosen type is a subtype of `Subject`.
 The `<: Subject` part of the declaration is also referred to as an _upper bound on `S`_.
 
 #### Nested Traits
@@ -210,12 +209,12 @@ The second trait, `Subject`, defines one private field `observers` to store all 
 Subscribing to a subject simply stores the object into this list.
 Again, the type of parameter `obs` is `O`, not `Observer`.
 
-#### Selftype Annotations
+#### Self-type Annotations
 Finally, you might have wondered what the `self: S =>` on trait `Subject` is supposed to mean.
-This is called a _selftype annotation_.
+This is called a _self-type annotation_.
 It requires subtypes of `Subject` to also be subtypes of `S`.
 This is necessary to be able to call `obs.notify` with `this` as an argument, since it requires a value of type `S`.
-If `S` was a _concrete_ type, the selftype annotation could be replaced by `trait Subject extends S`.
+If `S` was a _concrete_ type, the self-type annotation could be replaced by `trait Subject extends S`.
 
 ### Implementing the Component
 We can now implement the above component and define the abstract type members to be concrete types:

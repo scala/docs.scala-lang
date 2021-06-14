@@ -33,27 +33,9 @@ class Movie(var name: String, var director: String, var year: Int)
 ```
 
 These examples show that Scala has a very lightweight way to declare classes.
-The definition of the class `Person` roughly corresponds to the following, more explicit, version:
-
-```scala
-class Person:
-  // fields
-  var name: String = null
-  var vocation: String = null
-
-  // constructor
-  def this(_name: String, _vocation: String) =
-    // call to the super constructor
-    this()
-    // assigning the fields
-    name = _name
-    vocation = _vocation
-```
-
-This version defines the two fields `name` and `vocation`, together with a constructor that accepts values for those two fields and assigns them.
 
 All of the parameters of our example classes are defined as `var` fields, which means they are mutable: you can read them, and also modify them.
-If you want them to be immutable---read only---create them as `val` fields instead.
+If you want them to be immutable---read only---create them as `val` fields instead, or use a case class.
 
 Prior to Scala 3, you used the `new` keyword to create a new instance of a class:
 
