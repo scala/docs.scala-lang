@@ -34,7 +34,7 @@ The following methods work on all of the sequence types, including `List`, `Vect
 ## Examples of common methods
 
 To give you an overview of what you’ll see in the following sections, these examples show some of the most commonly used collections methods.
-First, here are some methods don’t use lambdas:
+First, here are some methods that don’t use lambdas:
 
 ```scala
 val a = List(10, 20, 30, 40, 10)      // List(10, 20, 30, 40, 10)
@@ -103,7 +103,7 @@ a.map(double(_))
 a.map(double)
 ```
 
-In the last example, when an anonymous function consists of one statement that takes a single argument, you don’t have to name the argument, so even `-` isn’t required.
+In the last example, when an anonymous function consists of one function call that takes a single argument, you don’t have to name the argument, so even `_` isn’t required.
 
 Finally, you can combine HOFs as desired to solve problems:
 
@@ -217,10 +217,10 @@ david
 ## `head`
 
 The `head` method comes from Lisp and other earlier functional programming languages.
-It’s used to print the first element (the head element) of a list:
+It’s used to access the first element (the head element) of a list:
 
 ```scala
-oneToTen.head   // Int = 1
+oneToTen.head   // 1
 names.head      // adam
 ```
 
@@ -228,8 +228,8 @@ Because a `String` can be seen as a sequence of characters, you can also treat i
 This is how `head` works on these strings:
 
 ```scala
-"foo".head   // Char = 'f'
-"bar".head   // Char = 'b'
+"foo".head   // 'f'
+"bar".head   // 'b'
 ```
 
 `head` is a great method to work with, but as a word of caution it can also throw an exception when called on an empty collection:
@@ -242,7 +242,7 @@ emptyList.head                // java.util.NoSuchElementException: head of empty
 Because of this you may want to use `headOption` instead of `head`, especially when programming in a functional style:
 
 ```scala
-emptyList.headOption          // Option[Int] = None
+emptyList.headOption          // None
 ```
 
 As shown, it doesn’t throw an exception, it simply returns the type `Option` that has the value `None`.
@@ -256,7 +256,7 @@ The `tail` method also comes from Lisp, and it’s used to print every element i
 A few examples demonstrate this:
 
 ```scala
-oneToTen.head   // Int = 1
+oneToTen.head   // 1
 oneToTen.tail   // List(2, 3, 4, 5, 6, 7, 8, 9, 10)
 
 names.head      // adam

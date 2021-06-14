@@ -106,7 +106,7 @@ makeInt(x) match
   case None => println("That didn’t work.")
 ```
 
-In this example, if `x` can be converted to an `Int`, the first `case` statement is executed; if `x` can’t be converted to an `Int`, the second `case` statement is executed.
+In this example, if `x` can be converted to an `Int`, the expression on the right-hand side of the first `case` clause is evaluated; if `x` can’t be converted to an `Int`, the expression on the right-hand side of the second `case` clause is evaluated.
 
 
 
@@ -240,19 +240,20 @@ makeInt(x) match
 Getting back to `null` values, a place where a `null` value can silently creep into your code is with a class like this:
 
 ```scala
-class Address:
+class Address(
   var street1: String,
   var street2: String,
-  var city: String, 
-  var state: String, 
+  var city: String,
+  var state: String,
   var zip: String
+)
 ```
 
 While every address on Earth has a `street1` value, the `street2` value is optional.
 As a result, the `street2` field can be assigned a `null` value:
 
 ```scala
-val santa = new Address(
+val santa = Address(
   "1 Main Street",
   null,               // <-- D’oh! A null value!
   "North Pole",
@@ -265,18 +266,19 @@ Historically, developers have used blank strings and null values in this situati
 In Scala---and other modern languages---the correct solution is to declare up front that `street2` is optional:
 
 ```scala
-class Address:
+class Address(
   var street1: String,
   var street2: Option[String],   // an optional value
   var city: String, 
   var state: String, 
   var zip: String
+)
 ```
 
 Now developers can write more accurate code like this:
 
 ```scala
-val santa = new Address(
+val santa = Address(
   "1 Main Street",
   None,           // 'street2' has no value
   "North Pole",
@@ -288,7 +290,7 @@ val santa = new Address(
 or this:
 
 ```scala
-val santa = new Address(
+val santa = Address(
   "123 Main Street",
   Some("Apt. 2B"),
   "Talkeetna",

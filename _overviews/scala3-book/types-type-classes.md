@@ -23,7 +23,7 @@ In Scala 3, _type classes_ are just _traits_ with one or more type parameters, l
 trait Show[A]:
   def show(a: A): String
 ```
-Instances of `Show` for a particular type `A` witness that `A` we can show an instance of type `A`.
+Instances of `Show` for a particular type `A` witness that we can show (i.e., produce a text representation of) an instance of type `A`.
 For example, let’s look at the following `Show` instance for `Int` values:
 
 ```scala
@@ -43,7 +43,7 @@ toHtml(42)(ShowInt())
 // results in "<p>The number is 42!</p>"
 ```
 
-#### Automatically passing Type Class Instances
+#### Automatically passing type class instances
 Since type classes are a very important way to structure software, Scala 3 offers additional features that make working with them very convenient.
 We discuss these additional features (which fall into the category of *Contextual Abstractions*) in a [later chapter][typeclasses-chapter] of this book.
 

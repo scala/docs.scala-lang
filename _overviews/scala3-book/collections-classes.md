@@ -28,9 +28,9 @@ When you need more flexibility, see these pages at the end of this section for m
 
 Looking at Scala collections from a high level, there are three main categories to choose from:
 
-- **Sequences** are a linear collection of elements and may be _indexed_ (like an array) or _linear_ (like a linked list)
+- **Sequences** are a sequential collection of elements and may be _indexed_ (like an array) or _linear_ (like a linked list)
 - **Maps** contain a collection of key/value pairs, like a Java `Map`, Python dictionary, or Ruby `Hash`
-- **Sets** are an unordered sequence of unique elements
+- **Sets** are an unordered collection of unique elements
 
 All of those are basic types, and have subtypes for specific purposes, such as concurrency, caching, and streaming.
 In addition to those three main categories, there are other useful collection types, including ranges, stacks, and queues.
@@ -74,7 +74,7 @@ The main collections you’ll use on a regular basis are:
 | `LazyList`    | &#10003;         |         | A lazy immutable linked list, its elements are computed only when they’re needed; Good for large or infinite sequences. |
 | `ArrayBuffer` |           | &#10003;       | The go-to type for a mutable, indexed sequence |
 | `ListBuffer` |           | &#10003;        | Used when you want a mutable `List`; typically converted to a `List` |
-| `Map`         | &#10003;         | &#10003;       | An iterable sequence that consists of pairs of keys and values. |
+| `Map`         | &#10003;         | &#10003;       | An iterable collection that consists of pairs of keys and values. |
 | `Set`         | &#10003;         | &#10003;       | An iterable collection with no duplicate elements |
 
 As shown, `Map` and `Set` come in both immutable and mutable versions.
@@ -109,7 +109,7 @@ For example, if you need an immutable, indexed collection, in general you should
 Conversely, if you need a mutable, indexed collection, use an `ArrayBuffer`.
 
 > `List` and `Vector` are often used when writing code in a functional style.
-> `ArrayBuffer` is commonly used when writing code in a mutable style.
+> `ArrayBuffer` is commonly used when writing code in an imperative style.
 > `ListBuffer` is used when you’re mixing styles, such as building a list.
 
 The next several sections briefly demonstrate the `List`, `Vector`, and `ArrayBuffer` types.
@@ -291,7 +291,7 @@ val nums = Vector(1, 2, 3, 4, 5)
 
 val strings = Vector("one", "two")
 
-case class Person(val name: String)
+case class Person(name: String)
 val people = Vector(
   Person("Bert"),
   Person("Ernie"),
@@ -383,10 +383,9 @@ Or if you prefer methods with textual names you can also use `append`, `appendAl
 Here are some examples of `+=` and `++=`:
 
 ```scala
-var nums = ArrayBuffer(1, 2, 3)   // ArrayBuffer(1, 2, 3)
+val nums = ArrayBuffer(1, 2, 3)   // ArrayBuffer(1, 2, 3)
 nums += 4                         // ArrayBuffer(1, 2, 3, 4)
-nums += (5, 6)                    // ArrayBuffer(1, 2, 3, 4, 5, 6)
-nums ++= List(7, 8)               // ArrayBuffer(1, 2, 3, 4, 5, 6, 7, 8)
+nums ++= List(5, 6)               // ArrayBuffer(1, 2, 3, 4, 5, 6)
 ```
 
 ### Removing elements from an ArrayBuffer
@@ -415,7 +414,7 @@ a.update(0, 10)                       // ArrayBuffer(10, 2, 50, 4)
 
 ## Maps
 
-A `Map` is an iterable sequence that consists of pairs of keys and values.
+A `Map` is an iterable collection that consists of pairs of keys and values.
 Scala has both mutable and immutable `Map` types, and this section demonstrates how to use the _immutable_ `Map`.
 
 ### Creating an immutable Map
@@ -433,13 +432,13 @@ val states = Map(
 Once you have a `Map` you can traverse its elements in a `for` loop like this:
 
 ```scala
-for ((k,v) <- states) println(s"key: $k, value: $v")
+for (k, v) <- states do println(s"key: $k, value: $v")
 ```
 
 The REPL shows how this works:
 
 ````
-scala> for ((k,v) <- states) println(s"key: $k, value: $v")
+scala> for (k, v) <- states do println(s"key: $k, value: $v")
 key: AK, value: Alaska
 key: AL, value: Alabama
 key: AZ, value: Arizona
@@ -463,7 +462,7 @@ Add elements to an immutable map using `+` and `++`, remembering to assign the r
 ```scala
 val a = Map(1 -> "one")    // a: Map(1 -> one)
 val b = a + (2 -> "two")   // b: Map(1 -> one, 2 -> two)
-val c = b + (
+val c = b ++ Seq(
   3 -> "three",
   4 -> "four"
 )
@@ -482,13 +481,13 @@ val a = Map(
   4 -> "four"
 )
 
-a - 4         // Map(1 -> one, 2 -> two, 3 -> three)
-a - 4 - 3     // Map(1 -> one, 2 -> two)
+val b = a - 4       // b: Map(1 -> one, 2 -> two, 3 -> three)
+val c = a - 4 - 3   // c: Map(1 -> one, 2 -> two)
 ```
 
 ### Updating Map elements
 
-To update elements in an immutable map, use the `updated` method while assigning the result to a new variable:
+To update elements in an immutable map, use the `updated` method (or the `+` operator) while assigning the result to a new variable:
 
 ```scala
 val a = Map(
@@ -497,7 +496,8 @@ val a = Map(
   3 -> "three"
 )
 
-val b = a.updated(3, "THREE!")   // Map(1 -> one, 2 -> two, 3 -> THREE!)
+val b = a.updated(3, "THREE!")   // b: Map(1 -> one, 2 -> two, 3 -> THREE!)
+val c = a + (2 -> "TWO...")      // c: Map(1 -> one, 2 -> TWO..., 3 -> three)
 ```
 
 ### Traversing a Map
@@ -511,7 +511,7 @@ val states = Map(
   "AZ" -> "Arizona"
 )
 
-for ((k,v) <- states) println(s"key: $k, value: $v")
+for (k, v) <- states do println(s"key: $k, value: $v")
 ```
 
 That being said, there are _many_ ways to work with the keys and values in a map.
@@ -557,6 +557,8 @@ val c = b ++ Seq(4, 1, 5, 5)     // HashSet(5, 1, 2, 3, 4)
 ```
 
 Notice that when you attempt to add duplicate elements, they’re quietly dropped.
+
+Also notice that the order of iteration of the elements is arbitrary.
 
 
 ### Deleting elements from a Set

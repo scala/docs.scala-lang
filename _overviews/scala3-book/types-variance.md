@@ -22,11 +22,11 @@ Let us also assume the following parameterized types:
 trait Pipeline[T]:
   def process(t: T): T
 
-// an example of an covariant type
+// an example of a covariant type
 trait Producer[+T]:
   def make: T
 
-// an example of an contravariant type
+// an example of a contravariant type
 trait Consumer[-T]:
   def take(t: T): Unit
 ```
@@ -73,7 +73,7 @@ In contrast to `Pipeline`, which is invariant, the type `Producer` is marked as 
 This is valid, since the type parameter is only used in a _return position_.
 
 Marking it as covariant means that we can pass (or return) a `Producer[Book]` where a `Producer[Buyable]` is expected.
-And in fact, this is sound: The type of `Producer[Buyable].make` only promises to _return_ a `Buyable`.
+And in fact, this is sound. The type of `Producer[Buyable].make` only promises to _return_ a `Buyable`.
 As a caller of `make`, we will be happy to also accept a `Book`, which is a subtype of `Buyable`---that is, it is _at least_ a `Buyable`.
 
 This is illustrated by the following example, where the function `makeTwo` expects a `Producer[Buyable]`:
@@ -108,12 +108,12 @@ They have an additional ISBN method in our example, but you are free to ignore t
 In contrast to the type `Producer`, which is marked as covariant, the type `Consumer` is marked as **contravariant** by prefixing the type parameter with a `-`.
 This is valid, since the type parameter is only used in an _argument position_.
 
-Marking it as contravariant means that we can pass (or return) a `Producer[Item]` where a `Producer[Buyable]` is expected.
-That is, we have the subtyping relationship `Producer[Item] <: Producer[Buyable]`.
-Remember, for type `Consumer`, it was the other way around, and we had `Consumer[Buyable] <: Consumer[Item]`.
+Marking it as contravariant means that we can pass (or return) a `Consumer[Item]` where a `Consumer[Buyable]` is expected.
+That is, we have the subtyping relationship `Consumer[Item] <: Consumer[Buyable]`.
+Remember, for type `Producer`, it was the other way around, and we had `Producer[Buyable] <: Producer[Item]`.
 
-And in fact, this is sound: The type of `Producer[Buyable].make` only promises us to _return_ a `Buyable`.
-As a caller of `make`, we will be happy to also accept a `Book`, which is a subtype of `Buyable`---that is, it is _at least_ a `Buyable`.
+And in fact, this is sound. The method `Consumer[Item].take` accepts an `Item`.
+As a caller of `take`, we can also supply a `Buyable`, which will be happily accepted by the `Consumer[Item]` since `Buyable` is a subtype of `Item`---that is, it is _at least_ an `Item`.
 
 
 #### Contravariant Types for Consumers

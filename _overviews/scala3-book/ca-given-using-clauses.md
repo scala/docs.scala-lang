@@ -47,7 +47,7 @@ The Scala compiler thus performs **term inference**.
 In our call to `renderWidget(List("cart"))` the Scala compiler will see that there is a term of type `Config` in scope (the `c`) and automatically provide it to `renderWidget`.
 So the program is equivalent to the one above.
 
-In fact, since we do not need to refer to `c` in our implementation of `renderWebsite` anymore, we can even omit it in the signature:
+In fact, since we do not need to refer to `c` in our implementation of `renderWebsite` anymore, we can even omit its name in the signature:
 
 ```scala
 //        no need to come up with a parameter name
