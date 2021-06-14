@@ -60,15 +60,13 @@ nums.map(_.toUpperCase)               // List("ONE", "TWO")
 nums.flatMap(_.toUpperCase)           // List('O', 'N', 'E', 'T', 'W', 'O')
 ```
 
-These examples show how the “fold” and “reduce” methods are used to sum the values in a sequence of integers:
+These examples show how the “foldLeft” and “reduceLeft” methods are used to sum the values in a sequence of integers:
 
 ```scala
 val firstTen = (1 to 10).toList            // List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 
-firstTen.reduce(_ + _)                     // 55
 firstTen.reduceLeft(_ + _)                 // 55
-firstTen.fold(100)(_ + _)                  // 155 (100 is a “seed” value)
-firstTen.foldLeft(100)(_ + _)              // 155
+firstTen.foldLeft(100)(_ + _)              // 155 (100 is a “seed” value)
 ```
 
 There are many more methods available to Scala collections classes, and they’re demonstrated in the [Collections chapter][collections], and in the [API Documentation][api].
@@ -93,9 +91,9 @@ val t = (11, "eleven", Person("Eleven"))
 Once you have a tuple, you can access its values by binding them to variables, or access them by number:
 
 ```scala
-t._1   // 11
-t._2   // "eleven"
-t._3   // Person("Eleven")
+t(0)   // 11
+t(1)   // "eleven"
+t(2)   // Person("Eleven")
 ```
 
 You can also use this _extractor_ approach to assign the tuple fields to variable names:

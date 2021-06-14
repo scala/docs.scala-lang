@@ -81,7 +81,7 @@ c.stopRunning()         // "No need to stop"
 ```
 
 If that code makes sense---great, you’re comfortable with traits as interfaces.
-If not, don’t worry, they’re explained in more detail in the [Data Modeling][data-1] chapter.
+If not, don’t worry, they’re explained in more detail in the [Domain Modeling][data-1] chapter.
 
 
 ### Classes
@@ -106,7 +106,7 @@ Notice that the class declaration creates a constructor:
 val p = Person("John", "Stephens")
 ```
 
-Constructors and other class-related topics are covered in the [Data Modeling][data-1] chapter.
+Constructors and other class-related topics are covered in the [Domain Modeling][data-1] chapter.
 
 
 ## FP Domain Modeling
@@ -170,7 +170,7 @@ enum Nat:
   case Succ(pred: Nat)
 ```
 
-Enums are covered in detail in the [Data Modeling][data-1] section of this book, and in the [Reference documentation]({{ site.scala3ref }}/enums/enums.html).
+Enums are covered in detail in the [Domain Modeling][data-1] section of this book, and in the [Reference documentation]({{ site.scala3ref }}/enums/enums.html).
 
 
 ### Case classes
@@ -183,7 +183,7 @@ When the compiler sees the `case` keyword in front of a `class` it has these eff
 - An `unapply` method is generated, which lets you use case classes in more ways in `match` expressions.
 - A `copy` method is generated in the class.
   This provides a way to create updated copies of the object without changing the original object.
-- `equals` and `hashCode` methods are generated.
+- `equals` and `hashCode` methods are generated to implement structural equality.
 - A default `toString` method is generated, which is helpful for debugging.
 
 
@@ -206,7 +206,7 @@ case class Person(
 val p = Person("Reginald Kenneth Dwight", "Singer")
 
 // a good default toString method
-p                // Person = Person(Reginald Kenneth Dwight,Singer)
+p                // : Person = Person(Reginald Kenneth Dwight,Singer)
 
 // can access its fields, which are immutable
 p.name           // "Reginald Kenneth Dwight"
@@ -215,10 +215,10 @@ p.name = "Joe"   // error: can’t reassign a val field
 // when you need to make a change, use the `copy` method
 // to “update as you copy”
 val p2 = p.copy(name = "Elton John")
-p2               // Person = Person(Elton John,Singer)
+p2               // : Person = Person(Elton John,Singer)
 ```
 
-See the [Data Modeling][data-1] sections for many more details on `case` classes.
+See the [Domain Modeling][data-1] sections for many more details on `case` classes.
 
 
 

@@ -30,8 +30,8 @@ Looking at Scala from the proverbial “30,000 foot view,” you can make the fo
 - It has a concise, readable syntax
 - It’s statically-typed (but feels dynamic)
 - It has an expressive type system
-- It’s a pure functional programming (FP) language
-- It’s a pure object-oriented programming (OOP) language
+- It’s a functional programming (FP) language
+- It’s an object-oriented programming (OOP) language
 - It supports the fusion of FP and OOP
 - Contextual abstractions provide a clear way to implement _term inference_
 - It runs on the JVM (and in the browser)
@@ -63,7 +63,7 @@ val newNumbers = double(oldNumbers)
 ```
 
 That code instructs the compiler what to do on a step-by-step basis.
-Instead, we write high-level, functional code using higher-order functions and lambdas like this to achieve the same effect:
+Instead, we write high-level, functional code using higher-order functions and lambdas like this to compute the same result:
 
 ```scala
 val newNumbers = oldNumbers.map(_ * 2)
@@ -92,7 +92,7 @@ nums.filter(i => i > 1)
 nums.filter(_ > 1)
 ```
 
-And traits, classes, and methods are defined with a clean, light syntax:
+Traits, classes, and methods are defined with a clean, light syntax:
 
 ```scala
 trait Animal:
@@ -128,15 +128,13 @@ As Heather Miller states, Scala is considered to be a [strong, statically-typed 
 
 - Correctness: you catch most errors at compile-time
 - Great IDE support
-    - Code completion
+    - Reliable code completion
     - Catching errors at compile-time means catching mistakes as you type
     - Easy and reliable refactoring
-    - Reliable code completion
 - You can refactor your code with confidence
 - Method type declarations tell readers what the method does, and help serve as documentation
-- Types make your code easier to maintain
-- Scalability: types help ensure correctness across arbitrarily large applications and development teams
-- Strong typing in combination with excellent inference enables mechanisms like [contextual abstraction]({{ site.scala3ref }}/contextual/motivation.html) that allows you to omit boilerplate code. Often, this boilerplate code can be inferred by the compiler, based on type definitions and a given context (e.g. method arguments for implicit parameters).
+- Scalability and maintainability: types help ensure correctness across arbitrarily large applications and development teams
+- Strong typing in combination with excellent inference enables mechanisms like [contextual abstraction]({{ site.scala3ref }}/contextual/motivation.html) that allows you to omit boilerplate code. Often, this boilerplate code can be inferred by the compiler, based on type definitions and a given context.
 
 {% comment %}
 In that list:
@@ -156,11 +154,11 @@ In that list:
 
 - i removed these items until we can replace them:
 * [Compound types](/tour/compound-types.html)
-* [Implicit parameters](/tour/implicit-parameters.html) and [conversions](/tour/implicit-conversions.html)
+* [conversions](/tour/implicit-conversions.html)
 * [Explicitly typed self references](/tour/self-types.html)
 {% endcomment %}
 
-Scala’s expressive type system enforces, at compile-time, that abstractions are used in a safe and coherent manner.
+Scala’s type system enforces, at compile-time, that abstractions are used in a safe and coherent manner.
 In particular, the type system supports:
 
 - [Type inference](/tour/type-inference.html)
@@ -187,11 +185,11 @@ In particular, the type system supports:
 In combination, these features provide a powerful basis for the safe reuse of programming abstractions and for the type-safe extension of software.
 
 
-### A pure FP language
+### A functional programming language
 
 Scala is a functional programming (FP) language, meaning:
 
-- Functions are variables, and can be passed around like any other variable
+- Functions are values, and can be passed around like any other value
 - Higher-order functions are directly supported
 - Lambdas are built in
 - Everything in Scala is an expression that returns a value
@@ -200,10 +198,10 @@ Scala is a functional programming (FP) language, meaning:
 - Those collection classes come with dozens of functional methods: they don’t mutate the collection, but instead return an updated copy of the data
 
 
-### A pure OOP language
+### An object-oriented language
 
-Scala is a _pure_ object-oriented programming (OOP) language.
-Every variable is an object and every “operator” is a method.
+Scala is an object-oriented programming (OOP) language.
+Every value is an instance of a class and every “operator” is a method.
 
 In Scala, all types inherit from a top-level class `Any`, whose immediate children are `AnyVal` (_value types_, such as `Int` and `Boolean`) and `AnyRef` (_reference types_, as in Java).
 This means that the Java distinction between primitive types and boxed types (e.g. `int` vs. `Integer`) isn’t present in Scala.
@@ -236,9 +234,9 @@ Following Haskell, Scala was the second popular language to have some form of _i
 In Scala 3 these concepts have been completely re-thought and more clearly implemented.
 
 The core idea is _term inference_: Given a type, the compiler synthesizes a “canonical” term that has that type.
-In Scala, an implicit parameter directly leads to an inferred argument term that could also be written down explicitly.
+In Scala, a context parameter directly leads to an inferred argument term that could also be written down explicitly.
 
-Use cases for this concept include implementing type classes, establishing context, dependency injection, expressing capabilities, computing new types, and proving relationships between them.
+Use cases for this concept include implementing [type classes]({% link _overviews/scala3-book/ca-type-classes.md %}), establishing context, dependency injection, expressing capabilities, computing new types, and proving relationships between them.
 
 Scala 3 makes this process more clear than ever before.
 Read about contextual abstractions in the [Reference documentation]({{ site.scala3ref }}/contextual/motivation.html).
@@ -442,7 +440,7 @@ Serialization:
 
 - [ScalaPB](https://github.com/scalapb/ScalaPB)
 
-Science and data analysis:
+### Science and data analysis:
 
 - [Algebird](https://github.com/twitter/algebird)
 - [Spire](https://github.com/typelevel/spire)
@@ -461,7 +459,7 @@ Science and data analysis:
 - [TensorFlow Scala](https://github.com/eaplatanios/tensorflow_scala)
 
 
-### FP &amp; FRP
+### Functional Programming &amp; Functional Reactive Programming
 
 FP:
 
