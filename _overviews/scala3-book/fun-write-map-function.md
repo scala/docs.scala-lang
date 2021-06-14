@@ -66,7 +66,7 @@ As a bonus, notice that the `for` expression doesn’t do anything that depends 
 Therefore, you can replace `Int` in the type signature with the generic type parameter `B`:
 
 ```scala
-def map[A,B](f: (B) => A, xs: List[B]): List[A] =
+def map[A, B](f: (B) => A, xs: List[B]): List[A] =
   for x <- xs yield f(x)
 ```
 
@@ -76,7 +76,7 @@ These examples demonstrate that `map` works as desired:
 
 ```scala
 def double(i : Int) = i * 2
-map(double, List(1, 2, 3))            // List(2,4,6)
+map(double, List(1, 2, 3))            // List(2, 4, 6)
 
 def strlen(s: String) = s.length
 map(strlen, List("a", "bb", "ccc"))   // List(1, 2, 3)

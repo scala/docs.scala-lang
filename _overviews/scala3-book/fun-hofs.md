@@ -37,7 +37,7 @@ As a beneficial side effect of this discussion, once you’re comfortable with t
 
 To understand how higher-order functions work, it helps to dig into an example.
 For instance, you can understand the type of functions `filter` accepts by looking at its Scaladoc.
-Here’s the `filter` definition in the `List` class:
+Here’s the `filter` definition in the `List[A]` class:
 
 ```scala
 def filter(p: (A) => Boolean): List[A]
@@ -102,7 +102,7 @@ Here’s how this works:
   It’s just like naming a `String` parameter `s` or an `Int` parameter `i`.
 - The type signature of `f` specifies the *type* of the functions this method will accept.
 - The `()` portion of `f`’s signature (on the left side of the `=>` symbol) states that `f` takes no input parameters.
-- The `Unit` portion of the signature (on the right side of the `=>` symbol) indicates that `f` should return nothing.
+- The `Unit` portion of the signature (on the right side of the `=>` symbol) indicates that `f` should not return a meaningful result.
 - Looking back at the body of the `sayHello` method (on the right side of the `=` symbol), the `f()` statement there invokes the function that’s passed in.
 
 Now that we’ve defined `sayHello`, let’s create a function to match `f`’s signature so we can test it.
@@ -148,7 +148,7 @@ The only thing to do now is see a few more examples of how to define different t
 In this method:
 
 ```scala
-def sayHello(f: () => Unit)
+def sayHello(f: () => Unit): Unit
 ```
 
 We noted that the type signature for `f` is:
@@ -157,7 +157,7 @@ We noted that the type signature for `f` is:
 () => Unit
 ```
 
-We know that this means, “a function that takes no input parameters and returns nothing (given by `Unit`).”
+We know that this means, “a function that takes no input parameters and returns nothing meaningful (given by `Unit`).”
 
 To demonstrate more type signature examples, here’s a function that takes a `String` parameter and returns an `Int`:
 
@@ -255,40 +255,40 @@ executeAndPrint(multiply, 3, 9)   // prints 27
 
 ## Function type signature consistency
 
-A great thing about learning about Scala’s function type signatures is that the syntax you use to define function input parameters is the same syntax you use to write anonymous functions and function variables.
+A great thing about learning about Scala’s function type signatures is that the syntax you use to define function input parameters is the same syntax you use to write function literals.
 
-For instance, if you were to write an anonymous function that calculates the sum of two integers, you’d write it like this:
+For instance, if you were to write a function that calculates the sum of two integers, you’d write it like this:
 
 ```scala
-(Int, Int) => Int = (a, b) => a + b
+val f: (Int, Int) => Int = (a, b) => a + b
 ```
 
 That code consists of the type signature:
 
 ````
-(Int, Int) => Int = (a, b) => a + b
------------------
+val f: (Int, Int) => Int = (a, b) => a + b
+       -----------------
 ````
 
 The input parameters:
 
 ````
-(Int, Int) => Int = (a, b) => a + b
-                    ------
+val f: (Int, Int) => Int = (a, b) => a + b
+                           ------
 ````
 
 and the body of the function:
 
 ````
-(Int, Int) => Int = (a, b) => a + b
-                              -----
+val f: (Int, Int) => Int = (a, b) => a + b
+                                     -----
 ````
 
-Scala’s consistency is shown here, where this anonymous function type signature:
+Scala’s consistency is shown here, where this function type:
 
 ````
-(Int, Int) => Int = (a, b) => a + b
------------------
+val f: (Int, Int) => Int = (a, b) => a + b
+       -----------------
 ````
 
 is the same as the type signature you use to define a function input parameter:

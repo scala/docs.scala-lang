@@ -33,25 +33,32 @@ package com.acme.myapp.model
 class Person ...
 ```
 
-By convention, package names should be all lower case, and the formal naming convention is *<top-level-domain>.<domain-name>.<project-name>.<module-name>*.
+By convention, package names should be all lower case, and the formal naming convention is *\<top-level-domain>.\<domain-name>.\<project-name>.\<module-name>*.
 
 Although it’s not required, package names typically follow directory structure names, so if you follow this convention, a `Person` class in this project will be found in a *MyApp/src/main/scala/com/acme/myapp/model/Person.scala* file.
 
 
-### Curly brace packaging style
+### Using multiple packages in the same file
 
-The other way to declare packages in Scala is by using the curly brace namespace notation used in languages like C, C++, and C#:
+The syntax shown above applies to the entire source file: all the definitions in the file
+`Person.scala` belong to package `com.acme.myapp.model`, according to the package clause
+at the beginning of the file.
+
+Alternatively, it is possible to write package clauses that apply only to the definitions
+they contain: 
 
 ```scala
-package users {
-  package administrators {
-    class AdminUser
-  }
-  package normalusers {
-    class NormalUser
-  }
-}
+package users:
+
+  package administrators:  // the full name of this package is users.administrators
+    class AdminUser        // the full name of this class is users.administrators.AdminUser
+
+  package normalusers:     // the full name of this package is users.normalusers
+    class NormalUser       // the full name of this class is users.normalusers.NormalUser
 ```
+
+Note that the package names are followed by a colon, and that the defininitions within
+a package are indented.
 
 The advantages of this approach are that it allows for package nesting, and provides more obvious control of scope and encapsulation, especially within the same file.
 
@@ -92,27 +99,27 @@ A note before moving on:
 In Scala you can import one member from a package like this:
 
 ```scala
-import java.io.File
+import scala.concurrent.Future
 ```
 
 and multiple members like this:
 
 ```scala
-import java.io.File
-import java.io.IOException
-import java.io.FileNotFoundException
+import scala.concurrent.Future
+import scala.concurrent.Promise
+import scala.concurrent.blocking
 ```
 
 When importing multiple members, you can import them more concisely like this:
 
 ```scala
-import java.io.{File, IOException, FileNotFoundException}
+import scala.concurrent.{Future, Promise, blocking}
 ```
 
-When you want to import everything from the *java.io* package, use this syntax:
+When you want to import everything from the *scala.concurrent* package, use this syntax:
 
 ```scala
-import java.io.*
+import scala.concurrent.*
 ```
 
 
@@ -170,13 +177,13 @@ val res0: java.util.ArrayList[String] = []
 Because those Java classes are hidden, you can also use the Scala `List`, `Set`, and `Map` classes without having a naming collision:
 
 ```scala
-scala> val a = List(1,2,3)
+scala> val a = List(1, 2, 3)
 val a: List[Int] = List(1, 2, 3)
 
-scala> val b = Set(1,2,3)
+scala> val b = Set(1, 2, 3)
 val b: Set[Int] = Set(1, 2, 3)
 
-scala> val c = Map(1->1, 2->2)
+scala> val c = Map(1 -> 1, 2 -> 2)
 val c: Map[Int, Int] = Map(1 -> 1, 2 -> 2)
 ```
 
@@ -241,7 +248,7 @@ Two packages are implicitly imported into the scope of all of your source code f
 - java.lang.*
 - scala.*
 
-The Scala `Predef` object is also imported by default.
+The members of the Scala object `Predef` are also imported by default.
 
 > If you ever wondered why you can use classes like `List`, `Vector`, `Map`, etc., without importing them, they’re available because of definitions in the `Predef` object.
 

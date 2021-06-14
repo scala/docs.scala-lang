@@ -11,7 +11,7 @@ next-page: methods-summary
 Scala 3 offers a new way to define programs that can be invoked from the command line: Adding a `@main` annotation to a method turns it into entry point of an executable program:
 
 ```scala
-@main def hello = println("Hello, world")
+@main def hello() = println("Hello, world")
 ```
 
 Just save that line of code in a file named something like *Hello.scala*---the filename doesn’t have to match the method name---and compile it with `scalac`:
@@ -81,7 +81,7 @@ Illegal command line: java.lang.NumberFormatException: For input string: "sixty"
 The Scala compiler generates a program from an `@main` method `f` as follows:
 
 - It creates a class named `f` in the package where the `@main` method was found.
-- The class has a static method `main` with the usual signature: It takes an `Array[String]` as argument and returns `Unit`.
+- The class has a static method `main` with the usual signature of a Java `main` method: it takes an `Array[String]` as argument and returns `Unit`.
 - The generated `main` method calls method `f` with arguments converted using methods in the `scala.util.CommandLineParser` object.
 
 For instance, the `happyBirthday` method above generates additional code equivalent to the following class:
