@@ -8,8 +8,8 @@ next-page: ca-summary
 ---
 
 
-Implicit conversions are defined by `given` instances of the _scala.Conversion_ class.
-For example, not accounting for possible conversion errors, this code defines an an implicit conversion from `String` to `Int`:
+Implicit conversions are defined by `given` instances of the `scala.Conversion` class.
+For example, not accounting for possible conversion errors, this code defines an implicit conversion from `String` to `Int`:
 
 ```scala
 given Conversion[String, Int] with
@@ -34,10 +34,13 @@ def plus1(i: Int) = i + 1
 plus1("1")
 ```
 
+> Note the clause `import scala.language.implicitConversions` at the beginning,
+> to enable implicit conversions in the file.
+
 ## Discussion
 
-The Predef package contains “auto-boxing” conversions that map primitive number types to subclasses of _java.lang.Number_.
-For instance, the conversion from `Int` to _java.lang.Integer_ can be defined as follows:
+The Predef package contains “auto-boxing” conversions that map primitive number types to subclasses of `java.lang.Number`.
+For instance, the conversion from `Int` to `java.lang.Integer` can be defined as follows:
 
 ```scala
 given int2Integer: Conversion[Int, java.lang.Integer] =

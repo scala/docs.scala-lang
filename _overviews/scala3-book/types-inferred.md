@@ -12,7 +12,7 @@ As with other statically typed programming languages, in Scala you can _declare_
 
 ```scala
 val x: Int = 1
-val x: Double = 1
+val y: Double = 1
 ```
 
 In those examples the types are _explicitly_ declared to be `Int` and `Double`, respectively.

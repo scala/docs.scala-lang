@@ -13,7 +13,7 @@ next-page: ca-given-imports
 - TODO: define "synthesized" and "synthesized arguments"
 {% endcomment %}
 
-In many situations the name of a _context parameter_ doesn’t have to be mentioned explicitly, since it’s only used in synthesized arguments for other context parameters.
+In many situations the name of a _context parameter_ doesn’t have to be mentioned explicitly, since it’s only used by the compiler in synthesized arguments for other context parameters.
 In that case you don’t have to define a parameter name, and can just provide the parameter type.
 
 
