@@ -2,14 +2,14 @@
 layout: singlepage-overview
 title: Scala FAQ
 permalink: /tutorials/FAQ/index.html
-redirect_from: 
+redirect_from:
   - "/tutorials/FAQ/breakout.html"
   - "/tutorials/FAQ/chaining-implicits.html"
   - "/tutorials/FAQ/collections.html"
   - "/tutorials/FAQ/context-bounds.html"
   - "/tutorials/FAQ/finding-implicits.html"
   - "/tutorials/FAQ/finding-symbols.html"
-  -  "/tutorials/FAQ/stream-view.html"
+  - "/tutorials/FAQ/stream-view.html"
   - "/tutorials/FAQ/yield.html"
 ---
 
@@ -35,25 +35,21 @@ are out there; there are many.
 
 You can go on the [Scala room on
 Gitter](https://gitter.im/scala/scala) or another community forum and
-ask for book recommendations, but note that you'll get more helpful
+ask for book recommendations. You'll get more helpful
 answers if you provide some information about your background and your
 reasons for wanting to learn Scala.
 
 ### Should I learn Scala 2, or Scala 3?
 
-The default choice remains Scala 2 for now.  Most Scala jobs are Scala
-2 jobs; most Scala books and online learning materials cover Scala 2;
-tooling and library support is strongest in Scala 2; and so on.
+Scala 3 was released in May 2021.  Because Scala 3 is still so new,
+most Scala jobs are Scala 2 jobs; most Scala books and online learning
+materials cover Scala 2; tooling and library support is strongest in
+Scala 2; and so on.
 
-Scala 3.0.0 is planned for release in 2021, and a number of
-Scala 3 books will come out in 2021 as well.  In time, there will
-be more and more Scala 3 jobs as well.
+Thus, Scala 2 remains a common and reasonable choice.
 
-### When is Scala 3 coming out?
-
-In 2021.  Watch the [Scala blog](https://www.scala-lang.org/blog/)
-for announcements.  For a more detailed view of how work is progressing,
-see the [Dotty milestones](https://github.com/lampepfl/dotty/milestones).
+Some books that cover Scala 3 are already available; more are on the
+way.  In time, there will be more and more Scala 3 jobs as well.
 
 ### Where are Scala jobs advertised?
 
@@ -181,11 +177,10 @@ differ from a function value such as:
 
     val square: Int => Int = x => x * x
 
-[Complete answer on Stack Overflow](https://stackoverflow.com/a/2530007/4111404).
+For Scala 2, there is a [complete answer on Stack Overflow](https://stackoverflow.com/a/2530007/4111404)
+and a [summary with practical differences](https://tpolecat.github.io/2014/06/09/methods-functions.html).
 
-[Summary with practical differences](https://tpolecat.github.io/2014/06/09/methods-functions.html).
-
-Note that in **Scala 3** most of the differences will go;
+Note that in **Scala 3** the differences are fewer;
 for example, they will be able to
 [accept implicit parameters](https://dotty.epfl.ch/docs/reference/contextual/context-functions.html)
 as well as [type parameters](https://dotty.epfl.ch/docs/reference/new-types/polymorphic-function-types.html).
@@ -193,7 +188,7 @@ as well as [type parameters](https://dotty.epfl.ch/docs/reference/new-types/poly
 Nevertheless, it is still recommended to use methods most of the time,
 unless you absolutely need a function. And, thanks to
 [eta-expansion](https://stackoverflow.com/questions/39445018/what-is-the-eta-expansion-in-scala)
-you rarely would need to define a function over a method.
+you rarely would need to define a function rather than a method.
 
 ### What's the difference between types and classes?
 
