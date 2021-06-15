@@ -29,7 +29,6 @@ It’s hard to list every benefit of Scala, but a “Top Ten” list might look 
 
 
 
-
 ## 1) FP/OOP fusion
 
 More than any other language, Scala supports a fusion of the FP and OOP paradigms.
@@ -45,7 +44,7 @@ For instance, a `List` is defined as a class---technically it’s an abstract cl
 val x = List(1, 2, 3)
 ```
 
-However, what appears to the programmer to be a simple `List` is actually built from a combination of several specialized types, including abstract classes named `Iterable`, `Seq`, and `LinearSeq`.
+However, what appears to the programmer to be a simple `List` is actually built from a combination of several specialized types, including traits named `Iterable`, `Seq`, and `LinearSeq`.
 Those types are similarly composed of other small, modular units of code.
 
 In addition to building a type like `List` from a series of modular traits, the `List` API also consists of dozens of other methods, many of which are higher-order functions:
@@ -104,6 +103,7 @@ def help(id: Username | Password) =
 // union type value
 val b: Password | Username = if (true) name else password
 ```
+
 
 
 ## 3) Concise syntax
@@ -173,7 +173,6 @@ Benefits of these changes include:
 - It has the potential to enable term inference in a principled way that’s also accessible and friendly
 
 These capabilities are described in detail in other sections, so see the [Contextual Abstraction introduction][contextual], and the section on [`given` and `using` clauses][given] for more details.
-
 
 
 
@@ -357,6 +356,7 @@ Some of the most important features in this category are:
 
 {% comment %}
 A list of types from the Dotty documentation:
+
 - Inferred types
 - Generics
 - Intersection types
