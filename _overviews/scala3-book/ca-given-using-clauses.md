@@ -26,7 +26,7 @@ def renderWebsite(path: String, c: Config): String =
 def renderWidget(items: List[String], c: Config): String = ???
 
 val config = Config(8080, "docs.scala-lang.org")
-renderWebsite("/home")(config)
+renderWebsite("/home", config)
 ```
 Let us assume that the configuration does not change throughout most of our code base.
 Passing `c` to each and every method call (like `renderWidget`) becomes very tedious and makes our program more difficult to read, since we need to ignore the `c` argument.
