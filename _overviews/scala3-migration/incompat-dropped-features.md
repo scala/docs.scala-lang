@@ -204,7 +204,7 @@ Existential type is a [dropped feature](https://dotty.epfl.ch/docs/reference/dro
 def foo: List[Class[T]] forSome { type T } // Error: Existential types are no longer supported
 ```
 
-> Existential type is an experimental feature in Scala 2.13 that must be enabled explicitly eather by importing `import scala.language.existentials` or by setting the `-language:existentials` compiler flag.
+> Existential type is an experimental feature in Scala 2.13 that must be enabled explicitly either by importing `import scala.language.existentials` or by setting the `-language:existentials` compiler flag.
 
 The proposed solution is to introduce an enclosing type that carries the dependent type:
 
