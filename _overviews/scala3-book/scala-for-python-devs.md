@@ -136,13 +136,19 @@ These examples demonstrate how to create variables in Python and Scala.
     <tr>
       <td class="python-block">
         <code>x = 1
-        <br>x = "Hi"</code>
+        <br>x = "Hi"
+        <br>x = """foo
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bar
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; baz"""</code>
       </td>
     </tr>
     <tr>
       <td class="scala-block">
         <code>val x = 1
-        <br>val x = "Hi"</code>
+        <br>val x = "Hi"
+        <br>val x = """foo
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bar
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; baz"""</code>
       </td>
     </tr>
   </tbody>
