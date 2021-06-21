@@ -1,3 +1,8 @@
+---
+layout: singlepage-overview
+title: Error Formatting
+---
+
 # Introduction
 
 An advanced mechanism for formatting type errors and inspecting missing
