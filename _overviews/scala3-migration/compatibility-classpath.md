@@ -113,13 +113,13 @@ Or, in case `bar` is a published Scala 3 library:
 ```scala
 lazy val foo = project.in.file("foo")
   .settings(
-    scalaVersion := "3.0.0",
+    scalaVersion := "2.13.6",
     scalacOptions += "-Ytasty-reader",
     libraryDependencies += ("org.bar" %% "bar" % "1.0.0").cross(CrossVersion.for2_13Use3)
   )
 ```
 
-Similarly to `CrossVersion.for2_13Use3`, we use `CrossVersion.for3Use2_13` in sbt to resolve `bar_2.13` instead of `bar_3`.
+Similarly to `CrossVersion.for2_13Use3`, we use `CrossVersion.for3Use2_13` in sbt to resolve `bar_3` instead of `bar_2.13`.
 
 ## Interoperability Overview
 
