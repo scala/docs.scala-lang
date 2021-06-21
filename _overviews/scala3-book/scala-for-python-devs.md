@@ -137,7 +137,7 @@ These examples demonstrate how to create variables in Python and Scala.
       <td class="python-block">
         <code>x = 1
         <br>x = "Hi"
-        <br>x = """foo
+        <br>y = """foo
         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bar
         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; baz"""</code>
       </td>
@@ -146,7 +146,7 @@ These examples demonstrate how to create variables in Python and Scala.
       <td class="scala-block">
         <code>val x = 1
         <br>val x = "Hi"
-        <br>val x = """foo
+        <br>val y = """foo
         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bar
         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; baz"""</code>
       </td>
@@ -186,7 +186,7 @@ These examples demonstrate how to create variables in Python and Scala.
     </tr>
     <tr>
       <td class="scala-block">
-        <code>val movies = Map(
+        <code>val x = Map(
         <br>&nbsp; "Toy Story" -&gt; 8.3,
         <br>&nbsp; "Forrest Gump" -&gt; 8.8,
         <br>&nbsp; "Cloud Atlas" -&gt; 7.4
