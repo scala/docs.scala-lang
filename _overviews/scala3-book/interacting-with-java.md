@@ -58,9 +58,8 @@ You can convert that Java list to a Scala `Seq`, using the conversion utilities 
 ```scala
 // scala
 import scala.jdk.CollectionConverters.*
-import java.util.List
 
-def testList = 
+def testList() = 
   println("Using a Java List in Scala")
   val javaList: java.util.List[String] = JavaClass.getStrings()
   val scalaSeq: Seq[String] = javaList.asScala.toSeq
@@ -156,7 +155,7 @@ class Dog extends Animal, Wagging, Running:
 
 ## How to use Scala collections in Java
 
-When you need to use a Scala collection class in your Java code, use the methods of Scala’s _scala.jdk.javaapi.CollectionConverters_ object in your Java code to make the conversions work.
+When you need to use a Scala collection class in your Java code, use the methods of Scala’s `scala.jdk.javaapi.CollectionConverters` object in your Java code to make the conversions work.
 For example, if you have a `List[String]` like this in a Scala class:
 
 ```scala
@@ -192,7 +191,7 @@ Here are a few things to notice in that code:
 
 ## How to use Scala `Option` in Java
 
-When you need to use a Scala `Option` in your Java code, you can convert the `Option` to a Java `Optional` value using the `toJava` method of the Scala _scala.jdk.javaapi.OptionConverters_ object.
+When you need to use a Scala `Option` in your Java code, you can convert the `Option` to a Java `Optional` value using the `toJava` method of the Scala `scala.jdk.javaapi.OptionConverters` object.
 
 To demonstrate this, create a Scala class with two `Option[String]` values, one containing a string and the other one empty:
 
@@ -203,7 +202,7 @@ object ScalaObject:
   val noneString: Option[String] = None
 ```
 
-Then in your Java code, convert those `Option[String]` values into `java.util.Optional[String]` using the `toJava` method from the _scala.jdk.javaapi.OptionConverters_ object:
+Then in your Java code, convert those `Option[String]` values into `java.util.Optional[String]` using the `toJava` method from the `scala.jdk.javaapi.OptionConverters` object:
 
 ```java
 // java
@@ -258,7 +257,7 @@ System.out.println(jm.multiply(3,4));   // 12
 ## How to handle Scala methods that throw exceptions in Java code
 
 When you’re writing Scala code using Scala programming idioms, you’ll never write a method that throws an exception.
-But if for some reason you have a Scala method that does throw an exception, and you want Java developers to be able to use that method, add the `@throws` annotation to your Scala method so Java consumers will know the exceptions they can throw.
+But if for some reason you have a Scala method that does throw an exception, and you want Java developers to be able to use that method, add the `@throws` annotation to your Scala method so Java consumers will know the exceptions it can throw.
 
 For example, this Scala `exceptionThrower` method is annotated to declare that it throws an `Exception`:
 
