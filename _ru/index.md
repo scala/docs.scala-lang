@@ -1,13 +1,52 @@
 ---
-layout: inner-page-documentation
+layout: documentation
 title: Документация
 language: ru
 partof: documentation
-discourse: true
+more-resources-label: Дополнительные Материалы
 
 # Content masthead links
-more-resources-label: Дополнительные Материалы
-sections:
+
+scala3-sections:
+  - title: "Первые шаги"
+    links:
+      - title: "Новое в Scala 3"
+        description: "Обзор новой функциональности в Scala 3."
+        icon: "fa fa-star"
+        link: /scala3/new-in-scala3.html
+      - title: "Приступая к работе"
+        description: "Установите Scala 3 на свой компьютер и начните писать код на Scala!"
+        icon: "fa fa-rocket"
+        link: /scala3/getting-started.html
+      - title: "Книги по Scala 3"
+        description: "Онлайн-книга, знакомящая с основной функциональностью языка."
+        icon: "fa fa-book"
+        link: /scala3/book/introduction.html
+  - title: "Более подробная информация"
+    links:
+      - title: "Руководство по миграции"
+        description: "Руководство, которое поможет вам перейти от Scala 2 к Scala 3."
+        icon: "fa fa-suitcase"
+        link: /scala3/guides/migration/compatibility-intro.html
+      - title: "Справочники"
+        description: "Подробные справочники по отдельным разделам языка."
+        icon: "fa fa-map"
+        link: /scala3/guides.html
+      - title: "API"
+        description: "Документация по API для каждой версии Scala 3."
+        icon: "fa fa-file-text"
+        link: https://dotty.epfl.ch/api/index.html
+      - title: "Спецификация Языка"
+        description: "Подробная спецификация по языку Scala 3."
+        icon: "fa fa-book"
+        link: https://dotty.epfl.ch/docs/reference/overview.html
+      - title: "Новая функциональность Scaladoc для Scala 3"
+        description: "Ключевые особенности новой функциональности Scaladoc"
+        icon: "fa fa-star"
+        link: /scala3/scaladoc.html
+
+
+scala2-sections:
 
   - title: "Для новичков"
     links:
