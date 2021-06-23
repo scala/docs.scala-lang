@@ -57,8 +57,8 @@ class IntIterator(to: Int) extends Iterator[Int] {
 
 
 val iterator = new IntIterator(10)
-iterator.next()  // returns 0
 iterator.next()  // returns 1
+iterator.next()  // returns 2
 ```
 这个类 `IntIterator` 将参数 `to` 作为上限。它扩展了 `Iterator [Int]`，这意味着方法 `next` 必须返回一个Int。
 
