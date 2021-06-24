@@ -27,8 +27,7 @@ For example, this `StringUtils` object contains a small collection of string-rel
 
 ```scala
 object StringUtils:
-  def isNullOrEmpty(s: String): Boolean =
-    if (s==null || s.trim.equals("")) true else false
+  def isNullOrEmpty(s: String): Boolean = s==null || s.trim.equals("")
   def leftTrim(s: String): String = s.replaceAll("^\\s+", "")
   def rightTrim(s: String): String = s.replaceAll("\\s+$", "")
 ```
