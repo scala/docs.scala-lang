@@ -14,7 +14,7 @@ The basic form is shown in this example:
 ```scala
 object A:
   class TC
-  given tc as TC
+  given tc: TC = ???
   def f(using TC) = ???
 
 object B:
