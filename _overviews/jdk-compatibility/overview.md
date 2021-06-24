@@ -12,8 +12,8 @@ Sometimes new JVM and JDK (Java Development Kit) versions require us to update S
 
 | JDK version | Minimum Scala versions           | Recommended Scala versions                                 |
 |:-----------:|:---------------------------------|:-----------------------------------------------------------|
-| 17          | 2.13.6, 2.12.14 (see below)      | 2.13.6, 2.12.14 (see below)
-| 16          | 2.13.5, 2.12.14                  | 2.13.6, 2.12.14
+| 17          | 2.13.6, 2.12.15 (forthcoming)    | 2.13.6, 2.12.15 (forthcoming)                              |
+| 16          | 2.13.5, 2.12.14                  | 2.13.6, 2.12.14                                            |
 | 13, 14, 15  | 2.13.2, 2.12.11                  | 2.13.6, 2.12.14                                            |
 | 12          | 2.13.1, 2.12.9                   | 2.13.6, 2.12.14                                            |
 | 11          | 2.13.0, 2.12.4, 2.11.12          | 2.13.6, 2.12.14, 2.11.12                                   |
@@ -81,13 +81,15 @@ As far as we know, 12, 13, 14, and 15 are similar to 11 with respect to Scala co
 
 JDK 16 was released in March 2021. It is not an LTS release, so the remarks above about non-LTS releases apply.  The next LTS release will be JDK 17.
 
-The Scala community build and the Scala build and test suite run on JDK 16.  We shipped improved JDK 16 support in [Scala 2.13.5](https://github.com/scala/scala/releases/tag/v2.13.5) and intend to ship the same improvements soon in Scala 2.12.14 ([release timing thread](https://contributors.scala-lang.org/t/scala-2-12-14-planning/4852/2)).
+The Scala build and test suite pass on JDK 16, and so does the Scala community build. We shipped improved JDK 16 support in [Scala 2.13.5](https://github.com/scala/scala/releases/tag/v2.13.5) and [2.12.14](https://github.com/scala/scala/releases/tag/v2.12.14).
 
 ## JDK 17 compatibility notes
 
-JDK 17 prereleases are already available. The final release is [targeted](https://openjdk.java.net/projects/jdk/17/) for September 2021.  JDK 17 will be an LTS release.
+JDK 17 prereleases are already available. As of June 2021, the feature set is frozen. The final release is [targeted](https://openjdk.java.net/projects/jdk/17/) for September 2021. JDK 17 will be an LTS release.
 
-The Scala community build doesn't run on JDK 17 yet. We will add it once 17 is closer to release.
+The Scala community build passes on JDK 17. We are in the process of making Scala's own build and test suite pass.
+
+Scala 2.13.6 already supports JDK 17. Scala 2.12.14 mostly works as well, but there is a known issue with lambda deserialiation; a fix will ship in Scala 2.12.15 (see [release timing thread](https://contributors.scala-lang.org/t/scala-2-12-15-planning/5152)).
 
 ## GraalVM Native Image compatibility notes
 
@@ -101,6 +103,6 @@ A few sbt plugins are offering support for GraalVM Native Image compilation:
 
 ## Scala 3
 
-The Scala 3.0.x series supports JDK 8, as well as 11 and beyond.
+The Scala 3.x series supports JDK 8, as well as 11 and beyond.
 
-As Scala and the JVM continue to evolve, some eventual Scala 3.x version may drop support for JDK 8, in order to better take advantage of new JVM features.  It isn't clear yet what the new minimum supported version might become.
+As Scala and the JVM continue to evolve, some eventual Scala version may drop support for JDK 8, in order to better take advantage of new JVM features.  It isn't clear yet what the new minimum supported version might become.
