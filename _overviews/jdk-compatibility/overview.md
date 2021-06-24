@@ -81,13 +81,13 @@ As far as we know, 12, 13, 14, and 15 are similar to 11 with respect to Scala co
 
 JDK 16 was released in March 2021. It is not an LTS release, so the remarks above about non-LTS releases apply.  The next LTS release will be JDK 17.
 
-The Scala build and test suite pass on JDK 16, and so does most of the Scala community build. We shipped improved JDK 16 support in [Scala 2.13.5](https://github.com/scala/scala/releases/tag/v2.13.5) and [2.12.14](https://github.com/scala/scala/releases/tag/v2.12.14).
+The Scala build and test suite pass on JDK 16, and so does the Scala community build. We shipped improved JDK 16 support in [Scala 2.13.5](https://github.com/scala/scala/releases/tag/v2.13.5) and [2.12.14](https://github.com/scala/scala/releases/tag/v2.12.14).
 
 ## JDK 17 compatibility notes
 
 JDK 17 prereleases are already available. As of June 2021, the feature set is frozen. The final release is [targeted](https://openjdk.java.net/projects/jdk/17/) for September 2021. JDK 17 will be an LTS release.
 
-The Scala community build is mostly green on JDK 17, as of June 2021. We are in the process of making Scala's own build and test suite pass.
+The Scala community build passes on JDK 17. We are in the process of making Scala's own build and test suite pass.
 
 Scala 2.13.6 already supports JDK 17. Scala 2.12.14 mostly works as well, but there is a known issue with lambda deserialiation; a fix will ship in Scala 2.12.15 (see [release timing thread](https://contributors.scala-lang.org/t/scala-2-12-15-planning/5152)).
 
