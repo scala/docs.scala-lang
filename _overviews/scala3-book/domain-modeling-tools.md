@@ -219,8 +219,7 @@ Here’s an example of a “string utilities” object that contains a set of me
 object StringUtils:
   def truncate(s: String, length: Int): String = s.take(length)
   def containsWhitespace(s: String): Boolean = s.matches(".*\\s.*")
-  def isNullOrEmpty(s: String): Boolean =
-    if s == null || s.trim.equals("") then true else false
+  def isNullOrEmpty(s: String): Boolean = s==null || s.trim.isEmpty
 ```
 
 We can use the object as follows:
