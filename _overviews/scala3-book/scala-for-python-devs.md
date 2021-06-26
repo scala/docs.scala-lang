@@ -1287,6 +1287,30 @@ Follow the links below for more details:
 - Infix methods
 - Macros and metaprogramming
 
+## Scala and virtual environments
+
+In Scala, there is no need to explicitly set up the equivalent of a Python virtual environment. By default, Scala build tools manage project dependencies such that users do not have to think about manual package installation. For example, using the `sbt` build tool, we specify dependencies inside `build.sbt` file under `libraryDependencies` setting, then executing
+
+```
+cd myapp
+sbt compile
+```
+
+automatically resolves all dependencies for that particular project. The location of downloaded dependencies is largely an implementation detail of the build tool, and users do not have to interact with these downloaded dependencies directly. For example, if we delete the whole sbt dependencies cache, on the next compilation of the project, sbt simply resolves and downloads all the required dependencies again, automatically.
+
+This differs from Python, were by default dependencies are installed in system-wide or user-wide directories, so to obtain an isolated environment on a per-project basis one has to create a corresponding virtual environment. For example, using the `venv` module, we might create one for a particular project like so
+
+```
+cd myapp
+python3 -m venv myapp-env
+source myapp-env/bin/activate
+pip install -r requirements.txt
+```
+
+This installs all the dependencies under the project's `myapp/myapp-env` directory and alters the shell environmental variable `PATH` to look up dependencies from `myapp-env`.
+None of this manual process is necessary in Scala.
+
+
 [collections-classes]: {% link _overviews/scala3-book/collections-classes.md %}
 [concurrency]: {% link _overviews/scala3-book/concurrency.md %}
 [contextual]: {% link _overviews/scala3-book/ca-contextual-abstractions-intro.md %}
