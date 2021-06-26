@@ -66,7 +66,7 @@ p.vocation = "Musician"
 
 ### Fields and methods
 
-Classes can have also have methods and additional fields that are not part of constructors.
+Classes can also have methods and additional fields that are not part of constructors.
 They are defined in the body of the class.
 The body is initialized as part of the default constructor:
 
