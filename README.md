@@ -22,7 +22,7 @@ To build and view site with docker:
 
     docker-compose up
 
-It will incrementally build and serve site at `http://localhost:8080`
+It will incrementally build and serve site at `http://localhost:4000`
 
 ## Contributing ##
 
