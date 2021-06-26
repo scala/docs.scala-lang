@@ -36,6 +36,8 @@ The Deconstruction allows the same syntax as the construction and seems to be wh
 
 Without names in patterns user have to use underscore a lot. The example above would be written as, and is the same what the compiler generates:
 
+//TODO: how offend does this pattern occur?
+
 ```scala
 val annasCity = user match
   case User("Anna", _, c) => c
@@ -46,7 +48,8 @@ val annasCity = user match
 
 This makes it hard which parameter means what, basically the same idea as for named arguments. (The IDE can help here)
 
-In addition, it breaks every time a field of `User` gets added, rearranged, or removed. In the worst case it breaks silently, if to fields with the type switch places.
+In addition, it breaks every time a field of `User` gets added, rearranged, or removed.
+In the worst case it breaks silently, if two fields with the type switch places.
 
 Personal motivation comes from using to offend https://www.scalatest.org/user_guide/using_matchers#matchingAPattern
 and got bitten every time the data model changed slightly.
@@ -63,12 +66,12 @@ map match {
 }
 
 4 match {
-  case n / 2 => "douple of " + n.toString
+  case n / 2 => "double of " + n.toString
   case _ => "odd"
 }
 ```
 
-//TODO: find references where is feature was requested
+//TODO: find references where this feature was requested
 
 ## Design
 
@@ -76,18 +79,16 @@ Goal is similarity between construction and deconstruction of case classes.
 
 Before this was invalid syntax, so this shouldn't affect any existing Scala program.
 
-### Open questions
+### Mixed usage
 
-Various patterns are allowed to keep the similarity, but have no motivational use case. Maybe those should be allowed:
+Mixed patterns are allowed to keep the similarity, but have right now no motivational use case. Maybe those should be allowed:
 
 ```scala
   case User("Anna", city = c) => // Mixed usage seems wired
   case User(_, city = c) => // Leading underscore are espacially to useless (?)
 ```
 
-Discuss design decisions (including, as examples):
-
-* What's with user defined `unapply` on case classes? (Design)
+//TODO: What's with user defined `unapply` on case classes? (Design)
 
 ## Implementation
 
@@ -107,7 +108,6 @@ case User(
   _ //  because city isn't mentioned
 )
 ```
-
 
 ## Drawbacks
 
@@ -146,22 +146,29 @@ User(10) match {
 }
 ```
 
-Libraries like [Monocle][2] could be extended to reduce the boilerplate, but still some boilerplate would remain.
+Libraries like [Monocle][monocle] could be extended to reduce the boilerplate, but still some boilerplate would remain.
 In addition, this breaks the intuitive similarity between construction and deconstruction.
 
-### Records, Tuples with names etc.
+### Named Tuple Arguments / Anonymous Case Classes
 
-//TODO
+This was mentioned in the discussion about [Named Tuple Arguments / Anonymous Case Classes][named-tuple] as bonus, that named tuples could transport the names from unapply to the pattern. 
+This would be more generic and could handle user defined extractors.
 
-Would be more generic, could be handle user defined extractors, also could lead naturally to a way to hand;e Counter-Example above.
+However this isn't much of an alternative, but more of a generalization.
 
-### Partial destructuring
+### Partial destructuring in guards
 
 Lionel Parreaux proposed a more powerful mechanism:
 http://lptk.github.io/programming/2018/12/12/scala-pattern-warts-improvements.html#-partial-destructuring-in-guards
 
-If this SIP gets accepted, it could restrict the design any of the last two alternatives, if they come into being.
 
-[2]: https://www.optics.dev/Monocle/ "Monocle"
-[4]: https://github.com/dogescript/dogescript "Alternatives"
-[5]: https://contributors.scala-lang.org/t/pattern-matching-with-named-fields/1829/20 "Scala Contributors thread"
+## References
+
+* [Scala Contributors Thread][contributors-thread]
+
+* [Monocle][monocle]
+* [Named Tuple Arguments / Anonymous Case Classes][named-tuple]
+
+[monocle]: https://www.optics.dev/Monocle/ "Monocle"
+[named-tuple]: https://contributors.scala-lang.org/t/named-tuple-arguments-anonymous-case-classes/4352 
+[contributors-thread]: https://contributors.scala-lang.org/t/pattern-matching-with-named-fields/1829/20 "Scala Contributors thread"
