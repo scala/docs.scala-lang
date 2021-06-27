@@ -61,14 +61,8 @@ This SIP doesn't aim to allow pattern where parameters go into the pattern, e.g:
 ```scala
 val map = Map("Berlin" -> 10, "Paris" -> 5)
 
-map match {
+map match
   case Map("Paris" -> five) => five
-}
-
-4 match {
-  case n / 2 => "double of " + n.toString
-  case _ => "odd"
-}
 ```
 
 //TODO: find references where this feature was requested
@@ -81,14 +75,13 @@ Before this was invalid syntax, so this shouldn't affect any existing Scala prog
 
 ### Mixed usage
 
-Mixed patterns are allowed to keep the similarity, but have right now no motivational use case. Maybe those should be allowed:
+Mixed patterns, with positional and named patterns are allowed to keep the similarity.
+But they have no motivational use case. Maybe they should be disallowed.
 
 ```scala
   case User("Anna", city = c) => // Mixed usage seems wired
-  case User(_, city = c) => // Leading underscore are espacially to useless (?)
+  case User(_, city = c) => // Leading underscore are espacially useless
 ```
-
-//TODO: What's with user defined `unapply` on case classes? (Design)
 
 ## Implementation
 
@@ -114,16 +107,15 @@ case User(
 Without allowing user defined named arguments in pattern matching, the fact that class is a case class becomes part if it's public interface. Changing a case class to a normal class is a backward incompatible change, that library maintainers of to be aware. This is especially worrying since currently libraries where designed without this feature in mind.
 
 ```scala
-case class Age(years: Int)
+class User(name: String, age: Int, city: String)
+object User
+  def unapply(user: User): Option[(String, Int, String)] =
+    ???
 
-class Age(val years: Int) {
-  // equals, hashcode etc.
-}
-object Age {
-  def unapply(age: Age): Option[Int] =
-    Some(age.years)
-}
+// matching on User doesn't work anymore
 ```
+
+This limitation could be overcome by Named Tuple Arguments, discussed below.
 
 ## Alternatives
 
@@ -134,16 +126,13 @@ One alternative way of archiving most objectives, that is doable with current Sc
 ```scala
 case class User(age: Int)
 
-object User {
-  object age {
+object User:
+  object age:
     def unapply(user: User): Option[Int] =
       Some(user.age)
-  }
-}
 
-User(10) match {
+User(10) match
   case User.age(y) => y
-}
 ```
 
 Libraries like [Monocle][monocle] could be extended to reduce the boilerplate, but still some boilerplate would remain.
