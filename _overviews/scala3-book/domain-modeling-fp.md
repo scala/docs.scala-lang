@@ -259,7 +259,7 @@ Pizza.price(pizza1)
 Grouping functionality this way has a few advantages:
 
 - It associates functionality with data and makes it easier to find for programmers (and the compiler).
-- It creates a namespace and for instance let's use `price` as a method name without having to rely on overloading.
+- It creates a namespace and for instance lets us use `price` as a method name without having to rely on overloading.
 - The implementation of `Topping.price` can access enumeration values like `Cheese` without having to import them.
 
 However, there are also a few tradeoffs that should be considered:
