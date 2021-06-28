@@ -55,7 +55,8 @@ You’ll also see examples of methods that are used to handle the value in a fut
 
 > When you think about futures, it’s important to know that they’re intended as a one-shot, “Handle this relatively slow computation on some other thread, and call me back with a result when you’re done” construct.
 > As a point of contrast, [Akka](https://akka.io) actors are intended to run for a long time and respond to many requests during their lifetime.
-> While an actor may live forever, a future is intended to be run only once.
+> While an actor may live forever, a future eventually contains the result
+> of a computation that ran only once.
 
 
 
@@ -77,7 +78,7 @@ Now you’re ready to create a future.
 For this example, first define a long-running, single-threaded algorithm:
 
 ```scala
-def longRunningAlgorithm =
+def longRunningAlgorithm() =
   Thread.sleep(10_000)
   42
 ```
@@ -86,29 +87,29 @@ That fancy algorithm returns the integer value `42` after a ten second delay.
 Now call that algorithm by wrapping it into the `Future` constructor, and assigning the result to a variable:
 
 ```scala
-scala> val f = Future(longRunningAlgorithm)
-f: scala.concurrent.Future[Int] = Future(<not completed>)
+scala> val eventualInt = Future(longRunningAlgorithm())
+eventualInt: scala.concurrent.Future[Int] = Future(<not completed>)
 ```
 
-Right away your future begins running.
-If you immediately check the value of the variable `f`, you see that the future hasn’t completed yet:
+Right away, your computation---the call to `longRunningAlgorithm()`---begins running.
+If you immediately check the value of the variable `eventualInt`, you see that the future hasn’t been completed yet:
 
 ```scala
-scala> f
+scala> eventualInt
 val res1: scala.concurrent.Future[Int] = Future(<not completed>)
 ```
 
-But if you check again after ten seconds, you’ll see that it completes successfully:
+But if you check again after ten seconds, you’ll see that it is completed successfully:
 
 ```scala
-scala> f
+scala> eventualInt
 val res2: scala.concurrent.Future[Int] = Future(Success(42))
 ```
 
 While that’s a relatively simple example, it shows the basic approach: Just construct a new `Future` with your long-running algorithm.
 
 One thing to notice is that the `42` you expected is wrapped in a `Success`, which is further wrapped in a `Future`.
-This is a key concept to understand: the value in a `Future` is always an instance of one of the *scala.util.Try* types: `Success` or `Failure`.
+This is a key concept to understand: the value in a `Future` is always an instance of one of the `scala.util.Try` types: `Success` or `Failure`.
 Therefore, when you work with the result of a future, you use the usual `Try`-handling techniques.
 
 
@@ -118,7 +119,7 @@ Therefore, when you work with the result of a future, you use the usual `Try`-ha
 This is what the result looks like when you call `map` right after creating the variable `f`:
 
 ```scala
-scala> val a = f.map(_ * 2)
+scala> val a = eventualInt.map(_ * 2)
 a: scala.concurrent.Future[Int] = Future(<not completed>)
 ```
 
@@ -139,13 +140,13 @@ In addition to higher-order functions like `map`, you can also use callback meth
 One commonly used callback method is `onComplete`, which takes a *partial function* in which you handle the `Success` and `Failure` cases:
 
 ```scala
-f.onComplete {
+eventualInt.onComplete {
   case Success(value) => println(s"Got the callback, value = $value")
   case Failure(e) => e.printStackTrace
 }
 ```
 
-When you paste that code in the REPL you’ll see the result:
+When you paste that code in the REPL you’ll eventually see the result:
 
 ```scala
 Got the callback, value = 42
@@ -180,10 +181,11 @@ See the [Futures and Promises][futures] page for a discussion of additional meth
 
 ## Running multiple futures and joining their results
 
-To run multiple futures in parallel and join their results when all of the futures complete, use a `for` expression.
+To run multiple computations in parallel and join their results when all of the futures have been completed, use a `for` expression.
+
 The correct approach is:
 
-1. Create the futures
+1. Start the computations that return `Future` results
 2. Merge their results in a `for` expression
 3. Extract the merged result using `onComplete` or a similar technique
 
@@ -191,27 +193,27 @@ The correct approach is:
 ### An example
 
 The three steps of the correct approach are shown in the following example.
-A key is that you first create the futures and then join them in the `for` expression:
+A key is that you first start the computations that return futures, and then join them in the `for` expression:
 
 ```scala
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.util.{Failure, Success}
 
-val startTime = System.currentTimeMillis
-def delta() = System.currentTimeMillis - startTime
+val startTime = System.currentTimeMillis()
+def delta() = System.currentTimeMillis() - startTime
 def sleep(millis: Long) = Thread.sleep(millis)
 
 @main def multipleFutures1 =
 
   println(s"creating the futures:   ${delta()}")
 
-  // (1) create the futures
+  // (1) start the computations that return futures
   val f1 = Future { sleep(800); 1 }   // eventually returns 1
   val f2 = Future { sleep(200); 2 }   // eventually returns 2
   val f3 = Future { sleep(400); 3 }   // eventually returns 3
 
-  // (2) run them simultaneously in a `for` expression
+  // (2) join the futures in a `for` expression
   val result =
     for
       r1 <- f1
@@ -251,10 +253,23 @@ All of that code is run on the JVM’s main thread.
 Then, at 806 ms, the three futures complete and the code in the `yield` block is run.
 Then the code immediately goes to the `Success` case in the `onComplete` method.
 
-The 806 ms output is a key to seeing that the three futures are run in parallel.
-If they were run sequentially, the total time would be about 1,400 ms---the sum of the sleep times of the three futures.
-But because they’re run in parallel, the total time is just slightly longer than the longest-running future: `f1`, which is 800 ms.
+The 806 ms output is a key to seeing that the three computations are run in parallel.
+If they were run sequentially, the total time would be about 1,400 ms---the sum of the sleep times of the three computations.
+But because they’re run in parallel, the total time is just slightly longer than the longest-running computation: `f1`, which is 800 ms.
 
+> Notice that if the computations were run within the `for` expression, they
+> would be executed sequentially, not in parallel:
+> ~~~
+> // Sequential execution (no parallelism!)
+> for
+>   r1 <- Future { sleep(800); 1 }
+>   r2 <- Future { sleep(200); 2 }
+>   r3 <- Future { sleep(400); 3 }
+> yield
+>   r1 + r2 + r3
+> ~~~
+> So, if you want the computations to be possibly run in parallel, remember
+> to run them outside of the `for` expression.
 
 ### A method that returns a future
 

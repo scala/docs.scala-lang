@@ -36,7 +36,7 @@ At a high level, Scala shares these similarities with JavaScript:
 - Both languages have similar `if` statements, `while` loops, and `for` loops
 - Starting [at this Scala.js page](https://www.scala-js.org/libraries/index.html), you’ll find dozens of libraries to support React, Angular, jQuery, and many other JavaScript and Scala libraries
 - JavaScript objects are mutable; Scala objects _can_ be mutable when writing in an imperative style
-- Both JavaScript and Scala support _promises_ as a way of running asynchronous computations ([Scala concurrency][concurrency] uses futures and promises)
+- Both JavaScript and Scala support _promises_ as a way of handling the result of asynchronous computations ([Scala concurrency][concurrency] uses futures and promises)
 
 ### High-level differences
 
@@ -441,7 +441,7 @@ In both JavaScript and Scala, functions are objects, so their functionality is s
     </tr>
     <tr>
       <td class="scala-block">
-          <code>// technically this is a “method,” not a function
+          <code>// technically this is a method, not a function
         <br>def add(a: Int, b: Int) = a + b
         <br>add(2, 2)&nbsp;&nbsp; // 4</code>
       </td>
@@ -474,7 +474,7 @@ In both JavaScript and Scala, functions are objects, so their functionality is s
 </table>
 
 In Scala, showing the `Int` return type is optional.
-It’s _not_ shown in the `add` example and _is_ shown in the `addThenDouble` example, so you can see both approaches.
+It’s _not_ shown in the `add` example and _is_ shown in the `addAndDouble` example, so you can see both approaches.
 
 
 
@@ -1374,4 +1374,3 @@ There are other concepts in Scala which currently have no equivalent in JavaScri
 [union-types]: {% link _overviews/scala3-book/types-union.md %}
 
 </div>
-

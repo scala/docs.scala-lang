@@ -230,7 +230,7 @@ These examples demonstrate how to create variables in Python and Scala.
   </tbody>
 </table>
 
-If a Scala field is going to be mutable, use `var` instead of `val` for variable assignment:
+If a Scala field is going to be mutable, use `var` instead of `val` for variable definition:
 
 ```scala
 var x = 1
@@ -631,18 +631,14 @@ Scala also has `match` expressions.
   <tbody>
     <tr>
       <td class="python-block">
-        <code>x = [i*10 for i in range(1,4)]
-        <br># x: [10,20,30]</code>
+        <code>xs = [i * 10 for i in range(1, 4)]
+        <br># xs: [10,20,30]</code>
       </td>
     </tr>
     <tr>
       <td class="scala-block">
-        <code>val x =
-        <br>&nbsp; for
-        <br>&nbsp;&nbsp;&nbsp; i &lt;- 1 to 3
-        <br>&nbsp; yield
-        <br>&nbsp;&nbsp;&nbsp; i * 10
-        <br>// x: Vector(10, 20, 30)</code>
+        <code>val xs = for i &lt;- 1 to 3 yield i * 10
+        <br>// xs: Vector(10, 20, 30)</code>
       </td>
     </tr>
   </tbody>
@@ -894,9 +890,7 @@ However, the default Scala map is _immutable_, and has a number of transformatio
     </tr>
     <tr>
       <td class="scala-block">
-        <code>for
-        <br>&nbsp; (key,value) &lt;- myMap
-        <br>do
+        <code>for (key,value) &lt;- myMap do
         <br>&nbsp; println(key)
         <br>&nbsp; println(value)</code>
       </td>
@@ -934,7 +928,7 @@ The Python set is similar to the _mutable_ Scala `Set` class.
     <tr>
       <td class="python-block">
         <code>set = {1,2,1}
-        <br># set: {1,2}</code></td>
+        <br># set: {1,2}</code>
       </td>
     </tr>
     <tr>
@@ -1012,7 +1006,7 @@ Those lists are used in the following table, that shows how to apply mapping and
   <tbody>
     <tr>
       <td class="python-block">
-      <code>x = [i*10 for i in numbers]</code>
+      <code>x = [i * 10 for i in numbers]</code>
       </td>
     </tr>
     <tr>
@@ -1034,7 +1028,9 @@ Those lists are used in the following table, that shows how to apply mapping and
     </tr>
     <tr>
       <td class="scala-block">
-      <code>val evens = numbers.filter(_ % 2 == 0)</code>
+      <code>val evens = numbers.filter(_ % 2 == 0)
+      <br>// or
+      <br>val evens = for i <- numbers if i % 2 == 0 yield i</code>
       </td>
     </tr>
   </tbody>
@@ -1051,8 +1047,9 @@ Those lists are used in the following table, that shows how to apply mapping and
     </tr>
     <tr>
       <td class="scala-block">
-        <code>val x = numbers.filter(_ % 2 == 0)
-        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.map(_ * 10)</code>
+        <code>val x = numbers.filter(_ % 2 == 0).map(_ * 10)
+        <br>// or
+        <br>val x = for i <- numbers if i % 2 == 0 yield i * 10</code>
       </td>
     </tr>
   </tbody>
@@ -1064,8 +1061,7 @@ Those lists are used in the following table, that shows how to apply mapping and
   <tbody>
     <tr>
       <td class="python-block">
-        <code>def times_10(n): return n * 10
-        <br>x = map(lambda x: x * 10, numbers)</code>
+        <code>x = map(lambda x: x * 10, numbers)</code>
       </td>
     </tr>
     <tr>

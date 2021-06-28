@@ -49,6 +49,7 @@ Also at a high level, the differences between Java and Scala are:
 - Scala has a full suite of immutable collections, including `List`, `Vector`, and immutable `Map` and `Set` implementations
 - Everything in Scala is an _expression_: constructs like `if` statements, `for` loops, `match` expressions, and even `try`/`catch` expressions all have return values
 - Scala idioms favor immutability by default: you’re encouraged to use immutable (`final`) variables and immutable collections
+- Idiomatic Scala code does not use `null`, and thus does not suffer from `NullPointerException`
 - The Scala ecosystem has other [build tools][tools] in sbt, Mill, and others
 - In addition to running on the JVM, the [Scala.js](https://www.scala-js.org) project lets you use Scala as a JavaScript replacement
 - The [Scala Native](http://www.scala-native.org) project adds low-level constructs to let you write “systems” level code, and also compiles to native executables
@@ -117,14 +118,18 @@ This section provides comparisons of features related to OOP-style classes and m
 
 ### OOP style class, primary constructor:
 
+Scala doesn’t follow the JavaBeans standard, so instead of showing Java
+code written in the JavaBeans style, here we show Java code that is
+equivalent to the Scala code that follows it.
+
 <table>
   <tbody>
     <tr>
       <td class="java-block">
         <code>class Person {
-          <br>&nbsp; private String firstName;
-          <br>&nbsp; private String lastName;
-          <br>&nbsp; private int age;
+          <br>&nbsp; public String firstName;
+          <br>&nbsp; public String lastName;
+          <br>&nbsp; public int age;
           <br>&nbsp; public Person(
           <br>&nbsp;&nbsp;&nbsp; String firstName, 
           <br>&nbsp;&nbsp;&nbsp; String lastName, int age
@@ -160,9 +165,9 @@ This section provides comparisons of features related to OOP-style classes and m
     <tr>
       <td class="java-block">
         <code>public class Person {
-        <br>&nbsp; private String firstName;
-        <br>&nbsp; private String lastName;
-        <br>&nbsp; private int age;
+        <br>&nbsp; public String firstName;
+        <br>&nbsp; public String lastName;
+        <br>&nbsp; public int age;
         <br>
         <br>&nbsp; // primary constructor
         <br>&nbsp; public Person(
@@ -424,7 +429,7 @@ This section compares Java interfaces to Scala traits, including how classes ext
   <tbody>
     <tr>
       <td class="java-block">
-        <code>class Dog extends Animal, HasLegs, HasTail</code>
+        <code>class Dog extends Animal implements HasLegs, HasTail</code>
       </td>
     </tr>
     <tr>
@@ -976,7 +981,7 @@ val a = Array("a", "b")
 as being backed by this Java `String[]`:
 
 ```scala
-String[] a = ["a", "b"]
+String[] a = ["a", "b"];
 ```
 
 However, a Scala `Array` also has all of the functional methods you expect in a Scala collection, including `map` and `filter`:
@@ -1275,7 +1280,7 @@ For more information on dealing with errors and exceptions in Scala, see the [Fu
 
 That concludes are comparison of the Java and Scala languages.
 
-Currently there are other concepts in Scala which currently have no equal in Java 11.
+There are other concepts in Scala which currently have no equal in Java 11.
 This includes:
 
 - Everything related to Scala’s [contextual abstractions][contextual]

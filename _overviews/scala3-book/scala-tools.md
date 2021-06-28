@@ -22,7 +22,7 @@ We’ll start by showing how to use sbt to build your Scala projects, and then w
 ## Building Scala projects with sbt
 
 You can use several different tools to build your Scala projects, including Ant, Maven, Gradle, Mill, and more.
-But a tool named _sbt_ was the first build tool that was specifically created for Scala, and these days it’s supported by [Lightbend](https://www.lightbend.com), the company that also maintains [Akka](https://akka.io), the [Play framework](https://www.playframework.com), the [Lagom framework](https://www.lagomframework.com), and more.
+But a tool named _sbt_ was the first build tool that was specifically created for Scala.
 
 > To install sbt, see [its download page](https://www.scala-sbt.org/download.html) or our [Getting Started][getting_started] page.
 
@@ -38,7 +38,20 @@ $ mkdir hello
 $ cd hello
 ```
 
-Then create a file named _build.sbt_ that contains this line:
+In the directory `hello`, create a subdirectory `project`:
+
+```bash
+$ mkdir project
+```
+
+Create a file named _build.properties_ in the directory `project`, with
+the following content:
+
+```text
+sbt.version=1.5.4
+```
+
+Then create a file named _build.sbt_ in the project root directory that contains this line:
 
 ```scala
 scalaVersion := "{{ site.scala-3-version }}"
@@ -51,6 +64,18 @@ Now create a file named something like _Hello.scala_---the first part of the nam
 ```
 
 That’s all you have to do.
+
+You should have a project structure like the following:
+
+~~~ bash
+$ tree
+.
+├── build.sbt
+├── Hello.scala
+└── project
+    └── build.properties
+~~~
+
 Now run the project with this `sbt` command:
 
 ```bash
@@ -61,7 +86,7 @@ You should see output that looks like this, including the `"Hello, world"` from 
 
 ```bash
 $ sbt run
-[info] welcome to sbt 1.4.4 (AdoptOpenJDK Java 11.x)
+[info] welcome to sbt 1.5.4 (AdoptOpenJDK Java 11.x)
 [info] loading project definition from project ...
 [info] loading settings for project from build.sbt ...
 [info] compiling 1 Scala source to target/scala-3.0.0/classes ...
@@ -70,7 +95,9 @@ Hello, world
 [success] Total time: 2 s
 ```
 
-When you look at your directory, you’ll see that sbt has created two directories named _project_ and _target_.
+The sbt launcher---the `sbt` command-line tool---loads the version of sbt set in the file _project/build.properties_, which loads the version of the Scala compiler set in the file _build.sbt_, compiles the code in the file _Hello.scala_, and runs the resulting bytecode.
+
+When you look at your directory, you’ll see that sbt has a directory named _target_.
 These are working directories that sbt uses.
 
 As you can see, creating and running a little Scala project with sbt takes just a few simple steps.
@@ -92,31 +119,34 @@ A nice benefit of that is that once you’re comfortable with its structure, it 
 
 The first thing to know is that underneath the root directory of your project, sbt expects a directory structure that looks like this:
 
-```bash
-build.sbt
-project/
-src/
--- main/
-   |-- java/
-   |-- resources/
-   |-- scala/
-|-- test/
-   |-- java/
-   |-- resources/
-   |-- scala/
-target/
+```text
+.
+├── build.sbt
+├── project/
+│   └── build.properties
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   ├── resources/
+│   │   └── scala/
+│   └── test/
+│       ├── java/
+│       ├── resources/
+│       └── scala/
+└── target/
 ```
 
 You can also add a _lib_ directory under the root directory if you want to add unmanaged dependencies---JAR files---to your project.
 
 If you’re going to create a project that has Scala source code files and tests, but won’t be using any Java source code files, and doesn’t need any “resources”---such as embedded images, configuration files, etc.---this is all you really need under the _src_ directory:
 
-```bash
-src/
--- main/
-   |-- scala/
-|-- test/
-   |-- scala/
+```text
+.
+└── src/
+    ├── main/
+    │   └── scala/
+    └── test/
+        └── scala/
 ```
 
 
@@ -284,11 +314,18 @@ As with the previous lesson, create an sbt project directory structure for a pro
 $ mkdir HelloScalaTest
 $ cd HelloScalaTest
 $ mkdir -p src/{main,test}/scala
-$ mkdir project target
+$ mkdir project
 ```
 
 
-### Creating the build.sbt file
+### Creating the build.properties and build.sbt files
+
+Next, create a _build.properties_ file in the _project/_ subdirectory of your project
+with this line:
+
+```text
+sbt.version=1.5.4
+```
 
 Next, create a _build.sbt_ file in the root directory of your project with these contents:
 
@@ -298,7 +335,7 @@ version := "0.1"
 scalaVersion := "{{site.scala-3-version}}"
 
 libraryDependencies ++= Seq(
-  "org.scalatest" %% "scalatest" % "3.3.0-SNAP3" % Test
+  "org.scalatest" %% "scalatest" % "3.2.9" % Test
 )
 ```
 
