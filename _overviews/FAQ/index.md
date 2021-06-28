@@ -58,6 +58,10 @@ This is addressed on our [Community page](https://scala-lang.org/community/#scal
 In short, the only officially sanctioned place is the [scala/job-board
 room on Gitter](https://gitter.im/scala/job-board).
 
+### Who's behind Scala?
+
+This is answered [on the community page](https://www.scala-lang.org/community/#whos-behind-scala).
+
 ### Can I use the Scala logo?
 
 See [scala/scala-lang#1040](https://github.com/scala/scala-lang/issues/1040).
