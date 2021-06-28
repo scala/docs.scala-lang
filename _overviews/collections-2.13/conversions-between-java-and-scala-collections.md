@@ -6,6 +6,7 @@ overview-name: Collections
 
 num: 17
 previous-page: creating-collections-from-scratch
+next-page: conversion-between-option-and-the-collections
 
 languages: [ru]
 permalink: /overviews/collections-2.13/:title.html
