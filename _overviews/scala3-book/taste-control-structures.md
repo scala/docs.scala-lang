@@ -239,7 +239,6 @@ In Scala 2, the syntax was a bit different. The condition was surrounded by pare
 there was no `do` keyword:
 
 ```scala
-while (x >= 0) do x = f(x)
 while (x >= 0) { x = f(x) }
 ```
 
