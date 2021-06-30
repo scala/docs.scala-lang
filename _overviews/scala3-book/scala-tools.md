@@ -269,6 +269,42 @@ There, that’s much faster.
 If you type `help` at the sbt command prompt you’ll see a list of other commands you can run.
 But for now, just type `exit` (or press `CTRL-D`) to leave the sbt shell.
 
+### Using project templates
+
+Manually creating the project structure can be tedious. Thankfully, sbt can create it for you,
+based on a template.
+
+To create a Scala 3 project from a template, run the following command in a shell:
+
+~~~
+$ sbt new scala/scala3.g8
+~~~
+
+Sbt will load the template, ask some questions, and create the project files in a subdirectory:
+
+~~~
+$ tree scala-3-project-template 
+scala-3-project-template
+├── build.sbt
+├── project
+│   └── build.properties
+├── README.md
+└── src
+    ├── main
+    │   └── scala
+    │       └── Main.scala
+    └── test
+        └── scala
+            └── Test1.scala
+~~~
+
+> If you want to create a Scala 3 project that cross-compiles with Scala 2, use the template `scala/scala3-cross.g8`:
+>
+> ~~~
+> $ sbt new scala/scala3-cross.g8
+> ~~~
+
+Learn more about `sbt new` and project templates in the [documentation of sbt](https://www.scala-sbt.org/1.x/docs/sbt-new-and-Templates.html#sbt+new+and+Templates).
 
 ### Other build tools for Scala
 
