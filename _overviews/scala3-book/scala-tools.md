@@ -303,10 +303,10 @@ See Coursier’s [launch page](https://get-coursier.io/docs/cli-launch) for more
 
 ## Using sbt with ScalaTest
 
-[ScalaTest](https://www.scalatest.org) is one of the main testing libraries for Scala projects, and in this section you’ll see how to create a Scala/sbt project that uses ScalaTest.
+[ScalaTest](https://www.scalatest.org) is one of the main testing libraries for Scala projects. In this section you’ll see the steps necessary to create a Scala/sbt project that uses ScalaTest.
 
 
-### Creating the project directory structure
+### 1) Create the project directory structure
 
 As with the previous lesson, create an sbt project directory structure for a project named _HelloScalaTest_ with the following commands:
 
@@ -318,7 +318,7 @@ $ mkdir project
 ```
 
 
-### Creating the build.properties and build.sbt files
+### 2) Create the build.properties and build.sbt files
 
 Next, create a _build.properties_ file in the _project/_ subdirectory of your project
 with this line:
@@ -345,7 +345,7 @@ The `libraryDependencies` lines tell sbt to include the dependencies (JAR files)
 > The ScalaTest documentation has always been good, and you can always find the up to date information on what those lines should look like on the [Installing ScalaTest](https://www.scalatest.org/install) page.
 
 
-### Create a Scala source code file
+### 3) Create a Scala source code file
 
 Next, create a Scala program that you can use to demonstrate ScalaTest.
 First, create a directory under _src/main/scala_ named _math_:
@@ -385,7 +385,7 @@ With that compiled, let’s create a ScalaTest file to test the `double` method.
 {% endcomment %}
 
 
-### Your first ScalaTest tests
+### 4) Create your first ScalaTest tests
 
 ScalaTest is very flexible, and offers several different ways to write tests.
 A simple way to get started is to write tests using the ScalaTest `AnyFunSuite`.
