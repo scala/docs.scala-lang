@@ -156,7 +156,7 @@ If you type `help` at the sbt command prompt you’ll see a bunch of other comma
 
 ## See also
 
-Here’s a list of other build tools you can use to build Scala projects are:
+Here’s a list of other build tools you can use to build Scala projects:
 
 - [Ant](http://ant.apache.org/)
 - [Gradle](https://gradle.org/)
