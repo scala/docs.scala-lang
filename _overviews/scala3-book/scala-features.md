@@ -161,7 +161,7 @@ In that list:
 Scala’s type system enforces, at compile-time, that abstractions are used in a safe and coherent manner.
 In particular, the type system supports:
 
-- [Type inference](/tour/type-inference.html)
+- [Inferred types]({% link _overviews/scala3-book/types-inferred.md %})
 - [Generic classes]({% link _overviews/scala3-book/types-generics.md %})
 - [Variance annotations]({% link _overviews/scala3-book/types-variance.md %})
 - [Upper](/tour/upper-type-bounds.html) and [lower](/tour/lower-type-bounds.html) type bounds
