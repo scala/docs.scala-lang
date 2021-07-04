@@ -37,7 +37,7 @@ val doubles = nums.filter(underFive).map(double)
 
 This ability to treat methods and functions as values is a powerful feature that functional programming languages provide.
 
-> Technically, a a function that takes another function as an input parameter is known as a *Higher-Order Function*.
+> Technically, a function that takes another function as an input parameter is known as a *Higher-Order Function*.
 > (If you like humor, as someone once wrote, that’s like saying that a class that takes an instance of another class as a constructor parameter is a Higher-Order Class.)
 
 
