@@ -18,6 +18,10 @@ guides:
     icon: birthday-cake
     url: "/scala3/guides/tasty-overview.html"
     description: "An overview over the TASTy format aimed at end-users of the Scala language."
+  - title: Scala 3 Language Reference
+    icon: book
+    url: "/scala3/guides/reference/overview.html"
+    description: "The reference for Scala 3"
 ---
 
 <section class="full-width">

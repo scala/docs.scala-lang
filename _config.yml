@@ -125,6 +125,15 @@ defaults:
       permalink: "/scala3/guides/macros/:title.html"
   -
     scope:
+      path: "_overviews/scala3-reference"
+    values:
+      scala3: true
+      partof: scala3-reference
+      overview-name: "Scala 3 Language Reference"
+      layout: multipage-overview
+      permalink: "/scala3/guides/reference/:title.html"
+  -
+    scope:
       path: "scala3"
     values:
       scala3: true
@@ -133,7 +142,7 @@ defaults:
 highlighter: rouge
 permalink: /:categories/:title.html:output_ext
 baseurl:
-scala3ref: "https://dotty.epfl.ch/docs/reference"
+scala3ref: "/scala3/guides/reference"
 exclude: ["vendor"]
 plugins:
   - jekyll-redirect-from
