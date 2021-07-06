@@ -9,7 +9,7 @@
         {% endif %}
 
       <ul>
-        {% assign sorted = site.overviews | sort: 'num' %}
+        {% assign sorted = site[page.collection] | sort: 'num' %}
         {% for pg in sorted %}
 					{% if pg.num == page.num %}
 						{% capture toc %}

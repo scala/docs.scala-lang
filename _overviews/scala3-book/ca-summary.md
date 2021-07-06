@@ -27,4 +27,4 @@ A few more advanced topics aren’t covered here, including:
 Those topics are discussed in detail in the [Reference documentation][ref].
 
 
-[ref]: {{ site.scala3ref }}/contextual/motivation.html
+[ref]: {{ site.scala3ref }}/contextual.html

@@ -63,30 +63,30 @@ The second piece of good news is that the Scala 2.13 TASTy reader, which enables
 ### Supported Features
 
 The TASTy reader supports all the traditional language features as well as the following brand-new features:
-- [Enumerations](http://dotty.epfl.ch/docs/reference/enums/enums.html)
-- [Intersection Types](http://dotty.epfl.ch/docs/reference/new-types/intersection-types.html)
-- [Opaque Type Aliases](http://dotty.epfl.ch/docs/reference/other-new-features/opaques.html)
-- [Type Lambdas](http://dotty.epfl.ch/docs/reference/new-types/type-lambdas.html)
-- [Contextual Abstractions](http://dotty.epfl.ch/docs/reference/contextual/motivation.html) (new syntax)
-- [Open Classes](http://dotty.epfl.ch/docs/reference/other-new-features/open-classes.html) (and inheritance of super traits)
-- [Export Clauses](http://dotty.epfl.ch/docs/reference/other-new-features/export.html)
+- [Enumerations]({% link _scala3-reference/enums/enums.md %})
+- [Intersection Types]({% link _scala3-reference/new-types/intersection-types.md %})
+- [Opaque Type Aliases]({% link _scala3-reference/other-new-features/opaques.md %})
+- [Type Lambdas]({% link _scala3-reference/new-types/type-lambdas.md %})
+- [Contextual Abstractions]({% link _scala3-reference/contextual.md %}) (new syntax)
+- [Open Classes]({% link _scala3-reference/other-new-features/open-classes.md %}) (and inheritance of super traits)
+- [Export Clauses]({% link _scala3-reference/other-new-features/export.md %})
 
 We have limited support on:
-- [Top-Level Definitions](http://dotty.epfl.ch/docs/reference/dropped-features/package-objects.html)
-- [Extension Methods](http://dotty.epfl.ch/docs/reference/contextual/extension-methods.html)
+- [Top-Level Definitions]({% link _scala3-reference/dropped-features/package-objects.md %})
+- [Extension Methods]({% link _scala3-reference/contextual/extension-methods.md %})
 
 More exotic features are not supported:
-- [Context Functions](http://dotty.epfl.ch/docs/reference/contextual/context-functions.html)
-- [Polymorphic Function Types](http://dotty.epfl.ch/docs/reference/new-types/polymorphic-function-types.html)
-- [Trait Parameters](http://dotty.epfl.ch/docs/reference/other-new-features/trait-parameters.html)
+- [Context Functions]({% link _scala3-reference/contextual/context-functions.md %})
+- [Polymorphic Function Types]({% link _scala3-reference/new-types/polymorphic-function-types.md %})
+- [Trait Parameters]({% link _scala3-reference/other-new-features/trait-parameters.md %})
 - `@static` Annotation
 - `@alpha` Annotation
-- [Functions and Tuples larger than 22 parameters](https://dotty.epfl.ch/docs/reference/dropped-features/limit22.html)
-- [Match Types](https://dotty.epfl.ch/docs/reference/new-types/match-types.html)
-- [Union Types](https://dotty.epfl.ch/docs/reference/new-types/union-types.html)
-- [Multiversal Equality](https://dotty.epfl.ch/docs/reference/contextual/multiversal-equality.html) (unless explicit)
-- [Inline](https://dotty.epfl.ch/docs/reference/metaprogramming/inline.html) (including Scala 3 macros)
-- [Kind Polymorphism](https://dotty.epfl.ch/docs/reference/other-new-features/kind-polymorphism.html) (the `scala.AnyKind` upper bound)
+- [Functions and Tuples larger than 22 parameters]({% link _scala3-reference/dropped-features/limit22.md %})
+- [Match Types]({% link _scala3-reference/new-types/match-types.md %})
+- [Union Types]({% link _scala3-reference/new-types/union-types.md %})
+- [Multiversal Equality]({% link _scala3-reference/contextual/multiversal-equality.md %}) (unless explicit)
+- [Inline]({% link _scala3-reference/metaprogramming/inline.md %}) (including Scala 3 macros)
+- [Kind Polymorphism]({% link _scala3-reference/other-new-features/kind-polymorphism.md %}) (the `scala.AnyKind` upper bound)
 
 ### A Scala 2.13 module can depend on a Scala 3 artifact
 

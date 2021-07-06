@@ -45,6 +45,8 @@ collections:
   getting-started:
     output: true
     permalink: /:collection/:path.html
+  scala3-reference: # not really a collection, but this is the only way I found to be able to generate the navigation bar on the right
+    output: true
   ja: # Japanese translations
     output: true
     permalink: /:collection/:path.html
@@ -125,13 +127,14 @@ defaults:
       permalink: "/scala3/guides/macros/:title.html"
   -
     scope:
-      path: "_overviews/scala3-reference"
+      path: "_scala3-reference"
     values:
       scala3: true
       partof: scala3-reference
+      type: section
       overview-name: "Scala 3 Language Reference"
       layout: multipage-overview
-      permalink: "/scala3/guides/reference/:title.html"
+      permalink: "/scala3/reference/:path.html"
   -
     scope:
       path: "scala3"
@@ -142,7 +145,7 @@ defaults:
 highlighter: rouge
 permalink: /:categories/:title.html:output_ext
 baseurl:
-scala3ref: "/scala3/guides/reference"
+scala3ref: "/scala3/reference"
 exclude: ["vendor"]
 plugins:
   - jekyll-redirect-from

@@ -40,7 +40,7 @@ scala3-sections:
     - title: "语言参考手册"
       description: "Scala 3 语言参考手册"
       icon: "fa fa-book"
-      link: https://dotty.epfl.ch/docs/reference/overview.html
+      link: /scala3/reference/overview.html
 
 scala2-sections:
 

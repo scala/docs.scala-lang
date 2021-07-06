@@ -56,7 +56,7 @@ Before getting deep into reimplementing a macro you should ask yourself:
 - Can I use `inline` and the `scala.compiletime` operations to reimplement my logic?
 - Can I use the simpler and safer expression based macros?
 - Do I really need to access the AST?
-- Can I use a [match type](https://dotty.epfl.ch/docs/reference/new-types/match-types.html) as return type?
+- Can I use a [match type](/scala3/reference/new-types/match-types.html) as return type?
 
 You can learn all the new metaprogramming concepts by reading the [Macro Tutorial][scala3-macros].
 
