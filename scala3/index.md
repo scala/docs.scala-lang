@@ -44,5 +44,9 @@ sections:
         description: "Highlights of new features for Scaladoc"
         icon: "fa fa-star"
         link: /scala3/scaladoc.html
+      - title: "Talks"
+        description: "Talks about Scala 3 that can be watched online"
+        icon: "fa fa-play-circle"
+        link: /scala3/talks.html
 
 ---
