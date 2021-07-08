@@ -2,7 +2,7 @@
 title: Kind Projector Migration
 type: section
 description: This section shows how to migrate from the kind-projector plugin to Scala 3 kind-projector syntax
-num: 26
+num: 27
 previous-page: plugin-intro
 next-page: external-resources
 ---

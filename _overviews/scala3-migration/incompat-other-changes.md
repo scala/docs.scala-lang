@@ -2,7 +2,7 @@
 title: Other Changed Features
 type: section
 description: This chapter details all incompatibilities caused by changed features
-num: 18
+num: 19
 previous-page: incompat-contextual-abstractions
 next-page: incompat-type-checker
 ---

@@ -2,7 +2,7 @@
 title: Prerequisites
 type: section
 description: This section details the prerequisites of migration to Scala 3
-num: 9
+num: 10
 previous-page: tutorial-intro
 next-page: tutorial-sbt
 ---

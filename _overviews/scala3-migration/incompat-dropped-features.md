@@ -2,7 +2,7 @@
 title: Dropped Features
 type: section
 description: This chapter details all the dropped features
-num: 16
+num: 17
 previous-page: incompat-syntactic
 next-page: incompat-contextual-abstractions
 ---

@@ -2,7 +2,7 @@
 title: Scaladoc settings compatibility between Scala2 and Scala3
 type: section
 description: This chapter lists all the scaladoc options for Scala 2 and Scala 3, and explains the relations between them.
-num: 24
+num: 25
 previous-page: options-new
 next-page: plugin-intro
 ---

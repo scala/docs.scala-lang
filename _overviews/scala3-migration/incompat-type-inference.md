@@ -2,7 +2,7 @@
 title: Type Inference
 type: section
 description: This chapter details the incompatibilities caused by the new type inference algorithm
-num: 20
+num: 21
 previous-page: incompat-type-checker
 next-page: options-intro
 ---
