@@ -227,7 +227,7 @@ Or similarly for an some subexpression
 case '{ Some($x: Boolean) } => // x: Expr[Boolean]
 ```
 
-### Matching reciver of methods
+### Matching receiver of methods
 
 When we want to match the receiver of a method we need to explicitly state its type
 
