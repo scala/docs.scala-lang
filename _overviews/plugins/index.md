@@ -42,18 +42,16 @@ include:
 - Alternate compiler back ends such as [Scala.js](https://www.scala-js.org), [Scala Native](http://scala-native.org), and
   [Fortify SCA for Scala](https://developer.lightbend.com/docs/fortify/current/).
 - Linters such as [Wartremover](https://www.wartremover.org) and [Scapegoat](https://github.com/sksamuel/scapegoat).
-- Plugins that support reformatting and other changes
-  to source code, such as [scalafix](https://scalacenter.github.io/scalafix/) and [scalafmt](https://scalameta.org/scalafmt/) (which are
-  built on the [semanticdb](https://scalameta.org/docs/semanticdb/guide.html) and [scalahost](https://github.com/Duhemm/scalahost) compiler plugins).
 - Plugins that alter Scala's syntax, such as [kind-projector](https://github.com/typelevel/kind-projector).
 - Plugins that alter Scala's behavior around errors and warnings,
-  such as [silencer](https://github.com/ghik/silencer).
+  such as [silencer](https://github.com/ghik/silencer), [splain](https://github.com/tek/splain) and [clippy](https://scala-clippy.org/).
 - Plugins that analyze the structure of source code, such as
-  [Sculpt](https://github.com/lightbend/scala-sculpt) and [acyclic](https://github.com/lihaoyi/acyclic).
+  [Sculpt](https://github.com/lightbend/scala-sculpt), [acyclic](https://github.com/lihaoyi/acyclic) and [graph-buddy](https://github.com/VirtusLab/graphbuddy).
 - Plugins that instrument user code to collect information,
   such as the code coverage tool [scoverage](https://github.com/scoverage/scalac-scoverage-plugin).
-- Plugins that add metaprogramming facilities to Scala,
-  such as [Macro Paradise](https://github.com/scalamacros/paradise).
+- Plugins that enable tooling. One such plugin is [semanticdb](https://scalameta.org/docs/semanticdb/guide.html), which enables [scalafix](https://scalacenter.github.io/scalafix/) (a well-known refactoring and linting tool) to do its work. Another one is [Macro Paradise](https://github.com/scalamacros/paradise) (only needed for Scala 2.12).
+- Plugins that modify existing Scala constructs in user code,
+  such as [better-monadic-for](https://github.com/oleg-py/better-monadic-for) and [better-tostring](https://github.com/polyvariant/better-tostring).
 - Plugins that add entirely new constructs to Scala by
   restructuring user code, such as [scala-continuations](https://github.com/scala/scala-continuations).
 
