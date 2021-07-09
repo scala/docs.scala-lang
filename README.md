@@ -62,9 +62,9 @@ The markdown used in this site uses [kramdown](https://kramdown.gettalong.org/) 
 
 ### Markdown Editor for OSX ###
 
-There's a free markdown editor for OSX called [Mou](http://25.io/mou/). It's quite convenient to work with, and it generates the translated Markdown in real-time alongside of your editor window, as can be seen here:
+There's a free markdown editor for OSX called [MacDown](https://github.com/MacDownApp/macdown). It's quite convenient to work with, and it generates the translated Markdown in real-time alongside of your editor window, as can be seen here:
 
-![Mou Screen Shot](http://25.io/mou/img/1.png)
+![MacDown Screen Shot](https://raw.githubusercontent.com/MacDownApp/macdown/3e2a2bf101c215c143bf00d9f857965f0ee82487/assets/screenshot.png)
 
 ## License ##
 
