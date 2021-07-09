@@ -71,7 +71,7 @@ Kada izraz koristi više operatora, operatori se primjenjuju bazirano na priorit
 &
 ^
 |
-(sva slova)
+(sva slova, $, _)
 ```
 Ovo se odnosi na metode koje definišete. Npr, sljedeći izraz:
 ```
