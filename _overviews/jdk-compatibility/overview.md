@@ -32,7 +32,7 @@ We generally recommend JDK 8 or 11 for *compiling* Scala code. Since the JVM ten
 
 If you compile on JDK 11+ but have users on JDK 8, additional care is needed to avoid using APIs and features that don't exist in 8. Therefore, compiling on 8 may be the safer choice. Some Scala developers use JDK 11+ for their daily work but do release builds on JDK 8.
 
-Additionally, you can also run your scala application on [GraalVM](https://www.graalvm.org/docs/reference-manual/scala/) which is a JVM. GraalVM performs well on the Scala benchmarks, and it benefits from GraalVM runtime and runs faster too.
+Additionally, you can also run your scala application on GraalVM which is a JVM. GraalVM performs well on the Scala benchmarks, and it benefits from GraalVM runtime and runs faster too.
 
 ## Long Term Support (LTS) versions
 
@@ -50,7 +50,7 @@ In almost every case, you're free to use the JDK and JVM of your choice.
 
 JDK 8 users typically use the Oracle JDK or some flavor of OpenJDK.
 
-Most JDK 11+ users are using either OpenJDK or [GraalVM](https://www.graalvm.org/docs/reference-manual/scala/) which runs in the context of OpenJDK.
+Most JDK 11+ users are using either OpenJDK or GraalVM which runs in the context of OpenJDK.
 
 OpenJDK comes in various flavors, offered by different providers.  We build and test Scala using [AdoptOpenJDK](https://adoptopenjdk.net) in particular, but the differences are unlikely to matter to most users.
 
