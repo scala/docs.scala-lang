@@ -83,18 +83,18 @@ Here are some things you can do with a mutable `Map`:
 ```scala
 // add elements with +=
 states += ("AZ" -> "Arizona")
-states += ("CO" -> "Colorado", "KY" -> "Kentucky")
+states ++= Map("CO" -> "Colorado", "KY" -> "Kentucky")
 
 // remove elements with -=
 states -= "KY"
-states -= ("AZ", "CO")
+states --= List("AZ", "CO")
 
 // update elements by reassigning them
 states("AK") = "Alaska, The Big State"
 
-// retain elements by supplying a function that operates on
+// filter elements by supplying a function that operates on
 // the keys and/or values
-states.retain((k,v) => k == "AK")
+states.filterInPlace((k,v) => k == "AK")
 ```
 
 
