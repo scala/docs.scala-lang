@@ -120,7 +120,7 @@ permalink: /overviews/quasiquotes/:title.html
                               | Quasiquote                                                                                                                  | Type
 ------------------------------|-----------------------------------------------------------------------------------------------------------------------------|-----------
  [Val][401]                   | `q"$mods val $tname: $tpt = $expr"` or `q"$mods val $pat = $expr"`                                                          | ValDef
- [Var][401]                   | `q"$mods var $tname: $tpt = $expr"` or `q"$mods val $pat = $expr"`                                                          | ValDef
+ [Var][401]                   | `q"$mods var $tname: $tpt = $expr"` or `q"$mods var $pat = $expr"`                                                          | ValDef
  [Val Pattern][403]           | `q"$mods val $pat: $tpt = $expr"`                                                                                           | Tree
  [Var Pattern][404]           | `q"$mods var $pat: $tpt = $expr"`                                                                                           | Tree
  [Method][403]                | `q"$mods def $tname[..$tparams](...$paramss): $tpt = $expr"`                                                                | DefDef
