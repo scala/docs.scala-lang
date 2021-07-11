@@ -266,7 +266,7 @@ advanced feature in Scala, to be used only by those most well-versed in
 its pitfalls. Without care, excessive use of symbolic method names can
 easily transform even the simplest code into symbolic soup.
 
-## Constants, Values and Variable
+## Constants, Values and Variables
 
 Constant names should be in upper camel case. Similar to Java's `static final`
 members, if the member is final, immutable and it belongs to a package
