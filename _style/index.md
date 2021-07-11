@@ -20,7 +20,7 @@ This document is intended to outline some basic Scala stylistic guidelines which
     - [Accessors/Mutators](naming-conventions.html#accessorsmutators)
     - [Parentheses](naming-conventions.html#parentheses)
     - [Symbolic Method Names](naming-conventions.html#symbolic-method-names)
-  - [Constants, Values, Variable and Methods](naming-conventions.html#constants-values-variable-and-methods)
+  - [Constants, Values and Variables](naming-conventions.html#constants-values-and-variables)
   - [Type Parameters (generics)](naming-conventions.html#type-parameters-generics)
     - [Higher-Kinds and Parameterized Type parameters](naming-conventions.html#higher-kinds-and-parameterized-type-parameters)
   - [Annotations](naming-conventions.html#annotations)
