@@ -27,8 +27,7 @@ For example, this `StringUtils` object contains a small collection of string-rel
 
 ```scala
 object StringUtils:
-  def isNullOrEmpty(s: String): Boolean =
-    if (s==null || s.trim.equals("")) true else false
+  def isNullOrEmpty(s: String): Boolean = s == null || s.trim.isEmpty
   def leftTrim(s: String): String = s.replaceAll("^\\s+", "")
   def rightTrim(s: String): String = s.replaceAll("\\s+$", "")
 ```
@@ -91,6 +90,5 @@ NOTE: I don’t know if this is worth keeping, but I’m leaving it here as a co
 > You may read that objects are used to _reify_ traits into modules.
 > _Reify_ means, “to take an abstract concept and turn it into something concrete.” This is what happens in these examples, but “implement” is a more familiar word for most people than “reify.”
 {% endcomment %}
-
 
 
