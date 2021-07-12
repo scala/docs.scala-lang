@@ -252,7 +252,7 @@ a.tail                                    // List(20, 30, 40, 10)
 a.take(3)                                 // List(10, 20, 30)
 a.takeRight(2)                            // List(40, 10)
 a.takeWhile(_ < 30)                       // List(10, 20)
-a.filter(_ < 30).map(_ * 10)              // List(100, 200)
+a.filter(_ < 30).map(_ * 10)              // List(100, 200, 100)
 
 val fruits = List("apple", "pear")
 fruits.map(_.toUpperCase)                 // List(APPLE, PEAR)
