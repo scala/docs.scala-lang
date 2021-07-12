@@ -9,8 +9,8 @@ next-page: reflection
 
 ## Code blocks
 A quoted code block `'{ ... }` is syntactically similar to a string quote `" ... "` with the difference that the first contains typed code.
-To insert a code into other code we use the `$expr` or `${ expr }` where `expr` is of type `Expr[T]`.
-Intuitively, the code directly within the quote is not executed now, while the code within the splices is evaluated and their results are then spliced into the surrounding expression.
+To insert code into other code, we can use the syntax `$expr` or `${ expr }`, where `expr` is of type `Expr[T]`.
+Intuitively, the code directly within the quote (`'{ ... }`) is not executed now, while the code within the splice (`${ ... }`) is evaluated and the results spliced into the surrounding expression.
 
 ```scala
 val msg = Expr("Hello")
@@ -19,15 +19,14 @@ println(printHello.show) // print("Hello")
 ```
 
 In general, the quote delays the execution while the splice makes it happen before the surrounding code.
-This generalisation allows us to also give meaning to a `${ .. }` that is not within a quote, this evaluate the code within the splice at compile-time and place the result in the generated code.
-Due to some technical considerations we only allow it directly within `inline` definitions that we call a [macro][macros].
+This generalisation allows us to also give meaning to a `${ ... }` that is not within a quote. This evaluates the code within the splice at compile-time and places the result in the generated code.
+Due to some technical considerations, only non-quoted splices are allowed directly within `inline` definitions that we call a [macro][macros].
 
-It is possible to write a quote within a quote, but usually when we write macros we do not encounter such code.
+It is possible to write a quote within a quote, but this pattern is not common when writing macros.
 
 ## Level consistency
-One cannot simply write any arbitrary code within quotes and within splices.
-A part of the program will live at compile-time and the other will live at runtime.
-Consider the following ill-constructed code.
+One cannot simply write any arbitrary code within quotes and within splices, as one part of the program will live at compile-time and the other will live at runtime.
+Consider the following ill-constructed code:
 
 ```scala
 def myBadCounter1(using Quotes): Expr[Int] = {
@@ -36,9 +35,9 @@ def myBadCounter1(using Quotes): Expr[Int] = {
 }
 ```
 The problem with this code is that `x` exists during compilation, but then we try to use it after the compiler has finished (maybe even in another machine).
-Clearly it would be impossible to access its value and update it.
+Clearly, it would be impossible to access its value and update it.
 
-Now consider the dual version, where we define the variable at runtime and try to access it at compile-time.
+Now consider the dual version, where we define the variable at runtime and try to access it at compile-time:
 ```scala
 def myBadCounter2(using Quotes): Expr[Int] = '{
   var x = 0
@@ -62,58 +61,58 @@ We introduce _levels_ as a count of the number of quotes minus the number of spl
 }
 ```
 
-The system will allow at any level references to global definitions such as `println`, but will restrict references to local definitions.
+The system will allow references to global definitions such as `println` at any level, but will restrict references to local definitions.
 A local definition can only be accessed if it is defined at the same level as its reference.
 This will catch the errors in `myBadCounter1` and `myBadCounter2`.
 
-Even though we cannot refer to variable inside of a quote, we can still pass its current value to it by lifting the value to an expression using `Expr.apply`.
+Even though we cannot refer to a variable inside of a quote, we can still pass its current value through a quote by lifting the value to an expression using `Expr.apply`.
 
 
 ## Generics
 
-When using type parameters or other kinds of abstract types with quoted code we will need to keep track of some of these types explicitly.
+When using type parameters or other kinds of abstract types with quoted code, we will need to keep track of some of these types explicitly.
 Scala uses erased-types semantics for its generics.
 This implies that types are removed from the program when compiling and the runtime does not have to track all types at runtime.
 
-Consider the following code
+Consider the following code:
 ```scala
-def evalAndUse[T](x: Expr[T]) = '{
+def evalAndUse[T](x: Expr[T])(using Quotes) = '{
   val x2: T = $x // error
   ... // use x2
 }
 ```
 
-Here we will get an error telling us that we are missing a contextual `Type[T]`.
-Therefore we can easily fix it by writing
+Here, we will get an error telling us that we are missing a contextual `Type[T]`.
+Therefore, we can easily fix it by writing:
 ```scala
-def evalAndUse[X](x: Expr[X])(using Type[X])(using Quotes) = '{
-  val x2: X = $x
+def evalAndUse[T](x: Expr[T])(using Type[T])(using Quotes) = '{
+  val x2: T = $x
   ... // use x2
 }
 ```
-This code will be equivalent to the more verbose
+This code will be equivalent to this more verbose version:
 ```scala
-def evalAndUse[X](x: Expr[X])(using t: Type[X])(using Quotes) = '{
+def evalAndUse[T](x: Expr[T])(using t: Type[T])(using Quotes) = '{
   val x2: t.Underlying = $x
   ... // use x2
 }
 ```
-Note that `Type` has a type member called `Underlying` that refers to the type held within the `Type`, in this case `t.Underlying` is `X`.
-Note that even if we used it implicitly is better to keep it contextual as some changes inside the quote may require it.
+Note that `Type` has a type member called `Underlying` that refers to the type held within the `Type`; in this case, `t.Underlying` is `T`.
+Even if we use the `Type` implicitly, is generally better to keep it contextual as some changes inside the quote may require it.
 The less verbose version is usually the best way to write the types as it is much simpler to read.
-In some cases, we will not know statically the type within the `Type` and will need to use the `.T` to refer to it.
+In some cases, we will not statically know the type within the `Type` and will need to use the `t.Underlying` to refer to it.
 
 When do we need this extra `Type` parameter?
-* When a type is abstract and it is used in a level that is larger than the current level.
+* When a type is abstract and it is used at a level that is deeper than the current level.
 
-When you add a `Type` contextual parameter to a method you will either get it from another context parameter or implicitly with a call to `Type.of`.
+When you add a `Type` contextual parameter to a method, you will either get it from another context parameter or implicitly with a call to `Type.of`:
 ```scala
 evalAndUse(Expr(3))
 // is equivalent to
 evalAndUse[Int](Expr(3))(using Type.of[Int])
 ```
-As you may have guessed, not every type is can be used in this `Type.of[..]` out of the box.
-We cannot recover abstract types that have already been erased.
+As you may have guessed, not every type can be used as a parameter to `Type.of[..]` out of the box.
+For example, we cannot recover abstract types that have already been erased:
 ```scala
 def evalAndUse[T](x: Expr[T])(using Quotes) =
   given Type[T] = Type.of[T] // error
@@ -124,14 +123,14 @@ def evalAndUse[T](x: Expr[T])(using Quotes) =
 ```
 
 But we can write more complex types that depend on these abstract types.
-For example, if we look for or construct explicitly a `Type[List[T]]`, then the system will require a `Type[T]` in the current context to compile.
+For example, if we look for or explicitly construct a `Type[List[T]]`, then the system will require a `Type[T]` in the current context to compile.
 
-Good code should only add `Type` to the context parameters and never use them explicitly.
-Explicit use is useful while debugging at the cost of conciseness and clarity.
+Good code should only add `Type`s to the context parameters and never use them explicitly.
+However, explicit use is useful while debugging, though it comes at the cost of conciseness and clarity.
 
 
 ## ToExpr
-The `Expr.apply` method uses intances of `ToExpr` to generate an expression that will create a copy of the value.
+The `Expr.apply` method uses instances of `ToExpr` to generate an expression that will create a copy of the value.
 ```scala
 object Expr:
   def apply[T](x: T)(using Quotes, ToExpr[T]): Expr[T] =
@@ -161,16 +160,16 @@ given ToExpr[StringContext] with {
 }
 ```
 The `Varargs` constructor just creates an `Expr[Seq[T]]` which we can efficiently splice as a varargs.
-In general any sequence can be spliced with `$mySeq: _*` to splice it a varargs.
+In general, any sequence can be spliced with `$mySeq: _*` to splice it as a varargs.
 
 ## Quoted patterns
-Quotes can also be used to check if an expression is equivalent to another or deconstruct an expression into it parts.
+Quotes can also be used to check if an expression is equivalent to another or to deconstruct an expression into its parts.
 
 
 ### Matching exact expression
 
-The simples thing we can do is to check if an expression matches another know expression.
-Bellow we show how we can match some expressions using `case '{...} =>`
+The simplest thing we can do is to check if an expression matches another known expression.
+Below, we show how we can match some expressions using `case '{...} =>`.
 
 ```scala
 def valueOfBoolean(x: Expr[Boolean])(using Quotes): Option[Boolean] =
@@ -189,7 +188,7 @@ def valueOfBooleanOption(x: Expr[Option[Boolean]])(using Quotes): Option[Option[
 
 ### Matching partial expression
 
-To make thing more compact, we can also match patially the expression using a `$` to match arbitrarry code and extract it.
+To make things more compact, we can also match a part of the expression using a splice (`$`) to match arbitrary code and extract it.
 
 ```scala
 def valueOfBooleanOption(x: Expr[Option[Boolean]])(using Quotes): Option[Option[Boolean]] =
@@ -201,8 +200,8 @@ def valueOfBooleanOption(x: Expr[Option[Boolean]])(using Quotes): Option[Option[
 
 ### Matching types of expression
 
-We can also match agains code of an arbitrary type `T`.
-Bellow we match agains `$x` of type `T` and we get out an `x` of type `Expr[T]`.
+We can also match against code of an arbitrary type `T`.
+Below, we match against `$x` of type `T` and we get out an `x` of type `Expr[T]`.
 
 ```scala
 def exprOfOption[T: Type](x: Expr[Option[T]])(using Quotes): Option[Expr[T]] =
@@ -212,7 +211,7 @@ def exprOfOption[T: Type](x: Expr[Option[T]])(using Quotes): Option[Expr[T]] =
     case _ => None
 ```
 
-We can also check for the type of an expression
+We can also check for the type of an expression:
 
 ```scala
 def valueOf(x: Expr[Any])(using Quotes): Option[Any] =
@@ -221,7 +220,7 @@ def valueOf(x: Expr[Any])(using Quotes): Option[Any] =
     case '{ $x: Option[Boolean] }  => valueOfBooleanOption(x) // x: Expr[Option[Boolean]]
     case _ => None
 ```
-Or similarly for an some subexpression
+Or similarly for a partial expression:
 
 ```scala
 case '{ Some($x: Boolean) } => // x: Expr[Boolean]
@@ -229,15 +228,15 @@ case '{ Some($x: Boolean) } => // x: Expr[Boolean]
 
 ### Matching receiver of methods
 
-When we want to match the receiver of a method we need to explicitly state its type
+When we want to match the receiver of a method, we need to explicitly state its type:
 
 ```scala
 case '{ ($ls: List[Int]).sum } =>
 ```
 
-If we would have written `$ls.sum` we would not have been able to know the type of `ls` and which `sum` method we are calling.
+If we would have written `$ls.sum`, we would not have been able to know the type of `ls` and which `sum` method we are calling.
 
-Another common case where we need type annotations is for infix operations.
+Another common case where we need type annotations is for infix operations:
 ```scala
 case '{ ($x: Int) + ($y: Int) } =>
 case '{ ($x: Double) + ($y: Double) } =>
@@ -267,9 +266,9 @@ def exprOfOption[T: Type](x: Expr[Option[T]])(using Quotes): Option[Expr[T]] =
 Note that this time we have added the `T` explicitly in the pattern, even though it could be inferred.
 By referring to the generic type `T` in the pattern, we are required to have a given `Type[T]` in scope.
 This implies that `$x: T` will only match if `x` is of type `Expr[T]`.
-In this particular case this condition will always be true.
+In this particular case, this condition will always be true.
 
-Now consider the following variant where `x` is an optional value with a (statically) unknown element type.
+Now consider the following variant where `x` is an optional value with a (statically) unknown element type:
 
 ```scala
 def exprOfOptionOf[T: Type](x: Expr[Option[Any]])(using Quotes): Option[Expr[T]] =
@@ -277,7 +276,7 @@ def exprOfOptionOf[T: Type](x: Expr[Option[Any]])(using Quotes): Option[Expr[T]]
     case '{ Some($x: T) } => Some(x) // x: Expr[T]
     case _ => None
 ```
-This time the pattern ` Some($x: T)` will only match if the type of the option is `Some[T]`.
+This time, the pattern `Some($x: T)` will only match if the type of the Option is `Some[T]`.
 
 ```scala
 exprOfOptionOf[Int]('{ Some(3) })   // Some('{3})
@@ -302,10 +301,12 @@ def exprOptionToList(x: Expr[Option[Any]])(using Quotes): Option[Expr[List[Any]]
 ```
 
 The pattern `$x: t` will match an expression of any type and `t` will be bound to the type of the pattern.
-This type is only valid in the right-hand side of the `case`, in the example we can use it to construct the list `List[t]($x)` (`List($x)` would also work).
-As this is a type that is not statically known we need a given `Type[t]` in scope, luckily the quoted pattern will automatically provide this.
+This type variable is only valid in the right-hand side of the `case`.
+In this example, we use it to construct the list `List[t]($x)` (`List($x)` would also work).
+As this is a type that is not statically, known we need a given `Type[t]` in scope.
+Luckily, the quoted pattern will automatically provide this for us.
 
-The simple `case '{ $expr: tpe } =>` pattern is very useful if we want to know the precise type of the expression.
+The simple pattern `case '{ $expr: tpe } =>` is very useful if we want to know the precise type of the expression.
 ```scala
 val expr: Expr[Option[Int]] = ...
 expr match
@@ -316,9 +317,13 @@ expr match
 ```
 
 In some cases we need to define a pattern variable that is referenced several times or has some type bounds.
-To achieve this it is possible to create pattern variables at the start of the pattern using `type t` with a type pattern variable.
+To achieve this, it is possible to create pattern variables at the start of the pattern using `type t` with a type pattern variable.
 
 ```scala
+/**
+ * Use: Converts a redundant `list.map(f).map(g)` to only use one call
+ * to `map`: `list.map(y => g(f(y)))`.
+ */
 def fuseMap[T: Type](x: Expr[List[T]])(using Quotes): Expr[List[T]] = x match {
   case '{
     type u
@@ -327,21 +332,21 @@ def fuseMap[T: Type](x: Expr[List[T]])(using Quotes): Expr[List[T]] = x match {
       .map($f: `u` => `v`)
       .map($g: `v` => T)
     } =>
-    '{ $ls.map(x => $g($f(x))) }
+    '{ $ls.map(y => $g($f(y))) }
   case _ => x
 }
 ```
 
-Here we define two type variables `u` and `v` and then refer to them using `` `u` `` and `` `v` ``.
-We do not refer to them using `u` or `v` because those would be interpreted as new type variables and hence duplicates.
+Here, we define two type variables `u` and `v` and then refer to them using `` `u` `` and `` `v` ``.
+We do not refer to them using `u` or `v` (without backticks) because those would be interpreted as new type variables with the same variable name.
 This notation follows the normal [stable identifier patterns](https://www.scala-lang.org/files/archive/spec/2.13/08-pattern-matching.html#stable-identifier-patterns) syntax.
-Furthermore, if the type variable needs to be constrained we can add bounds directly on the type definition `case '{ type u <: AnyRef; ... } =>`.
+Furthermore, if the type variable needs to be constrained, we can add bounds directly on the type definition: `case '{ type u <: AnyRef; ... } =>`.
 
 Note that the previous case could also be written as `case '{ ($ls: List[u]).map[v]($f).map[T]($g) =>`.
 
 #### Quote types patterns
 
-Type represented with `Type[T]` can be matched on using the patten `case '[...] =>`.
+Types represented with `Type[T]` can be matched on using the patten `case '[...] =>`.
 
 ```scala
 def mirrorFields[T: Type](using Quotes): List[String] =
@@ -358,11 +363,11 @@ mirrorFields[(Int, String, Int)] // List("Int", "String", "Int")
 mirrorFields[Tuple]              // error: Expected known tuple but got: Tuple
 ```
 
-As with expression quote patterns type variables are represented using lower case names.
+As with expression quote patterns, type variables are represented using lower case names.
 
 ## FromExpr
 
-The `Expr.value`, `Expr.valueOrError` `Expr.unapply` method uses intances of `FromExpr` to to extract the value if possible.
+The `Expr.value`, `Expr.valueOrError`, and `Expr.unapply` methods uses intances of `FromExpr` to extract the value if possible.
 ```scala
 extension [T](expr: Expr[T]):
   def value(using Quotes)(using fromExpr: FromExpr[T]): Option[T] =
@@ -383,9 +388,9 @@ trait FromExpr[T]:
   def unapply(x: Expr[T])(using Quotes): Option[T]
 ```
 
-The `FromExpr.unapply` method will take a value `T` and generate code that will construct a copy of this value at runtime.
+The `FromExpr.unapply` method will take a value `x` and generate code that will construct a copy of this value at runtime.
 
-We can define our own `FromExpr`s like:
+We can define our own `FromExpr`s like so:
 ```scala
 given FromExpr[Boolean] with {
   def unapply(x: Expr[Boolean])(using Quotes): Option[Boolean] =
@@ -403,8 +408,8 @@ given FromExpr[StringContext] with {
   }
 }
 ```
-Note that we handled two cases for the `StringContext`.
-As it is a `case class` it can be created with the `new StringContext` or with the `StringContext.apply` in the companion object.
+Note that we handled two cases for `StringContext`.
+As it is a `case class`, it can be created with `new StringContext` or with `StringContext.apply` from the companion object.
 We also used the `Varargs` extractor to match the arguments of type `Expr[Seq[String]]` into a `Seq[Expr[String]]`.
 Then we used the `Exprs` to match known constants in the `Seq[Expr[String]]` to get a `Seq[String]`.
 
@@ -412,10 +417,11 @@ Then we used the `Exprs` to match known constants in the `Seq[Expr[String]]` to 
 ## The Quotes
 The `Quotes` is the main entry point for the creation of all quotes.
 This context is usually just passed around through contextual abstractions (`using` and `?=>`).
-Each quote scope will provide have its own `Quotes`.
-New scopes are introduced each time a splice is introduced `${...}`.
+Each quote scope will have its own `Quotes`.
+New scopes are introduced each time a splice is introduced (`${ ... }`).
 Though it looks like a splice takes an expression as argument, it actually takes a `Quotes ?=> Expr[T]`.
-Therefore we could actually write it explicitly as `${ (using q) => ... }`, this might be useful when debugging to avoid generated names for these scopes.
+Therefore, we could actually write it explicitly as `${ (using q) => ... }`.
+This might be useful when debugging to avoid generated names for these scopes.
 
 The method `scala.quoted.quotes` provides a simple way to use the current `Quotes` without naming it.
 It is usually imported along with the `Quotes` using `import scala.quoted.*`.
@@ -425,9 +431,9 @@ ${ (using q1) => body(using q1) }
 // equivalent to
 ${ body(using quotes) }
 ```
-If you explicitly name a `Quotes` `quotes` you will shadow this definition.
+Warning: If you explicitly name a `Quotes` `quotes`, you will shadow this definition.
 
-When we write a top level splice in a macro we are calling something similar to the following definition.
+When we write a top-level splice in a macro, we are calling something similar to the following definition.
 This splice will provide the initial `Quotes` associated with the macro expansion.
 ```scala
 def $[T](x: Quotes ?=> Expr[T]): T = ...
@@ -452,12 +458,12 @@ def $[T](using q: Quotes)(x: q.Nested ?=> Expr[T]): T = ...
 ```
 
 ## β-reduction
-When we have a lambda applied to an argument in a quote `'{ ((x: Int) => x + x)(y) }` we do not reduce it within the quote, the code is kept as is.
-There is an optimisation that β-reduce all lambdas directly applied to parameters to avoid the creation of the closure.
-This will not be visible from the quotes perspective.
+When we have a lambda applied to an argument in a quote `'{ ((x: Int) => x + x)(y) }`, we do not reduce it within the quote; the code is kept as-is.
+There is an optimisation that will β-reduce all lambdas directly applied to parameters to avoid the creation of a closure.
+This will not be visible from the quote's perspective.
 
-Sometime it is useful to perform this β-reduction on the quotes directly.
-We provide the function `Expr.betaReduce[T]` that receives an `Expr[T]` and β-reduce if it contains a directly applied lambda.
+Sometimes it is useful to perform this β-reduction on the quotes directly.
+We provide the function `Expr.betaReduce[T]` that receives an `Expr[T]` and β-reduces if it contains a directly-applied lambda.
 
 ```scala
 Expr.betaReduce('{ ((x: Int) => x + x)(y) }) // returns '{ val x = y; x + x }
@@ -469,33 +475,32 @@ There are two ways to summon values in a macro.
 The first is to have a `using` parameter in the inline method that is passed explicitly to the macro implementation.
 
 ```scala
-inline def setFor[T](using ord: Ordering[T]): Set[T] =
-  ${ setForCode[T]('ord) }
+inline def setOf[T](using ord: Ordering[T]): Set[T] =
+  ${ setOfCode[T]('ord) }
 
-def setForCode[T: Type](ord: Expr[Ordering[T]])(using Quotes): Expr[Set[T]] =
+def setOfCode[T: Type](ord: Expr[Ordering[T]])(using Quotes): Expr[Set[T]] =
   '{ TreeSet.empty[T](using $ord) }
 ```
 
 In this scenario, the context parameter is found before the macro is expanded.
-If not found, the macro will not expand.
+If not found, the macro will not be expanded.
 
 The second way is using `Expr.summon`.
-This allows to programatically search for distinct given expressions.
-The following example is similar to the previous example.
+This allows us to programatically search for distinct given expressions.
+The following example is similar to the previous example:
 
 ```scala
-inline def setFor[T]: Set[T] =
-  ${ setForCode[T] }
+inline def setOf[T]: Set[T] =
+  ${ setOfCode[T] }
 
-def setForCode[T: Type](using Quotes): Expr[Set[T]] =
-  import scala.collection.immutable.*
+def setOfCode[T: Type](using Quotes): Expr[Set[T]] =
   Expr.summon[Ordering[T]] match
     case Some(ord) => '{ TreeSet.empty[T](using $ord) }
     case _ => '{ HashSet.empty[T] }
 ```
 
-The difference is that in this scenario we do start expanding the macro before the implicit search failure and we can write arbitrary code to handle the case where it is not found.
-Here we used `HashSet` and another valid implementation that does not need the `Ordering`.
+The difference is that, in the second scenario, we expand the macro before the implicit search is performed. We can therefore write arbitrary code to handle the case when an `Ordering[T]` is not found.
+Here, we used `HashSet` instead of `TreeSet` because the former does not need an `Ordering`.
 
 [macros]: {% link _overviews/scala3-macros/tutorial/macros.md %}
 [quotes]: {% link _overviews/scala3-macros/tutorial/quotes.md %}
