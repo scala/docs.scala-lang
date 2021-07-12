@@ -21,7 +21,7 @@ trait DB {
   def get(k: Key): Option[k.Value] // a dependent method
 }
 ```
-Given a key, the method `get` let's us access the map and potentially returns the stored value of type `k.Value`.
+Given a key, the method `get` lets us access the map and potentially returns the stored value of type `k.Value`.
 We can read this _path-dependent type_ as: "depending on the concrete type of the argument `k`, we return a matching value".
 
 For example, we could have the following keys:
