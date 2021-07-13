@@ -36,6 +36,8 @@ this course in the following video:
   <iframe width="560" height="315" src="https://www.youtube.com/embed/MSDJ7ehjrqo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
+This course is also a good way to upgrade your Scala 2 knowledge to Scala 3.
+
 After taking this course, you might be interested in improving your
 skills in specific areas by taking the courses [Parallel Programming],
 [Big Data Analysis with Scala and Spark], or [Programming Reactive Systems].
@@ -60,6 +62,20 @@ and Spark.
 [Programming Reactive Systems] (also available on [edX](https://www.edx.org/course/scala-akka-reactive))
 teaches how to write responsive, scalable, and resilient systems with the
 library Akka.
+
+### Scala Learning Path
+
+The diagram below summarizes the possible learning paths with our courses:
+
+![](/resources/images/learning-path.png)
+
+The “foundational” courses target programmers with no prior experience in Scala, whereas the “deepening”
+courses aim at strengthening Scala programmers skills in a specific domain (such as parallel programming).
+
+We recommend starting with either Effective Programming in Scala, or Functional Programming Principles in
+Scala followed by Functional Program Design. Then, you can complement your Scala skills by taking any
+of the courses Programming Reactive Systems, Parallel Programming, or Big Data Analysis with Scala and Spark.
+In case you take the Scala Specialization, you will end with the Scala Capstone Project.
 
 ### Scala 2 Courses
 
