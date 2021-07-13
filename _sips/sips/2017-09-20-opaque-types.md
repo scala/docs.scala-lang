@@ -670,8 +670,8 @@ package object groups {
 
   opaque type Unordered[A] = A
   object Unordered extends Wrapper[Unordered] {
-    def wraps[G[_], A](ga: G[A]): G[Reversed[A]] = ga
-    def unwrap[G[_], A](gfa: G[Reversed[A]]): G[A] = gfa
+    def wraps[G[_], A](ga: G[A]): G[Unordered[A]] = ga
+    def unwrap[G[_], A](gfa: G[Unordered[A]]): G[A] = gfa
     implicit def unorderedOrdering[A]: Ordering[Unordered[A]] =
       Ordering.by(_ => ())
   }
