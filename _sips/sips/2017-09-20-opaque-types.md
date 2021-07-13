@@ -122,7 +122,7 @@ signature of `apply` is redefined as `def apply(x: Double): Double`
 and that `val x: Logarithm = Logarithm(1e7)` is instead `val x: Double
 = Logarithm.apply(1e7)`.
 
-Value classes can rewrite many instances `Logarithm` in terms of
+Value classes can rewrite many instances of `Logarithm` in terms of
 `Double`, including local variables, method parameters, return types,
 and most fields. SIP-15 lays out the exact circumstances when these
 rules occur, and extension methods ensure that boxing and unboxing
@@ -293,7 +293,7 @@ package object usesites {
 }
 ```
 
-Note that the rational for this encoding is to allow users to convert from the opaque type
+Note that the rationale for this encoding is to allow users to convert from the opaque type
 and the underlying type in constant time. Users have to be able to tag complex type structures
 without having to reallocate, iterate over or inspect it.
 
