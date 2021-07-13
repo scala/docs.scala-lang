@@ -122,7 +122,7 @@ signature of `apply` is redefined as `def apply(x: Double): Double`
 and that `val x: Logarithm = Logarithm(1e7)` is instead `val x: Double
 = Logarithm.apply(1e7)`.
 
-Value classes can rewrite many instances `Logarithm` in terms of
+Value classes can rewrite many instances of `Logarithm` in terms of
 `Double`, including local variables, method parameters, return types,
 and most fields. SIP-15 lays out the exact circumstances when these
 rules occur, and extension methods ensure that boxing and unboxing
@@ -293,7 +293,7 @@ package object usesites {
 }
 ```
 
-Note that the rational for this encoding is to allow users to convert from the opaque type
+Note that the rationale for this encoding is to allow users to convert from the opaque type
 and the underlying type in constant time. Users have to be able to tag complex type structures
 without having to reallocate, iterate over or inspect it.
 
@@ -670,8 +670,8 @@ package object groups {
 
   opaque type Unordered[A] = A
   object Unordered extends Wrapper[Unordered] {
-    def wraps[G[_], A](ga: G[A]): G[Reversed[A]] = ga
-    def unwrap[G[_], A](gfa: G[Reversed[A]]): G[A] = gfa
+    def wraps[G[_], A](ga: G[A]): G[Unordered[A]] = ga
+    def unwrap[G[_], A](gfa: G[Unordered[A]]): G[A] = gfa
     implicit def unorderedOrdering[A]: Ordering[Unordered[A]] =
       Ordering.by(_ => ())
   }
@@ -693,7 +693,7 @@ example `Int`).
 ### Probability interval
 
 Here's an example that demonstrates how opaque types can limit the
-underlying type's range of values in a way that minimizes the require
+underlying type's range of values in a way that minimizes the required
 error-checking:
 
 ```scala
