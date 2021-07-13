@@ -20,7 +20,7 @@ println(printHello.show) // print("Hello")
 
 In general, the quote delays the execution while the splice makes it happen before the surrounding code.
 This generalisation allows us to also give meaning to a `${ ... }` that is not within a quote. This evaluates the code within the splice at compile-time and places the result in the generated code.
-Due to some technical considerations, only non-quoted splices are allowed directly within `inline` definitions that we call a [macro][macros].
+Due to some technical considerations, only top-level splices are allowed directly within `inline` definitions that we call a [macro][macros].
 
 It is possible to write a quote within a quote, but this pattern is not common when writing macros.
 
@@ -103,7 +103,7 @@ The less verbose version is usually the best way to write the types as it is muc
 In some cases, we will not statically know the type within the `Type` and will need to use the `t.Underlying` to refer to it.
 
 When do we need this extra `Type` parameter?
-* When a type is abstract and it is used at a level that is deeper than the current level.
+* When a type is abstract and it is used at a level that is higher than the current level.
 
 When you add a `Type` contextual parameter to a method, you will either get it from another context parameter or implicitly with a call to `Type.of`:
 ```scala
@@ -276,7 +276,7 @@ def exprOfOptionOf[T: Type](x: Expr[Option[Any]])(using Quotes): Option[Expr[T]]
     case '{ Some($x: T) } => Some(x) // x: Expr[T]
     case _ => None
 ```
-This time, the pattern `Some($x: T)` will only match if the type of the Option is `Some[T]`.
+This time, the pattern `Some($x: T)` will only match if the type of the `Option` is `Some[T]`.
 
 ```scala
 exprOfOptionOf[Int]('{ Some(3) })   // Some('{3})
