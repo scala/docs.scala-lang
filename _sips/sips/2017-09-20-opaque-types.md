@@ -693,7 +693,7 @@ example `Int`).
 ### Probability interval
 
 Here's an example that demonstrates how opaque types can limit the
-underlying type's range of values in a way that minimizes the require
+underlying type's range of values in a way that minimizes the required
 error-checking:
 
 ```scala
