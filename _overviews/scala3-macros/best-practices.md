@@ -148,7 +148,7 @@ def summonOrFail[T: Type]: Expr[T] =
 ```
 
 If you are writing a macro and prefer to handle `Expr`s, `Expr.summon` is a
-convient wrapper around `Implicits.search`:
+convenient wrapper around `Implicits.search`:
 
 ```scala
 def summonOrFail[T: Type]: Expr[T] =
