@@ -151,7 +151,7 @@ fooCtr.tupled((2, false))
 In Scala, case classes have an auto-generated extractor method, called `unapply` in their companion object.
 Its signature has changed between Scala 2.13 and Scala 3.
 
-The new signature is option-less (see the new [Pattern Matching](https://dotty.epfl.ch/docs/reference/changed-features/pattern-matching.html) reference), which causes an incompatibility when `unapply` is called explicitly.
+The new signature is option-less (see the new [Pattern Matching](/scala3/reference/changed-features/pattern-matching.html) reference), which causes an incompatibility when `unapply` is called explicitly.
 
 Note that this problem does not affect user-defined extractors, whose signature stays the same across Scala versions.
 

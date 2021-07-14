@@ -47,7 +47,7 @@ Scala 3 の高品質なドキュメンテーションを作るためのいくつ
 
 
 ## Scala 3 Language Reference
-The [Dotty reference](https://dotty.epfl.ch/docs/reference/overview.html) は Scala 3 になる予定である。これにはさまざまな言語仕様に関する公式のプレゼンテーションや技術的情報が含まれている。
+The [Dotty reference](/scala3/reference/overview.html) は Scala 3 になる予定である。これにはさまざまな言語仕様に関する公式のプレゼンテーションや技術的情報が含まれている。
 
 - [Sources](https://github.com/lampepfl/dotty/tree/master/docs/docs/reference)
 - [Issues](https://github.com/lampepfl/dotty/issues)

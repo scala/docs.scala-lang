@@ -111,7 +111,7 @@ If you want to learn more about metaprogramming in Scala 3, we invite you to tak
 [creator]: {{ site.scala3ref }}/other-new-features/creator-applications.html
 [migration]: {% link _overviews/scala3-migration/compatibility-intro.md %}
 
-[implicits]: {{ site.scala3ref }}/contextual/motivation.html
+[implicits]: {{ site.scala3ref }}/contextual.html
 [contextual-using]: {{ site.scala3ref }}/contextual/using-clauses.html
 [contextual-givens]: {{ site.scala3ref }}/contextual/givens.html
 [contextual-extension]: {{ site.scala3ref }}/contextual/extension-methods.html

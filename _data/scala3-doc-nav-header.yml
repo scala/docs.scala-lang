@@ -12,6 +12,6 @@
 - title: Migrate
   url: "/scala3/guides/migration/compatibility-intro.html"
 - title: Reference
-  url: "https://dotty.epfl.ch/docs/reference/overview.html"
+  url: "/scala3/reference/overview.html"
 - title: API
   url: "https://dotty.epfl.ch/api/index.html"

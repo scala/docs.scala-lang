@@ -54,4 +54,6 @@ val res2: Int = 4
 
 If you prefer a browser-based playground environment, you can also use [scastie.scala-lang.org](https://scastie.scala-lang.org).
 
+If you prefer writing your code in a text editor instead of in console prompt, you can use a [worksheet].
 
+[worksheet]: {% link _overviews/scala3-book/tools-worksheets.md %}

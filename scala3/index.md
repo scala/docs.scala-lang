@@ -39,10 +39,14 @@ sections:
       - title: "Language Reference"
         description: "The Scala 3 language reference."
         icon: "fa fa-book"
-        link: https://dotty.epfl.ch/docs/reference/overview.html
+        link: /scala3/reference/overview.html
       - title: "All new Scaladoc for Scala 3"
         description: "Highlights of new features for Scaladoc"
         icon: "fa fa-star"
         link: /scala3/scaladoc.html
+      - title: "Talks"
+        description: "Talks about Scala 3 that can be watched online"
+        icon: "fa fa-play-circle"
+        link: /scala3/talks.html
 
 ---

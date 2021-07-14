@@ -39,7 +39,7 @@ scala3-sections:
       - title: "Language Reference"
         description: "Scala 3 の言語仕様"
         icon: "fa fa-book"
-        link: https://dotty.epfl.ch/docs/reference/overview.html
+        link: /scala3/reference/overview.html
 
 scala2-sections:
 
