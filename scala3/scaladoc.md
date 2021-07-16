@@ -54,16 +54,28 @@ For more information you can follow this [thread](https://contributors.scala-lan
 ![](../resources/images/scala3/scaladoc/snippet-compiler2.gif)
 ![](../resources/images/scala3/scaladoc/snippet-compiler1.gif)
 
-### Type-signature browsing
+### Type-based search
 
-Haskell programmers are probably familiar with Hoogle - a documentation search engine that allows you browse the docs by signatures rather than symbolic names. Since many Scala developers are also functional programming fans, we decided to add a similar functionality to Scaladoc. The whole tool is based on [Inkuire](https://github.com/VirtusLab/Inkuire), which works with Kotlin and is being currently adapted to Scala 3.  
-
-![](../resources/images/scala3/scaladoc/inkuire.gif)
-
-To be up-to-date with this feature you can follow this [thread](https://contributors.scala-lang.org/t/pre-sip-scaladoc-search-by-type-signature/1604/15).
-Note that this feature is in an early stage of development. We still don't support type lambdas, higher-kinded types, and some other Scala features.
+Searching for functions by their symbolic names can be time-consuming.
+That is why the new scaladoc allows you to search for methods and fields by their types.
 
 
+So, for a declatation:
+```
+extension [T](arr: IArray[T]) def span(p: T => Boolean): (IArray[T], IArray[T]) = ...
+```
+Instead of searching for `span` we can also search for `IArray[A] => (A => Boolean) => (IArray[A], IArray[A])`.
+
+To use this feature simply type the signature of the function you are looking for in the scaladoc searchbar. This is how it works:
+
+![](../resources/images/scala3/scaladoc/inkuire-1.0.0-M2_js_flatMap.gif)
+
+This feature is provided by the [Inkuire](https://github.com/VirtusLab/Inkuire) search engine, which works for Scala 3 and Kotlin. To be up-to-date with the development of this feature, follow the [Inkuire repository](https://github.com/VirtusLab/Inkuire).
+
+For more information see [Guides](/scala3/guides/scaladoc/search-engine.html)
+
+Note that this feature is still in development, so it can be subject to considerable change.
+If you encounter a bug or have an idea for improvement, don't hesitate to create an issue on [Inkuire](https://github.com/VirtusLab/Inkuire/issues/new) or [dotty](https://github.com/lampepfl/dotty/issues/new).
 
 [scaladoc-docstrings]: https://dotty.epfl.ch/docs/usage/scaladoc/scaladocDocstrings.html
 [static-documentation]: https://dotty.epfl.ch/docs/usage/scaladoc/staticSite.html
