@@ -39,17 +39,17 @@ The [Macros Tutorial](/scala3/guides/macros) is being written by Nicolas Stucki 
 
 ## Migration Guide
 The [Scala 3 Migration Guide](/scala3/guides/migration/compatibility-intro.html)
-contains an comprehensive overview over compatibility between Scala 2 and Scala 3,
+contains a comprehensive overview over compatibility between Scala 2 and Scala 3,
 a tour presenting the migration tools, and detailed migration guides.
 
 - [Source](https://github.com/scala/docs.scala-lang/tree/main/_overviews/scala3-migration)
-- [Issues](https://github.com/scalacenter/docs.scala-lang/issues)
+- [Issues](https://github.com/scala/docs.scala-lang/issues)
 
 ## Scala 3 Language Reference
-The [Dotty reference](/scala3/reference/overview.html) will evolve into the Scala 3 language, containing  a formal presentation and detailed technical information about the various features of the language.
+The [Scala 3 reference](/scala3/reference/overview.html) contains a formal presentation and detailed technical information about the various features of the language.
 
-- [Sources](https://github.com/scala/docs.scala-lang/tree/main/_overviews/reference)
-- [Issues](https://github.com/scalacenter/docs.scala-lang/issues)
+- [Sources](https://github.com/scala/docs.scala-lang/tree/main/_scala3-reference)
+- [Issues](https://github.com/scala/docs.scala-lang/issues)
 
 
 [scala3-book]: {% link _overviews/scala3-book/introduction.md %}
