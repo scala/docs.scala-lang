@@ -60,7 +60,7 @@ import lib.circumference
 aCircle.circumference
 ```
 
-The compiler also support you if the import is missing by showing a detailed compilation error message such as the following:
+The compiler also supports you if the import is missing by showing a detailed compilation error message such as the following:
 
 ```text
 value circumference is not a member of Circle, but could be made available as an extension method.
