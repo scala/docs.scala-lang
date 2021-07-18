@@ -122,6 +122,6 @@ depends on many factors. Some of them, but not all, include:
 2. [Dynamic compilation and performance measurement, Brian Goetz][2]
 3. [Scala library benchmarks][3]
 
-  [1]: https://www.ibm.com/developerworks/java/library/j-jtp02225/index.html "flawed-benchmark"
-  [2]: https://www.ibm.com/developerworks/library/j-jtp12214/ "dynamic-compilation"
+  [1]: https://web.archive.org/web/20210305174819/https://www.ibm.com/developerworks/java/library/j-jtp02225/index.html "flawed-benchmark"
+  [2]: https://web.archive.org/web/20210228055617/http://www.ibm.com/developerworks/library/j-jtp12214/ "dynamic-compilation"
   [3]: https://github.com/scala/scala/tree/2.12.x/test/benchmarks
