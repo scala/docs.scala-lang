@@ -38,8 +38,10 @@ Before we jump into the examples, here are a few important things to know about 
 Ever since the book, *C Programming Language*, it’s been a tradition to begin programming books with a “Hello, world” example, and not to disappoint, this is one way to write that example in Scala:
 
 ```scala
-object Hello extends App {
-    println("Hello, world")
+object Hello {
+    def main(args: Array[String]) = {
+        println("Hello, world")
+    }
 }
 ```
 
