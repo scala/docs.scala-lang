@@ -73,7 +73,7 @@ As a technicaly consequence, we cannot define and use a macro in the **same clas
 However, it is possible to have the macro definition and its call in the **same project** as long as the implementation of the macro can be compiled first.
 
 > ##### Suspended Files
-> To allow defining and using macros in the same project, only those calls to macros are expanded, where the macro has already been compiled.
+> To allow defining and using macros in the same project, only those calls to macros that have already been compiled are expanded.
 > For all other (unknown) macro calls, the compilation of the file is _suspended_.
 > Suspended files are only compiled after all non suspended files have been successfully compiled.
 > In some cases, you will have _cyclic dependencies_ that will block the completion of the compilation.
@@ -206,7 +206,7 @@ def sumCode(nums: Expr[Seq[Int]])(using Quotes): Expr[Int] =
 The extractor will match a call to `sumNow(1, 2, 3)` and extract a `Seq[Expr[Int]]` containing the code of each parameter.
 But, if we try to match the argument of the call `sumNow(nums: _*)`, the extractor will not match.
 
-`Varargs` can also be used as a constructor, `Varargs(Expr(1), Expr(2), Expr(3))` will return a `Expr[Seq[Int]]`.
+`Varargs` can also be used as a constructor. `Varargs(Expr(1), Expr(2), Expr(3))` will return an `Expr[Seq[Int]]`.
 We will see how this can be useful later.
 
 
@@ -226,8 +226,8 @@ while subsequent chapters introduce the more advanced APIs.
 ### Collections
 
 We have seen how to convert a `List[Int]` into an `Expr[List[Int]]` using `Expr.apply`.
-How about converting a `List[Expr[Int]]` into `Expr[List[Int]]`?
-We mentioned that `Varargs.apply` can do this for sequences -- likewise for other collection types, corresponding methods are available:
+How about converting a `List[Expr[Int]]` into an `Expr[List[Int]]`?
+We mentioned that `Varargs.apply` can do this for sequences; likewise, for other collection types, corresponding methods are available:
 
 * `Expr.ofList`: Transform a `List[Expr[T]]` into `Expr[List[T]]`
 * `Expr.ofSeq`: Transform a `Seq[Expr[T]]` into `Expr[Seq[T]]` (just like `Varargs`)
@@ -269,7 +269,7 @@ Note, that `matches` only performs a limited amount of normalization and while f
 ### Arbitrary Expressions
 
 Last but not least, it is possible to create an `Expr[T]` from arbitary Scala code by enclosing it in [quotes][quotes].
-For example `'{ ${expr}; true }` will generate an `Expr[Int]` equivalent to `Expr.block(List(expr), Expr(true))`.
+For example, `'{ ${expr}; true }` will generate an `Expr[Int]` equivalent to `Expr.block(List(expr), Expr(true))`.
 The subsequent section on [Quoted Code][quotes] presents quotes in more detail.
 
 [contributing]: {% link scala3/contribute-to-docs.md %}

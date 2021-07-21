@@ -6,7 +6,7 @@ num: 8
 ## Inline
 
 ### Be careful when inlining for performance
-To take the most advantage of the JVM JIT optimisations you want to avoid generating large methods.
+To take the most advantage of the JVM JIT optimisations, you want to avoid generating large methods.
 
 
 ## Macros
@@ -16,24 +16,24 @@ To take the most advantage of the JVM JIT optimisations you want to avoid genera
 ## Quoted code
 
 ### Keep quotes readable
-* Try to avoid `${..}` with arbitrary expressions inside
+* Try to avoid `${...}` with arbitrary expressions inside
   * Use `$someExpr`
   * Use `${ someExprFrom('localExpr) }`
 
 To illustrate, consider the following example:
 ```scala
 val x: StringContext = ...
-'{ StringContext(${Varargs(stringContext.parts.map(Expr(_)))}: _*) }
+'{ StringContext(${Varargs(x.parts.map(Expr(_)))}: _*) }
 ```
-Instead we can write the following:
+Instead, we can write the following:
 
 ```scala
 val x: StringContext = ...
-val partExprs = stringContext.parts.map(Expr(_))
+val partExprs = x.parts.map(Expr(_))
 val partsExpr = Varargs(partExprs)
 '{ StringContext($partsExpr: _*) }
 ```
-The contents of the quote are cleared this way.
+The contents of the quote are much more clear in the second example.
 
 ### Avoid nested contexts
 
@@ -74,34 +74,29 @@ val leafSym: Symbol   = leafTpe.typeSymbol
 
 ### Avoid `Symbol.tree`
 
-On an object `sym: Symbol`, `sym.tree` returns the `Tree` associated to the
-symbol. Be careful when using this method as the tree for a symbol might not be
-defined. When the code associated to the symbol is defined in a different
-moment than this access, if the `-Yretain-trees` compilation option is not
-used, then the `tree` of the symbol will not be available. Symbols originated
-from Java code do not have an associated `tree`.
+On an object `sym: Symbol`, `sym.tree` returns the `Tree` associated with the symbol.
+Be careful when using this method, as the tree for a symbol might not be defined.
+When the code associated with a symbol is defined at a different time than this access, if the `-Yretain-trees` compilation option is not used, then the `tree` of the symbol will not be available.
+Symbols originating from Java code do not have an associated `tree`.
 
 ### Obtaining a `TypeRepr` from a `Symbol`
 
-In the previous paragraph we saw that `Symbol.tree` should be avoided and
-therefore you should not use `sym.tree.tpe` on `sym: Symbol`.  Thus to obtain
-the `TypeRepr` corresponding to a `Symbol`, it is recommended to use
-`tpe.memberType` on objects `tpe: TypeRepr`.
+In the previous heading, we saw that `Symbol.tree` should be avoided and that therefore you should not use `sym.tree.tpe` on `sym: Symbol`.
+Thus, to obtain the `TypeRepr` corresponding to a `Symbol`, it is recommended to use `tpe.memberType` on `tpe: TypeRepr` objects.
 
 We can obtain the `TypeRepr` of `Leaf` in two ways:
   1. `TypeRepr.of[Box.Leaf]`
-  2. `boxTpe.memberType(leafSym)`, in other words we request the `TypeRepr` of
-     the member of `Box` whose symbol is equal to the symbol of sym
+  2. `boxTpe.memberType(leafSym)`
+(In other words, we request the `TypeRepr` of the member of `Box` whose symbol is equal to the symbol of `leafSym`.)
 
-while the two approaches are equivalent, the first is possible only if you
-already know that you are looking for `Box.Leaf`. The second approach allows
-you to explore an uknown API.
+While the two approaches are equivalent, the first is only possible if you already know that you are looking for the type `Box.Leaf`.
+The second approach allows you to explore an unknown API.
 
 ### Use `Symbol`s to compare definitions
 
 Read more about Symbols [here][symbol].
 
-Symbols allow comparing definitions using `==`:
+Symbols allow you to compare definitions using `==`:
 ```scala
 leafSym == baseSym.children.head // Is true
 ```
@@ -113,7 +108,7 @@ boxTpe.memberType(baseSym.children.head) == leafTpe // Is false
 
 ### Obtaining a Symbol for a type
 
-There is a handy shortcut to get the symbol of the definition of `T`.
+There is a handy shortcut to get the symbol for the definition of `T`.
 Instead of
 
 ```scala
