@@ -35,7 +35,7 @@ scala3-sections:
       - title: "API"
         description: "API documentation for every version of Scala 3."
         icon: "fa fa-file-text"
-        link: https://dotty.epfl.ch/api/index.html
+        link: https://scala-lang.org/api/3.x/
       - title: "Language Reference"
         description: "The Scala 3 language reference."
         icon: "fa fa-book"

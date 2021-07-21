@@ -114,5 +114,5 @@ See the [Reference documentation][reference] for more tuple details.
 
 
 [collections]: {% link _overviews/scala3-book/collections-intro.md %}
-[api]: https://dotty.epfl.ch/api/index.html
+[api]: https://scala-lang.org/api/3.x/
 [reference]: {{ site.scala3ref }}/overview.html
