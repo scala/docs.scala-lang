@@ -18,6 +18,11 @@ guides:
     icon: birthday-cake
     url: "/scala3/guides/tasty-overview.html"
     description: "An overview over the TASTy format aimed at end-users of the Scala language."
+  - title: Scaladoc
+    by: Krzysztof Romanowski, Aleksander Boruch-Gruszecki, Andrzej Ratajczak
+    icon: book
+    url: "/scala3/guides/scaladoc"
+    description: "Scala’s API documentation generation tool."
 ---
 
 <section class="full-width">
