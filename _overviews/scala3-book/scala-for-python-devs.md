@@ -1078,7 +1078,7 @@ Those lists are used in the following table, that shows how to apply mapping and
   <tbody>
     <tr>
       <td class="python-block">
-        <code>f = lambda x: x if x &gt; 1 else 1
+        <code>f = lambda x: x &gt; 1
         <br>x = filter(f, numbers)</code>
       </td>
     </tr>
