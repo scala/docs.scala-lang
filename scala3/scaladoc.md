@@ -54,15 +54,24 @@ For more information you can follow this [thread](https://contributors.scala-lan
 ![](../resources/images/scala3/scaladoc/snippet-compiler2.gif)
 ![](../resources/images/scala3/scaladoc/snippet-compiler1.gif)
 
-### Type-signature browsing
+### Hoogle-like searches (Inkuire)
 
-Haskell programmers are probably familiar with Hoogle - a documentation search engine that allows you browse the docs by signatures rather than symbolic names. Since many Scala developers are also functional programming fans, we decided to add a similar functionality to Scaladoc. The whole tool is based on [Inkuire](https://github.com/VirtusLab/Inkuire), which works with Kotlin and is being currently adapted to Scala 3.  
+Haskell programmers are probably familiar with Hoogle - a documentation search engine that allows you to find functions by their signatures rather than their symbolic names. Since many Scala developers are also functional programming fans, we decided to add a similar functionality to Scaladoc.
 
-![](../resources/images/scala3/scaladoc/inkuire.gif)
+To use this feature simply type the signature of the function You are looking for in scaladoc searchbar. This is how it works:
 
-To be up-to-date with this feature you can follow this [thread](https://contributors.scala-lang.org/t/pre-sip-scaladoc-search-by-type-signature/1604/15).
-Note that this feature is in an early stage of development. We still don't support type lambdas, higher-kinded types, and some other Scala features.
+![](../resources/images/scala3/scaladoc/inkuire-1.0.0-M2_js_map.gif)
 
+For this feature to work scaladoc uses [Inkuire](https://github.com/VirtusLab/Inkuire) search engine, which was designed to work for Kotlin and is being currently adapted to work for Scala 3.
+
+To be up-to-date with this feature You can follow this [scala contributors thread](https://contributors.scala-lang.org/t/pre-sip-scaladoc-search-by-type-signature/1604/15) or follow [Inkuire](https://github.com/VirtusLab/Inkuire) directly for new releases.
+
+Note that this feature is still in development.
+Some features that we are still working on:
+- Generating type information (InkuireDB) for Java sources
+- More advanced type level constructs like e.g. explicit type bounds and repeated types
+- Managing dependencies using scaladoc external mappings
+- Optimizations
 
 
 [scaladoc-docstrings]: https://dotty.epfl.ch/docs/usage/scaladoc/scaladocDocstrings.html
