@@ -50,9 +50,9 @@ the types in the API. For each type `Foo` in the tree:
  - the trait `FooModule` contains the static methods available on the object `Foo`. Most notably, constructors (`apply/copy`) and the `unapply` method which provides the extractor(s) required for pattern matching.
  - For all types `Upper` such that `Foo <: Upper`, the methods defined in `UpperMethods` are available on `Foo` as well.
 
-For example [`TypeBounds`](https://dotty.epfl.ch/api/scala/quoted/Quotes$reflectModule.html#TypeBounds-0), a subtype of `TypeRepr`, represents a type tree of the form `T >: L <: U`: a type `T` which is a super type of `L`
-and a subtype of `U`. In [`TypeBoundsMethods`](https://dotty.epfl.ch/api/scala/quoted/Quotes$reflectModule$TypeBoundsMethods.html), you will find the methods `low` and `hi`, which allow you to access the
-representations of `L` and `U`. In [`TypeBoundsModule`](https://dotty.epfl.ch/api/scala/quoted/Quotes$reflectModule$TypeBoundsModule.html), you will find the `unapply` method, which allows you to write:
+For example [`TypeBounds`](https://scala-lang.org/api/3.x/scala/quoted/Quotes$reflectModule.html#TypeBounds-0), a subtype of `TypeRepr`, represents a type tree of the form `T >: L <: U`: a type `T` which is a super type of `L`
+and a subtype of `U`. In [`TypeBoundsMethods`](https://scala-lang.org/api/3.x/scala/quoted/Quotes$reflectModule$TypeBoundsMethods.html), you will find the methods `low` and `hi`, which allow you to access the
+representations of `L` and `U`. In [`TypeBoundsModule`](https://scala-lang.org/api/3.x/scala/quoted/Quotes$reflectModule$TypeBoundsModule.html), you will find the `unapply` method, which allows you to write:
 
 ```scala
 def f(tpe: TypeRepr) =
@@ -121,7 +121,7 @@ In addition `Symbol` exposes and is used by many useful methods. For example:
  - `TypeRepr.baseClasses` returns the list of symbols of classes extended by a type. 
  - `Symbol.pos` gives you access to the position where the symbol is defined, the source code of the definition
  and even the filename where the symbol is defined.
- - and many useful others that you can find in [`SymbolMethods`](https://dotty.epfl.ch/api/scala/quoted/Quotes$reflectModule$SymbolMethods.html)
+ - and many useful others that you can find in [`SymbolMethods`](https://scala-lang.org/api/3.x/scala/quoted/Quotes$reflectModule$SymbolMethods.html)
 
 ### To Symbol and back
 
@@ -230,6 +230,6 @@ We can make this printer the default if needed
 *Coming soon*
 
 [tasty inspection]: {{ site.scala3ref }}/metaprogramming/tasty-inspect.html
-[reflection doc]: https://dotty.epfl.ch/api/scala/quoted/Quotes$reflectModule.html?query=trait%20reflectModule
+[reflection doc]: https://scala-lang.org/api/3.x/scala/quoted/Quotes$reflectModule.html
 
 [best practices]: {% link _overviews/scala3-macros/best-practices.md %}

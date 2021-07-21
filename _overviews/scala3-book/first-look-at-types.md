@@ -276,5 +276,5 @@ Alternatives to `null` are discussed in the [Functional Programming chapter][fp]
 [matchable]: {{ site.scala3ref }}/other-new-features/matchable.html
 [interpolation]: {% link _overviews/core/string-interpolation.md %}
 [fp]: {% link _overviews/scala3-book/fp-intro.md %}
-[option-api]: https://dotty.epfl.ch/api/scala/Option.html
+[option-api]: https://scala-lang.org/api/3.x/scala/Option.html
 [safe-null]: {{ site.scala3ref }}/other-new-features/explicit-nulls.html

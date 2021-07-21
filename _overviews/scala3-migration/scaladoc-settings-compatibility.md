@@ -71,7 +71,7 @@ This setting is a generalized form of the old settings for javadoc/scaladoc.
 
 Example external mapping is:
 ```
--external-mappings:.*scala.*::scaladoc3::http://dotty.epfl.ch/api/,.*java.*::javadoc::https://docs.oracle.com/javase/8/docs/api/
+-external-mappings:.*scala.*::scaladoc3::https://scala-lang.org/api/3.x/,.*java.*::javadoc::https://docs.oracle.com/javase/8/docs/api/
 ```
 
 A mapping is of the form '\<regex>::\[scaladoc3|scaladoc|javadoc]::\<path>'. You can supply several mappings, separated by commas, as shown in the example.

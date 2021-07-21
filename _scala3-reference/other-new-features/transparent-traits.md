@@ -44,7 +44,7 @@ appear in the inferred type.
 
 The traits `scala.Product`, `java.lang.Serializable` and `java.lang.Comparable`
 are treated automatically as transparent. Other traits are turned into transparent traits using the modifier `transparent`. Scala 2 traits can also be made transparent
-by adding a [`@transparentTrait` annotation](https://dotty.epfl.ch/api/scala/annotation/transparentTrait.html). This annotation is defined in `scala.annotation`. It will be deprecated and phased out once Scala 2/3 interopability is no longer needed.
+by adding a [`@transparentTrait` annotation](https://scala-lang.org/api/3.x/scala/annotation/transparentTrait.html). This annotation is defined in `scala.annotation`. It will be deprecated and phased out once Scala 2/3 interopability is no longer needed.
 
 Typically, transparent traits are traits
 that influence the implementation of inheriting classes and traits that are not usually used as types by themselves. Two examples from the standard collection library are:

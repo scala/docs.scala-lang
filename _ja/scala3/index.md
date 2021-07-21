@@ -36,7 +36,7 @@ sections:
       - title: "API"
         description: "Scala 3 の全バージョンのAPIドキュメント"
         icon: "fa fa-file-text"
-        link: https://dotty.epfl.ch/api/index.html
+        link: https://scala-lang.org/api/3.x/
       - title: "Language Reference"
         description: "Scala 3 の言語仕様"
         icon: "fa fa-book"

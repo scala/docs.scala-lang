@@ -36,7 +36,7 @@ scala3-sections:
     - title: "API"
       description: "Scala 3 各个版本的API"
       icon: "fa fa-file-text"
-      link: https://dotty.epfl.ch/api/index.html
+      link: https://scala-lang.org/api/3.x/
     - title: "语言参考手册"
       description: "Scala 3 语言参考手册"
       icon: "fa fa-book"
