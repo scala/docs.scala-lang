@@ -12,6 +12,8 @@ permalink: /overviews/parallel-collections/:title.html
 
 **Aleksandar Prokopec, Heather Miller**
 
+If you're using Scala 2.13+ and want to use Scala's parallel collections, you'll have to import a separate module, as described [here](https://github.com/scala/scala-parallel-collections).
+
 ## Motivation
 
 Amidst the shift in recent years by processor manufacturers from single to
