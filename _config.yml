@@ -127,6 +127,15 @@ defaults:
       permalink: "/scala3/guides/macros/:title.html"
   -
     scope:
+      path: "_overviews/scala3-scaladoc"
+    values:
+      scala3: true
+      partof: scala3-scaladoc
+      overview-name: "Scaladoc"
+      layout: multipage-overview
+      permalink: "/scala3/guides/scaladoc/:title.html"
+  -
+    scope:
       path: "_scala3-reference"
     values:
       scala3: true
