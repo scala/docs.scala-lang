@@ -106,14 +106,14 @@ preference to their better-known names, `foldLeft` and `foldRight`.
 Invoking higher-order functions may use parens or braces, but in
 either case, use dot notation and omit any space after the method name:
 
-    names.map{ _.toUpperCase }
+    names.map(_.toUpperCase)
 
 These are not recommended:
 
-    // wrong!
-    names map { _.toUpperCase }
-    // wrong!
-    names.map { _.toUpperCase }
+    // wrong! missing dot
+    names map (_.toUpperCase)
+    // wrong! extra space
+    names.map (_.toUpperCase)
 
 Experience has shown that these styles make code harder to read,
 especially when multiple such method calls are chained.
