@@ -54,7 +54,7 @@ Using `erasedValue`, we can then define `defaultValue` as follows:
 ```scala
 import scala.compiletime.erasedValue
 
-inline def defaultValue[T] =
+transparent inline def defaultValue[T] =
   inline erasedValue[T] match
     case _: Byte    => Some(0: Byte)
     case _: Char    => Some(0: Char)
