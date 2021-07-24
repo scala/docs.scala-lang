@@ -51,7 +51,7 @@ acceptable to omit parentheses when calling `queue.size`, but not when
 calling `println()`. This convention mirrors the method declaration
 convention given above.
 
-Religiously observing this convention will *dramatically* improve code
+Religiously observing this convention will dramatically improve code
 readability and will make it much easier to understand at a glance the
 most basic operation of any given method. Resist the urge to omit
 parentheses simply to save two characters!
@@ -92,25 +92,34 @@ gray area is short, operator-like methods like `max`, especially if commutative:
     // fairly common
     a max b
 
-Symbolic methods which take more than one parameter (they do exist!)
-may still be invoked using infix notation, delimited by spaces:
+Symbolic methods which take more than one parameter are discouraged.
+When they exist, they may still be invoked using infix notation, delimited by spaces:
 
     foo ** (bar, baz)
 
 Such methods are fairly rare, however, and should normally be avoided during API
-design. For example, the use of the `/:` and `:\` methods should be avoided in
+design. For example, the use of the (now deprecated) `/:` and `:\` methods should be avoided in
 preference to their better-known names, `foldLeft` and `foldRight`.
 
 ### Higher-Order Functions
 
-As noted, methods which take functions as parameters (such as `map` or
-`foreach`) should be invoked using infix notation. It is also *possible* to
-invoke such methods in the following way:
+Invoking higher-order functions may use parens or braces, but in
+either case, use dot notation:
+
+    names.map{ _.toUpperCase }
+
+Not infix:
+
+    // wrong!
+    names map { _.toUpperCase }
+
+Any space after the method name should be omitted.  Though it is
+possible to invoke such methods in the following way,
 
     // wrong!
     names.map { _.toUpperCase }
 
-This style is *not* the accepted standard! The reason to avoid this style is for
+this is not the accepted standard! The reason to avoid this style is for
 situations where more than one invocation must be chained together:
 
     // wrong!
