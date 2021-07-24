@@ -104,32 +104,16 @@ preference to their better-known names, `foldLeft` and `foldRight`.
 ### Higher-Order Functions
 
 Invoking higher-order functions may use parens or braces, but in
-either case, use dot notation:
+either case, use dot notation and omit any space after the method name:
 
     names.map{ _.toUpperCase }
 
-Not infix:
+These are not recommended:
 
     // wrong!
     names map { _.toUpperCase }
-
-Any space after the method name should be omitted.  Though it is
-possible to invoke such methods in the following way,
-
     // wrong!
     names.map { _.toUpperCase }
 
-this is not the accepted standard! The reason to avoid this style is for
-situations where more than one invocation must be chained together:
-
-    // wrong!
-    names.map { _.toUpperCase }.filter { _.length > 5 }
-
-    // right!
-    names map { _.toUpperCase } filter { _.length > 5 }
-
-Both of these work, but the former can easily lead to confusion. The
-sub-expression `{ _.toUpperCase }.filter` when taken in isolation looks like we
-are invoking the `filter` method on a function value. However, we are actually
-invoking `filter` on the result of the `map` method, which takes the function
-value as a parameter.
+Experience has shown that these styles make code harder to read,
+especially when multiple such method calls are chained.
