@@ -215,7 +215,7 @@ would use it as follows:
 import scala.compiletime.summonFrom
 
 inline def setFor[T]: Set[T] = summonFrom {
-  case ord: Ordering[T] => new TreeSet[T](using ord)
+  case ord: Ordering[T] => new TreeSet[T]()(using ord)
   case _                => new HashSet[T]
 }
 ```
