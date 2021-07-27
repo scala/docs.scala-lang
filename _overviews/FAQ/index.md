@@ -235,12 +235,12 @@ Not really. See [this answer on Stack Overflow](https://stackoverflow.com/a/6525
 The latter has a singleton type, which is too specific.
 See [answer on Stack Overflow](https://stackoverflow.com/a/65258340/4111404).
 
-### I got a `StackOverflowException` while compiling my code. Is it a compiler bug?
+### I got a `StackOverflowError` while compiling my code. Is it a compiler bug?
 
 It might be.
 
 To find out, try giving the compiler more stack and see if the
-exception goes away.
+error goes away.
 
 It's possible for the compiler to run out of stack when compiling some
 kinds of heavily nested code. The JVM's default stack size is rather
