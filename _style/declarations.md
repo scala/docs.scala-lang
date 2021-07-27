@@ -13,7 +13,7 @@ next-page: control-structures
 
 ## Classes
 
-Class/Object/Trait constructors should be declared all on one line,
+Class, object, and trait constructors should be declared all on one line,
 unless the line becomes "too long" (about 100 characters). In that case,
 put each constructor argument on its own line with
 [trailing commas](https://docs.scala-lang.org/sips/trailing-commas.html#motivation):
@@ -102,7 +102,7 @@ Local methods or private methods may omit their return type:
 
 #### Procedure Syntax
 
-Avoid the procedure syntax, as it tends to be confusing for very little gain in brevity.
+Avoid the (now deprecated) procedure syntax, as it tends to be confusing for very little gain in brevity.
 
     // don't do this
     def printBar(bar: Baz) {
@@ -160,7 +160,7 @@ or is of a non-functional nature (some mutable state, local or
 otherwise), the body must be enclosed in braces:
 
     def sum(ls: List[String]): Int = {
-      val ints = ls map (_.toInt)
+      val ints = ls.map(_.toInt)
       ints.foldLeft(0)(_ + _)
     }
 
@@ -197,7 +197,8 @@ There are three main reasons you should do this:
     Multiple parameter lists allow you to create your own "control
     structures":
 
-        def unless(exp: Boolean)(code: => Unit): Unit = if (!exp) code
+        def unless(exp: Boolean)(code: => Unit): Unit =
+          if (!exp) code
         unless(x < 5) {
           println("x was not less than five")
         }
@@ -223,7 +224,7 @@ There are three main reasons you should do this:
         List("").foldLeft(0, (b: Int, a: String) => b + a.length)
         List("").foldLeft[Int](0, _ + _.length)
 
-For complex DSLs, or with type-names that are long, it can be difficult
+For complex DSLs, or with type names that are long, it can be difficult
 to fit the entire signature on one line. For those cases there are several
 different styles in use:
 

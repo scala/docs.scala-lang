@@ -51,7 +51,7 @@ acceptable to omit parentheses when calling `queue.size`, but not when
 calling `println()`. This convention mirrors the method declaration
 convention given above.
 
-Religiously observing this convention will *dramatically* improve code
+Observing this convention improves code
 readability and will make it much easier to understand at a glance the
 most basic operation of any given method. Resist the urge to omit
 parentheses simply to save two characters!
@@ -92,35 +92,28 @@ gray area is short, operator-like methods like `max`, especially if commutative:
     // fairly common
     a max b
 
-Symbolic methods which take more than one parameter (they do exist!)
-may still be invoked using infix notation, delimited by spaces:
+Symbolic methods which take more than one parameter are discouraged.
+When they exist, they may still be invoked using infix notation, delimited by spaces:
 
     foo ** (bar, baz)
 
 Such methods are fairly rare, however, and should normally be avoided during API
-design. For example, the use of the `/:` and `:\` methods should be avoided in
+design. For example, the use of the (now deprecated) `/:` and `:\` methods should be avoided in
 preference to their better-known names, `foldLeft` and `foldRight`.
 
 ### Higher-Order Functions
 
-As noted, methods which take functions as parameters (such as `map` or
-`foreach`) should be invoked using infix notation. It is also *possible* to
-invoke such methods in the following way:
+Invoking higher-order functions may use parens or braces, but in
+either case, use dot notation and omit any space after the method name:
 
-    // wrong!
-    names.map { _.toUpperCase }
+    names.map(_.toUpperCase)
 
-This style is *not* the accepted standard! The reason to avoid this style is for
-situations where more than one invocation must be chained together:
+These are not recommended:
 
-    // wrong!
-    names.map { _.toUpperCase }.filter { _.length > 5 }
+    // wrong! missing dot
+    names map (_.toUpperCase)
+    // wrong! extra space
+    names.map (_.toUpperCase)
 
-    // right!
-    names map { _.toUpperCase } filter { _.length > 5 }
-
-Both of these work, but the former can easily lead to confusion. The
-sub-expression `{ _.toUpperCase }.filter` when taken in isolation looks like we
-are invoking the `filter` method on a function value. However, we are actually
-invoking `filter` on the result of the `map` method, which takes the function
-value as a parameter.
+Experience has shown that these styles make code harder to read,
+especially when multiple such method calls are chained.
