@@ -89,9 +89,9 @@ the (legacy) Scala 2 version of our courses here:
 
 [Scala Specialization]: https://www.coursera.org/specializations/scala
 [Effective Programming in Scala]: https://www.coursera.org/learn/effective-scala
-[Functional Programming Principles in Scala]: https://www.coursera.org/learn/progfun1
-[Functional Program Design in Scala]: https://www.coursera.org/learn/progfun2
-[Parallel programming]: https://www.coursera.org/learn/parprog1
+[Functional Programming Principles in Scala]: https://www.coursera.org/learn/scala-functional-programming
+[Functional Program Design in Scala]: https://www.coursera.org/learn/scala-functional-program-design
+[Parallel programming]: https://www.coursera.org/learn/scala-parallel-programming
 [Big Data Analysis with Scala and Spark]: https://www.coursera.org/learn/scala-spark-big-data
 [Functional Programming in Scala Capstone]: https://www.coursera.org/learn/scala-capstone
 [Programming Reactive Systems]: https://www.coursera.org/learn/scala-akka-reactive
