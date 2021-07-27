@@ -12,10 +12,9 @@ Sometimes new JVM and JDK (Java Development Kit) versions require us to update S
 
 | JDK version | Minimum Scala versions           | Recommended Scala versions                                 |
 |:-----------:|:---------------------------------|:-----------------------------------------------------------|
+| 18          | 2.13.7 (forthcoming), 2.12.15 (forthcoming) | 2.13.7 (forthcoming), 2.12.15 (forthcoming)    |
 | 17          | 2.13.6, 2.12.15 (forthcoming)    | 2.13.6, 2.12.15 (forthcoming)                              |
 | 16          | 2.13.5, 2.12.14                  | 2.13.6, 2.12.14                                            |
-| 13, 14, 15  | 2.13.2, 2.12.11                  | 2.13.6, 2.12.14                                            |
-| 12          | 2.13.1, 2.12.9                   | 2.13.6, 2.12.14                                            |
 | 11          | 2.13.0, 2.12.4, 2.11.12          | 2.13.6, 2.12.14, 2.11.12                                   |
 | 8           | 2.13.0, 2.12.0, 2.11.0, 2.10.2   | 2.13.6, 2.12.14, 2.11.12, 2.10.7                           |
 | 6, 7        | 2.11.0, 2.10.0                   | 2.11.12, 2.10.7                                            |
@@ -24,7 +23,7 @@ Even when a version combination isn't listed as supported, most features may sti
 
 In general, Scala works on JDK 11+, including GraalVM, but it probably won't take special advantage of features that were added after JDK 8. See [below](#jdk-11-compatibility-notes).
 
-Lightbend offers [commercial support](https://www.lightbend.com/lightbend-platform-subscription) for Scala. The linked page includes contact information for inquiring about supported and recommended versions.
+Lightbend offers [commercial support](https://www.lightbend.com/lightbend-platform-subscription) for Scala 2. The linked page includes contact information for inquiring about supported and recommended versions.
 
 ## Running versus compiling
 
@@ -56,7 +55,7 @@ OpenJDK comes in various flavors, offered by different providers.  We build and 
 
 ## JDK 11 compatibility notes
 
-Although the table above jumps from 8 to 11, JDK 9 and 10 will probably also work wherever 11 does. But unlike 9 and 10, 11 is an LTS release, so 11 is what we actually test on and recommend.
+The Scala test suite and Scala community build are green on JDK 11.
 
 The Scala compiler does not enforce the restrictions of the Java Platform Module System, which means that code that typechecks may incur linkage errors at runtime. Scala 2.13.x will eventually provide [rudimentary support](https://github.com/scala/scala/pull/7218) for this (perhaps only in nightlies built on JDK 11).
 
@@ -67,31 +66,29 @@ To track progress on JDK 11 related issues, watch:
 * the ["Support JDK 11"](https://github.com/scala/scala-dev/issues/139 "scala/scala-dev #139") issue
 * the [jdk11 label](https://github.com/scala/bug/labels/jdk11) in scala/bug
 
-To help with testing on JDK 11, see [scala/scala-dev#559](https://github.com/scala/scala-dev/issues/559).
-
-## JDK 12, 13, 14, and 15 compatibility notes
-
-JDK 14 was released in March 2020, and JDK 15 was released in September 2020. But 12, 13, 14, 15 are not LTS releases, so the remarks above about non-LTS releases apply.  The next LTS release will be JDK 17.
-
-JDK 12, 13, 14, and 15 are expected to work wherever JDK 11 does. The Scala community build now runs on JDK 15 (as well as 11 and 8).
-
-As of October 2020, the [jdk12](https://github.com/scala/bug/labels/jdk12) and [jdk13](https://github.com/scala/bug/labels/jdk13) labels in scala/bug have no open bugs. New issues will likely be reported against the newer non-LTS [jdk14 label](https://github.com/scala/bug/labels/jdk14) and [jdk15 label](https://github.com/scala/bug/labels/jdk15) and [jdk16 label](https://github.com/scala/bug/labels/jdk15) or the LTS [jdk11 label](https://github.com/scala/bug/labels/jdk11).
-
-As far as we know, 12, 13, 14, and 15 are similar to 11 with respect to Scala compatibility.
-
 ## JDK 16 compatibility notes
 
 JDK 16 was released in March 2021. It is not an LTS release, so the remarks above about non-LTS releases apply.  The next LTS release will be JDK 17.
+
+JDK 16 is expected to work wherever JDK 17 does, and in most cases wherever JDK 11 does.  See the [jdk11](https://github.com/scala/bug/labels/jdk11) and [jdk17](https://github.com/scala/bug/labels/jdk17) labels in the Scala 2 bug tracker.
 
 The Scala build and test suite pass on JDK 16, and so does the Scala community build. We shipped improved JDK 16 support in [Scala 2.13.5](https://github.com/scala/scala/releases/tag/v2.13.5) and [2.12.14](https://github.com/scala/scala/releases/tag/v2.12.14).
 
 ## JDK 17 compatibility notes
 
-JDK 17 prereleases are already available. As of June 2021, the feature set is frozen. The final release is [targeted](https://openjdk.java.net/projects/jdk/17/) for September 2021. JDK 17 will be an LTS release.
+JDK 17 will be an LTS release.
 
-The Scala community build passes on JDK 17. We are in the process of making Scala's own build and test suite pass.
+JDK 17 prereleases are already available. Since June 2021, the feature set is frozen. The final release is [targeted](https://openjdk.java.net/projects/jdk/17/) for September 2021.
+
+The Scala test suite and Scala community build are green on JDK 17.
 
 Scala 2.13.6 already supports JDK 17. Scala 2.12.14 mostly works as well, but there is a known issue with lambda deserialiation; a fix will ship in Scala 2.12.15 (see [release timing thread](https://contributors.scala-lang.org/t/scala-2-12-15-planning/5152)).
+
+## JDK 18 compatibility notes
+
+Early access builds of JDK 18, a non-LTS release, are already available.
+
+We will ship basic JDK 18 support in Scala 2.13.7 and 2.12.15. (The needed fixes are already available in nightly builds of 2.13 and 2.12.)
 
 ## GraalVM Native Image compatibility notes
 
