@@ -51,7 +51,7 @@ acceptable to omit parentheses when calling `queue.size`, but not when
 calling `println()`. This convention mirrors the method declaration
 convention given above.
 
-Religiously observing this convention will dramatically improve code
+Observing this convention improves code
 readability and will make it much easier to understand at a glance the
 most basic operation of any given method. Resist the urge to omit
 parentheses simply to save two characters!
