@@ -4,7 +4,7 @@ title: Site versioning
 partof: scala3-scaladoc
 num: 6
 previous-page: blog
-next-page: settings
+next-page: search-engine
 ---
 
 Scaladoc provides a convenient way to switch between different versions of the documentation. The feature is useful if we want to expose older docs for users that didn't migrate to the new version of our library.
