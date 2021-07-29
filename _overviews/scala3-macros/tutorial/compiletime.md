@@ -72,4 +72,4 @@ On the other hand, `summonInline` will summon after inlining if the call is not 
 *Coming soon*
 
 
-[compiletime-api]: https://dotty.epfl.ch/api/scala/compiletime.html
+[compiletime-api]: https://scala-lang.org/api/3.x/scala/compiletime.html

@@ -8,7 +8,7 @@ next-page: /scala3/reference/metaprogramming/macros
 
 ## The `scala.compiletime` Package
 
-The [`scala.compiletime`](https://dotty.epfl.ch/api/scala/compiletime.html) package contains helper definitions that provide support for compile-time operations over values. They are described in the following.
+The [`scala.compiletime`](https://scala-lang.org/api/3.x/scala/compiletime.html) package contains helper definitions that provide support for compile-time operations over values. They are described in the following.
 
 ### `constValue` and `constValueOpt`
 
@@ -128,7 +128,7 @@ fail(identity("foo")) // error: failed on: identity("foo")
 
 ### The `scala.compiletime.ops` package
 
-The [`scala.compiletime.ops`](https://dotty.epfl.ch/api/scala/compiletime/ops.html) package contains types that provide support for
+The [`scala.compiletime.ops`](https://scala-lang.org/api/3.x/scala/compiletime/ops.html) package contains types that provide support for
 primitive operations on singleton types. For example,
 `scala.compiletime.ops.int.*` provides support for multiplying two singleton
 `Int` types, and `scala.compiletime.ops.boolean.&&` for the conjunction of two
