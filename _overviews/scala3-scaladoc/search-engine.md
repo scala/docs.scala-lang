@@ -4,7 +4,7 @@ title: Type-based search
 partof: scala3-scaladoc
 num: 7
 previous-page: site-versioning
-next-page: settings
+next-page: snippet-compiler
 ---
 
 Searching for functions by their symbolic names can be time-consuming.
