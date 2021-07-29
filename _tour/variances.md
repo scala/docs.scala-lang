@@ -54,7 +54,7 @@ printAnimalNames(dogs)
 
 ### Contravariance
 
-A type parameter `A` of a generic class can be made contravariant by using the annotation `-A`. This creates a subtyping relationship between the class and its type parameter that is similar, but opposite to what we get with covariance. That is, for some `class Writer[-A]`, making `A` contravariant implies that for two types `A` and `B` where `A` is a subtype of `B`, `Writer[B]` is a subtype of `Writer[A]`.
+A type parameter `A` of a generic class can be made contravariant by using the annotation `-A`. This creates a subtyping relationship between the class and its type parameter that is similar, but opposite to what we get with covariance. That is, for some `class Printer[-A]`, making `A` contravariant implies that for two types `A` and `B` where `A` is a subtype of `B`, `Printer[B]` is a subtype of `Printer[A]`.
 
 Consider the `Cat`, `Dog`, and `Animal` classes defined above for the following example:
 
