@@ -184,7 +184,7 @@ a `Mirror[T]`. Here is a possible implementation,
 import scala.deriving.Mirror
 
 inline given derived[T](using m: Mirror.Of[T]): Eq[T] =
-  val elemInstances = summonAll[m.MirroredElemTypes]           // (1)
+  lazy val elemInstances = summonAll[m.MirroredElemTypes]           // (1)
   inline m match                                               // (2)
     case s: Mirror.SumOf[T]     => eqSum(s, elemInstances)
     case p: Mirror.ProductOf[T] => eqProduct(p, elemInstances)
