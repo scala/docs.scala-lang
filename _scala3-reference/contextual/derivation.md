@@ -218,7 +218,7 @@ instance for the appropriate ADT subtype using the auxiliary method `check` (4).
 ```scala
 import scala.deriving.Mirror
 
-def eqSum[T](s: Mirror.SumOf[T], elems: List[Eq[_]]): Eq[T] =
+def eqSum[T](s: Mirror.SumOf[T], elems: => List[Eq[_]]): Eq[T] =
   new Eq[T]:
     def eqv(x: T, y: T): Boolean =
       val ordx = s.ordinal(x)                            // (3)
