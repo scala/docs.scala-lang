@@ -149,6 +149,23 @@ has a good summary of all the meanings it has.
 Note that, even if the specific meaning is different,
 according to the situation, it usually means _"anything"_.
 
+### Why doesn't my function literal with `_` in it work?
+
+Not all function literals (aka lambdas) can be expressed with the `_`
+syntax.
+
+Every occurrence of `_` introduces a new variable.  So `_ + _` means
+`(x, y) => x + y`, not `x => x + x`.  The latter function cannot be
+written using the `_` syntax.
+
+Also, the scope of `_` is always the smallest enclosing expression.
+The scope is determined purely syntactically, during parsing, without
+regard to types. So for example, `foo(_ + 1)` always means `foo(x =>
+x + 1)`; it never means `x => foo(x + 1)`.  The latter function cannot
+be written using the `_` syntax.
+
+See also [SLS 6.23.2](https://scala-lang.org/files/archive/spec/2.13/06-expressions.html#placeholder-syntax-for-anonymous-functions).
+
 ### Can I chain or nest implicit conversions?
 
 Not really, but you can [make it work](https://stackoverflow.com/a/5332804).
