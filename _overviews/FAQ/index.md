@@ -234,3 +234,24 @@ Not really. See [this answer on Stack Overflow](https://stackoverflow.com/a/6525
 
 The latter has a singleton type, which is too specific.
 See [answer on Stack Overflow](https://stackoverflow.com/a/65258340/4111404).
+
+### I got a `StackOverflowError` while compiling my code. Is it a compiler bug?
+
+It might be.
+
+To find out, try giving the compiler more stack and see if the
+error goes away.
+
+It's possible for the compiler to run out of stack when compiling some
+kinds of heavily nested code. The JVM's default stack size is rather
+small, so this can happen sooner than you might expect.
+
+The stack size can be changed by passing `-Xss...` at JVM startup, for
+example `-Xss16M`.  How to do this depends on what IDE and/or build
+tool you are using.  For sbt, add it to `.jvmopts`.
+
+If the stack overflow doesn't go away no matter how much stack you
+give the compiler, then it's a compiler bug. Please report it on the
+[Scala 2 bug tracker](https://github.com/scala/bug/issues) or [Scala 3
+bug tracker](https://github.com/lampepfl/dotty/issues), but check
+first if it's a duplicate of an existing ticket.
