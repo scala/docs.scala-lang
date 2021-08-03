@@ -13,7 +13,7 @@ previous-page: singleton-objects
 
 ---
 
-Регулярные выражения (Regular expression) - это специальный шаблон для поиска данных задаваемый в виде текстовой строки. Любая строка может быть преобразована в регулярное выражение методом `.r`.
+Регулярные выражения (Regular expression) - это специальный шаблон для поиска данных, задаваемый в виде текстовой строки. Любая строка может быть преобразована в регулярное выражение методом `.r`.
 
 ```scala mdoc
 import scala.util.matching.Regex
@@ -48,7 +48,7 @@ val input: String =
 for (patternMatch <- keyValPattern.findAllMatchIn(input))
   println(s"key: ${patternMatch.group(1)} value: ${patternMatch.group(2)}")
 ```
-Здесь мы обработали сразу и ключи и значения строки. В каждой совпадении есть подгруппа совпадений. Вот как выглядит результат:
+Здесь мы обработали сразу и ключи и значения строки. В каждом совпадении есть подгруппа совпадений. Вот как выглядит результат:
 ```
 key: background-color value: #A03300
 key: background-image value: url(img
