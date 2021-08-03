@@ -181,11 +181,7 @@ equivalent to the Scala code that follows it.
         <br>&nbsp; }
         <br>
         <br>&nbsp; // zero-arg constructor
-        <br>&nbsp; public Person(
-        <br>&nbsp;&nbsp;&nbsp; String firstName, 
-        <br>&nbsp;&nbsp;&nbsp; String lastName, 
-        <br>&nbsp;&nbsp;&nbsp; int age
-        <br>&nbsp; ) {
+        <br>&nbsp; public Person() {
         <br>&nbsp;&nbsp;&nbsp; this("", "", 0);
         <br>&nbsp; }
         <br>
