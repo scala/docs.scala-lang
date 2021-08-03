@@ -132,13 +132,14 @@ equivalent to the Scala code that follows it.
           <br>&nbsp; public int age;
           <br>&nbsp; public Person(
           <br>&nbsp;&nbsp;&nbsp; String firstName, 
-          <br>&nbsp;&nbsp;&nbsp; String lastName, int age
+          <br>&nbsp;&nbsp;&nbsp; String lastName,
+          <br>&nbsp;&nbsp;&nbsp; int age
           <br>&nbsp; ) {
           <br>&nbsp;&nbsp;&nbsp; this.firstName = firstName;
           <br>&nbsp;&nbsp;&nbsp; this.lastName = lastName;
           <br>&nbsp;&nbsp;&nbsp; this.age = age;
           <br>&nbsp; }
-          <br>&nbsp; override String toString() {
+          <br>&nbsp; public String toString() {
           <br>&nbsp;&nbsp;&nbsp; return String.format("%s %s is %d years old.", firstName, lastName, age);
           <br>&nbsp; }
         <br>}</code>
