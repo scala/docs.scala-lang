@@ -35,7 +35,7 @@ help("hi")   // error: Found: ("hi" : String)
 You’ll also get an error if you attempt to add a `case` to the `match` expression that doesn’t match the `Username` or `Password` types:
 
 ```scala
-case 1.0 = > ???   // ERROR: this line won’t compile
+case 1.0 => ???   // ERROR: this line won’t compile
 ```
 
 ### Alternative to Union Types
