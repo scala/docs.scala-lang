@@ -160,7 +160,7 @@ def toppingPrice(t: Topping): Double = t match
   case Cheese | Onions => 0.5
   case Pepperoni | BlackOlives | GreenOlives => 0.75
 ```
-Similarly, since `toppingPrice` is an enumeration, we use pattern matching to distinguish between the different variants.
+Similarly, since `Topping` is an enumeration, we use pattern matching to distinguish between the different variants.
 Cheese and onions are priced at 50ct while the rest is priced at 75ct each.
 ```scala
 def crustPrice(s: CrustSize, t: CrustType): Double =
