@@ -7,13 +7,16 @@ previous-page: tutorial-macro-mixing
 next-page: incompatibility-table
 ---
 
-Scala 3 gives Scala developers the option to adopt the new and optional significant indentation syntax.
-The Scala 2 syntax which uses curly braces to group expressions remains fully supported, and we will refer to it as the classical braces syntax.
+Scala 3 extends the syntax of the Scala language with the new control structures and the significant indentation syntax.
+Both are optional so that the Scala 2 code style is still perfectly valid in Scala 3. 
 
-Scala 3 also introduces a new syntax for control structures, which applies to `if`-expressions, `while`-loops, and `for`-expressions.
+The new syntax for control structures makes it possible to write the condition of an `if`-expression, the condition of a `while`-loop or the generators of a `for`-expression without enclosing parentheses.
 
-Converting existing code to use the new syntax by hand would be tedious and error-prone.
-The good news is the Scala 3 compiler can do the hard work for us!
+The significant indentation syntax makes braces `{...}` not needed in many occurences: class and method bodies, `if`-expressions, `match`-expressions and more.
+You can find a complete description in the [Optional Braces](https://docs.scala-lang.org/scala3/reference/other-new-features/indentation.html) page of the Scala 3 reference website.
+
+Converting existing Scala code to the new syntax by hand is tedious and error-prone.
+In this chapter we show how you can use the compiler to rewrite your code automatically from the classic Scala 2 style to the new style, or conversely. 
 
 ## Syntax Rewriting Options
 
@@ -41,43 +44,33 @@ where possible standard options include:
 
 Each of the first four options corresponds to a specific syntax:
 
+| Syntax | Option |
+| - | - |
+| New Control Structures | `-new-syntax` |
+| Old Control Structures | `-old-syntax` |
+
 | Syntax | Compiler Option |
 |-|-|
 | Significant Indentation | `-indent` |
 | Classical Braces | `-noindent` |
 
-| Syntax | Option |
-| - | - |
-| New Control Structure | `-new-syntax` |
-| Old Control Structure | `-old-syntax` |
 
 As we will see in further detail these options can be used in combination with the `-rewrite` option to automate the conversion to a particular syntax.
 Let's have a look at how this works in a small example.
 
-## Significant Indentation Syntax
+## The New Syntax Rewrites
 
-Given the following source code written in the Scala 2 style:
+Given the following source code written in a Scala 2 style.
 
 ```scala
-object Counter {
-  enum Protocol {
-    case Reset
-    case MoveBy(step: Int)
-  }
-}
-
-case class Animal(name: String)
-
-trait Incrementer {
-  def increment(n: Int): Int
-}
-
 case class State(n: Int, minValue: Int, maxValue: Int) {
+  
   def inc: State =
     if (n == maxValue)
       this
     else
       this.copy(n = n + 1)
+  
   def printAll: Unit = {
     println("Printing all")
     for {
@@ -88,67 +81,60 @@ case class State(n: Int, minValue: Int, maxValue: Int) {
 }
 ```
 
-Assume that we want to convert this piece of code to the significant indentation syntax.
-We can use the `-indent -rewrite` options by adding them to the `scalacOptions` setting in our sbt build:
+We will be able to move it to new syntax automatically in two steps: first by using the new control structure rewrite (`-new-syntax -rewrite`) and then the significant indentation rewrite (`-indent -rewrite`).
+
+> The `-indent` option does not work on the classic control structures.
+> So make sure to run the two steps in the correct order.
+
+> Unfortunately, the compiler is not able to apply both steps at the same time: <del>`-indent -new-syntax -rewrite`</del>.
+
+### New Control Structures
+
+We can use the `-new-syntax -rewrite` options by adding them to the list of scalac options in our build tool.
 
 ```scala
 // build.sbt
-scalacOptions ++= Seq("-indent", "-rewrite")
+scalacOptions ++= Seq("-new-syntax", "-rewrite")
 ```
 
 After compiling the code, the result looks as follows:
 
 ```scala
-object Counter:
-  enum Protocol:
-    case Reset
-    case MoveBy(step: Int)
-
-case class Animal(name: String)
-
-trait Incrementer:
-  def increment(n: Int): Int
-
-case class State(n: Int, minValue: Int, maxValue: Int):
-  def inc: State =
-    if (n == maxValue)
-      this
-    else
-      this.copy(n = n + 1)
-  def printAll: Unit =
-    println("Printing all")
-    for {
-      i <- minValue to maxValue
-      j <- 0 to n
-    } println(i + j)
-```
-
-A few things to observe after the switch to the significant indentation syntax:
-- The number of lines was reduced by 4 because of the elimination of a series of closing curly braces
-- The control structures are unchanged
-
-## New Control Structure
-
-After this first rewrite, we can jump to the new control structure syntax by using `-new-syntax -rewrite`.
-It leads us to the following version:
-
-```scala
-object Counter:
-  enum Protocol:
-    case Reset
-    case MoveBy(step: Int)
-
-case class Animal(name: String)
-
-trait Incrementer:
-  def increment(n: Int): Int
-
-case class State(n: Int, minValue: Int, maxValue: Int):
+case class State(n: Int, minValue: Int, maxValue: Int) {
+  
   def inc: State =
     if n == maxValue then
       this
     else
       this.copy(n = n + 1)
+  
+  def printAll: Unit = {
+    println("Printing all")
+    for
+      i <- minValue to maxValue
+      j <- 0 to n
+    do println(i + j)
+  }
+}
+```
+
+Notice that the parentheses around the `n == maxValue` disappeared, as well as the braces around the `i <- minValue to maxValue` and `j <- 0 to n` generators.
+
+### Significant Indentation Syntax
+
+After this first rewrite, we can use the significant indentation syntax to remove the remaining braces.
+To do that we use the `-indent` option in combination with the `-rewrite` option.
+It leads us to the following version:
+
+```scala
+case class State(n: Int, minValue: Int, maxValue: Int):
+  
+  def inc: State =
+    if n == maxValue then
+      this
+    else
+      this.copy(n = n + 1)
+  
   def printAll: Unit =
     println("Printing all")
     for
@@ -157,37 +143,22 @@ case class State(n: Int, minValue: Int, maxValue: Int):
     do println(i + j)
 ```
 
-We moved to the new syntaxes of Scala 3 in two steps: first we used `-indent -rewrite` then `-new-syntax -rewrite`.
-We could also apply the new control structure syntax before the significant indentation syntax.
-But the compiler is not able to apply both at the same time: <del>`-indent -new-syntax -rewrite`</del>.
-
-## Moving back to Classic syntax
+## Moving back to the Classic syntax
 
 Starting from the latest state of our code sample, we can move backwards to its initial state.
 
-Let's rewrite to the braces syntax and retain the new control structures syntax.
+Let's rewrite the code using braces while retaining the new control structures.
 After compiling with the `-no-indent -rewrite` options, we obtain the following result:
 
 ```scala
-object Counter {
-  enum Protocol {
-    case Reset
-    case MoveBy(step: Int)
-  }
-}
-
-case class Animal(name: String)
-
-trait Incrementer {
-  def increment(n: Int): Int
-}
-
 case class State(n: Int, minValue: Int, maxValue: Int) {
+  
   def inc: State =
     if n == maxValue then
       this
     else
       this.copy(n = n + 1)
+  
   def printAll: Unit = {
     println("Printing all")
     for {
@@ -202,25 +173,14 @@ case class State(n: Int, minValue: Int, maxValue: Int) {
 Applying one more rewrite, with `-old-syntax -rewrite`, takes us back to the original Scala 2-style code.
 
 ```scala
-object Counter {
-  enum Protocol {
-    case Reset
-    case MoveBy(step: Int)
-  }
-}
-
-case class Animal(name: String)
-
-trait Incrementer {
-  def increment(n: Int): Int
-}
-
 case class State(n: Int, minValue: Int, maxValue: Int) {
+  
   def inc: State =
     if (n == maxValue)
       this
     else
       this.copy(n = n + 1)
+  
   def printAll: Unit = {
     println("Printing all")
     for {
