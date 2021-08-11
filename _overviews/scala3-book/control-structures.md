@@ -458,10 +458,10 @@ def isTruthy(a: Matchable) = a match
   case _              => true
 ```
 
-The input parameter a is defined to be the [Matchable type][matchable]---which is the root of all Scala types that pattern matching can be performed on.
+The input parameter `a` is defined to be the [`Matchable` type][matchable]---which is the root of all Scala types that pattern matching can be performed on.
 The method is implemented by matching on the input, providing two cases:
-The first one checks whether the given value is either the integer 0, an empty string, null or false and returns false in this case.
-In the default case, we return true for any other value.
+The first one checks whether the given value is either the integer `0`,  an empty string or `false` and returns `false` in this case.
+In the default case, we return `true` for any other value.
 These examples show how this method works:
 
 ```scala
