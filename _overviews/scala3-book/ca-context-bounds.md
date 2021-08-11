@@ -22,14 +22,14 @@ In that case you don’t have to define a parameter name, and can just provide t
 For example, this `maximum` method takes a _context parameter_ of type `Ord`, only to pass it on as an argument to `max`:
 
 ```scala
-def maximum[T](xs: List[A])(using ord: Ord[A]): A =
+def maximum[A](xs: List[A])(using ord: Ord[A]): A =
   xs.reduceLeft(max(ord))
 ```
 
 In that code the parameter name `ord` isn’t actually required; it can be passed on as an inferred argument to `max`, so you just state that `maximum` uses the type `Ord[A]` without giving it a name:
 
 ```scala
-def maximum[T](xs: List[A])(using Ord[A]): A =
+def maximum[A](xs: List[A])(using Ord[A]): A =
   xs.reduceLeft(max)
 ```
 
