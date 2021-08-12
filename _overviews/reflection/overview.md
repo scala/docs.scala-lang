@@ -262,7 +262,7 @@ precise runtime _types_ of these Scala objects. Scala runtime types carry
 along all type info from compile-time, avoiding these types mismatches between
 compile-time and run-time.
 
-Below, we use define a method which uses Scala reflection to get the runtime
+Below, we define a method which uses Scala reflection to get the runtime
 types of its arguments, and then checks the subtyping relationship between the
 two. If its first argument's type is a subtype of its second argument's type,
 it returns `true`.
