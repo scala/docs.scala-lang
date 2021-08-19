@@ -18,8 +18,8 @@ If you want to know what is current state of compatibility with scaladoc old fla
 Supply scaladoc settings as command-line arguments, e.g., `scaladoc -d output -project my-project target/scala-3.0.0-RC2/classes`. If called from sbt, update the value of `Compile / doc / scalacOptions` and `Compile / doc / target` respectively, e. g.
 
 ```
-Compile / doc / target ++= Seq("-d", "output")
-Compile / doc / scalacOptions ++= Seq("-project", "my-project")
+Compile / doc / target := file("output"),
+Compile / doc / scalacOptions ++= Seq("-project", "my-project"),
 ```
 
 ## Overview of all available settings
@@ -149,7 +149,7 @@ Example JSON file:
 Snippet compiler arguments provide a way to configure snippet type checking.
 
 This setting accepts a list of arguments in the format:
-args := arg{,arg}
+args := arg{,args}
 arg := [path=]flag
 where `path` is a prefix of the path to source files where snippets are located and `flag` is the mode in which snippets will be type checked.
 
