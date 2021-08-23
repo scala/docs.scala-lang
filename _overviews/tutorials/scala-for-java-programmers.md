@@ -675,7 +675,7 @@ empty or point to an object of some type.
 
     class Reference[T] {
       private var contents: T = _
-      def set(value: T) { contents = value }
+      def set(value: T): Unit = { contents = value }
       def get: T = contents
     }
 
