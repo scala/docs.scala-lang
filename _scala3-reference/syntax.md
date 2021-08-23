@@ -265,8 +265,10 @@ BlockStat         ::=  Import
                     |  Expr1
                     |  EndMarker
 
-ForExpr           ::=  ‘for’ (‘(’ Enumerators ‘)’ | ‘{’ Enumerators ‘}’) {nl} [‘yield’] Expr
-                    |  ‘for’ Enumerators (‘do’ Expr | ‘yield’ Expr)
+ForExpr           ::=  ‘for’ ‘(’ Enumerators0 ‘)’ {nl} [‘do‘ | ‘yield’] Expr
+                    |  ‘for’ ‘{’ Enumerators0 ‘}’ {nl} [‘do‘ | ‘yield’] Expr
+                    |  ‘for’     Enumerators0          (‘do‘ | ‘yield’) Expr
+Enumerators0      ::=  {nl} Enumerators [semi]
 Enumerators       ::=  Generator {semi Enumerator | Guard}
 Enumerator        ::=  Generator
                     |  Guard
@@ -400,8 +402,8 @@ EnumDef           ::=  id ClassConstr InheritClauses EnumBody
 GivenDef          ::=  [GivenSig] (AnnotType [‘=’ Expr] | StructuralInstance)
 GivenSig          ::=  [id] [DefTypeParamClause] {UsingParamClause} ‘:’         -- one of `id`, `DefParamClause`, `UsingParamClause` must be present
 StructuralInstance ::=  ConstrApp {‘with’ ConstrApp} [‘with’ TemplateBody]
-Extension         ::=  ‘extension’ [DefTypeParamClause] ‘(’ DefParam ‘)’
-                       {UsingParamClause} ExtMethods
+Extension         ::=  ‘extension’ [DefTypeParamClause] {UsingParamClause}
+                       ‘(’ DefParam ‘)’ {UsingParamClause} ExtMethods
 ExtMethods        ::=  ExtMethod | [nl] <<< ExtMethod {semi ExtMethod} >>>
 ExtMethod         ::=  {Annotation [nl]} {Modifier} ‘def’ DefDef
 Template          ::=  InheritClauses [TemplateBody]

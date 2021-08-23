@@ -291,8 +291,8 @@ to the [current syntax](../syntax.html).
 BlockStat         ::=  ... | Extension
 TemplateStat      ::=  ... | Extension
 TopStat           ::=  ... | Extension
-Extension         ::=  ‘extension’ [DefTypeParamClause] ‘(’ DefParam ‘)’
-                       {UsingParamClause} ExtMethods
+Extension         ::=  ‘extension’ [DefTypeParamClause] {UsingParamClause}
+                       ‘(’ DefParam ‘)’ {UsingParamClause} ExtMethods
 ExtMethods        ::=  ExtMethod | [nl] <<< ExtMethod {semi ExtMethod} >>>
 ExtMethod         ::=  {Annotation [nl]} {Modifier} ‘def’ DefDef
 ```

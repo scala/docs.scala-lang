@@ -1,5 +1,5 @@
 ---
-title: "Dropped: Delayedinit"
+title: "Dropped: DelayedInit"
 type: section
 num: 71
 previous-page: /scala3/reference/dropped-features
