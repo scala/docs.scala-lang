@@ -32,7 +32,7 @@ case class Cat(name: String) extends Animal
 case class Dog(name: String) extends Animal
 ```
 
-Both `Cat` and `Dog` are subtypes of `Animal`. The Scala standard library has a generic immutable `sealed abstract class List[+A]` class, where the type parameter `A` is covariant. This means that a `List[Cat]` is a `List[Animal]` and a `List[Dog]` is also a `List[Animal]`. Intuitively, it makes sense that a list of cats and a list of dogs are each lists of animals, and you should be able to use either of them for in place of `List[Animal]`.
+Both `Cat` and `Dog` are subtypes of `Animal`. The Scala standard library has a generic immutable `sealed abstract class List[+A]` class, where the type parameter `A` is covariant. This means that a `List[Cat]` is a `List[Animal]`. A `List[Dog]` is also a `List[Animal]`. Intuitively, it makes sense that a list of cats and a list of dogs are each lists of animals, and you should be able to use either of them for in place of `List[Animal]`.
 
 In the following example, the method `printAnimalNames` will accept a list of animals as an argument and print their names each on a new line. If `List[A]` were not covariant, the last two method calls would not compile, which would severely limit the usefulness of the `printAnimalNames` method.
 
