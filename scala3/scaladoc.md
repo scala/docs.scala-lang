@@ -43,16 +43,18 @@ Furthermore, Scaladoc provides an easy way to configure your [social media links
 
 The following features are currently (May 2021) not stable to be released with scaladoc, however we are happy to hear your feedback. Each feature has its own thread at scala-lang contributors site, where you can share your opinions.
 
-### Snippets compiler
+### Snippet compiling
 
-One of the experimental features of Scaladoc will be a snippets compiler. This tool will allow you to compile snippets that you attach to your docstring  
-to check that they actually behave as intended, e. g. compile or throw some exception. The feature is very similar to `tut` or `mdoc` tools, 
-but will be shipped with Scaladoc out of the box for easy setup and integration into your project. Making snippets interactive, e. g. user could edit them and compile in the browser is under consideration, though it is not in scope yet.
+One of the experimental features of Scaladoc is a snippets compiler. This tool will allow you to compile snippets that you attach to your docstring
+to check that they actually behave as intended, e.g., to properly compile. This feature is very similar to the `tut` or `mdoc` tools, 
+but will be shipped with Scaladoc out of the box for easy setup and integration into your project. Making snippets interactive---e.g., letting users edit and compile them in the browser---is under consideration, though this feature is not in scope at this time.
 
-For more information you can follow this [thread](https://contributors.scala-lang.org/t/snippet-validation-in-scaladoc-for-scala-3/4976)
+Showcase:
+* Hiding code ![]({{ site.baseurl }}/resources/images/scala3/scaladoc/hiding-code.gif)
+* Assert compilation errors ![]({{ site.baseurl }}/resources/images/scala3/scaladoc/assert-compilation-errors.gif)
+* Snippet includes ![]({{ site.baseurl }}/resources/images/scala3/scaladoc/snippet-includes.png)
 
-![](../resources/images/scala3/scaladoc/snippet-compiler2.gif)
-![](../resources/images/scala3/scaladoc/snippet-compiler1.gif)
+For more information see [Guides](/scala3/guides/scaladoc/snippet-compiler.html), or follow this [Scala Contributors thread](https://contributors.scala-lang.org/t/snippet-validation-in-scaladoc-for-scala-3/4976)
 
 ### Type-based search
 

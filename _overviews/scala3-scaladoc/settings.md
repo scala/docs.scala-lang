@@ -2,8 +2,8 @@
 layout: multipage-overview
 title: Settings
 partof: scala3-scaladoc
-num: 8
-previous-page: search-engine
+num: 9
+previous-page: snippet-compiler
 ---
 
 This chapter lists the configuration options that can be used when calling scaladoc. Some of the information shown here can be found by calling scaladoc with the `-help` flag.
