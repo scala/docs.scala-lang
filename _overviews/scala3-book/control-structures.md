@@ -450,22 +450,23 @@ speak(Person("Bam Bam"))   // "Bam Bam says, Bam bam!"
 ### Using a `match` expression as the body of a method
 
 Because `match` expressions return a value, they can be used as the body of a method.
-This method takes a `Boolean` value as an input parameter, and returns a `String`, based on the result of the `match` expression:
+This method takes a `Matchable` value as an input parameter, and returns a `Boolean`, based on the result of the `match` expression:
 
 ```scala
 def isTruthy(a: Matchable) = a match
-  case 0 | "" => false
-  case _ => true
+  case 0 | "" | false => false
+  case _              => true
 ```
 
 The input parameter `a` is defined to be the [`Matchable` type][matchable]---which is the root of all Scala types that pattern matching can be performed on.
 The method is implemented by matching on the input, providing two cases:
-The first one checks whether the given value is either the integer `0` or an empty string and returns `false` in this case.
+The first one checks whether the given value is either the integer `0`,  an empty string or `false` and returns `false` in this case.
 In the default case, we return `true` for any other value.
 These examples show how this method works:
 
 ```scala
 isTruthy(0)      // false
+isTruthy(false)  // false
 isTruthy("")     // false
 isTruthy(1)      // true
 isTruthy(" ")    // true
