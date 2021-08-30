@@ -19,7 +19,7 @@ four courses and a capstone project.
 All the courses are available for free. Optionally, a subscription gives
 you access to a certificate of completion that attests your accomplishments.
 Learn more about
-[Coursera certificates](https://learner.coursera.help/hc/en-us/articles/209819053-Get-a-Course-Certificate) or
+[Coursera certificates](https://learners.coursera.help/hc/en-us/articles/209819053-Get-a-Course-Certificate) or
 [edX certificates](https://support.edx.org/hc/en-us/categories/115002269627-Certificates).
 
 ### Effective Programming in Scala

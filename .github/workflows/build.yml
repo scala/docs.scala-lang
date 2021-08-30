@@ -25,7 +25,7 @@ jobs:
           # # Checking for docs.scala-lang/blob/main leads to a chicken and egg problem because of the edit links of new pages.
           bundle exec htmlproofer ./_site/\
              --only-4xx\
-             --http-status-ignore "400,401,429"\
+             --http-status-ignore "400,401,403,429"\
              --empty-alt-ignore\
              --allow-hash-href\
              --url-ignore '/https://github.com/scala/docs.scala-lang/blob/main/.*/,/www.oracle.com/'
