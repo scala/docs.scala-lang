@@ -3,8 +3,15 @@ layout: singlepage-overview
 title: Talks
 ---
 
-Talks on Dotty
---------------
+Let’s Talk About Scala 3 Series
+-------------------------------
+
+[Let’s Talk About Scala 3](https://www.youtube.com/playlist?list=PLTx-VKTe8yLxYQfX_eGHCxaTuWvvG28Ml) is a series
+of short (around 15 min) talks about Scala 3. It covers a variety of themes like how to get started, how to take
+advantage of the new language features, or how to migrate from Scala 2. 
+
+Talks on Scala 3
+----------------
 - (ScalaDays 2019, Lausanne) [A Tour of Scala 3](https://www.youtube.com/watch?v=_Rnrx2lo9cw) by [Martin Odersky](http://twitter.com/odersky) [\[slides\]](https://www.slideshare.net/Odersky/a-tour-of-scala-3)
 
 - (ScalaDays 2016, Berlin) [Scala's Road Ahead](https://www.youtube.com/watch?v=GHzWqJKFCk4) by [Martin Odersky](http://twitter.com/odersky) [\[slides\]](http://www.slideshare.net/Odersky/scala-days-nyc-2016)
@@ -17,8 +24,8 @@ Talks on Dotty
   become familiar with many core concepts such as `Denotations`, their evolution through (compilation) time, their
   transformations and more.
 
-Deep Dive with Dotty
---------------------
+Deep Dive with Scala 3
+----------------------
 - (ScalaDays 2019, Lausanne) [Metaprogramming in Dotty](https://www.youtube.com/watch?v=ZfDS_gJyPTc) by [Nicolas Stucki](https://github.com/nicolasstucki).
 
 - (ScalaDays 2019, Lausanne) [Future-proofing Scala: the TASTY intermediate representation](https://www.youtube.com/watch?v=zQFjC3zLYwo) by [Guillaume Martres](http://guillaume.martres.me/).
