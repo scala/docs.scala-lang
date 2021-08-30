@@ -28,7 +28,7 @@ put each constructor argument on its own line with
       birthdate: Date,
       astrologicalSign: String,
       shoeSize: Int,
-      favoriteColor: java.awt.Color,
+      favoriteColor: java.awt.Color
     ) {
       def firstMethod: Foo = …
     }
@@ -46,7 +46,7 @@ empty line should be added to further separate extensions from class implementat
       birthdate: Date,
       astrologicalSign: String,
       shoeSize: Int,
-      favoriteColor: java.awt.Color,
+      favoriteColor: java.awt.Color
     ) extends Entity
       with Logging
       with Identifiable
