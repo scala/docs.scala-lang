@@ -5,7 +5,7 @@ title: A Scala Tutorial for Java Programmers
 partof: scala-for-java-programmers
 
 languages: [es, ko, de, it, ja, zh-tw]
-permalink: /tutorials/:title.html
+permalink: /overviews/tutorials/:title.html
 ---
 
 By Michel Schinz and Philipp Haller

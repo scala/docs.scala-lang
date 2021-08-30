@@ -4,7 +4,7 @@ title: A Tutorial on writing Scala apps on Android
 
 partof: scala-on-android
 
-permalink: /tutorials/:title.html
+permalink: /overviews/tutorials/:title.html
 ---
 
 By Maciej Gorywoda

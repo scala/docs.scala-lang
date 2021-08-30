@@ -5,21 +5,6 @@
       url: https://www.scala-lang.org/api/current/
     - title: All Versions
       url: "/api/all.html"
-- title: Learn
-  url: "#"
-  submenu:
-    - title: Getting Started
-      url: "/getting-started/index.html"
-    - title: Tour of Scala
-      url: "/tour/tour-of-scala.html"
-    - title: Scala Book
-      url: "/overviews/scala-book/introduction.html"
-    - title: Scala for Java Programmers
-      url: "/tutorials/scala-for-java-programmers.html"
-    - title: Scala on Android
-      url: "/tutorials/scala-on-android.html"
-    - title: Online Resources
-      url: "/learn.html"
 - title: Reference
   url: "#"
   submenu:
