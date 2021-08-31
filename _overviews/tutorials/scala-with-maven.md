@@ -1,7 +1,7 @@
 ---
 layout: singlepage-overview
 title: Scala with Maven
-permalink: /overviews/tutorials/:title.html
+permalink: /tutorials/:title.html
 ---
 
 By Adrian Null

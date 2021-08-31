@@ -99,12 +99,12 @@
       by: Michel Schinz and Philipp Haller
       description: "A quick intro to the Scala language and compiler intended for people who already have some programming experience and want an overview of what they can do with Scala. A basic knowledge of object-oriented programming, especially in Java, is assumed."
       icon: coffee
-      url: "tutorials/scala-for-java-programmers.html"
+      url: "../tutorials/scala-for-java-programmers.html"
     - title: Scala on Android
       by: Maciej Gorywoda
       description: "A tutorial on how to write a modern Android app with Scala that uses GraalVM Native Image and JavaFX."
       icon: rebel
-      url: "tutorials/scala-on-android.html"
+      url: "../tutorials/scala-on-android.html"
     - title: Binary Compatibility for Library Authors
       by: Jacob Wang
       description: "This guide covers the topic of binary compatibility: how binary incompatibility can cause production failures in your applications, how to avoid breaking binary compatibility, how to reason about and communicate the impact of their code changes."
@@ -114,7 +114,7 @@
       by: Adrian Null
       description: "Maven is a build/project management tool. It favours \"convention over configuration\"; it can greatly simplify builds for \"standard\" projects and a Maven user can usually understand the structure of another Maven project just by looking at its `pom.xml` (Project Object Model)."
       icon: rebel
-      url: "tutorials/scala-with-maven.html"
+      url: "../tutorials/scala-with-maven.html"
     - title: Online Resources
       by: Julien Richard-Foy
       icon: paper-plane
