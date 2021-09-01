@@ -69,7 +69,7 @@ type DB = (k: Key) => Option[k.Value]
 ```
 Given this definition of `DB` the above call to `user` type checks, as is.
 
-You can read more about the interals of dependent function types in the [reference documentation][ref].
+You can read more about the internals of dependent function types in the [reference documentation][ref].
 
 ## Case Study: Numerical Expressions
 Let us assume we want to define a module that abstracts over the internal represention of numbers.
@@ -119,7 +119,7 @@ derivative(new Prog {
 
 #### Combination with Context Functions
 The combination of extension methods, [context functions][ctx-fun], and dependent functions provides a powerful tool for library designers.
-For instance, we can refine our library from above as follows
+For instance, we can refine our library from above as follows:
 ```scala
 trait NumsDSL extends Nums:
   extension (x: Num)
