@@ -685,7 +685,7 @@ case class DecreaseVolume(amount: Int) extends Message
 case object StopPlaying extends Message
 ```
 
-Then in other parts of your code you can write methods like this, which use pattern matching to handle (possibly by some methods similar to the ones mentioned as comments) the incoming message:
+Then in other parts of your code, you can write methods like this, which use pattern matching to handle the incoming message (assuming the methods `playSong`, `changeVolume`, and `stopPlayingSong` are defined somewhere else):
 
 ```scala
 def handleMessages(msg: Message): String = msg match
