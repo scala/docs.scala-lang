@@ -688,11 +688,11 @@ case object StopPlaying extends Message
 Then in other parts of your code, you can write methods like this, which use pattern matching to handle the incoming message (assuming the methods `playSong`, `changeVolume`, and `stopPlayingSong` are defined somewhere else):
 
 ```scala
-def handleMessages(msg: Message): String = msg match
-  case PlaySong(name)      => s"Playing song ${name}"      // playSong(name)
-  case IncreaseVolume(amt) => s"Increase volume by ${amt}" // changeVolume(amt)
-  case DecreaseVolume(amt) => s"Decrease volume by ${amt}" // changeVolume(-amt)
-  case StopPlaying         => s"Stopped playing music"     // stopPlayingMusic
+def handleMessages(message: Message): Unit = message match
+  case PlaySong(name)         => playSong(name)
+  case IncreaseVolume(amount) => changeVolume(amount)
+  case DecreaseVolume(amount) => changeVolume(-amount)
+  case StopPlaying            => stopPlayingSong()
 ```
 [ref-enums]: {{ site.scala3ref }}/enums/enums.html
 [adts]: {% link _overviews/scala3-book/types-adts-gadts.md %}
