@@ -218,6 +218,6 @@ don't feel at ease with).</li>
 2. [Implementation Pull-Request][2]
 3. [StreamZipper Example][3]
 
-[1]: https://www.cl.cam.ac.uk/~dao29/publ/codo-notation-orchard-ifl12.pdf "codo-notation"
+[1]: https://www.cs.kent.ac.uk/people/staff/dao7/publ/codo-notation-orchard-ifl12.pdf "codo-notation"
 [2]: https://github.com/scala/scala/pull/5725
 [3]: https://github.com/shimib/scala/blob/5e257cd4b371769deafba2be1ae3932d772ca67d/test/files/neg/cofor.scala
