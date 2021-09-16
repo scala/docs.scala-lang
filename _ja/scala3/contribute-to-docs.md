@@ -34,7 +34,7 @@ Scala 3 の高品質なドキュメンテーションを作るためのいくつ
 - [Issues](https://github.com/scala/docs.scala-lang/issues)
 
 ## Macros Tutorial
-[Macros Tutorial](/scala3/guides/macros)は Nicolas Stucki 氏 が書いている。この本では Scala 3 のマクロとそのベストプラクティスについて詳しく説明している。 
+[Macros Tutorial](/scala3/guides/macros)は Nicolas Stucki 氏 が書いている。この本では Scala 3 のマクロとそのベストプラクティスについて詳しく説明している。
 
 - [Sources](https://github.com/scala/docs.scala-lang/tree/main/_overviews/scala3-macros)
 - [Issues](https://github.com/scala/docs.scala-lang/issues)
@@ -45,6 +45,12 @@ Scala 3 の高品質なドキュメンテーションを作るためのいくつ
 - [Source](https://github.com/scala/docs.scala-lang/tree/main/_overviews/scala3-migration)
 - [Issues](https://github.com/scalacenter/docs.scala-lang/issues)
 
+## Scala 3 Contribution Guide
+[Scala 3 Contribution Guide](/scala3/guides/contribution/contribution-intro.html)
+Scala 3 コンパイラとライブラリへの貢献と内部に関する包括的な概要が含まれています
+
+- [Source](https://github.com/scala/docs.scala-lang/tree/main/_overviews/scala3-contribution)
+- [Issues](https://github.com/scala/docs.scala-lang/issues)
 
 ## Scala 3 Language Reference
 The [Dotty reference](/scala3/reference/overview.html) は Scala 3 になる予定である。これにはさまざまな言語仕様に関する公式のプレゼンテーションや技術的情報が含まれている。
@@ -54,4 +60,3 @@ The [Dotty reference](/scala3/reference/overview.html) は Scala 3 になる予�
 
 
 [scala3-book]: {% link _overviews/scala3-book/introduction.md %}
-

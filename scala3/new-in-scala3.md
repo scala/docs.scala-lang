@@ -11,6 +11,7 @@ changes. If you want to dig deeper, there are a few references at your disposal:
 - The [Syntax Summary][syntax-summary] provides you with a formal description of the new syntax.
 - The [Language Reference][reference] gives a detailed description of the changes from Scala 2 to Scala 3.
 - The [Migration Guide][migration] provides you with all of the information necessary to move from Scala 2 to Scala 3.
+- The [Contribution Guide][contribution] dives deeper into the compiler, including a guide to fix issues.
 
 ## What's new in Scala 3
 Scala 3 is a complete overhaul of the Scala language. At its core, many aspects
@@ -110,6 +111,7 @@ If you want to learn more about metaprogramming in Scala 3, we invite you to tak
 [reference]: {{ site.scala3ref }}/overview.html
 [creator]: {{ site.scala3ref }}/other-new-features/creator-applications.html
 [migration]: {% link _overviews/scala3-migration/compatibility-intro.md %}
+[contribution]: {% link _overviews/scala3-contribution/contribution-intro.md %}
 
 [implicits]: {{ site.scala3ref }}/contextual.html
 [contextual-using]: {{ site.scala3ref }}/contextual/using-clauses.html

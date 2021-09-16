@@ -45,6 +45,13 @@ a tour presenting the migration tools, and detailed migration guides.
 - [Source](https://github.com/scala/docs.scala-lang/tree/main/_overviews/scala3-migration)
 - [Issues](https://github.com/scala/docs.scala-lang/issues)
 
+## Scala 3 Contribution Guide
+The [Scala 3 Contribution Guide](/scala3/guides/contribution/contribution-intro.html)
+contains a comprehensive overview over contribution to and internals of the Scala 3 compiler and libraries
+
+- [Source](https://github.com/scala/docs.scala-lang/tree/main/_overviews/scala3-contribution)
+- [Issues](https://github.com/scala/docs.scala-lang/issues)
+
 ## Scala 3 Language Reference
 The [Scala 3 reference](/scala3/reference/overview.html) contains a formal presentation and detailed technical information about the various features of the language.
 

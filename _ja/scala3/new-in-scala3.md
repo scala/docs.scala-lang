@@ -13,6 +13,7 @@ Scala 3 は Scala 2 から大幅な改善が行われ、さまざまな新機能
 - [Syntax Summary][syntax-summary] では Scala 3 で新しく追加されたシンタックスを解説している。
 - [Language Reference][reference] を見ればScala 2 と Scala 3 の変更点を詳しく確認できる。
 - Scala 2 から Scala 3 への移行を考えている方は[Migration Guide][migration] を参照。
+- [Contribution Guide][contribution] は、問題を修正するためのガイドを含め、コンパイラーをさらに深く掘り下げます。
 
 ## What's new in Scala 3
 Scala 3 は Scala 2 を徹底的に見直して再設計されている。核心部分で、型システムの多くの面が変更されより原理原則に基づいたものになった。この変更によって新機能(ユニオン型)が使えるようになったことにくわえて、なにより型システムがさらに使いやすくなった。 例えば、[型推論][type-inference] や overload resolution が改善された.
@@ -37,7 +38,7 @@ Scala 3 ではひとつの強力な機能として`implicit`を提供するの�
 - **Providing Type-class instances**. [Given instances][contextual-givens] を使ってある型に対応する _canonical value_ を定義することができる。実装を公開することなく、型クラスを使ったプログラミングをよりわかりやすく書ける。
 
 - **Retroactively extending classes**. Scala 2 では拡張メソッドは暗黙の変換か implicit classを使って書くことができた. 一方 Scala 3 では [extension methods][contextual-extension] が直接的に言語仕様に含まれているのでよりわかりやすいエラーメッセージを表示できる。型推論も改善された。
-- **Viewing one type as another**. 暗黙の変換は型クラス`Conversion`のインスタンスとしてゼロから [再設計][contextual-conversions]された。 
+- **Viewing one type as another**. 暗黙の変換は型クラス`Conversion`のインスタンスとしてゼロから [再設計][contextual-conversions]された。
 - **Higher-order contextual abstractions**. 全く新しい機能である  [context functions][contextual-functions] は暗黙の引数をとる関数型を第一級オブジェクトとして扱う。この機能はライブラリ作者にとって重要である。また、簡潔なドメイン特化言語(DSL)を記述するのにも役立つ。
 
 - **Actionable feedback from the compiler**. コンパイラが暗黙の引数の解決に失敗した場合、解決に役立つ [import suggestions](https://www.scala-lang.org/blog/2020/05/05/scala-3-import-suggestions.html) を提示する。
@@ -99,6 +100,7 @@ Scala 3 のメタプログラミングについてもっと知りたいかたは
 [reference]: {{ site.scala3ref }}/overview.html
 [creator]: {{ site.scala3ref }}/other-new-features/creator-applications.html
 [migration]: {% link _overviews/scala3-migration/compatibility-intro.md %}
+[contribution]: {% link _overviews/scala3-contribution/contribution-intro.md %}
 
 [implicits]: {{ site.scala3ref }}/contextual.html
 [contextual-using]: {{ site.scala3ref }}/contextual/using-clauses.html
