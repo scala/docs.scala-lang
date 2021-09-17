@@ -15,7 +15,7 @@ Types in `dotc` are divided into two semantic kinds:
 
 A Ground Type is considered atomic, and refers to ...
 
-Here's a diagram, describing the semantic types available after the `typer` phase, derived from [dotty/tools/dotc/core/Types.scala][1]:
+Here's a diagram, serving as the mental model of the most important and distinct types available after the `typer` phase, derived from [dotty/tools/dotc/core/Types.scala][1]:
 
 ```
 Type -+- proxy_type --+- NamedType --------+- TypeRef
@@ -56,16 +56,23 @@ Type                      | Representation
 ------------------------- | -----------------------------
 `p.x.type`                | `TermRef(p, x)`
 `p#T`                     | `TypeRef(p, T)`
-`p.x.T` == `p.x.type#T`   | `TypeRef(TermRef(p, x), T)`
-`this.type`               | `ThisType`
+`p.x.T` and `p.x.type#T`  | `TypeRef(TermRef(p, x), T)`
+`this.type`               | `ThisType(C)` where `C` is the enclosing class
+`"hello"`                 | `ConstantType(Constant("hello"))`
 `A & B`                   | `AndType(A, B)`
-<code>A \| B</code>       | `OrType(A, B)`
+`A | B`                   | `OrType(A, B)`
+`A @foo`                  | `AnnotatedType(A, @foo)`
 `=> T`                    | `ExprType(T)`
-`p { refinedName }`       | `RefinedType(p, refinedName)`
-type of the value `super` | `SuperType`
-`type T >: A <: B`        | `TypeRef` with underlying type `RealTypeBounds(A, B)`
-`type T = A`              | `TypeRef` with underlying type `TypeAlias(A)`
-`class p.C ...`           | `ClassInfo(p, C, ...)`
+`p.C[A, B]`               | `AppliedType(p.C, List(A, B))`
+`p { type A = T }`        | `RefinedType(p, A, T)`
+`p { type X = Y }`        | `RecType((z: RecThis) => p { type X = z.Y })`<br/>when `X` and `Y` are members of `p`
+`super.x.type`            | `TermRef(SuperType(...), x)`
+`type T >: A <: B`        | `TypeRef(p, T)`<br/>with underlying type `RealTypeBounds(A, B)`
+`type T = A`              | `TypeRef(p, T)`<br/>with underlying type `TypeAlias(A)`
+`class C`                 | `TypeRef(p, C)`<br/>with underlying type `ClassInfo(p, C, ...)`
+`[T <: A] =>> T`          | `HKTypeLambda(T, <: A, TypeParamRef(T))`
+`def f(x: A): x.type`     | `MethodType(x, A, TermParamRef(x))`
+`def f[T <: A]: T`        | `PolyType(T, <: A, TypeParamRef(T))`
 
 ### Representation of methods ###
 ```scala
