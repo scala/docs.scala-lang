@@ -58,7 +58,7 @@ println(x) // 2
 x = 3 // This does not compile.
 ```
 
-常量（`values`）的类型可以被推断，或者你也可以显示地声明类型，例如：
+常量（`values`）的类型可以被推断，或者你也可以显式地声明类型，例如：
 
 ```scala mdoc:nest
 val x: Int = 1 + 1
@@ -76,7 +76,7 @@ x = 3 // This compiles because "x" is declared with the "var" keyword.
 println(x * x) // 9
 ```
 
-和常量一样，你可以显示地声明类型：
+和常量一样，你可以显式地声明类型：
 
 ```scala mdoc:nest
 var x: Int = 1 + 1
