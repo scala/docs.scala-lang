@@ -6,7 +6,85 @@ num: 2
 previous-page: contribution-intro
 ---
 
-You can find the definition of the `dotc` types in [dotty/tools/dotc/core/Types.scala][1]
+## Common Types and their Representation
+
+Type representations in `dotc` derive from the class `dotty.tools.dotc.core.Types.Type`,
+defined in [dotty/tools/dotc/core/Types.scala][1]
+
+### Types of Definitions
+
+The following table describes definitions in Scala 3, followed by the `dotc` representation of a reference
+to the definition, followed by the `dotc` representation of the underlying type of the definition:
+
+Type                    | Reference       | Underlying Type
+------------------------|-----------------|-------------------------
+`type Z >: A <: B`      | `TypeRef(p, Z)` | `RealTypeBounds(A, B)`
+`type Z = A`            | `TypeRef(p, Z)` | `TypeAlias(A)`
+`type F[T] = T match …` | `TypeRef(p, F)` | `MatchAlias([T] =>> T match …)`
+`class C`               | `TypeRef(p, C)` | `ClassInfo(p, C, …)`
+`trait T`               | `TypeRef(p, T)` | `ClassInfo(p, T, …)`
+`object o`              | `TermRef(p, o)` | `TypeRef(p, o$)`<br/>where `o$` is a class with inner definitions of `o`
+`def f(x: A): x.type`   | `TermRef(p, f)` | `MethodType(x, A, TermParamRef(x))`
+`def f[T <: A]: T`      | `TermRef(p, f)` | `PolyType(T, <: A, TypeParamRef(T))`
+`def f: T`              | `TermRef(p, f)` | `ExprType(T)`
+`val x: T`              | `TermRef(p, x)` | `T`
+
+Note: in the types above `p` refers to the self-type of the enclosing scope of the definition.
+
+### Types of Values
+
+Type                      | Representation
+--------------------------|------------------------------
+`p.x.type`                | `TermRef(p, x)`
+`p#T`                     | `TypeRef(p, T)`
+`p.x.T` and `p.x.type#T`  | `TypeRef(TermRef(p, x), T)`
+`this.type`               | `ThisType(C)` where `C` is the enclosing class
+`"hello"`                 | `ConstantType(Constant("hello"))`
+`A & B`                   | `AndType(A, B)`
+`A | B`                   | `OrType(A, B)`
+`A @foo`                  | `AnnotatedType(A, @foo)`
+`=> T`                    | `ExprType(T)`
+`[T <: A] =>> T`          | `HKTypeLambda(T, <: A, TypeParamRef(T))`
+`p.C[A, B]`               | `AppliedType(p.C, List(A, B))`
+`p { type A = T }`        | `RefinedType(p, A, T)`
+`p { type X = Y }`        | `RecType((z: RecThis) => p { type X = z.Y })`<br/>when `X` and `Y` are members of `p`
+`super.x.type`            | `TermRef(SuperType(…), x)`
+
+### Method Definition Types
+
+We saw above that method types can be represented
+
+```scala
+def f[A, B <: Seq[A]](x: A, y: B): Unit
+```
+can be constructed by:
+
+```scala
+import dotty.tools.dotc.core.Types.*
+import dotty.tools.dotc.core.Symbols.*
+import dotty.tools.dotc.core.Contexts.*
+import dotty.tools.dotc.core.Decorators.*
+
+given Context = … // contains the definitions of the compiler
+
+val f: Symbol = … // def f[A, B <: Seq[A]](x: A, y: B): Unit
+
+f.info = PolyType(
+  List("A".toTypeName, "B".toTypeName))(
+  pt => List(
+    TypeBounds(defn.NothingType, defn.AnyType),
+    TypeBounds(defn.NothingType, AppliedType(defn.SeqType, List(pt.newParamRef(0))))
+  ),
+  pt => MethodType(
+    List("x".toTermName, "y".toTermName))(
+    mt => List(pt.newParamRef(0), pt.newParamRef(1)),
+    mt => defn.UnitType
+  )
+)
+```
+
+Note that `pt.newParamRef(0)` and `pt.newParamRef(1)` refers to the
+type parameters `A` and `B` respectively.
 
 ## Proxy Types and Ground Types
 Types in `dotc` are divided into two semantic kinds:
@@ -50,98 +128,5 @@ Type -+- proxy_type --+- NamedType --------+- TypeRef
 
 ```
 
-## Representations of types
-
-Type                      | Representation
-------------------------- | -----------------------------
-`p.x.type`                | `TermRef(p, x)`
-`p#T`                     | `TypeRef(p, T)`
-`p.x.T` and `p.x.type#T`  | `TypeRef(TermRef(p, x), T)`
-`this.type`               | `ThisType(C)` where `C` is the enclosing class
-`"hello"`                 | `ConstantType(Constant("hello"))`
-`A & B`                   | `AndType(A, B)`
-`A | B`                   | `OrType(A, B)`
-`A @foo`                  | `AnnotatedType(A, @foo)`
-`=> T`                    | `ExprType(T)`
-`p.C[A, B]`               | `AppliedType(p.C, List(A, B))`
-`p { type A = T }`        | `RefinedType(p, A, T)`
-`p { type X = Y }`        | `RecType((z: RecThis) => p { type X = z.Y })`<br/>when `X` and `Y` are members of `p`
-`super.x.type`            | `TermRef(SuperType(...), x)`
-`type T >: A <: B`        | `TypeRef(p, T)`<br/>with underlying type `RealTypeBounds(A, B)`
-`type T = A`              | `TypeRef(p, T)`<br/>with underlying type `TypeAlias(A)`
-`class C`                 | `TypeRef(p, C)`<br/>with underlying type `ClassInfo(p, C, ...)`
-`[T <: A] =>> T`          | `HKTypeLambda(T, <: A, TypeParamRef(T))`
-`def f(x: A): x.type`     | `MethodType(x, A, TermParamRef(x))`
-`def f[T <: A]: T`        | `PolyType(T, <: A, TypeParamRef(T))`
-
-### Representation of methods ###
-```scala
-def f[A, B <: Ord[A]](x: A, y: B): Unit
-```
-is represented as:
-
-```scala
-val p = PolyType(List("A", "B"))(
-  List(TypeBounds(Nothing, Any),
-       TypeBounds(Nothing,
-         RefinedType(Ordering,
-           scala$math$Ordering$$T, TypeAlias(PolyParam(p, 0))))),
-  m)
-
-val m = MethodType(List("x", "y"),
-  List(PolyParam(p, 0), PolyParam(p, 1)))(Unit)
-```
-(This is a slightly simplified version, e.g. we write `Unit` instead of
-`TypeRef(TermRef(ThisType(TypeRef(NoPrefix,<root>)),scala),Unit)`).
-
-Note that a PolyParam refers to a type parameter using its index (here A is 0
-and B is 1).
-
-## Subtyping checks ##
-`topLevelSubType(tp1, tp2)` in [dotty/tools/dotc/core/TypeComparer.scala][4]
-checks if `tp1` is a subtype of `tp2`.
-
-### Type rebasing ###
-**FIXME**: This section is no longer accurate because
-https://github.com/lampepfl/dotty/pull/331 changed the handling of refined
-types.
-
-Consider [tests/pos/refinedSubtyping.scala][5]
-```scala
-class Test {
-
-  class C { type T; type Coll }
-
-  type T1 = C { type T = Int }
-
-  type T11 = T1 { type Coll = Set[Int] }
-
-  type T2 = C { type Coll = Set[T] }
-
-  type T22 = T2 { type T = Int }
-
-  var x: T11 = _
-  var y: T22 = _
-
-  x = y
-  y = x
-
-}
-```
-We want to do the subtyping checks recursively, since it would be nice if we
-could check if `T22 <: T11` by first checking if `T2 <: T1`. To achieve this
-recursive subtyping check, we remember that `T2#T` is really `T22#T`. This
-procedure is called rebasing and is done by storing refined names in
-`pendingRefinedBases` and looking them up using `rebase`.
-
-## Type caching ##
-TODO
-
-## Type inference via constraint solving ##
-TODO
-
 [1]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/core/Types.scala
-[2]: https://github.com/samuelgruetter/dotty/blob/classdiagrampdf/dotty-types.pdf
-[3]: https://github.com/samuelgruetter/scaladiagrams/tree/print-descendants
 [4]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/core/TypeComparer.scala
-[5]: https://github.com/lampepfl/dotty/blob/master/tests/pos/refinedSubtyping.scala
