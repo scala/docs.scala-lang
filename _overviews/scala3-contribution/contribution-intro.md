@@ -4,14 +4,14 @@ type: chapter
 description: This page describes the format of the contribution guide for the Scala 3 compiler.
 num: 1
 previous-page:
-next-page: type-system
+next-page: arch-intro
 ---
 
-This guide documents the inner workings of the Scala 3 compiler, `dotc`,
-and is intended to give new contributors the knowledge they need to
-become productive and fix issues or implement new features.
+This guide is intended to give new contributors the knowledge they need to
+become productive and fix issues or implement new features in Scala 3. It
+also documents the inner workings of the Scala 3 compiler, `dotc`.
 
-### A Note on Compiler Stability
+### A Note on Stability
 
 Keep in mind that the code for `dotc` is subject to change, with no
 guarantees of stability, so the ideas discussed in this guide may
@@ -23,3 +23,14 @@ on [GitHub](https://github.com/scala/docs.scala-lang/tree/main/_overviews/scala3
 `dotc` is built with Scala 3, fully utilising its [new features](/scala3/new-in-scala3.html).
 It is recommended that you first have some familiarity with Scala 3
 to get the most out of this guide. You can learn more in the [language reference](/scala3/reference/overview.html).
+
+### What is a Compiler?
+
+A compiler is a program that takes as input text, representing a program in one language
+and produces as output the same program, written in another programming language.
+
+#### The Scala Compiler
+
+As an example, `dotc` takes text input, verifies that it is a valid Scala program
+and then produces as output the same program, but written in Java bytecode, and optionally
+in SJSIR when producing Scala.js output.
