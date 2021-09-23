@@ -2,7 +2,7 @@
 title: Time in the Compiler
 type: section
 description: This page describes the concepts of time in the Scala 3 compiler.
-num: 6
+num: 13
 previous-page: arch-types
 next-page:
 ---

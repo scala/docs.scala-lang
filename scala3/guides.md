@@ -19,7 +19,7 @@ guides:
     url: "/scala3/guides/tasty-overview.html"
     description: "An overview over the TASTy format aimed at end-users of the Scala language."
   - title: "Contribution Guide"
-    by: Jamie Thompson
+    by: Jamie Thompson, Anatolii Kmetiuk
     icon: gears
     url: "/scala3/guides/contribution/contribution-intro.html"
     description: "Guide to the Scala 3 Compiler and fixing an issue"

@@ -2,7 +2,7 @@
 title: Compiler Phases
 type: section
 description: This page describes the phases for the Scala 3 compiler.
-num: 4
+num: 11
 previous-page: arch-lifecycle
 next-page: arch-types
 ---

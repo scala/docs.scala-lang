@@ -2,7 +2,7 @@
 title: Compiler Overview
 type: section
 description: This page describes the high level architecture for the Scala 3 compiler.
-num: 3
+num: 10
 previous-page: arch-intro
 next-page: arch-phases
 ---
