@@ -14,6 +14,10 @@ defined in [dotty/tools/dotc/core/Types.scala][1]
 
 ### Types of Definitions
 
+> In the tables below we see the internal representation of Scala types in `dotc`,
+> in fact, you can reproduce the results with a helper program [dotty.tools.printTypes][2],
+> its usage and integration into your debugging workflow is [described here][3].
+
 The following table describes definitions in Scala 3, followed by the `dotc` representation
 of two types - a reference to the definition, and then its underlying type:
 
@@ -53,44 +57,6 @@ Type                      | Representation
 `p { type A = T }`        | `RefinedType(p, A, T)`
 `p { type X = Y }`        | `RecType((z: RecThis) => p { type X = z.Y })`<br/>when `X` and `Y` are members of `p`
 `super.x.type`            | `TermRef(SuperType(…), x)`
-
-### Introspect Representation of Types
-
-You can inspect types with the main method `dotty.tools.printTypes` from the sbt shell,
-passing at least two arguments. The first argument is a string that introduces some
-Scala definitions, the following arguments are type signatures, (i.e. the return type
-of a definition) that are allowed to reference definitions from the first argument.
-
-The type signatures will then be printed, displaying their internal structure, using
-the same representation that can later be used in pattern matching to decompose the type.
-
-Here, we inspect a refinement of a class `Box`:
-```bash
-$ sbt
-> scala3-compiler-bootstrapped/Test/runMain dotty.tools.printTypes "class Box { def x: Any }" "Box { def x: Int }"
-RefinedType(TypeRef(ThisType(TypeRef(NoPrefix,module class <empty>)),class Box),x,ExprType(TypeRef(TermRef(ThisType(TypeRef(NoPrefix,module class <root>)),object scala),class Int)))
-```
-
-You can also pass the empty string as the first
-argument, e.g. to inspect a standard library type:
-```bash
-$ sbt
-> scala3-compiler-bootstrapped/Test/runMain dotty.tools.printTypes "" "1 *: EmptyTuple"
-AppliedType(TypeRef(TermRef(ThisType(TypeRef(NoPrefix,module class <root>)),object scala),class *:),List(ConstantType(Constant(1)), TypeRef(TermRef(ThisType(TypeRef(NoPrefix,module class scala)),object Tuple$package),type EmptyTuple)))
-```
-
-If you want to further inspect the types, and not just print them, the object `dotty.tools.DottyTypeStealer` has a
-method `stealType`. It takes the same arguments as `printTypes`, but returns both a `Context` containing the
-definitions passed, along with the list of types:
-```scala
-// compiler/test/dotty/tools/DottyTypeStealer.scala
-object DottyTypeStealer extends DottyTest {
-  def stealType(source: String, typeStrings: String*): (Context, List[Type]) = {
-    ...
-  }
-}
-```
-Any test source within `compiler/test` can then call `stealType` for custom purposes.
 
 ## Constructing Types
 
@@ -181,4 +147,5 @@ Type -+- proxy_type --+- NamedType --------+- TypeRef
 ```
 
 [1]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/core/Types.scala
-[4]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/core/TypeComparer.scala
+[2]: https://github.com/lampepfl/dotty/blob/master/compiler/test/dotty/tools/DottyTypeStealer.scala
+[3]: {% link _overviews/scala3-contribution/procedures-inspection.md %}/#inspecting-representation-of-types
