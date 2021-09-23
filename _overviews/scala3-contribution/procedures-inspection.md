@@ -19,7 +19,19 @@ To print flags, you can use the `flagsString` method, e.g. `println(x.flagsStrin
 
 ## Obtaining debug output from the compiler
 
-There are many compiler options that provide verbose debug output when compiling a file. You can find the full list in [ScalaSettings.scala](https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/config/ScalaSettings.scala) file. One particularly useful one is `-Xprint:<phase-name>` or `-Xprint:all`. It prints trees after a given phase or after all phases. The way the compiler works is that it parses your code into ASTs and then pipes those trees through several dozen phases. Each phase transforms the trees in a certain way. This flag allows you to see exactly how.
+There are many compiler options that provide verbose debug output when compiling a file.
+You can find the full list in [ScalaSettings.scala] file. One particularly useful one
+is `-Xprint:<phase-name>` or `-Xprint:all`. It prints trees after a given phase or after
+all phases. As described in the [compiler lifecycle][3] each phase transforms the trees
+and types that represent your code in a certain way. This flag allows you to see exactly how.
+
+## Stopping the compiler early
+Sometimes you may want to stop the compiler after a certain phase, for example to prevent
+knock-on errors from occurring from a bug in an earlier phase. Use the flag
+`-Ystop-after:<phase-name>` to prevent any phases executing afterwards.
+
+> This flag is particularly useful when you want to inspect the effect of a single miniphase
+> of a phase group, use this in conjunction with the `-Xprint` flag.
 
 ## Inspecting representation of types
 
@@ -105,3 +117,5 @@ class StealBox:
 
 [1]: https://github.com/lampepfl/dotty/blob/master/compiler/test/dotty/tools/DottyTypeStealer.scala
 [2]: {% link _overviews/scala3-contribution/arch-types.md %}
+[3]: {% link _overviews/scala3-contribution/arch-lifecycle.md %}/#phases
+[ScalaSettings.scala]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/config/ScalaSettings.scala

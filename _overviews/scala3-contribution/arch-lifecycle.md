@@ -26,7 +26,10 @@ every compilation unit before progressing to the next phase.
 
 #### Phases
 A phase is an abstract transformation over a compilation unit, it is usually responsible
-for transforming the trees and types representing the code of a source file.
+for transforming the trees and types representing the code of a source file. The primary phases of
+the compiler are the `parser`, which converts text that matches Scala's
+[syntax][10] into abstract syntax trees, ASTs, and the `typer`, which checks that
+trees conform to expected types, and performs other operations such as implicit search.
 [You can read more about phases here][9].
 
 #### Drivers
@@ -84,6 +87,7 @@ tools // contains helpers and the `scala` generic runner
 [7]: https://github.com/lampepfl/dotty/tree/master/compiler/src/dotty/tools
 [8]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/config/ScalaSettings.scala
 [9]: {% link _overviews/scala3-contribution/arch-phases.md %}
+[10]: {% link _scala3-reference/syntax.md %}
 [Main]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/Main.scala
 [Driver]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/Driver.scala
 [Compiler]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/Compiler.scala
