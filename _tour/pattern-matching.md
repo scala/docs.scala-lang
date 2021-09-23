@@ -36,8 +36,8 @@ def matchTest(x: Int): String = x match {
   case 2 => "two"
   case _ => "other"
 }
-matchTest(3)  // prints other
-matchTest(1)  // prints one
+println(matchTest(3))  // prints other
+println(matchTest(1))  // prints one
 ```
 This match expression has a type String because all of the cases return String. Therefore, the function `matchTest` returns a String.
 
