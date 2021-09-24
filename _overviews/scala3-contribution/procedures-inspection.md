@@ -1,8 +1,8 @@
 ---
 title: Inspection
 type: section
-description: This page describes the high level architecture for the Scala 3 compiler.
-num: 6
+description: This page describes inspecting semantic values in the Scala 3 compiler.
+num: 7
 previous-page: procedures-navigation
 next-page: procedures-efficiency
 ---
@@ -42,7 +42,7 @@ you can use a helper program [dotty.tools.printTypes][1],
 it prints the internal representation of types, along with their class. It can be
 invoked from the sbt shell with three arguments as follows:
 ```bash
-sbt:scala3> scala3-compiler-bootstrapped/Test/runMain
+sbt:scala3> scala3-compiler/Test/runMain
   dotty.tools.printTypes
   <source>
   <kind>
@@ -69,7 +69,7 @@ Each one of `typeStrings` is then printed, displaying their internal structure, 
 
 Here, given a previously defined `class Box { type X }`, we inspect the return type `Box#X`:
 ```bash
-sbt:scala3> scala3-compiler-bootstrapped/Test/runMain
+sbt:scala3> scala3-compiler/Test/runMain
 > dotty.tools.printTypes
 > "class Box { type X }"
 > "rhs"

@@ -1,8 +1,8 @@
 ---
 title: Getting Efficient
 type: section
-description: This page describes the high level architecture for the Scala 3 compiler.
-num: 7
+description: This page describes improving efficiency of debugging the Scala 3 compiler.
+num: 8
 previous-page: procedures-inspection
 next-page: procedures-testing
 ---

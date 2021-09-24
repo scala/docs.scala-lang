@@ -1,8 +1,8 @@
 ---
 title: Navigation
 type: section
-description: This page describes the high level architecture for the Scala 3 compiler.
-num: 5
+description: This page describes navigating around the Scala 3 compiler.
+num: 6
 previous-page: procedures-reproduce
 next-page: procedures-inspection
 ---

@@ -1,13 +1,30 @@
 ---
-title: Creating a test and submitting a PR
+title: Creating Tests before a Pull Request
 type: section
-description: This page describes the high level architecture for the Scala 3 compiler.
-num: 8
+description: This page describes test procedures in the Scala 3 compiler.
+num: 9
 previous-page: procedures-efficiency
 next-page: arch-intro
 ---
 
-Once you solved an issue, you need to get the solution into the main repo. To do that, you need to prepare a PR that includes the tests for the issue. Hence you need to know how to work with Dotty's testing infrastructure.
+Once you solved an issue, you likely want to see your change added to the [Scala 3 repo][lampepfl/dotty].
+To do that, you need to prepare a [pull request][pull-request] that includes tests that verify the issue is resolved.
+Hence you need to know how to work with Dotty's testing infrastructure.
+
+## Running all Tests
+
+To run all tests of Scala 3, including for compiler, REPL, libraries and more, run the following in sbt:
+
+```bash
+$ sbt
+> scala3-bootstrapped/test
+```
+
+Often however it is not necessary to test everything if your changes are localised to one area,
+we will see in the following sections the different kinds of tests, and how
+to run individual tests.
+
+## Tests Overview
 
 Tests live in the `tests/` folder at the root of the Dotty repo. They are categorised further by the virtue of placing them in the subfolders of the `tests` folder. Three main tests categories are:
 
@@ -27,6 +44,15 @@ If you have multiple files per issue, they will be compiled together by the same
 
 To run your test, use the `testCompilation i123456` command.
 
-The group tests – `pos`, `neg` etc – are defined in [CompilationTests.scala](https://github.com/lampepfl/dotty/blob/master/compiler/test/dotty/tools/dotc/CompilationTests.scala). If you want to run a group of tests, e.g. `pos`, you can do so via `testOnly dotty.tools.dotc.CompilationTests -- *pos` command.
+The group tests – `pos`, `neg` etc – are defined in [CompilationTests.scala]. If you want to run a group of tests, e.g.
+`pos`, you can do so via `testOnly dotty.tools.dotc.CompilationTests -- *pos` command.
 
-The above is the most common test cases but not all of them. E.g. REPL, scripting and command line tools aren't covered by the above. The sources for the tests are located at `[compiler/test](https://github.com/lampepfl/dotty/blob/master/compiler/test/)`, so if your use case isn't covered by this guide, you may need to consult the codebase.
+The above is the most common test cases but not all of them. E.g. REPL, scripting and command line tools aren't covered
+by the above. The sources for the tests are located at [compiler/test], so if your use case isn't covered by this guide,
+you may need to consult the codebase.
+
+
+[lampepfl/dotty]: https://github.com/lampepfl/dotty
+[CompilationTests.scala]: https://github.com/lampepfl/dotty/blob/master/compiler/test/dotty/tools/dotc/CompilationTests.scala
+[compiler/test]: https://github.com/lampepfl/dotty/blob/master/compiler/test/
+[pull-request]: https://docs.github.com/en?query=pull+requests

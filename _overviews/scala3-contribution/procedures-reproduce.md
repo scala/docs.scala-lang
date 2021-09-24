@@ -1,9 +1,9 @@
 ---
 title: Reproduce the issue
 type: section
-description: This page describes the high level architecture for the Scala 3 compiler.
-num: 4
-previous-page: procedures-intro
+description: This page describes reproducing an issue in the Scala 3 compiler.
+num: 5
+previous-page: procedures-cheatsheet
 next-page: procedures-navigation
 ---
 
