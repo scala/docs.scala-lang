@@ -39,40 +39,69 @@ Phases are able to be grouped together if they inherit from [MiniPhase].
 
 ## Phase Categories
 
-*TODO: edit*
+Phases fall into four categories, allowing customisation by sub-classes of [Compiler]:
 
-Phases fall into four categories:
+### `frontendPhases`
+In the main compiler these include [parser], [typer], [posttyper],
+[prepjsinterop] and phases for producing SemanticDB and communicating with the
+incremental compiler Zinc.
+The [parser] reads source programs and generates untyped abstract syntax trees, which
+in [typer] are then typechecked and transformed into typed abstract syntax trees.
+Following is [posttyper], performing checks and cleanups that require a fully typed program.
+In particular, it
+- creates super accessors representing `super` calls in traits
+- creates implementations of compiler-implemented methods,
+such as `equals` and `hashCode` for case classes.
+- marks [compilation units][2] that require inline expansion, or quote pickling
+- simplifies trees of erased definitions
+- checks variance of type parameters
+- mark parameters passed unchanged from subclass to superclass for later pruning.
 
-* Frontend phases: `Frontend`, `PostTyper` and `Pickler`. `FrontEnd` parses the
-  source programs and generates untyped abstract syntax trees, which are then
-  typechecked and transformed into typed abstract syntax trees.  `PostTyper`
-  performs checks and cleanups that require a fully typed program. In
-  particular, it
+### `picklerPhases`
+These phases start with [pickler], which serializes typed trees
+produced by the `frontendPhases` into TASTy format. Following is [inlining],
+which expand calls to inline methods, and [postInlining] providing implementations
+of the Mirror framework for inlined calls.
+Finally are [staging], which ensures that quotes conform to the
+Phase Consistency Principle (PCP), and [pickleQuotes] which converts quoted
+trees to embedded TASTy strings.
 
-    - creates super accessors representing `super` calls in traits
-    - creates implementations of synthetic (compiler-implemented) methods
-    - avoids storing parameters passed unchanged from subclass to superclass in
-      duplicate fields.
-
-  Finally `Pickler` serializes the typed syntax trees produced by the frontend
-  as TASTY data structures.
-
-* High-level transformations: All phases from `FirstTransform` to `Erasure`.
+### `transformPhases`
+These phases are concerned with tranformation into lower-level forms
+suitable for the runtime system, with two sub-groupings:
+- High-level transformations: All phases from [firstTransform] to [erasure].
   Most of these phases transform syntax trees, expanding high-level constructs
-  to more primitive ones. The last phase in the group, `Erasure` translates all
-  types into types supported directly by the JVM. To do this, it performs
-  another type checking pass, but using the rules of the JVM's type system
-  instead of Scala's.
-
-* Low-level transformations: All phases from `ElimErasedValueType` to
+  to more primitive ones.
+  - Some phases perform further checks on more primitive trees,
+    e.g. [refchecks] verifies that no abstract methods exist in concrete classes,
+    and [initChecker] checks that fields are not used before initialisation.
+  - The last phase in the group, [erasure] translates all
+    types into types supported directly by the JVM. To do this, it performs
+    another type checking pass, but using the rules of the JVM's type system
+    instead of Scala's.
+- Low-level transformations: All phases from `ElimErasedValueType` to
   `CollectSuperCalls`. These further transform trees until they are essentially a
   structured version of Java bytecode.
 
-* Code generators: These map the transformed trees to Java classfiles or
-  .sjsir files.
+### `backendPhases`
+These map the transformed trees to Java classfiles or SJSIR files.
 
 [1]: {% link _overviews/scala3-contribution/arch-lifecycle.md %}/#phases
+[2]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/CompilationUnit.scala
 [Compiler]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/Compiler.scala
 [Phase]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/core/Phases.scala
 [MiniPhase]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/transform/MegaPhase.scala
 [Run]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/Run.scala
+[parser]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/parsing/ParserPhase.scala
+[typer]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/typer/TyperPhase.scala
+[posttyper]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/transform/PostTyper.scala
+[prepjsinterop]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/transform/sjs/PrepJSInterop.scala
+[pickler]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/transform/Pickler.scala
+[inlining]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/transform/Inlining.scala
+[postInlining]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/transform/PostInlining.scala
+[staging]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/transform/Staging.scala
+[pickleQuotes]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/transform/PickleQuotes.scala
+[refchecks]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/typer/RefChecks.scala
+[initChecker]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/transform/init/Checker.scala
+[firstTransform]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/transform/FirstTransform.scala
+[erasure]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/transform/Erasure.scala
