@@ -3,7 +3,7 @@ title: Reproduce the issue
 type: section
 description: This page describes the high level architecture for the Scala 3 compiler.
 num: 4
-previous-page: procedures-setup
+previous-page: procedures-intro
 next-page: procedures-navigation
 ---
 

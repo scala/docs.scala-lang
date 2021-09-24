@@ -4,7 +4,7 @@ type: chapter
 description: This page describes the format of the contribution guide for the Scala 3 compiler.
 num: 1
 previous-page:
-next-page: procedures-intro
+next-page: start-intro
 ---
 
 This guide is intended to give new contributors the knowledge they need to
