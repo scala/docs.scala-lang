@@ -65,6 +65,14 @@ definitions introduced by the `source` argument.
 
 Each one of `typeStrings` is then printed, displaying their internal structure, alongside their class.
 
+## Debugging tree creation site
+
+Sometimes you encounter a tree in the compiler and you'd like to know where that tree was created. To do so:
+
+1. Run the compiler with the `-Xprint:<phase-name>` flag (discussed above) to get the tree in question output and the `-Yshow-tree-ids` flag. The `-Yshow-tree-ids` flag will show the ids of all the trees when printing them. You'll see something like `println#223("Hello World"#37)`.
+2. Find the id of the desired tree.
+3. Run the compiler with `-Ydebug-tree-with-id <tree-id>` flag. The compiler will print a stack trace pointing to the creation site of the tree with a given id.
+
 ### Examples
 
 Here, given a previously defined `class Box { type X }`, we inspect the return type `Box#X`:
