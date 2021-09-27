@@ -25,8 +25,16 @@ The procedure of reproducing an issue with dotty-issue-workspace installed (see 
 
 #### Basic
 
-The most basic usage for the `launch.iss` is as follows:
+Say you want to reproduce locally issue [#7710](https://github.com/lampepfl/dotty/issues/7710). To do so:
 
+1. Follow [steps in README](https://github.com/anatoliykmetyuk/dotty-issue-workspace#getting-started) to install the plugin
+2. In your Issue Workspace folder (as defined in the plugin's README file, "Getting Started" section, step 2), create a subfolder for the issue: `mkdir i7710`
+3. Create a file with the reproduction: `cd i7710; touch Test.scala`. In that file, insert the code from the issue.
+4. Create a file `launch.iss` with the following content: `scala3/scalac $here/Test.scala`
+5. Open sbt console in the Dotty main repo. If you still don't have the Dotty repo cloned locally, run `git clone <https://github.com/lampepfl/dotty.git`>
+6. From sbt console opened in the Dotty repo, run `issue i7710` to reproduce the issue
+
+The most basic usage for the `launch.iss` demonstrated above is as follows:
 ```bash
 scala3/scalac $here/Test.scala
 ```
