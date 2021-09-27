@@ -2,7 +2,7 @@
 title: Compiler Overview
 type: section
 description: This page describes the lifecycle for the Scala 3 compiler.
-num: 11
+num: 12
 previous-page: arch-intro
 next-page: arch-phases
 ---

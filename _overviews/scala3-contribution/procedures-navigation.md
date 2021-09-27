@@ -45,6 +45,15 @@ Once you've injected a tracer into a class, you can `println` that tracer from t
 3. Add a top-level definition `val tracer = Thread.currentThread.getStackTrace.mkString("\n")` to that type definition.
 4. `println(x.tracer)` (where `x` is the name of the object in question) from the original site where you encountered the object. This will give you the stack trace pointing to the place where the constructor of that object was invoked.
 
+### Debugging tree creation site
+
+A special case of finding an object's creation site is for a Tree, this is supported directly in the compiler,
+as trees have an associated unique ID:
+
+1. Run the compiler with the `-Xprint:<phase-name>` flag (discussed above) to get the tree in question output and the `-Yshow-tree-ids` flag. The `-Yshow-tree-ids` flag will show the ids of all the trees when printing them. You'll see something like `println#223("Hello World"#37)`.
+2. Find the id of the desired tree.
+3. Run the compiler with `-Ydebug-tree-with-id <tree-id>` flag. The compiler will print a stack trace pointing to the creation site of the tree with a given id.
+
 ## Where was a particular value assigned to a variable?
 
 Say you have a certain type assigned to a denotation and you would like to know why the denotation was typed that way. A type in the denotation is a `var myInfo: Type` so you can't just trace the creation site of that `Type` as was described before. You want to know the *assignment*, not *creation*, site.

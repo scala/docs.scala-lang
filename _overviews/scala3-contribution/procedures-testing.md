@@ -1,15 +1,11 @@
 ---
-title: Creating Tests before a Pull Request
+title: Testing Your Changes
 type: section
 description: This page describes test procedures in the Scala 3 compiler.
 num: 9
 previous-page: procedures-efficiency
-next-page: arch-intro
+next-page: procedures-checklist
 ---
-
-Once you solved an issue, you likely want to see your change added to the [Scala 3 repo][lampepfl/dotty].
-To do that, you need to prepare a [pull request][pull-request] that includes tests that verify the issue is resolved.
-Hence you need to know how to work with Dotty's testing infrastructure.
 
 ## Running all Tests
 
@@ -201,9 +197,7 @@ sbt:scala3> scala3-compiler-bootstrapped/Test/runMain
 then compare the changes via version control.
 
 
-[lampepfl/dotty]: https://github.com/lampepfl/dotty
 [CompilationTests.scala]: https://github.com/lampepfl/dotty/blob/master/compiler/test/dotty/tools/dotc/CompilationTests.scala
 [compiler/test]: https://github.com/lampepfl/dotty/blob/master/compiler/test/
-[pull-request]: https://docs.github.com/en?query=pull+requests
 [compiler/test/dotc]: https://github.com/lampepfl/dotty/tree/master/compiler/test/dotc
 [SemanticdbTests]: https://github.com/lampepfl/dotty/blob/master/compiler/test/dotty/tools/dotc/semanticdb/SemanticdbTests.scala

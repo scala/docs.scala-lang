@@ -20,3 +20,6 @@ The following commands can be run within the shell after running `sbt` in the do
 | `testCompilation tests/pos`       | Run test suites on files in the `tests/pos` directory.           |
 | `scala3-bootstrapped/test`        | Run all tests for Scala 3                                        |
 | <code>scala3-compiler/Test/runMain<br/>dotty.tools.printTypes</code> | Print types underlying representation |
+| <code>scala3/scalac -print-tasty<br/>local/out/Foo.tasty</code> | Print the TASTy of top-level class `Foo` |
+
+<!-- Todo: add cheatsheet for compiler flags, and places to go in code for certain issues -->

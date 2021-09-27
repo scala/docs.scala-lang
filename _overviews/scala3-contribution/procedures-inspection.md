@@ -7,6 +7,34 @@ previous-page: procedures-navigation
 next-page: procedures-efficiency
 ---
 
+## Printing TASTy of a Class
+
+If are working on an issue related to TASTy, it is good to know how to inspect
+the contents of a TASTy file, produced from compilation of Scala files.
+
+In the following example, we compile in a file `local/Foo.scala`, with contents
+of `class Foo`, and then print its TASTy:
+
+```bash
+$ sbt
+sbt:scala3> scala3/scalac -d local/out local/Foo.scala
+sbt:scala3> scala3/scalac -print-tasty local/out/Foo.tasty
+```
+We see output such as the following:
+
+```
+--------------------------------------------------------------------------------
+local/foo/out/Foo.tasty
+--------------------------------------------------------------------------------
+Names:
+   0: ASTs
+   1: <empty>
+   2: Foo
+   3: <init>
+...
+```
+and so on.
+
 ## Inspecting variables in-place
 
 Frequently you need to know what a particular variable's value is. The most robust way to get this info is good old `println`.
@@ -16,6 +44,27 @@ When printing a variable, it's always a good idea to call `show` on that variabl
 Sometimes you need to print flags. Flags is a metadata attached to trees containing information such as whether a class is abstract, comes from Java, what modifiers a variable has (private, protected etc) and so on. Flags are stored in a single `Long` value each bit of which represents whether a particular flag is set.
 
 To print flags, you can use the `flagsString` method, e.g. `println(x.flagsString)`.
+
+## Pretty Printing with a String Interpolator
+
+You can also pretty print objects with string interpolators,
+these default to call `.show` when possible, avoiding boilerplate
+and also helping format error messages.
+
+Import them with the following:
+
+```scala
+import dotty.tools.dotc.core.Decorators.*
+```
+
+Here is a table of explanations for their use:
+
+| Usage  | Description                       |
+|--------|-----------------------------------|
+|`i""`   | General purpose string formatting. It calls `.show` on objects <br/> mixing in Showable, `String.valueOf` otherwise |
+|`em""`  | Formatting for error messages: Like `i` but suppress <br/>follow-on, error messages after the first one if some <br/>of their arguments are "non-sensical". |
+|`ex""`  | Formatting with added explanations: Like `em`, but add <br/>explanations to give more info about type variables<br/>and to disambiguate where needed. |
+
 
 ## Obtaining debug output from the compiler
 
@@ -64,14 +113,6 @@ that comes after its name, (or a simple type in the case of `rhs`) and may refer
 definitions introduced by the `source` argument.
 
 Each one of `typeStrings` is then printed, displaying their internal structure, alongside their class.
-
-## Debugging tree creation site
-
-Sometimes you encounter a tree in the compiler and you'd like to know where that tree was created. To do so:
-
-1. Run the compiler with the `-Xprint:<phase-name>` flag (discussed above) to get the tree in question output and the `-Yshow-tree-ids` flag. The `-Yshow-tree-ids` flag will show the ids of all the trees when printing them. You'll see something like `println#223("Hello World"#37)`.
-2. Find the id of the desired tree.
-3. Run the compiler with `-Ydebug-tree-with-id <tree-id>` flag. The compiler will print a stack trace pointing to the creation site of the tree with a given id.
 
 ### Examples
 
