@@ -9,9 +9,11 @@ next-page: procedures-reproduce
 
 ## sbt Commands
 
+The following commands can be run within the shell after running `sbt` in the dotty directory.
+
 | Command                           | Description                                                      |
 |-----------------------------------|------------------------------------------------------------------|
-| `scala3/scalac sandbox/Foo.scala` | Compile the given file – path relative to the dotty directory.   |
+| `scala3/scalac local/Foo.scala`   | Compile the given file – path relative to the dotty directory.   |
 | `scala3/scala Foo`                | Run class `Foo` with dotty directory on the classpath            |
 | `repl`                            | Start a REPL with the bootstrapped compiler                      |
 | <code>testOnly<br/>dotty.tools.dotc.CompilationTests<br/>-- *pos</code> | Run test `pos` from `CompilationTests` suite. |
