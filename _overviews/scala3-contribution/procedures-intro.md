@@ -7,6 +7,8 @@ previous-page: start-intro
 next-page: procedures-cheatsheet
 ---
 
+This chapter introduces instructions on how to do basic tasks when fixing compiler issues. The tasks include how to reproduce an issue, how to navigate to where the issue manifests itself in the compiler, how to inspect various values encountered in the compiler and how to create a test for your fix. You can find the instructions of how to do the above in the following sections.
+
 [Reproduce the issue][2]
 
 [Navigation][3]
