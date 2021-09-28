@@ -1,5 +1,5 @@
 ---
-title: Reproduce the issue
+title: Reproducing an Issue
 type: section
 description: This page describes reproducing an issue in the Scala 3 compiler.
 num: 5

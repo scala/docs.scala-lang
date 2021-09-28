@@ -1,10 +1,10 @@
 ---
-title: Navigation
+title: Finding the Cause of an Issue
 type: section
 description: This page describes navigating around the Scala 3 compiler.
 num: 6
 previous-page: procedures-reproduce
-next-page: procedures-inspection
+next-page: procedures-areas
 ---
 
 Navigation answers the questions such as: where does the error happen in a codebase? Where is a particular object created? Where is a particular value assigned to a variable?
