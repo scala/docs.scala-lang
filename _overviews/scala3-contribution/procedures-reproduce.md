@@ -7,75 +7,102 @@ previous-page: procedures-cheatsheet
 next-page: procedures-navigation
 ---
 
-An issue usually contains some code that manifests some undesired behaviour. It's important to have a quick and well-defined way to reproduce the issue.
+An issue found in the [GitHub repo][lampepfl/dotty] usually describes some code that
+manifests undesired behaviour.
 
-A good way to run an issue is from the sbt console opened in the Dotty project: `scalac <path to file>`. `scalac` is an sbt task defined for the Dotty project that compiles a given file.
+To try fixing it, we first need to reproduce the issue, so that
+- we can understand its cause
+- we can verify that any changes made to the codebase have a positive impact on the issue.
+
+Say you want to reproduce locally issue [#7710], we would copy the code from the *"Minimised Code"*
+section of the issue to a file named e.g. `local/i7710.scala`,
+and then try to compile it from the sbt console opened in the dotty root directory:
+```bash
+$ sbt
+sbt:scala3> scala3/scalac -d local/out local/i7710.scala
+```
+> Here, the `-d` flag specifies a directory `local/out` where generated code will be output.
+
+You can then verify that the issue has the same behaviour as originally reported in the issue.
+If so, then we can get to trying to fix it, else, perhaps the issue is out of date, or
+is missing information about how to accurately reproduce the issue.
 
 ## Dotty Issue Workspace
 
-To simplify issue reproduction, [dotty-issue-workspace](https://github.com/anatoliykmetyuk/dotty-issue-workspace) was created. It does the same thing for sbt as shell scripts do for bash commands: it allows to bundle sbt commands for issue reproduction in one file and then run them from the Dotty project's sbt console.
+Sometimes we need more complex commands to reproduce an issue, and it is useful to script these, which
+can be done with [dotty-issue-workspace]. It allows to bundle sbt commands for issue reproduction in one
+file and then run them from the Dotty project's sbt console.
 
-The procedure of reproducing an issue with dotty-issue-workspace installed (see its README to see how) is as follows:
+### Try an Example Issue
 
-1. Create a folder for an issue and put the files reproducing the issue in that folder.
-2. Create a file `launch.iss` and write there all sbt commands needed to reproduce an issue. See below for examples.
-3. From the sbt console opened in the Dotty repo, run `issue <issue_folder_name>`. E.g. if the folder name is `i1`, the command will be `issue i1`. This will execute all the sbt commands in `launch.iss` file one by one from the Dotty project. If you've set up dotty-issue-workspace as described in its README, the `issue` task will know where to find the folder by its name.
+Let's use [dotty-issue-workspace] to reproduce issue [#7710]:
+1.  Follow [steps in README][workspace-readme] to install the plugin.
+2.  In your Issue Workspace directory (as defined in the plugin's README file,
+    "Getting Started" section, step 2), create a subdirectory for the
+    issue: `mkdir i7710`.
+3.  Create a file for the reproduction: `cd i7710; touch Test.scala`. In that file,
+    insert the code from the issue.
+4.  In the same directory, create a file `launch.iss` with the following content:
+    ```bash
+    $ (rm -rv out || true) && mkdir out # clean up compiler output, create `out` dir.
 
-### Examples
+    scala3/scalac -d $here/out $here/Test.scala
+    ```
 
-#### Basic
+    - The first line, `$ (rm -rv out || true) && mkdir out` specifies a shell command
+      (it starts with `$`), in this case to ensure that there is a fresh `out`
+      directory to hold compiler output.
+    - The next line, `scala3/scalac -d $here/out $here/Test.scala` specifies an sbt
+      command, which will compile `Test.scala` and place any output into `out`.
+      `$here` is a magic variable that will be replaced by the path of the parent
+      directory of `launch.iss` when executing the commands.
+5.  Now, from a terminal we will run the issue from sbt in the dotty directory
+    ([See here][clone] for a reminder if you have not cloned the repo.):
+    ```bash
+    $ sbt
+    sbt:scala3> issue i7710
+    ```
+    This will execute all the commands in the `i7710/launch.iss` file one by one.
+    If you've set up `dotty-issue-workspace` as described in its README,
+    the `issue` task will know where to find the folder by its name.
 
-Say you want to reproduce locally issue [#7710](https://github.com/lampepfl/dotty/issues/7710). To do so:
+### Using Script Arguments
 
-1. Follow [steps in README](https://github.com/anatoliykmetyuk/dotty-issue-workspace#getting-started) to install the plugin
-2. In your Issue Workspace folder (as defined in the plugin's README file, "Getting Started" section, step 2), create a subfolder for the issue: `mkdir i7710`
-3. Create a file with the reproduction: `cd i7710; touch Test.scala`. In that file, insert the code from the issue.
-4. Create a file `launch.iss` with the following content: `scala3/scalac $here/Test.scala`
-5. Open sbt console in the Dotty main repo. If you still don't have the Dotty repo cloned locally, run `git clone <https://github.com/lampepfl/dotty.git`>
-6. From sbt console opened in the Dotty repo, run `issue i7710` to reproduce the issue
+You can use script arguments inside `launch.iss` to reduce steps when
+working with issues.
 
-The most basic usage for the `launch.iss` demonstrated above is as follows:
+Say you have an issue `foo`, with two alternative files that are very similar
+`original.scala`, which reproduces the issue and `alt.scala`, which does not,
+and you want to compile them selectively?
+
+You can achieve this via the following `launch.iss`:
+
 ```bash
-scala3/scalac $here/Test.scala
+$ (rm -rv out || true) && mkdir out # clean up compiler output, create `out` dir.
+
+scala3/scalac -d $here/out $here/$1.scala # compile the first argument following `issue foo <arg>`
 ```
 
-This will compile the `Test.scala` file in the current issue folder. `$here` is a magic variable that will be replaced by the absolute path to the issue folder.
+It is similar to the previous example, except we now compile a file `$1.scala`, referring
+to the first argument passed after the issue name. The command invoked would look like
+`issue foo original` to compile `original.scala`, and `issue foo alt` for `alt.scala`.
 
-#### Defining the Output Folder
+In general, you can refer to arguments passed to the `issue <issue_name>` command using
+the dollar notation: `$1` for the first argument, `$2` for the second and so on.
 
-Compiling files form Dotty's sbt shell has an undesirable effect of outputting class files to the Dotty repository directory thus polluting it. You can explicitly specify where class files should go as follows:
+### Multiline Commands
 
-```bash
-$ rm -rv *.tasty *.class out || true  # Remove any compiler-generated artefacts. `|| true` is needed in case no files were deleted.
-$ mkdir out  # Create an output directory where all the compiler artefacts go
+`launch.iss` files support putting commands accross multiple lines, which is useful for
+toggling lines by using a comment.
 
-scala3/scalac -d $here/out $here/Test.scala # Invoke the compiler task defined by the Dotty sbt project
-```
-
-Lines starting from `$` are bash commands and not sbt ones.
-
-#### Specifying the file to compile with a task argument
-
-What if you have several files in your issue, say `Test.scala` and `Main.scala`, and you want to compile them selectively? If the name of your issue is `foo`, you want to be able to compile `Test.scala` file via `issue foo Test` command, and `Main.scala` – with `issue foo Main`. You can achieve this via the following `launch.iss`:
-
-```bash
-$ rm -rv *.tasty *.class out || true  # Remove any compiler-generated artefacts. `|| true` is needed in case no files were deleted.
-$ mkdir out  # Create an output directory where all the compiler artefacts go
-
-scala3/scalac -d $here/out $here/$1.scala # Invoke the compiler task defined by the Dotty sbt project
-```
-
-You can refer to arguments passed to the `issue <issue_name>` command using the dollar notation: `$1` for the first argument, `$2` for the second and so on.
-
-This is useful, e.g., if you have one source that reproduces the issue and another one, very close to the issue reproduction, but failing to manifest the issue.
-
-#### All together
-
-The following template also includes some debug compiler flags, commented out. The advantage of having them is, if you need one them, you can enable it quickly by uncommenting it – as opposed to looking it up and typing it in your existing command. Put your favourite flags there for quick usage.
+The following `launch.iss` file is a useful template for issues that run code after
+compilation, it also includes some debug compiler flags, commented out.
+The advantage of having them is, if you need one them, you can enable it quickly by
+uncommenting it – as opposed to looking it up and typing it in your existing command.
+Put your favourite flags there for quick usage.
 
 ```bash
-$ rm -rv *.tasty *.class out || true  # Remove any compiler-generated artefacts. `|| true` is needed in case no files were deleted.
-$ mkdir out  # Create an output directory where all the compiler artefacts go
+$ (rm -rv out || true) && mkdir out # clean up compiler output, create `out` dir.
 
 scala3/scalac  # Invoke the compiler task defined by the Dotty sbt project
   -d $here/out  # All the artefacts go to the `out` folder created earlier
@@ -90,3 +117,14 @@ scala3/scalac  # Invoke the compiler task defined by the Dotty sbt project
 
 scala3/scala -classpath $here/out Test  # Run the class `Test` generated by the compiler run (assuming the compiled issue contains such an entry point, otherwise comment this line)
 ```
+
+## Conclusion
+
+In this section, we have seen how to reproduce an issue locally, next we will see
+how to try and detect its root cause.
+
+[lampepfl/dotty]: https://github.com/lampepfl/dotty/issues
+[#7710]: https://github.com/lampepfl/dotty/issues/7710
+[dotty-issue-workspace]: https://github.com/anatoliykmetyuk/dotty-issue-workspace
+[workspace-readme]: https://github.com/anatoliykmetyuk/dotty-issue-workspace#getting-started
+[clone]: {% link _overviews/scala3-contribution/start-intro.md %}#clone-the-code

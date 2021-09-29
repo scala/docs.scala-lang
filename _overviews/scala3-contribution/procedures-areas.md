@@ -22,7 +22,7 @@ Look in [RefinedPrinter] (or its parent class [PlainPrinter]) for the implementa
 
 You can find most error messages defined in [messages] (with IDs defined in [ErrorMessageID]). If the message
 is not defined there, try the `-Ydebug-error` compiler flag, which will print a stack trace leading to the
-production of the error.
+production of the error, and the contents of the message.
 
 ### Compiler Generated Given Instances
 

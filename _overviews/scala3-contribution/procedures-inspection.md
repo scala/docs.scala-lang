@@ -7,41 +7,21 @@ previous-page: procedures-areas
 next-page: procedures-efficiency
 ---
 
-## Printing TASTy of a Class
-
-If are working on an issue related to TASTy, it is good to know how to inspect
-the contents of a TASTy file, produced from compilation of Scala files.
-
-In the following example, we compile in a file `local/Foo.scala`, with contents
-of `class Foo`, and then print its TASTy:
-
-```bash
-$ sbt
-sbt:scala3> scala3/scalac -d local/out local/Foo.scala
-sbt:scala3> scala3/scalac -print-tasty local/out/Foo.tasty
-```
-We see output such as the following:
-
-```
---------------------------------------------------------------------------------
-local/foo/out/Foo.tasty
---------------------------------------------------------------------------------
-Names:
-   0: ASTs
-   1: <empty>
-   2: Foo
-   3: <init>
-...
-```
-and so on.
+In this section, we take a closer look at how to debug the contents of certain objects
+in the compiler, and produced artifacts.
 
 ## Inspecting variables in-place
 
-Frequently you need to know what a particular variable's value is. The most robust way to get this info is good old `println`.
+Frequently we need to know what a particular variable's value is. Often, it is sufficient to use `println`.
 
-When printing a variable, it's always a good idea to call `show` on that variable: `println(x.show)`. `show` is defined on many types and returns a human-readable string. So, if called e.g. on a tree, you'll get the code that tree signifies as opposed to the bare AST.
+When printing a variable, it's always a good idea to call `show` on that variable: `println(x.show)`.
+Many objects of the compiler define `show`, returning a human-readable string.
+e.g. if called on a tree, the output will be the tree's representation as source code, rather than
+the raw data underlying.
 
-Sometimes you need to print flags. Flags is a metadata attached to trees containing information such as whether a class is abstract, comes from Java, what modifiers a variable has (private, protected etc) and so on. Flags are stored in a single `Long` value each bit of which represents whether a particular flag is set.
+Sometimes you need to print flags. Flags are metadata attached to [symbols] containing information such as whether a
+class is abstract, comes from Java, what modifiers a variable has (private, protected etc) and so on.
+Flags are stored in a single `Long` value, each bit of which represents whether a particular flag is set.
 
 To print flags, you can use the `flagsString` method, e.g. `println(x.flagsString)`.
 
@@ -79,8 +59,42 @@ Sometimes you may want to stop the compiler after a certain phase, for example t
 knock-on errors from occurring from a bug in an earlier phase. Use the flag
 `-Ystop-after:<phase-name>` to prevent any phases executing afterwards.
 
-> This flag is particularly useful when you want to inspect the effect of a single miniphase
-> of a phase group, use this in conjunction with the `-Xprint` flag.
+> e.g. `-Xprint:<phase>` where `phase` is a miniphase, will print after
+> the whole phase group is complete, which may several miniphases after `phase`.
+> Instead you can use `-Ystop-after:<phase> -Xprint:<phase>` to stop
+> immediately after the miniphase and see the trees that you intended.
+
+## Printing TASTy of a Class
+
+If are working on an issue related to TASTy, it is good to know how to inspect
+the contents of a TASTy file, produced from compilation of Scala files.
+
+In the following example, we compile in an [issue directory][reproduce] `tasty/Foo.scala`,
+with contents of `class Foo`, and create a `tasty/launch.iss` file to print its TASTy
+with sbt command `issue tasty`:
+
+```
+$ (rm -rv out || true) && mkdir out # clean up compiler output, create `out` dir.
+
+scala3/scalac -d $here/out $here/Foo.scala
+
+scala3/scalac -print-tasty $here/out/Foo.tasty
+```
+
+We see output such as the following:
+
+```
+--------------------------------------------------------------------------------
+local/foo/out/Foo.tasty
+--------------------------------------------------------------------------------
+Names:
+   0: ASTs
+   1: <empty>
+   2: Foo
+   3: <init>
+...
+```
+and so on.
 
 ## Inspecting representation of types
 
@@ -168,3 +182,5 @@ class StealBox:
 [2]: {% link _overviews/scala3-contribution/arch-types.md %}
 [3]: {% link _overviews/scala3-contribution/arch-lifecycle.md %}/#phases
 [ScalaSettings.scala]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/config/ScalaSettings.scala
+[symbols]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/core/SymDenotations.scala
+[reproduce]: {% link _overviews/scala3-contribution/procedures-reproduce.md %}/#dotty-issue-workspace

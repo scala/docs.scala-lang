@@ -12,7 +12,7 @@ For more in-depth explainations, see the rest of this chapter.
 
 ## sbt Commands
 
-The following commands can be run within the shell after running `sbt` in the dotty directory.
+The following commands can be run within `sbt` in the dotty directory.
 
 | Command                            | Description                                                      |
 |------------------------------------|------------------------------------------------------------------|
@@ -25,5 +25,11 @@ The following commands can be run within the shell after running `sbt` in the do
 | <code>testOnly<br/>dotty.tools.dotc.CompilationTests<br/>-- *pos</code> | Run test `pos` from `CompilationTests` suite. |
 | <code>scala3-compiler/Test/runMain<br/>dotty.tools.printTypes</code> | Print types underlying representation |
 | <code>scala3/scalac -print-tasty<br/>local/out/Foo.tasty</code> | Print the TASTy of top-level class `Foo` |
+
+## Shell Commands
+
+| Command                              | Description                                                      |
+|--------------------------------------|------------------------------------------------------------------|
+| `rm -rv *.tasty *.class out || true` | clean all compiled artifacts, from root dotty directory          |
 
 <!-- Todo: add cheatsheet for compiler flags, and places to go in code for certain issues -->

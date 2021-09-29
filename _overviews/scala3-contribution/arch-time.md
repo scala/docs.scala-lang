@@ -4,8 +4,10 @@ type: section
 description: This page describes the concepts of time in the Scala 3 compiler.
 num: 16
 previous-page: arch-types
-next-page:
+next-page: arch-symbols
 ---
+
+> (The following is work in progress), adapted from dotty.epfl.ch
 
 Conceptually, the `dotc` compiler's job is to maintain views of various
 artifacts associated with source code at all points in time.  But what is
@@ -23,7 +25,7 @@ in real time.
 
 The *minutes* of the compiler's clocks are measured in phases. At every
 compiler run, the compiler cycles through a number of [phases]. The list of
-phases is defined in the [Compiler]object There are currently about 60 phases
+phases is defined in the [Compiler] object There are currently about 60 phases
 per run, so the minutes/hours analogy works out roughly. After every phase the
 view the compiler has of the world changes: trees are transformed,  types are
 gradually simplified from Scala types to JVM types, definitions are rearranged,
@@ -95,3 +97,4 @@ As a sentinel value there's `Nowhere`, a period that is empty.
 [runs]: https://github.com/lampepfl/dotty/blob/a527f3b1e49c0d48148ccfb2eb52e3302fc4a349/compiler/src/dotty/tools/dotc/Run.scala
 [phases]: https://github.com/lampepfl/dotty/blob/a527f3b1e49c0d48148ccfb2eb52e3302fc4a349/compiler/src/dotty/tools/dotc/core/Phases.scala
 [period]: https://github.com/lampepfl/dotty/blob/a527f3b1e49c0d48148ccfb2eb52e3302fc4a349/compiler/src/dotty/tools/dotc/core/Periods.scala
+[Compiler]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/Compiler.scala

@@ -7,6 +7,10 @@ previous-page: procedures-efficiency
 next-page: procedures-checklist
 ---
 
+It is important to add tests before a pull request, to verify that everythig is working as expected,
+and act as proof of what is valid/invalid Scala code (in case it is broken in the future).
+In this section we will see the testign procedures in Scala 3.
+
 ## Running all Tests
 
 To run all tests of Scala 3, including for compiler, REPL, libraries and more, run the following in sbt:

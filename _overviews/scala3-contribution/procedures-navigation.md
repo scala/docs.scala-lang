@@ -7,7 +7,12 @@ previous-page: procedures-reproduce
 next-page: procedures-areas
 ---
 
-Navigation answers the questions such as: where does the error happen in a codebase? Where is a particular object created? Where is a particular value assigned to a variable?
+In this section, we will answer questions such as:
+- where does the error happen in a codebase?
+- where is a particular object created?
+- where is a particular value assigned to a variable?
+
+> You may be able to quickly find the source responsible for an issue by consulting [common issue locations][areas]
 
 ## Increasing Logging Output
 Sometimes we can detect erroneous states producing an error by analysing logging output that is not
@@ -31,32 +36,46 @@ Analysing the trace will give you a clue about the objects involved in producing
 
 This question arises, e.g., if you realised there's an object on the error site that shouldn't be there, most probably causing the error. So, in attempt to rectify the offending object, you want to know where it was created.
 
-This can be done by injecting a *tracer* into the class of an instance in question. A tracer is the following variable: `val tracer = Thread.currentThread.getStackTrace.mkString("\n")`. When placed as a top-level definition at a class, it will contain a stack trace pointing at where exactly its particular instance was created. This is because, as a top-level `val`, it will be evaluated on construction of the instance in question.
+We will do this by injecting a *tracer* into the class of an instance in question.
+A tracer is the following variable:
+```scala
+val tracer = Thread.currentThread.getStackTrace.mkString("\n")
+```
+When placed as a top-level definition at a class, it will contain a stack trace pointing at where exactly
+its particular instance was created. This is because, as a top-level `val`, it will be evaluated on
+construction of the instance in question.
 
-Once you've injected a tracer into a class, you can `println` that tracer from the error site or other site you've found the object in question.
+Once you've injected a tracer into a class, you can `println` that tracer from the error site or
+other site you've found the object in question.
 
 ### Procedure
 
-1. Determine the type of the object in question. You can use one of the following techniques to do so:
-    - Use your Metals-integrated IDE to determine the type
-    - Use `println` to print the object or `getClass` of that object
-    - Look at the context of where you encountered that object
-2. Locate the type definition of the type of that object
-3. Add a top-level definition `val tracer = Thread.currentThread.getStackTrace.mkString("\n")` to that type definition.
-4. `println(x.tracer)` (where `x` is the name of the object in question) from the original site where you encountered the object. This will give you the stack trace pointing to the place where the constructor of that object was invoked.
+1.  Determine the type of the object in question. You can use one of the following techniques to do so:
+     - Use an IDE to get the type of an expression, or save the expression to a `val`
+       and see its inferred type.
+     - Use `println` to print the object or use `getClass` on that object.
+2.  Locate the type definition for the type of that object.
+3.  Add a field `val tracer = Thread.currentThread.getStackTrace.mkString("\n")` to that type definition.
+4.  `println(x.tracer)` (where `x` is the name of the object in question) from the original site where you
+    encountered the object. This will give you the stack trace pointing to the place where the
+    constructor of that object was invoked.
 
-### Debugging tree creation site
+### Trace a Tree Creation Site
 
 A special case of finding an object's creation site is for a Tree, this is supported directly in the compiler,
 as trees have an associated unique ID:
 
-1. Run the compiler with the `-Xprint:<phase-name>` flag (discussed above) to get the tree in question output and the `-Yshow-tree-ids` flag. The `-Yshow-tree-ids` flag will show the ids of all the trees when printing them. You'll see something like `println#223("Hello World"#37)`.
-2. Find the id of the desired tree.
-3. Run the compiler with `-Ydebug-tree-with-id <tree-id>` flag. The compiler will print a stack trace pointing to the creation site of the tree with a given id.
+1. Run the compiler with `-Xprint:<phase-name>` and `-Yshow-tree-ids` flags. You should see the tree in question
+   be printed, alongside its ID. You'll see something like `println#223("Hello World"#37)`.
+2. Copy the ID of the desired tree.
+3. Run the compiler with `-Ydebug-tree-with-id <tree-id>` flag. The compiler will print a stack trace pointing to the creation site of the tree the ID provided.
 
 ## Where was a particular value assigned to a variable?
 
-Say you have a certain type assigned to a denotation and you would like to know why the denotation was typed that way. A type in the denotation is a `var myInfo: Type` so you can't just trace the creation site of that `Type` as was described before. You want to know the *assignment*, not *creation*, site.
+Say you have a certain [type][types] assigned to a [Denotation] and you would like to know why it is that
+specific type. The type of a denotation is defined by `var myInfo: Type`, and can be assigned multiple times.
+In this case, knowing the creation site of that `Type`, as described above, is not useful; instead, we need to
+know the *assignment* (not *creation*) site.
 
 This is done similarly to how you trace the creation site. Conceptually, you need to create a proxy for that variable that will log every write operation to it. Practically, if you are trying to trace the assignments to a variable `myInfo` of type `Type`, first, rename it to `myInfo_debug`. Then, insert the following at the same level as that variable:
 
@@ -66,6 +85,7 @@ def myInfo: Type = myInfo_debug,
 def myInfo_=(x: Type) = { tracer = Thread.currentThread.getStackTrace.mkString("\n"); myInfo_debug = x }
 ```
 
-The procedure for figuring out an assignment site to a variable is the same as figuring out the creation site, except for the step (2) where you do as described in this section.
-
 [Printers]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/config/Printers.scala
+[areas]: {% link _overviews/scala3-contribution/procedures-areas.md %}
+[Denotation]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/core/Denotations.scala
+[types]: {% link _overviews/scala3-contribution/arch-types.md %}
