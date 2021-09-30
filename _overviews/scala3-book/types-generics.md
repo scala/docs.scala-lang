@@ -20,7 +20,7 @@ class Stack[A]:
   //                         ^
   //  Here we refer to the type parameter
   //          v
-  def push(x: A): Unit = { elements = x :: elements }
+  def push(x: A): Unit = { elements = elements.prepended(x) }
   def peek: A = elements.head
   def pop(): A =
     val currentTop = peek
