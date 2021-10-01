@@ -73,7 +73,7 @@ in a single run, this is called *joint compilation*. In this case use file names
 
 ### Checking Program Output
 
-`tests/run` tests verify the runtime behaviour of a test case. The output is checked by invoking a main method
+`tests/run` tests verify the run-time behaviour of a test case. The output is checked by invoking a main method
 on a class `Test`, this can be done with either
 ```scala
 @main def Test: Unit = assert(1 > 0)
