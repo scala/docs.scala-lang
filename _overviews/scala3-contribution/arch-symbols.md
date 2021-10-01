@@ -75,7 +75,7 @@ Symbols can not only represent terms, but also types (hence the `isTerm`/`isType
 
 ## ClassSymbol
 
-`ClassSymbol` represents either a `class`, or an `trait`, or an `object`. For example, an object
+`ClassSymbol` represents either a `class`, or a `trait`, or an `object`. For example, an object
 ```scala
 object O {
   val s = 1
