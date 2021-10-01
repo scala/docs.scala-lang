@@ -12,7 +12,7 @@ in the compiler, and produced artifacts.
 
 ## Inspecting variables in-place
 
-Frequently we need to know what a particular variable's value is. Often, it is sufficient to use `println`.
+Frequently we need to inspect the content of a particular variable. Often, it is sufficient to use `println`.
 
 When printing a variable, it's always a good idea to call `show` on that variable: `println(x.show)`.
 Many objects of the compiler define `show`, returning a human-readable string.
