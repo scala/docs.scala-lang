@@ -98,7 +98,7 @@ end of a line for each expected error. For example, if there are three expected 
 
 You can verify the content of the error messages with a `*.check` file. These contain the expected output of the
 compiler. Checkfiles are named after the issue they are checking,
-e.g. `i101.check` will check both of `tests/neg/i101.scala` and `tests/neg/i101/`.
+e.g. `i101.check` will check either `tests/neg/i101.scala` or `tests/neg/i101/`.
 *Note:* checkfiles are not required for the test to pass, however they do add more strong contraints that the errors
 are as expected.
 
