@@ -93,7 +93,7 @@ e.g. `tests/run/i101.check` will check either `tests/run/i101.scala` or `tests/r
 `tests/neg` tests verify that a file does not compile, and user-facing errors are produced. There are other neg
 categories such as `neg-custom-args`, i.e. with `neg` prefixing the directory name. Test files in the `neg*`
 categories require annotations for the lines where errors are expected. To do this add one `// error` token to the
-end of a line for each error expected. e.g. if there are three errors expected, the end of line should contain
+end of a line for each expected error. For example, if there are three expected errors, the end of the line should contain
 `// error // error // error`.
 
 You can verify the content of the error messages with a `*.check` file. These contain the expected output of the
