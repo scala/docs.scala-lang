@@ -17,7 +17,7 @@ next-page: procedures-intro
 
 - The following dependencies can be installed with [Coursier] CLI by running `cs setup`, (see
   [Single command Scala setup][cs-setup-blog]) including:
-  - A Java Virtual Machine (JDK 8 or higher), required for running the build tool. Verify that JVM is
+  - A Java Virtual Machine (JDK 8 or higher), required for running the build tool. Verify that the JVM is
     installed by running the following command in a terminal: `java -version`.
   - [sbt], the build tool required to build the Scala 3 compiler and libraries.
 
