@@ -69,7 +69,7 @@ Symbols are references to definitions (e.g. of variables, fields, classes). Symb
 `NoSymbol` is used to indicate the lack of a symbol.
 
 Symbols uniquely identify definitions, but they don't say what the definitions *mean*. To understand the meaning of a symbol
-we need to look at its *denotation* (spefically for symbols, a `SymDenotation`).
+we need to look at its *denotation* (specially for symbols, a `SymDenotation`).
 
 Symbols can not only represent terms, but also types (hence the `isTerm`/`isType` methods in the `Symbol` class).
 
