@@ -14,7 +14,7 @@ representation that can run on one of Scala's target platforms.
 ## Introducing the Compiler's Lifecycle
 
 #### Core
-At a high level, `dotc` centers its work around a [compiler][4], which maintains an ordered
+At a high level, `dotc` centers its work around a [Compiler][4], which maintains an ordered
 list of [phases][3], and is responsible for creating new [runs][2].
 A run is a complete iteration of the compiler's phases over a list of input sources.
 A compiler is designed to be reusable and can create many runs over its lifetime.
