@@ -86,7 +86,7 @@ object Test extends scala.App:
 
 If your program also prints output, this can be compared against `*.check` files.
 These contain the expected output of a program. Checkfiles are named after the issue they are checking,
-e.g. `tests/run/i101.check` will check both of `tests/run/i101.scala` and `tests/run/i101/`.
+e.g. `tests/run/i101.check` will check either `tests/run/i101.scala` or `tests/run/i101/`.
 
 ### Checking Compilation Errors
 
