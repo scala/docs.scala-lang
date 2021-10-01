@@ -7,6 +7,8 @@
       url: "/scala3/getting-started.html"
     - title: Scala 3 Book
       url: "/scala3/book/introduction.html"
+    - title: Contributing Guide
+      url: "/scala3/guides/contribution/contribution-intro.html"
     - title: Macro Tutorial
       url: "/scala3/guides/macros/index.html"
 - title: Migrate
@@ -15,3 +17,5 @@
   url: "/scala3/reference/overview.html"
 - title: API
   url: "https://scala-lang.org/api/3.x/"
+- title: Contributing Guide
+  url: "/scala3/guides/contribution/contribution-intro.html"

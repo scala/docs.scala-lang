@@ -118,6 +118,16 @@ defaults:
       permalink: "/scala3/guides/migration/:title.html"
   -
     scope:
+      path: "_overviews/scala3-contribution"
+    values:
+      scala3: true
+      partof: scala3-contribution
+      type: section
+      overview-name: "Guide to Scala 3 Compiler Contribution"
+      layout: multipage-overview
+      permalink: "/scala3/guides/contribution/:title.html"
+  -
+    scope:
       path: "_overviews/scala3-macros"
     values:
       scala3: true

@@ -40,6 +40,10 @@ scala3-sections:
         description: "The Scala 3 language reference."
         icon: "fa fa-book"
         link: /scala3/reference/overview.html
+      - title: "Contribution Guide"
+        description: "Guide to the Scala 3 Compiler and fixing an issue"
+        icon: "fa fa-gears"
+        link: /scala3/guides/contribution/contribution-intro.html
       - title: "All new Scaladoc for Scala 3"
         description: "Highlights of new features for Scaladoc"
         icon: "fa fa-star"
