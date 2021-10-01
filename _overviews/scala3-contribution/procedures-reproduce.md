@@ -54,7 +54,7 @@ Let's use [dotty-issue-workspace] to reproduce issue [#7710]:
       directory to hold compiler output.
     - The next line, `scala3/scalac -d $here/out $here/Test.scala` specifies an sbt
       command, which will compile `Test.scala` and place any output into `out`.
-      `$here` is a magic variable that will be replaced by the path of the parent
+      `$here` is a special variable that will be replaced by the path of the parent
       directory of `launch.iss` when executing the commands.
 5.  Now, from a terminal we will run the issue from sbt in the dotty directory
     ([See here][clone] for a reminder if you have not cloned the repo.):
