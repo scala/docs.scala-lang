@@ -23,7 +23,7 @@ sbt:scala3> scala3/scalac -d local/out local/i7710.scala
 ```
 > Here, the `-d` flag specifies a directory `local/out` where generated code will be output.
 
-You can then verify that the issue has the same behaviour as originally reported in the issue.
+You can then verify that the local reproduction has the same behaviour as originally reported in the issue.
 If so, then we can get to trying to fix it, else, perhaps the issue is out of date, or
 is missing information about how to accurately reproduce the issue.
 
