@@ -8,7 +8,7 @@ next-page: procedures-reproduce
 ---
 
 This page is a quick-reference guide for common tasks while working with the compiler.
-For more in-depth explainations, see the rest of this chapter.
+For more in-depth explanations, see the rest of this chapter.
 
 ## sbt Commands
 
