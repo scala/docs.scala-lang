@@ -49,7 +49,7 @@ Here is a table of explanations for their use:
 ## Obtaining debug output from the compiler
 
 There are many compiler options that provide verbose debug output when compiling a file.
-You can find the full list in [ScalaSettings.scala] file. One particularly useful one
+You can find the full list in [ScalaSettings.scala] file. A particularly useful one
 is `-Xprint:<phase-name>` or `-Xprint:all`. It prints trees after a given phase or after
 all phases. As described in the [compiler lifecycle][3] each phase transforms the trees
 and types that represent your code in a certain way. This flag allows you to see exactly how.
