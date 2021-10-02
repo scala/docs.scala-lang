@@ -78,7 +78,7 @@ tools // contains helpers and the `scala` generic runner
 └── scripting // scala runner for the -script argument
 ```
 
-[1]: {% link _overviews/scala3-contribution/contribution-intro.md %}/#what-is-a-compiler
+[1]: {% link _overviews/scala3-contribution/contribution-intro.md %}#what-is-a-compiler
 [2]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/Run.scala
 [3]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/core/Phases.scala
 [4]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/Compiler.scala

@@ -180,7 +180,7 @@ class StealBox:
 
 [1]: https://github.com/lampepfl/dotty/blob/master/compiler/test/dotty/tools/DottyTypeStealer.scala
 [2]: {% link _overviews/scala3-contribution/arch-types.md %}
-[3]: {% link _overviews/scala3-contribution/arch-lifecycle.md %}/#phases
+[3]: {% link _overviews/scala3-contribution/arch-lifecycle.md %}#phases
 [ScalaSettings.scala]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/config/ScalaSettings.scala
 [symbols]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/core/SymDenotations.scala
-[reproduce]: {% link _overviews/scala3-contribution/procedures-reproduce.md %}/#dotty-issue-workspace
+[reproduce]: {% link _overviews/scala3-contribution/procedures-reproduce.md %}#dotty-issue-workspace
