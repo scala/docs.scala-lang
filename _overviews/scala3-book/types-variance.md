@@ -136,7 +136,7 @@ val f: Function[Buyable, Buyable] = b => b
 val g: Function[Buyable, Item] = f
 
 // OK to provide a Book where a Buyable is expected
-val h: Function[Book, Buyable] = g
+val h: Function[Book, Buyable] = f
 ```
 
 ## Summary
