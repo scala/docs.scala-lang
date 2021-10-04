@@ -149,4 +149,4 @@ Type -+- proxy_type --+- NamedType --------+- TypeRef
 
 [Types.scala]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/core/Types.scala
 [2]: https://github.com/lampepfl/dotty/blob/master/compiler/test/dotty/tools/DottyTypeStealer.scala
-[3]: {% link _overviews/scala3-contribution/procedures-inspection.md %}/#inspecting-representation-of-types
+[3]: {% link _overviews/scala3-contribution/procedures-inspection.md %}#inspecting-representation-of-types

@@ -86,7 +86,7 @@ suitable for the runtime system, with two sub-groupings:
 ### `backendPhases`
 These map the transformed trees to Java classfiles or SJSIR files.
 
-[1]: {% link _overviews/scala3-contribution/arch-lifecycle.md %}/#phases
+[1]: {% link _overviews/scala3-contribution/arch-lifecycle.md %}#phases
 [2]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/CompilationUnit.scala
 [Compiler]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/Compiler.scala
 [Phase]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/core/Phases.scala
