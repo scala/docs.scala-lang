@@ -229,10 +229,12 @@ For an in-depth treatment of types vs. classes, see the blog post
 
 ### How can a method in a superclass return a value of the “current” type?
 
-Using `this.type` won't work. People often try that, but `this.type` means
-"the singleton type of this instance", a different and too-specific meaning.
+First, note that using `this.type` won't work. People often try that,
+but `this.type` means "the singleton type of this instance", a
+different and too-specific meaning.  Only `this` itself has the
+type `this.type`; other instances do not.
 
-Possible solutions include F-bounded polymorphism
+What does work? Possible solutions include F-bounded polymorphism
 _(familiar to Java programmers)_, type members,
 and the [typeclass pattern](http://tpolecat.github.io/2013/10/12/typeclass.html).
 
