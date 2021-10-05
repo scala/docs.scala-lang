@@ -1064,7 +1064,7 @@ Pair<String, Integer> pair =
 Triplet<String, Integer, Double> triplet =
   Triplet.with("Eleven", 11, 11.0);
 Quartet<String, Integer, Double,Person> triplet =
-  Triplet.with("Eleven", 11, 11.0, new Person("Eleven"));
+  Quartet.with("Eleven", 11, 11.0, new Person("Eleven"));
 ```
 
 Other Java tuple names are Quintet, Sextet, Septet, Octet, Ennead, Decade.
