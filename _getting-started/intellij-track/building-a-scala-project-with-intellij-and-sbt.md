@@ -90,7 +90,7 @@ extra functionality to our apps.
 libraryDependencies += "com.github.pureconfig" %% "pureconfig" % "0.17.0"
 ```
 Here, `libraryDependencies` is a set of dependencies, and by using `+=`,
-we're adding the [pure-config](https://index.scala-lang.org/pureconfig/pureconfig/pureconfig/0.17.0?target=_2.13) dependency to the set of dependencies that sbt will go
+we're adding the [PureConfig](https://index.scala-lang.org/pureconfig/pureconfig/pureconfig/0.17.0) dependency to the set of dependencies that sbt will go
 and fetch when it starts up. Now, in any Scala file, you can import classes,
 objects, etc, from scala-parser-combinators with a regular import.
 
