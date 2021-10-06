@@ -101,7 +101,6 @@ application.conf
 ```
 name = "Martin"
 ages = [10, 12, 15, 6, 34]
-
 ```
 
 3. Now from Main.scala we can import pureconfig, load the configuration, and print
