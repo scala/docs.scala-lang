@@ -92,7 +92,7 @@ libraryDependencies += "com.github.pureconfig" %% "pureconfig" % "0.17.0"
 Here, `libraryDependencies` is a set of dependencies, and by using `+=`,
 we're adding the [PureConfig](https://index.scala-lang.org/pureconfig/pureconfig/pureconfig/0.17.0) dependency to the set of dependencies that sbt will go
 and fetch when it starts up. Now, in any Scala file, you can import classes,
-objects, etc, from scala-parser-combinators with a regular import.
+objects, etc, from PureConfig with a regular import.
 
 2. Lets try it out by loading a configuration file.  Go ahead and create a new
 folder under the default location src/main/resources, and add the file 
