@@ -87,12 +87,45 @@ extra functionality to our apps.
 1. Open up `build.sbt` and add the following line:
 
 ```
-libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % "1.1.2"
+libraryDependencies += "com.github.pureconfig" %% "pureconfig" % "0.17.0"
 ```
 Here, `libraryDependencies` is a set of dependencies, and by using `+=`,
-we're adding the [scala-parser-combinators](https://github.com/scala/scala-parser-combinators) dependency to the set of dependencies that sbt will go
+we're adding the [pure-config](https://index.scala-lang.org/pureconfig/pureconfig/pureconfig/0.17.0?target=_2.13) dependency to the set of dependencies that sbt will go
 and fetch when it starts up. Now, in any Scala file, you can import classes,
 objects, etc, from scala-parser-combinators with a regular import.
+
+2. Lets try it out by loading a configuration file.  Go ahead and create a new
+folder under the default location src/main/resources, and add the file 
+application.conf
+
+```
+name = "Martin"
+ages = [10, 12, 15, 6, 34]
+
+```
+
+3. Now from Main.scala we can import pureconfig, load the configuration, and print
+some information from it.
+
+```
+package example
+
+import pureconfig._
+import pureconfig.generic.auto._
+
+case class HelloConfig(name:String, ages:Seq[Int])
+
+object Main extends App {
+  val ages = Seq(42, 75, 29, 64)
+  println(s"Oldest person is ${ages.max}")
+
+  val config = ConfigSource.default.loadOrThrow[HelloConfig]
+  println(s"Hello ${config.name}, the oldest config age is ${config.ages.max}")
+}
+```
+
+Save your file and you should see the new output from your configuration file.
+
 
 You can find more published libraries on
 [Scaladex](https://index.scala-lang.org/), the Scala library index, where you
