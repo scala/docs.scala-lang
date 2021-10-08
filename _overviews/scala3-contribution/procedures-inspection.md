@@ -18,7 +18,7 @@ Often, it is sufficient to use `println`.
 When printing a variable, it's always a good idea to call `show` on that variable: `println(x.show)`.
 Many objects of the compiler define `show`, returning a human-readable string.
 e.g. if called on a tree, the output will be the tree's representation as source code, rather than
-the raw data underlying.
+the underlying raw data.
 
 Sometimes you need to print flags. Flags are metadata attached to [symbols] containing information such as whether a
 class is abstract, comes from Java, what modifiers a variable has (private, protected etc) and so on.
@@ -49,11 +49,10 @@ Here is a table of explanations for their use:
 
 ## Obtaining debug output from the compiler
 
-There are many compiler options that provide verbose debug output when compiling a file.
-You can find the full list in [ScalaSettings.scala] file. A particularly useful one
-is `-Xprint:<phase-name>` or `-Xprint:all`. It prints trees after a given phase or after
-all phases. As described in the [compiler lifecycle][3] each phase transforms the trees
-and types that represent your code in a certain way. This flag allows you to see exactly how.
+As explained in [navigation], we can debug the code being generated as it is transformed
+through the compiler. As well as plain tree output, there are many compiler options that
+add extra debug information to trees when compiling a file; you can find the full list
+in [ScalaSettings].
 
 ## Stopping the compiler early
 Sometimes you may want to stop the compiler after a certain phase, for example to prevent
@@ -61,7 +60,7 @@ knock-on errors from occurring from a bug in an earlier phase. Use the flag
 `-Ystop-after:<phase-name>` to prevent any phases executing afterwards.
 
 > e.g. `-Xprint:<phase>` where `phase` is a miniphase, will print after
-> the whole phase group is complete, which may several miniphases after `phase`.
+> the whole phase group is complete, which may be several miniphases after `phase`.
 > Instead you can use `-Ystop-after:<phase> -Xprint:<phase>` to stop
 > immediately after the miniphase and see the trees that you intended.
 
@@ -97,7 +96,7 @@ Names:
 ```
 and so on.
 
-## Inspecting representation of types
+## Inspecting The Representation of Types
 
 > [click here][2] to learn more about types in `dotc`.
 
@@ -142,15 +141,15 @@ sbt:scala3> scala3-compiler/Test/runMain
 TypeRef(TypeRef(ThisType(TypeRef(NoPrefix,module class <empty>)),class Box),type X) [class dotty.tools.dotc.core.Types$CachedTypeRef]
 ```
 
-Here are some other examples you can follow:
+Here are some other examples you can try:
 - `...printTypes "" "class" "[T] extends Seq[T] {}"`
 - `...printTypes "" "method" "(x: Int): x.type"`
 - `...printTypes "" "type" "<: Int" "= [T] =>> List[T]"`
 
 ### Don't just print: extracting further information
 
-`dotty.tools.printTypes` is useful to to at a glance see the representation
-of a type, but sometimes you want to extract more. Instead, you can use the
+`dotty.tools.printTypes` is useful to to see the representation
+of a type at a glance, but sometimes you want to extract more. Instead, you can use the
 method `dotty.tools.DottyTypeStealer.stealType`. With the same inputs as `printTypes`,
 it returns both a `Context` containing the definitions passed, along with the list of types.
 
@@ -182,6 +181,7 @@ class StealBox:
 [1]: https://github.com/lampepfl/dotty/blob/master/compiler/test/dotty/tools/DottyTypeStealer.scala
 [2]: {% link _overviews/scala3-contribution/arch-types.md %}
 [3]: {% link _overviews/scala3-contribution/arch-lifecycle.md %}#phases
-[ScalaSettings.scala]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/config/ScalaSettings.scala
+[ScalaSettings]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/config/ScalaSettings.scala
 [symbols]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/core/SymDenotations.scala
 [reproduce]: {% link _overviews/scala3-contribution/procedures-reproduce.md %}#dotty-issue-workspace
+[navigation]: {% link _overviews/scala3-contribution/procedures-navigation.md %}#what-phase-generated-a-particular-tree

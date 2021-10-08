@@ -61,9 +61,9 @@ such as `equals` and `hashCode` for case classes.
 These phases start with [pickler], which serializes typed trees
 produced by the `frontendPhases` into TASTy format. Following is [inlining],
 which expand calls to inline methods, and [postInlining] providing implementations
-of the Mirror framework for inlined calls.
+of the [Mirror] framework for inlined calls.
 Finally are [staging], which ensures that quotes conform to the
-Phase Consistency Principle (PCP), and [pickleQuotes] which converts quoted
+[Phase Consistency Principle (PCP)][PCP], and [pickleQuotes] which converts quoted
 trees to embedded TASTy strings.
 
 ### `transformPhases`
@@ -105,3 +105,5 @@ These map the transformed trees to Java classfiles or SJSIR files.
 [initChecker]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/transform/init/Checker.scala
 [firstTransform]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/transform/FirstTransform.scala
 [erasure]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/transform/Erasure.scala
+[Mirror]: https://github.com/lampepfl/dotty/blob/master/library/src/scala/deriving/Mirror.scala
+[PCP]: {% link _scala3-reference/metaprogramming/macros.md %}#the-phase-consistency-principle

@@ -26,10 +26,14 @@ every compilation unit before progressing to the next phase.
 
 #### Phases
 A phase is an abstract transformation over a compilation unit, it is usually responsible
-for transforming the trees and types representing the code of a source file. The primary phases of
-the compiler are the `parser`, which converts text that matches Scala's
-[syntax][10] into abstract syntax trees, ASTs, and the `typer`, which checks that
-trees conform to expected types, and performs other operations such as implicit search.
+for transforming the trees and types representing the code of a source file. Some phases of
+the compiler include
+- `parser`, which converts text that matches Scala's
+  [syntax][10] into abstract syntax trees, ASTs
+- `typer`, which checks that trees conform to expected types
+- `erasure`, which retypes a more simplified program into one that has the same types as the JVM.
+- `genBCode`, the JVM backend, which converts erased compiler trees into Java bytecode format.
+
 [You can read more about phases here][9].
 
 #### Drivers

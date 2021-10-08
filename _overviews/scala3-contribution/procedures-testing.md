@@ -29,7 +29,7 @@ to run individual tests.
 Compilation tests run the compiler over input files, using various settings. Input files
 are found within the `tests/` directory at the root of the compiler repo.
 
-Test input files are categorised further by the virtue of placing them in the subdirectories
+Test input files are categorised further by placing them in the subdirectories
 of the `tests/` directory. A small selection of test categories include:
 
 - `tests/pos` – tests that should compile: pass if compiles successfully.
@@ -45,8 +45,8 @@ or be within a directory called `i101/` for a multi-file test.
 To run the test, invoke the sbt command `testCompilation i101` (this will match all tests with `"i101"` in
 the name, so it is useful to use a unique name)
 
-The group tests – `pos`, `neg` etc – are defined in [CompilationTests]. If you want to run a group of tests, e.g.
-`pos`, you can do so via `testOnly dotty.tools.dotc.CompilationTests -- *pos` command.
+The test groups – `pos`, `neg`, etc. – are defined in [CompilationTests]. If you want to run a group
+of tests, e.g. `pos`, you can do so via `testOnly *CompilationTests -- *pos` command.
 
 ### Testing a Single Input File
 
