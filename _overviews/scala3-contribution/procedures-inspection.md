@@ -7,12 +7,13 @@ previous-page: procedures-areas
 next-page: procedures-efficiency
 ---
 
-In this section, we take a closer look at how to debug the contents of certain objects
-in the compiler, and produced artifacts.
+In this section, you will find out how to debug the contents of certain objects
+while the compiler is running, and inspect produced artifacts of the compiler.
 
 ## Inspecting variables in-place
 
-Frequently we need to inspect the content of a particular variable. Often, it is sufficient to use `println`.
+Frequently you will need to inspect the content of a particular variable.
+Often, it is sufficient to use `println`.
 
 When printing a variable, it's always a good idea to call `show` on that variable: `println(x.show)`.
 Many objects of the compiler define `show`, returning a human-readable string.
@@ -66,12 +67,12 @@ knock-on errors from occurring from a bug in an earlier phase. Use the flag
 
 ## Printing TASTy of a Class
 
-If are working on an issue related to TASTy, it is good to know how to inspect
+If you are working on an issue related to TASTy, it is good to know how to inspect
 the contents of a TASTy file, produced from compilation of Scala files.
 
-In the following example, we compile in an [issue directory][reproduce] `tasty/Foo.scala`,
-with contents of `class Foo`, and create a `tasty/launch.iss` file to print its TASTy
-with sbt command `issue tasty`:
+The next example uses an [issue directory][reproduce] to compile a class and print its TASTy.
+In the directory, you should create a file `tasty/Foo.scala` (with contents of `class Foo`),
+and create a file `tasty/launch.iss` with the following contents:
 
 ```
 $ (rm -rv out || true) && mkdir out # clean up compiler output, create `out` dir.
@@ -81,7 +82,7 @@ scala3/scalac -d $here/out $here/Foo.scala
 scala3/scalac -print-tasty $here/out/Foo.tasty
 ```
 
-We see output such as the following:
+With sbt command `issue tasty` you will see output such as the following:
 
 ```
 --------------------------------------------------------------------------------
@@ -130,7 +131,7 @@ Each one of `typeStrings` is then printed, displaying their internal structure, 
 
 ### Examples
 
-Here, given a previously defined `class Box { type X }`, we inspect the return type `Box#X`:
+Here, given a previously defined `class Box { type X }`, you can inspect the return type `Box#X`:
 ```bash
 sbt:scala3> scala3-compiler/Test/runMain
 > dotty.tools.printTypes
@@ -149,11 +150,11 @@ Here are some other examples you can follow:
 ### Don't just print: extracting further information
 
 `dotty.tools.printTypes` is useful to to at a glance see the representation
-of a type, but sometimes we want to extract more. We can instead use the
+of a type, but sometimes you want to extract more. Instead, you can use the
 method `dotty.tools.DottyTypeStealer.stealType`. With the same inputs as `printTypes`,
 it returns both a `Context` containing the definitions passed, along with the list of types.
 
-As a worked example let's create a test case to verify the structure of `Box#X` that we saw earlier:
+As a worked example let's create a test case to verify the structure of `Box#X` that you saw earlier:
 ```scala
 import dotty.tools.dotc.core.Contexts.Context
 import dotty.tools.dotc.core.Types.*

@@ -7,8 +7,9 @@ previous-page: procedures-inspection
 next-page: procedures-testing
 ---
 
-In the previous sections, we have covered some techniques of working with the compiler.
-Some of these techniques can be used repetitively, e.g.:
+In the previous sections of this chapter, you saw some techniques for
+working with the compiler. Some of these techniques can be used
+repetitively, e.g.:
 
 - Navigating stack frames
 - Printing variables in certain ways

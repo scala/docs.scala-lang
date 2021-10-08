@@ -20,14 +20,14 @@ $ scalac -Xshow-phases
 
 ## Phase Groups
 
-In class [Compiler] we can access the list of phases with the method `phases`:
+In class [Compiler] you can access the list of phases with the method `phases`:
 
 ```scala
 def phases: List[List[Phase]] =
   frontendPhases ::: picklerPhases ::: transformPhases ::: backendPhases
 ```
 
-We see that phases are actually grouped into sublists, given by the signature
+You can see that phases are actually grouped into sublists, given by the signature
 `List[List[Phase]]`; that is, each sublist forms a phase group that is then *fused* into a
 single tree traversal when a [Run] is executed.
 

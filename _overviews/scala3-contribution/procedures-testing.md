@@ -9,7 +9,7 @@ next-page: procedures-checklist
 
 It is important to add tests before a pull request, to verify that everything is working as expected,
 and act as proof of what is valid/invalid Scala code (in case it is broken in the future).
-In this section we will see the testing procedures in Scala 3.
+In this section you will see the testing procedures in Scala 3.
 
 ## Running all Tests
 
@@ -21,7 +21,7 @@ sbt:scala3> scala3-bootstrapped/test
 ```
 
 Often however it is not necessary to test everything if your changes are localised to one area,
-we will see in the following sections the different kinds of tests, and how
+you will see in the following sections the different kinds of tests, and how
 to run individual tests.
 
 ## Compilation Tests

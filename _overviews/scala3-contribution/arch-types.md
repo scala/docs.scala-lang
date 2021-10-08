@@ -63,7 +63,7 @@ Type                      | Representation
 
 ### Method Definition Types
 
-We saw above that method definitions can have an underlying type of
+You can see above that method definitions can have an underlying type of
 either `PolyType`, `MethodType`, or `ExprType`. `PolyType` and `MethodType`
 may be mixed recursively however, and either can appear as the result type of the other.
 

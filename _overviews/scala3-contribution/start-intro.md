@@ -40,8 +40,8 @@ $ cd dotty
 
 ## Verify your installation
 
-To verify that we can build the code, we will use `scala3/scalac` and `scala3/scala` to build
-and run a test case:
+To verify that you can build the code, you can use `scala3/scalac` and `scala3/scala` to build
+and run a test case, as shown in the next snippet:
 ```bash
 $ sbt
 sbt:scala3> scala3/scalac tests/pos/HelloWorld.scala

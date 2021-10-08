@@ -7,15 +7,15 @@ previous-page: procedures-reproduce
 next-page: procedures-areas
 ---
 
-In this section, we will answer questions such as:
-- where does the error happen in a codebase?
+In this section, you will be able to answer questions such as:
+- where does an error happen in a codebase?
 - where is a particular object created?
 - where is a particular value assigned to a variable?
 
 > You may be able to quickly find the source responsible for an issue by consulting [common issue locations][areas]
 
 ## Increasing Logging Output
-Sometimes we can detect erroneous states producing an error by analysing logging output that is not
+Sometimes you can detect erroneous states that produce an error by analysing logging output that is not
 normally visible:
 
 - general logging within a phase can be enabled with the `-Ylog` compiler flag, such as
@@ -36,7 +36,7 @@ Analysing the trace will give you a clue about the objects involved in producing
 
 This question arises, e.g., if you realised there's an object on the error site that shouldn't be there, most probably causing the error. So, in attempt to rectify the offending object, you want to know where it was created.
 
-We will do this by injecting a *tracer* into the class of an instance in question.
+You can do this by injecting a *tracer* into the class of an instance in question.
 A tracer is the following variable:
 ```scala
 val tracer = Thread.currentThread.getStackTrace.mkString("\n")
@@ -74,7 +74,7 @@ as trees have an associated unique ID:
 
 Say you have a certain [type][types] assigned to a [Denotation] and you would like to know why it is that
 specific type. The type of a denotation is defined by `var myInfo: Type`, and can be assigned multiple times.
-In this case, knowing the creation site of that `Type`, as described above, is not useful; instead, we need to
+In this case, knowing the creation site of that `Type`, as described above, is not useful; instead, you need to
 know the *assignment* (not *creation*) site.
 
 This is done similarly to how you trace the creation site. Conceptually, you need to create a proxy for that variable that will log every write operation to it. Practically, if you are trying to trace the assignments to a variable `myInfo` of type `Type`, first, rename it to `myInfo_debug`. Then, insert the following at the same level as that variable:
