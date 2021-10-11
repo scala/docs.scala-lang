@@ -2,9 +2,9 @@
 title: Symbols
 type: section
 description: This page describes symbols in the Scala 3 compiler.
-num: 17
+num: 18
 previous-page: arch-time
-next-page: arch-context
+next-page:
 ---
 
 As discussed previously, `dotc` [maintains time-indexed views][arch-time] of various

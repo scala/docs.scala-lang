@@ -2,7 +2,7 @@
 title: Compiler Types
 type: section
 description: This page discusses the representation of types in the compiler
-num: 15
+num: 16
 previous-page: arch-phases
 next-page: arch-time
 ---

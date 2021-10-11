@@ -4,26 +4,22 @@ type: section
 description: This page describes the lifecycle for the Scala 3 compiler.
 num: 13
 previous-page: arch-intro
-next-page: arch-phases
+next-page: arch-context
 ---
 
-As mentioned in [what is a compiler?][whats-a-compiler] `dotc` produces programs that can run on your machine,
-first by verifying its input is a valid Scala program, and then transforming it into a
-representation that can run on one of Scala's target platforms.
-
-## Introducing the Compiler's Lifecycle
-
-At a high level, `dotc` is an interactive compiler, and can be invoked frequently,
-for example to answer questions for an IDE, provide REPL completions,
+At a high level, `dotc` is an interactive compiler (see [what is a compiler?][whats-a-compiler]),
+and can be invoked frequently, for example to answer questions for an IDE, provide REPL completions,
 or to manage incremental builds and more. Each of these use cases requires a customised
 workflow, but sharing a common core.
+
+## Introducing the Compiler's Lifecycle
 
 #### Core
 Customisation is provided by extending the [Compiler] class, which maintains an ordered
 list of [phases][Phases], and how to [run][Run] them. Each interaction with a compiler
 creates a new run, which is a complete iteration of the compiler's phases over a list
-of input sources. Runs enable `dotc` to be [aware of time][time], as each run can
-potentially generate new compiler entities and invalidate older ones.
+of input sources. Each run has the capability to create new definitions or
+invalidate older ones, and `dotc` can [track these changes over time][time].
 
 #### Runs
 During a run, the input sources are converted to [compilation units][CompilationUnit] (i.e. the abstraction of
