@@ -13,11 +13,17 @@ representation that can run on one of Scala's target platforms.
 
 ## Introducing the Compiler's Lifecycle
 
+At a high level, `dotc` is an interactive compiler, and can be invoked frequently,
+for example to answer questions for an IDE, provide REPL completions,
+or to manage incremental builds and more. Each of these use cases requires a customised
+workflow, but sharing a common core.
+
 #### Core
-At a high level, `dotc` centers its work around a [Compiler], which maintains an ordered
-list of [phases][Phases], and is responsible for creating new [runs][Run].
-A run is a complete iteration of the compiler's phases over a list of input sources.
-A compiler is designed to be reusable and can create many runs over its lifetime.
+Customisation is provided by extending the [Compiler] class, which maintains an ordered
+list of [phases][Phases], and how to [run][Run] them. Each interaction with a compiler
+creates a new run, which is a complete iteration of the compiler's phases over a list
+of input sources. Runs enable `dotc` to be [aware of time][time], as each run can
+potentially generate new compiler entities and invalidate older ones.
 
 #### Runs
 During a run, the input sources are converted to [compilation units][CompilationUnit] (i.e. the abstraction of
@@ -42,9 +48,6 @@ The core compiler also requires a lot of state to be initialised before use, suc
 and the [Context][contexts]. For convenience, the [Driver] class contains high level functions for
 configuring the compiler and invoking it programatically. The object [Main] inherits from `Driver`
 and is invoked by the `scalac` script.
-
-<!-- #### Further Reading -->
-> [Read more about a compiler's lifecyle][time].
 
 ## Code Structure
 
