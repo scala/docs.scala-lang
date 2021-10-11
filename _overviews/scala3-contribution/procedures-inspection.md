@@ -98,10 +98,10 @@ and so on.
 
 ## Inspecting The Representation of Types
 
-> [click here][2] to learn more about types in `dotc`.
+> [learn more about types][types] in `dotc`.
 
 If you are curious about the representation of a type, say `[T] =>> List[T]`,
-you can use a helper program [dotty.tools.printTypes][1],
+you can use a helper program [dotty.tools.printTypes][DottyTypeStealer],
 it prints the internal representation of types, along with their class. It can be
 invoked from the sbt shell with three arguments as follows:
 ```bash
@@ -178,9 +178,8 @@ class StealBox:
         assert(empty.name.toString == "<empty>")
 ```
 
-[1]: https://github.com/lampepfl/dotty/blob/master/compiler/test/dotty/tools/DottyTypeStealer.scala
-[2]: {% link _overviews/scala3-contribution/arch-types.md %}
-[3]: {% link _overviews/scala3-contribution/arch-lifecycle.md %}#phases
+[DottyTypeStealer]: https://github.com/lampepfl/dotty/blob/master/compiler/test/dotty/tools/DottyTypeStealer.scala
+[types]: {% link _overviews/scala3-contribution/arch-types.md %}
 [ScalaSettings]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/config/ScalaSettings.scala
 [symbols]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/core/SymDenotations.scala
 [reproduce]: {% link _overviews/scala3-contribution/procedures-reproduce.md %}#dotty-issue-workspace

@@ -14,8 +14,8 @@ defined in [Types.scala]. The `toString` method on `Type` will display types in 
 format corresponding to the backing data structure, e.g. `ExprType(...)`
 corresponds to `class ExprType`, defined in [Types.scala].
 
-> You can inspect the representation of any type using the [dotty.tools.printTypes][2]
-> script, its usage and integration into your debugging workflow is [described here][3].
+> You can inspect the representation of any type using the [dotty.tools.printTypes][DottyTypeStealer]
+> script, its usage and integration into your debugging workflow is [described here][inspecting-types].
 
 ### Types of Definitions
 
@@ -148,5 +148,5 @@ Type -+- proxy_type --+- NamedType --------+- TypeRef
 ```
 
 [Types.scala]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/core/Types.scala
-[2]: https://github.com/lampepfl/dotty/blob/master/compiler/test/dotty/tools/DottyTypeStealer.scala
-[3]: {% link _overviews/scala3-contribution/procedures-inspection.md %}#inspecting-representation-of-types
+[DottyTypeStealer]: https://github.com/lampepfl/dotty/blob/master/compiler/test/dotty/tools/DottyTypeStealer.scala
+[inspecting-types]: {% link _overviews/scala3-contribution/procedures-inspection.md %}#inspecting-the-representation-of-types

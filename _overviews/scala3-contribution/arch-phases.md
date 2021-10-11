@@ -7,7 +7,7 @@ previous-page: arch-lifecycle
 next-page: arch-types
 ---
 
-As described in the [compiler overview][1], `dotc` is divided into a list of [phases][Phase],
+As described in the [compiler overview][lifecycle], `dotc` is divided into a list of [phases][Phase],
 specified in the [Compiler] class.
 
 #### Printing the phases of the Compiler
@@ -52,7 +52,7 @@ In particular, it
 - creates super accessors representing `super` calls in traits
 - creates implementations of compiler-implemented methods,
 such as `equals` and `hashCode` for case classes.
-- marks [compilation units][2] that require inline expansion, or quote pickling
+- marks [compilation units][CompilationUnit] that require inline expansion, or quote pickling
 - simplifies trees of erased definitions
 - checks variance of type parameters
 - mark parameters passed unchanged from subclass to superclass for later pruning.
@@ -72,6 +72,9 @@ suitable for the runtime system, with two sub-groupings:
 - High-level transformations: All phases from [firstTransform] to [erasure].
   Most of these phases transform syntax trees, expanding high-level constructs
   to more primitive ones.
+  - An important transform phase is [patternMatcher], which converts match
+    trees and patterns into lower level forms, as well as checking the
+    exhaustivity of sealed types, and unreachability of pattern cases.
   - Some phases perform further checks on more primitive trees,
     e.g. [refchecks] verifies that no abstract methods exist in concrete classes,
     and [initChecker] checks that fields are not used before initialisation.
@@ -86,8 +89,8 @@ suitable for the runtime system, with two sub-groupings:
 ### `backendPhases`
 These map the transformed trees to Java classfiles or SJSIR files.
 
-[1]: {% link _overviews/scala3-contribution/arch-lifecycle.md %}#phases
-[2]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/CompilationUnit.scala
+[lifecycle]: {% link _overviews/scala3-contribution/arch-lifecycle.md %}#phases
+[CompilationUnit]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/CompilationUnit.scala
 [Compiler]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/Compiler.scala
 [Phase]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/core/Phases.scala
 [MiniPhase]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/transform/MegaPhase.scala
@@ -104,6 +107,7 @@ These map the transformed trees to Java classfiles or SJSIR files.
 [refchecks]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/typer/RefChecks.scala
 [initChecker]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/transform/init/Checker.scala
 [firstTransform]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/transform/FirstTransform.scala
+[patternMatcher]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/transform/PatternMatcher.scala
 [erasure]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/transform/Erasure.scala
 [Mirror]: https://github.com/lampepfl/dotty/blob/master/library/src/scala/deriving/Mirror.scala
 [PCP]: {% link _scala3-reference/metaprogramming/macros.md %}#the-phase-consistency-principle
