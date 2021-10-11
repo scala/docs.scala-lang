@@ -2,6 +2,19 @@
 //------------------------------------------------
 //------------------------------------------------
 
+// Override the styles below to style the search container
+// when it is shown on a specific page (as opposed to the
+// landing page)
+.titles + .search-container {
+    @include span-columns(3);
+    @include bp(medium) {
+        display: none;
+    }
+    float: right;
+    margin-top: 50px;
+    margin-right: 0;
+}
+
 .search-container {
     position: relative;
     margin-top: 20px;

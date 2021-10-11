@@ -34,11 +34,19 @@
           {% endif %}
           <h1>{{ page.title }}</h1>
         </div>
+        <div class="search-container">
+          <div class="icon-search">
+            <i class="fa fa-search"></i>
+          </div>
+          <input type="text" class="doc-search" id="doc-search-bar" placeholder="Search in doc...">
+          <ul class="result-container" id="result-container" style="display: none;"></ul>
+        </div>
         <div class="language-dropdown">
           <div id="dd" class="wrapper-dropdown" tabindex="1">
             <span>Language</span>
-              <ul class="dropdown"></ul>
+            <ul class="dropdown"></ul>
           </div>
+        </div>
       </div>
     </div>
   </section>
