@@ -3,7 +3,7 @@ layout: singlepage-overview
 title: New in Scala 3
 languages: ["ja"]
 ---
-The upcoming, exciting new version of Scala 3 brings many improvements and
+The exciting new version of Scala 3 brings many improvements and
 new features. Here we provide you with a quick overview of the most important
 changes. If you want to dig deeper, there are a few references at your disposal:
 
