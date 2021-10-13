@@ -386,7 +386,7 @@ class PrintLogger extends InlineLogger:
 This forces the implementation of `log` to be an inline method and also allows `inline` parameters.
 Counterintuitively, the `log` on the interface `InlineLogger` cannot be directly called. The method implementation is not statically known and we thus do not know what to inline.
 Calling an abstract inline method thus results in an error.
-The usefuleness of abstract inline methods becomes apparent when used in another inline method:
+The usefulness of abstract inline methods becomes apparent when used in another inline method:
 
 ```scala
 inline def logged(logger: InlineLogger, x: Any) =
