@@ -29,7 +29,7 @@ every compilation unit before progressing to the next phase.
 #### Phases
 A phase is an abstract transformation over a compilation unit, it is usually responsible
 for transforming the trees and types representing the code of a source file. Some phases of
-the compiler include:
+the compiler are:
 - `parser`, which converts text that matches Scala's
   [syntax] into abstract syntax trees, ASTs
 - `typer`, which checks that trees conform to expected types

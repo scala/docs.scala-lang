@@ -21,8 +21,8 @@ such as from the Java standard library.
 
 Traditionally, compilers store context-dependent data in a _symbol table_.
 Where a symbol then is the central reference to address context-dependent data.
-`dotc` makes a change to instead use a phase indexed function (known as
-a [Denotation][Denotations]) to compute views of definitions accross phases,
+`dotc` instead uses a phase-indexed function (known as
+a [Denotation][Denotations]) to compute views of definitions across phases,
 as many of attributes associated with definitions are phase-dependent. For example:
 - types are gradually simplified by several phases,
 - owners change in [lambdaLift] (local methods are lifted to an enclosing class)
@@ -33,9 +33,9 @@ as many of attributes associated with definitions are phase-dependent. For examp
 
 Additionally, symbols are not suitable to be used as a reference to
 a definition in another [compilation unit][CompilationUnit].
-In the context of incremental compilation, a referred symbol from
+In the context of incremental compilation, a symbol from
 an external compilation unit may be deleted or changed, making the reference
-stale. To counter this, `dotc` types trees of cross module references with either
+stale. To counter this, `dotc` types trees of cross-module references with either
 a `TermRef` or `TypeRef`. A reference type contains a prefix type and a name.
 The denotation that the type refers to is established dynamically based on
 these fields.

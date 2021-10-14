@@ -25,10 +25,10 @@ def doFoo(using Context): Unit =
 > **Careful:** Contexts can be heavy so beware of memory leaks
 
 It is good practice to ensure that implicit contexts are not
-captured in closures or other long-lived objects, e.g. avoiding a space leak
+captured in closures or other long-lived objects, in order to avoid space leaks
 in the case where a closure can survive several compiler runs (e.g. a
-lazy completer for a library class that is never demanded). In that case it
-is convention that the `Context` is an explicit parameter, to track its usage.
+lazy completer for a library class that is never required). In that case, the
+convention is that the `Context` be an explicit parameter, to track its usage.
 
 ## Context Properties
 
