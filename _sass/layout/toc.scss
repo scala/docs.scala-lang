@@ -6,6 +6,8 @@
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+  max-height: 85vh;
+  overflow-y: auto;
 
   @include bp(large) {
     position: relative;
@@ -81,11 +83,6 @@
       }
     }
   }
-}
-
-// disable floating for the book, since the TOC can become very large
-.scala3 .sidebar-toc-wrapper {
-  position: relative;
 }
 
 .book #toc {
