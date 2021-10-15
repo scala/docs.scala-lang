@@ -10,11 +10,11 @@ next-page: procedures-navigation
 An issue found in the [GitHub repo][lampepfl/dotty] usually describes some code that
 manifests undesired behaviour.
 
-To try fixing it, we first need to reproduce the issue, so that
-- we can understand its cause
-- we can verify that any changes made to the codebase have a positive impact on the issue.
+To try fixing it, you will first need to reproduce the issue, so that
+- you can understand its cause
+- you can verify that any changes made to the codebase have a positive impact on the issue.
 
-Say you want to reproduce locally issue [#7710], we would copy the code from the *"Minimised Code"*
+Say you want to reproduce locally issue [#7710], you would first copy the code from the *"Minimised Code"*
 section of the issue to a file named e.g. `local/i7710.scala`,
 and then try to compile it from the sbt console opened in the dotty root directory:
 ```bash
@@ -24,19 +24,19 @@ sbt:scala3> scala3/scalac -d local/out local/i7710.scala
 > Here, the `-d` flag specifies a directory `local/out` where generated code will be output.
 
 You can then verify that the local reproduction has the same behaviour as originally reported in the issue.
-If so, then we can get to trying to fix it, else, perhaps the issue is out of date, or
+If so, then you can start to try and fix it. Otherwise, perhaps the issue is out of date, or
 is missing information about how to accurately reproduce the issue.
 
 ## Dotty Issue Workspace
 
-Sometimes we need more complex commands to reproduce an issue, and it is useful to script these, which
+Sometimes you will need more complex commands to reproduce an issue, and it is useful to script these, which
 can be done with [dotty-issue-workspace]. It allows to bundle sbt commands for issue reproduction in one
 file and then run them from the Dotty project's sbt console.
 
 ### Try an Example Issue
 
 Let's use [dotty-issue-workspace] to reproduce issue [#7710]:
-1.  Follow [steps in README][workspace-readme] to install the plugin.
+1.  Follow [the steps in the README][workspace-readme] to install the plugin.
 2.  In your Issue Workspace directory (as defined in the plugin's README file,
     "Getting Started" section, step 2), create a subdirectory for the
     issue: `mkdir i7710`.
@@ -56,7 +56,7 @@ Let's use [dotty-issue-workspace] to reproduce issue [#7710]:
       command, which will compile `Test.scala` and place any output into `out`.
       `$here` is a special variable that will be replaced by the path of the parent
       directory of `launch.iss` when executing the commands.
-5.  Now, from a terminal we will run the issue from sbt in the dotty directory
+5.  Now, from a terminal you can run the issue from sbt in the dotty directory
     ([See here][clone] for a reminder if you have not cloned the repo.):
     ```bash
     $ sbt
@@ -68,11 +68,11 @@ Let's use [dotty-issue-workspace] to reproduce issue [#7710]:
 
 ### Using Script Arguments
 
-You can use script arguments inside `launch.iss` to reduce steps when
+You can use script arguments inside `launch.iss` to reduce the number of steps when
 working with issues.
 
-Say you have an issue `foo`, with two alternative files that are very similar
-`original.scala`, which reproduces the issue and `alt.scala`, which does not,
+Say you have an issue `foo`, with two alternative files that are very similar:
+`original.scala`, which reproduces the issue, and `alt.scala`, which does not,
 and you want to compile them selectively?
 
 You can achieve this via the following `launch.iss`:
@@ -83,7 +83,7 @@ $ (rm -rv out || true) && mkdir out # clean up compiler output, create `out` dir
 scala3/scalac -d $here/out $here/$1.scala # compile the first argument following `issue foo <arg>`
 ```
 
-It is similar to the previous example, except we now compile a file `$1.scala`, referring
+It is similar to the previous example, except now you will compile a file `$1.scala`, referring
 to the first argument passed after the issue name. The command invoked would look like
 `issue foo original` to compile `original.scala`, and `issue foo alt` for `alt.scala`.
 
@@ -92,13 +92,18 @@ the dollar notation: `$1` for the first argument, `$2` for the second and so on.
 
 ### Multiline Commands
 
-`launch.iss` files support putting commands accross multiple lines, which is useful for
-toggling lines by using a comment.
+Inside a `launch.iss` file, one command can be spread accross multiple lines. For example,
+if your command has multiple arguments, you can put each argument on a new line.
 
-The following `launch.iss` file is a useful template for issues that run code after
-compilation, it also includes some debug compiler flags, commented out.
-The advantage of having them is, if you need one them, you can enable it quickly by
-uncommenting it – as opposed to looking it up and typing it in your existing command.
+Multiline commands can even have comments inbetween lines. This is useful
+if you want to try variants of a command with optional arguments (such as configuration).
+You can put the optional arguments on separate lines, and then decide when they are passed to
+the command by placing `#` in front to convert it to a comment (i.e. the argument will
+not be passed). This saves typing the same arguments each time you want to use them.
+
+The following `launch.iss` file is an example of how you can use multiline commands as a
+template for solving issues that [run compiled code][run]. It demonstrates configuring the
+`scala3/scalac` command using compiler flags, which are commented out.
 Put your favourite flags there for quick usage.
 
 ```bash
@@ -115,12 +120,12 @@ scala3/scalac  # Invoke the compiler task defined by the Dotty sbt project
   # -Ycheck:all
   $here/$1.scala  # Invoke the compiler on the file passed as the second argument to the `issue` command. E.g. `issue foo Hello` will compile `Hello.scala` assuming the issue folder name is `foo`.
 
-scala3/scala -classpath $here/out Test  # Run the class `Test` generated by the compiler run (assuming the compiled issue contains such an entry point, otherwise comment this line)
+scala3/scala -classpath $here/out Test  # Run main method of `Test` generated by the compiler run.
 ```
 
 ## Conclusion
 
-In this section, we have seen how to reproduce an issue locally, next we will see
+In this section, you have seen how to reproduce an issue locally, and next you will see
 how to try and detect its root cause.
 
 [lampepfl/dotty]: https://github.com/lampepfl/dotty/issues
@@ -128,3 +133,4 @@ how to try and detect its root cause.
 [dotty-issue-workspace]: https://github.com/anatoliykmetyuk/dotty-issue-workspace
 [workspace-readme]: https://github.com/anatoliykmetyuk/dotty-issue-workspace#getting-started
 [clone]: {% link _overviews/scala3-contribution/start-intro.md %}#clone-the-code
+[run]: {% link _overviews/scala3-contribution/procedures-testing.md %}#checking-program-output

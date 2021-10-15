@@ -2,42 +2,57 @@
 title: Contexts
 type: section
 description: This page describes symbols in the Scala 3 compiler.
-num: 18
-previous-page: arch-symbols
-next-page:
+num: 14
+previous-page: arch-lifecycle
+next-page: arch-phases
 ---
 
-> (The following is work in progress), adapted from dotty.epfl.ch
+`dotc` has almost no global state (with the exception of the name table,
+which hashes strings into unique names). Instead, all
+essential bits of information that can vary over a compiler [run] are collected
+in a `Context` (defined in [Contexts]).
 
-The `Context` contains the state of the compiler, for example
-
-  * `settings`
-  * `freshNames` (`FreshNameCreator`)
-  * `period` (run and phase id)
-  * `compilationUnit`
-  * `phase`
-  * `tree` (current tree)
-  * `typer` (current typer)
-  * `mode` (type checking mode)
-  * `typerState` (for example undetermined type variables)
-  * ...
-
-### Contexts in the typer
-The type checker passes contexts through all methods and adapts fields where
-necessary, e.g.
-
+Most methods in the compiler depend on an implicit anonymous `Context` parameter,
+and a typical definition looks like the following:
 ```scala
-case tree: untpd.Block => typedBlock(desugar.block(tree), pt)(ctx.fresh.withNewScope)
+import dotty.tools.dotc.Contexts.{Context, ctx}
+
+def doFoo(using Context): Unit =
+  val current = ctx.run // access the Context parameter with `ctx`
 ```
 
-A number of fields in the context are typer-specific (`mode`, `typerState`).
+## Memory Leaks
+> **Careful:** Contexts can be heavy so beware of memory leaks
 
-### In other phases
-Other phases need a context for many things, for example to access the
-denotation of a symbols (depends on the period). However they typically don't
-need to modify / extend the context while traversing the AST. For these phases
-the context can be simply an implicit class parameter that is then available in
-all members.
+It is good practice to ensure that implicit contexts are not
+captured in closures or other long-lived objects, in order to avoid space leaks
+in the case where a closure can survive several compiler runs (e.g. a
+lazy completer for a library class that is never required). In that case, the
+convention is that the `Context` be an explicit parameter, to track its usage.
 
-**Careful**: beware of memory leaks. Don't hold on to contexts in long lived
-objects.
+## Context Properties
+
+| Context property  | description                            |
+|-------------------|----------------------------------------|
+| `compilationUnit` | current compilation unit               |
+| `phase`           | current phase                          |
+| `run`             | current run                            |
+| `period`          | current period                         |
+| `settings`        | the config passed to the compiler      |
+| `reporter`        | operations for logging errors/warnings |
+| `definitions`     | the standard built in definitions      |
+| `platform`        | operations for the underlying platform |
+| `tree`            | current tree                           |
+| `scope`           | current scope                          |
+| `typer`           | current typer                          |
+| `owner`           | current owner symbol                   |
+| `outer`           | outer Context                          |
+| `mode`            | type checking mode                     |
+| `typerState`      |                                        |
+| `searchHistory`   |                                        |
+| `implicits`       |                                        |
+| ...               | and so on                              |
+
+
+[Contexts]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/core/Contexts.scala
+[run]: {% link _overviews/scala3-contribution/arch-lifecycle.md %}#runs

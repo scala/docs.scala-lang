@@ -14,12 +14,11 @@ next-page: procedures-intro
 #### Essential
 
 - [git] is essential for managing the Scala 3 code, and contributing to GitHub, where the code is hosted.
-
-- The following dependencies can be installed with [Coursier] CLI by running `cs setup`, (see
-  [Single command Scala setup][cs-setup-blog]) including:
-  - A Java Virtual Machine (JDK 8 or higher), required for running the build tool. Verify that the JVM is
-    installed by running the following command in a terminal: `java -version`.
-  - [sbt], the build tool required to build the Scala 3 compiler and libraries.
+- A Java Virtual Machine (JDK 8 or higher), required for running the build tool.
+  - download Java from [Oracle Java 8][java8], [Oracle Java 11][java11],
+   or [AdoptOpenJDK 8/11][adopt]. Refer to [JDK Compatibility][compat] for Scala/Java compatibility detail.
+  - Verify that the JVM is installed by running the following command in a terminal: `java -version`.
+- [sbt][sbt-download], the build tool required to build the Scala 3 compiler and libraries.
 
 #### Nice To Have
 
@@ -40,8 +39,8 @@ $ cd dotty
 
 ## Verify your installation
 
-To verify that we can build the code, we will use `scala3/scalac` and `scala3/scala` to build
-and run a test case:
+To verify that you can build the code, you can use `scala3/scalac` and `scala3/scala` to build
+and run a test case, as shown in the next snippet:
 ```bash
 $ sbt
 sbt:scala3> scala3/scalac tests/pos/HelloWorld.scala
@@ -51,9 +50,11 @@ hello world
 
 
 [git]: https://git-scm.com
-[cs-setup-blog]: https://alexarchambault.github.io/posts/2020-09-21-cs-setup.html
-[sbt]: https://www.scala-sbt.org/
 [Metals]: https://scalameta.org/metals/
-[Coursier]: https://get-coursier.io/docs/cli-installation
 [vs-code]: https://code.visualstudio.com
 [lampepfl/dotty]: https://github.com/lampepfl/dotty
+[sbt-download]: https://www.scala-sbt.org/download.html
+[java8]: https://www.oracle.com/java/technologies/javase-jdk8-downloads.html
+[java11]: https://www.oracle.com/java/technologies/javase-jdk11-downloads.html
+[adopt]: https://adoptopenjdk.net/
+[compat]: /overviews/jdk-compatibility/overview.html

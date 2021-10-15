@@ -24,6 +24,9 @@ on [GitHub](https://github.com/scala/docs.scala-lang/tree/main/_overviews/scala3
 It is recommended that you first have some familiarity with Scala 3
 to get the most out of this guide. You can learn more in the [language reference](/scala3/reference/overview.html).
 
+Many code snippets in this guide make use of shell commands (a line beginning with `$`), and in this case
+a `bash` compatible shell is assumed. You may have to look up how to translate commands to your shell.
+
 ### What is a Compiler?
 
 A compiler is a program that takes as input text, representing a program in one language

@@ -2,132 +2,75 @@
 title: Symbols
 type: section
 description: This page describes symbols in the Scala 3 compiler.
-num: 17
+num: 18
 previous-page: arch-time
-next-page: arch-context
+next-page:
 ---
 
-> (The following is work in progress), adapted from dotty.epfl.ch
-
-## Symbols and SymDenotations
-
- - why symbols are not enough: their contents change all the time
- - reference: string + sig
-
-
-`dotc` is different from most other compilers in that it is centered around the idea of
-maintaining views of various artifacts associated with code. These views are indexed
-by time.
-
-A symbol refers to a definition in a source program. Traditionally,
-compilers store context-dependent data in a _symbol table_. The
-symbol then is the central reference to address context-dependent
-data. But for the requirements of `dotc` it turns out that symbols are
-both too little and too much for this task.
-
-**Too little:** The attributes of a symbol depend on the phase. Examples:
-Types are gradually simplified by several phases. Owners are changed
-in phases `LambdaLift` (when methods are lifted out to an enclosing
-class) and Flatten (when all classes are moved to top level). Names
-are changed when private members need to be accessed from outside
-their class (for instance from a nested class or a class implementing
-a trait). So a functional compiler, a `Symbol` by itself met mean
-much. Instead we are more interested in the attributes of a symbol at
-a given phase.
-
-**Too much:** If a symbol is used to refer to a definition in another
-compilation unit, we get problems for incremental recompilation. The
-unit containing the symbol might be changed and recompiled, which
-might mean that the definition referred to by the symbol is deleted or
-changed. This leads to the problem of stale symbols that refer to
-definitions that no longer exist in this form. Scala 2 compiler tried to
-address this problem by _rebinding_ symbols appearing in certain cross
-module references, but it turned out to be too difficult to do this
-reliably for all kinds of references. Scala 3 compiler attacks the problem at
-the root instead. The fundamental problem is that symbols are too
-specific to serve as a cross-module reference in a system with
-incremental compilation. They refer to a particular definition, but
-that definition may not persist unchanged after an edit.
-
-`dotc` uses instead a different approach: A cross module reference is
-always type, either a `TermRef` or `TypeRef`. A reference type contains
-a prefix type and a name. The definition the type refers to is established
-dynamically based on these fields.
-
-
-<!-- a system where sources can be recompiled at any instance,
-
- the concept of a `Denotation`.
-
- Since definitions are transformed by phases, -->
+As discussed previously, `dotc` [maintains time-indexed views][arch-time] of various
+compiler artifacts. The following sections discuss how they are managed in the compiler.
 
 ## Symbols
-`dotc/core/Symbols.scala`
 
-Symbols are references to definitions (e.g. of variables, fields, classes). Symbols can be used to refer to definitions for which we don't have ASTs (for example, from the Java standard library).
+Defined in [Symbols], a `Symbol` is a unique identifier for a definition (e.g. a method,
+type, or field).  A `ClassSymbol` extends `Symbol` and represents either a
+`class`, or a `trait`, or an `object`. A `Symbol` can even refer to non-Scala entities,
+such as from the Java standard library.
 
-`NoSymbol` is used to indicate the lack of a symbol.
+## Definitions are Dynamic
 
-Symbols uniquely identify definitions, but they don't say what the definitions *mean*. To understand the meaning of a symbol
-we need to look at its *denotation* (specially for symbols, a `SymDenotation`).
+Traditionally, compilers store context-dependent data in a _symbol table_.
+Where a symbol then is the central reference to address context-dependent data.
+`dotc` instead uses a phase-indexed function (known as
+a [Denotation][Denotations]) to compute views of definitions across phases,
+as many of attributes associated with definitions are phase-dependent. For example:
+- types are gradually simplified by several phases,
+- owners change in [lambdaLift] (local methods are lifted to an enclosing class)
+  and [flatten] (when inner classes are moved to the top level)
+- Names are changed when private members need to be accessed from outside
+  their class (for instance from a nested class or a class implementing
+  a trait).
 
-Symbols can not only represent terms, but also types (hence the `isTerm`/`isType` methods in the `Symbol` class).
+Additionally, symbols are not suitable to be used as a reference to
+a definition in another [compilation unit][CompilationUnit].
+In the context of incremental compilation, a symbol from
+an external compilation unit may be deleted or changed, making the reference
+stale. To counter this, `dotc` types trees of cross-module references with either
+a `TermRef` or `TypeRef`. A reference type contains a prefix type and a name.
+The denotation that the type refers to is established dynamically based on
+these fields.
 
-## ClassSymbol
+## Denotations
 
-`ClassSymbol` represents either a `class`, or a `trait`, or an `object`. For example, an object
-```scala
-object O {
-  val s = 1
-}
-```
-is represented (after `Typer`) as
-```scala
-class O$ { this: O.type =>
-  val s = 1
-}
-val O = new O$
-```
-where we have a type symbol for `class O$` and a term symbol for `val O`. Notice the use of the selftype `O.type` to indicate that `this` has a singleton type.
+On its own a `Symbol` has no structure. Its semantic meaning is given by being associated
+with a [Denotation][Denotations].
 
+A denotation is the result of resolving a name during a given period, containing the information
+describing some entity (either a term or type), indexed by phase. Denotations usually have a
+reference to a selected symbol, but not always, for example if the denotation is overloaded,
+i.e. a `MultiDenotation`.
 
-## SymDenotation
-`dotc/core/SymDenotations.scala`
+### SymDenotations
+All definition symbols will contain a `SymDenotation`. The denotation, in turn, contains:
+- a reverse link to the source symbol
+- a reference to the enclosing symbol that defined the source symbol:
+  - for a local variable, the enclosing method
+  - for a field or class, the enclosing class
+- a set of [flags], describing the definition (e.g. whether it's a trait or mutable).
+- the type of the definition (through the `info` method)
+- a [signature][Signature1], which uniquely identifies overloaded methods (or else `NotAMethod`).
+- and more.
 
-Symbols contain `SymDenotation`s. The denotation, in turn, refers to:
+A class symbol will instead be associated with a `ClassDenotation`, which extends `SymDenotation`
+with some additional fields specific for classes.
 
-  * the source symbol (so the linkage is cyclic)
-  * the "owner" of the symbol:
-    - if the symbol is a variable, the owner is the enclosing method
-    - if it's a field, the owner is the enclosing class
-    - if it's a class, then the owner is the enclosing class
-  * a set of flags that contain semantic information about the definition (e.g. whether it's a trait or mutable). Flags are defined in `Flags.scala`.
-  * the type of the definition (through the `info` method)
-
-## Denotation
-[Comment with a few details:][Denotations2]
-
-A `Denotation` is the result of a name lookup during a given period
-
-* Most properties of symbols are now in the denotation (name, type, owner,
-  etc.)
-* Denotations usually have a reference to the selected symbol
-* Denotations may be overloaded (`MultiDenotation`). In this case the symbol
-  may be `NoSymbol` (the two variants have symbols).
-* Non-overloaded denotations have an `info`
-
-Denotations of methods have a [signature][Signature1], which
-uniquely identifies overloaded methods.
-
-### Denotation vs. SymDenotation
-A `SymDenotation` is an extended denotation that has symbol-specific properties
-(that may change over phases)
-* `flags`
-* `annotations`
-* `info`
-
-`SymDenotation` implements lazy types (similar to scalac). The type completer
-assigns the denotation's `info`.
-
-[Denotations2]: https://github.com/lampepfl/dotty/blob/a527f3b1e49c0d48148ccfb2eb52e3302fc4a349/compiler/src/dotty/tools/dotc/core/Denotations.scala#L77-L103
 [Signature1]: https://github.com/lampepfl/dotty/blob/a527f3b1e49c0d48148ccfb2eb52e3302fc4a349/compiler/src/dotty/tools/dotc/core/Signature.scala#L9-L33
+[Symbols]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/core/Symbols.scala
+[lifecycle]: {% link _overviews/scala3-contribution/arch-lifecycle.md %}#introducing-the-compilers-lifecycle
+[arch-time]: {% link _overviews/scala3-contribution/arch-time.md %}
+[flatten]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/transform/Flatten.scala
+[lambdaLift]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/transform/LambdaLift.scala
+[CompilationUnit]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/CompilationUnit.scala
+[Denotations]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/core/Denotations.scala
+[SymDenotations]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/core/SymDenotations.scala
+[flags]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/core/Flags.scala

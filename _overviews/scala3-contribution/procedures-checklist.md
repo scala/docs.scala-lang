@@ -19,7 +19,8 @@ Make sure you have signed the [Scala CLA][cla], if not, sign it.
 
 Before starting to work on a feature or a fix, it's good practice to ensure that:
 1. There is a ticket for your work in the project's [issue tracker][issues];
-2. The ticket has been discussed and prioritized by the team.
+2. The ticket has been discussed and there is desire for it to be implemented by the
+Scala 3 core maintainers.
 
 ### 3: Add Tests
 Add at least one test that replicates the problem in the issue, and that shows it is now resolved.

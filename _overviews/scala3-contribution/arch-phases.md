@@ -2,12 +2,12 @@
 title: Compiler Phases
 type: section
 description: This page describes the phases for the Scala 3 compiler.
-num: 14
-previous-page: arch-lifecycle
+num: 15
+previous-page: arch-context
 next-page: arch-types
 ---
 
-As described in the [compiler overview][1], `dotc` is divided into a list of [phases][Phase],
+As described in the [compiler overview][lifecycle], `dotc` is divided into a list of [phases][Phase],
 specified in the [Compiler] class.
 
 #### Printing the phases of the Compiler
@@ -20,14 +20,14 @@ $ scalac -Xshow-phases
 
 ## Phase Groups
 
-In class [Compiler] we can access the list of phases with the method `phases`:
+In class [Compiler] you can access the list of phases with the method `phases`:
 
 ```scala
 def phases: List[List[Phase]] =
   frontendPhases ::: picklerPhases ::: transformPhases ::: backendPhases
 ```
 
-We see that phases are actually grouped into sublists, given by the signature
+You can see that phases are actually grouped into sublists, given by the signature
 `List[List[Phase]]`; that is, each sublist forms a phase group that is then *fused* into a
 single tree traversal when a [Run] is executed.
 
@@ -52,7 +52,7 @@ In particular, it
 - creates super accessors representing `super` calls in traits
 - creates implementations of compiler-implemented methods,
 such as `equals` and `hashCode` for case classes.
-- marks [compilation units][2] that require inline expansion, or quote pickling
+- marks [compilation units][CompilationUnit] that require inline expansion, or quote pickling
 - simplifies trees of erased definitions
 - checks variance of type parameters
 - mark parameters passed unchanged from subclass to superclass for later pruning.
@@ -61,9 +61,9 @@ such as `equals` and `hashCode` for case classes.
 These phases start with [pickler], which serializes typed trees
 produced by the `frontendPhases` into TASTy format. Following is [inlining],
 which expand calls to inline methods, and [postInlining] providing implementations
-of the Mirror framework for inlined calls.
+of the [Mirror] framework for inlined calls.
 Finally are [staging], which ensures that quotes conform to the
-Phase Consistency Principle (PCP), and [pickleQuotes] which converts quoted
+[Phase Consistency Principle (PCP)][PCP], and [pickleQuotes] which converts quoted
 trees to embedded TASTy strings.
 
 ### `transformPhases`
@@ -72,6 +72,9 @@ suitable for the runtime system, with two sub-groupings:
 - High-level transformations: All phases from [firstTransform] to [erasure].
   Most of these phases transform syntax trees, expanding high-level constructs
   to more primitive ones.
+  - An important transform phase is [patternMatcher], which converts match
+    trees and patterns into lower level forms, as well as checking the
+    exhaustivity of sealed types, and unreachability of pattern cases.
   - Some phases perform further checks on more primitive trees,
     e.g. [refchecks] verifies that no abstract methods exist in concrete classes,
     and [initChecker] checks that fields are not used before initialisation.
@@ -86,8 +89,8 @@ suitable for the runtime system, with two sub-groupings:
 ### `backendPhases`
 These map the transformed trees to Java classfiles or SJSIR files.
 
-[1]: {% link _overviews/scala3-contribution/arch-lifecycle.md %}#phases
-[2]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/CompilationUnit.scala
+[lifecycle]: {% link _overviews/scala3-contribution/arch-lifecycle.md %}#phases
+[CompilationUnit]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/CompilationUnit.scala
 [Compiler]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/Compiler.scala
 [Phase]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/core/Phases.scala
 [MiniPhase]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/transform/MegaPhase.scala
@@ -104,4 +107,7 @@ These map the transformed trees to Java classfiles or SJSIR files.
 [refchecks]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/typer/RefChecks.scala
 [initChecker]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/transform/init/Checker.scala
 [firstTransform]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/transform/FirstTransform.scala
+[patternMatcher]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/transform/PatternMatcher.scala
 [erasure]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/transform/Erasure.scala
+[Mirror]: https://github.com/lampepfl/dotty/blob/master/library/src/scala/deriving/Mirror.scala
+[PCP]: {% link _scala3-reference/metaprogramming/macros.md %}#the-phase-consistency-principle

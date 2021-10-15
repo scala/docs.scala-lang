@@ -2,7 +2,7 @@
 title: Compiler Types
 type: section
 description: This page discusses the representation of types in the compiler
-num: 15
+num: 16
 previous-page: arch-phases
 next-page: arch-time
 ---
@@ -14,8 +14,8 @@ defined in [Types.scala]. The `toString` method on `Type` will display types in 
 format corresponding to the backing data structure, e.g. `ExprType(...)`
 corresponds to `class ExprType`, defined in [Types.scala].
 
-> You can inspect the representation of any type using the [dotty.tools.printTypes][2]
-> script, its usage and integration into your debugging workflow is [described here][3].
+> You can inspect the representation of any type using the [dotty.tools.printTypes][DottyTypeStealer]
+> script, its usage and integration into your debugging workflow is [described here][inspecting-types].
 
 ### Types of Definitions
 
@@ -63,7 +63,7 @@ Type                      | Representation
 
 ### Method Definition Types
 
-We saw above that method definitions can have an underlying type of
+You can see above that method definitions can have an underlying type of
 either `PolyType`, `MethodType`, or `ExprType`. `PolyType` and `MethodType`
 may be mixed recursively however, and either can appear as the result type of the other.
 
@@ -148,5 +148,5 @@ Type -+- proxy_type --+- NamedType --------+- TypeRef
 ```
 
 [Types.scala]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/core/Types.scala
-[2]: https://github.com/lampepfl/dotty/blob/master/compiler/test/dotty/tools/DottyTypeStealer.scala
-[3]: {% link _overviews/scala3-contribution/procedures-inspection.md %}#inspecting-representation-of-types
+[DottyTypeStealer]: https://github.com/lampepfl/dotty/blob/master/compiler/test/dotty/tools/DottyTypeStealer.scala
+[inspecting-types]: {% link _overviews/scala3-contribution/procedures-inspection.md %}#inspecting-the-representation-of-types

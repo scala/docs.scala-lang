@@ -2,99 +2,75 @@
 title: Time in the Compiler
 type: section
 description: This page describes the concepts of time in the Scala 3 compiler.
-num: 16
+num: 17
 previous-page: arch-types
 next-page: arch-symbols
 ---
 
-> (The following is work in progress), adapted from dotty.epfl.ch
+In the [compiler overview][lifecycle] section, we saw that `dotc` is an interactive compiler,
+and so can answer questions about entities as they come into existance and change throughout time,
+for example:
+- which new definitions were added in a REPL session?
+- which definitions were replaced in an incremental build?
+- how are definitions simplified as they are adapted to the runtime system?
 
-Conceptually, the `dotc` compiler's job is to maintain views of various
-artifacts associated with source code at all points in time.  But what is
-*time* for `dotc`? In fact, it is a combination of compiler runs and compiler
-phases.
+## Hours, Minutes, and Periods
 
-The *hours* of the compiler's clocks are measured in compiler [runs]. Every run
-creates a new hour, which follows all the compiler runs (hours) that happened
-before. `dotc` is designed to be used as an incremental compiler that can
-support incremental builds, as well as interactions in an IDE and a REPL. This
-means that new runs can occur quite frequently.  At the extreme, every
-keystroke in an editor or REPL can potentially launch a new compiler run, so
-potentially an "hour" of compiler time might take only a fraction of a second
-in real time.
+For the compiler to be able to resolve the above temporal questions, and more, it maintains
+a concept of time. Additionally, because interactions are frequent, it is important to
+persist knowledge of entities between interactions, allowing the compiler to remain performant.
+Knowing about time allows the compiler to efficiently mark entities as being outdated.
 
-The *minutes* of the compiler's clocks are measured in phases. At every
-compiler run, the compiler cycles through a number of [phases]. The list of
-phases is defined in the [Compiler] object There are currently about 60 phases
-per run, so the minutes/hours analogy works out roughly. After every phase the
-view the compiler has of the world changes: trees are transformed,  types are
-gradually simplified from Scala types to JVM types, definitions are rearranged,
-and so on.
+Conceptually, `dotc` works like a clock, where its minutes are represented by [phases],
+and its hours by [runs]. Like a clock, each run passes once each of its phases have completed
+sequentially, and then a new run can begin. Phases are further grouped into [periods], where
+during a period certain entities of the compiler remain stable.
 
-Many pieces in the information compiler are time-dependent. For instance, a
-Scala symbol representing a definition has a type, but that type will usually
-change as one goes from the higher-level Scala view of things to the
-lower-level JVM view. There are different ways to deal with this. Many
-compilers change the type of a symbol destructively according to the "current
-phase". Another, more functional approach might be to have different symbols
-representing the same definition at different phases, which each symbol
-carrying a different immutable type. `dotc` employs yet another scheme, which
-is inspired by functional reactive programming (FRP): Symbols carry not a
-single type, but a function from compiler phase to type. So the type of a
-symbol is a time-indexed function, where time ranges over compiler phases.
+## Time Travel
 
-Typically, the definition of a symbol or other quantity remains stable for a
-number of phases. This leads us to the concept of a [period]. Conceptually,
-period is an interval of some given phases in a given compiler run. Periods
-are conceptually represented by three pieces of information
+During a run, each phase can rewrite the world as the compiler sees it, for example:
+- to transform trees,
+- to gradually simplify type from Scala types to JVM types,
+- to move definitions out of inner scopes to outer ones, fitting the JVM's model,
+- and so on.
 
-* the ID of the current run,
-* the ID of the phase starting the period
-* the number of phases in the period
+Because definitions can [change over time][dynamic], various artifacts associated with them
+are stored non-destructively, and views of the definition created earlier, or later
+in the compiler can be accessed by using the `atPhase` method, defined in [Contexts].
 
-All three pieces of information are encoded in a value class over a 32 bit
-integer. Here's the API for class `Period`:
-
+As an example, assume the following definitions are available in a [Context]:
 ```scala
-class Period(val code: Int) extends AnyVal {
-  def runId: RunId            // The run identifier of this period.
-  def firstPhaseId: PhaseId   // The first phase of this period
-  def lastPhaseId: PhaseId    // The last phase of this period
-  def phaseId: PhaseId        // The phase identifier of this single-phase period
+class Box { type X }
 
-  def containsPhaseId(id: PhaseId): Boolean
-  def contains(that: Period): Boolean
-  def overlaps(that: Period): Boolean
-
-  def & (that: Period): Period
-  def | (that: Period): Period
-}
+def foo(b: Box)(x: b.X): List[b.X] = List(x)
 ```
 
-We can access the parts of a period using `runId`, `firstPhaseId`,
-`lastPhaseId`, or using `phaseId` for periods consisting only of a single
-phase. They return `RunId` or `PhaseId` values, which are aliases of `Int`.
-`containsPhaseId`, `contains` and `overlaps` test whether a period contains a
-phase or a period as a sub-interval, or whether the interval overlaps with
-another period. Finally, `&` and `|` produce the intersection and the union of
-two period intervals (the union operation `|` takes as `runId` the `runId` of
-its left operand, as periods spanning different `runId`s cannot be constructed.
-
-Periods are constructed using two `apply` methods:
-
+You can compare the type of definition `foo` after the [typer] phase and after the [erasure] phase
+by using `atPhase`:
 ```scala
-object Period {
-  /** The single-phase period consisting of given run id and phase id */
-  def apply(rid: RunId, pid: PhaseId): Period
+import dotty.tools.dotc.core.Contexts.{Context, atPhase}
+import dotty.tools.dotc.core.Phases.{typerPhase, erasurePhase}
+import dotty.tools.dotc.core.Decorators.i
 
-  /** The period consisting of given run id, and lo/hi phase ids */
-  def apply(rid: RunId, loPid: PhaseId, hiPid: PhaseId): Period
-}
+given Context = …
+
+val fooDef: Symbol = … // `def foo(b: Box)(x: b.X): List[b.X]`
+
+println(i"$fooDef after typer   => ${atPhase(typerPhase.next)(fooDef.info)}")
+println(i"$fooDef after erasure => ${atPhase(erasurePhase.next)(fooDef.info)}")
 ```
-
-As a sentinel value there's `Nowhere`, a period that is empty.
+and see the following output:
+```
+method foo after typer   => (b: Box)(x: b.X): scala.collection.immutable.List[b.X]
+method foo after erasure => (b: Box, x: Object): scala.collection.immutable.List
+```
 
 [runs]: https://github.com/lampepfl/dotty/blob/a527f3b1e49c0d48148ccfb2eb52e3302fc4a349/compiler/src/dotty/tools/dotc/Run.scala
-[phases]: https://github.com/lampepfl/dotty/blob/a527f3b1e49c0d48148ccfb2eb52e3302fc4a349/compiler/src/dotty/tools/dotc/core/Phases.scala
-[period]: https://github.com/lampepfl/dotty/blob/a527f3b1e49c0d48148ccfb2eb52e3302fc4a349/compiler/src/dotty/tools/dotc/core/Periods.scala
-[Compiler]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/Compiler.scala
+[periods]: https://github.com/lampepfl/dotty/blob/a527f3b1e49c0d48148ccfb2eb52e3302fc4a349/compiler/src/dotty/tools/dotc/core/Periods.scala
+[lifecycle]: {% link _overviews/scala3-contribution/arch-lifecycle.md %}
+[phases]: {% link _overviews/scala3-contribution/arch-phases.md %}
+[dynamic]: {% link _overviews/scala3-contribution/arch-symbols.md %}#definitions-are-dynamic
+[Contexts]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/core/Contexts.scala
+[Context]: {% link _overviews/scala3-contribution/arch-context.md %}
+[typer]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/typer/TyperPhase.scala
+[erasure]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/transform/Erasure.scala
