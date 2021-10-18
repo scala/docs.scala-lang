@@ -61,7 +61,7 @@
   description: "Guides and overviews covering features in the Scala language."
   overviews:
     - title: String Interpolation
-      icon: usd
+      icon: dollar-sign
       url: "core/string-interpolation.html"
       description: >
         String Interpolation allows users to embed variable references directly in processed string literals. Here’s an example:
@@ -75,7 +75,7 @@
     - title: Value Classes and Universal Traits
       by: Mark Harrah
       description: "Value classes are a new mechanism in Scala to avoid allocating runtime objects. This is accomplished through the definition of new AnyVal subclasses."
-      icon: diamond
+      icon: gem
       url: "core/value-classes.html"
 
 - category: Authoring Libraries

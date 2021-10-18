@@ -20,7 +20,7 @@ guides:
     description: "An overview over the TASTy format aimed at end-users of the Scala language."
   - title: "Contribution Guide"
     by: Jamie Thompson, Anatolii Kmetiuk
-    icon: gears
+    icon: cogs
     url: "/scala3/guides/contribution/contribution-intro.html"
     description: "Guide to the Scala 3 Compiler and fixing an issue"
   - title: Scaladoc

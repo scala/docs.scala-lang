@@ -34,7 +34,7 @@ scala3-sections:
         link: /ja/scala3/guides.html
       - title: "API"
         description: "Scala 3 の全バージョンのAPIドキュメント"
-        icon: "fa fa-file-text"
+        icon: "fa fa-file-alt"
         link: https://scala-lang.org/api/3.x/
       - title: "Language Reference"
         description: "Scala 3 の言語仕様"
@@ -67,7 +67,7 @@ scala2-sections:
     links:
       - title: "API"
         description: "Scala の全バージョンの API ドキュメント（英語のみ）"
-        icon: "fa fa-file-text"
+        icon: "fa fa-file-alt"
         link: /api/all.html
       - title: "Overviews"
         description: "Scala の多くの機能を網羅する詳細ドキュメント"
@@ -97,9 +97,4 @@ scala2-sections:
         description: "Scala Improvement Process（Scala 改善プロセス）。言語とコンパイラの進化（英語のみ）"
         icon: "fa fa-cogs"
         link: /sips/index.html
-      - title: "SPP"
-        description: "Scala Platform Process（Scala プラットフォームプロセス）。コミュニティ主導型のライブラリの進化（英語のみ）"
-        icon: "fa fa-users"
-        link: https://platform.scala-lang.org
-
 ---

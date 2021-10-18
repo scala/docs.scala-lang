@@ -2,6 +2,6 @@
 {% for tutorial in site.data.tutorials limit: 6 %}
 	{% assign loopindex = forloop.index | modulo: 2 %}
 	{% if loopindex == include.column %}
-	  <li><a href="{{tutorial.url}}"><i class="fa fa-file-text-o"></i>{{tutorial.title | truncate: 60}}</a></li>
+	  <li><a href="{{tutorial.url}}"><i class="fa fa-file-alt-o"></i>{{tutorial.title | truncate: 60}}</a></li>
 	{% endif %}
 {% endfor %}

@@ -35,7 +35,7 @@ sections:
         link: /ja/scala3/guides.html
       - title: "API"
         description: "Scala 3 の全バージョンのAPIドキュメント"
-        icon: "fa fa-file-text"
+        icon: "fa fa-file-alt"
         link: https://scala-lang.org/api/3.x/
       - title: "Language Reference"
         description: "Scala 3 の言語仕様"
