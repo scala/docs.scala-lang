@@ -33,7 +33,7 @@ sections:
     links:
       - title: "API"
         description: "API документация для всех версий Scala."
-        icon: "fa fa-file-text"
+        icon: "fa fa-file-alt"
         link: /api/all.html
       - title: "Обзоры"
         description: "Подробная документация, охватывающая возможности Scala."
@@ -62,9 +62,4 @@ sections:
         description: "Процесс улучшения Scala (Scala Improvement Process). Эволюция языка и компилятора."
         icon: "fa fa-cogs"
         link: /sips/index.html
-      - title: "SPP"
-        description: "Развитие платформы Scala. Развитие библиотек, движимое сообществом."
-        icon: "fa fa-users"
-        link: https://platform.scala-lang.org
-
 ---

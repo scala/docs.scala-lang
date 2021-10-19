@@ -34,7 +34,7 @@ sections:
         link: /scala3/guides.html
       - title: "API"
         description: "API documentation for every version of Scala 3."
-        icon: "fa fa-file-text"
+        icon: "fa fa-file-alt"
         link: https://scala-lang.org/api/3.x/
       - title: "Language Reference"
         description: "The Scala 3 language reference."
@@ -42,7 +42,7 @@ sections:
         link: /scala3/reference/overview.html
       - title: "Contribution Guide"
         description: "Guide to the Scala 3 Compiler and fixing an issue"
-        icon: "fa fa-gears"
+        icon: "fa fa-cogs"
         link: /scala3/guides/contribution/contribution-intro.html
       - title: "All new Scaladoc for Scala 3"
         description: "Highlights of new features for Scaladoc"

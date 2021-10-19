@@ -1,25 +1,27 @@
-- title: API
-  url: "#"
-  submenu:
-    - title: Current
-      url: https://www.scala-lang.org/api/current/
-    - title: All Versions
-      url: "/api/all.html"
+- title: Getting Started
+  url: "/getting-started/index.html"
 - title: Learn
   url: "#"
   submenu:
-    - title: Getting Started
-      url: "/getting-started/index.html"
     - title: Tour of Scala
       url: "/tour/tour-of-scala.html"
     - title: Scala Book
       url: "/overviews/scala-book/introduction.html"
+    - title: Online Resources
+      url: "/learn.html"
+- title: Tutorials
+  url: "#"
+  submenu:
+    - title: Getting Started with Scala in IntelliJ
+      url: "/getting-started/intellij-track/getting-started-with-scala-in-intellij.html"
+    - title: Getting Started with Scala and sbt
+      url: "/getting-started/sbt-track/getting-started-with-scala-and-sbt-on-the-command-line.html"
     - title: Scala for Java Programmers
       url: "/tutorials/scala-for-java-programmers.html"
     - title: Scala on Android
       url: "/tutorials/scala-on-android.html"
-    - title: Online Resources
-      url: "/learn.html"
+    - title: Scala with Maven
+      url: "/tutorials/scala-with-maven.html"
 - title: Reference
   url: "#"
   submenu:
@@ -29,13 +31,20 @@
       url: "/books.html"
     - title: Scala FAQ
       url: "/tutorials/FAQ/index.html"
-    - title: Language Spec
+    - title: Language Specification
       url: http://scala-lang.org/files/archive/spec/2.13/
-- title: Style Guide
-  url: "/style/index.html"
-- title: Cheatsheet
-  url: "/cheatsheets/index.html"
-- title: Glossary
-  url: "/glossary/index.html"
+    - title: Style Guide
+      url: "/style/index.html"
+    - title: Cheatsheet
+      url: "/cheatsheets/index.html"
+    - title: Glossary
+      url: "/glossary/index.html"
+- title: API
+  url: "#"
+  submenu:
+    - title: Current
+      url: https://www.scala-lang.org/api/current/
+    - title: All Versions
+      url: "/api/all.html"
 - title: SIPs
   url: "/sips/index.html"

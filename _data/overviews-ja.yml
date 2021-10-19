@@ -59,7 +59,7 @@
   description: "Scala 言語の機能をカバーするガイドと概要"
   overviews:
     - title: 文字列補間
-      icon: usd
+      icon: dollar-sign
       url: "core/string-interpolation.html"
       description: >
         文字列補間は、ユーザーが加工文字列リテラル（processed string literal）に変数参照を直接埋め込めるようにしてくれる。以下例。
@@ -73,7 +73,7 @@
     - title: 値クラスと汎用トレイト
       by: Mark Harrah
       description: "値クラスは Scala で実行時のオブジェクトアロケーションを避ける新しい仕組みだ。これは新しい AnyVal サブクラスを定義することで達成できる。"
-      icon: diamond
+      icon: gem
       url: "core/value-classes.html"
 
 - category: ライブラリの作成

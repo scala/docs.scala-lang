@@ -1,21 +1,22 @@
+- title: Getting Started
+  url: "/scala3/getting-started.html"
 - title: Learn
   url: "#"
   submenu:
     - title: New in Scala 3
       url: "/scala3/new-in-scala3.html"
-    - title: Getting Started
-      url: "/scala3/getting-started.html"
     - title: Scala 3 Book
       url: "/scala3/book/introduction.html"
-    - title: Contributing Guide
-      url: "/scala3/guides/contribution/contribution-intro.html"
-    - title: Macro Tutorial
-      url: "/scala3/guides/macros/index.html"
 - title: Migrate
   url: "/scala3/guides/migration/compatibility-intro.html"
 - title: Reference
-  url: "/scala3/reference/overview.html"
-- title: API
-  url: "https://scala-lang.org/api/3.x/"
+  url: '#'
+  submenu:
+    - title: Guides
+      url: '/scala3/guides.html'
+    - title: Language Specification
+      url: "/scala3/reference/overview.html"
+    - title: Scala Library API
+      url: "https://scala-lang.org/api/3.x/"
 - title: Contributing Guide
   url: "/scala3/guides/contribution/contribution-intro.html"

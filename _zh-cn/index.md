@@ -35,7 +35,7 @@ scala3-sections:
       link: /scala3/guides.html
     - title: "API"
       description: "Scala 3 各个版本的API"
-      icon: "fa fa-file-text"
+      icon: "fa fa-file-alt"
       link: https://scala-lang.org/api/3.x/
     - title: "语言参考手册"
       description: "Scala 3 语言参考手册"
@@ -68,7 +68,7 @@ scala2-sections:
     links:
       - title: "API"
         description: "各个Scala版本的API文档"
-        icon: "fa fa-file-text"
+        icon: "fa fa-file-alt"
         link: /api/all.html
       - title: "总览"
         description: "涵盖Scala各种特性的深度分析文档"
@@ -97,9 +97,4 @@ scala2-sections:
         description: "Scala改进过程（Scala Improvement Process），语言及编译器进展"
         icon: "fa fa-cogs"
         link: /sips/index.html
-      - title: "SPP"
-        description: "Scala平台进程（Scala Platform Process）， 社区驱动代码库的进展"
-        icon: "fa fa-users"
-        link: https://platform.scala-lang.org
-
 ---

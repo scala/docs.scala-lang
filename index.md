@@ -19,8 +19,8 @@ scala3-sections:
         icon: "fa fa-rocket"
         link: /scala3/getting-started.html
       - title: "Scala 3 Book"
-        description: "An online book introducing the main language features."
-        icon: "fa fa-book"
+        description: "Learn Scala by reading a series of short lessons."
+        icon: "fa fa-book-open"
         link: /scala3/book/introduction.html
   - title: "More detailed information"
     links:
@@ -32,9 +32,9 @@ scala3-sections:
         description: "Detailed guides about particular aspects of the language."
         icon: "fa fa-map"
         link: /scala3/guides.html
-      - title: "API"
-        description: "API documentation for every version of Scala 3."
-        icon: "fa fa-file-text"
+      - title: "Scala Library API"
+        description: "API documentation for every version of the Scala 3 standard library."
+        icon: "fa fa-file-alt"
         link: https://scala-lang.org/api/3.x/
       - title: "Language Reference"
         description: "The Scala 3 language reference."
@@ -42,7 +42,7 @@ scala3-sections:
         link: /scala3/reference/overview.html
       - title: "Contribution Guide"
         description: "Guide to the Scala 3 Compiler and fixing an issue"
-        icon: "fa fa-gears"
+        icon: "fa fa-cogs"
         link: /scala3/guides/contribution/contribution-intro.html
       - title: "All new Scaladoc for Scala 3"
         description: "Highlights of new features for Scaladoc"
@@ -65,22 +65,29 @@ scala2-sections:
         icon: "fa fa-flag"
         link: /tour/tour-of-scala.html
       - title: "Scala Book"
-        description: "An online book introducing the main language features."
-        icon: "fa fa-book"
+        description: "Learn Scala by reading a series of short lessons."
+        icon: "fa fa-book-open"
         link: /overviews/scala-book/introduction.html
-    more-resources:
-      - title: Online Courses, Exercises, & Blogs
-        url: /learn.html
+      - title: Online Resources
+        description: "Online Courses, Exercises, & Blogs."
+        icon: "fa fa-cloud"
+        link: /learn.html
       - title: Books
-        url: /books.html
+        description: "Printed and digital books about Scala."
+        icon: "fa fa-book"
+        link: /books.html
+      - title: Tutorials
+        description: "Take you by the hand through a series of steps to create Scala applications."
+        icon: "fa fa-tasks"
+        link: /tutorials.html
 
   - title: "Returning Users"
     links:
       - title: "API"
         description: "API documentation for every version of Scala."
-        icon: "fa fa-file-text"
+        icon: "fa fa-file-alt"
         link: /api/all.html
-      - title: "Overviews"
+      - title: "Guides & Overviews"
         description: "In-depth documentation covering many of Scala's features."
         icon: "fa fa-database"
         link: /overviews/index.html
@@ -107,8 +114,4 @@ scala2-sections:
         description: "The Scala Improvement Process. Language & compiler evolution."
         icon: "fa fa-cogs"
         link: /sips/index.html
-      - title: "SPP"
-        description: "The Scala Platform Process. Community-driven library evolution."
-        icon: "fa fa-users"
-        link: https://platform.scala-lang.org
 ---
