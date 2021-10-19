@@ -32,8 +32,8 @@ scala3-sections:
         description: "Detailed guides about particular aspects of the language."
         icon: "fa fa-map"
         link: /scala3/guides.html
-      - title: "API"
-        description: "API documentation for every version of Scala 3."
+      - title: "Scala Library API"
+        description: "API documentation for every version of the Scala 3 standard library."
         icon: "fa fa-file-alt"
         link: https://scala-lang.org/api/3.x/
       - title: "Language Reference"

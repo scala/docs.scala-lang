@@ -31,10 +31,14 @@
       url: "/books.html"
     - title: Scala FAQ
       url: "/tutorials/FAQ/index.html"
-    - title: Language Spec
+    - title: Language Specification
       url: http://scala-lang.org/files/archive/spec/2.13/
     - title: Style Guide
       url: "/style/index.html"
+    - title: Cheatsheet
+      url: "/cheatsheets/index.html"
+    - title: Glossary
+      url: "/glossary/index.html"
 - title: API
   url: "#"
   submenu:
@@ -42,9 +46,5 @@
       url: https://www.scala-lang.org/api/current/
     - title: All Versions
       url: "/api/all.html"
-- title: Cheatsheet
-  url: "/cheatsheets/index.html"
-- title: Glossary
-  url: "/glossary/index.html"
 - title: SIPs
   url: "/sips/index.html"
