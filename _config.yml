@@ -17,7 +17,7 @@ keywords:
 
 scala-version: 2.13.6
 scala-212-version: 2.12.15
-scala-3-version: 3.0.2
+scala-3-version: 3.1.0
 scala-3-plugin-version: 0.5.1
 
 collections:
