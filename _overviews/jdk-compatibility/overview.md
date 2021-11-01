@@ -12,7 +12,7 @@ Sometimes new JVM and JDK (Java Development Kit) versions require us to update S
 
 | JDK version | Minimum Scala versions           | Recommended Scala versions                                 |
 |:-----------:|:---------------------------------|:-----------------------------------------------------------|
-| 18          | 2.13.7 (forthcoming), 2.12.15    | 2.13.7 (forthcoming), 2.12.15                              |
+| 18          | 2.13.7, 2.12.15                  | 2.13.7, 2.12.15                                            |
 | 17          | 2.13.6, 2.12.15                  | 2.13.6, 2.12.15                                            |
 | 11          | 2.13.0, 2.12.4, 2.11.12          | 2.13.6, 2.12.14, 2.11.12                                   |
 | 8           | 2.13.0, 2.12.0, 2.11.0, 2.10.2   | 2.13.6, 2.12.14, 2.11.12, 2.10.7                           |
@@ -79,7 +79,7 @@ For possible issues, see the [jdk11](https://github.com/scala/bug/labels/jdk11) 
 
 Early access builds of JDK 18, a non-LTS release, are already available.
 
-We will ship basic JDK 18 support in Scala 2.13.7 (and the same support has already shipped in 2.12.15). The needed fixes are already available in nightly builds of 2.13.
+Initial support for JDK 18 is included in Scala 2.13.7 and 2.12.15.
 
 ## GraalVM Native Image compatibility notes
 
