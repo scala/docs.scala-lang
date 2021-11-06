@@ -146,8 +146,6 @@ the resulting documentation.
 - `@deprecated` marks the entity as deprecated, **providing both** the
   replacement implementation that should be used and the version/date at which
   this entity was deprecated.
-- `@migration` like deprecated but provides advanced warning of planned changes
-  ahead of deprecation. Same fields as `@deprecated`.
 - `@inheritdoc` take comments from a superclass as defaults if comments are not
   provided locally.
 - `@documentable` Expand a type alias and abstract type into a full template page. - TODO: Test the "abstract type" claim - no examples of this in the Scala code base
