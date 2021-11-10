@@ -33,14 +33,26 @@ scala3-sections:
       description: "关于语言特别之处的详细导览"
       icon: "fa fa-map"
       link: /scala3/guides.html
-    - title: "API"
-      description: "Scala 3 各个版本的API"
+    - title: "Scala 库 API"
+      description: "Scala 3 标准库API文档（多个小版本）"
       icon: "fa fa-file-alt"
       link: https://scala-lang.org/api/3.x/
     - title: "语言参考手册"
       description: "Scala 3 语言参考手册"
       icon: "fa fa-book"
       link: /scala3/reference/overview.html
+    - title: "贡献指南"
+      description: "Scala 3 编译器指南及如何贡献代码"
+      icon: "fa fa-cogs"
+      link: /scala3/guides/contribution/contribution-intro.html
+    - title: "Scala 3 全新的 Scaladoc"
+      description: "Scaladoc 新特性重点介绍"
+      icon: "fa fa-star"
+      link: /scala3/scaladoc.html
+    - title: "演讲"
+      description: "可在线观看的关于 Scala 3 的演讲"
+      icon: "fa fa-play-circle"
+      link: /scala3/talks.html
 
 scala2-sections:
 
