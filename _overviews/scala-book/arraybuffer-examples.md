@@ -46,7 +46,7 @@ scala> ints += 2
 res1: ints.type = ArrayBuffer(1, 2)
 ```
 
-That’s just one way create an `ArrayBuffer` and add elements to it. You can also create an `ArrayBuffer` with initial elements like this:
+That’s just one way to create an `ArrayBuffer` and add elements to it. You can also create an `ArrayBuffer` with initial elements like this:
 
 ```scala
 val nums = ArrayBuffer(1, 2, 3)
