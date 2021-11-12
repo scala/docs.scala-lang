@@ -2,6 +2,7 @@
 layout: documentation
 title: ドキュメント
 language: ja
+partof: documentation
 more-resources-label: その他のリソース
 
 
