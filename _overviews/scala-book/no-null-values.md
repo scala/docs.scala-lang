@@ -120,7 +120,7 @@ val y = for {
 When that expression finishes running, `y` will be one of two things:
 
 - If all three strings convert to integers, `y` will be a `Some[Int]`, i.e., an integer wrapped inside a `Some`
-- If any of the three strings can’t be converted to an inside, `y` will be a `None`
+- If any of the three strings can’t be converted to an integer, `y` will be a `None`
 
 You can test this for yourself in the Scala REPL. First, paste these three string variables into the REPL:
 
