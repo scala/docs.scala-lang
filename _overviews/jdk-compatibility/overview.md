@@ -13,9 +13,9 @@ Sometimes new JVM and JDK (Java Development Kit) versions require us to update S
 | JDK version | Minimum Scala versions           | Recommended Scala versions                                 |
 |:-----------:|:---------------------------------|:-----------------------------------------------------------|
 | 18          | 2.13.7, 2.12.15                  | 2.13.7, 2.12.15                                            |
-| 17          | 2.13.6, 2.12.15                  | 2.13.6, 2.12.15                                            |
-| 11          | 2.13.0, 2.12.4, 2.11.12          | 2.13.6, 2.12.14, 2.11.12                                   |
-| 8           | 2.13.0, 2.12.0, 2.11.0, 2.10.2   | 2.13.6, 2.12.14, 2.11.12, 2.10.7                           |
+| 17          | 2.13.6, 2.12.15                  | 2.13.7, 2.12.15                                            |
+| 11          | 2.13.0, 2.12.4, 2.11.12          | 2.13.7, 2.12.15, 2.11.12                                   |
+| 8           | 2.13.0, 2.12.0, 2.11.0, 2.10.2   | 2.13.7, 2.12.15, 2.11.12, 2.10.7                           |
 | 6, 7        | 2.11.0, 2.10.0                   | 2.11.12, 2.10.7                                            |
 
 Even when a version combination isn't listed as supported, most features may still work.  (But Scala 2.12+ definitely doesn't work at all on JDK 6 or 7.)
@@ -30,7 +30,7 @@ We generally recommend JDK 8 or 11 for *compiling* Scala code. Since the JVM ten
 
 If you compile on JDK 11+ but have users on JDK 8, additional care is needed to avoid using APIs and features that don't exist in 8. Therefore, compiling on 8 may be the safer choice. Some Scala developers use JDK 11+ for their daily work but do release builds on JDK 8.
 
-Additionally, you can also run your scala application on GraalVM which is a JVM. GraalVM performs well on the Scala benchmarks, and it benefits from GraalVM runtime and runs faster too.
+Additionally, you can also run your Scala application on GraalVM which is a JVM. GraalVM performs well on the Scala benchmarks, and it benefits from GraalVM runtime and runs faster too.
 
 ## Long Term Support (LTS) versions
 
