@@ -297,7 +297,6 @@ In many cases one should simply write instead:
 
 Other possibilities include:
 
-* `Global`
 * the common settings pattern, where you put shared settings
   in a `val`, typically named `commonSettings`, and then
   `.settings(commonSettings)` in every project you want to
