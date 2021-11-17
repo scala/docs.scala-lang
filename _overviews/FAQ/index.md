@@ -291,9 +291,12 @@ For example, if you add this to your `build.sbt`:
 that's a "bare" setting, and you might expect it to apply build-wide.
 But it doesn't. _It only applies to the root project._
 
-Ways of changing a setting more widely include:
+In many cases one should simply write instead:
 
-* `ThisBuild`
+    ThisBuild / scalaVersion := "2.13.7"
+
+Other possibilities include:
+
 * `Global`
 * the common settings pattern, where you put shared settings
   in a `val`, typically named `commonSettings`, and then
