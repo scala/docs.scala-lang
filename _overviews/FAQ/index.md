@@ -277,3 +277,33 @@ give the compiler, then it's a compiler bug. Please report it on the
 [Scala 2 bug tracker](https://github.com/scala/bug/issues) or [Scala 3
 bug tracker](https://github.com/lampepfl/dotty/issues), but check
 first if it's a duplicate of an existing ticket.
+
+### I set a setting in sbt but nothing happened. Why?
+
+There could be a lot of reasons.  An extremely common one, that
+almost everyone runs into sooner or later, is that you have a bare
+setting in a multi-project build.
+
+For example, if you add this to your `build.sbt`:
+
+    scalaVersion := "2.13.7"
+
+that's a "bare" setting, and you might expect it to apply build-wide.
+But it doesn't. _It only applies to the root project._
+
+In many cases one should simply write instead:
+
+    ThisBuild / scalaVersion := "2.13.7"
+
+Other possibilities include:
+
+* the common settings pattern, where you put shared settings
+  in a `val`, typically named `commonSettings`, and then
+  `.settings(commonSettings)` in every project you want to
+  apply to them to.
+* in interactive usage only, `set every`
+
+Here's some further reading:
+
+* [documentation on multi-project builds](https://www.scala-sbt.org/1.x/docs/Multi-Project.html#ThisBuild)
+* [issue about bare settings](https://github.com/sbt/sbt/issues/6217)
