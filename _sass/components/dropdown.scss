@@ -2,6 +2,8 @@
 //------------------------------------------------
 //------------------------------------------------
 
+$border-1-grey: 1px solid rgba(128, 128, 128, 0.5);
+
 .language-dropdown {
   position: relative;
   margin-top: 50px;
@@ -32,8 +34,13 @@
     box-sizing: border-box;
 
     .table-of-content & {
-      border: 1px solid rgba(128, 128, 128, 0.5);
+      border: $border-1-grey;
     }
+
+    .full-width & {
+      border: $border-1-grey;
+    }
+
     .table-of-content &:focus {
     }
 
