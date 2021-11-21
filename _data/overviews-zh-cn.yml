@@ -1,0 +1,324 @@
+- category: 标准库
+  description: "涵盖 Scala 标准库的参考与概览"
+  overviews:
+    - title: Scala 容器
+      by: Martin Odersky and Julien Richard-Foy
+      icon: sitemap
+      url: "collections-2.13/introduction.html"
+      description: "Scala 的容器库"
+      subdocs:
+        - title: 简介
+          url: "collections-2.13/introduction.html"
+        - title: 可变与不可变容器
+          url: "collections-2.13/overview.html"
+        - title: Iterable 特质
+          url: "collections-2.13/trait-iterable.html"
+        - title: 序列特质 Seq, IndexedSeq, 和 LinearSeq
+          url: "collections-2.13/seqs.html"
+        - title: 具体不可变容器类
+          url: "collections-2.13/concrete-immutable-collection-classes.html"
+        - title: 具体可变容器类
+          url: "collections-2.13/concrete-mutable-collection-classes.html"
+        - title: 数组
+          url: "collections-2.13/arrays.html"
+        - title: 字符串
+          url: "collections-2.13/strings.html"
+        - title: 性能特点
+          url: "collections-2.13/performance-characteristics.html"
+        - title: 相等性
+          url: "collections-2.13/equality.html"
+        - title: 视图
+          url: "collections-2.13/views.html"
+        - title: 迭代器
+          url: "collections-2.13/iterators.html"
+        - title: 从头开始创建容器
+          url: "collections-2.13/creating-collections-from-scratch.html"
+        - title: Java 与 Scala 间的容器转换
+          url: "collections-2.13/conversions-between-java-and-scala-collections.html"
+    - title: 迁移项目容器至 Scala 2.13 的容器
+      icon: sitemap
+      url: "core/collections-migration-213.html"
+      description: "本篇向欲迁移至 Scala 2.13 的容器用户介绍了主要变更并展示了如何通过 Scala 2.11，2.12 和 2.13 进行交叉编译"
+    - title: Scala 容器架构
+      icon: sitemap
+      url: "core/architecture-of-scala-213-collections.html"
+      by: Julien Richard-Foy
+      description: "这几篇介绍了引进到 Scala 2.13 中的容器框架的架构，对照容器API就能知晓更多框架内部工作机制"
+    - title: 实现定制容器
+      icon: building
+      url: "core/custom-collections.html"
+      by: Martin Odersky, Lex Spoon and Julien Richard-Foy
+      description: "从本篇中你会了解到如何利用容器框架通过几行代码来定义自己的容器，来重用来自框架的绝大部分容器功能。"
+    - title: 新增定制的容器操作
+      icon: building
+      url: "core/custom-collection-operations.html"
+      by: Julien Richard-Foy
+      description: "本篇展示了如何定制可应用于任意容器类型并返回相同类型的操作，以及如何定制带有欲编译容器类型参数的操作"
+
+- category: 语言
+  description: "涵盖 Scala 语言特性的参考与概览"
+  overviews:
+    - title: 字符串内插
+      icon: dollar-sign
+      url: "core/string-interpolation.html"
+      description: >
+        字符串内插允许用户在字符串字面插值中直接嵌入变量引用。这里有个例子：
+        String Interpolation allows users to embed variable references directly in processed string literals. Here’s an example:
+          <pre><code>val name = "James"
+          println(s"Hello, $name")  // Hello, James</code></pre>
+        上例中，字面值 <code>s"Hello, $name"</code> 是个字符串字面插值，意味着编译器会对该字面值做些额外工作。字符串字面插值通过双引号前增加前导字符来表示。字符串插值由 SIP-11 引入，其中包含了所有实现细节。
+    - title: 隐式类
+      by: Josh Suereth
+      description: "Scala 2.10 中引入了一个新特性叫隐式类。隐式类是一个由 implicit 关键字标记的类，当类在作用域内时该关键字使得类的主构造器可用于隐式转换。"
+      url: "core/implicit-classes.html"
+    - title: 值类和通用特质
+      by: Mark Harrah
+      description: "值类是 Scala 中摒弃创建运行时对象的一种新机制，可通过定义 AnyVal 的子类来实现"
+      icon: gem
+      url: "core/value-classes.html"
+
+- category: 创作库
+  description: "参考如何为 Scala 生态贡献开源库"
+  overviews:
+    - title: 库作者参考
+      by: "Julien Richard-Foy"
+      icon: tasks
+      url: "contributors/index.html"
+      description: "列出库作者为库发布及库文档所需设置的所有工具"
+
+- category: 并行和并发编程
+  description: "涵盖 Scala 并行和并发编程库的完全指南"
+  overviews:
+    - title: Futures 和 Promises
+      by: "Philipp Haller, Aleksandar Prokopec, Heather Miller, Viktor Klang, Roland Kuhn, and Vojin Jovanovic"
+      icon: tasks
+      url: "core/futures.html"
+      description: "Futures 提供了一种推导并行执行多个操作的方式，即高效非阻塞的方式。一个 Future 就是一个可能还不存在的值的占位对象。通常来讲，Future 是并发赋值但顺序使用。这种方式来组织并发任务结果常常是更快的异步的非阻塞的并行代码。"
+    - title: 并行容器
+      by: Aleksandar Prokopec and Heather Miller
+      icon: rocket
+      url: "parallel-collections/overview.html"
+      description: "Scala 并行容器库"
+      subdocs:
+        - title: 概览
+          url: "parallel-collections/overview.html"
+        - title: 具体的并行容器类
+          url: "parallel-collections/concrete-parallel-collections.html"
+        - title: 并行容器转换
+          url: "parallel-collections/conversions.html"
+        - title: 并发字典树
+          url: "parallel-collections/ctries.html"
+        - title: 并行容器库架构
+          url: "parallel-collections/architecture.html"
+        - title: 创建定制的并行容器
+          url: "parallel-collections/custom-parallel-collections.html"
+        - title: 配置并行容器
+          url: "parallel-collections/configuration.html"
+        - title: 衡量性能
+          url: "parallel-collections/performance.html"
+
+- category: 兼容性
+  description: "各种（非）兼容性"
+  overviews:
+    - title: JDK 版本兼容性
+      description: "Scala版本与JDK版本的兼容性"
+      icon: coffee
+      url: "jdk-compatibility/overview.html"
+    - title: Scala 各版本的二进制兼容性
+      description: "当两个 Scala 版本是二进制兼容时，在一个 Scala 上编译的项目连接在另一个 Scala 的运行时将是安全的。安全的运行时连接（仅！）意味着 JVM 在这种混合场景下运行你的程序没有抛出连接错误（及其子类），且假使编译和运行在单一版本的 Scala 上没问题的情况下。具体点说，就是可能在你的运行时类路径中有外部依赖，这些依赖使用了跟你正在编译用到的不同版本的 Scala，只要他们是二进制兼容的。换句话说，在二进制兼容的不同版本上分开编译相比于在同一个版本上编译和运行所有东西不会带来问题。"
+      icon: puzzle-piece
+      url: "core/binary-compatibility-of-scala-releases.html"
+    - title: 针对库作者的二进制兼容性
+      description: "一个多元综合的库集合对于任何软件生态来说都是重要的。尽管易于开发和分发 Scala 库，好的库管理者却不仅仅是写代码和发布它。此篇中覆盖了二进制兼容性的重要话题。"
+      icon: puzzle-piece
+      url: "core/binary-compatibility-for-library-authors.html"
+
+- category: "工具"
+  description: "关于核心 Scala 工具的参考材料，如 Scala REPL 和 Scaladoc 生成"
+  overviews:
+    - title: Scala REPL
+      icon: terminal
+      url: "repl/overview.html"
+      description: |
+        Scala REPL 是一个对 Scala 表达式求值的工具 (<code>scala</code>)
+        <br><br>
+        <code>scala</code> 命令会通过包装源脚本到一模板中来执行它，然后编译并执行结果程序
+    - title: Scaladoc
+      url: "scaladoc/overview.html"
+      icon: book
+      description: "Scala 的 API 文档生成工具"
+      subdocs:
+        - title: 概览
+          url: "scaladoc/overview.html"
+        - title: 针对库作者的 Scaladoc
+          url: "scaladoc/for-library-authors.html"
+        - title: 使用 Scaladoc 接口
+          url: "scaladoc/interface.html"
+
+- category: 编译器
+  description: "涵盖 Scala 编译器的参考和概览：编译器插件，反射，以及元编程工具比如宏"
+  overviews:
+    - title: 反射
+      by: Heather Miller, Eugene Burmako, and Philipp Haller
+      icon: binoculars
+      url: "reflection/overview.html"
+      description: Scala 的运行时和编译期的反射框架
+      label-text: 实验
+      subdocs:
+        - title: 概览
+          url: "reflection/overview.html"
+        - title: 环境，通用和镜像（Environment, Universes, and Mirrors）
+          url: "reflection/environment-universes-mirrors.html"
+        - title: 符号，树和类型（Symbols, Trees, and Types）
+          url: "reflection/symbols-trees-types.html"
+        - title: 标号，名称，作用域及其他（Annotations, Names, Scopes, and More）
+          url: "reflection/annotations-names-scopes.html"
+        - title: TypeTags 和 Manifests
+          url: "reflection/typetags-manifests.html"
+        - title: 线程安全
+          url: "reflection/thread-safety.html"
+        - title: Scala 2.11 中的变化
+          url: "reflection/changelog211.html"
+    - title: 宏
+      by: Eugene Burmako
+      icon: magic
+      url: "macros/usecases.html"
+      description: "Scala 的元编程框架"
+      label-text: 实验
+      subdocs:
+        - title: 用例
+          url: "macros/usecases.html"
+        - title: 黑盒与白盒
+          url: "macros/blackbox-whitebox.html"
+        - title: Def 宏
+          url: "macros/overview.html"
+        - title: 拟引号（Quasiquotes）
+          url: "quasiquotes/intro.html"
+        - title: 宏绑定
+          url: "macros/bundles.html"
+        - title: 隐式宏
+          url: "macros/implicits.html"
+        - title: Extractor 宏
+          url: "macros/extractors.html"
+        - title: 类型 Providers
+          url: "macros/typeproviders.html"
+        - title: 宏标号
+          url: "macros/annotations.html"
+        - title: 宏乐园
+          url: "macros/paradise.html"
+        - title: 路线图
+          url: "macros/roadmap.html"
+        - title: 2.11 中的变化
+          url: "macros/changelog211.html"
+    - title: 拟引号
+      by: Denys Shabalin
+      icon: quote-left
+      url: "quasiquotes/setup.html"
+      description: "拟引号是操作 Scala 语法树的便捷方式"
+      label-text: 实验
+      subdocs:
+        - title: 依赖和设置
+          url: "quasiquotes/setup.html"
+        - title: 简介
+          url: "quasiquotes/intro.html"
+        - title: 提升（Lifting）
+          url: "quasiquotes/lifting.html"
+        - title: 拉降（Unlifting）
+          url: "quasiquotes/unlifting.html"
+        - title: 卫生（Hygiene）
+          url: "quasiquotes/hygiene.html"
+        - title: 用例
+          url: "quasiquotes/usecases.html"
+        - title: 语法总结
+          url: "quasiquotes/syntax-summary.html"
+        - title: 表达式细节
+          url: "quasiquotes/expression-details.html"
+        - title: 类型细节
+          url: "quasiquotes/type-details.html"
+        - title: 模式细节
+          url: "quasiquotes/pattern-details.html"
+        - title: 定义和引用细节
+          url: "quasiquotes/definition-details.html"
+        - title: 属于总结
+          url: "quasiquotes/terminology.html"
+        - title: 未来展望
+          url: "quasiquotes/future.html"
+    - title: 编译器插件
+      by: Lex Spoon and Seth Tisue
+      icon: puzzle-piece
+      url: "plugins/index.html"
+      description: "编译器插件允许定制和扩展 Scala 编译器。本篇导引描述了插件设施并带你领略如何创作一个简单插件"
+    - title: 编译器选项
+      by: Community
+      icon: cog
+      url: "compiler-options/index.html"
+      description: "控制 scalac 如何编译代码的各种选项"
+    - title: 错误格式
+      by: Torsten Schmits
+      icon: cog
+      url: "compiler-options/errors.html"
+      description: "一个新的用户友好的错误消息引擎，可以打印依赖的隐式链，颜色区分找到的和所需的类型差异"
+
+
+- category: 遗留问题
+  description: "涵盖一些与最近的 Scala 版本（2.12+）不再相关的特性的参考"
+  overviews:
+    - title: Scala Actors迁移参考
+      by: Vojin Jovanovic and Philipp Haller
+      icon: truck
+      url: "core/actors-migration-guide.html"
+      description: "为简化 Scala Actors 到 Akka 的迁移我们提供了 Actor 迁移包（Actor Migration Kit，简称 AMK）。迁移包中包含了 Scala Actors 的一个扩展，可以通过项目类路径中包含 scala-actors-migration.jar 来引入该扩展。另外，Akka 2.1 还包含一些新特性，比如 ActorDSL 单例，可使用 Scala Actors 编写的代码更易转换成 Akka 的。本篇目的是指导用户迁移过程并阐释如何使用 Actor 迁移包。"
+    - title: Scala Actors API
+      by: Philipp Haller and Stephen Tu
+      icon: users
+      url: "core/actors.html"
+      description: "本篇描述了 Scala 2.8/2.9 下 scala.actors 包的 API。其组织方式遵循逻辑上属于一块的组类型，特质层是考虑到组成其各自的部分，主要关注点在这些特质所定义的各种方法的运行时表现，由此也增补了已有的基于 Scaladoc 的API文档。"
+      label-color: "#899295"
+      label-text: 弃用
+    - title: Scala 2.8 到 2.12 的容器
+      by: Martin Odersky
+      icon: sitemap
+      url: "collections/introduction.html"
+      description: "Scala 的容器库"
+      subdocs:
+        - title: 简介
+          url: "collections/introduction.html"
+        - title: 可变和不可变容器
+          url: "collections/overview.html"
+        - title: Traversable 特质
+          url: "collections/trait-traversable.html"
+        - title: Iterable 特质
+          url: "collections/trait-iterable.html"
+        - title: 序列特质 Seq, IndexedSeq, 和 LinearSeq
+          url: "collections/seqs.html"
+        - title: 集合（Sets）
+          url: "collections/sets.html"
+        - title: 映射（Maps）
+          url: "collections/maps.html"
+        - title: 具体的不可变容器类
+          url: "collections/concrete-immutable-collection-classes.html"
+        - title: 具体的可变容器类
+          url: "collections/concrete-mutable-collection-classes.html"
+        - title: 数组
+          url: "collections/arrays.html"
+        - title: 字符串
+          url: "collections/strings.html"
+        - title: 性能特点
+          url: "collections/performance-characteristics.html"
+        - title: 相等性
+          url: "collections/equality.html"
+        - title: 视图
+          url: "collections/views.html"
+        - title: 迭代器
+          url: "collections/iterators.html"
+        - title: 从头开始创建容器
+          url: "collections/creating-collections-from-scratch.html"
+        - title: Java 和 Scala 间容器转换
+          url: "collections/conversions-between-java-and-scala-collections.html"
+        - title: 从 Scala 2.7 迁移
+          url: "collections/migrating-from-scala-27.html"
+    - title: Scala 2.8 到 2.12 的容器架构
+      icon: building
+      url: "core/architecture-of-scala-collections.html"
+      by: Martin Odersky and Lex Spoon
+      description: "本篇细致地描述了 Scala 容器框架的架构，对比容器 API 你会发现更多框架的内部工作机制。你也会学到该架构如何帮你通过几行代码定义自己的容器，来重用来自框架的绝大部分容器功能。"
