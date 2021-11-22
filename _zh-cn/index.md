@@ -32,7 +32,7 @@ scala3-sections:
     - title: "导览"
       description: "关于语言特别之处的详细导览"
       icon: "fa fa-map"
-      link: /scala3/guides.html
+      link: /zh-cn/scala3/guides.html
     - title: "Scala 库 API"
       description: "Scala 3 标准库API文档（多个小版本）"
       icon: "fa fa-file-alt"
