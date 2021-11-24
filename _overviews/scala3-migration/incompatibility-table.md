@@ -34,7 +34,7 @@ Each incompatibility is described by:
 Some of the old syntax is not supported anymore.
 
 |Incompatibility|Scala 2.13|Scala 3 Migration Rewrite|Scalafix Rule|
-|--- |--- |--- |--- |--- |
+|--- |--- |--- |--- |
 |[Restricted keywords](incompat-syntactic.html#restricted-keywords)||✅||
 |[Procedure syntax](incompat-syntactic.html#procedure-syntax)|Deprecation|✅|[✅](https://scalacenter.github.io/scalafix/docs/rules/ProcedureSyntax.html)|
 |[Parentheses around lambda parameter](incompat-syntactic.html#parentheses-around-lambda-parameter)||✅|[✅](https://github.com/ohze/scala-rewrites/tree/dotty/#fixscala213parensaroundlambda)|

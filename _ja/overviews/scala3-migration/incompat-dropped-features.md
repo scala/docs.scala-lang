@@ -13,13 +13,13 @@ language: ja
 
 |Incompatibility|Scala 2.13|Scala 3 Migration Rewrite|Scalafix Rule|
 |--- |--- |--- |--- |
-|[Symbol literals](#symbol-literals)|Deprecation|✅||
-|[`do`-`while` construct](#do-while-construct)||✅||
-|[Auto-application](#auto-application)|Deprecation|✅|[✅](https://github.com/scala/scala-rewrites/blob/main/rewrites/src/main/scala/fix/scala213/ExplicitNonNullaryApply.scala)|
-|[Value eta-expansion](#value-eta-expansion)|Deprecation|✅|[✅](https://github.com/scala/scala-rewrites/blob/main/rewrites/src/main/scala/fix/scala213/ExplicitNullaryEtaExpansion.scala)|
-|[`any2stringadd` conversion](#any2stringadd-conversion)|Deprecation||[✅](https://github.com/scala/scala-rewrites/blob/main/rewrites/src/main/scala/fix/scala213/Any2StringAdd.scala)|
-|[Early initializer](#early-initializer)|Deprecation|||
-|[Existential type](#existential-type)|Feature warning|||
+|[シンボリックリテラル](#シンボリックリテラル)|Deprecation|✅||
+|[`do`-`while` 構造](#do-while-構造)||✅||
+|[自動適用](#自動適用)|Deprecation|✅|[✅](https://github.com/scala/scala-rewrites/blob/main/rewrites/src/main/scala/fix/scala213/ExplicitNonNullaryApply.scala)|
+|[Eta展開の値](#eta展開の値)|Deprecation|✅|[✅](https://github.com/scala/scala-rewrites/blob/main/rewrites/src/main/scala/fix/scala213/ExplicitNullaryEtaExpansion.scala)|
+|[`any2stringadd` 変換](#any2stringadd-変換)|Deprecation||[✅](https://github.com/scala/scala-rewrites/blob/main/rewrites/src/main/scala/fix/scala213/Any2StringAdd.scala)|
+|[先行初期化](#先行初期化)|Deprecation|||
+|[存在型](#存在型)|Feature warning|||
 
 ## シンボリックリテラル
 

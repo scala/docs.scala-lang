@@ -12,10 +12,10 @@ language: ja
 
 |Incompatibility|Scala 2.13|Scala 3 Migration Rewrite|Scalafix Rule|Runtime Incompatibiltiy|
 |--- |--- |--- |--- |--- |
-|[Type of implicit def](#type-of-implicit-definition)|||[✅](https://github.com/ohze/scala-rewrites#fixexplicittypesexplicitimplicittypes)||
+|[暗黙的定義の型](#暗黙的定義の型)|||[✅](https://github.com/ohze/scala-rewrites#fixexplicittypesexplicitimplicittypes)||
 |[Implicit views](#implicit-views)||||**Possible**|
 |[View bounds](#view-bounds)|Deprecation||||
-|[Ambiguous conversion on `A` and `=> A`](#ambiguous-conversion-on-a-and--a)|||||
+|[`A`と`=> A`でのあいまいな変換](#aと-aでのあいまいな変換)|||||
 
 ## 暗黙的定義の型
 

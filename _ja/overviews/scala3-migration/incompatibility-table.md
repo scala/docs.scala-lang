@@ -35,14 +35,14 @@ language: ja
 いくつかの古い構文はサポートされていないです。
 
 |Incompatibility|Scala 2.13|Scala 3 Migration Rewrite|Scalafix Rule|
-|--- |--- |--- |--- |--- |
-|[Restricted keywords](incompat-syntactic.html#restricted-keywords)||✅||
-|[Procedure syntax](incompat-syntactic.html#procedure-syntax)|Deprecation|✅|[✅](https://scalacenter.github.io/scalafix/docs/rules/ProcedureSyntax.html)|
-|[Parentheses around lambda parameter](incompat-syntactic.html#parentheses-around-lambda-parameter)||✅|[✅](https://github.com/ohze/scala-rewrites/tree/dotty/#fixscala213parensaroundlambda)|
-|[Open brace indentation for passing an argument](incompat-syntactic.html#open-brace-indentation-for-passing-an-argument)||✅||
-|[Wrong indentation](incompat-syntactic.html#wrong-indentation)||||
-|[`_` as a type parameter](incompat-syntactic.html#_-as-a-type-parameter)||||
-|[`+` and `-` as type parameters](incompat-syntactic.html#-and---as-type-parameters)||||
+|--- |--- |--- |--- |
+|[制限された予約語](incompat-syntactic.html#制限された予約語)||✅||
+|[手続き型シンタックス](incompat-syntactic.html#手続き型シンタックス)|Deprecation|✅|[✅](https://scalacenter.github.io/scalafix/docs/rules/ProcedureSyntax.html)|
+|[Lambdaパラメータを囲む括弧](incompat-syntactic.html#lambdaパラメータを囲む括弧)||✅|[✅](https://github.com/ohze/scala-rewrites/tree/dotty/#fixscala213parensaroundlambda)|
+|[引数を渡すための括弧のインデント](incompat-syntactic.html#引数を渡すための括弧のインデント)||✅||
+|[間違ったインデント](incompat-syntactic.html#間違ったインデント)||||
+|[型パラメータとしての`_`](incompat-syntactic.html#型パラメータとしての)||||
+|[型パラメータとしての`+`と`-`](incompat-syntactic.html#型パラメータとしてのと)||||
 
 ### 機能の削除
 
@@ -50,13 +50,13 @@ language: ja
 
 |Incompatibility|Scala 2.13|Scala 3 Migration Rewrite|Scalafix Rule|
 |--- |--- |--- |--- |
-|[Symbol literals](incompat-dropped-features.html#symbol-literals)|Deprecation|✅||
-|[`do`-`while` construct](incompat-dropped-features.html#do-while-construct)||✅||
-|[Auto-application](incompat-dropped-features.html#auto-application)|Deprecation|✅|[✅](https://github.com/scala/scala-rewrites/blob/main/rewrites/src/main/scala/fix/scala213/ExplicitNonNullaryApply.scala)|
-|[Value eta-expansion](incompat-dropped-features.html#value-eta-expansion)|Deprecation|✅|[✅](https://github.com/scala/scala-rewrites/blob/main/rewrites/src/main/scala/fix/scala213/ExplicitNullaryEtaExpansion.scala)|
-|[`any2stringadd` conversion](incompat-dropped-features.html#any2stringadd-conversion)|Deprecation||[✅](https://github.com/scala/scala-rewrites/blob/main/rewrites/src/main/scala/fix/scala213/Any2StringAdd.scala)|
-|[Early initializer](incompat-dropped-features.html#early-initializer)|Deprecation|||
-|[Existential type](incompat-dropped-features.html#existential-type)|Feature warning|||
+|[シンボリックリテラル](incompat-dropped-features.html#シンボリックリテラル)|Deprecation|✅||
+|[`do`-`while` 構造](incompat-dropped-features.html#do-while-構造)||✅||
+|[自動適用](incompt-dropped-features.html#自動適用)|Deprecation|✅|[✅](https://github.com/scala/scala-rewrites/blob/main/rewrites/src/main/scala/fix/scala213/ExplicitNonNullaryApply.scala)|
+|[Eta展開の値](incompat-dropped-features.html#eta展開の値)|Deprecation|✅|[✅](https://github.com/scala/scala-rewrites/blob/main/rewrites/src/main/scala/fix/scala213/ExplicitNullaryEtaExpansion.scala)|
+|[`any2stringadd` 変換](incompat-dropped-features.html#any2stringadd-変換)|Deprecation||[✅](https://github.com/scala/scala-rewrites/blob/main/rewrites/src/main/scala/fix/scala213/Any2StringAdd.scala)|
+|[先行初期化](incompat-dropped-features.html#先行初期化)|Deprecation|||
+|[存在型](incompat-dropped-features.html#存在型)|Feature warning|||
 
 ### コンテキストの抽象化
 
@@ -80,14 +80,14 @@ language: ja
 
 |Incompatibility|Scala 3 Migration Rewrite|
 |--- |--- |
-|[Inheritance shadowing](incompat-other-changes.html#inheritance-shadowing)|✅|
-|[Non-private constructor in private class](incompat-other-changes.html#non-private-constructor-in-private-class)|Migration Warning|
-|[Abstract override](incompat-other-changes.html#abstract-override)||
-|[Case class companion](incompat-other-changes.html#case-class-companion)||
-|[Explicit call to unapply](incompat-other-changes.html#explicit-call-to-unapply)||
-|[Invisible bean property](incompat-other-changes.html#invisible-bean-property)||
-|[`=>T` as type argument](incompat-other-changes.html#-t-as-type-argument)||
-|[Wildcard type argument](incompat-other-changes.html#wildcard-type-argument)||
+|[継承シャドウイング](incompat-other-changes.html#継承シャドウイング)|✅|
+|[プライベートクラスのNon privateなコンストラクタ](incompat-other-changes.html#プライベートクラスのnon-privateなコンストラクタ)|Migration Warning|
+|[抽象オーバーライド](incompat-other-changes.html#抽象オーバーライド)||
+|[ケースクラスコンパニオン](incompat-other-changes.html#ケースクラスコンパニオン)||
+|[明示的な`unapply`の呼び出し](incompat-other-changes.html#明示的な`unapply`の呼び出し)||
+|[見えないビーンプロパティ](incompat-other-changes.html#見えないビーンプロパティ)||
+|[型パラメータとしての`=> T`](incompat-other-changes.html#型パラメータとしての-t)||
+|[型引数のワイルドカード](incompat-other-changes.html#型引数のワイルドカード)||
 
 ### 型チェッカー
 
@@ -97,8 +97,8 @@ Scala 3は強力で理論的な基盤に基づいているため、型チェッ�
 
 |Incompatibility|
 |--- |
-|[Variance checks](incompat-type-checker.html#unsoundness-fixes-in-variance-checks)|
-|[Pattern matching](incompat-type-checker.html#unsoundness-fixes-in-pattern-matching)|
+|[分散チェック](incompat-type-checker.html#分散チェックの不具合修正)|
+|[パターンマッチング](incompat-type-checker.html#パターンマッチングの不具合修正)|
 
 ### 型推論
 
@@ -106,8 +106,8 @@ Scala 3は強力で理論的な基盤に基づいているため、型チェッ�
 
 |Incompatibility|
 |--- |
-|[Return type of override method](incompat-type-inference.html#return-type-of-an-override-method)|
-|[Reflective type](incompat-type-inference.html#reflective-type)|
+|[オーバーライドしたメソッドの返り値の型](incompat-type-inference.html#オーバーライドしたメソッドの返り値の型)|
+|[リフレクションの型](incompat-type-inference.html#リフレクションの型)|
 
 また、型推論アルゴリズムは全体的な再設計を行い改善されました。
 この根本的な変更により、いくつかの非互換性が生じます。:

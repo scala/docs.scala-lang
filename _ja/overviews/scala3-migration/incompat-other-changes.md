@@ -12,14 +12,14 @@ language: ja
 
 |Incompatibility|Scala 3 Migration Rewrite|
 |--- |--- |
-|[Inheritance shadowing](#inheritance-shadowing)|✅|
-|[Non-private constructor in private class](#non-private-constructor-in-private-class)|Migration Warning|
-|[Abstract override](#abstract-override)||
-|[Case class companion](#case-class-companion)||
-|[Explicit call to unapply](#explicit-call-to-unapply)||
-|[Invisible bean property](#invisible-bean-property)||
-|[`=>T` as type argument](#-t-as-type-argument)||
-|[Wildcard type argument](#wildcard-type-argument)||
+|[継承シャドウイング](#継承シャドウイング)|✅|
+|[プライベートクラスのNon privateなコンストラクタ](#プライベートクラスのnon-privateなコンストラクタ)|Migration Warning|
+|[抽象オーバーライド](#抽象オーバーライド)||
+|[ケースクラスコンパニオン](#ケースクラスコンパニオン)||
+|[明示的な`unapply`の呼び出し](#明示的なunapplyの呼び出し)||
+|[見えないビーンプロパティ](#見えないビーンプロパティ)||
+|[型パラメータとしての`=> T`](#型パラメータとしての-t)||
+|[型引数のワイルドカード](#型引数のワイルドカード)||
 
 ## 継承シャドウイング
 

@@ -16,14 +16,14 @@ Scala 3では括弧がオプションナルなシンタックスと新しい制�
 殆どの変更は、[Scala 3移行コンパイル](tooling-migration-mode.html)に自動的に処理できることに注意してください。
 
 |Incompatibility|Scala 2.13|Scala 3 Migration Rewrite|Scalafix Rule|
-|--- |--- |--- |--- |--- |
-|[Restricted keywords](#restricted-keywords)||✅||
-|[Procedure syntax](#procedure-syntax)|Deprecation|✅|[✅](https://scalacenter.github.io/scalafix/docs/rules/ProcedureSyntax.html)|
-|[Parentheses around lambda parameter](#parentheses-around-lambda-parameter)||✅|[✅](https://github.com/ohze/scala-rewrites/tree/dotty/#fixscala213parensaroundlambda)|
-|[Open brace indentation for passing an argument](#open-brace-indentation-for-passing-an-argument)||✅||
-|[Wrong indentation](#wrong-indentation)||||
-|[`_` as a type parameter](#_-as-a-type-parameter)||||
-|[`+` and `-` as type parameters](#-and---as-type-parameters)||||
+|--- |--- |--- |--- |
+|[制限された予約語](#制限された予約語)||✅||
+|[手続き型シンタックス](#手続き型シンタックス)|Deprecation|✅|[✅](https://scalacenter.github.io/scalafix/docs/rules/ProcedureSyntax.html)|
+|[Lambdaパラメータを囲む括弧](#lambdaパラメータを囲む括弧)||✅|[✅](https://github.com/ohze/scala-rewrites/tree/dotty/#fixscala213parensaroundlambda)|
+|[引数を渡すための括弧のインデント](#引数を渡すための括弧のインデント)||✅||
+|[間違ったインデント](#間違ったインデント)||||
+|[型パラメータとしての`_`](#型パラメータとしての)||||
+|[型パラメータとしての`+`と`-`](#型パラメータとしてのと)||||
 
 ## 制限された予約語
 
@@ -62,9 +62,9 @@ object given { // Error: given is now a keyword
 }
 {% endhighlight %}
 
-## 手続き型構文
+## 手続き型シンタックス
 
-手続き型構文はしばらくの間非推奨になり、Scala 3では削除されました。
+手続き型シンタックスはしばらくの間非推奨になり、Scala 3では削除されました。
 次のコードは現在使用できません。:
 
 ```scala
@@ -203,7 +203,7 @@ Scala 3コンパイラはこのパターンを許容しません。:
 +def foo[T: Foo]: Unit = ???
 {% endhighlight %}
 
-##  型パラメータとしての`+` と `-`
+## 型パラメータとしての`+`と`-`
 
 Scala 3の型パラメータとしては`+` と `-` は有効ではありません、なぜならこれらは変位指定のアノテーションとしての予約語だからです。
 
