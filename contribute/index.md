@@ -27,6 +27,13 @@ Coordination of contribution efforts takes place on
 
 {% include column-list-of-items.html collection=site.contribute_resources %}
 
+### Guidelines
+
+When contributing, please follow:
+
+* The [Scala Code of Conduct](../conduct/)
+* The [Inclusive Language Guide](./inclusive-language/)
+
 ### Community Tickets
 
 All issues can be found in the [Scala bug tracker](https://github.com/scala/bug). Most issues are labeled
