@@ -41,8 +41,8 @@ language: ja
 |[Lambdaパラメータを囲む括弧](incompat-syntactic.html#lambdaパラメータを囲む括弧)||✅|[✅](https://github.com/ohze/scala-rewrites/tree/dotty/#fixscala213parensaroundlambda)|
 |[引数を渡すための括弧のインデント](incompat-syntactic.html#引数を渡すための括弧のインデント)||✅||
 |[間違ったインデント](incompat-syntactic.html#間違ったインデント)||||
-|[型パラメータとしての`_`](incompat-syntactic.html#型パラメータとしての)||||
-|[型パラメータとしての`+`と`-`](incompat-syntactic.html#型パラメータとしてのと)||||
+|[型パラメータとしての`_`](incompat-syntactic.html#型パラメータとしての_)||||
+|[型パラメータとしての`+`と`-`](incompat-syntactic.html#型パラメータとしてのと-)||||
 
 ### 機能の削除
 
@@ -52,7 +52,7 @@ language: ja
 |--- |--- |--- |--- |
 |[シンボリックリテラル](incompat-dropped-features.html#シンボリックリテラル)|Deprecation|✅||
 |[`do`-`while` 構造](incompat-dropped-features.html#do-while-構造)||✅||
-|[自動適用](incompt-dropped-features.html#自動適用)|Deprecation|✅|[✅](https://github.com/scala/scala-rewrites/blob/main/rewrites/src/main/scala/fix/scala213/ExplicitNonNullaryApply.scala)|
+|[自動適用](incompat-dropped-features.html#自動適用)|Deprecation|✅|[✅](https://github.com/scala/scala-rewrites/blob/main/rewrites/src/main/scala/fix/scala213/ExplicitNonNullaryApply.scala)|
 |[Eta展開の値](incompat-dropped-features.html#eta展開の値)|Deprecation|✅|[✅](https://github.com/scala/scala-rewrites/blob/main/rewrites/src/main/scala/fix/scala213/ExplicitNullaryEtaExpansion.scala)|
 |[`any2stringadd` 変換](incompat-dropped-features.html#any2stringadd-変換)|Deprecation||[✅](https://github.com/scala/scala-rewrites/blob/main/rewrites/src/main/scala/fix/scala213/Any2StringAdd.scala)|
 |[先行初期化](incompat-dropped-features.html#先行初期化)|Deprecation|||
@@ -64,10 +64,10 @@ language: ja
 
 |Incompatibility|Scala 2.13|Scala 3 Migration Rewrite|Scalafix Rule|Runtime Incompatibility|
 |--- |--- |--- |--- |--- |
-|[Type of implicit def](incompat-contextual-abstractions.html#type-of-implicit-definition)|||[✅](https://github.com/ohze/scala-rewrites#fixexplicittypesexplicitimplicittypes)||
+|[暗黙的定義の型](incompat-contextual-abstractions.html#暗黙的定義の型)|||[✅](https://github.com/ohze/scala-rewrites#fixexplicittypesexplicitimplicittypes)||
 |[Implicit views](incompat-contextual-abstractions.html#implicit-views)||||**Possible**|
 |[View bounds](incompat-contextual-abstractions.html#view-bounds)|Deprecation||||
-|[Ambiguous conversion on `A` and `=> A`](incompat-contextual-abstractions.html#ambiguous-conversion-on-a-and--a)|||||
+|[`A`と`=> A`でのあいまいな変換](incompat-contextual-abstractions.html#aと-aでのあいまいな変換)|||||
 
 さらに、暗黙の解決ルールを変更して、より便利で意外なものにならないようにしました。
 新しいルールについては[ここ](/scala3/reference/changed-features/implicit-resolution.html)に説明しています。
@@ -84,7 +84,7 @@ language: ja
 |[プライベートクラスのNon privateなコンストラクタ](incompat-other-changes.html#プライベートクラスのnon-privateなコンストラクタ)|Migration Warning|
 |[抽象オーバーライド](incompat-other-changes.html#抽象オーバーライド)||
 |[ケースクラスコンパニオン](incompat-other-changes.html#ケースクラスコンパニオン)||
-|[明示的な`unapply`の呼び出し](incompat-other-changes.html#明示的な`unapply`の呼び出し)||
+|[明示的な`unapply`の呼び出し](incompat-other-changes.html#明示的なunapplyの呼び出し)||
 |[見えないビーンプロパティ](incompat-other-changes.html#見えないビーンプロパティ)||
 |[型パラメータとしての`=> T`](incompat-other-changes.html#型パラメータとしての-t)||
 |[型引数のワイルドカード](incompat-other-changes.html#型引数のワイルドカード)||
