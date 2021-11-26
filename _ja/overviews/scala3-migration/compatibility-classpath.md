@@ -1,5 +1,5 @@
 ---
-title: Classpathレベル
+title: クラスパス互換性
 type: section
 description: このセクションでは、Scala 2.13とScala 3クラスファイルの互換性について説明しています。
 num: 3

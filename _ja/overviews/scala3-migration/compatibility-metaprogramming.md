@@ -1,5 +1,5 @@
 ---
-title: メタプログラミング
+title: メタプログラミング互換性
 type: section
 description: このセクションではメタプログラミングの移行について議論します。 
 num: 5

@@ -1,5 +1,5 @@
 ---
-title: Runtime
+title: ランタイム互換性
 type: section
 description: このセクションではScala 3のランタイム時の特性について記述しています。
 num: 4
