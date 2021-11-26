@@ -18,7 +18,7 @@ Scala 3 は、Scala 2 言語の改良版だ。
 非互換性のコーパスは [非互換性テーブル](incompatibility-table.html)にある。
 
 ただし例外があり、それは従来のScala 2のマクロをリプレイスした新しいメタプログラミングフレームワークだ。
-詳細説明に関しては、この章の終わりの[メタプログラミング](compatibility-metaprogramming.html)のセクションにある。
+詳細説明に関しては、この章の終わりの[メタプログラミング互換性](compatibility-metaprogramming.html)のセクションにある。
 
 メタプログラミングはさておき、Scala 2.13ソースコードはかなり簡単にScala 3に移植できる。
 移行が完了すると、Scala 2には存在しないScala 3の強力な機能を使えるようになるだろう。
