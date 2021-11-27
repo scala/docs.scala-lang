@@ -1,31 +1,31 @@
 ---
 title: クラスパス互換性
 type: section
-description: このセクションでは、Scala 2.13とScala 3クラスファイルの互換性について説明しています。
+description: このセクションは、Scala 2.13とScala 3クラスファイルの互換性について説明します。
 num: 3
 previous-page: compatibility-source
 next-page: compatibility-runtime
 language: ja
 ---
 
-コード上で、パブリックな型と構文を利用でき、そしてパブリックメソッドは異なるモジュールやライブラリで定義されています。
-そしてできる限り長く型チェックとして働いて、コンパイルフェーズにてコードの意味的な構成を検証し、クラスファイルに含まれている型や構文やメソッドの重要性を読むことができます。
+コードを書くとき、他のモジュールやライブラリで定義されている公開型やフィールドを使ったり、公開メソッドを呼び出すことができる。
+これはコンパイラフェーズの一つである type checker が、公開型、フィールド、メソッドなどのシグネチャを各自を定義するクラスファイルから読み込むことができる限りうまくいく。type checker は、この情報を用いてコード上の意味的一貫性を検査し、これは型検査と呼ばれる。
 
-Scala 2ではシグネチャはpickleフォーマットで保存されます。
-Scala 3では少し違っていて、なぜならシグネチャレイアウトよりも多くのTASTyフォーマットに寄り添っているからです。
-しかしながらScala 2.13からScala 3へ移行する目的においては、シグネチャだけでも有効です。
+Scala 2 では、シグネチャは Pickle と呼ばれる独自のフォーマットを用いて保存される。
+Scala 3 では少し違っていて、シグネチャ情報だけに留まらずその他の多くの情報を持つ TASTy フォーマットを採用している。
+しかし、本題である Scala 2.13 から Scala 3 への移行において役に立つのはシグネチャだけだ。
 
 ## Scala 3 Unpickler
 
-はじめの良い知らせとしてScala 3のコンパイラはScala 2.13のpickleフォーマットを読み込むことができるということ、すなわち、Scala 2.13によりコンパイルされたモジュールやライブラリに依存したコードの型チェックができるということです。
+はじめの良い知らせとして Scala 3 のコンパイラは Scala 2.13 の Pickle フォーマットを読み込むことができるということ、すなわち、Scala 2.13 によりコンパイルされたモジュールやライブラリに依存したコードの型チェックができるということだ。
 
-Scala3のUnpicklerは数年間広範囲的にコミュニティビルドによってテストされています。なので使うこと自体は安全です。
+Scala 3 の Unpickler は数年間広範囲的にコミュニティビルドによってテストされている。なので使うこと自体は安全だ。
 
-### Scala 3モジュールはScala 2.13アーティファクトに依存できます
+### Scala 3 モジュールは Scala 2.13 アーティファクトに依存できる
 
 ![Scala 3 module depending on a Scala 2.13 artifact](/resources/images/scala3-migration/compatibility-3-to-213.svg)
 
-sbtビルドとして、次のように説明できます（sbt 1.5.0以降が必要です）:
+sbt ビルドとして、次のように説明できる( sbt 1.5.0 以降が必要だ):
 
 ```scala
 lazy val foo = project.in(file("foo"))
@@ -36,7 +36,7 @@ lazy val bar = project.in(file("bar"))
   .settings(scalaVersion := "2.13.6")
 ```
 
-または、barが公開されたScala 2.13ライブラリである場合は、次のことができます。:
+または、bar が公開された Scala 2.13 ライブラリである場合は、次のことができる。:
 
 ```scala
 lazy val foo = project.in(file("foo"))
@@ -46,24 +46,24 @@ lazy val foo = project.in(file("foo"))
   )
 ```
 
-sbtで `CrossVersion.for3Use2_13`を使用して、 `bar_3`の代わりに`bar_2.13`を解決します。
+sbt で `CrossVersion.for3Use2_13` を使用して、`bar_3` の代わりに `bar_2.13` を解決する。
 
-### スタンダードライブラリ
+### 標準ライブラリ
 
-1つ目のノート例はScala 2.13ライブラリです。
-Scala 2.13ライブラリがScala 3用の公式スタンダードライブラリとして確かに決定しています。
+Scala 2.13 標準ライブラリは、重要なクロス依存性の例だ。
+実は、Scala 2.13 標準ライブラリをそのまま Scala 3 用の公式標準ライブラリとして採用した。
 
-スタンダードライブラリは自動的にビルドツールに与えられることを覚えておきましょう、なので手動的に設定する必要はありません。
+標準ライブラリは自動的にビルドツールにより与えられるため、手動で設定する必要はありません。
 
-## Scala 2.13のTASTy読み取り機能
+## Scala 2.13 の TASTy 読み取り機能
 
-2つ目の良い知らせはscala 2.13.4からリリースされたTASTy読み取り機能がScala 3ライブラリで使えるということです。
+2つ目の良い知らせは、Scala 2.13.4 より Scala 2.13 TASTy 読み取り機能がリリースされ、Scala 2.13 側から Scala 3 で書かれたライブラリ群の呼び出しが可能となったことだ。
 
-> TASTy読み取り機能は非常に新しいものです。そのため、`-Ytasty-reader` フラグの下でのみ使用できます。
+> TASTy 読み取り機能はとても新しいものだ。そのため、`-Ytasty-reader` フラグ下でのみ使用できる。
 
 ### サポートされている機能
 
-TASTy読み取り機能は、すべての従来の言語機能に加えて、次の新しい機能をサポートします。:
+TASTy 読み取り機能は、すべての従来の言語機能に加えて、次の新しい機能をサポートする。:
 - [Enumerations]({% link _scala3-reference/enums/enums.md %})
 - [Intersection Types]({% link _scala3-reference/new-types/intersection-types.md %})
 - [Opaque Type Aliases]({% link _scala3-reference/other-new-features/opaques.md %})
@@ -89,13 +89,13 @@ TASTy読み取り機能は、すべての従来の言語機能に加えて、次
 - [Inline]({% link _scala3-reference/metaprogramming/inline.md %}) (including Scala 3 macros)
 - [Kind Polymorphism]({% link _scala3-reference/other-new-features/kind-polymorphism.md %}) (the `scala.AnyKind` upper bound)
 
-### Scala 2.13モジュールScala 3アーティファクトに依存できます
+### Scala 2.13 モジュールは Scala 3 アーティファクトに依存できる
 
-`-Ytasty-reader`でTASTyリーダーを有効にすることで、Scala 2.13モジュールはScala 3アーティファクトに依存できます。
+`-Ytasty-reader` で TASTy 読み取り機能を有効にすることで、Scala 2.13 モジュールは Scala 3 アーティファクトに依存できる。
 
 ![Scala 2 module depending on a Scala 3 artifact](/resources/images/scala3-migration/compatibility-213-to-3.svg)
 
-sbtビルドとして、次のように説明できます。:
+sbt ビルドとして、次のように説明できる。:
 
 ```scala
 lazy val foo = project.in.file("foo")
@@ -109,7 +109,7 @@ lazy val bar = project.in(file("bar"))
   .settings(scalaVersion := "3.0.0")
 ```
 
-または、`bar`が公開されたScala 3ライブラリの場合:
+または、`bar` が公開された Scala 3 ライブラリの場合:
 
 ```scala
 lazy val foo = project.in.file("foo")
@@ -120,25 +120,25 @@ lazy val foo = project.in.file("foo")
   )
 ```
 
-`CrossVersion.for2_13Use3`と同様に、sbtで `CrossVersion.for3Use2_13`を使用して、`bar_2.13`ではなく`bar_3`を解決します。
+`CrossVersion.for2_13Use3` と同様に、sbt で `CrossVersion.for3Use2_13` を使用して、`bar_2.13` ではなく `bar_3` を解決する。
 
 ## 相互運用性の概要
 
-要するに、下位、上位互換性があり、そしてそれにより**移行が段階的に行うことが可能になるのです**。
+要するに、下位、上位互換性があり、そしてそれにより**移行が段階的に行うことが可能になる**。
 
-ライブラリの依存関係がまだ移植されてない場合（マクロライブラリを除く）でも、一度にScalaアプリケーションの一つのモジュールを移植することができます。
+ライブラリの依存関係がまだ移植されてない場合(マクロライブラリを除く)でも、一度に Scala アプリケーションの一つのモジュールを移植することができる。
 
-移行期間中、Scala 2.13モジュール間で、Scala 3モジュールを持つことができます。
+移行期間中、2 つの Scala 2.13 モジュールで挟まれた Scala 3 モジュール層を扱うことができる。
 
 ![Sandwich pattern](/resources/images/scala3-migration/compatibility-sandwich.svg)
 
-これはできるだけ長くすべてのライブラリが単一バイナリバージョンを解決できるように許しておます: `lib-foo_3` と `lib-bar_2.13` を同じクラスパスに持つことができますが、`lib-foo_3` と `lib-foo_2.13`を含めることはできません.
+クロス依存性は、全てのライブラリがそれぞれ単一のバイナリバージョンへと解決される限り許される。例えば、`lib-foo_3` と `lib-bar_2.13` を同じクラスパスに持つことができるが、`lib-foo_3` と `lib-foo_2.13` を含めることはできない。
 
-この逆のパターン、すなわち2.13モジュールが中央にある場合でも可能です。
+この逆のパターン、すなわち 2.13 モジュールが中央にある場合でも可能だ。
 
-> #### ライブラリメンテナンスの免責事項
+> #### ライブラリ作者への注意
 > 
-> 公開されているライブラリの中でScala 2.13とScala 3間の相互運用性を使うことは一般的にエンドユーザにとっては安全ではないです。
+> 公開ライブラリの中で Scala 2.13 と Scala 3 間の相互運用性を使うと、多くの場合そのライブラリを使用するエンドユーザにとって安全では無いことに注意してほしい。
 > 
-> 何をしているか正確に知らない限り、Scala 2.13に依存するScala 3のライブラリを公開することはおすすめできないです（Scala-libraryは除く）し逆も然りです.
-> 理由としては、ライブラリユーザがクラスパス内の同じfooライブラリの中の競合するバージョン`foo_2.13`, `foo_3`で終わるのを防ぐためで、この問題は場合によっては解決することができません。
+> 状況を完全に理解した上級ユーザ以外は、( scala-library 以外の) Scala 2.13 系ライブラリに依存した Scala 3系のライブラリを公開することは非推奨とされており、逆も然りだ。
+> なぜなら、ライブラリを使用するユーザを、クラスパス内の同じ foo ライブラリ内の2つのバージョンである `foo_2.13` と `foo_3` の競合から防ぐためであり、この問題は場合によっては解決することができない。
