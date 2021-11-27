@@ -266,8 +266,7 @@ In my case, I have one key pair, whose ID is `BE614499`.
 Then:
 
  1. Create a new Secret containing the passphrase of your PGP key named `PGP_PASSPHRASE`.
- 2. Create a new Secret containing the base64 encoded secret of your private key, which you can obtain
- by running:
+ 2. Create a new Secret containing the base64 encoded secret of your private key named `PGP_SECRET`. The encoded secret can obtain by running:
 ```
 # macOS
 gpg --armor --export-secret-keys $LONG_ID | base64
