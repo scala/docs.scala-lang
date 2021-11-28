@@ -73,7 +73,7 @@ Either[Int, +*]          // equivalent to: type R[+A] = Either[Int, A]
 Function2[-*, Long, +*]  // equivalent to: type R[-A, +B] = Function2[A, Long, B]
 ```
 
-## 非互換性構造の再記述
+## 非互換性構造の書き換え
 
 Scala 3の`-Ykind-projector` と `-Ykind-projector:underscores` は、`kind-projector`シンタックスの部分集合のみを実装し、それ以外は特に実装しません。:
 

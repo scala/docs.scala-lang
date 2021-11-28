@@ -40,7 +40,7 @@ where possible standard options include:
 
 我々はこれを **Scala 3 migration compilation**とよんでいます.
 
-## 自動再記述
+## 自動書き換え
 
 一度マイグレーションモードでコンパイルすると、ほとんど全てのWARNINGはコンパイラによって自動的に解決されます。
 これを行うためには、再度コンパイルする必要があり、今回は、 `-source:3.0-migration` と　`-rewrite` オプションを使います。

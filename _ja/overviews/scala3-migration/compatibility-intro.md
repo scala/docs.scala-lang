@@ -27,7 +27,7 @@ Scala 2.13 と Scala 3 の間での相互互換性のおかげで、見方によ
 - Scala 3ではScala 2.13のライブラリを使えるのか？
 - 逆に、Scala 3のライブラリをScala 2.13で使えるのか？
 
-**[ランタイム互換性](compatibility-runtime.html)**
+**[実行時互換性](compatibility-runtime.html)**
 - 本番環境においてScala 3プログラムを安全にデプロイできるのか?
 - Scala 2.13と比較してScala 3はどれくらいはやいのか？
 

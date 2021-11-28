@@ -37,7 +37,7 @@ language: ja
 
 | 3.0.x | description |
 |-|-|
-| `-Xignore-scala2-macros` | Scala 2マクロを呼び出すコードをコンパイルするときのエラーを無視しますがランタイム時に失敗するでしょう。 | 
+| `-Xignore-scala2-macros` | Scala 2マクロを呼び出すコードをコンパイルするときのエラーを無視しますが実行時に失敗するでしょう。 |
 | `-Ximport-suggestion-timeout` | エラーが報告されたときにインポート候補を検索するためのタイムアウト（ミリ秒単位）。 | 
 | `-Xmax-inlined-trees` | インラインツリーの最大数。 Default: 2000000 | 
 | `-Xmax-inlines` | 連続するインラインの最大数。 Default: 32. | 
