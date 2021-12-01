@@ -8,13 +8,13 @@ next-page: tutorial-intro
 language: ja
 ---
 
-Scala 3 のコンパイラは移行を簡単にするためのいくつかの便利なutilitiesを提供します。
+Scala 3 のコンパイラは移行を簡単にするため、いくつかの便利な utilities を提供している。
 
-`scalac` を試すとそれらのutilitiesを垣間見ることができます:
+`scalac` を試すとそれらの utilities を垣間見ることが可能だ:
 
-> `scalac` は実行可能なScalaコンパイラであり、[Github](https://github.com/lampepfl/dotty/releases/)からダウンロードできます。
+> `scalac` は実行可能な Scala コンパイラであり、[Github](https://github.com/lampepfl/dotty/releases/)からダウンロードできる。
 > 
-> また、Coursierと`cs install scala3-compiler`を用いることでインストールすることもでき、その場合は`scalac`は別名`scala3-compiler`となります。
+> また、Coursier と `cs install scala3-compiler` を用いることでインストールすることもでき、その場合は`scalac` は別名 `scala3-compiler` となる。
 
 {% highlight text %}
 $ scalac
@@ -35,29 +35,29 @@ where possible standard options include:
 
 ## 移行モード
 
-`-source:3.0-migration` オプションは除去された機能の多くを許容し、エラーの代わりにWARNINGを出力します。
-各WARNINGは非推奨のコードに関して、クロスコンパイルに対応するコードを安全に書き換えられることを強く示しています。
+`-source:3.0-migration` オプションは除去された機能の多くを許容し、エラーの代わりにWARNINGを出力する。
+各WARNINGは非推奨のコードに関して、クロスコンパイルに対応するコードを安全に書き換えが可能だということを強調して示す。
 
-我々はこれを **Scala 3 migration compilation**とよんでいます.
+我々はこれを **Scala 3 移行コンパイル**と呼ぶ。
 
 ## 自動書き換え
 
-一度マイグレーションモードでコンパイルすると、ほとんど全てのWARNINGはコンパイラによって自動的に解決されます。
-これを行うためには、再度コンパイルする必要があり、今回は、 `-source:3.0-migration` と　`-rewrite` オプションを使います。
+一度移行モードでコンパイルすると、ほとんど全てのWARNINGはコンパイラによって自動的に解決する。
+これを行うためには、再度コンパイルする必要があり、今回は、 `-source:3.0-migration` と　`-rewrite` オプションを使う。
 
-> コンパイラがコードを変更することに注意してください！ 安全を目的としています。
-> しかしながら、コンパイラによって適用された差分を出力し、必要ならばもとに戻せるように初期状態をコミットしておくことをおすすめします。
+> コンパイラがコードを変更することに注意してください！ 安全ではある。
+> しかし、コンパイラにより適用されたコード差分を出力し、必要ならばもとに戻せるように初期状態をコミットしておくことを勧める。
 
 > #### 良い知らせ
-> - rewriteはもしコードコンパイルにエラーが有った場合は適用されません。
-> - 適用するルールを自身で決めることはできなく、コンパイラがその全てを担います。
+> - rewrite はもしコードコンパイルにエラーがあった場合は適用されない。
+> - 適用するルールを自身で決めることはできなく、コンパイラがその全てを担う。
 
-[非互換性テーブル](incompatibility-table.html) を参考に、Scala 3 migration rewritesのリストを確認することができます。
+[非互換性テーブル](incompatibility-table.html) を参考に、Scala 3 migration rewrites のリストを確認することが可能だ。
 
 ## エラーの説明
 
-`-source:3.0-migration` モードはたくさんの変更を処理できますが、全てではありません。
-コンパイラは`-explain` および `-explain-types` オプションを呼び出すときに、残りのエラーの詳細について与えてくれます。
+`-source:3.0-migration` モードはたくさんの変更を処理できますが、全てではない。
+コンパイラは `-explain` および `-explain-types` オプションを呼ぶと、残りのエラーの詳細について与えてくれる。
 
-> `-explain` および `-explain-types` オプションは、移行に限定されません。
-> 一般に、Scala 3での学習とコーディングを支援します。
+> `-explain` および `-explain-types` オプションは、移行に限定したオプションではない。
+> 一般に、Scala 3 での学習とコーディングを支援するものだ。

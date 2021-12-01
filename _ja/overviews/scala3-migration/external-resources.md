@@ -1,7 +1,7 @@
 ---
 title: 外部リソース
 type: section
-description: このセクションでは、Scala 3への移行に関する外部リソースを一覧表示します。
+description: このセクションでは、Scala 3 への移行に関する外部リソースを一覧表示します。
 num: 27
 previous-page: plugin-kind-projector
 next-page:
@@ -10,11 +10,11 @@ language: ja
 
 ## コース
 
-### Lunatechの[_Moving from Scala 2 to Scala 3_](https://github.com/lunatech-labs/lunatech-scala-2-to-scala3-course)
+### Lunatech の[_Moving from Scala 2 to Scala 3_](https://github.com/lunatech-labs/lunatech-scala-2-to-scala3-course)
 
-Scala 3の最新情報を検討している方や、既存のScala 2アプリケーションをScala 3に移行することを検討している開発者であればLunatechの [_"Moving from Scala 2 to Scala 3"_](https://github.com/lunatech-labs/lunatech-scala-2-to-scala3-course)コースはget startedするのに良いです。
+Scala 3 の最新情報を検討している方や、既存の Scala 2 アプリケーションを Scala 3 に移行することを検討している開発者であれば Lunatech の [_"Moving from Scala 2 to Scala 3"_](https://github.com/lunatech-labs/lunatech-scala-2-to-scala3-course)コースは get started するのに良い。
 
-このコースでは、単一モジュールのAkka TypedSudokuソルバーを約10ステップのシリーズで移行する方法について説明します。以下のScala 3機能の実用化について説明します。:
+このコースでは、単一モジュールの Akka TypedSudoku ソルバーを約10ステップのシリーズで移行する方法について説明する。以下の Scala 3 機能の実用化について説明している:
 
 - 新しい制御構造のシンタックス
 - インデントベースのシンタックス

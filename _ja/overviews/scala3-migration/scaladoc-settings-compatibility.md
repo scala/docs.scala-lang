@@ -1,14 +1,14 @@
 ---
-title: Scala2とScala3間のScaladoc設定の互換性
+title: Scala 2 と Scala 3 間での Scaladoc 設定の互換性
 type: section
-description: この章ではScala 2とScala 3の全てのscaladocオプションをリスト化し、両者の関係性について説明します
+description: この章では Scala 2 と Scala 3 の全ての scaladoc オプションをリスト化し、両者の関係性について説明します。
 num: 24
 previous-page: options-new
 next-page: plugin-intro
 language: ja
 ---
 
-現在のページには、scaladoc設定のステータスが記載されています。関連するGithub issueは[discussion](https://github.com/lampepfl/dotty/issues/11907)で見つけることができます。
+このページに、scaladoc 設定のステータスを記載している。関連する Github issue は[discussion](https://github.com/lampepfl/dotty/issues/11907)で見つけることが可能だ。
 
 
 | Scala2 | Scala3 | Description | Comment | Is implemented?
@@ -57,29 +57,30 @@ language: ja
 
 ## Source links
 
-Source linksgithubやbitbucketなどのリモートリポジトリにあるソースコードを指すために使用されます。
-うまくいけば、新しいシンタックスは古いシンタックスのほぼ上位集合になります。
-Hopefully, the new syntax is almost superset of the old syntax. 
-新しいscaladocシンタックスに移行するために, これらの変数が使われていないことを確認してください:
-`€{TPL_OWNER}` や `€{FILE_PATH_EXT}`。 それ以外の場合は、他の`variables`を使用してソースリンクを書き換える必要があります。
-または、新しい変数を使用することもできます。より詳しくは[dotty docs](https://dotty.epfl.ch/docs/usage/scaladoc/settings.html)に記述されています。 
-新しいシンタックスでは、ソースが特定のURLに一致するように、ファイルパスのプレフィックスを指定できます。異なるディレクトリまたは異なるリポジトリに散在しています。
+Source links は github や bitbucket などのリモートリポジトリにあるソースコードを指すために使用される。
+うまくいけば、新しい構文は古い構文のほぼ上位集合になる。
+新しい scaladoc 構文に移行するために、これらの変数が使われていないことを確認すべきだ:
+`€{TPL_OWNER}` や `€{FILE_PATH_EXT}`。 それ以外の場合は、他の `variables` を使用して Source links を書き換える必要がある。
+それか、新しい変数を使用することも可能だ。より詳しくは[dotty docs](https://dotty.epfl.ch/docs/usage/scaladoc/settings.html)に記述されている。 
+新しい構文では、ソースが特定の URL に一致するよう、ファイルパスのプレフィックスを指定できる。これは異なるディレクトリまたは異なるリポジトリに散在している。
 
 
 ## 外部マッピング
 
-この設定は、javadoc/scaladocの古い設定を一般化したものです。
+この設定は、javadoc/scaladoc の古い設定を一般化したものだ。
 
-外部マッピングの例は以下のようになります:
+外部マッピングの例は以下のようになる:
+
 ```
 -external-mappings:.*scala.*::scaladoc3::https://scala-lang.org/api/3.x/,.*java.*::javadoc::https://docs.oracle.com/javase/8/docs/api/
 ```
 
-マッピングの形式は '\<regex>::\[scaladoc3|scaladoc|javadoc]::\<path>'です。 例に示すように、コンマで区切って複数のマッピングを指定できます。
+マッピングの形式は '\<regex>::\[scaladoc3|scaladoc|javadoc]::\<path>'だ。 例のように、カンマで区切って複数のマッピングを指定できる。
 
-古い構文は次のとおりです。:
+古い構文は次のとおりだ:
+
 - scaladocの場合 - `prefix#url`
 - javadocの場合 - URLのみ
 
-fq名に一致する正規表現を取得し(javadocの場合、`java.*`のようにワイルドカードにすることができます), ダブルコロン`::`を使用して3つの利用可能なドキュメント形式のいずれかと連結し、もう一度`::`を追加して、URLを指定する必要があります。
-外部ドキュメントがホストされている場所です。
+fq 名に一致する正規表現を取得し( javadoc の場合、`java.*` のようにワイルドカードにすることができる)、 ダブルコロン`::` を使用して3つの利用可能なドキュメント形式のいずれかと連結し、もう一度 `::` を追加して、URL を指定する必要がある。
+外部ドキュメントがホストされている場所だ。

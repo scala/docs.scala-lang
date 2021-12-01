@@ -8,36 +8,38 @@ next-page: incompat-syntactic
 language: ja
 ---
 
-非互換性とは、Scala 2.13でコンパイルできるがScala 3ではなできないコードの一部のことです。
-コードベースの移行には、ソースコードの全ての非互換性を見つけて修正することが含まれています。
-極稀に、我々は実行時の非互換性に遭遇します：動作が異なるコードの一部です。
+非互換性とは、Scala 2.13 でコンパイルできるが Scala 3 ではコンパイルできないコードの一部のことである。
+コードベースの移行作業には、ソースコードの全ての非互換性を見つけて修正することが含まれている。
+極稀に、実行時の非互換性に遭遇する：動作が異なるコードの一部だ。
 
-このページでは我々は既知の非互換性の分類を提案します。
-それぞれの非互換性は以下のように説明されています。:
+このページでは既知の非互換性の分類を提案する。
+それぞれの非互換性は以下のように説明している:
+
  - 詳細な説明と提案された解決策へのリンクを含む名前
- - Scala 2.13コンパイラが非推奨または機能WARNINGを発するかどうか
+ - Scala 2.13 コンパイラが非推奨または機能WARNINGを発するかどうか
  - 非互換性に関しての[Scala 3移行](tooling-migration-mode.html)ルールの存在
- - 非互換性に関して修正できるScalafixルールの存在
+ - 非互換性に関して修正できる Scalafix ルールの存在
 
 > #### Scala2.13の非推奨と機能WARNING
-> 2.13コンパイルを`-source:3`で実行すると非互換性のコードを見つけます。
+> 2.13 コンパイルを `-source:3` で実行すると非互換性のコードを見つける。
 
-> #### Scala 3移行とScalafixリライトの比較
-> Scala3移行モードはすぐに使用できます。
-> それに対して、Scalafixは手動でインストールして構成する必要があるツールです。
-> ただし、Scalafixには独自の利点があります。:
-> - Scala 2.13で動く
+> #### Scala 3移行とScalafix書き換えの比較
+> Scala 3 移行モードはすぐに使用できる。
+> それに対して、Scalafix は手動でインストールして構成する必要があるツールだ。
+> ただし、Scalafix には独自の利点がある:
+> 
+> - Scala 2.13 で動く
 > - 一度に1つずつ適用することができる個々のルールで構成されている
 > - カスタムルールの追加により拡張が容易である
 
-### シンタックスの変更
+### 構文の変更
 
-いくつかの古い構文はサポートされていないです。
+いくつかの古い構文はサポートされていない。
 
 |Incompatibility|Scala 2.13|Scala 3 Migration Rewrite|Scalafix Rule|
 |--- |--- |--- |--- |
 |[制限された予約語](incompat-syntactic.html#制限された予約語)||✅||
-|[手続き型シンタックス](incompat-syntactic.html#手続き型シンタックス)|Deprecation|✅|[✅](https://scalacenter.github.io/scalafix/docs/rules/ProcedureSyntax.html)|
+|[手続き型構文](incompat-syntactic.html#手続き型構文)|Deprecation|✅|[✅](https://scalacenter.github.io/scalafix/docs/rules/ProcedureSyntax.html)|
 |[Lambdaパラメータを囲む括弧](incompat-syntactic.html#lambdaパラメータを囲む括弧)||✅|[✅](https://github.com/ohze/scala-rewrites/tree/dotty/#fixscala213parensaroundlambda)|
 |[引数を渡すための括弧のインデント](incompat-syntactic.html#引数を渡すための括弧のインデント)||✅||
 |[間違ったインデント](incompat-syntactic.html#間違ったインデント)||||
@@ -46,21 +48,21 @@ language: ja
 
 ### 機能の削除
 
-いくつかの機能は言語を簡単にするために削除されています。
+いくつかの機能は言語を簡単にするために削除した。
 
 |Incompatibility|Scala 2.13|Scala 3 Migration Rewrite|Scalafix Rule|
 |--- |--- |--- |--- |
 |[シンボリックリテラル](incompat-dropped-features.html#シンボリックリテラル)|Deprecation|✅||
-|[`do`-`while` 構造](incompat-dropped-features.html#do-while-構造)||✅||
+|[`do`-`while` 機能](incompat-dropped-features.html#do-while-機能)||✅||
 |[自動適用](incompat-dropped-features.html#自動適用)|Deprecation|✅|[✅](https://github.com/scala/scala-rewrites/blob/main/rewrites/src/main/scala/fix/scala213/ExplicitNonNullaryApply.scala)|
-|[Eta展開の値](incompat-dropped-features.html#eta展開の値)|Deprecation|✅|[✅](https://github.com/scala/scala-rewrites/blob/main/rewrites/src/main/scala/fix/scala213/ExplicitNullaryEtaExpansion.scala)|
+|[イータ展開の値](incompat-dropped-features.html#イータ展開の値)|Deprecation|✅|[✅](https://github.com/scala/scala-rewrites/blob/main/rewrites/src/main/scala/fix/scala213/ExplicitNullaryEtaExpansion.scala)|
 |[`any2stringadd` 変換](incompat-dropped-features.html#any2stringadd-変換)|Deprecation||[✅](https://github.com/scala/scala-rewrites/blob/main/rewrites/src/main/scala/fix/scala213/Any2StringAdd.scala)|
 |[先行初期化](incompat-dropped-features.html#先行初期化)|Deprecation|||
 |[存在型](incompat-dropped-features.html#存在型)|Feature warning|||
 
 ### コンテキストの抽象化
 
-[コンテキストの抽象化]({% link _scala3-reference/contextual.md %})の再設計は明確に定義された非互換性が発生します。
+[コンテキストの抽象化]({% link _scala3-reference/contextual.md %})の再設計は明確に定義された非互換性が発生する。
 
 |Incompatibility|Scala 2.13|Scala 3 Migration Rewrite|Scalafix Rule|Runtime Incompatibility|
 |--- |--- |--- |--- |--- |
@@ -69,14 +71,14 @@ language: ja
 |[View bounds](incompat-contextual-abstractions.html#view-bounds)|Deprecation||||
 |[`A`と`=> A`でのあいまいな変換](incompat-contextual-abstractions.html#aと-aでのあいまいな変換)|||||
 
-さらに、暗黙の解決ルールを変更して、より便利で意外なものにならないようにしました。
-新しいルールについては[ここ](/scala3/reference/changed-features/implicit-resolution.html)に説明しています。
+さらに、暗黙の解決ルールを変更して、より便利で、意外なものにはならないようにした。
+新しいルールについては[ここ](/scala3/reference/changed-features/implicit-resolution.html)に説明している。
 
-これらの変更により、Scala 3コンパイラーは、既存のScala 2.13コードのいくつかの暗黙的なパラメーターの解決に失敗する可能性があります。
+これらの変更により、Scala 3 コンパイラーは、既存の Scala 2.13 コードのいくつかの暗黙的なパラメーターの解決に失敗する可能性がある。
 
 ### その他の変更した機能
 
-他のいくつかの機能は、言語をより簡単に、より安全に、またはより一貫性のあるものにするために簡略化または制限されています。
+他のいくつかの機能は、言語をより簡単に、より安全に、またはより一貫性のあるものにするために簡略化または制限した。
 
 |Incompatibility|Scala 3 Migration Rewrite|
 |--- |--- |
@@ -89,11 +91,11 @@ language: ja
 |[型パラメータとしての`=> T`](incompat-other-changes.html#型パラメータとしての-t)||
 |[型引数のワイルドカード](incompat-other-changes.html#型引数のワイルドカード)||
 
-### 型チェッカー
+### 型検査
 
-Scala 2.13の型チェッカーはある特定のケースに関して解決できないです。
-これは思いもしない驚異的な実行時エラーを導いてしまいます。
-Scala 3は強力で理論的な基盤に基づいているため、型チェッカーのこれらの不健全なバグが修正されました。
+Scala 2.13 の型検査はある特定のケースに関して解決できない。
+これは驚異的で思いもしない実行時エラーを導く。
+Scala 3 は強力で理論的な基盤に基づいているため、型検査のこれらの不健全なバグは修正された。
 
 |Incompatibility|
 |--- |
@@ -102,26 +104,27 @@ Scala 3は強力で理論的な基盤に基づいているため、型チェッ�
 
 ### 型推論
 
-いくつかの固有の型推論のルールはScala 2.13とScala 3の間で変更されました
+いくつかの固有の型推論のルールは Scala 2.13 と Scala 3 の間で変更した。
 
 |Incompatibility|
 |--- |
 |[オーバーライドしたメソッドの返り値の型](incompat-type-inference.html#オーバーライドしたメソッドの返り値の型)|
 |[リフレクションの型](incompat-type-inference.html#リフレクションの型)|
 
-また、型推論アルゴリズムは全体的な再設計を行い改善されました。
-この根本的な変更により、いくつかの非互換性が生じます。:
-- 別の型で推測することがあります
-- 新しい型チェックエラーが表示される場合があります
+また、型推論アルゴリズムは全体的な再設計を行い改善した。
+この根本的な変更により、いくつかの非互換性が生じる:
 
-> すべてのパブリックな値とメソッドの結果の型を明示的に記述することは良い習慣です。
-> この習慣は、推測されるタイプが異なり、ライブラリのパブリックAPIがScalaバージョンで変更されるのを防ぎます。
+- 別の型で推測することがある
+- 新しい型検査でエラーが表示される場合がある
+
+> すべてのパブリックな値とメソッドの結果の型を明示的に記述することは良い習慣である。
+> この習慣は、推測される型が異なり、ライブラリのパブリック API が Scala バージョンで変更されるのを防ぐ。
 > 
-> これは、Scalafixの[ExplicitResultTypes](https://scalacenter.github.io/scalafix/docs/rules/ExplicitResultTypes.html)ルールを使用して、Scala3の移行前に行うことができます.
+> これは、Scalafix の[ExplicitResultTypes](https://scalacenter.github.io/scalafix/docs/rules/ExplicitResultTypes.html)ルールを使用して、Scala 3 の移行前に行うことができる。
 
 ### マクロ
 
-Scala 3コンパイラはScala 2.13マクロを展開することはできません。
-このような状況では、新しいScala 3メタプログラミング機能を使用して、Scala 2.13マクロを再実装する必要があります。
+Scala 3 コンパイラは Scala 2.13 マクロを展開することはできない。
+このような状況では、新しい Scala 3 メタプログラミング機能を使用して、Scala 2.13 マクロを再実装する必要がある。
 
-[メタプログラミング](compatibility-metaprogramming.html) のページに戻れば新しいメタプログラミング機能について学ぶことができます
+[メタプログラミング](compatibility-metaprogramming.html) のページに戻れば新しいメタプログラミング機能について学ぶことができる。

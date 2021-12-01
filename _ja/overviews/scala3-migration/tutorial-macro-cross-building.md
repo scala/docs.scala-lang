@@ -8,17 +8,17 @@ next-page: tutorial-macro-mixing
 language: ja
 ---
 
-マクロライブラリは0から再実装しなければなりません。
+マクロライブラリはゼロから再実装しなければならない。
 
-開始する前に[sbtプロジェクトの移行](tutorial-sbt.html)チュートリアルに記載しているScala3移行について理解しておく必要があります。
-このチュートリアルの目的としては、既存のScala 2.13のマクロライブラリをクロスビルドしScala 3とScala 2.13の両方で使用するためことです。
+開始する前に[sbtプロジェクトの移行](tutorial-sbt.html)チュートリアルに記載している Scala3 移行について理解しておく必要がある。
+このチュートリアルの目的は、既存の Scala 2.13 のマクロライブラリをクロスビルドし Scala 3 と Scala 2.13 の両方で使用することである。
 
-代替手法としてはマクロミクシングは[次のチュートリアル](tutorial-macro-mixing.html)で説明します。
-両方のソリューションを読んで、ニーズに最適な手法を選択することをおすすめします。
+代替手法としてはマクロミクシングは[次のチュートリアル](tutorial-macro-mixing.html)で説明する。
+両方の代替手法を読み、必要に合わせて最適な手法を選択することをおすすめする。
 
 ## 導入
 
-このチュートリアルを例証するために、最小限のマクロライブラリの定義を下記で考えます。
+このチュートリアルを例証するために、最小限のマクロライブラリの定義を下記に示す。
 
 ```scala
 // build.sbt
@@ -54,27 +54,28 @@ object Macros {
 }
 ```
 
-ライブラリとのいくつかの類似点を認識する必要があります。:
-一つ以上のマクロメソッド（この場合は`location`メソッド）はマクロコンテキストとこの`Context`からの`Tree`を返すことで実装されています。
+ライブラリとのいくつかの類似点を認識する必要がある:
+例示したマクロメソッド（この場合は `location` メソッド）はマクロコンテキストを引数に、`Context` からの `Tree` を返すように実装されている。
 
-sbtが提供する[クロスビルディング手法](https://www.scala-sbt.org/1.x/docs/Cross-Build.html)を使用して、このライブラリをScala 3ユーザが利用できるように吸うことができます。
+sbt が提供する[クロスビルディング手法](https://www.scala-sbt.org/1.x/docs/Cross-Build.html)を使用して、このライブラリを Scala 3 ユーザが利用できるように扱うことができる。
 
-主要なアイデアは、アーティファクトを2回ビルドし、2つのリリース物を公開することです。:
-- `example_2.13` はScala 2.13ユーザ用
-- `example_3` はScala 3ユーザ用
+主なアイデアとして、アーティファクトを2回ビルドし、2つのリリース物を公開することです。:
+
+- `example_2.13` は Scala 2.13 ユーザ用
+- `example_3` は Scala 3 ユーザ用
 
 ![Cross-building Architecture](/resources/images/scala3-migration/tutorial-macro-cross-building.svg)
 
 ## 1. クロスビルディングの設定
 
-Scala 3に `crossScalaVersions` のリストを追加することができます。:
+Scala 3 に `crossScalaVersions` のリストを追加することができる:
 
 ```scala
 crossScalaVersions := Seq("2.13.6", "3.0.0")
 ```
 
-`scala-reflect` の依存関係はScala 3では役に立ちません。
-次のような条件で条件付き削除を行います。:
+`scala-reflect` の依存関係は Scala 3 では役に立たない。
+次のような条件で条件付き削除を行う:
 
 ```scala
 // build.sbt
@@ -88,12 +89,12 @@ libraryDependencies ++= {
 }
 ```
 
-sbtの再起動後、`++3.0.0`を動かすことで、Scala 3コンテキストにスイッチできます。
-`++2.13.6`を実行するといつでもScala 2.13コンテキストに戻ることができます。
+sbt の再起動後、`++3.0.0` を動かすことで、Scala 3 コンテキストにスイッチできる。
+`++2.13.6` を実行するといつでも Scala 2.13 コンテキストに戻ることができる。
 
 ## 2. バージョン固有のソースディレクトリでコードを再配置
 
-Scala 3でコンパイルしようとすると、あなたはいくつかの種類のエラーに遭遇するでしょう:
+Scala 3 でコンパイルしようとすると、いくつかの種類のエラーに遭遇するだろう:
 
 {% highlight text %}
 sbt:example> ++3.0.0
@@ -109,13 +110,13 @@ sbt:example> example / compile
 [error]    |To turn this error into a warning, pass -Xignore-scala2-macros to the compiler
 {% endhighlight %}
 
-Scala 2の実装を維持しながらScala 3の代替手段を提供するために、バージョン固有のソースディレクトリでコードを再配置します。
-Scala 3コンパイラでコンパイルできないすべてのコードは、`src/main/scala-2` フォルダに移動します。
+Scala 2 の実装を維持しながら Scala 3 への代替手段を提供するために、バージョン固有のソースディレクトリでコードを再配置する。
+Scala 3 コンパイラでコンパイルできないすべてのコードは、`src/main/scala-2` フォルダに移動する。
 
-> Scalaのバージョン固有のソースディレクトリは、デフォルトで利用できるsbt機能です。
-> 詳細については[sbt documentation](https://www.scala-sbt.org/1.x/docs/Cross-Build.html)で学ぶことができます。
+> Scala のバージョン固有のソースディレクトリは、デフォルトで利用できるsbt 機能だ。
+> 詳細については[sbt documentation](https://www.scala-sbt.org/1.x/docs/Cross-Build.html)で学ぶことができる。
 
-例として、`Location` クラスは`src/main/scala`フォルダに残りますが、`Macros` オブジェクトは`src/main/scala-2` フォルダに移動します。:
+例では、`Location` クラスは `src/main/scala` フォルダに残るが、`Macros` オブジェクトは `src/main/scala-2` フォルダに移動する:
 
 ```scala
 // example/src/main/scala/location/Location.scala
@@ -144,8 +145,8 @@ object Macros {
 }
 ```
 
-これで我々は`src/main/scala-3`フォルダにあるScala 3マクロ定義をそれぞれ初期化できます。
-それらは、Scala 2.13の対応物と全く同じシグネチャーを持っている必要があります。
+これで `src/main/scala-3` フォルダにある Scala 3 マクロ定義をそれぞれ初期化できる。
+ただし、Scala 2.13 の対応物と全く同じシグネチャーを持っている必要がある。
 
 ```scala
 // example/src/main/scala-3/location/Macros.scala
@@ -155,12 +156,12 @@ object Macros:
   def location: Location = ???
 ```
 
-## 3. Scala 3マクロの実装
+## 3. Scala 3 マクロの実装
 
-Scala2マクロをScala3に移植するための魔法の公式はありません。
-新しい[メタプログラミング](compatibility-metaprogramming.html)機能について学ぶ必要があります。
+Scala 2 マクロを Scala 3 に移植するための魔法の公式は存在しない。
+新しい[メタプログラミング](compatibility-metaprogramming.html)機能について学ぶ必要がある。
 
-最終的に、この実装を思いつきます。:
+最終的に、この実装を思いつくとする:
 
 ```scala
 // example/src/main/scala-3/location/Macros.scala
@@ -181,9 +182,9 @@ object Macros:
 
 ## 4. マクロの交差検証
 
-いくつかのテストを加えることはマクロメソッドが両方のScalaのバージョンで動くかどうかの確認に重要です。
+いくつかのテストを加えることはマクロメソッドが両方の Scala のバージョンで動くかどうかの確認に重要だ。
 
-例として、一つのテストを追加します。
+例として、一つのテストを追加する。
 
 ```scala
 // example/src/test/scala/location/MacrosSpec.scala
@@ -196,7 +197,7 @@ class MacrosSpec extends munit.FunSuite {
 }
 ```
 
-あなたは両方のバージョンでテストを実行できるようになります。
+これで両方のバージョンでテストを実行できるようになる。
 
 {% highlight text %}
 sbt:example> ++2.13.6
@@ -215,14 +216,15 @@ location.MacrosSpec:
 
 ## さいごに
 
-あなたのマクロプエオジェクトは現在以下のソースファイルが含まれているでしょう:
+あなたのプロジェクトは現在以下のソースファイルが含まれているだろう:
 - `src/main/scala/*.scala`: クロスコンパイルクラス群
-- `src/main/scala-2/*.scala`: Scala 2で実装されたマクロメソッド
-- `src/main/scala-3/*.scala`: Scala 3で実装されたマクロメソッド
+- `src/main/scala-2/*.scala`: Scala 2 で実装されたマクロメソッド
+- `src/main/scala-3/*.scala`: Scala 3 で実装されたマクロメソッド
 - `src/test/scala/*.scala`: テスト
 
 ![Cross-building Architecture](/resources/images/scala3-migration/tutorial-macro-cross-building.svg)
 
-これで、2つのリリースを作ることによってライブラリ公開の準備ができました:
+これで、2つのリリース物を作ることにより、ライブラリ公開の準備ができた:
+
 - `example_2.13` はScala 2.13ユーザ用
 - `example_3` はScala 3ユーザ用

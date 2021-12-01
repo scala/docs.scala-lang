@@ -1,26 +1,26 @@
 ---
-title: Scala 2.13とScala 3マクロのミクシング
+title: Scala 2.13 と Scala 3 マクロの mixing
 type: section
-description: このセクションはScala 2.13とScala 3マクロの単一アーティファクトでのミクシングについて示します
+description: このセクションはScala 2.13とScala 3マクロの単一アーティファクトでの mixing について示します
 num: 12
 previous-page: tutorial-macro-mixing
 next-page: tooling-syntax-rewriting
 language: ja
 ---
 
-このチュートリアルでは、Scala 2.13とScala 3マクロを単一アーティファクトでミックスする方法をお見せします。
+このチュートリアルでは、Scala 2.13 と Scala 3 マクロを単一アーティファクトで mixing する方法を見せる。
 
-これを使用して、新しいScala 3マクロライブラリを作り、それをScala 2.13ユーザでも利用可能にすることができます。
-それだけでなく、既存のScala 2.13マクロライブラリをScala 3に移植することも可能ですが、おそらくクロスビルドのほうが簡単です。
+この手法を用いて、新しい Scala 3 マクロライブラリを作り、それをScala 2.13 ユーザでも利用可能にする。
+それだけでなく、既存の Scala 2.13 マクロライブラリも Scala 3 に移植することは可能だが、その場合この手法よりクロスビルドのほうが簡単だ。
 
 ## 導入
 
-Scala 2.13コンパイラはSala 2.13マクロを展開することができ、逆に、Scala 3コンパイラはScala 3マクロを展開することができます。
-マクロミクシングのアイデアは単一アーティファクトにある両方のマクロをパッケージ化し、マクロ展開のフェーズでコンパイラーに2つから選択させることです。
+Scala 2.13 コンパイラは Sala 2.13 マクロを展開することができ、逆に、Scala 3 コンパイラは Scala 3 マクロを展開することができる。
+mixing macro のアイデアは単一アーティファクトにある両方のマクロをパッケージ化し、マクロ展開のフェーズでコンパイラーに2つから選択させることだ。
 
-これはScala 3だけ可能で、なぜならScala 3のコンパイラはScala 2とScala 3の両方とも定義を読むことができるからです。
+これは Scala 3 だけ可能で、なぜなら Scala 3 のコンパイラは Scala 2 と Scala 3 の両方の定義を読むことができるからだ。
 
-以下のコードスケルトンで実際に考えてみましょう:
+以下のコードスケルトンで実際に考えてみよう:
 
 ```scala
 // example/src/main/scala/location/Location.scala
@@ -33,19 +33,20 @@ object Macros:
   inline def location: Location = ${ ??? }
 ```
 
-見ての通り、`location` マクロの定義は2つあります。:
-- `def location: Location = macro ???` はScala 2.13マクロ定義です
-- `inline def location: Location = ${ ??? }` はScala 3マクロ定義です。
+見ての通り、`location` マクロの定義は2つある:
 
-`location` はオーバーロードされたメソッドではないです、なぜなら2つのシグネチャーは厳密には同一だからです。
-これは非常に驚くべきことです！
-コンパイラは同じ名前とシグネチャーを持つ2つのメソッドをどのように受け入れるのでしょうか？
+- `def location: Location = macro ???` は Scala 2.13 マクロ定義
+- `inline def location: Location = ${ ??? }` は Scala 3 マクロ定義
 
-現状のまとめとしては、最初の定義はScala 2.13のみであり、2番目の定義はScala 3のみであるということです。
+`location` はオーバーロードされたメソッドではない。なぜなら2つのシグネチャーは厳密には同一だからだ。
+これは非常に驚くべきことだ！
+コンパイラは同じ名前とシグネチャーを持つ2つのメソッドをどのように受け入れるのだろうか？
 
-## 1. Scala　3マクロの実装
+現状のまとめとしては、最初の定義は Scala 2.13 のみであり、2番目の定義は Scala 3 のみであるということだ。
 
-Scala3マクロ実装を定義の横に置くことができます。
+## 1. Scala 3 マクロの実装
+
+Scala 3 マクロ実装を定義の横に配置できる。
 
 ```scala
 package location
@@ -65,11 +66,12 @@ object Macros:
     '{new Location($file, $line)}
 ```
 
-## 2. Scala　2マクロの実装
+## 2. Scala 2 マクロの実装
 
-Scala 3コンパイラは, ダブルクォートまたは、reificationが含まれていない場合、Scala 2マクロ実装はコンパイルできます
+Scala 3 コンパイラは、ダブルクォートや reification が含まれていない場合、Scala 2 マクロ実装のコンパイルは可能だ。
 
-たとえば、このコードはScala 3でコンパイルされるため、Scala 3の実装と一緒に配置できます。
+たとえば、このコードは Scala 3 でコンパイルされるため、Scala 3 の実装と一緒に配置できる。
+
 ```scala
 import scala.reflect.macros.blackbox.Context
 
@@ -81,7 +83,7 @@ def locationImpl(c: Context): c.Tree =  {
 }
 ```
 
-しかしながら、多くのケースであなたはScala 2.13マクロ実装をScala 2.13サブモジュールに移動しなければならないでしょう。
+しかしながら、多くのケースで Scala 2.13 マクロ実装を Scala 2.13サブモジュールに移動しなければならないだろう。
 
 ```scala
 // build.sbt
@@ -99,9 +101,9 @@ lazy val `example-compat` = project.in(file("example-compat"))
   )
 ```
 
-このような`example`では, この例では、Scala 3でコンパイルされたメインライブラリは、Scala 2.13でコンパイルされた`example-compat`に依存しています。
+この例の、`example` に関して、Scala 3 でコンパイルされたメインライブラリは、Scala 2.13でコンパイルされた `example-compat` に依存している。
 
-このような場合、Scala 2マクロの実装を`example-compat`にいれて、ダブルクォートを使用できます。
+このような場合、Scala 2 マクロの実装を `example-compat` にいれて、ダブルクォートを使用できる。
 
 ```scala
 package location
@@ -122,13 +124,13 @@ object Scala2MacrosCompat {
 }
 ```
 
-`Location`クラスを下流に移動させる必要があることに注意してください。
+`Location` クラスを下流に移動させる必要があることに注意してください。
 
 ## 3. マクロの交差検証
 
-いくつかのテストを加えることはマクロメソッドが両方のScalaのバージョンで動くかどうかの確認に重要です。
+いくつかのテストを加えることはマクロメソッドが両方の Scala のバージョンで動くかどうかの確認に重要である。
 
-Scala 2.13とScala 3で実行したいので、クロスビルドモジュールを作ります。:
+Scala 2.13 と Scala 3 で実行したいので、クロスビルドモジュールを作る:
 
 ```scala
 // build.sbt
@@ -147,9 +149,10 @@ lazy val `example-test` = project.in(file("example-test"))
   .dependsOn(example)
 ```
 
-> `-Ytasty-reader`はScala 3アーティファクトを消費するためにScala 2.13上で必要です
+> `-Ytasty-reader` は Scala 3 アーティファクトを消費するために Scala 2.13 上で必要だ
 
-例えば、テストは次のようになります。:
+例えば、テストは次のようになる:
+
 ```scala
 // example-test/src/test/scala/location/MacrosSpec.scala
 package location
@@ -161,7 +164,7 @@ class MacrosSpec extends munit.FunSuite {
 }
 ```
 
-これで両方のバージョンでテスト可能のはずです。
+これで両方のバージョンでテスト可能のはずだ。
 
 {% highlight text %}
 sbt:example> ++2.13.6
@@ -180,16 +183,17 @@ location.MacrosSpec:
 
 ## さいごに
 
-現在のライブラリの構成です:
--  メインのScala 3モジュールはScala 3マクロ実装とミクシングしたマクロ定義が含まれています。
--  Scala 2.13の互換性のあるモジュールはScala 2.13マクロ実装を含んでいます。
-これは、コンパイラのマクロ展開フェーズでScala 2.13により消費されるでしょう
+現在のライブラリの構成である:
+
+-  メインの Scala 3 モジュールは Scala 3 マクロ実装と mixing したマクロ定義が含まれている。
+-  Scala 2.13 の互換性のあるモジュールは Scala 2.13 マクロ実装を含んでいる。
+これは、コンパイラのマクロ展開フェーズで Scala 2.13 により消費されるだろう。
 
 ![Mixing-macros Architecture](/resources/images/scala3-migration/tutorial-macro-mixing.svg)
 
-これでライブラリを公開する準備ができました。
+これでライブラリを公開する準備ができた。
 
-Scala 3プロジェクトで利用可能ですし、または次の設定のScala 2.13プロジェクトでも利用できます。:
+Scala 3 プロジェクトで利用可能であり、次の設定の Scala 2.13 プロジェクトでも利用可能だ:
 
 ```scala
 scalaVersion := "2.13.6"

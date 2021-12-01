@@ -8,7 +8,7 @@ next-page: incompat-type-checker
 language: ja
 ---
 
-その他の機能は言語をより簡単、安全、または一貫性のあるものにするために簡略化または制限されています。
+その他の機能は言語をより簡単、安全、または一貫性のあるものにするために簡略化または制限した。
 
 |Incompatibility|Scala 3 Migration Rewrite|
 |--- |--- |
@@ -23,8 +23,8 @@ language: ja
 
 ## 継承シャドウイング
 
-親クラスまたはトレイトからの継承されたメンバーは外部スコープで定義された識別子をシャドウイングすることができます。
-このパターンのことを継承シャドウイングと呼びます。
+親クラスまたはトレイトからの継承されたメンバーは外部スコープで定義された識別子をシャドウイングすることができる。
+このパターンのことを継承シャドウイングと呼ぶ。
 
 ```scala
 object B {
@@ -35,14 +35,14 @@ object B {
 }
 ```
 
-例として、以下のコードを与えてみます。Cの中にある単項式`x`は`x`のメンバー定義を外部クラス`B`から参照することができ、また親クラス`A`の`x`のメンバー定義しても参照できます。
-どちらの参照かは`A`の定義に進むまでわかりません。
+例として、以下のコードを与える。C の中にある単項式 `x` は `x` のメンバー定義を外部クラス `B` から参照することができ、また親クラス `A` の `x` のメンバー定義からも参照できる。
+どちらの参照かは `A` の定義に進むまでわからない。
 
-これはエラーが発生しやすいことで知られています。
+これはエラーが発生しやすいことで知られている。
 
-そのため、Scala3では、親クラス`A`に実際にメンバー`x`がある場合、コンパイラは曖昧性解消を必要とします。
+そのため、Scala 3 では、親クラス `A` に実際にメンバー `x` がある場合、コンパイラは曖昧性解消を必要とする。
 
-これにより、次のコードがコンパイルされなくなります。
+これにより、次のコードがコンパイルされなくなった。
 
 ```scala
 class A {
@@ -66,13 +66,13 @@ object B {
   |              and inherited subsequently in class C
 {% endhighlight %}
 
-[Scala 3移行コンパイル](tooling-migration-mode.html) は`println(x)` を`println(this.x)`に置き換えることで自動的に曖昧性解消を行います。
+[Scala 3移行コンパイル](tooling-migration-mode.html) は`println(x)` を `println(this.x)` に置き換えることで自動的に曖昧性解消を行う。
 
 ## プライベートクラスのNon privateなコンストラクタ
 
-Scala 3ではプライベートクラスのコンストラクタはプライベートである必要があります。
+Scala 3 ではプライベートクラスのコンストラクタはプライベートである必要がある。
 
-例としては、次のようになります。:
+例としては、次のようになる:
 
 ```scala
 package foo
@@ -80,7 +80,8 @@ package foo
 private class Bar private[foo] () {}
 ```
 
-エラーメッセージはこのようになります。:
+エラーメッセージは以下になる:
+
 ```
 -- Error: /home/piquerez/scalacenter/scala-3-migration-guide/incompat/access-modifier/src/main/scala-2.13/access-modifier.scala:4:19 
 4 |  private class Bar private[foo] ()
@@ -89,15 +90,15 @@ private class Bar private[foo] () {}
   |      in its type signature (): foo.Foo.Bar
 ```
 
-[Scala 3移行コンパイル](tooling-migration-mode.html) では自動的には書き換えが行われずWARNINGが与えられます。
+[Scala 3移行コンパイル](tooling-migration-mode.html) では自動的には書き換えが行われずWARNINGが与えられる。
 
-クラスはプライベートであるため、この解決策としてはコンストラクタをプライベートにすることです。
+クラスはプライベートであるため、解決策はコンストラクタをプライベートにすることだ。
 
 ## 抽象オーバーライド
 
-Scala 3では、抽象defでdefをオーバーライドすると、サブクラスはdef抽象を考慮しますが、Scala 2では具象とみなされていました。
+Scala 3 では、抽象 def で def をオーバーライドすると、サブクラスは def 抽象を考慮するが、Scala 2 では具象とみなされていた。
 
-次のコードでは、`C`の`bar`メソッドはScala 2.13コンパイラでは具象であるとみなされていますが、Scala 3コンパイラでは抽象的であるとみなされてるため、次のエラーが発生します。
+次のコードでは、`C` の `bar` メソッドは Scala 2.13 コンパイラでは具象であるとみなされているが、Scala 3 コンパイラでは抽象的であるとみなされるため、次のエラーが発生する。
 
 ```scala
 trait A {
@@ -111,17 +112,17 @@ trait B extends A {
 class C extends B // Error: def bar(x: Int): Int は定義されていませんので、class C は抽象である必要があります
 ```
 
-この振る舞いは[Dotty issue #4770](https://github.com/lampepfl/dotty/issues/4770)で決定しました。
+この振る舞いは[Dotty issue #4770](https://github.com/lampepfl/dotty/issues/4770)にて決定した。
 
-簡単な修正は、抽象defを削除することです。
-これは、実際にはScala 2では効果がなかったためです。
+簡単な修正としては、抽象 def を削除することだ。
+これは、実際には Scala 2 では効果がなかったためだ。
 
 ## ケースクラスコンパニオン
 
-ケースクラスのコンパニオンオブジェクトは`Function{0-23}`の特性を拡張しなくなりました。
-特に、これらのメソッドは継承しなくなりました。: `tupled`, `curried`, `andThen`, `compose`...
+ケースクラスのコンパニオンオブジェクトは `Function{0-23}` の特性を拡張しなくした。
+特に、これらのメソッドは継承しない: `tupled`, `curried`, `andThen`, `compose`...
 
-例として、このコードは無効になります。:
+例として、このコードは無効になる:
 
 ```scala
 case class Foo(x: Int, b: Boolean)
@@ -130,7 +131,7 @@ Foo.curried(1)(true)
 Foo.tupled((2, false))
 ```
 
-クロスコンパイルによるソリューションはメソッド`Foo.apply`を明示的にEta展開することです。
+クロスコンパイルによるソリューションはメソッド `Foo.apply` を明示的にイータ展開することだ。
 
 {% highlight diff %}
 -Foo.curried(1)(true)
@@ -140,7 +141,7 @@ Foo.tupled((2, false))
 +(Foo.apply _).tupled((2, false))
 {% endhighlight %}
 
-パフォーマンス上の理由から、中間間数値を導入することもできます。
+パフォーマンス上の理由から、中間間数値を導入することもできる。
 
 ```scala
 val fooCtr: (Int, Boolean) => Foo = (x, b) => Foo(x, b)
@@ -150,20 +151,20 @@ fooCtr.tupled((2, false))
 ```
 ## 明示的な`unapply`の呼び出し
 
-Scalaにおいて、ケースクラスには自動生成された抽象メソッドがあり、コンパニオンオブジェクトで`unapply`と呼ばれます。
-Scala 2.13とScala 3間でシグネチャが変わりました。
+Scala において、ケースクラスには自動生成された抽象メソッドがあり、コンパニオンオブジェクトで `unapply` と呼ばれている。
+Scala 2.13 と Scala 3 間でシグネチャが変わった。
 
-新しいシグネチャは、オプションがありません(参照として新しい[Pattern Matching](/scala3/reference/changed-features/pattern-matching.html)) 、これにより、`unapply`が明示的に呼び出されたときに非互換性が発生します。
+新しいシグネチャは、オプションがなく(参照として新しい[Pattern Matching](/scala3/reference/changed-features/pattern-matching.html)) 、これにより、`unapply` が明示的に呼び出されたときに非互換性が発生する。
 
-この問題は、Scalaバージョン間でシグネチャが同じ状態のユーザが定義したエクストラクタには影響しないことに注意してください。
+この問題は、Scala バージョン間でシグネチャが同じ状態のユーザが定義したエクストラクタには影響しないことに注意すべきだ。
 
-次のケースクラス定義があるとします。:
+次のケースクラス定義があるとする:
 
 ```scala
 case class Location(lat: Double, long: Double)
 ```
 
-Scala 2.13コンパイラでは `unapply` メソッドを生成します :
+Scala 2.13 コンパイラでは `unapply` メソッドを生成する:
 
 ```scala
 object Location {
@@ -171,7 +172,7 @@ object Location {
 }
 ```
 
-一方でScala 3コンパイラでは以下のようにメソッドが生成されます:
+一方で Scala 3 コンパイラでは以下のようにメソッドを生成する:
 
 ```scala
 object Location {
@@ -179,7 +180,7 @@ object Location {
 }
 ```
 
-その結果、次のコードはコンパイルされなくなります。
+その結果、次のコードはコンパイルされなくなる
 
 ```scala
 def tuple(location: Location): (Int, Int) = {
@@ -187,7 +188,7 @@ def tuple(location: Location): (Int, Int) = {
 }
 ```
 
-考えられる解決策は、パターンバインディングを使用することです。:
+考えられる解決策は、パターンバインディングを使用することだ:
 
 {% highlight diff %}
 def tuple(location: Location): (Int, Int) = {
@@ -199,9 +200,9 @@ def tuple(location: Location): (Int, Int) = {
 
 ## 見えないビーンプロパティ
 
-`BeanProperty`アノテーションにより生成されたgetterとsetterメソッドは、主なユースケースがJavaフレームワークと相互運用性があるため、Scala 3では表示されなくなりました。
+`BeanProperty` アノテーションにより生成された getter と setter メソッドは、主なユースケースが Java フレームワークと相互運用性があるため、Scala 3 では表示されない。
 
-例として下記に示します。:
+例として下記に示す:
 
 ```scala
 class Pojo() {
@@ -215,7 +216,7 @@ pojo.setFooBar("hello") // [E008] Not Found Error: value setFooBar is not a memb
 println(pojo.getFooBar()) // [E008] Not Found Error: value getFooBar is not a member of Pojo
 ```
 
-解決策は、より慣用的な`pojo.fooBar` getterとsetter呼び出すことです。
+解決策は、より慣用的な `pojo.fooBar` getter と setter 呼び出すことだ。
 
 {% highlight diff %}
 val pojo = new Pojo()
@@ -229,11 +230,11 @@ val pojo = new Pojo()
 
 ## 型パラメータとしての`=> T`
 
-この`=> T`ようなフォームでは型パラメータへの引数として使用できなくなりました。 
+この `=> T` ようなフォームでは型パラメータへの引数として使用できなくなった。 
 
-この決定はScala3ソースコードの[コメント](https://github.com/lampepfl/dotty/blob/0f1a23e008148f76fd0a1c2991b991e1dad600e8/compiler/src/dotty/tools/dotc/core/ConstraintHandling.scala#L144-L152)で説明しています。
+この決定は Scala 3 ソースコードの[コメント](https://github.com/lampepfl/dotty/blob/0f1a23e008148f76fd0a1c2991b991e1dad600e8/compiler/src/dotty/tools/dotc/core/ConstraintHandling.scala#L144-L152)で説明している。
 
-例として、`Int => (=> Int) => Int`の関数は、型パラメータ`T2`に`=> Int` を割り当てるため、カリー化なしのメソッドにわたすことはできません。
+例として、`Int => (=> Int) => Int` の関数は、型パラメータ `T2` に `=> Int` を割り当てるため、カリー化なしのメソッドにわたすことはできない。
 
 ```
 -- [E134] Type Mismatch Error: src/main/scala/by-name-param-type-infer.scala:3:41
@@ -248,15 +249,16 @@ val pojo = new Pojo()
   |match arguments ((Test.f : Int => (=> Int) => Int))
 ```
 
-この解決策は状況に依存します。例として、いずれかを行うことができます。:
-  - 適切なシグネチャを使用して、独自の`カリー化してない`メソッドを定義します。
+この解決策は状況に依存する。例では、いずれかを行うことができる:
+
+  - 適切なシグネチャを使用して、独自の`カリー化してない`メソッドを定義する。
   - `カリー化していない`実装をローカルでインライン化する。
 
 ## 型引数のワイルドカード
 
-Scala 3ではワイルドカードの引数より種類の多い抽象型メンバーへの適用は減らすことができません。
+Scala 3 ではワイルドカードの引数より種類の多い抽象型メンバーへの適用は減らすことができない。
 
-この例では、コンパイルされません。
+この例では、コンパイルされない。
 
 ```scala
 trait Example {
@@ -266,20 +268,20 @@ trait Example {
 }
 ```
 
-型パラメータを使うことで修正できます。:
+型パラメータを使うことで修正できる。:
 
 {% highlight diff %}
 -def f(foo: Foo[_]): Unit
 +def f[A](foo: Foo[A]): Unit
 {% endhighlight %}
 
-しかし、簡単な解決策では`Foo`が自身を型パラメータとして使われるときはうまくいきません。
+しかし、簡単な解決策では `Foo` が自身を型パラメータとして使われるときはうまくいかない。
 
 ```scala
 def g(foos: Seq[Foo[_]]): Unit
 ```
 
-このようなケースでは、`Foo`の周りをラップするクラスを使います。:
+このようなケースでは、`Foo` の周りをラップするクラスを使う:
 
 {% highlight diff %}
 +class FooWrapper[A](foo: Foo[A])

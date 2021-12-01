@@ -8,21 +8,21 @@ next-page: options-new
 language: ja
 ---
 
-コンパイラオプションは、Scala 2.13の名前に従って分類および順序付けしています。
-各Scala 2.13オプションは、Scala 3でのステータスを関連付けています。
+コンパイラオプションは、Scala 2.13 の名前に従い、分類および順序付けしている。
+各 Scala 2.13 オプションは、Scala 3 でのステータスと関連付けている。
 
 | Status | Meaning |
-|-|-|
-| <i class="fa fa-check fa-lg"></i> | Scala 3で利用可能です |
-| `<new-name>` | `<new-name>`に変名しました |
-| <i class="fa fa-times fa-lg"></i> | 3.0.0では利用できませんが後から追加でしょう |
+|---|---|
+| <i class="fa fa-check fa-lg"></i> | Scala 3で利用可能 |
+| `<new-name>` | `<new-name>` に変名した |
+| <i class="fa fa-times fa-lg"></i> | 3.0.0 では利用できないが後から追加するだろう |
 
-> 現状の比較に関しては2.13.4と3.0.0-M3で比較しています。 
+> 現状の比較に関しては 2.13.4 と 3.0.0-M3 で比較している。 
 
 ## 基本設定
 
 | 2.13.x | 3.0.x |
-|-|-|
+|---|---|
 | `-Dproperty=value` | <i class="fa fa-times fa-lg"></i> |
 | `-J<flag>` | <i class="fa fa-times fa-lg"></i> |
 | `-P:<plugin>:<opt>` |<i class="fa fa-check fa-lg"></i>|
@@ -67,7 +67,7 @@ language: ja
 ## 拡張設定
 
 | 2.13.x | 3.0.x |
-|-|-|
+|---|---|
 | `-X` |<i class="fa fa-check fa-lg"></i>|
 | `-Xcheckinit` | `-Ycheck-init` |
 | `-Xdev` | <i class="fa fa-times fa-lg"></i> |
@@ -111,7 +111,7 @@ language: ja
 ## プライベート設定
 
 | 2.13.x | 3.0.x |
-|-|-|
+|---|---|
 | `-Ybackend-parallelism` | <i class="fa fa-times fa-lg"></i> |
 | `-Ybackend-worker-queue` | <i class="fa fa-times fa-lg"></i> |
 | `-Ybreak-cycles` | <i class="fa fa-times fa-lg"></i> |
@@ -184,11 +184,11 @@ language: ja
 
 ## 詳細設定
 
-2.13では詳細設定が導入されていました。
-その殆どに関してScala 3ではまだ実装されていません。
+2.13 では詳細設定が導入されていた。
+その殆どはScala 3 ではまだ実装されていない。
 
 | 2.13.x | 3.0.x |
-|-|-|
+|---|---|
 | `-Vbrowse:<phases>` | <i class="fa fa-times fa-lg"></i> |
 | `-Vdebug-tasty` | <i class="fa fa-times fa-lg"></i> |
 | `-Vdoc` | <i class="fa fa-times fa-lg"></i> |
@@ -228,8 +228,8 @@ language: ja
 
 ## Warning設定
 
-Warningの設定は2.13で導入されていました。
-その殆どに関してScala 3ではまだ実装されていません。
+Warningの設定は 2.13 で導入されていた。
+その殆どは Scala 3 ではまだ実装されていない。
 
 | 2.13.x | 3.0.x |
 |-|-|
@@ -246,13 +246,13 @@ Warningの設定は2.13で導入されていました。
 
 ## コンパイラプラグイン
 
-いくつかの便利なScala 2.13コンパイラプラグインはScala 3コンパイラに同梱されています。
-いくつかの新しいネイティブオプションを使用して、有効にできます。
+いくつかの便利な Scala 2.13 コンパイラプラグインは Scala 3 コンパイラに同梱されている。
+いくつかの新しいネイティブオプションを使用して、有効にできる。
 
 ### Scala.js
 
 | 2.13.x | 3.0.x |
-|-|-|
+|---|---|
 | `-Xplugin:scalajs-compiler_<version>.jar` | `-scalajs` |
 | `-P:scalajs:genStaticForwardersForNonTopLevelObjects` | `-scalajs-genStaticForwardersForNonTopLevelObjects` |
 | `-P:scalajs:mapSourceURI`| `-scalajs-mapSourceURI`|
@@ -260,12 +260,12 @@ Warningの設定は2.13で導入されていました。
 ### SemanticDB
 
 | 2.13.x | 3.0.x |
-|-|-|
+|---|---|
 | `-Xplugin:semanticdb-scalac_<version>.jar`| `-Xsemanticdb` |
 | `-P:semanticdb:targetroot:<path>` | `-semanticdb-target:<path>` |
 
 ### Kind-Projector
 
 | 2.13.x | 3.0.x |
-|-|-|
+|---|---|
 | `-Xplugin:kind-projector_<version>.jar` | `-Ykind-projector` |

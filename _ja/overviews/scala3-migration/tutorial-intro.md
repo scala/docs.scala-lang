@@ -1,22 +1,22 @@
 ---
 title: 移行チュートリアル
 type: chapter
-description: この章はScala 2.13 projectをScala 3へ移行するチュートリアルを含みます 
+description: この章はScala 2.13 project を Scala 3 へ移行するチュートリアルを含みます 
 num: 8
 previous-page: tooling-migration-mode
 next-page: tutorial-prerequisites
 language: ja
 ---
 
-Scala 3の移植の準備をしましょう！
+Scala 3 の移植の準備をしよう！
 
-最初のステップはプロジェクトの[前提条件](tutorial-prerequisites.html)を満たしていることを確認することです。
-次に、あなたが移行ワークフローについて[sbtプロジェクトの移行](tutorial-sbt.html) で学ぶことができます。
+移植の最初のステップはプロジェクトの[前提条件](tutorial-prerequisites.html)を満たしているかを確認することだ。
+次に、移行ワークフローについて、[sbtプロジェクトの移行](tutorial-sbt.html) で学ぶことができる。
 
-> **sbtを使ってない？**
+> **sbtを使用していない？**
 > 
-> ワークフローが非常に似ていることから、[sbtプロジェクトの移行](tutorial-sbt.html)で学ぶことを強く助言します。
-> その前に、ビルドツールがScala 3対応しているバージョンか確認してください。
+> 移行ワークフローが非常に似ていることから、[sbtプロジェクトの移行](tutorial-sbt.html)で学ぶことを強くおすすめする。
+> その前に、ビルドツールが Scala 3 対応しているバージョンかを確認してください。
 
 
-[Cross-Building a Macro Library](tutorial-macro-cross-building.html) と [Mixing Scala 2.13 and Scala 3 Macros](tutorial-macro-mixing.html) ではScala 2マクロライブラリの移植をするための特別なチュートリアルです。
+[Cross-Building a Macro Library](tutorial-macro-cross-building.html) と [Mixing Scala 2.13 and Scala 3 Macros](tutorial-macro-mixing.html) では Scala 2 マクロライブラリの移植をするための特別なチュートリアルだ。

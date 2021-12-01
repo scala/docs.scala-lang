@@ -8,7 +8,7 @@ next-page: incompat-other-changes
 language: ja
 ---
 
-[コンテキスト抽象化]({% link _scala3-reference/contextual.md %})の再設計にはいくつかの非互換性をもたらします。
+[コンテキスト抽象化]({% link _scala3-reference/contextual.md %})の再設計にはいくつかの非互換性をもたらす。
 
 |Incompatibility|Scala 2.13|Scala 3 Migration Rewrite|Scalafix Rule|Runtime Incompatibiltiy|
 |--- |--- |--- |--- |--- |
@@ -19,16 +19,16 @@ language: ja
 
 ## 暗黙的定義の型
 
-暗黙的定義の型 (`val` や`def`) はScala 3では明示的に与える必要があります。
-これらを推論することはできなくなりました。
+暗黙的定義の型 (`val` や`def`) は Scala 3 では明示的に与える必要がある。
+これらを推論することはできなくなった。
 
-[ohze/scala-rewrites](https://github.com/ohze/scala-rewrites#fixexplicittypesexplicitimplicittypes) のリポジトリのScalafixルールで`ExplicitImplicitTypes`と名付けられているものでは、自動的に見逃してる型のアノテーションを付けてくれます。
+[ohze/scala-rewrites](https://github.com/ohze/scala-rewrites#fixexplicittypesexplicitimplicittypes) のリポジトリの Scalafix ルールで `ExplicitImplicitTypes` と名付けられているものは、自動的に見逃してる型のアノテーションを付ける。
 
 ## Implicit Views
 
-Scala 3では、`implicit val ev: A => B`のような形のimplicit関数値からの暗黙的型変換をサポートしなくなりました。
+Scala 3 では、`implicit val ev: A => B` のような形の implicit 関数値からの暗黙的型変換をサポートしなくなった。
 
-以下のコードは現在無効になります。:
+以下のコードは現在無効になる:
 
 ```scala
 trait Pretty {
@@ -39,13 +39,13 @@ def pretty[A](a: A)(implicit ev: A => Pretty): String =
   a.print // Error: value print is not a member of A
 ```
 
-[Scala 3移行コンパイル](tooling-migration-mode.html)これらのケースについてWARNINGを出してくれまが、直すことはできません。
+[Scala 3 移行コンパイル](tooling-migration-mode.html)で、これらのケースについてWARNINGを出すが、直すことはできない。
 
-この非互換性により、実行時の非互換性を引き起こし、プログラムが破損する可能性があることに注意してください。
-実際、コンパイラはより広いスコープで別の暗黙的変換を見つけることができます。
-これにより、実行時の望んでいない動作が発生します。
+この非互換性により、実行時の非互換性を引き起こし、プログラムが破損する可能性があることに注意すべきだ。
+実際、コンパイラはより広いスコープで別の暗黙的変換を見つけることができる。
+これにより、実行時に望んでいない動作が発生する。
 
-この例は、次の場合を示しています。:
+例として、次の場合を示す:
 
 ```scala
 trait Pretty {
@@ -58,11 +58,12 @@ def pretty[A](a: A)(implicit ev: A => Pretty): String =
   a.print // always print "any"
 ```
 
-解決される変換は、コンパイラのモードによって異なります。:
-  - `-source:3.0-migration`: `ev`変換を行います。
-  - `-source:3.0`: `ev`変換の実行はできませんが、`anyPretty`は実行できます。ただこれは望ましくありません。
+解決される変換は、コンパイラのモードによって異なる:
 
-簡単な修正の一つとしては、正しい変換を明示的に提供することです。:
+  - `-source:3.0-migration`: `ev`変換を行う。
+  - `-source:3.0`: `ev`変換は実行できないが、`anyPretty`は実行可能だ。ただし、これは望ましくない。
+
+簡単な修正の一つとしては、正しい変換を明示的に提供することだ:
 
 {% highlight diff %}
 def pretty[A](a: A)(implicit ev: A => Pretty): String =
@@ -72,14 +73,14 @@ def pretty[A](a: A)(implicit ev: A => Pretty): String =
 
 ## View Bounds
 
-View Boundsは長い間非推奨担っていましたがScala 2.13では未だサポートされています。
-Scala 3ではコンパイルできないです。
+View Bounds は長い間非推奨になっていたが Scala 2.13 では未だサポートされている。
+Scala 3ではコンパイルできない。
 
 ```scala
 def foo[A <% Long](a: A): Long = a
 ```
 
-この例では下記のエラーを取得します。:
+例では下記のエラーを得る:
 
 {% highlight text %}
 -- Error: src/main/scala/view-bound.scala:2:12 
@@ -88,11 +89,11 @@ def foo[A <% Long](a: A): Long = a
   |          view bounds `<%' are deprecated, use a context bound `:' instead
 {% endhighlight %}
 
-このメッセージはcontext boundをview boundsの代わりに使うよう提案していますが、メソッドのシグネチャが変更してしまうでしょう。
-おそらくバイナリ互換性を維持するほうがより簡単で安全でしょう。
-そのため、暗黙的変換を宣言して明示的に呼び出す必要があります。
+このメッセージは context bound を view bounds の代わりに使うよう提案しているが、そうするとメソッドのシグネチャが変更してしまうだろう。
+おそらくバイナリ互換性を維持するほうがより簡単で安全だろう。
+そのため、暗黙的変換を宣言して明示的に呼び出す必要がある。
 
-上記の[Implicit Views](#implicit-views)で説明した通り、実行時の非互換性により落ちる可能性があることに気をつけましょう。
+上記の[Implicit Views](#implicit-views)で説明した通り、実行時の非互換性によりプログラムが落ちる可能性があることに気をつけよう。
 
 {% highlight diff %}
 -def foo[A <% Long](a: A): Long = a
@@ -101,10 +102,10 @@ def foo[A <% Long](a: A): Long = a
 
 ## `A`と`=> A`でのあいまいな変換
 
-Scala 2.13では`A`での暗黙的変換が`=> A`での暗黙的変換より優先されてます。
-Scala3ではそうではなく、あいまい変換に繋がります。
+Scala 2.13 では `A` での暗黙的変換が `=> A` での暗黙的変換より優先される。
+Scala3では優先されず、あいまい変換へ繋がる。
 
-以下に例示します。:
+以下に例示する:
 
 ```scala
 implicit def boolFoo(bool: Boolean): Foo = ???
@@ -113,7 +114,7 @@ implicit def lazyBoolFoo(lazyBool:  => Boolean): Foo = ???
 true.foo()
 ```
 
-Scala 2.13のコンパイラは`boolFoo`変換を選択しますがScala 3コンパイラはコンパイル失敗します。
+Scala 2.13 のコンパイラは `boolFoo` 変換を選択するが Scala 3 コンパイラはコンパイル失敗する。
 
 {% highlight text %}
 -- Error: src/main/scala/ambiguous-conversion.scala:4:19
@@ -125,7 +126,7 @@ Scala 2.13のコンパイラは`boolFoo`変換を選択しますがScala 3コン
   |both method boolFoo in object Foo and method lazyBoolFoo in object Foo provide an extension method `foo` on (true : Boolean)
 {% endhighlight %}
 
-一時的な解決策としては、明示的に変換を書き換えることです。
+一時的な解決策としては、明示的に変換を書き換えることだ。
 
 {% highlight diff %}
 implicit def boolFoo(bool: Boolean): Foo = ???
