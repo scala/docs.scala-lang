@@ -2,7 +2,7 @@
 layout: singlepage-overview
 title: Getting Started
 partof: getting-started
-languages: [ja]
+languages: [fr, ja]
 includeTOC: true
 
 redirect_from: "/getting-started.html"
