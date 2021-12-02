@@ -7,7 +7,7 @@ num: 4
 
 language: fr
 
-next-page: traits
+next-page: default-parameter-values
 previous-page: unified-types
 ---
 
