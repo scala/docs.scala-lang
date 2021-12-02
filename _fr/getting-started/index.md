@@ -115,7 +115,7 @@ Il proposent tout deux des fonctionnalités riches, mais vous utiliser d'[autres
 
 1. Téléchargez et installez [IntelliJ Community Edition](https://www.jetbrains.com/idea/download/)
 1. Installez l'extension Scala en suivant [les instruction IntelliJ pour installer des extensions](https://www.jetbrains.com/help/idea/managing-plugins.html)
-1. Ouvre le fichier `build.sbt` puis choisissez *Open as a project*
+1. Ouvrez le fichier `build.sbt` puis choisissez *Open as a project*
 
 ### Avec VSCode et metals
 
