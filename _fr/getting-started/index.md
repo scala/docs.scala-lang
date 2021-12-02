@@ -99,7 +99,7 @@ Pour créer un nouveau projet Scala avec sbt :
                 - Main.scala (Programme point d'entrée) <-- c'est tout ce dont nous avons pour le moment
 ```
 
-Vous pouvez trouver plus de documentation à propose de sbt dans le [Scala Book](/scala3/book/tools-sbt.html) ([Lien](/overviews/scala-book/scala-build-tool-sbt.html) pour le version 2 de Scala) et sur la [documentation](https://www.scala-sbt.org/1.x/docs/index.html) officielle de sbt.
+Vous pouvez trouver plus de documentation à propose de sbt dans le [Scala Book](/scala3/book/tools-sbt.html) ([Lien](/overviews/scala-book/scala-build-tool-sbt.html) vers la version Scala 2) et sur la [documentation](https://www.scala-sbt.org/1.x/docs/index.html) officielle de sbt.
 
 ### Avec un IDE
 
@@ -128,8 +128,7 @@ Il proposent tout deux de fonctionnalité riches, mais vous utiliser d'[autres �
 > le [Build Server Protocol (BSP)](https://build-server-protocol.github.io/).
 > Pour plus de détails sur le fonctionnement de Metals, suivez [“Write Scala in VS Code, Vim, Emacs, Atom and Sublime Text with Metals”](https://www.scala-lang.org/2019/04/16/metals.html).
 
-### Play with the source code
-### Ess
+### Essayer avec le code source
 
 Ouvrez ces deux fichiers dans votre IDE :
 
@@ -156,7 +155,7 @@ Puis saisissez `exit` ou appuyer sur `[Ctrl+D]` pour quitter sbt et revenir à v
 
 Une fois que vous avez terminé le tutoriel ce dessus, vous pouvre consulter :
 
-* [The Scala Book](/scala3/book/introduction.html) ([Lien](/overviews/scala-book/introduction.html) pour version Scala 2), qui fourni un ensemble de courtes leçons et introduit les fonctionnalités principales de Scala.
+* [The Scala Book](/scala3/book/introduction.html) ([Lien](/overviews/scala-book/introduction.html) vers la version Scala 2), qui fourni un ensemble de courtes leçons et introduit les fonctionnalités principales de Scala.
 * [The Tour of Scala](/tour/tour-of-scala.html) pour une introduction des fonctionnalités Scala.
 * [Learning Resources](/learn.html), qui contient des tutoriels et des cours interactifs.
 * [Our list of some popular Scala books](/books.html).
