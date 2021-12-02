@@ -99,7 +99,7 @@ Pour créer un nouveau projet Scala avec sbt :
                 - Main.scala (Programme point d'entrée) <-- c'est tout ce dont nous avons besoin pour le moment
 ```
 
-Vous pouvez trouver plus de documentation à propose de sbt dans le [Scala Book](/scala3/book/tools-sbt.html) ([Lien](/overviews/scala-book/scala-build-tool-sbt.html) vers la version Scala 2) et sur la [documentation](https://www.scala-sbt.org/1.x/docs/index.html) officielle de sbt.
+Vous pouvez trouver plus de documentation à propos de sbt dans le [Scala Book](/scala3/book/tools-sbt.html) ([Lien](/overviews/scala-book/scala-build-tool-sbt.html) vers la version Scala 2) et sur la [documentation](https://www.scala-sbt.org/1.x/docs/index.html) officielle de sbt.
 
 ### Avec un IDE
 
