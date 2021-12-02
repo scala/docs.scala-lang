@@ -148,7 +148,7 @@ Sinon, vous pouvez lancer l'application depuis le terminal avec ces étapes :
 1. Ecrivez `~run`. Le symbole `~` est optionel, il va relancer l'application à chaque sauvegarde de fichier.
    Cela permet un cyle rapide de modification/relance/debug. sbt va aussi générer un dossier `target` que vous pouvez ignorer.
 
-Quand vous avec fini d'expérimenter avec ce projet, appuyez sur `[Entrée]` pour interrompre la commande `run`.
+Quand vous avez fini d'expérimenter avec ce projet, appuyez sur `[Entrée]` pour interrompre la commande `run`.
 Puis saisissez `exit` ou appuyez sur `[Ctrl+D]` pour quitter sbt et revenir à votre invite de commande.
 
 ## Prochaines étapes
