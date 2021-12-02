@@ -135,7 +135,7 @@ Ouvrez ces deux fichiers dans votre IDE :
 - _build.sbt_
 - _src/main/scala/Main.scala_
 
-Quand vous allez lancer votre projet dans l'étape suivante, la configuration dans _build.sbt_ sera utilisé pour lance le code dans _src/main/scala/Main.scala_.
+Quand vous allez lancer votre projet dans l'étape suivante, la configuration dans _build.sbt_ sera utilisé pour lancer le code dans _src/main/scala/Main.scala_.
 
 ## Lancer Hello Word
 
