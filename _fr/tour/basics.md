@@ -323,4 +323,4 @@ object Main {
 
 * Aperçu du livre [Scala book](/overviews/scala-book/prelude-taste-of-scala.html)
 
-Traduction par Antoine Pointeau
+Traduction par Antoine Pointeau.
