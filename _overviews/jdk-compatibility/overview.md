@@ -26,9 +26,11 @@ Lightbend offers [commercial support](https://www.lightbend.com/lightbend-platfo
 
 ## Running versus compiling
 
-We generally recommend JDK 8 or 11 for *compiling* Scala code. Since the JVM tends to be backward compatible, it is usually safe to use a newer JVM for *running* your code, especially if you are not using JVM features designated "experimental" or "unsafe".
+JDK 8, 11, and 17 are all good choices both for *compiling* and *running* Scala code.
 
-If you compile on JDK 11+ but have users on JDK 8, additional care is needed to avoid using APIs and features that don't exist in 8. Therefore, compiling on 8 may be the safer choice. Some Scala developers use JDK 11+ for their daily work but do release builds on JDK 8.
+Since the JVM is normally backwards compatible, it is usually safe to use a newer JVM for *running* your code than the one it was compiled on, especially if you are not using JVM features designated "experimental" or "unsafe".
+
+If you compile on JDK 11+ but have users on an older JDK version, additional care is needed to avoid using APIs and features that don't exist in 8. Therefore, *compiling* on 8 may be the safest choice in this scenario. (Some Scala developers use JDK 11 or 17 for their daily work, but do release builds on JDK 8.)
 
 Additionally, you can also run your Scala application on GraalVM which is a JVM. GraalVM performs well on the Scala benchmarks, and it benefits from GraalVM runtime and runs faster too.
 
@@ -60,7 +62,7 @@ The Scala compiler does not enforce the restrictions of the Java Platform Module
 
 For sbt users, JDK 11 support requires minimum sbt version 1.1.0.  sbt 1.3.9 or newer is recommended.  (If you are still on the 0.13.x series, use 0.13.18.)
 
-To track progress on JDK 11 related issues, watch:
+To track progress on JDK 11 related issues in Scala, watch:
 
 * the ["Support JDK 11"](https://github.com/scala/scala-dev/issues/139 "scala/scala-dev #139") issue
 * the [jdk11 label](https://github.com/scala/bug/labels/jdk11) in scala/bug
@@ -73,7 +75,9 @@ Scala 2.13.6 and 2.12.15 support JDK 17.
 
 The Scala test suite and Scala community build are green on JDK 17.
 
-For possible issues, see the [jdk11](https://github.com/scala/bug/labels/jdk11) and [jdk17](https://github.com/scala/bug/labels/jdk17) labels in the Scala 2 bug tracker.
+For sbt users, sbt 1.6.0-RC1 is the first version to support JDK 17, but in practice sbt 1.5.5 may also work. (It will print a warning on startup about `TrapExit` that you can ignore.)
+
+For possible Scala issues, see the [jdk11](https://github.com/scala/bug/labels/jdk11) and [jdk17](https://github.com/scala/bug/labels/jdk17) labels in the Scala 2 bug tracker.
 
 ## JDK 18 compatibility notes
 
