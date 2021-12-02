@@ -153,7 +153,7 @@ Puis saisissez `exit` ou appuyez sur `[Ctrl+D]` pour quitter sbt et revenir à v
 
 ## Prochaines étapes
 
-Une fois que vous avez terminé le tutoriel ce dessus, vous pouvre consulter :
+Une fois que vous avez terminé le tutoriel ce dessus, vous pouvez consulter :
 
 * [The Scala Book](/scala3/book/introduction.html) ([Lien](/overviews/scala-book/introduction.html) vers la version Scala 2), qui fourni un ensemble de courtes leçons et introduit les fonctionnalités principales de Scala.
 * [The Tour of Scala](/tour/tour-of-scala.html) pour une introduction des fonctionnalités Scala.
