@@ -117,7 +117,7 @@ Il proposent tout deux de fonctionnalité riches, mais vous utiliser d'[autres �
 1. Installez l'extension Scala en suivant [les instruction IntelliJ pour installer des extensions](https://www.jetbrains.com/help/idea/managing-plugins.html)
 1. Ouvre le fichier `build.sbt` puis choisissez *Open as a project*
 
-### Avec VSCOde et metals
+### Avec VSCode et metals
 
 1. Téléchargez [VSCode](https://code.visualstudio.com/Download)
 1. Installez l'extension Metals depuis [la marketplace](https://marketplace.visualstudio.com/items?itemName=scalameta.metals)
