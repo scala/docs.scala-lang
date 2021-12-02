@@ -15,7 +15,7 @@ Other syntactic changes are intended to make the syntax less surprising and more
 It is worth noting that most of the changes can be automatically handled during the [Scala 3 migration compilation](tooling-migration-mode.html).
 
 |Incompatibility|Scala 2.13|Scala 3 Migration Rewrite|Scalafix Rule|
-|--- |--- |--- |--- |--- |
+|--- |--- |--- |--- |
 |[Restricted keywords](#restricted-keywords)||✅||
 |[Procedure syntax](#procedure-syntax)|Deprecation|✅|[✅](https://scalacenter.github.io/scalafix/docs/rules/ProcedureSyntax.html)|
 |[Parentheses around lambda parameter](#parentheses-around-lambda-parameter)||✅|[✅](https://github.com/ohze/scala-rewrites/tree/dotty/#fixscala213parensaroundlambda)|

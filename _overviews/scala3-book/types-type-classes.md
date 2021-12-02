@@ -47,6 +47,6 @@ toHtml(42)(ShowInt())
 Since type classes are a very important way to structure software, Scala 3 offers additional features that make working with them very convenient.
 We discuss these additional features (which fall into the category of *Contextual Abstractions*) in a [later chapter][typeclasses-chapter] of this book.
 
-[typeclasses-paper]: https://ropas.snu.ac.kr/~bruno/papers/TypeClasses.pdf
+[typeclasses-paper]: https://infoscience.epfl.ch/record/150280/files/TypeClasses.pdf
 [typeclasses-chapter]: {% link _overviews/scala3-book/ca-type-classes.md %}
 [comparator]: https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html
