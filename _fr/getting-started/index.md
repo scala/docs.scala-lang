@@ -164,6 +164,8 @@ Une fois que vous avez terminé le tutoriel ce dessus, vous pouvre consulter :
 ## Obtenir de l'aide
 Il y a plusieurs listes emails et cannaux de discussions instantanés si vous souhaitez rencontrer rapidement d'autres utilisateurs de Scala. Allez faire un tour sur notre page [community](https://scala-lang.org/community/) pour consulter la liste des ces ressources et obtenir de l'aide.
 
+Traduction par Antoine Pointeau.
+
 <!-- Hidden elements whose content are used to provide OS-specific download instructions.
  -- This is handled in `resources/js/functions.js`.
  --> 
