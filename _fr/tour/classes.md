@@ -103,7 +103,7 @@ point1.x = 99
 point1.y = 101 // prints the warning
 ```
 
-Dans cette version de la classe `Point`, les données sont stockées dans les variables privées `_x` et `_y`. Il y a les méthodes `def x` et `def y` pour accéder aux données privées. `def x_=` et `def y_=` servent à valider et remplacer les valeurs de `_x` et `_y`. Notez la syntaxe spéciale des "setters": la méthode a le même nom que la méthode "getter" avec `_=` ajouté, ensuite viennent les paramètres.
+Dans cette version de la classe `Point`, les données sont stockées dans les variables privées `_x` et `_y`. Il y a les méthodes `def x` et `def y` pour accéder à ces données. `def x_=` et `def y_=` servent à valider et remplacer les valeurs de `_x` et `_y`. Notez la syntaxe spéciale des "setters": la méthode porte le même nom que la méthode "getter" avec `_=` ajouté, ensuite viennent les paramètres.
 
 Les paramètres du constructeur avec `val` et `var` sont publics. Cependant, puisque les `val` sont immuables, vous ne pouvez pas écrire ce qui suit.
 
