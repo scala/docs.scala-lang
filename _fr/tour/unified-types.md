@@ -17,7 +17,7 @@ En Scala, toutes les valeurs ont un type, y compris les nombres et les fonctions
 
 ## Hiérarchie des types Scala ##
 
-[`Any`](https://www.scala-lang.org/api/2.12.1/scala/Any.html) est un supertype de tous les types, aussi appelé type supérieur. Il définit certaines méthodes universelles comme `equals`, `hashCode`, et `toString`. `Any` a deux sous-classes directes : `AnyVal` et `AnyRef`.
+[`Any`](https://www.scala-lang.org/api/2.12.1/scala/Any.html) est un supertype de tous les types, aussi appelé type supérieur. Il définit certaines méthodes universelles comme `equals`, `hashCode`, et `toString`. `Any` a deux sous-types directs : `AnyVal` et `AnyRef`.
 
 `AnyVal` représente les types valeurs. Il y a neuf types valeurs prédéfinis qui ne peuvent pas être nulls : `Double`, `Float`, `Long`, `Int`, `Short`, `Byte`, `Char`, `Unit`, et `Boolean`. `Unit` est un type valeur qui ne contient aucune information significative. Il y a une seule instance de `Unit` qui peut être déclaré littéralement comme ceci : `()`. Toutes les fonctions doivent retourner quelque chose, alors parfois `Unit` est utile comme type de retour.
 
