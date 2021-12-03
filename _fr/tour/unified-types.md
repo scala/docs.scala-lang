@@ -19,7 +19,7 @@ En Scala, toutes les valeurs ont un type, y compris les nombres et les fonctions
 
 [`Any`](https://www.scala-lang.org/api/2.12.1/scala/Any.html) est un supertype de tous les types, aussi appelé type supérieur. Il définit certaines méthodes universelles comme `equals`, `hashCode`, et `toString`. `Any` a deux sous-types directs : `AnyVal` et `AnyRef`.
 
-`AnyVal` représente les types valeurs. Il y a neuf types valeurs prédéfinis qui ne peuvent pas être nulls : `Double`, `Float`, `Long`, `Int`, `Short`, `Byte`, `Char`, `Unit`, et `Boolean`. `Unit` est un type valeur qui ne contient aucune information significative. Il y a une seule instance de `Unit` qui peut être déclaré littéralement comme ceci : `()`. Toutes les fonctions doivent retourner quelque chose, alors parfois `Unit` est utile comme type de retour.
+`AnyVal` représente les types valeurs. Il y a neuf types valeurs prédéfinis qui ne peuvent pas être nulls : `Double`, `Float`, `Long`, `Int`, `Short`, `Byte`, `Char`, `Unit`, et `Boolean`. `Unit` est un type valeur qui ne contient aucune information significative. Il y n'y a qu'une seule instance de `Unit` qui peut être déclarée littéralement comme ceci : `()`. Toutes les fonctions doivent retourner quelque chose, alors parfois `Unit` est utile comme type de retour.
 
 `AnyRef` représente les types références. Tous les types qui ne sont pas des valeurs sont définis en tant que type référence. Tous les types définis par les utilisateurs de Scala sont des sous-types de `AnyRef`. Si Scala est utilisé dans un contexte Java Runtime Environment (JRE), `AnyRef` correspond à `java.lang.Object`.
 
