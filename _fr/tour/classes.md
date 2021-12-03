@@ -50,7 +50,7 @@ Contrairement à beaucoup d'autres langages, le constructeur primaire est dans l
 La méthode `move` prend deux entiers en arguments et retourne la valeur Unit `()`, qui ne comporte aucune information.
 Cela correspond à-peu-près à `void` dans les langages similaires à Java.
 `toString`, d'un autre côté, ne prend aucun argument mais retourne une valeur `String`.
-Etant donnée que `toString` écrase `toString` qui vient de [`AnyRef`](unified-types.html), elle doit être accompagnée du mot clef `override`.
+Étant donné que `toString` surcharge l'implémentation de `toString` fournie par [`AnyRef`](unified-types.html), elle doit être accompagnée du mot clef `override`.
 
 ## Les constructeurs
 
