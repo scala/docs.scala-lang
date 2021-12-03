@@ -72,7 +72,7 @@ val y: Float = x  // 9.8765434E8
 val z: Long = y  // Non conforme
 ```
 
-Vous pouvez aussi cast un type référence en un sous-type. Vous verrez cela dans le suite du tour.
+Vous pouvez aussi forcer un type référence en un sous-type. Vous verrez cela dans le suite du tour.
 
 ## Nothing et Null
 
