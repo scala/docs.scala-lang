@@ -51,7 +51,7 @@ true
 
 ## Cast de Type
 
-Les types valeurs peuvent être interprété en un autre type de cette façon : 
+Les types valeurs peuvent être forcés en un autre type de cette façon : 
 <a href="{{ site.baseurl }}/resources/images/tour/type-casting-diagram.svg"><img  style="width:100%" src="{{ site.baseurl }}/resources/images/tour/type-casting-diagram.svg" alt="Scala Type Hierarchy"></a>
 
 Par exemple :
