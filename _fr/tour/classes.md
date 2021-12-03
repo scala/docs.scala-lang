@@ -12,7 +12,7 @@ previous-page: unified-types
 ---
 
 Les classes en Scala sont des plans pour créer des objets. Elle peuvent contenir des méthodes,
-des valeurs, des variables, des types, des objets, des traits, et des classes qui sont collectivement appelés _members_. Les types, les objets et les traits seront couvert plus tards dans le tour.
+des valeurs, des variables, des types, des objets, des traits, et des classes qui sont collectivement appelés _members_. Les types, les objets et les traits seront couverts plus tards dans le tour.
 
 ## Définir une classe
 
