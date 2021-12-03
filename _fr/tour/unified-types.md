@@ -11,7 +11,7 @@ next-page: classes
 previous-page: basics
 ---
 
-En Scala, toutes les valeurs ont un type, égallement les nombres et les fonctions. Le diagramme ci-dessous illustre un sous-ensemble de cette hiérarchie des types.
+En Scala, toutes les valeurs ont un type, y compris les nombres et les fonctions. Le diagramme ci-dessous illustre un sous-ensemble de cette hiérarchie des types.
 
 <a href="{{ site.baseurl }}/resources/images/tour/unified-types-diagram.svg"><img  style="width:100%" src="{{ site.baseurl }}/resources/images/tour/unified-types-diagram.svg" alt="Scala Type Hierarchy"></a>
 
