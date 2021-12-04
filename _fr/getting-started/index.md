@@ -109,7 +109,7 @@ Vous pouvez ignorer le reste de cette page et aller directement sur [Building a 
 ## Ouvrir le projet hello-world
 
 Utilisons un IDE pour ouvrir le projet. Les plus populaires sont IntelliJ et VSCode.
-Il proposent tout deux des fonctionnalités riches, mais vous utiliser d'[autres éditeurs.](https://scalameta.org/metals/docs/editors/overview.html)
+Il proposent tout deux des fonctionnalités riches, mais vous pouvez utiliser d'[autres éditeurs.](https://scalameta.org/metals/docs/editors/overview.html)
 
 ### Avec IntelliJ
 
