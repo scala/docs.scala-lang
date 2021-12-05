@@ -30,7 +30,7 @@ After printing the argument expression, we return the original argument as a Sca
 As foreshadowed in the section on [Inline][inline], inline methods provide the entry point for macro definitions:
 
 ```scala
-inline def inspect(inline x: Any): Any = ${ inspectCode('x) }
+inline def inspect(inline x: => Any): Any = ${ inspectCode('x) }
 ```
 All macros are defined with an `inline def`.
 The implementation of this entry point always has the same shape:
