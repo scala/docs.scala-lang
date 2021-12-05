@@ -136,8 +136,8 @@ scalacOptions ++= {
 }
 ```
 
-`-source:3.0-migration` オプションを追加することで、 [Scala 3移行モード](tooling-migration-mode.html)に切り替わる。
-また、移行モードと自動書き換えを最大限に活用するには、`-Xfatal-warnings` を無効にする必要がある。
+`-source:3.0-migration` オプションを追加することで、 [Scala 3 マイグレーション・モード](tooling-migration-mode.html)に切り替わる。
+また、マイグレーション・モードと自動書き換えを最大限に活用するには、`-Xfatal-warnings` を無効にする必要がある。
 
 ## 6. 非互換性の解消
 

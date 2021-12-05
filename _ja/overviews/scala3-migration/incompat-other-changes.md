@@ -66,7 +66,7 @@ object B {
   |              and inherited subsequently in class C
 {% endhighlight %}
 
-[Scala 3移行コンパイル](tooling-migration-mode.html) は`println(x)` を `println(this.x)` に置き換えることで自動的に曖昧性解消を行う。
+[Scala 3 マイグレーション・コンパイル](tooling-migration-mode.html) は`println(x)` を `println(this.x)` に置き換えることで自動的に曖昧性解消を行う。
 
 ## プライベートクラスのNon privateなコンストラクタ
 
@@ -90,7 +90,7 @@ private class Bar private[foo] () {}
   |      in its type signature (): foo.Foo.Bar
 ```
 
-[Scala 3移行コンパイル](tooling-migration-mode.html) では自動的には書き換えが行われずWARNINGが与えられる。
+[Scala 3 マイグレーション・コンパイル](tooling-migration-mode.html) では自動的には書き換えが行われず警告が表示される。
 
 クラスはプライベートであるため、解決策はコンストラクタをプライベートにすることだ。
 

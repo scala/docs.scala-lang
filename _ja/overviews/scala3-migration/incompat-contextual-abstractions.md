@@ -39,7 +39,7 @@ def pretty[A](a: A)(implicit ev: A => Pretty): String =
   a.print // Error: value print is not a member of A
 ```
 
-[Scala 3 移行コンパイル](tooling-migration-mode.html)で、これらのケースについてWARNINGを出すが、直すことはできない。
+[Scala 3 マイグレーション・コンパイル](tooling-migration-mode.html)で、これらのケースについて警告を出すが、直すことはできない。
 
 この非互換性により、実行時の非互換性を引き起こし、プログラムが破損する可能性があることに注意すべきだ。
 実際、コンパイラはより広いスコープで別の暗黙的変換を見つけることができる。

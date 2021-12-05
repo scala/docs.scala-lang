@@ -13,7 +13,7 @@ Scala 3では括弧がオプションナルな構文と新しい制御構造の�
 
 他の構文の変更は、意外性を減らし、一貫性を高めることを目的としている。
 
-殆どの変更は、[Scala 3移行コンパイル](tooling-migration-mode.html)に自動的に処理できることに注意すべきだ。
+殆どの変更は、[Scala 3 マイグレーション・コンパイル](tooling-migration-mode.html)に自動的に処理できることに注意すべきだ。
 
 |Incompatibility|Scala 2.13|Scala 3 Migration Rewrite|Scalafix Rule|
 |--- |--- |--- |--- |
@@ -50,7 +50,7 @@ object given { // Error: given is now a keyword
 }
 ```
 
-[Scala 3移行コンパイル](tooling-migration-mode.html) では以下のようにコードが書き直される:
+[Scala 3 マイグレーション・コンパイル](tooling-migration-mode.html) では以下のようにコードが書き直される:
 
 {% highlight diff %}
 -object given {
@@ -76,7 +76,7 @@ object Bar {
 }
 ```
 
-[Scala 3移行コンパイル](tooling-migration-mode.html)ではコードはこのように書き換わる。
+[Scala 3 マイグレーション・コンパイル](tooling-migration-mode.html)ではコードはこのように書き換わる。
 
 {% highlight diff %}
 object Bar {
@@ -96,7 +96,7 @@ object Bar {
 val f = { x: Int => x * x } // Error: parentheses are required around the parameter of a lambda
 ```
 
-[Scala 3移行コンパイル](tooling-migration-mode.html)ではコードはこのように書き換わる:
+[Scala 3 マイグレーション・コンパイル](tooling-migration-mode.html)ではコードはこのように書き換わる:
 
 {% highlight diff %}
 -val f = { x: Int => x * x }
@@ -116,7 +116,7 @@ test("my test")
 }
 ```
 
-[Scala 3移行コンパイル](tooling-migration-mode.html)ではブロックの最初の行をインデントする。
+[Scala 3 マイグレーション・コンパイル](tooling-migration-mode.html)ではブロックの最初の行をインデントする。
 
 {% highlight diff %}
 test("my test")

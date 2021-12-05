@@ -9,7 +9,7 @@ language: ja
 ---
 
 一部の機能は言語の簡略化のため削除した。
-殆どの変更は、[Scala 3 移行コンパイル](tooling-migration-mode.html)中に自動的に処理できることに注意してください。
+殆どの変更は、[Scala 3 マイグレーション・コンパイル](tooling-migration-mode.html)中に自動的に処理できることに注意してください。
 
 |Incompatibility|Scala 2.13|Scala 3 Migration Rewrite|Scalafix Rule|
 |--- |--- |--- |--- |
@@ -34,7 +34,7 @@ val values: Map[Symbol, Int] = Map('abc -> 1)
 val abc = values('abc) // Migration Warning: symbol literal 'abc is no longer supported
 ```
 
-[Scala 3移行コンパイル](tooling-migration-mode.html)ではコードを以下のように書き換える:
+[Scala 3 マイグレーション・コンパイル](tooling-migration-mode.html)ではコードを以下のように書き換える:
 
 {% highlight diff %}
 val values: Map[Symbol, Int] = Map(Symbol("abc") -> 1)
@@ -61,7 +61,7 @@ do { // Migration Warning: `do <body> while <cond>` is no longer supported
 } while (f(i) == 0)
 ```
 
-[Scala 3移行コンパイル](tooling-migration-mode.html)ではコードを以下のように書き換える:
+[Scala 3 マイグレーション・コンパイル](tooling-migration-mode.html)ではコードを以下のように書き換える:
 
 ```scala
 while ({ {
@@ -84,7 +84,7 @@ object Hello {
 println(Hello.message) // Migration Warning: method message must be called with () argument
 ```
 
-[Scala 3移行コンパイル](tooling-migration-mode.html)ではコードを以下のように書き換える:
+[Scala 3 マイグレーション・コンパイル](tooling-migration-mode.html)ではコードを以下のように書き換える:
 
 {% highlight diff %}
 object Hello {
@@ -109,7 +109,7 @@ val x = 1
 val f: () => Int = x _ // Migration Warning: The syntax `<function> _` is no longer supported;
 ```
 
-[Scala 3移行コンパイル](tooling-migration-mode.html)ではコードを以下のように書き換える:
+[Scala 3 マイグレーション・コンパイル](tooling-migration-mode.html)ではコードを以下のように書き換える:
 
 {% highlight diff %}
 val x = 1

@@ -87,11 +87,11 @@ language: ja
 | `-Yprint-pos` | ツリーの場所を表示する |
 | `-Yprint-pos-syms` | シンボル定義の場所を表示する |
 | `-Yprint-syms` | ツリーをプリント出力する場合、ツリー内の対応する情報ではなく、シンボルで情報をプリント出力する |
-| `-Yrequire-targetName` | @targetName アノテーションなしで定義しているのがあればWARNINGを出す |
+| `-Yrequire-targetName` | @targetName アノテーションなしで定義しているのがあれば警告を出す |
 | `-Yretain-trees` | ClassSymbol＃tree からアクセス可能なトップレベルクラスのツリーを保持する |
 | `-Yscala2-unpickler` | Scala2 シンボルをどこから取得できるかを制御する。 "always"、 "never"、 またはクラスパスのどれかを指定する。 Default: always |
 | `-Yshow-print-errors` | ツリーのプリント出力時に投げられる例外を抑制しないようにする |
-| `-Yshow-suppressed-errors` | 通常は抑制されている後続のエラーとWARNINGを表示する |
+| `-Yshow-suppressed-errors` | 通常は抑制されている後続のエラーと警告を表示する |
 | `-Yshow-tree-ids` | デバッグ出力ですべてのツリーノードに一意にタグを付ける |
 | `-Yshow-var-bounds` | 型変数とその境界をプリント出力する |
 | `-Ytest-pickler` | 関数的な pickling における自己テスト; -Ystop-after:pickler と一緒に使われるべきだ |
