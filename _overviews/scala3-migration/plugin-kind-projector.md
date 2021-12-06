@@ -21,7 +21,7 @@ The following `sbt` configuration will set up the correct flags to cross-compile
 ThisBuild / scalacOptions ++= {
   CrossVersion.partialVersion(scalaVersion.value) match {
     case Some((3, _)) => Seq("-Ykind-projector:underscores")
-    case Some((2, 13)) | Some((2, 12)) => Seq("-Xsource:3", "-P:kind-projector:underscore-placeholders")
+    case Some((2, 12 | 13)) => Seq("-Xsource:3", "-P:kind-projector:underscore-placeholders")
   }
 }
 ```
