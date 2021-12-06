@@ -162,7 +162,7 @@ Une fois que vous avez terminé le tutoriel ce dessus, vous pouvez consulter :
 * [The migration guide](/scala3/guides/migration/compatibility-intro.html) pour vous aider à migrer votre code Scala 2 vers Scala 3.
 
 ## Obtenir de l'aide
-Il y a plusieurs listes emails et canaux de discussions instantanés si vous souhaitez rencontrer rapidement d'autres utilisateurs de Scala. Allez faire un tour sur notre page [community](https://scala-lang.org/community/) pour consulter la liste des ces ressources et obtenir de l'aide.
+Il y a plusieurs listes de diffusion et canaux de discussions instantanés si vous souhaitez rencontrer rapidement d'autres utilisateurs de Scala. Allez faire un tour sur notre page [community](https://scala-lang.org/community/) pour consulter la liste des ces ressources et obtenir de l'aide.
 
 Traduction par Antoine Pointeau.
 
