@@ -13,7 +13,7 @@ previous-page: pattern-matching
 
 Un objet est une classe qui a exactement une instance. Il est créé de façon paresseuse au moment où il est référencé, comme une valeur paresseuse `lazy val`.
 
-En tant que valeur de premier niveau, un object est un singleton.
+En tant que valeur de premier niveau, un objet est un singleton.
 
 En tant que membre d'une classe englobante ou en tant que valeur locale, il se comporte exactement comme une `lazy val`.
 
