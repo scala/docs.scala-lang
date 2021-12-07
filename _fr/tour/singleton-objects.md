@@ -115,6 +115,6 @@ Lorsqu'on utilise un objet compagnon depuis du code Java, ses membres sont défi
 
 ## Plus d'informations
 
-* Apprennez-en plus sur les objets compagnons dans [Scala Book](/overviews/scala-book/companion-objects.html)
+* Apprenez-en plus sur les objets compagnons dans le [Scala Book](/overviews/scala-book/companion-objects.html)
 
 Traduit par Antoine Pointeau.
