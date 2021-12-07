@@ -35,7 +35,7 @@ customer1ID match {
 
 La méthode `apply` crée une chaîne de caractères `CustomerID` depuis `name`. La méthode `unapply` fait l'inverse pour retrouver le `name`. Lorsqu'on appelle `CustomerID("Sukyoung")`, c'est un raccourci pour `CustomerID.apply("Sukyoung")`. Lorsqu'on appelle `case CustomerID(name) => println(name)`, on appelle la méthode `unapply` avec `CustomerID.unapply(customer1ID)`.
 
-Sachant qu'une définition de valeur peut utiliser un filter pour introduire une nouvelle variable, un extracteur peut être utilisé pour initialiser la variable, avec la méthode `unapply` pour fournir la valeur. 
+Sachant qu'une définition de valeur peut utiliser une décomposition pour introduire une nouvelle variable, un extracteur peut être utilisé pour initialiser la variable, avec la méthode `unapply` pour fournir la valeur. 
 
 ```scala mdoc
 val customer2ID = CustomerID("Nico")
@@ -59,8 +59,8 @@ Le type de retour de `unapply` doit être choisi comme suit :
 
 * Si c'est juste un test, retourner un `Boolean`. Pour l'instance `case even()`.
 * Si cela retourne une seule sous-valeur de type T, retourner un `Option[T]`.
-* Si vous souhaitez retourner quelques sous-valeurs `T1,...,Tn`, groupez-les dans un tuple optionnel `Option[(T1,...,Tn)]`.
+* Si vous souhaitez retourner plusieurs sous-valeurs `T1,...,Tn`, groupez-les dans un tuple optionnel `Option[(T1,...,Tn)]`.
 
-Parfois, le nombre de valeurs à extraire n'est pas fixe et on souhaiterait retourner un nombre arbitraire de valeurs, en fonction des données d'entrée. Pour ce cas, vous pouvez définir des extracteurs avec la méthode `unapplySeq` qui retourne un `Option[Seq[T]]`. Un exemple commun de ces modélisations est la déconstruction d'une liste en utilisant `case List(x, y, z) =>` et en décomposant une `String` en utilisant une expression régulière `Regex`, comme `case r(name, remainingFields @ _*) =>`.
+Parfois, le nombre de valeurs à extraire n'est pas fixe et on souhaiterait retourner un nombre arbitraire de valeurs, en fonction des données d'entrée. Pour ce cas, vous pouvez définir des extracteurs avec la méthode `unapplySeq` qui retourne un `Option[Seq[T]]`. Un exemple commun d'utilisation est la déconstruction d'une liste en utilisant `case List(x, y, z) =>` et en décomposant une `String` en utilisant une expression régulière `Regex`, comme `case r(name, remainingFields @ _*) =>`.
 
 Traduit par Antoine Pointeau.
