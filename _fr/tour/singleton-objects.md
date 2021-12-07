@@ -11,7 +11,7 @@ next-page: regular-expression-patterns
 previous-page: pattern-matching
 ---
 
-Un objet est une classe qui a exactement une instance. Il est créé de façon passive au moment où il est référencé, comme une valeur passive `lazy val`.
+Un objet est une classe qui a exactement une instance. Il est créé de façon paresseuse au moment où il est référencé, comme une valeur paresseuse `lazy val`.
 
 En tant que valeur de premier niveau, un object est un singleton.
 
