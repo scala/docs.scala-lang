@@ -26,7 +26,7 @@ numberPattern.findFirstMatchIn("awesomepassword") match {
 
 Dans l'exemple ci-dessus, `numberPattern` est une `Regex` (EXpression REGulière) que nous utilisons pour vérifier que le mot de passe contient un nombre.
 
-Vous pouvez aussi faire des recherches avec des groupes d'expressions régulières en utilisant les parenthèses.
+Vous pouvez aussi faire des recherches de groupes d'expressions régulières en utilisant les parenthèses.
 
 ```scala mdoc
 import scala.util.matching.Regex
