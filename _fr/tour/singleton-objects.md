@@ -105,7 +105,7 @@ scalaCenterEmail match {
 
 L'objet `object Email` contient une méthode de fabrique `fromString` qui créé une instance de `Email` depuis une chaîne de caractères. L'instance est retournée en tant que `Option[Email]` pour gérer le cas des erreurs de syntaxe.
 
-Note : Si une classe ou un objet a un compagnon, tout deux doivent être définis dans le même fichier. Pour définir des compagnons dans le REPL, tout deux doivent être définis sur la même ligne ou il faut entrer en mode `:paste`. 
+Note : Si une classe ou un objet a un compagnon, tous deux doivent être définis dans le même fichier. Pour définir des compagnons dans le REPL, tous deux doivent être définis sur la même ligne ou définis en mode `:paste`.
 
 ## Notes pour les programmeurs Java ##
 
