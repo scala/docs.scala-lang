@@ -107,7 +107,7 @@ L'objet `object Email` contient une méthode de fabrique `fromString` qui créé
 
 Note : Si une classe ou un objet a un compagnon, tous deux doivent être définis dans le même fichier. Pour définir des compagnons dans le REPL, tous deux doivent être définis sur la même ligne ou définis en mode `:paste`.
 
-## Notes pour les programmeurs Java ##
+## Notes pour les programmeurs Java
 
 Les membres `static` en Java sont modélisés comme des membres ordinaires d'un objet compagnon en Scala.
 
