@@ -111,7 +111,7 @@ Note : Si une classe ou un objet a un compagnon, tous deux doivent être défini
 
 Les membres `static` en Java sont modélisés comme des membres ordinaires d'un objet compagnon en Scala.
 
-En utilisant un objet compagnon depuis du code Java, ses membres seront définis dans la classe compagnon avec le modificateur `static`. Cela s'appelle le _static forwarding_. Cela se produit même si vous n'avez pas défini de classe compagnon vous-même.
+Lorsqu'on utilise un objet compagnon depuis du code Java, ses membres sont définis dans la classe compagnon avec le modificateur `static`. Cela s'appelle le _static forwarding_. Cela se produit même si vous n'avez pas défini de classe compagnon vous-même.
 
 ## Plus d'informations
 
