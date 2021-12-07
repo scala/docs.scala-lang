@@ -57,7 +57,7 @@ Note : Si un `objet` est encapsulé dans une autre classe ou un autre objet, alo
 
 ## Les objets compagnons
 
-Un objet avec le même nom qu'une classe est appelé un _objet compagnon_. Inversement, la classe se nomme la _classe compagnon_ de l'objet. Une classe ou un objet compagnon peut accéder aux membres privés de son compagnon. 
+Un objet avec le même nom qu'une classe est appelé un _objet compagnon_. Inversement, la classe se nomme la _classe compagnon_ de l'objet. Une classe ou un objet compagnon peut accéder aux membres privés de son compagnon. L'objet compagnon est utile pour les méthodes et les valeurs qui ne sont pas spécifiques aux instances de la classe compagnon.
 
 ```
 import scala.math._
