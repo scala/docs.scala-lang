@@ -53,7 +53,7 @@ class Test {
 
 La méthode `info` est visible grâce à l'import, `import logging.Logger.info`. Les imports ont besoin d'un chemin d'accès stable aux ressources, et un objet est un chemin stable.
 
-Note : Si un `objet` est encapsulé dans une autre classe ou un autre objet, alors l'objet est dépendant du chemin d'accès comme les autres membres. Cela veut dire par exemple, que si on prend 2 types de boissons, `class Milk` et `class OrangeJuice`, un membre de class `object NutritionInfo` est dépendant de son instance d'encapsulation. `milk.NutritionInfo` est complétement différent de `oj.NutritionInfo`.
+Note : Si un `objet` est encapsulé dans une autre classe ou un autre objet, alors l'objet est dépendant du chemin d'accès, comme les autres membres. Cela veut dire, par exemple, que si on prend 2 types de boissons, `class Milk` et `class OrangeJuice`, un membre de classe `object NutritionInfo` est dépendant de son instance d'encapsulation. `milk.NutritionInfo` est complètement différent de `oj.NutritionInfo`.
 
 ## Les objets compagnons
 
