@@ -25,7 +25,7 @@ Un objet est une valeur. La définition d'un objet ressemble a une classe, mais 
 object Box
 ```
 
-Voici l'exemple d'un objet avec une méthode :
+Voici un exemple d'un objet avec une méthode :
 
 ```
 package logging
