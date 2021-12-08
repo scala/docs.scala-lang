@@ -13,7 +13,7 @@ Scala 集合类系统地区分了可变的和不可变的集合。可变集合�
 
 所有的集合类都可以在包`scala.collection` 或`scala.collection.mutable`，`scala.collection.immutable`，`scala.collection.generic`中找到。客户端代码需要的大部分集合类都独立地存在于3种变体中，它们位于`scala.collection`, `scala.collection.immutable`, `scala.collection.mutable`包。每一种变体在可变性方面都有不同的特征。
 
-`scala.collection.immutable`包是的集合类确保不被任何对象改变。例如一个集合创建之后将不会改变。因此，你可以相信一个事实，在不同的点访问同一个集合的值，你将总是得到相同的元素。。
+`scala.collection.immutable`包的集合类确保不被任何对象改变。例如一个集合创建之后将不会改变。因此，你可以相信一个事实，在不同的点访问同一个集合的值，你将总是得到相同的元素。。
 
 `scala.collection.mutable`包的集合类则有一些操作可以修改集合。所以处理可变集合意味着你需要去理解哪些代码的修改会导致集合同时改变。
 
