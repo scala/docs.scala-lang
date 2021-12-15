@@ -30,7 +30,7 @@ Sometimes it's appealing to hack alone and not to have to interact with others o
 this might not be the very best idea. There are people in the Scala community who have spent years accumulating knowledge about Scala libraries and internals. They might provide
 unique insights and, what's even better, direct assistance in their areas, so it is not only advantageous, but recommended to communicate with the community about your new patch.
 
-Typically bug fixes and new features start out as an idea or an experiment posted on one of [our mailing lists]({{ site.baseurl }}/community/index.html#forums--mailing-lists) to find out how people feel
+Typically bug fixes and new features start out as an idea or an experiment posted on one of [our mailing lists]({{ site.baseurl }}/community/index.html#forums) to find out how people feel
 about things you want to implement. People proficient in certain areas of Scala usually monitor mailing lists, so you'll often get some help
 by simply posting a message. But the most efficient way to connect is to cc your message to one of the people responsible for maintaining the aspect of Scala which you wish to contribute to.
 
