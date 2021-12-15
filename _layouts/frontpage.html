@@ -299,24 +299,24 @@
         </a>
       {% endfor %}
     </div>
-    <div class="gitter">
-      <h3>Real-time (topic-specialized) chat</h3>
-      {% assign modLimit = site.data.chats-forums.gitterChannels.size | modulo: 2 %}
+    <div class="discord">
+      <h3>Real-time chat</h3>
+      {% assign modLimit = site.data.chats-forums.discordServers.size | modulo: 2 %}
       {% capture channelLimit %}
         {% if modLimit != 0 %}
-          {{site.data.chats-forums.gitterChannels.size | minus: 1}}
+          {{site.data.chats-forums.discordServers.size | minus: 1}}
         {% else %}
-          {{site.data.chats-forums.gitterChannels.size}}
+          {{site.data.chats-forums.discordServers.size}}
         {% endif %}
       {% endcapture %}
-      {% for channel in site.data.chats-forums.gitterChannels limit: channelLimit %}
+      {% for server in site.data.chats-forums.discordServers limit: channelLimit %}
         {% if forloop.first %}
           <ul class="first">
         {% endif %}
         <li>
-          <a href="{{channel.url}}">
-            <img src="{{ site.baseurl }}/resources/img/frontpage/gitter-logo.png" alt="">
-            <span>{{channel.name}}</span>
+          <a href="{{server.url}}">
+            <img src="{{ site.baseurl }}/resources/img/frontpage/discord-logo.png" alt="">
+            <span>{{server.name}}</span>
           </a>
         </li>
 

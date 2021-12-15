@@ -25,7 +25,7 @@
     }
 
     .discourse,
-    .gitter {
+    .discord {
         margin-bottom: 50px;
         @include clearfix;
     }
@@ -76,7 +76,7 @@
         }
     }
 
-    .gitter {
+    .discord {
         ul.first {
             @include shift(2);
 

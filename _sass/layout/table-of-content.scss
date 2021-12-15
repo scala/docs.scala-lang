@@ -109,7 +109,7 @@
     @include clearfix;
     padding-bottom: $padding-small;
     .discourse,
-    .gitter {
+    .discord {
         h3 {
             margin-top: 0;
         }
@@ -168,7 +168,7 @@
         }
     }
 
-    .gitter {
+    .discord {
       ul {
         li {
           @include span-columns(3 of 6);
