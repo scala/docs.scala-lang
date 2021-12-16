@@ -33,8 +33,8 @@ especially popular, well-known books.
 We don't have a list of all the Scala books that
 are out there; there are many.
 
-You can go on the [Scala room on
-Gitter](https://gitter.im/scala/scala) or another community forum and
+You can go on the \#scala-users room [on
+Discord](https://discord.com/invite/scala) or another community forum and
 ask for book recommendations. You'll get more helpful
 answers if you provide some information about your background and your
 reasons for wanting to learn Scala.
@@ -55,8 +55,8 @@ way.  In time, there will be more and more Scala 3 jobs as well.
 
 This is addressed on our [Community page](https://scala-lang.org/community/#scala-jobs).
 
-In short, the only officially sanctioned place is the [scala/job-board
-room on Gitter](https://gitter.im/scala/job-board).
+In short, the only officially sanctioned place is the \#jobs channel
+[on Discord](https://discord.com/invite/scala).
 
 ### Who's behind Scala?
 

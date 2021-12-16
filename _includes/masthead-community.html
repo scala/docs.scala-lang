@@ -17,15 +17,15 @@
 						{% endfor %}
 					</ul>
 				</div>
-				<div class="gitter">
-					<h3>Gitter</h3>
-					<span>Real-time (topic-specialized) chat</span>
+				<div class="discord">
+					<h3>Chat</h3>
+					<span>Real-time chat on Discord</span>
 					<ul>
-						{% for channel in site.data.chats-forums.gitterChannels %}
+						{% for server in site.data.chats-forums.discordServers %}
 							<li>
-								<a href="{{channel.url}}">
-									<img src="{{ site.baseurl }}/resources/img/frontpage/gitter-logo.png" alt="{{channel.name}}">
-									<h4>{{channel.name}}</h4>
+								<a href="{{server.url}}">
+									<img src="{{ site.baseurl }}/resources/img/frontpage/discord-logo.png" alt="{{server.name}}">
+									<h4>{{server.name}}</h4>
 								</a>
 							</li>
 						{% endfor %}

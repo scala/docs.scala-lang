@@ -110,10 +110,8 @@ process anyway so it's better to get them out up front.
 2. [API Documentation][2]
 3. [Academic/Research papers/supporting material][3]
 4. [Alternative Libraries/Implementations][4]
-5. [Discussion forum/post/gitter/IRC][5]
 
 [1]: https://github.com "GitHub"
 [2]: https://www.scala-lang.org/api/ "Scaladoc"
 [3]: https://en.wikipedia.org/wiki/Academic_publishing "Academic/Research"
 [4]: https://github.com/dogescript/dogescript "Alternatives"
-[5]: https://gitter.im "Gitter"
