@@ -197,7 +197,7 @@ There are a few things that need explanation.
 #### Abstract Type Members
 The declaration `type S <: Subject` says that within the trait `SubjectObserver` we can refer to some _unknown_ (that is, abstract) type that we call `S`.
 However, the type is not completely unknown: we know at least that it is _some subtype_ of the trait `Subject`.
-All traits and classes extending `SubjectObserer` are free to choose any type for `S` as long as the chosen type is a subtype of `Subject`.
+All traits and classes extending `SubjectObserver` are free to choose any type for `S` as long as the chosen type is a subtype of `Subject`.
 The `<: Subject` part of the declaration is also referred to as an _upper bound on `S`_.
 
 #### Nested Traits
