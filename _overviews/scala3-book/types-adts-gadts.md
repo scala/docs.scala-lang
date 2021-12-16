@@ -168,7 +168,7 @@ It is only safe to return an `Int` in the first case, since we know from pattern
 
 
 ## Desugaring Enumerations
-_Conceptually_, enums can be thought of as defining a sealed class together with an companion object.
+_Conceptually_, enums can be thought of as defining a sealed class together with its companion object.
 Let’s look at the desugaring of our `Color` enum above:
 ```scala
 sealed abstract class Color(val rgb: Int) extends scala.reflect.Enum
