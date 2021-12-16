@@ -156,7 +156,7 @@ They represented _the_ fundamental way to abstract over context, with a unified 
 - Dependency injection
 - Expressing capabilities
 
-Since then other languages have adopted similar concepts, all of which are variants of the core idea of _term inference_: Given a type, the compiler synthesizes a “canonical” term that has that type.
+Since then, other languages have adopted similar concepts, all of which are variants of the core idea of _term inference_: Given a type, the compiler synthesizes a “canonical” term that has that type.
 
 While implicits were a defining feature in Scala 2, their design has been greatly improved in Scala 3:
 
@@ -218,7 +218,7 @@ In addition to those tools, the [Scala Native](https://github.com/scala-native/s
 
 ## 7) Standard library methods
 
-Because you’ll rarely ever need to write a custom `for` loop again, the dozens of pre-built functional methods in the Scala standard library will both save you time, and help make code more consistent across different applications.
+You will rarely ever need to write a custom `for` loop again, because the dozens of pre-built functional methods in the Scala standard library will both save you time, and help make code more consistent across different applications.
 
 The following examples show some of the built-in collections methods, and there are many in addition to these.
 While these all use the `List` class, the same methods work with other collections classes like `Seq`, `Vector`, `LazyList`, `Set`, `Map`, `Array`, and `ArrayBuffer`.
