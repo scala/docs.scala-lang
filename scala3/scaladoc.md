@@ -35,7 +35,7 @@ Blog posts are a specific type of static sites. In the Scaladoc manual you can f
 
 ### Social links
 
-Furthermore, Scaladoc provides an easy way to configure your [social media links][social-links] e.g. Twitter or Gitter.
+Furthermore, Scaladoc provides an easy way to configure your [social media links][social-links] e.g. Twitter or Discord.
 
 ![](../resources/images/scala3/scaladoc/social-links.png){: style="width: 180px"}
 
