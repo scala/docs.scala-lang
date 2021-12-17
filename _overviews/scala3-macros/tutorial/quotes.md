@@ -502,5 +502,38 @@ def setOfCode[T: Type](using Quotes): Expr[Set[T]] =
 The difference is that, in the second scenario, we expand the macro before the implicit search is performed. We can therefore write arbitrary code to handle the case when an `Ordering[T]` is not found.
 Here, we used `HashSet` instead of `TreeSet` because the former does not need an `Ordering`.
 
+## Quoted Type Classes
+
+In the previous example we showed how to use the `Expr[Ordering[T]]` type class explicitly by leveraging the `using` argument clause. This is perfectly fine, but it is not very convenient if we need to use the type class multiple times. To show this we will
+use a `powerCode` function that can be used on any numeric type.
+
+First, it can be useful to make `Expr` type class can make it a given parameter. To do this we do need to explicitly in `power` to `powerCode` because we have a given `Numeric[Num]` but require an `Expr[Numeric[Num]]`. But then we can ignore it in `powerMacro` and any other place that only passes it around.
+
+```scala
+inline def power[Num](x: Num, inline n: Int)(using num: Numeric[Num]) =
+  ${ powerMacro('x, 'n)(using 'num) }
+
+def powerMacro[Num: Type](x: Expr[Num], n: Expr[Int])(using Expr[Numeric[Num]])(using Quotes): Expr[Num] =
+  powerCode(x, n.valueOrAbort)
+```
+
+To use a this type class we need a given `Numeric[Num]` but we have a `Expr[Numeric[Num]]` and therefore we need to splice this expression in the generated code. To make it available we can just splice it in a given definition.
+
+```scala
+def powerCode[Num: Type](x: Expr[Num], n: Int)(using num: Expr[Numeric[Num]])(using Quotes): Expr[Num] =
+  if (n == 0) '{ $num.one }
+  else if (n % 2 == 0) '{
+    given Numeric[Num] = $num
+    val y = $x * $x
+    ${ powerCode('y, n / 2) }
+  }
+  else '{
+    given Numeric[Num] = $num
+    $x * ${ powerCode(x, n - 1) }
+  }
+```
+
+
+
 [macros]: {% link _overviews/scala3-macros/tutorial/macros.md %}
 [quotes]: {% link _overviews/scala3-macros/tutorial/quotes.md %}
