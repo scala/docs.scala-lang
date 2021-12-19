@@ -413,7 +413,7 @@ Prior to Scala 3, when a base class needed to take constructor arguments, you’
 abstract class Pet(name: String):
   def greeting: String
   def age: Int
-  override def toString = s"I say $greeting, and I’m $age"
+  override def toString = s"My name is $name, I say $greeting, and I’m $age"
 
 class Dog(name: String, age: Int) extends Pet(name):
   val greeting = "Woof"
