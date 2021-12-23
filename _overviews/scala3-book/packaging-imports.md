@@ -57,7 +57,7 @@ package users:
     class NormalUser       // the full name of this class is users.normalusers.NormalUser
 ```
 
-Note that the package names are followed by a colon, and that the defininitions within
+Note that the package names are followed by a colon, and that the definitions within
 a package are indented.
 
 The advantages of this approach are that it allows for package nesting, and provides more obvious control of scope and encapsulation, especially within the same file.
