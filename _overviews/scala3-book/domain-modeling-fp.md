@@ -357,7 +357,7 @@ val p2 = addTopping(p1, Onions)
 val p3 = updateCrustType(p2, Thick)
 val p4 = updateCrustSize(p3, Large)
 
-println(p4.price) // prints 8.75
+println(price(p4)) // prints 8.75
 ```
 
 ### Functional Objects
