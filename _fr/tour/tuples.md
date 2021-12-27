@@ -55,7 +55,7 @@ Voici un autre exemple de pattern-matching sur un tuple :
 val planets =
   List(("Mercury", 57.9), ("Venus", 108.2), ("Earth", 149.6),
        ("Mars", 227.9), ("Jupiter", 778.3))
-planets.foreach{
+planets.foreach {
   case ("Earth", distance) =>
     println(s"Our planet is $distance million kilometers from the sun")
   case _ =>
