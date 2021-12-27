@@ -21,7 +21,7 @@ Un tuple avec deux éléments peut être créé de la façon suivante :
 val ingredient = ("Sugar" , 25)
 ```
 
-Cela crée un tuple contenant un élément `String` et un élément `Int`.
+Cela crée un tuple contenant un élément de type `String` et un élément de type `Int`.
 
 Le type déduis de `ingredient` est `(String, Int)`, qui est un raccourci de `Tuple2[String, Int]`.
 
