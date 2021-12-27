@@ -35,7 +35,7 @@ println(message1.sender)  // prints guillaume@quebec.ca
 message1.sender = "travis@washington.us"  // cette ligne ne compile pas
 ```
 
-Vous ne pouvez pas réassigner `message1.sender` parce que c'est une `val` (càd. une valeur immuable). Il est possible d'utiliser des `var` dans les classes de cas mais ce n'est pas recommandé.
+Vous ne pouvez pas réaffecter `message1.sender` parce que c'est une `val` (càd. une valeur immuable). Il est possible d'utiliser des `var` dans les classes de cas mais ce n'est pas recommandé.
 
 ## Comparaison
 
