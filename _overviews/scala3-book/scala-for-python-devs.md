@@ -650,12 +650,20 @@ Scala also has `match` expressions.
   <tbody>
     <tr>
       <td class="python-block">
-        N/A (but you can use dictionaries for basic “switch” functionality)
+        <code># From 3.10, Python supports structural pattern matching
+        <br># You can also use dictionaries for basic “switch” functionality
+        <br>match month:
+        <br>&nbsp; case 1:
+        <br>&nbsp;&nbsp;&nbsp; monthAsString = "January"
+        <br>&nbsp; case 2:
+        <br>&nbsp;&nbsp;&nbsp; monthAsString = "February"
+        <br>&nbsp; case _:
+        <br>&nbsp;&nbsp;&nbsp; monthAsString = "Other"</code>
       </td>
     </tr>
     <tr>
       <td class="scala-block">
-        <code>val monthAsString = day match
+        <code>val monthAsString = month match
         <br>&nbsp; case 1 =&gt; "January"
         <br>&nbsp; case 2 =&gt; "February"
         <br>&nbsp; _ =&gt; "Other"</code>
@@ -670,7 +678,14 @@ Scala also has `match` expressions.
   <tbody>
     <tr>
       <td class="python-block">
-        N/A
+        <code># Only from Python 3.10
+        <br>match i:
+        <br>&nbsp; case 1 | 3 | 5 | 7 | 9:
+        <br>&nbsp;&nbsp;&nbsp; numAsString = "odd"
+        <br>&nbsp; case 2 | 4 | 6 | 8 | 10:
+        <br>&nbsp;&nbsp;&nbsp; numAsString = "even"
+        <br>&nbsp; case _:
+        <br>&nbsp;&nbsp;&nbsp; numAsString = "too big"</code>
       </td>
     </tr>
     <tr>
