@@ -30,7 +30,7 @@ Chaque classe a autant de types de paramètres qu'il n'a d'éléments.
 
 ## Accéder aux éléments
 
-Une des méthodes pour accéder aux éléments d'un tuple, c'est par position. Les éléments sont nommés individuellement `_1`, `_2`, et ainsi de suite.
+Une des méthodes pour accéder aux éléments d'un tuple est par position. Les éléments sont nommés individuellement `_1`, `_2`, et ainsi de suite.
 
 ```scala mdoc
 println(ingredient._1) // Sugar
