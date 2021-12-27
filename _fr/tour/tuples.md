@@ -47,7 +47,7 @@ println(name) // Sugar
 println(quantity) // 25
 ```
 
-Ici le type déduis de `name` est `String` et le type déduis de `quantity` est `Int`.
+Ici le type inféré de `name` est `String` et le type inféré de `quantity` est `Int`.
 
 Voici un autre exemple de pattern-matching sur un tuple :
 
