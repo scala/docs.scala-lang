@@ -40,7 +40,7 @@ We recommend the cross-building strategy, that is to compile the code with both 
 The logic behind is to be able to run the tests with Scala 2.13 after each fix and thus make sure that the runtime behavior is unchanged.
 This is crucial to avoid bugs that could happen when fixing the incompatibilities.
 
-Configuring cross-building ins sbt is as short as:
+Configuring cross-building in sbt is as short as:
 
 ```scala
 scalaVersion := "3.0.0"
