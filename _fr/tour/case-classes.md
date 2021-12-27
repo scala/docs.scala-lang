@@ -11,7 +11,7 @@ next-page: pattern-matching
 previous-page: multiple-parameter-lists
 ---
 
-Les classes de cas sont comme les autres classes avec quelques différences, nous allons les parcourir. Les classes de cas sont biens pour modéliser des données immuables. Dans la prochaine étape du tour, nous verrons comment elles sont utiles en [pattern matching](pattern-matching.html).
+Les classes de cas sont comme les autres classes avec quelques différences que nous allons présenter. Les classes de cas sont pratiques pour modéliser des données immuables. Dans la prochaine étape du tour, nous verrons comment elles peuvent être utilisées avec le [pattern matching](pattern-matching.html).
 
 ## Définir une classe de cas
 
