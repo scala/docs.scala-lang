@@ -13,7 +13,7 @@ previous-page: traits
 
 En Scala, un tuple est une valeur qui contient un nombre fixe d'éléments, chacun avec son propre type. Les tuples sont immuables.
 
-Les tuples sont plutôt utiles pour retourner plusieurs valeurs d'une méthode.
+Les tuples sont notamment utiles pour retourner plusieurs valeurs depuis une méthode.
 
 Un tuple avec deux éléments peut être créé de la façon suivante :
 
