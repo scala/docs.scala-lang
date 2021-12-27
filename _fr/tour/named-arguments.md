@@ -26,7 +26,7 @@ printName(last = "Smith", first = "John")  // Prints "John Smith"
 Notez comment l'ordre des arguments nommés peut être réarrangé. Cependant, si certains arguments sont nommés et d'autres non, les arguments non nommés doivent venir en premier et suivrent l'ordre de leurs paramètres dans la signature de la méthode.
 
 ```scala mdoc:fail
-printName(last = "Smith", "john") // error: positional after named argument
+printName(last = "Smith", "john") // erreur: argument positionnel après un argument nommé
 ```
 
 Les arguments nommés fonctionnent avec les appels de méthodes Java, mais seulement si la librairie Java en question a été compilée avec `-parameters`.
