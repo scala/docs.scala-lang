@@ -26,7 +26,7 @@ Cela crée un tuple contenant un élément de type `String` et un élément de t
 Le type inféré de `ingredient` est `(String, Int)`, qui est un raccourci pour `Tuple2[String, Int]`.
 
 Pour représenter les tuples, Scala utilise une série de classes : `Tuple2`, `Tuple3`, etc., jusqu'a `Tuple22`.
-Chaque classe a autant de types de paramètres qu'il n'a d'éléments.
+Chaque classe a autant de paramètres de types qu'elle a d'éléments.
 
 ## Accéder aux éléments
 
