@@ -49,7 +49,7 @@ val message3 = Message("jorge@catalonia.es", "guillaume@quebec.ca", "Com va?")
 val messagesAreTheSame = message2 == message3  // true
 ```
 
-Même si `message2` et `message3` font références à des objets différents, la valeur de chaque objet est égal.
+Même si `message2` et `message3` font référence à des objets différents, les valeurs de chaque objet sont égales.
 
 ## Copier
 
