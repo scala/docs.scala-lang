@@ -11,7 +11,7 @@ next-page: traits
 previous-page: default-parameter-values
 ---
 
-En appelant des méthodes, vous pouvez labelliser les arguments avec le nom de leur paramètre, tel que :
+En appelant des méthodes, vous pouvez nommer leurs arguments comme ceci :
 
 ```scala mdoc
 def printName(first: String, last: String): Unit = {
