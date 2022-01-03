@@ -45,7 +45,18 @@ As you’ll see throughout this book, _all_ Scala control structures can be used
 > An expression returns a result, while a statement does not.
 > Statements are typically used for their side-effects, such as using `println` to print to the console.
 
+The `if`/`else` control struture in Scala 2 was constructed differently, with parentheses required and curly brackets instead of the keyword `then`.
 
+```scala
+// Scala 2 syntax
+if (test1) {
+    doX()
+} else if (test2) {
+    doY()
+} else {
+    doZ()
+}
+```
 
 ## `for` loops and expressions
 
@@ -60,11 +71,14 @@ for i <- ints do println(i)
 
 The code `i <- ints` is referred to as a _generator_, and the code that follows the `do` keyword is the _body_ of the loop.
 
-The old syntax for this control structure was:
+The old syntax in Scala 2 for this control structure was:
 
 ```scala
+// Scala 2 syntax
 for (i <- ints) println(i)
 ```
+
+Again, note the usage of parentheses and the new `for`-`do` in Scala 3.
 
 ### Guards
 
