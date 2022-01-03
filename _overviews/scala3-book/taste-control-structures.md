@@ -45,9 +45,10 @@ As you’ll see throughout this book, _all_ Scala control structures can be used
 > An expression returns a result, while a statement does not.
 > Statements are typically used for their side-effects, such as using `println` to print to the console.
 
-Of note, the `if`/`else` control struture in Scala 2 was constructed differently, with parentheses required and curly brackets instead of the keyword `then`.
+The `if`/`else` control struture in Scala 2 was constructed differently, with parentheses required and curly brackets instead of the keyword `then`.
 
-```if (test1) {
+```scala
+if (test1) {
     doX()
 } else if (test2) {
     doY()
