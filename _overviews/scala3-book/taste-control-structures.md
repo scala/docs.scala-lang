@@ -74,6 +74,7 @@ The code `i <- ints` is referred to as a _generator_, and the code that follows 
 The old syntax in Scala 2 for this control structure was:
 
 ```scala
+// Scala 2 syntax
 for (i <- ints) println(i)
 ```
 
