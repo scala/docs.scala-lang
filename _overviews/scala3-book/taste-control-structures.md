@@ -48,6 +48,7 @@ As you’ll see throughout this book, _all_ Scala control structures can be used
 The `if`/`else` control struture in Scala 2 was constructed differently, with parentheses required and curly brackets instead of the keyword `then`.
 
 ```scala
+// Scala 2 syntax
 if (test1) {
     doX()
 } else if (test2) {
