@@ -121,7 +121,7 @@ Il proposent tout deux des fonctionnalités avancées. D'[autres éditeurs](http
 
 1. Téléchargez [VSCode](https://code.visualstudio.com/Download)
 1. Installez l'extension Metals depuis [la marketplace](https://marketplace.visualstudio.com/items?itemName=scalameta.metals)
-1. Ensuite, ouvrez le `repertoire` contenant le fichier `build.sbt` (cela doit être le dossier `hello-world` si vous avez suivi les instructions précédentes). Choisissez *Import build* lorsque cela vous est demandé.
+1. Ensuite, ouvrez le répertoire contenant le fichier `build.sbt` (cela doit être le dossier `hello-world` si vous avez suivi les instructions précédentes). Choisissez *Import build* lorsque cela vous est demandé.
 
 > [Metals](https://scalameta.org/metals) est un "Serveur de langage Scala" qui fournit une aide pour écrire du code Scala dans VSCode et d'autres éditeurs [Atom, Sublime Text, autres ...](https://scalameta.org/metals/docs/editors/overview.html), en utilisant le [Language Server Protocol (LSP)](https://microsoft.github.io/language-server-protocol/).
 > En arrière plan, Metals communique avec l'outil de construction de package en utilisant
