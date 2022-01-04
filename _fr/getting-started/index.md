@@ -83,7 +83,7 @@ Pour créer un nouveau projet Scala avec sbt :
 
 1. `cd` dans un répertoire vide.
 1. Lancez la commande `sbt new scala/scala3.g8` pour créer un projet Scala 3, ou `sbt new scala/hello-world.g8` pour créer un projet Scala 2.
-   Cela va télécharger un projet template depuis Github.
+   Cela va télécharger un projet modèle depuis Github.
    Cela va aussi créer un dossier `target`, que vous pouvez ignorer.
 1. Quand cela vous est demandé, nommez votre application `hello-world`. Cela va créer un projet appelé "hello-world".
 1. Voyons ce que nous vennons de générer :
@@ -96,7 +96,7 @@ Pour créer un nouveau projet Scala avec sbt :
     - src
         - main
             - scala (tout votre code Scala doit être placé ici)
-                - Main.scala (Programme point d'entrée) <-- c'est tout ce dont nous avons besoin pour le moment
+                - Main.scala (Point d'entrée du programme) <-- c'est tout ce dont nous avons besoin pour le moment
 ```
 
 Vous pouvez trouver plus de documentation à propos de sbt dans le [Scala Book](/scala3/book/tools-sbt.html) ([Lien](/overviews/scala-book/scala-build-tool-sbt.html) vers la version Scala 2) et sur la [documentation](https://www.scala-sbt.org/1.x/docs/index.html) officielle de sbt.
@@ -109,7 +109,7 @@ Vous pouvez ignorer le reste de cette page et aller directement sur [Building a 
 ## Ouvrir le projet hello-world
 
 Utilisons un IDE pour ouvrir le projet. Les plus populaires sont IntelliJ et VSCode.
-Il proposent tout deux des fonctionnalités riches, mais vous pouvez utiliser d'[autres éditeurs.](https://scalameta.org/metals/docs/editors/overview.html)
+Il proposent tout deux des fonctionnalités avancées. D'[autres éditeurs](https://scalameta.org/metals/docs/editors/overview.html) sont également disponibles.
 
 ### Avec IntelliJ
 
@@ -121,9 +121,9 @@ Il proposent tout deux des fonctionnalités riches, mais vous pouvez utiliser d'
 
 1. Téléchargez [VSCode](https://code.visualstudio.com/Download)
 1. Installez l'extension Metals depuis [la marketplace](https://marketplace.visualstudio.com/items?itemName=scalameta.metals)
-1. Ensuite, ouvrez le repertoire contenant le fichier `build.sbt` (cela doit être le dossier `hello-world` si vous avez suivi les instructions précédentes). Choisissez *Import build* lorsque cela vous est demandé.
+1. Ensuite, ouvrez le répertoire contenant le fichier `build.sbt` (cela doit être le dossier `hello-world` si vous avez suivi les instructions précédentes). Choisissez *Import build* lorsque cela vous est demandé.
 
-> [Metals](https://scalameta.org/metals) est un "Serveur de langage Scala" qui fourni une aide pour écrire du code Scala dans VSCode et d'autres éditeurs [Atom, Sublime Text, autres ...](https://scalameta.org/metals/docs/editors/overview.html), en utilisant le protcole de langage serveur.
+> [Metals](https://scalameta.org/metals) est un "Serveur de langage Scala" qui fournit une aide pour écrire du code Scala dans VSCode et d'autres éditeurs [Atom, Sublime Text, autres ...](https://scalameta.org/metals/docs/editors/overview.html), en utilisant le [Language Server Protocol (LSP)](https://microsoft.github.io/language-server-protocol/).
 > En arrière plan, Metals communique avec l'outil de construction de package en utilisant
 > le [Build Server Protocol (BSP)](https://build-server-protocol.github.io/).
 > Pour plus de détails sur le fonctionnement de Metals, suivez [“Write Scala in VS Code, Vim, Emacs, Atom and Sublime Text with Metals”](https://www.scala-lang.org/2019/04/16/metals.html).
@@ -135,7 +135,7 @@ Ouvrez ces deux fichiers dans votre IDE :
 - _build.sbt_
 - _src/main/scala/Main.scala_
 
-Quand vous allez lancer votre projet dans l'étape suivante, la configuration dans _build.sbt_ sera utilisé pour lancer le code dans _src/main/scala/Main.scala_.
+Quand vous lancerez votre projet à l'étape suivante, la configuration dans _build.sbt_ sera utilisée pour lancer le code dans _src/main/scala/Main.scala_.
 
 ## Lancer Hello Word
 
@@ -145,7 +145,7 @@ Sinon, vous pouvez lancer l'application depuis le terminal avec ces étapes :
 
 1. `cd` vers `hello-world`.
 1. Lancez `sbt`. Cela va ouvrir la console sbt.
-1. Ecrivez `~run`. Le symbole `~` est optionel, il va relancer l'application à chaque sauvegarde de fichier.
+1. Ecrivez `~run`. Le symbole `~` est optionnel, il va relancer l'application à chaque sauvegarde de fichier.
    Cela permet un cyle rapide de modification/relance/debug. sbt va aussi générer un dossier `target` que vous pouvez ignorer.
 
 Quand vous avez fini d'expérimenter avec ce projet, appuyez sur `[Entrée]` pour interrompre la commande `run`.
@@ -155,7 +155,7 @@ Puis saisissez `exit` ou appuyez sur `[Ctrl+D]` pour quitter sbt et revenir à v
 
 Une fois que vous avez terminé le tutoriel ce dessus, vous pouvez consulter :
 
-* [The Scala Book](/scala3/book/introduction.html) ([Lien](/overviews/scala-book/introduction.html) vers la version Scala 2), qui fourni un ensemble de courtes leçons et introduit les fonctionnalités principales de Scala.
+* [The Scala Book](/scala3/book/introduction.html) ([Lien](/overviews/scala-book/introduction.html) vers la version Scala 2), qui fournit un ensemble de courtes leçons et introduit les fonctionnalités principales de Scala.
 * [The Tour of Scala](/tour/tour-of-scala.html) pour une introduction des fonctionnalités Scala.
 * [Learning Resources](/learn.html), qui contient des tutoriels et des cours interactifs.
 * [Our list of some popular Scala books](/books.html).
