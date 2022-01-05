@@ -41,7 +41,7 @@ val salaries = Seq(20000, 70000, 40000)
 val newSalaries = salaries.map(_ * 2)
 ```
 
-Sachant que le compilateur Scala sait déjà quel est le type des paramètres (un seul Int), vous pouvez fournir uniquement la partie de droite de la fonction.
+Sachant que le compilateur Scala sait déjà quel est le type des paramètres (un seul `Int`), vous pouvez fournir uniquement la partie de droite de la fonction.
 La seule contrepartie c'est que vous devez utiliser `_` à la place du nom du paramètre (c'était `x` dans l'exemple précédent).
 
 ## Convertir les méthodes en fonctions
