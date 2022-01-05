@@ -34,7 +34,7 @@ val salaries = Seq(20000, 70000, 40000)
 val newSalaries = salaries.map(x => x * 2) // List(40000, 140000, 80000)
 ```
 
-Notez comment `x` n'est pas déclaré comme un Int dans l'exemple ci-dessus. C'est parce que le compilateur peut inférrer le type en se basant sur le type que le fonction map souhaiterait. (voir [Currying](/tour/multiple-parameter-lists.html)). Une autre façon d'écrire le même morceau de code encore plus idiomatique serait : 
+Notez que `x` n'est pas déclaré comme un `Int` dans l'exemple ci-dessus. C'est parce que le compilateur peut inférrer le type en se basant sur le type que méthode `map` attend. (voir [Currying](/tour/multiple-parameter-lists.html)). Une autre façon d'écrire le même morceau de code encore plus idiomatique serait : 
 
 ```scala mdoc:nest
 val salaries = Seq(20000, 70000, 40000)
