@@ -48,7 +48,7 @@ val customer2ID = CustomerID("Nico")
 val CustomerID(name) = customer2ID
 println(name)  // prints Nico
 ```
-これは `val name = CustomerID.unapply(customer2ID).get`.と同じです。
+これは `val name = CustomerID.unapply(customer2ID).get`と同じです。
 
 ```scala mdoc
 val CustomerID(name2) = "--asdfasdfasdf"
