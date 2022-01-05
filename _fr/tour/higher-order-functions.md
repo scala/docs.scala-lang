@@ -15,7 +15,7 @@ Les fonctions d'ordre supérieur prennent d'autres fonctions en paramètres ou r
 C'est possible car les fonctions sont des valeurs de première classe en Scala.
 La terminologie peut devenir une peu confuse à ce point, et nous utilisons l'expression "fonction d'ordre supérieur" à la fois pour les méthodes et les fonctions qui prennent d'autres fonctions en paramètres ou retournent une fonction en résultat. 
 
-Dans le monde du pure orienté objet une bonne pratique est d'éviter d'exposer des méthodes paramétrisés avec des fonctions qui pourraient laisser fuiter l'état interne de l'objet. La fuite de l'état interne de l'objet pourrait casser les invariants de l'objet lui-même ce qui violerait l'encapsulation.
+Dans le monde du pur orienté objet, une bonne pratique est d'éviter d'exposer des méthodes paramétrées avec des fonctions qui pourraient exposer l'état interne de l'objet. Le fait d’exposer l'état interne de l'objet pourrait casser les invariants de l'objet lui-même ce qui violerait l'encapsulation.
 
 Un des exemples les plus communs est la fonction d'ordre supérieur `map` qui est diponible pour les collections en Scala.
 
