@@ -78,7 +78,7 @@ object SalaryRaiser {
 ```
 
 Notez comment chacunes de ces trois méthodes ne changent que par le facteur de multiplication.
-Pour simplifier, vous pouvez extraire et répéter le code dans une fonction d'ordre supérieur comme ceci :
+Pour simplifier, vous pouvez extraire le code répété dans une fonction d'ordre supérieur comme ceci :
 
 ```scala mdoc:nest
 object SalaryRaiser {
