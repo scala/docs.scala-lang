@@ -27,7 +27,7 @@ val newSalaries = salaries.map(doubleSalary) // List(40000, 140000, 80000)
 
 `doubleSalary` est une fonction qui prend un seul entier, `x` et retourne `x * 2`. La partie à gauche de la flèche `=>` est la liste de paramètres, et la valeur de l'expression à droite est ce qui est retourné. Sur la ligne 3, la fonction `doubleSalary` est appliquée à chaque élément dans la liste des salariés.
 
-Pour réduire le code, nous pouvons faire une fonction anonyme et la passer directement en argument de map :
+Pour réduire le code, nous pouvons faire une fonction anonyme et la passer directement en argument de `map` :
 
 ```scala:nest
 val salaries = Seq(20000, 70000, 40000)
