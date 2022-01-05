@@ -52,6 +52,10 @@ scala3-sections:
         description: "Talks about Scala 3 that can be watched online"
         icon: "fa fa-play-circle"
         link: /scala3/talks.html
+      - title: "Online Courses"
+        description: "Online Courses on Scala 3"
+        icon: "fa fa-cloud"
+        link: /online-courses.html
 
 scala2-sections:
   - title: "First Steps..."
