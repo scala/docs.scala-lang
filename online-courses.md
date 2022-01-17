@@ -89,6 +89,11 @@ the (legacy) Scala 2 version of our courses here:
 - [Parallel Programming (Scala 2 version)](https://www.coursera.org/learn/scala2-parallel-programming)
 - [Programming Reactive Systems (Scala 2 version)](https://www.coursera.org/learn/scala2-akka-reactive)
 
+## Other Online Resources
+
+You can find other online resources contributed by the community on
+[this page]({% link learn.md %}).
+
 [Scala Center]: https://scala.epfl.ch
 [Scala Specialization]: https://www.coursera.org/specializations/scala
 [Effective Programming in Scala]: https://www.coursera.org/learn/effective-scala
