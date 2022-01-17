@@ -7,6 +7,8 @@
       url: "/scala3/new-in-scala3.html"
     - title: Scala 3 Book
       url: "/scala3/book/introduction.html"
+    - title: Online Courses
+      url: "/online-courses.html"
 - title: Migrate
   url: "/scala3/guides/migration/compatibility-intro.html"
 - title: Reference

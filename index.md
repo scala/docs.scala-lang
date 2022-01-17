@@ -52,6 +52,10 @@ scala3-sections:
         description: "Talks about Scala 3 that can be watched online"
         icon: "fa fa-play-circle"
         link: /scala3/talks.html
+      - title: "Online Courses"
+        description: "MOOCs to learn Scala, for beginners and experienced programmers."
+        icon: "fa fa-cloud"
+        link: /online-courses.html
 
 scala2-sections:
   - title: "First Steps..."
@@ -68,10 +72,10 @@ scala2-sections:
         description: "Learn Scala by reading a series of short lessons."
         icon: "fa fa-book-open"
         link: /overviews/scala-book/introduction.html
-      - title: Online Resources
-        description: "Online Courses, Exercises, & Blogs."
+      - title: Online Courses
+        description: "MOOCs to learn Scala, for beginners and experienced programmers."
         icon: "fa fa-cloud"
-        link: /learn.html
+        link: /online-courses.html
       - title: Books
         description: "Printed and digital books about Scala."
         icon: "fa fa-book"
