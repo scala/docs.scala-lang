@@ -2,7 +2,7 @@
 title: Type Checker
 type: section
 description: This chapter details the unsoundness fixes in the type checker
-num: 19
+num: 20
 previous-page: incompat-other-changes
 next-page: incompat-type-inference
 ---

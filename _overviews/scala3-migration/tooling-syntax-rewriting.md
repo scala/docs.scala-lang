@@ -2,7 +2,7 @@
 title: Scala 3 Syntax Rewriting
 type: chapter
 description: This section describes the syntax rewriting capability of the Scala 3 compiler 
-num: 13
+num: 14
 previous-page: tutorial-macro-mixing
 next-page: incompatibility-table
 ---

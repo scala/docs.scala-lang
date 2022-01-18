@@ -2,7 +2,7 @@
 title: New Compiler Options
 type: section
 description: This chapter lists all the new compiler options in Scala 3
-num: 23
+num: 24
 previous-page: options-lookup
 next-page: scaladoc-settings-compatibility
 ---

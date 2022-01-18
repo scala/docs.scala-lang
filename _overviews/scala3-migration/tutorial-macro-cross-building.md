@@ -2,7 +2,7 @@
 title: Cross-Building a Macro Library
 type: section
 description: This section shows how to cross-build a macro library
-num: 11
+num: 12
 previous-page: tutorial-sbt
 next-page: tutorial-macro-mixing
 ---

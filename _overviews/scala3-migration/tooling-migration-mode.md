@@ -2,8 +2,8 @@
 title: Scala 3 Migration Mode
 type: chapter
 description: This section describes the migration mode of the Scala 3 compiler 
-num: 7
-previous-page: tooling-tour
+num: 8
+previous-page: scala3-migrate
 next-page: tutorial-intro
 ---
 

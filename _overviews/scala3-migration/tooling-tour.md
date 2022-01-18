@@ -4,7 +4,7 @@ type: chapter
 description: This chapter is a tour of the migration tooling ecosystem 
 num: 6
 previous-page: compatibility-metaprogramming
-next-page: tooling-migration-mode
+next-page: scala3-migrate
 ---
 
 ## The Scala Compilers
