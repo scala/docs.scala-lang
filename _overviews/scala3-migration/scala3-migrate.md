@@ -146,8 +146,10 @@ lazy val main = project
     name := "main",
     scalaVersion := "2.13.7",
     semanticdbEnabled := true,
-    scalacOptions ++= (if (scalaVersion.value.startsWith("3")) Seq("-Werror", "-Ykind-projector")
-    else Seq("-Werror", "-Wunused")),
+    scalacOptions ++= {
+      if (scalaVersion.value.startsWith("3")) Seq("-Werror", "-Ykind-projector")
+      else Seq("-Werror", "-Wunused")
+    },
     libraryDependencies ++= (
       if (scalaVersion.value.startsWith("3")) Seq()
       else
@@ -202,9 +204,10 @@ There is no need to modify them, the plugins are supposed to adapt the settings 
 In this specific case:
  - we don’t need to remove `-Yrangepos`. 
  - `kind-projector` plugin has been replaced in the previous step
- - `Xplugin:semanticdb` is added through an sbt setting `semanticdbEnabled := true`
-that is set by scala3-migrate (this tool). If `semanticdb` is added through `compilerPlugin` or 
-`addCompilerPlugin`, it will be listed as a library dependency when we execute migrate-libs. 
+ - `Xplugin:semanticdb` and all the specific options of the `semanticdb` plugin starting by `-P:semanticdb:...` are 
+added through an sbt setting `semanticdbEnabled := true` that is set by scala3-migrate (this tool). 
+If `semanticdb` is added through `compilerPlugin` or `addCompilerPlugin`, it will be 
+listed as a library dependency when we execute migrate-libs. 
 The support of SemanticDB is now shipped into the Scala 3 compiler, and will be configured with the same setting: 
 `semanticdbEnabled := true`. Scala3-migrate doesn't enable SemanticDB in Scala 3 unless it's configured in the build.
 
@@ -302,8 +305,10 @@ implicit conversions or explicit result types.
 ## What to do next ?
 If you project contains only one module, you're done. Depending on the nature of your project, 
 you will either change permanently the `scalaVersion` of your project, or add Scala 3 to `crossScalaVerions`. 
-If you have more than one module, you can stard again with a second module `MODULE2`. 
-if `MODULE2` depends on the last module migrated which is now compiling in Scala 3, you can either keep this module in Scala 3 and add `-Ytasty-reader` to `MODULE2 scalacOptions`, or `reload` the project to keep the migrated module on Scala 2 during the entire migration
+
+If you have more than one module, you can start again with a second module `MODULE2`. 
+if `MODULE2` depends on the last module migrated which is now compiling in Scala 3, you can either keep this module in Scala 3 and add `-Ytasty-reader` to `MODULE2 scalacOptions`, 
+or `reload` the project to keep the migrated module on Scala 2 during the entire migration
 which implies cross-compiling during the process of the migration. 
 
 Once you are done, you can remove scala3-migrate from your plugins.
