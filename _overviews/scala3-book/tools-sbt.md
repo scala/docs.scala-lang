@@ -47,7 +47,7 @@ Create a file named _build.properties_ in the directory `project`, with
 the following content:
 
 ```text
-sbt.version=1.5.4
+sbt.version=1.6.1
 ```
 
 Then create a file named _build.sbt_ in the project root directory that contains this line:
@@ -100,9 +100,6 @@ When you look at your directory, you’ll see that sbt has a directory named _ta
 These are working directories that sbt uses.
 
 As you can see, creating and running a little Scala project with sbt takes just a few simple steps.
-
-> For sbt version < 1.5.0, it is required to have the following line in a *project/plugins.sbt* file: `addSbtPlugin("ch.epfl.lamp" % "sbt-dotty" % "{{ site.scala-3-plugin-version }}")`
-
 
 ### Using sbt with larger projects
 
