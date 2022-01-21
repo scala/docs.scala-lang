@@ -80,9 +80,9 @@ While it's possible to create an implicit class with more than one non-implicit 
 aren't used during implicit lookup.
 
 
-**3. There may not be any method, member or object in scope with the same name as the implicit class.**
+**3. The `implicit def` introduced by `implicit class` must not be ambiguous with respect to other term members.**
 
-*Note: This means an implicit class cannot be a case class*.
+*Note: This means an implicit class cannot be a case class, since the `implicit def` would be ambiguous with the companion `apply`*.
 
     object Bar
     implicit class Bar(x: Int) // BAD!
