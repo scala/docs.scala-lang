@@ -253,7 +253,7 @@ This future `f` is then failed with this exception instead of being completed su
 
     val session = null
     val f: Future[List[Friend]] = Future {
-      session.getFriends
+      session.getFriends()
     }
 
 The line `import ExecutionContext.Implicits.global` above imports
