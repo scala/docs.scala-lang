@@ -258,7 +258,7 @@ import mill._, mill.scalalib._
 
 object foo extends ScalaModule {
   // Add the compiler plugin divbyzero in version 1.0
-  def scalacPluginIvyDeps = Agg(ivy"org.divbyzero:::"divbyzero:1.0")
+  def scalacPluginIvyDeps = Agg(ivy"org.divbyzero:::divbyzero:1.0")
   // Enable the `verbose` option of the divbyzero plugin
   def scalacOptions = Seq("-P:divbyzero:verbose:true")
   // other settings
