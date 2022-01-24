@@ -243,6 +243,38 @@ For more details, see [Compiler Plugin
 Support](https://www.scala-sbt.org/1.x/docs/Compiler-Plugins.html) in
 the sbt manual.
 
+## Using your plugin in Mill
+
+To use a scalac compiler plugin in your Mill project, you can override
+the `scalacPluginIvyDeps` target to add your plugins dependency coordinates.
+
+Plugin options can be specified in `scalacOptions`.
+
+Example:
+
+```scala
+// build.sc
+import mill._, mill.scalalib._
+
+object foo extends ScalaModule {
+  // Add the compiler plugin divbyzero in version 1.0
+  def scalacPluginIvyDeps = Agg(ivy"org.divbyzero:::"divbyzero:1.0")
+  // Enable the `verbose` option of the divbyzero plugin
+  def scalacOptions = Seq("-P:divbyzero:verbose:true")
+  // other settings
+  // ...
+}
+
+```
+
+Please notice, that compiler plugins are typically bound to the full
+version of the compiler, hence you have to use the `:::` (instead of 
+normal `::`) between the organization and the artifact name, 
+to declare your dependency.
+
+For more information about plugin usage in Mill, please refer to the
+[Mill documentation](https://com-lihaoyi.github.io/mill/mill/Configuring_Mill.html#_scala_compiler_plugins).
+
 ## Developing compiler plugins with an IDE
 
 Internally, the use of path-dependent types in the Scala compiler
