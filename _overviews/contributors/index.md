@@ -72,7 +72,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2 # Retrieve the content of the repository
-      - uses: olafurpg/setup-scala@v12 # Set up a jdk and sbt
+      - uses: actions/setup-java@v2 # Set up a jdk
+        with:
+          distribution: temurin
+          java-version: 8
       - name: unit tests # Custom action consisting of a shell command
         run: sbt +test
 ~~~
