@@ -100,7 +100,7 @@ The error message is:
   |                                                Required: Fetch[A$1]
 {% endhighlight %}
 
-Which is right, there is no proof that `x` and `y` have the same type paramater `A`.
+Which is right, there is no proof that `x` and `y` have the same type parameter `A`.
 
 Coming from Scala 2, this is clearly an improvement to help us locate mistakes in our code.
 To solve this incompatibility it is better to find a solution that can be checked by the compiler.
