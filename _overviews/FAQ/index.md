@@ -291,7 +291,7 @@ For example, if you add this to your `build.sbt`:
 that's a "bare" setting, and you might expect it to apply build-wide.
 But it doesn't. _It only applies to the root project._
 
-In many cases one should simply write instead:
+In many cases one should instead write:
 
     ThisBuild / scalaVersion := "2.13.7"
 
