@@ -2,6 +2,22 @@
 title: Online Courses from The Scala Center
 layout: singlepage-overview
 scala3: true
+testimonials:
+  - /resources/images/online-courses/testimonial000.jpg
+  - /resources/images/online-courses/testimonial001.jpg
+  - /resources/images/online-courses/testimonial002.jpg
+  - /resources/images/online-courses/testimonial003.jpg
+  - /resources/images/online-courses/testimonial004.jpg
+  - /resources/images/online-courses/testimonial005.jpg
+  - /resources/images/online-courses/testimonial006.jpg
+  - /resources/images/online-courses/testimonial007.jpg
+  - /resources/images/online-courses/testimonial008.jpg
+  - /resources/images/online-courses/testimonial009.jpg
+  - /resources/images/online-courses/testimonial010.jpg
+  - /resources/images/online-courses/testimonial011.jpg
+  - /resources/images/online-courses/testimonial012.jpg
+  - /resources/images/online-courses/testimonial013.jpg
+  - /resources/images/online-courses/testimonial014.jpg
 ---
 
 The online courses from the [Scala Center] provide two main paths to learn 
@@ -89,6 +105,10 @@ the (legacy) Scala 2 version of our courses here:
 - [Parallel Programming (Scala 2 version)](https://www.coursera.org/learn/scala2-parallel-programming)
 - [Big Data Analysis with Scala and Spark (Scala 2 version)](https://www.coursera.org/learn/scala2-spark-big-data)
 - [Programming Reactive Systems (Scala 2 version)](https://www.coursera.org/learn/scala2-akka-reactive)
+
+## Testimonials
+
+{% include carousel.html images=page.testimonials number=0 height="50" unit="%" duration="10" %}
 
 ## Other Online Resources
 
