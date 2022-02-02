@@ -11,7 +11,7 @@ jobs:
           ruby-version: 2.5.8
           bundler-cache: true
       - name: Set up coursier
-        uses: laughedelic/coursier-setup@v1
+        uses: coursier/setup-action@v1.2.0-M2
         with:
           jvm: adopt:11
       - name: Run mdoc
