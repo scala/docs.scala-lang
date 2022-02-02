@@ -81,12 +81,13 @@ library Akka.
 
 ## Scala 2 Courses
 
-The above courses use Scala 3 (except the Spark courses). If needed, you can find
+The above courses all use Scala 3. If needed, you can find
 the (legacy) Scala 2 version of our courses here:
 
 - [Functional Programming Principles in Scala (Scala 2 version)](https://www.coursera.org/learn/scala2-functional-programming)
 - [Functional Program Design (Scala 2 version)](https://www.coursera.org/learn/scala2-functional-program-design)
 - [Parallel Programming (Scala 2 version)](https://www.coursera.org/learn/scala2-parallel-programming)
+- [Big Data Analysis with Scala and Spark (Scala 2 version)](https://www.coursera.org/learn/scala2-spark-big-data)
 - [Programming Reactive Systems (Scala 2 version)](https://www.coursera.org/learn/scala2-akka-reactive)
 
 ## Other Online Resources
