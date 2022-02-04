@@ -224,7 +224,7 @@ object StringUtils:
 
 We can use the object as follows:
 ```scala
-StringUtil.truncate("Chuck Bartowski", 5)  // "Chuck"
+StringUtils.truncate("Chuck Bartowski", 5)  // "Chuck"
 ```
 
 Importing in Scala is very flexible, and allows us to import _all_ members of an object:
