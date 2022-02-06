@@ -103,7 +103,7 @@ the (legacy) Scala 2 version of our courses here:
 - [Functional Programming Principles in Scala (Scala 2 version)](https://www.coursera.org/learn/scala2-functional-programming)
 - [Functional Program Design (Scala 2 version)](https://www.coursera.org/learn/scala2-functional-program-design)
 - [Parallel Programming (Scala 2 version)](https://www.coursera.org/learn/scala2-parallel-programming)
-- [Big Data Analysis with Scala and Spark (Scala 2 version)](https://www.coursera.org/learn/scala2-spark-big-data)
+- [Big Data Analysis with Scala and Spark](https://www.coursera.org/learn/scala-spark-big-data)
 - [Programming Reactive Systems (Scala 2 version)](https://www.coursera.org/learn/scala2-akka-reactive)
 
 ## Testimonials
