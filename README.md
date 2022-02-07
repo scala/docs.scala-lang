@@ -18,11 +18,13 @@ For more details, read on.
 
 ## Quickstart with Docker ##
 
-To build and view site with docker:
+To build and view site with Docker:
 
     docker-compose up
 
-It will incrementally build and serve site at `http://localhost:4000`
+It will incrementally build and serve site at `http://localhost:4000`.
+
+For more details on the Docker option, see [this issue](https://github.com/scala/docs.scala-lang/issues/1286).
 
 ## Contributing ##
 
