@@ -79,6 +79,7 @@ GEM
       rb-inotify (~> 0.9, >= 0.9.7)
     typhoeus (1.4.0)
       ethon (>= 0.9.0)
+    webrick (1.7.0)
     yell (2.2.2)
 
 PLATFORMS
@@ -89,6 +90,7 @@ DEPENDENCIES
   jekyll-redirect-from
   jekyll-scalafiddle
   kramdown-parser-gfm
+  webrick (~> 1.7)
 
 BUNDLED WITH
    2.3.6
