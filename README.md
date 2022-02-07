@@ -8,8 +8,7 @@ This repository contains the source for the Scala documentation website, as well
 
 To build and view the site locally:
 
-    gem install bundler
-    bundle install
+    gem install --user-install bundler jekyll
     bundle exec jekyll serve -I
 
 ([Trouble on MacOS?](https://github.com/scala/docs.scala-lang/issues/1150))
