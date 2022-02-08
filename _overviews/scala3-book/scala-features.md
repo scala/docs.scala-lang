@@ -51,6 +51,8 @@ As the functional programming saying goes, in Scala you write _what_ you want, n
 That is, we don’t write imperative code like this:
 
 ```scala
+import scala.collection.mutable.ListBuffer
+
 def double(ints: List[Int]): List[Int] = {
   val buffer = new ListBuffer[Int]()
   for (i <- ints) {
@@ -59,6 +61,7 @@ def double(ints: List[Int]): List[Int] = {
   buffer.toList
 }
 
+val oldNumbers = List(1, 2, 3)
 val newNumbers = double(oldNumbers)
 ```
 
