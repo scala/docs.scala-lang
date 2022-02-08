@@ -20,16 +20,18 @@ and will from here on be referred to as "template files" or "templates".
 A simple "hello world" site could look something like this:
 
 ```
-├── docs
-│   └── getting-started.md
-└── index.html
+.
+└── <site-root>/
+    └── _docs/
+        ├── index.html
+        └── getting-started.html
 ```
 
 This will give you a site with the following files in generated documentation:
 
 ```
 index.html
-docs/getting-started.html
+getting-started.html
 ```
 
 Scaladoc can transform both files and directories (to organize your documentation into a tree-like structure). By default, directories have a title based on the file name and have empty content. It is possible to provide index pages for each section by creating `index.html` or `index.md` (not both) in the dedicated directory.
@@ -98,63 +100,64 @@ Layouts must be placed in a `_layouts` directory in the site root:
 ```
 ├── _layouts
 │   └── main.html
-├── docs
-│   └── getting-started.md
-└── index.html
+└── _docs
+    └── getting-started.md
+```
+
+## Assets
+
+In order to render assets along with static site, they need to be placed in the `_assets` directory in the site root:
+```
+├── _assets
+│   └── images
+│        └── myimage.png
+└── _docs
+    └── getting-started.md
+```
+To reference the asset in a page, one need to create link relative to the `_assets` directory
+
+```
+Take a look at the following image: [My image](images/myimage.png)
 ```
 
 ## Sidebar
 
-Scaladoc by default uses layout of files in `docs` directory to create table of content. There is also ability to override it by providing a `sidebar.yml` file in the site root:
+Scaladoc by default uses directory structure in `_docs` directory to organize static sites. There is also possibility to override it by providing a `sidebar.yml` file in the site root. The YAML configuration file describes the structure of rendered static site and the table of content:
 
 ```yaml
-sidebar:
-  - title: Blog
-  - title: My title
-    page: my-page1.md
-  - page: my-page2.md
-  - page: my-page3/subsection
-  - title: Reference
-    subsection:
-      - page: my-page3.md
-  - index: my-page4/index.md
-    subsection:
-      - page: my-page4/my-page4.md
-  - title: My subsection
-    index: my-page5/index.md
-    subsection:
-      - page: my-page5/my-page5.md
-  - index: my-page6/index.md
-    subsection:
-      - index: my-page6/my-page6/index.md
-        subsection:
-          - page: my-page6/my-page6/my-page6.md
+index: index.html
+subsection:
+    - title: Usage
+      index: usage/index.html
+      directory: usage
+      subsection:
+        - title: Dottydoc
+          page: usage/dottydoc.html
+          hidden: false
+        - title: sbt-projects
+          page: usage/sbt-projects.html
+          hidden: false
 ```
+The root element needs to be a `subsection`.
+Nesting subsections will result in a tree-like structure of navigation.
 
-The `sidebar` key is mandatory.
-On each level, you can have three different types of entries: `page`, `blog` or `subsection`.
+`subsection` properties are:
+ - `title` - Optional string - A default title of the subsection. 
+  Front-matter titles have higher priorities.
+ - `index` - Optional string - A path to index page of a subsection.
+ - `directory` - Optional string - A name of the directory that will contain the subsection.
+  By default, the directory name is the subsection name converted to kebab case.
+ - `subsection` - Array of `subsection` or `page`.
 
-`page` is a leaf of the structure and accepts the following attributes:
-- `title` (optional) - title of the page
-- `page` (mandatory) - path to the file that will represent the page, it can be either html or markdown file to be rendered, there is also the possibility to pass the `directory` path. If so, the scaladoc will render the directory and all its content as if there were no `sidebar.yml` basing on its tree structure and index files.
+ Either `index` or `subsection` must be defined. The subsection defined with `index` and without `subsection` will contain pages and directories loaded recursively from directory of the index page.
 
-The `page` property `subsection` accepts nested nodes, these can be either pages or subsections, which allow you to create tree-like navigation. The attributes are:
-- `title` (optional) - title of the page
-- `index` (optional) - path to the file that will represent the index file of the subsection, it can be either html or markdown file to be rendered
-- `subsection` (mandatory) - nested nodes, can be either pages or subsections
+`page` properties are:
+ - `title` - Optional string - A default title of the page. 
+  Front-matter titles have higher priorities.
+ - `page` - String - A path to the page
+ - `hidden` - Optional boolean - A flag that indicates whether the page should be visible in navigation. By default, it is set to `false`.
 
-In `subsection`s, you can omit `title` or `index`, however not specifying any of these properties prevents you from specifying the title of the section.
-
-`blog` is a special node represented by simple entry `- title: Blog` with no other attributes. All your blog posts will be automatically linked under this section. You can read more about the blog [here]({% link _overviews/scala3-scaladoc/blog.md %}).
-
-```
-├── blog
-│   ├── _posts
-│   │   └── 2016-12-05-implicit-function-types.md
-│   └── index.html
-├── index.html
-└── sidebar.yml
-```
+**Note**: All paths in YAML configuration file are relative to `<static-root>/_docs`.
 
 ## Hierarchy of title
 
@@ -174,30 +177,43 @@ If the title is specified multiple times, the priority is as follows (from highe
 
 Note that if you skip the `index` file in your tree structure or you don't specify the `title` in the frontmatter, there will be given a generic name `index`. The same applies when using `sidebar.yml` but not specifying `title` nor `index`, just a subsection. Again, a generic `index` name will appear.
 
+## Blog
+Blog feature is described in [a separate document]({% link _overviews/scala3-scaladoc/blog.md %})
 
-## Static resources
-
-You can attach static resources (pdf, images) to your documentation by using two dedicated directories:
-`resources` and `images`. After placing your assets under any of these directories, you can reference them in markdown
-as if they were relatively at the same level.
-
-For example, consider the following situation:
-
+## Advanced configuration
+### Full structure of site root
 ```
-├── blog
-│   ├── _posts
-│   │   └── 2016-12-05-implicit-function-types.md
-│   └── index.html
-├── index.html
-├── resources
-│   └── my_file.pdf
-├── images
-│   └── my_image.png
-└── sidebar.yml
-
+.
+└── <site-root>/
+    ├── _layouts_/
+    │   └── ...
+    ├── _docs/
+    │   └── ...
+    ├── _blog/
+    │   ├── index.md
+    │   └── _posts/
+    │       └── ...
+    └── _assets/
+        ├── js/
+        │   └── ...
+        ├── img/
+        │   └── ...
+        └── ...
 ```
+It results in static site containing documents as well as blog. It also contains custom layouts and assets. The structure of rendered documentation can be based on file system but it can also be overriden by YAML configuration.
 
-You can refer to the assets from within any of the files using markdown links:
+### Mapping directory structure
 
+Using YAML configuration file, we can define how the source directory structure should be transformed in target directory structure.
+
+Take a look at following subsection definition:
+```yaml
+- title: Some other subsection
+  index: abc/index.html
+  directory: custom-directory
+  subsection:
+    - page: abc2/page1.md
+    - page: foo/page2.md
 ```
-This is my blog post. Here is the image ![](my_image.png) and here is my [pdf](my_file.pdf)```
+This subsection shows the ability of YAML configuration to map the directory structure.
+Even though the index page and all defined children are in different directories, they will be rendered in `custom-directory`.

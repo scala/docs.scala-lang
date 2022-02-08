@@ -15,24 +15,17 @@ Blog is treated a little differently than regular static sites. This article wil
 
 ## Proper directory setup
 
-All your blogposts must be put under `blog/_posts` directory.
+All your blogposts must be put under `_blog/_posts` directory.
 
 
 ```
-├── blog
+├── _blog
 │   ├── _posts
 │   │   └── 2016-12-05-implicit-function-types.md
 │   └── index.html
 ```
 
-If you are using yaml [sidebar]({% link _overviews/scala3-scaladoc/static-site.md %}#sidebar) don't forget to place
-
-```
-sidebar:
-    - title: Blog
-```
-
-somewhere inside the `yaml` tree representing the sidebar sections. Scaladoc will attach under that section all of your blogposts.
+Scaladoc loads blog if the `_blog` directory exists.
 
 ## Naming convention
 
