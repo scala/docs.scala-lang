@@ -150,7 +150,7 @@ Scala について日本語で質問したい場合、Twitterでつぶやくと�
 </div>
 
 <div style="display:none" id="stepOne-unix">
-    <p>Follow <a href="https://get-coursier.io/docs/cli-installation" target="_blank">the instructions to install the <code>cs</code> launcher</a> then run:</p>
+    <p><a href="https://get-coursier.io/docs/cli-installation" target="_blank">手順に従って <code>cs</code> ランチャーをインストール</a>し、その次に以下を実行します。</p>
     <p><code>$ ./cs setup</code></p>
 </div>
 
