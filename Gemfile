@@ -13,3 +13,5 @@ gem 'kramdown-parser-gfm'
 # browser during development. To use, uncomment
 # and do:
 # bundle exec jekyll liveserve --incremental
+
+gem "webrick", "~> 1.7"

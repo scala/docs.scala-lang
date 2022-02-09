@@ -117,7 +117,7 @@ All of these expressions look like a dynamically-typed language like Python or R
 ```scala
 val s = "Hello"
 val p = Person("Al", "Pacino")
-val sum = ints.reduceLeft(_ + _)
+val sum = nums.reduceLeft(_ + _)
 val y = for i <- nums yield i * 2
 val z = nums.filter(_ > 100)
             .filter(_ < 10_000)
