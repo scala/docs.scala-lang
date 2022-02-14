@@ -34,20 +34,24 @@ Along with managing JVMs, `cs setup` also installs useful command-line tools:
 - The [sbt](https://www.scala-sbt.org/) build tool
 - [Ammonite](https://ammonite.io/), an enhanced REPL
 - [scalafmt](https://scalameta.org/scalafmt/), the Scala code formatter
-- `scalac` (the Scala 2 compiler)
-- `scala` (the Scala 2 REPL and script runner).
+- `scalac` (the Scala compiler)
+- `scala` (the Scala REPL and script runner).
 
 For more information about `cs`, read
 [coursier-cli documentation](https://get-coursier.io/docs/cli-overview).
 
-> Currently, `cs setup` installs the Scala 2 compiler and runner (the `scalac` and
-> `scala` commands, respectively). This is usually not an issue because most projects
-> use a build tool that works with both Scala 2 and Scala 3.
-> Nevertheless, you can install the Scala 3 compiler and runner as command-line tools
-> by running the following additional commands:
+> `cs setup` installs the Scala 3 compiler and runner by default (the `scalac` and
+> `scala` commands, respectively). Whether you intend to use Scala 2 or 3,
+> this is usually not an issue because most projects use a build tool that will
+> use the correct version of Scala irrespective of the one installed "globally".
+> Nevertheless, you can always launch a specific version of Scala using
 > ```
-> $ cs install scala3-compiler
-> $ cs install scala3
+> $ cs launch scala:{{ site.scala-version }}
+> $ cs launch scalac:{{ site.scala-version }}
+> ```
+> If you prefer Scala 2 to be run by default, you can force that version to be installed with:
+> ```
+> $ cs install scala:{{ site.scala-version }} scalac:{{ site.scala-version }}
 > ```
 
 ### ...or manually
@@ -164,7 +168,7 @@ There are a multitude of mailing lists and real-time chat rooms in case you want
 
 <!-- Hidden elements whose content are used to provide OS-specific download instructions.
  -- This is handled in `resources/js/functions.js`.
- --> 
+ -->
 <div style="display:none" id="stepOne-linux">
        <code class="hljs">$ curl -fLo cs https://git.io/coursier-cli-linux && chmod +x cs && ./cs setup </code> <br>
 </div>
