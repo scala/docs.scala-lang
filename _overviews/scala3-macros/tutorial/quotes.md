@@ -207,8 +207,7 @@ Below, we match against `$x` of type `T` and we get out an `x` of type `Expr[T]`
 def exprOfOption[T: Type](x: Expr[Option[T]])(using Quotes): Option[Expr[T]] =
   x match
     case '{ Some($x) } => Some(x) // x: Expr[T]
-    case '{ None } => Some(None)
-    case _ => None
+    case '{ None } => None
 ```
 
 We can also check for the type of an expression:
