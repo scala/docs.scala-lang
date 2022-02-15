@@ -170,7 +170,7 @@ There are a multitude of mailing lists and real-time chat rooms in case you want
  -- This is handled in `resources/js/functions.js`.
  -->
 <div style="display:none" id="stepOne-linux">
-       <code class="hljs">$ curl -fLo cs https://git.io/coursier-cli-linux && chmod +x cs && ./cs setup </code> <br>
+       <code class="hljs">$ curl -fL https://github.com/coursier/launchers/raw/master/cs-x86_64-pc-linux.gz | gzip -d > cs && chmod +x cs && ./cs setup</code><br>
 </div>
 
 <div style="display:none" id="stepOne-unix">
@@ -184,10 +184,10 @@ There are a multitude of mailing lists and real-time chat rooms in case you want
     </div>
     <p>Alternatively, if you don't use Homebrew</p>
     <div class="highlight">
-        <code class="hljs">$ curl -fLo cs https://git.io/coursier-cli-macos && chmod +x cs &&  (xattr -d com.apple.quarantine cs || true) && ./cs setup</code> <br>
+        <code class="hljs">$ curl -fL https://github.com/coursier/launchers/raw/master/cs-x86_64-apple-darwin.gz | gzip -d > cs && chmod +x cs &&  (xattr -d com.apple.quarantine cs || true) && ./cs setup</code> <br>
     </div>
 </div>
 
 <div style="display:none" id="stepOne-windows">
-    <p>Download and execute <a href="https://git.io/coursier-cli-windows-exe">the Scala installer for Windows</a> based on coursier</p>
+    <p>Download and execute <a href="https://github.com/coursier/launchers/raw/master/cs-x86_64-pc-win32.zip">the Scala installer for Windows</a> based on coursier</p>
 </div>
