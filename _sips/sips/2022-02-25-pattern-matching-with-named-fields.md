@@ -14,7 +14,7 @@ redirect_from: /sips/pending/2021-06-25-named-pattern-matching.html
 
 ## Motivation
 
-An readable, extendible, and intuitive way to deconstruct case classes in pattern matching.
+An readable, extensible, and intuitive way to deconstruct case classes in pattern matching.
 
 Link to work in progress implementation lives here: https://github.com/Jentsch/dotty
 
@@ -137,28 +137,32 @@ The reason to pull the names out, instead of keeping them near to their type, is
 
 ## Implementation
 
-'Simple' rewrite of patterns. If a pattern with a name is encountered, the compiler looks up the index of those names and places the tree accordingly.
+If a pattern with a name is encountered, the compiler looks up list of provided names and places the trees accordingly.
+
+The list of names either provided by the return type of the unapply method or by the constructor list of the case class.
 
 Example:
 
 ```scala
 // a match clause like
-case User(age = <tree>) => ???
+case User(<tree1>, city = <tree2>) => ???
 
 // gets rewritten to:
 case User(
+  <tree1>, // because tree1 is positional pattern
   _, // because name isn't mentioned
-  <tree>, // because age is the second parameter of user
-  _ //  because city isn't mentioned
+  <tree2>, // because city is the third parameter of user
 )
 ```
+
+This allows us to glace over the details of how pattern matching gets desugared further down the line.
 
 ## Drawbacks
 
 ### Allow skipping arguments
 
-Whenever a single named argument is used in pattern, the pattern can have fewer arguments than the unapply.
-This leads to inconsistency, as pointed out by Lionel Parreaux in the [Scala Contributors Thread](https://contributors.scala-lang.org/t/pattern-matching-with-named-fields/1829/44). This could lead users to use a named pattern, just to skip all parameters.
+Whenever a single named argument is used in pattern, the pattern can have fewer arguments than the unapply provides. This is driven by the motivation the make pattern matching extensible.
+But this leads to (arguably small) inconsistency, as pointed out by Lionel Parreaux in the [Scala Contributors Thread](https://contributors.scala-lang.org/t/pattern-matching-with-named-fields/1829/44). This could lead users to use a named pattern, just to skip all parameters.
 
 ```scala
   case User(age = _) => "Just wanted to use the extractor, lol!"
@@ -185,9 +189,11 @@ In addition, this breaks the intuitive similarity between construction and decon
 
 ### Alternative desugaring
 
+As the above described desugaring has its drawbacks.Here are some alternatives with other drawbacks, and maybe better trade-offs.
+
 #### Use underscore methods
 
-In the sprit of https://dotty.epfl.ch/docs/reference/changed-features/pattern-matching.html#name-based-match:
+In the sprit of [name based pattern matching](https://dotty.epfl.ch/docs/reference/changed-features/pattern-matching.html#name-based-match):
 
 ```scala
 object User:
@@ -203,11 +209,13 @@ Pro:
 
 * allows to add more fields
 * allows `@deprecatedName`
+* is the only desugaring, that doesn't use string literals
 
 Con:
 
 * How to detect that a name means the same as a position? Maybe detect simple patterns like the last line in the example?
-* long and verbose, without any shortcuts
+* long and verbose, without any shortcuts in sight
+* An underscore at the beginning of a name is an unheard of pattern, even in Scala. This could accidentally expose fields, which weren't suppose to become fields.
 
 #### Annotated `unapply` method
 
@@ -255,7 +263,7 @@ This would be more generic and could handle user defined extractors.
 Lionel Parreaux proposed a more powerful mechanism, where if guards of cases could them self contains destructuring patterns.
 
 ```scala
-  case user: User if Age(years) <- user => years
+  case user: User if Age(years) <- user.age => years
   case User(age = Age(years)) => years // both cases do the same thing
 ```
 
@@ -264,6 +272,8 @@ His proposal is strictly more powerful, but arguably less intuitive. Both, Patte
 ## Open questions
 
 It could be useful to add extractors with just named fields to sealed traits and enums.
+
+What would reuse would look like? What is desirable?
 
 ## References
 
