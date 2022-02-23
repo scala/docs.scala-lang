@@ -105,9 +105,22 @@ get poor results, try surrounding the symbol with double quotes.
 sbt 1.x always uses Scala 2.12 to compile build definitions.
 Your sbt 1.x build definition is always a Scala 2.12 program.
 
-Regardless, in your `build.sbt` you can set `scalaVersion` to anything
-you want and your actual program code will be compiled with that
-version.
+Regardless, in your `build.sbt`, you can set `scalaVersion` to whichever
+available distribution you want and your program code will be compiled with that version.
+
+### I want Scala 3.1.1 (etc); why does std lib say it's using Scala 2.13?
+
+Scala 3 currently uses the Scala 2.13 library by leveraging its seamless
+interoperability. Note that it does not necessarily ingest the latest
+version of the Scala 2.13 library.
+
+```
+Welcome to Scala 3.1.1 (17.0.2, Java OpenJDK 64-Bit Server VM).
+Type in expressions for evaluation. Or try :help.
+
+scala> util.Properties.versionString
+val res0: String = version 2.13.6
+```
 
 ### Why is my (abstract or overridden) `val` null?
 
