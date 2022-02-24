@@ -1,18 +1,26 @@
+---
+layout: singlepage-overview
+title: Optimizer
+---
+
+**[Lukas Rytz](https://github.com/lrytz) (November 7, 2018)**
+
+**[Andrew Marki](https://github.com/som-snytt) (February 29, 2022)**
+
 # The Scala 2.12 / 2.13 Inliner and Optimizer
 
-_by [Lukas Rytz](https://github.com/lrytz), November 7, 2018_
+## In Brief
 
-tl;dr:
-
+- The Scala compiler has a compile-time optimizer that is available in versions 2.12 and 2.13, but not yet in Scala 3.
 - Don't enable the optimizer during development: it breaks incremental compilation, and it makes the compiler slower. Only enable it for testing, on CI, and to build releases.
-- Enable method-local optimizations with `-opt:l:method`. This option is safe for binary compatibility, but typically doesn't improve performance on its own.
-- Enable inlining in addition to method-local optimizations with `-opt:l:inline` and `-opt-inline-from:[PATTERN]`
-  - Don't inline from your dependencies when publishing a library, it breaks binary compatibility. Use `-opt-inline-from:my.package.**` to only inline from packages within your library.
-  - When compiling an application with global inlining (`-opt-inline-from:**`), ensure that the run-time classpath is exactly the same as the compile-time classpath.
+- Enable method-local optimizations with `-opt:local`. This option is safe for binary compatibility, but typically doesn't improve performance on its own.
+- Enable inlining in addition to method-local optimizations with `-opt:inline:[PATTERN]`.
+  - Don't inline from your dependencies when publishing a library, it breaks binary compatibility. Use `-opt:inline:my.package.**` to only inline from packages within your library.
+  - When compiling an application with global inlining (`-opt:inline:**`), ensure that the run-time classpath is **exactly the same** as the compile-time classpath.
 - The `@inline` annotation only has an effect if the inliner is enabled. It tells the inliner to always try to inline the annotated method or callsite.
 - Without the `@inline` annotation, the inliner generally inlines higher-order methods and forwarder methods. The main goal is to eliminate megamorphic callsites due to functions passed as argument, and to eliminate value boxing. Other optimizations are delegated to the JVM.
 
-To learn more, read on.
+Read more to learn more.
 
 ## Intro
 
@@ -20,15 +28,17 @@ The Scala compiler has included an inliner since version 2.0. Closure eliminatio
 
 The optimizer was re-written for Scala 2.12 to become more reliable and powerful – and to side-step the spelling issue by calling the new flag `-opt`. This post describes how to use the optimizer in Scala 2.12 and 2.13: what it does, how it works, and what are its limitations.
 
+The options were simplified for 2.13.9, as described here. The [earlier version](https://www.lightbend.com/blog/scala-inliner-optimizer) of this article uses the traditional forms, which are still supported.
+
 ## Motivation
 
-Why does the Scala compiler even have a JVM bytecode optimizer? The JVM is a highly optimized runtime with a just-in-time (JIT) compiler with 19 years of tuning. It's because there are certain well-known code patterns that the JVM fails to optimize properly. These patterns are common in functional languages such as Scala. (Increasingly, Java code with lambdas is catching up and showing the same performance issues at run-time.)
+Why does the Scala compiler even have a JVM bytecode optimizer? The JVM is a highly optimized runtime with a just-in-time (JIT) compiler that benefits from over two decades of tuning. It's because there are certain well-known code patterns that the JVM fails to optimize properly. These patterns are common in functional languages such as Scala. (Increasingly, Java code with lambdas is catching up and showing the same performance issues at run-time.)
 
 The two most important such patterns are "megamorphic dispatch" (also called "the inlining problem") and value boxing. If you'd like to learn more about these problems in the context of Scala, you could watch the part of [my Scala Days 2015 talk (starting at 26:13)](https://youtu.be/Ic4vQJcYwsU?t=1573).
 
 The goal of the Scala optimizer is to produce bytecode that the JVM can execute fast. It is also a goal to avoid performing any optimizations that the JVM can already do well.
 
-This means that the Scala optimizer may become obsolete in the future, if the JIT compiler is improved to handle these patterns better. In fact, with the arrival of GraalVM, that future might be nearer than you think! We take a closer look at Graal in a follow-up post. But for now, we dive into some details about the Scala optimizer.
+This means that the Scala optimizer may become obsolete in the future, if the JIT compiler is improved to handle these patterns better. In fact, with the arrival of GraalVM, that future might be nearer than you think! But for now, we dive into some details about the Scala optimizer.
 
 ## Constraints and assumptions
 
@@ -45,7 +55,7 @@ However, even when staying within these constraints, some changes performed by t
 - Inlined methods disappear from call stacks.
 
   - This can lead to unexpected behaviors when using a debugger.
-  - Related: line numbers (stored in bytecode) are discarded when a method is inlined into a different classfile, which also impacts debugging experience. (This [could be improved](https://github.com/scala/scala-dev/issues/3).)
+  - Related: line numbers (stored in bytecode) are discarded when a method is inlined into a different classfile, which also impacts debugging experience. (This [could be improved](https://github.com/scala/scala-dev/issues/3) and is expected to [progress](https://github.com/lampepfl/dotty/pull/11492).)
 
 - Inlining a method can delay class loading of the class where the method is defined.
 
@@ -73,7 +83,7 @@ However, even when staying within these constraints, some changes performed by t
 
 ## Binary compatibility
 
-Scala minor releases are binary compatible with each other, for example 2.12.6 and 2.12.7. The same is true for many libraries in the Scala ecosystem. These binary compatibility promises are the main reason for the Scala optimizer not to be enabled everywhere.
+Scala minor releases are binary compatible with each other, for example, 2.12.6 and 2.12.7. The same is true for many libraries in the Scala ecosystem. These binary compatibility promises are the main reason for the Scala optimizer not to be enabled everywhere.
 
 The reason is that inlining a method from one class into another changes the (binary) interface that is accessed:
 
@@ -112,25 +122,25 @@ The reason for this restriction is that dependency management tools like sbt wil
 
 The compiler flag for enabling the optimizer is `-opt`. Running `scalac -opt:help` shows how to use the flag.
 
-By default (without any compiler flags, or with `-opt:l:default`), the Scala compiler eliminates unreachable code, but does not run any other optimizations.
+By default (without any compiler flags, or with `-opt:default`), the Scala compiler eliminates unreachable code, but does not run any other optimizations.
 
-`-opt:l:method` enables all method-local optimizations, for example:
+`-opt:local` enables all method-local optimizations, for example:
 
 - Elimination of code that loads unused values
 - Rewriting of null and `isInstanceOf` checks whose result is known at compile-time
 - Elimination of value boxes like `java.lang.Integer` or `scala.runtime.DoubleRef` that are created within a method and don't escape it
 
-Individual optimizations can be disabled. For example, `-opt:l:method,-nullness-tracking` disables nullness optimizations.
+Individual optimizations can be disabled. For example, `-opt:local,-nullness-tracking` disables nullness optimizations.
 
 Method-local optimizations alone typically don't have any positive effect on performance, because source code usually doesn't have unnecessary boxing or null checks. However, local optimizations can often be applied after inlining, so it's really the combination of inlining and local optimizations that can improve program performance.
 
-`-opt:l:inline` enables inlining in addition to method-local optimizations. However, to avoid unexpected binary compatibility issues, we also need to tell the compiler which code it is allowed to inline. This is done with the `-opt-inline-from` compiler flag. Examples:
+`-opt:inline` enables inlining in addition to method-local optimizations. However, to avoid unexpected binary compatibility issues, we also need to tell the compiler which code it is allowed to inline. This is done by specifying a pattern after the option to select packages, classes, and methods for inlining. Examples:
 
-- `-opt-inline-from:my.library.**` enables inlining from any class defined in package `my.library`, or in any of its sub-packages. Inlining within a library is safe for binary compatibility, so the resulting binary can be published. It will still work correctly even if one of its dependencies is updated to a newer minor version in the run-time classpath.
-- `-opt-inline-from:<sources>` enables inlining from the set of source files being compiled in the current compiler invocation. This option can also be used for compiling libraries. If the source files of a library are split up across multiple sbt projects, inlining is only done within each project. Note that in an incremental compilation, inlining would only happen within the sources being re-compiled – but in any case, it is recommended to only enable the optimizer in CI and release builds (and to run `clean` before building).
-- `-opt-inline-from:**` allows inlining from every class, including the JDK. This option enables full optimization when compiling an application. To avoid binary incompatibilities, it is mandatory to ensure that the run-time classpath is identical to the compile-time classpath, including the Java standard library.
+- `-opt:inline:my.library.**` enables inlining from any class defined in package `my.library`, or in any of its sub-packages. Inlining within a library is safe for binary compatibility, so the resulting binary can be published. It will still work correctly even if one of its dependencies is updated to a newer minor version in the run-time classpath.
+- `-opt-inline:<sources>`, where the pattern is the literal string `<sources>`, enables inlining from the set of source files being compiled in the current compiler invocation. This option can also be used for compiling libraries. If the source files of a library are split up across multiple sbt projects, inlining is only done within each project. Note that in an incremental compilation, inlining would only happen within the sources being re-compiled – but in any case, it is recommended to only enable the optimizer in CI and release builds (and to run `clean` before building).
+- `-opt:inline:**` allows inlining from every class, including the JDK. This option enables full optimization when compiling an application. To avoid binary incompatibilities, it is mandatory to ensure that the run-time classpath is identical to the compile-time classpath, including the Java standard library.
 
-Running `scalac -opt-inline-from:help` explains how to use the compiler flag.
+Running `scalac -opt:help` explains how to use the compiler flag.
 
 ### Inliner heuristics and `@inline`
 
@@ -163,11 +173,11 @@ Finally, note that the `@inline` annotation only has an effect when the inliner 
 The inliner can issue warnings when callsites cannot be inlined. By default, these warnings are not issued individually, but only as a summary at the end of compilation (similar to deprecation warnings).
 
 ```
-$> scalac Test.scala -opt:l:inline '-opt-inline-from:**'
+$> scalac Test.scala '-opt:inline:**'
 warning: there was one inliner warning; re-run enabling -opt-warnings for details, or try -help
 one warning found
 
-$> scalac Test.scala -opt:l:inline '-opt-inline-from:**' -opt-warnings
+$> scalac Test.scala '-opt:inline:**' -Wopt
 Test.scala:3: warning: C::f()I is annotated @inline but could not be inlined:
 The method is not final and may be overridden.
   def t = f
@@ -187,11 +197,11 @@ object T extends C {
 }
 ```
 
-The `-opt-warnings` flag has more configurations. With `-opt-warnings:_`, a warning is issued for every callsite that is selected by the heuristic but cannot be inlined. See also `-opt-warnings:help`.
+The `-Wopt` flag has more configurations. With `-Wopt:_`, a warning is issued for every callsite that is selected by the heuristic but cannot be inlined. See also `-Wopt:help`.
 
 ### Inliner log
 
-If you're curious (or maybe even skeptical) about what the inliner is doing to your code, you can use the `-Yopt-log-inline` flag to produce a trace of the inliner's work:
+If you're curious (or maybe even skeptical) about what the inliner is doing to your code, you can use the `-Vinline` verbose flag to produce a trace of the inliner's work:
 
 ```scala
 package my.project
@@ -201,7 +211,7 @@ class C {
 ```
 
 ```
-$> scalac Test.scala -opt:l:inline '-opt-inline-from:**' -Yopt-log-inline my/project/C.f
+$> scalac Test.scala '-opt:inline:**' -Vinline my/project/C.f
 Inlining into my/project/C.f
  inlined scala/Predef$.intArrayOps (the callee is annotated `@inline`). Before: 15 ins, after: 30 ins.
  inlined scala/collection/ArrayOps$.map$extension (the callee is a higher-order method, the argument for parameter (evidence$6: Function1) is a function literal). Before: 30 ins, after: 94 ins.
@@ -211,11 +221,3 @@ Inlining into my/project/C.f
  inlined my/project/C.$anonfun$f$1 (the callee is a synthetic forwarder method). Before: 654 ins, after: 666 ins.
  inlined scala/runtime/BoxesRunTime.boxToInteger (the callee is a forwarder method with boxing adaptation). Before: 666 ins, after: 674 ins.
 ```
-
-Explaining the details here is out of scope for this post. We defer this discussion to a follow-up post that will explain the internals of the Scala optimizer in more detail.
-
-## Summary
-
-The goal of this article was to explain why the Scala optimizer exists and give a rough explanation what it can and cannot do. It also showed how to configure and use the optimizer in your project.
-
-In the next post, we will go into detail about how the optimizer works, what transformations are applied, and how they work together. We will also measure performance improvements that the optimizer can bring. Finally, we will look at related projects, dive a little more into the history of the optimizer, and discuss ideas for the future.
