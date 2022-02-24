@@ -595,7 +595,7 @@ represent as integers. We therefore start the definition of the
       def year = y
       def month = m
       def day = d
-      override def toString(): String = year + "-" + month + "-" + day
+      override def toString(): String = s"$year-$month-$day"
 
 The important part here is the `extends Ord` declaration which
 follows the class name and parameters. It declares that the

@@ -547,7 +547,7 @@ Java 프로그래머들이 트레잇을 이해하는 가장 쉬운 길은 코드
       def year = y
       def month = m
       def day = d
-      override def toString(): String = year + "-" + month + "-" + day
+      override def toString(): String = s"$year-$month-$day"
 
 여기서 중요한 부분은 클래스 이름과 파라미터 뒤에 따라오는
 `extends Ord` 선언이다. 이 선언은 `Date` 클래스가 `Ord`
