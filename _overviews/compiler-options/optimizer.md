@@ -3,9 +3,9 @@ layout: singlepage-overview
 title: Optimizer
 ---
 
-**[Lukas Rytz](https://github.com/lrytz) (November 7, 2018)**
+**[Lukas Rytz](https://github.com/lrytz) (2018)**
 
-**[Andrew Marki](https://github.com/som-snytt) (February 29, 2022)**
+**[Andrew Marki](https://github.com/som-snytt) (2022)**
 
 # The Scala 2.12 / 2.13 Inliner and Optimizer
 
@@ -114,7 +114,7 @@ This means that `m` can be inlined into classes other than `C`, since the result
 
 Even more trivially, assume that method `m` was buggy and is changed to `def m = if (fullMoon) 1 else x` in a minor release. Normally, it would be enough for a user to put the new version on the classpath. However, if the old version of `c.m` was inlined at compile-time, having the new version of C on the run-time classpath would not fix the bug.
 
-In order to safely use the Scala optimizer, users need to make sure that the compile-time and run-time classpaths are identical. This has a far-reaching consequence for library developers: **libraries that are published to be consumed by other projects should not inline code from the classpath**. The inliner can be configured to inline code from the library itself using `-opt-inline-from:my.package.**`.
+In order to safely use the Scala optimizer, users need to make sure that the compile-time and run-time classpaths are identical. This has a far-reaching consequence for library developers: **libraries that are published to be consumed by other projects should not inline code from the classpath**. The inliner can be configured to inline code from the library itself using `-opt:inline:my.package.**`.
 
 The reason for this restriction is that dependency management tools like sbt will often pick newer versions of transitive dependencies. For example, if library `A` depends on `core-1.1.1`, `B` depends on `core-1.1.2` and the application depends on both `A` and `B`, the build tool will put `core-1.1.2` on the classpath. If code from `core-1.1.1` was inlined into `A` at compile-time, it might break at run-time due to a binary incompatibility.
 
@@ -137,7 +137,7 @@ Method-local optimizations alone typically don't have any positive effect on per
 `-opt:inline` enables inlining in addition to method-local optimizations. However, to avoid unexpected binary compatibility issues, we also need to tell the compiler which code it is allowed to inline. This is done by specifying a pattern after the option to select packages, classes, and methods for inlining. Examples:
 
 - `-opt:inline:my.library.**` enables inlining from any class defined in package `my.library`, or in any of its sub-packages. Inlining within a library is safe for binary compatibility, so the resulting binary can be published. It will still work correctly even if one of its dependencies is updated to a newer minor version in the run-time classpath.
-- `-opt-inline:<sources>`, where the pattern is the literal string `<sources>`, enables inlining from the set of source files being compiled in the current compiler invocation. This option can also be used for compiling libraries. If the source files of a library are split up across multiple sbt projects, inlining is only done within each project. Note that in an incremental compilation, inlining would only happen within the sources being re-compiled – but in any case, it is recommended to only enable the optimizer in CI and release builds (and to run `clean` before building).
+- `-opt:inline:<sources>`, where the pattern is the literal string `<sources>`, enables inlining from the set of source files being compiled in the current compiler invocation. This option can also be used for compiling libraries. If the source files of a library are split up across multiple sbt projects, inlining is only done within each project. Note that in an incremental compilation, inlining would only happen within the sources being re-compiled – but in any case, it is recommended to only enable the optimizer in CI and release builds (and to run `clean` before building).
 - `-opt:inline:**` allows inlining from every class, including the JDK. This option enables full optimization when compiling an application. To avoid binary incompatibilities, it is mandatory to ensure that the run-time classpath is identical to the compile-time classpath, including the Java standard library.
 
 Running `scalac -opt:help` explains how to use the compiler flag.
@@ -174,7 +174,7 @@ The inliner can issue warnings when callsites cannot be inlined. By default, the
 
 ```
 $> scalac Test.scala '-opt:inline:**'
-warning: there was one inliner warning; re-run enabling -opt-warnings for details, or try -help
+warning: there was one inliner warning; re-run enabling -Wopt for details, or try -help
 one warning found
 
 $> scalac Test.scala '-opt:inline:**' -Wopt

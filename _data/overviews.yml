@@ -263,7 +263,7 @@
       by: Lukas Rytz and Andrew Marki
       icon: cog
       url: "compiler-options/optimizer.html"
-      description: "The compiler can perform various optimizations as specified by compiler options."
+      description: "The compiler can perform various optimizations."
 
 
 - category: Legacy
