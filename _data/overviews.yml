@@ -259,6 +259,11 @@
       icon: cog
       url: "compiler-options/errors.html"
       description: "A new engine for more user-friendly error messages, printing chains of dependent implicits and colored found/required type diffs."
+    - title: Optimizer
+      by: Lukas Rytz and Andrew Marki
+      icon: cog
+      url: "compiler-options/optimizer.html"
+      description: "The compiler can perform various optimizations."
 
 
 - category: Legacy
