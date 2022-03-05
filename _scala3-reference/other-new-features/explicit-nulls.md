@@ -537,4 +537,4 @@ Our strategy for binary compatibility with Scala binaries that predate explicit 
 and new libraries compiled without `-Yexplicit-nulls` is to leave the types unchanged
 and be compatible but unsound.
 
-[More details](https://dotty.epfl.ch/docs/internals/explicit-nulls.html)
+[More details](https://dotty.epfl.ch/3.0.0/docs/internals/explicit-nulls.html)

@@ -25,4 +25,4 @@ which covers the steps and workflow necessary work on the Scaladoc tool.
 As of Scala 2.13, the Scaladoc tool is maintained but not actively
 developed.  Major development of Scaladoc will progress as a part of
 Dotty for Scala 3 in the
-[Dottydoc](https://dotty.epfl.ch/docs/usage/dottydoc.html) tool.
+[Scaladoc]({% link _overviews/scala3-scaladoc/index.md %}) tool.
