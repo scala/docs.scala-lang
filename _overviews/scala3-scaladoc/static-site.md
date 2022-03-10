@@ -101,7 +101,8 @@ Layouts must be placed in a `_layouts` directory in the site root:
 ├── _layouts
 │   └── main.html
 └── _docs
-    └── getting-started.md
+    ├── getting-started.md
+    └── index.html
 ```
 
 ## Assets
@@ -114,7 +115,7 @@ In order to render assets along with static site, they need to be placed in the 
 └── _docs
     └── getting-started.md
 ```
-To reference the asset in a page, one need to create link relative to the `_assets` directory
+To reference the asset on a page, one needs to create a link relative to the `_assets` directory
 
 ```
 Take a look at the following image: [My image](images/myimage.png)
@@ -122,7 +123,7 @@ Take a look at the following image: [My image](images/myimage.png)
 
 ## Sidebar
 
-Scaladoc by default uses directory structure in `_docs` directory to organize static sites. There is also possibility to override it by providing a `sidebar.yml` file in the site root. The YAML configuration file describes the structure of rendered static site and the table of content:
+By default, Scaladoc reflects the directory structure from `_docs` directory in the rendered site. There is also the ability to override it by providing a `sidebar.yml` file in the site root directory. The YAML configuration file describes the structure of the rendered static site and the table of content:
 
 ```yaml
 index: index.html
@@ -144,20 +145,20 @@ Nesting subsections will result in a tree-like structure of navigation.
 `subsection` properties are:
  - `title` - Optional string - A default title of the subsection. 
   Front-matter titles have higher priorities.
- - `index` - Optional string - A path to index page of a subsection.
- - `directory` - Optional string - A name of the directory that will contain the subsection.
+ - `index` - Optional string - A path to index page of a subsection. The path is relative to the `_docs` directory.
+ - `directory` - Optional string - A name of the directory that will contain the subsection in the generated site.
   By default, the directory name is the subsection name converted to kebab case.
  - `subsection` - Array of `subsection` or `page`.
 
- Either `index` or `subsection` must be defined. The subsection defined with `index` and without `subsection` will contain pages and directories loaded recursively from directory of the index page.
+ Either `index` or `subsection` must be defined. The subsection defined with `index` and without `subsection` will contain pages and directories loaded recursively from the directory of the index page.
 
 `page` properties are:
  - `title` - Optional string - A default title of the page. 
   Front-matter titles have higher priorities.
- - `page` - String - A path to the page
- - `hidden` - Optional boolean - A flag that indicates whether the page should be visible in navigation. By default, it is set to `false`.
+ - `page` - String - A path to the page, relative to the `_docs` directory.
+ - `hidden` - Optional boolean - A flag that indicates whether the page should be visible in the navigation sidebar. By default, it is set to `false`.
 
-**Note**: All paths in YAML configuration file are relative to `<static-root>/_docs`.
+**Note**: All the paths in the YAML configuration file are relative to `<static-root>/_docs`.
 
 ## Hierarchy of title
 
@@ -200,13 +201,13 @@ Blog feature is described in [a separate document]({% link _overviews/scala3-sca
         │   └── ...
         └── ...
 ```
-It results in static site containing documents as well as blog. It also contains custom layouts and assets. The structure of rendered documentation can be based on file system but it can also be overriden by YAML configuration.
+It results in a static site containing documents as well as a blog. It also contains custom layouts and assets. The structure of the rendered documentation can be based on the file system but it can also be overridden by YAML configuration.
 
 ### Mapping directory structure
 
-Using YAML configuration file, we can define how the source directory structure should be transformed in target directory structure.
+Using the YAML configuration file, we can define how the source directory structure should be transformed into an outputs directory structure.
 
-Take a look at following subsection definition:
+Take a look at the following subsection definition:
 ```yaml
 - title: Some other subsection
   index: abc/index.html
@@ -217,3 +218,5 @@ Take a look at following subsection definition:
 ```
 This subsection shows the ability of YAML configuration to map the directory structure.
 Even though the index page and all defined children are in different directories, they will be rendered in `custom-directory`.
+The source page `abc/index.html` will generate a page `custom-directory/index.html`, the source page `abc2/page1.md` will generate a page `custom-directory/page1.html`, 
+and the source page `foo/page2.md` will generate a page `custom-directory/page2.html`.
