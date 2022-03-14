@@ -14,7 +14,7 @@ Scala をインストールすると、コンパイラやビルドツールな�
 
 ### Scala インストーラーを使う（推奨）
 
-Scala のインストーラーは[Coursier](https://get-coursier.io/docs/cli-overview)というツールで、コマンドは`cs`です。このツールを使うと、JVM と標準 Scala ツールがシステムにインストールされます。  
+Scala のインストーラーは[Coursier](https://get-coursier.io/docs/cli-overview)というツールで、コマンドは`cs`です。このツールを使うと、JVM と標準 Scala ツールがシステムにインストールされます。
 以下の手順でお使いのシステムにインストールしてください。
 
 <div class="main-download">
@@ -44,8 +44,8 @@ Scala のインストーラーは[Coursier](https://get-coursier.io/docs/cli-ove
 
 ### 手動でのインストール
 
-Scala プロジェクトのコンパイル、実行、テスト、パッケージ化に必要なツールは Java と sbt の2つだけです。  
-Java のバージョンは8または11です。  
+Scala プロジェクトのコンパイル、実行、テスト、パッケージ化に必要なツールは Java と sbt の2つだけです。
+Java のバージョンは8または11です。
 これらを手動でインストールするには:
 
 1. Java 8または11がインストールされていない場合は、[Oracle Java 8](https://www.oracle.com/java/technologies/javase-jdk8-downloads.html)、[Oracle Java 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)、または[AdoptOpenJDK 8/11](https://adoptopenjdk.net/)からJavaをダウンロードしてください。Scala と Java の互換性の詳細については、[JDK Compatibility](/overviews/jdk-compatibility/overview.html)を参照してください。
@@ -144,13 +144,13 @@ Scala について日本語で質問したい場合、Twitterでつぶやくと�
 
 <!-- Hidden elements whose content are used to provide OS-specific download instructions.
  -- This is handled in `resources/js/functions.js`.
- --> 
+ -->
 <div style="display:none" id="stepOne-linux">
-       <code class="hljs">$ curl -fLo cs https://git.io/coursier-cli-linux && chmod +x cs && ./cs setup </code> <br>
+       <code class="hljs">$ curl -fL https://github.com/coursier/launchers/raw/master/cs-x86_64-pc-linux.gz | gzip -d > cs && chmod +x cs && ./cs setup</code> <br>
 </div>
 
 <div style="display:none" id="stepOne-unix">
-    <p>Follow <a href="https://get-coursier.io/docs/cli-installation" target="_blank">the instructions to install the <code>cs</code> launcher</a> then run:</p>
+    <p><a href="https://get-coursier.io/docs/cli-installation" target="_blank">手順に従って <code>cs</code> ランチャーをインストール</a>し、その次に以下を実行します。</p>
     <p><code>$ ./cs setup</code></p>
 </div>
 
@@ -160,10 +160,10 @@ Scala について日本語で質問したい場合、Twitterでつぶやくと�
     </div>
     <p>または、Homebrewを使用しない場合は</p>
     <div class="highlight">
-        <code class="hljs">$ curl -fLo cs https://git.io/coursier-cli-macos && chmod +x cs &&  (xattr -d com.apple.quarantine cs || true) && ./cs setup</code> <br>
+        <code class="hljs">$ curl -fL https://github.com/coursier/launchers/raw/master/cs-x86_64-apple-darwin.gz | gzip -d > cs && chmod +x cs &&  (xattr -d com.apple.quarantine cs || true) && ./cs setup</code> <br>
     </div>
 </div>
 
 <div style="display:none" id="stepOne-windows">
-    <p><a href="https://git.io/coursier-cli-windows-exe">the Scala installer for Windows</a>を、ダウンロードして実行すてください。</p>
+    <p><a href="https://github.com/coursier/launchers/raw/master/cs-x86_64-pc-win32.zip">the Scala installer for Windows</a>を、ダウンロードして実行してください。</p>
 </div>

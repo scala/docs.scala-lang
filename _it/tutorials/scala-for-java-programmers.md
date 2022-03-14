@@ -578,7 +578,7 @@ definendo la classe `Date` come segue:
       def year = y
       def month = m
       def day = d
-      override def toString(): String = year + "-" + month + "-" + day
+      override def toString(): String = s"$year-$month-$day"
 
 La parte importante qui è la dichiarazione `extends Ord` che segue il nome
 della classe e dei parametri. Dichiara che la classe `Date` eredita il

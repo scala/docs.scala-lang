@@ -38,8 +38,8 @@ To use a generic class, put the type in the square brackets in place of `A`.
 val stack = new Stack[Int]
 stack.push(1)
 stack.push(2)
-println(stack.pop)  // prints 2
-println(stack.pop)  // prints 1
+println(stack.pop())  // prints 2
+println(stack.pop())  // prints 1
 ```
 The instance `stack` can only take Ints. However, if the type argument had subtypes, those could be passed in:
 ```

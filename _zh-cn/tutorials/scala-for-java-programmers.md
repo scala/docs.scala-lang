@@ -308,7 +308,7 @@ Java 中我们会将这个树用一个抽象父类表示，然后每种节点跟
       def year = y
       def month = m
       def day = d
-      override def toString(): String = year + "-" + month + "-" + day
+      override def toString(): String = s"$year-$month-$day"
 
 这边要注意的是声明在类名称跟参数之后的 `extends Ord`。这个语法声明了 `Date` 继承 `Ord` 特质。
 
