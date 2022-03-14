@@ -387,12 +387,12 @@ When you need to access the catch-all, default value in a `match` expression, ju
 ```scala
 val i = 4
 
-val num = i match
+val code = i match
   case 0 => "00"
   case 1 => "01"
   case what => s"You gave me: $what"
 
-println(num)
+println(code)
 ```
 
 In this example the variable is named `what` to show that it can be given any legal name.
