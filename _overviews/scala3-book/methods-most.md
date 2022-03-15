@@ -383,23 +383,6 @@ See the [Extension methods section][reference_extension_methods] of this book, a
 
 
 
-## Even more
-
-There’s even more to know about methods, including how to:
-
-- Call methods on superclasses
-- Define and use by-name parameters
-- Write a method that takes a function parameter
-- Create inline methods
-- Handle exceptions
-- Use vararg input parameters
-- Write methods that have multiple parameter groups (partially-applied functions)
-- Create methods that have generic type parameters
-
-See the [Reference documentation][reference] for more details on these features.
-
-
-
 [extension]: {% link _overviews/scala3-book/ca-extension-methods.md %}
 [reference_extension_methods]: {{ site.scala3ref }}/contextual/extension-methods.html
 [reference]: {{ site.scala3ref }}/overview.html
