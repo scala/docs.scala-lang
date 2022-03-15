@@ -118,4 +118,12 @@ scala2-sections:
         description: "The Scala Improvement Process. Language & compiler evolution."
         icon: "fa fa-cogs"
         link: /sips/index.html
+      - title: "Contribution"
+        description: "How can you get involved with Scala evolution"
+        icon: "fa fa-cogs"
+        link: /overviews/scala-contribution/introduction.html
+      - title: "Scala 2 Hackers Guide"
+        description: "How to make a change to Scala 2's compiler"
+        icon: "fa fa-cogs"
+        link: /overviews/scala2-hackers/hacking-introduction.html
 ---
