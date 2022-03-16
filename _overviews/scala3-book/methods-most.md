@@ -13,7 +13,7 @@ This section introduces the various aspects of how to define and call methods in
 
 Scala methods have many features, including these:
 
-- Generic (type) parameters
+- Generic methods with type parameters
 - Default parameter values
 - Multiple parameter groups
 - Context-provided parameters
@@ -197,14 +197,13 @@ engage(
 
 
 
-## A suggestion about methods that take no parameters
+## A convention about methods that take no parameters
 
-When a method takes no parameters, it’s said to have an _arity_ level of _arity-0_.
-Similarly, when a method takes one parameter it’s an _arity-1_ method.
+When a method takes no parameters, it’s said to have an _arity_ level of _arity-0_. Similarly, when a method takes one parameter it’s an _arity-1_ method.
 When you create arity-0 methods:
 
 - If the method performs side effects, such as calling `println`, declare the method with empty parentheses
-- If the method does not perform side effects---such as getting the size of a collection, which is similar to accessing a field on the collection---leave the parentheses off
+- If the method does not perform side effects---about such methods they say "pure methods" or "pure code", contrary to "dirty" or "impure"---leave the parentheses off
 
 For example, this method performs a side effect, so it’s declared with empty parentheses:
 
@@ -219,7 +218,17 @@ speak     // error: "method speak must be called with () argument"
 speak()   // prints "hi"
 ```
 
-While this is just a convention, following it dramatically improves code readability: It makes it easier to understand at a glance that an arity-0 method performs side effects.
+The main intention behind this convention is to make transition field-to-method and visa-versa easy for developers and transparent to method consumers. For example, given the following code, no one can tell if `speak` is a field or method:  
+
+```scala
+val alleyCat = Cat("Oliver")
+println(alleyCat.speak)
+```
+
+In FP terms "call of pure function" and "result of pure function" (with given arguments) are totally the same thing. While code does not change any existing state we can substitute field instead of method, and method instead of the field. The result must be the same. 
+
+However, in the case of impure code consumers must be warned and alarmed at least, because impure code tends to make dangerous things, like throwing `IOException`. That is why there is a difference between an absent list and an empty argument list. 
+
 
 {% comment %}
 Some of that wording comes from this page: https://docs.scala-lang.org/style/method-invocation.html
@@ -269,7 +278,7 @@ For more details on the `Matchable` trait, see the [Reference documentation][ref
 
 ## Controlling visibility in classes
 
-In classes, objects, traits, and enums, Scala methods are public by default, so the `Dog` instance created here can access the `speak` method:
+In classes, objects, traits, and enums, Scala methods are public by default, so world can access the `speak` method of `Dog` instance created here:
 
 ```scala
 class Dog:
@@ -279,8 +288,7 @@ val d = new Dog
 d.speak()   // prints "Woof"
 ```
 
-Methods can also be marked as `private`.
-This makes them private to the current class, so they can’t be called nor overridden in subclasses:
+Methods can also be marked as `private`. This makes them private to the current class, so they can’t be called nor overridden in subclasses:
 
 ```scala
 class Animal:
@@ -288,7 +296,7 @@ class Animal:
 
 class Cat extends Animal:
   // this method won’t compile
-  override def breathe() = println("Yo, I’m totally breathing")
+  override def breathe() = println("Meow. I’m breathing too.")
 ```
 
 If you want to make a method private to the current class and also allow subclasses to call it or override it, mark the method as `protected`, as shown with the `speak` method in this example:
@@ -299,10 +307,10 @@ class Animal:
   def walk() =
     breathe()
     println("I’m walking")
-  protected def speak() = println("Hello?")
+  protected def speak() = println("Hi people")
 
 class Cat extends Animal:
-  override def speak() = println("Meow")
+  override def speak() = println("Meow people")
 
 val cat = new Cat
 cat.walk()
@@ -321,7 +329,7 @@ The `protected` setting means:
 
 Earlier you saw that traits and classes can have methods.
 The Scala `object` keyword is used to create a singleton class, and an object can also contain methods.
-This is a nice way to group a set of “utility” methods.
+This is a usual way to group a set of “utility” methods.
 For instance, this object contains a collection of methods that work on strings:
 
 ```scala

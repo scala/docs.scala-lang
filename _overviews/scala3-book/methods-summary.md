@@ -17,7 +17,7 @@ There’s even more to know about methods, including how to:
 - Handle exceptions
 - Use vararg input parameters
 - Write methods that have multiple parameter groups (partially-applied functions)
-- Create methods that have generic type parameters
+- Create methods that have type parameters
 
 See the [Reference documentation][reference] for more details on these features.
 
