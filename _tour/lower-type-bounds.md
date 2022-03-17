@@ -61,7 +61,7 @@ case class EuropeanSwallow() extends Bird
 
 
 val africanSwallowList = ListNode[AfricanSwallow](AfricanSwallow(), Nil())
-val birdList: Node[Bird] = africanSwallowList
+val birdList: ListNode[Bird] = africanSwallowList
 birdList.prepend(EuropeanSwallow())
 ```
-The `Node[Bird]` can be assigned the `africanSwallowList` but then accept `EuropeanSwallow`s.
+The `ListNode[Bird]` can be assigned the `africanSwallowList` but then accept `EuropeanSwallow`s.
