@@ -65,16 +65,12 @@ Stuff changes. Found a broken link or something that needs updating on this page
 
 {% include contributions-projects-list.html collection=page.projects %}
 
-{% if page.projectsInNeed.size > 0 %}
-
 ### Projects in Particular Need
 
 The following projects are important to the Scala community but are particularly in need of contributors to continue
 their development.
 
 {% include contributions-projects-list.html collection=page.projectsInNeed %}
-
-{% endif %}
 
 [bug-fixes]: {% link _overviews/scala-contribution/bug-fixes.md %}
 [hackers]: {% link _overviews/scala2-hackers/hacking-introduction.md %}

@@ -4,7 +4,7 @@ layout: multipage-overview
 title: Hacking Introduction
 description: An introduction to the Scala 2 Hacking
 partof: scala_2_hackers
-overview-name: Scala 2 Hackers Guide
+overview-name: Scala 2 Hacker's Guide
 num: 1
 outof: 2
 next-page: partest-guide

@@ -78,7 +78,7 @@ how to materialize your idea into a full-fledged pull request against the Scala 
 
 [community-tickets]: {% link _overviews/scala-contribution/introduction.md %}#community-tickets
 [bug-reporting-guide]: {% link _overviews/scala-contribution/bug-reporting-guide.md %}
-[bug-reporting-guide-dupes]: {% link _overviews/scala-contribution/bug-reporting-guide.md %}#reporting-confirmed-bugs-is-a-sin
+[bug-reporting-guide-dupes]: {% link _overviews/scala-contribution/bug-reporting-guide.md %}#please-check-before-reporting-a-bug
 [why-its-a-good-idea]: {% link _overviews/scala-contribution/scala-internals.md %}#why-its-a-good-idea
 [hackers]: {% link _overviews/scala2-hackers/hacking-introduction.md %}
 [hackers-connect]: {% link _overviews/scala2-hackers/hacking-introduction.md %}#1-connect
