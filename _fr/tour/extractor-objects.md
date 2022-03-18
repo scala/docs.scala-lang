@@ -61,6 +61,6 @@ Le type de retour de `unapply` doit être choisi comme suit :
 * Si cela retourne une seule sous-valeur de type T, retourner un `Option[T]`.
 * Si vous souhaitez retourner plusieurs sous-valeurs `T1,...,Tn`, groupez-les dans un tuple optionnel `Option[(T1,...,Tn)]`.
 
-Parfois, le nombre de valeurs à extraire n'est pas fixe et on souhaiterait retourner un nombre arbitraire de valeurs, en fonction des données d'entrée. Pour ce cas, vous pouvez définir des extracteurs avec la méthode `unapplySeq` qui retourne un `Option[Seq[T]]`. Un exemple commun d'utilisation est la déconstruction d'une liste en utilisant `case List(x, y, z) =>` et en décomposant une `String` en utilisant une expression régulière `Regex`, comme `case r(name, remainingFields @ _*) =>`.
+Parfois, le nombre de valeurs à extraire n'est pas fixe et on souhaiterait retourner un nombre arbitraire de valeurs, en fonction des données d'entrée. Pour ce cas, vous pouvez définir des extracteurs avec la méthode `unapplySeq` qui retourne un `Option[Seq[T]]`. Un exemple commun d'utilisation est la déconstruction d'une liste en utilisant `case List(x, y, z) =>`. Un autre est la décomposition d'une `String` en utilisant une expression régulière `Regex`, comme `case r(name, remainingFields @ _*) =>`.
 
 Traduit par Antoine Pointeau.
