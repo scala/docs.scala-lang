@@ -57,7 +57,7 @@ val CustomerID(name3) = "-asdfasdfasdf"
 
 Le type de retour de `unapply` doit être choisi comme suit :
 
-* Si c'est juste un test, retourner un `Boolean`. Pour l'instance `case even()`.
+* Si c'est juste un test, retourner un `Boolean`. Par exemple, `case even()`.
 * Si cela retourne une seule sous-valeur de type T, retourner un `Option[T]`.
 * Si vous souhaitez retourner plusieurs sous-valeurs `T1,...,Tn`, groupez-les dans un tuple optionnel `Option[(T1,...,Tn)]`.
 
