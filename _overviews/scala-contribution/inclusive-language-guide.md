@@ -6,9 +6,9 @@ description: An overview of using inclusive language
 partof: scala_contribution
 overview-name: Scala Contribution
 num: 3
-outof: 10
+outof: 11
 previous-page: bug-reporting-guide
-next-page: scala-standard-library-api-documentation
+next-page: documentation
 ---
 
 We are committed to providing a friendly, safe and welcoming environment for

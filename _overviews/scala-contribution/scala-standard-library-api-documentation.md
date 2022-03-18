@@ -1,14 +1,14 @@
 ---
-type: chapter
+type: section
 layout: multipage-overview
-title: Scaladoc (API) Contribution
+title: Scaladoc (API) Contributions
 description: An overview of contributing to Scala API documentation.
 partof: scala_contribution
 overview-name: Scala Contribution
-num: 4
-outof: 10
-previous-page: inclusive-language-guide
-next-page: documentation
+num: 5
+outof: 11
+previous-page: documentation
+next-page: docs-contribution
 ---
 
 This page is specific to API documentation contributions – that is, API
@@ -18,7 +18,7 @@ sometimes referred to as Scaladoc contributions.
 
 For contributions to tutorial and guide-style documentation on
 [docs.scala-lang.org][home],
-see the ["doc-site"'s contribution guide][contribute-docs].
+see the [contributing to docs.scala-lang.org][howto-contribute-docs].
 
 *Please note, these instructions cover documentation contributions Scala core
 libraries only. For other Scala projects please check those projects for the
@@ -48,7 +48,8 @@ and identify missing, incorrect or inadequate documentation. A good place to sta
 package objects for important packages (these often get overlooked for documentation
 and are a good place for API overviews).
 
-If you find an issue, please log it in the [Scala bug tracker](https://github.com/scala/bug)
+If you find an issue with Scala 2 API docs, please log it in the [Scala 2 bug tracker](https://github.com/scala/bug),
+(or else the [Scala 3 issue tracker](https://github.com/lampepfl/dotty/issues) for Scala 3 library additions)
 **after making sure it is not already logged as an issue**. To help with
 disambiguation, please use the following format for issue title:
 
@@ -117,10 +118,10 @@ PR is merged in smoothly:
   Scala code is likely to flag as mis-spelled sometimes, but any written language
   should be checked. If you can also use a grammar checker, even better. We
   *will* ask for spelling and grammar to be corrected before acceptance.
-* You **must** also run `ant docs`, fix any problems and check the formatting and
+* You **must** also run `sbt doc`, fix any problems and check the formatting and
   layout of your changes. Again, corrections will be required if formatting or
-  layout are inadequate. After running `ant docs` the generated documents can be
-  found under the `build/scaladoc/` folders (probably in the `library` folder
+  layout are inadequate. After running `sbt doc` the generated documents can be
+  found under the `build/scaladoc/` folders (probably in the `library` subdirectory
   but maybe under the others depending on what section of the Scala source you
   are working on).
 * All of these steps are required to save time for both the reviewers and
@@ -130,7 +131,7 @@ PR is merged in smoothly:
 Thanks for helping us improve the Scaladoc API documentation!
 
 [home]: {% link index.md %}
-[contribute-docs]: {% link contribute.md %}
+[howto-contribute-docs]: {% link _overviews/scala-contribution/docs-contribution.md %}
 [hackers-setup]: {% link _overviews/scala2-hackers/hacking-introduction.md %}#2-set-up
 [scaladoc-for-library-authors]: {% link _overviews/scaladoc/for-library-authors.md %}
 [scaladoc-interface]: {% link _overviews/scaladoc/interface.md %}

@@ -5,8 +5,8 @@ title: Core Library Contributions
 description: An introduction to contributing a code review
 partof: scala_contribution
 overview-name: Scala Contribution
-num: 8
-outof: 10
+num: 9
+outof: 11
 previous-page: code-review
 next-page: tools
 ---

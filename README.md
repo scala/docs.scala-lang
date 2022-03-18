@@ -27,7 +27,7 @@ For more details on the Docker option, see [this issue](https://github.com/scala
 
 ## Contributing ##
 
-Please have a look at [https://docs.scala-lang.org/contribute.html](https://docs.scala-lang.org/contribute.html) before making a contribution.
+Please have a look at [docs.scala-lang.org Contribution](https://docs.scala-lang.org/overviews/scala-contribution/docs-contribution.html) before making a contribution.
 This document gives an overview of the type of documentation contained within the Scala Documentation repository and the repository's structure.
 
 Small changes, or corrected typos will generally be pulled in right away. Large changes, like the addition of new documents, or the rewriting of

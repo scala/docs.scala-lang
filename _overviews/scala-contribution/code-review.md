@@ -5,8 +5,8 @@ title: Code Review Contributions
 description: An introduction to contributing a code review
 partof: scala_contribution
 overview-name: Scala Contribution
-num: 7
-outof: 10
+num: 8
+outof: 11
 previous-page: bug-fixes
 next-page: core-libs
 ---
@@ -21,7 +21,7 @@ own pull requests.
 
 ### Review Guidelines
 
-[Code of Conduct reminder]({{ site.baseurl }}/conduct.html)
+[Code of Conduct reminder](https://scala-lang.org/conduct):
 
 * Keep comments on-topic, concise and precise.
 * Attach comments to particular lines or regions they pertain to whenever possible.
@@ -34,27 +34,32 @@ own pull requests.
 ## Pull Requests Awaiting Comment
 
 <div class="container">
-<div class="row">
-<div class="span4 doc-block">
-<h4><a href="https://github.com/scala/scala/pulls">scala/scala</a></h4>
-<p>Scala bug fixes and changes in the language, core libs and included tools.</p>
-</div>
-<div class="span4 doc-block">
-<h4><a href="https://github.com/scala/scala.github.com/pulls">scala/scala.github.com</a></h4>
-<p>Scala documentation site.</p>
-</div>
-</div>
-
-<div class="row">
-<div class="span4 doc-block">
-<h4><a href="https://github.com/scala/scala-lang/pulls">scala/scala-lang</a></h4>
-<p>The Scala language web site.</p>
-</div>
-<div class="span4 doc-block">
-<h4><a href="https://github.com/scala">All Scala GitHub Projects</a></h4>
-<p>For other PRs, follow the scala project from here.</p>
-</div>
-</div>
+  <div class="row">
+    <div class="span4 doc-block">
+      <h4><a href="https://github.com/scala/scala/pulls">lampepfl/dotty</a></h4>
+      <p>Scala 3 bug fixes and changes in the language, core libs and included tools.</p>
+    </div>
+    <div class="span4 doc-block">
+      <h4><a href="https://github.com/scala/scala/pulls">scala/scala</a></h4>
+      <p>Scala 2 bug fixes and changes in the language, core libs and included tools.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span4 doc-block">
+      <h4><a href="https://github.com/scala/scala-lang/pulls">scala/scala-lang</a></h4>
+      <p>The Scala language web site.</p>
+    </div>
+    <div class="span4 doc-block">
+      <h4><a href="https://github.com/scala/docs.scala-lang.org/pulls">scala/docs.scala-lang.org</a></h4>
+      <p>Scala documentation site.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span4 doc-block">
+      <h4><a href="https://github.com/scala">All Scala GitHub Projects</a></h4>
+      <p>For other PRs, follow the scala project from here.</p>
+    </div>
+  </div>
 </div>
 
 Also note that the [Tools contributions][tools] page has more projects that will generate pull requests.

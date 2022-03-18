@@ -3,4 +3,8 @@ title: Documentation
 link: /overviews/scala-contribution/documentation.html
 icon: fa fa-graduation-cap
 ---
-[Scaladoc (API)](/overviews/scala-contribution/scala-standard-library-api-documentation.html), [docs.scala-lang.org](https://docs.scala-lang.org/contribute.html) and [scala-lang.org](https://github.com/scala/scala-lang).
+[Scaladoc (API)][api-contrib], [docs.scala-lang.org][docs-contrib] and [scala-lang.org][main-contrib].
+
+[api-contrib]: /overviews/scala-contribution/scala-standard-library-api-documentation.html
+[docs-contrib]: /overviews/scala-contribution/docs-contribution.html
+[main-contrib]: https://github.com/scala/scala-lang

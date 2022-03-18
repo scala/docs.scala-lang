@@ -6,13 +6,16 @@ description: An overview of reporting bugs
 partof: scala_contribution
 overview-name: Scala Contribution
 num: 2
-outof: 10
+outof: 11
 previous-page: introduction
 next-page: inclusive-language-guide
 ---
 
 
-The Scala compiler and standard library bug tracker is located at [https://github.com/scala/bug](https://github.com/scala/bug). Before you submit a bug make sure that it is certainly a bug by following instructions in *Is it a Bug?*.
+For Scala 2, the Scala compiler and standard library bug tracker is located at
+[github.com/scala/bug](https://github.com/scala/bug), and for Scala 3, it is located at
+[github.com/lampepfl/dotty](https://github.com/lampepfl/dotty/issues). Before you submit a bug make sure that it is
+certainly a bug by following instructions in *Is it a Bug?*
 
 ## Is it a Bug?
 
@@ -28,7 +31,6 @@ If your issue is related to any of the following external projects, make sure to
  - [Akka](https://doc.akka.io/docs/akka/current/project/issue-tracking.html)
  - [Play!](https://github.com/playframework/Play20/issues)
  - [Slick](https://github.com/slick/slick/issues)
- - [Scala IDE](https://scala-ide-portfolio.assembla.com/spaces/scala-ide/support/tickets)
  - [sbt](https://github.com/sbt/sbt/issues)
 
 The following are generally considered to be bugs:
@@ -59,10 +61,12 @@ In general, if you find yourself stuck on any of these steps, asking on [Scala C
  - For compiler bugs use the [Compiler Category](https://contributors.scala-lang.org/c/compiler).
 
 * Examples of exceptions reported by the compiler which usually are not bugs:
-  1. `StackOverflowError` is typically not a bug unless the stacktrace involves the internal packages of the compiler (like `scala.tools.nsc...`). Try to increase the Java stack size (`-Xss`), in most of the cases it helps.
+  1. `StackOverflowError` is typically not a bug unless the stacktrace involves the internal packages of the compiler
+  (like `scala.tools.nsc...`, or `dotty.tools.dotc...`). Try to increase the Java stack size (`-Xss`), in most of the
+  cases it helps.
   2. `AbstractMethodError` can occur when you did not recompile all the necessary Scala files (build tools, like `sbt`, can prevent that from happening) or you are mixing external libraries compiled for different Scala versions (for example one uses `2.10.x` and the other `2.11.x`).
 
-## Reporting Confirmed Bugs is a Sin
+## Please Check Before Reporting a Bug
 
 Before reporting your bug, make sure to check the issue tracker for other similar bugs. The exception name or a compiler phase are the best keywords to search for. If you are experiencing unexpected behavior search for method/class names where it happens. Your issue might already be reported, and a workaround might already be available for you take advantage of. If your issue *is* reported, be sure to add your test case as a comment if it is different from any of the existing ones.
 
@@ -74,7 +78,8 @@ If you cannot find your issue in the issue tracker, create a new bug. The detail
 
 Please make sure to fill in as many fields as possible. Make sure you've indicated the following:
 
- 1. **Exact Scala version** that you are using. For example, `2.10.1` or `2.11.0-RC`. If the bug happens in multiple versions indicate all of them.
+ 1. **Exact Scala version** that you are using. For example, `2.13.8` or `3.1.2-RC1`. If the bug happens in multiple
+ versions indicate all of them.
  2. **The component** that is affected by the bug. For example, the Standard Library, Scaladoc, etc.
  3. **Labels** related to your issue. For example, if you think your issue is related to the typechecker, and if you have successfully minimized your issue, label your bug as "typechecker" and "minimized". Issue tracker will suggest names for existing labels as you type them so try not to create duplicates.
  4. **Running environment**. Are you running on Linux? Windows? What JVM version are you using?
@@ -84,12 +89,14 @@ In order for us to quickly triage the bug that you've found, it's important that
 ### Description
 
 In the description of your issue, be as detailed as you can. Bug reports which have the following information included are typically understood, triaged, and fixed very quickly:
-
- 1. Include a test case (minimized if possible) enabling us to reproduce the problematic behavior. Include your test case (and output) in proper formatting `{code}` blocks:
-
-    {code}Here you put your classes{code}
-
- 2. The expected output.
- 3. The actual output, including the stacktrace.
- 4. Related discussion on the mailing lists, if applicable.
- 5. If you have already looked into the issue provide interesting insights or proposals for fixing the issue.
+1. Include a test case (minimized if possible) enabling us to reproduce the problematic behavior. Include your test
+case (and output) in properly formatted code blocks:
+~~~
+```scala
+List(1, 2, 3).map(x => x + 1)
+```
+~~~
+2. The expected output.
+3. The actual output, including the stacktrace.
+4. Related discussion on the mailing lists, if applicable.
+5. If you have already looked into the issue provide interesting insights or proposals for fixing the issue.

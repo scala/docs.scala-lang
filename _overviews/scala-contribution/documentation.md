@@ -1,14 +1,14 @@
 ---
 type: chapter
 layout: multipage-overview
-title: Documentation
+title: Documentation Contribution
 description: An introduction to contributing documentation
 partof: scala_contribution
 overview-name: Scala Contribution
-num: 5
-outof: 10
-previous-page: scala-standard-library-api-documentation
-next-page: bug-fixes
+num: 4
+outof: 11
+previous-page: inclusive-language-guide
+next-page: scala-standard-library-api-documentation
 ---
 ## Contributing Documentation to the Scala project
 
@@ -18,7 +18,10 @@ There are several ways you can help out with the improvement of Scala documentat
 * Guides, Overviews, Tutorials, Cheat Sheets and more on the docs.scala-lang.org site
 * Updating scala-lang.org
 
-Please read this page, and the pages linked from this one, fully before contributing documentation. Many of the questions you have will be answered in these resources. If you have a question that isn't answered, feel free to ask on the [Scala Contributors](https://contributors.scala-lang.org/) mailing list and then, please, submit a pull request with updated documentation reflecting that answer.
+Please read this page, and the pages linked from this one, fully before contributing documentation. Many of the
+questions you have will be answered in these resources. If you have a question that isn't answered, feel free to ask
+on the [Scala Contributors](https://contributors.scala-lang.org/) forum and then, please, submit a pull request with
+updated documentation reflecting that answer.
 
 **General requirements** for documentation submissions include spell-checking all written language, ensuring code samples compile and run correctly, correct grammar, and clean formatting/layout of the documentation.
 

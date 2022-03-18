@@ -6,7 +6,7 @@ description: An introduction to the Scala Contribution overview
 partof: scala_contribution
 overview-name: Scala Contribution
 num: 1
-outof: 10
+outof: 11
 next-page: bug-reporting-guide
 ---
 
@@ -41,7 +41,8 @@ When contributing, please follow:
 
 ### Community Tickets
 
-All issues can be found in the [Scala bug tracker](https://github.com/scala/bug). Most issues are labeled
+All issues can be found in the [Scala 2 bug tracker](https://github.com/scala/bug), or the
+[Scala 3 issue tracker](https://github.com/lampepfl/dotty/issues). Most issues are labeled
 to make it easier to find issues you are interested in.
 
 ### Tools and Libraries
