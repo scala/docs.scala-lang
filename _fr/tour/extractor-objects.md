@@ -11,7 +11,7 @@ next-page: for-comprehensions
 previous-page: regular-expression-patterns
 ---
 
-Un objet extracteur est un objet avec une méthode `unapply`. Tandis que la méthode `apply` ressemble à un constructeur qui prend des arguments et crée un objet, `unapply` prend un object et essaye de retourner ses arguments. Il est utilisé le plus souvent en filtrage par motif ou avec les fonctions partielles.
+Un objet extracteur est un objet avec une méthode `unapply`. Tandis que la méthode `apply` ressemble à un constructeur qui prend des arguments et crée un objet, `unapply` prend un object et essaye de retourner ses arguments. Il est utilisé le plus souvent en filtrage par motif (*pattern matching*) ou avec les fonctions partielles.
   
 ```scala mdoc
 import scala.util.Random
