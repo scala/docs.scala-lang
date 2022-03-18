@@ -18,7 +18,7 @@ guides:
     icon: birthday-cake
     url: "/scala3/guides/tasty-overview.html"
     description: "An overview over the TASTy format aimed at end-users of the Scala language."
-  - title: "Contribution Guide"
+  - title: "Scala 3 Contribution Guide"
     by: Jamie Thompson, Anatolii Kmetiuk
     icon: cogs
     url: "/scala3/guides/contribution/contribution-intro.html"
