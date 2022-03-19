@@ -76,17 +76,17 @@ class Point {
   private var _y = 0
   private val bound = 100
 
-  def x = _x
+  def x: Int = _x
   def x_= (newValue: Int): Unit = {
-    if (newValue < bound) _x = newValue else printWarning
+    if (newValue < bound) _x = newValue else printWarning()
   }
 
-  def y = _y
+  def y: Int = _y
   def y_= (newValue: Int): Unit = {
-    if (newValue < bound) _y = newValue else printWarning
+    if (newValue < bound) _y = newValue else printWarning()
   }
 
-  private def printWarning = println("WARNING: Out of bounds")
+  private def printWarning(): Unit = println("WARNING: Out of bounds")
 }
 
 val point1 = new Point
