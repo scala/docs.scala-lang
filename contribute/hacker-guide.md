@@ -2,8 +2,8 @@
 title: Scala hacker guide
 by: Eugene Burmako
 layout: inner-page-no-masthead
-# permalink: /contribute/hacker-guide/
 includeTOC: true
+permalink: /contribute/hacker-guide.html
 ---
 <br>
 This guide is intended to help you get from an idea of fixing a bug or implementing a new feature into a nightly Scala build, and, ultimately, to a production release of Scala incorporating your idea.

@@ -1,8 +1,8 @@
 ---
 title: Contributing guide
 layout: inner-page-no-masthead
-# permalink: /contribute/guide/
 includeTOC: true
+permalink: /contribute/guide.html
 ---
 
 <div class="container">

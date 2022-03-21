@@ -1,8 +1,8 @@
 ---
 title: Contribute to API Documentation
 layout: inner-page-no-masthead
-# permalink: /contribute/scala-standard-library-api-documentation.html
 includeTOC: true
+permalink: /contribute/scala-standard-library-api-documentation.html
 ---
 
 This page is specific to API documentation contributions – that is, API

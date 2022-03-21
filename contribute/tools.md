@@ -1,8 +1,8 @@
 ---
 title: IDE and Build Tool Contributions
 layout: inner-page-no-masthead
-# permalink: /contribute/tools/
 includeTOC: true
+permalink: /contribute/tools.html
 
 # Projects list:
 projects:

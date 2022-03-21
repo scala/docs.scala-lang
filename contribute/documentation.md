@@ -1,8 +1,8 @@
 ---
 title: Documentation Contributions
 layout: inner-page-no-masthead
-# permalink: /contribute/documentation/
 includeTOC: true
+permalink: /contribute/documentation.html
 ---
 ## Contributing Documentation to the Scala project
 

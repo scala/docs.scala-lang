@@ -1,8 +1,8 @@
 ---
 title: Code Review Contributions
 layout: inner-page-no-masthead
-# permalink: /contribute/codereviews/
 includeTOC: true
+permalink: /contribute/codereviews.html
 ---
 ## Code Review Contributions
 

@@ -1,8 +1,8 @@
 ---
 title: Core Library Contributions
 layout: inner-page-no-masthead
-# permalink: /contribute/corelibs/
 includeTOC: true
+permalink: /contribute/corelibs.html
 ---
 ## Core Library Contributions
 

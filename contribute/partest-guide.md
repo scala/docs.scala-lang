@@ -1,8 +1,8 @@
 ---
 title: Running the Test Suite
 layout: inner-page-no-masthead
-# permalink: /contribute/partest-guide/
 includeTOC: true
+permalink: /contribute/partest-guide.html
 ---
 
 Partest is a custom parallel testing tool that we use to run the test suite for the Scala compiler and library. Go to the scala project folder from your local checkout and run it via `sbt`, `ant` or standalone as follows.
@@ -35,7 +35,7 @@ The test suite can be run by using ant from the command line:
 
 Please note the standalone scripts mentioned below were removed in 2.12.2. sbt is the preferred way to run the test suite.
 
-There are launch scripts `partest` and `partest.bat` in the `test` folder of the scala project. To have partest run failing tests only and print details about test failures to the console, you can use 
+There are launch scripts `partest` and `partest.bat` in the `test` folder of the scala project. To have partest run failing tests only and print details about test failures to the console, you can use
 
 	./test/partest --show-diff --show-log --failed
 

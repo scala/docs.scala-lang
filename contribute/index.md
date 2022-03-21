@@ -1,8 +1,8 @@
 ---
 title: Contribute
 layout: inner-page-no-masthead
-# permalink: /contribute/
 includeTOC: true
+permalink: /contribute/
 ---
 
 The Scala programming language is an open source project with a very

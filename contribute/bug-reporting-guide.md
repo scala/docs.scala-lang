@@ -1,8 +1,8 @@
 ---
-title: Bug Reporting
+title: Bug Reporting Guide
 layout: inner-page-no-masthead
-# permalink: /contribute/bug-reporting-guide/
 includeTOC: true
+permalink: /contribute/bug-reporting-guide.html
 ---
 
 The Scala compiler and standard library bug tracker is located at [https://github.com/scala/bug](https://github.com/scala/bug). Before you submit a bug make sure that it is certainly a bug by following instructions in *Is it a Bug?*.
