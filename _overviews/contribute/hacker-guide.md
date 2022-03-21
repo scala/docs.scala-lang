@@ -2,7 +2,7 @@
 title: Scala hacker guide
 by: Eugene Burmako
 layout: multipage-overview
-num: 11
+num: 12
 partof: scala-contribution
 overview-name: Contributing to Scala
 ---

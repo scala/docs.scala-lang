@@ -1,7 +1,7 @@
 ---
 title: Bug Reporting Guide
 layout: multipage-overview
-num: 7
+num: 8
 partof: scala-contribution
 overview-name: Contributing to Scala
 ---

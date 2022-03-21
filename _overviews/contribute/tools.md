@@ -1,7 +1,7 @@
 ---
 title: IDE and Build Tool Contributions
 layout: multipage-overview
-num: 10
+num: 11
 partof: scala-contribution
 overview-name: Contributing to Scala
 

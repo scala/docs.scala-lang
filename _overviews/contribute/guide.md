@@ -1,7 +1,7 @@
 ---
 title: Contributing guide
 layout: multipage-overview
-num: 9
+num: 10
 partof: scala-contribution
 overview-name: Contributing to Scala
 ---

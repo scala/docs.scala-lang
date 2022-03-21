@@ -13,7 +13,7 @@ sometimes referred to as Scaladoc contributions.
 
 For contributions to tutorial and guide-style documentation on
 [docs.scala-lang.org](/),
-see the ["doc-site"'s contribution guide](/contribute.html).
+see [Add New Guides/Tutorials](/overviews/contribute/add-guides.html).
 
 *Please note, these instructions cover documentation contributions Scala core
 libraries only. For other Scala projects please check those projects for the

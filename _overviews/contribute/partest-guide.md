@@ -1,7 +1,7 @@
 ---
 title: Running the Test Suite
 layout: multipage-overview
-num: 12
+num: 13
 partof: scala-contribution
 overview-name: Contributing to Scala
 ---

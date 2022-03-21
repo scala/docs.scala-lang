@@ -44,7 +44,7 @@ without creating an issue, but please look to see if there is an issue already s
 * SIP (Scala Improvement Process) Proposals
 and more
 
-Please read [contributing to the docs.scala-lang.org site](/contribute.html) through before embarking on changes. The site uses
+Please read [Add New Guides/Tutorials](/overviews/contribute/add-guides.html) through before embarking on changes. The site uses
 the [Jekyll](https://jekyllrb.com/) markdown engine so you will need to follow the instructions to get that running as well.
 
 ### Updating scala-lang.org
@@ -55,4 +55,4 @@ to Scala and related projects) is provided on the main
 [scala-lang GitHub project](https://github.com/scala/scala-lang) which may be forked to create pull requests.
 
 Please read both the
-[docs.scala-lang.org contribution](/contribute.html) document and the [scala-lang.org GitHub README](https://github.com/scala/scala-lang#scala-langorg) before embarking on any changes to the Scala language site, as it uses the same Jekyll markdown tool and many of the same conventions as the Scala documentation site.
+[Add New Guides/Tutorials](/overviews/contribute/add-guides.html) document and the [scala-lang.org GitHub README](https://github.com/scala/scala-lang#scala-langorg) before embarking on any changes to the Scala language site, as it uses the same Jekyll markdown tool and many of the same conventions as the Scala documentation site.
