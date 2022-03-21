@@ -4,7 +4,6 @@ layout: multipage-overview
 num: 10
 partof: scala-contribution
 overview-name: Contributing to Scala
-permalink: /contribute/tools.html
 
 # Projects list:
 projects:
@@ -23,7 +22,7 @@ projects:
     homeLink: https://www.scala-lang.org/api
     issuesLink: https://github.com/scala/bug/labels/scaladoc
     readmeLink: https://github.com/scala/scala#welcome
-    contributingLink: https://scala-lang.org/contribute/guide.html
+    contributingLink: /overviews/contribute/guide.html
   - title: Scala IDE
     description: Interactive build tool.
     icon: https://avatars2.githubusercontent.com/u/1026788?v=3&s=200
@@ -70,7 +69,7 @@ projectsInNeed:
 
 The links below are to a number of Scala build and IDE related projects that are important in the larger Scala space, and which welcome contributions.
 
-Since these tools are in separate projects, they may (and likely will) have their own rules and guidelines for contributing. The [Hacker Guide](/contribute/hacker-guide.html) and [Bug-fixing](/contribute/guide.html) pages will likely have much in the way of related information on how to contribute to these projects, and are recommended reading. You should also check the README.md and (if it's present) CONTRIBUTING.md files from the actual projects before contributing to them.
+Since these tools are in separate projects, they may (and likely will) have their own rules and guidelines for contributing. The [Hacker Guide](/overviews/contribute/hacker-guide.html) and [Bug-fixing](/overviews/contribute/guide.html) pages will likely have much in the way of related information on how to contribute to these projects, and are recommended reading. You should also check the README.md and (if it's present) CONTRIBUTING.md files from the actual projects before contributing to them.
 
 Typically, issues for these projects will be reported and kept in the GitHub project issue tracker for that project rather than in the Scala bug tracker.
 
@@ -82,7 +81,7 @@ if you would like to help revive them.
 
 ### Broken Links?
 
-Stuff changes. Found a broken link or something that needs updating on this page? Please, consider [submitting a documentation pull request](/contribute/documentation.html#updating-scala-langorg) to fix it.
+Stuff changes. Found a broken link or something that needs updating on this page? Please, consider [submitting a documentation pull request](/overviews/contribute/documentation.html#updating-scala-langorg) to fix it.
 
 ### Projects
 

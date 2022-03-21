@@ -4,7 +4,6 @@ layout: multipage-overview
 num: 12
 partof: scala-contribution
 overview-name: Contributing to Scala
-permalink: /contribute/partest-guide.html
 ---
 
 Partest is a custom parallel testing tool that we use to run the test suite for the Scala compiler and library. Go to the scala project folder from your local checkout and run it via `sbt`, `ant` or standalone as follows.

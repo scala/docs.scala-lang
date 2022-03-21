@@ -4,7 +4,6 @@ layout: multipage-overview
 num: 8
 partof: scala-contribution
 overview-name: Contributing to Scala
-permalink: /contribute/scala-internals/
 ---
 
 ## scala-internals

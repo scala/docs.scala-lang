@@ -4,7 +4,6 @@ layout: multipage-overview
 num: 6
 partof: scala-contribution
 overview-name: Contributing to Scala
-permalink: /contribute/scala-standard-library-api-documentation.html
 ---
 
 This page is specific to API documentation contributions – that is, API
@@ -13,8 +12,8 @@ documentation for
 sometimes referred to as Scaladoc contributions.
 
 For contributions to tutorial and guide-style documentation on
-[docs.scala-lang.org](https://docs.scala-lang.org),
-see the ["doc-site"'s contribution guide](https://docs.scala-lang.org/contribute.html).
+[docs.scala-lang.org](/),
+see the ["doc-site"'s contribution guide](/contribute.html).
 
 *Please note, these instructions cover documentation contributions Scala core
 libraries only. For other Scala projects please check those projects for the
@@ -79,7 +78,7 @@ component so that they show up in the correct issue filters.
 Please familiarize yourself with the following before contributing
 new API documentation to save time, effort, mistakes and repetition.
 
-* [Forking the Repo](./hacker-guide.html#2-set-up) - follow the setup steps through
+* [Forking the Repo](/overviews/contribute/hacker-guide.html#2-set-up) - follow the setup steps through
   the Branch section. If providing new documentation related to an existing GitHub issue, use `issue/NNNN`
   or `ticket/NNNN` as the guide states. If providing API documentation with no associated
   GitHub issue, use `scaladoc/xxxx` instead.

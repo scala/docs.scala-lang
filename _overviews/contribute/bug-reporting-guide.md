@@ -4,7 +4,6 @@ layout: multipage-overview
 num: 7
 partof: scala-contribution
 overview-name: Contributing to Scala
-permalink: /contribute/bug-reporting-guide.html
 ---
 
 The Scala compiler and standard library bug tracker is located at [https://github.com/scala/bug](https://github.com/scala/bug). Before you submit a bug make sure that it is certainly a bug by following instructions in *Is it a Bug?*.

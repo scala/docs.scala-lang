@@ -5,7 +5,6 @@ layout: multipage-overview
 num: 11
 partof: scala-contribution
 overview-name: Contributing to Scala
-permalink: /contribute/hacker-guide.html
 ---
 <br>
 This guide is intended to help you get from an idea of fixing a bug or implementing a new feature into a nightly Scala build, and, ultimately, to a production release of Scala incorporating your idea.
@@ -32,7 +31,7 @@ Sometimes it's appealing to hack alone and not to have to interact with others o
 this might not be the very best idea. There are people in the Scala community who have spent years accumulating knowledge about Scala libraries and internals. They might provide
 unique insights and, what's even better, direct assistance in their areas, so it is not only advantageous, but recommended to communicate with the community about your new patch.
 
-Typically bug fixes and new features start out as an idea or an experiment posted on one of [our mailing lists]({{ site.baseurl }}/community/index.html#forums) to find out how people feel
+Typically bug fixes and new features start out as an idea or an experiment posted on one of [our mailing lists](https://scala-lang.org/community/index.html#forums) to find out how people feel
 about things you want to implement. People proficient in certain areas of Scala usually monitor mailing lists, so you'll often get some help
 by simply posting a message. But the most efficient way to connect is to cc your message to one of the people responsible for maintaining the aspect of Scala which you wish to contribute to.
 
@@ -200,7 +199,7 @@ Contributing to the Scala standard library is about the same as working on one o
 
 If documentation is necessary for some trait/class/object/method/etc in the Scala standard library, typically maintainers will include inline comments describing their design decisions or rationale for implementing things the way they have, if it is not straightforward.
 
-If you intend on contributing to Scala collections, please make sure you're familiar with the design of the Scala collections library. It can be easy to put an implementation in the wrong location if you are unfamiliar with the collections architecture. There is an excellent and very detailed guide covering [the Architecture of Scala Collections](https://docs.scala-lang.org/overviews/core/architecture-of-scala-collections.html), as well as a larger more general [Scala collections Guide](https://docs.scala-lang.org/overviews/collections/introduction.html) covering the sequential portion of collections. For parallel collections, there also exists a detailed [Scala Parallel Collections Guide](https://docs.scala-lang.org/overviews/parallel-collections/overview.html).
+If you intend on contributing to Scala collections, please make sure you're familiar with the design of the Scala collections library. It can be easy to put an implementation in the wrong location if you are unfamiliar with the collections architecture. There is an excellent and very detailed guide covering [the Architecture of Scala Collections](/overviews/core/architecture-of-scala-collections.html), as well as a larger more general [Scala collections Guide](/overviews/collections/introduction.html) covering the sequential portion of collections. For parallel collections, there also exists a detailed [Scala Parallel Collections Guide](/overviews/parallel-collections/overview.html).
 
 ##### The Scala Compiler
 
@@ -208,7 +207,7 @@ Documentation about the internal workings of the Scala compiler is scarce, and m
 
 * [Compiler internals videos by Martin Odersky](https://www.scala-lang.org/old/node/598.html) are quite dated, but still very useful. In this three-video
   series Martin explains the general architecture of the compiler, and the basics of the front-end, which has recently become Scala reflection API.
-* [Reflection documentation](https://docs.scala-lang.org/overviews/reflection/overview.html) describes fundamental data structures (like `Tree`s, `Symbol`s, and `Types`) that
+* [Reflection documentation](/overviews/reflection/overview.html) describes fundamental data structures (like `Tree`s, `Symbol`s, and `Types`) that
   are used to represent Scala programs and operations defined on then. Since much of the compiler has been factored out and made accessible via the Reflection API, all of the fundamentals needed for reflection are the same for the compiler.
 * [Reflection and Compilers by Martin Odersky](https://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2012/Reflection-and-Compilers), a talk
   at Lang.NEXT 2012 in which Martin elaborates on the design of scalac and the architecture of the reflection API.
@@ -266,7 +265,7 @@ Adding tests to the test suite is as easy as moving them to the appropriate dire
 
 * Code which should compile successfully, but doesn't need to be executed, needs to go into the [“pos” directory](https://github.com/scala/scala/tree/2.12.x/test/files/pos).
 * Code which should not compile needs to go into the [“neg” directory](https://github.com/scala/scala/tree/2.12.x/test/files/neg).
-* Code which should compile and get executed by the test suite needs to go into the [“run” directory](https://github.com/scala/scala/tree/2.12.x/test/files/run) and have a corresponding `.check` file with the expected output. You will get test failures if the content of a `.check` file is different from what the test produces while running. If the change in the output is an expected product of your work, you might not want to change the `.check` file by hand. To make partest change the `.check` file, run it with a `--update-check` flag, like so `./test/partest --update-check path/to/test.scala`. For more information on partest, please refer to its [documentation](https://docs.scala-lang.org/tutorials/partest-guide.html).
+* Code which should compile and get executed by the test suite needs to go into the [“run” directory](https://github.com/scala/scala/tree/2.12.x/test/files/run) and have a corresponding `.check` file with the expected output. You will get test failures if the content of a `.check` file is different from what the test produces while running. If the change in the output is an expected product of your work, you might not want to change the `.check` file by hand. To make partest change the `.check` file, run it with a `--update-check` flag, like so `./test/partest --update-check path/to/test.scala`. For more information on partest, please refer to its [documentation](https://github.com/scala/scala-partest).
 * Everything that can be unit-tested should go to ["junit" directory](https://github.com/scala/scala/tree/2.12.x/test/junit)
 * Property-based tests go to the ["scalacheck" directory](https://github.com/scala/scala/tree/2.12.x/test/scalacheck)
 
@@ -311,7 +310,7 @@ This means your change is backward or forward binary incompatible with the speci
 
 ### Verify
 
-Now to make sure that my fix doesn't break anything I need to run the test suite. The Scala test suite uses [JUnit](https://junit.org/junit4/) and [partest](partest-guide.html), a tool we wrote for testing Scala.
+Now to make sure that my fix doesn't break anything I need to run the test suite. The Scala test suite uses [JUnit](https://junit.org/junit4/) and [partest](/overviews/contribute/partest-guide.html), a tool we wrote for testing Scala.
 Run `sbt test` and `sbt partest` to run all of the JUnit and partest tests, respectively.
 `partest` (not `sbt partest`) also allows you to run a subset of the tests using wildcards:
 

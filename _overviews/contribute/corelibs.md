@@ -4,15 +4,14 @@ layout: multipage-overview
 num: 4
 partof: scala-contribution
 overview-name: Contributing to Scala
-permalink: /contribute/corelibs.html
 ---
 ## Core Library Contributions
 
 There are several options for contributing to Scala's core libraries. You can:
 
-* Help with [Documentation](/contribute/documentation.html).
-* [Report Bugs or Issues](/contribute/bug-reporting-guide.html) against the core libraries.
-* [Fix Bugs or Issues](/contribute/guide.html) against the
+* Help with [Documentation](/overviews/contribute/documentation.html).
+* [Report Bugs or Issues](/overviews/contribute/bug-reporting-guide.html) against the core libraries.
+* [Fix Bugs or Issues](/overviews/contribute/guide.html) against the
   [reported library bugs/issues](https://github.com/scala/bug).
 
 ### Significant changes

@@ -1,6 +1,6 @@
 ---
 title: Documentation
-link: /contribute/documentation.html
+link: /overviews/contribute/documentation.html
 icon: fa fa-book
 ---
-[Scaladoc (API)](/contribute/scala-standard-library-api-documentation.html), [docs.scala-lang.org](https://docs.scala-lang.org/contribute.html) and [scala-lang.org](https://github.com/scala/scala-lang).
+[Scaladoc (API)](/overviews/contribute/scala-standard-library-api-documentation.html), [docs.scala-lang.org](/contribute.html) and [scala-lang.org](https://github.com/scala/scala-lang).

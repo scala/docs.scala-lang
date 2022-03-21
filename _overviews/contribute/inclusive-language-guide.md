@@ -4,7 +4,6 @@ layout: multipage-overview
 num: 2
 partof: scala-contribution
 overview-name: Contributing to Scala
-permalink: /contribute/inclusive-language/
 ---
 
 We are committed to providing a friendly, safe and welcoming environment for
@@ -131,4 +130,4 @@ In those cases, we recommend to keep the old names, but document (e.g., in Scala
 
 ## See also
 
-* Our [code of conduct](../../conduct/).
+* Our [code of conduct](https://scala-lang.org/conduct/).
