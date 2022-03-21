@@ -1,7 +1,9 @@
 ---
 title: Bug Reporting Guide
-layout: inner-page-no-masthead
-includeTOC: true
+layout: multipage-overview
+num: 7
+partof: scala-contribution
+overview-name: Contributing to Scala
 permalink: /contribute/bug-reporting-guide.html
 ---
 

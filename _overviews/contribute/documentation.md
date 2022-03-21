@@ -1,7 +1,9 @@
 ---
 title: Documentation Contributions
-layout: inner-page-no-masthead
-includeTOC: true
+layout: multipage-overview
+num: 5
+partof: scala-contribution
+overview-name: Contributing to Scala
 permalink: /contribute/documentation.html
 ---
 ## Contributing Documentation to the Scala project

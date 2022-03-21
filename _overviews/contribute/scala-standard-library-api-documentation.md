@@ -1,7 +1,9 @@
 ---
 title: Contribute to API Documentation
-layout: inner-page-no-masthead
-includeTOC: true
+layout: multipage-overview
+num: 6
+partof: scala-contribution
+overview-name: Contributing to Scala
 permalink: /contribute/scala-standard-library-api-documentation.html
 ---
 

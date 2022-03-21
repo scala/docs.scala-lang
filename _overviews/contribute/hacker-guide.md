@@ -1,8 +1,10 @@
 ---
 title: Scala hacker guide
 by: Eugene Burmako
-layout: inner-page-no-masthead
-includeTOC: true
+layout: multipage-overview
+num: 11
+partof: scala-contribution
+overview-name: Contributing to Scala
 permalink: /contribute/hacker-guide.html
 ---
 <br>

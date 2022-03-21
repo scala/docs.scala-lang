@@ -1,7 +1,9 @@
 ---
 title: Contribute
-layout: inner-page-no-masthead
-includeTOC: true
+layout: multipage-overview
+num: 1
+partof: scala-contribution
+overview-name: Contributing to Scala
 permalink: /contribute/
 ---
 

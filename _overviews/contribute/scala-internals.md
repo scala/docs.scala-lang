@@ -1,7 +1,9 @@
 ---
 title: Scala Internals Mailing List
-layout: inner-page-no-masthead
-includeTOC: true
+layout: multipage-overview
+num: 8
+partof: scala-contribution
+overview-name: Contributing to Scala
 permalink: /contribute/scala-internals/
 ---
 

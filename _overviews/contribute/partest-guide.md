@@ -1,7 +1,9 @@
 ---
 title: Running the Test Suite
-layout: inner-page-no-masthead
-includeTOC: true
+layout: multipage-overview
+num: 12
+partof: scala-contribution
+overview-name: Contributing to Scala
 permalink: /contribute/partest-guide.html
 ---
 

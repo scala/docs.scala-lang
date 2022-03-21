@@ -1,7 +1,9 @@
 ---
 title: Code Review Contributions
-layout: inner-page-no-masthead
-includeTOC: true
+layout: multipage-overview
+num: 3
+partof: scala-contribution
+overview-name: Contributing to Scala
 permalink: /contribute/codereviews.html
 ---
 ## Code Review Contributions

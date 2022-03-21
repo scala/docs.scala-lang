@@ -1,7 +1,9 @@
 ---
 title: IDE and Build Tool Contributions
-layout: inner-page-no-masthead
-includeTOC: true
+layout: multipage-overview
+num: 10
+partof: scala-contribution
+overview-name: Contributing to Scala
 permalink: /contribute/tools.html
 
 # Projects list:

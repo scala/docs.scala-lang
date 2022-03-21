@@ -1,7 +1,9 @@
 ---
 title: Inclusive Language Guide
-layout: inner-page-no-masthead
-includeTOC: true
+layout: multipage-overview
+num: 2
+partof: scala-contribution
+overview-name: Contributing to Scala
 permalink: /contribute/inclusive-language/
 ---
 

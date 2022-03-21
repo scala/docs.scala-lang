@@ -1,7 +1,9 @@
 ---
 title: Core Library Contributions
-layout: inner-page-no-masthead
-includeTOC: true
+layout: multipage-overview
+num: 4
+partof: scala-contribution
+overview-name: Contributing to Scala
 permalink: /contribute/corelibs.html
 ---
 ## Core Library Contributions
