@@ -26,13 +26,11 @@ Lightbend offers [commercial support](https://www.lightbend.com/lightbend-platfo
 
 ## Running versus compiling
 
-JDK 8, 11, and 17 are all good choices both for *compiling* and *running* Scala code.
+JDK 8, 11, and 17 are all reasonable choices both for *compiling* and *running* Scala code.
 
 Since the JVM is normally backwards compatible, it is usually safe to use a newer JVM for *running* your code than the one it was compiled on, especially if you are not using JVM features designated "experimental" or "unsafe".
 
-If you compile on JDK 11+ but have users on an older JDK version, additional care is needed to avoid using APIs and features that don't exist in 8. Therefore, *compiling* on 8 may be the safest choice in this scenario. (Some Scala developers use JDK 11 or 17 for their daily work, but do release builds on JDK 8.)
-
-Additionally, you can also run your Scala application on GraalVM which is a JVM. GraalVM performs well on the Scala benchmarks, and it benefits from GraalVM runtime and runs faster too.
+JDK 8 remains in use at many shops (as of early 2022), but usage is declining and some projects are dropping support. If you compile on JDK 11+ but want to allow your users to stay on 8, additional care is needed to avoid using APIs and features that don't exist in 8. (For this reason, some Scala developers use JDK 11 or 17 for their daily work but do release builds on JDK 8.)
 
 ## Long Term Support (LTS) versions
 
@@ -50,9 +48,9 @@ In almost every case, you're free to use the JDK and JVM of your choice.
 
 JDK 8 users typically use the Oracle JDK or some flavor of OpenJDK.
 
-Most JDK 11+ users are using either OpenJDK or GraalVM which runs in the context of OpenJDK.
+Most JDK 11+ users are using OpenJDK, or GraalVM which runs in the context of OpenJDK. GraalVM performs well on the Scala benchmarks, and it benefits from GraalVM runtime and runs faster too.
 
-OpenJDK comes in various flavors, offered by different providers.  We build and test Scala using [AdoptOpenJDK](https://adoptopenjdk.net) in particular, but the differences are unlikely to matter to most users.
+OpenJDK comes in various flavors, offered by different providers.  We build and test Scala using [Temurin](https://adoptium.net) primarily, but the differences are unlikely to matter to most users.
 
 ## JDK 11 compatibility notes
 
