@@ -20,6 +20,7 @@ scala-212-version: 2.12.15
 scala-3-version: 3.1.1
 
 collections:
+  contribute_resources:
   style:
     output: true
   overviews:
