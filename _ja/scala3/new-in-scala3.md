@@ -13,7 +13,7 @@ Scala 3 は Scala 2 から大幅な改善が行われ、さまざまな新機能
 - [Syntax Summary][syntax-summary] では Scala 3 で新しく追加されたシンタックスを解説している。
 - [Language Reference][reference] を見ればScala 2 と Scala 3 の変更点を詳しく確認できる。
 - Scala 2 から Scala 3 への移行を考えている方は[Migration Guide][migration] を参照。
-- [Contribution Guide][contribution] は、問題を修正するためのガイドを含め、コンパイラーをさらに深く掘り下げます。
+- [Scala 3 Contributing Guide][contribution] は、問題を修正するためのガイドを含め、コンパイラーをさらに深く掘り下げます。
 
 ## What's new in Scala 3
 Scala 3 は Scala 2 を徹底的に見直して再設計されている。核心部分で、型システムの多くの面が変更されより原理原則に基づいたものになった。この変更によって新機能(ユニオン型)が使えるようになったことにくわえて、なにより型システムがさらに使いやすくなった。 例えば、[型推論][type-inference] や overload resolution が改善された.

@@ -40,7 +40,7 @@ scala3-sections:
         description: "The Scala 3 language reference."
         icon: "fa fa-book"
         link: /scala3/reference/overview.html
-      - title: "Contribution Guide"
+      - title: "Scala 3 Contributing Guide"
         description: "Guide to the Scala 3 Compiler and fixing an issue"
         icon: "fa fa-cogs"
         link: /scala3/guides/contribution/contribution-intro.html
@@ -118,4 +118,8 @@ scala2-sections:
         description: "The Scala Improvement Process. Language & compiler evolution."
         icon: "fa fa-cogs"
         link: /sips/index.html
+      - title: "Contributing to Scala"
+        description: "The Complete Guide to Contributing to the Scala Project"
+        icon: "fa fa-cogs"
+        link: /overviews/contribute/
 ---
