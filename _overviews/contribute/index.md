@@ -37,7 +37,7 @@ When contributing, please follow:
 
 ### Community Tickets
 
-All issues can be found in the [Scala bug tracker](https://github.com/scala/bug). Most issues are labeled
+All issues can be found in the [Scala bug tracker](https://github.com/scala/bug), or the [Scala 3 issue tracker](https://github.com/lampepfl/dotty/issues). Most issues are labeled
 to make it easier to find issues you are interested in.
 
 ### Tools and Libraries

@@ -43,7 +43,8 @@ and identify missing, incorrect or inadequate documentation. A good place to sta
 package objects for important packages (these often get overlooked for documentation
 and are a good place for API overviews).
 
-If you find an issue, please log it in the [Scala bug tracker](https://github.com/scala/bug)
+If you find an issue, please log it in the [Scala bug tracker](https://github.com/scala/bug),
+(or else the [Scala 3 issue tracker](https://github.com/lampepfl/dotty/issues) for Scala 3 library additions)
 **after making sure it is not already logged as an issue**. To help with
 disambiguation, please use the following format for issue title:
 
@@ -112,10 +113,10 @@ PR is merged in smoothly:
   Scala code is likely to flag as mis-spelled sometimes, but any written language
   should be checked. If you can also use a grammar checker, even better. We
   *will* ask for spelling and grammar to be corrected before acceptance.
-* You **must** also run `ant docs`, fix any problems and check the formatting and
+* You **must** also run `sbt doc`, fix any problems and check the formatting and
   layout of your changes. Again, corrections will be required if formatting or
-  layout are inadequate. After running `ant docs` the generated documents can be
-  found under the `build/scaladoc/` folders (probably in the `library` folder
+  layout are inadequate. After running `sbt doc` the generated documents can be
+  found under the `build/scaladoc/` folders (probably in the `library` subdirectory
   but maybe under the others depending on what section of the Scala source you
   are working on).
 * All of these steps are required to save time for both the reviewers and

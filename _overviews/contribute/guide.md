@@ -6,29 +6,13 @@ partof: scala-contribution
 overview-name: Contributing to Scala
 ---
 
-<div class="container">
-  <div class="row">
-    <div class="span4 doc-block">
-      <h3><a href="https://contributors.scala-lang.org/">Scala Contributors</a></h3>
-      <p>Get a peek into the inners of the Scala compiler.</p>
-    </div>
-    <div class="span4 doc-block">
-      <h3><a href="/overviews/contribute/bug-reporting-guide.html">Report an issue</a></h3>
-      <p>File a bug report or a feature request.</p>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="span4 doc-block">
-      <h3><a href="/overviews/contribute/index.html#community-tickets">Community issues</a></h3>
-      <p>Get cracking on some easy to approach issues.</p>
-    </div>
-    <div class="span4 doc-block">
-      <h3><a href="/overviews/contribute/hacker-guide.html">Hacker guide</a></h3>
-      <p>Learn to write good code and improve your chances of contributing to the Scala galaxy.</p>
-    </div>
-  </div>
-</div>
+| **Shortcut**                           | **Description** |
+|----------------------------------------|-----------------|
+| [Scala Contributors][contrib-forum]    | Get a peek into the inners of the Scala compiler. |
+| [Report an Issue][bug-reporting-guide] | File a bug report or a feature request. |
+| [Community Issues][community-tickets]  | Get cracking on some easy to approach issues. |
+| [Scala 2 Hacker's Guide][hackers] | Learn to write good code and improve your chances of contributing to the Scala galaxy. |
+| [Scala 3 Contributing Guide][scala3-hackers] | Walkthrough contributing to the Scala 3 compiler, along with a guide to compiler internals. |
 
 
 
@@ -52,11 +36,13 @@ which allows us to ensure that all code submitted to the project is
 unencumbered by copyrights or patents.
 
 ### Bug-fix Check List
+> Originally these steps cover the [Scala 2 compiler](https://github.com/scala/scala), but they also are relevant to
+> the [Scala 3 compiler](https://github.com/lampepfl/dotty).
 
 This is the impatient developer's checklist for the steps to submit a bug-fix pull request to the Scala project. For more information, description and justification for the steps, follow the links in that step. Further specific instructions for the release of Scala you are targeting can be found in the `CONTRIBUTING.md` file for that [GitHub branch](https://github.com/scala/scala)
 
 1. [Select a bug to fix from GitHub](/overviews/contribute/index.html#community-tickets), or if you found the bug yourself and want to fix it, [create a GitHub issue](/overviews/contribute/bug-reporting-guide.html) (but please
-[make sure it's not a duplicate](/overviews/contribute/bug-reporting-guide.html#reporting-confirmed-bugs-is-a-sin)).
+[make sure it's not a duplicate](/overviews/contribute/bug-reporting-guide.html#please-check-before-reporting-a-bug)).
 2. Optional ([but recommended](/overviews/contribute/scala-internals.html/#why-its-a-good-idea)), announce your intention to work on the bug on [Scala Contributors](https://contributors.scala-lang.org/). After all, don't you want to work on a team with
 [these friendly people](/overviews/contribute/hacker-guide.html#1-connect) - it's one of the perks of contributing.
 3. [Fork the Scala repository](/overviews/contribute/hacker-guide.html#fork) and clone your fork (if you haven't already).
@@ -70,7 +56,7 @@ https://github.com/scala/scala#git-hygiene). For bug fixes, a single commit is r
 10. [Work with a reviewer](https://github.com/scala/scala#reviewing) to [get your pull request merged in](/overviews/contribute/hacker-guide.html#review).
 11. Celebrate!
 
-Need more information or a little more hand-holding for the first one? We got you covered: take a read through the entire [Hacker Guide](/overviews/contribute/hacker-guide.html) for an example of implementing a new feature (some of the steps can be skipped for bug fixes, this will be obvious from reading it, but many of the steps here will help with bug fixes too).
+Need more information or a little more hand-holding for the first one? We got you covered: take a read through the entire [Hacker Guide][hackers] (or the [equivalent Scala 3 Contributing Guide][scala3-hackers]) for an example of implementing a new feature (some of the steps can be skipped for bug fixes, this will be obvious from reading it, but many of the steps here will help with bug fixes too).
 
 ### Larger Changes, New Features
 
@@ -79,4 +65,10 @@ and on the implementation plan. Announce the change
 on the [Scala Contributors](https://contributors.scala-lang.org/) mailing list and get developer feedback. For really complex changes, a [Scala Improvement Process (SIP)](https://docs.scala-lang.org/sips/) document might be required, but the first step is always to discuss it on the mailing list and if a SIP is required, that will be discussed on the mailing list.
 
 Contributions, big or small, simple or complex, controversial or undisputed, need to materialize as patches against
-the Scala project source tree. The [hacker guide](/overviews/contribute/hacker-guide.html) will explain how to materialize your idea into a full-fledged pull request against the Scala code base.
+the Scala project source tree. The hacker's guides ([Scala 2][hackers], or [Scala 3][scala3-hackers]) will explain how to materialize your idea into a full-fledged pull request against the Scala code base.
+
+[hackers]: /overviews/contribute/hacker-guide.html
+[community-tickets]: /overviews/contribute/index.html#community-tickets
+[bug-reporting-guide]: /overviews/contribute/bug-reporting-guide.html
+[scala3-hackers]: {% link _overviews/scala3-contribution/procedures-intro.md %}
+[contrib-forum]: https://contributors.scala-lang.org/
