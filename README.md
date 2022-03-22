@@ -27,7 +27,7 @@ For more details on the Docker option, see [this issue](https://github.com/scala
 
 ## Contributing ##
 
-Please have a look at [Add New Guides/Tutorials](https://docs.scala-lang.org/overviews/contribute/add-guides.html) before making a contribution.
+Please have a look at [Add New Guides/Tutorials](https://docs.scala-lang.org/contribute/add-guides.html) before making a contribution.
 This document gives an overview of the type of documentation contained within the Scala Documentation repository and the repository's structure.
 
 Small changes, or corrected typos will generally be pulled in right away. Large changes, like the addition of new documents, or the rewriting of

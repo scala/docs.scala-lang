@@ -1,9 +1,6 @@
 ---
 title: Scala Contributors Forum
-layout: multipage-overview
 num: 9
-partof: scala-contribution
-overview-name: Contributing to Scala
 ---
 
 The [Scala Contributors Forum][scala-contributors] is where discussions about the Scala ecosystem

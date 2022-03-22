@@ -1,10 +1,7 @@
 ---
 title: Scala hacker guide
 by: Eugene Burmako
-layout: multipage-overview
 num: 12
-partof: scala-contribution
-overview-name: Contributing to Scala
 ---
 <br>
 This guide is intended to help you get from an idea of fixing a bug or implementing a new feature into a nightly Scala build, and, ultimately, to a production release of Scala incorporating your idea.
@@ -310,7 +307,7 @@ This means your change is backward or forward binary incompatible with the speci
 
 ### Verify
 
-Now to make sure that my fix doesn't break anything I need to run the test suite. The Scala test suite uses [JUnit](https://junit.org/junit4/) and [partest](/overviews/contribute/partest-guide.html), a tool we wrote for testing Scala.
+Now to make sure that my fix doesn't break anything I need to run the test suite. The Scala test suite uses [JUnit](https://junit.org/junit4/) and [partest](/contribute/partest-guide.html), a tool we wrote for testing Scala.
 Run `sbt test` and `sbt partest` to run all of the JUnit and partest tests, respectively.
 `partest` (not `sbt partest`) also allows you to run a subset of the tests using wildcards:
 

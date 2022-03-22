@@ -1,9 +1,6 @@
 ---
 title: Inclusive Language Guide
-layout: multipage-overview
 num: 2
-partof: scala-contribution
-overview-name: Contributing to Scala
 ---
 
 We are committed to providing a friendly, safe and welcoming environment for

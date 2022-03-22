@@ -1,9 +1,6 @@
 ---
 title: IDE and Build Tool Contributions
-layout: multipage-overview
 num: 11
-partof: scala-contribution
-overview-name: Contributing to Scala
 
 # Projects list:
 projects:
@@ -22,7 +19,7 @@ projects:
     homeLink: https://www.scala-lang.org/api
     issuesLink: https://github.com/scala/bug/labels/scaladoc
     readmeLink: https://github.com/scala/scala#welcome
-    contributingLink: /overviews/contribute/guide.html
+    contributingLink: /contribute/guide.html
   - title: Partest
     description: Scala Compiler/Library Testing (Contribute through scala/scala)
     icon: https://avatars1.githubusercontent.com/u/57059?v=3&s=200
@@ -50,7 +47,7 @@ if you would like to help revive them.
 
 ### Broken Links?
 
-Stuff changes. Found a broken link or something that needs updating on this page? Please, consider [submitting a documentation pull request](/overviews/contribute/documentation.html#updating-scala-langorg) to fix it.
+Stuff changes. Found a broken link or something that needs updating on this page? Please, consider [submitting a documentation pull request](/contribute/documentation.html#updating-scala-langorg) to fix it.
 
 ### Projects
 

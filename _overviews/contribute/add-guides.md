@@ -1,9 +1,6 @@
 ---
 title: Add New Guides/Tutorials
-layout: multipage-overview
 num: 7
-partof: scala-contribution
-overview-name: Contributing to Scala
 ---
 
 ## Why Contribute New Learning Material?

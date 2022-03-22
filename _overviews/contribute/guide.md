@@ -1,9 +1,6 @@
 ---
 title: Contributing guide
-layout: multipage-overview
 num: 10
-partof: scala-contribution
-overview-name: Contributing to Scala
 ---
 
 | **Shortcut**                           | **Description** |
@@ -41,19 +38,19 @@ unencumbered by copyrights or patents.
 
 This is the impatient developer's checklist for the steps to submit a bug-fix pull request to the Scala project. For more information, description and justification for the steps, follow the links in that step. Further specific instructions for the release of Scala you are targeting can be found in the `CONTRIBUTING.md` file for that [GitHub branch](https://github.com/scala/scala)
 
-1. [Select a bug to fix from GitHub](/overviews/contribute/index.html#community-tickets), or if you found the bug yourself and want to fix it, [create a GitHub issue](/overviews/contribute/bug-reporting-guide.html) (but please
-[make sure it's not a duplicate](/overviews/contribute/bug-reporting-guide.html#please-check-before-reporting-a-bug)).
-2. Optional ([but recommended](/overviews/contribute/scala-internals.html/#why-its-a-good-idea)), announce your intention to work on the bug on [Scala Contributors](https://contributors.scala-lang.org/). After all, don't you want to work on a team with
-[these friendly people](/overviews/contribute/hacker-guide.html#1-connect) - it's one of the perks of contributing.
-3. [Fork the Scala repository](/overviews/contribute/hacker-guide.html#fork) and clone your fork (if you haven't already).
-4. [Create a feature branch](/overviews/contribute/hacker-guide.html#branch) to work on: use the branch name `issue/NNNN` where NNNN is the GitHub issue number.
-5. [Fix the bug, or implement the new small feature](/overviews/contribute/hacker-guide.html#implement), include new tests (yes, for bug fixes too).
-6. [Test, rinse](/overviews/contribute/hacker-guide.html#test) and [test some more](/overviews/contribute/partest-guide.html) until [all the tests pass](/overviews/contribute/hacker-guide.html#verify).
-7. [Commit your changes](/overviews/contribute/hacker-guide.html#commit) to your feature branch in your fork. Please choose your commit message based on the [Git Hygiene](https://github.com/scala/scala#user-content-git-hygiene) section of the Scala project README.
+1. [Select a bug to fix from GitHub](/contribute/index.html#community-tickets), or if you found the bug yourself and want to fix it, [create a GitHub issue](/contribute/bug-reporting-guide.html) (but please
+[make sure it's not a duplicate](/contribute/bug-reporting-guide.html#please-check-before-reporting-a-bug)).
+2. Optional ([but recommended](/contribute/scala-internals.html/#why-its-a-good-idea)), announce your intention to work on the bug on [Scala Contributors](https://contributors.scala-lang.org/). After all, don't you want to work on a team with
+[these friendly people](/contribute/hacker-guide.html#1-connect) - it's one of the perks of contributing.
+3. [Fork the Scala repository](/contribute/hacker-guide.html#fork) and clone your fork (if you haven't already).
+4. [Create a feature branch](/contribute/hacker-guide.html#branch) to work on: use the branch name `issue/NNNN` where NNNN is the GitHub issue number.
+5. [Fix the bug, or implement the new small feature](/contribute/hacker-guide.html#implement), include new tests (yes, for bug fixes too).
+6. [Test, rinse](/contribute/hacker-guide.html#test) and [test some more](/contribute/partest-guide.html) until [all the tests pass](/contribute/hacker-guide.html#verify).
+7. [Commit your changes](/contribute/hacker-guide.html#commit) to your feature branch in your fork. Please choose your commit message based on the [Git Hygiene](https://github.com/scala/scala#user-content-git-hygiene) section of the Scala project README.
 8. If necessary [re-write git history](https://git-scm.com/book/en/Git-Branching-Rebasing) so that [commits are organized by major steps to the fix/feature](
 https://github.com/scala/scala#git-hygiene). For bug fixes, a single commit is requested, for features several commits may be desirable (but each separate commit must compile and pass all tests)
-9. [Submit a pull request](/overviews/contribute/hacker-guide.html#submit).
-10. [Work with a reviewer](https://github.com/scala/scala#reviewing) to [get your pull request merged in](/overviews/contribute/hacker-guide.html#review).
+9. [Submit a pull request](/contribute/hacker-guide.html#submit).
+10. [Work with a reviewer](https://github.com/scala/scala#reviewing) to [get your pull request merged in](/contribute/hacker-guide.html#review).
 11. Celebrate!
 
 Need more information or a little more hand-holding for the first one? We got you covered: take a read through the entire [Hacker Guide][hackers] (or the [equivalent Scala 3 Contributing Guide][scala3-hackers]) for an example of implementing a new feature (some of the steps can be skipped for bug fixes, this will be obvious from reading it, but many of the steps here will help with bug fixes too).
@@ -67,8 +64,8 @@ on the [Scala Contributors](https://contributors.scala-lang.org/) mailing list a
 Contributions, big or small, simple or complex, controversial or undisputed, need to materialize as patches against
 the Scala project source tree. The hacker's guides ([Scala 2][hackers], or [Scala 3][scala3-hackers]) will explain how to materialize your idea into a full-fledged pull request against the Scala code base.
 
-[hackers]: /overviews/contribute/hacker-guide.html
-[community-tickets]: /overviews/contribute/index.html#community-tickets
-[bug-reporting-guide]: /overviews/contribute/bug-reporting-guide.html
+[hackers]: /contribute/hacker-guide.html
+[community-tickets]: /contribute/index.html#community-tickets
+[bug-reporting-guide]: /contribute/bug-reporting-guide.html
 [scala3-hackers]: {% link _overviews/scala3-contribution/procedures-intro.md %}
 [contrib-forum]: https://contributors.scala-lang.org/

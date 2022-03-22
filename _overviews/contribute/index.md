@@ -1,9 +1,6 @@
 ---
 title: Contribute
-layout: multipage-overview
 num: 1
-partof: scala-contribution
-overview-name: Contributing to Scala
 ---
 
 The Scala programming language is an open source project with a very
@@ -18,7 +15,7 @@ That depends on what you want to contribute. Below are some getting started reso
 
 ### Reporting bugs
 
-See our [bug reporting guide](/overviews/contribute/bug-reporting-guide.html) to learn
+See our [bug reporting guide](/contribute/bug-reporting-guide.html) to learn
 how to efficiently report a bug.
 
 ### Contribute
@@ -33,7 +30,7 @@ Coordination of contribution efforts takes place on
 When contributing, please follow:
 
 * The [Scala Code of Conduct](https://scala-lang.org/conduct/)
-* The [Inclusive Language Guide](/overviews/contribute/inclusive-language-guide.html)
+* The [Inclusive Language Guide](/contribute/inclusive-language-guide.html)
 
 ### Community Tickets
 

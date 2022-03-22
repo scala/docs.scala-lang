@@ -121,5 +121,5 @@ scala2-sections:
       - title: "Contributing to Scala"
         description: "The Complete Guide to Contributing to the Scala Project"
         icon: "fa fa-cogs"
-        link: /overviews/contribute/
+        link: /contribute/
 ---
