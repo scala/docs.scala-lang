@@ -196,7 +196,7 @@ Contributing to the Scala standard library is about the same as working on one o
 
 If documentation is necessary for some trait/class/object/method/etc in the Scala standard library, typically maintainers will include inline comments describing their design decisions or rationale for implementing things the way they have, if it is not straightforward.
 
-If you intend on contributing to Scala collections, please make sure you're familiar with the design of the Scala collections library. It can be easy to put an implementation in the wrong location if you are unfamiliar with the collections architecture. There is an excellent and very detailed guide covering [the Architecture of Scala Collections](/overviews/core/architecture-of-scala-collections.html), as well as a larger more general [Scala collections Guide](/overviews/collections/introduction.html) covering the sequential portion of collections. For parallel collections, there also exists a detailed [Scala Parallel Collections Guide](/overviews/parallel-collections/overview.html).
+If you intend on contributing to Scala collections, please make sure you're familiar with the design of the Scala collections library. It can be easy to put an implementation in the wrong location if you are unfamiliar with the collections architecture. There is an excellent and very detailed guide covering [the Architecture of Scala Collections][collections-arch], as well as a larger more general [Scala collections Guide][collections-intro] covering the sequential portion of collections. For parallel collections, there also exists a detailed [Scala Parallel Collections Guide][collections-par].
 
 ##### The Scala Compiler
 
@@ -204,7 +204,7 @@ Documentation about the internal workings of the Scala compiler is scarce, and m
 
 * [Compiler internals videos by Martin Odersky](https://www.scala-lang.org/old/node/598.html) are quite dated, but still very useful. In this three-video
   series Martin explains the general architecture of the compiler, and the basics of the front-end, which has recently become Scala reflection API.
-* [Reflection documentation](/overviews/reflection/overview.html) describes fundamental data structures (like `Tree`s, `Symbol`s, and `Types`) that
+* [Reflection documentation][reflect-overview] describes fundamental data structures (like `Tree`s, `Symbol`s, and `Types`) that
   are used to represent Scala programs and operations defined on then. Since much of the compiler has been factored out and made accessible via the Reflection API, all of the fundamentals needed for reflection are the same for the compiler.
 * [Reflection and Compilers by Martin Odersky](https://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2012/Reflection-and-Compilers), a talk
   at Lang.NEXT 2012 in which Martin elaborates on the design of scalac and the architecture of the reflection API.
@@ -307,7 +307,7 @@ This means your change is backward or forward binary incompatible with the speci
 
 ### Verify
 
-Now to make sure that my fix doesn't break anything I need to run the test suite. The Scala test suite uses [JUnit](https://junit.org/junit4/) and [partest](/contribute/partest-guide.html), a tool we wrote for testing Scala.
+Now to make sure that my fix doesn't break anything I need to run the test suite. The Scala test suite uses [JUnit](https://junit.org/junit4/) and [partest][partest-guide], a tool we wrote for testing Scala.
 Run `sbt test` and `sbt partest` to run all of the JUnit and partest tests, respectively.
 `partest` (not `sbt partest`) also allows you to run a subset of the tests using wildcards:
 
@@ -378,3 +378,9 @@ workflow) and be ready to elaborate and adjust your patch if necessary. In this 
 After your reviewer is happy with your code (usually signaled by a LGTM — “Looks good to me”), your job is done.
 Note that there can be a gap between a successful review and the merge, because not every reviewer has merge rights. In that case, someone else from the team will pick up your pull request and merge it.
 So don't be confused if your reviewer says “LGTM”, but your code doesn't get merged immediately.
+
+[collections-arch]: {% link _overviews/core/architecture-of-scala-collections.md %}
+[collections-intro]: {% link _overviews/collections/introduction.md %}
+[collections-par]: {% link _overviews/parallel-collections/overview.md %}
+[reflect-overview]: {% link _overviews/reflection/overview.md %}
+[partest-guide]: {% link _overviews/contribute/partest-guide.md %}

@@ -5,7 +5,7 @@ num: 7
 
 ## Why Contribute New Learning Material?
 
-As [Heather Miller writes](/contribute.html), contributing to [docs.scala-lang.org](https://docs.scala-lang.org) is
+As [Heather Miller writes][why-contribute], contributing to [docs.scala-lang.org][home] is
 critical to making Scala accessible to newcomers, experience programmers, and anyone who is curious.
 It is also a fantastic way to contribute for anyone who is comfortable using Scala, but maybe does not want to get
 involved with complex tools like the compiler.
@@ -45,7 +45,7 @@ For one to contribute a document, one must simply
 [repo](https://github.com/scala/docs.scala-lang), write their article in
 [Markdown](https://daringfireball.net/projects/markdown/syntax) (example below), and submit a pull request. That's it.
 Likely after some edits and discussion, your document will be made live
-on [docs.scala-lang.org](https://docs.scala-lang.org).
+on [docs.scala-lang.org][home].
 
     ---
     layout: overview
@@ -71,7 +71,7 @@ styling is already taken care of for you.
 ### Criteria for Docs to be Accepted
 
 The goal of this documentation repository is to be tighter and more organized than other community-driven documentation platforms, like wikis. As such, any document pulled in for inclusion on
-[docs.scala-lang.org](https://docs.scala-lang.org) must:
+[docs.scala-lang.org][home] must:
 
 - **"fit in"** to the repository ( _i.e.,_ it should not be a complete duplicate of another article),
 - **be polished** it must be thorough, complete, correct, organized, and "article-like" (personal programming notes
@@ -129,7 +129,7 @@ documents in the large overview. Putting it on the last page in the overview is 
     outof: 15
     ---
 
-Index pages, such as [docs.scala-lang.org/overviews/index.html](https://docs.scala-lang.org/overviews/index.html) are
+Index pages, such as [docs.scala-lang.org/overviews/index.html][overviews-index] are
 generated, by reading data from a configuration file, such as `_data/overviews.yml`, so your overview should be
 placed into a category there.
 
@@ -216,3 +216,6 @@ above. Here is an example using the various modifiers.
 
 [collections-overview]: {% link _overviews/collections-2.13/introduction.md %}
 [scala-with-maven]:  {% link _overviews/tutorials/scala-with-maven.md %}
+[why-contribute]: {% link contribute.md %}
+[home]: {% link index.md %}
+[overviews-index]: {% link _overviews/index.md %}

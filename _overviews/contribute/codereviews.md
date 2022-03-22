@@ -4,7 +4,7 @@ num: 3
 ---
 ## Code Review Contributions
 
-In addition to [bug fixing](/contribute/guide.html), you can help us review
+In addition to [bug fixing][bug-fixing], you can help us review
 [waiting pull requests](#pull-requests-awaiting-comment).
 This is also a good (and recommended) way to get to know the feel of
 the bug-fixing and submissions process before jumping in with your
@@ -54,4 +54,7 @@ own pull requests.
    </div>
 </div>
 
-Also note that the [Tools contributions](/contribute/tools.html) page has more projects that will generate pull requests.
+Also note that the [Tools contributions][tools] page has more projects that will generate pull requests.
+
+[bug-fixing]: {% link _overviews/contribute/guide.md %}
+[tools]: {% link _overviews/contribute/tools.md %}

@@ -9,8 +9,8 @@ documentation for
 sometimes referred to as Scaladoc contributions.
 
 For contributions to tutorial and guide-style documentation on
-[docs.scala-lang.org](/),
-see [Add New Guides/Tutorials](/contribute/add-guides.html).
+[docs.scala-lang.org][home],
+see [Add New Guides/Tutorials][add-guides].
 
 *Please note, these instructions cover documentation contributions Scala core
 libraries only. For other Scala projects please check those projects for the
@@ -76,13 +76,13 @@ component so that they show up in the correct issue filters.
 Please familiarize yourself with the following before contributing
 new API documentation to save time, effort, mistakes and repetition.
 
-* [Forking the Repo](/contribute/hacker-guide.html#2-set-up) - follow the setup steps through
+* [Forking the Repo][hackers-setup] - follow the setup steps through
   the Branch section. If providing new documentation related to an existing GitHub issue, use `issue/NNNN`
   or `ticket/NNNN` as the guide states. If providing API documentation with no associated
   GitHub issue, use `scaladoc/xxxx` instead.
-* [Scaladoc for library authors](https://docs.scala-lang.org/overviews/scaladoc/for-library-authors.html)
+* [Scaladoc for library authors][scaladoc-lib-authors]
   covers the use of scaladoc tags, markdown and other features.
-* [Scaladoc's interface](https://docs.scala-lang.org/overviews/scaladoc/interface.html)
+* [Scaladoc's interface][scaladoc-interface]
   covers all of the features of Scaladoc's interface, e.g. switching between
   companions, browsing package object documentation, searching, token searches
   and so on.
@@ -121,3 +121,9 @@ PR is merged in smoothly:
   as smooth and streamlined as possible.
 
 Thanks for helping us improve the Scaladoc API documentation!
+
+[home]: {% link index.md %}
+[add-guides]: {% link _overviews/contribute/add-guides.md %}
+[hackers-setup]: {% link _overviews/contribute/hacker-guide.md %}#2-set-up
+[scaladoc-lib-authors]: {% link _overviews/scaladoc/for-library-authors.md %}
+[scaladoc-interface]: {% link _overviews/scaladoc/interface.md %}

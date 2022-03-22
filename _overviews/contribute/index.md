@@ -15,7 +15,7 @@ That depends on what you want to contribute. Below are some getting started reso
 
 ### Reporting bugs
 
-See our [bug reporting guide](/contribute/bug-reporting-guide.html) to learn
+See our [bug reporting guide][bug-reporting-guide] to learn
 how to efficiently report a bug.
 
 ### Contribute
@@ -30,7 +30,7 @@ Coordination of contribution efforts takes place on
 When contributing, please follow:
 
 * The [Scala Code of Conduct](https://scala-lang.org/conduct/)
-* The [Inclusive Language Guide](/contribute/inclusive-language-guide.html)
+* The [Inclusive Language Guide][inclusive-language-guide]
 
 ### Community Tickets
 
@@ -63,3 +63,6 @@ open-source Scala library or tool, please visit the
 [community build documentation](https://github.com/scala/community-build/wiki)
 for guidelines on what projects are suitable for the community build
 and how projects can be added.
+
+[bug-reporting-guide]: {% link _overviews/contribute/bug-reporting-guide.md %}
+[inclusive-language-guide]: {% link _overviews/contribute/inclusive-language-guide.md %}

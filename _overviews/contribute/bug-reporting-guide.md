@@ -41,7 +41,7 @@ If you have a code snippet that is resulting in bytecode which you believe is be
 
    5. If you want to file an improvement in the issue tracker please discuss it first on one of the mailing lists. They offer much bigger audience than issue tracker. The latter is not suitable for long discussions.
 
-* Keep in mind that the behavior you are witnessing could be intended. Good formal resources for verifying whether or not the language behavior is intended is either in the [Scala Improvement Proposal Documents](https://docs.scala-lang.org/sips/) or in the [Scala Language Specification](https://www.scala-lang.org/files/archive/spec/2.13/). If in doubt, you may always ask on the [Community Category](https://contributors.scala-lang.org/c/community) or [Stack Overflow](https://stackoverflow.com/questions/tagged/scala).
+* Keep in mind that the behavior you are witnessing could be intended. Good formal resources for verifying whether or not the language behavior is intended is either in the [Scala Improvement Proposal Documents][sips] or in the [Scala Language Specification](https://www.scala-lang.org/files/archive/spec/2.13/). If in doubt, you may always ask on the [Community Category](https://contributors.scala-lang.org/c/community) or [Stack Overflow](https://stackoverflow.com/questions/tagged/scala).
 
 In general, if you find yourself stuck on any of these steps, asking on [Scala Contributors](https://contributors.scala-lang.org/) can be helpful:
 
@@ -85,3 +85,5 @@ List(1, 2, 3).map(x => x + 1)
 3. The actual output, including the stacktrace.
 4. Related discussion on the mailing lists, if applicable.
 5. If you have already looked into the issue provide interesting insights or proposals for fixing the issue.
+
+[sips]: {% link _sips/index.md %}
