@@ -30,6 +30,14 @@ projects:
     contributingLink:
 
 projectsInNeed:
+  - title: Scoverage
+    description: Scala code coverage tool
+    icon: https://avatars1.githubusercontent.com/u/5998302?v=3&s=200
+    link: https://github.com/scoverage/scalac-scoverage-plugin
+    homeLink: http://scoverage.org/
+    issuesLink: https://github.com/scoverage/scalac-scoverage-plugin/issues
+    readmeLink: https://github.com/scoverage/scalac-scoverage-plugin/blob/master/README.md
+    contributingLink: https://groups.google.com/forum/#!forum/scala-code-coverage-tool
 ---
 ## Contributing to IDE and Build Tools
 
