@@ -137,7 +137,7 @@ val stringA = "1"
 val stringB = "2"
 val stringC = "3"
 
-val y = for {
+val y = for
   a <- makeInt(stringA)
   b <- makeInt(stringB)
   c <- makeInt(stringC)
