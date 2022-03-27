@@ -86,7 +86,7 @@ class Point {
     if (newValue < bound) _y = newValue else printWarning()
   }
 
-  private def printWarning(): Unit = println("WARNING: Out of bounds")
+  private def printWarning() = println("WARNING: Out of bounds")
 }
 
 val point1 = new Point
