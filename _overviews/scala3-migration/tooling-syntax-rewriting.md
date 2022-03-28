@@ -86,7 +86,7 @@ We will be able to move it to new syntax automatically in two steps: first by us
 > The `-indent` option does not work on the classic control structures.
 > So make sure to run the two steps in the correct order.
 
-> Unfortunately, the compiler is not able to apply both steps at the same time: <del>`-indent -new-syntax -rewrite`</del>.
+> Unfortunately, the compiler is not able to apply both steps at the same time: `-indent -new-syntax -rewrite`.
 
 ### New Control Structures
 
