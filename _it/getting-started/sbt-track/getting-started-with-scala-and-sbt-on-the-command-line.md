@@ -10,7 +10,7 @@ next-page: /it/testing-scala-with-sbt-on-the-command-line
 In questo tutorial si vedrà come creare un progetto Scala a partire da un template, che può essere usato come punto di partenza anche per progettti personali. 
 Lo strumento utilizzato per tale scopo è [sbt](https://www.scala-sbt.org/1.x/docs/index.html), che è lo standard di build per Scala.
 sbt permette di compilare, eseguire e testare i tuoi progetti, ma permette di svolgere anche altri compiti.
-Si preuppone una conoscenza dell'uso della linea di comando.
+Si presuppone una conoscenza dell'uso della linea di comando.
 
 ## Installazione
 1. Assicurarsi di avere la Java 8 JDK (conosciuta anche come 1.8) installata
