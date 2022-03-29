@@ -36,7 +36,7 @@ Si presuppone una conoscenza dell'uso della linea di comando.
     - src
         - main
             - scala (Tutto il codice scala che viene scritto dovrà andare qui)
-                - Main.scala (Entry point dell'applicazione) <-- per ora è tutto ciò che ci seervirà
+                - Main.scala (Entry point dell'applicazione) <-- per ora è tutto ciò che ci servirà
     - build.sbt (il file di definizione della build interpretato da sbt)
 ```
 
