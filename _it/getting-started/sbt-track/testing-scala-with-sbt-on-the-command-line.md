@@ -56,7 +56,7 @@ Analizziamo ogni riga di codice.
 * `extends AnyFunSuite` ci permette di utilizzare la funzionalità della classe AnyFunSuite, come ad esempio la funzione `test`
 * `test` è una funzione proveniente da AnyFunSuite che raccoglie i risultati delle asserzioni all'interno del corpo della funzione.
 * `"CubeCalculator.cube"` è il nome del test. Può essere chiamato in qualsiasi modo, ma la convenzione è "NomeClasse.nomeMetodo".
-* `assert` prende una condizione booleana e stabilisce se i ltest è superato o no.
+* `assert` prende una condizione booleana e stabilisce se il test è superato o no.
 * `CubeCalculator.cube(3) === 27` controlla se l'output della funzione `cube` sia realmente 27.
 Il simbolo `===` è parte di ScalaTest e restituisce messaggi di errore comrpesnibili.
 
