@@ -7,7 +7,7 @@ disqus: true
 previous-page: /it/getting-started-with-scala-and-sbt-on-the-command-line
 ---
 
-Ci sono diverse librerie e modalità per testare il codice Scala, ma in questo tutorial verrà mostrato come eseguire il testing usando [AnyFunSuite](https://www.scalatest.org/scaladoc/3.2.2/org/scalatest/funsuite/AnyFunSuite.html)del framework ScalaTest.
+Ci sono diverse librerie e modalità per testare il codice Scala, ma in questo tutorial verrà mostrato come eseguire il testing usando [AnyFunSuite](https://www.scalatest.org/scaladoc/3.2.2/org/scalatest/funsuite/AnyFunSuite.html) del framework ScalaTest.
 Si assume che si sappia [creare un progetto Scala con sbt](getting-started-with-scala-and-sbt-on-the-command-line.html).
 
 ## Setup
