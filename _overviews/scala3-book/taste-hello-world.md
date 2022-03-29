@@ -12,7 +12,7 @@ A Scala 3 “Hello, world!” example goes as follows.
 First, put this code in a file named _Hello.scala_:
 
 ```scala
-@main def hello = println("Hello, world!")
+@main def hello() = println("Hello, world!")
 ```
 
 In this code, `hello` is a method.
