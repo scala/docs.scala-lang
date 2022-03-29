@@ -31,7 +31,7 @@ Si presuppone una conoscenza dell'uso della linea di comando.
 
 ```
 - hello-world
-    - project (sbt usa qusta cartella per installare e gestire plugins e dipendenze)
+    - project (sbt usa questa cartella per installare e gestire plugins e dipendenze)
         - build.properties
     - src
         - main
