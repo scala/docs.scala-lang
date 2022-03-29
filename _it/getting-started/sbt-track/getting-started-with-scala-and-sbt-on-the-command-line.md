@@ -26,7 +26,6 @@ Si presuppone una conoscenza dell'uso della linea di comando.
 1. Eseguire il comando `cd` specificando una cartella vuota per spostarsi in essa.
 1. Eseguire il comando `sbt new scala/hello-world.g8`. Questo effettuerà una pull del template 'hello-world' da GitHub.
     Si occuperà inoltre di creare la cartella `target`, che per ora può essere ignorata. 
-It will also create a `target` folder, which you can ignore.
 1. Quando richiesto verrà richiesto il nome dell'applicazione, indicare `hello-world`. In questo modo verrà creato un progetto chiamato "hello-world".
 1. Osserviamo cosa è stato generato una volta eseguiti i passaggi sopra riportati:
 
