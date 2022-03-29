@@ -58,7 +58,7 @@ Analizziamo ogni riga di codice.
 * `"CubeCalculator.cube"` è il nome del test. Può essere chiamato in qualsiasi modo, ma la convenzione è "NomeClasse.nomeMetodo".
 * `assert` prende una condizione booleana e stabilisce se il test è superato o no.
 * `CubeCalculator.cube(3) === 27` controlla se l'output della funzione `cube` sia realmente 27.
-Il simbolo `===` è parte di ScalaTest e restituisce messaggi di errore comrpesnibili.
+Il simbolo `===` è parte di ScalaTest e restituisce messaggi di errore comprensibili.
 
 ## Aggiungere un altro test case
 1. Aggiungere un altro blocco di testo contenente il proprio enunciato `assert` che verificherà il cubo di `0`.
