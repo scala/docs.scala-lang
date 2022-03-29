@@ -45,7 +45,7 @@ Una volta che verrà buildato il progetto, sbt creerà diverse cartelle `target`
 ## Eseguire il progetto
 1. `cd` nella cartella `hello-world`.
 1. Lanciare il comando `sbt`. Questo aprirà la console di sbt.
-1. Eseguire `~run`. Il carattere `~` è opzionale. Indica ad sbt di eseguirsi ad ogni salvataggio di un file, permettendo un ciclo di modifica,esecuzione e debug più veloce. sbt genererà anche una cartella chiamata `target` che può essere ignorata.
+1. Eseguire `~run`. Il carattere `~` è opzionale. Indica ad sbt di eseguirsi ad ogni salvataggio di un file, permettendo un ciclo di modifica, esecuzione e debug più veloce. sbt genererà anche una cartella chiamata `target` che può essere ignorata.
 
 ## Modificare il codice
 1. Aprire il file `src/main/scala/Main.scala` in un qualsiasi editor di testo.
