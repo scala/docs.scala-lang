@@ -457,11 +457,11 @@ Here’s an example using a simple `Person` case class:
 case class Person(name: String)
 
 def speak(p: Person) = p match
-  case Person(name) if name == "Fred" => s"$name says, Yubba dubba doo"
+  case Person(name) if name == "Fred" => s"$name says, Yabba-Dabba-Doo!"
   case Person(name) if name == "Bam Bam" => s"$name says, Bam bam!"
   case _ => "Watch the Flintstones!"
 
-println(speak(Person("Fred")))      // "Fred says, Yubba dubba doo"
+println(speak(Person("Fred")))      // "Fred says, Yabba-Dabba-Doo!"
 println(speak(Person("Bam Bam")))   // "Bam Bam says, Bam bam!"
 ```
 

@@ -203,7 +203,7 @@ When a method takes no parameters, it’s said to have an _arity_ level of _arit
 When you create arity-0 methods:
 
 - If the method performs side effects, such as calling `println`, declare the method with empty parentheses
-- If the method does not perform side effects---about such methods they say "pure methods" or "pure code", contrary to "dirty" or "impure"---leave the parentheses off
+- If the method does not perform side effects---leave the parentheses off
 
 For example, this method performs a side effect, so it’s declared with empty parentheses:
 
@@ -218,16 +218,7 @@ speak     // error: "method speak must be called with () argument"
 speak()   // prints "hi"
 ```
 
-The main intention behind this convention is to make transition field-to-method and visa-versa easy for developers and transparent to method consumers. For example, given the following code, no one can tell if `speak` is a field or method:  
-
-```scala
-val alleyCat = Cat("Oliver")
-println(alleyCat.speak)
-```
-
-In FP terms "call of pure function" and "result of pure function" (with given arguments) are totally the same thing. While code does not change any existing state we can substitute field instead of method, and method instead of the field. The result must be the same. 
-
-However, in the case of impure code consumers must be warned and alarmed at least, because impure code tends to make dangerous things, like throwing `IOException`. That is why there is a difference between an absent list and an empty argument list. 
+This is known in Scala as the "uniform access principle". It states that variables and parameterless functions should be accessed using the same syntax. Scala supports this principle by not allowing parentheses to be placed at call sites of parameterless functions.
 
 
 {% comment %}
@@ -288,7 +279,7 @@ val d = new Dog
 d.speak()   // prints "Woof"
 ```
 
-Methods can also be marked as `private`. This makes them private to the current class, so they can’t be called nor overridden in subclasses:
+Methods can also be marked as `private`. This makes them private to the current class, so they can’t be called or overridden in subclasses:
 
 ```scala
 class Animal:
