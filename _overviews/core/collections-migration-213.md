@@ -16,7 +16,7 @@ The most important changes in the Scala 2.13 collections library are:
   - The type hierarchy is simplified. `Traversable` no longer exists, only `Iterable`.
   - The `to[Collection]` method was replaced by the `to(Collection)` method.
   - The `toC` methods are strict by convention and yield the default collection type where applicable. For example, `Iterator.continually(42).take(10).toSeq` produces a `List[Int]` and without the limit would not.
-  - `toIterable` is deprecated wherever defined. For `Iterator`, in particular, prefer `to[LazyList]`.
+  - `toIterable` is deprecated wherever defined. For `Iterator`, in particular, prefer `to(LazyList)`.
   - Views have been vastly simplified and work reliably now. They no longer extend their corresponding collection type, for example, an `IndexedSeqView` no longer extends `IndexedSeq`.
   - `collection.breakOut` no longer exists, use `.view` and `.to(Collection)` instead.
   - Immutable hash sets and hash maps have a new implementation (`ChampHashSet` and `ChampHashMap`, based on the ["CHAMP" encoding](https://michael.steindorfer.name/publications/oopsla15.pdf)).
