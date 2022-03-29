@@ -66,7 +66,7 @@ si sta aggiungendo la dipendenza [scala-parser-combinators](https://github.com/s
 Una volta eseguito questo passaggio, sarà possibile importare classi, object ed altro da scala-parser-combinators tramite una semplice istruzione di import.
 
 Ulteriori librerie pubblicate possono essere trovate sul sito
-[Scaladex](https://index.scala-lang.org/), dove è possibile copare le informazioni delle dipendenze cercate nel file `build.sbt`.
+[Scaladex](https://index.scala-lang.org/), dove è possibile copiare le informazioni delle dipendenze cercate nel file `build.sbt`.
 
 ## Next steps
 
