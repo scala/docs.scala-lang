@@ -20,6 +20,7 @@ scala-212-version: 2.12.15
 scala-3-version: 3.1.1
 
 collections:
+  contribute_resources:
   style:
     output: true
   overviews:
@@ -104,6 +105,14 @@ defaults:
       overview-name: "Scala 3 — Book"
       layout: multipage-overview
       permalink: "/scala3/book/:title.html"
+  -
+    scope:
+      path: "_overviews/contribute"
+    values:
+      partof: scala-contribution
+      overview-name: Contributing to Scala
+      layout: multipage-overview
+      permalink: "/contribute/:title.html"
   -
     scope:
       path: "_overviews/scala3-migration"

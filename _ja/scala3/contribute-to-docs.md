@@ -45,8 +45,8 @@ Scala 3 の高品質なドキュメンテーションを作るためのいくつ
 - [Source](https://github.com/scala/docs.scala-lang/tree/main/_overviews/scala3-migration)
 - [Issues](https://github.com/scalacenter/docs.scala-lang/issues)
 
-## Scala 3 Contribution Guide
-[Scala 3 Contribution Guide](/scala3/guides/contribution/contribution-intro.html)
+## Scala 3 Contributing Guide
+[Scala 3 Contributing Guide](/scala3/guides/contribution/contribution-intro.html)
 Scala 3 コンパイラとライブラリへの貢献と内部に関する包括的な概要が含まれています
 
 - [Source](https://github.com/scala/docs.scala-lang/tree/main/_overviews/scala3-contribution)

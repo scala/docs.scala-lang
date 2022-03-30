@@ -35,6 +35,8 @@
       url: "/tutorials/FAQ/index.html"
     - title: Language Specification
       url: http://scala-lang.org/files/archive/spec/2.13/
+    - title: Contribution Guide
+      url: "/contribute/"
     - title: Style Guide
       url: "/style/index.html"
     - title: Cheatsheet

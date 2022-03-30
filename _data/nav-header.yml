@@ -1,12 +1,17 @@
 - title: Documentation
   url: "/"
+  can-highlight: true
 - title: Download
   url: https://www.scala-lang.org/download/
+  can-highlight: true
 - title: Community
   url: https://www.scala-lang.org/community/
+  can-highlight: true
 - title: Libraries
   url: https://index.scala-lang.org
+  can-highlight: true
 - title: Contribute
-  url: https://www.scala-lang.org/contribute/
+  url: /contribute/
 - title: Blog
   url: https://www.scala-lang.org/blog/
+  can-highlight: true
