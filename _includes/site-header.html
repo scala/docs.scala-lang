@@ -10,7 +10,7 @@
       <ul class="navigation-menu">
         {% for navItem in site.data.nav-header %}
             <li class="navigation-menu-item">
-              <a href="{% if navItem.url contains '://' %}{{navItem.url}}{% else %}{{site.baseurl}}{{navItem.url}}{% endif %}" {% if page.url contains navItem.url and navItem.can-highlight %} class="active"{% endif %}>{{navItem.title}}</a>
+              <a href="{% if navItem.url contains '://' %}{{navItem.url}}{% else %}{{site.baseurl}}{{navItem.url}}{% endif %}" {% if page.url contains navItem.url %} class="active"{% endif %}>{{navItem.title}}</a>
             </li>
         {% endfor %}
       </ul>
