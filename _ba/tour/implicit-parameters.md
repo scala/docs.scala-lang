@@ -40,6 +40,7 @@ object ImplicitTest extends App {
   }
   def sum[A](xs: List[A])(implicit m: Monoid[A]): A =
     if (xs.isEmpty) m.unit
+    else if (xs.tail.isEmpty) xs.head
     else m.add(xs.head, sum(xs.tail))
 
   println(sum(List(1, 2, 3)))       // uses IntMonoid implicitly
