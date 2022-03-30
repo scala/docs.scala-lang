@@ -53,11 +53,10 @@ There are four major steps in the SIP process:
 
 Before submitting a SIP, it is required that you perform necessary preparations:
 
-Discuss your idea on the [Scala Contributors Page](https://contributors.scala-lang.org/) (currently, we suggest
-cross-posting on
-[Scala Improvement Process](https://contributors.scala-lang.org/c/sip) and
-[Language Design](https://contributors.scala-lang.org/c/language-design). This
-may change in the future.) Create a topic that starts with “Pre-SIP” and briefly
+Discuss your idea on the [Scala Contributors Page](https://contributors.scala-lang.org/) (we suggest
+posting in the category
+[Scala Improvement Process](https://contributors.scala-lang.org/c/sip)).
+Create a topic that starts with “Pre-SIP” and briefly
 describe what you would like to change and why you think it’s a good idea.
 
 Proposing your ideas on the mailing list is not an optional step. For every
