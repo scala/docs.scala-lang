@@ -18,7 +18,7 @@ num: 10
 Just to name a few common reasons:
 
 * contributing a patch is the best way to make sure your desired changes will be available in the next Scala version
-* Scala is written in Scala, so going through the source code and patching it will improve your Scala-fu
+* Scala is written in Scala, so going through the source code and patching it will improve your knowledge of Scala.
 * last but not least, it only takes a few accepted commits to make it into the [Scala Contributor Hall of Fame](https://github.com/scala/scala/contributors).
 
 The main Scala project consists of the standard Scala library, the Scala reflection and macros library,

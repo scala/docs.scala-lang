@@ -7,10 +7,10 @@ num: 5
 There are several ways you can help out with the improvement of Scala documentation. These include:
 
 * API Documentation in Scaladoc
-* Guides, Overviews, Tutorials, Cheat Sheets and more on the docs.scala-lang.org site
-* Updating scala-lang.org
+* Guides, Overviews, Tutorials, Cheat Sheets and more on the [docs.scala-lang.org][home] site
+* Updating [scala-lang.org](https://scala-lang.org)
 
-Please read this page, and the pages linked from this one, fully before contributing documentation. Many of the questions you have will be answered in these resources. If you have a question that isn't answered, feel free to ask on the [Scala Contributors](https://contributors.scala-lang.org/) mailing list and then, please, submit a pull request with updated documentation reflecting that answer.
+Please read this page, and the pages linked from this one, fully before contributing documentation. Many frequently asked questions will be answered in these resources. If you have a question that isn't answered, feel free to ask on the [Scala Contributors](https://contributors.scala-lang.org/) forum and then, please, submit a pull request with updated documentation reflecting that answer.
 
 **General requirements** for documentation submissions include spell-checking all written language, ensuring code samples compile and run correctly, correct grammar, and clean formatting/layout of the documentation.
 

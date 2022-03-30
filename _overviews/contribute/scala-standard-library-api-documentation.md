@@ -21,16 +21,14 @@ contribution steps and guidelines. Thank you.*
 Since API documentation is located in Scala source code files, the
 process for contributing API documentation is similar to that of contributing bug-fixes
 to the Scala code base, but without the requirement that there be an issue filed on GitHub
-first. When forking/branching, just use a `scaladoc/xxxx` branch name, where xxxx is a
+first. When forking/branching, it would help to use a `scaladoc/xxxx` branch name, where `xxxx` is a
 descriptive, but short branch name (e.g. `scaladoc/future-object`).
-However, if an issue *does* exist, please use `issue/NNNN`, where NNNN is the ticket number,
+However, if an issue *does* exist, please use `issue/NNNN`, where `NNNN` is the ticket number,
 instead.
 
-If you would like to assist us by helping us find missing documentation and
-submitting bug reports for existing documentation,
-[please read the following section](#contribute-api-documentation-bug-reports).
-If you want to contribute new API documentation,
-[jump down to the next section](#contribute-new-api-documentation).
+If you would like to assist us, you can
+[report missing/incorrect API documentation](#contribute-api-documentation-bug-reports), or
+[contribute new API documentation](#contribute-new-api-documentation).
 
 ## Contribute API Documentation Bug Reports
 
@@ -45,8 +43,8 @@ If you find an issue, please log it in the [Scala bug tracker](https://github.co
 **after making sure it is not already logged as an issue**. To help with
 disambiguation, please use the following format for issue title:
 
-* Use an action describing the work required. E.g. Add, Document, Correct, Remove
-* Use the full package, class/trait/object name (or state package object if
+* Use an action describing the work required, e.g. **Add**, **Document**, **Correct**, **Remove**.
+* Use the full package, class/trait/object/enum name (or state package object if
   that is the case).
 * Extremely short description of what to do.
 * More detail can (and should) go into the issue description, including a short
@@ -60,10 +58,10 @@ Here is an example of the title and description for an example API documentation
 
 and the description:
 
-`The methods on the Future companion object are critical`
-`for using Futures effectively without blocking. Provide code`
-`examples of how methods like sequence, transform, fold and`
-`firstCompletedOf should be used.`
+> The methods on the `Future` companion object are critical
+> for using Futures effectively without blocking. Provide code
+> examples of how methods like `sequence`, `transform`, `fold` and
+> `firstCompletedOf` should be used.
 
 In addition to following these conventions, please add `documentation` and
 `community` labels to the issue, and put them in the `Documentation and API`
@@ -93,9 +91,8 @@ new API documentation to save time, effort, mistakes and repetition.
   the whole document though, and pay close attention to the title and commit
   message formats, noting *present tense*, *length limits* and that it must merge
   cleanly. Remember that the title of the pull request will become the commit
-  message when merged. **Also**, be sure to assign one or more reviewers to the PR, list of
-  reviewers is at the bottom of this document, but the quick version is to add
-  `Review by @heathermiller` or `Review by @dickwall` **in the pull request comments**.
+  message when merged. **Also**, be sure to assign one or more reviewers to the PR, if this is
+  not possible for you, you could mention a user in **in the pull request comments**.
 
 ### Extra Requirements for Scaladoc Documentation Commits
 
@@ -106,9 +103,9 @@ PR is merged in smoothly:
 * Any and all code examples provided should *be correct, compile and run* as
   expected (ensure this in the REPL or your IDE).
 * Spelling must be checked for all written language *and* code examples where
-  possible. Most editors have some spell checking feature available. Obviously
-  Scala code is likely to flag as mis-spelled sometimes, but any written language
-  should be checked. If you can also use a grammar checker, even better. We
+  possible. Most editors have some spell checking feature available. Scala code
+  itself is permitted to not pass a spell-checker, however any written language
+  should be checked. If you can also use a grammar checker, it will help. We
   *will* ask for spelling and grammar to be corrected before acceptance.
 * You **must** also run `sbt doc`, fix any problems and check the formatting and
   layout of your changes. Again, corrections will be required if formatting or

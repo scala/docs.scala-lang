@@ -1,5 +1,5 @@
 ---
-title: Scala hacker guide
+title: Scala 2 Hacker's Guide
 by: Eugene Burmako
 num: 12
 ---
@@ -18,26 +18,27 @@ Though, there's an annoying issue
 which you occasionally stumble upon: the formatting string interpolator `f` [does not support](https://github.com/scala/bug/issues/6725)
 new line tokens `%n`.
 
-One approach would be to go the mailing list, request that the bug be fixed, and then to wait indefinitely for the fix arrive. Another approach would be to instead patch Scala oneself, and to submit the fix to the Scala repository in hopes that it might make it into a subsequent release.
+One approach would be to go the [Scala 2 bug tracker](https://github.com/scala/bug), request that the bug be fixed, and then to wait indefinitely for the fix arrive. Another approach would be to instead patch Scala yourself, and to submit the fix to the Scala repository in hopes that it might make it into a subsequent release.
 
 **_Of note_**: There are several types of releases/builds. Nightly builds are produced every night at a fixed time. Minor releases happen once every few months. Major releases typically happen once per year.
 
 ## 1. Connect
 
-Sometimes it's appealing to hack alone and not to have to interact with others out of fear, or out of comfort. However, in the context a big project such as Scala,
-this might not be the very best idea. There are people in the Scala community who have spent years accumulating knowledge about Scala libraries and internals. They might provide
+Sometimes it's appealing to hack alone and not to have to interact with others. However, in the context a big project such as Scala, there might be better ways. There are people in the Scala community who have spent years accumulating knowledge about Scala libraries and internals. They might provide
 unique insights and, what's even better, direct assistance in their areas, so it is not only advantageous, but recommended to communicate with the community about your new patch.
 
-Typically bug fixes and new features start out as an idea or an experiment posted on one of [our mailing lists](https://scala-lang.org/community/index.html#forums) to find out how people feel
-about things you want to implement. People proficient in certain areas of Scala usually monitor mailing lists, so you'll often get some help
-by simply posting a message. But the most efficient way to connect is to cc your message to one of the people responsible for maintaining the aspect of Scala which you wish to contribute to.
+Typically bug fixes and new features start out as an idea or an experiment posted on one of [our forums](https://scala-lang.org/community/index.html#forums) to find out how people feel
+about things you want to implement. People proficient in certain areas of Scala usually monitor forums and discussion rooms, so you'll often get some help by posting a message.
+But the most efficient way to connect is to mention in your message one of the people responsible for maintaining the aspect of Scala which you wish to contribute to.
 
 A list of language features/libraries along with their maintainer's full names and GitHub usernames is [in the Scala repo README](https://github.com/scala/scala#get-in-touch).
 
 In our running example, since Martin is the person who submitted the string interpolation Scala Improvement Proposal and implemented this language feature for Scala 2.10.0, he might be interested in learning of new bugfixes to that feature.
 
-As alluded to earlier, one must also choose an appropriate mailing list. Typically, one would use the [Scala Contributors](https://contributors.scala-lang.org/) mailing list, as it is devoted to discussions about the core internal design and implementation of the Scala system. However, since this issue has been discussed previously on the scala-user mailing list,
-in this example, we post to the [the scala-user mailing list](https://groups.google.com/group/scala-user) about our issue.
+As alluded to earlier, one must also choose an appropriate avenue to discuss the issue. Typically, one would use the [Scala Contributor's Forum][contrib-forum], as there are post categories devoted to discussions about the core internal design and implementation of the Scala system.
+
+In this example, the issue was previously discussed on the (now unused) scala-user mailing list, at the time,
+we would have posted to the [the (now unused) scala-user mailing list](https://groups.google.com/group/scala-user) about our issue:
 
 <img src="{{ site.baseurl }}/resources/img/01-post.png" alt="Posting to scala-user" class="centerclear" />
 <img src="{{ site.baseurl }}/resources/img/02-post.png" alt="Response from Martin" class="centerclear" />
@@ -86,10 +87,11 @@ Before you start making changes, always create your own branch. Never work on th
 the changes you plan on making. Use a prefix that describes the nature of your change. There are essentially two kinds of changes:
 bug fixes and new features.
 
-* For bug fixes, use `issue/NNNN` or `ticket/NNNN` for bug NNNN from the [Scala bug tracker](https://github.com/scala/bug).
-* For new feature use `topic/XXX` for feature XXX. Use feature names that make sense in the context of the whole Scala project and not just to you personally. For example, if you work on diagrams in Scaladoc, use `topic/scaladoc-diagrams` instead of just `topic/diagrams` would be a good branch name.
+* For bug fixes, use `issue/NNNN` or `ticket/NNNN` for bug `NNNN` from the [Scala bug tracker](https://github.com/scala/bug).
+* For new feature use `topic/XXX` for feature `XXX`. Use feature names that make sense in the context of the whole Scala project and not just to you personally. For example, if you work on diagrams in Scaladoc, use `topic/scaladoc-diagrams` instead of just `topic/diagrams` would be a good branch name.
 
-Since in our example, we're going to fix an existing bug [6725](https://github.com/scala/bug/issues/6725), we'll create a branch named `ticket/6725`.
+Since in our example, we're going to fix an existing bug
+[scala/bug#6725](https://github.com/scala/bug/issues/6725), we'll create a branch named `ticket/6725`.
 
     16:39 ~/Projects/scala (master)$ git checkout -b ticket/6725
     Switched to a new branch 'ticket/6725'
@@ -102,13 +104,13 @@ The next step after cloning your fork is setting up your machine to build Scala.
 
 You need the following tools:
 
-* A Java SDK. The baseline version is 6 for 2.11.x and 8 for 2.12.x. It's possible to use a later SDK for local development, but the continuous integration builds will verify against the baseline version.
+* A Java JDK. The baseline version is `8` for 2.13.x and higher. It's possible to use a higher JDK version for local development, but the continuous integration builds will verify against the baseline version.
 * `sbt`, an interactive build tool commonly used in Scala projects. Acquiring sbt manually is not necessary -- the recommended approach is to download the [sbt-extras runner script](https://github.com/paulp/sbt-extras/blob/master/sbt) and use it in place of `sbt`. The script will download and run the correct version of sbt when run from the Scala repository's root directory.
 * `curl` -- the build uses `curl` in the `pull-binary-libs.sh` script to download bootstrap libs.
 
-OS X and Linux builds should work. Windows is supported, but it might have issues. Please report to the [Scala bug tracker](https://github.com/scala/bug) if you encounter any.
+macOS and Linux builds should work. Windows is supported, but it might have issues. Please report to the [Scala 2 bug tracker](https://github.com/scala/bug) if you encounter any.
 
-Building Scala is as easy as running `sbt dist/mkPack` in the root of your cloned repository. In general, it's much more efficient to enter the `sbt` shell once and run the various tasks from there, instead of running each task by launching `sbt some-task` on your command prompt.
+Building Scala can be done with a single command `sbt dist/mkPack`, from the root of your cloned repository. In general, it's much more efficient to enter the `sbt` shell once and run the various tasks from there, instead of running each task by launching `sbt some-task` on your command prompt.
 
 Be prepared to wait for a while -- a full "clean" build takes 5+ minutes depending on your machine (longer on older machines with less memory). On a recent laptop, incremental builds usually complete within 10-30 seconds.
 
@@ -116,16 +118,13 @@ Be prepared to wait for a while -- a full "clean" build takes 5+ minutes dependi
 
 There's no single editor of choice for working with Scala sources, as there are trade-offs associated with each available tool.
 
-Both Eclipse and IntelliJ IDEA have Scala plugins, which are known to work with our codebase.
-Both of those Scala plugins provide navigation, refactoring, error reporting functionality, and integrated debugging.
-See [the Scala README](https://github.com/scala/scala#ide-setup) for instructions on using Eclipse and IntelliJ IDEA with the Scala repository.
+IntelliJ IDEA has a Scala plugin, which is known to work with our codebase. Alternatively you can use Visual Studio Code with the [Metals IDE extension](https://marketplace.visualstudio.com/items?itemName=scalameta.metals).
+Both of these Scala IDE solutions provide navigation, refactoring, error reporting functionality, and integrated debugging.
+See [the Scala README](https://github.com/scala/scala#ide-setup) for instructions on using either IntelliJ IDEA or Metals with the Scala repository.
 
-There also exist lighter-weight editors such as Emacs, Sublime or jEdit which are faster and much less memory/compute-intensive to run, while
-lacking semantic services and debugging. To address this shortcoming, they can integrate with ENSIME,
-a helper program, which hosts a resident Scala compiler providing some of the features implemented in traditional IDEs. However despite
-having significantly matured over the last year, support for our particular code base is still being improved, and is not as mature as for Eclipse and IntelliJ.
+Other alternative editors exist, such as Atom, Emacs, Sublime Text or jEdit. These are faster and much less memory/compute-intensive to run, but lack semantic services and debugging.
 
-Due to the immense variability in personal preference between IDE/editor experience, it's difficult to recommend a particular tool, and your choice should boil down to your personal preferences.
+We recognise that there exist preferences towards specific IDE/editor experiences, so ultimately we recommend that  your choice be your personal preference.
 
 ## 3. Hack
 
@@ -156,7 +155,7 @@ Now, implement your bugfix or new feature!
 Here are also some tips & tricks that have proven useful in Scala development:
 
 * After building your working copy with the `compile` sbt task, there's no need to leave the comfort of your sbt shell to try it out: the REPL is available as the `scala` task, and you can also run the compiler using the `scalac` task. If you prefer to run the REPL outside sbt, you can generate the scripts in `build/quick/bin` using the `dist/mkQuick` task.
-* The sbt workflow is also great for debugging, as you can simply create a remote debugging session in your favorite IDE, and then activate the JVM options for the next time you run the `scala` or `scalac` tasks using:
+* The sbt workflow is also great for debugging, as you can create a remote debugging session in your favorite IDE, and then activate the JVM options for the next time you run the `scala` or `scalac` tasks using:
 
 ```
 > set javaOptions in compiler := List("-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8002")
@@ -167,9 +166,8 @@ Listening for transport dt_socket at address: 8002
 
 * Also see [the Scala README](https://github.com/scala/scala#incremental-compilation) for tips on speeding up compile times.
 * If after introducing changes or updating your clone, you get `AbstractMethodError` or other linkage exceptions, try the `clean` task and building again.
-* Don't underestimate the power of `print`. When starting with Scala, I spent a lot of time in the debugger trying to figure out how
-  things work. However later I found out that print-based debugging is often more effective than jumping around. While it might be obvious
-  to some, I'd like to explicitly mention that it's also useful to print stack traces to understand the flow of execution. When working with `Trees`, you might want to use `showRaw` to get the `AST` representation.
+* Don't underestimate the power of using `println` to print debug information. When starting with Scala, I spent a lot of time in the debugger trying to figure out how
+  things work. However later I found out that print-based debugging is often more effective than jumping around. It's also useful to print stack traces to understand the flow of execution, for example what code executed before some action occurred. When working with `Trees`, you might want to use `showRaw` to get the `AST` representation.
 * You can publish your newly-built scala version locally using the `publishLocal` task in sbt.
 * It's convenient to enable the following local settings to speed up your workflow (put these in `local.sbt` in your working copy):
 
@@ -184,33 +182,33 @@ testOptions in IntegrationTest in LocalProject("test") ++= Seq(Tests.Argument("-
 // antStyle := true
 ```
 
-* Adding a macro to the `Predef` object is a pretty involved task. Due to bootstrapping, you cannot just throw a macro into it. For this reason, the process is more involved. You might want to follow the way `StringContext.f` itself is added. In short, you need to define your macro under `src/compiler/scala/tools/reflect/` and provide no implementation in `Predef` (`def fn = macro ???`). Now you have to set up the wiring. Add the name of your macro to `src/reflect/scala/reflect/internal/StdNames.scala`, add the needed links to it to `src/reflect/scala/reflect/internal/Definitions.scala`, and finally specify the bindings in `src/compiler/scala/tools/reflect/FastTrack.scala`. [Here's](https://github.com/folone/scala/commit/59536ea833ca16c985339727baed5d70e577b0fe) an example of adding a macro.
+* Adding a macro to the `Predef` object is a pretty involved task. Due to bootstrapping, it makes it more complex to add a macro. For this reason, the process is more involved. It could be useful to replicate the way `StringContext.f` itself is added. In short, you need to define your macro under `src/compiler/scala/tools/reflect/` and provide no implementation in `Predef` (it will look like `def fn = macro ???`). Now you have to set up the wiring. Add the name of your macro to `src/reflect/scala/reflect/internal/StdNames.scala`, add the needed links to it to `src/reflect/scala/reflect/internal/Definitions.scala`, and finally specify the bindings in `src/compiler/scala/tools/reflect/FastTrack.scala`. [Here's](https://github.com/folone/scala/commit/59536ea833ca16c985339727baed5d70e577b0fe) an example of adding a macro.
 
-### Documentation
+### Where to Find Documentation
 
-There are several areas that one could contribute to -- there is the Scala library, the Scala compiler, and other tools such as Scaladoc. Each area has varying amounts of documentation.
+The separate projects under Scala have varying amounts of documentation:
 
 ##### The Scala Library
 
-Contributing to the Scala standard library is about the same as working on one of your own libraries. Beyond the Scala collections hierarchy, there are no complex internals or architectures to have to worry about. Just make sure that you code in a "don't-repeat-yourself" (DRY) style, obeying the "boy scout principle" (i.e. make sure you've left the code cleaner than you found it).
+Contributing to the Scala standard library is about the same as working on one of your own libraries.
 
 If documentation is necessary for some trait/class/object/method/etc in the Scala standard library, typically maintainers will include inline comments describing their design decisions or rationale for implementing things the way they have, if it is not straightforward.
 
-If you intend on contributing to Scala collections, please make sure you're familiar with the design of the Scala collections library. It can be easy to put an implementation in the wrong location if you are unfamiliar with the collections architecture. There is an excellent and very detailed guide covering [the Architecture of Scala Collections][collections-arch], as well as a larger more general [Scala collections Guide][collections-intro] covering the sequential portion of collections. For parallel collections, there also exists a detailed [Scala Parallel Collections Guide][collections-par].
+The Scala collections framework, part of the Scala standard library, is more complex. You should become familiar
+with its architecture, which is documented in [the Architecture of Scala Collections][collections-arch].
+The [Scala Collections Guide][collections-intro] is more general, covering the synchronous portion of collections. For parallel collections, there also exists a detailed [Scala Parallel Collections Guide][collections-par].
 
 ##### The Scala Compiler
 
-Documentation about the internal workings of the Scala compiler is scarce, and most of the knowledge is passed around by email ([Scala Contributors](https://contributors.scala-lang.org/) mailing list), ticket, or word of mouth. However the situation is steadily improving. Here are the resources that might help:
+Documentation about the internal workings of the Scala compiler is scarce, and most of the knowledge is passed around by forum ([Scala Contributors](https://contributors.scala-lang.org/) forum), chat-rooms (see `#scala-contributors` on [Discord][discord-contrib]), ticket, or word of mouth. However the situation is steadily improving. Here are the resources that might help:
 
 * [Compiler internals videos by Martin Odersky](https://www.scala-lang.org/old/node/598.html) are quite dated, but still very useful. In this three-video
-  series Martin explains the general architecture of the compiler, and the basics of the front-end, which has recently become Scala reflection API.
+  series Martin explains the general architecture of the compiler, and the basics of the front-end, which later became the `scala-reflect` module's API.
 * [Reflection documentation][reflect-overview] describes fundamental data structures (like `Tree`s, `Symbol`s, and `Types`) that
-  are used to represent Scala programs and operations defined on then. Since much of the compiler has been factored out and made accessible via the Reflection API, all of the fundamentals needed for reflection are the same for the compiler.
-* [Reflection and Compilers by Martin Odersky](https://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2012/Reflection-and-Compilers), a talk
-  at Lang.NEXT 2012 in which Martin elaborates on the design of scalac and the architecture of the reflection API.
+  are used to represent Scala programs and operations defined on then. Since much of the compiler has been factored out and made accessible via the `scala-reflect` module, all of the fundamentals needed for reflection are the same for the compiler.
 * [Scala compiler corner](https://lampwww.epfl.ch/~magarcia/ScalaCompilerCornerReloaded/) contains extensive documentation about
   most of the post-typer phases (i.e. the backend) in the Scala compiler.
-* [Scala Contributors](https://contributors.scala-lang.org/), a mailing list which hosts discussions about the core
+* [Scala Contributors](https://contributors.scala-lang.org/), a forum which hosts discussions about the core
   internal design and implementation of the Scala system.
 
 ##### Other Projects
@@ -303,7 +301,7 @@ Here are some more testing tips:
          ...
          Finished: FAILURE
 
-This means your change is backward or forward binary incompatible with the specified version (the check is performed by the [migration manager](https://github.com/typesafehub/migration-manager)). The error message is actually saying what you need to add to `bincompat-backward.whitelist.conf` or `bincompat-forward.whitelist.conf` to make the error go away. If you are getting this on an internal/experimental api, it should be safe to add suggested sections to the config. Otherwise, you might want to target a newer version of scala for this change.
+This means your change is backward or forward binary incompatible with the specified version (the check is performed by the [migration manager](https://github.com/typesafehub/migration-manager)). The error message is actually saying what you need to modify `project/MimaFilters.scala` to make the error go away. If you are getting this on an internal/experimental api, it should be safe to add suggested sections to the config. Otherwise, you might want to target a newer version of scala for this change.
 
 ### Verify
 
@@ -380,7 +378,10 @@ Note that there can be a gap between a successful review and the merge, because 
 So don't be confused if your reviewer says “LGTM”, but your code doesn't get merged immediately.
 
 [collections-arch]: {% link _overviews/core/architecture-of-scala-collections.md %}
-[collections-intro]: {% link _overviews/collections/introduction.md %}
+[collections-intro]: {% link _overviews/collections-2.13/introduction.md %}
 [collections-par]: {% link _overviews/parallel-collections/overview.md %}
 [reflect-overview]: {% link _overviews/reflection/overview.md %}
 [partest-guide]: {% link _overviews/contribute/partest-guide.md %}
+[documentation]: {% link _overviews/contribute/documentation.md %}
+[contrib-forum]: https://contributors.scala-lang.org/
+[discord-contrib]: https://discord.com/invite/scala

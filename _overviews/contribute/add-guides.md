@@ -6,7 +6,7 @@ num: 7
 ## Why Contribute New Learning Material?
 
 As [Heather Miller writes][why-contribute], contributing to [docs.scala-lang.org][home] is
-critical to making Scala accessible to newcomers, experience programmers, and anyone who is curious.
+critical to making Scala accessible to newcomers, experienced programmers, and anyone who is curious.
 It is also a fantastic way to contribute for anyone who is comfortable using Scala, but maybe does not want to get
 involved with complex tools like the compiler.
 
@@ -45,7 +45,7 @@ To use this feature you must use the backtick notation as documented by mdoc,
 
 ## Submitting Docs
 
-For you to contribute a document, first
+To contribute a new document, you should first
 [fork](https://help.github.com/articles/fork-a-repo/) the
 [repo](https://github.com/scala/docs.scala-lang), then write your article in
 [Markdown](https://daringfireball.net/projects/markdown/syntax) (example below), and finally submit a pull request.
@@ -87,7 +87,7 @@ is provided.
 The goal of this documentation repository is to be highly curated, rather than the approach by other community-driven
 documentation platforms, like wikis. Therefore, to be included on [docs.scala-lang.org][home], a document must:
 
-- **"fit in"** to the repository ( _i.e.,_ it should not be a complete duplicate of another article),
+- **"fit in"** to the repository (_i.e.,_ it should not be a complete duplicate of another article),
 - **be polished**, i.e. it must be thorough, complete, correct, and organized; written as an article to be understood
   by many users.
 - **be maintained**, if the document might require revisions from time to time, be prepared to keep it up to date, or
@@ -99,8 +99,6 @@ If you have something you're thinking about contributing, or that you're thinkin
 clarifications, etc.
 
 ## Document Templates
-
-> **Note:** These templates will soon change slightly as a result of necessary refactoring.
 
 ### Guides/Overviews
 
@@ -215,16 +213,14 @@ snippet and ensures that it's valid.
         <pre class="highlight">
             <code class="hljs scala">&#96;&#96;&#96;scala mdoc
 <span class="hljs-keyword">val</span> a = <span class="hljs-number">1</span>
-&#96;&#96;&#96;
-</code></pre></div></div>
+```</code></pre></div></div>
 
 If you have a snippet that you expect to fail, you can also account for this by
 using `mdoc:fail` for a compile error `mdoc:crash` for a runtime-error.
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs scala">&#96;&#96;&#96;scala mdoc:fail
 <span class="hljs-keyword">val</span> b: <span class="hljs-type">String</span> = <span class="hljs-number">3</span> <span class="hljs-comment">// won't compile</span>
-```
-</code></pre></div></div>
+```</code></pre></div></div>
 
 Keep in mind that a single file is all compiled as a single unit, so you can't
 redefine a variable that was defined above in another code snippet. _However_
@@ -239,28 +235,23 @@ above. Here is an example using the various modifiers.
 
 <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">now</span></span>() = <span class="hljs-type">Instant</span>.now()
 <span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">Foo</span> </span>{}
-```
-</code></pre></div></div>
+```</code></pre></div></div>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs scala">&#96;&#96;&#96;scala mdoc:nest
 <span class="hljs-keyword">case</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span>(<span class="hljs-params">a: <span class="hljs-type">Int</span></span>) <span class="hljs-comment">// conflicts with Foo above, but it's nested so it's fine</span></span>
-```
-</code></pre></div></div>
+```</code></pre></div></div>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs scala">&#96;&#96;&#96;scala mdoc
 <span class="hljs-keyword">val</span> a = <span class="hljs-string">s"The time is <span class="hljs-subst">${now()}</span>"</span> <span class="hljs-comment">// still have access to the now method from above</span>
-```
-</code></pre></div></div>
+```</code></pre></div></div>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs scala">&#96;&#96;&#96;scala mdoc:reset
 <span class="hljs-keyword">case</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span>(<span class="hljs-params">a: <span class="hljs-type">String</span></span>) <span class="hljs-comment">// forget the previous Foo's and start fresh</span></span>
-```
-</code></pre></div></div>
+```</code></pre></div></div>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs scala">&#96;&#96;&#96;scala mdoc
 <span class="hljs-keyword">val</span> myFoo = <span class="hljs-type">Foo</span>(<span class="hljs-string">"hi"</span>) <span class="hljs-comment">// now we only have access to the last Foo</span>
-```
-</code></pre></div></div>
+```</code></pre></div></div>
 
 [collections-overview]: {% link _overviews/collections-2.13/introduction.md %}
 [why-contribute]: {% link contribute.md %}

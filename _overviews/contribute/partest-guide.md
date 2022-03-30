@@ -9,21 +9,27 @@ Partest is a custom parallel testing tool that we use to run the test suite for 
 
 The test suite can be run from the sbt console with:
 
-	> partest
+```
+sbt:root> partest
+```
 
 You can get a summary of the usage by running `partest --help`.
 
 If you would like to run particular tests pass the test paths as arguments
 
-        > partest test/files/pos/bounds.scala test/scaladoc/run/diagrams-base.scala
+```
+sbt:root> partest test/files/pos/bounds.scala test/scaladoc/run/diagrams-base.scala
+```
 
 To run only the Scaladoc tests use `--srcpath` with the location of the tests
 
-        > partest --srcpath scaladoc
+```
+sbt:root> partest --srcpath scaladoc
+```
 
 ## Using ant
 
-Please note support for ant was removed on the 2.12 branch.
+> Please note support for ant was removed on the 2.12 branch.
 
 The test suite can be run by using ant from the command line:
 

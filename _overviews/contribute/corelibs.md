@@ -14,7 +14,7 @@ There are several options for contributing to Scala's core libraries. You can:
 ### Significant changes
 
 For significant new functionality or a whole new API to be considered for inclusion in the core Scala distribution,
-please take into account [https://github.com/scala/scala-dev/issues/661] before doing so.
+please take into account [scala/scala-dev#661](https://github.com/scala/scala-dev/issues/661) before doing so.
 
 [documentation]: {% link _overviews/contribute/documentation.md %}
 [bug-reporting-guide]: {% link _overviews/contribute/bug-reporting-guide.md %}

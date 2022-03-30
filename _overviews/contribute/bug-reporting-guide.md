@@ -3,7 +3,8 @@ title: Bug Reporting Guide
 num: 8
 ---
 
-The Scala compiler and standard library bug tracker is located at [https://github.com/scala/bug](https://github.com/scala/bug), and for Scala 3, it is located at [github.com/lampepfl/dotty](https://github.com/lampepfl/dotty/issues). Before you submit a bug make sure that it is certainly a bug by following instructions in *Is it a Bug?*.
+The Scala compiler and standard library bug tracker is located at [https://github.com/scala/bug](https://github.com/scala/bug), and for Scala 3, it is located at [github.com/lampepfl/dotty](https://github.com/lampepfl/dotty/issues). Before you submit a bug make sure that it is certainly a bug by following instructions
+in [Is it a Bug?](#is-it-a-bug).
 
 ## Is it a Bug?
 
@@ -11,7 +12,7 @@ The first step in identifying a bug is to identify which component of the Scala 
 
  - **Library** bugs typically manifest themselves as run-time exceptions, or as *unexpected*/*unintuitive* behavior of Scala Standard Library methods.
  - **Compiler** errors are manifested as compile time exceptions, unexpected behavior of your code at run time, or invalid behavior of the type system.
- - **Reflection** are bugs that appear in the ‘scala.reflect’ package. For the *reflection* bugs , the same rules apply as for the *library* bugs.
+ - **Reflection** are bugs that appear in the `scala.reflect` package. For the *reflection* bugs, the same rules apply as for the *library* bugs.
  - **Scaladoc** bugs are manifested as a logical problems in the information it presents (that is, the displayed information is incorrect, such as an incorrect subclassing relationship), or incorrect behavior of the user interface. If you'd like to suggest a change in the content of the documentation, please submit a pull request (possible to do in the browser using GitHub, which is easier and faster than filing a bug). Please file a bug about the content of documentation only if you cannot provide a suggestion for its fix.
 
 If your issue is related to any of the following external projects, make sure to use its appropriate issue tracker:
@@ -31,13 +32,13 @@ If you have a code snippet that is resulting in bytecode which you believe is be
 
 * Make sure you minimize your problem. To correctly minimize the problem follow the following instructions:
 
-   1. Gradually take apart the offensive code snippet until you believe you have the simplest representation of your problem.
+   1. Gradually remove parts from the original failing code snippet until you believe you have the simplest representation of your problem.
 
-   2. Ensure that you have decoupled your code snippet from any library that could be introducing the offensive behavior. One way to achieve this is to try to recompile the offensive code snippet in isolation, outside of the context of any complex build environment. If your code depends on some strictly Java library and source code is available for it, make sure that the latter is also minimized.
+   2. Ensure that you have decoupled your code snippet from any library that could be introducing the incorrect behavior. One way to achieve this is to try to recompile the offending code snippet in isolation, outside of the context of any complex build environment. If your code depends on some strictly Java library and source code is available for it, make sure that the latter is also minimized.
 
    3. Make sure you are compiling your project from a clean slate. Your problem could be related to separate compilation, which is difficult to detect without a clean build with new `.class` files.
 
-   4. If you have encountered a bug while building your code in the IDE, then please reproduce it on the command line. The same rule applies for build tools like `sbt` or `ant`.
+   4. If you have encountered a bug while building your code in the IDE, then please reproduce it on the command line. The same rule applies for build tools like **sbt** or **Mill**.
 
    5. If you want to file an improvement in the issue tracker please discuss it first on one of the mailing lists. They offer much bigger audience than issue tracker. The latter is not suitable for long discussions.
 
@@ -69,7 +70,7 @@ Please make sure to fill in as many fields as possible. Make sure you've indicat
  3. **Labels** related to your issue. For example, if you think your issue is related to the typechecker, and if you have successfully minimized your issue, label your bug as "typechecker" and "minimized". Issue tracker will suggest names for existing labels as you type them so try not to create duplicates.
  4. **Running environment**. Are you running on Linux? Windows? What JVM version are you using?
 
-In order for us to quickly triage the bug that you've found, it's important that the code snippet which produces the observed issue is as minimized as possible. For advice on minimizing your code snippet, please see the appropriate subsection of the above (Is it a Bug?).
+In order for us to quickly triage the bug that you've found, it's important that the code snippet which produces the observed issue is as minimized as possible. For advice on minimizing your code snippet, please see the appropriate subsection of the above ([Is it a Bug?](#is-it-a-bug)).
 
 ### Description
 
