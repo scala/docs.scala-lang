@@ -1,10 +1,12 @@
-- title: Documentation
+- title: Learn
   url: "/"
-- title: Download
+- title: Install
   url: https://www.scala-lang.org/download/
+- title: Playground
+  url: https://scastie.scala-lang.org
+- title: Find A Library
+  url: https://index.scala-lang.org
 - title: Community
   url: https://www.scala-lang.org/community/
-- title: Libraries
-  url: https://index.scala-lang.org
 - title: Blog
   url: https://www.scala-lang.org/blog/
