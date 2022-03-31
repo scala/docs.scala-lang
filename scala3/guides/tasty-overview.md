@@ -52,6 +52,13 @@ $ scalac | Hello.scala | -> | Hello.tasty | -> | Hello.class |
                              information)
 ```
 
+You can view the contents of a _.tasty_ file in a human-readable form by running the compiler on it with the `-print-tasty` flag.
+You can also view the contents decompiled in a form similar to Scala source code using the `-decompile` flag.
+```bash
+$ scalac -print-tasty hello.tasty
+$ scalac -decompile hello.tasty
+```
+
 ### The issue with _.class_ files
 
 Because of issues such as [type erasure][erasure], _.class_ files are actually an incomplete representation of your code.
