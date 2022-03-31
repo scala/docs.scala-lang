@@ -16,33 +16,30 @@ While [upper type bounds](upper-type-bounds.html) limit a type to a subtype of a
 Here is an example where this is useful:
 
 ```scala mdoc:fail
-trait List[+B] {
-  def prepend(elem: B): NonEmptyList[B] = NonEmptyList(elem, this)
+trait List[+A] {
+  def prepend(elem: A): NonEmptyList[A] = NonEmptyList(elem, this)
 }
 
-case class NonEmptyList[+B](head: B, tail: List[B]) extends List[B]
+case class NonEmptyList[+A](head: A, tail: List[A]) extends List[A]
 
 object Nil extends List[Nothing]
 ```
 
-This program implements a singly-linked list. `Nil` represents an empty list with no elements. `class NonEmptyList` is a node which contains an element of type `B` (`head`) and a reference to the rest of the list (`tail`). The `trait List` and its subtypes are covariant because we have `+B`.
+This program implements a singly-linked list. `Nil` represents an empty list with no elements. `class NonEmptyList` is a node which contains an element of type `A` (`head`) and a reference to the rest of the list (`tail`). The `trait List` and its subtypes are covariant because we have `+A`.
 
-However, this program does _not_ compile because the parameter `elem` in `prepend` is of type `B`, which we declared *co*variant. This doesn't work because functions are *contra*variant in their parameter types and *co*variant in their result types.
+However, this program does _not_ compile because the parameter `elem` in `prepend` is of type `A`, which we declared *co*variant. This doesn't work because functions are *contra*variant in their parameter types and *co*variant in their result types.
 
-To fix this, we need to flip the variance of the type of the parameter `elem` in `prepend`. We do this by introducing a new type parameter `U` that has `B` as a lower type bound.
+To fix this, we need to flip the variance of the type of the parameter `elem` in `prepend`. We do this by introducing a new type parameter `B` that has `A` as a lower type bound.
 
 ```scala mdoc
-trait List[+B] {
-  def prepend[U >: B](elem: U): NonEmptyList[U] = NonEmptyList(elem, this)
+trait List[+A] {
+  def prepend[B >: A](elem: B): NonEmptyList[B] = NonEmptyList(elem, this)
 }
 
-case class NonEmptyList[+B](head: B, tail: List[B]) extends List[B]
+case class NonEmptyList[+A](head: A, tail: List[A]) extends List[A]
 
 object Nil extends List[Nothing]
 ```
-
-The type parameter for `List` is `B` to suggest we want to keep lists of birds.
-
 Now we can do the following:
 ```scala mdoc
 trait Bird
@@ -51,21 +48,25 @@ case class EuropeanSwallow() extends Bird
 
 val africanSwallows: List[AfricanSwallow] = Nil.prepend(AfricanSwallow())
 val swallowsFromAntarctica: List[Bird] = Nil
+val someBird: Bird = EuropeanSwallow()
 
 // assign swallows to birds
 val birds: List[Bird] = africanSwallows
 
+// add some bird to swallows, `B` is `Bird`
+val someBirds = africanSwallows.prepend(someBird)
+
 // add a swallow to birds
 val moreBirds = birds.prepend(EuropeanSwallow())
 
-// add disparate swallows together to get birds
+// add disparate swallows together, `B` is `Bird` because that is the supertype common to both swallows
 val allBirds = africanSwallows.prepend(EuropeanSwallow())
 
 // but this is a mistake! adding a list of birds widens the type arg too much. -Xlint will warn!
-val error = moreBirds.prepend(swallowsFromAntarctica)
+val error = moreBirds.prepend(swallowsFromAntarctica)    // List[Object]
 ```
 The covariant type parameter allows `birds` to get the value of `africanSwallows`.
 
 The type bound on the type parameter for `prepend` allows adding different varieties of swallows and getting a wider type: instead of `List[AfricanSwallow]`, we get a `List[Bird]`.
 
-The canary in the coal mine is `-Xlint`, which will warn if the type arg is widened too much.
+Use `-Xlint` to warn if the inferred type arg is widened too much.
