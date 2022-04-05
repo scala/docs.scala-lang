@@ -19,7 +19,7 @@ Each incompatibility is described by:
  - The existence of a Scalafix rule that can fix it
 
 > #### Scala 2.13 deprecations and feature warnings
-> Run the 2.13 compilation with `-source:3` to locate those incompatibilities in the code.
+> Run the 2.13 compilation with `-Xsource:3` to locate those incompatibilities in the code.
 
 > #### Scala 3 migration versus Scalafix rewrites
 > The Scala 3 migration mode comes out-of-the-box.
