@@ -49,7 +49,7 @@ Conversely, the following functions are *impure* because they violate the defini
 
 The `foreach` method on collections classes is impure because it’s only used for its side effects, such as printing to STDOUT.
 
->A great hint that `foreach` is impure is that it’s method signature declares that it returns the type `Unit`. Because it returns nothing, logically the only reason you ever call it is to achieve some side effect. Similarly, *any* method that returns `Unit` is going to be an impure function.
+>A great hint that `foreach` is impure is that its method signature declares that it returns the type `Unit`. Because it returns nothing, logically the only reason you ever call it is to achieve some side effect. Similarly, *any* method that returns `Unit` is going to be an impure function.
 
 Date and time related methods like `getDayOfWeek`, `getHour`, and `getMinute` are all impure because their output depends on something other than their input parameters. Their results rely on some form of hidden I/O, *hidden input* in these examples.
 
