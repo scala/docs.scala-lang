@@ -238,8 +238,8 @@ Value types can be cast in the following way:
 For example:
 
 ```scala
-val x: Long = 987654321
-val y: Float = x.toFloat  // 9.8765434E8 (note implicit conversion is depreciated since 2.13.1 when it would result in percision loss)
+val b: Byte = 127
+val i: Int = b  // 127
 
 val face: Char = '☺'
 val number: Int = face  // 9786
@@ -248,9 +248,9 @@ val number: Int = face  // 9786
 Casting is unidirectional.
 This will not compile:
 
-```
+```scala
 val x: Long = 987654321
-val y: Float = x  // 9.8765434E8
+val y: Float = x.toFloat  // 9.8765434E8 (note implicit conversion is deprecated since 2.13.1, when it would result in percision loss)
 val z: Long = y  // Does not conform
 ```
 
