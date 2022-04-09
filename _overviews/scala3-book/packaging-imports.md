@@ -354,20 +354,19 @@ object MonthConversions:
   trait MonthConverter[A]:
     def convert(a: A): String
 
-  given intMonthConverter as MonthConverter[Int]:
+  given intMonthConverter: MonthConverter[Int] with
     def convert(i: Int): String = 
       i match
         case 1 =>  "January"
         case 2 =>  "February"
         // more cases here ...
 
-  given stringMonthConverter as MonthConverter[String]:
+  given stringMonthConverter: MonthConverter[String] with
     def convert(s: String): String = 
       s match
         case "jan" => "January"
         case "feb" => "February"
         // more cases here ...
-}
 ```
 
 To import those givens into the current scope, use these two `import` statements:
