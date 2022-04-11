@@ -245,13 +245,13 @@ val face: Char = '☺'
 val number: Int = face  // 9786
 ```
 
-Casting is unidirectional.
+You can only cast to a type if there is no loss of information. Otherwise, you need to be explicit about the cast:
 This will not compile:
 
 ```scala
 val x: Long = 987654321
-val y: Float = x.toFloat  // 9.8765434E8 (note implicit conversion is deprecated since 2.13.1, when it would result in percision loss)
-val z: Long = y  // Does not conform
+val y: Float = x.toFloat  // 9.8765434E8 (note that `.toFloat` is required because it results in percision loss)
+val z: Long = y  // Error
 ```
 
 You can also cast a reference type to a subtype.
