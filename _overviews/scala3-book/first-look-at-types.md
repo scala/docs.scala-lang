@@ -249,7 +249,7 @@ You can only cast to a type if there is no loss of information. Otherwise, you n
 
 ```scala
 val x: Long = 987654321
-val y: Float = x.toFloat  // 9.8765434E8 (note that `.toFloat` is required because it results in percision loss)
+val y: Float = x.toFloat  // 9.8765434E8 (note that `.toFloat` is required because the cast results in percision loss)
 val z: Long = y  // Error
 ```
 
