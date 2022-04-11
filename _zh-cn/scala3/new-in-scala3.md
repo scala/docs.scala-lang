@@ -17,7 +17,7 @@ Scala 3 是对 Scala 语言的一次彻底改造。在其核心部分，类型�
 
 ### 新的和闪亮的：语法
 
-除了许多（小的）清理，Scala 3 的语法还提供了以下改进：
+除了许多（小的）清理工作，Scala 3 的语法还提供了以下改进：
 
 - 用于控制结构的新“quiet”语法，如 `if`、`while` 和 `for` 。 ([new control syntax][syntax-control])
 - `new` 关键字是可选的 (_aka_ [creator applications][creator])
@@ -34,9 +34,9 @@ Scala的一个基本核心概念是（在某种程度上仍然是）为用户提
 
 - **Retroactively extending classes**. 在 Scala 2 中，扩展方法必须使用隐式转换或隐式类进行编码。相比之下，在 Scala 3 中，[extension methods][contextual-extension]现在直接内置于语言中，从而产生更好的错误消息和改进的类型推断。
 
-- **Viewing one type as another**. 隐式转换已经被重新[设计][contextual-conversions]为类型类转`Conversion`的实例。
+- **Viewing one type as another**. [隐式转换][contextual-conversions]已经被重新设计为类型类`Conversion`的实例。
 
-- **Higher-order contextual abstractions**. [context functions][contextual-functions]的 _全新_ 功能使上下文抽象成为一流的公民。它们是库作者的一个重要工具，允许表达简洁的特定领域语言。
+- **Higher-order contextual abstractions**. [context functions][contextual-functions]的 _全新_ 功能使上下文抽象成为一流的公民。它们是库开发人员的一个重要工具，允许表达简洁的特定领域语言。
 
 - **Actionable feedback from the compiler**. 如果一个隐式参数不能被编译器解决，它现在提供了可能解决这个问题的[import suggestions](https://www.scala-lang.org/blog/2020/05/05/scala-3-import-suggestions.html)。
 
@@ -74,15 +74,13 @@ Scala 一直处于函数式编程和面向对象编程的前沿 -- 而 Scala 3 �
 ### Batteries Included: 元编程
 Scala 2 中的宏只是一个实验性的功能，而 Scala 3 则为元编程提供了强大的工具库。[宏教程]({% link _overviews/scala3-macros/tutorial/index.md %})中包含了关于不同设施的详细信息。特别是，Scala 3 为元编程提供了以下功能：
 
-作为基本的起点，[inline feature][meta-inline]允许在编译时减少数值和方法。这个简单的功能已经涵盖了许多使用情况，同时也为更高级的功能提供了入口。
-
 - **Inline**. [inline feature][meta-inline]允许在编译时减少数值和方法。这个简单的功能已经涵盖了许多使用情况，同时也为更高级的功能提供了入口。
 - **Compile-time operations**. 包[`scala.compiletime`][meta-compiletime]中包含了额外的功能，可以用来实现内联方法。
 - **Quoted code blocks**. Scala 3为代码增加了[quasi-quotation][meta-quotes]的新功能，这为构建和分析代码提供了方便的高级接口。构建加一加一的代码就像`'{ 1 + 1 }`一样简单。
 - **Reflection API**. 对于更高级的用例，[quotes.reflect][meta-reflection]提供了更详细的控制来检查和生成程序树。
 
 
-如果你想进一步了解 Scala 3 中的元编程，我们邀请你参加我们的[教程][meta-tutorial]。
+如果你想进一步了解 Scala 3 中的元编程，我们邀请你参加[教程][meta-tutorial]。
 
 [enums]: {{ site.scala3ref }}/enums/enums.html
 [enums-adts]: {{ site.scala3ref }}/enums/adts.html
