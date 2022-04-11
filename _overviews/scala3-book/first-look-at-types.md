@@ -238,20 +238,19 @@ Value types can be cast in the following way:
 For example:
 
 ```scala
-val x: Long = 987654321
-val y: Float = x  // 9.8765434E8 (note that some precision is lost in this case)
+val b: Byte = 127
+val i: Int = b  // 127
 
 val face: Char = '☺'
 val number: Int = face  // 9786
 ```
 
-Casting is unidirectional.
-This will not compile:
+You can only cast to a type if there is no loss of information. Otherwise, you need to be explicit about the cast:
 
-```
+```scala
 val x: Long = 987654321
-val y: Float = x  // 9.8765434E8
-val z: Long = y  // Does not conform
+val y: Float = x.toFloat  // 9.8765434E8 (note that `.toFloat` is required because the cast results in percision loss)
+val z: Long = y  // Error
 ```
 
 You can also cast a reference type to a subtype.
