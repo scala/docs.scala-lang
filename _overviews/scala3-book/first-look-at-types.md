@@ -246,7 +246,6 @@ val number: Int = face  // 9786
 ```
 
 You can only cast to a type if there is no loss of information. Otherwise, you need to be explicit about the cast:
-This will not compile:
 
 ```scala
 val x: Long = 987654321
