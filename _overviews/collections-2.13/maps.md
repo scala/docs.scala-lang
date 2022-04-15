@@ -62,7 +62,7 @@ Mutable maps support in addition the operations summarized in the following tabl
 | WHAT IT IS  	  	    | WHAT IT DOES				     |
 | ------       	       	    | ------					     |
 |  **Additions and Updates:**|						     |
-|  `ms(k) = v`              |(Or, written out, `ms.update(x, v)`). Adds mapping from key `k` to value `v` to map ms as a side effect, overwriting any previous mapping of `k`.|
+|  `ms(k) = v`              |(Or, written out, `ms.update(k, v)`). Adds mapping from key `k` to value `v` to map ms as a side effect, overwriting any previous mapping of `k`.|
 |  `ms.addOne(k -> v)`<br>or `ms += (k -> v)`         |Adds mapping from key `k` to value `v` to map `ms` as a side effect and returns `ms` itself.|
 |  `ms addAll xvs`<br>or `ms ++= kvs`             |Adds all mappings in `kvs` to `ms` as a side effect and returns `ms` itself.|
 |  `ms.put(k, v)`           |Adds mapping from key `k` to value `v` to `ms` and returns any value previously associated with `k` as an option.|
