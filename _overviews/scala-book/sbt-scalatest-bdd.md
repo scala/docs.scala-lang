@@ -70,7 +70,7 @@ class MathUtilsSpec extends FunSpec {
 
 As you can see, this is a very different-looking style than the TDD tests in the previous lesson. If you’ve never used a BDD style of testing before, a main idea is that the tests should be relatively easy to read for one of the “domain experts” who work with the programmers to create the application. A few notes about this code:
 
-- It uses the `FunSpec` class where the TDD tests used `FunSuite`
+- It uses the `AnyFunSpec` class where the TDD tests used `AnyFunSuite`
 - A set of tests begins with `describe`
 - Each test begins with `it`. The idea is that the test should read like, “It should do XYZ...,” where “it” is the `double` function
 - This example also shows how to mark a test as “pending”
@@ -96,7 +96,7 @@ With those files in place you can again run `sbt test`. The important part of th
 [info] Suites: completed 2, aborted 0
 [info] Tests: succeeded 4, failed 0, canceled 0, ignored 0, pending 1
 [info] All tests passed.
-[success] Total time: 4 s, completed Jan 6, 2018 4:58:23 PM
+[success] Total time: 4 s
 ````
 
 A few notes about that output:
