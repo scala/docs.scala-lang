@@ -20,15 +20,15 @@ This assumes you know [how to build a project in IntelliJ](building-a-scala-proj
 1. Add the ScalaTest dependency:
     1. Add the ScalaTest dependency to your `build.sbt` file:
         ```
-        libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.8" % Test
+        libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.11" % Test
         ```
     1. If you get a notification "build.sbt was changed", select **auto-import**.
     1. These two actions will cause `sbt` to download the ScalaTest library.
-    1. Wait for the `sbt` sync to finish; otherwise, `FunSuite` and `test()` will be
+    1. Wait for the `sbt` sync to finish; otherwise, `AnyFunSuite` and `test()` will be
         unrecognized.
 1. On the project pane on the left, expand `src` => `main`.
 1. Right-click on `scala` and select **New** => **Scala class**.
-1. Call it `CubeCalculator`, change the **Kind** to `object`, and click **OK**.
+1. Call it `CubeCalculator`, change the **Kind** to `object`, and hit enter or double click on `object`.
 1. Replace the code with the following:
     ```
     object CubeCalculator extends App {
@@ -41,12 +41,12 @@ This assumes you know [how to build a project in IntelliJ](building-a-scala-proj
 ## Creating a test
 1. On the project pane on the left, expand `src` => `test`.
 1. Right-click on `scala` and select **New** => **Scala class**.
-1. Name the class `CubeCalculatorTest` and click **OK**.
+1. Name the class `CubeCalculatorTest` and hit enter or double click on `class`.
 1. Replace the code with the following:
     ```
-    import org.scalatest.FunSuite
+    import org.scalatest.funsuite.AnyFunSuite
     
-    class CubeCalculatorTest extends FunSuite {
+    class CubeCalculatorTest extends AnyFunSuite {
       test("CubeCalculator.cube") {
         assert(CubeCalculator.cube(3) === 27)
       }
@@ -60,9 +60,9 @@ This assumes you know [how to build a project in IntelliJ](building-a-scala-proj
 Let's go over this line by line:
 
 * `class CubeCalculatorTest` means we are testing the object `CubeCalculator`
-* `extends FunSuite` lets us use functionality of ScalaTest's FunSuite class
+* `extends AnyFunSuite` lets us use functionality of ScalaTest's AnyFunSuite class
 such as the `test` function
-* `test` is function that comes from the FunSuite library that collects
+* `test` is a function that comes from the FunSuite library that collects
 results from assertions within the function body.
 * `"CubeCalculator.cube"` is a name for the test. You can call it anything but
 one convention is "ClassName.methodName".
