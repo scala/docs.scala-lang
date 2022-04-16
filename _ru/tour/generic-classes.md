@@ -1,17 +1,12 @@
 ---
 layout: tour
 title: Обобщенные Классы
-
-discourse: true
-
 partof: scala-tour
-
 num: 18
 language: ru
 next-page: variances
 previous-page: for-comprehensions
 assumed-knowledge: classes unified-types
-
 ---
 Обобщенные классы (Generic classes) - это классы, обладающие параметрическим полиморфизмом (т. е. классы, которые изменяют свое поведение в зависимости от приписываемого им типа. Этот тип указывается в квадратных скобках `[]` сразу после имени класса). Они особенно полезны для создания коллекций.
 

@@ -5,7 +5,6 @@ title: The List Class
 description: This page provides examples of the Scala List class, including how to add and remove elements from a List.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 30
 outof: 54
 previous-page: arraybuffer-examples

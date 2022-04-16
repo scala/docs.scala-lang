@@ -5,7 +5,6 @@ title: The Type is Optional
 description: A note about explicit and implicit data type declarations in Scala.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 9
 outof: 54
 previous-page: two-types-variables

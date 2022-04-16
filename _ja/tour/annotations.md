@@ -2,15 +2,10 @@
 layout: tour
 title: アノテーション
 language: ja
-
-discourse: true
-
 partof: scala-tour
-
 num: 32
 next-page: packages-and-imports
 previous-page: by-name-parameters
-
 ---
 
 アノテーションはメタ情報と定義を関連づけます。例えば、メソッドの前のアノテーション`@deprecated`はメソッドが使われたらコンパイラに警告を出力させます。

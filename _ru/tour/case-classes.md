@@ -1,17 +1,12 @@
 ---
 layout: tour
 title: Классы Образцы
-
-discourse: true
-
 partof: scala-tour
-
 num: 11
 language: ru
 next-page: pattern-matching
 previous-page: multiple-parameter-lists
 prerequisite-knowledge: classes, basics, mutability
-
 ---
 
 Классы образцы (Case classes) похожи на обычные классы с несколькими ключевыми отличиями, о которых мы поговорим ниже. Классы образцы хороши для моделирования неизменяемых данных. На следующей странице обзора вы увидите, насколько они полезны для участия в [сопоставлении с примером](pattern-matching.html).

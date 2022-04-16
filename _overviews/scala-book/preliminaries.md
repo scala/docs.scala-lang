@@ -5,7 +5,6 @@ title: Preliminaries
 description: A few things to know about getting started with Scala.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 3
 outof: 54
 previous-page: prelude-taste-of-scala

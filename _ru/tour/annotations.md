@@ -1,16 +1,11 @@
 ---
 layout: tour
 title: Аннотации
-
-discourse: true
-
 partof: scala-tour
-
 num: 32
 language: ru
 next-page: packages-and-imports
 previous-page: by-name-parameters
-
 ---
 
 Аннотации используются для передачи метаданных при объявлении. Например, аннотация `@deprecated` перед объявлением метода, заставит компилятор вывести предупреждение, если этот метод будет использован.

@@ -1,9 +1,6 @@
 ---
 layout: tour
 title: Члены Абстрактного Типа
-
-discourse: true
-
 partof: scala-tour
 num: 23
 language: ru
@@ -11,7 +8,6 @@ next-page: compound-types
 previous-page: inner-classes
 topics: abstract type members
 prerequisite-knowledge: variance, upper-type-bound
-
 ---
 
 Абстрактные типы, такие как трейты и абстрактные классы, могут содержать членов абстрактного типа.

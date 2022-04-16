@@ -2,16 +2,11 @@
 layout: tour
 title: タプル
 language: ja
-
-discourse: true
-
 partof: scala-tour
-
 num: 6
 next-page: mixin-class-composition
 previous-page: traits
 topics: tuples
-
 ---
 
 Scalaではタプルは決まった数の要素を含む値であり、各要素はそれぞれの型を持ちます。

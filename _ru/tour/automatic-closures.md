@@ -1,8 +1,6 @@
 ---
 layout: tour
 title: Конструкция Автоматического Замыкания Зависимого Типа
-
-discourse: true
 language: ru
 partof: scala-tour
 num: 14

@@ -1,12 +1,8 @@
 ---
 layout: multipage-overview
 title: Измерение производительности
-
-discourse: false
-
 partof: parallel-collections
 overview-name: Parallel Collections
-
 num: 8
 language: ru
 ---

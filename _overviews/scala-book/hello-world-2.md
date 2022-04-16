@@ -5,7 +5,6 @@ title: Hello, World - Version 2
 description: This is a second Scala 'Hello, World' example.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 6
 outof: 54
 previous-page: hello-world-1

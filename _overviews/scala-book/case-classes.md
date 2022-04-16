@@ -5,7 +5,6 @@ title: Case Classes
 description: This lesson provides an introduction to 'case classes' in Scala.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 49
 outof: 54
 previous-page: companion-objects

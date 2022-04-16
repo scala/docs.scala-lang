@@ -2,17 +2,11 @@
 layout: tour
 title: ポリモーフィックメソッド
 language: ja
-
-discourse: true
-
 partof: scala-tour
-
 num: 28
-
 next-page: type-inference
 previous-page: implicit-conversions
 prerequisite-knowledge: unified-types
-
 ---
 
 Scalaのメソッドは値と同様に型によってパラメータ化することができます。構文はジェネリッククラスの構文と似ています。

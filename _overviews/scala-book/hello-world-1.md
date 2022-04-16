@@ -5,7 +5,6 @@ title: Hello, World
 description: This page shares a Scala 'Hello, world' example.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 5
 outof: 54
 previous-page: scala-features

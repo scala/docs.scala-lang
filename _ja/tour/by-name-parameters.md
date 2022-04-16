@@ -2,15 +2,10 @@
 layout: tour
 title: 名前渡しパラメータ
 language: ja
-
-discourse: true
-
 partof: scala-tour
-
 num: 31
 next-page: annotations
 previous-page: operators
-
 ---
 
 *名前渡しのパラメータ*は使用された時に評価されます。それらは*値渡しパラメータ*とは対照的です。名前渡しのパラメータを作るには、単純に`=>`を型の前につけます。

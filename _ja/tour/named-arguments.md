@@ -2,16 +2,11 @@
 layout: tour
 title: 名前付き引数
 language: ja
-
-discourse: true
-
 partof: scala-tour
-
 num: 34
 next-page: packages-and-imports
 previous-page: default-parameter-values
 prerequisite-knowledge: function-syntax
-
 ---
 
 メソッドを呼ぶ時、以下のように引数にパラメータ名でラベル付が可能です。

@@ -5,7 +5,6 @@ title: Companion Objects
 description: This lesson provides an introduction to 'companion objects' in Scala, including writing 'apply' and 'unapply' methods.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 48
 outof: 54
 previous-page: no-null-values

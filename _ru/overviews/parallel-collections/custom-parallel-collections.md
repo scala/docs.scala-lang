@@ -1,12 +1,8 @@
 ---
 layout: multipage-overview
 title: Создание пользовательской параллельной коллекции
-
-discourse: false
-
 partof: parallel-collections
 overview-name: Parallel Collections
-
 language: ru
 num: 6
 ---

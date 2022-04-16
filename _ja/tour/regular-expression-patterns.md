@@ -2,16 +2,10 @@
 layout: tour
 title: 正規表現パターン
 language: ja
-
-discourse: true
-
 partof: scala-tour
-
 num: 15
-
 next-page: extractor-objects
 previous-page: singleton-objects
-
 ---
 正規表現はデータの中からパターン（またはその欠如）を探すために使うことができる文字列です。
 どんな文字列も`.r`メソッドを使うことで、正規表現に変換できます。

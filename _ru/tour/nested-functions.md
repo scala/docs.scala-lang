@@ -1,16 +1,11 @@
 ---
 layout: tour
 title: Вложенные Методы
-
-discourse: true
-
 partof: scala-tour
-
 num: 9
 language: ru
 next-page: multiple-parameter-lists
 previous-page: higher-order-functions
-
 ---
 
 В Scala возможно объявление метода вкладывать в тело другого метода. Это реализовано в следующем примере, в котором метод `factorial` используется для вычисления факториала заданного числа:

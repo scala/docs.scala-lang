@@ -2,15 +2,10 @@
 layout: tour
 title: 基本
 language: ja
-
-discourse: true
-
 partof: scala-tour
-
 num: 2
 next-page: unified-types
 previous-page: tour-of-scala
-
 ---
 
 このページでは、Scalaの基本を取り扱います。

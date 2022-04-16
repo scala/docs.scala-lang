@@ -5,7 +5,6 @@ title: Scala Futures
 description: This page provides an introduction to Futures in Scala, including Future callback methods.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 53
 outof: 54
 previous-page: concurrency-signpost

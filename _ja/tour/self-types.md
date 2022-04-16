@@ -2,17 +2,12 @@
 layout: tour
 title: 自分型
 language: ja
-
-discourse: true
-
 partof: scala-tour
-
 num: 25
 next-page: implicit-parameters
 previous-page: compound-types
 topics: self-types
 prerequisite-knowledge: nested-classes, mixin-class-composition
-
 ---
 自分型は、直接継承していなくてもトレイトが他のトレイトにミックスインされていることを宣言する方法です。
 これにより依存先のメンバーをimportなしで利用できます。

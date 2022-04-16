@@ -1,14 +1,9 @@
 ---
 layout: multipage-overview
 title: Введение
-
-discourse: false
-
 partof: collections
 overview-name: Collections
-
 num: 1
-
 language: ru
 ---
 

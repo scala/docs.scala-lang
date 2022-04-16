@@ -1,11 +1,7 @@
 ---
 layout: tour
 title: Объекты Одиночки
-
-discourse: true
-
 partof: scala-tour
-
 num: 13
 language: ru
 next-page: regular-expression-patterns

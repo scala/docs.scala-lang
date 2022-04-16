@@ -1,14 +1,9 @@
 ---
 layout: multipage-overview
 title: Generating Scaladoc
-
-discourse: true
-
 partof: scaladoc
 overview-name: Scaladoc
-
 num: 4
-
 permalink: /overviews/scaladoc/:title.html
 ---
 

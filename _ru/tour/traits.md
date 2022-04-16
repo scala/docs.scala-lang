@@ -1,18 +1,13 @@
 ---
 layout: tour
 title: Трейты
-
-discourse: true
-
 partof: scala-tour
-
 num: 5
 language: ru
 next-page: tuples
 previous-page: named-arguments
 topics: traits
 prerequisite-knowledge: expressions, classes, generics, objects, companion-objects
-
 ---
 
 Трейты (Traits) используются, чтобы обмениваться между классами информацией о структуре и полях. Они похожи на интерфейсы из Java 8. Классы и объекты могут расширять трейты, но трейты не могут быть созданы и поэтому не имеют параметров.

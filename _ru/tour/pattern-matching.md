@@ -1,17 +1,12 @@
 ---
 layout: tour
 title: Сопоставление с примером
-
-discourse: true
-
 partof: scala-tour
-
 num: 12
 language: ru
 next-page: singleton-objects
 previous-page: case-classes
 prerequisite-knowledge: case-classes, string-interpolation, subtyping
-
 ---
 
 Сопоставление с примером (Pattern matching) - это механизм сравнения значений с определенным примером. При успешном совпадении значение может быть разложено на составные части. Мы рассматриваем сопоставление с примером, как более мощную версию `switch` оператора из Java. Eго также можно использовать вместо серии if/else выражений.

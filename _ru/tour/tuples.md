@@ -1,17 +1,12 @@
 ---
 layout: tour
 title: Кортежи
-
-discourse: true
-
 partof: scala-tour
-
 num: 6
 language: ru
 next-page: mixin-class-composition
 previous-page: traits
 topics: tuples
-
 ---
 
 В Scala, кортеж (Тuple) это класс контейнер содержащий упорядоченный набор элементов различного типа. 

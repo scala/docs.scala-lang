@@ -5,7 +5,6 @@ title: A Few Miscellaneous Items
 description: A few miscellaneous items about Scala
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 37
 outof: 54
 previous-page: collections-maps

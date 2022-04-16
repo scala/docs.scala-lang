@@ -1,11 +1,7 @@
 ---
 layout: tour
 title: Введение
-
-discourse: true
-
 partof: scala-tour
-
 num: 1
 language: ru
 next-page: basics

@@ -2,11 +2,7 @@
 layout: tour
 title: パッケージオブジェクト
 language: ja
-
-discourse: true
-
 partof: scala-tour
-
 num: 36
 previous-page: packages-and-imports
 ---

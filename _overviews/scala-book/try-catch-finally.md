@@ -5,7 +5,6 @@ title: try/catch/finally Expressions
 description: This page shows how to use Scala's try/catch/finally construct, including several complete examples.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 18
 outof: 54
 previous-page: match-expressions

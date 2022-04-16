@@ -5,7 +5,6 @@ title: Where To Go Next
 description: Where to go next after reading the Scala Book
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 54
 outof: 54
 previous-page: futures

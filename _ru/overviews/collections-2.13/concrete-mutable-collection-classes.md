@@ -1,18 +1,12 @@
 ---
 layout: multipage-overview
 title: Реализации Изменяемых Коллекций
-
-discourse: true
-
 partof: collections-213
 overview-name: Collections
-
 num: 9
 previous-page: concrete-immutable-collection-classes
 next-page: arrays
-
 language: ru
-
 ---
 
 Вы уже успели увидеть наиболее часто используемые неизменяемые типы коллекции, которые есть в стандартной библиотеке Scala. Настало время посмотреть на изменяемые (mutable) типы коллекции.

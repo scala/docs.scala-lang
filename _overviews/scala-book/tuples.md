@@ -5,7 +5,6 @@ title: Tuples
 description: This page is an introduction to the Scala 'tuple' data type, showing examples of how to use tuples in your Scala code.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 38
 outof: 54
 previous-page: misc

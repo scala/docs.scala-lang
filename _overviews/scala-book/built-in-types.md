@@ -5,7 +5,6 @@ title: A Few Built-In Types
 description: A brief introduction to Scala's built-in types.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 10
 outof: 54
 previous-page: type-is-optional

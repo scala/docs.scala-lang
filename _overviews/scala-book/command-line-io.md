@@ -5,7 +5,6 @@ title: Command-Line I/O
 description: An introduction to command-line I/O in Scala.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 12
 outof: 54
 previous-page: two-notes-about-strings

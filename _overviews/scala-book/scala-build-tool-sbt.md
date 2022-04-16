@@ -5,7 +5,6 @@ title: The most used scala build tool (sbt)
 description: This page provides an introduction to the Scala Build Tool, sbt, including a simple 'Hello, world' project.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 41
 outof: 54
 previous-page: sbt-scalatest-intro

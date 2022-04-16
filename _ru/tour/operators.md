@@ -1,17 +1,12 @@
 ---
 layout: tour
 title: Операторы
-
-discourse: true
-
 partof: scala-tour
-
 num: 30
 language: ru
 next-page: by-name-parameters
 previous-page: type-inference
 prerequisite-knowledge: case-classes
-
 ---
 В Скале операторы - это обычные методы. В качестве _инфиксного оператора_ может быть использован любой метод с одним параметром. Например, `+` может вызываться с использованием точки:
 ```

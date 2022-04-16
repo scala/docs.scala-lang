@@ -1,11 +1,7 @@
 ---
 layout: tour
 title: Пакеты и Импорт
-
-discourse: true
-
 partof: scala-tour
-
 num: 35
 language: ru
 previous-page: annotations

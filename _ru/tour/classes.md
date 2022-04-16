@@ -1,18 +1,13 @@
 ---
 layout: tour
 title: Классы
-
-discourse: true
-
 partof: scala-tour
-
 num: 4
 language: ru
 next-page: traits
 previous-page: unified-types
 topics: classes
 prerequisite-knowledge: no-return-keyword, type-declaration-syntax, string-interpolation, procedures
-
 ---
 
 Классы в Scala являются основами для создания объектов. Они могут содержать методы, константы, переменные, типы, объекты, трейты и классы, которые в совокупности называются _членами_. Типы, объекты и трейты будут рассмотрены позже в ходе нашего обзора.

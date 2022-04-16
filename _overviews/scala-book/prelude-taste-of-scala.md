@@ -5,7 +5,6 @@ title: Prelude꞉ A Taste of Scala
 description: This page shares a Taste Of Scala example, quickly covering Scala's main features.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 2
 outof: 54
 previous-page: introduction

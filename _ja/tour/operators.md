@@ -2,16 +2,11 @@
 layout: tour
 title: 演算子
 language: ja
-
-discourse: true
-
 partof: scala-tour
-
 num: 30
 next-page: by-name-parameters
 previous-page: type-inference
 prerequisite-knowledge: case-classes
-
 ---
 Scalaでは演算子はメソッドです。パラメータを1つだけ持つメソッドであれば*中置演算子*として使えます。例えば、`+`はドット記法で呼び出せます。
 

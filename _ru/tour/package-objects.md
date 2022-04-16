@@ -1,11 +1,7 @@
 ---
 layout: tour
 title: Объекты Пакета
-
-discourse: true
-
 partof: scala-tour
-
 num: 36
 language: ru
 previous-page: packages-and-imports

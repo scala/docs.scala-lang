@@ -1,17 +1,12 @@
 ---
 layout: tour
 title: Именованные Аргументы
-
-discourse: true
-
 partof: scala-tour
-
 num: 34
 language: ru
 next-page: packages-and-imports
 previous-page: default-parameter-values
 prerequisite-knowledge: function-syntax
-
 ---
 
 При вызове методов можно конкретно указывать название задаваемого аргумента следующим образом:

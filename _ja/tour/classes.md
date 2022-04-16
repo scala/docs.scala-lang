@@ -2,17 +2,12 @@
 layout: tour
 title: クラス
 language: ja
-
-discourse: true
-
 partof: scala-tour
-
 num: 4
 next-page: traits
 previous-page: unified-types
 topics: classes
 prerequisite-knowledge: no-return-keyword, type-declaration-syntax, string-interpolation, procedures
-
 ---
 
 Scalaにおけるクラスはオブジェクトを作るための設計図です。

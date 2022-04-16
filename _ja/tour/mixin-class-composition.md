@@ -2,16 +2,11 @@
 layout: tour
 title: ミックスインを用いたクラス合成
 language: ja
-
-discourse: true
-
 partof: scala-tour
-
 num: 7
 next-page: higher-order-functions
 previous-page: tuples
 prerequisite-knowledge: inheritance, traits, abstract-classes, unified-types
-
 ---
 ミックスインはクラスを構成するのに使われるトレイトです。
 

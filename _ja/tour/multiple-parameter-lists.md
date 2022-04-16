@@ -2,15 +2,10 @@
 layout: tour
 title: 複数パラメータリスト(カリー化)
 language: ja
-
-discourse: true
-
 partof: scala-tour
-
 num: 10
 next-page: case-classes
 previous-page: nested-functions
-
 ---
 
 メソッドは複数のパラメータリストを持てます。

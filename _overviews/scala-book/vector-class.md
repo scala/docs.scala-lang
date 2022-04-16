@@ -5,7 +5,6 @@ title: The Vector Class
 description: This page provides examples of the Scala 'Vector' class, including how to add and remove elements from a Vector.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 31
 outof: 54
 previous-page: list-class

@@ -2,15 +2,10 @@
 layout: tour
 title: for内包表記
 language: ja
-
-discourse: true
-
 partof: scala-tour
-
 num: 17
 next-page: generic-classes
 previous-page: extractor-objects
-
 ---
 
 Scalaは*シーケンス内包表記*を表現するための軽量な記法を提供します。

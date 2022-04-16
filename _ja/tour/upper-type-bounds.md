@@ -2,15 +2,11 @@
 layout: tour
 title: 上限型境界
 language: ja
-
-discourse: true
-
 partof: scala-tour
 categories: tour
 num: 20
 next-page: lower-type-bounds
 previous-page: variances
-
 ---
 
 Scalaでは [型パラメータ](generic-classes.html)と[抽象型メンバー](abstract-type-members.html) は型境界による制約をかけることができます。

@@ -1,18 +1,12 @@
 ---
 layout: multipage-overview
 title: Множества
-
-discourse: true
-
 partof: collections-213
 overview-name: Collections
-
 num: 6
 previous-page: seqs
 next-page: maps
-
 language: ru
-
 ---
 
 Множества (`Set`) - это итерируемые сущности, которые не содержат дублирующих друг друга элементов. Операции с множествами описаны в таблицах ниже. Описания включают операции для базовых, неизменяемых и изменяемых множеств. Все их операции поделены на следующие категории:

@@ -2,15 +2,9 @@
 layout: tour
 title: 前書き
 language: ja
-
-discourse: true
-
 partof: scala-tour
-
 num: 1
-
 next-page: basics
-
 ---
 
 ## ようこそツアーへ

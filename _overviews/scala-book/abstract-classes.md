@@ -5,7 +5,6 @@ title: Abstract Classes
 description: This page shows how to use abstract classes, including when and why you should use abstract classes.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 27
 outof: 54
 previous-page: traits-abstract-mixins

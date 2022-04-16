@@ -5,7 +5,6 @@ title: Enumerations (and a Complete Pizza Class)
 description: This page introduces Scala enumerations, and further shows how to create a complete OOP 'Pizza' class that uses those enumerations.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 23
 outof: 54
 previous-page: methods-first-look

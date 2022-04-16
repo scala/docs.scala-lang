@@ -1,10 +1,7 @@
 ---
 layout: singlepage-overview
 title: JavaプログラマーのためのScalaチュートリアル
-
 partof: scala-for-java-programmers
-
-discourse: false
 language: ja
 ---
 

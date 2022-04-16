@@ -2,16 +2,11 @@
 layout: tour
 title: ケースクラス
 language: ja
-
-discourse: true
-
 partof: scala-tour
-
 num: 11
 next-page: pattern-matching
 previous-page: multiple-parameter-lists
 prerequisite-knowledge: classes, basics, mutability
-
 ---
 
 ケースクラスはこれから論じるいくつかの差異はあるものの普通のクラスと似ています。

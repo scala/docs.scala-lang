@@ -5,7 +5,6 @@ title: Auxiliary Class Constructors
 description: This page shows how to write auxiliary Scala class constructors, including several examples of the syntax.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 20
 outof: 54
 previous-page: classes

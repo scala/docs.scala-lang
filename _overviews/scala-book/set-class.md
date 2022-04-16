@@ -5,7 +5,6 @@ title: The Set Class
 description: This page provides examples of the Scala 'Set' class, including how to add and remove elements from a Set, and iterate over Set elements.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 33
 outof: 54
 previous-page: map-class

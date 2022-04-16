@@ -1,17 +1,11 @@
 ---
 layout: multipage-overview
 title: Введение
-
-discourse: true
-
 partof: collections-213
 overview-name: Collections
-
 num: 1
 next-page: overview
-
 language: ru
-
 ---
 
 **Martin Odersky и Lex Spoon**

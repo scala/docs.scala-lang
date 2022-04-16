@@ -5,7 +5,6 @@ title: Functional Programming
 description: This lesson begins a second on 'An introduction to functional programming in Scala'.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 44
 outof: 54
 previous-page: sbt-scalatest-bdd

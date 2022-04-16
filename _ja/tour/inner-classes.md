@@ -2,15 +2,10 @@
 layout: tour
 title: 内部クラス
 language: ja
-
-discourse: true
-
 partof: scala-tour
-
 num: 22
 next-page: abstract-type-members
 previous-page: lower-type-bounds
-
 ---
 
 Scalaではクラスが他のクラスをメンバーとして保持することが可能です。
