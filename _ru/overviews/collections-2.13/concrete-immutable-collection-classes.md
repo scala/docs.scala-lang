@@ -1,18 +1,12 @@
 ---
 layout: multipage-overview
 title: Реализации Неизменяемых Коллекций
-
-discourse: true
-
 partof: collections-213
 overview-name: Collections
-
 previous-page: maps
 next-page: concrete-mutable-collection-classes
-
 num: 8
 language: ru
-
 ---
 
 Scala предлагает множество конечных реализаций неизменяемых коллекций. Они отличаются реализуемыми трейтами (мапы (map), множества(set), последовательности(seq)), они могут быть бесконечными, и различаются производительностью операций. Вот некоторые из наиболее распространенных неизменяемых типов коллекций, используемых в Scala.

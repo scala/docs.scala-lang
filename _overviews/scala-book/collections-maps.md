@@ -5,7 +5,6 @@ title: Common Map Methods
 description: This page shows examples of the most common methods that are available on Scala Maps.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 36
 outof: 54
 previous-page: collections-methods

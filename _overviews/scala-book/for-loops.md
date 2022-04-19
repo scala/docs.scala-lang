@@ -5,7 +5,6 @@ title: for Loops
 description: This page provides an introduction to the Scala 'for' loop, including how to iterate over Scala collections.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 15
 outof: 54
 previous-page: if-then-else-construct

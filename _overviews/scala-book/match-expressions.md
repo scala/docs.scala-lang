@@ -5,7 +5,6 @@ title: match Expressions
 description: This page shows examples of the Scala 'match' expression, including how to write match/case expressions.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 17
 outof: 54
 previous-page: for-expressions

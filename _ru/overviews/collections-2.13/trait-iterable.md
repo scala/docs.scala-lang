@@ -1,18 +1,12 @@
 ---
 layout: multipage-overview
 title: Трейт Iterable
-
-discourse: true
-
 partof: collections-213
 overview-name: Collections
-
 num: 4
 previous-page: overview
 next-page: seqs
-
 language: ru
-
 ---
 
 На самом верху иерархии коллекций находится трейт `Iterable`. Все методы в этого трейта описаны как абстрактные, `iterator` - это метод, который выдает элементы коллекции один за другим.

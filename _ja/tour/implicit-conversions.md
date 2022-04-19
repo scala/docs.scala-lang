@@ -2,15 +2,10 @@
 layout: tour
 title: 暗黙の変換
 language: ja
-
-discourse: true
-
 partof: scala-tour
-
 num: 27
 next-page: polymorphic-methods
 previous-page: implicit-parameters
-
 ---
 
 型`S`から型`T`への暗黙の変換は`S => T`という型のimplicit値や、その型に一致するimplicitメソッドで定義されます。

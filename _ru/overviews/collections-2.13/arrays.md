@@ -1,17 +1,12 @@
 ---
 layout: multipage-overview
 title: Массивы
-
-discourse: true
-
 partof: collections-213
 overview-name: Collections
-
 num: 10
 previous-page: concrete-mutable-collection-classes
 next-page: strings
 language: ru
-
 ---
 
 [Массивы](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/Array.html) особый вид коллекций в Scala. 

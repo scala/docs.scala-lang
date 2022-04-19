@@ -1,17 +1,12 @@
 ---
 layout: tour
 title: Полиморфные методы
-
-discourse: true
-
 partof: scala-tour
-
 num: 28
 language: ru
 next-page: type-inference
 previous-page: implicit-conversions
 prerequisite-knowledge: unified-types
-
 ---
 
 Также как и у обобщенных классов, у методов есть полиморфизм по типу, с таким же синтаксисом (параметр типа указывается в квадратных скобках сразу после названия метода).  

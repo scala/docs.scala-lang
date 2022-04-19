@@ -2,17 +2,11 @@
 layout: tour
 title: パターンマッチング
 language: ja
-
-discourse: true
-
 partof: scala-tour
-
 num: 12
-
 next-page: singleton-objects
 previous-page: case-classes
 prerequisite-knowledge: case-classes, string-interpolation, subtyping
-
 ---
 
 パターンマッチングは値をパターンに照合するための仕組みです。

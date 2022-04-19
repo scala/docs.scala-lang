@@ -5,7 +5,6 @@ title: Two Notes About Strings
 description: This page shares two important notes about strings in Scala.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 11
 outof: 54
 previous-page: built-in-types

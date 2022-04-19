@@ -1,18 +1,12 @@
 ---
 layout: multipage-overview
 title: Отображения
-
-discourse: true
-
 partof: collections-213
 overview-name: Collections
-
 num: 14
 previous-page: equality
 next-page: iterators
-
 language: ru
-
 ---
 
 У коллекций довольно много вариантов создания новых коллекций. Ну например используя операции `map`, `filter` или `++`. Мы называем такие операции *трансформерами*, потому что они берут хотя бы одну коллекцию и трансформируют её в новую коллекцию.

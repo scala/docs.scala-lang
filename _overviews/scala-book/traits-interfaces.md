@@ -5,7 +5,6 @@ title: Using Scala Traits as Interfaces
 description: This page shows how to use Scala traits just like Java interfaces, including several examples.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 25
 outof: 54
 previous-page: traits-intro

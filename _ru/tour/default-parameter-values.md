@@ -1,17 +1,12 @@
 ---
 layout: tour
 title: Значения Параметров По умолчанию
-
-discourse: true
-
 partof: scala-tour
-
 num: 33
 language: ru
 next-page: named-arguments
 previous-page: classes
 prerequisite-knowledge: named-arguments, function syntax
-
 ---
 
 Scala предоставляет возможность задавать значения параметров по умолчанию, что позволяет лишний раз не указывать параметры. 

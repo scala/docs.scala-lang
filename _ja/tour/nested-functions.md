@@ -2,15 +2,10 @@
 layout: tour
 title: ネストしたメソッド
 language: ja
-
-discourse: true
-
 partof: scala-tour
-
 num: 9
 next-page: multiple-parameter-lists
 previous-page: higher-order-functions
-
 ---
 
 Scalaではメソッドの定義をネストする（_訳注：入れ子にする_）ことができます。

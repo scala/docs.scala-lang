@@ -2,15 +2,10 @@
 layout: tour
 title: 変位指定
 language: ja
-
-discourse: true
-
 partof: scala-tour
-
 num: 19
 next-page: upper-type-bounds
 previous-page: generic-classes
-
 ---
 
 変位指定は複合型の間の継承関係とそれらの型パラメータ間の継承関係の相関です。

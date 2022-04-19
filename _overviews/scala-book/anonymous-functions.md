@@ -5,7 +5,6 @@ title: Anonymous Functions
 description: This page shows how to use anonymous functions in Scala, including examples with the List class 'map' and 'filter' functions.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 34
 outof: 54
 previous-page: set-class

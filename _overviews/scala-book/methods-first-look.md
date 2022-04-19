@@ -5,7 +5,6 @@ title: A First Look at Scala Methods
 description: This page provides a first look at how to write Scala methods, including how to test them in the REPL.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 22
 outof: 54
 previous-page: constructors-default-values

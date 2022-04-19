@@ -1,18 +1,12 @@
 ---
 layout: multipage-overview
 title: Последовательности. Трейт Seq, IndexedSeq и LinearSeq
-
-discourse: true
-
 partof: collections-213
 overview-name: Collections
-
 num: 5
 previous-page: trait-iterable
 next-page: sets
-
 language: ru
-
 ---
 
 Трейт [Seq](https://www.scala-lang.org/api/current/scala/collection/Seq.html) представляет из себя последовательность. Последовательность - это своего рода итерируемая сущность, у которой есть длина (`length`) и элементы с фиксированным индексом, начинающийся от `0`.

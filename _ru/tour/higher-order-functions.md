@@ -1,16 +1,11 @@
 ---
 layout: tour
 title: Функции Высшего Порядка
-
-discourse: true
-
 partof: scala-tour
-
 num: 8
 language: ru
 next-page: nested-functions
 previous-page: mixin-class-composition
-
 ---
 
 Функции высшего порядка могут принимать другие функции в качестве параметров или возвращать функцию в качестве результата. 

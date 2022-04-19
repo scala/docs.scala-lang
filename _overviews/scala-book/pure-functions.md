@@ -5,7 +5,6 @@ title: Pure Functions
 description: This lesson provides an introduction to writing pure functions in Scala.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 45
 outof: 54
 previous-page: functional-programming

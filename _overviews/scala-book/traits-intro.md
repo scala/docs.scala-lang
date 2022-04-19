@@ -5,7 +5,6 @@ title: Scala Traits and Abstract Classes
 description: An introduction to Scala traits and abstract classes.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 24
 outof: 54
 previous-page: enumerations-pizza-class

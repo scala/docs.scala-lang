@@ -5,7 +5,6 @@ title: Scala Collections
 description: This page provides an introduction to the Scala collections classes, including Vector, List, ArrayBuffer, Map, Set, and more.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 28
 outof: 54
 previous-page: abstract-classes

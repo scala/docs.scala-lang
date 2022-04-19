@@ -5,7 +5,6 @@ title: Concurrency
 description: An introduction to concurrency in Scala.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 52
 outof: 54
 previous-page: functional-error-handling

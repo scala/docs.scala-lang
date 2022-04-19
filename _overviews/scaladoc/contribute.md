@@ -1,14 +1,9 @@
 ---
 layout: multipage-overview
 title: Contributing to Scaladoc
-
-discourse: true
-
 partof: scaladoc
 overview-name: Scaladoc
-
 num: 5
-
 permalink: /overviews/scaladoc/:title.html
 ---
 

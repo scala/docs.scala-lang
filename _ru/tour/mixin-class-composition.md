@@ -1,17 +1,12 @@
 ---
 layout: tour
 title:  Композиция классов с примесями
-
-discourse: true
-
 partof: scala-tour
-
 num: 7
 language: ru
 next-page: higher-order-functions
 previous-page: tuples
 prerequisite-knowledge: inheritance, traits, abstract-classes, unified-types
-
 ---
 Примеси (Mixin) - это трейты, которые используются для создания класса.
 

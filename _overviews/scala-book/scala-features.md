@@ -5,7 +5,6 @@ title: Scala Features
 description: TODO
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 4
 outof: 54
 previous-page: preliminaries

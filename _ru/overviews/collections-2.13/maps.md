@@ -1,18 +1,12 @@
 ---
 layout: multipage-overview
 title: Мапы
-
-discourse: true
-
 partof: collections-213
 overview-name: Collections
-
 num: 7
 previous-page: sets
 next-page: concrete-immutable-collection-classes
-
 language: ru
-
 ---
 
 [Map](https://www.scala-lang.org/api/current/scala/collection/Map.html) это [Iterable](https://www.scala-lang.org/api/current/scala/collection/Iterable.html) состоящее из пар ключ значение (также называемых _связкой_ или _ассоциативным массивом_). 

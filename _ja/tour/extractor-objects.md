@@ -2,15 +2,10 @@
 layout: tour
 title: 抽出子オブジェクト
 language: ja
-
-discourse: true
-
 partof: scala-tour
-
 num: 16
 next-page: for-comprehensions
 previous-page: regular-expression-patterns
-
 ---
 
 抽出子オブジェクトは`unapply`メソッドを持つオブジェクトです。

@@ -1,16 +1,11 @@
 ---
 layout: tour
 title: Основы
-
-discourse: true
-
 partof: scala-tour
-
 num: 2
 language: ru
 next-page: unified-types
 previous-page: tour-of-scala
-
 ---
 
 На этой странице мы расскажем об основах Scala.

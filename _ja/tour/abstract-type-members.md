@@ -2,16 +2,12 @@
 layout: tour
 title: 抽象型メンバー
 language: ja
-
-discourse: true
-
 partof: scala-tour
 num: 23
 next-page: compound-types
 previous-page: inner-classes
 topics: abstract type members
 prerequisite-knowledge: variance, upper-type-bound
-
 ---
 
 トレイトや抽象クラスのような抽象型は抽象型メンバーを持つことができます。

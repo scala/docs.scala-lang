@@ -1,12 +1,8 @@
 ---
 layout: multipage-overview
 title: Преобразования параллельных коллекций
-
-discourse: false
-
 partof: parallel-collections
 overview-name: Parallel Collections
-
 language: ru
 num: 3
 ---

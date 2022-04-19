@@ -2,16 +2,11 @@
 layout: tour
 title: 統合された型
 language: ja
-
-discourse: true
-
 partof: scala-tour
-
 num: 3
 next-page: classes
 previous-page: basics
 prerequisite-knowledge: classes, basics
-
 ---
 Scalaでは数値や関数を含め、全ての値は型を持ちます。
 以下の図は型階層の一部を説明しています。

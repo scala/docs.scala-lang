@@ -1,17 +1,12 @@
 ---
 layout: tour
 title: Единобразие типов
-
-discourse: true
-
 partof: scala-tour
-
 num: 3
 language: ru
 next-page: classes
 previous-page: basics
 prerequisite-knowledge: classes, basics
-
 ---
 
 В Scala все значения имеют тип, включая числовые значения и функции. Диаграмма ниже иллюстрирует подмножество иерархии типов.

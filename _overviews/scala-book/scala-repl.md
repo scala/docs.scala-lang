@@ -5,7 +5,6 @@ title: The Scala REPL
 description: This page shares an introduction to the Scala REPL.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 7
 outof: 54
 previous-page: hello-world-2

@@ -1,18 +1,12 @@
 ---
 layout: multipage-overview
 title: Создание коллекций с нуля
-
-discourse: true
-
 partof: collections-213
 overview-name: Collections
-
 num: 16
 previous-page: iterators
 next-page: conversions-between-java-and-scala-collections
-
 language: ru
-
 ---
 
 У вас есть синтаксис `List(1, 2, 3)` для создания списка из трех целых чисел и `Map('A' -> 1, 'C' -> 2)` для создания мапы с двумя элементами. На самом деле, это универсальная функциональность коллекций Scala. Можно получить любую коллекцию написав ее название и указав следом список элементов в круглых скобках. В результате получится новая коллекция с заданными элементами. Вот еще несколько примеров:

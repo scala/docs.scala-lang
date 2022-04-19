@@ -2,16 +2,11 @@
 layout: tour
 title: デフォルト引数
 language: ja
-
-discourse: true
-
 partof: scala-tour
-
 num: 33
 next-page: named-arguments
 previous-page: annotations
 prerequisite-knowledge: named-arguments, function syntax
-
 ---
 
 Scalaはパラメータのデフォルト値を与えることができ、呼び出す側はこれらのパラメータを省略できます。

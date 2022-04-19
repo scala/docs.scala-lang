@@ -1,16 +1,11 @@
 ---
 layout: tour
 title: Составные Типы
-
-discourse: true
-
 partof: scala-tour
-
 num: 24
 language: ru
 next-page: self-types
 previous-page: abstract-type-members
-
 ---
 
 Иногда необходимо выразить, то что тип объекта является подтипом нескольких других типов. В Scala это можно выразить с помощью *составных типов*, которые являются объединением нескольких типов объектов.

@@ -2,17 +2,12 @@
 layout: tour
 title: トレイト
 language: ja
-
-discourse: true
-
 partof: scala-tour
-
 num: 5
 next-page: tuples
 previous-page: classes
 topics: traits
 prerequisite-knowledge: expressions, classes, generics, objects, companion-objects
-
 ---
 
 トレイトはクラス間でインターフェースとフィールドを共有するために使います。それらはJava 8のインターフェースと似ています。

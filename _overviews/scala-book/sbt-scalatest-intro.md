@@ -5,7 +5,6 @@ title: sbt and ScalaTest
 description: In this lesson we'll start to introduce sbt and ScalaTest, two tools commonly used on Scala projects.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 40
 outof: 54
 previous-page: oop-pizza-example

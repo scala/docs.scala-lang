@@ -1,17 +1,12 @@
 ---
 layout: tour
 title: Нижнее Ограничение Типа
-
-discourse: true
-
 partof: scala-tour
-
 num: 21
 language: ru
 next-page: inner-classes
 previous-page: upper-type-bounds
 prerequisite-knowledge: upper-type-bounds, generics, variance
-
 ---
 
 В то время как [верхнее ограничение типа](upper-type-bounds.html) ограничивает тип до подтипа стороннего типа, *нижнее ограничение типа* объявляют тип супертипом стороннего типа. Термин  `B >: A` выражает, то что параметр типа `B` или абстрактный тип `B` относится к супертипу типа `A`. В большинстве случаев `A` будет задавать тип класса, а `B` задавать тип метода.

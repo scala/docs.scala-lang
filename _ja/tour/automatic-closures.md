@@ -2,9 +2,6 @@
 layout: tour
 title: 型依存クロージャの自動構築
 language: ja
-
-discourse: true
-
 partof: scala-tour
 ---
 

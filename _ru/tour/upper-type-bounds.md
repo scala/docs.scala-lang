@@ -1,16 +1,12 @@
 ---
 layout: tour
 title: Верхнее Ограничение Типа
-
-discourse: true
-
 partof: scala-tour
 categories: tour
 num: 20
 language: ru
 next-page: lower-type-bounds
 previous-page: variances
-
 ---
 
 В Scala [параметры типа](generic-classes.html) и [члены абстрактного типа](abstract-type-members.html) могут быть ограничены определенными диапазонами. Такие диапазоны ограничивают конкретные значение типа и, возможно, предоставляют больше информации о членах таких типов. _Верхнее ограничение типа_ `T <: A` указывает на то что тип `T` относится к подтипу типа `A`.

@@ -2,13 +2,8 @@
 layout: tour
 title: シングルトンオブジェクト
 language: ja
-
-discourse: true
-
 partof: scala-tour
-
 num: 13
-
 next-page: regular-expression-patterns
 previous-page: pattern-matching
 prerequisite-knowledge: classes, methods, private-methods, packages, option

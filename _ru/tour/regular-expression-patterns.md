@@ -1,16 +1,11 @@
 ---
 layout: tour
 title: Регулярные Выражения
-
-discourse: true
-
 partof: scala-tour
-
 num: 15
 language: ru
 next-page: extractor-objects
 previous-page: singleton-objects
-
 ---
 
 Регулярные выражения (Regular expression) - это специальный шаблон для поиска данных, задаваемый в виде текстовой строки. Любая строка может быть преобразована в регулярное выражение методом `.r`.

@@ -1,11 +1,7 @@
 ---
 layout: tour
 title: Выведение Типа
-
-discourse: true
-
 partof: scala-tour
-
 num: 29
 language: ru
 next-page: operators

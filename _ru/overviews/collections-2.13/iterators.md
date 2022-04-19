@@ -1,18 +1,12 @@
 ---
 layout: multipage-overview
 title: Итераторы
-
-discourse: true
-
 partof: collections-213
 overview-name: Collections
-
 num: 15
 previous-page: views
 next-page: creating-collections-from-scratch
-
 language: ru
-
 ---
 
 Итератор (Iterator) - это не коллекция, а скорее способ поочередного доступа к элементам коллекции. Есть две основные операции у итератора - это `next` и `hasNext`. Вызов метода `it.next()` на итераторе `it`  вернет следующий элемент и изменит его состояние. Повторный вызов `next` на том же итераторе выведит следующий элемент идущий после ранее возвращённого. Если больше нет элементов для возврата, вызов команды `next` кинет исключение `NoSuchElementException`. Вы можете узнать, есть ли еще элементы для возврата с помощью метода `hasNext` у [Итератора](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterator.html).

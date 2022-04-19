@@ -5,7 +5,6 @@ title: Using Scala Traits Like Abstract Classes
 description: This page shows how to use Scala traits just like abstract classes in Java, with examples of concrete and abstract methods.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 26
 outof: 54
 previous-page: traits-interfaces

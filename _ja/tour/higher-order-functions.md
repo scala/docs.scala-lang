@@ -2,15 +2,10 @@
 layout: tour
 title: 高階関数
 language: ja
-
-discourse: true
-
 partof: scala-tour
-
 num: 8
 next-page: nested-functions
 previous-page: mixin-class-composition
-
 ---
 
 高階関数は他の関数をパラメーターとして受け取る、もしくは結果として関数を返します。

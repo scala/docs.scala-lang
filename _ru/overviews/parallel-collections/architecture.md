@@ -1,9 +1,6 @@
 ---
 layout: multipage-overview
 title: Архитектура библиотеки параллельных коллекций
-
-discourse: false
-
 partof: parallel-collections
 overview-name: Parallel Collections
 

@@ -5,7 +5,6 @@ title: Using ScalaTest with sbt
 description: This lesson shows how to write ScalaTest unit tests with sbt in a test-driven development (TDD) style.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 42
 outof: 54
 previous-page: scala-build-tool-sbt

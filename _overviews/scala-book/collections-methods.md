@@ -5,7 +5,6 @@ title: Common Sequence Methods
 description: This page shows examples of the most common methods that are available on the Scala sequences (collections classes).
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 35
 outof: 54
 previous-page: anonymous-functions

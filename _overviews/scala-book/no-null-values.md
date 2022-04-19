@@ -5,7 +5,6 @@ title: No Null Values
 description: This lesson demonstrates the Scala Option, Some, and None classes, including how to use them instead of null values.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 47
 outof: 54
 previous-page: passing-functions-around

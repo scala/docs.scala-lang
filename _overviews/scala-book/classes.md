@@ -5,7 +5,6 @@ title: Scala Classes
 description: This page shows examples of how to create Scala classes, including the basic Scala class constructor.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 19
 outof: 54
 previous-page: try-catch-finally

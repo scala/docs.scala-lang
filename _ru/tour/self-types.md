@@ -1,18 +1,13 @@
 ---
 layout: tour
 title: Самоописываемые типы
-
-discourse: true
-
 partof: scala-tour
-
 num: 25
 language: ru
 next-page: implicit-parameters
 previous-page: compound-types
 topics: self-types
 prerequisite-knowledge: nested-classes, mixin-class-composition
-
 ---
 Самоописываемый тип(Self type) - это способ объявить, что трейт должен быть смешан с другим трейтом, даже если он не расширяет его напрямую. Что открывает доступ к членам зависимости без импортирования.
 

@@ -5,7 +5,6 @@ title: Case Objects
 description: This lesson introduces Scala 'case objects', which are used to create singletons with a few additional features.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 50
 outof: 54
 previous-page: case-classes

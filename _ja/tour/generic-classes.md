@@ -2,16 +2,11 @@
 layout: tour
 title: ジェネリッククラス
 language: ja
-
-discourse: true
-
 partof: scala-tour
-
 num: 18
 next-page: variances
 previous-page: for-comprehensions
 assumed-knowledge: classes unified-types
-
 ---
 ジェネリッククラスはパラメータとして型を1つ受け取るクラスです。それらはコレクションクラスで特に役立ちます。
 

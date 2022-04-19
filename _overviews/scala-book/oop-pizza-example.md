@@ -5,7 +5,6 @@ title: An OOP Example
 description: This lesson shares an example of some OOP-style classes for a pizza restaurant order entry system, including Pizza, Topping, and Order classes.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 39
 outof: 54
 previous-page: tuples

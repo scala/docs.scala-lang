@@ -1,16 +1,11 @@
 ---
 layout: tour
 title: Неявные Преобразования
-
-discourse: true
-
 partof: scala-tour
-
 num: 27
 language: ru
 next-page: polymorphic-methods
 previous-page: implicit-parameters
-
 ---
 
 Неявные преобразование типа `S` к типу `T` задается неявным значением функционального типа `S =>T`, или неявным методом, который способен преобразовывать к значению требуемого типа.

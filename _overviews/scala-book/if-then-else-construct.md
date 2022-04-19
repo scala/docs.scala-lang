@@ -5,7 +5,6 @@ title: The if/then/else Construct
 description: This page demonstrates Scala's if/then/else construct, including several examples you can try in the REPL.
 partof: scala_book
 overview-name: Scala Book
-discourse: true
 num: 14
 outof: 54
 previous-page: control-structures

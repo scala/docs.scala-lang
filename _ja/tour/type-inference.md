@@ -2,11 +2,7 @@
 layout: tour
 title: 型推論
 language: ja
-
-discourse: true
-
 partof: scala-tour
-
 num: 29
 next-page: operators
 previous-page: polymorphic-methods
