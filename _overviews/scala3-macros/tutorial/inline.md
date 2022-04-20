@@ -254,8 +254,11 @@ Calling `power` with statically known constants results in the following code:
   val x = 2
   power(x * x, 1)
   ```
+
+{::options parse_block_html="true" /}
 <details>
-  <summary> See rest of inlining steps</summary>
+  <summary>See rest of inlining steps
+  </summary>
 
 ```scala
 // then inlined as
@@ -283,6 +286,8 @@ x2 * 1.0
 ```
 </details>
 
+{::options parse_block_html="false" /}
+
 In contrast, let us imagine we do not know the value of `n`:
 
 ```scala
@@ -291,8 +296,10 @@ power(2, unknownNumber)
 Driven by the inline annotation on the parameter, the compiler will try to unroll the recursion.
 But without any success, since the parameter is not statically known.
 
+{::options parse_block_html="true" /}
 <details>
-  <summary>See inlining steps</summary>
+  <summary>See inlining steps
+  </summary>
 
 ```scala
 // first inlines as
@@ -318,6 +325,7 @@ else {
 ...
 ```
 </details>
+{::options parse_block_html="false" /}
 
 To guarantee that the branching can indeed be performed at compile-time, we can use the `inline if` variant of `if`.
 Annotating a conditional with `inline` will guarantee that the conditional can be reduced at compile-time and emits an error if the condition is not a statically known constant.
