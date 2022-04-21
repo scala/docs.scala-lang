@@ -38,7 +38,7 @@ version := "1.0"
 scalaVersion := "{{site.scala-version}}"
 
 libraryDependencies +=
-    "org.scalatest" %% "scalatest" % "3.0.8" % Test
+    "org.scalatest" %% "scalatest" % "3.2.11" % Test
 
 ```
 
@@ -46,7 +46,7 @@ The first three lines of this file are essentially the same as the first example
 
 ```scala
 libraryDependencies +=
-    "org.scalatest" %% "scalatest" % "3.0.8" % Test
+    "org.scalatest" %% "scalatest" % "3.2.11" % Test
 ```
 
 >The ScalaTest documentation has always been good, and you can always find the up to date information on what those lines should look like on the [Installing ScalaTest](http://www.scalatest.org/install) page.
@@ -84,8 +84,8 @@ There isn’t much that can go wrong with that source code, but it provides a si
 [warn]   consider launching sbt without any commands, or explicitly passing 'shell'
 ...
 ...
-[info] Compiling 1 Scala source to /Users/al/Projects/Scala/HelloScalaTest/target/scala-2.12/classes...
-[info] Running simpletest.Hello 
+[info] compiling 1 Scala source to /Users/al/Projects/Scala/HelloScalaTest/target/scala-2.13/classes...
+[info] running simpletest.Hello 
 Hello Alvin Alexander
 [success] Total time: 4 s
 ````
@@ -107,9 +107,9 @@ Next, create a file named *HelloTests.scala* in that directory with the followin
 ```scala
 package simpletest
 
-import org.scalatest.FunSuite
+import org.scalatest.funsuite.AnyFunSuite
 
-class HelloTests extends FunSuite {
+class HelloTests extends AnyFunSuite {
 
     // test 1
     test("the name is set correctly in constructor") {
@@ -129,7 +129,7 @@ class HelloTests extends FunSuite {
 
 This file demonstrates the ScalaTest `FunSuite` approach. A few important points:
 
-- Your class should extend `FunSuite`
+- Your class should extend `AnyFunSuite`
 - You create tests as shown, by giving each `test` a unique name
 - At the end of each test you should call `assert` to test that a condition has been satisfied
 
@@ -139,7 +139,7 @@ Now you can run these tests with the `sbt test` command. Skipping the first few 
 
 ````
 > sbt test
-[info] Set current project to HelloScalaTest (in build file:/Users/al/Projects/Scala/HelloScalaTest/)
+[info] set current project to HelloScalaTest (in build file:/Users/al/Projects/Scala/HelloScalaTest/)
 [info] HelloTests:
 [info] - the name is set correctly in constructor
 [info] - a Person's name can be changed
