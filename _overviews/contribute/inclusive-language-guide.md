@@ -90,7 +90,7 @@ This list is neither comprehensive nor definitive, and it can evolve over time.
 * **blacklist/whitelist** \
   While the etymology of these words has no relation to racism, their use suggests an association between the color black and some form of badness or exclusion, and between the color white and some form of goodness or inclusion.
   Prefer alternatives when possible.
-  Several alternatives have been proposed but none sticks as "the one". We suggest using the pair *excludelist*/*includelist*, as it is generic enough to replace all uses of *blacklist*/*whitelist*.
+  Several alternatives have been proposed but none sticks as "the one". We suggest using the pair *allowlist*/*denylist*, as it is generic enough to replace most uses of *blacklist*/*whitelist*.
 * **master/slave** \
   Never use *slave*.
   Never use *master* in conjunction with *slave*.
@@ -115,6 +115,12 @@ Keep in mind that your particular application domain may contain its own share o
 We encourage you to research inclusive language guidelines applicable to your domain.
 
 You may want to use automated software like [In Solidarity](https://github.com/apps/in-solidarity) to steer contributors away from loaded words.
+
+## Dysphemism
+
+Dysphemisms, the opposite of euphemisms, should be avoided. For example, the English expressions "pull the trigger" (enforce a decision) and "bite the bullet" (endure hardship) can be disturbingly violent if you are not used to them.
+
+Using the direct meaning is preferred.
 
 ## Backward compatibility
 
