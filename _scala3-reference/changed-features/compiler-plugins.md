@@ -57,6 +57,7 @@ package dividezero
 
 import dotty.tools.dotc.ast.Trees.*
 import dotty.tools.dotc.ast.tpd
+import dotty.tools.dotc.report
 import dotty.tools.dotc.core.Constants.Constant
 import dotty.tools.dotc.core.Contexts.Context
 import dotty.tools.dotc.core.Decorators.*
@@ -84,7 +85,7 @@ class DivideZeroPhase extends PluginPhase:
     tree match
       case Apply(Select(rcvr, nme.DIV), List(Literal(Constant(0))))
       if rcvr.tpe <:< defn.IntType =>
-        report.error("dividing by zero", tree.pos)
+        report.error("dividing by zero", tree.srcPos)
       case _ =>
         ()
     tree
