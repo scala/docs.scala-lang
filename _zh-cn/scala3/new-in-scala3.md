@@ -36,7 +36,7 @@ Scala的一个基本核心概念是（在某种程度上仍然是）为用户提
 
 - **Viewing one type as another**. [隐式转换][contextual-conversions]已经被重新设计为类型类`Conversion`的实例。
 
-- **Higher-order contextual abstractions**. [context functions][contextual-functions]的 _全新_ 功能使上下文抽象成为一流的公民。它们是库开发人员的一个重要工具，允许表达简洁的特定领域语言。
+- **Higher-order contextual abstractions**. [context functions][contextual-functions]的 _全新_ 功能使上下文抽象成为第一等公民。它们是库开发人员的一个重要工具，允许表达简洁的特定领域语言。
 
 - **Actionable feedback from the compiler**. 如果一个隐式参数不能被编译器解决，它现在提供了可能解决这个问题的[import suggestions](https://www.scala-lang.org/blog/2020/05/05/scala-3-import-suggestions.html)。
 
@@ -47,17 +47,17 @@ Scala的一个基本核心概念是（在某种程度上仍然是）为用户提
 
 - **Opaque Types**.  将实现细节隐藏在[opaque type aliases][types-opaque]的别名后面，而不需要在性能上付出代价! Opaque types 取代了值类，并允许你建立一个抽象的屏障，而不会造成额外的装箱开销。
 
-- **Intersection and union types**. 将类型系统建立在新的基础上，导致了新的类型系统功能的引入：[intersection types][types-intersection]的实例，如`A & B`，既是`A`的实例，也是`B`的实例；[union types][types-union]的实例，如`A | B`，是`A`或`B`的实例。这两种结构都允许程序员在继承层次结构之外灵活地表达类型约束。
+- **Intersection and union types**. 将类型系统建立在新的基础上，引入了新的类型系统特性：[intersection types][types-intersection]的实例，如`A & B`，既是`A`的实例，也是`B`的实例；[union types][types-union]的实例，如`A | B`，是`A`或`B`的实例。这两种结构都允许程序员在继承层次结构之外灵活地表达类型约束。
 
 - **Dependent function types**. Scala 2 已经允许返回类型依赖于（值）参数。在 Scala 3 中，现在可以对这种模式进行抽象，表达[dependent function types][types-dependent]。在类型`F = (e: Entry) => e.Key`中，结果类型取决于参数。
 
 - **Polymorphic function types**. 与 dependent function types 一样，Scala 2 支持拥有类型参数的方法，但不允许程序员对这些方法进行抽象。在 Scala 3 中，像`[A] => List[A] => List[A]`这样的[polymorphic function types][types-polymorphic]可以抽象出除值参数外还接受 _类型参数_ 的函数。
 
-- **Type lambdas**. 在 Scala 2 中需要用[编译器插件](https://github.com/typelevel/kind-projector)来表达的东西，现在在 Scala 3 中是第一类的功能：类型lambdas是类型级别的函数，可以作为（高等类型的）类型参数传递，而不需要辅助类型定义。
+- **Type lambdas**. 在 Scala 2 中需要用[编译器插件](https://github.com/typelevel/kind-projector)来表达的东西，现在在 Scala 3 中是原生支持的功能：类型lambdas是类型级别的函数，可以作为（高等类型的）类型参数传递，而不需要辅助类型定义。
 
 - **Match types**. Scala 3 提供了对[matching on types][types-match]的直接支持，而不是使用隐式解析对类型级别的计算进行编码。将类型级计算整合到类型检查器中，可以改进错误信息，并消除对复杂编码的需求。
 
-### 重新设想的：面向对象的编程
+### Re-envisioned：面向对象的编程
 
 Scala 一直处于函数式编程和面向对象编程的前沿 -- 而 Scala 3 在这两个方向上都推动了边界的发展! 上述类型系统的变化和上下文抽象的重新设计使得 _函数式编程_ 比以前更容易。同时，以下的新特性使结构良好的 _面向对象设计_ 成为可能，并支持最佳实践。
 
@@ -65,7 +65,7 @@ Scala 一直处于函数式编程和面向对象编程的前沿 -- 而 Scala 3 �
 
 - **Plan for extension**.  在面向对象的设计中，扩展那些不打算扩展的类是一个长期存在的问题。为了解决这个问题，[open classes][oo-open]要求库设计者 _明确地_ 将类标记为 open（开放的）。
 
-- **Hide implementation details**.  实施行为的实用性traits有时不应该是推断类型的一部分。在 Scala 3 中，这些traits可以被标记为[transparent][oo-transparent]，（在推断类型中）向用户隐藏继承性。
+- **Hide implementation details**.  实现功能的工具性的traits有时不应该是推断类型的一部分。在 Scala 3 中，这些traits可以被标记为[transparent][oo-transparent]，（在推断类型中）向用户隐藏继承信息。
 
 - **Composition over inheritance**.  这句话经常被引用，但实现起来却很繁琐。Scala 3 的[export clauses][oo-export]则不然：与imports对应，export clauses 允许用户为对象的选定成员定义别名。
 
@@ -74,13 +74,13 @@ Scala 一直处于函数式编程和面向对象编程的前沿 -- 而 Scala 3 �
 ### Batteries Included: 元编程
 Scala 2 中的宏只是一个实验性的功能，而 Scala 3 则为元编程提供了强大的工具库。[宏教程]({% link _overviews/scala3-macros/tutorial/index.md %})中包含了关于不同设施的详细信息。特别是，Scala 3 为元编程提供了以下功能：
 
-- **Inline**. [inline feature][meta-inline]允许在编译时减少数值和方法。这个简单的功能已经涵盖了许多使用情况，同时也为更高级的功能提供了入口。
+- **Inline**. [inline feature][meta-inline]允许在编译时化简值和方法。这个简单的功能已经涵盖了许多使用情况，同时也为更高级的功能提供了入口。
 - **Compile-time operations**. 包[`scala.compiletime`][meta-compiletime]中包含了额外的功能，可以用来实现内联方法。
 - **Quoted code blocks**. Scala 3为代码增加了[quasi-quotation][meta-quotes]的新功能，这为构建和分析代码提供了方便的高级接口。构建加一加一的代码就像`'{ 1 + 1 }`一样简单。
 - **Reflection API**. 对于更高级的用例，[quotes.reflect][meta-reflection]提供了更详细的控制来检查和生成程序树。
 
 
-如果你想进一步了解 Scala 3 中的元编程，我们邀请你参加[教程][meta-tutorial]。
+如果你想进一步了解 Scala 3 中的元编程，我们邀请你参阅我们的[教程][meta-tutorial]。
 
 [enums]: {{ site.scala3ref }}/enums/enums.html
 [enums-adts]: {{ site.scala3ref }}/enums/adts.html
