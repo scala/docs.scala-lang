@@ -81,7 +81,7 @@ For proper benchmark examples, you can see the source code inside [Scala library
 
 This is a question commonly asked. The answer is somewhat involved.
 
-The size of the collection at which the parallelization pays of really
+The size of the collection at which the parallelization pays off really
 depends on many factors. Some of them, but not all, include:
 
 - Machine architecture. Different CPU types have different
