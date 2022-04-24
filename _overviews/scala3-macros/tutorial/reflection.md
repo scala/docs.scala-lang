@@ -117,7 +117,7 @@ In addition, `Symbol` exposes and is used by many useful methods. For example:
 
  - `declaredFields` and `declaredMethods` allow you to iterate on the fields and members defined inside a symbol
  - `flags` allows you to check multiple properties of a symbol
- - `companionObject` and `companionModule` provide a way to jump to and from the companion object/class
+ - `companionClass` and `companionModule` provide a way to jump to and from the companion object/class
  - `TypeRepr.baseClasses` returns the list of symbols of classes extended by a type
  - `Symbol.pos` gives you access to the position where the symbol is defined, the source code of the definition, and even the filename where the symbol is defined
  - many others that you can find in [`SymbolMethods`](https://scala-lang.org/api/3.x/scala/quoted/Quotes$reflectModule$SymbolMethods.html)
