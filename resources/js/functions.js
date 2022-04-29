@@ -392,21 +392,9 @@ function getOS() {
   return osname;
 }
 
-$(document).ready(function() {
-  if ($(".main-download").length) {
-    var os = getOS();
-    var intelliJlink = $("#intellij-" + os).text();
-    var sbtLink = $("#sbt-" + os).text();
-    var stepOneContent = $("#stepOne-" + os).html()
-    $("#download-intellij-link").attr("href", intelliJlink);
-    $("#download-sbt-link").attr("href", sbtLink);
-    $("#download-step-one").html(stepOneContent);
-  }
-});
-
-const toggleElement = (evt, elemId) => {
-  const btn = evt.target;
-  const elem = document.getElementById(elemId);
+function toggleElement(evt, elemId) {
+  var btn = evt.target;
+  var elem = document.getElementById(elemId);
   if (elem.style.display === "none") {
     elem.style.display = "block";
   } else {
@@ -415,13 +403,13 @@ const toggleElement = (evt, elemId) => {
   $(btn).toggleClass("alt-details-closed");
 }
 
-$(document).ready(() => {
+$(document).ready(function() {
   $('.alt-details-toggle').click();
 });
 
 function copySnippet(evt) {
-  const snippet = evt.target.closest('.snippet').querySelector('.snippet-code');
-  const code = snippet.querySelector('code').innerText;
+  var snippet = evt.target.closest('.snippet').querySelector('.snippet-code');
+  var code = snippet.querySelector('code').innerText;
   window.navigator.clipboard.writeText(code)
 }
 
@@ -429,7 +417,7 @@ function openTab(evt, category, tabName) {
   // Get all elements with class="tabcontent" and hide them
   $('.tabcontent-' + category + '.tabcontent').css('display', 'none');
 
-  const queried = evt.target;
+  var queried = evt.target;
 
   // Get all elements with class="tablinks" and remove the class "active"
   $('.tablinks-' + category + '.tablinks').removeClass('active');
@@ -439,8 +427,8 @@ function openTab(evt, category, tabName) {
   queried.className += " active";
 }
 
-$(document).ready(() => {
-  const defaultTabs = document.getElementsByClassName('default-tab');
+$(document).ready(function() {
+  var defaultTabs = document.getElementsByClassName('default-tab');
   for (i = 0; i < defaultTabs.length; i++) {
     defaultTabs[i].click();
   }

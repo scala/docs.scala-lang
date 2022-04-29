@@ -2,7 +2,7 @@
 tabId: other
 tabLabel: Other
 fallbackNoJS: true
-language: en
+language: fr
 ---
 <div class="scala-in-action-content">
   <div class="scala-in-action-code">
@@ -11,7 +11,8 @@ language: en
         <noscript>
           <p><span style="font-style:italic;">JavaScript is disabled, showing the default options.</span></p>
         </noscript>
-        <p>Follow the documentation from Coursier on <a href="https://get-coursier.io/docs/cli-installation" target="_blank">how to install and run <code class="bash">cs setup</code></a>.</p>
+        <p>Suivez <a href="https://get-coursier.io/docs/cli-installation" target="_blank">les instructions pour installer la commande
+        <code>cs</code></a>puis exécutez <code>./cs setup</code>.</p>
       </div>
     </div>
   </div>

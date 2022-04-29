@@ -18,12 +18,17 @@ Scala のインストーラーは[Coursier](https://get-coursier.io/docs/cli-ove
 以下の手順でお使いのシステムにインストールしてください。
 
 <div class="main-download">
-    <div id="download-step-one">
-        <p>Follow <a href="https://get-coursier.io/docs/cli-installation.html#native-launcher" target="_blank">the instructions to install the <code>cs</code> launcher</a> then run:</p>
-        <p><code>$ ./cs setup</code></p>
+    <div class="recommended-install scala-in-action">
+        <div class="scala-in-action-content">
+            <div class="scala-in-action-code">
+                <div class="scala-text scala-text-large">
+                    {% include tabsection.html language='ja' extraClasses='inline-tabs' category='get-started' collection=site.install_tabs %}
+                    <!-- TODO: translate 'Test your setup' from _includes/getting-started.md, embellish tabs -->
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-
 
 `cs setup` は JVM の管理だけでなく、便利なコマンドラインツールもインストールします:
 
@@ -141,29 +146,3 @@ IDE の使用に慣れている場合は、IDE から_Main.scala_のコードを
 
 ### (日本語のみ追記)
 Scala について日本語で質問したい場合、Twitterでつぶやくと気づいた人が教えてくれます。
-
-<!-- Hidden elements whose content are used to provide OS-specific download instructions.
- -- This is handled in `resources/js/functions.js`.
- -->
-<div style="display:none" id="stepOne-linux">
-       <code class="hljs">$ curl -fL https://github.com/coursier/launchers/raw/master/cs-x86_64-pc-linux.gz | gzip -d > cs && chmod +x cs && ./cs setup</code> <br>
-</div>
-
-<div style="display:none" id="stepOne-unix">
-    <p><a href="https://get-coursier.io/docs/cli-installation" target="_blank">手順に従って <code>cs</code> ランチャーをインストール</a>し、その次に以下を実行します。</p>
-    <p><code>$ ./cs setup</code></p>
-</div>
-
-<div style="display:none" id="stepOne-osx">
-    <div class="highlight">
-        <code class="hljs">$ brew install coursier/formulas/coursier && cs setup </code> <br>
-    </div>
-    <p>または、Homebrewを使用しない場合は</p>
-    <div class="highlight">
-        <code class="hljs">$ curl -fL https://github.com/coursier/launchers/raw/master/cs-x86_64-apple-darwin.gz | gzip -d > cs && chmod +x cs &&  (xattr -d com.apple.quarantine cs || true) && ./cs setup</code> <br>
-    </div>
-</div>
-
-<div style="display:none" id="stepOne-windows">
-    <p><a href="https://github.com/coursier/launchers/raw/master/cs-x86_64-pc-win32.zip">the Scala installer for Windows</a>を、ダウンロードして実行してください。</p>
-</div>

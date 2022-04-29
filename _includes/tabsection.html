@@ -1,14 +1,17 @@
 <div class="tabsection {{include.extraClasses}}">
   <div class="tab">
     {% for tabRoot in include.collection %}
+    {% if tabRoot.language == include.language %}
       <button
         id="{{include.category}}-tab-{{tabRoot.tabId}}"
         class="tablinks-{{include.category}} tablinks{%if tabRoot.isDefault %} default-tab{% endif %}{% if tabRoot.isDefault or tabRoot.fallbackNoJS %} active{% endif %}"
         onclick="openTab(event, '{{include.category}}', '{{tabRoot.tabId}}')"
       >{{tabRoot.tabLabel}}</button>
+    {% endif %}
     {% endfor %}
   </div>
   {% for tabRoot in include.collection %}
+  {% if tabRoot.language == include.language %}
     <div id="{{include.category}}-{{tabRoot.tabId}}"
       {% if tabRoot.isDefault or tabRoot.fallbackNoJS %}
         style="display:block;"
@@ -16,5 +19,6 @@
         style="display: none;"
       {% endif %}
       class="tabcontent-{{include.category}} tabcontent">{{tabRoot.content}}</div>
+  {% endif %}
   {% endfor %}
 </div>

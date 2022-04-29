@@ -13,7 +13,7 @@
                     color: $gray;
 
                     &:hover {
-                        background-color: #c9e3eb;
+                        background-color: #b8deea;
                     }
 
                     &:after {
@@ -129,6 +129,7 @@
                 .snippet {
                     pre.snippet-code {
                         code {
+                            padding: 7px 6px;
                             border: 1px solid darken($gray-light, 10%);
                         }
                     }
