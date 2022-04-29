@@ -1,0 +1,46 @@
+// ALT-DETAILS
+//------------------------------------------------
+//------------------------------------------------
+
+.alt-details {
+  margin: 10px 0px;
+
+  button.alt-details-toggle {
+    width: 100%;
+    border: none;
+    background-color: #b635c4;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: $font-size-medium;
+    cursor: pointer;
+    font-weight: 500;
+    color: #fff;
+
+    &:hover {
+      background-color: #941fa1;
+    }
+
+    &:after {
+      content: "\f13a"; // <i class="fa-solid fa-circle-chevron-down"></i>
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      font-size: 15px;
+      color: #fff;
+      float: right;
+      margin-top: 2px;
+    }
+
+    &.alt-details-closed:after {
+      content: "\f138"; // <i class="fa-solid fa-circle-chevron-right"></i>
+    }
+  }
+
+  .alt-details-detail {
+    background-color: rgb(248, 226, 255);
+    border: 1px solid rgb(239, 207, 248);
+    padding-top: 25px;
+    padding-bottom: 10px;
+    margin-top: -15px;
+    margin-bottom: 10px;
+  }
+}

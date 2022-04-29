@@ -404,6 +404,58 @@ $(document).ready(function() {
   }
 });
 
+const toggleElement = (evt, elemId) => {
+  const btn = evt.target;
+  const elem = document.getElementById(elemId);
+  if (elem.style.display === "none") {
+    elem.style.display = "block";
+  } else {
+    elem.style.display = "none";
+  }
+  $(btn).toggleClass("alt-details-closed");
+}
+
+$(document).ready(() => {
+  $('.alt-details-toggle').click();
+});
+
+function copySnippet(evt) {
+  const snippet = evt.target.closest('.snippet').querySelector('.snippet-code');
+  const code = snippet.querySelector('code').innerText;
+  window.navigator.clipboard.writeText(code)
+}
+
+function openTab(evt, category, tabName) {
+  // Get all elements with class="tabcontent" and hide them
+  $('.tabcontent-' + category + '.tabcontent').css('display', 'none');
+
+  const queried = evt.target;
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  $('.tablinks-' + category + '.tablinks').removeClass('active');
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(category + '-' + tabName).style.display = "block";
+  queried.className += " active";
+}
+
+$(document).ready(() => {
+  const defaultTabs = document.getElementsByClassName('default-tab');
+  for (i = 0; i < defaultTabs.length; i++) {
+    defaultTabs[i].click();
+  }
+});
+
+$(document).ready(function () {
+  if ($(".main-download").length) {
+    let os = getOS();
+    if (os === 'unix') {
+      os = 'linux';
+    }
+    $("#get-started-tab-" + os).click();
+  }
+});
+
 var image = {
   width: 1680,
   height: 1100
@@ -467,18 +519,18 @@ $('#filter-glossary-terms').focus();
 
 
 //Footer scroll to top button
-$(document).ready(function(){ 
-    $(window).scroll(function(){ 
-        if ($(this).scrollTop() > 100) { 
-            $('#scroll-to-top-btn').fadeIn(); 
-        } else { 
-            $('#scroll-to-top-btn').fadeOut(); 
-        } 
-    }); 
-    $('#scroll-to-top-btn').click(function(){ 
-        $("html, body").animate({ scrollTop: 0 }, 600); 
-        return false; 
-    }); 
+$(document).ready(function(){
+    $(window).scroll(function(){
+        if ($(this).scrollTop() > 100) {
+            $('#scroll-to-top-btn').fadeIn();
+        } else {
+            $('#scroll-to-top-btn').fadeOut();
+        }
+    });
+    $('#scroll-to-top-btn').click(function(){
+        $("html, body").animate({ scrollTop: 0 }, 600);
+        return false;
+    });
 });
 
 //Contributors widget
@@ -490,7 +542,7 @@ $(document).ready(function () {
    * - some files aren't prefixed with underscore, see rootFiles
    * - some files are placed in _overviews but rendered to its folder, see overviewsFolders
    */
-  
+
   let rootFiles = ['getting-started', 'learn', 'glossary'];
   let overviewsFolders = ['FAQ', 'cheatsheets', 'collections', 'compiler-options',
     'core', 'jdk-compatibility', 'macros', 'parallel-collections',
