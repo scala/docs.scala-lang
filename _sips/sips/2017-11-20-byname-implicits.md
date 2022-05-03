@@ -1,7 +1,8 @@
 ---
 layout: sip
-title: SIP-NN - Byname implicit arguments
-vote-status: pending
+title: SIP-36 - Byname implicit arguments
+vote-status: complete
+vote-text: This SIP has been implemented in Scala 2.13.0 and Scala 3.0.0
 permalink: /sips/:title.html
 redirect_from: /sips/pending/byname-implicits.html
 ---
