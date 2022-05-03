@@ -1,7 +1,8 @@
 ---
 layout: sip
-title: SIP-NN - Quote escapes for interpolations
-vote-status: pending
+title: SIP-37 - Quote escapes for interpolations
+vote-status: complete
+vote-text: This SIP has been implemented in Scala 2.13.6 and Scala 3.0.0
 permalink: /sips/:title.html
 redirect_from: /sips/pending/interpolation-quote-escape.html
 ---
