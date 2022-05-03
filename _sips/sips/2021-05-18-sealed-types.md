@@ -1,6 +1,6 @@
 ---
 layout: sip
-title: Sealed Types
+title: SIP-NN - Sealed Types
 vote-status: pending
 permalink: /sips/:title.html
 redirect_from: /sips/pending/sealed-types.html
