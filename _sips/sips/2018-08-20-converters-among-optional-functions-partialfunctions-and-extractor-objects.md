@@ -1,7 +1,8 @@
 ---
 layout: sip
-title: SIP-NN - Converters among optional Functions, PartialFunctions and extractor objects
-vote-status: pending
+title: SIP-38 - Converters among optional Functions, PartialFunctions and extractor objects
+vote-status: complete
+vote-text: This SIP has been implemented in Scala 2.13.0 and Scala 3.0.0
 permalink: /sips/:title.html
 redirect_from: /sips/pending/converters-among-optional-functions-partialfunctions-and-extractor-object.html
 ---
