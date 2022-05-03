@@ -2,7 +2,8 @@
 layout: sip
 title: SIP-35 - Opaque types
 
-vote-status: accepted
+vote-status: complete
+vote-text: This SIP has been implemented with some changes in Scala 3.0.0
 permalink: /sips/:title.html
 redirect_from: /sips/pending/opaque-types.html
 ---
@@ -50,11 +51,8 @@ For a definition of boxing and previous state-of-the-art, we recommend reading [
 
 ### Implementation note
 
-The proposal is currently in an early stage.
-[It’s being implemented](https://github.com/scalacenter/scala/tree/opaque-type),
-but the proposed implementation strategy is not detailed enough to be able
-to predict with certainty that it will work as specified. Consequently,
-details of the proposal might change driven by implementation concerns.
+Opaque types have been implemented in Scala 3.0.0 with
+[some changes compared to this proposal](https://docs.scala-lang.org/scala3/reference/other-new-features/opaques-details.html#relationship-to-sip-35).
 
 ## Opaque types
 
