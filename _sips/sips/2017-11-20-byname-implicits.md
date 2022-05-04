@@ -1,6 +1,6 @@
 ---
 layout: sip
-title: SIP-36 - Byname implicit arguments
+title: SIP-31 - Byname implicit arguments
 vote-status: complete
 vote-text: This SIP has been implemented in Scala 2.13.0 and Scala 3.0.0
 permalink: /sips/:title.html
