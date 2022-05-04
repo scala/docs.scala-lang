@@ -1,6 +1,6 @@
 ---
 layout: sip
-title: SIP-28 and SIP-29 - Inline meta
+title: SIP-28 - Inline meta
 vote-status: dormant
 vote-text: This proposal needs an owner.
 permalink: /sips/:title.html
