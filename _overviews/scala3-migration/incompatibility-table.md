@@ -59,7 +59,7 @@ Some features are dropped to simplify the language.
 
 ### Contextual Abstractions
 
-The redesign of [contextual abstractions]({% link _scala3-reference/contextual.md %}) brings some well defined incompatibilities.
+The redesign of [contextual abstractions]({{ site.scala3ref }}/contextual.html) brings some well defined incompatibilities.
 
 |Incompatibility|Scala 2.13|Scala 3 Migration Rewrite|Scalafix Rule|Runtime Incompatibility|
 |--- |--- |--- |--- |--- |
@@ -69,7 +69,7 @@ The redesign of [contextual abstractions]({% link _scala3-reference/contextual.m
 |[Ambiguous conversion on `A` and `=> A`](incompat-contextual-abstractions.html#ambiguous-conversion-on-a-and--a)|||||
 
 Furthermore we have changed the implicit resolution rules so that they are more useful and less surprising.
-The new rules are described [here](/scala3/reference/changed-features/implicit-resolution.html).
+The new rules are described [here]({{ site.scala3ref }}/changed-features/implicit-resolution.html).
 
 Because of these changes, the Scala 3 compiler could possibly fail at resolving some implicit parameters of existing Scala 2.13 code.
 

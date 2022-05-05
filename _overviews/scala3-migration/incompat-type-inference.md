@@ -65,7 +65,7 @@ class Child extends Parent {
 
 ## Reflective Type
 
-Scala 2 reflective calls are dropped and replaced by the broader [Programmatic Structural Types](/scala3/reference/changed-features/structural-types.html).
+Scala 2 reflective calls are dropped and replaced by the broader [Programmatic Structural Types]({{ site.scala3ref }}/changed-features/structural-types.html).
 
 Scala 3 can imitate Scala 2 reflective calls by making `scala.reflect.Selectable.reflectiveSelectable` available wherever `scala.language.reflectiveCalls` is imported.
 However the Scala 3 compiler does not infer structural types by default, and thus fails at compiling:

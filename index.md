@@ -39,7 +39,7 @@ scala3-sections:
       - title: "Language Reference"
         description: "The Scala 3 language reference."
         icon: "fa fa-book"
-        link: /scala3/reference/overview.html
+        link: https://docs.scala-lang.org/scala3/reference
       - title: "Scala 3 Contributing Guide"
         description: "Guide to the Scala 3 Compiler and fixing an issue"
         icon: "fa fa-cogs"

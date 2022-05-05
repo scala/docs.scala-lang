@@ -22,7 +22,7 @@ on [GitHub](https://github.com/scala/docs.scala-lang/tree/main/_overviews/scala3
 
 `dotc` is built with Scala 3, fully utilising its [new features](/scala3/new-in-scala3.html).
 It is recommended that you first have some familiarity with Scala 3
-to get the most out of this guide. You can learn more in the [language reference](/scala3/reference/overview.html).
+to get the most out of this guide. You can learn more in the [language reference]({{ site.scala3ref}}).
 
 Many code snippets in this guide make use of shell commands (a line beginning with `$`), and in this case
 a `bash` compatible shell is assumed. You may have to look up how to translate commands to your shell.

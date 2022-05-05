@@ -7,7 +7,7 @@ previous-page: incompat-dropped-features
 next-page: incompat-other-changes
 ---
 
-The redesign of [contextual abstractions]({% link _scala3-reference/contextual.md %}) brings some incompatibilities.
+The redesign of [contextual abstractions]({{ site.scala3ref }}/contextual.html) brings some incompatibilities.
 
 |Incompatibility|Scala 2.13|Scala 3 Migration Rewrite|Scalafix Rule|Runtime Incompatibiltiy|
 |--- |--- |--- |--- |--- |

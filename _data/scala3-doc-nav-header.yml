@@ -17,7 +17,7 @@
     - title: Guides
       url: '/scala3/guides.html'
     - title: Language Specification
-      url: "/scala3/reference/overview.html"
+      url: "https://docs.scala-lang.org/scala3/reference"
     - title: Scala Library API
       url: "https://scala-lang.org/api/3.x/"
 - title: Contributing Guide

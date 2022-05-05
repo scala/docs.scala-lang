@@ -216,8 +216,8 @@ and a [summary with practical differences](https://tpolecat.github.io/2014/06/09
 
 Note that in **Scala 3** the differences are fewer;
 for example, they will be able to
-[accept implicit parameters](/scala3/reference/contextual/context-functions.html)
-as well as [type parameters](/scala3/reference/new-types/polymorphic-function-types.html).
+[accept implicit parameters]({{ site.scala3ref }}/contextual/context-functions.html)
+as well as [type parameters]({{ site.scala3ref }}/new-types/polymorphic-function-types.html).
 
 Nevertheless, it is still recommended to use methods most of the time,
 unless you absolutely need a function. And, thanks to

@@ -160,7 +160,7 @@ compile - Enables snippet checking.
 nocompile - Disables snippet checking.
 fail - Enables snippet checking, asserts that snippet doesn't compile.
 
-The fail flag comes in handy for snippets that present that some action would eventually fail during compilation, e. g. [Opaques page]({% link _scala3-reference/other-new-features/opaques.md %})
+The fail flag comes in handy for snippets that present that some action would eventually fail during compilation, e. g. [Opaques page]({{ site.scala3ref }}/other-new-features/opaques.html)
 
 Example usage:
 

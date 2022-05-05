@@ -257,4 +257,4 @@ above. Here is an example using the various modifiers.
 [why-contribute]: {% link contribute.md %}
 [home]: {% link index.md %}
 [overviews-index]: {% link _overviews/index.md %}
-[scala-3-reference]: https://docs.scala-lang.org/scala3/reference/overview.html
+[scala-3-reference]: {{ site.scala3ref }}
