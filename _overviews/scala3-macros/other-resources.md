@@ -9,7 +9,7 @@ num: 9
  * [Migration status][migration-status]
 
 ## Dotty documentation
-- [Dotty Documentation]({{ site.scala3ref }}/metaprogramming.html)
+- [Dotty Documentation]({{ site.scala3ref }}/metaprogramming)
 - [Macros: The Plan For Scala 3](https://www.scala-lang.org/blog/2018/04/30/in-a-nutshell.html)
 - [Examples](https://github.com/lampepfl/dotty-macro-examples) - a repository with small, self-contained examples of various tasks done with Dotty macros.
 

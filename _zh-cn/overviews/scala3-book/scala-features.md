@@ -242,7 +242,7 @@ As Heather Miller states, Scala is considered to be a [strong, statically-typed 
 - You can refactor your code with confidence
 - Method type declarations tell readers what the method does, and help serve as documentation
 - Scalability and maintainability: types help ensure correctness across arbitrarily large applications and development teams
-- Strong typing in combination with excellent inference enables mechanisms like [contextual abstraction]({{ site.scala3ref }}/contextual.html) that allows you to omit boilerplate code. Often, this boilerplate code can be inferred by the compiler, based on type definitions and a given context.
+- Strong typing in combination with excellent inference enables mechanisms like [contextual abstraction]({{ site.scala3ref }}/contextual) that allows you to omit boilerplate code. Often, this boilerplate code can be inferred by the compiler, based on type definitions and a given context.
 
 {% endcomment %}
 
@@ -254,7 +254,7 @@ As Heather Miller states, Scala is considered to be a [strong, statically-typed 
 - 您可以自信地重构您的代码
 - 方法类型声明告诉读者该方法的作用，并作为文档提供帮助
 - 可扩展性与可维护性：类型有助于在任意大小的应用程序与开发团队中确保正确性
-- 强类型结合优秀的推断能力可实现[上下文抽象]({{ site.scala3ref }}/contextual.html)等机制，这允许您省略样板代码。通常，这些样板代码可由编译器根据类型定义及给定的上下文推断出来。
+- 强类型结合优秀的推断能力可实现[上下文抽象]({{ site.scala3ref }}/contextual)等机制，这允许您省略样板代码。通常，这些样板代码可由编译器根据类型定义及给定的上下文推断出来。
 
 {% comment %}
 In that list:
@@ -452,7 +452,7 @@ In Scala, a context parameter directly leads to an inferred argument term that c
 Use cases for this concept include implementing [type classes]({% link _overviews/scala3-book/ca-type-classes.md %}), establishing context, dependency injection, expressing capabilities, computing new types, and proving relationships between them.
 
 Scala 3 makes this process more clear than ever before.
-Read about contextual abstractions in the [Reference documentation]({{ site.scala3ref }}/contextual.html).
+Read about contextual abstractions in the [Reference documentation]({{ site.scala3ref }}/contextual).
 {% endcomment %}
 
 继 Haskell 之后，Scala 是第二种具有某种形式的 _隐式_ 的流行语言。
@@ -464,7 +464,7 @@ Read about contextual abstractions in the [Reference documentation]({{ site.scal
 此概念的用例包括实现[类型类]({% link _overviews/scala3-book/ca-type-classes.md %})、建立上下文、依赖注入、表达能力、计算新类型以及证明它们之间的关系。
 
 Scala 3 使此过程比以往任何时候都更加清晰。
-请在[参考文档]({{ site.scala3ref }}/contextual.html)中阅读关于上下文抽象的内容。
+请在[参考文档]({{ site.scala3ref }}/contextual)中阅读关于上下文抽象的内容。
 
 {% comment %}
 

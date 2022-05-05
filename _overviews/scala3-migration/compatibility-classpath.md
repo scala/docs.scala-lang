@@ -67,7 +67,7 @@ The TASTy reader supports all the traditional language features as well as the f
 - [Intersection Types]({{ site.scala3ref }}/new-types/intersection-types.html)
 - [Opaque Type Aliases]({{ site.scala3ref }}/other-new-features/opaques.html)
 - [Type Lambdas]({{ site.scala3ref }}/new-types/type-lambdas.html)
-- [Contextual Abstractions]({{ site.scala3ref }}/contextual.html) (new syntax)
+- [Contextual Abstractions]({{ site.scala3ref }}/contextual) (new syntax)
 - [Open Classes]({{ site.scala3ref }}/other-new-features/open-classes.html) (and inheritance of super traits)
 - [Export Clauses]({{ site.scala3ref }}/other-new-features/export.html)
 

@@ -137,7 +137,7 @@ As Heather Miller states, Scala is considered to be a [strong, statically-typed 
 - You can refactor your code with confidence
 - Method type declarations tell readers what the method does, and help serve as documentation
 - Scalability and maintainability: types help ensure correctness across arbitrarily large applications and development teams
-- Strong typing in combination with excellent inference enables mechanisms like [contextual abstraction]({{ site.scala3ref }}/contextual.html) that allows you to omit boilerplate code. Often, this boilerplate code can be inferred by the compiler, based on type definitions and a given context.
+- Strong typing in combination with excellent inference enables mechanisms like [contextual abstraction]({{ site.scala3ref }}/contextual) that allows you to omit boilerplate code. Often, this boilerplate code can be inferred by the compiler, based on type definitions and a given context.
 
 {% comment %}
 In that list:
@@ -242,7 +242,7 @@ In Scala, a context parameter directly leads to an inferred argument term that c
 Use cases for this concept include implementing [type classes]({% link _overviews/scala3-book/ca-type-classes.md %}), establishing context, dependency injection, expressing capabilities, computing new types, and proving relationships between them.
 
 Scala 3 makes this process more clear than ever before.
-Read about contextual abstractions in the [Reference documentation]({{ site.scala3ref }}/contextual.html).
+Read about contextual abstractions in the [Reference documentation]({{ site.scala3ref }}/contextual).
 
 
 ### Client &amp; server

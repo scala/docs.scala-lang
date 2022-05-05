@@ -428,9 +428,9 @@ Hopefully you’ll discover more great Scala features as you use the language.
 [given]: {% link _overviews/scala3-book/ca-given-using-clauses.md %}
 [contextual]: {% link _overviews/scala3-book/ca-contextual-abstractions-intro.md %}
 [reference]: {{ site.scala3ref }}
-[dropped]: {{ site.scala3ref }}/dropped-features.html
-[changed]: {{ site.scala3ref }}/changed-features.html
-[added]:{{ site.scala3ref }}/other-new-features.html
+[dropped]: {{ site.scala3ref }}/dropped-features
+[changed]: {{ site.scala3ref }}/changed-features
+[added]:{{ site.scala3ref }}/other-new-features
 
 [union-types]: {% link _overviews/scala3-book/types-union.md %}
 [opaque-types]: {% link _overviews/scala3-book/types-opaque-types.md %}

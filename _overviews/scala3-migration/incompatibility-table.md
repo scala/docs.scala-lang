@@ -59,7 +59,7 @@ Some features are dropped to simplify the language.
 
 ### Contextual Abstractions
 
-The redesign of [contextual abstractions]({{ site.scala3ref }}/contextual.html) brings some well defined incompatibilities.
+The redesign of [contextual abstractions]({{ site.scala3ref }}/contextual) brings some well defined incompatibilities.
 
 |Incompatibility|Scala 2.13|Scala 3 Migration Rewrite|Scalafix Rule|Runtime Incompatibility|
 |--- |--- |--- |--- |--- |

@@ -161,7 +161,7 @@ New thread: [SIP public review: Open classes](https://contributors.scala-lang.or
 
 ### Review the "Explicit nulls" SIP
 
-Thread: <{{ site.scala3ref }}/other-new-features/explicit-nulls.html>
+Thread: <{{ site.scala3ref }}/experimental/explicit-nulls.html>
 
 Sébastien championing and presenting.
 
