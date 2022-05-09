@@ -47,7 +47,7 @@ You are recommended, as a second step, to replace every use of `Symbol` with a p
 
 ## `do`-`while` construct
 
-The `do` keyword has acquired a different meaning in the [New Control Syntax]({% link _scala3-reference/other-new-features/control-syntax.md %}).
+The `do` keyword has acquired a different meaning in the [New Control Syntax]({{ site.scala3ref }}/other-new-features/control-syntax.html).
 
 To avoid confusion, the traditional `do <body> while (<cond>)` construct is dropped.
 It is recommended to use the equivalent `while ({ <body>; <cond> }) ()` that can be cross-compiled, or the new Scala 3 syntax `while { <body>; <cond> } do ()`.
@@ -94,11 +94,11 @@ object Hello {
 +println(Hello.message())
 {% endhighlight %}
 
-Auto-application is covered in detail in [this page](/scala3/reference/dropped-features/auto-apply.html) of the Scala 3 reference documentation.
+Auto-application is covered in detail in [this page]({{ site.scala3ref }}/dropped-features/auto-apply.html) of the Scala 3 reference documentation.
 
 ## Value eta-expansion
 
-Scala 3 introduces [Automatic Eta-Expansion](/scala3/reference/changed-features/eta-expansion-spec.html) which will deprecate the method to value syntax `m _`.
+Scala 3 introduces [Automatic Eta-Expansion]({{ site.scala3ref }}/changed-features/eta-expansion-spec.html) which will deprecate the method to value syntax `m _`.
 Furthermore Scala 3 does not allow eta-expansion of values to nullary functions anymore.
 
 Thus, this piece of code is invalid in Scala 3:
@@ -138,7 +138,7 @@ This rewrite can be applied by the `fix.scala213.Any2StringAdd` Scalafix rule in
 ## Early Initializer
 
 Early initializers are deprecated in Scala 2.13 and dropped in Scala 3.
-They were rarely used, and mostly to compensate for the lack of [Trait parameters](/scala3/reference/other-new-features/trait-parameters.html) which are now supported in Scala 3.
+They were rarely used, and mostly to compensate for the lack of [Trait parameters]({{ site.scala3ref }}/other-new-features/trait-parameters.html) which are now supported in Scala 3.
 
 That is why the following piece of code does not compile anymore.
 
@@ -198,7 +198,7 @@ class Fizz private (val name: String) extends Bar {
 
 ## Existential Type
 
-Existential type is a [dropped feature](/scala3/reference/dropped-features/existential-types.html), which makes the following code invalid.
+Existential type is a [dropped feature]({{ site.scala3ref }}/dropped-features/existential-types.html), which makes the following code invalid.
 
 ```scala
 def foo: List[Class[T]] forSome { type T } // Error: Existential types are no longer supported

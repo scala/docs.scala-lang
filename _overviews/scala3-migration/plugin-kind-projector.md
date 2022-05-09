@@ -100,7 +100,7 @@ type MyLambda[F[_], A] = EitherT[F, Int, A]
 MyLambda
 ```
 
-Alternatively you may use Scala 3's [Native Type Lambdas](https://docs.scala-lang.org/scala3/reference/new-types/type-lambdas.html) if you do not need to cross-compile:
+Alternatively you may use Scala 3's [Native Type Lambdas]({{ site.scala3ref }}/new-types/type-lambdas.html) if you do not need to cross-compile:
 
 ```scala
 [F[_], A] =>> EitherT[F, Int, A]

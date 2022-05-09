@@ -52,7 +52,7 @@ For a definition of boxing and previous state-of-the-art, we recommend reading [
 ### Implementation note
 
 Opaque types have been implemented in Scala 3.0.0 with
-[some changes compared to this proposal](https://docs.scala-lang.org/scala3/reference/other-new-features/opaques-details.html#relationship-to-sip-35).
+[some changes compared to this proposal]({{ site.scala3ref }}/other-new-features/opaques-details.html#relationship-to-sip-35).
 
 ## Opaque types
 

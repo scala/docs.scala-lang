@@ -499,7 +499,7 @@ def powerCode(x: Expr[Double], n: Expr[Int])(using Quotes): Expr[Double] = ...
 ```
 
 
-[soft-modifier]: {% link _scala3-reference/soft-modifier.md %}
+[soft-modifier]: {{ site.scala3ref }}/soft-modifier.html
 
 [contributing]: {% link scala3/contribute-to-docs.md %}
 [best-practices]: {% link _overviews/scala3-macros/best-practices.md %}
