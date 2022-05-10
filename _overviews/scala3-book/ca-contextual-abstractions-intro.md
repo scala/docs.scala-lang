@@ -36,7 +36,7 @@ While these concepts were gradually “discovered” in Scala 2, they’re now w
 The design of Scala 3 focuses on **intent** rather than **mechanism**.
 Instead of offering one very powerful feature of implicits, Scala 3 offers several use-case oriented features:
 
-- **Abtracting over contextual information**.
+- **Abstracting over contextual information**.
   [Using clauses][givens] allow programmers to abstract over information that is available in the calling context and should be passed implicitly.
   As an improvement over Scala 2 implicits, using clauses can be specified by type, freeing function signatures from term variable names that are never explicitly referred to.
 
