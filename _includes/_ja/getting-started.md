@@ -18,15 +18,11 @@ Scala のインストーラーは[Coursier](https://get-coursier.io/docs/cli-ove
 以下の手順でお使いのシステムにインストールしてください。
 
 <div class="main-download">
-    <div class="recommended-install scala-in-action">
-        <div class="scala-in-action-content">
-            <div class="scala-in-action-code">
-                <div class="scala-text scala-text-large">
-                    {% include tabsection.html language='ja' extraClasses='inline-tabs' category='get-started' collection=site.install_tabs %}
-                    <!-- TODO: translate 'Test your setup' from _includes/getting-started.md, embellish tabs -->
-                </div>
-            </div>
+    <div class="recommended-install">
+        <div class="place-inline">
+            {% include tabsection.html language='ja' id='install-cs-setup-tabs' collection=site.install_tabs %}
         </div>
+        <!-- TODO: translate 'Test your setup' from _includes/getting-started.md, embellish tabs -->
     </div>
 </div>
 

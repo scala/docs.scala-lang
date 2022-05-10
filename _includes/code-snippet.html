@@ -1,8 +1,8 @@
-<div class="snippet">
+<div class="code-snippet-area">
   {% unless include.nocopy %}
-  <div class="buttons">
-    <div><button class="copy-button" onclick="copySnippet(event)"><i class="fa fa-clone"></i></button></div>
+  <div class="code-snippet-buttons">
+    <button class="copy-button"><i class="far fa-clone"></i></button>
   </div>
   {% endunless %}
-  <pre class="snippet-code"><code class="{{include.language}}">{{include.codeSnippet}}</code></pre>
+  <pre class="code-snippet-display"><code class="{{include.language}}">{{include.codeSnippet}}</code></pre>
 </div>

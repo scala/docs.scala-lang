@@ -392,55 +392,70 @@ function getOS() {
   return osname;
 }
 
-function toggleElement(evt, elemId) {
-  var btn = evt.target;
-  var elem = document.getElementById(elemId);
-  if (elem.style.display === "none") {
-    elem.style.display = "block";
-  } else {
-    elem.style.display = "none";
-  }
-  $(btn).toggleClass("alt-details-closed");
-}
+$(document).ready(function () {
+  // for each .alt-details div, find the .alt-details-toggle button,
+  // and add a click handler to toggle the visibility of the .alt-details-detail
 
-$(document).ready(function() {
-  $('.alt-details-toggle').click();
-});
-
-function copySnippet(evt) {
-  var snippet = evt.target.closest('.snippet').querySelector('.snippet-code');
-  var code = snippet.querySelector('code').innerText;
-  window.navigator.clipboard.writeText(code)
-}
-
-function openTab(evt, category, tabName) {
-  // Get all elements with class="tabcontent" and hide them
-  $('.tabcontent-' + category + '.tabcontent').css('display', 'none');
-
-  var queried = evt.target;
-
-  // Get all elements with class="tablinks" and remove the class "active"
-  $('.tablinks-' + category + '.tablinks').removeClass('active');
-
-  // Show the current tab, and add an "active" class to the button that opened the tab
-  document.getElementById(category + '-' + tabName).style.display = "block";
-  queried.className += " active";
-}
-
-$(document).ready(function() {
-  var defaultTabs = document.getElementsByClassName('default-tab');
-  for (i = 0; i < defaultTabs.length; i++) {
-    defaultTabs[i].click();
-  }
+  $('.alt-details').each(function () {
+    var toggle = $(this).find('.alt-details-toggle');
+    var details = $(this).find('.alt-details-detail');
+    toggle.click(function () {
+      details.css('display') === 'none' ? details.show() : details.hide();
+      toggle.toggleClass('alt-details-closed');
+    });
+    toggle.click();
+  });
 });
 
 $(document).ready(function () {
+  // for each code snippet area, find the copy button,
+  // and add a click listener that will copy text from
+  // the code area to the clipboard
+  $(".code-snippet-area").each(function () {
+    var area = this;
+    $(area).children(".code-snippet-buttons").children("button.copy-button").click(function () {
+      var code = $(area).children(".code-snippet-display").children("code").text();
+      window.navigator.clipboard.writeText(code);
+    });
+  });
+});
+
+$(document).ready(function () {
+  $('.tabsection').each(function () {
+    var tabsection = this;
+    $(tabsection).find('.nav-tab > .item-tab > .item-tab-link').each(function () {
+      var tabLink = this;
+      var targetTab = $(tabLink).attr('data-target');
+      $(tabLink).click(function () {
+        console.log("clicked on " + targetTab);
+        $(tabsection).find('.nav-tab > .item-tab > .item-tab-link').each(function () {
+          var otherTab = this;
+          var otherTarget = $(otherTab).attr('data-target');
+          otherTarget === targetTab ? $(otherTab).addClass('active') : $(otherTab).removeClass('active');
+        })
+        $(tabsection).children('.tabcontent').each(function () {
+          var tabContent = this;
+          var tabId = $(tabContent).attr('data-tab');
+          targetTab === tabId ? $(tabContent).addClass('active') : $(tabContent).removeClass('active');
+        });
+      });
+    });
+  });
+});
+
+$(document).ready(function () {
+  // click the get-started tab corresponding to the users OS.
   if ($(".main-download").length) {
-    let os = getOS();
+    var os = getOS();
     if (os === 'unix') {
       os = 'linux';
     }
-    $("#get-started-tab-" + os).click();
+    $("#install-cs-setup-tabs").find('.nav-tab > .item-tab > .item-tab-link').each(function () {
+      var targetTab = $(this).attr("data-target");
+      if (targetTab === os) {
+        $(this).click();
+      }
+    });
   }
 });
 

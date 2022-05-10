@@ -24,26 +24,23 @@ Install it on your system with the following instructions.
 Scala code runner version {{site.scala-3-version}} -- Copyright 2002-2022, LAMP/EPFL{% endcapture %}
 
 <div class="main-download">
-  <div class="recommended-install scala-in-action">
-    <div class="scala-in-action-content">
-      <div class="scala-in-action-code">
-        <div class="scala-text scala-text-large">
-          {% include tabsection.html language='en' extraClasses='inline-tabs' category='get-started' collection=site.install_tabs %}
-          {% capture checkSetupDetail %}
-          <div class="wrap">
-            <p>Check your setup with the command <code>scala -version</code>, which should output:</p>
-            {% include code-snippet.html codeSnippet=scalaDemo language='bash' nocopy=true %}
-            <p>If that does not work, you may need to log out and log back in (or reboot) in order for the changes to take effect.</p>
-          </div>
-          {% endcapture %}
-          {% include alt-details.html
-            title='Testing your setup'
-            detail=checkSetupDetail
-            targetId='macos-get-started-alt1'
-            extraClasses='scala-text scala-text-large'
-          %}
-        </div>
+  <div class="recommended-install">
+    <div class="place-inline">
+      {% include tabsection.html language='en' id='install-cs-setup-tabs' collection=site.install_tabs %}
+    </div>
+    {% capture checkSetupDetail %}
+    <div class="wrap-inline">
+      <div class="wrap">
+        <p>Check your setup with the command <code>scala -version</code>, which should output:</p>
+        {% include code-snippet.html nocopy=true language='bash' codeSnippet=scalaDemo %}
+        <p>If that does not work, you may need to log out and log back in (or reboot) in order for the changes to take
+          effect.
+        </p>
       </div>
+    </div>
+    {% endcapture %}
+    <div class="place-inline">
+      {% include alt-details.html id='testing-your-setup' title='Testing your setup' detail=checkSetupDetail %}
     </div>
   </div>
 </div>
