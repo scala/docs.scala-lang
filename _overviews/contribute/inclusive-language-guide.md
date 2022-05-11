@@ -90,7 +90,7 @@ This list is neither comprehensive nor definitive, and it can evolve over time.
 * **blacklist/whitelist** \
   While the etymology of these words has no relation to racism, their use suggests an association between the color black and some form of badness or exclusion, and between the color white and some form of goodness or inclusion.
   Prefer alternatives when possible.
-  Several alternatives have been proposed but none sticks as "the one". We suggest using the pair *allowlist*/*denylist* or the pair *include*/*exclude*, as these are generic enough to replace most uses of *blacklist*/*whitelist*.
+  Several alternatives have been proposed but none sticks as "the one". We suggest using the pair *denylist*/*allowlist* or the pair *excludelist*/*includelist*, as these are generic enough to replace most uses of *blacklist*/*whitelist*.
 * **master/slave** \
   Never use *slave*.
   Never use *master* in conjunction with *slave*.
