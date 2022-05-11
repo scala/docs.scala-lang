@@ -118,9 +118,9 @@ You may want to use automated software like [In Solidarity](https://github.com/a
 
 ## Dysphemism
 
-Dysphemisms, the opposite of euphemisms, should be avoided. For example, the English expressions "pull the trigger" (enforce a decision) and "bite the bullet" (endure hardship) can be disturbingly violent if you are not used to them.
-
-Using the direct meaning is preferred.
+Dysphemisms, the opposite of euphemisms, can be disturbingly violent if you are not used to them.
+Examples include the English expressions "pull the trigger" (enforce a decision) and "bite the bullet" (endure hardship).
+Prefer the direct meaning instead.
 
 ## Backward compatibility
 
