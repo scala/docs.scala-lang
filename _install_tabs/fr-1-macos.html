@@ -1,0 +1,19 @@
+---
+tabId: osx
+tabLabel: macOS
+language: fr
+---
+<div class="wrap-inline">
+  <div class="wrap">
+    {% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.macOS-brew %}
+    {% capture homebrewDetail %}
+    <div class="wrap">
+      {% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.macOS-default %}
+    </div>
+    {% endcapture %}
+    {% include alt-details.html
+      title="Alternativement, si vous n'utilisez pas Homebrew:"
+      detail=homebrewDetail
+    %}
+  </div>
+</div>

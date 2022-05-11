@@ -1,0 +1,19 @@
+<div {% if include.id %} id="{{include.id}}" {% endif %} class="tabsection">
+  <ul class="nav-tab">
+    {% for tabRoot in include.collection %}
+    {% if tabRoot.language == include.language %}
+    <li class="item-tab">
+      <a class="item-tab-link {% if tabRoot.defaultTab %} active{% endif %}"
+        data-target="{{tabRoot.tabId}}">{{tabRoot.tabLabel}}</a>
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+  {% for tabRoot in include.collection %}
+  {% if tabRoot.language == include.language %}
+  <div class="tabcontent {% if tabRoot.defaultTab %}active{% endif %}" data-tab="{{tabRoot.tabId}}">
+    {{tabRoot.content}}
+  </div>
+  {% endif %}
+  {% endfor %}
+</div>

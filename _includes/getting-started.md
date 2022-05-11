@@ -20,11 +20,29 @@ The Scala installer is a tool named [Coursier](https://get-coursier.io/docs/cli-
 It ensures that a JVM and standard Scala tools are installed on your system.
 Install it on your system with the following instructions.
 
+{% capture scalaDemo %}$ scala -version
+Scala code runner version {{site.scala-3-version}} -- Copyright 2002-2022, LAMP/EPFL{% endcapture %}
+
 <div class="main-download">
-    <div id="download-step-one">
-        <p>Follow <a href="https://get-coursier.io/docs/cli-installation.html#native-launcher" target="_blank">the instructions to install the <code>cs</code> launcher</a> then run:</p>
-        <p><code>$ ./cs setup</code></p>
+  <div class="recommended-install">
+    <div class="place-inline">
+      {% include tabsection.html language='en' id='install-cs-setup-tabs' collection=site.install_tabs %}
     </div>
+    {% capture checkSetupDetail %}
+    <div class="wrap-inline">
+      <div class="wrap">
+        <p>Check your setup with the command <code>scala -version</code>, which should output:</p>
+        {% include code-snippet.html nocopy=true language='bash' codeSnippet=scalaDemo %}
+        <p>If that does not work, you may need to log out and log back in (or reboot) in order for the changes to take
+          effect.
+        </p>
+      </div>
+    </div>
+    {% endcapture %}
+    <div class="place-inline">
+      {% include alt-details.html id='testing-your-setup' title='Testing your setup' detail=checkSetupDetail %}
+    </div>
+  </div>
 </div>
 
 
@@ -165,29 +183,3 @@ Once you've finished the above tutorials, consider checking out:
 
 ## Getting Help
 There are a multitude of mailing lists and real-time chat rooms in case you want to quickly connect with other Scala users. Check out our [community](https://scala-lang.org/community/) page for a list of these resources, and for where to reach out for help.
-
-<!-- Hidden elements whose content are used to provide OS-specific download instructions.
- -- This is handled in `resources/js/functions.js`.
- -->
-<div style="display:none" id="stepOne-linux">
-       <code class="hljs">$ curl -fL https://github.com/coursier/launchers/raw/master/cs-x86_64-pc-linux.gz | gzip -d > cs && chmod +x cs && ./cs setup</code><br>
-</div>
-
-<div style="display:none" id="stepOne-unix">
-    <p>Follow <a href="https://get-coursier.io/docs/cli-installation" target="_blank">the instructions to install the <code>cs</code> launcher</a> then run:</p>
-    <p><code>$ ./cs setup</code></p>
-</div>
-
-<div style="display:none" id="stepOne-osx">
-    <div class="highlight">
-        <code class="hljs">$ brew install coursier/formulas/coursier && cs setup </code> <br>
-    </div>
-    <p>Alternatively, if you don't use Homebrew</p>
-    <div class="highlight">
-        <code class="hljs">$ curl -fL https://github.com/coursier/launchers/raw/master/cs-x86_64-apple-darwin.gz | gzip -d > cs && chmod +x cs &&  (xattr -d com.apple.quarantine cs || true) && ./cs setup</code> <br>
-    </div>
-</div>
-
-<div style="display:none" id="stepOne-windows">
-    <p>Download and execute <a href="https://github.com/coursier/launchers/raw/master/cs-x86_64-pc-win32.zip">the Scala installer for Windows</a> based on coursier</p>
-</div>

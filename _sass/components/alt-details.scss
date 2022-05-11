@@ -1,0 +1,44 @@
+// ALT-DETAILS
+//------------------------------------------------
+//------------------------------------------------
+
+.alt-details {
+    @include span-columns(12);
+
+    .alt-details-toggle {
+        @include span-columns(12);
+        border: none;
+        background-color: $brand-tertiary;
+        padding: 5px 10px;
+        border-radius: $border-radius-large;
+        font-size: $font-size-medium;
+        cursor: pointer;
+        font-weight: 500;
+        color: $gray-dark;
+
+        &:hover {
+            background-color: darken($brand-tertiary, 15%);
+        }
+
+        &:after {
+            content: "\f13a"; // <i class="fa-solid fa-circle-chevron-down"></i>
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            font-size: 15px;
+            float: right;
+            margin-top: 2px;
+        }
+
+        &.alt-details-closed:after {
+            content: "\f138"; // <i class="fa-solid fa-circle-chevron-right"></i>
+        }
+    }
+
+    .alt-details-detail {
+        // The detail box appears to be underneath the toggle button
+        // so we add a padding to the top and push it up.
+        border: $base-border-gray;
+        padding-top: 15px;
+        margin-top: 15px;
+    }
+}
