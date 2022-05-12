@@ -23,3 +23,45 @@
 
     }
 }
+
+.code-snippet-area {
+    width: 100%;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    position: relative; // so we can position the buttons
+
+    &:hover {
+
+        // display the copy buttons on hover of the whole area
+        .code-snippet-buttons {
+            opacity: 0.95;
+
+            &:active {
+                transition: none;
+                opacity: 0.7;
+            }
+        }
+    }
+
+    .code-snippet-buttons {
+        opacity: 0; // default invisible until hover
+        transition: $base-transition;
+        position: absolute; // so we can position the buttons
+        right: 3px;
+        top: 5px;
+
+        button {
+            border: none;
+            background: #fff;
+            font-size: $font-size-medium;
+            color: $gray-darker;
+            cursor: pointer;
+        }
+    }
+
+    .code-snippet-display {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        width: 100%;
+    }
+}

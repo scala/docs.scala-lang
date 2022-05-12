@@ -7,6 +7,23 @@
 	@include padding(0 20px);
 }
 
+.place-inline {
+	// add vertical margin
+	@include outer-container;
+	@include margin(20px 0);
+}
+
+.wrap-inline {
+	// add vertical padding
+	@include outer-container;
+	@include padding(20px 0);
+}
+
+.wrap-narrow {
+	@include outer-container;
+	@include padding(0 10px);
+}
+
 .dot {
 	font-size: 10px;
 	color: rgba($base-font-color-light, 0.6);

@@ -7,10 +7,11 @@
     @include display(flex);
     @include align-items(center);
     @include justify-content(flex-start);
-    margin-bottom: 10px;
 
     .item-tab {
+
         a {
+            transition: none; // do not animate the transition to active
             color: $base-font-color-light;
             display: block;
             padding: 0 20px 10px;
@@ -23,21 +24,55 @@
                 color: $base-font-color;
             }
 
+            &:hover {
+                cursor: pointer;
+            }
+
             &.active {
                 border-bottom: 2px solid $brand-primary;
+                padding: 0 20px 8px; // so text does not jump up when active
                 color: $brand-primary;
                 pointer-events: none;
             }
         }
 
     }
+
     @include bp(small) {
         @include justify-content(space-between);
+
         .item-tab {
-        a {
-            padding: 0 10px 10px;
-            font-size: $font-size-medium;
+            a {
+                transition: none; // do not animate the transition to active
+                padding: 0 10px 10px;
+                font-size: $font-size-medium;
+            }
         }
+    }
+}
+
+.tabsection {
+    border-bottom: $base-border-gray;
+    border-left: $base-border-gray;
+    border-right: $base-border-gray;
+    border-radius: $border-radius-medium;
+
+    .nav-tab {
+        padding-left: 0;
+        margin-bottom: 0;
+
+        .item-tab {
+            padding: 0;
+            margin-bottom: 0;
+            list-style: none;
         }
+    }
+}
+
+.tabcontent {
+    display: none;
+
+    &.active {
+        display: block;
     }
 }

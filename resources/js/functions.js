@@ -392,15 +392,70 @@ function getOS() {
   return osname;
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
+  // for each .alt-details div, find the .alt-details-toggle button,
+  // and add a click handler to toggle the visibility of the .alt-details-detail
+
+  $('.alt-details').each(function () {
+    var toggle = $(this).find('.alt-details-toggle');
+    var details = $(this).find('.alt-details-detail');
+    toggle.click(function () {
+      details.css('display') === 'none' ? details.show() : details.hide();
+      toggle.toggleClass('alt-details-closed');
+    });
+    toggle.click();
+  });
+});
+
+$(document).ready(function () {
+  // for each code snippet area, find the copy button,
+  // and add a click listener that will copy text from
+  // the code area to the clipboard
+  $(".code-snippet-area").each(function () {
+    var area = this;
+    $(area).children(".code-snippet-buttons").children("button.copy-button").click(function () {
+      var code = $(area).children(".code-snippet-display").children("code").text();
+      window.navigator.clipboard.writeText(code);
+    });
+  });
+});
+
+$(document).ready(function () {
+  $('.tabsection').each(function () {
+    var tabsection = this;
+    $(tabsection).find('.nav-tab > .item-tab > .item-tab-link').each(function () {
+      var tabLink = this;
+      var targetTab = $(tabLink).attr('data-target');
+      $(tabLink).click(function () {
+        console.log("clicked on " + targetTab);
+        $(tabsection).find('.nav-tab > .item-tab > .item-tab-link').each(function () {
+          var otherTab = this;
+          var otherTarget = $(otherTab).attr('data-target');
+          otherTarget === targetTab ? $(otherTab).addClass('active') : $(otherTab).removeClass('active');
+        })
+        $(tabsection).children('.tabcontent').each(function () {
+          var tabContent = this;
+          var tabId = $(tabContent).attr('data-tab');
+          targetTab === tabId ? $(tabContent).addClass('active') : $(tabContent).removeClass('active');
+        });
+      });
+    });
+  });
+});
+
+$(document).ready(function () {
+  // click the get-started tab corresponding to the users OS.
   if ($(".main-download").length) {
     var os = getOS();
-    var intelliJlink = $("#intellij-" + os).text();
-    var sbtLink = $("#sbt-" + os).text();
-    var stepOneContent = $("#stepOne-" + os).html()
-    $("#download-intellij-link").attr("href", intelliJlink);
-    $("#download-sbt-link").attr("href", sbtLink);
-    $("#download-step-one").html(stepOneContent);
+    if (os === 'unix') {
+      os = 'linux';
+    }
+    $("#install-cs-setup-tabs").find('.nav-tab > .item-tab > .item-tab-link').each(function () {
+      var targetTab = $(this).attr("data-target");
+      if (targetTab === os) {
+        $(this).click();
+      }
+    });
   }
 });
 
@@ -467,18 +522,18 @@ $('#filter-glossary-terms').focus();
 
 
 //Footer scroll to top button
-$(document).ready(function(){ 
-    $(window).scroll(function(){ 
-        if ($(this).scrollTop() > 100) { 
-            $('#scroll-to-top-btn').fadeIn(); 
-        } else { 
-            $('#scroll-to-top-btn').fadeOut(); 
-        } 
-    }); 
-    $('#scroll-to-top-btn').click(function(){ 
-        $("html, body").animate({ scrollTop: 0 }, 600); 
-        return false; 
-    }); 
+$(document).ready(function(){
+    $(window).scroll(function(){
+        if ($(this).scrollTop() > 100) {
+            $('#scroll-to-top-btn').fadeIn();
+        } else {
+            $('#scroll-to-top-btn').fadeOut();
+        }
+    });
+    $('#scroll-to-top-btn').click(function(){
+        $("html, body").animate({ scrollTop: 0 }, 600);
+        return false;
+    });
 });
 
 //Contributors widget
@@ -490,7 +545,7 @@ $(document).ready(function () {
    * - some files aren't prefixed with underscore, see rootFiles
    * - some files are placed in _overviews but rendered to its folder, see overviewsFolders
    */
-  
+
   let rootFiles = ['getting-started', 'learn', 'glossary'];
   let overviewsFolders = ['FAQ', 'cheatsheets', 'collections', 'compiler-options',
     'core', 'jdk-compatibility', 'macros', 'parallel-collections',
