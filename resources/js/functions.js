@@ -393,21 +393,6 @@ function getOS() {
 }
 
 $(document).ready(function () {
-  // for each .alt-details div, find the .alt-details-toggle button,
-  // and add a click handler to toggle the visibility of the .alt-details-detail
-
-  $('.alt-details').each(function () {
-    var toggle = $(this).find('.alt-details-toggle');
-    var details = $(this).find('.alt-details-detail');
-    toggle.click(function () {
-      details.css('display') === 'none' ? details.show() : details.hide();
-      toggle.toggleClass('alt-details-closed');
-    });
-    toggle.click();
-  });
-});
-
-$(document).ready(function () {
   // for each code snippet area, find the copy button,
   // and add a click listener that will copy text from
   // the code area to the clipboard
@@ -421,41 +406,13 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-  $('.tabsection').each(function () {
-    var tabsection = this;
-    $(tabsection).find('.nav-tab > .item-tab > .item-tab-link').each(function () {
-      var tabLink = this;
-      var targetTab = $(tabLink).attr('data-target');
-      $(tabLink).click(function () {
-        console.log("clicked on " + targetTab);
-        $(tabsection).find('.nav-tab > .item-tab > .item-tab-link').each(function () {
-          var otherTab = this;
-          var otherTarget = $(otherTab).attr('data-target');
-          otherTarget === targetTab ? $(otherTab).addClass('active') : $(otherTab).removeClass('active');
-        })
-        $(tabsection).children('.tabcontent').each(function () {
-          var tabContent = this;
-          var tabId = $(tabContent).attr('data-tab');
-          targetTab === tabId ? $(tabContent).addClass('active') : $(tabContent).removeClass('active');
-        });
-      });
-    });
-  });
-});
-
-$(document).ready(function () {
   // click the get-started tab corresponding to the users OS.
   if ($(".main-download").length) {
     var os = getOS();
     if (os === 'unix') {
       os = 'linux';
     }
-    $("#install-cs-setup-tabs").find('.nav-tab > .item-tab > .item-tab-link').each(function () {
-      var targetTab = $(this).attr("data-target");
-      if (targetTab === os) {
-        $(this).click();
-      }
-    });
+    $("#install-cs-setup-tabs").find('input[data-target=' + os + ']').prop("checked", true);
   }
 });
 
