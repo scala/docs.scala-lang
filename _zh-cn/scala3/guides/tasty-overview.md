@@ -60,7 +60,7 @@ $ scalac -decompile hello.tasty
 由于象 [类型擦除][erasure] 等问题，_.class_ 文件实际上是代码的不完整表示形式。
 演示这一点的一种简单方法是使用 `List` 示例。
 
-_类型擦除_ 意味着当你编写这样的 Scala 代码时，它假定在 JVM 上运行：
+_类型擦除_ 意味着当你编写这样的Scala代码，并假定它是在JVM上运行时：
 
 ```scala
 val xs: List[Int] = List(1, 2, 3)
@@ -72,7 +72,7 @@ val xs: List[Int] = List(1, 2, 3)
 public scala.collection.immutable.List<java.lang.Object> xs();
 ```
 
-该 `javap` 命令输出显示了类文件中包含的内容，该内容是 Java 的表示形式。请注意，在此输出中，`xs` _不是_ 定义为 `List[Int]` ；它基本上表示为 `List[java.lang.Object]` 。为了使您的 Scala 代码与 JVM 配合使用，`Int` 类型已被擦除。
+该 `javap` 命令输出显示了类文件中包含的内容，该内容是 Java 的表示形式。请注意，在此输出中，`xs` _不是_ 定义为 `List[Int]` ；它真正表示的是 `List[java.lang.Object]` 。为了使您的 Scala 代码与 JVM 配合使用，`Int` 类型已被擦除。
 
 稍后，当您在 Scala 代码中访问 `List[Int]` 的元素时，像这样：
 
@@ -88,13 +88,13 @@ val x = xs.get(0).asInstanceOf[Int]   // more Scala-like
 ```
 
 同样，这样做是为了兼容性，因此您的 Scala 代码可以在 JVM 上运行。但是，我们已经有的整数列表的信息在类文件中丢失了。
-当尝试使用已编译的库来编译 Scala 程序时，会带来问题。为此，我们需要比类文件中通常可用的信息更多的信息。
+当尝试使用已编译的库来编译 Scala 程序时，会带来问题。为此，我们需要的信息比类文件中通常可用的信息更多。
 
 此讨论仅涵盖类型擦除的主题。对于 JVM 没有意识到的所有其他 Scala 结构，也存在类似的问题，包括 unions, intersections, 带有参数的 traits 以及更多 Scala 3 特性。
 
 ### TASTy to the Rescue
 
-因此，TASTy 格式不是没有关于 _.class_ 文件中原始类型的信息，或者只有公共 API（如Scala 2.13 “Pickle” 格式），而是在类型检查后存储完整的抽象语法树（AST）。存储整个 AST 有很多优点：它支持单独编译，针对不同的 JVM 版本重新编译，程序的静态分析等等。
+因此，TASTy 格式不是像 _.class_ 文件那样没有原始类型的信息，或者只有公共 API（如Scala 2.13 “Pickle” 格式），而是在类型检查后存储完整的抽象语法树（AST）。存储整个 AST 有很多优点：它支持单独编译，针对不同的 JVM 版本重新编译，程序的静态分析等等。
 
 ### 重点
 
@@ -136,7 +136,7 @@ val x = xs.get(0).asInstanceOf[Int]   // more Scala-like
 - [Scala 宏库](https://scalacenter.github.io/scala-3-migration-guide/docs/macros/macro-libraries.html)
 - [宏：Scala 3 的计划](https://www.scala-lang.org/blog/2018/04/30/in-a-nutshell.html)
 - [Quotes Reflect 的参考文档][quotes-reflect]
-- [宏的参考文档](macros)
+- [宏的参考文档][macros]
 
 [benefits]: https://www.scala-lang.org/blog/2018/04/30/in-a-nutshell.html
 [erasure]: https://www.scala-lang.org/files/archive/spec/2.13/03-types.html#type-erasure
