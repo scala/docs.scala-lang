@@ -1,19 +1,32 @@
-<div {% if include.id %} id="{{include.id}}" {% endif %} class="tabsection">
-  <ul class="nav-tab">
+<div id="{{include.id}}" class="tabsection">
+  {% for tabRoot in include.collection %}
+  {% if tabRoot.language == include.language %}
+  <input
+    type="radio"
+    name="{{include.id}}_tabs"
+    id="{{tabRoot.tabId}}_description"
+    data-target="{{tabRoot.tabId}}"
+    hidden aria-hidden="true"
+    {% if tabRoot.defaultTab %}checked{% endif %}
+  >
+  {% endif %}
+  {% endfor %}
+  <ul hidden aria-hidden="true" class="nav-tab">
     {% for tabRoot in include.collection %}
     {% if tabRoot.language == include.language %}
     <li class="item-tab">
-      <a class="item-tab-link {% if tabRoot.defaultTab %} active{% endif %}"
-        data-target="{{tabRoot.tabId}}">{{tabRoot.tabLabel}}</a>
+      <label class="item-tab-link" for="{{tabRoot.tabId}}_description">{{tabRoot.tabLabel}}</label>
     </li>
     {% endif %}
     {% endfor %}
   </ul>
-  {% for tabRoot in include.collection %}
-  {% if tabRoot.language == include.language %}
-  <div class="tabcontent {% if tabRoot.defaultTab %}active{% endif %}" data-tab="{{tabRoot.tabId}}">
-    {{tabRoot.content}}
+  <div class="tabcontent">
+    {% for tabRoot in include.collection %}
+    {% if tabRoot.language == include.language %}
+    <section id="{{tabRoot.tabId}}_content">
+      {{tabRoot.content}}
+    </section>
+    {% endif %}
+    {% endfor %}
   </div>
-  {% endif %}
-  {% endfor %}
 </div>

@@ -2,15 +2,15 @@
 //------------------------------------------------
 //------------------------------------------------
 
+#inner-main>section:nth-child(2) {
+  // corresponds to area with the content below the title
+  position: relative;
+  margin-top: -80px; // have it overlap with the title area
+}
+
 #inner-main {
   background: $gray-lighter;
   padding-bottom: $padding-xlarge;
-
-
-  section:nth-child(2) {
-    position: relative;
-    top: -80px;
-  }
 
   .inner-box {
     padding: $padding-medium;
