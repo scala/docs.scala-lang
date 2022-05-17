@@ -5,7 +5,7 @@
 #inner-main>section:nth-child(2) {
   // corresponds to area with the content below the title
   position: relative;
-  margin-top: -80px; // have it overlap with the title area
+  top: -80px; // have it overlap with the title area
 }
 
 #inner-main {
