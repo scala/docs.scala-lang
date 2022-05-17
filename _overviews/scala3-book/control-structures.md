@@ -357,8 +357,9 @@ Notice that this really is an expression, as it evaluates to a result:
 ```scala
 import scala.annotation.switch
 
-// `i` is an integer
-val day = i match
+val i = 5 // `i` is an integer
+
+val day = (i : @switch) match
   case 0 => "Sunday"
   case 1 => "Monday"
   case 2 => "Tuesday"
@@ -367,6 +368,8 @@ val day = i match
   case 5 => "Friday"
   case 6 => "Saturday"
   case _ => "invalid day"   // the default, catch-all
+
+println(day)
 ```
 
 In this example the variable `i` is tested against the cases shown.
@@ -382,10 +385,14 @@ Otherwise, the catch-all case is represented by the `_` character, and `day` is 
 When you need to access the catch-all, default value in a `match` expression, just provide a variable name on the left side of the `case` statement, and then use that variable name on the right side of the statement as needed:
 
 ```scala
-i match
-  case 0 => println("1")
-  case 1 => println("2")
-  case what => println(s"You gave me: $what" )
+val i = 4
+
+val code = i match
+  case 0 => "00"
+  case 1 => "01"
+  case what => s"You gave me: $what"
+
+println(code)
 ```
 
 In this example the variable is named `what` to show that it can be given any legal name.
@@ -398,10 +405,14 @@ As mentioned, `match` expressions have many capabilities.
 This example shows how to use multiple possible pattern matches in each `case` statement:
 
 ```scala
+val i = 6
+
 val evenOrOdd = i match
-  case 1 | 3 | 5 | 7 | 9 => println("odd")
-  case 2 | 4 | 6 | 8 | 10 => println("even")
-  case _ => println("some other number")
+  case 1 | 3 | 5 | 7 | 9 => "odd"
+  case 2 | 4 | 6 | 8 | 10 => "even"
+  case _ => "some other number"
+
+println(evenOrOdd)
 ```
 
 
@@ -411,21 +422,29 @@ You can also use guards in the `case`s of a match expression.
 In this example the second and third `case` both use guards to match multiple integer values:
 
 ```scala
-i match
-  case 1 => println("one, a lonely number")
-  case x if x == 2 || x == 3 => println("two’s company, three’s a crowd")
-  case x if x > 3 => println("4+, that’s a party")
-  case _ => println("i’m guessing your number is zero or less")
+val i = 3
+
+val message = i match
+  case 1 => "one, a lonely number"
+  case x if x == 2 || x == 3 => "two’s company, three’s a crowd"
+  case x if x > 3 => "4+, that’s a party"
+  case _ => "i’m guessing your number is zero or less"
+
+println(message)
 ```
 
 Here’s another example, which shows how to match a given value against ranges of numbers:
 
 ```scala
-i match
-  case a if 0 to 9 contains a => println(s"0-9 range: $a")
-  case b if 10 to 19 contains b => println(s"10-19 range: $b")
-  case c if 20 to 29 contains c => println(s"20-29 range: $c")
-  case _ => println("Hmmm...")
+val i = 12
+
+val range = i match
+  case a if 0 to 9 contains a => s"0-9 range: $a"
+  case b if 10 to 19 contains b => s"10-19 range: $b"
+  case c if 20 to 29 contains c => s"20-29 range: $c"
+  case _ => "Hmmm..."
+
+println(range)
 ```
 
 
@@ -438,12 +457,12 @@ Here’s an example using a simple `Person` case class:
 case class Person(name: String)
 
 def speak(p: Person) = p match
-  case Person(name) if name == "Fred" => println(s"$name says, Yubba dubba doo")
-  case Person(name) if name == "Bam Bam" => println(s"$name says, Bam bam!")
-  case _ => println("Watch the Flintstones!")
+  case Person(name) if name == "Fred" => s"$name says, Yabba-Dabba-Doo!"
+  case Person(name) if name == "Bam Bam" => s"$name says, Bam bam!"
+  case _ => "Watch the Flintstones!"
 
-speak(Person("Fred"))      // "Fred says, Yubba dubba doo"
-speak(Person("Bam Bam"))   // "Bam Bam says, Bam bam!"
+println(speak(Person("Fred")))      // "Fred says, Yabba-Dabba-Doo!"
+println(speak(Person("Bam Bam")))   // "Bam Bam says, Bam bam!"
 ```
 
 
