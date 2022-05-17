@@ -5,7 +5,7 @@ title: New features for Scaladoc
 
 The new Scala version 3 comes with a completely new implementation of the documentation generator _Scaladoc_, rewritten from scratch. 
 In this article you can find highlights of new features that are or will be introduced to Scaladoc.
-For general reference, visit [Scaladoc manual](https://dotty.epfl.ch/docs/usage/scaladoc/)
+For general reference, visit [Scaladoc manual]({% link _overviews/scala3-scaladoc/index.md %}).
 
 ## New features
 
@@ -82,4 +82,4 @@ If you encounter a bug or have an idea for improvement, don't hesitate to create
 [scaladoc-docstrings]: {% link _overviews/scala3-scaladoc/docstrings.md %}
 [static-documentation]: {% link _overviews/scala3-scaladoc/static-site.md %}
 [built-in-blog]: {% link _overviews/scala3-scaladoc/blog.md %}
-[social-links]: https://dotty.epfl.ch/docs/usage/scaladoc/settings.html#-social-links
+[social-links]: {% link _overviews/scala3-scaladoc/settings.md %}#-social-links
