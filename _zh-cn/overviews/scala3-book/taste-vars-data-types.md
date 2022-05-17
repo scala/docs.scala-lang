@@ -101,7 +101,7 @@ TODO: Jonathan had an early comment on the text below: “While it might feel li
 Scala 带有你所期望的标准数值数据类型，它们都是类的成熟（full-blown）实例。
 在 Scala 中，一切都是对象。
 
-这些示例展示了如何声明数字类型的变量：
+这些示例展示了如何声明数值类型的变量：
 
 ```scala
 val b: Byte = 1
@@ -181,7 +181,7 @@ println(s"x.abs = ${x.abs}") // 打印 "x.abs = 1"
 放在字符串前面的 `s` 只是一种可能的插值器。
 如果使用 `f` 而不是 `s`，则可以在字符串中使用 `printf` 样式的格式化语法。
 此外，字符串插值器只是一种特殊方法，可以定义自己的方法。
-例如，一些数据库的程序库定义了非常强大的 `sql` 插值器。
+例如，有一些数据库方向的类库定义了非常强大的 `sql` 插值器。
 
 #### 多行字符串
 

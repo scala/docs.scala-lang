@@ -69,7 +69,7 @@ Scala 集合类还有更多可用的方法，它们在[集合章节][collections
 ## 元组
 
 Scala _元组_ 是一种类型，可让您轻松地将不同类型的集合放在同一个容器中。
-例如，给定以下 `Person` case 类：
+例如，给定以下 `Person` 样例类：
 
 ```scala
 case class Person(name: String)

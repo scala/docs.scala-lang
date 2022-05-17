@@ -210,8 +210,7 @@ getClassAsString(List(1, 2, 3))   // List
 ```
 
 `getClassAsString` 方法将 [Matchable]({{ site.scala3ref }}/other-new-features/matchable.html) 类型的值作为参数，它可以是
-任何支持模式匹配的类型（某些类型不支持模式匹配，因为这可能
-打破封装）。
+任何支持模式匹配的类型（某些类型不支持模式匹配，因为这可能打破封装）。
 
 Scala 中的模式匹配还有 _更多_ 内容。
 模式可以嵌套，模式的结果可以绑定，模式匹配甚至可以是用户自定义的。
@@ -264,7 +263,7 @@ do
 
 ## 自定义控制结构
 
-由于 by-name 参数、中缀表示法、流畅接口、可选括号、扩展方法和高阶函数等功能，您还可以创建自己的代码，就像控制结构一样工作。
+由于传名参数、中缀表示法、流畅接口、可选括号、扩展方法和高阶函数等功能，您还可以创建自己的代码，就像控制结构一样工作。
 您将在 [控制结构][control] 部分了解更多信息。
 
 [control]: {% link _overviews/scala3-book/control-structures.md %}

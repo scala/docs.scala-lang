@@ -10,7 +10,7 @@ next-page: taste-functions
 
 ## Scala 方法
 
-Scala 类、case 类、traits、枚举和对象都可以包含方法。
+Scala 类、样例类、traits、枚举和对象都可以包含方法。
 简单方法的语法如下所示：
 
 ```scala

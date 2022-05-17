@@ -128,7 +128,7 @@ case class Person(
 )
 ```
 
-高阶函数简洁：
+简洁的高阶函数：
 
 ```scala
 list.filter(_ < 4)
@@ -265,7 +265,7 @@ val b = List(1,2,3)       // List 是不可变的
 val c = Map(1 -> "one")   // Map 是不可变的
 ```
 
-Case 类主要用于 [领域建模]({% link _overviews/scala3-book/domain-modeling-intro.md %})，它们的参数是不可变的：
+样例类主要用于 [领域建模]({% link _overviews/scala3-book/domain-modeling-intro.md %})，它们的参数是不可变的：
 
 ```scala
 case class Person(name: String)
@@ -305,7 +305,7 @@ def isTruthy(a: Matchable) = a match
 ## 9) 生态系统库
 
 用于函数式编程的 Scala 库，如 [Cats](https://typelevel.org/cats) 和 [Zio](https://zio.dev) 是 FP 社区中的前沿库。
-所有流行语，如高性能、类型安全、并发、异步、资源安全、可测试、功能性、模块化、二进制兼容、高效、副作用/有副作用等，都可以用于这些库。
+所有流行语，如高性能、类型安全、并发、异步、资源安全、可测试、函数式、模块化、二进制兼容、高效、副作用/有副作用等，都可以用于这些库。
 
 我们可以在这里列出数百个库，但幸运的是它们都列在另一个位置：有关这些详细信息，请参阅 [“Awesome Scala” 列表](https://github.com/lauris/awesome-scala)。
 
@@ -387,7 +387,7 @@ _性能_ 涉及几个方面。
 
 - 类型别名
 - 值类
-- case类
+- 样例类
 
 不幸的是，所有这些方法都有弱点，如 [_Opaque Types_ SIP](https://docs.scala-lang.org/sips/opaque-types.html) 中所述。
 相反，如 SIP 中所述，不透明类型的目标是“对这些包装器类型的操作不得在运行时产生任何额外开销，同时在编译时仍提供类型安全使用。”

@@ -115,7 +115,7 @@ to replace the Scala2 “sealed trait + case class” pattern. How to resolve?
 以 FP 风格编写代码时，您将使用以下结构：
 
 - 枚举来定义 ADT
-- Case类
+- 样例类
 - Traits
 
 ### 枚举
@@ -166,14 +166,14 @@ enum Nat:
 
 枚举在本书的 [领域建模][data-1] 部分和 [参考文档]({{ site.scala3ref }}/enums/enums.html) 中有详细介绍。
 
-### Case 类
+### 样例类
 
 Scala `case` 类允许您使用不可变数据结构对概念进行建模。
 `case` 类具有 `class` 的所有功能，还包含其他功能，使它们对函数式编程很有用。
 当编译器在 `class` 前面看到 `case` 关键字时，它具有以下效果和好处：
 
-- Case 类构造函数参数默认为 public `val` 字段，因此字段是不可变的，并且为每个参数生成访问器方法。
-- 生成一个 `unapply` 方法，它允许您在 `match` 表达式中以更多方式使用 case 类。
+- 样例类构造函数参数默认为 public `val` 字段，因此字段是不可变的，并且为每个参数生成访问器方法。
+- 生成一个 `unapply` 方法，它允许您在 `match` 表达式中以更多方式使用 样例类。
 - 在类中生成一个 `copy` 方法。
   这提供了一种在不更改原始对象的情况下创建对象的更新副本的方法。
 - 生成 `equals` 和 `hashCode` 方法来实现结构相等等式。
