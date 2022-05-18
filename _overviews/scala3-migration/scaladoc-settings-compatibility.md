@@ -60,7 +60,7 @@ Source links are used to point to source code at some remote repository like git
 Hopefully, the new syntax is almost superset of the old syntax. 
 To migrate to the new scaladoc syntax, make sure that you don't use any of these variables:
 `€{TPL_OWNER}` or `€{FILE_PATH_EXT}`. Otherwise you have to rewrite your source link, using either other `variables` or you can use new
-syntax, about which you can read more at [dotty docs](https://dotty.epfl.ch/docs/usage/scaladoc/settings.html) 
+syntax, about which you can read more in the [Scaladoc documentation]({% link _overviews/scala3-scaladoc/settings.md %}).
 Note that new syntax let you specify prefixes of your files paths to match specific url in case your sources are scattered in different
 directories or even different repositories.
 
