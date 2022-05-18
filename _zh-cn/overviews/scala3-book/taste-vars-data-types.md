@@ -90,7 +90,7 @@ val s: String = "a string"
 val p: Person = Person("Richard")
 ```
 
-请注意，使用这种方法，代码感觉太啰嗦。
+请注意，使用这种方法会感觉代码太啰嗦。
 
 {% comment %}
 TODO: Jonathan had an early comment on the text below: “While it might feel like this, I would be afraid that people automatically assume from this statement that everything is always boxed.” Suggestion on how to change this?
