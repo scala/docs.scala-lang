@@ -24,7 +24,7 @@ NOTE: Could mention “grammar” as a way of showing that Scala isn’t a large
 7. Scala 标准库具有数十种预构建的函数式方法，可节省您的时间，并大大减少编写自定义 `for` 循环和算法的需要
 8. Scala 内置了“最佳实践”，它支持不可变性，匿名函数，高阶函数，模式匹配，默认情况下无法扩展的类等
 9. Scala 生态系统提供世界上最现代化的 FP 库
-10. 强型式系统
+10. 强类型式系统
 
 ## 1) FP/OOP 融合
 
