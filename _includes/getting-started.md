@@ -48,12 +48,14 @@ Scala code runner version {{site.scala-3-version}} -- Copyright 2002-2022, LAMP/
 
 Along with managing JVMs, `cs setup` also installs useful command-line tools:
 
-- A JDK (if you don't have one already)
-- The [sbt](https://www.scala-sbt.org/) build tool
-- [Ammonite](https://ammonite.io/), an enhanced REPL
-- [scalafmt](https://scalameta.org/scalafmt/), the Scala code formatter
-- `scalac` (the Scala compiler)
-- `scala` (the Scala REPL and script runner).
+| Commands | Description |
+|----------|-------------|
+| `scalac` | the Scala compiler |
+| `scala` | the Scala REPL and script runner |
+| `scala-cli`| [Scala CLI](https://scala-cli.virtuslab.org), interactive toolkit for Scala |
+| `sbt`, `sbtn` | The [sbt](https://www.scala-sbt.org/) build tool |
+| `amm` | [Ammonite](https://ammonite.io/) is an enhanced REPL |
+| `scalafmt` | [Scalafmt](https://scalameta.org/scalafmt/) is the Scala code formatter |
 
 For more information about `cs`, read
 [coursier-cli documentation](https://get-coursier.io/docs/cli-overview).
