@@ -98,8 +98,8 @@ Traits 非常适合模块化组件和描述接口（必需和提供）。
 NOTE: I think “leaves” may technically be the correct word to use, but I prefer “leafs.”
 {% endcomment %}
 
-|Traits      |  `T1`, `T2`, `T3`
-|组合 traits |  `S extends T1, T2`, `S extends T2, T3`
+|Traits      | `T1`, `T2`, `T3`
+|组合 traits | `S extends T1, T2`, `S extends T2, T3`
 |类          | `C extends S, T3`
 |实例        | `C()`
 
