@@ -27,14 +27,43 @@ L'installateur Scala est un outil nommé [Coursier](https://get-coursier.io/docs
 Il s'assure que la JVM est les outils standards de Scala sont installés sur votre système.
 Installez-le sur votre système avec les instructions suivantes.
 
-<div class="main-download">
-    <div class="recommended-install">
-        <div class="place-inline">
-            {% include tabsection.html language='fr' id='install-cs-setup-tabs' collection=site.install_tabs %}
-        </div>
-        <!-- TODO: translate 'Test your setup' from _includes/getting-started.md, embellish tabs -->
-    </div>
-</div>
+<!-- Display tabs for each OS -->
+{% tabs install-cs-setup-tabs class=platform-os-options %}
+
+<!-- macOS -->
+{% tab macOS for=install-cs-setup-tabs %}
+{% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.macOS-brew %}
+{% altDetails cs-setup-macos-nobrew  "Alternativement, si vous n'utilisez pas Homebrew:" %}
+  {% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.macOS-default %}
+{% endaltDetails %}
+{% endtab %}
+<!-- end macOS -->
+
+<!-- Linux -->
+{% tab Linux for=install-cs-setup-tabs %}
+  {% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.linux %}
+{% endtab %}
+<!-- end Linux -->
+
+<!-- Windows -->
+{% tab Windows for=install-cs-setup-tabs %}
+  Téléchargez et exécutez [l'intallateur Scala pour Windows]({{site.data.setup-scala.windows-link}}) basé sur Coursier.
+{% endtab %}
+<!-- end Windows -->
+
+<!-- Other -->
+{% tab Other for=install-cs-setup-tabs defaultTab %}
+  <noscript>
+    <p><span style="font-style:italic;">JavaScript est désacivé. Cliquez sur l'onglet correspondant à votre système d'exploitation.</span></p>
+  </noscript>
+  Suivez 
+    [les instructions pour installer la commande `cs`](https://get-coursier.io/docs/cli-installation)
+    puis exécutez `./cs setup`.
+{% endtab %}
+<!-- end Other -->
+
+{% endtabs %}
+<!-- End tabs -->
 
 En plus de gérer les JVMs, `cs setup` installe aussi des utilitaires en ligne de commande :
 
