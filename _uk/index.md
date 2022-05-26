@@ -105,7 +105,7 @@ scala2-sections:
       - title: "Шпаргалка"
         description: "Зручна шпаргалка з основ синтаксису Scala."
         icon: "fa fa-list"
-        link: /cheatsheets/index.html
+        link: /uk/cheatsheets/index.html
       - title: "Питання-Відповіді"
         description: "Відповіді на часті запитання про Scala."
         icon: "fa fa-question-circle"
