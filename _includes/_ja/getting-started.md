@@ -17,14 +17,41 @@ Scala をインストールすると、コンパイラやビルドツールな�
 Scala のインストーラーは[Coursier](https://get-coursier.io/docs/cli-overview)というツールで、コマンドは`cs`です。このツールを使うと、JVM と標準 Scala ツールがシステムにインストールされます。
 以下の手順でお使いのシステムにインストールしてください。
 
-<div class="main-download">
-    <div class="recommended-install">
-        <div class="place-inline">
-            {% include tabsection.html language='ja' id='install-cs-setup-tabs' collection=site.install_tabs %}
-        </div>
-        <!-- TODO: translate 'Test your setup' from _includes/getting-started.md, embellish tabs -->
-    </div>
-</div>
+<!-- Display tabs for each OS -->
+{% tabs install-cs-setup-tabs class=platform-os-options %}
+
+<!-- macOS -->
+{% tab macOS for=install-cs-setup-tabs %}
+{% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.macOS-brew %}
+{% altDetails cs-setup-macos-nobrew  "または、Homebrewを使用しない場合は" %}
+  {% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.macOS-default %}
+{% endaltDetails %}
+{% endtab %}
+<!-- end macOS -->
+
+<!-- Linux -->
+{% tab Linux for=install-cs-setup-tabs %}
+  {% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.linux %}
+{% endtab %}
+<!-- end Linux -->
+
+<!-- Windows -->
+{% tab Windows for=install-cs-setup-tabs %}
+  [the Scala installer for Windows]({{site.data.setup-scala.windows-link}})を、ダウンロードして実行してください。
+{% endtab %}
+<!-- end Windows -->
+
+<!-- Other -->
+{% tab Other for=install-cs-setup-tabs defaultTab %}
+  <noscript>
+    <p><span style="font-style:italic;">JavaScript is disabled, click the tab relevant for your OS.</span></p>
+  </noscript>
+  [手順に従って `cs` ランチャーをインストール](https://get-coursier.io/docs/cli-installation)し、その次に以下を実行します。`./cs setup`
+{% endtab %}
+<!-- end Other -->
+
+{% endtabs %}
+<!-- End tabs -->
 
 `cs setup` は JVM の管理だけでなく、便利なコマンドラインツールもインストールします:
 

@@ -20,30 +20,56 @@ The Scala installer is a tool named [Coursier](https://get-coursier.io/docs/cli-
 It ensures that a JVM and standard Scala tools are installed on your system.
 Install it on your system with the following instructions.
 
-{% capture scalaDemo %}$ scala -version
-Scala code runner version {{site.scala-3-version}} -- Copyright 2002-2022, LAMP/EPFL{% endcapture %}
+<!-- Display tabs for each OS -->
+{% tabs install-cs-setup-tabs class=platform-os-options %}
 
-<div class="main-download">
-  <div class="recommended-install">
-    <div class="place-inline">
-      {% include tabsection.html language='en' id='install-cs-setup-tabs' collection=site.install_tabs %}
-    </div>
-    {% capture checkSetupDetail %}
-    <div class="wrap-inline">
-      <div class="wrap">
-        <p>Check your setup with the command <code>scala -version</code>, which should output:</p>
-        {% include code-snippet.html nocopy=true language='bash' codeSnippet=scalaDemo %}
-        <p>If that does not work, you may need to log out and log back in (or reboot) in order for the changes to take
-          effect.
-        </p>
-      </div>
-    </div>
-    {% endcapture %}
-    <div class="place-inline">
-      {% include alt-details.html id='testing-your-setup' title='Testing your setup' detail=checkSetupDetail %}
-    </div>
-  </div>
-</div>
+<!-- macOS -->
+{% tab macOS for=install-cs-setup-tabs %}
+Run the following command in your terminal, following the on-screen instructions:
+{% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.macOS-brew %}
+{% altDetails cs-setup-macos-nobrew  "Alternatively, if you don't use Homebrew:" %}
+  {% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.macOS-default %}
+{% endaltDetails %}
+{% endtab %}
+<!-- end macOS -->
+
+<!-- Linux -->
+{% tab Linux for=install-cs-setup-tabs %}
+  Run the following command in your terminal, following the on-screen instructions:
+  {% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.linux %}
+{% endtab %}
+<!-- end Linux -->
+
+<!-- Windows -->
+{% tab Windows for=install-cs-setup-tabs %}
+  Download and execute [the Scala installer for Windows]({{site.data.setup-scala.windows-link}})
+  based on Coursier, and follow the on-screen instructions.
+{% endtab %}
+<!-- end Windows -->
+
+<!-- Other -->
+{% tab Other for=install-cs-setup-tabs defaultTab %}
+  <noscript>
+    <p><span style="font-style:italic;">JavaScript is disabled, click the tab relevant for your OS.</span></p>
+  </noscript>
+  Follow the documentation from Coursier on
+    [how to install and run `cs setup`](https://get-coursier.io/docs/cli-installation).
+{% endtab %}
+<!-- end Other -->
+
+{% endtabs %}
+<!-- End tabs -->
+
+<!-- Alternative Detail - test the `scala` command -->
+{% altDetails testing-your-setup 'Testing your setup' %}
+Check your setup with the command `scala -version`, which should output:
+```bash
+$ scala -version
+Scala code runner version {{site.scala-3-version}} -- Copyright 2002-2022, LAMP/EPFL
+```
+If that does not work, you may need to log out and log back in (or reboot) in order for the changes to take effect.
+{% endaltDetails %}
+<!-- end Alternative Detail -->
 
 
 Along with managing JVMs, `cs setup` also installs useful command-line tools:
