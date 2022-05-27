@@ -9,6 +9,8 @@
     @include display(flex);
     @include align-items(center);
     @include justify-content(flex-start);
+    overflow-x: auto; // scrollbar when width is too small.
+    overflow-y: hidden;
 
     .item-tab {
 
@@ -57,6 +59,7 @@
     }
 }
 
+/* Active Tabs for standard screen size */
 .nav-tab>.item-tab>a.active, // used in the blog
 .tabsection>input:nth-child(1):checked~.nav-tab .item-tab:nth-child(1) label,
 .tabsection>input:nth-child(2):checked~.nav-tab .item-tab:nth-child(2) label,
@@ -71,6 +74,22 @@
     padding: 0 20px 8px; // so text does not jump up when active
     color: $brand-primary;
     pointer-events: none;
+}
+
+/* Active Tabs for small screen size */
+@include bp(small) {
+    .nav-tab>.item-tab>a.active,
+    .tabsection>input:nth-child(1):checked~.nav-tab .item-tab:nth-child(1) label,
+    .tabsection>input:nth-child(2):checked~.nav-tab .item-tab:nth-child(2) label,
+    .tabsection>input:nth-child(3):checked~.nav-tab .item-tab:nth-child(3) label,
+    .tabsection>input:nth-child(4):checked~.nav-tab .item-tab:nth-child(4) label,
+    .tabsection>input:nth-child(5):checked~.nav-tab .item-tab:nth-child(5) label,
+    .tabsection>input:nth-child(6):checked~.nav-tab .item-tab:nth-child(6) label,
+    .tabsection>input:nth-child(7):checked~.nav-tab .item-tab:nth-child(7) label,
+    .tabsection>input:nth-child(8):checked~.nav-tab .item-tab:nth-child(8) label,
+    .tabsection>input:nth-child(9):checked~.nav-tab .item-tab:nth-child(9) label {
+        padding: 0 10px 8px; // match narrower padding for inactive tabs
+    }
 }
 
 .tabsection {
