@@ -386,7 +386,7 @@ $(document).ready(function() {
 function getOS() {
   var osname = "linux";
   if (navigator.appVersion.indexOf("Win") != -1) osname = "windows";
-  if (navigator.appVersion.indexOf("Mac") != -1) osname = "osx";
+  if (navigator.appVersion.indexOf("Mac") != -1) osname = "macos";
   if (navigator.appVersion.indexOf("Linux") != -1) osname = "linux";
   if (navigator.appVersion.indexOf("X11") != -1) osname = "unix";
   return osname;
@@ -407,12 +407,13 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   // click the get-started tab corresponding to the users OS.
-  if ($(".main-download").length) {
+  var platformOSOptions = $(".tabsection.platform-os-options");
+  if (platformOSOptions.length) {
     var os = getOS();
     if (os === 'unix') {
       os = 'linux';
     }
-    $("#install-cs-setup-tabs").find('input[data-target=' + os + ']').prop("checked", true);
+    platformOSOptions.find('input[data-target=' + os + ']').prop("checked", true);
   }
 });
 

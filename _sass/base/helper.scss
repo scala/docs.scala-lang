@@ -19,6 +19,12 @@
 	@include padding(20px 0);
 }
 
+.wrap-tab {
+	@extend .wrap-narrow;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
 .wrap-narrow {
 	@include outer-container;
 	@include padding(0 10px);
