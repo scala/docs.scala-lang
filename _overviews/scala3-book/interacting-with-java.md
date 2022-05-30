@@ -341,10 +341,10 @@ def +(a: Int, b: Int) = a + b
 That method name won’t work well in Java, but what you can do in Scala 3 is provide an “alternate” name for the method---an alias---that will work in Java:
 
 ```scala
-import scala.annotation.alpha
+import scala.annotation.targetName
 
 class Adder:
-  @alpha("add") def +(a: Int, b: Int) = a + b
+  @targetName("add") def +(a: Int, b: Int) = a + b
 ```
 
 Now in your Java code you can use the aliased method name `add`:
