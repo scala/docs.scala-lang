@@ -85,6 +85,9 @@ collections:
   th: # Thai translations
     output: true
     permalink: /:collection/:path.html
+  uk: # Ukrainian translations
+    output: true
+    permalink: /:collection/:path.html
 
 defaults:
   -
