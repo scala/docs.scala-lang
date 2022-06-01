@@ -25,6 +25,10 @@ sections:
         description: "Learn Scala by reading a series of short lessons."
         icon: "fa fa-book-open"
         link: /scala3/book/introduction.html
+      - title: "Scala for Java Programmers"
+        description: "An effective approach to learning Scala as a programmer with the Java background."
+        icon: "fa fa-coffee"
+        link: /scala3/newcomers/java.html
       - title: Online Courses
         description: "MOOCs to learn Scala, for beginners and experienced programmers."
         icon: "fa fa-cloud"
@@ -98,6 +102,10 @@ sections:
         description: "The Complete Guide to Contributing to Scala's compilers, libraries and documentation."
         icon: "fa fa-cogs"
         link: /contribute/
+      - title: "Becoming a Scala OSS Contributor"
+        description: "How to start contributing to open-source Scala ecosystem"
+        icon: "fa fa-code-branch"
+        link: /scala3/newcomers/contributor.html
       - title: "Scala 3 Contributing Guide"
         description: "Guide to the Scala 3 Compiler and fixing an issue"
         icon: "fa fa-cogs"
