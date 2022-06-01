@@ -54,7 +54,7 @@ language: uk
     </tr>
     <tr>
       <td><pre class="highlight"><code>def f(x: R)</code></pre> vs.<br /> <pre class="highlight"><code>def f(x: =&gt; R)</code></pre></td>
-      <td>Виклик-за-значенням.<br /><br />Виклик-за-іменем (розрахунок параметру відкладено).</td>
+      <td>Виклик-за-значенням.<br /><br />Виклик-за-іменем (аргумент обчислюється кожен раз як до нього звертаються).</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>(x: R) =&gt; x * x</code></pre></td>
@@ -66,7 +66,7 @@ language: uk
     </tr>
     <tr>
       <td><pre class="highlight"><code>(1 to 5).map(x =&gt; x * x)</code></pre></td>
-      <td>Анонімна функція: зліва від <code>=></code> задається ім'я змінної, якій буде присвоєно аргумент та яку можна використати справа.</td>
+      <td>Анонімна функція: щоб використати аргумент двічі, треба його назвати. Зліва від <code>=></code> задається ім'я змінної, якій буде присвоєно аргумент та яку можна використати справа.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>(1 to 5).map { x =&gt;
@@ -172,7 +172,7 @@ language: uk
     </tr>
     <tr>
       <td><pre class="highlight"><code>var xs = List(1, 2, 3)</code></pre></td>
-      <td>Список (немутабельний).</td>
+      <td>Список (імутабельний, тобто такий, що не змінюється).</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>xs(2)</code></pre></td>
@@ -260,7 +260,7 @@ breakable {
   val div = x / y.toFloat
   println("%d/%d = %.1f".format(x, y, div))
 }</code></pre></td>
-      <td>Цикл for: імперативність.<br /><a href="https://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax">стиль<code>sprintf</code></a>.</td>
+      <td>Цикл for: імперативізм.<br /><a href="https://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax">стиль<code>sprintf</code></a>.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>for (i &lt;- 1 to 5) {
@@ -293,7 +293,7 @@ breakable {
   case v42 =&gt; println("42")
   case _   =&gt; println("Not 42")
 }</code></pre></td>
-      <td><code>v42</code> буде інтерпретовано так само як ім'я змінної, яка буде вірно зіставлена з будь-яким Int значенням, і буде виведено “42”.</td>
+      <td><code>v42</code> буде інтерпретовано як ім'я змінної у зразку, яка буде вірно зіставлена з будь-яким Int значенням, і буде виведено “42”.</td>
     </tr>
     <tr>
       <td><span class="label success">Вірно</span><br>
@@ -302,7 +302,7 @@ breakable {
   case `v42` =&gt; println("42")
   case _     =&gt; println("Not 42")
 }</code></pre></td>
-      <td><code>`v42`</code> у зворотних галочках буде інтерпретовано як значення змінної <code>v42</code>, і буде виведено “Not 42”.</td>
+      <td><code>`v42`</code> у зворотних галочках буде інтерпретовано як значення наявної змінної <code>v42</code>, і буде виведено “Not 42”.</td>
     </tr>
     <tr>
       <td><span class="label success">Вірно</span><br>
@@ -311,7 +311,7 @@ breakable {
   case UppercaseVal =&gt; println("42")
   case _            =&gt; println("Not 42")
 }</code></pre></td>
-      <td><code>UppercaseVal</code> буде інтерпретовано так само як наявна змінна, а не патерн, тому що починається з великої літери. Тому значення, що міститься в <code>UppercaseVal</code> буде порівняно з <code>24</code>, і буде виведено “Not 42”.</td>
+      <td><code>UppercaseVal</code> буде інтерпретовано так само як наявна змінна, а не нова змінна в патерні. Тому значення, що міститься в <code>UppercaseVal</code> буде порівняно з <code>24</code>, і буде виведено “Not 42”.</td>
     </tr>
     <tr> 
       <td><span id="object_orientation" class="h2">об'єктна орієнтація</span></td>
@@ -375,11 +375,11 @@ breakable {
     </tr>
     <tr>
       <td><span class="label important">Невірно</span><br> <pre class="highlight"><code>new List[Int]</code></pre><br /> <span class="label success">Вірно</span><br> <pre class="highlight"><code>List(1, 2, 3)</code></pre></td>
-      <td>Помилка типу: абстрактний тип.<br />Натомість, необхідно використати виклик конструктора, що приховує тип.</td>
+      <td>Помилка типу: абстрактний тип.<br />Натомість, існує конвенція у таких випадках використовувати фабричний метод обʼєкту компаньйону, що приховує конкретний тип.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>classOf[String]</code></pre></td>
-      <td>Визначити клас (<code>Class[String] = class java.lang.String</code>).</td>
+      <td>Літерал класу (<code>Class[String] = class java.lang.String</code>).</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>x.isInstanceOf[String]</code></pre></td>
@@ -404,7 +404,7 @@ breakable {
     </tr>
     <tr>
       <td><pre class="highlight"><code>None</code></pre></td>
-      <td>Конструктор для пустого опціонального значення (тип <code>None</code>).</td>
+      <td>Одинак (Singleton) пустого опціонального значення (тип <code>None</code>).</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>Option(null) == None
@@ -413,13 +413,13 @@ Option(24) == Some(24)</code></pre>
 Option(obj.unsafeMethod) // Some or None</code></pre>
       <em><strong>проте</strong></em>
       <pre class="highlight"><code>Some(null) != None</code></pre></td>
-      <td>Null-safe конструктор опціональних значень.</td>
+      <td>Null-safe фабрика опціональних значень.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>val optStr: Option[String] = None</code></pre>
       <em><strong>так само, як і</strong></em>
       <pre class="highlight"><code>val optStr = Option.empty[String]</code></pre></td>
-      <td>Явна типізація опціонального значення.<br /> Конструктор пустих опціональних значень.</td>
+      <td>Явна типізація опціонального значення.<br /> Фабричний метод для створення пустих опціональних значень.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>val name: Option[String] =
@@ -442,7 +442,7 @@ println(upper.getOrElse(""))</code></pre></td>
   upper &lt;- Some(trimmed.toUpperCase)
 } yield upper
 println(upper.getOrElse(""))</code></pre></td>
-      <td>Синтаксис у циклі for.</td>
+      <td>Синтаксис for-виразу.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>option.map(f(_))</code></pre>
@@ -469,7 +469,7 @@ println(upper.getOrElse(""))</code></pre></td>
   case Some(Some(x)) =&gt; Some(x)
   case _             =&gt; None
 }</code></pre></td>
-      <td>Екстракція вкладених опціональних значень.</td>
+      <td>Вилучення вкладених опціональних значень.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>option.foreach(f(_))</code></pre>
@@ -544,7 +544,7 @@ println(upper.getOrElse(""))</code></pre></td>
   case Some(x) =&gt; Some(x)
   case None    =&gt; Some(y)
 }</code></pre></td>
-      <td>Оцінити та повернути альтернативне опціональне значення, якщо порожнє.</td>
+      <td>Обчислити та повернути альтернативне опціональне значення, якщо порожнє.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>option.getOrElse(y)</code></pre>
@@ -553,7 +553,7 @@ println(upper.getOrElse(""))</code></pre></td>
   case Some(x) =&gt; x
   case None    =&gt; y
 }</code></pre></td>
-      <td>Оцінити та повернути значення за замовчуванням, якщо порожнє.</td>
+      <td>Обчислити та повернути значення за замовчуванням, якщо порожнє.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>option.get</code></pre>
@@ -562,7 +562,7 @@ println(upper.getOrElse(""))</code></pre></td>
   case Some(x) =&gt; x
   case None    =&gt; throw new Exception
 }</code></pre></td>
-      <td>Повернути значення, або помилку, якщо порожнє.</td>
+      <td>Повернути значення, або згенерувати виключення, якщо порожнє.</td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>option.orNull</code></pre>
