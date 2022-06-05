@@ -107,7 +107,7 @@ It is supported by class [mutable.Stack](https://www.scala-lang.org/api/{{ site.
 
 Array sequences are mutable sequences of fixed size which store their elements internally in an `Array[Object]`. They are implemented in Scala by class [ArraySeq](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/ArraySeq.html).
 
-You would typically use an `ArraySeq` if you want an array for its performance characteristics, but you also want to create generic instances of the sequence where you do not know the type of the elements and you do not have a `ClassTag` to provide it at run-time. These issues are explained in the section on [arrays]({{ site.baseurl }}/overviews/collections/arrays.html).
+You would typically use an `ArraySeq` if you want an array for its performance characteristics, but you also want to create generic instances of the sequence where you do not know the type of the elements and you do not have a `ClassTag` to provide it at run-time. These issues are explained in the section on [arrays]({% link _overviews/collections-2.13/arrays.md %}).
 
 ## Hash Tables
 
@@ -145,7 +145,7 @@ A concurrent map can be accessed by several threads at once. In addition to the 
 |  `m.replace(k, old, new)`  	  |Replaces value associated with key `k` to `new`, if it was previously bound to `old`. |
 |  `m.replace (k, v)`  	        |Replaces value associated with key `k` to `v`, if it was previously bound to some value.|
 
-`concurrent.Map` is a trait in the Scala collections library. Currently, it has two implementations. The first one is Java's `java.util.concurrent.ConcurrentMap`, which can be converted automatically into a Scala map using the [standard Java/Scala collection conversions]({{ site.baseurl }}/overviews/collections/conversions-between-java-and-scala-collections.html). The second implementation is [TrieMap](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/concurrent/TrieMap.html), which is a lock-free implementation of a hash array mapped trie.
+`concurrent.Map` is a trait in the Scala collections library. Currently, it has two implementations. The first one is Java's `java.util.concurrent.ConcurrentMap`, which can be converted automatically into a Scala map using the [standard Java/Scala collection conversions]({% link _overviews/collections-2.13/conversions-between-java-and-scala-collections.md %}). The second implementation is [TrieMap](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/concurrent/TrieMap.html), which is a lock-free implementation of a hash array mapped trie.
 
 ## Mutable Bitsets
 

@@ -77,7 +77,7 @@ res27: scala.collection.immutable.ArraySeq[Int] = ArraySeq(1, 2, 3)
 
 As the last line above shows, a call to `updated` has no effect on the original ArraySeq `arr`.
 
-ArraySeqs store their elements in a private [Array](arrays.html). This is a compact representation that supports fast
+ArraySeqs store their elements in a private [Array]({% link _overviews/collections-2.13/arrays.md %}). This is a compact representation that supports fast
 indexed access, but updating or adding one element is linear since it requires creating another array and copying all
 the original array’s elements.
 
