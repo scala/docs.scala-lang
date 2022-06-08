@@ -50,11 +50,11 @@ The `if`/`else` control struture in Scala 2 was constructed differently, with pa
 ```scala
 // Scala 2 syntax
 if (test1) {
-    doX()
+  doX()
 } else if (test2) {
-    doY()
+  doY()
 } else {
-    doZ()
+  doZ()
 }
 ```
 
