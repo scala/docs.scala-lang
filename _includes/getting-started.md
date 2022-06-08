@@ -1,5 +1,12 @@
 The instructions below cover both Scala 2 and Scala 3.
 
+<div class="inline-sticky-top">
+{% altDetails need-help-info-box 'Need Help?' class=help-info %}
+*If you are having trouble with setting up Scala, feel free to ask for help in the `#scala-users` channel of
+[our Discord](https://discord.com/invite/scala).*
+{% endaltDetails %}
+</div>
+
 ## Try Scala without installing anything
 
 To start experimenting with Scala right away, use <a href="https://scastie.scala-lang.org/pEBYc5VMT02wAGaDrfLnyw" target="_blank">“Scastie” in your browser</a>.
