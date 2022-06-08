@@ -8,6 +8,9 @@ includeTOC: true
 		<div class="content-primary documentation">
 			<div class="inner-box">
 				<div class="toc-context">
+					{% if page.scala3 %}
+						{% include scala3-notice.html %}
+					{% endif %}
 					{{content}}
 				</div>
 
