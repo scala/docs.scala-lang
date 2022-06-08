@@ -20,21 +20,17 @@ testimonials:
   - /resources/images/online-courses/testimonial014.jpg
 ---
 
-The online courses from the [Scala Center] provide two main paths to learn 
-Scala. The fast path consists of taking the course [Effective Programming 
-in Scala],
-otherwise you can take the full [Scala Specialization], which is made of
-four courses and a capstone project.
+The [Scala Center] produces online courses of various levels, from beginner 
+to advanced.
 
-All the courses are available for free. Optionally, a subscription gives
-you access to a certificate of completion that attests your accomplishments.
-Learn more about
-[Coursera certificates](https://learners.coursera.help/hc/en-us/articles/209819053-Get-a-Course-Certificate) or
-[edX certificates](https://support.edx.org/hc/en-us/categories/115002269627-Certificates).
-Your subscriptions also supports the work of the [Scala Center], whose mission
-is to create high-quality educational material.
+**If you are a programmer and want to learn Scala**, there are two recommended 
+approaches. The fast path consists of taking the course [Effective Programming 
+in Scala](#effective-programming-in-scala).
+Otherwise, you can take the full [Scala Specialization], which is made of
+four courses (covering advanced topics such as big data analysis and 
+parallel programming) and a capstone project.
 
-You can learn more about the Scala Center online courses in the following video:
+You can learn more about the courses in the following video:
 
 <div style="text-align: center">
   <iframe width="560" height="315" src="https://www.youtube.com/embed/rRCdnTspE_k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -54,7 +50,54 @@ Scala followed by Functional Program Design. Then, you can complement your Scala
 of the courses Programming Reactive Systems, Parallel Programming, or Big Data Analysis with Scala and Spark.
 In case you take the Scala Specialization, you will end with the Scala Capstone Project.
 
+## Learning Platforms
+
+Currently, all our courses are available on the platform [Coursera](https://coursera.org),
+and some of them are available on [edX](https://edx.org) or the [Extension School](https://extensionschool.ch).
+This section explains the differences between these learning platforms.
+
+On all the platforms the full material is always available online. It includes 
+video lectures, text articles, quizzes, and auto-graded homeworks. All the 
+platforms also provide discussion forums where you can exchange with the 
+other learners.
+
+The difference between the Extension School and the other platforms is that it
+provides live meetings with instructors, and code reviews by Scala experts.
+
+On the other hand, on Coursera or edX it is possible to take 
+our courses for free (a.k.a. “audit” mode). Optionally, a subscription gives
+you access to a certificate of completion that attests your accomplishments.
+
+Learn more about
+[Coursera certificates](https://learners.coursera.help/hc/en-us/articles/209819053-Get-a-Course-Certificate),
+[edX certificates](https://support.edx.org/hc/en-us/categories/115002269627-Certificates),
+or [Extension School certificates](https://www.extensionschool.ch/faqs#certifying-coursework).
+Note that your subscriptions also supports the work of the [Scala Center], 
+whose mission is to create high-quality educational material.
+
+If you prefer learning in autonomy, we recommend 
+you to choose the Coursera or edX platform, but if you are looking for more 
+support, we recommend you to choose the Extension School. Here is a table 
+below that compares the learning platforms:
+
+|                                                  | Coursera / edX (audit) | Coursera / edX (subscription) | Extension School |
+|--------------------------------------------------|------------------------|-------------------------------|------------------|
+| Video lectures, quizzes                          | Yes                    | Yes                           | Yes              |
+| Auto-graded homeworks                            | Yes                    | Yes                           | Yes              |
+| Discussion forums                                | Yes                    | Yes                           | Yes              |
+| Self-paced                                       | Yes                    | Yes                           | Yes              |
+| Price                                            | $0                     | $50 to $100 per course        | $420 per month   |
+| Certificate of completion                        | No                     | Yes                           | Yes              |
+| Supports the Scala Center                        | No                     | Yes                           | Yes              |
+| 30 min of live session with instructors per week | No                     | No                            | Yes              |
+| Code reviews by Scala experts                    | No                     | No                            | Yes              |
+
 ## Effective Programming in Scala
+
+This course is available on [Coursera](https://coursera.org/learn/effective-scala)
+and the [Extension School](https://extensionschool.ch/learn/effective-programming-in-scala).
+Please refer to [this section](#learning-platforms) to know the differences 
+between both learning platforms.
 
 [Effective Programming in Scala] teaches non-Scala programmers everything
 they need to be ready to work in Scala. At the end of this hands-on course,
