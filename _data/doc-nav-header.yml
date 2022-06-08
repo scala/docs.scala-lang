@@ -38,8 +38,6 @@
   submenu:
     - title: "Guides & Overviews"
       url: "/overviews/index.html"
-    - title: Scala 3 Guides
-      url: '/scala3/guides.html'
     - title: Books
       url: "/books.html"
     - title: Scala FAQ

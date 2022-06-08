@@ -1,4 +1,37 @@
-
+- category: Scala 3 Deeper Dive
+  description: "Guides and overviews that introduce new concepts in Scala 3"
+  overviews:
+    - title: "Migration from Scala 2 to Scala 3"
+      by: Adrien Piquerez
+      icon: suitcase
+      root: "scala3/guides/"
+      url: "migration/compatibility-intro.html"
+      description: "Everything you need to know about compatibility and migration to Scala 3."
+    - title: Macros
+      by: Nicolas Stucki
+      icon: magic
+      root: "scala3/guides/"
+      url: "macros"
+      description: "A detailed tutorial to cover all the features involved in writing macros in Scala 3."
+      label-text: feature
+    - title: An Overview of TASTy
+      by: Alvin Alexander
+      icon: birthday-cake
+      root: "scala3/guides/"
+      url: "tasty-overview.html"
+      description: "An overview over the TASTy format aimed at end-users of the Scala language."
+    - title: "Scala 3 Contributing Guide"
+      by: Jamie Thompson, Anatolii Kmetiuk
+      icon: cogs
+      root: "scala3/guides/"
+      url: "contribution/contribution-intro.html"
+      description: "Guide to the Scala 3 Compiler and fixing an issue"
+    - title: Scaladoc
+      by: Krzysztof Romanowski, Aleksander Boruch-Gruszecki, Andrzej Ratajczak, Kacper Korban, Filip Zybała
+      icon: book
+      root: "scala3/guides/"
+      url: "scaladoc"
+      description: "Scala’s API documentation generation tool."
 - category: Standard Library
   description: "Guides and overviews covering the Scala standard library."
   overviews:
