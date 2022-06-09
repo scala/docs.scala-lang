@@ -276,7 +276,7 @@ val x = 2
 val x2 = x * x
 x2 * {
   if (0 == 0) 1.0
-  else if (0 % 2 == 1) x * power(x2, 0 - 1) // dead branch
+  else if (0 % 2 == 1) x2 * power(x2, 0 - 1) // dead branch
   else power(x2 * x2, 0 / 2) // dead branch
 }
 // partially evaluated to
