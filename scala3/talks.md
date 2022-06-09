@@ -2,6 +2,7 @@
 layout: singlepage-overview
 title: Talks
 scala3: true
+versionSpecific: true
 ---
 
 Let’s Talk About Scala 3 Series

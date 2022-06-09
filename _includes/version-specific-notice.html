@@ -1,0 +1,13 @@
+{% if include.language %}
+<blockquote class="help-info">
+  <i class="fa fa-info"></i><span style="margin-left: 0.5rem">
+    {% if include.language == 'scala3' %}
+      This doc page is specific to Scala 3,
+      and may cover new concepts not available in Scala 2.
+    {% else if include.language == 'scala2' %}
+      This doc page is specific to features shipped in Scala 2,
+      which have either been removed in Scala 3 or replaced by an alternative.
+    {% endif %}
+  </span>
+</blockquote>
+{% endif %}

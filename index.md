@@ -21,10 +21,6 @@ scala2-sections:
         description: "Bite-sized introductions to core language features."
         icon: "fa fa-flag"
         link: /tour/tour-of-scala.html
-      - title: "Scala Book"
-        description: "Learn Scala by reading a series of short lessons."
-        icon: "fa fa-book-open"
-        link: /overviews/scala-book/introduction.html
       - title: "Scala 3 Book"
         description: "Learn Scala by reading a series of short lessons."
         icon: "fa fa-book-open"

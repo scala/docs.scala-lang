@@ -1,37 +1,3 @@
-- category: Scala 3 Deeper Dive
-  description: "Guides and overviews that introduce new concepts in Scala 3"
-  overviews:
-    - title: "Migration from Scala 2 to Scala 3"
-      by: Adrien Piquerez
-      icon: suitcase
-      root: "scala3/guides/"
-      url: "migration/compatibility-intro.html"
-      description: "Everything you need to know about compatibility and migration to Scala 3."
-    - title: Macros
-      by: Nicolas Stucki
-      icon: magic
-      root: "scala3/guides/"
-      url: "macros"
-      description: "A detailed tutorial to cover all the features involved in writing macros in Scala 3."
-      label-text: feature
-    - title: An Overview of TASTy
-      by: Alvin Alexander
-      icon: birthday-cake
-      root: "scala3/guides/"
-      url: "tasty-overview.html"
-      description: "An overview over the TASTy format aimed at end-users of the Scala language."
-    - title: "Scala 3 Contributing Guide"
-      by: Jamie Thompson, Anatolii Kmetiuk
-      icon: cogs
-      root: "scala3/guides/"
-      url: "contribution/contribution-intro.html"
-      description: "Guide to the Scala 3 Compiler and fixing an issue"
-    - title: Scaladoc
-      by: Krzysztof Romanowski, Aleksander Boruch-Gruszecki, Andrzej Ratajczak, Kacper Korban, Filip Zybała
-      icon: book
-      root: "scala3/guides/"
-      url: "scaladoc"
-      description: "Scala’s API documentation generation tool."
 - category: Standard Library
   description: "Guides and overviews covering the Scala standard library."
   overviews:
@@ -105,6 +71,13 @@
       by: Josh Suereth
       description: "Scala 2.10 introduced a new feature called implicit classes. An implicit class is a class marked with the implicit keyword. This keyword makes the class’ primary constructor available for implicit conversions when the class is in scope."
       url: "core/implicit-classes.html"
+    - title: Scala 3 Macros
+      by: Nicolas Stucki
+      icon: magic
+      root: "scala3/guides/"
+      url: "macros"
+      description: "A detailed tutorial to cover all the features involved in writing macros in Scala 3."
+      label-text: new in Scala 3
     - title: Value Classes and Universal Traits
       by: Mark Harrah
       description: "Value classes are a new mechanism in Scala to avoid allocating runtime objects. This is accomplished through the definition of new AnyVal subclasses."
@@ -119,6 +92,12 @@
       icon: tasks
       url: "contributors/index.html"
       description: "Lists all the tools that library authors should setup to publish and document their libraries."
+    - title: "Migration from Scala 2 to Scala 3"
+      by: Adrien Piquerez
+      icon: suitcase
+      root: "scala3/guides/"
+      url: "migration/compatibility-intro.html"
+      description: "Everything you need to know about compatibility and migration to Scala 3."
 
 - category: Parallel and Concurrent Programming
   description: "Complete guides covering some of Scala's libraries for parallel and concurrent programming."
@@ -170,13 +149,19 @@
 - category: "Tools"
   description: "Reference material on core Scala tools like the Scala REPL and Scaladoc generation."
   overviews:
-    - title: Scala REPL
+    - title: Scala 2 REPL
       icon: terminal
       url: "repl/overview.html"
       description: |
         The Scala REPL is a tool (<code>scala</code>) for evaluating expressions in Scala.
         <br><br>
         The <code>scala</code> command will execute a source script by wrapping it in a template and then compiling and executing the resulting program
+    - title: The New Scaladoc
+      by: Krzysztof Romanowski, Aleksander Boruch-Gruszecki, Andrzej Ratajczak, Kacper Korban, Filip Zybała
+      icon: book
+      root: "scala3/guides/"
+      url: "scaladoc"
+      description: "Updates in Scala 3 to Scala’s API documentation generation tool."
     - title: Scaladoc
       url: "scaladoc/overview.html"
       icon: book
@@ -192,12 +177,24 @@
 - category: Compiler
   description: "Guides and overviews covering the Scala compiler: compiler plugins, reflection, and metaprogramming tools such as macros."
   overviews:
-    - title: Reflection
+    - title: "Scala 3 Contributing Guide"
+      by: Jamie Thompson, Anatolii Kmetiuk
+      icon: cogs
+      root: "scala3/guides/"
+      url: "contribution/contribution-intro.html"
+      description: "Guide to the Scala 3 Compiler and fixing an issue"
+    - title: An Overview of TASTy
+      by: Alvin Alexander
+      icon: birthday-cake
+      root: "scala3/guides/"
+      url: "tasty-overview.html"
+      description: "An overview over the TASTy format aimed at end-users of the Scala language."
+    - title: Scala 2 Reflection
       by: Heather Miller, Eugene Burmako, and Philipp Haller
       icon: binoculars
       url: "reflection/overview.html"
       description: Scala's runtime/compile-time reflection framework.
-      label-text: experimental
+      label-text: removed in Scala 3
       subdocs:
         - title: Overview
           url: "reflection/overview.html"
@@ -213,12 +210,12 @@
           url: "reflection/thread-safety.html"
         - title: Changes in Scala 2.11
           url: "reflection/changelog211.html"
-    - title: Macros
+    - title: Scala 2 Macros
       by: Eugene Burmako
       icon: magic
       url: "macros/usecases.html"
       description: "Scala's metaprogramming framework."
-      label-text: experimental
+      label-text: removed in Scala 3
       subdocs:
         - title: Use Cases
           url: "macros/usecases.html"
@@ -244,12 +241,12 @@
           url: "macros/roadmap.html"
         - title: Changes in 2.11
           url: "macros/changelog211.html"
-    - title: Quasiquotes
+    - title: Quasiquotes in Scala 2
       by: Denys Shabalin
       icon: quote-left
       url: "quasiquotes/setup.html"
       description: "Quasiquotes are a convenient way to manipulate Scala syntax trees."
-      label-text: experimental
+      label-text: removed in Scala 3
       subdocs:
         - title: Dependencies and setup
           url: "quasiquotes/setup.html"
@@ -277,12 +274,12 @@
           url: "quasiquotes/terminology.html"
         - title: Future prospects
           url: "quasiquotes/future.html"
-    - title: Compiler Plugins
+    - title: Scala 2 Compiler Plugins
       by: Lex Spoon and Seth Tisue
       icon: puzzle-piece
       url: "plugins/index.html"
       description: "Compiler plugins permit customizing and extending the Scala compiler. This tutorial describes the plugin facility and walks you through how to create a simple plugin."
-    - title: Compiler Options
+    - title: Scala 2 Compiler Options
       by: Community
       icon: cog
       url: "compiler-options/index.html"
