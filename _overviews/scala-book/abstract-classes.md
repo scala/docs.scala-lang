@@ -9,6 +9,7 @@ num: 27
 outof: 54
 previous-page: traits-abstract-mixins
 next-page: collections-101
+new-version: /scala3/book/domain-modeling-tools.html#abstract-classes
 ---
 
 
@@ -106,11 +107,3 @@ d.speak
 ```
 
 We encourage you to copy and paste that code into the REPL to be sure that it works as expected, and then experiment with it as desired.
-
-
-
-
-
-
-
-

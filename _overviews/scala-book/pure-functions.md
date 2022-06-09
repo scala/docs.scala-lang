@@ -9,6 +9,7 @@ num: 45
 outof: 54
 previous-page: functional-programming
 next-page: passing-functions-around
+new-version: /scala3/book/fp-pure-functions.html
 ---
 
 
@@ -99,19 +100,3 @@ The first key point of this lesson is the definition of a pure function:
 >A *pure function* is a function that depends only on its declared inputs and its internal algorithm to produce its output. It does not read any other values from “the outside world” — the world outside of the function’s scope — and it does not modify any values in the outside world.
 
 A second key point is that real-world applications consist of a combination of pure and impure functions. A common recommendation is to write the core of your application using pure functions, and then to use impure functions to communicate with the outside world.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

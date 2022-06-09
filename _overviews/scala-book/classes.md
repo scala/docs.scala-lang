@@ -9,6 +9,7 @@ num: 19
 outof: 54
 previous-page: try-catch-finally
 next-page: classes-aux-constructors
+new-version: /scala3/book/domain-modeling-tools.html#classes
 ---
 
 
@@ -208,14 +209,3 @@ class Address (
     var state: String
 )
 ```
-
-
-
-
-
-
-
-
-
-
-

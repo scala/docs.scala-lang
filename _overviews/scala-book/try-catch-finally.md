@@ -9,6 +9,7 @@ num: 18
 outof: 54
 previous-page: match-expressions
 next-page: classes
+new-version: /scala3/book/taste-control-structures.html#trycatchfinally
 ---
 
 
@@ -57,9 +58,3 @@ catch {
 ## More later
 
 We’ll cover more details about Scala’s try/catch/finally syntax in later lessons, such as in the “Functional Error Handling” lessons, but these examples demonstrate how the syntax works. A great thing about the syntax is that it’s consistent with the `match` expression syntax. This makes your code consistent and easier to read, and you don’t have to remember a special/different syntax.
-
-
-
-
-
-

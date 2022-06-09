@@ -9,6 +9,7 @@ num: 43
 outof: 54
 previous-page: sbt-scalatest-tdd
 next-page: functional-programming
+new-version: /scala3/book/tools-sbt.html#using-sbt-with-scalatest
 ---
 
 
@@ -114,11 +115,3 @@ For more information about sbt and ScalaTest, see the following resources:
 
 - [The main sbt documentation](http://www.scala-sbt.org/documentation.html)
 - [The ScalaTest documentation](http://www.scalatest.org/user_guide)
-
-
-
-
-
-
-
-

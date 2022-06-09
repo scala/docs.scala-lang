@@ -9,6 +9,7 @@ num: 10
 outof: 54
 previous-page: type-is-optional
 next-page: two-notes-about-strings
+new-version: /scala3/book/taste-vars-data-types.html#built-in-data-types
 ---
 
 
@@ -105,10 +106,3 @@ val c: Char = 'a'
 ```
 
 As shown, enclose strings in double-quotes and a character in single-quotes.
-
-
-
-
-
-
-

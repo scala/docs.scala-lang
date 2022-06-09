@@ -9,6 +9,7 @@ num: 42
 outof: 54
 previous-page: scala-build-tool-sbt
 next-page: sbt-scalatest-bdd
+new-version: /scala3/book/tools-sbt.html#using-sbt-with-scalatest
 ---
 
 
@@ -158,11 +159,3 @@ Now you can run these tests with the `sbt test` command. Skipping the first few 
 This example demonstrates a *Test-Driven Development* (TDD) style of testing with ScalaTest. In the next lesson you’ll see how to write *Behavior-Driven Development* (BDD) tests with ScalaTest and sbt.
 
 >Keep the project you just created. You’ll use it again in the next lesson.
-
-
-
-
-
-
-
-

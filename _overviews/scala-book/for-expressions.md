@@ -9,6 +9,7 @@ num: 16
 outof: 54
 previous-page: for-loops
 next-page: match-expressions
+new-version: /scala3/book/taste-control-structures.html#for-expressions
 ---
 
 
@@ -124,11 +125,3 @@ You can also put curly braces around the algorithm, if you prefer:
 ```scala
 val capNames = for (name <- names) yield { name.drop(1).capitalize }
 ```
-
-
-
-
-
-
-
-

@@ -9,6 +9,7 @@ num: 4
 outof: 54
 previous-page: preliminaries
 next-page: hello-world-1
+new-version: /scala3/book/scala-features.html
 ---
 
 
@@ -27,6 +28,3 @@ Here are a few more nuggets about Scala:
 - Scala also works extremely well with the thousands of Java libraries that have been developed over the years.
 - A great thing about Scala is that you can be productive with it on Day 1, but it’s also a deep language, so as you go along you’ll keep learning, and finding newer, better ways to write code. Some people say that Scala will change the way you think about programming (and that’s a good thing).
 - A great Scala benefit is that it lets you write concise, readable code. The time a programmer spends reading code compared to the time spent writing code is said to be at least a 10:1 ratio, so writing code that’s *concise and readable* is a big deal. Because Scala has these attributes, programmers say that it’s *expressive*.
-
-
-

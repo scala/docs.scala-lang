@@ -9,6 +9,7 @@ num: 14
 outof: 54
 previous-page: control-structures
 next-page: for-loops
+new-version: /scala3/book/taste-control-structures.html#ifelse
 ---
 
 
@@ -78,10 +79,3 @@ println("Hello")
 ```
 
 The first example runs the `doSomething` method as a side effect when `a` is equal to `b`. The second example is used for the side effect of writing a string to STDOUT. As you learn more about Scala you’ll find yourself writing more *expressions* and fewer *statements*. The differences between expressions and statements will also become more apparent.
-
-
-
-
-
-
-

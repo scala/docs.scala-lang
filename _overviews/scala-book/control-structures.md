@@ -9,6 +9,7 @@ num: 13
 outof: 54
 previous-page: command-line-io
 next-page: if-then-else-construct
+new-version: /scala3/book/taste-control-structures.html
 ---
 
 
@@ -24,10 +25,3 @@ It also has a few unique constructs, including:
 - `for` expressions
 
 We’ll demonstrate these in the following lessons.
-
-
-
-
-
-
-

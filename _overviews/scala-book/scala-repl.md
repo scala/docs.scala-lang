@@ -9,6 +9,7 @@ num: 7
 outof: 54
 previous-page: hello-world-2
 next-page: two-types-variables
+new-version: /scala3/book/taste-repl.html
 ---
 
 
@@ -75,10 +76,3 @@ In addition to the REPL there are a couple of other, similar tools you can use:
 - [scalafiddle.io](https://scalafiddle.io) lets you run similar experiments in a web browser
 
 For more information on the Scala REPL, see the [Scala REPL overview]({{site.baseurl}}/overviews/repl/overview.html)
-
-
-
-
-
-
-
