@@ -1,6 +1,7 @@
 ---
 layout: singlepage-overview
 title: Talks
+scala3: true
 ---
 
 Let’s Talk About Scala 3 Series
@@ -66,4 +67,3 @@ Deep Dive with Scala 3
   Dmitry introduces the call-graph analysis algorithm
   that Dotty implements and the performance benefits we can get in terms of number of methods, bytecode size, JVM code size
   and the number of objects allocated in the end.
-
