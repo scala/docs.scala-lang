@@ -114,7 +114,7 @@ For incomplete list of alternatives see [alternative desugaring](#alternative-de
 Pro:
 
 * with shapeless records we have a good understanding what we are doing, however we need to tweak the encoding a bit
-* with some helper definitions the usage would be quite short
+* with some helper definitions the usage could be quite short
 * reuse possible
 
 Con:
@@ -168,6 +168,26 @@ But this leads to (arguably small) inconsistency, as pointed out by Lionel Parre
   case User(age = _) => "Just wanted to use the extractor, lol!"
 ```
 
+### Reordering of user code
+
+
+```scala
+//TODO: Test this
+object User:
+  class UserExtractor(user: User):
+    def _1 = println("Got name"); user.name
+    def _2 = println("Got age"); user.age
+    def _3 = println("Got city"); user.city
+
+    type Names = ("name", "age", "city")
+// Ask for city, then for name
+val User(city = _, name = _) = user
+// But the execution shows:
+// Got name
+// Got age
+// Got city
+```
+
 ## Alternatives
 
 ### Without any changes to the language
@@ -199,23 +219,25 @@ In the sprit of [name based pattern matching](https://dotty.epfl.ch/docs/referen
 object User:
   class UserMatching(user: User):
     def _1 = user.name
-    ...
-    
     def _name = user.name
-    inline def _age = _2
+
+    @deprecatedName
+    def _oldName = user.name.toUpperCase
+    ...
+  
+  def unapply(user: User) = UserMatching(user)
 ```
 
 Pro:
 
-* allows to add more fields
+* allows to have more named fields than positional fields
 * allows `@deprecatedName`
-* is the only desugaring, that doesn't use string literals
 
 Con:
 
 * How to detect that a name means the same as a position? Maybe detect simple patterns like the last line in the example?
-* long and verbose, without any shortcuts in sight
-* An underscore at the beginning of a name is an unheard of pattern, even in Scala. This could accidentally expose fields, which weren't suppose to become fields.
+* It's long and verbose, without any shortcuts in sight.
+* An underscore at the beginning of a name isn't an unheard of pattern, even in Scala. This could accidentally expose fields, which weren't suppose to become fields.
 
 #### Annotated `unapply` method
 
@@ -253,12 +275,7 @@ Con:
 * the type and the method can be defined in unrelated traits. Only at the use site of the can be checked if the type and the method agree on the arity of the pattern.
 * no clear way of encoding deprecated name
 
-### Named Tuple Arguments / Anonymous Case Classes
-
-This was mentioned in the discussion about [Named Tuple Arguments / Anonymous Case Classes][named-tuple] as bonus, that named tuples could transport the names from unapply to the pattern.
-This would be more generic and could handle user defined extractors.
-
-### Partial destructuring in guards
+#### Partial destructuring in guards
 
 Lionel Parreaux proposed a more powerful mechanism, where if guards of cases could them self contains destructuring patterns.
 
