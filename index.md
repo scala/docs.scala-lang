@@ -95,7 +95,7 @@ scala2-sections:
         icon: "fa fa-cogs"
         link: /sips/index.html
       - title: "Contributing to Scala"
-        description: "The Complete Guide to Contributing to the Scala Project"
+        description: "The Complete Guide to Contributing to Scala's compilers, libraries and documentation."
         icon: "fa fa-cogs"
         link: /contribute/
       - title: "Scala 3 Contributing Guide"
