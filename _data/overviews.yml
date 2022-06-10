@@ -83,6 +83,15 @@
       description: "Value classes are a new mechanism in Scala to avoid allocating runtime objects. This is accomplished through the definition of new AnyVal subclasses."
       icon: gem
       url: "core/value-classes.html"
+    - title: The Scala Book
+      by: Alvin Alexander
+      icon: book
+      label-color: "#899295"
+      label-text: archived
+      url: "scala-book/introduction.html"
+      description: >
+        A light introduction to the Scala language, focused on Scala 2.
+        <a href="/scala3/book/introduction.html">Now updated for Scala 3</a>, we are in the process of merging the two.
 
 - category: Authoring Libraries
   description: "Guides for contributing open source libraries to the Scala ecosystem."
@@ -162,6 +171,7 @@
       root: "scala3/guides/"
       url: "scaladoc"
       description: "Updates in Scala 3 to Scala’s API documentation generation tool."
+      label-text: updated
     - title: Scaladoc
       url: "scaladoc/overview.html"
       icon: book
@@ -294,7 +304,6 @@
       icon: cog
       url: "compiler-options/optimizer.html"
       description: "The compiler can perform various optimizations."
-
 
 - category: Legacy
   description: "Guides covering features no longer relevant to recent Scala versions (2.12+)."
