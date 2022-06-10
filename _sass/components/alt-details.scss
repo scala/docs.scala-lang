@@ -2,6 +2,21 @@
 //------------------------------------------------
 //------------------------------------------------
 
+.alt-details.help-info {
+    .alt-details-toggle {
+        background-color: $brand-primary;
+        color: white;
+
+        &:hover {
+            background-color: darken($brand-primary, 15%);
+        }
+    }
+
+    .alt-details-detail {
+        background: #fae6e6
+    }
+}
+
 .alt-details {
     @include span-columns(12);
 
@@ -33,6 +48,10 @@
             margin-top: 2px;
         }
 
+    }
+
+    .alt-details-control {
+        margin: 0;
     }
 
     .alt-details-control+.alt-details-toggle+.alt-details-detail {
