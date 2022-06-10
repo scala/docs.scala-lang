@@ -1,6 +1,5 @@
 {% include headertop.html %}
 {% include headerbottom.html %}
-{% if page.new-version %}<a class="new-version-notice" href="{{ page.new-version }}">This page has a new version.</a>{% endif %}
 
 
 
@@ -13,6 +12,12 @@
   <section class="title-page">
     <div class="wrap">
       <div class="content-title-documentation">
+        {% if page.new-version %}
+          <div class="wip-notice">
+            <h4>Outdated Notice</h4>
+            <p><a class="new-version-notice" href="{{ page.new-version }}"><i class="fa fa-info"></i><span>&nbsp;&nbsp;This page has a new version.</span></a></p>
+          </div>
+        {% endif %}
         <div class="titles">
           {% if page.overview-name %}
             <div class="supertitle">{{ page.overview-name }}</div>
