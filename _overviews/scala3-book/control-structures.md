@@ -369,9 +369,11 @@ val day = i match
   case _ => "invalid day"   // the default, catch-all
 ```
 
-In this example the variable `i` is tested against the cases shown.
-If it’s between `0` and `6`, `day` is bound to a string that represents one of the days of the week.
-Otherwise, the catch-all case is represented by the `_` character, and `day` is bound to the string, `"invalid day"`.
+In this example, the variable `i` is tested against the cases shown.
+If it’s between `0` and `6`, `day` is bound to the string that represents that day of the week.
+Otherwise, it matches the catch-all case represented by the character, `_`, and `day` is bound to the string, `"invalid day"`.
+
+Since the cases are considered in the order they are written, and the first matching case is used, the default case, which matches any value, must come last. Any cases after the catch-all will be warned as unreachable cases.
 
 > When writing simple `match` expressions like this, it’s recommended to use the `@switch` annotation on the variable `i`.
 > This annotation provides a compile-time warning if the switch can’t be compiled to a `tableswitch` or `lookupswitch`, which are better for performance.
@@ -379,18 +381,25 @@ Otherwise, the catch-all case is represented by the `_` character, and `day` is 
 
 ### Using the default value
 
-When you need to access the catch-all, default value in a `match` expression, just provide a variable name on the left side of the `case` statement, and then use that variable name on the right side of the statement as needed:
+When you need to access the catch-all, default value in a `match` expression, just provide a variable name on the left side of the `case` statement instead of `_`, and then use that variable name on the right side of the statement as needed:
 
 ```scala
 i match
   case 0 => println("1")
   case 1 => println("2")
-  case what => println(s"You gave me: $what" )
+  case what => println(s"You gave me: $what")
 ```
+The name used in the pattern must begin with a lowercase letter.
+A name beginning with an uppercase letter does not introduce a variable, but matches a value in scope:
 
-In this example the variable is named `what` to show that it can be given any legal name.
-You can also use `_` as a name to ignore the value.
-
+```scala
+val N = 42
+i match
+  case 0 => println("1")
+  case 1 => println("2")
+  case N => println("42")
+  case n => println(s"You gave me: $n" )
+```
 
 ### Handling multiple possible matches on one line
 
