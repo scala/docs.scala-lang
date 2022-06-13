@@ -32,20 +32,28 @@ The current page only contains the options that were added in Scala 3.0.x.
 | `-siteroot` | A directory containing static files from which to generate documentation. Default: ./docs. |
 | `-sourceroot` | Specify workspace root directory. Default: .. |
 
+## Verbose settings
+
+| 3.2.x | description |
+|-|-|
+| `-Vprofile` | Show metrics about sources and internal representations to estimate compile-time complexity. |
+| `-Vprofile-sorted-by:<column-name>` | Show metrics about sources and internal representations sorted by given column name. |
+| `-Vprofile-details N` | Like -Vprofile, but also show metrics about sources and internal representations of the N most complex methods |
+
 ## Advanced settings
 
 | 3.0.x | description |
 |-|-|
-| `-Xignore-scala2-macros` | Ignore errors when compiling code that calls Scala2 macros, these will fail at runtime. | 
-| `-Ximport-suggestion-timeout` | Timeout (in ms) for searching for import suggestions when errors are reported. | 
-| `-Xmax-inlined-trees` | Maximal number of inlined trees. Default: 2000000 | 
-| `-Xmax-inlines` | Maximal number of successive inlines. Default: 32. | 
-| `-Xprint-diff` | Print changed parts of the tree since last print. | 
-| `-Xprint-diff-del` | Print changed parts of the tree since last print including deleted parts. | 
-| `-Xprint-inline` | Show where inlined code comes from. | 
-| `-Xprint-suspension` | Show when code is suspended until macros are compiled. | 
-| `-Xrepl-disable-display` | Do not display definitions in REPL. | 
-| `-Xwiki-syntax` | Retains the Scala2 behavior of using Wiki Syntax in Scaladoc. | 
+| `-Xignore-scala2-macros` | Ignore errors when compiling code that calls Scala2 macros, these will fail at runtime. |
+| `-Ximport-suggestion-timeout` | Timeout (in ms) for searching for import suggestions when errors are reported. |
+| `-Xmax-inlined-trees` | Maximal number of inlined trees. Default: 2000000 |
+| `-Xmax-inlines` | Maximal number of successive inlines. Default: 32. |
+| `-Xprint-diff` | Print changed parts of the tree since last print. |
+| `-Xprint-diff-del` | Print changed parts of the tree since last print including deleted parts. |
+| `-Xprint-inline` | Show where inlined code comes from. |
+| `-Xprint-suspension` | Show when code is suspended until macros are compiled. |
+| `-Xrepl-disable-display` | Do not display definitions in REPL. |
+| `-Xwiki-syntax` | Retains the Scala2 behavior of using Wiki Syntax in Scaladoc. |
 
 ## Private settings
 
