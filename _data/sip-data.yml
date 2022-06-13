@@ -1,27 +1,47 @@
+design:
+  color: "#839496"
+  text: "Design"
+
+implementation:
+  color: "#839496"
+  text: "Implementation"
+
+submitted:
+  color: "#2aa198"
+  text: "Submitted"
+
 under-review:
   color: "#b58900"
   text: "Under Review"
 
-pending:
+vote-requested:
   color: "#b58900"
-  text: "Pending"
+  text: "Vote Requested"
 
-dormant:
-  color: "#839496"
-  text: "Dormant"
-
-under-revision:
-  color: "#2aa198"
-  text: "Under Revision"
+waiting-for-implementation:
+  color: "#b58900"
+  text: "Waiting for Implementation"
 
 accepted:
   color: "#859900"
   text: "Accepted"
 
-complete:
+shipped:
   color: "#859900"
-  text: "Complete"
+  text: "Shipped"
 
 rejected:
   color: "#dc322f"
   text: "Rejected"
+
+withdrawn:
+  color: "#839496"
+  text: "Withdrawn"
+
+accept:
+  color: "#859900"
+  text: "Accept"
+
+reject:
+  color: "#dc322f"
+  text: "Reject"
