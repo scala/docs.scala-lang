@@ -244,15 +244,8 @@ Any further changes would have to come as an entirely new SIP.
 
 ## The SIP Committee
 
-The current committee members are:
-
-- Martin Odersky ([@odersky](https://github.com/odersky)), EPFL
-- Sébastien Doeraene ([@sjrd](https://github.com/sjrd)), Scala Center
-
-The current Chairperson is:
-
-- Julien Richard-Foy ([@julienrf](https://github.com/julienrf)), Scala Center
-
+The list of committee members is not yet known. We will update this section
+as soon as the full committee is defined.
 
 ### Committee Meetings
 
