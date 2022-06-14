@@ -1,7 +1,7 @@
 ---
 title: SIP-NN - Name Based XML Literals
-status: under-review
+status: submitted
 pull-request-number: 42
-stage: design
+stage: pre-sip
 
 ---

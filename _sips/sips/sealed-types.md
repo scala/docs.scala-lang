@@ -1,7 +1,7 @@
 ---
 title: SIP-NN - Sealed Types
-status: under-review
+status: submitted
 pull-request-number: 43
-stage: design
+stage: pre-sip
 
 ---

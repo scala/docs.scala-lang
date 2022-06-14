@@ -1,7 +1,7 @@
 ---
 title: SIP-36 - Adding prefix types
-status: under-review
+status: submitted
 pull-request-number: 35
-stage: design
+stage: pre-sip
 
 ---

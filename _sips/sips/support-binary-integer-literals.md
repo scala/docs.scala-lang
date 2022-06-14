@@ -1,7 +1,7 @@
 ---
 title: SIP-NN - Support Binary Integer Literals
-status: under-review
+status: submitted
 pull-request-number: 40
-stage: design
+stage: pre-sip
 
 ---
