@@ -400,6 +400,7 @@ i match
   case N => println("42")
   case n => println(s"You gave me: $n" )
 ```
+If `i` is equal to `42`, then `case N` will match, and it will print the string `"42"`. It won't reach the default case.
 
 ### Handling multiple possible matches on one line
 
