@@ -20,7 +20,7 @@ scala3-sections:
       - title: "Початок роботи"
         description: "Встанови Scala 3 на свій комп'ютер і почни писати код Scala!"
         icon: "fa fa-rocket"
-        link: /scala3/getting-started.html
+        link: /uk/scala3/getting-started.html
       - title: "Книга по Scala 3"
         description: "Вивчи Scala, прочитавши серію коротких уроків."
         icon: "fa fa-book-open"
@@ -66,7 +66,7 @@ scala2-sections:
       - title: "Початок роботи"
         description: "Встанови Scala на свій комп'ютер і почни писати код Scala!"
         icon: "fa fa-rocket"
-        link: /getting-started.html
+        link: /uk/getting-started/index.html
       - title: "Екскурсія по Скала"
         description: "Короткі введення в основні особливості мови."
         icon: "fa fa-flag"

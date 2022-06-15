@@ -2,7 +2,7 @@
 title: Getting Started with Scala and sbt on the Command Line
 layout: singlepage-overview
 partof: getting-started-with-scala-and-sbt-on-the-command-line
-languages: [ja]
+languages: [ja, uk]
 disqus: true
 next-page: testing-scala-with-sbt-on-the-command-line
 
